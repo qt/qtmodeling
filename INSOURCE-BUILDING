@@ -128,11 +128,18 @@ headerdirs  += $QT_MOF_SOURCES \
 
 sourcedirs  += $QT_MOF_SOURCES \
                $QT_MOF_SOURCES/../../examples/mof \
-               $QT_MOF_SOURCES/doc/src \
+               $QT_MOF_SOURCES/doc
 
 exampledirs += $QT_MOF_SOURCES/../../examples/mof \
-               $QT_MOF_SOURCES/doc/src/snippets
+               $QT_MOF_SOURCES/doc/snippets
 
-imagedirs   += $QT_MOF_SOURCES/doc/src/images
+imagedirs   += $QT_MOF_SOURCES/doc/images
 
-excludedirs += $QT_MOF_SOURCES/doc/src/snippets
+excludedirs += $QT_MOF_SOURCES/doc/snippets
+
+Cpp.ignoretokens = \
+    QT_BEGIN_HEADER \
+    QT_END_HEADER \
+    QT_BEGIN_NAMESPACE_MOF \
+    QT_END_NAMESPACE_MOF \
+    Q_MOF_EXPORT
