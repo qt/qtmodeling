@@ -1,0 +1,4 @@
+headerdirs = ../ ../../../examples/mof/
+sourcedirs = ../ src/ ../../../examples/mof/
+exampledirs = ../../../examples/mof/ src/snippets
+imagedirs = src/images
