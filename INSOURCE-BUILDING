@@ -1,0 +1,138 @@
+In order to build the QtMof add-on inside Qt official repository the following
+steps should be applied. Apparently a complete clean, init-repository, configure
+and make is needed.
+
+1) Build
+
+1.1) Apply the following patch
+
+diff --git a/.gitmodules b/.gitmodules
+index ba2aa2e..2483813 100644
+--- a/.gitmodules
++++ b/.gitmodules
+@@ -79,3 +79,6 @@
+ [submodule "qtgraphicaleffects"]
+        path = qtgraphicaleffects
+        url = git://gitorious.org/qt/qtgraphicaleffects.git
++[submodule "qtmof"]
++       path = qtmof
++       url = git://gitorious.org/qtplayground/qtmof.git
+diff --git a/qtmof b/qtmof
+new file mode 160000
+index 0000000..1199941
+--- /dev/null
++++ b/qtmof
+@@ -0,0 +1 @@
++Subproject commit 119994178d59af28b850615968a64897ad8a7026
+
+1.2) Apply the following patch
+
+diff --git a/build.dependencies b/build.dependencies
+index a979bf0..fba4688 100644
+--- a/build.dependencies
++++ b/build.dependencies
+@@ -31,6 +31,7 @@ use Config;
+     "qtwebkit" => "qtbase,qtscript,qtdeclarative,qtquick1,qtlocation",
+     "qtwebkit-examples-and-demos" => "qtwebkit",
+     "qtxmlpatterns" => "qtbase",
++    "qtmof" => "qtbase",
+ );
+ 
+ @nondefault_modules = (
+diff --git a/init-repository b/init-repository
+index b63cf86..70f2391 100755
+--- a/init-repository
++++ b/init-repository
+@@ -245,6 +245,7 @@ my %GERRIT_REPOS = map { $_ => "qt/$_" } qw(
+     qtwayland
+     qtwebkit-examples-and-demos
+     qtxmlpatterns
++    qtmof
+ );
+ 
+ my $GERRIT_SSH_BASE
+diff --git a/qt.pro b/qt.pro
+index 63d31f2..8bde12f 100644
+--- a/qt.pro
++++ b/qt.pro
+@@ -113,6 +113,10 @@ module_qtgraphicaleffects.subdir = qtgraphicaleffects
+ module_qtgraphicaleffects.target = module-qtgraphicaleffects
+ module_qtgraphicaleffects.depends = module_qtbase module_qtdeclarative
+ 
++module_qtmof.subdir = qtmof
++module_qtmof.target = module-qtmof
++module_qtmof.depends = module_qtbase
++
+ # only qtbase is required to exist. The others may not - but it is the
+ # users responsibility to ensure that all needed dependencies exist, or
+ # it may not build.
+@@ -194,3 +198,4 @@ exists(qttranslations/qttranslations.pro): SUBDIRS += module_qttranslations
+ exists(qtdoc/qtdoc.pro): SUBDIRS += module_qtdoc
+ exists(qtqa/qtqa.pro): SUBDIRS += module_qtqa
+ exists(qlalr/qlalr.pro): SUBDIRS += module_qlalr
++exists(qtmof/qtmof.pro): SUBDIRS += module_qtmof
+
+2) Documentation
+
+2.1) Apply the following patch
+
+diff --git a/doc/config/qt-project.qdocconf b/doc/config/qt-project.qdocconf
+index c6c1f4b..534cf31 100644
+--- a/doc/config/qt-project.qdocconf
++++ b/doc/config/qt-project.qdocconf
+@@ -71,6 +71,7 @@ include($QT_CONTACTS_QDOCCONF)
+ include($QT_ORGANIZER_QDOCCONF)
+ include($QT_VERSIT_QDOCCONF)
+ include($QT_BLUETOOTH_QDOCCONF)
++include($QT_MOF_QDOCCONF)
+ 
+ 
+ imagedirs += images
+diff --git a/doc/doc.pri b/doc/doc.pri
+index d2f64ef..eca43f1 100644
+--- a/doc/doc.pri
++++ b/doc/doc.pri
+@@ -48,7 +48,8 @@ MODULES = activeqt \
+           contacts \
+           organizer \
+           versit \
+-          bluetooth
++          bluetooth \
++          mof
+ 
+ # Pretend there is a doc module. Simplifies things a bit.
+ QT.doc.sources = $$dirname(PWD)
+diff --git a/doc/src/modules.qdoc b/doc/src/modules.qdoc
+index 0fe1f68..135a670 100644
+--- a/doc/src/modules.qdoc
++++ b/doc/src/modules.qdoc
+@@ -161,6 +161,11 @@
+             search via QML and C++ interfaces. Provides an NMEA backend for
+             positioning.
+     \row
++        \li \l{QtMof Module}{Qt MOF}
++        \li All
++        \li
++        \li OMG's Meta Object Facility (MOF) Qt-based implementation.
++    \row
+         \li \l{QtOpenGL}{Qt OpenGL}
+         \li
+         \li
+
+2.2) Create the file qtdoc/doc/config/modules/qtmof.qdocconf containing:
+
+# QT_MOF_SOURCES points to qtmof/src/mof
+
+headerdirs  += $QT_MOF_SOURCES \
+               $QT_MOF_SOURCES/../../examples/mof
+
+sourcedirs  += $QT_MOF_SOURCES \
+               $QT_MOF_SOURCES/../../examples/mof \
+               $QT_MOF_SOURCES/doc/src \
+
+exampledirs += $QT_MOF_SOURCES/../../examples/mof \
+               $QT_MOF_SOURCES/doc/src/snippets
+
+imagedirs   += $QT_MOF_SOURCES/doc/src/images
+
+excludedirs += $QT_MOF_SOURCES/doc/src/snippets
