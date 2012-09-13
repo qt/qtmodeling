@@ -1,6 +1,8 @@
 /*!
     \module QtMof
+
     \title QtMof Module
+
     \ingroup modules
 
     \brief The QtMof module implements the OMG's Meta Object Facility (MOF) standard.

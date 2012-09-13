@@ -1,8 +1,12 @@
 /*!
     \page qtmof-overview
+
     \title Qt Meta Object Facility
-    \brief An introduction to OMG's Meta Object Facility (MOF) with QtMof.
+
     \ingroup technology-apis
 
+    \brief An introduction to OMG's Meta Object Facility (MOF) with QtMof.
+
     \section1 Overview
-*/
+ */
+
