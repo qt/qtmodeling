@@ -1,3 +1,3 @@
 #! [0]
-QT += mof uml
+QT += uml
 #! [0]

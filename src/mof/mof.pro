@@ -1,15 +1,19 @@
 load(qt_build_config)
 
 TARGET = QtMof
-QT = core
+QT = core uml
 
 load(qt_module)
 
 PUBLIC_HEADERS += \
     qtmofglobal.h \
-    qmof.h
+    Reflection/object.h \
+    Common/reflectivesequence.h \
+    Common/reflectivecollection.h
 
 SOURCES += \
-    qmof.cpp \
+    Reflection/object.cpp \
+    Common/reflectivesequence.cpp \
+    Common/reflectivecollection.cpp
 
 HEADERS += $$PUBLIC_HEADERS

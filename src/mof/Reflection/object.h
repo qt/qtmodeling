@@ -38,53 +38,28 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QTMOFGLOBAL_H
-#define QTMOFGLOBAL_H
+#ifndef OBJECT_H
+#define OBJECT_H
 
-#include <QtCore/qglobal.h>
+#include <QtMof/qtmofglobal.h>
+
+#include <QtCore/QObject>
 
 QT_BEGIN_HEADER
 
-#ifndef QT_STATIC
-#    if defined(QT_BUILD_MOF_LIB)
-#        define Q_MOF_EXPORT Q_DECL_EXPORT
-#    else
-#        define Q_MOF_EXPORT Q_DECL_IMPORT
-#    endif
-#else
-#    define Q_MOF_EXPORT
-#endif
+QT_BEGIN_NAMESPACE_MOF_REFLECTION
 
-// QtMof macros
+class Q_MOF_EXPORT Object : public QObject
+{
+    Q_OBJECT
+public:
+    Object(QObject *parent = 0);
+    virtual ~Object();
+};
 
-#if defined(QT_NAMESPACE)
-#    define QT_NAMESPACE_MOF QT_NAMESPACE::QtMof
-#else
-#    define QT_NAMESPACE_MOF QtMof
-#endif
-
-#define QT_BEGIN_NAMESPACE_MOF QT_BEGIN_NAMESPACE namespace QtMof {
-#define QT_END_NAMESPACE_MOF QT_END_NAMESPACE }
-#define QT_USE_NAMESPACE_MOF using namespace QT_NAMESPACE_MOF;
-#define QT_PREPEND_NAMESPACE_MOF(name) ::QT_NAMESPACE_MOF::name
-
-// QtMof::Reflection macros
-
-#define QT_NAMESPACE_MOF_REFLECTION QT_NAMESPACE_MOF::Reflection
-#define QT_BEGIN_NAMESPACE_MOF_REFLECTION QT_BEGIN_NAMESPACE_MOF namespace Reflection {
-#define QT_END_NAMESPACE_MOF_REFLECTION QT_END_NAMESPACE_MOF }
-#define QT_USE_NAMESPACE_MOF_REFLECTION using namespace QT_NAMESPACE_MOF_REFLECTION;
-#define QT_PREPEND_NAMESPACE_MOF_REFLECTION(name) ::QT_NAMESPACE_MOF_REFLECTION::name
-
-// QtMof::Common macros
-
-#define QT_NAMESPACE_MOF_COMMON QT_NAMESPACE_MOF::Common
-#define QT_BEGIN_NAMESPACE_MOF_COMMON QT_BEGIN_NAMESPACE_MOF namespace Common {
-#define QT_END_NAMESPACE_MOF_COMMON QT_END_NAMESPACE_MOF }
-#define QT_USE_NAMESPACE_MOF_COMMON using namespace QT_NAMESPACE_MOF_COMMON;
-#define QT_PREPEND_NAMESPACE_MOF_COMMON(name) ::QT_NAMESPACE_MOF_COMMON::name
+QT_END_NAMESPACE_MOF_REFLECTION
 
 QT_END_HEADER
 
-#endif // QTMOFGLOBAL_H
+#endif // OBJECT_H
 
