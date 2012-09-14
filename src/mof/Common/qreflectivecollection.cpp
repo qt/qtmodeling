@@ -38,28 +38,37 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QMOF_H
-#define QMOF_H
 
-#include <QtMof/qtmofglobal.h>
+#include "qreflectivecollection.h"
 
-#include <QtCore/QObject>
+QT_BEGIN_NAMESPACE_MOF_COMMON
 
-QT_BEGIN_HEADER
+/*!
+    \class QReflectiveCollection
 
-QT_BEGIN_NAMESPACE_MOF
+    \inmodule QtMof
 
-class Q_MOF_EXPORT QMof : public QObject
+    \brief The QReflectiveCollection class provides the class template for future QtMof classes.
+
+    Temporary class that inherits from \l QObject.
+ */
+
+/*!
+    The constructor.
+ */
+QReflectiveCollection::QReflectiveCollection(QObject *parent)
+    : QObject(parent)
 {
-    Q_OBJECT
-public:
-    QMof(QObject *parent = 0);
-    virtual ~QMof();
-};
+}
 
-QT_END_NAMESPACE_MOF
+/*!
+    The destructor.
+ */
+QReflectiveCollection::~QReflectiveCollection()
+{
+}
 
-QT_END_HEADER
+#include "moc_qreflectivecollection.cpp"
 
-#endif // QMOF_H
+QT_END_NAMESPACE_MOF_COMMON
 

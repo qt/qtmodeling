@@ -3,7 +3,7 @@
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/
 **
-** This file is part of the QtMof module of the Qt Toolkit.
+** This file is part of the QtUml module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
@@ -15,7 +15,7 @@
 ** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
 **
 ** In addition, as a special exception, Nokia gives you certain additional
-** rights. These rights are described in the Nokia Qt LGPL Exception
+** rights. These rights are described in the Nokia  LGPL Exception
 ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
 **
 ** GNU General Public License Usage
@@ -38,37 +38,28 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
+#ifndef CLASSES_KERNEL_QPROPERTY_H
+#define CLASSES_KERNEL_QPROPERTY_H
 
-#include "object.h"
+#include <QtUml/qtumlglobal.h>
 
-QT_BEGIN_NAMESPACE_MOF_REFLECTION
+#include <QtCore/QObject>
 
-/*!
-    \class Object
+QT_BEGIN_HEADER
 
-    \inmodule QtMof
+QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
-    \brief The Object class provides the class template for future QtMof classes.
-
-    Temporary class that inherits from \l QObject.
- */
-
-/*!
-    The constructor.
- */
-Object::Object(QObject *parent)
-    : QObject(parent)
+class Q_UML_EXPORT QProperty : public QObject
 {
-}
+    Q_OBJECT
+public:
+    QProperty(QObject *parent = 0);
+    virtual ~QProperty();
+};
 
-/*!
-    The destructor.
- */
-Object::~Object()
-{
-}
+QT_END_NAMESPACE_UML_CLASSES_KERNEL
 
-#include "moc_object.cpp"
+QT_END_HEADER
 
-QT_END_NAMESPACE_MOF_REFLECTION
+#endif // CLASSES_KERNEL_QPROPERTY_H
 

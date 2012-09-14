@@ -3,7 +3,7 @@
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/
 **
-** This file is part of the QtUml module of the Qt Toolkit.
+** This file is part of the QtMof module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
@@ -39,16 +39,16 @@
 **
 ****************************************************************************/
 
-#include "property.h"
+#include "qmofobject.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_MOF_REFLECTION
 
 /*!
-    \class Property
+    \class QMofObject
 
-    \inmodule QtUml
+    \inmodule QtMof
 
-    \brief The Property class provides the class template for future QtUml classes.
+    \brief The QMofObject class provides the class template for future QtMof classes.
 
     Temporary class that inherits from \l QObject.
  */
@@ -56,7 +56,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 /*!
     The constructor.
  */
-Property::Property(QObject *parent)
+QMofObject::QMofObject(QObject *parent)
     : QObject(parent)
 {
 }
@@ -64,11 +64,11 @@ Property::Property(QObject *parent)
 /*!
     The destructor.
  */
-Property::~Property()
+QMofObject::~QMofObject()
 {
 }
 
-#include "moc_property.cpp"
+#include "moc_qmofobject.cpp"
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_MOF_REFLECTION
 

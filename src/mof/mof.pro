@@ -7,13 +7,13 @@ load(qt_module)
 
 PUBLIC_HEADERS += \
     qtmofglobal.h \
-    Reflection/object.h \
-    Common/reflectivesequence.h \
-    Common/reflectivecollection.h
+    Reflection/qmofobject.h \
+    Common/qreflectivesequence.h \
+    Common/qreflectivecollection.h
 
 SOURCES += \
-    Reflection/object.cpp \
-    Common/reflectivesequence.cpp \
-    Common/reflectivecollection.cpp
+    Reflection/qmofobject.cpp \
+    Common/qreflectivesequence.cpp \
+    Common/qreflectivecollection.cpp
 
 HEADERS += $$PUBLIC_HEADERS

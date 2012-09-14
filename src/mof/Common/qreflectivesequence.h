@@ -38,37 +38,28 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
+#ifndef COMMON_QREFLECTIVESEQUENCE_H
+#define COMMON_QREFLECTIVESEQUENCE_H
 
-#include "reflectivesequence.h"
+#include <QtMof/qtmofglobal.h>
+
+#include <QtCore/QObject>
+
+QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_MOF_COMMON
 
-/*!
-    \class ReflectiveSequence
-
-    \inmodule QtMof
-
-    \brief The ReflectiveSequence class provides the class template for future QtMof classes.
-
-    Temporary class that inherits from \l QObject.
- */
-
-/*!
-    The constructor.
- */
-ReflectiveSequence::ReflectiveSequence(QObject *parent)
-    : QObject(parent)
+class Q_MOF_EXPORT QReflectiveSequence : public QObject
 {
-}
-
-/*!
-    The destructor.
- */
-ReflectiveSequence::~ReflectiveSequence()
-{
-}
-
-#include "moc_reflectivesequence.cpp"
+    Q_OBJECT
+public:
+    QReflectiveSequence(QObject *parent = 0);
+    virtual ~QReflectiveSequence();
+};
 
 QT_END_NAMESPACE_MOF_COMMON
+
+QT_END_HEADER
+
+#endif // COMMON_QREFLECTIVESEQUENCE_H
 

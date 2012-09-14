@@ -38,8 +38,8 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef OBJECT_H
-#define OBJECT_H
+#ifndef REFLECTION_QMOFOBJECT_H
+#define REFLECTION_QMOFOBJECT_H
 
 #include <QtMof/qtmofglobal.h>
 
@@ -49,17 +49,17 @@ QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_MOF_REFLECTION
 
-class Q_MOF_EXPORT Object : public QObject
+class Q_MOF_EXPORT QMofObject : public QObject
 {
     Q_OBJECT
 public:
-    Object(QObject *parent = 0);
-    virtual ~Object();
+    QMofObject(QObject *parent = 0);
+    virtual ~QMofObject();
 };
 
 QT_END_NAMESPACE_MOF_REFLECTION
 
 QT_END_HEADER
 
-#endif // OBJECT_H
+#endif // REFLECTION_QMOFOBJECT_H
 

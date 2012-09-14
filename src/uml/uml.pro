@@ -7,9 +7,9 @@ load(qt_module)
 
 PUBLIC_HEADERS += \
     qtumlglobal.h \
-    Classes/Kernel/property.h
+    Classes/Kernel/qproperty.h
 
 SOURCES += \
-    Classes/Kernel/property.cpp
+    Classes/Kernel/qproperty.cpp
 
 HEADERS += $$PUBLIC_HEADERS
