@@ -3,7 +3,7 @@
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/
 **
-** This file is part of the QtMof module of the Qt Toolkit.
+** This file is part of the QtUml module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
@@ -38,53 +38,53 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QTMOFGLOBAL_H
-#define QTMOFGLOBAL_H
+#ifndef QTUMLGLOBAL_H
+#define QTUMLGLOBAL_H
 
 #include <QtCore/qglobal.h>
 
 QT_BEGIN_HEADER
 
 #ifndef QT_STATIC
-#    if defined(QT_BUILD_MOF_LIB)
-#        define Q_MOF_EXPORT Q_DECL_EXPORT
+#    if defined(QT_BUILD_UML_LIB)
+#        define Q_UML_EXPORT Q_DECL_EXPORT
 #    else
-#        define Q_MOF_EXPORT Q_DECL_IMPORT
+#        define Q_UML_EXPORT Q_DECL_IMPORT
 #    endif
 #else
-#    define Q_MOF_EXPORT
+#    define Q_UML_EXPORT
 #endif
 
-// QtMof macros
+// QtUml macros
 
 #if defined(QT_NAMESPACE)
-#    define QT_NAMESPACE_MOF QT_NAMESPACE::QtMof
+#    define QT_NAMESPACE_UML QT_NAMESPACE::QtUml
 #else
-#    define QT_NAMESPACE_MOF QtMof
+#    define QT_NAMESPACE_UML QtUml
 #endif
 
-#define QT_BEGIN_NAMESPACE_MOF QT_BEGIN_NAMESPACE namespace QtMof {
-#define QT_END_NAMESPACE_MOF QT_END_NAMESPACE }
-#define QT_USE_NAMESPACE_MOF using namespace QT_NAMESPACE_MOF;
-#define QT_PREPEND_NAMESPACE_MOF(name) ::QT_NAMESPACE_MOF::name
+#define QT_BEGIN_NAMESPACE_UML QT_BEGIN_NAMESPACE namespace QtUml {
+#define QT_END_NAMESPACE_UML QT_END_NAMESPACE }
+#define QT_USE_NAMESPACE_UML using namespace QT_NAMESPACE_UML;
+#define QT_PREPEND_NAMESPACE_UML(name) ::QT_NAMESPACE_UML::name
 
-// QtMof::Reflection macros
+// QtUml::Classes macros
 
-#define QT_NAMESPACE_MOF_REFLECTION QT_NAMESPACE_MOF::Reflection
-#define QT_BEGIN_NAMESPACE_MOF_REFLECTION QT_BEGIN_NAMESPACE_MOF namespace Reflection {
-#define QT_END_NAMESPACE_MOF_REFLECTION QT_END_NAMESPACE_MOF }
-#define QT_USE_NAMESPACE_MOF_REFLECTION using namespace QT_NAMESPACE_MOF_REFLECTION;
-#define QT_PREPEND_NAMESPACE_MOF_REFLECTION(name) ::QT_NAMESPACE_MOF_REFLECTION::name
+#define QT_NAMESPACE_UML_CLASSES QT_NAMESPACE_UML::Classes
+#define QT_BEGIN_NAMESPACE_UML_CLASSES QT_BEGIN_NAMESPACE_UML namespace Classes {
+#define QT_END_NAMESPACE_UML_CLASSES QT_END_NAMESPACE_UML }
+#define QT_USE_NAMESPACE_UML_CLASSES using namespace QT_NAMESPACE_UML_CLASSES;
+#define QT_PREPEND_NAMESPACE_UML_CLASSES(name) ::QT_NAMESPACE_UML_CLASSES::name
 
-// QtMof::Common macros
+// QtUml::Classes::Kernel macros
 
-#define QT_NAMESPACE_MOF_COMMON QT_NAMESPACE_MOF::Common
-#define QT_BEGIN_NAMESPACE_MOF_COMMON QT_BEGIN_NAMESPACE_MOF namespace Common {
-#define QT_END_NAMESPACE_MOF_COMMON QT_END_NAMESPACE_MOF }
-#define QT_USE_NAMESPACE_MOF_COMMON using namespace QT_NAMESPACE_MOF_COMMON;
-#define QT_PREPEND_NAMESPACE_MOF_COMMON(name) ::QT_NAMESPACE_MOF_COMMON::name
+#define QT_NAMESPACE_UML_CLASSES_KERNEL QT_NAMESPACE_UML_CLASSES::Kernel
+#define QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL QT_BEGIN_NAMESPACE_UML_CLASSES namespace Kernel {
+#define QT_END_NAMESPACE_UML_CLASSES_KERNEL QT_END_NAMESPACE_UML_CLASSES }
+#define QT_USE_NAMESPACE_UML_CLASSES_KERNEL using namespace QT_NAMESPACE_UML_CLASSES_KERNEL;
+#define QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(name) ::QT_NAMESPACE_UML_CLASSES_KERNEL::name
 
 QT_END_HEADER
 
-#endif // QTMOFGLOBAL_H
+#endif // QTUMLGLOBAL_H
 

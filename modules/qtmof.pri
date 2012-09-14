@@ -11,7 +11,7 @@ QT.mof.sources = $$QT_MODULE_BASE/src/mof
 QT.mof.libs = $$QT_MODULE_LIB_BASE
 QT.mof.plugins = $$QT_MODULE_PLUGIN_BASE
 QT.mof.imports = $$QT_MODULE_IMPORT_BASE
-QT.mof.depends = core
+QT.mof.depends = core uml
 
 QT.mof.DEFINES = QT_MOF_LIB
 QT_CONFIG += mof

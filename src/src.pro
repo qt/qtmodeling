@@ -1,4 +1,4 @@
 TEMPLATE = subdirs
 CONFIG  += ordered
 
-SUBDIRS = mof
+SUBDIRS = uml mof

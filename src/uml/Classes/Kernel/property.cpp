@@ -3,7 +3,7 @@
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/
 **
-** This file is part of the QtMof module of the Qt Toolkit.
+** This file is part of the QtUml module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
@@ -38,53 +38,37 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QTMOFGLOBAL_H
-#define QTMOFGLOBAL_H
 
-#include <QtCore/qglobal.h>
+#include "property.h"
 
-QT_BEGIN_HEADER
+QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
-#ifndef QT_STATIC
-#    if defined(QT_BUILD_MOF_LIB)
-#        define Q_MOF_EXPORT Q_DECL_EXPORT
-#    else
-#        define Q_MOF_EXPORT Q_DECL_IMPORT
-#    endif
-#else
-#    define Q_MOF_EXPORT
-#endif
+/*!
+    \class Property
 
-// QtMof macros
+    \inmodule QtUml
 
-#if defined(QT_NAMESPACE)
-#    define QT_NAMESPACE_MOF QT_NAMESPACE::QtMof
-#else
-#    define QT_NAMESPACE_MOF QtMof
-#endif
+    \brief The Property class provides the class template for future QtUml classes.
 
-#define QT_BEGIN_NAMESPACE_MOF QT_BEGIN_NAMESPACE namespace QtMof {
-#define QT_END_NAMESPACE_MOF QT_END_NAMESPACE }
-#define QT_USE_NAMESPACE_MOF using namespace QT_NAMESPACE_MOF;
-#define QT_PREPEND_NAMESPACE_MOF(name) ::QT_NAMESPACE_MOF::name
+    Temporary class that inherits from \l QObject.
+ */
 
-// QtMof::Reflection macros
+/*!
+    The constructor.
+ */
+Property::Property(QObject *parent)
+    : QObject(parent)
+{
+}
 
-#define QT_NAMESPACE_MOF_REFLECTION QT_NAMESPACE_MOF::Reflection
-#define QT_BEGIN_NAMESPACE_MOF_REFLECTION QT_BEGIN_NAMESPACE_MOF namespace Reflection {
-#define QT_END_NAMESPACE_MOF_REFLECTION QT_END_NAMESPACE_MOF }
-#define QT_USE_NAMESPACE_MOF_REFLECTION using namespace QT_NAMESPACE_MOF_REFLECTION;
-#define QT_PREPEND_NAMESPACE_MOF_REFLECTION(name) ::QT_NAMESPACE_MOF_REFLECTION::name
+/*!
+    The destructor.
+ */
+Property::~Property()
+{
+}
 
-// QtMof::Common macros
+#include "moc_property.cpp"
 
-#define QT_NAMESPACE_MOF_COMMON QT_NAMESPACE_MOF::Common
-#define QT_BEGIN_NAMESPACE_MOF_COMMON QT_BEGIN_NAMESPACE_MOF namespace Common {
-#define QT_END_NAMESPACE_MOF_COMMON QT_END_NAMESPACE_MOF }
-#define QT_USE_NAMESPACE_MOF_COMMON using namespace QT_NAMESPACE_MOF_COMMON;
-#define QT_PREPEND_NAMESPACE_MOF_COMMON(name) ::QT_NAMESPACE_MOF_COMMON::name
-
-QT_END_HEADER
-
-#endif // QTMOFGLOBAL_H
+QT_END_NAMESPACE_UML_CLASSES_KERNEL
 
