@@ -3,7 +3,7 @@
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/
 **
-** This file is part of the QtUml module of the Qt Toolkit.
+** This file is part of the QtMof module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
@@ -15,7 +15,7 @@
 ** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
 **
 ** In addition, as a special exception, Nokia gives you certain additional
-** rights. These rights are described in the Nokia  LGPL Exception
+** rights. These rights are described in the Nokia Qt LGPL Exception
 ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
 **
 ** GNU General Public License Usage
@@ -38,28 +38,37 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef PROPERTY_H
-#define PROPERTY_H
 
-#include <QtUml/qtumlglobal.h>
+#include "qreflectivesequence.h"
 
-#include <QtCore/QObject>
+QT_BEGIN_NAMESPACE_MOF_COMMON
 
-QT_BEGIN_HEADER
+/*!
+    \class QReflectiveSequence
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+    \inmodule QtMof
 
-class Q_UML_EXPORT Property : public QObject
+    \brief The QReflectiveSequence class provides the class template for future QtMof classes.
+
+    Temporary class that inherits from \l QObject.
+ */
+
+/*!
+    The constructor.
+ */
+QReflectiveSequence::QReflectiveSequence(QObject *parent)
+    : QObject(parent)
 {
-    Q_OBJECT
-public:
-    Property(QObject *parent = 0);
-    virtual ~Property();
-};
+}
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+/*!
+    The destructor.
+ */
+QReflectiveSequence::~QReflectiveSequence()
+{
+}
 
-QT_END_HEADER
+#include "moc_qreflectivesequence.cpp"
 
-#endif // PROPERTY_H
+QT_END_NAMESPACE_MOF_COMMON
 

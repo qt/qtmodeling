@@ -3,7 +3,7 @@
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/
 **
-** This file is part of the QtMof module of the Qt Toolkit.
+** This file is part of the QtUml module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
@@ -39,16 +39,16 @@
 **
 ****************************************************************************/
 
-#include "reflectivecollection.h"
+#include "qproperty.h"
 
-QT_BEGIN_NAMESPACE_MOF_COMMON
+QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
 /*!
-    \class ReflectiveCollection
+    \class QProperty
 
-    \inmodule QtMof
+    \inmodule QtUml
 
-    \brief The ReflectiveCollection class provides the class template for future QtMof classes.
+    \brief The QProperty class provides the class template for future QtUml classes.
 
     Temporary class that inherits from \l QObject.
  */
@@ -56,7 +56,7 @@ QT_BEGIN_NAMESPACE_MOF_COMMON
 /*!
     The constructor.
  */
-ReflectiveCollection::ReflectiveCollection(QObject *parent)
+QProperty::QProperty(QObject *parent)
     : QObject(parent)
 {
 }
@@ -64,11 +64,11 @@ ReflectiveCollection::ReflectiveCollection(QObject *parent)
 /*!
     The destructor.
  */
-ReflectiveCollection::~ReflectiveCollection()
+QProperty::~QProperty()
 {
 }
 
-#include "moc_reflectivecollection.cpp"
+#include "moc_qproperty.cpp"
 
-QT_END_NAMESPACE_MOF_COMMON
+QT_END_NAMESPACE_UML_CLASSES_KERNEL
 
