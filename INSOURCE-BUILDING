@@ -144,9 +144,7 @@ imagedirs   += $QT_MOF_SOURCES/doc/images
 
 excludedirs += $QT_MOF_SOURCES/doc/snippets
 
-Cpp.ignoretokens = \
-    QT_BEGIN_HEADER \
-    QT_END_HEADER \
+Cpp.ignoretokens += \
     QT_BEGIN_NAMESPACE_MOF \
     QT_END_NAMESPACE_MOF \
     QT_BEGIN_NAMESPACE_MOF_COMMON \
@@ -173,9 +171,7 @@ imagedirs   += $QT_UML_SOURCES/doc/images
 
 excludedirs += $QT_UML_SOURCES/doc/snippets
 
-Cpp.ignoretokens = \
-    QT_BEGIN_HEADER \
-    QT_END_HEADER \
+Cpp.ignoretokens += \
     QT_BEGIN_NAMESPACE_UML \
     QT_END_NAMESPACE_UML \
     QT_BEGIN_NAMESPACE_UML_CLASSES \
