@@ -77,39 +77,46 @@ index 63d31f2..8bde12f 100644
 2.1) Apply the following patch
 
 diff --git a/doc/config/qt-project.qdocconf b/doc/config/qt-project.qdocconf
-index c6c1f4b..534cf31 100644
+index c6c1f4b..d8ba88a 100644
 --- a/doc/config/qt-project.qdocconf
 +++ b/doc/config/qt-project.qdocconf
-@@ -71,6 +71,7 @@ include($QT_CONTACTS_QDOCCONF)
+@@ -71,6 +71,8 @@ include($QT_CONTACTS_QDOCCONF)
  include($QT_ORGANIZER_QDOCCONF)
  include($QT_VERSIT_QDOCCONF)
  include($QT_BLUETOOTH_QDOCCONF)
++include($QT_UML_QDOCCONF)
 +include($QT_MOF_QDOCCONF)
 
 
  imagedirs += images
 diff --git a/doc/doc.pri b/doc/doc.pri
-index d2f64ef..eca43f1 100644
+index d2f64ef..4a5eac3 100644
 --- a/doc/doc.pri
 +++ b/doc/doc.pri
-@@ -48,7 +48,8 @@ MODULES = activeqt \
+@@ -48,7 +48,9 @@ MODULES = activeqt \
            contacts \
            organizer \
            versit \
 -          bluetooth
 +          bluetooth \
++          uml \
 +          mof
 
  # Pretend there is a doc module. Simplifies things a bit.
  QT.doc.sources = $$dirname(PWD)
 diff --git a/doc/src/modules.qdoc b/doc/src/modules.qdoc
-index 0fe1f68..135a670 100644
+index 0fe1f68..d6bda9c 100644
 --- a/doc/src/modules.qdoc
 +++ b/doc/src/modules.qdoc
-@@ -161,6 +161,11 @@
+@@ -161,6 +161,16 @@
              search via QML and C++ interfaces. Provides an NMEA backend for
              positioning.
      \row
++        \li \l{QtUml Module}{Qt UML}
++        \li All
++        \li
++        \li OMG's UML Qt-based implementation.
++    \row
 +        \li \l{QtMof Module}{Qt MOF}
 +        \li All
 +        \li
@@ -142,4 +149,37 @@ Cpp.ignoretokens = \
     QT_END_HEADER \
     QT_BEGIN_NAMESPACE_MOF \
     QT_END_NAMESPACE_MOF \
+    QT_BEGIN_NAMESPACE_MOF_COMMON \
+    QT_END_NAMESPACE_MOF_COMMON \
+    QT_BEGIN_NAMESPACE_MOF_REFLECTION \
+    QT_END_NAMESPACE_MOF_REFLECTION \
     Q_MOF_EXPORT
+
+2.3) Create the file qtdoc/doc/config/modules/qtuml.qdocconf containing:
+
+# QT_UML_SOURCES points to qtmof/src/uml
+
+headerdirs  += $QT_UML_SOURCES \
+               $QT_UML_SOURCES/../../examples/uml
+
+sourcedirs  += $QT_UML_SOURCES \
+               $QT_UML_SOURCES/../../examples/uml \
+               $QT_UML_SOURCES/doc
+
+exampledirs += $QT_UML_SOURCES/../../examples/uml \
+               $QT_UML_SOURCES/doc/snippets
+
+imagedirs   += $QT_UML_SOURCES/doc/images
+
+excludedirs += $QT_UML_SOURCES/doc/snippets
+
+Cpp.ignoretokens = \
+    QT_BEGIN_HEADER \
+    QT_END_HEADER \
+    QT_BEGIN_NAMESPACE_UML \
+    QT_END_NAMESPACE_UML \
+    QT_BEGIN_NAMESPACE_UML_CLASSES \
+    QT_END_NAMESPACE_UML_CLASSES \
+    QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL \
+    QT_END_NAMESPACE_UML_CLASSES_KERNEL \
+    Q_UML_EXPORT
