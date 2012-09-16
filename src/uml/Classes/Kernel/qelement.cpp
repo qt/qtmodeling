@@ -3,7 +3,7 @@
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/
 **
-** This file is part of the QtMof module of the Qt Toolkit.
+** This file is part of the QtUml module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
@@ -38,31 +38,47 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef COMMON_QREFLECTIVESEQUENCE_H
-#define COMMON_QREFLECTIVESEQUENCE_H
 
-#include <QtMof/QtMofGlobal>
+#include "qelement.h"
+#include "qelement_p.h"
 
-#include <QtCore/QObject>
+QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
-QT_BEGIN_HEADER
+/*!
+    \class QElement
 
-QT_BEGIN_NAMESPACE_MOF_COMMON
+    \inmodule QtUml
 
-QT_MODULE(QtMof)
+    \brief The QElement class specifies a constituent of a model. As such, it has the capability of owning other elements.
 
-class Q_MOF_EXPORT QReflectiveSequence : public QObject
+    QElement is an abstract metaclass with no superclass. It is used as the common superclass for all metaclasses in the
+    UML infrastructure library. QElement has a derived composition association to itself to support the general capability for
+    elements to own other elements.
+ */
+
+/*!
+    The constructor.
+ */
+QElement::QElement(QObject *parent)
+    : QObject(parent)
 {
-    Q_OBJECT
+}
 
-public:
-    explicit QReflectiveSequence(QObject *parent = 0);
-    virtual ~QReflectiveSequence();
-};
+/*!
+    The destructor.
+ */
+QElement::~QElement()
+{
+}
 
-QT_END_NAMESPACE_MOF_COMMON
+/*! \internal
+ */
+QElement::QElement(QElementPrivate &dd, QObject *parent)
+    : QObject(dd, parent)
+{
+}
 
-QT_END_HEADER
+#include "moc_qelement.cpp"
 
-#endif // COMMON_QREFLECTIVESEQUENCE_H
+QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

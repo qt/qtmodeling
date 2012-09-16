@@ -41,7 +41,7 @@
 #ifndef CLASSES_KERNEL_QPROPERTY_H
 #define CLASSES_KERNEL_QPROPERTY_H
 
-#include <QtUml/qtumlglobal.h>
+#include <QtUml/QtUmlGlobal>
 
 #include <QtCore/QObject>
 
@@ -49,11 +49,14 @@ QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
+QT_MODULE(QtUml)
+
 class Q_UML_EXPORT QProperty : public QObject
 {
     Q_OBJECT
+
 public:
-    QProperty(QObject *parent = 0);
+    explicit QProperty(QObject *parent = 0);
     virtual ~QProperty();
 };
 
