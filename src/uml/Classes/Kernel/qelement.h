@@ -3,7 +3,7 @@
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/
 **
-** This file is part of the QtMof module of the Qt Toolkit.
+** This file is part of the QtUml module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
@@ -15,7 +15,7 @@
 ** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
 **
 ** In addition, as a special exception, Nokia gives you certain additional
-** rights. These rights are described in the Nokia Qt LGPL Exception
+** rights. These rights are described in the Nokia  LGPL Exception
 ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
 **
 ** GNU General Public License Usage
@@ -38,31 +38,36 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef COMMON_QREFLECTIVESEQUENCE_H
-#define COMMON_QREFLECTIVESEQUENCE_H
+#ifndef CLASSES_KERNEL_QELEMENT_H
+#define CLASSES_KERNEL_QELEMENT_H
 
-#include <QtMof/QtMofGlobal>
+#include <QtUml/QtUmlGlobal>
 
 #include <QtCore/QObject>
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_MOF_COMMON
+QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
-QT_MODULE(QtMof)
+QT_MODULE(QtUml)
 
-class Q_MOF_EXPORT QReflectiveSequence : public QObject
+class QElementPrivate;
+
+class Q_UML_EXPORT QElement : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit QReflectiveSequence(QObject *parent = 0);
-    virtual ~QReflectiveSequence();
+    explicit QElement(QObject *parent = 0);
+    virtual ~QElement();
+
+protected:
+    QElement(QElementPrivate &dd, QObject *parent = 0);
 };
 
-QT_END_NAMESPACE_MOF_COMMON
+QT_END_NAMESPACE_UML_CLASSES_KERNEL
 
 QT_END_HEADER
 
-#endif // COMMON_QREFLECTIVESEQUENCE_H
+#endif // CLASSES_KERNEL_QELEMENT_H
 

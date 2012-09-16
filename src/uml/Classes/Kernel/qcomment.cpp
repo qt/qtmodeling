@@ -3,7 +3,7 @@
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/
 **
-** This file is part of the QtMof module of the Qt Toolkit.
+** This file is part of the QtUml module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
@@ -38,31 +38,68 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef COMMON_QREFLECTIVESEQUENCE_H
-#define COMMON_QREFLECTIVESEQUENCE_H
 
-#include <QtMof/QtMofGlobal>
+#include "qcomment.h"
+#include "qcomment_p.h"
 
-#include <QtCore/QObject>
+QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
-QT_BEGIN_HEADER
+/*!
+    \class QComment
 
-QT_BEGIN_NAMESPACE_MOF_COMMON
+    \inmodule QtUml
 
-QT_MODULE(QtMof)
+    \brief The QComment class specifies a textual annotation that can be attached to a set of QElement's.
 
-class Q_MOF_EXPORT QReflectiveSequence : public QObject
+    A QComment gives the ability to attach various remarks to QElement's. A QComment carries no semantic force, but may contain
+    information that is useful to a modeler.
+
+    A QComment can be owned by any QElement.
+ */
+
+/*!
+    The constructor.
+ */
+QComment::QComment(QObject *parent)
+    : QElement(*new QCommentPrivate, parent)
 {
-    Q_OBJECT
+}
 
-public:
-    explicit QReflectiveSequence(QObject *parent = 0);
-    virtual ~QReflectiveSequence();
-};
+/*!
+    The destructor.
+ */
+QComment::~QComment()
+{
+}
 
-QT_END_NAMESPACE_MOF_COMMON
+/*!
+    Returns a string that is the comment.
+ */
+const QString &QComment::body() const
+{
+    Q_D(const QComment);
+    return d->body;
+}
 
-QT_END_HEADER
+/*!
+    Specifies a string that is the comment.
+ */
+void QComment::setBody(const QString &body)
+{
+    Q_D(QComment);
+    d->body = body;
+}
 
-#endif // COMMON_QREFLECTIVESEQUENCE_H
+/*!
+    References the QElement(s) being commented.
+ */
+QList<QElement *> &QComment::annotatedElement()
+{
+    Q_D(QComment);
+    return d->annotatedElement;
+}
+
+#include "moc_qcomment.cpp"
+
+QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

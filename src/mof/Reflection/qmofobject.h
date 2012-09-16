@@ -41,7 +41,7 @@
 #ifndef REFLECTION_QMOFOBJECT_H
 #define REFLECTION_QMOFOBJECT_H
 
-#include <QtMof/qtmofglobal.h>
+#include <QtMof/QtMofGlobal>
 
 #include <QtCore/QObject>
 
@@ -49,11 +49,14 @@ QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_MOF_REFLECTION
 
+QT_MODULE(QtMof)
+
 class Q_MOF_EXPORT QMofObject : public QObject
 {
     Q_OBJECT
+
 public:
-    QMofObject(QObject *parent = 0);
+    explicit QMofObject(QObject *parent = 0);
     virtual ~QMofObject();
 };
 

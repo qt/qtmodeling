@@ -41,7 +41,7 @@
 #ifndef COMMON_QREFLECTIVECOLLECTION_H
 #define COMMON_QREFLECTIVECOLLECTION_H
 
-#include <QtMof/qtmofglobal.h>
+#include <QtMof/QtMofGlobal>
 
 #include <QtCore/QObject>
 
@@ -49,11 +49,14 @@ QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_MOF_COMMON
 
+QT_MODULE(QtMof)
+
 class Q_MOF_EXPORT QReflectiveCollection : public QObject
 {
     Q_OBJECT
+
 public:
-    QReflectiveCollection(QObject *parent = 0);
+    explicit QReflectiveCollection(QObject *parent = 0);
     virtual ~QReflectiveCollection();
 };
 
