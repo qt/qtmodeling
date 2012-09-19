@@ -1,9 +1,73 @@
-[%- MACRO unqualifiedType(string)
-          IF string.0.defined -%]
-              [%- GET string.0.href.split('#').last.split('-').last.ucfirst -%]
+[%- MACRO convertType(type)
+    SWITCH type -%]
+    [%- CASE 'Boolean' -%]boolean
+    [%- CASE 'Integer' -%]qint32
+    [%- CASE 'Real' -%]qreal
+    [%- CASE 'UnlimitedNatural' -%]qint32
+    [%- CASE -%]Q${type}
+    [%- END -%]
+[%- MACRO handleModifiers(property, const, ref) BLOCK -%]
+    [%- IF property.type.href.defined -%]
+        [%- type = property.type.href -%]
+    [%- ELSIF property.type.defined -%]
+        [%- type = property.type -%]
+    [%- ELSE -%]
+        [%- type = property -%]
+    [%- END -%]
+    [%- convertedType = convertType(type.split('#').last.split('-').last.ucfirst) -%]
+    [%- IF (property.upperValue.value != '*' || property.isReadOnly) && const -%]const [%- END -%]
+    [%- IF property.upperValue.value == '*' -%]
+        [%- GET 'QList<' -%]
+    [%- END -%]
+    [%- GET convertedType _ ' ' -%]
+    [%- IF property.upperValue.value == '*' -%]
+        [%- GET '*> ' -%]
+    [%- END -%]
+    [%- IF ref -%]&[%- END -%]
+[%- END -%]
+[%- MACRO unqualifiedType(property, const, ref)
+          IF property.type.href.defined -%]
+              [%- GET handleModifiers(property, const, ref) -%]
+          [%- ELSIF property.type.defined -%]
+              [%- GET handleModifiers(property, const, ref) -%]
           [%- ELSE -%]
-              [%- GET string.split('#').last.split('-').last.ucfirst -%]
+              [%- GET convertType(property.split('#').last.split('-').last.ucfirst) -%]
           [%- END -%]
+[%- MACRO GENERATEPROPERTIES(association)
+    FOREACH property IN classData.ownedAttribute -%]
+        [%- IF (property.value.association.defined && association) || (!property.value.association.defined && !association) %]
+    Q_PROPERTY(${unqualifiedType(property.value, 0, 0)}${property.key} READ ${property.key}
+            [%- IF property.value.isReadOnly != 'true' && property.value.upperValue.value != '*' %] WRITE set[%- IF property.key.substr(0, 2) == 'is' -%]${property.key.substr(2).ucfirst}[%- ELSE -%]${property.key.ucfirst}[%- END- %]
+            [%- END -%])
+        [%- END -%]
+    [%- END -%]
+[%- MACRO GENERATEACCESSORS(association)
+    FOREACH property IN classData.ownedAttribute -%]
+        [%- IF ((property.value.association.defined && association) || (!property.value.association.defined && !association)) && !(property.value.isDerived && !property.value.isDerivedUnion) %]
+    ${unqualifiedType(property.value, 1, 1)}${property.key}()[%- IF property.value.isReadOnly && const -%]const [%- END -%];
+            [%- IF property.value.isReadOnly != 'true' && property.value.upperValue.value != '*' %]
+    void set[%- IF property.key.substr(0, 2) == 'is' -%]${property.key.substr(2).ucfirst}[%- ELSE -%]${property.key.ucfirst}[%- END- %](${unqualifiedType(property.value, 1, 1)}[%- IF property.key.substr(0, 2) == 'is' -%]${property.key.substr(2).lcfirst}[%- ELSE -%]${property.key}[%- END- %]);
+            [%- END -%]
+        [%- END -%]
+    [%- END %]
+[%- MACRO GENERATEOPERATIONS BLOCK -%]
+    [%- FOREACH operation IN classData.ownedOperation -%]
+        [%- return = void -%]
+        [%- FOREACH parameter IN operation.value.ownedParameter -%]
+            [%- IF parameter.value.direction == 'return' -%]
+                [%- return = unqualifiedType(parameter.value, 1, 1) -%]
+            [%- END -%]
+        [%- END %]
+    ${return}${operation.key}(
+        [%- returnDelta = 1 -%]
+        [%- FOREACH parameter IN operation.value.ownedParameter -%]
+            [%- IF parameter.value.direction != 'return' -%]${unqualifiedType(parameter.value, 1, 1)}${parameter.key}
+                [%- IF loop.count < loop.size - returnDelta -%], [%- END -%]
+            [%- ELSE -%][%- returnDelta = 0 -%]
+            [%- END -%]
+        [%- END -%])[%- IF operation.value.isQuery -%] const[%- END -%];
+    [%- END %]
+[%- END -%]
 /****************************************************************************
 **
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
@@ -48,7 +112,7 @@
 #define CLASSES_KERNEL_Q${className.upper}_H
 
 [% FOREACH superclass = classData.generalization -%]
-#include <QtUml/Q${unqualifiedType(superclass.general)}>
+#include <QtUml/${unqualifiedType(superclass.general)}>
 [% END -%]
 
 QT_BEGIN_HEADER
@@ -59,70 +123,24 @@ QT_MODULE(QtUml)
 
 class Q${className}Private;
 
-class Q_UML_EXPORT Q${className} : [% FOREACH superclass = classData.generalization %]public Q${unqualifiedType(superclass.general)}[% IF !loop.last %], [% END %][% END %]
+class Q_UML_EXPORT Q${className} : [% FOREACH superclass = classData.generalization %]public ${unqualifiedType(superclass.general, 0, 0)}[% IF !loop.last %], [% END %][% END %]
 {
     Q_OBJECT
-    [%- FOREACH property = classData.ownedAttribute -%]
-        [%- IF property.upperValue.0.value == '*' -%]
-            [%- IF !property.association %]
-                [%-IF property.isReadyOnly != 'false' %]
-    Q_PROPERTY(QList<Q${unqualifiedType(property.type)} *> READ ${property.name} WRITE set${property.name.ucfirst})
-                [% ELSE %]
-    Q_PROPERTY(QList<Q${unqualifiedType(property.type)} *> READ ${property.name})
-                [% END %]
-            [%- ELSE %]
-    Q_PROPERTY(QList<Q${unqualifiedType(property.type)} *> READ ${property.name})
-            [%- END -%]
-        [%- ELSE -%]
-            [%- IF !property.association %]
-    Q_PROPERTY(Q${unqualifiedType(property.type)} READ ${property.name} WRITE set${property.name.ucfirst})
-            [%- ELSE %]
-    Q_PROPERTY(Q${unqualifiedType(property.type)} READ ${property.name})
-            [%- END -%]
-        [%- END -%]
-    [% END %]
+    [% GENERATEPROPERTIES(0) -%]
+    [% GENERATEPROPERTIES(1) %]
 
 public:
     explicit Q${className}(QObject *parent = 0);
     virtual ~Q${className}();
 
-    // Attributes
-    [% FOREACH property = classData.ownedAttribute -%]
-        [%- IF !property.association.defined %]
-            [%- IF property.upperValue.0.value == '*' %]
-                [%-IF property.isReadyOnly != 'false' %]
-    QList<Q${unqualifiedType(property.type)} *> &${property.name}();
-                [% ELSE %]
-    const QList<Q${unqualifiedType(property.type)} *> &${property.name}();
-                [% END -%]
-            [% ELSE %]
-    const Q${unqualifiedType(property.type)} &${property.name}() const;
-                [%-IF property.isReadyOnly != 'false' %]
-    void set${property.name.ucfirst}(const Q${unqualifiedType(property.type)} &${property.name});
-                [% END %]
-            [%- END %]
-        [%- END %]
-    [%- END -%]
+    // Attributes (except those derived && !derivedUnion)
+    [% GENERATEACCESSORS(0) %]
 
-    // Association-ends
-    [% FOREACH property = classData.ownedAttribute -%]
-        [%- IF property.association.defined %]
-            [%- IF property.upperValue.0.value == '*' %]
-                [%-IF property.isReadyOnly != 'false' %]
-    QList<Q${unqualifiedType(property.type)} *> &${property.name}();
-                [% ELSE %]
-    const QList<Q${unqualifiedType(property.type)} *> &${property.name}() const;
-                [% END -%]
-            [% ELSE %]
-    const Q${unqualifiedType(property.type)} &${property.name}() const;
-                [%-IF property.isReadyOnly != 'false' %]
-    void set${property.name.ucfirst}(const Q${unqualifiedType(property.type)} &${property.name});
-                [% END %]
-            [%- END %]
-        [%- END %]
-    [%- END -%]
+    // Association-ends (except those derived && !derivedUnion)
+    [% GENERATEACCESSORS(1) %]
 
-    // Operations
+    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    [% GENERATEOPERATIONS %]
 
 private:
     Q_DISABLE_COPY(Q${className})
