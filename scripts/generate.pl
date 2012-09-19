@@ -14,10 +14,10 @@ write_file 'dump.log', Dumper($xmi);
 
 my $classesKernel = $xmi->{'uml:Package'}->{'packagedElement'}->{'Classes'}->{'packagedElement'}->{'Kernel'}->{'packagedElement'};
 
-my $tt = Template->new(INTERPOLATE  => 1);
+my $tt = Template->new(INTERPOLATE  => 1, INCLUDE_PATH => 'templates/');
 foreach my $key (keys $classesKernel) {
     if ($classesKernel->{$key}->{'xmi:type'} eq 'uml:Class' && ($key eq 'NamedElement' || $key eq 'Association' || $key eq 'EnumerationLiteral') ) {
-        if ($tt->process('templates/template.h', {
+        if ($tt->process('template.h', {
             currentPackage => 'Classes::Kernel',
             className => $key,
             classData => $classesKernel->{$key},
