@@ -16,8 +16,13 @@ my $classesKernel = $xmi->{'uml:Package'}->{'packagedElement'}->{'Classes'}->{'p
 
 my $tt = Template->new(INTERPOLATE  => 1, INCLUDE_PATH => 'templates/');
 foreach my $key (keys $classesKernel) {
-    if ($classesKernel->{$key}->{'xmi:type'} eq 'uml:Class' && ($key eq 'NamedElement' || $key eq 'Association' || $key eq 'EnumerationLiteral') ) {
+    if ($classesKernel->{$key}->{'xmi:type'} eq 'uml:Class' && ($key eq 'Element') ) {
         if ($tt->process('template.h', {
+            currentPackage => 'Classes::Kernel',
+            className => $key,
+            classData => $classesKernel->{$key},
+        }) ne 1) { print $tt->error(); }
+        if ($tt->process('template.cpp', {
             currentPackage => 'Classes::Kernel',
             className => $key,
             classData => $classesKernel->{$key},

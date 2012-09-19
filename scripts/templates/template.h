@@ -39,8 +39,8 @@
 ** [% GET '$QT_END_LICENSE$' %]
 **
 ****************************************************************************/
-#ifndef CLASSES_KERNEL_Q${className.upper}_H
-#define CLASSES_KERNEL_Q${className.upper}_H
+#ifndef ${currentPackage.replace('::', '_').upper}_Q${className.upper}_H
+#define ${currentPackage.replace('::', '_').upper}_Q${className.upper}_H
 
 [% FOREACH superclass = classData.generalization -%]
 #include <QtUml/${unqualifiedType(superclass.general)}>
@@ -48,13 +48,13 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_UML_${currentPackage.replace('::', '_').upper}
 
 QT_MODULE(QtUml)
 
 class Q${className}Private;
 
-class Q_UML_EXPORT Q${className} : [% FOREACH superclass = classData.generalization %]public ${unqualifiedType(superclass.general, 0, 0)}[% IF !loop.last %], [% END %][% END %]
+class Q_UML_EXPORT Q${className} : [%- IF !classData.generalization -%]public QObject[%- ELSE -%][% FOREACH superclass = classData.generalization %]public ${unqualifiedType(superclass.general, 0, 0)}[% IF !loop.last %], [% END %][% END %][% END %]
 {
     Q_OBJECT
     [% GENERATEPROPERTIES(0) -%]
@@ -65,22 +65,22 @@ public:
     virtual ~Q${className}();
 
     // Attributes (except those derived && !derivedUnion)
-    [% GENERATEACCESSORS(0) %]
+    [% GENERATEACCESSORS(0, 1) %]
 
     // Association-ends (except those derived && !derivedUnion)
-    [% GENERATEACCESSORS(1) %]
+    [% GENERATEACCESSORS(1, 1) %]
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    [% GENERATEOPERATIONS %]
+    [% GENERATEOPERATIONS(1) %]
 
 private:
     Q_DISABLE_COPY(Q${className})
     Q_DECLARE_PRIVATE(Q${className})
 };
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_UML_${currentPackage.replace('::', '_').upper}
 
 QT_END_HEADER
 
-#endif // CLASSES_KERNEL_Q${className.upper}_H
+#endif // ${currentPackage.replace('::', '_').upper}_Q${className.upper}_H
 

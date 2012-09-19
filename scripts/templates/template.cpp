@@ -1,3 +1,4 @@
+[%- PROCESS 'macros.tpl' -%]
 /****************************************************************************
 **
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
@@ -5,7 +6,7 @@
 **
 ** This file is part of the QtUml module of the Qt Toolkit.
 **
-** $QT_BEGIN_LICENSE:LGPL$
+** [% GET '$QT_BEGIN_LICENSE:LGPL$' %]
 ** GNU Lesser General Public License Usage
 ** This file may be used under the terms of the GNU Lesser General Public
 ** License version 2.1 as published by the Free Software Foundation and
@@ -35,71 +36,36 @@
 **
 **
 **
-** $QT_END_LICENSE$
+** [% GET '$QT_END_LICENSE$' %]
 **
 ****************************************************************************/
 
-#include "qcomment.h"
-#include "qcomment_p.h"
+#include "q${className.lower}.h"
+#include "q${className.lower}_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_UML_${currentPackage.replace('::', '_').upper}
 
 /*!
-    \class QComment
+    \class Q${className}
 
     \inmodule QtUml
 
-    \brief The QComment class specifies a textual annotation that can be attached to a set of QElement's.
-
-    A QComment gives the ability to attach various remarks to QElement's. A QComment carries no semantic force, but may contain
-    information that is useful to a modeler.
-
-    A QComment can be owned by any QElement.
+    \brief [%- classData.ownedComment.body %]
  */
 
-/*!
-    The constructor.
- */
-QComment::QComment(QObject *parent)
-    : QElement(*new QCommentPrivate, parent)
+Q${className}::Q${className}(QObject *parent)
+    : QObject(parent)
 {
 }
 
-/*!
-    The destructor.
- */
-QComment::~QComment()
+Q${className}::~Q${className}()
 {
 }
+[% GENERATEACCESSORS(0, 0) -%]
+[% GENERATEACCESSORS(1, 0) -%]
+[% GENERATEOPERATIONS(0) -%]
 
-/*!
-    Returns a string that is the comment.
- */
-const QString &QComment::body() const
-{
-    Q_D(const QComment);
-    return d->body;
-}
+#include "moc_q${className.lower}.cpp"
 
-/*!
-    Specifies a string that is the comment.
- */
-void QComment::setBody(const QString &body)
-{
-    Q_D(QComment);
-    d->body = body;
-}
-
-/*!
-    References the QElement(s) being commented.
- */
-QList<QElement *> &QComment::annotatedElement()
-{
-    Q_D(QComment);
-    return d->annotatedElement;
-}
-
-#include "moc_qcomment.cpp"
-
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_UML_${currentPackage.replace('::', '_').upper}
 

@@ -65,17 +65,23 @@
             [%- ')' -%]
         [%- END -%]
     [%- END -%]
-[%- MACRO GENERATEACCESSORS(association)
+[%- MACRO GENERATEACCESSORS(association, declaration)
     FOREACH property IN classData.ownedAttribute -%]
         [%- IF ((property.value.association.defined && association) || (!property.value.association.defined && !association))
                 && !(property.value.isDerived && !property.value.isDerivedUnion) %]
-    ${unqualifiedType(property.value, 1, 1)}${property.key}()
+[% IF declaration %]    [% END %]${unqualifiedType(property.value, 1, 1)}[%- IF !declaration -%]Q${className}::[%- END -%]${property.key}()
             [%- IF property.value.isReadOnly && const -%]
                 [%- 'const ' -%]
             [%- END -%]
-            [%- ';' -%]
+            [%- IF declaration -%]
+                [%- ';' -%]
+            [%- ELSE %]
+{
+}
+
+            [%- END -%]
             [%- IF property.value.isReadOnly != 'true' && property.value.upperValue.value != '*' %]
-    void set
+    void [%- IF !declaration -%]Q${className}::[%- END -%]set
             [%- IF property.key.substr(0, 2) == 'is' -%]
                 [%- property.key.substr(2).ucfirst -%]
             [%- ELSE -%]
@@ -91,7 +97,7 @@
         [%- END -%]
     [%- END -%]
 [%- END %]
-[%- MACRO GENERATEOPERATIONS BLOCK -%]
+[%- MACRO GENERATEOPERATIONS(declaration) BLOCK -%]
     [%- FOREACH operation IN classData.ownedOperation -%]
         [%- return = void -%]
         [%- FOREACH parameter IN operation.value.ownedParameter -%]
@@ -99,7 +105,7 @@
                 [%- return = unqualifiedType(parameter.value, 1, 1) -%]
             [%- END -%]
         [%- END %]
-    ${return}${operation.key}(
+[% IF declaration %]    [% END %]${return}[%- IF !declaration -%]Q${className}::[%- END -%]${operation.key}(
         [%- returnDelta = 1 -%]
         [%- FOREACH parameter IN operation.value.ownedParameter -%]
             [%- IF parameter.value.direction != 'return' -%]
@@ -115,6 +121,12 @@
         [%- IF operation.value.isQuery -%]
             [%- ' const' -%]
         [%- END -%]
-        [%- ';' -%]
+        [%- IF declaration -%]
+            [%- ';' -%]
+        [%- ELSE %]
+{
+}
+
+        [%- END -%]
     [%- END %]
 [%- END -%]
