@@ -4,7 +4,10 @@
     [%- CASE 'Integer' -%]qint32
     [%- CASE 'Real' -%]qreal
     [%- CASE 'UnlimitedNatural' -%]qint32
-    [%- CASE -%]Q${type}
+    [%- CASE -%]
+        [%- IF !type.remove('^' _ currentPackage _ '::').search('::') -%]Q${type.remove('^' _ currentPackage _ '::')}[%- ELSE -%]
+        [%- FOREACH classifier IN type.split('::') -%][%- IF !loop.first -%]::[%- END -%][%- IF loop.last -%]Q[%- END -%]${classifier}[%- END -%]
+        [%- END -%]
     [%- END -%]
 [%- MACRO handleModifiers(property, const, ref) BLOCK -%]
     [%- IF property.type.href.defined -%]
@@ -14,7 +17,7 @@
     [%- ELSE -%]
         [%- type = property -%]
     [%- END -%]
-    [%- convertedType = convertType(type.split('#').last.split('-').last.ucfirst) -%]
+    [%- convertedType = convertType(type.split('#').last.replace('-', '::')) -%]
     [%- IF (property.upperValue.value != '*' || property.isReadOnly) && const -%]const [%- END -%]
     [%- IF property.upperValue.value == '*' -%]
         [%- GET 'QList<' -%]
@@ -31,7 +34,7 @@
           [%- ELSIF property.type.defined -%]
               [%- GET handleModifiers(property, const, ref) -%]
           [%- ELSE -%]
-              [%- GET convertType(property.split('#').last.split('-').last.ucfirst) -%]
+              [%- GET convertType(property.split('#').last.replace('-', '::')) -%]
           [%- END -%]
 [%- MACRO GENERATEPROPERTIES(association)
     FOREACH property IN classData.ownedAttribute -%]

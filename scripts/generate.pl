@@ -18,6 +18,7 @@ my $tt = Template->new(INTERPOLATE  => 1);
 foreach my $key (keys $classesKernel) {
     if ($classesKernel->{$key}->{'xmi:type'} eq 'uml:Class' && ($key eq 'NamedElement' || $key eq 'Association' || $key eq 'EnumerationLiteral') ) {
         if ($tt->process('templates/template.h', {
+            currentPackage => 'Classes::Kernel',
             className => $key,
             classData => $classesKernel->{$key},
         }) ne 1) { print $tt->error(); }
