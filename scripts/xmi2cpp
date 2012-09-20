@@ -15,13 +15,22 @@ write_file 'dump.log', Dumper($xmi);
 my $classesKernel = $xmi->{'uml:Package'}->{'packagedElement'}->{'Classes'}->{'packagedElement'}->{'Kernel'}->{'packagedElement'};
 
 my $tt = Template->new(INTERPOLATE  => 1, INCLUDE_PATH => 'templates/');
+
+open STDOUT, '>', "./uml.pro";
+if ($tt->process('template.pro', {
+currentPackage => 'Classes::Kernel',
+classes => $classesKernel
+}) ne 1) { print $tt->error(); }
+
 foreach my $key (keys $classesKernel) {
-    if ($classesKernel->{$key}->{'xmi:type'} eq 'uml:Class' && ($key eq 'Element') ) {
+    if ($classesKernel->{$key}->{'xmi:type'} eq 'uml:Class' ) {
+        open STDOUT, '>', "./Classes/Kernel/q".lc($key).".h";
         if ($tt->process('template.h', {
             currentPackage => 'Classes::Kernel',
             className => $key,
             classData => $classesKernel->{$key},
         }) ne 1) { print $tt->error(); }
+        open STDOUT, '>', "./Classes/Kernel/q".lc($key).".cpp";
         if ($tt->process('template.cpp', {
             currentPackage => 'Classes::Kernel',
             className => $key,

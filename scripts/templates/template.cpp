@@ -41,7 +41,7 @@
 ****************************************************************************/
 
 #include "q${className.lower}.h"
-#include "q${className.lower}_p.h"
+//#include "q${className.lower}_p.h"
 
 QT_BEGIN_NAMESPACE_UML_${currentPackage.replace('::', '_').upper}
 

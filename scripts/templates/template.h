@@ -42,9 +42,15 @@
 #ifndef ${currentPackage.replace('::', '_').upper}_Q${className.upper}_H
 #define ${currentPackage.replace('::', '_').upper}_Q${className.upper}_H
 
-[% FOREACH superclass = classData.generalization -%]
+#include <QtUml/QtUmlGlobal>
+
+[%- IF !classData.generalization %]
+#include <QtCore/QObject>
+[%- ELSE -%]
+    [%- FOREACH superclass = classData.generalization %]
 #include <QtUml/${unqualifiedType(superclass.general)}>
-[% END -%]
+    [%- END -%]
+[%- END %]
 
 QT_BEGIN_HEADER
 
@@ -53,8 +59,9 @@ QT_BEGIN_NAMESPACE_UML_${currentPackage.replace('::', '_').upper}
 QT_MODULE(QtUml)
 
 class Q${className}Private;
+[% GENERATEINCLUDES %]
 
-class Q_UML_EXPORT Q${className} : [%- IF !classData.generalization -%]public QObject[%- ELSE -%][% FOREACH superclass = classData.generalization %]public ${unqualifiedType(superclass.general, 0, 0)}[% IF !loop.last %], [% END %][% END %][% END %]
+class Q_UML_EXPORT Q${className} : [%- IF !classData.generalization -%]virtual QObject[%- ELSE -%][% FOREACH superclass = classData.generalization %]public ${unqualifiedType(superclass.general, 0, 0)}[% IF !loop.last %], [% END %][% END %][% END %]
 {
     Q_OBJECT
     [% GENERATEPROPERTIES(0) -%]
@@ -79,6 +86,8 @@ private:
 };
 
 QT_END_NAMESPACE_UML_${currentPackage.replace('::', '_').upper}
+
+Q_DECLARE_METATYPE(QList<QT_NAMESPACE_UML::${currentPackage}::Q${className} *> *)
 
 QT_END_HEADER
 
