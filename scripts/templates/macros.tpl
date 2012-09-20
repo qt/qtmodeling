@@ -1,6 +1,6 @@
 [%- MACRO convertType(type)
     SWITCH type -%]
-    [%- CASE 'Boolean' -%]boolean
+    [%- CASE 'Boolean' -%]bool
     [%- CASE 'Integer' -%]qint32
     [%- CASE 'Real' -%]qreal
     [%- CASE 'UnlimitedNatural' -%]qint32
@@ -19,7 +19,7 @@
             [%- END -%]
         [%- END -%]
     [%- END -%]
-[%- MACRO handleModifiers(property, const, ref) BLOCK -%]
+[%- MACRO handleModifiers(property, const, pointer, collection) BLOCK -%]
     [%- IF property.type.href.defined -%]
         [%- type = property.type.href -%]
     [%- ELSIF property.type.defined -%]
@@ -28,32 +28,31 @@
         [%- type = property -%]
     [%- END -%]
     [%- convertedType = convertType(type.split('#').last.replace('-', '::')) -%]
-    [%- IF (property.upperValue.value != '*' || property.isReadOnly) && const -%]
+    [%- IF (property.upperValue.value != '*' || property.isReadOnly) && const && convertedType.substr(0, 1) == 'Q' && !convertedType.search('Kind') -%]
         [%- 'const ' -%]
     [%- END -%]
-    [%- IF property.upperValue.value == '*' -%]
+    [%- IF property.upperValue.value == '*' && collection -%]
         [%- 'QList<' -%]
     [%- END -%]
-    [%- convertedType _ ' ' -%]
-    [%- IF property.upperValue.value == '*' -%]
+    [%- convertedType -%]
+    [%- IF collection -%][%- ' ' -%][%- END -%]
+    [%- IF property.upperValue.value == '*' && collection -%]
         [%- '*> ' -%]
     [%- END -%]
-    [%- IF ref -%]
-        [%- '&' -%]
+    [%- IF pointer && convertedType.substr(0, 1) == 'Q' && !convertedType.search('Kind') -%]
+        [%- '*' -%]
     [%- END -%]
 [%- END -%]
-[%- MACRO unqualifiedType(property, const, ref)
-    IF property.type.href.defined -%]
-        [%- handleModifiers(property, const, ref) -%]
-    [%- ELSIF property.type.defined -%]
-        [%- handleModifiers(property, const, ref) -%]
+[%- MACRO unqualifiedType(property, const, pointer, collection)
+    IF property.type.defined -%]
+        [%- handleModifiers(property, const, pointer, collection) -%]
     [%- ELSE -%]
         [%- convertType(property.split('#').last.replace('-', '::')) -%]
 [%- END -%]
 [%- MACRO GENERATEPROPERTIES(association)
     FOREACH property IN classData.ownedAttribute -%]
         [%- IF (property.value.association.defined && association) || (!property.value.association.defined && !association) %]
-    Q_PROPERTY(${unqualifiedType(property.value, 0, 0)}${property.key} READ ${property.key}
+    Q_PROPERTY([%- IF property.value.isReadOnly -%]const [%- END -%]${unqualifiedType(property.value, 0, 1, 1)} ${property.key} READ ${property.key}
             [%- IF property.value.isReadOnly != 'true' && property.value.upperValue.value != '*' %]
                 [%- ' WRITE set' -%]
                 [%- IF property.key.substr(0, 2) == 'is' -%]
@@ -69,7 +68,7 @@
     FOREACH property IN classData.ownedAttribute -%]
         [%- IF ((property.value.association.defined && association) || (!property.value.association.defined && !association))
                 && !(property.value.isDerived && !property.value.isDerivedUnion) %]
-[% IF declaration %]    [% END %]${unqualifiedType(property.value, 1, 1)}[%- IF !declaration -%]Q${className}::[%- END -%]${property.key}()
+[% IF declaration %]    [% END %]${unqualifiedType(property.value, 1, 1, 1)}[%- IF !declaration -%]Q${className}::[%- END -%]${property.key}()
             [%- IF property.value.isReadOnly && const -%]
                 [%- 'const ' -%]
             [%- END -%]
@@ -81,19 +80,26 @@
 
             [%- END -%]
             [%- IF property.value.isReadOnly != 'true' && property.value.upperValue.value != '*' %]
-    void [%- IF !declaration -%]Q${className}::[%- END -%]set
+[% IF declaration %]    [% END %]void [%- IF !declaration -%]Q${className}::[%- END -%]set
             [%- IF property.key.substr(0, 2) == 'is' -%]
                 [%- property.key.substr(2).ucfirst -%]
             [%- ELSE -%]
                 [%- property.key.ucfirst -%]
             [%- END- %]
-            [%- '(' _ unqualifiedType(property.value, 1, 1) -%]
+            [%- '(' _ unqualifiedType(property.value, 1, 1, 1) -%]
             [%- IF property.key.substr(0, 2) == 'is' -%]
                 [%- property.key.substr(2).lcfirst -%]
             [%- ELSE -%]
                 [%- property.key -%]
             [%- END- %]
-            [%- ');' -%]
+            [%- ')' -%]
+            [%- IF declaration -%]
+                [%- ';' -%]
+            [%- ELSE %]
+{
+}
+
+            [%- END -%]
         [%- END -%]
     [%- END -%]
 [%- END %]
@@ -102,14 +108,14 @@
         [%- return = void -%]
         [%- FOREACH parameter IN operation.value.ownedParameter -%]
             [%- IF parameter.value.direction == 'return' -%]
-                [%- return = unqualifiedType(parameter.value, 1, 1) -%]
+                [%- return = unqualifiedType(parameter.value, 1, 1, 1) -%]
             [%- END -%]
         [%- END %]
 [% IF declaration %]    [% END %]${return}[%- IF !declaration -%]Q${className}::[%- END -%]${operation.key}(
         [%- returnDelta = 1 -%]
         [%- FOREACH parameter IN operation.value.ownedParameter -%]
             [%- IF parameter.value.direction != 'return' -%]
-                [%- unqualifiedType(parameter.value, 1, 1) _ parameter.key -%]
+                [%- unqualifiedType(parameter.value, 1, 1, 1) _ parameter.key -%]
                 [%- IF loop.count < loop.size - returnDelta -%]
                     [%- ', ' -%]
                 [%- END -%]
@@ -129,4 +135,18 @@
 
         [%- END -%]
     [%- END %]
+[%- END -%]
+[%- MACRO GENERATEINCLUDES BLOCK -%]
+    [%- FOREACH property IN classData.ownedAttribute -%]
+        [%- convertedType = unqualifiedType(property.value, 0, 0) -%]
+        [%- IF convertedType.substr(0, 1) == 'Q' && convertedType.search('Kind') %]
+#include <QtUml/${convertedType.replace('::', '/')}>
+        [%- END -%]
+    [%- END -%]
+    [%- FOREACH property IN classData.ownedAttribute -%]
+        [%- convertedType = unqualifiedType(property.value, 0, 0) -%]
+        [%- IF convertedType.substr(0, 1) == 'Q' && !convertedType.search('Kind') %]
+class ${convertedType};
+        [%- END -%]
+    [%- END -%]
 [%- END -%]
