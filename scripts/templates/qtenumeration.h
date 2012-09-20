@@ -1,4 +1,3 @@
-[%- PROCESS 'macros.tpl' -%]
 /****************************************************************************
 **
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
@@ -39,18 +38,12 @@
 ** [% GET '$QT_END_LICENSE$' %]
 **
 ****************************************************************************/
-#ifndef ${currentPackage.replace('::', '_').upper}_Q${className.upper}_H
-#define ${currentPackage.replace('::', '_').upper}_Q${className.upper}_H
+#ifndef ${currentPackage.replace('::', '_').upper}_QTENUMERATION_H
+#define ${currentPackage.replace('::', '_').upper}_QTENUMERATION_H
 
 #include <QtUml/QtUmlGlobal>
 
-[%- IF !classData.generalization %]
 #include <QtCore/QObject>
-[%- ELSE -%]
-    [%- FOREACH superclass = classData.generalization %]
-#include <QtUml/${unqualifiedType(superclass.general)}>
-    [%- END -%]
-[%- END %]
 
 QT_BEGIN_HEADER
 
@@ -58,38 +51,33 @@ QT_BEGIN_NAMESPACE_UML_${currentPackage.replace('::', '_').upper}
 
 QT_MODULE(QtUml)
 
-class Q${className}Private;
-[% GENERATEINCLUDES %]
-
-class Q_UML_EXPORT Q${className} : [%- IF !classData.generalization -%]virtual QObject[%- ELSE -%][% FOREACH superclass = classData.generalization %]public ${unqualifiedType(superclass.general, 0, 0)}[% IF !loop.last %], [% END %][% END %][% END %]
+class Q_UML_EXPORT QtEnumeration
 {
     Q_OBJECT
-    [% GENERATEPROPERTIES(0) -%]
-    [% GENERATEPROPERTIES(1) %]
 
+[% FOREACH classifier IN package -%]
+    [%- IF classifier.value.item('xmi:type') == 'uml:Enumeration' -%]
+    Q_ENUMS(Q${classifier.key})
+
+    [%- END -%]
+[% END %]
 public:
-    explicit Q${className}(QObject *parent = 0);
-    virtual ~Q${className}();
+[% FOREACH classifier IN package -%]
+    [%- IF classifier.value.item('xmi:type') == 'uml:Enumeration' -%]
+    enum Q${classifier.key}
+    {
+        [%- FOREACH literal IN classifier.value.ownedLiteral %]
+        ${literal.key.ucfirst}[%- IF loop.first -%] = 0[%- END -%][%- IF !loop.last -%],[%- END -%]
+        [%- END %]
+    };
 
-    // Attributes (except those derived && !derivedUnion)
-    [% GENERATEACCESSORS(0, 1) %]
-
-    // Association-ends (except those derived && !derivedUnion)
-    [% GENERATEACCESSORS(1, 1) %]
-
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    [% GENERATEOPERATIONS(1) %]
-
-private:
-    Q_DISABLE_COPY(Q${className})
-    Q_DECLARE_PRIVATE(Q${className})
+    [%- END -%]
+[%- END -%]
 };
 
 QT_END_NAMESPACE_UML_${currentPackage.replace('::', '_').upper}
 
-Q_DECLARE_METATYPE(QList<QT_NAMESPACE_UML::${currentPackage}::Q${className} *> *)
-
 QT_END_HEADER
 
-#endif // ${currentPackage.replace('::', '_').upper}_Q${className.upper}_H
+#endif // ${currentPackage.replace('::', '_').upper}_Q${enumerationName.upper}_H
 
