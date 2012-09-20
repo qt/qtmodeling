@@ -6,16 +6,18 @@ QT = core-private
 load(qt_module)
 
 PUBLIC_HEADERS += \
-    qtumlglobal.h
+    qtumlglobal.h \
+    ${currentPackage.replace('::', '/')}/qtenumeration.h
 [%- FOREACH class IN classes -%]
-    [%- IF !class.key.search('_') -%][% ' \\' %]
+    [%- IF class.value.item('xmi:type') == 'uml:Class' -%][% ' \\' %]
     ${currentPackage.replace('::', '/')}/q${class.key.lower}.h
     [%- END -%]
 [%- END %]
 
-SOURCES +=
+SOURCES += \
+    ${currentPackage.replace('::', '/')}/qtenumeration.cpp
 [%- FOREACH class IN classes -%]
-    [%- IF !class.key.search('_') -%][% ' \\' %]
+    [%- IF class.value.item('xmi:type') == 'uml:Class' -%][% ' \\' %]
     ${currentPackage.replace('::', '/')}/q${class.key.lower}.cpp
     [%- END -%]
 [%- END %]

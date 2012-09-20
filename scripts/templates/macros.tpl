@@ -138,13 +138,13 @@
 [%- END -%]
 [%- MACRO GENERATEINCLUDES BLOCK -%]
     [%- FOREACH property IN classData.ownedAttribute -%]
-        [%- convertedType = unqualifiedType(property.value, 0, 0) -%]
+        [%- convertedType = unqualifiedType(property.value, 0, 0, 0) -%]
         [%- IF convertedType.substr(0, 1) == 'Q' && convertedType.search('Kind') %]
-#include <QtUml/${convertedType.replace('::', '/')}>
+#include <QtUml/QtEnumeration>
         [%- END -%]
     [%- END -%]
     [%- FOREACH property IN classData.ownedAttribute -%]
-        [%- convertedType = unqualifiedType(property.value, 0, 0) -%]
+        [%- convertedType = unqualifiedType(property.value, 0, 0, 0) -%]
         [%- IF convertedType.substr(0, 1) == 'Q' && !convertedType.search('Kind') %]
 class ${convertedType};
         [%- END -%]
