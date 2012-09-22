@@ -7,7 +7,10 @@ declare function qtxmi:namespaceFromId ($id as xs:string) as xs:string {
 declare function qtxmi:unqualifiedTypeFromId ($id as xs:string) as xs:string {
     tokenize($id, "-")[last()]
 };
-declare function qtxmi:classifierFromProperty ($property as element()) as xs:string* {
+declare function qtxmi:classifierFromString ($property as xs:string) as xs:string* {
+    doc($xmiFile)//packagedElement[@xmi:id = $property]/@xmi:type
+};
+declare function qtxmi:classifierFromProperty ($property as node()) as xs:string* {
     doc($xmiFile)//packagedElement[@xmi:id = $property/@type]/@xmi:type
 };
 declare function qtxmi:mappedPrimitiveType($primitiveType as xs:string) as xs:string {
@@ -42,25 +45,26 @@ declare function qtxmi:capitalizedNameFromType($unqualifiedType as xs:string, $n
 {
 for $class in doc($xmiFile)//packagedElement[@xmi:type="uml:Class"][@xmi:id = "Classes-Kernel-Element" or @xmi:id = "Classes-Kernel-Association" or @xmi:id = "Classes-Kernel-NamedElement" or @xmi:id = "Classes-Kernel-BehavioralFeature"]
 let $namespace := qtxmi:namespaceFromId($class/@xmi:id)
+let $superClasses := $class/generalization/@general
 return
     <class name="Q{$class/@name}">
         <namespace>{$namespace}</namespace>
         {
-        for $id in $class/generalization/@general
+        for $id in $superClasses
         return
         <includes>{concat("Q", qtxmi:unqualifiedTypeFromId($id))}</includes>
         }
         {
-        for $id in $class/ownedAttribute | $class/ownedOperation/ownedParameter
-        where qtxmi:classifierFromProperty($id) = "uml:Enumeration"
+        for $id in distinct-values($class/ownedAttribute/@type | $class/ownedOperation/ownedParameter/@type)
+        where qtxmi:classifierFromString($id) = "uml:Enumeration"
         return
-        <includes>{concat("Q", qtxmi:unqualifiedTypeFromId($id/@type))}</includes>
+        <includes>{concat("Q", qtxmi:unqualifiedTypeFromId($id))}</includes>
         }
         {
-        for $id in $class/ownedAttribute | $class/ownedOperation/ownedParameter
-        where qtxmi:classifierFromProperty($id) != "uml:Enumeration"
+        for $id in distinct-values($class/ownedAttribute/@type | $class/ownedOperation/ownedParameter/@type)
+        where qtxmi:classifierFromString($id) != "uml:Enumeration" and $id != $class/@xmi:id and empty(distinct-values($id[.=$superClasses]))
         return
-        <forwarddecls>{concat("Q", qtxmi:unqualifiedTypeFromId($id/@type))}</forwarddecls>
+        <forwarddecls>{concat("Q", qtxmi:unqualifiedTypeFromId($id))}</forwarddecls>
         }
         {
         for $attribute in $class/ownedAttribute
