@@ -81,16 +81,61 @@ return
         {
         for $attribute in $class/ownedAttribute
         let $unqualifiedType := qtxmi:unqualifiedTypeFromNamespacedProperty($attribute, $namespace)
+        let $unqualifiedType := if (ends-with($unqualifiedType, "*")) then $unqualifiedType else concat($unqualifiedType, " ")
+        where $attribute[not(@association)]
         return
         if (not(starts-with($unqualifiedType, "QList")) and ($attribute[not(@isReadOnly)] or $attribute/@isReadOnly != "true")) then
         <attribute-accessors>
-        <attribute-accessor return="{$unqualifiedType}" name="{$attribute/@name}"/>
-        <attribute-accessor return="void" name="set{qtxmi:capitalizedNameFromType($unqualifiedType, $attribute/@name)}"></attribute-accessor>
+        <attribute-accessor return="{$unqualifiedType}" name="{$attribute/@name}" constness=" const"/>
+        <attribute-accessor return="void " name="set{qtxmi:capitalizedNameFromType($unqualifiedType, $attribute/@name)}" constness="">
+           <param type="{$unqualifiedType}" name="{$attribute/@name}"/>
+        </attribute-accessor>
+        <documentation>{$attribute/ownedComment/body/text()}</documentation>
         </attribute-accessors>
         else
         <attribute-accessors>
-        <attribute-accessor return="{$unqualifiedType}" name="{$attribute/@name}"/>
+        <attribute-accessor return="{$unqualifiedType}" name="{$attribute/@name}" constness=" const"/>
+        <documentation>{$attribute/ownedComment/body/text()}</documentation>
         </attribute-accessors>
+        }
+        {
+        for $attribute in $class/ownedAttribute
+        let $unqualifiedType := qtxmi:unqualifiedTypeFromNamespacedProperty($attribute, $namespace)
+        let $unqualifiedType := if (ends-with($unqualifiedType, "*")) then $unqualifiedType else concat($unqualifiedType, " ")
+        where $attribute[@association]
+        return
+        if (not(starts-with($unqualifiedType, "QList")) and ($attribute[not(@isReadOnly)] or $attribute/@isReadOnly != "true")) then
+        <associationend-accessors>
+        <associationend-accessor return="{$unqualifiedType}" name="{$attribute/@name}" constness=" const"/>
+        <associationend-accessor return="void " name="set{qtxmi:capitalizedNameFromType($unqualifiedType, $attribute/@name)}" constness="">
+           <param type="{$unqualifiedType}" name="{$attribute/@name}"/>
+        </associationend-accessor>
+        <documentation>{$attribute/ownedComment/body/text()}</documentation>
+        </associationend-accessors>
+        else
+        <associationend-accessors>
+        <associationend-accessor return="{$unqualifiedType}" name="{$attribute/@name}" constness=" const"/>
+        <documentation>{$attribute/ownedComment/body/text()}</documentation>
+        </associationend-accessors>
+        }
+        {
+        for $operation in $class/ownedOperation
+        let $return := if ($operation/ownedParameter[@direction = "return"]) then
+                          qtxmi:unqualifiedTypeFromNamespacedProperty($operation/ownedParameter[@direction = "return"], $namespace)
+                       else "void"
+        let $return := if (ends-with($return, "*")) then $return else concat($return, " ")
+        let $constness := if ($operation/@isQuery = "true") then " const" else ""
+        return
+        <operations return="{$return}" name="{$operation/@name}" constness="{$constness}">
+        {
+        for $param in $operation/ownedParameter[@direction != "return"]
+        let $unqualifiedType := qtxmi:unqualifiedTypeFromNamespacedProperty($param, $namespace)
+        let $unqualifiedType := if (ends-with($unqualifiedType, "*")) then $unqualifiedType else concat($unqualifiedType, " ")
+        return
+            <param type="{$unqualifiedType}" name="{$param/@name}"/>
+        }
+        <documentation>{$operation/ownedComment/body/text()}</documentation>
+        </operations>
         }
         <documentation>{$class/ownedComment/body/text()}</documentation>
     </class>
