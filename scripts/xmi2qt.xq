@@ -52,13 +52,25 @@ return
         {
         for $id in $superClasses
         return
-        <includes>{concat("Q", qtxmi:unqualifiedTypeFromId($id))}</includes>
+        <superclass-includes>QtUml/{concat("Q", qtxmi:unqualifiedTypeFromId($id))}</superclass-includes>
+        }
+        {
+        for $type in distinct-values($class/ownedAttribute/type/@href | $class/ownedOperation/ownedParameter/type/@href)
+        where tokenize($type, "#")[last()] = "String"
+        return
+        <qt-includes>QtCore/QString</qt-includes>
+        }
+        {
+        for $value in distinct-values($class/ownedAttribute/upperValue/@value | $class/ownedOperation/ownedParameter/upperValue/@Value)
+        where $value = "*"
+        return
+        <qt-includes>QtCore/QList</qt-includes>
         }
         {
         for $id in distinct-values($class/ownedAttribute/@type | $class/ownedOperation/ownedParameter/@type)
         where qtxmi:classifierFromString($id) = "uml:Enumeration"
         return
-        <includes>{concat("Q", qtxmi:unqualifiedTypeFromId($id))}</includes>
+        <includes>QtUml/{concat("Q", qtxmi:unqualifiedTypeFromId($id))}</includes>
         }
         {
         for $id in distinct-values($class/ownedAttribute/@type | $class/ownedOperation/ownedParameter/@type)
