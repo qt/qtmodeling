@@ -1,0 +1,7 @@
+Sanity-Review+1: Qt Sanity Bot <qt_sanity_bot@ovi.com>
+Code-Review+2: Sandro S. Andrade <sandroandrade@kde.org>
+Submitted-by: Sandro S. Andrade <sandroandrade@kde.org>
+Submitted-at: Mon, 24 Sep 2012 00:21:11 +0200
+Reviewed-on: https://codereview.qt-project.org/35437
+Project: playground/qtmof
+Branch: refs/heads/master
