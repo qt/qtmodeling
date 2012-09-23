@@ -38,8 +38,8 @@
 ** [% GET '$QT_END_LICENSE$' %]
 **
 ****************************************************************************/
-#ifndef ${currentPackage.replace('::', '_').upper}_QTENUMERATION_H
-#define ${currentPackage.replace('::', '_').upper}_QTENUMERATION_H
+#ifndef ${namespace.replace('/', '_').upper}_QENUMERATIONS_H
+#define ${namespace.replace('/', '_').upper}_QENUMERATIONS_H
 
 #include <QtUml/QtUmlGlobal>
 
@@ -47,37 +47,31 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_UML_${currentPackage.replace('::', '_').upper}
+QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QtEnumeration
+class Q_UML_EXPORT QEnumerations
 {
     Q_OBJECT
 
-[% FOREACH classifier IN package -%]
-    [%- IF classifier.value.item('xmi:type') == 'uml:Enumeration' -%]
-    Q_ENUMS(Q${classifier.key})
-
-    [%- END -%]
+[% FOREACH enumeration IN enumerations -%]
+    Q_ENUMS(${enumeration.name})
 [% END %]
 public:
-[% FOREACH classifier IN package -%]
-    [%- IF classifier.value.item('xmi:type') == 'uml:Enumeration' -%]
-    enum Q${classifier.key}
+[% FOREACH enumeration IN enumerations -%]
+    enum ${enumeration.name}
     {
-        [%- FOREACH literal IN classifier.value.ownedLiteral %]
-        ${literal.key.ucfirst}[%- IF loop.first -%] = 0[%- END -%][%- IF !loop.last -%],[%- END -%]
+        [%- FOREACH literal IN enumeration.literal %]
+        ${literal.name}[%- IF loop.first -%] = 0[%- END -%][%- IF !loop.last -%],[%- END -%]
         [%- END %]
     };
-
-    [%- END -%]
-[%- END -%]
+[% END -%]
 };
 
-QT_END_NAMESPACE_UML_${currentPackage.replace('::', '_').upper}
+QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
 
 QT_END_HEADER
 
-#endif // ${currentPackage.replace('::', '_').upper}_Q${enumerationName.upper}_H
+#endif // ${namespace.replace('/', '_').upper}_QENUMERATIONS_H
 
