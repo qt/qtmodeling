@@ -62,6 +62,9 @@ ${class.name}::~${class.name}()
 }
 
 [%- FOREACH attribute IN class.attribute %]
+/*!
+    [% attribute.documentation %]
+ */
 [%- FOREACH accessor IN attribute.accessor %]
 ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
 {
@@ -70,6 +73,9 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
 [%- END -%]
 
 [%- FOREACH associationend IN class.associationend %]
+/*!
+    [% associationend.documentation %]
+ */
 [%- FOREACH accessor IN associationend.accessor %]
 ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
 {
@@ -78,6 +84,9 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
 [%- END -%]
 
 [%- FOREACH operation IN class.operation %]
+/*!
+    [% operation.documentation %]
+ */
 ${operation.return}${class.name}::${operation.name}([%- FOREACH parameter IN operation.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${operation.constness}
 {
 }
