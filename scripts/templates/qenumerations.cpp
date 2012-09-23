@@ -39,13 +39,18 @@
 **
 ****************************************************************************/
 
-#include "qtenumeration.h"
+#include "qenumerations.h"
 
+[% FOREACH enumeration IN enumerations -%]
 /*!
-    \class Q${className}
+    \enum ${namespace.replace('/', '::')}::QEnumerations::${enumeration.name}
 
-    \inmodule QtUml
+    ${enumeration.documentation}
 
-    \brief [%- classData.ownedComment.body %]
+    [%- FOREACH literal IN enumeration.literal %]
+    \value ${literal.name}
+           ${literal.documentation}
+    [%- END %]
  */
 
+[% END %]

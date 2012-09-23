@@ -43,40 +43,45 @@ declare function qtxmi:capitalizedNameFromType($unqualifiedType as xs:string, $n
 };
 <qtxmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:qtxmi="http://www.qt-project.org">
 {
-for $class in doc($xmiFile)//packagedElement[@xmi:type="uml:Class"][@xmi:id = "Classes-Kernel-Element" or @xmi:id = "Classes-Kernel-Association" or @xmi:id = "Classes-Kernel-NamedElement" or @xmi:id = "Classes-Kernel-BehavioralFeature"]
-let $namespace := qtxmi:namespaceFromId($class/@xmi:id)
+for $namespace in distinct-values(doc($xmiFile)//packagedElement[@xmi:type="uml:Package"][@xmi:id="Classes-Kernel"]/@xmi:id)
+return
+<namespace path="{replace($namespace, "-", "/")}">
+{
+for $class in doc($xmiFile)//packagedElement[@xmi:id=$namespace]/packagedElement[@xmi:type="uml:Class"][@xmi:id = "Classes-Kernel-Element" or @xmi:id = "Classes-Kernel-Association" or @xmi:id = "Classes-Kernel-NamedElement" or @xmi:id = "Classes-Kernel-BehavioralFeature"]
 let $superClasses := $class/generalization/@general
+let $namespace := replace($namespace, "-", "::")
 return
     <class name="Q{$class/@name}">
         <namespace>{$namespace}</namespace>
+        <documentation>{$class/ownedComment/body/text()}</documentation>
+        {
+        for $id in distinct-values($class/ownedAttribute/@type | $class/ownedOperation/ownedParameter/@type)
+        where qtxmi:classifierFromString($id) = "uml:Enumeration"
+        return
+        <qtumlinclude>QtUml/{concat("Q", qtxmi:unqualifiedTypeFromId($id))}</qtumlinclude>
+        }
         {
         for $id in $superClasses
         return
-        <superclass-includes>QtUml/{concat("Q", qtxmi:unqualifiedTypeFromId($id))}</superclass-includes>
+        <superclassinclude>QtUml/{concat("Q", qtxmi:unqualifiedTypeFromId($id))}</superclassinclude>
         }
         {
         for $type in distinct-values($class/ownedAttribute/type/@href | $class/ownedOperation/ownedParameter/type/@href)
         where tokenize($type, "#")[last()] = "String"
         return
-        <qt-includes>QtCore/QString</qt-includes>
+        <qtinclude>QtCore/QString</qtinclude>
         }
         {
         for $value in distinct-values($class/ownedAttribute/upperValue/@value | $class/ownedOperation/ownedParameter/upperValue/@Value)
         where $value = "*"
         return
-        <qt-includes>QtCore/QList</qt-includes>
-        }
-        {
-        for $id in distinct-values($class/ownedAttribute/@type | $class/ownedOperation/ownedParameter/@type)
-        where qtxmi:classifierFromString($id) = "uml:Enumeration"
-        return
-        <includes>QtUml/{concat("Q", qtxmi:unqualifiedTypeFromId($id))}</includes>
+        <qtinclude>QtCore/QList</qtinclude>
         }
         {
         for $id in distinct-values($class/ownedAttribute/@type | $class/ownedOperation/ownedParameter/@type)
         where qtxmi:classifierFromString($id) != "uml:Enumeration" and $id != $class/@xmi:id and empty(distinct-values($id[.=$superClasses]))
         return
-        <forwarddecls>{concat("Q", qtxmi:unqualifiedTypeFromId($id))}</forwarddecls>
+        <forwarddecl>{concat("Q", qtxmi:unqualifiedTypeFromId($id))}</forwarddecl>
         }
         {
         for $attribute in $class/ownedAttribute
@@ -85,18 +90,18 @@ return
         where $attribute[not(@association)]
         return
         if (not(starts-with($unqualifiedType, "QList")) and ($attribute[not(@isReadOnly)] or $attribute/@isReadOnly != "true")) then
-        <attribute-accessors>
-        <attribute-accessor return="{$unqualifiedType}" name="{$attribute/@name}" constness=" const"/>
-        <attribute-accessor return="void " name="set{qtxmi:capitalizedNameFromType($unqualifiedType, $attribute/@name)}" constness="">
-           <param type="{$unqualifiedType}" name="{$attribute/@name}"/>
-        </attribute-accessor>
+        <attribute>
+        <accessor return="{$unqualifiedType}" name="{$attribute/@name}" constness=" const"/>
+        <accessor return="void " name="set{qtxmi:capitalizedNameFromType($unqualifiedType, $attribute/@name)}" constness="">
+           <parameter type="{$unqualifiedType}" name="{$attribute/@name}"/>
+        </accessor>
         <documentation>{$attribute/ownedComment/body/text()}</documentation>
-        </attribute-accessors>
+        </attribute>
         else
-        <attribute-accessors>
-        <attribute-accessor return="{$unqualifiedType}" name="{$attribute/@name}" constness=" const"/>
+        <attribute>
+        <accessor return="{$unqualifiedType}" name="{$attribute/@name}" constness=" const"/>
         <documentation>{$attribute/ownedComment/body/text()}</documentation>
-        </attribute-accessors>
+        </attribute>
         }
         {
         for $attribute in $class/ownedAttribute
@@ -105,18 +110,18 @@ return
         where $attribute[@association]
         return
         if (not(starts-with($unqualifiedType, "QList")) and ($attribute[not(@isReadOnly)] or $attribute/@isReadOnly != "true")) then
-        <associationend-accessors>
-        <associationend-accessor return="{$unqualifiedType}" name="{$attribute/@name}" constness=" const"/>
-        <associationend-accessor return="void " name="set{qtxmi:capitalizedNameFromType($unqualifiedType, $attribute/@name)}" constness="">
-           <param type="{$unqualifiedType}" name="{$attribute/@name}"/>
-        </associationend-accessor>
+        <associationend>
+        <accessor return="{$unqualifiedType}" name="{$attribute/@name}" constness=" const"/>
+        <accessor return="void " name="set{qtxmi:capitalizedNameFromType($unqualifiedType, $attribute/@name)}" constness="">
+           <parameter type="{$unqualifiedType}" name="{$attribute/@name}"/>
+        </accessor>
         <documentation>{$attribute/ownedComment/body/text()}</documentation>
-        </associationend-accessors>
+        </associationend>
         else
-        <associationend-accessors>
-        <associationend-accessor return="{$unqualifiedType}" name="{$attribute/@name}" constness=" const"/>
+        <associationend>
+        <accessor return="{$unqualifiedType}" name="{$attribute/@name}" constness=" const"/>
         <documentation>{$attribute/ownedComment/body/text()}</documentation>
-        </associationend-accessors>
+        </associationend>
         }
         {
         for $operation in $class/ownedOperation
@@ -124,20 +129,33 @@ return
                           qtxmi:unqualifiedTypeFromNamespacedProperty($operation/ownedParameter[@direction = "return"], $namespace)
                        else "void"
         let $return := if (ends-with($return, "*")) then $return else concat($return, " ")
-        let $constness := if ($operation/@isQuery = "true") then " const" else ""
+        let $constness := if ($operation[not(@isQuery)] or $operation/@isQuery = "true") then " const" else ""
         return
-        <operations return="{$return}" name="{$operation/@name}" constness="{$constness}">
+        <operation return="{$return}" name="{$operation/@name}" constness="{$constness}">
         {
-        for $param in $operation/ownedParameter[@direction != "return"]
-        let $unqualifiedType := qtxmi:unqualifiedTypeFromNamespacedProperty($param, $namespace)
+        for $parameter in $operation/ownedParameter[not(@direction) or @direction != "return"]
+        let $unqualifiedType := qtxmi:unqualifiedTypeFromNamespacedProperty($parameter, $namespace)
         let $unqualifiedType := if (ends-with($unqualifiedType, "*")) then $unqualifiedType else concat($unqualifiedType, " ")
         return
-            <param type="{$unqualifiedType}" name="{$param/@name}"/>
+            <parameter type="{$unqualifiedType}" name="{$parameter/@name}"/>
         }
         <documentation>{$operation/ownedComment/body/text()}</documentation>
-        </operations>
+        </operation>
         }
-        <documentation>{$class/ownedComment/body/text()}</documentation>
     </class>
+}
+{
+for $enumeration in doc($xmiFile)//packagedElement[@xmi:id=$namespace]/packagedElement[@xmi:type="uml:Enumeration"]
+return
+    <enumeration name="Q{$enumeration/@name}">
+        <documentation>{$enumeration/ownedComment/body/text()}</documentation>
+        {
+        for $literal in $enumeration/ownedLiteral
+        return
+        <literal name="{concat(upper-case(substring($literal/@name, 1, 1)), substring($literal/@name, 2))}" documentation="{$literal/ownedComment/body/text()}"/>
+        }
+    </enumeration>
+}
+</namespace>
 }
 </qtxmi:XMI>

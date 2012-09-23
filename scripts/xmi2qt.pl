@@ -5,49 +5,55 @@ use warnings;
 use XML::Simple;
 use Data::Dumper;
 use File::Slurp;
+use File::Path qw(make_path);
 use Template;
 
-my $xml = new XML::Simple(keyattr => ['name'], ForceArray => ['generalization', 'ownedAttribute', 'ownedOperation', 'ownedParameter']);
+my $xml = new XML::Simple(keyattr => [], forcearray => ['namespace', 'attribute', 'associationend', 'operation', 'accessor']);
+my $tt = Template->new(INTERPOLATE  => 1, INCLUDE_PATH => 'templates/');
 
 my $xmi = $xml->XMLin($ARGV[0]);
 write_file 'dump.log', Dumper($xmi);
 
-my $classesKernel = $xmi->{'uml:Package'}->{'packagedElement'}->{'Classes'}->{'packagedElement'}->{'Kernel'}->{'packagedElement'};
+my $namespaces = $xmi->{'namespace'};
 
-my $tt = Template->new(INTERPOLATE  => 1, INCLUDE_PATH => 'templates/');
+foreach my $namespace (@$namespaces) {
 
-open STDOUT, '>', "./uml.pro";
-if ($tt->process('template.pro', {
-currentPackage => 'Classes::Kernel',
-classes => $classesKernel
-}) ne 1) { print $tt->error(); }
+make_path($namespace->{path});
 
-open STDOUT, '>', "./Classes/Kernel/qtenumeration.h";
-if ($tt->process('qtenumeration.h', {
-currentPackage => 'Classes::Kernel',
-package => $classesKernel
-}) ne 1) { print $tt->error(); }
+my $classes = $namespace->{'class'};
+my $enumerations = $namespace->{'enumeration'};
 
-open STDOUT, '>', "./Classes/Kernel/qtenumeration.cpp";
-if ($tt->process('qtenumeration.cpp', {
-currentPackage => 'Classes::Kernel',
-package => $classesKernel
-}) ne 1) { print $tt->error(); }
-
-foreach my $key (keys $classesKernel) {
-    if ($classesKernel->{$key}->{'xmi:type'} eq 'uml:Class' ) {
-        open STDOUT, '>', "./Classes/Kernel/q".lc($key).".h";
-        if ($tt->process('class.h', {
-            currentPackage => 'Classes::Kernel',
-            className => $key,
-            classData => $classesKernel->{$key},
-        }) ne 1) { print $tt->error(); }
-        open STDOUT, '>', "./Classes/Kernel/q".lc($key).".cpp";
-        if ($tt->process('class.cpp', {
-            currentPackage => 'Classes::Kernel',
-            className => $key,
-            classData => $classesKernel->{$key},
-        }) ne 1) { print $tt->error(); }
-    }
+foreach my $class (@$classes) {
+    open STDOUT, '>', "./".$namespace->{path}."/".lc($class->{name}).".h";
+    if ($tt->process('class.h', {
+        class => $class
+    }) ne 1) { print $tt->error(); }
+    open STDOUT, '>', "./".$namespace->{path}."/".lc($class->{name}).".cpp";
+    if ($tt->process('class.cpp', {
+        class => $class
+    }) ne 1) { print $tt->error(); }
 }
 
+open STDOUT, '>', "./".$namespace->{path}."/qenumerations.h";
+if ($tt->process('qenumerations.h', {
+    namespace => $namespace->{path},
+    enumerations => $enumerations
+}) ne 1) { print $tt->error(); }
+open STDOUT, '>', "./".$namespace->{path}."/qenumerations.cpp";
+if ($tt->process('qenumerations.cpp', {
+    namespace => $namespace->{path},
+    enumerations => $enumerations
+}) ne 1) { print $tt->error(); }
+
+my $priName = lc($namespace->{path} =~ s/\//-/gr);
+open STDOUT, '>', "./".$namespace->{path}."/".$priName.".pri";
+if ($tt->process('namespace.pri', {
+    namespace => $namespace,
+}) ne 1) { print $tt->error(); }
+
+}
+
+open STDOUT, '>', "./uml.pro";
+if ($tt->process('project.pro', {
+    namespaces => $namespaces,
+}) ne 1) { print $tt->error(); }

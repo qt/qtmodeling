@@ -1,4 +1,3 @@
-[%- PROCESS 'macros.tpl' -%]
 /****************************************************************************
 **
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
@@ -40,32 +39,51 @@
 **
 ****************************************************************************/
 
-#include "q${className.lower}.h"
-//#include "q${className.lower}_p.h"
+#include "q${class.name.lower}.h"
+//#include "q${class.name.lower}_p.h"
 
-QT_BEGIN_NAMESPACE_UML_${currentPackage.replace('::', '_').upper}
+QT_BEGIN_NAMESPACE_UML_${class.namespace.replace('::', '_').upper}
 
 /*!
-    \class Q${className}
+    \class ${class.name}
 
     \inmodule QtUml
 
-    \brief [%- classData.ownedComment.body %]
+    \brief ${class.documentation}
  */
 
-Q${className}::Q${className}(QObject *parent)
+${class.name}::${class.name}(QObject *parent)
     : QObject(parent)
 {
 }
 
-Q${className}::~Q${className}()
+${class.name}::~${class.name}()
 {
 }
-[% GENERATEACCESSORS(0, 0) -%]
-[% GENERATEACCESSORS(1, 0) -%]
-[% GENERATEOPERATIONS(0) -%]
 
-#include "moc_q${className.lower}.cpp"
+[%- FOREACH attribute IN class.attribute %]
+[%- FOREACH accessor IN attribute.accessor %]
+${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
+{
+}
+[% END -%]
+[%- END -%]
 
-QT_END_NAMESPACE_UML_${currentPackage.replace('::', '_').upper}
+[%- FOREACH associationend IN class.associationend %]
+[%- FOREACH accessor IN associationend.accessor %]
+${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
+{
+}
+[% END -%]
+[%- END -%]
+
+[%- FOREACH operation IN class.operation %]
+${operation.return}${class.name}::${operation.name}([%- FOREACH parameter IN operation.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${operation.constness}
+{
+}
+[% END -%]
+
+#include "moc_${class.name.lower}.cpp"
+
+QT_END_NAMESPACE_UML_${class.namespace.replace('::', '_').upper}
 

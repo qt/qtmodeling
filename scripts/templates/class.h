@@ -1,4 +1,3 @@
-[%- PROCESS 'macros.tpl' -%]
 /****************************************************************************
 **
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
@@ -39,57 +38,90 @@
 ** [% GET '$QT_END_LICENSE$' %]
 **
 ****************************************************************************/
-#ifndef ${currentPackage.replace('::', '_').upper}_Q${className.upper}_H
-#define ${currentPackage.replace('::', '_').upper}_Q${className.upper}_H
+#ifndef ${class.namespace.replace('::', '_').upper}_${class.name.upper}_H
+#define ${class.namespace.replace('::', '_').upper}_${class.name.upper}_H
 
 #include <QtUml/QtUmlGlobal>
 
-[%- IF !classData.generalization %]
-#include <QtCore/QObject>
-[%- ELSE -%]
-    [%- FOREACH superclass = classData.generalization %]
-#include <QtUml/${unqualifiedType(superclass.general)}>
-    [%- END -%]
+[%- IF class.item('qtumlinclude') %]
+// QtUml includes
+[%- FOREACH include IN class.qtumlinclude %]
+#include <${include}>
 [%- END %]
+[% END -%]
+
+// Base class includes
+[%- IF class.item('superclassinclude') -%]
+[%- FOREACH include IN class.superclassinclude %]
+#include <${include}>
+[%- END %]
+[% ELSE %]
+#include <QtCore/QObject>
+[% END -%]
+
+[%- IF class.item('qtinclude') %]
+// Qt includes
+[%- FOREACH include IN class.qtinclude %]
+#include <${include}>
+[%- END %]
+[% END -%]
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_UML_${currentPackage.replace('::', '_').upper}
+QT_BEGIN_NAMESPACE_UML_${class.namespace.replace('::', '_').upper}
 
 QT_MODULE(QtUml)
 
-class Q${className}Private;
-[% GENERATEINCLUDES %]
+class ${class.name}Private;
 
-class Q_UML_EXPORT Q${className} : [%- IF !classData.generalization -%]public QObject[%- ELSE -%][% FOREACH superclass = classData.generalization %]public ${unqualifiedType(superclass.general, 0, 0)}[% IF !loop.last %], [% END %][% END %][% END %]
+[%- FOREACH forwarddecl IN class.forwarddecl %]
+class ${forwarddecl};
+[%- END %]
+
+class Q_UML_EXPORT ${class.name} : [%- IF !class.superclassinclude -%]public QObject[%- ELSE -%][% FOREACH superclass = class.superclassinclude %]public ${superclass.split('/').last}[% IF !loop.last %], [% END %][% END %][% END %]
 {
     Q_OBJECT
-    [% GENERATEPROPERTIES(0) -%]
-    [% GENERATEPROPERTIES(1) %]
 
 public:
-    explicit Q${className}(QObject *parent = 0);
-    virtual ~Q${className}();
+    explicit ${class.name}(QObject *parent = 0);
+    virtual ~${class.name}();
 
+    [%- IF class.item('attribute') %]
     // Attributes (except those derived && !derivedUnion)
-    [% GENERATEACCESSORS(0, 1) %]
+    [%- FOREACH attribute IN class.attribute %]
+    [%- FOREACH accessor IN attribute.accessor %]
+    ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
+    [%- END -%]
+    [%- END %]
+    [% END -%]
 
+    [%- IF class.item('associationend') %]
     // Association-ends (except those derived && !derivedUnion)
-    [% GENERATEACCESSORS(1, 1) %]
+    [%- FOREACH associationend IN class.associationend %]
+    [%- FOREACH accessor IN associationend.accessor %]
+    ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
+    [%- END -%]
+    [%- END %]
+    [% END -%]
 
+    [%- IF class.item('operation') %]
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    [% GENERATEOPERATIONS(1) %]
+    [%- FOREACH operation IN class.operation %]
+    ${operation.return}${operation.name}([%- FOREACH parameter IN operation.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${operation.constness};
+    [%- END %]
+    [% END -%]
 
 private:
-    Q_DISABLE_COPY(Q${className})
-    Q_DECLARE_PRIVATE(Q${className})
+    Q_DISABLE_COPY(${class.name})
+    Q_DECLARE_PRIVATE(${class.name})
 };
 
-QT_END_NAMESPACE_UML_${currentPackage.replace('::', '_').upper}
+QT_END_NAMESPACE_UML_${class.namespace.replace('::', '_').upper}
 
-Q_DECLARE_METATYPE(QList<QT_NAMESPACE_UML::${currentPackage}::Q${className} *> *)
+Q_DECLARE_METATYPE(QList<QT_NAMESPACE_UML::${class.namespace}::${class.name} *>)
+Q_DECLARE_METATYPE(QList<QT_NAMESPACE_UML::${class.namespace}::${class.name} *> *)
 
 QT_END_HEADER
 
-#endif // ${currentPackage.replace('::', '_').upper}_Q${className.upper}_H
+#endif // ${class.namespace.replace('::', '_').upper}_${class.name.upper}_H
 
