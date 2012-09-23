@@ -8,7 +8,7 @@ use File::Slurp;
 use File::Path qw(make_path);
 use Template;
 
-my $xml = new XML::Simple(keyattr => [], forcearray => ['namespace', 'attribute', 'associationend', 'operation', 'accessor']);
+my $xml = new XML::Simple(keyattr => [], forcearray => ['namespace', 'class', 'enumeration', 'attribute', 'associationend', 'operation', 'accessor', 'parameter']);
 my $tt = Template->new(INTERPOLATE  => 1, INCLUDE_PATH => 'templates/');
 
 my $xmi = $xml->XMLin($ARGV[0]);
@@ -26,10 +26,12 @@ my $enumerations = $namespace->{'enumeration'};
 foreach my $class (@$classes) {
     open STDOUT, '>', "./".$namespace->{path}."/".lc($class->{name}).".h";
     if ($tt->process('class.h', {
+        namespace => $namespace->{path},
         class => $class
     }) ne 1) { print $tt->error(); }
     open STDOUT, '>', "./".$namespace->{path}."/".lc($class->{name}).".cpp";
     if ($tt->process('class.cpp', {
+        namespace => $namespace->{path},
         class => $class
     }) ne 1) { print $tt->error(); }
 }
