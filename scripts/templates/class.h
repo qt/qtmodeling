@@ -38,8 +38,8 @@
 ** [% GET '$QT_END_LICENSE$' %]
 **
 ****************************************************************************/
-#ifndef ${class.namespace.replace('::', '_').upper}_${class.name.upper}_H
-#define ${class.namespace.replace('::', '_').upper}_${class.name.upper}_H
+#ifndef ${namespace.replace('/', '_').upper}_${class.name.upper}_H
+#define ${namespace.replace('/', '_').upper}_${class.name.upper}_H
 
 #include <QtUml/QtUmlGlobal>
 
@@ -68,7 +68,7 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_UML_${class.namespace.replace('::', '_').upper}
+QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
 
 QT_MODULE(QtUml)
 
@@ -81,6 +81,21 @@ class ${forwarddecl};
 class Q_UML_EXPORT ${class.name} : [%- IF !class.superclassinclude -%]public QObject[%- ELSE -%][% FOREACH superclass = class.superclassinclude %]public ${superclass.split('/').last}[% IF !loop.last %], [% END %][% END %][% END %]
 {
     Q_OBJECT
+
+    [%- FOREACH attribute IN class.attribute -%]
+        [%- IF attribute.accessor.size == 1 %]
+    Q_PROPERTY(${attribute.accessor.0.return}[%- IF attribute.accessor.0.return.substr(attribute.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${attribute.accessor.0.name} READ ${attribute.accessor.0.name})
+        [%- ELSE %]
+    Q_PROPERTY(${attribute.accessor.0.return}[%- IF attribute.accessor.0.return.substr(attribute.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${attribute.accessor.0.name} READ ${attribute.accessor.0.name} WRITE ${attribute.accessor.1.name})
+        [%- END -%]
+    [%- END -%]
+    [%- FOREACH associationend IN class.associationend -%]
+        [%- IF associationend.accessor.size == 1 %]
+    Q_PROPERTY(${associationend.accessor.0.return}[%- IF associationend.accessor.0.return.substr(associationend.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${associationend.accessor.0.name} READ ${associationend.accessor.0.name})
+        [%- ELSE %]
+    Q_PROPERTY(${associationend.accessor.0.return}[%- IF associationend.accessor.0.return.substr(associationend.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${associationend.accessor.0.name} READ ${associationend.accessor.0.name} WRITE ${associationend.accessor.1.name})
+        [%- END -%]
+    [%- END %]
 
 public:
     explicit ${class.name}(QObject *parent = 0);
@@ -116,12 +131,12 @@ private:
     Q_DECLARE_PRIVATE(${class.name})
 };
 
-QT_END_NAMESPACE_UML_${class.namespace.replace('::', '_').upper}
+QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
 
-Q_DECLARE_METATYPE(QList<QT_NAMESPACE_UML::${class.namespace}::${class.name} *>)
-Q_DECLARE_METATYPE(QList<QT_NAMESPACE_UML::${class.namespace}::${class.name} *> *)
+Q_DECLARE_METATYPE(QList<QT_NAMESPACE_UML::${namespace.replace('/','::')}::${class.name} *>)
+Q_DECLARE_METATYPE(QList<QT_NAMESPACE_UML::${namespace.replace('/','::')}::${class.name} *> *)
 
 QT_END_HEADER
 
-#endif // ${class.namespace.replace('::', '_').upper}_${class.name.upper}_H
+#endif // ${namespace.replace('/', '_').upper}_${class.name.upper}_H
 

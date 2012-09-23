@@ -43,16 +43,15 @@ declare function qtxmi:capitalizedNameFromType($unqualifiedType as xs:string, $n
 };
 <qtxmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:qtxmi="http://www.qt-project.org">
 {
-for $namespace in distinct-values(doc($xmiFile)//packagedElement[@xmi:type="uml:Package"][@xmi:id="Classes-Kernel"]/@xmi:id)
+for $namespace in distinct-values(doc($xmiFile)//packagedElement[@xmi:type="uml:Package"]/@xmi:id)
 return
 <namespace path="{replace($namespace, "-", "/")}">
 {
-for $class in doc($xmiFile)//packagedElement[@xmi:id=$namespace]/packagedElement[@xmi:type="uml:Class"][@xmi:id = "Classes-Kernel-Element" or @xmi:id = "Classes-Kernel-Association" or @xmi:id = "Classes-Kernel-NamedElement" or @xmi:id = "Classes-Kernel-BehavioralFeature"]
+for $class in doc($xmiFile)//packagedElement[@xmi:id=$namespace]/packagedElement[@xmi:type="uml:Class"]
 let $superClasses := $class/generalization/@general
 let $namespace := replace($namespace, "-", "::")
 return
     <class name="Q{$class/@name}">
-        <namespace>{$namespace}</namespace>
         <documentation>{$class/ownedComment/body/text()}</documentation>
         {
         for $id in distinct-values($class/ownedAttribute/@type | $class/ownedOperation/ownedParameter/@type)
