@@ -78,7 +78,7 @@ class ${class.name}Private;
 class ${forwarddecl};
 [%- END %]
 
-class Q_UML_EXPORT ${class.name} : public QObject
+class Q_UML_EXPORT ${class.name} : [%- IF !class.superclassinclude -%]public QObject[%- ELSE -%][% FOREACH superclass = class.superclassinclude %]public ${superclass.split('/').last}[% IF !loop.last %], [% END %][% END %][% END %]
 {
     Q_OBJECT
 
