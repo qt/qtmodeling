@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief By specializing multiplicity element, it supports a multiplicity that specifies valid cardinalities for the collection of values associated with an instantiation of the structural feature.
  */
 
-QStructuralFeature::QStructuralFeature(QObject *parent)
-    : QObject(parent)
+QStructuralFeature::QStructuralFeature()
 {
 }
 
@@ -71,8 +70,6 @@ bool QStructuralFeature::isReadOnly() const
 void QStructuralFeature::setIsReadOnly(bool isReadOnly)
 {
 }
-
-#include "moc_qstructuralfeature.cpp"
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

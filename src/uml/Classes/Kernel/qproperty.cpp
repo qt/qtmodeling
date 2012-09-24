@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A property is a structural feature of a classifier that characterizes instances of the classifier. A property related by ownedAttribute to a classifier (other than an association) represents an attribute and might also represent an association end. It relates an instance of the class to a value or set of values of the type of the attribute. A property related by memberEnd or its specializations to an association represents an end of the association. The type of the property is the type of the end of the association.
  */
 
-QProperty::QProperty(QObject *parent)
-    : QObject(parent)
+QProperty::QProperty()
 {
 }
 

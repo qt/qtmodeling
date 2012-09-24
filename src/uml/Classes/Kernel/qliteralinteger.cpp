@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A literal integer is a specification of an integer value.
  */
 
-QLiteralInteger::QLiteralInteger(QObject *parent)
-    : QObject(parent)
+QLiteralInteger::QLiteralInteger()
 {
 }
 

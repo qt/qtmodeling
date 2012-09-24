@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A redefinable element is an element that, when defined in the context of a classifier, can be redefined more specifically or differently in the context of another classifier that specializes (directly or indirectly) the context classifier.
  */
 
-QRedefinableElement::QRedefinableElement(QObject *parent)
-    : QObject(parent)
+QRedefinableElement::QRedefinableElement()
 {
 }
 
@@ -99,8 +98,6 @@ bool QRedefinableElement::isConsistentWith(QRedefinableElement *redefinee) const
 bool QRedefinableElement::isRedefinitionContextValid(QRedefinableElement *redefined) const
 {
 }
-
-#include "moc_qredefinableelement.cpp"
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

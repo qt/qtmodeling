@@ -44,6 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
+#include <QtCore/QObject>
 #include <QtUml/QDirectedRelationship>
 
 QT_BEGIN_HEADER
@@ -56,7 +57,7 @@ class QPackageMergePrivate;
 
 class QPackage;
 
-class Q_UML_EXPORT QPackageMerge : public QObject
+class Q_UML_EXPORT QPackageMerge : public QObject, public QDirectedRelationship
 {
     Q_OBJECT
 
@@ -64,7 +65,7 @@ class Q_UML_EXPORT QPackageMerge : public QObject
     Q_PROPERTY(QPackage * receivingPackage READ receivingPackage WRITE setReceivingPackage)
 
 public:
-    explicit QPackageMerge(QObject *parent = 0);
+    explicit QPackageMerge();
     virtual ~QPackageMerge();
 
     // Association-ends (except those derived && !derivedUnion)

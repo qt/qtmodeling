@@ -44,6 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
+#include <QtCore/QObject>
 #include <QtUml/QDataType>
 
 QT_BEGIN_HEADER
@@ -54,14 +55,13 @@ QT_MODULE(QtUml)
 
 class QPrimitiveTypePrivate;
 
-
 class Q_UML_EXPORT QPrimitiveType : public QObject
 {
     Q_OBJECT
 
 
 public:
-    explicit QPrimitiveType(QObject *parent = 0);
+    explicit QPrimitiveType();
     virtual ~QPrimitiveType();
 
 private:

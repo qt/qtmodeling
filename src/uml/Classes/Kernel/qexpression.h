@@ -44,6 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
+#include <QtCore/QObject>
 #include <QtUml/QValueSpecification>
 
 // Qt includes
@@ -58,8 +59,7 @@ QT_MODULE(QtUml)
 
 class QExpressionPrivate;
 
-
-class Q_UML_EXPORT QExpression : public QObject
+class Q_UML_EXPORT QExpression : public QObject, public QValueSpecification
 {
     Q_OBJECT
 
@@ -67,7 +67,7 @@ class Q_UML_EXPORT QExpression : public QObject
     Q_PROPERTY(QList<QValueSpecification *> * operand READ operand)
 
 public:
-    explicit QExpression(QObject *parent = 0);
+    explicit QExpression();
     virtual ~QExpression();
 
     // Attributes (except those derived && !derivedUnion)

@@ -59,30 +59,20 @@ class QDirectedRelationshipPrivate;
 
 class QElement;
 
-class Q_UML_EXPORT QDirectedRelationship : public QObject
+class Q_UML_EXPORT QDirectedRelationship : public QRelationship
 {
-    Q_OBJECT
-
-    Q_PROPERTY(const QList<QElement *> * source READ source)
-    Q_PROPERTY(const QList<QElement *> * target READ target)
-
 public:
-    explicit QDirectedRelationship(QObject *parent = 0);
     virtual ~QDirectedRelationship();
 
     // Association-ends (except those derived && !derivedUnion)
     const QList<QElement *> *source() const;
     const QList<QElement *> *target() const;
 
-private:
-    Q_DISABLE_COPY(QDirectedRelationship)
-    Q_DECLARE_PRIVATE(QDirectedRelationship)
+protected:
+    explicit QDirectedRelationship();
 };
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
-
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QDirectedRelationship) *>)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QDirectedRelationship) *> *)
 
 QT_END_HEADER
 

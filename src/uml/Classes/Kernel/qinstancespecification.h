@@ -44,6 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
+#include <QtCore/QObject>
 #include <QtUml/QPackageableElement>
 
 // Qt includes
@@ -61,7 +62,7 @@ class QClassifier;
 class QSlot;
 class QValueSpecification;
 
-class Q_UML_EXPORT QInstanceSpecification : public QObject
+class Q_UML_EXPORT QInstanceSpecification : public QObject, public QPackageableElement
 {
     Q_OBJECT
 
@@ -70,7 +71,7 @@ class Q_UML_EXPORT QInstanceSpecification : public QObject
     Q_PROPERTY(QValueSpecification * specification READ specification WRITE setSpecification)
 
 public:
-    explicit QInstanceSpecification(QObject *parent = 0);
+    explicit QInstanceSpecification();
     virtual ~QInstanceSpecification();
 
     // Association-ends (except those derived && !derivedUnion)

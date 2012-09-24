@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A packageable element indicates a named element that may be owned directly by a package.
  */
 
-QPackageableElement::QPackageableElement(QObject *parent)
-    : QObject(parent)
+QPackageableElement::QPackageableElement()
 {
 }
 
@@ -71,8 +70,6 @@ QEnumerations::VisibilityKind QPackageableElement::visibility() const
 void QPackageableElement::setVisibility(QEnumerations::VisibilityKind visibility)
 {
 }
-
-#include "moc_qpackageableelement.cpp"
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

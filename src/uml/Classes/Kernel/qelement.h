@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 
 // Qt includes
 #include <QtCore/QList>
@@ -59,16 +58,9 @@ class QElementPrivate;
 
 class QComment;
 
-class Q_UML_EXPORT QElement : public QObject
+class Q_UML_EXPORT QElement
 {
-    Q_OBJECT
-
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
-    Q_PROPERTY(const QElement * owner READ owner)
-
 public:
-    explicit QElement(QObject *parent = 0);
     virtual ~QElement();
 
     // Association-ends (except those derived && !derivedUnion)
@@ -80,15 +72,11 @@ public:
     QList<QElement *> *allOwnedElements() const;
     bool mustBeOwned() const;
 
-private:
-    Q_DISABLE_COPY(QElement)
-    Q_DECLARE_PRIVATE(QElement)
+protected:
+    explicit QElement();
 };
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
-
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QElement) *>)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QElement) *> *)
 
 QT_END_HEADER
 

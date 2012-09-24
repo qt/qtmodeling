@@ -44,6 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
+#include <QtCore/QObject>
 #include <QtUml/QNamespace>
 #include <QtUml/QPackageableElement>
 
@@ -63,7 +64,7 @@ class QType;
 class QPackageMerge;
 class QNamedElement;
 
-class Q_UML_EXPORT QPackage : public QObject
+class Q_UML_EXPORT QPackage : public QObject, public QNamespace, public QPackageableElement
 {
     Q_OBJECT
 
@@ -73,7 +74,7 @@ class Q_UML_EXPORT QPackage : public QObject
     Q_PROPERTY(QList<QPackageableElement *> * packagedElement READ packagedElement)
 
 public:
-    explicit QPackage(QObject *parent = 0);
+    explicit QPackage();
     virtual ~QPackage();
 
     // Attributes (except those derived && !derivedUnion)

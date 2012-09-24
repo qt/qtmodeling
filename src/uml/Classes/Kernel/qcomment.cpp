@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A comment is a textual annotation that can be attached to a set of elements.
  */
 
-QComment::QComment(QObject *parent)
-    : QObject(parent)
+QComment::QComment()
 {
 }
 

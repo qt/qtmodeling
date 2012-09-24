@@ -62,16 +62,9 @@ class QNamedElementPrivate;
 
 class QNamespace;
 
-class Q_UML_EXPORT QNamedElement : public QObject
+class Q_UML_EXPORT QNamedElement : public QElement
 {
-    Q_OBJECT
-
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
-
 public:
-    explicit QNamedElement(QObject *parent = 0);
     virtual ~QNamedElement();
 
     // Attributes (except those derived && !derivedUnion)
@@ -89,15 +82,11 @@ public:
     QString qualifiedName() const;
     QString separator() const;
 
-private:
-    Q_DISABLE_COPY(QNamedElement)
-    Q_DECLARE_PRIVATE(QNamedElement)
+protected:
+    explicit QNamedElement();
 };
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
-
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QNamedElement) *>)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QNamedElement) *> *)
 
 QT_END_HEADER
 

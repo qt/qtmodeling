@@ -62,8 +62,9 @@ return
 for $class in doc($xmiFile)//packagedElement[@xmi:id=$namespace]/packagedElement[@xmi:type="uml:Class"]
 let $superClasses := $class/generalization/@general
 let $namespace := replace($namespace, "-", "::")
+let $isAbstract := if ($class/@isAbstract) then $class/@isAbstract else "false"
 return
-    <class name="Q{$class/@name}">
+    <class name="Q{$class/@name}" isAbstract="{$isAbstract}">
         <documentation>{$class/ownedComment/body/text()}</documentation>
         {
         for $id in distinct-values(qtxmi:classifierFromProperty($class/ownedAttribute | $class/ownedOperation/ownedParameter))

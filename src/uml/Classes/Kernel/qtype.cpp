@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A type constrains the values represented by a typed element.
  */
 
-QType::QType(QObject *parent)
-    : QObject(parent)
+QType::QType()
 {
 }
 
@@ -78,8 +77,6 @@ void QType::setPackage(QPackage *package)
 bool QType::conformsTo(QType *other) const
 {
 }
-
-#include "moc_qtype.cpp"
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

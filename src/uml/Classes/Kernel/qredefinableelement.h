@@ -59,16 +59,9 @@ class QRedefinableElementPrivate;
 
 class QClassifier;
 
-class Q_UML_EXPORT QRedefinableElement : public QObject
+class Q_UML_EXPORT QRedefinableElement : public QNamedElement
 {
-    Q_OBJECT
-
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setIsLeaf)
-    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElement READ redefinedElement)
-    Q_PROPERTY(const QList<QClassifier *> * redefinitionContext READ redefinitionContext)
-
 public:
-    explicit QRedefinableElement(QObject *parent = 0);
     virtual ~QRedefinableElement();
 
     // Attributes (except those derived && !derivedUnion)
@@ -83,15 +76,11 @@ public:
     bool isConsistentWith(QRedefinableElement *redefinee) const;
     bool isRedefinitionContextValid(QRedefinableElement *redefined) const;
 
-private:
-    Q_DISABLE_COPY(QRedefinableElement)
-    Q_DECLARE_PRIVATE(QRedefinableElement)
+protected:
+    explicit QRedefinableElement();
 };
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
-
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QRedefinableElement) *>)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QRedefinableElement) *> *)
 
 QT_END_HEADER
 

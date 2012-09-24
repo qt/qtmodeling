@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A behavioral feature is a feature of a classifier that specifies an aspect of the behavior of its instances.
  */
 
-QBehavioralFeature::QBehavioralFeature(QObject *parent)
-    : QObject(parent)
+QBehavioralFeature::QBehavioralFeature()
 {
 }
 
@@ -81,8 +80,6 @@ QList<QType *> *QBehavioralFeature::raisedException() const
 bool QBehavioralFeature::isDistinguishableFrom(QNamedElement *n, QNamespace *ns) const
 {
 }
-
-#include "moc_qbehavioralfeature.cpp"
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

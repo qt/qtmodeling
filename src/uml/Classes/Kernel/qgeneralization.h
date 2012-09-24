@@ -44,6 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
+#include <QtCore/QObject>
 #include <QtUml/QDirectedRelationship>
 
 QT_BEGIN_HEADER
@@ -56,7 +57,7 @@ class QGeneralizationPrivate;
 
 class QClassifier;
 
-class Q_UML_EXPORT QGeneralization : public QObject
+class Q_UML_EXPORT QGeneralization : public QObject, public QDirectedRelationship
 {
     Q_OBJECT
 
@@ -65,7 +66,7 @@ class Q_UML_EXPORT QGeneralization : public QObject
     Q_PROPERTY(QClassifier * specific READ specific WRITE setSpecific)
 
 public:
-    explicit QGeneralization(QObject *parent = 0);
+    explicit QGeneralization();
     virtual ~QGeneralization();
 
     // Attributes (except those derived && !derivedUnion)

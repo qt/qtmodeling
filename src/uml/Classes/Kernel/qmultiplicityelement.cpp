@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A multiplicity is a definition of an inclusive interval of non-negative integers beginning with a lower bound and ending with a (possibly infinite) upper bound. A multiplicity element embeds this information to specify the allowable cardinalities for an instantiation of this element.
  */
 
-QMultiplicityElement::QMultiplicityElement(QObject *parent)
-    : QObject(parent)
+QMultiplicityElement::QMultiplicityElement()
 {
 }
 
@@ -153,8 +152,6 @@ qint32 QMultiplicityElement::upper() const
 qint32 QMultiplicityElement::upperBound() const
 {
 }
-
-#include "moc_qmultiplicityelement.cpp"
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

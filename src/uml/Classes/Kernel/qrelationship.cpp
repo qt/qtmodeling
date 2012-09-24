@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief Relationship is an abstract concept that specifies some kind of relationship between elements.
  */
 
-QRelationship::QRelationship(QObject *parent)
-    : QObject(parent)
+QRelationship::QRelationship()
 {
 }
 
@@ -67,8 +66,6 @@ QRelationship::~QRelationship()
 const QList<QElement *> *QRelationship::relatedElement() const
 {
 }
-
-#include "moc_qrelationship.cpp"
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

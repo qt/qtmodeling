@@ -44,6 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
+#include <QtCore/QObject>
 #include <QtUml/QPackageableElement>
 
 // Qt includes
@@ -61,7 +62,7 @@ class QElement;
 class QNamespace;
 class QValueSpecification;
 
-class Q_UML_EXPORT QConstraint : public QObject
+class Q_UML_EXPORT QConstraint : public QObject, public QPackageableElement
 {
     Q_OBJECT
 
@@ -70,7 +71,7 @@ class Q_UML_EXPORT QConstraint : public QObject
     Q_PROPERTY(QValueSpecification * specification READ specification WRITE setSpecification)
 
 public:
-    explicit QConstraint(QObject *parent = 0);
+    explicit QConstraint();
     virtual ~QConstraint();
 
     // Association-ends (except those derived && !derivedUnion)

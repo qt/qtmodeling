@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
     \brief ${class.documentation}
  */
 
-${class.name}::${class.name}(QObject *parent)
-    : QObject(parent)
+${class.name}::${class.name}()
 {
 }
 
@@ -91,8 +90,8 @@ ${operation.return}${class.name}::${operation.name}([%- FOREACH parameter IN ope
 {
 }
 [% END -%]
-
+[%- IF class.isAbstract == 'false' %]
 #include "moc_${class.name.lower}.cpp"
-
+[% END %]
 QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
 

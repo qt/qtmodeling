@@ -56,14 +56,9 @@ class QTypePrivate;
 
 class QPackage;
 
-class Q_UML_EXPORT QType : public QObject
+class Q_UML_EXPORT QType : public QPackageableElement
 {
-    Q_OBJECT
-
-    Q_PROPERTY(QPackage * package READ package WRITE setPackage)
-
 public:
-    explicit QType(QObject *parent = 0);
     virtual ~QType();
 
     // Association-ends (except those derived && !derivedUnion)
@@ -73,15 +68,11 @@ public:
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     bool conformsTo(QType *other) const;
 
-private:
-    Q_DISABLE_COPY(QType)
-    Q_DECLARE_PRIVATE(QType)
+protected:
+    explicit QType();
 };
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
-
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QType) *>)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QType) *> *)
 
 QT_END_HEADER
 

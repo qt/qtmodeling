@@ -56,17 +56,9 @@ class QMultiplicityElementPrivate;
 
 class QValueSpecification;
 
-class Q_UML_EXPORT QMultiplicityElement : public QObject
+class Q_UML_EXPORT QMultiplicityElement : public QElement
 {
-    Q_OBJECT
-
-    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setIsOrdered)
-    Q_PROPERTY(bool isUnique READ isUnique WRITE setIsUnique)
-    Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
-    Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
-
 public:
-    explicit QMultiplicityElement(QObject *parent = 0);
     virtual ~QMultiplicityElement();
 
     // Attributes (except those derived && !derivedUnion)
@@ -90,15 +82,11 @@ public:
     qint32 upper() const;
     qint32 upperBound() const;
 
-private:
-    Q_DISABLE_COPY(QMultiplicityElement)
-    Q_DECLARE_PRIVATE(QMultiplicityElement)
+protected:
+    explicit QMultiplicityElement();
 };
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
-
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QMultiplicityElement) *>)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QMultiplicityElement) *> *)
 
 QT_END_HEADER
 

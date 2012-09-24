@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief An instance specification is a model element that represents an instance in a modeled system.
  */
 
-QInstanceSpecification::QInstanceSpecification(QObject *parent)
-    : QObject(parent)
+QInstanceSpecification::QInstanceSpecification()
 {
 }
 

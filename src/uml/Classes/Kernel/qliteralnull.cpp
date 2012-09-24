@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A literal null specifies the lack of a value.
  */
 
-QLiteralNull::QLiteralNull(QObject *parent)
-    : QObject(parent)
+QLiteralNull::QLiteralNull()
 {
 }
 

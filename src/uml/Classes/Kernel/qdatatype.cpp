@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A data type is a type whose instances are identified only by their value. A data type may contain attributes to support the modeling of structured data types.
  */
 
-QDataType::QDataType(QObject *parent)
-    : QObject(parent)
+QDataType::QDataType()
 {
 }
 

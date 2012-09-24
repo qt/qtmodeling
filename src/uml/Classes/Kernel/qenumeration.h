@@ -44,6 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
+#include <QtCore/QObject>
 #include <QtUml/QDataType>
 
 // Qt includes
@@ -66,7 +67,7 @@ class Q_UML_EXPORT QEnumeration : public QObject
     Q_PROPERTY(QList<QEnumerationLiteral *> * ownedLiteral READ ownedLiteral)
 
 public:
-    explicit QEnumeration(QObject *parent = 0);
+    explicit QEnumeration();
     virtual ~QEnumeration();
 
     // Association-ends (except those derived && !derivedUnion)

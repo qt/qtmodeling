@@ -59,15 +59,9 @@ class QFeaturePrivate;
 
 class QClassifier;
 
-class Q_UML_EXPORT QFeature : public QObject
+class Q_UML_EXPORT QFeature : public QRedefinableElement
 {
-    Q_OBJECT
-
-    Q_PROPERTY(bool isStatic READ isStatic WRITE setIsStatic)
-    Q_PROPERTY(const QList<QClassifier *> * featuringClassifier READ featuringClassifier)
-
 public:
-    explicit QFeature(QObject *parent = 0);
     virtual ~QFeature();
 
     // Attributes (except those derived && !derivedUnion)
@@ -77,15 +71,11 @@ public:
     // Association-ends (except those derived && !derivedUnion)
     const QList<QClassifier *> *featuringClassifier() const;
 
-private:
-    Q_DISABLE_COPY(QFeature)
-    Q_DECLARE_PRIVATE(QFeature)
+protected:
+    explicit QFeature();
 };
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
-
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QFeature) *>)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QFeature) *> *)
 
 QT_END_HEADER
 

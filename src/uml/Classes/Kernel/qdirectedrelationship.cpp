@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A directed relationship represents a relationship between a collection of source model elements and a collection of target model elements.
  */
 
-QDirectedRelationship::QDirectedRelationship(QObject *parent)
-    : QObject(parent)
+QDirectedRelationship::QDirectedRelationship()
 {
 }
 
@@ -74,8 +73,6 @@ const QList<QElement *> *QDirectedRelationship::source() const
 const QList<QElement *> *QDirectedRelationship::target() const
 {
 }
-
-#include "moc_qdirectedrelationship.cpp"
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

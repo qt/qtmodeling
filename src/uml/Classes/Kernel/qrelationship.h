@@ -57,29 +57,19 @@ QT_MODULE(QtUml)
 
 class QRelationshipPrivate;
 
-
-class Q_UML_EXPORT QRelationship : public QObject
+class Q_UML_EXPORT QRelationship : public QElement
 {
-    Q_OBJECT
-
-    Q_PROPERTY(const QList<QElement *> * relatedElement READ relatedElement)
-
 public:
-    explicit QRelationship(QObject *parent = 0);
     virtual ~QRelationship();
 
     // Association-ends (except those derived && !derivedUnion)
     const QList<QElement *> *relatedElement() const;
 
-private:
-    Q_DISABLE_COPY(QRelationship)
-    Q_DECLARE_PRIVATE(QRelationship)
+protected:
+    explicit QRelationship();
 };
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
-
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QRelationship) *>)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QRelationship) *> *)
 
 QT_END_HEADER
 

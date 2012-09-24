@@ -44,6 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
+#include <QtCore/QObject>
 #include <QtUml/QLiteralSpecification>
 
 QT_BEGIN_HEADER
@@ -54,14 +55,13 @@ QT_MODULE(QtUml)
 
 class QLiteralNullPrivate;
 
-
-class Q_UML_EXPORT QLiteralNull : public QObject
+class Q_UML_EXPORT QLiteralNull : public QObject, public QLiteralSpecification
 {
     Q_OBJECT
 
 
 public:
-    explicit QLiteralNull(QObject *parent = 0);
+    explicit QLiteralNull();
     virtual ~QLiteralNull();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
