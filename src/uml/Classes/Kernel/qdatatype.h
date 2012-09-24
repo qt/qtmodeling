@@ -45,6 +45,7 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtCore/QObject>
 #include <QtUml/QClassifier>
 
 // Qt includes

@@ -55,7 +55,7 @@ QT_MODULE(QtUml)
 
 class QPrimitiveTypePrivate;
 
-class Q_UML_EXPORT QPrimitiveType : public QObject
+class Q_UML_EXPORT QPrimitiveType : public QDataType
 {
     Q_OBJECT
 

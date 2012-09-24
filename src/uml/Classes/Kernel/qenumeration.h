@@ -60,7 +60,7 @@ class QEnumerationPrivate;
 
 class QEnumerationLiteral;
 
-class Q_UML_EXPORT QEnumeration : public QObject
+class Q_UML_EXPORT QEnumeration : public QDataType
 {
     Q_OBJECT
 

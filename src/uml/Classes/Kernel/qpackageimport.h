@@ -48,6 +48,7 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtCore/QObject>
 #include <QtUml/QDirectedRelationship>
 
 QT_BEGIN_HEADER
