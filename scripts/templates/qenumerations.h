@@ -51,7 +51,7 @@ QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QEnumerations
+class Q_UML_EXPORT QEnumerations : public QObject
 {
     Q_OBJECT
 
@@ -67,9 +67,15 @@ public:
         [%- END %]
     };
 [% END -%]
+private:
+    explicit QEnumerations();
 };
 
 QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+
+[%- FOREACH enumeration IN enumerations %]
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_UML_${namespace.replace('/', '_').upper}(QEnumerations::${enumeration.name}))
+[%- END %]
 
 QT_END_HEADER
 
