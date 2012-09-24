@@ -44,6 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
+#include <QtCore/QObject>
 #include <QtUml/QBehavioralFeature>
 
 // Qt includes
@@ -64,7 +65,7 @@ class QParameter;
 class QType;
 class QRedefinableElement;
 
-class Q_UML_EXPORT QOperation : public QObject
+class Q_UML_EXPORT QOperation : public QObject, public QBehavioralFeature
 {
     Q_OBJECT
 
@@ -79,7 +80,7 @@ class Q_UML_EXPORT QOperation : public QObject
     Q_PROPERTY(QList<QOperation *> * redefinedOperation READ redefinedOperation)
 
 public:
-    explicit QOperation(QObject *parent = 0);
+    explicit QOperation();
     virtual ~QOperation();
 
     // Attributes (except those derived && !derivedUnion)

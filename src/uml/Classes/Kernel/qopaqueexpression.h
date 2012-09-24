@@ -44,6 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
+#include <QtCore/QObject>
 #include <QtUml/QValueSpecification>
 
 // Qt includes
@@ -58,8 +59,7 @@ QT_MODULE(QtUml)
 
 class QOpaqueExpressionPrivate;
 
-
-class Q_UML_EXPORT QOpaqueExpression : public QObject
+class Q_UML_EXPORT QOpaqueExpression : public QObject, public QValueSpecification
 {
     Q_OBJECT
 
@@ -67,7 +67,7 @@ class Q_UML_EXPORT QOpaqueExpression : public QObject
     Q_PROPERTY(QString language READ language WRITE setLanguage)
 
 public:
-    explicit QOpaqueExpression(QObject *parent = 0);
+    explicit QOpaqueExpression();
     virtual ~QOpaqueExpression();
 
     // Attributes (except those derived && !derivedUnion)

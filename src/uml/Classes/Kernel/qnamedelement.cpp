@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A named element is an element in a model that may have a name.
  */
 
-QNamedElement::QNamedElement(QObject *parent)
-    : QObject(parent)
+QNamedElement::QNamedElement()
 {
 }
 
@@ -117,8 +116,6 @@ QString QNamedElement::qualifiedName() const
 QString QNamedElement::separator() const
 {
 }
-
-#include "moc_qnamedelement.cpp"
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

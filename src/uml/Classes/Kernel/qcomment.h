@@ -44,6 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
+#include <QtCore/QObject>
 #include <QtUml/QElement>
 
 // Qt includes
@@ -58,8 +59,7 @@ QT_MODULE(QtUml)
 
 class QCommentPrivate;
 
-
-class Q_UML_EXPORT QComment : public QObject
+class Q_UML_EXPORT QComment : public QObject, public QElement
 {
     Q_OBJECT
 
@@ -67,7 +67,7 @@ class Q_UML_EXPORT QComment : public QObject
     Q_PROPERTY(QList<QElement *> * annotatedElement READ annotatedElement)
 
 public:
-    explicit QComment(QObject *parent = 0);
+    explicit QComment();
     virtual ~QComment();
 
     // Attributes (except those derived && !derivedUnion)

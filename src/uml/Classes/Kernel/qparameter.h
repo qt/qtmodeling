@@ -47,6 +47,7 @@
 #include <QtUml/QEnumerations>
 
 // Base class includes
+#include <QtCore/QObject>
 #include <QtUml/QTypedElement>
 #include <QtUml/QMultiplicityElement>
 
@@ -64,7 +65,7 @@ class QParameterPrivate;
 class QValueSpecification;
 class QOperation;
 
-class Q_UML_EXPORT QParameter : public QObject
+class Q_UML_EXPORT QParameter : public QObject, public QTypedElement, public QMultiplicityElement
 {
     Q_OBJECT
 
@@ -73,7 +74,7 @@ class Q_UML_EXPORT QParameter : public QObject
     Q_PROPERTY(QOperation * operation READ operation WRITE setOperation)
 
 public:
-    explicit QParameter(QObject *parent = 0);
+    explicit QParameter();
     virtual ~QParameter();
 
     // Attributes (except those derived && !derivedUnion)

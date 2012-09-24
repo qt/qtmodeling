@@ -44,6 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
+#include <QtCore/QObject>
 #include <QtUml/QRelationship>
 #include <QtUml/QClassifier>
 
@@ -61,7 +62,7 @@ class QAssociationPrivate;
 class QType;
 class QProperty;
 
-class Q_UML_EXPORT QAssociation : public QObject
+class Q_UML_EXPORT QAssociation : public QObject, public QRelationship, public QClassifier
 {
     Q_OBJECT
 
@@ -71,7 +72,7 @@ class Q_UML_EXPORT QAssociation : public QObject
     Q_PROPERTY(QList<QProperty *> * ownedEnd READ ownedEnd)
 
 public:
-    explicit QAssociation(QObject *parent = 0);
+    explicit QAssociation();
     virtual ~QAssociation();
 
     // Attributes (except those derived && !derivedUnion)

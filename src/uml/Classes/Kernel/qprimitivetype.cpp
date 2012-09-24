@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A primitive type defines a predefined data type, without any relevant substructure (i.e., it has no parts in the context of UML). A primitive datatype may have an algebra and operations defined outside of UML, for example, mathematically.
  */
 
-QPrimitiveType::QPrimitiveType(QObject *parent)
-    : QObject(parent)
+QPrimitiveType::QPrimitiveType()
 {
 }
 

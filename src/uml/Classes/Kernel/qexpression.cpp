@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief An expression represents a node in an expression tree, which may be non-terminal or terminal. It defines a symbol, and has a possibly empty sequence of operands which are value specifications.
  */
 
-QExpression::QExpression(QObject *parent)
-    : QObject(parent)
+QExpression::QExpression()
 {
 }
 

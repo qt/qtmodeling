@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A value specification is the specification of a (possibly empty) set of instances, including both objects and data values.
  */
 
-QValueSpecification::QValueSpecification(QObject *parent)
-    : QObject(parent)
+QValueSpecification::QValueSpecification()
 {
 }
 
@@ -109,8 +108,6 @@ QString QValueSpecification::stringValue() const
 qint32 QValueSpecification::unlimitedValue() const
 {
 }
-
-#include "moc_qvaluespecification.cpp"
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

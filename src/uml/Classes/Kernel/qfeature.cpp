@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A feature declares a behavioral or structural characteristic of instances of classifiers.
  */
 
-QFeature::QFeature(QObject *parent)
-    : QObject(parent)
+QFeature::QFeature()
 {
 }
 
@@ -78,8 +77,6 @@ void QFeature::setIsStatic(bool isStatic)
 const QList<QClassifier *> *QFeature::featuringClassifier() const
 {
 }
-
-#include "moc_qfeature.cpp"
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

@@ -47,6 +47,7 @@
 #include <QtUml/QEnumerations>
 
 // Base class includes
+#include <QtCore/QObject>
 #include <QtUml/QStructuralFeature>
 
 // Qt includes
@@ -68,7 +69,7 @@ class QValueSpecification;
 class QRedefinableElement;
 class QType;
 
-class Q_UML_EXPORT QProperty : public QObject
+class Q_UML_EXPORT QProperty : public QObject, public QStructuralFeature
 {
     Q_OBJECT
 
@@ -86,7 +87,7 @@ class Q_UML_EXPORT QProperty : public QObject
     Q_PROPERTY(QList<QProperty *> * subsettedProperty READ subsettedProperty)
 
 public:
-    explicit QProperty(QObject *parent = 0);
+    explicit QProperty();
     virtual ~QProperty();
 
     // Attributes (except those derived && !derivedUnion)

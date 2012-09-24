@@ -52,16 +52,13 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A literal specification identifies a literal constant being modeled.
  */
 
-QLiteralSpecification::QLiteralSpecification(QObject *parent)
-    : QObject(parent)
+QLiteralSpecification::QLiteralSpecification()
 {
 }
 
 QLiteralSpecification::~QLiteralSpecification()
 {
 }
-
-#include "moc_qliteralspecification.cpp"
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A classifier is a classification of instances - it describes a set of instances that have features in common. A classifier can specify a generalization hierarchy by referencing its general classifiers.
  */
 
-QClassifier::QClassifier(QObject *parent)
-    : QObject(parent)
+QClassifier::QClassifier()
 {
 }
 
@@ -180,8 +179,6 @@ bool QClassifier::maySpecializeType(QClassifier *c) const
 QList<QClassifier *> *QClassifier::parents() const
 {
 }
-
-#include "moc_qclassifier.cpp"
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

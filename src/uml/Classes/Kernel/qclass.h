@@ -44,6 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
+#include <QtCore/QObject>
 #include <QtUml/QClassifier>
 
 // Qt includes
@@ -61,7 +62,7 @@ class QProperty;
 class QOperation;
 class QNamedElement;
 
-class Q_UML_EXPORT QClass : public QObject
+class Q_UML_EXPORT QClass : public QObject, public QClassifier
 {
     Q_OBJECT
 
@@ -71,7 +72,7 @@ class Q_UML_EXPORT QClass : public QObject
     Q_PROPERTY(QList<QOperation *> * ownedOperation READ ownedOperation)
 
 public:
-    explicit QClass(QObject *parent = 0);
+    explicit QClass();
     virtual ~QClass();
 
     // Attributes (except those derived && !derivedUnion)

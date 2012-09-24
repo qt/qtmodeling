@@ -62,15 +62,9 @@ class QParameter;
 class QType;
 class QNamedElement;
 
-class Q_UML_EXPORT QBehavioralFeature : public QObject
+class Q_UML_EXPORT QBehavioralFeature : public QFeature, public QNamespace
 {
-    Q_OBJECT
-
-    Q_PROPERTY(QList<QParameter *> * ownedParameter READ ownedParameter)
-    Q_PROPERTY(QList<QType *> * raisedException READ raisedException)
-
 public:
-    explicit QBehavioralFeature(QObject *parent = 0);
     virtual ~QBehavioralFeature();
 
     // Association-ends (except those derived && !derivedUnion)
@@ -80,15 +74,11 @@ public:
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     bool isDistinguishableFrom(QNamedElement *n, QNamespace *ns) const;
 
-private:
-    Q_DISABLE_COPY(QBehavioralFeature)
-    Q_DECLARE_PRIVATE(QBehavioralFeature)
+protected:
+    explicit QBehavioralFeature();
 };
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
-
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QBehavioralFeature) *>)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QBehavioralFeature) *> *)
 
 QT_END_HEADER
 

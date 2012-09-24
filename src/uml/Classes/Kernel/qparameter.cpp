@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral feature.
  */
 
-QParameter::QParameter(QObject *parent)
-    : QObject(parent)
+QParameter::QParameter()
 {
 }
 

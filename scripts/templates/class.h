@@ -51,13 +51,14 @@
 [% END -%]
 
 // Base class includes
+[%- IF class.isAbstract == 'false' %]
+#include <QtCore/QObject>
+[%- END -%]
 [%- IF class.item('superclassinclude') -%]
 [%- FOREACH include IN class.superclassinclude %]
 #include <${include}>
 [%- END %]
-[% ELSE %]
-#include <QtCore/QObject>
-[% END -%]
+[%- END %]
 
 [%- IF class.item('qtinclude') %]
 // Qt includes
@@ -76,10 +77,12 @@ class ${class.name}Private;
 
 [%- FOREACH forwarddecl IN class.forwarddecl %]
 class ${forwarddecl};
+[%- IF loop.last %]
+[% END -%]
 [%- END %]
-
-class Q_UML_EXPORT ${class.name} : [%- IF !class.superclassinclude -%]public QObject[%- ELSE -%][% FOREACH superclass = class.superclassinclude %]public ${superclass.split('/').last}[% IF !loop.last %], [% END %][% END %][% END %]
+class Q_UML_EXPORT ${class.name}[%- IF class.isAbstract == 'false' || class.superclassinclude -%] : [% END -%][%- IF class.isAbstract == 'false' -%]public QObject[%- IF class.superclassinclude -%], [% END -%][%- END -%][% FOREACH superclass = class.superclassinclude %]public ${superclass.split('/').last}[% IF !loop.last %], [% END %][% END %]
 {
+[%- IF class.isAbstract == 'false' %]
     Q_OBJECT
 
     [%- FOREACH attribute IN class.attribute -%]
@@ -96,9 +99,11 @@ class Q_UML_EXPORT ${class.name} : [%- IF !class.superclassinclude -%]public QOb
     Q_PROPERTY(${associationend.accessor.0.return}[%- IF associationend.accessor.0.return.substr(associationend.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${associationend.accessor.0.name} READ ${associationend.accessor.0.name} WRITE ${associationend.accessor.1.name})
         [%- END -%]
     [%- END %]
-
+[% END %]
 public:
-    explicit ${class.name}(QObject *parent = 0);
+    [%- IF class.isAbstract == 'false' %]
+    explicit ${class.name}();
+    [%- END%]
     virtual ~${class.name}();
     [%- IF class.item('attribute') %]
 
@@ -125,16 +130,25 @@ public:
     ${operation.return}${operation.name}([%- FOREACH parameter IN operation.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${operation.constness};
     [%- END %]
     [%- END %]
+[%- IF class.isAbstract == 'true' %]
+
+protected:
+    explicit ${class.name}();
+[%- END %]
+[%- IF class.isAbstract == 'false' %]
 
 private:
     Q_DISABLE_COPY(${class.name})
     Q_DECLARE_PRIVATE(${class.name})
+[%- END %]
 };
 
 QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+[%- IF class.isAbstract == 'false' %]
 
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_${namespace.replace('/', '_').upper}(${class.name}) *>)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_${namespace.replace('/', '_').upper}(${class.name}) *> *)
+[%- END %]
 
 QT_END_HEADER
 

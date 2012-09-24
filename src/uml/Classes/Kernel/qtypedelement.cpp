@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A typed element has a type.
  */
 
-QTypedElement::QTypedElement(QObject *parent)
-    : QObject(parent)
+QTypedElement::QTypedElement()
 {
 }
 
@@ -71,8 +70,6 @@ QType *QTypedElement::type() const
 void QTypedElement::setType(QType *type)
 {
 }
-
-#include "moc_qtypedelement.cpp"
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

@@ -57,30 +57,20 @@ QT_MODULE(QtUml)
 
 class QPackageableElementPrivate;
 
-
-class Q_UML_EXPORT QPackageableElement : public QObject
+class Q_UML_EXPORT QPackageableElement : public QNamedElement
 {
-    Q_OBJECT
-
-    Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
-
 public:
-    explicit QPackageableElement(QObject *parent = 0);
     virtual ~QPackageableElement();
 
     // Attributes (except those derived && !derivedUnion)
     QEnumerations::VisibilityKind visibility() const;
     void setVisibility(QEnumerations::VisibilityKind visibility);
 
-private:
-    Q_DISABLE_COPY(QPackageableElement)
-    Q_DECLARE_PRIVATE(QPackageableElement)
+protected:
+    explicit QPackageableElement();
 };
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
-
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QPackageableElement) *>)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QPackageableElement) *> *)
 
 QT_END_HEADER
 

@@ -63,18 +63,9 @@ class QPackageableElement;
 class QConstraint;
 class QPackageImport;
 
-class Q_UML_EXPORT QNamespace : public QObject
+class Q_UML_EXPORT QNamespace : public QNamedElement
 {
-    Q_OBJECT
-
-    Q_PROPERTY(QList<QElementImport *> * elementImport READ elementImport)
-    Q_PROPERTY(const QList<QNamedElement *> * member READ member)
-    Q_PROPERTY(const QList<QNamedElement *> * ownedMember READ ownedMember)
-    Q_PROPERTY(QList<QConstraint *> * ownedRule READ ownedRule)
-    Q_PROPERTY(QList<QPackageImport *> * packageImport READ packageImport)
-
 public:
-    explicit QNamespace(QObject *parent = 0);
     virtual ~QNamespace();
 
     // Association-ends (except those derived && !derivedUnion)
@@ -91,15 +82,11 @@ public:
     QList<QPackageableElement *> *importedMember() const;
     bool membersAreDistinguishable() const;
 
-private:
-    Q_DISABLE_COPY(QNamespace)
-    Q_DECLARE_PRIVATE(QNamespace)
+protected:
+    explicit QNamespace();
 };
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
-
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QNamespace) *>)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QNamespace) *> *)
 
 QT_END_HEADER
 

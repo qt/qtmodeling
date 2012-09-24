@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief An instance value is a value specification that identifies an instance.
  */
 
-QInstanceValue::QInstanceValue(QObject *parent)
-    : QObject(parent)
+QInstanceValue::QInstanceValue()
 {
 }
 

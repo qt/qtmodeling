@@ -56,29 +56,20 @@ class QTypedElementPrivate;
 
 class QType;
 
-class Q_UML_EXPORT QTypedElement : public QObject
+class Q_UML_EXPORT QTypedElement : public QNamedElement
 {
-    Q_OBJECT
-
-    Q_PROPERTY(QType * type READ type WRITE setType)
-
 public:
-    explicit QTypedElement(QObject *parent = 0);
     virtual ~QTypedElement();
 
     // Association-ends (except those derived && !derivedUnion)
     QType *type() const;
     void setType(QType *type);
 
-private:
-    Q_DISABLE_COPY(QTypedElement)
-    Q_DECLARE_PRIVATE(QTypedElement)
+protected:
+    explicit QTypedElement();
 };
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
-
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QTypedElement) *>)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QTypedElement) *> *)
 
 QT_END_HEADER
 

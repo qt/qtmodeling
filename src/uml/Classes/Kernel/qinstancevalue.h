@@ -44,6 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
+#include <QtCore/QObject>
 #include <QtUml/QValueSpecification>
 
 QT_BEGIN_HEADER
@@ -56,14 +57,14 @@ class QInstanceValuePrivate;
 
 class QInstanceSpecification;
 
-class Q_UML_EXPORT QInstanceValue : public QObject
+class Q_UML_EXPORT QInstanceValue : public QObject, public QValueSpecification
 {
     Q_OBJECT
 
     Q_PROPERTY(QInstanceSpecification * instance READ instance WRITE setInstance)
 
 public:
-    explicit QInstanceValue(QObject *parent = 0);
+    explicit QInstanceValue();
     virtual ~QInstanceValue();
 
     // Association-ends (except those derived && !derivedUnion)

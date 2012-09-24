@@ -44,6 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
+#include <QtCore/QObject>
 #include <QtUml/QLiteralSpecification>
 
 // Qt includes
@@ -57,15 +58,14 @@ QT_MODULE(QtUml)
 
 class QLiteralStringPrivate;
 
-
-class Q_UML_EXPORT QLiteralString : public QObject
+class Q_UML_EXPORT QLiteralString : public QObject, public QLiteralSpecification
 {
     Q_OBJECT
 
     Q_PROPERTY(QString value READ value WRITE setValue)
 
 public:
-    explicit QLiteralString(QObject *parent = 0);
+    explicit QLiteralString();
     virtual ~QLiteralString();
 
     // Attributes (except those derived && !derivedUnion)

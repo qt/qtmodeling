@@ -47,6 +47,7 @@
 #include <QtUml/QEnumerations>
 
 // Base class includes
+#include <QtCore/QObject>
 #include <QtUml/QDirectedRelationship>
 
 // Qt includes
@@ -63,7 +64,7 @@ class QElementImportPrivate;
 class QPackageableElement;
 class QNamespace;
 
-class Q_UML_EXPORT QElementImport : public QObject
+class Q_UML_EXPORT QElementImport : public QObject, public QDirectedRelationship
 {
     Q_OBJECT
 
@@ -73,7 +74,7 @@ class Q_UML_EXPORT QElementImport : public QObject
     Q_PROPERTY(QNamespace * importingNamespace READ importingNamespace WRITE setImportingNamespace)
 
 public:
-    explicit QElementImport(QObject *parent = 0);
+    explicit QElementImport();
     virtual ~QElementImport();
 
     // Attributes (except those derived && !derivedUnion)

@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief An element is a constituent of a model. As such, it has the capability of owning other elements.
  */
 
-QElement::QElement(QObject *parent)
-    : QObject(parent)
+QElement::QElement()
 {
 }
 
@@ -95,8 +94,6 @@ QList<QElement *> *QElement::allOwnedElements() const
 bool QElement::mustBeOwned() const
 {
 }
-
-#include "moc_qelement.cpp"
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

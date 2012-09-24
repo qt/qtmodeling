@@ -44,6 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
+#include <QtCore/QObject>
 #include <QtUml/QLiteralSpecification>
 
 QT_BEGIN_HEADER
@@ -54,15 +55,14 @@ QT_MODULE(QtUml)
 
 class QLiteralRealPrivate;
 
-
-class Q_UML_EXPORT QLiteralReal : public QObject
+class Q_UML_EXPORT QLiteralReal : public QObject, public QLiteralSpecification
 {
     Q_OBJECT
 
     Q_PROPERTY(qreal value READ value WRITE setValue)
 
 public:
-    explicit QLiteralReal(QObject *parent = 0);
+    explicit QLiteralReal();
     virtual ~QLiteralReal();
 
     // Attributes (except those derived && !derivedUnion)

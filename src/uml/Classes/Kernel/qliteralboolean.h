@@ -44,6 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
+#include <QtCore/QObject>
 #include <QtUml/QLiteralSpecification>
 
 QT_BEGIN_HEADER
@@ -54,15 +55,14 @@ QT_MODULE(QtUml)
 
 class QLiteralBooleanPrivate;
 
-
-class Q_UML_EXPORT QLiteralBoolean : public QObject
+class Q_UML_EXPORT QLiteralBoolean : public QObject, public QLiteralSpecification
 {
     Q_OBJECT
 
     Q_PROPERTY(bool value READ value WRITE setValue)
 
 public:
-    explicit QLiteralBoolean(QObject *parent = 0);
+    explicit QLiteralBoolean();
     virtual ~QLiteralBoolean();
 
     // Attributes (except those derived && !derivedUnion)

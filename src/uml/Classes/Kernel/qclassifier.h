@@ -64,19 +64,9 @@ class QFeature;
 class QGeneralization;
 class QNamedElement;
 
-class Q_UML_EXPORT QClassifier : public QObject
+class Q_UML_EXPORT QClassifier : public QType, public QRedefinableElement, public QNamespace
 {
-    Q_OBJECT
-
-    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setIsAbstract)
-    Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization WRITE setIsFinalSpecialization)
-    Q_PROPERTY(const QList<QProperty *> * attribute READ attribute)
-    Q_PROPERTY(const QList<QFeature *> * feature READ feature)
-    Q_PROPERTY(QList<QGeneralization *> * generalization READ generalization)
-    Q_PROPERTY(QList<QClassifier *> * redefinedClassifier READ redefinedClassifier)
-
 public:
-    explicit QClassifier(QObject *parent = 0);
     virtual ~QClassifier();
 
     // Attributes (except those derived && !derivedUnion)
@@ -103,15 +93,11 @@ public:
     bool maySpecializeType(QClassifier *c) const;
     QList<QClassifier *> *parents() const;
 
-private:
-    Q_DISABLE_COPY(QClassifier)
-    Q_DECLARE_PRIVATE(QClassifier)
+protected:
+    explicit QClassifier();
 };
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
-
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QClassifier) *>)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QClassifier) *> *)
 
 QT_END_HEADER
 

@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A literal unlimited natural is a specification of an unlimited natural number.
  */
 
-QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QObject *parent)
-    : QObject(parent)
+QLiteralUnlimitedNatural::QLiteralUnlimitedNatural()
 {
 }
 

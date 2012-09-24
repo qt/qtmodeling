@@ -58,14 +58,9 @@ QT_MODULE(QtUml)
 
 class QValueSpecificationPrivate;
 
-
-class Q_UML_EXPORT QValueSpecification : public QObject
+class Q_UML_EXPORT QValueSpecification : public QPackageableElement, public QTypedElement
 {
-    Q_OBJECT
-
-
 public:
-    explicit QValueSpecification(QObject *parent = 0);
     virtual ~QValueSpecification();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
@@ -77,15 +72,11 @@ public:
     QString stringValue() const;
     qint32 unlimitedValue() const;
 
-private:
-    Q_DISABLE_COPY(QValueSpecification)
-    Q_DECLARE_PRIVATE(QValueSpecification)
+protected:
+    explicit QValueSpecification();
 };
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
-
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QValueSpecification) *>)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QValueSpecification) *> *)
 
 QT_END_HEADER
 

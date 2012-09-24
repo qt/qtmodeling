@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A package merge defines how the contents of one package are extended by the contents of another package.
  */
 
-QPackageMerge::QPackageMerge(QObject *parent)
-    : QObject(parent)
+QPackageMerge::QPackageMerge()
 {
 }
 

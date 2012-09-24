@@ -44,6 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
+#include <QtCore/QObject>
 #include <QtUml/QElement>
 
 // Qt includes
@@ -61,7 +62,7 @@ class QStructuralFeature;
 class QInstanceSpecification;
 class QValueSpecification;
 
-class Q_UML_EXPORT QSlot : public QObject
+class Q_UML_EXPORT QSlot : public QObject, public QElement
 {
     Q_OBJECT
 
@@ -70,7 +71,7 @@ class Q_UML_EXPORT QSlot : public QObject
     Q_PROPERTY(QList<QValueSpecification *> * value READ value)
 
 public:
-    explicit QSlot(QObject *parent = 0);
+    explicit QSlot();
     virtual ~QSlot();
 
     // Association-ends (except those derived && !derivedUnion)

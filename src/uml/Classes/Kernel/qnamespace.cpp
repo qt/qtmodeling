@@ -52,8 +52,7 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A namespace is an element in a model that contains a set of named elements that can be identified by name.
  */
 
-QNamespace::QNamespace(QObject *parent)
-    : QObject(parent)
+QNamespace::QNamespace()
 {
 }
 
@@ -130,8 +129,6 @@ QList<QPackageableElement *> *QNamespace::importedMember() const
 bool QNamespace::membersAreDistinguishable() const
 {
 }
-
-#include "moc_qnamespace.cpp"
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

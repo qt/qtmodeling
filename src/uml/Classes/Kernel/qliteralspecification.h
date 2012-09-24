@@ -54,25 +54,16 @@ QT_MODULE(QtUml)
 
 class QLiteralSpecificationPrivate;
 
-
-class Q_UML_EXPORT QLiteralSpecification : public QObject
+class Q_UML_EXPORT QLiteralSpecification : public QValueSpecification
 {
-    Q_OBJECT
-
-
 public:
-    explicit QLiteralSpecification(QObject *parent = 0);
     virtual ~QLiteralSpecification();
 
-private:
-    Q_DISABLE_COPY(QLiteralSpecification)
-    Q_DECLARE_PRIVATE(QLiteralSpecification)
+protected:
+    explicit QLiteralSpecification();
 };
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
-
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QLiteralSpecification) *>)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QLiteralSpecification) *> *)
 
 QT_END_HEADER
 

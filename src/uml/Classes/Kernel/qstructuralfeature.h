@@ -56,30 +56,20 @@ QT_MODULE(QtUml)
 
 class QStructuralFeaturePrivate;
 
-
-class Q_UML_EXPORT QStructuralFeature : public QObject
+class Q_UML_EXPORT QStructuralFeature : public QFeature, public QTypedElement, public QMultiplicityElement
 {
-    Q_OBJECT
-
-    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setIsReadOnly)
-
 public:
-    explicit QStructuralFeature(QObject *parent = 0);
     virtual ~QStructuralFeature();
 
     // Attributes (except those derived && !derivedUnion)
     bool isReadOnly() const;
     void setIsReadOnly(bool isReadOnly);
 
-private:
-    Q_DISABLE_COPY(QStructuralFeature)
-    Q_DECLARE_PRIVATE(QStructuralFeature)
+protected:
+    explicit QStructuralFeature();
 };
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
-
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QStructuralFeature) *>)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QStructuralFeature) *> *)
 
 QT_END_HEADER
 
