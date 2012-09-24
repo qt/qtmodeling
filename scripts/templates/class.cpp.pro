@@ -39,8 +39,8 @@
 **
 ****************************************************************************/
 
-#include "${class.name.lower}.h"
-//#include "${class.name.lower}_p.h"
+#include "q${class.name.lower}.h"
+//#include "q${class.name.lower}_p.h"
 
 QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
 
@@ -63,7 +63,7 @@ ${class.name}::~${class.name}()
 
 [%- FOREACH attribute IN class.attribute %]
 /*!
-    [% attribute.documentation %]
+    ${attribute.documentation}
  */
 [%- FOREACH accessor IN attribute.accessor %]
 ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
@@ -74,7 +74,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
 
 [%- FOREACH associationend IN class.associationend %]
 /*!
-    [% associationend.documentation %]
+    ${associationend.documentation}
  */
 [%- FOREACH accessor IN associationend.accessor %]
 ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
@@ -85,7 +85,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
 
 [%- FOREACH operation IN class.operation %]
 /*!
-    [% operation.documentation %]
+    ${operation.documentation}
  */
 ${operation.return}${class.name}::${operation.name}([%- FOREACH parameter IN operation.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${operation.constness}
 {

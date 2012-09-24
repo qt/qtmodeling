@@ -41,6 +41,12 @@
 
 #include "qenumerations.h"
 
+QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+
+QEnumerations::QEnumerations()
+{
+}
+
 [% FOREACH enumeration IN enumerations -%]
 /*!
     \enum ${namespace.replace('/', '::')}::QEnumerations::${enumeration.name}
@@ -54,3 +60,8 @@
  */
 
 [% END %]
+
+#include "moc_qenumerations.cpp"
+
+QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+

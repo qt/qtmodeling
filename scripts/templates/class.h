@@ -78,7 +78,7 @@ class ${class.name}Private;
 class ${forwarddecl};
 [%- END %]
 
-class Q_UML_EXPORT ${class.name} : [%- IF !class.superclassinclude -%]public QObject[%- ELSE -%][% FOREACH superclass = class.superclassinclude %]public ${superclass.split('/').last}[% IF !loop.last %], [% END %][% END %][% END %]
+class Q_UML_EXPORT ${class.name} : public QObject
 {
     Q_OBJECT
 
@@ -133,8 +133,8 @@ private:
 
 QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
 
-Q_DECLARE_METATYPE(QList<QT_NAMESPACE_UML::${namespace.replace('/','::')}::${class.name} *>)
-Q_DECLARE_METATYPE(QList<QT_NAMESPACE_UML::${namespace.replace('/','::')}::${class.name} *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_${namespace.replace('/', '_').upper}(${class.name}) *>)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_${namespace.replace('/', '_').upper}(${class.name}) *> *)
 
 QT_END_HEADER
 
