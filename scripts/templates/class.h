@@ -80,7 +80,7 @@ class ${forwarddecl};
 [%- IF loop.last %]
 [% END -%]
 [%- END %]
-class Q_UML_EXPORT ${class.name}[%- IF class.isAbstract == 'false' || class.superclassinclude -%] : [% END -%][%- IF class.isAbstract == 'false' -%]public QObject[%- IF class.superclassinclude -%], [% END -%][%- END -%][% FOREACH superclass = class.superclassinclude %]public ${superclass.split('/').last}[% IF !loop.last %], [% END %][% END %]
+class Q_UML_EXPORT ${class.name}[%- IF class.superclassinclude -%] : [% END -%][% FOREACH superclass = class.superclassinclude %]public ${superclass.split('/').last}[% IF !loop.last %], [% END %][% END %]
 {
 [%- IF class.isAbstract == 'false' %]
     Q_OBJECT

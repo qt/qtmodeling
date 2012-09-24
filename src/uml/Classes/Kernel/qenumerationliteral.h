@@ -57,7 +57,7 @@ class QEnumerationLiteralPrivate;
 
 class QEnumeration;
 
-class Q_UML_EXPORT QEnumerationLiteral : public QObject
+class Q_UML_EXPORT QEnumerationLiteral : public QInstanceSpecification
 {
     Q_OBJECT
 

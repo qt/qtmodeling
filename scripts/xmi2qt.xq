@@ -7,11 +7,11 @@ declare function qtxmi:namespaceFromId ($id as xs:string) as xs:string {
 declare function qtxmi:unqualifiedTypeFromId ($id as xs:string) as xs:string {
     tokenize($id, "-")[last()]
 };
-declare function qtxmi:classifierFromString ($property as xs:string) as xs:string* {
-    doc($xmiFile)//packagedElement[@xmi:id = $property]/@xmi:type
+declare function qtxmi:elementFromString ($property as xs:string*) as node()* {
+    doc($xmiFile)//packagedElement[@xmi:id = $property]
 };
-declare function qtxmi:classifierFromProperty ($property as node()*) as xs:string* {
-    doc($xmiFile)//packagedElement[@xmi:id = $property/@type]/@xmi:type
+declare function qtxmi:elementFromProperty ($property as node()*) as node()* {
+    doc($xmiFile)//packagedElement[@xmi:id = $property/@type]
 };
 declare function qtxmi:mappedPrimitiveType($primitiveType as xs:string) as xs:string {
     if ($primitiveType = "Boolean") then "bool"
@@ -29,18 +29,18 @@ declare function qtxmi:mappedFunctionName($name as xs:string) as xs:string {
 declare function qtxmi:unqualifiedTypeFromNamespacedProperty ($property as node(), $namespace as xs:string) as xs:string {
     if ($property/@type) then
         let $baseType := if (compare(qtxmi:namespaceFromId($property/@type), $namespace) = 0) then
-            if (qtxmi:classifierFromProperty($property) != "uml:Enumeration") then
+            if (qtxmi:elementFromProperty($property)/@xmi:type != "uml:Enumeration") then
                 concat("Q", substring(replace(replace($property/@type, "-", "::"), $namespace, ""), 3))
             else
                 concat("QEnumerations::", substring(replace(replace($property/@type, "-", "::"), $namespace, ""), 3))
         else
-            if (qtxmi:classifierFromProperty($property) != "uml:Enumeration") then
+            if (qtxmi:elementFromProperty($property)/@xmi:type != "uml:Enumeration") then
                 concat(qtxmi:namespaceFromId($property/@type), concat("::", concat("Q", qtxmi:unqualifiedTypeFromId($property/@type))))
             else
                 concat(qtxmi:namespaceFromId($property/@type), concat("::", concat("QEnumerations::", qtxmi:unqualifiedTypeFromId($property/@type))))
         let $baseType := if ($property/upperValue/@value = "*") then concat(concat("QList<", $baseType), " *>") else $baseType
         let $baseType := if ($property/@isReadOnly = "true") then concat ("const ", $baseType) else $baseType
-        let $baseType := if (qtxmi:classifierFromProperty($property) = "uml:Class") then concat ($baseType, " *") else $baseType
+        let $baseType := if (qtxmi:elementFromProperty($property)/@xmi:type = "uml:Class") then concat ($baseType, " *") else $baseType
         return $baseType
     else
         qtxmi:mappedPrimitiveType(tokenize($property/type/@href, "#")[last()])
@@ -55,7 +55,7 @@ declare function qtxmi:capitalizedNameFromType($unqualifiedType as xs:string, $n
 };
 <qtxmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:qtxmi="http://www.qt-project.org">
 {
-for $namespace in distinct-values(doc($xmiFile)//packagedElement[@xmi:type="uml:Package"]/@xmi:id)
+for $namespace in distinct-values(doc($xmiFile)//packagedElement[@xmi:type="uml:Package"][@xmi:id="Classes-Kernel"]/@xmi:id)
 return
 <namespace path="{replace($namespace, "-", "/")}">
 {
@@ -67,10 +67,15 @@ return
     <class name="Q{$class/@name}" isAbstract="{$isAbstract}">
         <documentation>{$class/ownedComment/body/text()}</documentation>
         {
-        for $id in distinct-values(qtxmi:classifierFromProperty($class/ownedAttribute | $class/ownedOperation/ownedParameter))
+        for $id in distinct-values(qtxmi:elementFromProperty($class/ownedAttribute | $class/ownedOperation/ownedParameter)/@xmi:type)
         where $id = "uml:Enumeration"
         return
         <qtumlinclude>QtUml/QEnumerations</qtumlinclude>
+        }
+        {
+        if (count(qtxmi:elementFromString($superClasses)[@isAbstract = "true"]) = count($superClasses) and $isAbstract = "false") then
+        <superclassinclude>QtCore/QObject</superclassinclude>
+        else ""
         }
         {
         for $id in $superClasses
@@ -91,7 +96,7 @@ return
         }
         {
         for $id in distinct-values($class/ownedAttribute/@type | $class/ownedOperation/ownedParameter/@type)
-        where qtxmi:classifierFromString($id) != "uml:Enumeration" and $id != $class/@xmi:id and empty(distinct-values($id[.=$superClasses]))
+        where qtxmi:elementFromString($id)/@xmi:type != "uml:Enumeration" and $id != $class/@xmi:id and empty(distinct-values($id[.=$superClasses]))
         return
         <forwarddecl>{concat("Q", qtxmi:unqualifiedTypeFromId($id))}</forwarddecl>
         }

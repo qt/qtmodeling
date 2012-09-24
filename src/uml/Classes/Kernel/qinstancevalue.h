@@ -45,6 +45,7 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtCore/QObject>
 #include <QtUml/QValueSpecification>
 
 QT_BEGIN_HEADER
