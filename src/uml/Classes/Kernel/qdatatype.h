@@ -5,7 +5,7 @@
 **
 ** This file is part of the QtUml module of the Qt Toolkit.
 **
-** [% GET '$QT_BEGIN_LICENSE:LGPL$' %]
+** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
 ** This file may be used under the terms of the GNU Lesser General Public
 ** License version 2.1 as published by the Free Software Foundation and
@@ -15,7 +15,7 @@
 ** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
 **
 ** In addition, as a special exception, Nokia gives you certain additional
-** rights. These rights are described in the Nokia Qt LGPL Exception
+** rights. These rights are described in the Nokia  LGPL Exception
 ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
 **
 ** GNU General Public License Usage
@@ -35,33 +35,61 @@
 **
 **
 **
-** [% GET '$QT_END_LICENSE$' %]
+** $QT_END_LICENSE$
 **
 ****************************************************************************/
+#ifndef CLASSES_KERNEL_QDATATYPE_H
+#define CLASSES_KERNEL_QDATATYPE_H
 
-#include "qenumerations.h"
+#include <QtUml/QtUmlGlobal>
 
-QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+// Base class includes
+#include <QtUml/QClassifier>
 
-QEnumerations::QEnumerations()
+// Qt includes
+#include <QtCore/QList>
+
+QT_BEGIN_HEADER
+
+QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+
+QT_MODULE(QtUml)
+
+class QDataTypePrivate;
+
+class QProperty;
+class QOperation;
+class QNamedElement;
+
+class Q_UML_EXPORT QDataType : public QObject
 {
-}
+    Q_OBJECT
 
-[% FOREACH enumeration IN enumerations -%]
-/*!
-    \enum ${namespace.replace('/', '::')}::QEnumerations::${enumeration.name}
+    Q_PROPERTY(QList<QProperty *> * ownedAttribute READ ownedAttribute)
+    Q_PROPERTY(QList<QOperation *> * ownedOperation READ ownedOperation)
 
-    ${enumeration.documentation}
+public:
+    explicit QDataType(QObject *parent = 0);
+    virtual ~QDataType();
 
-    [%- FOREACH literal IN enumeration.literal %]
-    \value ${literal.name}[% IF literal.documentation != '' %]
-    ${literal.documentation}[% END -%]
-    [%- END %]
- */
+    // Association-ends (except those derived && !derivedUnion)
+    QList<QProperty *> *ownedAttribute() const;
+    QList<QOperation *> *ownedOperation() const;
 
-[% END %]
+    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    QList<QNamedElement *> *inherit(QList<QNamedElement *> *inhs) const;
 
-#include "moc_qenumerations.cpp"
+private:
+    Q_DISABLE_COPY(QDataType)
+    Q_DECLARE_PRIVATE(QDataType)
+};
 
-QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_END_NAMESPACE_UML_CLASSES_KERNEL
+
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QDataType) *>)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QDataType) *> *)
+
+QT_END_HEADER
+
+#endif // CLASSES_KERNEL_QDATATYPE_H
 

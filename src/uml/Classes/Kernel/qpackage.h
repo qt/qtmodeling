@@ -38,15 +38,17 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef CLASSES_KERNEL_QELEMENT_H
-#define CLASSES_KERNEL_QELEMENT_H
+#ifndef CLASSES_KERNEL_QPACKAGE_H
+#define CLASSES_KERNEL_QPACKAGE_H
 
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
+#include <QtUml/QNamespace>
+#include <QtUml/QPackageableElement>
 
 // Qt includes
+#include <QtCore/QString>
 #include <QtCore/QList>
 
 QT_BEGIN_HEADER
@@ -55,42 +57,53 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
 QT_MODULE(QtUml)
 
-class QElementPrivate;
+class QPackagePrivate;
 
-class QComment;
+class QType;
+class QPackageMerge;
+class QNamedElement;
 
-class Q_UML_EXPORT QElement : public QObject
+class Q_UML_EXPORT QPackage : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(QString URI READ URI WRITE setURI)
+    Q_PROPERTY(QPackage * nestingPackage READ nestingPackage WRITE setNestingPackage)
+    Q_PROPERTY(QList<QPackageMerge *> * packageMerge READ packageMerge)
+    Q_PROPERTY(QList<QPackageableElement *> * packagedElement READ packagedElement)
 
 public:
-    explicit QElement(QObject *parent = 0);
-    virtual ~QElement();
+    explicit QPackage(QObject *parent = 0);
+    virtual ~QPackage();
+
+    // Attributes (except those derived && !derivedUnion)
+    QString URI() const;
+    void setURI(QString URI);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QComment *> *ownedComment() const;
-    const QList<QElement *> *ownedElement() const;
-    const QElement *owner() const;
+    QPackage *nestingPackage() const;
+    void setNestingPackage(QPackage *nestingPackage);
+    QList<QPackageMerge *> *packageMerge() const;
+    QList<QPackageableElement *> *packagedElement() const;
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    QList<QElement *> *allOwnedElements() const;
+    bool makesVisible(QNamedElement *el) const;
     bool mustBeOwned() const;
+    QList<QPackage *> *nestedPackage() const;
+    QList<QType *> *ownedType() const;
+    QList<QPackageableElement *> *visibleMembers() const;
 
 private:
-    Q_DISABLE_COPY(QElement)
-    Q_DECLARE_PRIVATE(QElement)
+    Q_DISABLE_COPY(QPackage)
+    Q_DECLARE_PRIVATE(QPackage)
 };
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QElement) *>)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QElement) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QPackage) *>)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QPackage) *> *)
 
 QT_END_HEADER
 
-#endif // CLASSES_KERNEL_QELEMENT_H
+#endif // CLASSES_KERNEL_QPACKAGE_H
 

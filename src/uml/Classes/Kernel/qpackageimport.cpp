@@ -5,7 +5,7 @@
 **
 ** This file is part of the QtUml module of the Qt Toolkit.
 **
-** [% GET '$QT_BEGIN_LICENSE:LGPL$' %]
+** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
 ** This file may be used under the terms of the GNU Lesser General Public
 ** License version 2.1 as published by the Free Software Foundation and
@@ -35,33 +35,66 @@
 **
 **
 **
-** [% GET '$QT_END_LICENSE$' %]
+** $QT_END_LICENSE$
 **
 ****************************************************************************/
 
-#include "qenumerations.h"
+#include "qpackageimport.h"
+//#include "qpackageimport_p.h"
 
-QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
-QEnumerations::QEnumerations()
+/*!
+    \class QPackageImport
+
+    \inmodule QtUml
+
+    \brief A package import is a relationship that allows the use of unqualified names to refer to package members from other namespaces.
+ */
+
+QPackageImport::QPackageImport(QObject *parent)
+    : QObject(parent)
 {
 }
 
-[% FOREACH enumeration IN enumerations -%]
+QPackageImport::~QPackageImport()
+{
+}
+
 /*!
-    \enum ${namespace.replace('/', '::')}::QEnumerations::${enumeration.name}
-
-    ${enumeration.documentation}
-
-    [%- FOREACH literal IN enumeration.literal %]
-    \value ${literal.name}[% IF literal.documentation != '' %]
-    ${literal.documentation}[% END -%]
-    [%- END %]
+    Specifies the visibility of the imported PackageableElements within the importing Namespace, i.e., whether imported elements will in turn be visible to other packages that use that importingPackage as an importedPackage. If the PackageImport is public, the imported elements will be visible outside the package, while if it is private they will not.
  */
+QEnumerations::VisibilityKind QPackageImport::visibility() const
+{
+}
 
-[% END %]
+void QPackageImport::setVisibility(QEnumerations::VisibilityKind visibility)
+{
+}
 
-#include "moc_qenumerations.cpp"
+/*!
+    Specifies the Package whose members are imported into a Namespace.
+ */
+QPackage *QPackageImport::importedPackage() const
+{
+}
 
-QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+void QPackageImport::setImportedPackage(QPackage *importedPackage)
+{
+}
+
+/*!
+    Specifies the Namespace that imports the members from a Package.
+ */
+QNamespace *QPackageImport::importingNamespace() const
+{
+}
+
+void QPackageImport::setImportingNamespace(QNamespace *importingNamespace)
+{
+}
+
+#include "moc_qpackageimport.cpp"
+
+QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

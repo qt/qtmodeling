@@ -38,16 +38,13 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef CLASSES_KERNEL_QELEMENT_H
-#define CLASSES_KERNEL_QELEMENT_H
+#ifndef CLASSES_KERNEL_QMULTIPLICITYELEMENT_H
+#define CLASSES_KERNEL_QMULTIPLICITYELEMENT_H
 
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
-
-// Qt includes
-#include <QtCore/QList>
+#include <QtUml/QElement>
 
 QT_BEGIN_HEADER
 
@@ -55,42 +52,55 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
 QT_MODULE(QtUml)
 
-class QElementPrivate;
+class QMultiplicityElementPrivate;
 
-class QComment;
+class QValueSpecification;
 
-class Q_UML_EXPORT QElement : public QObject
+class Q_UML_EXPORT QMultiplicityElement : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setIsOrdered)
+    Q_PROPERTY(bool isUnique READ isUnique WRITE setIsUnique)
+    Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
+    Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
 
 public:
-    explicit QElement(QObject *parent = 0);
-    virtual ~QElement();
+    explicit QMultiplicityElement(QObject *parent = 0);
+    virtual ~QMultiplicityElement();
+
+    // Attributes (except those derived && !derivedUnion)
+    bool isOrdered() const;
+    void setIsOrdered(bool isOrdered);
+    bool isUnique() const;
+    void setIsUnique(bool isUnique);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QComment *> *ownedComment() const;
-    const QList<QElement *> *ownedElement() const;
-    const QElement *owner() const;
+    QValueSpecification *lowerValue() const;
+    void setLowerValue(QValueSpecification *lowerValue);
+    QValueSpecification *upperValue() const;
+    void setUpperValue(QValueSpecification *upperValue);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    QList<QElement *> *allOwnedElements() const;
-    bool mustBeOwned() const;
+    bool includesCardinality(qint32 C) const;
+    bool includesMultiplicity(QMultiplicityElement *M) const;
+    bool isMultivalued() const;
+    qint32 lower() const;
+    qint32 lowerBound() const;
+    qint32 upper() const;
+    qint32 upperBound() const;
 
 private:
-    Q_DISABLE_COPY(QElement)
-    Q_DECLARE_PRIVATE(QElement)
+    Q_DISABLE_COPY(QMultiplicityElement)
+    Q_DECLARE_PRIVATE(QMultiplicityElement)
 };
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QElement) *>)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QElement) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QMultiplicityElement) *>)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QMultiplicityElement) *> *)
 
 QT_END_HEADER
 
-#endif // CLASSES_KERNEL_QELEMENT_H
+#endif // CLASSES_KERNEL_QMULTIPLICITYELEMENT_H
 

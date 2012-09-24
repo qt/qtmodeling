@@ -38,16 +38,19 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef CLASSES_KERNEL_QELEMENT_H
-#define CLASSES_KERNEL_QELEMENT_H
+#ifndef CLASSES_KERNEL_QELEMENTIMPORT_H
+#define CLASSES_KERNEL_QELEMENTIMPORT_H
 
 #include <QtUml/QtUmlGlobal>
 
+// QtUml includes
+#include <QtUml/QEnumerations>
+
 // Base class includes
-#include <QtCore/QObject>
+#include <QtUml/QDirectedRelationship>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QString>
 
 QT_BEGIN_HEADER
 
@@ -55,42 +58,50 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
 QT_MODULE(QtUml)
 
-class QElementPrivate;
+class QElementImportPrivate;
 
-class QComment;
+class QPackageableElement;
+class QNamespace;
 
-class Q_UML_EXPORT QElement : public QObject
+class Q_UML_EXPORT QElementImport : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(QString alias READ alias WRITE setAlias)
+    Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QPackageableElement * importedElement READ importedElement WRITE setImportedElement)
+    Q_PROPERTY(QNamespace * importingNamespace READ importingNamespace WRITE setImportingNamespace)
 
 public:
-    explicit QElement(QObject *parent = 0);
-    virtual ~QElement();
+    explicit QElementImport(QObject *parent = 0);
+    virtual ~QElementImport();
+
+    // Attributes (except those derived && !derivedUnion)
+    QString alias() const;
+    void setAlias(QString alias);
+    QEnumerations::VisibilityKind visibility() const;
+    void setVisibility(QEnumerations::VisibilityKind visibility);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QComment *> *ownedComment() const;
-    const QList<QElement *> *ownedElement() const;
-    const QElement *owner() const;
+    QPackageableElement *importedElement() const;
+    void setImportedElement(QPackageableElement *importedElement);
+    QNamespace *importingNamespace() const;
+    void setImportingNamespace(QNamespace *importingNamespace);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    QList<QElement *> *allOwnedElements() const;
-    bool mustBeOwned() const;
+    QString getName() const;
 
 private:
-    Q_DISABLE_COPY(QElement)
-    Q_DECLARE_PRIVATE(QElement)
+    Q_DISABLE_COPY(QElementImport)
+    Q_DECLARE_PRIVATE(QElementImport)
 };
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QElement) *>)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QElement) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QElementImport) *>)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QElementImport) *> *)
 
 QT_END_HEADER
 
-#endif // CLASSES_KERNEL_QELEMENT_H
+#endif // CLASSES_KERNEL_QELEMENTIMPORT_H
 

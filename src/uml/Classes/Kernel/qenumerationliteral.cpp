@@ -5,7 +5,7 @@
 **
 ** This file is part of the QtUml module of the Qt Toolkit.
 **
-** [% GET '$QT_BEGIN_LICENSE:LGPL$' %]
+** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
 ** This file may be used under the terms of the GNU Lesser General Public
 ** License version 2.1 as published by the Free Software Foundation and
@@ -35,33 +35,51 @@
 **
 **
 **
-** [% GET '$QT_END_LICENSE$' %]
+** $QT_END_LICENSE$
 **
 ****************************************************************************/
 
-#include "qenumerations.h"
+#include "qenumerationliteral.h"
+//#include "qenumerationliteral_p.h"
 
-QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
-QEnumerations::QEnumerations()
+/*!
+    \class QEnumerationLiteral
+
+    \inmodule QtUml
+
+    \brief An enumeration literal is a user-defined data value for an enumeration.
+ */
+
+QEnumerationLiteral::QEnumerationLiteral(QObject *parent)
+    : QObject(parent)
 {
 }
 
-[% FOREACH enumeration IN enumerations -%]
+QEnumerationLiteral::~QEnumerationLiteral()
+{
+}
+
 /*!
-    \enum ${namespace.replace('/', '::')}::QEnumerations::${enumeration.name}
-
-    ${enumeration.documentation}
-
-    [%- FOREACH literal IN enumeration.literal %]
-    \value ${literal.name}[% IF literal.documentation != '' %]
-    ${literal.documentation}[% END -%]
-    [%- END %]
+    The Enumeration that this EnumerationLiteral is a member of.
  */
+QEnumeration *QEnumerationLiteral::enumeration() const
+{
+}
 
-[% END %]
+void QEnumerationLiteral::setEnumeration(QEnumeration *enumeration)
+{
+}
 
-#include "moc_qenumerations.cpp"
+/*!
+    Missing derivation for EnumerationLiteral::/classifier : Enumeration
+ */
+QEnumeration *QEnumerationLiteral::classifier() const
+{
+}
 
-QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+#include "moc_qenumerationliteral.cpp"
+
+QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

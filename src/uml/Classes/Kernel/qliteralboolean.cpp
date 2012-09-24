@@ -5,7 +5,7 @@
 **
 ** This file is part of the QtUml module of the Qt Toolkit.
 **
-** [% GET '$QT_BEGIN_LICENSE:LGPL$' %]
+** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
 ** This file may be used under the terms of the GNU Lesser General Public
 ** License version 2.1 as published by the Free Software Foundation and
@@ -35,33 +35,58 @@
 **
 **
 **
-** [% GET '$QT_END_LICENSE$' %]
+** $QT_END_LICENSE$
 **
 ****************************************************************************/
 
-#include "qenumerations.h"
+#include "qliteralboolean.h"
+//#include "qliteralboolean_p.h"
 
-QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
-QEnumerations::QEnumerations()
+/*!
+    \class QLiteralBoolean
+
+    \inmodule QtUml
+
+    \brief A literal Boolean is a specification of a Boolean value.
+ */
+
+QLiteralBoolean::QLiteralBoolean(QObject *parent)
+    : QObject(parent)
 {
 }
 
-[% FOREACH enumeration IN enumerations -%]
+QLiteralBoolean::~QLiteralBoolean()
+{
+}
+
 /*!
-    \enum ${namespace.replace('/', '::')}::QEnumerations::${enumeration.name}
-
-    ${enumeration.documentation}
-
-    [%- FOREACH literal IN enumeration.literal %]
-    \value ${literal.name}[% IF literal.documentation != '' %]
-    ${literal.documentation}[% END -%]
-    [%- END %]
+    The specified Boolean value.
  */
+bool QLiteralBoolean::value() const
+{
+}
 
-[% END %]
+void QLiteralBoolean::setValue(bool value)
+{
+}
 
-#include "moc_qenumerations.cpp"
+/*!
+    The query booleanValue() gives the value.
+ */
+bool QLiteralBoolean::booleanValue() const
+{
+}
 
-QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+/*!
+    The query isComputable() is redefined to be true.
+ */
+bool QLiteralBoolean::isComputable() const
+{
+}
+
+#include "moc_qliteralboolean.cpp"
+
+QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

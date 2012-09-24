@@ -39,64 +39,78 @@
 **
 ****************************************************************************/
 
-#include "qelement.h"
-//#include "qelement_p.h"
+#include "qvaluespecification.h"
+//#include "qvaluespecification_p.h"
 
 QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
 /*!
-    \class QElement
+    \class QValueSpecification
 
     \inmodule QtUml
 
-    \brief An element is a constituent of a model. As such, it has the capability of owning other elements.
+    \brief A value specification is the specification of a (possibly empty) set of instances, including both objects and data values.
  */
 
-QElement::QElement(QObject *parent)
+QValueSpecification::QValueSpecification(QObject *parent)
     : QObject(parent)
 {
 }
 
-QElement::~QElement()
+QValueSpecification::~QValueSpecification()
 {
 }
 
 /*!
-    The Comments owned by this element.
+    The query booleanValue() gives a single Boolean value when one can be computed.
  */
-QList<QComment *> *QElement::ownedComment() const
+bool QValueSpecification::booleanValue() const
 {
 }
 
 /*!
-    The Elements owned by this element.
+    The query integerValue() gives a single Integer value when one can be computed.
  */
-const QList<QElement *> *QElement::ownedElement() const
+qint32 QValueSpecification::integerValue() const
 {
 }
 
 /*!
-    The Element that owns this element.
+    The query isComputable() determines whether a value specification can be computed in a model. This operation cannot be fully defined in OCL. A conforming implementation is expected to deliver true for this operation for all value specifications that it can compute, and to compute all of those for which the operation is true. A conforming implementation is expected to be able to compute the value of all literals.
  */
-const QElement *QElement::owner() const
+bool QValueSpecification::isComputable() const
 {
 }
 
 /*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
+    The query isNull() returns true when it can be computed that the value is null.
  */
-QList<QElement *> *QElement::allOwnedElements() const
+bool QValueSpecification::isNull() const
 {
 }
 
 /*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
+    The query realValue() gives a single Real value when one can be computed.
  */
-bool QElement::mustBeOwned() const
+qreal QValueSpecification::realValue() const
 {
 }
 
-#include "moc_qelement.cpp"
+/*!
+    The query stringValue() gives a single String value when one can be computed.
+ */
+QString QValueSpecification::stringValue() const
+{
+}
+
+/*!
+    The query unlimitedValue() gives a single UnlimitedNatural value when one can be computed.
+ */
+qint32 QValueSpecification::unlimitedValue() const
+{
+}
+
+#include "moc_qvaluespecification.cpp"
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

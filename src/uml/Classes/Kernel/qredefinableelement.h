@@ -15,7 +15,7 @@
 ** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
 **
 ** In addition, as a special exception, Nokia gives you certain additional
-** rights. These rights are described in the Nokia Qt LGPL Exception
+** rights. These rights are described in the Nokia  LGPL Exception
 ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
 **
 ** GNU General Public License Usage
@@ -38,65 +38,62 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
+#ifndef CLASSES_KERNEL_QREDEFINABLEELEMENT_H
+#define CLASSES_KERNEL_QREDEFINABLEELEMENT_H
 
-#include "qelement.h"
-//#include "qelement_p.h"
+#include <QtUml/QtUmlGlobal>
+
+// Base class includes
+#include <QtUml/QNamedElement>
+
+// Qt includes
+#include <QtCore/QList>
+
+QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
-/*!
-    \class QElement
+QT_MODULE(QtUml)
 
-    \inmodule QtUml
+class QRedefinableElementPrivate;
 
-    \brief An element is a constituent of a model. As such, it has the capability of owning other elements.
- */
+class QClassifier;
 
-QElement::QElement(QObject *parent)
-    : QObject(parent)
+class Q_UML_EXPORT QRedefinableElement : public QObject
 {
-}
+    Q_OBJECT
 
-QElement::~QElement()
-{
-}
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setIsLeaf)
+    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElement READ redefinedElement)
+    Q_PROPERTY(const QList<QClassifier *> * redefinitionContext READ redefinitionContext)
 
-/*!
-    The Comments owned by this element.
- */
-QList<QComment *> *QElement::ownedComment() const
-{
-}
+public:
+    explicit QRedefinableElement(QObject *parent = 0);
+    virtual ~QRedefinableElement();
 
-/*!
-    The Elements owned by this element.
- */
-const QList<QElement *> *QElement::ownedElement() const
-{
-}
+    // Attributes (except those derived && !derivedUnion)
+    bool isLeaf() const;
+    void setIsLeaf(bool isLeaf);
 
-/*!
-    The Element that owns this element.
- */
-const QElement *QElement::owner() const
-{
-}
+    // Association-ends (except those derived && !derivedUnion)
+    const QList<QRedefinableElement *> *redefinedElement() const;
+    const QList<QClassifier *> *redefinitionContext() const;
 
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QList<QElement *> *QElement::allOwnedElements() const
-{
-}
+    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    bool isConsistentWith(QRedefinableElement *redefinee) const;
+    bool isRedefinitionContextValid(QRedefinableElement *redefined) const;
 
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QElement::mustBeOwned() const
-{
-}
-
-#include "moc_qelement.cpp"
+private:
+    Q_DISABLE_COPY(QRedefinableElement)
+    Q_DECLARE_PRIVATE(QRedefinableElement)
+};
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
+
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QRedefinableElement) *>)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QRedefinableElement) *> *)
+
+QT_END_HEADER
+
+#endif // CLASSES_KERNEL_QREDEFINABLEELEMENT_H
 

@@ -39,64 +39,86 @@
 **
 ****************************************************************************/
 
-#include "qelement.h"
-//#include "qelement_p.h"
+#include "qnamedelement.h"
+//#include "qnamedelement_p.h"
 
 QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
 /*!
-    \class QElement
+    \class QNamedElement
 
     \inmodule QtUml
 
-    \brief An element is a constituent of a model. As such, it has the capability of owning other elements.
+    \brief A named element is an element in a model that may have a name.
  */
 
-QElement::QElement(QObject *parent)
+QNamedElement::QNamedElement(QObject *parent)
     : QObject(parent)
 {
 }
 
-QElement::~QElement()
+QNamedElement::~QNamedElement()
 {
 }
 
 /*!
-    The Comments owned by this element.
+    The name of the NamedElement.
  */
-QList<QComment *> *QElement::ownedComment() const
+QString QNamedElement::name() const
+{
+}
+
+void QNamedElement::setName(QString name)
 {
 }
 
 /*!
-    The Elements owned by this element.
+    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
  */
-const QList<QElement *> *QElement::ownedElement() const
+QEnumerations::VisibilityKind QNamedElement::visibility() const
+{
+}
+
+void QNamedElement::setVisibility(QEnumerations::VisibilityKind visibility)
 {
 }
 
 /*!
-    The Element that owns this element.
+    Specifies the namespace that owns the NamedElement.
  */
-const QElement *QElement::owner() const
+const QNamespace *QNamedElement::namespace_() const
 {
 }
 
 /*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
+    The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
  */
-QList<QElement *> *QElement::allOwnedElements() const
+QList<QNamespace *> *QNamedElement::allNamespaces() const
 {
 }
 
 /*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
+    The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
  */
-bool QElement::mustBeOwned() const
+bool QNamedElement::isDistinguishableFrom(QNamedElement *n, QNamespace *ns) const
 {
 }
 
-#include "moc_qelement.cpp"
+/*!
+    When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces.
+ */
+QString QNamedElement::qualifiedName() const
+{
+}
+
+/*!
+    The query separator() gives the string that is used to separate names when constructing a qualified name.
+ */
+QString QNamedElement::separator() const
+{
+}
+
+#include "moc_qnamedelement.cpp"
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

@@ -5,7 +5,7 @@
 **
 ** This file is part of the QtUml module of the Qt Toolkit.
 **
-** [% GET '$QT_BEGIN_LICENSE:LGPL$' %]
+** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
 ** This file may be used under the terms of the GNU Lesser General Public
 ** License version 2.1 as published by the Free Software Foundation and
@@ -35,33 +35,62 @@
 **
 **
 **
-** [% GET '$QT_END_LICENSE$' %]
+** $QT_END_LICENSE$
 **
 ****************************************************************************/
 
-#include "qenumerations.h"
+#include "qslot.h"
+//#include "qslot_p.h"
 
-QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
-QEnumerations::QEnumerations()
+/*!
+    \class QSlot
+
+    \inmodule QtUml
+
+    \brief A slot specifies that an entity modeled by an instance specification has a value or values for a specific structural feature.
+ */
+
+QSlot::QSlot(QObject *parent)
+    : QObject(parent)
 {
 }
 
-[% FOREACH enumeration IN enumerations -%]
+QSlot::~QSlot()
+{
+}
+
 /*!
-    \enum ${namespace.replace('/', '::')}::QEnumerations::${enumeration.name}
-
-    ${enumeration.documentation}
-
-    [%- FOREACH literal IN enumeration.literal %]
-    \value ${literal.name}[% IF literal.documentation != '' %]
-    ${literal.documentation}[% END -%]
-    [%- END %]
+    The structural feature that specifies the values that may be held by the slot.
  */
+QStructuralFeature *QSlot::definingFeature() const
+{
+}
 
-[% END %]
+void QSlot::setDefiningFeature(QStructuralFeature *definingFeature)
+{
+}
 
-#include "moc_qenumerations.cpp"
+/*!
+    The instance specification that owns this slot.
+ */
+QInstanceSpecification *QSlot::owningInstance() const
+{
+}
 
-QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+void QSlot::setOwningInstance(QInstanceSpecification *owningInstance)
+{
+}
+
+/*!
+    The value or values corresponding to the defining feature for the owning instance specification.
+ */
+QList<QValueSpecification *> *QSlot::value() const
+{
+}
+
+#include "moc_qslot.cpp"
+
+QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

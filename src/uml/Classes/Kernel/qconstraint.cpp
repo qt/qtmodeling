@@ -5,7 +5,7 @@
 **
 ** This file is part of the QtUml module of the Qt Toolkit.
 **
-** [% GET '$QT_BEGIN_LICENSE:LGPL$' %]
+** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
 ** This file may be used under the terms of the GNU Lesser General Public
 ** License version 2.1 as published by the Free Software Foundation and
@@ -35,33 +35,62 @@
 **
 **
 **
-** [% GET '$QT_END_LICENSE$' %]
+** $QT_END_LICENSE$
 **
 ****************************************************************************/
 
-#include "qenumerations.h"
+#include "qconstraint.h"
+//#include "qconstraint_p.h"
 
-QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
-QEnumerations::QEnumerations()
+/*!
+    \class QConstraint
+
+    \inmodule QtUml
+
+    \brief A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the purpose of declaring some of the semantics of an element.
+ */
+
+QConstraint::QConstraint(QObject *parent)
+    : QObject(parent)
 {
 }
 
-[% FOREACH enumeration IN enumerations -%]
+QConstraint::~QConstraint()
+{
+}
+
 /*!
-    \enum ${namespace.replace('/', '::')}::QEnumerations::${enumeration.name}
-
-    ${enumeration.documentation}
-
-    [%- FOREACH literal IN enumeration.literal %]
-    \value ${literal.name}[% IF literal.documentation != '' %]
-    ${literal.documentation}[% END -%]
-    [%- END %]
+    The ordered set of Elements referenced by this Constraint.
  */
+QList<QElement *> *QConstraint::constrainedElement() const
+{
+}
 
-[% END %]
+/*!
+    Specifies the namespace that owns the NamedElement.
+ */
+QNamespace *QConstraint::context() const
+{
+}
 
-#include "moc_qenumerations.cpp"
+void QConstraint::setContext(QNamespace *context)
+{
+}
 
-QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+/*!
+    A condition that must be true when evaluated in order for the constraint to be satisfied.
+ */
+QValueSpecification *QConstraint::specification() const
+{
+}
+
+void QConstraint::setSpecification(QValueSpecification *specification)
+{
+}
+
+#include "moc_qconstraint.cpp"
+
+QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

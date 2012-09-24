@@ -39,64 +39,79 @@
 **
 ****************************************************************************/
 
-#include "qelement.h"
-//#include "qelement_p.h"
+#include "qopaqueexpression.h"
+//#include "qopaqueexpression_p.h"
 
 QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
 /*!
-    \class QElement
+    \class QOpaqueExpression
 
     \inmodule QtUml
 
-    \brief An element is a constituent of a model. As such, it has the capability of owning other elements.
+    \brief An opaque expression is an uninterpreted textual statement that denotes a (possibly empty) set of values when evaluated in a context.
  */
 
-QElement::QElement(QObject *parent)
+QOpaqueExpression::QOpaqueExpression(QObject *parent)
     : QObject(parent)
 {
 }
 
-QElement::~QElement()
+QOpaqueExpression::~QOpaqueExpression()
 {
 }
 
 /*!
-    The Comments owned by this element.
+    The text of the expression, possibly in multiple languages.
  */
-QList<QComment *> *QElement::ownedComment() const
+QString QOpaqueExpression::body() const
+{
+}
+
+void QOpaqueExpression::setBody(QString body)
 {
 }
 
 /*!
-    The Elements owned by this element.
+    Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.
  */
-const QList<QElement *> *QElement::ownedElement() const
+QString QOpaqueExpression::language() const
+{
+}
+
+void QOpaqueExpression::setLanguage(QString language)
 {
 }
 
 /*!
-    The Element that owns this element.
+    The query isIntegral() tells whether an expression is intended to produce an integer.
  */
-const QElement *QElement::owner() const
+bool QOpaqueExpression::isIntegral() const
 {
 }
 
 /*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
+    The query isNonNegative() tells whether an integer expression has a non-negative value.
  */
-QList<QElement *> *QElement::allOwnedElements() const
+bool QOpaqueExpression::isNonNegative() const
 {
 }
 
 /*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
+    The query isPositive() tells whether an integer expression has a positive value.
  */
-bool QElement::mustBeOwned() const
+bool QOpaqueExpression::isPositive() const
 {
 }
 
-#include "moc_qelement.cpp"
+/*!
+    The query value() gives an integer value for an expression intended to produce one.
+ */
+qint32 QOpaqueExpression::value() const
+{
+}
+
+#include "moc_qopaqueexpression.cpp"
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

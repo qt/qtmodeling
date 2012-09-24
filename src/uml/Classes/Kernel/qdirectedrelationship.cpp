@@ -15,7 +15,7 @@
 ** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
 **
 ** In addition, as a special exception, Nokia gives you certain additional
-** rights. These rights are described in the Nokia  LGPL Exception
+** rights. These rights are described in the Nokia Qt LGPL Exception
 ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
 **
 ** GNU General Public License Usage
@@ -38,25 +38,44 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef CLASSES_KERNEL_QELEMENT_P_H
-#define CLASSES_KERNEL_QELEMENT_P_H
 
-#include "private/qobject_p.h"
-
-QT_BEGIN_HEADER
+#include "qdirectedrelationship.h"
+//#include "qdirectedrelationship_p.h"
 
 QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
-QT_MODULE(QtUml)
+/*!
+    \class QDirectedRelationship
 
-class Q_UML_EXPORT QElementPrivate : public QObjectPrivate
+    \inmodule QtUml
+
+    \brief A directed relationship represents a relationship between a collection of source model elements and a collection of target model elements.
+ */
+
+QDirectedRelationship::QDirectedRelationship(QObject *parent)
+    : QObject(parent)
 {
-public:
-};
+}
+
+QDirectedRelationship::~QDirectedRelationship()
+{
+}
+
+/*!
+    Specifies the sources of the DirectedRelationship.
+ */
+const QList<QElement *> *QDirectedRelationship::source() const
+{
+}
+
+/*!
+    Specifies the targets of the DirectedRelationship.
+ */
+const QList<QElement *> *QDirectedRelationship::target() const
+{
+}
+
+#include "moc_qdirectedrelationship.cpp"
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
-
-QT_END_HEADER
-
-#endif // CLASSES_KERNEL_QELEMENT_P_H
 

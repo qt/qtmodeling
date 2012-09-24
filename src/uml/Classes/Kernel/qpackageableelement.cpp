@@ -5,7 +5,7 @@
 **
 ** This file is part of the QtUml module of the Qt Toolkit.
 **
-** [% GET '$QT_BEGIN_LICENSE:LGPL$' %]
+** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
 ** This file may be used under the terms of the GNU Lesser General Public
 ** License version 2.1 as published by the Free Software Foundation and
@@ -35,33 +35,44 @@
 **
 **
 **
-** [% GET '$QT_END_LICENSE$' %]
+** $QT_END_LICENSE$
 **
 ****************************************************************************/
 
-#include "qenumerations.h"
+#include "qpackageableelement.h"
+//#include "qpackageableelement_p.h"
 
-QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
-QEnumerations::QEnumerations()
+/*!
+    \class QPackageableElement
+
+    \inmodule QtUml
+
+    \brief A packageable element indicates a named element that may be owned directly by a package.
+ */
+
+QPackageableElement::QPackageableElement(QObject *parent)
+    : QObject(parent)
 {
 }
 
-[% FOREACH enumeration IN enumerations -%]
+QPackageableElement::~QPackageableElement()
+{
+}
+
 /*!
-    \enum ${namespace.replace('/', '::')}::QEnumerations::${enumeration.name}
-
-    ${enumeration.documentation}
-
-    [%- FOREACH literal IN enumeration.literal %]
-    \value ${literal.name}[% IF literal.documentation != '' %]
-    ${literal.documentation}[% END -%]
-    [%- END %]
+    Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
  */
+QEnumerations::VisibilityKind QPackageableElement::visibility() const
+{
+}
 
-[% END %]
+void QPackageableElement::setVisibility(QEnumerations::VisibilityKind visibility)
+{
+}
 
-#include "moc_qenumerations.cpp"
+#include "moc_qpackageableelement.cpp"
 
-QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

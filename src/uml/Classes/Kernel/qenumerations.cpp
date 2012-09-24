@@ -5,7 +5,7 @@
 **
 ** This file is part of the QtUml module of the Qt Toolkit.
 **
-** [% GET '$QT_BEGIN_LICENSE:LGPL$' %]
+** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
 ** This file may be used under the terms of the GNU Lesser General Public
 ** License version 2.1 as published by the Free Software Foundation and
@@ -35,33 +35,59 @@
 **
 **
 **
-** [% GET '$QT_END_LICENSE$' %]
+** $QT_END_LICENSE$
 **
 ****************************************************************************/
 
 #include "qenumerations.h"
 
-QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
 QEnumerations::QEnumerations()
 {
 }
 
-[% FOREACH enumeration IN enumerations -%]
 /*!
-    \enum ${namespace.replace('/', '::')}::QEnumerations::${enumeration.name}
+    \enum Classes::Kernel::QEnumerations::AggregationKind
 
-    ${enumeration.documentation}
+    AggregationKind is an enumeration type that specifies the literals for defining the kind of aggregation of a property.
 
-    [%- FOREACH literal IN enumeration.literal %]
-    \value ${literal.name}[% IF literal.documentation != '' %]
-    ${literal.documentation}[% END -%]
-    [%- END %]
+    \value None
+    Indicates that the property has no aggregation.
+    \value Shared
+    Indicates that the property has a shared aggregation.
+    \value Composite
+    Indicates that the property is aggregated compositely, i.e., the composite object has responsibility for the existence and storage of the composed objects (parts).
  */
 
-[% END %]
+/*!
+    \enum Classes::Kernel::QEnumerations::ParameterDirectionKind
+
+    Parameter direction kind is an enumeration type that defines literals used to specify direction of parameters.
+
+    \value In
+    Indicates that parameter values are passed into the behavioral element by the caller.
+    \value Inout
+    Indicates that parameter values are passed into a behavioral element by the caller and then back out to the caller from the behavioral element.
+    \value Out
+    \value Return
+    Indicates that parameter values are passed as return values from a behavioral element back to the caller.
+ */
+
+/*!
+    \enum Classes::Kernel::QEnumerations::VisibilityKind
+
+    VisibilityKind is an enumeration type that defines literals to determine the visibility of elements in a model.
+
+    \value Public
+    \value Private
+    \value Protected
+    \value Package
+ */
+
+
 
 #include "moc_qenumerations.cpp"
 
-QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_END_NAMESPACE_UML_CLASSES_KERNEL
 
