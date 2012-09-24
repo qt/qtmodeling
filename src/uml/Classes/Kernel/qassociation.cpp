@@ -5,7 +5,7 @@
 **
 ** This file is part of the QtUml module of the Qt Toolkit.
 **
-** [% GET '$QT_BEGIN_LICENSE:LGPL$' %]
+** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
 ** This file may be used under the terms of the GNU Lesser General Public
 ** License version 2.1 as published by the Free Software Foundation and
@@ -35,33 +35,72 @@
 **
 **
 **
-** [% GET '$QT_END_LICENSE$' %]
+** $QT_END_LICENSE$
 **
 ****************************************************************************/
 
-#include "qenumerations.h"
+#include "qassociation.h"
+//#include "qassociation_p.h"
 
-QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
-QEnumerations::QEnumerations()
+/*!
+    \class QAssociation
+
+    \inmodule QtUml
+
+    \brief An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link. A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.
+ */
+
+QAssociation::QAssociation(QObject *parent)
+    : QObject(parent)
 {
 }
 
-[% FOREACH enumeration IN enumerations -%]
+QAssociation::~QAssociation()
+{
+}
+
 /*!
-    \enum ${namespace.replace('/', '::')}::QEnumerations::${enumeration.name}
-
-    ${enumeration.documentation}
-
-    [%- FOREACH literal IN enumeration.literal %]
-    \value ${literal.name}[% IF literal.documentation != '' %]
-    ${literal.documentation}[% END -%]
-    [%- END %]
+    Specifies whether the association is derived from other model elements such as other associations or constraints.
  */
+bool QAssociation::isDerived() const
+{
+}
 
-[% END %]
+void QAssociation::setIsDerived(bool isDerived)
+{
+}
 
-#include "moc_qenumerations.cpp"
+/*!
+    Each end represents participation of instances of the classifier connected to the end in links of the association.
+ */
+QList<QProperty *> *QAssociation::memberEnd() const
+{
+}
 
-QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+/*!
+    The navigable ends that are owned by the association itself.
+ */
+QList<QProperty *> *QAssociation::navigableOwnedEnd() const
+{
+}
+
+/*!
+    The ends that are owned by the association itself.
+ */
+QList<QProperty *> *QAssociation::ownedEnd() const
+{
+}
+
+/*!
+    endType is derived from the types of the member ends.
+ */
+QList<QType *> *QAssociation::endType() const
+{
+}
+
+#include "moc_qassociation.cpp"
+
+QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

@@ -5,7 +5,7 @@
 **
 ** This file is part of the QtUml module of the Qt Toolkit.
 **
-** [% GET '$QT_BEGIN_LICENSE:LGPL$' %]
+** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
 ** This file may be used under the terms of the GNU Lesser General Public
 ** License version 2.1 as published by the Free Software Foundation and
@@ -35,33 +35,66 @@
 **
 **
 **
-** [% GET '$QT_END_LICENSE$' %]
+** $QT_END_LICENSE$
 **
 ****************************************************************************/
 
-#include "qenumerations.h"
+#include "qgeneralization.h"
+//#include "qgeneralization_p.h"
 
-QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
-QEnumerations::QEnumerations()
+/*!
+    \class QGeneralization
+
+    \inmodule QtUml
+
+    \brief A generalization is a taxonomic relationship between a more general classifier and a more specific classifier. Each instance of the specific classifier is also an indirect instance of the general classifier. Thus, the specific classifier inherits the features of the more general classifier.
+ */
+
+QGeneralization::QGeneralization(QObject *parent)
+    : QObject(parent)
 {
 }
 
-[% FOREACH enumeration IN enumerations -%]
+QGeneralization::~QGeneralization()
+{
+}
+
 /*!
-    \enum ${namespace.replace('/', '::')}::QEnumerations::${enumeration.name}
-
-    ${enumeration.documentation}
-
-    [%- FOREACH literal IN enumeration.literal %]
-    \value ${literal.name}[% IF literal.documentation != '' %]
-    ${literal.documentation}[% END -%]
-    [%- END %]
+    Indicates whether the specific classifier can be used wherever the general classifier can be used. If true, the execution traces of the specific classifier will be a superset of the execution traces of the general classifier.
  */
+bool QGeneralization::isSubstitutable() const
+{
+}
 
-[% END %]
+void QGeneralization::setIsSubstitutable(bool isSubstitutable)
+{
+}
 
-#include "moc_qenumerations.cpp"
+/*!
+    References the general classifier in the Generalization relationship.
+ */
+QClassifier *QGeneralization::general() const
+{
+}
 
-QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+void QGeneralization::setGeneral(QClassifier *general)
+{
+}
+
+/*!
+    References the specializing classifier in the Generalization relationship.
+ */
+QClassifier *QGeneralization::specific() const
+{
+}
+
+void QGeneralization::setSpecific(QClassifier *specific)
+{
+}
+
+#include "moc_qgeneralization.cpp"
+
+QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

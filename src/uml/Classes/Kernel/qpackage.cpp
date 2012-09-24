@@ -39,64 +39,100 @@
 **
 ****************************************************************************/
 
-#include "qelement.h"
-//#include "qelement_p.h"
+#include "qpackage.h"
+//#include "qpackage_p.h"
 
 QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
 /*!
-    \class QElement
+    \class QPackage
 
     \inmodule QtUml
 
-    \brief An element is a constituent of a model. As such, it has the capability of owning other elements.
+    \brief A package is used to group elements, and provides a namespace for the grouped elements.
  */
 
-QElement::QElement(QObject *parent)
+QPackage::QPackage(QObject *parent)
     : QObject(parent)
 {
 }
 
-QElement::~QElement()
+QPackage::~QPackage()
 {
 }
 
 /*!
-    The Comments owned by this element.
+    Provides an identifier for the package that can be used for many purposes. A URI is the universally unique identification of the package following the IETF URI specification, RFC 2396 http://www.ietf.org/rfc/rfc2396.txt and it must comply with those syntax rules.
  */
-QList<QComment *> *QElement::ownedComment() const
+QString QPackage::URI() const
+{
+}
+
+void QPackage::setURI(QString URI)
 {
 }
 
 /*!
-    The Elements owned by this element.
+    References the Package that owns this Package.
  */
-const QList<QElement *> *QElement::ownedElement() const
+QPackage *QPackage::nestingPackage() const
+{
+}
+
+void QPackage::setNestingPackage(QPackage *nestingPackage)
 {
 }
 
 /*!
-    The Element that owns this element.
+    References the PackageMerges that are owned by this Package.
  */
-const QElement *QElement::owner() const
+QList<QPackageMerge *> *QPackage::packageMerge() const
 {
 }
 
 /*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
+    Specifies the packageable elements that are owned by this Package.
  */
-QList<QElement *> *QElement::allOwnedElements() const
+QList<QPackageableElement *> *QPackage::packagedElement() const
 {
 }
 
 /*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
+    The query makesVisible() defines whether a Package makes an element visible outside itself. Elements with no visibility and elements with public visibility are made visible.
  */
-bool QElement::mustBeOwned() const
+bool QPackage::makesVisible(QNamedElement *el) const
 {
 }
 
-#include "moc_qelement.cpp"
+/*!
+    The query mustBeOwned() indicates whether elements of this type must have an owner.
+ */
+bool QPackage::mustBeOwned() const
+{
+}
+
+/*!
+    Missing derivation for Package::/nestedPackage : Package
+ */
+QList<QPackage *> *QPackage::nestedPackage() const
+{
+}
+
+/*!
+    Missing derivation for Package::/ownedType : Type
+ */
+QList<QType *> *QPackage::ownedType() const
+{
+}
+
+/*!
+    The query visibleMembers() defines which members of a Package can be accessed outside it.
+ */
+QList<QPackageableElement *> *QPackage::visibleMembers() const
+{
+}
+
+#include "moc_qpackage.cpp"
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

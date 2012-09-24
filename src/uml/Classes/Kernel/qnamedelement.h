@@ -38,16 +38,19 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef CLASSES_KERNEL_QELEMENT_H
-#define CLASSES_KERNEL_QELEMENT_H
+#ifndef CLASSES_KERNEL_QNAMEDELEMENT_H
+#define CLASSES_KERNEL_QNAMEDELEMENT_H
 
 #include <QtUml/QtUmlGlobal>
 
+// QtUml includes
+#include <QtUml/QEnumerations>
+
 // Base class includes
-#include <QtCore/QObject>
+#include <QtUml/QElement>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QString>
 
 QT_BEGIN_HEADER
 
@@ -55,42 +58,48 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
 QT_MODULE(QtUml)
 
-class QElementPrivate;
+class QNamedElementPrivate;
 
-class QComment;
+class QNamespace;
 
-class Q_UML_EXPORT QElement : public QObject
+class Q_UML_EXPORT QNamedElement : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 
 public:
-    explicit QElement(QObject *parent = 0);
-    virtual ~QElement();
+    explicit QNamedElement(QObject *parent = 0);
+    virtual ~QNamedElement();
+
+    // Attributes (except those derived && !derivedUnion)
+    QString name() const;
+    void setName(QString name);
+    QEnumerations::VisibilityKind visibility() const;
+    void setVisibility(QEnumerations::VisibilityKind visibility);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QComment *> *ownedComment() const;
-    const QList<QElement *> *ownedElement() const;
-    const QElement *owner() const;
+    const QNamespace *namespace_() const;
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    QList<QElement *> *allOwnedElements() const;
-    bool mustBeOwned() const;
+    QList<QNamespace *> *allNamespaces() const;
+    bool isDistinguishableFrom(QNamedElement *n, QNamespace *ns) const;
+    QString qualifiedName() const;
+    QString separator() const;
 
 private:
-    Q_DISABLE_COPY(QElement)
-    Q_DECLARE_PRIVATE(QElement)
+    Q_DISABLE_COPY(QNamedElement)
+    Q_DECLARE_PRIVATE(QNamedElement)
 };
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QElement) *>)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QElement) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QNamedElement) *>)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QNamedElement) *> *)
 
 QT_END_HEADER
 
-#endif // CLASSES_KERNEL_QELEMENT_H
+#endif // CLASSES_KERNEL_QNAMEDELEMENT_H
 

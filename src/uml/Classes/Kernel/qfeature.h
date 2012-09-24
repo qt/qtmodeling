@@ -5,7 +5,7 @@
 **
 ** This file is part of the QtUml module of the Qt Toolkit.
 **
-** [% GET '$QT_BEGIN_LICENSE:LGPL$' %]
+** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
 ** This file may be used under the terms of the GNU Lesser General Public
 ** License version 2.1 as published by the Free Software Foundation and
@@ -15,7 +15,7 @@
 ** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
 **
 ** In addition, as a special exception, Nokia gives you certain additional
-** rights. These rights are described in the Nokia Qt LGPL Exception
+** rights. These rights are described in the Nokia  LGPL Exception
 ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
 **
 ** GNU General Public License Usage
@@ -35,33 +35,59 @@
 **
 **
 **
-** [% GET '$QT_END_LICENSE$' %]
+** $QT_END_LICENSE$
 **
 ****************************************************************************/
+#ifndef CLASSES_KERNEL_QFEATURE_H
+#define CLASSES_KERNEL_QFEATURE_H
 
-#include "qenumerations.h"
+#include <QtUml/QtUmlGlobal>
 
-QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+// Base class includes
+#include <QtUml/QRedefinableElement>
 
-QEnumerations::QEnumerations()
+// Qt includes
+#include <QtCore/QList>
+
+QT_BEGIN_HEADER
+
+QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+
+QT_MODULE(QtUml)
+
+class QFeaturePrivate;
+
+class QClassifier;
+
+class Q_UML_EXPORT QFeature : public QObject
 {
-}
+    Q_OBJECT
 
-[% FOREACH enumeration IN enumerations -%]
-/*!
-    \enum ${namespace.replace('/', '::')}::QEnumerations::${enumeration.name}
+    Q_PROPERTY(bool isStatic READ isStatic WRITE setIsStatic)
+    Q_PROPERTY(const QList<QClassifier *> * featuringClassifier READ featuringClassifier)
 
-    ${enumeration.documentation}
+public:
+    explicit QFeature(QObject *parent = 0);
+    virtual ~QFeature();
 
-    [%- FOREACH literal IN enumeration.literal %]
-    \value ${literal.name}[% IF literal.documentation != '' %]
-    ${literal.documentation}[% END -%]
-    [%- END %]
- */
+    // Attributes (except those derived && !derivedUnion)
+    bool isStatic() const;
+    void setIsStatic(bool isStatic);
 
-[% END %]
+    // Association-ends (except those derived && !derivedUnion)
+    const QList<QClassifier *> *featuringClassifier() const;
 
-#include "moc_qenumerations.cpp"
+private:
+    Q_DISABLE_COPY(QFeature)
+    Q_DECLARE_PRIVATE(QFeature)
+};
 
-QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_END_NAMESPACE_UML_CLASSES_KERNEL
+
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QFeature) *>)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QFeature) *> *)
+
+QT_END_HEADER
+
+#endif // CLASSES_KERNEL_QFEATURE_H
 

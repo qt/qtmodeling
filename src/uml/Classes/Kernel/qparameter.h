@@ -38,16 +38,20 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef CLASSES_KERNEL_QELEMENT_H
-#define CLASSES_KERNEL_QELEMENT_H
+#ifndef CLASSES_KERNEL_QPARAMETER_H
+#define CLASSES_KERNEL_QPARAMETER_H
 
 #include <QtUml/QtUmlGlobal>
 
+// QtUml includes
+#include <QtUml/QEnumerations>
+
 // Base class includes
-#include <QtCore/QObject>
+#include <QtUml/QTypedElement>
+#include <QtUml/QMultiplicityElement>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QString>
 
 QT_BEGIN_HEADER
 
@@ -55,42 +59,47 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
 QT_MODULE(QtUml)
 
-class QElementPrivate;
+class QParameterPrivate;
 
-class QComment;
+class QValueSpecification;
+class QOperation;
 
-class Q_UML_EXPORT QElement : public QObject
+class Q_UML_EXPORT QParameter : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(QEnumerations::ParameterDirectionKind direction READ direction WRITE setDirection)
+    Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
+    Q_PROPERTY(QOperation * operation READ operation WRITE setOperation)
 
 public:
-    explicit QElement(QObject *parent = 0);
-    virtual ~QElement();
+    explicit QParameter(QObject *parent = 0);
+    virtual ~QParameter();
+
+    // Attributes (except those derived && !derivedUnion)
+    QEnumerations::ParameterDirectionKind direction() const;
+    void setDirection(QEnumerations::ParameterDirectionKind direction);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QComment *> *ownedComment() const;
-    const QList<QElement *> *ownedElement() const;
-    const QElement *owner() const;
+    QValueSpecification *defaultValue() const;
+    void setDefaultValue(QValueSpecification *defaultValue);
+    QOperation *operation() const;
+    void setOperation(QOperation *operation);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    QList<QElement *> *allOwnedElements() const;
-    bool mustBeOwned() const;
+    QString default_() const;
 
 private:
-    Q_DISABLE_COPY(QElement)
-    Q_DECLARE_PRIVATE(QElement)
+    Q_DISABLE_COPY(QParameter)
+    Q_DECLARE_PRIVATE(QParameter)
 };
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QElement) *>)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QElement) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QParameter) *>)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QParameter) *> *)
 
 QT_END_HEADER
 
-#endif // CLASSES_KERNEL_QELEMENT_H
+#endif // CLASSES_KERNEL_QPARAMETER_H
 

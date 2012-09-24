@@ -5,7 +5,7 @@
 **
 ** This file is part of the QtUml module of the Qt Toolkit.
 **
-** [% GET '$QT_BEGIN_LICENSE:LGPL$' %]
+** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
 ** This file may be used under the terms of the GNU Lesser General Public
 ** License version 2.1 as published by the Free Software Foundation and
@@ -35,33 +35,73 @@
 **
 **
 **
-** [% GET '$QT_END_LICENSE$' %]
+** $QT_END_LICENSE$
 **
 ****************************************************************************/
 
-#include "qenumerations.h"
+#include "qparameter.h"
+//#include "qparameter_p.h"
 
-QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
-QEnumerations::QEnumerations()
+/*!
+    \class QParameter
+
+    \inmodule QtUml
+
+    \brief A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral feature.
+ */
+
+QParameter::QParameter(QObject *parent)
+    : QObject(parent)
 {
 }
 
-[% FOREACH enumeration IN enumerations -%]
+QParameter::~QParameter()
+{
+}
+
 /*!
-    \enum ${namespace.replace('/', '::')}::QEnumerations::${enumeration.name}
-
-    ${enumeration.documentation}
-
-    [%- FOREACH literal IN enumeration.literal %]
-    \value ${literal.name}[% IF literal.documentation != '' %]
-    ${literal.documentation}[% END -%]
-    [%- END %]
+    Indicates whether a parameter is being sent into or out of a behavioral element.
  */
+QEnumerations::ParameterDirectionKind QParameter::direction() const
+{
+}
 
-[% END %]
+void QParameter::setDirection(QEnumerations::ParameterDirectionKind direction)
+{
+}
 
-#include "moc_qenumerations.cpp"
+/*!
+    Specifies a ValueSpecification that represents a value to be used when no argument is supplied for the Parameter.
+ */
+QValueSpecification *QParameter::defaultValue() const
+{
+}
 
-QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+void QParameter::setDefaultValue(QValueSpecification *defaultValue)
+{
+}
+
+/*!
+    References the Operation owning this parameter.
+ */
+QOperation *QParameter::operation() const
+{
+}
+
+void QParameter::setOperation(QOperation *operation)
+{
+}
+
+/*!
+    Missing derivation for Parameter::/default : String
+ */
+QString QParameter::default_() const
+{
+}
+
+#include "moc_qparameter.cpp"
+
+QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

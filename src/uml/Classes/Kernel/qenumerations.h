@@ -5,7 +5,7 @@
 **
 ** This file is part of the QtUml module of the Qt Toolkit.
 **
-** [% GET '$QT_BEGIN_LICENSE:LGPL$' %]
+** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
 ** This file may be used under the terms of the GNU Lesser General Public
 ** License version 2.1 as published by the Free Software Foundation and
@@ -15,7 +15,7 @@
 ** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
 **
 ** In addition, as a special exception, Nokia gives you certain additional
-** rights. These rights are described in the Nokia Qt LGPL Exception
+** rights. These rights are described in the Nokia  LGPL Exception
 ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
 **
 ** GNU General Public License Usage
@@ -35,33 +35,62 @@
 **
 **
 **
-** [% GET '$QT_END_LICENSE$' %]
+** $QT_END_LICENSE$
 **
 ****************************************************************************/
+#ifndef CLASSES_KERNEL_QENUMERATIONS_H
+#define CLASSES_KERNEL_QENUMERATIONS_H
 
-#include "qenumerations.h"
+#include <QtUml/QtUmlGlobal>
 
-QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+#include <QtCore/QObject>
 
-QEnumerations::QEnumerations()
+QT_BEGIN_HEADER
+
+QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+
+QT_MODULE(QtUml)
+
+class Q_UML_EXPORT QEnumerations : public QObject
 {
-}
+    Q_OBJECT
 
-[% FOREACH enumeration IN enumerations -%]
-/*!
-    \enum ${namespace.replace('/', '::')}::QEnumerations::${enumeration.name}
+    Q_ENUMS(AggregationKind)
+    Q_ENUMS(ParameterDirectionKind)
+    Q_ENUMS(VisibilityKind)
 
-    ${enumeration.documentation}
+public:
+    enum AggregationKind
+    {
+        None = 0,
+        Shared,
+        Composite
+    };
+    enum ParameterDirectionKind
+    {
+        In = 0,
+        Inout,
+        Out,
+        Return
+    };
+    enum VisibilityKind
+    {
+        Public = 0,
+        Private,
+        Protected,
+        Package
+    };
+private:
+    explicit QEnumerations();
+};
 
-    [%- FOREACH literal IN enumeration.literal %]
-    \value ${literal.name}[% IF literal.documentation != '' %]
-    ${literal.documentation}[% END -%]
-    [%- END %]
- */
+QT_END_NAMESPACE_UML_CLASSES_KERNEL
 
-[% END %]
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QEnumerations::AggregationKind))
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QEnumerations::ParameterDirectionKind))
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QEnumerations::VisibilityKind))
 
-#include "moc_qenumerations.cpp"
+QT_END_HEADER
 
-QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+#endif // CLASSES_KERNEL_QENUMERATIONS_H
 

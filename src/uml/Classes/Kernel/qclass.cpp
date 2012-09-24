@@ -5,7 +5,7 @@
 **
 ** This file is part of the QtUml module of the Qt Toolkit.
 **
-** [% GET '$QT_BEGIN_LICENSE:LGPL$' %]
+** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
 ** This file may be used under the terms of the GNU Lesser General Public
 ** License version 2.1 as published by the Free Software Foundation and
@@ -35,33 +35,79 @@
 **
 **
 **
-** [% GET '$QT_END_LICENSE$' %]
+** $QT_END_LICENSE$
 **
 ****************************************************************************/
 
-#include "qenumerations.h"
+#include "qclass.h"
+//#include "qclass_p.h"
 
-QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
-QEnumerations::QEnumerations()
+/*!
+    \class QClass
+
+    \inmodule QtUml
+
+    \brief A class describes a set of objects that share the same specifications of features, constraints, and semantics.
+ */
+
+QClass::QClass(QObject *parent)
+    : QObject(parent)
 {
 }
 
-[% FOREACH enumeration IN enumerations -%]
+QClass::~QClass()
+{
+}
+
 /*!
-    \enum ${namespace.replace('/', '::')}::QEnumerations::${enumeration.name}
-
-    ${enumeration.documentation}
-
-    [%- FOREACH literal IN enumeration.literal %]
-    \value ${literal.name}[% IF literal.documentation != '' %]
-    ${literal.documentation}[% END -%]
-    [%- END %]
+    If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.
  */
+bool QClass::isAbstract() const
+{
+}
 
-[% END %]
+void QClass::setIsAbstract(bool isAbstract)
+{
+}
 
-#include "moc_qenumerations.cpp"
+/*!
+    References all the Classifiers that are defined (nested) within the Class.
+ */
+QList<QClassifier *> *QClass::nestedClassifier() const
+{
+}
 
-QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+/*!
+    The attributes (i.e. the properties) owned by the class.
+ */
+QList<QProperty *> *QClass::ownedAttribute() const
+{
+}
+
+/*!
+    The operations owned by the class.
+ */
+QList<QOperation *> *QClass::ownedOperation() const
+{
+}
+
+/*!
+    The inherit operation is overridden to exclude redefined properties.
+ */
+QList<QNamedElement *> *QClass::inherit(QList<QNamedElement *> *inhs) const
+{
+}
+
+/*!
+    Missing derivation for Class::/superClass : Class
+ */
+QList<QClass *> *QClass::superClass() const
+{
+}
+
+#include "moc_qclass.cpp"
+
+QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

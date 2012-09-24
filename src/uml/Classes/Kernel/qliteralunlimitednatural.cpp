@@ -15,7 +15,7 @@
 ** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
 **
 ** In addition, as a special exception, Nokia gives you certain additional
-** rights. These rights are described in the Nokia  LGPL Exception
+** rights. These rights are described in the Nokia Qt LGPL Exception
 ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
 **
 ** GNU General Public License Usage
@@ -38,27 +38,55 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef CLASSES_KERNEL_QCOMMENT_P_H
-#define CLASSES_KERNEL_QCOMMENT_P_H
 
-#include "qelement_p.h"
-
-QT_BEGIN_HEADER
+#include "qliteralunlimitednatural.h"
+//#include "qliteralunlimitednatural_p.h"
 
 QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
-QT_MODULE(QtUml)
+/*!
+    \class QLiteralUnlimitedNatural
 
-class Q_UML_EXPORT QCommentPrivate : public QElementPrivate
+    \inmodule QtUml
+
+    \brief A literal unlimited natural is a specification of an unlimited natural number.
+ */
+
+QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QObject *parent)
+    : QObject(parent)
 {
-public:
-    QString body;
-    QList<QElement *> annotatedElement;
-};
+}
+
+QLiteralUnlimitedNatural::~QLiteralUnlimitedNatural()
+{
+}
+
+/*!
+    The specified UnlimitedNatural value.
+ */
+qint32 QLiteralUnlimitedNatural::value() const
+{
+}
+
+void QLiteralUnlimitedNatural::setValue(qint32 value)
+{
+}
+
+/*!
+    The query isComputable() is redefined to be true.
+ */
+bool QLiteralUnlimitedNatural::isComputable() const
+{
+}
+
+/*!
+    The query unlimitedValue() gives the value.
+ */
+qint32 QLiteralUnlimitedNatural::unlimitedValue() const
+{
+}
+
+#include "moc_qliteralunlimitednatural.cpp"
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
-
-QT_END_HEADER
-
-#endif // CLASSES_KERNEL_QCOMMENT_P_H
 

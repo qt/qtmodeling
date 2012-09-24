@@ -5,7 +5,7 @@
 **
 ** This file is part of the QtUml module of the Qt Toolkit.
 **
-** [% GET '$QT_BEGIN_LICENSE:LGPL$' %]
+** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
 ** This file may be used under the terms of the GNU Lesser General Public
 ** License version 2.1 as published by the Free Software Foundation and
@@ -35,33 +35,58 @@
 **
 **
 **
-** [% GET '$QT_END_LICENSE$' %]
+** $QT_END_LICENSE$
 **
 ****************************************************************************/
 
-#include "qenumerations.h"
+#include "qinstancespecification.h"
+//#include "qinstancespecification_p.h"
 
-QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
-QEnumerations::QEnumerations()
+/*!
+    \class QInstanceSpecification
+
+    \inmodule QtUml
+
+    \brief An instance specification is a model element that represents an instance in a modeled system.
+ */
+
+QInstanceSpecification::QInstanceSpecification(QObject *parent)
+    : QObject(parent)
 {
 }
 
-[% FOREACH enumeration IN enumerations -%]
+QInstanceSpecification::~QInstanceSpecification()
+{
+}
+
 /*!
-    \enum ${namespace.replace('/', '::')}::QEnumerations::${enumeration.name}
-
-    ${enumeration.documentation}
-
-    [%- FOREACH literal IN enumeration.literal %]
-    \value ${literal.name}[% IF literal.documentation != '' %]
-    ${literal.documentation}[% END -%]
-    [%- END %]
+    The classifier or classifiers of the represented instance. If multiple classifiers are specified, the instance is classified by all of them.
  */
+QList<QClassifier *> *QInstanceSpecification::classifier() const
+{
+}
 
-[% END %]
+/*!
+    A slot giving the value or values of a structural feature of the instance. An instance specification can have one slot per structural feature of its classifiers, including inherited features. It is not necessary to model a slot for each structural feature, in which case the instance specification is a partial description.
+ */
+QList<QSlot *> *QInstanceSpecification::slot() const
+{
+}
 
-#include "moc_qenumerations.cpp"
+/*!
+    A specification of how to compute, derive, or construct the instance.
+ */
+QValueSpecification *QInstanceSpecification::specification() const
+{
+}
 
-QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+void QInstanceSpecification::setSpecification(QValueSpecification *specification)
+{
+}
+
+#include "moc_qinstancespecification.cpp"
+
+QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

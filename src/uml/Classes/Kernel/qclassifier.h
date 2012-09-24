@@ -38,13 +38,15 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef CLASSES_KERNEL_QELEMENT_H
-#define CLASSES_KERNEL_QELEMENT_H
+#ifndef CLASSES_KERNEL_QCLASSIFIER_H
+#define CLASSES_KERNEL_QCLASSIFIER_H
 
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
+#include <QtUml/QType>
+#include <QtUml/QRedefinableElement>
+#include <QtUml/QNamespace>
 
 // Qt includes
 #include <QtCore/QList>
@@ -55,42 +57,63 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
 QT_MODULE(QtUml)
 
-class QElementPrivate;
+class QClassifierPrivate;
 
-class QComment;
+class QProperty;
+class QFeature;
+class QGeneralization;
+class QNamedElement;
 
-class Q_UML_EXPORT QElement : public QObject
+class Q_UML_EXPORT QClassifier : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setIsAbstract)
+    Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization WRITE setIsFinalSpecialization)
+    Q_PROPERTY(const QList<QProperty *> * attribute READ attribute)
+    Q_PROPERTY(const QList<QFeature *> * feature READ feature)
+    Q_PROPERTY(QList<QGeneralization *> * generalization READ generalization)
+    Q_PROPERTY(QList<QClassifier *> * redefinedClassifier READ redefinedClassifier)
 
 public:
-    explicit QElement(QObject *parent = 0);
-    virtual ~QElement();
+    explicit QClassifier(QObject *parent = 0);
+    virtual ~QClassifier();
+
+    // Attributes (except those derived && !derivedUnion)
+    bool isAbstract() const;
+    void setIsAbstract(bool isAbstract);
+    bool isFinalSpecialization() const;
+    void setIsFinalSpecialization(bool isFinalSpecialization);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QComment *> *ownedComment() const;
-    const QList<QElement *> *ownedElement() const;
-    const QElement *owner() const;
+    const QList<QProperty *> *attribute() const;
+    const QList<QFeature *> *feature() const;
+    QList<QGeneralization *> *generalization() const;
+    QList<QClassifier *> *redefinedClassifier() const;
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    QList<QElement *> *allOwnedElements() const;
-    bool mustBeOwned() const;
+    QList<QFeature *> *allFeatures() const;
+    QList<QClassifier *> *allParents() const;
+    bool conformsTo(QClassifier *other) const;
+    QList<QClassifier *> *general() const;
+    bool hasVisibilityOf(QNamedElement *n) const;
+    QList<QNamedElement *> *inherit(QList<QNamedElement *> *inhs) const;
+    QList<QNamedElement *> *inheritableMembers(QClassifier *c) const;
+    QList<QNamedElement *> *inheritedMember() const;
+    bool maySpecializeType(QClassifier *c) const;
+    QList<QClassifier *> *parents() const;
 
 private:
-    Q_DISABLE_COPY(QElement)
-    Q_DECLARE_PRIVATE(QElement)
+    Q_DISABLE_COPY(QClassifier)
+    Q_DECLARE_PRIVATE(QClassifier)
 };
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QElement) *>)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QElement) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QClassifier) *>)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QClassifier) *> *)
 
 QT_END_HEADER
 
-#endif // CLASSES_KERNEL_QELEMENT_H
+#endif // CLASSES_KERNEL_QCLASSIFIER_H
 

@@ -100,31 +100,31 @@ class Q_UML_EXPORT ${class.name} : public QObject
 public:
     explicit ${class.name}(QObject *parent = 0);
     virtual ~${class.name}();
-
     [%- IF class.item('attribute') %]
+
     // Attributes (except those derived && !derivedUnion)
-    [%- FOREACH attribute IN class.attribute %]
+    [%- FOREACH attribute IN class.attribute -%]
     [%- FOREACH accessor IN attribute.accessor %]
     ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
     [%- END -%]
     [%- END %]
-    [% END -%]
-
+    [%- END %]
     [%- IF class.item('associationend') %]
+
     // Association-ends (except those derived && !derivedUnion)
-    [%- FOREACH associationend IN class.associationend %]
+    [%- FOREACH associationend IN class.associationend -%]
     [%- FOREACH accessor IN associationend.accessor %]
     ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
     [%- END -%]
     [%- END %]
-    [% END -%]
-
+    [%- END %]
     [%- IF class.item('operation') %]
+
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     [%- FOREACH operation IN class.operation %]
     ${operation.return}${operation.name}([%- FOREACH parameter IN operation.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${operation.constness};
     [%- END %]
-    [% END -%]
+    [%- END %]
 
 private:
     Q_DISABLE_COPY(${class.name})

@@ -5,7 +5,7 @@
 **
 ** This file is part of the QtUml module of the Qt Toolkit.
 **
-** [% GET '$QT_BEGIN_LICENSE:LGPL$' %]
+** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
 ** This file may be used under the terms of the GNU Lesser General Public
 ** License version 2.1 as published by the Free Software Foundation and
@@ -35,33 +35,51 @@
 **
 **
 **
-** [% GET '$QT_END_LICENSE$' %]
+** $QT_END_LICENSE$
 **
 ****************************************************************************/
 
-#include "qenumerations.h"
+#include "qfeature.h"
+//#include "qfeature_p.h"
 
-QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
-QEnumerations::QEnumerations()
+/*!
+    \class QFeature
+
+    \inmodule QtUml
+
+    \brief A feature declares a behavioral or structural characteristic of instances of classifiers.
+ */
+
+QFeature::QFeature(QObject *parent)
+    : QObject(parent)
 {
 }
 
-[% FOREACH enumeration IN enumerations -%]
+QFeature::~QFeature()
+{
+}
+
 /*!
-    \enum ${namespace.replace('/', '::')}::QEnumerations::${enumeration.name}
-
-    ${enumeration.documentation}
-
-    [%- FOREACH literal IN enumeration.literal %]
-    \value ${literal.name}[% IF literal.documentation != '' %]
-    ${literal.documentation}[% END -%]
-    [%- END %]
+    Specifies whether this feature characterizes individual instances classified by the classifier (false) or the classifier itself (true).
  */
+bool QFeature::isStatic() const
+{
+}
 
-[% END %]
+void QFeature::setIsStatic(bool isStatic)
+{
+}
 
-#include "moc_qenumerations.cpp"
+/*!
+    The Classifiers that have this Feature as a feature.
+ */
+const QList<QClassifier *> *QFeature::featuringClassifier() const
+{
+}
 
-QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+#include "moc_qfeature.cpp"
+
+QT_END_NAMESPACE_UML_CLASSES_KERNEL
 

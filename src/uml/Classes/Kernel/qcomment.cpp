@@ -40,7 +40,7 @@
 ****************************************************************************/
 
 #include "qcomment.h"
-#include "qcomment_p.h"
+//#include "qcomment_p.h"
 
 QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
@@ -49,54 +49,34 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
     \inmodule QtUml
 
-    \brief The QComment class specifies a textual annotation that can be attached to a set of QElement's.
-
-    A QComment gives the ability to attach various remarks to QElement's. A QComment carries no semantic force, but may contain
-    information that is useful to a modeler.
-
-    A QComment can be owned by any QElement.
+    \brief A comment is a textual annotation that can be attached to a set of elements.
  */
 
-/*!
-    The constructor.
- */
 QComment::QComment(QObject *parent)
-    : QElement(*new QCommentPrivate, parent)
+    : QObject(parent)
 {
 }
 
-/*!
-    The destructor.
- */
 QComment::~QComment()
 {
 }
 
 /*!
-    Returns a string that is the comment.
- */
-const QString &QComment::body() const
-{
-    Q_D(const QComment);
-    return d->body;
-}
-
-/*!
     Specifies a string that is the comment.
  */
-void QComment::setBody(const QString &body)
+QString QComment::body() const
 {
-    Q_D(QComment);
-    d->body = body;
+}
+
+void QComment::setBody(QString body)
+{
 }
 
 /*!
-    References the QElement(s) being commented.
+    References the Element(s) being commented.
  */
-QList<QElement *> &QComment::annotatedElement()
+QList<QElement *> *QComment::annotatedElement() const
 {
-    Q_D(QComment);
-    return d->annotatedElement;
 }
 
 #include "moc_qcomment.cpp"

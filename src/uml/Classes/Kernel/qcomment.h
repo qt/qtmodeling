@@ -41,7 +41,14 @@
 #ifndef CLASSES_KERNEL_QCOMMENT_H
 #define CLASSES_KERNEL_QCOMMENT_H
 
+#include <QtUml/QtUmlGlobal>
+
+// Base class includes
 #include <QtUml/QElement>
+
+// Qt includes
+#include <QtCore/QString>
+#include <QtCore/QList>
 
 QT_BEGIN_HEADER
 
@@ -51,26 +58,24 @@ QT_MODULE(QtUml)
 
 class QCommentPrivate;
 
-class Q_UML_EXPORT QComment : public QElement
+
+class Q_UML_EXPORT QComment : public QObject
 {
     Q_OBJECT
+
     Q_PROPERTY(QString body READ body WRITE setBody)
-    Q_PROPERTY(QList<QElement *> annotatedElement READ annotatedElement)
+    Q_PROPERTY(QList<QElement *> * annotatedElement READ annotatedElement)
 
 public:
     explicit QComment(QObject *parent = 0);
     virtual ~QComment();
 
-    // Attributes
+    // Attributes (except those derived && !derivedUnion)
+    QString body() const;
+    void setBody(QString body);
 
-    const QString &body() const;
-    void setBody(const QString &body);
-
-    // Association-ends
-
-    QList<QElement *> &annotatedElement();
-
-    // Operations
+    // Association-ends (except those derived && !derivedUnion)
+    QList<QElement *> *annotatedElement() const;
 
 private:
     Q_DISABLE_COPY(QComment)
@@ -78,6 +83,9 @@ private:
 };
 
 QT_END_NAMESPACE_UML_CLASSES_KERNEL
+
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QComment) *>)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QComment) *> *)
 
 QT_END_HEADER
 

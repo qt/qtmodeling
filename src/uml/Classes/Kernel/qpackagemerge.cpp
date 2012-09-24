@@ -5,7 +5,7 @@
 **
 ** This file is part of the QtUml module of the Qt Toolkit.
 **
-** [% GET '$QT_BEGIN_LICENSE:LGPL$' %]
+** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
 ** This file may be used under the terms of the GNU Lesser General Public
 ** License version 2.1 as published by the Free Software Foundation and
@@ -35,33 +35,55 @@
 **
 **
 **
-** [% GET '$QT_END_LICENSE$' %]
+** $QT_END_LICENSE$
 **
 ****************************************************************************/
 
-#include "qenumerations.h"
+#include "qpackagemerge.h"
+//#include "qpackagemerge_p.h"
 
-QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
 
-QEnumerations::QEnumerations()
+/*!
+    \class QPackageMerge
+
+    \inmodule QtUml
+
+    \brief A package merge defines how the contents of one package are extended by the contents of another package.
+ */
+
+QPackageMerge::QPackageMerge(QObject *parent)
+    : QObject(parent)
 {
 }
 
-[% FOREACH enumeration IN enumerations -%]
+QPackageMerge::~QPackageMerge()
+{
+}
+
 /*!
-    \enum ${namespace.replace('/', '::')}::QEnumerations::${enumeration.name}
-
-    ${enumeration.documentation}
-
-    [%- FOREACH literal IN enumeration.literal %]
-    \value ${literal.name}[% IF literal.documentation != '' %]
-    ${literal.documentation}[% END -%]
-    [%- END %]
+    References the Package that is to be merged with the receiving package of the PackageMerge.
  */
+QPackage *QPackageMerge::mergedPackage() const
+{
+}
 
-[% END %]
+void QPackageMerge::setMergedPackage(QPackage *mergedPackage)
+{
+}
 
-#include "moc_qenumerations.cpp"
+/*!
+    References the Package that is being extended with the contents of the merged package of the PackageMerge.
+ */
+QPackage *QPackageMerge::receivingPackage() const
+{
+}
 
-QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+void QPackageMerge::setReceivingPackage(QPackage *receivingPackage)
+{
+}
+
+#include "moc_qpackagemerge.cpp"
+
+QT_END_NAMESPACE_UML_CLASSES_KERNEL
 
