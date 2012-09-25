@@ -73,7 +73,7 @@ class Q_UML_EXPORT QClass : public QObject, public QClassifier
     Q_PROPERTY(QList<QOperation *> * ownedOperation READ ownedOperation)
 
 public:
-    explicit QClass();
+    explicit QClass(QObject *parent = 0);
     virtual ~QClass();
 
     // Attributes (except those derived && !derivedUnion)

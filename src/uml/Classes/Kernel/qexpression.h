@@ -68,7 +68,7 @@ class Q_UML_EXPORT QExpression : public QObject, public QValueSpecification
     Q_PROPERTY(QList<QValueSpecification *> * operand READ operand)
 
 public:
-    explicit QExpression();
+    explicit QExpression(QObject *parent = 0);
     virtual ~QExpression();
 
     // Attributes (except those derived && !derivedUnion)

@@ -73,7 +73,7 @@ class Q_UML_EXPORT QAssociation : public QObject, public QRelationship, public Q
     Q_PROPERTY(QList<QProperty *> * ownedEnd READ ownedEnd)
 
 public:
-    explicit QAssociation();
+    explicit QAssociation(QObject *parent = 0);
     virtual ~QAssociation();
 
     // Attributes (except those derived && !derivedUnion)

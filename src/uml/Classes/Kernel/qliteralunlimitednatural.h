@@ -63,7 +63,7 @@ class Q_UML_EXPORT QLiteralUnlimitedNatural : public QObject, public QLiteralSpe
     Q_PROPERTY(qint32 value READ value WRITE setValue)
 
 public:
-    explicit QLiteralUnlimitedNatural();
+    explicit QLiteralUnlimitedNatural(QObject *parent = 0);
     virtual ~QLiteralUnlimitedNatural();
 
     // Attributes (except those derived && !derivedUnion)

@@ -63,7 +63,7 @@ class Q_UML_EXPORT QLiteralReal : public QObject, public QLiteralSpecification
     Q_PROPERTY(qreal value READ value WRITE setValue)
 
 public:
-    explicit QLiteralReal();
+    explicit QLiteralReal(QObject *parent = 0);
     virtual ~QLiteralReal();
 
     // Attributes (except those derived && !derivedUnion)

@@ -62,7 +62,7 @@ class Q_UML_EXPORT QLiteralNull : public QObject, public QLiteralSpecification
 
 
 public:
-    explicit QLiteralNull();
+    explicit QLiteralNull(QObject *parent = 0);
     virtual ~QLiteralNull();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)

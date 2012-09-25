@@ -71,7 +71,7 @@ class Q_UML_EXPORT QPackageImport : public QObject, public QDirectedRelationship
     Q_PROPERTY(QNamespace * importingNamespace READ importingNamespace WRITE setImportingNamespace)
 
 public:
-    explicit QPackageImport();
+    explicit QPackageImport(QObject *parent = 0);
     virtual ~QPackageImport();
 
     // Attributes (except those derived && !derivedUnion)

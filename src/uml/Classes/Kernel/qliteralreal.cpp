@@ -52,7 +52,8 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A literal real is a specification of a real value.
  */
 
-QLiteralReal::QLiteralReal()
+QLiteralReal::QLiteralReal(QObject *parent)
+    : QObject(parent)
 {
 }
 
@@ -61,7 +62,7 @@ QLiteralReal::~QLiteralReal()
 }
 
 /*!
-    HASH(0x2a4bbc8)
+    HASH(0x1301df0)
  */
 qreal QLiteralReal::value() const
 {

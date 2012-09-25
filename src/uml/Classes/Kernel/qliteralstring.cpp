@@ -52,7 +52,8 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A literal string is a specification of a string value.
  */
 
-QLiteralString::QLiteralString()
+QLiteralString::QLiteralString(QObject *parent)
+    : QObject(parent)
 {
 }
 

@@ -66,7 +66,7 @@ class Q_UML_EXPORT QPackageMerge : public QObject, public QDirectedRelationship
     Q_PROPERTY(QPackage * receivingPackage READ receivingPackage WRITE setReceivingPackage)
 
 public:
-    explicit QPackageMerge();
+    explicit QPackageMerge(QObject *parent = 0);
     virtual ~QPackageMerge();
 
     // Association-ends (except those derived && !derivedUnion)

@@ -68,7 +68,7 @@ class Q_UML_EXPORT QOpaqueExpression : public QObject, public QValueSpecificatio
     Q_PROPERTY(QString language READ language WRITE setLanguage)
 
 public:
-    explicit QOpaqueExpression();
+    explicit QOpaqueExpression(QObject *parent = 0);
     virtual ~QOpaqueExpression();
 
     // Attributes (except those derived && !derivedUnion)

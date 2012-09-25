@@ -52,7 +52,8 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief An operation is a behavioral feature of a classifier that specifies the name, type, parameters, and constraints for invoking an associated behavior.
  */
 
-QOperation::QOperation()
+QOperation::QOperation(QObject *parent)
+    : QObject(parent)
 {
 }
 

@@ -67,7 +67,7 @@ class Q_UML_EXPORT QGeneralization : public QObject, public QDirectedRelationshi
     Q_PROPERTY(QClassifier * specific READ specific WRITE setSpecific)
 
 public:
-    explicit QGeneralization();
+    explicit QGeneralization(QObject *parent = 0);
     virtual ~QGeneralization();
 
     // Attributes (except those derived && !derivedUnion)

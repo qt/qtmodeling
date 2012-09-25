@@ -64,7 +64,7 @@ class Q_UML_EXPORT QEnumerationLiteral : public QInstanceSpecification
     Q_PROPERTY(QEnumeration * enumeration READ enumeration WRITE setEnumeration)
 
 public:
-    explicit QEnumerationLiteral();
+    explicit QEnumerationLiteral(QObject *parent = 0);
     virtual ~QEnumerationLiteral();
 
     // Association-ends (except those derived && !derivedUnion)

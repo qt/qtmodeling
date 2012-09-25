@@ -52,7 +52,8 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A class describes a set of objects that share the same specifications of features, constraints, and semantics.
  */
 
-QClass::QClass()
+QClass::QClass(QObject *parent)
+    : QObject(parent)
 {
 }
 

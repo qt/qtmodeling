@@ -52,7 +52,8 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A package import is a relationship that allows the use of unqualified names to refer to package members from other namespaces.
  */
 
-QPackageImport::QPackageImport()
+QPackageImport::QPackageImport(QObject *parent)
+    : QObject(parent)
 {
 }
 

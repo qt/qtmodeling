@@ -52,7 +52,8 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A slot specifies that an entity modeled by an instance specification has a value or values for a specific structural feature.
  */
 
-QSlot::QSlot()
+QSlot::QSlot(QObject *parent)
+    : QObject(parent)
 {
 }
 
