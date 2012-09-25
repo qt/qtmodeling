@@ -56,7 +56,7 @@ class QTypedElementPrivate;
 
 class QType;
 
-class Q_UML_EXPORT QTypedElement : public QNamedElement
+class Q_UML_EXPORT QTypedElement : public virtual QNamedElement
 {
 public:
     virtual ~QTypedElement();

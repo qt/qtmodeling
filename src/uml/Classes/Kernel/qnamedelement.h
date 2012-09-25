@@ -62,7 +62,7 @@ class QNamedElementPrivate;
 
 class QNamespace;
 
-class Q_UML_EXPORT QNamedElement : public QElement
+class Q_UML_EXPORT QNamedElement : public virtual QElement
 {
 public:
     virtual ~QNamedElement();

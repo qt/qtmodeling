@@ -63,7 +63,7 @@ class QPackageableElement;
 class QConstraint;
 class QPackageImport;
 
-class Q_UML_EXPORT QNamespace : public QNamedElement
+class Q_UML_EXPORT QNamespace : public virtual QNamedElement
 {
 public:
     virtual ~QNamespace();

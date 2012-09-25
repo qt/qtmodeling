@@ -57,7 +57,7 @@ QT_MODULE(QtUml)
 
 class QPackageableElementPrivate;
 
-class Q_UML_EXPORT QPackageableElement : public QNamedElement
+class Q_UML_EXPORT QPackageableElement : public virtual QNamedElement
 {
 public:
     virtual ~QPackageableElement();

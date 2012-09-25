@@ -59,7 +59,7 @@ class QRedefinableElementPrivate;
 
 class QClassifier;
 
-class Q_UML_EXPORT QRedefinableElement : public QNamedElement
+class Q_UML_EXPORT QRedefinableElement : public virtual QNamedElement
 {
 public:
     virtual ~QRedefinableElement();
