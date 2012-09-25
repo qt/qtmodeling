@@ -45,7 +45,6 @@
 
 // Base class includes
 #include <QtCore/QObject>
-#include <QtCore/QObject>
 #include <QtUml/QDirectedRelationship>
 
 QT_BEGIN_HEADER
@@ -62,6 +61,19 @@ class Q_UML_EXPORT QPackageMerge : public QObject, public QDirectedRelationship
 {
     Q_OBJECT
 
+    // From QElement
+    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
+    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(const QElement * owner READ owner)
+
+    // From QRelationship
+    Q_PROPERTY(const QList<QElement *> * relatedElement READ relatedElement)
+
+    // From QDirectedRelationship
+    Q_PROPERTY(const QList<QElement *> * source READ source)
+    Q_PROPERTY(const QList<QElement *> * target READ target)
+
+    // From QPackageMerge
     Q_PROPERTY(QPackage * mergedPackage READ mergedPackage WRITE setMergedPackage)
     Q_PROPERTY(QPackage * receivingPackage READ receivingPackage WRITE setReceivingPackage)
 

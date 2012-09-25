@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QInstanceSpecification>
 
 QT_BEGIN_HEADER
@@ -61,6 +60,7 @@ class Q_UML_EXPORT QEnumerationLiteral : public QInstanceSpecification
 {
     Q_OBJECT
 
+    // From QEnumerationLiteral
     Q_PROPERTY(QEnumeration * enumeration READ enumeration WRITE setEnumeration)
 
 public:

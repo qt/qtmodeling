@@ -45,7 +45,6 @@
 
 // Base class includes
 #include <QtCore/QObject>
-#include <QtCore/QObject>
 #include <QtUml/QLiteralSpecification>
 
 QT_BEGIN_HEADER
@@ -60,6 +59,27 @@ class Q_UML_EXPORT QLiteralReal : public QObject, public QLiteralSpecification
 {
     Q_OBJECT
 
+    // From QElement
+    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
+    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(const QElement * owner READ owner)
+
+    // From QNamedElement
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+
+    // From QPackageableElement
+    Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
+
+    // From QTypedElement
+    Q_PROPERTY(QType * type READ type WRITE setType)
+
+    // From QValueSpecification
+
+    // From QLiteralSpecification
+
+    // From QLiteralReal
     Q_PROPERTY(qreal value READ value WRITE setValue)
 
 public:

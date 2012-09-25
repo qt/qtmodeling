@@ -1,3 +1,36 @@
+[%- MACRO PARENTSOF(class, parents) BLOCK -%]
+    [%- IF class.isAbstract == 'true' -%]
+        [%- FOREACH include IN class.superclassinclude %]
+            [%- PARENTSOF(classes.item(include.split('/').last), parents) -%]
+        [%- END %]
+        [%- parents.push(class) -%]
+    [%- END %]
+[%- END -%]
+[%- MACRO GENERATEPROPERTIES(class) BLOCK -%]
+    [%- parents = [] -%]
+    [%- FOREACH include IN class.superclassinclude %]
+        [%- PARENTSOF(classes.item(include.split('/').last), parents) -%]
+    [%- END %]
+    [%- parents.push(class) -%]
+    [%- FOREACH parent IN parents.unique %]
+    // From ${parent.name}
+        [%- FOREACH attribute IN parent.attribute -%]
+            [%- IF attribute.accessor.size == 1 %]
+    Q_PROPERTY(${attribute.accessor.0.return}[%- IF attribute.accessor.0.return.substr(attribute.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${attribute.accessor.0.name} READ ${attribute.accessor.0.name})
+            [%- ELSE %]
+    Q_PROPERTY(${attribute.accessor.0.return}[%- IF attribute.accessor.0.return.substr(attribute.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${attribute.accessor.0.name} READ ${attribute.accessor.0.name} WRITE ${attribute.accessor.1.name})
+            [%- END -%]
+        [%- END -%]
+        [%- FOREACH associationend IN parent.associationend -%]
+            [%- IF associationend.accessor.size == 1 %]
+    Q_PROPERTY(${associationend.accessor.0.return}[%- IF associationend.accessor.0.return.substr(associationend.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${associationend.accessor.0.name} READ ${associationend.accessor.0.name})
+            [%- ELSE %]
+    Q_PROPERTY(${associationend.accessor.0.return}[%- IF associationend.accessor.0.return.substr(associationend.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${associationend.accessor.0.name} READ ${associationend.accessor.0.name} WRITE ${associationend.accessor.1.name})
+            [%- END -%]
+        [%- END %]
+
+    [%- END -%]
+[%- END -%]
 /****************************************************************************
 **
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
@@ -51,9 +84,6 @@
 [% END -%]
 
 // Base class includes
-[%- IF class.isAbstract == 'false' %]
-#include <QtCore/QObject>
-[%- END -%]
 [%- IF class.item('superclassinclude') -%]
 [%- FOREACH include IN class.superclassinclude %]
 #include <${include}>
@@ -85,20 +115,7 @@ class Q_UML_EXPORT ${class.name}[%- IF class.superclassinclude -%] : [% END -%][
 [%- IF class.isAbstract == 'false' %]
     Q_OBJECT
 
-    [%- FOREACH attribute IN class.attribute -%]
-        [%- IF attribute.accessor.size == 1 %]
-    Q_PROPERTY(${attribute.accessor.0.return}[%- IF attribute.accessor.0.return.substr(attribute.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${attribute.accessor.0.name} READ ${attribute.accessor.0.name})
-        [%- ELSE %]
-    Q_PROPERTY(${attribute.accessor.0.return}[%- IF attribute.accessor.0.return.substr(attribute.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${attribute.accessor.0.name} READ ${attribute.accessor.0.name} WRITE ${attribute.accessor.1.name})
-        [%- END -%]
-    [%- END -%]
-    [%- FOREACH associationend IN class.associationend -%]
-        [%- IF associationend.accessor.size == 1 %]
-    Q_PROPERTY(${associationend.accessor.0.return}[%- IF associationend.accessor.0.return.substr(associationend.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${associationend.accessor.0.name} READ ${associationend.accessor.0.name})
-        [%- ELSE %]
-    Q_PROPERTY(${associationend.accessor.0.return}[%- IF associationend.accessor.0.return.substr(associationend.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${associationend.accessor.0.name} READ ${associationend.accessor.0.name} WRITE ${associationend.accessor.1.name})
-        [%- END -%]
-    [%- END %]
+    [%- GENERATEPROPERTIES(class) -%]
 [% END %]
 public:
     [%- IF class.isAbstract == 'false' %]

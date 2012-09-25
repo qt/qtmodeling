@@ -45,7 +45,6 @@
 
 // Base class includes
 #include <QtCore/QObject>
-#include <QtCore/QObject>
 #include <QtUml/QClassifier>
 
 // Qt includes
@@ -67,6 +66,43 @@ class Q_UML_EXPORT QDataType : public QObject, public QClassifier
 {
     Q_OBJECT
 
+    // From QElement
+    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
+    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(const QElement * owner READ owner)
+
+    // From QNamedElement
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+
+    // From QPackageableElement
+    Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
+
+    // From QType
+    Q_PROPERTY(QPackage * package READ package WRITE setPackage)
+
+    // From QRedefinableElement
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
+    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElement READ redefinedElement)
+    Q_PROPERTY(const QList<QClassifier *> * redefinitionContext READ redefinitionContext)
+
+    // From QNamespace
+    Q_PROPERTY(QList<QElementImport *> * elementImport READ elementImport)
+    Q_PROPERTY(const QList<QNamedElement *> * member READ member)
+    Q_PROPERTY(const QList<QNamedElement *> * ownedMember READ ownedMember)
+    Q_PROPERTY(QList<QConstraint *> * ownedRule READ ownedRule)
+    Q_PROPERTY(QList<QPackageImport *> * packageImport READ packageImport)
+
+    // From QClassifier
+    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract)
+    Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization)
+    Q_PROPERTY(const QList<QProperty *> * attribute READ attribute)
+    Q_PROPERTY(const QList<QFeature *> * feature READ feature)
+    Q_PROPERTY(QList<QGeneralization *> * generalization READ generalization)
+    Q_PROPERTY(QList<QClassifier *> * redefinedClassifier READ redefinedClassifier)
+
+    // From QDataType
     Q_PROPERTY(QList<QProperty *> * ownedAttribute READ ownedAttribute)
     Q_PROPERTY(QList<QOperation *> * ownedOperation READ ownedOperation)
 

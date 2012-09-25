@@ -45,7 +45,6 @@
 
 // Base class includes
 #include <QtCore/QObject>
-#include <QtCore/QObject>
 #include <QtUml/QValueSpecification>
 
 // Qt includes
@@ -64,6 +63,25 @@ class Q_UML_EXPORT QExpression : public QObject, public QValueSpecification
 {
     Q_OBJECT
 
+    // From QElement
+    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
+    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(const QElement * owner READ owner)
+
+    // From QNamedElement
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+
+    // From QPackageableElement
+    Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
+
+    // From QTypedElement
+    Q_PROPERTY(QType * type READ type WRITE setType)
+
+    // From QValueSpecification
+
+    // From QExpression
     Q_PROPERTY(QString symbol READ symbol WRITE setSymbol)
     Q_PROPERTY(QList<QValueSpecification *> * operand READ operand)
 

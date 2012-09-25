@@ -45,7 +45,6 @@
 
 // Base class includes
 #include <QtCore/QObject>
-#include <QtCore/QObject>
 #include <QtUml/QBehavioralFeature>
 
 // Qt includes
@@ -70,6 +69,37 @@ class Q_UML_EXPORT QOperation : public QObject, public QBehavioralFeature
 {
     Q_OBJECT
 
+    // From QElement
+    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
+    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(const QElement * owner READ owner)
+
+    // From QNamedElement
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+
+    // From QRedefinableElement
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
+    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElement READ redefinedElement)
+    Q_PROPERTY(const QList<QClassifier *> * redefinitionContext READ redefinitionContext)
+
+    // From QFeature
+    Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic)
+    Q_PROPERTY(const QList<QClassifier *> * featuringClassifier READ featuringClassifier)
+
+    // From QNamespace
+    Q_PROPERTY(QList<QElementImport *> * elementImport READ elementImport)
+    Q_PROPERTY(const QList<QNamedElement *> * member READ member)
+    Q_PROPERTY(const QList<QNamedElement *> * ownedMember READ ownedMember)
+    Q_PROPERTY(QList<QConstraint *> * ownedRule READ ownedRule)
+    Q_PROPERTY(QList<QPackageImport *> * packageImport READ packageImport)
+
+    // From QBehavioralFeature
+    Q_PROPERTY(QList<QParameter *> * ownedParameter READ ownedParameter)
+    Q_PROPERTY(QList<QType *> * raisedException READ raisedException)
+
+    // From QOperation
     Q_PROPERTY(bool isQuery READ isQuery WRITE setQuery)
     Q_PROPERTY(QConstraint * bodyCondition READ bodyCondition WRITE setBodyCondition)
     Q_PROPERTY(QClass * class_ READ class_ WRITE setClass_)

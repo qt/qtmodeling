@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QDataType>
 
 QT_BEGIN_HEADER
@@ -59,6 +58,7 @@ class Q_UML_EXPORT QPrimitiveType : public QDataType
 {
     Q_OBJECT
 
+    // From QPrimitiveType
 
 public:
     explicit QPrimitiveType(QObject *parent = 0);

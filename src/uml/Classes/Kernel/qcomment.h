@@ -45,7 +45,6 @@
 
 // Base class includes
 #include <QtCore/QObject>
-#include <QtCore/QObject>
 #include <QtUml/QElement>
 
 // Qt includes
@@ -64,6 +63,12 @@ class Q_UML_EXPORT QComment : public QObject, public QElement
 {
     Q_OBJECT
 
+    // From QElement
+    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
+    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(const QElement * owner READ owner)
+
+    // From QComment
     Q_PROPERTY(QString body READ body WRITE setBody)
     Q_PROPERTY(QList<QElement *> * annotatedElement READ annotatedElement)
 

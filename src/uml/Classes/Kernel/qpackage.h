@@ -45,7 +45,6 @@
 
 // Base class includes
 #include <QtCore/QObject>
-#include <QtCore/QObject>
 #include <QtUml/QNamespace>
 #include <QtUml/QPackageableElement>
 
@@ -69,6 +68,27 @@ class Q_UML_EXPORT QPackage : public QObject, public QNamespace, public QPackage
 {
     Q_OBJECT
 
+    // From QElement
+    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
+    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(const QElement * owner READ owner)
+
+    // From QNamedElement
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+
+    // From QNamespace
+    Q_PROPERTY(QList<QElementImport *> * elementImport READ elementImport)
+    Q_PROPERTY(const QList<QNamedElement *> * member READ member)
+    Q_PROPERTY(const QList<QNamedElement *> * ownedMember READ ownedMember)
+    Q_PROPERTY(QList<QConstraint *> * ownedRule READ ownedRule)
+    Q_PROPERTY(QList<QPackageImport *> * packageImport READ packageImport)
+
+    // From QPackageableElement
+    Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
+
+    // From QPackage
     Q_PROPERTY(QString URI READ URI WRITE setURI)
     Q_PROPERTY(QPackage * nestingPackage READ nestingPackage WRITE setNestingPackage)
     Q_PROPERTY(QList<QPackageMerge *> * packageMerge READ packageMerge)
