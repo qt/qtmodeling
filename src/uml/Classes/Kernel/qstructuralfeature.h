@@ -63,7 +63,7 @@ public:
 
     // Attributes (except those derived && !derivedUnion)
     bool isReadOnly() const;
-    void setIsReadOnly(bool isReadOnly);
+    void setReadOnly(bool isReadOnly);
 
 protected:
     explicit QStructuralFeature();

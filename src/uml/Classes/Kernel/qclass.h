@@ -67,7 +67,7 @@ class Q_UML_EXPORT QClass : public QObject, public QClassifier
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setIsAbstract)
+    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract)
     Q_PROPERTY(QList<QClassifier *> * nestedClassifier READ nestedClassifier)
     Q_PROPERTY(QList<QProperty *> * ownedAttribute READ ownedAttribute)
     Q_PROPERTY(QList<QOperation *> * ownedOperation READ ownedOperation)
@@ -78,16 +78,16 @@ public:
 
     // Attributes (except those derived && !derivedUnion)
     bool isAbstract() const;
-    void setIsAbstract(bool isAbstract);
+    void setAbstract(bool isAbstract);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QClassifier *> *nestedClassifier() const;
-    QList<QProperty *> *ownedAttribute() const;
-    QList<QOperation *> *ownedOperation() const;
+    QList<QClassifier *> *nestedClassifier();
+    QList<QProperty *> *ownedAttribute();
+    QList<QOperation *> *ownedOperation();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    QList<QNamedElement *> *inherit(QList<QNamedElement *> *inhs) const;
-    QList<QClass *> *superClass() const;
+    const QList<QNamedElement *> *inherit(const QList<QNamedElement *> *inhs) const;
+    const QList<QClass *> *superClass() const;
 
 private:
     Q_DISABLE_COPY(QClass)

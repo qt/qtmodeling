@@ -39,7 +39,7 @@ declare function qtxmi:unqualifiedTypeFromNamespacedProperty ($property as node(
             else
                 concat(qtxmi:namespaceFromId($property/@type), concat("::", concat("QEnumerations::", qtxmi:unqualifiedTypeFromId($property/@type))))
         let $baseType := if ($property/upperValue/@value = "*") then concat(concat("QList<", $baseType), " *>") else $baseType
-        let $baseType := if ($property/@isReadOnly = "true") then concat ("const ", $baseType) else $baseType
+        let $baseType := if ($property/@isReadOnly = "true" or ($property/@direction = "return" and $property/../@isQuery = "true")) then concat ("const ", $baseType) else $baseType
         let $baseType := if (qtxmi:elementFromProperty($property)/@xmi:type = "uml:Class") then concat ($baseType, " *") else $baseType
         return $baseType
     else
@@ -47,7 +47,7 @@ declare function qtxmi:unqualifiedTypeFromNamespacedProperty ($property as node(
 };
 declare function qtxmi:capitalizedNameFromType($unqualifiedType as xs:string, $name as xs:string) as xs:string {
     let $capitalizedName := $name
-    let $capitalizedName := if ($unqualifiedType = "bool" and starts-with($name, "is") and substring($name, 3, 1) = upper-case(substring($name, 3, 1))) then
+    let $capitalizedName := if ($unqualifiedType = "bool " and starts-with($name, "is") and substring($name, 3, 1) = upper-case(substring($name, 3, 1))) then
        substring($name, 3)
     else
        $capitalizedName
@@ -109,6 +109,7 @@ return
         for $attribute in $class/ownedAttribute
         let $unqualifiedType := qtxmi:unqualifiedTypeFromNamespacedProperty($attribute, $namespace)
         let $unqualifiedType := if (ends-with($unqualifiedType, "*")) then $unqualifiedType else concat($unqualifiedType, " ")
+        let $constness := if ($attribute[not(@isReadOnly)] or $attribute/@isReadOnly != "true") then "" else " const"
         where $attribute[not(@association) and not(@isDerived="true" and (not(@isDerivedUnion or @isDerivedUnion="false")))]
         return
         if (not(starts-with($unqualifiedType, "QList")) and ($attribute[not(@isReadOnly)] or $attribute/@isReadOnly != "true")) then
@@ -121,7 +122,7 @@ return
         </attribute>
         else
         <attribute>
-        <accessor return="{$unqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}" constness=" const"/>
+        <accessor return="{$unqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}" constness="{$constness}"/>
         <documentation>{$attribute/ownedComment/body/text()}</documentation>
         </attribute>
         }
@@ -129,6 +130,7 @@ return
         for $attribute in $class/ownedAttribute
         let $unqualifiedType := qtxmi:unqualifiedTypeFromNamespacedProperty($attribute, $namespace)
         let $unqualifiedType := if (ends-with($unqualifiedType, "*")) then $unqualifiedType else concat($unqualifiedType, " ")
+        let $constness := if ($attribute[not(@isReadOnly)] or $attribute/@isReadOnly != "true") then "" else " const"
         where $attribute[@association and not(@isDerived="true" and (not(@isDerivedUnion or @isDerivedUnion="false")))]
         return
         if (not(starts-with($unqualifiedType, "QList")) and ($attribute[not(@isReadOnly)] or $attribute/@isReadOnly != "true")) then
@@ -141,23 +143,24 @@ return
         </associationend>
         else
         <associationend>
-        <accessor return="{$unqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}" constness=" const"/>
+        <accessor return="{$unqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}" constness="{$constness}"/>
         <documentation>{$attribute/ownedComment/body/text()}</documentation>
         </associationend>
         }
         {
         for $operation in $class/ownedOperation
+        let $constness := if ($operation/@isQuery = "true") then " const" else ""
         let $return := if ($operation/ownedParameter[@direction = "return"]) then
                           qtxmi:unqualifiedTypeFromNamespacedProperty($operation/ownedParameter[@direction = "return"], $namespace)
                        else "void"
         let $return := if (ends-with($return, "*")) then $return else concat($return, " ")
-        let $constness := if ($operation[not(@isQuery)] or $operation/@isQuery = "true") then " const" else ""
         return
         <operation return="{$return}" name="{qtxmi:mappedFunctionName($operation/@name)}" constness="{$constness}">
         {
         for $parameter in $operation/ownedParameter[not(@direction) or @direction != "return"]
         let $unqualifiedType := qtxmi:unqualifiedTypeFromNamespacedProperty($parameter, $namespace)
         let $unqualifiedType := if (ends-with($unqualifiedType, "*")) then $unqualifiedType else concat($unqualifiedType, " ")
+        let $unqualifiedType := if (ends-with($unqualifiedType, "*") and (not($parameter/@direction) or $parameter/@direction = "in")) then concat("const ", $unqualifiedType) else $unqualifiedType
         return
             <parameter type="{$unqualifiedType}" name="{qtxmi:mappedFunctionName($parameter/@name)}"/>
         }

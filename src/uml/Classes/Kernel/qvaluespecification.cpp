@@ -91,7 +91,7 @@ bool QValueSpecification::isNull() const
 /*!
     The query realValue() gives a single Real value when one can be computed.
  */
-qreal QValueSpecification::realValue() const
+qreal QValueSpecification::realValue()
 {
 }
 

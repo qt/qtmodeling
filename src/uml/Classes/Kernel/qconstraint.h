@@ -76,7 +76,7 @@ public:
     virtual ~QConstraint();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QElement *> *constrainedElement() const;
+    QList<QElement *> *constrainedElement();
     QNamespace *context() const;
     void setContext(QNamespace *context);
     QValueSpecification *specification() const;

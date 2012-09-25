@@ -67,7 +67,7 @@ bool QFeature::isStatic() const
 {
 }
 
-void QFeature::setIsStatic(bool isStatic)
+void QFeature::setStatic(bool isStatic)
 {
 }
 

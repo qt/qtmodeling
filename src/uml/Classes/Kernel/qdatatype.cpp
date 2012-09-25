@@ -64,21 +64,21 @@ QDataType::~QDataType()
 /*!
     The Attributes owned by the DataType.
  */
-QList<QProperty *> *QDataType::ownedAttribute() const
+QList<QProperty *> *QDataType::ownedAttribute()
 {
 }
 
 /*!
     The Operations owned by the DataType.
  */
-QList<QOperation *> *QDataType::ownedOperation() const
+QList<QOperation *> *QDataType::ownedOperation()
 {
 }
 
 /*!
     The inherit operation is overridden to exclude redefined properties.
  */
-QList<QNamedElement *> *QDataType::inherit(QList<QNamedElement *> *inhs) const
+const QList<QNamedElement *> *QDataType::inherit(const QList<QNamedElement *> *inhs) const
 {
 }
 

@@ -63,21 +63,21 @@ QBehavioralFeature::~QBehavioralFeature()
 /*!
     Specifies the ordered set of formal parameters of this BehavioralFeature.
  */
-QList<QParameter *> *QBehavioralFeature::ownedParameter() const
+QList<QParameter *> *QBehavioralFeature::ownedParameter()
 {
 }
 
 /*!
     References the Types representing exceptions that may be raised during an invocation of this feature.
  */
-QList<QType *> *QBehavioralFeature::raisedException() const
+QList<QType *> *QBehavioralFeature::raisedException()
 {
 }
 
 /*!
     The query isDistinguishableFrom() determines whether two BehavioralFeatures may coexist in the same Namespace. It specifies that they have to have different signatures.
  */
-bool QBehavioralFeature::isDistinguishableFrom(QNamedElement *n, QNamespace *ns) const
+bool QBehavioralFeature::isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const
 {
 }
 

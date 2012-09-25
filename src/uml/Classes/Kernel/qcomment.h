@@ -76,7 +76,7 @@ public:
     void setBody(QString body);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QElement *> *annotatedElement() const;
+    QList<QElement *> *annotatedElement();
 
 private:
     Q_DISABLE_COPY(QComment)

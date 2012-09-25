@@ -69,17 +69,17 @@ public:
     virtual ~QNamespace();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QElementImport *> *elementImport() const;
+    QList<QElementImport *> *elementImport();
     const QList<QNamedElement *> *member() const;
     const QList<QNamedElement *> *ownedMember() const;
-    QList<QConstraint *> *ownedRule() const;
-    QList<QPackageImport *> *packageImport() const;
+    QList<QConstraint *> *ownedRule();
+    QList<QPackageImport *> *packageImport();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    QList<QPackageableElement *> *excludeCollisions(QPackageableElement *imps) const;
-    QString getNamesOfMember(QNamedElement *element) const;
-    QList<QPackageableElement *> *importMembers(QPackageableElement *imps) const;
-    QList<QPackageableElement *> *importedMember() const;
+    const QList<QPackageableElement *> *excludeCollisions(const QPackageableElement *imps) const;
+    QString getNamesOfMember(const QNamedElement *element) const;
+    const QList<QPackageableElement *> *importMembers(const QPackageableElement *imps) const;
+    const QList<QPackageableElement *> *importedMember() const;
     bool membersAreDistinguishable() const;
 
 protected:

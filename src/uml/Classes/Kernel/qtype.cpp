@@ -74,7 +74,7 @@ void QType::setPackage(QPackage *package)
 /*!
     The query conformsTo() gives true for a type that conforms to another. By default, two types do not conform to each other. This query is intended to be redefined for specific conformance situations.
  */
-bool QType::conformsTo(QType *other) const
+bool QType::conformsTo(const QType *other) const
 {
 }
 

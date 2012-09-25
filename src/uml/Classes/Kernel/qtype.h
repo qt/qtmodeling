@@ -66,7 +66,7 @@ public:
     void setPackage(QPackage *package);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    bool conformsTo(QType *other) const;
+    bool conformsTo(const QType *other) const;
 
 protected:
     explicit QType();

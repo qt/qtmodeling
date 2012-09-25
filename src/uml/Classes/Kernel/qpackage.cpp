@@ -86,21 +86,21 @@ void QPackage::setNestingPackage(QPackage *nestingPackage)
 /*!
     References the PackageMerges that are owned by this Package.
  */
-QList<QPackageMerge *> *QPackage::packageMerge() const
+QList<QPackageMerge *> *QPackage::packageMerge()
 {
 }
 
 /*!
     Specifies the packageable elements that are owned by this Package.
  */
-QList<QPackageableElement *> *QPackage::packagedElement() const
+QList<QPackageableElement *> *QPackage::packagedElement()
 {
 }
 
 /*!
     The query makesVisible() defines whether a Package makes an element visible outside itself. Elements with no visibility and elements with public visibility are made visible.
  */
-bool QPackage::makesVisible(QNamedElement *el) const
+bool QPackage::makesVisible(const QNamedElement *el) const
 {
 }
 
@@ -114,21 +114,21 @@ bool QPackage::mustBeOwned() const
 /*!
     Missing derivation for Package::/nestedPackage : Package
  */
-QList<QPackage *> *QPackage::nestedPackage() const
+const QList<QPackage *> *QPackage::nestedPackage() const
 {
 }
 
 /*!
     Missing derivation for Package::/ownedType : Type
  */
-QList<QType *> *QPackage::ownedType() const
+const QList<QType *> *QPackage::ownedType() const
 {
 }
 
 /*!
     The query visibleMembers() defines which members of a Package can be accessed outside it.
  */
-QList<QPackageableElement *> *QPackage::visibleMembers() const
+const QList<QPackageableElement *> *QPackage::visibleMembers() const
 {
 }
 

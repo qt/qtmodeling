@@ -72,7 +72,7 @@ public:
     void setEnumeration(QEnumeration *enumeration);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    QEnumeration *classifier() const;
+    const QEnumeration *classifier() const;
 
 private:
     Q_DISABLE_COPY(QEnumerationLiteral)

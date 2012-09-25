@@ -76,8 +76,8 @@ public:
     virtual ~QInstanceSpecification();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QClassifier *> *classifier() const;
-    QList<QSlot *> *slot() const;
+    QList<QClassifier *> *classifier();
+    QList<QSlot *> *slot();
     QValueSpecification *specification() const;
     void setSpecification(QValueSpecification *specification);
 

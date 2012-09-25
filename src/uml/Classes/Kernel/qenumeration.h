@@ -71,7 +71,7 @@ public:
     virtual ~QEnumeration();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QEnumerationLiteral *> *ownedLiteral() const;
+    QList<QEnumerationLiteral *> *ownedLiteral();
 
 private:
     Q_DISABLE_COPY(QEnumeration)

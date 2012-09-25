@@ -68,11 +68,11 @@ public:
     virtual ~QBehavioralFeature();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QParameter *> *ownedParameter() const;
-    QList<QType *> *raisedException() const;
+    QList<QParameter *> *ownedParameter();
+    QList<QType *> *raisedException();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    bool isDistinguishableFrom(QNamedElement *n, QNamespace *ns) const;
+    bool isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const;
 
 protected:
     explicit QBehavioralFeature();

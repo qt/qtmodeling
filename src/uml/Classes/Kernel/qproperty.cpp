@@ -79,7 +79,7 @@ bool QProperty::isDerived() const
 {
 }
 
-void QProperty::setIsDerived(bool isDerived)
+void QProperty::setDerived(bool isDerived)
 {
 }
 
@@ -90,7 +90,7 @@ bool QProperty::isDerivedUnion() const
 {
 }
 
-void QProperty::setIsDerivedUnion(bool isDerivedUnion)
+void QProperty::setDerivedUnion(bool isDerivedUnion)
 {
 }
 
@@ -101,7 +101,7 @@ bool QProperty::isID() const
 {
 }
 
-void QProperty::setIsID(bool isID)
+void QProperty::setID(bool isID)
 {
 }
 
@@ -112,7 +112,7 @@ bool QProperty::isReadOnly() const
 {
 }
 
-void QProperty::setIsReadOnly(bool isReadOnly)
+void QProperty::setReadOnly(bool isReadOnly)
 {
 }
 
@@ -174,14 +174,14 @@ void QProperty::setOwningAssociation(QAssociation *owningAssociation)
 /*!
     References the properties that are redefined by this property.
  */
-QList<QProperty *> *QProperty::redefinedProperty() const
+QList<QProperty *> *QProperty::redefinedProperty()
 {
 }
 
 /*!
     References the properties of which this property is constrained to be a subset.
  */
-QList<QProperty *> *QProperty::subsettedProperty() const
+QList<QProperty *> *QProperty::subsettedProperty()
 {
 }
 
@@ -195,7 +195,7 @@ QString QProperty::default_() const
 /*!
     The query isAttribute() is true if the Property is defined as an attribute of some classifier.
  */
-bool QProperty::isAttribute(QProperty *p) const
+bool QProperty::isAttribute(const QProperty *p) const
 {
 }
 
@@ -209,7 +209,7 @@ bool QProperty::isComposite() const
 /*!
     The query isConsistentWith() specifies, for any two Properties in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining property is consistent with a redefined property if the type of the redefining property conforms to the type of the redefined property, the multiplicity of the redefining property (if specified) is contained in the multiplicity of the redefined property.
  */
-bool QProperty::isConsistentWith(QRedefinableElement *redefinee) const
+bool QProperty::isConsistentWith(const QRedefinableElement *redefinee) const
 {
 }
 
@@ -223,14 +223,14 @@ bool QProperty::isNavigable() const
 /*!
     If this property is owned by a class, associated with a binary association, and the other end of the association is also owned by a class, then opposite gives the other end.
  */
-QProperty *QProperty::opposite() const
+const QProperty *QProperty::opposite() const
 {
 }
 
 /*!
     The query subsettingContext() gives the context for subsetting a property. It consists, in the case of an attribute, of the corresponding classifier, and in the case of an association end, all of the classifiers at the other ends.
  */
-QList<QType *> *QProperty::subsettingContext() const
+const QList<QType *> *QProperty::subsettingContext() const
 {
 }
 

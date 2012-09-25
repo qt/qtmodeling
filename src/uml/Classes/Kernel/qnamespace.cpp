@@ -63,7 +63,7 @@ QNamespace::~QNamespace()
 /*!
     References the ElementImports owned by the Namespace.
  */
-QList<QElementImport *> *QNamespace::elementImport() const
+QList<QElementImport *> *QNamespace::elementImport()
 {
 }
 
@@ -84,42 +84,42 @@ const QList<QNamedElement *> *QNamespace::ownedMember() const
 /*!
     Specifies a set of Constraints owned by this Namespace.
  */
-QList<QConstraint *> *QNamespace::ownedRule() const
+QList<QConstraint *> *QNamespace::ownedRule()
 {
 }
 
 /*!
     References the PackageImports owned by the Namespace.
  */
-QList<QPackageImport *> *QNamespace::packageImport() const
+QList<QPackageImport *> *QNamespace::packageImport()
 {
 }
 
 /*!
     The query excludeCollisions() excludes from a set of PackageableElements any that would not be distinguishable from each other in this namespace.
  */
-QList<QPackageableElement *> *QNamespace::excludeCollisions(QPackageableElement *imps) const
+const QList<QPackageableElement *> *QNamespace::excludeCollisions(const QPackageableElement *imps) const
 {
 }
 
 /*!
     The query getNamesOfMember() gives a set of all of the names that a member would have in a Namespace. In general a member can have multiple names in a Namespace if it is imported more than once with different aliases. The query takes account of importing. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package.
  */
-QString QNamespace::getNamesOfMember(QNamedElement *element) const
+QString QNamespace::getNamesOfMember(const QNamedElement *element) const
 {
 }
 
 /*!
     The query importMembers() defines which of a set of PackageableElements are actually imported into the namespace. This excludes hidden ones, i.e., those which have names that conflict with names of owned members, and also excludes elements which would have the same name when imported.
  */
-QList<QPackageableElement *> *QNamespace::importMembers(QPackageableElement *imps) const
+const QList<QPackageableElement *> *QNamespace::importMembers(const QPackageableElement *imps) const
 {
 }
 
 /*!
     The importedMember property is derived from the ElementImports and the PackageImports. References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
  */
-QList<QPackageableElement *> *QNamespace::importedMember() const
+const QList<QPackageableElement *> *QNamespace::importedMember() const
 {
 }
 

@@ -75,11 +75,11 @@ public:
     virtual ~QDataType();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QProperty *> *ownedAttribute() const;
-    QList<QOperation *> *ownedOperation() const;
+    QList<QProperty *> *ownedAttribute();
+    QList<QOperation *> *ownedOperation();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    QList<QNamedElement *> *inherit(QList<QNamedElement *> *inhs) const;
+    const QList<QNamedElement *> *inherit(const QList<QNamedElement *> *inhs) const;
 
 private:
     Q_DISABLE_COPY(QDataType)

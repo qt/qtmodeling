@@ -62,7 +62,7 @@ class Q_UML_EXPORT QGeneralization : public QObject, public QDirectedRelationshi
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isSubstitutable READ isSubstitutable WRITE setIsSubstitutable)
+    Q_PROPERTY(bool isSubstitutable READ isSubstitutable WRITE setSubstitutable)
     Q_PROPERTY(QClassifier * general READ general WRITE setGeneral)
     Q_PROPERTY(QClassifier * specific READ specific WRITE setSpecific)
 
@@ -72,7 +72,7 @@ public:
 
     // Attributes (except those derived && !derivedUnion)
     bool isSubstitutable() const;
-    void setIsSubstitutable(bool isSubstitutable);
+    void setSubstitutable(bool isSubstitutable);
 
     // Association-ends (except those derived && !derivedUnion)
     QClassifier *general() const;

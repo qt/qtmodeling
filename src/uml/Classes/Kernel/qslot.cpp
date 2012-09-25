@@ -86,7 +86,7 @@ void QSlot::setOwningInstance(QInstanceSpecification *owningInstance)
 /*!
     The value or values corresponding to the defining feature for the owning instance specification.
  */
-QList<QValueSpecification *> *QSlot::value() const
+QList<QValueSpecification *> *QSlot::value()
 {
 }
 
