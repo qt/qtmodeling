@@ -48,7 +48,6 @@
 
 // Base class includes
 #include <QtCore/QObject>
-#include <QtCore/QObject>
 #include <QtUml/QStructuralFeature>
 
 // Qt includes
@@ -74,6 +73,38 @@ class Q_UML_EXPORT QProperty : public QObject, public QStructuralFeature
 {
     Q_OBJECT
 
+    // From QElement
+    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
+    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(const QElement * owner READ owner)
+
+    // From QNamedElement
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+
+    // From QRedefinableElement
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
+    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElement READ redefinedElement)
+    Q_PROPERTY(const QList<QClassifier *> * redefinitionContext READ redefinitionContext)
+
+    // From QFeature
+    Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic)
+    Q_PROPERTY(const QList<QClassifier *> * featuringClassifier READ featuringClassifier)
+
+    // From QTypedElement
+    Q_PROPERTY(QType * type READ type WRITE setType)
+
+    // From QMultiplicityElement
+    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
+    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
+    Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
+    Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
+
+    // From QStructuralFeature
+    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly)
+
+    // From QProperty
     Q_PROPERTY(QEnumerations::AggregationKind aggregation READ aggregation WRITE setAggregation)
     Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived)
     Q_PROPERTY(bool isDerivedUnion READ isDerivedUnion WRITE setDerivedUnion)

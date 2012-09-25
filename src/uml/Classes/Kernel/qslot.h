@@ -45,7 +45,6 @@
 
 // Base class includes
 #include <QtCore/QObject>
-#include <QtCore/QObject>
 #include <QtUml/QElement>
 
 // Qt includes
@@ -67,6 +66,12 @@ class Q_UML_EXPORT QSlot : public QObject, public QElement
 {
     Q_OBJECT
 
+    // From QElement
+    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
+    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(const QElement * owner READ owner)
+
+    // From QSlot
     Q_PROPERTY(QStructuralFeature * definingFeature READ definingFeature WRITE setDefiningFeature)
     Q_PROPERTY(QInstanceSpecification * owningInstance READ owningInstance WRITE setOwningInstance)
     Q_PROPERTY(QList<QValueSpecification *> * value READ value)

@@ -45,7 +45,6 @@
 
 // Base class includes
 #include <QtCore/QObject>
-#include <QtCore/QObject>
 #include <QtUml/QValueSpecification>
 
 QT_BEGIN_HEADER
@@ -62,6 +61,25 @@ class Q_UML_EXPORT QInstanceValue : public QObject, public QValueSpecification
 {
     Q_OBJECT
 
+    // From QElement
+    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
+    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(const QElement * owner READ owner)
+
+    // From QNamedElement
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+
+    // From QPackageableElement
+    Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
+
+    // From QTypedElement
+    Q_PROPERTY(QType * type READ type WRITE setType)
+
+    // From QValueSpecification
+
+    // From QInstanceValue
     Q_PROPERTY(QInstanceSpecification * instance READ instance WRITE setInstance)
 
 public:

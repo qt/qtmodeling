@@ -48,7 +48,6 @@
 
 // Base class includes
 #include <QtCore/QObject>
-#include <QtCore/QObject>
 #include <QtUml/QDirectedRelationship>
 
 // Qt includes
@@ -69,6 +68,19 @@ class Q_UML_EXPORT QElementImport : public QObject, public QDirectedRelationship
 {
     Q_OBJECT
 
+    // From QElement
+    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
+    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(const QElement * owner READ owner)
+
+    // From QRelationship
+    Q_PROPERTY(const QList<QElement *> * relatedElement READ relatedElement)
+
+    // From QDirectedRelationship
+    Q_PROPERTY(const QList<QElement *> * source READ source)
+    Q_PROPERTY(const QList<QElement *> * target READ target)
+
+    // From QElementImport
     Q_PROPERTY(QString alias READ alias WRITE setAlias)
     Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(QPackageableElement * importedElement READ importedElement WRITE setImportedElement)

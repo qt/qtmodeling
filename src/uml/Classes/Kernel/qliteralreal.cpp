@@ -62,7 +62,7 @@ QLiteralReal::~QLiteralReal()
 }
 
 /*!
-    HASH(0x2ed2e90)
+    HASH(0x19ab2e8)
  */
 qreal QLiteralReal::value() const
 {

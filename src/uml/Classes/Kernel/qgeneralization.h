@@ -45,7 +45,6 @@
 
 // Base class includes
 #include <QtCore/QObject>
-#include <QtCore/QObject>
 #include <QtUml/QDirectedRelationship>
 
 QT_BEGIN_HEADER
@@ -62,6 +61,19 @@ class Q_UML_EXPORT QGeneralization : public QObject, public QDirectedRelationshi
 {
     Q_OBJECT
 
+    // From QElement
+    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
+    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(const QElement * owner READ owner)
+
+    // From QRelationship
+    Q_PROPERTY(const QList<QElement *> * relatedElement READ relatedElement)
+
+    // From QDirectedRelationship
+    Q_PROPERTY(const QList<QElement *> * source READ source)
+    Q_PROPERTY(const QList<QElement *> * target READ target)
+
+    // From QGeneralization
     Q_PROPERTY(bool isSubstitutable READ isSubstitutable WRITE setSubstitutable)
     Q_PROPERTY(QClassifier * general READ general WRITE setGeneral)
     Q_PROPERTY(QClassifier * specific READ specific WRITE setSpecific)

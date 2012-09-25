@@ -48,7 +48,6 @@
 
 // Base class includes
 #include <QtCore/QObject>
-#include <QtCore/QObject>
 #include <QtUml/QTypedElement>
 #include <QtUml/QMultiplicityElement>
 
@@ -70,6 +69,26 @@ class Q_UML_EXPORT QParameter : public QObject, public QTypedElement, public QMu
 {
     Q_OBJECT
 
+    // From QElement
+    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
+    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(const QElement * owner READ owner)
+
+    // From QNamedElement
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+
+    // From QTypedElement
+    Q_PROPERTY(QType * type READ type WRITE setType)
+
+    // From QMultiplicityElement
+    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
+    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
+    Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
+    Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
+
+    // From QParameter
     Q_PROPERTY(QEnumerations::ParameterDirectionKind direction READ direction WRITE setDirection)
     Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
     Q_PROPERTY(QOperation * operation READ operation WRITE setOperation)

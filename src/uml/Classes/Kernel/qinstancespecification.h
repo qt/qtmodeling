@@ -45,7 +45,6 @@
 
 // Base class includes
 #include <QtCore/QObject>
-#include <QtCore/QObject>
 #include <QtUml/QPackageableElement>
 
 // Qt includes
@@ -67,6 +66,20 @@ class Q_UML_EXPORT QInstanceSpecification : public QObject, public QPackageableE
 {
     Q_OBJECT
 
+    // From QElement
+    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
+    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(const QElement * owner READ owner)
+
+    // From QNamedElement
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+
+    // From QPackageableElement
+    Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
+
+    // From QInstanceSpecification
     Q_PROPERTY(QList<QClassifier *> * classifier READ classifier)
     Q_PROPERTY(QList<QSlot *> * slot READ slot)
     Q_PROPERTY(QValueSpecification * specification READ specification WRITE setSpecification)

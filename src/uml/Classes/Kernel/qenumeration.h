@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QDataType>
 
 // Qt includes
@@ -64,6 +63,7 @@ class Q_UML_EXPORT QEnumeration : public QDataType
 {
     Q_OBJECT
 
+    // From QEnumeration
     Q_PROPERTY(QList<QEnumerationLiteral *> * ownedLiteral READ ownedLiteral)
 
 public:
