@@ -57,7 +57,7 @@ QT_MODULE(QtUml)
 
 class QRelationshipPrivate;
 
-class Q_UML_EXPORT QRelationship : public QElement
+class Q_UML_EXPORT QRelationship : public virtual QElement
 {
 public:
     virtual ~QRelationship();

@@ -56,7 +56,7 @@ class QMultiplicityElementPrivate;
 
 class QValueSpecification;
 
-class Q_UML_EXPORT QMultiplicityElement : public QElement
+class Q_UML_EXPORT QMultiplicityElement : public virtual QElement
 {
 public:
     virtual ~QMultiplicityElement();
