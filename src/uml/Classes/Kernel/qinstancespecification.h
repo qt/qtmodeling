@@ -72,7 +72,7 @@ class Q_UML_EXPORT QInstanceSpecification : public QObject, public QPackageableE
     Q_PROPERTY(QValueSpecification * specification READ specification WRITE setSpecification)
 
 public:
-    explicit QInstanceSpecification();
+    explicit QInstanceSpecification(QObject *parent = 0);
     virtual ~QInstanceSpecification();
 
     // Association-ends (except those derived && !derivedUnion)

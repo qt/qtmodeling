@@ -52,7 +52,8 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief An opaque expression is an uninterpreted textual statement that denotes a (possibly empty) set of values when evaluated in a context.
  */
 
-QOpaqueExpression::QOpaqueExpression()
+QOpaqueExpression::QOpaqueExpression(QObject *parent)
+    : QObject(parent)
 {
 }
 

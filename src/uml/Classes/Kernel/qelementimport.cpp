@@ -52,7 +52,8 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief An element import identifies an element in another package, and allows the element to be referenced using its name without a qualifier.
  */
 
-QElementImport::QElementImport()
+QElementImport::QElementImport(QObject *parent)
+    : QObject(parent)
 {
 }
 

@@ -68,7 +68,7 @@ class Q_UML_EXPORT QComment : public QObject, public QElement
     Q_PROPERTY(QList<QElement *> * annotatedElement READ annotatedElement)
 
 public:
-    explicit QComment();
+    explicit QComment(QObject *parent = 0);
     virtual ~QComment();
 
     // Attributes (except those derived && !derivedUnion)

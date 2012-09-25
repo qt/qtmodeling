@@ -66,7 +66,7 @@ class Q_UML_EXPORT QLiteralString : public QObject, public QLiteralSpecification
     Q_PROPERTY(QString value READ value WRITE setValue)
 
 public:
-    explicit QLiteralString();
+    explicit QLiteralString(QObject *parent = 0);
     virtual ~QLiteralString();
 
     // Attributes (except those derived && !derivedUnion)

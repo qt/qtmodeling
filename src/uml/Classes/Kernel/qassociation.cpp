@@ -52,7 +52,8 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link. A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.
  */
 
-QAssociation::QAssociation()
+QAssociation::QAssociation(QObject *parent)
+    : QObject(parent)
 {
 }
 

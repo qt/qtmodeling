@@ -63,7 +63,7 @@ class Q_UML_EXPORT QLiteralInteger : public QObject, public QLiteralSpecificatio
     Q_PROPERTY(qint32 value READ value WRITE setValue)
 
 public:
-    explicit QLiteralInteger();
+    explicit QLiteralInteger(QObject *parent = 0);
     virtual ~QLiteralInteger();
 
     // Attributes (except those derived && !derivedUnion)

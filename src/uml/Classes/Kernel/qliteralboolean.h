@@ -63,7 +63,7 @@ class Q_UML_EXPORT QLiteralBoolean : public QObject, public QLiteralSpecificatio
     Q_PROPERTY(bool value READ value WRITE setValue)
 
 public:
-    explicit QLiteralBoolean();
+    explicit QLiteralBoolean(QObject *parent = 0);
     virtual ~QLiteralBoolean();
 
     // Attributes (except those derived && !derivedUnion)

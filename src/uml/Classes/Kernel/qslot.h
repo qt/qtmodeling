@@ -72,7 +72,7 @@ class Q_UML_EXPORT QSlot : public QObject, public QElement
     Q_PROPERTY(QList<QValueSpecification *> * value READ value)
 
 public:
-    explicit QSlot();
+    explicit QSlot(QObject *parent = 0);
     virtual ~QSlot();
 
     // Association-ends (except those derived && !derivedUnion)

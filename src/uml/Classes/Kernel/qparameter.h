@@ -75,7 +75,7 @@ class Q_UML_EXPORT QParameter : public QObject, public QTypedElement, public QMu
     Q_PROPERTY(QOperation * operation READ operation WRITE setOperation)
 
 public:
-    explicit QParameter();
+    explicit QParameter(QObject *parent = 0);
     virtual ~QParameter();
 
     // Attributes (except those derived && !derivedUnion)

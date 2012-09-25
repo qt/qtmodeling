@@ -102,7 +102,7 @@ class Q_UML_EXPORT ${class.name}[%- IF class.superclassinclude -%] : [% END -%][
 [% END %]
 public:
     [%- IF class.isAbstract == 'false' %]
-    explicit ${class.name}();
+    explicit ${class.name}(QObject *parent = 0);
     [%- END%]
     virtual ~${class.name}();
     [%- IF class.item('attribute') %]

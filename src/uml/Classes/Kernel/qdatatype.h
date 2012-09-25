@@ -71,7 +71,7 @@ class Q_UML_EXPORT QDataType : public QObject, public QClassifier
     Q_PROPERTY(QList<QOperation *> * ownedOperation READ ownedOperation)
 
 public:
-    explicit QDataType();
+    explicit QDataType(QObject *parent = 0);
     virtual ~QDataType();
 
     // Association-ends (except those derived && !derivedUnion)

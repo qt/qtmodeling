@@ -52,7 +52,8 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief An enumeration literal is a user-defined data value for an enumeration.
  */
 
-QEnumerationLiteral::QEnumerationLiteral()
+QEnumerationLiteral::QEnumerationLiteral(QObject *parent)
+    : QInstanceSpecification(parent)
 {
 }
 

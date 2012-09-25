@@ -52,7 +52,8 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A literal Boolean is a specification of a Boolean value.
  */
 
-QLiteralBoolean::QLiteralBoolean()
+QLiteralBoolean::QLiteralBoolean(QObject *parent)
+    : QObject(parent)
 {
 }
 

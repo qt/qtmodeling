@@ -75,7 +75,7 @@ class Q_UML_EXPORT QPackage : public QObject, public QNamespace, public QPackage
     Q_PROPERTY(QList<QPackageableElement *> * packagedElement READ packagedElement)
 
 public:
-    explicit QPackage();
+    explicit QPackage(QObject *parent = 0);
     virtual ~QPackage();
 
     // Attributes (except those derived && !derivedUnion)

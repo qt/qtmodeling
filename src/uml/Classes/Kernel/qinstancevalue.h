@@ -65,7 +65,7 @@ class Q_UML_EXPORT QInstanceValue : public QObject, public QValueSpecification
     Q_PROPERTY(QInstanceSpecification * instance READ instance WRITE setInstance)
 
 public:
-    explicit QInstanceValue();
+    explicit QInstanceValue(QObject *parent = 0);
     virtual ~QInstanceValue();
 
     // Association-ends (except those derived && !derivedUnion)

@@ -81,7 +81,7 @@ class Q_UML_EXPORT QOperation : public QObject, public QBehavioralFeature
     Q_PROPERTY(QList<QOperation *> * redefinedOperation READ redefinedOperation)
 
 public:
-    explicit QOperation();
+    explicit QOperation(QObject *parent = 0);
     virtual ~QOperation();
 
     // Attributes (except those derived && !derivedUnion)

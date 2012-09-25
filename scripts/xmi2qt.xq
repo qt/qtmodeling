@@ -73,6 +73,11 @@ return
         <qtumlinclude>QtUml/QEnumerations</qtumlinclude>
         }
         {
+        for $superobject in (qtxmi:elementFromString($superClasses)[not(@isAbstract) or @isAbstract = "false"]/@xmi:id)
+        return
+        <superobject>QtCore/{concat("Q", qtxmi:unqualifiedTypeFromId($superobject))}</superobject>
+        }
+        {
         if (count(qtxmi:elementFromString($superClasses)[@isAbstract = "true"]) = count($superClasses) and $isAbstract = "false") then
         <superclassinclude>QtCore/QObject</superclassinclude>
         else ""

@@ -52,7 +52,10 @@ QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
     \brief ${class.documentation}
  */
 
-${class.name}::${class.name}()
+${class.name}::${class.name}([%- IF class.isAbstract == 'false' -%]QObject *parent[%- END -%])
+[%- IF class.isAbstract == 'false' %]
+    : [%- IF class.superobject -%]${class.superobject.split('/').last}[%- ELSE -%]QObject[%- END -%](parent)
+[%- END %]
 {
 }
 

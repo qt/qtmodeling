@@ -88,7 +88,7 @@ class Q_UML_EXPORT QProperty : public QObject, public QStructuralFeature
     Q_PROPERTY(QList<QProperty *> * subsettedProperty READ subsettedProperty)
 
 public:
-    explicit QProperty();
+    explicit QProperty(QObject *parent = 0);
     virtual ~QProperty();
 
     // Attributes (except those derived && !derivedUnion)

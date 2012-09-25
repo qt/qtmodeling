@@ -52,7 +52,8 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A generalization is a taxonomic relationship between a more general classifier and a more specific classifier. Each instance of the specific classifier is also an indirect instance of the general classifier. Thus, the specific classifier inherits the features of the more general classifier.
  */
 
-QGeneralization::QGeneralization()
+QGeneralization::QGeneralization(QObject *parent)
+    : QObject(parent)
 {
 }
 

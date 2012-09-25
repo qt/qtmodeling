@@ -72,7 +72,7 @@ class Q_UML_EXPORT QConstraint : public QObject, public QPackageableElement
     Q_PROPERTY(QValueSpecification * specification READ specification WRITE setSpecification)
 
 public:
-    explicit QConstraint();
+    explicit QConstraint(QObject *parent = 0);
     virtual ~QConstraint();
 
     // Association-ends (except those derived && !derivedUnion)

@@ -52,7 +52,8 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief A package is used to group elements, and provides a namespace for the grouped elements.
  */
 
-QPackage::QPackage()
+QPackage::QPackage(QObject *parent)
+    : QObject(parent)
 {
 }
 

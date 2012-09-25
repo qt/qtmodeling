@@ -52,7 +52,8 @@ QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
     \brief An enumeration is a data type whose values are enumerated in the model as enumeration literals.
  */
 
-QEnumeration::QEnumeration()
+QEnumeration::QEnumeration(QObject *parent)
+    : QDataType(parent)
 {
 }
 
