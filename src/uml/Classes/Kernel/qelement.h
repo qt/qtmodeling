@@ -64,12 +64,12 @@ public:
     virtual ~QElement();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QComment *> *ownedComment() const;
+    QList<QComment *> *ownedComment();
     const QList<QElement *> *ownedElement() const;
     const QElement *owner() const;
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    QList<QElement *> *allOwnedElements() const;
+    const QList<QElement *> *allOwnedElements() const;
     bool mustBeOwned() const;
 
 protected:

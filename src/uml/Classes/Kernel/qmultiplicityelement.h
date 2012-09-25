@@ -63,9 +63,9 @@ public:
 
     // Attributes (except those derived && !derivedUnion)
     bool isOrdered() const;
-    void setIsOrdered(bool isOrdered);
+    void setOrdered(bool isOrdered);
     bool isUnique() const;
-    void setIsUnique(bool isUnique);
+    void setUnique(bool isUnique);
 
     // Association-ends (except those derived && !derivedUnion)
     QValueSpecification *lowerValue() const;
@@ -75,7 +75,7 @@ public:
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     bool includesCardinality(qint32 C) const;
-    bool includesMultiplicity(QMultiplicityElement *M) const;
+    bool includesMultiplicity(const QMultiplicityElement *M) const;
     bool isMultivalued() const;
     qint32 lower() const;
     qint32 lowerBound() const;

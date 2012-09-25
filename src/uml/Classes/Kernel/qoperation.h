@@ -70,7 +70,7 @@ class Q_UML_EXPORT QOperation : public QObject, public QBehavioralFeature
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isQuery READ isQuery WRITE setIsQuery)
+    Q_PROPERTY(bool isQuery READ isQuery WRITE setQuery)
     Q_PROPERTY(QConstraint * bodyCondition READ bodyCondition WRITE setBodyCondition)
     Q_PROPERTY(QClass * class_ READ class_ WRITE setClass_)
     Q_PROPERTY(QDataType * datatype READ datatype WRITE setDatatype)
@@ -86,7 +86,7 @@ public:
 
     // Attributes (except those derived && !derivedUnion)
     bool isQuery() const;
-    void setIsQuery(bool isQuery);
+    void setQuery(bool isQuery);
 
     // Association-ends (except those derived && !derivedUnion)
     QConstraint *bodyCondition() const;
@@ -95,19 +95,19 @@ public:
     void setClass_(QClass *class_);
     QDataType *datatype() const;
     void setDatatype(QDataType *datatype);
-    QList<QParameter *> *ownedParameter() const;
-    QList<QConstraint *> *postcondition() const;
-    QList<QConstraint *> *precondition() const;
-    QList<QType *> *raisedException() const;
-    QList<QOperation *> *redefinedOperation() const;
+    QList<QParameter *> *ownedParameter();
+    QList<QConstraint *> *postcondition();
+    QList<QConstraint *> *precondition();
+    QList<QType *> *raisedException();
+    QList<QOperation *> *redefinedOperation();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    bool isConsistentWith(QRedefinableElement *redefinee) const;
+    bool isConsistentWith(const QRedefinableElement *redefinee) const;
     bool isOrdered() const;
     bool isUnique() const;
     qint32 lower() const;
-    QList<QParameter *> *returnResult() const;
-    QType *type() const;
+    const QList<QParameter *> *returnResult() const;
+    const QType *type() const;
     qint32 upper() const;
 
 private:

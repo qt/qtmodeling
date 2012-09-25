@@ -85,15 +85,15 @@ public:
     // Association-ends (except those derived && !derivedUnion)
     QPackage *nestingPackage() const;
     void setNestingPackage(QPackage *nestingPackage);
-    QList<QPackageMerge *> *packageMerge() const;
-    QList<QPackageableElement *> *packagedElement() const;
+    QList<QPackageMerge *> *packageMerge();
+    QList<QPackageableElement *> *packagedElement();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    bool makesVisible(QNamedElement *el) const;
+    bool makesVisible(const QNamedElement *el) const;
     bool mustBeOwned() const;
-    QList<QPackage *> *nestedPackage() const;
-    QList<QType *> *ownedType() const;
-    QList<QPackageableElement *> *visibleMembers() const;
+    const QList<QPackage *> *nestedPackage() const;
+    const QList<QType *> *ownedType() const;
+    const QList<QPackageableElement *> *visibleMembers() const;
 
 private:
     Q_DISABLE_COPY(QPackage)

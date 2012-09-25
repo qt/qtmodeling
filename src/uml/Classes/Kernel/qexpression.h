@@ -76,7 +76,7 @@ public:
     void setSymbol(QString symbol);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QValueSpecification *> *operand() const;
+    QList<QValueSpecification *> *operand();
 
 private:
     Q_DISABLE_COPY(QExpression)

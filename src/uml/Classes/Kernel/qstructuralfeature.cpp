@@ -67,7 +67,7 @@ bool QStructuralFeature::isReadOnly() const
 {
 }
 
-void QStructuralFeature::setIsReadOnly(bool isReadOnly)
+void QStructuralFeature::setReadOnly(bool isReadOnly)
 {
 }
 

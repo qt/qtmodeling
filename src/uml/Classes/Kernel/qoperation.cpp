@@ -68,7 +68,7 @@ bool QOperation::isQuery() const
 {
 }
 
-void QOperation::setIsQuery(bool isQuery)
+void QOperation::setQuery(bool isQuery)
 {
 }
 
@@ -108,42 +108,42 @@ void QOperation::setDatatype(QDataType *datatype)
 /*!
     Specifies the parameters owned by this Operation.
  */
-QList<QParameter *> *QOperation::ownedParameter() const
+QList<QParameter *> *QOperation::ownedParameter()
 {
 }
 
 /*!
     An optional set of Constraints specifying the state of the system when the Operation is completed.
  */
-QList<QConstraint *> *QOperation::postcondition() const
+QList<QConstraint *> *QOperation::postcondition()
 {
 }
 
 /*!
     An optional set of Constraints on the state of the system when the Operation is invoked.
  */
-QList<QConstraint *> *QOperation::precondition() const
+QList<QConstraint *> *QOperation::precondition()
 {
 }
 
 /*!
     References the Types representing exceptions that may be raised during an invocation of this operation.
  */
-QList<QType *> *QOperation::raisedException() const
+QList<QType *> *QOperation::raisedException()
 {
 }
 
 /*!
     References the Operations that are redefined by this Operation.
  */
-QList<QOperation *> *QOperation::redefinedOperation() const
+QList<QOperation *> *QOperation::redefinedOperation()
 {
 }
 
 /*!
     A redefining operation is consistent with a redefined operation if it has the same number of owned parameters, and the type of each owned parameter conforms to the type of the corresponding redefined parameter.
  */
-bool QOperation::isConsistentWith(QRedefinableElement *redefinee) const
+bool QOperation::isConsistentWith(const QRedefinableElement *redefinee) const
 {
 }
 
@@ -171,14 +171,14 @@ qint32 QOperation::lower() const
 /*!
     The query returnResult() returns the set containing the return parameter of the Operation if one exists, otherwise, it returns an empty set
  */
-QList<QParameter *> *QOperation::returnResult() const
+const QList<QParameter *> *QOperation::returnResult() const
 {
 }
 
 /*!
     If this operation has a return parameter, type equals the value of type for that parameter. Otherwise type is not defined.
  */
-QType *QOperation::type() const
+const QType *QOperation::type() const
 {
 }
 

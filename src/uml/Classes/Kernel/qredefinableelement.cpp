@@ -67,7 +67,7 @@ bool QRedefinableElement::isLeaf() const
 {
 }
 
-void QRedefinableElement::setIsLeaf(bool isLeaf)
+void QRedefinableElement::setLeaf(bool isLeaf)
 {
 }
 
@@ -88,14 +88,14 @@ const QList<QClassifier *> *QRedefinableElement::redefinitionContext() const
 /*!
     The query isConsistentWith() specifies, for any two RedefinableElements in a context in which redefinition is possible, whether redefinition would be logically consistent. By default, this is false; this operation must be overridden for subclasses of RedefinableElement to define the consistency conditions.
  */
-bool QRedefinableElement::isConsistentWith(QRedefinableElement *redefinee) const
+bool QRedefinableElement::isConsistentWith(const QRedefinableElement *redefinee) const
 {
 }
 
 /*!
     The query isRedefinitionContextValid() specifies whether the redefinition contexts of this RedefinableElement are properly related to the redefinition contexts of the specified RedefinableElement to allow this element to redefine the other. By default at least one of the redefinition contexts of this element must be a specialization of at least one of the redefinition contexts of the specified element.
  */
-bool QRedefinableElement::isRedefinitionContextValid(QRedefinableElement *redefined) const
+bool QRedefinableElement::isRedefinitionContextValid(const QRedefinableElement *redefined) const
 {
 }
 

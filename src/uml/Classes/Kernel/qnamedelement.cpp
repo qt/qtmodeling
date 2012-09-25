@@ -92,14 +92,14 @@ const QNamespace *QNamedElement::namespace_() const
 /*!
     The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
  */
-QList<QNamespace *> *QNamedElement::allNamespaces() const
+const QList<QNamespace *> *QNamedElement::allNamespaces() const
 {
 }
 
 /*!
     The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
  */
-bool QNamedElement::isDistinguishableFrom(QNamedElement *n, QNamespace *ns) const
+bool QNamedElement::isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const
 {
 }
 

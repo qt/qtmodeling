@@ -67,7 +67,7 @@ bool QClassifier::isAbstract() const
 {
 }
 
-void QClassifier::setIsAbstract(bool isAbstract)
+void QClassifier::setAbstract(bool isAbstract)
 {
 }
 
@@ -78,7 +78,7 @@ bool QClassifier::isFinalSpecialization() const
 {
 }
 
-void QClassifier::setIsFinalSpecialization(bool isFinalSpecialization)
+void QClassifier::setFinalSpecialization(bool isFinalSpecialization)
 {
 }
 
@@ -99,84 +99,84 @@ const QList<QFeature *> *QClassifier::feature() const
 /*!
     Specifies the Generalization relationships for this Classifier. These Generalizations navigaten to more general classifiers in the generalization hierarchy.
  */
-QList<QGeneralization *> *QClassifier::generalization() const
+QList<QGeneralization *> *QClassifier::generalization()
 {
 }
 
 /*!
     References the Classifiers that are redefined by this Classifier.
  */
-QList<QClassifier *> *QClassifier::redefinedClassifier() const
+QList<QClassifier *> *QClassifier::redefinedClassifier()
 {
 }
 
 /*!
     The query allFeatures() gives all of the features in the namespace of the classifier. In general, through mechanisms such as inheritance, this will be a larger set than feature.
  */
-QList<QFeature *> *QClassifier::allFeatures() const
+const QList<QFeature *> *QClassifier::allFeatures() const
 {
 }
 
 /*!
     The query allParents() gives all of the direct and indirect ancestors of a generalized Classifier.
  */
-QList<QClassifier *> *QClassifier::allParents() const
+const QList<QClassifier *> *QClassifier::allParents() const
 {
 }
 
 /*!
     The query conformsTo() gives true for a classifier that defines a type that conforms to another. This is used, for example, in the specification of signature conformance for operations.
  */
-bool QClassifier::conformsTo(QClassifier *other) const
+bool QClassifier::conformsTo(const QClassifier *other) const
 {
 }
 
 /*!
     The general classifiers are the classifiers referenced by the generalization relationships.
  */
-QList<QClassifier *> *QClassifier::general() const
+const QList<QClassifier *> *QClassifier::general() const
 {
 }
 
 /*!
     The query hasVisibilityOf() determines whether a named element is visible in the classifier. By default all are visible. It is only called when the argument is something owned by a parent.
  */
-bool QClassifier::hasVisibilityOf(QNamedElement *n) const
+bool QClassifier::hasVisibilityOf(const QNamedElement *n) const
 {
 }
 
 /*!
     The query inherit() defines how to inherit a set of elements. Here the operation is defined to inherit them all. It is intended to be redefined in circumstances where inheritance is affected by redefinition.
  */
-QList<QNamedElement *> *QClassifier::inherit(QList<QNamedElement *> *inhs) const
+const QList<QNamedElement *> *QClassifier::inherit(const QList<QNamedElement *> *inhs) const
 {
 }
 
 /*!
     The query inheritableMembers() gives all of the members of a classifier that may be inherited in one of its descendants, subject to whatever visibility restrictions apply.
  */
-QList<QNamedElement *> *QClassifier::inheritableMembers(QClassifier *c) const
+const QList<QNamedElement *> *QClassifier::inheritableMembers(const QClassifier *c) const
 {
 }
 
 /*!
     The inheritedMember association is derived by inheriting the inheritable members of the parents.
  */
-QList<QNamedElement *> *QClassifier::inheritedMember() const
+const QList<QNamedElement *> *QClassifier::inheritedMember() const
 {
 }
 
 /*!
     The query maySpecializeType() determines whether this classifier may have a generalization relationship to classifiers of the specified type. By default a classifier may specialize classifiers of the same or a more general type. It is intended to be redefined by classifiers that have different specialization constraints.
  */
-bool QClassifier::maySpecializeType(QClassifier *c) const
+bool QClassifier::maySpecializeType(const QClassifier *c) const
 {
 }
 
 /*!
     The query parents() gives all of the immediate ancestors of a generalized Classifier.
  */
-QList<QClassifier *> *QClassifier::parents() const
+const QList<QClassifier *> *QClassifier::parents() const
 {
 }
 

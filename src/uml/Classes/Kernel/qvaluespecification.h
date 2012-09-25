@@ -68,7 +68,7 @@ public:
     qint32 integerValue() const;
     bool isComputable() const;
     bool isNull() const;
-    qreal realValue() const;
+    qreal realValue();
     QString stringValue() const;
     qint32 unlimitedValue() const;
 

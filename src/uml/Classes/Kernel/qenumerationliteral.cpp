@@ -75,7 +75,7 @@ void QEnumerationLiteral::setEnumeration(QEnumeration *enumeration)
 /*!
     Missing derivation for EnumerationLiteral::/classifier : Enumeration
  */
-QEnumeration *QEnumerationLiteral::classifier() const
+const QEnumeration *QEnumerationLiteral::classifier() const
 {
 }
 

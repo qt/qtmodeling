@@ -68,42 +68,42 @@ bool QClass::isAbstract() const
 {
 }
 
-void QClass::setIsAbstract(bool isAbstract)
+void QClass::setAbstract(bool isAbstract)
 {
 }
 
 /*!
     References all the Classifiers that are defined (nested) within the Class.
  */
-QList<QClassifier *> *QClass::nestedClassifier() const
+QList<QClassifier *> *QClass::nestedClassifier()
 {
 }
 
 /*!
     The attributes (i.e. the properties) owned by the class.
  */
-QList<QProperty *> *QClass::ownedAttribute() const
+QList<QProperty *> *QClass::ownedAttribute()
 {
 }
 
 /*!
     The operations owned by the class.
  */
-QList<QOperation *> *QClass::ownedOperation() const
+QList<QOperation *> *QClass::ownedOperation()
 {
 }
 
 /*!
     The inherit operation is overridden to exclude redefined properties.
  */
-QList<QNamedElement *> *QClass::inherit(QList<QNamedElement *> *inhs) const
+const QList<QNamedElement *> *QClass::inherit(const QList<QNamedElement *> *inhs) const
 {
 }
 
 /*!
     Missing derivation for Class::/superClass : Class
  */
-QList<QClass *> *QClass::superClass() const
+const QList<QClass *> *QClass::superClass() const
 {
 }
 

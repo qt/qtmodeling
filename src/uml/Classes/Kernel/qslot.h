@@ -80,7 +80,7 @@ public:
     void setDefiningFeature(QStructuralFeature *definingFeature);
     QInstanceSpecification *owningInstance() const;
     void setOwningInstance(QInstanceSpecification *owningInstance);
-    QList<QValueSpecification *> *value() const;
+    QList<QValueSpecification *> *value();
 
 private:
     Q_DISABLE_COPY(QSlot)

@@ -67,7 +67,7 @@ class Q_UML_EXPORT QAssociation : public QObject, public QRelationship, public Q
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isDerived READ isDerived WRITE setIsDerived)
+    Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived)
     Q_PROPERTY(QList<QProperty *> * memberEnd READ memberEnd)
     Q_PROPERTY(QList<QProperty *> * navigableOwnedEnd READ navigableOwnedEnd)
     Q_PROPERTY(QList<QProperty *> * ownedEnd READ ownedEnd)
@@ -78,15 +78,15 @@ public:
 
     // Attributes (except those derived && !derivedUnion)
     bool isDerived() const;
-    void setIsDerived(bool isDerived);
+    void setDerived(bool isDerived);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QProperty *> *memberEnd() const;
-    QList<QProperty *> *navigableOwnedEnd() const;
-    QList<QProperty *> *ownedEnd() const;
+    QList<QProperty *> *memberEnd();
+    QList<QProperty *> *navigableOwnedEnd();
+    QList<QProperty *> *ownedEnd();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    QList<QType *> *endType() const;
+    const QList<QType *> *endType() const;
 
 private:
     Q_DISABLE_COPY(QAssociation)

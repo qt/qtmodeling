@@ -77,8 +77,8 @@ public:
     const QNamespace *namespace_() const;
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    QList<QNamespace *> *allNamespaces() const;
-    bool isDistinguishableFrom(QNamedElement *n, QNamespace *ns) const;
+    const QList<QNamespace *> *allNamespaces() const;
+    bool isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const;
     QString qualifiedName() const;
     QString separator() const;
 

@@ -64,7 +64,7 @@ QConstraint::~QConstraint()
 /*!
     The ordered set of Elements referenced by this Constraint.
  */
-QList<QElement *> *QConstraint::constrainedElement() const
+QList<QElement *> *QConstraint::constrainedElement()
 {
 }
 

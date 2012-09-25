@@ -67,7 +67,7 @@ bool QMultiplicityElement::isOrdered() const
 {
 }
 
-void QMultiplicityElement::setIsOrdered(bool isOrdered)
+void QMultiplicityElement::setOrdered(bool isOrdered)
 {
 }
 
@@ -78,7 +78,7 @@ bool QMultiplicityElement::isUnique() const
 {
 }
 
-void QMultiplicityElement::setIsUnique(bool isUnique)
+void QMultiplicityElement::setUnique(bool isUnique)
 {
 }
 
@@ -114,7 +114,7 @@ bool QMultiplicityElement::includesCardinality(qint32 C) const
 /*!
     The query includesMultiplicity() checks whether this multiplicity includes all the cardinalities allowed by the specified multiplicity.
  */
-bool QMultiplicityElement::includesMultiplicity(QMultiplicityElement *M) const
+bool QMultiplicityElement::includesMultiplicity(const QMultiplicityElement *M) const
 {
 }
 

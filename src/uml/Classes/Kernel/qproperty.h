@@ -75,10 +75,10 @@ class Q_UML_EXPORT QProperty : public QObject, public QStructuralFeature
     Q_OBJECT
 
     Q_PROPERTY(QEnumerations::AggregationKind aggregation READ aggregation WRITE setAggregation)
-    Q_PROPERTY(bool isDerived READ isDerived WRITE setIsDerived)
-    Q_PROPERTY(bool isDerivedUnion READ isDerivedUnion WRITE setIsDerivedUnion)
-    Q_PROPERTY(bool isID READ isID WRITE setIsID)
-    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setIsReadOnly)
+    Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived)
+    Q_PROPERTY(bool isDerivedUnion READ isDerivedUnion WRITE setDerivedUnion)
+    Q_PROPERTY(bool isID READ isID WRITE setID)
+    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly)
     Q_PROPERTY(QAssociation * association READ association WRITE setAssociation)
     Q_PROPERTY(QClass * class_ READ class_ WRITE setClass_)
     Q_PROPERTY(QDataType * datatype READ datatype WRITE setDatatype)
@@ -95,13 +95,13 @@ public:
     QEnumerations::AggregationKind aggregation() const;
     void setAggregation(QEnumerations::AggregationKind aggregation);
     bool isDerived() const;
-    void setIsDerived(bool isDerived);
+    void setDerived(bool isDerived);
     bool isDerivedUnion() const;
-    void setIsDerivedUnion(bool isDerivedUnion);
+    void setDerivedUnion(bool isDerivedUnion);
     bool isID() const;
-    void setIsID(bool isID);
+    void setID(bool isID);
     bool isReadOnly() const;
-    void setIsReadOnly(bool isReadOnly);
+    void setReadOnly(bool isReadOnly);
 
     // Association-ends (except those derived && !derivedUnion)
     QAssociation *association() const;
@@ -114,17 +114,17 @@ public:
     void setDefaultValue(QValueSpecification *defaultValue);
     QAssociation *owningAssociation() const;
     void setOwningAssociation(QAssociation *owningAssociation);
-    QList<QProperty *> *redefinedProperty() const;
-    QList<QProperty *> *subsettedProperty() const;
+    QList<QProperty *> *redefinedProperty();
+    QList<QProperty *> *subsettedProperty();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     QString default_() const;
-    bool isAttribute(QProperty *p) const;
+    bool isAttribute(const QProperty *p) const;
     bool isComposite() const;
-    bool isConsistentWith(QRedefinableElement *redefinee) const;
+    bool isConsistentWith(const QRedefinableElement *redefinee) const;
     bool isNavigable() const;
-    QProperty *opposite() const;
-    QList<QType *> *subsettingContext() const;
+    const QProperty *opposite() const;
+    const QList<QType *> *subsettingContext() const;
 
 private:
     Q_DISABLE_COPY(QProperty)

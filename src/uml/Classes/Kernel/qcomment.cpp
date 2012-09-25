@@ -75,7 +75,7 @@ void QComment::setBody(QString body)
 /*!
     References the Element(s) being commented.
  */
-QList<QElement *> *QComment::annotatedElement() const
+QList<QElement *> *QComment::annotatedElement()
 {
 }
 

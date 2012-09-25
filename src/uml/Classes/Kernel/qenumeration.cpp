@@ -64,7 +64,7 @@ QEnumeration::~QEnumeration()
 /*!
     The ordered set of literals for this Enumeration.
  */
-QList<QEnumerationLiteral *> *QEnumeration::ownedLiteral() const
+QList<QEnumerationLiteral *> *QEnumeration::ownedLiteral()
 {
 }
 

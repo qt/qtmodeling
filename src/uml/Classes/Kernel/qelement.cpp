@@ -63,7 +63,7 @@ QElement::~QElement()
 /*!
     The Comments owned by this element.
  */
-QList<QComment *> *QElement::ownedComment() const
+QList<QComment *> *QElement::ownedComment()
 {
 }
 
@@ -84,7 +84,7 @@ const QElement *QElement::owner() const
 /*!
     The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
  */
-QList<QElement *> *QElement::allOwnedElements() const
+const QList<QElement *> *QElement::allOwnedElements() const
 {
 }
 

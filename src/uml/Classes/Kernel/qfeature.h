@@ -66,7 +66,7 @@ public:
 
     // Attributes (except those derived && !derivedUnion)
     bool isStatic() const;
-    void setIsStatic(bool isStatic);
+    void setStatic(bool isStatic);
 
     // Association-ends (except those derived && !derivedUnion)
     const QList<QClassifier *> *featuringClassifier() const;

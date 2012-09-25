@@ -71,27 +71,27 @@ public:
 
     // Attributes (except those derived && !derivedUnion)
     bool isAbstract() const;
-    void setIsAbstract(bool isAbstract);
+    void setAbstract(bool isAbstract);
     bool isFinalSpecialization() const;
-    void setIsFinalSpecialization(bool isFinalSpecialization);
+    void setFinalSpecialization(bool isFinalSpecialization);
 
     // Association-ends (except those derived && !derivedUnion)
     const QList<QProperty *> *attribute() const;
     const QList<QFeature *> *feature() const;
-    QList<QGeneralization *> *generalization() const;
-    QList<QClassifier *> *redefinedClassifier() const;
+    QList<QGeneralization *> *generalization();
+    QList<QClassifier *> *redefinedClassifier();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    QList<QFeature *> *allFeatures() const;
-    QList<QClassifier *> *allParents() const;
-    bool conformsTo(QClassifier *other) const;
-    QList<QClassifier *> *general() const;
-    bool hasVisibilityOf(QNamedElement *n) const;
-    QList<QNamedElement *> *inherit(QList<QNamedElement *> *inhs) const;
-    QList<QNamedElement *> *inheritableMembers(QClassifier *c) const;
-    QList<QNamedElement *> *inheritedMember() const;
-    bool maySpecializeType(QClassifier *c) const;
-    QList<QClassifier *> *parents() const;
+    const QList<QFeature *> *allFeatures() const;
+    const QList<QClassifier *> *allParents() const;
+    bool conformsTo(const QClassifier *other) const;
+    const QList<QClassifier *> *general() const;
+    bool hasVisibilityOf(const QNamedElement *n) const;
+    const QList<QNamedElement *> *inherit(const QList<QNamedElement *> *inhs) const;
+    const QList<QNamedElement *> *inheritableMembers(const QClassifier *c) const;
+    const QList<QNamedElement *> *inheritedMember() const;
+    bool maySpecializeType(const QClassifier *c) const;
+    const QList<QClassifier *> *parents() const;
 
 protected:
     explicit QClassifier();

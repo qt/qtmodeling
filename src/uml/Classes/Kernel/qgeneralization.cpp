@@ -68,7 +68,7 @@ bool QGeneralization::isSubstitutable() const
 {
 }
 
-void QGeneralization::setIsSubstitutable(bool isSubstitutable)
+void QGeneralization::setSubstitutable(bool isSubstitutable)
 {
 }
 
