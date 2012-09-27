@@ -60,7 +60,6 @@ QEnumeration::QEnumeration(QObject *parent)
 QEnumeration::~QEnumeration()
 {
 }
-
 /*!
     The ordered set of literals for this Enumeration.
  */

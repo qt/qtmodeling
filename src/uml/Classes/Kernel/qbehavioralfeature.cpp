@@ -59,14 +59,12 @@ QBehavioralFeature::QBehavioralFeature()
 QBehavioralFeature::~QBehavioralFeature()
 {
 }
-
 /*!
     Specifies the ordered set of formal parameters of this BehavioralFeature.
  */
 QList<QParameter *> *QBehavioralFeature::ownedParameter()
 {
 }
-
 /*!
     References the Types representing exceptions that may be raised during an invocation of this feature.
  */

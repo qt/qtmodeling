@@ -60,7 +60,6 @@ QExpression::QExpression(QObject *parent)
 QExpression::~QExpression()
 {
 }
-
 /*!
     The symbol associated with the node in the expression tree.
  */
@@ -71,7 +70,6 @@ QString QExpression::symbol() const
 void QExpression::setSymbol(QString symbol)
 {
 }
-
 /*!
     Specifies a sequence of operands.
  */

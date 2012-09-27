@@ -60,7 +60,6 @@ QPackageImport::QPackageImport(QObject *parent)
 QPackageImport::~QPackageImport()
 {
 }
-
 /*!
     Specifies the visibility of the imported PackageableElements within the importing Namespace, i.e., whether imported elements will in turn be visible to other packages that use that importingPackage as an importedPackage. If the PackageImport is public, the imported elements will be visible outside the package, while if it is private they will not.
  */
@@ -71,7 +70,6 @@ QEnumerations::VisibilityKind QPackageImport::visibility() const
 void QPackageImport::setVisibility(QEnumerations::VisibilityKind visibility)
 {
 }
-
 /*!
     Specifies the Package whose members are imported into a Namespace.
  */
@@ -82,7 +80,6 @@ QPackage *QPackageImport::importedPackage() const
 void QPackageImport::setImportedPackage(QPackage *importedPackage)
 {
 }
-
 /*!
     Specifies the Namespace that imports the members from a Package.
  */

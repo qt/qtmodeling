@@ -126,8 +126,10 @@ public:
 
     // Attributes (except those derived && !derivedUnion)
     [%- FOREACH attribute IN class.attribute -%]
+    [%- IF (attribute.isDerived == "false" or attribute.isDerivedUnion == "true") -%]
     [%- FOREACH accessor IN attribute.accessor %]
     ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
+    [%- END -%]
     [%- END -%]
     [%- END %]
     [%- END %]
@@ -135,8 +137,10 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     [%- FOREACH associationend IN class.associationend -%]
+    [%- IF (associationend.isDerived == "false" or associationend.isDerivedUnion == "true") -%]
     [%- FOREACH accessor IN associationend.accessor %]
     ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
+    [%- END -%]
     [%- END -%]
     [%- END %]
     [%- END %]

@@ -61,6 +61,7 @@ class Q_UML_EXPORT QEnumerationLiteral : public QInstanceSpecification
     Q_OBJECT
 
     // From QEnumerationLiteral
+    Q_PROPERTY(const QEnumeration * classifier READ classifier)
     Q_PROPERTY(QEnumeration * enumeration READ enumeration WRITE setEnumeration)
 
 public:

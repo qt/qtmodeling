@@ -76,6 +76,7 @@ class Q_UML_EXPORT QOperation : public QObject, public QBehavioralFeature
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 
@@ -90,6 +91,7 @@ class Q_UML_EXPORT QOperation : public QObject, public QBehavioralFeature
 
     // From QNamespace
     Q_PROPERTY(QList<QElementImport *> * elementImport READ elementImport)
+    Q_PROPERTY(const QList<QPackageableElement *> * importedMember READ importedMember)
     Q_PROPERTY(const QList<QNamedElement *> * member READ member)
     Q_PROPERTY(const QList<QNamedElement *> * ownedMember READ ownedMember)
     Q_PROPERTY(QList<QConstraint *> * ownedRule READ ownedRule)
@@ -100,7 +102,11 @@ class Q_UML_EXPORT QOperation : public QObject, public QBehavioralFeature
     Q_PROPERTY(QList<QType *> * raisedException READ raisedException)
 
     // From QOperation
+    Q_PROPERTY(bool isOrdered READ isOrdered)
     Q_PROPERTY(bool isQuery READ isQuery WRITE setQuery)
+    Q_PROPERTY(bool isUnique READ isUnique)
+    Q_PROPERTY(qint32 lower READ lower)
+    Q_PROPERTY(qint32 upper READ upper)
     Q_PROPERTY(QConstraint * bodyCondition READ bodyCondition WRITE setBodyCondition)
     Q_PROPERTY(QClass * class_ READ class_ WRITE setClass_)
     Q_PROPERTY(QDataType * datatype READ datatype WRITE setDatatype)
@@ -109,6 +115,7 @@ class Q_UML_EXPORT QOperation : public QObject, public QBehavioralFeature
     Q_PROPERTY(QList<QConstraint *> * precondition READ precondition)
     Q_PROPERTY(QList<QType *> * raisedException READ raisedException)
     Q_PROPERTY(QList<QOperation *> * redefinedOperation READ redefinedOperation)
+    Q_PROPERTY(const QType * type READ type)
 
 public:
     explicit QOperation(QObject *parent = 0);

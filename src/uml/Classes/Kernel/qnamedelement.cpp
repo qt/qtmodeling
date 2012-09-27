@@ -59,7 +59,6 @@ QNamedElement::QNamedElement()
 QNamedElement::~QNamedElement()
 {
 }
-
 /*!
     The name of the NamedElement.
  */
@@ -70,7 +69,6 @@ QString QNamedElement::name() const
 void QNamedElement::setName(QString name)
 {
 }
-
 /*!
     Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
  */
@@ -81,7 +79,6 @@ QEnumerations::VisibilityKind QNamedElement::visibility() const
 void QNamedElement::setVisibility(QEnumerations::VisibilityKind visibility)
 {
 }
-
 /*!
     Specifies the namespace that owns the NamedElement.
  */

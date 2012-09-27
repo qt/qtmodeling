@@ -59,7 +59,6 @@ QPackageableElement::QPackageableElement()
 QPackageableElement::~QPackageableElement()
 {
 }
-
 /*!
     Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
  */

@@ -59,21 +59,18 @@ QElement::QElement()
 QElement::~QElement()
 {
 }
-
 /*!
     The Comments owned by this element.
  */
 QList<QComment *> *QElement::ownedComment()
 {
 }
-
 /*!
     The Elements owned by this element.
  */
 const QList<QElement *> *QElement::ownedElement() const
 {
 }
-
 /*!
     The Element that owns this element.
  */

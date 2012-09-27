@@ -60,7 +60,6 @@ QAssociation::QAssociation(QObject *parent)
 QAssociation::~QAssociation()
 {
 }
-
 /*!
     Specifies whether the association is derived from other model elements such as other associations or constraints.
  */
@@ -71,21 +70,18 @@ bool QAssociation::isDerived() const
 void QAssociation::setDerived(bool isDerived)
 {
 }
-
 /*!
     Each end represents participation of instances of the classifier connected to the end in links of the association.
  */
 QList<QProperty *> *QAssociation::memberEnd()
 {
 }
-
 /*!
     The navigable ends that are owned by the association itself.
  */
 QList<QProperty *> *QAssociation::navigableOwnedEnd()
 {
 }
-
 /*!
     The ends that are owned by the association itself.
  */

@@ -60,7 +60,6 @@ QElementImport::QElementImport(QObject *parent)
 QElementImport::~QElementImport()
 {
 }
-
 /*!
     Specifies the name that should be added to the namespace of the importing package in lieu of the name of the imported packagable element. The aliased name must not clash with any other member name in the importing package. By default, no alias is used.
  */
@@ -71,7 +70,6 @@ QString QElementImport::alias() const
 void QElementImport::setAlias(QString alias)
 {
 }
-
 /*!
     Specifies the visibility of the imported PackageableElement within the importing Package. The default visibility is the same as that of the imported element. If the imported element does not have a visibility, it is possible to add visibility to the element import.
  */
@@ -82,7 +80,6 @@ QEnumerations::VisibilityKind QElementImport::visibility() const
 void QElementImport::setVisibility(QEnumerations::VisibilityKind visibility)
 {
 }
-
 /*!
     Specifies the PackageableElement whose name is to be added to a Namespace.
  */
@@ -93,7 +90,6 @@ QPackageableElement *QElementImport::importedElement() const
 void QElementImport::setImportedElement(QPackageableElement *importedElement)
 {
 }
-
 /*!
     Specifies the Namespace that imports a PackageableElement from another Package.
  */

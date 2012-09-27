@@ -60,7 +60,6 @@ QOperation::QOperation(QObject *parent)
 QOperation::~QOperation()
 {
 }
-
 /*!
     Specifies whether an execution of the BehavioralFeature leaves the state of the system unchanged (isQuery=true) or whether side effects may occur (isQuery=false).
  */
@@ -71,7 +70,6 @@ bool QOperation::isQuery() const
 void QOperation::setQuery(bool isQuery)
 {
 }
-
 /*!
     An optional Constraint on the result values of an invocation of this Operation.
  */
@@ -82,7 +80,6 @@ QConstraint *QOperation::bodyCondition() const
 void QOperation::setBodyCondition(QConstraint *bodyCondition)
 {
 }
-
 /*!
     The class that owns the operation.
  */
@@ -93,7 +90,6 @@ QClass *QOperation::class_() const
 void QOperation::setClass_(QClass *class_)
 {
 }
-
 /*!
     The DataType that owns this Operation.
  */
@@ -104,35 +100,30 @@ QDataType *QOperation::datatype() const
 void QOperation::setDatatype(QDataType *datatype)
 {
 }
-
 /*!
     Specifies the parameters owned by this Operation.
  */
 QList<QParameter *> *QOperation::ownedParameter()
 {
 }
-
 /*!
     An optional set of Constraints specifying the state of the system when the Operation is completed.
  */
 QList<QConstraint *> *QOperation::postcondition()
 {
 }
-
 /*!
     An optional set of Constraints on the state of the system when the Operation is invoked.
  */
 QList<QConstraint *> *QOperation::precondition()
 {
 }
-
 /*!
     References the Types representing exceptions that may be raised during an invocation of this operation.
  */
 QList<QType *> *QOperation::raisedException()
 {
 }
-
 /*!
     References the Operations that are redefined by this Operation.
  */

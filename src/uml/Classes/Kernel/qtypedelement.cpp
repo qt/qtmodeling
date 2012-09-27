@@ -59,7 +59,6 @@ QTypedElement::QTypedElement()
 QTypedElement::~QTypedElement()
 {
 }
-
 /*!
     The type of the TypedElement.
  */

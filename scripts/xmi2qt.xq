@@ -39,7 +39,7 @@ declare function qtxmi:unqualifiedTypeFromNamespacedProperty ($property as node(
             else
                 concat(qtxmi:namespaceFromId($property/@type), concat("::", concat("QEnumerations::", qtxmi:unqualifiedTypeFromId($property/@type))))
         let $baseType := if ($property/upperValue/@value = "*") then concat(concat("QList<", $baseType), " *>") else $baseType
-        let $baseType := if ($property/@isReadOnly = "true" or ($property/@direction = "return" and $property/../@isQuery = "true")) then concat ("const ", $baseType) else $baseType
+        let $baseType := if ($property/@isReadOnly = "true" or $property/@isDerived = "true" or ($property/@direction = "return" and $property/../@isQuery = "true")) then concat ("const ", $baseType) else $baseType
         let $baseType := if (qtxmi:elementFromProperty($property)/@xmi:type = "uml:Class") then concat ($baseType, " *") else $baseType
         return $baseType
     else
@@ -109,13 +109,15 @@ return
         for $attribute in $class/ownedAttribute
         let $unqualifiedType := qtxmi:unqualifiedTypeFromNamespacedProperty($attribute, $namespace)
         let $unqualifiedType := if (ends-with($unqualifiedType, "*")) then $unqualifiedType else concat($unqualifiedType, " ")
-        let $constness := if (starts-with($unqualifiedType, "QList")) then "" else " const"
-        where $attribute[not(@association) and not(@isDerived="true" and (not(@isDerivedUnion or @isDerivedUnion="false")))]
+        let $isDerived := if (not($attribute/@isDerived) or $attribute/@isDerived = "false") then "false" else "true"
+        let $isDerivedUnion := if (not($attribute/@isDerivedUnion) or $attribute/@isDerivedUnion = "false") then "false" else "true"
+        let $constness := if (starts-with($unqualifiedType, "QList") and $isDerived = "false") then "" else " const"
+        where $attribute[not(@association)]
         return
-        <attribute>
+        <attribute isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}">
         <accessor return="{$unqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}" constness="{$constness}"/>
         {
-        if (not(starts-with($unqualifiedType, "QList")) and ($attribute[not(@isReadOnly)] or $attribute/@isReadOnly != "true")) then
+        if (not(starts-with($unqualifiedType, "QList")) and ($attribute[not(@isReadOnly)] or $attribute/@isReadOnly != "true") and $isDerived = "false") then
         <accessor return="void " name="set{qtxmi:capitalizedNameFromType($unqualifiedType, qtxmi:mappedFunctionName($attribute/@name))}" constness="">
            <parameter type="{$unqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}"/>
         </accessor>
@@ -128,13 +130,15 @@ return
         for $attribute in $class/ownedAttribute
         let $unqualifiedType := qtxmi:unqualifiedTypeFromNamespacedProperty($attribute, $namespace)
         let $unqualifiedType := if (ends-with($unqualifiedType, "*")) then $unqualifiedType else concat($unqualifiedType, " ")
-        let $constness := if (starts-with($unqualifiedType, "QList")) then "" else " const"
-        where $attribute[@association and not(@isDerived="true" and (not(@isDerivedUnion or @isDerivedUnion="false")))]
+        let $isDerived := if (not($attribute/@isDerived) or $attribute/@isDerived = "false") then "false" else "true"
+        let $isDerivedUnion := if (not($attribute/@isDerivedUnion) or $attribute/@isDerivedUnion = "false") then "false" else "true"
+        let $constness := if (starts-with($unqualifiedType, "QList") and $isDerived = "false") then "" else " const"
+        where $attribute[@association]
         return
-        <associationend>
+        <associationend isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}">
         <accessor return="{$unqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}" constness="{$constness}"/>
         {
-        if (not(starts-with($unqualifiedType, "QList")) and ($attribute[not(@isReadOnly)] or $attribute/@isReadOnly != "true")) then
+        if (not(starts-with($unqualifiedType, "QList")) and ($attribute[not(@isReadOnly)] or $attribute/@isReadOnly != "true") and $isDerived = "false") then
         <accessor return="void " name="set{qtxmi:capitalizedNameFromType($unqualifiedType, qtxmi:mappedFunctionName($attribute/@name))}" constness="">
            <parameter type="{$unqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}"/>
         </accessor>

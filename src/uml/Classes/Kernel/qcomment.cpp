@@ -60,7 +60,6 @@ QComment::QComment(QObject *parent)
 QComment::~QComment()
 {
 }
-
 /*!
     Specifies a string that is the comment.
  */
@@ -71,7 +70,6 @@ QString QComment::body() const
 void QComment::setBody(QString body)
 {
 }
-
 /*!
     References the Element(s) being commented.
  */

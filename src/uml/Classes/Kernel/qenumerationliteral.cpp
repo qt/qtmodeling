@@ -60,7 +60,6 @@ QEnumerationLiteral::QEnumerationLiteral(QObject *parent)
 QEnumerationLiteral::~QEnumerationLiteral()
 {
 }
-
 /*!
     The Enumeration that this EnumerationLiteral is a member of.
  */
