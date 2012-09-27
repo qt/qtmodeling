@@ -60,7 +60,6 @@ QInstanceValue::QInstanceValue(QObject *parent)
 QInstanceValue::~QInstanceValue()
 {
 }
-
 /*!
     The instance that is the specified value.
  */

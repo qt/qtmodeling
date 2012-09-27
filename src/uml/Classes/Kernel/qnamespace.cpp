@@ -59,35 +59,30 @@ QNamespace::QNamespace()
 QNamespace::~QNamespace()
 {
 }
-
 /*!
     References the ElementImports owned by the Namespace.
  */
 QList<QElementImport *> *QNamespace::elementImport()
 {
 }
-
 /*!
     A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
  */
 const QList<QNamedElement *> *QNamespace::member() const
 {
 }
-
 /*!
     A collection of NamedElements owned by the Namespace.
  */
 const QList<QNamedElement *> *QNamespace::ownedMember() const
 {
 }
-
 /*!
     Specifies a set of Constraints owned by this Namespace.
  */
 QList<QConstraint *> *QNamespace::ownedRule()
 {
 }
-
 /*!
     References the PackageImports owned by the Namespace.
  */

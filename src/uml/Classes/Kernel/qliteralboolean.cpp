@@ -60,7 +60,6 @@ QLiteralBoolean::QLiteralBoolean(QObject *parent)
 QLiteralBoolean::~QLiteralBoolean()
 {
 }
-
 /*!
     The specified Boolean value.
  */

@@ -75,11 +75,13 @@ class Q_UML_EXPORT QPackage : public QObject, public QNamespace, public QPackage
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 
     // From QNamespace
     Q_PROPERTY(QList<QElementImport *> * elementImport READ elementImport)
+    Q_PROPERTY(const QList<QPackageableElement *> * importedMember READ importedMember)
     Q_PROPERTY(const QList<QNamedElement *> * member READ member)
     Q_PROPERTY(const QList<QNamedElement *> * ownedMember READ ownedMember)
     Q_PROPERTY(QList<QConstraint *> * ownedRule READ ownedRule)
@@ -90,7 +92,9 @@ class Q_UML_EXPORT QPackage : public QObject, public QNamespace, public QPackage
 
     // From QPackage
     Q_PROPERTY(QString URI READ URI WRITE setURI)
+    Q_PROPERTY(const QList<QPackage *> * nestedPackage READ nestedPackage)
     Q_PROPERTY(QPackage * nestingPackage READ nestingPackage WRITE setNestingPackage)
+    Q_PROPERTY(const QList<QType *> * ownedType READ ownedType)
     Q_PROPERTY(QList<QPackageMerge *> * packageMerge READ packageMerge)
     Q_PROPERTY(QList<QPackageableElement *> * packagedElement READ packagedElement)
 

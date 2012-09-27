@@ -60,7 +60,6 @@ QGeneralization::QGeneralization(QObject *parent)
 QGeneralization::~QGeneralization()
 {
 }
-
 /*!
     Indicates whether the specific classifier can be used wherever the general classifier can be used. If true, the execution traces of the specific classifier will be a superset of the execution traces of the general classifier.
  */
@@ -71,7 +70,6 @@ bool QGeneralization::isSubstitutable() const
 void QGeneralization::setSubstitutable(bool isSubstitutable)
 {
 }
-
 /*!
     References the general classifier in the Generalization relationship.
  */
@@ -82,7 +80,6 @@ QClassifier *QGeneralization::general() const
 void QGeneralization::setGeneral(QClassifier *general)
 {
 }
-
 /*!
     References the specializing classifier in the Generalization relationship.
  */

@@ -60,7 +60,6 @@ QLiteralString::QLiteralString(QObject *parent)
 QLiteralString::~QLiteralString()
 {
 }
-
 /*!
     The specified String value.
  */

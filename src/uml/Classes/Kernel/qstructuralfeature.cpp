@@ -59,7 +59,6 @@ QStructuralFeature::QStructuralFeature()
 QStructuralFeature::~QStructuralFeature()
 {
 }
-
 /*!
     States whether the feature's value may be modified by a client.
  */

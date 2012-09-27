@@ -64,6 +64,7 @@ ${class.name}::~${class.name}()
 }
 
 [%- FOREACH attribute IN class.attribute %]
+[%- IF (attribute.isDerived == "false" or attribute.isDerivedUnion == "true") -%]
 /*!
     [% attribute.documentation %]
  */
@@ -72,9 +73,11 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
 {
 }
 [% END -%]
+[% END -%]
 [%- END -%]
 
 [%- FOREACH associationend IN class.associationend %]
+[%- IF (associationend.isDerived == "false" or associationend.isDerivedUnion == "true") -%]
 /*!
     [% associationend.documentation %]
  */
@@ -82,6 +85,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
 ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
 {
 }
+[% END -%]
 [% END -%]
 [%- END -%]
 

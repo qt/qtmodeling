@@ -59,7 +59,6 @@ QRelationship::QRelationship()
 QRelationship::~QRelationship()
 {
 }
-
 /*!
     Specifies the elements related by the Relationship.
  */

@@ -60,7 +60,6 @@ QSlot::QSlot(QObject *parent)
 QSlot::~QSlot()
 {
 }
-
 /*!
     The structural feature that specifies the values that may be held by the slot.
  */
@@ -71,7 +70,6 @@ QStructuralFeature *QSlot::definingFeature() const
 void QSlot::setDefiningFeature(QStructuralFeature *definingFeature)
 {
 }
-
 /*!
     The instance specification that owns this slot.
  */
@@ -82,7 +80,6 @@ QInstanceSpecification *QSlot::owningInstance() const
 void QSlot::setOwningInstance(QInstanceSpecification *owningInstance)
 {
 }
-
 /*!
     The value or values corresponding to the defining feature for the owning instance specification.
  */

@@ -60,7 +60,6 @@ QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QObject *parent)
 QLiteralUnlimitedNatural::~QLiteralUnlimitedNatural()
 {
 }
-
 /*!
     The specified UnlimitedNatural value.
  */

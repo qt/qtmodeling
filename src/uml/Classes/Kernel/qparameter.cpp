@@ -60,7 +60,6 @@ QParameter::QParameter(QObject *parent)
 QParameter::~QParameter()
 {
 }
-
 /*!
     Indicates whether a parameter is being sent into or out of a behavioral element.
  */
@@ -71,7 +70,6 @@ QEnumerations::ParameterDirectionKind QParameter::direction() const
 void QParameter::setDirection(QEnumerations::ParameterDirectionKind direction)
 {
 }
-
 /*!
     Specifies a ValueSpecification that represents a value to be used when no argument is supplied for the Parameter.
  */
@@ -82,7 +80,6 @@ QValueSpecification *QParameter::defaultValue() const
 void QParameter::setDefaultValue(QValueSpecification *defaultValue)
 {
 }
-
 /*!
     References the Operation owning this parameter.
  */

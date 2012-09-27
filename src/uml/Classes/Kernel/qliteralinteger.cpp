@@ -60,7 +60,6 @@ QLiteralInteger::QLiteralInteger(QObject *parent)
 QLiteralInteger::~QLiteralInteger()
 {
 }
-
 /*!
     The specified Integer value.
  */

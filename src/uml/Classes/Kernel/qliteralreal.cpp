@@ -60,9 +60,8 @@ QLiteralReal::QLiteralReal(QObject *parent)
 QLiteralReal::~QLiteralReal()
 {
 }
-
 /*!
-    HASH(0x19ab2e8)
+    HASH(0x18ed020)
  */
 qreal QLiteralReal::value() const
 {

@@ -80,6 +80,7 @@ class Q_UML_EXPORT QProperty : public QObject, public QStructuralFeature
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 
@@ -98,6 +99,8 @@ class Q_UML_EXPORT QProperty : public QObject, public QStructuralFeature
     // From QMultiplicityElement
     Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
     Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
+    Q_PROPERTY(qint32 lower READ lower)
+    Q_PROPERTY(qint32 upper READ upper)
     Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
     Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
 
@@ -106,6 +109,8 @@ class Q_UML_EXPORT QProperty : public QObject, public QStructuralFeature
 
     // From QProperty
     Q_PROPERTY(QEnumerations::AggregationKind aggregation READ aggregation WRITE setAggregation)
+    Q_PROPERTY(QString default_ READ default_)
+    Q_PROPERTY(bool isComposite READ isComposite)
     Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived)
     Q_PROPERTY(bool isDerivedUnion READ isDerivedUnion WRITE setDerivedUnion)
     Q_PROPERTY(bool isID READ isID WRITE setID)
@@ -114,6 +119,7 @@ class Q_UML_EXPORT QProperty : public QObject, public QStructuralFeature
     Q_PROPERTY(QClass * class_ READ class_ WRITE setClass_)
     Q_PROPERTY(QDataType * datatype READ datatype WRITE setDatatype)
     Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
+    Q_PROPERTY(const QProperty * opposite READ opposite)
     Q_PROPERTY(QAssociation * owningAssociation READ owningAssociation WRITE setOwningAssociation)
     Q_PROPERTY(QList<QProperty *> * redefinedProperty READ redefinedProperty)
     Q_PROPERTY(QList<QProperty *> * subsettedProperty READ subsettedProperty)

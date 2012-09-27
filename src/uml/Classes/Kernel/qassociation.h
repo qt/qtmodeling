@@ -76,6 +76,7 @@ class Q_UML_EXPORT QAssociation : public QObject, public QRelationship, public Q
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 
@@ -92,6 +93,7 @@ class Q_UML_EXPORT QAssociation : public QObject, public QRelationship, public Q
 
     // From QNamespace
     Q_PROPERTY(QList<QElementImport *> * elementImport READ elementImport)
+    Q_PROPERTY(const QList<QPackageableElement *> * importedMember READ importedMember)
     Q_PROPERTY(const QList<QNamedElement *> * member READ member)
     Q_PROPERTY(const QList<QNamedElement *> * ownedMember READ ownedMember)
     Q_PROPERTY(QList<QConstraint *> * ownedRule READ ownedRule)
@@ -102,11 +104,14 @@ class Q_UML_EXPORT QAssociation : public QObject, public QRelationship, public Q
     Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization)
     Q_PROPERTY(const QList<QProperty *> * attribute READ attribute)
     Q_PROPERTY(const QList<QFeature *> * feature READ feature)
+    Q_PROPERTY(const QList<QClassifier *> * general READ general)
     Q_PROPERTY(QList<QGeneralization *> * generalization READ generalization)
+    Q_PROPERTY(const QList<QNamedElement *> * inheritedMember READ inheritedMember)
     Q_PROPERTY(QList<QClassifier *> * redefinedClassifier READ redefinedClassifier)
 
     // From QAssociation
     Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived)
+    Q_PROPERTY(const QList<QType *> * endType READ endType)
     Q_PROPERTY(QList<QProperty *> * memberEnd READ memberEnd)
     Q_PROPERTY(QList<QProperty *> * navigableOwnedEnd READ navigableOwnedEnd)
     Q_PROPERTY(QList<QProperty *> * ownedEnd READ ownedEnd)

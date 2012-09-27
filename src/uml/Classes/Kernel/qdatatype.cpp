@@ -60,14 +60,12 @@ QDataType::QDataType(QObject *parent)
 QDataType::~QDataType()
 {
 }
-
 /*!
     The Attributes owned by the DataType.
  */
 QList<QProperty *> *QDataType::ownedAttribute()
 {
 }
-
 /*!
     The Operations owned by the DataType.
  */

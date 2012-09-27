@@ -60,7 +60,6 @@ QClass::QClass(QObject *parent)
 QClass::~QClass()
 {
 }
-
 /*!
     If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.
  */
@@ -71,21 +70,18 @@ bool QClass::isAbstract() const
 void QClass::setAbstract(bool isAbstract)
 {
 }
-
 /*!
     References all the Classifiers that are defined (nested) within the Class.
  */
 QList<QClassifier *> *QClass::nestedClassifier()
 {
 }
-
 /*!
     The attributes (i.e. the properties) owned by the class.
  */
 QList<QProperty *> *QClass::ownedAttribute()
 {
 }
-
 /*!
     The operations owned by the class.
  */

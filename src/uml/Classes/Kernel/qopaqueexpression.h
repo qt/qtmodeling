@@ -70,6 +70,7 @@ class Q_UML_EXPORT QOpaqueExpression : public QObject, public QValueSpecificatio
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 

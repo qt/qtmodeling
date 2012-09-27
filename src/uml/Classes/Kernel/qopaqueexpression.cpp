@@ -60,7 +60,6 @@ QOpaqueExpression::QOpaqueExpression(QObject *parent)
 QOpaqueExpression::~QOpaqueExpression()
 {
 }
-
 /*!
     The text of the expression, possibly in multiple languages.
  */
@@ -71,7 +70,6 @@ QString QOpaqueExpression::body() const
 void QOpaqueExpression::setBody(QString body)
 {
 }
-
 /*!
     Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.
  */

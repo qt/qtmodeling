@@ -59,7 +59,6 @@ QMultiplicityElement::QMultiplicityElement()
 QMultiplicityElement::~QMultiplicityElement()
 {
 }
-
 /*!
     For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.
  */
@@ -70,7 +69,6 @@ bool QMultiplicityElement::isOrdered() const
 void QMultiplicityElement::setOrdered(bool isOrdered)
 {
 }
-
 /*!
     For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique.
  */
@@ -81,7 +79,6 @@ bool QMultiplicityElement::isUnique() const
 void QMultiplicityElement::setUnique(bool isUnique)
 {
 }
-
 /*!
     The specification of the lower bound for this multiplicity.
  */
@@ -92,7 +89,6 @@ QValueSpecification *QMultiplicityElement::lowerValue() const
 void QMultiplicityElement::setLowerValue(QValueSpecification *lowerValue)
 {
 }
-
 /*!
     The specification of the upper bound for this multiplicity.
  */

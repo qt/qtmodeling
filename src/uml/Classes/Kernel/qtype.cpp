@@ -59,7 +59,6 @@ QType::QType()
 QType::~QType()
 {
 }
-
 /*!
     Specifies the owning package of this classifier, if any.
  */

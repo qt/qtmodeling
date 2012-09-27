@@ -60,14 +60,12 @@ QConstraint::QConstraint(QObject *parent)
 QConstraint::~QConstraint()
 {
 }
-
 /*!
     The ordered set of Elements referenced by this Constraint.
  */
 QList<QElement *> *QConstraint::constrainedElement()
 {
 }
-
 /*!
     Specifies the namespace that owns the NamedElement.
  */
@@ -78,7 +76,6 @@ QNamespace *QConstraint::context() const
 void QConstraint::setContext(QNamespace *context)
 {
 }
-
 /*!
     A condition that must be true when evaluated in order for the constraint to be satisfied.
  */

@@ -60,7 +60,6 @@ QPackageMerge::QPackageMerge(QObject *parent)
 QPackageMerge::~QPackageMerge()
 {
 }
-
 /*!
     References the Package that is to be merged with the receiving package of the PackageMerge.
  */
@@ -71,7 +70,6 @@ QPackage *QPackageMerge::mergedPackage() const
 void QPackageMerge::setMergedPackage(QPackage *mergedPackage)
 {
 }
-
 /*!
     References the Package that is being extended with the contents of the merged package of the PackageMerge.
  */

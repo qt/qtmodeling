@@ -76,6 +76,7 @@ class Q_UML_EXPORT QParameter : public QObject, public QTypedElement, public QMu
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QEnumerations::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 
@@ -85,10 +86,13 @@ class Q_UML_EXPORT QParameter : public QObject, public QTypedElement, public QMu
     // From QMultiplicityElement
     Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
     Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
+    Q_PROPERTY(qint32 lower READ lower)
+    Q_PROPERTY(qint32 upper READ upper)
     Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
     Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
 
     // From QParameter
+    Q_PROPERTY(QString default_ READ default_)
     Q_PROPERTY(QEnumerations::ParameterDirectionKind direction READ direction WRITE setDirection)
     Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
     Q_PROPERTY(QOperation * operation READ operation WRITE setOperation)

@@ -60,7 +60,6 @@ QProperty::QProperty(QObject *parent)
 QProperty::~QProperty()
 {
 }
-
 /*!
     Specifies the kind of aggregation that applies to the Property.
  */
@@ -71,7 +70,6 @@ QEnumerations::AggregationKind QProperty::aggregation() const
 void QProperty::setAggregation(QEnumerations::AggregationKind aggregation)
 {
 }
-
 /*!
     Specifies whether the Property is derived, i.e., whether its value or values can be computed from other information.
  */
@@ -82,7 +80,6 @@ bool QProperty::isDerived() const
 void QProperty::setDerived(bool isDerived)
 {
 }
-
 /*!
     Specifies whether the property is derived as the union of all of the properties that are constrained to subset it.
  */
@@ -93,7 +90,6 @@ bool QProperty::isDerivedUnion() const
 void QProperty::setDerivedUnion(bool isDerivedUnion)
 {
 }
-
 /*!
     True indicates this property can be used to uniquely identify an instance of the containing Class.
  */
@@ -104,7 +100,6 @@ bool QProperty::isID() const
 void QProperty::setID(bool isID)
 {
 }
-
 /*!
     If true, the attribute may only be read, and not written.
  */
@@ -115,7 +110,6 @@ bool QProperty::isReadOnly() const
 void QProperty::setReadOnly(bool isReadOnly)
 {
 }
-
 /*!
     References the association of which this property is a member, if any.
  */
@@ -126,7 +120,6 @@ QAssociation *QProperty::association() const
 void QProperty::setAssociation(QAssociation *association)
 {
 }
-
 /*!
     References the Class that owns the Property.
  */
@@ -137,7 +130,6 @@ QClass *QProperty::class_() const
 void QProperty::setClass_(QClass *class_)
 {
 }
-
 /*!
     The DataType that owns this Property.
  */
@@ -148,7 +140,6 @@ QDataType *QProperty::datatype() const
 void QProperty::setDatatype(QDataType *datatype)
 {
 }
-
 /*!
     A ValueSpecification that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.
  */
@@ -159,7 +150,6 @@ QValueSpecification *QProperty::defaultValue() const
 void QProperty::setDefaultValue(QValueSpecification *defaultValue)
 {
 }
-
 /*!
     References the owning association of this property, if any.
  */
@@ -170,14 +160,12 @@ QAssociation *QProperty::owningAssociation() const
 void QProperty::setOwningAssociation(QAssociation *owningAssociation)
 {
 }
-
 /*!
     References the properties that are redefined by this property.
  */
 QList<QProperty *> *QProperty::redefinedProperty()
 {
 }
-
 /*!
     References the properties of which this property is constrained to be a subset.
  */
