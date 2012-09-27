@@ -58,7 +58,7 @@ declare function qtxmi:capitalizedNameFromType($unqualifiedType as xs:string, $n
 };
 <qtxmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:qtxmi="http://www.qt-project.org">
 {
-for $namespace in distinct-values(doc($xmiFile)//packagedElement[@xmi:type="uml:Package"]/@xmi:id)
+for $namespace in distinct-values(doc($xmiFile)//packagedElement[@xmi:type="uml:Package"][@xmi:id="Classes-Kernel"]/@xmi:id)
 return
 <namespace path="{replace($namespace, "-", "/")}">
 {
@@ -103,10 +103,13 @@ return
         <qtinclude>QtCore/QList</qtinclude>
         }
         {
-        for $id in distinct-values($class/ownedAttribute/@type | $class/ownedOperation/ownedParameter/@type)
-        where qtxmi:elementFromString($xmiFile, $id)/@xmi:type != "uml:Enumeration" and $id != $class/@xmi:id and empty(distinct-values($id[.=$superClasses]))
+        for $id in distinct-values($class/ownedAttribute/@type | $class/ownedOperation/ownedParameter/@type | $class/ownedAttribute/type/@xmi:idref | $class/ownedOperation/ownedParameter/type/@xmi:idref | $class/ownedAttribute/type/@href | $class/ownedOperation/ownedParameter/type/@href)
+        let $file := tokenize(tokenize($id, "#")[1], "/")[last()]
+        let $file := if ($file = $id) then $xmiFile else $file
+        let $realId := tokenize($id, "#")[last()]
+        where qtxmi:elementFromString($file, $realId)/@xmi:type = "uml:Class" and $realId != $class/@xmi:id and empty(distinct-values($id[.=$superClasses]))
         return
-        <forwarddecl>{concat("Q", qtxmi:unqualifiedTypeFromId($id))}</forwarddecl>
+        <forwarddecl namespace="{qtxmi:namespaceFromId($realId)}">{concat("Q", qtxmi:unqualifiedTypeFromId($realId))}</forwarddecl>
         }
         {
         for $attribute in $class/ownedAttribute
