@@ -109,20 +109,18 @@ return
         for $attribute in $class/ownedAttribute
         let $unqualifiedType := qtxmi:unqualifiedTypeFromNamespacedProperty($attribute, $namespace)
         let $unqualifiedType := if (ends-with($unqualifiedType, "*")) then $unqualifiedType else concat($unqualifiedType, " ")
-        let $constness := if ($attribute[not(@isReadOnly)] or $attribute/@isReadOnly != "true") then "" else " const"
+        let $constness := if (starts-with($unqualifiedType, "QList")) then "" else " const"
         where $attribute[not(@association) and not(@isDerived="true" and (not(@isDerivedUnion or @isDerivedUnion="false")))]
         return
-        if (not(starts-with($unqualifiedType, "QList")) and ($attribute[not(@isReadOnly)] or $attribute/@isReadOnly != "true")) then
         <attribute>
-        <accessor return="{$unqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}" constness=" const"/>
+        <accessor return="{$unqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}" constness="{$constness}"/>
+        {
+        if (not(starts-with($unqualifiedType, "QList")) and ($attribute[not(@isReadOnly)] or $attribute/@isReadOnly != "true")) then
         <accessor return="void " name="set{qtxmi:capitalizedNameFromType($unqualifiedType, qtxmi:mappedFunctionName($attribute/@name))}" constness="">
            <parameter type="{$unqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}"/>
         </accessor>
-        <documentation>{$attribute/ownedComment/body/text()}</documentation>
-        </attribute>
-        else
-        <attribute>
-        <accessor return="{$unqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}" constness="{$constness}"/>
+        else ""
+        }
         <documentation>{$attribute/ownedComment/body/text()}</documentation>
         </attribute>
         }
@@ -130,20 +128,18 @@ return
         for $attribute in $class/ownedAttribute
         let $unqualifiedType := qtxmi:unqualifiedTypeFromNamespacedProperty($attribute, $namespace)
         let $unqualifiedType := if (ends-with($unqualifiedType, "*")) then $unqualifiedType else concat($unqualifiedType, " ")
-        let $constness := if ($attribute[not(@isReadOnly)] or $attribute/@isReadOnly != "true") then "" else " const"
+        let $constness := if (starts-with($unqualifiedType, "QList")) then "" else " const"
         where $attribute[@association and not(@isDerived="true" and (not(@isDerivedUnion or @isDerivedUnion="false")))]
         return
-        if (not(starts-with($unqualifiedType, "QList")) and ($attribute[not(@isReadOnly)] or $attribute/@isReadOnly != "true")) then
         <associationend>
-        <accessor return="{$unqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}" constness=" const"/>
+        <accessor return="{$unqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}" constness="{$constness}"/>
+        {
+        if (not(starts-with($unqualifiedType, "QList")) and ($attribute[not(@isReadOnly)] or $attribute/@isReadOnly != "true")) then
         <accessor return="void " name="set{qtxmi:capitalizedNameFromType($unqualifiedType, qtxmi:mappedFunctionName($attribute/@name))}" constness="">
            <parameter type="{$unqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}"/>
         </accessor>
-        <documentation>{$attribute/ownedComment/body/text()}</documentation>
-        </associationend>
-        else
-        <associationend>
-        <accessor return="{$unqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}" constness="{$constness}"/>
+        else ""
+        }
         <documentation>{$attribute/ownedComment/body/text()}</documentation>
         </associationend>
         }
