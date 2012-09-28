@@ -44,6 +44,7 @@
 
 QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
 
+[%- IF class.documentation %]
 /*!
     \class ${class.name}
 
@@ -51,6 +52,7 @@ QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
 
     \brief ${class.documentation}
  */
+[%- END %]
 
 ${class.name}::${class.name}([%- IF class.isAbstract == 'false' -%]QObject *parent[%- END -%])
 [%- IF class.isAbstract == 'false' %]
@@ -65,9 +67,11 @@ ${class.name}::~${class.name}()
 
 [%- FOREACH attribute IN class.attribute %]
 [%- IF (attribute.isDerived == "false" or attribute.isDerivedUnion == "true") -%]
+[%- IF (attribute.documentation) %]
 /*!
     [% attribute.documentation %]
  */
+[%- END %]
 [%- FOREACH accessor IN attribute.accessor %]
 ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
 {
@@ -78,9 +82,11 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
 
 [%- FOREACH associationend IN class.associationend %]
 [%- IF (associationend.isDerived == "false" or associationend.isDerivedUnion == "true") -%]
+[%- IF (associationend.documentation) %]
 /*!
     [% associationend.documentation %]
  */
+[%- END %]
 [%- FOREACH accessor IN associationend.accessor %]
 ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
 {
@@ -90,9 +96,11 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
 [%- END -%]
 
 [%- FOREACH operation IN class.operation %]
+[%- IF (operation.documentation) %]
 /*!
     [% operation.documentation %]
  */
+[%- END %]
 ${operation.return}${class.name}::${operation.name}([%- FOREACH parameter IN operation.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${operation.constness}
 {
 }

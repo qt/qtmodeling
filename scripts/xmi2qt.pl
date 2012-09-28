@@ -12,7 +12,7 @@ use Getopt::Std;
 my %options=();
 getopt("oi",\%options);
 
-my $xml = new XML::Simple(keyattr => { 'class' => '+name' }, forcearray => ['namespace', 'class', 'enumeration', 'attribute', 'associationend', 'operation', 'accessor', 'parameter']);
+my $xml = new XML::Simple(keyattr => { 'class' => '+name' }, forcearray => ['namespace', 'class', 'enumeration', 'attribute', 'associationend', 'operation', 'accessor', 'parameter', 'forwarddecl']);
 my $tt = Template->new(INTERPOLATE  => 1, INCLUDE_PATH => 'templates/');
 
 my $xmi = $xml->XMLin($options{i});
