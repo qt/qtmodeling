@@ -38,8 +38,8 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef CLASSES_KERNEL_QENUMERATIONS_H
-#define CLASSES_KERNEL_QENUMERATIONS_H
+#ifndef QTUML_CLASSES_KERNEL_QENUMERATIONS_H
+#define QTUML_CLASSES_KERNEL_QENUMERATIONS_H
 
 #include <QtUml/QtUmlGlobal>
 
@@ -47,7 +47,7 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 QT_MODULE(QtUml)
 
@@ -84,13 +84,13 @@ private:
     explicit QEnumerations();
 };
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QEnumerations::AggregationKind))
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QEnumerations::ParameterDirectionKind))
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QEnumerations::VisibilityKind))
+Q_DECLARE_METATYPE(QtUml::Classes::Kernel::QEnumerations::AggregationKind)
+Q_DECLARE_METATYPE(QtUml::Classes::Kernel::QEnumerations::ParameterDirectionKind)
+Q_DECLARE_METATYPE(QtUml::Classes::Kernel::QEnumerations::VisibilityKind)
 
 QT_END_HEADER
 
-#endif // CLASSES_KERNEL_QENUMERATIONS_H
+#endif // QTUML_CLASSES_KERNEL_QENUMERATIONS_H
 

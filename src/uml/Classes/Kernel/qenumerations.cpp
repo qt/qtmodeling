@@ -41,14 +41,14 @@
 
 #include "qenumerations.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 QEnumerations::QEnumerations()
 {
 }
 
 /*!
-    \enum Classes::Kernel::QEnumerations::AggregationKind
+    \enum QtUml::Classes::Kernel::QEnumerations::AggregationKind
 
     AggregationKind is an enumeration type that specifies the literals for defining the kind of aggregation of a property.
 
@@ -61,7 +61,7 @@ QEnumerations::QEnumerations()
  */
 
 /*!
-    \enum Classes::Kernel::QEnumerations::ParameterDirectionKind
+    \enum QtUml::Classes::Kernel::QEnumerations::ParameterDirectionKind
 
     Parameter direction kind is an enumeration type that defines literals used to specify direction of parameters.
 
@@ -75,7 +75,7 @@ QEnumerations::QEnumerations()
  */
 
 /*!
-    \enum Classes::Kernel::QEnumerations::VisibilityKind
+    \enum QtUml::Classes::Kernel::QEnumerations::VisibilityKind
 
     VisibilityKind is an enumeration type that defines literals to determine the visibility of elements in a model.
 
@@ -89,5 +89,5 @@ QEnumerations::QEnumerations()
 
 #include "moc_qenumerations.cpp"
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

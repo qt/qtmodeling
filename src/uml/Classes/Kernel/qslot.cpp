@@ -42,7 +42,7 @@
 #include "qslot.h"
 //#include "qslot_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QSlot
@@ -60,6 +60,7 @@ QSlot::QSlot(QObject *parent)
 QSlot::~QSlot()
 {
 }
+
 /*!
     The structural feature that specifies the values that may be held by the slot.
  */
@@ -70,6 +71,7 @@ QStructuralFeature *QSlot::definingFeature() const
 void QSlot::setDefiningFeature(QStructuralFeature *definingFeature)
 {
 }
+
 /*!
     The instance specification that owns this slot.
  */
@@ -80,6 +82,7 @@ QInstanceSpecification *QSlot::owningInstance() const
 void QSlot::setOwningInstance(QInstanceSpecification *owningInstance)
 {
 }
+
 /*!
     The value or values corresponding to the defining feature for the owning instance specification.
  */
@@ -89,5 +92,5 @@ QList<QValueSpecification *> *QSlot::value()
 
 #include "moc_qslot.cpp"
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

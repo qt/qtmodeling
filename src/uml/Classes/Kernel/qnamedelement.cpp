@@ -42,7 +42,7 @@
 #include "qnamedelement.h"
 //#include "qnamedelement_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QNamedElement
@@ -59,6 +59,7 @@ QNamedElement::QNamedElement()
 QNamedElement::~QNamedElement()
 {
 }
+
 /*!
     The name of the NamedElement.
  */
@@ -69,6 +70,7 @@ QString QNamedElement::name() const
 void QNamedElement::setName(QString name)
 {
 }
+
 /*!
     Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
  */
@@ -79,6 +81,7 @@ QEnumerations::VisibilityKind QNamedElement::visibility() const
 void QNamedElement::setVisibility(QEnumerations::VisibilityKind visibility)
 {
 }
+
 /*!
     Specifies the namespace that owns the NamedElement.
  */
@@ -114,5 +117,5 @@ QString QNamedElement::separator() const
 {
 }
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

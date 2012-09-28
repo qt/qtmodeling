@@ -42,7 +42,7 @@
 #include "qopaqueexpression.h"
 //#include "qopaqueexpression_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QOpaqueExpression
@@ -60,24 +60,18 @@ QOpaqueExpression::QOpaqueExpression(QObject *parent)
 QOpaqueExpression::~QOpaqueExpression()
 {
 }
+
 /*!
     The text of the expression, possibly in multiple languages.
  */
-QString QOpaqueExpression::body() const
+QList<QString *> QOpaqueExpression::body()
 {
 }
 
-void QOpaqueExpression::setBody(QString body)
-{
-}
 /*!
     Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.
  */
-QString QOpaqueExpression::language() const
-{
-}
-
-void QOpaqueExpression::setLanguage(QString language)
+QList<QString *> QOpaqueExpression::language()
 {
 }
 
@@ -111,5 +105,5 @@ qint32 QOpaqueExpression::value() const
 
 #include "moc_qopaqueexpression.cpp"
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

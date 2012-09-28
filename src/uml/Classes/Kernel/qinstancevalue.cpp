@@ -42,7 +42,7 @@
 #include "qinstancevalue.h"
 //#include "qinstancevalue_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QInstanceValue
@@ -60,6 +60,7 @@ QInstanceValue::QInstanceValue(QObject *parent)
 QInstanceValue::~QInstanceValue()
 {
 }
+
 /*!
     The instance that is the specified value.
  */
@@ -73,5 +74,5 @@ void QInstanceValue::setInstance(QInstanceSpecification *instance)
 
 #include "moc_qinstancevalue.cpp"
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

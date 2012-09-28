@@ -42,7 +42,7 @@
 #include "qtype.h"
 //#include "qtype_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QType
@@ -59,6 +59,7 @@ QType::QType()
 QType::~QType()
 {
 }
+
 /*!
     Specifies the owning package of this classifier, if any.
  */
@@ -77,5 +78,5 @@ bool QType::conformsTo(const QType *other) const
 {
 }
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

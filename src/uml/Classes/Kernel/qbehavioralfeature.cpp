@@ -42,7 +42,7 @@
 #include "qbehavioralfeature.h"
 //#include "qbehavioralfeature_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QBehavioralFeature
@@ -59,12 +59,14 @@ QBehavioralFeature::QBehavioralFeature()
 QBehavioralFeature::~QBehavioralFeature()
 {
 }
+
 /*!
     Specifies the ordered set of formal parameters of this BehavioralFeature.
  */
 QList<QParameter *> *QBehavioralFeature::ownedParameter()
 {
 }
+
 /*!
     References the Types representing exceptions that may be raised during an invocation of this feature.
  */
@@ -79,5 +81,5 @@ bool QBehavioralFeature::isDistinguishableFrom(const QNamedElement *n, const QNa
 {
 }
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

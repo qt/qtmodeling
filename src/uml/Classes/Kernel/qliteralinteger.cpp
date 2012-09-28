@@ -42,7 +42,7 @@
 #include "qliteralinteger.h"
 //#include "qliteralinteger_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QLiteralInteger
@@ -60,6 +60,7 @@ QLiteralInteger::QLiteralInteger(QObject *parent)
 QLiteralInteger::~QLiteralInteger()
 {
 }
+
 /*!
     The specified Integer value.
  */
@@ -87,5 +88,5 @@ bool QLiteralInteger::isComputable() const
 
 #include "moc_qliteralinteger.cpp"
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

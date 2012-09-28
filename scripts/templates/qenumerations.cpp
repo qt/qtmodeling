@@ -41,7 +41,7 @@
 
 #include "qenumerations.h"
 
-QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
 
 QEnumerations::QEnumerations()
 {
@@ -63,5 +63,5 @@ QEnumerations::QEnumerations()
 
 #include "moc_qenumerations.cpp"
 
-QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_END_NAMESPACE_${namespace.replace('/', '_').upper}
 

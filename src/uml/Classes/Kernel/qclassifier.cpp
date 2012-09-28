@@ -42,7 +42,7 @@
 #include "qclassifier.h"
 //#include "qclassifier_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QClassifier
@@ -59,6 +59,7 @@ QClassifier::QClassifier()
 QClassifier::~QClassifier()
 {
 }
+
 /*!
     If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.
  */
@@ -69,6 +70,7 @@ bool QClassifier::isAbstract() const
 void QClassifier::setAbstract(bool isAbstract)
 {
 }
+
 /*!
     If true, the Classifier cannot be specialized by generalization. Note that this property is preserved through package merge operations; that is, the capability to specialize a Classifier (i.e., isFinalSpecialization =false) must be preserved in the resulting Classifier of a package merge operation where a Classifier with isFinalSpecialization =false is merged with a matching Classifier with isFinalSpecialization =true: the resulting Classifier will have isFinalSpecialization =false.
  */
@@ -79,24 +81,28 @@ bool QClassifier::isFinalSpecialization() const
 void QClassifier::setFinalSpecialization(bool isFinalSpecialization)
 {
 }
+
 /*!
     Refers to all of the Properties that are direct (i.e. not inherited or imported) attributes of the classifier.
  */
 const QList<QProperty *> *QClassifier::attribute() const
 {
 }
+
 /*!
     Specifies each feature defined in the classifier.
  */
 const QList<QFeature *> *QClassifier::feature() const
 {
 }
+
 /*!
     Specifies the Generalization relationships for this Classifier. These Generalizations navigaten to more general classifiers in the generalization hierarchy.
  */
 QList<QGeneralization *> *QClassifier::generalization()
 {
 }
+
 /*!
     References the Classifiers that are redefined by this Classifier.
  */
@@ -174,5 +180,5 @@ const QList<QClassifier *> *QClassifier::parents() const
 {
 }
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

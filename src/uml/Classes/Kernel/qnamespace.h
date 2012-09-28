@@ -38,8 +38,8 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef CLASSES_KERNEL_QNAMESPACE_H
-#define CLASSES_KERNEL_QNAMESPACE_H
+#ifndef QTUML_CLASSES_KERNEL_QNAMESPACE_H
+#define QTUML_CLASSES_KERNEL_QNAMESPACE_H
 
 #include <QtUml/QtUmlGlobal>
 
@@ -52,7 +52,7 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 QT_MODULE(QtUml)
 
@@ -77,7 +77,7 @@ public:
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     const QList<QPackageableElement *> *excludeCollisions(const QPackageableElement *imps) const;
-    QString getNamesOfMember(const QNamedElement *element) const;
+    QList<QString *> getNamesOfMember(const QNamedElement *element) const;
     const QList<QPackageableElement *> *importMembers(const QPackageableElement *imps) const;
     const QList<QPackageableElement *> *importedMember() const;
     bool membersAreDistinguishable() const;
@@ -86,9 +86,9 @@ protected:
     explicit QNamespace();
 };
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 
 QT_END_HEADER
 
-#endif // CLASSES_KERNEL_QNAMESPACE_H
+#endif // QTUML_CLASSES_KERNEL_QNAMESPACE_H
 

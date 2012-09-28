@@ -42,7 +42,7 @@
 #include "qvaluespecification.h"
 //#include "qvaluespecification_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QValueSpecification
@@ -109,5 +109,5 @@ qint32 QValueSpecification::unlimitedValue() const
 {
 }
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

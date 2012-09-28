@@ -42,7 +42,7 @@
 #include "qliteralstring.h"
 //#include "qliteralstring_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QLiteralString
@@ -60,6 +60,7 @@ QLiteralString::QLiteralString(QObject *parent)
 QLiteralString::~QLiteralString()
 {
 }
+
 /*!
     The specified String value.
  */
@@ -87,5 +88,5 @@ QString QLiteralString::stringValue() const
 
 #include "moc_qliteralstring.cpp"
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

@@ -42,7 +42,7 @@
 #include "qnamespace.h"
 //#include "qnamespace_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QNamespace
@@ -59,30 +59,35 @@ QNamespace::QNamespace()
 QNamespace::~QNamespace()
 {
 }
+
 /*!
     References the ElementImports owned by the Namespace.
  */
 QList<QElementImport *> *QNamespace::elementImport()
 {
 }
+
 /*!
     A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
  */
 const QList<QNamedElement *> *QNamespace::member() const
 {
 }
+
 /*!
     A collection of NamedElements owned by the Namespace.
  */
 const QList<QNamedElement *> *QNamespace::ownedMember() const
 {
 }
+
 /*!
     Specifies a set of Constraints owned by this Namespace.
  */
 QList<QConstraint *> *QNamespace::ownedRule()
 {
 }
+
 /*!
     References the PackageImports owned by the Namespace.
  */
@@ -100,7 +105,7 @@ const QList<QPackageableElement *> *QNamespace::excludeCollisions(const QPackage
 /*!
     The query getNamesOfMember() gives a set of all of the names that a member would have in a Namespace. In general a member can have multiple names in a Namespace if it is imported more than once with different aliases. The query takes account of importing. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package.
  */
-QString QNamespace::getNamesOfMember(const QNamedElement *element) const
+QList<QString *> QNamespace::getNamesOfMember(const QNamedElement *element) const
 {
 }
 
@@ -125,5 +130,5 @@ bool QNamespace::membersAreDistinguishable() const
 {
 }
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

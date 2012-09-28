@@ -42,7 +42,7 @@
 #include "qliteralreal.h"
 //#include "qliteralreal_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QLiteralReal
@@ -60,9 +60,7 @@ QLiteralReal::QLiteralReal(QObject *parent)
 QLiteralReal::~QLiteralReal()
 {
 }
-/*!
-    HASH(0x18ed020)
- */
+
 qreal QLiteralReal::value() const
 {
 }
@@ -87,5 +85,5 @@ qreal QLiteralReal::realValue() const
 
 #include "moc_qliteralreal.cpp"
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

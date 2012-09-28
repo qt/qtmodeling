@@ -42,7 +42,7 @@
 #include "qrelationship.h"
 //#include "qrelationship_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QRelationship
@@ -59,6 +59,7 @@ QRelationship::QRelationship()
 QRelationship::~QRelationship()
 {
 }
+
 /*!
     Specifies the elements related by the Relationship.
  */
@@ -66,5 +67,5 @@ const QList<QElement *> *QRelationship::relatedElement() const
 {
 }
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

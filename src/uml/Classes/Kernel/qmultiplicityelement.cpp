@@ -42,7 +42,7 @@
 #include "qmultiplicityelement.h"
 //#include "qmultiplicityelement_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QMultiplicityElement
@@ -59,6 +59,7 @@ QMultiplicityElement::QMultiplicityElement()
 QMultiplicityElement::~QMultiplicityElement()
 {
 }
+
 /*!
     For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.
  */
@@ -69,6 +70,7 @@ bool QMultiplicityElement::isOrdered() const
 void QMultiplicityElement::setOrdered(bool isOrdered)
 {
 }
+
 /*!
     For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique.
  */
@@ -79,6 +81,7 @@ bool QMultiplicityElement::isUnique() const
 void QMultiplicityElement::setUnique(bool isUnique)
 {
 }
+
 /*!
     The specification of the lower bound for this multiplicity.
  */
@@ -89,6 +92,7 @@ QValueSpecification *QMultiplicityElement::lowerValue() const
 void QMultiplicityElement::setLowerValue(QValueSpecification *lowerValue)
 {
 }
+
 /*!
     The specification of the upper bound for this multiplicity.
  */
@@ -149,5 +153,5 @@ qint32 QMultiplicityElement::upperBound() const
 {
 }
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

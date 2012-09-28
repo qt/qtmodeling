@@ -42,7 +42,7 @@
 #include "qassociation.h"
 //#include "qassociation_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QAssociation
@@ -60,6 +60,7 @@ QAssociation::QAssociation(QObject *parent)
 QAssociation::~QAssociation()
 {
 }
+
 /*!
     Specifies whether the association is derived from other model elements such as other associations or constraints.
  */
@@ -70,18 +71,21 @@ bool QAssociation::isDerived() const
 void QAssociation::setDerived(bool isDerived)
 {
 }
+
 /*!
     Each end represents participation of instances of the classifier connected to the end in links of the association.
  */
 QList<QProperty *> *QAssociation::memberEnd()
 {
 }
+
 /*!
     The navigable ends that are owned by the association itself.
  */
 QList<QProperty *> *QAssociation::navigableOwnedEnd()
 {
 }
+
 /*!
     The ends that are owned by the association itself.
  */
@@ -98,5 +102,5 @@ const QList<QType *> *QAssociation::endType() const
 
 #include "moc_qassociation.cpp"
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 
