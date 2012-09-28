@@ -106,7 +106,7 @@ QT_MODULE(QtUml)
 class ${class.name}Private;
 
 [%- FOREACH forwarddecl IN class.forwarddecl %]
-class ${forwarddecl};
+class ${forwarddecl.content};
 [%- IF loop.last %]
 [% END -%]
 [%- END %]
