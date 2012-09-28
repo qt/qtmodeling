@@ -1,15 +1,15 @@
 [%- MACRO PARENTSOF(class, parents) BLOCK -%]
     [%- IF class.isAbstract == 'true' -%]
-        [%- FOREACH include IN class.superclassinclude %]
-            [%- PARENTSOF(classes.item(include.split('/').last), parents) -%]
+        [%- FOREACH superclass IN class.superclass %]
+            [%- PARENTSOF(classes.item(superclass.include.split('/').last), parents) -%]
         [%- END %]
         [%- parents.push(class) -%]
     [%- END %]
 [%- END -%]
 [%- MACRO GENERATEPROPERTIES(class) BLOCK -%]
     [%- parents = [] -%]
-    [%- FOREACH include IN class.superclassinclude %]
-        [%- PARENTSOF(classes.item(include.split('/').last), parents) -%]
+    [%- FOREACH superclass IN class.superclass %]
+        [%- PARENTSOF(classes.item(superclass.include.split('/').last), parents) -%]
     [%- END %]
     [%- parents.push(class) -%]
     [%- FOREACH parent IN parents.unique %]
@@ -84,9 +84,9 @@
 [% END -%]
 
 // Base class includes
-[%- IF class.item('superclassinclude') -%]
-[%- FOREACH include IN class.superclassinclude %]
-#include <${include}>
+[%- IF class.item('superclass') -%]
+[%- FOREACH superclass IN class.superclass %]
+#include <${superclass.include}>
 [%- END %]
 [%- END %]
 
@@ -110,7 +110,7 @@ class ${forwarddecl.content};
 [%- IF loop.last %]
 [% END -%]
 [%- END %]
-class Q_UML_EXPORT ${class.name}[%- IF class.superclassinclude -%] : [% END -%][% FOREACH superclass = class.superclassinclude %]public ${superclass.split('/').last}[% IF !loop.last %], [% END %][% END %]
+class Q_UML_EXPORT ${class.name}[%- IF class.superclass -%] : [% END -%][% FOREACH superclass = class.superclass %]public ${superclass.name.split('/').last}[% IF !loop.last %], [% END %][% END %]
 {
 [%- IF class.isAbstract == 'false' %]
     Q_OBJECT
