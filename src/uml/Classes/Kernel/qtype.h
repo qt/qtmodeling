@@ -38,8 +38,8 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef CLASSES_KERNEL_QTYPE_H
-#define CLASSES_KERNEL_QTYPE_H
+#ifndef QTUML_CLASSES_KERNEL_QTYPE_H
+#define QTUML_CLASSES_KERNEL_QTYPE_H
 
 #include <QtUml/QtUmlGlobal>
 
@@ -48,7 +48,7 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 QT_MODULE(QtUml)
 
@@ -72,9 +72,9 @@ protected:
     explicit QType();
 };
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 
 QT_END_HEADER
 
-#endif // CLASSES_KERNEL_QTYPE_H
+#endif // QTUML_CLASSES_KERNEL_QTYPE_H
 

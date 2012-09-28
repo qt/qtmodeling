@@ -42,7 +42,7 @@
 #include "qpackagemerge.h"
 //#include "qpackagemerge_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QPackageMerge
@@ -60,6 +60,7 @@ QPackageMerge::QPackageMerge(QObject *parent)
 QPackageMerge::~QPackageMerge()
 {
 }
+
 /*!
     References the Package that is to be merged with the receiving package of the PackageMerge.
  */
@@ -70,6 +71,7 @@ QPackage *QPackageMerge::mergedPackage() const
 void QPackageMerge::setMergedPackage(QPackage *mergedPackage)
 {
 }
+
 /*!
     References the Package that is being extended with the contents of the merged package of the PackageMerge.
  */
@@ -83,5 +85,5 @@ void QPackageMerge::setReceivingPackage(QPackage *receivingPackage)
 
 #include "moc_qpackagemerge.cpp"
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

@@ -42,7 +42,7 @@
 #include "qenumerationliteral.h"
 //#include "qenumerationliteral_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QEnumerationLiteral
@@ -60,6 +60,7 @@ QEnumerationLiteral::QEnumerationLiteral(QObject *parent)
 QEnumerationLiteral::~QEnumerationLiteral()
 {
 }
+
 /*!
     The Enumeration that this EnumerationLiteral is a member of.
  */
@@ -80,5 +81,5 @@ const QEnumeration *QEnumerationLiteral::classifier() const
 
 #include "moc_qenumerationliteral.cpp"
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

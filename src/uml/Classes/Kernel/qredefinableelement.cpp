@@ -42,7 +42,7 @@
 #include "qredefinableelement.h"
 //#include "qredefinableelement_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QRedefinableElement
@@ -59,6 +59,7 @@ QRedefinableElement::QRedefinableElement()
 QRedefinableElement::~QRedefinableElement()
 {
 }
+
 /*!
     Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false.
  */
@@ -69,12 +70,14 @@ bool QRedefinableElement::isLeaf() const
 void QRedefinableElement::setLeaf(bool isLeaf)
 {
 }
+
 /*!
     The redefinable element that is being redefined by this element.
  */
 const QList<QRedefinableElement *> *QRedefinableElement::redefinedElement() const
 {
 }
+
 /*!
     References the contexts that this element may be redefined from.
  */
@@ -96,5 +99,5 @@ bool QRedefinableElement::isRedefinitionContextValid(const QRedefinableElement *
 {
 }
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

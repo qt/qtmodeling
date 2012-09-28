@@ -42,7 +42,7 @@
 #include "qconstraint.h"
 //#include "qconstraint_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QConstraint
@@ -60,12 +60,14 @@ QConstraint::QConstraint(QObject *parent)
 QConstraint::~QConstraint()
 {
 }
+
 /*!
     The ordered set of Elements referenced by this Constraint.
  */
 QList<QElement *> *QConstraint::constrainedElement()
 {
 }
+
 /*!
     Specifies the namespace that owns the NamedElement.
  */
@@ -76,6 +78,7 @@ QNamespace *QConstraint::context() const
 void QConstraint::setContext(QNamespace *context)
 {
 }
+
 /*!
     A condition that must be true when evaluated in order for the constraint to be satisfied.
  */
@@ -89,5 +92,5 @@ void QConstraint::setSpecification(QValueSpecification *specification)
 
 #include "moc_qconstraint.cpp"
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

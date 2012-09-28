@@ -99,7 +99,7 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
 
 QT_MODULE(QtUml)
 
@@ -164,11 +164,11 @@ private:
 [%- END %]
 };
 
-QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_END_NAMESPACE_${namespace.replace('/', '_').upper}
 [%- IF class.isAbstract == 'false' %]
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_${namespace.replace('/', '_').upper}(${class.name}) *>)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_${namespace.replace('/', '_').upper}(${class.name}) *> *)
+Q_DECLARE_METATYPE(QList<${namespace.replace('/', '::')}::${class.name} *>)
+Q_DECLARE_METATYPE(QList<${namespace.replace('/', '::')}::${class.name} *> *)
 [%- END %]
 
 QT_END_HEADER

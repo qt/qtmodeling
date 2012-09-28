@@ -42,7 +42,7 @@
 #include "qliteralboolean.h"
 //#include "qliteralboolean_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QLiteralBoolean
@@ -60,6 +60,7 @@ QLiteralBoolean::QLiteralBoolean(QObject *parent)
 QLiteralBoolean::~QLiteralBoolean()
 {
 }
+
 /*!
     The specified Boolean value.
  */
@@ -87,5 +88,5 @@ bool QLiteralBoolean::isComputable() const
 
 #include "moc_qliteralboolean.cpp"
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

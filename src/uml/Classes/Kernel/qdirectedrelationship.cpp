@@ -42,7 +42,7 @@
 #include "qdirectedrelationship.h"
 //#include "qdirectedrelationship_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QDirectedRelationship
@@ -59,12 +59,14 @@ QDirectedRelationship::QDirectedRelationship()
 QDirectedRelationship::~QDirectedRelationship()
 {
 }
+
 /*!
     Specifies the sources of the DirectedRelationship.
  */
 const QList<QElement *> *QDirectedRelationship::source() const
 {
 }
+
 /*!
     Specifies the targets of the DirectedRelationship.
  */
@@ -72,5 +74,5 @@ const QList<QElement *> *QDirectedRelationship::target() const
 {
 }
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

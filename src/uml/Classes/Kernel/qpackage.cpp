@@ -42,7 +42,7 @@
 #include "qpackage.h"
 //#include "qpackage_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QPackage
@@ -60,6 +60,7 @@ QPackage::QPackage(QObject *parent)
 QPackage::~QPackage()
 {
 }
+
 /*!
     Provides an identifier for the package that can be used for many purposes. A URI is the universally unique identification of the package following the IETF URI specification, RFC 2396 http://www.ietf.org/rfc/rfc2396.txt and it must comply with those syntax rules.
  */
@@ -70,6 +71,7 @@ QString QPackage::URI() const
 void QPackage::setURI(QString URI)
 {
 }
+
 /*!
     References the Package that owns this Package.
  */
@@ -80,12 +82,14 @@ QPackage *QPackage::nestingPackage() const
 void QPackage::setNestingPackage(QPackage *nestingPackage)
 {
 }
+
 /*!
     References the PackageMerges that are owned by this Package.
  */
 QList<QPackageMerge *> *QPackage::packageMerge()
 {
 }
+
 /*!
     Specifies the packageable elements that are owned by this Package.
  */
@@ -130,5 +134,5 @@ const QList<QPackageableElement *> *QPackage::visibleMembers() const
 
 #include "moc_qpackage.cpp"
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

@@ -42,7 +42,7 @@
 #include "${class.name.lower}.h"
 //#include "${class.name.lower}_p.h"
 
-QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
 
 [%- IF class.documentation %]
 /*!
@@ -108,5 +108,5 @@ ${operation.return}${class.name}::${operation.name}([%- FOREACH parameter IN ope
 [%- IF class.isAbstract == 'false' %]
 #include "moc_${class.name.lower}.cpp"
 [% END %]
-QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_END_NAMESPACE_${namespace.replace('/', '_').upper}
 

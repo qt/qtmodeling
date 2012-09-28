@@ -3,16 +3,16 @@ declare namespace qtxmi="http://www.qt-project.org";
 
 declare function qtxmi:typeStringFromProperty ($properties as node()*) as xs:string* {
     for $property in $properties
-    let $type := if ($property/@type) then xs:string($property/@type)
-                 else if ($property/type/@xmi:idref) then xs:string($property/type/@xmi:idref)
-                 else if ($property/type/@href) then xs:string($property/type/@href)
-                 else "qtxmi:unknownType"
-    let $type := tokenize($type, "/")[last()]
-    return $type
+    return tokenize(
+                    if ($property/@type) then xs:string($property/@type)
+               else if ($property/type/@xmi:idref) then xs:string($property/type/@xmi:idref)
+               else if ($property/type/@href) then xs:string($property/type/@href)
+               else "qtxmi:unknownType",
+           "/")[last()]
 };
 
 declare function qtxmi:mappedBaseNamespace($xmiFile as xs:string*) as xs:string* {
-    if ($xmiFile = "PrimitiveTypes.xmi") then ""
+         if ($xmiFile = "PrimitiveTypes.xmi") then ""
     else if ($xmiFile = "Superstructure.xmi") then "QtUml::"
     else if ($xmiFile = "MOF.xmi") then "QtMof::"
     else ""
@@ -20,12 +20,16 @@ declare function qtxmi:mappedBaseNamespace($xmiFile as xs:string*) as xs:string*
 
 declare function qtxmi:namespaceFromTypeString ($types as xs:string*) as xs:string* {
     for $type in $types
-    let $type := tokenize($type, "/")[last()]
-    let $baseNamespace := tokenize($type, "#")[1]
-    let $type := tokenize($type, "#")[last()]
-    let $baseNamespace := qtxmi:mappedBaseNamespace(if ($baseNamespace = $type) then $xmiFile else $baseNamespace)
-    let $namespaceArray := tokenize($type, "-")
-    return concat(concat($baseNamespace, string-join(remove($namespaceArray, count($namespaceArray)), "::")), "::")
+    let $baseNamespace := qtxmi:mappedBaseNamespace(
+                              if (tokenize(tokenize($type, "/")[last()], "#")[1]
+                                  = tokenize(tokenize($type, "/")[last()], "#")[last()]) then
+                                  $xmiFile
+                              else
+                                  tokenize(tokenize($type, "/")[last()], "#")[1])
+    let $namespaceArray := tokenize(tokenize(tokenize($type, "/")[last()], "#")[last()], "-")
+    return concat(concat($baseNamespace,
+                         string-join(remove($namespaceArray, count($namespaceArray)), "::")),
+                  "::")
 };
 
 declare function qtxmi:namespaceFromProperty ($properties as node()*) as xs:string* {
@@ -34,11 +38,12 @@ declare function qtxmi:namespaceFromProperty ($properties as node()*) as xs:stri
 
 declare function qtxmi:unqualifiedTypeFromTypeString ($types as xs:string*) as xs:string* {
     for $type in $types
-    let $type := tokenize($type, "/")[last()]
-    let $type := tokenize($type, "#")[last()]
-    let $namespace := tokenize($type, "-")[1]
-    let $type := tokenize($type, "-")[last()]
-    return if ($type != $namespace and $type = "Object") then "MofObject" else $type
+    let $namespace := tokenize(tokenize(tokenize($type, "/")[last()], "#")[last()], "-")[1]
+    let $unqualifiedType := tokenize(tokenize(tokenize($type, "/")[last()], "#")[last()], "-")[last()]
+    return if ($unqualifiedType != $namespace and $unqualifiedType = "Object") then
+               "MofObject"
+           else
+               $unqualifiedType
 };
 
 declare function qtxmi:unqualifiedTypeFromProperty ($properties as node()*) as xs:string* {
@@ -55,12 +60,14 @@ declare function qtxmi:qualifiedTypeFromProperty ($properties as node()*) as xs:
 
 declare function qtxmi:elementFromTypeString ($types as xs:string*) as node()* {
     for $type in $types
-    let $type := tokenize($type, "/")[last()]
-    let $file := tokenize($type, "#")[1]
-    let $type := tokenize($type, "#")[last()]
-    let $file := if ($file = $type) then $xmiFile else $file
+    let $unqualifiedType := tokenize(tokenize($type, "/")[last()], "#")[last()]
+    let $file := if (tokenize(tokenize($type, "/")[last()], "#")[last()]
+                     = tokenize(tokenize($type, "/")[last()], "#")[1]) then
+                     $xmiFile
+                 else
+                     tokenize(tokenize($type, "/")[last()], "#")[1]
     return
-    doc($file)//packagedElement[@xmi:id = $type]
+    doc($file)//packagedElement[@xmi:id = $unqualifiedType]
 };
 
 declare function qtxmi:elementFromProperty ($properties as node()*) as node()* {
@@ -68,7 +75,7 @@ declare function qtxmi:elementFromProperty ($properties as node()*) as node()* {
 };
 
 declare function qtxmi:mappedPrimitiveType ($primitiveType as xs:string*) as xs:string* {
-    if ($primitiveType = "Boolean") then "bool"
+         if ($primitiveType = "Boolean") then "bool"
     else if ($primitiveType = "Integer" or $primitiveType = "UnlimitedNatural") then "qint32"
     else if ($primitiveType = "Real") then "qreal"
     else if ($primitiveType = "String") then "QString"
@@ -76,7 +83,7 @@ declare function qtxmi:mappedPrimitiveType ($primitiveType as xs:string*) as xs:
 };
 
 declare function qtxmi:mappedFunctionName ($name as xs:string*) as xs:string* {
-    if ($name = "namespace") then "namespace_"
+         if ($name = "namespace") then "namespace_"
     else if ($name = "class") then "class_"
     else if ($name = "default") then "default_"
     else $name
@@ -86,14 +93,17 @@ declare function qtxmi:typeFromNamespacedTypeString ($string as xs:string, $name
     let $type := qtxmi:unqualifiedTypeFromTypeString($string)
     let $element := qtxmi:elementFromTypeString($string)
     let $propertyNamespace := replace(qtxmi:namespaceFromTypeString($string), $namespace, "")
-    let $type := if ($type = "Object" and $propertyNamespace != "") then concat(substring(tokenize($propertyNamespace, "::")[1], 3), $type) else $type
-    let $baseType := if ($element/@xmi:type = "uml:Class") then
-                         concat($propertyNamespace, concat("Q", $type))
-                     else if ($element/@xmi:type = "uml:Enumeration") then
-                         concat($propertyNamespace, concat("QEnumerations::", $type))
-                     else
-                         qtxmi:mappedPrimitiveType($type)
-    return $baseType
+    let $type := if ($type = "Object" and $propertyNamespace != "") then
+                     concat(substring(tokenize($propertyNamespace, "::")[1], 3), $type)
+                 else
+                     $type
+    let $type := if ($element/@xmi:type = "uml:Class") then
+                     concat($propertyNamespace, concat("Q", $type))
+                 else if ($element/@xmi:type = "uml:Enumeration") then
+                     concat($propertyNamespace, concat("QEnumerations::", $type))
+                 else
+                     qtxmi:mappedPrimitiveType($type)
+    return $type
 };
 
 declare function qtxmi:typeFromNamespacedProperty ($property as node(), $namespace as xs:string) as xs:string {
@@ -101,20 +111,29 @@ declare function qtxmi:typeFromNamespacedProperty ($property as node(), $namespa
 };
 
 declare function qtxmi:modifiedTypeFromNamespacedProperty ($property as node(), $namespace as xs:string) as xs:string {
-    let $baseType := qtxmi:typeFromNamespacedProperty($property, $namespace)
+    let $type := qtxmi:typeFromNamespacedProperty($property, $namespace)
     let $element := qtxmi:elementFromProperty($property)
-    let $baseType := if ($property/upperValue/@value = "*") then concat(concat("QList<", $baseType), " *>") else $baseType
-    let $baseType := if ($element/@xmi:type = "uml:Class" and ($property/@isReadOnly = "true" or $property/@isDerived = "true" or ($property/@direction = "return" and $property/../@isQuery = "true"))) then concat ("const ", $baseType) else $baseType
-    let $baseType := if ($element/@xmi:type = "uml:Class") then concat ($baseType, " *") else $baseType
-    return $baseType
+    let $type := if ($property/upperValue/@value = "*") then concat(concat("QList<", $type), " *>") else $type
+    let $type := if ($element/@xmi:type = "uml:Class"
+                     and ($property/@isReadOnly = "true" or $property/@isDerived = "true"
+                          or ($property/@direction = "return" and $property/../@isQuery = "true"))) then
+                     concat ("const ", $type)
+                 else
+                     $type
+    let $type := if ($element/@xmi:type = "uml:Class") then
+                     concat ($type, " *")
+                 else
+                     $type
+    return $type
 };
 
 declare function qtxmi:capitalizedNameFromTypeString ($unqualifiedType as xs:string, $name as xs:string) as xs:string {
     let $capitalizedName := $name
-    let $capitalizedName := if ($unqualifiedType = "bool " and starts-with($name, "is") and substring($name, 3, 1) = upper-case(substring($name, 3, 1))) then
-       substring($name, 3)
-    else
-       $capitalizedName
+    let $capitalizedName := if ($unqualifiedType = "bool " and starts-with($name, "is")
+                                and substring($name, 3, 1) = upper-case(substring($name, 3, 1))) then
+                                substring($name, 3)
+                            else
+                                $capitalizedName
     return concat(upper-case(substring($capitalizedName, 1, 1)), substring($capitalizedName, 2))
 };
 
@@ -136,7 +155,7 @@ return
         else ""
         }
         {
-        for $id in distinct-values(qtxmi:elementFromProperty($class/ownedAttribute | $class/ownedOperation/ownedParameter)/@xmi:type)
+        for $id in qtxmi:elementFromProperty($class/ownedAttribute | $class/ownedOperation/ownedParameter)/@xmi:type
         where $id = "uml:Enumeration"
         return
         <qtumlinclude>{replace(qtxmi:mappedBaseNamespace($xmiFile), "::", "")}/QEnumerations</qtumlinclude>
@@ -169,10 +188,14 @@ return
         <qtinclude>QtCore/QList</qtinclude>
         }
         {
-        for $id in distinct-values($class/ownedAttribute/@type | $class/ownedOperation/ownedParameter/@type | $class/ownedAttribute/type/@xmi:idref | $class/ownedOperation/ownedParameter/type/@xmi:idref | $class/ownedAttribute/type/@href | $class/ownedOperation/ownedParameter/type/@href)
+        for $id in distinct-values($class/ownedAttribute/@type | $class/ownedOperation/ownedParameter/@type
+                                   | $class/ownedAttribute/type/@xmi:idref | $class/ownedOperation/ownedParameter/type/@xmi:idref
+                                   | $class/ownedAttribute/type/@href | $class/ownedOperation/ownedParameter/type/@href)
         let $forwardNamespace := tokenize(qtxmi:namespaceFromTypeString($id), "::")
         let $forwardNamespace := string-join(remove($forwardNamespace, count($forwardNamespace)), "::")
-        where qtxmi:elementFromTypeString($id)/@xmi:type = "uml:Class" and tokenize($id, "#")[last()] != $class/@xmi:id and empty(distinct-values($id[.=$superClasses]))
+        where qtxmi:elementFromTypeString($id)/@xmi:type = "uml:Class"
+              and tokenize($id, "#")[last()] != $class/@xmi:id
+              and empty(distinct-values($id[.=$superClasses]))
         return
         <forwarddecl namespace="{$forwardNamespace}">{concat("Q", qtxmi:unqualifiedTypeFromTypeString($id))}</forwarddecl>
         }
@@ -188,7 +211,8 @@ return
         <attribute isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}">
         <accessor return="{$unqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}" constness="{$constness}"/>
         {
-        if (not(starts-with($unqualifiedType, "QList")) and ($attribute[not(@isReadOnly)] or $attribute/@isReadOnly != "true") and $isDerived = "false") then
+        if (not(starts-with($unqualifiedType, "QList")) and ($attribute[not(@isReadOnly)]
+            or $attribute/@isReadOnly != "true") and $isDerived = "false") then
         <accessor return="void " name="set{qtxmi:capitalizedNameFromTypeString($unqualifiedType, qtxmi:mappedFunctionName($attribute/@name))}" constness="">
            <parameter type="{$unqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}"/>
         </accessor>
@@ -213,7 +237,8 @@ return
         <associationend isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}">
         <accessor return="{$unqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}" constness="{$constness}"/>
         {
-        if (not(starts-with($unqualifiedType, "QList")) and ($attribute[not(@isReadOnly)] or $attribute/@isReadOnly != "true") and $isDerived = "false") then
+        if (not(starts-with($unqualifiedType, "QList")) and ($attribute[not(@isReadOnly)]
+            or $attribute/@isReadOnly != "true") and $isDerived = "false") then
         <accessor return="void " name="set{qtxmi:capitalizedNameFromTypeString($unqualifiedType, qtxmi:mappedFunctionName($attribute/@name))}" constness="">
            <parameter type="{$unqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}"/>
         </accessor>
@@ -231,7 +256,8 @@ return
         let $constness := if ($operation/@isQuery = "true") then " const" else ""
         let $return := if ($operation/ownedParameter[@direction = "return"]) then
                           qtxmi:modifiedTypeFromNamespacedProperty($operation/ownedParameter[@direction = "return"], $namespace)
-                       else "void"
+                       else
+                           "void"
         let $return := if (ends-with($return, "*")) then $return else concat($return, " ")
         return
         <operation return="{$return}" name="{qtxmi:mappedFunctionName($operation/@name)}" constness="{$constness}">
@@ -239,7 +265,11 @@ return
         for $parameter in $operation/ownedParameter[not(@direction) or @direction != "return"]
         let $unqualifiedType := qtxmi:modifiedTypeFromNamespacedProperty($parameter, $namespace)
         let $unqualifiedType := if (ends-with($unqualifiedType, "*")) then $unqualifiedType else concat($unqualifiedType, " ")
-        let $unqualifiedType := if (ends-with($unqualifiedType, "*") and (not($parameter/@direction) or $parameter/@direction = "in")) then concat("const ", $unqualifiedType) else $unqualifiedType
+        let $unqualifiedType := if (ends-with($unqualifiedType, "*") and (not($parameter/@direction)
+                                    or $parameter/@direction = "in")) then
+                                    concat("const ", $unqualifiedType)
+                                else
+                                    $unqualifiedType
         return
             <parameter type="{$unqualifiedType}" name="{qtxmi:mappedFunctionName($parameter/@name)}"/>
         }

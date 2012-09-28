@@ -42,7 +42,7 @@
 #include "qexpression.h"
 //#include "qexpression_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QExpression
@@ -60,6 +60,7 @@ QExpression::QExpression(QObject *parent)
 QExpression::~QExpression()
 {
 }
+
 /*!
     The symbol associated with the node in the expression tree.
  */
@@ -70,6 +71,7 @@ QString QExpression::symbol() const
 void QExpression::setSymbol(QString symbol)
 {
 }
+
 /*!
     Specifies a sequence of operands.
  */
@@ -79,5 +81,5 @@ QList<QValueSpecification *> *QExpression::operand()
 
 #include "moc_qexpression.cpp"
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

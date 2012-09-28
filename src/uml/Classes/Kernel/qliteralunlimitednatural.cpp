@@ -42,7 +42,7 @@
 #include "qliteralunlimitednatural.h"
 //#include "qliteralunlimitednatural_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QLiteralUnlimitedNatural
@@ -60,6 +60,7 @@ QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QObject *parent)
 QLiteralUnlimitedNatural::~QLiteralUnlimitedNatural()
 {
 }
+
 /*!
     The specified UnlimitedNatural value.
  */
@@ -87,5 +88,5 @@ qint32 QLiteralUnlimitedNatural::unlimitedValue() const
 
 #include "moc_qliteralunlimitednatural.cpp"
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

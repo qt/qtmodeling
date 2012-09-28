@@ -42,7 +42,7 @@
 #include "qdatatype.h"
 //#include "qdatatype_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QDataType
@@ -60,12 +60,14 @@ QDataType::QDataType(QObject *parent)
 QDataType::~QDataType()
 {
 }
+
 /*!
     The Attributes owned by the DataType.
  */
 QList<QProperty *> *QDataType::ownedAttribute()
 {
 }
+
 /*!
     The Operations owned by the DataType.
  */
@@ -82,5 +84,5 @@ const QList<QNamedElement *> *QDataType::inherit(const QList<QNamedElement *> *i
 
 #include "moc_qdatatype.cpp"
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

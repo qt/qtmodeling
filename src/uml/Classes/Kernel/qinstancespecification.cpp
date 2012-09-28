@@ -42,7 +42,7 @@
 #include "qinstancespecification.h"
 //#include "qinstancespecification_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QInstanceSpecification
@@ -60,18 +60,21 @@ QInstanceSpecification::QInstanceSpecification(QObject *parent)
 QInstanceSpecification::~QInstanceSpecification()
 {
 }
+
 /*!
     The classifier or classifiers of the represented instance. If multiple classifiers are specified, the instance is classified by all of them.
  */
 QList<QClassifier *> *QInstanceSpecification::classifier()
 {
 }
+
 /*!
     A slot giving the value or values of a structural feature of the instance. An instance specification can have one slot per structural feature of its classifiers, including inherited features. It is not necessary to model a slot for each structural feature, in which case the instance specification is a partial description.
  */
 QList<QSlot *> *QInstanceSpecification::slot()
 {
 }
+
 /*!
     A specification of how to compute, derive, or construct the instance.
  */
@@ -85,5 +88,5 @@ void QInstanceSpecification::setSpecification(QValueSpecification *specification
 
 #include "moc_qinstancespecification.cpp"
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

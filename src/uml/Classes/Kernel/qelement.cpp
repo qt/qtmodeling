@@ -42,7 +42,7 @@
 #include "qelement.h"
 //#include "qelement_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QElement
@@ -59,18 +59,21 @@ QElement::QElement()
 QElement::~QElement()
 {
 }
+
 /*!
     The Comments owned by this element.
  */
 QList<QComment *> *QElement::ownedComment()
 {
 }
+
 /*!
     The Elements owned by this element.
  */
 const QList<QElement *> *QElement::ownedElement() const
 {
 }
+
 /*!
     The Element that owns this element.
  */
@@ -92,5 +95,5 @@ bool QElement::mustBeOwned() const
 {
 }
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

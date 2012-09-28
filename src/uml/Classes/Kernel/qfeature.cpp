@@ -42,7 +42,7 @@
 #include "qfeature.h"
 //#include "qfeature_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QFeature
@@ -59,6 +59,7 @@ QFeature::QFeature()
 QFeature::~QFeature()
 {
 }
+
 /*!
     Specifies whether this feature characterizes individual instances classified by the classifier (false) or the classifier itself (true).
  */
@@ -69,6 +70,7 @@ bool QFeature::isStatic() const
 void QFeature::setStatic(bool isStatic)
 {
 }
+
 /*!
     The Classifiers that have this Feature as a feature.
  */
@@ -76,5 +78,5 @@ const QList<QClassifier *> *QFeature::featuringClassifier() const
 {
 }
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

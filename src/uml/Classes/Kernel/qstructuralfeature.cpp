@@ -42,7 +42,7 @@
 #include "qstructuralfeature.h"
 //#include "qstructuralfeature_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QStructuralFeature
@@ -59,6 +59,7 @@ QStructuralFeature::QStructuralFeature()
 QStructuralFeature::~QStructuralFeature()
 {
 }
+
 /*!
     States whether the feature's value may be modified by a client.
  */
@@ -70,5 +71,5 @@ void QStructuralFeature::setReadOnly(bool isReadOnly)
 {
 }
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

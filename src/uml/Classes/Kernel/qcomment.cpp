@@ -42,7 +42,7 @@
 #include "qcomment.h"
 //#include "qcomment_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QComment
@@ -60,6 +60,7 @@ QComment::QComment(QObject *parent)
 QComment::~QComment()
 {
 }
+
 /*!
     Specifies a string that is the comment.
  */
@@ -70,6 +71,7 @@ QString QComment::body() const
 void QComment::setBody(QString body)
 {
 }
+
 /*!
     References the Element(s) being commented.
  */
@@ -79,5 +81,5 @@ QList<QElement *> *QComment::annotatedElement()
 
 #include "moc_qcomment.cpp"
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

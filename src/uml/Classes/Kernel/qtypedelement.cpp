@@ -42,7 +42,7 @@
 #include "qtypedelement.h"
 //#include "qtypedelement_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QTypedElement
@@ -59,6 +59,7 @@ QTypedElement::QTypedElement()
 QTypedElement::~QTypedElement()
 {
 }
+
 /*!
     The type of the TypedElement.
  */
@@ -70,5 +71,5 @@ void QTypedElement::setType(QType *type)
 {
 }
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

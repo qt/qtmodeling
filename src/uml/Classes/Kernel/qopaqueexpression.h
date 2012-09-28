@@ -38,8 +38,8 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef CLASSES_KERNEL_QOPAQUEEXPRESSION_H
-#define CLASSES_KERNEL_QOPAQUEEXPRESSION_H
+#ifndef QTUML_CLASSES_KERNEL_QOPAQUEEXPRESSION_H
+#define QTUML_CLASSES_KERNEL_QOPAQUEEXPRESSION_H
 
 #include <QtUml/QtUmlGlobal>
 
@@ -53,7 +53,7 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 QT_MODULE(QtUml)
 
@@ -83,18 +83,16 @@ class Q_UML_EXPORT QOpaqueExpression : public QObject, public QValueSpecificatio
     // From QValueSpecification
 
     // From QOpaqueExpression
-    Q_PROPERTY(QString body READ body WRITE setBody)
-    Q_PROPERTY(QString language READ language WRITE setLanguage)
+    Q_PROPERTY(QList<QString *> body READ body)
+    Q_PROPERTY(QList<QString *> language READ language)
 
 public:
     explicit QOpaqueExpression(QObject *parent = 0);
     virtual ~QOpaqueExpression();
 
     // Attributes (except those derived && !derivedUnion)
-    QString body() const;
-    void setBody(QString body);
-    QString language() const;
-    void setLanguage(QString language);
+    QList<QString *> body();
+    QList<QString *> language();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     bool isIntegral() const;
@@ -107,12 +105,12 @@ private:
     Q_DECLARE_PRIVATE(QOpaqueExpression)
 };
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QOpaqueExpression) *>)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_UML_CLASSES_KERNEL(QOpaqueExpression) *> *)
+Q_DECLARE_METATYPE(QList<QtUml::Classes::Kernel::QOpaqueExpression *>)
+Q_DECLARE_METATYPE(QList<QtUml::Classes::Kernel::QOpaqueExpression *> *)
 
 QT_END_HEADER
 
-#endif // CLASSES_KERNEL_QOPAQUEEXPRESSION_H
+#endif // QTUML_CLASSES_KERNEL_QOPAQUEEXPRESSION_H
 

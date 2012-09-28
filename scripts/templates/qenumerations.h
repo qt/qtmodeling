@@ -47,7 +47,7 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
 
 QT_MODULE(QtUml)
 
@@ -71,10 +71,10 @@ private:
     explicit QEnumerations();
 };
 
-QT_END_NAMESPACE_UML_${namespace.replace('/', '_').upper}
+QT_END_NAMESPACE_${namespace.replace('/', '_').upper}
 
 [%- FOREACH enumeration IN enumerations %]
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_UML_${namespace.replace('/', '_').upper}(QEnumerations::${enumeration.name}))
+Q_DECLARE_METATYPE(${namespace.replace('/', '::')}::QEnumerations::${enumeration.name})
 [%- END %]
 
 QT_END_HEADER

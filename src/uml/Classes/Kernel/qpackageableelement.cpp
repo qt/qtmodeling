@@ -42,7 +42,7 @@
 #include "qpackageableelement.h"
 //#include "qpackageableelement_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QPackageableElement
@@ -59,6 +59,7 @@ QPackageableElement::QPackageableElement()
 QPackageableElement::~QPackageableElement()
 {
 }
+
 /*!
     Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
  */
@@ -70,5 +71,5 @@ void QPackageableElement::setVisibility(QEnumerations::VisibilityKind visibility
 {
 }
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 

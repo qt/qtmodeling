@@ -42,7 +42,7 @@
 #include "qliteralnull.h"
 //#include "qliteralnull_p.h"
 
-QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL
+QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 
 /*!
     \class QLiteralNull
@@ -77,5 +77,5 @@ bool QLiteralNull::isNull() const
 
 #include "moc_qliteralnull.cpp"
 
-QT_END_NAMESPACE_UML_CLASSES_KERNEL
+QT_END_NAMESPACE_QTUML_CLASSES_KERNEL
 
