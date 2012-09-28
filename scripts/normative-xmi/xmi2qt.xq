@@ -36,7 +36,9 @@ declare function qtxmi:unqualifiedTypeFromTypeString ($types as xs:string*) as x
     for $type in $types
     let $type := tokenize($type, "/")[last()]
     let $type := tokenize($type, "#")[last()]
-    return tokenize($type, "-")[last()]
+    let $namespace := tokenize($type, "-")[1]
+    let $type := tokenize($type, "-")[last()]
+    return if ($type != $namespace and $type = "Object") then "MofObject" else $type
 };
 
 declare function qtxmi:unqualifiedTypeFromProperty ($properties as node()*) as xs:string* {
@@ -80,16 +82,27 @@ declare function qtxmi:mappedFunctionName ($name as xs:string*) as xs:string* {
     else $name
 };
 
-declare function qtxmi:unqualifiedTypeFromNamespacedProperty ($property as node(), $namespace as xs:string) as xs:string {
-    let $type := qtxmi:unqualifiedTypeFromProperty($property)
-    let $element := qtxmi:elementFromProperty($property)
-    let $propertyNamespace := replace(qtxmi:namespaceFromProperty($property), $namespace, "")
+declare function qtxmi:typeFromNamespacedTypeString ($string as xs:string, $namespace as xs:string) as xs:string {
+    let $type := qtxmi:unqualifiedTypeFromTypeString($string)
+    let $element := qtxmi:elementFromTypeString($string)
+    let $propertyNamespace := replace(qtxmi:namespaceFromTypeString($string), $namespace, "")
+    let $type := if ($type = "Object" and $propertyNamespace != "") then concat(substring(tokenize($propertyNamespace, "::")[1], 3), $type) else $type
     let $baseType := if ($element/@xmi:type = "uml:Class") then
                          concat($propertyNamespace, concat("Q", $type))
                      else if ($element/@xmi:type = "uml:Enumeration") then
                          concat($propertyNamespace, concat("QEnumerations::", $type))
                      else
                          qtxmi:mappedPrimitiveType($type)
+    return $baseType
+};
+
+declare function qtxmi:typeFromNamespacedProperty ($property as node(), $namespace as xs:string) as xs:string {
+    qtxmi:typeFromNamespacedTypeString(qtxmi:typeStringFromProperty($property), $namespace)
+};
+
+declare function qtxmi:modifiedTypeFromNamespacedProperty ($property as node(), $namespace as xs:string) as xs:string {
+    let $baseType := qtxmi:typeFromNamespacedProperty($property, $namespace)
+    let $element := qtxmi:elementFromProperty($property)
     let $baseType := if ($property/upperValue/@value = "*") then concat(concat("QList<", $baseType), " *>") else $baseType
     let $baseType := if ($element/@xmi:type = "uml:Class" and ($property/@isReadOnly = "true" or $property/@isDerived = "true" or ($property/@direction = "return" and $property/../@isQuery = "true"))) then concat ("const ", $baseType) else $baseType
     let $baseType := if ($element/@xmi:type = "uml:Class") then concat ($baseType, " *") else $baseType
@@ -113,7 +126,7 @@ return
 {
 for $class in doc($xmiFile)//packagedElement[@xmi:id=$namespace]/packagedElement[@xmi:type="uml:Class"]
 let $namespace := concat(replace(concat(qtxmi:mappedBaseNamespace($xmiFile), $namespace), "-", "::"), "::")
-let $superClasses := $class/generalization/@general
+let $superClasses := $class/generalization/@general | $class/generalization/general/@xmi:idref
 let $isAbstract := if ($class/@isAbstract) then $class/@isAbstract else "false"
 return
     <class name="Q{$class/@name}" isAbstract="{$isAbstract}">
@@ -126,22 +139,22 @@ return
         for $id in distinct-values(qtxmi:elementFromProperty($class/ownedAttribute | $class/ownedOperation/ownedParameter)/@xmi:type)
         where $id = "uml:Enumeration"
         return
-        <qtumlinclude>QtUml/QEnumerations</qtumlinclude>
+        <qtumlinclude>{replace(qtxmi:mappedBaseNamespace($xmiFile), "::", "")}/QEnumerations</qtumlinclude>
         }
         {
         for $superobject in (qtxmi:elementFromTypeString($superClasses)[not(@isAbstract) or @isAbstract = "false"]/@xmi:id)
         return
-        <superobject>QtCore/{concat("Q", qtxmi:unqualifiedTypeFromTypeString($superobject))}</superobject>
+        <superobject>{qtxmi:typeFromNamespacedTypeString($superobject, $namespace)}</superobject>
         }
         {
         if (count(qtxmi:elementFromTypeString($superClasses)[@isAbstract = "true"]) = count($superClasses) and $isAbstract = "false") then
-        <superclassinclude>QtCore/QObject</superclassinclude>
+        <superclass include="QtCore/QObject" name="QObject"/>
         else ""
         }
         {
-        for $id in $superClasses
+        for $superClass in $superClasses
         return
-        <superclassinclude>QtUml/{concat("Q", qtxmi:unqualifiedTypeFromTypeString($id))}</superclassinclude>
+        <superclass include="{tokenize(qtxmi:namespaceFromTypeString($superClass), "::")[1]}/{concat("Q", qtxmi:unqualifiedTypeFromTypeString($superClass))}" name="{qtxmi:typeFromNamespacedTypeString($superClass, $namespace)}"/>
         }
         {
         for $type in distinct-values($class/ownedAttribute/type/@href | $class/ownedOperation/ownedParameter/type/@href)
@@ -165,7 +178,7 @@ return
         }
         {
         for $attribute in $class/ownedAttribute
-        let $unqualifiedType := qtxmi:unqualifiedTypeFromNamespacedProperty($attribute, $namespace)
+        let $unqualifiedType := qtxmi:modifiedTypeFromNamespacedProperty($attribute, $namespace)
         let $unqualifiedType := if (ends-with($unqualifiedType, "*")) then $unqualifiedType else concat($unqualifiedType, " ")
         let $isDerived := if (not($attribute/@isDerived) or $attribute/@isDerived = "false") then "false" else "true"
         let $isDerivedUnion := if (not($attribute/@isDerivedUnion) or $attribute/@isDerivedUnion = "false") then "false" else "true"
@@ -190,7 +203,7 @@ return
         }
         {
         for $attribute in $class/ownedAttribute
-        let $unqualifiedType := qtxmi:unqualifiedTypeFromNamespacedProperty($attribute, $namespace)
+        let $unqualifiedType := qtxmi:modifiedTypeFromNamespacedProperty($attribute, $namespace)
         let $unqualifiedType := if (ends-with($unqualifiedType, "*")) then $unqualifiedType else concat($unqualifiedType, " ")
         let $isDerived := if (not($attribute/@isDerived) or $attribute/@isDerived = "false") then "false" else "true"
         let $isDerivedUnion := if (not($attribute/@isDerivedUnion) or $attribute/@isDerivedUnion = "false") then "false" else "true"
@@ -217,14 +230,14 @@ return
         for $operation in $class/ownedOperation
         let $constness := if ($operation/@isQuery = "true") then " const" else ""
         let $return := if ($operation/ownedParameter[@direction = "return"]) then
-                          qtxmi:unqualifiedTypeFromNamespacedProperty($operation/ownedParameter[@direction = "return"], $namespace)
+                          qtxmi:modifiedTypeFromNamespacedProperty($operation/ownedParameter[@direction = "return"], $namespace)
                        else "void"
         let $return := if (ends-with($return, "*")) then $return else concat($return, " ")
         return
         <operation return="{$return}" name="{qtxmi:mappedFunctionName($operation/@name)}" constness="{$constness}">
         {
         for $parameter in $operation/ownedParameter[not(@direction) or @direction != "return"]
-        let $unqualifiedType := qtxmi:unqualifiedTypeFromNamespacedProperty($parameter, $namespace)
+        let $unqualifiedType := qtxmi:modifiedTypeFromNamespacedProperty($parameter, $namespace)
         let $unqualifiedType := if (ends-with($unqualifiedType, "*")) then $unqualifiedType else concat($unqualifiedType, " ")
         let $unqualifiedType := if (ends-with($unqualifiedType, "*") and (not($parameter/@direction) or $parameter/@direction = "in")) then concat("const ", $unqualifiedType) else $unqualifiedType
         return
