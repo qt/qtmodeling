@@ -53,7 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 QT_MODULE(QtUml)
 
 class QMultiplicityElementPrivate;
-
 class QValueSpecification;
 
 class Q_UML_EXPORT QMultiplicityElement : public virtual QElement

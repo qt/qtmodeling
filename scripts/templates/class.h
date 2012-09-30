@@ -134,7 +134,7 @@ class ${forwarddecl.content};
 [%- END -%]
 [%- END -%]
 
-class Q_UML_EXPORT ${class.name}[%- IF class.superclass -%] : [% END -%][% FOREACH superclass = class.superclass %]public ${superclass.name.split('/').last}[% IF !loop.last %], [% END %][% END %]
+class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name}[%- IF class.superclass -%] : [% END -%][% FOREACH superclass = class.superclass %]public ${superclass.name.split('/').last}[% IF !loop.last %], [% END %][% END %]
 {
 [%- IF class.isAbstract == 'false' %]
     Q_OBJECT

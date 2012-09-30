@@ -76,10 +76,6 @@ class Q_UML_EXPORT QLiteralBoolean : public QObject, public QLiteralSpecificatio
     // From QTypedElement
     Q_PROPERTY(QType * type READ type WRITE setType)
 
-    // From QValueSpecification
-
-    // From QLiteralSpecification
-
     // From QLiteralBoolean
     Q_PROPERTY(bool value READ value WRITE setValue)
 

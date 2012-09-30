@@ -76,12 +76,6 @@ class Q_UML_EXPORT QLiteralNull : public QObject, public QLiteralSpecification
     // From QTypedElement
     Q_PROPERTY(QType * type READ type WRITE setType)
 
-    // From QValueSpecification
-
-    // From QLiteralSpecification
-
-    // From QLiteralNull
-
 public:
     explicit QLiteralNull(QObject *parent = 0);
     virtual ~QLiteralNull();

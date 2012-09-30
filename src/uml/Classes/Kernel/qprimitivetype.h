@@ -58,8 +58,6 @@ class Q_UML_EXPORT QPrimitiveType : public QDataType
 {
     Q_OBJECT
 
-    // From QPrimitiveType
-
 public:
     explicit QPrimitiveType(QObject *parent = 0);
     virtual ~QPrimitiveType();

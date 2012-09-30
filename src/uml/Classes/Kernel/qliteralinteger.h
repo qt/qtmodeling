@@ -76,10 +76,6 @@ class Q_UML_EXPORT QLiteralInteger : public QObject, public QLiteralSpecificatio
     // From QTypedElement
     Q_PROPERTY(QType * type READ type WRITE setType)
 
-    // From QValueSpecification
-
-    // From QLiteralSpecification
-
     // From QLiteralInteger
     Q_PROPERTY(qint32 value READ value WRITE setValue)
 

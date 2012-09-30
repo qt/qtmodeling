@@ -57,13 +57,12 @@ QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 QT_MODULE(QtUml)
 
 class QOperationPrivate;
-
-class QConstraint;
-class QClass;
-class QDataType;
-class QParameter;
 class QType;
 class QRedefinableElement;
+class QParameter;
+class QClass;
+class QConstraint;
+class QDataType;
 
 class Q_UML_EXPORT QOperation : public QObject, public QBehavioralFeature
 {

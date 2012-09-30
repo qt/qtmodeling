@@ -59,7 +59,6 @@ QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 QT_MODULE(QtUml)
 
 class QPackagePrivate;
-
 class QType;
 class QPackageMerge;
 class QNamedElement;
