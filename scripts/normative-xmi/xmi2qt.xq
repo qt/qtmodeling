@@ -148,7 +148,7 @@ let $namespace := concat(replace(concat(qtxmi:mappedBaseNamespace($xmiFile), $na
 let $superClasses := $class/generalization/@general | $class/generalization/general/@xmi:idref | $class/generalization/general/@href
 let $isAbstract := if ($class/@isAbstract) then $class/@isAbstract else "false"
 return
-    <class name="Q{$class/@name}" isAbstract="{$isAbstract}">
+    <class name="Q{qtxmi:unqualifiedTypeFromTypeString($class/@xmi:id)}" isAbstract="{$isAbstract}">
         {
         if ($class/ownedComment/body) then
         <documentation>{$class/ownedComment/body/text()}</documentation>
@@ -196,6 +196,7 @@ return
         where qtxmi:elementFromTypeString($id)/@xmi:type = "uml:Class"
               and tokenize($id, "#")[last()] != $class/@xmi:id
               and empty(distinct-values($id[.=$superClasses]))
+        order by $forwardNamespace
         return
         <forwarddecl namespace="{$forwardNamespace}">{concat("Q", qtxmi:unqualifiedTypeFromTypeString($id))}</forwarddecl>
         }
