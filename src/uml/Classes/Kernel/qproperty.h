@@ -61,13 +61,12 @@ QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 QT_MODULE(QtUml)
 
 class QPropertyPrivate;
-
-class QAssociation;
-class QClass;
-class QDataType;
-class QValueSpecification;
 class QRedefinableElement;
 class QType;
+class QValueSpecification;
+class QClass;
+class QAssociation;
+class QDataType;
 
 class Q_UML_EXPORT QProperty : public QObject, public QStructuralFeature
 {

@@ -76,10 +76,6 @@ class Q_UML_EXPORT QLiteralReal : public QObject, public QLiteralSpecification
     // From QTypedElement
     Q_PROPERTY(QType * type READ type WRITE setType)
 
-    // From QValueSpecification
-
-    // From QLiteralSpecification
-
     // From QLiteralReal
     Q_PROPERTY(qreal value READ value WRITE setValue)
 

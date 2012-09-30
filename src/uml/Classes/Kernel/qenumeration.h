@@ -56,7 +56,6 @@ QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 QT_MODULE(QtUml)
 
 class QEnumerationPrivate;
-
 class QEnumerationLiteral;
 
 class Q_UML_EXPORT QEnumeration : public QDataType

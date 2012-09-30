@@ -57,11 +57,10 @@ QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 QT_MODULE(QtUml)
 
 class QNamespacePrivate;
-
+class QPackageImport;
+class QConstraint;
 class QElementImport;
 class QPackageableElement;
-class QConstraint;
-class QPackageImport;
 
 class Q_UML_EXPORT QNamespace : public virtual QNamedElement
 {

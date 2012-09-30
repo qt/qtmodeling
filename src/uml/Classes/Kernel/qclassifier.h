@@ -58,11 +58,10 @@ QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 QT_MODULE(QtUml)
 
 class QClassifierPrivate;
-
+class QNamedElement;
+class QGeneralization;
 class QProperty;
 class QFeature;
-class QGeneralization;
-class QNamedElement;
 
 class Q_UML_EXPORT QClassifier : public QType, public QRedefinableElement, public QNamespace
 {

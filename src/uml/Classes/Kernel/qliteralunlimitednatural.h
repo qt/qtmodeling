@@ -76,10 +76,6 @@ class Q_UML_EXPORT QLiteralUnlimitedNatural : public QObject, public QLiteralSpe
     // From QTypedElement
     Q_PROPERTY(QType * type READ type WRITE setType)
 
-    // From QValueSpecification
-
-    // From QLiteralSpecification
-
     // From QLiteralUnlimitedNatural
     Q_PROPERTY(qint32 value READ value WRITE setValue)
 

@@ -57,7 +57,6 @@ QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 QT_MODULE(QtUml)
 
 class QDataTypePrivate;
-
 class QProperty;
 class QOperation;
 class QNamedElement;

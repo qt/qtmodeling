@@ -54,7 +54,6 @@ QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 QT_MODULE(QtUml)
 
 class QInstanceValuePrivate;
-
 class QInstanceSpecification;
 
 class Q_UML_EXPORT QInstanceValue : public QObject, public QValueSpecification
@@ -77,8 +76,6 @@ class Q_UML_EXPORT QInstanceValue : public QObject, public QValueSpecification
 
     // From QTypedElement
     Q_PROPERTY(QType * type READ type WRITE setType)
-
-    // From QValueSpecification
 
     // From QInstanceValue
     Q_PROPERTY(QInstanceSpecification * instance READ instance WRITE setInstance)

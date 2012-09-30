@@ -53,7 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 QT_MODULE(QtUml)
 
 class QTypePrivate;
-
 class QPackage;
 
 class Q_UML_EXPORT QType : public QPackageableElement

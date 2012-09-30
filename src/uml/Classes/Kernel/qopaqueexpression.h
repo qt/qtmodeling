@@ -80,8 +80,6 @@ class Q_UML_EXPORT QOpaqueExpression : public QObject, public QValueSpecificatio
     // From QTypedElement
     Q_PROPERTY(QType * type READ type WRITE setType)
 
-    // From QValueSpecification
-
     // From QOpaqueExpression
     Q_PROPERTY(QList<QString *> body READ body)
     Q_PROPERTY(QList<QString *> language READ language)

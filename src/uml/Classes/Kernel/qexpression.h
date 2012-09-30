@@ -80,8 +80,6 @@ class Q_UML_EXPORT QExpression : public QObject, public QValueSpecification
     // From QTypedElement
     Q_PROPERTY(QType * type READ type WRITE setType)
 
-    // From QValueSpecification
-
     // From QExpression
     Q_PROPERTY(QString symbol READ symbol WRITE setSymbol)
     Q_PROPERTY(QList<QValueSpecification *> * operand READ operand)

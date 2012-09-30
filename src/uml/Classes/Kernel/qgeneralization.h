@@ -54,7 +54,6 @@ QT_BEGIN_NAMESPACE_QTUML_CLASSES_KERNEL
 QT_MODULE(QtUml)
 
 class QGeneralizationPrivate;
-
 class QClassifier;
 
 class Q_UML_EXPORT QGeneralization : public QObject, public QDirectedRelationship
