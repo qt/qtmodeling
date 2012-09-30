@@ -12,7 +12,8 @@
         [%- PARENTSOF(classes.item(superclass.include.split('/').last), parents) -%]
     [%- END %]
     [%- parents.push(class) -%]
-    [%- FOREACH parent IN parents.unique %]
+    [%- FOREACH parent IN parents.unique -%]
+    [%- IF parent.attribute or parent.associationend %]
     // From ${parent.name}
         [%- FOREACH attribute IN parent.attribute -%]
             [%- IF attribute.accessor.size == 1 %]
@@ -30,13 +31,14 @@
         [%- END %]
 
     [%- END -%]
+    [%- END -%]
 [%- END -%]
 /****************************************************************************
 **
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/
 **
-** This file is part of the QtUml module of the Qt Toolkit.
+** This file is part of the [% namespace.split('/').0 %] module of the Qt Toolkit.
 **
 ** [% GET '$QT_BEGIN_LICENSE:LGPL$' %]
 ** GNU Lesser General Public License Usage
@@ -74,10 +76,10 @@
 #ifndef ${namespace.replace('/', '_').upper}_${class.name.upper}_H
 #define ${namespace.replace('/', '_').upper}_${class.name.upper}_H
 
-#include <QtUml/QtUmlGlobal>
+#include <[% namespace.split('/').0 %]/[% namespace.split('/').0 %]Global>
 
 [%- IF class.item('qtumlinclude') %]
-// QtUml includes
+// [% namespace.split('/').0 %] includes
 [%- FOREACH include IN class.qtumlinclude %]
 #include <${include}>
 [%- END %]
@@ -99,17 +101,39 @@
 
 QT_BEGIN_HEADER
 
+[%- currentNamespace = '' -%]
+[%- FOREACH forwarddecl IN class.forwarddecl %]
+    [%- IF forwarddecl.namespace != namespace.replace('/', '::') %]
+        [%- IF forwarddecl.namespace != currentNamespace %]
+            [%- IF currentNamespace != '' %]
+QT_END_NAMESPACE_${currentNamespace.replace('::', '_').upper}
+            [%- END -%]
+
+QT_BEGIN_NAMESPACE_${forwarddecl.namespace.replace('::', '_').upper}
+            [%- currentNamespace = forwarddecl.namespace -%]
+        [%- END -%]
+
+class ${forwarddecl.content};
+    [%- END -%]
+[%- END %]
+[%- IF currentNamespace != '' %]
+QT_END_NAMESPACE_${currentNamespace.replace('::', '_').upper}
+
+[%- END -%]
+
 QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
 
-QT_MODULE(QtUml)
+QT_MODULE([% namespace.split('/').0 %])
 
 class ${class.name}Private;
 
-[%- FOREACH forwarddecl IN class.forwarddecl %]
+[%- FOREACH forwarddecl IN class.forwarddecl -%]
+[%- IF forwarddecl.namespace == namespace.replace('/', '::') -%]
 class ${forwarddecl.content};
-[%- IF loop.last %]
-[% END -%]
-[%- END %]
+
+[%- END -%]
+[%- END -%]
+
 class Q_UML_EXPORT ${class.name}[%- IF class.superclass -%] : [% END -%][% FOREACH superclass = class.superclass %]public ${superclass.name.split('/').last}[% IF !loop.last %], [% END %][% END %]
 {
 [%- IF class.isAbstract == 'false' %]
