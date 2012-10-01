@@ -14,6 +14,7 @@ declare function qtxmi:typeStringFromProperty ($properties as node()*) as xs:str
 declare function qtxmi:mappedBaseNamespace($xmiFile as xs:string*) as xs:string* {
          if ($xmiFile = "PrimitiveTypes.xmi") then ""
     else if ($xmiFile = "Superstructure.xmi") then "QtUml::"
+    else if ($xmiFile = "UML.xmi") then "QtUml"
     else if ($xmiFile = "MOF.xmi") then "QtMof::"
     else ""
 };
@@ -139,11 +140,11 @@ declare function qtxmi:capitalizedNameFromTypeString ($unqualifiedType as xs:str
 
 <qtxmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:qtxmi="http://www.qt-project.org">
 {
-for $namespace in distinct-values(doc($xmiFile)//packagedElement[@xmi:type="uml:Package"]/@xmi:id)
+for $namespace in distinct-values((doc($xmiFile)//packagedElement[@xmi:type="uml:Package"] | doc($xmiFile)//uml:Package)/@xmi:id)
 return
 <namespace path="{replace(replace(concat(qtxmi:mappedBaseNamespace($xmiFile), $namespace), "-", "/"), "::", "/")}">
 {
-for $class in doc($xmiFile)//packagedElement[@xmi:id=$namespace]/packagedElement[@xmi:type="uml:Class"]
+for $class in doc($xmiFile)//*[@xmi:id=$namespace]/packagedElement[@xmi:type="uml:Class"]
 let $namespace := concat(replace(concat(qtxmi:mappedBaseNamespace($xmiFile), $namespace), "-", "::"), "::")
 let $superClasses := $class/generalization/@general | $class/generalization/general/@xmi:idref | $class/generalization/general/@href
 let $isAbstract := if ($class/@isAbstract) then $class/@isAbstract else "false"
@@ -284,7 +285,7 @@ return
     </class>
 }
 {
-for $enumeration in doc($xmiFile)//packagedElement[@xmi:id=$namespace]/packagedElement[@xmi:type="uml:Enumeration"]
+for $enumeration in doc($xmiFile)//*[@xmi:id=$namespace]/packagedElement[@xmi:type="uml:Enumeration"]
 return
     <enumeration name="{$enumeration/@name}">
         {
