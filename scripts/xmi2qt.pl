@@ -43,13 +43,13 @@ foreach my $class (values %$classes) {
     }) ne 1) { print $tt->error(); }
 }
 
-open STDOUT, '>', $options{o}."/".$namespace->{path}."/qenumerations.h";
-if ($tt->process('qenumerations.h', {
+open STDOUT, '>', $options{o}."/".$namespace->{path}."/qtumlenumerations.h";
+if ($tt->process('enumerations.h', {
     namespace => $namespace->{path},
     enumerations => $enumerations
 }) ne 1) { print $tt->error(); }
-open STDOUT, '>', $options{o}."/".$namespace->{path}."/qenumerations.cpp";
-if ($tt->process('qenumerations.cpp', {
+open STDOUT, '>', $options{o}."/".$namespace->{path}."/qtumlenumerations.cpp";
+if ($tt->process('enumerations.cpp', {
     namespace => $namespace->{path},
     enumerations => $enumerations
 }) ne 1) { print $tt->error(); }
