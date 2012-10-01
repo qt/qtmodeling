@@ -39,11 +39,11 @@
 **
 ****************************************************************************/
 
-#include "qenumerations.h"
+#include "${namespace.split('/').0.lower}enumerations.h"
 
-QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
+QT_BEGIN_NAMESPACE
 
-QEnumerations::QEnumerations()
+${namespace.split('/').0}::${namespace.split('/').0}()
 {
 }
 
@@ -61,7 +61,7 @@ QEnumerations::QEnumerations()
 
 [% END %]
 
-#include "moc_qenumerations.cpp"
+#include "moc_${namespace.split('/').0.lower}enumerations.cpp"
 
-QT_END_NAMESPACE_${namespace.replace('/', '_').upper}
+QT_END_NAMESPACE
 

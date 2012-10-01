@@ -38,20 +38,18 @@
 ** [% GET '$QT_END_LICENSE$' %]
 **
 ****************************************************************************/
-#ifndef ${namespace.replace('/', '_').upper}_QENUMERATIONS_H
-#define ${namespace.replace('/', '_').upper}_QENUMERATIONS_H
-
-#include <QtUml/QtUmlGlobal>
+#ifndef ${namespace.split('/').0.upper}ENUMERATIONS_H
+#define ${namespace.split('/').0.upper}ENUMERATIONS_H
 
 #include <QtCore/QObject>
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
+QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QEnumerations : public QObject
+class Q_UML_EXPORT ${namespace.split('::').0} : public QObject
 {
     Q_OBJECT
 
@@ -68,16 +66,12 @@ public:
     };
 [% END -%]
 private:
-    explicit QEnumerations();
+    explicit ${namespace.split('/').0}();
 };
 
-QT_END_NAMESPACE_${namespace.replace('/', '_').upper}
-
-[%- FOREACH enumeration IN enumerations %]
-Q_DECLARE_METATYPE(${namespace.replace('/', '::')}::QEnumerations::${enumeration.name})
-[%- END %]
+QT_END_NAMESPACE
 
 QT_END_HEADER
 
-#endif // ${namespace.replace('/', '_').upper}_QENUMERATIONS_H
+#endif // ${namespace.split('/').0.upper}ENUMERATIONS_H
 

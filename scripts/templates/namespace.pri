@@ -1,6 +1,6 @@
 PUBLIC_HEADERS +=
     [%- IF namespace.item('enumeration') -%][% ' \\' %]
-    ${namespace.path}/qenumerations.h
+    ${namespace.path}/${namespace.path.split('/').0.lower}enumerations.h
     [%- END -%]
 [%- FOREACH class IN namespace.class.values -%][% ' \\' %]
     ${namespace.path}/${class.name.lower}.h
@@ -8,7 +8,7 @@ PUBLIC_HEADERS +=
 
 SOURCES +=
     [%- IF namespace.item('enumeration') -%][% ' \\' %]
-    ${namespace.path}/qenumerations.cpp
+    ${namespace.path}/${namespace.path.split('/').0.lower}enumerations.cpp
     [%- END -%]
 [%- FOREACH class IN namespace.class.values -%][% ' \\' %]
     ${namespace.path}/${class.name.lower}.cpp
