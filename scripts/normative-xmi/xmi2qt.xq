@@ -101,7 +101,7 @@ declare function qtxmi:typeFromNamespacedTypeString ($string as xs:string, $name
     let $type := if ($element/@xmi:type = "uml:Class") then
                      concat($propertyNamespace, concat("Q", $type))
                  else if ($element/@xmi:type = "uml:Enumeration") then
-                     concat($propertyNamespace, concat("QEnumerations::", $type))
+                     concat($propertyNamespace, concat(concat(tokenize($namespace, "::")[1], "::"), $type))
                  else
                      qtxmi:mappedPrimitiveType($type)
     return $type
@@ -159,7 +159,7 @@ return
         for $id in qtxmi:elementFromProperty($class/ownedAttribute | $class/ownedOperation/ownedParameter)/@xmi:type
         where $id = "uml:Enumeration"
         return
-        <qtumlinclude>{replace(qtxmi:mappedBaseNamespace($xmiFile), "::", "")}/QEnumerations</qtumlinclude>
+        <qtumlinclude>{replace(qtxmi:mappedBaseNamespace($xmiFile), "::", "")}/{tokenize($namespace, "::")[1]}Enumerations</qtumlinclude>
         }
         {
         for $superobject in (qtxmi:elementFromTypeString($superClasses)[not(@isAbstract) or @isAbstract = "false"]/@xmi:id)
@@ -296,7 +296,7 @@ return
         {
         for $literal in $enumeration/ownedLiteral
         return
-        <literal name="{concat(upper-case(substring($literal/@name, 1, 1)), substring($literal/@name, 2))}" documentation="{$literal/ownedComment/body/text()}"/>
+        <literal name="{concat(replace($enumeration/@name, "Kind", ""), concat(upper-case(substring($literal/@name, 1, 1)), substring($literal/@name, 2)))}" documentation="{$literal/ownedComment/body/text()}"/>
         }
     </enumeration>
 }
