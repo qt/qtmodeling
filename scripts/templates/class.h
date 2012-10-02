@@ -85,8 +85,8 @@
 [%- END %]
 [% END -%]
 
-// Base class includes
 [%- IF class.item('superclass') -%]
+// Base class includes
 [%- FOREACH superclass IN class.superclass %]
 #include <${superclass.include}>
 [%- END %]

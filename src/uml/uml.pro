@@ -5,6 +5,6 @@ QT = core-private
 
 load(qt_module)
 
-include(Classes/Kernel/classes-kernel.pri)
+include(uml.pri)
 
 HEADERS += $$PUBLIC_HEADERS
