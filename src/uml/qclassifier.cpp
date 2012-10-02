@@ -85,28 +85,28 @@ void QClassifier::setFinalSpecialization(bool isFinalSpecialization)
 /*!
     Refers to all of the Properties that are direct (i.e. not inherited or imported) attributes of the classifier.
  */
-const QList<QProperty *> *QClassifier::attribute() const
+const QList<QProperty *> *QClassifier::attributes() const
 {
 }
 
 /*!
     References the collaboration uses owned by the classifier.
  */
-QList<QCollaborationUse *> *QClassifier::collaborationUse()
+QList<QCollaborationUse *> *QClassifier::collaborationUses()
 {
 }
 
 /*!
     Specifies each feature defined in the classifier.Note that there may be members of the Classifier that are of the type Feature but are not included in this association, e.g. inherited features.
  */
-const QList<QFeature *> *QClassifier::feature() const
+const QList<QFeature *> *QClassifier::features() const
 {
 }
 
 /*!
     Specifies the Generalization relationships for this Classifier. These Generalizations navigaten to more general classifiers in the generalization hierarchy.
  */
-QList<QGeneralization *> *QClassifier::generalization()
+QList<QGeneralization *> *QClassifier::generalizations()
 {
 }
 
@@ -124,21 +124,21 @@ void QClassifier::setOwnedTemplateSignature(QRedefinableTemplateSignature *owned
 /*!
     References the use cases owned by this classifier.
  */
-QList<QUseCase *> *QClassifier::ownedUseCase()
+QList<QUseCase *> *QClassifier::ownedUseCases()
 {
 }
 
 /*!
     Designates the GeneralizationSet of which the associated Classifier is a power type.
  */
-QList<QGeneralizationSet *> *QClassifier::powertypeExtent()
+QList<QGeneralizationSet *> *QClassifier::powertypeExtents()
 {
 }
 
 /*!
     References the Classifiers that are redefined by this Classifier.
  */
-QList<QClassifier *> *QClassifier::redefinedClassifier()
+QList<QClassifier *> *QClassifier::redefinedClassifiers()
 {
 }
 
@@ -156,7 +156,7 @@ void QClassifier::setRepresentation(QCollaborationUse *representation)
 /*!
     References the substitutions that are owned by this Classifier.
  */
-QList<QSubstitution *> *QClassifier::substitution()
+QList<QSubstitution *> *QClassifier::substitutions()
 {
 }
 
@@ -174,7 +174,7 @@ void QClassifier::setTemplateParameter(QClassifierTemplateParameter *templatePar
 /*!
     The set of use cases for which this Classifier is the subject.
  */
-QList<QUseCase *> *QClassifier::useCase()
+QList<QUseCase *> *QClassifier::useCases()
 {
 }
 
@@ -202,7 +202,7 @@ bool QClassifier::conformsTo(const QClassifier *other) const
 /*!
     The general classifiers are the classifiers referenced by the generalization relationships.
  */
-const QList<QClassifier *> *QClassifier::general() const
+const QList<QClassifier *> *QClassifier::generals() const
 {
 }
 
@@ -230,7 +230,7 @@ const QList<QNamedElement *> *QClassifier::inheritableMembers(const QClassifier 
 /*!
     The inheritedMember association is derived by inheriting the inheritable members of the parents.The inheritedMember association is derived by inheriting the inheritable members of the parents.
  */
-const QList<QNamedElement *> *QClassifier::inheritedMember() const
+const QList<QNamedElement *> *QClassifier::inheritedMembers() const
 {
 }
 

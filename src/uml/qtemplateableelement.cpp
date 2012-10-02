@@ -74,7 +74,7 @@ void QTemplateableElement::setOwnedTemplateSignature(QTemplateSignature *ownedTe
 /*!
     The optional bindings from this element to templates.
  */
-QList<QTemplateBinding *> *QTemplateableElement::templateBinding()
+QList<QTemplateBinding *> *QTemplateableElement::templateBindings()
 {
 }
 

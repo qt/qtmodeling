@@ -66,13 +66,13 @@ class Q_UML_EXPORT QExceptionHandler : public QObject, public QElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QExceptionHandler
     Q_PROPERTY(QObjectNode * exceptionInput READ exceptionInput WRITE setExceptionInput)
-    Q_PROPERTY(QList<QClassifier *> * exceptionType READ exceptionType)
+    Q_PROPERTY(QList<QClassifier *> * exceptionTypes READ exceptionTypes)
     Q_PROPERTY(QExecutableNode * handlerBody READ handlerBody WRITE setHandlerBody)
     Q_PROPERTY(QExecutableNode * protectedNode READ protectedNode WRITE setProtectedNode)
 
@@ -83,7 +83,7 @@ public:
     // Association-ends (except those derived && !derivedUnion)
     QObjectNode *exceptionInput() const;
     void setExceptionInput(QObjectNode *exceptionInput);
-    QList<QClassifier *> *exceptionType();
+    QList<QClassifier *> *exceptionTypes();
     QExecutableNode *handlerBody() const;
     void setHandlerBody(QExecutableNode *handlerBody);
     QExecutableNode *protectedNode() const;

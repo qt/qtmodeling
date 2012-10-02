@@ -65,30 +65,30 @@ class Q_UML_EXPORT QClause : public QObject, public QElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QClause
-    Q_PROPERTY(QList<QExecutableNode *> * body READ body)
-    Q_PROPERTY(QList<QOutputPin *> * bodyOutput READ bodyOutput)
+    Q_PROPERTY(QList<QExecutableNode *> * bodies READ bodies)
+    Q_PROPERTY(QList<QOutputPin *> * bodyOutputs READ bodyOutputs)
     Q_PROPERTY(QOutputPin * decider READ decider WRITE setDecider)
-    Q_PROPERTY(QList<QClause *> * predecessorClause READ predecessorClause)
-    Q_PROPERTY(QList<QClause *> * successorClause READ successorClause)
-    Q_PROPERTY(QList<QExecutableNode *> * test READ test)
+    Q_PROPERTY(QList<QClause *> * predecessorClauses READ predecessorClauses)
+    Q_PROPERTY(QList<QClause *> * successorClauses READ successorClauses)
+    Q_PROPERTY(QList<QExecutableNode *> * tests READ tests)
 
 public:
     explicit QClause(QObject *parent = 0);
     virtual ~QClause();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QExecutableNode *> *body();
-    QList<QOutputPin *> *bodyOutput();
+    QList<QExecutableNode *> *bodies();
+    QList<QOutputPin *> *bodyOutputs();
     QOutputPin *decider() const;
     void setDecider(QOutputPin *decider);
-    QList<QClause *> *predecessorClause();
-    QList<QClause *> *successorClause();
-    QList<QExecutableNode *> *test();
+    QList<QClause *> *predecessorClauses();
+    QList<QClause *> *successorClauses();
+    QList<QExecutableNode *> *tests();
 
 private:
     Q_DISABLE_COPY(QClause)

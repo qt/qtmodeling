@@ -64,28 +64,28 @@ QOpaqueAction::~QOpaqueAction()
 /*!
     Specifies the action in one or more languages.
  */
-QList<QString *> QOpaqueAction::body()
+QList<QString *> QOpaqueAction::bodies()
 {
 }
 
 /*!
     Languages the body strings use, in the same order as the body strings
  */
-QList<QString *> QOpaqueAction::language()
+QList<QString *> QOpaqueAction::languages()
 {
 }
 
 /*!
     Provides input to the action.
  */
-QList<QInputPin *> *QOpaqueAction::inputValue()
+QList<QInputPin *> *QOpaqueAction::inputValues()
 {
 }
 
 /*!
     Takes output from the action.
  */
-QList<QOutputPin *> *QOpaqueAction::outputValue()
+QList<QOutputPin *> *QOpaqueAction::outputValues()
 {
 }
 

@@ -64,28 +64,28 @@ QInterface::~QInterface()
 /*!
     References all the Classifiers that are defined (nested) within the Class.
  */
-QList<QClassifier *> *QInterface::nestedClassifier()
+QList<QClassifier *> *QInterface::nestedClassifiers()
 {
 }
 
 /*!
     The attributes (i.e. the properties) owned by the class.
  */
-QList<QProperty *> *QInterface::ownedAttribute()
+QList<QProperty *> *QInterface::ownedAttributes()
 {
 }
 
 /*!
     The operations owned by the class.
  */
-QList<QOperation *> *QInterface::ownedOperation()
+QList<QOperation *> *QInterface::ownedOperations()
 {
 }
 
 /*!
     Receptions that objects providing this interface are willing to accept.
  */
-QList<QReception *> *QInterface::ownedReception()
+QList<QReception *> *QInterface::ownedReceptions()
 {
 }
 
@@ -103,7 +103,7 @@ void QInterface::setProtocol(QProtocolStateMachine *protocol)
 /*!
     References all the Interfaces redefined by this Interface.
  */
-QList<QInterface *> *QInterface::redefinedInterface()
+QList<QInterface *> *QInterface::redefinedInterfaces()
 {
 }
 

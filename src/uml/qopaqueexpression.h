@@ -66,15 +66,15 @@ class Q_UML_EXPORT QOpaqueExpression : public QObject, public QValueSpecificatio
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependency READ clientDependency)
+    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 
@@ -89,8 +89,8 @@ class Q_UML_EXPORT QOpaqueExpression : public QObject, public QValueSpecificatio
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // From QOpaqueExpression
-    Q_PROPERTY(QList<QString *> body READ body)
-    Q_PROPERTY(QList<QString *> language READ language)
+    Q_PROPERTY(QList<QString *> bodies READ bodies)
+    Q_PROPERTY(QList<QString *> languages READ languages)
     Q_PROPERTY(QBehavior * behavior READ behavior WRITE setBehavior)
     Q_PROPERTY(const QParameter * result READ result)
 
@@ -99,8 +99,8 @@ public:
     virtual ~QOpaqueExpression();
 
     // Attributes (except those derived && !derivedUnion)
-    QList<QString *> body();
-    QList<QString *> language();
+    QList<QString *> bodies();
+    QList<QString *> languages();
 
     // Association-ends (except those derived && !derivedUnion)
     QBehavior *behavior() const;

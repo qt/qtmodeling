@@ -65,22 +65,22 @@ class Q_UML_EXPORT QPseudostate : public QObject, public QVertex
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependency READ clientDependency)
+    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 
     // From QVertex
     Q_PROPERTY(QRegion * container READ container WRITE setContainer)
-    Q_PROPERTY(const QList<QTransition *> * incoming READ incoming)
-    Q_PROPERTY(const QList<QTransition *> * outgoing READ outgoing)
+    Q_PROPERTY(const QList<QTransition *> * incomings READ incomings)
+    Q_PROPERTY(const QList<QTransition *> * outgoings READ outgoings)
 
     // From QPseudostate
     Q_PROPERTY(QtUml::PseudostateKind kind READ kind WRITE setKind)

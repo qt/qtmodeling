@@ -86,29 +86,29 @@ void QStructuredActivityNode::setActivity(QActivity *activity)
 /*!
     Edges immediately contained in the structured node.
  */
-QList<QActivityEdge *> *QStructuredActivityNode::edge()
+QList<QActivityEdge *> *QStructuredActivityNode::edges()
 {
 }
 
 /*!
     Nodes immediately contained in the group.
  */
-QList<QActivityNode *> *QStructuredActivityNode::node()
+QList<QActivityNode *> *QStructuredActivityNode::nodes()
 {
 }
 
-QList<QInputPin *> *QStructuredActivityNode::structuredNodeInput()
+QList<QInputPin *> *QStructuredActivityNode::structuredNodeInputs()
 {
 }
 
-QList<QOutputPin *> *QStructuredActivityNode::structuredNodeOutput()
+QList<QOutputPin *> *QStructuredActivityNode::structuredNodeOutputs()
 {
 }
 
 /*!
     A variable defined in the scope of the structured activity node. It has no value and may not be accessed
  */
-QList<QVariable *> *QStructuredActivityNode::variable()
+QList<QVariable *> *QStructuredActivityNode::variables()
 {
 }
 

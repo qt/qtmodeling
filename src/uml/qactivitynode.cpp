@@ -106,21 +106,21 @@ void QActivityNode::setInStructuredNode(QStructuredActivityNode *inStructuredNod
 /*!
     Edges that have the node as target.
  */
-QList<QActivityEdge *> *QActivityNode::incoming()
+QList<QActivityEdge *> *QActivityNode::incomings()
 {
 }
 
 /*!
     Edges that have the node as source.
  */
-QList<QActivityEdge *> *QActivityNode::outgoing()
+QList<QActivityEdge *> *QActivityNode::outgoings()
 {
 }
 
 /*!
     Inherited nodes replaced by this node in a specialization of the activity.
  */
-QList<QActivityNode *> *QActivityNode::redefinedNode()
+QList<QActivityNode *> *QActivityNode::redefinedNodes()
 {
 }
 

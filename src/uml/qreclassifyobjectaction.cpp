@@ -75,7 +75,7 @@ void QReclassifyObjectAction::setReplaceAll(bool isReplaceAll)
 /*!
     A set of classifiers to be added to the classifiers of the object.
  */
-QList<QClassifier *> *QReclassifyObjectAction::newClassifier()
+QList<QClassifier *> *QReclassifyObjectAction::newClassifiers()
 {
 }
 
@@ -93,7 +93,7 @@ void QReclassifyObjectAction::setObject(QInputPin *object)
 /*!
     A set of classifiers to be removed from the classifiers of the object.
  */
-QList<QClassifier *> *QReclassifyObjectAction::oldClassifier()
+QList<QClassifier *> *QReclassifyObjectAction::oldClassifiers()
 {
 }
 

@@ -66,14 +66,14 @@ class Q_UML_EXPORT QLoopNode : public QStructuredActivityNode
 
     // From QLoopNode
     Q_PROPERTY(bool isTestedFirst READ isTestedFirst WRITE setTestedFirst)
-    Q_PROPERTY(QList<QOutputPin *> * bodyOutput READ bodyOutput)
-    Q_PROPERTY(QList<QExecutableNode *> * bodyPart READ bodyPart)
+    Q_PROPERTY(QList<QOutputPin *> * bodyOutputs READ bodyOutputs)
+    Q_PROPERTY(QList<QExecutableNode *> * bodyParts READ bodyParts)
     Q_PROPERTY(QOutputPin * decider READ decider WRITE setDecider)
-    Q_PROPERTY(QList<QOutputPin *> * loopVariable READ loopVariable)
-    Q_PROPERTY(QList<QInputPin *> * loopVariableInput READ loopVariableInput)
-    Q_PROPERTY(QList<QOutputPin *> * result READ result)
-    Q_PROPERTY(QList<QExecutableNode *> * setupPart READ setupPart)
-    Q_PROPERTY(QList<QExecutableNode *> * test READ test)
+    Q_PROPERTY(QList<QOutputPin *> * loopVariables READ loopVariables)
+    Q_PROPERTY(QList<QInputPin *> * loopVariableInputs READ loopVariableInputs)
+    Q_PROPERTY(QList<QOutputPin *> * results READ results)
+    Q_PROPERTY(QList<QExecutableNode *> * setupParts READ setupParts)
+    Q_PROPERTY(QList<QExecutableNode *> * tests READ tests)
 
 public:
     explicit QLoopNode(QObject *parent = 0);
@@ -84,15 +84,15 @@ public:
     void setTestedFirst(bool isTestedFirst);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QOutputPin *> *bodyOutput();
-    QList<QExecutableNode *> *bodyPart();
+    QList<QOutputPin *> *bodyOutputs();
+    QList<QExecutableNode *> *bodyParts();
     QOutputPin *decider() const;
     void setDecider(QOutputPin *decider);
-    QList<QOutputPin *> *loopVariable();
-    QList<QInputPin *> *loopVariableInput();
-    QList<QOutputPin *> *result();
-    QList<QExecutableNode *> *setupPart();
-    QList<QExecutableNode *> *test();
+    QList<QOutputPin *> *loopVariables();
+    QList<QInputPin *> *loopVariableInputs();
+    QList<QOutputPin *> *results();
+    QList<QExecutableNode *> *setupParts();
+    QList<QExecutableNode *> *tests();
 
 private:
     Q_DISABLE_COPY(QLoopNode)

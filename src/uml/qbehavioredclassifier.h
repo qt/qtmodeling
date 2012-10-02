@@ -67,8 +67,8 @@ public:
     // Association-ends (except those derived && !derivedUnion)
     QBehavior *classifierBehavior() const;
     void setClassifierBehavior(QBehavior *classifierBehavior);
-    QList<QInterfaceRealization *> *interfaceRealization();
-    QList<QBehavior *> *ownedBehavior();
+    QList<QInterfaceRealization *> *interfaceRealizations();
+    QList<QBehavior *> *ownedBehaviors();
 
 protected:
     explicit QBehavioredClassifier();

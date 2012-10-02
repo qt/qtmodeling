@@ -65,8 +65,8 @@ class Q_UML_EXPORT QDeployment : public QDependency
     Q_OBJECT
 
     // From QDeployment
-    Q_PROPERTY(QList<QDeploymentSpecification *> * configuration READ configuration)
-    Q_PROPERTY(QList<QDeployedArtifact *> * deployedArtifact READ deployedArtifact)
+    Q_PROPERTY(QList<QDeploymentSpecification *> * configurations READ configurations)
+    Q_PROPERTY(QList<QDeployedArtifact *> * deployedArtifacts READ deployedArtifacts)
     Q_PROPERTY(QDeploymentTarget * location READ location WRITE setLocation)
 
 public:
@@ -74,8 +74,8 @@ public:
     virtual ~QDeployment();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QDeploymentSpecification *> *configuration();
-    QList<QDeployedArtifact *> *deployedArtifact();
+    QList<QDeploymentSpecification *> *configurations();
+    QList<QDeployedArtifact *> *deployedArtifacts();
     QDeploymentTarget *location() const;
     void setLocation(QDeploymentTarget *location);
 

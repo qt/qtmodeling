@@ -63,14 +63,14 @@ QDirectedRelationship::~QDirectedRelationship()
 /*!
     Specifies the sources of the DirectedRelationship.
  */
-const QList<QElement *> *QDirectedRelationship::source() const
+const QList<QElement *> *QDirectedRelationship::sources() const
 {
 }
 
 /*!
     Specifies the targets of the DirectedRelationship.
  */
-const QList<QElement *> *QDirectedRelationship::target() const
+const QList<QElement *> *QDirectedRelationship::targets() const
 {
 }
 

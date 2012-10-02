@@ -75,7 +75,7 @@ void QTimeExpression::setExpr(QValueSpecification *expr)
 /*!
     Refers to the time and duration observations that are involved in expr.
  */
-QList<QObservation *> *QTimeExpression::observation()
+QList<QObservation *> *QTimeExpression::observations()
 {
 }
 

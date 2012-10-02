@@ -64,7 +64,7 @@ QNode::~QNode()
 /*!
     The Nodes that are defined (nested) within the Node.
  */
-QList<QNode *> *QNode::nestedNode()
+QList<QNode *> *QNode::nestedNodes()
 {
 }
 

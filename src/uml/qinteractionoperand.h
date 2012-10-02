@@ -65,15 +65,15 @@ class Q_UML_EXPORT QInteractionOperand : public QObject, public QInteractionFrag
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependency READ clientDependency)
+    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 
@@ -81,18 +81,18 @@ class Q_UML_EXPORT QInteractionOperand : public QObject, public QInteractionFrag
     Q_PROPERTY(QList<QLifeline *> * covered READ covered)
     Q_PROPERTY(QInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
     Q_PROPERTY(QInteractionOperand * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
-    Q_PROPERTY(QList<QGeneralOrdering *> * generalOrdering READ generalOrdering)
+    Q_PROPERTY(QList<QGeneralOrdering *> * generalOrderings READ generalOrderings)
 
     // From QNamespace
-    Q_PROPERTY(QList<QElementImport *> * elementImport READ elementImport)
-    Q_PROPERTY(const QList<QPackageableElement *> * importedMember READ importedMember)
-    Q_PROPERTY(const QList<QNamedElement *> * member READ member)
-    Q_PROPERTY(const QList<QNamedElement *> * ownedMember READ ownedMember)
-    Q_PROPERTY(QList<QConstraint *> * ownedRule READ ownedRule)
-    Q_PROPERTY(QList<QPackageImport *> * packageImport READ packageImport)
+    Q_PROPERTY(QList<QElementImport *> * elementImports READ elementImports)
+    Q_PROPERTY(const QList<QPackageableElement *> * importedMembers READ importedMembers)
+    Q_PROPERTY(const QList<QNamedElement *> * members READ members)
+    Q_PROPERTY(const QList<QNamedElement *> * ownedMembers READ ownedMembers)
+    Q_PROPERTY(QList<QConstraint *> * ownedRules READ ownedRules)
+    Q_PROPERTY(QList<QPackageImport *> * packageImports READ packageImports)
 
     // From QInteractionOperand
-    Q_PROPERTY(QList<QInteractionFragment *> * fragment READ fragment)
+    Q_PROPERTY(QList<QInteractionFragment *> * fragments READ fragments)
     Q_PROPERTY(QInteractionConstraint * guard READ guard WRITE setGuard)
 
 public:
@@ -100,7 +100,7 @@ public:
     virtual ~QInteractionOperand();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QInteractionFragment *> *fragment();
+    QList<QInteractionFragment *> *fragments();
     QInteractionConstraint *guard() const;
     void setGuard(QInteractionConstraint *guard);
 

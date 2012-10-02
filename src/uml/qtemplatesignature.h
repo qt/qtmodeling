@@ -65,24 +65,24 @@ class Q_UML_EXPORT QTemplateSignature : public QObject, public virtual QElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QTemplateSignature
-    Q_PROPERTY(QList<QTemplateParameter *> * ownedParameter READ ownedParameter)
-    Q_PROPERTY(QList<QTemplateParameter *> * parameter READ parameter)
-    Q_PROPERTY(QTemplateableElement * template_ READ template_ WRITE setTemplate)
+    Q_PROPERTY(QList<QTemplateParameter *> * ownedParameters READ ownedParameters)
+    Q_PROPERTY(QList<QTemplateParameter *> * parameters READ parameters)
+    Q_PROPERTY(QTemplateableElement * template_ READ template_ WRITE setTemplate_)
 
 public:
     explicit QTemplateSignature(QObject *parent = 0);
     virtual ~QTemplateSignature();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QTemplateParameter *> *ownedParameter();
-    QList<QTemplateParameter *> *parameter();
+    QList<QTemplateParameter *> *ownedParameters();
+    QList<QTemplateParameter *> *parameters();
     QTemplateableElement *template_() const;
-    void setTemplate(QTemplateableElement *template_);
+    void setTemplate_(QTemplateableElement *template_);
 
 private:
     Q_DISABLE_COPY(QTemplateSignature)

@@ -78,10 +78,10 @@ public:
     void setAbstract(bool isAbstract);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QBehavior *> *method();
-    QList<QParameter *> *ownedParameter();
-    QList<QParameterSet *> *ownedParameterSet();
-    QList<QType *> *raisedException();
+    QList<QBehavior *> *methods();
+    QList<QParameter *> *ownedParameters();
+    QList<QParameterSet *> *ownedParameterSets();
+    QList<QType *> *raisedExceptions();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     bool isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const;

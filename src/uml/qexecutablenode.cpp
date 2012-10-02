@@ -63,7 +63,7 @@ QExecutableNode::~QExecutableNode()
 /*!
     A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.
  */
-QList<QExceptionHandler *> *QExecutableNode::handler()
+QList<QExceptionHandler *> *QExecutableNode::handlers()
 {
 }
 

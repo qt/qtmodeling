@@ -108,7 +108,7 @@ void QPort::setProtocol(QProtocolStateMachine *protocol)
 /*!
     A port may be redefined when its containing classifier is specialized. The redefining port may have additional interfaces to those that are associated with the redefined port or it may replace an interface by one of its subtypes.
  */
-QList<QPort *> *QPort::redefinedPort()
+QList<QPort *> *QPort::redefinedPorts()
 {
 }
 

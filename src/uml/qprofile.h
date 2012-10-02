@@ -64,16 +64,16 @@ class Q_UML_EXPORT QProfile : public QPackage
     Q_OBJECT
 
     // From QProfile
-    Q_PROPERTY(QList<QElementImport *> * metaclassReference READ metaclassReference)
-    Q_PROPERTY(QList<QPackageImport *> * metamodelReference READ metamodelReference)
+    Q_PROPERTY(QList<QElementImport *> * metaclassReferences READ metaclassReferences)
+    Q_PROPERTY(QList<QPackageImport *> * metamodelReferences READ metamodelReferences)
 
 public:
     explicit QProfile(QObject *parent = 0);
     virtual ~QProfile();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QElementImport *> *metaclassReference();
-    QList<QPackageImport *> *metamodelReference();
+    QList<QElementImport *> *metaclassReferences();
+    QList<QPackageImport *> *metamodelReferences();
 
 private:
     Q_DISABLE_COPY(QProfile)

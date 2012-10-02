@@ -75,7 +75,7 @@ void QTrigger::setEvent(QEvent *event)
 /*!
     A optional port of the receiver object on which the behavioral feature is invoked.
  */
-QList<QPort *> *QTrigger::port()
+QList<QPort *> *QTrigger::ports()
 {
 }
 

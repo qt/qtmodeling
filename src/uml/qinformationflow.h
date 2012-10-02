@@ -70,16 +70,16 @@ class Q_UML_EXPORT QInformationFlow : public QObject, public QDirectedRelationsh
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QRelationship
-    Q_PROPERTY(const QList<QElement *> * relatedElement READ relatedElement)
+    Q_PROPERTY(const QList<QElement *> * relatedElements READ relatedElements)
 
     // From QDirectedRelationship
-    Q_PROPERTY(const QList<QElement *> * source READ source)
-    Q_PROPERTY(const QList<QElement *> * target READ target)
+    Q_PROPERTY(const QList<QElement *> * sources READ sources)
+    Q_PROPERTY(const QList<QElement *> * targets READ targets)
 
     // From QParameterableElement
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
@@ -89,7 +89,7 @@ class Q_UML_EXPORT QInformationFlow : public QObject, public QDirectedRelationsh
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependency READ clientDependency)
+    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 
@@ -98,12 +98,12 @@ class Q_UML_EXPORT QInformationFlow : public QObject, public QDirectedRelationsh
 
     // From QInformationFlow
     Q_PROPERTY(QList<QClassifier *> * conveyed READ conveyed)
-    Q_PROPERTY(QList<QNamedElement *> * informationSource READ informationSource)
-    Q_PROPERTY(QList<QNamedElement *> * informationTarget READ informationTarget)
-    Q_PROPERTY(QList<QRelationship *> * realization READ realization)
-    Q_PROPERTY(QList<QActivityEdge *> * realizingActivityEdge READ realizingActivityEdge)
-    Q_PROPERTY(QList<QConnector *> * realizingConnector READ realizingConnector)
-    Q_PROPERTY(QList<QMessage *> * realizingMessage READ realizingMessage)
+    Q_PROPERTY(QList<QNamedElement *> * informationSources READ informationSources)
+    Q_PROPERTY(QList<QNamedElement *> * informationTargets READ informationTargets)
+    Q_PROPERTY(QList<QRelationship *> * realizations READ realizations)
+    Q_PROPERTY(QList<QActivityEdge *> * realizingActivityEdges READ realizingActivityEdges)
+    Q_PROPERTY(QList<QConnector *> * realizingConnectors READ realizingConnectors)
+    Q_PROPERTY(QList<QMessage *> * realizingMessages READ realizingMessages)
 
 public:
     explicit QInformationFlow(QObject *parent = 0);
@@ -111,12 +111,12 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QList<QClassifier *> *conveyed();
-    QList<QNamedElement *> *informationSource();
-    QList<QNamedElement *> *informationTarget();
-    QList<QRelationship *> *realization();
-    QList<QActivityEdge *> *realizingActivityEdge();
-    QList<QConnector *> *realizingConnector();
-    QList<QMessage *> *realizingMessage();
+    QList<QNamedElement *> *informationSources();
+    QList<QNamedElement *> *informationTargets();
+    QList<QRelationship *> *realizations();
+    QList<QActivityEdge *> *realizingActivityEdges();
+    QList<QConnector *> *realizingConnectors();
+    QList<QMessage *> *realizingMessages();
 
 private:
     Q_DISABLE_COPY(QInformationFlow)

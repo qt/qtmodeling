@@ -63,14 +63,14 @@ class Q_UML_EXPORT QSequenceNode : public QStructuredActivityNode
     Q_OBJECT
 
     // From QSequenceNode
-    Q_PROPERTY(QList<QExecutableNode *> * executableNode READ executableNode)
+    Q_PROPERTY(QList<QExecutableNode *> * executableNodes READ executableNodes)
 
 public:
     explicit QSequenceNode(QObject *parent = 0);
     virtual ~QSequenceNode();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QExecutableNode *> *executableNode();
+    QList<QExecutableNode *> *executableNodes();
 
 private:
     Q_DISABLE_COPY(QSequenceNode)

@@ -75,14 +75,14 @@ void QComponent::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
 /*!
     The set of PackageableElements that a Component owns. In the namespace of a component, all model elements that are involved in or related to its definition may be owned or imported explicitly. These may include e.g. Classes, Interfaces, Components, Packages, Use cases, Dependencies (e.g. mappings), and Artifacts.
  */
-QList<QPackageableElement *> *QComponent::packagedElement()
+QList<QPackageableElement *> *QComponent::packagedElements()
 {
 }
 
 /*!
     The set of Realizations owned by the Component. Realizations reference the Classifiers of which the Component is an abstraction; i.e., that realize its behavior.
  */
-QList<QComponentRealization *> *QComponent::realization()
+QList<QComponentRealization *> *QComponent::realizations()
 {
 }
 

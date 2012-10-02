@@ -72,11 +72,11 @@ public:
     void setReentrant(bool isReentrant);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QParameter *> *ownedParameter();
-    QList<QParameterSet *> *ownedParameterSet();
-    QList<QConstraint *> *postcondition();
-    QList<QConstraint *> *precondition();
-    QList<QBehavior *> *redefinedBehavior();
+    QList<QParameter *> *ownedParameters();
+    QList<QParameterSet *> *ownedParameterSets();
+    QList<QConstraint *> *postconditions();
+    QList<QConstraint *> *preconditions();
+    QList<QBehavior *> *redefinedBehaviors();
     QBehavioralFeature *specification() const;
     void setSpecification(QBehavioralFeature *specification);
 

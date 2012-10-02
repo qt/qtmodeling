@@ -86,35 +86,35 @@ void QClass::setActive(bool isActive)
 /*!
     References all the Classifiers that are defined (nested) within the Class.
  */
-QList<QClassifier *> *QClass::nestedClassifier()
+QList<QClassifier *> *QClass::nestedClassifiers()
 {
 }
 
 /*!
     The attributes (i.e. the properties) owned by the class.
  */
-QList<QProperty *> *QClass::ownedAttribute()
+QList<QProperty *> *QClass::ownedAttributes()
 {
 }
 
 /*!
     The operations owned by the class.
  */
-QList<QOperation *> *QClass::ownedOperation()
+QList<QOperation *> *QClass::ownedOperations()
 {
 }
 
 /*!
     Receptions that objects of this class are willing to accept.
  */
-QList<QReception *> *QClass::ownedReception()
+QList<QReception *> *QClass::ownedReceptions()
 {
 }
 
 /*!
     Missing derivation for Class::/extension : Extension
  */
-const QList<QExtension *> *QClass::extension() const
+const QList<QExtension *> *QClass::extensions() const
 {
 }
 
@@ -128,7 +128,7 @@ const QList<QNamedElement *> *QClass::inherit(const QList<QNamedElement *> *inhs
 /*!
     Missing derivation for Class::/superClass : Class
  */
-const QList<QClass *> *QClass::superClass() const
+const QList<QClass *> *QClass::superClasses() const
 {
 }
 

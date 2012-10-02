@@ -73,46 +73,46 @@ class Q_UML_EXPORT QOperation : public QObject, public QTemplateableElement, pub
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QTemplateableElement
     Q_PROPERTY(QTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
-    Q_PROPERTY(QList<QTemplateBinding *> * templateBinding READ templateBinding)
+    Q_PROPERTY(QList<QTemplateBinding *> * templateBindings READ templateBindings)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependency READ clientDependency)
+    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 
     // From QNamespace
-    Q_PROPERTY(QList<QElementImport *> * elementImport READ elementImport)
-    Q_PROPERTY(const QList<QPackageableElement *> * importedMember READ importedMember)
-    Q_PROPERTY(const QList<QNamedElement *> * member READ member)
-    Q_PROPERTY(const QList<QNamedElement *> * ownedMember READ ownedMember)
-    Q_PROPERTY(QList<QConstraint *> * ownedRule READ ownedRule)
-    Q_PROPERTY(QList<QPackageImport *> * packageImport READ packageImport)
+    Q_PROPERTY(QList<QElementImport *> * elementImports READ elementImports)
+    Q_PROPERTY(const QList<QPackageableElement *> * importedMembers READ importedMembers)
+    Q_PROPERTY(const QList<QNamedElement *> * members READ members)
+    Q_PROPERTY(const QList<QNamedElement *> * ownedMembers READ ownedMembers)
+    Q_PROPERTY(QList<QConstraint *> * ownedRules READ ownedRules)
+    Q_PROPERTY(QList<QPackageImport *> * packageImports READ packageImports)
 
     // From QRedefinableElement
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElement READ redefinedElement)
-    Q_PROPERTY(const QList<QClassifier *> * redefinitionContext READ redefinitionContext)
+    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElements READ redefinedElements)
+    Q_PROPERTY(const QList<QClassifier *> * redefinitionContexts READ redefinitionContexts)
 
     // From QFeature
     Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic)
-    Q_PROPERTY(const QList<QClassifier *> * featuringClassifier READ featuringClassifier)
+    Q_PROPERTY(const QList<QClassifier *> * featuringClassifiers READ featuringClassifiers)
 
     // From QBehavioralFeature
     Q_PROPERTY(QtUml::CallConcurrencyKind concurrency READ concurrency WRITE setConcurrency)
     Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract)
-    Q_PROPERTY(QList<QBehavior *> * method READ method)
-    Q_PROPERTY(QList<QParameter *> * ownedParameter READ ownedParameter)
-    Q_PROPERTY(QList<QParameterSet *> * ownedParameterSet READ ownedParameterSet)
-    Q_PROPERTY(QList<QType *> * raisedException READ raisedException)
+    Q_PROPERTY(QList<QBehavior *> * methods READ methods)
+    Q_PROPERTY(QList<QParameter *> * ownedParameters READ ownedParameters)
+    Q_PROPERTY(QList<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
+    Q_PROPERTY(QList<QType *> * raisedExceptions READ raisedExceptions)
 
     // From QParameterableElement
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
@@ -127,11 +127,11 @@ class Q_UML_EXPORT QOperation : public QObject, public QTemplateableElement, pub
     Q_PROPERTY(QClass * class_ READ class_ WRITE setClass_)
     Q_PROPERTY(QDataType * datatype READ datatype WRITE setDatatype)
     Q_PROPERTY(QInterface * interface READ interface WRITE setInterface)
-    Q_PROPERTY(QList<QParameter *> * ownedParameter READ ownedParameter)
-    Q_PROPERTY(QList<QConstraint *> * postcondition READ postcondition)
-    Q_PROPERTY(QList<QConstraint *> * precondition READ precondition)
-    Q_PROPERTY(QList<QType *> * raisedException READ raisedException)
-    Q_PROPERTY(QList<QOperation *> * redefinedOperation READ redefinedOperation)
+    Q_PROPERTY(QList<QParameter *> * ownedParameters READ ownedParameters)
+    Q_PROPERTY(QList<QConstraint *> * postconditions READ postconditions)
+    Q_PROPERTY(QList<QConstraint *> * preconditions READ preconditions)
+    Q_PROPERTY(QList<QType *> * raisedExceptions READ raisedExceptions)
+    Q_PROPERTY(QList<QOperation *> * redefinedOperations READ redefinedOperations)
     Q_PROPERTY(QOperationTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
     Q_PROPERTY(const QType * type READ type)
 
@@ -152,11 +152,11 @@ public:
     void setDatatype(QDataType *datatype);
     QInterface *interface() const;
     void setInterface(QInterface *interface);
-    QList<QParameter *> *ownedParameter();
-    QList<QConstraint *> *postcondition();
-    QList<QConstraint *> *precondition();
-    QList<QType *> *raisedException();
-    QList<QOperation *> *redefinedOperation();
+    QList<QParameter *> *ownedParameters();
+    QList<QConstraint *> *postconditions();
+    QList<QConstraint *> *preconditions();
+    QList<QType *> *raisedExceptions();
+    QList<QOperation *> *redefinedOperations();
     QOperationTemplateParameter *templateParameter() const;
     void setTemplateParameter(QOperationTemplateParameter *templateParameter);
 

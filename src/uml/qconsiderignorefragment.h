@@ -63,14 +63,14 @@ class Q_UML_EXPORT QConsiderIgnoreFragment : public QCombinedFragment
     Q_OBJECT
 
     // From QConsiderIgnoreFragment
-    Q_PROPERTY(QList<QNamedElement *> * message READ message)
+    Q_PROPERTY(QList<QNamedElement *> * messages READ messages)
 
 public:
     explicit QConsiderIgnoreFragment(QObject *parent = 0);
     virtual ~QConsiderIgnoreFragment();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QNamedElement *> *message();
+    QList<QNamedElement *> *messages();
 
 private:
     Q_DISABLE_COPY(QConsiderIgnoreFragment)

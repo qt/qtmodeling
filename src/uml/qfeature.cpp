@@ -74,7 +74,7 @@ void QFeature::setStatic(bool isStatic)
 /*!
     The Classifiers that have this Feature as a feature.
  */
-const QList<QClassifier *> *QFeature::featuringClassifier() const
+const QList<QClassifier *> *QFeature::featuringClassifiers() const
 {
 }
 

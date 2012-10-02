@@ -61,22 +61,22 @@ class Q_UML_EXPORT QObjectFlow : public QObject, public QActivityEdge
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependency READ clientDependency)
+    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 
     // From QRedefinableElement
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElement READ redefinedElement)
-    Q_PROPERTY(const QList<QClassifier *> * redefinitionContext READ redefinitionContext)
+    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElements READ redefinedElements)
+    Q_PROPERTY(const QList<QClassifier *> * redefinitionContexts READ redefinitionContexts)
 
     // From QActivityEdge
     Q_PROPERTY(QActivity * activity READ activity WRITE setActivity)
@@ -85,7 +85,7 @@ class Q_UML_EXPORT QObjectFlow : public QObject, public QActivityEdge
     Q_PROPERTY(QList<QActivityPartition *> * inPartition READ inPartition)
     Q_PROPERTY(QStructuredActivityNode * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
     Q_PROPERTY(QInterruptibleActivityRegion * interrupts READ interrupts WRITE setInterrupts)
-    Q_PROPERTY(QList<QActivityEdge *> * redefinedEdge READ redefinedEdge)
+    Q_PROPERTY(QList<QActivityEdge *> * redefinedEdges READ redefinedEdges)
     Q_PROPERTY(QActivityNode * source READ source WRITE setSource)
     Q_PROPERTY(QActivityNode * target READ target WRITE setTarget)
     Q_PROPERTY(QValueSpecification * weight READ weight WRITE setWeight)

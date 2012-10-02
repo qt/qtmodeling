@@ -66,12 +66,12 @@ public:
     virtual ~QStructuredClassifier();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QProperty *> *ownedAttribute();
-    QList<QConnector *> *ownedConnector();
-    const QList<QConnectableElement *> *role() const;
+    QList<QProperty *> *ownedAttributes();
+    QList<QConnector *> *ownedConnectors();
+    const QList<QConnectableElement *> *roles() const;
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QList<QProperty *> *part() const;
+    const QList<QProperty *> *parts() const;
 
 protected:
     explicit QStructuredClassifier();

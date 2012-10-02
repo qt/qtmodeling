@@ -64,14 +64,14 @@ QDataType::~QDataType()
 /*!
     The Attributes owned by the DataType.
  */
-QList<QProperty *> *QDataType::ownedAttribute()
+QList<QProperty *> *QDataType::ownedAttributes()
 {
 }
 
 /*!
     The Operations owned by the DataType.
  */
-QList<QOperation *> *QDataType::ownedOperation()
+QList<QOperation *> *QDataType::ownedOperations()
 {
 }
 

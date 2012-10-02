@@ -75,14 +75,14 @@ void QCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind in
 /*!
     Specifies the gates that form the interface between this CombinedFragment and its surroundings
  */
-QList<QGate *> *QCombinedFragment::cfragmentGate()
+QList<QGate *> *QCombinedFragment::cfragmentGates()
 {
 }
 
 /*!
     The set of operands of the combined fragment.
  */
-QList<QInteractionOperand *> *QCombinedFragment::operand()
+QList<QInteractionOperand *> *QCombinedFragment::operands()
 {
 }
 

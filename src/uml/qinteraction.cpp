@@ -64,35 +64,35 @@ QInteraction::~QInteraction()
 /*!
     Actions owned by the Interaction.
  */
-QList<QAction *> *QInteraction::action()
+QList<QAction *> *QInteraction::actions()
 {
 }
 
 /*!
     Specifies the gates that form the message interface between this Interaction and any InteractionUses which reference it.
  */
-QList<QGate *> *QInteraction::formalGate()
+QList<QGate *> *QInteraction::formalGates()
 {
 }
 
 /*!
     The ordered set of fragments in the Interaction.
  */
-QList<QInteractionFragment *> *QInteraction::fragment()
+QList<QInteractionFragment *> *QInteraction::fragments()
 {
 }
 
 /*!
     Specifies the participants in this Interaction.
  */
-QList<QLifeline *> *QInteraction::lifeline()
+QList<QLifeline *> *QInteraction::lifelines()
 {
 }
 
 /*!
     The Messages contained in this Interaction.
  */
-QList<QMessage *> *QInteraction::message()
+QList<QMessage *> *QInteraction::messages()
 {
 }
 

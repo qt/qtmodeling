@@ -64,14 +64,14 @@ QOpaqueExpression::~QOpaqueExpression()
 /*!
     The text of the expression, possibly in multiple languages.
  */
-QList<QString *> QOpaqueExpression::body()
+QList<QString *> QOpaqueExpression::bodies()
 {
 }
 
 /*!
     Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.
  */
-QList<QString *> QOpaqueExpression::language()
+QList<QString *> QOpaqueExpression::languages()
 {
 }
 

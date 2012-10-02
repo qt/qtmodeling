@@ -64,7 +64,7 @@ QCollaboration::~QCollaboration()
 /*!
     References connectable elements (possibly owned by other classifiers) which represent roles that instances may play in this collaboration.
  */
-QList<QConnectableElement *> *QCollaboration::collaborationRole()
+QList<QConnectableElement *> *QCollaboration::collaborationRoles()
 {
 }
 

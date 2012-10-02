@@ -66,8 +66,8 @@ class Q_UML_EXPORT QConditionalNode : public QStructuredActivityNode
     // From QConditionalNode
     Q_PROPERTY(bool isAssured READ isAssured WRITE setAssured)
     Q_PROPERTY(bool isDeterminate READ isDeterminate WRITE setDeterminate)
-    Q_PROPERTY(QList<QClause *> * clause READ clause)
-    Q_PROPERTY(QList<QOutputPin *> * result READ result)
+    Q_PROPERTY(QList<QClause *> * clauses READ clauses)
+    Q_PROPERTY(QList<QOutputPin *> * results READ results)
 
 public:
     explicit QConditionalNode(QObject *parent = 0);
@@ -80,8 +80,8 @@ public:
     void setDeterminate(bool isDeterminate);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QClause *> *clause();
-    QList<QOutputPin *> *result();
+    QList<QClause *> *clauses();
+    QList<QOutputPin *> *results();
 
 private:
     Q_DISABLE_COPY(QConditionalNode)

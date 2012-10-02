@@ -63,14 +63,14 @@ QDeploymentTarget::~QDeploymentTarget()
 /*!
     The set of Deployments for a DeploymentTarget.
  */
-QList<QDeployment *> *QDeploymentTarget::deployment()
+QList<QDeployment *> *QDeploymentTarget::deployments()
 {
 }
 
 /*!
     Missing derivation for DeploymentTarget::/deployedElement : PackageableElement
  */
-const QList<QPackageableElement *> *QDeploymentTarget::deployedElement() const
+const QList<QPackageableElement *> *QDeploymentTarget::deployedElements() const
 {
 }
 

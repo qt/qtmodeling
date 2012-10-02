@@ -64,28 +64,28 @@ QUseCase::~QUseCase()
 /*!
     References the Extend relationships owned by this use case.
  */
-QList<QExtend *> *QUseCase::extend()
+QList<QExtend *> *QUseCase::extends()
 {
 }
 
 /*!
     References the ExtensionPoints owned by the use case.
  */
-QList<QExtensionPoint *> *QUseCase::extensionPoint()
+QList<QExtensionPoint *> *QUseCase::extensionPoints()
 {
 }
 
 /*!
     References the Include relationships owned by this use case.
  */
-QList<QInclude *> *QUseCase::include()
+QList<QInclude *> *QUseCase::includes()
 {
 }
 
 /*!
     References the subjects to which this use case applies. The subject or its parts realize all the use cases that apply to this subject. Use cases need not be attached to any specific subject, however. The subject may, but need not, own the use cases that apply to it.
  */
-QList<QClassifier *> *QUseCase::subject()
+QList<QClassifier *> *QUseCase::subjects()
 {
 }
 

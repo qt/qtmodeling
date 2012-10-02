@@ -64,7 +64,7 @@ QSequenceNode::~QSequenceNode()
 /*!
     An ordered set of executable nodes.
  */
-QList<QExecutableNode *> *QSequenceNode::executableNode()
+QList<QExecutableNode *> *QSequenceNode::executableNodes()
 {
 }
 

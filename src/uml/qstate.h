@@ -73,49 +73,50 @@ class Q_UML_EXPORT QState : public QObject, public QNamespace, public QRedefinab
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependency READ clientDependency)
+    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 
     // From QNamespace
-    Q_PROPERTY(QList<QElementImport *> * elementImport READ elementImport)
-    Q_PROPERTY(const QList<QPackageableElement *> * importedMember READ importedMember)
-    Q_PROPERTY(const QList<QNamedElement *> * member READ member)
-    Q_PROPERTY(const QList<QNamedElement *> * ownedMember READ ownedMember)
-    Q_PROPERTY(QList<QConstraint *> * ownedRule READ ownedRule)
-    Q_PROPERTY(QList<QPackageImport *> * packageImport READ packageImport)
+    Q_PROPERTY(QList<QElementImport *> * elementImports READ elementImports)
+    Q_PROPERTY(const QList<QPackageableElement *> * importedMembers READ importedMembers)
+    Q_PROPERTY(const QList<QNamedElement *> * members READ members)
+    Q_PROPERTY(const QList<QNamedElement *> * ownedMembers READ ownedMembers)
+    Q_PROPERTY(QList<QConstraint *> * ownedRules READ ownedRules)
+    Q_PROPERTY(QList<QPackageImport *> * packageImports READ packageImports)
 
     // From QRedefinableElement
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElement READ redefinedElement)
+    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElements READ redefinedElements)
+    Q_PROPERTY(const QList<QClassifier *> * redefinitionContexts READ redefinitionContexts)
 
     // From QVertex
     Q_PROPERTY(QRegion * container READ container WRITE setContainer)
-    Q_PROPERTY(const QList<QTransition *> * incoming READ incoming)
-    Q_PROPERTY(const QList<QTransition *> * outgoing READ outgoing)
+    Q_PROPERTY(const QList<QTransition *> * incomings READ incomings)
+    Q_PROPERTY(const QList<QTransition *> * outgoings READ outgoings)
 
     // From QState
     Q_PROPERTY(bool isComposite READ isComposite)
     Q_PROPERTY(bool isOrthogonal READ isOrthogonal)
     Q_PROPERTY(bool isSimple READ isSimple)
     Q_PROPERTY(bool isSubmachineState READ isSubmachineState)
-    Q_PROPERTY(QList<QConnectionPointReference *> * connection READ connection)
-    Q_PROPERTY(QList<QPseudostate *> * connectionPoint READ connectionPoint)
-    Q_PROPERTY(QList<QTrigger *> * deferrableTrigger READ deferrableTrigger)
+    Q_PROPERTY(QList<QConnectionPointReference *> * connections READ connections)
+    Q_PROPERTY(QList<QPseudostate *> * connectionPoints READ connectionPoints)
+    Q_PROPERTY(QList<QTrigger *> * deferrableTriggers READ deferrableTriggers)
     Q_PROPERTY(QBehavior * doActivity READ doActivity WRITE setDoActivity)
     Q_PROPERTY(QBehavior * entry READ entry WRITE setEntry)
     Q_PROPERTY(QBehavior * exit READ exit WRITE setExit)
     Q_PROPERTY(QState * redefinedState READ redefinedState WRITE setRedefinedState)
     Q_PROPERTY(const QClassifier * redefinitionContext READ redefinitionContext)
-    Q_PROPERTY(QList<QRegion *> * region READ region)
+    Q_PROPERTY(QList<QRegion *> * regions READ regions)
     Q_PROPERTY(QConstraint * stateInvariant READ stateInvariant WRITE setStateInvariant)
     Q_PROPERTY(QStateMachine * submachine READ submachine WRITE setSubmachine)
 
@@ -126,9 +127,9 @@ public:
     // Attributes (except those derived && !derivedUnion)
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QConnectionPointReference *> *connection();
-    QList<QPseudostate *> *connectionPoint();
-    QList<QTrigger *> *deferrableTrigger();
+    QList<QConnectionPointReference *> *connections();
+    QList<QPseudostate *> *connectionPoints();
+    QList<QTrigger *> *deferrableTriggers();
     QBehavior *doActivity() const;
     void setDoActivity(QBehavior *doActivity);
     QBehavior *entry() const;
@@ -137,7 +138,7 @@ public:
     void setExit(QBehavior *exit);
     QState *redefinedState() const;
     void setRedefinedState(QState *redefinedState);
-    QList<QRegion *> *region();
+    QList<QRegion *> *regions();
     QConstraint *stateInvariant() const;
     void setStateInvariant(QConstraint *stateInvariant);
     QStateMachine *submachine() const;

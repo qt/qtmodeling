@@ -75,14 +75,14 @@ void QLoopNode::setTestedFirst(bool isTestedFirst)
 /*!
     A list of output pins within the body fragment the values of which are moved to the loop variable pins after completion of execution of the body, before the next iteration of the loop begins or before the loop exits.
  */
-QList<QOutputPin *> *QLoopNode::bodyOutput()
+QList<QOutputPin *> *QLoopNode::bodyOutputs()
 {
 }
 
 /*!
     The set of nodes and edges that perform the repetitive computations of the loop. The body section is executed as long as the test section produces a true value.
  */
-QList<QExecutableNode *> *QLoopNode::bodyPart()
+QList<QExecutableNode *> *QLoopNode::bodyParts()
 {
 }
 
@@ -100,35 +100,35 @@ void QLoopNode::setDecider(QOutputPin *decider)
 /*!
     A list of output pins that hold the values of the loop variables during an execution of the loop. When the test fails, the values are movied to the result pins of the loop.
  */
-QList<QOutputPin *> *QLoopNode::loopVariable()
+QList<QOutputPin *> *QLoopNode::loopVariables()
 {
 }
 
 /*!
     A list of values that are moved into the loop variable pins before the first iteration of the loop.
  */
-QList<QInputPin *> *QLoopNode::loopVariableInput()
+QList<QInputPin *> *QLoopNode::loopVariableInputs()
 {
 }
 
 /*!
     A list of output pins that constitute the data flow output of the entire loop.
  */
-QList<QOutputPin *> *QLoopNode::result()
+QList<QOutputPin *> *QLoopNode::results()
 {
 }
 
 /*!
     The set of nodes and edges that initialize values or perform other setup computations for the loop.
  */
-QList<QExecutableNode *> *QLoopNode::setupPart()
+QList<QExecutableNode *> *QLoopNode::setupParts()
 {
 }
 
 /*!
     The set of nodes, edges, and designated value that compute a Boolean value to determine if another execution of the body will be performed.
  */
-QList<QExecutableNode *> *QLoopNode::test()
+QList<QExecutableNode *> *QLoopNode::tests()
 {
 }
 

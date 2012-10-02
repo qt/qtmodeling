@@ -74,29 +74,30 @@ class Q_UML_EXPORT QTransition : public QObject, public QRedefinableElement, pub
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependency READ clientDependency)
+    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 
     // From QRedefinableElement
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElement READ redefinedElement)
+    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElements READ redefinedElements)
+    Q_PROPERTY(const QList<QClassifier *> * redefinitionContexts READ redefinitionContexts)
 
     // From QNamespace
-    Q_PROPERTY(QList<QElementImport *> * elementImport READ elementImport)
-    Q_PROPERTY(const QList<QPackageableElement *> * importedMember READ importedMember)
-    Q_PROPERTY(const QList<QNamedElement *> * member READ member)
-    Q_PROPERTY(const QList<QNamedElement *> * ownedMember READ ownedMember)
-    Q_PROPERTY(QList<QConstraint *> * ownedRule READ ownedRule)
-    Q_PROPERTY(QList<QPackageImport *> * packageImport READ packageImport)
+    Q_PROPERTY(QList<QElementImport *> * elementImports READ elementImports)
+    Q_PROPERTY(const QList<QPackageableElement *> * importedMembers READ importedMembers)
+    Q_PROPERTY(const QList<QNamedElement *> * members READ members)
+    Q_PROPERTY(const QList<QNamedElement *> * ownedMembers READ ownedMembers)
+    Q_PROPERTY(QList<QConstraint *> * ownedRules READ ownedRules)
+    Q_PROPERTY(QList<QPackageImport *> * packageImports READ packageImports)
 
     // From QTransition
     Q_PROPERTY(QtUml::TransitionKind kind READ kind WRITE setKind)
@@ -107,7 +108,7 @@ class Q_UML_EXPORT QTransition : public QObject, public QRedefinableElement, pub
     Q_PROPERTY(const QClassifier * redefinitionContext READ redefinitionContext)
     Q_PROPERTY(QVertex * source READ source WRITE setSource)
     Q_PROPERTY(QVertex * target READ target WRITE setTarget)
-    Q_PROPERTY(QList<QTrigger *> * trigger READ trigger)
+    Q_PROPERTY(QList<QTrigger *> * triggers READ triggers)
 
 public:
     explicit QTransition(QObject *parent = 0);
@@ -130,7 +131,7 @@ public:
     void setSource(QVertex *source);
     QVertex *target() const;
     void setTarget(QVertex *target);
-    QList<QTrigger *> *trigger();
+    QList<QTrigger *> *triggers();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     const QStateMachine *containingStateMachine() const;

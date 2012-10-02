@@ -64,21 +64,21 @@ QConnector::~QConnector()
 /*!
     The set of Behaviors that specify the valid interaction patterns across the connector.
  */
-QList<QBehavior *> *QConnector::contract()
+QList<QBehavior *> *QConnector::contracts()
 {
 }
 
 /*!
     A connector consists of at least two connector ends, each representing the participation of instances of the classifiers typing the connectable elements attached to this end. The set of connector ends is ordered.
  */
-QList<QConnectorEnd *> *QConnector::end()
+QList<QConnectorEnd *> *QConnector::ends()
 {
 }
 
 /*!
     A connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector. The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced.
  */
-QList<QConnector *> *QConnector::redefinedConnector()
+QList<QConnector *> *QConnector::redefinedConnectors()
 {
 }
 

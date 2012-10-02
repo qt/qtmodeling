@@ -81,14 +81,14 @@ const QStateMachine *QVertex::containingStateMachine() const
 /*!
     Missing derivation for Vertex::/incoming : Transition
  */
-const QList<QTransition *> *QVertex::incoming() const
+const QList<QTransition *> *QVertex::incomings() const
 {
 }
 
 /*!
     Missing derivation for Vertex::/outgoing : Transition
  */
-const QList<QTransition *> *QVertex::outgoing() const
+const QList<QTransition *> *QVertex::outgoings() const
 {
 }
 

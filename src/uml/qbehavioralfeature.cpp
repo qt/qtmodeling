@@ -85,28 +85,28 @@ void QBehavioralFeature::setAbstract(bool isAbstract)
 /*!
     A behavioral description that implements the behavioral feature. There may be at most one behavior for a particular pairing of a classifier (as owner of the behavior) and a behavioral feature (as specification of the behavior).
  */
-QList<QBehavior *> *QBehavioralFeature::method()
+QList<QBehavior *> *QBehavioralFeature::methods()
 {
 }
 
 /*!
     Specifies the ordered set of formal parameters of this BehavioralFeature.
  */
-QList<QParameter *> *QBehavioralFeature::ownedParameter()
+QList<QParameter *> *QBehavioralFeature::ownedParameters()
 {
 }
 
 /*!
     The ParameterSets owned by this BehavioralFeature.
  */
-QList<QParameterSet *> *QBehavioralFeature::ownedParameterSet()
+QList<QParameterSet *> *QBehavioralFeature::ownedParameterSets()
 {
 }
 
 /*!
     References the Types representing exceptions that may be raised during an invocation of this feature.
  */
-QList<QType *> *QBehavioralFeature::raisedException()
+QList<QType *> *QBehavioralFeature::raisedExceptions()
 {
 }
 

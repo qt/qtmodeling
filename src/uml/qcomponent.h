@@ -67,9 +67,9 @@ class Q_UML_EXPORT QComponent : public QClass
 
     // From QComponent
     Q_PROPERTY(bool isIndirectlyInstantiated READ isIndirectlyInstantiated WRITE setIndirectlyInstantiated)
-    Q_PROPERTY(QList<QPackageableElement *> * packagedElement READ packagedElement)
+    Q_PROPERTY(QList<QPackageableElement *> * packagedElements READ packagedElements)
     Q_PROPERTY(const QList<QInterface *> * provided READ provided)
-    Q_PROPERTY(QList<QComponentRealization *> * realization READ realization)
+    Q_PROPERTY(QList<QComponentRealization *> * realizations READ realizations)
     Q_PROPERTY(const QList<QInterface *> * required READ required)
 
 public:
@@ -81,8 +81,8 @@ public:
     void setIndirectlyInstantiated(bool isIndirectlyInstantiated);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QPackageableElement *> *packagedElement();
-    QList<QComponentRealization *> *realization();
+    QList<QPackageableElement *> *packagedElements();
+    QList<QComponentRealization *> *realizations();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     const QList<QInterface *> *provided() const;

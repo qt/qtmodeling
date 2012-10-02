@@ -66,11 +66,11 @@ public:
     virtual ~QActivityGroup();
 
     // Association-ends (except those derived && !derivedUnion)
-    const QList<QActivityEdge *> *containedEdge() const;
-    const QList<QActivityNode *> *containedNode() const;
+    const QList<QActivityEdge *> *containedEdges() const;
+    const QList<QActivityNode *> *containedNodes() const;
     QActivity *inActivity() const;
     void setInActivity(QActivity *inActivity);
-    const QList<QActivityGroup *> *subgroup() const;
+    const QList<QActivityGroup *> *subgroups() const;
     const QActivityGroup *superGroup() const;
 
 protected:

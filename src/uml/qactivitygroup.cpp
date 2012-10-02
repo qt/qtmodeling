@@ -63,14 +63,14 @@ QActivityGroup::~QActivityGroup()
 /*!
     Edges immediately contained in the group.
  */
-const QList<QActivityEdge *> *QActivityGroup::containedEdge() const
+const QList<QActivityEdge *> *QActivityGroup::containedEdges() const
 {
 }
 
 /*!
     Nodes immediately contained in the group.
  */
-const QList<QActivityNode *> *QActivityGroup::containedNode() const
+const QList<QActivityNode *> *QActivityGroup::containedNodes() const
 {
 }
 
@@ -88,7 +88,7 @@ void QActivityGroup::setInActivity(QActivity *inActivity)
 /*!
     Groups immediately contained in the group.
  */
-const QList<QActivityGroup *> *QActivityGroup::subgroup() const
+const QList<QActivityGroup *> *QActivityGroup::subgroups() const
 {
 }
 

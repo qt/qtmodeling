@@ -64,7 +64,7 @@ class Q_UML_EXPORT QClassifierTemplateParameter : public QTemplateParameter
 
     // From QClassifierTemplateParameter
     Q_PROPERTY(bool allowSubstitutable READ allowSubstitutable WRITE setAllowSubstitutable)
-    Q_PROPERTY(QList<QClassifier *> * constrainingClassifier READ constrainingClassifier)
+    Q_PROPERTY(QList<QClassifier *> * constrainingClassifiers READ constrainingClassifiers)
     Q_PROPERTY(QClassifier * parameteredElement READ parameteredElement WRITE setParameteredElement)
 
 public:
@@ -76,7 +76,7 @@ public:
     void setAllowSubstitutable(bool allowSubstitutable);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QClassifier *> *constrainingClassifier();
+    QList<QClassifier *> *constrainingClassifiers();
     QClassifier *parameteredElement() const;
     void setParameteredElement(QClassifier *parameteredElement);
 

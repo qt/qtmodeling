@@ -75,14 +75,14 @@ void QRedefinableTemplateSignature::setClassifier(QClassifier *classifier)
 /*!
     The template signature that is extended by this template signature.
  */
-QList<QRedefinableTemplateSignature *> *QRedefinableTemplateSignature::extendedSignature()
+QList<QRedefinableTemplateSignature *> *QRedefinableTemplateSignature::extendedSignatures()
 {
 }
 
 /*!
     Missing derivation for RedefinableTemplateSignature::/inheritedParameter : TemplateParameter
  */
-const QList<QTemplateParameter *> *QRedefinableTemplateSignature::inheritedParameter() const
+const QList<QTemplateParameter *> *QRedefinableTemplateSignature::inheritedParameters() const
 {
 }
 

@@ -68,16 +68,16 @@ class Q_UML_EXPORT QElementImport : public QObject, public QDirectedRelationship
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QRelationship
-    Q_PROPERTY(const QList<QElement *> * relatedElement READ relatedElement)
+    Q_PROPERTY(const QList<QElement *> * relatedElements READ relatedElements)
 
     // From QDirectedRelationship
-    Q_PROPERTY(const QList<QElement *> * source READ source)
-    Q_PROPERTY(const QList<QElement *> * target READ target)
+    Q_PROPERTY(const QList<QElement *> * sources READ sources)
+    Q_PROPERTY(const QList<QElement *> * targets READ targets)
 
     // From QElementImport
     Q_PROPERTY(QString alias READ alias WRITE setAlias)

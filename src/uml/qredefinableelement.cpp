@@ -74,14 +74,14 @@ void QRedefinableElement::setLeaf(bool isLeaf)
 /*!
     The redefinable element that is being redefined by this element.
  */
-const QList<QRedefinableElement *> *QRedefinableElement::redefinedElement() const
+const QList<QRedefinableElement *> *QRedefinableElement::redefinedElements() const
 {
 }
 
 /*!
     References the contexts that this element may be redefined from.
  */
-const QList<QClassifier *> *QRedefinableElement::redefinitionContext() const
+const QList<QClassifier *> *QRedefinableElement::redefinitionContexts() const
 {
 }
 

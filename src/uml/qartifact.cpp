@@ -75,28 +75,28 @@ void QArtifact::setFileName(QString fileName)
 /*!
     The set of model elements that are manifested in the Artifact. That is, these model elements are utilized in the construction (or generation) of the artifact.
  */
-QList<QManifestation *> *QArtifact::manifestation()
+QList<QManifestation *> *QArtifact::manifestations()
 {
 }
 
 /*!
     The Artifacts that are defined (nested) within the Artifact. The association is a specialization of the ownedMember association from Namespace to NamedElement.
  */
-QList<QArtifact *> *QArtifact::nestedArtifact()
+QList<QArtifact *> *QArtifact::nestedArtifacts()
 {
 }
 
 /*!
     The attributes or association ends defined for the Artifact. The association is a specialization of the ownedMember association.
  */
-QList<QProperty *> *QArtifact::ownedAttribute()
+QList<QProperty *> *QArtifact::ownedAttributes()
 {
 }
 
 /*!
     The Operations defined for the Artifact. The association is a specialization of the ownedMember association.
  */
-QList<QOperation *> *QArtifact::ownedOperation()
+QList<QOperation *> *QArtifact::ownedOperations()
 {
 }
 

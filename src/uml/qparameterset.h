@@ -65,29 +65,29 @@ class Q_UML_EXPORT QParameterSet : public QObject, public QNamedElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependency READ clientDependency)
+    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 
     // From QParameterSet
-    Q_PROPERTY(QList<QConstraint *> * condition READ condition)
-    Q_PROPERTY(QList<QParameter *> * parameter READ parameter)
+    Q_PROPERTY(QList<QConstraint *> * conditions READ conditions)
+    Q_PROPERTY(QList<QParameter *> * parameters READ parameters)
 
 public:
     explicit QParameterSet(QObject *parent = 0);
     virtual ~QParameterSet();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QConstraint *> *condition();
-    QList<QParameter *> *parameter();
+    QList<QConstraint *> *conditions();
+    QList<QParameter *> *parameters();
 
 private:
     Q_DISABLE_COPY(QParameterSet)

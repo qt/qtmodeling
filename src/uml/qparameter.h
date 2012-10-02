@@ -72,8 +72,8 @@ class Q_UML_EXPORT QParameter : public QObject, public QMultiplicityElement, pub
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QMultiplicityElement
@@ -88,7 +88,7 @@ class Q_UML_EXPORT QParameter : public QObject, public QMultiplicityElement, pub
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependency READ clientDependency)
+    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 
@@ -99,7 +99,7 @@ class Q_UML_EXPORT QParameter : public QObject, public QMultiplicityElement, pub
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
 
     // From QConnectableElement
-    Q_PROPERTY(const QList<QConnectorEnd *> * end READ end)
+    Q_PROPERTY(const QList<QConnectorEnd *> * ends READ ends)
     Q_PROPERTY(QConnectableElementTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
 
     // From QParameter
@@ -110,7 +110,7 @@ class Q_UML_EXPORT QParameter : public QObject, public QMultiplicityElement, pub
     Q_PROPERTY(bool isStream READ isStream WRITE setStream)
     Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
     Q_PROPERTY(QOperation * operation READ operation WRITE setOperation)
-    Q_PROPERTY(QList<QParameterSet *> * parameterSet READ parameterSet)
+    Q_PROPERTY(QList<QParameterSet *> * parameterSets READ parameterSets)
 
 public:
     explicit QParameter(QObject *parent = 0);
@@ -131,7 +131,7 @@ public:
     void setDefaultValue(QValueSpecification *defaultValue);
     QOperation *operation() const;
     void setOperation(QOperation *operation);
-    QList<QParameterSet *> *parameterSet();
+    QList<QParameterSet *> *parameterSets();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     QString default_() const;

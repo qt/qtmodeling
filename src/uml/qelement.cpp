@@ -63,14 +63,14 @@ QElement::~QElement()
 /*!
     The Comments owned by this element.
  */
-QList<QComment *> *QElement::ownedComment()
+QList<QComment *> *QElement::ownedComments()
 {
 }
 
 /*!
     The Elements owned by this element.
  */
-const QList<QElement *> *QElement::ownedElement() const
+const QList<QElement *> *QElement::ownedElements() const
 {
 }
 

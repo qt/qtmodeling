@@ -121,7 +121,7 @@ void QActivityEdge::setInterrupts(QInterruptibleActivityRegion *interrupts)
 /*!
     Inherited edges replaced by this edge in a specialization of the activity.
  */
-QList<QActivityEdge *> *QActivityEdge::redefinedEdge()
+QList<QActivityEdge *> *QActivityEdge::redefinedEdges()
 {
 }
 

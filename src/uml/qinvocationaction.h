@@ -65,7 +65,7 @@ public:
     virtual ~QInvocationAction();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QInputPin *> *argument();
+    QList<QInputPin *> *arguments();
     QPort *onPort() const;
     void setOnPort(QPort *onPort);
 

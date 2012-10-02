@@ -74,28 +74,28 @@ void QAction::setLocallyReentrant(bool isLocallyReentrant)
 /*!
     The ordered set of input pins connected to the Action. These are among the total set of inputs.
  */
-const QList<QInputPin *> *QAction::input() const
+const QList<QInputPin *> *QAction::inputs() const
 {
 }
 
 /*!
     Constraint that must be satisfied when executed is completed.
  */
-QList<QConstraint *> *QAction::localPostcondition()
+QList<QConstraint *> *QAction::localPostconditions()
 {
 }
 
 /*!
     Constraint that must be satisfied when execution is started.
  */
-QList<QConstraint *> *QAction::localPrecondition()
+QList<QConstraint *> *QAction::localPreconditions()
 {
 }
 
 /*!
     The ordered set of output pins connected to the Action. The action places its results onto pins in this set.
  */
-const QList<QOutputPin *> *QAction::output() const
+const QList<QOutputPin *> *QAction::outputs() const
 {
 }
 

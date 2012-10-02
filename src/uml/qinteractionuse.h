@@ -67,15 +67,15 @@ class Q_UML_EXPORT QInteractionUse : public QObject, public QInteractionFragment
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependency READ clientDependency)
+    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 
@@ -83,11 +83,11 @@ class Q_UML_EXPORT QInteractionUse : public QObject, public QInteractionFragment
     Q_PROPERTY(QList<QLifeline *> * covered READ covered)
     Q_PROPERTY(QInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
     Q_PROPERTY(QInteractionOperand * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
-    Q_PROPERTY(QList<QGeneralOrdering *> * generalOrdering READ generalOrdering)
+    Q_PROPERTY(QList<QGeneralOrdering *> * generalOrderings READ generalOrderings)
 
     // From QInteractionUse
-    Q_PROPERTY(QList<QGate *> * actualGate READ actualGate)
-    Q_PROPERTY(QList<QValueSpecification *> * argument READ argument)
+    Q_PROPERTY(QList<QGate *> * actualGates READ actualGates)
+    Q_PROPERTY(QList<QValueSpecification *> * arguments READ arguments)
     Q_PROPERTY(QInteraction * refersTo READ refersTo WRITE setRefersTo)
     Q_PROPERTY(QValueSpecification * returnValue READ returnValue WRITE setReturnValue)
     Q_PROPERTY(QProperty * returnValueRecipient READ returnValueRecipient WRITE setReturnValueRecipient)
@@ -97,8 +97,8 @@ public:
     virtual ~QInteractionUse();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QGate *> *actualGate();
-    QList<QValueSpecification *> *argument();
+    QList<QGate *> *actualGates();
+    QList<QValueSpecification *> *arguments();
     QInteraction *refersTo() const;
     void setRefersTo(QInteraction *refersTo);
     QValueSpecification *returnValue() const;

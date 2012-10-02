@@ -75,7 +75,7 @@ void QExpression::setSymbol(QString symbol)
 /*!
     Specifies a sequence of operands.
  */
-QList<QValueSpecification *> *QExpression::operand()
+QList<QValueSpecification *> *QExpression::operands()
 {
 }
 

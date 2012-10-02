@@ -64,17 +64,17 @@ class Q_UML_EXPORT QStringExpression : public QExpression, public QTemplateableE
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QTemplateableElement
     Q_PROPERTY(QTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
-    Q_PROPERTY(QList<QTemplateBinding *> * templateBinding READ templateBinding)
+    Q_PROPERTY(QList<QTemplateBinding *> * templateBindings READ templateBindings)
 
     // From QStringExpression
     Q_PROPERTY(QStringExpression * owningExpression READ owningExpression WRITE setOwningExpression)
-    Q_PROPERTY(QList<QStringExpression *> * subExpression READ subExpression)
+    Q_PROPERTY(QList<QStringExpression *> * subExpressions READ subExpressions)
 
 public:
     explicit QStringExpression(QObject *parent = 0);
@@ -83,7 +83,7 @@ public:
     // Association-ends (except those derived && !derivedUnion)
     QStringExpression *owningExpression() const;
     void setOwningExpression(QStringExpression *owningExpression);
-    QList<QStringExpression *> *subExpression();
+    QList<QStringExpression *> *subExpressions();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     QString stringValue() const;

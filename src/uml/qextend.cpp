@@ -97,7 +97,7 @@ void QExtend::setExtension(QUseCase *extension)
 /*!
     An ordered list of extension points belonging to the extended use case, specifying where the respective behavioral fragments of the extending use case are to be inserted. The first fragment in the extending use case is associated with the first extension point in the list, the second fragment with the second point, and so on. (Note that, in most practical cases, the extending use case has just a single behavior fragment, so that the list of extension points is trivial.)
  */
-QList<QExtensionPoint *> *QExtend::extensionLocation()
+QList<QExtensionPoint *> *QExtend::extensionLocations()
 {
 }
 

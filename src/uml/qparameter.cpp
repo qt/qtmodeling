@@ -130,7 +130,7 @@ void QParameter::setOperation(QOperation *operation)
 /*!
     The parameter sets containing the parameter. See ParameterSet.
  */
-QList<QParameterSet *> *QParameter::parameterSet()
+QList<QParameterSet *> *QParameter::parameterSets()
 {
 }
 

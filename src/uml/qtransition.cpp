@@ -141,7 +141,7 @@ void QTransition::setTarget(QVertex *target)
 /*!
     Specifies the triggers that may fire the transition.
  */
-QList<QTrigger *> *QTransition::trigger()
+QList<QTrigger *> *QTransition::triggers()
 {
 }
 

@@ -75,7 +75,7 @@ void QLinkEndData::setEnd(QProperty *end)
 /*!
     List of qualifier values
  */
-QList<QQualifierValue *> *QLinkEndData::qualifier()
+QList<QQualifierValue *> *QLinkEndData::qualifiers()
 {
 }
 

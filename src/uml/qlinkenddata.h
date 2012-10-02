@@ -66,13 +66,13 @@ class Q_UML_EXPORT QLinkEndData : public QObject, public QElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QLinkEndData
     Q_PROPERTY(QProperty * end READ end WRITE setEnd)
-    Q_PROPERTY(QList<QQualifierValue *> * qualifier READ qualifier)
+    Q_PROPERTY(QList<QQualifierValue *> * qualifiers READ qualifiers)
     Q_PROPERTY(QInputPin * value READ value WRITE setValue)
 
 public:
@@ -82,7 +82,7 @@ public:
     // Association-ends (except those derived && !derivedUnion)
     QProperty *end() const;
     void setEnd(QProperty *end);
-    QList<QQualifierValue *> *qualifier();
+    QList<QQualifierValue *> *qualifiers();
     QInputPin *value() const;
     void setValue(QInputPin *value);
 

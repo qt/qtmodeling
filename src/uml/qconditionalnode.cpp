@@ -86,14 +86,14 @@ void QConditionalNode::setDeterminate(bool isDeterminate)
 /*!
     Set of clauses composing the conditional.
  */
-QList<QClause *> *QConditionalNode::clause()
+QList<QClause *> *QConditionalNode::clauses()
 {
 }
 
 /*!
     A list of output pins that constitute the data flow outputs of the conditional.
  */
-QList<QOutputPin *> *QConditionalNode::result()
+QList<QOutputPin *> *QConditionalNode::results()
 {
 }
 

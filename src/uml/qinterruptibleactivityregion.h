@@ -65,36 +65,36 @@ class Q_UML_EXPORT QInterruptibleActivityRegion : public QObject, public QActivi
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependency READ clientDependency)
+    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 
     // From QActivityGroup
-    Q_PROPERTY(const QList<QActivityEdge *> * containedEdge READ containedEdge)
-    Q_PROPERTY(const QList<QActivityNode *> * containedNode READ containedNode)
+    Q_PROPERTY(const QList<QActivityEdge *> * containedEdges READ containedEdges)
+    Q_PROPERTY(const QList<QActivityNode *> * containedNodes READ containedNodes)
     Q_PROPERTY(QActivity * inActivity READ inActivity WRITE setInActivity)
-    Q_PROPERTY(const QList<QActivityGroup *> * subgroup READ subgroup)
+    Q_PROPERTY(const QList<QActivityGroup *> * subgroups READ subgroups)
     Q_PROPERTY(const QActivityGroup * superGroup READ superGroup)
 
     // From QInterruptibleActivityRegion
-    Q_PROPERTY(QList<QActivityEdge *> * interruptingEdge READ interruptingEdge)
-    Q_PROPERTY(QList<QActivityNode *> * node READ node)
+    Q_PROPERTY(QList<QActivityEdge *> * interruptingEdges READ interruptingEdges)
+    Q_PROPERTY(QList<QActivityNode *> * nodes READ nodes)
 
 public:
     explicit QInterruptibleActivityRegion(QObject *parent = 0);
     virtual ~QInterruptibleActivityRegion();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QActivityEdge *> *interruptingEdge();
-    QList<QActivityNode *> *node();
+    QList<QActivityEdge *> *interruptingEdges();
+    QList<QActivityNode *> *nodes();
 
 private:
     Q_DISABLE_COPY(QInterruptibleActivityRegion)

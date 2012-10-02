@@ -63,35 +63,35 @@ QNamespace::~QNamespace()
 /*!
     References the ElementImports owned by the Namespace.
  */
-QList<QElementImport *> *QNamespace::elementImport()
+QList<QElementImport *> *QNamespace::elementImports()
 {
 }
 
 /*!
     A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
  */
-const QList<QNamedElement *> *QNamespace::member() const
+const QList<QNamedElement *> *QNamespace::members() const
 {
 }
 
 /*!
     A collection of NamedElements owned by the Namespace.
  */
-const QList<QNamedElement *> *QNamespace::ownedMember() const
+const QList<QNamedElement *> *QNamespace::ownedMembers() const
 {
 }
 
 /*!
     Specifies a set of Constraints owned by this Namespace.
  */
-QList<QConstraint *> *QNamespace::ownedRule()
+QList<QConstraint *> *QNamespace::ownedRules()
 {
 }
 
 /*!
     References the PackageImports owned by the Namespace.
  */
-QList<QPackageImport *> *QNamespace::packageImport()
+QList<QPackageImport *> *QNamespace::packageImports()
 {
 }
 
@@ -119,7 +119,7 @@ const QList<QPackageableElement *> *QNamespace::importMembers(const QList<QPacka
 /*!
     The importedMember property is derived from the ElementImports and the PackageImports. References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
  */
-const QList<QPackageableElement *> *QNamespace::importedMember() const
+const QList<QPackageableElement *> *QNamespace::importedMembers() const
 {
 }
 

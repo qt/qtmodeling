@@ -64,21 +64,21 @@ QState::~QState()
 /*!
     The entry and exit connection points used in conjunction with this (submachine) state, i.e. as targets and sources, respectively, in the region with the submachine state. A connection point reference references the corresponding definition of a connection point pseudostate in the statemachine referenced by the submachinestate.
  */
-QList<QConnectionPointReference *> *QState::connection()
+QList<QConnectionPointReference *> *QState::connections()
 {
 }
 
 /*!
     The entry and exit pseudostates of a composite state. These can only be entry or exit Pseudostates, and they must have different names. They can only be defined for composite states.
  */
-QList<QPseudostate *> *QState::connectionPoint()
+QList<QPseudostate *> *QState::connectionPoints()
 {
 }
 
 /*!
     A list of triggers that are candidates to be retained by the state machine if they trigger no transitions out of the state (not consumed). A deferred trigger is retained until the state machine reaches a state configuration where it is no longer deferred.
  */
-QList<QTrigger *> *QState::deferrableTrigger()
+QList<QTrigger *> *QState::deferrableTriggers()
 {
 }
 
@@ -129,7 +129,7 @@ void QState::setRedefinedState(QState *redefinedState)
 /*!
     The regions owned directly by the state.
  */
-QList<QRegion *> *QState::region()
+QList<QRegion *> *QState::regions()
 {
 }
 

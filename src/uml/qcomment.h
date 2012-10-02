@@ -64,13 +64,13 @@ class Q_UML_EXPORT QComment : public QObject, public QElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QComment
     Q_PROPERTY(QString body READ body WRITE setBody)
-    Q_PROPERTY(QList<QElement *> * annotatedElement READ annotatedElement)
+    Q_PROPERTY(QList<QElement *> * annotatedElements READ annotatedElements)
 
 public:
     explicit QComment(QObject *parent = 0);
@@ -81,7 +81,7 @@ public:
     void setBody(QString body);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QElement *> *annotatedElement();
+    QList<QElement *> *annotatedElements();
 
 private:
     Q_DISABLE_COPY(QComment)

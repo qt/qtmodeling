@@ -70,23 +70,23 @@ class Q_UML_EXPORT QInteraction : public QBehavior, public QInteractionFragment
     // From QBehavior
     Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant)
     Q_PROPERTY(const QBehavioredClassifier * context READ context)
-    Q_PROPERTY(QList<QParameter *> * ownedParameter READ ownedParameter)
-    Q_PROPERTY(QList<QParameterSet *> * ownedParameterSet READ ownedParameterSet)
-    Q_PROPERTY(QList<QConstraint *> * postcondition READ postcondition)
-    Q_PROPERTY(QList<QConstraint *> * precondition READ precondition)
-    Q_PROPERTY(QList<QBehavior *> * redefinedBehavior READ redefinedBehavior)
+    Q_PROPERTY(QList<QParameter *> * ownedParameters READ ownedParameters)
+    Q_PROPERTY(QList<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
+    Q_PROPERTY(QList<QConstraint *> * postconditions READ postconditions)
+    Q_PROPERTY(QList<QConstraint *> * preconditions READ preconditions)
+    Q_PROPERTY(QList<QBehavior *> * redefinedBehaviors READ redefinedBehaviors)
     Q_PROPERTY(QBehavioralFeature * specification READ specification WRITE setSpecification)
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependency READ clientDependency)
+    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 
@@ -94,25 +94,25 @@ class Q_UML_EXPORT QInteraction : public QBehavior, public QInteractionFragment
     Q_PROPERTY(QList<QLifeline *> * covered READ covered)
     Q_PROPERTY(QInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
     Q_PROPERTY(QInteractionOperand * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
-    Q_PROPERTY(QList<QGeneralOrdering *> * generalOrdering READ generalOrdering)
+    Q_PROPERTY(QList<QGeneralOrdering *> * generalOrderings READ generalOrderings)
 
     // From QInteraction
-    Q_PROPERTY(QList<QAction *> * action READ action)
-    Q_PROPERTY(QList<QGate *> * formalGate READ formalGate)
-    Q_PROPERTY(QList<QInteractionFragment *> * fragment READ fragment)
-    Q_PROPERTY(QList<QLifeline *> * lifeline READ lifeline)
-    Q_PROPERTY(QList<QMessage *> * message READ message)
+    Q_PROPERTY(QList<QAction *> * actions READ actions)
+    Q_PROPERTY(QList<QGate *> * formalGates READ formalGates)
+    Q_PROPERTY(QList<QInteractionFragment *> * fragments READ fragments)
+    Q_PROPERTY(QList<QLifeline *> * lifelines READ lifelines)
+    Q_PROPERTY(QList<QMessage *> * messages READ messages)
 
 public:
     explicit QInteraction(QObject *parent = 0);
     virtual ~QInteraction();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QAction *> *action();
-    QList<QGate *> *formalGate();
-    QList<QInteractionFragment *> *fragment();
-    QList<QLifeline *> *lifeline();
-    QList<QMessage *> *message();
+    QList<QAction *> *actions();
+    QList<QGate *> *formalGates();
+    QList<QInteractionFragment *> *fragments();
+    QList<QLifeline *> *lifelines();
+    QList<QMessage *> *messages();
 
 private:
     Q_DISABLE_COPY(QInteraction)

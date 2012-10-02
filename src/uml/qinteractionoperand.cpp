@@ -64,7 +64,7 @@ QInteractionOperand::~QInteractionOperand()
 /*!
     The fragments of the operand.
  */
-QList<QInteractionFragment *> *QInteractionOperand::fragment()
+QList<QInteractionFragment *> *QInteractionOperand::fragments()
 {
 }
 
