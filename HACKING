@@ -52,5 +52,17 @@ XMI->Qt Mapping Rules:
     mapped to the corresponding mapped primitive type or enumeration
 10) All single-valued object attributes were mapped to a pointer to
     the attribute class
-11) All multi-valued attributes were mapped to a pointer to a QList
+11) All multi-valued attributes were mapped to a pointer to a collection
     of pointers to the corresponding single-valued attribute
+
+12) Mapping rules for containers:
+
+|-----------|----------|----------------|------------------------|
+| isOrdered | isUnique | OMG Collection | Qt Collection          |
+|-----------|----------|----------------|------------------------|
+| false     | true     | Set            | QSet                   |
+| true      | true     | OrderedSet     | QList + verification   |
+| false     | false    | Bag            | QList (order is extra) |
+| true      | false    | Sequence       | QList                  |
+|-----------|----------|----------------|------------------------|
+
