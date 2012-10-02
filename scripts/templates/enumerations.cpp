@@ -41,7 +41,7 @@
 
 #include "${namespace.split('/').0.lower}enumerations.h"
 
-QT_BEGIN_NAMESPACE
+QT_BEGIN_NAMESPACE_QTUML
 
 ${namespace.split('/').0}::${namespace.split('/').0}()
 {
@@ -63,5 +63,5 @@ ${namespace.split('/').0}::${namespace.split('/').0}()
 
 #include "moc_${namespace.split('/').0.lower}enumerations.cpp"
 
-QT_END_NAMESPACE
+QT_END_NAMESPACE_QTUML
 

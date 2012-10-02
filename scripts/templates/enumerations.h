@@ -41,11 +41,13 @@
 #ifndef ${namespace.split('/').0.upper}ENUMERATIONS_H
 #define ${namespace.split('/').0.upper}ENUMERATIONS_H
 
+#include <[% namespace.split('/').0 %]/[% namespace.split('/').0 %]Global>
+
 #include <QtCore/QObject>
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE
+QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
@@ -69,7 +71,7 @@ private:
     explicit ${namespace.split('/').0}();
 };
 
-QT_END_NAMESPACE
+QT_END_NAMESPACE_QTUML
 
 QT_END_HEADER
 

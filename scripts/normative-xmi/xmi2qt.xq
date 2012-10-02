@@ -87,6 +87,7 @@ declare function qtxmi:mappedFunctionName ($name as xs:string*) as xs:string* {
          if ($name = "namespace") then "namespace_"
     else if ($name = "class") then "class_"
     else if ($name = "default") then "default_"
+    else if ($name = "template") then "template_"
     else $name
 };
 
