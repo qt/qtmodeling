@@ -80,7 +80,7 @@ public:
     void setInStructuredNode(QStructuredActivityNode *inStructuredNode);
     QInterruptibleActivityRegion *interrupts() const;
     void setInterrupts(QInterruptibleActivityRegion *interrupts);
-    QList<QActivityEdge *> *redefinedEdge();
+    QList<QActivityEdge *> *redefinedEdges();
     QActivityNode *source() const;
     void setSource(QActivityNode *source);
     QActivityNode *target() const;

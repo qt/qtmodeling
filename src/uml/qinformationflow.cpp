@@ -71,42 +71,42 @@ QList<QClassifier *> *QInformationFlow::conveyed()
 /*!
     Defines from which source the conveyed InformationItems are initiated.
  */
-QList<QNamedElement *> *QInformationFlow::informationSource()
+QList<QNamedElement *> *QInformationFlow::informationSources()
 {
 }
 
 /*!
     Defines to which target the conveyed InformationItems are directed.
  */
-QList<QNamedElement *> *QInformationFlow::informationTarget()
+QList<QNamedElement *> *QInformationFlow::informationTargets()
 {
 }
 
 /*!
     Determines which Relationship will realize the specified flow
  */
-QList<QRelationship *> *QInformationFlow::realization()
+QList<QRelationship *> *QInformationFlow::realizations()
 {
 }
 
 /*!
     Determines which ActivityEdges will realize the specified flow.
  */
-QList<QActivityEdge *> *QInformationFlow::realizingActivityEdge()
+QList<QActivityEdge *> *QInformationFlow::realizingActivityEdges()
 {
 }
 
 /*!
     Determines which Connectors will realize the specified flow.
  */
-QList<QConnector *> *QInformationFlow::realizingConnector()
+QList<QConnector *> *QInformationFlow::realizingConnectors()
 {
 }
 
 /*!
     Determines which Messages will realize the specified flow.
  */
-QList<QMessage *> *QInformationFlow::realizingMessage()
+QList<QMessage *> *QInformationFlow::realizingMessages()
 {
 }
 

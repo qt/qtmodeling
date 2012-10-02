@@ -64,14 +64,14 @@ QInteractionUse::~QInteractionUse()
 /*!
     The actual gates of the InteractionUse
  */
-QList<QGate *> *QInteractionUse::actualGate()
+QList<QGate *> *QInteractionUse::actualGates()
 {
 }
 
 /*!
     The actual arguments of the Interaction
  */
-QList<QValueSpecification *> *QInteractionUse::argument()
+QList<QValueSpecification *> *QInteractionUse::arguments()
 {
 }
 

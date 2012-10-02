@@ -74,14 +74,14 @@ void QBehavioredClassifier::setClassifierBehavior(QBehavior *classifierBehavior)
 /*!
     The set of InterfaceRealizations owned by the BehavioredClassifier. Interface realizations reference the Interfaces of which the BehavioredClassifier is an implementation.
  */
-QList<QInterfaceRealization *> *QBehavioredClassifier::interfaceRealization()
+QList<QInterfaceRealization *> *QBehavioredClassifier::interfaceRealizations()
 {
 }
 
 /*!
     References behavior specifications owned by a classifier.
  */
-QList<QBehavior *> *QBehavioredClassifier::ownedBehavior()
+QList<QBehavior *> *QBehavioredClassifier::ownedBehaviors()
 {
 }
 

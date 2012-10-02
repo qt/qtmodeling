@@ -64,8 +64,8 @@ public:
     virtual ~QDirectedRelationship();
 
     // Association-ends (except those derived && !derivedUnion)
-    const QList<QElement *> *source() const;
-    const QList<QElement *> *target() const;
+    const QList<QElement *> *sources() const;
+    const QList<QElement *> *targets() const;
 
 protected:
     explicit QDirectedRelationship();

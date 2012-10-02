@@ -61,22 +61,22 @@ class Q_UML_EXPORT QExpansionNode : public QObject, public QObjectNode
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependency READ clientDependency)
+    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 
     // From QRedefinableElement
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElement READ redefinedElement)
-    Q_PROPERTY(const QList<QClassifier *> * redefinitionContext READ redefinitionContext)
+    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElements READ redefinedElements)
+    Q_PROPERTY(const QList<QClassifier *> * redefinitionContexts READ redefinitionContexts)
 
     // From QActivityNode
     Q_PROPERTY(QActivity * activity READ activity WRITE setActivity)
@@ -84,9 +84,9 @@ class Q_UML_EXPORT QExpansionNode : public QObject, public QObjectNode
     Q_PROPERTY(QList<QInterruptibleActivityRegion *> * inInterruptibleRegion READ inInterruptibleRegion)
     Q_PROPERTY(QList<QActivityPartition *> * inPartition READ inPartition)
     Q_PROPERTY(QStructuredActivityNode * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
-    Q_PROPERTY(QList<QActivityEdge *> * incoming READ incoming)
-    Q_PROPERTY(QList<QActivityEdge *> * outgoing READ outgoing)
-    Q_PROPERTY(QList<QActivityNode *> * redefinedNode READ redefinedNode)
+    Q_PROPERTY(QList<QActivityEdge *> * incomings READ incomings)
+    Q_PROPERTY(QList<QActivityEdge *> * outgoings READ outgoings)
+    Q_PROPERTY(QList<QActivityNode *> * redefinedNodes READ redefinedNodes)
 
     // From QTypedElement
     Q_PROPERTY(QType * type READ type WRITE setType)

@@ -65,25 +65,25 @@ class Q_UML_EXPORT QCollaboration : public QObject, public QStructuredClassifier
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependency READ clientDependency)
+    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 
     // From QNamespace
-    Q_PROPERTY(QList<QElementImport *> * elementImport READ elementImport)
-    Q_PROPERTY(const QList<QPackageableElement *> * importedMember READ importedMember)
-    Q_PROPERTY(const QList<QNamedElement *> * member READ member)
-    Q_PROPERTY(const QList<QNamedElement *> * ownedMember READ ownedMember)
-    Q_PROPERTY(QList<QConstraint *> * ownedRule READ ownedRule)
-    Q_PROPERTY(QList<QPackageImport *> * packageImport READ packageImport)
+    Q_PROPERTY(QList<QElementImport *> * elementImports READ elementImports)
+    Q_PROPERTY(const QList<QPackageableElement *> * importedMembers READ importedMembers)
+    Q_PROPERTY(const QList<QNamedElement *> * members READ members)
+    Q_PROPERTY(const QList<QNamedElement *> * ownedMembers READ ownedMembers)
+    Q_PROPERTY(QList<QConstraint *> * ownedRules READ ownedRules)
+    Q_PROPERTY(QList<QPackageImport *> * packageImports READ packageImports)
 
     // From QParameterableElement
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
@@ -96,50 +96,50 @@ class Q_UML_EXPORT QCollaboration : public QObject, public QStructuredClassifier
 
     // From QRedefinableElement
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElement READ redefinedElement)
-    Q_PROPERTY(const QList<QClassifier *> * redefinitionContext READ redefinitionContext)
+    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElements READ redefinedElements)
+    Q_PROPERTY(const QList<QClassifier *> * redefinitionContexts READ redefinitionContexts)
 
     // From QTemplateableElement
-    Q_PROPERTY(QList<QTemplateBinding *> * templateBinding READ templateBinding)
+    Q_PROPERTY(QList<QTemplateBinding *> * templateBindings READ templateBindings)
 
     // From QClassifier
     Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract)
     Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization)
-    Q_PROPERTY(const QList<QProperty *> * attribute READ attribute)
-    Q_PROPERTY(QList<QCollaborationUse *> * collaborationUse READ collaborationUse)
-    Q_PROPERTY(const QList<QFeature *> * feature READ feature)
-    Q_PROPERTY(const QList<QClassifier *> * general READ general)
-    Q_PROPERTY(QList<QGeneralization *> * generalization READ generalization)
-    Q_PROPERTY(const QList<QNamedElement *> * inheritedMember READ inheritedMember)
+    Q_PROPERTY(const QList<QProperty *> * attributes READ attributes)
+    Q_PROPERTY(QList<QCollaborationUse *> * collaborationUses READ collaborationUses)
+    Q_PROPERTY(const QList<QFeature *> * features READ features)
+    Q_PROPERTY(const QList<QClassifier *> * generals READ generals)
+    Q_PROPERTY(QList<QGeneralization *> * generalizations READ generalizations)
+    Q_PROPERTY(const QList<QNamedElement *> * inheritedMembers READ inheritedMembers)
     Q_PROPERTY(QRedefinableTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
-    Q_PROPERTY(QList<QUseCase *> * ownedUseCase READ ownedUseCase)
-    Q_PROPERTY(QList<QGeneralizationSet *> * powertypeExtent READ powertypeExtent)
-    Q_PROPERTY(QList<QClassifier *> * redefinedClassifier READ redefinedClassifier)
+    Q_PROPERTY(QList<QUseCase *> * ownedUseCases READ ownedUseCases)
+    Q_PROPERTY(QList<QGeneralizationSet *> * powertypeExtents READ powertypeExtents)
+    Q_PROPERTY(QList<QClassifier *> * redefinedClassifiers READ redefinedClassifiers)
     Q_PROPERTY(QCollaborationUse * representation READ representation WRITE setRepresentation)
-    Q_PROPERTY(QList<QSubstitution *> * substitution READ substitution)
+    Q_PROPERTY(QList<QSubstitution *> * substitutions READ substitutions)
     Q_PROPERTY(QClassifierTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
-    Q_PROPERTY(QList<QUseCase *> * useCase READ useCase)
+    Q_PROPERTY(QList<QUseCase *> * useCases READ useCases)
 
     // From QStructuredClassifier
-    Q_PROPERTY(QList<QProperty *> * ownedAttribute READ ownedAttribute)
-    Q_PROPERTY(QList<QConnector *> * ownedConnector READ ownedConnector)
-    Q_PROPERTY(const QList<QProperty *> * part READ part)
-    Q_PROPERTY(const QList<QConnectableElement *> * role READ role)
+    Q_PROPERTY(QList<QProperty *> * ownedAttributes READ ownedAttributes)
+    Q_PROPERTY(QList<QConnector *> * ownedConnectors READ ownedConnectors)
+    Q_PROPERTY(const QList<QProperty *> * parts READ parts)
+    Q_PROPERTY(const QList<QConnectableElement *> * roles READ roles)
 
     // From QBehavioredClassifier
     Q_PROPERTY(QBehavior * classifierBehavior READ classifierBehavior WRITE setClassifierBehavior)
-    Q_PROPERTY(QList<QInterfaceRealization *> * interfaceRealization READ interfaceRealization)
-    Q_PROPERTY(QList<QBehavior *> * ownedBehavior READ ownedBehavior)
+    Q_PROPERTY(QList<QInterfaceRealization *> * interfaceRealizations READ interfaceRealizations)
+    Q_PROPERTY(QList<QBehavior *> * ownedBehaviors READ ownedBehaviors)
 
     // From QCollaboration
-    Q_PROPERTY(QList<QConnectableElement *> * collaborationRole READ collaborationRole)
+    Q_PROPERTY(QList<QConnectableElement *> * collaborationRoles READ collaborationRoles)
 
 public:
     explicit QCollaboration(QObject *parent = 0);
     virtual ~QCollaboration();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QConnectableElement *> *collaborationRole();
+    QList<QConnectableElement *> *collaborationRoles();
 
 private:
     Q_DISABLE_COPY(QCollaboration)

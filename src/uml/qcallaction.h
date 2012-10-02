@@ -68,7 +68,7 @@ public:
     void setSynchronous(bool isSynchronous);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QOutputPin *> *result();
+    QList<QOutputPin *> *results();
 
 protected:
     explicit QCallAction();

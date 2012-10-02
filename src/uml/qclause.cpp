@@ -64,14 +64,14 @@ QClause::~QClause()
 /*!
     A nested activity fragment that is executed if the test evaluates to true and the clause is chosen over any concurrent clauses that also evaluate to true.
  */
-QList<QExecutableNode *> *QClause::body()
+QList<QExecutableNode *> *QClause::bodies()
 {
 }
 
 /*!
     A list of output pins within the body fragment whose values are moved to the result pins of the containing conditional node after execution of the clause body.
  */
-QList<QOutputPin *> *QClause::bodyOutput()
+QList<QOutputPin *> *QClause::bodyOutputs()
 {
 }
 
@@ -89,21 +89,21 @@ void QClause::setDecider(QOutputPin *decider)
 /*!
     A set of clauses whose tests must all evaluate false before the current clause can be tested.
  */
-QList<QClause *> *QClause::predecessorClause()
+QList<QClause *> *QClause::predecessorClauses()
 {
 }
 
 /*!
     A set of clauses which may not be tested unless the current clause tests false.
  */
-QList<QClause *> *QClause::successorClause()
+QList<QClause *> *QClause::successorClauses()
 {
 }
 
 /*!
     A nested activity fragment with a designated output pin that specifies the result of the test.
  */
-QList<QExecutableNode *> *QClause::test()
+QList<QExecutableNode *> *QClause::tests()
 {
 }
 

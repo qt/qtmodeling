@@ -92,7 +92,7 @@ void QInteractionFragment::setEnclosingOperand(QInteractionOperand *enclosingOpe
 /*!
     The general ordering relationships contained in this fragment.
  */
-QList<QGeneralOrdering *> *QInteractionFragment::generalOrdering()
+QList<QGeneralOrdering *> *QInteractionFragment::generalOrderings()
 {
 }
 

@@ -63,7 +63,7 @@ public:
     virtual ~QRelationship();
 
     // Association-ends (except those derived && !derivedUnion)
-    const QList<QElement *> *relatedElement() const;
+    const QList<QElement *> *relatedElements() const;
 
 protected:
     explicit QRelationship();

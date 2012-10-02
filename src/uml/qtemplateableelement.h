@@ -68,7 +68,7 @@ public:
     // Association-ends (except those derived && !derivedUnion)
     QTemplateSignature *ownedTemplateSignature() const;
     void setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature);
-    QList<QTemplateBinding *> *templateBinding();
+    QList<QTemplateBinding *> *templateBindings();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     bool isTemplate() const;

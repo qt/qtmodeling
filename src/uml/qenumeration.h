@@ -63,14 +63,14 @@ class Q_UML_EXPORT QEnumeration : public QDataType
     Q_OBJECT
 
     // From QEnumeration
-    Q_PROPERTY(QList<QEnumerationLiteral *> * ownedLiteral READ ownedLiteral)
+    Q_PROPERTY(QList<QEnumerationLiteral *> * ownedLiterals READ ownedLiterals)
 
 public:
     explicit QEnumeration(QObject *parent = 0);
     virtual ~QEnumeration();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QEnumerationLiteral *> *ownedLiteral();
+    QList<QEnumerationLiteral *> *ownedLiterals();
 
 private:
     Q_DISABLE_COPY(QEnumeration)

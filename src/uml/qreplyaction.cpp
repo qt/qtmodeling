@@ -75,7 +75,7 @@ void QReplyAction::setReplyToCall(QTrigger *replyToCall)
 /*!
     A list of pins containing the reply values of the operation. These values are returned to the caller.
  */
-QList<QInputPin *> *QReplyAction::replyValue()
+QList<QInputPin *> *QReplyAction::replyValues()
 {
 }
 

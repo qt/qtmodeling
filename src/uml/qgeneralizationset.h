@@ -65,8 +65,8 @@ class Q_UML_EXPORT QGeneralizationSet : public QObject, public QPackageableEleme
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QParameterableElement
@@ -77,7 +77,7 @@ class Q_UML_EXPORT QGeneralizationSet : public QObject, public QPackageableEleme
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependency READ clientDependency)
+    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 
@@ -87,7 +87,7 @@ class Q_UML_EXPORT QGeneralizationSet : public QObject, public QPackageableEleme
     // From QGeneralizationSet
     Q_PROPERTY(bool isCovering READ isCovering WRITE setCovering)
     Q_PROPERTY(bool isDisjoint READ isDisjoint WRITE setDisjoint)
-    Q_PROPERTY(QList<QGeneralization *> * generalization READ generalization)
+    Q_PROPERTY(QList<QGeneralization *> * generalizations READ generalizations)
     Q_PROPERTY(QClassifier * powertype READ powertype WRITE setPowertype)
 
 public:
@@ -101,7 +101,7 @@ public:
     void setDisjoint(bool isDisjoint);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QGeneralization *> *generalization();
+    QList<QGeneralization *> *generalizations();
     QClassifier *powertype() const;
     void setPowertype(QClassifier *powertype);
 

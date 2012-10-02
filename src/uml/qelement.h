@@ -43,8 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
-
 // Qt includes
 #include <QtCore/QList>
 
@@ -63,8 +61,8 @@ public:
     virtual ~QElement();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QComment *> *ownedComment();
-    const QList<QElement *> *ownedElement() const;
+    QList<QComment *> *ownedComments();
+    const QList<QElement *> *ownedElements() const;
     const QElement *owner() const;
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)

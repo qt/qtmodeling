@@ -75,7 +75,7 @@ void QTemplateBinding::setBoundElement(QTemplateableElement *boundElement)
 /*!
     The parameter substitutions owned by this template binding.
  */
-QList<QTemplateParameterSubstitution *> *QTemplateBinding::parameterSubstitution()
+QList<QTemplateParameterSubstitution *> *QTemplateBinding::parameterSubstitutions()
 {
 }
 

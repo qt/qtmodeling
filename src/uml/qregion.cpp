@@ -97,14 +97,14 @@ void QRegion::setStateMachine(QStateMachine *stateMachine)
 /*!
     The set of vertices that are owned by this region.
  */
-QList<QVertex *> *QRegion::subvertex()
+QList<QVertex *> *QRegion::subvertices()
 {
 }
 
 /*!
     The set of transitions owned by the region.
  */
-QList<QTransition *> *QRegion::transition()
+QList<QTransition *> *QRegion::transitions()
 {
 }
 

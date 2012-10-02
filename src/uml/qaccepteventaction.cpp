@@ -75,14 +75,14 @@ void QAcceptEventAction::setUnmarshall(bool isUnmarshall)
 /*!
     Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity might not be preserved.
  */
-QList<QOutputPin *> *QAcceptEventAction::result()
+QList<QOutputPin *> *QAcceptEventAction::results()
 {
 }
 
 /*!
     The type of events accepted by the action, as specified by triggers. For triggers with signal events, a signal of the specified type or any subtype of the specified signal type is accepted.
  */
-QList<QTrigger *> *QAcceptEventAction::trigger()
+QList<QTrigger *> *QAcceptEventAction::triggers()
 {
 }
 

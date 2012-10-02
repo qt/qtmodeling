@@ -75,7 +75,7 @@ void QStringExpression::setOwningExpression(QStringExpression *owningExpression)
 /*!
     The StringExpressions that constitute this StringExpression.
  */
-QList<QStringExpression *> *QStringExpression::subExpression()
+QList<QStringExpression *> *QStringExpression::subExpressions()
 {
 }
 

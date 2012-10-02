@@ -68,7 +68,7 @@ public:
     void setStatic(bool isStatic);
 
     // Association-ends (except those derived && !derivedUnion)
-    const QList<QClassifier *> *featuringClassifier() const;
+    const QList<QClassifier *> *featuringClassifiers() const;
 
 protected:
     explicit QFeature();

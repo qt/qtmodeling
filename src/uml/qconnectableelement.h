@@ -70,7 +70,7 @@ public:
     void setTemplateParameter(QConnectableElementTemplateParameter *templateParameter);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QList<QConnectorEnd *> *end() const;
+    const QList<QConnectorEnd *> *ends() const;
 
 protected:
     explicit QConnectableElement();

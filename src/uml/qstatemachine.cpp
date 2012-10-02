@@ -64,28 +64,28 @@ QStateMachine::~QStateMachine()
 /*!
     The connection points defined for this state machine. They represent the interface of the state machine when used as part of submachine state.
  */
-QList<QPseudostate *> *QStateMachine::connectionPoint()
+QList<QPseudostate *> *QStateMachine::connectionPoints()
 {
 }
 
 /*!
     The state machines of which this is an extension.
  */
-QList<QStateMachine *> *QStateMachine::extendedStateMachine()
+QList<QStateMachine *> *QStateMachine::extendedStateMachines()
 {
 }
 
 /*!
     The regions owned directly by the state machine.
  */
-QList<QRegion *> *QStateMachine::region()
+QList<QRegion *> *QStateMachine::regions()
 {
 }
 
 /*!
     References the submachine(s) in case of a submachine state. Multiple machines are referenced in case of a concurrent state.
  */
-QList<QState *> *QStateMachine::submachineState()
+QList<QState *> *QStateMachine::submachineStates()
 {
 }
 

@@ -86,7 +86,7 @@ void QGeneralization::setGeneral(QClassifier *general)
 /*!
     Designates a set in which instances of Generalization is considered members.
  */
-QList<QGeneralizationSet *> *QGeneralization::generalizationSet()
+QList<QGeneralizationSet *> *QGeneralization::generalizationSets()
 {
 }
 

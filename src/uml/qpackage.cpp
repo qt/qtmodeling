@@ -86,21 +86,21 @@ void QPackage::setNestingPackage(QPackage *nestingPackage)
 /*!
     References the PackageMerges that are owned by this Package.
  */
-QList<QPackageMerge *> *QPackage::packageMerge()
+QList<QPackageMerge *> *QPackage::packageMerges()
 {
 }
 
 /*!
     Specifies the packageable elements that are owned by this Package.
  */
-QList<QPackageableElement *> *QPackage::packagedElement()
+QList<QPackageableElement *> *QPackage::packagedElements()
 {
 }
 
 /*!
     References the ProfileApplications that indicate which profiles have been applied to the Package.
  */
-QList<QProfileApplication *> *QPackage::profileApplication()
+QList<QProfileApplication *> *QPackage::profileApplications()
 {
 }
 
@@ -135,21 +135,21 @@ bool QPackage::mustBeOwned() const
 /*!
     Missing derivation for Package::/nestedPackage : Package
  */
-const QList<QPackage *> *QPackage::nestedPackage() const
+const QList<QPackage *> *QPackage::nestedPackages() const
 {
 }
 
 /*!
     Missing derivation for Package::/ownedStereotype : Stereotype
  */
-const QList<QStereotype *> *QPackage::ownedStereotype() const
+const QList<QStereotype *> *QPackage::ownedStereotypes() const
 {
 }
 
 /*!
     Missing derivation for Package::/ownedType : Type
  */
-const QList<QType *> *QPackage::ownedType() const
+const QList<QType *> *QPackage::ownedTypes() const
 {
 }
 

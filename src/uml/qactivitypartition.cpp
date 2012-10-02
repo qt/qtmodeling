@@ -86,14 +86,14 @@ void QActivityPartition::setExternal(bool isExternal)
 /*!
     Edges immediately contained in the group.
  */
-QList<QActivityEdge *> *QActivityPartition::edge()
+QList<QActivityEdge *> *QActivityPartition::edges()
 {
 }
 
 /*!
     Nodes immediately contained in the group.
  */
-QList<QActivityNode *> *QActivityPartition::node()
+QList<QActivityNode *> *QActivityPartition::nodes()
 {
 }
 
@@ -111,7 +111,7 @@ void QActivityPartition::setRepresents(QElement *represents)
 /*!
     Partitions immediately contained in the partition.
  */
-QList<QActivityPartition *> *QActivityPartition::subpartition()
+QList<QActivityPartition *> *QActivityPartition::subpartitions()
 {
 }
 

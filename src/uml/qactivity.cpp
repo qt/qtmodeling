@@ -86,42 +86,42 @@ void QActivity::setSingleExecution(bool isSingleExecution)
 /*!
     Edges expressing flow between nodes of the activity.
  */
-QList<QActivityEdge *> *QActivity::edge()
+QList<QActivityEdge *> *QActivity::edges()
 {
 }
 
 /*!
     Top-level groups in the activity.
  */
-QList<QActivityGroup *> *QActivity::group()
+QList<QActivityGroup *> *QActivity::groups()
 {
 }
 
 /*!
     Nodes coordinated by the activity.
  */
-QList<QActivityNode *> *QActivity::node()
+QList<QActivityNode *> *QActivity::nodes()
 {
 }
 
 /*!
     Top-level partitions in the activity.
  */
-QList<QActivityPartition *> *QActivity::partition()
+QList<QActivityPartition *> *QActivity::partitions()
 {
 }
 
 /*!
     Top-level structured nodes in the activity.
  */
-QList<QStructuredActivityNode *> *QActivity::structuredNode()
+QList<QStructuredActivityNode *> *QActivity::structuredNodes()
 {
 }
 
 /*!
     Top-level variables in the activity.
  */
-QList<QVariable *> *QActivity::variable()
+QList<QVariable *> *QActivity::variables()
 {
 }
 

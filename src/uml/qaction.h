@@ -71,10 +71,10 @@ public:
     void setLocallyReentrant(bool isLocallyReentrant);
 
     // Association-ends (except those derived && !derivedUnion)
-    const QList<QInputPin *> *input() const;
-    QList<QConstraint *> *localPostcondition();
-    QList<QConstraint *> *localPrecondition();
-    const QList<QOutputPin *> *output() const;
+    const QList<QInputPin *> *inputs() const;
+    QList<QConstraint *> *localPostconditions();
+    QList<QConstraint *> *localPreconditions();
+    const QList<QOutputPin *> *outputs() const;
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     const QClassifier *context() const;

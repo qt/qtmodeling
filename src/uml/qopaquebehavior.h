@@ -66,24 +66,24 @@ class Q_UML_EXPORT QOpaqueBehavior : public QBehavior
     // From QBehavior
     Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant)
     Q_PROPERTY(const QBehavioredClassifier * context READ context)
-    Q_PROPERTY(QList<QParameter *> * ownedParameter READ ownedParameter)
-    Q_PROPERTY(QList<QParameterSet *> * ownedParameterSet READ ownedParameterSet)
-    Q_PROPERTY(QList<QConstraint *> * postcondition READ postcondition)
-    Q_PROPERTY(QList<QConstraint *> * precondition READ precondition)
-    Q_PROPERTY(QList<QBehavior *> * redefinedBehavior READ redefinedBehavior)
+    Q_PROPERTY(QList<QParameter *> * ownedParameters READ ownedParameters)
+    Q_PROPERTY(QList<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
+    Q_PROPERTY(QList<QConstraint *> * postconditions READ postconditions)
+    Q_PROPERTY(QList<QConstraint *> * preconditions READ preconditions)
+    Q_PROPERTY(QList<QBehavior *> * redefinedBehaviors READ redefinedBehaviors)
     Q_PROPERTY(QBehavioralFeature * specification READ specification WRITE setSpecification)
 
     // From QOpaqueBehavior
-    Q_PROPERTY(QList<QString *> body READ body)
-    Q_PROPERTY(QList<QString *> language READ language)
+    Q_PROPERTY(QList<QString *> bodies READ bodies)
+    Q_PROPERTY(QList<QString *> languages READ languages)
 
 public:
     explicit QOpaqueBehavior(QObject *parent = 0);
     virtual ~QOpaqueBehavior();
 
     // Attributes (except those derived && !derivedUnion)
-    QList<QString *> body();
-    QList<QString *> language();
+    QList<QString *> bodies();
+    QList<QString *> languages();
 
 private:
     Q_DISABLE_COPY(QOpaqueBehavior)

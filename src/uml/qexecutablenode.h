@@ -64,7 +64,7 @@ public:
     virtual ~QExecutableNode();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QExceptionHandler *> *handler();
+    QList<QExceptionHandler *> *handlers();
 
 protected:
     explicit QExecutableNode();

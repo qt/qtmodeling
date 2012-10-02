@@ -68,8 +68,8 @@ public:
     void setLeaf(bool isLeaf);
 
     // Association-ends (except those derived && !derivedUnion)
-    const QList<QRedefinableElement *> *redefinedElement() const;
-    const QList<QClassifier *> *redefinitionContext() const;
+    const QList<QRedefinableElement *> *redefinedElements() const;
+    const QList<QClassifier *> *redefinitionContexts() const;
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     bool isConsistentWith(const QRedefinableElement *redefinee) const;

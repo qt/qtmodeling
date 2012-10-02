@@ -64,7 +64,7 @@ QSignal::~QSignal()
 /*!
     The attributes owned by the signal.
  */
-QList<QProperty *> *QSignal::ownedAttribute()
+QList<QProperty *> *QSignal::ownedAttributes()
 {
 }
 

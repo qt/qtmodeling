@@ -70,28 +70,28 @@ class Q_UML_EXPORT QStateMachine : public QBehavior
     // From QBehavior
     Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant)
     Q_PROPERTY(const QBehavioredClassifier * context READ context)
-    Q_PROPERTY(QList<QParameter *> * ownedParameter READ ownedParameter)
-    Q_PROPERTY(QList<QParameterSet *> * ownedParameterSet READ ownedParameterSet)
-    Q_PROPERTY(QList<QConstraint *> * postcondition READ postcondition)
-    Q_PROPERTY(QList<QConstraint *> * precondition READ precondition)
-    Q_PROPERTY(QList<QBehavior *> * redefinedBehavior READ redefinedBehavior)
+    Q_PROPERTY(QList<QParameter *> * ownedParameters READ ownedParameters)
+    Q_PROPERTY(QList<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
+    Q_PROPERTY(QList<QConstraint *> * postconditions READ postconditions)
+    Q_PROPERTY(QList<QConstraint *> * preconditions READ preconditions)
+    Q_PROPERTY(QList<QBehavior *> * redefinedBehaviors READ redefinedBehaviors)
     Q_PROPERTY(QBehavioralFeature * specification READ specification WRITE setSpecification)
 
     // From QStateMachine
-    Q_PROPERTY(QList<QPseudostate *> * connectionPoint READ connectionPoint)
-    Q_PROPERTY(QList<QStateMachine *> * extendedStateMachine READ extendedStateMachine)
-    Q_PROPERTY(QList<QRegion *> * region READ region)
-    Q_PROPERTY(QList<QState *> * submachineState READ submachineState)
+    Q_PROPERTY(QList<QPseudostate *> * connectionPoints READ connectionPoints)
+    Q_PROPERTY(QList<QStateMachine *> * extendedStateMachines READ extendedStateMachines)
+    Q_PROPERTY(QList<QRegion *> * regions READ regions)
+    Q_PROPERTY(QList<QState *> * submachineStates READ submachineStates)
 
 public:
     explicit QStateMachine(QObject *parent = 0);
     virtual ~QStateMachine();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QPseudostate *> *connectionPoint();
-    QList<QStateMachine *> *extendedStateMachine();
-    QList<QRegion *> *region();
-    QList<QState *> *submachineState();
+    QList<QPseudostate *> *connectionPoints();
+    QList<QStateMachine *> *extendedStateMachines();
+    QList<QRegion *> *regions();
+    QList<QState *> *submachineStates();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     const QNamespace *LCA(const QState *s1, const QState *s2) const;

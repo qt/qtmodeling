@@ -77,7 +77,7 @@ public:
     void setVisibility(QtUml::VisibilityKind visibility);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QDependency *> *clientDependency();
+    QList<QDependency *> *clientDependencies();
     QStringExpression *nameExpression() const;
     void setNameExpression(QStringExpression *nameExpression);
     const QNamespace *namespace_() const;

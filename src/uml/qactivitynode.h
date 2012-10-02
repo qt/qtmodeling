@@ -76,9 +76,9 @@ public:
     QList<QActivityPartition *> *inPartition();
     QStructuredActivityNode *inStructuredNode() const;
     void setInStructuredNode(QStructuredActivityNode *inStructuredNode);
-    QList<QActivityEdge *> *incoming();
-    QList<QActivityEdge *> *outgoing();
-    QList<QActivityNode *> *redefinedNode();
+    QList<QActivityEdge *> *incomings();
+    QList<QActivityEdge *> *outgoings();
+    QList<QActivityNode *> *redefinedNodes();
 
 protected:
     explicit QActivityNode();

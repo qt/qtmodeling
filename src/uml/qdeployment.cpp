@@ -64,14 +64,14 @@ QDeployment::~QDeployment()
 /*!
     The specification of properties that parameterize the deployment and execution of one or more Artifacts.
  */
-QList<QDeploymentSpecification *> *QDeployment::configuration()
+QList<QDeploymentSpecification *> *QDeployment::configurations()
 {
 }
 
 /*!
     The Artifacts that are deployed onto a Node. This association specializes the supplier association.
  */
-QList<QDeployedArtifact *> *QDeployment::deployedArtifact()
+QList<QDeployedArtifact *> *QDeployment::deployedArtifacts()
 {
 }
 

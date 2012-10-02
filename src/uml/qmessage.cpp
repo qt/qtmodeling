@@ -75,7 +75,7 @@ void QMessage::setMessageSort(QtUml::MessageSort messageSort)
 /*!
     The arguments of the Message
  */
-QList<QValueSpecification *> *QMessage::argument()
+QList<QValueSpecification *> *QMessage::arguments()
 {
 }
 

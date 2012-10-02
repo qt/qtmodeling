@@ -82,31 +82,31 @@ public:
     void setFinalSpecialization(bool isFinalSpecialization);
 
     // Association-ends (except those derived && !derivedUnion)
-    const QList<QProperty *> *attribute() const;
-    QList<QCollaborationUse *> *collaborationUse();
-    const QList<QFeature *> *feature() const;
-    QList<QGeneralization *> *generalization();
+    const QList<QProperty *> *attributes() const;
+    QList<QCollaborationUse *> *collaborationUses();
+    const QList<QFeature *> *features() const;
+    QList<QGeneralization *> *generalizations();
     QRedefinableTemplateSignature *ownedTemplateSignature() const;
     void setOwnedTemplateSignature(QRedefinableTemplateSignature *ownedTemplateSignature);
-    QList<QUseCase *> *ownedUseCase();
-    QList<QGeneralizationSet *> *powertypeExtent();
-    QList<QClassifier *> *redefinedClassifier();
+    QList<QUseCase *> *ownedUseCases();
+    QList<QGeneralizationSet *> *powertypeExtents();
+    QList<QClassifier *> *redefinedClassifiers();
     QCollaborationUse *representation() const;
     void setRepresentation(QCollaborationUse *representation);
-    QList<QSubstitution *> *substitution();
+    QList<QSubstitution *> *substitutions();
     QClassifierTemplateParameter *templateParameter() const;
     void setTemplateParameter(QClassifierTemplateParameter *templateParameter);
-    QList<QUseCase *> *useCase();
+    QList<QUseCase *> *useCases();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     const QList<QFeature *> *allFeatures() const;
     const QList<QClassifier *> *allParents() const;
     bool conformsTo(const QClassifier *other) const;
-    const QList<QClassifier *> *general() const;
+    const QList<QClassifier *> *generals() const;
     bool hasVisibilityOf(const QNamedElement *n) const;
     const QList<QNamedElement *> *inherit(const QList<QNamedElement *> *inhs) const;
     const QList<QNamedElement *> *inheritableMembers(const QClassifier *c) const;
-    const QList<QNamedElement *> *inheritedMember() const;
+    const QList<QNamedElement *> *inheritedMembers() const;
     bool isTemplate() const;
     bool maySpecializeType(const QClassifier *c) const;
     const QList<QClassifier *> *parents() const;

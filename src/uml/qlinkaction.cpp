@@ -70,7 +70,7 @@ QList<QLinkEndData *> *QLinkAction::endData()
 /*!
     Pins taking end objects and qualifier values as input.
  */
-QList<QInputPin *> *QLinkAction::inputValue()
+QList<QInputPin *> *QLinkAction::inputValues()
 {
 }
 

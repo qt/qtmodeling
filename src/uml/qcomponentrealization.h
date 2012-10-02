@@ -65,7 +65,7 @@ class Q_UML_EXPORT QComponentRealization : public QRealization
 
     // From QComponentRealization
     Q_PROPERTY(QComponent * abstraction READ abstraction WRITE setAbstraction)
-    Q_PROPERTY(QList<QClassifier *> * realizingClassifier READ realizingClassifier)
+    Q_PROPERTY(QList<QClassifier *> * realizingClassifiers READ realizingClassifiers)
 
 public:
     explicit QComponentRealization(QObject *parent = 0);
@@ -74,7 +74,7 @@ public:
     // Association-ends (except those derived && !derivedUnion)
     QComponent *abstraction() const;
     void setAbstraction(QComponent *abstraction);
-    QList<QClassifier *> *realizingClassifier();
+    QList<QClassifier *> *realizingClassifiers();
 
 private:
     Q_DISABLE_COPY(QComponentRealization)

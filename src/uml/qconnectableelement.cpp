@@ -74,7 +74,7 @@ void QConnectableElement::setTemplateParameter(QConnectableElementTemplateParame
 /*!
     Missing derivation for ConnectableElement::/end : ConnectorEnd
  */
-const QList<QConnectorEnd *> *QConnectableElement::end() const
+const QList<QConnectorEnd *> *QConnectableElement::ends() const
 {
 }
 

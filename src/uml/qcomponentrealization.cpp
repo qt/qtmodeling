@@ -75,7 +75,7 @@ void QComponentRealization::setAbstraction(QComponent *abstraction)
 /*!
     The classifiers that are involved in the implementation of the Component that owns this Realization.
  */
-QList<QClassifier *> *QComponentRealization::realizingClassifier()
+QList<QClassifier *> *QComponentRealization::realizingClassifiers()
 {
 }
 

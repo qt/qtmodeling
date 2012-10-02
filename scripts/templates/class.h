@@ -77,27 +77,31 @@
 #define ${namespace.replace('/', '_').upper}_${class.name.upper}_H
 
 #include <[% namespace.split('/').0 %]/[% namespace.split('/').0 %]Global>
-
 [%- IF class.item('qtumlinclude') %]
+
 // [% namespace.split('/').0 %] includes
-[%- FOREACH include IN class.qtumlinclude %]
-#include <${include}>
-[%- END %]
-[% END -%]
+[%- FOREACH include IN class.qtumlinclude -%]
 
-[%- IF class.item('superclass') -%]
+#include <${include}>
+[%- END -%]
+[%- END -%]
+[%- IF class.item('superclass') %]
+
 // Base class includes
-[%- FOREACH superclass IN class.superclass %]
-#include <${superclass.include}>
-[%- END %]
-[%- END %]
+[%- FOREACH superclass IN class.superclass -%]
 
+#include <${superclass.include}>
+[%- END -%]
+[%- END -%]
 [%- IF class.item('qtinclude') %]
+
 // Qt includes
-[%- FOREACH include IN class.qtinclude %]
+[%- FOREACH include IN class.qtinclude -%]
+
 #include <${include}>
-[%- END %]
-[% END -%]
+[%- END -%]
+[%- END -%]
+
 
 QT_BEGIN_HEADER
 

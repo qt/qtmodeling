@@ -1,0 +1,56 @@
+General information about XMI->Qt mapping:
+------------------------------------------
+
+1) xmi2qt.xq XQuery and xmi2qt.pl script generate an intermediate
+   XML file (.qtxmi) containing a more qt-ish description of the metamodel
+
+2) QtUml and QtMof modules provide a flat (merged) implementation of
+   OMG's UML L3 (level 3) and MOF LM (metamodeling level), respectively.
+   xmi2qt.xq can currently handle nested namespaces pretty well but according
+   to Qt namespace rules the use of a single (non-nested) namespace is
+   preferable. So, if Qt is built with a defined namespace, QtUml/QtMof
+   classes will end up in a <QtNamespace>::QtUml/<QtNamespace>::QtMof
+   namespace. Otherwise, they all go into the global namespace
+
+Current xmi2qt.xq limitations:
+
+- It doesn't detect the need for a virtual inheritance
+- It doesn't detect redefined properties
+- It doesn't detect concrete classes with a non-direct
+  QObjet-based parent and, therefore, erroneously generate a second
+  QObject inheritance and a wrong initialization list in constructor
+
+XMI->Qt Mapping Rules:
+----------------------
+
+01) OMG's 'UML' namespace in UML.xmi was renamed to 'QtUml'
+02) OMG's 'MOF' namespace in MOF.xmi was renamed to 'QtMof'
+03) All class names were preserved and prepended with 'Q' prefix
+04) Only concrete classes inherit from QObject. The reason for
+    that is to minimize the number of situations where multiple
+    inheritance from QObject-based classes is needed. Currently
+    only QAssociationClass presents that issue (still to be solved)
+05) Concrete classes define Q_PROPERTY's for their own and inherited
+    attributes. That makes documentation a little bit buggy
+    (still to be solved)
+06) All attribute names were preserved except the following:
+    4.1) 'namespace': renamed to 'namespace_'
+    4.2) 'class': renamed to 'class_'
+    4.3) 'default': renamed to 'default_'
+    4.4) 'template': renamed to 'template_'
+    4.5) for multi-valued attributes their names were converted
+         to a plural form
+07) All enumerations were defined in an "fake" (non-instantiable)
+    'QtUml' object. Enumeration literals were prepended with
+    namespace's name (with 'Kind' prefix removed)
+08) OMG's primitive types were mapped as the following:
+    10.1) Boolean -> bool
+    10.2) Integer -> qint32
+    10.3) Real -> qreal
+    10.4) String -> QString
+09) All single-valued primitive type or enumeration attributes were
+    mapped to the corresponding mapped primitive type or enumeration
+10) All single-valued object attributes were mapped to a pointer to
+    the attribute class
+11) All multi-valued attributes were mapped to a pointer to a QList
+    of pointers to the corresponding single-valued attribute

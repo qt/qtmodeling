@@ -66,7 +66,7 @@ public:
     // Association-ends (except those derived && !derivedUnion)
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QList<QPort *> *ownedPort() const;
+    const QList<QPort *> *ownedPorts() const;
 
 protected:
     explicit QEncapsulatedClassifier();

@@ -64,14 +64,14 @@ QConnectionPointReference::~QConnectionPointReference()
 /*!
     The entryPoint kind pseudo states corresponding to this connection point.
  */
-QList<QPseudostate *> *QConnectionPointReference::entry()
+QList<QPseudostate *> *QConnectionPointReference::entries()
 {
 }
 
 /*!
     The exitPoints kind pseudo states corresponding to this connection point.
  */
-QList<QPseudostate *> *QConnectionPointReference::exit()
+QList<QPseudostate *> *QConnectionPointReference::exits()
 {
 }
 

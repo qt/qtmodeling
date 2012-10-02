@@ -75,7 +75,7 @@ void QExceptionHandler::setExceptionInput(QObjectNode *exceptionInput)
 /*!
     The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body.
  */
-QList<QClassifier *> *QExceptionHandler::exceptionType()
+QList<QClassifier *> *QExceptionHandler::exceptionTypes()
 {
 }
 

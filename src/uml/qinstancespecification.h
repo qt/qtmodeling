@@ -68,15 +68,15 @@ class Q_UML_EXPORT QInstanceSpecification : public QObject, public QDeployedArti
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependency READ clientDependency)
+    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 
@@ -88,12 +88,12 @@ class Q_UML_EXPORT QInstanceSpecification : public QObject, public QDeployedArti
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // From QDeploymentTarget
-    Q_PROPERTY(const QList<QPackageableElement *> * deployedElement READ deployedElement)
-    Q_PROPERTY(QList<QDeployment *> * deployment READ deployment)
+    Q_PROPERTY(const QList<QPackageableElement *> * deployedElements READ deployedElements)
+    Q_PROPERTY(QList<QDeployment *> * deployments READ deployments)
 
     // From QInstanceSpecification
-    Q_PROPERTY(QList<QClassifier *> * classifier READ classifier)
-    Q_PROPERTY(QList<QSlot *> * slot READ slot)
+    Q_PROPERTY(QList<QClassifier *> * classifiers READ classifiers)
+    Q_PROPERTY(QList<QSlot *> * slots READ slots_)
     Q_PROPERTY(QValueSpecification * specification READ specification WRITE setSpecification)
 
 public:
@@ -101,8 +101,8 @@ public:
     virtual ~QInstanceSpecification();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QClassifier *> *classifier();
-    QList<QSlot *> *slot();
+    QList<QClassifier *> *classifiers();
+    QList<QSlot *> *slots_();
     QValueSpecification *specification() const;
     void setSpecification(QValueSpecification *specification);
 

@@ -75,7 +75,7 @@ void QUnmarshallAction::setObject(QInputPin *object)
 /*!
     The values of the structural features of the input object.
  */
-QList<QOutputPin *> *QUnmarshallAction::result()
+QList<QOutputPin *> *QUnmarshallAction::results()
 {
 }
 

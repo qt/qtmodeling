@@ -88,7 +88,27 @@ declare function qtxmi:mappedFunctionName ($name as xs:string*) as xs:string* {
     else if ($name = "class") then "class_"
     else if ($name = "default") then "default_"
     else if ($name = "template") then "template_"
+    else if ($name = "slots") then "slots_"
     else $name
+};
+
+declare function qtxmi:modifiedFunctionName ($property as node()*) as xs:string* {
+    let $functionName := if ($property/upperValue/@value = "*"
+                         and not((starts-with($property/@name, "in") or starts-with($property/@name, "to")) and
+                                          substring($property/@name, 3, 1) = upper-case(substring($property/@name, 3, 1)))
+                         and $property/@name != "provided"
+                         and $property/@name != "required"
+                         and $property/@name != "endData"
+                         and $property/@name != "conveyed"
+                         and $property/@name != "covered"
+                         and $property/@name != "coveredBy"
+                         and $property/@name != "conformance"
+                         and $property/@name != "referred"
+                         and $property/@name != "represented"
+                         ) then
+                             concat(replace(replace(replace(replace(qtxmi:mappedFunctionName($property/@name), "y$", "ie"), "s$", "se"), "ex$", "ice"), "x$", "ce"), "s")
+                         else qtxmi:mappedFunctionName($property/@name)
+    return $functionName
 };
 
 declare function qtxmi:typeFromNamespacedTypeString ($string as xs:string, $namespace as xs:string) as xs:string {
@@ -212,7 +232,7 @@ return
         where $attribute[not(@association)]
         return
         <attribute isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}">
-        <accessor return="{$unqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}" constness="{$constness}"/>
+        <accessor return="{$unqualifiedType}" name="{qtxmi:modifiedFunctionName($attribute)}" constness="{$constness}"/>
         {
         if (not(starts-with($unqualifiedType, "QList")) and ($attribute[not(@isReadOnly)]
             or $attribute/@isReadOnly != "true") and $isDerived = "false") then
@@ -238,7 +258,7 @@ return
         where $attribute[@association]
         return
         <associationend isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}">
-        <accessor return="{$unqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}" constness="{$constness}"/>
+        <accessor return="{$unqualifiedType}" name="{qtxmi:modifiedFunctionName($attribute)}" constness="{$constness}"/>
         {
         if (not(starts-with($unqualifiedType, "QList")) and ($attribute[not(@isReadOnly)]
             or $attribute/@isReadOnly != "true") and $isDerived = "false") then
@@ -262,8 +282,9 @@ return
                        else
                            "void"
         let $return := if (ends-with($return, "*")) then $return else concat($return, " ")
+        let $functionName := if ($class/ownedAttribute[@name = $operation/@name]) then qtxmi:modifiedFunctionName($class/ownedAttribute[@name = $operation/@name]) else qtxmi:mappedFunctionName($operation/@name)
         return
-        <operation return="{$return}" name="{qtxmi:mappedFunctionName($operation/@name)}" constness="{$constness}">
+        <operation return="{$return}" name="{$functionName}" constness="{$constness}">
         {
         for $parameter in $operation/ownedParameter[not(@direction) or @direction != "return"]
         let $unqualifiedType := qtxmi:modifiedTypeFromNamespacedProperty($parameter, $namespace)

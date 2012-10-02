@@ -86,7 +86,7 @@ void QGeneralizationSet::setDisjoint(bool isDisjoint)
 /*!
     Designates the instances of Generalization which are members of a given GeneralizationSet.
  */
-QList<QGeneralization *> *QGeneralizationSet::generalization()
+QList<QGeneralization *> *QGeneralizationSet::generalizations()
 {
 }
 

@@ -68,15 +68,15 @@ class Q_UML_EXPORT QCombinedFragment : public QObject, public QInteractionFragme
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependency READ clientDependency)
+    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
 
@@ -84,12 +84,12 @@ class Q_UML_EXPORT QCombinedFragment : public QObject, public QInteractionFragme
     Q_PROPERTY(QList<QLifeline *> * covered READ covered)
     Q_PROPERTY(QInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
     Q_PROPERTY(QInteractionOperand * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
-    Q_PROPERTY(QList<QGeneralOrdering *> * generalOrdering READ generalOrdering)
+    Q_PROPERTY(QList<QGeneralOrdering *> * generalOrderings READ generalOrderings)
 
     // From QCombinedFragment
     Q_PROPERTY(QtUml::InteractionOperatorKind interactionOperator READ interactionOperator WRITE setInteractionOperator)
-    Q_PROPERTY(QList<QGate *> * cfragmentGate READ cfragmentGate)
-    Q_PROPERTY(QList<QInteractionOperand *> * operand READ operand)
+    Q_PROPERTY(QList<QGate *> * cfragmentGates READ cfragmentGates)
+    Q_PROPERTY(QList<QInteractionOperand *> * operands READ operands)
 
 public:
     explicit QCombinedFragment(QObject *parent = 0);
@@ -100,8 +100,8 @@ public:
     void setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QGate *> *cfragmentGate();
-    QList<QInteractionOperand *> *operand();
+    QList<QGate *> *cfragmentGates();
+    QList<QInteractionOperand *> *operands();
 
 private:
     Q_DISABLE_COPY(QCombinedFragment)

@@ -71,8 +71,8 @@ public:
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     const QStateMachine *containingStateMachine() const;
-    const QList<QTransition *> *incoming() const;
-    const QList<QTransition *> *outgoing() const;
+    const QList<QTransition *> *incomings() const;
+    const QList<QTransition *> *outgoings() const;
 
 protected:
     explicit QVertex();

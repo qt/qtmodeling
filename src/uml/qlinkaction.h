@@ -67,7 +67,7 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QList<QLinkEndData *> *endData();
-    QList<QInputPin *> *inputValue();
+    QList<QInputPin *> *inputValues();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     const QAssociation *association() const;

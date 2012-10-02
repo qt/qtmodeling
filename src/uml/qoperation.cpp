@@ -119,35 +119,35 @@ void QOperation::setInterface(QInterface *interface)
 /*!
     Specifies the ordered set of formal parameters of this BehavioralFeature.Specifies the parameters owned by this Operation.
  */
-QList<QParameter *> *QOperation::ownedParameter()
+QList<QParameter *> *QOperation::ownedParameters()
 {
 }
 
 /*!
     An optional set of Constraints specifying the state of the system when the Operation is completed.
  */
-QList<QConstraint *> *QOperation::postcondition()
+QList<QConstraint *> *QOperation::postconditions()
 {
 }
 
 /*!
     An optional set of Constraints on the state of the system when the Operation is invoked.
  */
-QList<QConstraint *> *QOperation::precondition()
+QList<QConstraint *> *QOperation::preconditions()
 {
 }
 
 /*!
     References the Types representing exceptions that may be raised during an invocation of this operation.
  */
-QList<QType *> *QOperation::raisedException()
+QList<QType *> *QOperation::raisedExceptions()
 {
 }
 
 /*!
     References the Operations that are redefined by this Operation.
  */
-QList<QOperation *> *QOperation::redefinedOperation()
+QList<QOperation *> *QOperation::redefinedOperations()
 {
 }
 

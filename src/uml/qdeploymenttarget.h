@@ -65,10 +65,10 @@ public:
     virtual ~QDeploymentTarget();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QDeployment *> *deployment();
+    QList<QDeployment *> *deployments();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QList<QPackageableElement *> *deployedElement() const;
+    const QList<QPackageableElement *> *deployedElements() const;
 
 protected:
     explicit QDeploymentTarget();

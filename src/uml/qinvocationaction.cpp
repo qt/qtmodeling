@@ -63,7 +63,7 @@ QInvocationAction::~QInvocationAction()
 /*!
     Specification of the ordered set of argument values that appears during execution.
  */
-QList<QInputPin *> *QInvocationAction::argument()
+QList<QInputPin *> *QInvocationAction::arguments()
 {
 }
 

@@ -69,7 +69,7 @@ class Q_UML_EXPORT QPort : public QProperty
     Q_PROPERTY(bool isService READ isService WRITE setService)
     Q_PROPERTY(QProtocolStateMachine * protocol READ protocol WRITE setProtocol)
     Q_PROPERTY(const QList<QInterface *> * provided READ provided)
-    Q_PROPERTY(QList<QPort *> * redefinedPort READ redefinedPort)
+    Q_PROPERTY(QList<QPort *> * redefinedPorts READ redefinedPorts)
     Q_PROPERTY(const QList<QInterface *> * required READ required)
 
 public:
@@ -87,7 +87,7 @@ public:
     // Association-ends (except those derived && !derivedUnion)
     QProtocolStateMachine *protocol() const;
     void setProtocol(QProtocolStateMachine *protocol);
-    QList<QPort *> *redefinedPort();
+    QList<QPort *> *redefinedPorts();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     const QList<QInterface *> *provided() const;

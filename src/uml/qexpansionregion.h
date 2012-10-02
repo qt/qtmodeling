@@ -67,8 +67,8 @@ class Q_UML_EXPORT QExpansionRegion : public QStructuredActivityNode
 
     // From QExpansionRegion
     Q_PROPERTY(QtUml::ExpansionKind mode READ mode WRITE setMode)
-    Q_PROPERTY(QList<QExpansionNode *> * inputElement READ inputElement)
-    Q_PROPERTY(QList<QExpansionNode *> * outputElement READ outputElement)
+    Q_PROPERTY(QList<QExpansionNode *> * inputElements READ inputElements)
+    Q_PROPERTY(QList<QExpansionNode *> * outputElements READ outputElements)
 
 public:
     explicit QExpansionRegion(QObject *parent = 0);
@@ -79,8 +79,8 @@ public:
     void setMode(QtUml::ExpansionKind mode);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QExpansionNode *> *inputElement();
-    QList<QExpansionNode *> *outputElement();
+    QList<QExpansionNode *> *inputElements();
+    QList<QExpansionNode *> *outputElements();
 
 private:
     Q_DISABLE_COPY(QExpansionRegion)

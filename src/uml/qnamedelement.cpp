@@ -85,7 +85,7 @@ void QNamedElement::setVisibility(QtUml::VisibilityKind visibility)
 /*!
     Indicates the dependencies that reference the client.
  */
-QList<QDependency *> *QNamedElement::clientDependency()
+QList<QDependency *> *QNamedElement::clientDependencies()
 {
 }
 

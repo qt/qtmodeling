@@ -64,7 +64,7 @@ class Q_UML_EXPORT QStereotype : public QClass
     Q_OBJECT
 
     // From QStereotype
-    Q_PROPERTY(QList<QImage *> * icon READ icon)
+    Q_PROPERTY(QList<QImage *> * icons READ icons)
     Q_PROPERTY(const QProfile * profile READ profile)
 
 public:
@@ -72,7 +72,7 @@ public:
     virtual ~QStereotype();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QImage *> *icon();
+    QList<QImage *> *icons();
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     const QProfile *containingProfile() const;

@@ -75,7 +75,7 @@ void QClassifierTemplateParameter::setAllowSubstitutable(bool allowSubstitutable
 /*!
     The classifiers that constrain the argument that can be used for the parameter. If the allowSubstitutable attribute is true, then any classifier that is compatible with this constraining classifier can be substituted; otherwise, it must be either this classifier or one of its subclasses. If this property is empty, there are no constraints on the classifier that can be used as an argument.
  */
-QList<QClassifier *> *QClassifierTemplateParameter::constrainingClassifier()
+QList<QClassifier *> *QClassifierTemplateParameter::constrainingClassifiers()
 {
 }
 

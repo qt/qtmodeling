@@ -72,7 +72,7 @@ public:
     void setEnclosingInteraction(QInteraction *enclosingInteraction);
     QInteractionOperand *enclosingOperand() const;
     void setEnclosingOperand(QInteractionOperand *enclosingOperand);
-    QList<QGeneralOrdering *> *generalOrdering();
+    QList<QGeneralOrdering *> *generalOrderings();
 
 protected:
     explicit QInteractionFragment();

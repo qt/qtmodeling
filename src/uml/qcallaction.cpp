@@ -74,7 +74,7 @@ void QCallAction::setSynchronous(bool isSynchronous)
 /*!
     A list of output pins where the results of performing the invocation are placed.
  */
-QList<QOutputPin *> *QCallAction::result()
+QList<QOutputPin *> *QCallAction::results()
 {
 }
 

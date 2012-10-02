@@ -66,14 +66,14 @@ class Q_UML_EXPORT QSlot : public QObject, public QElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComment READ ownedComment)
-    Q_PROPERTY(const QList<QElement *> * ownedElement READ ownedElement)
+    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(const QElement * owner READ owner)
 
     // From QSlot
     Q_PROPERTY(QStructuralFeature * definingFeature READ definingFeature WRITE setDefiningFeature)
     Q_PROPERTY(QInstanceSpecification * owningInstance READ owningInstance WRITE setOwningInstance)
-    Q_PROPERTY(QList<QValueSpecification *> * value READ value)
+    Q_PROPERTY(QList<QValueSpecification *> * values READ values)
 
 public:
     explicit QSlot(QObject *parent = 0);
@@ -84,7 +84,7 @@ public:
     void setDefiningFeature(QStructuralFeature *definingFeature);
     QInstanceSpecification *owningInstance() const;
     void setOwningInstance(QInstanceSpecification *owningInstance);
-    QList<QValueSpecification *> *value();
+    QList<QValueSpecification *> *values();
 
 private:
     Q_DISABLE_COPY(QSlot)

@@ -196,21 +196,21 @@ void QProperty::setOwningAssociation(QAssociation *owningAssociation)
 /*!
     An optional list of ordered qualifier attributes for the end. If the list is empty, then the Association is not qualified.
  */
-QList<QProperty *> *QProperty::qualifier()
+QList<QProperty *> *QProperty::qualifiers()
 {
 }
 
 /*!
     References the properties that are redefined by this property.
  */
-QList<QProperty *> *QProperty::redefinedProperty()
+QList<QProperty *> *QProperty::redefinedProperties()
 {
 }
 
 /*!
     References the properties of which this property is constrained to be a subset.
  */
-QList<QProperty *> *QProperty::subsettedProperty()
+QList<QProperty *> *QProperty::subsettedProperties()
 {
 }
 
