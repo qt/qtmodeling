@@ -66,3 +66,26 @@ XMI->Qt Mapping Rules:
 | true      | false    | Sequence       | QList                  |
 |-----------|----------|----------------|------------------------|
 
+Testing table for attribute accessors generation:
+-------------------------------------------------
+
+|----------|--------------|-----------|----------------------|
+| ReadOnly | Multi-Valued | Type      | Model Attribute      |
+|----------|--------------|-----------|----------------------|
+|          |              | Primitive | Class-isAbstract     |
+| No       | No           | Enum      | Transition-kind      |
+|          |              | Class     | Connector-type       |
+|----------|--------------|-----------|----------------------|
+|          |              | Primitive | Extension-isRequired |
+| Yes      | No           | Enum      | Connector-kind       |
+|          |              | Class     | Action-context       |
+|----------|--------------|-----------|----------------------|
+|          |              | Primitive | OpaqueAction-body    |
+| No       | Yes          | Enum      |         ---          |
+|          |              | Class     | UseCase-subject      |
+|----------|--------------|-----------|----------------------|
+|          |              | Primitive |         ---          |
+| Yes      | Yes          | Enum      |         ---          |
+|          |              | Class     | Port-provided        |
+|----------|--------------|-----------|----------------------|
+
