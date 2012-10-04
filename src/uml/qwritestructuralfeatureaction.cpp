@@ -67,7 +67,7 @@ QOutputPin *QWriteStructuralFeatureAction::result() const
 {
 }
 
-void QWriteStructuralFeatureAction::setResult(QOutputPin *result)
+void QWriteStructuralFeatureAction::setResult(const QOutputPin *result)
 {
 }
 
@@ -78,7 +78,7 @@ QInputPin *QWriteStructuralFeatureAction::value() const
 {
 }
 
-void QWriteStructuralFeatureAction::setValue(QInputPin *value)
+void QWriteStructuralFeatureAction::setValue(const QInputPin *value)
 {
 }
 

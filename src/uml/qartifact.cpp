@@ -75,28 +75,60 @@ void QArtifact::setFileName(QString fileName)
 /*!
     The set of model elements that are manifested in the Artifact. That is, these model elements are utilized in the construction (or generation) of the artifact.
  */
-QList<QManifestation *> *QArtifact::manifestations()
+const QSet<QManifestation *> *QArtifact::manifestations() const
+{
+}
+
+void QArtifact::addManifestation(const QManifestation *manifestation)
+{
+}
+
+void QArtifact::removeManifestation(const QManifestation *manifestation)
 {
 }
 
 /*!
     The Artifacts that are defined (nested) within the Artifact. The association is a specialization of the ownedMember association from Namespace to NamedElement.
  */
-QList<QArtifact *> *QArtifact::nestedArtifacts()
+const QSet<QArtifact *> *QArtifact::nestedArtifacts() const
+{
+}
+
+void QArtifact::addNestedArtifact(const QArtifact *nestedArtifact)
+{
+}
+
+void QArtifact::removeNestedArtifact(const QArtifact *nestedArtifact)
 {
 }
 
 /*!
     The attributes or association ends defined for the Artifact. The association is a specialization of the ownedMember association.
  */
-QList<QProperty *> *QArtifact::ownedAttributes()
+const QList<QProperty *> *QArtifact::ownedAttributes() const
+{
+}
+
+void QArtifact::addOwnedAttribute(const QProperty *ownedAttribute)
+{
+}
+
+void QArtifact::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
 }
 
 /*!
     The Operations defined for the Artifact. The association is a specialization of the ownedMember association.
  */
-QList<QOperation *> *QArtifact::ownedOperations()
+const QList<QOperation *> *QArtifact::ownedOperations() const
+{
+}
+
+void QArtifact::addOwnedOperation(const QOperation *ownedOperation)
+{
+}
+
+void QArtifact::removeOwnedOperation(const QOperation *ownedOperation)
 {
 }
 

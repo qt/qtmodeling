@@ -16,7 +16,6 @@ Current xmi2qt.xq limitations:
 ------------------------------
 
 - It doesn't detect the need for a virtual inheritance
-- It doesn't detect redefined properties (to be done soon)
 - It doesn't detect concrete classes with a non-direct
   QObjet-based parent and, therefore, erroneously generate a second
   QObject inheritance and a wrong initialization list in constructor

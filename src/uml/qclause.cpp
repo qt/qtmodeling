@@ -64,14 +64,30 @@ QClause::~QClause()
 /*!
     A nested activity fragment that is executed if the test evaluates to true and the clause is chosen over any concurrent clauses that also evaluate to true.
  */
-QList<QExecutableNode *> *QClause::bodies()
+const QSet<QExecutableNode *> *QClause::bodies() const
+{
+}
+
+void QClause::addBody(const QExecutableNode *body)
+{
+}
+
+void QClause::removeBody(const QExecutableNode *body)
 {
 }
 
 /*!
     A list of output pins within the body fragment whose values are moved to the result pins of the containing conditional node after execution of the clause body.
  */
-QList<QOutputPin *> *QClause::bodyOutputs()
+const QList<QOutputPin *> *QClause::bodyOutputs() const
+{
+}
+
+void QClause::addBodyOutput(const QOutputPin *bodyOutput)
+{
+}
+
+void QClause::removeBodyOutput(const QOutputPin *bodyOutput)
 {
 }
 
@@ -82,28 +98,52 @@ QOutputPin *QClause::decider() const
 {
 }
 
-void QClause::setDecider(QOutputPin *decider)
+void QClause::setDecider(const QOutputPin *decider)
 {
 }
 
 /*!
     A set of clauses whose tests must all evaluate false before the current clause can be tested.
  */
-QList<QClause *> *QClause::predecessorClauses()
+const QSet<QClause *> *QClause::predecessorClauses() const
+{
+}
+
+void QClause::addPredecessorClause(const QClause *predecessorClause)
+{
+}
+
+void QClause::removePredecessorClause(const QClause *predecessorClause)
 {
 }
 
 /*!
     A set of clauses which may not be tested unless the current clause tests false.
  */
-QList<QClause *> *QClause::successorClauses()
+const QSet<QClause *> *QClause::successorClauses() const
+{
+}
+
+void QClause::addSuccessorClause(const QClause *successorClause)
+{
+}
+
+void QClause::removeSuccessorClause(const QClause *successorClause)
 {
 }
 
 /*!
     A nested activity fragment with a designated output pin that specifies the result of the test.
  */
-QList<QExecutableNode *> *QClause::tests()
+const QSet<QExecutableNode *> *QClause::tests() const
+{
+}
+
+void QClause::addTest(const QExecutableNode *test)
+{
+}
+
+void QClause::removeTest(const QExecutableNode *test)
 {
 }
 

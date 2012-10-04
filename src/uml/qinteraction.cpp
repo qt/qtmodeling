@@ -64,35 +64,75 @@ QInteraction::~QInteraction()
 /*!
     Actions owned by the Interaction.
  */
-QList<QAction *> *QInteraction::actions()
+const QSet<QAction *> *QInteraction::actions() const
+{
+}
+
+void QInteraction::addAction(const QAction *action)
+{
+}
+
+void QInteraction::removeAction(const QAction *action)
 {
 }
 
 /*!
     Specifies the gates that form the message interface between this Interaction and any InteractionUses which reference it.
  */
-QList<QGate *> *QInteraction::formalGates()
+const QSet<QGate *> *QInteraction::formalGates() const
+{
+}
+
+void QInteraction::addFormalGate(const QGate *formalGate)
+{
+}
+
+void QInteraction::removeFormalGate(const QGate *formalGate)
 {
 }
 
 /*!
     The ordered set of fragments in the Interaction.
  */
-QList<QInteractionFragment *> *QInteraction::fragments()
+const QList<QInteractionFragment *> *QInteraction::fragments() const
+{
+}
+
+void QInteraction::addFragment(const QInteractionFragment *fragment)
+{
+}
+
+void QInteraction::removeFragment(const QInteractionFragment *fragment)
 {
 }
 
 /*!
     Specifies the participants in this Interaction.
  */
-QList<QLifeline *> *QInteraction::lifelines()
+const QSet<QLifeline *> *QInteraction::lifelines() const
+{
+}
+
+void QInteraction::addLifeline(const QLifeline *lifeline)
+{
+}
+
+void QInteraction::removeLifeline(const QLifeline *lifeline)
 {
 }
 
 /*!
     The Messages contained in this Interaction.
  */
-QList<QMessage *> *QInteraction::messages()
+const QSet<QMessage *> *QInteraction::messages() const
+{
+}
+
+void QInteraction::addMessage(const QMessage *message)
+{
+}
+
+void QInteraction::removeMessage(const QMessage *message)
 {
 }
 

@@ -68,7 +68,7 @@ QInstanceSpecification *QInstanceValue::instance() const
 {
 }
 
-void QInstanceValue::setInstance(QInstanceSpecification *instance)
+void QInstanceValue::setInstance(const QInstanceSpecification *instance)
 {
 }
 

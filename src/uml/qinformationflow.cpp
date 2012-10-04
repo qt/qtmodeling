@@ -64,49 +64,105 @@ QInformationFlow::~QInformationFlow()
 /*!
     Specifies the information items that may circulate on this information flow.
  */
-QList<QClassifier *> *QInformationFlow::conveyed()
+const QSet<QClassifier *> *QInformationFlow::conveyed() const
+{
+}
+
+void QInformationFlow::addConveyed(const QClassifier *conveyed)
+{
+}
+
+void QInformationFlow::removeConveyed(const QClassifier *conveyed)
 {
 }
 
 /*!
     Defines from which source the conveyed InformationItems are initiated.
  */
-QList<QNamedElement *> *QInformationFlow::informationSources()
+const QSet<QNamedElement *> *QInformationFlow::informationSources() const
+{
+}
+
+void QInformationFlow::addInformationSource(const QNamedElement *informationSource)
+{
+}
+
+void QInformationFlow::removeInformationSource(const QNamedElement *informationSource)
 {
 }
 
 /*!
     Defines to which target the conveyed InformationItems are directed.
  */
-QList<QNamedElement *> *QInformationFlow::informationTargets()
+const QSet<QNamedElement *> *QInformationFlow::informationTargets() const
+{
+}
+
+void QInformationFlow::addInformationTarget(const QNamedElement *informationTarget)
+{
+}
+
+void QInformationFlow::removeInformationTarget(const QNamedElement *informationTarget)
 {
 }
 
 /*!
     Determines which Relationship will realize the specified flow
  */
-QList<QRelationship *> *QInformationFlow::realizations()
+const QSet<QRelationship *> *QInformationFlow::realizations() const
+{
+}
+
+void QInformationFlow::addRealization(const QRelationship *realization)
+{
+}
+
+void QInformationFlow::removeRealization(const QRelationship *realization)
 {
 }
 
 /*!
     Determines which ActivityEdges will realize the specified flow.
  */
-QList<QActivityEdge *> *QInformationFlow::realizingActivityEdges()
+const QSet<QActivityEdge *> *QInformationFlow::realizingActivityEdges() const
+{
+}
+
+void QInformationFlow::addRealizingActivityEdge(const QActivityEdge *realizingActivityEdge)
+{
+}
+
+void QInformationFlow::removeRealizingActivityEdge(const QActivityEdge *realizingActivityEdge)
 {
 }
 
 /*!
     Determines which Connectors will realize the specified flow.
  */
-QList<QConnector *> *QInformationFlow::realizingConnectors()
+const QSet<QConnector *> *QInformationFlow::realizingConnectors() const
+{
+}
+
+void QInformationFlow::addRealizingConnector(const QConnector *realizingConnector)
+{
+}
+
+void QInformationFlow::removeRealizingConnector(const QConnector *realizingConnector)
 {
 }
 
 /*!
     Determines which Messages will realize the specified flow.
  */
-QList<QMessage *> *QInformationFlow::realizingMessages()
+const QSet<QMessage *> *QInformationFlow::realizingMessages() const
+{
+}
+
+void QInformationFlow::addRealizingMessage(const QMessage *realizingMessage)
+{
+}
+
+void QInformationFlow::removeRealizingMessage(const QMessage *realizingMessage)
 {
 }
 

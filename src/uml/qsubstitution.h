@@ -48,6 +48,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -69,9 +70,9 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QClassifier *contract() const;
-    void setContract(QClassifier *contract);
+    void setContract(const QClassifier *contract);
     QClassifier *substitutingClassifier() const;
-    void setSubstitutingClassifier(QClassifier *substitutingClassifier);
+    void setSubstitutingClassifier(const QClassifier *substitutingClassifier);
 
 private:
     Q_DISABLE_COPY(QSubstitution)

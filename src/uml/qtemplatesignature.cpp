@@ -64,14 +64,30 @@ QTemplateSignature::~QTemplateSignature()
 /*!
     The formal template parameters that are owned by this template signature.
  */
-QList<QTemplateParameter *> *QTemplateSignature::ownedParameters()
+const QList<QTemplateParameter *> *QTemplateSignature::ownedParameters() const
+{
+}
+
+void QTemplateSignature::addOwnedParameter(const QTemplateParameter *ownedParameter)
+{
+}
+
+void QTemplateSignature::removeOwnedParameter(const QTemplateParameter *ownedParameter)
 {
 }
 
 /*!
     The ordered set of all formal template parameters for this template signature.
  */
-QList<QTemplateParameter *> *QTemplateSignature::parameters()
+const QList<QTemplateParameter *> *QTemplateSignature::parameters() const
+{
+}
+
+void QTemplateSignature::addParameter(const QTemplateParameter *parameter)
+{
+}
+
+void QTemplateSignature::removeParameter(const QTemplateParameter *parameter)
 {
 }
 
@@ -82,7 +98,7 @@ QTemplateableElement *QTemplateSignature::template_() const
 {
 }
 
-void QTemplateSignature::setTemplate_(QTemplateableElement *template_)
+void QTemplateSignature::setTemplate_(const QTemplateableElement *template_)
 {
 }
 

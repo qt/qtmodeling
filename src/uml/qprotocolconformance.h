@@ -49,6 +49,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -61,16 +62,16 @@ class Q_UML_EXPORT QProtocolConformance : public QObject, public QDirectedRelati
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QRelationship
-    Q_PROPERTY(const QList<QElement *> * relatedElements READ relatedElements)
+    Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
 
     // From QDirectedRelationship
-    Q_PROPERTY(const QList<QElement *> * sources READ sources)
-    Q_PROPERTY(const QList<QElement *> * targets READ targets)
+    Q_PROPERTY(const QSet<QElement *> * sources READ sources)
+    Q_PROPERTY(const QSet<QElement *> * targets READ targets)
 
     // From QProtocolConformance
     Q_PROPERTY(QProtocolStateMachine * generalMachine READ generalMachine WRITE setGeneralMachine)
@@ -82,9 +83,9 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QProtocolStateMachine *generalMachine() const;
-    void setGeneralMachine(QProtocolStateMachine *generalMachine);
+    void setGeneralMachine(const QProtocolStateMachine *generalMachine);
     QProtocolStateMachine *specificMachine() const;
-    void setSpecificMachine(QProtocolStateMachine *specificMachine);
+    void setSpecificMachine(const QProtocolStateMachine *specificMachine);
 
 private:
     Q_DISABLE_COPY(QProtocolConformance)

@@ -68,7 +68,7 @@ QParameter *QActivityParameterNode::parameter() const
 {
 }
 
-void QActivityParameterNode::setParameter(QParameter *parameter)
+void QActivityParameterNode::setParameter(const QParameter *parameter)
 {
 }
 

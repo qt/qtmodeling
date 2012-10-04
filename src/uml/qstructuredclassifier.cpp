@@ -63,28 +63,44 @@ QStructuredClassifier::~QStructuredClassifier()
 /*!
     References the properties owned by the classifier.
  */
-QList<QProperty *> *QStructuredClassifier::ownedAttributes()
+const QList<QProperty *> *QStructuredClassifier::ownedAttributes() const
+{
+}
+
+void QStructuredClassifier::addOwnedAttribute(const QProperty *ownedAttribute)
+{
+}
+
+void QStructuredClassifier::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
 }
 
 /*!
     References the connectors owned by the classifier.
  */
-QList<QConnector *> *QStructuredClassifier::ownedConnectors()
+const QSet<QConnector *> *QStructuredClassifier::ownedConnectors() const
+{
+}
+
+void QStructuredClassifier::addOwnedConnector(const QConnector *ownedConnector)
+{
+}
+
+void QStructuredClassifier::removeOwnedConnector(const QConnector *ownedConnector)
 {
 }
 
 /*!
     References the roles that instances may play in this classifier.
  */
-const QList<QConnectableElement *> *QStructuredClassifier::roles() const
+const QSet<QConnectableElement *> *QStructuredClassifier::roles() const
 {
 }
 
 /*!
     Missing derivation for StructuredClassifier::/part : Property
  */
-const QList<QProperty *> *QStructuredClassifier::parts() const
+const QSet<QProperty *> *QStructuredClassifier::parts() const
 {
 }
 

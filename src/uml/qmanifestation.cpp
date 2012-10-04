@@ -68,7 +68,7 @@ QPackageableElement *QManifestation::utilizedElement() const
 {
 }
 
-void QManifestation::setUtilizedElement(QPackageableElement *utilizedElement)
+void QManifestation::setUtilizedElement(const QPackageableElement *utilizedElement)
 {
 }
 

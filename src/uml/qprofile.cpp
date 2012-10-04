@@ -64,14 +64,30 @@ QProfile::~QProfile()
 /*!
     References a metaclass that may be extended.
  */
-QList<QElementImport *> *QProfile::metaclassReferences()
+const QSet<QElementImport *> *QProfile::metaclassReferences() const
+{
+}
+
+void QProfile::addMetaclassReference(const QElementImport *metaclassReference)
+{
+}
+
+void QProfile::removeMetaclassReference(const QElementImport *metaclassReference)
 {
 }
 
 /*!
     References a package containing (directly or indirectly) metaclasses that may be extended.
  */
-QList<QPackageImport *> *QProfile::metamodelReferences()
+const QSet<QPackageImport *> *QProfile::metamodelReferences() const
+{
+}
+
+void QProfile::addMetamodelReference(const QPackageImport *metamodelReference)
+{
+}
+
+void QProfile::removeMetamodelReference(const QPackageImport *metamodelReference)
 {
 }
 

@@ -47,9 +47,10 @@
 #include <QtUml/QRedefinableElement>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -68,7 +69,7 @@ public:
     void setStatic(bool isStatic);
 
     // Association-ends (except those derived && !derivedUnion)
-    const QList<QClassifier *> *featuringClassifiers() const;
+    const QSet<QClassifier *> *featuringClassifiers() const;
 
 protected:
     explicit QFeature();

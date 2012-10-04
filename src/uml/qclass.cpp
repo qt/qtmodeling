@@ -86,49 +86,81 @@ void QClass::setActive(bool isActive)
 /*!
     References all the Classifiers that are defined (nested) within the Class.
  */
-QList<QClassifier *> *QClass::nestedClassifiers()
+const QList<QClassifier *> *QClass::nestedClassifiers() const
+{
+}
+
+void QClass::addNestedClassifier(const QClassifier *nestedClassifier)
+{
+}
+
+void QClass::removeNestedClassifier(const QClassifier *nestedClassifier)
 {
 }
 
 /*!
     The attributes (i.e. the properties) owned by the class.
  */
-QList<QProperty *> *QClass::ownedAttributes()
+const QList<QProperty *> *QClass::ownedAttributes() const
+{
+}
+
+void QClass::addOwnedAttribute(const QProperty *ownedAttribute)
+{
+}
+
+void QClass::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
 }
 
 /*!
     The operations owned by the class.
  */
-QList<QOperation *> *QClass::ownedOperations()
+const QList<QOperation *> *QClass::ownedOperations() const
+{
+}
+
+void QClass::addOwnedOperation(const QOperation *ownedOperation)
+{
+}
+
+void QClass::removeOwnedOperation(const QOperation *ownedOperation)
 {
 }
 
 /*!
     Receptions that objects of this class are willing to accept.
  */
-QList<QReception *> *QClass::ownedReceptions()
+const QSet<QReception *> *QClass::ownedReceptions() const
+{
+}
+
+void QClass::addOwnedReception(const QReception *ownedReception)
+{
+}
+
+void QClass::removeOwnedReception(const QReception *ownedReception)
 {
 }
 
 /*!
     Missing derivation for Class::/extension : Extension
  */
-const QList<QExtension *> *QClass::extensions() const
+const QSet<QExtension *> *QClass::extensions() const
 {
 }
 
 /*!
     The inherit operation is overridden to exclude redefined properties.
  */
-const QList<QNamedElement *> *QClass::inherit(const QList<QNamedElement *> *inhs) const
+const QSet<QNamedElement *> *QClass::inherit(const QSet<QNamedElement *> *inhs) const
 {
 }
 
 /*!
     Missing derivation for Class::/superClass : Class
  */
-const QList<QClass *> *QClass::superClasses() const
+const QSet<QClass *> *QClass::superClasses() const
 {
 }
 

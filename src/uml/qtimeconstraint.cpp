@@ -79,7 +79,7 @@ QTimeInterval *QTimeConstraint::specification() const
 {
 }
 
-void QTimeConstraint::setSpecification(QTimeInterval *specification)
+void QTimeConstraint::setSpecification(const QTimeInterval *specification)
 {
 }
 

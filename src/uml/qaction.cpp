@@ -81,14 +81,30 @@ const QList<QInputPin *> *QAction::inputs() const
 /*!
     Constraint that must be satisfied when executed is completed.
  */
-QList<QConstraint *> *QAction::localPostconditions()
+const QSet<QConstraint *> *QAction::localPostconditions() const
+{
+}
+
+void QAction::addLocalPostcondition(const QConstraint *localPostcondition)
+{
+}
+
+void QAction::removeLocalPostcondition(const QConstraint *localPostcondition)
 {
 }
 
 /*!
     Constraint that must be satisfied when execution is started.
  */
-QList<QConstraint *> *QAction::localPreconditions()
+const QSet<QConstraint *> *QAction::localPreconditions() const
+{
+}
+
+void QAction::addLocalPrecondition(const QConstraint *localPrecondition)
+{
+}
+
+void QAction::removeLocalPrecondition(const QConstraint *localPrecondition)
 {
 }
 
@@ -102,7 +118,7 @@ const QList<QOutputPin *> *QAction::outputs() const
 /*!
     Missing derivation for Action::/context : Classifier
  */
-const QClassifier *QAction::context() const
+QClassifier *QAction::context() const
 {
 }
 

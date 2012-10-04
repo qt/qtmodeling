@@ -49,6 +49,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -61,31 +62,31 @@ class Q_UML_EXPORT QObjectFlow : public QObject, public QActivityEdge
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QRedefinableElement
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElements READ redefinedElements)
-    Q_PROPERTY(const QList<QClassifier *> * redefinitionContexts READ redefinitionContexts)
+    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
+    Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
 
     // From QActivityEdge
     Q_PROPERTY(QActivity * activity READ activity WRITE setActivity)
     Q_PROPERTY(QValueSpecification * guard READ guard WRITE setGuard)
-    Q_PROPERTY(const QList<QActivityGroup *> * inGroup READ inGroup)
-    Q_PROPERTY(QList<QActivityPartition *> * inPartition READ inPartition)
+    Q_PROPERTY(const QSet<QActivityGroup *> * inGroup READ inGroup)
+    Q_PROPERTY(const QSet<QActivityPartition *> * inPartition READ inPartition)
     Q_PROPERTY(QStructuredActivityNode * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
     Q_PROPERTY(QInterruptibleActivityRegion * interrupts READ interrupts WRITE setInterrupts)
-    Q_PROPERTY(QList<QActivityEdge *> * redefinedEdges READ redefinedEdges)
+    Q_PROPERTY(const QSet<QActivityEdge *> * redefinedEdges READ redefinedEdges)
     Q_PROPERTY(QActivityNode * source READ source WRITE setSource)
     Q_PROPERTY(QActivityNode * target READ target WRITE setTarget)
     Q_PROPERTY(QValueSpecification * weight READ weight WRITE setWeight)
@@ -108,9 +109,9 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QBehavior *selection() const;
-    void setSelection(QBehavior *selection);
+    void setSelection(const QBehavior *selection);
     QBehavior *transformation() const;
-    void setTransformation(QBehavior *transformation);
+    void setTransformation(const QBehavior *transformation);
 
 private:
     Q_DISABLE_COPY(QObjectFlow)

@@ -52,6 +52,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -65,13 +66,13 @@ class Q_UML_EXPORT QTemplateSignature : public QObject, public virtual QElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QTemplateSignature
-    Q_PROPERTY(QList<QTemplateParameter *> * ownedParameters READ ownedParameters)
-    Q_PROPERTY(QList<QTemplateParameter *> * parameters READ parameters)
+    Q_PROPERTY(const QList<QTemplateParameter *> * ownedParameters READ ownedParameters)
+    Q_PROPERTY(const QList<QTemplateParameter *> * parameters READ parameters)
     Q_PROPERTY(QTemplateableElement * template_ READ template_ WRITE setTemplate_)
 
 public:
@@ -79,10 +80,14 @@ public:
     virtual ~QTemplateSignature();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QTemplateParameter *> *ownedParameters();
-    QList<QTemplateParameter *> *parameters();
+    const QList<QTemplateParameter *> *ownedParameters() const;
+    void addOwnedParameter(const QTemplateParameter *ownedParameter);
+    void removeOwnedParameter(const QTemplateParameter *ownedParameter);
+    const QList<QTemplateParameter *> *parameters() const;
+    void addParameter(const QTemplateParameter *parameter);
+    void removeParameter(const QTemplateParameter *parameter);
     QTemplateableElement *template_() const;
-    void setTemplate_(QTemplateableElement *template_);
+    void setTemplate_(const QTemplateableElement *template_);
 
 private:
     Q_DISABLE_COPY(QTemplateSignature)

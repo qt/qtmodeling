@@ -64,14 +64,30 @@ QOpaqueExpression::~QOpaqueExpression()
 /*!
     The text of the expression, possibly in multiple languages.
  */
-QList<QString *> QOpaqueExpression::bodies()
+const QList<QString> *QOpaqueExpression::bodies() const
+{
+}
+
+void QOpaqueExpression::addBody(QString body)
+{
+}
+
+void QOpaqueExpression::removeBody(QString body)
 {
 }
 
 /*!
     Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.
  */
-QList<QString *> QOpaqueExpression::languages()
+const QList<QString> *QOpaqueExpression::languages() const
+{
+}
+
+void QOpaqueExpression::addLanguage(QString language)
+{
+}
+
+void QOpaqueExpression::removeLanguage(QString language)
 {
 }
 
@@ -82,7 +98,7 @@ QBehavior *QOpaqueExpression::behavior() const
 {
 }
 
-void QOpaqueExpression::setBehavior(QBehavior *behavior)
+void QOpaqueExpression::setBehavior(const QBehavior *behavior)
 {
 }
 
@@ -110,7 +126,7 @@ bool QOpaqueExpression::isPositive() const
 /*!
     Missing derivation for OpaqueExpression::/result : Parameter
  */
-const QParameter *QOpaqueExpression::result() const
+QParameter *QOpaqueExpression::result() const
 {
 }
 

@@ -50,9 +50,10 @@
 #include <QtUml/QDeploymentTarget>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -68,17 +69,16 @@ class Q_UML_EXPORT QInstanceSpecification : public QObject, public QDeployedArti
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QParameterableElement
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
@@ -88,12 +88,12 @@ class Q_UML_EXPORT QInstanceSpecification : public QObject, public QDeployedArti
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // From QDeploymentTarget
-    Q_PROPERTY(const QList<QPackageableElement *> * deployedElements READ deployedElements)
-    Q_PROPERTY(QList<QDeployment *> * deployments READ deployments)
+    Q_PROPERTY(const QSet<QPackageableElement *> * deployedElements READ deployedElements)
+    Q_PROPERTY(const QSet<QDeployment *> * deployments READ deployments)
 
     // From QInstanceSpecification
-    Q_PROPERTY(QList<QClassifier *> * classifiers READ classifiers)
-    Q_PROPERTY(QList<QSlot *> * slots READ slots_)
+    Q_PROPERTY(const QSet<QClassifier *> * classifiers READ classifiers)
+    Q_PROPERTY(const QSet<QSlot *> * slots_ READ slots_)
     Q_PROPERTY(QValueSpecification * specification READ specification WRITE setSpecification)
 
 public:
@@ -101,10 +101,14 @@ public:
     virtual ~QInstanceSpecification();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QClassifier *> *classifiers();
-    QList<QSlot *> *slots_();
+    const QSet<QClassifier *> *classifiers() const;
+    void addClassifier(const QClassifier *classifier);
+    void removeClassifier(const QClassifier *classifier);
+    const QSet<QSlot *> *slots_() const;
+    void addSlot(const QSlot *slot_);
+    void removeSlot(const QSlot *slot_);
     QValueSpecification *specification() const;
-    void setSpecification(QValueSpecification *specification);
+    void setSpecification(const QValueSpecification *specification);
 
 private:
     Q_DISABLE_COPY(QInstanceSpecification)

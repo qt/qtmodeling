@@ -79,7 +79,7 @@ QInputPin *QReduceAction::collection() const
 {
 }
 
-void QReduceAction::setCollection(QInputPin *collection)
+void QReduceAction::setCollection(const QInputPin *collection)
 {
 }
 
@@ -90,7 +90,7 @@ QBehavior *QReduceAction::reducer() const
 {
 }
 
-void QReduceAction::setReducer(QBehavior *reducer)
+void QReduceAction::setReducer(const QBehavior *reducer)
 {
 }
 
@@ -101,7 +101,7 @@ QOutputPin *QReduceAction::result() const
 {
 }
 
-void QReduceAction::setResult(QOutputPin *result)
+void QReduceAction::setResult(const QOutputPin *result)
 {
 }
 

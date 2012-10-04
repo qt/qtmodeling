@@ -47,9 +47,10 @@
 #include <QtUml/QTransition>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -66,7 +67,7 @@ class Q_UML_EXPORT QProtocolTransition : public QTransition
     // From QProtocolTransition
     Q_PROPERTY(QConstraint * postCondition READ postCondition WRITE setPostCondition)
     Q_PROPERTY(QConstraint * preCondition READ preCondition WRITE setPreCondition)
-    Q_PROPERTY(const QList<QOperation *> * referred READ referred)
+    Q_PROPERTY(const QSet<QOperation *> * referred READ referred)
 
 public:
     explicit QProtocolTransition(QObject *parent = 0);
@@ -74,12 +75,12 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QConstraint *postCondition() const;
-    void setPostCondition(QConstraint *postCondition);
+    void setPostCondition(const QConstraint *postCondition);
     QConstraint *preCondition() const;
-    void setPreCondition(QConstraint *preCondition);
+    void setPreCondition(const QConstraint *preCondition);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QList<QOperation *> *referred() const;
+    const QSet<QOperation *> *referred() const;
 
 private:
     Q_DISABLE_COPY(QProtocolTransition)

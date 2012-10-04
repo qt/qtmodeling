@@ -79,7 +79,7 @@ QInputPin *QLinkEndCreationData::insertAt() const
 {
 }
 
-void QLinkEndCreationData::setInsertAt(QInputPin *insertAt)
+void QLinkEndCreationData::setInsertAt(const QInputPin *insertAt)
 {
 }
 

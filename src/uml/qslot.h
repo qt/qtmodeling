@@ -52,6 +52,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -66,14 +67,14 @@ class Q_UML_EXPORT QSlot : public QObject, public QElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QSlot
     Q_PROPERTY(QStructuralFeature * definingFeature READ definingFeature WRITE setDefiningFeature)
     Q_PROPERTY(QInstanceSpecification * owningInstance READ owningInstance WRITE setOwningInstance)
-    Q_PROPERTY(QList<QValueSpecification *> * values READ values)
+    Q_PROPERTY(const QList<QValueSpecification *> * values READ values)
 
 public:
     explicit QSlot(QObject *parent = 0);
@@ -81,10 +82,12 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QStructuralFeature *definingFeature() const;
-    void setDefiningFeature(QStructuralFeature *definingFeature);
+    void setDefiningFeature(const QStructuralFeature *definingFeature);
     QInstanceSpecification *owningInstance() const;
-    void setOwningInstance(QInstanceSpecification *owningInstance);
-    QList<QValueSpecification *> *values();
+    void setOwningInstance(const QInstanceSpecification *owningInstance);
+    const QList<QValueSpecification *> *values() const;
+    void addValue(const QValueSpecification *value);
+    void removeValue(const QValueSpecification *value);
 
 private:
     Q_DISABLE_COPY(QSlot)

@@ -79,7 +79,7 @@ QConstraint *QOperation::bodyCondition() const
 {
 }
 
-void QOperation::setBodyCondition(QConstraint *bodyCondition)
+void QOperation::setBodyCondition(const QConstraint *bodyCondition)
 {
 }
 
@@ -90,7 +90,7 @@ QClass *QOperation::class_() const
 {
 }
 
-void QOperation::setClass_(QClass *class_)
+void QOperation::setClass_(const QClass *class_)
 {
 }
 
@@ -101,7 +101,7 @@ QDataType *QOperation::datatype() const
 {
 }
 
-void QOperation::setDatatype(QDataType *datatype)
+void QOperation::setDatatype(const QDataType *datatype)
 {
 }
 
@@ -112,42 +112,82 @@ QInterface *QOperation::interface() const
 {
 }
 
-void QOperation::setInterface(QInterface *interface)
+void QOperation::setInterface(const QInterface *interface)
 {
 }
 
 /*!
     Specifies the ordered set of formal parameters of this BehavioralFeature.Specifies the parameters owned by this Operation.
  */
-QList<QParameter *> *QOperation::ownedParameters()
+const QList<QParameter *> *QOperation::ownedParameters() const
+{
+}
+
+void QOperation::addOwnedParameter(const QParameter *ownedParameter)
+{
+}
+
+void QOperation::removeOwnedParameter(const QParameter *ownedParameter)
 {
 }
 
 /*!
     An optional set of Constraints specifying the state of the system when the Operation is completed.
  */
-QList<QConstraint *> *QOperation::postconditions()
+const QSet<QConstraint *> *QOperation::postconditions() const
+{
+}
+
+void QOperation::addPostcondition(const QConstraint *postcondition)
+{
+}
+
+void QOperation::removePostcondition(const QConstraint *postcondition)
 {
 }
 
 /*!
     An optional set of Constraints on the state of the system when the Operation is invoked.
  */
-QList<QConstraint *> *QOperation::preconditions()
+const QSet<QConstraint *> *QOperation::preconditions() const
+{
+}
+
+void QOperation::addPrecondition(const QConstraint *precondition)
+{
+}
+
+void QOperation::removePrecondition(const QConstraint *precondition)
 {
 }
 
 /*!
     References the Types representing exceptions that may be raised during an invocation of this operation.
  */
-QList<QType *> *QOperation::raisedExceptions()
+const QSet<QType *> *QOperation::raisedExceptions() const
+{
+}
+
+void QOperation::addRaisedException(const QType *raisedException)
+{
+}
+
+void QOperation::removeRaisedException(const QType *raisedException)
 {
 }
 
 /*!
     References the Operations that are redefined by this Operation.
  */
-QList<QOperation *> *QOperation::redefinedOperations()
+const QSet<QOperation *> *QOperation::redefinedOperations() const
+{
+}
+
+void QOperation::addRedefinedOperation(const QOperation *redefinedOperation)
+{
+}
+
+void QOperation::removeRedefinedOperation(const QOperation *redefinedOperation)
 {
 }
 
@@ -158,7 +198,7 @@ QOperationTemplateParameter *QOperation::templateParameter() const
 {
 }
 
-void QOperation::setTemplateParameter(QOperationTemplateParameter *templateParameter)
+void QOperation::setTemplateParameter(const QOperationTemplateParameter *templateParameter)
 {
 }
 
@@ -193,14 +233,14 @@ qint32 QOperation::lower() const
 /*!
     The query returnResult() returns the set containing the return parameter of the Operation if one exists, otherwise, it returns an empty set
  */
-const QList<QParameter *> *QOperation::returnResult() const
+const QSet<QParameter *> *QOperation::returnResult() const
 {
 }
 
 /*!
     If this operation has a return parameter, type equals the value of type for that parameter. Otherwise type is not defined.
  */
-const QType *QOperation::type() const
+QType *QOperation::type() const
 {
 }
 

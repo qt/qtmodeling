@@ -48,9 +48,10 @@
 #include <QtUml/QDeploymentTarget>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -63,31 +64,33 @@ class Q_UML_EXPORT QNode : public QClass, public QDeploymentTarget
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QDeploymentTarget
-    Q_PROPERTY(const QList<QPackageableElement *> * deployedElements READ deployedElements)
-    Q_PROPERTY(QList<QDeployment *> * deployments READ deployments)
+    Q_PROPERTY(const QSet<QPackageableElement *> * deployedElements READ deployedElements)
+    Q_PROPERTY(const QSet<QDeployment *> * deployments READ deployments)
 
     // From QNode
-    Q_PROPERTY(QList<QNode *> * nestedNodes READ nestedNodes)
+    Q_PROPERTY(const QSet<QNode *> * nestedNodes READ nestedNodes)
 
 public:
     explicit QNode(QObject *parent = 0);
     virtual ~QNode();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QNode *> *nestedNodes();
+    const QSet<QNode *> *nestedNodes() const;
+    void addNestedNode(const QNode *nestedNode);
+    void removeNestedNode(const QNode *nestedNode);
 
 private:
     Q_DISABLE_COPY(QNode)

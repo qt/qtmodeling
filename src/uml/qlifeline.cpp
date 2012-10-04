@@ -64,7 +64,15 @@ QLifeline::~QLifeline()
 /*!
     References the InteractionFragments in which this Lifeline takes part.
  */
-QList<QInteractionFragment *> *QLifeline::coveredBy()
+const QSet<QInteractionFragment *> *QLifeline::coveredBy() const
+{
+}
+
+void QLifeline::addCoveredBy(const QInteractionFragment *coveredBy)
+{
+}
+
+void QLifeline::removeCoveredBy(const QInteractionFragment *coveredBy)
 {
 }
 
@@ -75,7 +83,7 @@ QPartDecomposition *QLifeline::decomposedAs() const
 {
 }
 
-void QLifeline::setDecomposedAs(QPartDecomposition *decomposedAs)
+void QLifeline::setDecomposedAs(const QPartDecomposition *decomposedAs)
 {
 }
 
@@ -86,7 +94,7 @@ QInteraction *QLifeline::interaction() const
 {
 }
 
-void QLifeline::setInteraction(QInteraction *interaction)
+void QLifeline::setInteraction(const QInteraction *interaction)
 {
 }
 
@@ -97,7 +105,7 @@ QConnectableElement *QLifeline::represents() const
 {
 }
 
-void QLifeline::setRepresents(QConnectableElement *represents)
+void QLifeline::setRepresents(const QConnectableElement *represents)
 {
 }
 
@@ -108,7 +116,7 @@ QValueSpecification *QLifeline::selector() const
 {
 }
 
-void QLifeline::setSelector(QValueSpecification *selector)
+void QLifeline::setSelector(const QValueSpecification *selector)
 {
 }
 

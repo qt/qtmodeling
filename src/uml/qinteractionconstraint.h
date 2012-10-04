@@ -48,6 +48,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -69,9 +70,9 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QValueSpecification *maxint() const;
-    void setMaxint(QValueSpecification *maxint);
+    void setMaxint(const QValueSpecification *maxint);
     QValueSpecification *minint() const;
-    void setMinint(QValueSpecification *minint);
+    void setMinint(const QValueSpecification *minint);
 
 private:
     Q_DISABLE_COPY(QInteractionConstraint)

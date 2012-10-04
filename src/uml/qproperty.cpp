@@ -123,7 +123,7 @@ QAssociation *QProperty::association() const
 {
 }
 
-void QProperty::setAssociation(QAssociation *association)
+void QProperty::setAssociation(const QAssociation *association)
 {
 }
 
@@ -134,7 +134,7 @@ QProperty *QProperty::associationEnd() const
 {
 }
 
-void QProperty::setAssociationEnd(QProperty *associationEnd)
+void QProperty::setAssociationEnd(const QProperty *associationEnd)
 {
 }
 
@@ -145,7 +145,7 @@ QClass *QProperty::class_() const
 {
 }
 
-void QProperty::setClass_(QClass *class_)
+void QProperty::setClass_(const QClass *class_)
 {
 }
 
@@ -156,7 +156,7 @@ QDataType *QProperty::datatype() const
 {
 }
 
-void QProperty::setDatatype(QDataType *datatype)
+void QProperty::setDatatype(const QDataType *datatype)
 {
 }
 
@@ -167,7 +167,7 @@ QValueSpecification *QProperty::defaultValue() const
 {
 }
 
-void QProperty::setDefaultValue(QValueSpecification *defaultValue)
+void QProperty::setDefaultValue(const QValueSpecification *defaultValue)
 {
 }
 
@@ -178,7 +178,7 @@ QInterface *QProperty::interface() const
 {
 }
 
-void QProperty::setInterface(QInterface *interface)
+void QProperty::setInterface(const QInterface *interface)
 {
 }
 
@@ -189,28 +189,52 @@ QAssociation *QProperty::owningAssociation() const
 {
 }
 
-void QProperty::setOwningAssociation(QAssociation *owningAssociation)
+void QProperty::setOwningAssociation(const QAssociation *owningAssociation)
 {
 }
 
 /*!
     An optional list of ordered qualifier attributes for the end. If the list is empty, then the Association is not qualified.
  */
-QList<QProperty *> *QProperty::qualifiers()
+const QList<QProperty *> *QProperty::qualifiers() const
+{
+}
+
+void QProperty::addQualifier(const QProperty *qualifier)
+{
+}
+
+void QProperty::removeQualifier(const QProperty *qualifier)
 {
 }
 
 /*!
     References the properties that are redefined by this property.
  */
-QList<QProperty *> *QProperty::redefinedProperties()
+const QSet<QProperty *> *QProperty::redefinedProperties() const
+{
+}
+
+void QProperty::addRedefinedProperty(const QProperty *redefinedProperty)
+{
+}
+
+void QProperty::removeRedefinedProperty(const QProperty *redefinedProperty)
 {
 }
 
 /*!
     References the properties of which this property is constrained to be a subset.
  */
-QList<QProperty *> *QProperty::subsettedProperties()
+const QSet<QProperty *> *QProperty::subsettedProperties() const
+{
+}
+
+void QProperty::addSubsettedProperty(const QProperty *subsettedProperty)
+{
+}
+
+void QProperty::removeSubsettedProperty(const QProperty *subsettedProperty)
 {
 }
 
@@ -259,14 +283,14 @@ bool QProperty::isNavigable() const
 /*!
     If this property is owned by a class, associated with a binary association, and the other end of the association is also owned by a class, then opposite gives the other end.
  */
-const QProperty *QProperty::opposite() const
+QProperty *QProperty::opposite() const
 {
 }
 
 /*!
     The query subsettingContext() gives the context for subsetting a property. It consists, in the case of an attribute, of the corresponding classifier, and in the case of an association end, all of the classifiers at the other ends.
  */
-const QList<QType *> *QProperty::subsettingContext() const
+const QSet<QType *> *QProperty::subsettingContext() const
 {
 }
 

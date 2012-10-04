@@ -68,7 +68,7 @@ QPackage *QPackageMerge::mergedPackage() const
 {
 }
 
-void QPackageMerge::setMergedPackage(QPackage *mergedPackage)
+void QPackageMerge::setMergedPackage(const QPackage *mergedPackage)
 {
 }
 
@@ -79,7 +79,7 @@ QPackage *QPackageMerge::receivingPackage() const
 {
 }
 
-void QPackageMerge::setReceivingPackage(QPackage *receivingPackage)
+void QPackageMerge::setReceivingPackage(const QPackage *receivingPackage)
 {
 }
 

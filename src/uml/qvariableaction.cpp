@@ -67,7 +67,7 @@ QVariable *QVariableAction::variable() const
 {
 }
 
-void QVariableAction::setVariable(QVariable *variable)
+void QVariableAction::setVariable(const QVariable *variable)
 {
 }
 

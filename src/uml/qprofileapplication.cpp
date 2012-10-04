@@ -79,7 +79,7 @@ QProfile *QProfileApplication::appliedProfile() const
 {
 }
 
-void QProfileApplication::setAppliedProfile(QProfile *appliedProfile)
+void QProfileApplication::setAppliedProfile(const QProfile *appliedProfile)
 {
 }
 
@@ -90,7 +90,7 @@ QPackage *QProfileApplication::applyingPackage() const
 {
 }
 
-void QProfileApplication::setApplyingPackage(QPackage *applyingPackage)
+void QProfileApplication::setApplyingPackage(const QPackage *applyingPackage)
 {
 }
 

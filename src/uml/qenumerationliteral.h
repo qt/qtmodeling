@@ -48,6 +48,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -60,7 +61,7 @@ class Q_UML_EXPORT QEnumerationLiteral : public QInstanceSpecification
     Q_OBJECT
 
     // From QEnumerationLiteral
-    Q_PROPERTY(const QEnumeration * classifier READ classifier)
+    Q_PROPERTY(QEnumeration * classifier READ classifier)
     Q_PROPERTY(QEnumeration * enumeration READ enumeration WRITE setEnumeration)
 
 public:
@@ -69,10 +70,10 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QEnumeration *enumeration() const;
-    void setEnumeration(QEnumeration *enumeration);
+    void setEnumeration(const QEnumeration *enumeration);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QEnumeration *classifier() const;
+    QEnumeration *classifier() const;
 
 private:
     Q_DISABLE_COPY(QEnumerationLiteral)

@@ -67,28 +67,28 @@ QRegion *QVertex::container() const
 {
 }
 
-void QVertex::setContainer(QRegion *container)
+void QVertex::setContainer(const QRegion *container)
 {
 }
 
 /*!
     The operation containingStateMachine() returns the state machine in which this Vertex is defined
  */
-const QStateMachine *QVertex::containingStateMachine() const
+QStateMachine *QVertex::containingStateMachine() const
 {
 }
 
 /*!
     Missing derivation for Vertex::/incoming : Transition
  */
-const QList<QTransition *> *QVertex::incomings() const
+const QSet<QTransition *> *QVertex::incomings() const
 {
 }
 
 /*!
     Missing derivation for Vertex::/outgoing : Transition
  */
-const QList<QTransition *> *QVertex::outgoings() const
+const QSet<QTransition *> *QVertex::outgoings() const
 {
 }
 

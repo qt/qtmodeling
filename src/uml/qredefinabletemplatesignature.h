@@ -48,9 +48,10 @@
 #include <QtUml/QRedefinableElement>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -65,27 +66,27 @@ class Q_UML_EXPORT QRedefinableTemplateSignature : public QTemplateSignature, pu
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QRedefinableElement
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElements READ redefinedElements)
-    Q_PROPERTY(const QList<QClassifier *> * redefinitionContexts READ redefinitionContexts)
+    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
+    Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
 
     // From QRedefinableTemplateSignature
     Q_PROPERTY(QClassifier * classifier READ classifier WRITE setClassifier)
-    Q_PROPERTY(QList<QRedefinableTemplateSignature *> * extendedSignatures READ extendedSignatures)
-    Q_PROPERTY(const QList<QTemplateParameter *> * inheritedParameters READ inheritedParameters)
+    Q_PROPERTY(const QSet<QRedefinableTemplateSignature *> * extendedSignatures READ extendedSignatures)
+    Q_PROPERTY(const QSet<QTemplateParameter *> * inheritedParameters READ inheritedParameters)
 
 public:
     explicit QRedefinableTemplateSignature(QObject *parent = 0);
@@ -93,11 +94,13 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QClassifier *classifier() const;
-    void setClassifier(QClassifier *classifier);
-    QList<QRedefinableTemplateSignature *> *extendedSignatures();
+    void setClassifier(const QClassifier *classifier);
+    const QSet<QRedefinableTemplateSignature *> *extendedSignatures() const;
+    void addExtendedSignature(const QRedefinableTemplateSignature *extendedSignature);
+    void removeExtendedSignature(const QRedefinableTemplateSignature *extendedSignature);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QList<QTemplateParameter *> *inheritedParameters() const;
+    const QSet<QTemplateParameter *> *inheritedParameters() const;
     bool isConsistentWith(const QRedefinableElement *redefinee) const;
 
 private:

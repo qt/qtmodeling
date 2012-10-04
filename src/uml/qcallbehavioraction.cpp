@@ -68,7 +68,7 @@ QBehavior *QCallBehaviorAction::behavior() const
 {
 }
 
-void QCallBehaviorAction::setBehavior(QBehavior *behavior)
+void QCallBehaviorAction::setBehavior(const QBehavior *behavior)
 {
 }
 

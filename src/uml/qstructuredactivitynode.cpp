@@ -79,36 +79,76 @@ QActivity *QStructuredActivityNode::activity() const
 {
 }
 
-void QStructuredActivityNode::setActivity(QActivity *activity)
+void QStructuredActivityNode::setActivity(const QActivity *activity)
 {
 }
 
 /*!
     Edges immediately contained in the structured node.
  */
-QList<QActivityEdge *> *QStructuredActivityNode::edges()
+const QSet<QActivityEdge *> *QStructuredActivityNode::edges() const
+{
+}
+
+void QStructuredActivityNode::addEdge(const QActivityEdge *edge)
+{
+}
+
+void QStructuredActivityNode::removeEdge(const QActivityEdge *edge)
 {
 }
 
 /*!
     Nodes immediately contained in the group.
  */
-QList<QActivityNode *> *QStructuredActivityNode::nodes()
+const QSet<QActivityNode *> *QStructuredActivityNode::nodes() const
 {
 }
 
-QList<QInputPin *> *QStructuredActivityNode::structuredNodeInputs()
+void QStructuredActivityNode::addNode(const QActivityNode *node)
 {
 }
 
-QList<QOutputPin *> *QStructuredActivityNode::structuredNodeOutputs()
+void QStructuredActivityNode::removeNode(const QActivityNode *node)
+{
+}
+
+const QSet<QInputPin *> *QStructuredActivityNode::structuredNodeInputs() const
+{
+}
+
+void QStructuredActivityNode::addStructuredNodeInput(const QInputPin *structuredNodeInput)
+{
+}
+
+void QStructuredActivityNode::removeStructuredNodeInput(const QInputPin *structuredNodeInput)
+{
+}
+
+const QSet<QOutputPin *> *QStructuredActivityNode::structuredNodeOutputs() const
+{
+}
+
+void QStructuredActivityNode::addStructuredNodeOutput(const QOutputPin *structuredNodeOutput)
+{
+}
+
+void QStructuredActivityNode::removeStructuredNodeOutput(const QOutputPin *structuredNodeOutput)
 {
 }
 
 /*!
     A variable defined in the scope of the structured activity node. It has no value and may not be accessed
  */
-QList<QVariable *> *QStructuredActivityNode::variables()
+const QSet<QVariable *> *QStructuredActivityNode::variables() const
+{
+}
+
+void QStructuredActivityNode::addVariable(const QVariable *variable)
+{
+}
+
+void QStructuredActivityNode::removeVariable(const QVariable *variable)
 {
 }
 

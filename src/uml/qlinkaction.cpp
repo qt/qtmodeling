@@ -63,21 +63,37 @@ QLinkAction::~QLinkAction()
 /*!
     Data identifying one end of a link by the objects on its ends and qualifiers.
  */
-QList<QLinkEndData *> *QLinkAction::endData()
+const QSet<QLinkEndData *> *QLinkAction::endData() const
+{
+}
+
+void QLinkAction::addEndData(const QLinkEndData *endData)
+{
+}
+
+void QLinkAction::removeEndData(const QLinkEndData *endData)
 {
 }
 
 /*!
     Pins taking end objects and qualifier values as input.
  */
-QList<QInputPin *> *QLinkAction::inputValues()
+const QSet<QInputPin *> *QLinkAction::inputValues() const
+{
+}
+
+void QLinkAction::addInputValue(const QInputPin *inputValue)
+{
+}
+
+void QLinkAction::removeInputValue(const QInputPin *inputValue)
 {
 }
 
 /*!
     The association operates on LinkAction. It returns the association of the action.
  */
-const QAssociation *QLinkAction::association() const
+QAssociation *QLinkAction::association() const
 {
 }
 

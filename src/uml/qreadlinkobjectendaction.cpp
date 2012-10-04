@@ -68,7 +68,7 @@ QProperty *QReadLinkObjectEndAction::end() const
 {
 }
 
-void QReadLinkObjectEndAction::setEnd(QProperty *end)
+void QReadLinkObjectEndAction::setEnd(const QProperty *end)
 {
 }
 
@@ -79,7 +79,7 @@ QInputPin *QReadLinkObjectEndAction::object() const
 {
 }
 
-void QReadLinkObjectEndAction::setObject(QInputPin *object)
+void QReadLinkObjectEndAction::setObject(const QInputPin *object)
 {
 }
 
@@ -90,7 +90,7 @@ QOutputPin *QReadLinkObjectEndAction::result() const
 {
 }
 
-void QReadLinkObjectEndAction::setResult(QOutputPin *result)
+void QReadLinkObjectEndAction::setResult(const QOutputPin *result)
 {
 }
 

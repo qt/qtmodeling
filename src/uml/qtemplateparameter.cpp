@@ -68,7 +68,7 @@ QParameterableElement *QTemplateParameter::default_() const
 {
 }
 
-void QTemplateParameter::setDefault_(QParameterableElement *default_)
+void QTemplateParameter::setDefault_(const QParameterableElement *default_)
 {
 }
 
@@ -79,7 +79,7 @@ QParameterableElement *QTemplateParameter::ownedDefault() const
 {
 }
 
-void QTemplateParameter::setOwnedDefault(QParameterableElement *ownedDefault)
+void QTemplateParameter::setOwnedDefault(const QParameterableElement *ownedDefault)
 {
 }
 
@@ -90,7 +90,7 @@ QParameterableElement *QTemplateParameter::ownedParameteredElement() const
 {
 }
 
-void QTemplateParameter::setOwnedParameteredElement(QParameterableElement *ownedParameteredElement)
+void QTemplateParameter::setOwnedParameteredElement(const QParameterableElement *ownedParameteredElement)
 {
 }
 
@@ -101,7 +101,7 @@ QParameterableElement *QTemplateParameter::parameteredElement() const
 {
 }
 
-void QTemplateParameter::setParameteredElement(QParameterableElement *parameteredElement)
+void QTemplateParameter::setParameteredElement(const QParameterableElement *parameteredElement)
 {
 }
 
@@ -112,7 +112,7 @@ QTemplateSignature *QTemplateParameter::signature() const
 {
 }
 
-void QTemplateParameter::setSignature(QTemplateSignature *signature)
+void QTemplateParameter::setSignature(const QTemplateSignature *signature)
 {
 }
 

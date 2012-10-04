@@ -48,9 +48,10 @@
 #include <QtUml/QElement>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -66,13 +67,13 @@ class Q_UML_EXPORT QExceptionHandler : public QObject, public QElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QExceptionHandler
     Q_PROPERTY(QObjectNode * exceptionInput READ exceptionInput WRITE setExceptionInput)
-    Q_PROPERTY(QList<QClassifier *> * exceptionTypes READ exceptionTypes)
+    Q_PROPERTY(const QSet<QClassifier *> * exceptionTypes READ exceptionTypes)
     Q_PROPERTY(QExecutableNode * handlerBody READ handlerBody WRITE setHandlerBody)
     Q_PROPERTY(QExecutableNode * protectedNode READ protectedNode WRITE setProtectedNode)
 
@@ -82,12 +83,14 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QObjectNode *exceptionInput() const;
-    void setExceptionInput(QObjectNode *exceptionInput);
-    QList<QClassifier *> *exceptionTypes();
+    void setExceptionInput(const QObjectNode *exceptionInput);
+    const QSet<QClassifier *> *exceptionTypes() const;
+    void addExceptionType(const QClassifier *exceptionType);
+    void removeExceptionType(const QClassifier *exceptionType);
     QExecutableNode *handlerBody() const;
-    void setHandlerBody(QExecutableNode *handlerBody);
+    void setHandlerBody(const QExecutableNode *handlerBody);
     QExecutableNode *protectedNode() const;
-    void setProtectedNode(QExecutableNode *protectedNode);
+    void setProtectedNode(const QExecutableNode *protectedNode);
 
 private:
     Q_DISABLE_COPY(QExceptionHandler)

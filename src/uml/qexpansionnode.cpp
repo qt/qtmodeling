@@ -68,7 +68,7 @@ QExpansionRegion *QExpansionNode::regionAsInput() const
 {
 }
 
-void QExpansionNode::setRegionAsInput(QExpansionRegion *regionAsInput)
+void QExpansionNode::setRegionAsInput(const QExpansionRegion *regionAsInput)
 {
 }
 
@@ -79,7 +79,7 @@ QExpansionRegion *QExpansionNode::regionAsOutput() const
 {
 }
 
-void QExpansionNode::setRegionAsOutput(QExpansionRegion *regionAsOutput)
+void QExpansionNode::setRegionAsOutput(const QExpansionRegion *regionAsOutput)
 {
 }
 

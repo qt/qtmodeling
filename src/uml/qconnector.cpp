@@ -64,21 +64,45 @@ QConnector::~QConnector()
 /*!
     The set of Behaviors that specify the valid interaction patterns across the connector.
  */
-QList<QBehavior *> *QConnector::contracts()
+const QSet<QBehavior *> *QConnector::contracts() const
+{
+}
+
+void QConnector::addContract(const QBehavior *contract)
+{
+}
+
+void QConnector::removeContract(const QBehavior *contract)
 {
 }
 
 /*!
     A connector consists of at least two connector ends, each representing the participation of instances of the classifiers typing the connectable elements attached to this end. The set of connector ends is ordered.
  */
-QList<QConnectorEnd *> *QConnector::ends()
+const QList<QConnectorEnd *> *QConnector::ends() const
+{
+}
+
+void QConnector::addEnd(const QConnectorEnd *end)
+{
+}
+
+void QConnector::removeEnd(const QConnectorEnd *end)
 {
 }
 
 /*!
     A connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector. The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced.
  */
-QList<QConnector *> *QConnector::redefinedConnectors()
+const QSet<QConnector *> *QConnector::redefinedConnectors() const
+{
+}
+
+void QConnector::addRedefinedConnector(const QConnector *redefinedConnector)
+{
+}
+
+void QConnector::removeRedefinedConnector(const QConnector *redefinedConnector)
 {
 }
 
@@ -89,7 +113,7 @@ QAssociation *QConnector::type() const
 {
 }
 
-void QConnector::setType(QAssociation *type)
+void QConnector::setType(const QAssociation *type)
 {
 }
 

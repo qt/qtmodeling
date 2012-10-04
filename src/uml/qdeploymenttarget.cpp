@@ -63,14 +63,22 @@ QDeploymentTarget::~QDeploymentTarget()
 /*!
     The set of Deployments for a DeploymentTarget.
  */
-QList<QDeployment *> *QDeploymentTarget::deployments()
+const QSet<QDeployment *> *QDeploymentTarget::deployments() const
+{
+}
+
+void QDeploymentTarget::addDeployment(const QDeployment *deployment)
+{
+}
+
+void QDeploymentTarget::removeDeployment(const QDeployment *deployment)
 {
 }
 
 /*!
     Missing derivation for DeploymentTarget::/deployedElement : PackageableElement
  */
-const QList<QPackageableElement *> *QDeploymentTarget::deployedElements() const
+const QSet<QPackageableElement *> *QDeploymentTarget::deployedElements() const
 {
 }
 

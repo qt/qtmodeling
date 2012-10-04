@@ -90,7 +90,7 @@ QBehavior *QObjectFlow::selection() const
 {
 }
 
-void QObjectFlow::setSelection(QBehavior *selection)
+void QObjectFlow::setSelection(const QBehavior *selection)
 {
 }
 
@@ -101,7 +101,7 @@ QBehavior *QObjectFlow::transformation() const
 {
 }
 
-void QObjectFlow::setTransformation(QBehavior *transformation)
+void QObjectFlow::setTransformation(const QBehavior *transformation)
 {
 }
 

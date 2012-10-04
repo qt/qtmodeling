@@ -48,9 +48,10 @@
 #include <QtUml/QNamedElement>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -65,29 +66,33 @@ class Q_UML_EXPORT QParameterSet : public QObject, public QNamedElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QParameterSet
-    Q_PROPERTY(QList<QConstraint *> * conditions READ conditions)
-    Q_PROPERTY(QList<QParameter *> * parameters READ parameters)
+    Q_PROPERTY(const QSet<QConstraint *> * conditions READ conditions)
+    Q_PROPERTY(const QSet<QParameter *> * parameters READ parameters)
 
 public:
     explicit QParameterSet(QObject *parent = 0);
     virtual ~QParameterSet();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QConstraint *> *conditions();
-    QList<QParameter *> *parameters();
+    const QSet<QConstraint *> *conditions() const;
+    void addCondition(const QConstraint *condition);
+    void removeCondition(const QConstraint *condition);
+    const QSet<QParameter *> *parameters() const;
+    void addParameter(const QParameter *parameter);
+    void removeParameter(const QParameter *parameter);
 
 private:
     Q_DISABLE_COPY(QParameterSet)

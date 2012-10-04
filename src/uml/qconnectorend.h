@@ -49,6 +49,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -62,9 +63,9 @@ class Q_UML_EXPORT QConnectorEnd : public QObject, public QMultiplicityElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QMultiplicityElement
     Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
@@ -75,7 +76,7 @@ class Q_UML_EXPORT QConnectorEnd : public QObject, public QMultiplicityElement
     Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
 
     // From QConnectorEnd
-    Q_PROPERTY(const QProperty * definingEnd READ definingEnd)
+    Q_PROPERTY(QProperty * definingEnd READ definingEnd)
     Q_PROPERTY(QProperty * partWithPort READ partWithPort WRITE setPartWithPort)
     Q_PROPERTY(QConnectableElement * role READ role WRITE setRole)
 
@@ -85,12 +86,12 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QProperty *partWithPort() const;
-    void setPartWithPort(QProperty *partWithPort);
+    void setPartWithPort(const QProperty *partWithPort);
     QConnectableElement *role() const;
-    void setRole(QConnectableElement *role);
+    void setRole(const QConnectableElement *role);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QProperty *definingEnd() const;
+    QProperty *definingEnd() const;
 
 private:
     Q_DISABLE_COPY(QConnectorEnd)

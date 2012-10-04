@@ -68,7 +68,7 @@ QAssociation *QClearAssociationAction::association() const
 {
 }
 
-void QClearAssociationAction::setAssociation(QAssociation *association)
+void QClearAssociationAction::setAssociation(const QAssociation *association)
 {
 }
 
@@ -79,7 +79,7 @@ QInputPin *QClearAssociationAction::object() const
 {
 }
 
-void QClearAssociationAction::setObject(QInputPin *object)
+void QClearAssociationAction::setObject(const QInputPin *object)
 {
 }
 

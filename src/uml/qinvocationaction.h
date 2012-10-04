@@ -51,6 +51,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -65,9 +66,11 @@ public:
     virtual ~QInvocationAction();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QInputPin *> *arguments();
+    const QList<QInputPin *> *arguments() const;
+    void addArgument(const QInputPin *argument);
+    void removeArgument(const QInputPin *argument);
     QPort *onPort() const;
-    void setOnPort(QPort *onPort);
+    void setOnPort(const QPort *onPort);
 
 protected:
     explicit QInvocationAction();

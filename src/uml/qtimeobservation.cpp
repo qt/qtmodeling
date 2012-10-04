@@ -79,7 +79,7 @@ QNamedElement *QTimeObservation::event() const
 {
 }
 
-void QTimeObservation::setEvent(QNamedElement *event)
+void QTimeObservation::setEvent(const QNamedElement *event)
 {
 }
 

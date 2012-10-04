@@ -64,7 +64,15 @@ QEnumeration::~QEnumeration()
 /*!
     The ordered set of literals for this Enumeration.
  */
-QList<QEnumerationLiteral *> *QEnumeration::ownedLiterals()
+const QList<QEnumerationLiteral *> *QEnumeration::ownedLiterals() const
+{
+}
+
+void QEnumeration::addOwnedLiteral(const QEnumerationLiteral *ownedLiteral)
+{
+}
+
+void QEnumeration::removeOwnedLiteral(const QEnumerationLiteral *ownedLiteral)
 {
 }
 

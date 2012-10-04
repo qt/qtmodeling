@@ -85,28 +85,60 @@ void QBehavioralFeature::setAbstract(bool isAbstract)
 /*!
     A behavioral description that implements the behavioral feature. There may be at most one behavior for a particular pairing of a classifier (as owner of the behavior) and a behavioral feature (as specification of the behavior).
  */
-QList<QBehavior *> *QBehavioralFeature::methods()
+const QSet<QBehavior *> *QBehavioralFeature::methods() const
+{
+}
+
+void QBehavioralFeature::addMethod(const QBehavior *method)
+{
+}
+
+void QBehavioralFeature::removeMethod(const QBehavior *method)
 {
 }
 
 /*!
     Specifies the ordered set of formal parameters of this BehavioralFeature.
  */
-QList<QParameter *> *QBehavioralFeature::ownedParameters()
+const QList<QParameter *> *QBehavioralFeature::ownedParameters() const
+{
+}
+
+void QBehavioralFeature::addOwnedParameter(const QParameter *ownedParameter)
+{
+}
+
+void QBehavioralFeature::removeOwnedParameter(const QParameter *ownedParameter)
 {
 }
 
 /*!
     The ParameterSets owned by this BehavioralFeature.
  */
-QList<QParameterSet *> *QBehavioralFeature::ownedParameterSets()
+const QSet<QParameterSet *> *QBehavioralFeature::ownedParameterSets() const
+{
+}
+
+void QBehavioralFeature::addOwnedParameterSet(const QParameterSet *ownedParameterSet)
+{
+}
+
+void QBehavioralFeature::removeOwnedParameterSet(const QParameterSet *ownedParameterSet)
 {
 }
 
 /*!
     References the Types representing exceptions that may be raised during an invocation of this feature.
  */
-QList<QType *> *QBehavioralFeature::raisedExceptions()
+const QSet<QType *> *QBehavioralFeature::raisedExceptions() const
+{
+}
+
+void QBehavioralFeature::addRaisedException(const QType *raisedException)
+{
+}
+
+void QBehavioralFeature::removeRaisedException(const QType *raisedException)
 {
 }
 

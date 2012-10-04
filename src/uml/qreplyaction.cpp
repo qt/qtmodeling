@@ -68,14 +68,22 @@ QTrigger *QReplyAction::replyToCall() const
 {
 }
 
-void QReplyAction::setReplyToCall(QTrigger *replyToCall)
+void QReplyAction::setReplyToCall(const QTrigger *replyToCall)
 {
 }
 
 /*!
     A list of pins containing the reply values of the operation. These values are returned to the caller.
  */
-QList<QInputPin *> *QReplyAction::replyValues()
+const QSet<QInputPin *> *QReplyAction::replyValues() const
+{
+}
+
+void QReplyAction::addReplyValue(const QInputPin *replyValue)
+{
+}
+
+void QReplyAction::removeReplyValue(const QInputPin *replyValue)
 {
 }
 
@@ -86,7 +94,7 @@ QInputPin *QReplyAction::returnInformation() const
 {
 }
 
-void QReplyAction::setReturnInformation(QInputPin *returnInformation)
+void QReplyAction::setReturnInformation(const QInputPin *returnInformation)
 {
 }
 

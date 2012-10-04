@@ -47,9 +47,10 @@
 #include <QtUml/QPackage>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -64,16 +65,20 @@ class Q_UML_EXPORT QProfile : public QPackage
     Q_OBJECT
 
     // From QProfile
-    Q_PROPERTY(QList<QElementImport *> * metaclassReferences READ metaclassReferences)
-    Q_PROPERTY(QList<QPackageImport *> * metamodelReferences READ metamodelReferences)
+    Q_PROPERTY(const QSet<QElementImport *> * metaclassReferences READ metaclassReferences)
+    Q_PROPERTY(const QSet<QPackageImport *> * metamodelReferences READ metamodelReferences)
 
 public:
     explicit QProfile(QObject *parent = 0);
     virtual ~QProfile();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QElementImport *> *metaclassReferences();
-    QList<QPackageImport *> *metamodelReferences();
+    const QSet<QElementImport *> *metaclassReferences() const;
+    void addMetaclassReference(const QElementImport *metaclassReference);
+    void removeMetaclassReference(const QElementImport *metaclassReference);
+    const QSet<QPackageImport *> *metamodelReferences() const;
+    void addMetamodelReference(const QPackageImport *metamodelReference);
+    void removeMetamodelReference(const QPackageImport *metamodelReference);
 
 private:
     Q_DISABLE_COPY(QProfile)

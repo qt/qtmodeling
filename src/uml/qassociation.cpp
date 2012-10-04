@@ -75,21 +75,45 @@ void QAssociation::setDerived(bool isDerived)
 /*!
     Each end represents participation of instances of the classifier connected to the end in links of the association.
  */
-QList<QProperty *> *QAssociation::memberEnds()
+const QList<QProperty *> *QAssociation::memberEnds() const
+{
+}
+
+void QAssociation::addMemberEnd(const QProperty *memberEnd)
+{
+}
+
+void QAssociation::removeMemberEnd(const QProperty *memberEnd)
 {
 }
 
 /*!
     The navigable ends that are owned by the association itself.
  */
-QList<QProperty *> *QAssociation::navigableOwnedEnds()
+const QSet<QProperty *> *QAssociation::navigableOwnedEnds() const
+{
+}
+
+void QAssociation::addNavigableOwnedEnd(const QProperty *navigableOwnedEnd)
+{
+}
+
+void QAssociation::removeNavigableOwnedEnd(const QProperty *navigableOwnedEnd)
 {
 }
 
 /*!
     The ends that are owned by the association itself.
  */
-QList<QProperty *> *QAssociation::ownedEnds()
+const QList<QProperty *> *QAssociation::ownedEnds() const
+{
+}
+
+void QAssociation::addOwnedEnd(const QProperty *ownedEnd)
+{
+}
+
+void QAssociation::removeOwnedEnd(const QProperty *ownedEnd)
 {
 }
 

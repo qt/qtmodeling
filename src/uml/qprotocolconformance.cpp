@@ -68,7 +68,7 @@ QProtocolStateMachine *QProtocolConformance::generalMachine() const
 {
 }
 
-void QProtocolConformance::setGeneralMachine(QProtocolStateMachine *generalMachine)
+void QProtocolConformance::setGeneralMachine(const QProtocolStateMachine *generalMachine)
 {
 }
 
@@ -79,7 +79,7 @@ QProtocolStateMachine *QProtocolConformance::specificMachine() const
 {
 }
 
-void QProtocolConformance::setSpecificMachine(QProtocolStateMachine *specificMachine)
+void QProtocolConformance::setSpecificMachine(const QProtocolStateMachine *specificMachine)
 {
 }
 

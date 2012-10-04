@@ -48,6 +48,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -73,7 +74,7 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QInputPin *insertAt() const;
-    void setInsertAt(QInputPin *insertAt);
+    void setInsertAt(const QInputPin *insertAt);
 
 private:
     Q_DISABLE_COPY(QLinkEndCreationData)

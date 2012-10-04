@@ -64,14 +64,30 @@ QParameterSet::~QParameterSet()
 /*!
     Constraint that should be satisfied for the owner of the parameters in an input parameter set to start execution using the values provided for those parameters, or the owner of the parameters in an output parameter set to end execution providing the values for those parameters, if all preconditions and conditions on input parameter sets were satisfied.
  */
-QList<QConstraint *> *QParameterSet::conditions()
+const QSet<QConstraint *> *QParameterSet::conditions() const
+{
+}
+
+void QParameterSet::addCondition(const QConstraint *condition)
+{
+}
+
+void QParameterSet::removeCondition(const QConstraint *condition)
 {
 }
 
 /*!
     Parameters in the parameter set.
  */
-QList<QParameter *> *QParameterSet::parameters()
+const QSet<QParameter *> *QParameterSet::parameters() const
+{
+}
+
+void QParameterSet::addParameter(const QParameter *parameter)
+{
+}
+
+void QParameterSet::removeParameter(const QParameter *parameter)
 {
 }
 

@@ -79,7 +79,7 @@ QInputPin *QRemoveStructuralFeatureValueAction::removeAt() const
 {
 }
 
-void QRemoveStructuralFeatureValueAction::setRemoveAt(QInputPin *removeAt)
+void QRemoveStructuralFeatureValueAction::setRemoveAt(const QInputPin *removeAt)
 {
 }
 

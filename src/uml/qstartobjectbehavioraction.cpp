@@ -68,7 +68,7 @@ QInputPin *QStartObjectBehaviorAction::object() const
 {
 }
 
-void QStartObjectBehaviorAction::setObject(QInputPin *object)
+void QStartObjectBehaviorAction::setObject(const QInputPin *object)
 {
 }
 

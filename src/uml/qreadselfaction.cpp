@@ -68,7 +68,7 @@ QOutputPin *QReadSelfAction::result() const
 {
 }
 
-void QReadSelfAction::setResult(QOutputPin *result)
+void QReadSelfAction::setResult(const QOutputPin *result)
 {
 }
 

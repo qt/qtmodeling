@@ -64,7 +64,15 @@ QNode::~QNode()
 /*!
     The Nodes that are defined (nested) within the Node.
  */
-QList<QNode *> *QNode::nestedNodes()
+const QSet<QNode *> *QNode::nestedNodes() const
+{
+}
+
+void QNode::addNestedNode(const QNode *nestedNode)
+{
+}
+
+void QNode::removeNestedNode(const QNode *nestedNode)
 {
 }
 

@@ -64,21 +64,29 @@ QStereotype::~QStereotype()
 /*!
     Stereotype can change the graphical appearance of the extended model element by using attached icons. When this association is not null, it references the location of the icon content to be displayed within diagrams presenting the extended model elements.
  */
-QList<QImage *> *QStereotype::icons()
+const QSet<QImage *> *QStereotype::icons() const
+{
+}
+
+void QStereotype::addIcon(const QImage *icon)
+{
+}
+
+void QStereotype::removeIcon(const QImage *icon)
 {
 }
 
 /*!
     The query containingProfile returns the closest profile directly or indirectly containing this stereotype.
  */
-const QProfile *QStereotype::containingProfile() const
+QProfile *QStereotype::containingProfile() const
 {
 }
 
 /*!
     A stereotype must be contained, directly or indirectly, in a profile.
  */
-const QProfile *QStereotype::profile() const
+QProfile *QStereotype::profile() const
 {
 }
 

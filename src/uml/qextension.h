@@ -48,6 +48,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -63,7 +64,7 @@ class Q_UML_EXPORT QExtension : public QAssociation
 
     // From QExtension
     Q_PROPERTY(bool isRequired READ isRequired)
-    Q_PROPERTY(const QClass * metaclass READ metaclass)
+    Q_PROPERTY(QClass * metaclass READ metaclass)
     Q_PROPERTY(QExtensionEnd * ownedEnd READ ownedEnd WRITE setOwnedEnd)
 
 public:
@@ -74,12 +75,12 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QExtensionEnd *ownedEnd() const;
-    void setOwnedEnd(QExtensionEnd *ownedEnd);
+    void setOwnedEnd(const QExtensionEnd *ownedEnd);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     bool isRequired() const;
-    const QClass *metaclass() const;
-    const QProperty *metaclassEnd() const;
+    QClass *metaclass() const;
+    QProperty *metaclassEnd() const;
 
 private:
     Q_DISABLE_COPY(QExtension)

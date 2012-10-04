@@ -50,6 +50,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -64,9 +65,9 @@ class Q_UML_EXPORT QVariable : public QObject, public QMultiplicityElement, publ
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QMultiplicityElement
     Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
@@ -80,9 +81,9 @@ class Q_UML_EXPORT QVariable : public QObject, public QMultiplicityElement, publ
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QTypedElement
     Q_PROPERTY(QType * type READ type WRITE setType)
@@ -104,9 +105,9 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QActivity *activityScope() const;
-    void setActivityScope(QActivity *activityScope);
+    void setActivityScope(const QActivity *activityScope);
     QStructuredActivityNode *scope() const;
-    void setScope(QStructuredActivityNode *scope);
+    void setScope(const QStructuredActivityNode *scope);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     bool isAccessibleBy(const QAction *a) const;

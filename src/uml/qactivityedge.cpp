@@ -67,7 +67,7 @@ QActivity *QActivityEdge::activity() const
 {
 }
 
-void QActivityEdge::setActivity(QActivity *activity)
+void QActivityEdge::setActivity(const QActivity *activity)
 {
 }
 
@@ -78,21 +78,29 @@ QValueSpecification *QActivityEdge::guard() const
 {
 }
 
-void QActivityEdge::setGuard(QValueSpecification *guard)
+void QActivityEdge::setGuard(const QValueSpecification *guard)
 {
 }
 
 /*!
     Groups containing the edge.
  */
-const QList<QActivityGroup *> *QActivityEdge::inGroup() const
+const QSet<QActivityGroup *> *QActivityEdge::inGroup() const
 {
 }
 
 /*!
     Partitions containing the edge.
  */
-QList<QActivityPartition *> *QActivityEdge::inPartition()
+const QSet<QActivityPartition *> *QActivityEdge::inPartition() const
+{
+}
+
+void QActivityEdge::addInPartition(const QActivityPartition *inPartition)
+{
+}
+
+void QActivityEdge::removeInPartition(const QActivityPartition *inPartition)
 {
 }
 
@@ -103,7 +111,7 @@ QStructuredActivityNode *QActivityEdge::inStructuredNode() const
 {
 }
 
-void QActivityEdge::setInStructuredNode(QStructuredActivityNode *inStructuredNode)
+void QActivityEdge::setInStructuredNode(const QStructuredActivityNode *inStructuredNode)
 {
 }
 
@@ -114,14 +122,22 @@ QInterruptibleActivityRegion *QActivityEdge::interrupts() const
 {
 }
 
-void QActivityEdge::setInterrupts(QInterruptibleActivityRegion *interrupts)
+void QActivityEdge::setInterrupts(const QInterruptibleActivityRegion *interrupts)
 {
 }
 
 /*!
     Inherited edges replaced by this edge in a specialization of the activity.
  */
-QList<QActivityEdge *> *QActivityEdge::redefinedEdges()
+const QSet<QActivityEdge *> *QActivityEdge::redefinedEdges() const
+{
+}
+
+void QActivityEdge::addRedefinedEdge(const QActivityEdge *redefinedEdge)
+{
+}
+
+void QActivityEdge::removeRedefinedEdge(const QActivityEdge *redefinedEdge)
 {
 }
 
@@ -132,7 +148,7 @@ QActivityNode *QActivityEdge::source() const
 {
 }
 
-void QActivityEdge::setSource(QActivityNode *source)
+void QActivityEdge::setSource(const QActivityNode *source)
 {
 }
 
@@ -143,7 +159,7 @@ QActivityNode *QActivityEdge::target() const
 {
 }
 
-void QActivityEdge::setTarget(QActivityNode *target)
+void QActivityEdge::setTarget(const QActivityNode *target)
 {
 }
 
@@ -154,7 +170,7 @@ QValueSpecification *QActivityEdge::weight() const
 {
 }
 
-void QActivityEdge::setWeight(QValueSpecification *weight)
+void QActivityEdge::setWeight(const QValueSpecification *weight)
 {
 }
 

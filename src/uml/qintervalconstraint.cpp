@@ -68,7 +68,7 @@ QInterval *QIntervalConstraint::specification() const
 {
 }
 
-void QIntervalConstraint::setSpecification(QInterval *specification)
+void QIntervalConstraint::setSpecification(const QInterval *specification)
 {
 }
 

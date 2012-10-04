@@ -48,6 +48,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -69,9 +70,9 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QDuration *max() const;
-    void setMax(QDuration *max);
+    void setMax(const QDuration *max);
     QDuration *min() const;
-    void setMin(QDuration *min);
+    void setMin(const QDuration *min);
 
 private:
     Q_DISABLE_COPY(QDurationInterval)

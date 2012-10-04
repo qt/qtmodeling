@@ -48,9 +48,10 @@
 
 // Qt includes
 #include <QtCore/QString>
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -68,17 +69,23 @@ public:
     virtual ~QNamespace();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QElementImport *> *elementImports();
-    const QList<QNamedElement *> *members() const;
-    const QList<QNamedElement *> *ownedMembers() const;
-    QList<QConstraint *> *ownedRules();
-    QList<QPackageImport *> *packageImports();
+    const QSet<QElementImport *> *elementImports() const;
+    void addElementImport(const QElementImport *elementImport);
+    void removeElementImport(const QElementImport *elementImport);
+    const QSet<QNamedElement *> *members() const;
+    const QSet<QNamedElement *> *ownedMembers() const;
+    const QSet<QConstraint *> *ownedRules() const;
+    void addOwnedRule(const QConstraint *ownedRule);
+    void removeOwnedRule(const QConstraint *ownedRule);
+    const QSet<QPackageImport *> *packageImports() const;
+    void addPackageImport(const QPackageImport *packageImport);
+    void removePackageImport(const QPackageImport *packageImport);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QList<QPackageableElement *> *excludeCollisions(const QList<QPackageableElement *> *imps) const;
-    QList<QString *> getNamesOfMember(const QNamedElement *element) const;
-    const QList<QPackageableElement *> *importMembers(const QList<QPackageableElement *> *imps) const;
-    const QList<QPackageableElement *> *importedMembers() const;
+    const QSet<QPackageableElement *> *excludeCollisions(const QSet<QPackageableElement *> *imps) const;
+    const QSet<QString> *getNamesOfMember(const QNamedElement *element) const;
+    const QSet<QPackageableElement *> *importMembers(const QSet<QPackageableElement *> *imps) const;
+    const QSet<QPackageableElement *> *importedMembers() const;
     bool membersAreDistinguishable() const;
 
 protected:

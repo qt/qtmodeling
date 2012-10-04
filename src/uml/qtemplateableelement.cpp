@@ -67,14 +67,22 @@ QTemplateSignature *QTemplateableElement::ownedTemplateSignature() const
 {
 }
 
-void QTemplateableElement::setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature)
+void QTemplateableElement::setOwnedTemplateSignature(const QTemplateSignature *ownedTemplateSignature)
 {
 }
 
 /*!
     The optional bindings from this element to templates.
  */
-QList<QTemplateBinding *> *QTemplateableElement::templateBindings()
+const QSet<QTemplateBinding *> *QTemplateableElement::templateBindings() const
+{
+}
+
+void QTemplateableElement::addTemplateBinding(const QTemplateBinding *templateBinding)
+{
+}
+
+void QTemplateableElement::removeTemplateBinding(const QTemplateBinding *templateBinding)
 {
 }
 
@@ -88,7 +96,7 @@ bool QTemplateableElement::isTemplate() const
 /*!
     The query parameterableElements() returns the set of elements that may be used as the parametered elements for a template parameter of this templateable element. By default, this set includes all the owned elements. Subclasses may override this operation if they choose to restrict the set of parameterable elements.
  */
-const QList<QParameterableElement *> *QTemplateableElement::parameterableElements() const
+const QSet<QParameterableElement *> *QTemplateableElement::parameterableElements() const
 {
 }
 

@@ -64,14 +64,30 @@ QDeployment::~QDeployment()
 /*!
     The specification of properties that parameterize the deployment and execution of one or more Artifacts.
  */
-QList<QDeploymentSpecification *> *QDeployment::configurations()
+const QSet<QDeploymentSpecification *> *QDeployment::configurations() const
+{
+}
+
+void QDeployment::addConfiguration(const QDeploymentSpecification *configuration)
+{
+}
+
+void QDeployment::removeConfiguration(const QDeploymentSpecification *configuration)
 {
 }
 
 /*!
     The Artifacts that are deployed onto a Node. This association specializes the supplier association.
  */
-QList<QDeployedArtifact *> *QDeployment::deployedArtifacts()
+const QSet<QDeployedArtifact *> *QDeployment::deployedArtifacts() const
+{
+}
+
+void QDeployment::addDeployedArtifact(const QDeployedArtifact *deployedArtifact)
+{
+}
+
+void QDeployment::removeDeployedArtifact(const QDeployedArtifact *deployedArtifact)
 {
 }
 
@@ -82,7 +98,7 @@ QDeploymentTarget *QDeployment::location() const
 {
 }
 
-void QDeployment::setLocation(QDeploymentTarget *location)
+void QDeployment::setLocation(const QDeploymentTarget *location)
 {
 }
 

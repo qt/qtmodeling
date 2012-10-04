@@ -48,6 +48,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -62,7 +63,7 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QInputPin *value() const;
-    void setValue(QInputPin *value);
+    void setValue(const QInputPin *value);
 
 protected:
     explicit QWriteVariableAction();

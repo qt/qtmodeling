@@ -50,9 +50,10 @@
 #include <QtUml/QTemplateableElement>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -82,34 +83,48 @@ public:
     void setFinalSpecialization(bool isFinalSpecialization);
 
     // Association-ends (except those derived && !derivedUnion)
-    const QList<QProperty *> *attributes() const;
-    QList<QCollaborationUse *> *collaborationUses();
-    const QList<QFeature *> *features() const;
-    QList<QGeneralization *> *generalizations();
+    const QSet<QProperty *> *attributes() const;
+    const QSet<QCollaborationUse *> *collaborationUses() const;
+    void addCollaborationUse(const QCollaborationUse *collaborationUse);
+    void removeCollaborationUse(const QCollaborationUse *collaborationUse);
+    const QSet<QFeature *> *features() const;
+    const QSet<QGeneralization *> *generalizations() const;
+    void addGeneralization(const QGeneralization *generalization);
+    void removeGeneralization(const QGeneralization *generalization);
     QRedefinableTemplateSignature *ownedTemplateSignature() const;
-    void setOwnedTemplateSignature(QRedefinableTemplateSignature *ownedTemplateSignature);
-    QList<QUseCase *> *ownedUseCases();
-    QList<QGeneralizationSet *> *powertypeExtents();
-    QList<QClassifier *> *redefinedClassifiers();
+    void setOwnedTemplateSignature(const QRedefinableTemplateSignature *ownedTemplateSignature);
+    const QSet<QUseCase *> *ownedUseCases() const;
+    void addOwnedUseCase(const QUseCase *ownedUseCase);
+    void removeOwnedUseCase(const QUseCase *ownedUseCase);
+    const QSet<QGeneralizationSet *> *powertypeExtents() const;
+    void addPowertypeExtent(const QGeneralizationSet *powertypeExtent);
+    void removePowertypeExtent(const QGeneralizationSet *powertypeExtent);
+    const QSet<QClassifier *> *redefinedClassifiers() const;
+    void addRedefinedClassifier(const QClassifier *redefinedClassifier);
+    void removeRedefinedClassifier(const QClassifier *redefinedClassifier);
     QCollaborationUse *representation() const;
-    void setRepresentation(QCollaborationUse *representation);
-    QList<QSubstitution *> *substitutions();
+    void setRepresentation(const QCollaborationUse *representation);
+    const QSet<QSubstitution *> *substitutions() const;
+    void addSubstitution(const QSubstitution *substitution);
+    void removeSubstitution(const QSubstitution *substitution);
     QClassifierTemplateParameter *templateParameter() const;
-    void setTemplateParameter(QClassifierTemplateParameter *templateParameter);
-    QList<QUseCase *> *useCases();
+    void setTemplateParameter(const QClassifierTemplateParameter *templateParameter);
+    const QSet<QUseCase *> *useCases() const;
+    void addUseCase(const QUseCase *useCase);
+    void removeUseCase(const QUseCase *useCase);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QList<QFeature *> *allFeatures() const;
-    const QList<QClassifier *> *allParents() const;
+    const QSet<QFeature *> *allFeatures() const;
+    const QSet<QClassifier *> *allParents() const;
     bool conformsTo(const QClassifier *other) const;
-    const QList<QClassifier *> *generals() const;
+    const QSet<QClassifier *> *generals() const;
     bool hasVisibilityOf(const QNamedElement *n) const;
-    const QList<QNamedElement *> *inherit(const QList<QNamedElement *> *inhs) const;
-    const QList<QNamedElement *> *inheritableMembers(const QClassifier *c) const;
-    const QList<QNamedElement *> *inheritedMembers() const;
+    const QSet<QNamedElement *> *inherit(const QSet<QNamedElement *> *inhs) const;
+    const QSet<QNamedElement *> *inheritableMembers(const QClassifier *c) const;
+    const QSet<QNamedElement *> *inheritedMembers() const;
     bool isTemplate() const;
     bool maySpecializeType(const QClassifier *c) const;
-    const QList<QClassifier *> *parents() const;
+    const QSet<QClassifier *> *parents() const;
 
 protected:
     explicit QClassifier();

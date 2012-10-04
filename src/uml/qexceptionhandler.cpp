@@ -68,14 +68,22 @@ QObjectNode *QExceptionHandler::exceptionInput() const
 {
 }
 
-void QExceptionHandler::setExceptionInput(QObjectNode *exceptionInput)
+void QExceptionHandler::setExceptionInput(const QObjectNode *exceptionInput)
 {
 }
 
 /*!
     The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body.
  */
-QList<QClassifier *> *QExceptionHandler::exceptionTypes()
+const QSet<QClassifier *> *QExceptionHandler::exceptionTypes() const
+{
+}
+
+void QExceptionHandler::addExceptionType(const QClassifier *exceptionType)
+{
+}
+
+void QExceptionHandler::removeExceptionType(const QClassifier *exceptionType)
 {
 }
 
@@ -86,7 +94,7 @@ QExecutableNode *QExceptionHandler::handlerBody() const
 {
 }
 
-void QExceptionHandler::setHandlerBody(QExecutableNode *handlerBody)
+void QExceptionHandler::setHandlerBody(const QExecutableNode *handlerBody)
 {
 }
 
@@ -97,7 +105,7 @@ QExecutableNode *QExceptionHandler::protectedNode() const
 {
 }
 
-void QExceptionHandler::setProtectedNode(QExecutableNode *protectedNode)
+void QExceptionHandler::setProtectedNode(const QExecutableNode *protectedNode)
 {
 }
 

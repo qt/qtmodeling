@@ -68,7 +68,7 @@ QInputPin *QTestIdentityAction::first() const
 {
 }
 
-void QTestIdentityAction::setFirst(QInputPin *first)
+void QTestIdentityAction::setFirst(const QInputPin *first)
 {
 }
 
@@ -79,7 +79,7 @@ QOutputPin *QTestIdentityAction::result() const
 {
 }
 
-void QTestIdentityAction::setResult(QOutputPin *result)
+void QTestIdentityAction::setResult(const QOutputPin *result)
 {
 }
 
@@ -90,7 +90,7 @@ QInputPin *QTestIdentityAction::second() const
 {
 }
 
-void QTestIdentityAction::setSecond(QInputPin *second)
+void QTestIdentityAction::setSecond(const QInputPin *second)
 {
 }
 

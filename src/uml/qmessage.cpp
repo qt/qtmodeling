@@ -75,7 +75,15 @@ void QMessage::setMessageSort(QtUml::MessageSort messageSort)
 /*!
     The arguments of the Message
  */
-QList<QValueSpecification *> *QMessage::arguments()
+const QList<QValueSpecification *> *QMessage::arguments() const
+{
+}
+
+void QMessage::addArgument(const QValueSpecification *argument)
+{
+}
+
+void QMessage::removeArgument(const QValueSpecification *argument)
 {
 }
 
@@ -86,7 +94,7 @@ QConnector *QMessage::connector() const
 {
 }
 
-void QMessage::setConnector(QConnector *connector)
+void QMessage::setConnector(const QConnector *connector)
 {
 }
 
@@ -97,7 +105,7 @@ QInteraction *QMessage::interaction() const
 {
 }
 
-void QMessage::setInteraction(QInteraction *interaction)
+void QMessage::setInteraction(const QInteraction *interaction)
 {
 }
 
@@ -108,7 +116,7 @@ QMessageEnd *QMessage::receiveEvent() const
 {
 }
 
-void QMessage::setReceiveEvent(QMessageEnd *receiveEvent)
+void QMessage::setReceiveEvent(const QMessageEnd *receiveEvent)
 {
 }
 
@@ -119,7 +127,7 @@ QMessageEnd *QMessage::sendEvent() const
 {
 }
 
-void QMessage::setSendEvent(QMessageEnd *sendEvent)
+void QMessage::setSendEvent(const QMessageEnd *sendEvent)
 {
 }
 
@@ -130,7 +138,7 @@ QNamedElement *QMessage::signature() const
 {
 }
 
-void QMessage::setSignature(QNamedElement *signature)
+void QMessage::setSignature(const QNamedElement *signature)
 {
 }
 

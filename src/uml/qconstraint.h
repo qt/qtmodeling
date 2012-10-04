@@ -52,6 +52,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -66,9 +67,9 @@ class Q_UML_EXPORT QConstraint : public QObject, public QPackageableElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QParameterableElement
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
@@ -77,16 +78,15 @@ class Q_UML_EXPORT QConstraint : public QObject, public QPackageableElement
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QPackageableElement
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // From QConstraint
-    Q_PROPERTY(QList<QElement *> * constrainedElements READ constrainedElements)
+    Q_PROPERTY(const QList<QElement *> * constrainedElements READ constrainedElements)
     Q_PROPERTY(QNamespace * context READ context WRITE setContext)
     Q_PROPERTY(QValueSpecification * specification READ specification WRITE setSpecification)
 
@@ -95,11 +95,13 @@ public:
     virtual ~QConstraint();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QElement *> *constrainedElements();
+    const QList<QElement *> *constrainedElements() const;
+    void addConstrainedElement(const QElement *constrainedElement);
+    void removeConstrainedElement(const QElement *constrainedElement);
     QNamespace *context() const;
-    void setContext(QNamespace *context);
+    void setContext(const QNamespace *context);
     QValueSpecification *specification() const;
-    void setSpecification(QValueSpecification *specification);
+    void setSpecification(const QValueSpecification *specification);
 
 private:
     Q_DISABLE_COPY(QConstraint)

@@ -63,7 +63,7 @@ QEncapsulatedClassifier::~QEncapsulatedClassifier()
 /*!
     Missing derivation for EncapsulatedClassifier::/ownedPort : Port
  */
-const QList<QPort *> *QEncapsulatedClassifier::ownedPorts() const
+const QSet<QPort *> *QEncapsulatedClassifier::ownedPorts() const
 {
 }
 

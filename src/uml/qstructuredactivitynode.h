@@ -50,9 +50,10 @@
 #include <QtUml/QActivityGroup>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -71,67 +72,65 @@ class Q_UML_EXPORT QStructuredActivityNode : public QObject, public QAction, pub
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QRedefinableElement
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElements READ redefinedElements)
-    Q_PROPERTY(const QList<QClassifier *> * redefinitionContexts READ redefinitionContexts)
+    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
+    Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
 
     // From QActivityNode
-    Q_PROPERTY(QActivity * activity READ activity WRITE setActivity)
-    Q_PROPERTY(const QList<QActivityGroup *> * inGroup READ inGroup)
-    Q_PROPERTY(QList<QInterruptibleActivityRegion *> * inInterruptibleRegion READ inInterruptibleRegion)
-    Q_PROPERTY(QList<QActivityPartition *> * inPartition READ inPartition)
+    Q_PROPERTY(const QSet<QActivityGroup *> * inGroup READ inGroup)
+    Q_PROPERTY(const QSet<QInterruptibleActivityRegion *> * inInterruptibleRegion READ inInterruptibleRegion)
+    Q_PROPERTY(const QSet<QActivityPartition *> * inPartition READ inPartition)
     Q_PROPERTY(QStructuredActivityNode * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
-    Q_PROPERTY(QList<QActivityEdge *> * incomings READ incomings)
-    Q_PROPERTY(QList<QActivityEdge *> * outgoings READ outgoings)
-    Q_PROPERTY(QList<QActivityNode *> * redefinedNodes READ redefinedNodes)
+    Q_PROPERTY(const QSet<QActivityEdge *> * incomings READ incomings)
+    Q_PROPERTY(const QSet<QActivityEdge *> * outgoings READ outgoings)
+    Q_PROPERTY(const QSet<QActivityNode *> * redefinedNodes READ redefinedNodes)
 
     // From QExecutableNode
-    Q_PROPERTY(QList<QExceptionHandler *> * handlers READ handlers)
+    Q_PROPERTY(const QSet<QExceptionHandler *> * handlers READ handlers)
 
     // From QAction
     Q_PROPERTY(bool isLocallyReentrant READ isLocallyReentrant WRITE setLocallyReentrant)
-    Q_PROPERTY(const QClassifier * context READ context)
+    Q_PROPERTY(QClassifier * context READ context)
     Q_PROPERTY(const QList<QInputPin *> * inputs READ inputs)
-    Q_PROPERTY(QList<QConstraint *> * localPostconditions READ localPostconditions)
-    Q_PROPERTY(QList<QConstraint *> * localPreconditions READ localPreconditions)
+    Q_PROPERTY(const QSet<QConstraint *> * localPostconditions READ localPostconditions)
+    Q_PROPERTY(const QSet<QConstraint *> * localPreconditions READ localPreconditions)
     Q_PROPERTY(const QList<QOutputPin *> * outputs READ outputs)
 
     // From QNamespace
-    Q_PROPERTY(QList<QElementImport *> * elementImports READ elementImports)
-    Q_PROPERTY(const QList<QPackageableElement *> * importedMembers READ importedMembers)
-    Q_PROPERTY(const QList<QNamedElement *> * members READ members)
-    Q_PROPERTY(const QList<QNamedElement *> * ownedMembers READ ownedMembers)
-    Q_PROPERTY(QList<QConstraint *> * ownedRules READ ownedRules)
-    Q_PROPERTY(QList<QPackageImport *> * packageImports READ packageImports)
+    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
+    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
+    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
+    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
+    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
+    Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
 
     // From QActivityGroup
-    Q_PROPERTY(const QList<QActivityEdge *> * containedEdges READ containedEdges)
-    Q_PROPERTY(const QList<QActivityNode *> * containedNodes READ containedNodes)
-    Q_PROPERTY(QActivity * inActivity READ inActivity WRITE setInActivity)
-    Q_PROPERTY(const QList<QActivityGroup *> * subgroups READ subgroups)
-    Q_PROPERTY(const QActivityGroup * superGroup READ superGroup)
+    Q_PROPERTY(const QSet<QActivityEdge *> * containedEdges READ containedEdges)
+    Q_PROPERTY(const QSet<QActivityNode *> * containedNodes READ containedNodes)
+    Q_PROPERTY(const QSet<QActivityGroup *> * subgroups READ subgroups)
+    Q_PROPERTY(QActivityGroup * superGroup READ superGroup)
 
     // From QStructuredActivityNode
     Q_PROPERTY(bool mustIsolate READ mustIsolate WRITE setMustIsolate)
     Q_PROPERTY(QActivity * activity READ activity WRITE setActivity)
-    Q_PROPERTY(QList<QActivityEdge *> * edges READ edges)
-    Q_PROPERTY(QList<QActivityNode *> * nodes READ nodes)
-    Q_PROPERTY(QList<QInputPin *> * structuredNodeInputs READ structuredNodeInputs)
-    Q_PROPERTY(QList<QOutputPin *> * structuredNodeOutputs READ structuredNodeOutputs)
-    Q_PROPERTY(QList<QVariable *> * variables READ variables)
+    Q_PROPERTY(const QSet<QActivityEdge *> * edges READ edges)
+    Q_PROPERTY(const QSet<QActivityNode *> * nodes READ nodes)
+    Q_PROPERTY(const QSet<QInputPin *> * structuredNodeInputs READ structuredNodeInputs)
+    Q_PROPERTY(const QSet<QOutputPin *> * structuredNodeOutputs READ structuredNodeOutputs)
+    Q_PROPERTY(const QSet<QVariable *> * variables READ variables)
 
 public:
     explicit QStructuredActivityNode(QObject *parent = 0);
@@ -143,12 +142,22 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QActivity *activity() const;
-    void setActivity(QActivity *activity);
-    QList<QActivityEdge *> *edges();
-    QList<QActivityNode *> *nodes();
-    QList<QInputPin *> *structuredNodeInputs();
-    QList<QOutputPin *> *structuredNodeOutputs();
-    QList<QVariable *> *variables();
+    void setActivity(const QActivity *activity);
+    const QSet<QActivityEdge *> *edges() const;
+    void addEdge(const QActivityEdge *edge);
+    void removeEdge(const QActivityEdge *edge);
+    const QSet<QActivityNode *> *nodes() const;
+    void addNode(const QActivityNode *node);
+    void removeNode(const QActivityNode *node);
+    const QSet<QInputPin *> *structuredNodeInputs() const;
+    void addStructuredNodeInput(const QInputPin *structuredNodeInput);
+    void removeStructuredNodeInput(const QInputPin *structuredNodeInput);
+    const QSet<QOutputPin *> *structuredNodeOutputs() const;
+    void addStructuredNodeOutput(const QOutputPin *structuredNodeOutput);
+    void removeStructuredNodeOutput(const QOutputPin *structuredNodeOutput);
+    const QSet<QVariable *> *variables() const;
+    void addVariable(const QVariable *variable);
+    void removeVariable(const QVariable *variable);
 
 private:
     Q_DISABLE_COPY(QStructuredActivityNode)

@@ -47,9 +47,10 @@
 #include <QtUml/QRedefinableElement>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -70,15 +71,25 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QActivity *activity() const;
-    void setActivity(QActivity *activity);
-    const QList<QActivityGroup *> *inGroup() const;
-    QList<QInterruptibleActivityRegion *> *inInterruptibleRegion();
-    QList<QActivityPartition *> *inPartition();
+    void setActivity(const QActivity *activity);
+    const QSet<QActivityGroup *> *inGroup() const;
+    const QSet<QInterruptibleActivityRegion *> *inInterruptibleRegion() const;
+    void addInInterruptibleRegion(const QInterruptibleActivityRegion *inInterruptibleRegion);
+    void removeInInterruptibleRegion(const QInterruptibleActivityRegion *inInterruptibleRegion);
+    const QSet<QActivityPartition *> *inPartition() const;
+    void addInPartition(const QActivityPartition *inPartition);
+    void removeInPartition(const QActivityPartition *inPartition);
     QStructuredActivityNode *inStructuredNode() const;
-    void setInStructuredNode(QStructuredActivityNode *inStructuredNode);
-    QList<QActivityEdge *> *incomings();
-    QList<QActivityEdge *> *outgoings();
-    QList<QActivityNode *> *redefinedNodes();
+    void setInStructuredNode(const QStructuredActivityNode *inStructuredNode);
+    const QSet<QActivityEdge *> *incomings() const;
+    void addIncoming(const QActivityEdge *incoming);
+    void removeIncoming(const QActivityEdge *incoming);
+    const QSet<QActivityEdge *> *outgoings() const;
+    void addOutgoing(const QActivityEdge *outgoing);
+    void removeOutgoing(const QActivityEdge *outgoing);
+    const QSet<QActivityNode *> *redefinedNodes() const;
+    void addRedefinedNode(const QActivityNode *redefinedNode);
+    void removeRedefinedNode(const QActivityNode *redefinedNode);
 
 protected:
     explicit QActivityNode();

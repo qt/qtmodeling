@@ -63,7 +63,7 @@ QRelationship::~QRelationship()
 /*!
     Specifies the elements related by the Relationship.
  */
-const QList<QElement *> *QRelationship::relatedElements() const
+const QSet<QElement *> *QRelationship::relatedElements() const
 {
 }
 

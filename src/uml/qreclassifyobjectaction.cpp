@@ -75,7 +75,15 @@ void QReclassifyObjectAction::setReplaceAll(bool isReplaceAll)
 /*!
     A set of classifiers to be added to the classifiers of the object.
  */
-QList<QClassifier *> *QReclassifyObjectAction::newClassifiers()
+const QSet<QClassifier *> *QReclassifyObjectAction::newClassifiers() const
+{
+}
+
+void QReclassifyObjectAction::addNewClassifier(const QClassifier *newClassifier)
+{
+}
+
+void QReclassifyObjectAction::removeNewClassifier(const QClassifier *newClassifier)
 {
 }
 
@@ -86,14 +94,22 @@ QInputPin *QReclassifyObjectAction::object() const
 {
 }
 
-void QReclassifyObjectAction::setObject(QInputPin *object)
+void QReclassifyObjectAction::setObject(const QInputPin *object)
 {
 }
 
 /*!
     A set of classifiers to be removed from the classifiers of the object.
  */
-QList<QClassifier *> *QReclassifyObjectAction::oldClassifiers()
+const QSet<QClassifier *> *QReclassifyObjectAction::oldClassifiers() const
+{
+}
+
+void QReclassifyObjectAction::addOldClassifier(const QClassifier *oldClassifier)
+{
+}
+
+void QReclassifyObjectAction::removeOldClassifier(const QClassifier *oldClassifier)
 {
 }
 

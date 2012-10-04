@@ -68,7 +68,7 @@ QOpaqueExpression *QAbstraction::mapping() const
 {
 }
 
-void QAbstraction::setMapping(QOpaqueExpression *mapping)
+void QAbstraction::setMapping(const QOpaqueExpression *mapping)
 {
 }
 

@@ -48,8 +48,10 @@
 
 // Qt includes
 #include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -66,8 +68,8 @@ class Q_UML_EXPORT QConditionalNode : public QStructuredActivityNode
     // From QConditionalNode
     Q_PROPERTY(bool isAssured READ isAssured WRITE setAssured)
     Q_PROPERTY(bool isDeterminate READ isDeterminate WRITE setDeterminate)
-    Q_PROPERTY(QList<QClause *> * clauses READ clauses)
-    Q_PROPERTY(QList<QOutputPin *> * results READ results)
+    Q_PROPERTY(const QSet<QClause *> * clauses READ clauses)
+    Q_PROPERTY(const QList<QOutputPin *> * results READ results)
 
 public:
     explicit QConditionalNode(QObject *parent = 0);
@@ -80,8 +82,12 @@ public:
     void setDeterminate(bool isDeterminate);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QClause *> *clauses();
-    QList<QOutputPin *> *results();
+    const QSet<QClause *> *clauses() const;
+    void addClause(const QClause *clause);
+    void removeClause(const QClause *clause);
+    const QList<QOutputPin *> *results() const;
+    void addResult(const QOutputPin *result);
+    void removeResult(const QOutputPin *result);
 
 private:
     Q_DISABLE_COPY(QConditionalNode)

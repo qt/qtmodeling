@@ -68,21 +68,37 @@ QLifeline *QOccurrenceSpecification::covered() const
 {
 }
 
-void QOccurrenceSpecification::setCovered(QLifeline *covered)
+void QOccurrenceSpecification::setCovered(const QLifeline *covered)
 {
 }
 
 /*!
     References the GeneralOrderings that specify EventOcurrences that must occur after this OccurrenceSpecification
  */
-QList<QGeneralOrdering *> *QOccurrenceSpecification::toAfter()
+const QSet<QGeneralOrdering *> *QOccurrenceSpecification::toAfter() const
+{
+}
+
+void QOccurrenceSpecification::addToAfter(const QGeneralOrdering *toAfter)
+{
+}
+
+void QOccurrenceSpecification::removeToAfter(const QGeneralOrdering *toAfter)
 {
 }
 
 /*!
     References the GeneralOrderings that specify EventOcurrences that must occur before this OccurrenceSpecification
  */
-QList<QGeneralOrdering *> *QOccurrenceSpecification::toBefore()
+const QSet<QGeneralOrdering *> *QOccurrenceSpecification::toBefore() const
+{
+}
+
+void QOccurrenceSpecification::addToBefore(const QGeneralOrdering *toBefore)
+{
+}
+
+void QOccurrenceSpecification::removeToBefore(const QGeneralOrdering *toBefore)
 {
 }
 

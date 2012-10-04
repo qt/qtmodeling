@@ -85,28 +85,44 @@ void QClassifier::setFinalSpecialization(bool isFinalSpecialization)
 /*!
     Refers to all of the Properties that are direct (i.e. not inherited or imported) attributes of the classifier.
  */
-const QList<QProperty *> *QClassifier::attributes() const
+const QSet<QProperty *> *QClassifier::attributes() const
 {
 }
 
 /*!
     References the collaboration uses owned by the classifier.
  */
-QList<QCollaborationUse *> *QClassifier::collaborationUses()
+const QSet<QCollaborationUse *> *QClassifier::collaborationUses() const
+{
+}
+
+void QClassifier::addCollaborationUse(const QCollaborationUse *collaborationUse)
+{
+}
+
+void QClassifier::removeCollaborationUse(const QCollaborationUse *collaborationUse)
 {
 }
 
 /*!
     Specifies each feature defined in the classifier.Note that there may be members of the Classifier that are of the type Feature but are not included in this association, e.g. inherited features.
  */
-const QList<QFeature *> *QClassifier::features() const
+const QSet<QFeature *> *QClassifier::features() const
 {
 }
 
 /*!
     Specifies the Generalization relationships for this Classifier. These Generalizations navigaten to more general classifiers in the generalization hierarchy.
  */
-QList<QGeneralization *> *QClassifier::generalizations()
+const QSet<QGeneralization *> *QClassifier::generalizations() const
+{
+}
+
+void QClassifier::addGeneralization(const QGeneralization *generalization)
+{
+}
+
+void QClassifier::removeGeneralization(const QGeneralization *generalization)
 {
 }
 
@@ -117,28 +133,52 @@ QRedefinableTemplateSignature *QClassifier::ownedTemplateSignature() const
 {
 }
 
-void QClassifier::setOwnedTemplateSignature(QRedefinableTemplateSignature *ownedTemplateSignature)
+void QClassifier::setOwnedTemplateSignature(const QRedefinableTemplateSignature *ownedTemplateSignature)
 {
 }
 
 /*!
     References the use cases owned by this classifier.
  */
-QList<QUseCase *> *QClassifier::ownedUseCases()
+const QSet<QUseCase *> *QClassifier::ownedUseCases() const
+{
+}
+
+void QClassifier::addOwnedUseCase(const QUseCase *ownedUseCase)
+{
+}
+
+void QClassifier::removeOwnedUseCase(const QUseCase *ownedUseCase)
 {
 }
 
 /*!
     Designates the GeneralizationSet of which the associated Classifier is a power type.
  */
-QList<QGeneralizationSet *> *QClassifier::powertypeExtents()
+const QSet<QGeneralizationSet *> *QClassifier::powertypeExtents() const
+{
+}
+
+void QClassifier::addPowertypeExtent(const QGeneralizationSet *powertypeExtent)
+{
+}
+
+void QClassifier::removePowertypeExtent(const QGeneralizationSet *powertypeExtent)
 {
 }
 
 /*!
     References the Classifiers that are redefined by this Classifier.
  */
-QList<QClassifier *> *QClassifier::redefinedClassifiers()
+const QSet<QClassifier *> *QClassifier::redefinedClassifiers() const
+{
+}
+
+void QClassifier::addRedefinedClassifier(const QClassifier *redefinedClassifier)
+{
+}
+
+void QClassifier::removeRedefinedClassifier(const QClassifier *redefinedClassifier)
 {
 }
 
@@ -149,14 +189,22 @@ QCollaborationUse *QClassifier::representation() const
 {
 }
 
-void QClassifier::setRepresentation(QCollaborationUse *representation)
+void QClassifier::setRepresentation(const QCollaborationUse *representation)
 {
 }
 
 /*!
     References the substitutions that are owned by this Classifier.
  */
-QList<QSubstitution *> *QClassifier::substitutions()
+const QSet<QSubstitution *> *QClassifier::substitutions() const
+{
+}
+
+void QClassifier::addSubstitution(const QSubstitution *substitution)
+{
+}
+
+void QClassifier::removeSubstitution(const QSubstitution *substitution)
 {
 }
 
@@ -167,28 +215,36 @@ QClassifierTemplateParameter *QClassifier::templateParameter() const
 {
 }
 
-void QClassifier::setTemplateParameter(QClassifierTemplateParameter *templateParameter)
+void QClassifier::setTemplateParameter(const QClassifierTemplateParameter *templateParameter)
 {
 }
 
 /*!
     The set of use cases for which this Classifier is the subject.
  */
-QList<QUseCase *> *QClassifier::useCases()
+const QSet<QUseCase *> *QClassifier::useCases() const
+{
+}
+
+void QClassifier::addUseCase(const QUseCase *useCase)
+{
+}
+
+void QClassifier::removeUseCase(const QUseCase *useCase)
 {
 }
 
 /*!
     The query allFeatures() gives all of the features in the namespace of the classifier. In general, through mechanisms such as inheritance, this will be a larger set than feature.
  */
-const QList<QFeature *> *QClassifier::allFeatures() const
+const QSet<QFeature *> *QClassifier::allFeatures() const
 {
 }
 
 /*!
     The query allParents() gives all of the direct and indirect ancestors of a generalized Classifier.
  */
-const QList<QClassifier *> *QClassifier::allParents() const
+const QSet<QClassifier *> *QClassifier::allParents() const
 {
 }
 
@@ -202,7 +258,7 @@ bool QClassifier::conformsTo(const QClassifier *other) const
 /*!
     The general classifiers are the classifiers referenced by the generalization relationships.
  */
-const QList<QClassifier *> *QClassifier::generals() const
+const QSet<QClassifier *> *QClassifier::generals() const
 {
 }
 
@@ -216,21 +272,21 @@ bool QClassifier::hasVisibilityOf(const QNamedElement *n) const
 /*!
     The inherit operation is overridden to exclude redefined properties.The query inherit() defines how to inherit a set of elements. Here the operation is defined to inherit them all. It is intended to be redefined in circumstances where inheritance is affected by redefinition.
  */
-const QList<QNamedElement *> *QClassifier::inherit(const QList<QNamedElement *> *inhs) const
+const QSet<QNamedElement *> *QClassifier::inherit(const QSet<QNamedElement *> *inhs) const
 {
 }
 
 /*!
     The query inheritableMembers() gives all of the members of a classifier that may be inherited in one of its descendants, subject to whatever visibility restrictions apply.
  */
-const QList<QNamedElement *> *QClassifier::inheritableMembers(const QClassifier *c) const
+const QSet<QNamedElement *> *QClassifier::inheritableMembers(const QClassifier *c) const
 {
 }
 
 /*!
     The inheritedMember association is derived by inheriting the inheritable members of the parents.The inheritedMember association is derived by inheriting the inheritable members of the parents.
  */
-const QList<QNamedElement *> *QClassifier::inheritedMembers() const
+const QSet<QNamedElement *> *QClassifier::inheritedMembers() const
 {
 }
 
@@ -251,7 +307,7 @@ bool QClassifier::maySpecializeType(const QClassifier *c) const
 /*!
     The query parents() gives all of the immediate ancestors of a generalized Classifier.
  */
-const QList<QClassifier *> *QClassifier::parents() const
+const QSet<QClassifier *> *QClassifier::parents() const
 {
 }
 

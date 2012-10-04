@@ -47,9 +47,10 @@
 #include <QtUml/QNamedElement>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -66,12 +67,12 @@ public:
     virtual ~QActivityGroup();
 
     // Association-ends (except those derived && !derivedUnion)
-    const QList<QActivityEdge *> *containedEdges() const;
-    const QList<QActivityNode *> *containedNodes() const;
+    const QSet<QActivityEdge *> *containedEdges() const;
+    const QSet<QActivityNode *> *containedNodes() const;
     QActivity *inActivity() const;
-    void setInActivity(QActivity *inActivity);
-    const QList<QActivityGroup *> *subgroups() const;
-    const QActivityGroup *superGroup() const;
+    void setInActivity(const QActivity *inActivity);
+    const QSet<QActivityGroup *> *subgroups() const;
+    QActivityGroup *superGroup() const;
 
 protected:
     explicit QActivityGroup();

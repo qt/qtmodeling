@@ -68,7 +68,7 @@ QProperty *QQualifierValue::qualifier() const
 {
 }
 
-void QQualifierValue::setQualifier(QProperty *qualifier)
+void QQualifierValue::setQualifier(const QProperty *qualifier)
 {
 }
 
@@ -79,7 +79,7 @@ QInputPin *QQualifierValue::value() const
 {
 }
 
-void QQualifierValue::setValue(QInputPin *value)
+void QQualifierValue::setValue(const QInputPin *value)
 {
 }
 

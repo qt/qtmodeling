@@ -68,7 +68,7 @@ QClassifier *QSubstitution::contract() const
 {
 }
 
-void QSubstitution::setContract(QClassifier *contract)
+void QSubstitution::setContract(const QClassifier *contract)
 {
 }
 
@@ -79,7 +79,7 @@ QClassifier *QSubstitution::substitutingClassifier() const
 {
 }
 
-void QSubstitution::setSubstitutingClassifier(QClassifier *substitutingClassifier)
+void QSubstitution::setSubstitutingClassifier(const QClassifier *substitutingClassifier)
 {
 }
 

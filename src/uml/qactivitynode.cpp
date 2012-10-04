@@ -67,28 +67,44 @@ QActivity *QActivityNode::activity() const
 {
 }
 
-void QActivityNode::setActivity(QActivity *activity)
+void QActivityNode::setActivity(const QActivity *activity)
 {
 }
 
 /*!
     Groups containing the node.
  */
-const QList<QActivityGroup *> *QActivityNode::inGroup() const
+const QSet<QActivityGroup *> *QActivityNode::inGroup() const
 {
 }
 
 /*!
     Interruptible regions containing the node.
  */
-QList<QInterruptibleActivityRegion *> *QActivityNode::inInterruptibleRegion()
+const QSet<QInterruptibleActivityRegion *> *QActivityNode::inInterruptibleRegion() const
+{
+}
+
+void QActivityNode::addInInterruptibleRegion(const QInterruptibleActivityRegion *inInterruptibleRegion)
+{
+}
+
+void QActivityNode::removeInInterruptibleRegion(const QInterruptibleActivityRegion *inInterruptibleRegion)
 {
 }
 
 /*!
     Partitions containing the node.
  */
-QList<QActivityPartition *> *QActivityNode::inPartition()
+const QSet<QActivityPartition *> *QActivityNode::inPartition() const
+{
+}
+
+void QActivityNode::addInPartition(const QActivityPartition *inPartition)
+{
+}
+
+void QActivityNode::removeInPartition(const QActivityPartition *inPartition)
 {
 }
 
@@ -99,28 +115,52 @@ QStructuredActivityNode *QActivityNode::inStructuredNode() const
 {
 }
 
-void QActivityNode::setInStructuredNode(QStructuredActivityNode *inStructuredNode)
+void QActivityNode::setInStructuredNode(const QStructuredActivityNode *inStructuredNode)
 {
 }
 
 /*!
     Edges that have the node as target.
  */
-QList<QActivityEdge *> *QActivityNode::incomings()
+const QSet<QActivityEdge *> *QActivityNode::incomings() const
+{
+}
+
+void QActivityNode::addIncoming(const QActivityEdge *incoming)
+{
+}
+
+void QActivityNode::removeIncoming(const QActivityEdge *incoming)
 {
 }
 
 /*!
     Edges that have the node as source.
  */
-QList<QActivityEdge *> *QActivityNode::outgoings()
+const QSet<QActivityEdge *> *QActivityNode::outgoings() const
+{
+}
+
+void QActivityNode::addOutgoing(const QActivityEdge *outgoing)
+{
+}
+
+void QActivityNode::removeOutgoing(const QActivityEdge *outgoing)
 {
 }
 
 /*!
     Inherited nodes replaced by this node in a specialization of the activity.
  */
-QList<QActivityNode *> *QActivityNode::redefinedNodes()
+const QSet<QActivityNode *> *QActivityNode::redefinedNodes() const
+{
+}
+
+void QActivityNode::addRedefinedNode(const QActivityNode *redefinedNode)
+{
+}
+
+void QActivityNode::removeRedefinedNode(const QActivityNode *redefinedNode)
 {
 }
 

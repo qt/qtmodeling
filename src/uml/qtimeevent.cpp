@@ -79,7 +79,7 @@ QTimeExpression *QTimeEvent::when() const
 {
 }
 
-void QTimeEvent::setWhen(QTimeExpression *when)
+void QTimeEvent::setWhen(const QTimeExpression *when)
 {
 }
 

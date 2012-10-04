@@ -48,9 +48,10 @@
 #include <QtUml/QElement>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -66,13 +67,13 @@ class Q_UML_EXPORT QLinkEndData : public QObject, public QElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QLinkEndData
     Q_PROPERTY(QProperty * end READ end WRITE setEnd)
-    Q_PROPERTY(QList<QQualifierValue *> * qualifiers READ qualifiers)
+    Q_PROPERTY(const QSet<QQualifierValue *> * qualifiers READ qualifiers)
     Q_PROPERTY(QInputPin * value READ value WRITE setValue)
 
 public:
@@ -81,10 +82,12 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QProperty *end() const;
-    void setEnd(QProperty *end);
-    QList<QQualifierValue *> *qualifiers();
+    void setEnd(const QProperty *end);
+    const QSet<QQualifierValue *> *qualifiers() const;
+    void addQualifier(const QQualifierValue *qualifier);
+    void removeQualifier(const QQualifierValue *qualifier);
     QInputPin *value() const;
-    void setValue(QInputPin *value);
+    void setValue(const QInputPin *value);
 
 private:
     Q_DISABLE_COPY(QLinkEndData)

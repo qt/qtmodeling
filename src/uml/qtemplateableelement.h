@@ -47,9 +47,10 @@
 #include <QtUml/QElement>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -67,12 +68,14 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QTemplateSignature *ownedTemplateSignature() const;
-    void setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature);
-    QList<QTemplateBinding *> *templateBindings();
+    void setOwnedTemplateSignature(const QTemplateSignature *ownedTemplateSignature);
+    const QSet<QTemplateBinding *> *templateBindings() const;
+    void addTemplateBinding(const QTemplateBinding *templateBinding);
+    void removeTemplateBinding(const QTemplateBinding *templateBinding);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     bool isTemplate() const;
-    const QList<QParameterableElement *> *parameterableElements() const;
+    const QSet<QParameterableElement *> *parameterableElements() const;
 
 protected:
     explicit QTemplateableElement();

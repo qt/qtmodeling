@@ -67,7 +67,7 @@ QOccurrenceSpecification *QExecutionSpecification::finish() const
 {
 }
 
-void QExecutionSpecification::setFinish(QOccurrenceSpecification *finish)
+void QExecutionSpecification::setFinish(const QOccurrenceSpecification *finish)
 {
 }
 
@@ -78,7 +78,7 @@ QOccurrenceSpecification *QExecutionSpecification::start() const
 {
 }
 
-void QExecutionSpecification::setStart(QOccurrenceSpecification *start)
+void QExecutionSpecification::setStart(const QOccurrenceSpecification *start)
 {
 }
 

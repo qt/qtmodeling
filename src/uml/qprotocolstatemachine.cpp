@@ -64,7 +64,15 @@ QProtocolStateMachine::~QProtocolStateMachine()
 /*!
     Conformance between protocol state machines.
  */
-QList<QProtocolConformance *> *QProtocolStateMachine::conformance()
+const QSet<QProtocolConformance *> *QProtocolStateMachine::conformance() const
+{
+}
+
+void QProtocolStateMachine::addConformance(const QProtocolConformance *conformance)
+{
+}
+
+void QProtocolStateMachine::removeConformance(const QProtocolConformance *conformance)
 {
 }
 

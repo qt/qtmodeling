@@ -51,6 +51,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -68,7 +69,9 @@ public:
     void setSynchronous(bool isSynchronous);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QOutputPin *> *results();
+    const QList<QOutputPin *> *results() const;
+    void addResult(const QOutputPin *result);
+    void removeResult(const QOutputPin *result);
 
 protected:
     explicit QCallAction();

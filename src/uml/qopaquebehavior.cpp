@@ -64,14 +64,30 @@ QOpaqueBehavior::~QOpaqueBehavior()
 /*!
     Specifies the behavior in one or more languages.
  */
-QList<QString *> QOpaqueBehavior::bodies()
+const QList<QString> *QOpaqueBehavior::bodies() const
+{
+}
+
+void QOpaqueBehavior::addBody(QString body)
+{
+}
+
+void QOpaqueBehavior::removeBody(QString body)
 {
 }
 
 /*!
     Languages the body strings use in the same order as the body strings.
  */
-QList<QString *> QOpaqueBehavior::languages()
+const QList<QString> *QOpaqueBehavior::languages() const
+{
+}
+
+void QOpaqueBehavior::addLanguage(QString language)
+{
+}
+
+void QOpaqueBehavior::removeLanguage(QString language)
 {
 }
 

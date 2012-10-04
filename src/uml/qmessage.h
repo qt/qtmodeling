@@ -56,6 +56,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -71,22 +72,22 @@ class Q_UML_EXPORT QMessage : public QObject, public QNamedElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QMessage
     Q_PROPERTY(QtUml::MessageKind messageKind READ messageKind)
     Q_PROPERTY(QtUml::MessageSort messageSort READ messageSort WRITE setMessageSort)
-    Q_PROPERTY(QList<QValueSpecification *> * arguments READ arguments)
+    Q_PROPERTY(const QList<QValueSpecification *> * arguments READ arguments)
     Q_PROPERTY(QConnector * connector READ connector WRITE setConnector)
     Q_PROPERTY(QInteraction * interaction READ interaction WRITE setInteraction)
     Q_PROPERTY(QMessageEnd * receiveEvent READ receiveEvent WRITE setReceiveEvent)
@@ -102,17 +103,19 @@ public:
     void setMessageSort(QtUml::MessageSort messageSort);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QValueSpecification *> *arguments();
+    const QList<QValueSpecification *> *arguments() const;
+    void addArgument(const QValueSpecification *argument);
+    void removeArgument(const QValueSpecification *argument);
     QConnector *connector() const;
-    void setConnector(QConnector *connector);
+    void setConnector(const QConnector *connector);
     QInteraction *interaction() const;
-    void setInteraction(QInteraction *interaction);
+    void setInteraction(const QInteraction *interaction);
     QMessageEnd *receiveEvent() const;
-    void setReceiveEvent(QMessageEnd *receiveEvent);
+    void setReceiveEvent(const QMessageEnd *receiveEvent);
     QMessageEnd *sendEvent() const;
-    void setSendEvent(QMessageEnd *sendEvent);
+    void setSendEvent(const QMessageEnd *sendEvent);
     QNamedElement *signature() const;
-    void setSignature(QNamedElement *signature);
+    void setSignature(const QNamedElement *signature);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     QtUml::MessageKind messageKind() const;

@@ -49,8 +49,10 @@
 
 // Qt includes
 #include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -67,27 +69,27 @@ class Q_UML_EXPORT QInteractionUse : public QObject, public QInteractionFragment
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QInteractionFragment
-    Q_PROPERTY(QList<QLifeline *> * covered READ covered)
+    Q_PROPERTY(const QSet<QLifeline *> * covered READ covered)
     Q_PROPERTY(QInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
     Q_PROPERTY(QInteractionOperand * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
-    Q_PROPERTY(QList<QGeneralOrdering *> * generalOrderings READ generalOrderings)
+    Q_PROPERTY(const QSet<QGeneralOrdering *> * generalOrderings READ generalOrderings)
 
     // From QInteractionUse
-    Q_PROPERTY(QList<QGate *> * actualGates READ actualGates)
-    Q_PROPERTY(QList<QValueSpecification *> * arguments READ arguments)
+    Q_PROPERTY(const QSet<QGate *> * actualGates READ actualGates)
+    Q_PROPERTY(const QList<QValueSpecification *> * arguments READ arguments)
     Q_PROPERTY(QInteraction * refersTo READ refersTo WRITE setRefersTo)
     Q_PROPERTY(QValueSpecification * returnValue READ returnValue WRITE setReturnValue)
     Q_PROPERTY(QProperty * returnValueRecipient READ returnValueRecipient WRITE setReturnValueRecipient)
@@ -97,14 +99,18 @@ public:
     virtual ~QInteractionUse();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QGate *> *actualGates();
-    QList<QValueSpecification *> *arguments();
+    const QSet<QGate *> *actualGates() const;
+    void addActualGate(const QGate *actualGate);
+    void removeActualGate(const QGate *actualGate);
+    const QList<QValueSpecification *> *arguments() const;
+    void addArgument(const QValueSpecification *argument);
+    void removeArgument(const QValueSpecification *argument);
     QInteraction *refersTo() const;
-    void setRefersTo(QInteraction *refersTo);
+    void setRefersTo(const QInteraction *refersTo);
     QValueSpecification *returnValue() const;
-    void setReturnValue(QValueSpecification *returnValue);
+    void setReturnValue(const QValueSpecification *returnValue);
     QProperty *returnValueRecipient() const;
-    void setReturnValueRecipient(QProperty *returnValueRecipient);
+    void setReturnValueRecipient(const QProperty *returnValueRecipient);
 
 private:
     Q_DISABLE_COPY(QInteractionUse)

@@ -79,7 +79,7 @@ QState *QPseudostate::state() const
 {
 }
 
-void QPseudostate::setState(QState *state)
+void QPseudostate::setState(const QState *state)
 {
 }
 
@@ -90,7 +90,7 @@ QStateMachine *QPseudostate::stateMachine() const
 {
 }
 
-void QPseudostate::setStateMachine(QStateMachine *stateMachine)
+void QPseudostate::setStateMachine(const QStateMachine *stateMachine)
 {
 }
 

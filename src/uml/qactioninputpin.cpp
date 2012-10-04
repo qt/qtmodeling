@@ -68,7 +68,7 @@ QAction *QActionInputPin::fromAction() const
 {
 }
 
-void QActionInputPin::setFromAction(QAction *fromAction)
+void QActionInputPin::setFromAction(const QAction *fromAction)
 {
 }
 

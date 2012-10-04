@@ -47,9 +47,10 @@
 #include <QtUml/QClass>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -64,19 +65,21 @@ class Q_UML_EXPORT QStereotype : public QClass
     Q_OBJECT
 
     // From QStereotype
-    Q_PROPERTY(QList<QImage *> * icons READ icons)
-    Q_PROPERTY(const QProfile * profile READ profile)
+    Q_PROPERTY(const QSet<QImage *> * icons READ icons)
+    Q_PROPERTY(QProfile * profile READ profile)
 
 public:
     explicit QStereotype(QObject *parent = 0);
     virtual ~QStereotype();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QImage *> *icons();
+    const QSet<QImage *> *icons() const;
+    void addIcon(const QImage *icon);
+    void removeIcon(const QImage *icon);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QProfile *containingProfile() const;
-    const QProfile *profile() const;
+    QProfile *containingProfile() const;
+    QProfile *profile() const;
 
 private:
     Q_DISABLE_COPY(QStereotype)

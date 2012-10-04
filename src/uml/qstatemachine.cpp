@@ -64,35 +64,67 @@ QStateMachine::~QStateMachine()
 /*!
     The connection points defined for this state machine. They represent the interface of the state machine when used as part of submachine state.
  */
-QList<QPseudostate *> *QStateMachine::connectionPoints()
+const QSet<QPseudostate *> *QStateMachine::connectionPoints() const
+{
+}
+
+void QStateMachine::addConnectionPoint(const QPseudostate *connectionPoint)
+{
+}
+
+void QStateMachine::removeConnectionPoint(const QPseudostate *connectionPoint)
 {
 }
 
 /*!
     The state machines of which this is an extension.
  */
-QList<QStateMachine *> *QStateMachine::extendedStateMachines()
+const QSet<QStateMachine *> *QStateMachine::extendedStateMachines() const
+{
+}
+
+void QStateMachine::addExtendedStateMachine(const QStateMachine *extendedStateMachine)
+{
+}
+
+void QStateMachine::removeExtendedStateMachine(const QStateMachine *extendedStateMachine)
 {
 }
 
 /*!
     The regions owned directly by the state machine.
  */
-QList<QRegion *> *QStateMachine::regions()
+const QSet<QRegion *> *QStateMachine::regions() const
+{
+}
+
+void QStateMachine::addRegion(const QRegion *region)
+{
+}
+
+void QStateMachine::removeRegion(const QRegion *region)
 {
 }
 
 /*!
     References the submachine(s) in case of a submachine state. Multiple machines are referenced in case of a concurrent state.
  */
-QList<QState *> *QStateMachine::submachineStates()
+const QSet<QState *> *QStateMachine::submachineStates() const
+{
+}
+
+void QStateMachine::addSubmachineState(const QState *submachineState)
+{
+}
+
+void QStateMachine::removeSubmachineState(const QState *submachineState)
 {
 }
 
 /*!
     The operation LCA(s1,s2) returns an orthogonal state or region which is the least common ancestor of states s1 and s2, based on the statemachine containment hierarchy.
  */
-const QNamespace *QStateMachine::LCA(const QState *s1, const QState *s2) const
+QNamespace *QStateMachine::LCA(const QState *s1, const QState *s2) const
 {
 }
 

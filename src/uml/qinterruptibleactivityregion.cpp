@@ -64,14 +64,30 @@ QInterruptibleActivityRegion::~QInterruptibleActivityRegion()
 /*!
     The edges leaving the region that will abort other tokens flowing in the region.
  */
-QList<QActivityEdge *> *QInterruptibleActivityRegion::interruptingEdges()
+const QSet<QActivityEdge *> *QInterruptibleActivityRegion::interruptingEdges() const
+{
+}
+
+void QInterruptibleActivityRegion::addInterruptingEdge(const QActivityEdge *interruptingEdge)
+{
+}
+
+void QInterruptibleActivityRegion::removeInterruptingEdge(const QActivityEdge *interruptingEdge)
 {
 }
 
 /*!
     Nodes immediately contained in the group.
  */
-QList<QActivityNode *> *QInterruptibleActivityRegion::nodes()
+const QSet<QActivityNode *> *QInterruptibleActivityRegion::nodes() const
+{
+}
+
+void QInterruptibleActivityRegion::addNode(const QActivityNode *node)
+{
+}
+
+void QInterruptibleActivityRegion::removeNode(const QActivityNode *node)
 {
 }
 

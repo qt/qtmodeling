@@ -68,7 +68,7 @@ QUseCase *QInclude::addition() const
 {
 }
 
-void QInclude::setAddition(QUseCase *addition)
+void QInclude::setAddition(const QUseCase *addition)
 {
 }
 
@@ -79,7 +79,7 @@ QUseCase *QInclude::includingCase() const
 {
 }
 
-void QInclude::setIncludingCase(QUseCase *includingCase)
+void QInclude::setIncludingCase(const QUseCase *includingCase)
 {
 }
 

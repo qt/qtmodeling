@@ -48,9 +48,10 @@
 #include <QtUml/QInteractionFragment>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -65,27 +66,27 @@ class Q_UML_EXPORT QOccurrenceSpecification : public QObject, public QInteractio
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QInteractionFragment
     Q_PROPERTY(QInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
     Q_PROPERTY(QInteractionOperand * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
-    Q_PROPERTY(QList<QGeneralOrdering *> * generalOrderings READ generalOrderings)
+    Q_PROPERTY(const QSet<QGeneralOrdering *> * generalOrderings READ generalOrderings)
 
     // From QOccurrenceSpecification
     Q_PROPERTY(QLifeline * covered READ covered WRITE setCovered)
-    Q_PROPERTY(QList<QGeneralOrdering *> * toAfter READ toAfter)
-    Q_PROPERTY(QList<QGeneralOrdering *> * toBefore READ toBefore)
+    Q_PROPERTY(const QSet<QGeneralOrdering *> * toAfter READ toAfter)
+    Q_PROPERTY(const QSet<QGeneralOrdering *> * toBefore READ toBefore)
 
 public:
     explicit QOccurrenceSpecification(QObject *parent = 0);
@@ -93,9 +94,13 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QLifeline *covered() const;
-    void setCovered(QLifeline *covered);
-    QList<QGeneralOrdering *> *toAfter();
-    QList<QGeneralOrdering *> *toBefore();
+    void setCovered(const QLifeline *covered);
+    const QSet<QGeneralOrdering *> *toAfter() const;
+    void addToAfter(const QGeneralOrdering *toAfter);
+    void removeToAfter(const QGeneralOrdering *toAfter);
+    const QSet<QGeneralOrdering *> *toBefore() const;
+    void addToBefore(const QGeneralOrdering *toBefore);
+    void removeToBefore(const QGeneralOrdering *toBefore);
 
 private:
     Q_DISABLE_COPY(QOccurrenceSpecification)

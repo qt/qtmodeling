@@ -68,7 +68,7 @@ QOperation *QOperationTemplateParameter::parameteredElement() const
 {
 }
 
-void QOperationTemplateParameter::setParameteredElement(QOperation *parameteredElement)
+void QOperationTemplateParameter::setParameteredElement(const QOperation *parameteredElement)
 {
 }
 

@@ -47,9 +47,10 @@
 #include <QtUml/QRealization>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -65,7 +66,7 @@ class Q_UML_EXPORT QComponentRealization : public QRealization
 
     // From QComponentRealization
     Q_PROPERTY(QComponent * abstraction READ abstraction WRITE setAbstraction)
-    Q_PROPERTY(QList<QClassifier *> * realizingClassifiers READ realizingClassifiers)
+    Q_PROPERTY(const QSet<QClassifier *> * realizingClassifiers READ realizingClassifiers)
 
 public:
     explicit QComponentRealization(QObject *parent = 0);
@@ -73,8 +74,10 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QComponent *abstraction() const;
-    void setAbstraction(QComponent *abstraction);
-    QList<QClassifier *> *realizingClassifiers();
+    void setAbstraction(const QComponent *abstraction);
+    const QSet<QClassifier *> *realizingClassifiers() const;
+    void addRealizingClassifier(const QClassifier *realizingClassifier);
+    void removeRealizingClassifier(const QClassifier *realizingClassifier);
 
 private:
     Q_DISABLE_COPY(QComponentRealization)

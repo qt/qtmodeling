@@ -68,7 +68,7 @@ QStructuralFeature *QSlot::definingFeature() const
 {
 }
 
-void QSlot::setDefiningFeature(QStructuralFeature *definingFeature)
+void QSlot::setDefiningFeature(const QStructuralFeature *definingFeature)
 {
 }
 
@@ -79,14 +79,22 @@ QInstanceSpecification *QSlot::owningInstance() const
 {
 }
 
-void QSlot::setOwningInstance(QInstanceSpecification *owningInstance)
+void QSlot::setOwningInstance(const QInstanceSpecification *owningInstance)
 {
 }
 
 /*!
     The value or values corresponding to the defining feature for the owning instance specification.
  */
-QList<QValueSpecification *> *QSlot::values()
+const QList<QValueSpecification *> *QSlot::values() const
+{
+}
+
+void QSlot::addValue(const QValueSpecification *value)
+{
+}
+
+void QSlot::removeValue(const QValueSpecification *value)
 {
 }
 

@@ -68,7 +68,7 @@ QStereotype *QExtensionEnd::type() const
 {
 }
 
-void QExtensionEnd::setType(QStereotype *type)
+void QExtensionEnd::setType(const QStereotype *type)
 {
 }
 

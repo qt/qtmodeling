@@ -64,7 +64,15 @@ QCollaboration::~QCollaboration()
 /*!
     References connectable elements (possibly owned by other classifiers) which represent roles that instances may play in this collaboration.
  */
-QList<QConnectableElement *> *QCollaboration::collaborationRoles()
+const QSet<QConnectableElement *> *QCollaboration::collaborationRoles() const
+{
+}
+
+void QCollaboration::addCollaborationRole(const QConnectableElement *collaborationRole)
+{
+}
+
+void QCollaboration::removeCollaborationRole(const QConnectableElement *collaborationRole)
 {
 }
 

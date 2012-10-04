@@ -68,7 +68,7 @@ QExtensionEnd *QExtension::ownedEnd() const
 {
 }
 
-void QExtension::setOwnedEnd(QExtensionEnd *ownedEnd)
+void QExtension::setOwnedEnd(const QExtensionEnd *ownedEnd)
 {
 }
 
@@ -82,14 +82,14 @@ bool QExtension::isRequired() const
 /*!
     The query metaclass() returns the metaclass that is being extended (as opposed to the extending stereotype).
  */
-const QClass *QExtension::metaclass() const
+QClass *QExtension::metaclass() const
 {
 }
 
 /*!
     The query metaclassEnd() returns the Property that is typed by a metaclass (as opposed to a stereotype).
  */
-const QProperty *QExtension::metaclassEnd() const
+QProperty *QExtension::metaclassEnd() const
 {
 }
 

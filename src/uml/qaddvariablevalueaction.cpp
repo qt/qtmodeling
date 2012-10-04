@@ -79,7 +79,7 @@ QInputPin *QAddVariableValueAction::insertAt() const
 {
 }
 
-void QAddVariableValueAction::setInsertAt(QInputPin *insertAt)
+void QAddVariableValueAction::setInsertAt(const QInputPin *insertAt)
 {
 }
 

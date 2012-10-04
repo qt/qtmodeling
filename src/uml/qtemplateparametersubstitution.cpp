@@ -68,7 +68,7 @@ QParameterableElement *QTemplateParameterSubstitution::actual() const
 {
 }
 
-void QTemplateParameterSubstitution::setActual(QParameterableElement *actual)
+void QTemplateParameterSubstitution::setActual(const QParameterableElement *actual)
 {
 }
 
@@ -79,7 +79,7 @@ QTemplateParameter *QTemplateParameterSubstitution::formal() const
 {
 }
 
-void QTemplateParameterSubstitution::setFormal(QTemplateParameter *formal)
+void QTemplateParameterSubstitution::setFormal(const QTemplateParameter *formal)
 {
 }
 
@@ -90,7 +90,7 @@ QParameterableElement *QTemplateParameterSubstitution::ownedActual() const
 {
 }
 
-void QTemplateParameterSubstitution::setOwnedActual(QParameterableElement *ownedActual)
+void QTemplateParameterSubstitution::setOwnedActual(const QParameterableElement *ownedActual)
 {
 }
 
@@ -101,7 +101,7 @@ QTemplateBinding *QTemplateParameterSubstitution::templateBinding() const
 {
 }
 
-void QTemplateParameterSubstitution::setTemplateBinding(QTemplateBinding *templateBinding)
+void QTemplateParameterSubstitution::setTemplateBinding(const QTemplateBinding *templateBinding)
 {
 }
 

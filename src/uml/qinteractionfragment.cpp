@@ -63,7 +63,15 @@ QInteractionFragment::~QInteractionFragment()
 /*!
     References the Lifelines that the InteractionFragment involves.
  */
-QList<QLifeline *> *QInteractionFragment::covered()
+const QSet<QLifeline *> *QInteractionFragment::covered() const
+{
+}
+
+void QInteractionFragment::addCovered(const QLifeline *covered)
+{
+}
+
+void QInteractionFragment::removeCovered(const QLifeline *covered)
 {
 }
 
@@ -74,7 +82,7 @@ QInteraction *QInteractionFragment::enclosingInteraction() const
 {
 }
 
-void QInteractionFragment::setEnclosingInteraction(QInteraction *enclosingInteraction)
+void QInteractionFragment::setEnclosingInteraction(const QInteraction *enclosingInteraction)
 {
 }
 
@@ -85,14 +93,22 @@ QInteractionOperand *QInteractionFragment::enclosingOperand() const
 {
 }
 
-void QInteractionFragment::setEnclosingOperand(QInteractionOperand *enclosingOperand)
+void QInteractionFragment::setEnclosingOperand(const QInteractionOperand *enclosingOperand)
 {
 }
 
 /*!
     The general ordering relationships contained in this fragment.
  */
-QList<QGeneralOrdering *> *QInteractionFragment::generalOrderings()
+const QSet<QGeneralOrdering *> *QInteractionFragment::generalOrderings() const
+{
+}
+
+void QInteractionFragment::addGeneralOrdering(const QGeneralOrdering *generalOrdering)
+{
+}
+
+void QInteractionFragment::removeGeneralOrdering(const QGeneralOrdering *generalOrdering)
 {
 }
 

@@ -49,9 +49,10 @@
 
 // Qt includes
 #include <QtCore/QString>
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -64,13 +65,13 @@ class Q_UML_EXPORT QComment : public QObject, public QElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QComment
     Q_PROPERTY(QString body READ body WRITE setBody)
-    Q_PROPERTY(QList<QElement *> * annotatedElements READ annotatedElements)
+    Q_PROPERTY(const QSet<QElement *> * annotatedElements READ annotatedElements)
 
 public:
     explicit QComment(QObject *parent = 0);
@@ -81,7 +82,9 @@ public:
     void setBody(QString body);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QElement *> *annotatedElements();
+    const QSet<QElement *> *annotatedElements() const;
+    void addAnnotatedElement(const QElement *annotatedElement);
+    void removeAnnotatedElement(const QElement *annotatedElement);
 
 private:
     Q_DISABLE_COPY(QComment)

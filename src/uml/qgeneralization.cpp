@@ -79,14 +79,22 @@ QClassifier *QGeneralization::general() const
 {
 }
 
-void QGeneralization::setGeneral(QClassifier *general)
+void QGeneralization::setGeneral(const QClassifier *general)
 {
 }
 
 /*!
     Designates a set in which instances of Generalization is considered members.
  */
-QList<QGeneralizationSet *> *QGeneralization::generalizationSets()
+const QSet<QGeneralizationSet *> *QGeneralization::generalizationSets() const
+{
+}
+
+void QGeneralization::addGeneralizationSet(const QGeneralizationSet *generalizationSet)
+{
+}
+
+void QGeneralization::removeGeneralizationSet(const QGeneralizationSet *generalizationSet)
 {
 }
 
@@ -97,7 +105,7 @@ QClassifier *QGeneralization::specific() const
 {
 }
 
-void QGeneralization::setSpecific(QClassifier *specific)
+void QGeneralization::setSpecific(const QClassifier *specific)
 {
 }
 

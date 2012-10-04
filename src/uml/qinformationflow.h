@@ -49,9 +49,10 @@
 #include <QtUml/QPackageableElement>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -70,16 +71,16 @@ class Q_UML_EXPORT QInformationFlow : public QObject, public QDirectedRelationsh
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QRelationship
-    Q_PROPERTY(const QList<QElement *> * relatedElements READ relatedElements)
+    Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
 
     // From QDirectedRelationship
-    Q_PROPERTY(const QList<QElement *> * sources READ sources)
-    Q_PROPERTY(const QList<QElement *> * targets READ targets)
+    Q_PROPERTY(const QSet<QElement *> * sources READ sources)
+    Q_PROPERTY(const QSet<QElement *> * targets READ targets)
 
     // From QParameterableElement
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
@@ -88,35 +89,48 @@ class Q_UML_EXPORT QInformationFlow : public QObject, public QDirectedRelationsh
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QPackageableElement
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // From QInformationFlow
-    Q_PROPERTY(QList<QClassifier *> * conveyed READ conveyed)
-    Q_PROPERTY(QList<QNamedElement *> * informationSources READ informationSources)
-    Q_PROPERTY(QList<QNamedElement *> * informationTargets READ informationTargets)
-    Q_PROPERTY(QList<QRelationship *> * realizations READ realizations)
-    Q_PROPERTY(QList<QActivityEdge *> * realizingActivityEdges READ realizingActivityEdges)
-    Q_PROPERTY(QList<QConnector *> * realizingConnectors READ realizingConnectors)
-    Q_PROPERTY(QList<QMessage *> * realizingMessages READ realizingMessages)
+    Q_PROPERTY(const QSet<QClassifier *> * conveyed READ conveyed)
+    Q_PROPERTY(const QSet<QNamedElement *> * informationSources READ informationSources)
+    Q_PROPERTY(const QSet<QNamedElement *> * informationTargets READ informationTargets)
+    Q_PROPERTY(const QSet<QRelationship *> * realizations READ realizations)
+    Q_PROPERTY(const QSet<QActivityEdge *> * realizingActivityEdges READ realizingActivityEdges)
+    Q_PROPERTY(const QSet<QConnector *> * realizingConnectors READ realizingConnectors)
+    Q_PROPERTY(const QSet<QMessage *> * realizingMessages READ realizingMessages)
 
 public:
     explicit QInformationFlow(QObject *parent = 0);
     virtual ~QInformationFlow();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QClassifier *> *conveyed();
-    QList<QNamedElement *> *informationSources();
-    QList<QNamedElement *> *informationTargets();
-    QList<QRelationship *> *realizations();
-    QList<QActivityEdge *> *realizingActivityEdges();
-    QList<QConnector *> *realizingConnectors();
-    QList<QMessage *> *realizingMessages();
+    const QSet<QClassifier *> *conveyed() const;
+    void addConveyed(const QClassifier *conveyed);
+    void removeConveyed(const QClassifier *conveyed);
+    const QSet<QNamedElement *> *informationSources() const;
+    void addInformationSource(const QNamedElement *informationSource);
+    void removeInformationSource(const QNamedElement *informationSource);
+    const QSet<QNamedElement *> *informationTargets() const;
+    void addInformationTarget(const QNamedElement *informationTarget);
+    void removeInformationTarget(const QNamedElement *informationTarget);
+    const QSet<QRelationship *> *realizations() const;
+    void addRealization(const QRelationship *realization);
+    void removeRealization(const QRelationship *realization);
+    const QSet<QActivityEdge *> *realizingActivityEdges() const;
+    void addRealizingActivityEdge(const QActivityEdge *realizingActivityEdge);
+    void removeRealizingActivityEdge(const QActivityEdge *realizingActivityEdge);
+    const QSet<QConnector *> *realizingConnectors() const;
+    void addRealizingConnector(const QConnector *realizingConnector);
+    void removeRealizingConnector(const QConnector *realizingConnector);
+    const QSet<QMessage *> *realizingMessages() const;
+    void addRealizingMessage(const QMessage *realizingMessage);
+    void removeRealizingMessage(const QMessage *realizingMessage);
 
 private:
     Q_DISABLE_COPY(QInformationFlow)

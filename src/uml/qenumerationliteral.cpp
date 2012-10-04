@@ -68,14 +68,14 @@ QEnumeration *QEnumerationLiteral::enumeration() const
 {
 }
 
-void QEnumerationLiteral::setEnumeration(QEnumeration *enumeration)
+void QEnumerationLiteral::setEnumeration(const QEnumeration *enumeration)
 {
 }
 
 /*!
     Missing derivation for EnumerationLiteral::/classifier : Enumeration
  */
-const QEnumeration *QEnumerationLiteral::classifier() const
+QEnumeration *QEnumerationLiteral::classifier() const
 {
 }
 

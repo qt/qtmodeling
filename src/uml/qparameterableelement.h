@@ -48,6 +48,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -62,9 +63,9 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QTemplateParameter *owningTemplateParameter() const;
-    void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
+    void setOwningTemplateParameter(const QTemplateParameter *owningTemplateParameter);
     QTemplateParameter *templateParameter() const;
-    void setTemplateParameter(QTemplateParameter *templateParameter);
+    void setTemplateParameter(const QTemplateParameter *templateParameter);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     bool isCompatibleWith(const QParameterableElement *p) const;

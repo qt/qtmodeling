@@ -48,9 +48,10 @@
 #include <QtUml/QDirectedRelationship>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -65,21 +66,21 @@ class Q_UML_EXPORT QGeneralization : public QObject, public QDirectedRelationshi
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QRelationship
-    Q_PROPERTY(const QList<QElement *> * relatedElements READ relatedElements)
+    Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
 
     // From QDirectedRelationship
-    Q_PROPERTY(const QList<QElement *> * sources READ sources)
-    Q_PROPERTY(const QList<QElement *> * targets READ targets)
+    Q_PROPERTY(const QSet<QElement *> * sources READ sources)
+    Q_PROPERTY(const QSet<QElement *> * targets READ targets)
 
     // From QGeneralization
     Q_PROPERTY(bool isSubstitutable READ isSubstitutable WRITE setSubstitutable)
     Q_PROPERTY(QClassifier * general READ general WRITE setGeneral)
-    Q_PROPERTY(QList<QGeneralizationSet *> * generalizationSets READ generalizationSets)
+    Q_PROPERTY(const QSet<QGeneralizationSet *> * generalizationSets READ generalizationSets)
     Q_PROPERTY(QClassifier * specific READ specific WRITE setSpecific)
 
 public:
@@ -92,10 +93,12 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QClassifier *general() const;
-    void setGeneral(QClassifier *general);
-    QList<QGeneralizationSet *> *generalizationSets();
+    void setGeneral(const QClassifier *general);
+    const QSet<QGeneralizationSet *> *generalizationSets() const;
+    void addGeneralizationSet(const QGeneralizationSet *generalizationSet);
+    void removeGeneralizationSet(const QGeneralizationSet *generalizationSet);
     QClassifier *specific() const;
-    void setSpecific(QClassifier *specific);
+    void setSpecific(const QClassifier *specific);
 
 private:
     Q_DISABLE_COPY(QGeneralization)

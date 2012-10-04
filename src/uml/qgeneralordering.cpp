@@ -68,7 +68,7 @@ QOccurrenceSpecification *QGeneralOrdering::after() const
 {
 }
 
-void QGeneralOrdering::setAfter(QOccurrenceSpecification *after)
+void QGeneralOrdering::setAfter(const QOccurrenceSpecification *after)
 {
 }
 
@@ -79,7 +79,7 @@ QOccurrenceSpecification *QGeneralOrdering::before() const
 {
 }
 
-void QGeneralOrdering::setBefore(QOccurrenceSpecification *before)
+void QGeneralOrdering::setBefore(const QOccurrenceSpecification *before)
 {
 }
 

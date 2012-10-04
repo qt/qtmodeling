@@ -48,6 +48,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -68,7 +69,7 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QValueSpecification *value() const;
-    void setValue(QValueSpecification *value);
+    void setValue(const QValueSpecification *value);
 
 private:
     Q_DISABLE_COPY(QValuePin)
