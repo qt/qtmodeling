@@ -127,7 +127,6 @@
 
 
 QT_BEGIN_HEADER
-
 [%- currentNamespace = '' -%]
 [%- FOREACH forwarddecl IN class.forwarddecl %]
     [%- IF forwarddecl.namespace != namespace.replace('/', '::') %]
@@ -218,8 +217,8 @@ private:
 QT_END_NAMESPACE_${namespace.replace('/', '_').upper}
 [%- IF class.isAbstract == 'false' %]
 
-Q_DECLARE_METATYPE(QList<${namespace.replace('/', '::')}::${class.name} *>)
-Q_DECLARE_METATYPE(QList<${namespace.replace('/', '::')}::${class.name} *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *>)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *> *)
 [%- END %]
 
 QT_END_HEADER

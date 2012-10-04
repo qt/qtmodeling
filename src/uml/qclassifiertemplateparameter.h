@@ -51,7 +51,6 @@
 
 QT_BEGIN_HEADER
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -90,8 +89,8 @@ private:
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QtUml::QClassifierTemplateParameter *>)
-Q_DECLARE_METATYPE(QList<QtUml::QClassifierTemplateParameter *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QClassifierTemplateParameter) *>)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QClassifierTemplateParameter) *> *)
 
 QT_END_HEADER
 

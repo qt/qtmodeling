@@ -54,7 +54,6 @@
 
 QT_BEGIN_HEADER
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -105,8 +104,8 @@ public:
     void addClassifier(const QClassifier *classifier);
     void removeClassifier(const QClassifier *classifier);
     const QSet<QSlot *> *slots_() const;
-    void addSlot(const QSlot *slot_);
-    void removeSlot(const QSlot *slot_);
+    void addSlot_(const QSlot *slot_);
+    void removeSlot_(const QSlot *slot_);
     QValueSpecification *specification() const;
     void setSpecification(const QValueSpecification *specification);
 
@@ -117,8 +116,8 @@ private:
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QtUml::QInstanceSpecification *>)
-Q_DECLARE_METATYPE(QList<QtUml::QInstanceSpecification *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QInstanceSpecification) *>)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QInstanceSpecification) *> *)
 
 QT_END_HEADER
 

@@ -33,11 +33,12 @@
         </ownedComment>
         <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="BaseClass-inheritedAttribute" name="inheritedAttribute">
-        <ownedComment xmi:type="uml:Comment" xmi:id="BaseClass-inheritedAttribute-_ownedComment.0" annotatedElement="BaseClass-inheritedAttribute">
-          <body>inheritedAttribute.</body>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="BaseClass-slot" name="slot">
+        <ownedComment xmi:type="uml:Comment" xmi:id="BaseClass-slot-_ownedComment.0" annotatedElement="BaseClass-slot">
+          <body>name mapped attribute.</body>
         </ownedComment>
         <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TestingClass-slot-_upperValue" value="*"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="UsedClass" name="UsedClass">

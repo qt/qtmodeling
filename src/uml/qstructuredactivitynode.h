@@ -54,7 +54,6 @@
 
 QT_BEGIN_HEADER
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -166,8 +165,8 @@ private:
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QtUml::QStructuredActivityNode *>)
-Q_DECLARE_METATYPE(QList<QtUml::QStructuredActivityNode *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QStructuredActivityNode) *>)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QStructuredActivityNode) *> *)
 
 QT_END_HEADER
 
