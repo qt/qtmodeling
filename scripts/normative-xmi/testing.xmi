@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:mofext="http://www.omg.org/spec/MOF/20110701">
+  <uml:Package xmi:type="uml:Package" xmi:id="" name="UML" URI="http://www.omg.org/spec/UML/20110701">
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="VisibilityKind" name="VisibilityKind">
+      <ownedComment xmi:type="uml:Comment" xmi:id="VisibilityKind-_ownedComment.0" annotatedElement="VisibilityKind">
+        <body>VisibilityKind is an enumeration type that defines literals to determine the visibility of elements in a model.</body>
+      </ownedComment>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="VisibilityKind-public" name="public" classifier="VisibilityKind">
+        <ownedComment xmi:type="uml:Comment" xmi:id="VisibilityKind-public-_ownedComment.0" annotatedElement="VisibilityKind-public">
+          <body>A public element is visible to all elements that can access the contents of the namespace that owns it.</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="VisibilityKind-private" name="private" classifier="VisibilityKind">
+        <ownedComment xmi:type="uml:Comment" xmi:id="VisibilityKind-private-_ownedComment.0" annotatedElement="VisibilityKind-private">
+          <body>A private element is only visible inside the namespace that owns it.</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="VisibilityKind-protected" name="protected" classifier="VisibilityKind">
+        <ownedComment xmi:type="uml:Comment" xmi:id="VisibilityKind-protected-_ownedComment.0" annotatedElement="VisibilityKind-protected">
+          <body>A protected element is visible to elements that have a generalization relationship to the namespace that owns it.</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="VisibilityKind-package" name="package" classifier="VisibilityKind">
+        <ownedComment xmi:type="uml:Comment" xmi:id="VisibilityKind-package-_ownedComment.0" annotatedElement="VisibilityKind-package">
+          <body>A package element is owned by a namespace that is not a package, and is visible to elements that are in the same package as its owning namespace. Only named elements that are not owned by packages can be marked as having package visibility. Any element marked as having package visibility is visible to all elements within the nearest enclosing package (given that other owning elements have proper visibility). Outside the nearest enclosing package, an element marked as having package visibility is not visible.</body>
+        </ownedComment>
+      </ownedLiteral>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="UsedClass" name="Class">
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="TestingClass" name="Class">
+      <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-_ownedComment.0" annotatedElement="Class">
+        <body>Testing class' comment 1.</body>
+      </ownedComment>
+      <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-_ownedComment.1" annotatedElement="Class">
+        <body>Testing class' comment 2.</body>
+      </ownedComment>
+      <!-- PRIMITIVE -->
+      <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-readWriteSingleValuedPrimitiveAttribute" name="readWriteSingleValuedPrimitiveAttribute">
+        <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-readWriteSingleValuedPrimitiveAttribute-_ownedComment.0" annotatedElement="TestingClass-readWriteSingleValuedPrimitiveAttribute">
+          <body>readWriteSingleValuedPrimitiveAttribute.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-readOnlySingleValuedPrimitiveAttribute" name="readOnlySingleValuedPrimitiveAttribute" isReadOnly="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-readOnlySingleValuedPrimitiveAttribute-_ownedComment.0" annotatedElement="TestingClass-readOnlySingleValuedPrimitiveAttribute">
+          <body>readOnlySingleValuedPrimitiveAttribute.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-readWriteMultiValuedPrimitiveAttribute" name="readWriteMultiValuedPrimitiveAttribute">
+        <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-readWriteMultiValuedPrimitiveAttribute-_ownedComment.0" annotatedElement="TestingClass-readWriteMultiValuedPrimitiveAttribute">
+          <body>readWriteMultiValuedPrimitiveAttribute.</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TestingClass-extension-_upperValue" value="*"/>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-readOnlyMultiValuedPrimitiveAttribute" name="readOnlyMultiValuedPrimitiveAttribute" isReadOnly="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-readOnlyMultiValuedPrimitiveAttribute-_ownedComment.0" annotatedElement="TestingClass-readOnlyMultiValuedPrimitiveAttribute">
+          <body>readOnlyMultiValuedPrimitiveAttribute.</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TestingClass-extension-_upperValue" value="*"/>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+      </ownedAttribute>
+      <!-- ENUMERATION -->
+      <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-readWriteSingleValuedEnumerationAttribute" name="readWriteSingleValuedEnumerationAttribute" type="VisibilityKind">
+        <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-readWriteSingleValuedEnumerationAttribute-_ownedComment.0" annotatedElement="TestingClass-readWriteSingleValuedEnumerationAttribute">
+          <body>readWriteSingleValuedEnumerationAttribute.</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-readOnlySingleValuedEnumerationAttribute" name="readOnlySingleValuedEnumerationAttribute" type="VisibilityKind" isReadOnly="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-readOnlySingleValuedEnumerationAttribute-_ownedComment.0" annotatedElement="TestingClass-readOnlySingleValuedEnumerationAttribute">
+          <body>readOnlySingleValuedEnumerationAttribute.</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-readWriteMultiValuedEnumerationAttribute" name="readWriteMultiValuedEnumerationAttribute" type="VisibilityKind">
+        <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-readWriteMultiValuedEnumerationAttribute-_ownedComment.0" annotatedElement="TestingClass-readWriteMultiValuedEnumerationAttribute">
+          <body>readWriteMultiValuedEnumerationAttribute.</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TestingClass-extension-_upperValue" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-readOnlyMultiValuedEnumerationAttribute" name="readOnlyMultiValuedEnumerationAttribute" type="VisibilityKind" isReadOnly="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-readOnlyMultiValuedEnumerationAttribute-_ownedComment.0" annotatedElement="TestingClass-readOnlyMultiValuedEnumerationAttribute">
+          <body>readOnlyMultiValuedEnumerationAttribute.</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TestingClass-extension-_upperValue" value="*"/>
+      </ownedAttribute>
+      <!-- OBJECT -->
+      <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-readWriteSingleValuedObjectAttribute" name="readWriteSingleValuedObjectAttribute" type="UsedClass">
+        <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-readWriteSingleValuedObjectAttribute-_ownedComment.0" annotatedElement="TestingClass-readWriteSingleValuedObjectAttribute">
+          <body>readWriteSingleValuedObjectAttribute.</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-readOnlySingleValuedObjectAttribute" name="readOnlySingleValuedObjectAttribute" type="UsedClass" isReadOnly="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-readOnlySingleValuedObjectAttribute-_ownedComment.0" annotatedElement="TestingClass-readOnlySingleValuedObjectAttribute">
+          <body>readOnlySingleValuedObjectAttribute.</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-readWriteMultiValuedObjectAttribute" name="readWriteMultiValuedObjectAttribute" type="UsedClass">
+        <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-readWriteMultiValuedObjectAttribute-_ownedComment.0" annotatedElement="TestingClass-readWriteMultiValuedObjectAttribute">
+          <body>readWriteMultiValuedObjectAttribute.</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TestingClass-extension-_upperValue" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-readOnlyMultiValuedObjectAttribute" name="readOnlyMultiValuedObjectAttribute" type="UsedClass" isReadOnly="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-readOnlyMultiValuedObjectAttribute-_ownedComment.0" annotatedElement="TestingClass-readOnlyMultiValuedObjectAttribute">
+          <body>readOnlyMultiValuedObjectAttribute.</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TestingClass-extension-_upperValue" value="*"/>
+      </ownedAttribute>
+      <!-- OPERATIONS RETURN PRIMITIVE -->
+      <ownedOperation xmi:type="uml:Operation" xmi:id="TestingClass-opReturnPrimitiveSV" name="opReturnPrimitiveSV" visibility="public" isQuery="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-opReturnPrimitiveSV-_ownedComment.0" annotatedElement="TestingClass-opReturnPrimitiveSV">
+          <body>Testing opReturnPrimitiveSV.</body>
+        </ownedComment>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="TestingClass-opReturnPrimitiveSV-result" name="result" visibility="public" direction="return">
+          <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="TestingClass-opReturnPrimitiveMV" name="opReturnPrimitiveMV" visibility="public" isQuery="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-opReturnPrimitiveMV-_ownedComment.0" annotatedElement="TestingClass-opReturnPrimitiveMV">
+          <body>Testing opReturnPrimitiveMV.</body>
+        </ownedComment>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="TestingClass-opReturnPrimitiveMV-result" name="result" visibility="public" direction="return">
+          <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TestingClass-opReturnPrimitiveMV-result-_upperValue" value="*"/>
+        </ownedParameter>
+      </ownedOperation>
+      <!-- OPERATIONS RETURN ENUMERATION -->
+      <ownedOperation xmi:type="uml:Operation" xmi:id="TestingClass-opReturnEnumerationSV" name="opReturnEnumerationSV" visibility="public" isQuery="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-opReturnEnumerationSV-_ownedComment.0" annotatedElement="TestingClass-opReturnEnumerationSV">
+          <body>Testing opReturnEnumerationSV.</body>
+        </ownedComment>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="TestingClass-opReturnEnumerationSV-result" name="result" visibility="public" type="VisibilityKind" direction="return">
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="TestingClass-opReturnEnumerationMV" name="opReturnEnumerationMV" visibility="public" isQuery="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-opReturnEnumerationMV-_ownedComment.0" annotatedElement="TestingClass-opReturnEnumerationMV">
+          <body>Testing opReturnEnumerationMV.</body>
+        </ownedComment>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="TestingClass-opReturnEnumerationMV-result" name="result" visibility="public" type="VisibilityKind" direction="return">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TestingClass-opReturnEnumerationMV-result-_upperValue" value="*"/>
+        </ownedParameter>
+      </ownedOperation>
+      <!-- OPERATIONS RETURN OBJECT -->
+      <ownedOperation xmi:type="uml:Operation" xmi:id="TestingClass-opReturnObjectSV" name="opReturnObjectSV" visibility="public" isQuery="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-opReturnObjectSV-_ownedComment.0" annotatedElement="TestingClass-opReturnObjectSV">
+          <body>Testing opReturnObjectSV.</body>
+        </ownedComment>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="TestingClass-opReturnObjectSV-result" name="result" visibility="public" type="UsedClass" direction="return">
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="TestingClass-opReturnObjectMV" name="opReturnObjectMV" visibility="public" isQuery="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-opReturnObjectMV-_ownedComment.0" annotatedElement="TestingClass-opReturnObjectMV">
+          <body>Testing opReturnObjectMV.</body>
+        </ownedComment>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="TestingClass-opReturnObjectMV-result" name="result" visibility="public" type="UsedClass" direction="return">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TestingClass-opReturnObjectMV-result-_upperValue" value="*"/>
+        </ownedParameter>
+      </ownedOperation>
+      <!-- OPERATION PARAMETERS -->
+      <ownedOperation xmi:type="uml:Operation" xmi:id="TestingClass-opParameters" name="opParameters" visibility="public" isQuery="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-opParameters-_ownedComment.0" annotatedElement="TestingClass-opParameters">
+          <body>Testing opParameters.</body>
+        </ownedComment>
+        <!-- In -->
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="TestingClass-opParameters-pinprimitiveSV" name="pinprimitiveSV" visibility="public" direction="in">
+          <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="TestingClass-opParameters-pinenumerationSV" name="pinenumerationSV" visibility="public" direction="in" type="VisibilityKind">
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="TestingClass-opParameters-pinobjectSV" name="pinobjectSV" visibility="public" direction="in" type="UsedClass">
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="TestingClass-opParameters-pinprimitiveMV" name="pinprimitiveMV" visibility="public" direction="in">
+          <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TestingClass-opReturnObjectMV-result-_upperValue" value="*"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="TestingClass-opParameters-pinenumerationMV" name="pinenumerationMV" visibility="public" direction="in" type="VisibilityKind">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TestingClass-opReturnObjectMV-result-_upperValue" value="*"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="TestingClass-opParameters-pinobjectMV" name="pinobjectMV" visibility="public" direction="in" type="UsedClass">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TestingClass-opReturnObjectMV-result-_upperValue" value="*"/>
+        </ownedParameter>
+        <!-- InOut -->
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="TestingClass-opParameters-pinoutprimitiveSV" name="pinoutprimitiveSV" visibility="public" direction="inout">
+          <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="TestingClass-opParameters-pinoutenumerationSV" name="pinoutenumerationSV" visibility="public" direction="inout" type="VisibilityKind">
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="TestingClass-opParameters-pinoutobjectSV" name="pinoutobjectSV" visibility="public" direction="inout" type="UsedClass">
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="TestingClass-opParameters-pinoutprimitiveMV" name="pinoutprimitiveMV" visibility="public" direction="inout">
+          <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TestingClass-opParameters-pinoutprimitiveMV-_upperValue" value="*"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="TestingClass-opParameters-pinoutenumerationMV" name="pinoutenumerationMV" visibility="public" direction="inout" type="VisibilityKind">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TestingClass-opParameters-pinoutenumerationMV-_upperValue" value="*"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="TestingClass-opParameters-pinoutobjectMV" name="pinoutobjectMV" visibility="public" direction="inout" type="UsedClass">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TestingClass-opParameters-pinoutobjectMV-_upperValue" value="*"/>
+        </ownedParameter>
+        <!-- out -->
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="TestingClass-opParameters-poutprimitiveSV" name="poutprimitiveSV" visibility="public" direction="out">
+          <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="TestingClass-opParameters-poutenumerationSV" name="poutenumerationSV" visibility="public" direction="out" type="VisibilityKind">
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="TestingClass-opParameters-poutobjectSV" name="poutobjectSV" visibility="public" direction="out" type="UsedClass">
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="TestingClass-opParameters-poutprimitiveMV" name="poutprimitiveMV" visibility="public" direction="out">
+          <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TestingClass-opParameters-poutprimitiveMV-_upperValue" value="*"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="TestingClass-opParameters-poutenumerationMV" name="poutenumerationMV" visibility="public" direction="out" type="VisibilityKind">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TestingClass-opParameters-poutenumerationMV-_upperValue" value="*"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="TestingClass-opParameters-poutobjectMV" name="poutobjectMV" visibility="public" direction="out" type="UsedClass">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TestingClass-opParameters-poutobjectMV-_upperValue" value="*"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+  </uml:Package>
+</xmi:XMI>

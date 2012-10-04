@@ -123,7 +123,7 @@ class ${forwarddecl.content};
 [%- IF currentNamespace != '' %]
 QT_END_NAMESPACE_${currentNamespace.replace('::', '_').upper}
 
-[%- END -%]
+[%- END %]
 
 QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
 
