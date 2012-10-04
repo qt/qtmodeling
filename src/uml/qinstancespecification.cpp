@@ -83,11 +83,11 @@ const QSet<QSlot *> *QInstanceSpecification::slots_() const
 {
 }
 
-void QInstanceSpecification::addSlot(const QSlot *slot_)
+void QInstanceSpecification::addSlot_(const QSlot *slot_)
 {
 }
 
-void QInstanceSpecification::removeSlot(const QSlot *slot_)
+void QInstanceSpecification::removeSlot_(const QSlot *slot_)
 {
 }
 

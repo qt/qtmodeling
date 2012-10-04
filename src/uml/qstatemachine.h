@@ -44,14 +44,12 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QBehavior>
 
 // Qt includes
 #include <QtCore/QSet>
 
 QT_BEGIN_HEADER
-
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -114,8 +112,8 @@ private:
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QtUml::QStateMachine *>)
-Q_DECLARE_METATYPE(QList<QtUml::QStateMachine *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *>)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *)
 
 QT_END_HEADER
 

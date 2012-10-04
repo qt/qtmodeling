@@ -1,6 +1,7 @@
 <qtxmi:XMI xmlns:qtxmi="http://www.qt-project.org" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701">
     <namespace path="QtUnknown/">
         <class name="QBaseClass" isAbstract="true">
+            <qtinclude>QtCore/QSet</qtinclude>
             <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="BaseClass-readWriteSingleValuedPrimitiveAttribute">
                 <accessor return="bool " name="readWriteSingleValuedPrimitiveAttribute" constness=" const"/>
                 <accessor return="void " name="setReadWriteSingleValuedPrimitiveAttribute" constness="">
@@ -8,12 +9,15 @@
                 </accessor>
                 <documentation>readWriteSingleValuedPrimitiveAttribute.</documentation>
             </attribute>
-            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="BaseClass-inheritedAttribute">
-                <accessor return="bool " name="inheritedAttribute" constness=" const"/>
-                <accessor return="void " name="setInheritedAttribute" constness="">
-                    <parameter type="bool " name="inheritedAttribute"/>
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="BaseClass-slot">
+                <accessor return="const QSet&lt;bool&gt; *" name="slots_" constness=" const"/>
+                <accessor return="void " name="addSlot_" constness="">
+                    <parameter type="bool " name="slot_"/>
                 </accessor>
-                <documentation>inheritedAttribute.</documentation>
+                <accessor return="void " name="removeSlot_" constness="">
+                    <parameter type="bool " name="slot_"/>
+                </accessor>
+                <documentation>name mapped attribute.</documentation>
             </attribute>
         </class>
         <class name="QUsedClass" isAbstract="false">
@@ -24,7 +28,7 @@
             <qtumlinclude>QtUnknown/QtUnknownEnumerations</qtumlinclude>
             <superclass include="QtCore/QObject" name="QObject"/>
             <superclass include="QtUnknown/QBaseClass" name="QBaseClass"/>
-            <forwarddecl namespace="">QSet</forwarddecl>
+            <qtinclude>QtCore/QSet</qtinclude>
             <forwarddecl namespace="QtUnknown::">QUsedClass</forwarddecl>
             <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="BaseClass-readWriteSingleValuedPrimitiveAttribute" id="TestingClass-readWriteSingleValuedPrimitiveAttribute">
                 <accessor return="bool " name="readWriteSingleValuedPrimitiveAttribute" constness=" const"/>
