@@ -8,31 +8,38 @@ General information about XMI->Qt mapping:
    OMG's UML L3 (level 3) and MOF LM (metamodeling level), respectively.
    xmi2qt.xq can currently handle nested namespaces pretty well but according
    to Qt namespace rules the use of a single (non-nested) namespace is
-   preferable. So, if Qt is built with a defined namespace, QtUml/QtMof
-   classes will end up in a <QtNamespace>::QtUml/<QtNamespace>::QtMof
-   namespace. Otherwise, they all go into the global namespace
+   preferable. So, if Qt is built with a defined namespace, QtUml and QtMof
+   classes will end up in a <QtNamespace>::QtUml and <QtNamespace>::QtMof
+   namespaces, respectively. Otherwise, they all go into the global namespace
 
 Current xmi2qt.xq limitations:
+------------------------------
 
 - It doesn't detect the need for a virtual inheritance
-- It doesn't detect redefined properties
+- It doesn't detect redefined properties (to be done soon)
 - It doesn't detect concrete classes with a non-direct
   QObjet-based parent and, therefore, erroneously generate a second
   QObject inheritance and a wrong initialization list in constructor
+- It can suffer from performance issues
 
 XMI->Qt Mapping Rules:
 ----------------------
 
 01) OMG's 'UML' namespace in UML.xmi was renamed to 'QtUml'
+
 02) OMG's 'MOF' namespace in MOF.xmi was renamed to 'QtMof'
+
 03) All class names were preserved and prepended with 'Q' prefix
+
 04) Only concrete classes inherit from QObject. The reason for
     that is to minimize the number of situations where multiple
     inheritance from QObject-based classes is needed. Currently
     only QAssociationClass presents that issue (still to be solved)
+
 05) Concrete classes define Q_PROPERTY's for their own and inherited
     attributes. That makes documentation a little bit buggy
     (still to be solved)
+
 06) All attribute names were preserved except the following:
     4.1) 'namespace': renamed to 'namespace_'
     4.2) 'class': renamed to 'class_'
@@ -40,22 +47,82 @@ XMI->Qt Mapping Rules:
     4.4) 'template': renamed to 'template_'
     4.5) for multi-valued attributes their names were converted
          to a plural form
+         (see exceptions in xmi2qt.xq -> qtxmi:modifiedFunctionName)
+
 07) All enumerations were defined in an "fake" (non-instantiable)
     'QtUml' object. Enumeration literals were prepended with
     namespace's name (with 'Kind' prefix removed)
+
 08) OMG's primitive types were mapped as the following:
     10.1) Boolean -> bool
     10.2) Integer -> qint32
     10.3) Real -> qreal
     10.4) String -> QString
-09) All single-valued primitive type or enumeration attributes were
-    mapped to the corresponding mapped primitive type or enumeration
-10) All single-valued object attributes were mapped to a pointer to
-    the attribute class
-11) All multi-valued attributes were mapped to a pointer to a collection
-    of pointers to the corresponding single-valued attribute
 
-12) Mapping rules for containers:
+09) Attributes mapping rules:
+
+    9.0) Attributes with @isDerived = 'true' and @isDerivedUnion = 'false' are
+         handled as operations (since there is no automatic way to generate code)
+
+    9.1) Typing mapping rules:
+
+         9.1.1) All single-valued primitive typed or enumeration attributes were
+                mapped to the corresponding mapped (see 08) primitive type or enumeration
+                Ex1: Boolean single-valued 'isAbstract' attribute -> bool isAbstract
+                Ex2: enumeration single-valued 'visibility' attribute -> QtUml::VisibilityKind visibility
+
+         9.1.2) All single-valued object attributes were mapped to a pointer to
+                the corresponding attribute class
+                Ex: object single-valued 'context' attribute -> QClassifier *context
+
+         9.1.3) All multi-valued primitive typed or enumeration attributes were
+                mapped to a pointer to a collection (see 10) of corresponding mapped primitive
+                type of enumeration
+                Ex: primitive typed multi-valued 'body' attribute -> QList<QString> *bodies
+
+         9.1.4) All multi-valued object attributes were mapped to a pointer to a collection (see 10)
+                of pointers to the corresponding attribute class
+                Ex: object multi-valued 'feature' attribute -> QSet<QFeature *> *features
+
+    9.2) Accessors mapping rules:
+
+         9.2.1) Single-valued primitive typed of enumeration attributes generate
+                the following accessors:
+                Ex1: bool isAbstract() const;
+                     void setAbstract(bool isAbstract); // if not read-only
+                Ex2: QtUml::VisibilityKind visibility() const;
+                     void setVisibility(QtUml::VisibilityKind visibility); // if not read-only
+
+         9.2.2) Single-valued object attributes generate the following accessors:
+                Ex: QClassifier *context() const;
+                    void setContext(const QClassifier *context); // if not read-only
+
+         9.2.3) Multi-valued primitive typed of enumeration attributes generate
+                the following accessors:
+                Ex: const QList<QString> *bodies() const;
+                    void addBody(QString body);    // if not read-only
+                    void removeBody(QString body); // if not read-only
+
+         9.2.4) Multi-valued object attributes generate the following accessors:
+                Ex: const QSet<QFeature *> *features() const;
+                    void addFeature(const QFeature *feature);    // is not read-only
+                    void removeFeature(const QFeature *feature); // is not read-only
+
+    RATIONALE : exposing only the const API allows the implementation of subsetting
+                UML semantics in add/remove/set functions
+
+10) Operation mapping rules:
+
+    10.1) All typing mapping rules for attributes apply here for operation parameters
+    10.2) Primitive typed or enumeration parameters with direction = 'inout' or 'out'
+          are passed by reference
+    10.3) Object parameters with direction = 'inout' or 'out' are passed as
+          non-const pointers
+    10.4) Parameters with direction = 'return' follow above attribute typing mapping
+          rules
+    10.5) Operation constness comes from 'isQuery' operation attribute
+
+11) Mapping rules for containers:
 
 |-----------|----------|----------------|------------------------|
 | isOrdered | isUnique | OMG Collection | Qt Collection          |
@@ -65,6 +132,18 @@ XMI->Qt Mapping Rules:
 | false     | false    | Bag            | QList (order is extra) |
 | true      | false    | Sequence       | QList                  |
 |-----------|----------|----------------|------------------------|
+
+Testing dimensions for attributes/parameters:
+---------------------------------------------
+
+- Multiplicity (multi-valued, single-valued)
+- Type (primitive, enumeration, class)
+- Mutability (read-write, read-only)
+- Derivedness (not derived, derived, derivedUnion)
+- Role (attribute, inparam, outparam, inoutparam, returnparam)
+
+Full factorial would require 180 test cases. Derivedness should
+be tested in provided OMG xmi files, not QtUml/QtMof implementation
 
 Testing table for attribute accessors generation:
 -------------------------------------------------
