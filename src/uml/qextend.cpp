@@ -68,7 +68,7 @@ QConstraint *QExtend::condition() const
 {
 }
 
-void QExtend::setCondition(QConstraint *condition)
+void QExtend::setCondition(const QConstraint *condition)
 {
 }
 
@@ -79,7 +79,7 @@ QUseCase *QExtend::extendedCase() const
 {
 }
 
-void QExtend::setExtendedCase(QUseCase *extendedCase)
+void QExtend::setExtendedCase(const QUseCase *extendedCase)
 {
 }
 
@@ -90,14 +90,22 @@ QUseCase *QExtend::extension() const
 {
 }
 
-void QExtend::setExtension(QUseCase *extension)
+void QExtend::setExtension(const QUseCase *extension)
 {
 }
 
 /*!
     An ordered list of extension points belonging to the extended use case, specifying where the respective behavioral fragments of the extending use case are to be inserted. The first fragment in the extending use case is associated with the first extension point in the list, the second fragment with the second point, and so on. (Note that, in most practical cases, the extending use case has just a single behavior fragment, so that the list of extension points is trivial.)
  */
-QList<QExtensionPoint *> *QExtend::extensionLocations()
+const QList<QExtensionPoint *> *QExtend::extensionLocations() const
+{
+}
+
+void QExtend::addExtensionLocation(const QExtensionPoint *extensionLocation)
+{
+}
+
+void QExtend::removeExtensionLocation(const QExtensionPoint *extensionLocation)
 {
 }
 

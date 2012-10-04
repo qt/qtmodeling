@@ -48,6 +48,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -68,9 +69,9 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QValueSpecification *lowerValue() const;
-    void setLowerValue(QValueSpecification *lowerValue);
+    void setLowerValue(const QValueSpecification *lowerValue);
     QValueSpecification *upperValue() const;
-    void setUpperValue(QValueSpecification *upperValue);
+    void setUpperValue(const QValueSpecification *upperValue);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     bool compatibleWith(const QMultiplicityElement *other) const;

@@ -64,7 +64,15 @@ QInteractionOperand::~QInteractionOperand()
 /*!
     The fragments of the operand.
  */
-QList<QInteractionFragment *> *QInteractionOperand::fragments()
+const QList<QInteractionFragment *> *QInteractionOperand::fragments() const
+{
+}
+
+void QInteractionOperand::addFragment(const QInteractionFragment *fragment)
+{
+}
+
+void QInteractionOperand::removeFragment(const QInteractionFragment *fragment)
 {
 }
 
@@ -75,7 +83,7 @@ QInteractionConstraint *QInteractionOperand::guard() const
 {
 }
 
-void QInteractionOperand::setGuard(QInteractionConstraint *guard)
+void QInteractionOperand::setGuard(const QInteractionConstraint *guard)
 {
 }
 

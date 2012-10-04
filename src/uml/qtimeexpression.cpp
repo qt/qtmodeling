@@ -68,14 +68,22 @@ QValueSpecification *QTimeExpression::expr() const
 {
 }
 
-void QTimeExpression::setExpr(QValueSpecification *expr)
+void QTimeExpression::setExpr(const QValueSpecification *expr)
 {
 }
 
 /*!
     Refers to the time and duration observations that are involved in expr.
  */
-QList<QObservation *> *QTimeExpression::observations()
+const QSet<QObservation *> *QTimeExpression::observations() const
+{
+}
+
+void QTimeExpression::addObservation(const QObservation *observation)
+{
+}
+
+void QTimeExpression::removeObservation(const QObservation *observation)
 {
 }
 

@@ -48,6 +48,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -62,7 +63,7 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QType *type() const;
-    void setType(QType *type);
+    void setType(const QType *type);
 
 protected:
     explicit QTypedElement();

@@ -52,8 +52,10 @@
 // Qt includes
 #include <QtCore/QString>
 #include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -77,14 +79,16 @@ public:
     void setVisibility(QtUml::VisibilityKind visibility);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QDependency *> *clientDependencies();
+    const QSet<QDependency *> *clientDependencies() const;
+    void addClientDependency(const QDependency *clientDependency);
+    void removeClientDependency(const QDependency *clientDependency);
     QStringExpression *nameExpression() const;
-    void setNameExpression(QStringExpression *nameExpression);
-    const QNamespace *namespace_() const;
+    void setNameExpression(const QStringExpression *nameExpression);
+    QNamespace *namespace_() const;
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     const QList<QNamespace *> *allNamespaces() const;
-    const QList<QPackage *> *allOwningPackages() const;
+    const QSet<QPackage *> *allOwningPackages() const;
     bool isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const;
     QString qualifiedName() const;
     QString separator() const;

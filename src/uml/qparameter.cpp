@@ -112,7 +112,7 @@ QValueSpecification *QParameter::defaultValue() const
 {
 }
 
-void QParameter::setDefaultValue(QValueSpecification *defaultValue)
+void QParameter::setDefaultValue(const QValueSpecification *defaultValue)
 {
 }
 
@@ -123,14 +123,22 @@ QOperation *QParameter::operation() const
 {
 }
 
-void QParameter::setOperation(QOperation *operation)
+void QParameter::setOperation(const QOperation *operation)
 {
 }
 
 /*!
     The parameter sets containing the parameter. See ParameterSet.
  */
-QList<QParameterSet *> *QParameter::parameterSets()
+const QSet<QParameterSet *> *QParameter::parameterSets() const
+{
+}
+
+void QParameter::addParameterSet(const QParameterSet *parameterSet)
+{
+}
+
+void QParameter::removeParameterSet(const QParameterSet *parameterSet)
 {
 }
 

@@ -49,6 +49,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -61,9 +62,9 @@ class Q_UML_EXPORT QDurationObservation : public QObject, public QObservation
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QParameterableElement
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
@@ -72,17 +73,16 @@ class Q_UML_EXPORT QDurationObservation : public QObject, public QObservation
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QPackageableElement
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // From QDurationObservation
-    Q_PROPERTY(bool firstEvent READ firstEvent WRITE setFirstEvent)
-    Q_PROPERTY(QNamedElement * event READ event WRITE setEvent)
+    Q_PROPERTY(bool firstEvent READ firstEvent)
+    Q_PROPERTY(QNamedElement * event READ event)
 
 public:
     explicit QDurationObservation(QObject *parent = 0);
@@ -90,11 +90,13 @@ public:
 
     // Attributes (except those derived && !derivedUnion)
     bool firstEvent() const;
-    void setFirstEvent(bool firstEvent);
+    void addFirstEvent(bool firstEvent);
+    void removeFirstEvent(bool firstEvent);
 
     // Association-ends (except those derived && !derivedUnion)
     QNamedElement *event() const;
-    void setEvent(QNamedElement *event);
+    void addEvent(const QNamedElement *event);
+    void removeEvent(const QNamedElement *event);
 
 private:
     Q_DISABLE_COPY(QDurationObservation)

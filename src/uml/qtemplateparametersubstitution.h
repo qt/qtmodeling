@@ -49,6 +49,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -63,9 +64,9 @@ class Q_UML_EXPORT QTemplateParameterSubstitution : public QObject, public QElem
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QTemplateParameterSubstitution
     Q_PROPERTY(QParameterableElement * actual READ actual WRITE setActual)
@@ -79,13 +80,13 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QParameterableElement *actual() const;
-    void setActual(QParameterableElement *actual);
+    void setActual(const QParameterableElement *actual);
     QTemplateParameter *formal() const;
-    void setFormal(QTemplateParameter *formal);
+    void setFormal(const QTemplateParameter *formal);
     QParameterableElement *ownedActual() const;
-    void setOwnedActual(QParameterableElement *ownedActual);
+    void setOwnedActual(const QParameterableElement *ownedActual);
     QTemplateBinding *templateBinding() const;
-    void setTemplateBinding(QTemplateBinding *templateBinding);
+    void setTemplateBinding(const QTemplateBinding *templateBinding);
 
 private:
     Q_DISABLE_COPY(QTemplateParameterSubstitution)

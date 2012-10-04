@@ -47,9 +47,10 @@
 #include <QtUml/QNamedElement>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -67,12 +68,12 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QRegion *container() const;
-    void setContainer(QRegion *container);
+    void setContainer(const QRegion *container);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QStateMachine *containingStateMachine() const;
-    const QList<QTransition *> *incomings() const;
-    const QList<QTransition *> *outgoings() const;
+    QStateMachine *containingStateMachine() const;
+    const QSet<QTransition *> *incomings() const;
+    const QSet<QTransition *> *outgoings() const;
 
 protected:
     explicit QVertex();

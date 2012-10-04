@@ -51,6 +51,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -63,14 +64,16 @@ class Q_UML_EXPORT QEnumeration : public QDataType
     Q_OBJECT
 
     // From QEnumeration
-    Q_PROPERTY(QList<QEnumerationLiteral *> * ownedLiterals READ ownedLiterals)
+    Q_PROPERTY(const QList<QEnumerationLiteral *> * ownedLiterals READ ownedLiterals)
 
 public:
     explicit QEnumeration(QObject *parent = 0);
     virtual ~QEnumeration();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QEnumerationLiteral *> *ownedLiterals();
+    const QList<QEnumerationLiteral *> *ownedLiterals() const;
+    void addOwnedLiteral(const QEnumerationLiteral *ownedLiteral);
+    void removeOwnedLiteral(const QEnumerationLiteral *ownedLiteral);
 
 private:
     Q_DISABLE_COPY(QEnumeration)

@@ -48,8 +48,10 @@
 
 // Qt includes
 #include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -72,16 +74,26 @@ public:
     void setReentrant(bool isReentrant);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QParameter *> *ownedParameters();
-    QList<QParameterSet *> *ownedParameterSets();
-    QList<QConstraint *> *postconditions();
-    QList<QConstraint *> *preconditions();
-    QList<QBehavior *> *redefinedBehaviors();
+    const QList<QParameter *> *ownedParameters() const;
+    void addOwnedParameter(const QParameter *ownedParameter);
+    void removeOwnedParameter(const QParameter *ownedParameter);
+    const QSet<QParameterSet *> *ownedParameterSets() const;
+    void addOwnedParameterSet(const QParameterSet *ownedParameterSet);
+    void removeOwnedParameterSet(const QParameterSet *ownedParameterSet);
+    const QSet<QConstraint *> *postconditions() const;
+    void addPostcondition(const QConstraint *postcondition);
+    void removePostcondition(const QConstraint *postcondition);
+    const QSet<QConstraint *> *preconditions() const;
+    void addPrecondition(const QConstraint *precondition);
+    void removePrecondition(const QConstraint *precondition);
+    const QSet<QBehavior *> *redefinedBehaviors() const;
+    void addRedefinedBehavior(const QBehavior *redefinedBehavior);
+    void removeRedefinedBehavior(const QBehavior *redefinedBehavior);
     QBehavioralFeature *specification() const;
-    void setSpecification(QBehavioralFeature *specification);
+    void setSpecification(const QBehavioralFeature *specification);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QBehavioredClassifier *context() const;
+    QBehavioredClassifier *context() const;
 
 protected:
     explicit QBehavior(QObject *parent = 0);

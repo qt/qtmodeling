@@ -49,9 +49,10 @@
 
 // Qt includes
 #include <QtCore/QString>
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -64,17 +65,17 @@ class Q_UML_EXPORT QStringExpression : public QExpression, public QTemplateableE
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QTemplateableElement
     Q_PROPERTY(QTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
-    Q_PROPERTY(QList<QTemplateBinding *> * templateBindings READ templateBindings)
+    Q_PROPERTY(const QSet<QTemplateBinding *> * templateBindings READ templateBindings)
 
     // From QStringExpression
     Q_PROPERTY(QStringExpression * owningExpression READ owningExpression WRITE setOwningExpression)
-    Q_PROPERTY(QList<QStringExpression *> * subExpressions READ subExpressions)
+    Q_PROPERTY(const QSet<QStringExpression *> * subExpressions READ subExpressions)
 
 public:
     explicit QStringExpression(QObject *parent = 0);
@@ -82,8 +83,10 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QStringExpression *owningExpression() const;
-    void setOwningExpression(QStringExpression *owningExpression);
-    QList<QStringExpression *> *subExpressions();
+    void setOwningExpression(const QStringExpression *owningExpression);
+    const QSet<QStringExpression *> *subExpressions() const;
+    void addSubExpression(const QStringExpression *subExpression);
+    void removeSubExpression(const QStringExpression *subExpression);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     QString stringValue() const;

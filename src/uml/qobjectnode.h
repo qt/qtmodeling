@@ -51,9 +51,10 @@
 #include <QtUml/QTypedElement>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -76,11 +77,13 @@ public:
     void setOrdering(QtUml::ObjectNodeOrderingKind ordering);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QState *> *inState();
+    const QSet<QState *> *inState() const;
+    void addInState(const QState *inState);
+    void removeInState(const QState *inState);
     QBehavior *selection() const;
-    void setSelection(QBehavior *selection);
+    void setSelection(const QBehavior *selection);
     QValueSpecification *upperBound() const;
-    void setUpperBound(QValueSpecification *upperBound);
+    void setUpperBound(const QValueSpecification *upperBound);
 
 protected:
     explicit QObjectNode();

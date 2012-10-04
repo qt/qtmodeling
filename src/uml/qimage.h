@@ -52,6 +52,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -63,9 +64,9 @@ class Q_UML_EXPORT QImage : public QObject, public QElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QImage
     Q_PROPERTY(QString content READ content WRITE setContent)

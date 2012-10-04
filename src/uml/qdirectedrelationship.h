@@ -47,9 +47,10 @@
 #include <QtUml/QRelationship>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -64,8 +65,8 @@ public:
     virtual ~QDirectedRelationship();
 
     // Association-ends (except those derived && !derivedUnion)
-    const QList<QElement *> *sources() const;
-    const QList<QElement *> *targets() const;
+    const QSet<QElement *> *sources() const;
+    const QSet<QElement *> *targets() const;
 
 protected:
     explicit QDirectedRelationship();

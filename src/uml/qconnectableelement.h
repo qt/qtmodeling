@@ -52,6 +52,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -67,7 +68,7 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QConnectableElementTemplateParameter *templateParameter() const;
-    void setTemplateParameter(QConnectableElementTemplateParameter *templateParameter);
+    void setTemplateParameter(const QConnectableElementTemplateParameter *templateParameter);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     const QList<QConnectorEnd *> *ends() const;

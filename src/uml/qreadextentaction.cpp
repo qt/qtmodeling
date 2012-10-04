@@ -68,7 +68,7 @@ QClassifier *QReadExtentAction::classifier() const
 {
 }
 
-void QReadExtentAction::setClassifier(QClassifier *classifier)
+void QReadExtentAction::setClassifier(const QClassifier *classifier)
 {
 }
 
@@ -79,7 +79,7 @@ QOutputPin *QReadExtentAction::result() const
 {
 }
 
-void QReadExtentAction::setResult(QOutputPin *result)
+void QReadExtentAction::setResult(const QOutputPin *result)
 {
 }
 

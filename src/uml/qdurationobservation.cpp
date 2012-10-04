@@ -68,7 +68,11 @@ bool QDurationObservation::firstEvent() const
 {
 }
 
-void QDurationObservation::setFirstEvent(bool firstEvent)
+void QDurationObservation::addFirstEvent(bool firstEvent)
+{
+}
+
+void QDurationObservation::removeFirstEvent(bool firstEvent)
 {
 }
 
@@ -79,7 +83,11 @@ QNamedElement *QDurationObservation::event() const
 {
 }
 
-void QDurationObservation::setEvent(QNamedElement *event)
+void QDurationObservation::addEvent(const QNamedElement *event)
+{
+}
+
+void QDurationObservation::removeEvent(const QNamedElement *event)
 {
 }
 

@@ -64,7 +64,15 @@ QCreateLinkAction::~QCreateLinkAction()
 /*!
     Specifies ends of association and inputs.
  */
-QList<QLinkEndCreationData *> *QCreateLinkAction::endData()
+const QSet<QLinkEndCreationData *> *QCreateLinkAction::endData() const
+{
+}
+
+void QCreateLinkAction::addEndData(const QLinkEndCreationData *endData)
+{
+}
+
+void QCreateLinkAction::removeEndData(const QLinkEndCreationData *endData)
 {
 }
 

@@ -64,7 +64,15 @@ QConsiderIgnoreFragment::~QConsiderIgnoreFragment()
 /*!
     The set of messages that apply to this fragment
  */
-QList<QNamedElement *> *QConsiderIgnoreFragment::messages()
+const QSet<QNamedElement *> *QConsiderIgnoreFragment::messages() const
+{
+}
+
+void QConsiderIgnoreFragment::addMessage(const QNamedElement *message)
+{
+}
+
+void QConsiderIgnoreFragment::removeMessage(const QNamedElement *message)
 {
 }
 

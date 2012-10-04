@@ -85,7 +85,15 @@ void QNamedElement::setVisibility(QtUml::VisibilityKind visibility)
 /*!
     Indicates the dependencies that reference the client.
  */
-QList<QDependency *> *QNamedElement::clientDependencies()
+const QSet<QDependency *> *QNamedElement::clientDependencies() const
+{
+}
+
+void QNamedElement::addClientDependency(const QDependency *clientDependency)
+{
+}
+
+void QNamedElement::removeClientDependency(const QDependency *clientDependency)
 {
 }
 
@@ -96,14 +104,14 @@ QStringExpression *QNamedElement::nameExpression() const
 {
 }
 
-void QNamedElement::setNameExpression(QStringExpression *nameExpression)
+void QNamedElement::setNameExpression(const QStringExpression *nameExpression)
 {
 }
 
 /*!
     Specifies the namespace that owns the NamedElement.
  */
-const QNamespace *QNamedElement::namespace_() const
+QNamespace *QNamedElement::namespace_() const
 {
 }
 
@@ -117,7 +125,7 @@ const QList<QNamespace *> *QNamedElement::allNamespaces() const
 /*!
     The query allOwningPackages() returns all the directly or indirectly owning packages.
  */
-const QList<QPackage *> *QNamedElement::allOwningPackages() const
+const QSet<QPackage *> *QNamedElement::allOwningPackages() const
 {
 }
 

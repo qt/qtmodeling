@@ -49,6 +49,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -61,22 +62,22 @@ class Q_UML_EXPORT QExtensionPoint : public QObject, public QRedefinableElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QRedefinableElement
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElements READ redefinedElements)
-    Q_PROPERTY(const QList<QClassifier *> * redefinitionContexts READ redefinitionContexts)
+    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
+    Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
 
     // From QExtensionPoint
     Q_PROPERTY(QUseCase * useCase READ useCase WRITE setUseCase)
@@ -87,7 +88,7 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QUseCase *useCase() const;
-    void setUseCase(QUseCase *useCase);
+    void setUseCase(const QUseCase *useCase);
 
 private:
     Q_DISABLE_COPY(QExtensionPoint)

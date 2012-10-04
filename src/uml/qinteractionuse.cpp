@@ -64,14 +64,30 @@ QInteractionUse::~QInteractionUse()
 /*!
     The actual gates of the InteractionUse
  */
-QList<QGate *> *QInteractionUse::actualGates()
+const QSet<QGate *> *QInteractionUse::actualGates() const
+{
+}
+
+void QInteractionUse::addActualGate(const QGate *actualGate)
+{
+}
+
+void QInteractionUse::removeActualGate(const QGate *actualGate)
 {
 }
 
 /*!
     The actual arguments of the Interaction
  */
-QList<QValueSpecification *> *QInteractionUse::arguments()
+const QList<QValueSpecification *> *QInteractionUse::arguments() const
+{
+}
+
+void QInteractionUse::addArgument(const QValueSpecification *argument)
+{
+}
+
+void QInteractionUse::removeArgument(const QValueSpecification *argument)
 {
 }
 
@@ -82,7 +98,7 @@ QInteraction *QInteractionUse::refersTo() const
 {
 }
 
-void QInteractionUse::setRefersTo(QInteraction *refersTo)
+void QInteractionUse::setRefersTo(const QInteraction *refersTo)
 {
 }
 
@@ -93,7 +109,7 @@ QValueSpecification *QInteractionUse::returnValue() const
 {
 }
 
-void QInteractionUse::setReturnValue(QValueSpecification *returnValue)
+void QInteractionUse::setReturnValue(const QValueSpecification *returnValue)
 {
 }
 
@@ -104,7 +120,7 @@ QProperty *QInteractionUse::returnValueRecipient() const
 {
 }
 
-void QInteractionUse::setReturnValueRecipient(QProperty *returnValueRecipient)
+void QInteractionUse::setReturnValueRecipient(const QProperty *returnValueRecipient)
 {
 }
 

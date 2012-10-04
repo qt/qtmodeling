@@ -51,6 +51,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -63,14 +64,16 @@ class Q_UML_EXPORT QSequenceNode : public QStructuredActivityNode
     Q_OBJECT
 
     // From QSequenceNode
-    Q_PROPERTY(QList<QExecutableNode *> * executableNodes READ executableNodes)
+    Q_PROPERTY(const QList<QExecutableNode *> * executableNodes READ executableNodes)
 
 public:
     explicit QSequenceNode(QObject *parent = 0);
     virtual ~QSequenceNode();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QExecutableNode *> *executableNodes();
+    const QList<QExecutableNode *> *executableNodes() const;
+    void addExecutableNode(const QExecutableNode *executableNode);
+    void removeExecutableNode(const QExecutableNode *executableNode);
 
 private:
     Q_DISABLE_COPY(QSequenceNode)

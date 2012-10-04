@@ -67,7 +67,7 @@ QPackage *QType::package() const
 {
 }
 
-void QType::setPackage(QPackage *package)
+void QType::setPackage(const QPackage *package)
 {
 }
 

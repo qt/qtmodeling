@@ -68,7 +68,7 @@ QInterface *QInterfaceRealization::contract() const
 {
 }
 
-void QInterfaceRealization::setContract(QInterface *contract)
+void QInterfaceRealization::setContract(const QInterface *contract)
 {
 }
 
@@ -79,7 +79,7 @@ QBehavioredClassifier *QInterfaceRealization::implementingClassifier() const
 {
 }
 
-void QInterfaceRealization::setImplementingClassifier(QBehavioredClassifier *implementingClassifier)
+void QInterfaceRealization::setImplementingClassifier(const QBehavioredClassifier *implementingClassifier)
 {
 }
 

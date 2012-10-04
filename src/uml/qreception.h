@@ -49,6 +49,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -61,42 +62,42 @@ class Q_UML_EXPORT QReception : public QObject, public QBehavioralFeature
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QNamespace
-    Q_PROPERTY(QList<QElementImport *> * elementImports READ elementImports)
-    Q_PROPERTY(const QList<QPackageableElement *> * importedMembers READ importedMembers)
-    Q_PROPERTY(const QList<QNamedElement *> * members READ members)
-    Q_PROPERTY(const QList<QNamedElement *> * ownedMembers READ ownedMembers)
-    Q_PROPERTY(QList<QConstraint *> * ownedRules READ ownedRules)
-    Q_PROPERTY(QList<QPackageImport *> * packageImports READ packageImports)
+    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
+    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
+    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
+    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
+    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
+    Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
 
     // From QRedefinableElement
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElements READ redefinedElements)
-    Q_PROPERTY(const QList<QClassifier *> * redefinitionContexts READ redefinitionContexts)
+    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
+    Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
 
     // From QFeature
     Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic)
-    Q_PROPERTY(const QList<QClassifier *> * featuringClassifiers READ featuringClassifiers)
+    Q_PROPERTY(const QSet<QClassifier *> * featuringClassifiers READ featuringClassifiers)
 
     // From QBehavioralFeature
     Q_PROPERTY(QtUml::CallConcurrencyKind concurrency READ concurrency WRITE setConcurrency)
     Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract)
-    Q_PROPERTY(QList<QBehavior *> * methods READ methods)
-    Q_PROPERTY(QList<QParameter *> * ownedParameters READ ownedParameters)
-    Q_PROPERTY(QList<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
-    Q_PROPERTY(QList<QType *> * raisedExceptions READ raisedExceptions)
+    Q_PROPERTY(const QSet<QBehavior *> * methods READ methods)
+    Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
+    Q_PROPERTY(const QSet<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
+    Q_PROPERTY(const QSet<QType *> * raisedExceptions READ raisedExceptions)
 
     // From QReception
     Q_PROPERTY(QSignal * signal READ signal WRITE setSignal)
@@ -107,7 +108,7 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QSignal *signal() const;
-    void setSignal(QSignal *signal);
+    void setSignal(const QSignal *signal);
 
 private:
     Q_DISABLE_COPY(QReception)

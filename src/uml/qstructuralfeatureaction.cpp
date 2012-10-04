@@ -67,7 +67,7 @@ QInputPin *QStructuralFeatureAction::object() const
 {
 }
 
-void QStructuralFeatureAction::setObject(QInputPin *object)
+void QStructuralFeatureAction::setObject(const QInputPin *object)
 {
 }
 
@@ -78,7 +78,7 @@ QStructuralFeature *QStructuralFeatureAction::structuralFeature() const
 {
 }
 
-void QStructuralFeatureAction::setStructuralFeature(QStructuralFeature *structuralFeature)
+void QStructuralFeatureAction::setStructuralFeature(const QStructuralFeature *structuralFeature)
 {
 }
 

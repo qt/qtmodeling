@@ -48,6 +48,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -62,9 +63,9 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QOccurrenceSpecification *finish() const;
-    void setFinish(QOccurrenceSpecification *finish);
+    void setFinish(const QOccurrenceSpecification *finish);
     QOccurrenceSpecification *start() const;
-    void setStart(QOccurrenceSpecification *start);
+    void setStart(const QOccurrenceSpecification *start);
 
 protected:
     explicit QExecutionSpecification();

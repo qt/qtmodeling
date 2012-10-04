@@ -68,14 +68,22 @@ QEvent *QTrigger::event() const
 {
 }
 
-void QTrigger::setEvent(QEvent *event)
+void QTrigger::setEvent(const QEvent *event)
 {
 }
 
 /*!
     A optional port of the receiver object on which the behavioral feature is invoked.
  */
-QList<QPort *> *QTrigger::ports()
+const QSet<QPort *> *QTrigger::ports() const
+{
+}
+
+void QTrigger::addPort(const QPort *port)
+{
+}
+
+void QTrigger::removePort(const QPort *port)
 {
 }
 

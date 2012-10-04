@@ -68,7 +68,7 @@ QDuration *QDurationInterval::max() const
 {
 }
 
-void QDurationInterval::setMax(QDuration *max)
+void QDurationInterval::setMax(const QDuration *max)
 {
 }
 
@@ -79,7 +79,7 @@ QDuration *QDurationInterval::min() const
 {
 }
 
-void QDurationInterval::setMin(QDuration *min)
+void QDurationInterval::setMin(const QDuration *min)
 {
 }
 

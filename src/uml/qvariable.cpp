@@ -68,7 +68,7 @@ QActivity *QVariable::activityScope() const
 {
 }
 
-void QVariable::setActivityScope(QActivity *activityScope)
+void QVariable::setActivityScope(const QActivity *activityScope)
 {
 }
 
@@ -79,7 +79,7 @@ QStructuredActivityNode *QVariable::scope() const
 {
 }
 
-void QVariable::setScope(QStructuredActivityNode *scope)
+void QVariable::setScope(const QStructuredActivityNode *scope)
 {
 }
 

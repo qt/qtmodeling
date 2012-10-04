@@ -48,6 +48,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -70,9 +71,9 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QInterface *contract() const;
-    void setContract(QInterface *contract);
+    void setContract(const QInterface *contract);
     QBehavioredClassifier *implementingClassifier() const;
-    void setImplementingClassifier(QBehavioredClassifier *implementingClassifier);
+    void setImplementingClassifier(const QBehavioredClassifier *implementingClassifier);
 
 private:
     Q_DISABLE_COPY(QInterfaceRealization)

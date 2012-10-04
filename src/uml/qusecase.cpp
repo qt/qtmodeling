@@ -64,35 +64,67 @@ QUseCase::~QUseCase()
 /*!
     References the Extend relationships owned by this use case.
  */
-QList<QExtend *> *QUseCase::extends()
+const QSet<QExtend *> *QUseCase::extends() const
+{
+}
+
+void QUseCase::addExtend(const QExtend *extend)
+{
+}
+
+void QUseCase::removeExtend(const QExtend *extend)
 {
 }
 
 /*!
     References the ExtensionPoints owned by the use case.
  */
-QList<QExtensionPoint *> *QUseCase::extensionPoints()
+const QSet<QExtensionPoint *> *QUseCase::extensionPoints() const
+{
+}
+
+void QUseCase::addExtensionPoint(const QExtensionPoint *extensionPoint)
+{
+}
+
+void QUseCase::removeExtensionPoint(const QExtensionPoint *extensionPoint)
 {
 }
 
 /*!
     References the Include relationships owned by this use case.
  */
-QList<QInclude *> *QUseCase::includes()
+const QSet<QInclude *> *QUseCase::includes() const
+{
+}
+
+void QUseCase::addInclude(const QInclude *include)
+{
+}
+
+void QUseCase::removeInclude(const QInclude *include)
 {
 }
 
 /*!
     References the subjects to which this use case applies. The subject or its parts realize all the use cases that apply to this subject. Use cases need not be attached to any specific subject, however. The subject may, but need not, own the use cases that apply to it.
  */
-QList<QClassifier *> *QUseCase::subjects()
+const QSet<QClassifier *> *QUseCase::subjects() const
+{
+}
+
+void QUseCase::addSubject(const QClassifier *subject)
+{
+}
+
+void QUseCase::removeSubject(const QClassifier *subject)
 {
 }
 
 /*!
     The query allIncludedUseCases() returns the transitive closure of all use cases (directly or indirectly) included by this use case.
  */
-const QList<QUseCase *> *QUseCase::allIncludedUseCases() const
+const QSet<QUseCase *> *QUseCase::allIncludedUseCases() const
 {
 }
 

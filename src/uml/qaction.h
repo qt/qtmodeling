@@ -48,8 +48,10 @@
 
 // Qt includes
 #include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -72,12 +74,16 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     const QList<QInputPin *> *inputs() const;
-    QList<QConstraint *> *localPostconditions();
-    QList<QConstraint *> *localPreconditions();
+    const QSet<QConstraint *> *localPostconditions() const;
+    void addLocalPostcondition(const QConstraint *localPostcondition);
+    void removeLocalPostcondition(const QConstraint *localPostcondition);
+    const QSet<QConstraint *> *localPreconditions() const;
+    void addLocalPrecondition(const QConstraint *localPrecondition);
+    void removeLocalPrecondition(const QConstraint *localPrecondition);
     const QList<QOutputPin *> *outputs() const;
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QClassifier *context() const;
+    QClassifier *context() const;
 
 protected:
     explicit QAction();

@@ -90,7 +90,7 @@ QInputPin *QDestroyObjectAction::target() const
 {
 }
 
-void QDestroyObjectAction::setTarget(QInputPin *target)
+void QDestroyObjectAction::setTarget(const QInputPin *target)
 {
 }
 

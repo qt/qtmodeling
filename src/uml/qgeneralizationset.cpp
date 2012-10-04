@@ -86,7 +86,15 @@ void QGeneralizationSet::setDisjoint(bool isDisjoint)
 /*!
     Designates the instances of Generalization which are members of a given GeneralizationSet.
  */
-QList<QGeneralization *> *QGeneralizationSet::generalizations()
+const QSet<QGeneralization *> *QGeneralizationSet::generalizations() const
+{
+}
+
+void QGeneralizationSet::addGeneralization(const QGeneralization *generalization)
+{
+}
+
+void QGeneralizationSet::removeGeneralization(const QGeneralization *generalization)
 {
 }
 
@@ -97,7 +105,7 @@ QClassifier *QGeneralizationSet::powertype() const
 {
 }
 
-void QGeneralizationSet::setPowertype(QClassifier *powertype)
+void QGeneralizationSet::setPowertype(const QClassifier *powertype)
 {
 }
 

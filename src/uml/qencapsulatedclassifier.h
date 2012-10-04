@@ -47,9 +47,10 @@
 #include <QtUml/QStructuredClassifier>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -66,7 +67,7 @@ public:
     // Association-ends (except those derived && !derivedUnion)
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QList<QPort *> *ownedPorts() const;
+    const QSet<QPort *> *ownedPorts() const;
 
 protected:
     explicit QEncapsulatedClassifier();

@@ -68,7 +68,7 @@ QSignal *QSignalEvent::signal() const
 {
 }
 
-void QSignalEvent::setSignal(QSignal *signal)
+void QSignalEvent::setSignal(const QSignal *signal)
 {
 }
 

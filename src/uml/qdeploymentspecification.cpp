@@ -90,7 +90,7 @@ QDeployment *QDeploymentSpecification::deployment() const
 {
 }
 
-void QDeploymentSpecification::setDeployment(QDeployment *deployment)
+void QDeploymentSpecification::setDeployment(const QDeployment *deployment)
 {
 }
 

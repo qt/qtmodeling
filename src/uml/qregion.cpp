@@ -68,7 +68,7 @@ QRegion *QRegion::extendedRegion() const
 {
 }
 
-void QRegion::setExtendedRegion(QRegion *extendedRegion)
+void QRegion::setExtendedRegion(const QRegion *extendedRegion)
 {
 }
 
@@ -79,7 +79,7 @@ QState *QRegion::state() const
 {
 }
 
-void QRegion::setState(QState *state)
+void QRegion::setState(const QState *state)
 {
 }
 
@@ -90,21 +90,37 @@ QStateMachine *QRegion::stateMachine() const
 {
 }
 
-void QRegion::setStateMachine(QStateMachine *stateMachine)
+void QRegion::setStateMachine(const QStateMachine *stateMachine)
 {
 }
 
 /*!
     The set of vertices that are owned by this region.
  */
-QList<QVertex *> *QRegion::subvertices()
+const QSet<QVertex *> *QRegion::subvertices() const
+{
+}
+
+void QRegion::addSubvertex(const QVertex *subvertex)
+{
+}
+
+void QRegion::removeSubvertex(const QVertex *subvertex)
 {
 }
 
 /*!
     The set of transitions owned by the region.
  */
-QList<QTransition *> *QRegion::transitions()
+const QSet<QTransition *> *QRegion::transitions() const
+{
+}
+
+void QRegion::addTransition(const QTransition *transition)
+{
+}
+
+void QRegion::removeTransition(const QTransition *transition)
 {
 }
 
@@ -118,7 +134,7 @@ bool QRegion::belongsToPSM() const
 /*!
     The operation containingStateMachine() returns the sate machine in which this Region is defined
  */
-const QStateMachine *QRegion::containingStateMachine() const
+QStateMachine *QRegion::containingStateMachine() const
 {
 }
 
@@ -139,7 +155,7 @@ bool QRegion::isRedefinitionContextValid(const QRegion *redefined) const
 /*!
     The redefinition context of a region is the nearest containing statemachine
  */
-const QClassifier *QRegion::redefinitionContext() const
+QClassifier *QRegion::redefinitionContext() const
 {
 }
 

@@ -68,7 +68,7 @@ QConstraint *QProtocolTransition::postCondition() const
 {
 }
 
-void QProtocolTransition::setPostCondition(QConstraint *postCondition)
+void QProtocolTransition::setPostCondition(const QConstraint *postCondition)
 {
 }
 
@@ -79,14 +79,14 @@ QConstraint *QProtocolTransition::preCondition() const
 {
 }
 
-void QProtocolTransition::setPreCondition(QConstraint *preCondition)
+void QProtocolTransition::setPreCondition(const QConstraint *preCondition)
 {
 }
 
 /*!
     Missing derivation for ProtocolTransition::/referred : Operation
  */
-const QList<QOperation *> *QProtocolTransition::referred() const
+const QSet<QOperation *> *QProtocolTransition::referred() const
 {
 }
 

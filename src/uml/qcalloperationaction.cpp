@@ -68,7 +68,7 @@ QOperation *QCallOperationAction::operation() const
 {
 }
 
-void QCallOperationAction::setOperation(QOperation *operation)
+void QCallOperationAction::setOperation(const QOperation *operation)
 {
 }
 
@@ -79,7 +79,7 @@ QInputPin *QCallOperationAction::target() const
 {
 }
 
-void QCallOperationAction::setTarget(QInputPin *target)
+void QCallOperationAction::setTarget(const QInputPin *target)
 {
 }
 

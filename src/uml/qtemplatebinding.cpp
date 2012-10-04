@@ -68,14 +68,22 @@ QTemplateableElement *QTemplateBinding::boundElement() const
 {
 }
 
-void QTemplateBinding::setBoundElement(QTemplateableElement *boundElement)
+void QTemplateBinding::setBoundElement(const QTemplateableElement *boundElement)
 {
 }
 
 /*!
     The parameter substitutions owned by this template binding.
  */
-QList<QTemplateParameterSubstitution *> *QTemplateBinding::parameterSubstitutions()
+const QSet<QTemplateParameterSubstitution *> *QTemplateBinding::parameterSubstitutions() const
+{
+}
+
+void QTemplateBinding::addParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution)
+{
+}
+
+void QTemplateBinding::removeParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution)
 {
 }
 
@@ -86,7 +94,7 @@ QTemplateSignature *QTemplateBinding::signature() const
 {
 }
 
-void QTemplateBinding::setSignature(QTemplateSignature *signature)
+void QTemplateBinding::setSignature(const QTemplateSignature *signature)
 {
 }
 

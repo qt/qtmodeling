@@ -50,8 +50,10 @@
 
 // Qt includes
 #include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -69,50 +71,60 @@ class Q_UML_EXPORT QInteraction : public QBehavior, public QInteractionFragment
 
     // From QBehavior
     Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant)
-    Q_PROPERTY(const QBehavioredClassifier * context READ context)
-    Q_PROPERTY(QList<QParameter *> * ownedParameters READ ownedParameters)
-    Q_PROPERTY(QList<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
-    Q_PROPERTY(QList<QConstraint *> * postconditions READ postconditions)
-    Q_PROPERTY(QList<QConstraint *> * preconditions READ preconditions)
-    Q_PROPERTY(QList<QBehavior *> * redefinedBehaviors READ redefinedBehaviors)
+    Q_PROPERTY(QBehavioredClassifier * context READ context)
+    Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
+    Q_PROPERTY(const QSet<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
+    Q_PROPERTY(const QSet<QConstraint *> * postconditions READ postconditions)
+    Q_PROPERTY(const QSet<QConstraint *> * preconditions READ preconditions)
+    Q_PROPERTY(const QSet<QBehavior *> * redefinedBehaviors READ redefinedBehaviors)
     Q_PROPERTY(QBehavioralFeature * specification READ specification WRITE setSpecification)
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QInteractionFragment
-    Q_PROPERTY(QList<QLifeline *> * covered READ covered)
+    Q_PROPERTY(const QSet<QLifeline *> * covered READ covered)
     Q_PROPERTY(QInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
     Q_PROPERTY(QInteractionOperand * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
-    Q_PROPERTY(QList<QGeneralOrdering *> * generalOrderings READ generalOrderings)
+    Q_PROPERTY(const QSet<QGeneralOrdering *> * generalOrderings READ generalOrderings)
 
     // From QInteraction
-    Q_PROPERTY(QList<QAction *> * actions READ actions)
-    Q_PROPERTY(QList<QGate *> * formalGates READ formalGates)
-    Q_PROPERTY(QList<QInteractionFragment *> * fragments READ fragments)
-    Q_PROPERTY(QList<QLifeline *> * lifelines READ lifelines)
-    Q_PROPERTY(QList<QMessage *> * messages READ messages)
+    Q_PROPERTY(const QSet<QAction *> * actions READ actions)
+    Q_PROPERTY(const QSet<QGate *> * formalGates READ formalGates)
+    Q_PROPERTY(const QList<QInteractionFragment *> * fragments READ fragments)
+    Q_PROPERTY(const QSet<QLifeline *> * lifelines READ lifelines)
+    Q_PROPERTY(const QSet<QMessage *> * messages READ messages)
 
 public:
     explicit QInteraction(QObject *parent = 0);
     virtual ~QInteraction();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QAction *> *actions();
-    QList<QGate *> *formalGates();
-    QList<QInteractionFragment *> *fragments();
-    QList<QLifeline *> *lifelines();
-    QList<QMessage *> *messages();
+    const QSet<QAction *> *actions() const;
+    void addAction(const QAction *action);
+    void removeAction(const QAction *action);
+    const QSet<QGate *> *formalGates() const;
+    void addFormalGate(const QGate *formalGate);
+    void removeFormalGate(const QGate *formalGate);
+    const QList<QInteractionFragment *> *fragments() const;
+    void addFragment(const QInteractionFragment *fragment);
+    void removeFragment(const QInteractionFragment *fragment);
+    const QSet<QLifeline *> *lifelines() const;
+    void addLifeline(const QLifeline *lifeline);
+    void removeLifeline(const QLifeline *lifeline);
+    const QSet<QMessage *> *messages() const;
+    void addMessage(const QMessage *message);
+    void removeMessage(const QMessage *message);
 
 private:
     Q_DISABLE_COPY(QInteraction)

@@ -48,6 +48,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -62,7 +63,7 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QPackage *package() const;
-    void setPackage(QPackage *package);
+    void setPackage(const QPackage *package);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     bool conformsTo(const QType *other) const;

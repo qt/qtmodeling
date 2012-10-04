@@ -86,42 +86,90 @@ void QActivity::setSingleExecution(bool isSingleExecution)
 /*!
     Edges expressing flow between nodes of the activity.
  */
-QList<QActivityEdge *> *QActivity::edges()
+const QSet<QActivityEdge *> *QActivity::edges() const
+{
+}
+
+void QActivity::addEdge(const QActivityEdge *edge)
+{
+}
+
+void QActivity::removeEdge(const QActivityEdge *edge)
 {
 }
 
 /*!
     Top-level groups in the activity.
  */
-QList<QActivityGroup *> *QActivity::groups()
+const QSet<QActivityGroup *> *QActivity::groups() const
+{
+}
+
+void QActivity::addGroup(const QActivityGroup *group)
+{
+}
+
+void QActivity::removeGroup(const QActivityGroup *group)
 {
 }
 
 /*!
     Nodes coordinated by the activity.
  */
-QList<QActivityNode *> *QActivity::nodes()
+const QSet<QActivityNode *> *QActivity::nodes() const
+{
+}
+
+void QActivity::addNode(const QActivityNode *node)
+{
+}
+
+void QActivity::removeNode(const QActivityNode *node)
 {
 }
 
 /*!
     Top-level partitions in the activity.
  */
-QList<QActivityPartition *> *QActivity::partitions()
+const QSet<QActivityPartition *> *QActivity::partitions() const
+{
+}
+
+void QActivity::addPartition(const QActivityPartition *partition)
+{
+}
+
+void QActivity::removePartition(const QActivityPartition *partition)
 {
 }
 
 /*!
     Top-level structured nodes in the activity.
  */
-QList<QStructuredActivityNode *> *QActivity::structuredNodes()
+const QSet<QStructuredActivityNode *> *QActivity::structuredNodes() const
+{
+}
+
+void QActivity::addStructuredNode(const QStructuredActivityNode *structuredNode)
+{
+}
+
+void QActivity::removeStructuredNode(const QStructuredActivityNode *structuredNode)
 {
 }
 
 /*!
     Top-level variables in the activity.
  */
-QList<QVariable *> *QActivity::variables()
+const QSet<QVariable *> *QActivity::variables() const
+{
+}
+
+void QActivity::addVariable(const QVariable *variable)
+{
+}
+
+void QActivity::removeVariable(const QVariable *variable)
 {
 }
 

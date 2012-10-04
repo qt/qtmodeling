@@ -67,21 +67,37 @@ QBehavior *QBehavioredClassifier::classifierBehavior() const
 {
 }
 
-void QBehavioredClassifier::setClassifierBehavior(QBehavior *classifierBehavior)
+void QBehavioredClassifier::setClassifierBehavior(const QBehavior *classifierBehavior)
 {
 }
 
 /*!
     The set of InterfaceRealizations owned by the BehavioredClassifier. Interface realizations reference the Interfaces of which the BehavioredClassifier is an implementation.
  */
-QList<QInterfaceRealization *> *QBehavioredClassifier::interfaceRealizations()
+const QSet<QInterfaceRealization *> *QBehavioredClassifier::interfaceRealizations() const
+{
+}
+
+void QBehavioredClassifier::addInterfaceRealization(const QInterfaceRealization *interfaceRealization)
+{
+}
+
+void QBehavioredClassifier::removeInterfaceRealization(const QInterfaceRealization *interfaceRealization)
 {
 }
 
 /*!
     References behavior specifications owned by a classifier.
  */
-QList<QBehavior *> *QBehavioredClassifier::ownedBehaviors()
+const QSet<QBehavior *> *QBehavioredClassifier::ownedBehaviors() const
+{
+}
+
+void QBehavioredClassifier::addOwnedBehavior(const QBehavior *ownedBehavior)
+{
+}
+
+void QBehavioredClassifier::removeOwnedBehavior(const QBehavior *ownedBehavior)
 {
 }
 

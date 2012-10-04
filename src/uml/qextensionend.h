@@ -48,6 +48,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -71,7 +72,7 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QStereotype *type() const;
-    void setType(QStereotype *type);
+    void setType(const QStereotype *type);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     qint32 lowerBound() const;

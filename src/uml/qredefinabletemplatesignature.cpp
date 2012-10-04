@@ -68,21 +68,29 @@ QClassifier *QRedefinableTemplateSignature::classifier() const
 {
 }
 
-void QRedefinableTemplateSignature::setClassifier(QClassifier *classifier)
+void QRedefinableTemplateSignature::setClassifier(const QClassifier *classifier)
 {
 }
 
 /*!
     The template signature that is extended by this template signature.
  */
-QList<QRedefinableTemplateSignature *> *QRedefinableTemplateSignature::extendedSignatures()
+const QSet<QRedefinableTemplateSignature *> *QRedefinableTemplateSignature::extendedSignatures() const
+{
+}
+
+void QRedefinableTemplateSignature::addExtendedSignature(const QRedefinableTemplateSignature *extendedSignature)
+{
+}
+
+void QRedefinableTemplateSignature::removeExtendedSignature(const QRedefinableTemplateSignature *extendedSignature)
 {
 }
 
 /*!
     Missing derivation for RedefinableTemplateSignature::/inheritedParameter : TemplateParameter
  */
-const QList<QTemplateParameter *> *QRedefinableTemplateSignature::inheritedParameters() const
+const QSet<QTemplateParameter *> *QRedefinableTemplateSignature::inheritedParameters() const
 {
 }
 

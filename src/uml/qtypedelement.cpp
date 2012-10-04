@@ -67,7 +67,7 @@ QType *QTypedElement::type() const
 {
 }
 
-void QTypedElement::setType(QType *type)
+void QTypedElement::setType(const QType *type)
 {
 }
 

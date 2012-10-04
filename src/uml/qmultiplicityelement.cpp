@@ -89,7 +89,7 @@ QValueSpecification *QMultiplicityElement::lowerValue() const
 {
 }
 
-void QMultiplicityElement::setLowerValue(QValueSpecification *lowerValue)
+void QMultiplicityElement::setLowerValue(const QValueSpecification *lowerValue)
 {
 }
 
@@ -100,7 +100,7 @@ QValueSpecification *QMultiplicityElement::upperValue() const
 {
 }
 
-void QMultiplicityElement::setUpperValue(QValueSpecification *upperValue)
+void QMultiplicityElement::setUpperValue(const QValueSpecification *upperValue)
 {
 }
 

@@ -53,6 +53,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -67,30 +68,30 @@ class Q_UML_EXPORT QExtend : public QObject, public QDirectedRelationship, publi
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QRelationship
-    Q_PROPERTY(const QList<QElement *> * relatedElements READ relatedElements)
+    Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
 
     // From QDirectedRelationship
-    Q_PROPERTY(const QList<QElement *> * sources READ sources)
-    Q_PROPERTY(const QList<QElement *> * targets READ targets)
+    Q_PROPERTY(const QSet<QElement *> * sources READ sources)
+    Q_PROPERTY(const QSet<QElement *> * targets READ targets)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QExtend
     Q_PROPERTY(QConstraint * condition READ condition WRITE setCondition)
     Q_PROPERTY(QUseCase * extendedCase READ extendedCase WRITE setExtendedCase)
     Q_PROPERTY(QUseCase * extension READ extension WRITE setExtension)
-    Q_PROPERTY(QList<QExtensionPoint *> * extensionLocations READ extensionLocations)
+    Q_PROPERTY(const QList<QExtensionPoint *> * extensionLocations READ extensionLocations)
 
 public:
     explicit QExtend(QObject *parent = 0);
@@ -98,12 +99,14 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QConstraint *condition() const;
-    void setCondition(QConstraint *condition);
+    void setCondition(const QConstraint *condition);
     QUseCase *extendedCase() const;
-    void setExtendedCase(QUseCase *extendedCase);
+    void setExtendedCase(const QUseCase *extendedCase);
     QUseCase *extension() const;
-    void setExtension(QUseCase *extension);
-    QList<QExtensionPoint *> *extensionLocations();
+    void setExtension(const QUseCase *extension);
+    const QList<QExtensionPoint *> *extensionLocations() const;
+    void addExtensionLocation(const QExtensionPoint *extensionLocation);
+    void removeExtensionLocation(const QExtensionPoint *extensionLocation);
 
 private:
     Q_DISABLE_COPY(QExtend)

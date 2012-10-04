@@ -68,7 +68,7 @@ QSignal *QReception::signal() const
 {
 }
 
-void QReception::setSignal(QSignal *signal)
+void QReception::setSignal(const QSignal *signal)
 {
 }
 

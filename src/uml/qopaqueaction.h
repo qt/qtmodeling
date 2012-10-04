@@ -50,8 +50,10 @@
 // Qt includes
 #include <QtCore/QString>
 #include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -66,61 +68,69 @@ class Q_UML_EXPORT QOpaqueAction : public QObject, public QAction
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QRedefinableElement
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElements READ redefinedElements)
-    Q_PROPERTY(const QList<QClassifier *> * redefinitionContexts READ redefinitionContexts)
+    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
+    Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
 
     // From QActivityNode
     Q_PROPERTY(QActivity * activity READ activity WRITE setActivity)
-    Q_PROPERTY(const QList<QActivityGroup *> * inGroup READ inGroup)
-    Q_PROPERTY(QList<QInterruptibleActivityRegion *> * inInterruptibleRegion READ inInterruptibleRegion)
-    Q_PROPERTY(QList<QActivityPartition *> * inPartition READ inPartition)
+    Q_PROPERTY(const QSet<QActivityGroup *> * inGroup READ inGroup)
+    Q_PROPERTY(const QSet<QInterruptibleActivityRegion *> * inInterruptibleRegion READ inInterruptibleRegion)
+    Q_PROPERTY(const QSet<QActivityPartition *> * inPartition READ inPartition)
     Q_PROPERTY(QStructuredActivityNode * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
-    Q_PROPERTY(QList<QActivityEdge *> * incomings READ incomings)
-    Q_PROPERTY(QList<QActivityEdge *> * outgoings READ outgoings)
-    Q_PROPERTY(QList<QActivityNode *> * redefinedNodes READ redefinedNodes)
+    Q_PROPERTY(const QSet<QActivityEdge *> * incomings READ incomings)
+    Q_PROPERTY(const QSet<QActivityEdge *> * outgoings READ outgoings)
+    Q_PROPERTY(const QSet<QActivityNode *> * redefinedNodes READ redefinedNodes)
 
     // From QExecutableNode
-    Q_PROPERTY(QList<QExceptionHandler *> * handlers READ handlers)
+    Q_PROPERTY(const QSet<QExceptionHandler *> * handlers READ handlers)
 
     // From QAction
     Q_PROPERTY(bool isLocallyReentrant READ isLocallyReentrant WRITE setLocallyReentrant)
-    Q_PROPERTY(const QClassifier * context READ context)
+    Q_PROPERTY(QClassifier * context READ context)
     Q_PROPERTY(const QList<QInputPin *> * inputs READ inputs)
-    Q_PROPERTY(QList<QConstraint *> * localPostconditions READ localPostconditions)
-    Q_PROPERTY(QList<QConstraint *> * localPreconditions READ localPreconditions)
+    Q_PROPERTY(const QSet<QConstraint *> * localPostconditions READ localPostconditions)
+    Q_PROPERTY(const QSet<QConstraint *> * localPreconditions READ localPreconditions)
     Q_PROPERTY(const QList<QOutputPin *> * outputs READ outputs)
 
     // From QOpaqueAction
-    Q_PROPERTY(QList<QString *> bodies READ bodies)
-    Q_PROPERTY(QList<QString *> languages READ languages)
-    Q_PROPERTY(QList<QInputPin *> * inputValues READ inputValues)
-    Q_PROPERTY(QList<QOutputPin *> * outputValues READ outputValues)
+    Q_PROPERTY(const QList<QString> * bodies READ bodies)
+    Q_PROPERTY(const QList<QString> * languages READ languages)
+    Q_PROPERTY(const QSet<QInputPin *> * inputValues READ inputValues)
+    Q_PROPERTY(const QSet<QOutputPin *> * outputValues READ outputValues)
 
 public:
     explicit QOpaqueAction(QObject *parent = 0);
     virtual ~QOpaqueAction();
 
     // Attributes (except those derived && !derivedUnion)
-    QList<QString *> bodies();
-    QList<QString *> languages();
+    const QList<QString> *bodies() const;
+    void addBody(QString body);
+    void removeBody(QString body);
+    const QList<QString> *languages() const;
+    void addLanguage(QString language);
+    void removeLanguage(QString language);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QInputPin *> *inputValues();
-    QList<QOutputPin *> *outputValues();
+    const QSet<QInputPin *> *inputValues() const;
+    void addInputValue(const QInputPin *inputValue);
+    void removeInputValue(const QInputPin *inputValue);
+    const QSet<QOutputPin *> *outputValues() const;
+    void addOutputValue(const QOutputPin *outputValue);
+    void removeOutputValue(const QOutputPin *outputValue);
 
 private:
     Q_DISABLE_COPY(QOpaqueAction)

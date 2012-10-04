@@ -68,7 +68,7 @@ QSignal *QSendSignalAction::signal() const
 {
 }
 
-void QSendSignalAction::setSignal(QSignal *signal)
+void QSendSignalAction::setSignal(const QSignal *signal)
 {
 }
 
@@ -79,7 +79,7 @@ QInputPin *QSendSignalAction::target() const
 {
 }
 
-void QSendSignalAction::setTarget(QInputPin *target)
+void QSendSignalAction::setTarget(const QInputPin *target)
 {
 }
 

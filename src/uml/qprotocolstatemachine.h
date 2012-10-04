@@ -47,9 +47,10 @@
 #include <QtUml/QStateMachine>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -63,14 +64,16 @@ class Q_UML_EXPORT QProtocolStateMachine : public QStateMachine
     Q_OBJECT
 
     // From QProtocolStateMachine
-    Q_PROPERTY(QList<QProtocolConformance *> * conformance READ conformance)
+    Q_PROPERTY(const QSet<QProtocolConformance *> * conformance READ conformance)
 
 public:
     explicit QProtocolStateMachine(QObject *parent = 0);
     virtual ~QProtocolStateMachine();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QProtocolConformance *> *conformance();
+    const QSet<QProtocolConformance *> *conformance() const;
+    void addConformance(const QProtocolConformance *conformance);
+    void removeConformance(const QProtocolConformance *conformance);
 
 private:
     Q_DISABLE_COPY(QProtocolStateMachine)

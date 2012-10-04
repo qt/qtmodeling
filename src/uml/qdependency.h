@@ -49,9 +49,10 @@
 #include <QtUml/QDirectedRelationship>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -65,9 +66,9 @@ class Q_UML_EXPORT QDependency : public QObject, public QPackageableElement, pub
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QParameterableElement
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
@@ -76,32 +77,35 @@ class Q_UML_EXPORT QDependency : public QObject, public QPackageableElement, pub
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QPackageableElement
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // From QRelationship
-    Q_PROPERTY(const QList<QElement *> * relatedElements READ relatedElements)
+    Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
 
     // From QDirectedRelationship
-    Q_PROPERTY(const QList<QElement *> * sources READ sources)
-    Q_PROPERTY(const QList<QElement *> * targets READ targets)
+    Q_PROPERTY(const QSet<QElement *> * sources READ sources)
+    Q_PROPERTY(const QSet<QElement *> * targets READ targets)
 
     // From QDependency
-    Q_PROPERTY(QList<QNamedElement *> * clients READ clients)
-    Q_PROPERTY(QList<QNamedElement *> * suppliers READ suppliers)
+    Q_PROPERTY(const QSet<QNamedElement *> * clients READ clients)
+    Q_PROPERTY(const QSet<QNamedElement *> * suppliers READ suppliers)
 
 public:
     explicit QDependency(QObject *parent = 0);
     virtual ~QDependency();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QNamedElement *> *clients();
-    QList<QNamedElement *> *suppliers();
+    const QSet<QNamedElement *> *clients() const;
+    void addClient(const QNamedElement *client);
+    void removeClient(const QNamedElement *client);
+    const QSet<QNamedElement *> *suppliers() const;
+    void addSupplier(const QNamedElement *supplier);
+    void removeSupplier(const QNamedElement *supplier);
 
 private:
     Q_DISABLE_COPY(QDependency)

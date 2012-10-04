@@ -68,7 +68,11 @@ bool QDurationConstraint::firstEvent() const
 {
 }
 
-void QDurationConstraint::setFirstEvent(bool firstEvent)
+void QDurationConstraint::addFirstEvent(bool firstEvent)
+{
+}
+
+void QDurationConstraint::removeFirstEvent(bool firstEvent)
 {
 }
 
@@ -79,7 +83,7 @@ QDurationInterval *QDurationConstraint::specification() const
 {
 }
 
-void QDurationConstraint::setSpecification(QDurationInterval *specification)
+void QDurationConstraint::setSpecification(const QDurationInterval *specification)
 {
 }
 

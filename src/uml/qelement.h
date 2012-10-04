@@ -44,9 +44,10 @@
 #include <QtUml/QtUmlGlobal>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -61,12 +62,14 @@ public:
     virtual ~QElement();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QComment *> *ownedComments();
-    const QList<QElement *> *ownedElements() const;
-    const QElement *owner() const;
+    const QSet<QComment *> *ownedComments() const;
+    void addOwnedComment(const QComment *ownedComment);
+    void removeOwnedComment(const QComment *ownedComment);
+    const QSet<QElement *> *ownedElements() const;
+    QElement *owner() const;
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QList<QElement *> *allOwnedElements() const;
+    const QSet<QElement *> *allOwnedElements() const;
     bool mustBeOwned() const;
 
 protected:

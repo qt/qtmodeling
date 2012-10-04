@@ -101,28 +101,36 @@ QProtocolStateMachine *QPort::protocol() const
 {
 }
 
-void QPort::setProtocol(QProtocolStateMachine *protocol)
+void QPort::setProtocol(const QProtocolStateMachine *protocol)
 {
 }
 
 /*!
     A port may be redefined when its containing classifier is specialized. The redefining port may have additional interfaces to those that are associated with the redefined port or it may replace an interface by one of its subtypes.
  */
-QList<QPort *> *QPort::redefinedPorts()
+const QSet<QPort *> *QPort::redefinedPorts() const
+{
+}
+
+void QPort::addRedefinedPort(const QPort *redefinedPort)
+{
+}
+
+void QPort::removeRedefinedPort(const QPort *redefinedPort)
 {
 }
 
 /*!
     Missing derivation for Port::/provided : Interface
  */
-const QList<QInterface *> *QPort::provided() const
+const QSet<QInterface *> *QPort::provided() const
 {
 }
 
 /*!
     Missing derivation for Port::/required : Interface
  */
-const QList<QInterface *> *QPort::required() const
+const QSet<QInterface *> *QPort::required() const
 {
 }
 

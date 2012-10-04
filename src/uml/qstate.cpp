@@ -64,21 +64,45 @@ QState::~QState()
 /*!
     The entry and exit connection points used in conjunction with this (submachine) state, i.e. as targets and sources, respectively, in the region with the submachine state. A connection point reference references the corresponding definition of a connection point pseudostate in the statemachine referenced by the submachinestate.
  */
-QList<QConnectionPointReference *> *QState::connections()
+const QSet<QConnectionPointReference *> *QState::connections() const
+{
+}
+
+void QState::addConnection(const QConnectionPointReference *connection)
+{
+}
+
+void QState::removeConnection(const QConnectionPointReference *connection)
 {
 }
 
 /*!
     The entry and exit pseudostates of a composite state. These can only be entry or exit Pseudostates, and they must have different names. They can only be defined for composite states.
  */
-QList<QPseudostate *> *QState::connectionPoints()
+const QSet<QPseudostate *> *QState::connectionPoints() const
+{
+}
+
+void QState::addConnectionPoint(const QPseudostate *connectionPoint)
+{
+}
+
+void QState::removeConnectionPoint(const QPseudostate *connectionPoint)
 {
 }
 
 /*!
     A list of triggers that are candidates to be retained by the state machine if they trigger no transitions out of the state (not consumed). A deferred trigger is retained until the state machine reaches a state configuration where it is no longer deferred.
  */
-QList<QTrigger *> *QState::deferrableTriggers()
+const QSet<QTrigger *> *QState::deferrableTriggers() const
+{
+}
+
+void QState::addDeferrableTrigger(const QTrigger *deferrableTrigger)
+{
+}
+
+void QState::removeDeferrableTrigger(const QTrigger *deferrableTrigger)
 {
 }
 
@@ -89,7 +113,7 @@ QBehavior *QState::doActivity() const
 {
 }
 
-void QState::setDoActivity(QBehavior *doActivity)
+void QState::setDoActivity(const QBehavior *doActivity)
 {
 }
 
@@ -100,7 +124,7 @@ QBehavior *QState::entry() const
 {
 }
 
-void QState::setEntry(QBehavior *entry)
+void QState::setEntry(const QBehavior *entry)
 {
 }
 
@@ -111,7 +135,7 @@ QBehavior *QState::exit() const
 {
 }
 
-void QState::setExit(QBehavior *exit)
+void QState::setExit(const QBehavior *exit)
 {
 }
 
@@ -122,14 +146,22 @@ QState *QState::redefinedState() const
 {
 }
 
-void QState::setRedefinedState(QState *redefinedState)
+void QState::setRedefinedState(const QState *redefinedState)
 {
 }
 
 /*!
     The regions owned directly by the state.
  */
-QList<QRegion *> *QState::regions()
+const QSet<QRegion *> *QState::regions() const
+{
+}
+
+void QState::addRegion(const QRegion *region)
+{
+}
+
+void QState::removeRegion(const QRegion *region)
 {
 }
 
@@ -140,7 +172,7 @@ QConstraint *QState::stateInvariant() const
 {
 }
 
-void QState::setStateInvariant(QConstraint *stateInvariant)
+void QState::setStateInvariant(const QConstraint *stateInvariant)
 {
 }
 
@@ -151,14 +183,14 @@ QStateMachine *QState::submachine() const
 {
 }
 
-void QState::setSubmachine(QStateMachine *submachine)
+void QState::setSubmachine(const QStateMachine *submachine)
 {
 }
 
 /*!
     The query containingStateMachine() returns the state machine that contains the state either directly or transitively.
  */
-const QStateMachine *QState::containingStateMachine() const
+QStateMachine *QState::containingStateMachine() const
 {
 }
 
@@ -207,7 +239,7 @@ bool QState::isSubmachineState() const
 /*!
     The redefinition context of a state is the nearest containing statemachine.
  */
-const QClassifier *QState::redefinitionContext() const
+QClassifier *QState::redefinitionContext() const
 {
 }
 

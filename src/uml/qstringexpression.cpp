@@ -68,14 +68,22 @@ QStringExpression *QStringExpression::owningExpression() const
 {
 }
 
-void QStringExpression::setOwningExpression(QStringExpression *owningExpression)
+void QStringExpression::setOwningExpression(const QStringExpression *owningExpression)
 {
 }
 
 /*!
     The StringExpressions that constitute this StringExpression.
  */
-QList<QStringExpression *> *QStringExpression::subExpressions()
+const QSet<QStringExpression *> *QStringExpression::subExpressions() const
+{
+}
+
+void QStringExpression::addSubExpression(const QStringExpression *subExpression)
+{
+}
+
+void QStringExpression::removeSubExpression(const QStringExpression *subExpression)
 {
 }
 

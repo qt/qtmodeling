@@ -26,7 +26,21 @@
         </ownedComment>
       </ownedLiteral>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="UsedClass" name="Class">
+    <packagedElement xmi:type="uml:Class" xmi:id="BaseClass" name="BaseClass" isAbstract="true">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="BaseClass-readWriteSingleValuedPrimitiveAttribute" name="readWriteSingleValuedPrimitiveAttribute">
+        <ownedComment xmi:type="uml:Comment" xmi:id="BaseClass-readWriteSingleValuedPrimitiveAttribute-_ownedComment.0" annotatedElement="BaseClass-readWriteSingleValuedPrimitiveAttribute">
+          <body>readWriteSingleValuedPrimitiveAttribute.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="BaseClass-inheritedAttribute" name="inheritedAttribute">
+        <ownedComment xmi:type="uml:Comment" xmi:id="BaseClass-inheritedAttribute-_ownedComment.0" annotatedElement="BaseClass-inheritedAttribute">
+          <body>inheritedAttribute.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="UsedClass" name="UsedClass">
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="TestingClass" name="Class">
       <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-_ownedComment.0" annotatedElement="Class">
@@ -35,8 +49,9 @@
       <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-_ownedComment.1" annotatedElement="Class">
         <body>Testing class' comment 2.</body>
       </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="TestingClass-_generalization.0" general="BaseClass"/>
       <!-- PRIMITIVE -->
-      <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-readWriteSingleValuedPrimitiveAttribute" name="readWriteSingleValuedPrimitiveAttribute">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-readWriteSingleValuedPrimitiveAttribute" name="readWriteSingleValuedPrimitiveAttribute" redefinedProperty="BaseClass-readWriteSingleValuedPrimitiveAttribute">
         <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-readWriteSingleValuedPrimitiveAttribute-_ownedComment.0" annotatedElement="TestingClass-readWriteSingleValuedPrimitiveAttribute">
           <body>readWriteSingleValuedPrimitiveAttribute.</body>
         </ownedComment>

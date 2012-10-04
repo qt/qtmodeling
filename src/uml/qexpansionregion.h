@@ -50,9 +50,10 @@
 #include <QtUml/QStructuredActivityNode>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -67,8 +68,8 @@ class Q_UML_EXPORT QExpansionRegion : public QStructuredActivityNode
 
     // From QExpansionRegion
     Q_PROPERTY(QtUml::ExpansionKind mode READ mode WRITE setMode)
-    Q_PROPERTY(QList<QExpansionNode *> * inputElements READ inputElements)
-    Q_PROPERTY(QList<QExpansionNode *> * outputElements READ outputElements)
+    Q_PROPERTY(const QSet<QExpansionNode *> * inputElements READ inputElements)
+    Q_PROPERTY(const QSet<QExpansionNode *> * outputElements READ outputElements)
 
 public:
     explicit QExpansionRegion(QObject *parent = 0);
@@ -79,8 +80,12 @@ public:
     void setMode(QtUml::ExpansionKind mode);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QExpansionNode *> *inputElements();
-    QList<QExpansionNode *> *outputElements();
+    const QSet<QExpansionNode *> *inputElements() const;
+    void addInputElement(const QExpansionNode *inputElement);
+    void removeInputElement(const QExpansionNode *inputElement);
+    const QSet<QExpansionNode *> *outputElements() const;
+    void addOutputElement(const QExpansionNode *outputElement);
+    void removeOutputElement(const QExpansionNode *outputElement);
 
 private:
     Q_DISABLE_COPY(QExpansionRegion)

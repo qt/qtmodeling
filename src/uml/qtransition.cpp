@@ -79,7 +79,7 @@ QRegion *QTransition::container() const
 {
 }
 
-void QTransition::setContainer(QRegion *container)
+void QTransition::setContainer(const QRegion *container)
 {
 }
 
@@ -90,7 +90,7 @@ QBehavior *QTransition::effect() const
 {
 }
 
-void QTransition::setEffect(QBehavior *effect)
+void QTransition::setEffect(const QBehavior *effect)
 {
 }
 
@@ -101,7 +101,7 @@ QConstraint *QTransition::guard() const
 {
 }
 
-void QTransition::setGuard(QConstraint *guard)
+void QTransition::setGuard(const QConstraint *guard)
 {
 }
 
@@ -112,7 +112,7 @@ QTransition *QTransition::redefinedTransition() const
 {
 }
 
-void QTransition::setRedefinedTransition(QTransition *redefinedTransition)
+void QTransition::setRedefinedTransition(const QTransition *redefinedTransition)
 {
 }
 
@@ -123,7 +123,7 @@ QVertex *QTransition::source() const
 {
 }
 
-void QTransition::setSource(QVertex *source)
+void QTransition::setSource(const QVertex *source)
 {
 }
 
@@ -134,21 +134,29 @@ QVertex *QTransition::target() const
 {
 }
 
-void QTransition::setTarget(QVertex *target)
+void QTransition::setTarget(const QVertex *target)
 {
 }
 
 /*!
     Specifies the triggers that may fire the transition.
  */
-QList<QTrigger *> *QTransition::triggers()
+const QSet<QTrigger *> *QTransition::triggers() const
+{
+}
+
+void QTransition::addTrigger(const QTrigger *trigger)
+{
+}
+
+void QTransition::removeTrigger(const QTrigger *trigger)
 {
 }
 
 /*!
     The query containingStateMachine() returns the state machine that contains the transition either directly or transitively.
  */
-const QStateMachine *QTransition::containingStateMachine() const
+QStateMachine *QTransition::containingStateMachine() const
 {
 }
 
@@ -162,7 +170,7 @@ bool QTransition::isConsistentWith(const QRedefinableElement *redefinee) const
 /*!
     The redefinition context of a transition is the nearest containing statemachine.
  */
-const QClassifier *QTransition::redefinitionContext() const
+QClassifier *QTransition::redefinitionContext() const
 {
 }
 

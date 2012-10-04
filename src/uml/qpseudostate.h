@@ -52,6 +52,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -65,22 +66,22 @@ class Q_UML_EXPORT QPseudostate : public QObject, public QVertex
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QVertex
     Q_PROPERTY(QRegion * container READ container WRITE setContainer)
-    Q_PROPERTY(const QList<QTransition *> * incomings READ incomings)
-    Q_PROPERTY(const QList<QTransition *> * outgoings READ outgoings)
+    Q_PROPERTY(const QSet<QTransition *> * incomings READ incomings)
+    Q_PROPERTY(const QSet<QTransition *> * outgoings READ outgoings)
 
     // From QPseudostate
     Q_PROPERTY(QtUml::PseudostateKind kind READ kind WRITE setKind)
@@ -97,9 +98,9 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QState *state() const;
-    void setState(QState *state);
+    void setState(const QState *state);
     QStateMachine *stateMachine() const;
-    void setStateMachine(QStateMachine *stateMachine);
+    void setStateMachine(const QStateMachine *stateMachine);
 
 private:
     Q_DISABLE_COPY(QPseudostate)

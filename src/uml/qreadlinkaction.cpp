@@ -68,7 +68,7 @@ QOutputPin *QReadLinkAction::result() const
 {
 }
 
-void QReadLinkAction::setResult(QOutputPin *result)
+void QReadLinkAction::setResult(const QOutputPin *result)
 {
 }
 

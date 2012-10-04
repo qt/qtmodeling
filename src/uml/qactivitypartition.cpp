@@ -86,14 +86,30 @@ void QActivityPartition::setExternal(bool isExternal)
 /*!
     Edges immediately contained in the group.
  */
-QList<QActivityEdge *> *QActivityPartition::edges()
+const QSet<QActivityEdge *> *QActivityPartition::edges() const
+{
+}
+
+void QActivityPartition::addEdge(const QActivityEdge *edge)
+{
+}
+
+void QActivityPartition::removeEdge(const QActivityEdge *edge)
 {
 }
 
 /*!
     Nodes immediately contained in the group.
  */
-QList<QActivityNode *> *QActivityPartition::nodes()
+const QSet<QActivityNode *> *QActivityPartition::nodes() const
+{
+}
+
+void QActivityPartition::addNode(const QActivityNode *node)
+{
+}
+
+void QActivityPartition::removeNode(const QActivityNode *node)
 {
 }
 
@@ -104,14 +120,22 @@ QElement *QActivityPartition::represents() const
 {
 }
 
-void QActivityPartition::setRepresents(QElement *represents)
+void QActivityPartition::setRepresents(const QElement *represents)
 {
 }
 
 /*!
     Partitions immediately contained in the partition.
  */
-QList<QActivityPartition *> *QActivityPartition::subpartitions()
+const QSet<QActivityPartition *> *QActivityPartition::subpartitions() const
+{
+}
+
+void QActivityPartition::addSubpartition(const QActivityPartition *subpartition)
+{
+}
+
+void QActivityPartition::removeSubpartition(const QActivityPartition *subpartition)
 {
 }
 
@@ -122,7 +146,7 @@ QActivityPartition *QActivityPartition::superPartition() const
 {
 }
 
-void QActivityPartition::setSuperPartition(QActivityPartition *superPartition)
+void QActivityPartition::setSuperPartition(const QActivityPartition *superPartition)
 {
 }
 

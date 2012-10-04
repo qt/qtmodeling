@@ -48,6 +48,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -73,7 +74,7 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QTimeInterval *specification() const;
-    void setSpecification(QTimeInterval *specification);
+    void setSpecification(const QTimeInterval *specification);
 
 private:
     Q_DISABLE_COPY(QTimeConstraint)

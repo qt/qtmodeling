@@ -53,6 +53,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -66,17 +67,16 @@ class Q_UML_EXPORT QOpaqueExpression : public QObject, public QValueSpecificatio
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QTypedElement
     Q_PROPERTY(QType * type READ type WRITE setType)
@@ -89,28 +89,32 @@ class Q_UML_EXPORT QOpaqueExpression : public QObject, public QValueSpecificatio
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // From QOpaqueExpression
-    Q_PROPERTY(QList<QString *> bodies READ bodies)
-    Q_PROPERTY(QList<QString *> languages READ languages)
+    Q_PROPERTY(const QList<QString> * bodies READ bodies)
+    Q_PROPERTY(const QList<QString> * languages READ languages)
     Q_PROPERTY(QBehavior * behavior READ behavior WRITE setBehavior)
-    Q_PROPERTY(const QParameter * result READ result)
+    Q_PROPERTY(QParameter * result READ result)
 
 public:
     explicit QOpaqueExpression(QObject *parent = 0);
     virtual ~QOpaqueExpression();
 
     // Attributes (except those derived && !derivedUnion)
-    QList<QString *> bodies();
-    QList<QString *> languages();
+    const QList<QString> *bodies() const;
+    void addBody(QString body);
+    void removeBody(QString body);
+    const QList<QString> *languages() const;
+    void addLanguage(QString language);
+    void removeLanguage(QString language);
 
     // Association-ends (except those derived && !derivedUnion)
     QBehavior *behavior() const;
-    void setBehavior(QBehavior *behavior);
+    void setBehavior(const QBehavior *behavior);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     bool isIntegral() const;
     bool isNonNegative() const;
     bool isPositive() const;
-    const QParameter *result() const;
+    QParameter *result() const;
     qint32 value() const;
 
 private:

@@ -49,6 +49,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -61,16 +62,16 @@ class Q_UML_EXPORT QPackageMerge : public QObject, public QDirectedRelationship
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QRelationship
-    Q_PROPERTY(const QList<QElement *> * relatedElements READ relatedElements)
+    Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
 
     // From QDirectedRelationship
-    Q_PROPERTY(const QList<QElement *> * sources READ sources)
-    Q_PROPERTY(const QList<QElement *> * targets READ targets)
+    Q_PROPERTY(const QSet<QElement *> * sources READ sources)
+    Q_PROPERTY(const QSet<QElement *> * targets READ targets)
 
     // From QPackageMerge
     Q_PROPERTY(QPackage * mergedPackage READ mergedPackage WRITE setMergedPackage)
@@ -82,9 +83,9 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QPackage *mergedPackage() const;
-    void setMergedPackage(QPackage *mergedPackage);
+    void setMergedPackage(const QPackage *mergedPackage);
     QPackage *receivingPackage() const;
-    void setReceivingPackage(QPackage *receivingPackage);
+    void setReceivingPackage(const QPackage *receivingPackage);
 
 private:
     Q_DISABLE_COPY(QPackageMerge)

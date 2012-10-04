@@ -64,7 +64,15 @@ QDestroyLinkAction::~QDestroyLinkAction()
 /*!
     Specifies ends of association and inputs.
  */
-QList<QLinkEndDestructionData *> *QDestroyLinkAction::endData()
+const QSet<QLinkEndDestructionData *> *QDestroyLinkAction::endData() const
+{
+}
+
+void QDestroyLinkAction::addEndData(const QLinkEndDestructionData *endData)
+{
+}
+
+void QDestroyLinkAction::removeEndData(const QLinkEndDestructionData *endData)
 {
 }
 

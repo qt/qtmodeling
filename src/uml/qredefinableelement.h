@@ -47,9 +47,10 @@
 #include <QtUml/QNamedElement>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -68,8 +69,8 @@ public:
     void setLeaf(bool isLeaf);
 
     // Association-ends (except those derived && !derivedUnion)
-    const QList<QRedefinableElement *> *redefinedElements() const;
-    const QList<QClassifier *> *redefinitionContexts() const;
+    const QSet<QRedefinableElement *> *redefinedElements() const;
+    const QSet<QClassifier *> *redefinitionContexts() const;
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     bool isConsistentWith(const QRedefinableElement *redefinee) const;

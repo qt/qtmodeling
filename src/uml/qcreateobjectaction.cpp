@@ -68,7 +68,7 @@ QClassifier *QCreateObjectAction::classifier() const
 {
 }
 
-void QCreateObjectAction::setClassifier(QClassifier *classifier)
+void QCreateObjectAction::setClassifier(const QClassifier *classifier)
 {
 }
 
@@ -79,7 +79,7 @@ QOutputPin *QCreateObjectAction::result() const
 {
 }
 
-void QCreateObjectAction::setResult(QOutputPin *result)
+void QCreateObjectAction::setResult(const QOutputPin *result)
 {
 }
 

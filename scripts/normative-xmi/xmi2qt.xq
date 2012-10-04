@@ -16,7 +16,7 @@ declare function qtxmi:mappedBaseNamespace($xmiFile as xs:string*) as xs:string*
     else if ($xmiFile = "Superstructure.xmi") then "QtUml::"
     else if ($xmiFile = "UML.xmi") then "QtUml"
     else if ($xmiFile = "MOF.xmi") then "QtMof::"
-    else ""
+    else "QtUnknown::"
 };
 
 declare function qtxmi:namespaceFromTypeString ($types as xs:string*) as xs:string* {
@@ -88,7 +88,7 @@ declare function qtxmi:mappedFunctionName ($name as xs:string*) as xs:string* {
     else if ($name = "class") then "class_"
     else if ($name = "default") then "default_"
     else if ($name = "template") then "template_"
-    else if ($name = "slots") then "slots_"
+    else if ($name = "slot") then "slot_"
     else $name
 };
 
@@ -228,7 +228,7 @@ return
                                                                 and (not(@isOrdered) or @isOrdered = "false"))]/upperValue/@value)
         where $value = "*"
         return
-        <forwarddecl namespace="">QList</forwarddecl>
+        <qtinclude>QtCore/QList</qtinclude>
         }
         {
         for $value in distinct-values($class/ownedAttribute[(not(@isUnique) or @isUnique = "true")
@@ -237,7 +237,7 @@ return
                                                             and (not(@isOrdered) or @isOrdered = "false")]/upperValue/@value)
         where $value = "*"
         return
-        <forwarddecl namespace="">QSet</forwarddecl>
+        <qtinclude>QtCore/QSet</qtinclude>
         }
         {
         for $id in distinct-values($class/ownedAttribute/@type | $class/ownedOperation/ownedParameter/@type
@@ -263,7 +263,7 @@ return
         let $isReadOnly := if (not($attribute/@isReadOnly) or $attribute/@isReadOnly = "false") then "false" else "true"
         where $attribute[not(@association)]
         return
-        <attribute isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}" isReadOnly="{$isReadOnly}">
+        <attribute isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}" isReadOnly="{$isReadOnly}" subsettedProperty="{$attribute/@subsettedProperty}" redefinedProperty="{$attribute/@redefinedProperty}" id="{$attribute/@xmi:id}">
         <accessor return="{$unqualifiedType}" name="{qtxmi:modifiedFunctionName($attribute)}" constness=" const"/>
         {
         if (not($attribute/upperValue/@value) and not((starts-with($unqualifiedType, "QList") or starts-with($unqualifiedType, "QSet"))) and ($attribute[not(@isReadOnly)]
@@ -307,7 +307,7 @@ return
         let $isReadOnly := if (not($attribute/@isReadOnly) or $attribute/@isReadOnly = "false") then "false" else "true"
         where $attribute[@association]
         return
-        <associationend isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}" isReadOnly="{$isReadOnly}">
+        <associationend isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}" isReadOnly="{$isReadOnly}" subsettedProperty="{$attribute/@subsettedProperty}" redefinedProperty="{$attribute/@redefinedProperty}" id="{$attribute/@xmi:id}">
         <accessor return="{$unqualifiedType}" name="{qtxmi:modifiedFunctionName($attribute)}" constness=" const"/>
         {
         if (not($attribute/upperValue/@value) and not((starts-with($unqualifiedType, "QList") or starts-with($unqualifiedType, "QSet"))) and ($attribute[not(@isReadOnly)]

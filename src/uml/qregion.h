@@ -49,9 +49,10 @@
 #include <QtUml/QNamespace>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -69,38 +70,37 @@ class Q_UML_EXPORT QRegion : public QObject, public QRedefinableElement, public 
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QRedefinableElement
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElements READ redefinedElements)
-    Q_PROPERTY(const QList<QClassifier *> * redefinitionContexts READ redefinitionContexts)
+    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
 
     // From QNamespace
-    Q_PROPERTY(QList<QElementImport *> * elementImports READ elementImports)
-    Q_PROPERTY(const QList<QPackageableElement *> * importedMembers READ importedMembers)
-    Q_PROPERTY(const QList<QNamedElement *> * members READ members)
-    Q_PROPERTY(const QList<QNamedElement *> * ownedMembers READ ownedMembers)
-    Q_PROPERTY(QList<QConstraint *> * ownedRules READ ownedRules)
-    Q_PROPERTY(QList<QPackageImport *> * packageImports READ packageImports)
+    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
+    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
+    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
+    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
+    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
+    Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
 
     // From QRegion
     Q_PROPERTY(QRegion * extendedRegion READ extendedRegion WRITE setExtendedRegion)
-    Q_PROPERTY(const QClassifier * redefinitionContext READ redefinitionContext)
+    Q_PROPERTY(QClassifier * redefinitionContext READ redefinitionContext)
     Q_PROPERTY(QState * state READ state WRITE setState)
     Q_PROPERTY(QStateMachine * stateMachine READ stateMachine WRITE setStateMachine)
-    Q_PROPERTY(QList<QVertex *> * subvertices READ subvertices)
-    Q_PROPERTY(QList<QTransition *> * transitions READ transitions)
+    Q_PROPERTY(const QSet<QVertex *> * subvertices READ subvertices)
+    Q_PROPERTY(const QSet<QTransition *> * transitions READ transitions)
 
 public:
     explicit QRegion(QObject *parent = 0);
@@ -108,20 +108,24 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QRegion *extendedRegion() const;
-    void setExtendedRegion(QRegion *extendedRegion);
+    void setExtendedRegion(const QRegion *extendedRegion);
     QState *state() const;
-    void setState(QState *state);
+    void setState(const QState *state);
     QStateMachine *stateMachine() const;
-    void setStateMachine(QStateMachine *stateMachine);
-    QList<QVertex *> *subvertices();
-    QList<QTransition *> *transitions();
+    void setStateMachine(const QStateMachine *stateMachine);
+    const QSet<QVertex *> *subvertices() const;
+    void addSubvertex(const QVertex *subvertex);
+    void removeSubvertex(const QVertex *subvertex);
+    const QSet<QTransition *> *transitions() const;
+    void addTransition(const QTransition *transition);
+    void removeTransition(const QTransition *transition);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     bool belongsToPSM() const;
-    const QStateMachine *containingStateMachine() const;
+    QStateMachine *containingStateMachine() const;
     bool isConsistentWith(const QRedefinableElement *redefinee) const;
     bool isRedefinitionContextValid(const QRegion *redefined) const;
-    const QClassifier *redefinitionContext() const;
+    QClassifier *redefinitionContext() const;
 
 private:
     Q_DISABLE_COPY(QRegion)

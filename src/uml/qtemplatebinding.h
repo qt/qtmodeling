@@ -48,9 +48,10 @@
 #include <QtUml/QDirectedRelationship>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -66,20 +67,20 @@ class Q_UML_EXPORT QTemplateBinding : public QObject, public QDirectedRelationsh
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QRelationship
-    Q_PROPERTY(const QList<QElement *> * relatedElements READ relatedElements)
+    Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
 
     // From QDirectedRelationship
-    Q_PROPERTY(const QList<QElement *> * sources READ sources)
-    Q_PROPERTY(const QList<QElement *> * targets READ targets)
+    Q_PROPERTY(const QSet<QElement *> * sources READ sources)
+    Q_PROPERTY(const QSet<QElement *> * targets READ targets)
 
     // From QTemplateBinding
     Q_PROPERTY(QTemplateableElement * boundElement READ boundElement WRITE setBoundElement)
-    Q_PROPERTY(QList<QTemplateParameterSubstitution *> * parameterSubstitutions READ parameterSubstitutions)
+    Q_PROPERTY(const QSet<QTemplateParameterSubstitution *> * parameterSubstitutions READ parameterSubstitutions)
     Q_PROPERTY(QTemplateSignature * signature READ signature WRITE setSignature)
 
 public:
@@ -88,10 +89,12 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QTemplateableElement *boundElement() const;
-    void setBoundElement(QTemplateableElement *boundElement);
-    QList<QTemplateParameterSubstitution *> *parameterSubstitutions();
+    void setBoundElement(const QTemplateableElement *boundElement);
+    const QSet<QTemplateParameterSubstitution *> *parameterSubstitutions() const;
+    void addParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution);
+    void removeParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution);
     QTemplateSignature *signature() const;
-    void setSignature(QTemplateSignature *signature);
+    void setSignature(const QTemplateSignature *signature);
 
 private:
     Q_DISABLE_COPY(QTemplateBinding)

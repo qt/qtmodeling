@@ -67,7 +67,7 @@ QConnectableElementTemplateParameter *QConnectableElement::templateParameter() c
 {
 }
 
-void QConnectableElement::setTemplateParameter(QConnectableElementTemplateParameter *templateParameter)
+void QConnectableElement::setTemplateParameter(const QConnectableElementTemplateParameter *templateParameter)
 {
 }
 

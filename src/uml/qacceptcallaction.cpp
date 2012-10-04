@@ -68,7 +68,7 @@ QOutputPin *QAcceptCallAction::returnInformation() const
 {
 }
 
-void QAcceptCallAction::setReturnInformation(QOutputPin *returnInformation)
+void QAcceptCallAction::setReturnInformation(const QOutputPin *returnInformation)
 {
 }
 

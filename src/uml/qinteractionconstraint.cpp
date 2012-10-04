@@ -68,7 +68,7 @@ QValueSpecification *QInteractionConstraint::maxint() const
 {
 }
 
-void QInteractionConstraint::setMaxint(QValueSpecification *maxint)
+void QInteractionConstraint::setMaxint(const QValueSpecification *maxint)
 {
 }
 
@@ -79,7 +79,7 @@ QValueSpecification *QInteractionConstraint::minint() const
 {
 }
 
-void QInteractionConstraint::setMinint(QValueSpecification *minint)
+void QInteractionConstraint::setMinint(const QValueSpecification *minint)
 {
 }
 

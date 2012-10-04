@@ -67,7 +67,7 @@ QTemplateParameter *QParameterableElement::owningTemplateParameter() const
 {
 }
 
-void QParameterableElement::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
+void QParameterableElement::setOwningTemplateParameter(const QTemplateParameter *owningTemplateParameter)
 {
 }
 
@@ -78,7 +78,7 @@ QTemplateParameter *QParameterableElement::templateParameter() const
 {
 }
 
-void QParameterableElement::setTemplateParameter(QTemplateParameter *templateParameter)
+void QParameterableElement::setTemplateParameter(const QTemplateParameter *templateParameter)
 {
 }
 

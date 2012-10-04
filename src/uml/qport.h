@@ -47,9 +47,10 @@
 #include <QtUml/QProperty>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -68,9 +69,9 @@ class Q_UML_EXPORT QPort : public QProperty
     Q_PROPERTY(bool isConjugated READ isConjugated WRITE setConjugated)
     Q_PROPERTY(bool isService READ isService WRITE setService)
     Q_PROPERTY(QProtocolStateMachine * protocol READ protocol WRITE setProtocol)
-    Q_PROPERTY(const QList<QInterface *> * provided READ provided)
-    Q_PROPERTY(QList<QPort *> * redefinedPorts READ redefinedPorts)
-    Q_PROPERTY(const QList<QInterface *> * required READ required)
+    Q_PROPERTY(const QSet<QInterface *> * provided READ provided)
+    Q_PROPERTY(const QSet<QPort *> * redefinedPorts READ redefinedPorts)
+    Q_PROPERTY(const QSet<QInterface *> * required READ required)
 
 public:
     explicit QPort(QObject *parent = 0);
@@ -86,12 +87,14 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QProtocolStateMachine *protocol() const;
-    void setProtocol(QProtocolStateMachine *protocol);
-    QList<QPort *> *redefinedPorts();
+    void setProtocol(const QProtocolStateMachine *protocol);
+    const QSet<QPort *> *redefinedPorts() const;
+    void addRedefinedPort(const QPort *redefinedPort);
+    void removeRedefinedPort(const QPort *redefinedPort);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QList<QInterface *> *provided() const;
-    const QList<QInterface *> *required() const;
+    const QSet<QInterface *> *provided() const;
+    const QSet<QInterface *> *required() const;
 
 private:
     Q_DISABLE_COPY(QPort)

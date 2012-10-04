@@ -64,7 +64,15 @@ QConstraint::~QConstraint()
 /*!
     The ordered set of Elements referenced by this Constraint.
  */
-QList<QElement *> *QConstraint::constrainedElements()
+const QList<QElement *> *QConstraint::constrainedElements() const
+{
+}
+
+void QConstraint::addConstrainedElement(const QElement *constrainedElement)
+{
+}
+
+void QConstraint::removeConstrainedElement(const QElement *constrainedElement)
 {
 }
 
@@ -75,7 +83,7 @@ QNamespace *QConstraint::context() const
 {
 }
 
-void QConstraint::setContext(QNamespace *context)
+void QConstraint::setContext(const QNamespace *context)
 {
 }
 
@@ -86,7 +94,7 @@ QValueSpecification *QConstraint::specification() const
 {
 }
 
-void QConstraint::setSpecification(QValueSpecification *specification)
+void QConstraint::setSpecification(const QValueSpecification *specification)
 {
 }
 

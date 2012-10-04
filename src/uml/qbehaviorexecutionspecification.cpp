@@ -68,7 +68,7 @@ QBehavior *QBehaviorExecutionSpecification::behavior() const
 {
 }
 
-void QBehaviorExecutionSpecification::setBehavior(QBehavior *behavior)
+void QBehaviorExecutionSpecification::setBehavior(const QBehavior *behavior)
 {
 }
 

@@ -75,14 +75,30 @@ void QExpansionRegion::setMode(QtUml::ExpansionKind mode)
 /*!
     An object node that holds a separate element of the input collection during each of the multiple executions of the region.
  */
-QList<QExpansionNode *> *QExpansionRegion::inputElements()
+const QSet<QExpansionNode *> *QExpansionRegion::inputElements() const
+{
+}
+
+void QExpansionRegion::addInputElement(const QExpansionNode *inputElement)
+{
+}
+
+void QExpansionRegion::removeInputElement(const QExpansionNode *inputElement)
 {
 }
 
 /*!
     An object node that accepts a separate element of the output collection during each of the multiple executions of the region. The values are formed into a collection that is available when the execution of the region is complete.
  */
-QList<QExpansionNode *> *QExpansionRegion::outputElements()
+const QSet<QExpansionNode *> *QExpansionRegion::outputElements() const
+{
+}
+
+void QExpansionRegion::addOutputElement(const QExpansionNode *outputElement)
+{
+}
+
+void QExpansionRegion::removeOutputElement(const QExpansionNode *outputElement)
 {
 }
 

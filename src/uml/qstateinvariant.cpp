@@ -68,7 +68,7 @@ QLifeline *QStateInvariant::covered() const
 {
 }
 
-void QStateInvariant::setCovered(QLifeline *covered)
+void QStateInvariant::setCovered(const QLifeline *covered)
 {
 }
 
@@ -79,7 +79,7 @@ QConstraint *QStateInvariant::invariant() const
 {
 }
 
-void QStateInvariant::setInvariant(QConstraint *invariant)
+void QStateInvariant::setInvariant(const QConstraint *invariant)
 {
 }
 

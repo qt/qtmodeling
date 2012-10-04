@@ -68,7 +68,7 @@ QOperation *QCallEvent::operation() const
 {
 }
 
-void QCallEvent::setOperation(QOperation *operation)
+void QCallEvent::setOperation(const QOperation *operation)
 {
 }
 

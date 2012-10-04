@@ -68,7 +68,7 @@ QInputPin *QStartClassifierBehaviorAction::object() const
 {
 }
 
-void QStartClassifierBehaviorAction::setObject(QInputPin *object)
+void QStartClassifierBehaviorAction::setObject(const QInputPin *object)
 {
 }
 

@@ -90,7 +90,7 @@ QPackageableElement *QElementImport::importedElement() const
 {
 }
 
-void QElementImport::setImportedElement(QPackageableElement *importedElement)
+void QElementImport::setImportedElement(const QPackageableElement *importedElement)
 {
 }
 
@@ -101,7 +101,7 @@ QNamespace *QElementImport::importingNamespace() const
 {
 }
 
-void QElementImport::setImportingNamespace(QNamespace *importingNamespace)
+void QElementImport::setImportingNamespace(const QNamespace *importingNamespace)
 {
 }
 

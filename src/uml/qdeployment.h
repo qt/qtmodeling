@@ -47,9 +47,10 @@
 #include <QtUml/QDependency>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -65,8 +66,8 @@ class Q_UML_EXPORT QDeployment : public QDependency
     Q_OBJECT
 
     // From QDeployment
-    Q_PROPERTY(QList<QDeploymentSpecification *> * configurations READ configurations)
-    Q_PROPERTY(QList<QDeployedArtifact *> * deployedArtifacts READ deployedArtifacts)
+    Q_PROPERTY(const QSet<QDeploymentSpecification *> * configurations READ configurations)
+    Q_PROPERTY(const QSet<QDeployedArtifact *> * deployedArtifacts READ deployedArtifacts)
     Q_PROPERTY(QDeploymentTarget * location READ location WRITE setLocation)
 
 public:
@@ -74,10 +75,14 @@ public:
     virtual ~QDeployment();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QDeploymentSpecification *> *configurations();
-    QList<QDeployedArtifact *> *deployedArtifacts();
+    const QSet<QDeploymentSpecification *> *configurations() const;
+    void addConfiguration(const QDeploymentSpecification *configuration);
+    void removeConfiguration(const QDeploymentSpecification *configuration);
+    const QSet<QDeployedArtifact *> *deployedArtifacts() const;
+    void addDeployedArtifact(const QDeployedArtifact *deployedArtifact);
+    void removeDeployedArtifact(const QDeployedArtifact *deployedArtifact);
     QDeploymentTarget *location() const;
-    void setLocation(QDeploymentTarget *location);
+    void setLocation(const QDeploymentTarget *location);
 
 private:
     Q_DISABLE_COPY(QDeployment)

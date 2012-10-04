@@ -68,7 +68,7 @@ QInputPin *QRaiseExceptionAction::exception() const
 {
 }
 
-void QRaiseExceptionAction::setException(QInputPin *exception)
+void QRaiseExceptionAction::setException(const QInputPin *exception)
 {
 }
 

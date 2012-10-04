@@ -68,7 +68,7 @@ QOutputPin *QCreateLinkObjectAction::result() const
 {
 }
 
-void QCreateLinkObjectAction::setResult(QOutputPin *result)
+void QCreateLinkObjectAction::setResult(const QOutputPin *result)
 {
 }
 

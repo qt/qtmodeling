@@ -68,7 +68,7 @@ QValueSpecification *QInterval::max() const
 {
 }
 
-void QInterval::setMax(QValueSpecification *max)
+void QInterval::setMax(const QValueSpecification *max)
 {
 }
 
@@ -79,7 +79,7 @@ QValueSpecification *QInterval::min() const
 {
 }
 
-void QInterval::setMin(QValueSpecification *min)
+void QInterval::setMin(const QValueSpecification *min)
 {
 }
 

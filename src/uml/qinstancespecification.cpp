@@ -64,14 +64,30 @@ QInstanceSpecification::~QInstanceSpecification()
 /*!
     The classifier or classifiers of the represented instance. If multiple classifiers are specified, the instance is classified by all of them.
  */
-QList<QClassifier *> *QInstanceSpecification::classifiers()
+const QSet<QClassifier *> *QInstanceSpecification::classifiers() const
+{
+}
+
+void QInstanceSpecification::addClassifier(const QClassifier *classifier)
+{
+}
+
+void QInstanceSpecification::removeClassifier(const QClassifier *classifier)
 {
 }
 
 /*!
     A slot giving the value or values of a structural feature of the instance. An instance specification can have one slot per structural feature of its classifiers, including inherited features. It is not necessary to model a slot for each structural feature, in which case the instance specification is a partial description.
  */
-QList<QSlot *> *QInstanceSpecification::slots_()
+const QSet<QSlot *> *QInstanceSpecification::slots_() const
+{
+}
+
+void QInstanceSpecification::addSlot(const QSlot *slot_)
+{
+}
+
+void QInstanceSpecification::removeSlot(const QSlot *slot_)
 {
 }
 
@@ -82,7 +98,7 @@ QValueSpecification *QInstanceSpecification::specification() const
 {
 }
 
-void QInstanceSpecification::setSpecification(QValueSpecification *specification)
+void QInstanceSpecification::setSpecification(const QValueSpecification *specification)
 {
 }
 

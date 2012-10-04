@@ -68,14 +68,22 @@ QComponent *QComponentRealization::abstraction() const
 {
 }
 
-void QComponentRealization::setAbstraction(QComponent *abstraction)
+void QComponentRealization::setAbstraction(const QComponent *abstraction)
 {
 }
 
 /*!
     The classifiers that are involved in the implementation of the Component that owns this Realization.
  */
-QList<QClassifier *> *QComponentRealization::realizingClassifiers()
+const QSet<QClassifier *> *QComponentRealization::realizingClassifiers() const
+{
+}
+
+void QComponentRealization::addRealizingClassifier(const QClassifier *realizingClassifier)
+{
+}
+
+void QComponentRealization::removeRealizingClassifier(const QClassifier *realizingClassifier)
 {
 }
 

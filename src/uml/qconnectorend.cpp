@@ -68,7 +68,7 @@ QProperty *QConnectorEnd::partWithPort() const
 {
 }
 
-void QConnectorEnd::setPartWithPort(QProperty *partWithPort)
+void QConnectorEnd::setPartWithPort(const QProperty *partWithPort)
 {
 }
 
@@ -79,14 +79,14 @@ QConnectableElement *QConnectorEnd::role() const
 {
 }
 
-void QConnectorEnd::setRole(QConnectableElement *role)
+void QConnectorEnd::setRole(const QConnectableElement *role)
 {
 }
 
 /*!
     Missing derivation for ConnectorEnd::/definingEnd : Property
  */
-const QProperty *QConnectorEnd::definingEnd() const
+QProperty *QConnectorEnd::definingEnd() const
 {
 }
 

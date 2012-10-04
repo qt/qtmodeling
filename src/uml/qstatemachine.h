@@ -48,9 +48,10 @@
 #include <QtUml/QBehavior>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -69,32 +70,39 @@ class Q_UML_EXPORT QStateMachine : public QBehavior
 
     // From QBehavior
     Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant)
-    Q_PROPERTY(const QBehavioredClassifier * context READ context)
-    Q_PROPERTY(QList<QParameter *> * ownedParameters READ ownedParameters)
-    Q_PROPERTY(QList<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
-    Q_PROPERTY(QList<QConstraint *> * postconditions READ postconditions)
-    Q_PROPERTY(QList<QConstraint *> * preconditions READ preconditions)
-    Q_PROPERTY(QList<QBehavior *> * redefinedBehaviors READ redefinedBehaviors)
+    Q_PROPERTY(QBehavioredClassifier * context READ context)
+    Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
+    Q_PROPERTY(const QSet<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
+    Q_PROPERTY(const QSet<QConstraint *> * postconditions READ postconditions)
+    Q_PROPERTY(const QSet<QConstraint *> * preconditions READ preconditions)
     Q_PROPERTY(QBehavioralFeature * specification READ specification WRITE setSpecification)
 
     // From QStateMachine
-    Q_PROPERTY(QList<QPseudostate *> * connectionPoints READ connectionPoints)
-    Q_PROPERTY(QList<QStateMachine *> * extendedStateMachines READ extendedStateMachines)
-    Q_PROPERTY(QList<QRegion *> * regions READ regions)
-    Q_PROPERTY(QList<QState *> * submachineStates READ submachineStates)
+    Q_PROPERTY(const QSet<QPseudostate *> * connectionPoints READ connectionPoints)
+    Q_PROPERTY(const QSet<QStateMachine *> * extendedStateMachines READ extendedStateMachines)
+    Q_PROPERTY(const QSet<QRegion *> * regions READ regions)
+    Q_PROPERTY(const QSet<QState *> * submachineStates READ submachineStates)
 
 public:
     explicit QStateMachine(QObject *parent = 0);
     virtual ~QStateMachine();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QPseudostate *> *connectionPoints();
-    QList<QStateMachine *> *extendedStateMachines();
-    QList<QRegion *> *regions();
-    QList<QState *> *submachineStates();
+    const QSet<QPseudostate *> *connectionPoints() const;
+    void addConnectionPoint(const QPseudostate *connectionPoint);
+    void removeConnectionPoint(const QPseudostate *connectionPoint);
+    const QSet<QStateMachine *> *extendedStateMachines() const;
+    void addExtendedStateMachine(const QStateMachine *extendedStateMachine);
+    void removeExtendedStateMachine(const QStateMachine *extendedStateMachine);
+    const QSet<QRegion *> *regions() const;
+    void addRegion(const QRegion *region);
+    void removeRegion(const QRegion *region);
+    const QSet<QState *> *submachineStates() const;
+    void addSubmachineState(const QState *submachineState);
+    void removeSubmachineState(const QState *submachineState);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QNamespace *LCA(const QState *s1, const QState *s2) const;
+    QNamespace *LCA(const QState *s1, const QState *s2) const;
     bool ancestor(const QState *s1, const QState *s2) const;
     bool isConsistentWith(const QRedefinableElement *redefinee) const;
     bool isRedefinitionContextValid(const QStateMachine *redefined) const;

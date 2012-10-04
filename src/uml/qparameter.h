@@ -54,9 +54,10 @@
 
 // Qt includes
 #include <QtCore/QString>
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -72,9 +73,9 @@ class Q_UML_EXPORT QParameter : public QObject, public QMultiplicityElement, pub
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QMultiplicityElement
     Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
@@ -88,9 +89,9 @@ class Q_UML_EXPORT QParameter : public QObject, public QMultiplicityElement, pub
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QTypedElement
     Q_PROPERTY(QType * type READ type WRITE setType)
@@ -110,7 +111,7 @@ class Q_UML_EXPORT QParameter : public QObject, public QMultiplicityElement, pub
     Q_PROPERTY(bool isStream READ isStream WRITE setStream)
     Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
     Q_PROPERTY(QOperation * operation READ operation WRITE setOperation)
-    Q_PROPERTY(QList<QParameterSet *> * parameterSets READ parameterSets)
+    Q_PROPERTY(const QSet<QParameterSet *> * parameterSets READ parameterSets)
 
 public:
     explicit QParameter(QObject *parent = 0);
@@ -128,10 +129,12 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QValueSpecification *defaultValue() const;
-    void setDefaultValue(QValueSpecification *defaultValue);
+    void setDefaultValue(const QValueSpecification *defaultValue);
     QOperation *operation() const;
-    void setOperation(QOperation *operation);
-    QList<QParameterSet *> *parameterSets();
+    void setOperation(const QOperation *operation);
+    const QSet<QParameterSet *> *parameterSets() const;
+    void addParameterSet(const QParameterSet *parameterSet);
+    void removeParameterSet(const QParameterSet *parameterSet);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     QString default_() const;

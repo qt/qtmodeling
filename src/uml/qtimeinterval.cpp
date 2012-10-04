@@ -68,7 +68,7 @@ QTimeExpression *QTimeInterval::max() const
 {
 }
 
-void QTimeInterval::setMax(QTimeExpression *max)
+void QTimeInterval::setMax(const QTimeExpression *max)
 {
 }
 
@@ -79,7 +79,7 @@ QTimeExpression *QTimeInterval::min() const
 {
 }
 
-void QTimeInterval::setMin(QTimeExpression *min)
+void QTimeInterval::setMin(const QTimeExpression *min)
 {
 }
 

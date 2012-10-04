@@ -79,7 +79,7 @@ QPackage *QPackageImport::importedPackage() const
 {
 }
 
-void QPackageImport::setImportedPackage(QPackage *importedPackage)
+void QPackageImport::setImportedPackage(const QPackage *importedPackage)
 {
 }
 
@@ -90,7 +90,7 @@ QNamespace *QPackageImport::importingNamespace() const
 {
 }
 
-void QPackageImport::setImportingNamespace(QNamespace *importingNamespace)
+void QPackageImport::setImportingNamespace(const QNamespace *importingNamespace)
 {
 }
 

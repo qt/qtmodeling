@@ -67,7 +67,7 @@ QInputPin *QWriteVariableAction::value() const
 {
 }
 
-void QWriteVariableAction::setValue(QInputPin *value)
+void QWriteVariableAction::setValue(const QInputPin *value)
 {
 }
 

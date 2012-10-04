@@ -64,14 +64,30 @@ QConnectionPointReference::~QConnectionPointReference()
 /*!
     The entryPoint kind pseudo states corresponding to this connection point.
  */
-QList<QPseudostate *> *QConnectionPointReference::entries()
+const QSet<QPseudostate *> *QConnectionPointReference::entries() const
+{
+}
+
+void QConnectionPointReference::addEntry(const QPseudostate *entry)
+{
+}
+
+void QConnectionPointReference::removeEntry(const QPseudostate *entry)
 {
 }
 
 /*!
     The exitPoints kind pseudo states corresponding to this connection point.
  */
-QList<QPseudostate *> *QConnectionPointReference::exits()
+const QSet<QPseudostate *> *QConnectionPointReference::exits() const
+{
+}
+
+void QConnectionPointReference::addExit(const QPseudostate *exit)
+{
+}
+
+void QConnectionPointReference::removeExit(const QPseudostate *exit)
 {
 }
 
@@ -82,7 +98,7 @@ QState *QConnectionPointReference::state() const
 {
 }
 
-void QConnectionPointReference::setState(QState *state)
+void QConnectionPointReference::setState(const QState *state)
 {
 }
 

@@ -51,6 +51,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -79,7 +80,7 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QDeployment *deployment() const;
-    void setDeployment(QDeployment *deployment);
+    void setDeployment(const QDeployment *deployment);
 
 private:
     Q_DISABLE_COPY(QDeploymentSpecification)

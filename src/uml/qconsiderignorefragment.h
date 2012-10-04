@@ -47,9 +47,10 @@
 #include <QtUml/QCombinedFragment>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -63,14 +64,16 @@ class Q_UML_EXPORT QConsiderIgnoreFragment : public QCombinedFragment
     Q_OBJECT
 
     // From QConsiderIgnoreFragment
-    Q_PROPERTY(QList<QNamedElement *> * messages READ messages)
+    Q_PROPERTY(const QSet<QNamedElement *> * messages READ messages)
 
 public:
     explicit QConsiderIgnoreFragment(QObject *parent = 0);
     virtual ~QConsiderIgnoreFragment();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QNamedElement *> *messages();
+    const QSet<QNamedElement *> *messages() const;
+    void addMessage(const QNamedElement *message);
+    void removeMessage(const QNamedElement *message);
 
 private:
     Q_DISABLE_COPY(QConsiderIgnoreFragment)

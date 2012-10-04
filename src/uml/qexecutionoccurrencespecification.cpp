@@ -68,7 +68,7 @@ QExecutionSpecification *QExecutionOccurrenceSpecification::execution() const
 {
 }
 
-void QExecutionOccurrenceSpecification::setExecution(QExecutionSpecification *execution)
+void QExecutionOccurrenceSpecification::setExecution(const QExecutionSpecification *execution)
 {
 }
 

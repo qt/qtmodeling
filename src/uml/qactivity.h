@@ -48,9 +48,10 @@
 #include <QtUml/QBehavior>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -70,23 +71,23 @@ class Q_UML_EXPORT QActivity : public QBehavior
 
     // From QBehavior
     Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant)
-    Q_PROPERTY(const QBehavioredClassifier * context READ context)
-    Q_PROPERTY(QList<QParameter *> * ownedParameters READ ownedParameters)
-    Q_PROPERTY(QList<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
-    Q_PROPERTY(QList<QConstraint *> * postconditions READ postconditions)
-    Q_PROPERTY(QList<QConstraint *> * preconditions READ preconditions)
-    Q_PROPERTY(QList<QBehavior *> * redefinedBehaviors READ redefinedBehaviors)
+    Q_PROPERTY(QBehavioredClassifier * context READ context)
+    Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
+    Q_PROPERTY(const QSet<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
+    Q_PROPERTY(const QSet<QConstraint *> * postconditions READ postconditions)
+    Q_PROPERTY(const QSet<QConstraint *> * preconditions READ preconditions)
+    Q_PROPERTY(const QSet<QBehavior *> * redefinedBehaviors READ redefinedBehaviors)
     Q_PROPERTY(QBehavioralFeature * specification READ specification WRITE setSpecification)
 
     // From QActivity
     Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly)
     Q_PROPERTY(bool isSingleExecution READ isSingleExecution WRITE setSingleExecution)
-    Q_PROPERTY(QList<QActivityEdge *> * edges READ edges)
-    Q_PROPERTY(QList<QActivityGroup *> * groups READ groups)
-    Q_PROPERTY(QList<QActivityNode *> * nodes READ nodes)
-    Q_PROPERTY(QList<QActivityPartition *> * partitions READ partitions)
-    Q_PROPERTY(QList<QStructuredActivityNode *> * structuredNodes READ structuredNodes)
-    Q_PROPERTY(QList<QVariable *> * variables READ variables)
+    Q_PROPERTY(const QSet<QActivityEdge *> * edges READ edges)
+    Q_PROPERTY(const QSet<QActivityGroup *> * groups READ groups)
+    Q_PROPERTY(const QSet<QActivityNode *> * nodes READ nodes)
+    Q_PROPERTY(const QSet<QActivityPartition *> * partitions READ partitions)
+    Q_PROPERTY(const QSet<QStructuredActivityNode *> * structuredNodes READ structuredNodes)
+    Q_PROPERTY(const QSet<QVariable *> * variables READ variables)
 
 public:
     explicit QActivity(QObject *parent = 0);
@@ -99,12 +100,24 @@ public:
     void setSingleExecution(bool isSingleExecution);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QActivityEdge *> *edges();
-    QList<QActivityGroup *> *groups();
-    QList<QActivityNode *> *nodes();
-    QList<QActivityPartition *> *partitions();
-    QList<QStructuredActivityNode *> *structuredNodes();
-    QList<QVariable *> *variables();
+    const QSet<QActivityEdge *> *edges() const;
+    void addEdge(const QActivityEdge *edge);
+    void removeEdge(const QActivityEdge *edge);
+    const QSet<QActivityGroup *> *groups() const;
+    void addGroup(const QActivityGroup *group);
+    void removeGroup(const QActivityGroup *group);
+    const QSet<QActivityNode *> *nodes() const;
+    void addNode(const QActivityNode *node);
+    void removeNode(const QActivityNode *node);
+    const QSet<QActivityPartition *> *partitions() const;
+    void addPartition(const QActivityPartition *partition);
+    void removePartition(const QActivityPartition *partition);
+    const QSet<QStructuredActivityNode *> *structuredNodes() const;
+    void addStructuredNode(const QStructuredActivityNode *structuredNode);
+    void removeStructuredNode(const QStructuredActivityNode *structuredNode);
+    const QSet<QVariable *> *variables() const;
+    void addVariable(const QVariable *variable);
+    void removeVariable(const QVariable *variable);
 
 private:
     Q_DISABLE_COPY(QActivity)

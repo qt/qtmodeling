@@ -85,7 +85,15 @@ void QObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 /*!
     The required states of the object available at this point in the activity.
  */
-QList<QState *> *QObjectNode::inState()
+const QSet<QState *> *QObjectNode::inState() const
+{
+}
+
+void QObjectNode::addInState(const QState *inState)
+{
+}
+
+void QObjectNode::removeInState(const QState *inState)
 {
 }
 
@@ -96,7 +104,7 @@ QBehavior *QObjectNode::selection() const
 {
 }
 
-void QObjectNode::setSelection(QBehavior *selection)
+void QObjectNode::setSelection(const QBehavior *selection)
 {
 }
 
@@ -107,7 +115,7 @@ QValueSpecification *QObjectNode::upperBound() const
 {
 }
 
-void QObjectNode::setUpperBound(QValueSpecification *upperBound)
+void QObjectNode::setUpperBound(const QValueSpecification *upperBound)
 {
 }
 

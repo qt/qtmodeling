@@ -48,6 +48,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -60,7 +61,7 @@ class Q_UML_EXPORT QDurationConstraint : public QIntervalConstraint
     Q_OBJECT
 
     // From QDurationConstraint
-    Q_PROPERTY(bool firstEvent READ firstEvent WRITE setFirstEvent)
+    Q_PROPERTY(bool firstEvent READ firstEvent)
     Q_PROPERTY(QDurationInterval * specification READ specification WRITE setSpecification)
 
 public:
@@ -69,11 +70,12 @@ public:
 
     // Attributes (except those derived && !derivedUnion)
     bool firstEvent() const;
-    void setFirstEvent(bool firstEvent);
+    void addFirstEvent(bool firstEvent);
+    void removeFirstEvent(bool firstEvent);
 
     // Association-ends (except those derived && !derivedUnion)
     QDurationInterval *specification() const;
-    void setSpecification(QDurationInterval *specification);
+    void setSpecification(const QDurationInterval *specification);
 
 private:
     Q_DISABLE_COPY(QDurationConstraint)

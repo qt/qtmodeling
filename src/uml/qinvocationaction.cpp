@@ -63,7 +63,15 @@ QInvocationAction::~QInvocationAction()
 /*!
     Specification of the ordered set of argument values that appears during execution.
  */
-QList<QInputPin *> *QInvocationAction::arguments()
+const QList<QInputPin *> *QInvocationAction::arguments() const
+{
+}
+
+void QInvocationAction::addArgument(const QInputPin *argument)
+{
+}
+
+void QInvocationAction::removeArgument(const QInputPin *argument)
 {
 }
 
@@ -74,7 +82,7 @@ QPort *QInvocationAction::onPort() const
 {
 }
 
-void QInvocationAction::setOnPort(QPort *onPort)
+void QInvocationAction::setOnPort(const QPort *onPort)
 {
 }
 

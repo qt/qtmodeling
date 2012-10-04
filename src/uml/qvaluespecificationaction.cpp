@@ -68,7 +68,7 @@ QOutputPin *QValueSpecificationAction::result() const
 {
 }
 
-void QValueSpecificationAction::setResult(QOutputPin *result)
+void QValueSpecificationAction::setResult(const QOutputPin *result)
 {
 }
 
@@ -79,7 +79,7 @@ QValueSpecification *QValueSpecificationAction::value() const
 {
 }
 
-void QValueSpecificationAction::setValue(QValueSpecification *value)
+void QValueSpecificationAction::setValue(const QValueSpecification *value)
 {
 }
 

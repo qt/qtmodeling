@@ -67,7 +67,7 @@ QMessage *QMessageEnd::message() const
 {
 }
 
-void QMessageEnd::setMessage(QMessage *message)
+void QMessageEnd::setMessage(const QMessage *message)
 {
 }
 

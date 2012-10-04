@@ -55,6 +55,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -68,16 +69,16 @@ class Q_UML_EXPORT QElementImport : public QObject, public QDirectedRelationship
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QRelationship
-    Q_PROPERTY(const QList<QElement *> * relatedElements READ relatedElements)
+    Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
 
     // From QDirectedRelationship
-    Q_PROPERTY(const QList<QElement *> * sources READ sources)
-    Q_PROPERTY(const QList<QElement *> * targets READ targets)
+    Q_PROPERTY(const QSet<QElement *> * sources READ sources)
+    Q_PROPERTY(const QSet<QElement *> * targets READ targets)
 
     // From QElementImport
     Q_PROPERTY(QString alias READ alias WRITE setAlias)
@@ -97,9 +98,9 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QPackageableElement *importedElement() const;
-    void setImportedElement(QPackageableElement *importedElement);
+    void setImportedElement(const QPackageableElement *importedElement);
     QNamespace *importingNamespace() const;
-    void setImportingNamespace(QNamespace *importingNamespace);
+    void setImportingNamespace(const QNamespace *importingNamespace);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     QString getName() const;

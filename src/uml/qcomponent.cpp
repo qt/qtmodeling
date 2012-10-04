@@ -75,42 +75,58 @@ void QComponent::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
 /*!
     The set of PackageableElements that a Component owns. In the namespace of a component, all model elements that are involved in or related to its definition may be owned or imported explicitly. These may include e.g. Classes, Interfaces, Components, Packages, Use cases, Dependencies (e.g. mappings), and Artifacts.
  */
-QList<QPackageableElement *> *QComponent::packagedElements()
+const QSet<QPackageableElement *> *QComponent::packagedElements() const
+{
+}
+
+void QComponent::addPackagedElement(const QPackageableElement *packagedElement)
+{
+}
+
+void QComponent::removePackagedElement(const QPackageableElement *packagedElement)
 {
 }
 
 /*!
     The set of Realizations owned by the Component. Realizations reference the Classifiers of which the Component is an abstraction; i.e., that realize its behavior.
  */
-QList<QComponentRealization *> *QComponent::realizations()
+const QSet<QComponentRealization *> *QComponent::realizations() const
+{
+}
+
+void QComponent::addRealization(const QComponentRealization *realization)
+{
+}
+
+void QComponent::removeRealization(const QComponentRealization *realization)
 {
 }
 
 /*!
     Missing derivation for Component::/provided : Interface
  */
-const QList<QInterface *> *QComponent::provided() const
+const QSet<QInterface *> *QComponent::provided() const
 {
 }
 
 /*!
     Utility returning the set of realized interfaces of a component.
  */
-const QList<QInterface *> *QComponent::realizedInterfaces(const QClassifier *classifier) const
+const QSet<QInterface *> *QComponent::realizedInterfaces(const QClassifier *classifier) const
 {
 }
 
 /*!
     Missing derivation for Component::/required : Interface
  */
-const QList<QInterface *> *QComponent::required() const
+const QSet<QInterface *> *QComponent::required() const
 {
 }
 
 /*!
     Utility returning the set of used interfaces of a component.
  */
-const QList<QInterface *> *QComponent::usedInterfaces(const QClassifier *classifier) const
+const QSet<QInterface *> *QComponent::usedInterfaces(const QClassifier *classifier) const
 {
 }
 

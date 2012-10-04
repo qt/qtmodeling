@@ -64,28 +64,60 @@ QInterface::~QInterface()
 /*!
     References all the Classifiers that are defined (nested) within the Class.
  */
-QList<QClassifier *> *QInterface::nestedClassifiers()
+const QList<QClassifier *> *QInterface::nestedClassifiers() const
+{
+}
+
+void QInterface::addNestedClassifier(const QClassifier *nestedClassifier)
+{
+}
+
+void QInterface::removeNestedClassifier(const QClassifier *nestedClassifier)
 {
 }
 
 /*!
     The attributes (i.e. the properties) owned by the class.
  */
-QList<QProperty *> *QInterface::ownedAttributes()
+const QList<QProperty *> *QInterface::ownedAttributes() const
+{
+}
+
+void QInterface::addOwnedAttribute(const QProperty *ownedAttribute)
+{
+}
+
+void QInterface::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
 }
 
 /*!
     The operations owned by the class.
  */
-QList<QOperation *> *QInterface::ownedOperations()
+const QList<QOperation *> *QInterface::ownedOperations() const
+{
+}
+
+void QInterface::addOwnedOperation(const QOperation *ownedOperation)
+{
+}
+
+void QInterface::removeOwnedOperation(const QOperation *ownedOperation)
 {
 }
 
 /*!
     Receptions that objects providing this interface are willing to accept.
  */
-QList<QReception *> *QInterface::ownedReceptions()
+const QSet<QReception *> *QInterface::ownedReceptions() const
+{
+}
+
+void QInterface::addOwnedReception(const QReception *ownedReception)
+{
+}
+
+void QInterface::removeOwnedReception(const QReception *ownedReception)
 {
 }
 
@@ -96,14 +128,22 @@ QProtocolStateMachine *QInterface::protocol() const
 {
 }
 
-void QInterface::setProtocol(QProtocolStateMachine *protocol)
+void QInterface::setProtocol(const QProtocolStateMachine *protocol)
 {
 }
 
 /*!
     References all the Interfaces redefined by this Interface.
  */
-QList<QInterface *> *QInterface::redefinedInterfaces()
+const QSet<QInterface *> *QInterface::redefinedInterfaces() const
+{
+}
+
+void QInterface::addRedefinedInterface(const QInterface *redefinedInterface)
+{
+}
+
+void QInterface::removeRedefinedInterface(const QInterface *redefinedInterface)
 {
 }
 

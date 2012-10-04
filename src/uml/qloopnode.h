@@ -48,8 +48,10 @@
 
 // Qt includes
 #include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -66,14 +68,14 @@ class Q_UML_EXPORT QLoopNode : public QStructuredActivityNode
 
     // From QLoopNode
     Q_PROPERTY(bool isTestedFirst READ isTestedFirst WRITE setTestedFirst)
-    Q_PROPERTY(QList<QOutputPin *> * bodyOutputs READ bodyOutputs)
-    Q_PROPERTY(QList<QExecutableNode *> * bodyParts READ bodyParts)
+    Q_PROPERTY(const QList<QOutputPin *> * bodyOutputs READ bodyOutputs)
+    Q_PROPERTY(const QSet<QExecutableNode *> * bodyParts READ bodyParts)
     Q_PROPERTY(QOutputPin * decider READ decider WRITE setDecider)
-    Q_PROPERTY(QList<QOutputPin *> * loopVariables READ loopVariables)
-    Q_PROPERTY(QList<QInputPin *> * loopVariableInputs READ loopVariableInputs)
-    Q_PROPERTY(QList<QOutputPin *> * results READ results)
-    Q_PROPERTY(QList<QExecutableNode *> * setupParts READ setupParts)
-    Q_PROPERTY(QList<QExecutableNode *> * tests READ tests)
+    Q_PROPERTY(const QList<QOutputPin *> * loopVariables READ loopVariables)
+    Q_PROPERTY(const QList<QInputPin *> * loopVariableInputs READ loopVariableInputs)
+    Q_PROPERTY(const QList<QOutputPin *> * results READ results)
+    Q_PROPERTY(const QSet<QExecutableNode *> * setupParts READ setupParts)
+    Q_PROPERTY(const QSet<QExecutableNode *> * tests READ tests)
 
 public:
     explicit QLoopNode(QObject *parent = 0);
@@ -84,15 +86,29 @@ public:
     void setTestedFirst(bool isTestedFirst);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QOutputPin *> *bodyOutputs();
-    QList<QExecutableNode *> *bodyParts();
+    const QList<QOutputPin *> *bodyOutputs() const;
+    void addBodyOutput(const QOutputPin *bodyOutput);
+    void removeBodyOutput(const QOutputPin *bodyOutput);
+    const QSet<QExecutableNode *> *bodyParts() const;
+    void addBodyPart(const QExecutableNode *bodyPart);
+    void removeBodyPart(const QExecutableNode *bodyPart);
     QOutputPin *decider() const;
-    void setDecider(QOutputPin *decider);
-    QList<QOutputPin *> *loopVariables();
-    QList<QInputPin *> *loopVariableInputs();
-    QList<QOutputPin *> *results();
-    QList<QExecutableNode *> *setupParts();
-    QList<QExecutableNode *> *tests();
+    void setDecider(const QOutputPin *decider);
+    const QList<QOutputPin *> *loopVariables() const;
+    void addLoopVariable(const QOutputPin *loopVariable);
+    void removeLoopVariable(const QOutputPin *loopVariable);
+    const QList<QInputPin *> *loopVariableInputs() const;
+    void addLoopVariableInput(const QInputPin *loopVariableInput);
+    void removeLoopVariableInput(const QInputPin *loopVariableInput);
+    const QList<QOutputPin *> *results() const;
+    void addResult(const QOutputPin *result);
+    void removeResult(const QOutputPin *result);
+    const QSet<QExecutableNode *> *setupParts() const;
+    void addSetupPart(const QExecutableNode *setupPart);
+    void removeSetupPart(const QExecutableNode *setupPart);
+    const QSet<QExecutableNode *> *tests() const;
+    void addTest(const QExecutableNode *test);
+    void removeTest(const QExecutableNode *test);
 
 private:
     Q_DISABLE_COPY(QLoopNode)

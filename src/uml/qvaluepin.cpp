@@ -68,7 +68,7 @@ QValueSpecification *QValuePin::value() const
 {
 }
 
-void QValuePin::setValue(QValueSpecification *value)
+void QValuePin::setValue(const QValueSpecification *value)
 {
 }
 

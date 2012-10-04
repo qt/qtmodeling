@@ -79,7 +79,7 @@ QInputPin *QAddStructuralFeatureValueAction::insertAt() const
 {
 }
 
-void QAddStructuralFeatureValueAction::setInsertAt(QInputPin *insertAt)
+void QAddStructuralFeatureValueAction::setInsertAt(const QInputPin *insertAt)
 {
 }
 

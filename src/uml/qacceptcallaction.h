@@ -48,6 +48,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -68,7 +69,7 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QOutputPin *returnInformation() const;
-    void setReturnInformation(QOutputPin *returnInformation);
+    void setReturnInformation(const QOutputPin *returnInformation);
 
 private:
     Q_DISABLE_COPY(QAcceptCallAction)

@@ -79,42 +79,66 @@ QPackage *QPackage::nestingPackage() const
 {
 }
 
-void QPackage::setNestingPackage(QPackage *nestingPackage)
+void QPackage::setNestingPackage(const QPackage *nestingPackage)
 {
 }
 
 /*!
     References the PackageMerges that are owned by this Package.
  */
-QList<QPackageMerge *> *QPackage::packageMerges()
+const QSet<QPackageMerge *> *QPackage::packageMerges() const
+{
+}
+
+void QPackage::addPackageMerge(const QPackageMerge *packageMerge)
+{
+}
+
+void QPackage::removePackageMerge(const QPackageMerge *packageMerge)
 {
 }
 
 /*!
     Specifies the packageable elements that are owned by this Package.
  */
-QList<QPackageableElement *> *QPackage::packagedElements()
+const QSet<QPackageableElement *> *QPackage::packagedElements() const
+{
+}
+
+void QPackage::addPackagedElement(const QPackageableElement *packagedElement)
+{
+}
+
+void QPackage::removePackagedElement(const QPackageableElement *packagedElement)
 {
 }
 
 /*!
     References the ProfileApplications that indicate which profiles have been applied to the Package.
  */
-QList<QProfileApplication *> *QPackage::profileApplications()
+const QSet<QProfileApplication *> *QPackage::profileApplications() const
+{
+}
+
+void QPackage::addProfileApplication(const QProfileApplication *profileApplication)
+{
+}
+
+void QPackage::removeProfileApplication(const QProfileApplication *profileApplication)
 {
 }
 
 /*!
     The query allApplicableStereotypes() returns all the directly or indirectly owned stereotypes, including stereotypes contained in sub-profiles.
  */
-const QList<QStereotype *> *QPackage::allApplicableStereotypes() const
+const QSet<QStereotype *> *QPackage::allApplicableStereotypes() const
 {
 }
 
 /*!
     The query containingProfile() returns the closest profile directly or indirectly containing this package (or this package itself, if it is a profile).
  */
-const QProfile *QPackage::containingProfile() const
+QProfile *QPackage::containingProfile() const
 {
 }
 
@@ -135,28 +159,28 @@ bool QPackage::mustBeOwned() const
 /*!
     Missing derivation for Package::/nestedPackage : Package
  */
-const QList<QPackage *> *QPackage::nestedPackages() const
+const QSet<QPackage *> *QPackage::nestedPackages() const
 {
 }
 
 /*!
     Missing derivation for Package::/ownedStereotype : Stereotype
  */
-const QList<QStereotype *> *QPackage::ownedStereotypes() const
+const QSet<QStereotype *> *QPackage::ownedStereotypes() const
 {
 }
 
 /*!
     Missing derivation for Package::/ownedType : Type
  */
-const QList<QType *> *QPackage::ownedTypes() const
+const QSet<QType *> *QPackage::ownedTypes() const
 {
 }
 
 /*!
     The query visibleMembers() defines which members of a Package can be accessed outside it.
  */
-const QList<QPackageableElement *> *QPackage::visibleMembers() const
+const QSet<QPackageableElement *> *QPackage::visibleMembers() const
 {
 }
 

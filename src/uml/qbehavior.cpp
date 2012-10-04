@@ -75,35 +75,75 @@ void QBehavior::setReentrant(bool isReentrant)
 /*!
     References a list of parameters to the behavior which describes the order and type of arguments that can be given when the behavior is invoked and of the values which will be returned when the behavior completes its execution.
  */
-QList<QParameter *> *QBehavior::ownedParameters()
+const QList<QParameter *> *QBehavior::ownedParameters() const
+{
+}
+
+void QBehavior::addOwnedParameter(const QParameter *ownedParameter)
+{
+}
+
+void QBehavior::removeOwnedParameter(const QParameter *ownedParameter)
 {
 }
 
 /*!
     The ParameterSets owned by this Behavior.
  */
-QList<QParameterSet *> *QBehavior::ownedParameterSets()
+const QSet<QParameterSet *> *QBehavior::ownedParameterSets() const
+{
+}
+
+void QBehavior::addOwnedParameterSet(const QParameterSet *ownedParameterSet)
+{
+}
+
+void QBehavior::removeOwnedParameterSet(const QParameterSet *ownedParameterSet)
 {
 }
 
 /*!
     An optional set of Constraints specifying what is fulfilled after the execution of the behavior is completed, if its precondition was fulfilled before its invocation.
  */
-QList<QConstraint *> *QBehavior::postconditions()
+const QSet<QConstraint *> *QBehavior::postconditions() const
+{
+}
+
+void QBehavior::addPostcondition(const QConstraint *postcondition)
+{
+}
+
+void QBehavior::removePostcondition(const QConstraint *postcondition)
 {
 }
 
 /*!
     An optional set of Constraints specifying what must be fulfilled when the behavior is invoked.
  */
-QList<QConstraint *> *QBehavior::preconditions()
+const QSet<QConstraint *> *QBehavior::preconditions() const
+{
+}
+
+void QBehavior::addPrecondition(const QConstraint *precondition)
+{
+}
+
+void QBehavior::removePrecondition(const QConstraint *precondition)
 {
 }
 
 /*!
     References a behavior that this behavior redefines. A subtype of Behavior may redefine any other subtype of Behavior. If the behavior implements a behavioral feature, it replaces the redefined behavior. If the behavior is a classifier behavior, it extends the redefined behavior.
  */
-QList<QBehavior *> *QBehavior::redefinedBehaviors()
+const QSet<QBehavior *> *QBehavior::redefinedBehaviors() const
+{
+}
+
+void QBehavior::addRedefinedBehavior(const QBehavior *redefinedBehavior)
+{
+}
+
+void QBehavior::removeRedefinedBehavior(const QBehavior *redefinedBehavior)
 {
 }
 
@@ -114,14 +154,14 @@ QBehavioralFeature *QBehavior::specification() const
 {
 }
 
-void QBehavior::setSpecification(QBehavioralFeature *specification)
+void QBehavior::setSpecification(const QBehavioralFeature *specification)
 {
 }
 
 /*!
     Missing derivation for Behavior::/context : BehavioredClassifier
  */
-const QBehavioredClassifier *QBehavior::context() const
+QBehavioredClassifier *QBehavior::context() const
 {
 }
 

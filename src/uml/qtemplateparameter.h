@@ -49,6 +49,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -62,9 +63,9 @@ class Q_UML_EXPORT QTemplateParameter : public QObject, public QElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QTemplateParameter
     Q_PROPERTY(QParameterableElement * default_ READ default_ WRITE setDefault_)
@@ -79,15 +80,15 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QParameterableElement *default_() const;
-    void setDefault_(QParameterableElement *default_);
+    void setDefault_(const QParameterableElement *default_);
     QParameterableElement *ownedDefault() const;
-    void setOwnedDefault(QParameterableElement *ownedDefault);
+    void setOwnedDefault(const QParameterableElement *ownedDefault);
     QParameterableElement *ownedParameteredElement() const;
-    void setOwnedParameteredElement(QParameterableElement *ownedParameteredElement);
+    void setOwnedParameteredElement(const QParameterableElement *ownedParameteredElement);
     QParameterableElement *parameteredElement() const;
-    void setParameteredElement(QParameterableElement *parameteredElement);
+    void setParameteredElement(const QParameterableElement *parameteredElement);
     QTemplateSignature *signature() const;
-    void setSignature(QTemplateSignature *signature);
+    void setSignature(const QTemplateSignature *signature);
 
 private:
     Q_DISABLE_COPY(QTemplateParameter)

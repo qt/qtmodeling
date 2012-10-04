@@ -68,7 +68,7 @@ QValueSpecification *QChangeEvent::changeExpression() const
 {
 }
 
-void QChangeEvent::setChangeExpression(QValueSpecification *changeExpression)
+void QChangeEvent::setChangeExpression(const QValueSpecification *changeExpression)
 {
 }
 

@@ -49,6 +49,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -62,9 +63,9 @@ class Q_UML_EXPORT QQualifierValue : public QObject, public QElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QQualifierValue
     Q_PROPERTY(QProperty * qualifier READ qualifier WRITE setQualifier)
@@ -76,9 +77,9 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QProperty *qualifier() const;
-    void setQualifier(QProperty *qualifier);
+    void setQualifier(const QProperty *qualifier);
     QInputPin *value() const;
-    void setValue(QInputPin *value);
+    void setValue(const QInputPin *value);
 
 private:
     Q_DISABLE_COPY(QQualifierValue)

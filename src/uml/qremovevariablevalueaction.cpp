@@ -79,7 +79,7 @@ QInputPin *QRemoveVariableValueAction::removeAt() const
 {
 }
 
-void QRemoveVariableValueAction::setRemoveAt(QInputPin *removeAt)
+void QRemoveVariableValueAction::setRemoveAt(const QInputPin *removeAt)
 {
 }
 

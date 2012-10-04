@@ -68,7 +68,7 @@ QOutputPin *QReadStructuralFeatureAction::result() const
 {
 }
 
-void QReadStructuralFeatureAction::setResult(QOutputPin *result)
+void QReadStructuralFeatureAction::setResult(const QOutputPin *result)
 {
 }
 

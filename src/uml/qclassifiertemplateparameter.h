@@ -47,9 +47,10 @@
 #include <QtUml/QTemplateParameter>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -64,7 +65,7 @@ class Q_UML_EXPORT QClassifierTemplateParameter : public QTemplateParameter
 
     // From QClassifierTemplateParameter
     Q_PROPERTY(bool allowSubstitutable READ allowSubstitutable WRITE setAllowSubstitutable)
-    Q_PROPERTY(QList<QClassifier *> * constrainingClassifiers READ constrainingClassifiers)
+    Q_PROPERTY(const QSet<QClassifier *> * constrainingClassifiers READ constrainingClassifiers)
     Q_PROPERTY(QClassifier * parameteredElement READ parameteredElement WRITE setParameteredElement)
 
 public:
@@ -76,9 +77,11 @@ public:
     void setAllowSubstitutable(bool allowSubstitutable);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QClassifier *> *constrainingClassifiers();
+    const QSet<QClassifier *> *constrainingClassifiers() const;
+    void addConstrainingClassifier(const QClassifier *constrainingClassifier);
+    void removeConstrainingClassifier(const QClassifier *constrainingClassifier);
     QClassifier *parameteredElement() const;
-    void setParameteredElement(QClassifier *parameteredElement);
+    void setParameteredElement(const QClassifier *parameteredElement);
 
 private:
     Q_DISABLE_COPY(QClassifierTemplateParameter)

@@ -64,28 +64,60 @@ QOpaqueAction::~QOpaqueAction()
 /*!
     Specifies the action in one or more languages.
  */
-QList<QString *> QOpaqueAction::bodies()
+const QList<QString> *QOpaqueAction::bodies() const
+{
+}
+
+void QOpaqueAction::addBody(QString body)
+{
+}
+
+void QOpaqueAction::removeBody(QString body)
 {
 }
 
 /*!
     Languages the body strings use, in the same order as the body strings
  */
-QList<QString *> QOpaqueAction::languages()
+const QList<QString> *QOpaqueAction::languages() const
+{
+}
+
+void QOpaqueAction::addLanguage(QString language)
+{
+}
+
+void QOpaqueAction::removeLanguage(QString language)
 {
 }
 
 /*!
     Provides input to the action.
  */
-QList<QInputPin *> *QOpaqueAction::inputValues()
+const QSet<QInputPin *> *QOpaqueAction::inputValues() const
+{
+}
+
+void QOpaqueAction::addInputValue(const QInputPin *inputValue)
+{
+}
+
+void QOpaqueAction::removeInputValue(const QInputPin *inputValue)
 {
 }
 
 /*!
     Takes output from the action.
  */
-QList<QOutputPin *> *QOpaqueAction::outputValues()
+const QSet<QOutputPin *> *QOpaqueAction::outputValues() const
+{
+}
+
+void QOpaqueAction::addOutputValue(const QOutputPin *outputValue)
+{
+}
+
+void QOpaqueAction::removeOutputValue(const QOutputPin *outputValue)
 {
 }
 

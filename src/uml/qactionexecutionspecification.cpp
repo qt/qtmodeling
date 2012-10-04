@@ -68,7 +68,7 @@ QAction *QActionExecutionSpecification::action() const
 {
 }
 
-void QActionExecutionSpecification::setAction(QAction *action)
+void QActionExecutionSpecification::setAction(const QAction *action)
 {
 }
 

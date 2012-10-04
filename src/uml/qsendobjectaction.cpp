@@ -68,7 +68,7 @@ QInputPin *QSendObjectAction::request() const
 {
 }
 
-void QSendObjectAction::setRequest(QInputPin *request)
+void QSendObjectAction::setRequest(const QInputPin *request)
 {
 }
 
@@ -79,7 +79,7 @@ QInputPin *QSendObjectAction::target() const
 {
 }
 
-void QSendObjectAction::setTarget(QInputPin *target)
+void QSendObjectAction::setTarget(const QInputPin *target)
 {
 }
 

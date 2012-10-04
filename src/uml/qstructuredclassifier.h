@@ -48,8 +48,10 @@
 
 // Qt includes
 #include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -66,12 +68,16 @@ public:
     virtual ~QStructuredClassifier();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QProperty *> *ownedAttributes();
-    QList<QConnector *> *ownedConnectors();
-    const QList<QConnectableElement *> *roles() const;
+    const QList<QProperty *> *ownedAttributes() const;
+    void addOwnedAttribute(const QProperty *ownedAttribute);
+    void removeOwnedAttribute(const QProperty *ownedAttribute);
+    const QSet<QConnector *> *ownedConnectors() const;
+    void addOwnedConnector(const QConnector *ownedConnector);
+    void removeOwnedConnector(const QConnector *ownedConnector);
+    const QSet<QConnectableElement *> *roles() const;
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QList<QProperty *> *parts() const;
+    const QSet<QProperty *> *parts() const;
 
 protected:
     explicit QStructuredClassifier();

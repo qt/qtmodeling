@@ -47,9 +47,10 @@
 #include <QtUml/QElement>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -63,7 +64,7 @@ public:
     virtual ~QRelationship();
 
     // Association-ends (except those derived && !derivedUnion)
-    const QList<QElement *> *relatedElements() const;
+    const QSet<QElement *> *relatedElements() const;
 
 protected:
     explicit QRelationship();

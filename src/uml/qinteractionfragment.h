@@ -47,9 +47,10 @@
 #include <QtUml/QNamedElement>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -67,12 +68,16 @@ public:
     virtual ~QInteractionFragment();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QLifeline *> *covered();
+    const QSet<QLifeline *> *covered() const;
+    void addCovered(const QLifeline *covered);
+    void removeCovered(const QLifeline *covered);
     QInteraction *enclosingInteraction() const;
-    void setEnclosingInteraction(QInteraction *enclosingInteraction);
+    void setEnclosingInteraction(const QInteraction *enclosingInteraction);
     QInteractionOperand *enclosingOperand() const;
-    void setEnclosingOperand(QInteractionOperand *enclosingOperand);
-    QList<QGeneralOrdering *> *generalOrderings();
+    void setEnclosingOperand(const QInteractionOperand *enclosingOperand);
+    const QSet<QGeneralOrdering *> *generalOrderings() const;
+    void addGeneralOrdering(const QGeneralOrdering *generalOrdering);
+    void removeGeneralOrdering(const QGeneralOrdering *generalOrdering);
 
 protected:
     explicit QInteractionFragment();

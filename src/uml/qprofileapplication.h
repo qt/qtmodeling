@@ -49,6 +49,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -62,16 +63,16 @@ class Q_UML_EXPORT QProfileApplication : public QObject, public QDirectedRelatio
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QRelationship
-    Q_PROPERTY(const QList<QElement *> * relatedElements READ relatedElements)
+    Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
 
     // From QDirectedRelationship
-    Q_PROPERTY(const QList<QElement *> * sources READ sources)
-    Q_PROPERTY(const QList<QElement *> * targets READ targets)
+    Q_PROPERTY(const QSet<QElement *> * sources READ sources)
+    Q_PROPERTY(const QSet<QElement *> * targets READ targets)
 
     // From QProfileApplication
     Q_PROPERTY(bool isStrict READ isStrict WRITE setStrict)
@@ -88,9 +89,9 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QProfile *appliedProfile() const;
-    void setAppliedProfile(QProfile *appliedProfile);
+    void setAppliedProfile(const QProfile *appliedProfile);
     QPackage *applyingPackage() const;
-    void setApplyingPackage(QPackage *applyingPackage);
+    void setApplyingPackage(const QPackage *applyingPackage);
 
 private:
     Q_DISABLE_COPY(QProfileApplication)

@@ -68,14 +68,22 @@ QInputPin *QUnmarshallAction::object() const
 {
 }
 
-void QUnmarshallAction::setObject(QInputPin *object)
+void QUnmarshallAction::setObject(const QInputPin *object)
 {
 }
 
 /*!
     The values of the structural features of the input object.
  */
-QList<QOutputPin *> *QUnmarshallAction::results()
+const QSet<QOutputPin *> *QUnmarshallAction::results() const
+{
+}
+
+void QUnmarshallAction::addResult(const QOutputPin *result)
+{
+}
+
+void QUnmarshallAction::removeResult(const QOutputPin *result)
 {
 }
 
@@ -86,7 +94,7 @@ QClassifier *QUnmarshallAction::unmarshallType() const
 {
 }
 
-void QUnmarshallAction::setUnmarshallType(QClassifier *unmarshallType)
+void QUnmarshallAction::setUnmarshallType(const QClassifier *unmarshallType)
 {
 }
 

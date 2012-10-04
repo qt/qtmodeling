@@ -68,7 +68,7 @@ QBehavior *QDecisionNode::decisionInput() const
 {
 }
 
-void QDecisionNode::setDecisionInput(QBehavior *decisionInput)
+void QDecisionNode::setDecisionInput(const QBehavior *decisionInput)
 {
 }
 
@@ -79,7 +79,7 @@ QObjectFlow *QDecisionNode::decisionInputFlow() const
 {
 }
 
-void QDecisionNode::setDecisionInputFlow(QObjectFlow *decisionInputFlow)
+void QDecisionNode::setDecisionInputFlow(const QObjectFlow *decisionInputFlow)
 {
 }
 

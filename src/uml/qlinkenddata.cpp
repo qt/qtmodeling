@@ -68,14 +68,22 @@ QProperty *QLinkEndData::end() const
 {
 }
 
-void QLinkEndData::setEnd(QProperty *end)
+void QLinkEndData::setEnd(const QProperty *end)
 {
 }
 
 /*!
     List of qualifier values
  */
-QList<QQualifierValue *> *QLinkEndData::qualifiers()
+const QSet<QQualifierValue *> *QLinkEndData::qualifiers() const
+{
+}
+
+void QLinkEndData::addQualifier(const QQualifierValue *qualifier)
+{
+}
+
+void QLinkEndData::removeQualifier(const QQualifierValue *qualifier)
 {
 }
 
@@ -86,7 +94,7 @@ QInputPin *QLinkEndData::value() const
 {
 }
 
-void QLinkEndData::setValue(QInputPin *value)
+void QLinkEndData::setValue(const QInputPin *value)
 {
 }
 

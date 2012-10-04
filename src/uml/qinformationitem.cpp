@@ -64,7 +64,15 @@ QInformationItem::~QInformationItem()
 /*!
     Determines the classifiers that will specify the structure and nature of the information. An information item represents all its represented classifiers.
  */
-QList<QClassifier *> *QInformationItem::represented()
+const QSet<QClassifier *> *QInformationItem::represented() const
+{
+}
+
+void QInformationItem::addRepresented(const QClassifier *represented)
+{
+}
+
+void QInformationItem::removeRepresented(const QClassifier *represented)
 {
 }
 

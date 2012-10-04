@@ -47,9 +47,10 @@
 #include <QtUml/QNamedElement>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -65,10 +66,12 @@ public:
     virtual ~QDeploymentTarget();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QDeployment *> *deployments();
+    const QSet<QDeployment *> *deployments() const;
+    void addDeployment(const QDeployment *deployment);
+    void removeDeployment(const QDeployment *deployment);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QList<QPackageableElement *> *deployedElements() const;
+    const QSet<QPackageableElement *> *deployedElements() const;
 
 protected:
     explicit QDeploymentTarget();

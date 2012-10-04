@@ -47,9 +47,10 @@
 #include <QtUml/QClass>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -67,10 +68,10 @@ class Q_UML_EXPORT QComponent : public QClass
 
     // From QComponent
     Q_PROPERTY(bool isIndirectlyInstantiated READ isIndirectlyInstantiated WRITE setIndirectlyInstantiated)
-    Q_PROPERTY(QList<QPackageableElement *> * packagedElements READ packagedElements)
-    Q_PROPERTY(const QList<QInterface *> * provided READ provided)
-    Q_PROPERTY(QList<QComponentRealization *> * realizations READ realizations)
-    Q_PROPERTY(const QList<QInterface *> * required READ required)
+    Q_PROPERTY(const QSet<QPackageableElement *> * packagedElements READ packagedElements)
+    Q_PROPERTY(const QSet<QInterface *> * provided READ provided)
+    Q_PROPERTY(const QSet<QComponentRealization *> * realizations READ realizations)
+    Q_PROPERTY(const QSet<QInterface *> * required READ required)
 
 public:
     explicit QComponent(QObject *parent = 0);
@@ -81,14 +82,18 @@ public:
     void setIndirectlyInstantiated(bool isIndirectlyInstantiated);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QPackageableElement *> *packagedElements();
-    QList<QComponentRealization *> *realizations();
+    const QSet<QPackageableElement *> *packagedElements() const;
+    void addPackagedElement(const QPackageableElement *packagedElement);
+    void removePackagedElement(const QPackageableElement *packagedElement);
+    const QSet<QComponentRealization *> *realizations() const;
+    void addRealization(const QComponentRealization *realization);
+    void removeRealization(const QComponentRealization *realization);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QList<QInterface *> *provided() const;
-    const QList<QInterface *> *realizedInterfaces(const QClassifier *classifier) const;
-    const QList<QInterface *> *required() const;
-    const QList<QInterface *> *usedInterfaces(const QClassifier *classifier) const;
+    const QSet<QInterface *> *provided() const;
+    const QSet<QInterface *> *realizedInterfaces(const QClassifier *classifier) const;
+    const QSet<QInterface *> *required() const;
+    const QSet<QInterface *> *usedInterfaces(const QClassifier *classifier) const;
 
 private:
     Q_DISABLE_COPY(QComponent)

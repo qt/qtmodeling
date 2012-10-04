@@ -47,9 +47,10 @@
 #include <QtUml/QClassifier>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -66,9 +67,13 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QBehavior *classifierBehavior() const;
-    void setClassifierBehavior(QBehavior *classifierBehavior);
-    QList<QInterfaceRealization *> *interfaceRealizations();
-    QList<QBehavior *> *ownedBehaviors();
+    void setClassifierBehavior(const QBehavior *classifierBehavior);
+    const QSet<QInterfaceRealization *> *interfaceRealizations() const;
+    void addInterfaceRealization(const QInterfaceRealization *interfaceRealization);
+    void removeInterfaceRealization(const QInterfaceRealization *interfaceRealization);
+    const QSet<QBehavior *> *ownedBehaviors() const;
+    void addOwnedBehavior(const QBehavior *ownedBehavior);
+    void removeOwnedBehavior(const QBehavior *ownedBehavior);
 
 protected:
     explicit QBehavioredClassifier();

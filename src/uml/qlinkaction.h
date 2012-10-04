@@ -47,9 +47,10 @@
 #include <QtUml/QAction>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -66,11 +67,15 @@ public:
     virtual ~QLinkAction();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QLinkEndData *> *endData();
-    QList<QInputPin *> *inputValues();
+    const QSet<QLinkEndData *> *endData() const;
+    void addEndData(const QLinkEndData *endData);
+    void removeEndData(const QLinkEndData *endData);
+    const QSet<QInputPin *> *inputValues() const;
+    void addInputValue(const QInputPin *inputValue);
+    void removeInputValue(const QInputPin *inputValue);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QAssociation *association() const;
+    QAssociation *association() const;
 
 protected:
     explicit QLinkAction();

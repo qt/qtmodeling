@@ -79,7 +79,7 @@ QInputPin *QLinkEndDestructionData::destroyAt() const
 {
 }
 
-void QLinkEndDestructionData::setDestroyAt(QInputPin *destroyAt)
+void QLinkEndDestructionData::setDestroyAt(const QInputPin *destroyAt)
 {
 }
 

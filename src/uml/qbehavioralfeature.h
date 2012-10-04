@@ -52,8 +52,10 @@
 
 // Qt includes
 #include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -78,10 +80,18 @@ public:
     void setAbstract(bool isAbstract);
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QBehavior *> *methods();
-    QList<QParameter *> *ownedParameters();
-    QList<QParameterSet *> *ownedParameterSets();
-    QList<QType *> *raisedExceptions();
+    const QSet<QBehavior *> *methods() const;
+    void addMethod(const QBehavior *method);
+    void removeMethod(const QBehavior *method);
+    const QList<QParameter *> *ownedParameters() const;
+    void addOwnedParameter(const QParameter *ownedParameter);
+    void removeOwnedParameter(const QParameter *ownedParameter);
+    const QSet<QParameterSet *> *ownedParameterSets() const;
+    void addOwnedParameterSet(const QParameterSet *ownedParameterSet);
+    void removeOwnedParameterSet(const QParameterSet *ownedParameterSet);
+    const QSet<QType *> *raisedExceptions() const;
+    void addRaisedException(const QType *raisedException);
+    void removeRaisedException(const QType *raisedException);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     bool isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const;

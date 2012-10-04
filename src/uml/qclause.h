@@ -49,8 +49,10 @@
 
 // Qt includes
 #include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -65,30 +67,40 @@ class Q_UML_EXPORT QClause : public QObject, public QElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QClause
-    Q_PROPERTY(QList<QExecutableNode *> * bodies READ bodies)
-    Q_PROPERTY(QList<QOutputPin *> * bodyOutputs READ bodyOutputs)
+    Q_PROPERTY(const QSet<QExecutableNode *> * bodies READ bodies)
+    Q_PROPERTY(const QList<QOutputPin *> * bodyOutputs READ bodyOutputs)
     Q_PROPERTY(QOutputPin * decider READ decider WRITE setDecider)
-    Q_PROPERTY(QList<QClause *> * predecessorClauses READ predecessorClauses)
-    Q_PROPERTY(QList<QClause *> * successorClauses READ successorClauses)
-    Q_PROPERTY(QList<QExecutableNode *> * tests READ tests)
+    Q_PROPERTY(const QSet<QClause *> * predecessorClauses READ predecessorClauses)
+    Q_PROPERTY(const QSet<QClause *> * successorClauses READ successorClauses)
+    Q_PROPERTY(const QSet<QExecutableNode *> * tests READ tests)
 
 public:
     explicit QClause(QObject *parent = 0);
     virtual ~QClause();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QExecutableNode *> *bodies();
-    QList<QOutputPin *> *bodyOutputs();
+    const QSet<QExecutableNode *> *bodies() const;
+    void addBody(const QExecutableNode *body);
+    void removeBody(const QExecutableNode *body);
+    const QList<QOutputPin *> *bodyOutputs() const;
+    void addBodyOutput(const QOutputPin *bodyOutput);
+    void removeBodyOutput(const QOutputPin *bodyOutput);
     QOutputPin *decider() const;
-    void setDecider(QOutputPin *decider);
-    QList<QClause *> *predecessorClauses();
-    QList<QClause *> *successorClauses();
-    QList<QExecutableNode *> *tests();
+    void setDecider(const QOutputPin *decider);
+    const QSet<QClause *> *predecessorClauses() const;
+    void addPredecessorClause(const QClause *predecessorClause);
+    void removePredecessorClause(const QClause *predecessorClause);
+    const QSet<QClause *> *successorClauses() const;
+    void addSuccessorClause(const QClause *successorClause);
+    void removeSuccessorClause(const QClause *successorClause);
+    const QSet<QExecutableNode *> *tests() const;
+    void addTest(const QExecutableNode *test);
+    void removeTest(const QExecutableNode *test);
 
 private:
     Q_DISABLE_COPY(QClause)

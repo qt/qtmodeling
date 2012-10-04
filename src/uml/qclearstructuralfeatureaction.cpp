@@ -68,7 +68,7 @@ QOutputPin *QClearStructuralFeatureAction::result() const
 {
 }
 
-void QClearStructuralFeatureAction::setResult(QOutputPin *result)
+void QClearStructuralFeatureAction::setResult(const QOutputPin *result)
 {
 }
 

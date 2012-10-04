@@ -47,9 +47,10 @@
 #include <QtUml/QActivityNode>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -64,7 +65,9 @@ public:
     virtual ~QExecutableNode();
 
     // Association-ends (except those derived && !derivedUnion)
-    QList<QExceptionHandler *> *handlers();
+    const QSet<QExceptionHandler *> *handlers() const;
+    void addHandler(const QExceptionHandler *handler);
+    void removeHandler(const QExceptionHandler *handler);
 
 protected:
     explicit QExecutableNode();

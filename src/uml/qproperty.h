@@ -55,8 +55,10 @@
 // Qt includes
 #include <QtCore/QString>
 #include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -77,17 +79,17 @@ class Q_UML_EXPORT QProperty : public QObject, public QStructuralFeature, public
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QTypedElement
     Q_PROPERTY(QType * type READ type WRITE setType)
@@ -102,15 +104,14 @@ class Q_UML_EXPORT QProperty : public QObject, public QStructuralFeature, public
 
     // From QRedefinableElement
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QList<QRedefinableElement *> * redefinedElements READ redefinedElements)
-    Q_PROPERTY(const QList<QClassifier *> * redefinitionContexts READ redefinitionContexts)
+    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
+    Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
 
     // From QFeature
     Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic)
-    Q_PROPERTY(const QList<QClassifier *> * featuringClassifiers READ featuringClassifiers)
+    Q_PROPERTY(const QSet<QClassifier *> * featuringClassifiers READ featuringClassifiers)
 
     // From QStructuralFeature
-    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly)
 
     // From QParameterableElement
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
@@ -120,8 +121,8 @@ class Q_UML_EXPORT QProperty : public QObject, public QStructuralFeature, public
     Q_PROPERTY(QConnectableElementTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
 
     // From QDeploymentTarget
-    Q_PROPERTY(const QList<QPackageableElement *> * deployedElements READ deployedElements)
-    Q_PROPERTY(QList<QDeployment *> * deployments READ deployments)
+    Q_PROPERTY(const QSet<QPackageableElement *> * deployedElements READ deployedElements)
+    Q_PROPERTY(const QSet<QDeployment *> * deployments READ deployments)
 
     // From QProperty
     Q_PROPERTY(QtUml::AggregationKind aggregation READ aggregation WRITE setAggregation)
@@ -137,11 +138,11 @@ class Q_UML_EXPORT QProperty : public QObject, public QStructuralFeature, public
     Q_PROPERTY(QDataType * datatype READ datatype WRITE setDatatype)
     Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
     Q_PROPERTY(QInterface * interface READ interface WRITE setInterface)
-    Q_PROPERTY(const QProperty * opposite READ opposite)
+    Q_PROPERTY(QProperty * opposite READ opposite)
     Q_PROPERTY(QAssociation * owningAssociation READ owningAssociation WRITE setOwningAssociation)
-    Q_PROPERTY(QList<QProperty *> * qualifiers READ qualifiers)
-    Q_PROPERTY(QList<QProperty *> * redefinedProperties READ redefinedProperties)
-    Q_PROPERTY(QList<QProperty *> * subsettedProperties READ subsettedProperties)
+    Q_PROPERTY(const QList<QProperty *> * qualifiers READ qualifiers)
+    Q_PROPERTY(const QSet<QProperty *> * redefinedProperties READ redefinedProperties)
+    Q_PROPERTY(const QSet<QProperty *> * subsettedProperties READ subsettedProperties)
 
 public:
     explicit QProperty(QObject *parent = 0);
@@ -161,22 +162,28 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QAssociation *association() const;
-    void setAssociation(QAssociation *association);
+    void setAssociation(const QAssociation *association);
     QProperty *associationEnd() const;
-    void setAssociationEnd(QProperty *associationEnd);
+    void setAssociationEnd(const QProperty *associationEnd);
     QClass *class_() const;
-    void setClass_(QClass *class_);
+    void setClass_(const QClass *class_);
     QDataType *datatype() const;
-    void setDatatype(QDataType *datatype);
+    void setDatatype(const QDataType *datatype);
     QValueSpecification *defaultValue() const;
-    void setDefaultValue(QValueSpecification *defaultValue);
+    void setDefaultValue(const QValueSpecification *defaultValue);
     QInterface *interface() const;
-    void setInterface(QInterface *interface);
+    void setInterface(const QInterface *interface);
     QAssociation *owningAssociation() const;
-    void setOwningAssociation(QAssociation *owningAssociation);
-    QList<QProperty *> *qualifiers();
-    QList<QProperty *> *redefinedProperties();
-    QList<QProperty *> *subsettedProperties();
+    void setOwningAssociation(const QAssociation *owningAssociation);
+    const QList<QProperty *> *qualifiers() const;
+    void addQualifier(const QProperty *qualifier);
+    void removeQualifier(const QProperty *qualifier);
+    const QSet<QProperty *> *redefinedProperties() const;
+    void addRedefinedProperty(const QProperty *redefinedProperty);
+    void removeRedefinedProperty(const QProperty *redefinedProperty);
+    const QSet<QProperty *> *subsettedProperties() const;
+    void addSubsettedProperty(const QProperty *subsettedProperty);
+    void removeSubsettedProperty(const QProperty *subsettedProperty);
 
     // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     QString default_() const;
@@ -185,8 +192,8 @@ public:
     bool isComposite() const;
     bool isConsistentWith(const QRedefinableElement *redefinee) const;
     bool isNavigable() const;
-    const QProperty *opposite() const;
-    const QList<QType *> *subsettingContext() const;
+    QProperty *opposite() const;
+    const QSet<QType *> *subsettingContext() const;
 
 private:
     Q_DISABLE_COPY(QProperty)

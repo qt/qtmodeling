@@ -48,9 +48,10 @@
 #include <QtUml/QNamedElement>
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
+
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -65,21 +66,21 @@ class Q_UML_EXPORT QTrigger : public QObject, public QNamedElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(QList<QComment *> * ownedComments READ ownedComments)
-    Q_PROPERTY(const QList<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(const QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QList<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(const QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
     // From QTrigger
     Q_PROPERTY(QEvent * event READ event WRITE setEvent)
-    Q_PROPERTY(QList<QPort *> * ports READ ports)
+    Q_PROPERTY(const QSet<QPort *> * ports READ ports)
 
 public:
     explicit QTrigger(QObject *parent = 0);
@@ -87,8 +88,10 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QEvent *event() const;
-    void setEvent(QEvent *event);
-    QList<QPort *> *ports();
+    void setEvent(const QEvent *event);
+    const QSet<QPort *> *ports() const;
+    void addPort(const QPort *port);
+    void removePort(const QPort *port);
 
 private:
     Q_DISABLE_COPY(QTrigger)

@@ -68,7 +68,7 @@ QSignal *QBroadcastSignalAction::signal() const
 {
 }
 
-void QBroadcastSignalAction::setSignal(QSignal *signal)
+void QBroadcastSignalAction::setSignal(const QSignal *signal)
 {
 }
 

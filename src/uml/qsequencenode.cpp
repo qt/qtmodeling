@@ -64,7 +64,15 @@ QSequenceNode::~QSequenceNode()
 /*!
     An ordered set of executable nodes.
  */
-QList<QExecutableNode *> *QSequenceNode::executableNodes()
+const QList<QExecutableNode *> *QSequenceNode::executableNodes() const
+{
+}
+
+void QSequenceNode::addExecutableNode(const QExecutableNode *executableNode)
+{
+}
+
+void QSequenceNode::removeExecutableNode(const QExecutableNode *executableNode)
 {
 }
 

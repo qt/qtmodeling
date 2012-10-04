@@ -79,7 +79,7 @@ QValueSpecification *QJoinNode::joinSpec() const
 {
 }
 
-void QJoinNode::setJoinSpec(QValueSpecification *joinSpec)
+void QJoinNode::setJoinSpec(const QValueSpecification *joinSpec)
 {
 }
 

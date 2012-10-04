@@ -48,6 +48,7 @@
 
 QT_BEGIN_HEADER
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
@@ -63,9 +64,9 @@ public:
 
     // Association-ends (except those derived && !derivedUnion)
     QInputPin *object() const;
-    void setObject(QInputPin *object);
+    void setObject(const QInputPin *object);
     QStructuralFeature *structuralFeature() const;
-    void setStructuralFeature(QStructuralFeature *structuralFeature);
+    void setStructuralFeature(const QStructuralFeature *structuralFeature);
 
 protected:
     explicit QStructuralFeatureAction();

@@ -79,7 +79,7 @@ QClassifier *QReadIsClassifiedObjectAction::classifier() const
 {
 }
 
-void QReadIsClassifiedObjectAction::setClassifier(QClassifier *classifier)
+void QReadIsClassifiedObjectAction::setClassifier(const QClassifier *classifier)
 {
 }
 
@@ -90,7 +90,7 @@ QInputPin *QReadIsClassifiedObjectAction::object() const
 {
 }
 
-void QReadIsClassifiedObjectAction::setObject(QInputPin *object)
+void QReadIsClassifiedObjectAction::setObject(const QInputPin *object)
 {
 }
 
@@ -101,7 +101,7 @@ QOutputPin *QReadIsClassifiedObjectAction::result() const
 {
 }
 
-void QReadIsClassifiedObjectAction::setResult(QOutputPin *result)
+void QReadIsClassifiedObjectAction::setResult(const QOutputPin *result)
 {
 }
 

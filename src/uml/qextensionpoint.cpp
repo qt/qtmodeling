@@ -68,7 +68,7 @@ QUseCase *QExtensionPoint::useCase() const
 {
 }
 
-void QExtensionPoint::setUseCase(QUseCase *useCase)
+void QExtensionPoint::setUseCase(const QUseCase *useCase)
 {
 }
 

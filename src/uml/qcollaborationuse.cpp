@@ -64,7 +64,15 @@ QCollaborationUse::~QCollaborationUse()
 /*!
     A mapping between features of the collaboration type and features of the owning classifier. This mapping indicates which connectable element of the classifier plays which role(s) in the collaboration. A connectable element may be bound to multiple roles in the same collaboration use (that is, it may play multiple roles).
  */
-QList<QDependency *> *QCollaborationUse::roleBindings()
+const QSet<QDependency *> *QCollaborationUse::roleBindings() const
+{
+}
+
+void QCollaborationUse::addRoleBinding(const QDependency *roleBinding)
+{
+}
+
+void QCollaborationUse::removeRoleBinding(const QDependency *roleBinding)
 {
 }
 
@@ -75,7 +83,7 @@ QCollaboration *QCollaborationUse::type() const
 {
 }
 
-void QCollaborationUse::setType(QCollaboration *type)
+void QCollaborationUse::setType(const QCollaboration *type)
 {
 }
 
