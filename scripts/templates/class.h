@@ -167,6 +167,9 @@ class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name}[%- IF 
 
     [%- GENERATEPROPERTIES(class) -%]
 [% END %]
+    Q_DISABLE_COPY(${class.name})
+    Q_DECLARE_PRIVATE(${class.name})
+
 public:
     [%- IF class.isAbstract == 'false' %]
     explicit ${class.name}(QObject *parent = 0);
@@ -206,12 +209,9 @@ public:
 protected:
     explicit ${class.name}();
 [%- END %]
-[%- IF class.isAbstract == 'false' %]
 
 private:
-    Q_DISABLE_COPY(${class.name})
-    Q_DECLARE_PRIVATE(${class.name})
-[%- END %]
+    ${class.name}Private const *d_ptr;
 };
 
 QT_END_NAMESPACE_${namespace.replace('/', '_').upper}
