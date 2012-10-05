@@ -40,9 +40,27 @@
 ****************************************************************************/
 
 #include "qimage.h"
-//#include "qimage_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QImagePrivate
+{
+public:
+    explicit QImagePrivate();
+    virtual ~QImagePrivate();
+
+    QString content;
+    QString format;
+    QString location;
+};
+
+QImagePrivate::QImagePrivate()
+{
+}
+
+QImagePrivate::~QImagePrivate()
+{
+}
 
 /*!
     \class QImage
@@ -53,12 +71,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QImage::QImage(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QImagePrivate)
 {
 }
 
 QImage::~QImage()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +85,12 @@ QImage::~QImage()
  */
 QString QImage::content() const
 {
+    return d_ptr->content;
 }
 
 void QImage::setContent(QString content)
 {
+    d_ptr->content = content;
 }
 
 /*!
@@ -77,10 +98,12 @@ void QImage::setContent(QString content)
  */
 QString QImage::format() const
 {
+    return d_ptr->format;
 }
 
 void QImage::setFormat(QString format)
 {
+    d_ptr->format = format;
 }
 
 /*!
@@ -88,10 +111,12 @@ void QImage::setFormat(QString format)
  */
 QString QImage::location() const
 {
+    return d_ptr->location;
 }
 
 void QImage::setLocation(QString location)
 {
+    d_ptr->location = location;
 }
 
 #include "moc_qimage.cpp"

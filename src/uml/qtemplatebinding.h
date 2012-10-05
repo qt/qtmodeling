@@ -82,11 +82,14 @@ class Q_UML_EXPORT QTemplateBinding : public QObject, public QDirectedRelationsh
     Q_PROPERTY(const QSet<QTemplateParameterSubstitution *> * parameterSubstitutions READ parameterSubstitutions)
     Q_PROPERTY(QTemplateSignature * signature READ signature WRITE setSignature)
 
+    Q_DISABLE_COPY(QTemplateBinding)
+    Q_DECLARE_PRIVATE(QTemplateBinding)
+
 public:
     explicit QTemplateBinding(QObject *parent = 0);
     virtual ~QTemplateBinding();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QTemplateableElement *boundElement() const;
     void setBoundElement(const QTemplateableElement *boundElement);
     const QSet<QTemplateParameterSubstitution *> *parameterSubstitutions() const;
@@ -96,8 +99,7 @@ public:
     void setSignature(const QTemplateSignature *signature);
 
 private:
-    Q_DISABLE_COPY(QTemplateBinding)
-    Q_DECLARE_PRIVATE(QTemplateBinding)
+    QTemplateBindingPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

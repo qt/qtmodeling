@@ -92,11 +92,14 @@ class Q_UML_EXPORT QExtend : public QObject, public QDirectedRelationship, publi
     Q_PROPERTY(QUseCase * extension READ extension WRITE setExtension)
     Q_PROPERTY(const QList<QExtensionPoint *> * extensionLocations READ extensionLocations)
 
+    Q_DISABLE_COPY(QExtend)
+    Q_DECLARE_PRIVATE(QExtend)
+
 public:
     explicit QExtend(QObject *parent = 0);
     virtual ~QExtend();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QConstraint *condition() const;
     void setCondition(const QConstraint *condition);
     QUseCase *extendedCase() const;
@@ -108,8 +111,7 @@ public:
     void removeExtensionLocation(const QExtensionPoint *extensionLocation);
 
 private:
-    Q_DISABLE_COPY(QExtend)
-    Q_DECLARE_PRIVATE(QExtend)
+    QExtendPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qassociationclass.h"
-//#include "qassociationclass_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QAssociationClassPrivate
+{
+public:
+    explicit QAssociationClassPrivate();
+    virtual ~QAssociationClassPrivate();
+
+};
+
+QAssociationClassPrivate::QAssociationClassPrivate()
+{
+}
+
+QAssociationClassPrivate::~QAssociationClassPrivate()
+{
+}
 
 /*!
     \class QAssociationClass
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QAssociationClass::QAssociationClass(QObject *parent)
-//    : (parent)
+    : d_ptr(new QAssociationClassPrivate)
 {
 }
 
 QAssociationClass::~QAssociationClass()
 {
+    delete d_ptr;
 }
 
 #include "moc_qassociationclass.cpp"

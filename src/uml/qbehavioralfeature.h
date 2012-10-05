@@ -69,16 +69,19 @@ class QParameter;
 
 class Q_UML_EXPORT QBehavioralFeature : public QNamespace, public QFeature
 {
+    Q_DISABLE_COPY(QBehavioralFeature)
+    Q_DECLARE_PRIVATE(QBehavioralFeature)
+
 public:
     virtual ~QBehavioralFeature();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     QtUml::CallConcurrencyKind concurrency() const;
     void setConcurrency(QtUml::CallConcurrencyKind concurrency);
     bool isAbstract() const;
     void setAbstract(bool isAbstract);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QBehavior *> *methods() const;
     void addMethod(const QBehavior *method);
     void removeMethod(const QBehavior *method);
@@ -92,11 +95,14 @@ public:
     void addRaisedException(const QType *raisedException);
     void removeRaisedException(const QType *raisedException);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     bool isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const;
 
 protected:
     explicit QBehavioralFeature();
+
+private:
+    QBehavioralFeaturePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

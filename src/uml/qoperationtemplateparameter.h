@@ -62,17 +62,19 @@ class Q_UML_EXPORT QOperationTemplateParameter : public QTemplateParameter
     // From QOperationTemplateParameter
     Q_PROPERTY(QOperation * parameteredElement READ parameteredElement WRITE setParameteredElement)
 
+    Q_DISABLE_COPY(QOperationTemplateParameter)
+    Q_DECLARE_PRIVATE(QOperationTemplateParameter)
+
 public:
     explicit QOperationTemplateParameter(QObject *parent = 0);
     virtual ~QOperationTemplateParameter();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QOperation *parameteredElement() const;
     void setParameteredElement(const QOperation *parameteredElement);
 
 private:
-    Q_DISABLE_COPY(QOperationTemplateParameter)
-    Q_DECLARE_PRIVATE(QOperationTemplateParameter)
+    QOperationTemplateParameterPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

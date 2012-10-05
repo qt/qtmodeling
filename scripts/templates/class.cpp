@@ -51,35 +51,36 @@ public:
 
 [%- FOREACH attribute IN class.attribute %]
 [%- IF (attribute.isDerived == "false" or attribute.isDerivedUnion == "true") %]
-    ${attribute.accessor.0.return}${attribute.accessor.0.name};
+    ${attribute.accessor.0.return.remove('^const ')}${attribute.accessor.0.name};
 [%- END -%]
 [%- END -%]
 [%- FOREACH associationend IN class.associationend %]
 [%- IF (associationend.isDerived == "false" or associationend.isDerivedUnion == "true") %]
-    ${associationend.accessor.0.return}${associationend.accessor.0.name};
+    ${associationend.accessor.0.return.remove('^const ')}${associationend.accessor.0.name};
 [%- END -%]
 [%- END -%]
 
 };
 
-${class.name}Private::${class.name}Private() :
+${class.name}Private::${class.name}Private()
 [%- found = 'false' -%]
 [%- FOREACH attribute IN class.attribute %]
 [%- IF ((attribute.isDerived == "false" or attribute.isDerivedUnion == "true") and attribute.accessor.0.return.search('<')) -%]
 [%- IF found == 'true' -%]
 ,
-[% ELSE %]
+[% ELSE -%]
+ :
     [%- found = 'true' %]
 [% END -%]
     ${attribute.accessor.0.name}(new ${attribute.accessor.0.return.remove(' \*$').remove('^const ')})
 [%- END -%]
 [%- END -%]
-[%- found = 'false' -%]
 [%- FOREACH associationend IN class.associationend %]
 [%- IF ((associationend.isDerived == "false" or associationend.isDerivedUnion == "true") and associationend.accessor.0.return.search('<')) -%]
 [%- IF found == 'true' -%]
 ,
-[% ELSE %]
+[% ELSE -%]
+ :
     [%- found = 'true' %]
 [% END -%]
     ${associationend.accessor.0.name}(new ${associationend.accessor.0.return.remove(' \*$').remove('^const ')})
@@ -115,9 +116,9 @@ ${class.name}Private::~${class.name}Private()
 [%- END %]
 
 ${class.name}::${class.name}([%- IF class.isAbstract == 'false' -%]QObject *parent[%- END -%])
-    :
+[% GET '    : ' -%]
 [%- IF class.isAbstract == 'false' -%]
- [% IF class.superobject -%]${class.superobject.split('/').last}[%- ELSE -%]QObject[%- END -%](parent),
+[% IF class.superobject -%]${class.superobject.split('/').last}[%- ELSE -%]QObject[%- END -%](parent)[% GET ', ' -%]
 [%- END %]d_ptr(new ${class.name}Private)
 {
 }
@@ -128,7 +129,6 @@ ${class.name}::~${class.name}()
 }
 
 [%- FOREACH attribute IN class.attribute %]
-[%- IF (attribute.isDerived == "false" or attribute.isDerivedUnion == "true") -%]
 [%- IF (attribute.documentation) %]
 /*!
     [% attribute.documentation %]
@@ -137,26 +137,28 @@ ${class.name}::~${class.name}()
 [%- FOREACH accessor IN attribute.accessor %]
 ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
 {
-[%- IF loop.first %]
+[%- IF attribute.isDerived == 'false' or attribute.isDerivedUnion == 'true' -%]
+    [%- IF loop.first %]
     return d_ptr->${accessor.name};
-[%- ELSE -%]
-[%- IF accessor.name.search('^set') %]
-    d_ptr->${accessor.parameter.0.name} = ${accessor.parameter.0.name};
-[%- END %]
-[%- IF accessor.name.search('^add') %]
-    d_ptr->${attribute.accessor.0.name}->[% IF accessor.return.search('QSet') %]insert[% ELSE %]append[% END %](${accessor.parameter.0.name});
-[%- END %]
-[%- IF accessor.name.search('^remove') %]
-    d_ptr->${attribute.accessor.0.name}->[% IF accessor.return.search('QSet') %]remove[% ELSE %]removeAll[% END %](${accessor.parameter.0.name});
-[%- END %]
+    [%- ELSE -%]
+        [%- IF accessor.name.search('^set') %]
+    d_ptr->${accessor.parameter.0.name} = [% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %];
+        [%- END %]
+        [%- IF accessor.name.search('^add') %]
+    d_ptr->${attribute.accessor.0.name}->[% IF attribute.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
+        [%- END %]
+        [%- IF accessor.name.search('^remove') %]
+    d_ptr->${attribute.accessor.0.name}->[% IF attribute.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
+        [%- END %]
+    [%- END %]
+[%- ELSE %]
+    qWarning("To be implemented (this is a derived attribute)");
 [%- END %]
 }
-[% END -%]
 [% END -%]
 [%- END -%]
 
 [%- FOREACH associationend IN class.associationend %]
-[%- IF (associationend.isDerived == "false" or associationend.isDerivedUnion == "true") -%]
 [%- IF (associationend.documentation) %]
 /*!
     [% associationend.documentation %]
@@ -165,21 +167,24 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
 [%- FOREACH accessor IN associationend.accessor %]
 ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
 {
-[%- IF loop.first %]
+[%- IF associationend.isDerived == 'false' or associationend.isDerivedUnion == 'true' -%]
+    [%- IF loop.first %]
     return d_ptr->${accessor.name};
-[%- ELSE -%]
-[%- IF accessor.name.search('^set') %]
-    d_ptr->${accessor.parameter.0.name} = ${accessor.parameter.0.name};
-[%- END %]
-[%- IF accessor.name.search('^add') %]
-    d_ptr->${associationend.accessor.0.name}->[% IF accessor.return.search('QSet') %]insert[% ELSE %]append[% END %](${accessor.parameter.0.name});
-[%- END %]
-[%- IF accessor.name.search('^remove') %]
-    d_ptr->${associationend.accessor.0.name}->[% IF accessor.return.search('QSet') %]remove[% ELSE %]removeAll[% END %](${accessor.parameter.0.name});
-[%- END %]
+    [%- ELSE -%]
+        [%- IF accessor.name.search('^set') %]
+    d_ptr->${accessor.parameter.0.name} = [% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %];
+        [%- END %]
+        [%- IF accessor.name.search('^add') %]
+    d_ptr->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
+        [%- END %]
+        [%- IF accessor.name.search('^remove') %]
+    d_ptr->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
+        [%- END %]
+    [%- END %]
+[%- ELSE %]
+    qWarning("To be implemented (this is a derived associationend)");
 [%- END %]
 }
-[% END -%]
 [% END -%]
 [%- END -%]
 
@@ -191,6 +196,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
 [%- END %]
 ${operation.return}${class.name}::${operation.name}([%- FOREACH parameter IN operation.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${operation.constness}
 {
+    qWarning("To be implemented");
 }
 [% END -%]
 [%- IF class.isAbstract == 'false' %]

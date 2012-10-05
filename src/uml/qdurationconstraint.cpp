@@ -40,9 +40,28 @@
 ****************************************************************************/
 
 #include "qdurationconstraint.h"
-//#include "qdurationconstraint_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QDurationConstraintPrivate
+{
+public:
+    explicit QDurationConstraintPrivate();
+    virtual ~QDurationConstraintPrivate();
+
+    QSet<bool> *firstEvents;
+    QDurationInterval *specification;
+};
+
+QDurationConstraintPrivate::QDurationConstraintPrivate() :
+    firstEvents(new QSet<bool>)
+{
+}
+
+QDurationConstraintPrivate::~QDurationConstraintPrivate()
+{
+    delete firstEvents;
+}
 
 /*!
     \class QDurationConstraint
@@ -53,27 +72,31 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QDurationConstraint::QDurationConstraint(QObject *parent)
-    : QIntervalConstraint(parent)
+    : QIntervalConstraint(parent), d_ptr(new QDurationConstraintPrivate)
 {
 }
 
 QDurationConstraint::~QDurationConstraint()
 {
+    delete d_ptr;
 }
 
 /*!
     The value of firstEvent[i] is related to constrainedElement[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters constrainedElement[i]. If firstEvent[i] is false, then the corresponding observation event is the last time instant the execution is within constrainedElement[i]. Default value is true applied when constrainedElement[i] refers an element that represents only one time instant.
  */
-bool QDurationConstraint::firstEvent() const
+const QSet<bool> *QDurationConstraint::firstEvents() const
 {
+    return d_ptr->firstEvents;
 }
 
 void QDurationConstraint::addFirstEvent(bool firstEvent)
 {
+    d_ptr->firstEvents->insert(firstEvent);
 }
 
 void QDurationConstraint::removeFirstEvent(bool firstEvent)
 {
+    d_ptr->firstEvents->remove(firstEvent);
 }
 
 /*!
@@ -81,10 +104,12 @@ void QDurationConstraint::removeFirstEvent(bool firstEvent)
  */
 QDurationInterval *QDurationConstraint::specification() const
 {
+    return d_ptr->specification;
 }
 
 void QDurationConstraint::setSpecification(const QDurationInterval *specification)
 {
+    d_ptr->specification = const_cast<QDurationInterval *>(specification);
 }
 
 #include "moc_qdurationconstraint.cpp"

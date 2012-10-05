@@ -40,9 +40,28 @@
 ****************************************************************************/
 
 #include "qcallaction.h"
-//#include "qcallaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QCallActionPrivate
+{
+public:
+    explicit QCallActionPrivate();
+    virtual ~QCallActionPrivate();
+
+    bool isSynchronous;
+    QList<QOutputPin *> *results;
+};
+
+QCallActionPrivate::QCallActionPrivate() :
+    results(new QList<QOutputPin *>)
+{
+}
+
+QCallActionPrivate::~QCallActionPrivate()
+{
+    delete results;
+}
 
 /*!
     \class QCallAction
@@ -53,11 +72,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QCallAction::QCallAction()
+    : d_ptr(new QCallActionPrivate)
 {
 }
 
 QCallAction::~QCallAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,10 +86,12 @@ QCallAction::~QCallAction()
  */
 bool QCallAction::isSynchronous() const
 {
+    return d_ptr->isSynchronous;
 }
 
 void QCallAction::setSynchronous(bool isSynchronous)
 {
+    d_ptr->isSynchronous = isSynchronous;
 }
 
 /*!
@@ -76,14 +99,17 @@ void QCallAction::setSynchronous(bool isSynchronous)
  */
 const QList<QOutputPin *> *QCallAction::results() const
 {
+    return d_ptr->results;
 }
 
 void QCallAction::addResult(const QOutputPin *result)
 {
+    d_ptr->results->append(const_cast<QOutputPin *>(result));
 }
 
 void QCallAction::removeResult(const QOutputPin *result)
 {
+    d_ptr->results->removeAll(const_cast<QOutputPin *>(result));
 }
 
 QT_END_NAMESPACE_QTUML

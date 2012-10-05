@@ -40,9 +40,29 @@
 ****************************************************************************/
 
 #include "qclassifiertemplateparameter.h"
-//#include "qclassifiertemplateparameter_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QClassifierTemplateParameterPrivate
+{
+public:
+    explicit QClassifierTemplateParameterPrivate();
+    virtual ~QClassifierTemplateParameterPrivate();
+
+    bool allowSubstitutable;
+    QSet<QClassifier *> *constrainingClassifiers;
+    QClassifier *parameteredElement;
+};
+
+QClassifierTemplateParameterPrivate::QClassifierTemplateParameterPrivate() :
+    constrainingClassifiers(new QSet<QClassifier *>)
+{
+}
+
+QClassifierTemplateParameterPrivate::~QClassifierTemplateParameterPrivate()
+{
+    delete constrainingClassifiers;
+}
 
 /*!
     \class QClassifierTemplateParameter
@@ -53,12 +73,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QClassifierTemplateParameter::QClassifierTemplateParameter(QObject *parent)
-    : QTemplateParameter(parent)
+    : QTemplateParameter(parent), d_ptr(new QClassifierTemplateParameterPrivate)
 {
 }
 
 QClassifierTemplateParameter::~QClassifierTemplateParameter()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +87,12 @@ QClassifierTemplateParameter::~QClassifierTemplateParameter()
  */
 bool QClassifierTemplateParameter::allowSubstitutable() const
 {
+    return d_ptr->allowSubstitutable;
 }
 
 void QClassifierTemplateParameter::setAllowSubstitutable(bool allowSubstitutable)
 {
+    d_ptr->allowSubstitutable = allowSubstitutable;
 }
 
 /*!
@@ -77,14 +100,17 @@ void QClassifierTemplateParameter::setAllowSubstitutable(bool allowSubstitutable
  */
 const QSet<QClassifier *> *QClassifierTemplateParameter::constrainingClassifiers() const
 {
+    return d_ptr->constrainingClassifiers;
 }
 
 void QClassifierTemplateParameter::addConstrainingClassifier(const QClassifier *constrainingClassifier)
 {
+    d_ptr->constrainingClassifiers->insert(const_cast<QClassifier *>(constrainingClassifier));
 }
 
 void QClassifierTemplateParameter::removeConstrainingClassifier(const QClassifier *constrainingClassifier)
 {
+    d_ptr->constrainingClassifiers->remove(const_cast<QClassifier *>(constrainingClassifier));
 }
 
 /*!
@@ -92,10 +118,12 @@ void QClassifierTemplateParameter::removeConstrainingClassifier(const QClassifie
  */
 QClassifier *QClassifierTemplateParameter::parameteredElement() const
 {
+    return d_ptr->parameteredElement;
 }
 
 void QClassifierTemplateParameter::setParameteredElement(const QClassifier *parameteredElement)
 {
+    d_ptr->parameteredElement = const_cast<QClassifier *>(parameteredElement);
 }
 
 #include "moc_qclassifiertemplateparameter.cpp"

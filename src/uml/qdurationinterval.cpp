@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qdurationinterval.h"
-//#include "qdurationinterval_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QDurationIntervalPrivate
+{
+public:
+    explicit QDurationIntervalPrivate();
+    virtual ~QDurationIntervalPrivate();
+
+    QDuration *max;
+    QDuration *min;
+};
+
+QDurationIntervalPrivate::QDurationIntervalPrivate()
+{
+}
+
+QDurationIntervalPrivate::~QDurationIntervalPrivate()
+{
+}
 
 /*!
     \class QDurationInterval
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QDurationInterval::QDurationInterval(QObject *parent)
-    : QInterval(parent)
+    : QInterval(parent), d_ptr(new QDurationIntervalPrivate)
 {
 }
 
 QDurationInterval::~QDurationInterval()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QDurationInterval::~QDurationInterval()
  */
 QDuration *QDurationInterval::max() const
 {
+    return d_ptr->max;
 }
 
 void QDurationInterval::setMax(const QDuration *max)
 {
+    d_ptr->max = const_cast<QDuration *>(max);
 }
 
 /*!
@@ -77,10 +97,12 @@ void QDurationInterval::setMax(const QDuration *max)
  */
 QDuration *QDurationInterval::min() const
 {
+    return d_ptr->min;
 }
 
 void QDurationInterval::setMin(const QDuration *min)
 {
+    d_ptr->min = const_cast<QDuration *>(min);
 }
 
 #include "moc_qdurationinterval.cpp"

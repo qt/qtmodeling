@@ -70,15 +70,18 @@ class Q_UML_EXPORT QExpansionRegion : public QStructuredActivityNode
     Q_PROPERTY(const QSet<QExpansionNode *> * inputElements READ inputElements)
     Q_PROPERTY(const QSet<QExpansionNode *> * outputElements READ outputElements)
 
+    Q_DISABLE_COPY(QExpansionRegion)
+    Q_DECLARE_PRIVATE(QExpansionRegion)
+
 public:
     explicit QExpansionRegion(QObject *parent = 0);
     virtual ~QExpansionRegion();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     QtUml::ExpansionKind mode() const;
     void setMode(QtUml::ExpansionKind mode);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QExpansionNode *> *inputElements() const;
     void addInputElement(const QExpansionNode *inputElement);
     void removeInputElement(const QExpansionNode *inputElement);
@@ -87,8 +90,7 @@ public:
     void removeOutputElement(const QExpansionNode *outputElement);
 
 private:
-    Q_DISABLE_COPY(QExpansionRegion)
-    Q_DECLARE_PRIVATE(QExpansionRegion)
+    QExpansionRegionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

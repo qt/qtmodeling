@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qinteractionconstraint.h"
-//#include "qinteractionconstraint_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QInteractionConstraintPrivate
+{
+public:
+    explicit QInteractionConstraintPrivate();
+    virtual ~QInteractionConstraintPrivate();
+
+    QValueSpecification *maxint;
+    QValueSpecification *minint;
+};
+
+QInteractionConstraintPrivate::QInteractionConstraintPrivate()
+{
+}
+
+QInteractionConstraintPrivate::~QInteractionConstraintPrivate()
+{
+}
 
 /*!
     \class QInteractionConstraint
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QInteractionConstraint::QInteractionConstraint(QObject *parent)
-    : QConstraint(parent)
+    : QConstraint(parent), d_ptr(new QInteractionConstraintPrivate)
 {
 }
 
 QInteractionConstraint::~QInteractionConstraint()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QInteractionConstraint::~QInteractionConstraint()
  */
 QValueSpecification *QInteractionConstraint::maxint() const
 {
+    return d_ptr->maxint;
 }
 
 void QInteractionConstraint::setMaxint(const QValueSpecification *maxint)
 {
+    d_ptr->maxint = const_cast<QValueSpecification *>(maxint);
 }
 
 /*!
@@ -77,10 +97,12 @@ void QInteractionConstraint::setMaxint(const QValueSpecification *maxint)
  */
 QValueSpecification *QInteractionConstraint::minint() const
 {
+    return d_ptr->minint;
 }
 
 void QInteractionConstraint::setMinint(const QValueSpecification *minint)
 {
+    d_ptr->minint = const_cast<QValueSpecification *>(minint);
 }
 
 #include "moc_qinteractionconstraint.cpp"

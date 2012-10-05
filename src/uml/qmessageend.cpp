@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qmessageend.h"
-//#include "qmessageend_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QMessageEndPrivate
+{
+public:
+    explicit QMessageEndPrivate();
+    virtual ~QMessageEndPrivate();
+
+    QMessage *message;
+};
+
+QMessageEndPrivate::QMessageEndPrivate()
+{
+}
+
+QMessageEndPrivate::~QMessageEndPrivate()
+{
+}
 
 /*!
     \class QMessageEnd
@@ -53,11 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QMessageEnd::QMessageEnd()
+    : d_ptr(new QMessageEndPrivate)
 {
 }
 
 QMessageEnd::~QMessageEnd()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,10 +83,12 @@ QMessageEnd::~QMessageEnd()
  */
 QMessage *QMessageEnd::message() const
 {
+    return d_ptr->message;
 }
 
 void QMessageEnd::setMessage(const QMessage *message)
 {
+    d_ptr->message = const_cast<QMessage *>(message);
 }
 
 QT_END_NAMESPACE_QTUML

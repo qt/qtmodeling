@@ -63,21 +63,23 @@ class Q_UML_EXPORT QTimeConstraint : public QIntervalConstraint
     Q_PROPERTY(bool firstEvent READ firstEvent WRITE setFirstEvent)
     Q_PROPERTY(QTimeInterval * specification READ specification WRITE setSpecification)
 
+    Q_DISABLE_COPY(QTimeConstraint)
+    Q_DECLARE_PRIVATE(QTimeConstraint)
+
 public:
     explicit QTimeConstraint(QObject *parent = 0);
     virtual ~QTimeConstraint();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool firstEvent() const;
     void setFirstEvent(bool firstEvent);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QTimeInterval *specification() const;
     void setSpecification(const QTimeInterval *specification);
 
 private:
-    Q_DISABLE_COPY(QTimeConstraint)
-    Q_DECLARE_PRIVATE(QTimeConstraint)
+    QTimeConstraintPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

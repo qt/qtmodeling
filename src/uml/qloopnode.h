@@ -76,15 +76,18 @@ class Q_UML_EXPORT QLoopNode : public QStructuredActivityNode
     Q_PROPERTY(const QSet<QExecutableNode *> * setupParts READ setupParts)
     Q_PROPERTY(const QSet<QExecutableNode *> * tests READ tests)
 
+    Q_DISABLE_COPY(QLoopNode)
+    Q_DECLARE_PRIVATE(QLoopNode)
+
 public:
     explicit QLoopNode(QObject *parent = 0);
     virtual ~QLoopNode();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isTestedFirst() const;
     void setTestedFirst(bool isTestedFirst);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QList<QOutputPin *> *bodyOutputs() const;
     void addBodyOutput(const QOutputPin *bodyOutput);
     void removeBodyOutput(const QOutputPin *bodyOutput);
@@ -110,8 +113,7 @@ public:
     void removeTest(const QExecutableNode *test);
 
 private:
-    Q_DISABLE_COPY(QLoopNode)
-    Q_DECLARE_PRIVATE(QLoopNode)
+    QLoopNodePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

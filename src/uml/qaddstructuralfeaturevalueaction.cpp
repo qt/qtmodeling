@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qaddstructuralfeaturevalueaction.h"
-//#include "qaddstructuralfeaturevalueaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QAddStructuralFeatureValueActionPrivate
+{
+public:
+    explicit QAddStructuralFeatureValueActionPrivate();
+    virtual ~QAddStructuralFeatureValueActionPrivate();
+
+    bool isReplaceAll;
+    QInputPin *insertAt;
+};
+
+QAddStructuralFeatureValueActionPrivate::QAddStructuralFeatureValueActionPrivate()
+{
+}
+
+QAddStructuralFeatureValueActionPrivate::~QAddStructuralFeatureValueActionPrivate()
+{
+}
 
 /*!
     \class QAddStructuralFeatureValueAction
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QAddStructuralFeatureValueAction::QAddStructuralFeatureValueAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QAddStructuralFeatureValueActionPrivate)
 {
 }
 
 QAddStructuralFeatureValueAction::~QAddStructuralFeatureValueAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QAddStructuralFeatureValueAction::~QAddStructuralFeatureValueAction()
  */
 bool QAddStructuralFeatureValueAction::isReplaceAll() const
 {
+    return d_ptr->isReplaceAll;
 }
 
 void QAddStructuralFeatureValueAction::setReplaceAll(bool isReplaceAll)
 {
+    d_ptr->isReplaceAll = isReplaceAll;
 }
 
 /*!
@@ -77,10 +97,12 @@ void QAddStructuralFeatureValueAction::setReplaceAll(bool isReplaceAll)
  */
 QInputPin *QAddStructuralFeatureValueAction::insertAt() const
 {
+    return d_ptr->insertAt;
 }
 
 void QAddStructuralFeatureValueAction::setInsertAt(const QInputPin *insertAt)
 {
+    d_ptr->insertAt = const_cast<QInputPin *>(insertAt);
 }
 
 #include "moc_qaddstructuralfeaturevalueaction.cpp"

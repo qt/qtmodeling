@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qactivityparameternode.h"
-//#include "qactivityparameternode_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QActivityParameterNodePrivate
+{
+public:
+    explicit QActivityParameterNodePrivate();
+    virtual ~QActivityParameterNodePrivate();
+
+    QParameter *parameter;
+};
+
+QActivityParameterNodePrivate::QActivityParameterNodePrivate()
+{
+}
+
+QActivityParameterNodePrivate::~QActivityParameterNodePrivate()
+{
+}
 
 /*!
     \class QActivityParameterNode
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QActivityParameterNode::QActivityParameterNode(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QActivityParameterNodePrivate)
 {
 }
 
 QActivityParameterNode::~QActivityParameterNode()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QActivityParameterNode::~QActivityParameterNode()
  */
 QParameter *QActivityParameterNode::parameter() const
 {
+    return d_ptr->parameter;
 }
 
 void QActivityParameterNode::setParameter(const QParameter *parameter)
 {
+    d_ptr->parameter = const_cast<QParameter *>(parameter);
 }
 
 #include "moc_qactivityparameternode.cpp"

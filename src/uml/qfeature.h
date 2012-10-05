@@ -60,18 +60,24 @@ class QClassifier;
 
 class Q_UML_EXPORT QFeature : public QRedefinableElement
 {
+    Q_DISABLE_COPY(QFeature)
+    Q_DECLARE_PRIVATE(QFeature)
+
 public:
     virtual ~QFeature();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isStatic() const;
     void setStatic(bool isStatic);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QClassifier *> *featuringClassifiers() const;
 
 protected:
     explicit QFeature();
+
+private:
+    QFeaturePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

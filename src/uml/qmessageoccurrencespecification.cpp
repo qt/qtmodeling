@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qmessageoccurrencespecification.h"
-//#include "qmessageoccurrencespecification_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QMessageOccurrenceSpecificationPrivate
+{
+public:
+    explicit QMessageOccurrenceSpecificationPrivate();
+    virtual ~QMessageOccurrenceSpecificationPrivate();
+
+};
+
+QMessageOccurrenceSpecificationPrivate::QMessageOccurrenceSpecificationPrivate()
+{
+}
+
+QMessageOccurrenceSpecificationPrivate::~QMessageOccurrenceSpecificationPrivate()
+{
+}
 
 /*!
     \class QMessageOccurrenceSpecification
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QMessageOccurrenceSpecification::QMessageOccurrenceSpecification(QObject *parent)
-    : QOccurrenceSpecification(parent)
+    : QOccurrenceSpecification(parent), d_ptr(new QMessageOccurrenceSpecificationPrivate)
 {
 }
 
 QMessageOccurrenceSpecification::~QMessageOccurrenceSpecification()
 {
+    delete d_ptr;
 }
 
 #include "moc_qmessageoccurrencespecification.cpp"

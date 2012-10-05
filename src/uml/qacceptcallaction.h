@@ -62,17 +62,19 @@ class Q_UML_EXPORT QAcceptCallAction : public QAcceptEventAction
     // From QAcceptCallAction
     Q_PROPERTY(QOutputPin * returnInformation READ returnInformation WRITE setReturnInformation)
 
+    Q_DISABLE_COPY(QAcceptCallAction)
+    Q_DECLARE_PRIVATE(QAcceptCallAction)
+
 public:
     explicit QAcceptCallAction(QObject *parent = 0);
     virtual ~QAcceptCallAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QOutputPin *returnInformation() const;
     void setReturnInformation(const QOutputPin *returnInformation);
 
 private:
-    Q_DISABLE_COPY(QAcceptCallAction)
-    Q_DECLARE_PRIVATE(QAcceptCallAction)
+    QAcceptCallActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

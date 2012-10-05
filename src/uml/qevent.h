@@ -56,11 +56,17 @@ class QEventPrivate;
 
 class Q_UML_EXPORT QEvent : public QPackageableElement
 {
+    Q_DISABLE_COPY(QEvent)
+    Q_DECLARE_PRIVATE(QEvent)
+
 public:
     virtual ~QEvent();
 
 protected:
     explicit QEvent();
+
+private:
+    QEventPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

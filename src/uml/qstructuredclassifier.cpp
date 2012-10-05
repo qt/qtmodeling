@@ -40,9 +40,33 @@
 ****************************************************************************/
 
 #include "qstructuredclassifier.h"
-//#include "qstructuredclassifier_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QStructuredClassifierPrivate
+{
+public:
+    explicit QStructuredClassifierPrivate();
+    virtual ~QStructuredClassifierPrivate();
+
+    QList<QProperty *> *ownedAttributes;
+    QSet<QConnector *> *ownedConnectors;
+    QSet<QConnectableElement *> *roles;
+};
+
+QStructuredClassifierPrivate::QStructuredClassifierPrivate() :
+    ownedAttributes(new QList<QProperty *>),
+    ownedConnectors(new QSet<QConnector *>),
+    roles(new QSet<QConnectableElement *>)
+{
+}
+
+QStructuredClassifierPrivate::~QStructuredClassifierPrivate()
+{
+    delete ownedAttributes;
+    delete ownedConnectors;
+    delete roles;
+}
 
 /*!
     \class QStructuredClassifier
@@ -53,11 +77,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QStructuredClassifier::QStructuredClassifier()
+    : d_ptr(new QStructuredClassifierPrivate)
 {
 }
 
 QStructuredClassifier::~QStructuredClassifier()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,14 +91,17 @@ QStructuredClassifier::~QStructuredClassifier()
  */
 const QList<QProperty *> *QStructuredClassifier::ownedAttributes() const
 {
+    return d_ptr->ownedAttributes;
 }
 
 void QStructuredClassifier::addOwnedAttribute(const QProperty *ownedAttribute)
 {
+    d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
 }
 
 void QStructuredClassifier::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
+    d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
 }
 
 /*!
@@ -80,14 +109,25 @@ void QStructuredClassifier::removeOwnedAttribute(const QProperty *ownedAttribute
  */
 const QSet<QConnector *> *QStructuredClassifier::ownedConnectors() const
 {
+    return d_ptr->ownedConnectors;
 }
 
 void QStructuredClassifier::addOwnedConnector(const QConnector *ownedConnector)
 {
+    d_ptr->ownedConnectors->insert(const_cast<QConnector *>(ownedConnector));
 }
 
 void QStructuredClassifier::removeOwnedConnector(const QConnector *ownedConnector)
 {
+    d_ptr->ownedConnectors->remove(const_cast<QConnector *>(ownedConnector));
+}
+
+/*!
+    References the properties specifying instances that the classifier owns by composition. This association is derived, selecting those owned properties where isComposite is true.
+ */
+const QSet<QProperty *> *QStructuredClassifier::parts() const
+{
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -95,13 +135,7 @@ void QStructuredClassifier::removeOwnedConnector(const QConnector *ownedConnecto
  */
 const QSet<QConnectableElement *> *QStructuredClassifier::roles() const
 {
-}
-
-/*!
-    Missing derivation for StructuredClassifier::/part : Property
- */
-const QSet<QProperty *> *QStructuredClassifier::parts() const
-{
+    return d_ptr->roles;
 }
 
 QT_END_NAMESPACE_QTUML

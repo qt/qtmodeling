@@ -81,17 +81,19 @@ class Q_UML_EXPORT QContinuation : public QObject, public QInteractionFragment
     // From QContinuation
     Q_PROPERTY(bool setting READ setting WRITE setSetting)
 
+    Q_DISABLE_COPY(QContinuation)
+    Q_DECLARE_PRIVATE(QContinuation)
+
 public:
     explicit QContinuation(QObject *parent = 0);
     virtual ~QContinuation();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool setting() const;
     void setSetting(bool setting);
 
 private:
-    Q_DISABLE_COPY(QContinuation)
-    Q_DECLARE_PRIVATE(QContinuation)
+    QContinuationPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

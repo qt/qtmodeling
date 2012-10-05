@@ -109,21 +109,23 @@ class Q_UML_EXPORT QAddVariableValueAction : public QObject, public QWriteVariab
     Q_PROPERTY(bool isReplaceAll READ isReplaceAll WRITE setReplaceAll)
     Q_PROPERTY(QInputPin * insertAt READ insertAt WRITE setInsertAt)
 
+    Q_DISABLE_COPY(QAddVariableValueAction)
+    Q_DECLARE_PRIVATE(QAddVariableValueAction)
+
 public:
     explicit QAddVariableValueAction(QObject *parent = 0);
     virtual ~QAddVariableValueAction();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isReplaceAll() const;
     void setReplaceAll(bool isReplaceAll);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QInputPin *insertAt() const;
     void setInsertAt(const QInputPin *insertAt);
 
 private:
-    Q_DISABLE_COPY(QAddVariableValueAction)
-    Q_DECLARE_PRIVATE(QAddVariableValueAction)
+    QAddVariableValueActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

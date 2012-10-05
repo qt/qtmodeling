@@ -63,10 +63,13 @@ class QInteraction;
 
 class Q_UML_EXPORT QInteractionFragment : public virtual QNamedElement
 {
+    Q_DISABLE_COPY(QInteractionFragment)
+    Q_DECLARE_PRIVATE(QInteractionFragment)
+
 public:
     virtual ~QInteractionFragment();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QLifeline *> *covered() const;
     void addCovered(const QLifeline *covered);
     void removeCovered(const QLifeline *covered);
@@ -80,6 +83,9 @@ public:
 
 protected:
     explicit QInteractionFragment();
+
+private:
+    QInteractionFragmentPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

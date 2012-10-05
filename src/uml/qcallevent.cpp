@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qcallevent.h"
-//#include "qcallevent_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QCallEventPrivate
+{
+public:
+    explicit QCallEventPrivate();
+    virtual ~QCallEventPrivate();
+
+    QOperation *operation;
+};
+
+QCallEventPrivate::QCallEventPrivate()
+{
+}
+
+QCallEventPrivate::~QCallEventPrivate()
+{
+}
 
 /*!
     \class QCallEvent
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QCallEvent::QCallEvent(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QCallEventPrivate)
 {
 }
 
 QCallEvent::~QCallEvent()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QCallEvent::~QCallEvent()
  */
 QOperation *QCallEvent::operation() const
 {
+    return d_ptr->operation;
 }
 
 void QCallEvent::setOperation(const QOperation *operation)
 {
+    d_ptr->operation = const_cast<QOperation *>(operation);
 }
 
 #include "moc_qcallevent.cpp"

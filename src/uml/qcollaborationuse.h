@@ -81,11 +81,14 @@ class Q_UML_EXPORT QCollaborationUse : public QObject, public QNamedElement
     Q_PROPERTY(const QSet<QDependency *> * roleBindings READ roleBindings)
     Q_PROPERTY(QCollaboration * type READ type WRITE setType)
 
+    Q_DISABLE_COPY(QCollaborationUse)
+    Q_DECLARE_PRIVATE(QCollaborationUse)
+
 public:
     explicit QCollaborationUse(QObject *parent = 0);
     virtual ~QCollaborationUse();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QDependency *> *roleBindings() const;
     void addRoleBinding(const QDependency *roleBinding);
     void removeRoleBinding(const QDependency *roleBinding);
@@ -93,8 +96,7 @@ public:
     void setType(const QCollaboration *type);
 
 private:
-    Q_DISABLE_COPY(QCollaborationUse)
-    Q_DECLARE_PRIVATE(QCollaborationUse)
+    QCollaborationUsePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

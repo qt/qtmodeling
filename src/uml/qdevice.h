@@ -58,13 +58,15 @@ class Q_UML_EXPORT QDevice : public QNode
 {
     Q_OBJECT
 
+    Q_DISABLE_COPY(QDevice)
+    Q_DECLARE_PRIVATE(QDevice)
+
 public:
     explicit QDevice(QObject *parent = 0);
     virtual ~QDevice();
 
 private:
-    Q_DISABLE_COPY(QDevice)
-    Q_DECLARE_PRIVATE(QDevice)
+    QDevicePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

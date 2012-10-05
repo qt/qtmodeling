@@ -40,9 +40,31 @@
 ****************************************************************************/
 
 #include "qdeployment.h"
-//#include "qdeployment_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QDeploymentPrivate
+{
+public:
+    explicit QDeploymentPrivate();
+    virtual ~QDeploymentPrivate();
+
+    QSet<QDeploymentSpecification *> *configurations;
+    QSet<QDeployedArtifact *> *deployedArtifacts;
+    QDeploymentTarget *location;
+};
+
+QDeploymentPrivate::QDeploymentPrivate() :
+    configurations(new QSet<QDeploymentSpecification *>),
+    deployedArtifacts(new QSet<QDeployedArtifact *>)
+{
+}
+
+QDeploymentPrivate::~QDeploymentPrivate()
+{
+    delete configurations;
+    delete deployedArtifacts;
+}
 
 /*!
     \class QDeployment
@@ -53,12 +75,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QDeployment::QDeployment(QObject *parent)
-    : QDependency(parent)
+    : QDependency(parent), d_ptr(new QDeploymentPrivate)
 {
 }
 
 QDeployment::~QDeployment()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +89,17 @@ QDeployment::~QDeployment()
  */
 const QSet<QDeploymentSpecification *> *QDeployment::configurations() const
 {
+    return d_ptr->configurations;
 }
 
 void QDeployment::addConfiguration(const QDeploymentSpecification *configuration)
 {
+    d_ptr->configurations->insert(const_cast<QDeploymentSpecification *>(configuration));
 }
 
 void QDeployment::removeConfiguration(const QDeploymentSpecification *configuration)
 {
+    d_ptr->configurations->remove(const_cast<QDeploymentSpecification *>(configuration));
 }
 
 /*!
@@ -81,14 +107,17 @@ void QDeployment::removeConfiguration(const QDeploymentSpecification *configurat
  */
 const QSet<QDeployedArtifact *> *QDeployment::deployedArtifacts() const
 {
+    return d_ptr->deployedArtifacts;
 }
 
 void QDeployment::addDeployedArtifact(const QDeployedArtifact *deployedArtifact)
 {
+    d_ptr->deployedArtifacts->insert(const_cast<QDeployedArtifact *>(deployedArtifact));
 }
 
 void QDeployment::removeDeployedArtifact(const QDeployedArtifact *deployedArtifact)
 {
+    d_ptr->deployedArtifacts->remove(const_cast<QDeployedArtifact *>(deployedArtifact));
 }
 
 /*!
@@ -96,10 +125,12 @@ void QDeployment::removeDeployedArtifact(const QDeployedArtifact *deployedArtifa
  */
 QDeploymentTarget *QDeployment::location() const
 {
+    return d_ptr->location;
 }
 
 void QDeployment::setLocation(const QDeploymentTarget *location)
 {
+    d_ptr->location = const_cast<QDeploymentTarget *>(location);
 }
 
 #include "moc_qdeployment.cpp"

@@ -83,21 +83,23 @@ class Q_UML_EXPORT QTimeEvent : public QObject, public QEvent
     Q_PROPERTY(bool isRelative READ isRelative WRITE setRelative)
     Q_PROPERTY(QTimeExpression * when READ when WRITE setWhen)
 
+    Q_DISABLE_COPY(QTimeEvent)
+    Q_DECLARE_PRIVATE(QTimeEvent)
+
 public:
     explicit QTimeEvent(QObject *parent = 0);
     virtual ~QTimeEvent();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isRelative() const;
     void setRelative(bool isRelative);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QTimeExpression *when() const;
     void setWhen(const QTimeExpression *when);
 
 private:
-    Q_DISABLE_COPY(QTimeEvent)
-    Q_DECLARE_PRIVATE(QTimeEvent)
+    QTimeEventPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

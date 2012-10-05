@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qconnectableelementtemplateparameter.h"
-//#include "qconnectableelementtemplateparameter_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QConnectableElementTemplateParameterPrivate
+{
+public:
+    explicit QConnectableElementTemplateParameterPrivate();
+    virtual ~QConnectableElementTemplateParameterPrivate();
+
+    QConnectableElement *parameteredElement;
+};
+
+QConnectableElementTemplateParameterPrivate::QConnectableElementTemplateParameterPrivate()
+{
+}
+
+QConnectableElementTemplateParameterPrivate::~QConnectableElementTemplateParameterPrivate()
+{
+}
 
 /*!
     \class QConnectableElementTemplateParameter
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QConnectableElementTemplateParameter::QConnectableElementTemplateParameter(QObject *parent)
-    : QTemplateParameter(parent)
+    : QTemplateParameter(parent), d_ptr(new QConnectableElementTemplateParameterPrivate)
 {
 }
 
 QConnectableElementTemplateParameter::~QConnectableElementTemplateParameter()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QConnectableElementTemplateParameter::~QConnectableElementTemplateParameter()
  */
 QConnectableElement *QConnectableElementTemplateParameter::parameteredElement() const
 {
+    return d_ptr->parameteredElement;
 }
 
 void QConnectableElementTemplateParameter::setParameteredElement(const QConnectableElement *parameteredElement)
 {
+    d_ptr->parameteredElement = const_cast<QConnectableElement *>(parameteredElement);
 }
 
 #include "moc_qconnectableelementtemplateparameter.cpp"

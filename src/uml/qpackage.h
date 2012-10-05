@@ -112,17 +112,27 @@ class Q_UML_EXPORT QPackage : public QObject, public QNamespace, public QPackage
     Q_PROPERTY(const QSet<QPackageableElement *> * packagedElements READ packagedElements)
     Q_PROPERTY(const QSet<QProfileApplication *> * profileApplications READ profileApplications)
 
+    Q_DISABLE_COPY(QPackage)
+    Q_DECLARE_PRIVATE(QPackage)
+
 public:
     explicit QPackage(QObject *parent = 0);
     virtual ~QPackage();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     QString URI() const;
     void setURI(QString URI);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
+    const QSet<QPackage *> *nestedPackages() const;
+    void addNestedPackage(const QPackage *nestedPackage);
+    void removeNestedPackage(const QPackage *nestedPackage);
     QPackage *nestingPackage() const;
     void setNestingPackage(const QPackage *nestingPackage);
+    const QSet<QStereotype *> *ownedStereotypes() const;
+    const QSet<QType *> *ownedTypes() const;
+    void addOwnedType(const QType *ownedType);
+    void removeOwnedType(const QType *ownedType);
     const QSet<QPackageMerge *> *packageMerges() const;
     void addPackageMerge(const QPackageMerge *packageMerge);
     void removePackageMerge(const QPackageMerge *packageMerge);
@@ -133,19 +143,15 @@ public:
     void addProfileApplication(const QProfileApplication *profileApplication);
     void removeProfileApplication(const QProfileApplication *profileApplication);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     const QSet<QStereotype *> *allApplicableStereotypes() const;
     QProfile *containingProfile() const;
     bool makesVisible(const QNamedElement *el) const;
     bool mustBeOwned() const;
-    const QSet<QPackage *> *nestedPackages() const;
-    const QSet<QStereotype *> *ownedStereotypes() const;
-    const QSet<QType *> *ownedTypes() const;
     const QSet<QPackageableElement *> *visibleMembers() const;
 
 private:
-    Q_DISABLE_COPY(QPackage)
-    Q_DECLARE_PRIVATE(QPackage)
+    QPackagePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -40,9 +40,27 @@
 ****************************************************************************/
 
 #include "qtestidentityaction.h"
-//#include "qtestidentityaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QTestIdentityActionPrivate
+{
+public:
+    explicit QTestIdentityActionPrivate();
+    virtual ~QTestIdentityActionPrivate();
+
+    QInputPin *first;
+    QOutputPin *result;
+    QInputPin *second;
+};
+
+QTestIdentityActionPrivate::QTestIdentityActionPrivate()
+{
+}
+
+QTestIdentityActionPrivate::~QTestIdentityActionPrivate()
+{
+}
 
 /*!
     \class QTestIdentityAction
@@ -53,12 +71,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QTestIdentityAction::QTestIdentityAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QTestIdentityActionPrivate)
 {
 }
 
 QTestIdentityAction::~QTestIdentityAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +85,12 @@ QTestIdentityAction::~QTestIdentityAction()
  */
 QInputPin *QTestIdentityAction::first() const
 {
+    return d_ptr->first;
 }
 
 void QTestIdentityAction::setFirst(const QInputPin *first)
 {
+    d_ptr->first = const_cast<QInputPin *>(first);
 }
 
 /*!
@@ -77,10 +98,12 @@ void QTestIdentityAction::setFirst(const QInputPin *first)
  */
 QOutputPin *QTestIdentityAction::result() const
 {
+    return d_ptr->result;
 }
 
 void QTestIdentityAction::setResult(const QOutputPin *result)
 {
+    d_ptr->result = const_cast<QOutputPin *>(result);
 }
 
 /*!
@@ -88,10 +111,12 @@ void QTestIdentityAction::setResult(const QOutputPin *result)
  */
 QInputPin *QTestIdentityAction::second() const
 {
+    return d_ptr->second;
 }
 
 void QTestIdentityAction::setSecond(const QInputPin *second)
 {
+    d_ptr->second = const_cast<QInputPin *>(second);
 }
 
 #include "moc_qtestidentityaction.cpp"

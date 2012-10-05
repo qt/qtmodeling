@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qextension.h"
-//#include "qextension_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QExtensionPrivate
+{
+public:
+    explicit QExtensionPrivate();
+    virtual ~QExtensionPrivate();
+
+    QExtensionEnd *ownedEnd;
+};
+
+QExtensionPrivate::QExtensionPrivate()
+{
+}
+
+QExtensionPrivate::~QExtensionPrivate()
+{
+}
 
 /*!
     \class QExtension
@@ -53,12 +69,29 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QExtension::QExtension(QObject *parent)
-    : QAssociation(parent)
+    : QAssociation(parent), d_ptr(new QExtensionPrivate)
 {
 }
 
 QExtension::~QExtension()
 {
+    delete d_ptr;
+}
+
+/*!
+    Indicates whether an instance of the extending stereotype must be created when an instance of the extended class is created. The attribute value is derived from the value of the lower property of the ExtensionEnd referenced by Extension::ownedEnd; a lower value of 1 means that isRequired is true, but otherwise it is false. Since the default value of ExtensionEnd::lower is 0, the default value of isRequired is false.
+ */
+bool QExtension::isRequired() const
+{
+    qWarning("To be implemented (this is a derived attribute)");
+}
+
+/*!
+    References the Class that is extended through an Extension. The property is derived from the type of the memberEnd that is not the ownedEnd.
+ */
+QClass *QExtension::metaclass() const
+{
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -66,24 +99,12 @@ QExtension::~QExtension()
  */
 QExtensionEnd *QExtension::ownedEnd() const
 {
+    return d_ptr->ownedEnd;
 }
 
 void QExtension::setOwnedEnd(const QExtensionEnd *ownedEnd)
 {
-}
-
-/*!
-    The query isRequired() is true if the owned end has a multiplicity with the lower bound of 1.
- */
-bool QExtension::isRequired() const
-{
-}
-
-/*!
-    The query metaclass() returns the metaclass that is being extended (as opposed to the extending stereotype).
- */
-QClass *QExtension::metaclass() const
-{
+    d_ptr->ownedEnd = const_cast<QExtensionEnd *>(ownedEnd);
 }
 
 /*!
@@ -91,6 +112,7 @@ QClass *QExtension::metaclass() const
  */
 QProperty *QExtension::metaclassEnd() const
 {
+    qWarning("To be implemented");
 }
 
 #include "moc_qextension.cpp"

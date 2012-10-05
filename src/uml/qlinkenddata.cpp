@@ -40,9 +40,29 @@
 ****************************************************************************/
 
 #include "qlinkenddata.h"
-//#include "qlinkenddata_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QLinkEndDataPrivate
+{
+public:
+    explicit QLinkEndDataPrivate();
+    virtual ~QLinkEndDataPrivate();
+
+    QProperty *end;
+    QSet<QQualifierValue *> *qualifiers;
+    QInputPin *value;
+};
+
+QLinkEndDataPrivate::QLinkEndDataPrivate() :
+    qualifiers(new QSet<QQualifierValue *>)
+{
+}
+
+QLinkEndDataPrivate::~QLinkEndDataPrivate()
+{
+    delete qualifiers;
+}
 
 /*!
     \class QLinkEndData
@@ -53,12 +73,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QLinkEndData::QLinkEndData(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QLinkEndDataPrivate)
 {
 }
 
 QLinkEndData::~QLinkEndData()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +87,12 @@ QLinkEndData::~QLinkEndData()
  */
 QProperty *QLinkEndData::end() const
 {
+    return d_ptr->end;
 }
 
 void QLinkEndData::setEnd(const QProperty *end)
 {
+    d_ptr->end = const_cast<QProperty *>(end);
 }
 
 /*!
@@ -77,14 +100,17 @@ void QLinkEndData::setEnd(const QProperty *end)
  */
 const QSet<QQualifierValue *> *QLinkEndData::qualifiers() const
 {
+    return d_ptr->qualifiers;
 }
 
 void QLinkEndData::addQualifier(const QQualifierValue *qualifier)
 {
+    d_ptr->qualifiers->insert(const_cast<QQualifierValue *>(qualifier));
 }
 
 void QLinkEndData::removeQualifier(const QQualifierValue *qualifier)
 {
+    d_ptr->qualifiers->remove(const_cast<QQualifierValue *>(qualifier));
 }
 
 /*!
@@ -92,10 +118,12 @@ void QLinkEndData::removeQualifier(const QQualifierValue *qualifier)
  */
 QInputPin *QLinkEndData::value() const
 {
+    return d_ptr->value;
 }
 
 void QLinkEndData::setValue(const QInputPin *value)
 {
+    d_ptr->value = const_cast<QInputPin *>(value);
 }
 
 #include "moc_qlinkenddata.cpp"

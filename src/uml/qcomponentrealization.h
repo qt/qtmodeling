@@ -67,11 +67,14 @@ class Q_UML_EXPORT QComponentRealization : public QRealization
     Q_PROPERTY(QComponent * abstraction READ abstraction WRITE setAbstraction)
     Q_PROPERTY(const QSet<QClassifier *> * realizingClassifiers READ realizingClassifiers)
 
+    Q_DISABLE_COPY(QComponentRealization)
+    Q_DECLARE_PRIVATE(QComponentRealization)
+
 public:
     explicit QComponentRealization(QObject *parent = 0);
     virtual ~QComponentRealization();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QComponent *abstraction() const;
     void setAbstraction(const QComponent *abstraction);
     const QSet<QClassifier *> *realizingClassifiers() const;
@@ -79,8 +82,7 @@ public:
     void removeRealizingClassifier(const QClassifier *realizingClassifier);
 
 private:
-    Q_DISABLE_COPY(QComponentRealization)
-    Q_DECLARE_PRIVATE(QComponentRealization)
+    QComponentRealizationPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

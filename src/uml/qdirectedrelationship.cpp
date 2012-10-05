@@ -40,9 +40,30 @@
 ****************************************************************************/
 
 #include "qdirectedrelationship.h"
-//#include "qdirectedrelationship_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QDirectedRelationshipPrivate
+{
+public:
+    explicit QDirectedRelationshipPrivate();
+    virtual ~QDirectedRelationshipPrivate();
+
+    QSet<QElement *> *sources;
+    QSet<QElement *> *targets;
+};
+
+QDirectedRelationshipPrivate::QDirectedRelationshipPrivate() :
+    sources(new QSet<QElement *>),
+    targets(new QSet<QElement *>)
+{
+}
+
+QDirectedRelationshipPrivate::~QDirectedRelationshipPrivate()
+{
+    delete sources;
+    delete targets;
+}
 
 /*!
     \class QDirectedRelationship
@@ -53,11 +74,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QDirectedRelationship::QDirectedRelationship()
+    : d_ptr(new QDirectedRelationshipPrivate)
 {
 }
 
 QDirectedRelationship::~QDirectedRelationship()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,6 +88,7 @@ QDirectedRelationship::~QDirectedRelationship()
  */
 const QSet<QElement *> *QDirectedRelationship::sources() const
 {
+    return d_ptr->sources;
 }
 
 /*!
@@ -72,6 +96,7 @@ const QSet<QElement *> *QDirectedRelationship::sources() const
  */
 const QSet<QElement *> *QDirectedRelationship::targets() const
 {
+    return d_ptr->targets;
 }
 
 QT_END_NAMESPACE_QTUML

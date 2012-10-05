@@ -40,9 +40,30 @@
 ****************************************************************************/
 
 #include "qlinkaction.h"
-//#include "qlinkaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QLinkActionPrivate
+{
+public:
+    explicit QLinkActionPrivate();
+    virtual ~QLinkActionPrivate();
+
+    QSet<QLinkEndData *> *endData;
+    QSet<QInputPin *> *inputValues;
+};
+
+QLinkActionPrivate::QLinkActionPrivate() :
+    endData(new QSet<QLinkEndData *>),
+    inputValues(new QSet<QInputPin *>)
+{
+}
+
+QLinkActionPrivate::~QLinkActionPrivate()
+{
+    delete endData;
+    delete inputValues;
+}
 
 /*!
     \class QLinkAction
@@ -53,11 +74,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QLinkAction::QLinkAction()
+    : d_ptr(new QLinkActionPrivate)
 {
 }
 
 QLinkAction::~QLinkAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,14 +88,17 @@ QLinkAction::~QLinkAction()
  */
 const QSet<QLinkEndData *> *QLinkAction::endData() const
 {
+    return d_ptr->endData;
 }
 
 void QLinkAction::addEndData(const QLinkEndData *endData)
 {
+    d_ptr->endData->insert(const_cast<QLinkEndData *>(endData));
 }
 
 void QLinkAction::removeEndData(const QLinkEndData *endData)
 {
+    d_ptr->endData->remove(const_cast<QLinkEndData *>(endData));
 }
 
 /*!
@@ -80,14 +106,17 @@ void QLinkAction::removeEndData(const QLinkEndData *endData)
  */
 const QSet<QInputPin *> *QLinkAction::inputValues() const
 {
+    return d_ptr->inputValues;
 }
 
 void QLinkAction::addInputValue(const QInputPin *inputValue)
 {
+    d_ptr->inputValues->insert(const_cast<QInputPin *>(inputValue));
 }
 
 void QLinkAction::removeInputValue(const QInputPin *inputValue)
 {
+    d_ptr->inputValues->remove(const_cast<QInputPin *>(inputValue));
 }
 
 /*!
@@ -95,6 +124,7 @@ void QLinkAction::removeInputValue(const QInputPin *inputValue)
  */
 QAssociation *QLinkAction::association() const
 {
+    qWarning("To be implemented");
 }
 
 QT_END_NAMESPACE_QTUML

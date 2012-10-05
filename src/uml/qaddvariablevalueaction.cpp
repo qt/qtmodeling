@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qaddvariablevalueaction.h"
-//#include "qaddvariablevalueaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QAddVariableValueActionPrivate
+{
+public:
+    explicit QAddVariableValueActionPrivate();
+    virtual ~QAddVariableValueActionPrivate();
+
+    bool isReplaceAll;
+    QInputPin *insertAt;
+};
+
+QAddVariableValueActionPrivate::QAddVariableValueActionPrivate()
+{
+}
+
+QAddVariableValueActionPrivate::~QAddVariableValueActionPrivate()
+{
+}
 
 /*!
     \class QAddVariableValueAction
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QAddVariableValueAction::QAddVariableValueAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QAddVariableValueActionPrivate)
 {
 }
 
 QAddVariableValueAction::~QAddVariableValueAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QAddVariableValueAction::~QAddVariableValueAction()
  */
 bool QAddVariableValueAction::isReplaceAll() const
 {
+    return d_ptr->isReplaceAll;
 }
 
 void QAddVariableValueAction::setReplaceAll(bool isReplaceAll)
 {
+    d_ptr->isReplaceAll = isReplaceAll;
 }
 
 /*!
@@ -77,10 +97,12 @@ void QAddVariableValueAction::setReplaceAll(bool isReplaceAll)
  */
 QInputPin *QAddVariableValueAction::insertAt() const
 {
+    return d_ptr->insertAt;
 }
 
 void QAddVariableValueAction::setInsertAt(const QInputPin *insertAt)
 {
+    d_ptr->insertAt = const_cast<QInputPin *>(insertAt);
 }
 
 #include "moc_qaddvariablevalueaction.cpp"

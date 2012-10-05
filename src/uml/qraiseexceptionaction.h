@@ -102,17 +102,19 @@ class Q_UML_EXPORT QRaiseExceptionAction : public QObject, public QAction
     // From QRaiseExceptionAction
     Q_PROPERTY(QInputPin * exception READ exception WRITE setException)
 
+    Q_DISABLE_COPY(QRaiseExceptionAction)
+    Q_DECLARE_PRIVATE(QRaiseExceptionAction)
+
 public:
     explicit QRaiseExceptionAction(QObject *parent = 0);
     virtual ~QRaiseExceptionAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QInputPin *exception() const;
     void setException(const QInputPin *exception);
 
 private:
-    Q_DISABLE_COPY(QRaiseExceptionAction)
-    Q_DECLARE_PRIVATE(QRaiseExceptionAction)
+    QRaiseExceptionActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

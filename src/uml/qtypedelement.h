@@ -57,15 +57,21 @@ class QType;
 
 class Q_UML_EXPORT QTypedElement : public virtual QNamedElement
 {
+    Q_DISABLE_COPY(QTypedElement)
+    Q_DECLARE_PRIVATE(QTypedElement)
+
 public:
     virtual ~QTypedElement();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QType *type() const;
     void setType(const QType *type);
 
 protected:
     explicit QTypedElement();
+
+private:
+    QTypedElementPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

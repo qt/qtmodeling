@@ -95,11 +95,14 @@ class Q_UML_EXPORT QInstanceSpecification : public QObject, public QDeployedArti
     Q_PROPERTY(const QSet<QSlot *> * slots_ READ slots_)
     Q_PROPERTY(QValueSpecification * specification READ specification WRITE setSpecification)
 
+    Q_DISABLE_COPY(QInstanceSpecification)
+    Q_DECLARE_PRIVATE(QInstanceSpecification)
+
 public:
     explicit QInstanceSpecification(QObject *parent = 0);
     virtual ~QInstanceSpecification();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QClassifier *> *classifiers() const;
     void addClassifier(const QClassifier *classifier);
     void removeClassifier(const QClassifier *classifier);
@@ -110,8 +113,7 @@ public:
     void setSpecification(const QValueSpecification *specification);
 
 private:
-    Q_DISABLE_COPY(QInstanceSpecification)
-    Q_DECLARE_PRIVATE(QInstanceSpecification)
+    QInstanceSpecificationPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

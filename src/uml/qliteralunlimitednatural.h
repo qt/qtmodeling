@@ -84,21 +84,23 @@ class Q_UML_EXPORT QLiteralUnlimitedNatural : public QObject, public QLiteralSpe
     // From QLiteralUnlimitedNatural
     Q_PROPERTY(qint32 value READ value WRITE setValue)
 
+    Q_DISABLE_COPY(QLiteralUnlimitedNatural)
+    Q_DECLARE_PRIVATE(QLiteralUnlimitedNatural)
+
 public:
     explicit QLiteralUnlimitedNatural(QObject *parent = 0);
     virtual ~QLiteralUnlimitedNatural();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     qint32 value() const;
     void setValue(qint32 value);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     bool isComputable() const;
     qint32 unlimitedValue() const;
 
 private:
-    Q_DISABLE_COPY(QLiteralUnlimitedNatural)
-    Q_DECLARE_PRIVATE(QLiteralUnlimitedNatural)
+    QLiteralUnlimitedNaturalPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

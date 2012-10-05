@@ -40,9 +40,33 @@
 ****************************************************************************/
 
 #include "qregion.h"
-//#include "qregion_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QRegionPrivate
+{
+public:
+    explicit QRegionPrivate();
+    virtual ~QRegionPrivate();
+
+    QRegion *extendedRegion;
+    QState *state;
+    QStateMachine *stateMachine;
+    QSet<QVertex *> *subvertices;
+    QSet<QTransition *> *transitions;
+};
+
+QRegionPrivate::QRegionPrivate() :
+    subvertices(new QSet<QVertex *>),
+    transitions(new QSet<QTransition *>)
+{
+}
+
+QRegionPrivate::~QRegionPrivate()
+{
+    delete subvertices;
+    delete transitions;
+}
 
 /*!
     \class QRegion
@@ -53,12 +77,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QRegion::QRegion(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QRegionPrivate)
 {
 }
 
 QRegion::~QRegion()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +91,20 @@ QRegion::~QRegion()
  */
 QRegion *QRegion::extendedRegion() const
 {
+    return d_ptr->extendedRegion;
 }
 
 void QRegion::setExtendedRegion(const QRegion *extendedRegion)
 {
+    d_ptr->extendedRegion = const_cast<QRegion *>(extendedRegion);
+}
+
+/*!
+    References the classifier in which context this element may be redefined.
+ */
+QClassifier *QRegion::redefinitionContext() const
+{
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -77,10 +112,12 @@ void QRegion::setExtendedRegion(const QRegion *extendedRegion)
  */
 QState *QRegion::state() const
 {
+    return d_ptr->state;
 }
 
 void QRegion::setState(const QState *state)
 {
+    d_ptr->state = const_cast<QState *>(state);
 }
 
 /*!
@@ -88,10 +125,12 @@ void QRegion::setState(const QState *state)
  */
 QStateMachine *QRegion::stateMachine() const
 {
+    return d_ptr->stateMachine;
 }
 
 void QRegion::setStateMachine(const QStateMachine *stateMachine)
 {
+    d_ptr->stateMachine = const_cast<QStateMachine *>(stateMachine);
 }
 
 /*!
@@ -99,14 +138,17 @@ void QRegion::setStateMachine(const QStateMachine *stateMachine)
  */
 const QSet<QVertex *> *QRegion::subvertices() const
 {
+    return d_ptr->subvertices;
 }
 
 void QRegion::addSubvertex(const QVertex *subvertex)
 {
+    d_ptr->subvertices->insert(const_cast<QVertex *>(subvertex));
 }
 
 void QRegion::removeSubvertex(const QVertex *subvertex)
 {
+    d_ptr->subvertices->remove(const_cast<QVertex *>(subvertex));
 }
 
 /*!
@@ -114,14 +156,17 @@ void QRegion::removeSubvertex(const QVertex *subvertex)
  */
 const QSet<QTransition *> *QRegion::transitions() const
 {
+    return d_ptr->transitions;
 }
 
 void QRegion::addTransition(const QTransition *transition)
 {
+    d_ptr->transitions->insert(const_cast<QTransition *>(transition));
 }
 
 void QRegion::removeTransition(const QTransition *transition)
 {
+    d_ptr->transitions->remove(const_cast<QTransition *>(transition));
 }
 
 /*!
@@ -129,6 +174,7 @@ void QRegion::removeTransition(const QTransition *transition)
  */
 bool QRegion::belongsToPSM() const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -136,6 +182,7 @@ bool QRegion::belongsToPSM() const
  */
 QStateMachine *QRegion::containingStateMachine() const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -143,6 +190,7 @@ QStateMachine *QRegion::containingStateMachine() const
  */
 bool QRegion::isConsistentWith(const QRedefinableElement *redefinee) const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -150,13 +198,7 @@ bool QRegion::isConsistentWith(const QRedefinableElement *redefinee) const
  */
 bool QRegion::isRedefinitionContextValid(const QRegion *redefined) const
 {
-}
-
-/*!
-    The redefinition context of a region is the nearest containing statemachine
- */
-QClassifier *QRegion::redefinitionContext() const
-{
+    qWarning("To be implemented");
 }
 
 #include "moc_qregion.cpp"

@@ -62,17 +62,19 @@ class Q_UML_EXPORT QValuePin : public QInputPin
     // From QValuePin
     Q_PROPERTY(QValueSpecification * value READ value WRITE setValue)
 
+    Q_DISABLE_COPY(QValuePin)
+    Q_DECLARE_PRIVATE(QValuePin)
+
 public:
     explicit QValuePin(QObject *parent = 0);
     virtual ~QValuePin();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QValueSpecification *value() const;
     void setValue(const QValueSpecification *value);
 
 private:
-    Q_DISABLE_COPY(QValuePin)
-    Q_DECLARE_PRIVATE(QValuePin)
+    QValuePinPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

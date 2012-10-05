@@ -65,18 +65,20 @@ class Q_UML_EXPORT QConsiderIgnoreFragment : public QCombinedFragment
     // From QConsiderIgnoreFragment
     Q_PROPERTY(const QSet<QNamedElement *> * messages READ messages)
 
+    Q_DISABLE_COPY(QConsiderIgnoreFragment)
+    Q_DECLARE_PRIVATE(QConsiderIgnoreFragment)
+
 public:
     explicit QConsiderIgnoreFragment(QObject *parent = 0);
     virtual ~QConsiderIgnoreFragment();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QNamedElement *> *messages() const;
     void addMessage(const QNamedElement *message);
     void removeMessage(const QNamedElement *message);
 
 private:
-    Q_DISABLE_COPY(QConsiderIgnoreFragment)
-    Q_DECLARE_PRIVATE(QConsiderIgnoreFragment)
+    QConsiderIgnoreFragmentPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

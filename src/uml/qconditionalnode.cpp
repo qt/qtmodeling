@@ -40,9 +40,32 @@
 ****************************************************************************/
 
 #include "qconditionalnode.h"
-//#include "qconditionalnode_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QConditionalNodePrivate
+{
+public:
+    explicit QConditionalNodePrivate();
+    virtual ~QConditionalNodePrivate();
+
+    bool isAssured;
+    bool isDeterminate;
+    QSet<QClause *> *clauses;
+    QList<QOutputPin *> *results;
+};
+
+QConditionalNodePrivate::QConditionalNodePrivate() :
+    clauses(new QSet<QClause *>),
+    results(new QList<QOutputPin *>)
+{
+}
+
+QConditionalNodePrivate::~QConditionalNodePrivate()
+{
+    delete clauses;
+    delete results;
+}
 
 /*!
     \class QConditionalNode
@@ -53,12 +76,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QConditionalNode::QConditionalNode(QObject *parent)
-    : QStructuredActivityNode(parent)
+    : QStructuredActivityNode(parent), d_ptr(new QConditionalNodePrivate)
 {
 }
 
 QConditionalNode::~QConditionalNode()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +90,12 @@ QConditionalNode::~QConditionalNode()
  */
 bool QConditionalNode::isAssured() const
 {
+    return d_ptr->isAssured;
 }
 
 void QConditionalNode::setAssured(bool isAssured)
 {
+    d_ptr->isAssured = isAssured;
 }
 
 /*!
@@ -77,10 +103,12 @@ void QConditionalNode::setAssured(bool isAssured)
  */
 bool QConditionalNode::isDeterminate() const
 {
+    return d_ptr->isDeterminate;
 }
 
 void QConditionalNode::setDeterminate(bool isDeterminate)
 {
+    d_ptr->isDeterminate = isDeterminate;
 }
 
 /*!
@@ -88,14 +116,17 @@ void QConditionalNode::setDeterminate(bool isDeterminate)
  */
 const QSet<QClause *> *QConditionalNode::clauses() const
 {
+    return d_ptr->clauses;
 }
 
 void QConditionalNode::addClause(const QClause *clause)
 {
+    d_ptr->clauses->insert(const_cast<QClause *>(clause));
 }
 
 void QConditionalNode::removeClause(const QClause *clause)
 {
+    d_ptr->clauses->remove(const_cast<QClause *>(clause));
 }
 
 /*!
@@ -103,14 +134,17 @@ void QConditionalNode::removeClause(const QClause *clause)
  */
 const QList<QOutputPin *> *QConditionalNode::results() const
 {
+    return d_ptr->results;
 }
 
 void QConditionalNode::addResult(const QOutputPin *result)
 {
+    d_ptr->results->append(const_cast<QOutputPin *>(result));
 }
 
 void QConditionalNode::removeResult(const QOutputPin *result)
 {
+    d_ptr->results->removeAll(const_cast<QOutputPin *>(result));
 }
 
 #include "moc_qconditionalnode.cpp"

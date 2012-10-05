@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qfunctionbehavior.h"
-//#include "qfunctionbehavior_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QFunctionBehaviorPrivate
+{
+public:
+    explicit QFunctionBehaviorPrivate();
+    virtual ~QFunctionBehaviorPrivate();
+
+};
+
+QFunctionBehaviorPrivate::QFunctionBehaviorPrivate()
+{
+}
+
+QFunctionBehaviorPrivate::~QFunctionBehaviorPrivate()
+{
+}
 
 /*!
     \class QFunctionBehavior
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QFunctionBehavior::QFunctionBehavior(QObject *parent)
-    : QOpaqueBehavior(parent)
+    : QOpaqueBehavior(parent), d_ptr(new QFunctionBehaviorPrivate)
 {
 }
 
 QFunctionBehavior::~QFunctionBehavior()
 {
+    delete d_ptr;
 }
 
 #include "moc_qfunctionbehavior.cpp"

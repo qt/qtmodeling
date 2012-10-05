@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qcontrolnode.h"
-//#include "qcontrolnode_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QControlNodePrivate
+{
+public:
+    explicit QControlNodePrivate();
+    virtual ~QControlNodePrivate();
+
+};
+
+QControlNodePrivate::QControlNodePrivate()
+{
+}
+
+QControlNodePrivate::~QControlNodePrivate()
+{
+}
 
 /*!
     \class QControlNode
@@ -53,11 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QControlNode::QControlNode()
+    : d_ptr(new QControlNodePrivate)
 {
 }
 
 QControlNode::~QControlNode()
 {
+    delete d_ptr;
 }
 
 QT_END_NAMESPACE_QTUML

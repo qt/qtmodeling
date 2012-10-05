@@ -85,28 +85,30 @@ class Q_UML_EXPORT QElementImport : public QObject, public QDirectedRelationship
     Q_PROPERTY(QPackageableElement * importedElement READ importedElement WRITE setImportedElement)
     Q_PROPERTY(QNamespace * importingNamespace READ importingNamespace WRITE setImportingNamespace)
 
+    Q_DISABLE_COPY(QElementImport)
+    Q_DECLARE_PRIVATE(QElementImport)
+
 public:
     explicit QElementImport(QObject *parent = 0);
     virtual ~QElementImport();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     QString alias() const;
     void setAlias(QString alias);
     QtUml::VisibilityKind visibility() const;
     void setVisibility(QtUml::VisibilityKind visibility);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QPackageableElement *importedElement() const;
     void setImportedElement(const QPackageableElement *importedElement);
     QNamespace *importingNamespace() const;
     void setImportingNamespace(const QNamespace *importingNamespace);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     QString getName() const;
 
 private:
-    Q_DISABLE_COPY(QElementImport)
-    Q_DECLARE_PRIVATE(QElementImport)
+    QElementImportPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

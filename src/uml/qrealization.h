@@ -58,13 +58,15 @@ class Q_UML_EXPORT QRealization : public QAbstraction
 {
     Q_OBJECT
 
+    Q_DISABLE_COPY(QRealization)
+    Q_DECLARE_PRIVATE(QRealization)
+
 public:
     explicit QRealization(QObject *parent = 0);
     virtual ~QRealization();
 
 private:
-    Q_DISABLE_COPY(QRealization)
-    Q_DECLARE_PRIVATE(QRealization)
+    QRealizationPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

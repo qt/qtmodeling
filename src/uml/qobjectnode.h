@@ -66,16 +66,19 @@ class QValueSpecification;
 
 class Q_UML_EXPORT QObjectNode : public QActivityNode, public QTypedElement
 {
+    Q_DISABLE_COPY(QObjectNode)
+    Q_DECLARE_PRIVATE(QObjectNode)
+
 public:
     virtual ~QObjectNode();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isControlType() const;
     void setControlType(bool isControlType);
     QtUml::ObjectNodeOrderingKind ordering() const;
     void setOrdering(QtUml::ObjectNodeOrderingKind ordering);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QState *> *inState() const;
     void addInState(const QState *inState);
     void removeInState(const QState *inState);
@@ -86,6 +89,9 @@ public:
 
 protected:
     explicit QObjectNode();
+
+private:
+    QObjectNodePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

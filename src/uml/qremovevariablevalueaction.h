@@ -109,21 +109,23 @@ class Q_UML_EXPORT QRemoveVariableValueAction : public QObject, public QWriteVar
     Q_PROPERTY(bool isRemoveDuplicates READ isRemoveDuplicates WRITE setRemoveDuplicates)
     Q_PROPERTY(QInputPin * removeAt READ removeAt WRITE setRemoveAt)
 
+    Q_DISABLE_COPY(QRemoveVariableValueAction)
+    Q_DECLARE_PRIVATE(QRemoveVariableValueAction)
+
 public:
     explicit QRemoveVariableValueAction(QObject *parent = 0);
     virtual ~QRemoveVariableValueAction();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isRemoveDuplicates() const;
     void setRemoveDuplicates(bool isRemoveDuplicates);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QInputPin *removeAt() const;
     void setRemoveAt(const QInputPin *removeAt);
 
 private:
-    Q_DISABLE_COPY(QRemoveVariableValueAction)
-    Q_DECLARE_PRIVATE(QRemoveVariableValueAction)
+    QRemoveVariableValueActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

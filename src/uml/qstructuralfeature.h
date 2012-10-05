@@ -58,15 +58,21 @@ class QStructuralFeaturePrivate;
 
 class Q_UML_EXPORT QStructuralFeature : public virtual QTypedElement, public QMultiplicityElement, public QFeature
 {
+    Q_DISABLE_COPY(QStructuralFeature)
+    Q_DECLARE_PRIVATE(QStructuralFeature)
+
 public:
     virtual ~QStructuralFeature();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isReadOnly() const;
     void setReadOnly(bool isReadOnly);
 
 protected:
     explicit QStructuralFeature();
+
+private:
+    QStructuralFeaturePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

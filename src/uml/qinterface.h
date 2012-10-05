@@ -130,11 +130,14 @@ class Q_UML_EXPORT QInterface : public QObject, public QClassifier
     Q_PROPERTY(QProtocolStateMachine * protocol READ protocol WRITE setProtocol)
     Q_PROPERTY(const QSet<QInterface *> * redefinedInterfaces READ redefinedInterfaces)
 
+    Q_DISABLE_COPY(QInterface)
+    Q_DECLARE_PRIVATE(QInterface)
+
 public:
     explicit QInterface(QObject *parent = 0);
     virtual ~QInterface();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QList<QClassifier *> *nestedClassifiers() const;
     void addNestedClassifier(const QClassifier *nestedClassifier);
     void removeNestedClassifier(const QClassifier *nestedClassifier);
@@ -154,8 +157,7 @@ public:
     void removeRedefinedInterface(const QInterface *redefinedInterface);
 
 private:
-    Q_DISABLE_COPY(QInterface)
-    Q_DECLARE_PRIVATE(QInterface)
+    QInterfacePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

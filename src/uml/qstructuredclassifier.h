@@ -63,23 +63,27 @@ class QConnectableElement;
 
 class Q_UML_EXPORT QStructuredClassifier : public virtual QClassifier
 {
+    Q_DISABLE_COPY(QStructuredClassifier)
+    Q_DECLARE_PRIVATE(QStructuredClassifier)
+
 public:
     virtual ~QStructuredClassifier();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QList<QProperty *> *ownedAttributes() const;
     void addOwnedAttribute(const QProperty *ownedAttribute);
     void removeOwnedAttribute(const QProperty *ownedAttribute);
     const QSet<QConnector *> *ownedConnectors() const;
     void addOwnedConnector(const QConnector *ownedConnector);
     void removeOwnedConnector(const QConnector *ownedConnector);
-    const QSet<QConnectableElement *> *roles() const;
-
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     const QSet<QProperty *> *parts() const;
+    const QSet<QConnectableElement *> *roles() const;
 
 protected:
     explicit QStructuredClassifier();
+
+private:
+    QStructuredClassifierPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -81,23 +81,25 @@ class Q_UML_EXPORT QPackageImport : public QObject, public QDirectedRelationship
     Q_PROPERTY(QPackage * importedPackage READ importedPackage WRITE setImportedPackage)
     Q_PROPERTY(QNamespace * importingNamespace READ importingNamespace WRITE setImportingNamespace)
 
+    Q_DISABLE_COPY(QPackageImport)
+    Q_DECLARE_PRIVATE(QPackageImport)
+
 public:
     explicit QPackageImport(QObject *parent = 0);
     virtual ~QPackageImport();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     QtUml::VisibilityKind visibility() const;
     void setVisibility(QtUml::VisibilityKind visibility);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QPackage *importedPackage() const;
     void setImportedPackage(const QPackage *importedPackage);
     QNamespace *importingNamespace() const;
     void setImportingNamespace(const QNamespace *importingNamespace);
 
 private:
-    Q_DISABLE_COPY(QPackageImport)
-    Q_DECLARE_PRIVATE(QPackageImport)
+    QPackageImportPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

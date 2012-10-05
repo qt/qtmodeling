@@ -108,18 +108,20 @@ class Q_UML_EXPORT QDestroyLinkAction : public QObject, public QWriteLinkAction
     // From QDestroyLinkAction
     Q_PROPERTY(const QSet<QLinkEndDestructionData *> * endData READ endData)
 
+    Q_DISABLE_COPY(QDestroyLinkAction)
+    Q_DECLARE_PRIVATE(QDestroyLinkAction)
+
 public:
     explicit QDestroyLinkAction(QObject *parent = 0);
     virtual ~QDestroyLinkAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QLinkEndDestructionData *> *endData() const;
     void addEndData(const QLinkEndDestructionData *endData);
     void removeEndData(const QLinkEndDestructionData *endData);
 
 private:
-    Q_DISABLE_COPY(QDestroyLinkAction)
-    Q_DECLARE_PRIVATE(QDestroyLinkAction)
+    QDestroyLinkActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -66,24 +66,26 @@ class Q_UML_EXPORT QExtension : public QAssociation
     Q_PROPERTY(QClass * metaclass READ metaclass)
     Q_PROPERTY(QExtensionEnd * ownedEnd READ ownedEnd WRITE setOwnedEnd)
 
+    Q_DISABLE_COPY(QExtension)
+    Q_DECLARE_PRIVATE(QExtension)
+
 public:
     explicit QExtension(QObject *parent = 0);
     virtual ~QExtension();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
+    bool isRequired() const;
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
+    QClass *metaclass() const;
     QExtensionEnd *ownedEnd() const;
     void setOwnedEnd(const QExtensionEnd *ownedEnd);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    bool isRequired() const;
-    QClass *metaclass() const;
+    // Operations
     QProperty *metaclassEnd() const;
 
 private:
-    Q_DISABLE_COPY(QExtension)
-    Q_DECLARE_PRIVATE(QExtension)
+    QExtensionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

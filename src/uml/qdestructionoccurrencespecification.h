@@ -58,13 +58,15 @@ class Q_UML_EXPORT QDestructionOccurrenceSpecification : public QMessageOccurren
 {
     Q_OBJECT
 
+    Q_DISABLE_COPY(QDestructionOccurrenceSpecification)
+    Q_DECLARE_PRIVATE(QDestructionOccurrenceSpecification)
+
 public:
     explicit QDestructionOccurrenceSpecification(QObject *parent = 0);
     virtual ~QDestructionOccurrenceSpecification();
 
 private:
-    Q_DISABLE_COPY(QDestructionOccurrenceSpecification)
-    Q_DECLARE_PRIVATE(QDestructionOccurrenceSpecification)
+    QDestructionOccurrenceSpecificationPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -40,9 +40,31 @@
 ****************************************************************************/
 
 #include "qbehavioredclassifier.h"
-//#include "qbehavioredclassifier_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QBehavioredClassifierPrivate
+{
+public:
+    explicit QBehavioredClassifierPrivate();
+    virtual ~QBehavioredClassifierPrivate();
+
+    QBehavior *classifierBehavior;
+    QSet<QInterfaceRealization *> *interfaceRealizations;
+    QSet<QBehavior *> *ownedBehaviors;
+};
+
+QBehavioredClassifierPrivate::QBehavioredClassifierPrivate() :
+    interfaceRealizations(new QSet<QInterfaceRealization *>),
+    ownedBehaviors(new QSet<QBehavior *>)
+{
+}
+
+QBehavioredClassifierPrivate::~QBehavioredClassifierPrivate()
+{
+    delete interfaceRealizations;
+    delete ownedBehaviors;
+}
 
 /*!
     \class QBehavioredClassifier
@@ -53,11 +75,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QBehavioredClassifier::QBehavioredClassifier()
+    : d_ptr(new QBehavioredClassifierPrivate)
 {
 }
 
 QBehavioredClassifier::~QBehavioredClassifier()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,10 +89,12 @@ QBehavioredClassifier::~QBehavioredClassifier()
  */
 QBehavior *QBehavioredClassifier::classifierBehavior() const
 {
+    return d_ptr->classifierBehavior;
 }
 
 void QBehavioredClassifier::setClassifierBehavior(const QBehavior *classifierBehavior)
 {
+    d_ptr->classifierBehavior = const_cast<QBehavior *>(classifierBehavior);
 }
 
 /*!
@@ -76,14 +102,17 @@ void QBehavioredClassifier::setClassifierBehavior(const QBehavior *classifierBeh
  */
 const QSet<QInterfaceRealization *> *QBehavioredClassifier::interfaceRealizations() const
 {
+    return d_ptr->interfaceRealizations;
 }
 
 void QBehavioredClassifier::addInterfaceRealization(const QInterfaceRealization *interfaceRealization)
 {
+    d_ptr->interfaceRealizations->insert(const_cast<QInterfaceRealization *>(interfaceRealization));
 }
 
 void QBehavioredClassifier::removeInterfaceRealization(const QInterfaceRealization *interfaceRealization)
 {
+    d_ptr->interfaceRealizations->remove(const_cast<QInterfaceRealization *>(interfaceRealization));
 }
 
 /*!
@@ -91,14 +120,17 @@ void QBehavioredClassifier::removeInterfaceRealization(const QInterfaceRealizati
  */
 const QSet<QBehavior *> *QBehavioredClassifier::ownedBehaviors() const
 {
+    return d_ptr->ownedBehaviors;
 }
 
 void QBehavioredClassifier::addOwnedBehavior(const QBehavior *ownedBehavior)
 {
+    d_ptr->ownedBehaviors->insert(const_cast<QBehavior *>(ownedBehavior));
 }
 
 void QBehavioredClassifier::removeOwnedBehavior(const QBehavior *ownedBehavior)
 {
+    d_ptr->ownedBehaviors->remove(const_cast<QBehavior *>(ownedBehavior));
 }
 
 QT_END_NAMESPACE_QTUML

@@ -40,9 +40,28 @@
 ****************************************************************************/
 
 #include "qobjectflow.h"
-//#include "qobjectflow_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QObjectFlowPrivate
+{
+public:
+    explicit QObjectFlowPrivate();
+    virtual ~QObjectFlowPrivate();
+
+    bool isMulticast;
+    bool isMultireceive;
+    QBehavior *selection;
+    QBehavior *transformation;
+};
+
+QObjectFlowPrivate::QObjectFlowPrivate()
+{
+}
+
+QObjectFlowPrivate::~QObjectFlowPrivate()
+{
+}
 
 /*!
     \class QObjectFlow
@@ -53,12 +72,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QObjectFlow::QObjectFlow(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QObjectFlowPrivate)
 {
 }
 
 QObjectFlow::~QObjectFlow()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +86,12 @@ QObjectFlow::~QObjectFlow()
  */
 bool QObjectFlow::isMulticast() const
 {
+    return d_ptr->isMulticast;
 }
 
 void QObjectFlow::setMulticast(bool isMulticast)
 {
+    d_ptr->isMulticast = isMulticast;
 }
 
 /*!
@@ -77,10 +99,12 @@ void QObjectFlow::setMulticast(bool isMulticast)
  */
 bool QObjectFlow::isMultireceive() const
 {
+    return d_ptr->isMultireceive;
 }
 
 void QObjectFlow::setMultireceive(bool isMultireceive)
 {
+    d_ptr->isMultireceive = isMultireceive;
 }
 
 /*!
@@ -88,10 +112,12 @@ void QObjectFlow::setMultireceive(bool isMultireceive)
  */
 QBehavior *QObjectFlow::selection() const
 {
+    return d_ptr->selection;
 }
 
 void QObjectFlow::setSelection(const QBehavior *selection)
 {
+    d_ptr->selection = const_cast<QBehavior *>(selection);
 }
 
 /*!
@@ -99,10 +125,12 @@ void QObjectFlow::setSelection(const QBehavior *selection)
  */
 QBehavior *QObjectFlow::transformation() const
 {
+    return d_ptr->transformation;
 }
 
 void QObjectFlow::setTransformation(const QBehavior *transformation)
 {
+    d_ptr->transformation = const_cast<QBehavior *>(transformation);
 }
 
 #include "moc_qobjectflow.cpp"

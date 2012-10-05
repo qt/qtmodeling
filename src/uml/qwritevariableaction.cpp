@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qwritevariableaction.h"
-//#include "qwritevariableaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QWriteVariableActionPrivate
+{
+public:
+    explicit QWriteVariableActionPrivate();
+    virtual ~QWriteVariableActionPrivate();
+
+    QInputPin *value;
+};
+
+QWriteVariableActionPrivate::QWriteVariableActionPrivate()
+{
+}
+
+QWriteVariableActionPrivate::~QWriteVariableActionPrivate()
+{
+}
 
 /*!
     \class QWriteVariableAction
@@ -53,11 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QWriteVariableAction::QWriteVariableAction()
+    : d_ptr(new QWriteVariableActionPrivate)
 {
 }
 
 QWriteVariableAction::~QWriteVariableAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,10 +83,12 @@ QWriteVariableAction::~QWriteVariableAction()
  */
 QInputPin *QWriteVariableAction::value() const
 {
+    return d_ptr->value;
 }
 
 void QWriteVariableAction::setValue(const QInputPin *value)
 {
+    d_ptr->value = const_cast<QInputPin *>(value);
 }
 
 QT_END_NAMESPACE_QTUML

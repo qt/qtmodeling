@@ -40,9 +40,28 @@
 ****************************************************************************/
 
 #include "qmultiplicityelement.h"
-//#include "qmultiplicityelement_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QMultiplicityElementPrivate
+{
+public:
+    explicit QMultiplicityElementPrivate();
+    virtual ~QMultiplicityElementPrivate();
+
+    bool isOrdered;
+    bool isUnique;
+    QValueSpecification *lowerValue;
+    QValueSpecification *upperValue;
+};
+
+QMultiplicityElementPrivate::QMultiplicityElementPrivate()
+{
+}
+
+QMultiplicityElementPrivate::~QMultiplicityElementPrivate()
+{
+}
 
 /*!
     \class QMultiplicityElement
@@ -53,11 +72,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QMultiplicityElement::QMultiplicityElement()
+    : d_ptr(new QMultiplicityElementPrivate)
 {
 }
 
 QMultiplicityElement::~QMultiplicityElement()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,10 +86,12 @@ QMultiplicityElement::~QMultiplicityElement()
  */
 bool QMultiplicityElement::isOrdered() const
 {
+    return d_ptr->isOrdered;
 }
 
 void QMultiplicityElement::setOrdered(bool isOrdered)
 {
+    d_ptr->isOrdered = isOrdered;
 }
 
 /*!
@@ -76,10 +99,38 @@ void QMultiplicityElement::setOrdered(bool isOrdered)
  */
 bool QMultiplicityElement::isUnique() const
 {
+    return d_ptr->isUnique;
 }
 
 void QMultiplicityElement::setUnique(bool isUnique)
 {
+    d_ptr->isUnique = isUnique;
+}
+
+/*!
+    Specifies the lower bound of the multiplicity interval.
+ */
+qint32 QMultiplicityElement::lower() const
+{
+    qWarning("To be implemented (this is a derived attribute)");
+}
+
+void QMultiplicityElement::setLower(qint32 lower)
+{
+    qWarning("To be implemented (this is a derived attribute)");
+}
+
+/*!
+    Specifies the upper bound of the multiplicity interval.
+ */
+qint32 QMultiplicityElement::upper() const
+{
+    qWarning("To be implemented (this is a derived attribute)");
+}
+
+void QMultiplicityElement::setUpper(qint32 upper)
+{
+    qWarning("To be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -87,10 +138,12 @@ void QMultiplicityElement::setUnique(bool isUnique)
  */
 QValueSpecification *QMultiplicityElement::lowerValue() const
 {
+    return d_ptr->lowerValue;
 }
 
 void QMultiplicityElement::setLowerValue(const QValueSpecification *lowerValue)
 {
+    d_ptr->lowerValue = const_cast<QValueSpecification *>(lowerValue);
 }
 
 /*!
@@ -98,10 +151,12 @@ void QMultiplicityElement::setLowerValue(const QValueSpecification *lowerValue)
  */
 QValueSpecification *QMultiplicityElement::upperValue() const
 {
+    return d_ptr->upperValue;
 }
 
 void QMultiplicityElement::setUpperValue(const QValueSpecification *upperValue)
 {
+    d_ptr->upperValue = const_cast<QValueSpecification *>(upperValue);
 }
 
 /*!
@@ -109,6 +164,7 @@ void QMultiplicityElement::setUpperValue(const QValueSpecification *upperValue)
  */
 bool QMultiplicityElement::compatibleWith(const QMultiplicityElement *other) const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -116,6 +172,7 @@ bool QMultiplicityElement::compatibleWith(const QMultiplicityElement *other) con
  */
 bool QMultiplicityElement::includesCardinality(qint32 C) const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -123,6 +180,7 @@ bool QMultiplicityElement::includesCardinality(qint32 C) const
  */
 bool QMultiplicityElement::includesMultiplicity(const QMultiplicityElement *M) const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -130,6 +188,7 @@ bool QMultiplicityElement::includesMultiplicity(const QMultiplicityElement *M) c
  */
 bool QMultiplicityElement::is(qint32 lowerbound, qint32 upperbound) const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -137,13 +196,7 @@ bool QMultiplicityElement::is(qint32 lowerbound, qint32 upperbound) const
  */
 bool QMultiplicityElement::isMultivalued() const
 {
-}
-
-/*!
-    The derived lower attribute must equal the lowerBound.
- */
-qint32 QMultiplicityElement::lower() const
-{
+    qWarning("To be implemented");
 }
 
 /*!
@@ -151,13 +204,7 @@ qint32 QMultiplicityElement::lower() const
  */
 qint32 QMultiplicityElement::lowerBound() const
 {
-}
-
-/*!
-    The derived upper attribute must equal the upperBound.
- */
-qint32 QMultiplicityElement::upper() const
-{
+    qWarning("To be implemented");
 }
 
 /*!
@@ -165,6 +212,7 @@ qint32 QMultiplicityElement::upper() const
  */
 //qint32 QMultiplicityElement::upperBound() const
 //{
+//    qWarning("To be implemented");
 //}
 
 QT_END_NAMESPACE_QTUML

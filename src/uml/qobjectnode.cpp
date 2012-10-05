@@ -40,9 +40,31 @@
 ****************************************************************************/
 
 #include "qobjectnode.h"
-//#include "qobjectnode_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QObjectNodePrivate
+{
+public:
+    explicit QObjectNodePrivate();
+    virtual ~QObjectNodePrivate();
+
+    bool isControlType;
+    QtUml::ObjectNodeOrderingKind ordering;
+    QSet<QState *> *inState;
+    QBehavior *selection;
+    QValueSpecification *upperBound;
+};
+
+QObjectNodePrivate::QObjectNodePrivate() :
+    inState(new QSet<QState *>)
+{
+}
+
+QObjectNodePrivate::~QObjectNodePrivate()
+{
+    delete inState;
+}
 
 /*!
     \class QObjectNode
@@ -53,11 +75,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QObjectNode::QObjectNode()
+    : d_ptr(new QObjectNodePrivate)
 {
 }
 
 QObjectNode::~QObjectNode()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,10 +89,12 @@ QObjectNode::~QObjectNode()
  */
 bool QObjectNode::isControlType() const
 {
+    return d_ptr->isControlType;
 }
 
 void QObjectNode::setControlType(bool isControlType)
 {
+    d_ptr->isControlType = isControlType;
 }
 
 /*!
@@ -76,10 +102,12 @@ void QObjectNode::setControlType(bool isControlType)
  */
 QtUml::ObjectNodeOrderingKind QObjectNode::ordering() const
 {
+    return d_ptr->ordering;
 }
 
 void QObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
+    d_ptr->ordering = ordering;
 }
 
 /*!
@@ -87,14 +115,17 @@ void QObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
  */
 const QSet<QState *> *QObjectNode::inState() const
 {
+    return d_ptr->inState;
 }
 
 void QObjectNode::addInState(const QState *inState)
 {
+    d_ptr->inState->insert(const_cast<QState *>(inState));
 }
 
 void QObjectNode::removeInState(const QState *inState)
 {
+    d_ptr->inState->remove(const_cast<QState *>(inState));
 }
 
 /*!
@@ -102,10 +133,12 @@ void QObjectNode::removeInState(const QState *inState)
  */
 QBehavior *QObjectNode::selection() const
 {
+    return d_ptr->selection;
 }
 
 void QObjectNode::setSelection(const QBehavior *selection)
 {
+    d_ptr->selection = const_cast<QBehavior *>(selection);
 }
 
 /*!
@@ -113,10 +146,12 @@ void QObjectNode::setSelection(const QBehavior *selection)
  */
 QValueSpecification *QObjectNode::upperBound() const
 {
+    return d_ptr->upperBound;
 }
 
 void QObjectNode::setUpperBound(const QValueSpecification *upperBound)
 {
+    d_ptr->upperBound = const_cast<QValueSpecification *>(upperBound);
 }
 
 QT_END_NAMESPACE_QTUML

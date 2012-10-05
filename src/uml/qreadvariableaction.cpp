@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qreadvariableaction.h"
-//#include "qreadvariableaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QReadVariableActionPrivate
+{
+public:
+    explicit QReadVariableActionPrivate();
+    virtual ~QReadVariableActionPrivate();
+
+    QOutputPin *result;
+};
+
+QReadVariableActionPrivate::QReadVariableActionPrivate()
+{
+}
+
+QReadVariableActionPrivate::~QReadVariableActionPrivate()
+{
+}
 
 /*!
     \class QReadVariableAction
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QReadVariableAction::QReadVariableAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QReadVariableActionPrivate)
 {
 }
 
 QReadVariableAction::~QReadVariableAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QReadVariableAction::~QReadVariableAction()
  */
 QOutputPin *QReadVariableAction::result() const
 {
+    return d_ptr->result;
 }
 
 void QReadVariableAction::setResult(const QOutputPin *result)
 {
+    d_ptr->result = const_cast<QOutputPin *>(result);
 }
 
 #include "moc_qreadvariableaction.cpp"

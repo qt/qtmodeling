@@ -62,17 +62,19 @@ class Q_UML_EXPORT QManifestation : public QAbstraction
     // From QManifestation
     Q_PROPERTY(QPackageableElement * utilizedElement READ utilizedElement WRITE setUtilizedElement)
 
+    Q_DISABLE_COPY(QManifestation)
+    Q_DECLARE_PRIVATE(QManifestation)
+
 public:
     explicit QManifestation(QObject *parent = 0);
     virtual ~QManifestation();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QPackageableElement *utilizedElement() const;
     void setUtilizedElement(const QPackageableElement *utilizedElement);
 
 private:
-    Q_DISABLE_COPY(QManifestation)
-    Q_DECLARE_PRIVATE(QManifestation)
+    QManifestationPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

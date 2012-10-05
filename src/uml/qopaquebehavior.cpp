@@ -40,9 +40,30 @@
 ****************************************************************************/
 
 #include "qopaquebehavior.h"
-//#include "qopaquebehavior_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QOpaqueBehaviorPrivate
+{
+public:
+    explicit QOpaqueBehaviorPrivate();
+    virtual ~QOpaqueBehaviorPrivate();
+
+    QList<QString> *bodies;
+    QList<QString> *languages;
+};
+
+QOpaqueBehaviorPrivate::QOpaqueBehaviorPrivate() :
+    bodies(new QList<QString>),
+    languages(new QList<QString>)
+{
+}
+
+QOpaqueBehaviorPrivate::~QOpaqueBehaviorPrivate()
+{
+    delete bodies;
+    delete languages;
+}
 
 /*!
     \class QOpaqueBehavior
@@ -53,12 +74,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QOpaqueBehavior::QOpaqueBehavior(QObject *parent)
-    : QBehavior(parent)
+    : QBehavior(parent), d_ptr(new QOpaqueBehaviorPrivate)
 {
 }
 
 QOpaqueBehavior::~QOpaqueBehavior()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +88,17 @@ QOpaqueBehavior::~QOpaqueBehavior()
  */
 const QList<QString> *QOpaqueBehavior::bodies() const
 {
+    return d_ptr->bodies;
 }
 
 void QOpaqueBehavior::addBody(QString body)
 {
+    d_ptr->bodies->append(body);
 }
 
 void QOpaqueBehavior::removeBody(QString body)
 {
+    d_ptr->bodies->removeAll(body);
 }
 
 /*!
@@ -81,14 +106,17 @@ void QOpaqueBehavior::removeBody(QString body)
  */
 const QList<QString> *QOpaqueBehavior::languages() const
 {
+    return d_ptr->languages;
 }
 
 void QOpaqueBehavior::addLanguage(QString language)
 {
+    d_ptr->languages->append(language);
 }
 
 void QOpaqueBehavior::removeLanguage(QString language)
 {
+    d_ptr->languages->removeAll(language);
 }
 
 #include "moc_qopaquebehavior.cpp"

@@ -40,9 +40,27 @@
 ****************************************************************************/
 
 #include "qprotocolstatemachine.h"
-//#include "qprotocolstatemachine_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QProtocolStateMachinePrivate
+{
+public:
+    explicit QProtocolStateMachinePrivate();
+    virtual ~QProtocolStateMachinePrivate();
+
+    QSet<QProtocolConformance *> *conformance;
+};
+
+QProtocolStateMachinePrivate::QProtocolStateMachinePrivate() :
+    conformance(new QSet<QProtocolConformance *>)
+{
+}
+
+QProtocolStateMachinePrivate::~QProtocolStateMachinePrivate()
+{
+    delete conformance;
+}
 
 /*!
     \class QProtocolStateMachine
@@ -53,12 +71,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QProtocolStateMachine::QProtocolStateMachine(QObject *parent)
-    : QStateMachine(parent)
+    : QStateMachine(parent), d_ptr(new QProtocolStateMachinePrivate)
 {
 }
 
 QProtocolStateMachine::~QProtocolStateMachine()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +85,17 @@ QProtocolStateMachine::~QProtocolStateMachine()
  */
 const QSet<QProtocolConformance *> *QProtocolStateMachine::conformance() const
 {
+    return d_ptr->conformance;
 }
 
 void QProtocolStateMachine::addConformance(const QProtocolConformance *conformance)
 {
+    d_ptr->conformance->insert(const_cast<QProtocolConformance *>(conformance));
 }
 
 void QProtocolStateMachine::removeConformance(const QProtocolConformance *conformance)
 {
+    d_ptr->conformance->remove(const_cast<QProtocolConformance *>(conformance));
 }
 
 #include "moc_qprotocolstatemachine.cpp"

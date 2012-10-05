@@ -40,9 +40,28 @@
 ****************************************************************************/
 
 #include "qtemplateableelement.h"
-//#include "qtemplateableelement_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QTemplateableElementPrivate
+{
+public:
+    explicit QTemplateableElementPrivate();
+    virtual ~QTemplateableElementPrivate();
+
+    QTemplateSignature *ownedTemplateSignature;
+    QSet<QTemplateBinding *> *templateBindings;
+};
+
+QTemplateableElementPrivate::QTemplateableElementPrivate() :
+    templateBindings(new QSet<QTemplateBinding *>)
+{
+}
+
+QTemplateableElementPrivate::~QTemplateableElementPrivate()
+{
+    delete templateBindings;
+}
 
 /*!
     \class QTemplateableElement
@@ -53,11 +72,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QTemplateableElement::QTemplateableElement()
+    : d_ptr(new QTemplateableElementPrivate)
 {
 }
 
 QTemplateableElement::~QTemplateableElement()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,10 +86,12 @@ QTemplateableElement::~QTemplateableElement()
  */
 QTemplateSignature *QTemplateableElement::ownedTemplateSignature() const
 {
+    return d_ptr->ownedTemplateSignature;
 }
 
 void QTemplateableElement::setOwnedTemplateSignature(const QTemplateSignature *ownedTemplateSignature)
 {
+    d_ptr->ownedTemplateSignature = const_cast<QTemplateSignature *>(ownedTemplateSignature);
 }
 
 /*!
@@ -76,14 +99,17 @@ void QTemplateableElement::setOwnedTemplateSignature(const QTemplateSignature *o
  */
 const QSet<QTemplateBinding *> *QTemplateableElement::templateBindings() const
 {
+    return d_ptr->templateBindings;
 }
 
 void QTemplateableElement::addTemplateBinding(const QTemplateBinding *templateBinding)
 {
+    d_ptr->templateBindings->insert(const_cast<QTemplateBinding *>(templateBinding));
 }
 
 void QTemplateableElement::removeTemplateBinding(const QTemplateBinding *templateBinding)
 {
+    d_ptr->templateBindings->remove(const_cast<QTemplateBinding *>(templateBinding));
 }
 
 /*!
@@ -91,6 +117,7 @@ void QTemplateableElement::removeTemplateBinding(const QTemplateBinding *templat
  */
 bool QTemplateableElement::isTemplate() const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -98,6 +125,7 @@ bool QTemplateableElement::isTemplate() const
  */
 const QSet<QParameterableElement *> *QTemplateableElement::parameterableElements() const
 {
+    qWarning("To be implemented");
 }
 
 QT_END_NAMESPACE_QTUML

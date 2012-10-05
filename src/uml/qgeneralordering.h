@@ -77,19 +77,21 @@ class Q_UML_EXPORT QGeneralOrdering : public QObject, public QNamedElement
     Q_PROPERTY(QOccurrenceSpecification * after READ after WRITE setAfter)
     Q_PROPERTY(QOccurrenceSpecification * before READ before WRITE setBefore)
 
+    Q_DISABLE_COPY(QGeneralOrdering)
+    Q_DECLARE_PRIVATE(QGeneralOrdering)
+
 public:
     explicit QGeneralOrdering(QObject *parent = 0);
     virtual ~QGeneralOrdering();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QOccurrenceSpecification *after() const;
     void setAfter(const QOccurrenceSpecification *after);
     QOccurrenceSpecification *before() const;
     void setBefore(const QOccurrenceSpecification *before);
 
 private:
-    Q_DISABLE_COPY(QGeneralOrdering)
-    Q_DECLARE_PRIVATE(QGeneralOrdering)
+    QGeneralOrderingPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

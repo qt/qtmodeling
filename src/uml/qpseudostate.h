@@ -87,23 +87,25 @@ class Q_UML_EXPORT QPseudostate : public QObject, public QVertex
     Q_PROPERTY(QState * state READ state WRITE setState)
     Q_PROPERTY(QStateMachine * stateMachine READ stateMachine WRITE setStateMachine)
 
+    Q_DISABLE_COPY(QPseudostate)
+    Q_DECLARE_PRIVATE(QPseudostate)
+
 public:
     explicit QPseudostate(QObject *parent = 0);
     virtual ~QPseudostate();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     QtUml::PseudostateKind kind() const;
     void setKind(QtUml::PseudostateKind kind);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QState *state() const;
     void setState(const QState *state);
     QStateMachine *stateMachine() const;
     void setStateMachine(const QStateMachine *stateMachine);
 
 private:
-    Q_DISABLE_COPY(QPseudostate)
-    Q_DECLARE_PRIVATE(QPseudostate)
+    QPseudostatePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

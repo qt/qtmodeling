@@ -63,21 +63,23 @@ class Q_UML_EXPORT QLinkEndDestructionData : public QLinkEndData
     Q_PROPERTY(bool isDestroyDuplicates READ isDestroyDuplicates WRITE setDestroyDuplicates)
     Q_PROPERTY(QInputPin * destroyAt READ destroyAt WRITE setDestroyAt)
 
+    Q_DISABLE_COPY(QLinkEndDestructionData)
+    Q_DECLARE_PRIVATE(QLinkEndDestructionData)
+
 public:
     explicit QLinkEndDestructionData(QObject *parent = 0);
     virtual ~QLinkEndDestructionData();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isDestroyDuplicates() const;
     void setDestroyDuplicates(bool isDestroyDuplicates);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QInputPin *destroyAt() const;
     void setDestroyAt(const QInputPin *destroyAt);
 
 private:
-    Q_DISABLE_COPY(QLinkEndDestructionData)
-    Q_DECLARE_PRIVATE(QLinkEndDestructionData)
+    QLinkEndDestructionDataPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

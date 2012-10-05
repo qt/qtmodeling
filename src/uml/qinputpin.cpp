@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qinputpin.h"
-//#include "qinputpin_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QInputPinPrivate
+{
+public:
+    explicit QInputPinPrivate();
+    virtual ~QInputPinPrivate();
+
+};
+
+QInputPinPrivate::QInputPinPrivate()
+{
+}
+
+QInputPinPrivate::~QInputPinPrivate()
+{
+}
 
 /*!
     \class QInputPin
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QInputPin::QInputPin(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QInputPinPrivate)
 {
 }
 
 QInputPin::~QInputPin()
 {
+    delete d_ptr;
 }
 
 #include "moc_qinputpin.cpp"

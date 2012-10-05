@@ -68,16 +68,20 @@ class QStringExpression;
 
 class Q_UML_EXPORT QNamedElement : public virtual QElement
 {
+    Q_DISABLE_COPY(QNamedElement)
+    Q_DECLARE_PRIVATE(QNamedElement)
+
 public:
     virtual ~QNamedElement();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     QString name() const;
     void setName(QString name);
+    QString qualifiedName() const;
     QtUml::VisibilityKind visibility() const;
     void setVisibility(QtUml::VisibilityKind visibility);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QDependency *> *clientDependencies() const;
     void addClientDependency(const QDependency *clientDependency);
     void removeClientDependency(const QDependency *clientDependency);
@@ -85,15 +89,17 @@ public:
     void setNameExpression(const QStringExpression *nameExpression);
     QNamespace *namespace_() const;
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     const QList<QNamespace *> *allNamespaces() const;
     const QSet<QPackage *> *allOwningPackages() const;
     bool isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const;
-    QString qualifiedName() const;
     QString separator() const;
 
 protected:
     explicit QNamedElement();
+
+private:
+    QNamedElementPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

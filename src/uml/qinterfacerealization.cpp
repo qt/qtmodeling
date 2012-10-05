@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qinterfacerealization.h"
-//#include "qinterfacerealization_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QInterfaceRealizationPrivate
+{
+public:
+    explicit QInterfaceRealizationPrivate();
+    virtual ~QInterfaceRealizationPrivate();
+
+    QInterface *contract;
+    QBehavioredClassifier *implementingClassifier;
+};
+
+QInterfaceRealizationPrivate::QInterfaceRealizationPrivate()
+{
+}
+
+QInterfaceRealizationPrivate::~QInterfaceRealizationPrivate()
+{
+}
 
 /*!
     \class QInterfaceRealization
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QInterfaceRealization::QInterfaceRealization(QObject *parent)
-    : QRealization(parent)
+    : QRealization(parent), d_ptr(new QInterfaceRealizationPrivate)
 {
 }
 
 QInterfaceRealization::~QInterfaceRealization()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QInterfaceRealization::~QInterfaceRealization()
  */
 QInterface *QInterfaceRealization::contract() const
 {
+    return d_ptr->contract;
 }
 
 void QInterfaceRealization::setContract(const QInterface *contract)
 {
+    d_ptr->contract = const_cast<QInterface *>(contract);
 }
 
 /*!
@@ -77,10 +97,12 @@ void QInterfaceRealization::setContract(const QInterface *contract)
  */
 QBehavioredClassifier *QInterfaceRealization::implementingClassifier() const
 {
+    return d_ptr->implementingClassifier;
 }
 
 void QInterfaceRealization::setImplementingClassifier(const QBehavioredClassifier *implementingClassifier)
 {
+    d_ptr->implementingClassifier = const_cast<QBehavioredClassifier *>(implementingClassifier);
 }
 
 #include "moc_qinterfacerealization.cpp"

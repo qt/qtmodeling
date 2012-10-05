@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qintervalconstraint.h"
-//#include "qintervalconstraint_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QIntervalConstraintPrivate
+{
+public:
+    explicit QIntervalConstraintPrivate();
+    virtual ~QIntervalConstraintPrivate();
+
+    QInterval *specification;
+};
+
+QIntervalConstraintPrivate::QIntervalConstraintPrivate()
+{
+}
+
+QIntervalConstraintPrivate::~QIntervalConstraintPrivate()
+{
+}
 
 /*!
     \class QIntervalConstraint
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QIntervalConstraint::QIntervalConstraint(QObject *parent)
-    : QConstraint(parent)
+    : QConstraint(parent), d_ptr(new QIntervalConstraintPrivate)
 {
 }
 
 QIntervalConstraint::~QIntervalConstraint()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QIntervalConstraint::~QIntervalConstraint()
  */
 QInterval *QIntervalConstraint::specification() const
 {
+    return d_ptr->specification;
 }
 
 void QIntervalConstraint::setSpecification(const QInterval *specification)
 {
+    d_ptr->specification = const_cast<QInterval *>(specification);
 }
 
 #include "moc_qintervalconstraint.cpp"

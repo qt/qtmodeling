@@ -106,17 +106,19 @@ class Q_UML_EXPORT QReadStructuralFeatureAction : public QObject, public QStruct
     // From QReadStructuralFeatureAction
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
+    Q_DISABLE_COPY(QReadStructuralFeatureAction)
+    Q_DECLARE_PRIVATE(QReadStructuralFeatureAction)
+
 public:
     explicit QReadStructuralFeatureAction(QObject *parent = 0);
     virtual ~QReadStructuralFeatureAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QOutputPin *result() const;
     void setResult(const QOutputPin *result);
 
 private:
-    Q_DISABLE_COPY(QReadStructuralFeatureAction)
-    Q_DECLARE_PRIVATE(QReadStructuralFeatureAction)
+    QReadStructuralFeatureActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

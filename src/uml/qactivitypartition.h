@@ -94,17 +94,20 @@ class Q_UML_EXPORT QActivityPartition : public QObject, public QActivityGroup
     Q_PROPERTY(const QSet<QActivityPartition *> * subpartitions READ subpartitions)
     Q_PROPERTY(QActivityPartition * superPartition READ superPartition WRITE setSuperPartition)
 
+    Q_DISABLE_COPY(QActivityPartition)
+    Q_DECLARE_PRIVATE(QActivityPartition)
+
 public:
     explicit QActivityPartition(QObject *parent = 0);
     virtual ~QActivityPartition();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isDimension() const;
     void setDimension(bool isDimension);
     bool isExternal() const;
     void setExternal(bool isExternal);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QActivityEdge *> *edges() const;
     void addEdge(const QActivityEdge *edge);
     void removeEdge(const QActivityEdge *edge);
@@ -120,8 +123,7 @@ public:
     void setSuperPartition(const QActivityPartition *superPartition);
 
 private:
-    Q_DISABLE_COPY(QActivityPartition)
-    Q_DECLARE_PRIVATE(QActivityPartition)
+    QActivityPartitionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qclearstructuralfeatureaction.h"
-//#include "qclearstructuralfeatureaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QClearStructuralFeatureActionPrivate
+{
+public:
+    explicit QClearStructuralFeatureActionPrivate();
+    virtual ~QClearStructuralFeatureActionPrivate();
+
+    QOutputPin *result;
+};
+
+QClearStructuralFeatureActionPrivate::QClearStructuralFeatureActionPrivate()
+{
+}
+
+QClearStructuralFeatureActionPrivate::~QClearStructuralFeatureActionPrivate()
+{
+}
 
 /*!
     \class QClearStructuralFeatureAction
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QClearStructuralFeatureAction::QClearStructuralFeatureAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QClearStructuralFeatureActionPrivate)
 {
 }
 
 QClearStructuralFeatureAction::~QClearStructuralFeatureAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QClearStructuralFeatureAction::~QClearStructuralFeatureAction()
  */
 QOutputPin *QClearStructuralFeatureAction::result() const
 {
+    return d_ptr->result;
 }
 
 void QClearStructuralFeatureAction::setResult(const QOutputPin *result)
 {
+    d_ptr->result = const_cast<QOutputPin *>(result);
 }
 
 #include "moc_qclearstructuralfeatureaction.cpp"

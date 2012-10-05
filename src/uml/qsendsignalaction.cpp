@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qsendsignalaction.h"
-//#include "qsendsignalaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QSendSignalActionPrivate
+{
+public:
+    explicit QSendSignalActionPrivate();
+    virtual ~QSendSignalActionPrivate();
+
+    QSignal *signal;
+    QInputPin *target;
+};
+
+QSendSignalActionPrivate::QSendSignalActionPrivate()
+{
+}
+
+QSendSignalActionPrivate::~QSendSignalActionPrivate()
+{
+}
 
 /*!
     \class QSendSignalAction
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QSendSignalAction::QSendSignalAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QSendSignalActionPrivate)
 {
 }
 
 QSendSignalAction::~QSendSignalAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QSendSignalAction::~QSendSignalAction()
  */
 QSignal *QSendSignalAction::signal() const
 {
+    return d_ptr->signal;
 }
 
 void QSendSignalAction::setSignal(const QSignal *signal)
 {
+    d_ptr->signal = const_cast<QSignal *>(signal);
 }
 
 /*!
@@ -77,10 +97,12 @@ void QSendSignalAction::setSignal(const QSignal *signal)
  */
 QInputPin *QSendSignalAction::target() const
 {
+    return d_ptr->target;
 }
 
 void QSendSignalAction::setTarget(const QInputPin *target)
 {
+    d_ptr->target = const_cast<QInputPin *>(target);
 }
 
 #include "moc_qsendsignalaction.cpp"

@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qexpansionnode.h"
-//#include "qexpansionnode_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QExpansionNodePrivate
+{
+public:
+    explicit QExpansionNodePrivate();
+    virtual ~QExpansionNodePrivate();
+
+    QExpansionRegion *regionAsInput;
+    QExpansionRegion *regionAsOutput;
+};
+
+QExpansionNodePrivate::QExpansionNodePrivate()
+{
+}
+
+QExpansionNodePrivate::~QExpansionNodePrivate()
+{
+}
 
 /*!
     \class QExpansionNode
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QExpansionNode::QExpansionNode(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QExpansionNodePrivate)
 {
 }
 
 QExpansionNode::~QExpansionNode()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QExpansionNode::~QExpansionNode()
  */
 QExpansionRegion *QExpansionNode::regionAsInput() const
 {
+    return d_ptr->regionAsInput;
 }
 
 void QExpansionNode::setRegionAsInput(const QExpansionRegion *regionAsInput)
 {
+    d_ptr->regionAsInput = const_cast<QExpansionRegion *>(regionAsInput);
 }
 
 /*!
@@ -77,10 +97,12 @@ void QExpansionNode::setRegionAsInput(const QExpansionRegion *regionAsInput)
  */
 QExpansionRegion *QExpansionNode::regionAsOutput() const
 {
+    return d_ptr->regionAsOutput;
 }
 
 void QExpansionNode::setRegionAsOutput(const QExpansionRegion *regionAsOutput)
 {
+    d_ptr->regionAsOutput = const_cast<QExpansionRegion *>(regionAsOutput);
 }
 
 #include "moc_qexpansionnode.cpp"

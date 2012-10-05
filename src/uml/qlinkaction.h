@@ -62,10 +62,13 @@ class QAssociation;
 
 class Q_UML_EXPORT QLinkAction : public QAction
 {
+    Q_DISABLE_COPY(QLinkAction)
+    Q_DECLARE_PRIVATE(QLinkAction)
+
 public:
     virtual ~QLinkAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QLinkEndData *> *endData() const;
     void addEndData(const QLinkEndData *endData);
     void removeEndData(const QLinkEndData *endData);
@@ -73,11 +76,14 @@ public:
     void addInputValue(const QInputPin *inputValue);
     void removeInputValue(const QInputPin *inputValue);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     QAssociation *association() const;
 
 protected:
     explicit QLinkAction();
+
+private:
+    QLinkActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

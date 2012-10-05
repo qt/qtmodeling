@@ -102,17 +102,19 @@ class Q_UML_EXPORT QStartClassifierBehaviorAction : public QObject, public QActi
     // From QStartClassifierBehaviorAction
     Q_PROPERTY(QInputPin * object READ object WRITE setObject)
 
+    Q_DISABLE_COPY(QStartClassifierBehaviorAction)
+    Q_DECLARE_PRIVATE(QStartClassifierBehaviorAction)
+
 public:
     explicit QStartClassifierBehaviorAction(QObject *parent = 0);
     virtual ~QStartClassifierBehaviorAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QInputPin *object() const;
     void setObject(const QInputPin *object);
 
 private:
-    Q_DISABLE_COPY(QStartClassifierBehaviorAction)
-    Q_DECLARE_PRIVATE(QStartClassifierBehaviorAction)
+    QStartClassifierBehaviorActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

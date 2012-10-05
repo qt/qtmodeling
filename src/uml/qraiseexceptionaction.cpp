@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qraiseexceptionaction.h"
-//#include "qraiseexceptionaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QRaiseExceptionActionPrivate
+{
+public:
+    explicit QRaiseExceptionActionPrivate();
+    virtual ~QRaiseExceptionActionPrivate();
+
+    QInputPin *exception;
+};
+
+QRaiseExceptionActionPrivate::QRaiseExceptionActionPrivate()
+{
+}
+
+QRaiseExceptionActionPrivate::~QRaiseExceptionActionPrivate()
+{
+}
 
 /*!
     \class QRaiseExceptionAction
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QRaiseExceptionAction::QRaiseExceptionAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QRaiseExceptionActionPrivate)
 {
 }
 
 QRaiseExceptionAction::~QRaiseExceptionAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QRaiseExceptionAction::~QRaiseExceptionAction()
  */
 QInputPin *QRaiseExceptionAction::exception() const
 {
+    return d_ptr->exception;
 }
 
 void QRaiseExceptionAction::setException(const QInputPin *exception)
 {
+    d_ptr->exception = const_cast<QInputPin *>(exception);
 }
 
 #include "moc_qraiseexceptionaction.cpp"

@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qvaluespecificationaction.h"
-//#include "qvaluespecificationaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QValueSpecificationActionPrivate
+{
+public:
+    explicit QValueSpecificationActionPrivate();
+    virtual ~QValueSpecificationActionPrivate();
+
+    QOutputPin *result;
+    QValueSpecification *value;
+};
+
+QValueSpecificationActionPrivate::QValueSpecificationActionPrivate()
+{
+}
+
+QValueSpecificationActionPrivate::~QValueSpecificationActionPrivate()
+{
+}
 
 /*!
     \class QValueSpecificationAction
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QValueSpecificationAction::QValueSpecificationAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QValueSpecificationActionPrivate)
 {
 }
 
 QValueSpecificationAction::~QValueSpecificationAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QValueSpecificationAction::~QValueSpecificationAction()
  */
 QOutputPin *QValueSpecificationAction::result() const
 {
+    return d_ptr->result;
 }
 
 void QValueSpecificationAction::setResult(const QOutputPin *result)
 {
+    d_ptr->result = const_cast<QOutputPin *>(result);
 }
 
 /*!
@@ -77,10 +97,12 @@ void QValueSpecificationAction::setResult(const QOutputPin *result)
  */
 QValueSpecification *QValueSpecificationAction::value() const
 {
+    return d_ptr->value;
 }
 
 void QValueSpecificationAction::setValue(const QValueSpecification *value)
 {
+    d_ptr->value = const_cast<QValueSpecification *>(value);
 }
 
 #include "moc_qvaluespecificationaction.cpp"

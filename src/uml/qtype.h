@@ -57,18 +57,24 @@ class QPackage;
 
 class Q_UML_EXPORT QType : public QPackageableElement
 {
+    Q_DISABLE_COPY(QType)
+    Q_DECLARE_PRIVATE(QType)
+
 public:
     virtual ~QType();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QPackage *package() const;
     void setPackage(const QPackage *package);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     bool conformsTo(const QType *other) const;
 
 protected:
     explicit QType();
+
+private:
+    QTypePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

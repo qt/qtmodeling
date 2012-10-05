@@ -62,18 +62,22 @@ class QConnectableElementTemplateParameter;
 
 class Q_UML_EXPORT QConnectableElement : public virtual QTypedElement, public QParameterableElement
 {
+    Q_DISABLE_COPY(QConnectableElement)
+    Q_DECLARE_PRIVATE(QConnectableElement)
+
 public:
     virtual ~QConnectableElement();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
+    const QList<QConnectorEnd *> *ends() const;
     QConnectableElementTemplateParameter *templateParameter() const;
     void setTemplateParameter(const QConnectableElementTemplateParameter *templateParameter);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QList<QConnectorEnd *> *ends() const;
-
 protected:
     explicit QConnectableElement();
+
+private:
+    QConnectableElementPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

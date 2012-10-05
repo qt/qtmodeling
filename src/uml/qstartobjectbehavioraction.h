@@ -110,17 +110,19 @@ class Q_UML_EXPORT QStartObjectBehaviorAction : public QObject, public QCallActi
     // From QStartObjectBehaviorAction
     Q_PROPERTY(QInputPin * object READ object WRITE setObject)
 
+    Q_DISABLE_COPY(QStartObjectBehaviorAction)
+    Q_DECLARE_PRIVATE(QStartObjectBehaviorAction)
+
 public:
     explicit QStartObjectBehaviorAction(QObject *parent = 0);
     virtual ~QStartObjectBehaviorAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QInputPin *object() const;
     void setObject(const QInputPin *object);
 
 private:
-    Q_DISABLE_COPY(QStartObjectBehaviorAction)
-    Q_DECLARE_PRIVATE(QStartObjectBehaviorAction)
+    QStartObjectBehaviorActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

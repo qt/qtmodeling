@@ -81,17 +81,19 @@ class Q_UML_EXPORT QLiteralNull : public QObject, public QLiteralSpecification
     // From QPackageableElement
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
+    Q_DISABLE_COPY(QLiteralNull)
+    Q_DECLARE_PRIVATE(QLiteralNull)
+
 public:
     explicit QLiteralNull(QObject *parent = 0);
     virtual ~QLiteralNull();
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     bool isComputable() const;
     bool isNull() const;
 
 private:
-    Q_DISABLE_COPY(QLiteralNull)
-    Q_DECLARE_PRIVATE(QLiteralNull)
+    QLiteralNullPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

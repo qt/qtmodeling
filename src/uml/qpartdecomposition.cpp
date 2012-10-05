@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qpartdecomposition.h"
-//#include "qpartdecomposition_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QPartDecompositionPrivate
+{
+public:
+    explicit QPartDecompositionPrivate();
+    virtual ~QPartDecompositionPrivate();
+
+};
+
+QPartDecompositionPrivate::QPartDecompositionPrivate()
+{
+}
+
+QPartDecompositionPrivate::~QPartDecompositionPrivate()
+{
+}
 
 /*!
     \class QPartDecomposition
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QPartDecomposition::QPartDecomposition(QObject *parent)
-    : QInteractionUse(parent)
+    : QInteractionUse(parent), d_ptr(new QPartDecompositionPrivate)
 {
 }
 
 QPartDecomposition::~QPartDecomposition()
 {
+    delete d_ptr;
 }
 
 #include "moc_qpartdecomposition.cpp"

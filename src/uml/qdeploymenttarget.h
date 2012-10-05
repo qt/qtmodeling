@@ -61,19 +61,23 @@ class QDeployment;
 
 class Q_UML_EXPORT QDeploymentTarget : public virtual QNamedElement
 {
+    Q_DISABLE_COPY(QDeploymentTarget)
+    Q_DECLARE_PRIVATE(QDeploymentTarget)
+
 public:
     virtual ~QDeploymentTarget();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
+    const QSet<QPackageableElement *> *deployedElements() const;
     const QSet<QDeployment *> *deployments() const;
     void addDeployment(const QDeployment *deployment);
     void removeDeployment(const QDeployment *deployment);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QSet<QPackageableElement *> *deployedElements() const;
-
 protected:
     explicit QDeploymentTarget();
+
+private:
+    QDeploymentTargetPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qstartclassifierbehavioraction.h"
-//#include "qstartclassifierbehavioraction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QStartClassifierBehaviorActionPrivate
+{
+public:
+    explicit QStartClassifierBehaviorActionPrivate();
+    virtual ~QStartClassifierBehaviorActionPrivate();
+
+    QInputPin *object;
+};
+
+QStartClassifierBehaviorActionPrivate::QStartClassifierBehaviorActionPrivate()
+{
+}
+
+QStartClassifierBehaviorActionPrivate::~QStartClassifierBehaviorActionPrivate()
+{
+}
 
 /*!
     \class QStartClassifierBehaviorAction
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QStartClassifierBehaviorAction::QStartClassifierBehaviorAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QStartClassifierBehaviorActionPrivate)
 {
 }
 
 QStartClassifierBehaviorAction::~QStartClassifierBehaviorAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QStartClassifierBehaviorAction::~QStartClassifierBehaviorAction()
  */
 QInputPin *QStartClassifierBehaviorAction::object() const
 {
+    return d_ptr->object;
 }
 
 void QStartClassifierBehaviorAction::setObject(const QInputPin *object)
 {
+    d_ptr->object = const_cast<QInputPin *>(object);
 }
 
 #include "moc_qstartclassifierbehavioraction.cpp"

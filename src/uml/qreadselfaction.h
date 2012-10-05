@@ -102,17 +102,19 @@ class Q_UML_EXPORT QReadSelfAction : public QObject, public QAction
     // From QReadSelfAction
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
+    Q_DISABLE_COPY(QReadSelfAction)
+    Q_DECLARE_PRIVATE(QReadSelfAction)
+
 public:
     explicit QReadSelfAction(QObject *parent = 0);
     virtual ~QReadSelfAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QOutputPin *result() const;
     void setResult(const QOutputPin *result);
 
 private:
-    Q_DISABLE_COPY(QReadSelfAction)
-    Q_DECLARE_PRIVATE(QReadSelfAction)
+    QReadSelfActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -60,20 +60,26 @@ class QOutputPin;
 
 class Q_UML_EXPORT QCallAction : public QInvocationAction
 {
+    Q_DISABLE_COPY(QCallAction)
+    Q_DECLARE_PRIVATE(QCallAction)
+
 public:
     virtual ~QCallAction();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isSynchronous() const;
     void setSynchronous(bool isSynchronous);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QList<QOutputPin *> *results() const;
     void addResult(const QOutputPin *result);
     void removeResult(const QOutputPin *result);
 
 protected:
     explicit QCallAction();
+
+private:
+    QCallActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

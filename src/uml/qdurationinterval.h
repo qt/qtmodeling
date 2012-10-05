@@ -63,19 +63,21 @@ class Q_UML_EXPORT QDurationInterval : public QInterval
     Q_PROPERTY(QDuration * max READ max WRITE setMax)
     Q_PROPERTY(QDuration * min READ min WRITE setMin)
 
+    Q_DISABLE_COPY(QDurationInterval)
+    Q_DECLARE_PRIVATE(QDurationInterval)
+
 public:
     explicit QDurationInterval(QObject *parent = 0);
     virtual ~QDurationInterval();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QDuration *max() const;
     void setMax(const QDuration *max);
     QDuration *min() const;
     void setMin(const QDuration *min);
 
 private:
-    Q_DISABLE_COPY(QDurationInterval)
-    Q_DECLARE_PRIVATE(QDurationInterval)
+    QDurationIntervalPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

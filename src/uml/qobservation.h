@@ -56,11 +56,17 @@ class QObservationPrivate;
 
 class Q_UML_EXPORT QObservation : public QPackageableElement
 {
+    Q_DISABLE_COPY(QObservation)
+    Q_DECLARE_PRIVATE(QObservation)
+
 public:
     virtual ~QObservation();
 
 protected:
     explicit QObservation();
+
+private:
+    QObservationPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -76,23 +76,25 @@ class Q_UML_EXPORT QStringExpression : public QExpression, public QTemplateableE
     Q_PROPERTY(QStringExpression * owningExpression READ owningExpression WRITE setOwningExpression)
     Q_PROPERTY(const QSet<QStringExpression *> * subExpressions READ subExpressions)
 
+    Q_DISABLE_COPY(QStringExpression)
+    Q_DECLARE_PRIVATE(QStringExpression)
+
 public:
     explicit QStringExpression(QObject *parent = 0);
     virtual ~QStringExpression();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QStringExpression *owningExpression() const;
     void setOwningExpression(const QStringExpression *owningExpression);
     const QSet<QStringExpression *> *subExpressions() const;
     void addSubExpression(const QStringExpression *subExpression);
     void removeSubExpression(const QStringExpression *subExpression);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     QString stringValue() const;
 
 private:
-    Q_DISABLE_COPY(QStringExpression)
-    Q_DECLARE_PRIVATE(QStringExpression)
+    QStringExpressionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

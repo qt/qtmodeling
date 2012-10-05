@@ -57,21 +57,27 @@ class QTemplateParameter;
 
 class Q_UML_EXPORT QParameterableElement : public virtual QElement
 {
+    Q_DISABLE_COPY(QParameterableElement)
+    Q_DECLARE_PRIVATE(QParameterableElement)
+
 public:
     virtual ~QParameterableElement();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QTemplateParameter *owningTemplateParameter() const;
     void setOwningTemplateParameter(const QTemplateParameter *owningTemplateParameter);
     QTemplateParameter *templateParameter() const;
     void setTemplateParameter(const QTemplateParameter *templateParameter);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     bool isCompatibleWith(const QParameterableElement *p) const;
     bool isTemplateParameter() const;
 
 protected:
     explicit QParameterableElement();
+
+private:
+    QParameterableElementPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

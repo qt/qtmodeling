@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qmanifestation.h"
-//#include "qmanifestation_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QManifestationPrivate
+{
+public:
+    explicit QManifestationPrivate();
+    virtual ~QManifestationPrivate();
+
+    QPackageableElement *utilizedElement;
+};
+
+QManifestationPrivate::QManifestationPrivate()
+{
+}
+
+QManifestationPrivate::~QManifestationPrivate()
+{
+}
 
 /*!
     \class QManifestation
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QManifestation::QManifestation(QObject *parent)
-    : QAbstraction(parent)
+    : QAbstraction(parent), d_ptr(new QManifestationPrivate)
 {
 }
 
 QManifestation::~QManifestation()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QManifestation::~QManifestation()
  */
 QPackageableElement *QManifestation::utilizedElement() const
 {
+    return d_ptr->utilizedElement;
 }
 
 void QManifestation::setUtilizedElement(const QPackageableElement *utilizedElement)
 {
+    d_ptr->utilizedElement = const_cast<QPackageableElement *>(utilizedElement);
 }
 
 #include "moc_qmanifestation.cpp"

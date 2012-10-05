@@ -40,9 +40,27 @@
 ****************************************************************************/
 
 #include "qsignal.h"
-//#include "qsignal_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QSignalPrivate
+{
+public:
+    explicit QSignalPrivate();
+    virtual ~QSignalPrivate();
+
+    QList<QProperty *> *ownedAttributes;
+};
+
+QSignalPrivate::QSignalPrivate() :
+    ownedAttributes(new QList<QProperty *>)
+{
+}
+
+QSignalPrivate::~QSignalPrivate()
+{
+    delete ownedAttributes;
+}
 
 /*!
     \class QSignal
@@ -53,12 +71,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QSignal::QSignal(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QSignalPrivate)
 {
 }
 
 QSignal::~QSignal()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +85,17 @@ QSignal::~QSignal()
  */
 const QList<QProperty *> *QSignal::ownedAttributes() const
 {
+    return d_ptr->ownedAttributes;
 }
 
 void QSignal::addOwnedAttribute(const QProperty *ownedAttribute)
 {
+    d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
 }
 
 void QSignal::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
+    d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
 }
 
 #include "moc_qsignal.cpp"

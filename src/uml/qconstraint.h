@@ -89,11 +89,14 @@ class Q_UML_EXPORT QConstraint : public QObject, public QPackageableElement
     Q_PROPERTY(QNamespace * context READ context WRITE setContext)
     Q_PROPERTY(QValueSpecification * specification READ specification WRITE setSpecification)
 
+    Q_DISABLE_COPY(QConstraint)
+    Q_DECLARE_PRIVATE(QConstraint)
+
 public:
     explicit QConstraint(QObject *parent = 0);
     virtual ~QConstraint();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QList<QElement *> *constrainedElements() const;
     void addConstrainedElement(const QElement *constrainedElement);
     void removeConstrainedElement(const QElement *constrainedElement);
@@ -103,8 +106,7 @@ public:
     void setSpecification(const QValueSpecification *specification);
 
 private:
-    Q_DISABLE_COPY(QConstraint)
-    Q_DECLARE_PRIVATE(QConstraint)
+    QConstraintPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

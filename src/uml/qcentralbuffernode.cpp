@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qcentralbuffernode.h"
-//#include "qcentralbuffernode_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QCentralBufferNodePrivate
+{
+public:
+    explicit QCentralBufferNodePrivate();
+    virtual ~QCentralBufferNodePrivate();
+
+};
+
+QCentralBufferNodePrivate::QCentralBufferNodePrivate()
+{
+}
+
+QCentralBufferNodePrivate::~QCentralBufferNodePrivate()
+{
+}
 
 /*!
     \class QCentralBufferNode
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QCentralBufferNode::QCentralBufferNode(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QCentralBufferNodePrivate)
 {
 }
 
 QCentralBufferNode::~QCentralBufferNode()
 {
+    delete d_ptr;
 }
 
 #include "moc_qcentralbuffernode.cpp"

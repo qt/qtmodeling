@@ -82,15 +82,18 @@ class Q_UML_EXPORT QGeneralization : public QObject, public QDirectedRelationshi
     Q_PROPERTY(const QSet<QGeneralizationSet *> * generalizationSets READ generalizationSets)
     Q_PROPERTY(QClassifier * specific READ specific WRITE setSpecific)
 
+    Q_DISABLE_COPY(QGeneralization)
+    Q_DECLARE_PRIVATE(QGeneralization)
+
 public:
     explicit QGeneralization(QObject *parent = 0);
     virtual ~QGeneralization();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isSubstitutable() const;
     void setSubstitutable(bool isSubstitutable);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QClassifier *general() const;
     void setGeneral(const QClassifier *general);
     const QSet<QGeneralizationSet *> *generalizationSets() const;
@@ -100,8 +103,7 @@ public:
     void setSpecific(const QClassifier *specific);
 
 private:
-    Q_DISABLE_COPY(QGeneralization)
-    Q_DECLARE_PRIVATE(QGeneralization)
+    QGeneralizationPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

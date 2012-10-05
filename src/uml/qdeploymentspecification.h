@@ -67,23 +67,25 @@ class Q_UML_EXPORT QDeploymentSpecification : public QArtifact
     Q_PROPERTY(QString executionLocation READ executionLocation WRITE setExecutionLocation)
     Q_PROPERTY(QDeployment * deployment READ deployment WRITE setDeployment)
 
+    Q_DISABLE_COPY(QDeploymentSpecification)
+    Q_DECLARE_PRIVATE(QDeploymentSpecification)
+
 public:
     explicit QDeploymentSpecification(QObject *parent = 0);
     virtual ~QDeploymentSpecification();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     QString deploymentLocation() const;
     void setDeploymentLocation(QString deploymentLocation);
     QString executionLocation() const;
     void setExecutionLocation(QString executionLocation);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QDeployment *deployment() const;
     void setDeployment(const QDeployment *deployment);
 
 private:
-    Q_DISABLE_COPY(QDeploymentSpecification)
-    Q_DECLARE_PRIVATE(QDeploymentSpecification)
+    QDeploymentSpecificationPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

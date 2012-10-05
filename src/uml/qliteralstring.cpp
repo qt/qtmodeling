@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qliteralstring.h"
-//#include "qliteralstring_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QLiteralStringPrivate
+{
+public:
+    explicit QLiteralStringPrivate();
+    virtual ~QLiteralStringPrivate();
+
+    QString value;
+};
+
+QLiteralStringPrivate::QLiteralStringPrivate()
+{
+}
+
+QLiteralStringPrivate::~QLiteralStringPrivate()
+{
+}
 
 /*!
     \class QLiteralString
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QLiteralString::QLiteralString(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QLiteralStringPrivate)
 {
 }
 
 QLiteralString::~QLiteralString()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QLiteralString::~QLiteralString()
  */
 QString QLiteralString::value() const
 {
+    return d_ptr->value;
 }
 
 void QLiteralString::setValue(QString value)
 {
+    d_ptr->value = value;
 }
 
 /*!
@@ -77,6 +96,7 @@ void QLiteralString::setValue(QString value)
  */
 bool QLiteralString::isComputable() const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -84,6 +104,7 @@ bool QLiteralString::isComputable() const
  */
 QString QLiteralString::stringValue() const
 {
+    qWarning("To be implemented");
 }
 
 #include "moc_qliteralstring.cpp"

@@ -40,9 +40,28 @@
 ****************************************************************************/
 
 #include "qduration.h"
-//#include "qduration_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QDurationPrivate
+{
+public:
+    explicit QDurationPrivate();
+    virtual ~QDurationPrivate();
+
+    QValueSpecification *expr;
+    QSet<QObservation *> *observations;
+};
+
+QDurationPrivate::QDurationPrivate() :
+    observations(new QSet<QObservation *>)
+{
+}
+
+QDurationPrivate::~QDurationPrivate()
+{
+    delete observations;
+}
 
 /*!
     \class QDuration
@@ -53,12 +72,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QDuration::QDuration(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QDurationPrivate)
 {
 }
 
 QDuration::~QDuration()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +86,12 @@ QDuration::~QDuration()
  */
 QValueSpecification *QDuration::expr() const
 {
+    return d_ptr->expr;
 }
 
 void QDuration::setExpr(const QValueSpecification *expr)
 {
+    d_ptr->expr = const_cast<QValueSpecification *>(expr);
 }
 
 /*!
@@ -77,14 +99,17 @@ void QDuration::setExpr(const QValueSpecification *expr)
  */
 const QSet<QObservation *> *QDuration::observations() const
 {
+    return d_ptr->observations;
 }
 
 void QDuration::addObservation(const QObservation *observation)
 {
+    d_ptr->observations->insert(const_cast<QObservation *>(observation));
 }
 
 void QDuration::removeObservation(const QObservation *observation)
 {
+    d_ptr->observations->remove(const_cast<QObservation *>(observation));
 }
 
 #include "moc_qduration.cpp"

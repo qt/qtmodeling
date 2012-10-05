@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qtimeevent.h"
-//#include "qtimeevent_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QTimeEventPrivate
+{
+public:
+    explicit QTimeEventPrivate();
+    virtual ~QTimeEventPrivate();
+
+    bool isRelative;
+    QTimeExpression *when;
+};
+
+QTimeEventPrivate::QTimeEventPrivate()
+{
+}
+
+QTimeEventPrivate::~QTimeEventPrivate()
+{
+}
 
 /*!
     \class QTimeEvent
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QTimeEvent::QTimeEvent(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QTimeEventPrivate)
 {
 }
 
 QTimeEvent::~QTimeEvent()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QTimeEvent::~QTimeEvent()
  */
 bool QTimeEvent::isRelative() const
 {
+    return d_ptr->isRelative;
 }
 
 void QTimeEvent::setRelative(bool isRelative)
 {
+    d_ptr->isRelative = isRelative;
 }
 
 /*!
@@ -77,10 +97,12 @@ void QTimeEvent::setRelative(bool isRelative)
  */
 QTimeExpression *QTimeEvent::when() const
 {
+    return d_ptr->when;
 }
 
 void QTimeEvent::setWhen(const QTimeExpression *when)
 {
+    d_ptr->when = const_cast<QTimeExpression *>(when);
 }
 
 #include "moc_qtimeevent.cpp"

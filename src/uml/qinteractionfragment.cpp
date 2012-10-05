@@ -40,9 +40,32 @@
 ****************************************************************************/
 
 #include "qinteractionfragment.h"
-//#include "qinteractionfragment_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QInteractionFragmentPrivate
+{
+public:
+    explicit QInteractionFragmentPrivate();
+    virtual ~QInteractionFragmentPrivate();
+
+    QSet<QLifeline *> *covered;
+    QInteraction *enclosingInteraction;
+    QInteractionOperand *enclosingOperand;
+    QSet<QGeneralOrdering *> *generalOrderings;
+};
+
+QInteractionFragmentPrivate::QInteractionFragmentPrivate() :
+    covered(new QSet<QLifeline *>),
+    generalOrderings(new QSet<QGeneralOrdering *>)
+{
+}
+
+QInteractionFragmentPrivate::~QInteractionFragmentPrivate()
+{
+    delete covered;
+    delete generalOrderings;
+}
 
 /*!
     \class QInteractionFragment
@@ -53,11 +76,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QInteractionFragment::QInteractionFragment()
+    : d_ptr(new QInteractionFragmentPrivate)
 {
 }
 
 QInteractionFragment::~QInteractionFragment()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,14 +90,17 @@ QInteractionFragment::~QInteractionFragment()
  */
 const QSet<QLifeline *> *QInteractionFragment::covered() const
 {
+    return d_ptr->covered;
 }
 
 void QInteractionFragment::addCovered(const QLifeline *covered)
 {
+    d_ptr->covered->insert(const_cast<QLifeline *>(covered));
 }
 
 void QInteractionFragment::removeCovered(const QLifeline *covered)
 {
+    d_ptr->covered->remove(const_cast<QLifeline *>(covered));
 }
 
 /*!
@@ -80,10 +108,12 @@ void QInteractionFragment::removeCovered(const QLifeline *covered)
  */
 QInteraction *QInteractionFragment::enclosingInteraction() const
 {
+    return d_ptr->enclosingInteraction;
 }
 
 void QInteractionFragment::setEnclosingInteraction(const QInteraction *enclosingInteraction)
 {
+    d_ptr->enclosingInteraction = const_cast<QInteraction *>(enclosingInteraction);
 }
 
 /*!
@@ -91,10 +121,12 @@ void QInteractionFragment::setEnclosingInteraction(const QInteraction *enclosing
  */
 QInteractionOperand *QInteractionFragment::enclosingOperand() const
 {
+    return d_ptr->enclosingOperand;
 }
 
 void QInteractionFragment::setEnclosingOperand(const QInteractionOperand *enclosingOperand)
 {
+    d_ptr->enclosingOperand = const_cast<QInteractionOperand *>(enclosingOperand);
 }
 
 /*!
@@ -102,14 +134,17 @@ void QInteractionFragment::setEnclosingOperand(const QInteractionOperand *enclos
  */
 const QSet<QGeneralOrdering *> *QInteractionFragment::generalOrderings() const
 {
+    return d_ptr->generalOrderings;
 }
 
 void QInteractionFragment::addGeneralOrdering(const QGeneralOrdering *generalOrdering)
 {
+    d_ptr->generalOrderings->insert(const_cast<QGeneralOrdering *>(generalOrdering));
 }
 
 void QInteractionFragment::removeGeneralOrdering(const QGeneralOrdering *generalOrdering)
 {
+    d_ptr->generalOrderings->remove(const_cast<QGeneralOrdering *>(generalOrdering));
 }
 
 QT_END_NAMESPACE_QTUML

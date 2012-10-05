@@ -89,13 +89,15 @@ class Q_UML_EXPORT QControlFlow : public QObject, public QActivityEdge
     Q_PROPERTY(QActivityNode * target READ target WRITE setTarget)
     Q_PROPERTY(QValueSpecification * weight READ weight WRITE setWeight)
 
+    Q_DISABLE_COPY(QControlFlow)
+    Q_DECLARE_PRIVATE(QControlFlow)
+
 public:
     explicit QControlFlow(QObject *parent = 0);
     virtual ~QControlFlow();
 
 private:
-    Q_DISABLE_COPY(QControlFlow)
-    Q_DECLARE_PRIVATE(QControlFlow)
+    QControlFlowPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

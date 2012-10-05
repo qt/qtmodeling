@@ -86,17 +86,19 @@ class Q_UML_EXPORT QBehaviorExecutionSpecification : public QObject, public QExe
     // From QBehaviorExecutionSpecification
     Q_PROPERTY(QBehavior * behavior READ behavior WRITE setBehavior)
 
+    Q_DISABLE_COPY(QBehaviorExecutionSpecification)
+    Q_DECLARE_PRIVATE(QBehaviorExecutionSpecification)
+
 public:
     explicit QBehaviorExecutionSpecification(QObject *parent = 0);
     virtual ~QBehaviorExecutionSpecification();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QBehavior *behavior() const;
     void setBehavior(const QBehavior *behavior);
 
 private:
-    Q_DISABLE_COPY(QBehaviorExecutionSpecification)
-    Q_DECLARE_PRIVATE(QBehaviorExecutionSpecification)
+    QBehaviorExecutionSpecificationPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

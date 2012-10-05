@@ -131,15 +131,18 @@ class Q_UML_EXPORT QStructuredActivityNode : public QObject, public QAction, pub
     Q_PROPERTY(const QSet<QOutputPin *> * structuredNodeOutputs READ structuredNodeOutputs)
     Q_PROPERTY(const QSet<QVariable *> * variables READ variables)
 
+    Q_DISABLE_COPY(QStructuredActivityNode)
+    Q_DECLARE_PRIVATE(QStructuredActivityNode)
+
 public:
     explicit QStructuredActivityNode(QObject *parent = 0);
     virtual ~QStructuredActivityNode();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool mustIsolate() const;
     void setMustIsolate(bool mustIsolate);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QActivity *activity() const;
     void setActivity(const QActivity *activity);
     const QSet<QActivityEdge *> *edges() const;
@@ -159,8 +162,7 @@ public:
     void removeVariable(const QVariable *variable);
 
 private:
-    Q_DISABLE_COPY(QStructuredActivityNode)
-    Q_DECLARE_PRIVATE(QStructuredActivityNode)
+    QStructuredActivityNodePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

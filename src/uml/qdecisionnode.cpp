@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qdecisionnode.h"
-//#include "qdecisionnode_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QDecisionNodePrivate
+{
+public:
+    explicit QDecisionNodePrivate();
+    virtual ~QDecisionNodePrivate();
+
+    QBehavior *decisionInput;
+    QObjectFlow *decisionInputFlow;
+};
+
+QDecisionNodePrivate::QDecisionNodePrivate()
+{
+}
+
+QDecisionNodePrivate::~QDecisionNodePrivate()
+{
+}
 
 /*!
     \class QDecisionNode
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QDecisionNode::QDecisionNode(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QDecisionNodePrivate)
 {
 }
 
 QDecisionNode::~QDecisionNode()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QDecisionNode::~QDecisionNode()
  */
 QBehavior *QDecisionNode::decisionInput() const
 {
+    return d_ptr->decisionInput;
 }
 
 void QDecisionNode::setDecisionInput(const QBehavior *decisionInput)
 {
+    d_ptr->decisionInput = const_cast<QBehavior *>(decisionInput);
 }
 
 /*!
@@ -77,10 +97,12 @@ void QDecisionNode::setDecisionInput(const QBehavior *decisionInput)
  */
 QObjectFlow *QDecisionNode::decisionInputFlow() const
 {
+    return d_ptr->decisionInputFlow;
 }
 
 void QDecisionNode::setDecisionInputFlow(const QObjectFlow *decisionInputFlow)
 {
+    d_ptr->decisionInputFlow = const_cast<QObjectFlow *>(decisionInputFlow);
 }
 
 #include "moc_qdecisionnode.cpp"

@@ -40,9 +40,37 @@
 ****************************************************************************/
 
 #include "qartifact.h"
-//#include "qartifact_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QArtifactPrivate
+{
+public:
+    explicit QArtifactPrivate();
+    virtual ~QArtifactPrivate();
+
+    QString fileName;
+    QSet<QManifestation *> *manifestations;
+    QSet<QArtifact *> *nestedArtifacts;
+    QList<QProperty *> *ownedAttributes;
+    QList<QOperation *> *ownedOperations;
+};
+
+QArtifactPrivate::QArtifactPrivate() :
+    manifestations(new QSet<QManifestation *>),
+    nestedArtifacts(new QSet<QArtifact *>),
+    ownedAttributes(new QList<QProperty *>),
+    ownedOperations(new QList<QOperation *>)
+{
+}
+
+QArtifactPrivate::~QArtifactPrivate()
+{
+    delete manifestations;
+    delete nestedArtifacts;
+    delete ownedAttributes;
+    delete ownedOperations;
+}
 
 /*!
     \class QArtifact
@@ -53,12 +81,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QArtifact::QArtifact(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QArtifactPrivate)
 {
 }
 
 QArtifact::~QArtifact()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +95,12 @@ QArtifact::~QArtifact()
  */
 QString QArtifact::fileName() const
 {
+    return d_ptr->fileName;
 }
 
 void QArtifact::setFileName(QString fileName)
 {
+    d_ptr->fileName = fileName;
 }
 
 /*!
@@ -77,14 +108,17 @@ void QArtifact::setFileName(QString fileName)
  */
 const QSet<QManifestation *> *QArtifact::manifestations() const
 {
+    return d_ptr->manifestations;
 }
 
 void QArtifact::addManifestation(const QManifestation *manifestation)
 {
+    d_ptr->manifestations->insert(const_cast<QManifestation *>(manifestation));
 }
 
 void QArtifact::removeManifestation(const QManifestation *manifestation)
 {
+    d_ptr->manifestations->remove(const_cast<QManifestation *>(manifestation));
 }
 
 /*!
@@ -92,14 +126,17 @@ void QArtifact::removeManifestation(const QManifestation *manifestation)
  */
 const QSet<QArtifact *> *QArtifact::nestedArtifacts() const
 {
+    return d_ptr->nestedArtifacts;
 }
 
 void QArtifact::addNestedArtifact(const QArtifact *nestedArtifact)
 {
+    d_ptr->nestedArtifacts->insert(const_cast<QArtifact *>(nestedArtifact));
 }
 
 void QArtifact::removeNestedArtifact(const QArtifact *nestedArtifact)
 {
+    d_ptr->nestedArtifacts->remove(const_cast<QArtifact *>(nestedArtifact));
 }
 
 /*!
@@ -107,14 +144,17 @@ void QArtifact::removeNestedArtifact(const QArtifact *nestedArtifact)
  */
 const QList<QProperty *> *QArtifact::ownedAttributes() const
 {
+    return d_ptr->ownedAttributes;
 }
 
 void QArtifact::addOwnedAttribute(const QProperty *ownedAttribute)
 {
+    d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
 }
 
 void QArtifact::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
+    d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
 }
 
 /*!
@@ -122,14 +162,17 @@ void QArtifact::removeOwnedAttribute(const QProperty *ownedAttribute)
  */
 const QList<QOperation *> *QArtifact::ownedOperations() const
 {
+    return d_ptr->ownedOperations;
 }
 
 void QArtifact::addOwnedOperation(const QOperation *ownedOperation)
 {
+    d_ptr->ownedOperations->append(const_cast<QOperation *>(ownedOperation));
 }
 
 void QArtifact::removeOwnedOperation(const QOperation *ownedOperation)
 {
+    d_ptr->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation));
 }
 
 #include "moc_qartifact.cpp"

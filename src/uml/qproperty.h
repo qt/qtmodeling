@@ -96,8 +96,8 @@ class Q_UML_EXPORT QProperty : public QObject, public QStructuralFeature, public
     // From QMultiplicityElement
     Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
     Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
-    Q_PROPERTY(qint32 lower READ lower)
-    Q_PROPERTY(qint32 upper READ upper)
+    Q_PROPERTY(qint32 lower READ lower WRITE setLower)
+    Q_PROPERTY(qint32 upper READ upper WRITE setUpper)
     Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
     Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
 
@@ -125,8 +125,8 @@ class Q_UML_EXPORT QProperty : public QObject, public QStructuralFeature, public
 
     // From QProperty
     Q_PROPERTY(QtUml::AggregationKind aggregation READ aggregation WRITE setAggregation)
-    Q_PROPERTY(QString default_ READ default_)
-    Q_PROPERTY(bool isComposite READ isComposite)
+    Q_PROPERTY(QString default_ READ default_ WRITE setDefault_)
+    Q_PROPERTY(bool isComposite READ isComposite WRITE setComposite)
     Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived)
     Q_PROPERTY(bool isDerivedUnion READ isDerivedUnion WRITE setDerivedUnion)
     Q_PROPERTY(bool isID READ isID WRITE setID)
@@ -137,19 +137,26 @@ class Q_UML_EXPORT QProperty : public QObject, public QStructuralFeature, public
     Q_PROPERTY(QDataType * datatype READ datatype WRITE setDatatype)
     Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
     Q_PROPERTY(QInterface * interface READ interface WRITE setInterface)
-    Q_PROPERTY(QProperty * opposite READ opposite)
+    Q_PROPERTY(QProperty * opposite READ opposite WRITE setOpposite)
     Q_PROPERTY(QAssociation * owningAssociation READ owningAssociation WRITE setOwningAssociation)
     Q_PROPERTY(const QList<QProperty *> * qualifiers READ qualifiers)
     Q_PROPERTY(const QSet<QProperty *> * redefinedProperties READ redefinedProperties)
     Q_PROPERTY(const QSet<QProperty *> * subsettedProperties READ subsettedProperties)
 
+    Q_DISABLE_COPY(QProperty)
+    Q_DECLARE_PRIVATE(QProperty)
+
 public:
     explicit QProperty(QObject *parent = 0);
     virtual ~QProperty();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     QtUml::AggregationKind aggregation() const;
     void setAggregation(QtUml::AggregationKind aggregation);
+    QString default_() const;
+    void setDefault_(QString default_);
+    bool isComposite() const;
+    void setComposite(bool isComposite);
     bool isDerived() const;
     void setDerived(bool isDerived);
     bool isDerivedUnion() const;
@@ -159,7 +166,7 @@ public:
     bool isReadOnly() const;
     void setReadOnly(bool isReadOnly);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QAssociation *association() const;
     void setAssociation(const QAssociation *association);
     QProperty *associationEnd() const;
@@ -172,6 +179,8 @@ public:
     void setDefaultValue(const QValueSpecification *defaultValue);
     QInterface *interface() const;
     void setInterface(const QInterface *interface);
+    QProperty *opposite() const;
+    void setOpposite(const QProperty *opposite);
     QAssociation *owningAssociation() const;
     void setOwningAssociation(const QAssociation *owningAssociation);
     const QList<QProperty *> *qualifiers() const;
@@ -184,19 +193,15 @@ public:
     void addSubsettedProperty(const QProperty *subsettedProperty);
     void removeSubsettedProperty(const QProperty *subsettedProperty);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    QString default_() const;
+    // Operations
     bool isAttribute(const QProperty *p) const;
     bool isCompatibleWith(const QParameterableElement *p) const;
-    bool isComposite() const;
     bool isConsistentWith(const QRedefinableElement *redefinee) const;
     bool isNavigable() const;
-    QProperty *opposite() const;
     const QSet<QType *> *subsettingContext() const;
 
 private:
-    Q_DISABLE_COPY(QProperty)
-    Q_DECLARE_PRIVATE(QProperty)
+    QPropertyPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

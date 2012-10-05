@@ -40,9 +40,31 @@
 ****************************************************************************/
 
 #include "qredefinableelement.h"
-//#include "qredefinableelement_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QRedefinableElementPrivate
+{
+public:
+    explicit QRedefinableElementPrivate();
+    virtual ~QRedefinableElementPrivate();
+
+    bool isLeaf;
+    QSet<QRedefinableElement *> *redefinedElements;
+    QSet<QClassifier *> *redefinitionContexts;
+};
+
+QRedefinableElementPrivate::QRedefinableElementPrivate() :
+    redefinedElements(new QSet<QRedefinableElement *>),
+    redefinitionContexts(new QSet<QClassifier *>)
+{
+}
+
+QRedefinableElementPrivate::~QRedefinableElementPrivate()
+{
+    delete redefinedElements;
+    delete redefinitionContexts;
+}
 
 /*!
     \class QRedefinableElement
@@ -53,11 +75,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QRedefinableElement::QRedefinableElement()
+    : d_ptr(new QRedefinableElementPrivate)
 {
 }
 
 QRedefinableElement::~QRedefinableElement()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,10 +89,12 @@ QRedefinableElement::~QRedefinableElement()
  */
 bool QRedefinableElement::isLeaf() const
 {
+    return d_ptr->isLeaf;
 }
 
 void QRedefinableElement::setLeaf(bool isLeaf)
 {
+    d_ptr->isLeaf = isLeaf;
 }
 
 /*!
@@ -76,6 +102,7 @@ void QRedefinableElement::setLeaf(bool isLeaf)
  */
 const QSet<QRedefinableElement *> *QRedefinableElement::redefinedElements() const
 {
+    return d_ptr->redefinedElements;
 }
 
 /*!
@@ -83,6 +110,7 @@ const QSet<QRedefinableElement *> *QRedefinableElement::redefinedElements() cons
  */
 const QSet<QClassifier *> *QRedefinableElement::redefinitionContexts() const
 {
+    return d_ptr->redefinitionContexts;
 }
 
 /*!
@@ -90,6 +118,7 @@ const QSet<QClassifier *> *QRedefinableElement::redefinitionContexts() const
  */
 bool QRedefinableElement::isConsistentWith(const QRedefinableElement *redefinee) const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -97,6 +126,7 @@ bool QRedefinableElement::isConsistentWith(const QRedefinableElement *redefinee)
  */
 bool QRedefinableElement::isRedefinitionContextValid(const QRedefinableElement *redefined) const
 {
+    qWarning("To be implemented");
 }
 
 QT_END_NAMESPACE_QTUML

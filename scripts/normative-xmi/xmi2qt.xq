@@ -94,7 +94,7 @@ declare function qtxmi:mappedFunctionName ($name as xs:string*) as xs:string* {
 
 declare function qtxmi:modifiedFunctionName ($property as node()*) as xs:string* {
     let $mappedFunctionName := qtxmi:mappedFunctionName($property/@name)
-    let $functionName := if ($property/upperValue/@value = "*"
+    let $functionName := if ($property/upperValue/@value != "1"
                          and not((starts-with($property/@name, "in") or starts-with($property/@name, "to")) and
                                           substring($property/@name, 3, 1) = upper-case(substring($property/@name, 3, 1)))
                          and $property/@name != "provided"
@@ -143,24 +143,24 @@ declare function qtxmi:collectionFromProperty ($property as node()) as xs:string
 declare function qtxmi:modifiedTypeFromNamespacedProperty ($property as node(), $namespace as xs:string, $collection as xs:boolean) as xs:string {
     let $type := qtxmi:typeFromNamespacedProperty($property, $namespace)
     let $element := qtxmi:elementFromProperty($property)
-    let $type := if ($property/upperValue/@value = "*" and $collection) then
+    let $type := if ($property/upperValue/@value != "1" and $collection) then
                      concat(qtxmi:collectionFromProperty($property), $type)
                  else
                      $type
-    let $type := if (($property/upperValue/@value = "*" or ($element/@xmi:type = "uml:Class" and not($collection))) and $element/@xmi:type = "uml:Class") then
+    let $type := if (($property/upperValue/@value != "1" or ($element/@xmi:type = "uml:Class" and not($collection))) and $element/@xmi:type = "uml:Class") then
                      concat($type, " *")
                  else
                      $type
-    let $type := if ($property/upperValue/@value = "*" and $collection) then
+    let $type := if ($property/upperValue/@value != "1" and $collection) then
                      concat($type, ">")
                  else
                      $type
-    let $type := if (($collection or $element/@xmi:type = "uml:Class") and ($property/upperValue/@value = "*" or not($collection)) and
+    let $type := if (($collection or $element/@xmi:type = "uml:Class") and ($property/upperValue/@value != "1" or not($collection)) and
                      (not($property/@direction) or ($property/@direction != "out" and $property/@direction != "inout"))) then
                      concat ("const ", $type)
                  else
                      $type
-    let $type := if ($collection and ($element/@xmi:type = "uml:Class" or $property/upperValue/@value = "*")) then
+    let $type := if ($collection and ($element/@xmi:type = "uml:Class" or $property/upperValue/@value != "1")) then
                      concat ($type, " *")
                  else if ($collection and $element/@xmi:type != "uml:Class" and ($property/@direction = "inout" or $property/@direction = "out")) then
                      concat ($type, " &amp;")
@@ -228,7 +228,7 @@ return
                                                                 and (not(@isOrdered) or @isOrdered = "false"))]/upperValue/@value
                                     | $class/ownedOperation/ownedParameter[not((not(@isUnique) or @isUnique = "true")
                                                                 and (not(@isOrdered) or @isOrdered = "false"))]/upperValue/@value)
-        where $value = "*"
+        where $value != "1"
         return
         <qtinclude>QtCore/QList</qtinclude>
         }
@@ -237,7 +237,7 @@ return
                                                             and (not(@isOrdered) or @isOrdered = "false")]/upperValue/@value
                                     | $class/ownedOperation/ownedParameter[(not(@isUnique) or @isUnique = "true")
                                                             and (not(@isOrdered) or @isOrdered = "false")]/upperValue/@value)
-        where $value = "*"
+        where $value != "1"
         return
         <qtinclude>QtCore/QSet</qtinclude>
         }
@@ -268,24 +268,21 @@ return
         <attribute isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}" isReadOnly="{$isReadOnly}" subsettedProperty="{$attribute/@subsettedProperty}" redefinedProperty="{$attribute/@redefinedProperty}" id="{$attribute/@xmi:id}">
         <accessor return="{$unqualifiedType}" name="{qtxmi:modifiedFunctionName($attribute)}" constness=" const"/>
         {
-        if (not($attribute/upperValue/@value) and not((starts-with($unqualifiedType, "QList") or starts-with($unqualifiedType, "QSet"))) and ($attribute[not(@isReadOnly)]
-            or $attribute/@isReadOnly != "true") and $isDerived = "false") then
+        if (not($attribute/upperValue/@value) and $isReadOnly = "false") then
             <accessor return="void " name="set{qtxmi:capitalizedNameFromTypeString($unqualifiedType, qtxmi:mappedFunctionName($attribute/@name))}" constness="">
                 <parameter type="{$singleUnqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}"/>
             </accessor>
         else ""
         }
         {
-        if ($attribute/upperValue/@value and not((starts-with($unqualifiedType, "QList") or starts-with($unqualifiedType, "QSet"))) and ($attribute[not(@isReadOnly)]
-            or $attribute/@isReadOnly != "true") and $isDerived = "false") then
+        if ($attribute/upperValue/@value and $isReadOnly = "false") then
         <accessor return="void " name="add{qtxmi:capitalizedNameFromTypeString($unqualifiedType, qtxmi:mappedFunctionName($attribute/@name))}" constness="">
            <parameter type="{$singleUnqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}"/>
         </accessor>
         else ""
         }
         {
-        if ($attribute/upperValue/@value and not((starts-with($unqualifiedType, "QList") or starts-with($unqualifiedType, "QSet"))) and ($attribute[not(@isReadOnly)]
-            or $attribute/@isReadOnly != "true") and $isDerived = "false") then
+        if ($attribute/upperValue/@value and $isReadOnly = "false") then
         <accessor return="void " name="remove{qtxmi:capitalizedNameFromTypeString($unqualifiedType, qtxmi:mappedFunctionName($attribute/@name))}" constness="">
            <parameter type="{$singleUnqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}"/>
         </accessor>
@@ -312,24 +309,21 @@ return
         <associationend isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}" isReadOnly="{$isReadOnly}" subsettedProperty="{$attribute/@subsettedProperty}" redefinedProperty="{$attribute/@redefinedProperty}" id="{$attribute/@xmi:id}">
         <accessor return="{$unqualifiedType}" name="{qtxmi:modifiedFunctionName($attribute)}" constness=" const"/>
         {
-        if (not($attribute/upperValue/@value) and not((starts-with($unqualifiedType, "QList") or starts-with($unqualifiedType, "QSet"))) and ($attribute[not(@isReadOnly)]
-            or $attribute/@isReadOnly != "true") and $isDerived = "false") then
+        if (not($attribute/upperValue/@value) and $isReadOnly = "false") then
             <accessor return="void " name="set{qtxmi:capitalizedNameFromTypeString($unqualifiedType, qtxmi:mappedFunctionName($attribute/@name))}" constness="">
                 <parameter type="{$singleUnqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}"/>
             </accessor>
         else ""
         }
         {
-        if ($attribute/upperValue/@value and not((starts-with($unqualifiedType, "QList") or starts-with($unqualifiedType, "QSet"))) and ($attribute[not(@isReadOnly)]
-            or $attribute/@isReadOnly != "true") and $isDerived = "false") then
+        if ($attribute/upperValue/@value and $isReadOnly = "false") then
         <accessor return="void " name="add{qtxmi:capitalizedNameFromTypeString($unqualifiedType, qtxmi:mappedFunctionName($attribute/@name))}" constness="">
            <parameter type="{$singleUnqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}"/>
         </accessor>
         else ""
         }
         {
-        if ($attribute/upperValue/@value and not((starts-with($unqualifiedType, "QList") or starts-with($unqualifiedType, "QSet"))) and ($attribute[not(@isReadOnly)]
-            or $attribute/@isReadOnly != "true") and $isDerived = "false") then
+        if ($attribute/upperValue/@value and $isReadOnly = "false") then
         <accessor return="void " name="remove{qtxmi:capitalizedNameFromTypeString($unqualifiedType, qtxmi:mappedFunctionName($attribute/@name))}" constness="">
            <parameter type="{$singleUnqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}"/>
         </accessor>
@@ -350,9 +344,9 @@ return
                        else
                            "void"
         let $return := if (ends-with($return, "*")) then $return else concat($return, " ")
-        let $functionName := if ($class/ownedAttribute[@name = $operation/@name]) then qtxmi:modifiedFunctionName($class/ownedAttribute[@name = $operation/@name]) else qtxmi:mappedFunctionName($operation/@name)
+        where empty($class/ownedAttribute[@name = $operation/@name])
         return
-        <operation return="{$return}" name="{$functionName}" constness="{$constness}">
+        <operation return="{$return}" name="{qtxmi:mappedFunctionName($operation/@name)}" constness="{$constness}">
         {
         for $parameter in $operation/ownedParameter[not(@direction) or @direction != "return"]
         let $unqualifiedType := qtxmi:modifiedTypeFromNamespacedProperty($parameter, $namespace, xs:boolean("true"))

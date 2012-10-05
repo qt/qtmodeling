@@ -89,22 +89,24 @@ class Q_UML_EXPORT QExpression : public QObject, public QValueSpecification
     Q_PROPERTY(QString symbol READ symbol WRITE setSymbol)
     Q_PROPERTY(const QList<QValueSpecification *> * operands READ operands)
 
+    Q_DISABLE_COPY(QExpression)
+    Q_DECLARE_PRIVATE(QExpression)
+
 public:
     explicit QExpression(QObject *parent = 0);
     virtual ~QExpression();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     QString symbol() const;
     void setSymbol(QString symbol);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QList<QValueSpecification *> *operands() const;
     void addOperand(const QValueSpecification *operand);
     void removeOperand(const QValueSpecification *operand);
 
 private:
-    Q_DISABLE_COPY(QExpression)
-    Q_DECLARE_PRIVATE(QExpression)
+    QExpressionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

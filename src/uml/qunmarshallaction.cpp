@@ -40,9 +40,29 @@
 ****************************************************************************/
 
 #include "qunmarshallaction.h"
-//#include "qunmarshallaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QUnmarshallActionPrivate
+{
+public:
+    explicit QUnmarshallActionPrivate();
+    virtual ~QUnmarshallActionPrivate();
+
+    QInputPin *object;
+    QSet<QOutputPin *> *results;
+    QClassifier *unmarshallType;
+};
+
+QUnmarshallActionPrivate::QUnmarshallActionPrivate() :
+    results(new QSet<QOutputPin *>)
+{
+}
+
+QUnmarshallActionPrivate::~QUnmarshallActionPrivate()
+{
+    delete results;
+}
 
 /*!
     \class QUnmarshallAction
@@ -53,12 +73,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QUnmarshallAction::QUnmarshallAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QUnmarshallActionPrivate)
 {
 }
 
 QUnmarshallAction::~QUnmarshallAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +87,12 @@ QUnmarshallAction::~QUnmarshallAction()
  */
 QInputPin *QUnmarshallAction::object() const
 {
+    return d_ptr->object;
 }
 
 void QUnmarshallAction::setObject(const QInputPin *object)
 {
+    d_ptr->object = const_cast<QInputPin *>(object);
 }
 
 /*!
@@ -77,14 +100,17 @@ void QUnmarshallAction::setObject(const QInputPin *object)
  */
 const QSet<QOutputPin *> *QUnmarshallAction::results() const
 {
+    return d_ptr->results;
 }
 
 void QUnmarshallAction::addResult(const QOutputPin *result)
 {
+    d_ptr->results->insert(const_cast<QOutputPin *>(result));
 }
 
 void QUnmarshallAction::removeResult(const QOutputPin *result)
 {
+    d_ptr->results->remove(const_cast<QOutputPin *>(result));
 }
 
 /*!
@@ -92,10 +118,12 @@ void QUnmarshallAction::removeResult(const QOutputPin *result)
  */
 QClassifier *QUnmarshallAction::unmarshallType() const
 {
+    return d_ptr->unmarshallType;
 }
 
 void QUnmarshallAction::setUnmarshallType(const QClassifier *unmarshallType)
 {
+    d_ptr->unmarshallType = const_cast<QClassifier *>(unmarshallType);
 }
 
 #include "moc_qunmarshallaction.cpp"

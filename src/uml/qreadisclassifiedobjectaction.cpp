@@ -40,9 +40,28 @@
 ****************************************************************************/
 
 #include "qreadisclassifiedobjectaction.h"
-//#include "qreadisclassifiedobjectaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QReadIsClassifiedObjectActionPrivate
+{
+public:
+    explicit QReadIsClassifiedObjectActionPrivate();
+    virtual ~QReadIsClassifiedObjectActionPrivate();
+
+    bool isDirect;
+    QClassifier *classifier;
+    QInputPin *object;
+    QOutputPin *result;
+};
+
+QReadIsClassifiedObjectActionPrivate::QReadIsClassifiedObjectActionPrivate()
+{
+}
+
+QReadIsClassifiedObjectActionPrivate::~QReadIsClassifiedObjectActionPrivate()
+{
+}
 
 /*!
     \class QReadIsClassifiedObjectAction
@@ -53,12 +72,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QReadIsClassifiedObjectAction::QReadIsClassifiedObjectAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QReadIsClassifiedObjectActionPrivate)
 {
 }
 
 QReadIsClassifiedObjectAction::~QReadIsClassifiedObjectAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +86,12 @@ QReadIsClassifiedObjectAction::~QReadIsClassifiedObjectAction()
  */
 bool QReadIsClassifiedObjectAction::isDirect() const
 {
+    return d_ptr->isDirect;
 }
 
 void QReadIsClassifiedObjectAction::setDirect(bool isDirect)
 {
+    d_ptr->isDirect = isDirect;
 }
 
 /*!
@@ -77,10 +99,12 @@ void QReadIsClassifiedObjectAction::setDirect(bool isDirect)
  */
 QClassifier *QReadIsClassifiedObjectAction::classifier() const
 {
+    return d_ptr->classifier;
 }
 
 void QReadIsClassifiedObjectAction::setClassifier(const QClassifier *classifier)
 {
+    d_ptr->classifier = const_cast<QClassifier *>(classifier);
 }
 
 /*!
@@ -88,10 +112,12 @@ void QReadIsClassifiedObjectAction::setClassifier(const QClassifier *classifier)
  */
 QInputPin *QReadIsClassifiedObjectAction::object() const
 {
+    return d_ptr->object;
 }
 
 void QReadIsClassifiedObjectAction::setObject(const QInputPin *object)
 {
+    d_ptr->object = const_cast<QInputPin *>(object);
 }
 
 /*!
@@ -99,10 +125,12 @@ void QReadIsClassifiedObjectAction::setObject(const QInputPin *object)
  */
 QOutputPin *QReadIsClassifiedObjectAction::result() const
 {
+    return d_ptr->result;
 }
 
 void QReadIsClassifiedObjectAction::setResult(const QOutputPin *result)
 {
+    d_ptr->result = const_cast<QOutputPin *>(result);
 }
 
 #include "moc_qreadisclassifiedobjectaction.cpp"

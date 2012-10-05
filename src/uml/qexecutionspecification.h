@@ -57,10 +57,13 @@ class QOccurrenceSpecification;
 
 class Q_UML_EXPORT QExecutionSpecification : public QInteractionFragment
 {
+    Q_DISABLE_COPY(QExecutionSpecification)
+    Q_DECLARE_PRIVATE(QExecutionSpecification)
+
 public:
     virtual ~QExecutionSpecification();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QOccurrenceSpecification *finish() const;
     void setFinish(const QOccurrenceSpecification *finish);
     QOccurrenceSpecification *start() const;
@@ -68,6 +71,9 @@ public:
 
 protected:
     explicit QExecutionSpecification();
+
+private:
+    QExecutionSpecificationPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

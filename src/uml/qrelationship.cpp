@@ -40,9 +40,27 @@
 ****************************************************************************/
 
 #include "qrelationship.h"
-//#include "qrelationship_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QRelationshipPrivate
+{
+public:
+    explicit QRelationshipPrivate();
+    virtual ~QRelationshipPrivate();
+
+    QSet<QElement *> *relatedElements;
+};
+
+QRelationshipPrivate::QRelationshipPrivate() :
+    relatedElements(new QSet<QElement *>)
+{
+}
+
+QRelationshipPrivate::~QRelationshipPrivate()
+{
+    delete relatedElements;
+}
 
 /*!
     \class QRelationship
@@ -53,11 +71,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QRelationship::QRelationship()
+    : d_ptr(new QRelationshipPrivate)
 {
 }
 
 QRelationship::~QRelationship()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,6 +85,7 @@ QRelationship::~QRelationship()
  */
 const QSet<QElement *> *QRelationship::relatedElements() const
 {
+    return d_ptr->relatedElements;
 }
 
 QT_END_NAMESPACE_QTUML

@@ -78,23 +78,25 @@ class Q_UML_EXPORT QProfileApplication : public QObject, public QDirectedRelatio
     Q_PROPERTY(QProfile * appliedProfile READ appliedProfile WRITE setAppliedProfile)
     Q_PROPERTY(QPackage * applyingPackage READ applyingPackage WRITE setApplyingPackage)
 
+    Q_DISABLE_COPY(QProfileApplication)
+    Q_DECLARE_PRIVATE(QProfileApplication)
+
 public:
     explicit QProfileApplication(QObject *parent = 0);
     virtual ~QProfileApplication();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isStrict() const;
     void setStrict(bool isStrict);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QProfile *appliedProfile() const;
     void setAppliedProfile(const QProfile *appliedProfile);
     QPackage *applyingPackage() const;
     void setApplyingPackage(const QPackage *applyingPackage);
 
 private:
-    Q_DISABLE_COPY(QProfileApplication)
-    Q_DECLARE_PRIVATE(QProfileApplication)
+    QProfileApplicationPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

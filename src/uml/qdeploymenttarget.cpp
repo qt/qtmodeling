@@ -40,9 +40,27 @@
 ****************************************************************************/
 
 #include "qdeploymenttarget.h"
-//#include "qdeploymenttarget_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QDeploymentTargetPrivate
+{
+public:
+    explicit QDeploymentTargetPrivate();
+    virtual ~QDeploymentTargetPrivate();
+
+    QSet<QDeployment *> *deployments;
+};
+
+QDeploymentTargetPrivate::QDeploymentTargetPrivate() :
+    deployments(new QSet<QDeployment *>)
+{
+}
+
+QDeploymentTargetPrivate::~QDeploymentTargetPrivate()
+{
+    delete deployments;
+}
 
 /*!
     \class QDeploymentTarget
@@ -53,11 +71,21 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QDeploymentTarget::QDeploymentTarget()
+    : d_ptr(new QDeploymentTargetPrivate)
 {
 }
 
 QDeploymentTarget::~QDeploymentTarget()
 {
+    delete d_ptr;
+}
+
+/*!
+    The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget.
+ */
+const QSet<QPackageableElement *> *QDeploymentTarget::deployedElements() const
+{
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -65,21 +93,17 @@ QDeploymentTarget::~QDeploymentTarget()
  */
 const QSet<QDeployment *> *QDeploymentTarget::deployments() const
 {
+    return d_ptr->deployments;
 }
 
 void QDeploymentTarget::addDeployment(const QDeployment *deployment)
 {
+    d_ptr->deployments->insert(const_cast<QDeployment *>(deployment));
 }
 
 void QDeploymentTarget::removeDeployment(const QDeployment *deployment)
 {
-}
-
-/*!
-    Missing derivation for DeploymentTarget::/deployedElement : PackageableElement
- */
-const QSet<QPackageableElement *> *QDeploymentTarget::deployedElements() const
-{
+    d_ptr->deployments->remove(const_cast<QDeployment *>(deployment));
 }
 
 QT_END_NAMESPACE_QTUML

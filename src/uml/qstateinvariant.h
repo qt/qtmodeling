@@ -83,19 +83,21 @@ class Q_UML_EXPORT QStateInvariant : public QObject, public QInteractionFragment
     Q_PROPERTY(QLifeline * covered READ covered WRITE setCovered)
     Q_PROPERTY(QConstraint * invariant READ invariant WRITE setInvariant)
 
+    Q_DISABLE_COPY(QStateInvariant)
+    Q_DECLARE_PRIVATE(QStateInvariant)
+
 public:
     explicit QStateInvariant(QObject *parent = 0);
     virtual ~QStateInvariant();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QLifeline *covered() const;
     void setCovered(const QLifeline *covered);
     QConstraint *invariant() const;
     void setInvariant(const QConstraint *invariant);
 
 private:
-    Q_DISABLE_COPY(QStateInvariant)
-    Q_DECLARE_PRIVATE(QStateInvariant)
+    QStateInvariantPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

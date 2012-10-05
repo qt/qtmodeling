@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qtype.h"
-//#include "qtype_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QTypePrivate
+{
+public:
+    explicit QTypePrivate();
+    virtual ~QTypePrivate();
+
+    QPackage *package;
+};
+
+QTypePrivate::QTypePrivate()
+{
+}
+
+QTypePrivate::~QTypePrivate()
+{
+}
 
 /*!
     \class QType
@@ -53,11 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QType::QType()
+    : d_ptr(new QTypePrivate)
 {
 }
 
 QType::~QType()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,10 +83,12 @@ QType::~QType()
  */
 QPackage *QType::package() const
 {
+    return d_ptr->package;
 }
 
 void QType::setPackage(const QPackage *package)
 {
+    d_ptr->package = const_cast<QPackage *>(package);
 }
 
 /*!
@@ -76,6 +96,7 @@ void QType::setPackage(const QPackage *package)
  */
 bool QType::conformsTo(const QType *other) const
 {
+    qWarning("To be implemented");
 }
 
 QT_END_NAMESPACE_QTUML

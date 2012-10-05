@@ -56,11 +56,17 @@ class QLiteralSpecificationPrivate;
 
 class Q_UML_EXPORT QLiteralSpecification : public QValueSpecification
 {
+    Q_DISABLE_COPY(QLiteralSpecification)
+    Q_DECLARE_PRIVATE(QLiteralSpecification)
+
 public:
     virtual ~QLiteralSpecification();
 
 protected:
     explicit QLiteralSpecification();
+
+private:
+    QLiteralSpecificationPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

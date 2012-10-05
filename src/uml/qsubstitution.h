@@ -63,19 +63,21 @@ class Q_UML_EXPORT QSubstitution : public QRealization
     Q_PROPERTY(QClassifier * contract READ contract WRITE setContract)
     Q_PROPERTY(QClassifier * substitutingClassifier READ substitutingClassifier WRITE setSubstitutingClassifier)
 
+    Q_DISABLE_COPY(QSubstitution)
+    Q_DECLARE_PRIVATE(QSubstitution)
+
 public:
     explicit QSubstitution(QObject *parent = 0);
     virtual ~QSubstitution();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QClassifier *contract() const;
     void setContract(const QClassifier *contract);
     QClassifier *substitutingClassifier() const;
     void setSubstitutingClassifier(const QClassifier *substitutingClassifier);
 
 private:
-    Q_DISABLE_COPY(QSubstitution)
-    Q_DECLARE_PRIVATE(QSubstitution)
+    QSubstitutionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

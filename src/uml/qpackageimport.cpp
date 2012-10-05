@@ -40,9 +40,27 @@
 ****************************************************************************/
 
 #include "qpackageimport.h"
-//#include "qpackageimport_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QPackageImportPrivate
+{
+public:
+    explicit QPackageImportPrivate();
+    virtual ~QPackageImportPrivate();
+
+    QtUml::VisibilityKind visibility;
+    QPackage *importedPackage;
+    QNamespace *importingNamespace;
+};
+
+QPackageImportPrivate::QPackageImportPrivate()
+{
+}
+
+QPackageImportPrivate::~QPackageImportPrivate()
+{
+}
 
 /*!
     \class QPackageImport
@@ -53,12 +71,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QPackageImport::QPackageImport(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QPackageImportPrivate)
 {
 }
 
 QPackageImport::~QPackageImport()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +85,12 @@ QPackageImport::~QPackageImport()
  */
 QtUml::VisibilityKind QPackageImport::visibility() const
 {
+    return d_ptr->visibility;
 }
 
 void QPackageImport::setVisibility(QtUml::VisibilityKind visibility)
 {
+    d_ptr->visibility = visibility;
 }
 
 /*!
@@ -77,10 +98,12 @@ void QPackageImport::setVisibility(QtUml::VisibilityKind visibility)
  */
 QPackage *QPackageImport::importedPackage() const
 {
+    return d_ptr->importedPackage;
 }
 
 void QPackageImport::setImportedPackage(const QPackage *importedPackage)
 {
+    d_ptr->importedPackage = const_cast<QPackage *>(importedPackage);
 }
 
 /*!
@@ -88,10 +111,12 @@ void QPackageImport::setImportedPackage(const QPackage *importedPackage)
  */
 QNamespace *QPackageImport::importingNamespace() const
 {
+    return d_ptr->importingNamespace;
 }
 
 void QPackageImport::setImportingNamespace(const QNamespace *importingNamespace)
 {
+    d_ptr->importingNamespace = const_cast<QNamespace *>(importingNamespace);
 }
 
 #include "moc_qpackageimport.cpp"

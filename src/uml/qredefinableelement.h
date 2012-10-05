@@ -60,23 +60,29 @@ class QClassifier;
 
 class Q_UML_EXPORT QRedefinableElement : public virtual QNamedElement
 {
+    Q_DISABLE_COPY(QRedefinableElement)
+    Q_DECLARE_PRIVATE(QRedefinableElement)
+
 public:
     virtual ~QRedefinableElement();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isLeaf() const;
     void setLeaf(bool isLeaf);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QRedefinableElement *> *redefinedElements() const;
     const QSet<QClassifier *> *redefinitionContexts() const;
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     bool isConsistentWith(const QRedefinableElement *redefinee) const;
     bool isRedefinitionContextValid(const QRedefinableElement *redefined) const;
 
 protected:
     explicit QRedefinableElement();
+
+private:
+    QRedefinableElementPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

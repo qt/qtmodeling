@@ -40,9 +40,36 @@
 ****************************************************************************/
 
 #include "qopaqueaction.h"
-//#include "qopaqueaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QOpaqueActionPrivate
+{
+public:
+    explicit QOpaqueActionPrivate();
+    virtual ~QOpaqueActionPrivate();
+
+    QList<QString> *bodies;
+    QList<QString> *languages;
+    QSet<QInputPin *> *inputValues;
+    QSet<QOutputPin *> *outputValues;
+};
+
+QOpaqueActionPrivate::QOpaqueActionPrivate() :
+    bodies(new QList<QString>),
+    languages(new QList<QString>),
+    inputValues(new QSet<QInputPin *>),
+    outputValues(new QSet<QOutputPin *>)
+{
+}
+
+QOpaqueActionPrivate::~QOpaqueActionPrivate()
+{
+    delete bodies;
+    delete languages;
+    delete inputValues;
+    delete outputValues;
+}
 
 /*!
     \class QOpaqueAction
@@ -53,12 +80,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QOpaqueAction::QOpaqueAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QOpaqueActionPrivate)
 {
 }
 
 QOpaqueAction::~QOpaqueAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +94,17 @@ QOpaqueAction::~QOpaqueAction()
  */
 const QList<QString> *QOpaqueAction::bodies() const
 {
+    return d_ptr->bodies;
 }
 
 void QOpaqueAction::addBody(QString body)
 {
+    d_ptr->bodies->append(body);
 }
 
 void QOpaqueAction::removeBody(QString body)
 {
+    d_ptr->bodies->removeAll(body);
 }
 
 /*!
@@ -81,14 +112,17 @@ void QOpaqueAction::removeBody(QString body)
  */
 const QList<QString> *QOpaqueAction::languages() const
 {
+    return d_ptr->languages;
 }
 
 void QOpaqueAction::addLanguage(QString language)
 {
+    d_ptr->languages->append(language);
 }
 
 void QOpaqueAction::removeLanguage(QString language)
 {
+    d_ptr->languages->removeAll(language);
 }
 
 /*!
@@ -96,14 +130,17 @@ void QOpaqueAction::removeLanguage(QString language)
  */
 const QSet<QInputPin *> *QOpaqueAction::inputValues() const
 {
+    return d_ptr->inputValues;
 }
 
 void QOpaqueAction::addInputValue(const QInputPin *inputValue)
 {
+    d_ptr->inputValues->insert(const_cast<QInputPin *>(inputValue));
 }
 
 void QOpaqueAction::removeInputValue(const QInputPin *inputValue)
 {
+    d_ptr->inputValues->remove(const_cast<QInputPin *>(inputValue));
 }
 
 /*!
@@ -111,14 +148,17 @@ void QOpaqueAction::removeInputValue(const QInputPin *inputValue)
  */
 const QSet<QOutputPin *> *QOpaqueAction::outputValues() const
 {
+    return d_ptr->outputValues;
 }
 
 void QOpaqueAction::addOutputValue(const QOutputPin *outputValue)
 {
+    d_ptr->outputValues->insert(const_cast<QOutputPin *>(outputValue));
 }
 
 void QOpaqueAction::removeOutputValue(const QOutputPin *outputValue)
 {
+    d_ptr->outputValues->remove(const_cast<QOutputPin *>(outputValue));
 }
 
 #include "moc_qopaqueaction.cpp"

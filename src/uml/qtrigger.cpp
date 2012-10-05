@@ -40,9 +40,28 @@
 ****************************************************************************/
 
 #include "qtrigger.h"
-//#include "qtrigger_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QTriggerPrivate
+{
+public:
+    explicit QTriggerPrivate();
+    virtual ~QTriggerPrivate();
+
+    QEvent *event;
+    QSet<QPort *> *ports;
+};
+
+QTriggerPrivate::QTriggerPrivate() :
+    ports(new QSet<QPort *>)
+{
+}
+
+QTriggerPrivate::~QTriggerPrivate()
+{
+    delete ports;
+}
 
 /*!
     \class QTrigger
@@ -53,12 +72,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QTrigger::QTrigger(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QTriggerPrivate)
 {
 }
 
 QTrigger::~QTrigger()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +86,12 @@ QTrigger::~QTrigger()
  */
 QEvent *QTrigger::event() const
 {
+    return d_ptr->event;
 }
 
 void QTrigger::setEvent(const QEvent *event)
 {
+    d_ptr->event = const_cast<QEvent *>(event);
 }
 
 /*!
@@ -77,14 +99,17 @@ void QTrigger::setEvent(const QEvent *event)
  */
 const QSet<QPort *> *QTrigger::ports() const
 {
+    return d_ptr->ports;
 }
 
 void QTrigger::addPort(const QPort *port)
 {
+    d_ptr->ports->insert(const_cast<QPort *>(port));
 }
 
 void QTrigger::removePort(const QPort *port)
 {
+    d_ptr->ports->remove(const_cast<QPort *>(port));
 }
 
 #include "moc_qtrigger.cpp"

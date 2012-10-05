@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qpin.h"
-//#include "qpin_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QPinPrivate
+{
+public:
+    explicit QPinPrivate();
+    virtual ~QPinPrivate();
+
+    bool isControl;
+};
+
+QPinPrivate::QPinPrivate()
+{
+}
+
+QPinPrivate::~QPinPrivate()
+{
+}
 
 /*!
     \class QPin
@@ -53,11 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QPin::QPin()
+    : d_ptr(new QPinPrivate)
 {
 }
 
 QPin::~QPin()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,10 +83,12 @@ QPin::~QPin()
  */
 bool QPin::isControl() const
 {
+    return d_ptr->isControl;
 }
 
 void QPin::setControl(bool isControl)
 {
+    d_ptr->isControl = isControl;
 }
 
 QT_END_NAMESPACE_QTUML

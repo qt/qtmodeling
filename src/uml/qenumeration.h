@@ -65,18 +65,20 @@ class Q_UML_EXPORT QEnumeration : public QDataType
     // From QEnumeration
     Q_PROPERTY(const QList<QEnumerationLiteral *> * ownedLiterals READ ownedLiterals)
 
+    Q_DISABLE_COPY(QEnumeration)
+    Q_DECLARE_PRIVATE(QEnumeration)
+
 public:
     explicit QEnumeration(QObject *parent = 0);
     virtual ~QEnumeration();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QList<QEnumerationLiteral *> *ownedLiterals() const;
     void addOwnedLiteral(const QEnumerationLiteral *ownedLiteral);
     void removeOwnedLiteral(const QEnumerationLiteral *ownedLiteral);
 
 private:
-    Q_DISABLE_COPY(QEnumeration)
-    Q_DECLARE_PRIVATE(QEnumeration)
+    QEnumerationPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

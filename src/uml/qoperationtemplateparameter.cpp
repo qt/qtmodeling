@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qoperationtemplateparameter.h"
-//#include "qoperationtemplateparameter_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QOperationTemplateParameterPrivate
+{
+public:
+    explicit QOperationTemplateParameterPrivate();
+    virtual ~QOperationTemplateParameterPrivate();
+
+    QOperation *parameteredElement;
+};
+
+QOperationTemplateParameterPrivate::QOperationTemplateParameterPrivate()
+{
+}
+
+QOperationTemplateParameterPrivate::~QOperationTemplateParameterPrivate()
+{
+}
 
 /*!
     \class QOperationTemplateParameter
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QOperationTemplateParameter::QOperationTemplateParameter(QObject *parent)
-    : QTemplateParameter(parent)
+    : QTemplateParameter(parent), d_ptr(new QOperationTemplateParameterPrivate)
 {
 }
 
 QOperationTemplateParameter::~QOperationTemplateParameter()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QOperationTemplateParameter::~QOperationTemplateParameter()
  */
 QOperation *QOperationTemplateParameter::parameteredElement() const
 {
+    return d_ptr->parameteredElement;
 }
 
 void QOperationTemplateParameter::setParameteredElement(const QOperation *parameteredElement)
 {
+    d_ptr->parameteredElement = const_cast<QOperation *>(parameteredElement);
 }
 
 #include "moc_qoperationtemplateparameter.cpp"

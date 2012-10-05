@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qexecutionspecification.h"
-//#include "qexecutionspecification_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QExecutionSpecificationPrivate
+{
+public:
+    explicit QExecutionSpecificationPrivate();
+    virtual ~QExecutionSpecificationPrivate();
+
+    QOccurrenceSpecification *finish;
+    QOccurrenceSpecification *start;
+};
+
+QExecutionSpecificationPrivate::QExecutionSpecificationPrivate()
+{
+}
+
+QExecutionSpecificationPrivate::~QExecutionSpecificationPrivate()
+{
+}
 
 /*!
     \class QExecutionSpecification
@@ -53,11 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QExecutionSpecification::QExecutionSpecification()
+    : d_ptr(new QExecutionSpecificationPrivate)
 {
 }
 
 QExecutionSpecification::~QExecutionSpecification()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,10 +84,12 @@ QExecutionSpecification::~QExecutionSpecification()
  */
 QOccurrenceSpecification *QExecutionSpecification::finish() const
 {
+    return d_ptr->finish;
 }
 
 void QExecutionSpecification::setFinish(const QOccurrenceSpecification *finish)
 {
+    d_ptr->finish = const_cast<QOccurrenceSpecification *>(finish);
 }
 
 /*!
@@ -76,10 +97,12 @@ void QExecutionSpecification::setFinish(const QOccurrenceSpecification *finish)
  */
 QOccurrenceSpecification *QExecutionSpecification::start() const
 {
+    return d_ptr->start;
 }
 
 void QExecutionSpecification::setStart(const QOccurrenceSpecification *start)
 {
+    d_ptr->start = const_cast<QOccurrenceSpecification *>(start);
 }
 
 QT_END_NAMESPACE_QTUML

@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qactioninputpin.h"
-//#include "qactioninputpin_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QActionInputPinPrivate
+{
+public:
+    explicit QActionInputPinPrivate();
+    virtual ~QActionInputPinPrivate();
+
+    QAction *fromAction;
+};
+
+QActionInputPinPrivate::QActionInputPinPrivate()
+{
+}
+
+QActionInputPinPrivate::~QActionInputPinPrivate()
+{
+}
 
 /*!
     \class QActionInputPin
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QActionInputPin::QActionInputPin(QObject *parent)
-    : QInputPin(parent)
+    : QInputPin(parent), d_ptr(new QActionInputPinPrivate)
 {
 }
 
 QActionInputPin::~QActionInputPin()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QActionInputPin::~QActionInputPin()
  */
 QAction *QActionInputPin::fromAction() const
 {
+    return d_ptr->fromAction;
 }
 
 void QActionInputPin::setFromAction(const QAction *fromAction)
 {
+    d_ptr->fromAction = const_cast<QAction *>(fromAction);
 }
 
 #include "moc_qactioninputpin.cpp"

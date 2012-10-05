@@ -79,8 +79,8 @@ class Q_UML_EXPORT QParameter : public QObject, public QMultiplicityElement, pub
     // From QMultiplicityElement
     Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
     Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
-    Q_PROPERTY(qint32 lower READ lower)
-    Q_PROPERTY(qint32 upper READ upper)
+    Q_PROPERTY(qint32 lower READ lower WRITE setLower)
+    Q_PROPERTY(qint32 upper READ upper WRITE setUpper)
     Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
     Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
 
@@ -103,7 +103,7 @@ class Q_UML_EXPORT QParameter : public QObject, public QMultiplicityElement, pub
     Q_PROPERTY(QConnectableElementTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
 
     // From QParameter
-    Q_PROPERTY(QString default_ READ default_)
+    Q_PROPERTY(QString default_ READ default_ WRITE setDefault_)
     Q_PROPERTY(QtUml::ParameterDirectionKind direction READ direction WRITE setDirection)
     Q_PROPERTY(QtUml::ParameterEffectKind effect READ effect WRITE setEffect)
     Q_PROPERTY(bool isException READ isException WRITE setException)
@@ -112,11 +112,16 @@ class Q_UML_EXPORT QParameter : public QObject, public QMultiplicityElement, pub
     Q_PROPERTY(QOperation * operation READ operation WRITE setOperation)
     Q_PROPERTY(const QSet<QParameterSet *> * parameterSets READ parameterSets)
 
+    Q_DISABLE_COPY(QParameter)
+    Q_DECLARE_PRIVATE(QParameter)
+
 public:
     explicit QParameter(QObject *parent = 0);
     virtual ~QParameter();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
+    QString default_() const;
+    void setDefault_(QString default_);
     QtUml::ParameterDirectionKind direction() const;
     void setDirection(QtUml::ParameterDirectionKind direction);
     QtUml::ParameterEffectKind effect() const;
@@ -126,7 +131,7 @@ public:
     bool isStream() const;
     void setStream(bool isStream);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QValueSpecification *defaultValue() const;
     void setDefaultValue(const QValueSpecification *defaultValue);
     QOperation *operation() const;
@@ -135,12 +140,8 @@ public:
     void addParameterSet(const QParameterSet *parameterSet);
     void removeParameterSet(const QParameterSet *parameterSet);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    QString default_() const;
-
 private:
-    Q_DISABLE_COPY(QParameter)
-    Q_DECLARE_PRIVATE(QParameter)
+    QParameterPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

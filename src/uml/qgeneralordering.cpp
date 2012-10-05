@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qgeneralordering.h"
-//#include "qgeneralordering_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QGeneralOrderingPrivate
+{
+public:
+    explicit QGeneralOrderingPrivate();
+    virtual ~QGeneralOrderingPrivate();
+
+    QOccurrenceSpecification *after;
+    QOccurrenceSpecification *before;
+};
+
+QGeneralOrderingPrivate::QGeneralOrderingPrivate()
+{
+}
+
+QGeneralOrderingPrivate::~QGeneralOrderingPrivate()
+{
+}
 
 /*!
     \class QGeneralOrdering
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QGeneralOrdering::QGeneralOrdering(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QGeneralOrderingPrivate)
 {
 }
 
 QGeneralOrdering::~QGeneralOrdering()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QGeneralOrdering::~QGeneralOrdering()
  */
 QOccurrenceSpecification *QGeneralOrdering::after() const
 {
+    return d_ptr->after;
 }
 
 void QGeneralOrdering::setAfter(const QOccurrenceSpecification *after)
 {
+    d_ptr->after = const_cast<QOccurrenceSpecification *>(after);
 }
 
 /*!
@@ -77,10 +97,12 @@ void QGeneralOrdering::setAfter(const QOccurrenceSpecification *after)
  */
 QOccurrenceSpecification *QGeneralOrdering::before() const
 {
+    return d_ptr->before;
 }
 
 void QGeneralOrdering::setBefore(const QOccurrenceSpecification *before)
 {
+    d_ptr->before = const_cast<QOccurrenceSpecification *>(before);
 }
 
 #include "moc_qgeneralordering.cpp"

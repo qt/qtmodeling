@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qdeployedartifact.h"
-//#include "qdeployedartifact_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QDeployedArtifactPrivate
+{
+public:
+    explicit QDeployedArtifactPrivate();
+    virtual ~QDeployedArtifactPrivate();
+
+};
+
+QDeployedArtifactPrivate::QDeployedArtifactPrivate()
+{
+}
+
+QDeployedArtifactPrivate::~QDeployedArtifactPrivate()
+{
+}
 
 /*!
     \class QDeployedArtifact
@@ -53,11 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QDeployedArtifact::QDeployedArtifact()
+    : d_ptr(new QDeployedArtifactPrivate)
 {
 }
 
 QDeployedArtifact::~QDeployedArtifact()
 {
+    delete d_ptr;
 }
 
 QT_END_NAMESPACE_QTUML

@@ -56,11 +56,17 @@ class QMessageEventPrivate;
 
 class Q_UML_EXPORT QMessageEvent : public QEvent
 {
+    Q_DISABLE_COPY(QMessageEvent)
+    Q_DECLARE_PRIVATE(QMessageEvent)
+
 public:
     virtual ~QMessageEvent();
 
 protected:
     explicit QMessageEvent();
+
+private:
+    QMessageEventPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

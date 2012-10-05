@@ -93,11 +93,14 @@ class Q_UML_EXPORT QOpaqueExpression : public QObject, public QValueSpecificatio
     Q_PROPERTY(QBehavior * behavior READ behavior WRITE setBehavior)
     Q_PROPERTY(QParameter * result READ result)
 
+    Q_DISABLE_COPY(QOpaqueExpression)
+    Q_DECLARE_PRIVATE(QOpaqueExpression)
+
 public:
     explicit QOpaqueExpression(QObject *parent = 0);
     virtual ~QOpaqueExpression();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     const QList<QString> *bodies() const;
     void addBody(QString body);
     void removeBody(QString body);
@@ -105,20 +108,19 @@ public:
     void addLanguage(QString language);
     void removeLanguage(QString language);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QBehavior *behavior() const;
     void setBehavior(const QBehavior *behavior);
+    QParameter *result() const;
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     bool isIntegral() const;
     bool isNonNegative() const;
     bool isPositive() const;
-    QParameter *result() const;
     qint32 value() const;
 
 private:
-    Q_DISABLE_COPY(QOpaqueExpression)
-    Q_DECLARE_PRIVATE(QOpaqueExpression)
+    QOpaqueExpressionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -78,13 +78,15 @@ class Q_UML_EXPORT QAnyReceiveEvent : public QObject, public QMessageEvent
     // From QPackageableElement
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
+    Q_DISABLE_COPY(QAnyReceiveEvent)
+    Q_DECLARE_PRIVATE(QAnyReceiveEvent)
+
 public:
     explicit QAnyReceiveEvent(QObject *parent = 0);
     virtual ~QAnyReceiveEvent();
 
 private:
-    Q_DISABLE_COPY(QAnyReceiveEvent)
-    Q_DECLARE_PRIVATE(QAnyReceiveEvent)
+    QAnyReceiveEventPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

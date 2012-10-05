@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qliteralreal.h"
-//#include "qliteralreal_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QLiteralRealPrivate
+{
+public:
+    explicit QLiteralRealPrivate();
+    virtual ~QLiteralRealPrivate();
+
+    qreal value;
+};
+
+QLiteralRealPrivate::QLiteralRealPrivate()
+{
+}
+
+QLiteralRealPrivate::~QLiteralRealPrivate()
+{
+}
 
 /*!
     \class QLiteralReal
@@ -53,20 +69,23 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QLiteralReal::QLiteralReal(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QLiteralRealPrivate)
 {
 }
 
 QLiteralReal::~QLiteralReal()
 {
+    delete d_ptr;
 }
 
 qreal QLiteralReal::value() const
 {
+    return d_ptr->value;
 }
 
 void QLiteralReal::setValue(qreal value)
 {
+    d_ptr->value = value;
 }
 
 /*!
@@ -74,6 +93,7 @@ void QLiteralReal::setValue(qreal value)
  */
 bool QLiteralReal::isComputable() const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -81,6 +101,7 @@ bool QLiteralReal::isComputable() const
  */
 qreal QLiteralReal::realValue() const
 {
+    qWarning("To be implemented");
 }
 
 #include "moc_qliteralreal.cpp"

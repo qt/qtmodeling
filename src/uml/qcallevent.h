@@ -82,17 +82,19 @@ class Q_UML_EXPORT QCallEvent : public QObject, public QMessageEvent
     // From QCallEvent
     Q_PROPERTY(QOperation * operation READ operation WRITE setOperation)
 
+    Q_DISABLE_COPY(QCallEvent)
+    Q_DECLARE_PRIVATE(QCallEvent)
+
 public:
     explicit QCallEvent(QObject *parent = 0);
     virtual ~QCallEvent();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QOperation *operation() const;
     void setOperation(const QOperation *operation);
 
 private:
-    Q_DISABLE_COPY(QCallEvent)
-    Q_DECLARE_PRIVATE(QCallEvent)
+    QCallEventPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

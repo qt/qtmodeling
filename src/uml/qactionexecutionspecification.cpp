@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qactionexecutionspecification.h"
-//#include "qactionexecutionspecification_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QActionExecutionSpecificationPrivate
+{
+public:
+    explicit QActionExecutionSpecificationPrivate();
+    virtual ~QActionExecutionSpecificationPrivate();
+
+    QAction *action;
+};
+
+QActionExecutionSpecificationPrivate::QActionExecutionSpecificationPrivate()
+{
+}
+
+QActionExecutionSpecificationPrivate::~QActionExecutionSpecificationPrivate()
+{
+}
 
 /*!
     \class QActionExecutionSpecification
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QActionExecutionSpecification::QActionExecutionSpecification(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QActionExecutionSpecificationPrivate)
 {
 }
 
 QActionExecutionSpecification::~QActionExecutionSpecification()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QActionExecutionSpecification::~QActionExecutionSpecification()
  */
 QAction *QActionExecutionSpecification::action() const
 {
+    return d_ptr->action;
 }
 
 void QActionExecutionSpecification::setAction(const QAction *action)
 {
+    d_ptr->action = const_cast<QAction *>(action);
 }
 
 #include "moc_qactionexecutionspecification.cpp"

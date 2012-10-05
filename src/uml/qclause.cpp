@@ -40,9 +40,40 @@
 ****************************************************************************/
 
 #include "qclause.h"
-//#include "qclause_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QClausePrivate
+{
+public:
+    explicit QClausePrivate();
+    virtual ~QClausePrivate();
+
+    QSet<QExecutableNode *> *bodies;
+    QList<QOutputPin *> *bodyOutputs;
+    QOutputPin *decider;
+    QSet<QClause *> *predecessorClauses;
+    QSet<QClause *> *successorClauses;
+    QSet<QExecutableNode *> *tests;
+};
+
+QClausePrivate::QClausePrivate() :
+    bodies(new QSet<QExecutableNode *>),
+    bodyOutputs(new QList<QOutputPin *>),
+    predecessorClauses(new QSet<QClause *>),
+    successorClauses(new QSet<QClause *>),
+    tests(new QSet<QExecutableNode *>)
+{
+}
+
+QClausePrivate::~QClausePrivate()
+{
+    delete bodies;
+    delete bodyOutputs;
+    delete predecessorClauses;
+    delete successorClauses;
+    delete tests;
+}
 
 /*!
     \class QClause
@@ -53,12 +84,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QClause::QClause(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QClausePrivate)
 {
 }
 
 QClause::~QClause()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +98,17 @@ QClause::~QClause()
  */
 const QSet<QExecutableNode *> *QClause::bodies() const
 {
+    return d_ptr->bodies;
 }
 
 void QClause::addBody(const QExecutableNode *body)
 {
+    d_ptr->bodies->insert(const_cast<QExecutableNode *>(body));
 }
 
 void QClause::removeBody(const QExecutableNode *body)
 {
+    d_ptr->bodies->remove(const_cast<QExecutableNode *>(body));
 }
 
 /*!
@@ -81,14 +116,17 @@ void QClause::removeBody(const QExecutableNode *body)
  */
 const QList<QOutputPin *> *QClause::bodyOutputs() const
 {
+    return d_ptr->bodyOutputs;
 }
 
 void QClause::addBodyOutput(const QOutputPin *bodyOutput)
 {
+    d_ptr->bodyOutputs->append(const_cast<QOutputPin *>(bodyOutput));
 }
 
 void QClause::removeBodyOutput(const QOutputPin *bodyOutput)
 {
+    d_ptr->bodyOutputs->removeAll(const_cast<QOutputPin *>(bodyOutput));
 }
 
 /*!
@@ -96,10 +134,12 @@ void QClause::removeBodyOutput(const QOutputPin *bodyOutput)
  */
 QOutputPin *QClause::decider() const
 {
+    return d_ptr->decider;
 }
 
 void QClause::setDecider(const QOutputPin *decider)
 {
+    d_ptr->decider = const_cast<QOutputPin *>(decider);
 }
 
 /*!
@@ -107,14 +147,17 @@ void QClause::setDecider(const QOutputPin *decider)
  */
 const QSet<QClause *> *QClause::predecessorClauses() const
 {
+    return d_ptr->predecessorClauses;
 }
 
 void QClause::addPredecessorClause(const QClause *predecessorClause)
 {
+    d_ptr->predecessorClauses->insert(const_cast<QClause *>(predecessorClause));
 }
 
 void QClause::removePredecessorClause(const QClause *predecessorClause)
 {
+    d_ptr->predecessorClauses->remove(const_cast<QClause *>(predecessorClause));
 }
 
 /*!
@@ -122,14 +165,17 @@ void QClause::removePredecessorClause(const QClause *predecessorClause)
  */
 const QSet<QClause *> *QClause::successorClauses() const
 {
+    return d_ptr->successorClauses;
 }
 
 void QClause::addSuccessorClause(const QClause *successorClause)
 {
+    d_ptr->successorClauses->insert(const_cast<QClause *>(successorClause));
 }
 
 void QClause::removeSuccessorClause(const QClause *successorClause)
 {
+    d_ptr->successorClauses->remove(const_cast<QClause *>(successorClause));
 }
 
 /*!
@@ -137,14 +183,17 @@ void QClause::removeSuccessorClause(const QClause *successorClause)
  */
 const QSet<QExecutableNode *> *QClause::tests() const
 {
+    return d_ptr->tests;
 }
 
 void QClause::addTest(const QExecutableNode *test)
 {
+    d_ptr->tests->insert(const_cast<QExecutableNode *>(test));
 }
 
 void QClause::removeTest(const QExecutableNode *test)
 {
+    d_ptr->tests->remove(const_cast<QExecutableNode *>(test));
 }
 
 #include "moc_qclause.cpp"

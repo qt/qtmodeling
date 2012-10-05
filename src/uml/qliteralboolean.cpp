@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qliteralboolean.h"
-//#include "qliteralboolean_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QLiteralBooleanPrivate
+{
+public:
+    explicit QLiteralBooleanPrivate();
+    virtual ~QLiteralBooleanPrivate();
+
+    bool value;
+};
+
+QLiteralBooleanPrivate::QLiteralBooleanPrivate()
+{
+}
+
+QLiteralBooleanPrivate::~QLiteralBooleanPrivate()
+{
+}
 
 /*!
     \class QLiteralBoolean
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QLiteralBoolean::QLiteralBoolean(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QLiteralBooleanPrivate)
 {
 }
 
 QLiteralBoolean::~QLiteralBoolean()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QLiteralBoolean::~QLiteralBoolean()
  */
 bool QLiteralBoolean::value() const
 {
+    return d_ptr->value;
 }
 
 void QLiteralBoolean::setValue(bool value)
 {
+    d_ptr->value = value;
 }
 
 /*!
@@ -77,6 +96,7 @@ void QLiteralBoolean::setValue(bool value)
  */
 bool QLiteralBoolean::booleanValue() const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -84,6 +104,7 @@ bool QLiteralBoolean::booleanValue() const
  */
 bool QLiteralBoolean::isComputable() const
 {
+    qWarning("To be implemented");
 }
 
 #include "moc_qliteralboolean.cpp"

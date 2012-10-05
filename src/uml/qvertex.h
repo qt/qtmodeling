@@ -62,20 +62,26 @@ class QStateMachine;
 
 class Q_UML_EXPORT QVertex : public virtual QNamedElement
 {
+    Q_DISABLE_COPY(QVertex)
+    Q_DECLARE_PRIVATE(QVertex)
+
 public:
     virtual ~QVertex();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QRegion *container() const;
     void setContainer(const QRegion *container);
-
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    QStateMachine *containingStateMachine() const;
     const QSet<QTransition *> *incomings() const;
     const QSet<QTransition *> *outgoings() const;
 
+    // Operations
+    QStateMachine *containingStateMachine() const;
+
 protected:
     explicit QVertex();
+
+private:
+    QVertexPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -108,11 +108,14 @@ class Q_UML_EXPORT QReplyAction : public QObject, public QAction
     Q_PROPERTY(const QSet<QInputPin *> * replyValues READ replyValues)
     Q_PROPERTY(QInputPin * returnInformation READ returnInformation WRITE setReturnInformation)
 
+    Q_DISABLE_COPY(QReplyAction)
+    Q_DECLARE_PRIVATE(QReplyAction)
+
 public:
     explicit QReplyAction(QObject *parent = 0);
     virtual ~QReplyAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QTrigger *replyToCall() const;
     void setReplyToCall(const QTrigger *replyToCall);
     const QSet<QInputPin *> *replyValues() const;
@@ -122,8 +125,7 @@ public:
     void setReturnInformation(const QInputPin *returnInformation);
 
 private:
-    Q_DISABLE_COPY(QReplyAction)
-    Q_DECLARE_PRIVATE(QReplyAction)
+    QReplyActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

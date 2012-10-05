@@ -57,15 +57,21 @@ class QInputPin;
 
 class Q_UML_EXPORT QWriteVariableAction : public QVariableAction
 {
+    Q_DISABLE_COPY(QWriteVariableAction)
+    Q_DECLARE_PRIVATE(QWriteVariableAction)
+
 public:
     virtual ~QWriteVariableAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QInputPin *value() const;
     void setValue(const QInputPin *value);
 
 protected:
     explicit QWriteVariableAction();
+
+private:
+    QWriteVariableActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

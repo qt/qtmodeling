@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qgate.h"
-//#include "qgate_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QGatePrivate
+{
+public:
+    explicit QGatePrivate();
+    virtual ~QGatePrivate();
+
+};
+
+QGatePrivate::QGatePrivate()
+{
+}
+
+QGatePrivate::~QGatePrivate()
+{
+}
 
 /*!
     \class QGate
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QGate::QGate(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QGatePrivate)
 {
 }
 
 QGate::~QGate()
 {
+    delete d_ptr;
 }
 
 #include "moc_qgate.cpp"

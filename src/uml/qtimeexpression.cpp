@@ -40,9 +40,28 @@
 ****************************************************************************/
 
 #include "qtimeexpression.h"
-//#include "qtimeexpression_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QTimeExpressionPrivate
+{
+public:
+    explicit QTimeExpressionPrivate();
+    virtual ~QTimeExpressionPrivate();
+
+    QValueSpecification *expr;
+    QSet<QObservation *> *observations;
+};
+
+QTimeExpressionPrivate::QTimeExpressionPrivate() :
+    observations(new QSet<QObservation *>)
+{
+}
+
+QTimeExpressionPrivate::~QTimeExpressionPrivate()
+{
+    delete observations;
+}
 
 /*!
     \class QTimeExpression
@@ -53,12 +72,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QTimeExpression::QTimeExpression(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QTimeExpressionPrivate)
 {
 }
 
 QTimeExpression::~QTimeExpression()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +86,12 @@ QTimeExpression::~QTimeExpression()
  */
 QValueSpecification *QTimeExpression::expr() const
 {
+    return d_ptr->expr;
 }
 
 void QTimeExpression::setExpr(const QValueSpecification *expr)
 {
+    d_ptr->expr = const_cast<QValueSpecification *>(expr);
 }
 
 /*!
@@ -77,14 +99,17 @@ void QTimeExpression::setExpr(const QValueSpecification *expr)
  */
 const QSet<QObservation *> *QTimeExpression::observations() const
 {
+    return d_ptr->observations;
 }
 
 void QTimeExpression::addObservation(const QObservation *observation)
 {
+    d_ptr->observations->insert(const_cast<QObservation *>(observation));
 }
 
 void QTimeExpression::removeObservation(const QObservation *observation)
 {
+    d_ptr->observations->remove(const_cast<QObservation *>(observation));
 }
 
 #include "moc_qtimeexpression.cpp"

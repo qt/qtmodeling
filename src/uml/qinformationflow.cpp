@@ -40,9 +40,45 @@
 ****************************************************************************/
 
 #include "qinformationflow.h"
-//#include "qinformationflow_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QInformationFlowPrivate
+{
+public:
+    explicit QInformationFlowPrivate();
+    virtual ~QInformationFlowPrivate();
+
+    QSet<QClassifier *> *conveyed;
+    QSet<QNamedElement *> *informationSources;
+    QSet<QNamedElement *> *informationTargets;
+    QSet<QRelationship *> *realizations;
+    QSet<QActivityEdge *> *realizingActivityEdges;
+    QSet<QConnector *> *realizingConnectors;
+    QSet<QMessage *> *realizingMessages;
+};
+
+QInformationFlowPrivate::QInformationFlowPrivate() :
+    conveyed(new QSet<QClassifier *>),
+    informationSources(new QSet<QNamedElement *>),
+    informationTargets(new QSet<QNamedElement *>),
+    realizations(new QSet<QRelationship *>),
+    realizingActivityEdges(new QSet<QActivityEdge *>),
+    realizingConnectors(new QSet<QConnector *>),
+    realizingMessages(new QSet<QMessage *>)
+{
+}
+
+QInformationFlowPrivate::~QInformationFlowPrivate()
+{
+    delete conveyed;
+    delete informationSources;
+    delete informationTargets;
+    delete realizations;
+    delete realizingActivityEdges;
+    delete realizingConnectors;
+    delete realizingMessages;
+}
 
 /*!
     \class QInformationFlow
@@ -53,12 +89,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QInformationFlow::QInformationFlow(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QInformationFlowPrivate)
 {
 }
 
 QInformationFlow::~QInformationFlow()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +103,17 @@ QInformationFlow::~QInformationFlow()
  */
 const QSet<QClassifier *> *QInformationFlow::conveyed() const
 {
+    return d_ptr->conveyed;
 }
 
 void QInformationFlow::addConveyed(const QClassifier *conveyed)
 {
+    d_ptr->conveyed->insert(const_cast<QClassifier *>(conveyed));
 }
 
 void QInformationFlow::removeConveyed(const QClassifier *conveyed)
 {
+    d_ptr->conveyed->remove(const_cast<QClassifier *>(conveyed));
 }
 
 /*!
@@ -81,14 +121,17 @@ void QInformationFlow::removeConveyed(const QClassifier *conveyed)
  */
 const QSet<QNamedElement *> *QInformationFlow::informationSources() const
 {
+    return d_ptr->informationSources;
 }
 
 void QInformationFlow::addInformationSource(const QNamedElement *informationSource)
 {
+    d_ptr->informationSources->insert(const_cast<QNamedElement *>(informationSource));
 }
 
 void QInformationFlow::removeInformationSource(const QNamedElement *informationSource)
 {
+    d_ptr->informationSources->remove(const_cast<QNamedElement *>(informationSource));
 }
 
 /*!
@@ -96,14 +139,17 @@ void QInformationFlow::removeInformationSource(const QNamedElement *informationS
  */
 const QSet<QNamedElement *> *QInformationFlow::informationTargets() const
 {
+    return d_ptr->informationTargets;
 }
 
 void QInformationFlow::addInformationTarget(const QNamedElement *informationTarget)
 {
+    d_ptr->informationTargets->insert(const_cast<QNamedElement *>(informationTarget));
 }
 
 void QInformationFlow::removeInformationTarget(const QNamedElement *informationTarget)
 {
+    d_ptr->informationTargets->remove(const_cast<QNamedElement *>(informationTarget));
 }
 
 /*!
@@ -111,14 +157,17 @@ void QInformationFlow::removeInformationTarget(const QNamedElement *informationT
  */
 const QSet<QRelationship *> *QInformationFlow::realizations() const
 {
+    return d_ptr->realizations;
 }
 
 void QInformationFlow::addRealization(const QRelationship *realization)
 {
+    d_ptr->realizations->insert(const_cast<QRelationship *>(realization));
 }
 
 void QInformationFlow::removeRealization(const QRelationship *realization)
 {
+    d_ptr->realizations->remove(const_cast<QRelationship *>(realization));
 }
 
 /*!
@@ -126,14 +175,17 @@ void QInformationFlow::removeRealization(const QRelationship *realization)
  */
 const QSet<QActivityEdge *> *QInformationFlow::realizingActivityEdges() const
 {
+    return d_ptr->realizingActivityEdges;
 }
 
 void QInformationFlow::addRealizingActivityEdge(const QActivityEdge *realizingActivityEdge)
 {
+    d_ptr->realizingActivityEdges->insert(const_cast<QActivityEdge *>(realizingActivityEdge));
 }
 
 void QInformationFlow::removeRealizingActivityEdge(const QActivityEdge *realizingActivityEdge)
 {
+    d_ptr->realizingActivityEdges->remove(const_cast<QActivityEdge *>(realizingActivityEdge));
 }
 
 /*!
@@ -141,14 +193,17 @@ void QInformationFlow::removeRealizingActivityEdge(const QActivityEdge *realizin
  */
 const QSet<QConnector *> *QInformationFlow::realizingConnectors() const
 {
+    return d_ptr->realizingConnectors;
 }
 
 void QInformationFlow::addRealizingConnector(const QConnector *realizingConnector)
 {
+    d_ptr->realizingConnectors->insert(const_cast<QConnector *>(realizingConnector));
 }
 
 void QInformationFlow::removeRealizingConnector(const QConnector *realizingConnector)
 {
+    d_ptr->realizingConnectors->remove(const_cast<QConnector *>(realizingConnector));
 }
 
 /*!
@@ -156,14 +211,17 @@ void QInformationFlow::removeRealizingConnector(const QConnector *realizingConne
  */
 const QSet<QMessage *> *QInformationFlow::realizingMessages() const
 {
+    return d_ptr->realizingMessages;
 }
 
 void QInformationFlow::addRealizingMessage(const QMessage *realizingMessage)
 {
+    d_ptr->realizingMessages->insert(const_cast<QMessage *>(realizingMessage));
 }
 
 void QInformationFlow::removeRealizingMessage(const QMessage *realizingMessage)
 {
+    d_ptr->realizingMessages->remove(const_cast<QMessage *>(realizingMessage));
 }
 
 #include "moc_qinformationflow.cpp"

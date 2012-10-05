@@ -40,9 +40,29 @@
 ****************************************************************************/
 
 #include "qtemplatebinding.h"
-//#include "qtemplatebinding_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QTemplateBindingPrivate
+{
+public:
+    explicit QTemplateBindingPrivate();
+    virtual ~QTemplateBindingPrivate();
+
+    QTemplateableElement *boundElement;
+    QSet<QTemplateParameterSubstitution *> *parameterSubstitutions;
+    QTemplateSignature *signature;
+};
+
+QTemplateBindingPrivate::QTemplateBindingPrivate() :
+    parameterSubstitutions(new QSet<QTemplateParameterSubstitution *>)
+{
+}
+
+QTemplateBindingPrivate::~QTemplateBindingPrivate()
+{
+    delete parameterSubstitutions;
+}
 
 /*!
     \class QTemplateBinding
@@ -53,12 +73,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QTemplateBinding::QTemplateBinding(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QTemplateBindingPrivate)
 {
 }
 
 QTemplateBinding::~QTemplateBinding()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +87,12 @@ QTemplateBinding::~QTemplateBinding()
  */
 QTemplateableElement *QTemplateBinding::boundElement() const
 {
+    return d_ptr->boundElement;
 }
 
 void QTemplateBinding::setBoundElement(const QTemplateableElement *boundElement)
 {
+    d_ptr->boundElement = const_cast<QTemplateableElement *>(boundElement);
 }
 
 /*!
@@ -77,14 +100,17 @@ void QTemplateBinding::setBoundElement(const QTemplateableElement *boundElement)
  */
 const QSet<QTemplateParameterSubstitution *> *QTemplateBinding::parameterSubstitutions() const
 {
+    return d_ptr->parameterSubstitutions;
 }
 
 void QTemplateBinding::addParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution)
 {
+    d_ptr->parameterSubstitutions->insert(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution));
 }
 
 void QTemplateBinding::removeParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution)
 {
+    d_ptr->parameterSubstitutions->remove(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution));
 }
 
 /*!
@@ -92,10 +118,12 @@ void QTemplateBinding::removeParameterSubstitution(const QTemplateParameterSubst
  */
 QTemplateSignature *QTemplateBinding::signature() const
 {
+    return d_ptr->signature;
 }
 
 void QTemplateBinding::setSignature(const QTemplateSignature *signature)
 {
+    d_ptr->signature = const_cast<QTemplateSignature *>(signature);
 }
 
 #include "moc_qtemplatebinding.cpp"

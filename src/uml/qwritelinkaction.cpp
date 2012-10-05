@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qwritelinkaction.h"
-//#include "qwritelinkaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QWriteLinkActionPrivate
+{
+public:
+    explicit QWriteLinkActionPrivate();
+    virtual ~QWriteLinkActionPrivate();
+
+};
+
+QWriteLinkActionPrivate::QWriteLinkActionPrivate()
+{
+}
+
+QWriteLinkActionPrivate::~QWriteLinkActionPrivate()
+{
+}
 
 /*!
     \class QWriteLinkAction
@@ -53,11 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QWriteLinkAction::QWriteLinkAction()
+    : d_ptr(new QWriteLinkActionPrivate)
 {
 }
 
 QWriteLinkAction::~QWriteLinkAction()
 {
+    delete d_ptr;
 }
 
 QT_END_NAMESPACE_QTUML

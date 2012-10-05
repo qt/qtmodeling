@@ -40,9 +40,30 @@
 ****************************************************************************/
 
 #include "qinterruptibleactivityregion.h"
-//#include "qinterruptibleactivityregion_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QInterruptibleActivityRegionPrivate
+{
+public:
+    explicit QInterruptibleActivityRegionPrivate();
+    virtual ~QInterruptibleActivityRegionPrivate();
+
+    QSet<QActivityEdge *> *interruptingEdges;
+    QSet<QActivityNode *> *nodes;
+};
+
+QInterruptibleActivityRegionPrivate::QInterruptibleActivityRegionPrivate() :
+    interruptingEdges(new QSet<QActivityEdge *>),
+    nodes(new QSet<QActivityNode *>)
+{
+}
+
+QInterruptibleActivityRegionPrivate::~QInterruptibleActivityRegionPrivate()
+{
+    delete interruptingEdges;
+    delete nodes;
+}
 
 /*!
     \class QInterruptibleActivityRegion
@@ -53,12 +74,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QInterruptibleActivityRegion::QInterruptibleActivityRegion(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QInterruptibleActivityRegionPrivate)
 {
 }
 
 QInterruptibleActivityRegion::~QInterruptibleActivityRegion()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +88,17 @@ QInterruptibleActivityRegion::~QInterruptibleActivityRegion()
  */
 const QSet<QActivityEdge *> *QInterruptibleActivityRegion::interruptingEdges() const
 {
+    return d_ptr->interruptingEdges;
 }
 
 void QInterruptibleActivityRegion::addInterruptingEdge(const QActivityEdge *interruptingEdge)
 {
+    d_ptr->interruptingEdges->insert(const_cast<QActivityEdge *>(interruptingEdge));
 }
 
 void QInterruptibleActivityRegion::removeInterruptingEdge(const QActivityEdge *interruptingEdge)
 {
+    d_ptr->interruptingEdges->remove(const_cast<QActivityEdge *>(interruptingEdge));
 }
 
 /*!
@@ -81,14 +106,17 @@ void QInterruptibleActivityRegion::removeInterruptingEdge(const QActivityEdge *i
  */
 const QSet<QActivityNode *> *QInterruptibleActivityRegion::nodes() const
 {
+    return d_ptr->nodes;
 }
 
 void QInterruptibleActivityRegion::addNode(const QActivityNode *node)
 {
+    d_ptr->nodes->insert(const_cast<QActivityNode *>(node));
 }
 
 void QInterruptibleActivityRegion::removeNode(const QActivityNode *node)
 {
+    d_ptr->nodes->remove(const_cast<QActivityNode *>(node));
 }
 
 #include "moc_qinterruptibleactivityregion.cpp"

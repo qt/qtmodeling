@@ -105,17 +105,19 @@ class Q_UML_EXPORT QReadVariableAction : public QObject, public QVariableAction
     // From QReadVariableAction
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
+    Q_DISABLE_COPY(QReadVariableAction)
+    Q_DECLARE_PRIVATE(QReadVariableAction)
+
 public:
     explicit QReadVariableAction(QObject *parent = 0);
     virtual ~QReadVariableAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QOutputPin *result() const;
     void setResult(const QOutputPin *result);
 
 private:
-    Q_DISABLE_COPY(QReadVariableAction)
-    Q_DECLARE_PRIVATE(QReadVariableAction)
+    QReadVariableActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

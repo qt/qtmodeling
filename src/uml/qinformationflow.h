@@ -104,11 +104,14 @@ class Q_UML_EXPORT QInformationFlow : public QObject, public QDirectedRelationsh
     Q_PROPERTY(const QSet<QConnector *> * realizingConnectors READ realizingConnectors)
     Q_PROPERTY(const QSet<QMessage *> * realizingMessages READ realizingMessages)
 
+    Q_DISABLE_COPY(QInformationFlow)
+    Q_DECLARE_PRIVATE(QInformationFlow)
+
 public:
     explicit QInformationFlow(QObject *parent = 0);
     virtual ~QInformationFlow();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QClassifier *> *conveyed() const;
     void addConveyed(const QClassifier *conveyed);
     void removeConveyed(const QClassifier *conveyed);
@@ -132,8 +135,7 @@ public:
     void removeRealizingMessage(const QMessage *realizingMessage);
 
 private:
-    Q_DISABLE_COPY(QInformationFlow)
-    Q_DECLARE_PRIVATE(QInformationFlow)
+    QInformationFlowPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

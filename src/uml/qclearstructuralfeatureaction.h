@@ -106,17 +106,19 @@ class Q_UML_EXPORT QClearStructuralFeatureAction : public QObject, public QStruc
     // From QClearStructuralFeatureAction
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
+    Q_DISABLE_COPY(QClearStructuralFeatureAction)
+    Q_DECLARE_PRIVATE(QClearStructuralFeatureAction)
+
 public:
     explicit QClearStructuralFeatureAction(QObject *parent = 0);
     virtual ~QClearStructuralFeatureAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QOutputPin *result() const;
     void setResult(const QOutputPin *result);
 
 private:
-    Q_DISABLE_COPY(QClearStructuralFeatureAction)
-    Q_DECLARE_PRIVATE(QClearStructuralFeatureAction)
+    QClearStructuralFeatureActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -108,19 +108,21 @@ class Q_UML_EXPORT QSendSignalAction : public QObject, public QInvocationAction
     Q_PROPERTY(QSignal * signal READ signal WRITE setSignal)
     Q_PROPERTY(QInputPin * target READ target WRITE setTarget)
 
+    Q_DISABLE_COPY(QSendSignalAction)
+    Q_DECLARE_PRIVATE(QSendSignalAction)
+
 public:
     explicit QSendSignalAction(QObject *parent = 0);
     virtual ~QSendSignalAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QSignal *signal() const;
     void setSignal(const QSignal *signal);
     QInputPin *target() const;
     void setTarget(const QInputPin *target);
 
 private:
-    Q_DISABLE_COPY(QSendSignalAction)
-    Q_DECLARE_PRIVATE(QSendSignalAction)
+    QSendSignalActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

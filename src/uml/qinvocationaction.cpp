@@ -40,9 +40,28 @@
 ****************************************************************************/
 
 #include "qinvocationaction.h"
-//#include "qinvocationaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QInvocationActionPrivate
+{
+public:
+    explicit QInvocationActionPrivate();
+    virtual ~QInvocationActionPrivate();
+
+    QList<QInputPin *> *arguments;
+    QPort *onPort;
+};
+
+QInvocationActionPrivate::QInvocationActionPrivate() :
+    arguments(new QList<QInputPin *>)
+{
+}
+
+QInvocationActionPrivate::~QInvocationActionPrivate()
+{
+    delete arguments;
+}
 
 /*!
     \class QInvocationAction
@@ -53,11 +72,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QInvocationAction::QInvocationAction()
+    : d_ptr(new QInvocationActionPrivate)
 {
 }
 
 QInvocationAction::~QInvocationAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,14 +86,17 @@ QInvocationAction::~QInvocationAction()
  */
 const QList<QInputPin *> *QInvocationAction::arguments() const
 {
+    return d_ptr->arguments;
 }
 
 void QInvocationAction::addArgument(const QInputPin *argument)
 {
+    d_ptr->arguments->append(const_cast<QInputPin *>(argument));
 }
 
 void QInvocationAction::removeArgument(const QInputPin *argument)
 {
+    d_ptr->arguments->removeAll(const_cast<QInputPin *>(argument));
 }
 
 /*!
@@ -80,10 +104,12 @@ void QInvocationAction::removeArgument(const QInputPin *argument)
  */
 QPort *QInvocationAction::onPort() const
 {
+    return d_ptr->onPort;
 }
 
 void QInvocationAction::setOnPort(const QPort *onPort)
 {
+    d_ptr->onPort = const_cast<QPort *>(onPort);
 }
 
 QT_END_NAMESPACE_QTUML

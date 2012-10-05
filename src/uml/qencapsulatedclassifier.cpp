@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qencapsulatedclassifier.h"
-//#include "qencapsulatedclassifier_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QEncapsulatedClassifierPrivate
+{
+public:
+    explicit QEncapsulatedClassifierPrivate();
+    virtual ~QEncapsulatedClassifierPrivate();
+
+};
+
+QEncapsulatedClassifierPrivate::QEncapsulatedClassifierPrivate()
+{
+}
+
+QEncapsulatedClassifierPrivate::~QEncapsulatedClassifierPrivate()
+{
+}
 
 /*!
     \class QEncapsulatedClassifier
@@ -53,18 +68,21 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QEncapsulatedClassifier::QEncapsulatedClassifier()
+    : d_ptr(new QEncapsulatedClassifierPrivate)
 {
 }
 
 QEncapsulatedClassifier::~QEncapsulatedClassifier()
 {
+    delete d_ptr;
 }
 
 /*!
-    Missing derivation for EncapsulatedClassifier::/ownedPort : Port
+    References a set of ports that an encapsulated classifier owns.
  */
 const QSet<QPort *> *QEncapsulatedClassifier::ownedPorts() const
 {
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 QT_END_NAMESPACE_QTUML

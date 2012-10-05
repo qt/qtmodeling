@@ -40,9 +40,31 @@
 ****************************************************************************/
 
 #include "qopaqueexpression.h"
-//#include "qopaqueexpression_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QOpaqueExpressionPrivate
+{
+public:
+    explicit QOpaqueExpressionPrivate();
+    virtual ~QOpaqueExpressionPrivate();
+
+    QList<QString> *bodies;
+    QList<QString> *languages;
+    QBehavior *behavior;
+};
+
+QOpaqueExpressionPrivate::QOpaqueExpressionPrivate() :
+    bodies(new QList<QString>),
+    languages(new QList<QString>)
+{
+}
+
+QOpaqueExpressionPrivate::~QOpaqueExpressionPrivate()
+{
+    delete bodies;
+    delete languages;
+}
 
 /*!
     \class QOpaqueExpression
@@ -53,12 +75,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QOpaqueExpression::QOpaqueExpression(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QOpaqueExpressionPrivate)
 {
 }
 
 QOpaqueExpression::~QOpaqueExpression()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +89,17 @@ QOpaqueExpression::~QOpaqueExpression()
  */
 const QList<QString> *QOpaqueExpression::bodies() const
 {
+    return d_ptr->bodies;
 }
 
 void QOpaqueExpression::addBody(QString body)
 {
+    d_ptr->bodies->append(body);
 }
 
 void QOpaqueExpression::removeBody(QString body)
 {
+    d_ptr->bodies->removeAll(body);
 }
 
 /*!
@@ -81,14 +107,17 @@ void QOpaqueExpression::removeBody(QString body)
  */
 const QList<QString> *QOpaqueExpression::languages() const
 {
+    return d_ptr->languages;
 }
 
 void QOpaqueExpression::addLanguage(QString language)
 {
+    d_ptr->languages->append(language);
 }
 
 void QOpaqueExpression::removeLanguage(QString language)
 {
+    d_ptr->languages->removeAll(language);
 }
 
 /*!
@@ -96,10 +125,20 @@ void QOpaqueExpression::removeLanguage(QString language)
  */
 QBehavior *QOpaqueExpression::behavior() const
 {
+    return d_ptr->behavior;
 }
 
 void QOpaqueExpression::setBehavior(const QBehavior *behavior)
 {
+    d_ptr->behavior = const_cast<QBehavior *>(behavior);
+}
+
+/*!
+    Restricts an opaque expression to return exactly one return result. When the invocation of the opaque expression completes, a single set of values is returned to its owner. This association is derived from the single return result parameter of the associated behavior.
+ */
+QParameter *QOpaqueExpression::result() const
+{
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -107,6 +146,7 @@ void QOpaqueExpression::setBehavior(const QBehavior *behavior)
  */
 bool QOpaqueExpression::isIntegral() const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -114,6 +154,7 @@ bool QOpaqueExpression::isIntegral() const
  */
 bool QOpaqueExpression::isNonNegative() const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -121,13 +162,7 @@ bool QOpaqueExpression::isNonNegative() const
  */
 bool QOpaqueExpression::isPositive() const
 {
-}
-
-/*!
-    Missing derivation for OpaqueExpression::/result : Parameter
- */
-QParameter *QOpaqueExpression::result() const
-{
+    qWarning("To be implemented");
 }
 
 /*!
@@ -135,6 +170,7 @@ QParameter *QOpaqueExpression::result() const
  */
 qint32 QOpaqueExpression::value() const
 {
+    qWarning("To be implemented");
 }
 
 #include "moc_qopaqueexpression.cpp"

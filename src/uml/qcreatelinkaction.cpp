@@ -40,9 +40,27 @@
 ****************************************************************************/
 
 #include "qcreatelinkaction.h"
-//#include "qcreatelinkaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QCreateLinkActionPrivate
+{
+public:
+    explicit QCreateLinkActionPrivate();
+    virtual ~QCreateLinkActionPrivate();
+
+    QSet<QLinkEndCreationData *> *endData;
+};
+
+QCreateLinkActionPrivate::QCreateLinkActionPrivate() :
+    endData(new QSet<QLinkEndCreationData *>)
+{
+}
+
+QCreateLinkActionPrivate::~QCreateLinkActionPrivate()
+{
+    delete endData;
+}
 
 /*!
     \class QCreateLinkAction
@@ -53,12 +71,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QCreateLinkAction::QCreateLinkAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QCreateLinkActionPrivate)
 {
 }
 
 QCreateLinkAction::~QCreateLinkAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +85,17 @@ QCreateLinkAction::~QCreateLinkAction()
  */
 const QSet<QLinkEndCreationData *> *QCreateLinkAction::endData() const
 {
+    return d_ptr->endData;
 }
 
 void QCreateLinkAction::addEndData(const QLinkEndCreationData *endData)
 {
+    d_ptr->endData->insert(const_cast<QLinkEndCreationData *>(endData));
 }
 
 void QCreateLinkAction::removeEndData(const QLinkEndCreationData *endData)
 {
+    d_ptr->endData->remove(const_cast<QLinkEndCreationData *>(endData));
 }
 
 #include "moc_qcreatelinkaction.cpp"

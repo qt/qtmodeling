@@ -71,8 +71,8 @@ class Q_UML_EXPORT QVariable : public QObject, public QMultiplicityElement, publ
     // From QMultiplicityElement
     Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
     Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
-    Q_PROPERTY(qint32 lower READ lower)
-    Q_PROPERTY(qint32 upper READ upper)
+    Q_PROPERTY(qint32 lower READ lower WRITE setLower)
+    Q_PROPERTY(qint32 upper READ upper WRITE setUpper)
     Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
     Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
 
@@ -98,22 +98,24 @@ class Q_UML_EXPORT QVariable : public QObject, public QMultiplicityElement, publ
     Q_PROPERTY(QActivity * activityScope READ activityScope WRITE setActivityScope)
     Q_PROPERTY(QStructuredActivityNode * scope READ scope WRITE setScope)
 
+    Q_DISABLE_COPY(QVariable)
+    Q_DECLARE_PRIVATE(QVariable)
+
 public:
     explicit QVariable(QObject *parent = 0);
     virtual ~QVariable();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QActivity *activityScope() const;
     void setActivityScope(const QActivity *activityScope);
     QStructuredActivityNode *scope() const;
     void setScope(const QStructuredActivityNode *scope);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     bool isAccessibleBy(const QAction *a) const;
 
 private:
-    Q_DISABLE_COPY(QVariable)
-    Q_DECLARE_PRIVATE(QVariable)
+    QVariablePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qqualifiervalue.h"
-//#include "qqualifiervalue_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QQualifierValuePrivate
+{
+public:
+    explicit QQualifierValuePrivate();
+    virtual ~QQualifierValuePrivate();
+
+    QProperty *qualifier;
+    QInputPin *value;
+};
+
+QQualifierValuePrivate::QQualifierValuePrivate()
+{
+}
+
+QQualifierValuePrivate::~QQualifierValuePrivate()
+{
+}
 
 /*!
     \class QQualifierValue
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QQualifierValue::QQualifierValue(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QQualifierValuePrivate)
 {
 }
 
 QQualifierValue::~QQualifierValue()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QQualifierValue::~QQualifierValue()
  */
 QProperty *QQualifierValue::qualifier() const
 {
+    return d_ptr->qualifier;
 }
 
 void QQualifierValue::setQualifier(const QProperty *qualifier)
 {
+    d_ptr->qualifier = const_cast<QProperty *>(qualifier);
 }
 
 /*!
@@ -77,10 +97,12 @@ void QQualifierValue::setQualifier(const QProperty *qualifier)
  */
 QInputPin *QQualifierValue::value() const
 {
+    return d_ptr->value;
 }
 
 void QQualifierValue::setValue(const QInputPin *value)
 {
+    d_ptr->value = const_cast<QInputPin *>(value);
 }
 
 #include "moc_qqualifiervalue.cpp"

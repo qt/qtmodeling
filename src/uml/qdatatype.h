@@ -125,11 +125,14 @@ class Q_UML_EXPORT QDataType : public QObject, public QClassifier
     Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
     Q_PROPERTY(const QList<QOperation *> * ownedOperations READ ownedOperations)
 
+    Q_DISABLE_COPY(QDataType)
+    Q_DECLARE_PRIVATE(QDataType)
+
 public:
     explicit QDataType(QObject *parent = 0);
     virtual ~QDataType();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QList<QProperty *> *ownedAttributes() const;
     void addOwnedAttribute(const QProperty *ownedAttribute);
     void removeOwnedAttribute(const QProperty *ownedAttribute);
@@ -137,12 +140,11 @@ public:
     void addOwnedOperation(const QOperation *ownedOperation);
     void removeOwnedOperation(const QOperation *ownedOperation);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     const QSet<QNamedElement *> *inherit(const QSet<QNamedElement *> *inhs) const;
 
 private:
-    Q_DISABLE_COPY(QDataType)
-    Q_DECLARE_PRIVATE(QDataType)
+    QDataTypePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

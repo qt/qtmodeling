@@ -104,19 +104,21 @@ class Q_UML_EXPORT QClearAssociationAction : public QObject, public QAction
     Q_PROPERTY(QAssociation * association READ association WRITE setAssociation)
     Q_PROPERTY(QInputPin * object READ object WRITE setObject)
 
+    Q_DISABLE_COPY(QClearAssociationAction)
+    Q_DECLARE_PRIVATE(QClearAssociationAction)
+
 public:
     explicit QClearAssociationAction(QObject *parent = 0);
     virtual ~QClearAssociationAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QAssociation *association() const;
     void setAssociation(const QAssociation *association);
     QInputPin *object() const;
     void setObject(const QInputPin *object);
 
 private:
-    Q_DISABLE_COPY(QClearAssociationAction)
-    Q_DECLARE_PRIVATE(QClearAssociationAction)
+    QClearAssociationActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

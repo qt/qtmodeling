@@ -112,19 +112,21 @@ class Q_UML_EXPORT QCallOperationAction : public QObject, public QCallAction
     Q_PROPERTY(QOperation * operation READ operation WRITE setOperation)
     Q_PROPERTY(QInputPin * target READ target WRITE setTarget)
 
+    Q_DISABLE_COPY(QCallOperationAction)
+    Q_DECLARE_PRIVATE(QCallOperationAction)
+
 public:
     explicit QCallOperationAction(QObject *parent = 0);
     virtual ~QCallOperationAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QOperation *operation() const;
     void setOperation(const QOperation *operation);
     QInputPin *target() const;
     void setTarget(const QInputPin *target);
 
 private:
-    Q_DISABLE_COPY(QCallOperationAction)
-    Q_DECLARE_PRIVATE(QCallOperationAction)
+    QCallOperationActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

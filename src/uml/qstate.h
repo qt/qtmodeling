@@ -119,13 +119,20 @@ class Q_UML_EXPORT QState : public QObject, public QNamespace, public QRedefinab
     Q_PROPERTY(QConstraint * stateInvariant READ stateInvariant WRITE setStateInvariant)
     Q_PROPERTY(QStateMachine * submachine READ submachine WRITE setSubmachine)
 
+    Q_DISABLE_COPY(QState)
+    Q_DECLARE_PRIVATE(QState)
+
 public:
     explicit QState(QObject *parent = 0);
     virtual ~QState();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
+    bool isComposite() const;
+    bool isOrthogonal() const;
+    bool isSimple() const;
+    bool isSubmachineState() const;
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QConnectionPointReference *> *connections() const;
     void addConnection(const QConnectionPointReference *connection);
     void removeConnection(const QConnectionPointReference *connection);
@@ -143,6 +150,7 @@ public:
     void setExit(const QBehavior *exit);
     QState *redefinedState() const;
     void setRedefinedState(const QState *redefinedState);
+    QClassifier *redefinitionContext() const;
     const QSet<QRegion *> *regions() const;
     void addRegion(const QRegion *region);
     void removeRegion(const QRegion *region);
@@ -151,19 +159,13 @@ public:
     QStateMachine *submachine() const;
     void setSubmachine(const QStateMachine *submachine);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     QStateMachine *containingStateMachine() const;
-    bool isComposite() const;
     bool isConsistentWith(const QRedefinableElement *redefinee) const;
-    bool isOrthogonal() const;
     bool isRedefinitionContextValid(const QState *redefined) const;
-    bool isSimple() const;
-    bool isSubmachineState() const;
-    QClassifier *redefinitionContext() const;
 
 private:
-    Q_DISABLE_COPY(QState)
-    Q_DECLARE_PRIVATE(QState)
+    QStatePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

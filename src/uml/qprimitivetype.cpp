@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qprimitivetype.h"
-//#include "qprimitivetype_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QPrimitiveTypePrivate
+{
+public:
+    explicit QPrimitiveTypePrivate();
+    virtual ~QPrimitiveTypePrivate();
+
+};
+
+QPrimitiveTypePrivate::QPrimitiveTypePrivate()
+{
+}
+
+QPrimitiveTypePrivate::~QPrimitiveTypePrivate()
+{
+}
 
 /*!
     \class QPrimitiveType
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QPrimitiveType::QPrimitiveType(QObject *parent)
-    : QDataType(parent)
+    : QDataType(parent), d_ptr(new QPrimitiveTypePrivate)
 {
 }
 
 QPrimitiveType::~QPrimitiveType()
 {
+    delete d_ptr;
 }
 
 #include "moc_qprimitivetype.cpp"

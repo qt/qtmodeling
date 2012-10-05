@@ -40,9 +40,37 @@
 ****************************************************************************/
 
 #include "qaction.h"
-//#include "qaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QActionPrivate
+{
+public:
+    explicit QActionPrivate();
+    virtual ~QActionPrivate();
+
+    bool isLocallyReentrant;
+    QList<QInputPin *> *inputs;
+    QSet<QConstraint *> *localPostconditions;
+    QSet<QConstraint *> *localPreconditions;
+    QList<QOutputPin *> *outputs;
+};
+
+QActionPrivate::QActionPrivate() :
+    inputs(new QList<QInputPin *>),
+    localPostconditions(new QSet<QConstraint *>),
+    localPreconditions(new QSet<QConstraint *>),
+    outputs(new QList<QOutputPin *>)
+{
+}
+
+QActionPrivate::~QActionPrivate()
+{
+    delete inputs;
+    delete localPostconditions;
+    delete localPreconditions;
+    delete outputs;
+}
 
 /*!
     \class QAction
@@ -53,11 +81,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QAction::QAction()
+    : d_ptr(new QActionPrivate)
 {
 }
 
 QAction::~QAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,10 +95,20 @@ QAction::~QAction()
  */
 bool QAction::isLocallyReentrant() const
 {
+    return d_ptr->isLocallyReentrant;
 }
 
 void QAction::setLocallyReentrant(bool isLocallyReentrant)
 {
+    d_ptr->isLocallyReentrant = isLocallyReentrant;
+}
+
+/*!
+    The classifier that owns the behavior of which this action is a part.
+ */
+QClassifier *QAction::context() const
+{
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -76,6 +116,7 @@ void QAction::setLocallyReentrant(bool isLocallyReentrant)
  */
 const QList<QInputPin *> *QAction::inputs() const
 {
+    return d_ptr->inputs;
 }
 
 /*!
@@ -83,14 +124,17 @@ const QList<QInputPin *> *QAction::inputs() const
  */
 const QSet<QConstraint *> *QAction::localPostconditions() const
 {
+    return d_ptr->localPostconditions;
 }
 
 void QAction::addLocalPostcondition(const QConstraint *localPostcondition)
 {
+    d_ptr->localPostconditions->insert(const_cast<QConstraint *>(localPostcondition));
 }
 
 void QAction::removeLocalPostcondition(const QConstraint *localPostcondition)
 {
+    d_ptr->localPostconditions->remove(const_cast<QConstraint *>(localPostcondition));
 }
 
 /*!
@@ -98,14 +142,17 @@ void QAction::removeLocalPostcondition(const QConstraint *localPostcondition)
  */
 const QSet<QConstraint *> *QAction::localPreconditions() const
 {
+    return d_ptr->localPreconditions;
 }
 
 void QAction::addLocalPrecondition(const QConstraint *localPrecondition)
 {
+    d_ptr->localPreconditions->insert(const_cast<QConstraint *>(localPrecondition));
 }
 
 void QAction::removeLocalPrecondition(const QConstraint *localPrecondition)
 {
+    d_ptr->localPreconditions->remove(const_cast<QConstraint *>(localPrecondition));
 }
 
 /*!
@@ -113,13 +160,7 @@ void QAction::removeLocalPrecondition(const QConstraint *localPrecondition)
  */
 const QList<QOutputPin *> *QAction::outputs() const
 {
-}
-
-/*!
-    Missing derivation for Action::/context : Classifier
- */
-QClassifier *QAction::context() const
-{
+    return d_ptr->outputs;
 }
 
 QT_END_NAMESPACE_QTUML

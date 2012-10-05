@@ -40,9 +40,30 @@
 ****************************************************************************/
 
 #include "qdependency.h"
-//#include "qdependency_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QDependencyPrivate
+{
+public:
+    explicit QDependencyPrivate();
+    virtual ~QDependencyPrivate();
+
+    QSet<QNamedElement *> *clients;
+    QSet<QNamedElement *> *suppliers;
+};
+
+QDependencyPrivate::QDependencyPrivate() :
+    clients(new QSet<QNamedElement *>),
+    suppliers(new QSet<QNamedElement *>)
+{
+}
+
+QDependencyPrivate::~QDependencyPrivate()
+{
+    delete clients;
+    delete suppliers;
+}
 
 /*!
     \class QDependency
@@ -53,12 +74,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QDependency::QDependency(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QDependencyPrivate)
 {
 }
 
 QDependency::~QDependency()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +88,17 @@ QDependency::~QDependency()
  */
 const QSet<QNamedElement *> *QDependency::clients() const
 {
+    return d_ptr->clients;
 }
 
 void QDependency::addClient(const QNamedElement *client)
 {
+    d_ptr->clients->insert(const_cast<QNamedElement *>(client));
 }
 
 void QDependency::removeClient(const QNamedElement *client)
 {
+    d_ptr->clients->remove(const_cast<QNamedElement *>(client));
 }
 
 /*!
@@ -81,14 +106,17 @@ void QDependency::removeClient(const QNamedElement *client)
  */
 const QSet<QNamedElement *> *QDependency::suppliers() const
 {
+    return d_ptr->suppliers;
 }
 
 void QDependency::addSupplier(const QNamedElement *supplier)
 {
+    d_ptr->suppliers->insert(const_cast<QNamedElement *>(supplier));
 }
 
 void QDependency::removeSupplier(const QNamedElement *supplier)
 {
+    d_ptr->suppliers->remove(const_cast<QNamedElement *>(supplier));
 }
 
 #include "moc_qdependency.cpp"

@@ -89,11 +89,14 @@ class Q_UML_EXPORT QDuration : public QObject, public QValueSpecification
     Q_PROPERTY(QValueSpecification * expr READ expr WRITE setExpr)
     Q_PROPERTY(const QSet<QObservation *> * observations READ observations)
 
+    Q_DISABLE_COPY(QDuration)
+    Q_DECLARE_PRIVATE(QDuration)
+
 public:
     explicit QDuration(QObject *parent = 0);
     virtual ~QDuration();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QValueSpecification *expr() const;
     void setExpr(const QValueSpecification *expr);
     const QSet<QObservation *> *observations() const;
@@ -101,8 +104,7 @@ public:
     void removeObservation(const QObservation *observation);
 
 private:
-    Q_DISABLE_COPY(QDuration)
-    Q_DECLARE_PRIVATE(QDuration)
+    QDurationPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -40,9 +40,47 @@
 ****************************************************************************/
 
 #include "qloopnode.h"
-//#include "qloopnode_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QLoopNodePrivate
+{
+public:
+    explicit QLoopNodePrivate();
+    virtual ~QLoopNodePrivate();
+
+    bool isTestedFirst;
+    QList<QOutputPin *> *bodyOutputs;
+    QSet<QExecutableNode *> *bodyParts;
+    QOutputPin *decider;
+    QList<QOutputPin *> *loopVariables;
+    QList<QInputPin *> *loopVariableInputs;
+    QList<QOutputPin *> *results;
+    QSet<QExecutableNode *> *setupParts;
+    QSet<QExecutableNode *> *tests;
+};
+
+QLoopNodePrivate::QLoopNodePrivate() :
+    bodyOutputs(new QList<QOutputPin *>),
+    bodyParts(new QSet<QExecutableNode *>),
+    loopVariables(new QList<QOutputPin *>),
+    loopVariableInputs(new QList<QInputPin *>),
+    results(new QList<QOutputPin *>),
+    setupParts(new QSet<QExecutableNode *>),
+    tests(new QSet<QExecutableNode *>)
+{
+}
+
+QLoopNodePrivate::~QLoopNodePrivate()
+{
+    delete bodyOutputs;
+    delete bodyParts;
+    delete loopVariables;
+    delete loopVariableInputs;
+    delete results;
+    delete setupParts;
+    delete tests;
+}
 
 /*!
     \class QLoopNode
@@ -53,12 +91,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QLoopNode::QLoopNode(QObject *parent)
-    : QStructuredActivityNode(parent)
+    : QStructuredActivityNode(parent), d_ptr(new QLoopNodePrivate)
 {
 }
 
 QLoopNode::~QLoopNode()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +105,12 @@ QLoopNode::~QLoopNode()
  */
 bool QLoopNode::isTestedFirst() const
 {
+    return d_ptr->isTestedFirst;
 }
 
 void QLoopNode::setTestedFirst(bool isTestedFirst)
 {
+    d_ptr->isTestedFirst = isTestedFirst;
 }
 
 /*!
@@ -77,14 +118,17 @@ void QLoopNode::setTestedFirst(bool isTestedFirst)
  */
 const QList<QOutputPin *> *QLoopNode::bodyOutputs() const
 {
+    return d_ptr->bodyOutputs;
 }
 
 void QLoopNode::addBodyOutput(const QOutputPin *bodyOutput)
 {
+    d_ptr->bodyOutputs->append(const_cast<QOutputPin *>(bodyOutput));
 }
 
 void QLoopNode::removeBodyOutput(const QOutputPin *bodyOutput)
 {
+    d_ptr->bodyOutputs->removeAll(const_cast<QOutputPin *>(bodyOutput));
 }
 
 /*!
@@ -92,14 +136,17 @@ void QLoopNode::removeBodyOutput(const QOutputPin *bodyOutput)
  */
 const QSet<QExecutableNode *> *QLoopNode::bodyParts() const
 {
+    return d_ptr->bodyParts;
 }
 
 void QLoopNode::addBodyPart(const QExecutableNode *bodyPart)
 {
+    d_ptr->bodyParts->insert(const_cast<QExecutableNode *>(bodyPart));
 }
 
 void QLoopNode::removeBodyPart(const QExecutableNode *bodyPart)
 {
+    d_ptr->bodyParts->remove(const_cast<QExecutableNode *>(bodyPart));
 }
 
 /*!
@@ -107,10 +154,12 @@ void QLoopNode::removeBodyPart(const QExecutableNode *bodyPart)
  */
 QOutputPin *QLoopNode::decider() const
 {
+    return d_ptr->decider;
 }
 
 void QLoopNode::setDecider(const QOutputPin *decider)
 {
+    d_ptr->decider = const_cast<QOutputPin *>(decider);
 }
 
 /*!
@@ -118,14 +167,17 @@ void QLoopNode::setDecider(const QOutputPin *decider)
  */
 const QList<QOutputPin *> *QLoopNode::loopVariables() const
 {
+    return d_ptr->loopVariables;
 }
 
 void QLoopNode::addLoopVariable(const QOutputPin *loopVariable)
 {
+    d_ptr->loopVariables->append(const_cast<QOutputPin *>(loopVariable));
 }
 
 void QLoopNode::removeLoopVariable(const QOutputPin *loopVariable)
 {
+    d_ptr->loopVariables->removeAll(const_cast<QOutputPin *>(loopVariable));
 }
 
 /*!
@@ -133,14 +185,17 @@ void QLoopNode::removeLoopVariable(const QOutputPin *loopVariable)
  */
 const QList<QInputPin *> *QLoopNode::loopVariableInputs() const
 {
+    return d_ptr->loopVariableInputs;
 }
 
 void QLoopNode::addLoopVariableInput(const QInputPin *loopVariableInput)
 {
+    d_ptr->loopVariableInputs->append(const_cast<QInputPin *>(loopVariableInput));
 }
 
 void QLoopNode::removeLoopVariableInput(const QInputPin *loopVariableInput)
 {
+    d_ptr->loopVariableInputs->removeAll(const_cast<QInputPin *>(loopVariableInput));
 }
 
 /*!
@@ -148,14 +203,17 @@ void QLoopNode::removeLoopVariableInput(const QInputPin *loopVariableInput)
  */
 const QList<QOutputPin *> *QLoopNode::results() const
 {
+    return d_ptr->results;
 }
 
 void QLoopNode::addResult(const QOutputPin *result)
 {
+    d_ptr->results->append(const_cast<QOutputPin *>(result));
 }
 
 void QLoopNode::removeResult(const QOutputPin *result)
 {
+    d_ptr->results->removeAll(const_cast<QOutputPin *>(result));
 }
 
 /*!
@@ -163,14 +221,17 @@ void QLoopNode::removeResult(const QOutputPin *result)
  */
 const QSet<QExecutableNode *> *QLoopNode::setupParts() const
 {
+    return d_ptr->setupParts;
 }
 
 void QLoopNode::addSetupPart(const QExecutableNode *setupPart)
 {
+    d_ptr->setupParts->insert(const_cast<QExecutableNode *>(setupPart));
 }
 
 void QLoopNode::removeSetupPart(const QExecutableNode *setupPart)
 {
+    d_ptr->setupParts->remove(const_cast<QExecutableNode *>(setupPart));
 }
 
 /*!
@@ -178,14 +239,17 @@ void QLoopNode::removeSetupPart(const QExecutableNode *setupPart)
  */
 const QSet<QExecutableNode *> *QLoopNode::tests() const
 {
+    return d_ptr->tests;
 }
 
 void QLoopNode::addTest(const QExecutableNode *test)
 {
+    d_ptr->tests->insert(const_cast<QExecutableNode *>(test));
 }
 
 void QLoopNode::removeTest(const QExecutableNode *test)
 {
+    d_ptr->tests->remove(const_cast<QExecutableNode *>(test));
 }
 
 #include "moc_qloopnode.cpp"

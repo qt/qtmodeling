@@ -83,21 +83,23 @@ class Q_UML_EXPORT QTimeObservation : public QObject, public QObservation
     Q_PROPERTY(bool firstEvent READ firstEvent WRITE setFirstEvent)
     Q_PROPERTY(QNamedElement * event READ event WRITE setEvent)
 
+    Q_DISABLE_COPY(QTimeObservation)
+    Q_DECLARE_PRIVATE(QTimeObservation)
+
 public:
     explicit QTimeObservation(QObject *parent = 0);
     virtual ~QTimeObservation();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool firstEvent() const;
     void setFirstEvent(bool firstEvent);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QNamedElement *event() const;
     void setEvent(const QNamedElement *event);
 
 private:
-    Q_DISABLE_COPY(QTimeObservation)
-    Q_DECLARE_PRIVATE(QTimeObservation)
+    QTimeObservationPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

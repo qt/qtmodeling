@@ -60,16 +60,20 @@ class QPort;
 
 class Q_UML_EXPORT QEncapsulatedClassifier : public QStructuredClassifier
 {
+    Q_DISABLE_COPY(QEncapsulatedClassifier)
+    Q_DECLARE_PRIVATE(QEncapsulatedClassifier)
+
 public:
     virtual ~QEncapsulatedClassifier();
 
-    // Association-ends (except those derived && !derivedUnion)
-
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Association-ends
     const QSet<QPort *> *ownedPorts() const;
 
 protected:
     explicit QEncapsulatedClassifier();
+
+private:
+    QEncapsulatedClassifierPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

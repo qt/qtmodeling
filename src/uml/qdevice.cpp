@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qdevice.h"
-//#include "qdevice_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QDevicePrivate
+{
+public:
+    explicit QDevicePrivate();
+    virtual ~QDevicePrivate();
+
+};
+
+QDevicePrivate::QDevicePrivate()
+{
+}
+
+QDevicePrivate::~QDevicePrivate()
+{
+}
 
 /*!
     \class QDevice
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QDevice::QDevice(QObject *parent)
-    : QNode(parent)
+    : QNode(parent), d_ptr(new QDevicePrivate)
 {
 }
 
 QDevice::~QDevice()
 {
+    delete d_ptr;
 }
 
 #include "moc_qdevice.cpp"

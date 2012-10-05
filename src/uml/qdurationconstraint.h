@@ -46,6 +46,9 @@
 // Base class includes
 #include <QtUml/QIntervalConstraint>
 
+// Qt includes
+#include <QtCore/QSet>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -60,25 +63,27 @@ class Q_UML_EXPORT QDurationConstraint : public QIntervalConstraint
     Q_OBJECT
 
     // From QDurationConstraint
-    Q_PROPERTY(bool firstEvent READ firstEvent)
+    Q_PROPERTY(const QSet<bool> * firstEvents READ firstEvents)
     Q_PROPERTY(QDurationInterval * specification READ specification WRITE setSpecification)
+
+    Q_DISABLE_COPY(QDurationConstraint)
+    Q_DECLARE_PRIVATE(QDurationConstraint)
 
 public:
     explicit QDurationConstraint(QObject *parent = 0);
     virtual ~QDurationConstraint();
 
-    // Attributes (except those derived && !derivedUnion)
-    bool firstEvent() const;
+    // Attributes
+    const QSet<bool> *firstEvents() const;
     void addFirstEvent(bool firstEvent);
     void removeFirstEvent(bool firstEvent);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QDurationInterval *specification() const;
     void setSpecification(const QDurationInterval *specification);
 
 private:
-    Q_DISABLE_COPY(QDurationConstraint)
-    Q_DECLARE_PRIVATE(QDurationConstraint)
+    QDurationConstraintPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

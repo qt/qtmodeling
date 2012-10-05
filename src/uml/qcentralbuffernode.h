@@ -97,13 +97,15 @@ class Q_UML_EXPORT QCentralBufferNode : public QObject, public QObjectNode
     Q_PROPERTY(QBehavior * selection READ selection WRITE setSelection)
     Q_PROPERTY(QValueSpecification * upperBound READ upperBound WRITE setUpperBound)
 
+    Q_DISABLE_COPY(QCentralBufferNode)
+    Q_DECLARE_PRIVATE(QCentralBufferNode)
+
 public:
     explicit QCentralBufferNode(QObject *parent = 0);
     virtual ~QCentralBufferNode();
 
 private:
-    Q_DISABLE_COPY(QCentralBufferNode)
-    Q_DECLARE_PRIVATE(QCentralBufferNode)
+    QCentralBufferNodePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

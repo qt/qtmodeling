@@ -67,8 +67,8 @@ class Q_UML_EXPORT QInputPin : public QObject, public QPin
     // From QMultiplicityElement
     Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
     Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
-    Q_PROPERTY(qint32 lower READ lower)
-    Q_PROPERTY(qint32 upper READ upper)
+    Q_PROPERTY(qint32 lower READ lower WRITE setLower)
+    Q_PROPERTY(qint32 upper READ upper WRITE setUpper)
     Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
     Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
 
@@ -108,13 +108,15 @@ class Q_UML_EXPORT QInputPin : public QObject, public QPin
     // From QPin
     Q_PROPERTY(bool isControl READ isControl WRITE setControl)
 
+    Q_DISABLE_COPY(QInputPin)
+    Q_DECLARE_PRIVATE(QInputPin)
+
 public:
     explicit QInputPin(QObject *parent = 0);
     virtual ~QInputPin();
 
 private:
-    Q_DISABLE_COPY(QInputPin)
-    Q_DECLARE_PRIVATE(QInputPin)
+    QInputPinPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

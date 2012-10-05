@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qforknode.h"
-//#include "qforknode_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QForkNodePrivate
+{
+public:
+    explicit QForkNodePrivate();
+    virtual ~QForkNodePrivate();
+
+};
+
+QForkNodePrivate::QForkNodePrivate()
+{
+}
+
+QForkNodePrivate::~QForkNodePrivate()
+{
+}
 
 /*!
     \class QForkNode
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QForkNode::QForkNode(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QForkNodePrivate)
 {
 }
 
 QForkNode::~QForkNode()
 {
+    delete d_ptr;
 }
 
 #include "moc_qforknode.cpp"

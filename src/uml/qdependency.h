@@ -94,11 +94,14 @@ class Q_UML_EXPORT QDependency : public QObject, public QPackageableElement, pub
     Q_PROPERTY(const QSet<QNamedElement *> * clients READ clients)
     Q_PROPERTY(const QSet<QNamedElement *> * suppliers READ suppliers)
 
+    Q_DISABLE_COPY(QDependency)
+    Q_DECLARE_PRIVATE(QDependency)
+
 public:
     explicit QDependency(QObject *parent = 0);
     virtual ~QDependency();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QNamedElement *> *clients() const;
     void addClient(const QNamedElement *client);
     void removeClient(const QNamedElement *client);
@@ -107,8 +110,7 @@ public:
     void removeSupplier(const QNamedElement *supplier);
 
 private:
-    Q_DISABLE_COPY(QDependency)
-    Q_DECLARE_PRIVATE(QDependency)
+    QDependencyPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

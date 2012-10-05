@@ -105,11 +105,14 @@ class Q_UML_EXPORT QTestIdentityAction : public QObject, public QAction
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
     Q_PROPERTY(QInputPin * second READ second WRITE setSecond)
 
+    Q_DISABLE_COPY(QTestIdentityAction)
+    Q_DECLARE_PRIVATE(QTestIdentityAction)
+
 public:
     explicit QTestIdentityAction(QObject *parent = 0);
     virtual ~QTestIdentityAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QInputPin *first() const;
     void setFirst(const QInputPin *first);
     QOutputPin *result() const;
@@ -118,8 +121,7 @@ public:
     void setSecond(const QInputPin *second);
 
 private:
-    Q_DISABLE_COPY(QTestIdentityAction)
-    Q_DECLARE_PRIVATE(QTestIdentityAction)
+    QTestIdentityActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

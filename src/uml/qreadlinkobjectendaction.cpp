@@ -40,9 +40,27 @@
 ****************************************************************************/
 
 #include "qreadlinkobjectendaction.h"
-//#include "qreadlinkobjectendaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QReadLinkObjectEndActionPrivate
+{
+public:
+    explicit QReadLinkObjectEndActionPrivate();
+    virtual ~QReadLinkObjectEndActionPrivate();
+
+    QProperty *end;
+    QInputPin *object;
+    QOutputPin *result;
+};
+
+QReadLinkObjectEndActionPrivate::QReadLinkObjectEndActionPrivate()
+{
+}
+
+QReadLinkObjectEndActionPrivate::~QReadLinkObjectEndActionPrivate()
+{
+}
 
 /*!
     \class QReadLinkObjectEndAction
@@ -53,12 +71,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QReadLinkObjectEndAction::QReadLinkObjectEndAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QReadLinkObjectEndActionPrivate)
 {
 }
 
 QReadLinkObjectEndAction::~QReadLinkObjectEndAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +85,12 @@ QReadLinkObjectEndAction::~QReadLinkObjectEndAction()
  */
 QProperty *QReadLinkObjectEndAction::end() const
 {
+    return d_ptr->end;
 }
 
 void QReadLinkObjectEndAction::setEnd(const QProperty *end)
 {
+    d_ptr->end = const_cast<QProperty *>(end);
 }
 
 /*!
@@ -77,10 +98,12 @@ void QReadLinkObjectEndAction::setEnd(const QProperty *end)
  */
 QInputPin *QReadLinkObjectEndAction::object() const
 {
+    return d_ptr->object;
 }
 
 void QReadLinkObjectEndAction::setObject(const QInputPin *object)
 {
+    d_ptr->object = const_cast<QInputPin *>(object);
 }
 
 /*!
@@ -88,10 +111,12 @@ void QReadLinkObjectEndAction::setObject(const QInputPin *object)
  */
 QOutputPin *QReadLinkObjectEndAction::result() const
 {
+    return d_ptr->result;
 }
 
 void QReadLinkObjectEndAction::setResult(const QOutputPin *result)
 {
+    d_ptr->result = const_cast<QOutputPin *>(result);
 }
 
 #include "moc_qreadlinkobjectendaction.cpp"

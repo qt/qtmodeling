@@ -84,21 +84,23 @@ class Q_UML_EXPORT QLiteralReal : public QObject, public QLiteralSpecification
     // From QLiteralReal
     Q_PROPERTY(qreal value READ value WRITE setValue)
 
+    Q_DISABLE_COPY(QLiteralReal)
+    Q_DECLARE_PRIVATE(QLiteralReal)
+
 public:
     explicit QLiteralReal(QObject *parent = 0);
     virtual ~QLiteralReal();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     qreal value() const;
     void setValue(qreal value);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     bool isComputable() const;
     qreal realValue() const;
 
 private:
-    Q_DISABLE_COPY(QLiteralReal)
-    Q_DECLARE_PRIVATE(QLiteralReal)
+    QLiteralRealPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

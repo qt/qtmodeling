@@ -92,21 +92,23 @@ class Q_UML_EXPORT QJoinNode : public QObject, public QControlNode
     Q_PROPERTY(bool isCombineDuplicate READ isCombineDuplicate WRITE setCombineDuplicate)
     Q_PROPERTY(QValueSpecification * joinSpec READ joinSpec WRITE setJoinSpec)
 
+    Q_DISABLE_COPY(QJoinNode)
+    Q_DECLARE_PRIVATE(QJoinNode)
+
 public:
     explicit QJoinNode(QObject *parent = 0);
     virtual ~QJoinNode();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isCombineDuplicate() const;
     void setCombineDuplicate(bool isCombineDuplicate);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QValueSpecification *joinSpec() const;
     void setJoinSpec(const QValueSpecification *joinSpec);
 
 private:
-    Q_DISABLE_COPY(QJoinNode)
-    Q_DECLARE_PRIVATE(QJoinNode)
+    QJoinNodePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

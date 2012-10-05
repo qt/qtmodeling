@@ -75,11 +75,14 @@ class Q_UML_EXPORT QSlot : public QObject, public QElement
     Q_PROPERTY(QInstanceSpecification * owningInstance READ owningInstance WRITE setOwningInstance)
     Q_PROPERTY(const QList<QValueSpecification *> * values READ values)
 
+    Q_DISABLE_COPY(QSlot)
+    Q_DECLARE_PRIVATE(QSlot)
+
 public:
     explicit QSlot(QObject *parent = 0);
     virtual ~QSlot();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QStructuralFeature *definingFeature() const;
     void setDefiningFeature(const QStructuralFeature *definingFeature);
     QInstanceSpecification *owningInstance() const;
@@ -89,8 +92,7 @@ public:
     void removeValue(const QValueSpecification *value);
 
 private:
-    Q_DISABLE_COPY(QSlot)
-    Q_DECLARE_PRIVATE(QSlot)
+    QSlotPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

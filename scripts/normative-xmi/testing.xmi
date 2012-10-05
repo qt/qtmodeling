@@ -40,6 +40,61 @@
         <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TestingClass-slot-_upperValue" value="*"/>
       </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="BaseClass-readWriteDerivedAttribute" name="readWriteDerivedAttribute" isDerived="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="BaseClass-readWriteDerivedAttribute-_ownedComment.0" annotatedElement="BaseClass-readWriteDerivedAttribute">
+          <body>readWriteDerivedAttribute.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="BaseClass-readWriteDerivedAttribute-_upperValue" value="*"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="BaseClass-readWriteDerivedAttribute.1" name="readWriteDerivedAttribute" visibility="public" isQuery="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="BaseClass-readWriteDerivedAttribute.1-_ownedComment.0" annotatedElement="BaseClass-readWriteDerivedAttribute.1">
+          <body>Testing readWriteDerivedAttribute.</body>
+        </ownedComment>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="BaseClass-readWriteDerivedAttribute.1-result" name="result" visibility="public" direction="return">
+          <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="BaseClass-readWriteDerivedAttribute.1-result-_upperValue" value="*"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="BaseClass-readOnlyDerivedAttribute" name="readOnlyDerivedAttribute" isDerived="true" isReadOnly="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="BaseClass-readOnlyDerivedAttribute-_ownedComment.0" annotatedElement="BaseClass-readOnlyDerivedAttribute">
+          <body>readOnlyDerivedAttribute.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="BaseClass-readOnlyDerivedAttribute-_upperValue" value="*"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="BaseClass-readOnlyDerivedAttribute.1" name="readOnlyDerivedAttribute" visibility="public" isQuery="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="BaseClass-readOnlyDerivedAttribute.1-_ownedComment.0" annotatedElement="BaseClass-readOnlyDerivedAttribute.1">
+          <body>Testing readOnlyDerivedAttribute.</body>
+        </ownedComment>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="BaseClass-readOnlyDerivedAttribute.1-result" name="result" visibility="public" direction="return">
+          <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="BaseClass-readOnlyDerivedAttribute.1-result-_upperValue" value="*"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="BaseClass-readWriteDerivedUnionAttribute" name="readWriteDerivedUnionAttribute" isDerived="true" isDerivedUnion="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="BaseClass-readWriteDerivedUnionAttribute-_ownedComment.0" annotatedElement="BaseClass-readWriteDerivedUnionAttribute">
+          <body>readWriteDerivedUnionAttribute.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="BaseClass-readWriteDerivedUnionAttribute-_upperValue" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="BaseClass-readOnlyDerivedUnionAttribute" name="readOnlyDerivedUnionAttribute" isDerived="true" isReadOnly="true" isDerivedUnion="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="BaseClass-readOnlyDerivedUnionAttribute-_ownedComment.0" annotatedElement="BaseClass-readOnlyDerivedUnionAttribute">
+          <body>readOnlyDerivedUnionAttribute.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="BaseClass-readOnlyDerivedUnionAttribute-_upperValue" value="*"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="BaseClass-aRealOperation" name="aRealOperation" visibility="public" isQuery="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="BaseClass-aRealOperation-_ownedComment.0" annotatedElement="BaseClass-aRealOperation">
+          <body>Testing aRealOperation.</body>
+        </ownedComment>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="BaseClass-aRealOperation-result" name="result" visibility="public" direction="return">
+          <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="BaseClass-aRealOperation-result-_upperValue" value="*"/>
+        </ownedParameter>
+      </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="UsedClass" name="UsedClass">
     </packagedElement>

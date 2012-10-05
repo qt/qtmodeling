@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qliteralinteger.h"
-//#include "qliteralinteger_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QLiteralIntegerPrivate
+{
+public:
+    explicit QLiteralIntegerPrivate();
+    virtual ~QLiteralIntegerPrivate();
+
+    qint32 value;
+};
+
+QLiteralIntegerPrivate::QLiteralIntegerPrivate()
+{
+}
+
+QLiteralIntegerPrivate::~QLiteralIntegerPrivate()
+{
+}
 
 /*!
     \class QLiteralInteger
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QLiteralInteger::QLiteralInteger(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QLiteralIntegerPrivate)
 {
 }
 
 QLiteralInteger::~QLiteralInteger()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QLiteralInteger::~QLiteralInteger()
  */
 qint32 QLiteralInteger::value() const
 {
+    return d_ptr->value;
 }
 
 void QLiteralInteger::setValue(qint32 value)
 {
+    d_ptr->value = value;
 }
 
 /*!
@@ -77,6 +96,7 @@ void QLiteralInteger::setValue(qint32 value)
  */
 qint32 QLiteralInteger::integerValue() const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -84,6 +104,7 @@ qint32 QLiteralInteger::integerValue() const
  */
 bool QLiteralInteger::isComputable() const
 {
+    qWarning("To be implemented");
 }
 
 #include "moc_qliteralinteger.cpp"

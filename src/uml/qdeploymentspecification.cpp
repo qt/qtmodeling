@@ -40,9 +40,27 @@
 ****************************************************************************/
 
 #include "qdeploymentspecification.h"
-//#include "qdeploymentspecification_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QDeploymentSpecificationPrivate
+{
+public:
+    explicit QDeploymentSpecificationPrivate();
+    virtual ~QDeploymentSpecificationPrivate();
+
+    QString deploymentLocation;
+    QString executionLocation;
+    QDeployment *deployment;
+};
+
+QDeploymentSpecificationPrivate::QDeploymentSpecificationPrivate()
+{
+}
+
+QDeploymentSpecificationPrivate::~QDeploymentSpecificationPrivate()
+{
+}
 
 /*!
     \class QDeploymentSpecification
@@ -53,12 +71,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QDeploymentSpecification::QDeploymentSpecification(QObject *parent)
-    : QArtifact(parent)
+    : QArtifact(parent), d_ptr(new QDeploymentSpecificationPrivate)
 {
 }
 
 QDeploymentSpecification::~QDeploymentSpecification()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +85,12 @@ QDeploymentSpecification::~QDeploymentSpecification()
  */
 QString QDeploymentSpecification::deploymentLocation() const
 {
+    return d_ptr->deploymentLocation;
 }
 
 void QDeploymentSpecification::setDeploymentLocation(QString deploymentLocation)
 {
+    d_ptr->deploymentLocation = deploymentLocation;
 }
 
 /*!
@@ -77,10 +98,12 @@ void QDeploymentSpecification::setDeploymentLocation(QString deploymentLocation)
  */
 QString QDeploymentSpecification::executionLocation() const
 {
+    return d_ptr->executionLocation;
 }
 
 void QDeploymentSpecification::setExecutionLocation(QString executionLocation)
 {
+    d_ptr->executionLocation = executionLocation;
 }
 
 /*!
@@ -88,10 +111,12 @@ void QDeploymentSpecification::setExecutionLocation(QString executionLocation)
  */
 QDeployment *QDeploymentSpecification::deployment() const
 {
+    return d_ptr->deployment;
 }
 
 void QDeploymentSpecification::setDeployment(const QDeployment *deployment)
 {
+    d_ptr->deployment = const_cast<QDeployment *>(deployment);
 }
 
 #include "moc_qdeploymentspecification.cpp"

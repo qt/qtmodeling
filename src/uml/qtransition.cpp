@@ -40,9 +40,34 @@
 ****************************************************************************/
 
 #include "qtransition.h"
-//#include "qtransition_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QTransitionPrivate
+{
+public:
+    explicit QTransitionPrivate();
+    virtual ~QTransitionPrivate();
+
+    QtUml::TransitionKind kind;
+    QRegion *container;
+    QBehavior *effect;
+    QConstraint *guard;
+    QTransition *redefinedTransition;
+    QVertex *source;
+    QVertex *target;
+    QSet<QTrigger *> *triggers;
+};
+
+QTransitionPrivate::QTransitionPrivate() :
+    triggers(new QSet<QTrigger *>)
+{
+}
+
+QTransitionPrivate::~QTransitionPrivate()
+{
+    delete triggers;
+}
 
 /*!
     \class QTransition
@@ -53,12 +78,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QTransition::QTransition(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QTransitionPrivate)
 {
 }
 
 QTransition::~QTransition()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +92,12 @@ QTransition::~QTransition()
  */
 QtUml::TransitionKind QTransition::kind() const
 {
+    return d_ptr->kind;
 }
 
 void QTransition::setKind(QtUml::TransitionKind kind)
 {
+    d_ptr->kind = kind;
 }
 
 /*!
@@ -77,10 +105,12 @@ void QTransition::setKind(QtUml::TransitionKind kind)
  */
 QRegion *QTransition::container() const
 {
+    return d_ptr->container;
 }
 
 void QTransition::setContainer(const QRegion *container)
 {
+    d_ptr->container = const_cast<QRegion *>(container);
 }
 
 /*!
@@ -88,10 +118,12 @@ void QTransition::setContainer(const QRegion *container)
  */
 QBehavior *QTransition::effect() const
 {
+    return d_ptr->effect;
 }
 
 void QTransition::setEffect(const QBehavior *effect)
 {
+    d_ptr->effect = const_cast<QBehavior *>(effect);
 }
 
 /*!
@@ -99,10 +131,12 @@ void QTransition::setEffect(const QBehavior *effect)
  */
 QConstraint *QTransition::guard() const
 {
+    return d_ptr->guard;
 }
 
 void QTransition::setGuard(const QConstraint *guard)
 {
+    d_ptr->guard = const_cast<QConstraint *>(guard);
 }
 
 /*!
@@ -110,10 +144,20 @@ void QTransition::setGuard(const QConstraint *guard)
  */
 QTransition *QTransition::redefinedTransition() const
 {
+    return d_ptr->redefinedTransition;
 }
 
 void QTransition::setRedefinedTransition(const QTransition *redefinedTransition)
 {
+    d_ptr->redefinedTransition = const_cast<QTransition *>(redefinedTransition);
+}
+
+/*!
+    References the classifier in which context this element may be redefined.
+ */
+QClassifier *QTransition::redefinitionContext() const
+{
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -121,10 +165,12 @@ void QTransition::setRedefinedTransition(const QTransition *redefinedTransition)
  */
 QVertex *QTransition::source() const
 {
+    return d_ptr->source;
 }
 
 void QTransition::setSource(const QVertex *source)
 {
+    d_ptr->source = const_cast<QVertex *>(source);
 }
 
 /*!
@@ -132,10 +178,12 @@ void QTransition::setSource(const QVertex *source)
  */
 QVertex *QTransition::target() const
 {
+    return d_ptr->target;
 }
 
 void QTransition::setTarget(const QVertex *target)
 {
+    d_ptr->target = const_cast<QVertex *>(target);
 }
 
 /*!
@@ -143,14 +191,17 @@ void QTransition::setTarget(const QVertex *target)
  */
 const QSet<QTrigger *> *QTransition::triggers() const
 {
+    return d_ptr->triggers;
 }
 
 void QTransition::addTrigger(const QTrigger *trigger)
 {
+    d_ptr->triggers->insert(const_cast<QTrigger *>(trigger));
 }
 
 void QTransition::removeTrigger(const QTrigger *trigger)
 {
+    d_ptr->triggers->remove(const_cast<QTrigger *>(trigger));
 }
 
 /*!
@@ -158,6 +209,7 @@ void QTransition::removeTrigger(const QTrigger *trigger)
  */
 QStateMachine *QTransition::containingStateMachine() const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -165,13 +217,7 @@ QStateMachine *QTransition::containingStateMachine() const
  */
 bool QTransition::isConsistentWith(const QRedefinableElement *redefinee) const
 {
-}
-
-/*!
-    The redefinition context of a transition is the nearest containing statemachine.
- */
-QClassifier *QTransition::redefinitionContext() const
-{
+    qWarning("To be implemented");
 }
 
 #include "moc_qtransition.cpp"

@@ -40,9 +40,27 @@
 ****************************************************************************/
 
 #include "qcollaboration.h"
-//#include "qcollaboration_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QCollaborationPrivate
+{
+public:
+    explicit QCollaborationPrivate();
+    virtual ~QCollaborationPrivate();
+
+    QSet<QConnectableElement *> *collaborationRoles;
+};
+
+QCollaborationPrivate::QCollaborationPrivate() :
+    collaborationRoles(new QSet<QConnectableElement *>)
+{
+}
+
+QCollaborationPrivate::~QCollaborationPrivate()
+{
+    delete collaborationRoles;
+}
 
 /*!
     \class QCollaboration
@@ -53,12 +71,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QCollaboration::QCollaboration(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QCollaborationPrivate)
 {
 }
 
 QCollaboration::~QCollaboration()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +85,17 @@ QCollaboration::~QCollaboration()
  */
 const QSet<QConnectableElement *> *QCollaboration::collaborationRoles() const
 {
+    return d_ptr->collaborationRoles;
 }
 
 void QCollaboration::addCollaborationRole(const QConnectableElement *collaborationRole)
 {
+    d_ptr->collaborationRoles->insert(const_cast<QConnectableElement *>(collaborationRole));
 }
 
 void QCollaboration::removeCollaborationRole(const QConnectableElement *collaborationRole)
 {
+    d_ptr->collaborationRoles->remove(const_cast<QConnectableElement *>(collaborationRole));
 }
 
 #include "moc_qcollaboration.cpp"

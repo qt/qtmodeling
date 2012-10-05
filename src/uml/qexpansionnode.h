@@ -102,19 +102,21 @@ class Q_UML_EXPORT QExpansionNode : public QObject, public QObjectNode
     Q_PROPERTY(QExpansionRegion * regionAsInput READ regionAsInput WRITE setRegionAsInput)
     Q_PROPERTY(QExpansionRegion * regionAsOutput READ regionAsOutput WRITE setRegionAsOutput)
 
+    Q_DISABLE_COPY(QExpansionNode)
+    Q_DECLARE_PRIVATE(QExpansionNode)
+
 public:
     explicit QExpansionNode(QObject *parent = 0);
     virtual ~QExpansionNode();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QExpansionRegion *regionAsInput() const;
     void setRegionAsInput(const QExpansionRegion *regionAsInput);
     QExpansionRegion *regionAsOutput() const;
     void setRegionAsOutput(const QExpansionRegion *regionAsOutput);
 
 private:
-    Q_DISABLE_COPY(QExpansionNode)
-    Q_DECLARE_PRIVATE(QExpansionNode)
+    QExpansionNodePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

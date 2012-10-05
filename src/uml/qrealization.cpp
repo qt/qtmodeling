@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qrealization.h"
-//#include "qrealization_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QRealizationPrivate
+{
+public:
+    explicit QRealizationPrivate();
+    virtual ~QRealizationPrivate();
+
+};
+
+QRealizationPrivate::QRealizationPrivate()
+{
+}
+
+QRealizationPrivate::~QRealizationPrivate()
+{
+}
 
 /*!
     \class QRealization
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QRealization::QRealization(QObject *parent)
-    : QAbstraction(parent)
+    : QAbstraction(parent), d_ptr(new QRealizationPrivate)
 {
 }
 
 QRealization::~QRealization()
 {
+    delete d_ptr;
 }
 
 #include "moc_qrealization.cpp"

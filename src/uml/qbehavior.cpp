@@ -40,9 +40,41 @@
 ****************************************************************************/
 
 #include "qbehavior.h"
-//#include "qbehavior_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QBehaviorPrivate
+{
+public:
+    explicit QBehaviorPrivate();
+    virtual ~QBehaviorPrivate();
+
+    bool isReentrant;
+    QList<QParameter *> *ownedParameters;
+    QSet<QParameterSet *> *ownedParameterSets;
+    QSet<QConstraint *> *postconditions;
+    QSet<QConstraint *> *preconditions;
+    QSet<QBehavior *> *redefinedBehaviors;
+    QBehavioralFeature *specification;
+};
+
+QBehaviorPrivate::QBehaviorPrivate() :
+    ownedParameters(new QList<QParameter *>),
+    ownedParameterSets(new QSet<QParameterSet *>),
+    postconditions(new QSet<QConstraint *>),
+    preconditions(new QSet<QConstraint *>),
+    redefinedBehaviors(new QSet<QBehavior *>)
+{
+}
+
+QBehaviorPrivate::~QBehaviorPrivate()
+{
+    delete ownedParameters;
+    delete ownedParameterSets;
+    delete postconditions;
+    delete preconditions;
+    delete redefinedBehaviors;
+}
 
 /*!
     \class QBehavior
@@ -53,12 +85,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QBehavior::QBehavior(QObject *parent)
-    : QClass(parent)
+    : QClass(parent), d_ptr(new QBehaviorPrivate)
 {
 }
 
 QBehavior::~QBehavior()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +99,20 @@ QBehavior::~QBehavior()
  */
 bool QBehavior::isReentrant() const
 {
+    return d_ptr->isReentrant;
 }
 
 void QBehavior::setReentrant(bool isReentrant)
 {
+    d_ptr->isReentrant = isReentrant;
+}
+
+/*!
+    The classifier that is the context for the execution of the behavior. If the behavior is owned by a BehavioredClassifier, that classifier is the context. Otherwise, the context is the first BehavioredClassifier reached by following the chain of owner relationships. For example, following this algorithm, the context of an entry action in a state machine is the classifier that owns the state machine. The features of the context classifier as well as the elements visible to the context classifier are visible to the behavior.
+ */
+QBehavioredClassifier *QBehavior::context() const
+{
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -77,14 +120,17 @@ void QBehavior::setReentrant(bool isReentrant)
  */
 const QList<QParameter *> *QBehavior::ownedParameters() const
 {
+    return d_ptr->ownedParameters;
 }
 
 void QBehavior::addOwnedParameter(const QParameter *ownedParameter)
 {
+    d_ptr->ownedParameters->append(const_cast<QParameter *>(ownedParameter));
 }
 
 void QBehavior::removeOwnedParameter(const QParameter *ownedParameter)
 {
+    d_ptr->ownedParameters->removeAll(const_cast<QParameter *>(ownedParameter));
 }
 
 /*!
@@ -92,14 +138,17 @@ void QBehavior::removeOwnedParameter(const QParameter *ownedParameter)
  */
 const QSet<QParameterSet *> *QBehavior::ownedParameterSets() const
 {
+    return d_ptr->ownedParameterSets;
 }
 
 void QBehavior::addOwnedParameterSet(const QParameterSet *ownedParameterSet)
 {
+    d_ptr->ownedParameterSets->insert(const_cast<QParameterSet *>(ownedParameterSet));
 }
 
 void QBehavior::removeOwnedParameterSet(const QParameterSet *ownedParameterSet)
 {
+    d_ptr->ownedParameterSets->remove(const_cast<QParameterSet *>(ownedParameterSet));
 }
 
 /*!
@@ -107,14 +156,17 @@ void QBehavior::removeOwnedParameterSet(const QParameterSet *ownedParameterSet)
  */
 const QSet<QConstraint *> *QBehavior::postconditions() const
 {
+    return d_ptr->postconditions;
 }
 
 void QBehavior::addPostcondition(const QConstraint *postcondition)
 {
+    d_ptr->postconditions->insert(const_cast<QConstraint *>(postcondition));
 }
 
 void QBehavior::removePostcondition(const QConstraint *postcondition)
 {
+    d_ptr->postconditions->remove(const_cast<QConstraint *>(postcondition));
 }
 
 /*!
@@ -122,14 +174,17 @@ void QBehavior::removePostcondition(const QConstraint *postcondition)
  */
 const QSet<QConstraint *> *QBehavior::preconditions() const
 {
+    return d_ptr->preconditions;
 }
 
 void QBehavior::addPrecondition(const QConstraint *precondition)
 {
+    d_ptr->preconditions->insert(const_cast<QConstraint *>(precondition));
 }
 
 void QBehavior::removePrecondition(const QConstraint *precondition)
 {
+    d_ptr->preconditions->remove(const_cast<QConstraint *>(precondition));
 }
 
 /*!
@@ -137,14 +192,17 @@ void QBehavior::removePrecondition(const QConstraint *precondition)
  */
 const QSet<QBehavior *> *QBehavior::redefinedBehaviors() const
 {
+    return d_ptr->redefinedBehaviors;
 }
 
 void QBehavior::addRedefinedBehavior(const QBehavior *redefinedBehavior)
 {
+    d_ptr->redefinedBehaviors->insert(const_cast<QBehavior *>(redefinedBehavior));
 }
 
 void QBehavior::removeRedefinedBehavior(const QBehavior *redefinedBehavior)
 {
+    d_ptr->redefinedBehaviors->remove(const_cast<QBehavior *>(redefinedBehavior));
 }
 
 /*!
@@ -152,17 +210,12 @@ void QBehavior::removeRedefinedBehavior(const QBehavior *redefinedBehavior)
  */
 QBehavioralFeature *QBehavior::specification() const
 {
+    return d_ptr->specification;
 }
 
 void QBehavior::setSpecification(const QBehavioralFeature *specification)
 {
-}
-
-/*!
-    Missing derivation for Behavior::/context : BehavioredClassifier
- */
-QBehavioredClassifier *QBehavior::context() const
-{
+    d_ptr->specification = const_cast<QBehavioralFeature *>(specification);
 }
 
 QT_END_NAMESPACE_QTUML

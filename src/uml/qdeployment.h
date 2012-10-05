@@ -69,11 +69,14 @@ class Q_UML_EXPORT QDeployment : public QDependency
     Q_PROPERTY(const QSet<QDeployedArtifact *> * deployedArtifacts READ deployedArtifacts)
     Q_PROPERTY(QDeploymentTarget * location READ location WRITE setLocation)
 
+    Q_DISABLE_COPY(QDeployment)
+    Q_DECLARE_PRIVATE(QDeployment)
+
 public:
     explicit QDeployment(QObject *parent = 0);
     virtual ~QDeployment();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QDeploymentSpecification *> *configurations() const;
     void addConfiguration(const QDeploymentSpecification *configuration);
     void removeConfiguration(const QDeploymentSpecification *configuration);
@@ -84,8 +87,7 @@ public:
     void setLocation(const QDeploymentTarget *location);
 
 private:
-    Q_DISABLE_COPY(QDeployment)
-    Q_DECLARE_PRIVATE(QDeployment)
+    QDeploymentPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qlinkenddestructiondata.h"
-//#include "qlinkenddestructiondata_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QLinkEndDestructionDataPrivate
+{
+public:
+    explicit QLinkEndDestructionDataPrivate();
+    virtual ~QLinkEndDestructionDataPrivate();
+
+    bool isDestroyDuplicates;
+    QInputPin *destroyAt;
+};
+
+QLinkEndDestructionDataPrivate::QLinkEndDestructionDataPrivate()
+{
+}
+
+QLinkEndDestructionDataPrivate::~QLinkEndDestructionDataPrivate()
+{
+}
 
 /*!
     \class QLinkEndDestructionData
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QLinkEndDestructionData::QLinkEndDestructionData(QObject *parent)
-    : QLinkEndData(parent)
+    : QLinkEndData(parent), d_ptr(new QLinkEndDestructionDataPrivate)
 {
 }
 
 QLinkEndDestructionData::~QLinkEndDestructionData()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QLinkEndDestructionData::~QLinkEndDestructionData()
  */
 bool QLinkEndDestructionData::isDestroyDuplicates() const
 {
+    return d_ptr->isDestroyDuplicates;
 }
 
 void QLinkEndDestructionData::setDestroyDuplicates(bool isDestroyDuplicates)
 {
+    d_ptr->isDestroyDuplicates = isDestroyDuplicates;
 }
 
 /*!
@@ -77,10 +97,12 @@ void QLinkEndDestructionData::setDestroyDuplicates(bool isDestroyDuplicates)
  */
 QInputPin *QLinkEndDestructionData::destroyAt() const
 {
+    return d_ptr->destroyAt;
 }
 
 void QLinkEndDestructionData::setDestroyAt(const QInputPin *destroyAt)
 {
+    d_ptr->destroyAt = const_cast<QInputPin *>(destroyAt);
 }
 
 #include "moc_qlinkenddestructiondata.cpp"

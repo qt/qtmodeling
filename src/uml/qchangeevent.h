@@ -82,17 +82,19 @@ class Q_UML_EXPORT QChangeEvent : public QObject, public QEvent
     // From QChangeEvent
     Q_PROPERTY(QValueSpecification * changeExpression READ changeExpression WRITE setChangeExpression)
 
+    Q_DISABLE_COPY(QChangeEvent)
+    Q_DECLARE_PRIVATE(QChangeEvent)
+
 public:
     explicit QChangeEvent(QObject *parent = 0);
     virtual ~QChangeEvent();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QValueSpecification *changeExpression() const;
     void setChangeExpression(const QValueSpecification *changeExpression);
 
 private:
-    Q_DISABLE_COPY(QChangeEvent)
-    Q_DECLARE_PRIVATE(QChangeEvent)
+    QChangeEventPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

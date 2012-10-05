@@ -40,9 +40,31 @@
 ****************************************************************************/
 
 #include "qnamedelement.h"
-//#include "qnamedelement_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QNamedElementPrivate
+{
+public:
+    explicit QNamedElementPrivate();
+    virtual ~QNamedElementPrivate();
+
+    QString name;
+    QtUml::VisibilityKind visibility;
+    QSet<QDependency *> *clientDependencies;
+    QStringExpression *nameExpression;
+    QNamespace *namespace_;
+};
+
+QNamedElementPrivate::QNamedElementPrivate() :
+    clientDependencies(new QSet<QDependency *>)
+{
+}
+
+QNamedElementPrivate::~QNamedElementPrivate()
+{
+    delete clientDependencies;
+}
 
 /*!
     \class QNamedElement
@@ -53,11 +75,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QNamedElement::QNamedElement()
+    : d_ptr(new QNamedElementPrivate)
 {
 }
 
 QNamedElement::~QNamedElement()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,10 +89,20 @@ QNamedElement::~QNamedElement()
  */
 QString QNamedElement::name() const
 {
+    return d_ptr->name;
 }
 
 void QNamedElement::setName(QString name)
 {
+    d_ptr->name = name;
+}
+
+/*!
+    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
+ */
+QString QNamedElement::qualifiedName() const
+{
+    qWarning("To be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -76,10 +110,12 @@ void QNamedElement::setName(QString name)
  */
 QtUml::VisibilityKind QNamedElement::visibility() const
 {
+    return d_ptr->visibility;
 }
 
 void QNamedElement::setVisibility(QtUml::VisibilityKind visibility)
 {
+    d_ptr->visibility = visibility;
 }
 
 /*!
@@ -87,14 +123,17 @@ void QNamedElement::setVisibility(QtUml::VisibilityKind visibility)
  */
 const QSet<QDependency *> *QNamedElement::clientDependencies() const
 {
+    return d_ptr->clientDependencies;
 }
 
 void QNamedElement::addClientDependency(const QDependency *clientDependency)
 {
+    d_ptr->clientDependencies->insert(const_cast<QDependency *>(clientDependency));
 }
 
 void QNamedElement::removeClientDependency(const QDependency *clientDependency)
 {
+    d_ptr->clientDependencies->remove(const_cast<QDependency *>(clientDependency));
 }
 
 /*!
@@ -102,10 +141,12 @@ void QNamedElement::removeClientDependency(const QDependency *clientDependency)
  */
 QStringExpression *QNamedElement::nameExpression() const
 {
+    return d_ptr->nameExpression;
 }
 
 void QNamedElement::setNameExpression(const QStringExpression *nameExpression)
 {
+    d_ptr->nameExpression = const_cast<QStringExpression *>(nameExpression);
 }
 
 /*!
@@ -113,6 +154,7 @@ void QNamedElement::setNameExpression(const QStringExpression *nameExpression)
  */
 QNamespace *QNamedElement::namespace_() const
 {
+    return d_ptr->namespace_;
 }
 
 /*!
@@ -120,6 +162,7 @@ QNamespace *QNamedElement::namespace_() const
  */
 const QList<QNamespace *> *QNamedElement::allNamespaces() const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -127,6 +170,7 @@ const QList<QNamespace *> *QNamedElement::allNamespaces() const
  */
 const QSet<QPackage *> *QNamedElement::allOwningPackages() const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -134,13 +178,7 @@ const QSet<QPackage *> *QNamedElement::allOwningPackages() const
  */
 bool QNamedElement::isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const
 {
-}
-
-/*!
-    When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces.
- */
-QString QNamedElement::qualifiedName() const
-{
+    qWarning("To be implemented");
 }
 
 /*!
@@ -148,6 +186,7 @@ QString QNamedElement::qualifiedName() const
  */
 QString QNamedElement::separator() const
 {
+    qWarning("To be implemented");
 }
 
 QT_END_NAMESPACE_QTUML

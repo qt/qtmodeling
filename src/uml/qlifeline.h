@@ -87,11 +87,14 @@ class Q_UML_EXPORT QLifeline : public QObject, public QNamedElement
     Q_PROPERTY(QConnectableElement * represents READ represents WRITE setRepresents)
     Q_PROPERTY(QValueSpecification * selector READ selector WRITE setSelector)
 
+    Q_DISABLE_COPY(QLifeline)
+    Q_DECLARE_PRIVATE(QLifeline)
+
 public:
     explicit QLifeline(QObject *parent = 0);
     virtual ~QLifeline();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QInteractionFragment *> *coveredBy() const;
     void addCoveredBy(const QInteractionFragment *coveredBy);
     void removeCoveredBy(const QInteractionFragment *coveredBy);
@@ -105,8 +108,7 @@ public:
     void setSelector(const QValueSpecification *selector);
 
 private:
-    Q_DISABLE_COPY(QLifeline)
-    Q_DECLARE_PRIVATE(QLifeline)
+    QLifelinePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

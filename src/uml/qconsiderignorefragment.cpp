@@ -40,9 +40,27 @@
 ****************************************************************************/
 
 #include "qconsiderignorefragment.h"
-//#include "qconsiderignorefragment_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QConsiderIgnoreFragmentPrivate
+{
+public:
+    explicit QConsiderIgnoreFragmentPrivate();
+    virtual ~QConsiderIgnoreFragmentPrivate();
+
+    QSet<QNamedElement *> *messages;
+};
+
+QConsiderIgnoreFragmentPrivate::QConsiderIgnoreFragmentPrivate() :
+    messages(new QSet<QNamedElement *>)
+{
+}
+
+QConsiderIgnoreFragmentPrivate::~QConsiderIgnoreFragmentPrivate()
+{
+    delete messages;
+}
 
 /*!
     \class QConsiderIgnoreFragment
@@ -53,12 +71,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QConsiderIgnoreFragment::QConsiderIgnoreFragment(QObject *parent)
-    : QCombinedFragment(parent)
+    : QCombinedFragment(parent), d_ptr(new QConsiderIgnoreFragmentPrivate)
 {
 }
 
 QConsiderIgnoreFragment::~QConsiderIgnoreFragment()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +85,17 @@ QConsiderIgnoreFragment::~QConsiderIgnoreFragment()
  */
 const QSet<QNamedElement *> *QConsiderIgnoreFragment::messages() const
 {
+    return d_ptr->messages;
 }
 
 void QConsiderIgnoreFragment::addMessage(const QNamedElement *message)
 {
+    d_ptr->messages->insert(const_cast<QNamedElement *>(message));
 }
 
 void QConsiderIgnoreFragment::removeMessage(const QNamedElement *message)
 {
+    d_ptr->messages->remove(const_cast<QNamedElement *>(message));
 }
 
 #include "moc_qconsiderignorefragment.cpp"

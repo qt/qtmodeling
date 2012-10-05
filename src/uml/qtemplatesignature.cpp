@@ -40,9 +40,31 @@
 ****************************************************************************/
 
 #include "qtemplatesignature.h"
-//#include "qtemplatesignature_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QTemplateSignaturePrivate
+{
+public:
+    explicit QTemplateSignaturePrivate();
+    virtual ~QTemplateSignaturePrivate();
+
+    QList<QTemplateParameter *> *ownedParameters;
+    QList<QTemplateParameter *> *parameters;
+    QTemplateableElement *template_;
+};
+
+QTemplateSignaturePrivate::QTemplateSignaturePrivate() :
+    ownedParameters(new QList<QTemplateParameter *>),
+    parameters(new QList<QTemplateParameter *>)
+{
+}
+
+QTemplateSignaturePrivate::~QTemplateSignaturePrivate()
+{
+    delete ownedParameters;
+    delete parameters;
+}
 
 /*!
     \class QTemplateSignature
@@ -53,12 +75,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QTemplateSignature::QTemplateSignature(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QTemplateSignaturePrivate)
 {
 }
 
 QTemplateSignature::~QTemplateSignature()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +89,17 @@ QTemplateSignature::~QTemplateSignature()
  */
 const QList<QTemplateParameter *> *QTemplateSignature::ownedParameters() const
 {
+    return d_ptr->ownedParameters;
 }
 
 void QTemplateSignature::addOwnedParameter(const QTemplateParameter *ownedParameter)
 {
+    d_ptr->ownedParameters->append(const_cast<QTemplateParameter *>(ownedParameter));
 }
 
 void QTemplateSignature::removeOwnedParameter(const QTemplateParameter *ownedParameter)
 {
+    d_ptr->ownedParameters->removeAll(const_cast<QTemplateParameter *>(ownedParameter));
 }
 
 /*!
@@ -81,14 +107,17 @@ void QTemplateSignature::removeOwnedParameter(const QTemplateParameter *ownedPar
  */
 const QList<QTemplateParameter *> *QTemplateSignature::parameters() const
 {
+    return d_ptr->parameters;
 }
 
 void QTemplateSignature::addParameter(const QTemplateParameter *parameter)
 {
+    d_ptr->parameters->append(const_cast<QTemplateParameter *>(parameter));
 }
 
 void QTemplateSignature::removeParameter(const QTemplateParameter *parameter)
 {
+    d_ptr->parameters->removeAll(const_cast<QTemplateParameter *>(parameter));
 }
 
 /*!
@@ -96,10 +125,12 @@ void QTemplateSignature::removeParameter(const QTemplateParameter *parameter)
  */
 QTemplateableElement *QTemplateSignature::template_() const
 {
+    return d_ptr->template_;
 }
 
 void QTemplateSignature::setTemplate_(const QTemplateableElement *template_)
 {
+    d_ptr->template_ = const_cast<QTemplateableElement *>(template_);
 }
 
 #include "moc_qtemplatesignature.cpp"

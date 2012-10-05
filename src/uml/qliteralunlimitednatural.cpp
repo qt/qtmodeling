@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qliteralunlimitednatural.h"
-//#include "qliteralunlimitednatural_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QLiteralUnlimitedNaturalPrivate
+{
+public:
+    explicit QLiteralUnlimitedNaturalPrivate();
+    virtual ~QLiteralUnlimitedNaturalPrivate();
+
+    qint32 value;
+};
+
+QLiteralUnlimitedNaturalPrivate::QLiteralUnlimitedNaturalPrivate()
+{
+}
+
+QLiteralUnlimitedNaturalPrivate::~QLiteralUnlimitedNaturalPrivate()
+{
+}
 
 /*!
     \class QLiteralUnlimitedNatural
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QLiteralUnlimitedNaturalPrivate)
 {
 }
 
 QLiteralUnlimitedNatural::~QLiteralUnlimitedNatural()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QLiteralUnlimitedNatural::~QLiteralUnlimitedNatural()
  */
 qint32 QLiteralUnlimitedNatural::value() const
 {
+    return d_ptr->value;
 }
 
 void QLiteralUnlimitedNatural::setValue(qint32 value)
 {
+    d_ptr->value = value;
 }
 
 /*!
@@ -77,6 +96,7 @@ void QLiteralUnlimitedNatural::setValue(qint32 value)
  */
 bool QLiteralUnlimitedNatural::isComputable() const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -84,6 +104,7 @@ bool QLiteralUnlimitedNatural::isComputable() const
  */
 qint32 QLiteralUnlimitedNatural::unlimitedValue() const
 {
+    qWarning("To be implemented");
 }
 
 #include "moc_qliteralunlimitednatural.cpp"

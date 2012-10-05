@@ -70,19 +70,21 @@ class Q_UML_EXPORT QQualifierValue : public QObject, public QElement
     Q_PROPERTY(QProperty * qualifier READ qualifier WRITE setQualifier)
     Q_PROPERTY(QInputPin * value READ value WRITE setValue)
 
+    Q_DISABLE_COPY(QQualifierValue)
+    Q_DECLARE_PRIVATE(QQualifierValue)
+
 public:
     explicit QQualifierValue(QObject *parent = 0);
     virtual ~QQualifierValue();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QProperty *qualifier() const;
     void setQualifier(const QProperty *qualifier);
     QInputPin *value() const;
     void setValue(const QInputPin *value);
 
 private:
-    Q_DISABLE_COPY(QQualifierValue)
-    Q_DECLARE_PRIVATE(QQualifierValue)
+    QQualifierValuePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

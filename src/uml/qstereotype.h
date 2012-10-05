@@ -67,22 +67,24 @@ class Q_UML_EXPORT QStereotype : public QClass
     Q_PROPERTY(const QSet<QImage *> * icons READ icons)
     Q_PROPERTY(QProfile * profile READ profile)
 
+    Q_DISABLE_COPY(QStereotype)
+    Q_DECLARE_PRIVATE(QStereotype)
+
 public:
     explicit QStereotype(QObject *parent = 0);
     virtual ~QStereotype();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QImage *> *icons() const;
     void addIcon(const QImage *icon);
     void removeIcon(const QImage *icon);
-
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    QProfile *containingProfile() const;
     QProfile *profile() const;
 
+    // Operations
+    QProfile *containingProfile() const;
+
 private:
-    Q_DISABLE_COPY(QStereotype)
-    Q_DECLARE_PRIVATE(QStereotype)
+    QStereotypePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

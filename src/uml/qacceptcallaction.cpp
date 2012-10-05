@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qacceptcallaction.h"
-//#include "qacceptcallaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QAcceptCallActionPrivate
+{
+public:
+    explicit QAcceptCallActionPrivate();
+    virtual ~QAcceptCallActionPrivate();
+
+    QOutputPin *returnInformation;
+};
+
+QAcceptCallActionPrivate::QAcceptCallActionPrivate()
+{
+}
+
+QAcceptCallActionPrivate::~QAcceptCallActionPrivate()
+{
+}
 
 /*!
     \class QAcceptCallAction
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QAcceptCallAction::QAcceptCallAction(QObject *parent)
-    : QAcceptEventAction(parent)
+    : QAcceptEventAction(parent), d_ptr(new QAcceptCallActionPrivate)
 {
 }
 
 QAcceptCallAction::~QAcceptCallAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QAcceptCallAction::~QAcceptCallAction()
  */
 QOutputPin *QAcceptCallAction::returnInformation() const
 {
+    return d_ptr->returnInformation;
 }
 
 void QAcceptCallAction::setReturnInformation(const QOutputPin *returnInformation)
 {
+    d_ptr->returnInformation = const_cast<QOutputPin *>(returnInformation);
 }
 
 #include "moc_qacceptcallaction.cpp"

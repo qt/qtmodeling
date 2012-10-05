@@ -108,18 +108,20 @@ class Q_UML_EXPORT QCreateLinkAction : public QObject, public QWriteLinkAction
     // From QCreateLinkAction
     Q_PROPERTY(const QSet<QLinkEndCreationData *> * endData READ endData)
 
+    Q_DISABLE_COPY(QCreateLinkAction)
+    Q_DECLARE_PRIVATE(QCreateLinkAction)
+
 public:
     explicit QCreateLinkAction(QObject *parent = 0);
     virtual ~QCreateLinkAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QLinkEndCreationData *> *endData() const;
     void addEndData(const QLinkEndCreationData *endData);
     void removeEndData(const QLinkEndCreationData *endData);
 
 private:
-    Q_DISABLE_COPY(QCreateLinkAction)
-    Q_DECLARE_PRIVATE(QCreateLinkAction)
+    QCreateLinkActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

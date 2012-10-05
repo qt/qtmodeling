@@ -87,24 +87,26 @@ class Q_UML_EXPORT QRedefinableTemplateSignature : public QTemplateSignature, pu
     Q_PROPERTY(const QSet<QRedefinableTemplateSignature *> * extendedSignatures READ extendedSignatures)
     Q_PROPERTY(const QSet<QTemplateParameter *> * inheritedParameters READ inheritedParameters)
 
+    Q_DISABLE_COPY(QRedefinableTemplateSignature)
+    Q_DECLARE_PRIVATE(QRedefinableTemplateSignature)
+
 public:
     explicit QRedefinableTemplateSignature(QObject *parent = 0);
     virtual ~QRedefinableTemplateSignature();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QClassifier *classifier() const;
     void setClassifier(const QClassifier *classifier);
     const QSet<QRedefinableTemplateSignature *> *extendedSignatures() const;
     void addExtendedSignature(const QRedefinableTemplateSignature *extendedSignature);
     void removeExtendedSignature(const QRedefinableTemplateSignature *extendedSignature);
-
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     const QSet<QTemplateParameter *> *inheritedParameters() const;
+
+    // Operations
     bool isConsistentWith(const QRedefinableElement *redefinee) const;
 
 private:
-    Q_DISABLE_COPY(QRedefinableTemplateSignature)
-    Q_DECLARE_PRIVATE(QRedefinableTemplateSignature)
+    QRedefinableTemplateSignaturePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

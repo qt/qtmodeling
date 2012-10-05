@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qcreateobjectaction.h"
-//#include "qcreateobjectaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QCreateObjectActionPrivate
+{
+public:
+    explicit QCreateObjectActionPrivate();
+    virtual ~QCreateObjectActionPrivate();
+
+    QClassifier *classifier;
+    QOutputPin *result;
+};
+
+QCreateObjectActionPrivate::QCreateObjectActionPrivate()
+{
+}
+
+QCreateObjectActionPrivate::~QCreateObjectActionPrivate()
+{
+}
 
 /*!
     \class QCreateObjectAction
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QCreateObjectAction::QCreateObjectAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QCreateObjectActionPrivate)
 {
 }
 
 QCreateObjectAction::~QCreateObjectAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QCreateObjectAction::~QCreateObjectAction()
  */
 QClassifier *QCreateObjectAction::classifier() const
 {
+    return d_ptr->classifier;
 }
 
 void QCreateObjectAction::setClassifier(const QClassifier *classifier)
 {
+    d_ptr->classifier = const_cast<QClassifier *>(classifier);
 }
 
 /*!
@@ -77,10 +97,12 @@ void QCreateObjectAction::setClassifier(const QClassifier *classifier)
  */
 QOutputPin *QCreateObjectAction::result() const
 {
+    return d_ptr->result;
 }
 
 void QCreateObjectAction::setResult(const QOutputPin *result)
 {
+    d_ptr->result = const_cast<QOutputPin *>(result);
 }
 
 #include "moc_qcreateobjectaction.cpp"

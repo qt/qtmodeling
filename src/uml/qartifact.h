@@ -130,15 +130,18 @@ class Q_UML_EXPORT QArtifact : public QObject, public QDeployedArtifact, public 
     Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
     Q_PROPERTY(const QList<QOperation *> * ownedOperations READ ownedOperations)
 
+    Q_DISABLE_COPY(QArtifact)
+    Q_DECLARE_PRIVATE(QArtifact)
+
 public:
     explicit QArtifact(QObject *parent = 0);
     virtual ~QArtifact();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     QString fileName() const;
     void setFileName(QString fileName);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QManifestation *> *manifestations() const;
     void addManifestation(const QManifestation *manifestation);
     void removeManifestation(const QManifestation *manifestation);
@@ -153,8 +156,7 @@ public:
     void removeOwnedOperation(const QOperation *ownedOperation);
 
 private:
-    Q_DISABLE_COPY(QArtifact)
-    Q_DECLARE_PRIVATE(QArtifact)
+    QArtifactPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

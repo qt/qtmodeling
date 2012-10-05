@@ -98,13 +98,17 @@ class Q_UML_EXPORT QConnector : public QObject, public QFeature
     Q_PROPERTY(const QSet<QConnector *> * redefinedConnectors READ redefinedConnectors)
     Q_PROPERTY(QAssociation * type READ type WRITE setType)
 
+    Q_DISABLE_COPY(QConnector)
+    Q_DECLARE_PRIVATE(QConnector)
+
 public:
     explicit QConnector(QObject *parent = 0);
     virtual ~QConnector();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
+    QtUml::ConnectorKind kind() const;
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QBehavior *> *contracts() const;
     void addContract(const QBehavior *contract);
     void removeContract(const QBehavior *contract);
@@ -117,12 +121,8 @@ public:
     QAssociation *type() const;
     void setType(const QAssociation *type);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    QtUml::ConnectorKind kind() const;
-
 private:
-    Q_DISABLE_COPY(QConnector)
-    Q_DECLARE_PRIVATE(QConnector)
+    QConnectorPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

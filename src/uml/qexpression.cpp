@@ -40,9 +40,28 @@
 ****************************************************************************/
 
 #include "qexpression.h"
-//#include "qexpression_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QExpressionPrivate
+{
+public:
+    explicit QExpressionPrivate();
+    virtual ~QExpressionPrivate();
+
+    QString symbol;
+    QList<QValueSpecification *> *operands;
+};
+
+QExpressionPrivate::QExpressionPrivate() :
+    operands(new QList<QValueSpecification *>)
+{
+}
+
+QExpressionPrivate::~QExpressionPrivate()
+{
+    delete operands;
+}
 
 /*!
     \class QExpression
@@ -53,12 +72,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QExpression::QExpression(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QExpressionPrivate)
 {
 }
 
 QExpression::~QExpression()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +86,12 @@ QExpression::~QExpression()
  */
 QString QExpression::symbol() const
 {
+    return d_ptr->symbol;
 }
 
 void QExpression::setSymbol(QString symbol)
 {
+    d_ptr->symbol = symbol;
 }
 
 /*!
@@ -77,14 +99,17 @@ void QExpression::setSymbol(QString symbol)
  */
 const QList<QValueSpecification *> *QExpression::operands() const
 {
+    return d_ptr->operands;
 }
 
 void QExpression::addOperand(const QValueSpecification *operand)
 {
+    d_ptr->operands->append(const_cast<QValueSpecification *>(operand));
 }
 
 void QExpression::removeOperand(const QValueSpecification *operand)
 {
+    d_ptr->operands->removeAll(const_cast<QValueSpecification *>(operand));
 }
 
 #include "moc_qexpression.cpp"

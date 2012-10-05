@@ -86,17 +86,19 @@ class Q_UML_EXPORT QActionExecutionSpecification : public QObject, public QExecu
     // From QActionExecutionSpecification
     Q_PROPERTY(QAction * action READ action WRITE setAction)
 
+    Q_DISABLE_COPY(QActionExecutionSpecification)
+    Q_DECLARE_PRIVATE(QActionExecutionSpecification)
+
 public:
     explicit QActionExecutionSpecification(QObject *parent = 0);
     virtual ~QActionExecutionSpecification();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QAction *action() const;
     void setAction(const QAction *action);
 
 private:
-    Q_DISABLE_COPY(QActionExecutionSpecification)
-    Q_DECLARE_PRIVATE(QActionExecutionSpecification)
+    QActionExecutionSpecificationPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

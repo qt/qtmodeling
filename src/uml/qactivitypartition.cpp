@@ -40,9 +40,37 @@
 ****************************************************************************/
 
 #include "qactivitypartition.h"
-//#include "qactivitypartition_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QActivityPartitionPrivate
+{
+public:
+    explicit QActivityPartitionPrivate();
+    virtual ~QActivityPartitionPrivate();
+
+    bool isDimension;
+    bool isExternal;
+    QSet<QActivityEdge *> *edges;
+    QSet<QActivityNode *> *nodes;
+    QElement *represents;
+    QSet<QActivityPartition *> *subpartitions;
+    QActivityPartition *superPartition;
+};
+
+QActivityPartitionPrivate::QActivityPartitionPrivate() :
+    edges(new QSet<QActivityEdge *>),
+    nodes(new QSet<QActivityNode *>),
+    subpartitions(new QSet<QActivityPartition *>)
+{
+}
+
+QActivityPartitionPrivate::~QActivityPartitionPrivate()
+{
+    delete edges;
+    delete nodes;
+    delete subpartitions;
+}
 
 /*!
     \class QActivityPartition
@@ -53,12 +81,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QActivityPartition::QActivityPartition(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QActivityPartitionPrivate)
 {
 }
 
 QActivityPartition::~QActivityPartition()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +95,12 @@ QActivityPartition::~QActivityPartition()
  */
 bool QActivityPartition::isDimension() const
 {
+    return d_ptr->isDimension;
 }
 
 void QActivityPartition::setDimension(bool isDimension)
 {
+    d_ptr->isDimension = isDimension;
 }
 
 /*!
@@ -77,10 +108,12 @@ void QActivityPartition::setDimension(bool isDimension)
  */
 bool QActivityPartition::isExternal() const
 {
+    return d_ptr->isExternal;
 }
 
 void QActivityPartition::setExternal(bool isExternal)
 {
+    d_ptr->isExternal = isExternal;
 }
 
 /*!
@@ -88,14 +121,17 @@ void QActivityPartition::setExternal(bool isExternal)
  */
 const QSet<QActivityEdge *> *QActivityPartition::edges() const
 {
+    return d_ptr->edges;
 }
 
 void QActivityPartition::addEdge(const QActivityEdge *edge)
 {
+    d_ptr->edges->insert(const_cast<QActivityEdge *>(edge));
 }
 
 void QActivityPartition::removeEdge(const QActivityEdge *edge)
 {
+    d_ptr->edges->remove(const_cast<QActivityEdge *>(edge));
 }
 
 /*!
@@ -103,14 +139,17 @@ void QActivityPartition::removeEdge(const QActivityEdge *edge)
  */
 const QSet<QActivityNode *> *QActivityPartition::nodes() const
 {
+    return d_ptr->nodes;
 }
 
 void QActivityPartition::addNode(const QActivityNode *node)
 {
+    d_ptr->nodes->insert(const_cast<QActivityNode *>(node));
 }
 
 void QActivityPartition::removeNode(const QActivityNode *node)
 {
+    d_ptr->nodes->remove(const_cast<QActivityNode *>(node));
 }
 
 /*!
@@ -118,10 +157,12 @@ void QActivityPartition::removeNode(const QActivityNode *node)
  */
 QElement *QActivityPartition::represents() const
 {
+    return d_ptr->represents;
 }
 
 void QActivityPartition::setRepresents(const QElement *represents)
 {
+    d_ptr->represents = const_cast<QElement *>(represents);
 }
 
 /*!
@@ -129,14 +170,17 @@ void QActivityPartition::setRepresents(const QElement *represents)
  */
 const QSet<QActivityPartition *> *QActivityPartition::subpartitions() const
 {
+    return d_ptr->subpartitions;
 }
 
 void QActivityPartition::addSubpartition(const QActivityPartition *subpartition)
 {
+    d_ptr->subpartitions->insert(const_cast<QActivityPartition *>(subpartition));
 }
 
 void QActivityPartition::removeSubpartition(const QActivityPartition *subpartition)
 {
+    d_ptr->subpartitions->remove(const_cast<QActivityPartition *>(subpartition));
 }
 
 /*!
@@ -144,10 +188,12 @@ void QActivityPartition::removeSubpartition(const QActivityPartition *subpartiti
  */
 QActivityPartition *QActivityPartition::superPartition() const
 {
+    return d_ptr->superPartition;
 }
 
 void QActivityPartition::setSuperPartition(const QActivityPartition *superPartition)
 {
+    d_ptr->superPartition = const_cast<QActivityPartition *>(superPartition);
 }
 
 #include "moc_qactivitypartition.cpp"

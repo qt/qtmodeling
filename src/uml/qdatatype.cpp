@@ -40,9 +40,30 @@
 ****************************************************************************/
 
 #include "qdatatype.h"
-//#include "qdatatype_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QDataTypePrivate
+{
+public:
+    explicit QDataTypePrivate();
+    virtual ~QDataTypePrivate();
+
+    QList<QProperty *> *ownedAttributes;
+    QList<QOperation *> *ownedOperations;
+};
+
+QDataTypePrivate::QDataTypePrivate() :
+    ownedAttributes(new QList<QProperty *>),
+    ownedOperations(new QList<QOperation *>)
+{
+}
+
+QDataTypePrivate::~QDataTypePrivate()
+{
+    delete ownedAttributes;
+    delete ownedOperations;
+}
 
 /*!
     \class QDataType
@@ -53,12 +74,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QDataType::QDataType(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QDataTypePrivate)
 {
 }
 
 QDataType::~QDataType()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +88,17 @@ QDataType::~QDataType()
  */
 const QList<QProperty *> *QDataType::ownedAttributes() const
 {
+    return d_ptr->ownedAttributes;
 }
 
 void QDataType::addOwnedAttribute(const QProperty *ownedAttribute)
 {
+    d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
 }
 
 void QDataType::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
+    d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
 }
 
 /*!
@@ -81,14 +106,17 @@ void QDataType::removeOwnedAttribute(const QProperty *ownedAttribute)
  */
 const QList<QOperation *> *QDataType::ownedOperations() const
 {
+    return d_ptr->ownedOperations;
 }
 
 void QDataType::addOwnedOperation(const QOperation *ownedOperation)
 {
+    d_ptr->ownedOperations->append(const_cast<QOperation *>(ownedOperation));
 }
 
 void QDataType::removeOwnedOperation(const QOperation *ownedOperation)
 {
+    d_ptr->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation));
 }
 
 /*!
@@ -96,6 +124,7 @@ void QDataType::removeOwnedOperation(const QOperation *ownedOperation)
  */
 const QSet<QNamedElement *> *QDataType::inherit(const QSet<QNamedElement *> *inhs) const
 {
+    qWarning("To be implemented");
 }
 
 #include "moc_qdatatype.cpp"

@@ -40,9 +40,27 @@
 ****************************************************************************/
 
 #include "qenumeration.h"
-//#include "qenumeration_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QEnumerationPrivate
+{
+public:
+    explicit QEnumerationPrivate();
+    virtual ~QEnumerationPrivate();
+
+    QList<QEnumerationLiteral *> *ownedLiterals;
+};
+
+QEnumerationPrivate::QEnumerationPrivate() :
+    ownedLiterals(new QList<QEnumerationLiteral *>)
+{
+}
+
+QEnumerationPrivate::~QEnumerationPrivate()
+{
+    delete ownedLiterals;
+}
 
 /*!
     \class QEnumeration
@@ -53,12 +71,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QEnumeration::QEnumeration(QObject *parent)
-    : QDataType(parent)
+    : QDataType(parent), d_ptr(new QEnumerationPrivate)
 {
 }
 
 QEnumeration::~QEnumeration()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +85,17 @@ QEnumeration::~QEnumeration()
  */
 const QList<QEnumerationLiteral *> *QEnumeration::ownedLiterals() const
 {
+    return d_ptr->ownedLiterals;
 }
 
 void QEnumeration::addOwnedLiteral(const QEnumerationLiteral *ownedLiteral)
 {
+    d_ptr->ownedLiterals->append(const_cast<QEnumerationLiteral *>(ownedLiteral));
 }
 
 void QEnumeration::removeOwnedLiteral(const QEnumerationLiteral *ownedLiteral)
 {
+    d_ptr->ownedLiterals->removeAll(const_cast<QEnumerationLiteral *>(ownedLiteral));
 }
 
 #include "moc_qenumeration.cpp"

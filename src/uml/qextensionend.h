@@ -60,25 +60,29 @@ class Q_UML_EXPORT QExtensionEnd : public QProperty
     Q_OBJECT
 
     // From QExtensionEnd
-    Q_PROPERTY(qint32 lower READ lower)
+    Q_PROPERTY(qint32 lower READ lower WRITE setLower)
     Q_PROPERTY(QStereotype * type READ type WRITE setType)
+
+    Q_DISABLE_COPY(QExtensionEnd)
+    Q_DECLARE_PRIVATE(QExtensionEnd)
 
 public:
     explicit QExtensionEnd(QObject *parent = 0);
     virtual ~QExtensionEnd();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
+    qint32 lower() const;
+    void setLower(qint32 lower);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QStereotype *type() const;
     void setType(const QStereotype *type);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     qint32 lowerBound() const;
 
 private:
-    Q_DISABLE_COPY(QExtensionEnd)
-    Q_DECLARE_PRIVATE(QExtensionEnd)
+    QExtensionEndPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

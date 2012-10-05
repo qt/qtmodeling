@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qabstraction.h"
-//#include "qabstraction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QAbstractionPrivate
+{
+public:
+    explicit QAbstractionPrivate();
+    virtual ~QAbstractionPrivate();
+
+    QOpaqueExpression *mapping;
+};
+
+QAbstractionPrivate::QAbstractionPrivate()
+{
+}
+
+QAbstractionPrivate::~QAbstractionPrivate()
+{
+}
 
 /*!
     \class QAbstraction
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QAbstraction::QAbstraction(QObject *parent)
-    : QDependency(parent)
+    : QDependency(parent), d_ptr(new QAbstractionPrivate)
 {
 }
 
 QAbstraction::~QAbstraction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QAbstraction::~QAbstraction()
  */
 QOpaqueExpression *QAbstraction::mapping() const
 {
+    return d_ptr->mapping;
 }
 
 void QAbstraction::setMapping(const QOpaqueExpression *mapping)
 {
+    d_ptr->mapping = const_cast<QOpaqueExpression *>(mapping);
 }
 
 #include "moc_qabstraction.cpp"

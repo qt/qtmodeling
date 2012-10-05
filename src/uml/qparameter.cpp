@@ -40,9 +40,33 @@
 ****************************************************************************/
 
 #include "qparameter.h"
-//#include "qparameter_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QParameterPrivate
+{
+public:
+    explicit QParameterPrivate();
+    virtual ~QParameterPrivate();
+
+    QtUml::ParameterDirectionKind direction;
+    QtUml::ParameterEffectKind effect;
+    bool isException;
+    bool isStream;
+    QValueSpecification *defaultValue;
+    QOperation *operation;
+    QSet<QParameterSet *> *parameterSets;
+};
+
+QParameterPrivate::QParameterPrivate() :
+    parameterSets(new QSet<QParameterSet *>)
+{
+}
+
+QParameterPrivate::~QParameterPrivate()
+{
+    delete parameterSets;
+}
 
 /*!
     \class QParameter
@@ -53,12 +77,26 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QParameter::QParameter(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QParameterPrivate)
 {
 }
 
 QParameter::~QParameter()
 {
+    delete d_ptr;
+}
+
+/*!
+    Specifies a String that represents a value to be used when no argument is supplied for the Parameter.
+ */
+QString QParameter::default_() const
+{
+    qWarning("To be implemented (this is a derived attribute)");
+}
+
+void QParameter::setDefault_(QString default_)
+{
+    qWarning("To be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -66,10 +104,12 @@ QParameter::~QParameter()
  */
 QtUml::ParameterDirectionKind QParameter::direction() const
 {
+    return d_ptr->direction;
 }
 
 void QParameter::setDirection(QtUml::ParameterDirectionKind direction)
 {
+    d_ptr->direction = direction;
 }
 
 /*!
@@ -77,10 +117,12 @@ void QParameter::setDirection(QtUml::ParameterDirectionKind direction)
  */
 QtUml::ParameterEffectKind QParameter::effect() const
 {
+    return d_ptr->effect;
 }
 
 void QParameter::setEffect(QtUml::ParameterEffectKind effect)
 {
+    d_ptr->effect = effect;
 }
 
 /*!
@@ -88,10 +130,12 @@ void QParameter::setEffect(QtUml::ParameterEffectKind effect)
  */
 bool QParameter::isException() const
 {
+    return d_ptr->isException;
 }
 
 void QParameter::setException(bool isException)
 {
+    d_ptr->isException = isException;
 }
 
 /*!
@@ -99,10 +143,12 @@ void QParameter::setException(bool isException)
  */
 bool QParameter::isStream() const
 {
+    return d_ptr->isStream;
 }
 
 void QParameter::setStream(bool isStream)
 {
+    d_ptr->isStream = isStream;
 }
 
 /*!
@@ -110,10 +156,12 @@ void QParameter::setStream(bool isStream)
  */
 QValueSpecification *QParameter::defaultValue() const
 {
+    return d_ptr->defaultValue;
 }
 
 void QParameter::setDefaultValue(const QValueSpecification *defaultValue)
 {
+    d_ptr->defaultValue = const_cast<QValueSpecification *>(defaultValue);
 }
 
 /*!
@@ -121,10 +169,12 @@ void QParameter::setDefaultValue(const QValueSpecification *defaultValue)
  */
 QOperation *QParameter::operation() const
 {
+    return d_ptr->operation;
 }
 
 void QParameter::setOperation(const QOperation *operation)
 {
+    d_ptr->operation = const_cast<QOperation *>(operation);
 }
 
 /*!
@@ -132,21 +182,17 @@ void QParameter::setOperation(const QOperation *operation)
  */
 const QSet<QParameterSet *> *QParameter::parameterSets() const
 {
+    return d_ptr->parameterSets;
 }
 
 void QParameter::addParameterSet(const QParameterSet *parameterSet)
 {
+    d_ptr->parameterSets->insert(const_cast<QParameterSet *>(parameterSet));
 }
 
 void QParameter::removeParameterSet(const QParameterSet *parameterSet)
 {
-}
-
-/*!
-    Missing derivation for Parameter::/default : String
- */
-QString QParameter::default_() const
-{
+    d_ptr->parameterSets->remove(const_cast<QParameterSet *>(parameterSet));
 }
 
 #include "moc_qparameter.cpp"
