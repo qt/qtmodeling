@@ -72,22 +72,24 @@ class Q_UML_EXPORT QComment : public QObject, public QElement
     Q_PROPERTY(QString body READ body WRITE setBody)
     Q_PROPERTY(const QSet<QElement *> * annotatedElements READ annotatedElements)
 
+    Q_DISABLE_COPY(QComment)
+    Q_DECLARE_PRIVATE(QComment)
+
 public:
     explicit QComment(QObject *parent = 0);
     virtual ~QComment();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     QString body() const;
     void setBody(QString body);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QElement *> *annotatedElements() const;
     void addAnnotatedElement(const QElement *annotatedElement);
     void removeAnnotatedElement(const QElement *annotatedElement);
 
 private:
-    Q_DISABLE_COPY(QComment)
-    Q_DECLARE_PRIVATE(QComment)
+    QCommentPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

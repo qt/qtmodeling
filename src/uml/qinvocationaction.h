@@ -61,10 +61,13 @@ class QPort;
 
 class Q_UML_EXPORT QInvocationAction : public QAction
 {
+    Q_DISABLE_COPY(QInvocationAction)
+    Q_DECLARE_PRIVATE(QInvocationAction)
+
 public:
     virtual ~QInvocationAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QList<QInputPin *> *arguments() const;
     void addArgument(const QInputPin *argument);
     void removeArgument(const QInputPin *argument);
@@ -73,6 +76,9 @@ public:
 
 protected:
     explicit QInvocationAction();
+
+private:
+    QInvocationActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

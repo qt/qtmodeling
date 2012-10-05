@@ -131,15 +131,19 @@ class Q_UML_EXPORT QAssociation : public QObject, public QClassifier, public QRe
     Q_PROPERTY(const QSet<QProperty *> * navigableOwnedEnds READ navigableOwnedEnds)
     Q_PROPERTY(const QList<QProperty *> * ownedEnds READ ownedEnds)
 
+    Q_DISABLE_COPY(QAssociation)
+    Q_DECLARE_PRIVATE(QAssociation)
+
 public:
     explicit QAssociation(QObject *parent = 0);
     virtual ~QAssociation();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isDerived() const;
     void setDerived(bool isDerived);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
+    const QList<QType *> *endTypes() const;
     const QList<QProperty *> *memberEnds() const;
     void addMemberEnd(const QProperty *memberEnd);
     void removeMemberEnd(const QProperty *memberEnd);
@@ -150,12 +154,8 @@ public:
     void addOwnedEnd(const QProperty *ownedEnd);
     void removeOwnedEnd(const QProperty *ownedEnd);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QList<QType *> *endTypes() const;
-
 private:
-    Q_DISABLE_COPY(QAssociation)
-    Q_DECLARE_PRIVATE(QAssociation)
+    QAssociationPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -84,21 +84,23 @@ class Q_UML_EXPORT QLiteralBoolean : public QObject, public QLiteralSpecificatio
     // From QLiteralBoolean
     Q_PROPERTY(bool value READ value WRITE setValue)
 
+    Q_DISABLE_COPY(QLiteralBoolean)
+    Q_DECLARE_PRIVATE(QLiteralBoolean)
+
 public:
     explicit QLiteralBoolean(QObject *parent = 0);
     virtual ~QLiteralBoolean();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool value() const;
     void setValue(bool value);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     bool booleanValue() const;
     bool isComputable() const;
 
 private:
-    Q_DISABLE_COPY(QLiteralBoolean)
-    Q_DECLARE_PRIVATE(QLiteralBoolean)
+    QLiteralBooleanPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

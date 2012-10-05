@@ -40,9 +40,29 @@
 ****************************************************************************/
 
 #include "qslot.h"
-//#include "qslot_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QSlotPrivate
+{
+public:
+    explicit QSlotPrivate();
+    virtual ~QSlotPrivate();
+
+    QStructuralFeature *definingFeature;
+    QInstanceSpecification *owningInstance;
+    QList<QValueSpecification *> *values;
+};
+
+QSlotPrivate::QSlotPrivate() :
+    values(new QList<QValueSpecification *>)
+{
+}
+
+QSlotPrivate::~QSlotPrivate()
+{
+    delete values;
+}
 
 /*!
     \class QSlot
@@ -53,12 +73,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QSlot::QSlot(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QSlotPrivate)
 {
 }
 
 QSlot::~QSlot()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +87,12 @@ QSlot::~QSlot()
  */
 QStructuralFeature *QSlot::definingFeature() const
 {
+    return d_ptr->definingFeature;
 }
 
 void QSlot::setDefiningFeature(const QStructuralFeature *definingFeature)
 {
+    d_ptr->definingFeature = const_cast<QStructuralFeature *>(definingFeature);
 }
 
 /*!
@@ -77,10 +100,12 @@ void QSlot::setDefiningFeature(const QStructuralFeature *definingFeature)
  */
 QInstanceSpecification *QSlot::owningInstance() const
 {
+    return d_ptr->owningInstance;
 }
 
 void QSlot::setOwningInstance(const QInstanceSpecification *owningInstance)
 {
+    d_ptr->owningInstance = const_cast<QInstanceSpecification *>(owningInstance);
 }
 
 /*!
@@ -88,14 +113,17 @@ void QSlot::setOwningInstance(const QInstanceSpecification *owningInstance)
  */
 const QList<QValueSpecification *> *QSlot::values() const
 {
+    return d_ptr->values;
 }
 
 void QSlot::addValue(const QValueSpecification *value)
 {
+    d_ptr->values->append(const_cast<QValueSpecification *>(value));
 }
 
 void QSlot::removeValue(const QValueSpecification *value)
 {
+    d_ptr->values->removeAll(const_cast<QValueSpecification *>(value));
 }
 
 #include "moc_qslot.cpp"

@@ -87,11 +87,14 @@ class Q_UML_EXPORT QConnectionPointReference : public QObject, public QVertex
     Q_PROPERTY(const QSet<QPseudostate *> * exits READ exits)
     Q_PROPERTY(QState * state READ state WRITE setState)
 
+    Q_DISABLE_COPY(QConnectionPointReference)
+    Q_DECLARE_PRIVATE(QConnectionPointReference)
+
 public:
     explicit QConnectionPointReference(QObject *parent = 0);
     virtual ~QConnectionPointReference();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QPseudostate *> *entries() const;
     void addEntry(const QPseudostate *entry);
     void removeEntry(const QPseudostate *entry);
@@ -102,8 +105,7 @@ public:
     void setState(const QState *state);
 
 private:
-    Q_DISABLE_COPY(QConnectionPointReference)
-    Q_DECLARE_PRIVATE(QConnectionPointReference)
+    QConnectionPointReferencePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

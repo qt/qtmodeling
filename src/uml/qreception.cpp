@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qreception.h"
-//#include "qreception_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QReceptionPrivate
+{
+public:
+    explicit QReceptionPrivate();
+    virtual ~QReceptionPrivate();
+
+    QSignal *signal;
+};
+
+QReceptionPrivate::QReceptionPrivate()
+{
+}
+
+QReceptionPrivate::~QReceptionPrivate()
+{
+}
 
 /*!
     \class QReception
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QReception::QReception(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QReceptionPrivate)
 {
 }
 
 QReception::~QReception()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QReception::~QReception()
  */
 QSignal *QReception::signal() const
 {
+    return d_ptr->signal;
 }
 
 void QReception::setSignal(const QSignal *signal)
 {
+    d_ptr->signal = const_cast<QSignal *>(signal);
 }
 
 #include "moc_qreception.cpp"

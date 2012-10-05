@@ -109,15 +109,18 @@ class Q_UML_EXPORT QReclassifyObjectAction : public QObject, public QAction
     Q_PROPERTY(QInputPin * object READ object WRITE setObject)
     Q_PROPERTY(const QSet<QClassifier *> * oldClassifiers READ oldClassifiers)
 
+    Q_DISABLE_COPY(QReclassifyObjectAction)
+    Q_DECLARE_PRIVATE(QReclassifyObjectAction)
+
 public:
     explicit QReclassifyObjectAction(QObject *parent = 0);
     virtual ~QReclassifyObjectAction();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isReplaceAll() const;
     void setReplaceAll(bool isReplaceAll);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QClassifier *> *newClassifiers() const;
     void addNewClassifier(const QClassifier *newClassifier);
     void removeNewClassifier(const QClassifier *newClassifier);
@@ -128,8 +131,7 @@ public:
     void removeOldClassifier(const QClassifier *oldClassifier);
 
 private:
-    Q_DISABLE_COPY(QReclassifyObjectAction)
-    Q_DECLARE_PRIVATE(QReclassifyObjectAction)
+    QReclassifyObjectActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

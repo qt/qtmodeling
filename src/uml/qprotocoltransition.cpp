@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qprotocoltransition.h"
-//#include "qprotocoltransition_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QProtocolTransitionPrivate
+{
+public:
+    explicit QProtocolTransitionPrivate();
+    virtual ~QProtocolTransitionPrivate();
+
+    QConstraint *postCondition;
+    QConstraint *preCondition;
+};
+
+QProtocolTransitionPrivate::QProtocolTransitionPrivate()
+{
+}
+
+QProtocolTransitionPrivate::~QProtocolTransitionPrivate()
+{
+}
 
 /*!
     \class QProtocolTransition
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QProtocolTransition::QProtocolTransition(QObject *parent)
-    : QTransition(parent)
+    : QTransition(parent), d_ptr(new QProtocolTransitionPrivate)
 {
 }
 
 QProtocolTransition::~QProtocolTransition()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QProtocolTransition::~QProtocolTransition()
  */
 QConstraint *QProtocolTransition::postCondition() const
 {
+    return d_ptr->postCondition;
 }
 
 void QProtocolTransition::setPostCondition(const QConstraint *postCondition)
 {
+    d_ptr->postCondition = const_cast<QConstraint *>(postCondition);
 }
 
 /*!
@@ -77,17 +97,20 @@ void QProtocolTransition::setPostCondition(const QConstraint *postCondition)
  */
 QConstraint *QProtocolTransition::preCondition() const
 {
+    return d_ptr->preCondition;
 }
 
 void QProtocolTransition::setPreCondition(const QConstraint *preCondition)
 {
+    d_ptr->preCondition = const_cast<QConstraint *>(preCondition);
 }
 
 /*!
-    Missing derivation for ProtocolTransition::/referred : Operation
+    This association refers to the associated operation. It is derived from the operation of the call trigger when applicable.
  */
 const QSet<QOperation *> *QProtocolTransition::referred() const
 {
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 #include "moc_qprotocoltransition.cpp"

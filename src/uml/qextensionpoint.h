@@ -81,17 +81,19 @@ class Q_UML_EXPORT QExtensionPoint : public QObject, public QRedefinableElement
     // From QExtensionPoint
     Q_PROPERTY(QUseCase * useCase READ useCase WRITE setUseCase)
 
+    Q_DISABLE_COPY(QExtensionPoint)
+    Q_DECLARE_PRIVATE(QExtensionPoint)
+
 public:
     explicit QExtensionPoint(QObject *parent = 0);
     virtual ~QExtensionPoint();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QUseCase *useCase() const;
     void setUseCase(const QUseCase *useCase);
 
 private:
-    Q_DISABLE_COPY(QExtensionPoint)
-    Q_DECLARE_PRIVATE(QExtensionPoint)
+    QExtensionPointPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

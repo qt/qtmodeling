@@ -57,22 +57,28 @@ class QComment;
 
 class Q_UML_EXPORT QElement
 {
+    Q_DISABLE_COPY(QElement)
+    Q_DECLARE_PRIVATE(QElement)
+
 public:
     virtual ~QElement();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QComment *> *ownedComments() const;
     void addOwnedComment(const QComment *ownedComment);
     void removeOwnedComment(const QComment *ownedComment);
     const QSet<QElement *> *ownedElements() const;
     QElement *owner() const;
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     const QSet<QElement *> *allOwnedElements() const;
     bool mustBeOwned() const;
 
 protected:
     explicit QElement();
+
+private:
+    QElementPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

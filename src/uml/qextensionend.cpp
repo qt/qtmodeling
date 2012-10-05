@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qextensionend.h"
-//#include "qextensionend_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QExtensionEndPrivate
+{
+public:
+    explicit QExtensionEndPrivate();
+    virtual ~QExtensionEndPrivate();
+
+    QStereotype *type;
+};
+
+QExtensionEndPrivate::QExtensionEndPrivate()
+{
+}
+
+QExtensionEndPrivate::~QExtensionEndPrivate()
+{
+}
 
 /*!
     \class QExtensionEnd
@@ -53,12 +69,26 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QExtensionEnd::QExtensionEnd(QObject *parent)
-    : QProperty(parent)
+    : QProperty(parent), d_ptr(new QExtensionEndPrivate)
 {
 }
 
 QExtensionEnd::~QExtensionEnd()
 {
+    delete d_ptr;
+}
+
+/*!
+    This redefinition changes the default multiplicity of association ends, since model elements are usually extended by 0 or 1 instance of the extension stereotype.
+ */
+qint32 QExtensionEnd::lower() const
+{
+    qWarning("To be implemented (this is a derived attribute)");
+}
+
+void QExtensionEnd::setLower(qint32 lower)
+{
+    qWarning("To be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -66,10 +96,12 @@ QExtensionEnd::~QExtensionEnd()
  */
 QStereotype *QExtensionEnd::type() const
 {
+    return d_ptr->type;
 }
 
 void QExtensionEnd::setType(const QStereotype *type)
 {
+    d_ptr->type = const_cast<QStereotype *>(type);
 }
 
 /*!
@@ -77,6 +109,7 @@ void QExtensionEnd::setType(const QStereotype *type)
  */
 qint32 QExtensionEnd::lowerBound() const
 {
+    qWarning("To be implemented");
 }
 
 #include "moc_qextensionend.cpp"

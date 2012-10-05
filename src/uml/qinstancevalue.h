@@ -85,17 +85,19 @@ class Q_UML_EXPORT QInstanceValue : public QObject, public QValueSpecification
     // From QInstanceValue
     Q_PROPERTY(QInstanceSpecification * instance READ instance WRITE setInstance)
 
+    Q_DISABLE_COPY(QInstanceValue)
+    Q_DECLARE_PRIVATE(QInstanceValue)
+
 public:
     explicit QInstanceValue(QObject *parent = 0);
     virtual ~QInstanceValue();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QInstanceSpecification *instance() const;
     void setInstance(const QInstanceSpecification *instance);
 
 private:
-    Q_DISABLE_COPY(QInstanceValue)
-    Q_DECLARE_PRIVATE(QInstanceValue)
+    QInstanceValuePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -109,15 +109,18 @@ class Q_UML_EXPORT QTransition : public QObject, public QRedefinableElement, pub
     Q_PROPERTY(QVertex * target READ target WRITE setTarget)
     Q_PROPERTY(const QSet<QTrigger *> * triggers READ triggers)
 
+    Q_DISABLE_COPY(QTransition)
+    Q_DECLARE_PRIVATE(QTransition)
+
 public:
     explicit QTransition(QObject *parent = 0);
     virtual ~QTransition();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     QtUml::TransitionKind kind() const;
     void setKind(QtUml::TransitionKind kind);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QRegion *container() const;
     void setContainer(const QRegion *container);
     QBehavior *effect() const;
@@ -126,6 +129,7 @@ public:
     void setGuard(const QConstraint *guard);
     QTransition *redefinedTransition() const;
     void setRedefinedTransition(const QTransition *redefinedTransition);
+    QClassifier *redefinitionContext() const;
     QVertex *source() const;
     void setSource(const QVertex *source);
     QVertex *target() const;
@@ -134,14 +138,12 @@ public:
     void addTrigger(const QTrigger *trigger);
     void removeTrigger(const QTrigger *trigger);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     QStateMachine *containingStateMachine() const;
     bool isConsistentWith(const QRedefinableElement *redefinee) const;
-    QClassifier *redefinitionContext() const;
 
 private:
-    Q_DISABLE_COPY(QTransition)
-    Q_DECLARE_PRIVATE(QTransition)
+    QTransitionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qbehaviorexecutionspecification.h"
-//#include "qbehaviorexecutionspecification_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QBehaviorExecutionSpecificationPrivate
+{
+public:
+    explicit QBehaviorExecutionSpecificationPrivate();
+    virtual ~QBehaviorExecutionSpecificationPrivate();
+
+    QBehavior *behavior;
+};
+
+QBehaviorExecutionSpecificationPrivate::QBehaviorExecutionSpecificationPrivate()
+{
+}
+
+QBehaviorExecutionSpecificationPrivate::~QBehaviorExecutionSpecificationPrivate()
+{
+}
 
 /*!
     \class QBehaviorExecutionSpecification
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QBehaviorExecutionSpecification::QBehaviorExecutionSpecification(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QBehaviorExecutionSpecificationPrivate)
 {
 }
 
 QBehaviorExecutionSpecification::~QBehaviorExecutionSpecification()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QBehaviorExecutionSpecification::~QBehaviorExecutionSpecification()
  */
 QBehavior *QBehaviorExecutionSpecification::behavior() const
 {
+    return d_ptr->behavior;
 }
 
 void QBehaviorExecutionSpecification::setBehavior(const QBehavior *behavior)
 {
+    d_ptr->behavior = const_cast<QBehavior *>(behavior);
 }
 
 #include "moc_qbehaviorexecutionspecification.cpp"

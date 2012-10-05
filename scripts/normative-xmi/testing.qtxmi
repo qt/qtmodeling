@@ -19,6 +19,37 @@
                 </accessor>
                 <documentation>name mapped attribute.</documentation>
             </attribute>
+            <attribute isDerived="true" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="BaseClass-readWriteDerivedAttribute">
+                <accessor return="const QSet&lt;bool&gt; *" name="readWriteDerivedAttributes" constness=" const"/>
+                <accessor return="void " name="addReadWriteDerivedAttribute" constness="">
+                    <parameter type="bool " name="readWriteDerivedAttribute"/>
+                </accessor>
+                <accessor return="void " name="removeReadWriteDerivedAttribute" constness="">
+                    <parameter type="bool " name="readWriteDerivedAttribute"/>
+                </accessor>
+                <documentation>readWriteDerivedAttribute.</documentation>
+            </attribute>
+            <attribute isDerived="true" isDerivedUnion="false" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="BaseClass-readOnlyDerivedAttribute">
+                <accessor return="const QSet&lt;bool&gt; *" name="readOnlyDerivedAttributes" constness=" const"/>
+                <documentation>readOnlyDerivedAttribute.</documentation>
+            </attribute>
+            <attribute isDerived="true" isDerivedUnion="true" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="BaseClass-readWriteDerivedUnionAttribute">
+                <accessor return="const QSet&lt;bool&gt; *" name="readWriteDerivedUnionAttributes" constness=" const"/>
+                <accessor return="void " name="addReadWriteDerivedUnionAttribute" constness="">
+                    <parameter type="bool " name="readWriteDerivedUnionAttribute"/>
+                </accessor>
+                <accessor return="void " name="removeReadWriteDerivedUnionAttribute" constness="">
+                    <parameter type="bool " name="readWriteDerivedUnionAttribute"/>
+                </accessor>
+                <documentation>readWriteDerivedUnionAttribute.</documentation>
+            </attribute>
+            <attribute isDerived="true" isDerivedUnion="true" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="BaseClass-readOnlyDerivedUnionAttribute">
+                <accessor return="const QSet&lt;bool&gt; *" name="readOnlyDerivedUnionAttributes" constness=" const"/>
+                <documentation>readOnlyDerivedUnionAttribute.</documentation>
+            </attribute>
+            <operation return="const QSet&lt;bool&gt; *" name="aRealOperation" constness=" const">
+                <documentation>Testing aRealOperation.</documentation>
+            </operation>
         </class>
         <class name="QUsedClass" isAbstract="false">
             <superclass include="QtCore/QObject" name="QObject"/>

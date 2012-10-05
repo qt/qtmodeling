@@ -104,19 +104,21 @@ class Q_UML_EXPORT QValueSpecificationAction : public QObject, public QAction
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
     Q_PROPERTY(QValueSpecification * value READ value WRITE setValue)
 
+    Q_DISABLE_COPY(QValueSpecificationAction)
+    Q_DECLARE_PRIVATE(QValueSpecificationAction)
+
 public:
     explicit QValueSpecificationAction(QObject *parent = 0);
     virtual ~QValueSpecificationAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QOutputPin *result() const;
     void setResult(const QOutputPin *result);
     QValueSpecification *value() const;
     void setValue(const QValueSpecification *value);
 
 private:
-    Q_DISABLE_COPY(QValueSpecificationAction)
-    Q_DECLARE_PRIVATE(QValueSpecificationAction)
+    QValueSpecificationActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qreadextentaction.h"
-//#include "qreadextentaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QReadExtentActionPrivate
+{
+public:
+    explicit QReadExtentActionPrivate();
+    virtual ~QReadExtentActionPrivate();
+
+    QClassifier *classifier;
+    QOutputPin *result;
+};
+
+QReadExtentActionPrivate::QReadExtentActionPrivate()
+{
+}
+
+QReadExtentActionPrivate::~QReadExtentActionPrivate()
+{
+}
 
 /*!
     \class QReadExtentAction
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QReadExtentAction::QReadExtentAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QReadExtentActionPrivate)
 {
 }
 
 QReadExtentAction::~QReadExtentAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QReadExtentAction::~QReadExtentAction()
  */
 QClassifier *QReadExtentAction::classifier() const
 {
+    return d_ptr->classifier;
 }
 
 void QReadExtentAction::setClassifier(const QClassifier *classifier)
 {
+    d_ptr->classifier = const_cast<QClassifier *>(classifier);
 }
 
 /*!
@@ -77,10 +97,12 @@ void QReadExtentAction::setClassifier(const QClassifier *classifier)
  */
 QOutputPin *QReadExtentAction::result() const
 {
+    return d_ptr->result;
 }
 
 void QReadExtentAction::setResult(const QOutputPin *result)
 {
+    d_ptr->result = const_cast<QOutputPin *>(result);
 }
 
 #include "moc_qreadextentaction.cpp"

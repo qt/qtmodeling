@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qcallbehavioraction.h"
-//#include "qcallbehavioraction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QCallBehaviorActionPrivate
+{
+public:
+    explicit QCallBehaviorActionPrivate();
+    virtual ~QCallBehaviorActionPrivate();
+
+    QBehavior *behavior;
+};
+
+QCallBehaviorActionPrivate::QCallBehaviorActionPrivate()
+{
+}
+
+QCallBehaviorActionPrivate::~QCallBehaviorActionPrivate()
+{
+}
 
 /*!
     \class QCallBehaviorAction
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QCallBehaviorAction::QCallBehaviorAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QCallBehaviorActionPrivate)
 {
 }
 
 QCallBehaviorAction::~QCallBehaviorAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QCallBehaviorAction::~QCallBehaviorAction()
  */
 QBehavior *QCallBehaviorAction::behavior() const
 {
+    return d_ptr->behavior;
 }
 
 void QCallBehaviorAction::setBehavior(const QBehavior *behavior)
 {
+    d_ptr->behavior = const_cast<QBehavior *>(behavior);
 }
 
 #include "moc_qcallbehavioraction.cpp"

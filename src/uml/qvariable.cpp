@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qvariable.h"
-//#include "qvariable_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QVariablePrivate
+{
+public:
+    explicit QVariablePrivate();
+    virtual ~QVariablePrivate();
+
+    QActivity *activityScope;
+    QStructuredActivityNode *scope;
+};
+
+QVariablePrivate::QVariablePrivate()
+{
+}
+
+QVariablePrivate::~QVariablePrivate()
+{
+}
 
 /*!
     \class QVariable
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QVariable::QVariable(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QVariablePrivate)
 {
 }
 
 QVariable::~QVariable()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QVariable::~QVariable()
  */
 QActivity *QVariable::activityScope() const
 {
+    return d_ptr->activityScope;
 }
 
 void QVariable::setActivityScope(const QActivity *activityScope)
 {
+    d_ptr->activityScope = const_cast<QActivity *>(activityScope);
 }
 
 /*!
@@ -77,10 +97,12 @@ void QVariable::setActivityScope(const QActivity *activityScope)
  */
 QStructuredActivityNode *QVariable::scope() const
 {
+    return d_ptr->scope;
 }
 
 void QVariable::setScope(const QStructuredActivityNode *scope)
 {
+    d_ptr->scope = const_cast<QStructuredActivityNode *>(scope);
 }
 
 /*!
@@ -88,6 +110,7 @@ void QVariable::setScope(const QStructuredActivityNode *scope)
  */
 bool QVariable::isAccessibleBy(const QAction *a) const
 {
+    qWarning("To be implemented");
 }
 
 #include "moc_qvariable.cpp"

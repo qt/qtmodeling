@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qactor.h"
-//#include "qactor_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QActorPrivate
+{
+public:
+    explicit QActorPrivate();
+    virtual ~QActorPrivate();
+
+};
+
+QActorPrivate::QActorPrivate()
+{
+}
+
+QActorPrivate::~QActorPrivate()
+{
+}
 
 /*!
     \class QActor
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QActor::QActor(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QActorPrivate)
 {
 }
 
 QActor::~QActor()
 {
+    delete d_ptr;
 }
 
 #include "moc_qactor.cpp"

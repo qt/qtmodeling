@@ -40,9 +40,31 @@
 ****************************************************************************/
 
 #include "qcomponent.h"
-//#include "qcomponent_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QComponentPrivate
+{
+public:
+    explicit QComponentPrivate();
+    virtual ~QComponentPrivate();
+
+    bool isIndirectlyInstantiated;
+    QSet<QPackageableElement *> *packagedElements;
+    QSet<QComponentRealization *> *realizations;
+};
+
+QComponentPrivate::QComponentPrivate() :
+    packagedElements(new QSet<QPackageableElement *>),
+    realizations(new QSet<QComponentRealization *>)
+{
+}
+
+QComponentPrivate::~QComponentPrivate()
+{
+    delete packagedElements;
+    delete realizations;
+}
 
 /*!
     \class QComponent
@@ -53,12 +75,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QComponent::QComponent(QObject *parent)
-    : QClass(parent)
+    : QClass(parent), d_ptr(new QComponentPrivate)
 {
 }
 
 QComponent::~QComponent()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +89,12 @@ QComponent::~QComponent()
  */
 bool QComponent::isIndirectlyInstantiated() const
 {
+    return d_ptr->isIndirectlyInstantiated;
 }
 
 void QComponent::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
 {
+    d_ptr->isIndirectlyInstantiated = isIndirectlyInstantiated;
 }
 
 /*!
@@ -77,14 +102,25 @@ void QComponent::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
  */
 const QSet<QPackageableElement *> *QComponent::packagedElements() const
 {
+    return d_ptr->packagedElements;
 }
 
 void QComponent::addPackagedElement(const QPackageableElement *packagedElement)
 {
+    d_ptr->packagedElements->insert(const_cast<QPackageableElement *>(packagedElement));
 }
 
 void QComponent::removePackagedElement(const QPackageableElement *packagedElement)
 {
+    d_ptr->packagedElements->remove(const_cast<QPackageableElement *>(packagedElement));
+}
+
+/*!
+    The interfaces that the component exposes to its environment. These interfaces may be Realized by the Component or any of its realizingClassifiers, or they may be the Interfaces that are provided by its public Ports.
+ */
+const QSet<QInterface *> *QComponent::provided() const
+{
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -92,21 +128,25 @@ void QComponent::removePackagedElement(const QPackageableElement *packagedElemen
  */
 const QSet<QComponentRealization *> *QComponent::realizations() const
 {
+    return d_ptr->realizations;
 }
 
 void QComponent::addRealization(const QComponentRealization *realization)
 {
+    d_ptr->realizations->insert(const_cast<QComponentRealization *>(realization));
 }
 
 void QComponent::removeRealization(const QComponentRealization *realization)
 {
+    d_ptr->realizations->remove(const_cast<QComponentRealization *>(realization));
 }
 
 /*!
-    Missing derivation for Component::/provided : Interface
+    The interfaces that the component requires from other components in its environment in order to be able to offer its full set of provided functionality. These interfaces may be used by the Component or any of its realizingClassifiers, or they may be the Interfaces that are required by its public Ports.
  */
-const QSet<QInterface *> *QComponent::provided() const
+const QSet<QInterface *> *QComponent::required() const
 {
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -114,13 +154,7 @@ const QSet<QInterface *> *QComponent::provided() const
  */
 const QSet<QInterface *> *QComponent::realizedInterfaces(const QClassifier *classifier) const
 {
-}
-
-/*!
-    Missing derivation for Component::/required : Interface
- */
-const QSet<QInterface *> *QComponent::required() const
-{
+    qWarning("To be implemented");
 }
 
 /*!
@@ -128,6 +162,7 @@ const QSet<QInterface *> *QComponent::required() const
  */
 const QSet<QInterface *> *QComponent::usedInterfaces(const QClassifier *classifier) const
 {
+    qWarning("To be implemented");
 }
 
 #include "moc_qcomponent.cpp"

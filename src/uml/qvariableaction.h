@@ -57,15 +57,21 @@ class QVariable;
 
 class Q_UML_EXPORT QVariableAction : public QAction
 {
+    Q_DISABLE_COPY(QVariableAction)
+    Q_DECLARE_PRIVATE(QVariableAction)
+
 public:
     virtual ~QVariableAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QVariable *variable() const;
     void setVariable(const QVariable *variable);
 
 protected:
     explicit QVariableAction();
+
+private:
+    QVariableActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

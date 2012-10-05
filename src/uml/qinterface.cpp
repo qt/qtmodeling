@@ -40,9 +40,40 @@
 ****************************************************************************/
 
 #include "qinterface.h"
-//#include "qinterface_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QInterfacePrivate
+{
+public:
+    explicit QInterfacePrivate();
+    virtual ~QInterfacePrivate();
+
+    QList<QClassifier *> *nestedClassifiers;
+    QList<QProperty *> *ownedAttributes;
+    QList<QOperation *> *ownedOperations;
+    QSet<QReception *> *ownedReceptions;
+    QProtocolStateMachine *protocol;
+    QSet<QInterface *> *redefinedInterfaces;
+};
+
+QInterfacePrivate::QInterfacePrivate() :
+    nestedClassifiers(new QList<QClassifier *>),
+    ownedAttributes(new QList<QProperty *>),
+    ownedOperations(new QList<QOperation *>),
+    ownedReceptions(new QSet<QReception *>),
+    redefinedInterfaces(new QSet<QInterface *>)
+{
+}
+
+QInterfacePrivate::~QInterfacePrivate()
+{
+    delete nestedClassifiers;
+    delete ownedAttributes;
+    delete ownedOperations;
+    delete ownedReceptions;
+    delete redefinedInterfaces;
+}
 
 /*!
     \class QInterface
@@ -53,12 +84,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QInterface::QInterface(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QInterfacePrivate)
 {
 }
 
 QInterface::~QInterface()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +98,17 @@ QInterface::~QInterface()
  */
 const QList<QClassifier *> *QInterface::nestedClassifiers() const
 {
+    return d_ptr->nestedClassifiers;
 }
 
 void QInterface::addNestedClassifier(const QClassifier *nestedClassifier)
 {
+    d_ptr->nestedClassifiers->append(const_cast<QClassifier *>(nestedClassifier));
 }
 
 void QInterface::removeNestedClassifier(const QClassifier *nestedClassifier)
 {
+    d_ptr->nestedClassifiers->removeAll(const_cast<QClassifier *>(nestedClassifier));
 }
 
 /*!
@@ -81,14 +116,17 @@ void QInterface::removeNestedClassifier(const QClassifier *nestedClassifier)
  */
 const QList<QProperty *> *QInterface::ownedAttributes() const
 {
+    return d_ptr->ownedAttributes;
 }
 
 void QInterface::addOwnedAttribute(const QProperty *ownedAttribute)
 {
+    d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
 }
 
 void QInterface::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
+    d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
 }
 
 /*!
@@ -96,14 +134,17 @@ void QInterface::removeOwnedAttribute(const QProperty *ownedAttribute)
  */
 const QList<QOperation *> *QInterface::ownedOperations() const
 {
+    return d_ptr->ownedOperations;
 }
 
 void QInterface::addOwnedOperation(const QOperation *ownedOperation)
 {
+    d_ptr->ownedOperations->append(const_cast<QOperation *>(ownedOperation));
 }
 
 void QInterface::removeOwnedOperation(const QOperation *ownedOperation)
 {
+    d_ptr->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation));
 }
 
 /*!
@@ -111,14 +152,17 @@ void QInterface::removeOwnedOperation(const QOperation *ownedOperation)
  */
 const QSet<QReception *> *QInterface::ownedReceptions() const
 {
+    return d_ptr->ownedReceptions;
 }
 
 void QInterface::addOwnedReception(const QReception *ownedReception)
 {
+    d_ptr->ownedReceptions->insert(const_cast<QReception *>(ownedReception));
 }
 
 void QInterface::removeOwnedReception(const QReception *ownedReception)
 {
+    d_ptr->ownedReceptions->remove(const_cast<QReception *>(ownedReception));
 }
 
 /*!
@@ -126,10 +170,12 @@ void QInterface::removeOwnedReception(const QReception *ownedReception)
  */
 QProtocolStateMachine *QInterface::protocol() const
 {
+    return d_ptr->protocol;
 }
 
 void QInterface::setProtocol(const QProtocolStateMachine *protocol)
 {
+    d_ptr->protocol = const_cast<QProtocolStateMachine *>(protocol);
 }
 
 /*!
@@ -137,14 +183,17 @@ void QInterface::setProtocol(const QProtocolStateMachine *protocol)
  */
 const QSet<QInterface *> *QInterface::redefinedInterfaces() const
 {
+    return d_ptr->redefinedInterfaces;
 }
 
 void QInterface::addRedefinedInterface(const QInterface *redefinedInterface)
 {
+    d_ptr->redefinedInterfaces->insert(const_cast<QInterface *>(redefinedInterface));
 }
 
 void QInterface::removeRedefinedInterface(const QInterface *redefinedInterface)
 {
+    d_ptr->redefinedInterfaces->remove(const_cast<QInterface *>(redefinedInterface));
 }
 
 #include "moc_qinterface.cpp"

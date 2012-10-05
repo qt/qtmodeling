@@ -132,11 +132,14 @@ class Q_UML_EXPORT QUseCase : public QObject, public QBehavioredClassifier
     Q_PROPERTY(const QSet<QInclude *> * includes READ includes)
     Q_PROPERTY(const QSet<QClassifier *> * subjects READ subjects)
 
+    Q_DISABLE_COPY(QUseCase)
+    Q_DECLARE_PRIVATE(QUseCase)
+
 public:
     explicit QUseCase(QObject *parent = 0);
     virtual ~QUseCase();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QExtend *> *extends() const;
     void addExtend(const QExtend *extend);
     void removeExtend(const QExtend *extend);
@@ -150,12 +153,11 @@ public:
     void addSubject(const QClassifier *subject);
     void removeSubject(const QClassifier *subject);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     const QSet<QUseCase *> *allIncludedUseCases() const;
 
 private:
-    Q_DISABLE_COPY(QUseCase)
-    Q_DECLARE_PRIVATE(QUseCase)
+    QUseCasePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qactivityfinalnode.h"
-//#include "qactivityfinalnode_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QActivityFinalNodePrivate
+{
+public:
+    explicit QActivityFinalNodePrivate();
+    virtual ~QActivityFinalNodePrivate();
+
+};
+
+QActivityFinalNodePrivate::QActivityFinalNodePrivate()
+{
+}
+
+QActivityFinalNodePrivate::~QActivityFinalNodePrivate()
+{
+}
 
 /*!
     \class QActivityFinalNode
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QActivityFinalNode::QActivityFinalNode(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QActivityFinalNodePrivate)
 {
 }
 
 QActivityFinalNode::~QActivityFinalNode()
 {
+    delete d_ptr;
 }
 
 #include "moc_qactivityfinalnode.cpp"

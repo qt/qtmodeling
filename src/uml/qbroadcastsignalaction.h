@@ -106,17 +106,19 @@ class Q_UML_EXPORT QBroadcastSignalAction : public QObject, public QInvocationAc
     // From QBroadcastSignalAction
     Q_PROPERTY(QSignal * signal READ signal WRITE setSignal)
 
+    Q_DISABLE_COPY(QBroadcastSignalAction)
+    Q_DECLARE_PRIVATE(QBroadcastSignalAction)
+
 public:
     explicit QBroadcastSignalAction(QObject *parent = 0);
     virtual ~QBroadcastSignalAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QSignal *signal() const;
     void setSignal(const QSignal *signal);
 
 private:
-    Q_DISABLE_COPY(QBroadcastSignalAction)
-    Q_DECLARE_PRIVATE(QBroadcastSignalAction)
+    QBroadcastSignalActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qcreatelinkobjectaction.h"
-//#include "qcreatelinkobjectaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QCreateLinkObjectActionPrivate
+{
+public:
+    explicit QCreateLinkObjectActionPrivate();
+    virtual ~QCreateLinkObjectActionPrivate();
+
+    QOutputPin *result;
+};
+
+QCreateLinkObjectActionPrivate::QCreateLinkObjectActionPrivate()
+{
+}
+
+QCreateLinkObjectActionPrivate::~QCreateLinkObjectActionPrivate()
+{
+}
 
 /*!
     \class QCreateLinkObjectAction
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QCreateLinkObjectAction::QCreateLinkObjectAction(QObject *parent)
-    : QCreateLinkAction(parent)
+    : QCreateLinkAction(parent), d_ptr(new QCreateLinkObjectActionPrivate)
 {
 }
 
 QCreateLinkObjectAction::~QCreateLinkObjectAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QCreateLinkObjectAction::~QCreateLinkObjectAction()
  */
 QOutputPin *QCreateLinkObjectAction::result() const
 {
+    return d_ptr->result;
 }
 
 void QCreateLinkObjectAction::setResult(const QOutputPin *result)
 {
+    d_ptr->result = const_cast<QOutputPin *>(result);
 }
 
 #include "moc_qcreatelinkobjectaction.cpp"

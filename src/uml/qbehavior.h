@@ -65,14 +65,18 @@ class QParameter;
 
 class Q_UML_EXPORT QBehavior : public QClass
 {
+    Q_DISABLE_COPY(QBehavior)
+    Q_DECLARE_PRIVATE(QBehavior)
+
 public:
     virtual ~QBehavior();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isReentrant() const;
     void setReentrant(bool isReentrant);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
+    QBehavioredClassifier *context() const;
     const QList<QParameter *> *ownedParameters() const;
     void addOwnedParameter(const QParameter *ownedParameter);
     void removeOwnedParameter(const QParameter *ownedParameter);
@@ -91,11 +95,11 @@ public:
     QBehavioralFeature *specification() const;
     void setSpecification(const QBehavioralFeature *specification);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    QBehavioredClassifier *context() const;
-
 protected:
     explicit QBehavior(QObject *parent = 0);
+
+private:
+    QBehaviorPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

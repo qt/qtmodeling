@@ -40,9 +40,30 @@
 ****************************************************************************/
 
 #include "qprofile.h"
-//#include "qprofile_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QProfilePrivate
+{
+public:
+    explicit QProfilePrivate();
+    virtual ~QProfilePrivate();
+
+    QSet<QElementImport *> *metaclassReferences;
+    QSet<QPackageImport *> *metamodelReferences;
+};
+
+QProfilePrivate::QProfilePrivate() :
+    metaclassReferences(new QSet<QElementImport *>),
+    metamodelReferences(new QSet<QPackageImport *>)
+{
+}
+
+QProfilePrivate::~QProfilePrivate()
+{
+    delete metaclassReferences;
+    delete metamodelReferences;
+}
 
 /*!
     \class QProfile
@@ -53,12 +74,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QProfile::QProfile(QObject *parent)
-    : QPackage(parent)
+    : QPackage(parent), d_ptr(new QProfilePrivate)
 {
 }
 
 QProfile::~QProfile()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +88,17 @@ QProfile::~QProfile()
  */
 const QSet<QElementImport *> *QProfile::metaclassReferences() const
 {
+    return d_ptr->metaclassReferences;
 }
 
 void QProfile::addMetaclassReference(const QElementImport *metaclassReference)
 {
+    d_ptr->metaclassReferences->insert(const_cast<QElementImport *>(metaclassReference));
 }
 
 void QProfile::removeMetaclassReference(const QElementImport *metaclassReference)
 {
+    d_ptr->metaclassReferences->remove(const_cast<QElementImport *>(metaclassReference));
 }
 
 /*!
@@ -81,14 +106,17 @@ void QProfile::removeMetaclassReference(const QElementImport *metaclassReference
  */
 const QSet<QPackageImport *> *QProfile::metamodelReferences() const
 {
+    return d_ptr->metamodelReferences;
 }
 
 void QProfile::addMetamodelReference(const QPackageImport *metamodelReference)
 {
+    d_ptr->metamodelReferences->insert(const_cast<QPackageImport *>(metamodelReference));
 }
 
 void QProfile::removeMetamodelReference(const QPackageImport *metamodelReference)
 {
+    d_ptr->metamodelReferences->remove(const_cast<QPackageImport *>(metamodelReference));
 }
 
 #include "moc_qprofile.cpp"

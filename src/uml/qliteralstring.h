@@ -87,21 +87,23 @@ class Q_UML_EXPORT QLiteralString : public QObject, public QLiteralSpecification
     // From QLiteralString
     Q_PROPERTY(QString value READ value WRITE setValue)
 
+    Q_DISABLE_COPY(QLiteralString)
+    Q_DECLARE_PRIVATE(QLiteralString)
+
 public:
     explicit QLiteralString(QObject *parent = 0);
     virtual ~QLiteralString();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     QString value() const;
     void setValue(QString value);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     bool isComputable() const;
     QString stringValue() const;
 
 private:
-    Q_DISABLE_COPY(QLiteralString)
-    Q_DECLARE_PRIVATE(QLiteralString)
+    QLiteralStringPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qcontrolflow.h"
-//#include "qcontrolflow_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QControlFlowPrivate
+{
+public:
+    explicit QControlFlowPrivate();
+    virtual ~QControlFlowPrivate();
+
+};
+
+QControlFlowPrivate::QControlFlowPrivate()
+{
+}
+
+QControlFlowPrivate::~QControlFlowPrivate()
+{
+}
 
 /*!
     \class QControlFlow
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QControlFlow::QControlFlow(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QControlFlowPrivate)
 {
 }
 
 QControlFlow::~QControlFlow()
 {
+    delete d_ptr;
 }
 
 #include "moc_qcontrolflow.cpp"

@@ -40,9 +40,27 @@
 ****************************************************************************/
 
 #include "qdestroylinkaction.h"
-//#include "qdestroylinkaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QDestroyLinkActionPrivate
+{
+public:
+    explicit QDestroyLinkActionPrivate();
+    virtual ~QDestroyLinkActionPrivate();
+
+    QSet<QLinkEndDestructionData *> *endData;
+};
+
+QDestroyLinkActionPrivate::QDestroyLinkActionPrivate() :
+    endData(new QSet<QLinkEndDestructionData *>)
+{
+}
+
+QDestroyLinkActionPrivate::~QDestroyLinkActionPrivate()
+{
+    delete endData;
+}
 
 /*!
     \class QDestroyLinkAction
@@ -53,12 +71,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QDestroyLinkAction::QDestroyLinkAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QDestroyLinkActionPrivate)
 {
 }
 
 QDestroyLinkAction::~QDestroyLinkAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +85,17 @@ QDestroyLinkAction::~QDestroyLinkAction()
  */
 const QSet<QLinkEndDestructionData *> *QDestroyLinkAction::endData() const
 {
+    return d_ptr->endData;
 }
 
 void QDestroyLinkAction::addEndData(const QLinkEndDestructionData *endData)
 {
+    d_ptr->endData->insert(const_cast<QLinkEndDestructionData *>(endData));
 }
 
 void QDestroyLinkAction::removeEndData(const QLinkEndDestructionData *endData)
 {
+    d_ptr->endData->remove(const_cast<QLinkEndDestructionData *>(endData));
 }
 
 #include "moc_qdestroylinkaction.cpp"

@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qtypedelement.h"
-//#include "qtypedelement_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QTypedElementPrivate
+{
+public:
+    explicit QTypedElementPrivate();
+    virtual ~QTypedElementPrivate();
+
+    QType *type;
+};
+
+QTypedElementPrivate::QTypedElementPrivate()
+{
+}
+
+QTypedElementPrivate::~QTypedElementPrivate()
+{
+}
 
 /*!
     \class QTypedElement
@@ -53,11 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QTypedElement::QTypedElement()
+    : d_ptr(new QTypedElementPrivate)
 {
 }
 
 QTypedElement::~QTypedElement()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,10 +83,12 @@ QTypedElement::~QTypedElement()
  */
 QType *QTypedElement::type() const
 {
+    return d_ptr->type;
 }
 
 void QTypedElement::setType(const QType *type)
 {
+    d_ptr->type = const_cast<QType *>(type);
 }
 
 QT_END_NAMESPACE_QTUML

@@ -40,9 +40,28 @@
 ****************************************************************************/
 
 #include "qelementimport.h"
-//#include "qelementimport_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QElementImportPrivate
+{
+public:
+    explicit QElementImportPrivate();
+    virtual ~QElementImportPrivate();
+
+    QString alias;
+    QtUml::VisibilityKind visibility;
+    QPackageableElement *importedElement;
+    QNamespace *importingNamespace;
+};
+
+QElementImportPrivate::QElementImportPrivate()
+{
+}
+
+QElementImportPrivate::~QElementImportPrivate()
+{
+}
 
 /*!
     \class QElementImport
@@ -53,12 +72,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QElementImport::QElementImport(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QElementImportPrivate)
 {
 }
 
 QElementImport::~QElementImport()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +86,12 @@ QElementImport::~QElementImport()
  */
 QString QElementImport::alias() const
 {
+    return d_ptr->alias;
 }
 
 void QElementImport::setAlias(QString alias)
 {
+    d_ptr->alias = alias;
 }
 
 /*!
@@ -77,10 +99,12 @@ void QElementImport::setAlias(QString alias)
  */
 QtUml::VisibilityKind QElementImport::visibility() const
 {
+    return d_ptr->visibility;
 }
 
 void QElementImport::setVisibility(QtUml::VisibilityKind visibility)
 {
+    d_ptr->visibility = visibility;
 }
 
 /*!
@@ -88,10 +112,12 @@ void QElementImport::setVisibility(QtUml::VisibilityKind visibility)
  */
 QPackageableElement *QElementImport::importedElement() const
 {
+    return d_ptr->importedElement;
 }
 
 void QElementImport::setImportedElement(const QPackageableElement *importedElement)
 {
+    d_ptr->importedElement = const_cast<QPackageableElement *>(importedElement);
 }
 
 /*!
@@ -99,10 +125,12 @@ void QElementImport::setImportedElement(const QPackageableElement *importedEleme
  */
 QNamespace *QElementImport::importingNamespace() const
 {
+    return d_ptr->importingNamespace;
 }
 
 void QElementImport::setImportingNamespace(const QNamespace *importingNamespace)
 {
+    d_ptr->importingNamespace = const_cast<QNamespace *>(importingNamespace);
 }
 
 /*!
@@ -110,6 +138,7 @@ void QElementImport::setImportingNamespace(const QNamespace *importingNamespace)
  */
 QString QElementImport::getName() const
 {
+    qWarning("To be implemented");
 }
 
 #include "moc_qelementimport.cpp"

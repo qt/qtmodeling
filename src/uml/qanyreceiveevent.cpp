@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qanyreceiveevent.h"
-//#include "qanyreceiveevent_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QAnyReceiveEventPrivate
+{
+public:
+    explicit QAnyReceiveEventPrivate();
+    virtual ~QAnyReceiveEventPrivate();
+
+};
+
+QAnyReceiveEventPrivate::QAnyReceiveEventPrivate()
+{
+}
+
+QAnyReceiveEventPrivate::~QAnyReceiveEventPrivate()
+{
+}
 
 /*!
     \class QAnyReceiveEvent
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QAnyReceiveEvent::QAnyReceiveEvent(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QAnyReceiveEventPrivate)
 {
 }
 
 QAnyReceiveEvent::~QAnyReceiveEvent()
 {
+    delete d_ptr;
 }
 
 #include "moc_qanyreceiveevent.cpp"

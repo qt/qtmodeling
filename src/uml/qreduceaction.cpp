@@ -40,9 +40,28 @@
 ****************************************************************************/
 
 #include "qreduceaction.h"
-//#include "qreduceaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QReduceActionPrivate
+{
+public:
+    explicit QReduceActionPrivate();
+    virtual ~QReduceActionPrivate();
+
+    bool isOrdered;
+    QInputPin *collection;
+    QBehavior *reducer;
+    QOutputPin *result;
+};
+
+QReduceActionPrivate::QReduceActionPrivate()
+{
+}
+
+QReduceActionPrivate::~QReduceActionPrivate()
+{
+}
 
 /*!
     \class QReduceAction
@@ -53,12 +72,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QReduceAction::QReduceAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QReduceActionPrivate)
 {
 }
 
 QReduceAction::~QReduceAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +86,12 @@ QReduceAction::~QReduceAction()
  */
 bool QReduceAction::isOrdered() const
 {
+    return d_ptr->isOrdered;
 }
 
 void QReduceAction::setOrdered(bool isOrdered)
 {
+    d_ptr->isOrdered = isOrdered;
 }
 
 /*!
@@ -77,10 +99,12 @@ void QReduceAction::setOrdered(bool isOrdered)
  */
 QInputPin *QReduceAction::collection() const
 {
+    return d_ptr->collection;
 }
 
 void QReduceAction::setCollection(const QInputPin *collection)
 {
+    d_ptr->collection = const_cast<QInputPin *>(collection);
 }
 
 /*!
@@ -88,10 +112,12 @@ void QReduceAction::setCollection(const QInputPin *collection)
  */
 QBehavior *QReduceAction::reducer() const
 {
+    return d_ptr->reducer;
 }
 
 void QReduceAction::setReducer(const QBehavior *reducer)
 {
+    d_ptr->reducer = const_cast<QBehavior *>(reducer);
 }
 
 /*!
@@ -99,10 +125,12 @@ void QReduceAction::setReducer(const QBehavior *reducer)
  */
 QOutputPin *QReduceAction::result() const
 {
+    return d_ptr->result;
 }
 
 void QReduceAction::setResult(const QOutputPin *result)
 {
+    d_ptr->result = const_cast<QOutputPin *>(result);
 }
 
 #include "moc_qreduceaction.cpp"

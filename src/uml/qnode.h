@@ -82,18 +82,20 @@ class Q_UML_EXPORT QNode : public QClass, public QDeploymentTarget
     // From QNode
     Q_PROPERTY(const QSet<QNode *> * nestedNodes READ nestedNodes)
 
+    Q_DISABLE_COPY(QNode)
+    Q_DECLARE_PRIVATE(QNode)
+
 public:
     explicit QNode(QObject *parent = 0);
     virtual ~QNode();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QNode *> *nestedNodes() const;
     void addNestedNode(const QNode *nestedNode);
     void removeNestedNode(const QNode *nestedNode);
 
 private:
-    Q_DISABLE_COPY(QNode)
-    Q_DECLARE_PRIVATE(QNode)
+    QNodePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

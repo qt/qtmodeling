@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qvertex.h"
-//#include "qvertex_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QVertexPrivate
+{
+public:
+    explicit QVertexPrivate();
+    virtual ~QVertexPrivate();
+
+    QRegion *container;
+};
+
+QVertexPrivate::QVertexPrivate()
+{
+}
+
+QVertexPrivate::~QVertexPrivate()
+{
+}
 
 /*!
     \class QVertex
@@ -53,11 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QVertex::QVertex()
+    : d_ptr(new QVertexPrivate)
 {
 }
 
 QVertex::~QVertex()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,10 +83,28 @@ QVertex::~QVertex()
  */
 QRegion *QVertex::container() const
 {
+    return d_ptr->container;
 }
 
 void QVertex::setContainer(const QRegion *container)
 {
+    d_ptr->container = const_cast<QRegion *>(container);
+}
+
+/*!
+    Specifies the transitions entering this vertex.
+ */
+const QSet<QTransition *> *QVertex::incomings() const
+{
+    qWarning("To be implemented (this is a derived associationend)");
+}
+
+/*!
+    Specifies the transitions departing from this vertex.
+ */
+const QSet<QTransition *> *QVertex::outgoings() const
+{
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -76,20 +112,7 @@ void QVertex::setContainer(const QRegion *container)
  */
 QStateMachine *QVertex::containingStateMachine() const
 {
-}
-
-/*!
-    Missing derivation for Vertex::/incoming : Transition
- */
-const QSet<QTransition *> *QVertex::incomings() const
-{
-}
-
-/*!
-    Missing derivation for Vertex::/outgoing : Transition
- */
-const QSet<QTransition *> *QVertex::outgoings() const
-{
+    qWarning("To be implemented");
 }
 
 QT_END_NAMESPACE_QTUML

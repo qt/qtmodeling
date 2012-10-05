@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qusage.h"
-//#include "qusage_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QUsagePrivate
+{
+public:
+    explicit QUsagePrivate();
+    virtual ~QUsagePrivate();
+
+};
+
+QUsagePrivate::QUsagePrivate()
+{
+}
+
+QUsagePrivate::~QUsagePrivate()
+{
+}
 
 /*!
     \class QUsage
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QUsage::QUsage(QObject *parent)
-    : QDependency(parent)
+    : QDependency(parent), d_ptr(new QUsagePrivate)
 {
 }
 
 QUsage::~QUsage()
 {
+    delete d_ptr;
 }
 
 #include "moc_qusage.cpp"

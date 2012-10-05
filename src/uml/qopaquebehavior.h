@@ -76,11 +76,14 @@ class Q_UML_EXPORT QOpaqueBehavior : public QBehavior
     Q_PROPERTY(const QList<QString> * bodies READ bodies)
     Q_PROPERTY(const QList<QString> * languages READ languages)
 
+    Q_DISABLE_COPY(QOpaqueBehavior)
+    Q_DECLARE_PRIVATE(QOpaqueBehavior)
+
 public:
     explicit QOpaqueBehavior(QObject *parent = 0);
     virtual ~QOpaqueBehavior();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     const QList<QString> *bodies() const;
     void addBody(QString body);
     void removeBody(QString body);
@@ -89,8 +92,7 @@ public:
     void removeLanguage(QString language);
 
 private:
-    Q_DISABLE_COPY(QOpaqueBehavior)
-    Q_DECLARE_PRIVATE(QOpaqueBehavior)
+    QOpaqueBehaviorPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

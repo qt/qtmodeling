@@ -72,11 +72,14 @@ class Q_UML_EXPORT QImage : public QObject, public QElement
     Q_PROPERTY(QString format READ format WRITE setFormat)
     Q_PROPERTY(QString location READ location WRITE setLocation)
 
+    Q_DISABLE_COPY(QImage)
+    Q_DECLARE_PRIVATE(QImage)
+
 public:
     explicit QImage(QObject *parent = 0);
     virtual ~QImage();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     QString content() const;
     void setContent(QString content);
     QString format() const;
@@ -85,8 +88,7 @@ public:
     void setLocation(QString location);
 
 private:
-    Q_DISABLE_COPY(QImage)
-    Q_DECLARE_PRIVATE(QImage)
+    QImagePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

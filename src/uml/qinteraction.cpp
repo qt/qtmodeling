@@ -40,9 +40,39 @@
 ****************************************************************************/
 
 #include "qinteraction.h"
-//#include "qinteraction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QInteractionPrivate
+{
+public:
+    explicit QInteractionPrivate();
+    virtual ~QInteractionPrivate();
+
+    QSet<QAction *> *actions;
+    QSet<QGate *> *formalGates;
+    QList<QInteractionFragment *> *fragments;
+    QSet<QLifeline *> *lifelines;
+    QSet<QMessage *> *messages;
+};
+
+QInteractionPrivate::QInteractionPrivate() :
+    actions(new QSet<QAction *>),
+    formalGates(new QSet<QGate *>),
+    fragments(new QList<QInteractionFragment *>),
+    lifelines(new QSet<QLifeline *>),
+    messages(new QSet<QMessage *>)
+{
+}
+
+QInteractionPrivate::~QInteractionPrivate()
+{
+    delete actions;
+    delete formalGates;
+    delete fragments;
+    delete lifelines;
+    delete messages;
+}
 
 /*!
     \class QInteraction
@@ -53,12 +83,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QInteraction::QInteraction(QObject *parent)
-    : QBehavior(parent)
+    : QBehavior(parent), d_ptr(new QInteractionPrivate)
 {
 }
 
 QInteraction::~QInteraction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +97,17 @@ QInteraction::~QInteraction()
  */
 const QSet<QAction *> *QInteraction::actions() const
 {
+    return d_ptr->actions;
 }
 
 void QInteraction::addAction(const QAction *action)
 {
+    d_ptr->actions->insert(const_cast<QAction *>(action));
 }
 
 void QInteraction::removeAction(const QAction *action)
 {
+    d_ptr->actions->remove(const_cast<QAction *>(action));
 }
 
 /*!
@@ -81,14 +115,17 @@ void QInteraction::removeAction(const QAction *action)
  */
 const QSet<QGate *> *QInteraction::formalGates() const
 {
+    return d_ptr->formalGates;
 }
 
 void QInteraction::addFormalGate(const QGate *formalGate)
 {
+    d_ptr->formalGates->insert(const_cast<QGate *>(formalGate));
 }
 
 void QInteraction::removeFormalGate(const QGate *formalGate)
 {
+    d_ptr->formalGates->remove(const_cast<QGate *>(formalGate));
 }
 
 /*!
@@ -96,14 +133,17 @@ void QInteraction::removeFormalGate(const QGate *formalGate)
  */
 const QList<QInteractionFragment *> *QInteraction::fragments() const
 {
+    return d_ptr->fragments;
 }
 
 void QInteraction::addFragment(const QInteractionFragment *fragment)
 {
+    d_ptr->fragments->append(const_cast<QInteractionFragment *>(fragment));
 }
 
 void QInteraction::removeFragment(const QInteractionFragment *fragment)
 {
+    d_ptr->fragments->removeAll(const_cast<QInteractionFragment *>(fragment));
 }
 
 /*!
@@ -111,14 +151,17 @@ void QInteraction::removeFragment(const QInteractionFragment *fragment)
  */
 const QSet<QLifeline *> *QInteraction::lifelines() const
 {
+    return d_ptr->lifelines;
 }
 
 void QInteraction::addLifeline(const QLifeline *lifeline)
 {
+    d_ptr->lifelines->insert(const_cast<QLifeline *>(lifeline));
 }
 
 void QInteraction::removeLifeline(const QLifeline *lifeline)
 {
+    d_ptr->lifelines->remove(const_cast<QLifeline *>(lifeline));
 }
 
 /*!
@@ -126,14 +169,17 @@ void QInteraction::removeLifeline(const QLifeline *lifeline)
  */
 const QSet<QMessage *> *QInteraction::messages() const
 {
+    return d_ptr->messages;
 }
 
 void QInteraction::addMessage(const QMessage *message)
 {
+    d_ptr->messages->insert(const_cast<QMessage *>(message));
 }
 
 void QInteraction::removeMessage(const QMessage *message)
 {
+    d_ptr->messages->remove(const_cast<QMessage *>(message));
 }
 
 #include "moc_qinteraction.cpp"

@@ -40,9 +40,27 @@
 ****************************************************************************/
 
 #include "qsequencenode.h"
-//#include "qsequencenode_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QSequenceNodePrivate
+{
+public:
+    explicit QSequenceNodePrivate();
+    virtual ~QSequenceNodePrivate();
+
+    QList<QExecutableNode *> *executableNodes;
+};
+
+QSequenceNodePrivate::QSequenceNodePrivate() :
+    executableNodes(new QList<QExecutableNode *>)
+{
+}
+
+QSequenceNodePrivate::~QSequenceNodePrivate()
+{
+    delete executableNodes;
+}
 
 /*!
     \class QSequenceNode
@@ -53,12 +71,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QSequenceNode::QSequenceNode(QObject *parent)
-    : QStructuredActivityNode(parent)
+    : QStructuredActivityNode(parent), d_ptr(new QSequenceNodePrivate)
 {
 }
 
 QSequenceNode::~QSequenceNode()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +85,17 @@ QSequenceNode::~QSequenceNode()
  */
 const QList<QExecutableNode *> *QSequenceNode::executableNodes() const
 {
+    return d_ptr->executableNodes;
 }
 
 void QSequenceNode::addExecutableNode(const QExecutableNode *executableNode)
 {
+    d_ptr->executableNodes->append(const_cast<QExecutableNode *>(executableNode));
 }
 
 void QSequenceNode::removeExecutableNode(const QExecutableNode *executableNode)
 {
+    d_ptr->executableNodes->removeAll(const_cast<QExecutableNode *>(executableNode));
 }
 
 #include "moc_qsequencenode.cpp"

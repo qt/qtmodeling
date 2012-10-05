@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qstructuralfeature.h"
-//#include "qstructuralfeature_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QStructuralFeaturePrivate
+{
+public:
+    explicit QStructuralFeaturePrivate();
+    virtual ~QStructuralFeaturePrivate();
+
+    bool isReadOnly;
+};
+
+QStructuralFeaturePrivate::QStructuralFeaturePrivate()
+{
+}
+
+QStructuralFeaturePrivate::~QStructuralFeaturePrivate()
+{
+}
 
 /*!
     \class QStructuralFeature
@@ -53,11 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QStructuralFeature::QStructuralFeature()
+    : d_ptr(new QStructuralFeaturePrivate)
 {
 }
 
 QStructuralFeature::~QStructuralFeature()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,10 +83,12 @@ QStructuralFeature::~QStructuralFeature()
  */
 bool QStructuralFeature::isReadOnly() const
 {
+    return d_ptr->isReadOnly;
 }
 
 void QStructuralFeature::setReadOnly(bool isReadOnly)
 {
+    d_ptr->isReadOnly = isReadOnly;
 }
 
 QT_END_NAMESPACE_QTUML

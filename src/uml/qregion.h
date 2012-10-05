@@ -101,13 +101,17 @@ class Q_UML_EXPORT QRegion : public QObject, public QRedefinableElement, public 
     Q_PROPERTY(const QSet<QVertex *> * subvertices READ subvertices)
     Q_PROPERTY(const QSet<QTransition *> * transitions READ transitions)
 
+    Q_DISABLE_COPY(QRegion)
+    Q_DECLARE_PRIVATE(QRegion)
+
 public:
     explicit QRegion(QObject *parent = 0);
     virtual ~QRegion();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QRegion *extendedRegion() const;
     void setExtendedRegion(const QRegion *extendedRegion);
+    QClassifier *redefinitionContext() const;
     QState *state() const;
     void setState(const QState *state);
     QStateMachine *stateMachine() const;
@@ -119,16 +123,14 @@ public:
     void addTransition(const QTransition *transition);
     void removeTransition(const QTransition *transition);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     bool belongsToPSM() const;
     QStateMachine *containingStateMachine() const;
     bool isConsistentWith(const QRedefinableElement *redefinee) const;
     bool isRedefinitionContextValid(const QRegion *redefined) const;
-    QClassifier *redefinitionContext() const;
 
 private:
-    Q_DISABLE_COPY(QRegion)
-    Q_DECLARE_PRIVATE(QRegion)
+    QRegionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

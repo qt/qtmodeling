@@ -40,9 +40,35 @@
 ****************************************************************************/
 
 #include "qactivitygroup.h"
-//#include "qactivitygroup_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QActivityGroupPrivate
+{
+public:
+    explicit QActivityGroupPrivate();
+    virtual ~QActivityGroupPrivate();
+
+    QSet<QActivityEdge *> *containedEdges;
+    QSet<QActivityNode *> *containedNodes;
+    QActivity *inActivity;
+    QSet<QActivityGroup *> *subgroups;
+    QActivityGroup *superGroup;
+};
+
+QActivityGroupPrivate::QActivityGroupPrivate() :
+    containedEdges(new QSet<QActivityEdge *>),
+    containedNodes(new QSet<QActivityNode *>),
+    subgroups(new QSet<QActivityGroup *>)
+{
+}
+
+QActivityGroupPrivate::~QActivityGroupPrivate()
+{
+    delete containedEdges;
+    delete containedNodes;
+    delete subgroups;
+}
 
 /*!
     \class QActivityGroup
@@ -53,11 +79,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QActivityGroup::QActivityGroup()
+    : d_ptr(new QActivityGroupPrivate)
 {
 }
 
 QActivityGroup::~QActivityGroup()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,6 +93,7 @@ QActivityGroup::~QActivityGroup()
  */
 const QSet<QActivityEdge *> *QActivityGroup::containedEdges() const
 {
+    return d_ptr->containedEdges;
 }
 
 /*!
@@ -72,6 +101,7 @@ const QSet<QActivityEdge *> *QActivityGroup::containedEdges() const
  */
 const QSet<QActivityNode *> *QActivityGroup::containedNodes() const
 {
+    return d_ptr->containedNodes;
 }
 
 /*!
@@ -79,10 +109,12 @@ const QSet<QActivityNode *> *QActivityGroup::containedNodes() const
  */
 QActivity *QActivityGroup::inActivity() const
 {
+    return d_ptr->inActivity;
 }
 
 void QActivityGroup::setInActivity(const QActivity *inActivity)
 {
+    d_ptr->inActivity = const_cast<QActivity *>(inActivity);
 }
 
 /*!
@@ -90,6 +122,7 @@ void QActivityGroup::setInActivity(const QActivity *inActivity)
  */
 const QSet<QActivityGroup *> *QActivityGroup::subgroups() const
 {
+    return d_ptr->subgroups;
 }
 
 /*!
@@ -97,6 +130,7 @@ const QSet<QActivityGroup *> *QActivityGroup::subgroups() const
  */
 QActivityGroup *QActivityGroup::superGroup() const
 {
+    return d_ptr->superGroup;
 }
 
 QT_END_NAMESPACE_QTUML

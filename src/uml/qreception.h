@@ -101,17 +101,19 @@ class Q_UML_EXPORT QReception : public QObject, public QBehavioralFeature
     // From QReception
     Q_PROPERTY(QSignal * signal READ signal WRITE setSignal)
 
+    Q_DISABLE_COPY(QReception)
+    Q_DECLARE_PRIVATE(QReception)
+
 public:
     explicit QReception(QObject *parent = 0);
     virtual ~QReception();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QSignal *signal() const;
     void setSignal(const QSignal *signal);
 
 private:
-    Q_DISABLE_COPY(QReception)
-    Q_DECLARE_PRIVATE(QReception)
+    QReceptionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qdestructionoccurrencespecification.h"
-//#include "qdestructionoccurrencespecification_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QDestructionOccurrenceSpecificationPrivate
+{
+public:
+    explicit QDestructionOccurrenceSpecificationPrivate();
+    virtual ~QDestructionOccurrenceSpecificationPrivate();
+
+};
+
+QDestructionOccurrenceSpecificationPrivate::QDestructionOccurrenceSpecificationPrivate()
+{
+}
+
+QDestructionOccurrenceSpecificationPrivate::~QDestructionOccurrenceSpecificationPrivate()
+{
+}
 
 /*!
     \class QDestructionOccurrenceSpecification
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(QObject *parent)
-    : QMessageOccurrenceSpecification(parent)
+    : QMessageOccurrenceSpecification(parent), d_ptr(new QDestructionOccurrenceSpecificationPrivate)
 {
 }
 
 QDestructionOccurrenceSpecification::~QDestructionOccurrenceSpecification()
 {
+    delete d_ptr;
 }
 
 #include "moc_qdestructionoccurrencespecification.cpp"

@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qtimeobservation.h"
-//#include "qtimeobservation_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QTimeObservationPrivate
+{
+public:
+    explicit QTimeObservationPrivate();
+    virtual ~QTimeObservationPrivate();
+
+    bool firstEvent;
+    QNamedElement *event;
+};
+
+QTimeObservationPrivate::QTimeObservationPrivate()
+{
+}
+
+QTimeObservationPrivate::~QTimeObservationPrivate()
+{
+}
 
 /*!
     \class QTimeObservation
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QTimeObservation::QTimeObservation(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QTimeObservationPrivate)
 {
 }
 
 QTimeObservation::~QTimeObservation()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QTimeObservation::~QTimeObservation()
  */
 bool QTimeObservation::firstEvent() const
 {
+    return d_ptr->firstEvent;
 }
 
 void QTimeObservation::setFirstEvent(bool firstEvent)
 {
+    d_ptr->firstEvent = firstEvent;
 }
 
 /*!
@@ -77,10 +97,12 @@ void QTimeObservation::setFirstEvent(bool firstEvent)
  */
 QNamedElement *QTimeObservation::event() const
 {
+    return d_ptr->event;
 }
 
 void QTimeObservation::setEvent(const QNamedElement *event)
 {
+    d_ptr->event = const_cast<QNamedElement *>(event);
 }
 
 #include "moc_qtimeobservation.cpp"

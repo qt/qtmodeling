@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qsendobjectaction.h"
-//#include "qsendobjectaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QSendObjectActionPrivate
+{
+public:
+    explicit QSendObjectActionPrivate();
+    virtual ~QSendObjectActionPrivate();
+
+    QInputPin *request;
+    QInputPin *target;
+};
+
+QSendObjectActionPrivate::QSendObjectActionPrivate()
+{
+}
+
+QSendObjectActionPrivate::~QSendObjectActionPrivate()
+{
+}
 
 /*!
     \class QSendObjectAction
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QSendObjectAction::QSendObjectAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QSendObjectActionPrivate)
 {
 }
 
 QSendObjectAction::~QSendObjectAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QSendObjectAction::~QSendObjectAction()
  */
 QInputPin *QSendObjectAction::request() const
 {
+    return d_ptr->request;
 }
 
 void QSendObjectAction::setRequest(const QInputPin *request)
 {
+    d_ptr->request = const_cast<QInputPin *>(request);
 }
 
 /*!
@@ -77,10 +97,12 @@ void QSendObjectAction::setRequest(const QInputPin *request)
  */
 QInputPin *QSendObjectAction::target() const
 {
+    return d_ptr->target;
 }
 
 void QSendObjectAction::setTarget(const QInputPin *target)
 {
+    d_ptr->target = const_cast<QInputPin *>(target);
 }
 
 #include "moc_qsendobjectaction.cpp"

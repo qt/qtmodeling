@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qinterval.h"
-//#include "qinterval_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QIntervalPrivate
+{
+public:
+    explicit QIntervalPrivate();
+    virtual ~QIntervalPrivate();
+
+    QValueSpecification *max;
+    QValueSpecification *min;
+};
+
+QIntervalPrivate::QIntervalPrivate()
+{
+}
+
+QIntervalPrivate::~QIntervalPrivate()
+{
+}
 
 /*!
     \class QInterval
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QInterval::QInterval(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QIntervalPrivate)
 {
 }
 
 QInterval::~QInterval()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QInterval::~QInterval()
  */
 QValueSpecification *QInterval::max() const
 {
+    return d_ptr->max;
 }
 
 void QInterval::setMax(const QValueSpecification *max)
 {
+    d_ptr->max = const_cast<QValueSpecification *>(max);
 }
 
 /*!
@@ -77,10 +97,12 @@ void QInterval::setMax(const QValueSpecification *max)
  */
 QValueSpecification *QInterval::min() const
 {
+    return d_ptr->min;
 }
 
 void QInterval::setMin(const QValueSpecification *min)
 {
+    d_ptr->min = const_cast<QValueSpecification *>(min);
 }
 
 #include "moc_qinterval.cpp"

@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qliteralnull.h"
-//#include "qliteralnull_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QLiteralNullPrivate
+{
+public:
+    explicit QLiteralNullPrivate();
+    virtual ~QLiteralNullPrivate();
+
+};
+
+QLiteralNullPrivate::QLiteralNullPrivate()
+{
+}
+
+QLiteralNullPrivate::~QLiteralNullPrivate()
+{
+}
 
 /*!
     \class QLiteralNull
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QLiteralNull::QLiteralNull(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QLiteralNullPrivate)
 {
 }
 
 QLiteralNull::~QLiteralNull()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,6 +82,7 @@ QLiteralNull::~QLiteralNull()
  */
 bool QLiteralNull::isComputable() const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -73,6 +90,7 @@ bool QLiteralNull::isComputable() const
  */
 bool QLiteralNull::isNull() const
 {
+    qWarning("To be implemented");
 }
 
 #include "moc_qliteralnull.cpp"

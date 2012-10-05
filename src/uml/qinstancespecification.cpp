@@ -40,9 +40,31 @@
 ****************************************************************************/
 
 #include "qinstancespecification.h"
-//#include "qinstancespecification_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QInstanceSpecificationPrivate
+{
+public:
+    explicit QInstanceSpecificationPrivate();
+    virtual ~QInstanceSpecificationPrivate();
+
+    QSet<QClassifier *> *classifiers;
+    QSet<QSlot *> *slots_;
+    QValueSpecification *specification;
+};
+
+QInstanceSpecificationPrivate::QInstanceSpecificationPrivate() :
+    classifiers(new QSet<QClassifier *>),
+    slots_(new QSet<QSlot *>)
+{
+}
+
+QInstanceSpecificationPrivate::~QInstanceSpecificationPrivate()
+{
+    delete classifiers;
+    delete slots_;
+}
 
 /*!
     \class QInstanceSpecification
@@ -53,12 +75,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QInstanceSpecification::QInstanceSpecification(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QInstanceSpecificationPrivate)
 {
 }
 
 QInstanceSpecification::~QInstanceSpecification()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +89,17 @@ QInstanceSpecification::~QInstanceSpecification()
  */
 const QSet<QClassifier *> *QInstanceSpecification::classifiers() const
 {
+    return d_ptr->classifiers;
 }
 
 void QInstanceSpecification::addClassifier(const QClassifier *classifier)
 {
+    d_ptr->classifiers->insert(const_cast<QClassifier *>(classifier));
 }
 
 void QInstanceSpecification::removeClassifier(const QClassifier *classifier)
 {
+    d_ptr->classifiers->remove(const_cast<QClassifier *>(classifier));
 }
 
 /*!
@@ -81,14 +107,17 @@ void QInstanceSpecification::removeClassifier(const QClassifier *classifier)
  */
 const QSet<QSlot *> *QInstanceSpecification::slots_() const
 {
+    return d_ptr->slots_;
 }
 
 void QInstanceSpecification::addSlot_(const QSlot *slot_)
 {
+    d_ptr->slots_->insert(const_cast<QSlot *>(slot_));
 }
 
 void QInstanceSpecification::removeSlot_(const QSlot *slot_)
 {
+    d_ptr->slots_->remove(const_cast<QSlot *>(slot_));
 }
 
 /*!
@@ -96,10 +125,12 @@ void QInstanceSpecification::removeSlot_(const QSlot *slot_)
  */
 QValueSpecification *QInstanceSpecification::specification() const
 {
+    return d_ptr->specification;
 }
 
 void QInstanceSpecification::setSpecification(const QValueSpecification *specification)
 {
+    d_ptr->specification = const_cast<QValueSpecification *>(specification);
 }
 
 #include "moc_qinstancespecification.cpp"

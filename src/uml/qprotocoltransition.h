@@ -68,22 +68,22 @@ class Q_UML_EXPORT QProtocolTransition : public QTransition
     Q_PROPERTY(QConstraint * preCondition READ preCondition WRITE setPreCondition)
     Q_PROPERTY(const QSet<QOperation *> * referred READ referred)
 
+    Q_DISABLE_COPY(QProtocolTransition)
+    Q_DECLARE_PRIVATE(QProtocolTransition)
+
 public:
     explicit QProtocolTransition(QObject *parent = 0);
     virtual ~QProtocolTransition();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QConstraint *postCondition() const;
     void setPostCondition(const QConstraint *postCondition);
     QConstraint *preCondition() const;
     void setPreCondition(const QConstraint *preCondition);
-
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
     const QSet<QOperation *> *referred() const;
 
 private:
-    Q_DISABLE_COPY(QProtocolTransition)
-    Q_DECLARE_PRIVATE(QProtocolTransition)
+    QProtocolTransitionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

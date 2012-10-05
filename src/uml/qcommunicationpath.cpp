@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qcommunicationpath.h"
-//#include "qcommunicationpath_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QCommunicationPathPrivate
+{
+public:
+    explicit QCommunicationPathPrivate();
+    virtual ~QCommunicationPathPrivate();
+
+};
+
+QCommunicationPathPrivate::QCommunicationPathPrivate()
+{
+}
+
+QCommunicationPathPrivate::~QCommunicationPathPrivate()
+{
+}
 
 /*!
     \class QCommunicationPath
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QCommunicationPath::QCommunicationPath(QObject *parent)
-    : QAssociation(parent)
+    : QAssociation(parent), d_ptr(new QCommunicationPathPrivate)
 {
 }
 
 QCommunicationPath::~QCommunicationPath()
 {
+    delete d_ptr;
 }
 
 #include "moc_qcommunicationpath.cpp"

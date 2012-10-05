@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qwritestructuralfeatureaction.h"
-//#include "qwritestructuralfeatureaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QWriteStructuralFeatureActionPrivate
+{
+public:
+    explicit QWriteStructuralFeatureActionPrivate();
+    virtual ~QWriteStructuralFeatureActionPrivate();
+
+    QOutputPin *result;
+    QInputPin *value;
+};
+
+QWriteStructuralFeatureActionPrivate::QWriteStructuralFeatureActionPrivate()
+{
+}
+
+QWriteStructuralFeatureActionPrivate::~QWriteStructuralFeatureActionPrivate()
+{
+}
 
 /*!
     \class QWriteStructuralFeatureAction
@@ -53,11 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QWriteStructuralFeatureAction::QWriteStructuralFeatureAction()
+    : d_ptr(new QWriteStructuralFeatureActionPrivate)
 {
 }
 
 QWriteStructuralFeatureAction::~QWriteStructuralFeatureAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,10 +84,12 @@ QWriteStructuralFeatureAction::~QWriteStructuralFeatureAction()
  */
 QOutputPin *QWriteStructuralFeatureAction::result() const
 {
+    return d_ptr->result;
 }
 
 void QWriteStructuralFeatureAction::setResult(const QOutputPin *result)
 {
+    d_ptr->result = const_cast<QOutputPin *>(result);
 }
 
 /*!
@@ -76,10 +97,12 @@ void QWriteStructuralFeatureAction::setResult(const QOutputPin *result)
  */
 QInputPin *QWriteStructuralFeatureAction::value() const
 {
+    return d_ptr->value;
 }
 
 void QWriteStructuralFeatureAction::setValue(const QInputPin *value)
 {
+    d_ptr->value = const_cast<QInputPin *>(value);
 }
 
 QT_END_NAMESPACE_QTUML

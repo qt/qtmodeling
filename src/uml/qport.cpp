@@ -40,9 +40,31 @@
 ****************************************************************************/
 
 #include "qport.h"
-//#include "qport_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QPortPrivate
+{
+public:
+    explicit QPortPrivate();
+    virtual ~QPortPrivate();
+
+    bool isBehavior;
+    bool isConjugated;
+    bool isService;
+    QProtocolStateMachine *protocol;
+    QSet<QPort *> *redefinedPorts;
+};
+
+QPortPrivate::QPortPrivate() :
+    redefinedPorts(new QSet<QPort *>)
+{
+}
+
+QPortPrivate::~QPortPrivate()
+{
+    delete redefinedPorts;
+}
 
 /*!
     \class QPort
@@ -53,12 +75,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QPort::QPort(QObject *parent)
-    : QProperty(parent)
+    : QProperty(parent), d_ptr(new QPortPrivate)
 {
 }
 
 QPort::~QPort()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +89,12 @@ QPort::~QPort()
  */
 bool QPort::isBehavior() const
 {
+    return d_ptr->isBehavior;
 }
 
 void QPort::setBehavior(bool isBehavior)
 {
+    d_ptr->isBehavior = isBehavior;
 }
 
 /*!
@@ -77,10 +102,12 @@ void QPort::setBehavior(bool isBehavior)
  */
 bool QPort::isConjugated() const
 {
+    return d_ptr->isConjugated;
 }
 
 void QPort::setConjugated(bool isConjugated)
 {
+    d_ptr->isConjugated = isConjugated;
 }
 
 /*!
@@ -88,10 +115,12 @@ void QPort::setConjugated(bool isConjugated)
  */
 bool QPort::isService() const
 {
+    return d_ptr->isService;
 }
 
 void QPort::setService(bool isService)
 {
+    d_ptr->isService = isService;
 }
 
 /*!
@@ -99,10 +128,20 @@ void QPort::setService(bool isService)
  */
 QProtocolStateMachine *QPort::protocol() const
 {
+    return d_ptr->protocol;
 }
 
 void QPort::setProtocol(const QProtocolStateMachine *protocol)
 {
+    d_ptr->protocol = const_cast<QProtocolStateMachine *>(protocol);
+}
+
+/*!
+    References the interfaces specifying the set of operations and receptions that the classifier offers to its environment via this port, and which it will handle either directly or by forwarding it to a part of its internal structure. This association is derived according to the value of isConjugated. If isConjugated is false, provided is derived as the union of the sets of interfaces realized by the type of the port and its supertypes, or directly from the type of the port if the port is typed by an interface. If isConjugated is true, it is derived as the union of the sets of interfaces used by the type of the port and its supertypes.
+ */
+const QSet<QInterface *> *QPort::provided() const
+{
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -110,28 +149,25 @@ void QPort::setProtocol(const QProtocolStateMachine *protocol)
  */
 const QSet<QPort *> *QPort::redefinedPorts() const
 {
+    return d_ptr->redefinedPorts;
 }
 
 void QPort::addRedefinedPort(const QPort *redefinedPort)
 {
+    d_ptr->redefinedPorts->insert(const_cast<QPort *>(redefinedPort));
 }
 
 void QPort::removeRedefinedPort(const QPort *redefinedPort)
 {
+    d_ptr->redefinedPorts->remove(const_cast<QPort *>(redefinedPort));
 }
 
 /*!
-    Missing derivation for Port::/provided : Interface
- */
-const QSet<QInterface *> *QPort::provided() const
-{
-}
-
-/*!
-    Missing derivation for Port::/required : Interface
+    References the interfaces specifying the set of operations and receptions that the classifier expects its environment to handle via this port. This association is derived according to the value of isConjugated. If isConjugated is false, required is derived as the union of the sets of interfaces used by the type of the port and its supertypes. If isConjugated is true, it is derived as the union of the sets of interfaces realized by the type of the port and its supertypes, or directly from the type of the port if the port is typed by an interface.
  */
 const QSet<QInterface *> *QPort::required() const
 {
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 #include "moc_qport.cpp"

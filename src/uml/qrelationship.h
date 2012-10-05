@@ -59,14 +59,20 @@ class QRelationshipPrivate;
 
 class Q_UML_EXPORT QRelationship : public virtual QElement
 {
+    Q_DISABLE_COPY(QRelationship)
+    Q_DECLARE_PRIVATE(QRelationship)
+
 public:
     virtual ~QRelationship();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QElement *> *relatedElements() const;
 
 protected:
     explicit QRelationship();
+
+private:
+    QRelationshipPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

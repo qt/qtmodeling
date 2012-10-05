@@ -62,17 +62,19 @@ class Q_UML_EXPORT QActionInputPin : public QInputPin
     // From QActionInputPin
     Q_PROPERTY(QAction * fromAction READ fromAction WRITE setFromAction)
 
+    Q_DISABLE_COPY(QActionInputPin)
+    Q_DECLARE_PRIVATE(QActionInputPin)
+
 public:
     explicit QActionInputPin(QObject *parent = 0);
     virtual ~QActionInputPin();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QAction *fromAction() const;
     void setFromAction(const QAction *fromAction);
 
 private:
-    Q_DISABLE_COPY(QActionInputPin)
-    Q_DECLARE_PRIVATE(QActionInputPin)
+    QActionInputPinPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

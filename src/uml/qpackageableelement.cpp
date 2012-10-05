@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qpackageableelement.h"
-//#include "qpackageableelement_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QPackageableElementPrivate
+{
+public:
+    explicit QPackageableElementPrivate();
+    virtual ~QPackageableElementPrivate();
+
+    QtUml::VisibilityKind visibility;
+};
+
+QPackageableElementPrivate::QPackageableElementPrivate()
+{
+}
+
+QPackageableElementPrivate::~QPackageableElementPrivate()
+{
+}
 
 /*!
     \class QPackageableElement
@@ -53,11 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QPackageableElement::QPackageableElement()
+    : d_ptr(new QPackageableElementPrivate)
 {
 }
 
 QPackageableElement::~QPackageableElement()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,10 +83,12 @@ QPackageableElement::~QPackageableElement()
  */
 QtUml::VisibilityKind QPackageableElement::visibility() const
 {
+    return d_ptr->visibility;
 }
 
 void QPackageableElement::setVisibility(QtUml::VisibilityKind visibility)
 {
+    d_ptr->visibility = visibility;
 }
 
 QT_END_NAMESPACE_QTUML

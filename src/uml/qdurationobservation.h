@@ -47,6 +47,9 @@
 #include <QtCore/QObject>
 #include <QtUml/QObservation>
 
+// Qt includes
+#include <QtCore/QSet>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -80,26 +83,28 @@ class Q_UML_EXPORT QDurationObservation : public QObject, public QObservation
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // From QDurationObservation
-    Q_PROPERTY(bool firstEvent READ firstEvent)
-    Q_PROPERTY(QNamedElement * event READ event)
+    Q_PROPERTY(const QSet<bool> * firstEvents READ firstEvents)
+    Q_PROPERTY(const QSet<QNamedElement *> * events READ events)
+
+    Q_DISABLE_COPY(QDurationObservation)
+    Q_DECLARE_PRIVATE(QDurationObservation)
 
 public:
     explicit QDurationObservation(QObject *parent = 0);
     virtual ~QDurationObservation();
 
-    // Attributes (except those derived && !derivedUnion)
-    bool firstEvent() const;
+    // Attributes
+    const QSet<bool> *firstEvents() const;
     void addFirstEvent(bool firstEvent);
     void removeFirstEvent(bool firstEvent);
 
-    // Association-ends (except those derived && !derivedUnion)
-    QNamedElement *event() const;
+    // Association-ends
+    const QSet<QNamedElement *> *events() const;
     void addEvent(const QNamedElement *event);
     void removeEvent(const QNamedElement *event);
 
 private:
-    Q_DISABLE_COPY(QDurationObservation)
-    Q_DECLARE_PRIVATE(QDurationObservation)
+    QDurationObservationPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -40,9 +40,38 @@
 ****************************************************************************/
 
 #include "qclass.h"
-//#include "qclass_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QClassPrivate
+{
+public:
+    explicit QClassPrivate();
+    virtual ~QClassPrivate();
+
+    bool isAbstract;
+    bool isActive;
+    QList<QClassifier *> *nestedClassifiers;
+    QList<QProperty *> *ownedAttributes;
+    QList<QOperation *> *ownedOperations;
+    QSet<QReception *> *ownedReceptions;
+};
+
+QClassPrivate::QClassPrivate() :
+    nestedClassifiers(new QList<QClassifier *>),
+    ownedAttributes(new QList<QProperty *>),
+    ownedOperations(new QList<QOperation *>),
+    ownedReceptions(new QSet<QReception *>)
+{
+}
+
+QClassPrivate::~QClassPrivate()
+{
+    delete nestedClassifiers;
+    delete ownedAttributes;
+    delete ownedOperations;
+    delete ownedReceptions;
+}
 
 /*!
     \class QClass
@@ -53,12 +82,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QClass::QClass(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QClassPrivate)
 {
 }
 
 QClass::~QClass()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +96,12 @@ QClass::~QClass()
  */
 bool QClass::isAbstract() const
 {
+    return d_ptr->isAbstract;
 }
 
 void QClass::setAbstract(bool isAbstract)
 {
+    d_ptr->isAbstract = isAbstract;
 }
 
 /*!
@@ -77,10 +109,20 @@ void QClass::setAbstract(bool isAbstract)
  */
 bool QClass::isActive() const
 {
+    return d_ptr->isActive;
 }
 
 void QClass::setActive(bool isActive)
 {
+    d_ptr->isActive = isActive;
+}
+
+/*!
+    References the Extensions that specify additional properties of the metaclass. The property is derived from the extensions whose memberEnds are typed by the Class.
+ */
+const QSet<QExtension *> *QClass::extensions() const
+{
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -88,14 +130,17 @@ void QClass::setActive(bool isActive)
  */
 const QList<QClassifier *> *QClass::nestedClassifiers() const
 {
+    return d_ptr->nestedClassifiers;
 }
 
 void QClass::addNestedClassifier(const QClassifier *nestedClassifier)
 {
+    d_ptr->nestedClassifiers->append(const_cast<QClassifier *>(nestedClassifier));
 }
 
 void QClass::removeNestedClassifier(const QClassifier *nestedClassifier)
 {
+    d_ptr->nestedClassifiers->removeAll(const_cast<QClassifier *>(nestedClassifier));
 }
 
 /*!
@@ -103,14 +148,17 @@ void QClass::removeNestedClassifier(const QClassifier *nestedClassifier)
  */
 const QList<QProperty *> *QClass::ownedAttributes() const
 {
+    return d_ptr->ownedAttributes;
 }
 
 void QClass::addOwnedAttribute(const QProperty *ownedAttribute)
 {
+    d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
 }
 
 void QClass::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
+    d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
 }
 
 /*!
@@ -118,14 +166,17 @@ void QClass::removeOwnedAttribute(const QProperty *ownedAttribute)
  */
 const QList<QOperation *> *QClass::ownedOperations() const
 {
+    return d_ptr->ownedOperations;
 }
 
 void QClass::addOwnedOperation(const QOperation *ownedOperation)
 {
+    d_ptr->ownedOperations->append(const_cast<QOperation *>(ownedOperation));
 }
 
 void QClass::removeOwnedOperation(const QOperation *ownedOperation)
 {
+    d_ptr->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation));
 }
 
 /*!
@@ -133,21 +184,35 @@ void QClass::removeOwnedOperation(const QOperation *ownedOperation)
  */
 const QSet<QReception *> *QClass::ownedReceptions() const
 {
+    return d_ptr->ownedReceptions;
 }
 
 void QClass::addOwnedReception(const QReception *ownedReception)
 {
+    d_ptr->ownedReceptions->insert(const_cast<QReception *>(ownedReception));
 }
 
 void QClass::removeOwnedReception(const QReception *ownedReception)
 {
+    d_ptr->ownedReceptions->remove(const_cast<QReception *>(ownedReception));
 }
 
 /*!
-    Missing derivation for Class::/extension : Extension
+    This gives the superclasses of a class.
  */
-const QSet<QExtension *> *QClass::extensions() const
+const QSet<QClass *> *QClass::superClasses() const
 {
+    qWarning("To be implemented (this is a derived associationend)");
+}
+
+void QClass::addSuperClass(const QClass *superClass)
+{
+    qWarning("To be implemented (this is a derived associationend)");
+}
+
+void QClass::removeSuperClass(const QClass *superClass)
+{
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -155,13 +220,7 @@ const QSet<QExtension *> *QClass::extensions() const
  */
 const QSet<QNamedElement *> *QClass::inherit(const QSet<QNamedElement *> *inhs) const
 {
-}
-
-/*!
-    Missing derivation for Class::/superClass : Class
- */
-const QSet<QClass *> *QClass::superClasses() const
-{
+    qWarning("To be implemented");
 }
 
 #include "moc_qclass.cpp"

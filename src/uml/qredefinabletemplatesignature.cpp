@@ -40,9 +40,28 @@
 ****************************************************************************/
 
 #include "qredefinabletemplatesignature.h"
-//#include "qredefinabletemplatesignature_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QRedefinableTemplateSignaturePrivate
+{
+public:
+    explicit QRedefinableTemplateSignaturePrivate();
+    virtual ~QRedefinableTemplateSignaturePrivate();
+
+    QClassifier *classifier;
+    QSet<QRedefinableTemplateSignature *> *extendedSignatures;
+};
+
+QRedefinableTemplateSignaturePrivate::QRedefinableTemplateSignaturePrivate() :
+    extendedSignatures(new QSet<QRedefinableTemplateSignature *>)
+{
+}
+
+QRedefinableTemplateSignaturePrivate::~QRedefinableTemplateSignaturePrivate()
+{
+    delete extendedSignatures;
+}
 
 /*!
     \class QRedefinableTemplateSignature
@@ -53,12 +72,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QRedefinableTemplateSignature::QRedefinableTemplateSignature(QObject *parent)
-    : QTemplateSignature(parent)
+    : QTemplateSignature(parent), d_ptr(new QRedefinableTemplateSignaturePrivate)
 {
 }
 
 QRedefinableTemplateSignature::~QRedefinableTemplateSignature()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +86,12 @@ QRedefinableTemplateSignature::~QRedefinableTemplateSignature()
  */
 QClassifier *QRedefinableTemplateSignature::classifier() const
 {
+    return d_ptr->classifier;
 }
 
 void QRedefinableTemplateSignature::setClassifier(const QClassifier *classifier)
 {
+    d_ptr->classifier = const_cast<QClassifier *>(classifier);
 }
 
 /*!
@@ -77,21 +99,25 @@ void QRedefinableTemplateSignature::setClassifier(const QClassifier *classifier)
  */
 const QSet<QRedefinableTemplateSignature *> *QRedefinableTemplateSignature::extendedSignatures() const
 {
+    return d_ptr->extendedSignatures;
 }
 
 void QRedefinableTemplateSignature::addExtendedSignature(const QRedefinableTemplateSignature *extendedSignature)
 {
+    d_ptr->extendedSignatures->insert(const_cast<QRedefinableTemplateSignature *>(extendedSignature));
 }
 
 void QRedefinableTemplateSignature::removeExtendedSignature(const QRedefinableTemplateSignature *extendedSignature)
 {
+    d_ptr->extendedSignatures->remove(const_cast<QRedefinableTemplateSignature *>(extendedSignature));
 }
 
 /*!
-    Missing derivation for RedefinableTemplateSignature::/inheritedParameter : TemplateParameter
+    The formal template parameters of the extendedSignature.
  */
 const QSet<QTemplateParameter *> *QRedefinableTemplateSignature::inheritedParameters() const
 {
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -99,6 +125,7 @@ const QSet<QTemplateParameter *> *QRedefinableTemplateSignature::inheritedParame
  */
 bool QRedefinableTemplateSignature::isConsistentWith(const QRedefinableElement *redefinee) const
 {
+    qWarning("To be implemented");
 }
 
 #include "moc_qredefinabletemplatesignature.cpp"

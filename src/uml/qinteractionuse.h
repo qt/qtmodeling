@@ -93,11 +93,14 @@ class Q_UML_EXPORT QInteractionUse : public QObject, public QInteractionFragment
     Q_PROPERTY(QValueSpecification * returnValue READ returnValue WRITE setReturnValue)
     Q_PROPERTY(QProperty * returnValueRecipient READ returnValueRecipient WRITE setReturnValueRecipient)
 
+    Q_DISABLE_COPY(QInteractionUse)
+    Q_DECLARE_PRIVATE(QInteractionUse)
+
 public:
     explicit QInteractionUse(QObject *parent = 0);
     virtual ~QInteractionUse();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QGate *> *actualGates() const;
     void addActualGate(const QGate *actualGate);
     void removeActualGate(const QGate *actualGate);
@@ -112,8 +115,7 @@ public:
     void setReturnValueRecipient(const QProperty *returnValueRecipient);
 
 private:
-    Q_DISABLE_COPY(QInteractionUse)
-    Q_DECLARE_PRIVATE(QInteractionUse)
+    QInteractionUsePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

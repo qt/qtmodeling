@@ -40,9 +40,27 @@
 ****************************************************************************/
 
 #include "qstereotype.h"
-//#include "qstereotype_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QStereotypePrivate
+{
+public:
+    explicit QStereotypePrivate();
+    virtual ~QStereotypePrivate();
+
+    QSet<QImage *> *icons;
+};
+
+QStereotypePrivate::QStereotypePrivate() :
+    icons(new QSet<QImage *>)
+{
+}
+
+QStereotypePrivate::~QStereotypePrivate()
+{
+    delete icons;
+}
 
 /*!
     \class QStereotype
@@ -53,12 +71,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QStereotype::QStereotype(QObject *parent)
-    : QClass(parent)
+    : QClass(parent), d_ptr(new QStereotypePrivate)
 {
 }
 
 QStereotype::~QStereotype()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +85,25 @@ QStereotype::~QStereotype()
  */
 const QSet<QImage *> *QStereotype::icons() const
 {
+    return d_ptr->icons;
 }
 
 void QStereotype::addIcon(const QImage *icon)
 {
+    d_ptr->icons->insert(const_cast<QImage *>(icon));
 }
 
 void QStereotype::removeIcon(const QImage *icon)
 {
+    d_ptr->icons->remove(const_cast<QImage *>(icon));
+}
+
+/*!
+    The profile that directly or indirectly contains this stereotype.
+ */
+QProfile *QStereotype::profile() const
+{
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -81,13 +111,7 @@ void QStereotype::removeIcon(const QImage *icon)
  */
 QProfile *QStereotype::containingProfile() const
 {
-}
-
-/*!
-    A stereotype must be contained, directly or indirectly, in a profile.
- */
-QProfile *QStereotype::profile() const
-{
+    qWarning("To be implemented");
 }
 
 #include "moc_qstereotype.cpp"

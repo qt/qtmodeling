@@ -67,11 +67,14 @@ class Q_UML_EXPORT QProfile : public QPackage
     Q_PROPERTY(const QSet<QElementImport *> * metaclassReferences READ metaclassReferences)
     Q_PROPERTY(const QSet<QPackageImport *> * metamodelReferences READ metamodelReferences)
 
+    Q_DISABLE_COPY(QProfile)
+    Q_DECLARE_PRIVATE(QProfile)
+
 public:
     explicit QProfile(QObject *parent = 0);
     virtual ~QProfile();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QElementImport *> *metaclassReferences() const;
     void addMetaclassReference(const QElementImport *metaclassReference);
     void removeMetaclassReference(const QElementImport *metaclassReference);
@@ -80,8 +83,7 @@ public:
     void removeMetamodelReference(const QPackageImport *metamodelReference);
 
 private:
-    Q_DISABLE_COPY(QProfile)
-    Q_DECLARE_PRIVATE(QProfile)
+    QProfilePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

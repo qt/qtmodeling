@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qinitialnode.h"
-//#include "qinitialnode_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QInitialNodePrivate
+{
+public:
+    explicit QInitialNodePrivate();
+    virtual ~QInitialNodePrivate();
+
+};
+
+QInitialNodePrivate::QInitialNodePrivate()
+{
+}
+
+QInitialNodePrivate::~QInitialNodePrivate()
+{
+}
 
 /*!
     \class QInitialNode
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QInitialNode::QInitialNode(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QInitialNodePrivate)
 {
 }
 
 QInitialNode::~QInitialNode()
 {
+    delete d_ptr;
 }
 
 #include "moc_qinitialnode.cpp"

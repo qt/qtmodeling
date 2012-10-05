@@ -76,19 +76,21 @@ class Q_UML_EXPORT QPackageMerge : public QObject, public QDirectedRelationship
     Q_PROPERTY(QPackage * mergedPackage READ mergedPackage WRITE setMergedPackage)
     Q_PROPERTY(QPackage * receivingPackage READ receivingPackage WRITE setReceivingPackage)
 
+    Q_DISABLE_COPY(QPackageMerge)
+    Q_DECLARE_PRIVATE(QPackageMerge)
+
 public:
     explicit QPackageMerge(QObject *parent = 0);
     virtual ~QPackageMerge();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QPackage *mergedPackage() const;
     void setMergedPackage(const QPackage *mergedPackage);
     QPackage *receivingPackage() const;
     void setReceivingPackage(const QPackage *receivingPackage);
 
 private:
-    Q_DISABLE_COPY(QPackageMerge)
-    Q_DECLARE_PRIVATE(QPackageMerge)
+    QPackageMergePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

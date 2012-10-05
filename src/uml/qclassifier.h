@@ -72,24 +72,31 @@ class QFeature;
 
 class Q_UML_EXPORT QClassifier : public QNamespace, public QType, public QRedefinableElement, public QTemplateableElement
 {
+    Q_DISABLE_COPY(QClassifier)
+    Q_DECLARE_PRIVATE(QClassifier)
+
 public:
     virtual ~QClassifier();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isAbstract() const;
     void setAbstract(bool isAbstract);
     bool isFinalSpecialization() const;
     void setFinalSpecialization(bool isFinalSpecialization);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QProperty *> *attributes() const;
     const QSet<QCollaborationUse *> *collaborationUses() const;
     void addCollaborationUse(const QCollaborationUse *collaborationUse);
     void removeCollaborationUse(const QCollaborationUse *collaborationUse);
     const QSet<QFeature *> *features() const;
+    const QSet<QClassifier *> *generals() const;
+    void addGeneral(const QClassifier *general);
+    void removeGeneral(const QClassifier *general);
     const QSet<QGeneralization *> *generalizations() const;
     void addGeneralization(const QGeneralization *generalization);
     void removeGeneralization(const QGeneralization *generalization);
+    const QSet<QNamedElement *> *inheritedMembers() const;
     QRedefinableTemplateSignature *ownedTemplateSignature() const;
     void setOwnedTemplateSignature(const QRedefinableTemplateSignature *ownedTemplateSignature);
     const QSet<QUseCase *> *ownedUseCases() const;
@@ -112,21 +119,22 @@ public:
     void addUseCase(const QUseCase *useCase);
     void removeUseCase(const QUseCase *useCase);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     const QSet<QFeature *> *allFeatures() const;
     const QSet<QClassifier *> *allParents() const;
     bool conformsTo(const QClassifier *other) const;
-    const QSet<QClassifier *> *generals() const;
     bool hasVisibilityOf(const QNamedElement *n) const;
     const QSet<QNamedElement *> *inherit(const QSet<QNamedElement *> *inhs) const;
     const QSet<QNamedElement *> *inheritableMembers(const QClassifier *c) const;
-    const QSet<QNamedElement *> *inheritedMembers() const;
     bool isTemplate() const;
     bool maySpecializeType(const QClassifier *c) const;
     const QSet<QClassifier *> *parents() const;
 
 protected:
     explicit QClassifier();
+
+private:
+    QClassifierPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

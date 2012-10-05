@@ -40,9 +40,36 @@
 ****************************************************************************/
 
 #include "qusecase.h"
-//#include "qusecase_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QUseCasePrivate
+{
+public:
+    explicit QUseCasePrivate();
+    virtual ~QUseCasePrivate();
+
+    QSet<QExtend *> *extends;
+    QSet<QExtensionPoint *> *extensionPoints;
+    QSet<QInclude *> *includes;
+    QSet<QClassifier *> *subjects;
+};
+
+QUseCasePrivate::QUseCasePrivate() :
+    extends(new QSet<QExtend *>),
+    extensionPoints(new QSet<QExtensionPoint *>),
+    includes(new QSet<QInclude *>),
+    subjects(new QSet<QClassifier *>)
+{
+}
+
+QUseCasePrivate::~QUseCasePrivate()
+{
+    delete extends;
+    delete extensionPoints;
+    delete includes;
+    delete subjects;
+}
 
 /*!
     \class QUseCase
@@ -53,12 +80,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QUseCase::QUseCase(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QUseCasePrivate)
 {
 }
 
 QUseCase::~QUseCase()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +94,17 @@ QUseCase::~QUseCase()
  */
 const QSet<QExtend *> *QUseCase::extends() const
 {
+    return d_ptr->extends;
 }
 
 void QUseCase::addExtend(const QExtend *extend)
 {
+    d_ptr->extends->insert(const_cast<QExtend *>(extend));
 }
 
 void QUseCase::removeExtend(const QExtend *extend)
 {
+    d_ptr->extends->remove(const_cast<QExtend *>(extend));
 }
 
 /*!
@@ -81,14 +112,17 @@ void QUseCase::removeExtend(const QExtend *extend)
  */
 const QSet<QExtensionPoint *> *QUseCase::extensionPoints() const
 {
+    return d_ptr->extensionPoints;
 }
 
 void QUseCase::addExtensionPoint(const QExtensionPoint *extensionPoint)
 {
+    d_ptr->extensionPoints->insert(const_cast<QExtensionPoint *>(extensionPoint));
 }
 
 void QUseCase::removeExtensionPoint(const QExtensionPoint *extensionPoint)
 {
+    d_ptr->extensionPoints->remove(const_cast<QExtensionPoint *>(extensionPoint));
 }
 
 /*!
@@ -96,14 +130,17 @@ void QUseCase::removeExtensionPoint(const QExtensionPoint *extensionPoint)
  */
 const QSet<QInclude *> *QUseCase::includes() const
 {
+    return d_ptr->includes;
 }
 
 void QUseCase::addInclude(const QInclude *include)
 {
+    d_ptr->includes->insert(const_cast<QInclude *>(include));
 }
 
 void QUseCase::removeInclude(const QInclude *include)
 {
+    d_ptr->includes->remove(const_cast<QInclude *>(include));
 }
 
 /*!
@@ -111,14 +148,17 @@ void QUseCase::removeInclude(const QInclude *include)
  */
 const QSet<QClassifier *> *QUseCase::subjects() const
 {
+    return d_ptr->subjects;
 }
 
 void QUseCase::addSubject(const QClassifier *subject)
 {
+    d_ptr->subjects->insert(const_cast<QClassifier *>(subject));
 }
 
 void QUseCase::removeSubject(const QClassifier *subject)
 {
+    d_ptr->subjects->remove(const_cast<QClassifier *>(subject));
 }
 
 /*!
@@ -126,6 +166,7 @@ void QUseCase::removeSubject(const QClassifier *subject)
  */
 const QSet<QUseCase *> *QUseCase::allIncludedUseCases() const
 {
+    qWarning("To be implemented");
 }
 
 #include "moc_qusecase.cpp"

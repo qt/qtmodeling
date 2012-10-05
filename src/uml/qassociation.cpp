@@ -40,9 +40,34 @@
 ****************************************************************************/
 
 #include "qassociation.h"
-//#include "qassociation_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QAssociationPrivate
+{
+public:
+    explicit QAssociationPrivate();
+    virtual ~QAssociationPrivate();
+
+    bool isDerived;
+    QList<QProperty *> *memberEnds;
+    QSet<QProperty *> *navigableOwnedEnds;
+    QList<QProperty *> *ownedEnds;
+};
+
+QAssociationPrivate::QAssociationPrivate() :
+    memberEnds(new QList<QProperty *>),
+    navigableOwnedEnds(new QSet<QProperty *>),
+    ownedEnds(new QList<QProperty *>)
+{
+}
+
+QAssociationPrivate::~QAssociationPrivate()
+{
+    delete memberEnds;
+    delete navigableOwnedEnds;
+    delete ownedEnds;
+}
 
 /*!
     \class QAssociation
@@ -53,12 +78,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QAssociation::QAssociation(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QAssociationPrivate)
 {
 }
 
 QAssociation::~QAssociation()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +92,20 @@ QAssociation::~QAssociation()
  */
 bool QAssociation::isDerived() const
 {
+    return d_ptr->isDerived;
 }
 
 void QAssociation::setDerived(bool isDerived)
 {
+    d_ptr->isDerived = isDerived;
+}
+
+/*!
+    References the classifiers that are used as types of the ends of the association.
+ */
+const QList<QType *> *QAssociation::endTypes() const
+{
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -77,14 +113,17 @@ void QAssociation::setDerived(bool isDerived)
  */
 const QList<QProperty *> *QAssociation::memberEnds() const
 {
+    return d_ptr->memberEnds;
 }
 
 void QAssociation::addMemberEnd(const QProperty *memberEnd)
 {
+    d_ptr->memberEnds->append(const_cast<QProperty *>(memberEnd));
 }
 
 void QAssociation::removeMemberEnd(const QProperty *memberEnd)
 {
+    d_ptr->memberEnds->removeAll(const_cast<QProperty *>(memberEnd));
 }
 
 /*!
@@ -92,14 +131,17 @@ void QAssociation::removeMemberEnd(const QProperty *memberEnd)
  */
 const QSet<QProperty *> *QAssociation::navigableOwnedEnds() const
 {
+    return d_ptr->navigableOwnedEnds;
 }
 
 void QAssociation::addNavigableOwnedEnd(const QProperty *navigableOwnedEnd)
 {
+    d_ptr->navigableOwnedEnds->insert(const_cast<QProperty *>(navigableOwnedEnd));
 }
 
 void QAssociation::removeNavigableOwnedEnd(const QProperty *navigableOwnedEnd)
 {
+    d_ptr->navigableOwnedEnds->remove(const_cast<QProperty *>(navigableOwnedEnd));
 }
 
 /*!
@@ -107,21 +149,17 @@ void QAssociation::removeNavigableOwnedEnd(const QProperty *navigableOwnedEnd)
  */
 const QList<QProperty *> *QAssociation::ownedEnds() const
 {
+    return d_ptr->ownedEnds;
 }
 
 void QAssociation::addOwnedEnd(const QProperty *ownedEnd)
 {
+    d_ptr->ownedEnds->append(const_cast<QProperty *>(ownedEnd));
 }
 
 void QAssociation::removeOwnedEnd(const QProperty *ownedEnd)
 {
-}
-
-/*!
-    endType is derived from the types of the member ends.
- */
-const QList<QType *> *QAssociation::endTypes() const
-{
+    d_ptr->ownedEnds->removeAll(const_cast<QProperty *>(ownedEnd));
 }
 
 #include "moc_qassociation.cpp"

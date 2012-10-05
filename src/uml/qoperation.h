@@ -134,15 +134,22 @@ class Q_UML_EXPORT QOperation : public QObject, public QTemplateableElement, pub
     Q_PROPERTY(QOperationTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
     Q_PROPERTY(QType * type READ type)
 
+    Q_DISABLE_COPY(QOperation)
+    Q_DECLARE_PRIVATE(QOperation)
+
 public:
     explicit QOperation(QObject *parent = 0);
     virtual ~QOperation();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
+    bool isOrdered() const;
     bool isQuery() const;
     void setQuery(bool isQuery);
+    bool isUnique() const;
+    qint32 lower() const;
+    qint32 upper() const;
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QConstraint *bodyCondition() const;
     void setBodyCondition(const QConstraint *bodyCondition);
     QClass *class_() const;
@@ -168,19 +175,14 @@ public:
     void removeRedefinedOperation(const QOperation *redefinedOperation);
     QOperationTemplateParameter *templateParameter() const;
     void setTemplateParameter(const QOperationTemplateParameter *templateParameter);
-
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    bool isConsistentWith(const QRedefinableElement *redefinee) const;
-    bool isOrdered() const;
-    bool isUnique() const;
-    qint32 lower() const;
-    const QSet<QParameter *> *returnResult() const;
     QType *type() const;
-    qint32 upper() const;
+
+    // Operations
+    bool isConsistentWith(const QRedefinableElement *redefinee) const;
+    const QSet<QParameter *> *returnResult() const;
 
 private:
-    Q_DISABLE_COPY(QOperation)
-    Q_DECLARE_PRIVATE(QOperation)
+    QOperationPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

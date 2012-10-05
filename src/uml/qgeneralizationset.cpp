@@ -40,9 +40,30 @@
 ****************************************************************************/
 
 #include "qgeneralizationset.h"
-//#include "qgeneralizationset_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QGeneralizationSetPrivate
+{
+public:
+    explicit QGeneralizationSetPrivate();
+    virtual ~QGeneralizationSetPrivate();
+
+    bool isCovering;
+    bool isDisjoint;
+    QSet<QGeneralization *> *generalizations;
+    QClassifier *powertype;
+};
+
+QGeneralizationSetPrivate::QGeneralizationSetPrivate() :
+    generalizations(new QSet<QGeneralization *>)
+{
+}
+
+QGeneralizationSetPrivate::~QGeneralizationSetPrivate()
+{
+    delete generalizations;
+}
 
 /*!
     \class QGeneralizationSet
@@ -53,12 +74,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QGeneralizationSet::QGeneralizationSet(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QGeneralizationSetPrivate)
 {
 }
 
 QGeneralizationSet::~QGeneralizationSet()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +88,12 @@ QGeneralizationSet::~QGeneralizationSet()
  */
 bool QGeneralizationSet::isCovering() const
 {
+    return d_ptr->isCovering;
 }
 
 void QGeneralizationSet::setCovering(bool isCovering)
 {
+    d_ptr->isCovering = isCovering;
 }
 
 /*!
@@ -77,10 +101,12 @@ void QGeneralizationSet::setCovering(bool isCovering)
  */
 bool QGeneralizationSet::isDisjoint() const
 {
+    return d_ptr->isDisjoint;
 }
 
 void QGeneralizationSet::setDisjoint(bool isDisjoint)
 {
+    d_ptr->isDisjoint = isDisjoint;
 }
 
 /*!
@@ -88,14 +114,17 @@ void QGeneralizationSet::setDisjoint(bool isDisjoint)
  */
 const QSet<QGeneralization *> *QGeneralizationSet::generalizations() const
 {
+    return d_ptr->generalizations;
 }
 
 void QGeneralizationSet::addGeneralization(const QGeneralization *generalization)
 {
+    d_ptr->generalizations->insert(const_cast<QGeneralization *>(generalization));
 }
 
 void QGeneralizationSet::removeGeneralization(const QGeneralization *generalization)
 {
+    d_ptr->generalizations->remove(const_cast<QGeneralization *>(generalization));
 }
 
 /*!
@@ -103,10 +132,12 @@ void QGeneralizationSet::removeGeneralization(const QGeneralization *generalizat
  */
 QClassifier *QGeneralizationSet::powertype() const
 {
+    return d_ptr->powertype;
 }
 
 void QGeneralizationSet::setPowertype(const QClassifier *powertype)
 {
+    d_ptr->powertype = const_cast<QClassifier *>(powertype);
 }
 
 #include "moc_qgeneralizationset.cpp"

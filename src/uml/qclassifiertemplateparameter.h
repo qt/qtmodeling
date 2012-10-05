@@ -67,15 +67,18 @@ class Q_UML_EXPORT QClassifierTemplateParameter : public QTemplateParameter
     Q_PROPERTY(const QSet<QClassifier *> * constrainingClassifiers READ constrainingClassifiers)
     Q_PROPERTY(QClassifier * parameteredElement READ parameteredElement WRITE setParameteredElement)
 
+    Q_DISABLE_COPY(QClassifierTemplateParameter)
+    Q_DECLARE_PRIVATE(QClassifierTemplateParameter)
+
 public:
     explicit QClassifierTemplateParameter(QObject *parent = 0);
     virtual ~QClassifierTemplateParameter();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool allowSubstitutable() const;
     void setAllowSubstitutable(bool allowSubstitutable);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QClassifier *> *constrainingClassifiers() const;
     void addConstrainingClassifier(const QClassifier *constrainingClassifier);
     void removeConstrainingClassifier(const QClassifier *constrainingClassifier);
@@ -83,8 +86,7 @@ public:
     void setParameteredElement(const QClassifier *parameteredElement);
 
 private:
-    Q_DISABLE_COPY(QClassifierTemplateParameter)
-    Q_DECLARE_PRIVATE(QClassifierTemplateParameter)
+    QClassifierTemplateParameterPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

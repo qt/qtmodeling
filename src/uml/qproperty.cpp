@@ -40,9 +40,45 @@
 ****************************************************************************/
 
 #include "qproperty.h"
-//#include "qproperty_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QPropertyPrivate
+{
+public:
+    explicit QPropertyPrivate();
+    virtual ~QPropertyPrivate();
+
+    QtUml::AggregationKind aggregation;
+    bool isDerived;
+    bool isDerivedUnion;
+    bool isID;
+    bool isReadOnly;
+    QAssociation *association;
+    QProperty *associationEnd;
+    QClass *class_;
+    QDataType *datatype;
+    QValueSpecification *defaultValue;
+    QInterface *interface;
+    QAssociation *owningAssociation;
+    QList<QProperty *> *qualifiers;
+    QSet<QProperty *> *redefinedProperties;
+    QSet<QProperty *> *subsettedProperties;
+};
+
+QPropertyPrivate::QPropertyPrivate() :
+    qualifiers(new QList<QProperty *>),
+    redefinedProperties(new QSet<QProperty *>),
+    subsettedProperties(new QSet<QProperty *>)
+{
+}
+
+QPropertyPrivate::~QPropertyPrivate()
+{
+    delete qualifiers;
+    delete redefinedProperties;
+    delete subsettedProperties;
+}
 
 /*!
     \class QProperty
@@ -53,12 +89,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QProperty::QProperty(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QPropertyPrivate)
 {
 }
 
 QProperty::~QProperty()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +103,38 @@ QProperty::~QProperty()
  */
 QtUml::AggregationKind QProperty::aggregation() const
 {
+    return d_ptr->aggregation;
 }
 
 void QProperty::setAggregation(QtUml::AggregationKind aggregation)
 {
+    d_ptr->aggregation = aggregation;
+}
+
+/*!
+    Specifies a String that represents a value to be used when no argument is supplied for the Property.A String that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.
+ */
+QString QProperty::default_() const
+{
+    qWarning("To be implemented (this is a derived attribute)");
+}
+
+void QProperty::setDefault_(QString default_)
+{
+    qWarning("To be implemented (this is a derived attribute)");
+}
+
+/*!
+    If isComposite is true, the object containing the attribute is a container for the object or value contained in the attribute.This is a derived value, indicating whether the aggregation of the Property is composite or not.
+ */
+bool QProperty::isComposite() const
+{
+    qWarning("To be implemented (this is a derived attribute)");
+}
+
+void QProperty::setComposite(bool isComposite)
+{
+    qWarning("To be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -77,10 +142,12 @@ void QProperty::setAggregation(QtUml::AggregationKind aggregation)
  */
 bool QProperty::isDerived() const
 {
+    return d_ptr->isDerived;
 }
 
 void QProperty::setDerived(bool isDerived)
 {
+    d_ptr->isDerived = isDerived;
 }
 
 /*!
@@ -88,10 +155,12 @@ void QProperty::setDerived(bool isDerived)
  */
 bool QProperty::isDerivedUnion() const
 {
+    return d_ptr->isDerivedUnion;
 }
 
 void QProperty::setDerivedUnion(bool isDerivedUnion)
 {
+    d_ptr->isDerivedUnion = isDerivedUnion;
 }
 
 /*!
@@ -99,10 +168,12 @@ void QProperty::setDerivedUnion(bool isDerivedUnion)
  */
 bool QProperty::isID() const
 {
+    return d_ptr->isID;
 }
 
 void QProperty::setID(bool isID)
 {
+    d_ptr->isID = isID;
 }
 
 /*!
@@ -110,10 +181,12 @@ void QProperty::setID(bool isID)
  */
 bool QProperty::isReadOnly() const
 {
+    return d_ptr->isReadOnly;
 }
 
 void QProperty::setReadOnly(bool isReadOnly)
 {
+    d_ptr->isReadOnly = isReadOnly;
 }
 
 /*!
@@ -121,10 +194,12 @@ void QProperty::setReadOnly(bool isReadOnly)
  */
 QAssociation *QProperty::association() const
 {
+    return d_ptr->association;
 }
 
 void QProperty::setAssociation(const QAssociation *association)
 {
+    d_ptr->association = const_cast<QAssociation *>(association);
 }
 
 /*!
@@ -132,10 +207,12 @@ void QProperty::setAssociation(const QAssociation *association)
  */
 QProperty *QProperty::associationEnd() const
 {
+    return d_ptr->associationEnd;
 }
 
 void QProperty::setAssociationEnd(const QProperty *associationEnd)
 {
+    d_ptr->associationEnd = const_cast<QProperty *>(associationEnd);
 }
 
 /*!
@@ -143,10 +220,12 @@ void QProperty::setAssociationEnd(const QProperty *associationEnd)
  */
 QClass *QProperty::class_() const
 {
+    return d_ptr->class_;
 }
 
 void QProperty::setClass_(const QClass *class_)
 {
+    d_ptr->class_ = const_cast<QClass *>(class_);
 }
 
 /*!
@@ -154,10 +233,12 @@ void QProperty::setClass_(const QClass *class_)
  */
 QDataType *QProperty::datatype() const
 {
+    return d_ptr->datatype;
 }
 
 void QProperty::setDatatype(const QDataType *datatype)
 {
+    d_ptr->datatype = const_cast<QDataType *>(datatype);
 }
 
 /*!
@@ -165,10 +246,12 @@ void QProperty::setDatatype(const QDataType *datatype)
  */
 QValueSpecification *QProperty::defaultValue() const
 {
+    return d_ptr->defaultValue;
 }
 
 void QProperty::setDefaultValue(const QValueSpecification *defaultValue)
 {
+    d_ptr->defaultValue = const_cast<QValueSpecification *>(defaultValue);
 }
 
 /*!
@@ -176,10 +259,25 @@ void QProperty::setDefaultValue(const QValueSpecification *defaultValue)
  */
 QInterface *QProperty::interface() const
 {
+    return d_ptr->interface;
 }
 
 void QProperty::setInterface(const QInterface *interface)
 {
+    d_ptr->interface = const_cast<QInterface *>(interface);
+}
+
+/*!
+    In the case where the property is one navigable end of a binary association with both ends navigable, this gives the other end.
+ */
+QProperty *QProperty::opposite() const
+{
+    qWarning("To be implemented (this is a derived associationend)");
+}
+
+void QProperty::setOpposite(const QProperty *opposite)
+{
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -187,10 +285,12 @@ void QProperty::setInterface(const QInterface *interface)
  */
 QAssociation *QProperty::owningAssociation() const
 {
+    return d_ptr->owningAssociation;
 }
 
 void QProperty::setOwningAssociation(const QAssociation *owningAssociation)
 {
+    d_ptr->owningAssociation = const_cast<QAssociation *>(owningAssociation);
 }
 
 /*!
@@ -198,14 +298,17 @@ void QProperty::setOwningAssociation(const QAssociation *owningAssociation)
  */
 const QList<QProperty *> *QProperty::qualifiers() const
 {
+    return d_ptr->qualifiers;
 }
 
 void QProperty::addQualifier(const QProperty *qualifier)
 {
+    d_ptr->qualifiers->append(const_cast<QProperty *>(qualifier));
 }
 
 void QProperty::removeQualifier(const QProperty *qualifier)
 {
+    d_ptr->qualifiers->removeAll(const_cast<QProperty *>(qualifier));
 }
 
 /*!
@@ -213,14 +316,17 @@ void QProperty::removeQualifier(const QProperty *qualifier)
  */
 const QSet<QProperty *> *QProperty::redefinedProperties() const
 {
+    return d_ptr->redefinedProperties;
 }
 
 void QProperty::addRedefinedProperty(const QProperty *redefinedProperty)
 {
+    d_ptr->redefinedProperties->insert(const_cast<QProperty *>(redefinedProperty));
 }
 
 void QProperty::removeRedefinedProperty(const QProperty *redefinedProperty)
 {
+    d_ptr->redefinedProperties->remove(const_cast<QProperty *>(redefinedProperty));
 }
 
 /*!
@@ -228,21 +334,17 @@ void QProperty::removeRedefinedProperty(const QProperty *redefinedProperty)
  */
 const QSet<QProperty *> *QProperty::subsettedProperties() const
 {
+    return d_ptr->subsettedProperties;
 }
 
 void QProperty::addSubsettedProperty(const QProperty *subsettedProperty)
 {
+    d_ptr->subsettedProperties->insert(const_cast<QProperty *>(subsettedProperty));
 }
 
 void QProperty::removeSubsettedProperty(const QProperty *subsettedProperty)
 {
-}
-
-/*!
-    Missing derivation for Property::/default : String
- */
-QString QProperty::default_() const
-{
+    d_ptr->subsettedProperties->remove(const_cast<QProperty *>(subsettedProperty));
 }
 
 /*!
@@ -250,6 +352,7 @@ QString QProperty::default_() const
  */
 bool QProperty::isAttribute(const QProperty *p) const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -257,13 +360,7 @@ bool QProperty::isAttribute(const QProperty *p) const
  */
 bool QProperty::isCompatibleWith(const QParameterableElement *p) const
 {
-}
-
-/*!
-    The value of isComposite is true only if aggregation is composite.
- */
-bool QProperty::isComposite() const
-{
+    qWarning("To be implemented");
 }
 
 /*!
@@ -271,6 +368,7 @@ bool QProperty::isComposite() const
  */
 bool QProperty::isConsistentWith(const QRedefinableElement *redefinee) const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -278,13 +376,7 @@ bool QProperty::isConsistentWith(const QRedefinableElement *redefinee) const
  */
 bool QProperty::isNavigable() const
 {
-}
-
-/*!
-    If this property is owned by a class, associated with a binary association, and the other end of the association is also owned by a class, then opposite gives the other end.
- */
-QProperty *QProperty::opposite() const
-{
+    qWarning("To be implemented");
 }
 
 /*!
@@ -292,6 +384,7 @@ QProperty *QProperty::opposite() const
  */
 const QSet<QType *> *QProperty::subsettingContext() const
 {
+    qWarning("To be implemented");
 }
 
 #include "moc_qproperty.cpp"

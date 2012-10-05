@@ -119,13 +119,15 @@ class Q_UML_EXPORT QActor : public QObject, public QBehavioredClassifier
     Q_PROPERTY(const QSet<QInterfaceRealization *> * interfaceRealizations READ interfaceRealizations)
     Q_PROPERTY(const QSet<QBehavior *> * ownedBehaviors READ ownedBehaviors)
 
+    Q_DISABLE_COPY(QActor)
+    Q_DECLARE_PRIVATE(QActor)
+
 public:
     explicit QActor(QObject *parent = 0);
     virtual ~QActor();
 
 private:
-    Q_DISABLE_COPY(QActor)
-    Q_DECLARE_PRIVATE(QActor)
+    QActorPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

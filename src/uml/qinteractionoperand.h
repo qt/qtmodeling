@@ -95,11 +95,14 @@ class Q_UML_EXPORT QInteractionOperand : public QObject, public QInteractionFrag
     Q_PROPERTY(const QList<QInteractionFragment *> * fragments READ fragments)
     Q_PROPERTY(QInteractionConstraint * guard READ guard WRITE setGuard)
 
+    Q_DISABLE_COPY(QInteractionOperand)
+    Q_DECLARE_PRIVATE(QInteractionOperand)
+
 public:
     explicit QInteractionOperand(QObject *parent = 0);
     virtual ~QInteractionOperand();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QList<QInteractionFragment *> *fragments() const;
     void addFragment(const QInteractionFragment *fragment);
     void removeFragment(const QInteractionFragment *fragment);
@@ -107,8 +110,7 @@ public:
     void setGuard(const QInteractionConstraint *guard);
 
 private:
-    Q_DISABLE_COPY(QInteractionOperand)
-    Q_DECLARE_PRIVATE(QInteractionOperand)
+    QInteractionOperandPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

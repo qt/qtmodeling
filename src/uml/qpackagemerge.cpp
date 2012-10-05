@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qpackagemerge.h"
-//#include "qpackagemerge_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QPackageMergePrivate
+{
+public:
+    explicit QPackageMergePrivate();
+    virtual ~QPackageMergePrivate();
+
+    QPackage *mergedPackage;
+    QPackage *receivingPackage;
+};
+
+QPackageMergePrivate::QPackageMergePrivate()
+{
+}
+
+QPackageMergePrivate::~QPackageMergePrivate()
+{
+}
 
 /*!
     \class QPackageMerge
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QPackageMerge::QPackageMerge(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QPackageMergePrivate)
 {
 }
 
 QPackageMerge::~QPackageMerge()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QPackageMerge::~QPackageMerge()
  */
 QPackage *QPackageMerge::mergedPackage() const
 {
+    return d_ptr->mergedPackage;
 }
 
 void QPackageMerge::setMergedPackage(const QPackage *mergedPackage)
 {
+    d_ptr->mergedPackage = const_cast<QPackage *>(mergedPackage);
 }
 
 /*!
@@ -77,10 +97,12 @@ void QPackageMerge::setMergedPackage(const QPackage *mergedPackage)
  */
 QPackage *QPackageMerge::receivingPackage() const
 {
+    return d_ptr->receivingPackage;
 }
 
 void QPackageMerge::setReceivingPackage(const QPackage *receivingPackage)
 {
+    d_ptr->receivingPackage = const_cast<QPackage *>(receivingPackage);
 }
 
 #include "moc_qpackagemerge.cpp"

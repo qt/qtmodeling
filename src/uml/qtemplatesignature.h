@@ -74,11 +74,14 @@ class Q_UML_EXPORT QTemplateSignature : public QObject, public virtual QElement
     Q_PROPERTY(const QList<QTemplateParameter *> * parameters READ parameters)
     Q_PROPERTY(QTemplateableElement * template_ READ template_ WRITE setTemplate_)
 
+    Q_DISABLE_COPY(QTemplateSignature)
+    Q_DECLARE_PRIVATE(QTemplateSignature)
+
 public:
     explicit QTemplateSignature(QObject *parent = 0);
     virtual ~QTemplateSignature();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QList<QTemplateParameter *> *ownedParameters() const;
     void addOwnedParameter(const QTemplateParameter *ownedParameter);
     void removeOwnedParameter(const QTemplateParameter *ownedParameter);
@@ -89,8 +92,7 @@ public:
     void setTemplate_(const QTemplateableElement *template_);
 
 private:
-    Q_DISABLE_COPY(QTemplateSignature)
-    Q_DECLARE_PRIVATE(QTemplateSignature)
+    QTemplateSignaturePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -64,13 +64,17 @@ class QPackageableElement;
 
 class Q_UML_EXPORT QNamespace : public virtual QNamedElement
 {
+    Q_DISABLE_COPY(QNamespace)
+    Q_DECLARE_PRIVATE(QNamespace)
+
 public:
     virtual ~QNamespace();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QElementImport *> *elementImports() const;
     void addElementImport(const QElementImport *elementImport);
     void removeElementImport(const QElementImport *elementImport);
+    const QSet<QPackageableElement *> *importedMembers() const;
     const QSet<QNamedElement *> *members() const;
     const QSet<QNamedElement *> *ownedMembers() const;
     const QSet<QConstraint *> *ownedRules() const;
@@ -80,15 +84,17 @@ public:
     void addPackageImport(const QPackageImport *packageImport);
     void removePackageImport(const QPackageImport *packageImport);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     const QSet<QPackageableElement *> *excludeCollisions(const QSet<QPackageableElement *> *imps) const;
     const QSet<QString> *getNamesOfMember(const QNamedElement *element) const;
     const QSet<QPackageableElement *> *importMembers(const QSet<QPackageableElement *> *imps) const;
-    const QSet<QPackageableElement *> *importedMembers() const;
     bool membersAreDistinguishable() const;
 
 protected:
     explicit QNamespace();
+
+private:
+    QNamespacePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

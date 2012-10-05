@@ -89,17 +89,20 @@ class Q_UML_EXPORT QGeneralizationSet : public QObject, public QPackageableEleme
     Q_PROPERTY(const QSet<QGeneralization *> * generalizations READ generalizations)
     Q_PROPERTY(QClassifier * powertype READ powertype WRITE setPowertype)
 
+    Q_DISABLE_COPY(QGeneralizationSet)
+    Q_DECLARE_PRIVATE(QGeneralizationSet)
+
 public:
     explicit QGeneralizationSet(QObject *parent = 0);
     virtual ~QGeneralizationSet();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isCovering() const;
     void setCovering(bool isCovering);
     bool isDisjoint() const;
     void setDisjoint(bool isDisjoint);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QGeneralization *> *generalizations() const;
     void addGeneralization(const QGeneralization *generalization);
     void removeGeneralization(const QGeneralization *generalization);
@@ -107,8 +110,7 @@ public:
     void setPowertype(const QClassifier *powertype);
 
 private:
-    Q_DISABLE_COPY(QGeneralizationSet)
-    Q_DECLARE_PRIVATE(QGeneralizationSet)
+    QGeneralizationSetPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

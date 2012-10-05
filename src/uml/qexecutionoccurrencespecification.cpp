@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qexecutionoccurrencespecification.h"
-//#include "qexecutionoccurrencespecification_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QExecutionOccurrenceSpecificationPrivate
+{
+public:
+    explicit QExecutionOccurrenceSpecificationPrivate();
+    virtual ~QExecutionOccurrenceSpecificationPrivate();
+
+    QExecutionSpecification *execution;
+};
+
+QExecutionOccurrenceSpecificationPrivate::QExecutionOccurrenceSpecificationPrivate()
+{
+}
+
+QExecutionOccurrenceSpecificationPrivate::~QExecutionOccurrenceSpecificationPrivate()
+{
+}
 
 /*!
     \class QExecutionOccurrenceSpecification
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QExecutionOccurrenceSpecification::QExecutionOccurrenceSpecification(QObject *parent)
-    : QOccurrenceSpecification(parent)
+    : QOccurrenceSpecification(parent), d_ptr(new QExecutionOccurrenceSpecificationPrivate)
 {
 }
 
 QExecutionOccurrenceSpecification::~QExecutionOccurrenceSpecification()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QExecutionOccurrenceSpecification::~QExecutionOccurrenceSpecification()
  */
 QExecutionSpecification *QExecutionOccurrenceSpecification::execution() const
 {
+    return d_ptr->execution;
 }
 
 void QExecutionOccurrenceSpecification::setExecution(const QExecutionSpecification *execution)
 {
+    d_ptr->execution = const_cast<QExecutionSpecification *>(execution);
 }
 
 #include "moc_qexecutionoccurrencespecification.cpp"

@@ -111,11 +111,14 @@ class Q_UML_EXPORT QOpaqueAction : public QObject, public QAction
     Q_PROPERTY(const QSet<QInputPin *> * inputValues READ inputValues)
     Q_PROPERTY(const QSet<QOutputPin *> * outputValues READ outputValues)
 
+    Q_DISABLE_COPY(QOpaqueAction)
+    Q_DECLARE_PRIVATE(QOpaqueAction)
+
 public:
     explicit QOpaqueAction(QObject *parent = 0);
     virtual ~QOpaqueAction();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     const QList<QString> *bodies() const;
     void addBody(QString body);
     void removeBody(QString body);
@@ -123,7 +126,7 @@ public:
     void addLanguage(QString language);
     void removeLanguage(QString language);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QInputPin *> *inputValues() const;
     void addInputValue(const QInputPin *inputValue);
     void removeInputValue(const QInputPin *inputValue);
@@ -132,8 +135,7 @@ public:
     void removeOutputValue(const QOutputPin *outputValue);
 
 private:
-    Q_DISABLE_COPY(QOpaqueAction)
-    Q_DECLARE_PRIVATE(QOpaqueAction)
+    QOpaqueActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

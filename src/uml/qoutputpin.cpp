@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qoutputpin.h"
-//#include "qoutputpin_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QOutputPinPrivate
+{
+public:
+    explicit QOutputPinPrivate();
+    virtual ~QOutputPinPrivate();
+
+};
+
+QOutputPinPrivate::QOutputPinPrivate()
+{
+}
+
+QOutputPinPrivate::~QOutputPinPrivate()
+{
+}
 
 /*!
     \class QOutputPin
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QOutputPin::QOutputPin(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QOutputPinPrivate)
 {
 }
 
 QOutputPin::~QOutputPin()
 {
+    delete d_ptr;
 }
 
 #include "moc_qoutputpin.cpp"

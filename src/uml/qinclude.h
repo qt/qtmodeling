@@ -85,19 +85,21 @@ class Q_UML_EXPORT QInclude : public QObject, public QDirectedRelationship, publ
     Q_PROPERTY(QUseCase * addition READ addition WRITE setAddition)
     Q_PROPERTY(QUseCase * includingCase READ includingCase WRITE setIncludingCase)
 
+    Q_DISABLE_COPY(QInclude)
+    Q_DECLARE_PRIVATE(QInclude)
+
 public:
     explicit QInclude(QObject *parent = 0);
     virtual ~QInclude();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QUseCase *addition() const;
     void setAddition(const QUseCase *addition);
     QUseCase *includingCase() const;
     void setIncludingCase(const QUseCase *includingCase);
 
 private:
-    Q_DISABLE_COPY(QInclude)
-    Q_DECLARE_PRIVATE(QInclude)
+    QIncludePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

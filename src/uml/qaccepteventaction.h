@@ -108,15 +108,18 @@ class Q_UML_EXPORT QAcceptEventAction : public QObject, public QAction
     Q_PROPERTY(const QSet<QOutputPin *> * results READ results)
     Q_PROPERTY(const QSet<QTrigger *> * triggers READ triggers)
 
+    Q_DISABLE_COPY(QAcceptEventAction)
+    Q_DECLARE_PRIVATE(QAcceptEventAction)
+
 public:
     explicit QAcceptEventAction(QObject *parent = 0);
     virtual ~QAcceptEventAction();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isUnmarshall() const;
     void setUnmarshall(bool isUnmarshall);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QOutputPin *> *results() const;
     void addResult(const QOutputPin *result);
     void removeResult(const QOutputPin *result);
@@ -125,8 +128,7 @@ public:
     void removeTrigger(const QTrigger *trigger);
 
 private:
-    Q_DISABLE_COPY(QAcceptEventAction)
-    Q_DECLARE_PRIVATE(QAcceptEventAction)
+    QAcceptEventActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

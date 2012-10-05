@@ -72,11 +72,14 @@ class Q_UML_EXPORT QPort : public QProperty
     Q_PROPERTY(const QSet<QPort *> * redefinedPorts READ redefinedPorts)
     Q_PROPERTY(const QSet<QInterface *> * required READ required)
 
+    Q_DISABLE_COPY(QPort)
+    Q_DECLARE_PRIVATE(QPort)
+
 public:
     explicit QPort(QObject *parent = 0);
     virtual ~QPort();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isBehavior() const;
     void setBehavior(bool isBehavior);
     bool isConjugated() const;
@@ -84,20 +87,17 @@ public:
     bool isService() const;
     void setService(bool isService);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QProtocolStateMachine *protocol() const;
     void setProtocol(const QProtocolStateMachine *protocol);
+    const QSet<QInterface *> *provided() const;
     const QSet<QPort *> *redefinedPorts() const;
     void addRedefinedPort(const QPort *redefinedPort);
     void removeRedefinedPort(const QPort *redefinedPort);
-
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QSet<QInterface *> *provided() const;
     const QSet<QInterface *> *required() const;
 
 private:
-    Q_DISABLE_COPY(QPort)
-    Q_DECLARE_PRIVATE(QPort)
+    QPortPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

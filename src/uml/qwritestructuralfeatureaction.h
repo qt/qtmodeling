@@ -58,10 +58,13 @@ class QInputPin;
 
 class Q_UML_EXPORT QWriteStructuralFeatureAction : public QStructuralFeatureAction
 {
+    Q_DISABLE_COPY(QWriteStructuralFeatureAction)
+    Q_DECLARE_PRIVATE(QWriteStructuralFeatureAction)
+
 public:
     virtual ~QWriteStructuralFeatureAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QOutputPin *result() const;
     void setResult(const QOutputPin *result);
     QInputPin *value() const;
@@ -69,6 +72,9 @@ public:
 
 protected:
     explicit QWriteStructuralFeatureAction();
+
+private:
+    QWriteStructuralFeatureActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

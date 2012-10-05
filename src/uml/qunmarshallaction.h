@@ -109,11 +109,14 @@ class Q_UML_EXPORT QUnmarshallAction : public QObject, public QAction
     Q_PROPERTY(const QSet<QOutputPin *> * results READ results)
     Q_PROPERTY(QClassifier * unmarshallType READ unmarshallType WRITE setUnmarshallType)
 
+    Q_DISABLE_COPY(QUnmarshallAction)
+    Q_DECLARE_PRIVATE(QUnmarshallAction)
+
 public:
     explicit QUnmarshallAction(QObject *parent = 0);
     virtual ~QUnmarshallAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QInputPin *object() const;
     void setObject(const QInputPin *object);
     const QSet<QOutputPin *> *results() const;
@@ -123,8 +126,7 @@ public:
     void setUnmarshallType(const QClassifier *unmarshallType);
 
 private:
-    Q_DISABLE_COPY(QUnmarshallAction)
-    Q_DECLARE_PRIVATE(QUnmarshallAction)
+    QUnmarshallActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

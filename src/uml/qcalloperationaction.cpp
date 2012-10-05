@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qcalloperationaction.h"
-//#include "qcalloperationaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QCallOperationActionPrivate
+{
+public:
+    explicit QCallOperationActionPrivate();
+    virtual ~QCallOperationActionPrivate();
+
+    QOperation *operation;
+    QInputPin *target;
+};
+
+QCallOperationActionPrivate::QCallOperationActionPrivate()
+{
+}
+
+QCallOperationActionPrivate::~QCallOperationActionPrivate()
+{
+}
 
 /*!
     \class QCallOperationAction
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QCallOperationAction::QCallOperationAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QCallOperationActionPrivate)
 {
 }
 
 QCallOperationAction::~QCallOperationAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QCallOperationAction::~QCallOperationAction()
  */
 QOperation *QCallOperationAction::operation() const
 {
+    return d_ptr->operation;
 }
 
 void QCallOperationAction::setOperation(const QOperation *operation)
 {
+    d_ptr->operation = const_cast<QOperation *>(operation);
 }
 
 /*!
@@ -77,10 +97,12 @@ void QCallOperationAction::setOperation(const QOperation *operation)
  */
 QInputPin *QCallOperationAction::target() const
 {
+    return d_ptr->target;
 }
 
 void QCallOperationAction::setTarget(const QInputPin *target)
 {
+    d_ptr->target = const_cast<QInputPin *>(target);
 }
 
 #include "moc_qcalloperationaction.cpp"

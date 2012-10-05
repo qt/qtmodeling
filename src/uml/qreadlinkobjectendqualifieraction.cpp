@@ -40,9 +40,27 @@
 ****************************************************************************/
 
 #include "qreadlinkobjectendqualifieraction.h"
-//#include "qreadlinkobjectendqualifieraction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QReadLinkObjectEndQualifierActionPrivate
+{
+public:
+    explicit QReadLinkObjectEndQualifierActionPrivate();
+    virtual ~QReadLinkObjectEndQualifierActionPrivate();
+
+    QInputPin *object;
+    QProperty *qualifier;
+    QOutputPin *result;
+};
+
+QReadLinkObjectEndQualifierActionPrivate::QReadLinkObjectEndQualifierActionPrivate()
+{
+}
+
+QReadLinkObjectEndQualifierActionPrivate::~QReadLinkObjectEndQualifierActionPrivate()
+{
+}
 
 /*!
     \class QReadLinkObjectEndQualifierAction
@@ -53,12 +71,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QReadLinkObjectEndQualifierAction::QReadLinkObjectEndQualifierAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QReadLinkObjectEndQualifierActionPrivate)
 {
 }
 
 QReadLinkObjectEndQualifierAction::~QReadLinkObjectEndQualifierAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +85,12 @@ QReadLinkObjectEndQualifierAction::~QReadLinkObjectEndQualifierAction()
  */
 QInputPin *QReadLinkObjectEndQualifierAction::object() const
 {
+    return d_ptr->object;
 }
 
 void QReadLinkObjectEndQualifierAction::setObject(const QInputPin *object)
 {
+    d_ptr->object = const_cast<QInputPin *>(object);
 }
 
 /*!
@@ -77,10 +98,12 @@ void QReadLinkObjectEndQualifierAction::setObject(const QInputPin *object)
  */
 QProperty *QReadLinkObjectEndQualifierAction::qualifier() const
 {
+    return d_ptr->qualifier;
 }
 
 void QReadLinkObjectEndQualifierAction::setQualifier(const QProperty *qualifier)
 {
+    d_ptr->qualifier = const_cast<QProperty *>(qualifier);
 }
 
 /*!
@@ -88,10 +111,12 @@ void QReadLinkObjectEndQualifierAction::setQualifier(const QProperty *qualifier)
  */
 QOutputPin *QReadLinkObjectEndQualifierAction::result() const
 {
+    return d_ptr->result;
 }
 
 void QReadLinkObjectEndQualifierAction::setResult(const QOutputPin *result)
 {
+    d_ptr->result = const_cast<QOutputPin *>(result);
 }
 
 #include "moc_qreadlinkobjectendqualifieraction.cpp"

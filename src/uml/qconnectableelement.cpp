@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qconnectableelement.h"
-//#include "qconnectableelement_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QConnectableElementPrivate
+{
+public:
+    explicit QConnectableElementPrivate();
+    virtual ~QConnectableElementPrivate();
+
+    QConnectableElementTemplateParameter *templateParameter;
+};
+
+QConnectableElementPrivate::QConnectableElementPrivate()
+{
+}
+
+QConnectableElementPrivate::~QConnectableElementPrivate()
+{
+}
 
 /*!
     \class QConnectableElement
@@ -53,11 +69,21 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QConnectableElement::QConnectableElement()
+    : d_ptr(new QConnectableElementPrivate)
 {
 }
 
 QConnectableElement::~QConnectableElement()
 {
+    delete d_ptr;
+}
+
+/*!
+    Denotes a set of connector ends that attaches to this connectable element.
+ */
+const QList<QConnectorEnd *> *QConnectableElement::ends() const
+{
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -65,17 +91,12 @@ QConnectableElement::~QConnectableElement()
  */
 QConnectableElementTemplateParameter *QConnectableElement::templateParameter() const
 {
+    return d_ptr->templateParameter;
 }
 
 void QConnectableElement::setTemplateParameter(const QConnectableElementTemplateParameter *templateParameter)
 {
-}
-
-/*!
-    Missing derivation for ConnectableElement::/end : ConnectorEnd
- */
-const QList<QConnectorEnd *> *QConnectableElement::ends() const
-{
+    d_ptr->templateParameter = const_cast<QConnectableElementTemplateParameter *>(templateParameter);
 }
 
 QT_END_NAMESPACE_QTUML

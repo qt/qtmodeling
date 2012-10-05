@@ -40,9 +40,28 @@
 ****************************************************************************/
 
 #include "qinteractionoperand.h"
-//#include "qinteractionoperand_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QInteractionOperandPrivate
+{
+public:
+    explicit QInteractionOperandPrivate();
+    virtual ~QInteractionOperandPrivate();
+
+    QList<QInteractionFragment *> *fragments;
+    QInteractionConstraint *guard;
+};
+
+QInteractionOperandPrivate::QInteractionOperandPrivate() :
+    fragments(new QList<QInteractionFragment *>)
+{
+}
+
+QInteractionOperandPrivate::~QInteractionOperandPrivate()
+{
+    delete fragments;
+}
 
 /*!
     \class QInteractionOperand
@@ -53,12 +72,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QInteractionOperand::QInteractionOperand(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QInteractionOperandPrivate)
 {
 }
 
 QInteractionOperand::~QInteractionOperand()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +86,17 @@ QInteractionOperand::~QInteractionOperand()
  */
 const QList<QInteractionFragment *> *QInteractionOperand::fragments() const
 {
+    return d_ptr->fragments;
 }
 
 void QInteractionOperand::addFragment(const QInteractionFragment *fragment)
 {
+    d_ptr->fragments->append(const_cast<QInteractionFragment *>(fragment));
 }
 
 void QInteractionOperand::removeFragment(const QInteractionFragment *fragment)
 {
+    d_ptr->fragments->removeAll(const_cast<QInteractionFragment *>(fragment));
 }
 
 /*!
@@ -81,10 +104,12 @@ void QInteractionOperand::removeFragment(const QInteractionFragment *fragment)
  */
 QInteractionConstraint *QInteractionOperand::guard() const
 {
+    return d_ptr->guard;
 }
 
 void QInteractionOperand::setGuard(const QInteractionConstraint *guard)
 {
+    d_ptr->guard = const_cast<QInteractionConstraint *>(guard);
 }
 
 #include "moc_qinteractionoperand.cpp"

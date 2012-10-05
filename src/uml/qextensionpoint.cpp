@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qextensionpoint.h"
-//#include "qextensionpoint_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QExtensionPointPrivate
+{
+public:
+    explicit QExtensionPointPrivate();
+    virtual ~QExtensionPointPrivate();
+
+    QUseCase *useCase;
+};
+
+QExtensionPointPrivate::QExtensionPointPrivate()
+{
+}
+
+QExtensionPointPrivate::~QExtensionPointPrivate()
+{
+}
 
 /*!
     \class QExtensionPoint
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QExtensionPoint::QExtensionPoint(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QExtensionPointPrivate)
 {
 }
 
 QExtensionPoint::~QExtensionPoint()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QExtensionPoint::~QExtensionPoint()
  */
 QUseCase *QExtensionPoint::useCase() const
 {
+    return d_ptr->useCase;
 }
 
 void QExtensionPoint::setUseCase(const QUseCase *useCase)
 {
+    d_ptr->useCase = const_cast<QUseCase *>(useCase);
 }
 
 #include "moc_qextensionpoint.cpp"

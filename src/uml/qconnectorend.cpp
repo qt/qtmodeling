@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qconnectorend.h"
-//#include "qconnectorend_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QConnectorEndPrivate
+{
+public:
+    explicit QConnectorEndPrivate();
+    virtual ~QConnectorEndPrivate();
+
+    QProperty *partWithPort;
+    QConnectableElement *role;
+};
+
+QConnectorEndPrivate::QConnectorEndPrivate()
+{
+}
+
+QConnectorEndPrivate::~QConnectorEndPrivate()
+{
+}
 
 /*!
     \class QConnectorEnd
@@ -53,12 +70,21 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QConnectorEnd::QConnectorEnd(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QConnectorEndPrivate)
 {
 }
 
 QConnectorEnd::~QConnectorEnd()
 {
+    delete d_ptr;
+}
+
+/*!
+    A derived association referencing the corresponding association end on the association which types the connector owing this connector end. This association is derived by selecting the association end at the same place in the ordering of association ends as this connector end.
+ */
+QProperty *QConnectorEnd::definingEnd() const
+{
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -66,10 +92,12 @@ QConnectorEnd::~QConnectorEnd()
  */
 QProperty *QConnectorEnd::partWithPort() const
 {
+    return d_ptr->partWithPort;
 }
 
 void QConnectorEnd::setPartWithPort(const QProperty *partWithPort)
 {
+    d_ptr->partWithPort = const_cast<QProperty *>(partWithPort);
 }
 
 /*!
@@ -77,17 +105,12 @@ void QConnectorEnd::setPartWithPort(const QProperty *partWithPort)
  */
 QConnectableElement *QConnectorEnd::role() const
 {
+    return d_ptr->role;
 }
 
 void QConnectorEnd::setRole(const QConnectableElement *role)
 {
-}
-
-/*!
-    Missing derivation for ConnectorEnd::/definingEnd : Property
- */
-QProperty *QConnectorEnd::definingEnd() const
-{
+    d_ptr->role = const_cast<QConnectableElement *>(role);
 }
 
 #include "moc_qconnectorend.cpp"

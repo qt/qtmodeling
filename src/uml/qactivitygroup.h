@@ -62,10 +62,13 @@ class QActivity;
 
 class Q_UML_EXPORT QActivityGroup : public virtual QNamedElement
 {
+    Q_DISABLE_COPY(QActivityGroup)
+    Q_DECLARE_PRIVATE(QActivityGroup)
+
 public:
     virtual ~QActivityGroup();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QActivityEdge *> *containedEdges() const;
     const QSet<QActivityNode *> *containedNodes() const;
     QActivity *inActivity() const;
@@ -75,6 +78,9 @@ public:
 
 protected:
     explicit QActivityGroup();
+
+private:
+    QActivityGroupPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

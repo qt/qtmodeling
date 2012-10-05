@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qexecutionenvironment.h"
-//#include "qexecutionenvironment_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QExecutionEnvironmentPrivate
+{
+public:
+    explicit QExecutionEnvironmentPrivate();
+    virtual ~QExecutionEnvironmentPrivate();
+
+};
+
+QExecutionEnvironmentPrivate::QExecutionEnvironmentPrivate()
+{
+}
+
+QExecutionEnvironmentPrivate::~QExecutionEnvironmentPrivate()
+{
+}
 
 /*!
     \class QExecutionEnvironment
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QExecutionEnvironment::QExecutionEnvironment(QObject *parent)
-    : QNode(parent)
+    : QNode(parent), d_ptr(new QExecutionEnvironmentPrivate)
 {
 }
 
 QExecutionEnvironment::~QExecutionEnvironment()
 {
+    delete d_ptr;
 }
 
 #include "moc_qexecutionenvironment.cpp"

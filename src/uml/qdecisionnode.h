@@ -93,19 +93,21 @@ class Q_UML_EXPORT QDecisionNode : public QObject, public QControlNode
     Q_PROPERTY(QBehavior * decisionInput READ decisionInput WRITE setDecisionInput)
     Q_PROPERTY(QObjectFlow * decisionInputFlow READ decisionInputFlow WRITE setDecisionInputFlow)
 
+    Q_DISABLE_COPY(QDecisionNode)
+    Q_DECLARE_PRIVATE(QDecisionNode)
+
 public:
     explicit QDecisionNode(QObject *parent = 0);
     virtual ~QDecisionNode();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QBehavior *decisionInput() const;
     void setDecisionInput(const QBehavior *decisionInput);
     QObjectFlow *decisionInputFlow() const;
     void setDecisionInputFlow(const QObjectFlow *decisionInputFlow);
 
 private:
-    Q_DISABLE_COPY(QDecisionNode)
-    Q_DECLARE_PRIVATE(QDecisionNode)
+    QDecisionNodePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

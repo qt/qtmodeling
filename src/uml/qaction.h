@@ -64,14 +64,18 @@ class QInputPin;
 
 class Q_UML_EXPORT QAction : public QExecutableNode
 {
+    Q_DISABLE_COPY(QAction)
+    Q_DECLARE_PRIVATE(QAction)
+
 public:
     virtual ~QAction();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isLocallyReentrant() const;
     void setLocallyReentrant(bool isLocallyReentrant);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
+    QClassifier *context() const;
     const QList<QInputPin *> *inputs() const;
     const QSet<QConstraint *> *localPostconditions() const;
     void addLocalPostcondition(const QConstraint *localPostcondition);
@@ -81,11 +85,11 @@ public:
     void removeLocalPrecondition(const QConstraint *localPrecondition);
     const QList<QOutputPin *> *outputs() const;
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    QClassifier *context() const;
-
 protected:
     explicit QAction();
+
+private:
+    QActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

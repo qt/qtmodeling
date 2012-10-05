@@ -56,11 +56,17 @@ class QControlNodePrivate;
 
 class Q_UML_EXPORT QControlNode : public QActivityNode
 {
+    Q_DISABLE_COPY(QControlNode)
+    Q_DECLARE_PRIVATE(QControlNode)
+
 public:
     virtual ~QControlNode();
 
 protected:
     explicit QControlNode();
+
+private:
+    QControlNodePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

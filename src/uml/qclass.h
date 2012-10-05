@@ -146,17 +146,21 @@ class Q_UML_EXPORT QClass : public QObject, public QEncapsulatedClassifier, publ
     Q_PROPERTY(const QSet<QReception *> * ownedReceptions READ ownedReceptions)
     Q_PROPERTY(const QSet<QClass *> * superClasses READ superClasses)
 
+    Q_DISABLE_COPY(QClass)
+    Q_DECLARE_PRIVATE(QClass)
+
 public:
     explicit QClass(QObject *parent = 0);
     virtual ~QClass();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isAbstract() const;
     void setAbstract(bool isAbstract);
     bool isActive() const;
     void setActive(bool isActive);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
+    const QSet<QExtension *> *extensions() const;
     const QList<QClassifier *> *nestedClassifiers() const;
     void addNestedClassifier(const QClassifier *nestedClassifier);
     void removeNestedClassifier(const QClassifier *nestedClassifier);
@@ -169,15 +173,15 @@ public:
     const QSet<QReception *> *ownedReceptions() const;
     void addOwnedReception(const QReception *ownedReception);
     void removeOwnedReception(const QReception *ownedReception);
-
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QSet<QExtension *> *extensions() const;
-    const QSet<QNamedElement *> *inherit(const QSet<QNamedElement *> *inhs) const;
     const QSet<QClass *> *superClasses() const;
+    void addSuperClass(const QClass *superClass);
+    void removeSuperClass(const QClass *superClass);
+
+    // Operations
+    const QSet<QNamedElement *> *inherit(const QSet<QNamedElement *> *inhs) const;
 
 private:
-    Q_DISABLE_COPY(QClass)
-    Q_DECLARE_PRIVATE(QClass)
+    QClassPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

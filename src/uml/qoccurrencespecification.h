@@ -87,11 +87,14 @@ class Q_UML_EXPORT QOccurrenceSpecification : public QObject, public QInteractio
     Q_PROPERTY(const QSet<QGeneralOrdering *> * toAfter READ toAfter)
     Q_PROPERTY(const QSet<QGeneralOrdering *> * toBefore READ toBefore)
 
+    Q_DISABLE_COPY(QOccurrenceSpecification)
+    Q_DECLARE_PRIVATE(QOccurrenceSpecification)
+
 public:
     explicit QOccurrenceSpecification(QObject *parent = 0);
     virtual ~QOccurrenceSpecification();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QLifeline *covered() const;
     void setCovered(const QLifeline *covered);
     const QSet<QGeneralOrdering *> *toAfter() const;
@@ -102,8 +105,7 @@ public:
     void removeToBefore(const QGeneralOrdering *toBefore);
 
 private:
-    Q_DISABLE_COPY(QOccurrenceSpecification)
-    Q_DECLARE_PRIVATE(QOccurrenceSpecification)
+    QOccurrenceSpecificationPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

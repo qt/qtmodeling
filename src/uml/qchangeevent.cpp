@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qchangeevent.h"
-//#include "qchangeevent_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QChangeEventPrivate
+{
+public:
+    explicit QChangeEventPrivate();
+    virtual ~QChangeEventPrivate();
+
+    QValueSpecification *changeExpression;
+};
+
+QChangeEventPrivate::QChangeEventPrivate()
+{
+}
+
+QChangeEventPrivate::~QChangeEventPrivate()
+{
+}
 
 /*!
     \class QChangeEvent
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QChangeEvent::QChangeEvent(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QChangeEventPrivate)
 {
 }
 
 QChangeEvent::~QChangeEvent()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QChangeEvent::~QChangeEvent()
  */
 QValueSpecification *QChangeEvent::changeExpression() const
 {
+    return d_ptr->changeExpression;
 }
 
 void QChangeEvent::setChangeExpression(const QValueSpecification *changeExpression)
 {
+    d_ptr->changeExpression = const_cast<QValueSpecification *>(changeExpression);
 }
 
 #include "moc_qchangeevent.cpp"

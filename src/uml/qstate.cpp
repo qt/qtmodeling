@@ -40,9 +40,42 @@
 ****************************************************************************/
 
 #include "qstate.h"
-//#include "qstate_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QStatePrivate
+{
+public:
+    explicit QStatePrivate();
+    virtual ~QStatePrivate();
+
+    QSet<QConnectionPointReference *> *connections;
+    QSet<QPseudostate *> *connectionPoints;
+    QSet<QTrigger *> *deferrableTriggers;
+    QBehavior *doActivity;
+    QBehavior *entry;
+    QBehavior *exit;
+    QState *redefinedState;
+    QSet<QRegion *> *regions;
+    QConstraint *stateInvariant;
+    QStateMachine *submachine;
+};
+
+QStatePrivate::QStatePrivate() :
+    connections(new QSet<QConnectionPointReference *>),
+    connectionPoints(new QSet<QPseudostate *>),
+    deferrableTriggers(new QSet<QTrigger *>),
+    regions(new QSet<QRegion *>)
+{
+}
+
+QStatePrivate::~QStatePrivate()
+{
+    delete connections;
+    delete connectionPoints;
+    delete deferrableTriggers;
+    delete regions;
+}
 
 /*!
     \class QState
@@ -53,12 +86,45 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QState::QState(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QStatePrivate)
 {
 }
 
 QState::~QState()
 {
+    delete d_ptr;
+}
+
+/*!
+    A state with isComposite=true is said to be a composite state. A composite state is a state that contains at least one region.
+ */
+bool QState::isComposite() const
+{
+    qWarning("To be implemented (this is a derived attribute)");
+}
+
+/*!
+    A state with isOrthogonal=true is said to be an orthogonal composite state. An orthogonal composite state contains two or more regions.
+ */
+bool QState::isOrthogonal() const
+{
+    qWarning("To be implemented (this is a derived attribute)");
+}
+
+/*!
+    A state with isSimple=true is said to be a simple state. A simple state does not have any regions and it does not refer to any submachine state machine.
+ */
+bool QState::isSimple() const
+{
+    qWarning("To be implemented (this is a derived attribute)");
+}
+
+/*!
+    A state with isSubmachineState=true is said to be a submachine state. Such a state refers to a state machine (submachine).
+ */
+bool QState::isSubmachineState() const
+{
+    qWarning("To be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -66,14 +132,17 @@ QState::~QState()
  */
 const QSet<QConnectionPointReference *> *QState::connections() const
 {
+    return d_ptr->connections;
 }
 
 void QState::addConnection(const QConnectionPointReference *connection)
 {
+    d_ptr->connections->insert(const_cast<QConnectionPointReference *>(connection));
 }
 
 void QState::removeConnection(const QConnectionPointReference *connection)
 {
+    d_ptr->connections->remove(const_cast<QConnectionPointReference *>(connection));
 }
 
 /*!
@@ -81,14 +150,17 @@ void QState::removeConnection(const QConnectionPointReference *connection)
  */
 const QSet<QPseudostate *> *QState::connectionPoints() const
 {
+    return d_ptr->connectionPoints;
 }
 
 void QState::addConnectionPoint(const QPseudostate *connectionPoint)
 {
+    d_ptr->connectionPoints->insert(const_cast<QPseudostate *>(connectionPoint));
 }
 
 void QState::removeConnectionPoint(const QPseudostate *connectionPoint)
 {
+    d_ptr->connectionPoints->remove(const_cast<QPseudostate *>(connectionPoint));
 }
 
 /*!
@@ -96,14 +168,17 @@ void QState::removeConnectionPoint(const QPseudostate *connectionPoint)
  */
 const QSet<QTrigger *> *QState::deferrableTriggers() const
 {
+    return d_ptr->deferrableTriggers;
 }
 
 void QState::addDeferrableTrigger(const QTrigger *deferrableTrigger)
 {
+    d_ptr->deferrableTriggers->insert(const_cast<QTrigger *>(deferrableTrigger));
 }
 
 void QState::removeDeferrableTrigger(const QTrigger *deferrableTrigger)
 {
+    d_ptr->deferrableTriggers->remove(const_cast<QTrigger *>(deferrableTrigger));
 }
 
 /*!
@@ -111,10 +186,12 @@ void QState::removeDeferrableTrigger(const QTrigger *deferrableTrigger)
  */
 QBehavior *QState::doActivity() const
 {
+    return d_ptr->doActivity;
 }
 
 void QState::setDoActivity(const QBehavior *doActivity)
 {
+    d_ptr->doActivity = const_cast<QBehavior *>(doActivity);
 }
 
 /*!
@@ -122,10 +199,12 @@ void QState::setDoActivity(const QBehavior *doActivity)
  */
 QBehavior *QState::entry() const
 {
+    return d_ptr->entry;
 }
 
 void QState::setEntry(const QBehavior *entry)
 {
+    d_ptr->entry = const_cast<QBehavior *>(entry);
 }
 
 /*!
@@ -133,10 +212,12 @@ void QState::setEntry(const QBehavior *entry)
  */
 QBehavior *QState::exit() const
 {
+    return d_ptr->exit;
 }
 
 void QState::setExit(const QBehavior *exit)
 {
+    d_ptr->exit = const_cast<QBehavior *>(exit);
 }
 
 /*!
@@ -144,10 +225,20 @@ void QState::setExit(const QBehavior *exit)
  */
 QState *QState::redefinedState() const
 {
+    return d_ptr->redefinedState;
 }
 
 void QState::setRedefinedState(const QState *redefinedState)
 {
+    d_ptr->redefinedState = const_cast<QState *>(redefinedState);
+}
+
+/*!
+    References the classifier in which context this element may be redefined.
+ */
+QClassifier *QState::redefinitionContext() const
+{
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -155,14 +246,17 @@ void QState::setRedefinedState(const QState *redefinedState)
  */
 const QSet<QRegion *> *QState::regions() const
 {
+    return d_ptr->regions;
 }
 
 void QState::addRegion(const QRegion *region)
 {
+    d_ptr->regions->insert(const_cast<QRegion *>(region));
 }
 
 void QState::removeRegion(const QRegion *region)
 {
+    d_ptr->regions->remove(const_cast<QRegion *>(region));
 }
 
 /*!
@@ -170,10 +264,12 @@ void QState::removeRegion(const QRegion *region)
  */
 QConstraint *QState::stateInvariant() const
 {
+    return d_ptr->stateInvariant;
 }
 
 void QState::setStateInvariant(const QConstraint *stateInvariant)
 {
+    d_ptr->stateInvariant = const_cast<QConstraint *>(stateInvariant);
 }
 
 /*!
@@ -181,10 +277,12 @@ void QState::setStateInvariant(const QConstraint *stateInvariant)
  */
 QStateMachine *QState::submachine() const
 {
+    return d_ptr->submachine;
 }
 
 void QState::setSubmachine(const QStateMachine *submachine)
 {
+    d_ptr->submachine = const_cast<QStateMachine *>(submachine);
 }
 
 /*!
@@ -192,13 +290,7 @@ void QState::setSubmachine(const QStateMachine *submachine)
  */
 QStateMachine *QState::containingStateMachine() const
 {
-}
-
-/*!
-    A composite state is a state with at least one region.
- */
-bool QState::isComposite() const
-{
+    qWarning("To be implemented");
 }
 
 /*!
@@ -206,13 +298,7 @@ bool QState::isComposite() const
  */
 bool QState::isConsistentWith(const QRedefinableElement *redefinee) const
 {
-}
-
-/*!
-    An orthogonal state is a composite state with at least 2 regions
- */
-bool QState::isOrthogonal() const
-{
+    qWarning("To be implemented");
 }
 
 /*!
@@ -220,27 +306,7 @@ bool QState::isOrthogonal() const
  */
 bool QState::isRedefinitionContextValid(const QState *redefined) const
 {
-}
-
-/*!
-    A simple state is a state without any regions.
- */
-bool QState::isSimple() const
-{
-}
-
-/*!
-    Only submachine states can have a reference statemachine.
- */
-bool QState::isSubmachineState() const
-{
-}
-
-/*!
-    The redefinition context of a state is the nearest containing statemachine.
- */
-QClassifier *QState::redefinitionContext() const
-{
+    qWarning("To be implemented");
 }
 
 #include "moc_qstate.cpp"

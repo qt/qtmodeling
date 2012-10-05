@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qreadstructuralfeatureaction.h"
-//#include "qreadstructuralfeatureaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QReadStructuralFeatureActionPrivate
+{
+public:
+    explicit QReadStructuralFeatureActionPrivate();
+    virtual ~QReadStructuralFeatureActionPrivate();
+
+    QOutputPin *result;
+};
+
+QReadStructuralFeatureActionPrivate::QReadStructuralFeatureActionPrivate()
+{
+}
+
+QReadStructuralFeatureActionPrivate::~QReadStructuralFeatureActionPrivate()
+{
+}
 
 /*!
     \class QReadStructuralFeatureAction
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QReadStructuralFeatureAction::QReadStructuralFeatureAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QReadStructuralFeatureActionPrivate)
 {
 }
 
 QReadStructuralFeatureAction::~QReadStructuralFeatureAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QReadStructuralFeatureAction::~QReadStructuralFeatureAction()
  */
 QOutputPin *QReadStructuralFeatureAction::result() const
 {
+    return d_ptr->result;
 }
 
 void QReadStructuralFeatureAction::setResult(const QOutputPin *result)
 {
+    d_ptr->result = const_cast<QOutputPin *>(result);
 }
 
 #include "moc_qreadstructuralfeatureaction.cpp"

@@ -92,15 +92,18 @@ class Q_UML_EXPORT QCombinedFragment : public QObject, public QInteractionFragme
     Q_PROPERTY(const QSet<QGate *> * cfragmentGates READ cfragmentGates)
     Q_PROPERTY(const QList<QInteractionOperand *> * operands READ operands)
 
+    Q_DISABLE_COPY(QCombinedFragment)
+    Q_DECLARE_PRIVATE(QCombinedFragment)
+
 public:
     explicit QCombinedFragment(QObject *parent = 0);
     virtual ~QCombinedFragment();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     QtUml::InteractionOperatorKind interactionOperator() const;
     void setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QGate *> *cfragmentGates() const;
     void addCfragmentGate(const QGate *cfragmentGate);
     void removeCfragmentGate(const QGate *cfragmentGate);
@@ -109,8 +112,7 @@ public:
     void removeOperand(const QInteractionOperand *operand);
 
 private:
-    Q_DISABLE_COPY(QCombinedFragment)
-    Q_DECLARE_PRIVATE(QCombinedFragment)
+    QCombinedFragmentPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

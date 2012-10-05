@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qbroadcastsignalaction.h"
-//#include "qbroadcastsignalaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QBroadcastSignalActionPrivate
+{
+public:
+    explicit QBroadcastSignalActionPrivate();
+    virtual ~QBroadcastSignalActionPrivate();
+
+    QSignal *signal;
+};
+
+QBroadcastSignalActionPrivate::QBroadcastSignalActionPrivate()
+{
+}
+
+QBroadcastSignalActionPrivate::~QBroadcastSignalActionPrivate()
+{
+}
 
 /*!
     \class QBroadcastSignalAction
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QBroadcastSignalAction::QBroadcastSignalAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QBroadcastSignalActionPrivate)
 {
 }
 
 QBroadcastSignalAction::~QBroadcastSignalAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QBroadcastSignalAction::~QBroadcastSignalAction()
  */
 QSignal *QBroadcastSignalAction::signal() const
 {
+    return d_ptr->signal;
 }
 
 void QBroadcastSignalAction::setSignal(const QSignal *signal)
 {
+    d_ptr->signal = const_cast<QSignal *>(signal);
 }
 
 #include "moc_qbroadcastsignalaction.cpp"

@@ -65,10 +65,13 @@ class QInterruptibleActivityRegion;
 
 class Q_UML_EXPORT QActivityNode : public QRedefinableElement
 {
+    Q_DISABLE_COPY(QActivityNode)
+    Q_DECLARE_PRIVATE(QActivityNode)
+
 public:
     virtual ~QActivityNode();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QActivity *activity() const;
     void setActivity(const QActivity *activity);
     const QSet<QActivityGroup *> *inGroup() const;
@@ -92,6 +95,9 @@ public:
 
 protected:
     explicit QActivityNode();
+
+private:
+    QActivityNodePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

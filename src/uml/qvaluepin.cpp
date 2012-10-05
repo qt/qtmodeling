@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qvaluepin.h"
-//#include "qvaluepin_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QValuePinPrivate
+{
+public:
+    explicit QValuePinPrivate();
+    virtual ~QValuePinPrivate();
+
+    QValueSpecification *value;
+};
+
+QValuePinPrivate::QValuePinPrivate()
+{
+}
+
+QValuePinPrivate::~QValuePinPrivate()
+{
+}
 
 /*!
     \class QValuePin
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QValuePin::QValuePin(QObject *parent)
-    : QInputPin(parent)
+    : QInputPin(parent), d_ptr(new QValuePinPrivate)
 {
 }
 
 QValuePin::~QValuePin()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QValuePin::~QValuePin()
  */
 QValueSpecification *QValuePin::value() const
 {
+    return d_ptr->value;
 }
 
 void QValuePin::setValue(const QValueSpecification *value)
 {
+    d_ptr->value = const_cast<QValueSpecification *>(value);
 }
 
 #include "moc_qvaluepin.cpp"

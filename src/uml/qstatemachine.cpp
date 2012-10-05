@@ -40,9 +40,36 @@
 ****************************************************************************/
 
 #include "qstatemachine.h"
-//#include "qstatemachine_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QStateMachinePrivate
+{
+public:
+    explicit QStateMachinePrivate();
+    virtual ~QStateMachinePrivate();
+
+    QSet<QPseudostate *> *connectionPoints;
+    QSet<QStateMachine *> *extendedStateMachines;
+    QSet<QRegion *> *regions;
+    QSet<QState *> *submachineStates;
+};
+
+QStateMachinePrivate::QStateMachinePrivate() :
+    connectionPoints(new QSet<QPseudostate *>),
+    extendedStateMachines(new QSet<QStateMachine *>),
+    regions(new QSet<QRegion *>),
+    submachineStates(new QSet<QState *>)
+{
+}
+
+QStateMachinePrivate::~QStateMachinePrivate()
+{
+    delete connectionPoints;
+    delete extendedStateMachines;
+    delete regions;
+    delete submachineStates;
+}
 
 /*!
     \class QStateMachine
@@ -53,12 +80,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QStateMachine::QStateMachine(QObject *parent)
-    : QBehavior(parent)
+    : QBehavior(parent), d_ptr(new QStateMachinePrivate)
 {
 }
 
 QStateMachine::~QStateMachine()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +94,17 @@ QStateMachine::~QStateMachine()
  */
 const QSet<QPseudostate *> *QStateMachine::connectionPoints() const
 {
+    return d_ptr->connectionPoints;
 }
 
 void QStateMachine::addConnectionPoint(const QPseudostate *connectionPoint)
 {
+    d_ptr->connectionPoints->insert(const_cast<QPseudostate *>(connectionPoint));
 }
 
 void QStateMachine::removeConnectionPoint(const QPseudostate *connectionPoint)
 {
+    d_ptr->connectionPoints->remove(const_cast<QPseudostate *>(connectionPoint));
 }
 
 /*!
@@ -81,14 +112,17 @@ void QStateMachine::removeConnectionPoint(const QPseudostate *connectionPoint)
  */
 const QSet<QStateMachine *> *QStateMachine::extendedStateMachines() const
 {
+    return d_ptr->extendedStateMachines;
 }
 
 void QStateMachine::addExtendedStateMachine(const QStateMachine *extendedStateMachine)
 {
+    d_ptr->extendedStateMachines->insert(const_cast<QStateMachine *>(extendedStateMachine));
 }
 
 void QStateMachine::removeExtendedStateMachine(const QStateMachine *extendedStateMachine)
 {
+    d_ptr->extendedStateMachines->remove(const_cast<QStateMachine *>(extendedStateMachine));
 }
 
 /*!
@@ -96,14 +130,17 @@ void QStateMachine::removeExtendedStateMachine(const QStateMachine *extendedStat
  */
 const QSet<QRegion *> *QStateMachine::regions() const
 {
+    return d_ptr->regions;
 }
 
 void QStateMachine::addRegion(const QRegion *region)
 {
+    d_ptr->regions->insert(const_cast<QRegion *>(region));
 }
 
 void QStateMachine::removeRegion(const QRegion *region)
 {
+    d_ptr->regions->remove(const_cast<QRegion *>(region));
 }
 
 /*!
@@ -111,14 +148,17 @@ void QStateMachine::removeRegion(const QRegion *region)
  */
 const QSet<QState *> *QStateMachine::submachineStates() const
 {
+    return d_ptr->submachineStates;
 }
 
 void QStateMachine::addSubmachineState(const QState *submachineState)
 {
+    d_ptr->submachineStates->insert(const_cast<QState *>(submachineState));
 }
 
 void QStateMachine::removeSubmachineState(const QState *submachineState)
 {
+    d_ptr->submachineStates->remove(const_cast<QState *>(submachineState));
 }
 
 /*!
@@ -126,6 +166,7 @@ void QStateMachine::removeSubmachineState(const QState *submachineState)
  */
 QNamespace *QStateMachine::LCA(const QState *s1, const QState *s2) const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -133,6 +174,7 @@ QNamespace *QStateMachine::LCA(const QState *s1, const QState *s2) const
  */
 bool QStateMachine::ancestor(const QState *s1, const QState *s2) const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -140,6 +182,7 @@ bool QStateMachine::ancestor(const QState *s1, const QState *s2) const
  */
 bool QStateMachine::isConsistentWith(const QRedefinableElement *redefinee) const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -147,6 +190,7 @@ bool QStateMachine::isConsistentWith(const QRedefinableElement *redefinee) const
  */
 bool QStateMachine::isRedefinitionContextValid(const QStateMachine *redefined) const
 {
+    qWarning("To be implemented");
 }
 
 #include "moc_qstatemachine.cpp"

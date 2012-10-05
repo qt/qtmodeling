@@ -40,9 +40,31 @@
 ****************************************************************************/
 
 #include "qaccepteventaction.h"
-//#include "qaccepteventaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QAcceptEventActionPrivate
+{
+public:
+    explicit QAcceptEventActionPrivate();
+    virtual ~QAcceptEventActionPrivate();
+
+    bool isUnmarshall;
+    QSet<QOutputPin *> *results;
+    QSet<QTrigger *> *triggers;
+};
+
+QAcceptEventActionPrivate::QAcceptEventActionPrivate() :
+    results(new QSet<QOutputPin *>),
+    triggers(new QSet<QTrigger *>)
+{
+}
+
+QAcceptEventActionPrivate::~QAcceptEventActionPrivate()
+{
+    delete results;
+    delete triggers;
+}
 
 /*!
     \class QAcceptEventAction
@@ -53,12 +75,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QAcceptEventAction::QAcceptEventAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QAcceptEventActionPrivate)
 {
 }
 
 QAcceptEventAction::~QAcceptEventAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +89,12 @@ QAcceptEventAction::~QAcceptEventAction()
  */
 bool QAcceptEventAction::isUnmarshall() const
 {
+    return d_ptr->isUnmarshall;
 }
 
 void QAcceptEventAction::setUnmarshall(bool isUnmarshall)
 {
+    d_ptr->isUnmarshall = isUnmarshall;
 }
 
 /*!
@@ -77,14 +102,17 @@ void QAcceptEventAction::setUnmarshall(bool isUnmarshall)
  */
 const QSet<QOutputPin *> *QAcceptEventAction::results() const
 {
+    return d_ptr->results;
 }
 
 void QAcceptEventAction::addResult(const QOutputPin *result)
 {
+    d_ptr->results->insert(const_cast<QOutputPin *>(result));
 }
 
 void QAcceptEventAction::removeResult(const QOutputPin *result)
 {
+    d_ptr->results->remove(const_cast<QOutputPin *>(result));
 }
 
 /*!
@@ -92,14 +120,17 @@ void QAcceptEventAction::removeResult(const QOutputPin *result)
  */
 const QSet<QTrigger *> *QAcceptEventAction::triggers() const
 {
+    return d_ptr->triggers;
 }
 
 void QAcceptEventAction::addTrigger(const QTrigger *trigger)
 {
+    d_ptr->triggers->insert(const_cast<QTrigger *>(trigger));
 }
 
 void QAcceptEventAction::removeTrigger(const QTrigger *trigger)
 {
+    d_ptr->triggers->remove(const_cast<QTrigger *>(trigger));
 }
 
 #include "moc_qaccepteventaction.cpp"

@@ -40,9 +40,39 @@
 ****************************************************************************/
 
 #include "qnamespace.h"
-//#include "qnamespace_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QNamespacePrivate
+{
+public:
+    explicit QNamespacePrivate();
+    virtual ~QNamespacePrivate();
+
+    QSet<QElementImport *> *elementImports;
+    QSet<QNamedElement *> *members;
+    QSet<QNamedElement *> *ownedMembers;
+    QSet<QConstraint *> *ownedRules;
+    QSet<QPackageImport *> *packageImports;
+};
+
+QNamespacePrivate::QNamespacePrivate() :
+    elementImports(new QSet<QElementImport *>),
+    members(new QSet<QNamedElement *>),
+    ownedMembers(new QSet<QNamedElement *>),
+    ownedRules(new QSet<QConstraint *>),
+    packageImports(new QSet<QPackageImport *>)
+{
+}
+
+QNamespacePrivate::~QNamespacePrivate()
+{
+    delete elementImports;
+    delete members;
+    delete ownedMembers;
+    delete ownedRules;
+    delete packageImports;
+}
 
 /*!
     \class QNamespace
@@ -53,11 +83,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QNamespace::QNamespace()
+    : d_ptr(new QNamespacePrivate)
 {
 }
 
 QNamespace::~QNamespace()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,14 +97,25 @@ QNamespace::~QNamespace()
  */
 const QSet<QElementImport *> *QNamespace::elementImports() const
 {
+    return d_ptr->elementImports;
 }
 
 void QNamespace::addElementImport(const QElementImport *elementImport)
 {
+    d_ptr->elementImports->insert(const_cast<QElementImport *>(elementImport));
 }
 
 void QNamespace::removeElementImport(const QElementImport *elementImport)
 {
+    d_ptr->elementImports->remove(const_cast<QElementImport *>(elementImport));
+}
+
+/*!
+    References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
+ */
+const QSet<QPackageableElement *> *QNamespace::importedMembers() const
+{
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -80,6 +123,7 @@ void QNamespace::removeElementImport(const QElementImport *elementImport)
  */
 const QSet<QNamedElement *> *QNamespace::members() const
 {
+    return d_ptr->members;
 }
 
 /*!
@@ -87,6 +131,7 @@ const QSet<QNamedElement *> *QNamespace::members() const
  */
 const QSet<QNamedElement *> *QNamespace::ownedMembers() const
 {
+    return d_ptr->ownedMembers;
 }
 
 /*!
@@ -94,14 +139,17 @@ const QSet<QNamedElement *> *QNamespace::ownedMembers() const
  */
 const QSet<QConstraint *> *QNamespace::ownedRules() const
 {
+    return d_ptr->ownedRules;
 }
 
 void QNamespace::addOwnedRule(const QConstraint *ownedRule)
 {
+    d_ptr->ownedRules->insert(const_cast<QConstraint *>(ownedRule));
 }
 
 void QNamespace::removeOwnedRule(const QConstraint *ownedRule)
 {
+    d_ptr->ownedRules->remove(const_cast<QConstraint *>(ownedRule));
 }
 
 /*!
@@ -109,14 +157,17 @@ void QNamespace::removeOwnedRule(const QConstraint *ownedRule)
  */
 const QSet<QPackageImport *> *QNamespace::packageImports() const
 {
+    return d_ptr->packageImports;
 }
 
 void QNamespace::addPackageImport(const QPackageImport *packageImport)
 {
+    d_ptr->packageImports->insert(const_cast<QPackageImport *>(packageImport));
 }
 
 void QNamespace::removePackageImport(const QPackageImport *packageImport)
 {
+    d_ptr->packageImports->remove(const_cast<QPackageImport *>(packageImport));
 }
 
 /*!
@@ -124,6 +175,7 @@ void QNamespace::removePackageImport(const QPackageImport *packageImport)
  */
 const QSet<QPackageableElement *> *QNamespace::excludeCollisions(const QSet<QPackageableElement *> *imps) const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -131,6 +183,7 @@ const QSet<QPackageableElement *> *QNamespace::excludeCollisions(const QSet<QPac
  */
 const QSet<QString> *QNamespace::getNamesOfMember(const QNamedElement *element) const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -138,13 +191,7 @@ const QSet<QString> *QNamespace::getNamesOfMember(const QNamedElement *element) 
  */
 const QSet<QPackageableElement *> *QNamespace::importMembers(const QSet<QPackageableElement *> *imps) const
 {
-}
-
-/*!
-    The importedMember property is derived from the ElementImports and the PackageImports. References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
- */
-const QSet<QPackageableElement *> *QNamespace::importedMembers() const
-{
+    qWarning("To be implemented");
 }
 
 /*!
@@ -152,6 +199,7 @@ const QSet<QPackageableElement *> *QNamespace::importedMembers() const
  */
 bool QNamespace::membersAreDistinguishable() const
 {
+    qWarning("To be implemented");
 }
 
 QT_END_NAMESPACE_QTUML

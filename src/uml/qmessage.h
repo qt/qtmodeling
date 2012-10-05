@@ -93,15 +93,19 @@ class Q_UML_EXPORT QMessage : public QObject, public QNamedElement
     Q_PROPERTY(QMessageEnd * sendEvent READ sendEvent WRITE setSendEvent)
     Q_PROPERTY(QNamedElement * signature READ signature WRITE setSignature)
 
+    Q_DISABLE_COPY(QMessage)
+    Q_DECLARE_PRIVATE(QMessage)
+
 public:
     explicit QMessage(QObject *parent = 0);
     virtual ~QMessage();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
+    QtUml::MessageKind messageKind() const;
     QtUml::MessageSort messageSort() const;
     void setMessageSort(QtUml::MessageSort messageSort);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QList<QValueSpecification *> *arguments() const;
     void addArgument(const QValueSpecification *argument);
     void removeArgument(const QValueSpecification *argument);
@@ -116,12 +120,8 @@ public:
     QNamedElement *signature() const;
     void setSignature(const QNamedElement *signature);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    QtUml::MessageKind messageKind() const;
-
 private:
-    Q_DISABLE_COPY(QMessage)
-    Q_DECLARE_PRIVATE(QMessage)
+    QMessagePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

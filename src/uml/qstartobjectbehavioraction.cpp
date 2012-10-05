@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qstartobjectbehavioraction.h"
-//#include "qstartobjectbehavioraction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QStartObjectBehaviorActionPrivate
+{
+public:
+    explicit QStartObjectBehaviorActionPrivate();
+    virtual ~QStartObjectBehaviorActionPrivate();
+
+    QInputPin *object;
+};
+
+QStartObjectBehaviorActionPrivate::QStartObjectBehaviorActionPrivate()
+{
+}
+
+QStartObjectBehaviorActionPrivate::~QStartObjectBehaviorActionPrivate()
+{
+}
 
 /*!
     \class QStartObjectBehaviorAction
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QStartObjectBehaviorAction::QStartObjectBehaviorAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QStartObjectBehaviorActionPrivate)
 {
 }
 
 QStartObjectBehaviorAction::~QStartObjectBehaviorAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QStartObjectBehaviorAction::~QStartObjectBehaviorAction()
  */
 QInputPin *QStartObjectBehaviorAction::object() const
 {
+    return d_ptr->object;
 }
 
 void QStartObjectBehaviorAction::setObject(const QInputPin *object)
 {
+    d_ptr->object = const_cast<QInputPin *>(object);
 }
 
 #include "moc_qstartobjectbehavioraction.cpp"

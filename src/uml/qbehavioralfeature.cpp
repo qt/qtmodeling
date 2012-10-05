@@ -40,9 +40,38 @@
 ****************************************************************************/
 
 #include "qbehavioralfeature.h"
-//#include "qbehavioralfeature_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QBehavioralFeaturePrivate
+{
+public:
+    explicit QBehavioralFeaturePrivate();
+    virtual ~QBehavioralFeaturePrivate();
+
+    QtUml::CallConcurrencyKind concurrency;
+    bool isAbstract;
+    QSet<QBehavior *> *methods;
+    QList<QParameter *> *ownedParameters;
+    QSet<QParameterSet *> *ownedParameterSets;
+    QSet<QType *> *raisedExceptions;
+};
+
+QBehavioralFeaturePrivate::QBehavioralFeaturePrivate() :
+    methods(new QSet<QBehavior *>),
+    ownedParameters(new QList<QParameter *>),
+    ownedParameterSets(new QSet<QParameterSet *>),
+    raisedExceptions(new QSet<QType *>)
+{
+}
+
+QBehavioralFeaturePrivate::~QBehavioralFeaturePrivate()
+{
+    delete methods;
+    delete ownedParameters;
+    delete ownedParameterSets;
+    delete raisedExceptions;
+}
 
 /*!
     \class QBehavioralFeature
@@ -53,11 +82,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QBehavioralFeature::QBehavioralFeature()
+    : d_ptr(new QBehavioralFeaturePrivate)
 {
 }
 
 QBehavioralFeature::~QBehavioralFeature()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,10 +96,12 @@ QBehavioralFeature::~QBehavioralFeature()
  */
 QtUml::CallConcurrencyKind QBehavioralFeature::concurrency() const
 {
+    return d_ptr->concurrency;
 }
 
 void QBehavioralFeature::setConcurrency(QtUml::CallConcurrencyKind concurrency)
 {
+    d_ptr->concurrency = concurrency;
 }
 
 /*!
@@ -76,10 +109,12 @@ void QBehavioralFeature::setConcurrency(QtUml::CallConcurrencyKind concurrency)
  */
 bool QBehavioralFeature::isAbstract() const
 {
+    return d_ptr->isAbstract;
 }
 
 void QBehavioralFeature::setAbstract(bool isAbstract)
 {
+    d_ptr->isAbstract = isAbstract;
 }
 
 /*!
@@ -87,14 +122,17 @@ void QBehavioralFeature::setAbstract(bool isAbstract)
  */
 const QSet<QBehavior *> *QBehavioralFeature::methods() const
 {
+    return d_ptr->methods;
 }
 
 void QBehavioralFeature::addMethod(const QBehavior *method)
 {
+    d_ptr->methods->insert(const_cast<QBehavior *>(method));
 }
 
 void QBehavioralFeature::removeMethod(const QBehavior *method)
 {
+    d_ptr->methods->remove(const_cast<QBehavior *>(method));
 }
 
 /*!
@@ -102,14 +140,17 @@ void QBehavioralFeature::removeMethod(const QBehavior *method)
  */
 const QList<QParameter *> *QBehavioralFeature::ownedParameters() const
 {
+    return d_ptr->ownedParameters;
 }
 
 void QBehavioralFeature::addOwnedParameter(const QParameter *ownedParameter)
 {
+    d_ptr->ownedParameters->append(const_cast<QParameter *>(ownedParameter));
 }
 
 void QBehavioralFeature::removeOwnedParameter(const QParameter *ownedParameter)
 {
+    d_ptr->ownedParameters->removeAll(const_cast<QParameter *>(ownedParameter));
 }
 
 /*!
@@ -117,14 +158,17 @@ void QBehavioralFeature::removeOwnedParameter(const QParameter *ownedParameter)
  */
 const QSet<QParameterSet *> *QBehavioralFeature::ownedParameterSets() const
 {
+    return d_ptr->ownedParameterSets;
 }
 
 void QBehavioralFeature::addOwnedParameterSet(const QParameterSet *ownedParameterSet)
 {
+    d_ptr->ownedParameterSets->insert(const_cast<QParameterSet *>(ownedParameterSet));
 }
 
 void QBehavioralFeature::removeOwnedParameterSet(const QParameterSet *ownedParameterSet)
 {
+    d_ptr->ownedParameterSets->remove(const_cast<QParameterSet *>(ownedParameterSet));
 }
 
 /*!
@@ -132,14 +176,17 @@ void QBehavioralFeature::removeOwnedParameterSet(const QParameterSet *ownedParam
  */
 const QSet<QType *> *QBehavioralFeature::raisedExceptions() const
 {
+    return d_ptr->raisedExceptions;
 }
 
 void QBehavioralFeature::addRaisedException(const QType *raisedException)
 {
+    d_ptr->raisedExceptions->insert(const_cast<QType *>(raisedException));
 }
 
 void QBehavioralFeature::removeRaisedException(const QType *raisedException)
 {
+    d_ptr->raisedExceptions->remove(const_cast<QType *>(raisedException));
 }
 
 /*!
@@ -147,6 +194,7 @@ void QBehavioralFeature::removeRaisedException(const QType *raisedException)
  */
 bool QBehavioralFeature::isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const
 {
+    qWarning("To be implemented");
 }
 
 QT_END_NAMESPACE_QTUML

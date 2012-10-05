@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qlinkendcreationdata.h"
-//#include "qlinkendcreationdata_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QLinkEndCreationDataPrivate
+{
+public:
+    explicit QLinkEndCreationDataPrivate();
+    virtual ~QLinkEndCreationDataPrivate();
+
+    bool isReplaceAll;
+    QInputPin *insertAt;
+};
+
+QLinkEndCreationDataPrivate::QLinkEndCreationDataPrivate()
+{
+}
+
+QLinkEndCreationDataPrivate::~QLinkEndCreationDataPrivate()
+{
+}
 
 /*!
     \class QLinkEndCreationData
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QLinkEndCreationData::QLinkEndCreationData(QObject *parent)
-    : QLinkEndData(parent)
+    : QLinkEndData(parent), d_ptr(new QLinkEndCreationDataPrivate)
 {
 }
 
 QLinkEndCreationData::~QLinkEndCreationData()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QLinkEndCreationData::~QLinkEndCreationData()
  */
 bool QLinkEndCreationData::isReplaceAll() const
 {
+    return d_ptr->isReplaceAll;
 }
 
 void QLinkEndCreationData::setReplaceAll(bool isReplaceAll)
 {
+    d_ptr->isReplaceAll = isReplaceAll;
 }
 
 /*!
@@ -77,10 +97,12 @@ void QLinkEndCreationData::setReplaceAll(bool isReplaceAll)
  */
 QInputPin *QLinkEndCreationData::insertAt() const
 {
+    return d_ptr->insertAt;
 }
 
 void QLinkEndCreationData::setInsertAt(const QInputPin *insertAt)
 {
+    d_ptr->insertAt = const_cast<QInputPin *>(insertAt);
 }
 
 #include "moc_qlinkendcreationdata.cpp"

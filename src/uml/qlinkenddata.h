@@ -75,11 +75,14 @@ class Q_UML_EXPORT QLinkEndData : public QObject, public QElement
     Q_PROPERTY(const QSet<QQualifierValue *> * qualifiers READ qualifiers)
     Q_PROPERTY(QInputPin * value READ value WRITE setValue)
 
+    Q_DISABLE_COPY(QLinkEndData)
+    Q_DECLARE_PRIVATE(QLinkEndData)
+
 public:
     explicit QLinkEndData(QObject *parent = 0);
     virtual ~QLinkEndData();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QProperty *end() const;
     void setEnd(const QProperty *end);
     const QSet<QQualifierValue *> *qualifiers() const;
@@ -89,8 +92,7 @@ public:
     void setValue(const QInputPin *value);
 
 private:
-    Q_DISABLE_COPY(QLinkEndData)
-    Q_DECLARE_PRIVATE(QLinkEndData)
+    QLinkEndDataPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

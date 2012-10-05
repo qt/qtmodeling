@@ -104,19 +104,21 @@ class Q_UML_EXPORT QCreateObjectAction : public QObject, public QAction
     Q_PROPERTY(QClassifier * classifier READ classifier WRITE setClassifier)
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
+    Q_DISABLE_COPY(QCreateObjectAction)
+    Q_DECLARE_PRIVATE(QCreateObjectAction)
+
 public:
     explicit QCreateObjectAction(QObject *parent = 0);
     virtual ~QCreateObjectAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QClassifier *classifier() const;
     void setClassifier(const QClassifier *classifier);
     QOutputPin *result() const;
     void setResult(const QOutputPin *result);
 
 private:
-    Q_DISABLE_COPY(QCreateObjectAction)
-    Q_DECLARE_PRIVATE(QCreateObjectAction)
+    QCreateObjectActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

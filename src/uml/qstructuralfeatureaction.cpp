@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qstructuralfeatureaction.h"
-//#include "qstructuralfeatureaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QStructuralFeatureActionPrivate
+{
+public:
+    explicit QStructuralFeatureActionPrivate();
+    virtual ~QStructuralFeatureActionPrivate();
+
+    QInputPin *object;
+    QStructuralFeature *structuralFeature;
+};
+
+QStructuralFeatureActionPrivate::QStructuralFeatureActionPrivate()
+{
+}
+
+QStructuralFeatureActionPrivate::~QStructuralFeatureActionPrivate()
+{
+}
 
 /*!
     \class QStructuralFeatureAction
@@ -53,11 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QStructuralFeatureAction::QStructuralFeatureAction()
+    : d_ptr(new QStructuralFeatureActionPrivate)
 {
 }
 
 QStructuralFeatureAction::~QStructuralFeatureAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,10 +84,12 @@ QStructuralFeatureAction::~QStructuralFeatureAction()
  */
 QInputPin *QStructuralFeatureAction::object() const
 {
+    return d_ptr->object;
 }
 
 void QStructuralFeatureAction::setObject(const QInputPin *object)
 {
+    d_ptr->object = const_cast<QInputPin *>(object);
 }
 
 /*!
@@ -76,10 +97,12 @@ void QStructuralFeatureAction::setObject(const QInputPin *object)
  */
 QStructuralFeature *QStructuralFeatureAction::structuralFeature() const
 {
+    return d_ptr->structuralFeature;
 }
 
 void QStructuralFeatureAction::setStructuralFeature(const QStructuralFeature *structuralFeature)
 {
+    d_ptr->structuralFeature = const_cast<QStructuralFeature *>(structuralFeature);
 }
 
 QT_END_NAMESPACE_QTUML

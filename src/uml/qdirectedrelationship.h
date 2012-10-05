@@ -60,15 +60,21 @@ class QElement;
 
 class Q_UML_EXPORT QDirectedRelationship : public QRelationship
 {
+    Q_DISABLE_COPY(QDirectedRelationship)
+    Q_DECLARE_PRIVATE(QDirectedRelationship)
+
 public:
     virtual ~QDirectedRelationship();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QElement *> *sources() const;
     const QSet<QElement *> *targets() const;
 
 protected:
     explicit QDirectedRelationship();
+
+private:
+    QDirectedRelationshipPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

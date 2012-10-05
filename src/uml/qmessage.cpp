@@ -40,9 +40,33 @@
 ****************************************************************************/
 
 #include "qmessage.h"
-//#include "qmessage_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QMessagePrivate
+{
+public:
+    explicit QMessagePrivate();
+    virtual ~QMessagePrivate();
+
+    QtUml::MessageSort messageSort;
+    QList<QValueSpecification *> *arguments;
+    QConnector *connector;
+    QInteraction *interaction;
+    QMessageEnd *receiveEvent;
+    QMessageEnd *sendEvent;
+    QNamedElement *signature;
+};
+
+QMessagePrivate::QMessagePrivate() :
+    arguments(new QList<QValueSpecification *>)
+{
+}
+
+QMessagePrivate::~QMessagePrivate()
+{
+    delete arguments;
+}
 
 /*!
     \class QMessage
@@ -53,12 +77,21 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QMessage::QMessage(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QMessagePrivate)
 {
 }
 
 QMessage::~QMessage()
 {
+    delete d_ptr;
+}
+
+/*!
+    The derived kind of the Message (complete, lost, found or unknown)
+ */
+QtUml::MessageKind QMessage::messageKind() const
+{
+    qWarning("To be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -66,10 +99,12 @@ QMessage::~QMessage()
  */
 QtUml::MessageSort QMessage::messageSort() const
 {
+    return d_ptr->messageSort;
 }
 
 void QMessage::setMessageSort(QtUml::MessageSort messageSort)
 {
+    d_ptr->messageSort = messageSort;
 }
 
 /*!
@@ -77,14 +112,17 @@ void QMessage::setMessageSort(QtUml::MessageSort messageSort)
  */
 const QList<QValueSpecification *> *QMessage::arguments() const
 {
+    return d_ptr->arguments;
 }
 
 void QMessage::addArgument(const QValueSpecification *argument)
 {
+    d_ptr->arguments->append(const_cast<QValueSpecification *>(argument));
 }
 
 void QMessage::removeArgument(const QValueSpecification *argument)
 {
+    d_ptr->arguments->removeAll(const_cast<QValueSpecification *>(argument));
 }
 
 /*!
@@ -92,10 +130,12 @@ void QMessage::removeArgument(const QValueSpecification *argument)
  */
 QConnector *QMessage::connector() const
 {
+    return d_ptr->connector;
 }
 
 void QMessage::setConnector(const QConnector *connector)
 {
+    d_ptr->connector = const_cast<QConnector *>(connector);
 }
 
 /*!
@@ -103,10 +143,12 @@ void QMessage::setConnector(const QConnector *connector)
  */
 QInteraction *QMessage::interaction() const
 {
+    return d_ptr->interaction;
 }
 
 void QMessage::setInteraction(const QInteraction *interaction)
 {
+    d_ptr->interaction = const_cast<QInteraction *>(interaction);
 }
 
 /*!
@@ -114,10 +156,12 @@ void QMessage::setInteraction(const QInteraction *interaction)
  */
 QMessageEnd *QMessage::receiveEvent() const
 {
+    return d_ptr->receiveEvent;
 }
 
 void QMessage::setReceiveEvent(const QMessageEnd *receiveEvent)
 {
+    d_ptr->receiveEvent = const_cast<QMessageEnd *>(receiveEvent);
 }
 
 /*!
@@ -125,10 +169,12 @@ void QMessage::setReceiveEvent(const QMessageEnd *receiveEvent)
  */
 QMessageEnd *QMessage::sendEvent() const
 {
+    return d_ptr->sendEvent;
 }
 
 void QMessage::setSendEvent(const QMessageEnd *sendEvent)
 {
+    d_ptr->sendEvent = const_cast<QMessageEnd *>(sendEvent);
 }
 
 /*!
@@ -136,17 +182,12 @@ void QMessage::setSendEvent(const QMessageEnd *sendEvent)
  */
 QNamedElement *QMessage::signature() const
 {
+    return d_ptr->signature;
 }
 
 void QMessage::setSignature(const QNamedElement *signature)
 {
-}
-
-/*!
-    Missing derivation for Message::/messageKind : MessageKind
- */
-QtUml::MessageKind QMessage::messageKind() const
-{
+    d_ptr->signature = const_cast<QNamedElement *>(signature);
 }
 
 #include "moc_qmessage.cpp"

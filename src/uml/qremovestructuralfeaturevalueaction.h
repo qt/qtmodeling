@@ -111,21 +111,23 @@ class Q_UML_EXPORT QRemoveStructuralFeatureValueAction : public QObject, public 
     Q_PROPERTY(bool isRemoveDuplicates READ isRemoveDuplicates WRITE setRemoveDuplicates)
     Q_PROPERTY(QInputPin * removeAt READ removeAt WRITE setRemoveAt)
 
+    Q_DISABLE_COPY(QRemoveStructuralFeatureValueAction)
+    Q_DECLARE_PRIVATE(QRemoveStructuralFeatureValueAction)
+
 public:
     explicit QRemoveStructuralFeatureValueAction(QObject *parent = 0);
     virtual ~QRemoveStructuralFeatureValueAction();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isRemoveDuplicates() const;
     void setRemoveDuplicates(bool isRemoveDuplicates);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QInputPin *removeAt() const;
     void setRemoveAt(const QInputPin *removeAt);
 
 private:
-    Q_DISABLE_COPY(QRemoveStructuralFeatureValueAction)
-    Q_DECLARE_PRIVATE(QRemoveStructuralFeatureValueAction)
+    QRemoveStructuralFeatureValueActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

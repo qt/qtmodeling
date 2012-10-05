@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qinstancevalue.h"
-//#include "qinstancevalue_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QInstanceValuePrivate
+{
+public:
+    explicit QInstanceValuePrivate();
+    virtual ~QInstanceValuePrivate();
+
+    QInstanceSpecification *instance;
+};
+
+QInstanceValuePrivate::QInstanceValuePrivate()
+{
+}
+
+QInstanceValuePrivate::~QInstanceValuePrivate()
+{
+}
 
 /*!
     \class QInstanceValue
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QInstanceValue::QInstanceValue(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QInstanceValuePrivate)
 {
 }
 
 QInstanceValue::~QInstanceValue()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QInstanceValue::~QInstanceValue()
  */
 QInstanceSpecification *QInstanceValue::instance() const
 {
+    return d_ptr->instance;
 }
 
 void QInstanceValue::setInstance(const QInstanceSpecification *instance)
 {
+    d_ptr->instance = const_cast<QInstanceSpecification *>(instance);
 }
 
 #include "moc_qinstancevalue.cpp"

@@ -40,9 +40,30 @@
 ****************************************************************************/
 
 #include "qexceptionhandler.h"
-//#include "qexceptionhandler_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QExceptionHandlerPrivate
+{
+public:
+    explicit QExceptionHandlerPrivate();
+    virtual ~QExceptionHandlerPrivate();
+
+    QObjectNode *exceptionInput;
+    QSet<QClassifier *> *exceptionTypes;
+    QExecutableNode *handlerBody;
+    QExecutableNode *protectedNode;
+};
+
+QExceptionHandlerPrivate::QExceptionHandlerPrivate() :
+    exceptionTypes(new QSet<QClassifier *>)
+{
+}
+
+QExceptionHandlerPrivate::~QExceptionHandlerPrivate()
+{
+    delete exceptionTypes;
+}
 
 /*!
     \class QExceptionHandler
@@ -53,12 +74,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QExceptionHandler::QExceptionHandler(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QExceptionHandlerPrivate)
 {
 }
 
 QExceptionHandler::~QExceptionHandler()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +88,12 @@ QExceptionHandler::~QExceptionHandler()
  */
 QObjectNode *QExceptionHandler::exceptionInput() const
 {
+    return d_ptr->exceptionInput;
 }
 
 void QExceptionHandler::setExceptionInput(const QObjectNode *exceptionInput)
 {
+    d_ptr->exceptionInput = const_cast<QObjectNode *>(exceptionInput);
 }
 
 /*!
@@ -77,14 +101,17 @@ void QExceptionHandler::setExceptionInput(const QObjectNode *exceptionInput)
  */
 const QSet<QClassifier *> *QExceptionHandler::exceptionTypes() const
 {
+    return d_ptr->exceptionTypes;
 }
 
 void QExceptionHandler::addExceptionType(const QClassifier *exceptionType)
 {
+    d_ptr->exceptionTypes->insert(const_cast<QClassifier *>(exceptionType));
 }
 
 void QExceptionHandler::removeExceptionType(const QClassifier *exceptionType)
 {
+    d_ptr->exceptionTypes->remove(const_cast<QClassifier *>(exceptionType));
 }
 
 /*!
@@ -92,10 +119,12 @@ void QExceptionHandler::removeExceptionType(const QClassifier *exceptionType)
  */
 QExecutableNode *QExceptionHandler::handlerBody() const
 {
+    return d_ptr->handlerBody;
 }
 
 void QExceptionHandler::setHandlerBody(const QExecutableNode *handlerBody)
 {
+    d_ptr->handlerBody = const_cast<QExecutableNode *>(handlerBody);
 }
 
 /*!
@@ -103,10 +132,12 @@ void QExceptionHandler::setHandlerBody(const QExecutableNode *handlerBody)
  */
 QExecutableNode *QExceptionHandler::protectedNode() const
 {
+    return d_ptr->protectedNode;
 }
 
 void QExceptionHandler::setProtectedNode(const QExecutableNode *protectedNode)
 {
+    d_ptr->protectedNode = const_cast<QExecutableNode *>(protectedNode);
 }
 
 #include "moc_qexceptionhandler.cpp"

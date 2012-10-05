@@ -61,10 +61,13 @@ class QParameterableElement;
 
 class Q_UML_EXPORT QValueSpecification : public QTypedElement, public QPackageableElement
 {
+    Q_DISABLE_COPY(QValueSpecification)
+    Q_DECLARE_PRIVATE(QValueSpecification)
+
 public:
     virtual ~QValueSpecification();
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     bool booleanValue() const;
     qint32 integerValue() const;
     bool isCompatibleWith(const QParameterableElement *p) const;
@@ -76,6 +79,9 @@ public:
 
 protected:
     explicit QValueSpecification();
+
+private:
+    QValueSpecificationPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

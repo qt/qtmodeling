@@ -81,11 +81,14 @@ class Q_UML_EXPORT QTrigger : public QObject, public QNamedElement
     Q_PROPERTY(QEvent * event READ event WRITE setEvent)
     Q_PROPERTY(const QSet<QPort *> * ports READ ports)
 
+    Q_DISABLE_COPY(QTrigger)
+    Q_DECLARE_PRIVATE(QTrigger)
+
 public:
     explicit QTrigger(QObject *parent = 0);
     virtual ~QTrigger();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QEvent *event() const;
     void setEvent(const QEvent *event);
     const QSet<QPort *> *ports() const;
@@ -93,8 +96,7 @@ public:
     void removePort(const QPort *port);
 
 private:
-    Q_DISABLE_COPY(QTrigger)
-    Q_DECLARE_PRIVATE(QTrigger)
+    QTriggerPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -73,11 +73,14 @@ class Q_UML_EXPORT QTemplateParameterSubstitution : public QObject, public QElem
     Q_PROPERTY(QParameterableElement * ownedActual READ ownedActual WRITE setOwnedActual)
     Q_PROPERTY(QTemplateBinding * templateBinding READ templateBinding WRITE setTemplateBinding)
 
+    Q_DISABLE_COPY(QTemplateParameterSubstitution)
+    Q_DECLARE_PRIVATE(QTemplateParameterSubstitution)
+
 public:
     explicit QTemplateParameterSubstitution(QObject *parent = 0);
     virtual ~QTemplateParameterSubstitution();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QParameterableElement *actual() const;
     void setActual(const QParameterableElement *actual);
     QTemplateParameter *formal() const;
@@ -88,8 +91,7 @@ public:
     void setTemplateBinding(const QTemplateBinding *templateBinding);
 
 private:
-    Q_DISABLE_COPY(QTemplateParameterSubstitution)
-    Q_DECLARE_PRIVATE(QTemplateParameterSubstitution)
+    QTemplateParameterSubstitutionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

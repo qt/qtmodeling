@@ -121,18 +121,20 @@ class Q_UML_EXPORT QSignal : public QObject, public QClassifier
     // From QSignal
     Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
 
+    Q_DISABLE_COPY(QSignal)
+    Q_DECLARE_PRIVATE(QSignal)
+
 public:
     explicit QSignal(QObject *parent = 0);
     virtual ~QSignal();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QList<QProperty *> *ownedAttributes() const;
     void addOwnedAttribute(const QProperty *ownedAttribute);
     void removeOwnedAttribute(const QProperty *ownedAttribute);
 
 private:
-    Q_DISABLE_COPY(QSignal)
-    Q_DECLARE_PRIVATE(QSignal)
+    QSignalPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

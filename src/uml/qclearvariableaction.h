@@ -101,13 +101,15 @@ class Q_UML_EXPORT QClearVariableAction : public QObject, public QVariableAction
     // From QVariableAction
     Q_PROPERTY(QVariable * variable READ variable WRITE setVariable)
 
+    Q_DISABLE_COPY(QClearVariableAction)
+    Q_DECLARE_PRIVATE(QClearVariableAction)
+
 public:
     explicit QClearVariableAction(QObject *parent = 0);
     virtual ~QClearVariableAction();
 
 private:
-    Q_DISABLE_COPY(QClearVariableAction)
-    Q_DECLARE_PRIVATE(QClearVariableAction)
+    QClearVariableActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

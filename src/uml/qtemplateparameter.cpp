@@ -40,9 +40,29 @@
 ****************************************************************************/
 
 #include "qtemplateparameter.h"
-//#include "qtemplateparameter_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QTemplateParameterPrivate
+{
+public:
+    explicit QTemplateParameterPrivate();
+    virtual ~QTemplateParameterPrivate();
+
+    QParameterableElement *default_;
+    QParameterableElement *ownedDefault;
+    QParameterableElement *ownedParameteredElement;
+    QParameterableElement *parameteredElement;
+    QTemplateSignature *signature;
+};
+
+QTemplateParameterPrivate::QTemplateParameterPrivate()
+{
+}
+
+QTemplateParameterPrivate::~QTemplateParameterPrivate()
+{
+}
 
 /*!
     \class QTemplateParameter
@@ -53,12 +73,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QTemplateParameter::QTemplateParameter(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QTemplateParameterPrivate)
 {
 }
 
 QTemplateParameter::~QTemplateParameter()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +87,12 @@ QTemplateParameter::~QTemplateParameter()
  */
 QParameterableElement *QTemplateParameter::default_() const
 {
+    return d_ptr->default_;
 }
 
 void QTemplateParameter::setDefault_(const QParameterableElement *default_)
 {
+    d_ptr->default_ = const_cast<QParameterableElement *>(default_);
 }
 
 /*!
@@ -77,10 +100,12 @@ void QTemplateParameter::setDefault_(const QParameterableElement *default_)
  */
 QParameterableElement *QTemplateParameter::ownedDefault() const
 {
+    return d_ptr->ownedDefault;
 }
 
 void QTemplateParameter::setOwnedDefault(const QParameterableElement *ownedDefault)
 {
+    d_ptr->ownedDefault = const_cast<QParameterableElement *>(ownedDefault);
 }
 
 /*!
@@ -88,10 +113,12 @@ void QTemplateParameter::setOwnedDefault(const QParameterableElement *ownedDefau
  */
 QParameterableElement *QTemplateParameter::ownedParameteredElement() const
 {
+    return d_ptr->ownedParameteredElement;
 }
 
 void QTemplateParameter::setOwnedParameteredElement(const QParameterableElement *ownedParameteredElement)
 {
+    d_ptr->ownedParameteredElement = const_cast<QParameterableElement *>(ownedParameteredElement);
 }
 
 /*!
@@ -99,10 +126,12 @@ void QTemplateParameter::setOwnedParameteredElement(const QParameterableElement 
  */
 QParameterableElement *QTemplateParameter::parameteredElement() const
 {
+    return d_ptr->parameteredElement;
 }
 
 void QTemplateParameter::setParameteredElement(const QParameterableElement *parameteredElement)
 {
+    d_ptr->parameteredElement = const_cast<QParameterableElement *>(parameteredElement);
 }
 
 /*!
@@ -110,10 +139,12 @@ void QTemplateParameter::setParameteredElement(const QParameterableElement *para
  */
 QTemplateSignature *QTemplateParameter::signature() const
 {
+    return d_ptr->signature;
 }
 
 void QTemplateParameter::setSignature(const QTemplateSignature *signature)
 {
+    d_ptr->signature = const_cast<QTemplateSignature *>(signature);
 }
 
 #include "moc_qtemplateparameter.cpp"

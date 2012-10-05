@@ -70,17 +70,20 @@ class Q_UML_EXPORT QConditionalNode : public QStructuredActivityNode
     Q_PROPERTY(const QSet<QClause *> * clauses READ clauses)
     Q_PROPERTY(const QList<QOutputPin *> * results READ results)
 
+    Q_DISABLE_COPY(QConditionalNode)
+    Q_DECLARE_PRIVATE(QConditionalNode)
+
 public:
     explicit QConditionalNode(QObject *parent = 0);
     virtual ~QConditionalNode();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isAssured() const;
     void setAssured(bool isAssured);
     bool isDeterminate() const;
     void setDeterminate(bool isDeterminate);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QClause *> *clauses() const;
     void addClause(const QClause *clause);
     void removeClause(const QClause *clause);
@@ -89,8 +92,7 @@ public:
     void removeResult(const QOutputPin *result);
 
 private:
-    Q_DISABLE_COPY(QConditionalNode)
-    Q_DECLARE_PRIVATE(QConditionalNode)
+    QConditionalNodePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

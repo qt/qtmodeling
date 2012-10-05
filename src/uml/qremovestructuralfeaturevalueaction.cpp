@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qremovestructuralfeaturevalueaction.h"
-//#include "qremovestructuralfeaturevalueaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QRemoveStructuralFeatureValueActionPrivate
+{
+public:
+    explicit QRemoveStructuralFeatureValueActionPrivate();
+    virtual ~QRemoveStructuralFeatureValueActionPrivate();
+
+    bool isRemoveDuplicates;
+    QInputPin *removeAt;
+};
+
+QRemoveStructuralFeatureValueActionPrivate::QRemoveStructuralFeatureValueActionPrivate()
+{
+}
+
+QRemoveStructuralFeatureValueActionPrivate::~QRemoveStructuralFeatureValueActionPrivate()
+{
+}
 
 /*!
     \class QRemoveStructuralFeatureValueAction
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QRemoveStructuralFeatureValueAction::QRemoveStructuralFeatureValueAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QRemoveStructuralFeatureValueActionPrivate)
 {
 }
 
 QRemoveStructuralFeatureValueAction::~QRemoveStructuralFeatureValueAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QRemoveStructuralFeatureValueAction::~QRemoveStructuralFeatureValueAction()
  */
 bool QRemoveStructuralFeatureValueAction::isRemoveDuplicates() const
 {
+    return d_ptr->isRemoveDuplicates;
 }
 
 void QRemoveStructuralFeatureValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
 {
+    d_ptr->isRemoveDuplicates = isRemoveDuplicates;
 }
 
 /*!
@@ -77,10 +97,12 @@ void QRemoveStructuralFeatureValueAction::setRemoveDuplicates(bool isRemoveDupli
  */
 QInputPin *QRemoveStructuralFeatureValueAction::removeAt() const
 {
+    return d_ptr->removeAt;
 }
 
 void QRemoveStructuralFeatureValueAction::setRemoveAt(const QInputPin *removeAt)
 {
+    d_ptr->removeAt = const_cast<QInputPin *>(removeAt);
 }
 
 #include "moc_qremovestructuralfeaturevalueaction.cpp"

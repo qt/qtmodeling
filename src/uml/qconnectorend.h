@@ -69,8 +69,8 @@ class Q_UML_EXPORT QConnectorEnd : public QObject, public QMultiplicityElement
     // From QMultiplicityElement
     Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
     Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
-    Q_PROPERTY(qint32 lower READ lower)
-    Q_PROPERTY(qint32 upper READ upper)
+    Q_PROPERTY(qint32 lower READ lower WRITE setLower)
+    Q_PROPERTY(qint32 upper READ upper WRITE setUpper)
     Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
     Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
 
@@ -79,22 +79,22 @@ class Q_UML_EXPORT QConnectorEnd : public QObject, public QMultiplicityElement
     Q_PROPERTY(QProperty * partWithPort READ partWithPort WRITE setPartWithPort)
     Q_PROPERTY(QConnectableElement * role READ role WRITE setRole)
 
+    Q_DISABLE_COPY(QConnectorEnd)
+    Q_DECLARE_PRIVATE(QConnectorEnd)
+
 public:
     explicit QConnectorEnd(QObject *parent = 0);
     virtual ~QConnectorEnd();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
+    QProperty *definingEnd() const;
     QProperty *partWithPort() const;
     void setPartWithPort(const QProperty *partWithPort);
     QConnectableElement *role() const;
     void setRole(const QConnectableElement *role);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    QProperty *definingEnd() const;
-
 private:
-    Q_DISABLE_COPY(QConnectorEnd)
-    Q_DECLARE_PRIVATE(QConnectorEnd)
+    QConnectorEndPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

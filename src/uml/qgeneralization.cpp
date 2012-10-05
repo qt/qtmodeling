@@ -40,9 +40,30 @@
 ****************************************************************************/
 
 #include "qgeneralization.h"
-//#include "qgeneralization_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QGeneralizationPrivate
+{
+public:
+    explicit QGeneralizationPrivate();
+    virtual ~QGeneralizationPrivate();
+
+    bool isSubstitutable;
+    QClassifier *general;
+    QSet<QGeneralizationSet *> *generalizationSets;
+    QClassifier *specific;
+};
+
+QGeneralizationPrivate::QGeneralizationPrivate() :
+    generalizationSets(new QSet<QGeneralizationSet *>)
+{
+}
+
+QGeneralizationPrivate::~QGeneralizationPrivate()
+{
+    delete generalizationSets;
+}
 
 /*!
     \class QGeneralization
@@ -53,12 +74,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QGeneralization::QGeneralization(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QGeneralizationPrivate)
 {
 }
 
 QGeneralization::~QGeneralization()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +88,12 @@ QGeneralization::~QGeneralization()
  */
 bool QGeneralization::isSubstitutable() const
 {
+    return d_ptr->isSubstitutable;
 }
 
 void QGeneralization::setSubstitutable(bool isSubstitutable)
 {
+    d_ptr->isSubstitutable = isSubstitutable;
 }
 
 /*!
@@ -77,10 +101,12 @@ void QGeneralization::setSubstitutable(bool isSubstitutable)
  */
 QClassifier *QGeneralization::general() const
 {
+    return d_ptr->general;
 }
 
 void QGeneralization::setGeneral(const QClassifier *general)
 {
+    d_ptr->general = const_cast<QClassifier *>(general);
 }
 
 /*!
@@ -88,14 +114,17 @@ void QGeneralization::setGeneral(const QClassifier *general)
  */
 const QSet<QGeneralizationSet *> *QGeneralization::generalizationSets() const
 {
+    return d_ptr->generalizationSets;
 }
 
 void QGeneralization::addGeneralizationSet(const QGeneralizationSet *generalizationSet)
 {
+    d_ptr->generalizationSets->insert(const_cast<QGeneralizationSet *>(generalizationSet));
 }
 
 void QGeneralization::removeGeneralizationSet(const QGeneralizationSet *generalizationSet)
 {
+    d_ptr->generalizationSets->remove(const_cast<QGeneralizationSet *>(generalizationSet));
 }
 
 /*!
@@ -103,10 +132,12 @@ void QGeneralization::removeGeneralizationSet(const QGeneralizationSet *generali
  */
 QClassifier *QGeneralization::specific() const
 {
+    return d_ptr->specific;
 }
 
 void QGeneralization::setSpecific(const QClassifier *specific)
 {
+    d_ptr->specific = const_cast<QClassifier *>(specific);
 }
 
 #include "moc_qgeneralization.cpp"

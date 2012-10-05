@@ -104,23 +104,25 @@ class Q_UML_EXPORT QDestroyObjectAction : public QObject, public QAction
     Q_PROPERTY(bool isDestroyOwnedObjects READ isDestroyOwnedObjects WRITE setDestroyOwnedObjects)
     Q_PROPERTY(QInputPin * target READ target WRITE setTarget)
 
+    Q_DISABLE_COPY(QDestroyObjectAction)
+    Q_DECLARE_PRIVATE(QDestroyObjectAction)
+
 public:
     explicit QDestroyObjectAction(QObject *parent = 0);
     virtual ~QDestroyObjectAction();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isDestroyLinks() const;
     void setDestroyLinks(bool isDestroyLinks);
     bool isDestroyOwnedObjects() const;
     void setDestroyOwnedObjects(bool isDestroyOwnedObjects);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QInputPin *target() const;
     void setTarget(const QInputPin *target);
 
 private:
-    Q_DISABLE_COPY(QDestroyObjectAction)
-    Q_DECLARE_PRIVATE(QDestroyObjectAction)
+    QDestroyObjectActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qreadselfaction.h"
-//#include "qreadselfaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QReadSelfActionPrivate
+{
+public:
+    explicit QReadSelfActionPrivate();
+    virtual ~QReadSelfActionPrivate();
+
+    QOutputPin *result;
+};
+
+QReadSelfActionPrivate::QReadSelfActionPrivate()
+{
+}
+
+QReadSelfActionPrivate::~QReadSelfActionPrivate()
+{
+}
 
 /*!
     \class QReadSelfAction
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QReadSelfAction::QReadSelfAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QReadSelfActionPrivate)
 {
 }
 
 QReadSelfAction::~QReadSelfAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QReadSelfAction::~QReadSelfAction()
  */
 QOutputPin *QReadSelfAction::result() const
 {
+    return d_ptr->result;
 }
 
 void QReadSelfAction::setResult(const QOutputPin *result)
 {
+    d_ptr->result = const_cast<QOutputPin *>(result);
 }
 
 #include "moc_qreadselfaction.cpp"

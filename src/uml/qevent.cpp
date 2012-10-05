@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qevent.h"
-//#include "qevent_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QEventPrivate
+{
+public:
+    explicit QEventPrivate();
+    virtual ~QEventPrivate();
+
+};
+
+QEventPrivate::QEventPrivate()
+{
+}
+
+QEventPrivate::~QEventPrivate()
+{
+}
 
 /*!
     \class QEvent
@@ -53,11 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QEvent::QEvent()
+    : d_ptr(new QEventPrivate)
 {
 }
 
 QEvent::~QEvent()
 {
+    delete d_ptr;
 }
 
 QT_END_NAMESPACE_QTUML

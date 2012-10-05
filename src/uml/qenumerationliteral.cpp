@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qenumerationliteral.h"
-//#include "qenumerationliteral_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QEnumerationLiteralPrivate
+{
+public:
+    explicit QEnumerationLiteralPrivate();
+    virtual ~QEnumerationLiteralPrivate();
+
+    QEnumeration *enumeration;
+};
+
+QEnumerationLiteralPrivate::QEnumerationLiteralPrivate()
+{
+}
+
+QEnumerationLiteralPrivate::~QEnumerationLiteralPrivate()
+{
+}
 
 /*!
     \class QEnumerationLiteral
@@ -53,12 +69,21 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QEnumerationLiteral::QEnumerationLiteral(QObject *parent)
-    : QInstanceSpecification(parent)
+    : QInstanceSpecification(parent), d_ptr(new QEnumerationLiteralPrivate)
 {
 }
 
 QEnumerationLiteral::~QEnumerationLiteral()
 {
+    delete d_ptr;
+}
+
+/*!
+    The classifier of this EnumerationLiteral derived to be equal to its enumeration.
+ */
+QEnumeration *QEnumerationLiteral::classifier() const
+{
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -66,17 +91,12 @@ QEnumerationLiteral::~QEnumerationLiteral()
  */
 QEnumeration *QEnumerationLiteral::enumeration() const
 {
+    return d_ptr->enumeration;
 }
 
 void QEnumerationLiteral::setEnumeration(const QEnumeration *enumeration)
 {
-}
-
-/*!
-    Missing derivation for EnumerationLiteral::/classifier : Enumeration
- */
-QEnumeration *QEnumerationLiteral::classifier() const
-{
+    d_ptr->enumeration = const_cast<QEnumeration *>(enumeration);
 }
 
 #include "moc_qenumerationliteral.cpp"

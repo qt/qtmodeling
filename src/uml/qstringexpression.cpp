@@ -40,9 +40,28 @@
 ****************************************************************************/
 
 #include "qstringexpression.h"
-//#include "qstringexpression_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QStringExpressionPrivate
+{
+public:
+    explicit QStringExpressionPrivate();
+    virtual ~QStringExpressionPrivate();
+
+    QStringExpression *owningExpression;
+    QSet<QStringExpression *> *subExpressions;
+};
+
+QStringExpressionPrivate::QStringExpressionPrivate() :
+    subExpressions(new QSet<QStringExpression *>)
+{
+}
+
+QStringExpressionPrivate::~QStringExpressionPrivate()
+{
+    delete subExpressions;
+}
 
 /*!
     \class QStringExpression
@@ -53,12 +72,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QStringExpression::QStringExpression(QObject *parent)
-    : QExpression(parent)
+    : QExpression(parent), d_ptr(new QStringExpressionPrivate)
 {
 }
 
 QStringExpression::~QStringExpression()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +86,12 @@ QStringExpression::~QStringExpression()
  */
 QStringExpression *QStringExpression::owningExpression() const
 {
+    return d_ptr->owningExpression;
 }
 
 void QStringExpression::setOwningExpression(const QStringExpression *owningExpression)
 {
+    d_ptr->owningExpression = const_cast<QStringExpression *>(owningExpression);
 }
 
 /*!
@@ -77,14 +99,17 @@ void QStringExpression::setOwningExpression(const QStringExpression *owningExpre
  */
 const QSet<QStringExpression *> *QStringExpression::subExpressions() const
 {
+    return d_ptr->subExpressions;
 }
 
 void QStringExpression::addSubExpression(const QStringExpression *subExpression)
 {
+    d_ptr->subExpressions->insert(const_cast<QStringExpression *>(subExpression));
 }
 
 void QStringExpression::removeSubExpression(const QStringExpression *subExpression)
 {
+    d_ptr->subExpressions->remove(const_cast<QStringExpression *>(subExpression));
 }
 
 /*!
@@ -92,6 +117,7 @@ void QStringExpression::removeSubExpression(const QStringExpression *subExpressi
  */
 QString QStringExpression::stringValue() const
 {
+    qWarning("To be implemented");
 }
 
 #include "moc_qstringexpression.cpp"

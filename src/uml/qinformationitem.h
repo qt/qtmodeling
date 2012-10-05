@@ -120,18 +120,20 @@ class Q_UML_EXPORT QInformationItem : public QObject, public QClassifier
     // From QInformationItem
     Q_PROPERTY(const QSet<QClassifier *> * represented READ represented)
 
+    Q_DISABLE_COPY(QInformationItem)
+    Q_DECLARE_PRIVATE(QInformationItem)
+
 public:
     explicit QInformationItem(QObject *parent = 0);
     virtual ~QInformationItem();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QClassifier *> *represented() const;
     void addRepresented(const QClassifier *represented);
     void removeRepresented(const QClassifier *represented);
 
 private:
-    Q_DISABLE_COPY(QInformationItem)
-    Q_DECLARE_PRIVATE(QInformationItem)
+    QInformationItemPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

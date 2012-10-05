@@ -75,13 +75,15 @@ class Q_UML_EXPORT QMessageOccurrenceSpecification : public QOccurrenceSpecifica
     // From QMessageEnd
     Q_PROPERTY(QMessage * message READ message WRITE setMessage)
 
+    Q_DISABLE_COPY(QMessageOccurrenceSpecification)
+    Q_DECLARE_PRIVATE(QMessageOccurrenceSpecification)
+
 public:
     explicit QMessageOccurrenceSpecification(QObject *parent = 0);
     virtual ~QMessageOccurrenceSpecification();
 
 private:
-    Q_DISABLE_COPY(QMessageOccurrenceSpecification)
-    Q_DECLARE_PRIVATE(QMessageOccurrenceSpecification)
+    QMessageOccurrenceSpecificationPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

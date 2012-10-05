@@ -58,13 +58,15 @@ class Q_UML_EXPORT QDataStoreNode : public QCentralBufferNode
 {
     Q_OBJECT
 
+    Q_DISABLE_COPY(QDataStoreNode)
+    Q_DECLARE_PRIVATE(QDataStoreNode)
+
 public:
     explicit QDataStoreNode(QObject *parent = 0);
     virtual ~QDataStoreNode();
 
 private:
-    Q_DISABLE_COPY(QDataStoreNode)
-    Q_DECLARE_PRIVATE(QDataStoreNode)
+    QDataStoreNodePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

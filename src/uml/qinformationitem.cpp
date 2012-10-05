@@ -40,9 +40,27 @@
 ****************************************************************************/
 
 #include "qinformationitem.h"
-//#include "qinformationitem_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QInformationItemPrivate
+{
+public:
+    explicit QInformationItemPrivate();
+    virtual ~QInformationItemPrivate();
+
+    QSet<QClassifier *> *represented;
+};
+
+QInformationItemPrivate::QInformationItemPrivate() :
+    represented(new QSet<QClassifier *>)
+{
+}
+
+QInformationItemPrivate::~QInformationItemPrivate()
+{
+    delete represented;
+}
 
 /*!
     \class QInformationItem
@@ -53,12 +71,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QInformationItem::QInformationItem(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QInformationItemPrivate)
 {
 }
 
 QInformationItem::~QInformationItem()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +85,17 @@ QInformationItem::~QInformationItem()
  */
 const QSet<QClassifier *> *QInformationItem::represented() const
 {
+    return d_ptr->represented;
 }
 
 void QInformationItem::addRepresented(const QClassifier *represented)
 {
+    d_ptr->represented->insert(const_cast<QClassifier *>(represented));
 }
 
 void QInformationItem::removeRepresented(const QClassifier *represented)
 {
+    d_ptr->represented->remove(const_cast<QClassifier *>(represented));
 }
 
 #include "moc_qinformationitem.cpp"

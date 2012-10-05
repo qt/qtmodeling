@@ -96,25 +96,27 @@ class Q_UML_EXPORT QObjectFlow : public QObject, public QActivityEdge
     Q_PROPERTY(QBehavior * selection READ selection WRITE setSelection)
     Q_PROPERTY(QBehavior * transformation READ transformation WRITE setTransformation)
 
+    Q_DISABLE_COPY(QObjectFlow)
+    Q_DECLARE_PRIVATE(QObjectFlow)
+
 public:
     explicit QObjectFlow(QObject *parent = 0);
     virtual ~QObjectFlow();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isMulticast() const;
     void setMulticast(bool isMulticast);
     bool isMultireceive() const;
     void setMultireceive(bool isMultireceive);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QBehavior *selection() const;
     void setSelection(const QBehavior *selection);
     QBehavior *transformation() const;
     void setTransformation(const QBehavior *transformation);
 
 private:
-    Q_DISABLE_COPY(QObjectFlow)
-    Q_DECLARE_PRIVATE(QObjectFlow)
+    QObjectFlowPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

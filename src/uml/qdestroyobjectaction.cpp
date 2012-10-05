@@ -40,9 +40,27 @@
 ****************************************************************************/
 
 #include "qdestroyobjectaction.h"
-//#include "qdestroyobjectaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QDestroyObjectActionPrivate
+{
+public:
+    explicit QDestroyObjectActionPrivate();
+    virtual ~QDestroyObjectActionPrivate();
+
+    bool isDestroyLinks;
+    bool isDestroyOwnedObjects;
+    QInputPin *target;
+};
+
+QDestroyObjectActionPrivate::QDestroyObjectActionPrivate()
+{
+}
+
+QDestroyObjectActionPrivate::~QDestroyObjectActionPrivate()
+{
+}
 
 /*!
     \class QDestroyObjectAction
@@ -53,12 +71,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QDestroyObjectAction::QDestroyObjectAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QDestroyObjectActionPrivate)
 {
 }
 
 QDestroyObjectAction::~QDestroyObjectAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +85,12 @@ QDestroyObjectAction::~QDestroyObjectAction()
  */
 bool QDestroyObjectAction::isDestroyLinks() const
 {
+    return d_ptr->isDestroyLinks;
 }
 
 void QDestroyObjectAction::setDestroyLinks(bool isDestroyLinks)
 {
+    d_ptr->isDestroyLinks = isDestroyLinks;
 }
 
 /*!
@@ -77,10 +98,12 @@ void QDestroyObjectAction::setDestroyLinks(bool isDestroyLinks)
  */
 bool QDestroyObjectAction::isDestroyOwnedObjects() const
 {
+    return d_ptr->isDestroyOwnedObjects;
 }
 
 void QDestroyObjectAction::setDestroyOwnedObjects(bool isDestroyOwnedObjects)
 {
+    d_ptr->isDestroyOwnedObjects = isDestroyOwnedObjects;
 }
 
 /*!
@@ -88,10 +111,12 @@ void QDestroyObjectAction::setDestroyOwnedObjects(bool isDestroyOwnedObjects)
  */
 QInputPin *QDestroyObjectAction::target() const
 {
+    return d_ptr->target;
 }
 
 void QDestroyObjectAction::setTarget(const QInputPin *target)
 {
+    d_ptr->target = const_cast<QInputPin *>(target);
 }
 
 #include "moc_qdestroyobjectaction.cpp"

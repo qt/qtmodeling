@@ -78,11 +78,14 @@ class Q_UML_EXPORT QClause : public QObject, public QElement
     Q_PROPERTY(const QSet<QClause *> * successorClauses READ successorClauses)
     Q_PROPERTY(const QSet<QExecutableNode *> * tests READ tests)
 
+    Q_DISABLE_COPY(QClause)
+    Q_DECLARE_PRIVATE(QClause)
+
 public:
     explicit QClause(QObject *parent = 0);
     virtual ~QClause();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QExecutableNode *> *bodies() const;
     void addBody(const QExecutableNode *body);
     void removeBody(const QExecutableNode *body);
@@ -102,8 +105,7 @@ public:
     void removeTest(const QExecutableNode *test);
 
 private:
-    Q_DISABLE_COPY(QClause)
-    Q_DECLARE_PRIVATE(QClause)
+    QClausePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

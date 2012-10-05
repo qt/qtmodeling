@@ -63,21 +63,23 @@ class Q_UML_EXPORT QLinkEndCreationData : public QLinkEndData
     Q_PROPERTY(bool isReplaceAll READ isReplaceAll WRITE setReplaceAll)
     Q_PROPERTY(QInputPin * insertAt READ insertAt WRITE setInsertAt)
 
+    Q_DISABLE_COPY(QLinkEndCreationData)
+    Q_DECLARE_PRIVATE(QLinkEndCreationData)
+
 public:
     explicit QLinkEndCreationData(QObject *parent = 0);
     virtual ~QLinkEndCreationData();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isReplaceAll() const;
     void setReplaceAll(bool isReplaceAll);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QInputPin *insertAt() const;
     void setInsertAt(const QInputPin *insertAt);
 
 private:
-    Q_DISABLE_COPY(QLinkEndCreationData)
-    Q_DECLARE_PRIVATE(QLinkEndCreationData)
+    QLinkEndCreationDataPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

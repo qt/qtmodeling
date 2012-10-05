@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qdatastorenode.h"
-//#include "qdatastorenode_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QDataStoreNodePrivate
+{
+public:
+    explicit QDataStoreNodePrivate();
+    virtual ~QDataStoreNodePrivate();
+
+};
+
+QDataStoreNodePrivate::QDataStoreNodePrivate()
+{
+}
+
+QDataStoreNodePrivate::~QDataStoreNodePrivate()
+{
+}
 
 /*!
     \class QDataStoreNode
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QDataStoreNode::QDataStoreNode(QObject *parent)
-    : QCentralBufferNode(parent)
+    : QCentralBufferNode(parent), d_ptr(new QDataStoreNodePrivate)
 {
 }
 
 QDataStoreNode::~QDataStoreNode()
 {
+    delete d_ptr;
 }
 
 #include "moc_qdatastorenode.cpp"

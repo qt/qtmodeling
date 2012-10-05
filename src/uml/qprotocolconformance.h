@@ -76,19 +76,21 @@ class Q_UML_EXPORT QProtocolConformance : public QObject, public QDirectedRelati
     Q_PROPERTY(QProtocolStateMachine * generalMachine READ generalMachine WRITE setGeneralMachine)
     Q_PROPERTY(QProtocolStateMachine * specificMachine READ specificMachine WRITE setSpecificMachine)
 
+    Q_DISABLE_COPY(QProtocolConformance)
+    Q_DECLARE_PRIVATE(QProtocolConformance)
+
 public:
     explicit QProtocolConformance(QObject *parent = 0);
     virtual ~QProtocolConformance();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QProtocolStateMachine *generalMachine() const;
     void setGeneralMachine(const QProtocolStateMachine *generalMachine);
     QProtocolStateMachine *specificMachine() const;
     void setSpecificMachine(const QProtocolStateMachine *specificMachine);
 
 private:
-    Q_DISABLE_COPY(QProtocolConformance)
-    Q_DECLARE_PRIVATE(QProtocolConformance)
+    QProtocolConformancePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

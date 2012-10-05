@@ -81,11 +81,14 @@ class Q_UML_EXPORT QParameterSet : public QObject, public QNamedElement
     Q_PROPERTY(const QSet<QConstraint *> * conditions READ conditions)
     Q_PROPERTY(const QSet<QParameter *> * parameters READ parameters)
 
+    Q_DISABLE_COPY(QParameterSet)
+    Q_DECLARE_PRIVATE(QParameterSet)
+
 public:
     explicit QParameterSet(QObject *parent = 0);
     virtual ~QParameterSet();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QConstraint *> *conditions() const;
     void addCondition(const QConstraint *condition);
     void removeCondition(const QConstraint *condition);
@@ -94,8 +97,7 @@ public:
     void removeParameter(const QParameter *parameter);
 
 private:
-    Q_DISABLE_COPY(QParameterSet)
-    Q_DECLARE_PRIVATE(QParameterSet)
+    QParameterSetPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

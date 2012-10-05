@@ -57,34 +57,42 @@ class QValueSpecification;
 
 class Q_UML_EXPORT QMultiplicityElement : public virtual QElement
 {
+    Q_DISABLE_COPY(QMultiplicityElement)
+    Q_DECLARE_PRIVATE(QMultiplicityElement)
+
 public:
     virtual ~QMultiplicityElement();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isOrdered() const;
     void setOrdered(bool isOrdered);
     bool isUnique() const;
     void setUnique(bool isUnique);
+    qint32 lower() const;
+    void setLower(qint32 lower);
+    qint32 upper() const;
+    void setUpper(qint32 upper);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QValueSpecification *lowerValue() const;
     void setLowerValue(const QValueSpecification *lowerValue);
     QValueSpecification *upperValue() const;
     void setUpperValue(const QValueSpecification *upperValue);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     bool compatibleWith(const QMultiplicityElement *other) const;
     bool includesCardinality(qint32 C) const;
     bool includesMultiplicity(const QMultiplicityElement *M) const;
     bool is(qint32 lowerbound, qint32 upperbound) const;
     bool isMultivalued() const;
-    qint32 lower() const;
     qint32 lowerBound() const;
-    qint32 upper() const;
     //qint32 upperBound() const;
 
 protected:
     explicit QMultiplicityElement();
+
+private:
+    QMultiplicityElementPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

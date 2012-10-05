@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qjoinnode.h"
-//#include "qjoinnode_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QJoinNodePrivate
+{
+public:
+    explicit QJoinNodePrivate();
+    virtual ~QJoinNodePrivate();
+
+    bool isCombineDuplicate;
+    QValueSpecification *joinSpec;
+};
+
+QJoinNodePrivate::QJoinNodePrivate()
+{
+}
+
+QJoinNodePrivate::~QJoinNodePrivate()
+{
+}
 
 /*!
     \class QJoinNode
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QJoinNode::QJoinNode(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QJoinNodePrivate)
 {
 }
 
 QJoinNode::~QJoinNode()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QJoinNode::~QJoinNode()
  */
 bool QJoinNode::isCombineDuplicate() const
 {
+    return d_ptr->isCombineDuplicate;
 }
 
 void QJoinNode::setCombineDuplicate(bool isCombineDuplicate)
 {
+    d_ptr->isCombineDuplicate = isCombineDuplicate;
 }
 
 /*!
@@ -77,10 +97,12 @@ void QJoinNode::setCombineDuplicate(bool isCombineDuplicate)
  */
 QValueSpecification *QJoinNode::joinSpec() const
 {
+    return d_ptr->joinSpec;
 }
 
 void QJoinNode::setJoinSpec(const QValueSpecification *joinSpec)
 {
+    d_ptr->joinSpec = const_cast<QValueSpecification *>(joinSpec);
 }
 
 #include "moc_qjoinnode.cpp"

@@ -177,29 +177,25 @@ public:
     virtual ~${class.name}();
     [%- IF class.item('attribute') %]
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     [%- FOREACH attribute IN class.attribute -%]
-    [%- IF (attribute.isDerived == "false" or attribute.isDerivedUnion == "true") -%]
     [%- FOREACH accessor IN attribute.accessor %]
     ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
     [%- END -%]
     [%- END -%]
     [%- END %]
-    [%- END %]
     [%- IF class.item('associationend') %]
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     [%- FOREACH associationend IN class.associationend -%]
-    [%- IF (associationend.isDerived == "false" or associationend.isDerivedUnion == "true") -%]
     [%- FOREACH accessor IN associationend.accessor %]
     ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
     [%- END -%]
     [%- END -%]
     [%- END %]
-    [%- END %]
     [%- IF class.item('operation') %]
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     [%- FOREACH operation IN class.operation %]
     ${operation.return}${operation.name}([%- FOREACH parameter IN operation.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${operation.constness};
     [%- END %]
@@ -211,7 +207,7 @@ protected:
 [%- END %]
 
 private:
-    ${class.name}Private const *d_ptr;
+    ${class.name}Private *d_ptr;
 };
 
 QT_END_NAMESPACE_${namespace.replace('/', '_').upper}

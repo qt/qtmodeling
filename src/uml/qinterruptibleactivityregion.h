@@ -88,11 +88,14 @@ class Q_UML_EXPORT QInterruptibleActivityRegion : public QObject, public QActivi
     Q_PROPERTY(const QSet<QActivityEdge *> * interruptingEdges READ interruptingEdges)
     Q_PROPERTY(const QSet<QActivityNode *> * nodes READ nodes)
 
+    Q_DISABLE_COPY(QInterruptibleActivityRegion)
+    Q_DECLARE_PRIVATE(QInterruptibleActivityRegion)
+
 public:
     explicit QInterruptibleActivityRegion(QObject *parent = 0);
     virtual ~QInterruptibleActivityRegion();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QActivityEdge *> *interruptingEdges() const;
     void addInterruptingEdge(const QActivityEdge *interruptingEdge);
     void removeInterruptingEdge(const QActivityEdge *interruptingEdge);
@@ -101,8 +104,7 @@ public:
     void removeNode(const QActivityNode *node);
 
 private:
-    Q_DISABLE_COPY(QInterruptibleActivityRegion)
-    Q_DECLARE_PRIVATE(QInterruptibleActivityRegion)
+    QInterruptibleActivityRegionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

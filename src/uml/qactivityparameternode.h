@@ -101,17 +101,19 @@ class Q_UML_EXPORT QActivityParameterNode : public QObject, public QObjectNode
     // From QActivityParameterNode
     Q_PROPERTY(QParameter * parameter READ parameter WRITE setParameter)
 
+    Q_DISABLE_COPY(QActivityParameterNode)
+    Q_DECLARE_PRIVATE(QActivityParameterNode)
+
 public:
     explicit QActivityParameterNode(QObject *parent = 0);
     virtual ~QActivityParameterNode();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QParameter *parameter() const;
     void setParameter(const QParameter *parameter);
 
 private:
-    Q_DISABLE_COPY(QActivityParameterNode)
-    Q_DECLARE_PRIVATE(QActivityParameterNode)
+    QActivityParameterNodePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

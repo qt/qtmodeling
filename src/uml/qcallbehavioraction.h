@@ -110,17 +110,19 @@ class Q_UML_EXPORT QCallBehaviorAction : public QObject, public QCallAction
     // From QCallBehaviorAction
     Q_PROPERTY(QBehavior * behavior READ behavior WRITE setBehavior)
 
+    Q_DISABLE_COPY(QCallBehaviorAction)
+    Q_DECLARE_PRIVATE(QCallBehaviorAction)
+
 public:
     explicit QCallBehaviorAction(QObject *parent = 0);
     virtual ~QCallBehaviorAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QBehavior *behavior() const;
     void setBehavior(const QBehavior *behavior);
 
 private:
-    Q_DISABLE_COPY(QCallBehaviorAction)
-    Q_DECLARE_PRIVATE(QCallBehaviorAction)
+    QCallBehaviorActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

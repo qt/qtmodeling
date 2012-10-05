@@ -81,11 +81,14 @@ class Q_UML_EXPORT QStateMachine : public QBehavior
     Q_PROPERTY(const QSet<QRegion *> * regions READ regions)
     Q_PROPERTY(const QSet<QState *> * submachineStates READ submachineStates)
 
+    Q_DISABLE_COPY(QStateMachine)
+    Q_DECLARE_PRIVATE(QStateMachine)
+
 public:
     explicit QStateMachine(QObject *parent = 0);
     virtual ~QStateMachine();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QPseudostate *> *connectionPoints() const;
     void addConnectionPoint(const QPseudostate *connectionPoint);
     void removeConnectionPoint(const QPseudostate *connectionPoint);
@@ -99,15 +102,14 @@ public:
     void addSubmachineState(const QState *submachineState);
     void removeSubmachineState(const QState *submachineState);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     QNamespace *LCA(const QState *s1, const QState *s2) const;
     bool ancestor(const QState *s1, const QState *s2) const;
     bool isConsistentWith(const QRedefinableElement *redefinee) const;
     bool isRedefinitionContextValid(const QStateMachine *redefined) const;
 
 private:
-    Q_DISABLE_COPY(QStateMachine)
-    Q_DECLARE_PRIVATE(QStateMachine)
+    QStateMachinePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

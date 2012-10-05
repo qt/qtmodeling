@@ -40,9 +40,27 @@
 ****************************************************************************/
 
 #include "qpseudostate.h"
-//#include "qpseudostate_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QPseudostatePrivate
+{
+public:
+    explicit QPseudostatePrivate();
+    virtual ~QPseudostatePrivate();
+
+    QtUml::PseudostateKind kind;
+    QState *state;
+    QStateMachine *stateMachine;
+};
+
+QPseudostatePrivate::QPseudostatePrivate()
+{
+}
+
+QPseudostatePrivate::~QPseudostatePrivate()
+{
+}
 
 /*!
     \class QPseudostate
@@ -53,12 +71,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QPseudostate::QPseudostate(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QPseudostatePrivate)
 {
 }
 
 QPseudostate::~QPseudostate()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +85,12 @@ QPseudostate::~QPseudostate()
  */
 QtUml::PseudostateKind QPseudostate::kind() const
 {
+    return d_ptr->kind;
 }
 
 void QPseudostate::setKind(QtUml::PseudostateKind kind)
 {
+    d_ptr->kind = kind;
 }
 
 /*!
@@ -77,10 +98,12 @@ void QPseudostate::setKind(QtUml::PseudostateKind kind)
  */
 QState *QPseudostate::state() const
 {
+    return d_ptr->state;
 }
 
 void QPseudostate::setState(const QState *state)
 {
+    d_ptr->state = const_cast<QState *>(state);
 }
 
 /*!
@@ -88,10 +111,12 @@ void QPseudostate::setState(const QState *state)
  */
 QStateMachine *QPseudostate::stateMachine() const
 {
+    return d_ptr->stateMachine;
 }
 
 void QPseudostate::setStateMachine(const QStateMachine *stateMachine)
 {
+    d_ptr->stateMachine = const_cast<QStateMachine *>(stateMachine);
 }
 
 #include "moc_qpseudostate.cpp"

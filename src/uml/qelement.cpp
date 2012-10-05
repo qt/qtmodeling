@@ -40,9 +40,31 @@
 ****************************************************************************/
 
 #include "qelement.h"
-//#include "qelement_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QElementPrivate
+{
+public:
+    explicit QElementPrivate();
+    virtual ~QElementPrivate();
+
+    QSet<QComment *> *ownedComments;
+    QSet<QElement *> *ownedElements;
+    QElement *owner;
+};
+
+QElementPrivate::QElementPrivate() :
+    ownedComments(new QSet<QComment *>),
+    ownedElements(new QSet<QElement *>)
+{
+}
+
+QElementPrivate::~QElementPrivate()
+{
+    delete ownedComments;
+    delete ownedElements;
+}
 
 /*!
     \class QElement
@@ -53,11 +75,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QElement::QElement()
+    : d_ptr(new QElementPrivate)
 {
 }
 
 QElement::~QElement()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,14 +89,17 @@ QElement::~QElement()
  */
 const QSet<QComment *> *QElement::ownedComments() const
 {
+    return d_ptr->ownedComments;
 }
 
 void QElement::addOwnedComment(const QComment *ownedComment)
 {
+    d_ptr->ownedComments->insert(const_cast<QComment *>(ownedComment));
 }
 
 void QElement::removeOwnedComment(const QComment *ownedComment)
 {
+    d_ptr->ownedComments->remove(const_cast<QComment *>(ownedComment));
 }
 
 /*!
@@ -80,6 +107,7 @@ void QElement::removeOwnedComment(const QComment *ownedComment)
  */
 const QSet<QElement *> *QElement::ownedElements() const
 {
+    return d_ptr->ownedElements;
 }
 
 /*!
@@ -87,6 +115,7 @@ const QSet<QElement *> *QElement::ownedElements() const
  */
 QElement *QElement::owner() const
 {
+    return d_ptr->owner;
 }
 
 /*!
@@ -94,6 +123,7 @@ QElement *QElement::owner() const
  */
 const QSet<QElement *> *QElement::allOwnedElements() const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -101,6 +131,7 @@ const QSet<QElement *> *QElement::allOwnedElements() const
  */
 bool QElement::mustBeOwned() const
 {
+    qWarning("To be implemented");
 }
 
 QT_END_NAMESPACE_QTUML

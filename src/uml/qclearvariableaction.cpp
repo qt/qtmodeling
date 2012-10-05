@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qclearvariableaction.h"
-//#include "qclearvariableaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QClearVariableActionPrivate
+{
+public:
+    explicit QClearVariableActionPrivate();
+    virtual ~QClearVariableActionPrivate();
+
+};
+
+QClearVariableActionPrivate::QClearVariableActionPrivate()
+{
+}
+
+QClearVariableActionPrivate::~QClearVariableActionPrivate()
+{
+}
 
 /*!
     \class QClearVariableAction
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QClearVariableAction::QClearVariableAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QClearVariableActionPrivate)
 {
 }
 
 QClearVariableAction::~QClearVariableAction()
 {
+    delete d_ptr;
 }
 
 #include "moc_qclearvariableaction.cpp"

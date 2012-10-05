@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qliteralspecification.h"
-//#include "qliteralspecification_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QLiteralSpecificationPrivate
+{
+public:
+    explicit QLiteralSpecificationPrivate();
+    virtual ~QLiteralSpecificationPrivate();
+
+};
+
+QLiteralSpecificationPrivate::QLiteralSpecificationPrivate()
+{
+}
+
+QLiteralSpecificationPrivate::~QLiteralSpecificationPrivate()
+{
+}
 
 /*!
     \class QLiteralSpecification
@@ -53,11 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QLiteralSpecification::QLiteralSpecification()
+    : d_ptr(new QLiteralSpecificationPrivate)
 {
 }
 
 QLiteralSpecification::~QLiteralSpecification()
 {
+    delete d_ptr;
 }
 
 QT_END_NAMESPACE_QTUML

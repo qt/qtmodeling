@@ -104,19 +104,21 @@ class Q_UML_EXPORT QReadExtentAction : public QObject, public QAction
     Q_PROPERTY(QClassifier * classifier READ classifier WRITE setClassifier)
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
+    Q_DISABLE_COPY(QReadExtentAction)
+    Q_DECLARE_PRIVATE(QReadExtentAction)
+
 public:
     explicit QReadExtentAction(QObject *parent = 0);
     virtual ~QReadExtentAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QClassifier *classifier() const;
     void setClassifier(const QClassifier *classifier);
     QOutputPin *result() const;
     void setResult(const QOutputPin *result);
 
 private:
-    Q_DISABLE_COPY(QReadExtentAction)
-    Q_DECLARE_PRIVATE(QReadExtentAction)
+    QReadExtentActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -63,20 +63,20 @@ class Q_UML_EXPORT QEnumerationLiteral : public QInstanceSpecification
     Q_PROPERTY(QEnumeration * classifier READ classifier)
     Q_PROPERTY(QEnumeration * enumeration READ enumeration WRITE setEnumeration)
 
+    Q_DISABLE_COPY(QEnumerationLiteral)
+    Q_DECLARE_PRIVATE(QEnumerationLiteral)
+
 public:
     explicit QEnumerationLiteral(QObject *parent = 0);
     virtual ~QEnumerationLiteral();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
+    QEnumeration *classifier() const;
     QEnumeration *enumeration() const;
     void setEnumeration(const QEnumeration *enumeration);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    QEnumeration *classifier() const;
-
 private:
-    Q_DISABLE_COPY(QEnumerationLiteral)
-    Q_DECLARE_PRIVATE(QEnumerationLiteral)
+    QEnumerationLiteralPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

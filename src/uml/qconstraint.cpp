@@ -40,9 +40,29 @@
 ****************************************************************************/
 
 #include "qconstraint.h"
-//#include "qconstraint_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QConstraintPrivate
+{
+public:
+    explicit QConstraintPrivate();
+    virtual ~QConstraintPrivate();
+
+    QList<QElement *> *constrainedElements;
+    QNamespace *context;
+    QValueSpecification *specification;
+};
+
+QConstraintPrivate::QConstraintPrivate() :
+    constrainedElements(new QList<QElement *>)
+{
+}
+
+QConstraintPrivate::~QConstraintPrivate()
+{
+    delete constrainedElements;
+}
 
 /*!
     \class QConstraint
@@ -53,12 +73,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QConstraint::QConstraint(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QConstraintPrivate)
 {
 }
 
 QConstraint::~QConstraint()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +87,17 @@ QConstraint::~QConstraint()
  */
 const QList<QElement *> *QConstraint::constrainedElements() const
 {
+    return d_ptr->constrainedElements;
 }
 
 void QConstraint::addConstrainedElement(const QElement *constrainedElement)
 {
+    d_ptr->constrainedElements->append(const_cast<QElement *>(constrainedElement));
 }
 
 void QConstraint::removeConstrainedElement(const QElement *constrainedElement)
 {
+    d_ptr->constrainedElements->removeAll(const_cast<QElement *>(constrainedElement));
 }
 
 /*!
@@ -81,10 +105,12 @@ void QConstraint::removeConstrainedElement(const QElement *constrainedElement)
  */
 QNamespace *QConstraint::context() const
 {
+    return d_ptr->context;
 }
 
 void QConstraint::setContext(const QNamespace *context)
 {
+    d_ptr->context = const_cast<QNamespace *>(context);
 }
 
 /*!
@@ -92,10 +118,12 @@ void QConstraint::setContext(const QNamespace *context)
  */
 QValueSpecification *QConstraint::specification() const
 {
+    return d_ptr->specification;
 }
 
 void QConstraint::setSpecification(const QValueSpecification *specification)
 {
+    d_ptr->specification = const_cast<QValueSpecification *>(specification);
 }
 
 #include "moc_qconstraint.cpp"

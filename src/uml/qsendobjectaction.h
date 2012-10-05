@@ -106,19 +106,21 @@ class Q_UML_EXPORT QSendObjectAction : public QObject, public QInvocationAction
     Q_PROPERTY(QInputPin * request READ request WRITE setRequest)
     Q_PROPERTY(QInputPin * target READ target WRITE setTarget)
 
+    Q_DISABLE_COPY(QSendObjectAction)
+    Q_DECLARE_PRIVATE(QSendObjectAction)
+
 public:
     explicit QSendObjectAction(QObject *parent = 0);
     virtual ~QSendObjectAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QInputPin *request() const;
     void setRequest(const QInputPin *request);
     QInputPin *target() const;
     void setTarget(const QInputPin *target);
 
 private:
-    Q_DISABLE_COPY(QSendObjectAction)
-    Q_DECLARE_PRIVATE(QSendObjectAction)
+    QSendObjectActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

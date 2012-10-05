@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qmessageevent.h"
-//#include "qmessageevent_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QMessageEventPrivate
+{
+public:
+    explicit QMessageEventPrivate();
+    virtual ~QMessageEventPrivate();
+
+};
+
+QMessageEventPrivate::QMessageEventPrivate()
+{
+}
+
+QMessageEventPrivate::~QMessageEventPrivate()
+{
+}
 
 /*!
     \class QMessageEvent
@@ -53,11 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QMessageEvent::QMessageEvent()
+    : d_ptr(new QMessageEventPrivate)
 {
 }
 
 QMessageEvent::~QMessageEvent()
 {
+    delete d_ptr;
 }
 
 QT_END_NAMESPACE_QTUML

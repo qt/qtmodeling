@@ -40,9 +40,30 @@
 ****************************************************************************/
 
 #include "qdurationobservation.h"
-//#include "qdurationobservation_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QDurationObservationPrivate
+{
+public:
+    explicit QDurationObservationPrivate();
+    virtual ~QDurationObservationPrivate();
+
+    QSet<bool> *firstEvents;
+    QSet<QNamedElement *> *events;
+};
+
+QDurationObservationPrivate::QDurationObservationPrivate() :
+    firstEvents(new QSet<bool>),
+    events(new QSet<QNamedElement *>)
+{
+}
+
+QDurationObservationPrivate::~QDurationObservationPrivate()
+{
+    delete firstEvents;
+    delete events;
+}
 
 /*!
     \class QDurationObservation
@@ -53,42 +74,49 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QDurationObservation::QDurationObservation(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QDurationObservationPrivate)
 {
 }
 
 QDurationObservation::~QDurationObservation()
 {
+    delete d_ptr;
 }
 
 /*!
     The value of firstEvent[i] is related to event[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters event[i]. If firstEvent[i] is false, then the corresponding observation event is the time instant the execution exits event[i]. Default value is true applied when event[i] refers an element that represents only one time instant.
  */
-bool QDurationObservation::firstEvent() const
+const QSet<bool> *QDurationObservation::firstEvents() const
 {
+    return d_ptr->firstEvents;
 }
 
 void QDurationObservation::addFirstEvent(bool firstEvent)
 {
+    d_ptr->firstEvents->insert(firstEvent);
 }
 
 void QDurationObservation::removeFirstEvent(bool firstEvent)
 {
+    d_ptr->firstEvents->remove(firstEvent);
 }
 
 /*!
     The observation is determined by the entering or exiting of the event element during execution.
  */
-QNamedElement *QDurationObservation::event() const
+const QSet<QNamedElement *> *QDurationObservation::events() const
 {
+    return d_ptr->events;
 }
 
 void QDurationObservation::addEvent(const QNamedElement *event)
 {
+    d_ptr->events->insert(const_cast<QNamedElement *>(event));
 }
 
 void QDurationObservation::removeEvent(const QNamedElement *event)
 {
+    d_ptr->events->remove(const_cast<QNamedElement *>(event));
 }
 
 #include "moc_qdurationobservation.cpp"

@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qprotocolconformance.h"
-//#include "qprotocolconformance_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QProtocolConformancePrivate
+{
+public:
+    explicit QProtocolConformancePrivate();
+    virtual ~QProtocolConformancePrivate();
+
+    QProtocolStateMachine *generalMachine;
+    QProtocolStateMachine *specificMachine;
+};
+
+QProtocolConformancePrivate::QProtocolConformancePrivate()
+{
+}
+
+QProtocolConformancePrivate::~QProtocolConformancePrivate()
+{
+}
 
 /*!
     \class QProtocolConformance
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QProtocolConformance::QProtocolConformance(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QProtocolConformancePrivate)
 {
 }
 
 QProtocolConformance::~QProtocolConformance()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QProtocolConformance::~QProtocolConformance()
  */
 QProtocolStateMachine *QProtocolConformance::generalMachine() const
 {
+    return d_ptr->generalMachine;
 }
 
 void QProtocolConformance::setGeneralMachine(const QProtocolStateMachine *generalMachine)
 {
+    d_ptr->generalMachine = const_cast<QProtocolStateMachine *>(generalMachine);
 }
 
 /*!
@@ -77,10 +97,12 @@ void QProtocolConformance::setGeneralMachine(const QProtocolStateMachine *genera
  */
 QProtocolStateMachine *QProtocolConformance::specificMachine() const
 {
+    return d_ptr->specificMachine;
 }
 
 void QProtocolConformance::setSpecificMachine(const QProtocolStateMachine *specificMachine)
 {
+    d_ptr->specificMachine = const_cast<QProtocolStateMachine *>(specificMachine);
 }
 
 #include "moc_qprotocolconformance.cpp"

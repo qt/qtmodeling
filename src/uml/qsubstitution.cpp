@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qsubstitution.h"
-//#include "qsubstitution_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QSubstitutionPrivate
+{
+public:
+    explicit QSubstitutionPrivate();
+    virtual ~QSubstitutionPrivate();
+
+    QClassifier *contract;
+    QClassifier *substitutingClassifier;
+};
+
+QSubstitutionPrivate::QSubstitutionPrivate()
+{
+}
+
+QSubstitutionPrivate::~QSubstitutionPrivate()
+{
+}
 
 /*!
     \class QSubstitution
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QSubstitution::QSubstitution(QObject *parent)
-    : QRealization(parent)
+    : QRealization(parent), d_ptr(new QSubstitutionPrivate)
 {
 }
 
 QSubstitution::~QSubstitution()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QSubstitution::~QSubstitution()
  */
 QClassifier *QSubstitution::contract() const
 {
+    return d_ptr->contract;
 }
 
 void QSubstitution::setContract(const QClassifier *contract)
 {
+    d_ptr->contract = const_cast<QClassifier *>(contract);
 }
 
 /*!
@@ -77,10 +97,12 @@ void QSubstitution::setContract(const QClassifier *contract)
  */
 QClassifier *QSubstitution::substitutingClassifier() const
 {
+    return d_ptr->substitutingClassifier;
 }
 
 void QSubstitution::setSubstitutingClassifier(const QClassifier *substitutingClassifier)
 {
+    d_ptr->substitutingClassifier = const_cast<QClassifier *>(substitutingClassifier);
 }
 
 #include "moc_qsubstitution.cpp"

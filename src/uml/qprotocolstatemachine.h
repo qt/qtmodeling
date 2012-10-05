@@ -65,18 +65,20 @@ class Q_UML_EXPORT QProtocolStateMachine : public QStateMachine
     // From QProtocolStateMachine
     Q_PROPERTY(const QSet<QProtocolConformance *> * conformance READ conformance)
 
+    Q_DISABLE_COPY(QProtocolStateMachine)
+    Q_DECLARE_PRIVATE(QProtocolStateMachine)
+
 public:
     explicit QProtocolStateMachine(QObject *parent = 0);
     virtual ~QProtocolStateMachine();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QProtocolConformance *> *conformance() const;
     void addConformance(const QProtocolConformance *conformance);
     void removeConformance(const QProtocolConformance *conformance);
 
 private:
-    Q_DISABLE_COPY(QProtocolStateMachine)
-    Q_DECLARE_PRIVATE(QProtocolStateMachine)
+    QProtocolStateMachinePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

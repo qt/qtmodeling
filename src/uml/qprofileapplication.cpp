@@ -40,9 +40,27 @@
 ****************************************************************************/
 
 #include "qprofileapplication.h"
-//#include "qprofileapplication_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QProfileApplicationPrivate
+{
+public:
+    explicit QProfileApplicationPrivate();
+    virtual ~QProfileApplicationPrivate();
+
+    bool isStrict;
+    QProfile *appliedProfile;
+    QPackage *applyingPackage;
+};
+
+QProfileApplicationPrivate::QProfileApplicationPrivate()
+{
+}
+
+QProfileApplicationPrivate::~QProfileApplicationPrivate()
+{
+}
 
 /*!
     \class QProfileApplication
@@ -53,12 +71,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QProfileApplication::QProfileApplication(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QProfileApplicationPrivate)
 {
 }
 
 QProfileApplication::~QProfileApplication()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +85,12 @@ QProfileApplication::~QProfileApplication()
  */
 bool QProfileApplication::isStrict() const
 {
+    return d_ptr->isStrict;
 }
 
 void QProfileApplication::setStrict(bool isStrict)
 {
+    d_ptr->isStrict = isStrict;
 }
 
 /*!
@@ -77,10 +98,12 @@ void QProfileApplication::setStrict(bool isStrict)
  */
 QProfile *QProfileApplication::appliedProfile() const
 {
+    return d_ptr->appliedProfile;
 }
 
 void QProfileApplication::setAppliedProfile(const QProfile *appliedProfile)
 {
+    d_ptr->appliedProfile = const_cast<QProfile *>(appliedProfile);
 }
 
 /*!
@@ -88,10 +111,12 @@ void QProfileApplication::setAppliedProfile(const QProfile *appliedProfile)
  */
 QPackage *QProfileApplication::applyingPackage() const
 {
+    return d_ptr->applyingPackage;
 }
 
 void QProfileApplication::setApplyingPackage(const QPackage *applyingPackage)
 {
+    d_ptr->applyingPackage = const_cast<QPackage *>(applyingPackage);
 }
 
 #include "moc_qprofileapplication.cpp"

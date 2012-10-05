@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qparameterableelement.h"
-//#include "qparameterableelement_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QParameterableElementPrivate
+{
+public:
+    explicit QParameterableElementPrivate();
+    virtual ~QParameterableElementPrivate();
+
+    QTemplateParameter *owningTemplateParameter;
+    QTemplateParameter *templateParameter;
+};
+
+QParameterableElementPrivate::QParameterableElementPrivate()
+{
+}
+
+QParameterableElementPrivate::~QParameterableElementPrivate()
+{
+}
 
 /*!
     \class QParameterableElement
@@ -53,11 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QParameterableElement::QParameterableElement()
+    : d_ptr(new QParameterableElementPrivate)
 {
 }
 
 QParameterableElement::~QParameterableElement()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,10 +84,12 @@ QParameterableElement::~QParameterableElement()
  */
 QTemplateParameter *QParameterableElement::owningTemplateParameter() const
 {
+    return d_ptr->owningTemplateParameter;
 }
 
 void QParameterableElement::setOwningTemplateParameter(const QTemplateParameter *owningTemplateParameter)
 {
+    d_ptr->owningTemplateParameter = const_cast<QTemplateParameter *>(owningTemplateParameter);
 }
 
 /*!
@@ -76,10 +97,12 @@ void QParameterableElement::setOwningTemplateParameter(const QTemplateParameter 
  */
 QTemplateParameter *QParameterableElement::templateParameter() const
 {
+    return d_ptr->templateParameter;
 }
 
 void QParameterableElement::setTemplateParameter(const QTemplateParameter *templateParameter)
 {
+    d_ptr->templateParameter = const_cast<QTemplateParameter *>(templateParameter);
 }
 
 /*!
@@ -87,6 +110,7 @@ void QParameterableElement::setTemplateParameter(const QTemplateParameter *templ
  */
 bool QParameterableElement::isCompatibleWith(const QParameterableElement *p) const
 {
+    qWarning("To be implemented");
 }
 
 /*!
@@ -94,6 +118,7 @@ bool QParameterableElement::isCompatibleWith(const QParameterableElement *p) con
  */
 bool QParameterableElement::isTemplateParameter() const
 {
+    qWarning("To be implemented");
 }
 
 QT_END_NAMESPACE_QTUML

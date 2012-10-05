@@ -64,17 +64,19 @@ class Q_UML_EXPORT QModel : public QPackage
     // From QModel
     Q_PROPERTY(QString viewpoint READ viewpoint WRITE setViewpoint)
 
+    Q_DISABLE_COPY(QModel)
+    Q_DECLARE_PRIVATE(QModel)
+
 public:
     explicit QModel(QObject *parent = 0);
     virtual ~QModel();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     QString viewpoint() const;
     void setViewpoint(QString viewpoint);
 
 private:
-    Q_DISABLE_COPY(QModel)
-    Q_DECLARE_PRIVATE(QModel)
+    QModelPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

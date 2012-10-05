@@ -87,17 +87,20 @@ class Q_UML_EXPORT QActivity : public QBehavior
     Q_PROPERTY(const QSet<QStructuredActivityNode *> * structuredNodes READ structuredNodes)
     Q_PROPERTY(const QSet<QVariable *> * variables READ variables)
 
+    Q_DISABLE_COPY(QActivity)
+    Q_DECLARE_PRIVATE(QActivity)
+
 public:
     explicit QActivity(QObject *parent = 0);
     virtual ~QActivity();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isReadOnly() const;
     void setReadOnly(bool isReadOnly);
     bool isSingleExecution() const;
     void setSingleExecution(bool isSingleExecution);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QActivityEdge *> *edges() const;
     void addEdge(const QActivityEdge *edge);
     void removeEdge(const QActivityEdge *edge);
@@ -118,8 +121,7 @@ public:
     void removeVariable(const QVariable *variable);
 
 private:
-    Q_DISABLE_COPY(QActivity)
-    Q_DECLARE_PRIVATE(QActivity)
+    QActivityPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

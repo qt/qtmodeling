@@ -107,15 +107,18 @@ class Q_UML_EXPORT QReduceAction : public QObject, public QAction
     Q_PROPERTY(QBehavior * reducer READ reducer WRITE setReducer)
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
+    Q_DISABLE_COPY(QReduceAction)
+    Q_DECLARE_PRIVATE(QReduceAction)
+
 public:
     explicit QReduceAction(QObject *parent = 0);
     virtual ~QReduceAction();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isOrdered() const;
     void setOrdered(bool isOrdered);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QInputPin *collection() const;
     void setCollection(const QInputPin *collection);
     QBehavior *reducer() const;
@@ -124,8 +127,7 @@ public:
     void setResult(const QOutputPin *result);
 
 private:
-    Q_DISABLE_COPY(QReduceAction)
-    Q_DECLARE_PRIVATE(QReduceAction)
+    QReduceActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qstateinvariant.h"
-//#include "qstateinvariant_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QStateInvariantPrivate
+{
+public:
+    explicit QStateInvariantPrivate();
+    virtual ~QStateInvariantPrivate();
+
+    QLifeline *covered;
+    QConstraint *invariant;
+};
+
+QStateInvariantPrivate::QStateInvariantPrivate()
+{
+}
+
+QStateInvariantPrivate::~QStateInvariantPrivate()
+{
+}
 
 /*!
     \class QStateInvariant
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QStateInvariant::QStateInvariant(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QStateInvariantPrivate)
 {
 }
 
 QStateInvariant::~QStateInvariant()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QStateInvariant::~QStateInvariant()
  */
 QLifeline *QStateInvariant::covered() const
 {
+    return d_ptr->covered;
 }
 
 void QStateInvariant::setCovered(const QLifeline *covered)
 {
+    d_ptr->covered = const_cast<QLifeline *>(covered);
 }
 
 /*!
@@ -77,10 +97,12 @@ void QStateInvariant::setCovered(const QLifeline *covered)
  */
 QConstraint *QStateInvariant::invariant() const
 {
+    return d_ptr->invariant;
 }
 
 void QStateInvariant::setInvariant(const QConstraint *invariant)
 {
+    d_ptr->invariant = const_cast<QConstraint *>(invariant);
 }
 
 #include "moc_qstateinvariant.cpp"

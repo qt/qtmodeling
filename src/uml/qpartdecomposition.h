@@ -58,13 +58,15 @@ class Q_UML_EXPORT QPartDecomposition : public QInteractionUse
 {
     Q_OBJECT
 
+    Q_DISABLE_COPY(QPartDecomposition)
+    Q_DECLARE_PRIVATE(QPartDecomposition)
+
 public:
     explicit QPartDecomposition(QObject *parent = 0);
     virtual ~QPartDecomposition();
 
 private:
-    Q_DISABLE_COPY(QPartDecomposition)
-    Q_DECLARE_PRIVATE(QPartDecomposition)
+    QPartDecompositionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qsignalevent.h"
-//#include "qsignalevent_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QSignalEventPrivate
+{
+public:
+    explicit QSignalEventPrivate();
+    virtual ~QSignalEventPrivate();
+
+    QSignal *signal;
+};
+
+QSignalEventPrivate::QSignalEventPrivate()
+{
+}
+
+QSignalEventPrivate::~QSignalEventPrivate()
+{
+}
 
 /*!
     \class QSignalEvent
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QSignalEvent::QSignalEvent(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QSignalEventPrivate)
 {
 }
 
 QSignalEvent::~QSignalEvent()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QSignalEvent::~QSignalEvent()
  */
 QSignal *QSignalEvent::signal() const
 {
+    return d_ptr->signal;
 }
 
 void QSignalEvent::setSignal(const QSignal *signal)
 {
+    d_ptr->signal = const_cast<QSignal *>(signal);
 }
 
 #include "moc_qsignalevent.cpp"

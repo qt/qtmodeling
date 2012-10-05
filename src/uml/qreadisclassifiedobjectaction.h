@@ -107,15 +107,18 @@ class Q_UML_EXPORT QReadIsClassifiedObjectAction : public QObject, public QActio
     Q_PROPERTY(QInputPin * object READ object WRITE setObject)
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
+    Q_DISABLE_COPY(QReadIsClassifiedObjectAction)
+    Q_DECLARE_PRIVATE(QReadIsClassifiedObjectAction)
+
 public:
     explicit QReadIsClassifiedObjectAction(QObject *parent = 0);
     virtual ~QReadIsClassifiedObjectAction();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isDirect() const;
     void setDirect(bool isDirect);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QClassifier *classifier() const;
     void setClassifier(const QClassifier *classifier);
     QInputPin *object() const;
@@ -124,8 +127,7 @@ public:
     void setResult(const QOutputPin *result);
 
 private:
-    Q_DISABLE_COPY(QReadIsClassifiedObjectAction)
-    Q_DECLARE_PRIVATE(QReadIsClassifiedObjectAction)
+    QReadIsClassifiedObjectActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

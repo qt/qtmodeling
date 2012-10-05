@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qfinalstate.h"
-//#include "qfinalstate_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QFinalStatePrivate
+{
+public:
+    explicit QFinalStatePrivate();
+    virtual ~QFinalStatePrivate();
+
+};
+
+QFinalStatePrivate::QFinalStatePrivate()
+{
+}
+
+QFinalStatePrivate::~QFinalStatePrivate()
+{
+}
 
 /*!
     \class QFinalState
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QFinalState::QFinalState(QObject *parent)
-    : QState(parent)
+    : QState(parent), d_ptr(new QFinalStatePrivate)
 {
 }
 
 QFinalState::~QFinalState()
 {
+    delete d_ptr;
 }
 
 #include "moc_qfinalstate.cpp"

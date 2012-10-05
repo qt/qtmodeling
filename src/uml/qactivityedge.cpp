@@ -40,9 +40,40 @@
 ****************************************************************************/
 
 #include "qactivityedge.h"
-//#include "qactivityedge_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QActivityEdgePrivate
+{
+public:
+    explicit QActivityEdgePrivate();
+    virtual ~QActivityEdgePrivate();
+
+    QActivity *activity;
+    QValueSpecification *guard;
+    QSet<QActivityGroup *> *inGroup;
+    QSet<QActivityPartition *> *inPartition;
+    QStructuredActivityNode *inStructuredNode;
+    QInterruptibleActivityRegion *interrupts;
+    QSet<QActivityEdge *> *redefinedEdges;
+    QActivityNode *source;
+    QActivityNode *target;
+    QValueSpecification *weight;
+};
+
+QActivityEdgePrivate::QActivityEdgePrivate() :
+    inGroup(new QSet<QActivityGroup *>),
+    inPartition(new QSet<QActivityPartition *>),
+    redefinedEdges(new QSet<QActivityEdge *>)
+{
+}
+
+QActivityEdgePrivate::~QActivityEdgePrivate()
+{
+    delete inGroup;
+    delete inPartition;
+    delete redefinedEdges;
+}
 
 /*!
     \class QActivityEdge
@@ -53,11 +84,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QActivityEdge::QActivityEdge()
+    : d_ptr(new QActivityEdgePrivate)
 {
 }
 
 QActivityEdge::~QActivityEdge()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,10 +98,12 @@ QActivityEdge::~QActivityEdge()
  */
 QActivity *QActivityEdge::activity() const
 {
+    return d_ptr->activity;
 }
 
 void QActivityEdge::setActivity(const QActivity *activity)
 {
+    d_ptr->activity = const_cast<QActivity *>(activity);
 }
 
 /*!
@@ -76,10 +111,12 @@ void QActivityEdge::setActivity(const QActivity *activity)
  */
 QValueSpecification *QActivityEdge::guard() const
 {
+    return d_ptr->guard;
 }
 
 void QActivityEdge::setGuard(const QValueSpecification *guard)
 {
+    d_ptr->guard = const_cast<QValueSpecification *>(guard);
 }
 
 /*!
@@ -87,6 +124,7 @@ void QActivityEdge::setGuard(const QValueSpecification *guard)
  */
 const QSet<QActivityGroup *> *QActivityEdge::inGroup() const
 {
+    return d_ptr->inGroup;
 }
 
 /*!
@@ -94,14 +132,17 @@ const QSet<QActivityGroup *> *QActivityEdge::inGroup() const
  */
 const QSet<QActivityPartition *> *QActivityEdge::inPartition() const
 {
+    return d_ptr->inPartition;
 }
 
 void QActivityEdge::addInPartition(const QActivityPartition *inPartition)
 {
+    d_ptr->inPartition->insert(const_cast<QActivityPartition *>(inPartition));
 }
 
 void QActivityEdge::removeInPartition(const QActivityPartition *inPartition)
 {
+    d_ptr->inPartition->remove(const_cast<QActivityPartition *>(inPartition));
 }
 
 /*!
@@ -109,10 +150,12 @@ void QActivityEdge::removeInPartition(const QActivityPartition *inPartition)
  */
 QStructuredActivityNode *QActivityEdge::inStructuredNode() const
 {
+    return d_ptr->inStructuredNode;
 }
 
 void QActivityEdge::setInStructuredNode(const QStructuredActivityNode *inStructuredNode)
 {
+    d_ptr->inStructuredNode = const_cast<QStructuredActivityNode *>(inStructuredNode);
 }
 
 /*!
@@ -120,10 +163,12 @@ void QActivityEdge::setInStructuredNode(const QStructuredActivityNode *inStructu
  */
 QInterruptibleActivityRegion *QActivityEdge::interrupts() const
 {
+    return d_ptr->interrupts;
 }
 
 void QActivityEdge::setInterrupts(const QInterruptibleActivityRegion *interrupts)
 {
+    d_ptr->interrupts = const_cast<QInterruptibleActivityRegion *>(interrupts);
 }
 
 /*!
@@ -131,14 +176,17 @@ void QActivityEdge::setInterrupts(const QInterruptibleActivityRegion *interrupts
  */
 const QSet<QActivityEdge *> *QActivityEdge::redefinedEdges() const
 {
+    return d_ptr->redefinedEdges;
 }
 
 void QActivityEdge::addRedefinedEdge(const QActivityEdge *redefinedEdge)
 {
+    d_ptr->redefinedEdges->insert(const_cast<QActivityEdge *>(redefinedEdge));
 }
 
 void QActivityEdge::removeRedefinedEdge(const QActivityEdge *redefinedEdge)
 {
+    d_ptr->redefinedEdges->remove(const_cast<QActivityEdge *>(redefinedEdge));
 }
 
 /*!
@@ -146,10 +194,12 @@ void QActivityEdge::removeRedefinedEdge(const QActivityEdge *redefinedEdge)
  */
 QActivityNode *QActivityEdge::source() const
 {
+    return d_ptr->source;
 }
 
 void QActivityEdge::setSource(const QActivityNode *source)
 {
+    d_ptr->source = const_cast<QActivityNode *>(source);
 }
 
 /*!
@@ -157,10 +207,12 @@ void QActivityEdge::setSource(const QActivityNode *source)
  */
 QActivityNode *QActivityEdge::target() const
 {
+    return d_ptr->target;
 }
 
 void QActivityEdge::setTarget(const QActivityNode *target)
 {
+    d_ptr->target = const_cast<QActivityNode *>(target);
 }
 
 /*!
@@ -168,10 +220,12 @@ void QActivityEdge::setTarget(const QActivityNode *target)
  */
 QValueSpecification *QActivityEdge::weight() const
 {
+    return d_ptr->weight;
 }
 
 void QActivityEdge::setWeight(const QValueSpecification *weight)
 {
+    d_ptr->weight = const_cast<QValueSpecification *>(weight);
 }
 
 QT_END_NAMESPACE_QTUML

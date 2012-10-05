@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qreadlinkaction.h"
-//#include "qreadlinkaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QReadLinkActionPrivate
+{
+public:
+    explicit QReadLinkActionPrivate();
+    virtual ~QReadLinkActionPrivate();
+
+    QOutputPin *result;
+};
+
+QReadLinkActionPrivate::QReadLinkActionPrivate()
+{
+}
+
+QReadLinkActionPrivate::~QReadLinkActionPrivate()
+{
+}
 
 /*!
     \class QReadLinkAction
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QReadLinkAction::QReadLinkAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QReadLinkActionPrivate)
 {
 }
 
 QReadLinkAction::~QReadLinkAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QReadLinkAction::~QReadLinkAction()
  */
 QOutputPin *QReadLinkAction::result() const
 {
+    return d_ptr->result;
 }
 
 void QReadLinkAction::setResult(const QOutputPin *result)
 {
+    d_ptr->result = const_cast<QOutputPin *>(result);
 }
 
 #include "moc_qreadlinkaction.cpp"

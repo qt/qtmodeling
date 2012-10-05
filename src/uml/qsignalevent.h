@@ -82,17 +82,19 @@ class Q_UML_EXPORT QSignalEvent : public QObject, public QMessageEvent
     // From QSignalEvent
     Q_PROPERTY(QSignal * signal READ signal WRITE setSignal)
 
+    Q_DISABLE_COPY(QSignalEvent)
+    Q_DECLARE_PRIVATE(QSignalEvent)
+
 public:
     explicit QSignalEvent(QObject *parent = 0);
     virtual ~QSignalEvent();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QSignal *signal() const;
     void setSignal(const QSignal *signal);
 
 private:
-    Q_DISABLE_COPY(QSignalEvent)
-    Q_DECLARE_PRIVATE(QSignalEvent)
+    QSignalEventPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

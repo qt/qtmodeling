@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qinclude.h"
-//#include "qinclude_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QIncludePrivate
+{
+public:
+    explicit QIncludePrivate();
+    virtual ~QIncludePrivate();
+
+    QUseCase *addition;
+    QUseCase *includingCase;
+};
+
+QIncludePrivate::QIncludePrivate()
+{
+}
+
+QIncludePrivate::~QIncludePrivate()
+{
+}
 
 /*!
     \class QInclude
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QInclude::QInclude(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QIncludePrivate)
 {
 }
 
 QInclude::~QInclude()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QInclude::~QInclude()
  */
 QUseCase *QInclude::addition() const
 {
+    return d_ptr->addition;
 }
 
 void QInclude::setAddition(const QUseCase *addition)
 {
+    d_ptr->addition = const_cast<QUseCase *>(addition);
 }
 
 /*!
@@ -77,10 +97,12 @@ void QInclude::setAddition(const QUseCase *addition)
  */
 QUseCase *QInclude::includingCase() const
 {
+    return d_ptr->includingCase;
 }
 
 void QInclude::setIncludingCase(const QUseCase *includingCase)
 {
+    d_ptr->includingCase = const_cast<QUseCase *>(includingCase);
 }
 
 #include "moc_qinclude.cpp"

@@ -103,11 +103,14 @@ class Q_UML_EXPORT QInteraction : public QBehavior, public QInteractionFragment
     Q_PROPERTY(const QSet<QLifeline *> * lifelines READ lifelines)
     Q_PROPERTY(const QSet<QMessage *> * messages READ messages)
 
+    Q_DISABLE_COPY(QInteraction)
+    Q_DECLARE_PRIVATE(QInteraction)
+
 public:
     explicit QInteraction(QObject *parent = 0);
     virtual ~QInteraction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QAction *> *actions() const;
     void addAction(const QAction *action);
     void removeAction(const QAction *action);
@@ -125,8 +128,7 @@ public:
     void removeMessage(const QMessage *message);
 
 private:
-    Q_DISABLE_COPY(QInteraction)
-    Q_DECLARE_PRIVATE(QInteraction)
+    QInteractionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

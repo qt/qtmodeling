@@ -63,19 +63,21 @@ class Q_UML_EXPORT QInteractionConstraint : public QConstraint
     Q_PROPERTY(QValueSpecification * maxint READ maxint WRITE setMaxint)
     Q_PROPERTY(QValueSpecification * minint READ minint WRITE setMinint)
 
+    Q_DISABLE_COPY(QInteractionConstraint)
+    Q_DECLARE_PRIVATE(QInteractionConstraint)
+
 public:
     explicit QInteractionConstraint(QObject *parent = 0);
     virtual ~QInteractionConstraint();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QValueSpecification *maxint() const;
     void setMaxint(const QValueSpecification *maxint);
     QValueSpecification *minint() const;
     void setMinint(const QValueSpecification *minint);
 
 private:
-    Q_DISABLE_COPY(QInteractionConstraint)
-    Q_DECLARE_PRIVATE(QInteractionConstraint)
+    QInteractionConstraintPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

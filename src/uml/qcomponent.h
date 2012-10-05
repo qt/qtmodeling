@@ -72,31 +72,33 @@ class Q_UML_EXPORT QComponent : public QClass
     Q_PROPERTY(const QSet<QComponentRealization *> * realizations READ realizations)
     Q_PROPERTY(const QSet<QInterface *> * required READ required)
 
+    Q_DISABLE_COPY(QComponent)
+    Q_DECLARE_PRIVATE(QComponent)
+
 public:
     explicit QComponent(QObject *parent = 0);
     virtual ~QComponent();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     bool isIndirectlyInstantiated() const;
     void setIndirectlyInstantiated(bool isIndirectlyInstantiated);
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     const QSet<QPackageableElement *> *packagedElements() const;
     void addPackagedElement(const QPackageableElement *packagedElement);
     void removePackagedElement(const QPackageableElement *packagedElement);
+    const QSet<QInterface *> *provided() const;
     const QSet<QComponentRealization *> *realizations() const;
     void addRealization(const QComponentRealization *realization);
     void removeRealization(const QComponentRealization *realization);
-
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
-    const QSet<QInterface *> *provided() const;
-    const QSet<QInterface *> *realizedInterfaces(const QClassifier *classifier) const;
     const QSet<QInterface *> *required() const;
+
+    // Operations
+    const QSet<QInterface *> *realizedInterfaces(const QClassifier *classifier) const;
     const QSet<QInterface *> *usedInterfaces(const QClassifier *classifier) const;
 
 private:
-    Q_DISABLE_COPY(QComponent)
-    Q_DECLARE_PRIVATE(QComponent)
+    QComponentPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qmergenode.h"
-//#include "qmergenode_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QMergeNodePrivate
+{
+public:
+    explicit QMergeNodePrivate();
+    virtual ~QMergeNodePrivate();
+
+};
+
+QMergeNodePrivate::QMergeNodePrivate()
+{
+}
+
+QMergeNodePrivate::~QMergeNodePrivate()
+{
+}
 
 /*!
     \class QMergeNode
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QMergeNode::QMergeNode(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QMergeNodePrivate)
 {
 }
 
 QMergeNode::~QMergeNode()
 {
+    delete d_ptr;
 }
 
 #include "moc_qmergenode.cpp"

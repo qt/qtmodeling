@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qmodel.h"
-//#include "qmodel_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QModelPrivate
+{
+public:
+    explicit QModelPrivate();
+    virtual ~QModelPrivate();
+
+    QString viewpoint;
+};
+
+QModelPrivate::QModelPrivate()
+{
+}
+
+QModelPrivate::~QModelPrivate()
+{
+}
 
 /*!
     \class QModel
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QModel::QModel(QObject *parent)
-    : QPackage(parent)
+    : QPackage(parent), d_ptr(new QModelPrivate)
 {
 }
 
 QModel::~QModel()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QModel::~QModel()
  */
 QString QModel::viewpoint() const
 {
+    return d_ptr->viewpoint;
 }
 
 void QModel::setViewpoint(QString viewpoint)
 {
+    d_ptr->viewpoint = viewpoint;
 }
 
 #include "moc_qmodel.cpp"

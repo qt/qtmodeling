@@ -57,15 +57,21 @@ class QMessage;
 
 class Q_UML_EXPORT QMessageEnd : public virtual QNamedElement
 {
+    Q_DISABLE_COPY(QMessageEnd)
+    Q_DECLARE_PRIVATE(QMessageEnd)
+
 public:
     virtual ~QMessageEnd();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QMessage *message() const;
     void setMessage(const QMessage *message);
 
 protected:
     explicit QMessageEnd();
+
+private:
+    QMessageEndPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

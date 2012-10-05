@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qcontinuation.h"
-//#include "qcontinuation_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QContinuationPrivate
+{
+public:
+    explicit QContinuationPrivate();
+    virtual ~QContinuationPrivate();
+
+    bool setting;
+};
+
+QContinuationPrivate::QContinuationPrivate()
+{
+}
+
+QContinuationPrivate::~QContinuationPrivate()
+{
+}
 
 /*!
     \class QContinuation
@@ -53,12 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QContinuation::QContinuation(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QContinuationPrivate)
 {
 }
 
 QContinuation::~QContinuation()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +83,12 @@ QContinuation::~QContinuation()
  */
 bool QContinuation::setting() const
 {
+    return d_ptr->setting;
 }
 
 void QContinuation::setSetting(bool setting)
 {
+    d_ptr->setting = setting;
 }
 
 #include "moc_qcontinuation.cpp"

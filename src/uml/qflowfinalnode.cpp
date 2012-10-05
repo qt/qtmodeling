@@ -40,9 +40,24 @@
 ****************************************************************************/
 
 #include "qflowfinalnode.h"
-//#include "qflowfinalnode_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QFlowFinalNodePrivate
+{
+public:
+    explicit QFlowFinalNodePrivate();
+    virtual ~QFlowFinalNodePrivate();
+
+};
+
+QFlowFinalNodePrivate::QFlowFinalNodePrivate()
+{
+}
+
+QFlowFinalNodePrivate::~QFlowFinalNodePrivate()
+{
+}
 
 /*!
     \class QFlowFinalNode
@@ -53,12 +68,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QFlowFinalNode::QFlowFinalNode(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QFlowFinalNodePrivate)
 {
 }
 
 QFlowFinalNode::~QFlowFinalNode()
 {
+    delete d_ptr;
 }
 
 #include "moc_qflowfinalnode.cpp"

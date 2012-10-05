@@ -40,9 +40,45 @@
 ****************************************************************************/
 
 #include "qoperation.h"
-//#include "qoperation_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QOperationPrivate
+{
+public:
+    explicit QOperationPrivate();
+    virtual ~QOperationPrivate();
+
+    bool isQuery;
+    QConstraint *bodyCondition;
+    QClass *class_;
+    QDataType *datatype;
+    QInterface *interface;
+    QList<QParameter *> *ownedParameters;
+    QSet<QConstraint *> *postconditions;
+    QSet<QConstraint *> *preconditions;
+    QSet<QType *> *raisedExceptions;
+    QSet<QOperation *> *redefinedOperations;
+    QOperationTemplateParameter *templateParameter;
+};
+
+QOperationPrivate::QOperationPrivate() :
+    ownedParameters(new QList<QParameter *>),
+    postconditions(new QSet<QConstraint *>),
+    preconditions(new QSet<QConstraint *>),
+    raisedExceptions(new QSet<QType *>),
+    redefinedOperations(new QSet<QOperation *>)
+{
+}
+
+QOperationPrivate::~QOperationPrivate()
+{
+    delete ownedParameters;
+    delete postconditions;
+    delete preconditions;
+    delete raisedExceptions;
+    delete redefinedOperations;
+}
 
 /*!
     \class QOperation
@@ -53,12 +89,21 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QOperation::QOperation(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QOperationPrivate)
 {
 }
 
 QOperation::~QOperation()
 {
+    delete d_ptr;
+}
+
+/*!
+    This information is derived from the return result for this Operation.Specifies whether the return parameter is ordered or not, if present.
+ */
+bool QOperation::isOrdered() const
+{
+    qWarning("To be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -66,10 +111,36 @@ QOperation::~QOperation()
  */
 bool QOperation::isQuery() const
 {
+    return d_ptr->isQuery;
 }
 
 void QOperation::setQuery(bool isQuery)
 {
+    d_ptr->isQuery = isQuery;
+}
+
+/*!
+    Specifies whether the return parameter is unique or not, if present.This information is derived from the return result for this Operation.
+ */
+bool QOperation::isUnique() const
+{
+    qWarning("To be implemented (this is a derived attribute)");
+}
+
+/*!
+    This information is derived from the return result for this Operation.Specifies the lower multiplicity of the return parameter, if present.
+ */
+qint32 QOperation::lower() const
+{
+    qWarning("To be implemented (this is a derived attribute)");
+}
+
+/*!
+    This information is derived from the return result for this Operation.Specifies the upper multiplicity of the return parameter, if present.
+ */
+qint32 QOperation::upper() const
+{
+    qWarning("To be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -77,10 +148,12 @@ void QOperation::setQuery(bool isQuery)
  */
 QConstraint *QOperation::bodyCondition() const
 {
+    return d_ptr->bodyCondition;
 }
 
 void QOperation::setBodyCondition(const QConstraint *bodyCondition)
 {
+    d_ptr->bodyCondition = const_cast<QConstraint *>(bodyCondition);
 }
 
 /*!
@@ -88,10 +161,12 @@ void QOperation::setBodyCondition(const QConstraint *bodyCondition)
  */
 QClass *QOperation::class_() const
 {
+    return d_ptr->class_;
 }
 
 void QOperation::setClass_(const QClass *class_)
 {
+    d_ptr->class_ = const_cast<QClass *>(class_);
 }
 
 /*!
@@ -99,10 +174,12 @@ void QOperation::setClass_(const QClass *class_)
  */
 QDataType *QOperation::datatype() const
 {
+    return d_ptr->datatype;
 }
 
 void QOperation::setDatatype(const QDataType *datatype)
 {
+    d_ptr->datatype = const_cast<QDataType *>(datatype);
 }
 
 /*!
@@ -110,10 +187,12 @@ void QOperation::setDatatype(const QDataType *datatype)
  */
 QInterface *QOperation::interface() const
 {
+    return d_ptr->interface;
 }
 
 void QOperation::setInterface(const QInterface *interface)
 {
+    d_ptr->interface = const_cast<QInterface *>(interface);
 }
 
 /*!
@@ -121,14 +200,17 @@ void QOperation::setInterface(const QInterface *interface)
  */
 const QList<QParameter *> *QOperation::ownedParameters() const
 {
+    return d_ptr->ownedParameters;
 }
 
 void QOperation::addOwnedParameter(const QParameter *ownedParameter)
 {
+    d_ptr->ownedParameters->append(const_cast<QParameter *>(ownedParameter));
 }
 
 void QOperation::removeOwnedParameter(const QParameter *ownedParameter)
 {
+    d_ptr->ownedParameters->removeAll(const_cast<QParameter *>(ownedParameter));
 }
 
 /*!
@@ -136,14 +218,17 @@ void QOperation::removeOwnedParameter(const QParameter *ownedParameter)
  */
 const QSet<QConstraint *> *QOperation::postconditions() const
 {
+    return d_ptr->postconditions;
 }
 
 void QOperation::addPostcondition(const QConstraint *postcondition)
 {
+    d_ptr->postconditions->insert(const_cast<QConstraint *>(postcondition));
 }
 
 void QOperation::removePostcondition(const QConstraint *postcondition)
 {
+    d_ptr->postconditions->remove(const_cast<QConstraint *>(postcondition));
 }
 
 /*!
@@ -151,14 +236,17 @@ void QOperation::removePostcondition(const QConstraint *postcondition)
  */
 const QSet<QConstraint *> *QOperation::preconditions() const
 {
+    return d_ptr->preconditions;
 }
 
 void QOperation::addPrecondition(const QConstraint *precondition)
 {
+    d_ptr->preconditions->insert(const_cast<QConstraint *>(precondition));
 }
 
 void QOperation::removePrecondition(const QConstraint *precondition)
 {
+    d_ptr->preconditions->remove(const_cast<QConstraint *>(precondition));
 }
 
 /*!
@@ -166,14 +254,17 @@ void QOperation::removePrecondition(const QConstraint *precondition)
  */
 const QSet<QType *> *QOperation::raisedExceptions() const
 {
+    return d_ptr->raisedExceptions;
 }
 
 void QOperation::addRaisedException(const QType *raisedException)
 {
+    d_ptr->raisedExceptions->insert(const_cast<QType *>(raisedException));
 }
 
 void QOperation::removeRaisedException(const QType *raisedException)
 {
+    d_ptr->raisedExceptions->remove(const_cast<QType *>(raisedException));
 }
 
 /*!
@@ -181,14 +272,17 @@ void QOperation::removeRaisedException(const QType *raisedException)
  */
 const QSet<QOperation *> *QOperation::redefinedOperations() const
 {
+    return d_ptr->redefinedOperations;
 }
 
 void QOperation::addRedefinedOperation(const QOperation *redefinedOperation)
 {
+    d_ptr->redefinedOperations->insert(const_cast<QOperation *>(redefinedOperation));
 }
 
 void QOperation::removeRedefinedOperation(const QOperation *redefinedOperation)
 {
+    d_ptr->redefinedOperations->remove(const_cast<QOperation *>(redefinedOperation));
 }
 
 /*!
@@ -196,10 +290,20 @@ void QOperation::removeRedefinedOperation(const QOperation *redefinedOperation)
  */
 QOperationTemplateParameter *QOperation::templateParameter() const
 {
+    return d_ptr->templateParameter;
 }
 
 void QOperation::setTemplateParameter(const QOperationTemplateParameter *templateParameter)
 {
+    d_ptr->templateParameter = const_cast<QOperationTemplateParameter *>(templateParameter);
+}
+
+/*!
+    This information is derived from the return result for this Operation.Specifies the return result of the operation, if present.
+ */
+QType *QOperation::type() const
+{
+    qWarning("To be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -207,27 +311,7 @@ void QOperation::setTemplateParameter(const QOperationTemplateParameter *templat
  */
 bool QOperation::isConsistentWith(const QRedefinableElement *redefinee) const
 {
-}
-
-/*!
-    If this operation has a return parameter, isOrdered equals the value of isOrdered for that parameter. Otherwise isOrdered is false.
- */
-bool QOperation::isOrdered() const
-{
-}
-
-/*!
-    If this operation has a return parameter, isUnique equals the value of isUnique for that parameter. Otherwise isUnique is true.
- */
-bool QOperation::isUnique() const
-{
-}
-
-/*!
-    If this operation has a return parameter, lower equals the value of lower for that parameter. Otherwise lower is not defined.
- */
-qint32 QOperation::lower() const
-{
+    qWarning("To be implemented");
 }
 
 /*!
@@ -235,20 +319,7 @@ qint32 QOperation::lower() const
  */
 const QSet<QParameter *> *QOperation::returnResult() const
 {
-}
-
-/*!
-    If this operation has a return parameter, type equals the value of type for that parameter. Otherwise type is not defined.
- */
-QType *QOperation::type() const
-{
-}
-
-/*!
-    If this operation has a return parameter, upper equals the value of upper for that parameter. Otherwise upper is not defined.
- */
-qint32 QOperation::upper() const
-{
+    qWarning("To be implemented");
 }
 
 #include "moc_qoperation.cpp"

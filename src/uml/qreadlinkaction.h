@@ -106,17 +106,19 @@ class Q_UML_EXPORT QReadLinkAction : public QObject, public QLinkAction
     // From QReadLinkAction
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
+    Q_DISABLE_COPY(QReadLinkAction)
+    Q_DECLARE_PRIVATE(QReadLinkAction)
+
 public:
     explicit QReadLinkAction(QObject *parent = 0);
     virtual ~QReadLinkAction();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QOutputPin *result() const;
     void setResult(const QOutputPin *result);
 
 private:
-    Q_DISABLE_COPY(QReadLinkAction)
-    Q_DECLARE_PRIVATE(QReadLinkAction)
+    QReadLinkActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

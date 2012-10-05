@@ -40,9 +40,28 @@
 ****************************************************************************/
 
 #include "qcomment.h"
-//#include "qcomment_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QCommentPrivate
+{
+public:
+    explicit QCommentPrivate();
+    virtual ~QCommentPrivate();
+
+    QString body;
+    QSet<QElement *> *annotatedElements;
+};
+
+QCommentPrivate::QCommentPrivate() :
+    annotatedElements(new QSet<QElement *>)
+{
+}
+
+QCommentPrivate::~QCommentPrivate()
+{
+    delete annotatedElements;
+}
 
 /*!
     \class QComment
@@ -53,12 +72,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QComment::QComment(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QCommentPrivate)
 {
 }
 
 QComment::~QComment()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +86,12 @@ QComment::~QComment()
  */
 QString QComment::body() const
 {
+    return d_ptr->body;
 }
 
 void QComment::setBody(QString body)
 {
+    d_ptr->body = body;
 }
 
 /*!
@@ -77,14 +99,17 @@ void QComment::setBody(QString body)
  */
 const QSet<QElement *> *QComment::annotatedElements() const
 {
+    return d_ptr->annotatedElements;
 }
 
 void QComment::addAnnotatedElement(const QElement *annotatedElement)
 {
+    d_ptr->annotatedElements->insert(const_cast<QElement *>(annotatedElement));
 }
 
 void QComment::removeAnnotatedElement(const QElement *annotatedElement)
 {
+    d_ptr->annotatedElements->remove(const_cast<QElement *>(annotatedElement));
 }
 
 #include "moc_qcomment.cpp"

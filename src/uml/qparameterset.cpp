@@ -40,9 +40,30 @@
 ****************************************************************************/
 
 #include "qparameterset.h"
-//#include "qparameterset_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QParameterSetPrivate
+{
+public:
+    explicit QParameterSetPrivate();
+    virtual ~QParameterSetPrivate();
+
+    QSet<QConstraint *> *conditions;
+    QSet<QParameter *> *parameters;
+};
+
+QParameterSetPrivate::QParameterSetPrivate() :
+    conditions(new QSet<QConstraint *>),
+    parameters(new QSet<QParameter *>)
+{
+}
+
+QParameterSetPrivate::~QParameterSetPrivate()
+{
+    delete conditions;
+    delete parameters;
+}
 
 /*!
     \class QParameterSet
@@ -53,12 +74,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QParameterSet::QParameterSet(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QParameterSetPrivate)
 {
 }
 
 QParameterSet::~QParameterSet()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,14 +88,17 @@ QParameterSet::~QParameterSet()
  */
 const QSet<QConstraint *> *QParameterSet::conditions() const
 {
+    return d_ptr->conditions;
 }
 
 void QParameterSet::addCondition(const QConstraint *condition)
 {
+    d_ptr->conditions->insert(const_cast<QConstraint *>(condition));
 }
 
 void QParameterSet::removeCondition(const QConstraint *condition)
 {
+    d_ptr->conditions->remove(const_cast<QConstraint *>(condition));
 }
 
 /*!
@@ -81,14 +106,17 @@ void QParameterSet::removeCondition(const QConstraint *condition)
  */
 const QSet<QParameter *> *QParameterSet::parameters() const
 {
+    return d_ptr->parameters;
 }
 
 void QParameterSet::addParameter(const QParameter *parameter)
 {
+    d_ptr->parameters->insert(const_cast<QParameter *>(parameter));
 }
 
 void QParameterSet::removeParameter(const QParameter *parameter)
 {
+    d_ptr->parameters->remove(const_cast<QParameter *>(parameter));
 }
 
 #include "moc_qparameterset.cpp"

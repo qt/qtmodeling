@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qtimeconstraint.h"
-//#include "qtimeconstraint_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QTimeConstraintPrivate
+{
+public:
+    explicit QTimeConstraintPrivate();
+    virtual ~QTimeConstraintPrivate();
+
+    bool firstEvent;
+    QTimeInterval *specification;
+};
+
+QTimeConstraintPrivate::QTimeConstraintPrivate()
+{
+}
+
+QTimeConstraintPrivate::~QTimeConstraintPrivate()
+{
+}
 
 /*!
     \class QTimeConstraint
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QTimeConstraint::QTimeConstraint(QObject *parent)
-    : QIntervalConstraint(parent)
+    : QIntervalConstraint(parent), d_ptr(new QTimeConstraintPrivate)
 {
 }
 
 QTimeConstraint::~QTimeConstraint()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QTimeConstraint::~QTimeConstraint()
  */
 bool QTimeConstraint::firstEvent() const
 {
+    return d_ptr->firstEvent;
 }
 
 void QTimeConstraint::setFirstEvent(bool firstEvent)
 {
+    d_ptr->firstEvent = firstEvent;
 }
 
 /*!
@@ -77,10 +97,12 @@ void QTimeConstraint::setFirstEvent(bool firstEvent)
  */
 QTimeInterval *QTimeConstraint::specification() const
 {
+    return d_ptr->specification;
 }
 
 void QTimeConstraint::setSpecification(const QTimeInterval *specification)
 {
+    d_ptr->specification = const_cast<QTimeInterval *>(specification);
 }
 
 #include "moc_qtimeconstraint.cpp"

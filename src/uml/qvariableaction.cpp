@@ -40,9 +40,25 @@
 ****************************************************************************/
 
 #include "qvariableaction.h"
-//#include "qvariableaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QVariableActionPrivate
+{
+public:
+    explicit QVariableActionPrivate();
+    virtual ~QVariableActionPrivate();
+
+    QVariable *variable;
+};
+
+QVariableActionPrivate::QVariableActionPrivate()
+{
+}
+
+QVariableActionPrivate::~QVariableActionPrivate()
+{
+}
 
 /*!
     \class QVariableAction
@@ -53,11 +69,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QVariableAction::QVariableAction()
+    : d_ptr(new QVariableActionPrivate)
 {
 }
 
 QVariableAction::~QVariableAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -65,10 +83,12 @@ QVariableAction::~QVariableAction()
  */
 QVariable *QVariableAction::variable() const
 {
+    return d_ptr->variable;
 }
 
 void QVariableAction::setVariable(const QVariable *variable)
 {
+    d_ptr->variable = const_cast<QVariable *>(variable);
 }
 
 QT_END_NAMESPACE_QTUML

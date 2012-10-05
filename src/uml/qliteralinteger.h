@@ -84,21 +84,23 @@ class Q_UML_EXPORT QLiteralInteger : public QObject, public QLiteralSpecificatio
     // From QLiteralInteger
     Q_PROPERTY(qint32 value READ value WRITE setValue)
 
+    Q_DISABLE_COPY(QLiteralInteger)
+    Q_DECLARE_PRIVATE(QLiteralInteger)
+
 public:
     explicit QLiteralInteger(QObject *parent = 0);
     virtual ~QLiteralInteger();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     qint32 value() const;
     void setValue(qint32 value);
 
-    // Operations (including accessors for derived && !derivedUnion attributes and association-ends)
+    // Operations
     qint32 integerValue() const;
     bool isComputable() const;
 
 private:
-    Q_DISABLE_COPY(QLiteralInteger)
-    Q_DECLARE_PRIVATE(QLiteralInteger)
+    QLiteralIntegerPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

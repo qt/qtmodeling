@@ -40,9 +40,26 @@
 ****************************************************************************/
 
 #include "qremovevariablevalueaction.h"
-//#include "qremovevariablevalueaction_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QRemoveVariableValueActionPrivate
+{
+public:
+    explicit QRemoveVariableValueActionPrivate();
+    virtual ~QRemoveVariableValueActionPrivate();
+
+    bool isRemoveDuplicates;
+    QInputPin *removeAt;
+};
+
+QRemoveVariableValueActionPrivate::QRemoveVariableValueActionPrivate()
+{
+}
+
+QRemoveVariableValueActionPrivate::~QRemoveVariableValueActionPrivate()
+{
+}
 
 /*!
     \class QRemoveVariableValueAction
@@ -53,12 +70,13 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QRemoveVariableValueAction::QRemoveVariableValueAction(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QRemoveVariableValueActionPrivate)
 {
 }
 
 QRemoveVariableValueAction::~QRemoveVariableValueAction()
 {
+    delete d_ptr;
 }
 
 /*!
@@ -66,10 +84,12 @@ QRemoveVariableValueAction::~QRemoveVariableValueAction()
  */
 bool QRemoveVariableValueAction::isRemoveDuplicates() const
 {
+    return d_ptr->isRemoveDuplicates;
 }
 
 void QRemoveVariableValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
 {
+    d_ptr->isRemoveDuplicates = isRemoveDuplicates;
 }
 
 /*!
@@ -77,10 +97,12 @@ void QRemoveVariableValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
  */
 QInputPin *QRemoveVariableValueAction::removeAt() const
 {
+    return d_ptr->removeAt;
 }
 
 void QRemoveVariableValueAction::setRemoveAt(const QInputPin *removeAt)
 {
+    d_ptr->removeAt = const_cast<QInputPin *>(removeAt);
 }
 
 #include "moc_qremovevariablevalueaction.cpp"

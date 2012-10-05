@@ -60,15 +60,21 @@ class QPackageableElementPrivate;
 
 class Q_UML_EXPORT QPackageableElement : public QParameterableElement, public virtual QNamedElement
 {
+    Q_DISABLE_COPY(QPackageableElement)
+    Q_DECLARE_PRIVATE(QPackageableElement)
+
 public:
     virtual ~QPackageableElement();
 
-    // Attributes (except those derived && !derivedUnion)
+    // Attributes
     QtUml::VisibilityKind visibility() const;
     void setVisibility(QtUml::VisibilityKind visibility);
 
 protected:
     explicit QPackageableElement();
+
+private:
+    QPackageableElementPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

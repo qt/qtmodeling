@@ -76,11 +76,14 @@ class Q_UML_EXPORT QExceptionHandler : public QObject, public QElement
     Q_PROPERTY(QExecutableNode * handlerBody READ handlerBody WRITE setHandlerBody)
     Q_PROPERTY(QExecutableNode * protectedNode READ protectedNode WRITE setProtectedNode)
 
+    Q_DISABLE_COPY(QExceptionHandler)
+    Q_DECLARE_PRIVATE(QExceptionHandler)
+
 public:
     explicit QExceptionHandler(QObject *parent = 0);
     virtual ~QExceptionHandler();
 
-    // Association-ends (except those derived && !derivedUnion)
+    // Association-ends
     QObjectNode *exceptionInput() const;
     void setExceptionInput(const QObjectNode *exceptionInput);
     const QSet<QClassifier *> *exceptionTypes() const;
@@ -92,8 +95,7 @@ public:
     void setProtectedNode(const QExecutableNode *protectedNode);
 
 private:
-    Q_DISABLE_COPY(QExceptionHandler)
-    Q_DECLARE_PRIVATE(QExceptionHandler)
+    QExceptionHandlerPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

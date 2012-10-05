@@ -40,9 +40,34 @@
 ****************************************************************************/
 
 #include "qconnector.h"
-//#include "qconnector_p.h"
 
 QT_BEGIN_NAMESPACE_QTUML
+
+class QConnectorPrivate
+{
+public:
+    explicit QConnectorPrivate();
+    virtual ~QConnectorPrivate();
+
+    QSet<QBehavior *> *contracts;
+    QList<QConnectorEnd *> *ends;
+    QSet<QConnector *> *redefinedConnectors;
+    QAssociation *type;
+};
+
+QConnectorPrivate::QConnectorPrivate() :
+    contracts(new QSet<QBehavior *>),
+    ends(new QList<QConnectorEnd *>),
+    redefinedConnectors(new QSet<QConnector *>)
+{
+}
+
+QConnectorPrivate::~QConnectorPrivate()
+{
+    delete contracts;
+    delete ends;
+    delete redefinedConnectors;
+}
 
 /*!
     \class QConnector
@@ -53,12 +78,21 @@ QT_BEGIN_NAMESPACE_QTUML
  */
 
 QConnector::QConnector(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), d_ptr(new QConnectorPrivate)
 {
 }
 
 QConnector::~QConnector()
 {
+    delete d_ptr;
+}
+
+/*!
+    Indicates the kind of connector. This is derived: a connector with one or more ends connected to a Port which is not on a Part and which is not a behavior port is a delegation; otherwise it is an assembly.
+ */
+QtUml::ConnectorKind QConnector::kind() const
+{
+    qWarning("To be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -66,14 +100,17 @@ QConnector::~QConnector()
  */
 const QSet<QBehavior *> *QConnector::contracts() const
 {
+    return d_ptr->contracts;
 }
 
 void QConnector::addContract(const QBehavior *contract)
 {
+    d_ptr->contracts->insert(const_cast<QBehavior *>(contract));
 }
 
 void QConnector::removeContract(const QBehavior *contract)
 {
+    d_ptr->contracts->remove(const_cast<QBehavior *>(contract));
 }
 
 /*!
@@ -81,14 +118,17 @@ void QConnector::removeContract(const QBehavior *contract)
  */
 const QList<QConnectorEnd *> *QConnector::ends() const
 {
+    return d_ptr->ends;
 }
 
 void QConnector::addEnd(const QConnectorEnd *end)
 {
+    d_ptr->ends->append(const_cast<QConnectorEnd *>(end));
 }
 
 void QConnector::removeEnd(const QConnectorEnd *end)
 {
+    d_ptr->ends->removeAll(const_cast<QConnectorEnd *>(end));
 }
 
 /*!
@@ -96,14 +136,17 @@ void QConnector::removeEnd(const QConnectorEnd *end)
  */
 const QSet<QConnector *> *QConnector::redefinedConnectors() const
 {
+    return d_ptr->redefinedConnectors;
 }
 
 void QConnector::addRedefinedConnector(const QConnector *redefinedConnector)
 {
+    d_ptr->redefinedConnectors->insert(const_cast<QConnector *>(redefinedConnector));
 }
 
 void QConnector::removeRedefinedConnector(const QConnector *redefinedConnector)
 {
+    d_ptr->redefinedConnectors->remove(const_cast<QConnector *>(redefinedConnector));
 }
 
 /*!
@@ -111,17 +154,12 @@ void QConnector::removeRedefinedConnector(const QConnector *redefinedConnector)
  */
 QAssociation *QConnector::type() const
 {
+    return d_ptr->type;
 }
 
 void QConnector::setType(const QAssociation *type)
 {
-}
-
-/*!
-    Missing derivation for Connector::/kind : ConnectorKind
- */
-QtUml::ConnectorKind QConnector::kind() const
-{
+    d_ptr->type = const_cast<QAssociation *>(type);
 }
 
 #include "moc_qconnector.cpp"
