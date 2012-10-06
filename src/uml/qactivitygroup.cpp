@@ -41,6 +41,10 @@
 
 #include "qactivitygroup.h"
 
+#include <QtUml/QActivityEdge>
+#include <QtUml/QActivityNode>
+#include <QtUml/QActivity>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QActivityGroupPrivate
@@ -96,12 +100,32 @@ const QSet<QActivityEdge *> *QActivityGroup::containedEdges() const
     return d_ptr->containedEdges;
 }
 
+void QActivityGroup::addContainedEdge(const QActivityEdge *containedEdge)
+{
+    d_ptr->containedEdges->insert(const_cast<QActivityEdge *>(containedEdge));
+}
+
+void QActivityGroup::removeContainedEdge(const QActivityEdge *containedEdge)
+{
+    d_ptr->containedEdges->remove(const_cast<QActivityEdge *>(containedEdge));
+}
+
 /*!
     Nodes immediately contained in the group.
  */
 const QSet<QActivityNode *> *QActivityGroup::containedNodes() const
 {
     return d_ptr->containedNodes;
+}
+
+void QActivityGroup::addContainedNode(const QActivityNode *containedNode)
+{
+    d_ptr->containedNodes->insert(const_cast<QActivityNode *>(containedNode));
+}
+
+void QActivityGroup::removeContainedNode(const QActivityNode *containedNode)
+{
+    d_ptr->containedNodes->remove(const_cast<QActivityNode *>(containedNode));
 }
 
 /*!
@@ -123,6 +147,20 @@ void QActivityGroup::setInActivity(const QActivity *inActivity)
 const QSet<QActivityGroup *> *QActivityGroup::subgroups() const
 {
     return d_ptr->subgroups;
+}
+
+void QActivityGroup::addSubgroup(const QActivityGroup *subgroup)
+{
+    d_ptr->subgroups->insert(const_cast<QActivityGroup *>(subgroup));
+    // Adjust subsetted property(ies)
+    addOwnedElement(subgroup);
+}
+
+void QActivityGroup::removeSubgroup(const QActivityGroup *subgroup)
+{
+    d_ptr->subgroups->remove(const_cast<QActivityGroup *>(subgroup));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(subgroup);
 }
 
 /*!

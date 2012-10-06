@@ -41,6 +41,7 @@
 
 #include "qactor.h"
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QActorPrivate

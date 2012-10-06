@@ -41,6 +41,9 @@
 
 #include "qqualifiervalue.h"
 
+#include <QtUml/QProperty>
+#include <QtUml/QInputPin>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QQualifierValuePrivate

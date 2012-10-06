@@ -41,6 +41,10 @@
 
 #include "qinstancespecification.h"
 
+#include <QtUml/QClassifier>
+#include <QtUml/QSlot>
+#include <QtUml/QValueSpecification>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QInstanceSpecificationPrivate
@@ -113,11 +117,15 @@ const QSet<QSlot *> *QInstanceSpecification::slots_() const
 void QInstanceSpecification::addSlot_(const QSlot *slot_)
 {
     d_ptr->slots_->insert(const_cast<QSlot *>(slot_));
+    // Adjust subsetted property(ies)
+    addOwnedElement(slot_);
 }
 
 void QInstanceSpecification::removeSlot_(const QSlot *slot_)
 {
     d_ptr->slots_->remove(const_cast<QSlot *>(slot_));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(slot_);
 }
 
 /*!

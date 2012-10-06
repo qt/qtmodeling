@@ -41,6 +41,10 @@
 
 #include "qreduceaction.h"
 
+#include <QtUml/QInputPin>
+#include <QtUml/QBehavior>
+#include <QtUml/QOutputPin>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QReduceActionPrivate

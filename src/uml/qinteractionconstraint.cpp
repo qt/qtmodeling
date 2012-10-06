@@ -41,6 +41,8 @@
 
 #include "qinteractionconstraint.h"
 
+#include <QtUml/QValueSpecification>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QInteractionConstraintPrivate

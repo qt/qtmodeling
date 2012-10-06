@@ -41,6 +41,9 @@
 
 #include "qtemplateparameter.h"
 
+#include <QtUml/QParameterableElement>
+#include <QtUml/QTemplateSignature>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QTemplateParameterPrivate

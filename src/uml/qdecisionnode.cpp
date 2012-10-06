@@ -41,6 +41,9 @@
 
 #include "qdecisionnode.h"
 
+#include <QtUml/QBehavior>
+#include <QtUml/QObjectFlow>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QDecisionNodePrivate

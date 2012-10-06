@@ -41,6 +41,10 @@
 
 #include "qartifact.h"
 
+#include <QtUml/QManifestation>
+#include <QtUml/QProperty>
+#include <QtUml/QOperation>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QArtifactPrivate
@@ -114,11 +118,17 @@ const QSet<QManifestation *> *QArtifact::manifestations() const
 void QArtifact::addManifestation(const QManifestation *manifestation)
 {
     d_ptr->manifestations->insert(const_cast<QManifestation *>(manifestation));
+    // Adjust subsetted property(ies)
+    addOwnedElement(manifestation);
+    addClientDependency(manifestation);
 }
 
 void QArtifact::removeManifestation(const QManifestation *manifestation)
 {
     d_ptr->manifestations->remove(const_cast<QManifestation *>(manifestation));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(manifestation);
+    removeClientDependency(manifestation);
 }
 
 /*!
@@ -132,11 +142,15 @@ const QSet<QArtifact *> *QArtifact::nestedArtifacts() const
 void QArtifact::addNestedArtifact(const QArtifact *nestedArtifact)
 {
     d_ptr->nestedArtifacts->insert(const_cast<QArtifact *>(nestedArtifact));
+    // Adjust subsetted property(ies)
+    addOwnedMember(nestedArtifact);
 }
 
 void QArtifact::removeNestedArtifact(const QArtifact *nestedArtifact)
 {
     d_ptr->nestedArtifacts->remove(const_cast<QArtifact *>(nestedArtifact));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(nestedArtifact);
 }
 
 /*!
@@ -150,11 +164,17 @@ const QList<QProperty *> *QArtifact::ownedAttributes() const
 void QArtifact::addOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
+    // Adjust subsetted property(ies)
+    addOwnedMember(ownedAttribute);
+    addAttribute(ownedAttribute);
 }
 
 void QArtifact::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(ownedAttribute);
+    removeAttribute(ownedAttribute);
 }
 
 /*!
@@ -168,11 +188,17 @@ const QList<QOperation *> *QArtifact::ownedOperations() const
 void QArtifact::addOwnedOperation(const QOperation *ownedOperation)
 {
     d_ptr->ownedOperations->append(const_cast<QOperation *>(ownedOperation));
+    // Adjust subsetted property(ies)
+    addFeature(ownedOperation);
+    addOwnedMember(ownedOperation);
 }
 
 void QArtifact::removeOwnedOperation(const QOperation *ownedOperation)
 {
     d_ptr->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation));
+    // Adjust subsetted property(ies)
+    removeFeature(ownedOperation);
+    removeOwnedMember(ownedOperation);
 }
 
 #include "moc_qartifact.cpp"

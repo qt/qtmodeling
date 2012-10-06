@@ -36,7 +36,7 @@
     // From ${parent.name}
         [%- FOREACH attribute IN parent.attribute -%]
         [%- IF redefinedProperties.grep(attribute.id).size == 0 -%]
-            [%- IF attribute.accessor.size == 1 or attribute.accessor.size == 3 %]
+            [%- IF attribute.isReadOnly == 'true' or attribute.isDerivedUnion == 'true' or attribute.accessor.size == 3 %]
     Q_PROPERTY(${attribute.accessor.0.return}[%- IF attribute.accessor.0.return.substr(attribute.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${attribute.accessor.0.name} READ ${attribute.accessor.0.name})
             [%- ELSE %]
     Q_PROPERTY(${attribute.accessor.0.return}[%- IF attribute.accessor.0.return.substr(attribute.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${attribute.accessor.0.name} READ ${attribute.accessor.0.name} WRITE ${attribute.accessor.1.name})
@@ -45,7 +45,7 @@
         [%- END -%]
         [%- FOREACH associationend IN parent.associationend -%]
         [%- IF redefinedProperties.grep(associationend.id).size == 0 -%]
-            [%- IF associationend.accessor.size == 1 or associationend.accessor.size == 3 %]
+            [%- IF associationend.isReadOnly == 'true' or associationend.isDerivedUnion == 'true' or associationend.accessor.size == 3 %]
     Q_PROPERTY(${associationend.accessor.0.return}[%- IF associationend.accessor.0.return.substr(associationend.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${associationend.accessor.0.name} READ ${associationend.accessor.0.name})
             [%- ELSE %]
     Q_PROPERTY(${associationend.accessor.0.return}[%- IF associationend.accessor.0.return.substr(associationend.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${associationend.accessor.0.name} READ ${associationend.accessor.0.name} WRITE ${associationend.accessor.1.name})
@@ -181,6 +181,7 @@ public:
     [%- FOREACH attribute IN class.attribute -%]
     [%- FOREACH accessor IN attribute.accessor %]
     ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
+    [%- LAST IF attribute.isReadOnly == 'true' and attribute.isDerivedUnion == 'true' -%]
     [%- END -%]
     [%- END -%]
     [%- END %]
@@ -190,6 +191,7 @@ public:
     [%- FOREACH associationend IN class.associationend -%]
     [%- FOREACH accessor IN associationend.accessor %]
     ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
+    [%- LAST IF associationend.isReadOnly == 'true' and associationend.isDerivedUnion == 'true' -%]
     [%- END -%]
     [%- END -%]
     [%- END %]
@@ -200,6 +202,37 @@ public:
     ${operation.return}${operation.name}([%- FOREACH parameter IN operation.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${operation.constness};
     [%- END %]
     [%- END %]
+    [%- found = 'false' -%]
+    [%- FOREACH attribute IN class.attribute -%]
+    [%- IF attribute.isReadOnly == 'true' and attribute.isDerivedUnion == 'true' -%]
+    [%- FOREACH accessor IN attribute.accessor %]
+    [%- NEXT IF loop.first %]
+    [%- IF found == 'false' %]
+
+protected:
+    // Synchronization functions for read-only subsetted properties
+    [%- found = 'true' -%]
+    [%- END %]
+    ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
+    [%- END -%]
+    [%- END -%]
+    [%- END -%]
+
+    [%- FOREACH associationend IN class.associationend -%]
+    [%- IF associationend.isReadOnly == 'true' and associationend.isDerivedUnion == 'true' -%]
+    [%- FOREACH accessor IN associationend.accessor %]
+    [%- NEXT IF loop.first %]
+    [%- IF found == 'false' %]
+
+protected:
+    // Synchronization functions for read-only subsetted properties
+    [%- found = 'true' -%]
+    [%- END %]
+    ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
+    [%- END -%]
+    [%- END -%]
+    [%- END -%]
+
 [%- IF class.isAbstract == 'true' %]
 
 protected:

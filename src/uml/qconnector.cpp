@@ -41,6 +41,10 @@
 
 #include "qconnector.h"
 
+#include <QtUml/QBehavior>
+#include <QtUml/QConnectorEnd>
+#include <QtUml/QAssociation>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QConnectorPrivate
@@ -124,11 +128,15 @@ const QList<QConnectorEnd *> *QConnector::ends() const
 void QConnector::addEnd(const QConnectorEnd *end)
 {
     d_ptr->ends->append(const_cast<QConnectorEnd *>(end));
+    // Adjust subsetted property(ies)
+    addOwnedElement(end);
 }
 
 void QConnector::removeEnd(const QConnectorEnd *end)
 {
     d_ptr->ends->removeAll(const_cast<QConnectorEnd *>(end));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(end);
 }
 
 /*!
@@ -142,11 +150,15 @@ const QSet<QConnector *> *QConnector::redefinedConnectors() const
 void QConnector::addRedefinedConnector(const QConnector *redefinedConnector)
 {
     d_ptr->redefinedConnectors->insert(const_cast<QConnector *>(redefinedConnector));
+    // Adjust subsetted property(ies)
+    addRedefinedElement(redefinedConnector);
 }
 
 void QConnector::removeRedefinedConnector(const QConnector *redefinedConnector)
 {
     d_ptr->redefinedConnectors->remove(const_cast<QConnector *>(redefinedConnector));
+    // Adjust subsetted property(ies)
+    removeRedefinedElement(redefinedConnector);
 }
 
 /*!

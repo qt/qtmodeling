@@ -41,6 +41,8 @@
 
 #include "qinstancevalue.h"
 
+#include <QtUml/QInstanceSpecification>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QInstanceValuePrivate

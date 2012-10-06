@@ -41,6 +41,7 @@
 
 #include "qcontinuation.h"
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QContinuationPrivate

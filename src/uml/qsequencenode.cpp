@@ -41,6 +41,8 @@
 
 #include "qsequencenode.h"
 
+#include <QtUml/QExecutableNode>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QSequenceNodePrivate

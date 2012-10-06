@@ -41,6 +41,8 @@
 
 #include "qgeneralordering.h"
 
+#include <QtUml/QOccurrenceSpecification>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QGeneralOrderingPrivate

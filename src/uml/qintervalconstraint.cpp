@@ -41,6 +41,8 @@
 
 #include "qintervalconstraint.h"
 
+#include <QtUml/QInterval>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QIntervalConstraintPrivate

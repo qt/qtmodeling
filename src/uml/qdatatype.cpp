@@ -41,6 +41,10 @@
 
 #include "qdatatype.h"
 
+#include <QtUml/QProperty>
+#include <QtUml/QOperation>
+#include <QtUml/QNamedElement>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QDataTypePrivate
@@ -94,11 +98,17 @@ const QList<QProperty *> *QDataType::ownedAttributes() const
 void QDataType::addOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
+    // Adjust subsetted property(ies)
+    addOwnedMember(ownedAttribute);
+    addAttribute(ownedAttribute);
 }
 
 void QDataType::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(ownedAttribute);
+    removeAttribute(ownedAttribute);
 }
 
 /*!
@@ -112,11 +122,17 @@ const QList<QOperation *> *QDataType::ownedOperations() const
 void QDataType::addOwnedOperation(const QOperation *ownedOperation)
 {
     d_ptr->ownedOperations->append(const_cast<QOperation *>(ownedOperation));
+    // Adjust subsetted property(ies)
+    addFeature(ownedOperation);
+    addOwnedMember(ownedOperation);
 }
 
 void QDataType::removeOwnedOperation(const QOperation *ownedOperation)
 {
     d_ptr->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation));
+    // Adjust subsetted property(ies)
+    removeFeature(ownedOperation);
+    removeOwnedMember(ownedOperation);
 }
 
 /*!

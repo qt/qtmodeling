@@ -289,21 +289,21 @@ return
         <attribute isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}" isReadOnly="{$isReadOnly}" subsettedProperty="{$attribute/@subsettedProperty}" redefinedProperty="{$attribute/@redefinedProperty}" id="{$attribute/@xmi:id}" defaultValue="{$defaultValue}">
         <accessor return="{$unqualifiedType}" name="{qtxmi:modifiedFunctionName($attribute)}" constness=" const"/>
         {
-        if (not($attribute/upperValue/@value) and $isReadOnly = "false") then
+        if (not($attribute/upperValue/@value) and ($isReadOnly = "false" or $isDerivedUnion = "true")) then
             <accessor return="void " name="set{qtxmi:capitalizedNameFromTypeString($unqualifiedType, qtxmi:mappedFunctionName($attribute/@name))}" constness="">
                 <parameter type="{$singleUnqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}"/>
             </accessor>
         else ""
         }
         {
-        if ($attribute/upperValue/@value and $isReadOnly = "false") then
+        if ($attribute/upperValue/@value and ($isReadOnly = "false" or $isDerivedUnion = "true")) then
         <accessor return="void " name="add{qtxmi:capitalizedNameFromTypeString($unqualifiedType, qtxmi:mappedFunctionName($attribute/@name))}" constness="">
            <parameter type="{$singleUnqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}"/>
         </accessor>
         else ""
         }
         {
-        if ($attribute/upperValue/@value and $isReadOnly = "false") then
+        if ($attribute/upperValue/@value and ($isReadOnly = "false" or $isDerivedUnion = "true")) then
         <accessor return="void " name="remove{qtxmi:capitalizedNameFromTypeString($unqualifiedType, qtxmi:mappedFunctionName($attribute/@name))}" constness="">
            <parameter type="{$singleUnqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}"/>
         </accessor>
@@ -338,14 +338,14 @@ return
         else ""
         }
         {
-        if ($attribute/upperValue/@value and $isReadOnly = "false") then
+        if ($attribute/upperValue/@value and ($isReadOnly = "false" or $isDerivedUnion = "true")) then
         <accessor return="void " name="add{qtxmi:capitalizedNameFromTypeString($unqualifiedType, qtxmi:mappedFunctionName($attribute/@name))}" constness="">
            <parameter type="{$singleUnqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}"/>
         </accessor>
         else ""
         }
         {
-        if ($attribute/upperValue/@value and $isReadOnly = "false") then
+        if ($attribute/upperValue/@value and ($isReadOnly = "false" or $isDerivedUnion = "true")) then
         <accessor return="void " name="remove{qtxmi:capitalizedNameFromTypeString($unqualifiedType, qtxmi:mappedFunctionName($attribute/@name))}" constness="">
            <parameter type="{$singleUnqualifiedType}" name="{qtxmi:mappedFunctionName($attribute/@name)}"/>
         </accessor>

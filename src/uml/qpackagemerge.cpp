@@ -41,6 +41,8 @@
 
 #include "qpackagemerge.h"
 
+#include <QtUml/QPackage>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QPackageMergePrivate

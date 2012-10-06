@@ -41,6 +41,7 @@
 
 #include "qliteralspecification.h"
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QLiteralSpecificationPrivate

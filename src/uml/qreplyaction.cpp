@@ -41,6 +41,9 @@
 
 #include "qreplyaction.h"
 
+#include <QtUml/QTrigger>
+#include <QtUml/QInputPin>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QReplyActionPrivate
@@ -106,11 +109,15 @@ const QSet<QInputPin *> *QReplyAction::replyValues() const
 void QReplyAction::addReplyValue(const QInputPin *replyValue)
 {
     d_ptr->replyValues->insert(const_cast<QInputPin *>(replyValue));
+    // Adjust subsetted property(ies)
+    addInput(replyValue);
 }
 
 void QReplyAction::removeReplyValue(const QInputPin *replyValue)
 {
     d_ptr->replyValues->remove(const_cast<QInputPin *>(replyValue));
+    // Adjust subsetted property(ies)
+    removeInput(replyValue);
 }
 
 /*!

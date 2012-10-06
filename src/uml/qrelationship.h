@@ -69,6 +69,11 @@ public:
     const QSet<QElement *> *relatedElements() const;
 
 protected:
+    // Synchronization functions for read-only subsetted properties
+    void addRelatedElement(const QElement *relatedElement);
+    void removeRelatedElement(const QElement *relatedElement);
+
+protected:
     explicit QRelationship();
 
 private:

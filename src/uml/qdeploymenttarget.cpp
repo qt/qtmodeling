@@ -41,6 +41,9 @@
 
 #include "qdeploymenttarget.h"
 
+#include <QtUml/QPackageableElement>
+#include <QtUml/QDeployment>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QDeploymentTargetPrivate
@@ -99,11 +102,17 @@ const QSet<QDeployment *> *QDeploymentTarget::deployments() const
 void QDeploymentTarget::addDeployment(const QDeployment *deployment)
 {
     d_ptr->deployments->insert(const_cast<QDeployment *>(deployment));
+    // Adjust subsetted property(ies)
+    addOwnedElement(deployment);
+    addClientDependency(deployment);
 }
 
 void QDeploymentTarget::removeDeployment(const QDeployment *deployment)
 {
     d_ptr->deployments->remove(const_cast<QDeployment *>(deployment));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(deployment);
+    removeClientDependency(deployment);
 }
 
 QT_END_NAMESPACE_QTUML

@@ -41,6 +41,9 @@
 
 #include "qpseudostate.h"
 
+#include <QtUml/QState>
+#include <QtUml/QStateMachine>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QPseudostatePrivate

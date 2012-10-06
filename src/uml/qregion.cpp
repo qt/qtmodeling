@@ -41,6 +41,12 @@
 
 #include "qregion.h"
 
+#include <QtUml/QVertex>
+#include <QtUml/QTransition>
+#include <QtUml/QStateMachine>
+#include <QtUml/QClassifier>
+#include <QtUml/QState>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QRegionPrivate
@@ -144,11 +150,15 @@ const QSet<QVertex *> *QRegion::subvertices() const
 void QRegion::addSubvertex(const QVertex *subvertex)
 {
     d_ptr->subvertices->insert(const_cast<QVertex *>(subvertex));
+    // Adjust subsetted property(ies)
+    addOwnedMember(subvertex);
 }
 
 void QRegion::removeSubvertex(const QVertex *subvertex)
 {
     d_ptr->subvertices->remove(const_cast<QVertex *>(subvertex));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(subvertex);
 }
 
 /*!
@@ -162,11 +172,15 @@ const QSet<QTransition *> *QRegion::transitions() const
 void QRegion::addTransition(const QTransition *transition)
 {
     d_ptr->transitions->insert(const_cast<QTransition *>(transition));
+    // Adjust subsetted property(ies)
+    addOwnedMember(transition);
 }
 
 void QRegion::removeTransition(const QTransition *transition)
 {
     d_ptr->transitions->remove(const_cast<QTransition *>(transition));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(transition);
 }
 
 /*!

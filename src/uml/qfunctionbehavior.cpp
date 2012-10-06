@@ -41,6 +41,7 @@
 
 #include "qfunctionbehavior.h"
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QFunctionBehaviorPrivate

@@ -41,6 +41,9 @@
 
 #include "qpackageimport.h"
 
+#include <QtUml/QPackage>
+#include <QtUml/QNamespace>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QPackageImportPrivate

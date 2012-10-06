@@ -41,6 +41,8 @@
 
 #include "qelement.h"
 
+#include <QtUml/QComment>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QElementPrivate
@@ -95,11 +97,15 @@ const QSet<QComment *> *QElement::ownedComments() const
 void QElement::addOwnedComment(const QComment *ownedComment)
 {
     d_ptr->ownedComments->insert(const_cast<QComment *>(ownedComment));
+    // Adjust subsetted property(ies)
+    addOwnedElement(ownedComment);
 }
 
 void QElement::removeOwnedComment(const QComment *ownedComment)
 {
     d_ptr->ownedComments->remove(const_cast<QComment *>(ownedComment));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(ownedComment);
 }
 
 /*!
@@ -108,6 +114,16 @@ void QElement::removeOwnedComment(const QComment *ownedComment)
 const QSet<QElement *> *QElement::ownedElements() const
 {
     return d_ptr->ownedElements;
+}
+
+void QElement::addOwnedElement(const QElement *ownedElement)
+{
+    d_ptr->ownedElements->insert(const_cast<QElement *>(ownedElement));
+}
+
+void QElement::removeOwnedElement(const QElement *ownedElement)
+{
+    d_ptr->ownedElements->remove(const_cast<QElement *>(ownedElement));
 }
 
 /*!

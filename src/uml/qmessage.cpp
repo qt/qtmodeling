@@ -41,6 +41,11 @@
 
 #include "qmessage.h"
 
+#include <QtUml/QMessageEnd>
+#include <QtUml/QInteraction>
+#include <QtUml/QValueSpecification>
+#include <QtUml/QConnector>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QMessagePrivate
@@ -119,11 +124,15 @@ const QList<QValueSpecification *> *QMessage::arguments() const
 void QMessage::addArgument(const QValueSpecification *argument)
 {
     d_ptr->arguments->append(const_cast<QValueSpecification *>(argument));
+    // Adjust subsetted property(ies)
+    addOwnedElement(argument);
 }
 
 void QMessage::removeArgument(const QValueSpecification *argument)
 {
     d_ptr->arguments->removeAll(const_cast<QValueSpecification *>(argument));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(argument);
 }
 
 /*!

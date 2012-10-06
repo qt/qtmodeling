@@ -41,6 +41,12 @@
 
 #include "qlifeline.h"
 
+#include <QtUml/QConnectableElement>
+#include <QtUml/QValueSpecification>
+#include <QtUml/QInteraction>
+#include <QtUml/QInteractionFragment>
+#include <QtUml/QPartDecomposition>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QLifelinePrivate

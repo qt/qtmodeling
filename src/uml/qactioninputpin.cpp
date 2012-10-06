@@ -41,6 +41,8 @@
 
 #include "qactioninputpin.h"
 
+#include <QtUml/QAction>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QActionInputPinPrivate

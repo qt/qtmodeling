@@ -41,6 +41,8 @@
 
 #include "qobjectflow.h"
 
+#include <QtUml/QBehavior>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QObjectFlowPrivate

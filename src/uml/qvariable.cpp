@@ -41,6 +41,10 @@
 
 #include "qvariable.h"
 
+#include <QtUml/QActivity>
+#include <QtUml/QStructuredActivityNode>
+#include <QtUml/QAction>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QVariablePrivate

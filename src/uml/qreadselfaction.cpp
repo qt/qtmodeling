@@ -41,6 +41,8 @@
 
 #include "qreadselfaction.h"
 
+#include <QtUml/QOutputPin>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QReadSelfActionPrivate

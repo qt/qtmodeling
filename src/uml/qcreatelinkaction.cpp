@@ -41,6 +41,8 @@
 
 #include "qcreatelinkaction.h"
 
+#include <QtUml/QLinkEndCreationData>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QCreateLinkActionPrivate

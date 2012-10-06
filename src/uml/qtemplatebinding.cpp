@@ -41,6 +41,10 @@
 
 #include "qtemplatebinding.h"
 
+#include <QtUml/QTemplateableElement>
+#include <QtUml/QTemplateParameterSubstitution>
+#include <QtUml/QTemplateSignature>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QTemplateBindingPrivate
@@ -106,11 +110,15 @@ const QSet<QTemplateParameterSubstitution *> *QTemplateBinding::parameterSubstit
 void QTemplateBinding::addParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution)
 {
     d_ptr->parameterSubstitutions->insert(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution));
+    // Adjust subsetted property(ies)
+    addOwnedElement(parameterSubstitution);
 }
 
 void QTemplateBinding::removeParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution)
 {
     d_ptr->parameterSubstitutions->remove(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(parameterSubstitution);
 }
 
 /*!

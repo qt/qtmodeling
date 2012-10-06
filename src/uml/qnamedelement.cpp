@@ -41,6 +41,11 @@
 
 #include "qnamedelement.h"
 
+#include <QtUml/QPackage>
+#include <QtUml/QNamespace>
+#include <QtUml/QDependency>
+#include <QtUml/QStringExpression>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QNamedElementPrivate
@@ -129,11 +134,13 @@ const QSet<QDependency *> *QNamedElement::clientDependencies() const
 void QNamedElement::addClientDependency(const QDependency *clientDependency)
 {
     d_ptr->clientDependencies->insert(const_cast<QDependency *>(clientDependency));
+    // Adjust subsetted property(ies)
 }
 
 void QNamedElement::removeClientDependency(const QDependency *clientDependency)
 {
     d_ptr->clientDependencies->remove(const_cast<QDependency *>(clientDependency));
+    // Adjust subsetted property(ies)
 }
 
 /*!

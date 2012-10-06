@@ -39,7 +39,8 @@ foreach my $class (values %$classes) {
     open STDOUT, '>', $options{o}."/".$namespace->{path}."/".lc($class->{name}).".cpp";
     if ($tt->process('class.cpp', {
         namespace => $namespace->{path},
-        class => $class
+        class => $class,
+        classes => $classes
     }) ne 1) { print $tt->error(); }
 }
 

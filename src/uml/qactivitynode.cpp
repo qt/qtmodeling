@@ -41,6 +41,13 @@
 
 #include "qactivitynode.h"
 
+#include <QtUml/QStructuredActivityNode>
+#include <QtUml/QActivityEdge>
+#include <QtUml/QActivityPartition>
+#include <QtUml/QActivityGroup>
+#include <QtUml/QActivity>
+#include <QtUml/QInterruptibleActivityRegion>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QActivityNodePrivate
@@ -118,6 +125,16 @@ const QSet<QActivityGroup *> *QActivityNode::inGroup() const
     return d_ptr->inGroup;
 }
 
+void QActivityNode::addInGroup(const QActivityGroup *inGroup)
+{
+    d_ptr->inGroup->insert(const_cast<QActivityGroup *>(inGroup));
+}
+
+void QActivityNode::removeInGroup(const QActivityGroup *inGroup)
+{
+    d_ptr->inGroup->remove(const_cast<QActivityGroup *>(inGroup));
+}
+
 /*!
     Interruptible regions containing the node.
  */
@@ -129,11 +146,15 @@ const QSet<QInterruptibleActivityRegion *> *QActivityNode::inInterruptibleRegion
 void QActivityNode::addInInterruptibleRegion(const QInterruptibleActivityRegion *inInterruptibleRegion)
 {
     d_ptr->inInterruptibleRegion->insert(const_cast<QInterruptibleActivityRegion *>(inInterruptibleRegion));
+    // Adjust subsetted property(ies)
+    addInGroup(inInterruptibleRegion);
 }
 
 void QActivityNode::removeInInterruptibleRegion(const QInterruptibleActivityRegion *inInterruptibleRegion)
 {
     d_ptr->inInterruptibleRegion->remove(const_cast<QInterruptibleActivityRegion *>(inInterruptibleRegion));
+    // Adjust subsetted property(ies)
+    removeInGroup(inInterruptibleRegion);
 }
 
 /*!
@@ -147,11 +168,15 @@ const QSet<QActivityPartition *> *QActivityNode::inPartition() const
 void QActivityNode::addInPartition(const QActivityPartition *inPartition)
 {
     d_ptr->inPartition->insert(const_cast<QActivityPartition *>(inPartition));
+    // Adjust subsetted property(ies)
+    addInGroup(inPartition);
 }
 
 void QActivityNode::removeInPartition(const QActivityPartition *inPartition)
 {
     d_ptr->inPartition->remove(const_cast<QActivityPartition *>(inPartition));
+    // Adjust subsetted property(ies)
+    removeInGroup(inPartition);
 }
 
 /*!
@@ -214,11 +239,15 @@ const QSet<QActivityNode *> *QActivityNode::redefinedNodes() const
 void QActivityNode::addRedefinedNode(const QActivityNode *redefinedNode)
 {
     d_ptr->redefinedNodes->insert(const_cast<QActivityNode *>(redefinedNode));
+    // Adjust subsetted property(ies)
+    addRedefinedElement(redefinedNode);
 }
 
 void QActivityNode::removeRedefinedNode(const QActivityNode *redefinedNode)
 {
     d_ptr->redefinedNodes->remove(const_cast<QActivityNode *>(redefinedNode));
+    // Adjust subsetted property(ies)
+    removeRedefinedElement(redefinedNode);
 }
 
 QT_END_NAMESPACE_QTUML

@@ -41,6 +41,8 @@
 
 #include "qactivityparameternode.h"
 
+#include <QtUml/QParameter>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QActivityParameterNodePrivate

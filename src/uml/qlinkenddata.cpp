@@ -41,6 +41,10 @@
 
 #include "qlinkenddata.h"
 
+#include <QtUml/QProperty>
+#include <QtUml/QQualifierValue>
+#include <QtUml/QInputPin>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QLinkEndDataPrivate
@@ -106,11 +110,15 @@ const QSet<QQualifierValue *> *QLinkEndData::qualifiers() const
 void QLinkEndData::addQualifier(const QQualifierValue *qualifier)
 {
     d_ptr->qualifiers->insert(const_cast<QQualifierValue *>(qualifier));
+    // Adjust subsetted property(ies)
+    addOwnedElement(qualifier);
 }
 
 void QLinkEndData::removeQualifier(const QQualifierValue *qualifier)
 {
     d_ptr->qualifiers->remove(const_cast<QQualifierValue *>(qualifier));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(qualifier);
 }
 
 /*!

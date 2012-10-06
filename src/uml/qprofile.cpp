@@ -41,6 +41,9 @@
 
 #include "qprofile.h"
 
+#include <QtUml/QElementImport>
+#include <QtUml/QPackageImport>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QProfilePrivate
@@ -94,11 +97,15 @@ const QSet<QElementImport *> *QProfile::metaclassReferences() const
 void QProfile::addMetaclassReference(const QElementImport *metaclassReference)
 {
     d_ptr->metaclassReferences->insert(const_cast<QElementImport *>(metaclassReference));
+    // Adjust subsetted property(ies)
+    addElementImport(metaclassReference);
 }
 
 void QProfile::removeMetaclassReference(const QElementImport *metaclassReference)
 {
     d_ptr->metaclassReferences->remove(const_cast<QElementImport *>(metaclassReference));
+    // Adjust subsetted property(ies)
+    removeElementImport(metaclassReference);
 }
 
 /*!
@@ -112,11 +119,15 @@ const QSet<QPackageImport *> *QProfile::metamodelReferences() const
 void QProfile::addMetamodelReference(const QPackageImport *metamodelReference)
 {
     d_ptr->metamodelReferences->insert(const_cast<QPackageImport *>(metamodelReference));
+    // Adjust subsetted property(ies)
+    addPackageImport(metamodelReference);
 }
 
 void QProfile::removeMetamodelReference(const QPackageImport *metamodelReference)
 {
     d_ptr->metamodelReferences->remove(const_cast<QPackageImport *>(metamodelReference));
+    // Adjust subsetted property(ies)
+    removePackageImport(metamodelReference);
 }
 
 #include "moc_qprofile.cpp"

@@ -80,6 +80,11 @@ public:
     const QSet<QConnectableElement *> *roles() const;
 
 protected:
+    // Synchronization functions for read-only subsetted properties
+    void addRole(const QConnectableElement *role);
+    void removeRole(const QConnectableElement *role);
+
+protected:
     explicit QStructuredClassifier();
 
 private:

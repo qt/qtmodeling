@@ -41,6 +41,10 @@
 
 #include "qtemplateableelement.h"
 
+#include <QtUml/QTemplateSignature>
+#include <QtUml/QTemplateBinding>
+#include <QtUml/QParameterableElement>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QTemplateableElementPrivate
@@ -105,11 +109,15 @@ const QSet<QTemplateBinding *> *QTemplateableElement::templateBindings() const
 void QTemplateableElement::addTemplateBinding(const QTemplateBinding *templateBinding)
 {
     d_ptr->templateBindings->insert(const_cast<QTemplateBinding *>(templateBinding));
+    // Adjust subsetted property(ies)
+    addOwnedElement(templateBinding);
 }
 
 void QTemplateableElement::removeTemplateBinding(const QTemplateBinding *templateBinding)
 {
     d_ptr->templateBindings->remove(const_cast<QTemplateBinding *>(templateBinding));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(templateBinding);
 }
 
 /*!

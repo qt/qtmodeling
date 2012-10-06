@@ -41,6 +41,8 @@
 
 #include "qextensionpoint.h"
 
+#include <QtUml/QUseCase>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QExtensionPointPrivate

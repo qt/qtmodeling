@@ -41,6 +41,10 @@
 
 #include "qextension.h"
 
+#include <QtUml/QClass>
+#include <QtUml/QExtensionEnd>
+#include <QtUml/QProperty>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QExtensionPrivate

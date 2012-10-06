@@ -41,6 +41,8 @@
 
 #include "qexpansionregion.h"
 
+#include <QtUml/QExpansionNode>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QExpansionRegionPrivate

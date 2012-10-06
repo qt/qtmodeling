@@ -41,6 +41,7 @@
 
 #include "qflowfinalnode.h"
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QFlowFinalNodePrivate

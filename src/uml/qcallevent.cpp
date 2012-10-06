@@ -41,6 +41,8 @@
 
 #include "qcallevent.h"
 
+#include <QtUml/QOperation>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QCallEventPrivate

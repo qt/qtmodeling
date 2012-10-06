@@ -41,6 +41,12 @@
 
 #include "qstatemachine.h"
 
+#include <QtUml/QNamespace>
+#include <QtUml/QRedefinableElement>
+#include <QtUml/QState>
+#include <QtUml/QPseudostate>
+#include <QtUml/QRegion>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QStateMachinePrivate
@@ -100,11 +106,15 @@ const QSet<QPseudostate *> *QStateMachine::connectionPoints() const
 void QStateMachine::addConnectionPoint(const QPseudostate *connectionPoint)
 {
     d_ptr->connectionPoints->insert(const_cast<QPseudostate *>(connectionPoint));
+    // Adjust subsetted property(ies)
+    addOwnedMember(connectionPoint);
 }
 
 void QStateMachine::removeConnectionPoint(const QPseudostate *connectionPoint)
 {
     d_ptr->connectionPoints->remove(const_cast<QPseudostate *>(connectionPoint));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(connectionPoint);
 }
 
 /*!
@@ -136,11 +146,15 @@ const QSet<QRegion *> *QStateMachine::regions() const
 void QStateMachine::addRegion(const QRegion *region)
 {
     d_ptr->regions->insert(const_cast<QRegion *>(region));
+    // Adjust subsetted property(ies)
+    addOwnedMember(region);
 }
 
 void QStateMachine::removeRegion(const QRegion *region)
 {
     d_ptr->regions->remove(const_cast<QRegion *>(region));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(region);
 }
 
 /*!

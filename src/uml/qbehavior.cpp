@@ -41,6 +41,12 @@
 
 #include "qbehavior.h"
 
+#include <QtUml/QConstraint>
+#include <QtUml/QBehavioralFeature>
+#include <QtUml/QParameterSet>
+#include <QtUml/QBehavioredClassifier>
+#include <QtUml/QParameter>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QBehaviorPrivate
@@ -127,11 +133,15 @@ const QList<QParameter *> *QBehavior::ownedParameters() const
 void QBehavior::addOwnedParameter(const QParameter *ownedParameter)
 {
     d_ptr->ownedParameters->append(const_cast<QParameter *>(ownedParameter));
+    // Adjust subsetted property(ies)
+    addOwnedMember(ownedParameter);
 }
 
 void QBehavior::removeOwnedParameter(const QParameter *ownedParameter)
 {
     d_ptr->ownedParameters->removeAll(const_cast<QParameter *>(ownedParameter));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(ownedParameter);
 }
 
 /*!
@@ -145,11 +155,15 @@ const QSet<QParameterSet *> *QBehavior::ownedParameterSets() const
 void QBehavior::addOwnedParameterSet(const QParameterSet *ownedParameterSet)
 {
     d_ptr->ownedParameterSets->insert(const_cast<QParameterSet *>(ownedParameterSet));
+    // Adjust subsetted property(ies)
+    addOwnedMember(ownedParameterSet);
 }
 
 void QBehavior::removeOwnedParameterSet(const QParameterSet *ownedParameterSet)
 {
     d_ptr->ownedParameterSets->remove(const_cast<QParameterSet *>(ownedParameterSet));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(ownedParameterSet);
 }
 
 /*!
@@ -163,11 +177,15 @@ const QSet<QConstraint *> *QBehavior::postconditions() const
 void QBehavior::addPostcondition(const QConstraint *postcondition)
 {
     d_ptr->postconditions->insert(const_cast<QConstraint *>(postcondition));
+    // Adjust subsetted property(ies)
+    addOwnedRule(postcondition);
 }
 
 void QBehavior::removePostcondition(const QConstraint *postcondition)
 {
     d_ptr->postconditions->remove(const_cast<QConstraint *>(postcondition));
+    // Adjust subsetted property(ies)
+    removeOwnedRule(postcondition);
 }
 
 /*!
@@ -181,11 +199,15 @@ const QSet<QConstraint *> *QBehavior::preconditions() const
 void QBehavior::addPrecondition(const QConstraint *precondition)
 {
     d_ptr->preconditions->insert(const_cast<QConstraint *>(precondition));
+    // Adjust subsetted property(ies)
+    addOwnedRule(precondition);
 }
 
 void QBehavior::removePrecondition(const QConstraint *precondition)
 {
     d_ptr->preconditions->remove(const_cast<QConstraint *>(precondition));
+    // Adjust subsetted property(ies)
+    removeOwnedRule(precondition);
 }
 
 /*!
@@ -199,11 +221,15 @@ const QSet<QBehavior *> *QBehavior::redefinedBehaviors() const
 void QBehavior::addRedefinedBehavior(const QBehavior *redefinedBehavior)
 {
     d_ptr->redefinedBehaviors->insert(const_cast<QBehavior *>(redefinedBehavior));
+    // Adjust subsetted property(ies)
+    addRedefinedClassifier(redefinedBehavior);
 }
 
 void QBehavior::removeRedefinedBehavior(const QBehavior *redefinedBehavior)
 {
     d_ptr->redefinedBehaviors->remove(const_cast<QBehavior *>(redefinedBehavior));
+    // Adjust subsetted property(ies)
+    removeRedefinedClassifier(redefinedBehavior);
 }
 
 /*!

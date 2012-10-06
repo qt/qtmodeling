@@ -41,6 +41,15 @@
 
 #include "qstate.h"
 
+#include <QtUml/QConstraint>
+#include <QtUml/QRegion>
+#include <QtUml/QStateMachine>
+#include <QtUml/QClassifier>
+#include <QtUml/QBehavior>
+#include <QtUml/QConnectionPointReference>
+#include <QtUml/QTrigger>
+#include <QtUml/QPseudostate>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QStatePrivate
@@ -138,11 +147,15 @@ const QSet<QConnectionPointReference *> *QState::connections() const
 void QState::addConnection(const QConnectionPointReference *connection)
 {
     d_ptr->connections->insert(const_cast<QConnectionPointReference *>(connection));
+    // Adjust subsetted property(ies)
+    addOwnedMember(connection);
 }
 
 void QState::removeConnection(const QConnectionPointReference *connection)
 {
     d_ptr->connections->remove(const_cast<QConnectionPointReference *>(connection));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(connection);
 }
 
 /*!
@@ -156,11 +169,15 @@ const QSet<QPseudostate *> *QState::connectionPoints() const
 void QState::addConnectionPoint(const QPseudostate *connectionPoint)
 {
     d_ptr->connectionPoints->insert(const_cast<QPseudostate *>(connectionPoint));
+    // Adjust subsetted property(ies)
+    addOwnedMember(connectionPoint);
 }
 
 void QState::removeConnectionPoint(const QPseudostate *connectionPoint)
 {
     d_ptr->connectionPoints->remove(const_cast<QPseudostate *>(connectionPoint));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(connectionPoint);
 }
 
 /*!
@@ -174,11 +191,15 @@ const QSet<QTrigger *> *QState::deferrableTriggers() const
 void QState::addDeferrableTrigger(const QTrigger *deferrableTrigger)
 {
     d_ptr->deferrableTriggers->insert(const_cast<QTrigger *>(deferrableTrigger));
+    // Adjust subsetted property(ies)
+    addOwnedElement(deferrableTrigger);
 }
 
 void QState::removeDeferrableTrigger(const QTrigger *deferrableTrigger)
 {
     d_ptr->deferrableTriggers->remove(const_cast<QTrigger *>(deferrableTrigger));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(deferrableTrigger);
 }
 
 /*!
@@ -252,11 +273,15 @@ const QSet<QRegion *> *QState::regions() const
 void QState::addRegion(const QRegion *region)
 {
     d_ptr->regions->insert(const_cast<QRegion *>(region));
+    // Adjust subsetted property(ies)
+    addOwnedMember(region);
 }
 
 void QState::removeRegion(const QRegion *region)
 {
     d_ptr->regions->remove(const_cast<QRegion *>(region));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(region);
 }
 
 /*!

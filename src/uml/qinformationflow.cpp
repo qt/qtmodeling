@@ -41,6 +41,13 @@
 
 #include "qinformationflow.h"
 
+#include <QtUml/QConnector>
+#include <QtUml/QMessage>
+#include <QtUml/QActivityEdge>
+#include <QtUml/QNamedElement>
+#include <QtUml/QClassifier>
+#include <QtUml/QRelationship>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QInformationFlowPrivate
@@ -127,11 +134,15 @@ const QSet<QNamedElement *> *QInformationFlow::informationSources() const
 void QInformationFlow::addInformationSource(const QNamedElement *informationSource)
 {
     d_ptr->informationSources->insert(const_cast<QNamedElement *>(informationSource));
+    // Adjust subsetted property(ies)
+    addSource(informationSource);
 }
 
 void QInformationFlow::removeInformationSource(const QNamedElement *informationSource)
 {
     d_ptr->informationSources->remove(const_cast<QNamedElement *>(informationSource));
+    // Adjust subsetted property(ies)
+    removeSource(informationSource);
 }
 
 /*!
@@ -145,11 +156,15 @@ const QSet<QNamedElement *> *QInformationFlow::informationTargets() const
 void QInformationFlow::addInformationTarget(const QNamedElement *informationTarget)
 {
     d_ptr->informationTargets->insert(const_cast<QNamedElement *>(informationTarget));
+    // Adjust subsetted property(ies)
+    addTarget(informationTarget);
 }
 
 void QInformationFlow::removeInformationTarget(const QNamedElement *informationTarget)
 {
     d_ptr->informationTargets->remove(const_cast<QNamedElement *>(informationTarget));
+    // Adjust subsetted property(ies)
+    removeTarget(informationTarget);
 }
 
 /*!

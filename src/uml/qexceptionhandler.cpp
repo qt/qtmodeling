@@ -41,6 +41,10 @@
 
 #include "qexceptionhandler.h"
 
+#include <QtUml/QObjectNode>
+#include <QtUml/QClassifier>
+#include <QtUml/QExecutableNode>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QExceptionHandlerPrivate

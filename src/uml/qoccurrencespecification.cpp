@@ -41,6 +41,9 @@
 
 #include "qoccurrencespecification.h"
 
+#include <QtUml/QLifeline>
+#include <QtUml/QGeneralOrdering>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QOccurrenceSpecificationPrivate

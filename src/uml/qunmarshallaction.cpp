@@ -41,6 +41,10 @@
 
 #include "qunmarshallaction.h"
 
+#include <QtUml/QInputPin>
+#include <QtUml/QOutputPin>
+#include <QtUml/QClassifier>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QUnmarshallActionPrivate
@@ -106,11 +110,15 @@ const QSet<QOutputPin *> *QUnmarshallAction::results() const
 void QUnmarshallAction::addResult(const QOutputPin *result)
 {
     d_ptr->results->insert(const_cast<QOutputPin *>(result));
+    // Adjust subsetted property(ies)
+    addOutput(result);
 }
 
 void QUnmarshallAction::removeResult(const QOutputPin *result)
 {
     d_ptr->results->remove(const_cast<QOutputPin *>(result));
+    // Adjust subsetted property(ies)
+    removeOutput(result);
 }
 
 /*!

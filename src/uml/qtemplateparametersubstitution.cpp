@@ -41,6 +41,10 @@
 
 #include "qtemplateparametersubstitution.h"
 
+#include <QtUml/QParameterableElement>
+#include <QtUml/QTemplateParameter>
+#include <QtUml/QTemplateBinding>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QTemplateParameterSubstitutionPrivate

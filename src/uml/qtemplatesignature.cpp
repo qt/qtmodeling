@@ -41,6 +41,9 @@
 
 #include "qtemplatesignature.h"
 
+#include <QtUml/QTemplateParameter>
+#include <QtUml/QTemplateableElement>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QTemplateSignaturePrivate
@@ -95,11 +98,17 @@ const QList<QTemplateParameter *> *QTemplateSignature::ownedParameters() const
 void QTemplateSignature::addOwnedParameter(const QTemplateParameter *ownedParameter)
 {
     d_ptr->ownedParameters->append(const_cast<QTemplateParameter *>(ownedParameter));
+    // Adjust subsetted property(ies)
+    addParameter(ownedParameter);
+    addOwnedElement(ownedParameter);
 }
 
 void QTemplateSignature::removeOwnedParameter(const QTemplateParameter *ownedParameter)
 {
     d_ptr->ownedParameters->removeAll(const_cast<QTemplateParameter *>(ownedParameter));
+    // Adjust subsetted property(ies)
+    removeParameter(ownedParameter);
+    removeOwnedElement(ownedParameter);
 }
 
 /*!

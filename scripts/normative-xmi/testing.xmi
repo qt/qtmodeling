@@ -34,6 +34,17 @@
         <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
         <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="BaseClass-readWriteSingleValuedPrimitiveAttribute-_defaultValue" value="true" />
       </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="BaseClass-subsettedReadWriteAttribute" name="subsettedReadWriteAttribute" type="UsedClass" isDerived="true" isDerivedUnion="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="BaseClass-subsettedReadWriteAttribute-_ownedComment.0" annotatedElement="BaseClass-subsettedReadWriteAttribute">
+          <body>subsettedReadWriteAttribute.</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="BaseClass-subsettedReadOnlyAttribute" name="subsettedReadOnlyAttribute" type="UsedClass" isReadOnly="true" isDerived="true" isDerivedUnion="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="BaseClass-subsettedReadOnlyAttribute-_ownedComment.0" annotatedElement="BaseClass-subsettedReadOnlyAttribute">
+          <body>subsettedReadOnlyAttribute.</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="BaseClass-readWriteDerivedAttribute-_upperValue" value="*"/>
+      </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="BaseClass-slot" name="slot">
         <ownedComment xmi:type="uml:Comment" xmi:id="BaseClass-slot-_ownedComment.0" annotatedElement="BaseClass-slot">
           <body>name mapped attribute.</body>
@@ -100,6 +111,16 @@
     <packagedElement xmi:type="uml:Class" xmi:id="UsedClass" name="UsedClass">
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="TestingClass" name="Class">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-subsetReadWriteAttribute" name="subsetReadWriteAttribute" type="UsedClass" subsettedProperty="BaseClass-subsettedReadWriteAttribute">
+        <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-subsetReadWriteAttribute-_ownedComment.0" annotatedElement="TestingClass-subsetReadWriteAttribute">
+          <body>subsetReadWriteAttribute.</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-subsetReadOnlyAttribute" name="subsetReadOnlyAttribute" type="UsedClass" isReadOnly="true" subsettedProperty="BaseClass-subsettedReadOnlyAttribute">
+        <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-subsetReadOnlyAttribute-_ownedComment.0" annotatedElement="TestingClass-subsetReadOnlyAttribute">
+          <body>subsetReadOnlyAttribute.</body>
+        </ownedComment>
+      </ownedAttribute>
       <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-_ownedComment.0" annotatedElement="Class">
         <body>Testing class' comment 1.</body>
       </ownedComment>

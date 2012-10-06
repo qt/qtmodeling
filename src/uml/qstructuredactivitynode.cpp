@@ -41,6 +41,13 @@
 
 #include "qstructuredactivitynode.h"
 
+#include <QtUml/QOutputPin>
+#include <QtUml/QVariable>
+#include <QtUml/QInputPin>
+#include <QtUml/QActivityEdge>
+#include <QtUml/QActivity>
+#include <QtUml/QActivityNode>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QStructuredActivityNodePrivate
@@ -132,11 +139,17 @@ const QSet<QActivityEdge *> *QStructuredActivityNode::edges() const
 void QStructuredActivityNode::addEdge(const QActivityEdge *edge)
 {
     d_ptr->edges->insert(const_cast<QActivityEdge *>(edge));
+    // Adjust subsetted property(ies)
+    addContainedEdge(edge);
+    addOwnedElement(edge);
 }
 
 void QStructuredActivityNode::removeEdge(const QActivityEdge *edge)
 {
     d_ptr->edges->remove(const_cast<QActivityEdge *>(edge));
+    // Adjust subsetted property(ies)
+    removeContainedEdge(edge);
+    removeOwnedElement(edge);
 }
 
 /*!
@@ -150,11 +163,17 @@ const QSet<QActivityNode *> *QStructuredActivityNode::nodes() const
 void QStructuredActivityNode::addNode(const QActivityNode *node)
 {
     d_ptr->nodes->insert(const_cast<QActivityNode *>(node));
+    // Adjust subsetted property(ies)
+    addContainedNode(node);
+    addOwnedElement(node);
 }
 
 void QStructuredActivityNode::removeNode(const QActivityNode *node)
 {
     d_ptr->nodes->remove(const_cast<QActivityNode *>(node));
+    // Adjust subsetted property(ies)
+    removeContainedNode(node);
+    removeOwnedElement(node);
 }
 
 const QSet<QInputPin *> *QStructuredActivityNode::structuredNodeInputs() const
@@ -165,11 +184,15 @@ const QSet<QInputPin *> *QStructuredActivityNode::structuredNodeInputs() const
 void QStructuredActivityNode::addStructuredNodeInput(const QInputPin *structuredNodeInput)
 {
     d_ptr->structuredNodeInputs->insert(const_cast<QInputPin *>(structuredNodeInput));
+    // Adjust subsetted property(ies)
+    addInput(structuredNodeInput);
 }
 
 void QStructuredActivityNode::removeStructuredNodeInput(const QInputPin *structuredNodeInput)
 {
     d_ptr->structuredNodeInputs->remove(const_cast<QInputPin *>(structuredNodeInput));
+    // Adjust subsetted property(ies)
+    removeInput(structuredNodeInput);
 }
 
 const QSet<QOutputPin *> *QStructuredActivityNode::structuredNodeOutputs() const
@@ -180,11 +203,15 @@ const QSet<QOutputPin *> *QStructuredActivityNode::structuredNodeOutputs() const
 void QStructuredActivityNode::addStructuredNodeOutput(const QOutputPin *structuredNodeOutput)
 {
     d_ptr->structuredNodeOutputs->insert(const_cast<QOutputPin *>(structuredNodeOutput));
+    // Adjust subsetted property(ies)
+    addOutput(structuredNodeOutput);
 }
 
 void QStructuredActivityNode::removeStructuredNodeOutput(const QOutputPin *structuredNodeOutput)
 {
     d_ptr->structuredNodeOutputs->remove(const_cast<QOutputPin *>(structuredNodeOutput));
+    // Adjust subsetted property(ies)
+    removeOutput(structuredNodeOutput);
 }
 
 /*!
@@ -198,11 +225,15 @@ const QSet<QVariable *> *QStructuredActivityNode::variables() const
 void QStructuredActivityNode::addVariable(const QVariable *variable)
 {
     d_ptr->variables->insert(const_cast<QVariable *>(variable));
+    // Adjust subsetted property(ies)
+    addOwnedMember(variable);
 }
 
 void QStructuredActivityNode::removeVariable(const QVariable *variable)
 {
     d_ptr->variables->remove(const_cast<QVariable *>(variable));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(variable);
 }
 
 #include "moc_qstructuredactivitynode.cpp"

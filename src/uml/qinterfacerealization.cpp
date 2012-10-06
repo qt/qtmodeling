@@ -41,6 +41,9 @@
 
 #include "qinterfacerealization.h"
 
+#include <QtUml/QInterface>
+#include <QtUml/QBehavioredClassifier>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QInterfaceRealizationPrivate

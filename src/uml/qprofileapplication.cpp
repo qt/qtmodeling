@@ -41,6 +41,9 @@
 
 #include "qprofileapplication.h"
 
+#include <QtUml/QProfile>
+#include <QtUml/QPackage>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QProfileApplicationPrivate

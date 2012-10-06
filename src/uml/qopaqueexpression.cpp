@@ -41,6 +41,9 @@
 
 #include "qopaqueexpression.h"
 
+#include <QtUml/QBehavior>
+#include <QtUml/QParameter>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QOpaqueExpressionPrivate

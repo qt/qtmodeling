@@ -41,6 +41,9 @@
 
 #include "qclause.h"
 
+#include <QtUml/QExecutableNode>
+#include <QtUml/QOutputPin>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QClausePrivate

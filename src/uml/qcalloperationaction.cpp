@@ -41,6 +41,9 @@
 
 #include "qcalloperationaction.h"
 
+#include <QtUml/QOperation>
+#include <QtUml/QInputPin>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QCallOperationActionPrivate

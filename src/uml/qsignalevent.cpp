@@ -41,6 +41,8 @@
 
 #include "qsignalevent.h"
 
+#include <QtUml/QSignal>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QSignalEventPrivate

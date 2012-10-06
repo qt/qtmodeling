@@ -41,6 +41,11 @@
 
 #include "qaction.h"
 
+#include <QtUml/QOutputPin>
+#include <QtUml/QConstraint>
+#include <QtUml/QClassifier>
+#include <QtUml/QInputPin>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QActionPrivate
@@ -120,6 +125,20 @@ const QList<QInputPin *> *QAction::inputs() const
     return d_ptr->inputs;
 }
 
+void QAction::addInput(const QInputPin *input)
+{
+    d_ptr->inputs->append(const_cast<QInputPin *>(input));
+    // Adjust subsetted property(ies)
+    addOwnedElement(input);
+}
+
+void QAction::removeInput(const QInputPin *input)
+{
+    d_ptr->inputs->removeAll(const_cast<QInputPin *>(input));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(input);
+}
+
 /*!
     Constraint that must be satisfied when executed is completed.
  */
@@ -131,11 +150,15 @@ const QSet<QConstraint *> *QAction::localPostconditions() const
 void QAction::addLocalPostcondition(const QConstraint *localPostcondition)
 {
     d_ptr->localPostconditions->insert(const_cast<QConstraint *>(localPostcondition));
+    // Adjust subsetted property(ies)
+    addOwnedElement(localPostcondition);
 }
 
 void QAction::removeLocalPostcondition(const QConstraint *localPostcondition)
 {
     d_ptr->localPostconditions->remove(const_cast<QConstraint *>(localPostcondition));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(localPostcondition);
 }
 
 /*!
@@ -149,11 +172,15 @@ const QSet<QConstraint *> *QAction::localPreconditions() const
 void QAction::addLocalPrecondition(const QConstraint *localPrecondition)
 {
     d_ptr->localPreconditions->insert(const_cast<QConstraint *>(localPrecondition));
+    // Adjust subsetted property(ies)
+    addOwnedElement(localPrecondition);
 }
 
 void QAction::removeLocalPrecondition(const QConstraint *localPrecondition)
 {
     d_ptr->localPreconditions->remove(const_cast<QConstraint *>(localPrecondition));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(localPrecondition);
 }
 
 /*!
@@ -162,6 +189,20 @@ void QAction::removeLocalPrecondition(const QConstraint *localPrecondition)
 const QList<QOutputPin *> *QAction::outputs() const
 {
     return d_ptr->outputs;
+}
+
+void QAction::addOutput(const QOutputPin *output)
+{
+    d_ptr->outputs->append(const_cast<QOutputPin *>(output));
+    // Adjust subsetted property(ies)
+    addOwnedElement(output);
+}
+
+void QAction::removeOutput(const QOutputPin *output)
+{
+    d_ptr->outputs->removeAll(const_cast<QOutputPin *>(output));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(output);
 }
 
 QT_END_NAMESPACE_QTUML

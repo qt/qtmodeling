@@ -41,6 +41,7 @@
 
 #include "qinputpin.h"
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QInputPinPrivate

@@ -41,6 +41,15 @@
 
 #include "qproperty.h"
 
+#include <QtUml/QRedefinableElement>
+#include <QtUml/QParameterableElement>
+#include <QtUml/QType>
+#include <QtUml/QInterface>
+#include <QtUml/QValueSpecification>
+#include <QtUml/QAssociation>
+#include <QtUml/QDataType>
+#include <QtUml/QClass>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QPropertyPrivate
@@ -309,11 +318,15 @@ const QList<QProperty *> *QProperty::qualifiers() const
 void QProperty::addQualifier(const QProperty *qualifier)
 {
     d_ptr->qualifiers->append(const_cast<QProperty *>(qualifier));
+    // Adjust subsetted property(ies)
+    addOwnedElement(qualifier);
 }
 
 void QProperty::removeQualifier(const QProperty *qualifier)
 {
     d_ptr->qualifiers->removeAll(const_cast<QProperty *>(qualifier));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(qualifier);
 }
 
 /*!
@@ -327,11 +340,15 @@ const QSet<QProperty *> *QProperty::redefinedProperties() const
 void QProperty::addRedefinedProperty(const QProperty *redefinedProperty)
 {
     d_ptr->redefinedProperties->insert(const_cast<QProperty *>(redefinedProperty));
+    // Adjust subsetted property(ies)
+    addRedefinedElement(redefinedProperty);
 }
 
 void QProperty::removeRedefinedProperty(const QProperty *redefinedProperty)
 {
     d_ptr->redefinedProperties->remove(const_cast<QProperty *>(redefinedProperty));
+    // Adjust subsetted property(ies)
+    removeRedefinedElement(redefinedProperty);
 }
 
 /*!

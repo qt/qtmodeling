@@ -41,6 +41,7 @@
 
 #include "qmergenode.h"
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QMergeNodePrivate

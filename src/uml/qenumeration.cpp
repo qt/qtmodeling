@@ -41,6 +41,8 @@
 
 #include "qenumeration.h"
 
+#include <QtUml/QEnumerationLiteral>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QEnumerationPrivate
@@ -91,11 +93,15 @@ const QList<QEnumerationLiteral *> *QEnumeration::ownedLiterals() const
 void QEnumeration::addOwnedLiteral(const QEnumerationLiteral *ownedLiteral)
 {
     d_ptr->ownedLiterals->append(const_cast<QEnumerationLiteral *>(ownedLiteral));
+    // Adjust subsetted property(ies)
+    addOwnedMember(ownedLiteral);
 }
 
 void QEnumeration::removeOwnedLiteral(const QEnumerationLiteral *ownedLiteral)
 {
     d_ptr->ownedLiterals->removeAll(const_cast<QEnumerationLiteral *>(ownedLiteral));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(ownedLiteral);
 }
 
 #include "moc_qenumeration.cpp"

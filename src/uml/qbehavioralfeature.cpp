@@ -41,6 +41,12 @@
 
 #include "qbehavioralfeature.h"
 
+#include <QtUml/QType>
+#include <QtUml/QNamedElement>
+#include <QtUml/QParameterSet>
+#include <QtUml/QBehavior>
+#include <QtUml/QParameter>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QBehavioralFeaturePrivate
@@ -148,11 +154,15 @@ const QList<QParameter *> *QBehavioralFeature::ownedParameters() const
 void QBehavioralFeature::addOwnedParameter(const QParameter *ownedParameter)
 {
     d_ptr->ownedParameters->append(const_cast<QParameter *>(ownedParameter));
+    // Adjust subsetted property(ies)
+    addOwnedMember(ownedParameter);
 }
 
 void QBehavioralFeature::removeOwnedParameter(const QParameter *ownedParameter)
 {
     d_ptr->ownedParameters->removeAll(const_cast<QParameter *>(ownedParameter));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(ownedParameter);
 }
 
 /*!
@@ -166,11 +176,15 @@ const QSet<QParameterSet *> *QBehavioralFeature::ownedParameterSets() const
 void QBehavioralFeature::addOwnedParameterSet(const QParameterSet *ownedParameterSet)
 {
     d_ptr->ownedParameterSets->insert(const_cast<QParameterSet *>(ownedParameterSet));
+    // Adjust subsetted property(ies)
+    addOwnedMember(ownedParameterSet);
 }
 
 void QBehavioralFeature::removeOwnedParameterSet(const QParameterSet *ownedParameterSet)
 {
     d_ptr->ownedParameterSets->remove(const_cast<QParameterSet *>(ownedParameterSet));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(ownedParameterSet);
 }
 
 /*!

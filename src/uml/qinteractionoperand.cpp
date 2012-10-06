@@ -41,6 +41,8 @@
 
 #include "qinteractionoperand.h"
 
+#include <QtUml/QInteractionConstraint>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QInteractionOperandPrivate
@@ -92,11 +94,15 @@ const QList<QInteractionFragment *> *QInteractionOperand::fragments() const
 void QInteractionOperand::addFragment(const QInteractionFragment *fragment)
 {
     d_ptr->fragments->append(const_cast<QInteractionFragment *>(fragment));
+    // Adjust subsetted property(ies)
+    addOwnedMember(fragment);
 }
 
 void QInteractionOperand::removeFragment(const QInteractionFragment *fragment)
 {
     d_ptr->fragments->removeAll(const_cast<QInteractionFragment *>(fragment));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(fragment);
 }
 
 /*!

@@ -41,6 +41,8 @@
 
 #include "qdeploymentspecification.h"
 
+#include <QtUml/QDeployment>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QDeploymentSpecificationPrivate

@@ -41,6 +41,9 @@
 
 #include "qvaluespecificationaction.h"
 
+#include <QtUml/QOutputPin>
+#include <QtUml/QValueSpecification>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QValueSpecificationActionPrivate

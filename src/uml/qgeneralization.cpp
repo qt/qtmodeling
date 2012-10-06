@@ -41,6 +41,9 @@
 
 #include "qgeneralization.h"
 
+#include <QtUml/QClassifier>
+#include <QtUml/QGeneralizationSet>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QGeneralizationPrivate

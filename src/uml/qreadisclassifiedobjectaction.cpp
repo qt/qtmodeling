@@ -41,6 +41,10 @@
 
 #include "qreadisclassifiedobjectaction.h"
 
+#include <QtUml/QClassifier>
+#include <QtUml/QInputPin>
+#include <QtUml/QOutputPin>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QReadIsClassifiedObjectActionPrivate

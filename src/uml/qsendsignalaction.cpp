@@ -41,6 +41,9 @@
 
 #include "qsendsignalaction.h"
 
+#include <QtUml/QSignal>
+#include <QtUml/QInputPin>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QSendSignalActionPrivate

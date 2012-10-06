@@ -41,6 +41,9 @@
 
 #include "qtrigger.h"
 
+#include <QtUml/QEvent>
+#include <QtUml/QPort>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QTriggerPrivate

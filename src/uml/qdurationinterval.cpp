@@ -41,6 +41,8 @@
 
 #include "qdurationinterval.h"
 
+#include <QtUml/QDuration>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QDurationIntervalPrivate

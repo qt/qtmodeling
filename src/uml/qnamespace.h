@@ -91,6 +91,13 @@ public:
     bool membersAreDistinguishable() const;
 
 protected:
+    // Synchronization functions for read-only subsetted properties
+    void addMember(const QNamedElement *member);
+    void removeMember(const QNamedElement *member);
+    void addOwnedMember(const QNamedElement *ownedMember);
+    void removeOwnedMember(const QNamedElement *ownedMember);
+
+protected:
     explicit QNamespace();
 
 private:

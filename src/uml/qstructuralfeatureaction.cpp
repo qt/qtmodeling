@@ -41,6 +41,9 @@
 
 #include "qstructuralfeatureaction.h"
 
+#include <QtUml/QInputPin>
+#include <QtUml/QStructuralFeature>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QStructuralFeatureActionPrivate

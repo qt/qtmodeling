@@ -41,6 +41,8 @@
 
 #include "qwritevariableaction.h"
 
+#include <QtUml/QInputPin>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QWriteVariableActionPrivate

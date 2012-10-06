@@ -41,6 +41,10 @@
 
 #include "qparameter.h"
 
+#include <QtUml/QValueSpecification>
+#include <QtUml/QOperation>
+#include <QtUml/QParameterSet>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QParameterPrivate

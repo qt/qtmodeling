@@ -41,6 +41,8 @@
 
 #include "qtypedelement.h"
 
+#include <QtUml/QType>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QTypedElementPrivate

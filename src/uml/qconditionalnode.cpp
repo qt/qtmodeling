@@ -41,6 +41,9 @@
 
 #include "qconditionalnode.h"
 
+#include <QtUml/QClause>
+#include <QtUml/QOutputPin>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QConditionalNodePrivate
@@ -124,11 +127,15 @@ const QSet<QClause *> *QConditionalNode::clauses() const
 void QConditionalNode::addClause(const QClause *clause)
 {
     d_ptr->clauses->insert(const_cast<QClause *>(clause));
+    // Adjust subsetted property(ies)
+    addOwnedElement(clause);
 }
 
 void QConditionalNode::removeClause(const QClause *clause)
 {
     d_ptr->clauses->remove(const_cast<QClause *>(clause));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(clause);
 }
 
 /*!

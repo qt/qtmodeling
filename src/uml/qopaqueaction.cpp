@@ -41,6 +41,9 @@
 
 #include "qopaqueaction.h"
 
+#include <QtUml/QInputPin>
+#include <QtUml/QOutputPin>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QOpaqueActionPrivate
@@ -136,11 +139,15 @@ const QSet<QInputPin *> *QOpaqueAction::inputValues() const
 void QOpaqueAction::addInputValue(const QInputPin *inputValue)
 {
     d_ptr->inputValues->insert(const_cast<QInputPin *>(inputValue));
+    // Adjust subsetted property(ies)
+    addInput(inputValue);
 }
 
 void QOpaqueAction::removeInputValue(const QInputPin *inputValue)
 {
     d_ptr->inputValues->remove(const_cast<QInputPin *>(inputValue));
+    // Adjust subsetted property(ies)
+    removeInput(inputValue);
 }
 
 /*!
@@ -154,11 +161,15 @@ const QSet<QOutputPin *> *QOpaqueAction::outputValues() const
 void QOpaqueAction::addOutputValue(const QOutputPin *outputValue)
 {
     d_ptr->outputValues->insert(const_cast<QOutputPin *>(outputValue));
+    // Adjust subsetted property(ies)
+    addOutput(outputValue);
 }
 
 void QOpaqueAction::removeOutputValue(const QOutputPin *outputValue)
 {
     d_ptr->outputValues->remove(const_cast<QOutputPin *>(outputValue));
+    // Adjust subsetted property(ies)
+    removeOutput(outputValue);
 }
 
 #include "moc_qopaqueaction.cpp"
