@@ -55,6 +55,7 @@ public:
 };
 
 QCombinedFragmentPrivate::QCombinedFragmentPrivate() :
+    interactionOperator(QtUml::InteractionOperatorSeq),
     cfragmentGates(new QSet<QGate *>),
     operands(new QList<QInteractionOperand *>)
 {

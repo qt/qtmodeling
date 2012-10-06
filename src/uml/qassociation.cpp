@@ -56,6 +56,7 @@ public:
 };
 
 QAssociationPrivate::QAssociationPrivate() :
+    isDerived(false),
     memberEnds(new QList<QProperty *>),
     navigableOwnedEnds(new QSet<QProperty *>),
     ownedEnds(new QList<QProperty *>)

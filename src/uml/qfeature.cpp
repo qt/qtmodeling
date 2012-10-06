@@ -54,6 +54,7 @@ public:
 };
 
 QFeaturePrivate::QFeaturePrivate() :
+    isStatic(false),
     featuringClassifiers(new QSet<QClassifier *>)
 {
 }

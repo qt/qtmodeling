@@ -53,7 +53,8 @@ public:
     QTimeExpression *when;
 };
 
-QTimeEventPrivate::QTimeEventPrivate()
+QTimeEventPrivate::QTimeEventPrivate() :
+    isRelative(false)
 {
 }
 

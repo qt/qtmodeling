@@ -52,7 +52,8 @@ public:
     bool setting;
 };
 
-QContinuationPrivate::QContinuationPrivate()
+QContinuationPrivate::QContinuationPrivate() :
+    setting(true)
 {
 }
 

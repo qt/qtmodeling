@@ -55,7 +55,8 @@ public:
     QOutputPin *result;
 };
 
-QReadIsClassifiedObjectActionPrivate::QReadIsClassifiedObjectActionPrivate()
+QReadIsClassifiedObjectActionPrivate::QReadIsClassifiedObjectActionPrivate() :
+    isDirect(false)
 {
 }
 

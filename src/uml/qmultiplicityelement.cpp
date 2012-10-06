@@ -55,7 +55,9 @@ public:
     QValueSpecification *upperValue;
 };
 
-QMultiplicityElementPrivate::QMultiplicityElementPrivate()
+QMultiplicityElementPrivate::QMultiplicityElementPrivate() :
+    isOrdered(false),
+    isUnique(true)
 {
 }
 

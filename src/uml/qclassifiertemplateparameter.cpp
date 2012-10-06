@@ -55,6 +55,7 @@ public:
 };
 
 QClassifierTemplateParameterPrivate::QClassifierTemplateParameterPrivate() :
+    allowSubstitutable(true),
     constrainingClassifiers(new QSet<QClassifier *>)
 {
 }

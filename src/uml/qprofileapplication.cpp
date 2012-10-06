@@ -54,7 +54,8 @@ public:
     QPackage *applyingPackage;
 };
 
-QProfileApplicationPrivate::QProfileApplicationPrivate()
+QProfileApplicationPrivate::QProfileApplicationPrivate() :
+    isStrict(false)
 {
 }
 

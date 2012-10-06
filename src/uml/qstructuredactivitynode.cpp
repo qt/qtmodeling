@@ -59,6 +59,7 @@ public:
 };
 
 QStructuredActivityNodePrivate::QStructuredActivityNodePrivate() :
+    mustIsolate(false),
     edges(new QSet<QActivityEdge *>),
     nodes(new QSet<QActivityNode *>),
     structuredNodeInputs(new QSet<QInputPin *>),

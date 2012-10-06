@@ -53,7 +53,8 @@ public:
     QTimeInterval *specification;
 };
 
-QTimeConstraintPrivate::QTimeConstraintPrivate()
+QTimeConstraintPrivate::QTimeConstraintPrivate() :
+    firstEvent(true)
 {
 }
 

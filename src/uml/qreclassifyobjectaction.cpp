@@ -56,6 +56,7 @@ public:
 };
 
 QReclassifyObjectActionPrivate::QReclassifyObjectActionPrivate() :
+    isReplaceAll(false),
     newClassifiers(new QSet<QClassifier *>),
     oldClassifiers(new QSet<QClassifier *>)
 {

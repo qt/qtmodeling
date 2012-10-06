@@ -57,6 +57,8 @@ public:
 };
 
 QObjectNodePrivate::QObjectNodePrivate() :
+    isControlType(false),
+    ordering(QtUml::ObjectNodeOrderingFIFO),
     inState(new QSet<QState *>)
 {
 }

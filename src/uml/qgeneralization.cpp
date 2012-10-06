@@ -56,6 +56,7 @@ public:
 };
 
 QGeneralizationPrivate::QGeneralizationPrivate() :
+    isSubstitutable(true),
     generalizationSets(new QSet<QGeneralizationSet *>)
 {
 }

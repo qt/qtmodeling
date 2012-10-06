@@ -53,7 +53,8 @@ public:
     QInputPin *removeAt;
 };
 
-QRemoveStructuralFeatureValueActionPrivate::QRemoveStructuralFeatureValueActionPrivate()
+QRemoveStructuralFeatureValueActionPrivate::QRemoveStructuralFeatureValueActionPrivate() :
+    isRemoveDuplicates(false)
 {
 }
 

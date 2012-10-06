@@ -55,6 +55,7 @@ public:
 };
 
 QExpansionRegionPrivate::QExpansionRegionPrivate() :
+    mode(QtUml::ExpansionIterative),
     inputElements(new QSet<QExpansionNode *>),
     outputElements(new QSet<QExpansionNode *>)
 {

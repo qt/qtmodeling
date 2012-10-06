@@ -52,7 +52,8 @@ public:
     bool value;
 };
 
-QLiteralBooleanPrivate::QLiteralBooleanPrivate()
+QLiteralBooleanPrivate::QLiteralBooleanPrivate() :
+    value(false)
 {
 }
 

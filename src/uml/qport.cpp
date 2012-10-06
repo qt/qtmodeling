@@ -57,6 +57,9 @@ public:
 };
 
 QPortPrivate::QPortPrivate() :
+    isBehavior(false),
+    isConjugated(false),
+    isService(true),
     redefinedPorts(new QSet<QPort *>)
 {
 }

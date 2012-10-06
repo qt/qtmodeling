@@ -53,7 +53,8 @@ public:
     QInputPin *insertAt;
 };
 
-QLinkEndCreationDataPrivate::QLinkEndCreationDataPrivate()
+QLinkEndCreationDataPrivate::QLinkEndCreationDataPrivate() :
+    isReplaceAll(false)
 {
 }
 

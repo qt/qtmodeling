@@ -53,7 +53,8 @@ public:
     QInputPin *destroyAt;
 };
 
-QLinkEndDestructionDataPrivate::QLinkEndDestructionDataPrivate()
+QLinkEndDestructionDataPrivate::QLinkEndDestructionDataPrivate() :
+    isDestroyDuplicates(false)
 {
 }
 

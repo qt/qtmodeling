@@ -55,6 +55,7 @@ public:
 };
 
 QAcceptEventActionPrivate::QAcceptEventActionPrivate() :
+    isUnmarshall(false),
     results(new QSet<QOutputPin *>),
     triggers(new QSet<QTrigger *>)
 {

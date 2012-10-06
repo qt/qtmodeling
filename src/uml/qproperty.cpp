@@ -67,6 +67,11 @@ public:
 };
 
 QPropertyPrivate::QPropertyPrivate() :
+    aggregation(QtUml::AggregationNone),
+    isDerived(false),
+    isDerivedUnion(false),
+    isID(false),
+    isReadOnly(false),
     qualifiers(new QList<QProperty *>),
     redefinedProperties(new QSet<QProperty *>),
     subsettedProperties(new QSet<QProperty *>)

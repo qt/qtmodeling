@@ -61,6 +61,7 @@ public:
 };
 
 QLoopNodePrivate::QLoopNodePrivate() :
+    isTestedFirst(false),
     bodyOutputs(new QList<QOutputPin *>),
     bodyParts(new QSet<QExecutableNode *>),
     loopVariables(new QList<QOutputPin *>),

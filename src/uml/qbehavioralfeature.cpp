@@ -58,6 +58,8 @@ public:
 };
 
 QBehavioralFeaturePrivate::QBehavioralFeaturePrivate() :
+    concurrency(QtUml::CallConcurrencySequential),
+    isAbstract(false),
     methods(new QSet<QBehavior *>),
     ownedParameters(new QList<QParameter *>),
     ownedParameterSets(new QSet<QParameterSet *>),

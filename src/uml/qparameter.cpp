@@ -59,6 +59,9 @@ public:
 };
 
 QParameterPrivate::QParameterPrivate() :
+    direction(QtUml::ParameterDirectionIn),
+    isException(false),
+    isStream(false),
     parameterSets(new QSet<QParameterSet *>)
 {
 }

@@ -53,7 +53,8 @@ public:
     QInputPin *insertAt;
 };
 
-QAddStructuralFeatureValueActionPrivate::QAddStructuralFeatureValueActionPrivate()
+QAddStructuralFeatureValueActionPrivate::QAddStructuralFeatureValueActionPrivate() :
+    isReplaceAll(false)
 {
 }
 

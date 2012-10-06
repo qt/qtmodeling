@@ -53,7 +53,8 @@ public:
     QValueSpecification *joinSpec;
 };
 
-QJoinNodePrivate::QJoinNodePrivate()
+QJoinNodePrivate::QJoinNodePrivate() :
+    isCombineDuplicate(true)
 {
 }
 

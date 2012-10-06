@@ -32,6 +32,7 @@
           <body>readWriteSingleValuedPrimitiveAttribute.</body>
         </ownedComment>
         <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+        <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="BaseClass-readWriteSingleValuedPrimitiveAttribute-_defaultValue" value="true" />
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="BaseClass-slot" name="slot">
         <ownedComment xmi:type="uml:Comment" xmi:id="BaseClass-slot-_ownedComment.0" annotatedElement="BaseClass-slot">
@@ -112,12 +113,14 @@
           <body>readWriteSingleValuedPrimitiveAttribute.</body>
         </ownedComment>
         <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+        <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="BaseClass-readWriteSingleValuedPrimitiveAttribute-_defaultValue"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-readOnlySingleValuedPrimitiveAttribute" name="readOnlySingleValuedPrimitiveAttribute" isReadOnly="true">
         <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-readOnlySingleValuedPrimitiveAttribute-_ownedComment.0" annotatedElement="TestingClass-readOnlySingleValuedPrimitiveAttribute">
           <body>readOnlySingleValuedPrimitiveAttribute.</body>
         </ownedComment>
-        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#UnlimitedNatural"/>
+        <defaultValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TestingClass-readOnlySingleValuedPrimitiveAttribute_defaultValue" value="1" />
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-readWriteMultiValuedPrimitiveAttribute" name="readWriteMultiValuedPrimitiveAttribute">
         <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-readWriteMultiValuedPrimitiveAttribute-_ownedComment.0" annotatedElement="TestingClass-readWriteMultiValuedPrimitiveAttribute">
@@ -138,11 +141,13 @@
         <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-readWriteSingleValuedEnumerationAttribute-_ownedComment.0" annotatedElement="TestingClass-readWriteSingleValuedEnumerationAttribute">
           <body>readWriteSingleValuedEnumerationAttribute.</body>
         </ownedComment>
+        <defaultValue xmi:type="uml:InstanceValue" xmi:id="TestingClass-readWriteSingleValuedEnumerationAttribute-_defaultValue" type="VisibilityKind" instance="VisibilityKind-public"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-readOnlySingleValuedEnumerationAttribute" name="readOnlySingleValuedEnumerationAttribute" type="VisibilityKind" isReadOnly="true">
         <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-readOnlySingleValuedEnumerationAttribute-_ownedComment.0" annotatedElement="TestingClass-readOnlySingleValuedEnumerationAttribute">
           <body>readOnlySingleValuedEnumerationAttribute.</body>
         </ownedComment>
+        <defaultValue xmi:type="uml:InstanceValue" xmi:id="TestingClass-readWriteSingleValuedEnumerationAttribute-_defaultValue" type="VisibilityKind"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-readWriteMultiValuedEnumerationAttribute" name="readWriteMultiValuedEnumerationAttribute" type="VisibilityKind">
         <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-readWriteMultiValuedEnumerationAttribute-_ownedComment.0" annotatedElement="TestingClass-readWriteMultiValuedEnumerationAttribute">
