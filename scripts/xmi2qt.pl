@@ -16,7 +16,7 @@ my $xml = new XML::Simple(keyattr => { 'class' => '+name' }, forcearray => ['nam
 my $tt = Template->new(INTERPOLATE  => 1, INCLUDE_PATH => 'templates/');
 
 my $xmi = $xml->XMLin($options{i});
-write_file 'dump.log', Dumper($xmi);
+#write_file 'dump.log', Dumper($xmi);
 
 my $namespaces = $xmi->{'namespace'};
 
