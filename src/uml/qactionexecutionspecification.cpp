@@ -41,6 +41,8 @@
 
 #include "qactionexecutionspecification.h"
 
+#include <QtUml/QAction>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QActionExecutionSpecificationPrivate

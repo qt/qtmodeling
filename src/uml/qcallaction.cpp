@@ -41,6 +41,8 @@
 
 #include "qcallaction.h"
 
+#include <QtUml/QOutputPin>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QCallActionPrivate
@@ -106,11 +108,15 @@ const QList<QOutputPin *> *QCallAction::results() const
 void QCallAction::addResult(const QOutputPin *result)
 {
     d_ptr->results->append(const_cast<QOutputPin *>(result));
+    // Adjust subsetted property(ies)
+    addOutput(result);
 }
 
 void QCallAction::removeResult(const QOutputPin *result)
 {
     d_ptr->results->removeAll(const_cast<QOutputPin *>(result));
+    // Adjust subsetted property(ies)
+    removeOutput(result);
 }
 
 QT_END_NAMESPACE_QTUML

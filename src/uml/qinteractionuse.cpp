@@ -41,6 +41,11 @@
 
 #include "qinteractionuse.h"
 
+#include <QtUml/QProperty>
+#include <QtUml/QInteraction>
+#include <QtUml/QGate>
+#include <QtUml/QValueSpecification>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QInteractionUsePrivate
@@ -97,11 +102,15 @@ const QSet<QGate *> *QInteractionUse::actualGates() const
 void QInteractionUse::addActualGate(const QGate *actualGate)
 {
     d_ptr->actualGates->insert(const_cast<QGate *>(actualGate));
+    // Adjust subsetted property(ies)
+    addOwnedElement(actualGate);
 }
 
 void QInteractionUse::removeActualGate(const QGate *actualGate)
 {
     d_ptr->actualGates->remove(const_cast<QGate *>(actualGate));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(actualGate);
 }
 
 /*!
@@ -115,11 +124,15 @@ const QList<QValueSpecification *> *QInteractionUse::arguments() const
 void QInteractionUse::addArgument(const QValueSpecification *argument)
 {
     d_ptr->arguments->append(const_cast<QValueSpecification *>(argument));
+    // Adjust subsetted property(ies)
+    addOwnedElement(argument);
 }
 
 void QInteractionUse::removeArgument(const QValueSpecification *argument)
 {
     d_ptr->arguments->removeAll(const_cast<QValueSpecification *>(argument));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(argument);
 }
 
 /*!

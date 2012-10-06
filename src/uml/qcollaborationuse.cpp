@@ -41,6 +41,9 @@
 
 #include "qcollaborationuse.h"
 
+#include <QtUml/QDependency>
+#include <QtUml/QCollaboration>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QCollaborationUsePrivate
@@ -92,11 +95,15 @@ const QSet<QDependency *> *QCollaborationUse::roleBindings() const
 void QCollaborationUse::addRoleBinding(const QDependency *roleBinding)
 {
     d_ptr->roleBindings->insert(const_cast<QDependency *>(roleBinding));
+    // Adjust subsetted property(ies)
+    addOwnedElement(roleBinding);
 }
 
 void QCollaborationUse::removeRoleBinding(const QDependency *roleBinding)
 {
     d_ptr->roleBindings->remove(const_cast<QDependency *>(roleBinding));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(roleBinding);
 }
 
 /*!

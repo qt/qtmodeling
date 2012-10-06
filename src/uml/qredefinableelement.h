@@ -79,6 +79,13 @@ public:
     bool isRedefinitionContextValid(const QRedefinableElement *redefined) const;
 
 protected:
+    // Synchronization functions for read-only subsetted properties
+    void addRedefinedElement(const QRedefinableElement *redefinedElement);
+    void removeRedefinedElement(const QRedefinableElement *redefinedElement);
+    void addRedefinitionContext(const QClassifier *redefinitionContext);
+    void removeRedefinitionContext(const QClassifier *redefinitionContext);
+
+protected:
     explicit QRedefinableElement();
 
 private:

@@ -41,6 +41,8 @@
 
 #include "qabstraction.h"
 
+#include <QtUml/QOpaqueExpression>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QAbstractionPrivate

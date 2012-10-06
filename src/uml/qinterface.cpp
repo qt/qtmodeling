@@ -41,6 +41,11 @@
 
 #include "qinterface.h"
 
+#include <QtUml/QProtocolStateMachine>
+#include <QtUml/QReception>
+#include <QtUml/QProperty>
+#include <QtUml/QOperation>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QInterfacePrivate
@@ -104,11 +109,15 @@ const QList<QClassifier *> *QInterface::nestedClassifiers() const
 void QInterface::addNestedClassifier(const QClassifier *nestedClassifier)
 {
     d_ptr->nestedClassifiers->append(const_cast<QClassifier *>(nestedClassifier));
+    // Adjust subsetted property(ies)
+    addOwnedMember(nestedClassifier);
 }
 
 void QInterface::removeNestedClassifier(const QClassifier *nestedClassifier)
 {
     d_ptr->nestedClassifiers->removeAll(const_cast<QClassifier *>(nestedClassifier));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(nestedClassifier);
 }
 
 /*!
@@ -122,11 +131,17 @@ const QList<QProperty *> *QInterface::ownedAttributes() const
 void QInterface::addOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
+    // Adjust subsetted property(ies)
+    addOwnedMember(ownedAttribute);
+    addAttribute(ownedAttribute);
 }
 
 void QInterface::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(ownedAttribute);
+    removeAttribute(ownedAttribute);
 }
 
 /*!
@@ -140,11 +155,17 @@ const QList<QOperation *> *QInterface::ownedOperations() const
 void QInterface::addOwnedOperation(const QOperation *ownedOperation)
 {
     d_ptr->ownedOperations->append(const_cast<QOperation *>(ownedOperation));
+    // Adjust subsetted property(ies)
+    addFeature(ownedOperation);
+    addOwnedMember(ownedOperation);
 }
 
 void QInterface::removeOwnedOperation(const QOperation *ownedOperation)
 {
     d_ptr->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation));
+    // Adjust subsetted property(ies)
+    removeFeature(ownedOperation);
+    removeOwnedMember(ownedOperation);
 }
 
 /*!
@@ -158,11 +179,17 @@ const QSet<QReception *> *QInterface::ownedReceptions() const
 void QInterface::addOwnedReception(const QReception *ownedReception)
 {
     d_ptr->ownedReceptions->insert(const_cast<QReception *>(ownedReception));
+    // Adjust subsetted property(ies)
+    addFeature(ownedReception);
+    addOwnedMember(ownedReception);
 }
 
 void QInterface::removeOwnedReception(const QReception *ownedReception)
 {
     d_ptr->ownedReceptions->remove(const_cast<QReception *>(ownedReception));
+    // Adjust subsetted property(ies)
+    removeFeature(ownedReception);
+    removeOwnedMember(ownedReception);
 }
 
 /*!
@@ -189,11 +216,15 @@ const QSet<QInterface *> *QInterface::redefinedInterfaces() const
 void QInterface::addRedefinedInterface(const QInterface *redefinedInterface)
 {
     d_ptr->redefinedInterfaces->insert(const_cast<QInterface *>(redefinedInterface));
+    // Adjust subsetted property(ies)
+    addRedefinedClassifier(redefinedInterface);
 }
 
 void QInterface::removeRedefinedInterface(const QInterface *redefinedInterface)
 {
     d_ptr->redefinedInterfaces->remove(const_cast<QInterface *>(redefinedInterface));
+    // Adjust subsetted property(ies)
+    removeRedefinedClassifier(redefinedInterface);
 }
 
 #include "moc_qinterface.cpp"

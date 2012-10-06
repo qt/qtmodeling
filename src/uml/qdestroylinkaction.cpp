@@ -41,6 +41,8 @@
 
 #include "qdestroylinkaction.h"
 
+#include <QtUml/QLinkEndDestructionData>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QDestroyLinkActionPrivate

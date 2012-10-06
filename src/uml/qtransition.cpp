@@ -41,6 +41,14 @@
 
 #include "qtransition.h"
 
+#include <QtUml/QTrigger>
+#include <QtUml/QVertex>
+#include <QtUml/QStateMachine>
+#include <QtUml/QClassifier>
+#include <QtUml/QBehavior>
+#include <QtUml/QRegion>
+#include <QtUml/QConstraint>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QTransitionPrivate
@@ -198,11 +206,15 @@ const QSet<QTrigger *> *QTransition::triggers() const
 void QTransition::addTrigger(const QTrigger *trigger)
 {
     d_ptr->triggers->insert(const_cast<QTrigger *>(trigger));
+    // Adjust subsetted property(ies)
+    addOwnedElement(trigger);
 }
 
 void QTransition::removeTrigger(const QTrigger *trigger)
 {
     d_ptr->triggers->remove(const_cast<QTrigger *>(trigger));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(trigger);
 }
 
 /*!

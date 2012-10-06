@@ -41,6 +41,9 @@
 
 #include "qconnectionpointreference.h"
 
+#include <QtUml/QPseudostate>
+#include <QtUml/QState>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QConnectionPointReferencePrivate

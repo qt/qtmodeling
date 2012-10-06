@@ -41,6 +41,10 @@
 
 #include "qlinkaction.h"
 
+#include <QtUml/QLinkEndData>
+#include <QtUml/QInputPin>
+#include <QtUml/QAssociation>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QLinkActionPrivate
@@ -94,11 +98,15 @@ const QSet<QLinkEndData *> *QLinkAction::endData() const
 void QLinkAction::addEndData(const QLinkEndData *endData)
 {
     d_ptr->endData->insert(const_cast<QLinkEndData *>(endData));
+    // Adjust subsetted property(ies)
+    addOwnedElement(endData);
 }
 
 void QLinkAction::removeEndData(const QLinkEndData *endData)
 {
     d_ptr->endData->remove(const_cast<QLinkEndData *>(endData));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(endData);
 }
 
 /*!
@@ -112,11 +120,15 @@ const QSet<QInputPin *> *QLinkAction::inputValues() const
 void QLinkAction::addInputValue(const QInputPin *inputValue)
 {
     d_ptr->inputValues->insert(const_cast<QInputPin *>(inputValue));
+    // Adjust subsetted property(ies)
+    addInput(inputValue);
 }
 
 void QLinkAction::removeInputValue(const QInputPin *inputValue)
 {
     d_ptr->inputValues->remove(const_cast<QInputPin *>(inputValue));
+    // Adjust subsetted property(ies)
+    removeInput(inputValue);
 }
 
 /*!

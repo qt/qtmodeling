@@ -41,6 +41,9 @@
 
 #include "qbehavioredclassifier.h"
 
+#include <QtUml/QBehavior>
+#include <QtUml/QInterfaceRealization>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QBehavioredClassifierPrivate
@@ -108,11 +111,17 @@ const QSet<QInterfaceRealization *> *QBehavioredClassifier::interfaceRealization
 void QBehavioredClassifier::addInterfaceRealization(const QInterfaceRealization *interfaceRealization)
 {
     d_ptr->interfaceRealizations->insert(const_cast<QInterfaceRealization *>(interfaceRealization));
+    // Adjust subsetted property(ies)
+    addOwnedElement(interfaceRealization);
+    addClientDependency(interfaceRealization);
 }
 
 void QBehavioredClassifier::removeInterfaceRealization(const QInterfaceRealization *interfaceRealization)
 {
     d_ptr->interfaceRealizations->remove(const_cast<QInterfaceRealization *>(interfaceRealization));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(interfaceRealization);
+    removeClientDependency(interfaceRealization);
 }
 
 /*!
@@ -126,11 +135,15 @@ const QSet<QBehavior *> *QBehavioredClassifier::ownedBehaviors() const
 void QBehavioredClassifier::addOwnedBehavior(const QBehavior *ownedBehavior)
 {
     d_ptr->ownedBehaviors->insert(const_cast<QBehavior *>(ownedBehavior));
+    // Adjust subsetted property(ies)
+    addOwnedMember(ownedBehavior);
 }
 
 void QBehavioredClassifier::removeOwnedBehavior(const QBehavior *ownedBehavior)
 {
     d_ptr->ownedBehaviors->remove(const_cast<QBehavior *>(ownedBehavior));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(ownedBehavior);
 }
 
 QT_END_NAMESPACE_QTUML

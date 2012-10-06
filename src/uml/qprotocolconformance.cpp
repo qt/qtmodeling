@@ -41,6 +41,8 @@
 
 #include "qprotocolconformance.h"
 
+#include <QtUml/QProtocolStateMachine>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QProtocolConformancePrivate

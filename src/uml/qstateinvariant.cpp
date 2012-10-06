@@ -41,6 +41,9 @@
 
 #include "qstateinvariant.h"
 
+#include <QtUml/QLifeline>
+#include <QtUml/QConstraint>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QStateInvariantPrivate

@@ -41,6 +41,9 @@
 
 #include "qcreateobjectaction.h"
 
+#include <QtUml/QClassifier>
+#include <QtUml/QOutputPin>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QCreateObjectActionPrivate

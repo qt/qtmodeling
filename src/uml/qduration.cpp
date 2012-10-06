@@ -41,6 +41,8 @@
 
 #include "qduration.h"
 
+#include <QtUml/QObservation>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QDurationPrivate

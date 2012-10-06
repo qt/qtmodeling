@@ -41,6 +41,8 @@
 
 #include "qexecutionoccurrencespecification.h"
 
+#include <QtUml/QExecutionSpecification>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QExecutionOccurrenceSpecificationPrivate

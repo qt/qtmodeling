@@ -74,6 +74,11 @@ public:
     const QSet<QClassifier *> *featuringClassifiers() const;
 
 protected:
+    // Synchronization functions for read-only subsetted properties
+    void addFeaturingClassifier(const QClassifier *featuringClassifier);
+    void removeFeaturingClassifier(const QClassifier *featuringClassifier);
+
+protected:
     explicit QFeature();
 
 private:

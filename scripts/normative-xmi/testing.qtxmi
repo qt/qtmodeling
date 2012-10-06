@@ -2,12 +2,30 @@
     <namespace path="QtUnknown/">
         <class name="QBaseClass" isAbstract="true">
             <qtinclude>QtCore/QSet</qtinclude>
+            <forwarddecl namespace="QtUnknown::">QUsedClass</forwarddecl>
             <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="BaseClass-readWriteSingleValuedPrimitiveAttribute" defaultValue="true">
                 <accessor return="bool " name="readWriteSingleValuedPrimitiveAttribute" constness=" const"/>
                 <accessor return="void " name="setReadWriteSingleValuedPrimitiveAttribute" constness="">
                     <parameter type="bool " name="readWriteSingleValuedPrimitiveAttribute"/>
                 </accessor>
                 <documentation>readWriteSingleValuedPrimitiveAttribute.</documentation>
+            </attribute>
+            <attribute isDerived="true" isDerivedUnion="true" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="BaseClass-subsettedReadWriteAttribute" defaultValue="">
+                <accessor return="QUsedClass *" name="subsettedReadWriteAttribute" constness=" const"/>
+                <accessor return="void " name="setSubsettedReadWriteAttribute" constness="">
+                    <parameter type="const QUsedClass *" name="subsettedReadWriteAttribute"/>
+                </accessor>
+                <documentation>subsettedReadWriteAttribute.</documentation>
+            </attribute>
+            <attribute isDerived="true" isDerivedUnion="true" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="BaseClass-subsettedReadOnlyAttribute" defaultValue="">
+                <accessor return="const QSet&lt;QUsedClass *&gt; *" name="subsettedReadOnlyAttributes" constness=" const"/>
+                <accessor return="void " name="addSubsettedReadOnlyAttribute" constness="">
+                    <parameter type="const QUsedClass *" name="subsettedReadOnlyAttribute"/>
+                </accessor>
+                <accessor return="void " name="removeSubsettedReadOnlyAttribute" constness="">
+                    <parameter type="const QUsedClass *" name="subsettedReadOnlyAttribute"/>
+                </accessor>
+                <documentation>subsettedReadOnlyAttribute.</documentation>
             </attribute>
             <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="BaseClass-slot" defaultValue="">
                 <accessor return="const QSet&lt;bool&gt; *" name="slots_" constness=" const"/>
@@ -45,6 +63,12 @@
             </attribute>
             <attribute isDerived="true" isDerivedUnion="true" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="BaseClass-readOnlyDerivedUnionAttribute" defaultValue="">
                 <accessor return="const QSet&lt;bool&gt; *" name="readOnlyDerivedUnionAttributes" constness=" const"/>
+                <accessor return="void " name="addReadOnlyDerivedUnionAttribute" constness="">
+                    <parameter type="bool " name="readOnlyDerivedUnionAttribute"/>
+                </accessor>
+                <accessor return="void " name="removeReadOnlyDerivedUnionAttribute" constness="">
+                    <parameter type="bool " name="readOnlyDerivedUnionAttribute"/>
+                </accessor>
                 <documentation>readOnlyDerivedUnionAttribute.</documentation>
             </attribute>
             <operation return="const QSet&lt;bool&gt; *" name="aRealOperation" constness=" const">
@@ -61,6 +85,17 @@
             <superclass include="QtUnknown/QBaseClass" name="QBaseClass"/>
             <qtinclude>QtCore/QSet</qtinclude>
             <forwarddecl namespace="QtUnknown::">QUsedClass</forwarddecl>
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="BaseClass-subsettedReadWriteAttribute" redefinedProperty="" id="TestingClass-subsetReadWriteAttribute" defaultValue="">
+                <accessor return="QUsedClass *" name="subsetReadWriteAttribute" constness=" const"/>
+                <accessor return="void " name="setSubsetReadWriteAttribute" constness="">
+                    <parameter type="const QUsedClass *" name="subsetReadWriteAttribute"/>
+                </accessor>
+                <documentation>subsetReadWriteAttribute.</documentation>
+            </attribute>
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="true" subsettedProperty="BaseClass-subsettedReadOnlyAttribute" redefinedProperty="" id="TestingClass-subsetReadOnlyAttribute" defaultValue="">
+                <accessor return="QUsedClass *" name="subsetReadOnlyAttribute" constness=" const"/>
+                <documentation>subsetReadOnlyAttribute.</documentation>
+            </attribute>
             <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="BaseClass-readWriteSingleValuedPrimitiveAttribute" id="TestingClass-readWriteSingleValuedPrimitiveAttribute" defaultValue="false">
                 <accessor return="bool " name="readWriteSingleValuedPrimitiveAttribute" constness=" const"/>
                 <accessor return="void " name="setReadWriteSingleValuedPrimitiveAttribute" constness="">

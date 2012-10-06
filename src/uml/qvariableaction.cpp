@@ -41,6 +41,8 @@
 
 #include "qvariableaction.h"
 
+#include <QtUml/QVariable>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QVariableActionPrivate

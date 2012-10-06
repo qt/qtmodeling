@@ -41,6 +41,9 @@
 
 #include "qclearassociationaction.h"
 
+#include <QtUml/QAssociation>
+#include <QtUml/QInputPin>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QClearAssociationActionPrivate

@@ -41,6 +41,10 @@
 
 #include "qloopnode.h"
 
+#include <QtUml/QOutputPin>
+#include <QtUml/QExecutableNode>
+#include <QtUml/QInputPin>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QLoopNodePrivate

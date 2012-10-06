@@ -41,6 +41,10 @@
 
 #include "qconstraint.h"
 
+#include <QtUml/QElement>
+#include <QtUml/QNamespace>
+#include <QtUml/QValueSpecification>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QConstraintPrivate

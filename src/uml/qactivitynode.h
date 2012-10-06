@@ -94,6 +94,11 @@ public:
     void removeRedefinedNode(const QActivityNode *redefinedNode);
 
 protected:
+    // Synchronization functions for read-only subsetted properties
+    void addInGroup(const QActivityGroup *inGroup);
+    void removeInGroup(const QActivityGroup *inGroup);
+
+protected:
     explicit QActivityNode();
 
 private:

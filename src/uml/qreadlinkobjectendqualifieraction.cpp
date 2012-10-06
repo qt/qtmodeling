@@ -41,6 +41,10 @@
 
 #include "qreadlinkobjectendqualifieraction.h"
 
+#include <QtUml/QInputPin>
+#include <QtUml/QProperty>
+#include <QtUml/QOutputPin>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QReadLinkObjectEndQualifierActionPrivate

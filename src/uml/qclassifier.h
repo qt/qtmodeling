@@ -131,6 +131,13 @@ public:
     const QSet<QClassifier *> *parents() const;
 
 protected:
+    // Synchronization functions for read-only subsetted properties
+    void addAttribute(const QProperty *attribute);
+    void removeAttribute(const QProperty *attribute);
+    void addFeature(const QFeature *feature);
+    void removeFeature(const QFeature *feature);
+
+protected:
     explicit QClassifier();
 
 private:

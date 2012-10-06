@@ -41,6 +41,8 @@
 
 #include "qreception.h"
 
+#include <QtUml/QSignal>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QReceptionPrivate

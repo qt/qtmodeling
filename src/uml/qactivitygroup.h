@@ -77,6 +77,15 @@ public:
     QActivityGroup *superGroup() const;
 
 protected:
+    // Synchronization functions for read-only subsetted properties
+    void addContainedEdge(const QActivityEdge *containedEdge);
+    void removeContainedEdge(const QActivityEdge *containedEdge);
+    void addContainedNode(const QActivityNode *containedNode);
+    void removeContainedNode(const QActivityNode *containedNode);
+    void addSubgroup(const QActivityGroup *subgroup);
+    void removeSubgroup(const QActivityGroup *subgroup);
+
+protected:
     explicit QActivityGroup();
 
 private:

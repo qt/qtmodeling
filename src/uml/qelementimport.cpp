@@ -41,6 +41,9 @@
 
 #include "qelementimport.h"
 
+#include <QtUml/QPackageableElement>
+#include <QtUml/QNamespace>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QElementImportPrivate

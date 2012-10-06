@@ -41,6 +41,7 @@
 
 #include "qobservation.h"
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QObservationPrivate

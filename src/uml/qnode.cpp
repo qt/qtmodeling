@@ -41,6 +41,7 @@
 
 #include "qnode.h"
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QNodePrivate
@@ -91,11 +92,15 @@ const QSet<QNode *> *QNode::nestedNodes() const
 void QNode::addNestedNode(const QNode *nestedNode)
 {
     d_ptr->nestedNodes->insert(const_cast<QNode *>(nestedNode));
+    // Adjust subsetted property(ies)
+    addOwnedMember(nestedNode);
 }
 
 void QNode::removeNestedNode(const QNode *nestedNode)
 {
     d_ptr->nestedNodes->remove(const_cast<QNode *>(nestedNode));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(nestedNode);
 }
 
 #include "moc_qnode.cpp"

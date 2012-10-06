@@ -41,6 +41,8 @@
 
 #include "qconsiderignorefragment.h"
 
+#include <QtUml/QNamedElement>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QConsiderIgnoreFragmentPrivate

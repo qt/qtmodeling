@@ -41,6 +41,8 @@
 
 #include "qtimeevent.h"
 
+#include <QtUml/QTimeExpression>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QTimeEventPrivate

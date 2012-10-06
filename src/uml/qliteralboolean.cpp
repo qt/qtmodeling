@@ -41,6 +41,7 @@
 
 #include "qliteralboolean.h"
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QLiteralBooleanPrivate

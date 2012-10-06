@@ -41,6 +41,8 @@
 
 #include "qtimeexpression.h"
 
+#include <QtUml/QObservation>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QTimeExpressionPrivate

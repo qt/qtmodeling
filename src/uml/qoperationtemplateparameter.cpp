@@ -41,6 +41,8 @@
 
 #include "qoperationtemplateparameter.h"
 
+#include <QtUml/QOperation>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QOperationTemplateParameterPrivate

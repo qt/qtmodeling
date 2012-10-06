@@ -96,6 +96,11 @@ public:
     void setWeight(const QValueSpecification *weight);
 
 protected:
+    // Synchronization functions for read-only subsetted properties
+    void addInGroup(const QActivityGroup *inGroup);
+    void removeInGroup(const QActivityGroup *inGroup);
+
+protected:
     explicit QActivityEdge();
 
 private:

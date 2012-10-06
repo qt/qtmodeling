@@ -41,6 +41,13 @@
 
 #include "qactivity.h"
 
+#include <QtUml/QStructuredActivityNode>
+#include <QtUml/QVariable>
+#include <QtUml/QActivityPartition>
+#include <QtUml/QActivityGroup>
+#include <QtUml/QActivityEdge>
+#include <QtUml/QActivityNode>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QActivityPrivate
@@ -136,11 +143,15 @@ const QSet<QActivityEdge *> *QActivity::edges() const
 void QActivity::addEdge(const QActivityEdge *edge)
 {
     d_ptr->edges->insert(const_cast<QActivityEdge *>(edge));
+    // Adjust subsetted property(ies)
+    addOwnedElement(edge);
 }
 
 void QActivity::removeEdge(const QActivityEdge *edge)
 {
     d_ptr->edges->remove(const_cast<QActivityEdge *>(edge));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(edge);
 }
 
 /*!
@@ -154,11 +165,15 @@ const QSet<QActivityGroup *> *QActivity::groups() const
 void QActivity::addGroup(const QActivityGroup *group)
 {
     d_ptr->groups->insert(const_cast<QActivityGroup *>(group));
+    // Adjust subsetted property(ies)
+    addOwnedElement(group);
 }
 
 void QActivity::removeGroup(const QActivityGroup *group)
 {
     d_ptr->groups->remove(const_cast<QActivityGroup *>(group));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(group);
 }
 
 /*!
@@ -172,11 +187,15 @@ const QSet<QActivityNode *> *QActivity::nodes() const
 void QActivity::addNode(const QActivityNode *node)
 {
     d_ptr->nodes->insert(const_cast<QActivityNode *>(node));
+    // Adjust subsetted property(ies)
+    addOwnedElement(node);
 }
 
 void QActivity::removeNode(const QActivityNode *node)
 {
     d_ptr->nodes->remove(const_cast<QActivityNode *>(node));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(node);
 }
 
 /*!
@@ -190,11 +209,15 @@ const QSet<QActivityPartition *> *QActivity::partitions() const
 void QActivity::addPartition(const QActivityPartition *partition)
 {
     d_ptr->partitions->insert(const_cast<QActivityPartition *>(partition));
+    // Adjust subsetted property(ies)
+    addGroup(partition);
 }
 
 void QActivity::removePartition(const QActivityPartition *partition)
 {
     d_ptr->partitions->remove(const_cast<QActivityPartition *>(partition));
+    // Adjust subsetted property(ies)
+    removeGroup(partition);
 }
 
 /*!
@@ -208,11 +231,17 @@ const QSet<QStructuredActivityNode *> *QActivity::structuredNodes() const
 void QActivity::addStructuredNode(const QStructuredActivityNode *structuredNode)
 {
     d_ptr->structuredNodes->insert(const_cast<QStructuredActivityNode *>(structuredNode));
+    // Adjust subsetted property(ies)
+    addGroup(structuredNode);
+    addNode(structuredNode);
 }
 
 void QActivity::removeStructuredNode(const QStructuredActivityNode *structuredNode)
 {
     d_ptr->structuredNodes->remove(const_cast<QStructuredActivityNode *>(structuredNode));
+    // Adjust subsetted property(ies)
+    removeGroup(structuredNode);
+    removeNode(structuredNode);
 }
 
 /*!
@@ -226,11 +255,15 @@ const QSet<QVariable *> *QActivity::variables() const
 void QActivity::addVariable(const QVariable *variable)
 {
     d_ptr->variables->insert(const_cast<QVariable *>(variable));
+    // Adjust subsetted property(ies)
+    addOwnedMember(variable);
 }
 
 void QActivity::removeVariable(const QVariable *variable)
 {
     d_ptr->variables->remove(const_cast<QVariable *>(variable));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(variable);
 }
 
 #include "moc_qactivity.cpp"

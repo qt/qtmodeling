@@ -41,6 +41,8 @@
 
 #include "qacceptcallaction.h"
 
+#include <QtUml/QOutputPin>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QAcceptCallActionPrivate

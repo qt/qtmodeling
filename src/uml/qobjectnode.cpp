@@ -41,6 +41,10 @@
 
 #include "qobjectnode.h"
 
+#include <QtUml/QState>
+#include <QtUml/QBehavior>
+#include <QtUml/QValueSpecification>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QObjectNodePrivate

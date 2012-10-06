@@ -41,6 +41,9 @@
 
 #include "qredefinabletemplatesignature.h"
 
+#include <QtUml/QClassifier>
+#include <QtUml/QTemplateParameter>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QRedefinableTemplateSignaturePrivate
@@ -105,11 +108,15 @@ const QSet<QRedefinableTemplateSignature *> *QRedefinableTemplateSignature::exte
 void QRedefinableTemplateSignature::addExtendedSignature(const QRedefinableTemplateSignature *extendedSignature)
 {
     d_ptr->extendedSignatures->insert(const_cast<QRedefinableTemplateSignature *>(extendedSignature));
+    // Adjust subsetted property(ies)
+    addRedefinedElement(extendedSignature);
 }
 
 void QRedefinableTemplateSignature::removeExtendedSignature(const QRedefinableTemplateSignature *extendedSignature)
 {
     d_ptr->extendedSignatures->remove(const_cast<QRedefinableTemplateSignature *>(extendedSignature));
+    // Adjust subsetted property(ies)
+    removeRedefinedElement(extendedSignature);
 }
 
 /*!

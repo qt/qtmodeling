@@ -41,6 +41,7 @@
 
 #include "qcommunicationpath.h"
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QCommunicationPathPrivate

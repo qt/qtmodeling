@@ -41,6 +41,8 @@
 
 #include "qenumerationliteral.h"
 
+#include <QtUml/QEnumeration>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QEnumerationLiteralPrivate

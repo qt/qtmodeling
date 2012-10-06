@@ -41,6 +41,10 @@
 
 #include "qvertex.h"
 
+#include <QtUml/QRegion>
+#include <QtUml/QTransition>
+#include <QtUml/QStateMachine>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QVertexPrivate

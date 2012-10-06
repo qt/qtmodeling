@@ -75,6 +75,11 @@ public:
     bool mustBeOwned() const;
 
 protected:
+    // Synchronization functions for read-only subsetted properties
+    void addOwnedElement(const QElement *ownedElement);
+    void removeOwnedElement(const QElement *ownedElement);
+
+protected:
     explicit QElement();
 
 private:

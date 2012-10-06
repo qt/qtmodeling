@@ -41,6 +41,9 @@
 
 #include "qconnectableelement.h"
 
+#include <QtUml/QConnectorEnd>
+#include <QtUml/QConnectableElementTemplateParameter>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QConnectableElementPrivate

@@ -41,6 +41,9 @@
 
 #include "qparameterset.h"
 
+#include <QtUml/QConstraint>
+#include <QtUml/QParameter>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QParameterSetPrivate
@@ -94,11 +97,15 @@ const QSet<QConstraint *> *QParameterSet::conditions() const
 void QParameterSet::addCondition(const QConstraint *condition)
 {
     d_ptr->conditions->insert(const_cast<QConstraint *>(condition));
+    // Adjust subsetted property(ies)
+    addOwnedElement(condition);
 }
 
 void QParameterSet::removeCondition(const QConstraint *condition)
 {
     d_ptr->conditions->remove(const_cast<QConstraint *>(condition));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(condition);
 }
 
 /*!

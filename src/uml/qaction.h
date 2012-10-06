@@ -86,6 +86,13 @@ public:
     const QList<QOutputPin *> *outputs() const;
 
 protected:
+    // Synchronization functions for read-only subsetted properties
+    void addInput(const QInputPin *input);
+    void removeInput(const QInputPin *input);
+    void addOutput(const QOutputPin *output);
+    void removeOutput(const QOutputPin *output);
+
+protected:
     explicit QAction();
 
 private:

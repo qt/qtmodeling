@@ -41,6 +41,13 @@
 
 #include "qclass.h"
 
+#include <QtUml/QReception>
+#include <QtUml/QNamedElement>
+#include <QtUml/QOperation>
+#include <QtUml/QClassifier>
+#include <QtUml/QExtension>
+#include <QtUml/QProperty>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QClassPrivate
@@ -138,11 +145,15 @@ const QList<QClassifier *> *QClass::nestedClassifiers() const
 void QClass::addNestedClassifier(const QClassifier *nestedClassifier)
 {
     d_ptr->nestedClassifiers->append(const_cast<QClassifier *>(nestedClassifier));
+    // Adjust subsetted property(ies)
+    addOwnedMember(nestedClassifier);
 }
 
 void QClass::removeNestedClassifier(const QClassifier *nestedClassifier)
 {
     d_ptr->nestedClassifiers->removeAll(const_cast<QClassifier *>(nestedClassifier));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(nestedClassifier);
 }
 
 /*!
@@ -156,11 +167,17 @@ const QList<QProperty *> *QClass::ownedAttributes() const
 void QClass::addOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
+    // Adjust subsetted property(ies)
+    addOwnedMember(ownedAttribute);
+    addAttribute(ownedAttribute);
 }
 
 void QClass::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(ownedAttribute);
+    removeAttribute(ownedAttribute);
 }
 
 /*!
@@ -174,11 +191,17 @@ const QList<QOperation *> *QClass::ownedOperations() const
 void QClass::addOwnedOperation(const QOperation *ownedOperation)
 {
     d_ptr->ownedOperations->append(const_cast<QOperation *>(ownedOperation));
+    // Adjust subsetted property(ies)
+    addFeature(ownedOperation);
+    addOwnedMember(ownedOperation);
 }
 
 void QClass::removeOwnedOperation(const QOperation *ownedOperation)
 {
     d_ptr->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation));
+    // Adjust subsetted property(ies)
+    removeFeature(ownedOperation);
+    removeOwnedMember(ownedOperation);
 }
 
 /*!
@@ -192,11 +215,17 @@ const QSet<QReception *> *QClass::ownedReceptions() const
 void QClass::addOwnedReception(const QReception *ownedReception)
 {
     d_ptr->ownedReceptions->insert(const_cast<QReception *>(ownedReception));
+    // Adjust subsetted property(ies)
+    addFeature(ownedReception);
+    addOwnedMember(ownedReception);
 }
 
 void QClass::removeOwnedReception(const QReception *ownedReception)
 {
     d_ptr->ownedReceptions->remove(const_cast<QReception *>(ownedReception));
+    // Adjust subsetted property(ies)
+    removeFeature(ownedReception);
+    removeOwnedMember(ownedReception);
 }
 
 /*!

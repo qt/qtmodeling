@@ -41,6 +41,7 @@
 
 #include "qliteralinteger.h"
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QLiteralIntegerPrivate

@@ -41,6 +41,8 @@
 
 #include "qsignal.h"
 
+#include <QtUml/QProperty>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QSignalPrivate
@@ -91,11 +93,17 @@ const QList<QProperty *> *QSignal::ownedAttributes() const
 void QSignal::addOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
+    // Adjust subsetted property(ies)
+    addOwnedMember(ownedAttribute);
+    addAttribute(ownedAttribute);
 }
 
 void QSignal::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(ownedAttribute);
+    removeAttribute(ownedAttribute);
 }
 
 #include "moc_qsignal.cpp"

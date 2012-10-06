@@ -41,6 +41,10 @@
 
 #include "qslot.h"
 
+#include <QtUml/QStructuralFeature>
+#include <QtUml/QInstanceSpecification>
+#include <QtUml/QValueSpecification>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QSlotPrivate
@@ -119,11 +123,15 @@ const QList<QValueSpecification *> *QSlot::values() const
 void QSlot::addValue(const QValueSpecification *value)
 {
     d_ptr->values->append(const_cast<QValueSpecification *>(value));
+    // Adjust subsetted property(ies)
+    addOwnedElement(value);
 }
 
 void QSlot::removeValue(const QValueSpecification *value)
 {
     d_ptr->values->removeAll(const_cast<QValueSpecification *>(value));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(value);
 }
 
 #include "moc_qslot.cpp"

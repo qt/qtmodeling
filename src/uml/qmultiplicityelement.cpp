@@ -41,6 +41,8 @@
 
 #include "qmultiplicityelement.h"
 
+#include <QtUml/QValueSpecification>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QMultiplicityElementPrivate

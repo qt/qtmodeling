@@ -41,6 +41,8 @@
 
 #include "qparameterableelement.h"
 
+#include <QtUml/QTemplateParameter>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QParameterableElementPrivate

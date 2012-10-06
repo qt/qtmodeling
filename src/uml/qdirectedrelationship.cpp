@@ -41,6 +41,8 @@
 
 #include "qdirectedrelationship.h"
 
+#include <QtUml/QElement>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QDirectedRelationshipPrivate
@@ -91,12 +93,40 @@ const QSet<QElement *> *QDirectedRelationship::sources() const
     return d_ptr->sources;
 }
 
+void QDirectedRelationship::addSource(const QElement *source)
+{
+    d_ptr->sources->insert(const_cast<QElement *>(source));
+    // Adjust subsetted property(ies)
+    addRelatedElement(source);
+}
+
+void QDirectedRelationship::removeSource(const QElement *source)
+{
+    d_ptr->sources->remove(const_cast<QElement *>(source));
+    // Adjust subsetted property(ies)
+    removeRelatedElement(source);
+}
+
 /*!
     Specifies the targets of the DirectedRelationship.
  */
 const QSet<QElement *> *QDirectedRelationship::targets() const
 {
     return d_ptr->targets;
+}
+
+void QDirectedRelationship::addTarget(const QElement *target)
+{
+    d_ptr->targets->insert(const_cast<QElement *>(target));
+    // Adjust subsetted property(ies)
+    addRelatedElement(target);
+}
+
+void QDirectedRelationship::removeTarget(const QElement *target)
+{
+    d_ptr->targets->remove(const_cast<QElement *>(target));
+    // Adjust subsetted property(ies)
+    removeRelatedElement(target);
 }
 
 QT_END_NAMESPACE_QTUML

@@ -41,6 +41,8 @@
 
 #include "qmanifestation.h"
 
+#include <QtUml/QPackageableElement>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QManifestationPrivate

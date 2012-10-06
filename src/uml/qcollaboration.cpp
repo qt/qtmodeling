@@ -41,6 +41,8 @@
 
 #include "qcollaboration.h"
 
+#include <QtUml/QConnectableElement>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QCollaborationPrivate
@@ -91,11 +93,15 @@ const QSet<QConnectableElement *> *QCollaboration::collaborationRoles() const
 void QCollaboration::addCollaborationRole(const QConnectableElement *collaborationRole)
 {
     d_ptr->collaborationRoles->insert(const_cast<QConnectableElement *>(collaborationRole));
+    // Adjust subsetted property(ies)
+    addRole(collaborationRole);
 }
 
 void QCollaboration::removeCollaborationRole(const QConnectableElement *collaborationRole)
 {
     d_ptr->collaborationRoles->remove(const_cast<QConnectableElement *>(collaborationRole));
+    // Adjust subsetted property(ies)
+    removeRole(collaborationRole);
 }
 
 #include "moc_qcollaboration.cpp"

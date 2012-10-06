@@ -41,6 +41,9 @@
 
 #include "qport.h"
 
+#include <QtUml/QProtocolStateMachine>
+#include <QtUml/QInterface>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QPortPrivate
@@ -158,11 +161,15 @@ const QSet<QPort *> *QPort::redefinedPorts() const
 void QPort::addRedefinedPort(const QPort *redefinedPort)
 {
     d_ptr->redefinedPorts->insert(const_cast<QPort *>(redefinedPort));
+    // Adjust subsetted property(ies)
+    addRedefinedProperty(redefinedPort);
 }
 
 void QPort::removeRedefinedPort(const QPort *redefinedPort)
 {
     d_ptr->redefinedPorts->remove(const_cast<QPort *>(redefinedPort));
+    // Adjust subsetted property(ies)
+    removeRedefinedProperty(redefinedPort);
 }
 
 /*!

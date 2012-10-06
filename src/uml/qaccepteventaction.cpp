@@ -41,6 +41,9 @@
 
 #include "qaccepteventaction.h"
 
+#include <QtUml/QOutputPin>
+#include <QtUml/QTrigger>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QAcceptEventActionPrivate
@@ -109,11 +112,15 @@ const QSet<QOutputPin *> *QAcceptEventAction::results() const
 void QAcceptEventAction::addResult(const QOutputPin *result)
 {
     d_ptr->results->insert(const_cast<QOutputPin *>(result));
+    // Adjust subsetted property(ies)
+    addOutput(result);
 }
 
 void QAcceptEventAction::removeResult(const QOutputPin *result)
 {
     d_ptr->results->remove(const_cast<QOutputPin *>(result));
+    // Adjust subsetted property(ies)
+    removeOutput(result);
 }
 
 /*!
@@ -127,11 +134,15 @@ const QSet<QTrigger *> *QAcceptEventAction::triggers() const
 void QAcceptEventAction::addTrigger(const QTrigger *trigger)
 {
     d_ptr->triggers->insert(const_cast<QTrigger *>(trigger));
+    // Adjust subsetted property(ies)
+    addOwnedElement(trigger);
 }
 
 void QAcceptEventAction::removeTrigger(const QTrigger *trigger)
 {
     d_ptr->triggers->remove(const_cast<QTrigger *>(trigger));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(trigger);
 }
 
 #include "moc_qaccepteventaction.cpp"

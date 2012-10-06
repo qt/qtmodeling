@@ -41,6 +41,11 @@
 
 #include "qcomponent.h"
 
+#include <QtUml/QClassifier>
+#include <QtUml/QComponentRealization>
+#include <QtUml/QPackageableElement>
+#include <QtUml/QInterface>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QComponentPrivate
@@ -109,11 +114,15 @@ const QSet<QPackageableElement *> *QComponent::packagedElements() const
 void QComponent::addPackagedElement(const QPackageableElement *packagedElement)
 {
     d_ptr->packagedElements->insert(const_cast<QPackageableElement *>(packagedElement));
+    // Adjust subsetted property(ies)
+    addOwnedMember(packagedElement);
 }
 
 void QComponent::removePackagedElement(const QPackageableElement *packagedElement)
 {
     d_ptr->packagedElements->remove(const_cast<QPackageableElement *>(packagedElement));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(packagedElement);
 }
 
 /*!
@@ -135,11 +144,15 @@ const QSet<QComponentRealization *> *QComponent::realizations() const
 void QComponent::addRealization(const QComponentRealization *realization)
 {
     d_ptr->realizations->insert(const_cast<QComponentRealization *>(realization));
+    // Adjust subsetted property(ies)
+    addOwnedElement(realization);
 }
 
 void QComponent::removeRealization(const QComponentRealization *realization)
 {
     d_ptr->realizations->remove(const_cast<QComponentRealization *>(realization));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(realization);
 }
 
 /*!

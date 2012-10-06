@@ -41,6 +41,7 @@
 
 #include "qcomment.h"
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QCommentPrivate

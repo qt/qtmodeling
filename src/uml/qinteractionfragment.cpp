@@ -41,6 +41,11 @@
 
 #include "qinteractionfragment.h"
 
+#include <QtUml/QGeneralOrdering>
+#include <QtUml/QInteractionOperand>
+#include <QtUml/QLifeline>
+#include <QtUml/QInteraction>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QInteractionFragmentPrivate
@@ -140,11 +145,15 @@ const QSet<QGeneralOrdering *> *QInteractionFragment::generalOrderings() const
 void QInteractionFragment::addGeneralOrdering(const QGeneralOrdering *generalOrdering)
 {
     d_ptr->generalOrderings->insert(const_cast<QGeneralOrdering *>(generalOrdering));
+    // Adjust subsetted property(ies)
+    addOwnedElement(generalOrdering);
 }
 
 void QInteractionFragment::removeGeneralOrdering(const QGeneralOrdering *generalOrdering)
 {
     d_ptr->generalOrderings->remove(const_cast<QGeneralOrdering *>(generalOrdering));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(generalOrdering);
 }
 
 QT_END_NAMESPACE_QTUML

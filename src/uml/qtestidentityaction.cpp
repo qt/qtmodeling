@@ -41,6 +41,9 @@
 
 #include "qtestidentityaction.h"
 
+#include <QtUml/QInputPin>
+#include <QtUml/QOutputPin>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QTestIdentityActionPrivate

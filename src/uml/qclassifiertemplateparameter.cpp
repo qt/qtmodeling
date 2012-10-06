@@ -41,6 +41,8 @@
 
 #include "qclassifiertemplateparameter.h"
 
+#include <QtUml/QClassifier>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QClassifierTemplateParameterPrivate

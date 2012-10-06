@@ -41,6 +41,9 @@
 
 #include "qcomponentrealization.h"
 
+#include <QtUml/QComponent>
+#include <QtUml/QClassifier>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QComponentRealizationPrivate
@@ -105,11 +108,15 @@ const QSet<QClassifier *> *QComponentRealization::realizingClassifiers() const
 void QComponentRealization::addRealizingClassifier(const QClassifier *realizingClassifier)
 {
     d_ptr->realizingClassifiers->insert(const_cast<QClassifier *>(realizingClassifier));
+    // Adjust subsetted property(ies)
+    addClient(realizingClassifier);
 }
 
 void QComponentRealization::removeRealizingClassifier(const QClassifier *realizingClassifier)
 {
     d_ptr->realizingClassifiers->remove(const_cast<QClassifier *>(realizingClassifier));
+    // Adjust subsetted property(ies)
+    removeClient(realizingClassifier);
 }
 
 #include "moc_qcomponentrealization.cpp"

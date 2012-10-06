@@ -41,6 +41,7 @@
 
 #include "qstringexpression.h"
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QStringExpressionPrivate
@@ -105,11 +106,15 @@ const QSet<QStringExpression *> *QStringExpression::subExpressions() const
 void QStringExpression::addSubExpression(const QStringExpression *subExpression)
 {
     d_ptr->subExpressions->insert(const_cast<QStringExpression *>(subExpression));
+    // Adjust subsetted property(ies)
+    addOwnedElement(subExpression);
 }
 
 void QStringExpression::removeSubExpression(const QStringExpression *subExpression)
 {
     d_ptr->subExpressions->remove(const_cast<QStringExpression *>(subExpression));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(subExpression);
 }
 
 /*!

@@ -41,6 +41,10 @@
 
 #include "qstructuredclassifier.h"
 
+#include <QtUml/QProperty>
+#include <QtUml/QConnector>
+#include <QtUml/QConnectableElement>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QStructuredClassifierPrivate
@@ -97,11 +101,19 @@ const QList<QProperty *> *QStructuredClassifier::ownedAttributes() const
 void QStructuredClassifier::addOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
+    // Adjust subsetted property(ies)
+    addAttribute(ownedAttribute);
+    addOwnedMember(ownedAttribute);
+    addRole(ownedAttribute);
 }
 
 void QStructuredClassifier::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
+    // Adjust subsetted property(ies)
+    removeAttribute(ownedAttribute);
+    removeOwnedMember(ownedAttribute);
+    removeRole(ownedAttribute);
 }
 
 /*!
@@ -115,11 +127,17 @@ const QSet<QConnector *> *QStructuredClassifier::ownedConnectors() const
 void QStructuredClassifier::addOwnedConnector(const QConnector *ownedConnector)
 {
     d_ptr->ownedConnectors->insert(const_cast<QConnector *>(ownedConnector));
+    // Adjust subsetted property(ies)
+    addFeature(ownedConnector);
+    addOwnedMember(ownedConnector);
 }
 
 void QStructuredClassifier::removeOwnedConnector(const QConnector *ownedConnector)
 {
     d_ptr->ownedConnectors->remove(const_cast<QConnector *>(ownedConnector));
+    // Adjust subsetted property(ies)
+    removeFeature(ownedConnector);
+    removeOwnedMember(ownedConnector);
 }
 
 /*!
@@ -136,6 +154,20 @@ const QSet<QProperty *> *QStructuredClassifier::parts() const
 const QSet<QConnectableElement *> *QStructuredClassifier::roles() const
 {
     return d_ptr->roles;
+}
+
+void QStructuredClassifier::addRole(const QConnectableElement *role)
+{
+    d_ptr->roles->insert(const_cast<QConnectableElement *>(role));
+    // Adjust subsetted property(ies)
+    addMember(role);
+}
+
+void QStructuredClassifier::removeRole(const QConnectableElement *role)
+{
+    d_ptr->roles->remove(const_cast<QConnectableElement *>(role));
+    // Adjust subsetted property(ies)
+    removeMember(role);
 }
 
 QT_END_NAMESPACE_QTUML

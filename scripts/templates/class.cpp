@@ -41,6 +41,11 @@
 
 #include "${class.name.lower}.h"
 
+[%- FOREACH forwarddecl IN class.forwarddecl -%]
+
+#include <${forwarddecl.namespace}/${forwarddecl.content}>
+[%- END %]
+
 QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
 
 class ${class.name}Private
@@ -170,9 +175,25 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
         [%- END %]
         [%- IF accessor.name.search('^add') %]
     d_ptr->${attribute.accessor.0.name}->[% IF attribute.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
+        [%- IF attribute.subsettedProperty != '' %]
+    // Adjust subsetted property(ies)
+        [%- FOREACH subsettedProperty IN attribute.subsettedProperty.split(' ') -%]
+            [%- IF classes.item(subsettedProperty.split('-').0.replace('^', 'Q')) %]
+    add${subsettedProperty.split('-').1.ucfirst}(${accessor.parameter.0.name});
+            [%- END -%]
+        [%- END -%]
+        [%- END -%]
         [%- END %]
         [%- IF accessor.name.search('^remove') %]
     d_ptr->${attribute.accessor.0.name}->[% IF attribute.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
+        [%- IF attribute.subsettedProperty != '' %]
+    // Adjust subsetted property(ies)
+        [%- FOREACH subsettedProperty IN attribute.subsettedProperty.split(' ') %]
+            [%- IF classes.item(subsettedProperty.split('-').0.replace('^', 'Q')) %]
+    remove${subsettedProperty.split('-').1.ucfirst}(${accessor.parameter.0.name});
+            [%- END -%]
+        [%- END -%]
+        [%- END -%]
         [%- END %]
     [%- END %]
 [%- ELSE %]
@@ -200,9 +221,25 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
         [%- END %]
         [%- IF accessor.name.search('^add') %]
     d_ptr->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
+        [%- IF associationend.subsettedProperty != '' %]
+    // Adjust subsetted property(ies)
+        [%- FOREACH subsettedProperty IN associationend.subsettedProperty.split(' ') %]
+            [%- IF classes.item(subsettedProperty.split('-').0.replace('^', 'Q')) %]
+    add${subsettedProperty.split('-').1.ucfirst}(${accessor.parameter.0.name});
+            [%- END -%]
+        [%- END -%]
+        [%- END -%]
         [%- END %]
         [%- IF accessor.name.search('^remove') %]
     d_ptr->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
+        [%- IF associationend.subsettedProperty != '' %]
+    // Adjust subsetted property(ies)
+        [%- FOREACH subsettedProperty IN associationend.subsettedProperty.split(' ') %]
+            [%- IF classes.item(subsettedProperty.split('-').0.replace('^', 'Q')) %]
+    remove${subsettedProperty.split('-').1.ucfirst}(${accessor.parameter.0.name});
+            [%- END -%]
+        [%- END -%]
+        [%- END -%]
         [%- END %]
     [%- END %]
 [%- ELSE %]

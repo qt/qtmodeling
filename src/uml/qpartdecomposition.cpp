@@ -41,6 +41,7 @@
 
 #include "qpartdecomposition.h"
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QPartDecompositionPrivate

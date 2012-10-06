@@ -41,6 +41,8 @@
 
 #include "qextensionend.h"
 
+#include <QtUml/QStereotype>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QExtensionEndPrivate

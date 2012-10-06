@@ -41,6 +41,7 @@
 
 #include "qrelationship.h"
 
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QRelationshipPrivate
@@ -86,6 +87,16 @@ QRelationship::~QRelationship()
 const QSet<QElement *> *QRelationship::relatedElements() const
 {
     return d_ptr->relatedElements;
+}
+
+void QRelationship::addRelatedElement(const QElement *relatedElement)
+{
+    d_ptr->relatedElements->insert(const_cast<QElement *>(relatedElement));
+}
+
+void QRelationship::removeRelatedElement(const QElement *relatedElement)
+{
+    d_ptr->relatedElements->remove(const_cast<QElement *>(relatedElement));
 }
 
 QT_END_NAMESPACE_QTUML

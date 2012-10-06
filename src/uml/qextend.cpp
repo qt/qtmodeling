@@ -41,6 +41,10 @@
 
 #include "qextend.h"
 
+#include <QtUml/QConstraint>
+#include <QtUml/QUseCase>
+#include <QtUml/QExtensionPoint>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QExtendPrivate

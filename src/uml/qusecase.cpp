@@ -41,6 +41,11 @@
 
 #include "qusecase.h"
 
+#include <QtUml/QClassifier>
+#include <QtUml/QInclude>
+#include <QtUml/QExtend>
+#include <QtUml/QExtensionPoint>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QUseCasePrivate
@@ -100,11 +105,15 @@ const QSet<QExtend *> *QUseCase::extends() const
 void QUseCase::addExtend(const QExtend *extend)
 {
     d_ptr->extends->insert(const_cast<QExtend *>(extend));
+    // Adjust subsetted property(ies)
+    addOwnedMember(extend);
 }
 
 void QUseCase::removeExtend(const QExtend *extend)
 {
     d_ptr->extends->remove(const_cast<QExtend *>(extend));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(extend);
 }
 
 /*!
@@ -118,11 +127,15 @@ const QSet<QExtensionPoint *> *QUseCase::extensionPoints() const
 void QUseCase::addExtensionPoint(const QExtensionPoint *extensionPoint)
 {
     d_ptr->extensionPoints->insert(const_cast<QExtensionPoint *>(extensionPoint));
+    // Adjust subsetted property(ies)
+    addOwnedMember(extensionPoint);
 }
 
 void QUseCase::removeExtensionPoint(const QExtensionPoint *extensionPoint)
 {
     d_ptr->extensionPoints->remove(const_cast<QExtensionPoint *>(extensionPoint));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(extensionPoint);
 }
 
 /*!
@@ -136,11 +149,15 @@ const QSet<QInclude *> *QUseCase::includes() const
 void QUseCase::addInclude(const QInclude *include)
 {
     d_ptr->includes->insert(const_cast<QInclude *>(include));
+    // Adjust subsetted property(ies)
+    addOwnedMember(include);
 }
 
 void QUseCase::removeInclude(const QInclude *include)
 {
     d_ptr->includes->remove(const_cast<QInclude *>(include));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(include);
 }
 
 /*!

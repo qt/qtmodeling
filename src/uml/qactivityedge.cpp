@@ -41,6 +41,14 @@
 
 #include "qactivityedge.h"
 
+#include <QtUml/QInterruptibleActivityRegion>
+#include <QtUml/QStructuredActivityNode>
+#include <QtUml/QActivityNode>
+#include <QtUml/QActivityPartition>
+#include <QtUml/QValueSpecification>
+#include <QtUml/QActivity>
+#include <QtUml/QActivityGroup>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QActivityEdgePrivate
@@ -127,6 +135,16 @@ const QSet<QActivityGroup *> *QActivityEdge::inGroup() const
     return d_ptr->inGroup;
 }
 
+void QActivityEdge::addInGroup(const QActivityGroup *inGroup)
+{
+    d_ptr->inGroup->insert(const_cast<QActivityGroup *>(inGroup));
+}
+
+void QActivityEdge::removeInGroup(const QActivityGroup *inGroup)
+{
+    d_ptr->inGroup->remove(const_cast<QActivityGroup *>(inGroup));
+}
+
 /*!
     Partitions containing the edge.
  */
@@ -138,11 +156,15 @@ const QSet<QActivityPartition *> *QActivityEdge::inPartition() const
 void QActivityEdge::addInPartition(const QActivityPartition *inPartition)
 {
     d_ptr->inPartition->insert(const_cast<QActivityPartition *>(inPartition));
+    // Adjust subsetted property(ies)
+    addInGroup(inPartition);
 }
 
 void QActivityEdge::removeInPartition(const QActivityPartition *inPartition)
 {
     d_ptr->inPartition->remove(const_cast<QActivityPartition *>(inPartition));
+    // Adjust subsetted property(ies)
+    removeInGroup(inPartition);
 }
 
 /*!
@@ -182,11 +204,15 @@ const QSet<QActivityEdge *> *QActivityEdge::redefinedEdges() const
 void QActivityEdge::addRedefinedEdge(const QActivityEdge *redefinedEdge)
 {
     d_ptr->redefinedEdges->insert(const_cast<QActivityEdge *>(redefinedEdge));
+    // Adjust subsetted property(ies)
+    addRedefinedElement(redefinedEdge);
 }
 
 void QActivityEdge::removeRedefinedEdge(const QActivityEdge *redefinedEdge)
 {
     d_ptr->redefinedEdges->remove(const_cast<QActivityEdge *>(redefinedEdge));
+    // Adjust subsetted property(ies)
+    removeRedefinedElement(redefinedEdge);
 }
 
 /*!

@@ -41,6 +41,8 @@
 
 #include "qmessageend.h"
 
+#include <QtUml/QMessage>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QMessageEndPrivate

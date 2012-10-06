@@ -41,6 +41,15 @@
 
 #include "qoperation.h"
 
+#include <QtUml/QOperationTemplateParameter>
+#include <QtUml/QType>
+#include <QtUml/QRedefinableElement>
+#include <QtUml/QParameter>
+#include <QtUml/QInterface>
+#include <QtUml/QConstraint>
+#include <QtUml/QDataType>
+#include <QtUml/QClass>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QOperationPrivate
@@ -225,11 +234,15 @@ const QSet<QConstraint *> *QOperation::postconditions() const
 void QOperation::addPostcondition(const QConstraint *postcondition)
 {
     d_ptr->postconditions->insert(const_cast<QConstraint *>(postcondition));
+    // Adjust subsetted property(ies)
+    addOwnedRule(postcondition);
 }
 
 void QOperation::removePostcondition(const QConstraint *postcondition)
 {
     d_ptr->postconditions->remove(const_cast<QConstraint *>(postcondition));
+    // Adjust subsetted property(ies)
+    removeOwnedRule(postcondition);
 }
 
 /*!
@@ -243,11 +256,15 @@ const QSet<QConstraint *> *QOperation::preconditions() const
 void QOperation::addPrecondition(const QConstraint *precondition)
 {
     d_ptr->preconditions->insert(const_cast<QConstraint *>(precondition));
+    // Adjust subsetted property(ies)
+    addOwnedRule(precondition);
 }
 
 void QOperation::removePrecondition(const QConstraint *precondition)
 {
     d_ptr->preconditions->remove(const_cast<QConstraint *>(precondition));
+    // Adjust subsetted property(ies)
+    removeOwnedRule(precondition);
 }
 
 /*!
@@ -279,11 +296,15 @@ const QSet<QOperation *> *QOperation::redefinedOperations() const
 void QOperation::addRedefinedOperation(const QOperation *redefinedOperation)
 {
     d_ptr->redefinedOperations->insert(const_cast<QOperation *>(redefinedOperation));
+    // Adjust subsetted property(ies)
+    addRedefinedElement(redefinedOperation);
 }
 
 void QOperation::removeRedefinedOperation(const QOperation *redefinedOperation)
 {
     d_ptr->redefinedOperations->remove(const_cast<QOperation *>(redefinedOperation));
+    // Adjust subsetted property(ies)
+    removeRedefinedElement(redefinedOperation);
 }
 
 /*!

@@ -41,6 +41,9 @@
 
 #include "qcombinedfragment.h"
 
+#include <QtUml/QGate>
+#include <QtUml/QInteractionOperand>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QCombinedFragmentPrivate
@@ -109,11 +112,15 @@ const QSet<QGate *> *QCombinedFragment::cfragmentGates() const
 void QCombinedFragment::addCfragmentGate(const QGate *cfragmentGate)
 {
     d_ptr->cfragmentGates->insert(const_cast<QGate *>(cfragmentGate));
+    // Adjust subsetted property(ies)
+    addOwnedElement(cfragmentGate);
 }
 
 void QCombinedFragment::removeCfragmentGate(const QGate *cfragmentGate)
 {
     d_ptr->cfragmentGates->remove(const_cast<QGate *>(cfragmentGate));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(cfragmentGate);
 }
 
 /*!
@@ -127,11 +134,15 @@ const QList<QInteractionOperand *> *QCombinedFragment::operands() const
 void QCombinedFragment::addOperand(const QInteractionOperand *operand)
 {
     d_ptr->operands->append(const_cast<QInteractionOperand *>(operand));
+    // Adjust subsetted property(ies)
+    addOwnedElement(operand);
 }
 
 void QCombinedFragment::removeOperand(const QInteractionOperand *operand)
 {
     d_ptr->operands->removeAll(const_cast<QInteractionOperand *>(operand));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(operand);
 }
 
 #include "moc_qcombinedfragment.cpp"

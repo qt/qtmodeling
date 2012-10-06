@@ -41,6 +41,13 @@
 
 #include "qpackage.h"
 
+#include <QtUml/QProfile>
+#include <QtUml/QNamedElement>
+#include <QtUml/QProfileApplication>
+#include <QtUml/QType>
+#include <QtUml/QStereotype>
+#include <QtUml/QPackageMerge>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 class QPackagePrivate
@@ -169,11 +176,15 @@ const QSet<QPackageMerge *> *QPackage::packageMerges() const
 void QPackage::addPackageMerge(const QPackageMerge *packageMerge)
 {
     d_ptr->packageMerges->insert(const_cast<QPackageMerge *>(packageMerge));
+    // Adjust subsetted property(ies)
+    addOwnedElement(packageMerge);
 }
 
 void QPackage::removePackageMerge(const QPackageMerge *packageMerge)
 {
     d_ptr->packageMerges->remove(const_cast<QPackageMerge *>(packageMerge));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(packageMerge);
 }
 
 /*!
@@ -187,11 +198,15 @@ const QSet<QPackageableElement *> *QPackage::packagedElements() const
 void QPackage::addPackagedElement(const QPackageableElement *packagedElement)
 {
     d_ptr->packagedElements->insert(const_cast<QPackageableElement *>(packagedElement));
+    // Adjust subsetted property(ies)
+    addOwnedMember(packagedElement);
 }
 
 void QPackage::removePackagedElement(const QPackageableElement *packagedElement)
 {
     d_ptr->packagedElements->remove(const_cast<QPackageableElement *>(packagedElement));
+    // Adjust subsetted property(ies)
+    removeOwnedMember(packagedElement);
 }
 
 /*!
@@ -205,11 +220,15 @@ const QSet<QProfileApplication *> *QPackage::profileApplications() const
 void QPackage::addProfileApplication(const QProfileApplication *profileApplication)
 {
     d_ptr->profileApplications->insert(const_cast<QProfileApplication *>(profileApplication));
+    // Adjust subsetted property(ies)
+    addOwnedElement(profileApplication);
 }
 
 void QPackage::removeProfileApplication(const QProfileApplication *profileApplication)
 {
     d_ptr->profileApplications->remove(const_cast<QProfileApplication *>(profileApplication));
+    // Adjust subsetted property(ies)
+    removeOwnedElement(profileApplication);
 }
 
 /*!
