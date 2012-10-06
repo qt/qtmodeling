@@ -56,6 +56,8 @@ public:
 };
 
 QConditionalNodePrivate::QConditionalNodePrivate() :
+    isAssured(false),
+    isDeterminate(false),
     clauses(new QSet<QClause *>),
     results(new QList<QOutputPin *>)
 {

@@ -54,7 +54,9 @@ public:
     QInputPin *target;
 };
 
-QDestroyObjectActionPrivate::QDestroyObjectActionPrivate()
+QDestroyObjectActionPrivate::QDestroyObjectActionPrivate() :
+    isDestroyLinks(false),
+    isDestroyOwnedObjects(false)
 {
 }
 

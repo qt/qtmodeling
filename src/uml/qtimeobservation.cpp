@@ -53,7 +53,8 @@ public:
     QNamedElement *event;
 };
 
-QTimeObservationPrivate::QTimeObservationPrivate()
+QTimeObservationPrivate::QTimeObservationPrivate() :
+    firstEvent(true)
 {
 }
 

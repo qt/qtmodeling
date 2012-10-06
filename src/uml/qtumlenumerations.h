@@ -117,12 +117,12 @@ public:
     };
     enum MessageSort
     {
-        MessageSortSynchCall = 0,
-        MessageSortAsynchCall,
-        MessageSortAsynchSignal,
-        MessageSortCreateMessage,
-        MessageSortDeleteMessage,
-        MessageSortReply
+        MessageSynchCall = 0,
+        MessageAsynchCall,
+        MessageAsynchSignal,
+        MessageCreateMessage,
+        MessageDeleteMessage,
+        MessageReply
     };
     enum ObjectNodeOrderingKind
     {

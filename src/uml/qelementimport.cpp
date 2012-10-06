@@ -55,7 +55,8 @@ public:
     QNamespace *importingNamespace;
 };
 
-QElementImportPrivate::QElementImportPrivate()
+QElementImportPrivate::QElementImportPrivate() :
+    visibility(QtUml::VisibilityPublic)
 {
 }
 

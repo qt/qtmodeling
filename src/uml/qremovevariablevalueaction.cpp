@@ -53,7 +53,8 @@ public:
     QInputPin *removeAt;
 };
 
-QRemoveVariableValueActionPrivate::QRemoveVariableValueActionPrivate()
+QRemoveVariableValueActionPrivate::QRemoveVariableValueActionPrivate() :
+    isRemoveDuplicates(false)
 {
 }
 

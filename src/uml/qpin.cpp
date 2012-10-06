@@ -52,7 +52,8 @@ public:
     bool isControl;
 };
 
-QPinPrivate::QPinPrivate()
+QPinPrivate::QPinPrivate() :
+    isControl(false)
 {
 }
 

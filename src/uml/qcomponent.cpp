@@ -55,6 +55,7 @@ public:
 };
 
 QComponentPrivate::QComponentPrivate() :
+    isIndirectlyInstantiated(true),
     packagedElements(new QSet<QPackageableElement *>),
     realizations(new QSet<QComponentRealization *>)
 {

@@ -57,6 +57,7 @@ public:
 };
 
 QActionPrivate::QActionPrivate() :
+    isLocallyReentrant(false),
     inputs(new QList<QInputPin *>),
     localPostconditions(new QSet<QConstraint *>),
     localPreconditions(new QSet<QConstraint *>),

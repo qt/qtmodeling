@@ -65,7 +65,8 @@ public:
 ${class.name}Private::${class.name}Private()
 [%- found = 'false' -%]
 [%- FOREACH attribute IN class.attribute %]
-[%- IF ((attribute.isDerived == "false" or attribute.isDerivedUnion == "true") and attribute.accessor.0.return.search('<')) -%]
+[%- IF attribute.isDerived == "false" or attribute.isDerivedUnion == "true" -%]
+[%- IF attribute.accessor.0.return.search('<') -%]
 [%- IF found == 'true' -%]
 ,
 [% ELSE -%]
@@ -73,10 +74,22 @@ ${class.name}Private::${class.name}Private()
     [%- found = 'true' %]
 [% END -%]
     ${attribute.accessor.0.name}(new ${attribute.accessor.0.return.remove(' \*$').remove('^const ')})
+[%- ELSE -%]
+[%- IF attribute.defaultValue != "" -%]
+[%- IF found == 'true' -%]
+,
+[% ELSE -%]
+ :
+    [%- found = 'true' %]
+[% END -%]
+    ${attribute.accessor.0.name}(${attribute.defaultValue})
+[%- END -%]
+[%- END -%]
 [%- END -%]
 [%- END -%]
 [%- FOREACH associationend IN class.associationend %]
-[%- IF ((associationend.isDerived == "false" or associationend.isDerivedUnion == "true") and associationend.accessor.0.return.search('<')) -%]
+[%- IF associationend.isDerived == "false" or associationend.isDerivedUnion == "true" -%]
+[%- IF associationend.accessor.0.return.search('<') -%]
 [%- IF found == 'true' -%]
 ,
 [% ELSE -%]
@@ -84,6 +97,17 @@ ${class.name}Private::${class.name}Private()
     [%- found = 'true' %]
 [% END -%]
     ${associationend.accessor.0.name}(new ${associationend.accessor.0.return.remove(' \*$').remove('^const ')})
+[%- ELSE -%]
+[%- IF associationend.defaultValue != "" -%]
+[%- IF found == 'true' -%]
+,
+[% ELSE -%]
+ :
+    [%- found = 'true' %]
+[% END -%]
+    ${associationend.accessor.0.name}(${associationend.defaultValue})
+[%- END -%]
+[%- END -%]
 [%- END -%]
 [%- END %]
 {

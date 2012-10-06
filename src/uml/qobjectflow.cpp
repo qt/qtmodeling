@@ -55,7 +55,9 @@ public:
     QBehavior *transformation;
 };
 
-QObjectFlowPrivate::QObjectFlowPrivate()
+QObjectFlowPrivate::QObjectFlowPrivate() :
+    isMulticast(false),
+    isMultireceive(false)
 {
 }
 

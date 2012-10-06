@@ -54,6 +54,7 @@ public:
 };
 
 QCallActionPrivate::QCallActionPrivate() :
+    isSynchronous(true),
     results(new QList<QOutputPin *>)
 {
 }

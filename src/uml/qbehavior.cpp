@@ -59,6 +59,7 @@ public:
 };
 
 QBehaviorPrivate::QBehaviorPrivate() :
+    isReentrant(true),
     ownedParameters(new QList<QParameter *>),
     ownedParameterSets(new QSet<QParameterSet *>),
     postconditions(new QSet<QConstraint *>),

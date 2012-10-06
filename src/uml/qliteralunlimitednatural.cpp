@@ -52,7 +52,8 @@ public:
     qint32 value;
 };
 
-QLiteralUnlimitedNaturalPrivate::QLiteralUnlimitedNaturalPrivate()
+QLiteralUnlimitedNaturalPrivate::QLiteralUnlimitedNaturalPrivate() :
+    value(0)
 {
 }
 

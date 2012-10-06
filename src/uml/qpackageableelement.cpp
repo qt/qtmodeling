@@ -52,7 +52,8 @@ public:
     QtUml::VisibilityKind visibility;
 };
 
-QPackageableElementPrivate::QPackageableElementPrivate()
+QPackageableElementPrivate::QPackageableElementPrivate() :
+    visibility(QtUml::VisibilityPublic)
 {
 }
 

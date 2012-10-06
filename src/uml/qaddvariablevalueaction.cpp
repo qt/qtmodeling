@@ -53,7 +53,8 @@ public:
     QInputPin *insertAt;
 };
 
-QAddVariableValueActionPrivate::QAddVariableValueActionPrivate()
+QAddVariableValueActionPrivate::QAddVariableValueActionPrivate() :
+    isReplaceAll(false)
 {
 }
 

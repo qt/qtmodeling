@@ -58,6 +58,8 @@ public:
 };
 
 QClassPrivate::QClassPrivate() :
+    isAbstract(false),
+    isActive(false),
     nestedClassifiers(new QList<QClassifier *>),
     ownedAttributes(new QList<QProperty *>),
     ownedOperations(new QList<QOperation *>),

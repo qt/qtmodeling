@@ -60,6 +60,7 @@ public:
 };
 
 QTransitionPrivate::QTransitionPrivate() :
+    kind(QtUml::TransitionExternal),
     triggers(new QSet<QTrigger *>)
 {
 }

@@ -52,7 +52,8 @@ public:
     bool isReadOnly;
 };
 
-QStructuralFeaturePrivate::QStructuralFeaturePrivate()
+QStructuralFeaturePrivate::QStructuralFeaturePrivate() :
+    isReadOnly(false)
 {
 }
 

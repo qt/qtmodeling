@@ -60,6 +60,8 @@ public:
 };
 
 QActivityPrivate::QActivityPrivate() :
+    isReadOnly(false),
+    isSingleExecution(false),
     edges(new QSet<QActivityEdge *>),
     groups(new QSet<QActivityGroup *>),
     nodes(new QSet<QActivityNode *>),

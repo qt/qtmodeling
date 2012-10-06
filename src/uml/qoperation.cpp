@@ -63,6 +63,7 @@ public:
 };
 
 QOperationPrivate::QOperationPrivate() :
+    isQuery(false),
     ownedParameters(new QList<QParameter *>),
     postconditions(new QSet<QConstraint *>),
     preconditions(new QSet<QConstraint *>),

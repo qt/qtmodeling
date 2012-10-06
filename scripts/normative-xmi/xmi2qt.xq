@@ -179,6 +179,26 @@ declare function qtxmi:capitalizedNameFromTypeString ($unqualifiedType as xs:str
     return concat(upper-case(substring($capitalizedName, 1, 1)), substring($capitalizedName, 2))
 };
 
+declare function qtxmi:defaultValue ($property as node(), $namespace) as xs:string {
+    let $namespace := replace ($namespace, "::::$", "::")
+    let $defaultValue := if ($property/defaultValue) then
+                             if ($property/defaultValue/@xmi:type = "uml:LiteralBoolean") then
+                                 if ($property/defaultValue/@value) then string($property/defaultValue/@value) else "false"
+                             else if ($property/defaultValue/@xmi:type = "uml:LiteralUnlimitedNatural") then
+                                 if ($property/defaultValue/@value) then replace($property/defaultValue/@value, "\*", "-1") else "0"
+                             else if ($property/defaultValue/@xmi:type = "uml:InstanceValue" and
+                                      qtxmi:elementFromTypeString($property/defaultValue/@type)/@xmi:type = "uml:Enumeration") then
+                                 if ($property/defaultValue/@instance) then
+                                     concat($namespace,
+                                            concat(replace(replace(tokenize($property/defaultValue/@instance, "-")[1], "Kind", ""), "Sort", ""),
+                                                   concat(upper-case(substring(tokenize($property/defaultValue/@instance, "-")[2], 1, 1)),
+                                                          substring(tokenize($property/defaultValue/@instance, "-")[2], 2))))
+                                 else ""
+                             else ""
+                         else ""
+    return $defaultValue
+};
+
 <qtxmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:qtxmi="http://www.qt-project.org">
 {
 for $namespace in distinct-values((doc($xmiFile)//packagedElement[@xmi:type="uml:Package"] | doc($xmiFile)//uml:Package)/@xmi:id)
@@ -263,9 +283,10 @@ return
         let $isDerived := if (not($attribute/@isDerived) or $attribute/@isDerived = "false") then "false" else "true"
         let $isDerivedUnion := if (not($attribute/@isDerivedUnion) or $attribute/@isDerivedUnion = "false") then "false" else "true"
         let $isReadOnly := if (not($attribute/@isReadOnly) or $attribute/@isReadOnly = "false") then "false" else "true"
+        let $defaultValue := qtxmi:defaultValue($attribute, $namespace)
         where $attribute[not(@association)]
         return
-        <attribute isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}" isReadOnly="{$isReadOnly}" subsettedProperty="{$attribute/@subsettedProperty}" redefinedProperty="{$attribute/@redefinedProperty}" id="{$attribute/@xmi:id}">
+        <attribute isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}" isReadOnly="{$isReadOnly}" subsettedProperty="{$attribute/@subsettedProperty}" redefinedProperty="{$attribute/@redefinedProperty}" id="{$attribute/@xmi:id}" defaultValue="{$defaultValue}">
         <accessor return="{$unqualifiedType}" name="{qtxmi:modifiedFunctionName($attribute)}" constness=" const"/>
         {
         if (not($attribute/upperValue/@value) and $isReadOnly = "false") then
@@ -304,9 +325,10 @@ return
         let $isDerived := if (not($attribute/@isDerived) or $attribute/@isDerived = "false") then "false" else "true"
         let $isDerivedUnion := if (not($attribute/@isDerivedUnion) or $attribute/@isDerivedUnion = "false") then "false" else "true"
         let $isReadOnly := if (not($attribute/@isReadOnly) or $attribute/@isReadOnly = "false") then "false" else "true"
+        let $defaultValue := qtxmi:defaultValue($attribute, $namespace)
         where $attribute[@association]
         return
-        <associationend isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}" isReadOnly="{$isReadOnly}" subsettedProperty="{$attribute/@subsettedProperty}" redefinedProperty="{$attribute/@redefinedProperty}" id="{$attribute/@xmi:id}">
+        <associationend isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}" isReadOnly="{$isReadOnly}" subsettedProperty="{$attribute/@subsettedProperty}" redefinedProperty="{$attribute/@redefinedProperty}" id="{$attribute/@xmi:id}" defaultValue="{$defaultValue}">
         <accessor return="{$unqualifiedType}" name="{qtxmi:modifiedFunctionName($attribute)}" constness=" const"/>
         {
         if (not($attribute/upperValue/@value) and $isReadOnly = "false") then
@@ -381,7 +403,7 @@ return
         {
         for $literal in $enumeration/ownedLiteral
         return
-        <literal name="{concat(replace($enumeration/@name, "Kind", ""), concat(upper-case(substring($literal/@name, 1, 1)), substring($literal/@name, 2)))}" documentation="{$literal/ownedComment/body/text()}"/>
+        <literal name="{concat(replace(replace($enumeration/@name, "Kind", ""), "Sort", ""), concat(upper-case(substring($literal/@name, 1, 1)), substring($literal/@name, 2)))}" documentation="{$literal/ownedComment/body/text()}"/>
         }
     </enumeration>
 }

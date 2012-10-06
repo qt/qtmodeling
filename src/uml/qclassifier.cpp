@@ -66,6 +66,8 @@ public:
 };
 
 QClassifierPrivate::QClassifierPrivate() :
+    isAbstract(false),
+    isFinalSpecialization(false),
     attributes(new QSet<QProperty *>),
     collaborationUses(new QSet<QCollaborationUse *>),
     features(new QSet<QFeature *>),

@@ -55,7 +55,8 @@ public:
     QOutputPin *result;
 };
 
-QReduceActionPrivate::QReduceActionPrivate()
+QReduceActionPrivate::QReduceActionPrivate() :
+    isOrdered(false)
 {
 }
 

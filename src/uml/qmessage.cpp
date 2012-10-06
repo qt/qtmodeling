@@ -59,6 +59,7 @@ public:
 };
 
 QMessagePrivate::QMessagePrivate() :
+    messageSort(QtUml::MessageSynchCall),
     arguments(new QList<QValueSpecification *>)
 {
 }

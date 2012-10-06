@@ -55,6 +55,7 @@ public:
 };
 
 QRedefinableElementPrivate::QRedefinableElementPrivate() :
+    isLeaf(false),
     redefinedElements(new QSet<QRedefinableElement *>),
     redefinitionContexts(new QSet<QClassifier *>)
 {

@@ -56,6 +56,8 @@ public:
 };
 
 QGeneralizationSetPrivate::QGeneralizationSetPrivate() :
+    isCovering(false),
+    isDisjoint(false),
     generalizations(new QSet<QGeneralization *>)
 {
 }
