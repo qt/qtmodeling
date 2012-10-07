@@ -56,6 +56,7 @@ public:
 };
 
 QDurationPrivate::QDurationPrivate() :
+    expr(0),
     observations(new QSet<QObservation *>)
 {
 }

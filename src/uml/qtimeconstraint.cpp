@@ -56,7 +56,8 @@ public:
 };
 
 QTimeConstraintPrivate::QTimeConstraintPrivate() :
-    firstEvent(true)
+    firstEvent(true),
+    specification(0)
 {
 }
 

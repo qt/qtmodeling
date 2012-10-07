@@ -56,7 +56,8 @@ public:
 };
 
 QTimeEventPrivate::QTimeEventPrivate() :
-    isRelative(false)
+    isRelative(false),
+    when(0)
 {
 }
 

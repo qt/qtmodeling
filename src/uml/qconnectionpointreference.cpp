@@ -59,7 +59,8 @@ public:
 
 QConnectionPointReferencePrivate::QConnectionPointReferencePrivate() :
     entries(new QSet<QPseudostate *>),
-    exits(new QSet<QPseudostate *>)
+    exits(new QSet<QPseudostate *>),
+    state(0)
 {
 }
 

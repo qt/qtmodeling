@@ -54,7 +54,8 @@ public:
     QInstanceSpecification *instance;
 };
 
-QInstanceValuePrivate::QInstanceValuePrivate()
+QInstanceValuePrivate::QInstanceValuePrivate() :
+    instance(0)
 {
 }
 

@@ -56,7 +56,8 @@ public:
 };
 
 QTimeObservationPrivate::QTimeObservationPrivate() :
-    firstEvent(true)
+    firstEvent(true),
+    event(0)
 {
 }
 

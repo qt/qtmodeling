@@ -56,7 +56,9 @@ public:
     QObjectFlow *decisionInputFlow;
 };
 
-QDecisionNodePrivate::QDecisionNodePrivate()
+QDecisionNodePrivate::QDecisionNodePrivate() :
+    decisionInput(0),
+    decisionInputFlow(0)
 {
 }
 

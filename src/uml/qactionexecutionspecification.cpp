@@ -54,7 +54,8 @@ public:
     QAction *action;
 };
 
-QActionExecutionSpecificationPrivate::QActionExecutionSpecificationPrivate()
+QActionExecutionSpecificationPrivate::QActionExecutionSpecificationPrivate() :
+    action(0)
 {
 }
 

@@ -63,7 +63,9 @@ public:
 QObjectNodePrivate::QObjectNodePrivate() :
     isControlType(false),
     ordering(QtUml::ObjectNodeOrderingFIFO),
-    inState(new QSet<QState *>)
+    inState(new QSet<QState *>),
+    selection(0),
+    upperBound(0)
 {
 }
 

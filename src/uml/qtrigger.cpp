@@ -57,6 +57,7 @@ public:
 };
 
 QTriggerPrivate::QTriggerPrivate() :
+    event(0),
     ports(new QSet<QPort *>)
 {
 }

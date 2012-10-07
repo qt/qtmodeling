@@ -54,7 +54,8 @@ public:
     QParameter *parameter;
 };
 
-QActivityParameterNodePrivate::QActivityParameterNodePrivate()
+QActivityParameterNodePrivate::QActivityParameterNodePrivate() :
+    parameter(0)
 {
 }
 

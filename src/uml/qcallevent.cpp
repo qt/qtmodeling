@@ -54,7 +54,8 @@ public:
     QOperation *operation;
 };
 
-QCallEventPrivate::QCallEventPrivate()
+QCallEventPrivate::QCallEventPrivate() :
+    operation(0)
 {
 }
 

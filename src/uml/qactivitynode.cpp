@@ -67,9 +67,11 @@ public:
 };
 
 QActivityNodePrivate::QActivityNodePrivate() :
+    activity(0),
     inGroup(new QSet<QActivityGroup *>),
     inInterruptibleRegion(new QSet<QInterruptibleActivityRegion *>),
     inPartition(new QSet<QActivityPartition *>),
+    inStructuredNode(0),
     incomings(new QSet<QActivityEdge *>),
     outgoings(new QSet<QActivityEdge *>),
     redefinedNodes(new QSet<QActivityNode *>)

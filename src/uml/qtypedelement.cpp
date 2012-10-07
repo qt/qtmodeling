@@ -54,7 +54,8 @@ public:
     QType *type;
 };
 
-QTypedElementPrivate::QTypedElementPrivate()
+QTypedElementPrivate::QTypedElementPrivate() :
+    type(0)
 {
 }
 

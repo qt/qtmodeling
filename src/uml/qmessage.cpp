@@ -65,7 +65,12 @@ public:
 
 QMessagePrivate::QMessagePrivate() :
     messageSort(QtUml::MessageSynchCall),
-    arguments(new QList<QValueSpecification *>)
+    arguments(new QList<QValueSpecification *>),
+    connector(0),
+    interaction(0),
+    receiveEvent(0),
+    sendEvent(0),
+    signature(0)
 {
 }
 

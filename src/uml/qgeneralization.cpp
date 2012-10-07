@@ -60,7 +60,9 @@ public:
 
 QGeneralizationPrivate::QGeneralizationPrivate() :
     isSubstitutable(true),
-    generalizationSets(new QSet<QGeneralizationSet *>)
+    general(0),
+    generalizationSets(new QSet<QGeneralizationSet *>),
+    specific(0)
 {
 }
 

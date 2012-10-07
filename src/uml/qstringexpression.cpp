@@ -55,6 +55,7 @@ public:
 };
 
 QStringExpressionPrivate::QStringExpressionPrivate() :
+    owningExpression(0),
     subExpressions(new QSet<QStringExpression *>)
 {
 }

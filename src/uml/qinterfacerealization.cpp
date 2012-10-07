@@ -56,7 +56,9 @@ public:
     QBehavioredClassifier *implementingClassifier;
 };
 
-QInterfaceRealizationPrivate::QInterfaceRealizationPrivate()
+QInterfaceRealizationPrivate::QInterfaceRealizationPrivate() :
+    contract(0),
+    implementingClassifier(0)
 {
 }
 

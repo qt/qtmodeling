@@ -67,6 +67,7 @@ QInterfacePrivate::QInterfacePrivate() :
     ownedAttributes(new QList<QProperty *>),
     ownedOperations(new QList<QOperation *>),
     ownedReceptions(new QSet<QReception *>),
+    protocol(0),
     redefinedInterfaces(new QSet<QInterface *>)
 {
 }

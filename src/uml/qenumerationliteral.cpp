@@ -54,7 +54,8 @@ public:
     QEnumeration *enumeration;
 };
 
-QEnumerationLiteralPrivate::QEnumerationLiteralPrivate()
+QEnumerationLiteralPrivate::QEnumerationLiteralPrivate() :
+    enumeration(0)
 {
 }
 

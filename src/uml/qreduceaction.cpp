@@ -60,7 +60,10 @@ public:
 };
 
 QReduceActionPrivate::QReduceActionPrivate() :
-    isOrdered(false)
+    isOrdered(false),
+    collection(0),
+    reducer(0),
+    result(0)
 {
 }
 

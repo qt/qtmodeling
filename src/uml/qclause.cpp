@@ -63,6 +63,7 @@ public:
 QClausePrivate::QClausePrivate() :
     bodies(new QSet<QExecutableNode *>),
     bodyOutputs(new QList<QOutputPin *>),
+    decider(0),
     predecessorClauses(new QSet<QClause *>),
     successorClauses(new QSet<QClause *>),
     tests(new QSet<QExecutableNode *>)

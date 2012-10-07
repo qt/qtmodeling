@@ -54,7 +54,8 @@ public:
     QValueSpecification *value;
 };
 
-QValuePinPrivate::QValuePinPrivate()
+QValuePinPrivate::QValuePinPrivate() :
+    value(0)
 {
 }
 

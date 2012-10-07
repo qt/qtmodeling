@@ -56,7 +56,8 @@ public:
 };
 
 QLinkEndCreationDataPrivate::QLinkEndCreationDataPrivate() :
-    isReplaceAll(false)
+    isReplaceAll(false),
+    insertAt(0)
 {
 }
 

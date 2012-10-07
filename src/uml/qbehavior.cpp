@@ -70,7 +70,8 @@ QBehaviorPrivate::QBehaviorPrivate() :
     ownedParameterSets(new QSet<QParameterSet *>),
     postconditions(new QSet<QConstraint *>),
     preconditions(new QSet<QConstraint *>),
-    redefinedBehaviors(new QSet<QBehavior *>)
+    redefinedBehaviors(new QSet<QBehavior *>),
+    specification(0)
 {
 }
 

@@ -55,7 +55,9 @@ public:
     QUseCase *includingCase;
 };
 
-QIncludePrivate::QIncludePrivate()
+QIncludePrivate::QIncludePrivate() :
+    addition(0),
+    includingCase(0)
 {
 }
 

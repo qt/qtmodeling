@@ -58,7 +58,8 @@ public:
 
 QElementPrivate::QElementPrivate() :
     ownedComments(new QSet<QComment *>),
-    ownedElements(new QSet<QElement *>)
+    ownedElements(new QSet<QElement *>),
+    owner(0)
 {
 }
 

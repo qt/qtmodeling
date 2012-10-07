@@ -60,7 +60,10 @@ public:
 };
 
 QExceptionHandlerPrivate::QExceptionHandlerPrivate() :
-    exceptionTypes(new QSet<QClassifier *>)
+    exceptionInput(0),
+    exceptionTypes(new QSet<QClassifier *>),
+    handlerBody(0),
+    protectedNode(0)
 {
 }
 

@@ -58,6 +58,7 @@ public:
 };
 
 QOccurrenceSpecificationPrivate::QOccurrenceSpecificationPrivate() :
+    covered(0),
     toAfter(new QSet<QGeneralOrdering *>),
     toBefore(new QSet<QGeneralOrdering *>)
 {

@@ -81,6 +81,13 @@ QPropertyPrivate::QPropertyPrivate() :
     isDerivedUnion(false),
     isID(false),
     isReadOnly(false),
+    association(0),
+    associationEnd(0),
+    class_(0),
+    datatype(0),
+    defaultValue(0),
+    interface(0),
+    owningAssociation(0),
     qualifiers(new QList<QProperty *>),
     redefinedProperties(new QSet<QProperty *>),
     subsettedProperties(new QSet<QProperty *>)

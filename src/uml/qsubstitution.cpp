@@ -55,7 +55,9 @@ public:
     QClassifier *substitutingClassifier;
 };
 
-QSubstitutionPrivate::QSubstitutionPrivate()
+QSubstitutionPrivate::QSubstitutionPrivate() :
+    contract(0),
+    substitutingClassifier(0)
 {
 }
 

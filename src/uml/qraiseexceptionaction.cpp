@@ -54,7 +54,8 @@ public:
     QInputPin *exception;
 };
 
-QRaiseExceptionActionPrivate::QRaiseExceptionActionPrivate()
+QRaiseExceptionActionPrivate::QRaiseExceptionActionPrivate() :
+    exception(0)
 {
 }
 

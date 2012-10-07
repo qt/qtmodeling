@@ -58,7 +58,9 @@ public:
 };
 
 QProfileApplicationPrivate::QProfileApplicationPrivate() :
-    isStrict(false)
+    isStrict(false),
+    appliedProfile(0),
+    applyingPackage(0)
 {
 }
 

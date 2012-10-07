@@ -58,6 +58,7 @@ public:
 };
 
 QTemplateableElementPrivate::QTemplateableElementPrivate() :
+    ownedTemplateSignature(0),
     templateBindings(new QSet<QTemplateBinding *>)
 {
 }

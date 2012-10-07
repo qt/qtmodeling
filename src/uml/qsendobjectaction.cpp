@@ -55,7 +55,9 @@ public:
     QInputPin *target;
 };
 
-QSendObjectActionPrivate::QSendObjectActionPrivate()
+QSendObjectActionPrivate::QSendObjectActionPrivate() :
+    request(0),
+    target(0)
 {
 }
 

@@ -54,7 +54,8 @@ public:
     QMessage *message;
 };
 
-QMessageEndPrivate::QMessageEndPrivate()
+QMessageEndPrivate::QMessageEndPrivate() :
+    message(0)
 {
 }
 

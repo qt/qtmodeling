@@ -57,7 +57,9 @@ public:
     QStructuredActivityNode *scope;
 };
 
-QVariablePrivate::QVariablePrivate()
+QVariablePrivate::QVariablePrivate() :
+    activityScope(0),
+    scope(0)
 {
 }
 

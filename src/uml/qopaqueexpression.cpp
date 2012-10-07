@@ -59,7 +59,8 @@ public:
 
 QOpaqueExpressionPrivate::QOpaqueExpressionPrivate() :
     bodies(new QList<QString>),
-    languages(new QList<QString>)
+    languages(new QList<QString>),
+    behavior(0)
 {
 }
 

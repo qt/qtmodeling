@@ -74,7 +74,13 @@ QStatePrivate::QStatePrivate() :
     connections(new QSet<QConnectionPointReference *>),
     connectionPoints(new QSet<QPseudostate *>),
     deferrableTriggers(new QSet<QTrigger *>),
-    regions(new QSet<QRegion *>)
+    doActivity(0),
+    entry(0),
+    exit(0),
+    redefinedState(0),
+    regions(new QSet<QRegion *>),
+    stateInvariant(0),
+    submachine(0)
 {
 }
 

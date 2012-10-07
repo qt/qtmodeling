@@ -57,7 +57,8 @@ public:
 };
 
 QCollaborationUsePrivate::QCollaborationUsePrivate() :
-    roleBindings(new QSet<QDependency *>)
+    roleBindings(new QSet<QDependency *>),
+    type(0)
 {
 }
 

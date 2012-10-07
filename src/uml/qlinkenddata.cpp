@@ -59,7 +59,9 @@ public:
 };
 
 QLinkEndDataPrivate::QLinkEndDataPrivate() :
-    qualifiers(new QSet<QQualifierValue *>)
+    end(0),
+    qualifiers(new QSet<QQualifierValue *>),
+    value(0)
 {
 }
 

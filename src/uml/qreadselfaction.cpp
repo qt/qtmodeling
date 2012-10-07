@@ -54,7 +54,8 @@ public:
     QOutputPin *result;
 };
 
-QReadSelfActionPrivate::QReadSelfActionPrivate()
+QReadSelfActionPrivate::QReadSelfActionPrivate() :
+    result(0)
 {
 }
 

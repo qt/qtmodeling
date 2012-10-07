@@ -56,7 +56,9 @@ public:
     QInputPin *value;
 };
 
-QQualifierValuePrivate::QQualifierValuePrivate()
+QQualifierValuePrivate::QQualifierValuePrivate() :
+    qualifier(0),
+    value(0)
 {
 }
 

@@ -58,7 +58,10 @@ public:
     QOutputPin *result;
 };
 
-QReadLinkObjectEndActionPrivate::QReadLinkObjectEndActionPrivate()
+QReadLinkObjectEndActionPrivate::QReadLinkObjectEndActionPrivate() :
+    end(0),
+    object(0),
+    result(0)
 {
 }
 

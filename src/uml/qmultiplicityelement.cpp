@@ -59,7 +59,9 @@ public:
 
 QMultiplicityElementPrivate::QMultiplicityElementPrivate() :
     isOrdered(false),
-    isUnique(true)
+    isUnique(true),
+    lowerValue(0),
+    upperValue(0)
 {
 }
 

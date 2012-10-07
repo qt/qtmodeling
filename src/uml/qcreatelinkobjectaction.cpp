@@ -54,7 +54,8 @@ public:
     QOutputPin *result;
 };
 
-QCreateLinkObjectActionPrivate::QCreateLinkObjectActionPrivate()
+QCreateLinkObjectActionPrivate::QCreateLinkObjectActionPrivate() :
+    result(0)
 {
 }
 

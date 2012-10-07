@@ -70,9 +70,16 @@ public:
 };
 
 QActivityEdgePrivate::QActivityEdgePrivate() :
+    activity(0),
+    guard(0),
     inGroup(new QSet<QActivityGroup *>),
     inPartition(new QSet<QActivityPartition *>),
-    redefinedEdges(new QSet<QActivityEdge *>)
+    inStructuredNode(0),
+    interrupts(0),
+    redefinedEdges(new QSet<QActivityEdge *>),
+    source(0),
+    target(0),
+    weight(0)
 {
 }
 

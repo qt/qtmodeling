@@ -59,7 +59,12 @@ public:
     QTemplateSignature *signature;
 };
 
-QTemplateParameterPrivate::QTemplateParameterPrivate()
+QTemplateParameterPrivate::QTemplateParameterPrivate() :
+    default_(0),
+    ownedDefault(0),
+    ownedParameteredElement(0),
+    parameteredElement(0),
+    signature(0)
 {
 }
 

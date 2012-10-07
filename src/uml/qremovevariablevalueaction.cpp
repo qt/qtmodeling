@@ -56,7 +56,8 @@ public:
 };
 
 QRemoveVariableValueActionPrivate::QRemoveVariableValueActionPrivate() :
-    isRemoveDuplicates(false)
+    isRemoveDuplicates(false),
+    removeAt(0)
 {
 }
 

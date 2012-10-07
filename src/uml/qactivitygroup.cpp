@@ -63,7 +63,9 @@ public:
 QActivityGroupPrivate::QActivityGroupPrivate() :
     containedEdges(new QSet<QActivityEdge *>),
     containedNodes(new QSet<QActivityNode *>),
-    subgroups(new QSet<QActivityGroup *>)
+    inActivity(0),
+    subgroups(new QSet<QActivityGroup *>),
+    superGroup(0)
 {
 }
 

@@ -54,7 +54,8 @@ public:
     QSignal *signal;
 };
 
-QBroadcastSignalActionPrivate::QBroadcastSignalActionPrivate()
+QBroadcastSignalActionPrivate::QBroadcastSignalActionPrivate() :
+    signal(0)
 {
 }
 

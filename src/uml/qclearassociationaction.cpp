@@ -56,7 +56,9 @@ public:
     QInputPin *object;
 };
 
-QClearAssociationActionPrivate::QClearAssociationActionPrivate()
+QClearAssociationActionPrivate::QClearAssociationActionPrivate() :
+    association(0),
+    object(0)
 {
 }
 

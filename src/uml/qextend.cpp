@@ -60,6 +60,9 @@ public:
 };
 
 QExtendPrivate::QExtendPrivate() :
+    condition(0),
+    extendedCase(0),
+    extension(0),
     extensionLocations(new QList<QExtensionPoint *>)
 {
 }

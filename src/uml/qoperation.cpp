@@ -73,11 +73,16 @@ public:
 
 QOperationPrivate::QOperationPrivate() :
     isQuery(false),
+    bodyCondition(0),
+    class_(0),
+    datatype(0),
+    interface(0),
     ownedParameters(new QList<QParameter *>),
     postconditions(new QSet<QConstraint *>),
     preconditions(new QSet<QConstraint *>),
     raisedExceptions(new QSet<QType *>),
-    redefinedOperations(new QSet<QOperation *>)
+    redefinedOperations(new QSet<QOperation *>),
+    templateParameter(0)
 {
 }
 

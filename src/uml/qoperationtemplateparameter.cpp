@@ -54,7 +54,8 @@ public:
     QOperation *parameteredElement;
 };
 
-QOperationTemplateParameterPrivate::QOperationTemplateParameterPrivate()
+QOperationTemplateParameterPrivate::QOperationTemplateParameterPrivate() :
+    parameteredElement(0)
 {
 }
 

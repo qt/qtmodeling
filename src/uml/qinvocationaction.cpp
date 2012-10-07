@@ -57,7 +57,8 @@ public:
 };
 
 QInvocationActionPrivate::QInvocationActionPrivate() :
-    arguments(new QList<QInputPin *>)
+    arguments(new QList<QInputPin *>),
+    onPort(0)
 {
 }
 

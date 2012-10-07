@@ -62,7 +62,9 @@ public:
 };
 
 QNamedElementPrivate::QNamedElementPrivate() :
-    clientDependencies(new QSet<QDependency *>)
+    clientDependencies(new QSet<QDependency *>),
+    nameExpression(0),
+    namespace_(0)
 {
 }
 

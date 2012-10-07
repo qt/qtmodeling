@@ -55,7 +55,9 @@ public:
     QOccurrenceSpecification *start;
 };
 
-QExecutionSpecificationPrivate::QExecutionSpecificationPrivate()
+QExecutionSpecificationPrivate::QExecutionSpecificationPrivate() :
+    finish(0),
+    start(0)
 {
 }
 

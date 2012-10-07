@@ -54,7 +54,8 @@ public:
     QVariable *variable;
 };
 
-QVariableActionPrivate::QVariableActionPrivate()
+QVariableActionPrivate::QVariableActionPrivate() :
+    variable(0)
 {
 }
 

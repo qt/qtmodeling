@@ -54,7 +54,8 @@ public:
     QInputPin *value;
 };
 
-QWriteVariableActionPrivate::QWriteVariableActionPrivate()
+QWriteVariableActionPrivate::QWriteVariableActionPrivate() :
+    value(0)
 {
 }
 

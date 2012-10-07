@@ -56,7 +56,9 @@ public:
     QStructuralFeature *structuralFeature;
 };
 
-QStructuralFeatureActionPrivate::QStructuralFeatureActionPrivate()
+QStructuralFeatureActionPrivate::QStructuralFeatureActionPrivate() :
+    object(0),
+    structuralFeature(0)
 {
 }
 

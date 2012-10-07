@@ -54,7 +54,8 @@ public:
     QOpaqueExpression *mapping;
 };
 
-QAbstractionPrivate::QAbstractionPrivate()
+QAbstractionPrivate::QAbstractionPrivate() :
+    mapping(0)
 {
 }
 

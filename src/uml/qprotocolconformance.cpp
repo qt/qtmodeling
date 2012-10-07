@@ -55,7 +55,9 @@ public:
     QProtocolStateMachine *specificMachine;
 };
 
-QProtocolConformancePrivate::QProtocolConformancePrivate()
+QProtocolConformancePrivate::QProtocolConformancePrivate() :
+    generalMachine(0),
+    specificMachine(0)
 {
 }
 

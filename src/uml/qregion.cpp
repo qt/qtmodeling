@@ -63,6 +63,9 @@ public:
 };
 
 QRegionPrivate::QRegionPrivate() :
+    extendedRegion(0),
+    state(0),
+    stateMachine(0),
     subvertices(new QSet<QVertex *>),
     transitions(new QSet<QTransition *>)
 {

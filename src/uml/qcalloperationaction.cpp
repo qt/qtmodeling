@@ -56,7 +56,9 @@ public:
     QInputPin *target;
 };
 
-QCallOperationActionPrivate::QCallOperationActionPrivate()
+QCallOperationActionPrivate::QCallOperationActionPrivate() :
+    operation(0),
+    target(0)
 {
 }
 

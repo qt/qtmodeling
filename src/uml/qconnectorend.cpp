@@ -56,7 +56,9 @@ public:
     QConnectableElement *role;
 };
 
-QConnectorEndPrivate::QConnectorEndPrivate()
+QConnectorEndPrivate::QConnectorEndPrivate() :
+    partWithPort(0),
+    role(0)
 {
 }
 

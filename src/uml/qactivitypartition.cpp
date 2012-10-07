@@ -67,7 +67,9 @@ QActivityPartitionPrivate::QActivityPartitionPrivate() :
     isExternal(false),
     edges(new QSet<QActivityEdge *>),
     nodes(new QSet<QActivityNode *>),
-    subpartitions(new QSet<QActivityPartition *>)
+    represents(0),
+    subpartitions(new QSet<QActivityPartition *>),
+    superPartition(0)
 {
 }
 

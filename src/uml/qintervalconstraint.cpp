@@ -54,7 +54,8 @@ public:
     QInterval *specification;
 };
 
-QIntervalConstraintPrivate::QIntervalConstraintPrivate()
+QIntervalConstraintPrivate::QIntervalConstraintPrivate() :
+    specification(0)
 {
 }
 

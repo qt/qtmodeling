@@ -69,6 +69,12 @@ public:
 
 QTransitionPrivate::QTransitionPrivate() :
     kind(QtUml::TransitionExternal),
+    container(0),
+    effect(0),
+    guard(0),
+    redefinedTransition(0),
+    source(0),
+    target(0),
     triggers(new QSet<QTrigger *>)
 {
 }

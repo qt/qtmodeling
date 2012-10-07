@@ -59,7 +59,9 @@ public:
 };
 
 QElementImportPrivate::QElementImportPrivate() :
-    visibility(QtUml::VisibilityPublic)
+    visibility(QtUml::VisibilityPublic),
+    importedElement(0),
+    importingNamespace(0)
 {
 }
 
