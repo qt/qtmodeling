@@ -84,7 +84,7 @@ QEncapsulatedClassifier::~QEncapsulatedClassifier()
  */
 const QSet<QPort *> *QEncapsulatedClassifier::ownedPorts() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QEncapsulatedClassifier::ownedPorts: to be implemented (this is a derived associationend)");
 }
 
 QT_END_NAMESPACE_QTUML

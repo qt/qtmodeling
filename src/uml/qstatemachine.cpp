@@ -180,7 +180,7 @@ void QStateMachine::removeSubmachineState(const QState *submachineState)
  */
 QNamespace *QStateMachine::LCA(const QState *s1, const QState *s2) const
 {
-    qWarning("To be implemented");
+    qWarning("QStateMachine::LCA: operation to be implemented");
 }
 
 /*!
@@ -188,7 +188,7 @@ QNamespace *QStateMachine::LCA(const QState *s1, const QState *s2) const
  */
 bool QStateMachine::ancestor(const QState *s1, const QState *s2) const
 {
-    qWarning("To be implemented");
+    qWarning("QStateMachine::ancestor: operation to be implemented");
 }
 
 /*!
@@ -196,7 +196,7 @@ bool QStateMachine::ancestor(const QState *s1, const QState *s2) const
  */
 bool QStateMachine::isConsistentWith(const QRedefinableElement *redefinee) const
 {
-    qWarning("To be implemented");
+    qWarning("QStateMachine::isConsistentWith: operation to be implemented");
 }
 
 /*!
@@ -204,7 +204,7 @@ bool QStateMachine::isConsistentWith(const QRedefinableElement *redefinee) const
  */
 bool QStateMachine::isRedefinitionContextValid(const QStateMachine *redefined) const
 {
-    qWarning("To be implemented");
+    qWarning("QStateMachine::isRedefinitionContextValid: operation to be implemented");
 }
 
 #include "moc_qstatemachine.cpp"

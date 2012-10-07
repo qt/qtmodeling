@@ -131,7 +131,7 @@ void QClass::setActive(bool isActive)
  */
 const QSet<QExtension *> *QClass::extensions() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QClass::extensions: to be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -233,17 +233,17 @@ void QClass::removeOwnedReception(const QReception *ownedReception)
  */
 const QSet<QClass *> *QClass::superClasses() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QClass::superClasses: to be implemented (this is a derived associationend)");
 }
 
 void QClass::addSuperClass(const QClass *superClass)
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QClass::addSuperClass: to be implemented (this is a derived associationend)");
 }
 
 void QClass::removeSuperClass(const QClass *superClass)
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QClass::removeSuperClass: to be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -251,7 +251,7 @@ void QClass::removeSuperClass(const QClass *superClass)
  */
 const QSet<QNamedElement *> *QClass::inherit(const QSet<QNamedElement *> *inhs) const
 {
-    qWarning("To be implemented");
+    qWarning("QClass::inherit: operation to be implemented");
 }
 
 #include "moc_qclass.cpp"

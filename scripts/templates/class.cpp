@@ -217,7 +217,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
         [%- END %]
     [%- END %]
 [%- ELSE %]
-    qWarning("To be implemented (this is a derived attribute)");
+    qWarning("${class.name}::${accessor.name}: to be implemented (this is a derived attribute)");
 [%- END %]
 }
 [% END -%]
@@ -263,7 +263,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
         [%- END %]
     [%- END %]
 [%- ELSE %]
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("${class.name}::${accessor.name}: to be implemented (this is a derived associationend)");
 [%- END %]
 }
 [% END -%]
@@ -277,7 +277,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
 [%- END %]
 ${operation.return}${class.name}::${operation.name}([%- FOREACH parameter IN operation.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${operation.constness}
 {
-    qWarning("To be implemented");
+    qWarning("${class.name}::${operation.name}: operation to be implemented");
 }
 [% END -%]
 [%- IF class.isAbstract == 'false' %]

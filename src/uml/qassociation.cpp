@@ -109,7 +109,7 @@ void QAssociation::setDerived(bool isDerived)
  */
 const QList<QType *> *QAssociation::endTypes() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QAssociation::endTypes: to be implemented (this is a derived associationend)");
 }
 
 /*!

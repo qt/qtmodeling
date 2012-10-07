@@ -83,7 +83,7 @@ QLiteralNull::~QLiteralNull()
  */
 bool QLiteralNull::isComputable() const
 {
-    qWarning("To be implemented");
+    qWarning("QLiteralNull::isComputable: operation to be implemented");
 }
 
 /*!
@@ -91,7 +91,7 @@ bool QLiteralNull::isComputable() const
  */
 bool QLiteralNull::isNull() const
 {
-    qWarning("To be implemented");
+    qWarning("QLiteralNull::isNull: operation to be implemented");
 }
 
 #include "moc_qliteralnull.cpp"

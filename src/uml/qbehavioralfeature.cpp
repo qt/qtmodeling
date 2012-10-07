@@ -210,7 +210,7 @@ void QBehavioralFeature::removeRaisedException(const QType *raisedException)
  */
 bool QBehavioralFeature::isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const
 {
-    qWarning("To be implemented");
+    qWarning("QBehavioralFeature::isDistinguishableFrom: operation to be implemented");
 }
 
 QT_END_NAMESPACE_QTUML

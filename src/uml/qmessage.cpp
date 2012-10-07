@@ -102,7 +102,7 @@ QMessage::~QMessage()
  */
 QtUml::MessageKind QMessage::messageKind() const
 {
-    qWarning("To be implemented (this is a derived attribute)");
+    qWarning("QMessage::messageKind: to be implemented (this is a derived attribute)");
 }
 
 /*!

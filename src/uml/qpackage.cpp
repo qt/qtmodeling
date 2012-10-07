@@ -114,17 +114,17 @@ void QPackage::setURI(QString URI)
  */
 const QSet<QPackage *> *QPackage::nestedPackages() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QPackage::nestedPackages: to be implemented (this is a derived associationend)");
 }
 
 void QPackage::addNestedPackage(const QPackage *nestedPackage)
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QPackage::addNestedPackage: to be implemented (this is a derived associationend)");
 }
 
 void QPackage::removeNestedPackage(const QPackage *nestedPackage)
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QPackage::removeNestedPackage: to be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -145,7 +145,7 @@ void QPackage::setNestingPackage(const QPackage *nestingPackage)
  */
 const QSet<QStereotype *> *QPackage::ownedStereotypes() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QPackage::ownedStereotypes: to be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -153,17 +153,17 @@ const QSet<QStereotype *> *QPackage::ownedStereotypes() const
  */
 const QSet<QType *> *QPackage::ownedTypes() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QPackage::ownedTypes: to be implemented (this is a derived associationend)");
 }
 
 void QPackage::addOwnedType(const QType *ownedType)
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QPackage::addOwnedType: to be implemented (this is a derived associationend)");
 }
 
 void QPackage::removeOwnedType(const QType *ownedType)
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QPackage::removeOwnedType: to be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -237,7 +237,7 @@ void QPackage::removeProfileApplication(const QProfileApplication *profileApplic
  */
 const QSet<QStereotype *> *QPackage::allApplicableStereotypes() const
 {
-    qWarning("To be implemented");
+    qWarning("QPackage::allApplicableStereotypes: operation to be implemented");
 }
 
 /*!
@@ -245,7 +245,7 @@ const QSet<QStereotype *> *QPackage::allApplicableStereotypes() const
  */
 QProfile *QPackage::containingProfile() const
 {
-    qWarning("To be implemented");
+    qWarning("QPackage::containingProfile: operation to be implemented");
 }
 
 /*!
@@ -253,7 +253,7 @@ QProfile *QPackage::containingProfile() const
  */
 bool QPackage::makesVisible(const QNamedElement *el) const
 {
-    qWarning("To be implemented");
+    qWarning("QPackage::makesVisible: operation to be implemented");
 }
 
 /*!
@@ -261,7 +261,7 @@ bool QPackage::makesVisible(const QNamedElement *el) const
  */
 bool QPackage::mustBeOwned() const
 {
-    qWarning("To be implemented");
+    qWarning("QPackage::mustBeOwned: operation to be implemented");
 }
 
 /*!
@@ -269,7 +269,7 @@ bool QPackage::mustBeOwned() const
  */
 const QSet<QPackageableElement *> *QPackage::visibleMembers() const
 {
-    qWarning("To be implemented");
+    qWarning("QPackage::visibleMembers: operation to be implemented");
 }
 
 #include "moc_qpackage.cpp"

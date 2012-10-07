@@ -97,7 +97,7 @@ QConnector::~QConnector()
  */
 QtUml::ConnectorKind QConnector::kind() const
 {
-    qWarning("To be implemented (this is a derived attribute)");
+    qWarning("QConnector::kind: to be implemented (this is a derived attribute)");
 }
 
 /*!

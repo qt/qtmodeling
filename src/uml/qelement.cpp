@@ -140,7 +140,7 @@ QElement *QElement::owner() const
  */
 const QSet<QElement *> *QElement::allOwnedElements() const
 {
-    qWarning("To be implemented");
+    qWarning("QElement::allOwnedElements: operation to be implemented");
 }
 
 /*!
@@ -148,7 +148,7 @@ const QSet<QElement *> *QElement::allOwnedElements() const
  */
 bool QElement::mustBeOwned() const
 {
-    qWarning("To be implemented");
+    qWarning("QElement::mustBeOwned: operation to be implemented");
 }
 
 QT_END_NAMESPACE_QTUML

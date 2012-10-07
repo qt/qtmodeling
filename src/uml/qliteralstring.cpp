@@ -97,7 +97,7 @@ void QLiteralString::setValue(QString value)
  */
 bool QLiteralString::isComputable() const
 {
-    qWarning("To be implemented");
+    qWarning("QLiteralString::isComputable: operation to be implemented");
 }
 
 /*!
@@ -105,7 +105,7 @@ bool QLiteralString::isComputable() const
  */
 QString QLiteralString::stringValue() const
 {
-    qWarning("To be implemented");
+    qWarning("QLiteralString::stringValue: operation to be implemented");
 }
 
 #include "moc_qliteralstring.cpp"

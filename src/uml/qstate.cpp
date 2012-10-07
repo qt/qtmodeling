@@ -115,7 +115,7 @@ QState::~QState()
  */
 bool QState::isComposite() const
 {
-    qWarning("To be implemented (this is a derived attribute)");
+    qWarning("QState::isComposite: to be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -123,7 +123,7 @@ bool QState::isComposite() const
  */
 bool QState::isOrthogonal() const
 {
-    qWarning("To be implemented (this is a derived attribute)");
+    qWarning("QState::isOrthogonal: to be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -131,7 +131,7 @@ bool QState::isOrthogonal() const
  */
 bool QState::isSimple() const
 {
-    qWarning("To be implemented (this is a derived attribute)");
+    qWarning("QState::isSimple: to be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -139,7 +139,7 @@ bool QState::isSimple() const
  */
 bool QState::isSubmachineState() const
 {
-    qWarning("To be implemented (this is a derived attribute)");
+    qWarning("QState::isSubmachineState: to be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -265,7 +265,7 @@ void QState::setRedefinedState(const QState *redefinedState)
  */
 QClassifier *QState::redefinitionContext() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QState::redefinitionContext: to be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -321,7 +321,7 @@ void QState::setSubmachine(const QStateMachine *submachine)
  */
 QStateMachine *QState::containingStateMachine() const
 {
-    qWarning("To be implemented");
+    qWarning("QState::containingStateMachine: operation to be implemented");
 }
 
 /*!
@@ -329,7 +329,7 @@ QStateMachine *QState::containingStateMachine() const
  */
 bool QState::isConsistentWith(const QRedefinableElement *redefinee) const
 {
-    qWarning("To be implemented");
+    qWarning("QState::isConsistentWith: operation to be implemented");
 }
 
 /*!
@@ -337,7 +337,7 @@ bool QState::isConsistentWith(const QRedefinableElement *redefinee) const
  */
 bool QState::isRedefinitionContextValid(const QState *redefined) const
 {
-    qWarning("To be implemented");
+    qWarning("QState::isRedefinitionContextValid: operation to be implemented");
 }
 
 #include "moc_qstate.cpp"

@@ -86,12 +86,12 @@ QExtensionEnd::~QExtensionEnd()
  */
 qint32 QExtensionEnd::lower() const
 {
-    qWarning("To be implemented (this is a derived attribute)");
+    qWarning("QExtensionEnd::lower: to be implemented (this is a derived attribute)");
 }
 
 void QExtensionEnd::setLower(qint32 lower)
 {
-    qWarning("To be implemented (this is a derived attribute)");
+    qWarning("QExtensionEnd::setLower: to be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -112,7 +112,7 @@ void QExtensionEnd::setType(const QStereotype *type)
  */
 qint32 QExtensionEnd::lowerBound() const
 {
-    qWarning("To be implemented");
+    qWarning("QExtensionEnd::lowerBound: operation to be implemented");
 }
 
 #include "moc_qextensionend.cpp"

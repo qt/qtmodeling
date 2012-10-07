@@ -124,7 +124,7 @@ void QNamespace::removeElementImport(const QElementImport *elementImport)
  */
 const QSet<QPackageableElement *> *QNamespace::importedMembers() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QNamespace::importedMembers: to be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -218,7 +218,7 @@ void QNamespace::removePackageImport(const QPackageImport *packageImport)
  */
 const QSet<QPackageableElement *> *QNamespace::excludeCollisions(const QSet<QPackageableElement *> *imps) const
 {
-    qWarning("To be implemented");
+    qWarning("QNamespace::excludeCollisions: operation to be implemented");
 }
 
 /*!
@@ -226,7 +226,7 @@ const QSet<QPackageableElement *> *QNamespace::excludeCollisions(const QSet<QPac
  */
 const QSet<QString> *QNamespace::getNamesOfMember(const QNamedElement *element) const
 {
-    qWarning("To be implemented");
+    qWarning("QNamespace::getNamesOfMember: operation to be implemented");
 }
 
 /*!
@@ -234,7 +234,7 @@ const QSet<QString> *QNamespace::getNamesOfMember(const QNamedElement *element) 
  */
 const QSet<QPackageableElement *> *QNamespace::importMembers(const QSet<QPackageableElement *> *imps) const
 {
-    qWarning("To be implemented");
+    qWarning("QNamespace::importMembers: operation to be implemented");
 }
 
 /*!
@@ -242,7 +242,7 @@ const QSet<QPackageableElement *> *QNamespace::importMembers(const QSet<QPackage
  */
 bool QNamespace::membersAreDistinguishable() const
 {
-    qWarning("To be implemented");
+    qWarning("QNamespace::membersAreDistinguishable: operation to be implemented");
 }
 
 QT_END_NAMESPACE_QTUML

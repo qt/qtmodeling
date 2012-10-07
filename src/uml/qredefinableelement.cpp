@@ -141,7 +141,7 @@ void QRedefinableElement::removeRedefinitionContext(const QClassifier *redefinit
  */
 bool QRedefinableElement::isConsistentWith(const QRedefinableElement *redefinee) const
 {
-    qWarning("To be implemented");
+    qWarning("QRedefinableElement::isConsistentWith: operation to be implemented");
 }
 
 /*!
@@ -149,7 +149,7 @@ bool QRedefinableElement::isConsistentWith(const QRedefinableElement *redefinee)
  */
 bool QRedefinableElement::isRedefinitionContextValid(const QRedefinableElement *redefined) const
 {
-    qWarning("To be implemented");
+    qWarning("QRedefinableElement::isRedefinitionContextValid: operation to be implemented");
 }
 
 QT_END_NAMESPACE_QTUML

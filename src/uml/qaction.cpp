@@ -114,7 +114,7 @@ void QAction::setLocallyReentrant(bool isLocallyReentrant)
  */
 QClassifier *QAction::context() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QAction::context: to be implemented (this is a derived associationend)");
 }
 
 /*!

@@ -87,7 +87,7 @@ QConnectableElement::~QConnectableElement()
  */
 const QList<QConnectorEnd *> *QConnectableElement::ends() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QConnectableElement::ends: to be implemented (this is a derived associationend)");
 }
 
 /*!

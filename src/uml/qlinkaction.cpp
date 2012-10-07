@@ -136,7 +136,7 @@ void QLinkAction::removeInputValue(const QInputPin *inputValue)
  */
 QAssociation *QLinkAction::association() const
 {
-    qWarning("To be implemented");
+    qWarning("QLinkAction::association: operation to be implemented");
 }
 
 QT_END_NAMESPACE_QTUML

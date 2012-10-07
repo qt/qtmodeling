@@ -99,7 +99,7 @@ void QType::setPackage(const QPackage *package)
  */
 bool QType::conformsTo(const QType *other) const
 {
-    qWarning("To be implemented");
+    qWarning("QType::conformsTo: operation to be implemented");
 }
 
 QT_END_NAMESPACE_QTUML

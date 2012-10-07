@@ -100,12 +100,12 @@ QParameter::~QParameter()
  */
 QString QParameter::default_() const
 {
-    qWarning("To be implemented (this is a derived attribute)");
+    qWarning("QParameter::default_: to be implemented (this is a derived attribute)");
 }
 
 void QParameter::setDefault_(QString default_)
 {
-    qWarning("To be implemented (this is a derived attribute)");
+    qWarning("QParameter::setDefault_: to be implemented (this is a derived attribute)");
 }
 
 /*!

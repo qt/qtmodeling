@@ -137,12 +137,12 @@ void QProperty::setAggregation(QtUml::AggregationKind aggregation)
  */
 QString QProperty::default_() const
 {
-    qWarning("To be implemented (this is a derived attribute)");
+    qWarning("QProperty::default_: to be implemented (this is a derived attribute)");
 }
 
 void QProperty::setDefault_(QString default_)
 {
-    qWarning("To be implemented (this is a derived attribute)");
+    qWarning("QProperty::setDefault_: to be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -150,12 +150,12 @@ void QProperty::setDefault_(QString default_)
  */
 bool QProperty::isComposite() const
 {
-    qWarning("To be implemented (this is a derived attribute)");
+    qWarning("QProperty::isComposite: to be implemented (this is a derived attribute)");
 }
 
 void QProperty::setComposite(bool isComposite)
 {
-    qWarning("To be implemented (this is a derived attribute)");
+    qWarning("QProperty::setComposite: to be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -293,12 +293,12 @@ void QProperty::setInterface(const QInterface *interface)
  */
 QProperty *QProperty::opposite() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QProperty::opposite: to be implemented (this is a derived associationend)");
 }
 
 void QProperty::setOpposite(const QProperty *opposite)
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QProperty::setOpposite: to be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -381,7 +381,7 @@ void QProperty::removeSubsettedProperty(const QProperty *subsettedProperty)
  */
 bool QProperty::isAttribute(const QProperty *p) const
 {
-    qWarning("To be implemented");
+    qWarning("QProperty::isAttribute: operation to be implemented");
 }
 
 /*!
@@ -389,7 +389,7 @@ bool QProperty::isAttribute(const QProperty *p) const
  */
 bool QProperty::isCompatibleWith(const QParameterableElement *p) const
 {
-    qWarning("To be implemented");
+    qWarning("QProperty::isCompatibleWith: operation to be implemented");
 }
 
 /*!
@@ -397,7 +397,7 @@ bool QProperty::isCompatibleWith(const QParameterableElement *p) const
  */
 bool QProperty::isConsistentWith(const QRedefinableElement *redefinee) const
 {
-    qWarning("To be implemented");
+    qWarning("QProperty::isConsistentWith: operation to be implemented");
 }
 
 /*!
@@ -405,7 +405,7 @@ bool QProperty::isConsistentWith(const QRedefinableElement *redefinee) const
  */
 bool QProperty::isNavigable() const
 {
-    qWarning("To be implemented");
+    qWarning("QProperty::isNavigable: operation to be implemented");
 }
 
 /*!
@@ -413,7 +413,7 @@ bool QProperty::isNavigable() const
  */
 const QSet<QType *> *QProperty::subsettingContext() const
 {
-    qWarning("To be implemented");
+    qWarning("QProperty::subsettingContext: operation to be implemented");
 }
 
 #include "moc_qproperty.cpp"
