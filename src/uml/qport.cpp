@@ -63,6 +63,7 @@ QPortPrivate::QPortPrivate() :
     isBehavior(false),
     isConjugated(false),
     isService(true),
+    protocol(0),
     redefinedPorts(new QSet<QPort *>)
 {
 }

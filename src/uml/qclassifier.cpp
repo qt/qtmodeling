@@ -83,10 +83,13 @@ QClassifierPrivate::QClassifierPrivate() :
     collaborationUses(new QSet<QCollaborationUse *>),
     features(new QSet<QFeature *>),
     generalizations(new QSet<QGeneralization *>),
+    ownedTemplateSignature(0),
     ownedUseCases(new QSet<QUseCase *>),
     powertypeExtents(new QSet<QGeneralizationSet *>),
     redefinedClassifiers(new QSet<QClassifier *>),
+    representation(0),
     substitutions(new QSet<QSubstitution *>),
+    templateParameter(0),
     useCases(new QSet<QUseCase *>)
 {
 }

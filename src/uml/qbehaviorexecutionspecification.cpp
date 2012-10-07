@@ -54,7 +54,8 @@ public:
     QBehavior *behavior;
 };
 
-QBehaviorExecutionSpecificationPrivate::QBehaviorExecutionSpecificationPrivate()
+QBehaviorExecutionSpecificationPrivate::QBehaviorExecutionSpecificationPrivate() :
+    behavior(0)
 {
 }
 

@@ -54,7 +54,8 @@ public:
     QInputPin *object;
 };
 
-QStartObjectBehaviorActionPrivate::QStartObjectBehaviorActionPrivate()
+QStartObjectBehaviorActionPrivate::QStartObjectBehaviorActionPrivate() :
+    object(0)
 {
 }
 

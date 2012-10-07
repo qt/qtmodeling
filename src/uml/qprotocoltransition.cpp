@@ -56,7 +56,9 @@ public:
     QConstraint *preCondition;
 };
 
-QProtocolTransitionPrivate::QProtocolTransitionPrivate()
+QProtocolTransitionPrivate::QProtocolTransitionPrivate() :
+    postCondition(0),
+    preCondition(0)
 {
 }
 

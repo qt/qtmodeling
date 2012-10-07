@@ -57,7 +57,10 @@ public:
     QInputPin *second;
 };
 
-QTestIdentityActionPrivate::QTestIdentityActionPrivate()
+QTestIdentityActionPrivate::QTestIdentityActionPrivate() :
+    first(0),
+    result(0),
+    second(0)
 {
 }
 

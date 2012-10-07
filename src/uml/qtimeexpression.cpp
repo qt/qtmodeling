@@ -56,6 +56,7 @@ public:
 };
 
 QTimeExpressionPrivate::QTimeExpressionPrivate() :
+    expr(0),
     observations(new QSet<QObservation *>)
 {
 }

@@ -56,7 +56,8 @@ public:
 };
 
 QJoinNodePrivate::QJoinNodePrivate() :
-    isCombineDuplicate(true)
+    isCombineDuplicate(true),
+    joinSpec(0)
 {
 }
 

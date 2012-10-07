@@ -60,7 +60,8 @@ public:
 
 QInstanceSpecificationPrivate::QInstanceSpecificationPrivate() :
     classifiers(new QSet<QClassifier *>),
-    slots_(new QSet<QSlot *>)
+    slots_(new QSet<QSlot *>),
+    specification(0)
 {
 }
 

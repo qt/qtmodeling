@@ -56,7 +56,9 @@ public:
     QInputPin *target;
 };
 
-QSendSignalActionPrivate::QSendSignalActionPrivate()
+QSendSignalActionPrivate::QSendSignalActionPrivate() :
+    signal(0),
+    target(0)
 {
 }
 

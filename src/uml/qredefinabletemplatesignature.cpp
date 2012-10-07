@@ -57,6 +57,7 @@ public:
 };
 
 QRedefinableTemplateSignaturePrivate::QRedefinableTemplateSignaturePrivate() :
+    classifier(0),
     extendedSignatures(new QSet<QRedefinableTemplateSignature *>)
 {
 }

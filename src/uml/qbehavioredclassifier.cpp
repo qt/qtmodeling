@@ -58,6 +58,7 @@ public:
 };
 
 QBehavioredClassifierPrivate::QBehavioredClassifierPrivate() :
+    classifierBehavior(0),
     interfaceRealizations(new QSet<QInterfaceRealization *>),
     ownedBehaviors(new QSet<QBehavior *>)
 {

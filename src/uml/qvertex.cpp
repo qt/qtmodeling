@@ -56,7 +56,8 @@ public:
     QRegion *container;
 };
 
-QVertexPrivate::QVertexPrivate()
+QVertexPrivate::QVertexPrivate() :
+    container(0)
 {
 }
 

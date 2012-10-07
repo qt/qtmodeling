@@ -54,7 +54,8 @@ public:
     QSignal *signal;
 };
 
-QSignalEventPrivate::QSignalEventPrivate()
+QSignalEventPrivate::QSignalEventPrivate() :
+    signal(0)
 {
 }
 

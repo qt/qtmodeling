@@ -64,6 +64,7 @@ public:
 };
 
 QPackagePrivate::QPackagePrivate() :
+    nestingPackage(0),
     packageMerges(new QSet<QPackageMerge *>),
     packagedElements(new QSet<QPackageableElement *>),
     profileApplications(new QSet<QProfileApplication *>)

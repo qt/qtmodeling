@@ -54,7 +54,8 @@ public:
     QBehavior *behavior;
 };
 
-QCallBehaviorActionPrivate::QCallBehaviorActionPrivate()
+QCallBehaviorActionPrivate::QCallBehaviorActionPrivate() :
+    behavior(0)
 {
 }
 

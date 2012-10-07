@@ -59,7 +59,9 @@ public:
 };
 
 QConstraintPrivate::QConstraintPrivate() :
-    constrainedElements(new QList<QElement *>)
+    constrainedElements(new QList<QElement *>),
+    context(0),
+    specification(0)
 {
 }
 

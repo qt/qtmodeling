@@ -56,7 +56,9 @@ public:
     QOutputPin *result;
 };
 
-QReadExtentActionPrivate::QReadExtentActionPrivate()
+QReadExtentActionPrivate::QReadExtentActionPrivate() :
+    classifier(0),
+    result(0)
 {
 }
 

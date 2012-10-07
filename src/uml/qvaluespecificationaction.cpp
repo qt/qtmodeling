@@ -56,7 +56,9 @@ public:
     QValueSpecification *value;
 };
 
-QValueSpecificationActionPrivate::QValueSpecificationActionPrivate()
+QValueSpecificationActionPrivate::QValueSpecificationActionPrivate() :
+    result(0),
+    value(0)
 {
 }
 

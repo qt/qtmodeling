@@ -58,7 +58,9 @@ public:
 };
 
 QReplyActionPrivate::QReplyActionPrivate() :
-    replyValues(new QSet<QInputPin *>)
+    replyToCall(0),
+    replyValues(new QSet<QInputPin *>),
+    returnInformation(0)
 {
 }
 

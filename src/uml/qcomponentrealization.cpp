@@ -57,6 +57,7 @@ public:
 };
 
 QComponentRealizationPrivate::QComponentRealizationPrivate() :
+    abstraction(0),
     realizingClassifiers(new QSet<QClassifier *>)
 {
 }

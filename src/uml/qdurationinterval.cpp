@@ -55,7 +55,9 @@ public:
     QDuration *min;
 };
 
-QDurationIntervalPrivate::QDurationIntervalPrivate()
+QDurationIntervalPrivate::QDurationIntervalPrivate() :
+    max(0),
+    min(0)
 {
 }
 

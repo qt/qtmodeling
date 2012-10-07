@@ -54,7 +54,8 @@ public:
     QOutputPin *returnInformation;
 };
 
-QAcceptCallActionPrivate::QAcceptCallActionPrivate()
+QAcceptCallActionPrivate::QAcceptCallActionPrivate() :
+    returnInformation(0)
 {
 }
 

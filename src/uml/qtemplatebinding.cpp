@@ -59,7 +59,9 @@ public:
 };
 
 QTemplateBindingPrivate::QTemplateBindingPrivate() :
-    parameterSubstitutions(new QSet<QTemplateParameterSubstitution *>)
+    boundElement(0),
+    parameterSubstitutions(new QSet<QTemplateParameterSubstitution *>),
+    signature(0)
 {
 }
 

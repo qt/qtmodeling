@@ -63,7 +63,10 @@ public:
 
 QInteractionUsePrivate::QInteractionUsePrivate() :
     actualGates(new QSet<QGate *>),
-    arguments(new QList<QValueSpecification *>)
+    arguments(new QList<QValueSpecification *>),
+    refersTo(0),
+    returnValue(0),
+    returnValueRecipient(0)
 {
 }
 

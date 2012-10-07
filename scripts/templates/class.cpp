@@ -80,6 +80,15 @@ ${class.name}Private::${class.name}Private()
 [% END -%]
     ${attribute.accessor.0.name}(new ${attribute.accessor.0.return.remove(' \*$').remove('^const ')})
 [%- ELSE -%]
+[%- IF attribute.accessor.0.return.search('\*') -%]
+[%- IF found == 'true' -%]
+,
+[% ELSE -%]
+ :
+    [%- found = 'true' %]
+[% END -%]
+    ${attribute.accessor.0.name}(0)
+[%- ELSE -%]
 [%- IF attribute.defaultValue != "" -%]
 [%- IF found == 'true' -%]
 ,
@@ -88,6 +97,7 @@ ${class.name}Private::${class.name}Private()
     [%- found = 'true' %]
 [% END -%]
     ${attribute.accessor.0.name}(${attribute.defaultValue})
+[%- END -%]
 [%- END -%]
 [%- END -%]
 [%- END -%]
@@ -103,6 +113,15 @@ ${class.name}Private::${class.name}Private()
 [% END -%]
     ${associationend.accessor.0.name}(new ${associationend.accessor.0.return.remove(' \*$').remove('^const ')})
 [%- ELSE -%]
+[%- IF associationend.accessor.0.return.search('\*') -%]
+[%- IF found == 'true' -%]
+,
+[% ELSE -%]
+ :
+    [%- found = 'true' %]
+[% END -%]
+    ${associationend.accessor.0.name}(0)
+[%- ELSE -%]
 [%- IF associationend.defaultValue != "" -%]
 [%- IF found == 'true' -%]
 ,
@@ -111,6 +130,7 @@ ${class.name}Private::${class.name}Private()
     [%- found = 'true' %]
 [% END -%]
     ${associationend.accessor.0.name}(${associationend.defaultValue})
+[%- END -%]
 [%- END -%]
 [%- END -%]
 [%- END -%]

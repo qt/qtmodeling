@@ -60,7 +60,10 @@ public:
 };
 
 QReadIsClassifiedObjectActionPrivate::QReadIsClassifiedObjectActionPrivate() :
-    isDirect(false)
+    isDirect(false),
+    classifier(0),
+    object(0),
+    result(0)
 {
 }
 

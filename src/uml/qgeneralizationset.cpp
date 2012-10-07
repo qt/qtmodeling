@@ -61,7 +61,8 @@ public:
 QGeneralizationSetPrivate::QGeneralizationSetPrivate() :
     isCovering(false),
     isDisjoint(false),
-    generalizations(new QSet<QGeneralization *>)
+    generalizations(new QSet<QGeneralization *>),
+    powertype(0)
 {
 }
 

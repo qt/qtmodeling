@@ -54,7 +54,8 @@ public:
     QAction *fromAction;
 };
 
-QActionInputPinPrivate::QActionInputPinPrivate()
+QActionInputPinPrivate::QActionInputPinPrivate() :
+    fromAction(0)
 {
 }
 

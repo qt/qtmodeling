@@ -56,7 +56,8 @@ public:
 };
 
 QAddVariableValueActionPrivate::QAddVariableValueActionPrivate() :
-    isReplaceAll(false)
+    isReplaceAll(false),
+    insertAt(0)
 {
 }
 

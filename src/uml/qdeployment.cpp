@@ -60,7 +60,8 @@ public:
 
 QDeploymentPrivate::QDeploymentPrivate() :
     configurations(new QSet<QDeploymentSpecification *>),
-    deployedArtifacts(new QSet<QDeployedArtifact *>)
+    deployedArtifacts(new QSet<QDeployedArtifact *>),
+    location(0)
 {
 }
 

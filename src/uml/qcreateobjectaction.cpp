@@ -56,7 +56,9 @@ public:
     QOutputPin *result;
 };
 
-QCreateObjectActionPrivate::QCreateObjectActionPrivate()
+QCreateObjectActionPrivate::QCreateObjectActionPrivate() :
+    classifier(0),
+    result(0)
 {
 }
 

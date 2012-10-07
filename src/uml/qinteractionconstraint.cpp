@@ -55,7 +55,9 @@ public:
     QValueSpecification *minint;
 };
 
-QInteractionConstraintPrivate::QInteractionConstraintPrivate()
+QInteractionConstraintPrivate::QInteractionConstraintPrivate() :
+    maxint(0),
+    minint(0)
 {
 }
 

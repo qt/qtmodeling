@@ -54,7 +54,9 @@ public:
     QValueSpecification *min;
 };
 
-QIntervalPrivate::QIntervalPrivate()
+QIntervalPrivate::QIntervalPrivate() :
+    max(0),
+    min(0)
 {
 }
 

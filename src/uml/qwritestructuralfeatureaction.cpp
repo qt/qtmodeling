@@ -56,7 +56,9 @@ public:
     QInputPin *value;
 };
 
-QWriteStructuralFeatureActionPrivate::QWriteStructuralFeatureActionPrivate()
+QWriteStructuralFeatureActionPrivate::QWriteStructuralFeatureActionPrivate() :
+    result(0),
+    value(0)
 {
 }
 

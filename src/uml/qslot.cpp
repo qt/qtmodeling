@@ -59,6 +59,8 @@ public:
 };
 
 QSlotPrivate::QSlotPrivate() :
+    definingFeature(0),
+    owningInstance(0),
     values(new QList<QValueSpecification *>)
 {
 }

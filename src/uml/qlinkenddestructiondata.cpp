@@ -56,7 +56,8 @@ public:
 };
 
 QLinkEndDestructionDataPrivate::QLinkEndDestructionDataPrivate() :
-    isDestroyDuplicates(false)
+    isDestroyDuplicates(false),
+    destroyAt(0)
 {
 }
 

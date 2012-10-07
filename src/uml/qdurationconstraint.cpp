@@ -56,7 +56,8 @@ public:
 };
 
 QDurationConstraintPrivate::QDurationConstraintPrivate() :
-    firstEvents(new QSet<bool>)
+    firstEvents(new QSet<bool>),
+    specification(0)
 {
 }
 

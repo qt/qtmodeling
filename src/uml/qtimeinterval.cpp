@@ -55,7 +55,9 @@ public:
     QTimeExpression *min;
 };
 
-QTimeIntervalPrivate::QTimeIntervalPrivate()
+QTimeIntervalPrivate::QTimeIntervalPrivate() :
+    max(0),
+    min(0)
 {
 }
 

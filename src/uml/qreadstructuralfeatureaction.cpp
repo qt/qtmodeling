@@ -54,7 +54,8 @@ public:
     QOutputPin *result;
 };
 
-QReadStructuralFeatureActionPrivate::QReadStructuralFeatureActionPrivate()
+QReadStructuralFeatureActionPrivate::QReadStructuralFeatureActionPrivate() :
+    result(0)
 {
 }
 

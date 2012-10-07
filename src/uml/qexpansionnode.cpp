@@ -55,7 +55,9 @@ public:
     QExpansionRegion *regionAsOutput;
 };
 
-QExpansionNodePrivate::QExpansionNodePrivate()
+QExpansionNodePrivate::QExpansionNodePrivate() :
+    regionAsInput(0),
+    regionAsOutput(0)
 {
 }
 

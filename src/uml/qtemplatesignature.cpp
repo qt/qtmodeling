@@ -59,7 +59,8 @@ public:
 
 QTemplateSignaturePrivate::QTemplateSignaturePrivate() :
     ownedParameters(new QList<QTemplateParameter *>),
-    parameters(new QList<QTemplateParameter *>)
+    parameters(new QList<QTemplateParameter *>),
+    template_(0)
 {
 }
 

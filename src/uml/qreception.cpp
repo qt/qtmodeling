@@ -54,7 +54,8 @@ public:
     QSignal *signal;
 };
 
-QReceptionPrivate::QReceptionPrivate()
+QReceptionPrivate::QReceptionPrivate() :
+    signal(0)
 {
 }
 

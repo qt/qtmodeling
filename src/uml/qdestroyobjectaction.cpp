@@ -58,7 +58,8 @@ public:
 
 QDestroyObjectActionPrivate::QDestroyObjectActionPrivate() :
     isDestroyLinks(false),
-    isDestroyOwnedObjects(false)
+    isDestroyOwnedObjects(false),
+    target(0)
 {
 }
 

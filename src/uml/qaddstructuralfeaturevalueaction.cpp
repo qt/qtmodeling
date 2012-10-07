@@ -56,7 +56,8 @@ public:
 };
 
 QAddStructuralFeatureValueActionPrivate::QAddStructuralFeatureValueActionPrivate() :
-    isReplaceAll(false)
+    isReplaceAll(false),
+    insertAt(0)
 {
 }
 

@@ -55,7 +55,9 @@ public:
     QTemplateParameter *templateParameter;
 };
 
-QParameterableElementPrivate::QParameterableElementPrivate()
+QParameterableElementPrivate::QParameterableElementPrivate() :
+    owningTemplateParameter(0),
+    templateParameter(0)
 {
 }
 

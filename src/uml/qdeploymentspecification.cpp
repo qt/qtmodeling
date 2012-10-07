@@ -56,7 +56,8 @@ public:
     QDeployment *deployment;
 };
 
-QDeploymentSpecificationPrivate::QDeploymentSpecificationPrivate()
+QDeploymentSpecificationPrivate::QDeploymentSpecificationPrivate() :
+    deployment(0)
 {
 }
 

@@ -56,7 +56,8 @@ public:
 };
 
 QRemoveStructuralFeatureValueActionPrivate::QRemoveStructuralFeatureValueActionPrivate() :
-    isRemoveDuplicates(false)
+    isRemoveDuplicates(false),
+    removeAt(0)
 {
 }
 

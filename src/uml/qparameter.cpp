@@ -66,6 +66,8 @@ QParameterPrivate::QParameterPrivate() :
     direction(QtUml::ParameterDirectionIn),
     isException(false),
     isStream(false),
+    defaultValue(0),
+    operation(0),
     parameterSets(new QSet<QParameterSet *>)
 {
 }

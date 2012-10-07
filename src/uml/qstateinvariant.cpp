@@ -56,7 +56,9 @@ public:
     QConstraint *invariant;
 };
 
-QStateInvariantPrivate::QStateInvariantPrivate()
+QStateInvariantPrivate::QStateInvariantPrivate() :
+    covered(0),
+    invariant(0)
 {
 }
 

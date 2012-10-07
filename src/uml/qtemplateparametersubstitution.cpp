@@ -59,7 +59,11 @@ public:
     QTemplateBinding *templateBinding;
 };
 
-QTemplateParameterSubstitutionPrivate::QTemplateParameterSubstitutionPrivate()
+QTemplateParameterSubstitutionPrivate::QTemplateParameterSubstitutionPrivate() :
+    actual(0),
+    formal(0),
+    ownedActual(0),
+    templateBinding(0)
 {
 }
 

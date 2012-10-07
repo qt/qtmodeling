@@ -62,7 +62,8 @@ public:
 QConnectorPrivate::QConnectorPrivate() :
     contracts(new QSet<QBehavior *>),
     ends(new QList<QConnectorEnd *>),
-    redefinedConnectors(new QSet<QConnector *>)
+    redefinedConnectors(new QSet<QConnector *>),
+    type(0)
 {
 }
 

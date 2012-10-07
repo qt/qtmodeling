@@ -55,7 +55,9 @@ public:
     QPackage *receivingPackage;
 };
 
-QPackageMergePrivate::QPackageMergePrivate()
+QPackageMergePrivate::QPackageMergePrivate() :
+    mergedPackage(0),
+    receivingPackage(0)
 {
 }
 

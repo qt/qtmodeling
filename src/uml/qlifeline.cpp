@@ -63,7 +63,11 @@ public:
 };
 
 QLifelinePrivate::QLifelinePrivate() :
-    coveredBy(new QSet<QInteractionFragment *>)
+    coveredBy(new QSet<QInteractionFragment *>),
+    decomposedAs(0),
+    interaction(0),
+    represents(0),
+    selector(0)
 {
 }
 

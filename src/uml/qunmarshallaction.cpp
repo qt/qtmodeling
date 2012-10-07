@@ -59,7 +59,9 @@ public:
 };
 
 QUnmarshallActionPrivate::QUnmarshallActionPrivate() :
-    results(new QSet<QOutputPin *>)
+    object(0),
+    results(new QSet<QOutputPin *>),
+    unmarshallType(0)
 {
 }
 

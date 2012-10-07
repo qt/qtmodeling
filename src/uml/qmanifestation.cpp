@@ -54,7 +54,8 @@ public:
     QPackageableElement *utilizedElement;
 };
 
-QManifestationPrivate::QManifestationPrivate()
+QManifestationPrivate::QManifestationPrivate() :
+    utilizedElement(0)
 {
 }
 

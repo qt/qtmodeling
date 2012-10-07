@@ -54,7 +54,8 @@ public:
     QPackage *package;
 };
 
-QTypePrivate::QTypePrivate()
+QTypePrivate::QTypePrivate() :
+    package(0)
 {
 }
 

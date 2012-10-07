@@ -56,7 +56,8 @@ public:
 };
 
 QInteractionOperandPrivate::QInteractionOperandPrivate() :
-    fragments(new QList<QInteractionFragment *>)
+    fragments(new QList<QInteractionFragment *>),
+    guard(0)
 {
 }
 

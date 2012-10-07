@@ -58,7 +58,9 @@ public:
 };
 
 QPackageImportPrivate::QPackageImportPrivate() :
-    visibility(QtUml::VisibilityPublic)
+    visibility(QtUml::VisibilityPublic),
+    importedPackage(0),
+    importingNamespace(0)
 {
 }
 

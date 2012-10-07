@@ -58,7 +58,9 @@ public:
 };
 
 QPseudostatePrivate::QPseudostatePrivate() :
-    kind(QtUml::PseudostateInitial)
+    kind(QtUml::PseudostateInitial),
+    state(0),
+    stateMachine(0)
 {
 }
 

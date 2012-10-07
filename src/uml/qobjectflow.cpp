@@ -59,7 +59,9 @@ public:
 
 QObjectFlowPrivate::QObjectFlowPrivate() :
     isMulticast(false),
-    isMultireceive(false)
+    isMultireceive(false),
+    selection(0),
+    transformation(0)
 {
 }
 

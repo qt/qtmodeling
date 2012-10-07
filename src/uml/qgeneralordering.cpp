@@ -55,7 +55,9 @@ public:
     QOccurrenceSpecification *before;
 };
 
-QGeneralOrderingPrivate::QGeneralOrderingPrivate()
+QGeneralOrderingPrivate::QGeneralOrderingPrivate() :
+    after(0),
+    before(0)
 {
 }
 

@@ -54,7 +54,8 @@ public:
     QInputPin *object;
 };
 
-QStartClassifierBehaviorActionPrivate::QStartClassifierBehaviorActionPrivate()
+QStartClassifierBehaviorActionPrivate::QStartClassifierBehaviorActionPrivate() :
+    object(0)
 {
 }
 

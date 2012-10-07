@@ -54,7 +54,8 @@ public:
     QConnectableElement *parameteredElement;
 };
 
-QConnectableElementTemplateParameterPrivate::QConnectableElementTemplateParameterPrivate()
+QConnectableElementTemplateParameterPrivate::QConnectableElementTemplateParameterPrivate() :
+    parameteredElement(0)
 {
 }
 

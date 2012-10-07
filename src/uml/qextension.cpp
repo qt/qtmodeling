@@ -56,7 +56,8 @@ public:
     QExtensionEnd *ownedEnd;
 };
 
-QExtensionPrivate::QExtensionPrivate()
+QExtensionPrivate::QExtensionPrivate() :
+    ownedEnd(0)
 {
 }
 

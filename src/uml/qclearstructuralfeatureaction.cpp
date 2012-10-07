@@ -54,7 +54,8 @@ public:
     QOutputPin *result;
 };
 
-QClearStructuralFeatureActionPrivate::QClearStructuralFeatureActionPrivate()
+QClearStructuralFeatureActionPrivate::QClearStructuralFeatureActionPrivate() :
+    result(0)
 {
 }
 

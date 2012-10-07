@@ -54,7 +54,8 @@ public:
     QUseCase *useCase;
 };
 
-QExtensionPointPrivate::QExtensionPointPrivate()
+QExtensionPointPrivate::QExtensionPointPrivate() :
+    useCase(0)
 {
 }
 

@@ -54,7 +54,8 @@ public:
     QStereotype *type;
 };
 
-QExtensionEndPrivate::QExtensionEndPrivate()
+QExtensionEndPrivate::QExtensionEndPrivate() :
+    type(0)
 {
 }
 

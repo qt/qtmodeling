@@ -62,6 +62,8 @@ public:
 
 QInteractionFragmentPrivate::QInteractionFragmentPrivate() :
     covered(new QSet<QLifeline *>),
+    enclosingInteraction(0),
+    enclosingOperand(0),
     generalOrderings(new QSet<QGeneralOrdering *>)
 {
 }

@@ -54,7 +54,8 @@ public:
     QExecutionSpecification *execution;
 };
 
-QExecutionOccurrenceSpecificationPrivate::QExecutionOccurrenceSpecificationPrivate()
+QExecutionOccurrenceSpecificationPrivate::QExecutionOccurrenceSpecificationPrivate() :
+    execution(0)
 {
 }
 

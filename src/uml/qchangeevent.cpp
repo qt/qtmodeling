@@ -54,7 +54,8 @@ public:
     QValueSpecification *changeExpression;
 };
 
-QChangeEventPrivate::QChangeEventPrivate()
+QChangeEventPrivate::QChangeEventPrivate() :
+    changeExpression(0)
 {
 }
 
