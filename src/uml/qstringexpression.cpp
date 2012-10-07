@@ -123,7 +123,7 @@ void QStringExpression::removeSubExpression(const QStringExpression *subExpressi
  */
 QString QStringExpression::stringValue() const
 {
-    qWarning("To be implemented");
+    qWarning("QStringExpression::stringValue: operation to be implemented");
 }
 
 #include "moc_qstringexpression.cpp"

@@ -183,7 +183,7 @@ void QUseCase::removeSubject(const QClassifier *subject)
  */
 const QSet<QUseCase *> *QUseCase::allIncludedUseCases() const
 {
-    qWarning("To be implemented");
+    qWarning("QUseCase::allIncludedUseCases: operation to be implemented");
 }
 
 #include "moc_qusecase.cpp"

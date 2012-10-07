@@ -148,7 +148,7 @@ void QPort::setProtocol(const QProtocolStateMachine *protocol)
  */
 const QSet<QInterface *> *QPort::provided() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QPort::provided: to be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -178,7 +178,7 @@ void QPort::removeRedefinedPort(const QPort *redefinedPort)
  */
 const QSet<QInterface *> *QPort::required() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QPort::required: to be implemented (this is a derived associationend)");
 }
 
 #include "moc_qport.cpp"

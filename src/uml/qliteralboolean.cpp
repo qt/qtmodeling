@@ -98,7 +98,7 @@ void QLiteralBoolean::setValue(bool value)
  */
 bool QLiteralBoolean::booleanValue() const
 {
-    qWarning("To be implemented");
+    qWarning("QLiteralBoolean::booleanValue: operation to be implemented");
 }
 
 /*!
@@ -106,7 +106,7 @@ bool QLiteralBoolean::booleanValue() const
  */
 bool QLiteralBoolean::isComputable() const
 {
-    qWarning("To be implemented");
+    qWarning("QLiteralBoolean::isComputable: operation to be implemented");
 }
 
 #include "moc_qliteralboolean.cpp"

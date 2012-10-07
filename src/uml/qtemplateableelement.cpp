@@ -126,7 +126,7 @@ void QTemplateableElement::removeTemplateBinding(const QTemplateBinding *templat
  */
 bool QTemplateableElement::isTemplate() const
 {
-    qWarning("To be implemented");
+    qWarning("QTemplateableElement::isTemplate: operation to be implemented");
 }
 
 /*!
@@ -134,7 +134,7 @@ bool QTemplateableElement::isTemplate() const
  */
 const QSet<QParameterableElement *> *QTemplateableElement::parameterableElements() const
 {
-    qWarning("To be implemented");
+    qWarning("QTemplateableElement::parameterableElements: operation to be implemented");
 }
 
 QT_END_NAMESPACE_QTUML

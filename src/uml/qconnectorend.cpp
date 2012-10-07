@@ -89,7 +89,7 @@ QConnectorEnd::~QConnectorEnd()
  */
 QProperty *QConnectorEnd::definingEnd() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QConnectorEnd::definingEnd: to be implemented (this is a derived associationend)");
 }
 
 /*!

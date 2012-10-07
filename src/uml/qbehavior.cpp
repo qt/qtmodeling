@@ -120,7 +120,7 @@ void QBehavior::setReentrant(bool isReentrant)
  */
 QBehavioredClassifier *QBehavior::context() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QBehavior::context: to be implemented (this is a derived associationend)");
 }
 
 /*!

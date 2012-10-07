@@ -115,7 +115,7 @@ void QProtocolTransition::setPreCondition(const QConstraint *preCondition)
  */
 const QSet<QOperation *> *QProtocolTransition::referred() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QProtocolTransition::referred: to be implemented (this is a derived associationend)");
 }
 
 #include "moc_qprotocoltransition.cpp"

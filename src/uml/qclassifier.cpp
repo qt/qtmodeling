@@ -222,17 +222,17 @@ void QClassifier::removeFeature(const QFeature *feature)
  */
 const QSet<QClassifier *> *QClassifier::generals() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QClassifier::generals: to be implemented (this is a derived associationend)");
 }
 
 void QClassifier::addGeneral(const QClassifier *general)
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QClassifier::addGeneral: to be implemented (this is a derived associationend)");
 }
 
 void QClassifier::removeGeneral(const QClassifier *general)
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QClassifier::removeGeneral: to be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -262,7 +262,7 @@ void QClassifier::removeGeneralization(const QGeneralization *generalization)
  */
 const QSet<QNamedElement *> *QClassifier::inheritedMembers() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QClassifier::inheritedMembers: to be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -413,7 +413,7 @@ void QClassifier::removeUseCase(const QUseCase *useCase)
  */
 const QSet<QFeature *> *QClassifier::allFeatures() const
 {
-    qWarning("To be implemented");
+    qWarning("QClassifier::allFeatures: operation to be implemented");
 }
 
 /*!
@@ -421,7 +421,7 @@ const QSet<QFeature *> *QClassifier::allFeatures() const
  */
 const QSet<QClassifier *> *QClassifier::allParents() const
 {
-    qWarning("To be implemented");
+    qWarning("QClassifier::allParents: operation to be implemented");
 }
 
 /*!
@@ -429,7 +429,7 @@ const QSet<QClassifier *> *QClassifier::allParents() const
  */
 bool QClassifier::conformsTo(const QClassifier *other) const
 {
-    qWarning("To be implemented");
+    qWarning("QClassifier::conformsTo: operation to be implemented");
 }
 
 /*!
@@ -437,7 +437,7 @@ bool QClassifier::conformsTo(const QClassifier *other) const
  */
 bool QClassifier::hasVisibilityOf(const QNamedElement *n) const
 {
-    qWarning("To be implemented");
+    qWarning("QClassifier::hasVisibilityOf: operation to be implemented");
 }
 
 /*!
@@ -445,7 +445,7 @@ bool QClassifier::hasVisibilityOf(const QNamedElement *n) const
  */
 const QSet<QNamedElement *> *QClassifier::inherit(const QSet<QNamedElement *> *inhs) const
 {
-    qWarning("To be implemented");
+    qWarning("QClassifier::inherit: operation to be implemented");
 }
 
 /*!
@@ -453,7 +453,7 @@ const QSet<QNamedElement *> *QClassifier::inherit(const QSet<QNamedElement *> *i
  */
 const QSet<QNamedElement *> *QClassifier::inheritableMembers(const QClassifier *c) const
 {
-    qWarning("To be implemented");
+    qWarning("QClassifier::inheritableMembers: operation to be implemented");
 }
 
 /*!
@@ -461,7 +461,7 @@ const QSet<QNamedElement *> *QClassifier::inheritableMembers(const QClassifier *
  */
 bool QClassifier::isTemplate() const
 {
-    qWarning("To be implemented");
+    qWarning("QClassifier::isTemplate: operation to be implemented");
 }
 
 /*!
@@ -469,7 +469,7 @@ bool QClassifier::isTemplate() const
  */
 bool QClassifier::maySpecializeType(const QClassifier *c) const
 {
-    qWarning("To be implemented");
+    qWarning("QClassifier::maySpecializeType: operation to be implemented");
 }
 
 /*!
@@ -477,7 +477,7 @@ bool QClassifier::maySpecializeType(const QClassifier *c) const
  */
 const QSet<QClassifier *> *QClassifier::parents() const
 {
-    qWarning("To be implemented");
+    qWarning("QClassifier::parents: operation to be implemented");
 }
 
 QT_END_NAMESPACE_QTUML

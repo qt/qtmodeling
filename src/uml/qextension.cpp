@@ -88,7 +88,7 @@ QExtension::~QExtension()
  */
 bool QExtension::isRequired() const
 {
-    qWarning("To be implemented (this is a derived attribute)");
+    qWarning("QExtension::isRequired: to be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -96,7 +96,7 @@ bool QExtension::isRequired() const
  */
 QClass *QExtension::metaclass() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QExtension::metaclass: to be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -117,7 +117,7 @@ void QExtension::setOwnedEnd(const QExtensionEnd *ownedEnd)
  */
 QProperty *QExtension::metaclassEnd() const
 {
-    qWarning("To be implemented");
+    qWarning("QExtension::metaclassEnd: operation to be implemented");
 }
 
 #include "moc_qextension.cpp"

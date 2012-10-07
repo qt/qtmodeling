@@ -114,7 +114,7 @@ void QParameterableElement::setTemplateParameter(const QTemplateParameter *templ
  */
 bool QParameterableElement::isCompatibleWith(const QParameterableElement *p) const
 {
-    qWarning("To be implemented");
+    qWarning("QParameterableElement::isCompatibleWith: operation to be implemented");
 }
 
 /*!
@@ -122,7 +122,7 @@ bool QParameterableElement::isCompatibleWith(const QParameterableElement *p) con
  */
 bool QParameterableElement::isTemplateParameter() const
 {
-    qWarning("To be implemented");
+    qWarning("QParameterableElement::isTemplateParameter: operation to be implemented");
 }
 
 QT_END_NAMESPACE_QTUML

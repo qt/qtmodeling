@@ -86,7 +86,7 @@ QEnumerationLiteral::~QEnumerationLiteral()
  */
 QEnumeration *QEnumerationLiteral::classifier() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QEnumerationLiteral::classifier: to be implemented (this is a derived associationend)");
 }
 
 /*!

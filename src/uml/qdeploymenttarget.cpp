@@ -88,7 +88,7 @@ QDeploymentTarget::~QDeploymentTarget()
  */
 const QSet<QPackageableElement *> *QDeploymentTarget::deployedElements() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QDeploymentTarget::deployedElements: to be implemented (this is a derived associationend)");
 }
 
 /*!

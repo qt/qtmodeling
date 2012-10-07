@@ -145,7 +145,7 @@ void QStructuredClassifier::removeOwnedConnector(const QConnector *ownedConnecto
  */
 const QSet<QProperty *> *QStructuredClassifier::parts() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QStructuredClassifier::parts: to be implemented (this is a derived associationend)");
 }
 
 /*!

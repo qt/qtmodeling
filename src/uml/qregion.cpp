@@ -113,7 +113,7 @@ void QRegion::setExtendedRegion(const QRegion *extendedRegion)
  */
 QClassifier *QRegion::redefinitionContext() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QRegion::redefinitionContext: to be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -191,7 +191,7 @@ void QRegion::removeTransition(const QTransition *transition)
  */
 bool QRegion::belongsToPSM() const
 {
-    qWarning("To be implemented");
+    qWarning("QRegion::belongsToPSM: operation to be implemented");
 }
 
 /*!
@@ -199,7 +199,7 @@ bool QRegion::belongsToPSM() const
  */
 QStateMachine *QRegion::containingStateMachine() const
 {
-    qWarning("To be implemented");
+    qWarning("QRegion::containingStateMachine: operation to be implemented");
 }
 
 /*!
@@ -207,7 +207,7 @@ QStateMachine *QRegion::containingStateMachine() const
  */
 bool QRegion::isConsistentWith(const QRedefinableElement *redefinee) const
 {
-    qWarning("To be implemented");
+    qWarning("QRegion::isConsistentWith: operation to be implemented");
 }
 
 /*!
@@ -215,7 +215,7 @@ bool QRegion::isConsistentWith(const QRedefinableElement *redefinee) const
  */
 bool QRegion::isRedefinitionContextValid(const QRegion *redefined) const
 {
-    qWarning("To be implemented");
+    qWarning("QRegion::isRedefinitionContextValid: operation to be implemented");
 }
 
 #include "moc_qregion.cpp"

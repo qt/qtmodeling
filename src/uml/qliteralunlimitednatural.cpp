@@ -98,7 +98,7 @@ void QLiteralUnlimitedNatural::setValue(qint32 value)
  */
 bool QLiteralUnlimitedNatural::isComputable() const
 {
-    qWarning("To be implemented");
+    qWarning("QLiteralUnlimitedNatural::isComputable: operation to be implemented");
 }
 
 /*!
@@ -106,7 +106,7 @@ bool QLiteralUnlimitedNatural::isComputable() const
  */
 qint32 QLiteralUnlimitedNatural::unlimitedValue() const
 {
-    qWarning("To be implemented");
+    qWarning("QLiteralUnlimitedNatural::unlimitedValue: operation to be implemented");
 }
 
 #include "moc_qliteralunlimitednatural.cpp"

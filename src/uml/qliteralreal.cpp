@@ -94,7 +94,7 @@ void QLiteralReal::setValue(qreal value)
  */
 bool QLiteralReal::isComputable() const
 {
-    qWarning("To be implemented");
+    qWarning("QLiteralReal::isComputable: operation to be implemented");
 }
 
 /*!
@@ -102,7 +102,7 @@ bool QLiteralReal::isComputable() const
  */
 qreal QLiteralReal::realValue() const
 {
-    qWarning("To be implemented");
+    qWarning("QLiteralReal::realValue: operation to be implemented");
 }
 
 #include "moc_qliteralreal.cpp"

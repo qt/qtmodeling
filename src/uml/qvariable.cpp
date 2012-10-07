@@ -116,7 +116,7 @@ void QVariable::setScope(const QStructuredActivityNode *scope)
  */
 bool QVariable::isAccessibleBy(const QAction *a) const
 {
-    qWarning("To be implemented");
+    qWarning("QVariable::isAccessibleBy: operation to be implemented");
 }
 
 #include "moc_qvariable.cpp"

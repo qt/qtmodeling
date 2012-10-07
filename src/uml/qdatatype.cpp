@@ -140,7 +140,7 @@ void QDataType::removeOwnedOperation(const QOperation *ownedOperation)
  */
 const QSet<QNamedElement *> *QDataType::inherit(const QSet<QNamedElement *> *inhs) const
 {
-    qWarning("To be implemented");
+    qWarning("QDataType::inherit: operation to be implemented");
 }
 
 #include "moc_qdatatype.cpp"

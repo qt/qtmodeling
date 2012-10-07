@@ -84,7 +84,7 @@ QValueSpecification::~QValueSpecification()
  */
 bool QValueSpecification::booleanValue() const
 {
-    qWarning("To be implemented");
+    qWarning("QValueSpecification::booleanValue: operation to be implemented");
 }
 
 /*!
@@ -92,7 +92,7 @@ bool QValueSpecification::booleanValue() const
  */
 qint32 QValueSpecification::integerValue() const
 {
-    qWarning("To be implemented");
+    qWarning("QValueSpecification::integerValue: operation to be implemented");
 }
 
 /*!
@@ -100,7 +100,7 @@ qint32 QValueSpecification::integerValue() const
  */
 bool QValueSpecification::isCompatibleWith(const QParameterableElement *p) const
 {
-    qWarning("To be implemented");
+    qWarning("QValueSpecification::isCompatibleWith: operation to be implemented");
 }
 
 /*!
@@ -108,7 +108,7 @@ bool QValueSpecification::isCompatibleWith(const QParameterableElement *p) const
  */
 bool QValueSpecification::isComputable() const
 {
-    qWarning("To be implemented");
+    qWarning("QValueSpecification::isComputable: operation to be implemented");
 }
 
 /*!
@@ -116,7 +116,7 @@ bool QValueSpecification::isComputable() const
  */
 bool QValueSpecification::isNull() const
 {
-    qWarning("To be implemented");
+    qWarning("QValueSpecification::isNull: operation to be implemented");
 }
 
 /*!
@@ -124,7 +124,7 @@ bool QValueSpecification::isNull() const
  */
 qreal QValueSpecification::realValue() const
 {
-    qWarning("To be implemented");
+    qWarning("QValueSpecification::realValue: operation to be implemented");
 }
 
 /*!
@@ -132,7 +132,7 @@ qreal QValueSpecification::realValue() const
  */
 QString QValueSpecification::stringValue() const
 {
-    qWarning("To be implemented");
+    qWarning("QValueSpecification::stringValue: operation to be implemented");
 }
 
 /*!
@@ -140,7 +140,7 @@ QString QValueSpecification::stringValue() const
  */
 qint32 QValueSpecification::unlimitedValue() const
 {
-    qWarning("To be implemented");
+    qWarning("QValueSpecification::unlimitedValue: operation to be implemented");
 }
 
 QT_END_NAMESPACE_QTUML

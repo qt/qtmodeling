@@ -118,7 +118,7 @@ QOperation::~QOperation()
  */
 bool QOperation::isOrdered() const
 {
-    qWarning("To be implemented (this is a derived attribute)");
+    qWarning("QOperation::isOrdered: to be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -139,7 +139,7 @@ void QOperation::setQuery(bool isQuery)
  */
 bool QOperation::isUnique() const
 {
-    qWarning("To be implemented (this is a derived attribute)");
+    qWarning("QOperation::isUnique: to be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -147,7 +147,7 @@ bool QOperation::isUnique() const
  */
 qint32 QOperation::lower() const
 {
-    qWarning("To be implemented (this is a derived attribute)");
+    qWarning("QOperation::lower: to be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -155,7 +155,7 @@ qint32 QOperation::lower() const
  */
 qint32 QOperation::upper() const
 {
-    qWarning("To be implemented (this is a derived attribute)");
+    qWarning("QOperation::upper: to be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -330,7 +330,7 @@ void QOperation::setTemplateParameter(const QOperationTemplateParameter *templat
  */
 QType *QOperation::type() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QOperation::type: to be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -338,7 +338,7 @@ QType *QOperation::type() const
  */
 bool QOperation::isConsistentWith(const QRedefinableElement *redefinee) const
 {
-    qWarning("To be implemented");
+    qWarning("QOperation::isConsistentWith: operation to be implemented");
 }
 
 /*!
@@ -346,7 +346,7 @@ bool QOperation::isConsistentWith(const QRedefinableElement *redefinee) const
  */
 const QSet<QParameter *> *QOperation::returnResult() const
 {
-    qWarning("To be implemented");
+    qWarning("QOperation::returnResult: operation to be implemented");
 }
 
 #include "moc_qoperation.cpp"

@@ -110,7 +110,7 @@ void QStereotype::removeIcon(const QImage *icon)
  */
 QProfile *QStereotype::profile() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QStereotype::profile: to be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -118,7 +118,7 @@ QProfile *QStereotype::profile() const
  */
 QProfile *QStereotype::containingProfile() const
 {
-    qWarning("To be implemented");
+    qWarning("QStereotype::containingProfile: operation to be implemented");
 }
 
 #include "moc_qstereotype.cpp"

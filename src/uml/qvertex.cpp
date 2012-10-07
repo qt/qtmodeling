@@ -101,7 +101,7 @@ void QVertex::setContainer(const QRegion *container)
  */
 const QSet<QTransition *> *QVertex::incomings() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QVertex::incomings: to be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -109,7 +109,7 @@ const QSet<QTransition *> *QVertex::incomings() const
  */
 const QSet<QTransition *> *QVertex::outgoings() const
 {
-    qWarning("To be implemented (this is a derived associationend)");
+    qWarning("QVertex::outgoings: to be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -117,7 +117,7 @@ const QSet<QTransition *> *QVertex::outgoings() const
  */
 QStateMachine *QVertex::containingStateMachine() const
 {
-    qWarning("To be implemented");
+    qWarning("QVertex::containingStateMachine: operation to be implemented");
 }
 
 QT_END_NAMESPACE_QTUML

@@ -109,7 +109,7 @@ void QNamedElement::setName(QString name)
  */
 QString QNamedElement::qualifiedName() const
 {
-    qWarning("To be implemented (this is a derived attribute)");
+    qWarning("QNamedElement::qualifiedName: to be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -171,7 +171,7 @@ QNamespace *QNamedElement::namespace_() const
  */
 const QList<QNamespace *> *QNamedElement::allNamespaces() const
 {
-    qWarning("To be implemented");
+    qWarning("QNamedElement::allNamespaces: operation to be implemented");
 }
 
 /*!
@@ -179,7 +179,7 @@ const QList<QNamespace *> *QNamedElement::allNamespaces() const
  */
 const QSet<QPackage *> *QNamedElement::allOwningPackages() const
 {
-    qWarning("To be implemented");
+    qWarning("QNamedElement::allOwningPackages: operation to be implemented");
 }
 
 /*!
@@ -187,7 +187,7 @@ const QSet<QPackage *> *QNamedElement::allOwningPackages() const
  */
 bool QNamedElement::isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const
 {
-    qWarning("To be implemented");
+    qWarning("QNamedElement::isDistinguishableFrom: operation to be implemented");
 }
 
 /*!
@@ -195,7 +195,7 @@ bool QNamedElement::isDistinguishableFrom(const QNamedElement *n, const QNamespa
  */
 QString QNamedElement::separator() const
 {
-    qWarning("To be implemented");
+    qWarning("QNamedElement::separator: operation to be implemented");
 }
 
 QT_END_NAMESPACE_QTUML
