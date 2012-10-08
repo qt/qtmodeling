@@ -73,7 +73,7 @@ public:
     QOutputPin *result() const;
     void setResult(const QOutputPin *result);
 
-private:
+protected:
     QCreateLinkObjectActionPrivate *d_ptr;
 };
 

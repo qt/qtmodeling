@@ -40,20 +40,13 @@
 ****************************************************************************/
 
 #include "qstereotype.h"
+#include "qstereotype_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QImage>
 #include <QtUml/QProfile>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QStereotypePrivate
-{
-public:
-    explicit QStereotypePrivate();
-    virtual ~QStereotypePrivate();
-
-    QSet<QImage *> *icons;
-};
 
 QStereotypePrivate::QStereotypePrivate() :
     icons(new QSet<QImage *>)
@@ -95,14 +88,14 @@ void QStereotype::addIcon(const QImage *icon)
 {
     d_ptr->icons->insert(const_cast<QImage *>(icon));
     // Adjust subsetted property(ies)
-    addOwnedElement(icon);
+    QElement::d_ptr->ownedElements->insert(const_cast<QImage *>(icon));
 }
 
 void QStereotype::removeIcon(const QImage *icon)
 {
     d_ptr->icons->remove(const_cast<QImage *>(icon));
     // Adjust subsetted property(ies)
-    removeOwnedElement(icon);
+    QElement::d_ptr->ownedElements->remove(const_cast<QImage *>(icon));
 }
 
 /*!

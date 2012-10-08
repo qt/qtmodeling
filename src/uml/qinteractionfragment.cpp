@@ -40,6 +40,10 @@
 ****************************************************************************/
 
 #include "qinteractionfragment.h"
+#include "qinteractionfragment_p.h"
+#include "qelement_p.h"
+#include "qnamedelement_p.h"
+#include "qnamedelement_p.h"
 
 #include <QtUml/QGeneralOrdering>
 #include <QtUml/QInteractionOperand>
@@ -48,30 +52,18 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QInteractionFragmentPrivate
-{
-public:
-    explicit QInteractionFragmentPrivate();
-    virtual ~QInteractionFragmentPrivate();
-
-    QSet<QLifeline *> *covered;
-    QInteraction *enclosingInteraction;
-    QInteractionOperand *enclosingOperand;
-    QSet<QGeneralOrdering *> *generalOrderings;
-};
-
 QInteractionFragmentPrivate::QInteractionFragmentPrivate() :
-    covered(new QSet<QLifeline *>),
+    generalOrderings(new QSet<QGeneralOrdering *>),
     enclosingInteraction(0),
-    enclosingOperand(0),
-    generalOrderings(new QSet<QGeneralOrdering *>)
+    covered(new QSet<QLifeline *>),
+    enclosingOperand(0)
 {
 }
 
 QInteractionFragmentPrivate::~QInteractionFragmentPrivate()
 {
-    delete covered;
     delete generalOrderings;
+    delete covered;
 }
 
 /*!
@@ -93,6 +85,41 @@ QInteractionFragment::~QInteractionFragment()
 }
 
 /*!
+    The general ordering relationships contained in this fragment.
+ */
+const QSet<QGeneralOrdering *> *QInteractionFragment::generalOrderings() const
+{
+    return d_ptr->generalOrderings;
+}
+
+void QInteractionFragment::addGeneralOrdering(const QGeneralOrdering *generalOrdering)
+{
+    d_ptr->generalOrderings->insert(const_cast<QGeneralOrdering *>(generalOrdering));
+    // Adjust subsetted property(ies)
+    QElement::d_ptr->ownedElements->insert(const_cast<QGeneralOrdering *>(generalOrdering));
+}
+
+void QInteractionFragment::removeGeneralOrdering(const QGeneralOrdering *generalOrdering)
+{
+    d_ptr->generalOrderings->remove(const_cast<QGeneralOrdering *>(generalOrdering));
+    // Adjust subsetted property(ies)
+    QElement::d_ptr->ownedElements->remove(const_cast<QGeneralOrdering *>(generalOrdering));
+}
+
+/*!
+    The Interaction enclosing this InteractionFragment.
+ */
+QInteraction *QInteractionFragment::enclosingInteraction() const
+{
+    return d_ptr->enclosingInteraction;
+}
+
+void QInteractionFragment::setEnclosingInteraction(const QInteraction *enclosingInteraction)
+{
+    d_ptr->enclosingInteraction = const_cast<QInteraction *>(enclosingInteraction);
+}
+
+/*!
     References the Lifelines that the InteractionFragment involves.
  */
 const QSet<QLifeline *> *QInteractionFragment::covered() const
@@ -111,19 +138,6 @@ void QInteractionFragment::removeCovered(const QLifeline *covered)
 }
 
 /*!
-    The Interaction enclosing this InteractionFragment.
- */
-QInteraction *QInteractionFragment::enclosingInteraction() const
-{
-    return d_ptr->enclosingInteraction;
-}
-
-void QInteractionFragment::setEnclosingInteraction(const QInteraction *enclosingInteraction)
-{
-    d_ptr->enclosingInteraction = const_cast<QInteraction *>(enclosingInteraction);
-}
-
-/*!
     The operand enclosing this InteractionFragment (they may nest recursively)
  */
 QInteractionOperand *QInteractionFragment::enclosingOperand() const
@@ -134,28 +148,6 @@ QInteractionOperand *QInteractionFragment::enclosingOperand() const
 void QInteractionFragment::setEnclosingOperand(const QInteractionOperand *enclosingOperand)
 {
     d_ptr->enclosingOperand = const_cast<QInteractionOperand *>(enclosingOperand);
-}
-
-/*!
-    The general ordering relationships contained in this fragment.
- */
-const QSet<QGeneralOrdering *> *QInteractionFragment::generalOrderings() const
-{
-    return d_ptr->generalOrderings;
-}
-
-void QInteractionFragment::addGeneralOrdering(const QGeneralOrdering *generalOrdering)
-{
-    d_ptr->generalOrderings->insert(const_cast<QGeneralOrdering *>(generalOrdering));
-    // Adjust subsetted property(ies)
-    addOwnedElement(generalOrdering);
-}
-
-void QInteractionFragment::removeGeneralOrdering(const QGeneralOrdering *generalOrdering)
-{
-    d_ptr->generalOrderings->remove(const_cast<QGeneralOrdering *>(generalOrdering));
-    // Adjust subsetted property(ies)
-    removeOwnedElement(generalOrdering);
 }
 
 QT_END_NAMESPACE_QTUML

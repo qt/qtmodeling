@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qforknode.h"
+#include "qforknode_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QForkNodePrivate
-{
-public:
-    explicit QForkNodePrivate();
-    virtual ~QForkNodePrivate();
-
-};
 
 QForkNodePrivate::QForkNodePrivate()
 {

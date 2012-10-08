@@ -40,21 +40,13 @@
 ****************************************************************************/
 
 #include "qcalloperationaction.h"
+#include "qcalloperationaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QOperation>
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QCallOperationActionPrivate
-{
-public:
-    explicit QCallOperationActionPrivate();
-    virtual ~QCallOperationActionPrivate();
-
-    QOperation *operation;
-    QInputPin *target;
-};
 
 QCallOperationActionPrivate::QCallOperationActionPrivate() :
     operation(0),

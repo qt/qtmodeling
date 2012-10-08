@@ -40,6 +40,8 @@
 ****************************************************************************/
 
 #include "qobjectnode.h"
+#include "qobjectnode_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QState>
 #include <QtUml/QBehavior>
@@ -47,25 +49,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QObjectNodePrivate
-{
-public:
-    explicit QObjectNodePrivate();
-    virtual ~QObjectNodePrivate();
-
-    bool isControlType;
-    QtUml::ObjectNodeOrderingKind ordering;
-    QSet<QState *> *inState;
-    QBehavior *selection;
-    QValueSpecification *upperBound;
-};
-
 QObjectNodePrivate::QObjectNodePrivate() :
     isControlType(false),
     ordering(QtUml::ObjectNodeOrderingFIFO),
-    inState(new QSet<QState *>),
+    upperBound(0),
     selection(0),
-    upperBound(0)
+    inState(new QSet<QState *>)
 {
 }
 
@@ -119,21 +108,16 @@ void QObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 }
 
 /*!
-    The required states of the object available at this point in the activity.
+    The maximum number of tokens allowed in the node. Objects cannot flow into the node if the upper bound is reached.
  */
-const QSet<QState *> *QObjectNode::inState() const
+QValueSpecification *QObjectNode::upperBound() const
 {
-    return d_ptr->inState;
+    return d_ptr->upperBound;
 }
 
-void QObjectNode::addInState(const QState *inState)
+void QObjectNode::setUpperBound(const QValueSpecification *upperBound)
 {
-    d_ptr->inState->insert(const_cast<QState *>(inState));
-}
-
-void QObjectNode::removeInState(const QState *inState)
-{
-    d_ptr->inState->remove(const_cast<QState *>(inState));
+    d_ptr->upperBound = const_cast<QValueSpecification *>(upperBound);
 }
 
 /*!
@@ -150,16 +134,21 @@ void QObjectNode::setSelection(const QBehavior *selection)
 }
 
 /*!
-    The maximum number of tokens allowed in the node. Objects cannot flow into the node if the upper bound is reached.
+    The required states of the object available at this point in the activity.
  */
-QValueSpecification *QObjectNode::upperBound() const
+const QSet<QState *> *QObjectNode::inState() const
 {
-    return d_ptr->upperBound;
+    return d_ptr->inState;
 }
 
-void QObjectNode::setUpperBound(const QValueSpecification *upperBound)
+void QObjectNode::addInState(const QState *inState)
 {
-    d_ptr->upperBound = const_cast<QValueSpecification *>(upperBound);
+    d_ptr->inState->insert(const_cast<QState *>(inState));
+}
+
+void QObjectNode::removeInState(const QState *inState)
+{
+    d_ptr->inState->remove(const_cast<QState *>(inState));
 }
 
 QT_END_NAMESPACE_QTUML

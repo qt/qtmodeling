@@ -40,29 +40,18 @@
 ****************************************************************************/
 
 #include "qgeneralizationset.h"
+#include "qgeneralizationset_p.h"
 
 #include <QtUml/QGeneralization>
 #include <QtUml/QClassifier>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QGeneralizationSetPrivate
-{
-public:
-    explicit QGeneralizationSetPrivate();
-    virtual ~QGeneralizationSetPrivate();
-
-    bool isCovering;
-    bool isDisjoint;
-    QSet<QGeneralization *> *generalizations;
-    QClassifier *powertype;
-};
-
 QGeneralizationSetPrivate::QGeneralizationSetPrivate() :
     isCovering(false),
     isDisjoint(false),
-    generalizations(new QSet<QGeneralization *>),
-    powertype(0)
+    powertype(0),
+    generalizations(new QSet<QGeneralization *>)
 {
 }
 
@@ -116,6 +105,19 @@ void QGeneralizationSet::setDisjoint(bool isDisjoint)
 }
 
 /*!
+    Designates the Classifier that is defined as the power type for the associated GeneralizationSet.
+ */
+QClassifier *QGeneralizationSet::powertype() const
+{
+    return d_ptr->powertype;
+}
+
+void QGeneralizationSet::setPowertype(const QClassifier *powertype)
+{
+    d_ptr->powertype = const_cast<QClassifier *>(powertype);
+}
+
+/*!
     Designates the instances of Generalization which are members of a given GeneralizationSet.
  */
 const QSet<QGeneralization *> *QGeneralizationSet::generalizations() const
@@ -131,19 +133,6 @@ void QGeneralizationSet::addGeneralization(const QGeneralization *generalization
 void QGeneralizationSet::removeGeneralization(const QGeneralization *generalization)
 {
     d_ptr->generalizations->remove(const_cast<QGeneralization *>(generalization));
-}
-
-/*!
-    Designates the Classifier that is defined as the power type for the associated GeneralizationSet.
- */
-QClassifier *QGeneralizationSet::powertype() const
-{
-    return d_ptr->powertype;
-}
-
-void QGeneralizationSet::setPowertype(const QClassifier *powertype)
-{
-    d_ptr->powertype = const_cast<QClassifier *>(powertype);
 }
 
 #include "moc_qgeneralizationset.cpp"

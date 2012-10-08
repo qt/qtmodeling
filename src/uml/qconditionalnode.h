@@ -91,7 +91,7 @@ public:
     void addResult(const QOutputPin *result);
     void removeResult(const QOutputPin *result);
 
-private:
+protected:
     QConditionalNodePrivate *d_ptr;
 };
 

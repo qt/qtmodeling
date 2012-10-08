@@ -77,17 +77,17 @@ public:
     // Attributes
     QString name() const;
     void setName(QString name);
-    QString qualifiedName() const;
     QtUml::VisibilityKind visibility() const;
     void setVisibility(QtUml::VisibilityKind visibility);
+    QString qualifiedName() const;
 
     // Association-ends
-    const QSet<QDependency *> *clientDependencies() const;
-    void addClientDependency(const QDependency *clientDependency);
-    void removeClientDependency(const QDependency *clientDependency);
     QStringExpression *nameExpression() const;
     void setNameExpression(const QStringExpression *nameExpression);
     QNamespace *namespace_() const;
+    const QSet<QDependency *> *clientDependencies() const;
+    void addClientDependency(const QDependency *clientDependency);
+    void removeClientDependency(const QDependency *clientDependency);
 
     // Operations
     const QList<QNamespace *> *allNamespaces() const;
@@ -96,13 +96,9 @@ public:
     QString separator() const;
 
 protected:
-    // Synchronization functions for read-only subsetted properties
-    void setNamespace_(const QNamespace *namespace_);
-
-protected:
     explicit QNamedElement();
 
-private:
+protected:
     QNamedElementPrivate *d_ptr;
 };
 

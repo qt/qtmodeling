@@ -73,7 +73,7 @@ public:
     QOpaqueExpression *mapping() const;
     void setMapping(const QOpaqueExpression *mapping);
 
-private:
+protected:
     QAbstractionPrivate *d_ptr;
 };
 

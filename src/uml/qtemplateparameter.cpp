@@ -40,30 +40,21 @@
 ****************************************************************************/
 
 #include "qtemplateparameter.h"
+#include "qtemplateparameter_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QParameterableElement>
 #include <QtUml/QTemplateSignature>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QTemplateParameterPrivate
-{
-public:
-    explicit QTemplateParameterPrivate();
-    virtual ~QTemplateParameterPrivate();
-
-    QParameterableElement *default_;
-    QParameterableElement *ownedDefault;
-    QParameterableElement *ownedParameteredElement;
-    QParameterableElement *parameteredElement;
-    QTemplateSignature *signature;
-};
-
 QTemplateParameterPrivate::QTemplateParameterPrivate() :
     default_(0),
-    ownedDefault(0),
-    ownedParameteredElement(0),
     parameteredElement(0),
+    ownedParameteredElement(0),
+    ownedDefault(0),
     signature(0)
 {
 }
@@ -104,16 +95,16 @@ void QTemplateParameter::setDefault_(const QParameterableElement *default_)
 }
 
 /*!
-    The element that is owned by this template parameter for the purpose of providing a default.
+    The element exposed by this template parameter.
  */
-QParameterableElement *QTemplateParameter::ownedDefault() const
+QParameterableElement *QTemplateParameter::parameteredElement() const
 {
-    return d_ptr->ownedDefault;
+    return d_ptr->parameteredElement;
 }
 
-void QTemplateParameter::setOwnedDefault(const QParameterableElement *ownedDefault)
+void QTemplateParameter::setParameteredElement(const QParameterableElement *parameteredElement)
 {
-    d_ptr->ownedDefault = const_cast<QParameterableElement *>(ownedDefault);
+    d_ptr->parameteredElement = const_cast<QParameterableElement *>(parameteredElement);
 }
 
 /*!
@@ -130,16 +121,16 @@ void QTemplateParameter::setOwnedParameteredElement(const QParameterableElement 
 }
 
 /*!
-    The element exposed by this template parameter.
+    The element that is owned by this template parameter for the purpose of providing a default.
  */
-QParameterableElement *QTemplateParameter::parameteredElement() const
+QParameterableElement *QTemplateParameter::ownedDefault() const
 {
-    return d_ptr->parameteredElement;
+    return d_ptr->ownedDefault;
 }
 
-void QTemplateParameter::setParameteredElement(const QParameterableElement *parameteredElement)
+void QTemplateParameter::setOwnedDefault(const QParameterableElement *ownedDefault)
 {
-    d_ptr->parameteredElement = const_cast<QParameterableElement *>(parameteredElement);
+    d_ptr->ownedDefault = const_cast<QParameterableElement *>(ownedDefault);
 }
 
 /*!

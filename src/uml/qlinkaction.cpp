@@ -40,6 +40,9 @@
 ****************************************************************************/
 
 #include "qlinkaction.h"
+#include "qlinkaction_p.h"
+#include "qaction_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QLinkEndData>
 #include <QtUml/QInputPin>
@@ -47,26 +50,16 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QLinkActionPrivate
-{
-public:
-    explicit QLinkActionPrivate();
-    virtual ~QLinkActionPrivate();
-
-    QSet<QLinkEndData *> *endData;
-    QSet<QInputPin *> *inputValues;
-};
-
 QLinkActionPrivate::QLinkActionPrivate() :
-    endData(new QSet<QLinkEndData *>),
-    inputValues(new QSet<QInputPin *>)
+    inputValues(new QSet<QInputPin *>),
+    endData(new QSet<QLinkEndData *>)
 {
 }
 
 QLinkActionPrivate::~QLinkActionPrivate()
 {
-    delete endData;
     delete inputValues;
+    delete endData;
 }
 
 /*!
@@ -88,28 +81,6 @@ QLinkAction::~QLinkAction()
 }
 
 /*!
-    Data identifying one end of a link by the objects on its ends and qualifiers.
- */
-const QSet<QLinkEndData *> *QLinkAction::endData() const
-{
-    return d_ptr->endData;
-}
-
-void QLinkAction::addEndData(const QLinkEndData *endData)
-{
-    d_ptr->endData->insert(const_cast<QLinkEndData *>(endData));
-    // Adjust subsetted property(ies)
-    addOwnedElement(endData);
-}
-
-void QLinkAction::removeEndData(const QLinkEndData *endData)
-{
-    d_ptr->endData->remove(const_cast<QLinkEndData *>(endData));
-    // Adjust subsetted property(ies)
-    removeOwnedElement(endData);
-}
-
-/*!
     Pins taking end objects and qualifier values as input.
  */
 const QSet<QInputPin *> *QLinkAction::inputValues() const
@@ -121,14 +92,36 @@ void QLinkAction::addInputValue(const QInputPin *inputValue)
 {
     d_ptr->inputValues->insert(const_cast<QInputPin *>(inputValue));
     // Adjust subsetted property(ies)
-    addInput(inputValue);
+    QAction::d_ptr->inputs->append(const_cast<QInputPin *>(inputValue));
 }
 
 void QLinkAction::removeInputValue(const QInputPin *inputValue)
 {
     d_ptr->inputValues->remove(const_cast<QInputPin *>(inputValue));
     // Adjust subsetted property(ies)
-    removeInput(inputValue);
+    QAction::d_ptr->inputs->removeAll(const_cast<QInputPin *>(inputValue));
+}
+
+/*!
+    Data identifying one end of a link by the objects on its ends and qualifiers.
+ */
+const QSet<QLinkEndData *> *QLinkAction::endData() const
+{
+    return d_ptr->endData;
+}
+
+void QLinkAction::addEndData(const QLinkEndData *endData)
+{
+    d_ptr->endData->insert(const_cast<QLinkEndData *>(endData));
+    // Adjust subsetted property(ies)
+    QElement::d_ptr->ownedElements->insert(const_cast<QLinkEndData *>(endData));
+}
+
+void QLinkAction::removeEndData(const QLinkEndData *endData)
+{
+    d_ptr->endData->remove(const_cast<QLinkEndData *>(endData));
+    // Adjust subsetted property(ies)
+    QElement::d_ptr->ownedElements->remove(const_cast<QLinkEndData *>(endData));
 }
 
 /*!

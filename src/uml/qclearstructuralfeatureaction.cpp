@@ -40,19 +40,12 @@
 ****************************************************************************/
 
 #include "qclearstructuralfeatureaction.h"
+#include "qclearstructuralfeatureaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QClearStructuralFeatureActionPrivate
-{
-public:
-    explicit QClearStructuralFeatureActionPrivate();
-    virtual ~QClearStructuralFeatureActionPrivate();
-
-    QOutputPin *result;
-};
 
 QClearStructuralFeatureActionPrivate::QClearStructuralFeatureActionPrivate() :
     result(0)

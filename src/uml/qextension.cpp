@@ -40,21 +40,13 @@
 ****************************************************************************/
 
 #include "qextension.h"
+#include "qextension_p.h"
 
 #include <QtUml/QClass>
 #include <QtUml/QExtensionEnd>
 #include <QtUml/QProperty>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QExtensionPrivate
-{
-public:
-    explicit QExtensionPrivate();
-    virtual ~QExtensionPrivate();
-
-    QExtensionEnd *ownedEnd;
-};
 
 QExtensionPrivate::QExtensionPrivate() :
     ownedEnd(0)

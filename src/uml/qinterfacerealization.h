@@ -61,8 +61,8 @@ class Q_UML_EXPORT QInterfaceRealization : public QRealization
     Q_OBJECT
 
     // From QInterfaceRealization
-    Q_PROPERTY(QInterface * contract READ contract WRITE setContract)
     Q_PROPERTY(QBehavioredClassifier * implementingClassifier READ implementingClassifier WRITE setImplementingClassifier)
+    Q_PROPERTY(QInterface * contract READ contract WRITE setContract)
 
     Q_DISABLE_COPY(QInterfaceRealization)
     Q_DECLARE_PRIVATE(QInterfaceRealization)
@@ -72,12 +72,12 @@ public:
     virtual ~QInterfaceRealization();
 
     // Association-ends
-    QInterface *contract() const;
-    void setContract(const QInterface *contract);
     QBehavioredClassifier *implementingClassifier() const;
     void setImplementingClassifier(const QBehavioredClassifier *implementingClassifier);
+    QInterface *contract() const;
+    void setContract(const QInterface *contract);
 
-private:
+protected:
     QInterfaceRealizationPrivate *d_ptr;
 };
 

@@ -40,6 +40,12 @@
 ****************************************************************************/
 
 #include "qregion.h"
+#include "qregion_p.h"
+#include "qredefinableelement_p.h"
+#include "qnamespace_p.h"
+#include "qnamedelement_p.h"
+#include "qnamedelement_p.h"
+#include "qnamespace_p.h"
 
 #include <QtUml/QVertex>
 #include <QtUml/QTransition>
@@ -49,32 +55,19 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QRegionPrivate
-{
-public:
-    explicit QRegionPrivate();
-    virtual ~QRegionPrivate();
-
-    QRegion *extendedRegion;
-    QState *state;
-    QStateMachine *stateMachine;
-    QSet<QVertex *> *subvertices;
-    QSet<QTransition *> *transitions;
-};
-
 QRegionPrivate::QRegionPrivate() :
     extendedRegion(0),
-    state(0),
+    transitions(new QSet<QTransition *>),
     stateMachine(0),
-    subvertices(new QSet<QVertex *>),
-    transitions(new QSet<QTransition *>)
+    state(0),
+    subvertices(new QSet<QVertex *>)
 {
 }
 
 QRegionPrivate::~QRegionPrivate()
 {
-    delete subvertices;
     delete transitions;
+    delete subvertices;
 }
 
 /*!
@@ -109,24 +102,25 @@ void QRegion::setExtendedRegion(const QRegion *extendedRegion)
 }
 
 /*!
-    References the classifier in which context this element may be redefined.
+    The set of transitions owned by the region.
  */
-QClassifier *QRegion::redefinitionContext() const
+const QSet<QTransition *> *QRegion::transitions() const
 {
-    qWarning("QRegion::redefinitionContext: to be implemented (this is a derived associationend)");
+    return d_ptr->transitions;
 }
 
-/*!
-    The State that owns the Region. If a Region is owned by a State, then it cannot also be owned by a StateMachine.
- */
-QState *QRegion::state() const
+void QRegion::addTransition(const QTransition *transition)
 {
-    return d_ptr->state;
+    d_ptr->transitions->insert(const_cast<QTransition *>(transition));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QTransition *>(transition));
 }
 
-void QRegion::setState(const QState *state)
+void QRegion::removeTransition(const QTransition *transition)
 {
-    d_ptr->state = const_cast<QState *>(state);
+    d_ptr->transitions->remove(const_cast<QTransition *>(transition));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QTransition *>(transition));
 }
 
 /*!
@@ -143,6 +137,27 @@ void QRegion::setStateMachine(const QStateMachine *stateMachine)
 }
 
 /*!
+    The State that owns the Region. If a Region is owned by a State, then it cannot also be owned by a StateMachine.
+ */
+QState *QRegion::state() const
+{
+    return d_ptr->state;
+}
+
+void QRegion::setState(const QState *state)
+{
+    d_ptr->state = const_cast<QState *>(state);
+}
+
+/*!
+    References the classifier in which context this element may be redefined.
+ */
+QClassifier *QRegion::redefinitionContext() const
+{
+    qWarning("QRegion::redefinitionContext: to be implemented (this is a derived associationend)");
+}
+
+/*!
     The set of vertices that are owned by this region.
  */
 const QSet<QVertex *> *QRegion::subvertices() const
@@ -154,36 +169,14 @@ void QRegion::addSubvertex(const QVertex *subvertex)
 {
     d_ptr->subvertices->insert(const_cast<QVertex *>(subvertex));
     // Adjust subsetted property(ies)
-    addOwnedMember(subvertex);
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QVertex *>(subvertex));
 }
 
 void QRegion::removeSubvertex(const QVertex *subvertex)
 {
     d_ptr->subvertices->remove(const_cast<QVertex *>(subvertex));
     // Adjust subsetted property(ies)
-    removeOwnedMember(subvertex);
-}
-
-/*!
-    The set of transitions owned by the region.
- */
-const QSet<QTransition *> *QRegion::transitions() const
-{
-    return d_ptr->transitions;
-}
-
-void QRegion::addTransition(const QTransition *transition)
-{
-    d_ptr->transitions->insert(const_cast<QTransition *>(transition));
-    // Adjust subsetted property(ies)
-    addOwnedMember(transition);
-}
-
-void QRegion::removeTransition(const QTransition *transition)
-{
-    d_ptr->transitions->remove(const_cast<QTransition *>(transition));
-    // Adjust subsetted property(ies)
-    removeOwnedMember(transition);
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QVertex *>(subvertex));
 }
 
 /*!

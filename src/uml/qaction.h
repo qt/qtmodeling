@@ -76,26 +76,19 @@ public:
 
     // Association-ends
     QClassifier *context() const;
-    const QList<QInputPin *> *inputs() const;
     const QSet<QConstraint *> *localPostconditions() const;
     void addLocalPostcondition(const QConstraint *localPostcondition);
     void removeLocalPostcondition(const QConstraint *localPostcondition);
     const QSet<QConstraint *> *localPreconditions() const;
     void addLocalPrecondition(const QConstraint *localPrecondition);
     void removeLocalPrecondition(const QConstraint *localPrecondition);
+    const QList<QInputPin *> *inputs() const;
     const QList<QOutputPin *> *outputs() const;
-
-protected:
-    // Synchronization functions for read-only subsetted properties
-    void addInput(const QInputPin *input);
-    void removeInput(const QInputPin *input);
-    void addOutput(const QOutputPin *output);
-    void removeOutput(const QOutputPin *output);
 
 protected:
     explicit QAction();
 
-private:
+protected:
     QActionPrivate *d_ptr;
 };
 

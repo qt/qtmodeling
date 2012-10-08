@@ -40,18 +40,10 @@
 ****************************************************************************/
 
 #include "qliteralboolean.h"
+#include "qliteralboolean_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QLiteralBooleanPrivate
-{
-public:
-    explicit QLiteralBooleanPrivate();
-    virtual ~QLiteralBooleanPrivate();
-
-    bool value;
-};
 
 QLiteralBooleanPrivate::QLiteralBooleanPrivate() :
     value(false)

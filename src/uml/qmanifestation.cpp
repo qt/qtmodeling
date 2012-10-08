@@ -40,19 +40,12 @@
 ****************************************************************************/
 
 #include "qmanifestation.h"
+#include "qmanifestation_p.h"
+#include "qdependency_p.h"
 
 #include <QtUml/QPackageableElement>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QManifestationPrivate
-{
-public:
-    explicit QManifestationPrivate();
-    virtual ~QManifestationPrivate();
-
-    QPackageableElement *utilizedElement;
-};
 
 QManifestationPrivate::QManifestationPrivate() :
     utilizedElement(0)

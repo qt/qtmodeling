@@ -65,7 +65,7 @@ public:
 protected:
     explicit QLiteralSpecification();
 
-private:
+protected:
     QLiteralSpecificationPrivate *d_ptr;
 };
 

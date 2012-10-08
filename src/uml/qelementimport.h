@@ -68,9 +68,9 @@ class Q_UML_EXPORT QElementImport : public QObject, public QDirectedRelationship
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QRelationship
     Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
@@ -107,7 +107,7 @@ public:
     // Operations
     QString getName() const;
 
-private:
+protected:
     QElementImportPrivate *d_ptr;
 };
 

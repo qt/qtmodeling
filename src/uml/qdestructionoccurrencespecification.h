@@ -65,7 +65,7 @@ public:
     explicit QDestructionOccurrenceSpecification(QObject *parent = 0);
     virtual ~QDestructionOccurrenceSpecification();
 
-private:
+protected:
     QDestructionOccurrenceSpecificationPrivate *d_ptr;
 };
 

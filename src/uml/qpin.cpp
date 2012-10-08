@@ -40,18 +40,10 @@
 ****************************************************************************/
 
 #include "qpin.h"
+#include "qpin_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QPinPrivate
-{
-public:
-    explicit QPinPrivate();
-    virtual ~QPinPrivate();
-
-    bool isControl;
-};
 
 QPinPrivate::QPinPrivate() :
     isControl(false)

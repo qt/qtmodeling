@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qmessageevent.h"
+#include "qmessageevent_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QMessageEventPrivate
-{
-public:
-    explicit QMessageEventPrivate();
-    virtual ~QMessageEventPrivate();
-
-};
 
 QMessageEventPrivate::QMessageEventPrivate()
 {

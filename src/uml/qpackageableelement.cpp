@@ -40,18 +40,10 @@
 ****************************************************************************/
 
 #include "qpackageableelement.h"
+#include "qpackageableelement_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QPackageableElementPrivate
-{
-public:
-    explicit QPackageableElementPrivate();
-    virtual ~QPackageableElementPrivate();
-
-    QtUml::VisibilityKind visibility;
-};
 
 QPackageableElementPrivate::QPackageableElementPrivate() :
     visibility(QtUml::VisibilityPublic)

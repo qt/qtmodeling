@@ -40,19 +40,11 @@
 ****************************************************************************/
 
 #include "qsignalevent.h"
+#include "qsignalevent_p.h"
 
 #include <QtUml/QSignal>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QSignalEventPrivate
-{
-public:
-    explicit QSignalEventPrivate();
-    virtual ~QSignalEventPrivate();
-
-    QSignal *signal;
-};
 
 QSignalEventPrivate::QSignalEventPrivate() :
     signal(0)

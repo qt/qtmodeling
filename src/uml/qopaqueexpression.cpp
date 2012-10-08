@@ -40,22 +40,12 @@
 ****************************************************************************/
 
 #include "qopaqueexpression.h"
+#include "qopaqueexpression_p.h"
 
 #include <QtUml/QBehavior>
 #include <QtUml/QParameter>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QOpaqueExpressionPrivate
-{
-public:
-    explicit QOpaqueExpressionPrivate();
-    virtual ~QOpaqueExpressionPrivate();
-
-    QList<QString> *bodies;
-    QList<QString> *languages;
-    QBehavior *behavior;
-};
 
 QOpaqueExpressionPrivate::QOpaqueExpressionPrivate() :
     bodies(new QList<QString>),

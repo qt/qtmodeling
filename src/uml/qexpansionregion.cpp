@@ -40,21 +40,11 @@
 ****************************************************************************/
 
 #include "qexpansionregion.h"
+#include "qexpansionregion_p.h"
 
 #include <QtUml/QExpansionNode>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QExpansionRegionPrivate
-{
-public:
-    explicit QExpansionRegionPrivate();
-    virtual ~QExpansionRegionPrivate();
-
-    QtUml::ExpansionKind mode;
-    QSet<QExpansionNode *> *inputElements;
-    QSet<QExpansionNode *> *outputElements;
-};
 
 QExpansionRegionPrivate::QExpansionRegionPrivate() :
     mode(QtUml::ExpansionIterative),

@@ -82,7 +82,7 @@ public:
     QDurationInterval *specification() const;
     void setSpecification(const QDurationInterval *specification);
 
-private:
+protected:
     QDurationConstraintPrivate *d_ptr;
 };
 

@@ -70,9 +70,9 @@ class Q_UML_EXPORT QInformationFlow : public QObject, public QDirectedRelationsh
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QRelationship
     Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
@@ -88,21 +88,21 @@ class Q_UML_EXPORT QInformationFlow : public QObject, public QDirectedRelationsh
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QPackageableElement
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // From QInformationFlow
+    Q_PROPERTY(const QSet<QNamedElement *> * informationTargets READ informationTargets)
+    Q_PROPERTY(const QSet<QConnector *> * realizingConnectors READ realizingConnectors)
     Q_PROPERTY(const QSet<QClassifier *> * conveyed READ conveyed)
     Q_PROPERTY(const QSet<QNamedElement *> * informationSources READ informationSources)
-    Q_PROPERTY(const QSet<QNamedElement *> * informationTargets READ informationTargets)
-    Q_PROPERTY(const QSet<QRelationship *> * realizations READ realizations)
-    Q_PROPERTY(const QSet<QActivityEdge *> * realizingActivityEdges READ realizingActivityEdges)
-    Q_PROPERTY(const QSet<QConnector *> * realizingConnectors READ realizingConnectors)
     Q_PROPERTY(const QSet<QMessage *> * realizingMessages READ realizingMessages)
+    Q_PROPERTY(const QSet<QActivityEdge *> * realizingActivityEdges READ realizingActivityEdges)
+    Q_PROPERTY(const QSet<QRelationship *> * realizations READ realizations)
 
     Q_DISABLE_COPY(QInformationFlow)
     Q_DECLARE_PRIVATE(QInformationFlow)
@@ -112,29 +112,29 @@ public:
     virtual ~QInformationFlow();
 
     // Association-ends
+    const QSet<QNamedElement *> *informationTargets() const;
+    void addInformationTarget(const QNamedElement *informationTarget);
+    void removeInformationTarget(const QNamedElement *informationTarget);
+    const QSet<QConnector *> *realizingConnectors() const;
+    void addRealizingConnector(const QConnector *realizingConnector);
+    void removeRealizingConnector(const QConnector *realizingConnector);
     const QSet<QClassifier *> *conveyed() const;
     void addConveyed(const QClassifier *conveyed);
     void removeConveyed(const QClassifier *conveyed);
     const QSet<QNamedElement *> *informationSources() const;
     void addInformationSource(const QNamedElement *informationSource);
     void removeInformationSource(const QNamedElement *informationSource);
-    const QSet<QNamedElement *> *informationTargets() const;
-    void addInformationTarget(const QNamedElement *informationTarget);
-    void removeInformationTarget(const QNamedElement *informationTarget);
-    const QSet<QRelationship *> *realizations() const;
-    void addRealization(const QRelationship *realization);
-    void removeRealization(const QRelationship *realization);
-    const QSet<QActivityEdge *> *realizingActivityEdges() const;
-    void addRealizingActivityEdge(const QActivityEdge *realizingActivityEdge);
-    void removeRealizingActivityEdge(const QActivityEdge *realizingActivityEdge);
-    const QSet<QConnector *> *realizingConnectors() const;
-    void addRealizingConnector(const QConnector *realizingConnector);
-    void removeRealizingConnector(const QConnector *realizingConnector);
     const QSet<QMessage *> *realizingMessages() const;
     void addRealizingMessage(const QMessage *realizingMessage);
     void removeRealizingMessage(const QMessage *realizingMessage);
+    const QSet<QActivityEdge *> *realizingActivityEdges() const;
+    void addRealizingActivityEdge(const QActivityEdge *realizingActivityEdge);
+    void removeRealizingActivityEdge(const QActivityEdge *realizingActivityEdge);
+    const QSet<QRelationship *> *realizations() const;
+    void addRealization(const QRelationship *realization);
+    void removeRealization(const QRelationship *realization);
 
-private:
+protected:
     QInformationFlowPrivate *d_ptr;
 };
 

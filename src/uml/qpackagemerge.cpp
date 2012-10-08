@@ -40,20 +40,14 @@
 ****************************************************************************/
 
 #include "qpackagemerge.h"
+#include "qpackagemerge_p.h"
+#include "qdirectedrelationship_p.h"
+#include "qelement_p.h"
+#include "qdirectedrelationship_p.h"
 
 #include <QtUml/QPackage>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QPackageMergePrivate
-{
-public:
-    explicit QPackageMergePrivate();
-    virtual ~QPackageMergePrivate();
-
-    QPackage *mergedPackage;
-    QPackage *receivingPackage;
-};
 
 QPackageMergePrivate::QPackageMergePrivate() :
     mergedPackage(0),

@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qdestructionoccurrencespecification.h"
+#include "qdestructionoccurrencespecification_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QDestructionOccurrenceSpecificationPrivate
-{
-public:
-    explicit QDestructionOccurrenceSpecificationPrivate();
-    virtual ~QDestructionOccurrenceSpecificationPrivate();
-
-};
 
 QDestructionOccurrenceSpecificationPrivate::QDestructionOccurrenceSpecificationPrivate()
 {

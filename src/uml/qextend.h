@@ -67,9 +67,9 @@ class Q_UML_EXPORT QExtend : public QObject, public QDirectedRelationship, publi
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QRelationship
     Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
@@ -80,17 +80,17 @@ class Q_UML_EXPORT QExtend : public QObject, public QDirectedRelationship, publi
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QExtend
-    Q_PROPERTY(QConstraint * condition READ condition WRITE setCondition)
     Q_PROPERTY(QUseCase * extendedCase READ extendedCase WRITE setExtendedCase)
     Q_PROPERTY(QUseCase * extension READ extension WRITE setExtension)
     Q_PROPERTY(const QList<QExtensionPoint *> * extensionLocations READ extensionLocations)
+    Q_PROPERTY(QConstraint * condition READ condition WRITE setCondition)
 
     Q_DISABLE_COPY(QExtend)
     Q_DECLARE_PRIVATE(QExtend)
@@ -100,8 +100,6 @@ public:
     virtual ~QExtend();
 
     // Association-ends
-    QConstraint *condition() const;
-    void setCondition(const QConstraint *condition);
     QUseCase *extendedCase() const;
     void setExtendedCase(const QUseCase *extendedCase);
     QUseCase *extension() const;
@@ -109,8 +107,10 @@ public:
     const QList<QExtensionPoint *> *extensionLocations() const;
     void addExtensionLocation(const QExtensionPoint *extensionLocation);
     void removeExtensionLocation(const QExtensionPoint *extensionLocation);
+    QConstraint *condition() const;
+    void setCondition(const QConstraint *condition);
 
-private:
+protected:
     QExtendPrivate *d_ptr;
 };
 

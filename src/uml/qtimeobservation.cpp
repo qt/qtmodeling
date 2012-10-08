@@ -40,20 +40,11 @@
 ****************************************************************************/
 
 #include "qtimeobservation.h"
+#include "qtimeobservation_p.h"
 
 #include <QtUml/QNamedElement>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QTimeObservationPrivate
-{
-public:
-    explicit QTimeObservationPrivate();
-    virtual ~QTimeObservationPrivate();
-
-    bool firstEvent;
-    QNamedElement *event;
-};
 
 QTimeObservationPrivate::QTimeObservationPrivate() :
     firstEvent(true),

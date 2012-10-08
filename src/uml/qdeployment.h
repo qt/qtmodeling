@@ -65,9 +65,9 @@ class Q_UML_EXPORT QDeployment : public QDependency
     Q_OBJECT
 
     // From QDeployment
+    Q_PROPERTY(QDeploymentTarget * location READ location WRITE setLocation)
     Q_PROPERTY(const QSet<QDeploymentSpecification *> * configurations READ configurations)
     Q_PROPERTY(const QSet<QDeployedArtifact *> * deployedArtifacts READ deployedArtifacts)
-    Q_PROPERTY(QDeploymentTarget * location READ location WRITE setLocation)
 
     Q_DISABLE_COPY(QDeployment)
     Q_DECLARE_PRIVATE(QDeployment)
@@ -77,16 +77,16 @@ public:
     virtual ~QDeployment();
 
     // Association-ends
+    QDeploymentTarget *location() const;
+    void setLocation(const QDeploymentTarget *location);
     const QSet<QDeploymentSpecification *> *configurations() const;
     void addConfiguration(const QDeploymentSpecification *configuration);
     void removeConfiguration(const QDeploymentSpecification *configuration);
     const QSet<QDeployedArtifact *> *deployedArtifacts() const;
     void addDeployedArtifact(const QDeployedArtifact *deployedArtifact);
     void removeDeployedArtifact(const QDeployedArtifact *deployedArtifact);
-    QDeploymentTarget *location() const;
-    void setLocation(const QDeploymentTarget *location);
 
-private:
+protected:
     QDeploymentPrivate *d_ptr;
 };
 

@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qactor.h"
+#include "qactor_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QActorPrivate
-{
-public:
-    explicit QActorPrivate();
-    virtual ~QActorPrivate();
-
-};
 
 QActorPrivate::QActorPrivate()
 {

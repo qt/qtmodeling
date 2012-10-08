@@ -12,7 +12,7 @@ use Getopt::Std;
 my %options=();
 getopt("oi",\%options);
 
-my $xml = new XML::Simple(keyattr => { 'class' => '+name' }, forcearray => ['namespace', 'class', 'enumeration', 'attribute', 'associationend', 'operation', 'accessor', 'parameter', 'forwarddecl', 'superclass']);
+my $xml = new XML::Simple(keyattr => { 'class' => '+name', 'attribute' => '+id', 'associationend' => '+id' }, forcearray => ['namespace', 'class', 'enumeration', 'attribute', 'associationend', 'operation', 'accessor', 'parameter', 'forwarddecl', 'superclass']);
 my $tt = Template->new(INTERPOLATE  => 1, INCLUDE_PATH => 'templates/');
 
 my $xmi = $xml->XMLin($options{i});
@@ -32,6 +32,12 @@ binmode STDOUT, ':utf8';
 foreach my $class (values %$classes) {
     open STDOUT, '>', $options{o}."/".$namespace->{path}."/".lc($class->{name}).".h";
     if ($tt->process('class.h', {
+        namespace => $namespace->{path},
+        class => $class,
+        classes => $classes
+    }) ne 1) { print $tt->error(); }
+    open STDOUT, '>', $options{o}."/".$namespace->{path}."/".lc($class->{name})."_p.h";
+    if ($tt->process('class_p.h', {
         namespace => $namespace->{path},
         class => $class,
         classes => $classes

@@ -65,9 +65,9 @@ class Q_UML_EXPORT QGeneralizationSet : public QObject, public QPackageableEleme
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QParameterableElement
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
@@ -76,9 +76,9 @@ class Q_UML_EXPORT QGeneralizationSet : public QObject, public QPackageableEleme
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QPackageableElement
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
@@ -86,8 +86,8 @@ class Q_UML_EXPORT QGeneralizationSet : public QObject, public QPackageableEleme
     // From QGeneralizationSet
     Q_PROPERTY(bool isCovering READ isCovering WRITE setCovering)
     Q_PROPERTY(bool isDisjoint READ isDisjoint WRITE setDisjoint)
-    Q_PROPERTY(const QSet<QGeneralization *> * generalizations READ generalizations)
     Q_PROPERTY(QClassifier * powertype READ powertype WRITE setPowertype)
+    Q_PROPERTY(const QSet<QGeneralization *> * generalizations READ generalizations)
 
     Q_DISABLE_COPY(QGeneralizationSet)
     Q_DECLARE_PRIVATE(QGeneralizationSet)
@@ -103,13 +103,13 @@ public:
     void setDisjoint(bool isDisjoint);
 
     // Association-ends
+    QClassifier *powertype() const;
+    void setPowertype(const QClassifier *powertype);
     const QSet<QGeneralization *> *generalizations() const;
     void addGeneralization(const QGeneralization *generalization);
     void removeGeneralization(const QGeneralization *generalization);
-    QClassifier *powertype() const;
-    void setPowertype(const QClassifier *powertype);
 
-private:
+protected:
     QGeneralizationSetPrivate *d_ptr;
 };
 

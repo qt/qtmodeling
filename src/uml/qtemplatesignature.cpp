@@ -40,34 +40,26 @@
 ****************************************************************************/
 
 #include "qtemplatesignature.h"
+#include "qtemplatesignature_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QTemplateParameter>
 #include <QtUml/QTemplateableElement>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QTemplateSignaturePrivate
-{
-public:
-    explicit QTemplateSignaturePrivate();
-    virtual ~QTemplateSignaturePrivate();
-
-    QList<QTemplateParameter *> *ownedParameters;
-    QList<QTemplateParameter *> *parameters;
-    QTemplateableElement *template_;
-};
-
 QTemplateSignaturePrivate::QTemplateSignaturePrivate() :
-    ownedParameters(new QList<QTemplateParameter *>),
     parameters(new QList<QTemplateParameter *>),
-    template_(0)
+    template_(0),
+    ownedParameters(new QList<QTemplateParameter *>)
 {
 }
 
 QTemplateSignaturePrivate::~QTemplateSignaturePrivate()
 {
-    delete ownedParameters;
     delete parameters;
+    delete ownedParameters;
 }
 
 /*!
@@ -86,30 +78,6 @@ QTemplateSignature::QTemplateSignature(QObject *parent)
 QTemplateSignature::~QTemplateSignature()
 {
     delete d_ptr;
-}
-
-/*!
-    The formal template parameters that are owned by this template signature.
- */
-const QList<QTemplateParameter *> *QTemplateSignature::ownedParameters() const
-{
-    return d_ptr->ownedParameters;
-}
-
-void QTemplateSignature::addOwnedParameter(const QTemplateParameter *ownedParameter)
-{
-    d_ptr->ownedParameters->append(const_cast<QTemplateParameter *>(ownedParameter));
-    // Adjust subsetted property(ies)
-    addParameter(ownedParameter);
-    addOwnedElement(ownedParameter);
-}
-
-void QTemplateSignature::removeOwnedParameter(const QTemplateParameter *ownedParameter)
-{
-    d_ptr->ownedParameters->removeAll(const_cast<QTemplateParameter *>(ownedParameter));
-    // Adjust subsetted property(ies)
-    removeParameter(ownedParameter);
-    removeOwnedElement(ownedParameter);
 }
 
 /*!
@@ -141,6 +109,30 @@ QTemplateableElement *QTemplateSignature::template_() const
 void QTemplateSignature::setTemplate_(const QTemplateableElement *template_)
 {
     d_ptr->template_ = const_cast<QTemplateableElement *>(template_);
+}
+
+/*!
+    The formal template parameters that are owned by this template signature.
+ */
+const QList<QTemplateParameter *> *QTemplateSignature::ownedParameters() const
+{
+    return d_ptr->ownedParameters;
+}
+
+void QTemplateSignature::addOwnedParameter(const QTemplateParameter *ownedParameter)
+{
+    d_ptr->ownedParameters->append(const_cast<QTemplateParameter *>(ownedParameter));
+    // Adjust subsetted property(ies)
+    QTemplateSignature::d_ptr->parameters->append(const_cast<QTemplateParameter *>(ownedParameter));
+    QElement::d_ptr->ownedElements->insert(const_cast<QTemplateParameter *>(ownedParameter));
+}
+
+void QTemplateSignature::removeOwnedParameter(const QTemplateParameter *ownedParameter)
+{
+    d_ptr->ownedParameters->removeAll(const_cast<QTemplateParameter *>(ownedParameter));
+    // Adjust subsetted property(ies)
+    QTemplateSignature::d_ptr->parameters->removeAll(const_cast<QTemplateParameter *>(ownedParameter));
+    QElement::d_ptr->ownedElements->remove(const_cast<QTemplateParameter *>(ownedParameter));
 }
 
 #include "moc_qtemplatesignature.cpp"

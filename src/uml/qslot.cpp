@@ -40,6 +40,9 @@
 ****************************************************************************/
 
 #include "qslot.h"
+#include "qslot_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QStructuralFeature>
 #include <QtUml/QInstanceSpecification>
@@ -47,21 +50,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QSlotPrivate
-{
-public:
-    explicit QSlotPrivate();
-    virtual ~QSlotPrivate();
-
-    QStructuralFeature *definingFeature;
-    QInstanceSpecification *owningInstance;
-    QList<QValueSpecification *> *values;
-};
-
 QSlotPrivate::QSlotPrivate() :
+    values(new QList<QValueSpecification *>),
     definingFeature(0),
-    owningInstance(0),
-    values(new QList<QValueSpecification *>)
+    owningInstance(0)
 {
 }
 
@@ -89,6 +81,28 @@ QSlot::~QSlot()
 }
 
 /*!
+    The value or values corresponding to the defining feature for the owning instance specification.
+ */
+const QList<QValueSpecification *> *QSlot::values() const
+{
+    return d_ptr->values;
+}
+
+void QSlot::addValue(const QValueSpecification *value)
+{
+    d_ptr->values->append(const_cast<QValueSpecification *>(value));
+    // Adjust subsetted property(ies)
+    QElement::d_ptr->ownedElements->insert(const_cast<QValueSpecification *>(value));
+}
+
+void QSlot::removeValue(const QValueSpecification *value)
+{
+    d_ptr->values->removeAll(const_cast<QValueSpecification *>(value));
+    // Adjust subsetted property(ies)
+    QElement::d_ptr->ownedElements->remove(const_cast<QValueSpecification *>(value));
+}
+
+/*!
     The structural feature that specifies the values that may be held by the slot.
  */
 QStructuralFeature *QSlot::definingFeature() const
@@ -112,28 +126,6 @@ QInstanceSpecification *QSlot::owningInstance() const
 void QSlot::setOwningInstance(const QInstanceSpecification *owningInstance)
 {
     d_ptr->owningInstance = const_cast<QInstanceSpecification *>(owningInstance);
-}
-
-/*!
-    The value or values corresponding to the defining feature for the owning instance specification.
- */
-const QList<QValueSpecification *> *QSlot::values() const
-{
-    return d_ptr->values;
-}
-
-void QSlot::addValue(const QValueSpecification *value)
-{
-    d_ptr->values->append(const_cast<QValueSpecification *>(value));
-    // Adjust subsetted property(ies)
-    addOwnedElement(value);
-}
-
-void QSlot::removeValue(const QValueSpecification *value)
-{
-    d_ptr->values->removeAll(const_cast<QValueSpecification *>(value));
-    // Adjust subsetted property(ies)
-    removeOwnedElement(value);
 }
 
 #include "moc_qslot.cpp"

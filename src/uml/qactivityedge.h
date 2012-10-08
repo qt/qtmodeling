@@ -73,37 +73,32 @@ public:
     virtual ~QActivityEdge();
 
     // Association-ends
-    QActivity *activity() const;
-    void setActivity(const QActivity *activity);
-    QValueSpecification *guard() const;
-    void setGuard(const QValueSpecification *guard);
-    const QSet<QActivityGroup *> *inGroup() const;
-    const QSet<QActivityPartition *> *inPartition() const;
-    void addInPartition(const QActivityPartition *inPartition);
-    void removeInPartition(const QActivityPartition *inPartition);
-    QStructuredActivityNode *inStructuredNode() const;
-    void setInStructuredNode(const QStructuredActivityNode *inStructuredNode);
-    QInterruptibleActivityRegion *interrupts() const;
-    void setInterrupts(const QInterruptibleActivityRegion *interrupts);
+    QActivityNode *source() const;
+    void setSource(const QActivityNode *source);
     const QSet<QActivityEdge *> *redefinedEdges() const;
     void addRedefinedEdge(const QActivityEdge *redefinedEdge);
     void removeRedefinedEdge(const QActivityEdge *redefinedEdge);
-    QActivityNode *source() const;
-    void setSource(const QActivityNode *source);
-    QActivityNode *target() const;
-    void setTarget(const QActivityNode *target);
+    const QSet<QActivityGroup *> *inGroup() const;
+    QValueSpecification *guard() const;
+    void setGuard(const QValueSpecification *guard);
+    const QSet<QActivityPartition *> *inPartition() const;
+    void addInPartition(const QActivityPartition *inPartition);
+    void removeInPartition(const QActivityPartition *inPartition);
+    QActivity *activity() const;
+    void setActivity(const QActivity *activity);
+    QInterruptibleActivityRegion *interrupts() const;
+    void setInterrupts(const QInterruptibleActivityRegion *interrupts);
     QValueSpecification *weight() const;
     void setWeight(const QValueSpecification *weight);
-
-protected:
-    // Synchronization functions for read-only subsetted properties
-    void addInGroup(const QActivityGroup *inGroup);
-    void removeInGroup(const QActivityGroup *inGroup);
+    QStructuredActivityNode *inStructuredNode() const;
+    void setInStructuredNode(const QStructuredActivityNode *inStructuredNode);
+    QActivityNode *target() const;
+    void setTarget(const QActivityNode *target);
 
 protected:
     explicit QActivityEdge();
 
-private:
+protected:
     QActivityEdgePrivate *d_ptr;
 };
 

@@ -64,9 +64,9 @@ class Q_UML_EXPORT QComment : public QObject, public QElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QComment
     Q_PROPERTY(QString body READ body WRITE setBody)
@@ -88,7 +88,7 @@ public:
     void addAnnotatedElement(const QElement *annotatedElement);
     void removeAnnotatedElement(const QElement *annotatedElement);
 
-private:
+protected:
     QCommentPrivate *d_ptr;
 };
 

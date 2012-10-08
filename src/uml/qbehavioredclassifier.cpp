@@ -40,34 +40,27 @@
 ****************************************************************************/
 
 #include "qbehavioredclassifier.h"
+#include "qbehavioredclassifier_p.h"
+#include "qnamespace_p.h"
+#include "qelement_p.h"
+#include "qnamedelement_p.h"
 
 #include <QtUml/QBehavior>
 #include <QtUml/QInterfaceRealization>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QBehavioredClassifierPrivate
-{
-public:
-    explicit QBehavioredClassifierPrivate();
-    virtual ~QBehavioredClassifierPrivate();
-
-    QBehavior *classifierBehavior;
-    QSet<QInterfaceRealization *> *interfaceRealizations;
-    QSet<QBehavior *> *ownedBehaviors;
-};
-
 QBehavioredClassifierPrivate::QBehavioredClassifierPrivate() :
-    classifierBehavior(0),
+    ownedBehaviors(new QSet<QBehavior *>),
     interfaceRealizations(new QSet<QInterfaceRealization *>),
-    ownedBehaviors(new QSet<QBehavior *>)
+    classifierBehavior(0)
 {
 }
 
 QBehavioredClassifierPrivate::~QBehavioredClassifierPrivate()
 {
-    delete interfaceRealizations;
     delete ownedBehaviors;
+    delete interfaceRealizations;
 }
 
 /*!
@@ -89,16 +82,25 @@ QBehavioredClassifier::~QBehavioredClassifier()
 }
 
 /*!
-    A behavior specification that specifies the behavior of the classifier itself.
+    References behavior specifications owned by a classifier.
  */
-QBehavior *QBehavioredClassifier::classifierBehavior() const
+const QSet<QBehavior *> *QBehavioredClassifier::ownedBehaviors() const
 {
-    return d_ptr->classifierBehavior;
+    return d_ptr->ownedBehaviors;
 }
 
-void QBehavioredClassifier::setClassifierBehavior(const QBehavior *classifierBehavior)
+void QBehavioredClassifier::addOwnedBehavior(const QBehavior *ownedBehavior)
 {
-    d_ptr->classifierBehavior = const_cast<QBehavior *>(classifierBehavior);
+    d_ptr->ownedBehaviors->insert(const_cast<QBehavior *>(ownedBehavior));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QBehavior *>(ownedBehavior));
+}
+
+void QBehavioredClassifier::removeOwnedBehavior(const QBehavior *ownedBehavior)
+{
+    d_ptr->ownedBehaviors->remove(const_cast<QBehavior *>(ownedBehavior));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QBehavior *>(ownedBehavior));
 }
 
 /*!
@@ -113,38 +115,29 @@ void QBehavioredClassifier::addInterfaceRealization(const QInterfaceRealization 
 {
     d_ptr->interfaceRealizations->insert(const_cast<QInterfaceRealization *>(interfaceRealization));
     // Adjust subsetted property(ies)
-    addOwnedElement(interfaceRealization);
-    addClientDependency(interfaceRealization);
+    QElement::d_ptr->ownedElements->insert(const_cast<QInterfaceRealization *>(interfaceRealization));
+    QNamedElement::d_ptr->clientDependencies->insert(const_cast<QInterfaceRealization *>(interfaceRealization));
 }
 
 void QBehavioredClassifier::removeInterfaceRealization(const QInterfaceRealization *interfaceRealization)
 {
     d_ptr->interfaceRealizations->remove(const_cast<QInterfaceRealization *>(interfaceRealization));
     // Adjust subsetted property(ies)
-    removeOwnedElement(interfaceRealization);
-    removeClientDependency(interfaceRealization);
+    QElement::d_ptr->ownedElements->remove(const_cast<QInterfaceRealization *>(interfaceRealization));
+    QNamedElement::d_ptr->clientDependencies->remove(const_cast<QInterfaceRealization *>(interfaceRealization));
 }
 
 /*!
-    References behavior specifications owned by a classifier.
+    A behavior specification that specifies the behavior of the classifier itself.
  */
-const QSet<QBehavior *> *QBehavioredClassifier::ownedBehaviors() const
+QBehavior *QBehavioredClassifier::classifierBehavior() const
 {
-    return d_ptr->ownedBehaviors;
+    return d_ptr->classifierBehavior;
 }
 
-void QBehavioredClassifier::addOwnedBehavior(const QBehavior *ownedBehavior)
+void QBehavioredClassifier::setClassifierBehavior(const QBehavior *classifierBehavior)
 {
-    d_ptr->ownedBehaviors->insert(const_cast<QBehavior *>(ownedBehavior));
-    // Adjust subsetted property(ies)
-    addOwnedMember(ownedBehavior);
-}
-
-void QBehavioredClassifier::removeOwnedBehavior(const QBehavior *ownedBehavior)
-{
-    d_ptr->ownedBehaviors->remove(const_cast<QBehavior *>(ownedBehavior));
-    // Adjust subsetted property(ies)
-    removeOwnedMember(ownedBehavior);
+    d_ptr->classifierBehavior = const_cast<QBehavior *>(classifierBehavior);
 }
 
 QT_END_NAMESPACE_QTUML

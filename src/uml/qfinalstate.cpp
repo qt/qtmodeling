@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qfinalstate.h"
+#include "qfinalstate_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QFinalStatePrivate
-{
-public:
-    explicit QFinalStatePrivate();
-    virtual ~QFinalStatePrivate();
-
-};
 
 QFinalStatePrivate::QFinalStatePrivate()
 {

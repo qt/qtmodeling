@@ -64,15 +64,15 @@ public:
     virtual ~QExecutionSpecification();
 
     // Association-ends
-    QOccurrenceSpecification *finish() const;
-    void setFinish(const QOccurrenceSpecification *finish);
     QOccurrenceSpecification *start() const;
     void setStart(const QOccurrenceSpecification *start);
+    QOccurrenceSpecification *finish() const;
+    void setFinish(const QOccurrenceSpecification *finish);
 
 protected:
     explicit QExecutionSpecification();
 
-private:
+protected:
     QExecutionSpecificationPrivate *d_ptr;
 };
 

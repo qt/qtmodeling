@@ -40,20 +40,12 @@
 ****************************************************************************/
 
 #include "qconnectableelement.h"
+#include "qconnectableelement_p.h"
 
 #include <QtUml/QConnectorEnd>
 #include <QtUml/QConnectableElementTemplateParameter>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QConnectableElementPrivate
-{
-public:
-    explicit QConnectableElementPrivate();
-    virtual ~QConnectableElementPrivate();
-
-    QConnectableElementTemplateParameter *templateParameter;
-};
 
 QConnectableElementPrivate::QConnectableElementPrivate() :
     templateParameter(0)

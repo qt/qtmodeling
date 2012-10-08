@@ -40,18 +40,10 @@
 ****************************************************************************/
 
 #include "qcontinuation.h"
+#include "qcontinuation_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QContinuationPrivate
-{
-public:
-    explicit QContinuationPrivate();
-    virtual ~QContinuationPrivate();
-
-    bool setting;
-};
 
 QContinuationPrivate::QContinuationPrivate() :
     setting(true)

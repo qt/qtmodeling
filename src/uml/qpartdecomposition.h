@@ -65,7 +65,7 @@ public:
     explicit QPartDecomposition(QObject *parent = 0);
     virtual ~QPartDecomposition();
 
-private:
+protected:
     QPartDecompositionPrivate *d_ptr;
 };
 

@@ -40,19 +40,12 @@
 ****************************************************************************/
 
 #include "qvaluepin.h"
+#include "qvaluepin_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QValueSpecification>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QValuePinPrivate
-{
-public:
-    explicit QValuePinPrivate();
-    virtual ~QValuePinPrivate();
-
-    QValueSpecification *value;
-};
 
 QValuePinPrivate::QValuePinPrivate() :
     value(0)

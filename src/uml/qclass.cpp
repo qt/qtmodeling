@@ -40,6 +40,14 @@
 ****************************************************************************/
 
 #include "qclass.h"
+#include "qclass_p.h"
+#include "qnamespace_p.h"
+#include "qclassifier_p.h"
+#include "qnamespace_p.h"
+#include "qclassifier_p.h"
+#include "qnamespace_p.h"
+#include "qnamespace_p.h"
+#include "qclassifier_p.h"
 
 #include <QtUml/QReception>
 #include <QtUml/QNamedElement>
@@ -50,36 +58,22 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QClassPrivate
-{
-public:
-    explicit QClassPrivate();
-    virtual ~QClassPrivate();
-
-    bool isAbstract;
-    bool isActive;
-    QList<QClassifier *> *nestedClassifiers;
-    QList<QProperty *> *ownedAttributes;
-    QList<QOperation *> *ownedOperations;
-    QSet<QReception *> *ownedReceptions;
-};
-
 QClassPrivate::QClassPrivate() :
     isAbstract(false),
     isActive(false),
     nestedClassifiers(new QList<QClassifier *>),
-    ownedAttributes(new QList<QProperty *>),
+    ownedReceptions(new QSet<QReception *>),
     ownedOperations(new QList<QOperation *>),
-    ownedReceptions(new QSet<QReception *>)
+    ownedAttributes(new QList<QProperty *>)
 {
 }
 
 QClassPrivate::~QClassPrivate()
 {
     delete nestedClassifiers;
-    delete ownedAttributes;
-    delete ownedOperations;
     delete ownedReceptions;
+    delete ownedOperations;
+    delete ownedAttributes;
 }
 
 /*!
@@ -127,14 +121,6 @@ void QClass::setActive(bool isActive)
 }
 
 /*!
-    References the Extensions that specify additional properties of the metaclass. The property is derived from the extensions whose memberEnds are typed by the Class.
- */
-const QSet<QExtension *> *QClass::extensions() const
-{
-    qWarning("QClass::extensions: to be implemented (this is a derived associationend)");
-}
-
-/*!
     References all the Classifiers that are defined (nested) within the Class.
  */
 const QList<QClassifier *> *QClass::nestedClassifiers() const
@@ -146,62 +132,14 @@ void QClass::addNestedClassifier(const QClassifier *nestedClassifier)
 {
     d_ptr->nestedClassifiers->append(const_cast<QClassifier *>(nestedClassifier));
     // Adjust subsetted property(ies)
-    addOwnedMember(nestedClassifier);
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QClassifier *>(nestedClassifier));
 }
 
 void QClass::removeNestedClassifier(const QClassifier *nestedClassifier)
 {
     d_ptr->nestedClassifiers->removeAll(const_cast<QClassifier *>(nestedClassifier));
     // Adjust subsetted property(ies)
-    removeOwnedMember(nestedClassifier);
-}
-
-/*!
-    The attributes (i.e. the properties) owned by the class.
- */
-const QList<QProperty *> *QClass::ownedAttributes() const
-{
-    return d_ptr->ownedAttributes;
-}
-
-void QClass::addOwnedAttribute(const QProperty *ownedAttribute)
-{
-    d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
-    // Adjust subsetted property(ies)
-    addOwnedMember(ownedAttribute);
-    addAttribute(ownedAttribute);
-}
-
-void QClass::removeOwnedAttribute(const QProperty *ownedAttribute)
-{
-    d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
-    // Adjust subsetted property(ies)
-    removeOwnedMember(ownedAttribute);
-    removeAttribute(ownedAttribute);
-}
-
-/*!
-    The operations owned by the class.
- */
-const QList<QOperation *> *QClass::ownedOperations() const
-{
-    return d_ptr->ownedOperations;
-}
-
-void QClass::addOwnedOperation(const QOperation *ownedOperation)
-{
-    d_ptr->ownedOperations->append(const_cast<QOperation *>(ownedOperation));
-    // Adjust subsetted property(ies)
-    addFeature(ownedOperation);
-    addOwnedMember(ownedOperation);
-}
-
-void QClass::removeOwnedOperation(const QOperation *ownedOperation)
-{
-    d_ptr->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation));
-    // Adjust subsetted property(ies)
-    removeFeature(ownedOperation);
-    removeOwnedMember(ownedOperation);
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QClassifier *>(nestedClassifier));
 }
 
 /*!
@@ -216,16 +154,72 @@ void QClass::addOwnedReception(const QReception *ownedReception)
 {
     d_ptr->ownedReceptions->insert(const_cast<QReception *>(ownedReception));
     // Adjust subsetted property(ies)
-    addFeature(ownedReception);
-    addOwnedMember(ownedReception);
+    QClassifier::d_ptr->features->insert(const_cast<QReception *>(ownedReception));
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QReception *>(ownedReception));
 }
 
 void QClass::removeOwnedReception(const QReception *ownedReception)
 {
     d_ptr->ownedReceptions->remove(const_cast<QReception *>(ownedReception));
     // Adjust subsetted property(ies)
-    removeFeature(ownedReception);
-    removeOwnedMember(ownedReception);
+    QClassifier::d_ptr->features->remove(const_cast<QReception *>(ownedReception));
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QReception *>(ownedReception));
+}
+
+/*!
+    References the Extensions that specify additional properties of the metaclass. The property is derived from the extensions whose memberEnds are typed by the Class.
+ */
+const QSet<QExtension *> *QClass::extensions() const
+{
+    qWarning("QClass::extensions: to be implemented (this is a derived associationend)");
+}
+
+/*!
+    The operations owned by the class.
+ */
+const QList<QOperation *> *QClass::ownedOperations() const
+{
+    return d_ptr->ownedOperations;
+}
+
+void QClass::addOwnedOperation(const QOperation *ownedOperation)
+{
+    d_ptr->ownedOperations->append(const_cast<QOperation *>(ownedOperation));
+    // Adjust subsetted property(ies)
+    QClassifier::d_ptr->features->insert(const_cast<QOperation *>(ownedOperation));
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QOperation *>(ownedOperation));
+}
+
+void QClass::removeOwnedOperation(const QOperation *ownedOperation)
+{
+    d_ptr->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation));
+    // Adjust subsetted property(ies)
+    QClassifier::d_ptr->features->remove(const_cast<QOperation *>(ownedOperation));
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QOperation *>(ownedOperation));
+}
+
+/*!
+    The attributes (i.e. the properties) owned by the class.
+ */
+const QList<QProperty *> *QClass::ownedAttributes() const
+{
+    return d_ptr->ownedAttributes;
+}
+
+void QClass::addOwnedAttribute(const QProperty *ownedAttribute)
+{
+    d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QProperty *>(ownedAttribute));
+    QClassifier::d_ptr->attributes->insert(const_cast<QProperty *>(ownedAttribute));
+}
+
+void QClass::removeOwnedAttribute(const QProperty *ownedAttribute)
+{
+    d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QProperty *>(ownedAttribute));
+    QClassifier::d_ptr->attributes->remove(const_cast<QProperty *>(ownedAttribute));
 }
 
 /*!

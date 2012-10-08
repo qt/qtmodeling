@@ -40,6 +40,16 @@
 ****************************************************************************/
 
 #include "qstate.h"
+#include "qstate_p.h"
+#include "qnamespace_p.h"
+#include "qelement_p.h"
+#include "qnamespace_p.h"
+#include "qredefinableelement_p.h"
+#include "qelement_p.h"
+#include "qnamespace_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
+#include "qnamespace_p.h"
 
 #include <QtUml/QConstraint>
 #include <QtUml/QRegion>
@@ -52,44 +62,26 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QStatePrivate
-{
-public:
-    explicit QStatePrivate();
-    virtual ~QStatePrivate();
-
-    QSet<QConnectionPointReference *> *connections;
-    QSet<QPseudostate *> *connectionPoints;
-    QSet<QTrigger *> *deferrableTriggers;
-    QBehavior *doActivity;
-    QBehavior *entry;
-    QBehavior *exit;
-    QState *redefinedState;
-    QSet<QRegion *> *regions;
-    QConstraint *stateInvariant;
-    QStateMachine *submachine;
-};
-
 QStatePrivate::QStatePrivate() :
-    connections(new QSet<QConnectionPointReference *>),
-    connectionPoints(new QSet<QPseudostate *>),
-    deferrableTriggers(new QSet<QTrigger *>),
-    doActivity(0),
-    entry(0),
-    exit(0),
-    redefinedState(0),
     regions(new QSet<QRegion *>),
-    stateInvariant(0),
-    submachine(0)
+    exit(0),
+    connections(new QSet<QConnectionPointReference *>),
+    redefinedState(0),
+    deferrableTriggers(new QSet<QTrigger *>),
+    connectionPoints(new QSet<QPseudostate *>),
+    entry(0),
+    doActivity(0),
+    submachine(0),
+    stateInvariant(0)
 {
 }
 
 QStatePrivate::~QStatePrivate()
 {
-    delete connections;
-    delete connectionPoints;
-    delete deferrableTriggers;
     delete regions;
+    delete connections;
+    delete deferrableTriggers;
+    delete connectionPoints;
 }
 
 /*!
@@ -111,6 +103,14 @@ QState::~QState()
 }
 
 /*!
+    A state with isSimple=true is said to be a simple state. A simple state does not have any regions and it does not refer to any submachine state machine.
+ */
+bool QState::isSimple() const
+{
+    qWarning("QState::isSimple: to be implemented (this is a derived attribute)");
+}
+
+/*!
     A state with isComposite=true is said to be a composite state. A composite state is a state that contains at least one region.
  */
 bool QState::isComposite() const
@@ -127,14 +127,6 @@ bool QState::isOrthogonal() const
 }
 
 /*!
-    A state with isSimple=true is said to be a simple state. A simple state does not have any regions and it does not refer to any submachine state machine.
- */
-bool QState::isSimple() const
-{
-    qWarning("QState::isSimple: to be implemented (this is a derived attribute)");
-}
-
-/*!
     A state with isSubmachineState=true is said to be a submachine state. Such a state refers to a state machine (submachine).
  */
 bool QState::isSubmachineState() const
@@ -143,95 +135,25 @@ bool QState::isSubmachineState() const
 }
 
 /*!
-    The entry and exit connection points used in conjunction with this (submachine) state, i.e. as targets and sources, respectively, in the region with the submachine state. A connection point reference references the corresponding definition of a connection point pseudostate in the statemachine referenced by the submachinestate.
+    The regions owned directly by the state.
  */
-const QSet<QConnectionPointReference *> *QState::connections() const
+const QSet<QRegion *> *QState::regions() const
 {
-    return d_ptr->connections;
+    return d_ptr->regions;
 }
 
-void QState::addConnection(const QConnectionPointReference *connection)
+void QState::addRegion(const QRegion *region)
 {
-    d_ptr->connections->insert(const_cast<QConnectionPointReference *>(connection));
+    d_ptr->regions->insert(const_cast<QRegion *>(region));
     // Adjust subsetted property(ies)
-    addOwnedMember(connection);
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QRegion *>(region));
 }
 
-void QState::removeConnection(const QConnectionPointReference *connection)
+void QState::removeRegion(const QRegion *region)
 {
-    d_ptr->connections->remove(const_cast<QConnectionPointReference *>(connection));
+    d_ptr->regions->remove(const_cast<QRegion *>(region));
     // Adjust subsetted property(ies)
-    removeOwnedMember(connection);
-}
-
-/*!
-    The entry and exit pseudostates of a composite state. These can only be entry or exit Pseudostates, and they must have different names. They can only be defined for composite states.
- */
-const QSet<QPseudostate *> *QState::connectionPoints() const
-{
-    return d_ptr->connectionPoints;
-}
-
-void QState::addConnectionPoint(const QPseudostate *connectionPoint)
-{
-    d_ptr->connectionPoints->insert(const_cast<QPseudostate *>(connectionPoint));
-    // Adjust subsetted property(ies)
-    addOwnedMember(connectionPoint);
-}
-
-void QState::removeConnectionPoint(const QPseudostate *connectionPoint)
-{
-    d_ptr->connectionPoints->remove(const_cast<QPseudostate *>(connectionPoint));
-    // Adjust subsetted property(ies)
-    removeOwnedMember(connectionPoint);
-}
-
-/*!
-    A list of triggers that are candidates to be retained by the state machine if they trigger no transitions out of the state (not consumed). A deferred trigger is retained until the state machine reaches a state configuration where it is no longer deferred.
- */
-const QSet<QTrigger *> *QState::deferrableTriggers() const
-{
-    return d_ptr->deferrableTriggers;
-}
-
-void QState::addDeferrableTrigger(const QTrigger *deferrableTrigger)
-{
-    d_ptr->deferrableTriggers->insert(const_cast<QTrigger *>(deferrableTrigger));
-    // Adjust subsetted property(ies)
-    addOwnedElement(deferrableTrigger);
-}
-
-void QState::removeDeferrableTrigger(const QTrigger *deferrableTrigger)
-{
-    d_ptr->deferrableTriggers->remove(const_cast<QTrigger *>(deferrableTrigger));
-    // Adjust subsetted property(ies)
-    removeOwnedElement(deferrableTrigger);
-}
-
-/*!
-    An optional behavior that is executed while being in the state. The execution starts when this state is entered, and stops either by itself, or when the state is exited, whichever comes first.
- */
-QBehavior *QState::doActivity() const
-{
-    return d_ptr->doActivity;
-}
-
-void QState::setDoActivity(const QBehavior *doActivity)
-{
-    d_ptr->doActivity = const_cast<QBehavior *>(doActivity);
-}
-
-/*!
-    An optional behavior that is executed whenever this state is entered regardless of the transition taken to reach the state. If defined, entry actions are always executed to completion prior to any internal behavior or transitions performed within the state.
- */
-QBehavior *QState::entry() const
-{
-    return d_ptr->entry;
-}
-
-void QState::setEntry(const QBehavior *entry)
-{
-    d_ptr->entry = const_cast<QBehavior *>(entry);
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QRegion *>(region));
 }
 
 /*!
@@ -248,6 +170,36 @@ void QState::setExit(const QBehavior *exit)
 }
 
 /*!
+    The entry and exit connection points used in conjunction with this (submachine) state, i.e. as targets and sources, respectively, in the region with the submachine state. A connection point reference references the corresponding definition of a connection point pseudostate in the statemachine referenced by the submachinestate.
+ */
+const QSet<QConnectionPointReference *> *QState::connections() const
+{
+    return d_ptr->connections;
+}
+
+void QState::addConnection(const QConnectionPointReference *connection)
+{
+    d_ptr->connections->insert(const_cast<QConnectionPointReference *>(connection));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QConnectionPointReference *>(connection));
+}
+
+void QState::removeConnection(const QConnectionPointReference *connection)
+{
+    d_ptr->connections->remove(const_cast<QConnectionPointReference *>(connection));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QConnectionPointReference *>(connection));
+}
+
+/*!
+    References the classifier in which context this element may be redefined.
+ */
+QClassifier *QState::redefinitionContext() const
+{
+    qWarning("QState::redefinitionContext: to be implemented (this is a derived associationend)");
+}
+
+/*!
     The state of which this state is a redefinition.
  */
 QState *QState::redefinedState() const
@@ -261,46 +213,73 @@ void QState::setRedefinedState(const QState *redefinedState)
 }
 
 /*!
-    References the classifier in which context this element may be redefined.
+    A list of triggers that are candidates to be retained by the state machine if they trigger no transitions out of the state (not consumed). A deferred trigger is retained until the state machine reaches a state configuration where it is no longer deferred.
  */
-QClassifier *QState::redefinitionContext() const
+const QSet<QTrigger *> *QState::deferrableTriggers() const
 {
-    qWarning("QState::redefinitionContext: to be implemented (this is a derived associationend)");
+    return d_ptr->deferrableTriggers;
+}
+
+void QState::addDeferrableTrigger(const QTrigger *deferrableTrigger)
+{
+    d_ptr->deferrableTriggers->insert(const_cast<QTrigger *>(deferrableTrigger));
+    // Adjust subsetted property(ies)
+    QElement::d_ptr->ownedElements->insert(const_cast<QTrigger *>(deferrableTrigger));
+}
+
+void QState::removeDeferrableTrigger(const QTrigger *deferrableTrigger)
+{
+    d_ptr->deferrableTriggers->remove(const_cast<QTrigger *>(deferrableTrigger));
+    // Adjust subsetted property(ies)
+    QElement::d_ptr->ownedElements->remove(const_cast<QTrigger *>(deferrableTrigger));
 }
 
 /*!
-    The regions owned directly by the state.
+    The entry and exit pseudostates of a composite state. These can only be entry or exit Pseudostates, and they must have different names. They can only be defined for composite states.
  */
-const QSet<QRegion *> *QState::regions() const
+const QSet<QPseudostate *> *QState::connectionPoints() const
 {
-    return d_ptr->regions;
+    return d_ptr->connectionPoints;
 }
 
-void QState::addRegion(const QRegion *region)
+void QState::addConnectionPoint(const QPseudostate *connectionPoint)
 {
-    d_ptr->regions->insert(const_cast<QRegion *>(region));
+    d_ptr->connectionPoints->insert(const_cast<QPseudostate *>(connectionPoint));
     // Adjust subsetted property(ies)
-    addOwnedMember(region);
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QPseudostate *>(connectionPoint));
 }
 
-void QState::removeRegion(const QRegion *region)
+void QState::removeConnectionPoint(const QPseudostate *connectionPoint)
 {
-    d_ptr->regions->remove(const_cast<QRegion *>(region));
+    d_ptr->connectionPoints->remove(const_cast<QPseudostate *>(connectionPoint));
     // Adjust subsetted property(ies)
-    removeOwnedMember(region);
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QPseudostate *>(connectionPoint));
 }
 
 /*!
-    Specifies conditions that are always true when this state is the current state. In protocol state machines, state invariants are additional conditions to the preconditions of the outgoing transitions, and to the postcondition of the incoming transitions.
+    An optional behavior that is executed whenever this state is entered regardless of the transition taken to reach the state. If defined, entry actions are always executed to completion prior to any internal behavior or transitions performed within the state.
  */
-QConstraint *QState::stateInvariant() const
+QBehavior *QState::entry() const
 {
-    return d_ptr->stateInvariant;
+    return d_ptr->entry;
 }
 
-void QState::setStateInvariant(const QConstraint *stateInvariant)
+void QState::setEntry(const QBehavior *entry)
 {
-    d_ptr->stateInvariant = const_cast<QConstraint *>(stateInvariant);
+    d_ptr->entry = const_cast<QBehavior *>(entry);
+}
+
+/*!
+    An optional behavior that is executed while being in the state. The execution starts when this state is entered, and stops either by itself, or when the state is exited, whichever comes first.
+ */
+QBehavior *QState::doActivity() const
+{
+    return d_ptr->doActivity;
+}
+
+void QState::setDoActivity(const QBehavior *doActivity)
+{
+    d_ptr->doActivity = const_cast<QBehavior *>(doActivity);
 }
 
 /*!
@@ -314,6 +293,19 @@ QStateMachine *QState::submachine() const
 void QState::setSubmachine(const QStateMachine *submachine)
 {
     d_ptr->submachine = const_cast<QStateMachine *>(submachine);
+}
+
+/*!
+    Specifies conditions that are always true when this state is the current state. In protocol state machines, state invariants are additional conditions to the preconditions of the outgoing transitions, and to the postcondition of the incoming transitions.
+ */
+QConstraint *QState::stateInvariant() const
+{
+    return d_ptr->stateInvariant;
+}
+
+void QState::setStateInvariant(const QConstraint *stateInvariant)
+{
+    d_ptr->stateInvariant = const_cast<QConstraint *>(stateInvariant);
 }
 
 /*!

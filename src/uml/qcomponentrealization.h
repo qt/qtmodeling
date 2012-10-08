@@ -81,7 +81,7 @@ public:
     void addRealizingClassifier(const QClassifier *realizingClassifier);
     void removeRealizingClassifier(const QClassifier *realizingClassifier);
 
-private:
+protected:
     QComponentRealizationPrivate *d_ptr;
 };
 

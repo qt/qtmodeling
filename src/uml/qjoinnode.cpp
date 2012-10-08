@@ -40,20 +40,12 @@
 ****************************************************************************/
 
 #include "qjoinnode.h"
+#include "qjoinnode_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QValueSpecification>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QJoinNodePrivate
-{
-public:
-    explicit QJoinNodePrivate();
-    virtual ~QJoinNodePrivate();
-
-    bool isCombineDuplicate;
-    QValueSpecification *joinSpec;
-};
 
 QJoinNodePrivate::QJoinNodePrivate() :
     isCombineDuplicate(true),

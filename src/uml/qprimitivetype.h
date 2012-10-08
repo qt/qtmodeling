@@ -65,7 +65,7 @@ public:
     explicit QPrimitiveType(QObject *parent = 0);
     virtual ~QPrimitiveType();
 
-private:
+protected:
     QPrimitiveTypePrivate *d_ptr;
 };
 

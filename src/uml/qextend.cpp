@@ -40,6 +40,11 @@
 ****************************************************************************/
 
 #include "qextend.h"
+#include "qextend_p.h"
+#include "qdirectedrelationship_p.h"
+#include "qdirectedrelationship_p.h"
+#include "qnamedelement_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QConstraint>
 #include <QtUml/QUseCase>
@@ -47,23 +52,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QExtendPrivate
-{
-public:
-    explicit QExtendPrivate();
-    virtual ~QExtendPrivate();
-
-    QConstraint *condition;
-    QUseCase *extendedCase;
-    QUseCase *extension;
-    QList<QExtensionPoint *> *extensionLocations;
-};
-
 QExtendPrivate::QExtendPrivate() :
-    condition(0),
     extendedCase(0),
     extension(0),
-    extensionLocations(new QList<QExtensionPoint *>)
+    extensionLocations(new QList<QExtensionPoint *>),
+    condition(0)
 {
 }
 
@@ -88,19 +81,6 @@ QExtend::QExtend(QObject *parent)
 QExtend::~QExtend()
 {
     delete d_ptr;
-}
-
-/*!
-    References the condition that must hold when the first extension point is reached for the extension to take place. If no constraint is associated with the extend relationship, the extension is unconditional.
- */
-QConstraint *QExtend::condition() const
-{
-    return d_ptr->condition;
-}
-
-void QExtend::setCondition(const QConstraint *condition)
-{
-    d_ptr->condition = const_cast<QConstraint *>(condition);
 }
 
 /*!
@@ -145,6 +125,19 @@ void QExtend::addExtensionLocation(const QExtensionPoint *extensionLocation)
 void QExtend::removeExtensionLocation(const QExtensionPoint *extensionLocation)
 {
     d_ptr->extensionLocations->removeAll(const_cast<QExtensionPoint *>(extensionLocation));
+}
+
+/*!
+    References the condition that must hold when the first extension point is reached for the extension to take place. If no constraint is associated with the extend relationship, the extension is unconditional.
+ */
+QConstraint *QExtend::condition() const
+{
+    return d_ptr->condition;
+}
+
+void QExtend::setCondition(const QConstraint *condition)
+{
+    d_ptr->condition = const_cast<QConstraint *>(condition);
 }
 
 #include "moc_qextend.cpp"

@@ -40,21 +40,14 @@
 ****************************************************************************/
 
 #include "qwritestructuralfeatureaction.h"
+#include "qwritestructuralfeatureaction_p.h"
+#include "qaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QOutputPin>
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QWriteStructuralFeatureActionPrivate
-{
-public:
-    explicit QWriteStructuralFeatureActionPrivate();
-    virtual ~QWriteStructuralFeatureActionPrivate();
-
-    QOutputPin *result;
-    QInputPin *value;
-};
 
 QWriteStructuralFeatureActionPrivate::QWriteStructuralFeatureActionPrivate() :
     result(0),

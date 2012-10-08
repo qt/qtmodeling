@@ -75,7 +75,7 @@ public:
     QEnumeration *enumeration() const;
     void setEnumeration(const QEnumeration *enumeration);
 
-private:
+protected:
     QEnumerationLiteralPrivate *d_ptr;
 };
 

@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qliteralspecification.h"
+#include "qliteralspecification_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QLiteralSpecificationPrivate
-{
-public:
-    explicit QLiteralSpecificationPrivate();
-    virtual ~QLiteralSpecificationPrivate();
-
-};
 
 QLiteralSpecificationPrivate::QLiteralSpecificationPrivate()
 {

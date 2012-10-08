@@ -40,19 +40,12 @@
 ****************************************************************************/
 
 #include "qreadvariableaction.h"
+#include "qreadvariableaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QReadVariableActionPrivate
-{
-public:
-    explicit QReadVariableActionPrivate();
-    virtual ~QReadVariableActionPrivate();
-
-    QOutputPin *result;
-};
 
 QReadVariableActionPrivate::QReadVariableActionPrivate() :
     result(0)

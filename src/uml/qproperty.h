@@ -78,28 +78,28 @@ class Q_UML_EXPORT QProperty : public QObject, public QStructuralFeature, public
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QTypedElement
     Q_PROPERTY(QType * type READ type WRITE setType)
 
     // From QMultiplicityElement
-    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
-    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
-    Q_PROPERTY(qint32 lower READ lower WRITE setLower)
     Q_PROPERTY(qint32 upper READ upper WRITE setUpper)
-    Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
+    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
+    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
+    Q_PROPERTY(qint32 lower READ lower WRITE setLower)
     Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
+    Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
 
     // From QRedefinableElement
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
@@ -124,24 +124,24 @@ class Q_UML_EXPORT QProperty : public QObject, public QStructuralFeature, public
     Q_PROPERTY(const QSet<QDeployment *> * deployments READ deployments)
 
     // From QProperty
-    Q_PROPERTY(QtUml::AggregationKind aggregation READ aggregation WRITE setAggregation)
+    Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived)
     Q_PROPERTY(QString default_ READ default_ WRITE setDefault_)
     Q_PROPERTY(bool isComposite READ isComposite WRITE setComposite)
-    Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived)
-    Q_PROPERTY(bool isDerivedUnion READ isDerivedUnion WRITE setDerivedUnion)
-    Q_PROPERTY(bool isID READ isID WRITE setID)
     Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly)
-    Q_PROPERTY(QAssociation * association READ association WRITE setAssociation)
-    Q_PROPERTY(QProperty * associationEnd READ associationEnd WRITE setAssociationEnd)
-    Q_PROPERTY(QClass * class_ READ class_ WRITE setClass_)
-    Q_PROPERTY(QDataType * datatype READ datatype WRITE setDatatype)
-    Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
-    Q_PROPERTY(QInterface * interface READ interface WRITE setInterface)
-    Q_PROPERTY(QProperty * opposite READ opposite WRITE setOpposite)
+    Q_PROPERTY(bool isID READ isID WRITE setID)
+    Q_PROPERTY(bool isDerivedUnion READ isDerivedUnion WRITE setDerivedUnion)
+    Q_PROPERTY(QtUml::AggregationKind aggregation READ aggregation WRITE setAggregation)
+    Q_PROPERTY(const QSet<QProperty *> * subsettedProperties READ subsettedProperties)
     Q_PROPERTY(QAssociation * owningAssociation READ owningAssociation WRITE setOwningAssociation)
     Q_PROPERTY(const QList<QProperty *> * qualifiers READ qualifiers)
+    Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
+    Q_PROPERTY(QClass * class_ READ class_ WRITE setClass_)
+    Q_PROPERTY(QProperty * opposite READ opposite WRITE setOpposite)
+    Q_PROPERTY(QProperty * associationEnd READ associationEnd WRITE setAssociationEnd)
+    Q_PROPERTY(QDataType * datatype READ datatype WRITE setDatatype)
     Q_PROPERTY(const QSet<QProperty *> * redefinedProperties READ redefinedProperties)
-    Q_PROPERTY(const QSet<QProperty *> * subsettedProperties READ subsettedProperties)
+    Q_PROPERTY(QAssociation * association READ association WRITE setAssociation)
+    Q_PROPERTY(QInterface * interface READ interface WRITE setInterface)
 
     Q_DISABLE_COPY(QProperty)
     Q_DECLARE_PRIVATE(QProperty)
@@ -151,47 +151,47 @@ public:
     virtual ~QProperty();
 
     // Attributes
-    QtUml::AggregationKind aggregation() const;
-    void setAggregation(QtUml::AggregationKind aggregation);
+    bool isDerived() const;
+    void setDerived(bool isDerived);
     QString default_() const;
     void setDefault_(QString default_);
     bool isComposite() const;
     void setComposite(bool isComposite);
-    bool isDerived() const;
-    void setDerived(bool isDerived);
-    bool isDerivedUnion() const;
-    void setDerivedUnion(bool isDerivedUnion);
-    bool isID() const;
-    void setID(bool isID);
     bool isReadOnly() const;
     void setReadOnly(bool isReadOnly);
+    bool isID() const;
+    void setID(bool isID);
+    bool isDerivedUnion() const;
+    void setDerivedUnion(bool isDerivedUnion);
+    QtUml::AggregationKind aggregation() const;
+    void setAggregation(QtUml::AggregationKind aggregation);
 
     // Association-ends
-    QAssociation *association() const;
-    void setAssociation(const QAssociation *association);
-    QProperty *associationEnd() const;
-    void setAssociationEnd(const QProperty *associationEnd);
-    QClass *class_() const;
-    void setClass_(const QClass *class_);
-    QDataType *datatype() const;
-    void setDatatype(const QDataType *datatype);
-    QValueSpecification *defaultValue() const;
-    void setDefaultValue(const QValueSpecification *defaultValue);
-    QInterface *interface() const;
-    void setInterface(const QInterface *interface);
-    QProperty *opposite() const;
-    void setOpposite(const QProperty *opposite);
+    const QSet<QProperty *> *subsettedProperties() const;
+    void addSubsettedProperty(const QProperty *subsettedProperty);
+    void removeSubsettedProperty(const QProperty *subsettedProperty);
     QAssociation *owningAssociation() const;
     void setOwningAssociation(const QAssociation *owningAssociation);
     const QList<QProperty *> *qualifiers() const;
     void addQualifier(const QProperty *qualifier);
     void removeQualifier(const QProperty *qualifier);
+    QValueSpecification *defaultValue() const;
+    void setDefaultValue(const QValueSpecification *defaultValue);
+    QClass *class_() const;
+    void setClass_(const QClass *class_);
+    QProperty *opposite() const;
+    void setOpposite(const QProperty *opposite);
+    QProperty *associationEnd() const;
+    void setAssociationEnd(const QProperty *associationEnd);
+    QDataType *datatype() const;
+    void setDatatype(const QDataType *datatype);
     const QSet<QProperty *> *redefinedProperties() const;
     void addRedefinedProperty(const QProperty *redefinedProperty);
     void removeRedefinedProperty(const QProperty *redefinedProperty);
-    const QSet<QProperty *> *subsettedProperties() const;
-    void addSubsettedProperty(const QProperty *subsettedProperty);
-    void removeSubsettedProperty(const QProperty *subsettedProperty);
+    QAssociation *association() const;
+    void setAssociation(const QAssociation *association);
+    QInterface *interface() const;
+    void setInterface(const QInterface *interface);
 
     // Operations
     bool isAttribute(const QProperty *p) const;
@@ -200,7 +200,7 @@ public:
     bool isNavigable() const;
     const QSet<QType *> *subsettingContext() const;
 
-private:
+protected:
     QPropertyPrivate *d_ptr;
 };
 

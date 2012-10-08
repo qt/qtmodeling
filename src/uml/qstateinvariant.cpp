@@ -40,25 +40,17 @@
 ****************************************************************************/
 
 #include "qstateinvariant.h"
+#include "qstateinvariant_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QLifeline>
 #include <QtUml/QConstraint>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QStateInvariantPrivate
-{
-public:
-    explicit QStateInvariantPrivate();
-    virtual ~QStateInvariantPrivate();
-
-    QLifeline *covered;
-    QConstraint *invariant;
-};
-
 QStateInvariantPrivate::QStateInvariantPrivate() :
-    covered(0),
-    invariant(0)
+    invariant(0),
+    covered(0)
 {
 }
 
@@ -85,19 +77,6 @@ QStateInvariant::~QStateInvariant()
 }
 
 /*!
-    References the Lifeline on which the StateInvariant appears.
- */
-QLifeline *QStateInvariant::covered() const
-{
-    return d_ptr->covered;
-}
-
-void QStateInvariant::setCovered(const QLifeline *covered)
-{
-    d_ptr->covered = const_cast<QLifeline *>(covered);
-}
-
-/*!
     A Constraint that should hold at runtime for this StateInvariant
  */
 QConstraint *QStateInvariant::invariant() const
@@ -108,6 +87,19 @@ QConstraint *QStateInvariant::invariant() const
 void QStateInvariant::setInvariant(const QConstraint *invariant)
 {
     d_ptr->invariant = const_cast<QConstraint *>(invariant);
+}
+
+/*!
+    References the Lifeline on which the StateInvariant appears.
+ */
+QLifeline *QStateInvariant::covered() const
+{
+    return d_ptr->covered;
+}
+
+void QStateInvariant::setCovered(const QLifeline *covered)
+{
+    d_ptr->covered = const_cast<QLifeline *>(covered);
 }
 
 #include "moc_qstateinvariant.cpp"

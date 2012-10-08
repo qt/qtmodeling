@@ -40,24 +40,18 @@
 ****************************************************************************/
 
 #include "qinclude.h"
+#include "qinclude_p.h"
+#include "qdirectedrelationship_p.h"
+#include "qnamedelement_p.h"
+#include "qdirectedrelationship_p.h"
 
 #include <QtUml/QUseCase>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QIncludePrivate
-{
-public:
-    explicit QIncludePrivate();
-    virtual ~QIncludePrivate();
-
-    QUseCase *addition;
-    QUseCase *includingCase;
-};
-
 QIncludePrivate::QIncludePrivate() :
-    addition(0),
-    includingCase(0)
+    includingCase(0),
+    addition(0)
 {
 }
 
@@ -84,19 +78,6 @@ QInclude::~QInclude()
 }
 
 /*!
-    References the use case that is to be included.
- */
-QUseCase *QInclude::addition() const
-{
-    return d_ptr->addition;
-}
-
-void QInclude::setAddition(const QUseCase *addition)
-{
-    d_ptr->addition = const_cast<QUseCase *>(addition);
-}
-
-/*!
     References the use case which will include the addition and owns the include relationship.
  */
 QUseCase *QInclude::includingCase() const
@@ -107,6 +88,19 @@ QUseCase *QInclude::includingCase() const
 void QInclude::setIncludingCase(const QUseCase *includingCase)
 {
     d_ptr->includingCase = const_cast<QUseCase *>(includingCase);
+}
+
+/*!
+    References the use case that is to be included.
+ */
+QUseCase *QInclude::addition() const
+{
+    return d_ptr->addition;
+}
+
+void QInclude::setAddition(const QUseCase *addition)
+{
+    d_ptr->addition = const_cast<QUseCase *>(addition);
 }
 
 #include "moc_qinclude.cpp"

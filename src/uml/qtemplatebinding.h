@@ -66,9 +66,9 @@ class Q_UML_EXPORT QTemplateBinding : public QObject, public QDirectedRelationsh
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QRelationship
     Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
@@ -78,9 +78,9 @@ class Q_UML_EXPORT QTemplateBinding : public QObject, public QDirectedRelationsh
     Q_PROPERTY(const QSet<QElement *> * targets READ targets)
 
     // From QTemplateBinding
+    Q_PROPERTY(QTemplateSignature * signature READ signature WRITE setSignature)
     Q_PROPERTY(QTemplateableElement * boundElement READ boundElement WRITE setBoundElement)
     Q_PROPERTY(const QSet<QTemplateParameterSubstitution *> * parameterSubstitutions READ parameterSubstitutions)
-    Q_PROPERTY(QTemplateSignature * signature READ signature WRITE setSignature)
 
     Q_DISABLE_COPY(QTemplateBinding)
     Q_DECLARE_PRIVATE(QTemplateBinding)
@@ -90,15 +90,15 @@ public:
     virtual ~QTemplateBinding();
 
     // Association-ends
+    QTemplateSignature *signature() const;
+    void setSignature(const QTemplateSignature *signature);
     QTemplateableElement *boundElement() const;
     void setBoundElement(const QTemplateableElement *boundElement);
     const QSet<QTemplateParameterSubstitution *> *parameterSubstitutions() const;
     void addParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution);
     void removeParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution);
-    QTemplateSignature *signature() const;
-    void setSignature(const QTemplateSignature *signature);
 
-private:
+protected:
     QTemplateBindingPrivate *d_ptr;
 };
 

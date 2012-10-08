@@ -40,22 +40,12 @@
 ****************************************************************************/
 
 #include "qoccurrencespecification.h"
+#include "qoccurrencespecification_p.h"
 
 #include <QtUml/QLifeline>
 #include <QtUml/QGeneralOrdering>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QOccurrenceSpecificationPrivate
-{
-public:
-    explicit QOccurrenceSpecificationPrivate();
-    virtual ~QOccurrenceSpecificationPrivate();
-
-    QLifeline *covered;
-    QSet<QGeneralOrdering *> *toAfter;
-    QSet<QGeneralOrdering *> *toBefore;
-};
 
 QOccurrenceSpecificationPrivate::QOccurrenceSpecificationPrivate() :
     covered(0),

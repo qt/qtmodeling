@@ -40,18 +40,10 @@
 ****************************************************************************/
 
 #include "qliteralreal.h"
+#include "qliteralreal_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QLiteralRealPrivate
-{
-public:
-    explicit QLiteralRealPrivate();
-    virtual ~QLiteralRealPrivate();
-
-    qreal value;
-};
 
 QLiteralRealPrivate::QLiteralRealPrivate()
 {

@@ -40,19 +40,12 @@
 ****************************************************************************/
 
 #include "qexecutablenode.h"
+#include "qexecutablenode_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QExceptionHandler>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QExecutableNodePrivate
-{
-public:
-    explicit QExecutableNodePrivate();
-    virtual ~QExecutableNodePrivate();
-
-    QSet<QExceptionHandler *> *handlers;
-};
 
 QExecutableNodePrivate::QExecutableNodePrivate() :
     handlers(new QSet<QExceptionHandler *>)
@@ -94,14 +87,14 @@ void QExecutableNode::addHandler(const QExceptionHandler *handler)
 {
     d_ptr->handlers->insert(const_cast<QExceptionHandler *>(handler));
     // Adjust subsetted property(ies)
-    addOwnedElement(handler);
+    QElement::d_ptr->ownedElements->insert(const_cast<QExceptionHandler *>(handler));
 }
 
 void QExecutableNode::removeHandler(const QExceptionHandler *handler)
 {
     d_ptr->handlers->remove(const_cast<QExceptionHandler *>(handler));
     // Adjust subsetted property(ies)
-    removeOwnedElement(handler);
+    QElement::d_ptr->ownedElements->remove(const_cast<QExceptionHandler *>(handler));
 }
 
 QT_END_NAMESPACE_QTUML

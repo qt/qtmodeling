@@ -40,20 +40,10 @@
 ****************************************************************************/
 
 #include "qimage.h"
+#include "qimage_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QImagePrivate
-{
-public:
-    explicit QImagePrivate();
-    virtual ~QImagePrivate();
-
-    QString content;
-    QString format;
-    QString location;
-};
 
 QImagePrivate::QImagePrivate()
 {
@@ -82,19 +72,6 @@ QImage::~QImage()
 }
 
 /*!
-    This contains the serialization of the image according to the format. The value could represent a bitmap, image such as a GIF file, or drawing 'instructions' using a standard such as Scalable Vector Graphic (SVG) (which is XML based).
- */
-QString QImage::content() const
-{
-    return d_ptr->content;
-}
-
-void QImage::setContent(QString content)
-{
-    d_ptr->content = content;
-}
-
-/*!
     This indicates the format of the content - which is how the string content should be interpreted. The following values are reserved: SVG, GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also reserved. This option can be used as an alternative to express the reserved values above, for example "SVG" could instead be expressed as "MIME: image/svg+xml".
  */
 QString QImage::format() const
@@ -118,6 +95,19 @@ QString QImage::location() const
 void QImage::setLocation(QString location)
 {
     d_ptr->location = location;
+}
+
+/*!
+    This contains the serialization of the image according to the format. The value could represent a bitmap, image such as a GIF file, or drawing 'instructions' using a standard such as Scalable Vector Graphic (SVG) (which is XML based).
+ */
+QString QImage::content() const
+{
+    return d_ptr->content;
+}
+
+void QImage::setContent(QString content)
+{
+    d_ptr->content = content;
 }
 
 #include "moc_qimage.cpp"

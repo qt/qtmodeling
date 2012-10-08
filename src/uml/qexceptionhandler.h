@@ -66,15 +66,15 @@ class Q_UML_EXPORT QExceptionHandler : public QObject, public QElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QExceptionHandler
-    Q_PROPERTY(QObjectNode * exceptionInput READ exceptionInput WRITE setExceptionInput)
-    Q_PROPERTY(const QSet<QClassifier *> * exceptionTypes READ exceptionTypes)
     Q_PROPERTY(QExecutableNode * handlerBody READ handlerBody WRITE setHandlerBody)
+    Q_PROPERTY(const QSet<QClassifier *> * exceptionTypes READ exceptionTypes)
     Q_PROPERTY(QExecutableNode * protectedNode READ protectedNode WRITE setProtectedNode)
+    Q_PROPERTY(QObjectNode * exceptionInput READ exceptionInput WRITE setExceptionInput)
 
     Q_DISABLE_COPY(QExceptionHandler)
     Q_DECLARE_PRIVATE(QExceptionHandler)
@@ -84,17 +84,17 @@ public:
     virtual ~QExceptionHandler();
 
     // Association-ends
-    QObjectNode *exceptionInput() const;
-    void setExceptionInput(const QObjectNode *exceptionInput);
+    QExecutableNode *handlerBody() const;
+    void setHandlerBody(const QExecutableNode *handlerBody);
     const QSet<QClassifier *> *exceptionTypes() const;
     void addExceptionType(const QClassifier *exceptionType);
     void removeExceptionType(const QClassifier *exceptionType);
-    QExecutableNode *handlerBody() const;
-    void setHandlerBody(const QExecutableNode *handlerBody);
     QExecutableNode *protectedNode() const;
     void setProtectedNode(const QExecutableNode *protectedNode);
+    QObjectNode *exceptionInput() const;
+    void setExceptionInput(const QObjectNode *exceptionInput);
 
-private:
+protected:
     QExceptionHandlerPrivate *d_ptr;
 };
 

@@ -40,6 +40,9 @@
 ****************************************************************************/
 
 #include "qmessage.h"
+#include "qmessage_p.h"
+#include "qelement_p.h"
+#include "qnamedelement_p.h"
 
 #include <QtUml/QMessageEnd>
 #include <QtUml/QInteraction>
@@ -48,29 +51,14 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QMessagePrivate
-{
-public:
-    explicit QMessagePrivate();
-    virtual ~QMessagePrivate();
-
-    QtUml::MessageSort messageSort;
-    QList<QValueSpecification *> *arguments;
-    QConnector *connector;
-    QInteraction *interaction;
-    QMessageEnd *receiveEvent;
-    QMessageEnd *sendEvent;
-    QNamedElement *signature;
-};
-
 QMessagePrivate::QMessagePrivate() :
     messageSort(QtUml::MessageSynchCall),
+    signature(0),
     arguments(new QList<QValueSpecification *>),
-    connector(0),
-    interaction(0),
     receiveEvent(0),
+    interaction(0),
     sendEvent(0),
-    signature(0)
+    connector(0)
 {
 }
 
@@ -98,14 +86,6 @@ QMessage::~QMessage()
 }
 
 /*!
-    The derived kind of the Message (complete, lost, found or unknown)
- */
-QtUml::MessageKind QMessage::messageKind() const
-{
-    qWarning("QMessage::messageKind: to be implemented (this is a derived attribute)");
-}
-
-/*!
     The sort of communication reflected by the Message
  */
 QtUml::MessageSort QMessage::messageSort() const
@@ -116,6 +96,27 @@ QtUml::MessageSort QMessage::messageSort() const
 void QMessage::setMessageSort(QtUml::MessageSort messageSort)
 {
     d_ptr->messageSort = messageSort;
+}
+
+/*!
+    The derived kind of the Message (complete, lost, found or unknown)
+ */
+QtUml::MessageKind QMessage::messageKind() const
+{
+    qWarning("QMessage::messageKind: to be implemented (this is a derived attribute)");
+}
+
+/*!
+    The signature of the Message is the specification of its content. It refers either an Operation or a Signal.
+ */
+QNamedElement *QMessage::signature() const
+{
+    return d_ptr->signature;
+}
+
+void QMessage::setSignature(const QNamedElement *signature)
+{
+    d_ptr->signature = const_cast<QNamedElement *>(signature);
 }
 
 /*!
@@ -130,40 +131,14 @@ void QMessage::addArgument(const QValueSpecification *argument)
 {
     d_ptr->arguments->append(const_cast<QValueSpecification *>(argument));
     // Adjust subsetted property(ies)
-    addOwnedElement(argument);
+    QElement::d_ptr->ownedElements->insert(const_cast<QValueSpecification *>(argument));
 }
 
 void QMessage::removeArgument(const QValueSpecification *argument)
 {
     d_ptr->arguments->removeAll(const_cast<QValueSpecification *>(argument));
     // Adjust subsetted property(ies)
-    removeOwnedElement(argument);
-}
-
-/*!
-    The Connector on which this Message is sent.
- */
-QConnector *QMessage::connector() const
-{
-    return d_ptr->connector;
-}
-
-void QMessage::setConnector(const QConnector *connector)
-{
-    d_ptr->connector = const_cast<QConnector *>(connector);
-}
-
-/*!
-    The enclosing Interaction owning the Message
- */
-QInteraction *QMessage::interaction() const
-{
-    return d_ptr->interaction;
-}
-
-void QMessage::setInteraction(const QInteraction *interaction)
-{
-    d_ptr->interaction = const_cast<QInteraction *>(interaction);
+    QElement::d_ptr->ownedElements->remove(const_cast<QValueSpecification *>(argument));
 }
 
 /*!
@@ -180,6 +155,19 @@ void QMessage::setReceiveEvent(const QMessageEnd *receiveEvent)
 }
 
 /*!
+    The enclosing Interaction owning the Message
+ */
+QInteraction *QMessage::interaction() const
+{
+    return d_ptr->interaction;
+}
+
+void QMessage::setInteraction(const QInteraction *interaction)
+{
+    d_ptr->interaction = const_cast<QInteraction *>(interaction);
+}
+
+/*!
     References the Sending of the Message.
  */
 QMessageEnd *QMessage::sendEvent() const
@@ -193,16 +181,16 @@ void QMessage::setSendEvent(const QMessageEnd *sendEvent)
 }
 
 /*!
-    The signature of the Message is the specification of its content. It refers either an Operation or a Signal.
+    The Connector on which this Message is sent.
  */
-QNamedElement *QMessage::signature() const
+QConnector *QMessage::connector() const
 {
-    return d_ptr->signature;
+    return d_ptr->connector;
 }
 
-void QMessage::setSignature(const QNamedElement *signature)
+void QMessage::setConnector(const QConnector *connector)
 {
-    d_ptr->signature = const_cast<QNamedElement *>(signature);
+    d_ptr->connector = const_cast<QConnector *>(connector);
 }
 
 #include "moc_qmessage.cpp"

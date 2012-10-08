@@ -40,19 +40,12 @@
 ****************************************************************************/
 
 #include "qreadstructuralfeatureaction.h"
+#include "qreadstructuralfeatureaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QReadStructuralFeatureActionPrivate
-{
-public:
-    explicit QReadStructuralFeatureActionPrivate();
-    virtual ~QReadStructuralFeatureActionPrivate();
-
-    QOutputPin *result;
-};
 
 QReadStructuralFeatureActionPrivate::QReadStructuralFeatureActionPrivate() :
     result(0)

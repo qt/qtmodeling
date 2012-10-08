@@ -62,9 +62,9 @@ class Q_UML_EXPORT QProfileApplication : public QObject, public QDirectedRelatio
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QRelationship
     Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
@@ -75,8 +75,8 @@ class Q_UML_EXPORT QProfileApplication : public QObject, public QDirectedRelatio
 
     // From QProfileApplication
     Q_PROPERTY(bool isStrict READ isStrict WRITE setStrict)
-    Q_PROPERTY(QProfile * appliedProfile READ appliedProfile WRITE setAppliedProfile)
     Q_PROPERTY(QPackage * applyingPackage READ applyingPackage WRITE setApplyingPackage)
+    Q_PROPERTY(QProfile * appliedProfile READ appliedProfile WRITE setAppliedProfile)
 
     Q_DISABLE_COPY(QProfileApplication)
     Q_DECLARE_PRIVATE(QProfileApplication)
@@ -90,12 +90,12 @@ public:
     void setStrict(bool isStrict);
 
     // Association-ends
-    QProfile *appliedProfile() const;
-    void setAppliedProfile(const QProfile *appliedProfile);
     QPackage *applyingPackage() const;
     void setApplyingPackage(const QPackage *applyingPackage);
+    QProfile *appliedProfile() const;
+    void setAppliedProfile(const QProfile *appliedProfile);
 
-private:
+protected:
     QProfileApplicationPrivate *d_ptr;
 };
 

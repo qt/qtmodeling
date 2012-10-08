@@ -62,13 +62,13 @@ class Q_UML_EXPORT QQualifierValue : public QObject, public QElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QQualifierValue
-    Q_PROPERTY(QProperty * qualifier READ qualifier WRITE setQualifier)
     Q_PROPERTY(QInputPin * value READ value WRITE setValue)
+    Q_PROPERTY(QProperty * qualifier READ qualifier WRITE setQualifier)
 
     Q_DISABLE_COPY(QQualifierValue)
     Q_DECLARE_PRIVATE(QQualifierValue)
@@ -78,12 +78,12 @@ public:
     virtual ~QQualifierValue();
 
     // Association-ends
-    QProperty *qualifier() const;
-    void setQualifier(const QProperty *qualifier);
     QInputPin *value() const;
     void setValue(const QInputPin *value);
+    QProperty *qualifier() const;
+    void setQualifier(const QProperty *qualifier);
 
-private:
+protected:
     QQualifierValuePrivate *d_ptr;
 };
 

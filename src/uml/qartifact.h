@@ -69,24 +69,24 @@ class Q_UML_EXPORT QArtifact : public QObject, public QDeployedArtifact, public 
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QNamespace
-    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
-    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
-    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
-    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
-    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
     Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
+    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
+    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
+    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
+    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
+    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
 
     // From QParameterableElement
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
@@ -108,27 +108,27 @@ class Q_UML_EXPORT QArtifact : public QObject, public QDeployedArtifact, public 
     // From QClassifier
     Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract)
     Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization)
-    Q_PROPERTY(const QSet<QProperty *> * attributes READ attributes)
-    Q_PROPERTY(const QSet<QCollaborationUse *> * collaborationUses READ collaborationUses)
-    Q_PROPERTY(const QSet<QFeature *> * features READ features)
-    Q_PROPERTY(const QSet<QClassifier *> * generals READ generals)
-    Q_PROPERTY(const QSet<QGeneralization *> * generalizations READ generalizations)
-    Q_PROPERTY(const QSet<QNamedElement *> * inheritedMembers READ inheritedMembers)
-    Q_PROPERTY(QRedefinableTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
     Q_PROPERTY(const QSet<QUseCase *> * ownedUseCases READ ownedUseCases)
     Q_PROPERTY(const QSet<QGeneralizationSet *> * powertypeExtents READ powertypeExtents)
-    Q_PROPERTY(const QSet<QClassifier *> * redefinedClassifiers READ redefinedClassifiers)
-    Q_PROPERTY(QCollaborationUse * representation READ representation WRITE setRepresentation)
-    Q_PROPERTY(const QSet<QSubstitution *> * substitutions READ substitutions)
-    Q_PROPERTY(QClassifierTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
     Q_PROPERTY(const QSet<QUseCase *> * useCases READ useCases)
+    Q_PROPERTY(QClassifierTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
+    Q_PROPERTY(const QSet<QClassifier *> * redefinedClassifiers READ redefinedClassifiers)
+    Q_PROPERTY(QRedefinableTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
+    Q_PROPERTY(const QSet<QCollaborationUse *> * collaborationUses READ collaborationUses)
+    Q_PROPERTY(const QSet<QProperty *> * attributes READ attributes)
+    Q_PROPERTY(const QSet<QFeature *> * features READ features)
+    Q_PROPERTY(const QSet<QClassifier *> * generals READ generals)
+    Q_PROPERTY(QCollaborationUse * representation READ representation WRITE setRepresentation)
+    Q_PROPERTY(const QSet<QGeneralization *> * generalizations READ generalizations)
+    Q_PROPERTY(const QSet<QNamedElement *> * inheritedMembers READ inheritedMembers)
+    Q_PROPERTY(const QSet<QSubstitution *> * substitutions READ substitutions)
 
     // From QArtifact
     Q_PROPERTY(QString fileName READ fileName WRITE setFileName)
+    Q_PROPERTY(const QList<QOperation *> * ownedOperations READ ownedOperations)
+    Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
     Q_PROPERTY(const QSet<QManifestation *> * manifestations READ manifestations)
     Q_PROPERTY(const QSet<QArtifact *> * nestedArtifacts READ nestedArtifacts)
-    Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
-    Q_PROPERTY(const QList<QOperation *> * ownedOperations READ ownedOperations)
 
     Q_DISABLE_COPY(QArtifact)
     Q_DECLARE_PRIVATE(QArtifact)
@@ -142,20 +142,20 @@ public:
     void setFileName(QString fileName);
 
     // Association-ends
+    const QList<QOperation *> *ownedOperations() const;
+    void addOwnedOperation(const QOperation *ownedOperation);
+    void removeOwnedOperation(const QOperation *ownedOperation);
+    const QList<QProperty *> *ownedAttributes() const;
+    void addOwnedAttribute(const QProperty *ownedAttribute);
+    void removeOwnedAttribute(const QProperty *ownedAttribute);
     const QSet<QManifestation *> *manifestations() const;
     void addManifestation(const QManifestation *manifestation);
     void removeManifestation(const QManifestation *manifestation);
     const QSet<QArtifact *> *nestedArtifacts() const;
     void addNestedArtifact(const QArtifact *nestedArtifact);
     void removeNestedArtifact(const QArtifact *nestedArtifact);
-    const QList<QProperty *> *ownedAttributes() const;
-    void addOwnedAttribute(const QProperty *ownedAttribute);
-    void removeOwnedAttribute(const QProperty *ownedAttribute);
-    const QList<QOperation *> *ownedOperations() const;
-    void addOwnedOperation(const QOperation *ownedOperation);
-    void removeOwnedOperation(const QOperation *ownedOperation);
 
-private:
+protected:
     QArtifactPrivate *d_ptr;
 };
 

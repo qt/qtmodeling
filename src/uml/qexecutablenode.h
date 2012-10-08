@@ -74,7 +74,7 @@ public:
 protected:
     explicit QExecutableNode();
 
-private:
+protected:
     QExecutableNodePrivate *d_ptr;
 };
 

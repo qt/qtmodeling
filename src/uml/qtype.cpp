@@ -40,19 +40,11 @@
 ****************************************************************************/
 
 #include "qtype.h"
+#include "qtype_p.h"
 
 #include <QtUml/QPackage>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QTypePrivate
-{
-public:
-    explicit QTypePrivate();
-    virtual ~QTypePrivate();
-
-    QPackage *package;
-};
 
 QTypePrivate::QTypePrivate() :
     package(0)

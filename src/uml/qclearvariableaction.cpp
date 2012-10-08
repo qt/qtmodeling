@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qclearvariableaction.h"
+#include "qclearvariableaction_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QClearVariableActionPrivate
-{
-public:
-    explicit QClearVariableActionPrivate();
-    virtual ~QClearVariableActionPrivate();
-
-};
 
 QClearVariableActionPrivate::QClearVariableActionPrivate()
 {

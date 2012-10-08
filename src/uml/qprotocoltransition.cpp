@@ -40,21 +40,14 @@
 ****************************************************************************/
 
 #include "qprotocoltransition.h"
+#include "qprotocoltransition_p.h"
+#include "qnamespace_p.h"
+#include "qtransition_p.h"
 
 #include <QtUml/QConstraint>
 #include <QtUml/QOperation>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QProtocolTransitionPrivate
-{
-public:
-    explicit QProtocolTransitionPrivate();
-    virtual ~QProtocolTransitionPrivate();
-
-    QConstraint *postCondition;
-    QConstraint *preCondition;
-};
 
 QProtocolTransitionPrivate::QProtocolTransitionPrivate() :
     postCondition(0),
@@ -98,6 +91,14 @@ void QProtocolTransition::setPostCondition(const QConstraint *postCondition)
 }
 
 /*!
+    This association refers to the associated operation. It is derived from the operation of the call trigger when applicable.
+ */
+const QSet<QOperation *> *QProtocolTransition::referred() const
+{
+    qWarning("QProtocolTransition::referred: to be implemented (this is a derived associationend)");
+}
+
+/*!
     Specifies the precondition of the transition. It specifies the condition that should be verified before triggering the transition. This guard condition added to the source state will be evaluated as part of the precondition of the operation referred by the transition if any.
  */
 QConstraint *QProtocolTransition::preCondition() const
@@ -108,14 +109,6 @@ QConstraint *QProtocolTransition::preCondition() const
 void QProtocolTransition::setPreCondition(const QConstraint *preCondition)
 {
     d_ptr->preCondition = const_cast<QConstraint *>(preCondition);
-}
-
-/*!
-    This association refers to the associated operation. It is derived from the operation of the call trigger when applicable.
- */
-const QSet<QOperation *> *QProtocolTransition::referred() const
-{
-    qWarning("QProtocolTransition::referred: to be implemented (this is a derived associationend)");
 }
 
 #include "moc_qprotocoltransition.cpp"

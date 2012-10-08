@@ -40,19 +40,12 @@
 ****************************************************************************/
 
 #include "qreadlinkaction.h"
+#include "qreadlinkaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QReadLinkActionPrivate
-{
-public:
-    explicit QReadLinkActionPrivate();
-    virtual ~QReadLinkActionPrivate();
-
-    QOutputPin *result;
-};
 
 QReadLinkActionPrivate::QReadLinkActionPrivate() :
     result(0)

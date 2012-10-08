@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qdevice.h"
+#include "qdevice_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QDevicePrivate
-{
-public:
-    explicit QDevicePrivate();
-    virtual ~QDevicePrivate();
-
-};
 
 QDevicePrivate::QDevicePrivate()
 {

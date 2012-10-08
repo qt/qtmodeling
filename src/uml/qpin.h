@@ -70,7 +70,7 @@ public:
 protected:
     explicit QPin();
 
-private:
+protected:
     QPinPrivate *d_ptr;
 };
 

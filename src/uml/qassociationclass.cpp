@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qassociationclass.h"
+#include "qassociationclass_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QAssociationClassPrivate
-{
-public:
-    explicit QAssociationClassPrivate();
-    virtual ~QAssociationClassPrivate();
-
-};
 
 QAssociationClassPrivate::QAssociationClassPrivate()
 {

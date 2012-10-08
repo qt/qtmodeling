@@ -71,18 +71,18 @@ public:
     virtual ~QNamespace();
 
     // Association-ends
-    const QSet<QElementImport *> *elementImports() const;
-    void addElementImport(const QElementImport *elementImport);
-    void removeElementImport(const QElementImport *elementImport);
-    const QSet<QPackageableElement *> *importedMembers() const;
-    const QSet<QNamedElement *> *members() const;
-    const QSet<QNamedElement *> *ownedMembers() const;
-    const QSet<QConstraint *> *ownedRules() const;
-    void addOwnedRule(const QConstraint *ownedRule);
-    void removeOwnedRule(const QConstraint *ownedRule);
     const QSet<QPackageImport *> *packageImports() const;
     void addPackageImport(const QPackageImport *packageImport);
     void removePackageImport(const QPackageImport *packageImport);
+    const QSet<QNamedElement *> *members() const;
+    const QSet<QPackageableElement *> *importedMembers() const;
+    const QSet<QElementImport *> *elementImports() const;
+    void addElementImport(const QElementImport *elementImport);
+    void removeElementImport(const QElementImport *elementImport);
+    const QSet<QConstraint *> *ownedRules() const;
+    void addOwnedRule(const QConstraint *ownedRule);
+    void removeOwnedRule(const QConstraint *ownedRule);
+    const QSet<QNamedElement *> *ownedMembers() const;
 
     // Operations
     const QSet<QPackageableElement *> *excludeCollisions(const QSet<QPackageableElement *> *imps) const;
@@ -91,16 +91,9 @@ public:
     bool membersAreDistinguishable() const;
 
 protected:
-    // Synchronization functions for read-only subsetted properties
-    void addMember(const QNamedElement *member);
-    void removeMember(const QNamedElement *member);
-    void addOwnedMember(const QNamedElement *ownedMember);
-    void removeOwnedMember(const QNamedElement *ownedMember);
-
-protected:
     explicit QNamespace();
 
-private:
+protected:
     QNamespacePrivate *d_ptr;
 };
 

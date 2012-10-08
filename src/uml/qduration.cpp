@@ -40,20 +40,12 @@
 ****************************************************************************/
 
 #include "qduration.h"
+#include "qduration_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QObservation>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QDurationPrivate
-{
-public:
-    explicit QDurationPrivate();
-    virtual ~QDurationPrivate();
-
-    QValueSpecification *expr;
-    QSet<QObservation *> *observations;
-};
 
 QDurationPrivate::QDurationPrivate() :
     expr(0),

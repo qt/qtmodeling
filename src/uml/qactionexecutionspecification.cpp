@@ -40,19 +40,11 @@
 ****************************************************************************/
 
 #include "qactionexecutionspecification.h"
+#include "qactionexecutionspecification_p.h"
 
 #include <QtUml/QAction>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QActionExecutionSpecificationPrivate
-{
-public:
-    explicit QActionExecutionSpecificationPrivate();
-    virtual ~QActionExecutionSpecificationPrivate();
-
-    QAction *action;
-};
 
 QActionExecutionSpecificationPrivate::QActionExecutionSpecificationPrivate() :
     action(0)

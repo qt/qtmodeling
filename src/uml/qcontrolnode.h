@@ -65,7 +65,7 @@ public:
 protected:
     explicit QControlNode();
 
-private:
+protected:
     QControlNodePrivate *d_ptr;
 };
 

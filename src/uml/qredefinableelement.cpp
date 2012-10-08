@@ -40,21 +40,11 @@
 ****************************************************************************/
 
 #include "qredefinableelement.h"
+#include "qredefinableelement_p.h"
 
 #include <QtUml/QClassifier>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QRedefinableElementPrivate
-{
-public:
-    explicit QRedefinableElementPrivate();
-    virtual ~QRedefinableElementPrivate();
-
-    bool isLeaf;
-    QSet<QRedefinableElement *> *redefinedElements;
-    QSet<QClassifier *> *redefinitionContexts;
-};
 
 QRedefinableElementPrivate::QRedefinableElementPrivate() :
     isLeaf(false),
@@ -108,32 +98,12 @@ const QSet<QRedefinableElement *> *QRedefinableElement::redefinedElements() cons
     return d_ptr->redefinedElements;
 }
 
-void QRedefinableElement::addRedefinedElement(const QRedefinableElement *redefinedElement)
-{
-    d_ptr->redefinedElements->insert(const_cast<QRedefinableElement *>(redefinedElement));
-}
-
-void QRedefinableElement::removeRedefinedElement(const QRedefinableElement *redefinedElement)
-{
-    d_ptr->redefinedElements->remove(const_cast<QRedefinableElement *>(redefinedElement));
-}
-
 /*!
     References the contexts that this element may be redefined from.
  */
 const QSet<QClassifier *> *QRedefinableElement::redefinitionContexts() const
 {
     return d_ptr->redefinitionContexts;
-}
-
-void QRedefinableElement::addRedefinitionContext(const QClassifier *redefinitionContext)
-{
-    d_ptr->redefinitionContexts->insert(const_cast<QClassifier *>(redefinitionContext));
-}
-
-void QRedefinableElement::removeRedefinitionContext(const QClassifier *redefinitionContext)
-{
-    d_ptr->redefinitionContexts->remove(const_cast<QClassifier *>(redefinitionContext));
 }
 
 /*!

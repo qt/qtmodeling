@@ -40,18 +40,10 @@
 ****************************************************************************/
 
 #include "qliteralunlimitednatural.h"
+#include "qliteralunlimitednatural_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QLiteralUnlimitedNaturalPrivate
-{
-public:
-    explicit QLiteralUnlimitedNaturalPrivate();
-    virtual ~QLiteralUnlimitedNaturalPrivate();
-
-    qint32 value;
-};
 
 QLiteralUnlimitedNaturalPrivate::QLiteralUnlimitedNaturalPrivate() :
     value(0)

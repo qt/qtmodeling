@@ -64,16 +64,16 @@ class Q_UML_EXPORT QTimeExpression : public QObject, public QValueSpecification
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QTypedElement
     Q_PROPERTY(QType * type READ type WRITE setType)
@@ -86,8 +86,8 @@ class Q_UML_EXPORT QTimeExpression : public QObject, public QValueSpecification
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // From QTimeExpression
-    Q_PROPERTY(QValueSpecification * expr READ expr WRITE setExpr)
     Q_PROPERTY(const QSet<QObservation *> * observations READ observations)
+    Q_PROPERTY(QValueSpecification * expr READ expr WRITE setExpr)
 
     Q_DISABLE_COPY(QTimeExpression)
     Q_DECLARE_PRIVATE(QTimeExpression)
@@ -97,13 +97,13 @@ public:
     virtual ~QTimeExpression();
 
     // Association-ends
-    QValueSpecification *expr() const;
-    void setExpr(const QValueSpecification *expr);
     const QSet<QObservation *> *observations() const;
     void addObservation(const QObservation *observation);
     void removeObservation(const QObservation *observation);
+    QValueSpecification *expr() const;
+    void setExpr(const QValueSpecification *expr);
 
-private:
+protected:
     QTimeExpressionPrivate *d_ptr;
 };
 

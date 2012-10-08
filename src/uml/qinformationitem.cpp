@@ -40,18 +40,10 @@
 ****************************************************************************/
 
 #include "qinformationitem.h"
+#include "qinformationitem_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QInformationItemPrivate
-{
-public:
-    explicit QInformationItemPrivate();
-    virtual ~QInformationItemPrivate();
-
-    QSet<QClassifier *> *represented;
-};
 
 QInformationItemPrivate::QInformationItemPrivate() :
     represented(new QSet<QClassifier *>)

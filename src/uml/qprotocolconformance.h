@@ -61,9 +61,9 @@ class Q_UML_EXPORT QProtocolConformance : public QObject, public QDirectedRelati
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QRelationship
     Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
@@ -73,8 +73,8 @@ class Q_UML_EXPORT QProtocolConformance : public QObject, public QDirectedRelati
     Q_PROPERTY(const QSet<QElement *> * targets READ targets)
 
     // From QProtocolConformance
-    Q_PROPERTY(QProtocolStateMachine * generalMachine READ generalMachine WRITE setGeneralMachine)
     Q_PROPERTY(QProtocolStateMachine * specificMachine READ specificMachine WRITE setSpecificMachine)
+    Q_PROPERTY(QProtocolStateMachine * generalMachine READ generalMachine WRITE setGeneralMachine)
 
     Q_DISABLE_COPY(QProtocolConformance)
     Q_DECLARE_PRIVATE(QProtocolConformance)
@@ -84,12 +84,12 @@ public:
     virtual ~QProtocolConformance();
 
     // Association-ends
-    QProtocolStateMachine *generalMachine() const;
-    void setGeneralMachine(const QProtocolStateMachine *generalMachine);
     QProtocolStateMachine *specificMachine() const;
     void setSpecificMachine(const QProtocolStateMachine *specificMachine);
+    QProtocolStateMachine *generalMachine() const;
+    void setGeneralMachine(const QProtocolStateMachine *generalMachine);
 
-private:
+protected:
     QProtocolConformancePrivate *d_ptr;
 };
 

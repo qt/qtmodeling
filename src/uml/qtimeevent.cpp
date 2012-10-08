@@ -40,20 +40,12 @@
 ****************************************************************************/
 
 #include "qtimeevent.h"
+#include "qtimeevent_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QTimeExpression>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QTimeEventPrivate
-{
-public:
-    explicit QTimeEventPrivate();
-    virtual ~QTimeEventPrivate();
-
-    bool isRelative;
-    QTimeExpression *when;
-};
 
 QTimeEventPrivate::QTimeEventPrivate() :
     isRelative(false),

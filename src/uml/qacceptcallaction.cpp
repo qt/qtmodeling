@@ -40,19 +40,12 @@
 ****************************************************************************/
 
 #include "qacceptcallaction.h"
+#include "qacceptcallaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QAcceptCallActionPrivate
-{
-public:
-    explicit QAcceptCallActionPrivate();
-    virtual ~QAcceptCallActionPrivate();
-
-    QOutputPin *returnInformation;
-};
 
 QAcceptCallActionPrivate::QAcceptCallActionPrivate() :
     returnInformation(0)

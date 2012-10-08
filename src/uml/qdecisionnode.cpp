@@ -40,25 +40,16 @@
 ****************************************************************************/
 
 #include "qdecisionnode.h"
+#include "qdecisionnode_p.h"
 
 #include <QtUml/QBehavior>
 #include <QtUml/QObjectFlow>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QDecisionNodePrivate
-{
-public:
-    explicit QDecisionNodePrivate();
-    virtual ~QDecisionNodePrivate();
-
-    QBehavior *decisionInput;
-    QObjectFlow *decisionInputFlow;
-};
-
 QDecisionNodePrivate::QDecisionNodePrivate() :
-    decisionInput(0),
-    decisionInputFlow(0)
+    decisionInputFlow(0),
+    decisionInput(0)
 {
 }
 
@@ -85,19 +76,6 @@ QDecisionNode::~QDecisionNode()
 }
 
 /*!
-    Provides input to guard specifications on edges outgoing from the decision node.
- */
-QBehavior *QDecisionNode::decisionInput() const
-{
-    return d_ptr->decisionInput;
-}
-
-void QDecisionNode::setDecisionInput(const QBehavior *decisionInput)
-{
-    d_ptr->decisionInput = const_cast<QBehavior *>(decisionInput);
-}
-
-/*!
     An additional edge incoming to the decision node that provides a decision input value.
  */
 QObjectFlow *QDecisionNode::decisionInputFlow() const
@@ -108,6 +86,19 @@ QObjectFlow *QDecisionNode::decisionInputFlow() const
 void QDecisionNode::setDecisionInputFlow(const QObjectFlow *decisionInputFlow)
 {
     d_ptr->decisionInputFlow = const_cast<QObjectFlow *>(decisionInputFlow);
+}
+
+/*!
+    Provides input to guard specifications on edges outgoing from the decision node.
+ */
+QBehavior *QDecisionNode::decisionInput() const
+{
+    return d_ptr->decisionInput;
+}
+
+void QDecisionNode::setDecisionInput(const QBehavior *decisionInput)
+{
+    d_ptr->decisionInput = const_cast<QBehavior *>(decisionInput);
 }
 
 #include "moc_qdecisionnode.cpp"

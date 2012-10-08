@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qevent.h"
+#include "qevent_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QEventPrivate
-{
-public:
-    explicit QEventPrivate();
-    virtual ~QEventPrivate();
-
-};
 
 QEventPrivate::QEventPrivate()
 {

@@ -40,6 +40,12 @@
 ****************************************************************************/
 
 #include "qstructuredclassifier.h"
+#include "qstructuredclassifier_p.h"
+#include "qnamespace_p.h"
+#include "qclassifier_p.h"
+#include "qnamespace_p.h"
+#include "qclassifier_p.h"
+#include "qnamespace_p.h"
 
 #include <QtUml/QProperty>
 #include <QtUml/QConnector>
@@ -47,29 +53,18 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QStructuredClassifierPrivate
-{
-public:
-    explicit QStructuredClassifierPrivate();
-    virtual ~QStructuredClassifierPrivate();
-
-    QList<QProperty *> *ownedAttributes;
-    QSet<QConnector *> *ownedConnectors;
-    QSet<QConnectableElement *> *roles;
-};
-
 QStructuredClassifierPrivate::QStructuredClassifierPrivate() :
+    roles(new QSet<QConnectableElement *>),
     ownedAttributes(new QList<QProperty *>),
-    ownedConnectors(new QSet<QConnector *>),
-    roles(new QSet<QConnectableElement *>)
+    ownedConnectors(new QSet<QConnector *>)
 {
 }
 
 QStructuredClassifierPrivate::~QStructuredClassifierPrivate()
 {
+    delete roles;
     delete ownedAttributes;
     delete ownedConnectors;
-    delete roles;
 }
 
 /*!
@@ -91,6 +86,14 @@ QStructuredClassifier::~QStructuredClassifier()
 }
 
 /*!
+    References the roles that instances may play in this classifier.
+ */
+const QSet<QConnectableElement *> *QStructuredClassifier::roles() const
+{
+    return d_ptr->roles;
+}
+
+/*!
     References the properties owned by the classifier.
  */
 const QList<QProperty *> *QStructuredClassifier::ownedAttributes() const
@@ -102,18 +105,26 @@ void QStructuredClassifier::addOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
     // Adjust subsetted property(ies)
-    addAttribute(ownedAttribute);
-    addOwnedMember(ownedAttribute);
-    addRole(ownedAttribute);
+    QClassifier::d_ptr->attributes->insert(const_cast<QProperty *>(ownedAttribute));
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QProperty *>(ownedAttribute));
+    QStructuredClassifier::d_ptr->roles->insert(const_cast<QProperty *>(ownedAttribute));
 }
 
 void QStructuredClassifier::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
     // Adjust subsetted property(ies)
-    removeAttribute(ownedAttribute);
-    removeOwnedMember(ownedAttribute);
-    removeRole(ownedAttribute);
+    QClassifier::d_ptr->attributes->remove(const_cast<QProperty *>(ownedAttribute));
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QProperty *>(ownedAttribute));
+    QStructuredClassifier::d_ptr->roles->remove(const_cast<QProperty *>(ownedAttribute));
+}
+
+/*!
+    References the properties specifying instances that the classifier owns by composition. This association is derived, selecting those owned properties where isComposite is true.
+ */
+const QSet<QProperty *> *QStructuredClassifier::parts() const
+{
+    qWarning("QStructuredClassifier::parts: to be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -128,46 +139,16 @@ void QStructuredClassifier::addOwnedConnector(const QConnector *ownedConnector)
 {
     d_ptr->ownedConnectors->insert(const_cast<QConnector *>(ownedConnector));
     // Adjust subsetted property(ies)
-    addFeature(ownedConnector);
-    addOwnedMember(ownedConnector);
+    QClassifier::d_ptr->features->insert(const_cast<QConnector *>(ownedConnector));
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QConnector *>(ownedConnector));
 }
 
 void QStructuredClassifier::removeOwnedConnector(const QConnector *ownedConnector)
 {
     d_ptr->ownedConnectors->remove(const_cast<QConnector *>(ownedConnector));
     // Adjust subsetted property(ies)
-    removeFeature(ownedConnector);
-    removeOwnedMember(ownedConnector);
-}
-
-/*!
-    References the properties specifying instances that the classifier owns by composition. This association is derived, selecting those owned properties where isComposite is true.
- */
-const QSet<QProperty *> *QStructuredClassifier::parts() const
-{
-    qWarning("QStructuredClassifier::parts: to be implemented (this is a derived associationend)");
-}
-
-/*!
-    References the roles that instances may play in this classifier.
- */
-const QSet<QConnectableElement *> *QStructuredClassifier::roles() const
-{
-    return d_ptr->roles;
-}
-
-void QStructuredClassifier::addRole(const QConnectableElement *role)
-{
-    d_ptr->roles->insert(const_cast<QConnectableElement *>(role));
-    // Adjust subsetted property(ies)
-    addMember(role);
-}
-
-void QStructuredClassifier::removeRole(const QConnectableElement *role)
-{
-    d_ptr->roles->remove(const_cast<QConnectableElement *>(role));
-    // Adjust subsetted property(ies)
-    removeMember(role);
+    QClassifier::d_ptr->features->remove(const_cast<QConnector *>(ownedConnector));
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QConnector *>(ownedConnector));
 }
 
 QT_END_NAMESPACE_QTUML

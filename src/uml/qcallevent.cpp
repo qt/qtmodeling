@@ -40,19 +40,11 @@
 ****************************************************************************/
 
 #include "qcallevent.h"
+#include "qcallevent_p.h"
 
 #include <QtUml/QOperation>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QCallEventPrivate
-{
-public:
-    explicit QCallEventPrivate();
-    virtual ~QCallEventPrivate();
-
-    QOperation *operation;
-};
 
 QCallEventPrivate::QCallEventPrivate() :
     operation(0)

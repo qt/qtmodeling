@@ -40,6 +40,9 @@
 ****************************************************************************/
 
 #include "qcomponent.h"
+#include "qcomponent_p.h"
+#include "qelement_p.h"
+#include "qnamespace_p.h"
 
 #include <QtUml/QClassifier>
 #include <QtUml/QComponentRealization>
@@ -48,28 +51,17 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QComponentPrivate
-{
-public:
-    explicit QComponentPrivate();
-    virtual ~QComponentPrivate();
-
-    bool isIndirectlyInstantiated;
-    QSet<QPackageableElement *> *packagedElements;
-    QSet<QComponentRealization *> *realizations;
-};
-
 QComponentPrivate::QComponentPrivate() :
     isIndirectlyInstantiated(true),
-    packagedElements(new QSet<QPackageableElement *>),
-    realizations(new QSet<QComponentRealization *>)
+    realizations(new QSet<QComponentRealization *>),
+    packagedElements(new QSet<QPackageableElement *>)
 {
 }
 
 QComponentPrivate::~QComponentPrivate()
 {
-    delete packagedElements;
     delete realizations;
+    delete packagedElements;
 }
 
 /*!
@@ -104,36 +96,6 @@ void QComponent::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
 }
 
 /*!
-    The set of PackageableElements that a Component owns. In the namespace of a component, all model elements that are involved in or related to its definition may be owned or imported explicitly. These may include e.g. Classes, Interfaces, Components, Packages, Use cases, Dependencies (e.g. mappings), and Artifacts.
- */
-const QSet<QPackageableElement *> *QComponent::packagedElements() const
-{
-    return d_ptr->packagedElements;
-}
-
-void QComponent::addPackagedElement(const QPackageableElement *packagedElement)
-{
-    d_ptr->packagedElements->insert(const_cast<QPackageableElement *>(packagedElement));
-    // Adjust subsetted property(ies)
-    addOwnedMember(packagedElement);
-}
-
-void QComponent::removePackagedElement(const QPackageableElement *packagedElement)
-{
-    d_ptr->packagedElements->remove(const_cast<QPackageableElement *>(packagedElement));
-    // Adjust subsetted property(ies)
-    removeOwnedMember(packagedElement);
-}
-
-/*!
-    The interfaces that the component exposes to its environment. These interfaces may be Realized by the Component or any of its realizingClassifiers, or they may be the Interfaces that are provided by its public Ports.
- */
-const QSet<QInterface *> *QComponent::provided() const
-{
-    qWarning("QComponent::provided: to be implemented (this is a derived associationend)");
-}
-
-/*!
     The set of Realizations owned by the Component. Realizations reference the Classifiers of which the Component is an abstraction; i.e., that realize its behavior.
  */
 const QSet<QComponentRealization *> *QComponent::realizations() const
@@ -145,14 +107,14 @@ void QComponent::addRealization(const QComponentRealization *realization)
 {
     d_ptr->realizations->insert(const_cast<QComponentRealization *>(realization));
     // Adjust subsetted property(ies)
-    addOwnedElement(realization);
+    QElement::d_ptr->ownedElements->insert(const_cast<QComponentRealization *>(realization));
 }
 
 void QComponent::removeRealization(const QComponentRealization *realization)
 {
     d_ptr->realizations->remove(const_cast<QComponentRealization *>(realization));
     // Adjust subsetted property(ies)
-    removeOwnedElement(realization);
+    QElement::d_ptr->ownedElements->remove(const_cast<QComponentRealization *>(realization));
 }
 
 /*!
@@ -161,6 +123,36 @@ void QComponent::removeRealization(const QComponentRealization *realization)
 const QSet<QInterface *> *QComponent::required() const
 {
     qWarning("QComponent::required: to be implemented (this is a derived associationend)");
+}
+
+/*!
+    The interfaces that the component exposes to its environment. These interfaces may be Realized by the Component or any of its realizingClassifiers, or they may be the Interfaces that are provided by its public Ports.
+ */
+const QSet<QInterface *> *QComponent::provided() const
+{
+    qWarning("QComponent::provided: to be implemented (this is a derived associationend)");
+}
+
+/*!
+    The set of PackageableElements that a Component owns. In the namespace of a component, all model elements that are involved in or related to its definition may be owned or imported explicitly. These may include e.g. Classes, Interfaces, Components, Packages, Use cases, Dependencies (e.g. mappings), and Artifacts.
+ */
+const QSet<QPackageableElement *> *QComponent::packagedElements() const
+{
+    return d_ptr->packagedElements;
+}
+
+void QComponent::addPackagedElement(const QPackageableElement *packagedElement)
+{
+    d_ptr->packagedElements->insert(const_cast<QPackageableElement *>(packagedElement));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QPackageableElement *>(packagedElement));
+}
+
+void QComponent::removePackagedElement(const QPackageableElement *packagedElement)
+{
+    d_ptr->packagedElements->remove(const_cast<QPackageableElement *>(packagedElement));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QPackageableElement *>(packagedElement));
 }
 
 /*!

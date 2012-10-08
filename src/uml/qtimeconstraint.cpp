@@ -40,20 +40,11 @@
 ****************************************************************************/
 
 #include "qtimeconstraint.h"
+#include "qtimeconstraint_p.h"
 
 #include <QtUml/QTimeInterval>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QTimeConstraintPrivate
-{
-public:
-    explicit QTimeConstraintPrivate();
-    virtual ~QTimeConstraintPrivate();
-
-    bool firstEvent;
-    QTimeInterval *specification;
-};
 
 QTimeConstraintPrivate::QTimeConstraintPrivate() :
     firstEvent(true),

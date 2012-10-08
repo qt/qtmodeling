@@ -76,13 +76,8 @@ public:
     void setReentrant(bool isReentrant);
 
     // Association-ends
-    QBehavioredClassifier *context() const;
-    const QList<QParameter *> *ownedParameters() const;
-    void addOwnedParameter(const QParameter *ownedParameter);
-    void removeOwnedParameter(const QParameter *ownedParameter);
-    const QSet<QParameterSet *> *ownedParameterSets() const;
-    void addOwnedParameterSet(const QParameterSet *ownedParameterSet);
-    void removeOwnedParameterSet(const QParameterSet *ownedParameterSet);
+    QBehavioralFeature *specification() const;
+    void setSpecification(const QBehavioralFeature *specification);
     const QSet<QConstraint *> *postconditions() const;
     void addPostcondition(const QConstraint *postcondition);
     void removePostcondition(const QConstraint *postcondition);
@@ -92,13 +87,18 @@ public:
     const QSet<QBehavior *> *redefinedBehaviors() const;
     void addRedefinedBehavior(const QBehavior *redefinedBehavior);
     void removeRedefinedBehavior(const QBehavior *redefinedBehavior);
-    QBehavioralFeature *specification() const;
-    void setSpecification(const QBehavioralFeature *specification);
+    const QList<QParameter *> *ownedParameters() const;
+    void addOwnedParameter(const QParameter *ownedParameter);
+    void removeOwnedParameter(const QParameter *ownedParameter);
+    const QSet<QParameterSet *> *ownedParameterSets() const;
+    void addOwnedParameterSet(const QParameterSet *ownedParameterSet);
+    void removeOwnedParameterSet(const QParameterSet *ownedParameterSet);
+    QBehavioredClassifier *context() const;
 
 protected:
     explicit QBehavior(QObject *parent = 0);
 
-private:
+protected:
     QBehaviorPrivate *d_ptr;
 };
 

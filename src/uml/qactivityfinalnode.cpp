@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qactivityfinalnode.h"
+#include "qactivityfinalnode_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QActivityFinalNodePrivate
-{
-public:
-    explicit QActivityFinalNodePrivate();
-    virtual ~QActivityFinalNodePrivate();
-
-};
 
 QActivityFinalNodePrivate::QActivityFinalNodePrivate()
 {

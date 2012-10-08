@@ -40,18 +40,10 @@
 ****************************************************************************/
 
 #include "qliteralstring.h"
+#include "qliteralstring_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QLiteralStringPrivate
-{
-public:
-    explicit QLiteralStringPrivate();
-    virtual ~QLiteralStringPrivate();
-
-    QString value;
-};
 
 QLiteralStringPrivate::QLiteralStringPrivate()
 {

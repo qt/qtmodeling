@@ -76,7 +76,7 @@ public:
     QDuration *min() const;
     void setMin(const QDuration *min);
 
-private:
+protected:
     QDurationIntervalPrivate *d_ptr;
 };
 

@@ -40,6 +40,8 @@
 ****************************************************************************/
 
 #include "qlinkenddata.h"
+#include "qlinkenddata_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QProperty>
 #include <QtUml/QQualifierValue>
@@ -47,21 +49,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QLinkEndDataPrivate
-{
-public:
-    explicit QLinkEndDataPrivate();
-    virtual ~QLinkEndDataPrivate();
-
-    QProperty *end;
-    QSet<QQualifierValue *> *qualifiers;
-    QInputPin *value;
-};
-
 QLinkEndDataPrivate::QLinkEndDataPrivate() :
+    value(0),
     end(0),
-    qualifiers(new QSet<QQualifierValue *>),
-    value(0)
+    qualifiers(new QSet<QQualifierValue *>)
 {
 }
 
@@ -89,6 +80,19 @@ QLinkEndData::~QLinkEndData()
 }
 
 /*!
+    Input pin that provides the specified object for the given end. This pin is omitted if the link-end data specifies an 'open' end for reading.
+ */
+QInputPin *QLinkEndData::value() const
+{
+    return d_ptr->value;
+}
+
+void QLinkEndData::setValue(const QInputPin *value)
+{
+    d_ptr->value = const_cast<QInputPin *>(value);
+}
+
+/*!
     Association end for which this link-end data specifies values.
  */
 QProperty *QLinkEndData::end() const
@@ -113,27 +117,14 @@ void QLinkEndData::addQualifier(const QQualifierValue *qualifier)
 {
     d_ptr->qualifiers->insert(const_cast<QQualifierValue *>(qualifier));
     // Adjust subsetted property(ies)
-    addOwnedElement(qualifier);
+    QElement::d_ptr->ownedElements->insert(const_cast<QQualifierValue *>(qualifier));
 }
 
 void QLinkEndData::removeQualifier(const QQualifierValue *qualifier)
 {
     d_ptr->qualifiers->remove(const_cast<QQualifierValue *>(qualifier));
     // Adjust subsetted property(ies)
-    removeOwnedElement(qualifier);
-}
-
-/*!
-    Input pin that provides the specified object for the given end. This pin is omitted if the link-end data specifies an 'open' end for reading.
- */
-QInputPin *QLinkEndData::value() const
-{
-    return d_ptr->value;
-}
-
-void QLinkEndData::setValue(const QInputPin *value)
-{
-    d_ptr->value = const_cast<QInputPin *>(value);
+    QElement::d_ptr->ownedElements->remove(const_cast<QQualifierValue *>(qualifier));
 }
 
 #include "moc_qlinkenddata.cpp"

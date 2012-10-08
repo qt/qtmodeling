@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qinitialnode.h"
+#include "qinitialnode_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QInitialNodePrivate
-{
-public:
-    explicit QInitialNodePrivate();
-    virtual ~QInitialNodePrivate();
-
-};
 
 QInitialNodePrivate::QInitialNodePrivate()
 {

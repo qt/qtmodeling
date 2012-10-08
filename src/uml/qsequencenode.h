@@ -77,7 +77,7 @@ public:
     void addExecutableNode(const QExecutableNode *executableNode);
     void removeExecutableNode(const QExecutableNode *executableNode);
 
-private:
+protected:
     QSequenceNodePrivate *d_ptr;
 };
 

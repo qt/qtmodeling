@@ -40,25 +40,19 @@
 ****************************************************************************/
 
 #include "qinterfacerealization.h"
+#include "qinterfacerealization_p.h"
+#include "qelement_p.h"
+#include "qdependency_p.h"
+#include "qdependency_p.h"
 
 #include <QtUml/QInterface>
 #include <QtUml/QBehavioredClassifier>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QInterfaceRealizationPrivate
-{
-public:
-    explicit QInterfaceRealizationPrivate();
-    virtual ~QInterfaceRealizationPrivate();
-
-    QInterface *contract;
-    QBehavioredClassifier *implementingClassifier;
-};
-
 QInterfaceRealizationPrivate::QInterfaceRealizationPrivate() :
-    contract(0),
-    implementingClassifier(0)
+    implementingClassifier(0),
+    contract(0)
 {
 }
 
@@ -85,19 +79,6 @@ QInterfaceRealization::~QInterfaceRealization()
 }
 
 /*!
-    References the Interface specifying the conformance contract.
- */
-QInterface *QInterfaceRealization::contract() const
-{
-    return d_ptr->contract;
-}
-
-void QInterfaceRealization::setContract(const QInterface *contract)
-{
-    d_ptr->contract = const_cast<QInterface *>(contract);
-}
-
-/*!
     References the BehavioredClassifier that owns this Interfacerealization (i.e., the classifier that realizes the Interface to which it points).
  */
 QBehavioredClassifier *QInterfaceRealization::implementingClassifier() const
@@ -108,6 +89,19 @@ QBehavioredClassifier *QInterfaceRealization::implementingClassifier() const
 void QInterfaceRealization::setImplementingClassifier(const QBehavioredClassifier *implementingClassifier)
 {
     d_ptr->implementingClassifier = const_cast<QBehavioredClassifier *>(implementingClassifier);
+}
+
+/*!
+    References the Interface specifying the conformance contract.
+ */
+QInterface *QInterfaceRealization::contract() const
+{
+    return d_ptr->contract;
+}
+
+void QInterfaceRealization::setContract(const QInterface *contract)
+{
+    d_ptr->contract = const_cast<QInterface *>(contract);
 }
 
 #include "moc_qinterfacerealization.cpp"

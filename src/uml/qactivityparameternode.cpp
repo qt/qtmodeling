@@ -40,19 +40,11 @@
 ****************************************************************************/
 
 #include "qactivityparameternode.h"
+#include "qactivityparameternode_p.h"
 
 #include <QtUml/QParameter>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QActivityParameterNodePrivate
-{
-public:
-    explicit QActivityParameterNodePrivate();
-    virtual ~QActivityParameterNodePrivate();
-
-    QParameter *parameter;
-};
 
 QActivityParameterNodePrivate::QActivityParameterNodePrivate() :
     parameter(0)

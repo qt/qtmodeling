@@ -40,19 +40,11 @@
 ****************************************************************************/
 
 #include "qconnectableelementtemplateparameter.h"
+#include "qconnectableelementtemplateparameter_p.h"
 
 #include <QtUml/QConnectableElement>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QConnectableElementTemplateParameterPrivate
-{
-public:
-    explicit QConnectableElementTemplateParameterPrivate();
-    virtual ~QConnectableElementTemplateParameterPrivate();
-
-    QConnectableElement *parameteredElement;
-};
 
 QConnectableElementTemplateParameterPrivate::QConnectableElementTemplateParameterPrivate() :
     parameteredElement(0)

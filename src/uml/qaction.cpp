@@ -40,6 +40,11 @@
 ****************************************************************************/
 
 #include "qaction.h"
+#include "qaction_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QOutputPin>
 #include <QtUml/QConstraint>
@@ -48,33 +53,20 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QActionPrivate
-{
-public:
-    explicit QActionPrivate();
-    virtual ~QActionPrivate();
-
-    bool isLocallyReentrant;
-    QList<QInputPin *> *inputs;
-    QSet<QConstraint *> *localPostconditions;
-    QSet<QConstraint *> *localPreconditions;
-    QList<QOutputPin *> *outputs;
-};
-
 QActionPrivate::QActionPrivate() :
     isLocallyReentrant(false),
-    inputs(new QList<QInputPin *>),
     localPostconditions(new QSet<QConstraint *>),
     localPreconditions(new QSet<QConstraint *>),
+    inputs(new QList<QInputPin *>),
     outputs(new QList<QOutputPin *>)
 {
 }
 
 QActionPrivate::~QActionPrivate()
 {
-    delete inputs;
     delete localPostconditions;
     delete localPreconditions;
+    delete inputs;
     delete outputs;
 }
 
@@ -118,28 +110,6 @@ QClassifier *QAction::context() const
 }
 
 /*!
-    The ordered set of input pins connected to the Action. These are among the total set of inputs.
- */
-const QList<QInputPin *> *QAction::inputs() const
-{
-    return d_ptr->inputs;
-}
-
-void QAction::addInput(const QInputPin *input)
-{
-    d_ptr->inputs->append(const_cast<QInputPin *>(input));
-    // Adjust subsetted property(ies)
-    addOwnedElement(input);
-}
-
-void QAction::removeInput(const QInputPin *input)
-{
-    d_ptr->inputs->removeAll(const_cast<QInputPin *>(input));
-    // Adjust subsetted property(ies)
-    removeOwnedElement(input);
-}
-
-/*!
     Constraint that must be satisfied when executed is completed.
  */
 const QSet<QConstraint *> *QAction::localPostconditions() const
@@ -151,14 +121,14 @@ void QAction::addLocalPostcondition(const QConstraint *localPostcondition)
 {
     d_ptr->localPostconditions->insert(const_cast<QConstraint *>(localPostcondition));
     // Adjust subsetted property(ies)
-    addOwnedElement(localPostcondition);
+    QElement::d_ptr->ownedElements->insert(const_cast<QConstraint *>(localPostcondition));
 }
 
 void QAction::removeLocalPostcondition(const QConstraint *localPostcondition)
 {
     d_ptr->localPostconditions->remove(const_cast<QConstraint *>(localPostcondition));
     // Adjust subsetted property(ies)
-    removeOwnedElement(localPostcondition);
+    QElement::d_ptr->ownedElements->remove(const_cast<QConstraint *>(localPostcondition));
 }
 
 /*!
@@ -173,14 +143,22 @@ void QAction::addLocalPrecondition(const QConstraint *localPrecondition)
 {
     d_ptr->localPreconditions->insert(const_cast<QConstraint *>(localPrecondition));
     // Adjust subsetted property(ies)
-    addOwnedElement(localPrecondition);
+    QElement::d_ptr->ownedElements->insert(const_cast<QConstraint *>(localPrecondition));
 }
 
 void QAction::removeLocalPrecondition(const QConstraint *localPrecondition)
 {
     d_ptr->localPreconditions->remove(const_cast<QConstraint *>(localPrecondition));
     // Adjust subsetted property(ies)
-    removeOwnedElement(localPrecondition);
+    QElement::d_ptr->ownedElements->remove(const_cast<QConstraint *>(localPrecondition));
+}
+
+/*!
+    The ordered set of input pins connected to the Action. These are among the total set of inputs.
+ */
+const QList<QInputPin *> *QAction::inputs() const
+{
+    return d_ptr->inputs;
 }
 
 /*!
@@ -189,20 +167,6 @@ void QAction::removeLocalPrecondition(const QConstraint *localPrecondition)
 const QList<QOutputPin *> *QAction::outputs() const
 {
     return d_ptr->outputs;
-}
-
-void QAction::addOutput(const QOutputPin *output)
-{
-    d_ptr->outputs->append(const_cast<QOutputPin *>(output));
-    // Adjust subsetted property(ies)
-    addOwnedElement(output);
-}
-
-void QAction::removeOutput(const QOutputPin *output)
-{
-    d_ptr->outputs->removeAll(const_cast<QOutputPin *>(output));
-    // Adjust subsetted property(ies)
-    removeOwnedElement(output);
 }
 
 QT_END_NAMESPACE_QTUML

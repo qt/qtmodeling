@@ -77,7 +77,7 @@ public:
     void addConformance(const QProtocolConformance *conformance);
     void removeConformance(const QProtocolConformance *conformance);
 
-private:
+protected:
     QProtocolStateMachinePrivate *d_ptr;
 };
 

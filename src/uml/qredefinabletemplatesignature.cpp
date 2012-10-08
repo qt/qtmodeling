@@ -40,21 +40,15 @@
 ****************************************************************************/
 
 #include "qredefinabletemplatesignature.h"
+#include "qredefinabletemplatesignature_p.h"
+#include "qtemplatesignature_p.h"
+#include "qredefinableelement_p.h"
+#include "qredefinableelement_p.h"
 
 #include <QtUml/QClassifier>
 #include <QtUml/QTemplateParameter>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QRedefinableTemplateSignaturePrivate
-{
-public:
-    explicit QRedefinableTemplateSignaturePrivate();
-    virtual ~QRedefinableTemplateSignaturePrivate();
-
-    QClassifier *classifier;
-    QSet<QRedefinableTemplateSignature *> *extendedSignatures;
-};
 
 QRedefinableTemplateSignaturePrivate::QRedefinableTemplateSignaturePrivate() :
     classifier(0),
@@ -86,6 +80,14 @@ QRedefinableTemplateSignature::~QRedefinableTemplateSignature()
 }
 
 /*!
+    The formal template parameters of the extendedSignature.
+ */
+const QSet<QTemplateParameter *> *QRedefinableTemplateSignature::inheritedParameters() const
+{
+    qWarning("QRedefinableTemplateSignature::inheritedParameters: to be implemented (this is a derived associationend)");
+}
+
+/*!
     The classifier that owns this template signature.
  */
 QClassifier *QRedefinableTemplateSignature::classifier() const
@@ -110,22 +112,14 @@ void QRedefinableTemplateSignature::addExtendedSignature(const QRedefinableTempl
 {
     d_ptr->extendedSignatures->insert(const_cast<QRedefinableTemplateSignature *>(extendedSignature));
     // Adjust subsetted property(ies)
-    addRedefinedElement(extendedSignature);
+    QRedefinableElement::d_ptr->redefinedElements->insert(const_cast<QRedefinableTemplateSignature *>(extendedSignature));
 }
 
 void QRedefinableTemplateSignature::removeExtendedSignature(const QRedefinableTemplateSignature *extendedSignature)
 {
     d_ptr->extendedSignatures->remove(const_cast<QRedefinableTemplateSignature *>(extendedSignature));
     // Adjust subsetted property(ies)
-    removeRedefinedElement(extendedSignature);
-}
-
-/*!
-    The formal template parameters of the extendedSignature.
- */
-const QSet<QTemplateParameter *> *QRedefinableTemplateSignature::inheritedParameters() const
-{
-    qWarning("QRedefinableTemplateSignature::inheritedParameters: to be implemented (this is a derived associationend)");
+    QRedefinableElement::d_ptr->redefinedElements->remove(const_cast<QRedefinableTemplateSignature *>(extendedSignature));
 }
 
 /*!

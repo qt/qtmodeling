@@ -40,19 +40,12 @@
 ****************************************************************************/
 
 #include "qstartclassifierbehavioraction.h"
+#include "qstartclassifierbehavioraction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QStartClassifierBehaviorActionPrivate
-{
-public:
-    explicit QStartClassifierBehaviorActionPrivate();
-    virtual ~QStartClassifierBehaviorActionPrivate();
-
-    QInputPin *object;
-};
 
 QStartClassifierBehaviorActionPrivate::QStartClassifierBehaviorActionPrivate() :
     object(0)

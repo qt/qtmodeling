@@ -40,18 +40,12 @@
 ****************************************************************************/
 
 #include "qencapsulatedclassifier.h"
+#include "qencapsulatedclassifier_p.h"
+#include "qstructuredclassifier_p.h"
 
 #include <QtUml/QPort>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QEncapsulatedClassifierPrivate
-{
-public:
-    explicit QEncapsulatedClassifierPrivate();
-    virtual ~QEncapsulatedClassifierPrivate();
-
-};
 
 QEncapsulatedClassifierPrivate::QEncapsulatedClassifierPrivate()
 {

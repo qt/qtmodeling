@@ -40,19 +40,12 @@
 ****************************************************************************/
 
 #include "qprotocolstatemachine.h"
+#include "qprotocolstatemachine_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QProtocolConformance>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QProtocolStateMachinePrivate
-{
-public:
-    explicit QProtocolStateMachinePrivate();
-    virtual ~QProtocolStateMachinePrivate();
-
-    QSet<QProtocolConformance *> *conformance;
-};
 
 QProtocolStateMachinePrivate::QProtocolStateMachinePrivate() :
     conformance(new QSet<QProtocolConformance *>)
@@ -94,14 +87,14 @@ void QProtocolStateMachine::addConformance(const QProtocolConformance *conforman
 {
     d_ptr->conformance->insert(const_cast<QProtocolConformance *>(conformance));
     // Adjust subsetted property(ies)
-    addOwnedElement(conformance);
+    QElement::d_ptr->ownedElements->insert(const_cast<QProtocolConformance *>(conformance));
 }
 
 void QProtocolStateMachine::removeConformance(const QProtocolConformance *conformance)
 {
     d_ptr->conformance->remove(const_cast<QProtocolConformance *>(conformance));
     // Adjust subsetted property(ies)
-    removeOwnedElement(conformance);
+    QElement::d_ptr->ownedElements->remove(const_cast<QProtocolConformance *>(conformance));
 }
 
 #include "moc_qprotocolstatemachine.cpp"

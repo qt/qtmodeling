@@ -40,20 +40,11 @@
 ****************************************************************************/
 
 #include "qdurationobservation.h"
+#include "qdurationobservation_p.h"
 
 #include <QtUml/QNamedElement>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QDurationObservationPrivate
-{
-public:
-    explicit QDurationObservationPrivate();
-    virtual ~QDurationObservationPrivate();
-
-    QSet<bool> *firstEvents;
-    QSet<QNamedElement *> *events;
-};
 
 QDurationObservationPrivate::QDurationObservationPrivate() :
     firstEvents(new QSet<bool>),

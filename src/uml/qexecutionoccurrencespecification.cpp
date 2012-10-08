@@ -40,19 +40,11 @@
 ****************************************************************************/
 
 #include "qexecutionoccurrencespecification.h"
+#include "qexecutionoccurrencespecification_p.h"
 
 #include <QtUml/QExecutionSpecification>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QExecutionOccurrenceSpecificationPrivate
-{
-public:
-    explicit QExecutionOccurrenceSpecificationPrivate();
-    virtual ~QExecutionOccurrenceSpecificationPrivate();
-
-    QExecutionSpecification *execution;
-};
 
 QExecutionOccurrenceSpecificationPrivate::QExecutionOccurrenceSpecificationPrivate() :
     execution(0)

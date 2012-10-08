@@ -40,6 +40,10 @@
 ****************************************************************************/
 
 #include "qusecase.h"
+#include "qusecase_p.h"
+#include "qnamespace_p.h"
+#include "qnamespace_p.h"
+#include "qnamespace_p.h"
 
 #include <QtUml/QClassifier>
 #include <QtUml/QInclude>
@@ -48,32 +52,20 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QUseCasePrivate
-{
-public:
-    explicit QUseCasePrivate();
-    virtual ~QUseCasePrivate();
-
-    QSet<QExtend *> *extends;
-    QSet<QExtensionPoint *> *extensionPoints;
-    QSet<QInclude *> *includes;
-    QSet<QClassifier *> *subjects;
-};
-
 QUseCasePrivate::QUseCasePrivate() :
-    extends(new QSet<QExtend *>),
     extensionPoints(new QSet<QExtensionPoint *>),
     includes(new QSet<QInclude *>),
-    subjects(new QSet<QClassifier *>)
+    subjects(new QSet<QClassifier *>),
+    extends(new QSet<QExtend *>)
 {
 }
 
 QUseCasePrivate::~QUseCasePrivate()
 {
-    delete extends;
     delete extensionPoints;
     delete includes;
     delete subjects;
+    delete extends;
 }
 
 /*!
@@ -95,28 +87,6 @@ QUseCase::~QUseCase()
 }
 
 /*!
-    References the Extend relationships owned by this use case.
- */
-const QSet<QExtend *> *QUseCase::extends() const
-{
-    return d_ptr->extends;
-}
-
-void QUseCase::addExtend(const QExtend *extend)
-{
-    d_ptr->extends->insert(const_cast<QExtend *>(extend));
-    // Adjust subsetted property(ies)
-    addOwnedMember(extend);
-}
-
-void QUseCase::removeExtend(const QExtend *extend)
-{
-    d_ptr->extends->remove(const_cast<QExtend *>(extend));
-    // Adjust subsetted property(ies)
-    removeOwnedMember(extend);
-}
-
-/*!
     References the ExtensionPoints owned by the use case.
  */
 const QSet<QExtensionPoint *> *QUseCase::extensionPoints() const
@@ -128,14 +98,14 @@ void QUseCase::addExtensionPoint(const QExtensionPoint *extensionPoint)
 {
     d_ptr->extensionPoints->insert(const_cast<QExtensionPoint *>(extensionPoint));
     // Adjust subsetted property(ies)
-    addOwnedMember(extensionPoint);
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QExtensionPoint *>(extensionPoint));
 }
 
 void QUseCase::removeExtensionPoint(const QExtensionPoint *extensionPoint)
 {
     d_ptr->extensionPoints->remove(const_cast<QExtensionPoint *>(extensionPoint));
     // Adjust subsetted property(ies)
-    removeOwnedMember(extensionPoint);
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QExtensionPoint *>(extensionPoint));
 }
 
 /*!
@@ -150,14 +120,14 @@ void QUseCase::addInclude(const QInclude *include)
 {
     d_ptr->includes->insert(const_cast<QInclude *>(include));
     // Adjust subsetted property(ies)
-    addOwnedMember(include);
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QInclude *>(include));
 }
 
 void QUseCase::removeInclude(const QInclude *include)
 {
     d_ptr->includes->remove(const_cast<QInclude *>(include));
     // Adjust subsetted property(ies)
-    removeOwnedMember(include);
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QInclude *>(include));
 }
 
 /*!
@@ -176,6 +146,28 @@ void QUseCase::addSubject(const QClassifier *subject)
 void QUseCase::removeSubject(const QClassifier *subject)
 {
     d_ptr->subjects->remove(const_cast<QClassifier *>(subject));
+}
+
+/*!
+    References the Extend relationships owned by this use case.
+ */
+const QSet<QExtend *> *QUseCase::extends() const
+{
+    return d_ptr->extends;
+}
+
+void QUseCase::addExtend(const QExtend *extend)
+{
+    d_ptr->extends->insert(const_cast<QExtend *>(extend));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QExtend *>(extend));
+}
+
+void QUseCase::removeExtend(const QExtend *extend)
+{
+    d_ptr->extends->remove(const_cast<QExtend *>(extend));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QExtend *>(extend));
 }
 
 /*!

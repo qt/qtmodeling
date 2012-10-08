@@ -40,22 +40,14 @@
 ****************************************************************************/
 
 #include "qpseudostate.h"
+#include "qpseudostate_p.h"
+#include "qnamedelement_p.h"
+#include "qnamedelement_p.h"
 
 #include <QtUml/QState>
 #include <QtUml/QStateMachine>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QPseudostatePrivate
-{
-public:
-    explicit QPseudostatePrivate();
-    virtual ~QPseudostatePrivate();
-
-    QtUml::PseudostateKind kind;
-    QState *state;
-    QStateMachine *stateMachine;
-};
 
 QPseudostatePrivate::QPseudostatePrivate() :
     kind(QtUml::PseudostateInitial),

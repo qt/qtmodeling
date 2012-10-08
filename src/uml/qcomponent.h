@@ -67,10 +67,10 @@ class Q_UML_EXPORT QComponent : public QClass
 
     // From QComponent
     Q_PROPERTY(bool isIndirectlyInstantiated READ isIndirectlyInstantiated WRITE setIndirectlyInstantiated)
-    Q_PROPERTY(const QSet<QPackageableElement *> * packagedElements READ packagedElements)
-    Q_PROPERTY(const QSet<QInterface *> * provided READ provided)
     Q_PROPERTY(const QSet<QComponentRealization *> * realizations READ realizations)
     Q_PROPERTY(const QSet<QInterface *> * required READ required)
+    Q_PROPERTY(const QSet<QInterface *> * provided READ provided)
+    Q_PROPERTY(const QSet<QPackageableElement *> * packagedElements READ packagedElements)
 
     Q_DISABLE_COPY(QComponent)
     Q_DECLARE_PRIVATE(QComponent)
@@ -84,20 +84,20 @@ public:
     void setIndirectlyInstantiated(bool isIndirectlyInstantiated);
 
     // Association-ends
-    const QSet<QPackageableElement *> *packagedElements() const;
-    void addPackagedElement(const QPackageableElement *packagedElement);
-    void removePackagedElement(const QPackageableElement *packagedElement);
-    const QSet<QInterface *> *provided() const;
     const QSet<QComponentRealization *> *realizations() const;
     void addRealization(const QComponentRealization *realization);
     void removeRealization(const QComponentRealization *realization);
     const QSet<QInterface *> *required() const;
+    const QSet<QInterface *> *provided() const;
+    const QSet<QPackageableElement *> *packagedElements() const;
+    void addPackagedElement(const QPackageableElement *packagedElement);
+    void removePackagedElement(const QPackageableElement *packagedElement);
 
     // Operations
     const QSet<QInterface *> *realizedInterfaces(const QClassifier *classifier) const;
     const QSet<QInterface *> *usedInterfaces(const QClassifier *classifier) const;
 
-private:
+protected:
     QComponentPrivate *d_ptr;
 };
 

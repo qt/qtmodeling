@@ -40,21 +40,13 @@
 ****************************************************************************/
 
 #include "qinvocationaction.h"
+#include "qinvocationaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 #include <QtUml/QPort>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QInvocationActionPrivate
-{
-public:
-    explicit QInvocationActionPrivate();
-    virtual ~QInvocationActionPrivate();
-
-    QList<QInputPin *> *arguments;
-    QPort *onPort;
-};
 
 QInvocationActionPrivate::QInvocationActionPrivate() :
     arguments(new QList<QInputPin *>),
@@ -97,14 +89,14 @@ void QInvocationAction::addArgument(const QInputPin *argument)
 {
     d_ptr->arguments->append(const_cast<QInputPin *>(argument));
     // Adjust subsetted property(ies)
-    addInput(argument);
+    QAction::d_ptr->inputs->append(const_cast<QInputPin *>(argument));
 }
 
 void QInvocationAction::removeArgument(const QInputPin *argument)
 {
     d_ptr->arguments->removeAll(const_cast<QInputPin *>(argument));
     // Adjust subsetted property(ies)
-    removeInput(argument);
+    QAction::d_ptr->inputs->removeAll(const_cast<QInputPin *>(argument));
 }
 
 /*!

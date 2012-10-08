@@ -65,9 +65,9 @@ class Q_UML_EXPORT QGeneralization : public QObject, public QDirectedRelationshi
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QRelationship
     Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
@@ -78,9 +78,9 @@ class Q_UML_EXPORT QGeneralization : public QObject, public QDirectedRelationshi
 
     // From QGeneralization
     Q_PROPERTY(bool isSubstitutable READ isSubstitutable WRITE setSubstitutable)
-    Q_PROPERTY(QClassifier * general READ general WRITE setGeneral)
-    Q_PROPERTY(const QSet<QGeneralizationSet *> * generalizationSets READ generalizationSets)
     Q_PROPERTY(QClassifier * specific READ specific WRITE setSpecific)
+    Q_PROPERTY(const QSet<QGeneralizationSet *> * generalizationSets READ generalizationSets)
+    Q_PROPERTY(QClassifier * general READ general WRITE setGeneral)
 
     Q_DISABLE_COPY(QGeneralization)
     Q_DECLARE_PRIVATE(QGeneralization)
@@ -94,15 +94,15 @@ public:
     void setSubstitutable(bool isSubstitutable);
 
     // Association-ends
-    QClassifier *general() const;
-    void setGeneral(const QClassifier *general);
+    QClassifier *specific() const;
+    void setSpecific(const QClassifier *specific);
     const QSet<QGeneralizationSet *> *generalizationSets() const;
     void addGeneralizationSet(const QGeneralizationSet *generalizationSet);
     void removeGeneralizationSet(const QGeneralizationSet *generalizationSet);
-    QClassifier *specific() const;
-    void setSpecific(const QClassifier *specific);
+    QClassifier *general() const;
+    void setGeneral(const QClassifier *general);
 
-private:
+protected:
     QGeneralizationPrivate *d_ptr;
 };
 

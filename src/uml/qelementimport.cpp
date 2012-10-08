@@ -40,23 +40,15 @@
 ****************************************************************************/
 
 #include "qelementimport.h"
+#include "qelementimport_p.h"
+#include "qdirectedrelationship_p.h"
+#include "qelement_p.h"
+#include "qdirectedrelationship_p.h"
 
 #include <QtUml/QPackageableElement>
 #include <QtUml/QNamespace>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QElementImportPrivate
-{
-public:
-    explicit QElementImportPrivate();
-    virtual ~QElementImportPrivate();
-
-    QString alias;
-    QtUml::VisibilityKind visibility;
-    QPackageableElement *importedElement;
-    QNamespace *importingNamespace;
-};
 
 QElementImportPrivate::QElementImportPrivate() :
     visibility(QtUml::VisibilityPublic),

@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qobservation.h"
+#include "qobservation_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QObservationPrivate
-{
-public:
-    explicit QObservationPrivate();
-    virtual ~QObservationPrivate();
-
-};
 
 QObservationPrivate::QObservationPrivate()
 {

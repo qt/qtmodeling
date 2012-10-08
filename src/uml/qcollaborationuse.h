@@ -65,21 +65,21 @@ class Q_UML_EXPORT QCollaborationUse : public QObject, public QNamedElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QCollaborationUse
-    Q_PROPERTY(const QSet<QDependency *> * roleBindings READ roleBindings)
     Q_PROPERTY(QCollaboration * type READ type WRITE setType)
+    Q_PROPERTY(const QSet<QDependency *> * roleBindings READ roleBindings)
 
     Q_DISABLE_COPY(QCollaborationUse)
     Q_DECLARE_PRIVATE(QCollaborationUse)
@@ -89,13 +89,13 @@ public:
     virtual ~QCollaborationUse();
 
     // Association-ends
+    QCollaboration *type() const;
+    void setType(const QCollaboration *type);
     const QSet<QDependency *> *roleBindings() const;
     void addRoleBinding(const QDependency *roleBinding);
     void removeRoleBinding(const QDependency *roleBinding);
-    QCollaboration *type() const;
-    void setType(const QCollaboration *type);
 
-private:
+protected:
     QCollaborationUsePrivate *d_ptr;
 };
 

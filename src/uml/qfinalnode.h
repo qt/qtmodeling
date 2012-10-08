@@ -65,7 +65,7 @@ public:
 protected:
     explicit QFinalNode();
 
-private:
+protected:
     QFinalNodePrivate *d_ptr;
 };
 

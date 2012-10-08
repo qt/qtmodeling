@@ -40,6 +40,12 @@
 ****************************************************************************/
 
 #include "qactivityedge.h"
+#include "qactivityedge_p.h"
+#include "qredefinableelement_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QInterruptibleActivityRegion>
 #include <QtUml/QStructuredActivityNode>
@@ -51,43 +57,25 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QActivityEdgePrivate
-{
-public:
-    explicit QActivityEdgePrivate();
-    virtual ~QActivityEdgePrivate();
-
-    QActivity *activity;
-    QValueSpecification *guard;
-    QSet<QActivityGroup *> *inGroup;
-    QSet<QActivityPartition *> *inPartition;
-    QStructuredActivityNode *inStructuredNode;
-    QInterruptibleActivityRegion *interrupts;
-    QSet<QActivityEdge *> *redefinedEdges;
-    QActivityNode *source;
-    QActivityNode *target;
-    QValueSpecification *weight;
-};
-
 QActivityEdgePrivate::QActivityEdgePrivate() :
-    activity(0),
-    guard(0),
-    inGroup(new QSet<QActivityGroup *>),
-    inPartition(new QSet<QActivityPartition *>),
-    inStructuredNode(0),
-    interrupts(0),
-    redefinedEdges(new QSet<QActivityEdge *>),
     source(0),
-    target(0),
-    weight(0)
+    redefinedEdges(new QSet<QActivityEdge *>),
+    inGroup(new QSet<QActivityGroup *>),
+    guard(0),
+    inPartition(new QSet<QActivityPartition *>),
+    activity(0),
+    interrupts(0),
+    weight(0),
+    inStructuredNode(0),
+    target(0)
 {
 }
 
 QActivityEdgePrivate::~QActivityEdgePrivate()
 {
+    delete redefinedEdges;
     delete inGroup;
     delete inPartition;
-    delete redefinedEdges;
 }
 
 /*!
@@ -109,16 +97,46 @@ QActivityEdge::~QActivityEdge()
 }
 
 /*!
-    Activity containing the edge.
+    Node from which tokens are taken when they traverse the edge.
  */
-QActivity *QActivityEdge::activity() const
+QActivityNode *QActivityEdge::source() const
 {
-    return d_ptr->activity;
+    return d_ptr->source;
 }
 
-void QActivityEdge::setActivity(const QActivity *activity)
+void QActivityEdge::setSource(const QActivityNode *source)
 {
-    d_ptr->activity = const_cast<QActivity *>(activity);
+    d_ptr->source = const_cast<QActivityNode *>(source);
+}
+
+/*!
+    Inherited edges replaced by this edge in a specialization of the activity.
+ */
+const QSet<QActivityEdge *> *QActivityEdge::redefinedEdges() const
+{
+    return d_ptr->redefinedEdges;
+}
+
+void QActivityEdge::addRedefinedEdge(const QActivityEdge *redefinedEdge)
+{
+    d_ptr->redefinedEdges->insert(const_cast<QActivityEdge *>(redefinedEdge));
+    // Adjust subsetted property(ies)
+    QRedefinableElement::d_ptr->redefinedElements->insert(const_cast<QActivityEdge *>(redefinedEdge));
+}
+
+void QActivityEdge::removeRedefinedEdge(const QActivityEdge *redefinedEdge)
+{
+    d_ptr->redefinedEdges->remove(const_cast<QActivityEdge *>(redefinedEdge));
+    // Adjust subsetted property(ies)
+    QRedefinableElement::d_ptr->redefinedElements->remove(const_cast<QActivityEdge *>(redefinedEdge));
+}
+
+/*!
+    Groups containing the edge.
+ */
+const QSet<QActivityGroup *> *QActivityEdge::inGroup() const
+{
+    return d_ptr->inGroup;
 }
 
 /*!
@@ -135,24 +153,6 @@ void QActivityEdge::setGuard(const QValueSpecification *guard)
 }
 
 /*!
-    Groups containing the edge.
- */
-const QSet<QActivityGroup *> *QActivityEdge::inGroup() const
-{
-    return d_ptr->inGroup;
-}
-
-void QActivityEdge::addInGroup(const QActivityGroup *inGroup)
-{
-    d_ptr->inGroup->insert(const_cast<QActivityGroup *>(inGroup));
-}
-
-void QActivityEdge::removeInGroup(const QActivityGroup *inGroup)
-{
-    d_ptr->inGroup->remove(const_cast<QActivityGroup *>(inGroup));
-}
-
-/*!
     Partitions containing the edge.
  */
 const QSet<QActivityPartition *> *QActivityEdge::inPartition() const
@@ -164,27 +164,27 @@ void QActivityEdge::addInPartition(const QActivityPartition *inPartition)
 {
     d_ptr->inPartition->insert(const_cast<QActivityPartition *>(inPartition));
     // Adjust subsetted property(ies)
-    addInGroup(inPartition);
+    QActivityEdge::d_ptr->inGroup->insert(const_cast<QActivityPartition *>(inPartition));
 }
 
 void QActivityEdge::removeInPartition(const QActivityPartition *inPartition)
 {
     d_ptr->inPartition->remove(const_cast<QActivityPartition *>(inPartition));
     // Adjust subsetted property(ies)
-    removeInGroup(inPartition);
+    QActivityEdge::d_ptr->inGroup->remove(const_cast<QActivityPartition *>(inPartition));
 }
 
 /*!
-    Structured activity node containing the edge.
+    Activity containing the edge.
  */
-QStructuredActivityNode *QActivityEdge::inStructuredNode() const
+QActivity *QActivityEdge::activity() const
 {
-    return d_ptr->inStructuredNode;
+    return d_ptr->activity;
 }
 
-void QActivityEdge::setInStructuredNode(const QStructuredActivityNode *inStructuredNode)
+void QActivityEdge::setActivity(const QActivity *activity)
 {
-    d_ptr->inStructuredNode = const_cast<QStructuredActivityNode *>(inStructuredNode);
+    d_ptr->activity = const_cast<QActivity *>(activity);
 }
 
 /*!
@@ -201,38 +201,29 @@ void QActivityEdge::setInterrupts(const QInterruptibleActivityRegion *interrupts
 }
 
 /*!
-    Inherited edges replaced by this edge in a specialization of the activity.
+    The minimum number of tokens that must traverse the edge at the same time.
  */
-const QSet<QActivityEdge *> *QActivityEdge::redefinedEdges() const
+QValueSpecification *QActivityEdge::weight() const
 {
-    return d_ptr->redefinedEdges;
+    return d_ptr->weight;
 }
 
-void QActivityEdge::addRedefinedEdge(const QActivityEdge *redefinedEdge)
+void QActivityEdge::setWeight(const QValueSpecification *weight)
 {
-    d_ptr->redefinedEdges->insert(const_cast<QActivityEdge *>(redefinedEdge));
-    // Adjust subsetted property(ies)
-    addRedefinedElement(redefinedEdge);
-}
-
-void QActivityEdge::removeRedefinedEdge(const QActivityEdge *redefinedEdge)
-{
-    d_ptr->redefinedEdges->remove(const_cast<QActivityEdge *>(redefinedEdge));
-    // Adjust subsetted property(ies)
-    removeRedefinedElement(redefinedEdge);
+    d_ptr->weight = const_cast<QValueSpecification *>(weight);
 }
 
 /*!
-    Node from which tokens are taken when they traverse the edge.
+    Structured activity node containing the edge.
  */
-QActivityNode *QActivityEdge::source() const
+QStructuredActivityNode *QActivityEdge::inStructuredNode() const
 {
-    return d_ptr->source;
+    return d_ptr->inStructuredNode;
 }
 
-void QActivityEdge::setSource(const QActivityNode *source)
+void QActivityEdge::setInStructuredNode(const QStructuredActivityNode *inStructuredNode)
 {
-    d_ptr->source = const_cast<QActivityNode *>(source);
+    d_ptr->inStructuredNode = const_cast<QStructuredActivityNode *>(inStructuredNode);
 }
 
 /*!
@@ -246,19 +237,6 @@ QActivityNode *QActivityEdge::target() const
 void QActivityEdge::setTarget(const QActivityNode *target)
 {
     d_ptr->target = const_cast<QActivityNode *>(target);
-}
-
-/*!
-    The minimum number of tokens that must traverse the edge at the same time.
- */
-QValueSpecification *QActivityEdge::weight() const
-{
-    return d_ptr->weight;
-}
-
-void QActivityEdge::setWeight(const QValueSpecification *weight)
-{
-    d_ptr->weight = const_cast<QValueSpecification *>(weight);
 }
 
 QT_END_NAMESPACE_QTUML

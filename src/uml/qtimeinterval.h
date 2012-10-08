@@ -76,7 +76,7 @@ public:
     QTimeExpression *min() const;
     void setMin(const QTimeExpression *min);
 
-private:
+protected:
     QTimeIntervalPrivate *d_ptr;
 };
 

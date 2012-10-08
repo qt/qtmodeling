@@ -73,7 +73,7 @@ public:
     QAction *fromAction() const;
     void setFromAction(const QAction *fromAction);
 
-private:
+protected:
     QActionInputPinPrivate *d_ptr;
 };
 

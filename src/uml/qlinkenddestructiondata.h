@@ -78,7 +78,7 @@ public:
     QInputPin *destroyAt() const;
     void setDestroyAt(const QInputPin *destroyAt);
 
-private:
+protected:
     QLinkEndDestructionDataPrivate *d_ptr;
 };
 

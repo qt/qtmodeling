@@ -40,19 +40,11 @@
 ****************************************************************************/
 
 #include "qoperationtemplateparameter.h"
+#include "qoperationtemplateparameter_p.h"
 
 #include <QtUml/QOperation>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QOperationTemplateParameterPrivate
-{
-public:
-    explicit QOperationTemplateParameterPrivate();
-    virtual ~QOperationTemplateParameterPrivate();
-
-    QOperation *parameteredElement;
-};
 
 QOperationTemplateParameterPrivate::QOperationTemplateParameterPrivate() :
     parameteredElement(0)

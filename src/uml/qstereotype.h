@@ -83,7 +83,7 @@ public:
     // Operations
     QProfile *containingProfile() const;
 
-private:
+protected:
     QStereotypePrivate *d_ptr;
 };
 

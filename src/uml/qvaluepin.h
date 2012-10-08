@@ -73,7 +73,7 @@ public:
     QValueSpecification *value() const;
     void setValue(const QValueSpecification *value);
 
-private:
+protected:
     QValuePinPrivate *d_ptr;
 };
 

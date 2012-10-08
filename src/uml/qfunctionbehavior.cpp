@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qfunctionbehavior.h"
+#include "qfunctionbehavior_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QFunctionBehaviorPrivate
-{
-public:
-    explicit QFunctionBehaviorPrivate();
-    virtual ~QFunctionBehaviorPrivate();
-
-};
 
 QFunctionBehaviorPrivate::QFunctionBehaviorPrivate()
 {

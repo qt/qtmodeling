@@ -68,23 +68,23 @@ class Q_UML_EXPORT QLifeline : public QObject, public QNamedElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QLifeline
-    Q_PROPERTY(const QSet<QInteractionFragment *> * coveredBy READ coveredBy)
-    Q_PROPERTY(QPartDecomposition * decomposedAs READ decomposedAs WRITE setDecomposedAs)
-    Q_PROPERTY(QInteraction * interaction READ interaction WRITE setInteraction)
     Q_PROPERTY(QConnectableElement * represents READ represents WRITE setRepresents)
+    Q_PROPERTY(QPartDecomposition * decomposedAs READ decomposedAs WRITE setDecomposedAs)
+    Q_PROPERTY(const QSet<QInteractionFragment *> * coveredBy READ coveredBy)
+    Q_PROPERTY(QInteraction * interaction READ interaction WRITE setInteraction)
     Q_PROPERTY(QValueSpecification * selector READ selector WRITE setSelector)
 
     Q_DISABLE_COPY(QLifeline)
@@ -95,19 +95,19 @@ public:
     virtual ~QLifeline();
 
     // Association-ends
+    QConnectableElement *represents() const;
+    void setRepresents(const QConnectableElement *represents);
+    QPartDecomposition *decomposedAs() const;
+    void setDecomposedAs(const QPartDecomposition *decomposedAs);
     const QSet<QInteractionFragment *> *coveredBy() const;
     void addCoveredBy(const QInteractionFragment *coveredBy);
     void removeCoveredBy(const QInteractionFragment *coveredBy);
-    QPartDecomposition *decomposedAs() const;
-    void setDecomposedAs(const QPartDecomposition *decomposedAs);
     QInteraction *interaction() const;
     void setInteraction(const QInteraction *interaction);
-    QConnectableElement *represents() const;
-    void setRepresents(const QConnectableElement *represents);
     QValueSpecification *selector() const;
     void setSelector(const QValueSpecification *selector);
 
-private:
+protected:
     QLifelinePrivate *d_ptr;
 };
 

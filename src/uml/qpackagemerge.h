@@ -61,9 +61,9 @@ class Q_UML_EXPORT QPackageMerge : public QObject, public QDirectedRelationship
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QRelationship
     Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
@@ -89,7 +89,7 @@ public:
     QPackage *receivingPackage() const;
     void setReceivingPackage(const QPackage *receivingPackage);
 
-private:
+protected:
     QPackageMergePrivate *d_ptr;
 };
 

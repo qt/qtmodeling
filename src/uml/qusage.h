@@ -65,7 +65,7 @@ public:
     explicit QUsage(QObject *parent = 0);
     virtual ~QUsage();
 
-private:
+protected:
     QUsagePrivate *d_ptr;
 };
 

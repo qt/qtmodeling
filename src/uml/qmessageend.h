@@ -70,7 +70,7 @@ public:
 protected:
     explicit QMessageEnd();
 
-private:
+protected:
     QMessageEndPrivate *d_ptr;
 };
 

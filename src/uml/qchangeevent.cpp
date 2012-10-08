@@ -40,19 +40,12 @@
 ****************************************************************************/
 
 #include "qchangeevent.h"
+#include "qchangeevent_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QValueSpecification>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QChangeEventPrivate
-{
-public:
-    explicit QChangeEventPrivate();
-    virtual ~QChangeEventPrivate();
-
-    QValueSpecification *changeExpression;
-};
 
 QChangeEventPrivate::QChangeEventPrivate() :
     changeExpression(0)

@@ -82,18 +82,18 @@ public:
     void setAbstract(bool isAbstract);
 
     // Association-ends
-    const QSet<QBehavior *> *methods() const;
-    void addMethod(const QBehavior *method);
-    void removeMethod(const QBehavior *method);
+    const QSet<QType *> *raisedExceptions() const;
+    void addRaisedException(const QType *raisedException);
+    void removeRaisedException(const QType *raisedException);
     const QList<QParameter *> *ownedParameters() const;
     void addOwnedParameter(const QParameter *ownedParameter);
     void removeOwnedParameter(const QParameter *ownedParameter);
     const QSet<QParameterSet *> *ownedParameterSets() const;
     void addOwnedParameterSet(const QParameterSet *ownedParameterSet);
     void removeOwnedParameterSet(const QParameterSet *ownedParameterSet);
-    const QSet<QType *> *raisedExceptions() const;
-    void addRaisedException(const QType *raisedException);
-    void removeRaisedException(const QType *raisedException);
+    const QSet<QBehavior *> *methods() const;
+    void addMethod(const QBehavior *method);
+    void removeMethod(const QBehavior *method);
 
     // Operations
     bool isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const;
@@ -101,7 +101,7 @@ public:
 protected:
     explicit QBehavioralFeature();
 
-private:
+protected:
     QBehavioralFeaturePrivate *d_ptr;
 };
 

@@ -40,20 +40,12 @@
 ****************************************************************************/
 
 #include "qparameterableelement.h"
+#include "qparameterableelement_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QTemplateParameter>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QParameterableElementPrivate
-{
-public:
-    explicit QParameterableElementPrivate();
-    virtual ~QParameterableElementPrivate();
-
-    QTemplateParameter *owningTemplateParameter;
-    QTemplateParameter *templateParameter;
-};
 
 QParameterableElementPrivate::QParameterableElementPrivate() :
     owningTemplateParameter(0),

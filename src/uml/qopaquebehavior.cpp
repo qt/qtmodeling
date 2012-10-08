@@ -40,30 +40,21 @@
 ****************************************************************************/
 
 #include "qopaquebehavior.h"
+#include "qopaquebehavior_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QOpaqueBehaviorPrivate
-{
-public:
-    explicit QOpaqueBehaviorPrivate();
-    virtual ~QOpaqueBehaviorPrivate();
-
-    QList<QString> *bodies;
-    QList<QString> *languages;
-};
-
 QOpaqueBehaviorPrivate::QOpaqueBehaviorPrivate() :
-    bodies(new QList<QString>),
-    languages(new QList<QString>)
+    languages(new QList<QString>),
+    bodies(new QList<QString>)
 {
 }
 
 QOpaqueBehaviorPrivate::~QOpaqueBehaviorPrivate()
 {
-    delete bodies;
     delete languages;
+    delete bodies;
 }
 
 /*!
@@ -85,24 +76,6 @@ QOpaqueBehavior::~QOpaqueBehavior()
 }
 
 /*!
-    Specifies the behavior in one or more languages.
- */
-const QList<QString> *QOpaqueBehavior::bodies() const
-{
-    return d_ptr->bodies;
-}
-
-void QOpaqueBehavior::addBody(QString body)
-{
-    d_ptr->bodies->append(body);
-}
-
-void QOpaqueBehavior::removeBody(QString body)
-{
-    d_ptr->bodies->removeAll(body);
-}
-
-/*!
     Languages the body strings use in the same order as the body strings.
  */
 const QList<QString> *QOpaqueBehavior::languages() const
@@ -118,6 +91,24 @@ void QOpaqueBehavior::addLanguage(QString language)
 void QOpaqueBehavior::removeLanguage(QString language)
 {
     d_ptr->languages->removeAll(language);
+}
+
+/*!
+    Specifies the behavior in one or more languages.
+ */
+const QList<QString> *QOpaqueBehavior::bodies() const
+{
+    return d_ptr->bodies;
+}
+
+void QOpaqueBehavior::addBody(QString body)
+{
+    d_ptr->bodies->append(body);
+}
+
+void QOpaqueBehavior::removeBody(QString body)
+{
+    d_ptr->bodies->removeAll(body);
 }
 
 #include "moc_qopaquebehavior.cpp"

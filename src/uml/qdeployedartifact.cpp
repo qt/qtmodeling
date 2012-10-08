@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qdeployedartifact.h"
+#include "qdeployedartifact_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QDeployedArtifactPrivate
-{
-public:
-    explicit QDeployedArtifactPrivate();
-    virtual ~QDeployedArtifactPrivate();
-
-};
 
 QDeployedArtifactPrivate::QDeployedArtifactPrivate()
 {

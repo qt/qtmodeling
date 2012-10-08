@@ -72,36 +72,31 @@ public:
     virtual ~QActivityNode();
 
     // Association-ends
-    QActivity *activity() const;
-    void setActivity(const QActivity *activity);
-    const QSet<QActivityGroup *> *inGroup() const;
-    const QSet<QInterruptibleActivityRegion *> *inInterruptibleRegion() const;
-    void addInInterruptibleRegion(const QInterruptibleActivityRegion *inInterruptibleRegion);
-    void removeInInterruptibleRegion(const QInterruptibleActivityRegion *inInterruptibleRegion);
-    const QSet<QActivityPartition *> *inPartition() const;
-    void addInPartition(const QActivityPartition *inPartition);
-    void removeInPartition(const QActivityPartition *inPartition);
-    QStructuredActivityNode *inStructuredNode() const;
-    void setInStructuredNode(const QStructuredActivityNode *inStructuredNode);
-    const QSet<QActivityEdge *> *incomings() const;
-    void addIncoming(const QActivityEdge *incoming);
-    void removeIncoming(const QActivityEdge *incoming);
-    const QSet<QActivityEdge *> *outgoings() const;
-    void addOutgoing(const QActivityEdge *outgoing);
-    void removeOutgoing(const QActivityEdge *outgoing);
     const QSet<QActivityNode *> *redefinedNodes() const;
     void addRedefinedNode(const QActivityNode *redefinedNode);
     void removeRedefinedNode(const QActivityNode *redefinedNode);
-
-protected:
-    // Synchronization functions for read-only subsetted properties
-    void addInGroup(const QActivityGroup *inGroup);
-    void removeInGroup(const QActivityGroup *inGroup);
+    const QSet<QActivityEdge *> *incomings() const;
+    void addIncoming(const QActivityEdge *incoming);
+    void removeIncoming(const QActivityEdge *incoming);
+    QActivity *activity() const;
+    void setActivity(const QActivity *activity);
+    const QSet<QActivityGroup *> *inGroup() const;
+    QStructuredActivityNode *inStructuredNode() const;
+    void setInStructuredNode(const QStructuredActivityNode *inStructuredNode);
+    const QSet<QActivityPartition *> *inPartition() const;
+    void addInPartition(const QActivityPartition *inPartition);
+    void removeInPartition(const QActivityPartition *inPartition);
+    const QSet<QInterruptibleActivityRegion *> *inInterruptibleRegion() const;
+    void addInInterruptibleRegion(const QInterruptibleActivityRegion *inInterruptibleRegion);
+    void removeInInterruptibleRegion(const QInterruptibleActivityRegion *inInterruptibleRegion);
+    const QSet<QActivityEdge *> *outgoings() const;
+    void addOutgoing(const QActivityEdge *outgoing);
+    void removeOutgoing(const QActivityEdge *outgoing);
 
 protected:
     explicit QActivityNode();
 
-private:
+protected:
     QActivityNodePrivate *d_ptr;
 };
 

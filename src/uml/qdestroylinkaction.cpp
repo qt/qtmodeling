@@ -40,19 +40,11 @@
 ****************************************************************************/
 
 #include "qdestroylinkaction.h"
+#include "qdestroylinkaction_p.h"
 
 #include <QtUml/QLinkEndDestructionData>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QDestroyLinkActionPrivate
-{
-public:
-    explicit QDestroyLinkActionPrivate();
-    virtual ~QDestroyLinkActionPrivate();
-
-    QSet<QLinkEndDestructionData *> *endData;
-};
 
 QDestroyLinkActionPrivate::QDestroyLinkActionPrivate() :
     endData(new QSet<QLinkEndDestructionData *>)

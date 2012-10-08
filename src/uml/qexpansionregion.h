@@ -89,7 +89,7 @@ public:
     void addOutputElement(const QExpansionNode *outputElement);
     void removeOutputElement(const QExpansionNode *outputElement);
 
-private:
+protected:
     QExpansionRegionPrivate *d_ptr;
 };
 

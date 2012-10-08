@@ -65,7 +65,7 @@ public:
     explicit QDevice(QObject *parent = 0);
     virtual ~QDevice();
 
-private:
+protected:
     QDevicePrivate *d_ptr;
 };
 

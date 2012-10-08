@@ -65,7 +65,7 @@ public:
 protected:
     explicit QDeployedArtifact();
 
-private:
+protected:
     QDeployedArtifactPrivate *d_ptr;
 };
 

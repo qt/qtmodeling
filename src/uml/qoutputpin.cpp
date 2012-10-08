@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qoutputpin.h"
+#include "qoutputpin_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QOutputPinPrivate
-{
-public:
-    explicit QOutputPinPrivate();
-    virtual ~QOutputPinPrivate();
-
-};
 
 QOutputPinPrivate::QOutputPinPrivate()
 {

@@ -40,25 +40,17 @@
 ****************************************************************************/
 
 #include "qsendsignalaction.h"
+#include "qsendsignalaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QSignal>
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QSendSignalActionPrivate
-{
-public:
-    explicit QSendSignalActionPrivate();
-    virtual ~QSendSignalActionPrivate();
-
-    QSignal *signal;
-    QInputPin *target;
-};
-
 QSendSignalActionPrivate::QSendSignalActionPrivate() :
-    signal(0),
-    target(0)
+    target(0),
+    signal(0)
 {
 }
 
@@ -85,19 +77,6 @@ QSendSignalAction::~QSendSignalAction()
 }
 
 /*!
-    The type of signal transmitted to the target object.
- */
-QSignal *QSendSignalAction::signal() const
-{
-    return d_ptr->signal;
-}
-
-void QSendSignalAction::setSignal(const QSignal *signal)
-{
-    d_ptr->signal = const_cast<QSignal *>(signal);
-}
-
-/*!
     The target object to which the signal is sent.
  */
 QInputPin *QSendSignalAction::target() const
@@ -108,6 +87,19 @@ QInputPin *QSendSignalAction::target() const
 void QSendSignalAction::setTarget(const QInputPin *target)
 {
     d_ptr->target = const_cast<QInputPin *>(target);
+}
+
+/*!
+    The type of signal transmitted to the target object.
+ */
+QSignal *QSendSignalAction::signal() const
+{
+    return d_ptr->signal;
+}
+
+void QSendSignalAction::setSignal(const QSignal *signal)
+{
+    d_ptr->signal = const_cast<QSignal *>(signal);
 }
 
 #include "moc_qsendsignalaction.cpp"

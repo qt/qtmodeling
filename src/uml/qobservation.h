@@ -65,7 +65,7 @@ public:
 protected:
     explicit QObservation();
 
-private:
+protected:
     QObservationPrivate *d_ptr;
 };
 

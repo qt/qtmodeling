@@ -40,20 +40,12 @@
 ****************************************************************************/
 
 #include "qremovevariablevalueaction.h"
+#include "qremovevariablevalueaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QRemoveVariableValueActionPrivate
-{
-public:
-    explicit QRemoveVariableValueActionPrivate();
-    virtual ~QRemoveVariableValueActionPrivate();
-
-    bool isRemoveDuplicates;
-    QInputPin *removeAt;
-};
 
 QRemoveVariableValueActionPrivate::QRemoveVariableValueActionPrivate() :
     isRemoveDuplicates(false),

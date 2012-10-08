@@ -40,7 +40,27 @@
 ****************************************************************************/
 
 #include "${class.name.lower}.h"
+#include "${class.name.lower}_p.h"
 
+[%- subsettedClasses = [] -%]
+[%- FOREACH attribute IN class.attribute.values -%]
+[%- FOREACH subsettedProperty IN attribute.subsettedProperty.split(' ') -%]
+[%- IF classes.item(subsettedProperty.split('-').0.replace('^', 'Q')) and subsettedProperty.split('-').0.replace('^', 'Q') != class.name -%]
+[%- subsettedClasses.push(subsettedProperty.split('-').0.replace('^', 'Q')) -%]
+[%- END -%]
+[%- END -%]
+[%- END -%]
+[%- FOREACH associationend IN class.associationend.values -%]
+[%- FOREACH subsettedProperty IN associationend.subsettedProperty.split(' ') -%]
+[%- IF classes.item(subsettedProperty.split('-').0.replace('^', 'Q')) and subsettedProperty.split('-').0.replace('^', 'Q') != class.name -%]
+[%- subsettedClasses.push(subsettedProperty.split('-').0.replace('^', 'Q')) -%]
+[%- END -%]
+[%- END -%]
+[%- END -%]
+[%- FOREACH subsettedClass IN subsettedClasses -%]
+#include "${subsettedClass.lower}_p.h"
+
+[%- END %]
 [%- FOREACH forwarddecl IN class.forwarddecl -%]
 
 #include <${forwarddecl.namespace}/${forwarddecl.content}>
@@ -48,28 +68,9 @@
 
 QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
 
-class ${class.name}Private
-{
-public:
-    explicit ${class.name}Private();
-    virtual ~${class.name}Private();
-
-[%- FOREACH attribute IN class.attribute %]
-[%- IF (attribute.isDerived == "false" or attribute.isDerivedUnion == "true") %]
-    ${attribute.accessor.0.return.remove('^const ')}${attribute.accessor.0.name};
-[%- END -%]
-[%- END -%]
-[%- FOREACH associationend IN class.associationend %]
-[%- IF (associationend.isDerived == "false" or associationend.isDerivedUnion == "true") %]
-    ${associationend.accessor.0.return.remove('^const ')}${associationend.accessor.0.name};
-[%- END -%]
-[%- END -%]
-
-};
-
 ${class.name}Private::${class.name}Private()
 [%- found = 'false' -%]
-[%- FOREACH attribute IN class.attribute %]
+[%- FOREACH attribute IN class.attribute.values %]
 [%- IF attribute.isDerived == "false" or attribute.isDerivedUnion == "true" -%]
 [%- IF attribute.accessor.0.return.search('<') -%]
 [%- IF found == 'true' -%]
@@ -102,7 +103,7 @@ ${class.name}Private::${class.name}Private()
 [%- END -%]
 [%- END -%]
 [%- END -%]
-[%- FOREACH associationend IN class.associationend %]
+[%- FOREACH associationend IN class.associationend.values %]
 [%- IF associationend.isDerived == "false" or associationend.isDerivedUnion == "true" -%]
 [%- IF associationend.accessor.0.return.search('<') -%]
 [%- IF found == 'true' -%]
@@ -140,13 +141,13 @@ ${class.name}Private::${class.name}Private()
 
 ${class.name}Private::~${class.name}Private()
 {
-[% FOREACH attribute IN class.attribute %]
+[% FOREACH attribute IN class.attribute.values %]
 [%- IF ((attribute.isDerived == "false" or attribute.isDerivedUnion == "true") and attribute.accessor.0.return.search('<')) -%]
     delete ${attribute.accessor.0.name};
 
 [%- END -%]
 [%- END -%]
-[%- FOREACH associationend IN class.associationend %]
+[%- FOREACH associationend IN class.associationend.values %]
 [%- IF ((associationend.isDerived == "false" or associationend.isDerivedUnion == "true") and associationend.accessor.0.return.search('<')) -%]
     delete ${associationend.accessor.0.name};
 
@@ -177,7 +178,7 @@ ${class.name}::~${class.name}()
     delete d_ptr;
 }
 
-[%- FOREACH attribute IN class.attribute %]
+[%- FOREACH attribute IN class.attribute.values %]
 [%- IF (attribute.documentation) %]
 /*!
     [% attribute.documentation %]
@@ -199,7 +200,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
     // Adjust subsetted property(ies)
         [%- FOREACH subsettedProperty IN attribute.subsettedProperty.split(' ') -%]
             [%- IF classes.item(subsettedProperty.split('-').0.replace('^', 'Q')) %]
-    add${subsettedProperty.split('-').1.ucfirst}(${accessor.parameter.0.name});
+    ${subsettedProperty.split('-').0.replace('^', 'Q')}::d_ptr->${classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).attribute.item(subsettedProperty).accessor.0.name}->[% IF classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).attribute.item(subsettedProperty).accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
             [%- END -%]
         [%- END -%]
         [%- END -%]
@@ -210,7 +211,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
     // Adjust subsetted property(ies)
         [%- FOREACH subsettedProperty IN attribute.subsettedProperty.split(' ') %]
             [%- IF classes.item(subsettedProperty.split('-').0.replace('^', 'Q')) %]
-    remove${subsettedProperty.split('-').1.ucfirst}(${accessor.parameter.0.name});
+    ${subsettedProperty.split('-').0.replace('^', 'Q')}::d_ptr->${classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).attribute.item(subsettedProperty).accessor.0.name}->[% IF classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).attribute.item(subsettedProperty).accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
             [%- END -%]
         [%- END -%]
         [%- END -%]
@@ -223,7 +224,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
 [% END -%]
 [%- END -%]
 
-[%- FOREACH associationend IN class.associationend %]
+[%- FOREACH associationend IN class.associationend.values %]
 [%- IF (associationend.documentation) %]
 /*!
     [% associationend.documentation %]
@@ -245,7 +246,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
     // Adjust subsetted property(ies)
         [%- FOREACH subsettedProperty IN associationend.subsettedProperty.split(' ') %]
             [%- IF classes.item(subsettedProperty.split('-').0.replace('^', 'Q')) %]
-    add${subsettedProperty.split('-').1.ucfirst}(${accessor.parameter.0.name});
+    ${subsettedProperty.split('-').0.replace('^', 'Q')}::d_ptr->${classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).associationend.item(subsettedProperty).accessor.0.name}->[% IF classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).associationend.item(subsettedProperty).accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
             [%- END -%]
         [%- END -%]
         [%- END -%]
@@ -256,7 +257,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
     // Adjust subsetted property(ies)
         [%- FOREACH subsettedProperty IN associationend.subsettedProperty.split(' ') %]
             [%- IF classes.item(subsettedProperty.split('-').0.replace('^', 'Q')) %]
-    remove${subsettedProperty.split('-').1.ucfirst}(${accessor.parameter.0.name});
+    ${subsettedProperty.split('-').0.replace('^', 'Q')}::d_ptr->${classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).associationend.item(subsettedProperty).accessor.0.name}->[% IF classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).associationend.item(subsettedProperty).accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
             [%- END -%]
         [%- END -%]
         [%- END -%]

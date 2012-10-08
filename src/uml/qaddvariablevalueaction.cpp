@@ -40,20 +40,12 @@
 ****************************************************************************/
 
 #include "qaddvariablevalueaction.h"
+#include "qaddvariablevalueaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QAddVariableValueActionPrivate
-{
-public:
-    explicit QAddVariableValueActionPrivate();
-    virtual ~QAddVariableValueActionPrivate();
-
-    bool isReplaceAll;
-    QInputPin *insertAt;
-};
 
 QAddVariableValueActionPrivate::QAddVariableValueActionPrivate() :
     isReplaceAll(false),

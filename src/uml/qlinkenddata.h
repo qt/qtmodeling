@@ -66,14 +66,14 @@ class Q_UML_EXPORT QLinkEndData : public QObject, public QElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QLinkEndData
+    Q_PROPERTY(QInputPin * value READ value WRITE setValue)
     Q_PROPERTY(QProperty * end READ end WRITE setEnd)
     Q_PROPERTY(const QSet<QQualifierValue *> * qualifiers READ qualifiers)
-    Q_PROPERTY(QInputPin * value READ value WRITE setValue)
 
     Q_DISABLE_COPY(QLinkEndData)
     Q_DECLARE_PRIVATE(QLinkEndData)
@@ -83,15 +83,15 @@ public:
     virtual ~QLinkEndData();
 
     // Association-ends
+    QInputPin *value() const;
+    void setValue(const QInputPin *value);
     QProperty *end() const;
     void setEnd(const QProperty *end);
     const QSet<QQualifierValue *> *qualifiers() const;
     void addQualifier(const QQualifierValue *qualifier);
     void removeQualifier(const QQualifierValue *qualifier);
-    QInputPin *value() const;
-    void setValue(const QInputPin *value);
 
-private:
+protected:
     QLinkEndDataPrivate *d_ptr;
 };
 

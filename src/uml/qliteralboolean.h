@@ -60,16 +60,16 @@ class Q_UML_EXPORT QLiteralBoolean : public QObject, public QLiteralSpecificatio
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QTypedElement
     Q_PROPERTY(QType * type READ type WRITE setType)
@@ -99,7 +99,7 @@ public:
     bool booleanValue() const;
     bool isComputable() const;
 
-private:
+protected:
     QLiteralBooleanPrivate *d_ptr;
 };
 

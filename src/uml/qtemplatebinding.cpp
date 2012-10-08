@@ -40,6 +40,11 @@
 ****************************************************************************/
 
 #include "qtemplatebinding.h"
+#include "qtemplatebinding_p.h"
+#include "qdirectedrelationship_p.h"
+#include "qelement_p.h"
+#include "qdirectedrelationship_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QTemplateableElement>
 #include <QtUml/QTemplateParameterSubstitution>
@@ -47,21 +52,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QTemplateBindingPrivate
-{
-public:
-    explicit QTemplateBindingPrivate();
-    virtual ~QTemplateBindingPrivate();
-
-    QTemplateableElement *boundElement;
-    QSet<QTemplateParameterSubstitution *> *parameterSubstitutions;
-    QTemplateSignature *signature;
-};
-
 QTemplateBindingPrivate::QTemplateBindingPrivate() :
+    signature(0),
     boundElement(0),
-    parameterSubstitutions(new QSet<QTemplateParameterSubstitution *>),
-    signature(0)
+    parameterSubstitutions(new QSet<QTemplateParameterSubstitution *>)
 {
 }
 
@@ -89,6 +83,19 @@ QTemplateBinding::~QTemplateBinding()
 }
 
 /*!
+    The template signature for the template that is the target of the binding.
+ */
+QTemplateSignature *QTemplateBinding::signature() const
+{
+    return d_ptr->signature;
+}
+
+void QTemplateBinding::setSignature(const QTemplateSignature *signature)
+{
+    d_ptr->signature = const_cast<QTemplateSignature *>(signature);
+}
+
+/*!
     The element that is bound by this binding.
  */
 QTemplateableElement *QTemplateBinding::boundElement() const
@@ -113,27 +120,14 @@ void QTemplateBinding::addParameterSubstitution(const QTemplateParameterSubstitu
 {
     d_ptr->parameterSubstitutions->insert(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution));
     // Adjust subsetted property(ies)
-    addOwnedElement(parameterSubstitution);
+    QElement::d_ptr->ownedElements->insert(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution));
 }
 
 void QTemplateBinding::removeParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution)
 {
     d_ptr->parameterSubstitutions->remove(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution));
     // Adjust subsetted property(ies)
-    removeOwnedElement(parameterSubstitution);
-}
-
-/*!
-    The template signature for the template that is the target of the binding.
- */
-QTemplateSignature *QTemplateBinding::signature() const
-{
-    return d_ptr->signature;
-}
-
-void QTemplateBinding::setSignature(const QTemplateSignature *signature)
-{
-    d_ptr->signature = const_cast<QTemplateSignature *>(signature);
+    QElement::d_ptr->ownedElements->remove(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution));
 }
 
 #include "moc_qtemplatebinding.cpp"

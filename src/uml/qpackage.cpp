@@ -40,6 +40,10 @@
 ****************************************************************************/
 
 #include "qpackage.h"
+#include "qpackage_p.h"
+#include "qnamespace_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QProfile>
 #include <QtUml/QNamedElement>
@@ -50,32 +54,19 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QPackagePrivate
-{
-public:
-    explicit QPackagePrivate();
-    virtual ~QPackagePrivate();
-
-    QString URI;
-    QPackage *nestingPackage;
-    QSet<QPackageMerge *> *packageMerges;
-    QSet<QPackageableElement *> *packagedElements;
-    QSet<QProfileApplication *> *profileApplications;
-};
-
 QPackagePrivate::QPackagePrivate() :
-    nestingPackage(0),
-    packageMerges(new QSet<QPackageMerge *>),
     packagedElements(new QSet<QPackageableElement *>),
-    profileApplications(new QSet<QProfileApplication *>)
+    nestingPackage(0),
+    profileApplications(new QSet<QProfileApplication *>),
+    packageMerges(new QSet<QPackageMerge *>)
 {
 }
 
 QPackagePrivate::~QPackagePrivate()
 {
-    delete packageMerges;
     delete packagedElements;
     delete profileApplications;
+    delete packageMerges;
 }
 
 /*!
@@ -110,45 +101,6 @@ void QPackage::setURI(QString URI)
 }
 
 /*!
-    References the packaged elements that are Packages.
- */
-const QSet<QPackage *> *QPackage::nestedPackages() const
-{
-    qWarning("QPackage::nestedPackages: to be implemented (this is a derived associationend)");
-}
-
-void QPackage::addNestedPackage(const QPackage *nestedPackage)
-{
-    qWarning("QPackage::addNestedPackage: to be implemented (this is a derived associationend)");
-}
-
-void QPackage::removeNestedPackage(const QPackage *nestedPackage)
-{
-    qWarning("QPackage::removeNestedPackage: to be implemented (this is a derived associationend)");
-}
-
-/*!
-    References the Package that owns this Package.
- */
-QPackage *QPackage::nestingPackage() const
-{
-    return d_ptr->nestingPackage;
-}
-
-void QPackage::setNestingPackage(const QPackage *nestingPackage)
-{
-    d_ptr->nestingPackage = const_cast<QPackage *>(nestingPackage);
-}
-
-/*!
-    References the Stereotypes that are owned by the Package
- */
-const QSet<QStereotype *> *QPackage::ownedStereotypes() const
-{
-    qWarning("QPackage::ownedStereotypes: to be implemented (this is a derived associationend)");
-}
-
-/*!
     References the packaged elements that are Types.
  */
 const QSet<QType *> *QPackage::ownedTypes() const
@@ -167,28 +119,6 @@ void QPackage::removeOwnedType(const QType *ownedType)
 }
 
 /*!
-    References the PackageMerges that are owned by this Package.
- */
-const QSet<QPackageMerge *> *QPackage::packageMerges() const
-{
-    return d_ptr->packageMerges;
-}
-
-void QPackage::addPackageMerge(const QPackageMerge *packageMerge)
-{
-    d_ptr->packageMerges->insert(const_cast<QPackageMerge *>(packageMerge));
-    // Adjust subsetted property(ies)
-    addOwnedElement(packageMerge);
-}
-
-void QPackage::removePackageMerge(const QPackageMerge *packageMerge)
-{
-    d_ptr->packageMerges->remove(const_cast<QPackageMerge *>(packageMerge));
-    // Adjust subsetted property(ies)
-    removeOwnedElement(packageMerge);
-}
-
-/*!
     Specifies the packageable elements that are owned by this Package.
  */
 const QSet<QPackageableElement *> *QPackage::packagedElements() const
@@ -200,14 +130,27 @@ void QPackage::addPackagedElement(const QPackageableElement *packagedElement)
 {
     d_ptr->packagedElements->insert(const_cast<QPackageableElement *>(packagedElement));
     // Adjust subsetted property(ies)
-    addOwnedMember(packagedElement);
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QPackageableElement *>(packagedElement));
 }
 
 void QPackage::removePackagedElement(const QPackageableElement *packagedElement)
 {
     d_ptr->packagedElements->remove(const_cast<QPackageableElement *>(packagedElement));
     // Adjust subsetted property(ies)
-    removeOwnedMember(packagedElement);
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QPackageableElement *>(packagedElement));
+}
+
+/*!
+    References the Package that owns this Package.
+ */
+QPackage *QPackage::nestingPackage() const
+{
+    return d_ptr->nestingPackage;
+}
+
+void QPackage::setNestingPackage(const QPackage *nestingPackage)
+{
+    d_ptr->nestingPackage = const_cast<QPackage *>(nestingPackage);
 }
 
 /*!
@@ -222,14 +165,62 @@ void QPackage::addProfileApplication(const QProfileApplication *profileApplicati
 {
     d_ptr->profileApplications->insert(const_cast<QProfileApplication *>(profileApplication));
     // Adjust subsetted property(ies)
-    addOwnedElement(profileApplication);
+    QElement::d_ptr->ownedElements->insert(const_cast<QProfileApplication *>(profileApplication));
 }
 
 void QPackage::removeProfileApplication(const QProfileApplication *profileApplication)
 {
     d_ptr->profileApplications->remove(const_cast<QProfileApplication *>(profileApplication));
     // Adjust subsetted property(ies)
-    removeOwnedElement(profileApplication);
+    QElement::d_ptr->ownedElements->remove(const_cast<QProfileApplication *>(profileApplication));
+}
+
+/*!
+    References the Stereotypes that are owned by the Package
+ */
+const QSet<QStereotype *> *QPackage::ownedStereotypes() const
+{
+    qWarning("QPackage::ownedStereotypes: to be implemented (this is a derived associationend)");
+}
+
+/*!
+    References the PackageMerges that are owned by this Package.
+ */
+const QSet<QPackageMerge *> *QPackage::packageMerges() const
+{
+    return d_ptr->packageMerges;
+}
+
+void QPackage::addPackageMerge(const QPackageMerge *packageMerge)
+{
+    d_ptr->packageMerges->insert(const_cast<QPackageMerge *>(packageMerge));
+    // Adjust subsetted property(ies)
+    QElement::d_ptr->ownedElements->insert(const_cast<QPackageMerge *>(packageMerge));
+}
+
+void QPackage::removePackageMerge(const QPackageMerge *packageMerge)
+{
+    d_ptr->packageMerges->remove(const_cast<QPackageMerge *>(packageMerge));
+    // Adjust subsetted property(ies)
+    QElement::d_ptr->ownedElements->remove(const_cast<QPackageMerge *>(packageMerge));
+}
+
+/*!
+    References the packaged elements that are Packages.
+ */
+const QSet<QPackage *> *QPackage::nestedPackages() const
+{
+    qWarning("QPackage::nestedPackages: to be implemented (this is a derived associationend)");
+}
+
+void QPackage::addNestedPackage(const QPackage *nestedPackage)
+{
+    qWarning("QPackage::addNestedPackage: to be implemented (this is a derived associationend)");
+}
+
+void QPackage::removeNestedPackage(const QPackage *nestedPackage)
+{
+    qWarning("QPackage::removeNestedPackage: to be implemented (this is a derived associationend)");
 }
 
 /*!

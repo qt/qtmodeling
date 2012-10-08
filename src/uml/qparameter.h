@@ -72,25 +72,25 @@ class Q_UML_EXPORT QParameter : public QObject, public QMultiplicityElement, pub
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QMultiplicityElement
-    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
-    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
-    Q_PROPERTY(qint32 lower READ lower WRITE setLower)
     Q_PROPERTY(qint32 upper READ upper WRITE setUpper)
-    Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
+    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
+    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
+    Q_PROPERTY(qint32 lower READ lower WRITE setLower)
     Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
+    Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QTypedElement
     Q_PROPERTY(QType * type READ type WRITE setType)
@@ -103,13 +103,13 @@ class Q_UML_EXPORT QParameter : public QObject, public QMultiplicityElement, pub
     Q_PROPERTY(QConnectableElementTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
 
     // From QParameter
+    Q_PROPERTY(bool isException READ isException WRITE setException)
     Q_PROPERTY(QString default_ READ default_ WRITE setDefault_)
     Q_PROPERTY(QtUml::ParameterDirectionKind direction READ direction WRITE setDirection)
-    Q_PROPERTY(QtUml::ParameterEffectKind effect READ effect WRITE setEffect)
-    Q_PROPERTY(bool isException READ isException WRITE setException)
     Q_PROPERTY(bool isStream READ isStream WRITE setStream)
-    Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
+    Q_PROPERTY(QtUml::ParameterEffectKind effect READ effect WRITE setEffect)
     Q_PROPERTY(QOperation * operation READ operation WRITE setOperation)
+    Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
     Q_PROPERTY(const QSet<QParameterSet *> * parameterSets READ parameterSets)
 
     Q_DISABLE_COPY(QParameter)
@@ -120,27 +120,27 @@ public:
     virtual ~QParameter();
 
     // Attributes
+    bool isException() const;
+    void setException(bool isException);
     QString default_() const;
     void setDefault_(QString default_);
     QtUml::ParameterDirectionKind direction() const;
     void setDirection(QtUml::ParameterDirectionKind direction);
-    QtUml::ParameterEffectKind effect() const;
-    void setEffect(QtUml::ParameterEffectKind effect);
-    bool isException() const;
-    void setException(bool isException);
     bool isStream() const;
     void setStream(bool isStream);
+    QtUml::ParameterEffectKind effect() const;
+    void setEffect(QtUml::ParameterEffectKind effect);
 
     // Association-ends
-    QValueSpecification *defaultValue() const;
-    void setDefaultValue(const QValueSpecification *defaultValue);
     QOperation *operation() const;
     void setOperation(const QOperation *operation);
+    QValueSpecification *defaultValue() const;
+    void setDefaultValue(const QValueSpecification *defaultValue);
     const QSet<QParameterSet *> *parameterSets() const;
     void addParameterSet(const QParameterSet *parameterSet);
     void removeParameterSet(const QParameterSet *parameterSet);
 
-private:
+protected:
     QParameterPrivate *d_ptr;
 };
 

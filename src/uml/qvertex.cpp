@@ -40,21 +40,14 @@
 ****************************************************************************/
 
 #include "qvertex.h"
+#include "qvertex_p.h"
+#include "qnamedelement_p.h"
 
 #include <QtUml/QRegion>
 #include <QtUml/QTransition>
 #include <QtUml/QStateMachine>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QVertexPrivate
-{
-public:
-    explicit QVertexPrivate();
-    virtual ~QVertexPrivate();
-
-    QRegion *container;
-};
 
 QVertexPrivate::QVertexPrivate() :
     container(0)
@@ -84,6 +77,14 @@ QVertex::~QVertex()
 }
 
 /*!
+    Specifies the transitions entering this vertex.
+ */
+const QSet<QTransition *> *QVertex::incomings() const
+{
+    qWarning("QVertex::incomings: to be implemented (this is a derived associationend)");
+}
+
+/*!
     The region that contains this vertex.
  */
 QRegion *QVertex::container() const
@@ -94,14 +95,6 @@ QRegion *QVertex::container() const
 void QVertex::setContainer(const QRegion *container)
 {
     d_ptr->container = const_cast<QRegion *>(container);
-}
-
-/*!
-    Specifies the transitions entering this vertex.
- */
-const QSet<QTransition *> *QVertex::incomings() const
-{
-    qWarning("QVertex::incomings: to be implemented (this is a derived associationend)");
 }
 
 /*!

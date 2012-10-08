@@ -40,19 +40,11 @@
 ****************************************************************************/
 
 #include "qinstancevalue.h"
+#include "qinstancevalue_p.h"
 
 #include <QtUml/QInstanceSpecification>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QInstanceValuePrivate
-{
-public:
-    explicit QInstanceValuePrivate();
-    virtual ~QInstanceValuePrivate();
-
-    QInstanceSpecification *instance;
-};
 
 QInstanceValuePrivate::QInstanceValuePrivate() :
     instance(0)

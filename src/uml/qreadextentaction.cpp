@@ -40,21 +40,13 @@
 ****************************************************************************/
 
 #include "qreadextentaction.h"
+#include "qreadextentaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QClassifier>
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QReadExtentActionPrivate
-{
-public:
-    explicit QReadExtentActionPrivate();
-    virtual ~QReadExtentActionPrivate();
-
-    QClassifier *classifier;
-    QOutputPin *result;
-};
 
 QReadExtentActionPrivate::QReadExtentActionPrivate() :
     classifier(0),

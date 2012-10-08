@@ -40,19 +40,12 @@
 ****************************************************************************/
 
 #include "qcollaboration.h"
+#include "qcollaboration_p.h"
+#include "qstructuredclassifier_p.h"
 
 #include <QtUml/QConnectableElement>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QCollaborationPrivate
-{
-public:
-    explicit QCollaborationPrivate();
-    virtual ~QCollaborationPrivate();
-
-    QSet<QConnectableElement *> *collaborationRoles;
-};
 
 QCollaborationPrivate::QCollaborationPrivate() :
     collaborationRoles(new QSet<QConnectableElement *>)
@@ -94,14 +87,14 @@ void QCollaboration::addCollaborationRole(const QConnectableElement *collaborati
 {
     d_ptr->collaborationRoles->insert(const_cast<QConnectableElement *>(collaborationRole));
     // Adjust subsetted property(ies)
-    addRole(collaborationRole);
+    QStructuredClassifier::d_ptr->roles->insert(const_cast<QConnectableElement *>(collaborationRole));
 }
 
 void QCollaboration::removeCollaborationRole(const QConnectableElement *collaborationRole)
 {
     d_ptr->collaborationRoles->remove(const_cast<QConnectableElement *>(collaborationRole));
     // Adjust subsetted property(ies)
-    removeRole(collaborationRole);
+    QStructuredClassifier::d_ptr->roles->remove(const_cast<QConnectableElement *>(collaborationRole));
 }
 
 #include "moc_qcollaboration.cpp"

@@ -40,19 +40,12 @@
 ****************************************************************************/
 
 #include "qwritevariableaction.h"
+#include "qwritevariableaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QWriteVariableActionPrivate
-{
-public:
-    explicit QWriteVariableActionPrivate();
-    virtual ~QWriteVariableActionPrivate();
-
-    QInputPin *value;
-};
 
 QWriteVariableActionPrivate::QWriteVariableActionPrivate() :
     value(0)

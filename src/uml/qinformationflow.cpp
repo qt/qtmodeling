@@ -40,6 +40,9 @@
 ****************************************************************************/
 
 #include "qinformationflow.h"
+#include "qinformationflow_p.h"
+#include "qdirectedrelationship_p.h"
+#include "qdirectedrelationship_p.h"
 
 #include <QtUml/QConnector>
 #include <QtUml/QMessage>
@@ -50,41 +53,26 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QInformationFlowPrivate
-{
-public:
-    explicit QInformationFlowPrivate();
-    virtual ~QInformationFlowPrivate();
-
-    QSet<QClassifier *> *conveyed;
-    QSet<QNamedElement *> *informationSources;
-    QSet<QNamedElement *> *informationTargets;
-    QSet<QRelationship *> *realizations;
-    QSet<QActivityEdge *> *realizingActivityEdges;
-    QSet<QConnector *> *realizingConnectors;
-    QSet<QMessage *> *realizingMessages;
-};
-
 QInformationFlowPrivate::QInformationFlowPrivate() :
+    informationTargets(new QSet<QNamedElement *>),
+    realizingConnectors(new QSet<QConnector *>),
     conveyed(new QSet<QClassifier *>),
     informationSources(new QSet<QNamedElement *>),
-    informationTargets(new QSet<QNamedElement *>),
-    realizations(new QSet<QRelationship *>),
+    realizingMessages(new QSet<QMessage *>),
     realizingActivityEdges(new QSet<QActivityEdge *>),
-    realizingConnectors(new QSet<QConnector *>),
-    realizingMessages(new QSet<QMessage *>)
+    realizations(new QSet<QRelationship *>)
 {
 }
 
 QInformationFlowPrivate::~QInformationFlowPrivate()
 {
+    delete informationTargets;
+    delete realizingConnectors;
     delete conveyed;
     delete informationSources;
-    delete informationTargets;
-    delete realizations;
-    delete realizingActivityEdges;
-    delete realizingConnectors;
     delete realizingMessages;
+    delete realizingActivityEdges;
+    delete realizations;
 }
 
 /*!
@@ -103,6 +91,46 @@ QInformationFlow::QInformationFlow(QObject *parent)
 QInformationFlow::~QInformationFlow()
 {
     delete d_ptr;
+}
+
+/*!
+    Defines to which target the conveyed InformationItems are directed.
+ */
+const QSet<QNamedElement *> *QInformationFlow::informationTargets() const
+{
+    return d_ptr->informationTargets;
+}
+
+void QInformationFlow::addInformationTarget(const QNamedElement *informationTarget)
+{
+    d_ptr->informationTargets->insert(const_cast<QNamedElement *>(informationTarget));
+    // Adjust subsetted property(ies)
+    QDirectedRelationship::d_ptr->targets->insert(const_cast<QNamedElement *>(informationTarget));
+}
+
+void QInformationFlow::removeInformationTarget(const QNamedElement *informationTarget)
+{
+    d_ptr->informationTargets->remove(const_cast<QNamedElement *>(informationTarget));
+    // Adjust subsetted property(ies)
+    QDirectedRelationship::d_ptr->targets->remove(const_cast<QNamedElement *>(informationTarget));
+}
+
+/*!
+    Determines which Connectors will realize the specified flow.
+ */
+const QSet<QConnector *> *QInformationFlow::realizingConnectors() const
+{
+    return d_ptr->realizingConnectors;
+}
+
+void QInformationFlow::addRealizingConnector(const QConnector *realizingConnector)
+{
+    d_ptr->realizingConnectors->insert(const_cast<QConnector *>(realizingConnector));
+}
+
+void QInformationFlow::removeRealizingConnector(const QConnector *realizingConnector)
+{
+    d_ptr->realizingConnectors->remove(const_cast<QConnector *>(realizingConnector));
 }
 
 /*!
@@ -135,54 +163,32 @@ void QInformationFlow::addInformationSource(const QNamedElement *informationSour
 {
     d_ptr->informationSources->insert(const_cast<QNamedElement *>(informationSource));
     // Adjust subsetted property(ies)
-    addSource(informationSource);
+    QDirectedRelationship::d_ptr->sources->insert(const_cast<QNamedElement *>(informationSource));
 }
 
 void QInformationFlow::removeInformationSource(const QNamedElement *informationSource)
 {
     d_ptr->informationSources->remove(const_cast<QNamedElement *>(informationSource));
     // Adjust subsetted property(ies)
-    removeSource(informationSource);
+    QDirectedRelationship::d_ptr->sources->remove(const_cast<QNamedElement *>(informationSource));
 }
 
 /*!
-    Defines to which target the conveyed InformationItems are directed.
+    Determines which Messages will realize the specified flow.
  */
-const QSet<QNamedElement *> *QInformationFlow::informationTargets() const
+const QSet<QMessage *> *QInformationFlow::realizingMessages() const
 {
-    return d_ptr->informationTargets;
+    return d_ptr->realizingMessages;
 }
 
-void QInformationFlow::addInformationTarget(const QNamedElement *informationTarget)
+void QInformationFlow::addRealizingMessage(const QMessage *realizingMessage)
 {
-    d_ptr->informationTargets->insert(const_cast<QNamedElement *>(informationTarget));
-    // Adjust subsetted property(ies)
-    addTarget(informationTarget);
+    d_ptr->realizingMessages->insert(const_cast<QMessage *>(realizingMessage));
 }
 
-void QInformationFlow::removeInformationTarget(const QNamedElement *informationTarget)
+void QInformationFlow::removeRealizingMessage(const QMessage *realizingMessage)
 {
-    d_ptr->informationTargets->remove(const_cast<QNamedElement *>(informationTarget));
-    // Adjust subsetted property(ies)
-    removeTarget(informationTarget);
-}
-
-/*!
-    Determines which Relationship will realize the specified flow
- */
-const QSet<QRelationship *> *QInformationFlow::realizations() const
-{
-    return d_ptr->realizations;
-}
-
-void QInformationFlow::addRealization(const QRelationship *realization)
-{
-    d_ptr->realizations->insert(const_cast<QRelationship *>(realization));
-}
-
-void QInformationFlow::removeRealization(const QRelationship *realization)
-{
-    d_ptr->realizations->remove(const_cast<QRelationship *>(realization));
+    d_ptr->realizingMessages->remove(const_cast<QMessage *>(realizingMessage));
 }
 
 /*!
@@ -204,39 +210,21 @@ void QInformationFlow::removeRealizingActivityEdge(const QActivityEdge *realizin
 }
 
 /*!
-    Determines which Connectors will realize the specified flow.
+    Determines which Relationship will realize the specified flow
  */
-const QSet<QConnector *> *QInformationFlow::realizingConnectors() const
+const QSet<QRelationship *> *QInformationFlow::realizations() const
 {
-    return d_ptr->realizingConnectors;
+    return d_ptr->realizations;
 }
 
-void QInformationFlow::addRealizingConnector(const QConnector *realizingConnector)
+void QInformationFlow::addRealization(const QRelationship *realization)
 {
-    d_ptr->realizingConnectors->insert(const_cast<QConnector *>(realizingConnector));
+    d_ptr->realizations->insert(const_cast<QRelationship *>(realization));
 }
 
-void QInformationFlow::removeRealizingConnector(const QConnector *realizingConnector)
+void QInformationFlow::removeRealization(const QRelationship *realization)
 {
-    d_ptr->realizingConnectors->remove(const_cast<QConnector *>(realizingConnector));
-}
-
-/*!
-    Determines which Messages will realize the specified flow.
- */
-const QSet<QMessage *> *QInformationFlow::realizingMessages() const
-{
-    return d_ptr->realizingMessages;
-}
-
-void QInformationFlow::addRealizingMessage(const QMessage *realizingMessage)
-{
-    d_ptr->realizingMessages->insert(const_cast<QMessage *>(realizingMessage));
-}
-
-void QInformationFlow::removeRealizingMessage(const QMessage *realizingMessage)
-{
-    d_ptr->realizingMessages->remove(const_cast<QMessage *>(realizingMessage));
+    d_ptr->realizations->remove(const_cast<QRelationship *>(realization));
 }
 
 #include "moc_qinformationflow.cpp"

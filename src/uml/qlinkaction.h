@@ -69,12 +69,12 @@ public:
     virtual ~QLinkAction();
 
     // Association-ends
-    const QSet<QLinkEndData *> *endData() const;
-    void addEndData(const QLinkEndData *endData);
-    void removeEndData(const QLinkEndData *endData);
     const QSet<QInputPin *> *inputValues() const;
     void addInputValue(const QInputPin *inputValue);
     void removeInputValue(const QInputPin *inputValue);
+    const QSet<QLinkEndData *> *endData() const;
+    void addEndData(const QLinkEndData *endData);
+    void removeEndData(const QLinkEndData *endData);
 
     // Operations
     QAssociation *association() const;
@@ -82,7 +82,7 @@ public:
 protected:
     explicit QLinkAction();
 
-private:
+protected:
     QLinkActionPrivate *d_ptr;
 };
 

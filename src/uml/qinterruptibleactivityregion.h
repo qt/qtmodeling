@@ -65,23 +65,23 @@ class Q_UML_EXPORT QInterruptibleActivityRegion : public QObject, public QActivi
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QActivityGroup
-    Q_PROPERTY(const QSet<QActivityEdge *> * containedEdges READ containedEdges)
-    Q_PROPERTY(const QSet<QActivityNode *> * containedNodes READ containedNodes)
     Q_PROPERTY(QActivity * inActivity READ inActivity WRITE setInActivity)
+    Q_PROPERTY(const QSet<QActivityNode *> * containedNodes READ containedNodes)
     Q_PROPERTY(const QSet<QActivityGroup *> * subgroups READ subgroups)
+    Q_PROPERTY(const QSet<QActivityEdge *> * containedEdges READ containedEdges)
     Q_PROPERTY(QActivityGroup * superGroup READ superGroup)
 
     // From QInterruptibleActivityRegion
@@ -103,7 +103,7 @@ public:
     void addNode(const QActivityNode *node);
     void removeNode(const QActivityNode *node);
 
-private:
+protected:
     QInterruptibleActivityRegionPrivate *d_ptr;
 };
 

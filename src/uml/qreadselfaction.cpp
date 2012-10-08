@@ -40,19 +40,12 @@
 ****************************************************************************/
 
 #include "qreadselfaction.h"
+#include "qreadselfaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QReadSelfActionPrivate
-{
-public:
-    explicit QReadSelfActionPrivate();
-    virtual ~QReadSelfActionPrivate();
-
-    QOutputPin *result;
-};
 
 QReadSelfActionPrivate::QReadSelfActionPrivate() :
     result(0)

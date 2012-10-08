@@ -40,19 +40,11 @@
 ****************************************************************************/
 
 #include "qbroadcastsignalaction.h"
+#include "qbroadcastsignalaction_p.h"
 
 #include <QtUml/QSignal>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QBroadcastSignalActionPrivate
-{
-public:
-    explicit QBroadcastSignalActionPrivate();
-    virtual ~QBroadcastSignalActionPrivate();
-
-    QSignal *signal;
-};
 
 QBroadcastSignalActionPrivate::QBroadcastSignalActionPrivate() :
     signal(0)

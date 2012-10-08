@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qprimitivetype.h"
+#include "qprimitivetype_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QPrimitiveTypePrivate
-{
-public:
-    explicit QPrimitiveTypePrivate();
-    virtual ~QPrimitiveTypePrivate();
-
-};
 
 QPrimitiveTypePrivate::QPrimitiveTypePrivate()
 {

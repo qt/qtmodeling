@@ -40,26 +40,15 @@
 ****************************************************************************/
 
 #include "qobjectflow.h"
+#include "qobjectflow_p.h"
 
 #include <QtUml/QBehavior>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QObjectFlowPrivate
-{
-public:
-    explicit QObjectFlowPrivate();
-    virtual ~QObjectFlowPrivate();
-
-    bool isMulticast;
-    bool isMultireceive;
-    QBehavior *selection;
-    QBehavior *transformation;
-};
-
 QObjectFlowPrivate::QObjectFlowPrivate() :
-    isMulticast(false),
     isMultireceive(false),
+    isMulticast(false),
     selection(0),
     transformation(0)
 {
@@ -88,19 +77,6 @@ QObjectFlow::~QObjectFlow()
 }
 
 /*!
-    Tells whether the objects in the flow are passed by multicasting.
- */
-bool QObjectFlow::isMulticast() const
-{
-    return d_ptr->isMulticast;
-}
-
-void QObjectFlow::setMulticast(bool isMulticast)
-{
-    d_ptr->isMulticast = isMulticast;
-}
-
-/*!
     Tells whether the objects in the flow are gathered from respondents to multicasting.
  */
 bool QObjectFlow::isMultireceive() const
@@ -111,6 +87,19 @@ bool QObjectFlow::isMultireceive() const
 void QObjectFlow::setMultireceive(bool isMultireceive)
 {
     d_ptr->isMultireceive = isMultireceive;
+}
+
+/*!
+    Tells whether the objects in the flow are passed by multicasting.
+ */
+bool QObjectFlow::isMulticast() const
+{
+    return d_ptr->isMulticast;
+}
+
+void QObjectFlow::setMulticast(bool isMulticast)
+{
+    d_ptr->isMulticast = isMulticast;
 }
 
 /*!

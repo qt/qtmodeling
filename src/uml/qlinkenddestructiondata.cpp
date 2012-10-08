@@ -40,20 +40,11 @@
 ****************************************************************************/
 
 #include "qlinkenddestructiondata.h"
+#include "qlinkenddestructiondata_p.h"
 
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QLinkEndDestructionDataPrivate
-{
-public:
-    explicit QLinkEndDestructionDataPrivate();
-    virtual ~QLinkEndDestructionDataPrivate();
-
-    bool isDestroyDuplicates;
-    QInputPin *destroyAt;
-};
 
 QLinkEndDestructionDataPrivate::QLinkEndDestructionDataPrivate() :
     isDestroyDuplicates(false),

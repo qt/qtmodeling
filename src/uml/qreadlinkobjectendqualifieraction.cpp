@@ -40,6 +40,9 @@
 ****************************************************************************/
 
 #include "qreadlinkobjectendqualifieraction.h"
+#include "qreadlinkobjectendqualifieraction_p.h"
+#include "qaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 #include <QtUml/QProperty>
@@ -47,21 +50,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QReadLinkObjectEndQualifierActionPrivate
-{
-public:
-    explicit QReadLinkObjectEndQualifierActionPrivate();
-    virtual ~QReadLinkObjectEndQualifierActionPrivate();
-
-    QInputPin *object;
-    QProperty *qualifier;
-    QOutputPin *result;
-};
-
 QReadLinkObjectEndQualifierActionPrivate::QReadLinkObjectEndQualifierActionPrivate() :
+    result(0),
     object(0),
-    qualifier(0),
-    result(0)
+    qualifier(0)
 {
 }
 
@@ -88,6 +80,19 @@ QReadLinkObjectEndQualifierAction::~QReadLinkObjectEndQualifierAction()
 }
 
 /*!
+    Pin where the result value is placed.
+ */
+QOutputPin *QReadLinkObjectEndQualifierAction::result() const
+{
+    return d_ptr->result;
+}
+
+void QReadLinkObjectEndQualifierAction::setResult(const QOutputPin *result)
+{
+    d_ptr->result = const_cast<QOutputPin *>(result);
+}
+
+/*!
     Gives the input pin from which the link object is obtained.
  */
 QInputPin *QReadLinkObjectEndQualifierAction::object() const
@@ -111,19 +116,6 @@ QProperty *QReadLinkObjectEndQualifierAction::qualifier() const
 void QReadLinkObjectEndQualifierAction::setQualifier(const QProperty *qualifier)
 {
     d_ptr->qualifier = const_cast<QProperty *>(qualifier);
-}
-
-/*!
-    Pin where the result value is placed.
- */
-QOutputPin *QReadLinkObjectEndQualifierAction::result() const
-{
-    return d_ptr->result;
-}
-
-void QReadLinkObjectEndQualifierAction::setResult(const QOutputPin *result)
-{
-    d_ptr->result = const_cast<QOutputPin *>(result);
 }
 
 #include "moc_qreadlinkobjectendqualifieraction.cpp"

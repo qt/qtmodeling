@@ -66,14 +66,14 @@ class Q_UML_EXPORT QSlot : public QObject, public QElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QSlot
+    Q_PROPERTY(const QList<QValueSpecification *> * values READ values)
     Q_PROPERTY(QStructuralFeature * definingFeature READ definingFeature WRITE setDefiningFeature)
     Q_PROPERTY(QInstanceSpecification * owningInstance READ owningInstance WRITE setOwningInstance)
-    Q_PROPERTY(const QList<QValueSpecification *> * values READ values)
 
     Q_DISABLE_COPY(QSlot)
     Q_DECLARE_PRIVATE(QSlot)
@@ -83,15 +83,15 @@ public:
     virtual ~QSlot();
 
     // Association-ends
+    const QList<QValueSpecification *> *values() const;
+    void addValue(const QValueSpecification *value);
+    void removeValue(const QValueSpecification *value);
     QStructuralFeature *definingFeature() const;
     void setDefiningFeature(const QStructuralFeature *definingFeature);
     QInstanceSpecification *owningInstance() const;
     void setOwningInstance(const QInstanceSpecification *owningInstance);
-    const QList<QValueSpecification *> *values() const;
-    void addValue(const QValueSpecification *value);
-    void removeValue(const QValueSpecification *value);
 
-private:
+protected:
     QSlotPrivate *d_ptr;
 };
 

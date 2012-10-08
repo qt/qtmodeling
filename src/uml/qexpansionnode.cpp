@@ -40,24 +40,15 @@
 ****************************************************************************/
 
 #include "qexpansionnode.h"
+#include "qexpansionnode_p.h"
 
 #include <QtUml/QExpansionRegion>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QExpansionNodePrivate
-{
-public:
-    explicit QExpansionNodePrivate();
-    virtual ~QExpansionNodePrivate();
-
-    QExpansionRegion *regionAsInput;
-    QExpansionRegion *regionAsOutput;
-};
-
 QExpansionNodePrivate::QExpansionNodePrivate() :
-    regionAsInput(0),
-    regionAsOutput(0)
+    regionAsOutput(0),
+    regionAsInput(0)
 {
 }
 
@@ -84,19 +75,6 @@ QExpansionNode::~QExpansionNode()
 }
 
 /*!
-    The expansion region for which the node is an input.
- */
-QExpansionRegion *QExpansionNode::regionAsInput() const
-{
-    return d_ptr->regionAsInput;
-}
-
-void QExpansionNode::setRegionAsInput(const QExpansionRegion *regionAsInput)
-{
-    d_ptr->regionAsInput = const_cast<QExpansionRegion *>(regionAsInput);
-}
-
-/*!
     The expansion region for which the node is an output.
  */
 QExpansionRegion *QExpansionNode::regionAsOutput() const
@@ -107,6 +85,19 @@ QExpansionRegion *QExpansionNode::regionAsOutput() const
 void QExpansionNode::setRegionAsOutput(const QExpansionRegion *regionAsOutput)
 {
     d_ptr->regionAsOutput = const_cast<QExpansionRegion *>(regionAsOutput);
+}
+
+/*!
+    The expansion region for which the node is an input.
+ */
+QExpansionRegion *QExpansionNode::regionAsInput() const
+{
+    return d_ptr->regionAsInput;
+}
+
+void QExpansionNode::setRegionAsInput(const QExpansionRegion *regionAsInput)
+{
+    d_ptr->regionAsInput = const_cast<QExpansionRegion *>(regionAsInput);
 }
 
 #include "moc_qexpansionnode.cpp"

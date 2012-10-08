@@ -65,17 +65,17 @@ class Q_UML_EXPORT QRedefinableTemplateSignature : public QTemplateSignature, pu
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QRedefinableElement
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
@@ -83,9 +83,9 @@ class Q_UML_EXPORT QRedefinableTemplateSignature : public QTemplateSignature, pu
     Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
 
     // From QRedefinableTemplateSignature
+    Q_PROPERTY(const QSet<QTemplateParameter *> * inheritedParameters READ inheritedParameters)
     Q_PROPERTY(QClassifier * classifier READ classifier WRITE setClassifier)
     Q_PROPERTY(const QSet<QRedefinableTemplateSignature *> * extendedSignatures READ extendedSignatures)
-    Q_PROPERTY(const QSet<QTemplateParameter *> * inheritedParameters READ inheritedParameters)
 
     Q_DISABLE_COPY(QRedefinableTemplateSignature)
     Q_DECLARE_PRIVATE(QRedefinableTemplateSignature)
@@ -95,17 +95,17 @@ public:
     virtual ~QRedefinableTemplateSignature();
 
     // Association-ends
+    const QSet<QTemplateParameter *> *inheritedParameters() const;
     QClassifier *classifier() const;
     void setClassifier(const QClassifier *classifier);
     const QSet<QRedefinableTemplateSignature *> *extendedSignatures() const;
     void addExtendedSignature(const QRedefinableTemplateSignature *extendedSignature);
     void removeExtendedSignature(const QRedefinableTemplateSignature *extendedSignature);
-    const QSet<QTemplateParameter *> *inheritedParameters() const;
 
     // Operations
     bool isConsistentWith(const QRedefinableElement *redefinee) const;
 
-private:
+protected:
     QRedefinableTemplateSignaturePrivate *d_ptr;
 };
 

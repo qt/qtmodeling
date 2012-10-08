@@ -74,39 +74,39 @@ class Q_UML_EXPORT QTransition : public QObject, public QRedefinableElement, pub
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QRedefinableElement
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
     Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
 
     // From QNamespace
-    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
-    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
-    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
-    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
-    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
     Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
+    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
+    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
+    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
+    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
+    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
 
     // From QTransition
     Q_PROPERTY(QtUml::TransitionKind kind READ kind WRITE setKind)
-    Q_PROPERTY(QRegion * container READ container WRITE setContainer)
-    Q_PROPERTY(QBehavior * effect READ effect WRITE setEffect)
     Q_PROPERTY(QConstraint * guard READ guard WRITE setGuard)
-    Q_PROPERTY(QTransition * redefinedTransition READ redefinedTransition WRITE setRedefinedTransition)
-    Q_PROPERTY(QClassifier * redefinitionContext READ redefinitionContext)
-    Q_PROPERTY(QVertex * source READ source WRITE setSource)
     Q_PROPERTY(QVertex * target READ target WRITE setTarget)
+    Q_PROPERTY(QBehavior * effect READ effect WRITE setEffect)
+    Q_PROPERTY(QRegion * container READ container WRITE setContainer)
+    Q_PROPERTY(QClassifier * redefinitionContext READ redefinitionContext)
+    Q_PROPERTY(QTransition * redefinedTransition READ redefinedTransition WRITE setRedefinedTransition)
+    Q_PROPERTY(QVertex * source READ source WRITE setSource)
     Q_PROPERTY(const QSet<QTrigger *> * triggers READ triggers)
 
     Q_DISABLE_COPY(QTransition)
@@ -121,19 +121,19 @@ public:
     void setKind(QtUml::TransitionKind kind);
 
     // Association-ends
-    QRegion *container() const;
-    void setContainer(const QRegion *container);
-    QBehavior *effect() const;
-    void setEffect(const QBehavior *effect);
     QConstraint *guard() const;
     void setGuard(const QConstraint *guard);
-    QTransition *redefinedTransition() const;
-    void setRedefinedTransition(const QTransition *redefinedTransition);
-    QClassifier *redefinitionContext() const;
-    QVertex *source() const;
-    void setSource(const QVertex *source);
     QVertex *target() const;
     void setTarget(const QVertex *target);
+    QBehavior *effect() const;
+    void setEffect(const QBehavior *effect);
+    QRegion *container() const;
+    void setContainer(const QRegion *container);
+    QClassifier *redefinitionContext() const;
+    QTransition *redefinedTransition() const;
+    void setRedefinedTransition(const QTransition *redefinedTransition);
+    QVertex *source() const;
+    void setSource(const QVertex *source);
     const QSet<QTrigger *> *triggers() const;
     void addTrigger(const QTrigger *trigger);
     void removeTrigger(const QTrigger *trigger);
@@ -142,7 +142,7 @@ public:
     QStateMachine *containingStateMachine() const;
     bool isConsistentWith(const QRedefinableElement *redefinee) const;
 
-private:
+protected:
     QTransitionPrivate *d_ptr;
 };
 

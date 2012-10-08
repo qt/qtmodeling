@@ -40,20 +40,14 @@
 ****************************************************************************/
 
 #include "qdeploymenttarget.h"
+#include "qdeploymenttarget_p.h"
+#include "qelement_p.h"
+#include "qnamedelement_p.h"
 
 #include <QtUml/QPackageableElement>
 #include <QtUml/QDeployment>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QDeploymentTargetPrivate
-{
-public:
-    explicit QDeploymentTargetPrivate();
-    virtual ~QDeploymentTargetPrivate();
-
-    QSet<QDeployment *> *deployments;
-};
 
 QDeploymentTargetPrivate::QDeploymentTargetPrivate() :
     deployments(new QSet<QDeployment *>)
@@ -103,16 +97,16 @@ void QDeploymentTarget::addDeployment(const QDeployment *deployment)
 {
     d_ptr->deployments->insert(const_cast<QDeployment *>(deployment));
     // Adjust subsetted property(ies)
-    addOwnedElement(deployment);
-    addClientDependency(deployment);
+    QElement::d_ptr->ownedElements->insert(const_cast<QDeployment *>(deployment));
+    QNamedElement::d_ptr->clientDependencies->insert(const_cast<QDeployment *>(deployment));
 }
 
 void QDeploymentTarget::removeDeployment(const QDeployment *deployment)
 {
     d_ptr->deployments->remove(const_cast<QDeployment *>(deployment));
     // Adjust subsetted property(ies)
-    removeOwnedElement(deployment);
-    removeClientDependency(deployment);
+    QElement::d_ptr->ownedElements->remove(const_cast<QDeployment *>(deployment));
+    QNamedElement::d_ptr->clientDependencies->remove(const_cast<QDeployment *>(deployment));
 }
 
 QT_END_NAMESPACE_QTUML

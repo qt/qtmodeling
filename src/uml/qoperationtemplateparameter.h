@@ -73,7 +73,7 @@ public:
     QOperation *parameteredElement() const;
     void setParameteredElement(const QOperation *parameteredElement);
 
-private:
+protected:
     QOperationTemplateParameterPrivate *d_ptr;
 };
 

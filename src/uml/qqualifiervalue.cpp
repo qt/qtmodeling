@@ -40,25 +40,16 @@
 ****************************************************************************/
 
 #include "qqualifiervalue.h"
+#include "qqualifiervalue_p.h"
 
 #include <QtUml/QProperty>
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QQualifierValuePrivate
-{
-public:
-    explicit QQualifierValuePrivate();
-    virtual ~QQualifierValuePrivate();
-
-    QProperty *qualifier;
-    QInputPin *value;
-};
-
 QQualifierValuePrivate::QQualifierValuePrivate() :
-    qualifier(0),
-    value(0)
+    value(0),
+    qualifier(0)
 {
 }
 
@@ -85,19 +76,6 @@ QQualifierValue::~QQualifierValue()
 }
 
 /*!
-    Attribute representing the qualifier for which the value is to be specified.
- */
-QProperty *QQualifierValue::qualifier() const
-{
-    return d_ptr->qualifier;
-}
-
-void QQualifierValue::setQualifier(const QProperty *qualifier)
-{
-    d_ptr->qualifier = const_cast<QProperty *>(qualifier);
-}
-
-/*!
     Input pin from which the specified value for the qualifier is taken.
  */
 QInputPin *QQualifierValue::value() const
@@ -108,6 +86,19 @@ QInputPin *QQualifierValue::value() const
 void QQualifierValue::setValue(const QInputPin *value)
 {
     d_ptr->value = const_cast<QInputPin *>(value);
+}
+
+/*!
+    Attribute representing the qualifier for which the value is to be specified.
+ */
+QProperty *QQualifierValue::qualifier() const
+{
+    return d_ptr->qualifier;
+}
+
+void QQualifierValue::setQualifier(const QProperty *qualifier)
+{
+    d_ptr->qualifier = const_cast<QProperty *>(qualifier);
 }
 
 #include "moc_qqualifiervalue.cpp"
