@@ -40,20 +40,11 @@
 ****************************************************************************/
 
 #include "qdurationinterval.h"
+#include "qdurationinterval_p.h"
 
 #include <QtUml/QDuration>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QDurationIntervalPrivate
-{
-public:
-    explicit QDurationIntervalPrivate();
-    virtual ~QDurationIntervalPrivate();
-
-    QDuration *max;
-    QDuration *min;
-};
 
 QDurationIntervalPrivate::QDurationIntervalPrivate() :
     max(0),

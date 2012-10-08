@@ -40,6 +40,16 @@
 ****************************************************************************/
 
 #include "qinterface.h"
+#include "qinterface_p.h"
+#include "qnamespace_p.h"
+#include "qclassifier_p.h"
+#include "qclassifier_p.h"
+#include "qnamespace_p.h"
+#include "qclassifier_p.h"
+#include "qnamespace_p.h"
+#include "qnamespace_p.h"
+#include "qnamespace_p.h"
+#include "qclassifier_p.h"
 
 #include <QtUml/QProtocolStateMachine>
 #include <QtUml/QReception>
@@ -48,37 +58,23 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QInterfacePrivate
-{
-public:
-    explicit QInterfacePrivate();
-    virtual ~QInterfacePrivate();
-
-    QList<QClassifier *> *nestedClassifiers;
-    QList<QProperty *> *ownedAttributes;
-    QList<QOperation *> *ownedOperations;
-    QSet<QReception *> *ownedReceptions;
-    QProtocolStateMachine *protocol;
-    QSet<QInterface *> *redefinedInterfaces;
-};
-
 QInterfacePrivate::QInterfacePrivate() :
-    nestedClassifiers(new QList<QClassifier *>),
-    ownedAttributes(new QList<QProperty *>),
-    ownedOperations(new QList<QOperation *>),
-    ownedReceptions(new QSet<QReception *>),
     protocol(0),
-    redefinedInterfaces(new QSet<QInterface *>)
+    redefinedInterfaces(new QSet<QInterface *>),
+    ownedReceptions(new QSet<QReception *>),
+    ownedOperations(new QList<QOperation *>),
+    nestedClassifiers(new QList<QClassifier *>),
+    ownedAttributes(new QList<QProperty *>)
 {
 }
 
 QInterfacePrivate::~QInterfacePrivate()
 {
+    delete redefinedInterfaces;
+    delete ownedReceptions;
+    delete ownedOperations;
     delete nestedClassifiers;
     delete ownedAttributes;
-    delete ownedOperations;
-    delete ownedReceptions;
-    delete redefinedInterfaces;
 }
 
 /*!
@@ -97,100 +93,6 @@ QInterface::QInterface(QObject *parent)
 QInterface::~QInterface()
 {
     delete d_ptr;
-}
-
-/*!
-    References all the Classifiers that are defined (nested) within the Class.
- */
-const QList<QClassifier *> *QInterface::nestedClassifiers() const
-{
-    return d_ptr->nestedClassifiers;
-}
-
-void QInterface::addNestedClassifier(const QClassifier *nestedClassifier)
-{
-    d_ptr->nestedClassifiers->append(const_cast<QClassifier *>(nestedClassifier));
-    // Adjust subsetted property(ies)
-    addOwnedMember(nestedClassifier);
-}
-
-void QInterface::removeNestedClassifier(const QClassifier *nestedClassifier)
-{
-    d_ptr->nestedClassifiers->removeAll(const_cast<QClassifier *>(nestedClassifier));
-    // Adjust subsetted property(ies)
-    removeOwnedMember(nestedClassifier);
-}
-
-/*!
-    The attributes (i.e. the properties) owned by the class.
- */
-const QList<QProperty *> *QInterface::ownedAttributes() const
-{
-    return d_ptr->ownedAttributes;
-}
-
-void QInterface::addOwnedAttribute(const QProperty *ownedAttribute)
-{
-    d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
-    // Adjust subsetted property(ies)
-    addOwnedMember(ownedAttribute);
-    addAttribute(ownedAttribute);
-}
-
-void QInterface::removeOwnedAttribute(const QProperty *ownedAttribute)
-{
-    d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
-    // Adjust subsetted property(ies)
-    removeOwnedMember(ownedAttribute);
-    removeAttribute(ownedAttribute);
-}
-
-/*!
-    The operations owned by the class.
- */
-const QList<QOperation *> *QInterface::ownedOperations() const
-{
-    return d_ptr->ownedOperations;
-}
-
-void QInterface::addOwnedOperation(const QOperation *ownedOperation)
-{
-    d_ptr->ownedOperations->append(const_cast<QOperation *>(ownedOperation));
-    // Adjust subsetted property(ies)
-    addFeature(ownedOperation);
-    addOwnedMember(ownedOperation);
-}
-
-void QInterface::removeOwnedOperation(const QOperation *ownedOperation)
-{
-    d_ptr->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation));
-    // Adjust subsetted property(ies)
-    removeFeature(ownedOperation);
-    removeOwnedMember(ownedOperation);
-}
-
-/*!
-    Receptions that objects providing this interface are willing to accept.
- */
-const QSet<QReception *> *QInterface::ownedReceptions() const
-{
-    return d_ptr->ownedReceptions;
-}
-
-void QInterface::addOwnedReception(const QReception *ownedReception)
-{
-    d_ptr->ownedReceptions->insert(const_cast<QReception *>(ownedReception));
-    // Adjust subsetted property(ies)
-    addFeature(ownedReception);
-    addOwnedMember(ownedReception);
-}
-
-void QInterface::removeOwnedReception(const QReception *ownedReception)
-{
-    d_ptr->ownedReceptions->remove(const_cast<QReception *>(ownedReception));
-    // Adjust subsetted property(ies)
-    removeFeature(ownedReception);
-    removeOwnedMember(ownedReception);
 }
 
 /*!
@@ -218,14 +120,108 @@ void QInterface::addRedefinedInterface(const QInterface *redefinedInterface)
 {
     d_ptr->redefinedInterfaces->insert(const_cast<QInterface *>(redefinedInterface));
     // Adjust subsetted property(ies)
-    addRedefinedClassifier(redefinedInterface);
+    QClassifier::d_ptr->redefinedClassifiers->insert(const_cast<QInterface *>(redefinedInterface));
 }
 
 void QInterface::removeRedefinedInterface(const QInterface *redefinedInterface)
 {
     d_ptr->redefinedInterfaces->remove(const_cast<QInterface *>(redefinedInterface));
     // Adjust subsetted property(ies)
-    removeRedefinedClassifier(redefinedInterface);
+    QClassifier::d_ptr->redefinedClassifiers->remove(const_cast<QInterface *>(redefinedInterface));
+}
+
+/*!
+    Receptions that objects providing this interface are willing to accept.
+ */
+const QSet<QReception *> *QInterface::ownedReceptions() const
+{
+    return d_ptr->ownedReceptions;
+}
+
+void QInterface::addOwnedReception(const QReception *ownedReception)
+{
+    d_ptr->ownedReceptions->insert(const_cast<QReception *>(ownedReception));
+    // Adjust subsetted property(ies)
+    QClassifier::d_ptr->features->insert(const_cast<QReception *>(ownedReception));
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QReception *>(ownedReception));
+}
+
+void QInterface::removeOwnedReception(const QReception *ownedReception)
+{
+    d_ptr->ownedReceptions->remove(const_cast<QReception *>(ownedReception));
+    // Adjust subsetted property(ies)
+    QClassifier::d_ptr->features->remove(const_cast<QReception *>(ownedReception));
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QReception *>(ownedReception));
+}
+
+/*!
+    The operations owned by the class.
+ */
+const QList<QOperation *> *QInterface::ownedOperations() const
+{
+    return d_ptr->ownedOperations;
+}
+
+void QInterface::addOwnedOperation(const QOperation *ownedOperation)
+{
+    d_ptr->ownedOperations->append(const_cast<QOperation *>(ownedOperation));
+    // Adjust subsetted property(ies)
+    QClassifier::d_ptr->features->insert(const_cast<QOperation *>(ownedOperation));
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QOperation *>(ownedOperation));
+}
+
+void QInterface::removeOwnedOperation(const QOperation *ownedOperation)
+{
+    d_ptr->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation));
+    // Adjust subsetted property(ies)
+    QClassifier::d_ptr->features->remove(const_cast<QOperation *>(ownedOperation));
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QOperation *>(ownedOperation));
+}
+
+/*!
+    References all the Classifiers that are defined (nested) within the Class.
+ */
+const QList<QClassifier *> *QInterface::nestedClassifiers() const
+{
+    return d_ptr->nestedClassifiers;
+}
+
+void QInterface::addNestedClassifier(const QClassifier *nestedClassifier)
+{
+    d_ptr->nestedClassifiers->append(const_cast<QClassifier *>(nestedClassifier));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QClassifier *>(nestedClassifier));
+}
+
+void QInterface::removeNestedClassifier(const QClassifier *nestedClassifier)
+{
+    d_ptr->nestedClassifiers->removeAll(const_cast<QClassifier *>(nestedClassifier));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QClassifier *>(nestedClassifier));
+}
+
+/*!
+    The attributes (i.e. the properties) owned by the class.
+ */
+const QList<QProperty *> *QInterface::ownedAttributes() const
+{
+    return d_ptr->ownedAttributes;
+}
+
+void QInterface::addOwnedAttribute(const QProperty *ownedAttribute)
+{
+    d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QProperty *>(ownedAttribute));
+    QClassifier::d_ptr->attributes->insert(const_cast<QProperty *>(ownedAttribute));
+}
+
+void QInterface::removeOwnedAttribute(const QProperty *ownedAttribute)
+{
+    d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QProperty *>(ownedAttribute));
+    QClassifier::d_ptr->attributes->remove(const_cast<QProperty *>(ownedAttribute));
 }
 
 #include "moc_qinterface.cpp"

@@ -40,27 +40,20 @@
 ****************************************************************************/
 
 #include "qpackageimport.h"
+#include "qpackageimport_p.h"
+#include "qelement_p.h"
+#include "qdirectedrelationship_p.h"
+#include "qdirectedrelationship_p.h"
 
 #include <QtUml/QPackage>
 #include <QtUml/QNamespace>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QPackageImportPrivate
-{
-public:
-    explicit QPackageImportPrivate();
-    virtual ~QPackageImportPrivate();
-
-    QtUml::VisibilityKind visibility;
-    QPackage *importedPackage;
-    QNamespace *importingNamespace;
-};
-
 QPackageImportPrivate::QPackageImportPrivate() :
     visibility(QtUml::VisibilityPublic),
-    importedPackage(0),
-    importingNamespace(0)
+    importingNamespace(0),
+    importedPackage(0)
 {
 }
 
@@ -100,19 +93,6 @@ void QPackageImport::setVisibility(QtUml::VisibilityKind visibility)
 }
 
 /*!
-    Specifies the Package whose members are imported into a Namespace.
- */
-QPackage *QPackageImport::importedPackage() const
-{
-    return d_ptr->importedPackage;
-}
-
-void QPackageImport::setImportedPackage(const QPackage *importedPackage)
-{
-    d_ptr->importedPackage = const_cast<QPackage *>(importedPackage);
-}
-
-/*!
     Specifies the Namespace that imports the members from a Package.
  */
 QNamespace *QPackageImport::importingNamespace() const
@@ -123,6 +103,19 @@ QNamespace *QPackageImport::importingNamespace() const
 void QPackageImport::setImportingNamespace(const QNamespace *importingNamespace)
 {
     d_ptr->importingNamespace = const_cast<QNamespace *>(importingNamespace);
+}
+
+/*!
+    Specifies the Package whose members are imported into a Namespace.
+ */
+QPackage *QPackageImport::importedPackage() const
+{
+    return d_ptr->importedPackage;
+}
+
+void QPackageImport::setImportedPackage(const QPackage *importedPackage)
+{
+    d_ptr->importedPackage = const_cast<QPackage *>(importedPackage);
 }
 
 #include "moc_qpackageimport.cpp"

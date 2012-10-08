@@ -77,7 +77,7 @@ public:
     void addMessage(const QNamedElement *message);
     void removeMessage(const QNamedElement *message);
 
-private:
+protected:
     QConsiderIgnoreFragmentPrivate *d_ptr;
 };
 

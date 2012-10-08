@@ -73,7 +73,7 @@ public:
     QInterval *specification() const;
     void setSpecification(const QInterval *specification);
 
-private:
+protected:
     QIntervalConstraintPrivate *d_ptr;
 };
 

@@ -40,24 +40,16 @@
 ****************************************************************************/
 
 #include "qtimeexpression.h"
+#include "qtimeexpression_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QObservation>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QTimeExpressionPrivate
-{
-public:
-    explicit QTimeExpressionPrivate();
-    virtual ~QTimeExpressionPrivate();
-
-    QValueSpecification *expr;
-    QSet<QObservation *> *observations;
-};
-
 QTimeExpressionPrivate::QTimeExpressionPrivate() :
-    expr(0),
-    observations(new QSet<QObservation *>)
+    observations(new QSet<QObservation *>),
+    expr(0)
 {
 }
 
@@ -85,19 +77,6 @@ QTimeExpression::~QTimeExpression()
 }
 
 /*!
-    The value of the time expression.
- */
-QValueSpecification *QTimeExpression::expr() const
-{
-    return d_ptr->expr;
-}
-
-void QTimeExpression::setExpr(const QValueSpecification *expr)
-{
-    d_ptr->expr = const_cast<QValueSpecification *>(expr);
-}
-
-/*!
     Refers to the time and duration observations that are involved in expr.
  */
 const QSet<QObservation *> *QTimeExpression::observations() const
@@ -113,6 +92,19 @@ void QTimeExpression::addObservation(const QObservation *observation)
 void QTimeExpression::removeObservation(const QObservation *observation)
 {
     d_ptr->observations->remove(const_cast<QObservation *>(observation));
+}
+
+/*!
+    The value of the time expression.
+ */
+QValueSpecification *QTimeExpression::expr() const
+{
+    return d_ptr->expr;
+}
+
+void QTimeExpression::setExpr(const QValueSpecification *expr)
+{
+    d_ptr->expr = const_cast<QValueSpecification *>(expr);
 }
 
 #include "moc_qtimeexpression.cpp"

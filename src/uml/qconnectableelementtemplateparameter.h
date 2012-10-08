@@ -73,7 +73,7 @@ public:
     QConnectableElement *parameteredElement() const;
     void setParameteredElement(const QConnectableElement *parameteredElement);
 
-private:
+protected:
     QConnectableElementTemplateParameterPrivate *d_ptr;
 };
 

@@ -64,13 +64,13 @@ class Q_UML_EXPORT QPort : public QProperty
     Q_OBJECT
 
     // From QPort
-    Q_PROPERTY(bool isBehavior READ isBehavior WRITE setBehavior)
     Q_PROPERTY(bool isConjugated READ isConjugated WRITE setConjugated)
+    Q_PROPERTY(bool isBehavior READ isBehavior WRITE setBehavior)
     Q_PROPERTY(bool isService READ isService WRITE setService)
     Q_PROPERTY(QProtocolStateMachine * protocol READ protocol WRITE setProtocol)
+    Q_PROPERTY(const QSet<QInterface *> * required READ required)
     Q_PROPERTY(const QSet<QInterface *> * provided READ provided)
     Q_PROPERTY(const QSet<QPort *> * redefinedPorts READ redefinedPorts)
-    Q_PROPERTY(const QSet<QInterface *> * required READ required)
 
     Q_DISABLE_COPY(QPort)
     Q_DECLARE_PRIVATE(QPort)
@@ -80,23 +80,23 @@ public:
     virtual ~QPort();
 
     // Attributes
-    bool isBehavior() const;
-    void setBehavior(bool isBehavior);
     bool isConjugated() const;
     void setConjugated(bool isConjugated);
+    bool isBehavior() const;
+    void setBehavior(bool isBehavior);
     bool isService() const;
     void setService(bool isService);
 
     // Association-ends
     QProtocolStateMachine *protocol() const;
     void setProtocol(const QProtocolStateMachine *protocol);
+    const QSet<QInterface *> *required() const;
     const QSet<QInterface *> *provided() const;
     const QSet<QPort *> *redefinedPorts() const;
     void addRedefinedPort(const QPort *redefinedPort);
     void removeRedefinedPort(const QPort *redefinedPort);
-    const QSet<QInterface *> *required() const;
 
-private:
+protected:
     QPortPrivate *d_ptr;
 };
 

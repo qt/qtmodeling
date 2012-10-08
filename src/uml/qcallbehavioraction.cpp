@@ -40,19 +40,11 @@
 ****************************************************************************/
 
 #include "qcallbehavioraction.h"
+#include "qcallbehavioraction_p.h"
 
 #include <QtUml/QBehavior>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QCallBehaviorActionPrivate
-{
-public:
-    explicit QCallBehaviorActionPrivate();
-    virtual ~QCallBehaviorActionPrivate();
-
-    QBehavior *behavior;
-};
 
 QCallBehaviorActionPrivate::QCallBehaviorActionPrivate() :
     behavior(0)

@@ -69,9 +69,9 @@ public:
     virtual ~QVertex();
 
     // Association-ends
+    const QSet<QTransition *> *incomings() const;
     QRegion *container() const;
     void setContainer(const QRegion *container);
-    const QSet<QTransition *> *incomings() const;
     const QSet<QTransition *> *outgoings() const;
 
     // Operations
@@ -80,7 +80,7 @@ public:
 protected:
     explicit QVertex();
 
-private:
+protected:
     QVertexPrivate *d_ptr;
 };
 

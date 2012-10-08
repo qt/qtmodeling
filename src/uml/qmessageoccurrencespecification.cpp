@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qmessageoccurrencespecification.h"
+#include "qmessageoccurrencespecification_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QMessageOccurrenceSpecificationPrivate
-{
-public:
-    explicit QMessageOccurrenceSpecificationPrivate();
-    virtual ~QMessageOccurrenceSpecificationPrivate();
-
-};
 
 QMessageOccurrenceSpecificationPrivate::QMessageOccurrenceSpecificationPrivate()
 {

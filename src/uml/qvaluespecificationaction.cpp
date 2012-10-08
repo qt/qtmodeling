@@ -40,25 +40,18 @@
 ****************************************************************************/
 
 #include "qvaluespecificationaction.h"
+#include "qvaluespecificationaction_p.h"
+#include "qelement_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QOutputPin>
 #include <QtUml/QValueSpecification>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QValueSpecificationActionPrivate
-{
-public:
-    explicit QValueSpecificationActionPrivate();
-    virtual ~QValueSpecificationActionPrivate();
-
-    QOutputPin *result;
-    QValueSpecification *value;
-};
-
 QValueSpecificationActionPrivate::QValueSpecificationActionPrivate() :
-    result(0),
-    value(0)
+    value(0),
+    result(0)
 {
 }
 
@@ -85,19 +78,6 @@ QValueSpecificationAction::~QValueSpecificationAction()
 }
 
 /*!
-    Gives the output pin on which the result is put.
- */
-QOutputPin *QValueSpecificationAction::result() const
-{
-    return d_ptr->result;
-}
-
-void QValueSpecificationAction::setResult(const QOutputPin *result)
-{
-    d_ptr->result = const_cast<QOutputPin *>(result);
-}
-
-/*!
     Value specification to be evaluated.
  */
 QValueSpecification *QValueSpecificationAction::value() const
@@ -108,6 +88,19 @@ QValueSpecification *QValueSpecificationAction::value() const
 void QValueSpecificationAction::setValue(const QValueSpecification *value)
 {
     d_ptr->value = const_cast<QValueSpecification *>(value);
+}
+
+/*!
+    Gives the output pin on which the result is put.
+ */
+QOutputPin *QValueSpecificationAction::result() const
+{
+    return d_ptr->result;
+}
+
+void QValueSpecificationAction::setResult(const QOutputPin *result)
+{
+    d_ptr->result = const_cast<QOutputPin *>(result);
 }
 
 #include "moc_qvaluespecificationaction.cpp"

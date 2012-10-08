@@ -70,7 +70,7 @@ public:
 protected:
     explicit QTypedElement();
 
-private:
+protected:
     QTypedElementPrivate *d_ptr;
 };
 

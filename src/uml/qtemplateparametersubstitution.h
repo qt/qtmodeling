@@ -63,14 +63,14 @@ class Q_UML_EXPORT QTemplateParameterSubstitution : public QObject, public QElem
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QTemplateParameterSubstitution
-    Q_PROPERTY(QParameterableElement * actual READ actual WRITE setActual)
-    Q_PROPERTY(QTemplateParameter * formal READ formal WRITE setFormal)
     Q_PROPERTY(QParameterableElement * ownedActual READ ownedActual WRITE setOwnedActual)
+    Q_PROPERTY(QTemplateParameter * formal READ formal WRITE setFormal)
+    Q_PROPERTY(QParameterableElement * actual READ actual WRITE setActual)
     Q_PROPERTY(QTemplateBinding * templateBinding READ templateBinding WRITE setTemplateBinding)
 
     Q_DISABLE_COPY(QTemplateParameterSubstitution)
@@ -81,16 +81,16 @@ public:
     virtual ~QTemplateParameterSubstitution();
 
     // Association-ends
-    QParameterableElement *actual() const;
-    void setActual(const QParameterableElement *actual);
-    QTemplateParameter *formal() const;
-    void setFormal(const QTemplateParameter *formal);
     QParameterableElement *ownedActual() const;
     void setOwnedActual(const QParameterableElement *ownedActual);
+    QTemplateParameter *formal() const;
+    void setFormal(const QTemplateParameter *formal);
+    QParameterableElement *actual() const;
+    void setActual(const QParameterableElement *actual);
     QTemplateBinding *templateBinding() const;
     void setTemplateBinding(const QTemplateBinding *templateBinding);
 
-private:
+protected:
     QTemplateParameterSubstitutionPrivate *d_ptr;
 };
 

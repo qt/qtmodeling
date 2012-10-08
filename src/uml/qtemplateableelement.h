@@ -82,7 +82,7 @@ public:
 protected:
     explicit QTemplateableElement();
 
-private:
+protected:
     QTemplateableElementPrivate *d_ptr;
 };
 

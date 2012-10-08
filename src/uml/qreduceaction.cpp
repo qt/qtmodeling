@@ -40,6 +40,9 @@
 ****************************************************************************/
 
 #include "qreduceaction.h"
+#include "qreduceaction_p.h"
+#include "qaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 #include <QtUml/QBehavior>
@@ -47,23 +50,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QReduceActionPrivate
-{
-public:
-    explicit QReduceActionPrivate();
-    virtual ~QReduceActionPrivate();
-
-    bool isOrdered;
-    QInputPin *collection;
-    QBehavior *reducer;
-    QOutputPin *result;
-};
-
 QReduceActionPrivate::QReduceActionPrivate() :
     isOrdered(false),
+    result(0),
     collection(0),
-    reducer(0),
-    result(0)
+    reducer(0)
 {
 }
 
@@ -103,6 +94,19 @@ void QReduceAction::setOrdered(bool isOrdered)
 }
 
 /*!
+    Gives the output pin on which the result is put.
+ */
+QOutputPin *QReduceAction::result() const
+{
+    return d_ptr->result;
+}
+
+void QReduceAction::setResult(const QOutputPin *result)
+{
+    d_ptr->result = const_cast<QOutputPin *>(result);
+}
+
+/*!
     The collection to be reduced.
  */
 QInputPin *QReduceAction::collection() const
@@ -126,19 +130,6 @@ QBehavior *QReduceAction::reducer() const
 void QReduceAction::setReducer(const QBehavior *reducer)
 {
     d_ptr->reducer = const_cast<QBehavior *>(reducer);
-}
-
-/*!
-    Gives the output pin on which the result is put.
- */
-QOutputPin *QReduceAction::result() const
-{
-    return d_ptr->result;
-}
-
-void QReduceAction::setResult(const QOutputPin *result)
-{
-    d_ptr->result = const_cast<QOutputPin *>(result);
 }
 
 #include "moc_qreduceaction.cpp"

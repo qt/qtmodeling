@@ -76,7 +76,7 @@ public:
     QValueSpecification *minint() const;
     void setMinint(const QValueSpecification *minint);
 
-private:
+protected:
     QInteractionConstraintPrivate *d_ptr;
 };
 

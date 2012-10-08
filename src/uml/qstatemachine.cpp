@@ -40,6 +40,9 @@
 ****************************************************************************/
 
 #include "qstatemachine.h"
+#include "qstatemachine_p.h"
+#include "qnamespace_p.h"
+#include "qnamespace_p.h"
 
 #include <QtUml/QNamespace>
 #include <QtUml/QRedefinableElement>
@@ -49,32 +52,20 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QStateMachinePrivate
-{
-public:
-    explicit QStateMachinePrivate();
-    virtual ~QStateMachinePrivate();
-
-    QSet<QPseudostate *> *connectionPoints;
-    QSet<QStateMachine *> *extendedStateMachines;
-    QSet<QRegion *> *regions;
-    QSet<QState *> *submachineStates;
-};
-
 QStateMachinePrivate::QStateMachinePrivate() :
-    connectionPoints(new QSet<QPseudostate *>),
     extendedStateMachines(new QSet<QStateMachine *>),
-    regions(new QSet<QRegion *>),
-    submachineStates(new QSet<QState *>)
+    connectionPoints(new QSet<QPseudostate *>),
+    submachineStates(new QSet<QState *>),
+    regions(new QSet<QRegion *>)
 {
 }
 
 QStateMachinePrivate::~QStateMachinePrivate()
 {
-    delete connectionPoints;
     delete extendedStateMachines;
-    delete regions;
+    delete connectionPoints;
     delete submachineStates;
+    delete regions;
 }
 
 /*!
@@ -96,28 +87,6 @@ QStateMachine::~QStateMachine()
 }
 
 /*!
-    The connection points defined for this state machine. They represent the interface of the state machine when used as part of submachine state.
- */
-const QSet<QPseudostate *> *QStateMachine::connectionPoints() const
-{
-    return d_ptr->connectionPoints;
-}
-
-void QStateMachine::addConnectionPoint(const QPseudostate *connectionPoint)
-{
-    d_ptr->connectionPoints->insert(const_cast<QPseudostate *>(connectionPoint));
-    // Adjust subsetted property(ies)
-    addOwnedMember(connectionPoint);
-}
-
-void QStateMachine::removeConnectionPoint(const QPseudostate *connectionPoint)
-{
-    d_ptr->connectionPoints->remove(const_cast<QPseudostate *>(connectionPoint));
-    // Adjust subsetted property(ies)
-    removeOwnedMember(connectionPoint);
-}
-
-/*!
     The state machines of which this is an extension.
  */
 const QSet<QStateMachine *> *QStateMachine::extendedStateMachines() const
@@ -136,25 +105,25 @@ void QStateMachine::removeExtendedStateMachine(const QStateMachine *extendedStat
 }
 
 /*!
-    The regions owned directly by the state machine.
+    The connection points defined for this state machine. They represent the interface of the state machine when used as part of submachine state.
  */
-const QSet<QRegion *> *QStateMachine::regions() const
+const QSet<QPseudostate *> *QStateMachine::connectionPoints() const
 {
-    return d_ptr->regions;
+    return d_ptr->connectionPoints;
 }
 
-void QStateMachine::addRegion(const QRegion *region)
+void QStateMachine::addConnectionPoint(const QPseudostate *connectionPoint)
 {
-    d_ptr->regions->insert(const_cast<QRegion *>(region));
+    d_ptr->connectionPoints->insert(const_cast<QPseudostate *>(connectionPoint));
     // Adjust subsetted property(ies)
-    addOwnedMember(region);
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QPseudostate *>(connectionPoint));
 }
 
-void QStateMachine::removeRegion(const QRegion *region)
+void QStateMachine::removeConnectionPoint(const QPseudostate *connectionPoint)
 {
-    d_ptr->regions->remove(const_cast<QRegion *>(region));
+    d_ptr->connectionPoints->remove(const_cast<QPseudostate *>(connectionPoint));
     // Adjust subsetted property(ies)
-    removeOwnedMember(region);
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QPseudostate *>(connectionPoint));
 }
 
 /*!
@@ -173,6 +142,28 @@ void QStateMachine::addSubmachineState(const QState *submachineState)
 void QStateMachine::removeSubmachineState(const QState *submachineState)
 {
     d_ptr->submachineStates->remove(const_cast<QState *>(submachineState));
+}
+
+/*!
+    The regions owned directly by the state machine.
+ */
+const QSet<QRegion *> *QStateMachine::regions() const
+{
+    return d_ptr->regions;
+}
+
+void QStateMachine::addRegion(const QRegion *region)
+{
+    d_ptr->regions->insert(const_cast<QRegion *>(region));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QRegion *>(region));
+}
+
+void QStateMachine::removeRegion(const QRegion *region)
+{
+    d_ptr->regions->remove(const_cast<QRegion *>(region));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QRegion *>(region));
 }
 
 /*!

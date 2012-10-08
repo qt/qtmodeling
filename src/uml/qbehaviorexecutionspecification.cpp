@@ -40,19 +40,11 @@
 ****************************************************************************/
 
 #include "qbehaviorexecutionspecification.h"
+#include "qbehaviorexecutionspecification_p.h"
 
 #include <QtUml/QBehavior>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QBehaviorExecutionSpecificationPrivate
-{
-public:
-    explicit QBehaviorExecutionSpecificationPrivate();
-    virtual ~QBehaviorExecutionSpecificationPrivate();
-
-    QBehavior *behavior;
-};
 
 QBehaviorExecutionSpecificationPrivate::QBehaviorExecutionSpecificationPrivate() :
     behavior(0)

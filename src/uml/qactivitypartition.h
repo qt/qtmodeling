@@ -66,33 +66,33 @@ class Q_UML_EXPORT QActivityPartition : public QObject, public QActivityGroup
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QActivityGroup
-    Q_PROPERTY(const QSet<QActivityEdge *> * containedEdges READ containedEdges)
-    Q_PROPERTY(const QSet<QActivityNode *> * containedNodes READ containedNodes)
     Q_PROPERTY(QActivity * inActivity READ inActivity WRITE setInActivity)
+    Q_PROPERTY(const QSet<QActivityNode *> * containedNodes READ containedNodes)
     Q_PROPERTY(const QSet<QActivityGroup *> * subgroups READ subgroups)
+    Q_PROPERTY(const QSet<QActivityEdge *> * containedEdges READ containedEdges)
     Q_PROPERTY(QActivityGroup * superGroup READ superGroup)
 
     // From QActivityPartition
     Q_PROPERTY(bool isDimension READ isDimension WRITE setDimension)
     Q_PROPERTY(bool isExternal READ isExternal WRITE setExternal)
-    Q_PROPERTY(const QSet<QActivityEdge *> * edges READ edges)
-    Q_PROPERTY(const QSet<QActivityNode *> * nodes READ nodes)
     Q_PROPERTY(QElement * represents READ represents WRITE setRepresents)
     Q_PROPERTY(const QSet<QActivityPartition *> * subpartitions READ subpartitions)
     Q_PROPERTY(QActivityPartition * superPartition READ superPartition WRITE setSuperPartition)
+    Q_PROPERTY(const QSet<QActivityNode *> * nodes READ nodes)
+    Q_PROPERTY(const QSet<QActivityEdge *> * edges READ edges)
 
     Q_DISABLE_COPY(QActivityPartition)
     Q_DECLARE_PRIVATE(QActivityPartition)
@@ -108,12 +108,6 @@ public:
     void setExternal(bool isExternal);
 
     // Association-ends
-    const QSet<QActivityEdge *> *edges() const;
-    void addEdge(const QActivityEdge *edge);
-    void removeEdge(const QActivityEdge *edge);
-    const QSet<QActivityNode *> *nodes() const;
-    void addNode(const QActivityNode *node);
-    void removeNode(const QActivityNode *node);
     QElement *represents() const;
     void setRepresents(const QElement *represents);
     const QSet<QActivityPartition *> *subpartitions() const;
@@ -121,8 +115,14 @@ public:
     void removeSubpartition(const QActivityPartition *subpartition);
     QActivityPartition *superPartition() const;
     void setSuperPartition(const QActivityPartition *superPartition);
+    const QSet<QActivityNode *> *nodes() const;
+    void addNode(const QActivityNode *node);
+    void removeNode(const QActivityNode *node);
+    const QSet<QActivityEdge *> *edges() const;
+    void addEdge(const QActivityEdge *edge);
+    void removeEdge(const QActivityEdge *edge);
 
-private:
+protected:
     QActivityPartitionPrivate *d_ptr;
 };
 

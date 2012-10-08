@@ -65,7 +65,7 @@ public:
     explicit QDataStoreNode(QObject *parent = 0);
     virtual ~QDataStoreNode();
 
-private:
+protected:
     QDataStoreNodePrivate *d_ptr;
 };
 

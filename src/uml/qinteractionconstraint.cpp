@@ -40,20 +40,13 @@
 ****************************************************************************/
 
 #include "qinteractionconstraint.h"
+#include "qinteractionconstraint_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QValueSpecification>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QInteractionConstraintPrivate
-{
-public:
-    explicit QInteractionConstraintPrivate();
-    virtual ~QInteractionConstraintPrivate();
-
-    QValueSpecification *maxint;
-    QValueSpecification *minint;
-};
 
 QInteractionConstraintPrivate::QInteractionConstraintPrivate() :
     maxint(0),

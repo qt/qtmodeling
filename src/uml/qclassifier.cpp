@@ -40,6 +40,15 @@
 ****************************************************************************/
 
 #include "qclassifier.h"
+#include "qclassifier_p.h"
+#include "qnamespace_p.h"
+#include "qredefinableelement_p.h"
+#include "qelement_p.h"
+#include "qnamespace_p.h"
+#include "qelement_p.h"
+#include "qnamespace_p.h"
+#include "qelement_p.h"
+#include "qnamedelement_p.h"
 
 #include <QtUml/QClassifierTemplateParameter>
 #include <QtUml/QUseCase>
@@ -54,57 +63,35 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QClassifierPrivate
-{
-public:
-    explicit QClassifierPrivate();
-    virtual ~QClassifierPrivate();
-
-    bool isAbstract;
-    bool isFinalSpecialization;
-    QSet<QProperty *> *attributes;
-    QSet<QCollaborationUse *> *collaborationUses;
-    QSet<QFeature *> *features;
-    QSet<QGeneralization *> *generalizations;
-    QRedefinableTemplateSignature *ownedTemplateSignature;
-    QSet<QUseCase *> *ownedUseCases;
-    QSet<QGeneralizationSet *> *powertypeExtents;
-    QSet<QClassifier *> *redefinedClassifiers;
-    QCollaborationUse *representation;
-    QSet<QSubstitution *> *substitutions;
-    QClassifierTemplateParameter *templateParameter;
-    QSet<QUseCase *> *useCases;
-};
-
 QClassifierPrivate::QClassifierPrivate() :
     isAbstract(false),
     isFinalSpecialization(false),
-    attributes(new QSet<QProperty *>),
-    collaborationUses(new QSet<QCollaborationUse *>),
-    features(new QSet<QFeature *>),
-    generalizations(new QSet<QGeneralization *>),
-    ownedTemplateSignature(0),
     ownedUseCases(new QSet<QUseCase *>),
     powertypeExtents(new QSet<QGeneralizationSet *>),
-    redefinedClassifiers(new QSet<QClassifier *>),
-    representation(0),
-    substitutions(new QSet<QSubstitution *>),
+    useCases(new QSet<QUseCase *>),
     templateParameter(0),
-    useCases(new QSet<QUseCase *>)
+    redefinedClassifiers(new QSet<QClassifier *>),
+    ownedTemplateSignature(0),
+    collaborationUses(new QSet<QCollaborationUse *>),
+    attributes(new QSet<QProperty *>),
+    features(new QSet<QFeature *>),
+    representation(0),
+    generalizations(new QSet<QGeneralization *>),
+    substitutions(new QSet<QSubstitution *>)
 {
 }
 
 QClassifierPrivate::~QClassifierPrivate()
 {
-    delete attributes;
-    delete collaborationUses;
-    delete features;
-    delete generalizations;
     delete ownedUseCases;
     delete powertypeExtents;
-    delete redefinedClassifiers;
-    delete substitutions;
     delete useCases;
+    delete redefinedClassifiers;
+    delete collaborationUses;
+    delete attributes;
+    delete features;
+    delete generalizations;
+    delete substitutions;
 }
 
 /*!
@@ -152,133 +139,6 @@ void QClassifier::setFinalSpecialization(bool isFinalSpecialization)
 }
 
 /*!
-    Refers to all of the Properties that are direct (i.e. not inherited or imported) attributes of the classifier.
- */
-const QSet<QProperty *> *QClassifier::attributes() const
-{
-    return d_ptr->attributes;
-}
-
-void QClassifier::addAttribute(const QProperty *attribute)
-{
-    d_ptr->attributes->insert(const_cast<QProperty *>(attribute));
-    // Adjust subsetted property(ies)
-    addFeature(attribute);
-}
-
-void QClassifier::removeAttribute(const QProperty *attribute)
-{
-    d_ptr->attributes->remove(const_cast<QProperty *>(attribute));
-    // Adjust subsetted property(ies)
-    removeFeature(attribute);
-}
-
-/*!
-    References the collaboration uses owned by the classifier.
- */
-const QSet<QCollaborationUse *> *QClassifier::collaborationUses() const
-{
-    return d_ptr->collaborationUses;
-}
-
-void QClassifier::addCollaborationUse(const QCollaborationUse *collaborationUse)
-{
-    d_ptr->collaborationUses->insert(const_cast<QCollaborationUse *>(collaborationUse));
-    // Adjust subsetted property(ies)
-    addOwnedElement(collaborationUse);
-}
-
-void QClassifier::removeCollaborationUse(const QCollaborationUse *collaborationUse)
-{
-    d_ptr->collaborationUses->remove(const_cast<QCollaborationUse *>(collaborationUse));
-    // Adjust subsetted property(ies)
-    removeOwnedElement(collaborationUse);
-}
-
-/*!
-    Specifies each feature defined in the classifier.Note that there may be members of the Classifier that are of the type Feature but are not included in this association, e.g. inherited features.
- */
-const QSet<QFeature *> *QClassifier::features() const
-{
-    return d_ptr->features;
-}
-
-void QClassifier::addFeature(const QFeature *feature)
-{
-    d_ptr->features->insert(const_cast<QFeature *>(feature));
-    // Adjust subsetted property(ies)
-    addMember(feature);
-}
-
-void QClassifier::removeFeature(const QFeature *feature)
-{
-    d_ptr->features->remove(const_cast<QFeature *>(feature));
-    // Adjust subsetted property(ies)
-    removeMember(feature);
-}
-
-/*!
-    Specifies the general Classifiers for this Classifier.References the general classifier in the Generalization relationship.
- */
-const QSet<QClassifier *> *QClassifier::generals() const
-{
-    qWarning("QClassifier::generals: to be implemented (this is a derived associationend)");
-}
-
-void QClassifier::addGeneral(const QClassifier *general)
-{
-    qWarning("QClassifier::addGeneral: to be implemented (this is a derived associationend)");
-}
-
-void QClassifier::removeGeneral(const QClassifier *general)
-{
-    qWarning("QClassifier::removeGeneral: to be implemented (this is a derived associationend)");
-}
-
-/*!
-    Specifies the Generalization relationships for this Classifier. These Generalizations navigaten to more general classifiers in the generalization hierarchy.
- */
-const QSet<QGeneralization *> *QClassifier::generalizations() const
-{
-    return d_ptr->generalizations;
-}
-
-void QClassifier::addGeneralization(const QGeneralization *generalization)
-{
-    d_ptr->generalizations->insert(const_cast<QGeneralization *>(generalization));
-    // Adjust subsetted property(ies)
-    addOwnedElement(generalization);
-}
-
-void QClassifier::removeGeneralization(const QGeneralization *generalization)
-{
-    d_ptr->generalizations->remove(const_cast<QGeneralization *>(generalization));
-    // Adjust subsetted property(ies)
-    removeOwnedElement(generalization);
-}
-
-/*!
-    Specifies all elements inherited by this classifier from the general classifiers.
- */
-const QSet<QNamedElement *> *QClassifier::inheritedMembers() const
-{
-    qWarning("QClassifier::inheritedMembers: to be implemented (this is a derived associationend)");
-}
-
-/*!
-    The optional template signature specifying the formal template parameters.
- */
-QRedefinableTemplateSignature *QClassifier::ownedTemplateSignature() const
-{
-    return d_ptr->ownedTemplateSignature;
-}
-
-void QClassifier::setOwnedTemplateSignature(const QRedefinableTemplateSignature *ownedTemplateSignature)
-{
-    d_ptr->ownedTemplateSignature = const_cast<QRedefinableTemplateSignature *>(ownedTemplateSignature);
-}
-
-/*!
     References the use cases owned by this classifier.
  */
 const QSet<QUseCase *> *QClassifier::ownedUseCases() const
@@ -290,14 +150,14 @@ void QClassifier::addOwnedUseCase(const QUseCase *ownedUseCase)
 {
     d_ptr->ownedUseCases->insert(const_cast<QUseCase *>(ownedUseCase));
     // Adjust subsetted property(ies)
-    addOwnedMember(ownedUseCase);
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QUseCase *>(ownedUseCase));
 }
 
 void QClassifier::removeOwnedUseCase(const QUseCase *ownedUseCase)
 {
     d_ptr->ownedUseCases->remove(const_cast<QUseCase *>(ownedUseCase));
     // Adjust subsetted property(ies)
-    removeOwnedMember(ownedUseCase);
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QUseCase *>(ownedUseCase));
 }
 
 /*!
@@ -319,62 +179,21 @@ void QClassifier::removePowertypeExtent(const QGeneralizationSet *powertypeExten
 }
 
 /*!
-    References the Classifiers that are redefined by this Classifier.
+    The set of use cases for which this Classifier is the subject.
  */
-const QSet<QClassifier *> *QClassifier::redefinedClassifiers() const
+const QSet<QUseCase *> *QClassifier::useCases() const
 {
-    return d_ptr->redefinedClassifiers;
+    return d_ptr->useCases;
 }
 
-void QClassifier::addRedefinedClassifier(const QClassifier *redefinedClassifier)
+void QClassifier::addUseCase(const QUseCase *useCase)
 {
-    d_ptr->redefinedClassifiers->insert(const_cast<QClassifier *>(redefinedClassifier));
-    // Adjust subsetted property(ies)
-    addRedefinedElement(redefinedClassifier);
+    d_ptr->useCases->insert(const_cast<QUseCase *>(useCase));
 }
 
-void QClassifier::removeRedefinedClassifier(const QClassifier *redefinedClassifier)
+void QClassifier::removeUseCase(const QUseCase *useCase)
 {
-    d_ptr->redefinedClassifiers->remove(const_cast<QClassifier *>(redefinedClassifier));
-    // Adjust subsetted property(ies)
-    removeRedefinedElement(redefinedClassifier);
-}
-
-/*!
-    References a collaboration use which indicates the collaboration that represents this classifier.
- */
-QCollaborationUse *QClassifier::representation() const
-{
-    return d_ptr->representation;
-}
-
-void QClassifier::setRepresentation(const QCollaborationUse *representation)
-{
-    d_ptr->representation = const_cast<QCollaborationUse *>(representation);
-}
-
-/*!
-    References the substitutions that are owned by this Classifier.
- */
-const QSet<QSubstitution *> *QClassifier::substitutions() const
-{
-    return d_ptr->substitutions;
-}
-
-void QClassifier::addSubstitution(const QSubstitution *substitution)
-{
-    d_ptr->substitutions->insert(const_cast<QSubstitution *>(substitution));
-    // Adjust subsetted property(ies)
-    addOwnedElement(substitution);
-    addClientDependency(substitution);
-}
-
-void QClassifier::removeSubstitution(const QSubstitution *substitution)
-{
-    d_ptr->substitutions->remove(const_cast<QSubstitution *>(substitution));
-    // Adjust subsetted property(ies)
-    removeOwnedElement(substitution);
-    removeClientDependency(substitution);
+    d_ptr->useCases->remove(const_cast<QUseCase *>(useCase));
 }
 
 /*!
@@ -391,21 +210,161 @@ void QClassifier::setTemplateParameter(const QClassifierTemplateParameter *templ
 }
 
 /*!
-    The set of use cases for which this Classifier is the subject.
+    References the Classifiers that are redefined by this Classifier.
  */
-const QSet<QUseCase *> *QClassifier::useCases() const
+const QSet<QClassifier *> *QClassifier::redefinedClassifiers() const
 {
-    return d_ptr->useCases;
+    return d_ptr->redefinedClassifiers;
 }
 
-void QClassifier::addUseCase(const QUseCase *useCase)
+void QClassifier::addRedefinedClassifier(const QClassifier *redefinedClassifier)
 {
-    d_ptr->useCases->insert(const_cast<QUseCase *>(useCase));
+    d_ptr->redefinedClassifiers->insert(const_cast<QClassifier *>(redefinedClassifier));
+    // Adjust subsetted property(ies)
+    QRedefinableElement::d_ptr->redefinedElements->insert(const_cast<QClassifier *>(redefinedClassifier));
 }
 
-void QClassifier::removeUseCase(const QUseCase *useCase)
+void QClassifier::removeRedefinedClassifier(const QClassifier *redefinedClassifier)
 {
-    d_ptr->useCases->remove(const_cast<QUseCase *>(useCase));
+    d_ptr->redefinedClassifiers->remove(const_cast<QClassifier *>(redefinedClassifier));
+    // Adjust subsetted property(ies)
+    QRedefinableElement::d_ptr->redefinedElements->remove(const_cast<QClassifier *>(redefinedClassifier));
+}
+
+/*!
+    The optional template signature specifying the formal template parameters.
+ */
+QRedefinableTemplateSignature *QClassifier::ownedTemplateSignature() const
+{
+    return d_ptr->ownedTemplateSignature;
+}
+
+void QClassifier::setOwnedTemplateSignature(const QRedefinableTemplateSignature *ownedTemplateSignature)
+{
+    d_ptr->ownedTemplateSignature = const_cast<QRedefinableTemplateSignature *>(ownedTemplateSignature);
+}
+
+/*!
+    References the collaboration uses owned by the classifier.
+ */
+const QSet<QCollaborationUse *> *QClassifier::collaborationUses() const
+{
+    return d_ptr->collaborationUses;
+}
+
+void QClassifier::addCollaborationUse(const QCollaborationUse *collaborationUse)
+{
+    d_ptr->collaborationUses->insert(const_cast<QCollaborationUse *>(collaborationUse));
+    // Adjust subsetted property(ies)
+    QElement::d_ptr->ownedElements->insert(const_cast<QCollaborationUse *>(collaborationUse));
+}
+
+void QClassifier::removeCollaborationUse(const QCollaborationUse *collaborationUse)
+{
+    d_ptr->collaborationUses->remove(const_cast<QCollaborationUse *>(collaborationUse));
+    // Adjust subsetted property(ies)
+    QElement::d_ptr->ownedElements->remove(const_cast<QCollaborationUse *>(collaborationUse));
+}
+
+/*!
+    Refers to all of the Properties that are direct (i.e. not inherited or imported) attributes of the classifier.
+ */
+const QSet<QProperty *> *QClassifier::attributes() const
+{
+    return d_ptr->attributes;
+}
+
+/*!
+    Specifies each feature defined in the classifier.Note that there may be members of the Classifier that are of the type Feature but are not included in this association, e.g. inherited features.
+ */
+const QSet<QFeature *> *QClassifier::features() const
+{
+    return d_ptr->features;
+}
+
+/*!
+    Specifies the general Classifiers for this Classifier.References the general classifier in the Generalization relationship.
+ */
+const QSet<QClassifier *> *QClassifier::generals() const
+{
+    qWarning("QClassifier::generals: to be implemented (this is a derived associationend)");
+}
+
+void QClassifier::addGeneral(const QClassifier *general)
+{
+    qWarning("QClassifier::addGeneral: to be implemented (this is a derived associationend)");
+}
+
+void QClassifier::removeGeneral(const QClassifier *general)
+{
+    qWarning("QClassifier::removeGeneral: to be implemented (this is a derived associationend)");
+}
+
+/*!
+    References a collaboration use which indicates the collaboration that represents this classifier.
+ */
+QCollaborationUse *QClassifier::representation() const
+{
+    return d_ptr->representation;
+}
+
+void QClassifier::setRepresentation(const QCollaborationUse *representation)
+{
+    d_ptr->representation = const_cast<QCollaborationUse *>(representation);
+}
+
+/*!
+    Specifies the Generalization relationships for this Classifier. These Generalizations navigaten to more general classifiers in the generalization hierarchy.
+ */
+const QSet<QGeneralization *> *QClassifier::generalizations() const
+{
+    return d_ptr->generalizations;
+}
+
+void QClassifier::addGeneralization(const QGeneralization *generalization)
+{
+    d_ptr->generalizations->insert(const_cast<QGeneralization *>(generalization));
+    // Adjust subsetted property(ies)
+    QElement::d_ptr->ownedElements->insert(const_cast<QGeneralization *>(generalization));
+}
+
+void QClassifier::removeGeneralization(const QGeneralization *generalization)
+{
+    d_ptr->generalizations->remove(const_cast<QGeneralization *>(generalization));
+    // Adjust subsetted property(ies)
+    QElement::d_ptr->ownedElements->remove(const_cast<QGeneralization *>(generalization));
+}
+
+/*!
+    Specifies all elements inherited by this classifier from the general classifiers.
+ */
+const QSet<QNamedElement *> *QClassifier::inheritedMembers() const
+{
+    qWarning("QClassifier::inheritedMembers: to be implemented (this is a derived associationend)");
+}
+
+/*!
+    References the substitutions that are owned by this Classifier.
+ */
+const QSet<QSubstitution *> *QClassifier::substitutions() const
+{
+    return d_ptr->substitutions;
+}
+
+void QClassifier::addSubstitution(const QSubstitution *substitution)
+{
+    d_ptr->substitutions->insert(const_cast<QSubstitution *>(substitution));
+    // Adjust subsetted property(ies)
+    QElement::d_ptr->ownedElements->insert(const_cast<QSubstitution *>(substitution));
+    QNamedElement::d_ptr->clientDependencies->insert(const_cast<QSubstitution *>(substitution));
+}
+
+void QClassifier::removeSubstitution(const QSubstitution *substitution)
+{
+    d_ptr->substitutions->remove(const_cast<QSubstitution *>(substitution));
+    // Adjust subsetted property(ies)
+    QElement::d_ptr->ownedElements->remove(const_cast<QSubstitution *>(substitution));
+    QNamedElement::d_ptr->clientDependencies->remove(const_cast<QSubstitution *>(substitution));
 }
 
 /*!

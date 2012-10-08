@@ -73,7 +73,7 @@ public:
     QPackageableElement *utilizedElement() const;
     void setUtilizedElement(const QPackageableElement *utilizedElement);
 
-private:
+protected:
     QManifestationPrivate *d_ptr;
 };
 

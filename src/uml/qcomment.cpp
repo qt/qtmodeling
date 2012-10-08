@@ -40,19 +40,10 @@
 ****************************************************************************/
 
 #include "qcomment.h"
+#include "qcomment_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QCommentPrivate
-{
-public:
-    explicit QCommentPrivate();
-    virtual ~QCommentPrivate();
-
-    QString body;
-    QSet<QElement *> *annotatedElements;
-};
 
 QCommentPrivate::QCommentPrivate() :
     annotatedElements(new QSet<QElement *>)

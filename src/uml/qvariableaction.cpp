@@ -40,19 +40,11 @@
 ****************************************************************************/
 
 #include "qvariableaction.h"
+#include "qvariableaction_p.h"
 
 #include <QtUml/QVariable>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QVariableActionPrivate
-{
-public:
-    explicit QVariableActionPrivate();
-    virtual ~QVariableActionPrivate();
-
-    QVariable *variable;
-};
 
 QVariableActionPrivate::QVariableActionPrivate() :
     variable(0)

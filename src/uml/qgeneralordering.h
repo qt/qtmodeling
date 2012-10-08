@@ -61,21 +61,21 @@ class Q_UML_EXPORT QGeneralOrdering : public QObject, public QNamedElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QGeneralOrdering
-    Q_PROPERTY(QOccurrenceSpecification * after READ after WRITE setAfter)
     Q_PROPERTY(QOccurrenceSpecification * before READ before WRITE setBefore)
+    Q_PROPERTY(QOccurrenceSpecification * after READ after WRITE setAfter)
 
     Q_DISABLE_COPY(QGeneralOrdering)
     Q_DECLARE_PRIVATE(QGeneralOrdering)
@@ -85,12 +85,12 @@ public:
     virtual ~QGeneralOrdering();
 
     // Association-ends
-    QOccurrenceSpecification *after() const;
-    void setAfter(const QOccurrenceSpecification *after);
     QOccurrenceSpecification *before() const;
     void setBefore(const QOccurrenceSpecification *before);
+    QOccurrenceSpecification *after() const;
+    void setAfter(const QOccurrenceSpecification *after);
 
-private:
+protected:
     QGeneralOrderingPrivate *d_ptr;
 };
 

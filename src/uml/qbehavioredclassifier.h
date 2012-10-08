@@ -68,19 +68,19 @@ public:
     virtual ~QBehavioredClassifier();
 
     // Association-ends
-    QBehavior *classifierBehavior() const;
-    void setClassifierBehavior(const QBehavior *classifierBehavior);
-    const QSet<QInterfaceRealization *> *interfaceRealizations() const;
-    void addInterfaceRealization(const QInterfaceRealization *interfaceRealization);
-    void removeInterfaceRealization(const QInterfaceRealization *interfaceRealization);
     const QSet<QBehavior *> *ownedBehaviors() const;
     void addOwnedBehavior(const QBehavior *ownedBehavior);
     void removeOwnedBehavior(const QBehavior *ownedBehavior);
+    const QSet<QInterfaceRealization *> *interfaceRealizations() const;
+    void addInterfaceRealization(const QInterfaceRealization *interfaceRealization);
+    void removeInterfaceRealization(const QInterfaceRealization *interfaceRealization);
+    QBehavior *classifierBehavior() const;
+    void setClassifierBehavior(const QBehavior *classifierBehavior);
 
 protected:
     explicit QBehavioredClassifier();
 
-private:
+protected:
     QBehavioredClassifierPrivate *d_ptr;
 };
 

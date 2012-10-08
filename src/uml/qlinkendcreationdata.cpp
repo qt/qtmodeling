@@ -40,20 +40,11 @@
 ****************************************************************************/
 
 #include "qlinkendcreationdata.h"
+#include "qlinkendcreationdata_p.h"
 
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QLinkEndCreationDataPrivate
-{
-public:
-    explicit QLinkEndCreationDataPrivate();
-    virtual ~QLinkEndCreationDataPrivate();
-
-    bool isReplaceAll;
-    QInputPin *insertAt;
-};
 
 QLinkEndCreationDataPrivate::QLinkEndCreationDataPrivate() :
     isReplaceAll(false),

@@ -69,27 +69,17 @@ public:
     virtual ~QActivityGroup();
 
     // Association-ends
-    const QSet<QActivityEdge *> *containedEdges() const;
-    const QSet<QActivityNode *> *containedNodes() const;
     QActivity *inActivity() const;
     void setInActivity(const QActivity *inActivity);
+    const QSet<QActivityNode *> *containedNodes() const;
     const QSet<QActivityGroup *> *subgroups() const;
+    const QSet<QActivityEdge *> *containedEdges() const;
     QActivityGroup *superGroup() const;
-
-protected:
-    // Synchronization functions for read-only subsetted properties
-    void addContainedEdge(const QActivityEdge *containedEdge);
-    void removeContainedEdge(const QActivityEdge *containedEdge);
-    void addContainedNode(const QActivityNode *containedNode);
-    void removeContainedNode(const QActivityNode *containedNode);
-    void addSubgroup(const QActivityGroup *subgroup);
-    void removeSubgroup(const QActivityGroup *subgroup);
-    void setSuperGroup(const QActivityGroup *superGroup);
 
 protected:
     explicit QActivityGroup();
 
-private:
+protected:
     QActivityGroupPrivate *d_ptr;
 };
 

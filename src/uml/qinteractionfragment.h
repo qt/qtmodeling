@@ -70,21 +70,21 @@ public:
     virtual ~QInteractionFragment();
 
     // Association-ends
-    const QSet<QLifeline *> *covered() const;
-    void addCovered(const QLifeline *covered);
-    void removeCovered(const QLifeline *covered);
-    QInteraction *enclosingInteraction() const;
-    void setEnclosingInteraction(const QInteraction *enclosingInteraction);
-    QInteractionOperand *enclosingOperand() const;
-    void setEnclosingOperand(const QInteractionOperand *enclosingOperand);
     const QSet<QGeneralOrdering *> *generalOrderings() const;
     void addGeneralOrdering(const QGeneralOrdering *generalOrdering);
     void removeGeneralOrdering(const QGeneralOrdering *generalOrdering);
+    QInteraction *enclosingInteraction() const;
+    void setEnclosingInteraction(const QInteraction *enclosingInteraction);
+    const QSet<QLifeline *> *covered() const;
+    void addCovered(const QLifeline *covered);
+    void removeCovered(const QLifeline *covered);
+    QInteractionOperand *enclosingOperand() const;
+    void setEnclosingOperand(const QInteractionOperand *enclosingOperand);
 
 protected:
     explicit QInteractionFragment();
 
-private:
+protected:
     QInteractionFragmentPrivate *d_ptr;
 };
 

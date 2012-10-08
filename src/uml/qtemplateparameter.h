@@ -62,15 +62,15 @@ class Q_UML_EXPORT QTemplateParameter : public QObject, public QElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QTemplateParameter
     Q_PROPERTY(QParameterableElement * default_ READ default_ WRITE setDefault_)
-    Q_PROPERTY(QParameterableElement * ownedDefault READ ownedDefault WRITE setOwnedDefault)
-    Q_PROPERTY(QParameterableElement * ownedParameteredElement READ ownedParameteredElement WRITE setOwnedParameteredElement)
     Q_PROPERTY(QParameterableElement * parameteredElement READ parameteredElement WRITE setParameteredElement)
+    Q_PROPERTY(QParameterableElement * ownedParameteredElement READ ownedParameteredElement WRITE setOwnedParameteredElement)
+    Q_PROPERTY(QParameterableElement * ownedDefault READ ownedDefault WRITE setOwnedDefault)
     Q_PROPERTY(QTemplateSignature * signature READ signature WRITE setSignature)
 
     Q_DISABLE_COPY(QTemplateParameter)
@@ -83,16 +83,16 @@ public:
     // Association-ends
     QParameterableElement *default_() const;
     void setDefault_(const QParameterableElement *default_);
-    QParameterableElement *ownedDefault() const;
-    void setOwnedDefault(const QParameterableElement *ownedDefault);
-    QParameterableElement *ownedParameteredElement() const;
-    void setOwnedParameteredElement(const QParameterableElement *ownedParameteredElement);
     QParameterableElement *parameteredElement() const;
     void setParameteredElement(const QParameterableElement *parameteredElement);
+    QParameterableElement *ownedParameteredElement() const;
+    void setOwnedParameteredElement(const QParameterableElement *ownedParameteredElement);
+    QParameterableElement *ownedDefault() const;
+    void setOwnedDefault(const QParameterableElement *ownedDefault);
     QTemplateSignature *signature() const;
     void setSignature(const QTemplateSignature *signature);
 
-private:
+protected:
     QTemplateParameterPrivate *d_ptr;
 };
 

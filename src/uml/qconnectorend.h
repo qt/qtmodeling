@@ -62,22 +62,22 @@ class Q_UML_EXPORT QConnectorEnd : public QObject, public QMultiplicityElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QMultiplicityElement
-    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
-    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
-    Q_PROPERTY(qint32 lower READ lower WRITE setLower)
     Q_PROPERTY(qint32 upper READ upper WRITE setUpper)
-    Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
+    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
+    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
+    Q_PROPERTY(qint32 lower READ lower WRITE setLower)
     Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
+    Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
 
     // From QConnectorEnd
-    Q_PROPERTY(QProperty * definingEnd READ definingEnd)
-    Q_PROPERTY(QProperty * partWithPort READ partWithPort WRITE setPartWithPort)
     Q_PROPERTY(QConnectableElement * role READ role WRITE setRole)
+    Q_PROPERTY(QProperty * partWithPort READ partWithPort WRITE setPartWithPort)
+    Q_PROPERTY(QProperty * definingEnd READ definingEnd)
 
     Q_DISABLE_COPY(QConnectorEnd)
     Q_DECLARE_PRIVATE(QConnectorEnd)
@@ -87,13 +87,13 @@ public:
     virtual ~QConnectorEnd();
 
     // Association-ends
-    QProperty *definingEnd() const;
-    QProperty *partWithPort() const;
-    void setPartWithPort(const QProperty *partWithPort);
     QConnectableElement *role() const;
     void setRole(const QConnectableElement *role);
+    QProperty *partWithPort() const;
+    void setPartWithPort(const QProperty *partWithPort);
+    QProperty *definingEnd() const;
 
-private:
+protected:
     QConnectorEndPrivate *d_ptr;
 };
 

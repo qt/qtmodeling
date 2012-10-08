@@ -65,7 +65,7 @@ public:
     explicit QFunctionBehavior(QObject *parent = 0);
     virtual ~QFunctionBehavior();
 
-private:
+protected:
     QFunctionBehaviorPrivate *d_ptr;
 };
 

@@ -40,25 +40,17 @@
 ****************************************************************************/
 
 #include "qclearassociationaction.h"
+#include "qclearassociationaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QAssociation>
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QClearAssociationActionPrivate
-{
-public:
-    explicit QClearAssociationActionPrivate();
-    virtual ~QClearAssociationActionPrivate();
-
-    QAssociation *association;
-    QInputPin *object;
-};
-
 QClearAssociationActionPrivate::QClearAssociationActionPrivate() :
-    association(0),
-    object(0)
+    object(0),
+    association(0)
 {
 }
 
@@ -85,19 +77,6 @@ QClearAssociationAction::~QClearAssociationAction()
 }
 
 /*!
-    Association to be cleared.
- */
-QAssociation *QClearAssociationAction::association() const
-{
-    return d_ptr->association;
-}
-
-void QClearAssociationAction::setAssociation(const QAssociation *association)
-{
-    d_ptr->association = const_cast<QAssociation *>(association);
-}
-
-/*!
     Gives the input pin from which is obtained the object whose participation in the association is to be cleared.
  */
 QInputPin *QClearAssociationAction::object() const
@@ -108,6 +87,19 @@ QInputPin *QClearAssociationAction::object() const
 void QClearAssociationAction::setObject(const QInputPin *object)
 {
     d_ptr->object = const_cast<QInputPin *>(object);
+}
+
+/*!
+    Association to be cleared.
+ */
+QAssociation *QClearAssociationAction::association() const
+{
+    return d_ptr->association;
+}
+
+void QClearAssociationAction::setAssociation(const QAssociation *association)
+{
+    d_ptr->association = const_cast<QAssociation *>(association);
 }
 
 #include "moc_qclearassociationaction.cpp"

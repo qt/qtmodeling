@@ -40,20 +40,11 @@
 ****************************************************************************/
 
 #include "qfeature.h"
+#include "qfeature_p.h"
 
 #include <QtUml/QClassifier>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QFeaturePrivate
-{
-public:
-    explicit QFeaturePrivate();
-    virtual ~QFeaturePrivate();
-
-    bool isStatic;
-    QSet<QClassifier *> *featuringClassifiers;
-};
 
 QFeaturePrivate::QFeaturePrivate() :
     isStatic(false),
@@ -103,18 +94,6 @@ void QFeature::setStatic(bool isStatic)
 const QSet<QClassifier *> *QFeature::featuringClassifiers() const
 {
     return d_ptr->featuringClassifiers;
-}
-
-void QFeature::addFeaturingClassifier(const QClassifier *featuringClassifier)
-{
-    d_ptr->featuringClassifiers->insert(const_cast<QClassifier *>(featuringClassifier));
-    // Adjust subsetted property(ies)
-}
-
-void QFeature::removeFeaturingClassifier(const QClassifier *featuringClassifier)
-{
-    d_ptr->featuringClassifiers->remove(const_cast<QClassifier *>(featuringClassifier));
-    // Adjust subsetted property(ies)
 }
 
 QT_END_NAMESPACE_QTUML

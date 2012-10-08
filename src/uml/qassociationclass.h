@@ -66,7 +66,7 @@ public:
     explicit QAssociationClass(QObject *parent = 0);
     virtual ~QAssociationClass();
 
-private:
+protected:
     QAssociationClassPrivate *d_ptr;
 };
 

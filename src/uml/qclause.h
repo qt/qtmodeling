@@ -66,16 +66,16 @@ class Q_UML_EXPORT QClause : public QObject, public QElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QClause
-    Q_PROPERTY(const QSet<QExecutableNode *> * bodies READ bodies)
-    Q_PROPERTY(const QList<QOutputPin *> * bodyOutputs READ bodyOutputs)
+    Q_PROPERTY(const QSet<QClause *> * successorClauses READ successorClauses)
     Q_PROPERTY(QOutputPin * decider READ decider WRITE setDecider)
     Q_PROPERTY(const QSet<QClause *> * predecessorClauses READ predecessorClauses)
-    Q_PROPERTY(const QSet<QClause *> * successorClauses READ successorClauses)
+    Q_PROPERTY(const QList<QOutputPin *> * bodyOutputs READ bodyOutputs)
+    Q_PROPERTY(const QSet<QExecutableNode *> * bodies READ bodies)
     Q_PROPERTY(const QSet<QExecutableNode *> * tests READ tests)
 
     Q_DISABLE_COPY(QClause)
@@ -86,25 +86,25 @@ public:
     virtual ~QClause();
 
     // Association-ends
-    const QSet<QExecutableNode *> *bodies() const;
-    void addBody(const QExecutableNode *body);
-    void removeBody(const QExecutableNode *body);
-    const QList<QOutputPin *> *bodyOutputs() const;
-    void addBodyOutput(const QOutputPin *bodyOutput);
-    void removeBodyOutput(const QOutputPin *bodyOutput);
+    const QSet<QClause *> *successorClauses() const;
+    void addSuccessorClause(const QClause *successorClause);
+    void removeSuccessorClause(const QClause *successorClause);
     QOutputPin *decider() const;
     void setDecider(const QOutputPin *decider);
     const QSet<QClause *> *predecessorClauses() const;
     void addPredecessorClause(const QClause *predecessorClause);
     void removePredecessorClause(const QClause *predecessorClause);
-    const QSet<QClause *> *successorClauses() const;
-    void addSuccessorClause(const QClause *successorClause);
-    void removeSuccessorClause(const QClause *successorClause);
+    const QList<QOutputPin *> *bodyOutputs() const;
+    void addBodyOutput(const QOutputPin *bodyOutput);
+    void removeBodyOutput(const QOutputPin *bodyOutput);
+    const QSet<QExecutableNode *> *bodies() const;
+    void addBody(const QExecutableNode *body);
+    void removeBody(const QExecutableNode *body);
     const QSet<QExecutableNode *> *tests() const;
     void addTest(const QExecutableNode *test);
     void removeTest(const QExecutableNode *test);
 
-private:
+protected:
     QClausePrivate *d_ptr;
 };
 

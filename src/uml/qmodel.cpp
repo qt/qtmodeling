@@ -40,18 +40,10 @@
 ****************************************************************************/
 
 #include "qmodel.h"
+#include "qmodel_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QModelPrivate
-{
-public:
-    explicit QModelPrivate();
-    virtual ~QModelPrivate();
-
-    QString viewpoint;
-};
 
 QModelPrivate::QModelPrivate()
 {

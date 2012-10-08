@@ -71,27 +71,27 @@ class Q_UML_EXPORT QMessage : public QObject, public QNamedElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QMessage
-    Q_PROPERTY(QtUml::MessageKind messageKind READ messageKind)
     Q_PROPERTY(QtUml::MessageSort messageSort READ messageSort WRITE setMessageSort)
-    Q_PROPERTY(const QList<QValueSpecification *> * arguments READ arguments)
-    Q_PROPERTY(QConnector * connector READ connector WRITE setConnector)
-    Q_PROPERTY(QInteraction * interaction READ interaction WRITE setInteraction)
-    Q_PROPERTY(QMessageEnd * receiveEvent READ receiveEvent WRITE setReceiveEvent)
-    Q_PROPERTY(QMessageEnd * sendEvent READ sendEvent WRITE setSendEvent)
+    Q_PROPERTY(QtUml::MessageKind messageKind READ messageKind)
     Q_PROPERTY(QNamedElement * signature READ signature WRITE setSignature)
+    Q_PROPERTY(const QList<QValueSpecification *> * arguments READ arguments)
+    Q_PROPERTY(QMessageEnd * receiveEvent READ receiveEvent WRITE setReceiveEvent)
+    Q_PROPERTY(QInteraction * interaction READ interaction WRITE setInteraction)
+    Q_PROPERTY(QMessageEnd * sendEvent READ sendEvent WRITE setSendEvent)
+    Q_PROPERTY(QConnector * connector READ connector WRITE setConnector)
 
     Q_DISABLE_COPY(QMessage)
     Q_DECLARE_PRIVATE(QMessage)
@@ -101,26 +101,26 @@ public:
     virtual ~QMessage();
 
     // Attributes
-    QtUml::MessageKind messageKind() const;
     QtUml::MessageSort messageSort() const;
     void setMessageSort(QtUml::MessageSort messageSort);
+    QtUml::MessageKind messageKind() const;
 
     // Association-ends
+    QNamedElement *signature() const;
+    void setSignature(const QNamedElement *signature);
     const QList<QValueSpecification *> *arguments() const;
     void addArgument(const QValueSpecification *argument);
     void removeArgument(const QValueSpecification *argument);
-    QConnector *connector() const;
-    void setConnector(const QConnector *connector);
-    QInteraction *interaction() const;
-    void setInteraction(const QInteraction *interaction);
     QMessageEnd *receiveEvent() const;
     void setReceiveEvent(const QMessageEnd *receiveEvent);
+    QInteraction *interaction() const;
+    void setInteraction(const QInteraction *interaction);
     QMessageEnd *sendEvent() const;
     void setSendEvent(const QMessageEnd *sendEvent);
-    QNamedElement *signature() const;
-    void setSignature(const QNamedElement *signature);
+    QConnector *connector() const;
+    void setConnector(const QConnector *connector);
 
-private:
+protected:
     QMessagePrivate *d_ptr;
 };
 

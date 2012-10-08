@@ -65,7 +65,7 @@ public:
     explicit QFinalState(QObject *parent = 0);
     virtual ~QFinalState();
 
-private:
+protected:
     QFinalStatePrivate *d_ptr;
 };
 

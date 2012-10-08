@@ -77,7 +77,7 @@ public:
     void addOwnedLiteral(const QEnumerationLiteral *ownedLiteral);
     void removeOwnedLiteral(const QEnumerationLiteral *ownedLiteral);
 
-private:
+protected:
     QEnumerationPrivate *d_ptr;
 };
 

@@ -80,7 +80,7 @@ public:
 protected:
     explicit QValueSpecification();
 
-private:
+protected:
     QValueSpecificationPrivate *d_ptr;
 };
 

@@ -40,34 +40,25 @@
 ****************************************************************************/
 
 #include "qconnectionpointreference.h"
+#include "qconnectionpointreference_p.h"
+#include "qnamedelement_p.h"
 
 #include <QtUml/QPseudostate>
 #include <QtUml/QState>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QConnectionPointReferencePrivate
-{
-public:
-    explicit QConnectionPointReferencePrivate();
-    virtual ~QConnectionPointReferencePrivate();
-
-    QSet<QPseudostate *> *entries;
-    QSet<QPseudostate *> *exits;
-    QState *state;
-};
-
 QConnectionPointReferencePrivate::QConnectionPointReferencePrivate() :
-    entries(new QSet<QPseudostate *>),
     exits(new QSet<QPseudostate *>),
-    state(0)
+    state(0),
+    entries(new QSet<QPseudostate *>)
 {
 }
 
 QConnectionPointReferencePrivate::~QConnectionPointReferencePrivate()
 {
-    delete entries;
     delete exits;
+    delete entries;
 }
 
 /*!
@@ -86,24 +77,6 @@ QConnectionPointReference::QConnectionPointReference(QObject *parent)
 QConnectionPointReference::~QConnectionPointReference()
 {
     delete d_ptr;
-}
-
-/*!
-    The entryPoint kind pseudo states corresponding to this connection point.
- */
-const QSet<QPseudostate *> *QConnectionPointReference::entries() const
-{
-    return d_ptr->entries;
-}
-
-void QConnectionPointReference::addEntry(const QPseudostate *entry)
-{
-    d_ptr->entries->insert(const_cast<QPseudostate *>(entry));
-}
-
-void QConnectionPointReference::removeEntry(const QPseudostate *entry)
-{
-    d_ptr->entries->remove(const_cast<QPseudostate *>(entry));
 }
 
 /*!
@@ -135,6 +108,24 @@ QState *QConnectionPointReference::state() const
 void QConnectionPointReference::setState(const QState *state)
 {
     d_ptr->state = const_cast<QState *>(state);
+}
+
+/*!
+    The entryPoint kind pseudo states corresponding to this connection point.
+ */
+const QSet<QPseudostate *> *QConnectionPointReference::entries() const
+{
+    return d_ptr->entries;
+}
+
+void QConnectionPointReference::addEntry(const QPseudostate *entry)
+{
+    d_ptr->entries->insert(const_cast<QPseudostate *>(entry));
+}
+
+void QConnectionPointReference::removeEntry(const QPseudostate *entry)
+{
+    d_ptr->entries->remove(const_cast<QPseudostate *>(entry));
 }
 
 #include "moc_qconnectionpointreference.cpp"

@@ -40,6 +40,12 @@
 ****************************************************************************/
 
 #include "qinteraction.h"
+#include "qinteraction_p.h"
+#include "qelement_p.h"
+#include "qnamespace_p.h"
+#include "qnamespace_p.h"
+#include "qnamespace_p.h"
+#include "qnamespace_p.h"
 
 #include <QtUml/QMessage>
 #include <QtUml/QLifeline>
@@ -48,35 +54,22 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QInteractionPrivate
-{
-public:
-    explicit QInteractionPrivate();
-    virtual ~QInteractionPrivate();
-
-    QSet<QAction *> *actions;
-    QSet<QGate *> *formalGates;
-    QList<QInteractionFragment *> *fragments;
-    QSet<QLifeline *> *lifelines;
-    QSet<QMessage *> *messages;
-};
-
 QInteractionPrivate::QInteractionPrivate() :
     actions(new QSet<QAction *>),
+    messages(new QSet<QMessage *>),
     formalGates(new QSet<QGate *>),
     fragments(new QList<QInteractionFragment *>),
-    lifelines(new QSet<QLifeline *>),
-    messages(new QSet<QMessage *>)
+    lifelines(new QSet<QLifeline *>)
 {
 }
 
 QInteractionPrivate::~QInteractionPrivate()
 {
     delete actions;
+    delete messages;
     delete formalGates;
     delete fragments;
     delete lifelines;
-    delete messages;
 }
 
 /*!
@@ -109,80 +102,14 @@ void QInteraction::addAction(const QAction *action)
 {
     d_ptr->actions->insert(const_cast<QAction *>(action));
     // Adjust subsetted property(ies)
-    addOwnedElement(action);
+    QElement::d_ptr->ownedElements->insert(const_cast<QAction *>(action));
 }
 
 void QInteraction::removeAction(const QAction *action)
 {
     d_ptr->actions->remove(const_cast<QAction *>(action));
     // Adjust subsetted property(ies)
-    removeOwnedElement(action);
-}
-
-/*!
-    Specifies the gates that form the message interface between this Interaction and any InteractionUses which reference it.
- */
-const QSet<QGate *> *QInteraction::formalGates() const
-{
-    return d_ptr->formalGates;
-}
-
-void QInteraction::addFormalGate(const QGate *formalGate)
-{
-    d_ptr->formalGates->insert(const_cast<QGate *>(formalGate));
-    // Adjust subsetted property(ies)
-    addOwnedMember(formalGate);
-}
-
-void QInteraction::removeFormalGate(const QGate *formalGate)
-{
-    d_ptr->formalGates->remove(const_cast<QGate *>(formalGate));
-    // Adjust subsetted property(ies)
-    removeOwnedMember(formalGate);
-}
-
-/*!
-    The ordered set of fragments in the Interaction.
- */
-const QList<QInteractionFragment *> *QInteraction::fragments() const
-{
-    return d_ptr->fragments;
-}
-
-void QInteraction::addFragment(const QInteractionFragment *fragment)
-{
-    d_ptr->fragments->append(const_cast<QInteractionFragment *>(fragment));
-    // Adjust subsetted property(ies)
-    addOwnedMember(fragment);
-}
-
-void QInteraction::removeFragment(const QInteractionFragment *fragment)
-{
-    d_ptr->fragments->removeAll(const_cast<QInteractionFragment *>(fragment));
-    // Adjust subsetted property(ies)
-    removeOwnedMember(fragment);
-}
-
-/*!
-    Specifies the participants in this Interaction.
- */
-const QSet<QLifeline *> *QInteraction::lifelines() const
-{
-    return d_ptr->lifelines;
-}
-
-void QInteraction::addLifeline(const QLifeline *lifeline)
-{
-    d_ptr->lifelines->insert(const_cast<QLifeline *>(lifeline));
-    // Adjust subsetted property(ies)
-    addOwnedMember(lifeline);
-}
-
-void QInteraction::removeLifeline(const QLifeline *lifeline)
-{
-    d_ptr->lifelines->remove(const_cast<QLifeline *>(lifeline));
-    // Adjust subsetted property(ies)
-    removeOwnedMember(lifeline);
+    QElement::d_ptr->ownedElements->remove(const_cast<QAction *>(action));
 }
 
 /*!
@@ -197,14 +124,80 @@ void QInteraction::addMessage(const QMessage *message)
 {
     d_ptr->messages->insert(const_cast<QMessage *>(message));
     // Adjust subsetted property(ies)
-    addOwnedMember(message);
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QMessage *>(message));
 }
 
 void QInteraction::removeMessage(const QMessage *message)
 {
     d_ptr->messages->remove(const_cast<QMessage *>(message));
     // Adjust subsetted property(ies)
-    removeOwnedMember(message);
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QMessage *>(message));
+}
+
+/*!
+    Specifies the gates that form the message interface between this Interaction and any InteractionUses which reference it.
+ */
+const QSet<QGate *> *QInteraction::formalGates() const
+{
+    return d_ptr->formalGates;
+}
+
+void QInteraction::addFormalGate(const QGate *formalGate)
+{
+    d_ptr->formalGates->insert(const_cast<QGate *>(formalGate));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QGate *>(formalGate));
+}
+
+void QInteraction::removeFormalGate(const QGate *formalGate)
+{
+    d_ptr->formalGates->remove(const_cast<QGate *>(formalGate));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QGate *>(formalGate));
+}
+
+/*!
+    The ordered set of fragments in the Interaction.
+ */
+const QList<QInteractionFragment *> *QInteraction::fragments() const
+{
+    return d_ptr->fragments;
+}
+
+void QInteraction::addFragment(const QInteractionFragment *fragment)
+{
+    d_ptr->fragments->append(const_cast<QInteractionFragment *>(fragment));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QInteractionFragment *>(fragment));
+}
+
+void QInteraction::removeFragment(const QInteractionFragment *fragment)
+{
+    d_ptr->fragments->removeAll(const_cast<QInteractionFragment *>(fragment));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QInteractionFragment *>(fragment));
+}
+
+/*!
+    Specifies the participants in this Interaction.
+ */
+const QSet<QLifeline *> *QInteraction::lifelines() const
+{
+    return d_ptr->lifelines;
+}
+
+void QInteraction::addLifeline(const QLifeline *lifeline)
+{
+    d_ptr->lifelines->insert(const_cast<QLifeline *>(lifeline));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QLifeline *>(lifeline));
+}
+
+void QInteraction::removeLifeline(const QLifeline *lifeline)
+{
+    d_ptr->lifelines->remove(const_cast<QLifeline *>(lifeline));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QLifeline *>(lifeline));
 }
 
 #include "moc_qinteraction.cpp"

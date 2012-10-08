@@ -78,7 +78,7 @@ public:
     QInputPin *insertAt() const;
     void setInsertAt(const QInputPin *insertAt);
 
-private:
+protected:
     QLinkEndCreationDataPrivate *d_ptr;
 };
 

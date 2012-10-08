@@ -40,21 +40,13 @@
 ****************************************************************************/
 
 #include "qinterruptibleactivityregion.h"
+#include "qinterruptibleactivityregion_p.h"
+#include "qactivitygroup_p.h"
 
 #include <QtUml/QActivityEdge>
 #include <QtUml/QActivityNode>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QInterruptibleActivityRegionPrivate
-{
-public:
-    explicit QInterruptibleActivityRegionPrivate();
-    virtual ~QInterruptibleActivityRegionPrivate();
-
-    QSet<QActivityEdge *> *interruptingEdges;
-    QSet<QActivityNode *> *nodes;
-};
 
 QInterruptibleActivityRegionPrivate::QInterruptibleActivityRegionPrivate() :
     interruptingEdges(new QSet<QActivityEdge *>),
@@ -116,14 +108,14 @@ void QInterruptibleActivityRegion::addNode(const QActivityNode *node)
 {
     d_ptr->nodes->insert(const_cast<QActivityNode *>(node));
     // Adjust subsetted property(ies)
-    addContainedNode(node);
+    QActivityGroup::d_ptr->containedNodes->insert(const_cast<QActivityNode *>(node));
 }
 
 void QInterruptibleActivityRegion::removeNode(const QActivityNode *node)
 {
     d_ptr->nodes->remove(const_cast<QActivityNode *>(node));
     // Adjust subsetted property(ies)
-    removeContainedNode(node);
+    QActivityGroup::d_ptr->containedNodes->remove(const_cast<QActivityNode *>(node));
 }
 
 #include "moc_qinterruptibleactivityregion.cpp"

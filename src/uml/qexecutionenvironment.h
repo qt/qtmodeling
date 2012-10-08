@@ -65,7 +65,7 @@ public:
     explicit QExecutionEnvironment(QObject *parent = 0);
     virtual ~QExecutionEnvironment();
 
-private:
+protected:
     QExecutionEnvironmentPrivate *d_ptr;
 };
 

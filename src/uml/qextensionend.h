@@ -81,7 +81,7 @@ public:
     // Operations
     qint32 lowerBound() const;
 
-private:
+protected:
     QExtensionEndPrivate *d_ptr;
 };
 

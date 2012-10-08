@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qgate.h"
+#include "qgate_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QGatePrivate
-{
-public:
-    explicit QGatePrivate();
-    virtual ~QGatePrivate();
-
-};
 
 QGatePrivate::QGatePrivate()
 {

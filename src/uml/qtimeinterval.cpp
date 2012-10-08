@@ -40,20 +40,11 @@
 ****************************************************************************/
 
 #include "qtimeinterval.h"
+#include "qtimeinterval_p.h"
 
 #include <QtUml/QTimeExpression>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QTimeIntervalPrivate
-{
-public:
-    explicit QTimeIntervalPrivate();
-    virtual ~QTimeIntervalPrivate();
-
-    QTimeExpression *max;
-    QTimeExpression *min;
-};
 
 QTimeIntervalPrivate::QTimeIntervalPrivate() :
     max(0),

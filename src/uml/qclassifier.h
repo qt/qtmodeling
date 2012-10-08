@@ -85,39 +85,39 @@ public:
     void setFinalSpecialization(bool isFinalSpecialization);
 
     // Association-ends
-    const QSet<QProperty *> *attributes() const;
-    const QSet<QCollaborationUse *> *collaborationUses() const;
-    void addCollaborationUse(const QCollaborationUse *collaborationUse);
-    void removeCollaborationUse(const QCollaborationUse *collaborationUse);
-    const QSet<QFeature *> *features() const;
-    const QSet<QClassifier *> *generals() const;
-    void addGeneral(const QClassifier *general);
-    void removeGeneral(const QClassifier *general);
-    const QSet<QGeneralization *> *generalizations() const;
-    void addGeneralization(const QGeneralization *generalization);
-    void removeGeneralization(const QGeneralization *generalization);
-    const QSet<QNamedElement *> *inheritedMembers() const;
-    QRedefinableTemplateSignature *ownedTemplateSignature() const;
-    void setOwnedTemplateSignature(const QRedefinableTemplateSignature *ownedTemplateSignature);
     const QSet<QUseCase *> *ownedUseCases() const;
     void addOwnedUseCase(const QUseCase *ownedUseCase);
     void removeOwnedUseCase(const QUseCase *ownedUseCase);
     const QSet<QGeneralizationSet *> *powertypeExtents() const;
     void addPowertypeExtent(const QGeneralizationSet *powertypeExtent);
     void removePowertypeExtent(const QGeneralizationSet *powertypeExtent);
-    const QSet<QClassifier *> *redefinedClassifiers() const;
-    void addRedefinedClassifier(const QClassifier *redefinedClassifier);
-    void removeRedefinedClassifier(const QClassifier *redefinedClassifier);
-    QCollaborationUse *representation() const;
-    void setRepresentation(const QCollaborationUse *representation);
-    const QSet<QSubstitution *> *substitutions() const;
-    void addSubstitution(const QSubstitution *substitution);
-    void removeSubstitution(const QSubstitution *substitution);
-    QClassifierTemplateParameter *templateParameter() const;
-    void setTemplateParameter(const QClassifierTemplateParameter *templateParameter);
     const QSet<QUseCase *> *useCases() const;
     void addUseCase(const QUseCase *useCase);
     void removeUseCase(const QUseCase *useCase);
+    QClassifierTemplateParameter *templateParameter() const;
+    void setTemplateParameter(const QClassifierTemplateParameter *templateParameter);
+    const QSet<QClassifier *> *redefinedClassifiers() const;
+    void addRedefinedClassifier(const QClassifier *redefinedClassifier);
+    void removeRedefinedClassifier(const QClassifier *redefinedClassifier);
+    QRedefinableTemplateSignature *ownedTemplateSignature() const;
+    void setOwnedTemplateSignature(const QRedefinableTemplateSignature *ownedTemplateSignature);
+    const QSet<QCollaborationUse *> *collaborationUses() const;
+    void addCollaborationUse(const QCollaborationUse *collaborationUse);
+    void removeCollaborationUse(const QCollaborationUse *collaborationUse);
+    const QSet<QProperty *> *attributes() const;
+    const QSet<QFeature *> *features() const;
+    const QSet<QClassifier *> *generals() const;
+    void addGeneral(const QClassifier *general);
+    void removeGeneral(const QClassifier *general);
+    QCollaborationUse *representation() const;
+    void setRepresentation(const QCollaborationUse *representation);
+    const QSet<QGeneralization *> *generalizations() const;
+    void addGeneralization(const QGeneralization *generalization);
+    void removeGeneralization(const QGeneralization *generalization);
+    const QSet<QNamedElement *> *inheritedMembers() const;
+    const QSet<QSubstitution *> *substitutions() const;
+    void addSubstitution(const QSubstitution *substitution);
+    void removeSubstitution(const QSubstitution *substitution);
 
     // Operations
     const QSet<QFeature *> *allFeatures() const;
@@ -131,16 +131,9 @@ public:
     const QSet<QClassifier *> *parents() const;
 
 protected:
-    // Synchronization functions for read-only subsetted properties
-    void addAttribute(const QProperty *attribute);
-    void removeAttribute(const QProperty *attribute);
-    void addFeature(const QFeature *feature);
-    void removeFeature(const QFeature *feature);
-
-protected:
     explicit QClassifier();
 
-private:
+protected:
     QClassifierPrivate *d_ptr;
 };
 

@@ -65,17 +65,17 @@ class Q_UML_EXPORT QReplyAction : public QObject, public QAction
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QRedefinableElement
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
@@ -83,14 +83,14 @@ class Q_UML_EXPORT QReplyAction : public QObject, public QAction
     Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
 
     // From QActivityNode
+    Q_PROPERTY(const QSet<QActivityNode *> * redefinedNodes READ redefinedNodes)
+    Q_PROPERTY(const QSet<QActivityEdge *> * incomings READ incomings)
     Q_PROPERTY(QActivity * activity READ activity WRITE setActivity)
     Q_PROPERTY(const QSet<QActivityGroup *> * inGroup READ inGroup)
-    Q_PROPERTY(const QSet<QInterruptibleActivityRegion *> * inInterruptibleRegion READ inInterruptibleRegion)
-    Q_PROPERTY(const QSet<QActivityPartition *> * inPartition READ inPartition)
     Q_PROPERTY(QStructuredActivityNode * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
-    Q_PROPERTY(const QSet<QActivityEdge *> * incomings READ incomings)
+    Q_PROPERTY(const QSet<QActivityPartition *> * inPartition READ inPartition)
+    Q_PROPERTY(const QSet<QInterruptibleActivityRegion *> * inInterruptibleRegion READ inInterruptibleRegion)
     Q_PROPERTY(const QSet<QActivityEdge *> * outgoings READ outgoings)
-    Q_PROPERTY(const QSet<QActivityNode *> * redefinedNodes READ redefinedNodes)
 
     // From QExecutableNode
     Q_PROPERTY(const QSet<QExceptionHandler *> * handlers READ handlers)
@@ -98,15 +98,15 @@ class Q_UML_EXPORT QReplyAction : public QObject, public QAction
     // From QAction
     Q_PROPERTY(bool isLocallyReentrant READ isLocallyReentrant WRITE setLocallyReentrant)
     Q_PROPERTY(QClassifier * context READ context)
-    Q_PROPERTY(const QList<QInputPin *> * inputs READ inputs)
     Q_PROPERTY(const QSet<QConstraint *> * localPostconditions READ localPostconditions)
     Q_PROPERTY(const QSet<QConstraint *> * localPreconditions READ localPreconditions)
+    Q_PROPERTY(const QList<QInputPin *> * inputs READ inputs)
     Q_PROPERTY(const QList<QOutputPin *> * outputs READ outputs)
 
     // From QReplyAction
     Q_PROPERTY(QTrigger * replyToCall READ replyToCall WRITE setReplyToCall)
-    Q_PROPERTY(const QSet<QInputPin *> * replyValues READ replyValues)
     Q_PROPERTY(QInputPin * returnInformation READ returnInformation WRITE setReturnInformation)
+    Q_PROPERTY(const QSet<QInputPin *> * replyValues READ replyValues)
 
     Q_DISABLE_COPY(QReplyAction)
     Q_DECLARE_PRIVATE(QReplyAction)
@@ -118,13 +118,13 @@ public:
     // Association-ends
     QTrigger *replyToCall() const;
     void setReplyToCall(const QTrigger *replyToCall);
+    QInputPin *returnInformation() const;
+    void setReturnInformation(const QInputPin *returnInformation);
     const QSet<QInputPin *> *replyValues() const;
     void addReplyValue(const QInputPin *replyValue);
     void removeReplyValue(const QInputPin *replyValue);
-    QInputPin *returnInformation() const;
-    void setReturnInformation(const QInputPin *returnInformation);
 
-private:
+protected:
     QReplyActionPrivate *d_ptr;
 };
 

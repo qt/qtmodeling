@@ -77,7 +77,7 @@ public:
 protected:
     explicit QInvocationAction();
 
-private:
+protected:
     QInvocationActionPrivate *d_ptr;
 };
 

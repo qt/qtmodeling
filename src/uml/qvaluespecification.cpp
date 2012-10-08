@@ -40,18 +40,11 @@
 ****************************************************************************/
 
 #include "qvaluespecification.h"
+#include "qvaluespecification_p.h"
 
 #include <QtUml/QParameterableElement>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QValueSpecificationPrivate
-{
-public:
-    explicit QValueSpecificationPrivate();
-    virtual ~QValueSpecificationPrivate();
-
-};
 
 QValueSpecificationPrivate::QValueSpecificationPrivate()
 {

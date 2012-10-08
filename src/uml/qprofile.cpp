@@ -40,32 +40,25 @@
 ****************************************************************************/
 
 #include "qprofile.h"
+#include "qprofile_p.h"
+#include "qnamespace_p.h"
+#include "qnamespace_p.h"
 
 #include <QtUml/QElementImport>
 #include <QtUml/QPackageImport>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QProfilePrivate
-{
-public:
-    explicit QProfilePrivate();
-    virtual ~QProfilePrivate();
-
-    QSet<QElementImport *> *metaclassReferences;
-    QSet<QPackageImport *> *metamodelReferences;
-};
-
 QProfilePrivate::QProfilePrivate() :
-    metaclassReferences(new QSet<QElementImport *>),
-    metamodelReferences(new QSet<QPackageImport *>)
+    metamodelReferences(new QSet<QPackageImport *>),
+    metaclassReferences(new QSet<QElementImport *>)
 {
 }
 
 QProfilePrivate::~QProfilePrivate()
 {
-    delete metaclassReferences;
     delete metamodelReferences;
+    delete metaclassReferences;
 }
 
 /*!
@@ -87,28 +80,6 @@ QProfile::~QProfile()
 }
 
 /*!
-    References a metaclass that may be extended.
- */
-const QSet<QElementImport *> *QProfile::metaclassReferences() const
-{
-    return d_ptr->metaclassReferences;
-}
-
-void QProfile::addMetaclassReference(const QElementImport *metaclassReference)
-{
-    d_ptr->metaclassReferences->insert(const_cast<QElementImport *>(metaclassReference));
-    // Adjust subsetted property(ies)
-    addElementImport(metaclassReference);
-}
-
-void QProfile::removeMetaclassReference(const QElementImport *metaclassReference)
-{
-    d_ptr->metaclassReferences->remove(const_cast<QElementImport *>(metaclassReference));
-    // Adjust subsetted property(ies)
-    removeElementImport(metaclassReference);
-}
-
-/*!
     References a package containing (directly or indirectly) metaclasses that may be extended.
  */
 const QSet<QPackageImport *> *QProfile::metamodelReferences() const
@@ -120,14 +91,36 @@ void QProfile::addMetamodelReference(const QPackageImport *metamodelReference)
 {
     d_ptr->metamodelReferences->insert(const_cast<QPackageImport *>(metamodelReference));
     // Adjust subsetted property(ies)
-    addPackageImport(metamodelReference);
+    QNamespace::d_ptr->packageImports->insert(const_cast<QPackageImport *>(metamodelReference));
 }
 
 void QProfile::removeMetamodelReference(const QPackageImport *metamodelReference)
 {
     d_ptr->metamodelReferences->remove(const_cast<QPackageImport *>(metamodelReference));
     // Adjust subsetted property(ies)
-    removePackageImport(metamodelReference);
+    QNamespace::d_ptr->packageImports->remove(const_cast<QPackageImport *>(metamodelReference));
+}
+
+/*!
+    References a metaclass that may be extended.
+ */
+const QSet<QElementImport *> *QProfile::metaclassReferences() const
+{
+    return d_ptr->metaclassReferences;
+}
+
+void QProfile::addMetaclassReference(const QElementImport *metaclassReference)
+{
+    d_ptr->metaclassReferences->insert(const_cast<QElementImport *>(metaclassReference));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->elementImports->insert(const_cast<QElementImport *>(metaclassReference));
+}
+
+void QProfile::removeMetaclassReference(const QElementImport *metaclassReference)
+{
+    d_ptr->metaclassReferences->remove(const_cast<QElementImport *>(metaclassReference));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->elementImports->remove(const_cast<QElementImport *>(metaclassReference));
 }
 
 #include "moc_qprofile.cpp"

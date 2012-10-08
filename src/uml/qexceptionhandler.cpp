@@ -40,6 +40,8 @@
 ****************************************************************************/
 
 #include "qexceptionhandler.h"
+#include "qexceptionhandler_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QObjectNode>
 #include <QtUml/QClassifier>
@@ -47,23 +49,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QExceptionHandlerPrivate
-{
-public:
-    explicit QExceptionHandlerPrivate();
-    virtual ~QExceptionHandlerPrivate();
-
-    QObjectNode *exceptionInput;
-    QSet<QClassifier *> *exceptionTypes;
-    QExecutableNode *handlerBody;
-    QExecutableNode *protectedNode;
-};
-
 QExceptionHandlerPrivate::QExceptionHandlerPrivate() :
-    exceptionInput(0),
-    exceptionTypes(new QSet<QClassifier *>),
     handlerBody(0),
-    protectedNode(0)
+    exceptionTypes(new QSet<QClassifier *>),
+    protectedNode(0),
+    exceptionInput(0)
 {
 }
 
@@ -91,16 +81,16 @@ QExceptionHandler::~QExceptionHandler()
 }
 
 /*!
-    An object node within the handler body. When the handler catches an exception, the exception token is placed in this node, causing the body to execute.
+    A node that is executed if the handler satisfies an uncaught exception.
  */
-QObjectNode *QExceptionHandler::exceptionInput() const
+QExecutableNode *QExceptionHandler::handlerBody() const
 {
-    return d_ptr->exceptionInput;
+    return d_ptr->handlerBody;
 }
 
-void QExceptionHandler::setExceptionInput(const QObjectNode *exceptionInput)
+void QExceptionHandler::setHandlerBody(const QExecutableNode *handlerBody)
 {
-    d_ptr->exceptionInput = const_cast<QObjectNode *>(exceptionInput);
+    d_ptr->handlerBody = const_cast<QExecutableNode *>(handlerBody);
 }
 
 /*!
@@ -122,19 +112,6 @@ void QExceptionHandler::removeExceptionType(const QClassifier *exceptionType)
 }
 
 /*!
-    A node that is executed if the handler satisfies an uncaught exception.
- */
-QExecutableNode *QExceptionHandler::handlerBody() const
-{
-    return d_ptr->handlerBody;
-}
-
-void QExceptionHandler::setHandlerBody(const QExecutableNode *handlerBody)
-{
-    d_ptr->handlerBody = const_cast<QExecutableNode *>(handlerBody);
-}
-
-/*!
     The node protected by the handler. The handler is examined if an exception propagates to the outside of the node.
  */
 QExecutableNode *QExceptionHandler::protectedNode() const
@@ -145,6 +122,19 @@ QExecutableNode *QExceptionHandler::protectedNode() const
 void QExceptionHandler::setProtectedNode(const QExecutableNode *protectedNode)
 {
     d_ptr->protectedNode = const_cast<QExecutableNode *>(protectedNode);
+}
+
+/*!
+    An object node within the handler body. When the handler catches an exception, the exception token is placed in this node, causing the body to execute.
+ */
+QObjectNode *QExceptionHandler::exceptionInput() const
+{
+    return d_ptr->exceptionInput;
+}
+
+void QExceptionHandler::setExceptionInput(const QObjectNode *exceptionInput)
+{
+    d_ptr->exceptionInput = const_cast<QObjectNode *>(exceptionInput);
 }
 
 #include "moc_qexceptionhandler.cpp"

@@ -40,27 +40,19 @@
 ****************************************************************************/
 
 #include "qreplyaction.h"
+#include "qreplyaction_p.h"
+#include "qaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QTrigger>
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QReplyActionPrivate
-{
-public:
-    explicit QReplyActionPrivate();
-    virtual ~QReplyActionPrivate();
-
-    QTrigger *replyToCall;
-    QSet<QInputPin *> *replyValues;
-    QInputPin *returnInformation;
-};
-
 QReplyActionPrivate::QReplyActionPrivate() :
     replyToCall(0),
-    replyValues(new QSet<QInputPin *>),
-    returnInformation(0)
+    returnInformation(0),
+    replyValues(new QSet<QInputPin *>)
 {
 }
 
@@ -101,6 +93,19 @@ void QReplyAction::setReplyToCall(const QTrigger *replyToCall)
 }
 
 /*!
+    A pin containing the return information value produced by an earlier AcceptCallAction.
+ */
+QInputPin *QReplyAction::returnInformation() const
+{
+    return d_ptr->returnInformation;
+}
+
+void QReplyAction::setReturnInformation(const QInputPin *returnInformation)
+{
+    d_ptr->returnInformation = const_cast<QInputPin *>(returnInformation);
+}
+
+/*!
     A list of pins containing the reply values of the operation. These values are returned to the caller.
  */
 const QSet<QInputPin *> *QReplyAction::replyValues() const
@@ -112,27 +117,14 @@ void QReplyAction::addReplyValue(const QInputPin *replyValue)
 {
     d_ptr->replyValues->insert(const_cast<QInputPin *>(replyValue));
     // Adjust subsetted property(ies)
-    addInput(replyValue);
+    QAction::d_ptr->inputs->append(const_cast<QInputPin *>(replyValue));
 }
 
 void QReplyAction::removeReplyValue(const QInputPin *replyValue)
 {
     d_ptr->replyValues->remove(const_cast<QInputPin *>(replyValue));
     // Adjust subsetted property(ies)
-    removeInput(replyValue);
-}
-
-/*!
-    A pin containing the return information value produced by an earlier AcceptCallAction.
- */
-QInputPin *QReplyAction::returnInformation() const
-{
-    return d_ptr->returnInformation;
-}
-
-void QReplyAction::setReturnInformation(const QInputPin *returnInformation)
-{
-    d_ptr->returnInformation = const_cast<QInputPin *>(returnInformation);
+    QAction::d_ptr->inputs->removeAll(const_cast<QInputPin *>(replyValue));
 }
 
 #include "moc_qreplyaction.cpp"

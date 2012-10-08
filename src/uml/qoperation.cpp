@@ -40,6 +40,20 @@
 ****************************************************************************/
 
 #include "qoperation.h"
+#include "qoperation_p.h"
+#include "qnamespace_p.h"
+#include "qredefinableelement_p.h"
+#include "qnamespace_p.h"
+#include "qfeature_p.h"
+#include "qredefinableelement_p.h"
+#include "qnamedelement_p.h"
+#include "qfeature_p.h"
+#include "qredefinableelement_p.h"
+#include "qnamedelement_p.h"
+#include "qnamespace_p.h"
+#include "qfeature_p.h"
+#include "qredefinableelement_p.h"
+#include "qnamedelement_p.h"
 
 #include <QtUml/QOperationTemplateParameter>
 #include <QtUml/QType>
@@ -52,47 +66,28 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QOperationPrivate
-{
-public:
-    explicit QOperationPrivate();
-    virtual ~QOperationPrivate();
-
-    bool isQuery;
-    QConstraint *bodyCondition;
-    QClass *class_;
-    QDataType *datatype;
-    QInterface *interface;
-    QList<QParameter *> *ownedParameters;
-    QSet<QConstraint *> *postconditions;
-    QSet<QConstraint *> *preconditions;
-    QSet<QType *> *raisedExceptions;
-    QSet<QOperation *> *redefinedOperations;
-    QOperationTemplateParameter *templateParameter;
-};
-
 QOperationPrivate::QOperationPrivate() :
     isQuery(false),
-    bodyCondition(0),
-    class_(0),
-    datatype(0),
-    interface(0),
     ownedParameters(new QList<QParameter *>),
-    postconditions(new QSet<QConstraint *>),
-    preconditions(new QSet<QConstraint *>),
-    raisedExceptions(new QSet<QType *>),
+    bodyCondition(0),
     redefinedOperations(new QSet<QOperation *>),
-    templateParameter(0)
+    postconditions(new QSet<QConstraint *>),
+    datatype(0),
+    templateParameter(0),
+    interface(0),
+    preconditions(new QSet<QConstraint *>),
+    class_(0),
+    raisedExceptions(new QSet<QType *>)
 {
 }
 
 QOperationPrivate::~QOperationPrivate()
 {
     delete ownedParameters;
+    delete redefinedOperations;
     delete postconditions;
     delete preconditions;
     delete raisedExceptions;
-    delete redefinedOperations;
 }
 
 /*!
@@ -114,11 +109,11 @@ QOperation::~QOperation()
 }
 
 /*!
-    This information is derived from the return result for this Operation.Specifies whether the return parameter is ordered or not, if present.
+    This information is derived from the return result for this Operation.Specifies the lower multiplicity of the return parameter, if present.
  */
-bool QOperation::isOrdered() const
+qint32 QOperation::lower() const
 {
-    qWarning("QOperation::isOrdered: to be implemented (this is a derived attribute)");
+    qWarning("QOperation::lower: to be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -143,14 +138,6 @@ bool QOperation::isUnique() const
 }
 
 /*!
-    This information is derived from the return result for this Operation.Specifies the lower multiplicity of the return parameter, if present.
- */
-qint32 QOperation::lower() const
-{
-    qWarning("QOperation::lower: to be implemented (this is a derived attribute)");
-}
-
-/*!
     This information is derived from the return result for this Operation.Specifies the upper multiplicity of the return parameter, if present.
  */
 qint32 QOperation::upper() const
@@ -159,55 +146,11 @@ qint32 QOperation::upper() const
 }
 
 /*!
-    An optional Constraint on the result values of an invocation of this Operation.
+    This information is derived from the return result for this Operation.Specifies whether the return parameter is ordered or not, if present.
  */
-QConstraint *QOperation::bodyCondition() const
+bool QOperation::isOrdered() const
 {
-    return d_ptr->bodyCondition;
-}
-
-void QOperation::setBodyCondition(const QConstraint *bodyCondition)
-{
-    d_ptr->bodyCondition = const_cast<QConstraint *>(bodyCondition);
-}
-
-/*!
-    The class that owns the operation.
- */
-QClass *QOperation::class_() const
-{
-    return d_ptr->class_;
-}
-
-void QOperation::setClass_(const QClass *class_)
-{
-    d_ptr->class_ = const_cast<QClass *>(class_);
-}
-
-/*!
-    The DataType that owns this Operation.
- */
-QDataType *QOperation::datatype() const
-{
-    return d_ptr->datatype;
-}
-
-void QOperation::setDatatype(const QDataType *datatype)
-{
-    d_ptr->datatype = const_cast<QDataType *>(datatype);
-}
-
-/*!
-    The Interface that owns this Operation.
- */
-QInterface *QOperation::interface() const
-{
-    return d_ptr->interface;
-}
-
-void QOperation::setInterface(const QInterface *interface)
-{
-    d_ptr->interface = const_cast<QInterface *>(interface);
+    qWarning("QOperation::isOrdered: to be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -229,6 +172,41 @@ void QOperation::removeOwnedParameter(const QParameter *ownedParameter)
 }
 
 /*!
+    An optional Constraint on the result values of an invocation of this Operation.
+ */
+QConstraint *QOperation::bodyCondition() const
+{
+    return d_ptr->bodyCondition;
+}
+
+void QOperation::setBodyCondition(const QConstraint *bodyCondition)
+{
+    d_ptr->bodyCondition = const_cast<QConstraint *>(bodyCondition);
+}
+
+/*!
+    References the Operations that are redefined by this Operation.
+ */
+const QSet<QOperation *> *QOperation::redefinedOperations() const
+{
+    return d_ptr->redefinedOperations;
+}
+
+void QOperation::addRedefinedOperation(const QOperation *redefinedOperation)
+{
+    d_ptr->redefinedOperations->insert(const_cast<QOperation *>(redefinedOperation));
+    // Adjust subsetted property(ies)
+    QRedefinableElement::d_ptr->redefinedElements->insert(const_cast<QOperation *>(redefinedOperation));
+}
+
+void QOperation::removeRedefinedOperation(const QOperation *redefinedOperation)
+{
+    d_ptr->redefinedOperations->remove(const_cast<QOperation *>(redefinedOperation));
+    // Adjust subsetted property(ies)
+    QRedefinableElement::d_ptr->redefinedElements->remove(const_cast<QOperation *>(redefinedOperation));
+}
+
+/*!
     An optional set of Constraints specifying the state of the system when the Operation is completed.
  */
 const QSet<QConstraint *> *QOperation::postconditions() const
@@ -240,14 +218,61 @@ void QOperation::addPostcondition(const QConstraint *postcondition)
 {
     d_ptr->postconditions->insert(const_cast<QConstraint *>(postcondition));
     // Adjust subsetted property(ies)
-    addOwnedRule(postcondition);
+    QNamespace::d_ptr->ownedRules->insert(const_cast<QConstraint *>(postcondition));
 }
 
 void QOperation::removePostcondition(const QConstraint *postcondition)
 {
     d_ptr->postconditions->remove(const_cast<QConstraint *>(postcondition));
     // Adjust subsetted property(ies)
-    removeOwnedRule(postcondition);
+    QNamespace::d_ptr->ownedRules->remove(const_cast<QConstraint *>(postcondition));
+}
+
+/*!
+    The DataType that owns this Operation.
+ */
+QDataType *QOperation::datatype() const
+{
+    return d_ptr->datatype;
+}
+
+void QOperation::setDatatype(const QDataType *datatype)
+{
+    d_ptr->datatype = const_cast<QDataType *>(datatype);
+}
+
+/*!
+    The template parameter that exposes this element as a formal parameter.
+ */
+QOperationTemplateParameter *QOperation::templateParameter() const
+{
+    return d_ptr->templateParameter;
+}
+
+void QOperation::setTemplateParameter(const QOperationTemplateParameter *templateParameter)
+{
+    d_ptr->templateParameter = const_cast<QOperationTemplateParameter *>(templateParameter);
+}
+
+/*!
+    The Interface that owns this Operation.
+ */
+QInterface *QOperation::interface() const
+{
+    return d_ptr->interface;
+}
+
+void QOperation::setInterface(const QInterface *interface)
+{
+    d_ptr->interface = const_cast<QInterface *>(interface);
+}
+
+/*!
+    This information is derived from the return result for this Operation.Specifies the return result of the operation, if present.
+ */
+QType *QOperation::type() const
+{
+    qWarning("QOperation::type: to be implemented (this is a derived associationend)");
 }
 
 /*!
@@ -262,14 +287,27 @@ void QOperation::addPrecondition(const QConstraint *precondition)
 {
     d_ptr->preconditions->insert(const_cast<QConstraint *>(precondition));
     // Adjust subsetted property(ies)
-    addOwnedRule(precondition);
+    QNamespace::d_ptr->ownedRules->insert(const_cast<QConstraint *>(precondition));
 }
 
 void QOperation::removePrecondition(const QConstraint *precondition)
 {
     d_ptr->preconditions->remove(const_cast<QConstraint *>(precondition));
     // Adjust subsetted property(ies)
-    removeOwnedRule(precondition);
+    QNamespace::d_ptr->ownedRules->remove(const_cast<QConstraint *>(precondition));
+}
+
+/*!
+    The class that owns the operation.
+ */
+QClass *QOperation::class_() const
+{
+    return d_ptr->class_;
+}
+
+void QOperation::setClass_(const QClass *class_)
+{
+    d_ptr->class_ = const_cast<QClass *>(class_);
 }
 
 /*!
@@ -288,49 +326,6 @@ void QOperation::addRaisedException(const QType *raisedException)
 void QOperation::removeRaisedException(const QType *raisedException)
 {
     d_ptr->raisedExceptions->remove(const_cast<QType *>(raisedException));
-}
-
-/*!
-    References the Operations that are redefined by this Operation.
- */
-const QSet<QOperation *> *QOperation::redefinedOperations() const
-{
-    return d_ptr->redefinedOperations;
-}
-
-void QOperation::addRedefinedOperation(const QOperation *redefinedOperation)
-{
-    d_ptr->redefinedOperations->insert(const_cast<QOperation *>(redefinedOperation));
-    // Adjust subsetted property(ies)
-    addRedefinedElement(redefinedOperation);
-}
-
-void QOperation::removeRedefinedOperation(const QOperation *redefinedOperation)
-{
-    d_ptr->redefinedOperations->remove(const_cast<QOperation *>(redefinedOperation));
-    // Adjust subsetted property(ies)
-    removeRedefinedElement(redefinedOperation);
-}
-
-/*!
-    The template parameter that exposes this element as a formal parameter.
- */
-QOperationTemplateParameter *QOperation::templateParameter() const
-{
-    return d_ptr->templateParameter;
-}
-
-void QOperation::setTemplateParameter(const QOperationTemplateParameter *templateParameter)
-{
-    d_ptr->templateParameter = const_cast<QOperationTemplateParameter *>(templateParameter);
-}
-
-/*!
-    This information is derived from the return result for this Operation.Specifies the return result of the operation, if present.
- */
-QType *QOperation::type() const
-{
-    qWarning("QOperation::type: to be implemented (this is a derived associationend)");
 }
 
 /*!

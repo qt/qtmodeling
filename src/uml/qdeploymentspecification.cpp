@@ -40,21 +40,12 @@
 ****************************************************************************/
 
 #include "qdeploymentspecification.h"
+#include "qdeploymentspecification_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QDeployment>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QDeploymentSpecificationPrivate
-{
-public:
-    explicit QDeploymentSpecificationPrivate();
-    virtual ~QDeploymentSpecificationPrivate();
-
-    QString deploymentLocation;
-    QString executionLocation;
-    QDeployment *deployment;
-};
 
 QDeploymentSpecificationPrivate::QDeploymentSpecificationPrivate() :
     deployment(0)

@@ -40,27 +40,20 @@
 ****************************************************************************/
 
 #include "qtestidentityaction.h"
+#include "qtestidentityaction_p.h"
+#include "qaction_p.h"
+#include "qaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QTestIdentityActionPrivate
-{
-public:
-    explicit QTestIdentityActionPrivate();
-    virtual ~QTestIdentityActionPrivate();
-
-    QInputPin *first;
-    QOutputPin *result;
-    QInputPin *second;
-};
-
 QTestIdentityActionPrivate::QTestIdentityActionPrivate() :
-    first(0),
+    second(0),
     result(0),
-    second(0)
+    first(0)
 {
 }
 
@@ -89,14 +82,14 @@ QTestIdentityAction::~QTestIdentityAction()
 /*!
     Gives the pin on which an object is placed.
  */
-QInputPin *QTestIdentityAction::first() const
+QInputPin *QTestIdentityAction::second() const
 {
-    return d_ptr->first;
+    return d_ptr->second;
 }
 
-void QTestIdentityAction::setFirst(const QInputPin *first)
+void QTestIdentityAction::setSecond(const QInputPin *second)
 {
-    d_ptr->first = const_cast<QInputPin *>(first);
+    d_ptr->second = const_cast<QInputPin *>(second);
 }
 
 /*!
@@ -115,14 +108,14 @@ void QTestIdentityAction::setResult(const QOutputPin *result)
 /*!
     Gives the pin on which an object is placed.
  */
-QInputPin *QTestIdentityAction::second() const
+QInputPin *QTestIdentityAction::first() const
 {
-    return d_ptr->second;
+    return d_ptr->first;
 }
 
-void QTestIdentityAction::setSecond(const QInputPin *second)
+void QTestIdentityAction::setFirst(const QInputPin *first)
 {
-    d_ptr->second = const_cast<QInputPin *>(second);
+    d_ptr->first = const_cast<QInputPin *>(first);
 }
 
 #include "moc_qtestidentityaction.cpp"

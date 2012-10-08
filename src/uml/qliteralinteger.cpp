@@ -40,18 +40,10 @@
 ****************************************************************************/
 
 #include "qliteralinteger.h"
+#include "qliteralinteger_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QLiteralIntegerPrivate
-{
-public:
-    explicit QLiteralIntegerPrivate();
-    virtual ~QLiteralIntegerPrivate();
-
-    qint32 value;
-};
 
 QLiteralIntegerPrivate::QLiteralIntegerPrivate()
 {

@@ -64,9 +64,9 @@ class Q_UML_EXPORT QStringExpression : public QExpression, public QTemplateableE
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QTemplateableElement
     Q_PROPERTY(QTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
@@ -93,7 +93,7 @@ public:
     // Operations
     QString stringValue() const;
 
-private:
+protected:
     QStringExpressionPrivate *d_ptr;
 };
 

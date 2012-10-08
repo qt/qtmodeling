@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qcontrolnode.h"
+#include "qcontrolnode_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QControlNodePrivate
-{
-public:
-    explicit QControlNodePrivate();
-    virtual ~QControlNodePrivate();
-
-};
 
 QControlNodePrivate::QControlNodePrivate()
 {

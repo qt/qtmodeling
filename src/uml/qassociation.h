@@ -67,24 +67,24 @@ class Q_UML_EXPORT QAssociation : public QObject, public QClassifier, public QRe
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QNamespace
-    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
-    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
-    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
-    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
-    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
     Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
+    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
+    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
+    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
+    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
+    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
 
     // From QParameterableElement
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
@@ -106,20 +106,20 @@ class Q_UML_EXPORT QAssociation : public QObject, public QClassifier, public QRe
     // From QClassifier
     Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract)
     Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization)
-    Q_PROPERTY(const QSet<QProperty *> * attributes READ attributes)
-    Q_PROPERTY(const QSet<QCollaborationUse *> * collaborationUses READ collaborationUses)
-    Q_PROPERTY(const QSet<QFeature *> * features READ features)
-    Q_PROPERTY(const QSet<QClassifier *> * generals READ generals)
-    Q_PROPERTY(const QSet<QGeneralization *> * generalizations READ generalizations)
-    Q_PROPERTY(const QSet<QNamedElement *> * inheritedMembers READ inheritedMembers)
-    Q_PROPERTY(QRedefinableTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
     Q_PROPERTY(const QSet<QUseCase *> * ownedUseCases READ ownedUseCases)
     Q_PROPERTY(const QSet<QGeneralizationSet *> * powertypeExtents READ powertypeExtents)
-    Q_PROPERTY(const QSet<QClassifier *> * redefinedClassifiers READ redefinedClassifiers)
-    Q_PROPERTY(QCollaborationUse * representation READ representation WRITE setRepresentation)
-    Q_PROPERTY(const QSet<QSubstitution *> * substitutions READ substitutions)
-    Q_PROPERTY(QClassifierTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
     Q_PROPERTY(const QSet<QUseCase *> * useCases READ useCases)
+    Q_PROPERTY(QClassifierTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
+    Q_PROPERTY(const QSet<QClassifier *> * redefinedClassifiers READ redefinedClassifiers)
+    Q_PROPERTY(QRedefinableTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
+    Q_PROPERTY(const QSet<QCollaborationUse *> * collaborationUses READ collaborationUses)
+    Q_PROPERTY(const QSet<QProperty *> * attributes READ attributes)
+    Q_PROPERTY(const QSet<QFeature *> * features READ features)
+    Q_PROPERTY(const QSet<QClassifier *> * generals READ generals)
+    Q_PROPERTY(QCollaborationUse * representation READ representation WRITE setRepresentation)
+    Q_PROPERTY(const QSet<QGeneralization *> * generalizations READ generalizations)
+    Q_PROPERTY(const QSet<QNamedElement *> * inheritedMembers READ inheritedMembers)
+    Q_PROPERTY(const QSet<QSubstitution *> * substitutions READ substitutions)
 
     // From QRelationship
     Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
@@ -127,9 +127,9 @@ class Q_UML_EXPORT QAssociation : public QObject, public QClassifier, public QRe
     // From QAssociation
     Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived)
     Q_PROPERTY(const QList<QType *> * endTypes READ endTypes)
-    Q_PROPERTY(const QList<QProperty *> * memberEnds READ memberEnds)
     Q_PROPERTY(const QSet<QProperty *> * navigableOwnedEnds READ navigableOwnedEnds)
     Q_PROPERTY(const QList<QProperty *> * ownedEnds READ ownedEnds)
+    Q_PROPERTY(const QList<QProperty *> * memberEnds READ memberEnds)
 
     Q_DISABLE_COPY(QAssociation)
     Q_DECLARE_PRIVATE(QAssociation)
@@ -144,17 +144,17 @@ public:
 
     // Association-ends
     const QList<QType *> *endTypes() const;
-    const QList<QProperty *> *memberEnds() const;
-    void addMemberEnd(const QProperty *memberEnd);
-    void removeMemberEnd(const QProperty *memberEnd);
     const QSet<QProperty *> *navigableOwnedEnds() const;
     void addNavigableOwnedEnd(const QProperty *navigableOwnedEnd);
     void removeNavigableOwnedEnd(const QProperty *navigableOwnedEnd);
     const QList<QProperty *> *ownedEnds() const;
     void addOwnedEnd(const QProperty *ownedEnd);
     void removeOwnedEnd(const QProperty *ownedEnd);
+    const QList<QProperty *> *memberEnds() const;
+    void addMemberEnd(const QProperty *memberEnd);
+    void removeMemberEnd(const QProperty *memberEnd);
 
-private:
+protected:
     QAssociationPrivate *d_ptr;
 };
 

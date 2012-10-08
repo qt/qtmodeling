@@ -40,19 +40,12 @@
 ****************************************************************************/
 
 #include "qextensionpoint.h"
+#include "qextensionpoint_p.h"
+#include "qnamedelement_p.h"
 
 #include <QtUml/QUseCase>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QExtensionPointPrivate
-{
-public:
-    explicit QExtensionPointPrivate();
-    virtual ~QExtensionPointPrivate();
-
-    QUseCase *useCase;
-};
 
 QExtensionPointPrivate::QExtensionPointPrivate() :
     useCase(0)

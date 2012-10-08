@@ -40,23 +40,15 @@
 ****************************************************************************/
 
 #include "qreadlinkobjectendaction.h"
+#include "qreadlinkobjectendaction_p.h"
+#include "qaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QProperty>
 #include <QtUml/QInputPin>
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QReadLinkObjectEndActionPrivate
-{
-public:
-    explicit QReadLinkObjectEndActionPrivate();
-    virtual ~QReadLinkObjectEndActionPrivate();
-
-    QProperty *end;
-    QInputPin *object;
-    QOutputPin *result;
-};
 
 QReadLinkObjectEndActionPrivate::QReadLinkObjectEndActionPrivate() :
     end(0),

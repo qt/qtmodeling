@@ -40,25 +40,16 @@
 ****************************************************************************/
 
 #include "qtrigger.h"
+#include "qtrigger_p.h"
 
 #include <QtUml/QEvent>
 #include <QtUml/QPort>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QTriggerPrivate
-{
-public:
-    explicit QTriggerPrivate();
-    virtual ~QTriggerPrivate();
-
-    QEvent *event;
-    QSet<QPort *> *ports;
-};
-
 QTriggerPrivate::QTriggerPrivate() :
-    event(0),
-    ports(new QSet<QPort *>)
+    ports(new QSet<QPort *>),
+    event(0)
 {
 }
 
@@ -86,19 +77,6 @@ QTrigger::~QTrigger()
 }
 
 /*!
-    The event that causes the trigger.
- */
-QEvent *QTrigger::event() const
-{
-    return d_ptr->event;
-}
-
-void QTrigger::setEvent(const QEvent *event)
-{
-    d_ptr->event = const_cast<QEvent *>(event);
-}
-
-/*!
     A optional port of the receiver object on which the behavioral feature is invoked.
  */
 const QSet<QPort *> *QTrigger::ports() const
@@ -114,6 +92,19 @@ void QTrigger::addPort(const QPort *port)
 void QTrigger::removePort(const QPort *port)
 {
     d_ptr->ports->remove(const_cast<QPort *>(port));
+}
+
+/*!
+    The event that causes the trigger.
+ */
+QEvent *QTrigger::event() const
+{
+    return d_ptr->event;
+}
+
+void QTrigger::setEvent(const QEvent *event)
+{
+    d_ptr->event = const_cast<QEvent *>(event);
 }
 
 #include "moc_qtrigger.cpp"

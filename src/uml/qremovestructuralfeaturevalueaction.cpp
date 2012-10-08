@@ -40,20 +40,12 @@
 ****************************************************************************/
 
 #include "qremovestructuralfeaturevalueaction.h"
+#include "qremovestructuralfeaturevalueaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QRemoveStructuralFeatureValueActionPrivate
-{
-public:
-    explicit QRemoveStructuralFeatureValueActionPrivate();
-    virtual ~QRemoveStructuralFeatureValueActionPrivate();
-
-    bool isRemoveDuplicates;
-    QInputPin *removeAt;
-};
 
 QRemoveStructuralFeatureValueActionPrivate::QRemoveStructuralFeatureValueActionPrivate() :
     isRemoveDuplicates(false),

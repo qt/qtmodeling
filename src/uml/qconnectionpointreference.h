@@ -65,27 +65,27 @@ class Q_UML_EXPORT QConnectionPointReference : public QObject, public QVertex
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QVertex
-    Q_PROPERTY(QRegion * container READ container WRITE setContainer)
     Q_PROPERTY(const QSet<QTransition *> * incomings READ incomings)
+    Q_PROPERTY(QRegion * container READ container WRITE setContainer)
     Q_PROPERTY(const QSet<QTransition *> * outgoings READ outgoings)
 
     // From QConnectionPointReference
-    Q_PROPERTY(const QSet<QPseudostate *> * entries READ entries)
     Q_PROPERTY(const QSet<QPseudostate *> * exits READ exits)
     Q_PROPERTY(QState * state READ state WRITE setState)
+    Q_PROPERTY(const QSet<QPseudostate *> * entries READ entries)
 
     Q_DISABLE_COPY(QConnectionPointReference)
     Q_DECLARE_PRIVATE(QConnectionPointReference)
@@ -95,16 +95,16 @@ public:
     virtual ~QConnectionPointReference();
 
     // Association-ends
-    const QSet<QPseudostate *> *entries() const;
-    void addEntry(const QPseudostate *entry);
-    void removeEntry(const QPseudostate *entry);
     const QSet<QPseudostate *> *exits() const;
     void addExit(const QPseudostate *exit);
     void removeExit(const QPseudostate *exit);
     QState *state() const;
     void setState(const QState *state);
+    const QSet<QPseudostate *> *entries() const;
+    void addEntry(const QPseudostate *entry);
+    void removeEntry(const QPseudostate *entry);
 
-private:
+protected:
     QConnectionPointReferencePrivate *d_ptr;
 };
 

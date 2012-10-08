@@ -40,20 +40,12 @@
 ****************************************************************************/
 
 #include "qsendobjectaction.h"
+#include "qsendobjectaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QSendObjectActionPrivate
-{
-public:
-    explicit QSendObjectActionPrivate();
-    virtual ~QSendObjectActionPrivate();
-
-    QInputPin *request;
-    QInputPin *target;
-};
 
 QSendObjectActionPrivate::QSendObjectActionPrivate() :
     request(0),

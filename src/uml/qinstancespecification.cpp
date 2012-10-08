@@ -40,6 +40,9 @@
 ****************************************************************************/
 
 #include "qinstancespecification.h"
+#include "qinstancespecification_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QClassifier>
 #include <QtUml/QSlot>
@@ -47,21 +50,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QInstanceSpecificationPrivate
-{
-public:
-    explicit QInstanceSpecificationPrivate();
-    virtual ~QInstanceSpecificationPrivate();
-
-    QSet<QClassifier *> *classifiers;
-    QSet<QSlot *> *slots_;
-    QValueSpecification *specification;
-};
-
 QInstanceSpecificationPrivate::QInstanceSpecificationPrivate() :
     classifiers(new QSet<QClassifier *>),
-    slots_(new QSet<QSlot *>),
-    specification(0)
+    specification(0),
+    slots_(new QSet<QSlot *>)
 {
 }
 
@@ -108,6 +100,19 @@ void QInstanceSpecification::removeClassifier(const QClassifier *classifier)
 }
 
 /*!
+    A specification of how to compute, derive, or construct the instance.
+ */
+QValueSpecification *QInstanceSpecification::specification() const
+{
+    return d_ptr->specification;
+}
+
+void QInstanceSpecification::setSpecification(const QValueSpecification *specification)
+{
+    d_ptr->specification = const_cast<QValueSpecification *>(specification);
+}
+
+/*!
     A slot giving the value or values of a structural feature of the instance. An instance specification can have one slot per structural feature of its classifiers, including inherited features. It is not necessary to model a slot for each structural feature, in which case the instance specification is a partial description.
  */
 const QSet<QSlot *> *QInstanceSpecification::slots_() const
@@ -119,27 +124,14 @@ void QInstanceSpecification::addSlot_(const QSlot *slot_)
 {
     d_ptr->slots_->insert(const_cast<QSlot *>(slot_));
     // Adjust subsetted property(ies)
-    addOwnedElement(slot_);
+    QElement::d_ptr->ownedElements->insert(const_cast<QSlot *>(slot_));
 }
 
 void QInstanceSpecification::removeSlot_(const QSlot *slot_)
 {
     d_ptr->slots_->remove(const_cast<QSlot *>(slot_));
     // Adjust subsetted property(ies)
-    removeOwnedElement(slot_);
-}
-
-/*!
-    A specification of how to compute, derive, or construct the instance.
- */
-QValueSpecification *QInstanceSpecification::specification() const
-{
-    return d_ptr->specification;
-}
-
-void QInstanceSpecification::setSpecification(const QValueSpecification *specification)
-{
-    d_ptr->specification = const_cast<QValueSpecification *>(specification);
+    QElement::d_ptr->ownedElements->remove(const_cast<QSlot *>(slot_));
 }
 
 #include "moc_qinstancespecification.cpp"

@@ -73,7 +73,7 @@ public:
     QExecutionSpecification *execution() const;
     void setExecution(const QExecutionSpecification *execution);
 
-private:
+protected:
     QExecutionOccurrenceSpecificationPrivate *d_ptr;
 };
 

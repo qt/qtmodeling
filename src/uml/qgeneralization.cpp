@@ -40,29 +40,21 @@
 ****************************************************************************/
 
 #include "qgeneralization.h"
+#include "qgeneralization_p.h"
+#include "qelement_p.h"
+#include "qdirectedrelationship_p.h"
+#include "qdirectedrelationship_p.h"
 
 #include <QtUml/QClassifier>
 #include <QtUml/QGeneralizationSet>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QGeneralizationPrivate
-{
-public:
-    explicit QGeneralizationPrivate();
-    virtual ~QGeneralizationPrivate();
-
-    bool isSubstitutable;
-    QClassifier *general;
-    QSet<QGeneralizationSet *> *generalizationSets;
-    QClassifier *specific;
-};
-
 QGeneralizationPrivate::QGeneralizationPrivate() :
     isSubstitutable(true),
-    general(0),
+    specific(0),
     generalizationSets(new QSet<QGeneralizationSet *>),
-    specific(0)
+    general(0)
 {
 }
 
@@ -103,16 +95,16 @@ void QGeneralization::setSubstitutable(bool isSubstitutable)
 }
 
 /*!
-    References the general classifier in the Generalization relationship.
+    References the specializing classifier in the Generalization relationship.
  */
-QClassifier *QGeneralization::general() const
+QClassifier *QGeneralization::specific() const
 {
-    return d_ptr->general;
+    return d_ptr->specific;
 }
 
-void QGeneralization::setGeneral(const QClassifier *general)
+void QGeneralization::setSpecific(const QClassifier *specific)
 {
-    d_ptr->general = const_cast<QClassifier *>(general);
+    d_ptr->specific = const_cast<QClassifier *>(specific);
 }
 
 /*!
@@ -134,16 +126,16 @@ void QGeneralization::removeGeneralizationSet(const QGeneralizationSet *generali
 }
 
 /*!
-    References the specializing classifier in the Generalization relationship.
+    References the general classifier in the Generalization relationship.
  */
-QClassifier *QGeneralization::specific() const
+QClassifier *QGeneralization::general() const
 {
-    return d_ptr->specific;
+    return d_ptr->general;
 }
 
-void QGeneralization::setSpecific(const QClassifier *specific)
+void QGeneralization::setGeneral(const QClassifier *general)
 {
-    d_ptr->specific = const_cast<QClassifier *>(specific);
+    d_ptr->general = const_cast<QClassifier *>(general);
 }
 
 #include "moc_qgeneralization.cpp"

@@ -40,19 +40,11 @@
 ****************************************************************************/
 
 #include "qtypedelement.h"
+#include "qtypedelement_p.h"
 
 #include <QtUml/QType>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QTypedElementPrivate
-{
-public:
-    explicit QTypedElementPrivate();
-    virtual ~QTypedElementPrivate();
-
-    QType *type;
-};
 
 QTypedElementPrivate::QTypedElementPrivate() :
     type(0)

@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qcommunicationpath.h"
+#include "qcommunicationpath_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QCommunicationPathPrivate
-{
-public:
-    explicit QCommunicationPathPrivate();
-    virtual ~QCommunicationPathPrivate();
-
-};
 
 QCommunicationPathPrivate::QCommunicationPathPrivate()
 {

@@ -40,19 +40,11 @@
 ****************************************************************************/
 
 #include "qreception.h"
+#include "qreception_p.h"
 
 #include <QtUml/QSignal>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QReceptionPrivate
-{
-public:
-    explicit QReceptionPrivate();
-    virtual ~QReceptionPrivate();
-
-    QSignal *signal;
-};
 
 QReceptionPrivate::QReceptionPrivate() :
     signal(0)

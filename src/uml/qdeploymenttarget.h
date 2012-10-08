@@ -76,7 +76,7 @@ public:
 protected:
     explicit QDeploymentTarget();
 
-private:
+protected:
     QDeploymentTargetPrivate *d_ptr;
 };
 

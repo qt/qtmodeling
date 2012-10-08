@@ -65,7 +65,7 @@ public:
 protected:
     explicit QMessageEvent();
 
-private:
+protected:
     QMessageEventPrivate *d_ptr;
 };
 

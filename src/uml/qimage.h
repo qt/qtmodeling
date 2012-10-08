@@ -63,14 +63,14 @@ class Q_UML_EXPORT QImage : public QObject, public QElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QImage
-    Q_PROPERTY(QString content READ content WRITE setContent)
     Q_PROPERTY(QString format READ format WRITE setFormat)
     Q_PROPERTY(QString location READ location WRITE setLocation)
+    Q_PROPERTY(QString content READ content WRITE setContent)
 
     Q_DISABLE_COPY(QImage)
     Q_DECLARE_PRIVATE(QImage)
@@ -80,14 +80,14 @@ public:
     virtual ~QImage();
 
     // Attributes
-    QString content() const;
-    void setContent(QString content);
     QString format() const;
     void setFormat(QString format);
     QString location() const;
     void setLocation(QString location);
+    QString content() const;
+    void setContent(QString content);
 
-private:
+protected:
     QImagePrivate *d_ptr;
 };
 

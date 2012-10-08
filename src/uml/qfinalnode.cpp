@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qfinalnode.h"
+#include "qfinalnode_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QFinalNodePrivate
-{
-public:
-    explicit QFinalNodePrivate();
-    virtual ~QFinalNodePrivate();
-
-};
 
 QFinalNodePrivate::QFinalNodePrivate()
 {

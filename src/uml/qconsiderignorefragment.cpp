@@ -40,19 +40,11 @@
 ****************************************************************************/
 
 #include "qconsiderignorefragment.h"
+#include "qconsiderignorefragment_p.h"
 
 #include <QtUml/QNamedElement>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QConsiderIgnoreFragmentPrivate
-{
-public:
-    explicit QConsiderIgnoreFragmentPrivate();
-    virtual ~QConsiderIgnoreFragmentPrivate();
-
-    QSet<QNamedElement *> *messages;
-};
 
 QConsiderIgnoreFragmentPrivate::QConsiderIgnoreFragmentPrivate() :
     messages(new QSet<QNamedElement *>)

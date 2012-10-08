@@ -70,17 +70,17 @@ class Q_UML_EXPORT QConnector : public QObject, public QFeature
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QRedefinableElement
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
@@ -93,10 +93,10 @@ class Q_UML_EXPORT QConnector : public QObject, public QFeature
 
     // From QConnector
     Q_PROPERTY(QtUml::ConnectorKind kind READ kind)
-    Q_PROPERTY(const QSet<QBehavior *> * contracts READ contracts)
-    Q_PROPERTY(const QList<QConnectorEnd *> * ends READ ends)
     Q_PROPERTY(const QSet<QConnector *> * redefinedConnectors READ redefinedConnectors)
+    Q_PROPERTY(const QSet<QBehavior *> * contracts READ contracts)
     Q_PROPERTY(QAssociation * type READ type WRITE setType)
+    Q_PROPERTY(const QList<QConnectorEnd *> * ends READ ends)
 
     Q_DISABLE_COPY(QConnector)
     Q_DECLARE_PRIVATE(QConnector)
@@ -109,19 +109,19 @@ public:
     QtUml::ConnectorKind kind() const;
 
     // Association-ends
-    const QSet<QBehavior *> *contracts() const;
-    void addContract(const QBehavior *contract);
-    void removeContract(const QBehavior *contract);
-    const QList<QConnectorEnd *> *ends() const;
-    void addEnd(const QConnectorEnd *end);
-    void removeEnd(const QConnectorEnd *end);
     const QSet<QConnector *> *redefinedConnectors() const;
     void addRedefinedConnector(const QConnector *redefinedConnector);
     void removeRedefinedConnector(const QConnector *redefinedConnector);
+    const QSet<QBehavior *> *contracts() const;
+    void addContract(const QBehavior *contract);
+    void removeContract(const QBehavior *contract);
     QAssociation *type() const;
     void setType(const QAssociation *type);
+    const QList<QConnectorEnd *> *ends() const;
+    void addEnd(const QConnectorEnd *end);
+    void removeEnd(const QConnectorEnd *end);
 
-private:
+protected:
     QConnectorPrivate *d_ptr;
 };
 

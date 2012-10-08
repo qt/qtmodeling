@@ -40,6 +40,14 @@
 ****************************************************************************/
 
 #include "qartifact.h"
+#include "qartifact_p.h"
+#include "qclassifier_p.h"
+#include "qnamespace_p.h"
+#include "qnamespace_p.h"
+#include "qclassifier_p.h"
+#include "qelement_p.h"
+#include "qnamedelement_p.h"
+#include "qnamespace_p.h"
 
 #include <QtUml/QManifestation>
 #include <QtUml/QProperty>
@@ -47,33 +55,20 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QArtifactPrivate
-{
-public:
-    explicit QArtifactPrivate();
-    virtual ~QArtifactPrivate();
-
-    QString fileName;
-    QSet<QManifestation *> *manifestations;
-    QSet<QArtifact *> *nestedArtifacts;
-    QList<QProperty *> *ownedAttributes;
-    QList<QOperation *> *ownedOperations;
-};
-
 QArtifactPrivate::QArtifactPrivate() :
-    manifestations(new QSet<QManifestation *>),
-    nestedArtifacts(new QSet<QArtifact *>),
+    ownedOperations(new QList<QOperation *>),
     ownedAttributes(new QList<QProperty *>),
-    ownedOperations(new QList<QOperation *>)
+    manifestations(new QSet<QManifestation *>),
+    nestedArtifacts(new QSet<QArtifact *>)
 {
 }
 
 QArtifactPrivate::~QArtifactPrivate()
 {
+    delete ownedOperations;
+    delete ownedAttributes;
     delete manifestations;
     delete nestedArtifacts;
-    delete ownedAttributes;
-    delete ownedOperations;
 }
 
 /*!
@@ -108,49 +103,27 @@ void QArtifact::setFileName(QString fileName)
 }
 
 /*!
-    The set of model elements that are manifested in the Artifact. That is, these model elements are utilized in the construction (or generation) of the artifact.
+    The Operations defined for the Artifact. The association is a specialization of the ownedMember association.
  */
-const QSet<QManifestation *> *QArtifact::manifestations() const
+const QList<QOperation *> *QArtifact::ownedOperations() const
 {
-    return d_ptr->manifestations;
+    return d_ptr->ownedOperations;
 }
 
-void QArtifact::addManifestation(const QManifestation *manifestation)
+void QArtifact::addOwnedOperation(const QOperation *ownedOperation)
 {
-    d_ptr->manifestations->insert(const_cast<QManifestation *>(manifestation));
+    d_ptr->ownedOperations->append(const_cast<QOperation *>(ownedOperation));
     // Adjust subsetted property(ies)
-    addOwnedElement(manifestation);
-    addClientDependency(manifestation);
+    QClassifier::d_ptr->features->insert(const_cast<QOperation *>(ownedOperation));
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QOperation *>(ownedOperation));
 }
 
-void QArtifact::removeManifestation(const QManifestation *manifestation)
+void QArtifact::removeOwnedOperation(const QOperation *ownedOperation)
 {
-    d_ptr->manifestations->remove(const_cast<QManifestation *>(manifestation));
+    d_ptr->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation));
     // Adjust subsetted property(ies)
-    removeOwnedElement(manifestation);
-    removeClientDependency(manifestation);
-}
-
-/*!
-    The Artifacts that are defined (nested) within the Artifact. The association is a specialization of the ownedMember association from Namespace to NamedElement.
- */
-const QSet<QArtifact *> *QArtifact::nestedArtifacts() const
-{
-    return d_ptr->nestedArtifacts;
-}
-
-void QArtifact::addNestedArtifact(const QArtifact *nestedArtifact)
-{
-    d_ptr->nestedArtifacts->insert(const_cast<QArtifact *>(nestedArtifact));
-    // Adjust subsetted property(ies)
-    addOwnedMember(nestedArtifact);
-}
-
-void QArtifact::removeNestedArtifact(const QArtifact *nestedArtifact)
-{
-    d_ptr->nestedArtifacts->remove(const_cast<QArtifact *>(nestedArtifact));
-    // Adjust subsetted property(ies)
-    removeOwnedMember(nestedArtifact);
+    QClassifier::d_ptr->features->remove(const_cast<QOperation *>(ownedOperation));
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QOperation *>(ownedOperation));
 }
 
 /*!
@@ -165,40 +138,62 @@ void QArtifact::addOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
     // Adjust subsetted property(ies)
-    addOwnedMember(ownedAttribute);
-    addAttribute(ownedAttribute);
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QProperty *>(ownedAttribute));
+    QClassifier::d_ptr->attributes->insert(const_cast<QProperty *>(ownedAttribute));
 }
 
 void QArtifact::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
     // Adjust subsetted property(ies)
-    removeOwnedMember(ownedAttribute);
-    removeAttribute(ownedAttribute);
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QProperty *>(ownedAttribute));
+    QClassifier::d_ptr->attributes->remove(const_cast<QProperty *>(ownedAttribute));
 }
 
 /*!
-    The Operations defined for the Artifact. The association is a specialization of the ownedMember association.
+    The set of model elements that are manifested in the Artifact. That is, these model elements are utilized in the construction (or generation) of the artifact.
  */
-const QList<QOperation *> *QArtifact::ownedOperations() const
+const QSet<QManifestation *> *QArtifact::manifestations() const
 {
-    return d_ptr->ownedOperations;
+    return d_ptr->manifestations;
 }
 
-void QArtifact::addOwnedOperation(const QOperation *ownedOperation)
+void QArtifact::addManifestation(const QManifestation *manifestation)
 {
-    d_ptr->ownedOperations->append(const_cast<QOperation *>(ownedOperation));
+    d_ptr->manifestations->insert(const_cast<QManifestation *>(manifestation));
     // Adjust subsetted property(ies)
-    addFeature(ownedOperation);
-    addOwnedMember(ownedOperation);
+    QElement::d_ptr->ownedElements->insert(const_cast<QManifestation *>(manifestation));
+    QNamedElement::d_ptr->clientDependencies->insert(const_cast<QManifestation *>(manifestation));
 }
 
-void QArtifact::removeOwnedOperation(const QOperation *ownedOperation)
+void QArtifact::removeManifestation(const QManifestation *manifestation)
 {
-    d_ptr->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation));
+    d_ptr->manifestations->remove(const_cast<QManifestation *>(manifestation));
     // Adjust subsetted property(ies)
-    removeFeature(ownedOperation);
-    removeOwnedMember(ownedOperation);
+    QElement::d_ptr->ownedElements->remove(const_cast<QManifestation *>(manifestation));
+    QNamedElement::d_ptr->clientDependencies->remove(const_cast<QManifestation *>(manifestation));
+}
+
+/*!
+    The Artifacts that are defined (nested) within the Artifact. The association is a specialization of the ownedMember association from Namespace to NamedElement.
+ */
+const QSet<QArtifact *> *QArtifact::nestedArtifacts() const
+{
+    return d_ptr->nestedArtifacts;
+}
+
+void QArtifact::addNestedArtifact(const QArtifact *nestedArtifact)
+{
+    d_ptr->nestedArtifacts->insert(const_cast<QArtifact *>(nestedArtifact));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QArtifact *>(nestedArtifact));
+}
+
+void QArtifact::removeNestedArtifact(const QArtifact *nestedArtifact)
+{
+    d_ptr->nestedArtifacts->remove(const_cast<QArtifact *>(nestedArtifact));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QArtifact *>(nestedArtifact));
 }
 
 #include "moc_qartifact.cpp"

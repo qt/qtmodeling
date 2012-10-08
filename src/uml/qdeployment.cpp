@@ -40,6 +40,11 @@
 ****************************************************************************/
 
 #include "qdeployment.h"
+#include "qdeployment_p.h"
+#include "qelement_p.h"
+#include "qdependency_p.h"
+#include "qelement_p.h"
+#include "qdependency_p.h"
 
 #include <QtUml/QDeploymentSpecification>
 #include <QtUml/QDeployedArtifact>
@@ -47,21 +52,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QDeploymentPrivate
-{
-public:
-    explicit QDeploymentPrivate();
-    virtual ~QDeploymentPrivate();
-
-    QSet<QDeploymentSpecification *> *configurations;
-    QSet<QDeployedArtifact *> *deployedArtifacts;
-    QDeploymentTarget *location;
-};
-
 QDeploymentPrivate::QDeploymentPrivate() :
+    location(0),
     configurations(new QSet<QDeploymentSpecification *>),
-    deployedArtifacts(new QSet<QDeployedArtifact *>),
-    location(0)
+    deployedArtifacts(new QSet<QDeployedArtifact *>)
 {
 }
 
@@ -90,6 +84,19 @@ QDeployment::~QDeployment()
 }
 
 /*!
+    The DeployedTarget which is the target of a Deployment.
+ */
+QDeploymentTarget *QDeployment::location() const
+{
+    return d_ptr->location;
+}
+
+void QDeployment::setLocation(const QDeploymentTarget *location)
+{
+    d_ptr->location = const_cast<QDeploymentTarget *>(location);
+}
+
+/*!
     The specification of properties that parameterize the deployment and execution of one or more Artifacts.
  */
 const QSet<QDeploymentSpecification *> *QDeployment::configurations() const
@@ -101,14 +108,14 @@ void QDeployment::addConfiguration(const QDeploymentSpecification *configuration
 {
     d_ptr->configurations->insert(const_cast<QDeploymentSpecification *>(configuration));
     // Adjust subsetted property(ies)
-    addOwnedElement(configuration);
+    QElement::d_ptr->ownedElements->insert(const_cast<QDeploymentSpecification *>(configuration));
 }
 
 void QDeployment::removeConfiguration(const QDeploymentSpecification *configuration)
 {
     d_ptr->configurations->remove(const_cast<QDeploymentSpecification *>(configuration));
     // Adjust subsetted property(ies)
-    removeOwnedElement(configuration);
+    QElement::d_ptr->ownedElements->remove(const_cast<QDeploymentSpecification *>(configuration));
 }
 
 /*!
@@ -123,27 +130,14 @@ void QDeployment::addDeployedArtifact(const QDeployedArtifact *deployedArtifact)
 {
     d_ptr->deployedArtifacts->insert(const_cast<QDeployedArtifact *>(deployedArtifact));
     // Adjust subsetted property(ies)
-    addSupplier(deployedArtifact);
+    QDependency::d_ptr->suppliers->insert(const_cast<QDeployedArtifact *>(deployedArtifact));
 }
 
 void QDeployment::removeDeployedArtifact(const QDeployedArtifact *deployedArtifact)
 {
     d_ptr->deployedArtifacts->remove(const_cast<QDeployedArtifact *>(deployedArtifact));
     // Adjust subsetted property(ies)
-    removeSupplier(deployedArtifact);
-}
-
-/*!
-    The DeployedTarget which is the target of a Deployment.
- */
-QDeploymentTarget *QDeployment::location() const
-{
-    return d_ptr->location;
-}
-
-void QDeployment::setLocation(const QDeploymentTarget *location)
-{
-    d_ptr->location = const_cast<QDeploymentTarget *>(location);
+    QDependency::d_ptr->suppliers->remove(const_cast<QDeployedArtifact *>(deployedArtifact));
 }
 
 #include "moc_qdeployment.cpp"

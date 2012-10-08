@@ -75,7 +75,7 @@ public:
     QString viewpoint() const;
     void setViewpoint(QString viewpoint);
 
-private:
+protected:
     QModelPrivate *d_ptr;
 };
 

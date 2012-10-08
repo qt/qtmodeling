@@ -40,42 +40,29 @@
 ****************************************************************************/
 
 #include "qclause.h"
+#include "qclause_p.h"
 
 #include <QtUml/QExecutableNode>
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QClausePrivate
-{
-public:
-    explicit QClausePrivate();
-    virtual ~QClausePrivate();
-
-    QSet<QExecutableNode *> *bodies;
-    QList<QOutputPin *> *bodyOutputs;
-    QOutputPin *decider;
-    QSet<QClause *> *predecessorClauses;
-    QSet<QClause *> *successorClauses;
-    QSet<QExecutableNode *> *tests;
-};
-
 QClausePrivate::QClausePrivate() :
-    bodies(new QSet<QExecutableNode *>),
-    bodyOutputs(new QList<QOutputPin *>),
+    successorClauses(new QSet<QClause *>),
     decider(0),
     predecessorClauses(new QSet<QClause *>),
-    successorClauses(new QSet<QClause *>),
+    bodyOutputs(new QList<QOutputPin *>),
+    bodies(new QSet<QExecutableNode *>),
     tests(new QSet<QExecutableNode *>)
 {
 }
 
 QClausePrivate::~QClausePrivate()
 {
-    delete bodies;
-    delete bodyOutputs;
-    delete predecessorClauses;
     delete successorClauses;
+    delete predecessorClauses;
+    delete bodyOutputs;
+    delete bodies;
     delete tests;
 }
 
@@ -98,39 +85,21 @@ QClause::~QClause()
 }
 
 /*!
-    A nested activity fragment that is executed if the test evaluates to true and the clause is chosen over any concurrent clauses that also evaluate to true.
+    A set of clauses which may not be tested unless the current clause tests false.
  */
-const QSet<QExecutableNode *> *QClause::bodies() const
+const QSet<QClause *> *QClause::successorClauses() const
 {
-    return d_ptr->bodies;
+    return d_ptr->successorClauses;
 }
 
-void QClause::addBody(const QExecutableNode *body)
+void QClause::addSuccessorClause(const QClause *successorClause)
 {
-    d_ptr->bodies->insert(const_cast<QExecutableNode *>(body));
+    d_ptr->successorClauses->insert(const_cast<QClause *>(successorClause));
 }
 
-void QClause::removeBody(const QExecutableNode *body)
+void QClause::removeSuccessorClause(const QClause *successorClause)
 {
-    d_ptr->bodies->remove(const_cast<QExecutableNode *>(body));
-}
-
-/*!
-    A list of output pins within the body fragment whose values are moved to the result pins of the containing conditional node after execution of the clause body.
- */
-const QList<QOutputPin *> *QClause::bodyOutputs() const
-{
-    return d_ptr->bodyOutputs;
-}
-
-void QClause::addBodyOutput(const QOutputPin *bodyOutput)
-{
-    d_ptr->bodyOutputs->append(const_cast<QOutputPin *>(bodyOutput));
-}
-
-void QClause::removeBodyOutput(const QOutputPin *bodyOutput)
-{
-    d_ptr->bodyOutputs->removeAll(const_cast<QOutputPin *>(bodyOutput));
+    d_ptr->successorClauses->remove(const_cast<QClause *>(successorClause));
 }
 
 /*!
@@ -165,21 +134,39 @@ void QClause::removePredecessorClause(const QClause *predecessorClause)
 }
 
 /*!
-    A set of clauses which may not be tested unless the current clause tests false.
+    A list of output pins within the body fragment whose values are moved to the result pins of the containing conditional node after execution of the clause body.
  */
-const QSet<QClause *> *QClause::successorClauses() const
+const QList<QOutputPin *> *QClause::bodyOutputs() const
 {
-    return d_ptr->successorClauses;
+    return d_ptr->bodyOutputs;
 }
 
-void QClause::addSuccessorClause(const QClause *successorClause)
+void QClause::addBodyOutput(const QOutputPin *bodyOutput)
 {
-    d_ptr->successorClauses->insert(const_cast<QClause *>(successorClause));
+    d_ptr->bodyOutputs->append(const_cast<QOutputPin *>(bodyOutput));
 }
 
-void QClause::removeSuccessorClause(const QClause *successorClause)
+void QClause::removeBodyOutput(const QOutputPin *bodyOutput)
 {
-    d_ptr->successorClauses->remove(const_cast<QClause *>(successorClause));
+    d_ptr->bodyOutputs->removeAll(const_cast<QOutputPin *>(bodyOutput));
+}
+
+/*!
+    A nested activity fragment that is executed if the test evaluates to true and the clause is chosen over any concurrent clauses that also evaluate to true.
+ */
+const QSet<QExecutableNode *> *QClause::bodies() const
+{
+    return d_ptr->bodies;
+}
+
+void QClause::addBody(const QExecutableNode *body)
+{
+    d_ptr->bodies->insert(const_cast<QExecutableNode *>(body));
+}
+
+void QClause::removeBody(const QExecutableNode *body)
+{
+    d_ptr->bodies->remove(const_cast<QExecutableNode *>(body));
 }
 
 /*!

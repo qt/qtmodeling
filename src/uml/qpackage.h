@@ -72,24 +72,24 @@ class Q_UML_EXPORT QPackage : public QObject, public QNamespace, public QPackage
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QNamespace
-    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
-    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
-    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
-    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
-    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
     Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
+    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
+    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
+    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
+    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
+    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
 
     // From QParameterableElement
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
@@ -104,13 +104,13 @@ class Q_UML_EXPORT QPackage : public QObject, public QNamespace, public QPackage
 
     // From QPackage
     Q_PROPERTY(QString URI READ URI WRITE setURI)
-    Q_PROPERTY(const QSet<QPackage *> * nestedPackages READ nestedPackages)
-    Q_PROPERTY(QPackage * nestingPackage READ nestingPackage WRITE setNestingPackage)
-    Q_PROPERTY(const QSet<QStereotype *> * ownedStereotypes READ ownedStereotypes)
     Q_PROPERTY(const QSet<QType *> * ownedTypes READ ownedTypes)
-    Q_PROPERTY(const QSet<QPackageMerge *> * packageMerges READ packageMerges)
     Q_PROPERTY(const QSet<QPackageableElement *> * packagedElements READ packagedElements)
+    Q_PROPERTY(QPackage * nestingPackage READ nestingPackage WRITE setNestingPackage)
     Q_PROPERTY(const QSet<QProfileApplication *> * profileApplications READ profileApplications)
+    Q_PROPERTY(const QSet<QStereotype *> * ownedStereotypes READ ownedStereotypes)
+    Q_PROPERTY(const QSet<QPackageMerge *> * packageMerges READ packageMerges)
+    Q_PROPERTY(const QSet<QPackage *> * nestedPackages READ nestedPackages)
 
     Q_DISABLE_COPY(QPackage)
     Q_DECLARE_PRIVATE(QPackage)
@@ -124,24 +124,24 @@ public:
     void setURI(QString URI);
 
     // Association-ends
-    const QSet<QPackage *> *nestedPackages() const;
-    void addNestedPackage(const QPackage *nestedPackage);
-    void removeNestedPackage(const QPackage *nestedPackage);
-    QPackage *nestingPackage() const;
-    void setNestingPackage(const QPackage *nestingPackage);
-    const QSet<QStereotype *> *ownedStereotypes() const;
     const QSet<QType *> *ownedTypes() const;
     void addOwnedType(const QType *ownedType);
     void removeOwnedType(const QType *ownedType);
-    const QSet<QPackageMerge *> *packageMerges() const;
-    void addPackageMerge(const QPackageMerge *packageMerge);
-    void removePackageMerge(const QPackageMerge *packageMerge);
     const QSet<QPackageableElement *> *packagedElements() const;
     void addPackagedElement(const QPackageableElement *packagedElement);
     void removePackagedElement(const QPackageableElement *packagedElement);
+    QPackage *nestingPackage() const;
+    void setNestingPackage(const QPackage *nestingPackage);
     const QSet<QProfileApplication *> *profileApplications() const;
     void addProfileApplication(const QProfileApplication *profileApplication);
     void removeProfileApplication(const QProfileApplication *profileApplication);
+    const QSet<QStereotype *> *ownedStereotypes() const;
+    const QSet<QPackageMerge *> *packageMerges() const;
+    void addPackageMerge(const QPackageMerge *packageMerge);
+    void removePackageMerge(const QPackageMerge *packageMerge);
+    const QSet<QPackage *> *nestedPackages() const;
+    void addNestedPackage(const QPackage *nestedPackage);
+    void removeNestedPackage(const QPackage *nestedPackage);
 
     // Operations
     const QSet<QStereotype *> *allApplicableStereotypes() const;
@@ -150,7 +150,7 @@ public:
     bool mustBeOwned() const;
     const QSet<QPackageableElement *> *visibleMembers() const;
 
-private:
+protected:
     QPackagePrivate *d_ptr;
 };
 

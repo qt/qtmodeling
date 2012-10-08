@@ -65,21 +65,21 @@ class Q_UML_EXPORT QTrigger : public QObject, public QNamedElement
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QTrigger
-    Q_PROPERTY(QEvent * event READ event WRITE setEvent)
     Q_PROPERTY(const QSet<QPort *> * ports READ ports)
+    Q_PROPERTY(QEvent * event READ event WRITE setEvent)
 
     Q_DISABLE_COPY(QTrigger)
     Q_DECLARE_PRIVATE(QTrigger)
@@ -89,13 +89,13 @@ public:
     virtual ~QTrigger();
 
     // Association-ends
-    QEvent *event() const;
-    void setEvent(const QEvent *event);
     const QSet<QPort *> *ports() const;
     void addPort(const QPort *port);
     void removePort(const QPort *port);
+    QEvent *event() const;
+    void setEvent(const QEvent *event);
 
-private:
+protected:
     QTriggerPrivate *d_ptr;
 };
 

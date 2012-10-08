@@ -40,24 +40,18 @@
 ****************************************************************************/
 
 #include "qprotocolconformance.h"
+#include "qprotocolconformance_p.h"
+#include "qelement_p.h"
+#include "qdirectedrelationship_p.h"
+#include "qdirectedrelationship_p.h"
 
 #include <QtUml/QProtocolStateMachine>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QProtocolConformancePrivate
-{
-public:
-    explicit QProtocolConformancePrivate();
-    virtual ~QProtocolConformancePrivate();
-
-    QProtocolStateMachine *generalMachine;
-    QProtocolStateMachine *specificMachine;
-};
-
 QProtocolConformancePrivate::QProtocolConformancePrivate() :
-    generalMachine(0),
-    specificMachine(0)
+    specificMachine(0),
+    generalMachine(0)
 {
 }
 
@@ -84,19 +78,6 @@ QProtocolConformance::~QProtocolConformance()
 }
 
 /*!
-    Specifies the protocol state machine to which the specific state machine conforms.
- */
-QProtocolStateMachine *QProtocolConformance::generalMachine() const
-{
-    return d_ptr->generalMachine;
-}
-
-void QProtocolConformance::setGeneralMachine(const QProtocolStateMachine *generalMachine)
-{
-    d_ptr->generalMachine = const_cast<QProtocolStateMachine *>(generalMachine);
-}
-
-/*!
     Specifies the state machine which conforms to the general state machine.
  */
 QProtocolStateMachine *QProtocolConformance::specificMachine() const
@@ -107,6 +88,19 @@ QProtocolStateMachine *QProtocolConformance::specificMachine() const
 void QProtocolConformance::setSpecificMachine(const QProtocolStateMachine *specificMachine)
 {
     d_ptr->specificMachine = const_cast<QProtocolStateMachine *>(specificMachine);
+}
+
+/*!
+    Specifies the protocol state machine to which the specific state machine conforms.
+ */
+QProtocolStateMachine *QProtocolConformance::generalMachine() const
+{
+    return d_ptr->generalMachine;
+}
+
+void QProtocolConformance::setGeneralMachine(const QProtocolStateMachine *generalMachine)
+{
+    d_ptr->generalMachine = const_cast<QProtocolStateMachine *>(generalMachine);
 }
 
 #include "moc_qprotocolconformance.cpp"

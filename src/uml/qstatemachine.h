@@ -68,18 +68,18 @@ class Q_UML_EXPORT QStateMachine : public QBehavior
 
     // From QBehavior
     Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant)
-    Q_PROPERTY(QBehavioredClassifier * context READ context)
-    Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
-    Q_PROPERTY(const QSet<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
+    Q_PROPERTY(QBehavioralFeature * specification READ specification WRITE setSpecification)
     Q_PROPERTY(const QSet<QConstraint *> * postconditions READ postconditions)
     Q_PROPERTY(const QSet<QConstraint *> * preconditions READ preconditions)
-    Q_PROPERTY(QBehavioralFeature * specification READ specification WRITE setSpecification)
+    Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
+    Q_PROPERTY(const QSet<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
+    Q_PROPERTY(QBehavioredClassifier * context READ context)
 
     // From QStateMachine
-    Q_PROPERTY(const QSet<QPseudostate *> * connectionPoints READ connectionPoints)
     Q_PROPERTY(const QSet<QStateMachine *> * extendedStateMachines READ extendedStateMachines)
-    Q_PROPERTY(const QSet<QRegion *> * regions READ regions)
+    Q_PROPERTY(const QSet<QPseudostate *> * connectionPoints READ connectionPoints)
     Q_PROPERTY(const QSet<QState *> * submachineStates READ submachineStates)
+    Q_PROPERTY(const QSet<QRegion *> * regions READ regions)
 
     Q_DISABLE_COPY(QStateMachine)
     Q_DECLARE_PRIVATE(QStateMachine)
@@ -89,18 +89,18 @@ public:
     virtual ~QStateMachine();
 
     // Association-ends
-    const QSet<QPseudostate *> *connectionPoints() const;
-    void addConnectionPoint(const QPseudostate *connectionPoint);
-    void removeConnectionPoint(const QPseudostate *connectionPoint);
     const QSet<QStateMachine *> *extendedStateMachines() const;
     void addExtendedStateMachine(const QStateMachine *extendedStateMachine);
     void removeExtendedStateMachine(const QStateMachine *extendedStateMachine);
-    const QSet<QRegion *> *regions() const;
-    void addRegion(const QRegion *region);
-    void removeRegion(const QRegion *region);
+    const QSet<QPseudostate *> *connectionPoints() const;
+    void addConnectionPoint(const QPseudostate *connectionPoint);
+    void removeConnectionPoint(const QPseudostate *connectionPoint);
     const QSet<QState *> *submachineStates() const;
     void addSubmachineState(const QState *submachineState);
     void removeSubmachineState(const QState *submachineState);
+    const QSet<QRegion *> *regions() const;
+    void addRegion(const QRegion *region);
+    void removeRegion(const QRegion *region);
 
     // Operations
     QNamespace *LCA(const QState *s1, const QState *s2) const;
@@ -108,7 +108,7 @@ public:
     bool isConsistentWith(const QRedefinableElement *redefinee) const;
     bool isRedefinitionContextValid(const QStateMachine *redefined) const;
 
-private:
+protected:
     QStateMachinePrivate *d_ptr;
 };
 

@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qcentralbuffernode.h"
+#include "qcentralbuffernode_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QCentralBufferNodePrivate
-{
-public:
-    explicit QCentralBufferNodePrivate();
-    virtual ~QCentralBufferNodePrivate();
-
-};
 
 QCentralBufferNodePrivate::QCentralBufferNodePrivate()
 {

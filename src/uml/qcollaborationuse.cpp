@@ -40,25 +40,17 @@
 ****************************************************************************/
 
 #include "qcollaborationuse.h"
+#include "qcollaborationuse_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QDependency>
 #include <QtUml/QCollaboration>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QCollaborationUsePrivate
-{
-public:
-    explicit QCollaborationUsePrivate();
-    virtual ~QCollaborationUsePrivate();
-
-    QSet<QDependency *> *roleBindings;
-    QCollaboration *type;
-};
-
 QCollaborationUsePrivate::QCollaborationUsePrivate() :
-    roleBindings(new QSet<QDependency *>),
-    type(0)
+    type(0),
+    roleBindings(new QSet<QDependency *>)
 {
 }
 
@@ -86,6 +78,19 @@ QCollaborationUse::~QCollaborationUse()
 }
 
 /*!
+    The collaboration which is used in this occurrence. The collaboration defines the cooperation between its roles which are mapped to properties of the classifier owning the collaboration use.
+ */
+QCollaboration *QCollaborationUse::type() const
+{
+    return d_ptr->type;
+}
+
+void QCollaborationUse::setType(const QCollaboration *type)
+{
+    d_ptr->type = const_cast<QCollaboration *>(type);
+}
+
+/*!
     A mapping between features of the collaboration type and features of the owning classifier. This mapping indicates which connectable element of the classifier plays which role(s) in the collaboration. A connectable element may be bound to multiple roles in the same collaboration use (that is, it may play multiple roles).
  */
 const QSet<QDependency *> *QCollaborationUse::roleBindings() const
@@ -97,27 +102,14 @@ void QCollaborationUse::addRoleBinding(const QDependency *roleBinding)
 {
     d_ptr->roleBindings->insert(const_cast<QDependency *>(roleBinding));
     // Adjust subsetted property(ies)
-    addOwnedElement(roleBinding);
+    QElement::d_ptr->ownedElements->insert(const_cast<QDependency *>(roleBinding));
 }
 
 void QCollaborationUse::removeRoleBinding(const QDependency *roleBinding)
 {
     d_ptr->roleBindings->remove(const_cast<QDependency *>(roleBinding));
     // Adjust subsetted property(ies)
-    removeOwnedElement(roleBinding);
-}
-
-/*!
-    The collaboration which is used in this occurrence. The collaboration defines the cooperation between its roles which are mapped to properties of the classifier owning the collaboration use.
- */
-QCollaboration *QCollaborationUse::type() const
-{
-    return d_ptr->type;
-}
-
-void QCollaborationUse::setType(const QCollaboration *type)
-{
-    d_ptr->type = const_cast<QCollaboration *>(type);
+    QElement::d_ptr->ownedElements->remove(const_cast<QDependency *>(roleBinding));
 }
 
 #include "moc_qcollaborationuse.cpp"

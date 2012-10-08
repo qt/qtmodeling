@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qpartdecomposition.h"
+#include "qpartdecomposition_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QPartDecompositionPrivate
-{
-public:
-    explicit QPartDecompositionPrivate();
-    virtual ~QPartDecompositionPrivate();
-
-};
 
 QPartDecompositionPrivate::QPartDecompositionPrivate()
 {

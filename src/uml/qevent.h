@@ -65,7 +65,7 @@ public:
 protected:
     explicit QEvent();
 
-private:
+protected:
     QEventPrivate *d_ptr;
 };
 

@@ -40,21 +40,12 @@
 ****************************************************************************/
 
 #include "qdestroyobjectaction.h"
+#include "qdestroyobjectaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QDestroyObjectActionPrivate
-{
-public:
-    explicit QDestroyObjectActionPrivate();
-    virtual ~QDestroyObjectActionPrivate();
-
-    bool isDestroyLinks;
-    bool isDestroyOwnedObjects;
-    QInputPin *target;
-};
 
 QDestroyObjectActionPrivate::QDestroyObjectActionPrivate() :
     isDestroyLinks(false),

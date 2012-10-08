@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qliteralnull.h"
+#include "qliteralnull_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QLiteralNullPrivate
-{
-public:
-    explicit QLiteralNullPrivate();
-    virtual ~QLiteralNullPrivate();
-
-};
 
 QLiteralNullPrivate::QLiteralNullPrivate()
 {

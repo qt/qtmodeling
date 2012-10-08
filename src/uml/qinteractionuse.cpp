@@ -40,6 +40,10 @@
 ****************************************************************************/
 
 #include "qinteractionuse.h"
+#include "qinteractionuse_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QProperty>
 #include <QtUml/QInteraction>
@@ -48,24 +52,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QInteractionUsePrivate
-{
-public:
-    explicit QInteractionUsePrivate();
-    virtual ~QInteractionUsePrivate();
-
-    QSet<QGate *> *actualGates;
-    QList<QValueSpecification *> *arguments;
-    QInteraction *refersTo;
-    QValueSpecification *returnValue;
-    QProperty *returnValueRecipient;
-};
-
 QInteractionUsePrivate::QInteractionUsePrivate() :
     actualGates(new QSet<QGate *>),
-    arguments(new QList<QValueSpecification *>),
-    refersTo(0),
     returnValue(0),
+    refersTo(0),
+    arguments(new QList<QValueSpecification *>),
     returnValueRecipient(0)
 {
 }
@@ -106,36 +97,27 @@ void QInteractionUse::addActualGate(const QGate *actualGate)
 {
     d_ptr->actualGates->insert(const_cast<QGate *>(actualGate));
     // Adjust subsetted property(ies)
-    addOwnedElement(actualGate);
+    QElement::d_ptr->ownedElements->insert(const_cast<QGate *>(actualGate));
 }
 
 void QInteractionUse::removeActualGate(const QGate *actualGate)
 {
     d_ptr->actualGates->remove(const_cast<QGate *>(actualGate));
     // Adjust subsetted property(ies)
-    removeOwnedElement(actualGate);
+    QElement::d_ptr->ownedElements->remove(const_cast<QGate *>(actualGate));
 }
 
 /*!
-    The actual arguments of the Interaction
+    The value of the executed Interaction.
  */
-const QList<QValueSpecification *> *QInteractionUse::arguments() const
+QValueSpecification *QInteractionUse::returnValue() const
 {
-    return d_ptr->arguments;
+    return d_ptr->returnValue;
 }
 
-void QInteractionUse::addArgument(const QValueSpecification *argument)
+void QInteractionUse::setReturnValue(const QValueSpecification *returnValue)
 {
-    d_ptr->arguments->append(const_cast<QValueSpecification *>(argument));
-    // Adjust subsetted property(ies)
-    addOwnedElement(argument);
-}
-
-void QInteractionUse::removeArgument(const QValueSpecification *argument)
-{
-    d_ptr->arguments->removeAll(const_cast<QValueSpecification *>(argument));
-    // Adjust subsetted property(ies)
-    removeOwnedElement(argument);
+    d_ptr->returnValue = const_cast<QValueSpecification *>(returnValue);
 }
 
 /*!
@@ -152,16 +134,25 @@ void QInteractionUse::setRefersTo(const QInteraction *refersTo)
 }
 
 /*!
-    The value of the executed Interaction.
+    The actual arguments of the Interaction
  */
-QValueSpecification *QInteractionUse::returnValue() const
+const QList<QValueSpecification *> *QInteractionUse::arguments() const
 {
-    return d_ptr->returnValue;
+    return d_ptr->arguments;
 }
 
-void QInteractionUse::setReturnValue(const QValueSpecification *returnValue)
+void QInteractionUse::addArgument(const QValueSpecification *argument)
 {
-    d_ptr->returnValue = const_cast<QValueSpecification *>(returnValue);
+    d_ptr->arguments->append(const_cast<QValueSpecification *>(argument));
+    // Adjust subsetted property(ies)
+    QElement::d_ptr->ownedElements->insert(const_cast<QValueSpecification *>(argument));
+}
+
+void QInteractionUse::removeArgument(const QValueSpecification *argument)
+{
+    d_ptr->arguments->removeAll(const_cast<QValueSpecification *>(argument));
+    // Adjust subsetted property(ies)
+    QElement::d_ptr->ownedElements->remove(const_cast<QValueSpecification *>(argument));
 }
 
 /*!

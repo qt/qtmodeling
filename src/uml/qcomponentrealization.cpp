@@ -40,21 +40,15 @@
 ****************************************************************************/
 
 #include "qcomponentrealization.h"
+#include "qcomponentrealization_p.h"
+#include "qdependency_p.h"
+#include "qelement_p.h"
+#include "qdependency_p.h"
 
 #include <QtUml/QComponent>
 #include <QtUml/QClassifier>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QComponentRealizationPrivate
-{
-public:
-    explicit QComponentRealizationPrivate();
-    virtual ~QComponentRealizationPrivate();
-
-    QComponent *abstraction;
-    QSet<QClassifier *> *realizingClassifiers;
-};
 
 QComponentRealizationPrivate::QComponentRealizationPrivate() :
     abstraction(0),
@@ -110,14 +104,14 @@ void QComponentRealization::addRealizingClassifier(const QClassifier *realizingC
 {
     d_ptr->realizingClassifiers->insert(const_cast<QClassifier *>(realizingClassifier));
     // Adjust subsetted property(ies)
-    addClient(realizingClassifier);
+    QDependency::d_ptr->clients->insert(const_cast<QClassifier *>(realizingClassifier));
 }
 
 void QComponentRealization::removeRealizingClassifier(const QClassifier *realizingClassifier)
 {
     d_ptr->realizingClassifiers->remove(const_cast<QClassifier *>(realizingClassifier));
     // Adjust subsetted property(ies)
-    removeClient(realizingClassifier);
+    QDependency::d_ptr->clients->remove(const_cast<QClassifier *>(realizingClassifier));
 }
 
 #include "moc_qcomponentrealization.cpp"

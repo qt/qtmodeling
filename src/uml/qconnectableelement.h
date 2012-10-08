@@ -76,7 +76,7 @@ public:
 protected:
     explicit QConnectableElement();
 
-private:
+protected:
     QConnectableElementPrivate *d_ptr;
 };
 

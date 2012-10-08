@@ -40,18 +40,11 @@
 ****************************************************************************/
 
 #include "qnode.h"
+#include "qnode_p.h"
+#include "qnamespace_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QNodePrivate
-{
-public:
-    explicit QNodePrivate();
-    virtual ~QNodePrivate();
-
-    QSet<QNode *> *nestedNodes;
-};
 
 QNodePrivate::QNodePrivate() :
     nestedNodes(new QSet<QNode *>)
@@ -93,14 +86,14 @@ void QNode::addNestedNode(const QNode *nestedNode)
 {
     d_ptr->nestedNodes->insert(const_cast<QNode *>(nestedNode));
     // Adjust subsetted property(ies)
-    addOwnedMember(nestedNode);
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QNode *>(nestedNode));
 }
 
 void QNode::removeNestedNode(const QNode *nestedNode)
 {
     d_ptr->nestedNodes->remove(const_cast<QNode *>(nestedNode));
     // Adjust subsetted property(ies)
-    removeOwnedMember(nestedNode);
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QNode *>(nestedNode));
 }
 
 #include "moc_qnode.cpp"

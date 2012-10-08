@@ -40,28 +40,19 @@
 ****************************************************************************/
 
 #include "qmultiplicityelement.h"
+#include "qmultiplicityelement_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QValueSpecification>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QMultiplicityElementPrivate
-{
-public:
-    explicit QMultiplicityElementPrivate();
-    virtual ~QMultiplicityElementPrivate();
-
-    bool isOrdered;
-    bool isUnique;
-    QValueSpecification *lowerValue;
-    QValueSpecification *upperValue;
-};
-
 QMultiplicityElementPrivate::QMultiplicityElementPrivate() :
-    isOrdered(false),
     isUnique(true),
-    lowerValue(0),
-    upperValue(0)
+    isOrdered(false),
+    upperValue(0),
+    lowerValue(0)
 {
 }
 
@@ -88,16 +79,16 @@ QMultiplicityElement::~QMultiplicityElement()
 }
 
 /*!
-    For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.
+    Specifies the upper bound of the multiplicity interval.
  */
-bool QMultiplicityElement::isOrdered() const
+qint32 QMultiplicityElement::upper() const
 {
-    return d_ptr->isOrdered;
+    qWarning("QMultiplicityElement::upper: to be implemented (this is a derived attribute)");
 }
 
-void QMultiplicityElement::setOrdered(bool isOrdered)
+void QMultiplicityElement::setUpper(qint32 upper)
 {
-    d_ptr->isOrdered = isOrdered;
+    qWarning("QMultiplicityElement::setUpper: to be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -114,6 +105,19 @@ void QMultiplicityElement::setUnique(bool isUnique)
 }
 
 /*!
+    For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.
+ */
+bool QMultiplicityElement::isOrdered() const
+{
+    return d_ptr->isOrdered;
+}
+
+void QMultiplicityElement::setOrdered(bool isOrdered)
+{
+    d_ptr->isOrdered = isOrdered;
+}
+
+/*!
     Specifies the lower bound of the multiplicity interval.
  */
 qint32 QMultiplicityElement::lower() const
@@ -127,16 +131,16 @@ void QMultiplicityElement::setLower(qint32 lower)
 }
 
 /*!
-    Specifies the upper bound of the multiplicity interval.
+    The specification of the upper bound for this multiplicity.
  */
-qint32 QMultiplicityElement::upper() const
+QValueSpecification *QMultiplicityElement::upperValue() const
 {
-    qWarning("QMultiplicityElement::upper: to be implemented (this is a derived attribute)");
+    return d_ptr->upperValue;
 }
 
-void QMultiplicityElement::setUpper(qint32 upper)
+void QMultiplicityElement::setUpperValue(const QValueSpecification *upperValue)
 {
-    qWarning("QMultiplicityElement::setUpper: to be implemented (this is a derived attribute)");
+    d_ptr->upperValue = const_cast<QValueSpecification *>(upperValue);
 }
 
 /*!
@@ -150,19 +154,6 @@ QValueSpecification *QMultiplicityElement::lowerValue() const
 void QMultiplicityElement::setLowerValue(const QValueSpecification *lowerValue)
 {
     d_ptr->lowerValue = const_cast<QValueSpecification *>(lowerValue);
-}
-
-/*!
-    The specification of the upper bound for this multiplicity.
- */
-QValueSpecification *QMultiplicityElement::upperValue() const
-{
-    return d_ptr->upperValue;
-}
-
-void QMultiplicityElement::setUpperValue(const QValueSpecification *upperValue)
-{
-    d_ptr->upperValue = const_cast<QValueSpecification *>(upperValue);
 }
 
 /*!

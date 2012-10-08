@@ -40,6 +40,9 @@
 ****************************************************************************/
 
 #include "qlifeline.h"
+#include "qlifeline_p.h"
+#include "qnamedelement_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QConnectableElement>
 #include <QtUml/QValueSpecification>
@@ -49,24 +52,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QLifelinePrivate
-{
-public:
-    explicit QLifelinePrivate();
-    virtual ~QLifelinePrivate();
-
-    QSet<QInteractionFragment *> *coveredBy;
-    QPartDecomposition *decomposedAs;
-    QInteraction *interaction;
-    QConnectableElement *represents;
-    QValueSpecification *selector;
-};
-
 QLifelinePrivate::QLifelinePrivate() :
-    coveredBy(new QSet<QInteractionFragment *>),
-    decomposedAs(0),
-    interaction(0),
     represents(0),
+    decomposedAs(0),
+    coveredBy(new QSet<QInteractionFragment *>),
+    interaction(0),
     selector(0)
 {
 }
@@ -95,6 +85,32 @@ QLifeline::~QLifeline()
 }
 
 /*!
+    References the ConnectableElement within the classifier that contains the enclosing interaction.
+ */
+QConnectableElement *QLifeline::represents() const
+{
+    return d_ptr->represents;
+}
+
+void QLifeline::setRepresents(const QConnectableElement *represents)
+{
+    d_ptr->represents = const_cast<QConnectableElement *>(represents);
+}
+
+/*!
+    References the Interaction that represents the decomposition.
+ */
+QPartDecomposition *QLifeline::decomposedAs() const
+{
+    return d_ptr->decomposedAs;
+}
+
+void QLifeline::setDecomposedAs(const QPartDecomposition *decomposedAs)
+{
+    d_ptr->decomposedAs = const_cast<QPartDecomposition *>(decomposedAs);
+}
+
+/*!
     References the InteractionFragments in which this Lifeline takes part.
  */
 const QSet<QInteractionFragment *> *QLifeline::coveredBy() const
@@ -113,19 +129,6 @@ void QLifeline::removeCoveredBy(const QInteractionFragment *coveredBy)
 }
 
 /*!
-    References the Interaction that represents the decomposition.
- */
-QPartDecomposition *QLifeline::decomposedAs() const
-{
-    return d_ptr->decomposedAs;
-}
-
-void QLifeline::setDecomposedAs(const QPartDecomposition *decomposedAs)
-{
-    d_ptr->decomposedAs = const_cast<QPartDecomposition *>(decomposedAs);
-}
-
-/*!
     References the Interaction enclosing this Lifeline.
  */
 QInteraction *QLifeline::interaction() const
@@ -136,19 +139,6 @@ QInteraction *QLifeline::interaction() const
 void QLifeline::setInteraction(const QInteraction *interaction)
 {
     d_ptr->interaction = const_cast<QInteraction *>(interaction);
-}
-
-/*!
-    References the ConnectableElement within the classifier that contains the enclosing interaction.
- */
-QConnectableElement *QLifeline::represents() const
-{
-    return d_ptr->represents;
-}
-
-void QLifeline::setRepresents(const QConnectableElement *represents)
-{
-    d_ptr->represents = const_cast<QConnectableElement *>(represents);
 }
 
 /*!

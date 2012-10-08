@@ -65,7 +65,7 @@ public:
     explicit QCommunicationPath(QObject *parent = 0);
     virtual ~QCommunicationPath();
 
-private:
+protected:
     QCommunicationPathPrivate *d_ptr;
 };
 

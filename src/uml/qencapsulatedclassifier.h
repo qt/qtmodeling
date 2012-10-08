@@ -72,7 +72,7 @@ public:
 protected:
     explicit QEncapsulatedClassifier();
 
-private:
+protected:
     QEncapsulatedClassifierPrivate *d_ptr;
 };
 

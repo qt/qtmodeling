@@ -40,6 +40,8 @@
 ****************************************************************************/
 
 #include "qparameter.h"
+#include "qparameter_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QValueSpecification>
 #include <QtUml/QOperation>
@@ -47,27 +49,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QParameterPrivate
-{
-public:
-    explicit QParameterPrivate();
-    virtual ~QParameterPrivate();
-
-    QtUml::ParameterDirectionKind direction;
-    QtUml::ParameterEffectKind effect;
-    bool isException;
-    bool isStream;
-    QValueSpecification *defaultValue;
-    QOperation *operation;
-    QSet<QParameterSet *> *parameterSets;
-};
-
 QParameterPrivate::QParameterPrivate() :
-    direction(QtUml::ParameterDirectionIn),
     isException(false),
+    direction(QtUml::ParameterDirectionIn),
     isStream(false),
-    defaultValue(0),
     operation(0),
+    defaultValue(0),
     parameterSets(new QSet<QParameterSet *>)
 {
 }
@@ -93,6 +80,19 @@ QParameter::QParameter(QObject *parent)
 QParameter::~QParameter()
 {
     delete d_ptr;
+}
+
+/*!
+    Tells whether an output parameter may emit a value to the exclusion of the other outputs.
+ */
+bool QParameter::isException() const
+{
+    return d_ptr->isException;
+}
+
+void QParameter::setException(bool isException)
+{
+    d_ptr->isException = isException;
 }
 
 /*!
@@ -122,32 +122,6 @@ void QParameter::setDirection(QtUml::ParameterDirectionKind direction)
 }
 
 /*!
-    Specifies the effect that the owner of the parameter has on values passed in or out of the parameter.
- */
-QtUml::ParameterEffectKind QParameter::effect() const
-{
-    return d_ptr->effect;
-}
-
-void QParameter::setEffect(QtUml::ParameterEffectKind effect)
-{
-    d_ptr->effect = effect;
-}
-
-/*!
-    Tells whether an output parameter may emit a value to the exclusion of the other outputs.
- */
-bool QParameter::isException() const
-{
-    return d_ptr->isException;
-}
-
-void QParameter::setException(bool isException)
-{
-    d_ptr->isException = isException;
-}
-
-/*!
     Tells whether an input parameter may accept values while its behavior is executing, or whether an output parameter post values while the behavior is executing.
  */
 bool QParameter::isStream() const
@@ -161,16 +135,16 @@ void QParameter::setStream(bool isStream)
 }
 
 /*!
-    Specifies a ValueSpecification that represents a value to be used when no argument is supplied for the Parameter.
+    Specifies the effect that the owner of the parameter has on values passed in or out of the parameter.
  */
-QValueSpecification *QParameter::defaultValue() const
+QtUml::ParameterEffectKind QParameter::effect() const
 {
-    return d_ptr->defaultValue;
+    return d_ptr->effect;
 }
 
-void QParameter::setDefaultValue(const QValueSpecification *defaultValue)
+void QParameter::setEffect(QtUml::ParameterEffectKind effect)
 {
-    d_ptr->defaultValue = const_cast<QValueSpecification *>(defaultValue);
+    d_ptr->effect = effect;
 }
 
 /*!
@@ -184,6 +158,19 @@ QOperation *QParameter::operation() const
 void QParameter::setOperation(const QOperation *operation)
 {
     d_ptr->operation = const_cast<QOperation *>(operation);
+}
+
+/*!
+    Specifies a ValueSpecification that represents a value to be used when no argument is supplied for the Parameter.
+ */
+QValueSpecification *QParameter::defaultValue() const
+{
+    return d_ptr->defaultValue;
+}
+
+void QParameter::setDefaultValue(const QValueSpecification *defaultValue)
+{
+    d_ptr->defaultValue = const_cast<QValueSpecification *>(defaultValue);
 }
 
 /*!

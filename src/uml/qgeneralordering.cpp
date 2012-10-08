@@ -40,24 +40,15 @@
 ****************************************************************************/
 
 #include "qgeneralordering.h"
+#include "qgeneralordering_p.h"
 
 #include <QtUml/QOccurrenceSpecification>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QGeneralOrderingPrivate
-{
-public:
-    explicit QGeneralOrderingPrivate();
-    virtual ~QGeneralOrderingPrivate();
-
-    QOccurrenceSpecification *after;
-    QOccurrenceSpecification *before;
-};
-
 QGeneralOrderingPrivate::QGeneralOrderingPrivate() :
-    after(0),
-    before(0)
+    before(0),
+    after(0)
 {
 }
 
@@ -84,19 +75,6 @@ QGeneralOrdering::~QGeneralOrdering()
 }
 
 /*!
-    The OccurrenceSpecification referenced comes after the OccurrenceSpecification referenced by before.
- */
-QOccurrenceSpecification *QGeneralOrdering::after() const
-{
-    return d_ptr->after;
-}
-
-void QGeneralOrdering::setAfter(const QOccurrenceSpecification *after)
-{
-    d_ptr->after = const_cast<QOccurrenceSpecification *>(after);
-}
-
-/*!
     The OccurrenceSpecification referenced comes before the OccurrenceSpecification referenced by after.
  */
 QOccurrenceSpecification *QGeneralOrdering::before() const
@@ -107,6 +85,19 @@ QOccurrenceSpecification *QGeneralOrdering::before() const
 void QGeneralOrdering::setBefore(const QOccurrenceSpecification *before)
 {
     d_ptr->before = const_cast<QOccurrenceSpecification *>(before);
+}
+
+/*!
+    The OccurrenceSpecification referenced comes after the OccurrenceSpecification referenced by before.
+ */
+QOccurrenceSpecification *QGeneralOrdering::after() const
+{
+    return d_ptr->after;
+}
+
+void QGeneralOrdering::setAfter(const QOccurrenceSpecification *after)
+{
+    d_ptr->after = const_cast<QOccurrenceSpecification *>(after);
 }
 
 #include "moc_qgeneralordering.cpp"

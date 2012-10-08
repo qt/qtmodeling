@@ -40,6 +40,9 @@
 ****************************************************************************/
 
 #include "qtemplateparametersubstitution.h"
+#include "qtemplateparametersubstitution_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QParameterableElement>
 #include <QtUml/QTemplateParameter>
@@ -47,22 +50,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QTemplateParameterSubstitutionPrivate
-{
-public:
-    explicit QTemplateParameterSubstitutionPrivate();
-    virtual ~QTemplateParameterSubstitutionPrivate();
-
-    QParameterableElement *actual;
-    QTemplateParameter *formal;
-    QParameterableElement *ownedActual;
-    QTemplateBinding *templateBinding;
-};
-
 QTemplateParameterSubstitutionPrivate::QTemplateParameterSubstitutionPrivate() :
-    actual(0),
-    formal(0),
     ownedActual(0),
+    formal(0),
+    actual(0),
     templateBinding(0)
 {
 }
@@ -90,16 +81,16 @@ QTemplateParameterSubstitution::~QTemplateParameterSubstitution()
 }
 
 /*!
-    The element that is the actual parameter for this substitution.
+    The actual parameter that is owned by this substitution.
  */
-QParameterableElement *QTemplateParameterSubstitution::actual() const
+QParameterableElement *QTemplateParameterSubstitution::ownedActual() const
 {
-    return d_ptr->actual;
+    return d_ptr->ownedActual;
 }
 
-void QTemplateParameterSubstitution::setActual(const QParameterableElement *actual)
+void QTemplateParameterSubstitution::setOwnedActual(const QParameterableElement *ownedActual)
 {
-    d_ptr->actual = const_cast<QParameterableElement *>(actual);
+    d_ptr->ownedActual = const_cast<QParameterableElement *>(ownedActual);
 }
 
 /*!
@@ -116,16 +107,16 @@ void QTemplateParameterSubstitution::setFormal(const QTemplateParameter *formal)
 }
 
 /*!
-    The actual parameter that is owned by this substitution.
+    The element that is the actual parameter for this substitution.
  */
-QParameterableElement *QTemplateParameterSubstitution::ownedActual() const
+QParameterableElement *QTemplateParameterSubstitution::actual() const
 {
-    return d_ptr->ownedActual;
+    return d_ptr->actual;
 }
 
-void QTemplateParameterSubstitution::setOwnedActual(const QParameterableElement *ownedActual)
+void QTemplateParameterSubstitution::setActual(const QParameterableElement *actual)
 {
-    d_ptr->ownedActual = const_cast<QParameterableElement *>(ownedActual);
+    d_ptr->actual = const_cast<QParameterableElement *>(actual);
 }
 
 /*!

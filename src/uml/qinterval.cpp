@@ -40,23 +40,14 @@
 ****************************************************************************/
 
 #include "qinterval.h"
+#include "qinterval_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QIntervalPrivate
-{
-public:
-    explicit QIntervalPrivate();
-    virtual ~QIntervalPrivate();
-
-    QValueSpecification *max;
-    QValueSpecification *min;
-};
-
 QIntervalPrivate::QIntervalPrivate() :
-    max(0),
-    min(0)
+    min(0),
+    max(0)
 {
 }
 
@@ -83,19 +74,6 @@ QInterval::~QInterval()
 }
 
 /*!
-    Refers to the ValueSpecification denoting the maximum value of the range.
- */
-QValueSpecification *QInterval::max() const
-{
-    return d_ptr->max;
-}
-
-void QInterval::setMax(const QValueSpecification *max)
-{
-    d_ptr->max = const_cast<QValueSpecification *>(max);
-}
-
-/*!
     Refers to the ValueSpecification denoting the minimum value of the range.
  */
 QValueSpecification *QInterval::min() const
@@ -106,6 +84,19 @@ QValueSpecification *QInterval::min() const
 void QInterval::setMin(const QValueSpecification *min)
 {
     d_ptr->min = const_cast<QValueSpecification *>(min);
+}
+
+/*!
+    Refers to the ValueSpecification denoting the maximum value of the range.
+ */
+QValueSpecification *QInterval::max() const
+{
+    return d_ptr->max;
+}
+
+void QInterval::setMax(const QValueSpecification *max)
+{
+    d_ptr->max = const_cast<QValueSpecification *>(max);
 }
 
 #include "moc_qinterval.cpp"

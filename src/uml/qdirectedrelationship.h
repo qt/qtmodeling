@@ -71,16 +71,9 @@ public:
     const QSet<QElement *> *targets() const;
 
 protected:
-    // Synchronization functions for read-only subsetted properties
-    void addSource(const QElement *source);
-    void removeSource(const QElement *source);
-    void addTarget(const QElement *target);
-    void removeTarget(const QElement *target);
-
-protected:
     explicit QDirectedRelationship();
 
-private:
+protected:
     QDirectedRelationshipPrivate *d_ptr;
 };
 

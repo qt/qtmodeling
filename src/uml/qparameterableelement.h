@@ -76,7 +76,7 @@ public:
 protected:
     explicit QParameterableElement();
 
-private:
+protected:
     QParameterableElementPrivate *d_ptr;
 };
 

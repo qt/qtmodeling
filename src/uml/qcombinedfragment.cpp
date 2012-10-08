@@ -40,22 +40,14 @@
 ****************************************************************************/
 
 #include "qcombinedfragment.h"
+#include "qcombinedfragment_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QGate>
 #include <QtUml/QInteractionOperand>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QCombinedFragmentPrivate
-{
-public:
-    explicit QCombinedFragmentPrivate();
-    virtual ~QCombinedFragmentPrivate();
-
-    QtUml::InteractionOperatorKind interactionOperator;
-    QSet<QGate *> *cfragmentGates;
-    QList<QInteractionOperand *> *operands;
-};
 
 QCombinedFragmentPrivate::QCombinedFragmentPrivate() :
     interactionOperator(QtUml::InteractionOperatorSeq),
@@ -113,14 +105,14 @@ void QCombinedFragment::addCfragmentGate(const QGate *cfragmentGate)
 {
     d_ptr->cfragmentGates->insert(const_cast<QGate *>(cfragmentGate));
     // Adjust subsetted property(ies)
-    addOwnedElement(cfragmentGate);
+    QElement::d_ptr->ownedElements->insert(const_cast<QGate *>(cfragmentGate));
 }
 
 void QCombinedFragment::removeCfragmentGate(const QGate *cfragmentGate)
 {
     d_ptr->cfragmentGates->remove(const_cast<QGate *>(cfragmentGate));
     // Adjust subsetted property(ies)
-    removeOwnedElement(cfragmentGate);
+    QElement::d_ptr->ownedElements->remove(const_cast<QGate *>(cfragmentGate));
 }
 
 /*!
@@ -135,14 +127,14 @@ void QCombinedFragment::addOperand(const QInteractionOperand *operand)
 {
     d_ptr->operands->append(const_cast<QInteractionOperand *>(operand));
     // Adjust subsetted property(ies)
-    addOwnedElement(operand);
+    QElement::d_ptr->ownedElements->insert(const_cast<QInteractionOperand *>(operand));
 }
 
 void QCombinedFragment::removeOperand(const QInteractionOperand *operand)
 {
     d_ptr->operands->removeAll(const_cast<QInteractionOperand *>(operand));
     // Adjust subsetted property(ies)
-    removeOwnedElement(operand);
+    QElement::d_ptr->ownedElements->remove(const_cast<QInteractionOperand *>(operand));
 }
 
 #include "moc_qcombinedfragment.cpp"

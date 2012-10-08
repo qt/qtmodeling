@@ -40,6 +40,9 @@
 ****************************************************************************/
 
 #include "qvariable.h"
+#include "qvariable_p.h"
+#include "qnamedelement_p.h"
+#include "qnamedelement_p.h"
 
 #include <QtUml/QActivity>
 #include <QtUml/QStructuredActivityNode>
@@ -47,19 +50,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QVariablePrivate
-{
-public:
-    explicit QVariablePrivate();
-    virtual ~QVariablePrivate();
-
-    QActivity *activityScope;
-    QStructuredActivityNode *scope;
-};
-
 QVariablePrivate::QVariablePrivate() :
-    activityScope(0),
-    scope(0)
+    scope(0),
+    activityScope(0)
 {
 }
 
@@ -86,19 +79,6 @@ QVariable::~QVariable()
 }
 
 /*!
-    An activity that owns the variable.
- */
-QActivity *QVariable::activityScope() const
-{
-    return d_ptr->activityScope;
-}
-
-void QVariable::setActivityScope(const QActivity *activityScope)
-{
-    d_ptr->activityScope = const_cast<QActivity *>(activityScope);
-}
-
-/*!
     A structured activity node that owns the variable.
  */
 QStructuredActivityNode *QVariable::scope() const
@@ -109,6 +89,19 @@ QStructuredActivityNode *QVariable::scope() const
 void QVariable::setScope(const QStructuredActivityNode *scope)
 {
     d_ptr->scope = const_cast<QStructuredActivityNode *>(scope);
+}
+
+/*!
+    An activity that owns the variable.
+ */
+QActivity *QVariable::activityScope() const
+{
+    return d_ptr->activityScope;
+}
+
+void QVariable::setActivityScope(const QActivity *activityScope)
+{
+    d_ptr->activityScope = const_cast<QActivity *>(activityScope);
 }
 
 /*!

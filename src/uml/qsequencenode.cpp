@@ -40,19 +40,11 @@
 ****************************************************************************/
 
 #include "qsequencenode.h"
+#include "qsequencenode_p.h"
 
 #include <QtUml/QExecutableNode>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QSequenceNodePrivate
-{
-public:
-    explicit QSequenceNodePrivate();
-    virtual ~QSequenceNodePrivate();
-
-    QList<QExecutableNode *> *executableNodes;
-};
 
 QSequenceNodePrivate::QSequenceNodePrivate() :
     executableNodes(new QList<QExecutableNode *>)

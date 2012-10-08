@@ -70,7 +70,7 @@ public:
 protected:
     explicit QVariableAction();
 
-private:
+protected:
     QVariableActionPrivate *d_ptr;
 };
 

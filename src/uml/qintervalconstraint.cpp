@@ -40,19 +40,11 @@
 ****************************************************************************/
 
 #include "qintervalconstraint.h"
+#include "qintervalconstraint_p.h"
 
 #include <QtUml/QInterval>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QIntervalConstraintPrivate
-{
-public:
-    explicit QIntervalConstraintPrivate();
-    virtual ~QIntervalConstraintPrivate();
-
-    QInterval *specification;
-};
 
 QIntervalConstraintPrivate::QIntervalConstraintPrivate() :
     specification(0)

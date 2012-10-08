@@ -73,7 +73,7 @@ public:
 protected:
     explicit QWriteStructuralFeatureAction();
 
-private:
+protected:
     QWriteStructuralFeatureActionPrivate *d_ptr;
 };
 

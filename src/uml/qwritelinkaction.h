@@ -65,7 +65,7 @@ public:
 protected:
     explicit QWriteLinkAction();
 
-private:
+protected:
     QWriteLinkActionPrivate *d_ptr;
 };
 

@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qinputpin.h"
+#include "qinputpin_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QInputPinPrivate
-{
-public:
-    explicit QInputPinPrivate();
-    virtual ~QInputPinPrivate();
-
-};
 
 QInputPinPrivate::QInputPinPrivate()
 {

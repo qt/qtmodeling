@@ -40,19 +40,12 @@
 ****************************************************************************/
 
 #include "qcreatelinkobjectaction.h"
+#include "qcreatelinkobjectaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QCreateLinkObjectActionPrivate
-{
-public:
-    explicit QCreateLinkObjectActionPrivate();
-    virtual ~QCreateLinkObjectActionPrivate();
-
-    QOutputPin *result;
-};
 
 QCreateLinkObjectActionPrivate::QCreateLinkObjectActionPrivate() :
     result(0)

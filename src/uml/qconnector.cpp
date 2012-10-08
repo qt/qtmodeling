@@ -40,6 +40,9 @@
 ****************************************************************************/
 
 #include "qconnector.h"
+#include "qconnector_p.h"
+#include "qredefinableelement_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QBehavior>
 #include <QtUml/QConnectorEnd>
@@ -47,31 +50,19 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QConnectorPrivate
-{
-public:
-    explicit QConnectorPrivate();
-    virtual ~QConnectorPrivate();
-
-    QSet<QBehavior *> *contracts;
-    QList<QConnectorEnd *> *ends;
-    QSet<QConnector *> *redefinedConnectors;
-    QAssociation *type;
-};
-
 QConnectorPrivate::QConnectorPrivate() :
-    contracts(new QSet<QBehavior *>),
-    ends(new QList<QConnectorEnd *>),
     redefinedConnectors(new QSet<QConnector *>),
-    type(0)
+    contracts(new QSet<QBehavior *>),
+    type(0),
+    ends(new QList<QConnectorEnd *>)
 {
 }
 
 QConnectorPrivate::~QConnectorPrivate()
 {
+    delete redefinedConnectors;
     delete contracts;
     delete ends;
-    delete redefinedConnectors;
 }
 
 /*!
@@ -101,6 +92,28 @@ QtUml::ConnectorKind QConnector::kind() const
 }
 
 /*!
+    A connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector. The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced.
+ */
+const QSet<QConnector *> *QConnector::redefinedConnectors() const
+{
+    return d_ptr->redefinedConnectors;
+}
+
+void QConnector::addRedefinedConnector(const QConnector *redefinedConnector)
+{
+    d_ptr->redefinedConnectors->insert(const_cast<QConnector *>(redefinedConnector));
+    // Adjust subsetted property(ies)
+    QRedefinableElement::d_ptr->redefinedElements->insert(const_cast<QConnector *>(redefinedConnector));
+}
+
+void QConnector::removeRedefinedConnector(const QConnector *redefinedConnector)
+{
+    d_ptr->redefinedConnectors->remove(const_cast<QConnector *>(redefinedConnector));
+    // Adjust subsetted property(ies)
+    QRedefinableElement::d_ptr->redefinedElements->remove(const_cast<QConnector *>(redefinedConnector));
+}
+
+/*!
     The set of Behaviors that specify the valid interaction patterns across the connector.
  */
 const QSet<QBehavior *> *QConnector::contracts() const
@@ -119,6 +132,19 @@ void QConnector::removeContract(const QBehavior *contract)
 }
 
 /*!
+    An optional association that specifies the link corresponding to this connector.
+ */
+QAssociation *QConnector::type() const
+{
+    return d_ptr->type;
+}
+
+void QConnector::setType(const QAssociation *type)
+{
+    d_ptr->type = const_cast<QAssociation *>(type);
+}
+
+/*!
     A connector consists of at least two connector ends, each representing the participation of instances of the classifiers typing the connectable elements attached to this end. The set of connector ends is ordered.
  */
 const QList<QConnectorEnd *> *QConnector::ends() const
@@ -130,49 +156,14 @@ void QConnector::addEnd(const QConnectorEnd *end)
 {
     d_ptr->ends->append(const_cast<QConnectorEnd *>(end));
     // Adjust subsetted property(ies)
-    addOwnedElement(end);
+    QElement::d_ptr->ownedElements->insert(const_cast<QConnectorEnd *>(end));
 }
 
 void QConnector::removeEnd(const QConnectorEnd *end)
 {
     d_ptr->ends->removeAll(const_cast<QConnectorEnd *>(end));
     // Adjust subsetted property(ies)
-    removeOwnedElement(end);
-}
-
-/*!
-    A connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector. The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced.
- */
-const QSet<QConnector *> *QConnector::redefinedConnectors() const
-{
-    return d_ptr->redefinedConnectors;
-}
-
-void QConnector::addRedefinedConnector(const QConnector *redefinedConnector)
-{
-    d_ptr->redefinedConnectors->insert(const_cast<QConnector *>(redefinedConnector));
-    // Adjust subsetted property(ies)
-    addRedefinedElement(redefinedConnector);
-}
-
-void QConnector::removeRedefinedConnector(const QConnector *redefinedConnector)
-{
-    d_ptr->redefinedConnectors->remove(const_cast<QConnector *>(redefinedConnector));
-    // Adjust subsetted property(ies)
-    removeRedefinedElement(redefinedConnector);
-}
-
-/*!
-    An optional association that specifies the link corresponding to this connector.
- */
-QAssociation *QConnector::type() const
-{
-    return d_ptr->type;
-}
-
-void QConnector::setType(const QAssociation *type)
-{
-    d_ptr->type = const_cast<QAssociation *>(type);
+    QElement::d_ptr->ownedElements->remove(const_cast<QConnectorEnd *>(end));
 }
 
 #include "moc_qconnector.cpp"

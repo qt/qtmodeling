@@ -40,6 +40,9 @@
 ****************************************************************************/
 
 #include "qnamedelement.h"
+#include "qnamedelement_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QPackage>
 #include <QtUml/QNamespace>
@@ -48,23 +51,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QNamedElementPrivate
-{
-public:
-    explicit QNamedElementPrivate();
-    virtual ~QNamedElementPrivate();
-
-    QString name;
-    QtUml::VisibilityKind visibility;
-    QSet<QDependency *> *clientDependencies;
-    QStringExpression *nameExpression;
-    QNamespace *namespace_;
-};
-
 QNamedElementPrivate::QNamedElementPrivate() :
-    clientDependencies(new QSet<QDependency *>),
     nameExpression(0),
-    namespace_(0)
+    namespace_(0),
+    clientDependencies(new QSet<QDependency *>)
 {
 }
 
@@ -105,14 +95,6 @@ void QNamedElement::setName(QString name)
 }
 
 /*!
-    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
- */
-QString QNamedElement::qualifiedName() const
-{
-    qWarning("QNamedElement::qualifiedName: to be implemented (this is a derived attribute)");
-}
-
-/*!
     Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
  */
 QtUml::VisibilityKind QNamedElement::visibility() const
@@ -126,23 +108,11 @@ void QNamedElement::setVisibility(QtUml::VisibilityKind visibility)
 }
 
 /*!
-    Indicates the dependencies that reference the client.
+    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
  */
-const QSet<QDependency *> *QNamedElement::clientDependencies() const
+QString QNamedElement::qualifiedName() const
 {
-    return d_ptr->clientDependencies;
-}
-
-void QNamedElement::addClientDependency(const QDependency *clientDependency)
-{
-    d_ptr->clientDependencies->insert(const_cast<QDependency *>(clientDependency));
-    // Adjust subsetted property(ies)
-}
-
-void QNamedElement::removeClientDependency(const QDependency *clientDependency)
-{
-    d_ptr->clientDependencies->remove(const_cast<QDependency *>(clientDependency));
-    // Adjust subsetted property(ies)
+    qWarning("QNamedElement::qualifiedName: to be implemented (this is a derived attribute)");
 }
 
 /*!
@@ -166,9 +136,24 @@ QNamespace *QNamedElement::namespace_() const
     return d_ptr->namespace_;
 }
 
-void QNamedElement::setNamespace_(const QNamespace *namespace_)
+/*!
+    Indicates the dependencies that reference the client.
+ */
+const QSet<QDependency *> *QNamedElement::clientDependencies() const
 {
-    d_ptr->namespace_ = const_cast<QNamespace *>(namespace_);
+    return d_ptr->clientDependencies;
+}
+
+void QNamedElement::addClientDependency(const QDependency *clientDependency)
+{
+    d_ptr->clientDependencies->insert(const_cast<QDependency *>(clientDependency));
+    // Adjust subsetted property(ies)
+}
+
+void QNamedElement::removeClientDependency(const QDependency *clientDependency)
+{
+    d_ptr->clientDependencies->remove(const_cast<QDependency *>(clientDependency));
+    // Adjust subsetted property(ies)
 }
 
 /*!

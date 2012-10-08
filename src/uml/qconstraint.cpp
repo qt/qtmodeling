@@ -40,6 +40,9 @@
 ****************************************************************************/
 
 #include "qconstraint.h"
+#include "qconstraint_p.h"
+#include "qnamedelement_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QElement>
 #include <QtUml/QNamespace>
@@ -47,21 +50,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QConstraintPrivate
-{
-public:
-    explicit QConstraintPrivate();
-    virtual ~QConstraintPrivate();
-
-    QList<QElement *> *constrainedElements;
-    QNamespace *context;
-    QValueSpecification *specification;
-};
-
 QConstraintPrivate::QConstraintPrivate() :
-    constrainedElements(new QList<QElement *>),
     context(0),
-    specification(0)
+    specification(0),
+    constrainedElements(new QList<QElement *>)
 {
 }
 
@@ -89,24 +81,6 @@ QConstraint::~QConstraint()
 }
 
 /*!
-    The ordered set of Elements referenced by this Constraint.
- */
-const QList<QElement *> *QConstraint::constrainedElements() const
-{
-    return d_ptr->constrainedElements;
-}
-
-void QConstraint::addConstrainedElement(const QElement *constrainedElement)
-{
-    d_ptr->constrainedElements->append(const_cast<QElement *>(constrainedElement));
-}
-
-void QConstraint::removeConstrainedElement(const QElement *constrainedElement)
-{
-    d_ptr->constrainedElements->removeAll(const_cast<QElement *>(constrainedElement));
-}
-
-/*!
     Specifies the namespace that owns the NamedElement.
  */
 QNamespace *QConstraint::context() const
@@ -130,6 +104,24 @@ QValueSpecification *QConstraint::specification() const
 void QConstraint::setSpecification(const QValueSpecification *specification)
 {
     d_ptr->specification = const_cast<QValueSpecification *>(specification);
+}
+
+/*!
+    The ordered set of Elements referenced by this Constraint.
+ */
+const QList<QElement *> *QConstraint::constrainedElements() const
+{
+    return d_ptr->constrainedElements;
+}
+
+void QConstraint::addConstrainedElement(const QElement *constrainedElement)
+{
+    d_ptr->constrainedElements->append(const_cast<QElement *>(constrainedElement));
+}
+
+void QConstraint::removeConstrainedElement(const QElement *constrainedElement)
+{
+    d_ptr->constrainedElements->removeAll(const_cast<QElement *>(constrainedElement));
 }
 
 #include "moc_qconstraint.cpp"

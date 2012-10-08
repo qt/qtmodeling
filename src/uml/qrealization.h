@@ -65,7 +65,7 @@ public:
     explicit QRealization(QObject *parent = 0);
     virtual ~QRealization();
 
-private:
+protected:
     QRealizationPrivate *d_ptr;
 };
 

@@ -73,7 +73,7 @@ public:
 protected:
     explicit QPackageableElement();
 
-private:
+protected:
     QPackageableElementPrivate *d_ptr;
 };
 

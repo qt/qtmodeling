@@ -62,9 +62,9 @@ class Q_UML_EXPORT QInclude : public QObject, public QDirectedRelationship, publ
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QRelationship
     Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
@@ -75,15 +75,15 @@ class Q_UML_EXPORT QInclude : public QObject, public QDirectedRelationship, publ
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QInclude
-    Q_PROPERTY(QUseCase * addition READ addition WRITE setAddition)
     Q_PROPERTY(QUseCase * includingCase READ includingCase WRITE setIncludingCase)
+    Q_PROPERTY(QUseCase * addition READ addition WRITE setAddition)
 
     Q_DISABLE_COPY(QInclude)
     Q_DECLARE_PRIVATE(QInclude)
@@ -93,12 +93,12 @@ public:
     virtual ~QInclude();
 
     // Association-ends
-    QUseCase *addition() const;
-    void setAddition(const QUseCase *addition);
     QUseCase *includingCase() const;
     void setIncludingCase(const QUseCase *includingCase);
+    QUseCase *addition() const;
+    void setAddition(const QUseCase *addition);
 
-private:
+protected:
     QIncludePrivate *d_ptr;
 };
 

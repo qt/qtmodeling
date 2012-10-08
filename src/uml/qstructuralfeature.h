@@ -71,7 +71,7 @@ public:
 protected:
     explicit QStructuralFeature();
 
-private:
+protected:
     QStructuralFeaturePrivate *d_ptr;
 };
 

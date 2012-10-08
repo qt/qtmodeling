@@ -70,7 +70,7 @@ public:
 protected:
     explicit QWriteVariableAction();
 
-private:
+protected:
     QWriteVariableActionPrivate *d_ptr;
 };
 

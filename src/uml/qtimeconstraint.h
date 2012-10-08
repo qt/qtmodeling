@@ -78,7 +78,7 @@ public:
     QTimeInterval *specification() const;
     void setSpecification(const QTimeInterval *specification);
 
-private:
+protected:
     QTimeConstraintPrivate *d_ptr;
 };
 

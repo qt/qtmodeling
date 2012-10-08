@@ -40,32 +40,24 @@
 ****************************************************************************/
 
 #include "qparameterset.h"
+#include "qparameterset_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QConstraint>
 #include <QtUml/QParameter>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QParameterSetPrivate
-{
-public:
-    explicit QParameterSetPrivate();
-    virtual ~QParameterSetPrivate();
-
-    QSet<QConstraint *> *conditions;
-    QSet<QParameter *> *parameters;
-};
-
 QParameterSetPrivate::QParameterSetPrivate() :
-    conditions(new QSet<QConstraint *>),
-    parameters(new QSet<QParameter *>)
+    parameters(new QSet<QParameter *>),
+    conditions(new QSet<QConstraint *>)
 {
 }
 
 QParameterSetPrivate::~QParameterSetPrivate()
 {
-    delete conditions;
     delete parameters;
+    delete conditions;
 }
 
 /*!
@@ -87,28 +79,6 @@ QParameterSet::~QParameterSet()
 }
 
 /*!
-    Constraint that should be satisfied for the owner of the parameters in an input parameter set to start execution using the values provided for those parameters, or the owner of the parameters in an output parameter set to end execution providing the values for those parameters, if all preconditions and conditions on input parameter sets were satisfied.
- */
-const QSet<QConstraint *> *QParameterSet::conditions() const
-{
-    return d_ptr->conditions;
-}
-
-void QParameterSet::addCondition(const QConstraint *condition)
-{
-    d_ptr->conditions->insert(const_cast<QConstraint *>(condition));
-    // Adjust subsetted property(ies)
-    addOwnedElement(condition);
-}
-
-void QParameterSet::removeCondition(const QConstraint *condition)
-{
-    d_ptr->conditions->remove(const_cast<QConstraint *>(condition));
-    // Adjust subsetted property(ies)
-    removeOwnedElement(condition);
-}
-
-/*!
     Parameters in the parameter set.
  */
 const QSet<QParameter *> *QParameterSet::parameters() const
@@ -124,6 +94,28 @@ void QParameterSet::addParameter(const QParameter *parameter)
 void QParameterSet::removeParameter(const QParameter *parameter)
 {
     d_ptr->parameters->remove(const_cast<QParameter *>(parameter));
+}
+
+/*!
+    Constraint that should be satisfied for the owner of the parameters in an input parameter set to start execution using the values provided for those parameters, or the owner of the parameters in an output parameter set to end execution providing the values for those parameters, if all preconditions and conditions on input parameter sets were satisfied.
+ */
+const QSet<QConstraint *> *QParameterSet::conditions() const
+{
+    return d_ptr->conditions;
+}
+
+void QParameterSet::addCondition(const QConstraint *condition)
+{
+    d_ptr->conditions->insert(const_cast<QConstraint *>(condition));
+    // Adjust subsetted property(ies)
+    QElement::d_ptr->ownedElements->insert(const_cast<QConstraint *>(condition));
+}
+
+void QParameterSet::removeCondition(const QConstraint *condition)
+{
+    d_ptr->conditions->remove(const_cast<QConstraint *>(condition));
+    // Adjust subsetted property(ies)
+    QElement::d_ptr->ownedElements->remove(const_cast<QConstraint *>(condition));
 }
 
 #include "moc_qparameterset.cpp"

@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qcontrolflow.h"
+#include "qcontrolflow_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QControlFlowPrivate
-{
-public:
-    explicit QControlFlowPrivate();
-    virtual ~QControlFlowPrivate();
-
-};
 
 QControlFlowPrivate::QControlFlowPrivate()
 {

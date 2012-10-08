@@ -40,19 +40,12 @@
 ****************************************************************************/
 
 #include "qactioninputpin.h"
+#include "qactioninputpin_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QAction>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QActionInputPinPrivate
-{
-public:
-    explicit QActionInputPinPrivate();
-    virtual ~QActionInputPinPrivate();
-
-    QAction *fromAction;
-};
 
 QActionInputPinPrivate::QActionInputPinPrivate() :
     fromAction(0)

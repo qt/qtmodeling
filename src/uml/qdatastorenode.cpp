@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qdatastorenode.h"
+#include "qdatastorenode_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QDataStoreNodePrivate
-{
-public:
-    explicit QDataStoreNodePrivate();
-    virtual ~QDataStoreNodePrivate();
-
-};
 
 QDataStoreNodePrivate::QDataStoreNodePrivate()
 {

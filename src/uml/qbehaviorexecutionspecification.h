@@ -61,27 +61,27 @@ class Q_UML_EXPORT QBehaviorExecutionSpecification : public QObject, public QExe
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QInteractionFragment
-    Q_PROPERTY(const QSet<QLifeline *> * covered READ covered)
-    Q_PROPERTY(QInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
-    Q_PROPERTY(QInteractionOperand * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
     Q_PROPERTY(const QSet<QGeneralOrdering *> * generalOrderings READ generalOrderings)
+    Q_PROPERTY(QInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
+    Q_PROPERTY(const QSet<QLifeline *> * covered READ covered)
+    Q_PROPERTY(QInteractionOperand * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
 
     // From QExecutionSpecification
-    Q_PROPERTY(QOccurrenceSpecification * finish READ finish WRITE setFinish)
     Q_PROPERTY(QOccurrenceSpecification * start READ start WRITE setStart)
+    Q_PROPERTY(QOccurrenceSpecification * finish READ finish WRITE setFinish)
 
     // From QBehaviorExecutionSpecification
     Q_PROPERTY(QBehavior * behavior READ behavior WRITE setBehavior)
@@ -97,7 +97,7 @@ public:
     QBehavior *behavior() const;
     void setBehavior(const QBehavior *behavior);
 
-private:
+protected:
     QBehaviorExecutionSpecificationPrivate *d_ptr;
 };
 

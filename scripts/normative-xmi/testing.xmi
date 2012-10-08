@@ -115,6 +115,7 @@
         <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-subsetReadWriteAttribute-_ownedComment.0" annotatedElement="TestingClass-subsetReadWriteAttribute">
           <body>subsetReadWriteAttribute.</body>
         </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="BaseClass-aRealOperation-result-_upperValue" value="*"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-subsetReadOnlyAttribute" name="subsetReadOnlyAttribute" type="UsedClass" isReadOnly="true" subsettedProperty="BaseClass-subsettedReadOnlyAttribute">
         <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-subsetReadOnlyAttribute-_ownedComment.0" annotatedElement="TestingClass-subsetReadOnlyAttribute">

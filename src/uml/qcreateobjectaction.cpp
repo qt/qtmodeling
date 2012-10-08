@@ -40,21 +40,13 @@
 ****************************************************************************/
 
 #include "qcreateobjectaction.h"
+#include "qcreateobjectaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QClassifier>
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QCreateObjectActionPrivate
-{
-public:
-    explicit QCreateObjectActionPrivate();
-    virtual ~QCreateObjectActionPrivate();
-
-    QClassifier *classifier;
-    QOutputPin *result;
-};
 
 QCreateObjectActionPrivate::QCreateObjectActionPrivate() :
     classifier(0),

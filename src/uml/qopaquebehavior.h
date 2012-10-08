@@ -64,17 +64,17 @@ class Q_UML_EXPORT QOpaqueBehavior : public QBehavior
 
     // From QBehavior
     Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant)
-    Q_PROPERTY(QBehavioredClassifier * context READ context)
-    Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
-    Q_PROPERTY(const QSet<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
+    Q_PROPERTY(QBehavioralFeature * specification READ specification WRITE setSpecification)
     Q_PROPERTY(const QSet<QConstraint *> * postconditions READ postconditions)
     Q_PROPERTY(const QSet<QConstraint *> * preconditions READ preconditions)
     Q_PROPERTY(const QSet<QBehavior *> * redefinedBehaviors READ redefinedBehaviors)
-    Q_PROPERTY(QBehavioralFeature * specification READ specification WRITE setSpecification)
+    Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
+    Q_PROPERTY(const QSet<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
+    Q_PROPERTY(QBehavioredClassifier * context READ context)
 
     // From QOpaqueBehavior
-    Q_PROPERTY(const QList<QString> * bodies READ bodies)
     Q_PROPERTY(const QList<QString> * languages READ languages)
+    Q_PROPERTY(const QList<QString> * bodies READ bodies)
 
     Q_DISABLE_COPY(QOpaqueBehavior)
     Q_DECLARE_PRIVATE(QOpaqueBehavior)
@@ -84,14 +84,14 @@ public:
     virtual ~QOpaqueBehavior();
 
     // Attributes
-    const QList<QString> *bodies() const;
-    void addBody(QString body);
-    void removeBody(QString body);
     const QList<QString> *languages() const;
     void addLanguage(QString language);
     void removeLanguage(QString language);
+    const QList<QString> *bodies() const;
+    void addBody(QString body);
+    void removeBody(QString body);
 
-private:
+protected:
     QOpaqueBehaviorPrivate *d_ptr;
 };
 

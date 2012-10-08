@@ -40,19 +40,12 @@
 ****************************************************************************/
 
 #include "qraiseexceptionaction.h"
+#include "qraiseexceptionaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QRaiseExceptionActionPrivate
-{
-public:
-    explicit QRaiseExceptionActionPrivate();
-    virtual ~QRaiseExceptionActionPrivate();
-
-    QInputPin *exception;
-};
 
 QRaiseExceptionActionPrivate::QRaiseExceptionActionPrivate() :
     exception(0)

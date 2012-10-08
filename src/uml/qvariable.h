@@ -64,25 +64,25 @@ class Q_UML_EXPORT QVariable : public QObject, public QMultiplicityElement, publ
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QMultiplicityElement
-    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
-    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
-    Q_PROPERTY(qint32 lower READ lower WRITE setLower)
     Q_PROPERTY(qint32 upper READ upper WRITE setUpper)
-    Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
+    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
+    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
+    Q_PROPERTY(qint32 lower READ lower WRITE setLower)
     Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
+    Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QTypedElement
     Q_PROPERTY(QType * type READ type WRITE setType)
@@ -95,8 +95,8 @@ class Q_UML_EXPORT QVariable : public QObject, public QMultiplicityElement, publ
     Q_PROPERTY(QConnectableElementTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
 
     // From QVariable
-    Q_PROPERTY(QActivity * activityScope READ activityScope WRITE setActivityScope)
     Q_PROPERTY(QStructuredActivityNode * scope READ scope WRITE setScope)
+    Q_PROPERTY(QActivity * activityScope READ activityScope WRITE setActivityScope)
 
     Q_DISABLE_COPY(QVariable)
     Q_DECLARE_PRIVATE(QVariable)
@@ -106,15 +106,15 @@ public:
     virtual ~QVariable();
 
     // Association-ends
-    QActivity *activityScope() const;
-    void setActivityScope(const QActivity *activityScope);
     QStructuredActivityNode *scope() const;
     void setScope(const QStructuredActivityNode *scope);
+    QActivity *activityScope() const;
+    void setActivityScope(const QActivity *activityScope);
 
     // Operations
     bool isAccessibleBy(const QAction *a) const;
 
-private:
+protected:
     QVariablePrivate *d_ptr;
 };
 

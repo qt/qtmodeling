@@ -40,19 +40,12 @@
 ****************************************************************************/
 
 #include "qstartobjectbehavioraction.h"
+#include "qstartobjectbehavioraction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QStartObjectBehaviorActionPrivate
-{
-public:
-    explicit QStartObjectBehaviorActionPrivate();
-    virtual ~QStartObjectBehaviorActionPrivate();
-
-    QInputPin *object;
-};
 
 QStartObjectBehaviorActionPrivate::QStartObjectBehaviorActionPrivate() :
     object(0)

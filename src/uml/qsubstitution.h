@@ -76,7 +76,7 @@ public:
     QClassifier *substitutingClassifier() const;
     void setSubstitutingClassifier(const QClassifier *substitutingClassifier);
 
-private:
+protected:
     QSubstitutionPrivate *d_ptr;
 };
 

@@ -40,6 +40,9 @@
 ****************************************************************************/
 
 #include "qbehavioralfeature.h"
+#include "qbehavioralfeature_p.h"
+#include "qnamespace_p.h"
+#include "qnamespace_p.h"
 
 #include <QtUml/QType>
 #include <QtUml/QNamedElement>
@@ -49,36 +52,22 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QBehavioralFeaturePrivate
-{
-public:
-    explicit QBehavioralFeaturePrivate();
-    virtual ~QBehavioralFeaturePrivate();
-
-    QtUml::CallConcurrencyKind concurrency;
-    bool isAbstract;
-    QSet<QBehavior *> *methods;
-    QList<QParameter *> *ownedParameters;
-    QSet<QParameterSet *> *ownedParameterSets;
-    QSet<QType *> *raisedExceptions;
-};
-
 QBehavioralFeaturePrivate::QBehavioralFeaturePrivate() :
     concurrency(QtUml::CallConcurrencySequential),
     isAbstract(false),
-    methods(new QSet<QBehavior *>),
+    raisedExceptions(new QSet<QType *>),
     ownedParameters(new QList<QParameter *>),
     ownedParameterSets(new QSet<QParameterSet *>),
-    raisedExceptions(new QSet<QType *>)
+    methods(new QSet<QBehavior *>)
 {
 }
 
 QBehavioralFeaturePrivate::~QBehavioralFeaturePrivate()
 {
-    delete methods;
+    delete raisedExceptions;
     delete ownedParameters;
     delete ownedParameterSets;
-    delete raisedExceptions;
+    delete methods;
 }
 
 /*!
@@ -126,68 +115,6 @@ void QBehavioralFeature::setAbstract(bool isAbstract)
 }
 
 /*!
-    A behavioral description that implements the behavioral feature. There may be at most one behavior for a particular pairing of a classifier (as owner of the behavior) and a behavioral feature (as specification of the behavior).
- */
-const QSet<QBehavior *> *QBehavioralFeature::methods() const
-{
-    return d_ptr->methods;
-}
-
-void QBehavioralFeature::addMethod(const QBehavior *method)
-{
-    d_ptr->methods->insert(const_cast<QBehavior *>(method));
-}
-
-void QBehavioralFeature::removeMethod(const QBehavior *method)
-{
-    d_ptr->methods->remove(const_cast<QBehavior *>(method));
-}
-
-/*!
-    Specifies the ordered set of formal parameters of this BehavioralFeature.
- */
-const QList<QParameter *> *QBehavioralFeature::ownedParameters() const
-{
-    return d_ptr->ownedParameters;
-}
-
-void QBehavioralFeature::addOwnedParameter(const QParameter *ownedParameter)
-{
-    d_ptr->ownedParameters->append(const_cast<QParameter *>(ownedParameter));
-    // Adjust subsetted property(ies)
-    addOwnedMember(ownedParameter);
-}
-
-void QBehavioralFeature::removeOwnedParameter(const QParameter *ownedParameter)
-{
-    d_ptr->ownedParameters->removeAll(const_cast<QParameter *>(ownedParameter));
-    // Adjust subsetted property(ies)
-    removeOwnedMember(ownedParameter);
-}
-
-/*!
-    The ParameterSets owned by this BehavioralFeature.
- */
-const QSet<QParameterSet *> *QBehavioralFeature::ownedParameterSets() const
-{
-    return d_ptr->ownedParameterSets;
-}
-
-void QBehavioralFeature::addOwnedParameterSet(const QParameterSet *ownedParameterSet)
-{
-    d_ptr->ownedParameterSets->insert(const_cast<QParameterSet *>(ownedParameterSet));
-    // Adjust subsetted property(ies)
-    addOwnedMember(ownedParameterSet);
-}
-
-void QBehavioralFeature::removeOwnedParameterSet(const QParameterSet *ownedParameterSet)
-{
-    d_ptr->ownedParameterSets->remove(const_cast<QParameterSet *>(ownedParameterSet));
-    // Adjust subsetted property(ies)
-    removeOwnedMember(ownedParameterSet);
-}
-
-/*!
     References the Types representing exceptions that may be raised during an invocation of this feature.
  */
 const QSet<QType *> *QBehavioralFeature::raisedExceptions() const
@@ -203,6 +130,68 @@ void QBehavioralFeature::addRaisedException(const QType *raisedException)
 void QBehavioralFeature::removeRaisedException(const QType *raisedException)
 {
     d_ptr->raisedExceptions->remove(const_cast<QType *>(raisedException));
+}
+
+/*!
+    Specifies the ordered set of formal parameters of this BehavioralFeature.
+ */
+const QList<QParameter *> *QBehavioralFeature::ownedParameters() const
+{
+    return d_ptr->ownedParameters;
+}
+
+void QBehavioralFeature::addOwnedParameter(const QParameter *ownedParameter)
+{
+    d_ptr->ownedParameters->append(const_cast<QParameter *>(ownedParameter));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QParameter *>(ownedParameter));
+}
+
+void QBehavioralFeature::removeOwnedParameter(const QParameter *ownedParameter)
+{
+    d_ptr->ownedParameters->removeAll(const_cast<QParameter *>(ownedParameter));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QParameter *>(ownedParameter));
+}
+
+/*!
+    The ParameterSets owned by this BehavioralFeature.
+ */
+const QSet<QParameterSet *> *QBehavioralFeature::ownedParameterSets() const
+{
+    return d_ptr->ownedParameterSets;
+}
+
+void QBehavioralFeature::addOwnedParameterSet(const QParameterSet *ownedParameterSet)
+{
+    d_ptr->ownedParameterSets->insert(const_cast<QParameterSet *>(ownedParameterSet));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QParameterSet *>(ownedParameterSet));
+}
+
+void QBehavioralFeature::removeOwnedParameterSet(const QParameterSet *ownedParameterSet)
+{
+    d_ptr->ownedParameterSets->remove(const_cast<QParameterSet *>(ownedParameterSet));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QParameterSet *>(ownedParameterSet));
+}
+
+/*!
+    A behavioral description that implements the behavioral feature. There may be at most one behavior for a particular pairing of a classifier (as owner of the behavior) and a behavioral feature (as specification of the behavior).
+ */
+const QSet<QBehavior *> *QBehavioralFeature::methods() const
+{
+    return d_ptr->methods;
+}
+
+void QBehavioralFeature::addMethod(const QBehavior *method)
+{
+    d_ptr->methods->insert(const_cast<QBehavior *>(method));
+}
+
+void QBehavioralFeature::removeMethod(const QBehavior *method)
+{
+    d_ptr->methods->remove(const_cast<QBehavior *>(method));
 }
 
 /*!

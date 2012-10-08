@@ -70,24 +70,19 @@ public:
     virtual ~QStructuredClassifier();
 
     // Association-ends
+    const QSet<QConnectableElement *> *roles() const;
     const QList<QProperty *> *ownedAttributes() const;
     void addOwnedAttribute(const QProperty *ownedAttribute);
     void removeOwnedAttribute(const QProperty *ownedAttribute);
+    const QSet<QProperty *> *parts() const;
     const QSet<QConnector *> *ownedConnectors() const;
     void addOwnedConnector(const QConnector *ownedConnector);
     void removeOwnedConnector(const QConnector *ownedConnector);
-    const QSet<QProperty *> *parts() const;
-    const QSet<QConnectableElement *> *roles() const;
-
-protected:
-    // Synchronization functions for read-only subsetted properties
-    void addRole(const QConnectableElement *role);
-    void removeRole(const QConnectableElement *role);
 
 protected:
     explicit QStructuredClassifier();
 
-private:
+protected:
     QStructuredClassifierPrivate *d_ptr;
 };
 

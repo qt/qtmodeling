@@ -40,19 +40,11 @@
 ****************************************************************************/
 
 #include "qextensionend.h"
+#include "qextensionend_p.h"
 
 #include <QtUml/QStereotype>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QExtensionEndPrivate
-{
-public:
-    explicit QExtensionEndPrivate();
-    virtual ~QExtensionEndPrivate();
-
-    QStereotype *type;
-};
 
 QExtensionEndPrivate::QExtensionEndPrivate() :
     type(0)

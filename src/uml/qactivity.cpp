@@ -40,6 +40,11 @@
 ****************************************************************************/
 
 #include "qactivity.h"
+#include "qactivity_p.h"
+#include "qelement_p.h"
+#include "qnamespace_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QStructuredActivityNode>
 #include <QtUml/QVariable>
@@ -50,42 +55,26 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QActivityPrivate
-{
-public:
-    explicit QActivityPrivate();
-    virtual ~QActivityPrivate();
-
-    bool isReadOnly;
-    bool isSingleExecution;
-    QSet<QActivityEdge *> *edges;
-    QSet<QActivityGroup *> *groups;
-    QSet<QActivityNode *> *nodes;
-    QSet<QActivityPartition *> *partitions;
-    QSet<QStructuredActivityNode *> *structuredNodes;
-    QSet<QVariable *> *variables;
-};
-
 QActivityPrivate::QActivityPrivate() :
     isReadOnly(false),
     isSingleExecution(false),
-    edges(new QSet<QActivityEdge *>),
-    groups(new QSet<QActivityGroup *>),
-    nodes(new QSet<QActivityNode *>),
     partitions(new QSet<QActivityPartition *>),
+    nodes(new QSet<QActivityNode *>),
+    variables(new QSet<QVariable *>),
     structuredNodes(new QSet<QStructuredActivityNode *>),
-    variables(new QSet<QVariable *>)
+    groups(new QSet<QActivityGroup *>),
+    edges(new QSet<QActivityEdge *>)
 {
 }
 
 QActivityPrivate::~QActivityPrivate()
 {
-    delete edges;
-    delete groups;
-    delete nodes;
     delete partitions;
-    delete structuredNodes;
+    delete nodes;
     delete variables;
+    delete structuredNodes;
+    delete groups;
+    delete edges;
 }
 
 /*!
@@ -133,47 +122,25 @@ void QActivity::setSingleExecution(bool isSingleExecution)
 }
 
 /*!
-    Edges expressing flow between nodes of the activity.
+    Top-level partitions in the activity.
  */
-const QSet<QActivityEdge *> *QActivity::edges() const
+const QSet<QActivityPartition *> *QActivity::partitions() const
 {
-    return d_ptr->edges;
+    return d_ptr->partitions;
 }
 
-void QActivity::addEdge(const QActivityEdge *edge)
+void QActivity::addPartition(const QActivityPartition *partition)
 {
-    d_ptr->edges->insert(const_cast<QActivityEdge *>(edge));
+    d_ptr->partitions->insert(const_cast<QActivityPartition *>(partition));
     // Adjust subsetted property(ies)
-    addOwnedElement(edge);
+    QActivity::d_ptr->groups->insert(const_cast<QActivityPartition *>(partition));
 }
 
-void QActivity::removeEdge(const QActivityEdge *edge)
+void QActivity::removePartition(const QActivityPartition *partition)
 {
-    d_ptr->edges->remove(const_cast<QActivityEdge *>(edge));
+    d_ptr->partitions->remove(const_cast<QActivityPartition *>(partition));
     // Adjust subsetted property(ies)
-    removeOwnedElement(edge);
-}
-
-/*!
-    Top-level groups in the activity.
- */
-const QSet<QActivityGroup *> *QActivity::groups() const
-{
-    return d_ptr->groups;
-}
-
-void QActivity::addGroup(const QActivityGroup *group)
-{
-    d_ptr->groups->insert(const_cast<QActivityGroup *>(group));
-    // Adjust subsetted property(ies)
-    addOwnedElement(group);
-}
-
-void QActivity::removeGroup(const QActivityGroup *group)
-{
-    d_ptr->groups->remove(const_cast<QActivityGroup *>(group));
-    // Adjust subsetted property(ies)
-    removeOwnedElement(group);
+    QActivity::d_ptr->groups->remove(const_cast<QActivityPartition *>(partition));
 }
 
 /*!
@@ -188,60 +155,14 @@ void QActivity::addNode(const QActivityNode *node)
 {
     d_ptr->nodes->insert(const_cast<QActivityNode *>(node));
     // Adjust subsetted property(ies)
-    addOwnedElement(node);
+    QElement::d_ptr->ownedElements->insert(const_cast<QActivityNode *>(node));
 }
 
 void QActivity::removeNode(const QActivityNode *node)
 {
     d_ptr->nodes->remove(const_cast<QActivityNode *>(node));
     // Adjust subsetted property(ies)
-    removeOwnedElement(node);
-}
-
-/*!
-    Top-level partitions in the activity.
- */
-const QSet<QActivityPartition *> *QActivity::partitions() const
-{
-    return d_ptr->partitions;
-}
-
-void QActivity::addPartition(const QActivityPartition *partition)
-{
-    d_ptr->partitions->insert(const_cast<QActivityPartition *>(partition));
-    // Adjust subsetted property(ies)
-    addGroup(partition);
-}
-
-void QActivity::removePartition(const QActivityPartition *partition)
-{
-    d_ptr->partitions->remove(const_cast<QActivityPartition *>(partition));
-    // Adjust subsetted property(ies)
-    removeGroup(partition);
-}
-
-/*!
-    Top-level structured nodes in the activity.
- */
-const QSet<QStructuredActivityNode *> *QActivity::structuredNodes() const
-{
-    return d_ptr->structuredNodes;
-}
-
-void QActivity::addStructuredNode(const QStructuredActivityNode *structuredNode)
-{
-    d_ptr->structuredNodes->insert(const_cast<QStructuredActivityNode *>(structuredNode));
-    // Adjust subsetted property(ies)
-    addGroup(structuredNode);
-    addNode(structuredNode);
-}
-
-void QActivity::removeStructuredNode(const QStructuredActivityNode *structuredNode)
-{
-    d_ptr->structuredNodes->remove(const_cast<QStructuredActivityNode *>(structuredNode));
-    // Adjust subsetted property(ies)
-    removeGroup(structuredNode);
-    removeNode(structuredNode);
+    QElement::d_ptr->ownedElements->remove(const_cast<QActivityNode *>(node));
 }
 
 /*!
@@ -256,14 +177,82 @@ void QActivity::addVariable(const QVariable *variable)
 {
     d_ptr->variables->insert(const_cast<QVariable *>(variable));
     // Adjust subsetted property(ies)
-    addOwnedMember(variable);
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QVariable *>(variable));
 }
 
 void QActivity::removeVariable(const QVariable *variable)
 {
     d_ptr->variables->remove(const_cast<QVariable *>(variable));
     // Adjust subsetted property(ies)
-    removeOwnedMember(variable);
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QVariable *>(variable));
+}
+
+/*!
+    Top-level structured nodes in the activity.
+ */
+const QSet<QStructuredActivityNode *> *QActivity::structuredNodes() const
+{
+    return d_ptr->structuredNodes;
+}
+
+void QActivity::addStructuredNode(const QStructuredActivityNode *structuredNode)
+{
+    d_ptr->structuredNodes->insert(const_cast<QStructuredActivityNode *>(structuredNode));
+    // Adjust subsetted property(ies)
+    QActivity::d_ptr->groups->insert(const_cast<QStructuredActivityNode *>(structuredNode));
+    QActivity::d_ptr->nodes->insert(const_cast<QStructuredActivityNode *>(structuredNode));
+}
+
+void QActivity::removeStructuredNode(const QStructuredActivityNode *structuredNode)
+{
+    d_ptr->structuredNodes->remove(const_cast<QStructuredActivityNode *>(structuredNode));
+    // Adjust subsetted property(ies)
+    QActivity::d_ptr->groups->remove(const_cast<QStructuredActivityNode *>(structuredNode));
+    QActivity::d_ptr->nodes->remove(const_cast<QStructuredActivityNode *>(structuredNode));
+}
+
+/*!
+    Top-level groups in the activity.
+ */
+const QSet<QActivityGroup *> *QActivity::groups() const
+{
+    return d_ptr->groups;
+}
+
+void QActivity::addGroup(const QActivityGroup *group)
+{
+    d_ptr->groups->insert(const_cast<QActivityGroup *>(group));
+    // Adjust subsetted property(ies)
+    QElement::d_ptr->ownedElements->insert(const_cast<QActivityGroup *>(group));
+}
+
+void QActivity::removeGroup(const QActivityGroup *group)
+{
+    d_ptr->groups->remove(const_cast<QActivityGroup *>(group));
+    // Adjust subsetted property(ies)
+    QElement::d_ptr->ownedElements->remove(const_cast<QActivityGroup *>(group));
+}
+
+/*!
+    Edges expressing flow between nodes of the activity.
+ */
+const QSet<QActivityEdge *> *QActivity::edges() const
+{
+    return d_ptr->edges;
+}
+
+void QActivity::addEdge(const QActivityEdge *edge)
+{
+    d_ptr->edges->insert(const_cast<QActivityEdge *>(edge));
+    // Adjust subsetted property(ies)
+    QElement::d_ptr->ownedElements->insert(const_cast<QActivityEdge *>(edge));
+}
+
+void QActivity::removeEdge(const QActivityEdge *edge)
+{
+    d_ptr->edges->remove(const_cast<QActivityEdge *>(edge));
+    // Adjust subsetted property(ies)
+    QElement::d_ptr->ownedElements->remove(const_cast<QActivityEdge *>(edge));
 }
 
 #include "moc_qactivity.cpp"

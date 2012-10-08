@@ -40,19 +40,12 @@
 ****************************************************************************/
 
 #include "qabstraction.h"
+#include "qabstraction_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QOpaqueExpression>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QAbstractionPrivate
-{
-public:
-    explicit QAbstractionPrivate();
-    virtual ~QAbstractionPrivate();
-
-    QOpaqueExpression *mapping;
-};
 
 QAbstractionPrivate::QAbstractionPrivate() :
     mapping(0)

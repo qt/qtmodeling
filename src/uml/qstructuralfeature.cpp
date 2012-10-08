@@ -40,18 +40,10 @@
 ****************************************************************************/
 
 #include "qstructuralfeature.h"
+#include "qstructuralfeature_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QStructuralFeaturePrivate
-{
-public:
-    explicit QStructuralFeaturePrivate();
-    virtual ~QStructuralFeaturePrivate();
-
-    bool isReadOnly;
-};
 
 QStructuralFeaturePrivate::QStructuralFeaturePrivate() :
     isReadOnly(false)

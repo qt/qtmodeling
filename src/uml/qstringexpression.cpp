@@ -40,19 +40,12 @@
 ****************************************************************************/
 
 #include "qstringexpression.h"
+#include "qstringexpression_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QStringExpressionPrivate
-{
-public:
-    explicit QStringExpressionPrivate();
-    virtual ~QStringExpressionPrivate();
-
-    QStringExpression *owningExpression;
-    QSet<QStringExpression *> *subExpressions;
-};
 
 QStringExpressionPrivate::QStringExpressionPrivate() :
     owningExpression(0),
@@ -108,14 +101,14 @@ void QStringExpression::addSubExpression(const QStringExpression *subExpression)
 {
     d_ptr->subExpressions->insert(const_cast<QStringExpression *>(subExpression));
     // Adjust subsetted property(ies)
-    addOwnedElement(subExpression);
+    QElement::d_ptr->ownedElements->insert(const_cast<QStringExpression *>(subExpression));
 }
 
 void QStringExpression::removeSubExpression(const QStringExpression *subExpression)
 {
     d_ptr->subExpressions->remove(const_cast<QStringExpression *>(subExpression));
     // Adjust subsetted property(ies)
-    removeOwnedElement(subExpression);
+    QElement::d_ptr->ownedElements->remove(const_cast<QStringExpression *>(subExpression));
 }
 
 /*!

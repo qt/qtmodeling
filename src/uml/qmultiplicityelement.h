@@ -64,20 +64,20 @@ public:
     virtual ~QMultiplicityElement();
 
     // Attributes
-    bool isOrdered() const;
-    void setOrdered(bool isOrdered);
-    bool isUnique() const;
-    void setUnique(bool isUnique);
-    qint32 lower() const;
-    void setLower(qint32 lower);
     qint32 upper() const;
     void setUpper(qint32 upper);
+    bool isUnique() const;
+    void setUnique(bool isUnique);
+    bool isOrdered() const;
+    void setOrdered(bool isOrdered);
+    qint32 lower() const;
+    void setLower(qint32 lower);
 
     // Association-ends
-    QValueSpecification *lowerValue() const;
-    void setLowerValue(const QValueSpecification *lowerValue);
     QValueSpecification *upperValue() const;
     void setUpperValue(const QValueSpecification *upperValue);
+    QValueSpecification *lowerValue() const;
+    void setLowerValue(const QValueSpecification *lowerValue);
 
     // Operations
     bool compatibleWith(const QMultiplicityElement *other) const;
@@ -91,7 +91,7 @@ public:
 protected:
     explicit QMultiplicityElement();
 
-private:
+protected:
     QMultiplicityElementPrivate *d_ptr;
 };
 

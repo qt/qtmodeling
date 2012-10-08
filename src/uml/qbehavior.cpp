@@ -40,6 +40,13 @@
 ****************************************************************************/
 
 #include "qbehavior.h"
+#include "qbehavior_p.h"
+#include "qnamespace_p.h"
+#include "qnamespace_p.h"
+#include "qclassifier_p.h"
+#include "qnamespace_p.h"
+#include "qnamespace_p.h"
+#include "qredefinableelement_p.h"
 
 #include <QtUml/QConstraint>
 #include <QtUml/QBehavioralFeature>
@@ -49,39 +56,24 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QBehaviorPrivate
-{
-public:
-    explicit QBehaviorPrivate();
-    virtual ~QBehaviorPrivate();
-
-    bool isReentrant;
-    QList<QParameter *> *ownedParameters;
-    QSet<QParameterSet *> *ownedParameterSets;
-    QSet<QConstraint *> *postconditions;
-    QSet<QConstraint *> *preconditions;
-    QSet<QBehavior *> *redefinedBehaviors;
-    QBehavioralFeature *specification;
-};
-
 QBehaviorPrivate::QBehaviorPrivate() :
     isReentrant(true),
-    ownedParameters(new QList<QParameter *>),
-    ownedParameterSets(new QSet<QParameterSet *>),
+    specification(0),
     postconditions(new QSet<QConstraint *>),
     preconditions(new QSet<QConstraint *>),
     redefinedBehaviors(new QSet<QBehavior *>),
-    specification(0)
+    ownedParameters(new QList<QParameter *>),
+    ownedParameterSets(new QSet<QParameterSet *>)
 {
 }
 
 QBehaviorPrivate::~QBehaviorPrivate()
 {
-    delete ownedParameters;
-    delete ownedParameterSets;
     delete postconditions;
     delete preconditions;
     delete redefinedBehaviors;
+    delete ownedParameters;
+    delete ownedParameterSets;
 }
 
 /*!
@@ -116,55 +108,16 @@ void QBehavior::setReentrant(bool isReentrant)
 }
 
 /*!
-    The classifier that is the context for the execution of the behavior. If the behavior is owned by a BehavioredClassifier, that classifier is the context. Otherwise, the context is the first BehavioredClassifier reached by following the chain of owner relationships. For example, following this algorithm, the context of an entry action in a state machine is the classifier that owns the state machine. The features of the context classifier as well as the elements visible to the context classifier are visible to the behavior.
+    Designates a behavioral feature that the behavior implements. The behavioral feature must be owned by the classifier that owns the behavior or be inherited by it. The parameters of the behavioral feature and the implementing behavior must match. A behavior does not need to have a specification, in which case it either is the classifer behavior of a BehavioredClassifier or it can only be invoked by another behavior of the classifier.
  */
-QBehavioredClassifier *QBehavior::context() const
+QBehavioralFeature *QBehavior::specification() const
 {
-    qWarning("QBehavior::context: to be implemented (this is a derived associationend)");
+    return d_ptr->specification;
 }
 
-/*!
-    References a list of parameters to the behavior which describes the order and type of arguments that can be given when the behavior is invoked and of the values which will be returned when the behavior completes its execution.
- */
-const QList<QParameter *> *QBehavior::ownedParameters() const
+void QBehavior::setSpecification(const QBehavioralFeature *specification)
 {
-    return d_ptr->ownedParameters;
-}
-
-void QBehavior::addOwnedParameter(const QParameter *ownedParameter)
-{
-    d_ptr->ownedParameters->append(const_cast<QParameter *>(ownedParameter));
-    // Adjust subsetted property(ies)
-    addOwnedMember(ownedParameter);
-}
-
-void QBehavior::removeOwnedParameter(const QParameter *ownedParameter)
-{
-    d_ptr->ownedParameters->removeAll(const_cast<QParameter *>(ownedParameter));
-    // Adjust subsetted property(ies)
-    removeOwnedMember(ownedParameter);
-}
-
-/*!
-    The ParameterSets owned by this Behavior.
- */
-const QSet<QParameterSet *> *QBehavior::ownedParameterSets() const
-{
-    return d_ptr->ownedParameterSets;
-}
-
-void QBehavior::addOwnedParameterSet(const QParameterSet *ownedParameterSet)
-{
-    d_ptr->ownedParameterSets->insert(const_cast<QParameterSet *>(ownedParameterSet));
-    // Adjust subsetted property(ies)
-    addOwnedMember(ownedParameterSet);
-}
-
-void QBehavior::removeOwnedParameterSet(const QParameterSet *ownedParameterSet)
-{
-    d_ptr->ownedParameterSets->remove(const_cast<QParameterSet *>(ownedParameterSet));
-    // Adjust subsetted property(ies)
-    removeOwnedMember(ownedParameterSet);
+    d_ptr->specification = const_cast<QBehavioralFeature *>(specification);
 }
 
 /*!
@@ -179,14 +132,14 @@ void QBehavior::addPostcondition(const QConstraint *postcondition)
 {
     d_ptr->postconditions->insert(const_cast<QConstraint *>(postcondition));
     // Adjust subsetted property(ies)
-    addOwnedRule(postcondition);
+    QNamespace::d_ptr->ownedRules->insert(const_cast<QConstraint *>(postcondition));
 }
 
 void QBehavior::removePostcondition(const QConstraint *postcondition)
 {
     d_ptr->postconditions->remove(const_cast<QConstraint *>(postcondition));
     // Adjust subsetted property(ies)
-    removeOwnedRule(postcondition);
+    QNamespace::d_ptr->ownedRules->remove(const_cast<QConstraint *>(postcondition));
 }
 
 /*!
@@ -201,14 +154,14 @@ void QBehavior::addPrecondition(const QConstraint *precondition)
 {
     d_ptr->preconditions->insert(const_cast<QConstraint *>(precondition));
     // Adjust subsetted property(ies)
-    addOwnedRule(precondition);
+    QNamespace::d_ptr->ownedRules->insert(const_cast<QConstraint *>(precondition));
 }
 
 void QBehavior::removePrecondition(const QConstraint *precondition)
 {
     d_ptr->preconditions->remove(const_cast<QConstraint *>(precondition));
     // Adjust subsetted property(ies)
-    removeOwnedRule(precondition);
+    QNamespace::d_ptr->ownedRules->remove(const_cast<QConstraint *>(precondition));
 }
 
 /*!
@@ -223,27 +176,66 @@ void QBehavior::addRedefinedBehavior(const QBehavior *redefinedBehavior)
 {
     d_ptr->redefinedBehaviors->insert(const_cast<QBehavior *>(redefinedBehavior));
     // Adjust subsetted property(ies)
-    addRedefinedClassifier(redefinedBehavior);
+    QClassifier::d_ptr->redefinedClassifiers->insert(const_cast<QBehavior *>(redefinedBehavior));
 }
 
 void QBehavior::removeRedefinedBehavior(const QBehavior *redefinedBehavior)
 {
     d_ptr->redefinedBehaviors->remove(const_cast<QBehavior *>(redefinedBehavior));
     // Adjust subsetted property(ies)
-    removeRedefinedClassifier(redefinedBehavior);
+    QClassifier::d_ptr->redefinedClassifiers->remove(const_cast<QBehavior *>(redefinedBehavior));
 }
 
 /*!
-    Designates a behavioral feature that the behavior implements. The behavioral feature must be owned by the classifier that owns the behavior or be inherited by it. The parameters of the behavioral feature and the implementing behavior must match. A behavior does not need to have a specification, in which case it either is the classifer behavior of a BehavioredClassifier or it can only be invoked by another behavior of the classifier.
+    References a list of parameters to the behavior which describes the order and type of arguments that can be given when the behavior is invoked and of the values which will be returned when the behavior completes its execution.
  */
-QBehavioralFeature *QBehavior::specification() const
+const QList<QParameter *> *QBehavior::ownedParameters() const
 {
-    return d_ptr->specification;
+    return d_ptr->ownedParameters;
 }
 
-void QBehavior::setSpecification(const QBehavioralFeature *specification)
+void QBehavior::addOwnedParameter(const QParameter *ownedParameter)
 {
-    d_ptr->specification = const_cast<QBehavioralFeature *>(specification);
+    d_ptr->ownedParameters->append(const_cast<QParameter *>(ownedParameter));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QParameter *>(ownedParameter));
+}
+
+void QBehavior::removeOwnedParameter(const QParameter *ownedParameter)
+{
+    d_ptr->ownedParameters->removeAll(const_cast<QParameter *>(ownedParameter));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QParameter *>(ownedParameter));
+}
+
+/*!
+    The ParameterSets owned by this Behavior.
+ */
+const QSet<QParameterSet *> *QBehavior::ownedParameterSets() const
+{
+    return d_ptr->ownedParameterSets;
+}
+
+void QBehavior::addOwnedParameterSet(const QParameterSet *ownedParameterSet)
+{
+    d_ptr->ownedParameterSets->insert(const_cast<QParameterSet *>(ownedParameterSet));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QParameterSet *>(ownedParameterSet));
+}
+
+void QBehavior::removeOwnedParameterSet(const QParameterSet *ownedParameterSet)
+{
+    d_ptr->ownedParameterSets->remove(const_cast<QParameterSet *>(ownedParameterSet));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QParameterSet *>(ownedParameterSet));
+}
+
+/*!
+    The classifier that is the context for the execution of the behavior. If the behavior is owned by a BehavioredClassifier, that classifier is the context. Otherwise, the context is the first BehavioredClassifier reached by following the chain of owner relationships. For example, following this algorithm, the context of an entry action in a state machine is the classifier that owns the state machine. The features of the context classifier as well as the elements visible to the context classifier are visible to the behavior.
+ */
+QBehavioredClassifier *QBehavior::context() const
+{
+    qWarning("QBehavior::context: to be implemented (this is a derived associationend)");
 }
 
 QT_END_NAMESPACE_QTUML

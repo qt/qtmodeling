@@ -65,9 +65,9 @@ class Q_UML_EXPORT QPackageImport : public QObject, public QDirectedRelationship
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QRelationship
     Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
@@ -78,8 +78,8 @@ class Q_UML_EXPORT QPackageImport : public QObject, public QDirectedRelationship
 
     // From QPackageImport
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QPackage * importedPackage READ importedPackage WRITE setImportedPackage)
     Q_PROPERTY(QNamespace * importingNamespace READ importingNamespace WRITE setImportingNamespace)
+    Q_PROPERTY(QPackage * importedPackage READ importedPackage WRITE setImportedPackage)
 
     Q_DISABLE_COPY(QPackageImport)
     Q_DECLARE_PRIVATE(QPackageImport)
@@ -93,12 +93,12 @@ public:
     void setVisibility(QtUml::VisibilityKind visibility);
 
     // Association-ends
-    QPackage *importedPackage() const;
-    void setImportedPackage(const QPackage *importedPackage);
     QNamespace *importingNamespace() const;
     void setImportingNamespace(const QNamespace *importingNamespace);
+    QPackage *importedPackage() const;
+    void setImportedPackage(const QPackage *importedPackage);
 
-private:
+protected:
     QPackageImportPrivate *d_ptr;
 };
 

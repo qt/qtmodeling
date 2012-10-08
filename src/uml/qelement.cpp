@@ -40,33 +40,23 @@
 ****************************************************************************/
 
 #include "qelement.h"
+#include "qelement_p.h"
 
 #include <QtUml/QComment>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QElementPrivate
-{
-public:
-    explicit QElementPrivate();
-    virtual ~QElementPrivate();
-
-    QSet<QComment *> *ownedComments;
-    QSet<QElement *> *ownedElements;
-    QElement *owner;
-};
-
 QElementPrivate::QElementPrivate() :
-    ownedComments(new QSet<QComment *>),
     ownedElements(new QSet<QElement *>),
-    owner(0)
+    owner(0),
+    ownedComments(new QSet<QComment *>)
 {
 }
 
 QElementPrivate::~QElementPrivate()
 {
-    delete ownedComments;
     delete ownedElements;
+    delete ownedComments;
 }
 
 /*!
@@ -88,6 +78,22 @@ QElement::~QElement()
 }
 
 /*!
+    The Elements owned by this element.
+ */
+const QSet<QElement *> *QElement::ownedElements() const
+{
+    return d_ptr->ownedElements;
+}
+
+/*!
+    The Element that owns this element.
+ */
+QElement *QElement::owner() const
+{
+    return d_ptr->owner;
+}
+
+/*!
     The Comments owned by this element.
  */
 const QSet<QComment *> *QElement::ownedComments() const
@@ -99,45 +105,14 @@ void QElement::addOwnedComment(const QComment *ownedComment)
 {
     d_ptr->ownedComments->insert(const_cast<QComment *>(ownedComment));
     // Adjust subsetted property(ies)
-    addOwnedElement(ownedComment);
+    QElement::d_ptr->ownedElements->insert(const_cast<QComment *>(ownedComment));
 }
 
 void QElement::removeOwnedComment(const QComment *ownedComment)
 {
     d_ptr->ownedComments->remove(const_cast<QComment *>(ownedComment));
     // Adjust subsetted property(ies)
-    removeOwnedElement(ownedComment);
-}
-
-/*!
-    The Elements owned by this element.
- */
-const QSet<QElement *> *QElement::ownedElements() const
-{
-    return d_ptr->ownedElements;
-}
-
-void QElement::addOwnedElement(const QElement *ownedElement)
-{
-    d_ptr->ownedElements->insert(const_cast<QElement *>(ownedElement));
-}
-
-void QElement::removeOwnedElement(const QElement *ownedElement)
-{
-    d_ptr->ownedElements->remove(const_cast<QElement *>(ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QElement *QElement::owner() const
-{
-    return d_ptr->owner;
-}
-
-void QElement::setOwner(const QElement *owner)
-{
-    d_ptr->owner = const_cast<QElement *>(owner);
+    QElement::d_ptr->ownedElements->remove(const_cast<QComment *>(ownedComment));
 }
 
 /*!
@@ -151,19 +126,19 @@ const QSet<QElement *> *QElement::allOwnedElements() const
     return allOwnedElements_;
 }
 
-void QElement::allOwnedElements(QSet<QElement *> *allOwnedElements_) const
-{
-    allOwnedElements_->unite(*d_ptr->ownedElements);
-    foreach (QElement *element, *d_ptr->ownedElements)
-        element->allOwnedElements(allOwnedElements_);
-}
-
 /*!
     The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
  */
 bool QElement::mustBeOwned() const
 {
     return true;
+}
+
+void QElement::allOwnedElements(QSet<QElement *> *allOwnedElements_) const
+{
+    allOwnedElements_->unite(*d_ptr->ownedElements);
+    foreach (QElement *element, *d_ptr->ownedElements)
+        element->allOwnedElements(allOwnedElements_);
 }
 
 QT_END_NAMESPACE_QTUML

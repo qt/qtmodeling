@@ -40,20 +40,14 @@
 ****************************************************************************/
 
 #include "qsubstitution.h"
+#include "qsubstitution_p.h"
+#include "qdependency_p.h"
+#include "qelement_p.h"
+#include "qdependency_p.h"
 
 #include <QtUml/QClassifier>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QSubstitutionPrivate
-{
-public:
-    explicit QSubstitutionPrivate();
-    virtual ~QSubstitutionPrivate();
-
-    QClassifier *contract;
-    QClassifier *substitutingClassifier;
-};
 
 QSubstitutionPrivate::QSubstitutionPrivate() :
     contract(0),

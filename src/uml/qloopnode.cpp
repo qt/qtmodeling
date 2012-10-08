@@ -40,6 +40,7 @@
 ****************************************************************************/
 
 #include "qloopnode.h"
+#include "qloopnode_p.h"
 
 #include <QtUml/QOutputPin>
 #include <QtUml/QExecutableNode>
@@ -47,44 +48,27 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QLoopNodePrivate
-{
-public:
-    explicit QLoopNodePrivate();
-    virtual ~QLoopNodePrivate();
-
-    bool isTestedFirst;
-    QList<QOutputPin *> *bodyOutputs;
-    QSet<QExecutableNode *> *bodyParts;
-    QOutputPin *decider;
-    QList<QOutputPin *> *loopVariables;
-    QList<QInputPin *> *loopVariableInputs;
-    QList<QOutputPin *> *results;
-    QSet<QExecutableNode *> *setupParts;
-    QSet<QExecutableNode *> *tests;
-};
-
 QLoopNodePrivate::QLoopNodePrivate() :
     isTestedFirst(false),
-    bodyOutputs(new QList<QOutputPin *>),
-    bodyParts(new QSet<QExecutableNode *>),
-    decider(0),
-    loopVariables(new QList<QOutputPin *>),
     loopVariableInputs(new QList<QInputPin *>),
+    decider(0),
+    bodyOutputs(new QList<QOutputPin *>),
+    loopVariables(new QList<QOutputPin *>),
     results(new QList<QOutputPin *>),
     setupParts(new QSet<QExecutableNode *>),
+    bodyParts(new QSet<QExecutableNode *>),
     tests(new QSet<QExecutableNode *>)
 {
 }
 
 QLoopNodePrivate::~QLoopNodePrivate()
 {
-    delete bodyOutputs;
-    delete bodyParts;
-    delete loopVariables;
     delete loopVariableInputs;
+    delete bodyOutputs;
+    delete loopVariables;
     delete results;
     delete setupParts;
+    delete bodyParts;
     delete tests;
 }
 
@@ -120,6 +104,37 @@ void QLoopNode::setTestedFirst(bool isTestedFirst)
 }
 
 /*!
+    A list of values that are moved into the loop variable pins before the first iteration of the loop.
+ */
+const QList<QInputPin *> *QLoopNode::loopVariableInputs() const
+{
+    return d_ptr->loopVariableInputs;
+}
+
+void QLoopNode::addLoopVariableInput(const QInputPin *loopVariableInput)
+{
+    d_ptr->loopVariableInputs->append(const_cast<QInputPin *>(loopVariableInput));
+}
+
+void QLoopNode::removeLoopVariableInput(const QInputPin *loopVariableInput)
+{
+    d_ptr->loopVariableInputs->removeAll(const_cast<QInputPin *>(loopVariableInput));
+}
+
+/*!
+    An output pin within the test fragment the value of which is examined after execution of the test to determine whether to execute the loop body.
+ */
+QOutputPin *QLoopNode::decider() const
+{
+    return d_ptr->decider;
+}
+
+void QLoopNode::setDecider(const QOutputPin *decider)
+{
+    d_ptr->decider = const_cast<QOutputPin *>(decider);
+}
+
+/*!
     A list of output pins within the body fragment the values of which are moved to the loop variable pins after completion of execution of the body, before the next iteration of the loop begins or before the loop exits.
  */
 const QList<QOutputPin *> *QLoopNode::bodyOutputs() const
@@ -138,37 +153,6 @@ void QLoopNode::removeBodyOutput(const QOutputPin *bodyOutput)
 }
 
 /*!
-    The set of nodes and edges that perform the repetitive computations of the loop. The body section is executed as long as the test section produces a true value.
- */
-const QSet<QExecutableNode *> *QLoopNode::bodyParts() const
-{
-    return d_ptr->bodyParts;
-}
-
-void QLoopNode::addBodyPart(const QExecutableNode *bodyPart)
-{
-    d_ptr->bodyParts->insert(const_cast<QExecutableNode *>(bodyPart));
-}
-
-void QLoopNode::removeBodyPart(const QExecutableNode *bodyPart)
-{
-    d_ptr->bodyParts->remove(const_cast<QExecutableNode *>(bodyPart));
-}
-
-/*!
-    An output pin within the test fragment the value of which is examined after execution of the test to determine whether to execute the loop body.
- */
-QOutputPin *QLoopNode::decider() const
-{
-    return d_ptr->decider;
-}
-
-void QLoopNode::setDecider(const QOutputPin *decider)
-{
-    d_ptr->decider = const_cast<QOutputPin *>(decider);
-}
-
-/*!
     A list of output pins that hold the values of the loop variables during an execution of the loop. When the test fails, the values are movied to the result pins of the loop.
  */
 const QList<QOutputPin *> *QLoopNode::loopVariables() const
@@ -184,24 +168,6 @@ void QLoopNode::addLoopVariable(const QOutputPin *loopVariable)
 void QLoopNode::removeLoopVariable(const QOutputPin *loopVariable)
 {
     d_ptr->loopVariables->removeAll(const_cast<QOutputPin *>(loopVariable));
-}
-
-/*!
-    A list of values that are moved into the loop variable pins before the first iteration of the loop.
- */
-const QList<QInputPin *> *QLoopNode::loopVariableInputs() const
-{
-    return d_ptr->loopVariableInputs;
-}
-
-void QLoopNode::addLoopVariableInput(const QInputPin *loopVariableInput)
-{
-    d_ptr->loopVariableInputs->append(const_cast<QInputPin *>(loopVariableInput));
-}
-
-void QLoopNode::removeLoopVariableInput(const QInputPin *loopVariableInput)
-{
-    d_ptr->loopVariableInputs->removeAll(const_cast<QInputPin *>(loopVariableInput));
 }
 
 /*!
@@ -238,6 +204,24 @@ void QLoopNode::addSetupPart(const QExecutableNode *setupPart)
 void QLoopNode::removeSetupPart(const QExecutableNode *setupPart)
 {
     d_ptr->setupParts->remove(const_cast<QExecutableNode *>(setupPart));
+}
+
+/*!
+    The set of nodes and edges that perform the repetitive computations of the loop. The body section is executed as long as the test section produces a true value.
+ */
+const QSet<QExecutableNode *> *QLoopNode::bodyParts() const
+{
+    return d_ptr->bodyParts;
+}
+
+void QLoopNode::addBodyPart(const QExecutableNode *bodyPart)
+{
+    d_ptr->bodyParts->insert(const_cast<QExecutableNode *>(bodyPart));
+}
+
+void QLoopNode::removeBodyPart(const QExecutableNode *bodyPart)
+{
+    d_ptr->bodyParts->remove(const_cast<QExecutableNode *>(bodyPart));
 }
 
 /*!

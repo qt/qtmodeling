@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qusage.h"
+#include "qusage_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QUsagePrivate
-{
-public:
-    explicit QUsagePrivate();
-    virtual ~QUsagePrivate();
-
-};
 
 QUsagePrivate::QUsagePrivate()
 {

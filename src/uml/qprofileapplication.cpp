@@ -40,27 +40,20 @@
 ****************************************************************************/
 
 #include "qprofileapplication.h"
+#include "qprofileapplication_p.h"
+#include "qelement_p.h"
+#include "qdirectedrelationship_p.h"
+#include "qdirectedrelationship_p.h"
 
 #include <QtUml/QProfile>
 #include <QtUml/QPackage>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QProfileApplicationPrivate
-{
-public:
-    explicit QProfileApplicationPrivate();
-    virtual ~QProfileApplicationPrivate();
-
-    bool isStrict;
-    QProfile *appliedProfile;
-    QPackage *applyingPackage;
-};
-
 QProfileApplicationPrivate::QProfileApplicationPrivate() :
     isStrict(false),
-    appliedProfile(0),
-    applyingPackage(0)
+    applyingPackage(0),
+    appliedProfile(0)
 {
 }
 
@@ -100,19 +93,6 @@ void QProfileApplication::setStrict(bool isStrict)
 }
 
 /*!
-    References the Profiles that are applied to a Package through this ProfileApplication.
- */
-QProfile *QProfileApplication::appliedProfile() const
-{
-    return d_ptr->appliedProfile;
-}
-
-void QProfileApplication::setAppliedProfile(const QProfile *appliedProfile)
-{
-    d_ptr->appliedProfile = const_cast<QProfile *>(appliedProfile);
-}
-
-/*!
     The package that owns the profile application.
  */
 QPackage *QProfileApplication::applyingPackage() const
@@ -123,6 +103,19 @@ QPackage *QProfileApplication::applyingPackage() const
 void QProfileApplication::setApplyingPackage(const QPackage *applyingPackage)
 {
     d_ptr->applyingPackage = const_cast<QPackage *>(applyingPackage);
+}
+
+/*!
+    References the Profiles that are applied to a Package through this ProfileApplication.
+ */
+QProfile *QProfileApplication::appliedProfile() const
+{
+    return d_ptr->appliedProfile;
+}
+
+void QProfileApplication::setAppliedProfile(const QProfile *appliedProfile)
+{
+    d_ptr->appliedProfile = const_cast<QProfile *>(appliedProfile);
 }
 
 #include "moc_qprofileapplication.cpp"

@@ -40,20 +40,12 @@
 ****************************************************************************/
 
 #include "qaddstructuralfeaturevalueaction.h"
+#include "qaddstructuralfeaturevalueaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QAddStructuralFeatureValueActionPrivate
-{
-public:
-    explicit QAddStructuralFeatureValueActionPrivate();
-    virtual ~QAddStructuralFeatureValueActionPrivate();
-
-    bool isReplaceAll;
-    QInputPin *insertAt;
-};
 
 QAddStructuralFeatureValueActionPrivate::QAddStructuralFeatureValueActionPrivate() :
     isReplaceAll(false),

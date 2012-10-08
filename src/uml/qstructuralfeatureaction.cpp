@@ -40,21 +40,13 @@
 ****************************************************************************/
 
 #include "qstructuralfeatureaction.h"
+#include "qstructuralfeatureaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 #include <QtUml/QStructuralFeature>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QStructuralFeatureActionPrivate
-{
-public:
-    explicit QStructuralFeatureActionPrivate();
-    virtual ~QStructuralFeatureActionPrivate();
-
-    QInputPin *object;
-    QStructuralFeature *structuralFeature;
-};
 
 QStructuralFeatureActionPrivate::QStructuralFeatureActionPrivate() :
     object(0),

@@ -40,19 +40,13 @@
 ****************************************************************************/
 
 #include "qsignal.h"
+#include "qsignal_p.h"
+#include "qnamespace_p.h"
+#include "qclassifier_p.h"
 
 #include <QtUml/QProperty>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QSignalPrivate
-{
-public:
-    explicit QSignalPrivate();
-    virtual ~QSignalPrivate();
-
-    QList<QProperty *> *ownedAttributes;
-};
 
 QSignalPrivate::QSignalPrivate() :
     ownedAttributes(new QList<QProperty *>)
@@ -94,16 +88,16 @@ void QSignal::addOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
     // Adjust subsetted property(ies)
-    addOwnedMember(ownedAttribute);
-    addAttribute(ownedAttribute);
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QProperty *>(ownedAttribute));
+    QClassifier::d_ptr->attributes->insert(const_cast<QProperty *>(ownedAttribute));
 }
 
 void QSignal::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
     // Adjust subsetted property(ies)
-    removeOwnedMember(ownedAttribute);
-    removeAttribute(ownedAttribute);
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QProperty *>(ownedAttribute));
+    QClassifier::d_ptr->attributes->remove(const_cast<QProperty *>(ownedAttribute));
 }
 
 #include "moc_qsignal.cpp"

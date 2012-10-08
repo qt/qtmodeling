@@ -84,7 +84,7 @@ public:
     QDeployment *deployment() const;
     void setDeployment(const QDeployment *deployment);
 
-private:
+protected:
     QDeploymentSpecificationPrivate *d_ptr;
 };
 

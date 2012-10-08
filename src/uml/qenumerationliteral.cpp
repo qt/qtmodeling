@@ -40,19 +40,12 @@
 ****************************************************************************/
 
 #include "qenumerationliteral.h"
+#include "qenumerationliteral_p.h"
+#include "qnamedelement_p.h"
 
 #include <QtUml/QEnumeration>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QEnumerationLiteralPrivate
-{
-public:
-    explicit QEnumerationLiteralPrivate();
-    virtual ~QEnumerationLiteralPrivate();
-
-    QEnumeration *enumeration;
-};
 
 QEnumerationLiteralPrivate::QEnumerationLiteralPrivate() :
     enumeration(0)

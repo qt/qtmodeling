@@ -40,6 +40,10 @@
 ****************************************************************************/
 
 #include "qnamespace.h"
+#include "qnamespace_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QPackageImport>
 #include <QtUml/QConstraint>
@@ -48,35 +52,22 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QNamespacePrivate
-{
-public:
-    explicit QNamespacePrivate();
-    virtual ~QNamespacePrivate();
-
-    QSet<QElementImport *> *elementImports;
-    QSet<QNamedElement *> *members;
-    QSet<QNamedElement *> *ownedMembers;
-    QSet<QConstraint *> *ownedRules;
-    QSet<QPackageImport *> *packageImports;
-};
-
 QNamespacePrivate::QNamespacePrivate() :
-    elementImports(new QSet<QElementImport *>),
+    packageImports(new QSet<QPackageImport *>),
     members(new QSet<QNamedElement *>),
-    ownedMembers(new QSet<QNamedElement *>),
+    elementImports(new QSet<QElementImport *>),
     ownedRules(new QSet<QConstraint *>),
-    packageImports(new QSet<QPackageImport *>)
+    ownedMembers(new QSet<QNamedElement *>)
 {
 }
 
 QNamespacePrivate::~QNamespacePrivate()
 {
-    delete elementImports;
-    delete members;
-    delete ownedMembers;
-    delete ownedRules;
     delete packageImports;
+    delete members;
+    delete elementImports;
+    delete ownedRules;
+    delete ownedMembers;
 }
 
 /*!
@@ -98,25 +89,33 @@ QNamespace::~QNamespace()
 }
 
 /*!
-    References the ElementImports owned by the Namespace.
+    References the PackageImports owned by the Namespace.
  */
-const QSet<QElementImport *> *QNamespace::elementImports() const
+const QSet<QPackageImport *> *QNamespace::packageImports() const
 {
-    return d_ptr->elementImports;
+    return d_ptr->packageImports;
 }
 
-void QNamespace::addElementImport(const QElementImport *elementImport)
+void QNamespace::addPackageImport(const QPackageImport *packageImport)
 {
-    d_ptr->elementImports->insert(const_cast<QElementImport *>(elementImport));
+    d_ptr->packageImports->insert(const_cast<QPackageImport *>(packageImport));
     // Adjust subsetted property(ies)
-    addOwnedElement(elementImport);
+    QElement::d_ptr->ownedElements->insert(const_cast<QPackageImport *>(packageImport));
 }
 
-void QNamespace::removeElementImport(const QElementImport *elementImport)
+void QNamespace::removePackageImport(const QPackageImport *packageImport)
 {
-    d_ptr->elementImports->remove(const_cast<QElementImport *>(elementImport));
+    d_ptr->packageImports->remove(const_cast<QPackageImport *>(packageImport));
     // Adjust subsetted property(ies)
-    removeOwnedElement(elementImport);
+    QElement::d_ptr->ownedElements->remove(const_cast<QPackageImport *>(packageImport));
+}
+
+/*!
+    A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
+ */
+const QSet<QNamedElement *> *QNamespace::members() const
+{
+    return d_ptr->members;
 }
 
 /*!
@@ -128,45 +127,25 @@ const QSet<QPackageableElement *> *QNamespace::importedMembers() const
 }
 
 /*!
-    A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
+    References the ElementImports owned by the Namespace.
  */
-const QSet<QNamedElement *> *QNamespace::members() const
+const QSet<QElementImport *> *QNamespace::elementImports() const
 {
-    return d_ptr->members;
+    return d_ptr->elementImports;
 }
 
-void QNamespace::addMember(const QNamedElement *member)
+void QNamespace::addElementImport(const QElementImport *elementImport)
 {
-    d_ptr->members->insert(const_cast<QNamedElement *>(member));
-}
-
-void QNamespace::removeMember(const QNamedElement *member)
-{
-    d_ptr->members->remove(const_cast<QNamedElement *>(member));
-}
-
-/*!
-    A collection of NamedElements owned by the Namespace.
- */
-const QSet<QNamedElement *> *QNamespace::ownedMembers() const
-{
-    return d_ptr->ownedMembers;
-}
-
-void QNamespace::addOwnedMember(const QNamedElement *ownedMember)
-{
-    d_ptr->ownedMembers->insert(const_cast<QNamedElement *>(ownedMember));
+    d_ptr->elementImports->insert(const_cast<QElementImport *>(elementImport));
     // Adjust subsetted property(ies)
-    addMember(ownedMember);
-    addOwnedElement(ownedMember);
+    QElement::d_ptr->ownedElements->insert(const_cast<QElementImport *>(elementImport));
 }
 
-void QNamespace::removeOwnedMember(const QNamedElement *ownedMember)
+void QNamespace::removeElementImport(const QElementImport *elementImport)
 {
-    d_ptr->ownedMembers->remove(const_cast<QNamedElement *>(ownedMember));
+    d_ptr->elementImports->remove(const_cast<QElementImport *>(elementImport));
     // Adjust subsetted property(ies)
-    removeMember(ownedMember);
-    removeOwnedElement(ownedMember);
+    QElement::d_ptr->ownedElements->remove(const_cast<QElementImport *>(elementImport));
 }
 
 /*!
@@ -181,36 +160,22 @@ void QNamespace::addOwnedRule(const QConstraint *ownedRule)
 {
     d_ptr->ownedRules->insert(const_cast<QConstraint *>(ownedRule));
     // Adjust subsetted property(ies)
-    addOwnedMember(ownedRule);
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QConstraint *>(ownedRule));
 }
 
 void QNamespace::removeOwnedRule(const QConstraint *ownedRule)
 {
     d_ptr->ownedRules->remove(const_cast<QConstraint *>(ownedRule));
     // Adjust subsetted property(ies)
-    removeOwnedMember(ownedRule);
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QConstraint *>(ownedRule));
 }
 
 /*!
-    References the PackageImports owned by the Namespace.
+    A collection of NamedElements owned by the Namespace.
  */
-const QSet<QPackageImport *> *QNamespace::packageImports() const
+const QSet<QNamedElement *> *QNamespace::ownedMembers() const
 {
-    return d_ptr->packageImports;
-}
-
-void QNamespace::addPackageImport(const QPackageImport *packageImport)
-{
-    d_ptr->packageImports->insert(const_cast<QPackageImport *>(packageImport));
-    // Adjust subsetted property(ies)
-    addOwnedElement(packageImport);
-}
-
-void QNamespace::removePackageImport(const QPackageImport *packageImport)
-{
-    d_ptr->packageImports->remove(const_cast<QPackageImport *>(packageImport));
-    // Adjust subsetted property(ies)
-    removeOwnedElement(packageImport);
+    return d_ptr->ownedMembers;
 }
 
 /*!

@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qanyreceiveevent.h"
+#include "qanyreceiveevent_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QAnyReceiveEventPrivate
-{
-public:
-    explicit QAnyReceiveEventPrivate();
-    virtual ~QAnyReceiveEventPrivate();
-
-};
 
 QAnyReceiveEventPrivate::QAnyReceiveEventPrivate()
 {

@@ -69,37 +69,37 @@ class Q_UML_EXPORT QRegion : public QObject, public QRedefinableElement, public 
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QRedefinableElement
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
     Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
 
     // From QNamespace
-    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
-    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
-    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
-    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
-    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
     Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
+    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
+    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
+    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
+    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
+    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
 
     // From QRegion
     Q_PROPERTY(QRegion * extendedRegion READ extendedRegion WRITE setExtendedRegion)
-    Q_PROPERTY(QClassifier * redefinitionContext READ redefinitionContext)
-    Q_PROPERTY(QState * state READ state WRITE setState)
-    Q_PROPERTY(QStateMachine * stateMachine READ stateMachine WRITE setStateMachine)
-    Q_PROPERTY(const QSet<QVertex *> * subvertices READ subvertices)
     Q_PROPERTY(const QSet<QTransition *> * transitions READ transitions)
+    Q_PROPERTY(QStateMachine * stateMachine READ stateMachine WRITE setStateMachine)
+    Q_PROPERTY(QState * state READ state WRITE setState)
+    Q_PROPERTY(QClassifier * redefinitionContext READ redefinitionContext)
+    Q_PROPERTY(const QSet<QVertex *> * subvertices READ subvertices)
 
     Q_DISABLE_COPY(QRegion)
     Q_DECLARE_PRIVATE(QRegion)
@@ -111,17 +111,17 @@ public:
     // Association-ends
     QRegion *extendedRegion() const;
     void setExtendedRegion(const QRegion *extendedRegion);
-    QClassifier *redefinitionContext() const;
-    QState *state() const;
-    void setState(const QState *state);
-    QStateMachine *stateMachine() const;
-    void setStateMachine(const QStateMachine *stateMachine);
-    const QSet<QVertex *> *subvertices() const;
-    void addSubvertex(const QVertex *subvertex);
-    void removeSubvertex(const QVertex *subvertex);
     const QSet<QTransition *> *transitions() const;
     void addTransition(const QTransition *transition);
     void removeTransition(const QTransition *transition);
+    QStateMachine *stateMachine() const;
+    void setStateMachine(const QStateMachine *stateMachine);
+    QState *state() const;
+    void setState(const QState *state);
+    QClassifier *redefinitionContext() const;
+    const QSet<QVertex *> *subvertices() const;
+    void addSubvertex(const QVertex *subvertex);
+    void removeSubvertex(const QVertex *subvertex);
 
     // Operations
     bool belongsToPSM() const;
@@ -129,7 +129,7 @@ public:
     bool isConsistentWith(const QRedefinableElement *redefinee) const;
     bool isRedefinitionContextValid(const QRegion *redefined) const;
 
-private:
+protected:
     QRegionPrivate *d_ptr;
 };
 

@@ -64,30 +64,24 @@ public:
     virtual ~QElement();
 
     // Association-ends
+    const QSet<QElement *> *ownedElements() const;
+    QElement *owner() const;
     const QSet<QComment *> *ownedComments() const;
     void addOwnedComment(const QComment *ownedComment);
     void removeOwnedComment(const QComment *ownedComment);
-    const QSet<QElement *> *ownedElements() const;
-    QElement *owner() const;
 
     // Operations
     const QSet<QElement *> *allOwnedElements() const;
     bool mustBeOwned() const;
 
 protected:
-    // Synchronization functions for read-only subsetted properties
-    void addOwnedElement(const QElement *ownedElement);
-    void removeOwnedElement(const QElement *ownedElement);
-    void setOwner(const QElement *owner);
+    explicit QElement();
 
 protected:
-    explicit QElement();
+    QElementPrivate *d_ptr;
 
 private:
     void allOwnedElements(QSet<QElement *> *allOwnedElements_) const;
-
-private:
-    QElementPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

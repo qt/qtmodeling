@@ -40,19 +40,11 @@
 ****************************************************************************/
 
 #include "qmessageend.h"
+#include "qmessageend_p.h"
 
 #include <QtUml/QMessage>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QMessageEndPrivate
-{
-public:
-    explicit QMessageEndPrivate();
-    virtual ~QMessageEndPrivate();
-
-    QMessage *message;
-};
 
 QMessageEndPrivate::QMessageEndPrivate() :
     message(0)

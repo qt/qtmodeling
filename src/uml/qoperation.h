@@ -74,9 +74,9 @@ class Q_UML_EXPORT QOperation : public QObject, public QTemplateableElement, pub
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QTemplateableElement
     Q_PROPERTY(QTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
@@ -84,19 +84,19 @@ class Q_UML_EXPORT QOperation : public QObject, public QTemplateableElement, pub
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QNamespace
-    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
-    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
-    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
-    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
-    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
     Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
+    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
+    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
+    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
+    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
+    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
 
     // From QRedefinableElement
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
@@ -110,29 +110,29 @@ class Q_UML_EXPORT QOperation : public QObject, public QTemplateableElement, pub
     // From QBehavioralFeature
     Q_PROPERTY(QtUml::CallConcurrencyKind concurrency READ concurrency WRITE setConcurrency)
     Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract)
-    Q_PROPERTY(const QSet<QBehavior *> * methods READ methods)
     Q_PROPERTY(const QSet<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
+    Q_PROPERTY(const QSet<QBehavior *> * methods READ methods)
 
     // From QParameterableElement
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
 
     // From QOperation
-    Q_PROPERTY(bool isOrdered READ isOrdered)
+    Q_PROPERTY(qint32 lower READ lower)
     Q_PROPERTY(bool isQuery READ isQuery WRITE setQuery)
     Q_PROPERTY(bool isUnique READ isUnique)
-    Q_PROPERTY(qint32 lower READ lower)
     Q_PROPERTY(qint32 upper READ upper)
-    Q_PROPERTY(QConstraint * bodyCondition READ bodyCondition WRITE setBodyCondition)
-    Q_PROPERTY(QClass * class_ READ class_ WRITE setClass_)
-    Q_PROPERTY(QDataType * datatype READ datatype WRITE setDatatype)
-    Q_PROPERTY(QInterface * interface READ interface WRITE setInterface)
+    Q_PROPERTY(bool isOrdered READ isOrdered)
     Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
-    Q_PROPERTY(const QSet<QConstraint *> * postconditions READ postconditions)
-    Q_PROPERTY(const QSet<QConstraint *> * preconditions READ preconditions)
-    Q_PROPERTY(const QSet<QType *> * raisedExceptions READ raisedExceptions)
+    Q_PROPERTY(QConstraint * bodyCondition READ bodyCondition WRITE setBodyCondition)
     Q_PROPERTY(const QSet<QOperation *> * redefinedOperations READ redefinedOperations)
+    Q_PROPERTY(const QSet<QConstraint *> * postconditions READ postconditions)
+    Q_PROPERTY(QDataType * datatype READ datatype WRITE setDatatype)
     Q_PROPERTY(QOperationTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
+    Q_PROPERTY(QInterface * interface READ interface WRITE setInterface)
     Q_PROPERTY(QType * type READ type)
+    Q_PROPERTY(const QSet<QConstraint *> * preconditions READ preconditions)
+    Q_PROPERTY(QClass * class_ READ class_ WRITE setClass_)
+    Q_PROPERTY(const QSet<QType *> * raisedExceptions READ raisedExceptions)
 
     Q_DISABLE_COPY(QOperation)
     Q_DECLARE_PRIVATE(QOperation)
@@ -142,46 +142,46 @@ public:
     virtual ~QOperation();
 
     // Attributes
-    bool isOrdered() const;
+    qint32 lower() const;
     bool isQuery() const;
     void setQuery(bool isQuery);
     bool isUnique() const;
-    qint32 lower() const;
     qint32 upper() const;
+    bool isOrdered() const;
 
     // Association-ends
-    QConstraint *bodyCondition() const;
-    void setBodyCondition(const QConstraint *bodyCondition);
-    QClass *class_() const;
-    void setClass_(const QClass *class_);
-    QDataType *datatype() const;
-    void setDatatype(const QDataType *datatype);
-    QInterface *interface() const;
-    void setInterface(const QInterface *interface);
     const QList<QParameter *> *ownedParameters() const;
     void addOwnedParameter(const QParameter *ownedParameter);
     void removeOwnedParameter(const QParameter *ownedParameter);
-    const QSet<QConstraint *> *postconditions() const;
-    void addPostcondition(const QConstraint *postcondition);
-    void removePostcondition(const QConstraint *postcondition);
-    const QSet<QConstraint *> *preconditions() const;
-    void addPrecondition(const QConstraint *precondition);
-    void removePrecondition(const QConstraint *precondition);
-    const QSet<QType *> *raisedExceptions() const;
-    void addRaisedException(const QType *raisedException);
-    void removeRaisedException(const QType *raisedException);
+    QConstraint *bodyCondition() const;
+    void setBodyCondition(const QConstraint *bodyCondition);
     const QSet<QOperation *> *redefinedOperations() const;
     void addRedefinedOperation(const QOperation *redefinedOperation);
     void removeRedefinedOperation(const QOperation *redefinedOperation);
+    const QSet<QConstraint *> *postconditions() const;
+    void addPostcondition(const QConstraint *postcondition);
+    void removePostcondition(const QConstraint *postcondition);
+    QDataType *datatype() const;
+    void setDatatype(const QDataType *datatype);
     QOperationTemplateParameter *templateParameter() const;
     void setTemplateParameter(const QOperationTemplateParameter *templateParameter);
+    QInterface *interface() const;
+    void setInterface(const QInterface *interface);
     QType *type() const;
+    const QSet<QConstraint *> *preconditions() const;
+    void addPrecondition(const QConstraint *precondition);
+    void removePrecondition(const QConstraint *precondition);
+    QClass *class_() const;
+    void setClass_(const QClass *class_);
+    const QSet<QType *> *raisedExceptions() const;
+    void addRaisedException(const QType *raisedException);
+    void removeRaisedException(const QType *raisedException);
 
     // Operations
     bool isConsistentWith(const QRedefinableElement *redefinee) const;
     const QSet<QParameter *> *returnResult() const;
 
-private:
+protected:
     QOperationPrivate *d_ptr;
 };
 

@@ -68,16 +68,16 @@ class Q_UML_EXPORT QInstanceSpecification : public QObject, public QDeployedArti
     Q_OBJECT
 
     // From QElement
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QParameterableElement
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
@@ -92,8 +92,8 @@ class Q_UML_EXPORT QInstanceSpecification : public QObject, public QDeployedArti
 
     // From QInstanceSpecification
     Q_PROPERTY(const QSet<QClassifier *> * classifiers READ classifiers)
-    Q_PROPERTY(const QSet<QSlot *> * slots_ READ slots_)
     Q_PROPERTY(QValueSpecification * specification READ specification WRITE setSpecification)
+    Q_PROPERTY(const QSet<QSlot *> * slots_ READ slots_)
 
     Q_DISABLE_COPY(QInstanceSpecification)
     Q_DECLARE_PRIVATE(QInstanceSpecification)
@@ -106,13 +106,13 @@ public:
     const QSet<QClassifier *> *classifiers() const;
     void addClassifier(const QClassifier *classifier);
     void removeClassifier(const QClassifier *classifier);
+    QValueSpecification *specification() const;
+    void setSpecification(const QValueSpecification *specification);
     const QSet<QSlot *> *slots_() const;
     void addSlot_(const QSlot *slot_);
     void removeSlot_(const QSlot *slot_);
-    QValueSpecification *specification() const;
-    void setSpecification(const QValueSpecification *specification);
 
-private:
+protected:
     QInstanceSpecificationPrivate *d_ptr;
 };
 

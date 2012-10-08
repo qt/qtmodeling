@@ -40,23 +40,13 @@
 ****************************************************************************/
 
 #include "qconditionalnode.h"
+#include "qconditionalnode_p.h"
+#include "qelement_p.h"
 
 #include <QtUml/QClause>
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QConditionalNodePrivate
-{
-public:
-    explicit QConditionalNodePrivate();
-    virtual ~QConditionalNodePrivate();
-
-    bool isAssured;
-    bool isDeterminate;
-    QSet<QClause *> *clauses;
-    QList<QOutputPin *> *results;
-};
 
 QConditionalNodePrivate::QConditionalNodePrivate() :
     isAssured(false),
@@ -128,14 +118,14 @@ void QConditionalNode::addClause(const QClause *clause)
 {
     d_ptr->clauses->insert(const_cast<QClause *>(clause));
     // Adjust subsetted property(ies)
-    addOwnedElement(clause);
+    QElement::d_ptr->ownedElements->insert(const_cast<QClause *>(clause));
 }
 
 void QConditionalNode::removeClause(const QClause *clause)
 {
     d_ptr->clauses->remove(const_cast<QClause *>(clause));
     // Adjust subsetted property(ies)
-    removeOwnedElement(clause);
+    QElement::d_ptr->ownedElements->remove(const_cast<QClause *>(clause));
 }
 
 /*!

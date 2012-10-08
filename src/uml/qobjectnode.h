@@ -79,18 +79,18 @@ public:
     void setOrdering(QtUml::ObjectNodeOrderingKind ordering);
 
     // Association-ends
+    QValueSpecification *upperBound() const;
+    void setUpperBound(const QValueSpecification *upperBound);
+    QBehavior *selection() const;
+    void setSelection(const QBehavior *selection);
     const QSet<QState *> *inState() const;
     void addInState(const QState *inState);
     void removeInState(const QState *inState);
-    QBehavior *selection() const;
-    void setSelection(const QBehavior *selection);
-    QValueSpecification *upperBound() const;
-    void setUpperBound(const QValueSpecification *upperBound);
 
 protected:
     explicit QObjectNode();
 
-private:
+protected:
     QObjectNodePrivate *d_ptr;
 };
 

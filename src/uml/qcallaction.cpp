@@ -40,20 +40,12 @@
 ****************************************************************************/
 
 #include "qcallaction.h"
+#include "qcallaction_p.h"
+#include "qaction_p.h"
 
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QCallActionPrivate
-{
-public:
-    explicit QCallActionPrivate();
-    virtual ~QCallActionPrivate();
-
-    bool isSynchronous;
-    QList<QOutputPin *> *results;
-};
 
 QCallActionPrivate::QCallActionPrivate() :
     isSynchronous(true),
@@ -109,14 +101,14 @@ void QCallAction::addResult(const QOutputPin *result)
 {
     d_ptr->results->append(const_cast<QOutputPin *>(result));
     // Adjust subsetted property(ies)
-    addOutput(result);
+    QAction::d_ptr->outputs->append(const_cast<QOutputPin *>(result));
 }
 
 void QCallAction::removeResult(const QOutputPin *result)
 {
     d_ptr->results->removeAll(const_cast<QOutputPin *>(result));
     // Adjust subsetted property(ies)
-    removeOutput(result);
+    QAction::d_ptr->outputs->removeAll(const_cast<QOutputPin *>(result));
 }
 
 QT_END_NAMESPACE_QTUML

@@ -40,6 +40,17 @@
 ****************************************************************************/
 
 #include "qproperty.h"
+#include "qproperty_p.h"
+#include "qfeature_p.h"
+#include "qredefinableelement_p.h"
+#include "qnamedelement_p.h"
+#include "qelement_p.h"
+#include "qelement_p.h"
+#include "qnamedelement_p.h"
+#include "qelement_p.h"
+#include "qnamedelement_p.h"
+#include "qredefinableelement_p.h"
+#include "qnamedelement_p.h"
 
 #include <QtUml/QRedefinableElement>
 #include <QtUml/QParameterableElement>
@@ -52,53 +63,30 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QPropertyPrivate
-{
-public:
-    explicit QPropertyPrivate();
-    virtual ~QPropertyPrivate();
-
-    QtUml::AggregationKind aggregation;
-    bool isDerived;
-    bool isDerivedUnion;
-    bool isID;
-    bool isReadOnly;
-    QAssociation *association;
-    QProperty *associationEnd;
-    QClass *class_;
-    QDataType *datatype;
-    QValueSpecification *defaultValue;
-    QInterface *interface;
-    QAssociation *owningAssociation;
-    QList<QProperty *> *qualifiers;
-    QSet<QProperty *> *redefinedProperties;
-    QSet<QProperty *> *subsettedProperties;
-};
-
 QPropertyPrivate::QPropertyPrivate() :
-    aggregation(QtUml::AggregationNone),
     isDerived(false),
-    isDerivedUnion(false),
-    isID(false),
     isReadOnly(false),
-    association(0),
-    associationEnd(0),
-    class_(0),
-    datatype(0),
-    defaultValue(0),
-    interface(0),
+    isID(false),
+    isDerivedUnion(false),
+    aggregation(QtUml::AggregationNone),
+    subsettedProperties(new QSet<QProperty *>),
     owningAssociation(0),
     qualifiers(new QList<QProperty *>),
+    defaultValue(0),
+    class_(0),
+    associationEnd(0),
+    datatype(0),
     redefinedProperties(new QSet<QProperty *>),
-    subsettedProperties(new QSet<QProperty *>)
+    association(0),
+    interface(0)
 {
 }
 
 QPropertyPrivate::~QPropertyPrivate()
 {
+    delete subsettedProperties;
     delete qualifiers;
     delete redefinedProperties;
-    delete subsettedProperties;
 }
 
 /*!
@@ -120,16 +108,16 @@ QProperty::~QProperty()
 }
 
 /*!
-    Specifies the kind of aggregation that applies to the Property.
+    If isDerived is true, the value of the attribute is derived from information elsewhere.Specifies whether the Property is derived, i.e., whether its value or values can be computed from other information.
  */
-QtUml::AggregationKind QProperty::aggregation() const
+bool QProperty::isDerived() const
 {
-    return d_ptr->aggregation;
+    return d_ptr->isDerived;
 }
 
-void QProperty::setAggregation(QtUml::AggregationKind aggregation)
+void QProperty::setDerived(bool isDerived)
 {
-    d_ptr->aggregation = aggregation;
+    d_ptr->isDerived = isDerived;
 }
 
 /*!
@@ -159,29 +147,16 @@ void QProperty::setComposite(bool isComposite)
 }
 
 /*!
-    If isDerived is true, the value of the attribute is derived from information elsewhere.Specifies whether the Property is derived, i.e., whether its value or values can be computed from other information.
+    If true, the attribute may only be read, and not written.If isReadOnly is true, the attribute may not be written to after initialization.
  */
-bool QProperty::isDerived() const
+bool QProperty::isReadOnly() const
 {
-    return d_ptr->isDerived;
+    return d_ptr->isReadOnly;
 }
 
-void QProperty::setDerived(bool isDerived)
+void QProperty::setReadOnly(bool isReadOnly)
 {
-    d_ptr->isDerived = isDerived;
-}
-
-/*!
-    Specifies whether the property is derived as the union of all of the properties that are constrained to subset it.
- */
-bool QProperty::isDerivedUnion() const
-{
-    return d_ptr->isDerivedUnion;
-}
-
-void QProperty::setDerivedUnion(bool isDerivedUnion)
-{
-    d_ptr->isDerivedUnion = isDerivedUnion;
+    d_ptr->isReadOnly = isReadOnly;
 }
 
 /*!
@@ -198,107 +173,47 @@ void QProperty::setID(bool isID)
 }
 
 /*!
-    If true, the attribute may only be read, and not written.If isReadOnly is true, the attribute may not be written to after initialization.
+    Specifies whether the property is derived as the union of all of the properties that are constrained to subset it.
  */
-bool QProperty::isReadOnly() const
+bool QProperty::isDerivedUnion() const
 {
-    return d_ptr->isReadOnly;
+    return d_ptr->isDerivedUnion;
 }
 
-void QProperty::setReadOnly(bool isReadOnly)
+void QProperty::setDerivedUnion(bool isDerivedUnion)
 {
-    d_ptr->isReadOnly = isReadOnly;
+    d_ptr->isDerivedUnion = isDerivedUnion;
 }
 
 /*!
-    References the association of which this property is a member, if any.
+    Specifies the kind of aggregation that applies to the Property.
  */
-QAssociation *QProperty::association() const
+QtUml::AggregationKind QProperty::aggregation() const
 {
-    return d_ptr->association;
+    return d_ptr->aggregation;
 }
 
-void QProperty::setAssociation(const QAssociation *association)
+void QProperty::setAggregation(QtUml::AggregationKind aggregation)
 {
-    d_ptr->association = const_cast<QAssociation *>(association);
+    d_ptr->aggregation = aggregation;
 }
 
 /*!
-    Designates the optional association end that owns a qualifier attribute.
+    References the properties of which this property is constrained to be a subset.
  */
-QProperty *QProperty::associationEnd() const
+const QSet<QProperty *> *QProperty::subsettedProperties() const
 {
-    return d_ptr->associationEnd;
+    return d_ptr->subsettedProperties;
 }
 
-void QProperty::setAssociationEnd(const QProperty *associationEnd)
+void QProperty::addSubsettedProperty(const QProperty *subsettedProperty)
 {
-    d_ptr->associationEnd = const_cast<QProperty *>(associationEnd);
+    d_ptr->subsettedProperties->insert(const_cast<QProperty *>(subsettedProperty));
 }
 
-/*!
-    References the Class that owns the Property.References the Class that owns the Property.
- */
-QClass *QProperty::class_() const
+void QProperty::removeSubsettedProperty(const QProperty *subsettedProperty)
 {
-    return d_ptr->class_;
-}
-
-void QProperty::setClass_(const QClass *class_)
-{
-    d_ptr->class_ = const_cast<QClass *>(class_);
-}
-
-/*!
-    The DataType that owns this Property.
- */
-QDataType *QProperty::datatype() const
-{
-    return d_ptr->datatype;
-}
-
-void QProperty::setDatatype(const QDataType *datatype)
-{
-    d_ptr->datatype = const_cast<QDataType *>(datatype);
-}
-
-/*!
-    A ValueSpecification that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.
- */
-QValueSpecification *QProperty::defaultValue() const
-{
-    return d_ptr->defaultValue;
-}
-
-void QProperty::setDefaultValue(const QValueSpecification *defaultValue)
-{
-    d_ptr->defaultValue = const_cast<QValueSpecification *>(defaultValue);
-}
-
-/*!
-    References the Interface that owns the Property
- */
-QInterface *QProperty::interface() const
-{
-    return d_ptr->interface;
-}
-
-void QProperty::setInterface(const QInterface *interface)
-{
-    d_ptr->interface = const_cast<QInterface *>(interface);
-}
-
-/*!
-    In the case where the property is one navigable end of a binary association with both ends navigable, this gives the other end.
- */
-QProperty *QProperty::opposite() const
-{
-    qWarning("QProperty::opposite: to be implemented (this is a derived associationend)");
-}
-
-void QProperty::setOpposite(const QProperty *opposite)
-{
-    qWarning("QProperty::setOpposite: to be implemented (this is a derived associationend)");
+    d_ptr->subsettedProperties->remove(const_cast<QProperty *>(subsettedProperty));
 }
 
 /*!
@@ -326,14 +241,79 @@ void QProperty::addQualifier(const QProperty *qualifier)
 {
     d_ptr->qualifiers->append(const_cast<QProperty *>(qualifier));
     // Adjust subsetted property(ies)
-    addOwnedElement(qualifier);
+    QElement::d_ptr->ownedElements->insert(const_cast<QProperty *>(qualifier));
 }
 
 void QProperty::removeQualifier(const QProperty *qualifier)
 {
     d_ptr->qualifiers->removeAll(const_cast<QProperty *>(qualifier));
     // Adjust subsetted property(ies)
-    removeOwnedElement(qualifier);
+    QElement::d_ptr->ownedElements->remove(const_cast<QProperty *>(qualifier));
+}
+
+/*!
+    A ValueSpecification that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.
+ */
+QValueSpecification *QProperty::defaultValue() const
+{
+    return d_ptr->defaultValue;
+}
+
+void QProperty::setDefaultValue(const QValueSpecification *defaultValue)
+{
+    d_ptr->defaultValue = const_cast<QValueSpecification *>(defaultValue);
+}
+
+/*!
+    References the Class that owns the Property.References the Class that owns the Property.
+ */
+QClass *QProperty::class_() const
+{
+    return d_ptr->class_;
+}
+
+void QProperty::setClass_(const QClass *class_)
+{
+    d_ptr->class_ = const_cast<QClass *>(class_);
+}
+
+/*!
+    In the case where the property is one navigable end of a binary association with both ends navigable, this gives the other end.
+ */
+QProperty *QProperty::opposite() const
+{
+    qWarning("QProperty::opposite: to be implemented (this is a derived associationend)");
+}
+
+void QProperty::setOpposite(const QProperty *opposite)
+{
+    qWarning("QProperty::setOpposite: to be implemented (this is a derived associationend)");
+}
+
+/*!
+    Designates the optional association end that owns a qualifier attribute.
+ */
+QProperty *QProperty::associationEnd() const
+{
+    return d_ptr->associationEnd;
+}
+
+void QProperty::setAssociationEnd(const QProperty *associationEnd)
+{
+    d_ptr->associationEnd = const_cast<QProperty *>(associationEnd);
+}
+
+/*!
+    The DataType that owns this Property.
+ */
+QDataType *QProperty::datatype() const
+{
+    return d_ptr->datatype;
+}
+
+void QProperty::setDatatype(const QDataType *datatype)
+{
+    d_ptr->datatype = const_cast<QDataType *>(datatype);
 }
 
 /*!
@@ -348,32 +328,40 @@ void QProperty::addRedefinedProperty(const QProperty *redefinedProperty)
 {
     d_ptr->redefinedProperties->insert(const_cast<QProperty *>(redefinedProperty));
     // Adjust subsetted property(ies)
-    addRedefinedElement(redefinedProperty);
+    QRedefinableElement::d_ptr->redefinedElements->insert(const_cast<QProperty *>(redefinedProperty));
 }
 
 void QProperty::removeRedefinedProperty(const QProperty *redefinedProperty)
 {
     d_ptr->redefinedProperties->remove(const_cast<QProperty *>(redefinedProperty));
     // Adjust subsetted property(ies)
-    removeRedefinedElement(redefinedProperty);
+    QRedefinableElement::d_ptr->redefinedElements->remove(const_cast<QProperty *>(redefinedProperty));
 }
 
 /*!
-    References the properties of which this property is constrained to be a subset.
+    References the association of which this property is a member, if any.
  */
-const QSet<QProperty *> *QProperty::subsettedProperties() const
+QAssociation *QProperty::association() const
 {
-    return d_ptr->subsettedProperties;
+    return d_ptr->association;
 }
 
-void QProperty::addSubsettedProperty(const QProperty *subsettedProperty)
+void QProperty::setAssociation(const QAssociation *association)
 {
-    d_ptr->subsettedProperties->insert(const_cast<QProperty *>(subsettedProperty));
+    d_ptr->association = const_cast<QAssociation *>(association);
 }
 
-void QProperty::removeSubsettedProperty(const QProperty *subsettedProperty)
+/*!
+    References the Interface that owns the Property
+ */
+QInterface *QProperty::interface() const
 {
-    d_ptr->subsettedProperties->remove(const_cast<QProperty *>(subsettedProperty));
+    return d_ptr->interface;
+}
+
+void QProperty::setInterface(const QInterface *interface)
+{
+    d_ptr->interface = const_cast<QInterface *>(interface);
 }
 
 /*!

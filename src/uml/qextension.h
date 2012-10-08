@@ -84,7 +84,7 @@ public:
     // Operations
     QProperty *metaclassEnd() const;
 
-private:
+protected:
     QExtensionPrivate *d_ptr;
 };
 

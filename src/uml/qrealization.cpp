@@ -40,17 +40,10 @@
 ****************************************************************************/
 
 #include "qrealization.h"
+#include "qrealization_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QRealizationPrivate
-{
-public:
-    explicit QRealizationPrivate();
-    virtual ~QRealizationPrivate();
-
-};
 
 QRealizationPrivate::QRealizationPrivate()
 {

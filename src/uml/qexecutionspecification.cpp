@@ -40,24 +40,15 @@
 ****************************************************************************/
 
 #include "qexecutionspecification.h"
+#include "qexecutionspecification_p.h"
 
 #include <QtUml/QOccurrenceSpecification>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QExecutionSpecificationPrivate
-{
-public:
-    explicit QExecutionSpecificationPrivate();
-    virtual ~QExecutionSpecificationPrivate();
-
-    QOccurrenceSpecification *finish;
-    QOccurrenceSpecification *start;
-};
-
 QExecutionSpecificationPrivate::QExecutionSpecificationPrivate() :
-    finish(0),
-    start(0)
+    start(0),
+    finish(0)
 {
 }
 
@@ -84,19 +75,6 @@ QExecutionSpecification::~QExecutionSpecification()
 }
 
 /*!
-    References the OccurrenceSpecification that designates the finish of the Action or Behavior.
- */
-QOccurrenceSpecification *QExecutionSpecification::finish() const
-{
-    return d_ptr->finish;
-}
-
-void QExecutionSpecification::setFinish(const QOccurrenceSpecification *finish)
-{
-    d_ptr->finish = const_cast<QOccurrenceSpecification *>(finish);
-}
-
-/*!
     References the OccurrenceSpecification that designates the start of the Action or Behavior
  */
 QOccurrenceSpecification *QExecutionSpecification::start() const
@@ -107,6 +85,19 @@ QOccurrenceSpecification *QExecutionSpecification::start() const
 void QExecutionSpecification::setStart(const QOccurrenceSpecification *start)
 {
     d_ptr->start = const_cast<QOccurrenceSpecification *>(start);
+}
+
+/*!
+    References the OccurrenceSpecification that designates the finish of the Action or Behavior.
+ */
+QOccurrenceSpecification *QExecutionSpecification::finish() const
+{
+    return d_ptr->finish;
+}
+
+void QExecutionSpecification::setFinish(const QOccurrenceSpecification *finish)
+{
+    d_ptr->finish = const_cast<QOccurrenceSpecification *>(finish);
 }
 
 QT_END_NAMESPACE_QTUML

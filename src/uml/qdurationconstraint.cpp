@@ -40,20 +40,11 @@
 ****************************************************************************/
 
 #include "qdurationconstraint.h"
+#include "qdurationconstraint_p.h"
 
 #include <QtUml/QDurationInterval>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QDurationConstraintPrivate
-{
-public:
-    explicit QDurationConstraintPrivate();
-    virtual ~QDurationConstraintPrivate();
-
-    QSet<bool> *firstEvents;
-    QDurationInterval *specification;
-};
 
 QDurationConstraintPrivate::QDurationConstraintPrivate() :
     firstEvents(new QSet<bool>),

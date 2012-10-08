@@ -40,6 +40,11 @@
 ****************************************************************************/
 
 #include "qdatatype.h"
+#include "qdatatype_p.h"
+#include "qclassifier_p.h"
+#include "qnamespace_p.h"
+#include "qnamespace_p.h"
+#include "qclassifier_p.h"
 
 #include <QtUml/QProperty>
 #include <QtUml/QOperation>
@@ -47,26 +52,16 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QDataTypePrivate
-{
-public:
-    explicit QDataTypePrivate();
-    virtual ~QDataTypePrivate();
-
-    QList<QProperty *> *ownedAttributes;
-    QList<QOperation *> *ownedOperations;
-};
-
 QDataTypePrivate::QDataTypePrivate() :
-    ownedAttributes(new QList<QProperty *>),
-    ownedOperations(new QList<QOperation *>)
+    ownedOperations(new QList<QOperation *>),
+    ownedAttributes(new QList<QProperty *>)
 {
 }
 
 QDataTypePrivate::~QDataTypePrivate()
 {
-    delete ownedAttributes;
     delete ownedOperations;
+    delete ownedAttributes;
 }
 
 /*!
@@ -88,30 +83,6 @@ QDataType::~QDataType()
 }
 
 /*!
-    The Attributes owned by the DataType.
- */
-const QList<QProperty *> *QDataType::ownedAttributes() const
-{
-    return d_ptr->ownedAttributes;
-}
-
-void QDataType::addOwnedAttribute(const QProperty *ownedAttribute)
-{
-    d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
-    // Adjust subsetted property(ies)
-    addOwnedMember(ownedAttribute);
-    addAttribute(ownedAttribute);
-}
-
-void QDataType::removeOwnedAttribute(const QProperty *ownedAttribute)
-{
-    d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
-    // Adjust subsetted property(ies)
-    removeOwnedMember(ownedAttribute);
-    removeAttribute(ownedAttribute);
-}
-
-/*!
     The Operations owned by the DataType.
  */
 const QList<QOperation *> *QDataType::ownedOperations() const
@@ -123,16 +94,40 @@ void QDataType::addOwnedOperation(const QOperation *ownedOperation)
 {
     d_ptr->ownedOperations->append(const_cast<QOperation *>(ownedOperation));
     // Adjust subsetted property(ies)
-    addFeature(ownedOperation);
-    addOwnedMember(ownedOperation);
+    QClassifier::d_ptr->features->insert(const_cast<QOperation *>(ownedOperation));
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QOperation *>(ownedOperation));
 }
 
 void QDataType::removeOwnedOperation(const QOperation *ownedOperation)
 {
     d_ptr->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation));
     // Adjust subsetted property(ies)
-    removeFeature(ownedOperation);
-    removeOwnedMember(ownedOperation);
+    QClassifier::d_ptr->features->remove(const_cast<QOperation *>(ownedOperation));
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QOperation *>(ownedOperation));
+}
+
+/*!
+    The Attributes owned by the DataType.
+ */
+const QList<QProperty *> *QDataType::ownedAttributes() const
+{
+    return d_ptr->ownedAttributes;
+}
+
+void QDataType::addOwnedAttribute(const QProperty *ownedAttribute)
+{
+    d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->insert(const_cast<QProperty *>(ownedAttribute));
+    QClassifier::d_ptr->attributes->insert(const_cast<QProperty *>(ownedAttribute));
+}
+
+void QDataType::removeOwnedAttribute(const QProperty *ownedAttribute)
+{
+    d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
+    // Adjust subsetted property(ies)
+    QNamespace::d_ptr->ownedMembers->remove(const_cast<QProperty *>(ownedAttribute));
+    QClassifier::d_ptr->attributes->remove(const_cast<QProperty *>(ownedAttribute));
 }
 
 /*!

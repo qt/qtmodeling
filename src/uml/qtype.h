@@ -73,7 +73,7 @@ public:
 protected:
     explicit QType();
 
-private:
+protected:
     QTypePrivate *d_ptr;
 };
 

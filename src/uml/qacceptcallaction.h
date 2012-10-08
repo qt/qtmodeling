@@ -73,7 +73,7 @@ public:
     QOutputPin *returnInformation() const;
     void setReturnInformation(const QOutputPin *returnInformation);
 
-private:
+protected:
     QAcceptCallActionPrivate *d_ptr;
 };
 

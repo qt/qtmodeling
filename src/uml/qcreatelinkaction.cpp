@@ -40,19 +40,11 @@
 ****************************************************************************/
 
 #include "qcreatelinkaction.h"
+#include "qcreatelinkaction_p.h"
 
 #include <QtUml/QLinkEndCreationData>
 
 QT_BEGIN_NAMESPACE_QTUML
-
-class QCreateLinkActionPrivate
-{
-public:
-    explicit QCreateLinkActionPrivate();
-    virtual ~QCreateLinkActionPrivate();
-
-    QSet<QLinkEndCreationData *> *endData;
-};
 
 QCreateLinkActionPrivate::QCreateLinkActionPrivate() :
     endData(new QSet<QLinkEndCreationData *>)

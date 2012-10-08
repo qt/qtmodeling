@@ -40,25 +40,16 @@
 ****************************************************************************/
 
 #include "qconnectorend.h"
+#include "qconnectorend_p.h"
 
 #include <QtUml/QProperty>
 #include <QtUml/QConnectableElement>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-class QConnectorEndPrivate
-{
-public:
-    explicit QConnectorEndPrivate();
-    virtual ~QConnectorEndPrivate();
-
-    QProperty *partWithPort;
-    QConnectableElement *role;
-};
-
 QConnectorEndPrivate::QConnectorEndPrivate() :
-    partWithPort(0),
-    role(0)
+    role(0),
+    partWithPort(0)
 {
 }
 
@@ -85,11 +76,16 @@ QConnectorEnd::~QConnectorEnd()
 }
 
 /*!
-    A derived association referencing the corresponding association end on the association which types the connector owing this connector end. This association is derived by selecting the association end at the same place in the ordering of association ends as this connector end.
+    The connectable element attached at this connector end. When an instance of the containing classifier is created, a link may (depending on the multiplicities) be created to an instance of the classifier that types this connectable element.
  */
-QProperty *QConnectorEnd::definingEnd() const
+QConnectableElement *QConnectorEnd::role() const
 {
-    qWarning("QConnectorEnd::definingEnd: to be implemented (this is a derived associationend)");
+    return d_ptr->role;
+}
+
+void QConnectorEnd::setRole(const QConnectableElement *role)
+{
+    d_ptr->role = const_cast<QConnectableElement *>(role);
 }
 
 /*!
@@ -106,16 +102,11 @@ void QConnectorEnd::setPartWithPort(const QProperty *partWithPort)
 }
 
 /*!
-    The connectable element attached at this connector end. When an instance of the containing classifier is created, a link may (depending on the multiplicities) be created to an instance of the classifier that types this connectable element.
+    A derived association referencing the corresponding association end on the association which types the connector owing this connector end. This association is derived by selecting the association end at the same place in the ordering of association ends as this connector end.
  */
-QConnectableElement *QConnectorEnd::role() const
+QProperty *QConnectorEnd::definingEnd() const
 {
-    return d_ptr->role;
-}
-
-void QConnectorEnd::setRole(const QConnectableElement *role)
-{
-    d_ptr->role = const_cast<QConnectableElement *>(role);
+    qWarning("QConnectorEnd::definingEnd: to be implemented (this is a derived associationend)");
 }
 
 #include "moc_qconnectorend.cpp"
