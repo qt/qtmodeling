@@ -84,6 +84,9 @@ protected:
     explicit QElement();
 
 private:
+    void allOwnedElements(QSet<QElement *> *allOwnedElements_) const;
+
+private:
     QElementPrivate *d_ptr;
 };
 

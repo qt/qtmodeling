@@ -142,10 +142,20 @@ void QElement::setOwner(const QElement *owner)
 
 /*!
     The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
+    It is the caller's responsibility to delete the returned set.
  */
 const QSet<QElement *> *QElement::allOwnedElements() const
 {
-    qWarning("QElement::allOwnedElements: operation to be implemented");
+    QSet<QElement *> *allOwnedElements_ = new QSet<QElement *>;
+    allOwnedElements(allOwnedElements_);
+    return allOwnedElements_;
+}
+
+void QElement::allOwnedElements(QSet<QElement *> *allOwnedElements_) const
+{
+    allOwnedElements_->unite(*d_ptr->ownedElements);
+    foreach (QElement *element, *d_ptr->ownedElements)
+        element->allOwnedElements(allOwnedElements_);
 }
 
 /*!
@@ -153,7 +163,7 @@ const QSet<QElement *> *QElement::allOwnedElements() const
  */
 bool QElement::mustBeOwned() const
 {
-    qWarning("QElement::mustBeOwned: operation to be implemented");
+    return true;
 }
 
 QT_END_NAMESPACE_QTUML
