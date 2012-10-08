@@ -166,6 +166,11 @@ QNamespace *QNamedElement::namespace_() const
     return d_ptr->namespace_;
 }
 
+void QNamedElement::setNamespace_(const QNamespace *namespace_)
+{
+    d_ptr->namespace_ = const_cast<QNamespace *>(namespace_);
+}
+
 /*!
     The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
  */

@@ -78,6 +78,7 @@ protected:
     // Synchronization functions for read-only subsetted properties
     void addOwnedElement(const QElement *ownedElement);
     void removeOwnedElement(const QElement *ownedElement);
+    void setOwner(const QElement *owner);
 
 protected:
     explicit QElement();

@@ -84,6 +84,7 @@ protected:
     void removeContainedNode(const QActivityNode *containedNode);
     void addSubgroup(const QActivityGroup *subgroup);
     void removeSubgroup(const QActivityGroup *subgroup);
+    void setSuperGroup(const QActivityGroup *superGroup);
 
 protected:
     explicit QActivityGroup();

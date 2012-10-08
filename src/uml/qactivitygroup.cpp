@@ -173,5 +173,10 @@ QActivityGroup *QActivityGroup::superGroup() const
     return d_ptr->superGroup;
 }
 
+void QActivityGroup::setSuperGroup(const QActivityGroup *superGroup)
+{
+    d_ptr->superGroup = const_cast<QActivityGroup *>(superGroup);
+}
+
 QT_END_NAMESPACE_QTUML
 

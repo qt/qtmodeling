@@ -135,6 +135,11 @@ QElement *QElement::owner() const
     return d_ptr->owner;
 }
 
+void QElement::setOwner(const QElement *owner)
+{
+    d_ptr->owner = const_cast<QElement *>(owner);
+}
+
 /*!
     The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
  */
