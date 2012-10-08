@@ -55,9 +55,9 @@ QT_MODULE(QtUml)
 
 class QAssociationClassPrivate;
 
-class Q_UML_EXPORT QAssociationClass //: public QClass, public QAssociation
+class Q_UML_EXPORT QAssociationClass : public QClass, public QAssociation
 {
-//    Q_OBJECT
+    Q_OBJECT
 
     Q_DISABLE_COPY(QAssociationClass)
     Q_DECLARE_PRIVATE(QAssociationClass)

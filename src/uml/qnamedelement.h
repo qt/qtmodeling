@@ -96,6 +96,10 @@ public:
     QString separator() const;
 
 protected:
+    // Synchronization functions for read-only subsetted properties
+    void setNamespace_(const QNamespace *namespace_);
+
+protected:
     explicit QNamedElement();
 
 private:

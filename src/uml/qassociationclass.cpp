@@ -69,7 +69,7 @@ QAssociationClassPrivate::~QAssociationClassPrivate()
  */
 
 QAssociationClass::QAssociationClass(QObject *parent)
-    : d_ptr(new QAssociationClassPrivate)
+    : (parent), d_ptr(new QAssociationClassPrivate)
 {
 }
 
