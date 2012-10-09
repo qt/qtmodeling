@@ -113,17 +113,11 @@ const QList<QOperation *> *QArtifact::ownedOperations() const
 void QArtifact::addOwnedOperation(const QOperation *ownedOperation)
 {
     d_ptr->ownedOperations->append(const_cast<QOperation *>(ownedOperation));
-    // Adjust subsetted property(ies)
-    QClassifier::d_ptr->features->insert(const_cast<QOperation *>(ownedOperation));
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QOperation *>(ownedOperation));
 }
 
 void QArtifact::removeOwnedOperation(const QOperation *ownedOperation)
 {
     d_ptr->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation));
-    // Adjust subsetted property(ies)
-    QClassifier::d_ptr->features->remove(const_cast<QOperation *>(ownedOperation));
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QOperation *>(ownedOperation));
 }
 
 /*!
@@ -137,17 +131,11 @@ const QList<QProperty *> *QArtifact::ownedAttributes() const
 void QArtifact::addOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QProperty *>(ownedAttribute));
-    QClassifier::d_ptr->attributes->insert(const_cast<QProperty *>(ownedAttribute));
 }
 
 void QArtifact::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QProperty *>(ownedAttribute));
-    QClassifier::d_ptr->attributes->remove(const_cast<QProperty *>(ownedAttribute));
 }
 
 /*!
@@ -161,17 +149,11 @@ const QSet<QManifestation *> *QArtifact::manifestations() const
 void QArtifact::addManifestation(const QManifestation *manifestation)
 {
     d_ptr->manifestations->insert(const_cast<QManifestation *>(manifestation));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QManifestation *>(manifestation));
-    QNamedElement::d_ptr->clientDependencies->insert(const_cast<QManifestation *>(manifestation));
 }
 
 void QArtifact::removeManifestation(const QManifestation *manifestation)
 {
     d_ptr->manifestations->remove(const_cast<QManifestation *>(manifestation));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QManifestation *>(manifestation));
-    QNamedElement::d_ptr->clientDependencies->remove(const_cast<QManifestation *>(manifestation));
 }
 
 /*!
@@ -185,15 +167,11 @@ const QSet<QArtifact *> *QArtifact::nestedArtifacts() const
 void QArtifact::addNestedArtifact(const QArtifact *nestedArtifact)
 {
     d_ptr->nestedArtifacts->insert(const_cast<QArtifact *>(nestedArtifact));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QArtifact *>(nestedArtifact));
 }
 
 void QArtifact::removeNestedArtifact(const QArtifact *nestedArtifact)
 {
     d_ptr->nestedArtifacts->remove(const_cast<QArtifact *>(nestedArtifact));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QArtifact *>(nestedArtifact));
 }
 
 #include "moc_qartifact.cpp"

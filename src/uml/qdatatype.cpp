@@ -93,17 +93,11 @@ const QList<QOperation *> *QDataType::ownedOperations() const
 void QDataType::addOwnedOperation(const QOperation *ownedOperation)
 {
     d_ptr->ownedOperations->append(const_cast<QOperation *>(ownedOperation));
-    // Adjust subsetted property(ies)
-    QClassifier::d_ptr->features->insert(const_cast<QOperation *>(ownedOperation));
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QOperation *>(ownedOperation));
 }
 
 void QDataType::removeOwnedOperation(const QOperation *ownedOperation)
 {
     d_ptr->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation));
-    // Adjust subsetted property(ies)
-    QClassifier::d_ptr->features->remove(const_cast<QOperation *>(ownedOperation));
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QOperation *>(ownedOperation));
 }
 
 /*!
@@ -117,17 +111,11 @@ const QList<QProperty *> *QDataType::ownedAttributes() const
 void QDataType::addOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QProperty *>(ownedAttribute));
-    QClassifier::d_ptr->attributes->insert(const_cast<QProperty *>(ownedAttribute));
 }
 
 void QDataType::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QProperty *>(ownedAttribute));
-    QClassifier::d_ptr->attributes->remove(const_cast<QProperty *>(ownedAttribute));
 }
 
 /*!

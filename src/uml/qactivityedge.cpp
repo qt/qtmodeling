@@ -120,15 +120,11 @@ const QSet<QActivityEdge *> *QActivityEdge::redefinedEdges() const
 void QActivityEdge::addRedefinedEdge(const QActivityEdge *redefinedEdge)
 {
     d_ptr->redefinedEdges->insert(const_cast<QActivityEdge *>(redefinedEdge));
-    // Adjust subsetted property(ies)
-    QRedefinableElement::d_ptr->redefinedElements->insert(const_cast<QActivityEdge *>(redefinedEdge));
 }
 
 void QActivityEdge::removeRedefinedEdge(const QActivityEdge *redefinedEdge)
 {
     d_ptr->redefinedEdges->remove(const_cast<QActivityEdge *>(redefinedEdge));
-    // Adjust subsetted property(ies)
-    QRedefinableElement::d_ptr->redefinedElements->remove(const_cast<QActivityEdge *>(redefinedEdge));
 }
 
 /*!
@@ -163,15 +159,11 @@ const QSet<QActivityPartition *> *QActivityEdge::inPartition() const
 void QActivityEdge::addInPartition(const QActivityPartition *inPartition)
 {
     d_ptr->inPartition->insert(const_cast<QActivityPartition *>(inPartition));
-    // Adjust subsetted property(ies)
-    QActivityEdge::d_ptr->inGroup->insert(const_cast<QActivityPartition *>(inPartition));
 }
 
 void QActivityEdge::removeInPartition(const QActivityPartition *inPartition)
 {
     d_ptr->inPartition->remove(const_cast<QActivityPartition *>(inPartition));
-    // Adjust subsetted property(ies)
-    QActivityEdge::d_ptr->inGroup->remove(const_cast<QActivityPartition *>(inPartition));
 }
 
 /*!

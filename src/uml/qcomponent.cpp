@@ -106,15 +106,11 @@ const QSet<QComponentRealization *> *QComponent::realizations() const
 void QComponent::addRealization(const QComponentRealization *realization)
 {
     d_ptr->realizations->insert(const_cast<QComponentRealization *>(realization));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QComponentRealization *>(realization));
 }
 
 void QComponent::removeRealization(const QComponentRealization *realization)
 {
     d_ptr->realizations->remove(const_cast<QComponentRealization *>(realization));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QComponentRealization *>(realization));
 }
 
 /*!
@@ -144,15 +140,11 @@ const QSet<QPackageableElement *> *QComponent::packagedElements() const
 void QComponent::addPackagedElement(const QPackageableElement *packagedElement)
 {
     d_ptr->packagedElements->insert(const_cast<QPackageableElement *>(packagedElement));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QPackageableElement *>(packagedElement));
 }
 
 void QComponent::removePackagedElement(const QPackageableElement *packagedElement)
 {
     d_ptr->packagedElements->remove(const_cast<QPackageableElement *>(packagedElement));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QPackageableElement *>(packagedElement));
 }
 
 /*!

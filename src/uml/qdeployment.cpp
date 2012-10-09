@@ -107,15 +107,11 @@ const QSet<QDeploymentSpecification *> *QDeployment::configurations() const
 void QDeployment::addConfiguration(const QDeploymentSpecification *configuration)
 {
     d_ptr->configurations->insert(const_cast<QDeploymentSpecification *>(configuration));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QDeploymentSpecification *>(configuration));
 }
 
 void QDeployment::removeConfiguration(const QDeploymentSpecification *configuration)
 {
     d_ptr->configurations->remove(const_cast<QDeploymentSpecification *>(configuration));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QDeploymentSpecification *>(configuration));
 }
 
 /*!
@@ -129,15 +125,11 @@ const QSet<QDeployedArtifact *> *QDeployment::deployedArtifacts() const
 void QDeployment::addDeployedArtifact(const QDeployedArtifact *deployedArtifact)
 {
     d_ptr->deployedArtifacts->insert(const_cast<QDeployedArtifact *>(deployedArtifact));
-    // Adjust subsetted property(ies)
-    QDependency::d_ptr->suppliers->insert(const_cast<QDeployedArtifact *>(deployedArtifact));
 }
 
 void QDeployment::removeDeployedArtifact(const QDeployedArtifact *deployedArtifact)
 {
     d_ptr->deployedArtifacts->remove(const_cast<QDeployedArtifact *>(deployedArtifact));
-    // Adjust subsetted property(ies)
-    QDependency::d_ptr->suppliers->remove(const_cast<QDeployedArtifact *>(deployedArtifact));
 }
 
 #include "moc_qdeployment.cpp"

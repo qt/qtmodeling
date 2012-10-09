@@ -87,15 +87,11 @@ const QSet<QImage *> *QStereotype::icons() const
 void QStereotype::addIcon(const QImage *icon)
 {
     d_ptr->icons->insert(const_cast<QImage *>(icon));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QImage *>(icon));
 }
 
 void QStereotype::removeIcon(const QImage *icon)
 {
     d_ptr->icons->remove(const_cast<QImage *>(icon));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QImage *>(icon));
 }
 
 /*!

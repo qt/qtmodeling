@@ -116,15 +116,11 @@ const QSet<QQualifierValue *> *QLinkEndData::qualifiers() const
 void QLinkEndData::addQualifier(const QQualifierValue *qualifier)
 {
     d_ptr->qualifiers->insert(const_cast<QQualifierValue *>(qualifier));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QQualifierValue *>(qualifier));
 }
 
 void QLinkEndData::removeQualifier(const QQualifierValue *qualifier)
 {
     d_ptr->qualifiers->remove(const_cast<QQualifierValue *>(qualifier));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QQualifierValue *>(qualifier));
 }
 
 #include "moc_qlinkenddata.cpp"

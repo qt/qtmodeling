@@ -96,15 +96,11 @@ const QSet<QGate *> *QInteractionUse::actualGates() const
 void QInteractionUse::addActualGate(const QGate *actualGate)
 {
     d_ptr->actualGates->insert(const_cast<QGate *>(actualGate));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QGate *>(actualGate));
 }
 
 void QInteractionUse::removeActualGate(const QGate *actualGate)
 {
     d_ptr->actualGates->remove(const_cast<QGate *>(actualGate));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QGate *>(actualGate));
 }
 
 /*!
@@ -144,15 +140,11 @@ const QList<QValueSpecification *> *QInteractionUse::arguments() const
 void QInteractionUse::addArgument(const QValueSpecification *argument)
 {
     d_ptr->arguments->append(const_cast<QValueSpecification *>(argument));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QValueSpecification *>(argument));
 }
 
 void QInteractionUse::removeArgument(const QValueSpecification *argument)
 {
     d_ptr->arguments->removeAll(const_cast<QValueSpecification *>(argument));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QValueSpecification *>(argument));
 }
 
 /*!

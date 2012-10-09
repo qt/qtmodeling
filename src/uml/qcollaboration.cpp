@@ -86,15 +86,11 @@ const QSet<QConnectableElement *> *QCollaboration::collaborationRoles() const
 void QCollaboration::addCollaborationRole(const QConnectableElement *collaborationRole)
 {
     d_ptr->collaborationRoles->insert(const_cast<QConnectableElement *>(collaborationRole));
-    // Adjust subsetted property(ies)
-    QStructuredClassifier::d_ptr->roles->insert(const_cast<QConnectableElement *>(collaborationRole));
 }
 
 void QCollaboration::removeCollaborationRole(const QConnectableElement *collaborationRole)
 {
     d_ptr->collaborationRoles->remove(const_cast<QConnectableElement *>(collaborationRole));
-    // Adjust subsetted property(ies)
-    QStructuredClassifier::d_ptr->roles->remove(const_cast<QConnectableElement *>(collaborationRole));
 }
 
 #include "moc_qcollaboration.cpp"

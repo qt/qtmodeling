@@ -96,17 +96,11 @@ const QSet<QDeployment *> *QDeploymentTarget::deployments() const
 void QDeploymentTarget::addDeployment(const QDeployment *deployment)
 {
     d_ptr->deployments->insert(const_cast<QDeployment *>(deployment));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QDeployment *>(deployment));
-    QNamedElement::d_ptr->clientDependencies->insert(const_cast<QDeployment *>(deployment));
 }
 
 void QDeploymentTarget::removeDeployment(const QDeployment *deployment)
 {
     d_ptr->deployments->remove(const_cast<QDeployment *>(deployment));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QDeployment *>(deployment));
-    QNamedElement::d_ptr->clientDependencies->remove(const_cast<QDeployment *>(deployment));
 }
 
 QT_END_NAMESPACE_QTUML

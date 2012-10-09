@@ -102,15 +102,11 @@ const QSet<QConnector *> *QConnector::redefinedConnectors() const
 void QConnector::addRedefinedConnector(const QConnector *redefinedConnector)
 {
     d_ptr->redefinedConnectors->insert(const_cast<QConnector *>(redefinedConnector));
-    // Adjust subsetted property(ies)
-    QRedefinableElement::d_ptr->redefinedElements->insert(const_cast<QConnector *>(redefinedConnector));
 }
 
 void QConnector::removeRedefinedConnector(const QConnector *redefinedConnector)
 {
     d_ptr->redefinedConnectors->remove(const_cast<QConnector *>(redefinedConnector));
-    // Adjust subsetted property(ies)
-    QRedefinableElement::d_ptr->redefinedElements->remove(const_cast<QConnector *>(redefinedConnector));
 }
 
 /*!
@@ -155,15 +151,11 @@ const QList<QConnectorEnd *> *QConnector::ends() const
 void QConnector::addEnd(const QConnectorEnd *end)
 {
     d_ptr->ends->append(const_cast<QConnectorEnd *>(end));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QConnectorEnd *>(end));
 }
 
 void QConnector::removeEnd(const QConnectorEnd *end)
 {
     d_ptr->ends->removeAll(const_cast<QConnectorEnd *>(end));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QConnectorEnd *>(end));
 }
 
 #include "moc_qconnector.cpp"

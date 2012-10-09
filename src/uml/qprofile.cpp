@@ -90,15 +90,11 @@ const QSet<QPackageImport *> *QProfile::metamodelReferences() const
 void QProfile::addMetamodelReference(const QPackageImport *metamodelReference)
 {
     d_ptr->metamodelReferences->insert(const_cast<QPackageImport *>(metamodelReference));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->packageImports->insert(const_cast<QPackageImport *>(metamodelReference));
 }
 
 void QProfile::removeMetamodelReference(const QPackageImport *metamodelReference)
 {
     d_ptr->metamodelReferences->remove(const_cast<QPackageImport *>(metamodelReference));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->packageImports->remove(const_cast<QPackageImport *>(metamodelReference));
 }
 
 /*!
@@ -112,15 +108,11 @@ const QSet<QElementImport *> *QProfile::metaclassReferences() const
 void QProfile::addMetaclassReference(const QElementImport *metaclassReference)
 {
     d_ptr->metaclassReferences->insert(const_cast<QElementImport *>(metaclassReference));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->elementImports->insert(const_cast<QElementImport *>(metaclassReference));
 }
 
 void QProfile::removeMetaclassReference(const QElementImport *metaclassReference)
 {
     d_ptr->metaclassReferences->remove(const_cast<QElementImport *>(metaclassReference));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->elementImports->remove(const_cast<QElementImport *>(metaclassReference));
 }
 
 #include "moc_qprofile.cpp"

@@ -123,15 +123,11 @@ const QSet<QSlot *> *QInstanceSpecification::slots_() const
 void QInstanceSpecification::addSlot_(const QSlot *slot_)
 {
     d_ptr->slots_->insert(const_cast<QSlot *>(slot_));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QSlot *>(slot_));
 }
 
 void QInstanceSpecification::removeSlot_(const QSlot *slot_)
 {
     d_ptr->slots_->remove(const_cast<QSlot *>(slot_));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QSlot *>(slot_));
 }
 
 #include "moc_qinstancespecification.cpp"

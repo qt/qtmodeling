@@ -130,15 +130,11 @@ const QList<QValueSpecification *> *QMessage::arguments() const
 void QMessage::addArgument(const QValueSpecification *argument)
 {
     d_ptr->arguments->append(const_cast<QValueSpecification *>(argument));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QValueSpecification *>(argument));
 }
 
 void QMessage::removeArgument(const QValueSpecification *argument)
 {
     d_ptr->arguments->removeAll(const_cast<QValueSpecification *>(argument));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QValueSpecification *>(argument));
 }
 
 /*!

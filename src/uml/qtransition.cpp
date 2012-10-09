@@ -202,15 +202,11 @@ const QSet<QTrigger *> *QTransition::triggers() const
 void QTransition::addTrigger(const QTrigger *trigger)
 {
     d_ptr->triggers->insert(const_cast<QTrigger *>(trigger));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QTrigger *>(trigger));
 }
 
 void QTransition::removeTrigger(const QTrigger *trigger)
 {
     d_ptr->triggers->remove(const_cast<QTrigger *>(trigger));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QTrigger *>(trigger));
 }
 
 /*!

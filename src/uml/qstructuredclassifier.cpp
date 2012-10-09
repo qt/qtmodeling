@@ -104,19 +104,11 @@ const QList<QProperty *> *QStructuredClassifier::ownedAttributes() const
 void QStructuredClassifier::addOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
-    // Adjust subsetted property(ies)
-    QClassifier::d_ptr->attributes->insert(const_cast<QProperty *>(ownedAttribute));
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QProperty *>(ownedAttribute));
-    QStructuredClassifier::d_ptr->roles->insert(const_cast<QProperty *>(ownedAttribute));
 }
 
 void QStructuredClassifier::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
-    // Adjust subsetted property(ies)
-    QClassifier::d_ptr->attributes->remove(const_cast<QProperty *>(ownedAttribute));
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QProperty *>(ownedAttribute));
-    QStructuredClassifier::d_ptr->roles->remove(const_cast<QProperty *>(ownedAttribute));
 }
 
 /*!
@@ -138,17 +130,11 @@ const QSet<QConnector *> *QStructuredClassifier::ownedConnectors() const
 void QStructuredClassifier::addOwnedConnector(const QConnector *ownedConnector)
 {
     d_ptr->ownedConnectors->insert(const_cast<QConnector *>(ownedConnector));
-    // Adjust subsetted property(ies)
-    QClassifier::d_ptr->features->insert(const_cast<QConnector *>(ownedConnector));
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QConnector *>(ownedConnector));
 }
 
 void QStructuredClassifier::removeOwnedConnector(const QConnector *ownedConnector)
 {
     d_ptr->ownedConnectors->remove(const_cast<QConnector *>(ownedConnector));
-    // Adjust subsetted property(ies)
-    QClassifier::d_ptr->features->remove(const_cast<QConnector *>(ownedConnector));
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QConnector *>(ownedConnector));
 }
 
 QT_END_NAMESPACE_QTUML

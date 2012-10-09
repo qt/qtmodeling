@@ -86,15 +86,11 @@ const QList<QEnumerationLiteral *> *QEnumeration::ownedLiterals() const
 void QEnumeration::addOwnedLiteral(const QEnumerationLiteral *ownedLiteral)
 {
     d_ptr->ownedLiterals->append(const_cast<QEnumerationLiteral *>(ownedLiteral));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QEnumerationLiteral *>(ownedLiteral));
 }
 
 void QEnumeration::removeOwnedLiteral(const QEnumerationLiteral *ownedLiteral)
 {
     d_ptr->ownedLiterals->removeAll(const_cast<QEnumerationLiteral *>(ownedLiteral));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QEnumerationLiteral *>(ownedLiteral));
 }
 
 #include "moc_qenumeration.cpp"

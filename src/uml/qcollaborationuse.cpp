@@ -101,15 +101,11 @@ const QSet<QDependency *> *QCollaborationUse::roleBindings() const
 void QCollaborationUse::addRoleBinding(const QDependency *roleBinding)
 {
     d_ptr->roleBindings->insert(const_cast<QDependency *>(roleBinding));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QDependency *>(roleBinding));
 }
 
 void QCollaborationUse::removeRoleBinding(const QDependency *roleBinding)
 {
     d_ptr->roleBindings->remove(const_cast<QDependency *>(roleBinding));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QDependency *>(roleBinding));
 }
 
 #include "moc_qcollaborationuse.cpp"

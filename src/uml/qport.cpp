@@ -159,15 +159,11 @@ const QSet<QPort *> *QPort::redefinedPorts() const
 void QPort::addRedefinedPort(const QPort *redefinedPort)
 {
     d_ptr->redefinedPorts->insert(const_cast<QPort *>(redefinedPort));
-    // Adjust subsetted property(ies)
-    QProperty::d_ptr->redefinedProperties->insert(const_cast<QPort *>(redefinedPort));
 }
 
 void QPort::removeRedefinedPort(const QPort *redefinedPort)
 {
     d_ptr->redefinedPorts->remove(const_cast<QPort *>(redefinedPort));
-    // Adjust subsetted property(ies)
-    QProperty::d_ptr->redefinedProperties->remove(const_cast<QPort *>(redefinedPort));
 }
 
 #include "moc_qport.cpp"

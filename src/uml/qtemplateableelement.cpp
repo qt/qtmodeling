@@ -103,15 +103,11 @@ const QSet<QTemplateBinding *> *QTemplateableElement::templateBindings() const
 void QTemplateableElement::addTemplateBinding(const QTemplateBinding *templateBinding)
 {
     d_ptr->templateBindings->insert(const_cast<QTemplateBinding *>(templateBinding));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QTemplateBinding *>(templateBinding));
 }
 
 void QTemplateableElement::removeTemplateBinding(const QTemplateBinding *templateBinding)
 {
     d_ptr->templateBindings->remove(const_cast<QTemplateBinding *>(templateBinding));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QTemplateBinding *>(templateBinding));
 }
 
 /*!

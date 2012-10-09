@@ -104,15 +104,11 @@ const QSet<QOutputPin *> *QUnmarshallAction::results() const
 void QUnmarshallAction::addResult(const QOutputPin *result)
 {
     d_ptr->results->insert(const_cast<QOutputPin *>(result));
-    // Adjust subsetted property(ies)
-    QAction::d_ptr->outputs->append(const_cast<QOutputPin *>(result));
 }
 
 void QUnmarshallAction::removeResult(const QOutputPin *result)
 {
     d_ptr->results->remove(const_cast<QOutputPin *>(result));
-    // Adjust subsetted property(ies)
-    QAction::d_ptr->outputs->removeAll(const_cast<QOutputPin *>(result));
 }
 
 /*!

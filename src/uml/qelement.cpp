@@ -104,26 +104,19 @@ const QSet<QComment *> *QElement::ownedComments() const
 void QElement::addOwnedComment(const QComment *ownedComment)
 {
     d_ptr->ownedComments->insert(const_cast<QComment *>(ownedComment));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QComment *>(ownedComment));
 }
 
 void QElement::removeOwnedComment(const QComment *ownedComment)
 {
     d_ptr->ownedComments->remove(const_cast<QComment *>(ownedComment));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QComment *>(ownedComment));
 }
 
 /*!
     The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
-    It is the caller's responsibility to delete the returned set.
  */
 const QSet<QElement *> *QElement::allOwnedElements() const
 {
-    QSet<QElement *> *allOwnedElements_ = new QSet<QElement *>;
-    allOwnedElements(allOwnedElements_);
-    return allOwnedElements_;
+    qWarning("QElement::allOwnedElements: operation to be implemented");
 }
 
 /*!
@@ -131,14 +124,7 @@ const QSet<QElement *> *QElement::allOwnedElements() const
  */
 bool QElement::mustBeOwned() const
 {
-    return true;
-}
-
-void QElement::allOwnedElements(QSet<QElement *> *allOwnedElements_) const
-{
-    allOwnedElements_->unite(*d_ptr->ownedElements);
-    foreach (QElement *element, *d_ptr->ownedElements)
-        element->allOwnedElements(allOwnedElements_);
+    qWarning("QElement::mustBeOwned: operation to be implemented");
 }
 
 QT_END_NAMESPACE_QTUML

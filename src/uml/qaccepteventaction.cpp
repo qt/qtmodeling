@@ -104,15 +104,11 @@ const QSet<QTrigger *> *QAcceptEventAction::triggers() const
 void QAcceptEventAction::addTrigger(const QTrigger *trigger)
 {
     d_ptr->triggers->insert(const_cast<QTrigger *>(trigger));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QTrigger *>(trigger));
 }
 
 void QAcceptEventAction::removeTrigger(const QTrigger *trigger)
 {
     d_ptr->triggers->remove(const_cast<QTrigger *>(trigger));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QTrigger *>(trigger));
 }
 
 /*!
@@ -126,15 +122,11 @@ const QSet<QOutputPin *> *QAcceptEventAction::results() const
 void QAcceptEventAction::addResult(const QOutputPin *result)
 {
     d_ptr->results->insert(const_cast<QOutputPin *>(result));
-    // Adjust subsetted property(ies)
-    QAction::d_ptr->outputs->append(const_cast<QOutputPin *>(result));
 }
 
 void QAcceptEventAction::removeResult(const QOutputPin *result)
 {
     d_ptr->results->remove(const_cast<QOutputPin *>(result));
-    // Adjust subsetted property(ies)
-    QAction::d_ptr->outputs->removeAll(const_cast<QOutputPin *>(result));
 }
 
 #include "moc_qaccepteventaction.cpp"

@@ -115,15 +115,11 @@ const QSet<QPseudostate *> *QStateMachine::connectionPoints() const
 void QStateMachine::addConnectionPoint(const QPseudostate *connectionPoint)
 {
     d_ptr->connectionPoints->insert(const_cast<QPseudostate *>(connectionPoint));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QPseudostate *>(connectionPoint));
 }
 
 void QStateMachine::removeConnectionPoint(const QPseudostate *connectionPoint)
 {
     d_ptr->connectionPoints->remove(const_cast<QPseudostate *>(connectionPoint));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QPseudostate *>(connectionPoint));
 }
 
 /*!
@@ -155,15 +151,11 @@ const QSet<QRegion *> *QStateMachine::regions() const
 void QStateMachine::addRegion(const QRegion *region)
 {
     d_ptr->regions->insert(const_cast<QRegion *>(region));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QRegion *>(region));
 }
 
 void QStateMachine::removeRegion(const QRegion *region)
 {
     d_ptr->regions->remove(const_cast<QRegion *>(region));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QRegion *>(region));
 }
 
 /*!

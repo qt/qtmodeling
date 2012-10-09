@@ -143,15 +143,11 @@ const QList<QParameter *> *QBehavioralFeature::ownedParameters() const
 void QBehavioralFeature::addOwnedParameter(const QParameter *ownedParameter)
 {
     d_ptr->ownedParameters->append(const_cast<QParameter *>(ownedParameter));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QParameter *>(ownedParameter));
 }
 
 void QBehavioralFeature::removeOwnedParameter(const QParameter *ownedParameter)
 {
     d_ptr->ownedParameters->removeAll(const_cast<QParameter *>(ownedParameter));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QParameter *>(ownedParameter));
 }
 
 /*!
@@ -165,15 +161,11 @@ const QSet<QParameterSet *> *QBehavioralFeature::ownedParameterSets() const
 void QBehavioralFeature::addOwnedParameterSet(const QParameterSet *ownedParameterSet)
 {
     d_ptr->ownedParameterSets->insert(const_cast<QParameterSet *>(ownedParameterSet));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QParameterSet *>(ownedParameterSet));
 }
 
 void QBehavioralFeature::removeOwnedParameterSet(const QParameterSet *ownedParameterSet)
 {
     d_ptr->ownedParameterSets->remove(const_cast<QParameterSet *>(ownedParameterSet));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QParameterSet *>(ownedParameterSet));
 }
 
 /*!

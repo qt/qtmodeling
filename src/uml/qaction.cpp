@@ -120,15 +120,11 @@ const QSet<QConstraint *> *QAction::localPostconditions() const
 void QAction::addLocalPostcondition(const QConstraint *localPostcondition)
 {
     d_ptr->localPostconditions->insert(const_cast<QConstraint *>(localPostcondition));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QConstraint *>(localPostcondition));
 }
 
 void QAction::removeLocalPostcondition(const QConstraint *localPostcondition)
 {
     d_ptr->localPostconditions->remove(const_cast<QConstraint *>(localPostcondition));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QConstraint *>(localPostcondition));
 }
 
 /*!
@@ -142,15 +138,11 @@ const QSet<QConstraint *> *QAction::localPreconditions() const
 void QAction::addLocalPrecondition(const QConstraint *localPrecondition)
 {
     d_ptr->localPreconditions->insert(const_cast<QConstraint *>(localPrecondition));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QConstraint *>(localPrecondition));
 }
 
 void QAction::removeLocalPrecondition(const QConstraint *localPrecondition)
 {
     d_ptr->localPreconditions->remove(const_cast<QConstraint *>(localPrecondition));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QConstraint *>(localPrecondition));
 }
 
 /*!

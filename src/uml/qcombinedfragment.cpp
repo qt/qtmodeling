@@ -104,15 +104,11 @@ const QSet<QGate *> *QCombinedFragment::cfragmentGates() const
 void QCombinedFragment::addCfragmentGate(const QGate *cfragmentGate)
 {
     d_ptr->cfragmentGates->insert(const_cast<QGate *>(cfragmentGate));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QGate *>(cfragmentGate));
 }
 
 void QCombinedFragment::removeCfragmentGate(const QGate *cfragmentGate)
 {
     d_ptr->cfragmentGates->remove(const_cast<QGate *>(cfragmentGate));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QGate *>(cfragmentGate));
 }
 
 /*!
@@ -126,15 +122,11 @@ const QList<QInteractionOperand *> *QCombinedFragment::operands() const
 void QCombinedFragment::addOperand(const QInteractionOperand *operand)
 {
     d_ptr->operands->append(const_cast<QInteractionOperand *>(operand));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QInteractionOperand *>(operand));
 }
 
 void QCombinedFragment::removeOperand(const QInteractionOperand *operand)
 {
     d_ptr->operands->removeAll(const_cast<QInteractionOperand *>(operand));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QInteractionOperand *>(operand));
 }
 
 #include "moc_qcombinedfragment.cpp"

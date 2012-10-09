@@ -87,17 +87,11 @@ const QList<QProperty *> *QSignal::ownedAttributes() const
 void QSignal::addOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QProperty *>(ownedAttribute));
-    QClassifier::d_ptr->attributes->insert(const_cast<QProperty *>(ownedAttribute));
 }
 
 void QSignal::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
     d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QProperty *>(ownedAttribute));
-    QClassifier::d_ptr->attributes->remove(const_cast<QProperty *>(ownedAttribute));
 }
 
 #include "moc_qsignal.cpp"

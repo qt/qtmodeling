@@ -91,15 +91,11 @@ const QSet<QInputPin *> *QLinkAction::inputValues() const
 void QLinkAction::addInputValue(const QInputPin *inputValue)
 {
     d_ptr->inputValues->insert(const_cast<QInputPin *>(inputValue));
-    // Adjust subsetted property(ies)
-    QAction::d_ptr->inputs->append(const_cast<QInputPin *>(inputValue));
 }
 
 void QLinkAction::removeInputValue(const QInputPin *inputValue)
 {
     d_ptr->inputValues->remove(const_cast<QInputPin *>(inputValue));
-    // Adjust subsetted property(ies)
-    QAction::d_ptr->inputs->removeAll(const_cast<QInputPin *>(inputValue));
 }
 
 /*!
@@ -113,15 +109,11 @@ const QSet<QLinkEndData *> *QLinkAction::endData() const
 void QLinkAction::addEndData(const QLinkEndData *endData)
 {
     d_ptr->endData->insert(const_cast<QLinkEndData *>(endData));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QLinkEndData *>(endData));
 }
 
 void QLinkAction::removeEndData(const QLinkEndData *endData)
 {
     d_ptr->endData->remove(const_cast<QLinkEndData *>(endData));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QLinkEndData *>(endData));
 }
 
 /*!

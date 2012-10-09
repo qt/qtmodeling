@@ -103,15 +103,11 @@ const QSet<QClassifier *> *QComponentRealization::realizingClassifiers() const
 void QComponentRealization::addRealizingClassifier(const QClassifier *realizingClassifier)
 {
     d_ptr->realizingClassifiers->insert(const_cast<QClassifier *>(realizingClassifier));
-    // Adjust subsetted property(ies)
-    QDependency::d_ptr->clients->insert(const_cast<QClassifier *>(realizingClassifier));
 }
 
 void QComponentRealization::removeRealizingClassifier(const QClassifier *realizingClassifier)
 {
     d_ptr->realizingClassifiers->remove(const_cast<QClassifier *>(realizingClassifier));
-    // Adjust subsetted property(ies)
-    QDependency::d_ptr->clients->remove(const_cast<QClassifier *>(realizingClassifier));
 }
 
 #include "moc_qcomponentrealization.cpp"

@@ -86,15 +86,11 @@ const QSet<QExceptionHandler *> *QExecutableNode::handlers() const
 void QExecutableNode::addHandler(const QExceptionHandler *handler)
 {
     d_ptr->handlers->insert(const_cast<QExceptionHandler *>(handler));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QExceptionHandler *>(handler));
 }
 
 void QExecutableNode::removeHandler(const QExceptionHandler *handler)
 {
     d_ptr->handlers->remove(const_cast<QExceptionHandler *>(handler));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QExceptionHandler *>(handler));
 }
 
 QT_END_NAMESPACE_QTUML

@@ -98,15 +98,11 @@ const QList<QValueSpecification *> *QExpression::operands() const
 void QExpression::addOperand(const QValueSpecification *operand)
 {
     d_ptr->operands->append(const_cast<QValueSpecification *>(operand));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QValueSpecification *>(operand));
 }
 
 void QExpression::removeOperand(const QValueSpecification *operand)
 {
     d_ptr->operands->removeAll(const_cast<QValueSpecification *>(operand));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QValueSpecification *>(operand));
 }
 
 #include "moc_qexpression.cpp"

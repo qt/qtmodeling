@@ -116,15 +116,11 @@ const QSet<QInputPin *> *QReplyAction::replyValues() const
 void QReplyAction::addReplyValue(const QInputPin *replyValue)
 {
     d_ptr->replyValues->insert(const_cast<QInputPin *>(replyValue));
-    // Adjust subsetted property(ies)
-    QAction::d_ptr->inputs->append(const_cast<QInputPin *>(replyValue));
 }
 
 void QReplyAction::removeReplyValue(const QInputPin *replyValue)
 {
     d_ptr->replyValues->remove(const_cast<QInputPin *>(replyValue));
-    // Adjust subsetted property(ies)
-    QAction::d_ptr->inputs->removeAll(const_cast<QInputPin *>(replyValue));
 }
 
 #include "moc_qreplyaction.cpp"
