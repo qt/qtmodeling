@@ -89,15 +89,11 @@ const QSet<QNamedElement *> *QDependency::clients() const
 void QDependency::addClient(const QNamedElement *client)
 {
     d_ptr->clients->insert(const_cast<QNamedElement *>(client));
-    // Adjust subsetted property(ies)
-    QDirectedRelationship::d_ptr->sources->insert(const_cast<QNamedElement *>(client));
 }
 
 void QDependency::removeClient(const QNamedElement *client)
 {
     d_ptr->clients->remove(const_cast<QNamedElement *>(client));
-    // Adjust subsetted property(ies)
-    QDirectedRelationship::d_ptr->sources->remove(const_cast<QNamedElement *>(client));
 }
 
 /*!
@@ -111,15 +107,11 @@ const QSet<QNamedElement *> *QDependency::suppliers() const
 void QDependency::addSupplier(const QNamedElement *supplier)
 {
     d_ptr->suppliers->insert(const_cast<QNamedElement *>(supplier));
-    // Adjust subsetted property(ies)
-    QDirectedRelationship::d_ptr->targets->insert(const_cast<QNamedElement *>(supplier));
 }
 
 void QDependency::removeSupplier(const QNamedElement *supplier)
 {
     d_ptr->suppliers->remove(const_cast<QNamedElement *>(supplier));
-    // Adjust subsetted property(ies)
-    QDirectedRelationship::d_ptr->targets->remove(const_cast<QNamedElement *>(supplier));
 }
 
 #include "moc_qdependency.cpp"

@@ -104,15 +104,11 @@ const QSet<QNamedElement *> *QInformationFlow::informationTargets() const
 void QInformationFlow::addInformationTarget(const QNamedElement *informationTarget)
 {
     d_ptr->informationTargets->insert(const_cast<QNamedElement *>(informationTarget));
-    // Adjust subsetted property(ies)
-    QDirectedRelationship::d_ptr->targets->insert(const_cast<QNamedElement *>(informationTarget));
 }
 
 void QInformationFlow::removeInformationTarget(const QNamedElement *informationTarget)
 {
     d_ptr->informationTargets->remove(const_cast<QNamedElement *>(informationTarget));
-    // Adjust subsetted property(ies)
-    QDirectedRelationship::d_ptr->targets->remove(const_cast<QNamedElement *>(informationTarget));
 }
 
 /*!
@@ -162,15 +158,11 @@ const QSet<QNamedElement *> *QInformationFlow::informationSources() const
 void QInformationFlow::addInformationSource(const QNamedElement *informationSource)
 {
     d_ptr->informationSources->insert(const_cast<QNamedElement *>(informationSource));
-    // Adjust subsetted property(ies)
-    QDirectedRelationship::d_ptr->sources->insert(const_cast<QNamedElement *>(informationSource));
 }
 
 void QInformationFlow::removeInformationSource(const QNamedElement *informationSource)
 {
     d_ptr->informationSources->remove(const_cast<QNamedElement *>(informationSource));
-    // Adjust subsetted property(ies)
-    QDirectedRelationship::d_ptr->sources->remove(const_cast<QNamedElement *>(informationSource));
 }
 
 /*!

@@ -91,15 +91,11 @@ const QList<QValueSpecification *> *QSlot::values() const
 void QSlot::addValue(const QValueSpecification *value)
 {
     d_ptr->values->append(const_cast<QValueSpecification *>(value));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QValueSpecification *>(value));
 }
 
 void QSlot::removeValue(const QValueSpecification *value)
 {
     d_ptr->values->removeAll(const_cast<QValueSpecification *>(value));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QValueSpecification *>(value));
 }
 
 /*!

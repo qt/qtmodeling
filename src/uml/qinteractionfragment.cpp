@@ -95,15 +95,11 @@ const QSet<QGeneralOrdering *> *QInteractionFragment::generalOrderings() const
 void QInteractionFragment::addGeneralOrdering(const QGeneralOrdering *generalOrdering)
 {
     d_ptr->generalOrderings->insert(const_cast<QGeneralOrdering *>(generalOrdering));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QGeneralOrdering *>(generalOrdering));
 }
 
 void QInteractionFragment::removeGeneralOrdering(const QGeneralOrdering *generalOrdering)
 {
     d_ptr->generalOrderings->remove(const_cast<QGeneralOrdering *>(generalOrdering));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QGeneralOrdering *>(generalOrdering));
 }
 
 /*!

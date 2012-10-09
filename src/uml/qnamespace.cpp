@@ -99,15 +99,11 @@ const QSet<QPackageImport *> *QNamespace::packageImports() const
 void QNamespace::addPackageImport(const QPackageImport *packageImport)
 {
     d_ptr->packageImports->insert(const_cast<QPackageImport *>(packageImport));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QPackageImport *>(packageImport));
 }
 
 void QNamespace::removePackageImport(const QPackageImport *packageImport)
 {
     d_ptr->packageImports->remove(const_cast<QPackageImport *>(packageImport));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QPackageImport *>(packageImport));
 }
 
 /*!
@@ -137,15 +133,11 @@ const QSet<QElementImport *> *QNamespace::elementImports() const
 void QNamespace::addElementImport(const QElementImport *elementImport)
 {
     d_ptr->elementImports->insert(const_cast<QElementImport *>(elementImport));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QElementImport *>(elementImport));
 }
 
 void QNamespace::removeElementImport(const QElementImport *elementImport)
 {
     d_ptr->elementImports->remove(const_cast<QElementImport *>(elementImport));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QElementImport *>(elementImport));
 }
 
 /*!
@@ -159,15 +151,11 @@ const QSet<QConstraint *> *QNamespace::ownedRules() const
 void QNamespace::addOwnedRule(const QConstraint *ownedRule)
 {
     d_ptr->ownedRules->insert(const_cast<QConstraint *>(ownedRule));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QConstraint *>(ownedRule));
 }
 
 void QNamespace::removeOwnedRule(const QConstraint *ownedRule)
 {
     d_ptr->ownedRules->remove(const_cast<QConstraint *>(ownedRule));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QConstraint *>(ownedRule));
 }
 
 /*!

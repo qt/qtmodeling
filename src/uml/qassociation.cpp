@@ -116,15 +116,11 @@ const QSet<QProperty *> *QAssociation::navigableOwnedEnds() const
 void QAssociation::addNavigableOwnedEnd(const QProperty *navigableOwnedEnd)
 {
     d_ptr->navigableOwnedEnds->insert(const_cast<QProperty *>(navigableOwnedEnd));
-    // Adjust subsetted property(ies)
-    QAssociation::d_ptr->ownedEnds->append(const_cast<QProperty *>(navigableOwnedEnd));
 }
 
 void QAssociation::removeNavigableOwnedEnd(const QProperty *navigableOwnedEnd)
 {
     d_ptr->navigableOwnedEnds->remove(const_cast<QProperty *>(navigableOwnedEnd));
-    // Adjust subsetted property(ies)
-    QAssociation::d_ptr->ownedEnds->removeAll(const_cast<QProperty *>(navigableOwnedEnd));
 }
 
 /*!
@@ -138,19 +134,11 @@ const QList<QProperty *> *QAssociation::ownedEnds() const
 void QAssociation::addOwnedEnd(const QProperty *ownedEnd)
 {
     d_ptr->ownedEnds->append(const_cast<QProperty *>(ownedEnd));
-    // Adjust subsetted property(ies)
-    QAssociation::d_ptr->memberEnds->append(const_cast<QProperty *>(ownedEnd));
-    QClassifier::d_ptr->features->insert(const_cast<QProperty *>(ownedEnd));
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QProperty *>(ownedEnd));
 }
 
 void QAssociation::removeOwnedEnd(const QProperty *ownedEnd)
 {
     d_ptr->ownedEnds->removeAll(const_cast<QProperty *>(ownedEnd));
-    // Adjust subsetted property(ies)
-    QAssociation::d_ptr->memberEnds->removeAll(const_cast<QProperty *>(ownedEnd));
-    QClassifier::d_ptr->features->remove(const_cast<QProperty *>(ownedEnd));
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QProperty *>(ownedEnd));
 }
 
 /*!
@@ -164,15 +152,11 @@ const QList<QProperty *> *QAssociation::memberEnds() const
 void QAssociation::addMemberEnd(const QProperty *memberEnd)
 {
     d_ptr->memberEnds->append(const_cast<QProperty *>(memberEnd));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->members->insert(const_cast<QProperty *>(memberEnd));
 }
 
 void QAssociation::removeMemberEnd(const QProperty *memberEnd)
 {
     d_ptr->memberEnds->removeAll(const_cast<QProperty *>(memberEnd));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->members->remove(const_cast<QProperty *>(memberEnd));
 }
 
 #include "moc_qassociation.cpp"

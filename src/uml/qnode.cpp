@@ -85,15 +85,11 @@ const QSet<QNode *> *QNode::nestedNodes() const
 void QNode::addNestedNode(const QNode *nestedNode)
 {
     d_ptr->nestedNodes->insert(const_cast<QNode *>(nestedNode));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QNode *>(nestedNode));
 }
 
 void QNode::removeNestedNode(const QNode *nestedNode)
 {
     d_ptr->nestedNodes->remove(const_cast<QNode *>(nestedNode));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QNode *>(nestedNode));
 }
 
 #include "moc_qnode.cpp"

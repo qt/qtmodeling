@@ -145,15 +145,11 @@ const QSet<QRegion *> *QState::regions() const
 void QState::addRegion(const QRegion *region)
 {
     d_ptr->regions->insert(const_cast<QRegion *>(region));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QRegion *>(region));
 }
 
 void QState::removeRegion(const QRegion *region)
 {
     d_ptr->regions->remove(const_cast<QRegion *>(region));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QRegion *>(region));
 }
 
 /*!
@@ -180,15 +176,11 @@ const QSet<QConnectionPointReference *> *QState::connections() const
 void QState::addConnection(const QConnectionPointReference *connection)
 {
     d_ptr->connections->insert(const_cast<QConnectionPointReference *>(connection));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QConnectionPointReference *>(connection));
 }
 
 void QState::removeConnection(const QConnectionPointReference *connection)
 {
     d_ptr->connections->remove(const_cast<QConnectionPointReference *>(connection));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QConnectionPointReference *>(connection));
 }
 
 /*!
@@ -223,15 +215,11 @@ const QSet<QTrigger *> *QState::deferrableTriggers() const
 void QState::addDeferrableTrigger(const QTrigger *deferrableTrigger)
 {
     d_ptr->deferrableTriggers->insert(const_cast<QTrigger *>(deferrableTrigger));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QTrigger *>(deferrableTrigger));
 }
 
 void QState::removeDeferrableTrigger(const QTrigger *deferrableTrigger)
 {
     d_ptr->deferrableTriggers->remove(const_cast<QTrigger *>(deferrableTrigger));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QTrigger *>(deferrableTrigger));
 }
 
 /*!
@@ -245,15 +233,11 @@ const QSet<QPseudostate *> *QState::connectionPoints() const
 void QState::addConnectionPoint(const QPseudostate *connectionPoint)
 {
     d_ptr->connectionPoints->insert(const_cast<QPseudostate *>(connectionPoint));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QPseudostate *>(connectionPoint));
 }
 
 void QState::removeConnectionPoint(const QPseudostate *connectionPoint)
 {
     d_ptr->connectionPoints->remove(const_cast<QPseudostate *>(connectionPoint));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QPseudostate *>(connectionPoint));
 }
 
 /*!

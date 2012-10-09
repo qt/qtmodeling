@@ -88,15 +88,11 @@ const QList<QInteractionFragment *> *QInteractionOperand::fragments() const
 void QInteractionOperand::addFragment(const QInteractionFragment *fragment)
 {
     d_ptr->fragments->append(const_cast<QInteractionFragment *>(fragment));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QInteractionFragment *>(fragment));
 }
 
 void QInteractionOperand::removeFragment(const QInteractionFragment *fragment)
 {
     d_ptr->fragments->removeAll(const_cast<QInteractionFragment *>(fragment));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QInteractionFragment *>(fragment));
 }
 
 /*!

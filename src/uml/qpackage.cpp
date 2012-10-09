@@ -129,15 +129,11 @@ const QSet<QPackageableElement *> *QPackage::packagedElements() const
 void QPackage::addPackagedElement(const QPackageableElement *packagedElement)
 {
     d_ptr->packagedElements->insert(const_cast<QPackageableElement *>(packagedElement));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QPackageableElement *>(packagedElement));
 }
 
 void QPackage::removePackagedElement(const QPackageableElement *packagedElement)
 {
     d_ptr->packagedElements->remove(const_cast<QPackageableElement *>(packagedElement));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QPackageableElement *>(packagedElement));
 }
 
 /*!
@@ -164,15 +160,11 @@ const QSet<QProfileApplication *> *QPackage::profileApplications() const
 void QPackage::addProfileApplication(const QProfileApplication *profileApplication)
 {
     d_ptr->profileApplications->insert(const_cast<QProfileApplication *>(profileApplication));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QProfileApplication *>(profileApplication));
 }
 
 void QPackage::removeProfileApplication(const QProfileApplication *profileApplication)
 {
     d_ptr->profileApplications->remove(const_cast<QProfileApplication *>(profileApplication));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QProfileApplication *>(profileApplication));
 }
 
 /*!
@@ -194,15 +186,11 @@ const QSet<QPackageMerge *> *QPackage::packageMerges() const
 void QPackage::addPackageMerge(const QPackageMerge *packageMerge)
 {
     d_ptr->packageMerges->insert(const_cast<QPackageMerge *>(packageMerge));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QPackageMerge *>(packageMerge));
 }
 
 void QPackage::removePackageMerge(const QPackageMerge *packageMerge)
 {
     d_ptr->packageMerges->remove(const_cast<QPackageMerge *>(packageMerge));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QPackageMerge *>(packageMerge));
 }
 
 /*!

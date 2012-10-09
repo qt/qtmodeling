@@ -119,15 +119,11 @@ const QSet<QTemplateParameterSubstitution *> *QTemplateBinding::parameterSubstit
 void QTemplateBinding::addParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution)
 {
     d_ptr->parameterSubstitutions->insert(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution));
 }
 
 void QTemplateBinding::removeParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution)
 {
     d_ptr->parameterSubstitutions->remove(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution));
 }
 
 #include "moc_qtemplatebinding.cpp"

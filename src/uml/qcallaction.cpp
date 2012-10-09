@@ -100,15 +100,11 @@ const QList<QOutputPin *> *QCallAction::results() const
 void QCallAction::addResult(const QOutputPin *result)
 {
     d_ptr->results->append(const_cast<QOutputPin *>(result));
-    // Adjust subsetted property(ies)
-    QAction::d_ptr->outputs->append(const_cast<QOutputPin *>(result));
 }
 
 void QCallAction::removeResult(const QOutputPin *result)
 {
     d_ptr->results->removeAll(const_cast<QOutputPin *>(result));
-    // Adjust subsetted property(ies)
-    QAction::d_ptr->outputs->removeAll(const_cast<QOutputPin *>(result));
 }
 
 QT_END_NAMESPACE_QTUML

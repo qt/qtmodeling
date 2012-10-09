@@ -149,15 +149,11 @@ const QSet<QUseCase *> *QClassifier::ownedUseCases() const
 void QClassifier::addOwnedUseCase(const QUseCase *ownedUseCase)
 {
     d_ptr->ownedUseCases->insert(const_cast<QUseCase *>(ownedUseCase));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QUseCase *>(ownedUseCase));
 }
 
 void QClassifier::removeOwnedUseCase(const QUseCase *ownedUseCase)
 {
     d_ptr->ownedUseCases->remove(const_cast<QUseCase *>(ownedUseCase));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QUseCase *>(ownedUseCase));
 }
 
 /*!
@@ -220,15 +216,11 @@ const QSet<QClassifier *> *QClassifier::redefinedClassifiers() const
 void QClassifier::addRedefinedClassifier(const QClassifier *redefinedClassifier)
 {
     d_ptr->redefinedClassifiers->insert(const_cast<QClassifier *>(redefinedClassifier));
-    // Adjust subsetted property(ies)
-    QRedefinableElement::d_ptr->redefinedElements->insert(const_cast<QClassifier *>(redefinedClassifier));
 }
 
 void QClassifier::removeRedefinedClassifier(const QClassifier *redefinedClassifier)
 {
     d_ptr->redefinedClassifiers->remove(const_cast<QClassifier *>(redefinedClassifier));
-    // Adjust subsetted property(ies)
-    QRedefinableElement::d_ptr->redefinedElements->remove(const_cast<QClassifier *>(redefinedClassifier));
 }
 
 /*!
@@ -255,15 +247,11 @@ const QSet<QCollaborationUse *> *QClassifier::collaborationUses() const
 void QClassifier::addCollaborationUse(const QCollaborationUse *collaborationUse)
 {
     d_ptr->collaborationUses->insert(const_cast<QCollaborationUse *>(collaborationUse));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QCollaborationUse *>(collaborationUse));
 }
 
 void QClassifier::removeCollaborationUse(const QCollaborationUse *collaborationUse)
 {
     d_ptr->collaborationUses->remove(const_cast<QCollaborationUse *>(collaborationUse));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QCollaborationUse *>(collaborationUse));
 }
 
 /*!
@@ -324,15 +312,11 @@ const QSet<QGeneralization *> *QClassifier::generalizations() const
 void QClassifier::addGeneralization(const QGeneralization *generalization)
 {
     d_ptr->generalizations->insert(const_cast<QGeneralization *>(generalization));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QGeneralization *>(generalization));
 }
 
 void QClassifier::removeGeneralization(const QGeneralization *generalization)
 {
     d_ptr->generalizations->remove(const_cast<QGeneralization *>(generalization));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QGeneralization *>(generalization));
 }
 
 /*!
@@ -354,17 +338,11 @@ const QSet<QSubstitution *> *QClassifier::substitutions() const
 void QClassifier::addSubstitution(const QSubstitution *substitution)
 {
     d_ptr->substitutions->insert(const_cast<QSubstitution *>(substitution));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QSubstitution *>(substitution));
-    QNamedElement::d_ptr->clientDependencies->insert(const_cast<QSubstitution *>(substitution));
 }
 
 void QClassifier::removeSubstitution(const QSubstitution *substitution)
 {
     d_ptr->substitutions->remove(const_cast<QSubstitution *>(substitution));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QSubstitution *>(substitution));
-    QNamedElement::d_ptr->clientDependencies->remove(const_cast<QSubstitution *>(substitution));
 }
 
 /*!

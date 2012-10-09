@@ -130,15 +130,11 @@ const QSet<QInputPin *> *QOpaqueAction::inputValues() const
 void QOpaqueAction::addInputValue(const QInputPin *inputValue)
 {
     d_ptr->inputValues->insert(const_cast<QInputPin *>(inputValue));
-    // Adjust subsetted property(ies)
-    QAction::d_ptr->inputs->append(const_cast<QInputPin *>(inputValue));
 }
 
 void QOpaqueAction::removeInputValue(const QInputPin *inputValue)
 {
     d_ptr->inputValues->remove(const_cast<QInputPin *>(inputValue));
-    // Adjust subsetted property(ies)
-    QAction::d_ptr->inputs->removeAll(const_cast<QInputPin *>(inputValue));
 }
 
 /*!
@@ -152,15 +148,11 @@ const QSet<QOutputPin *> *QOpaqueAction::outputValues() const
 void QOpaqueAction::addOutputValue(const QOutputPin *outputValue)
 {
     d_ptr->outputValues->insert(const_cast<QOutputPin *>(outputValue));
-    // Adjust subsetted property(ies)
-    QAction::d_ptr->outputs->append(const_cast<QOutputPin *>(outputValue));
 }
 
 void QOpaqueAction::removeOutputValue(const QOutputPin *outputValue)
 {
     d_ptr->outputValues->remove(const_cast<QOutputPin *>(outputValue));
-    // Adjust subsetted property(ies)
-    QAction::d_ptr->outputs->removeAll(const_cast<QOutputPin *>(outputValue));
 }
 
 #include "moc_qopaqueaction.cpp"

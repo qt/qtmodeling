@@ -107,15 +107,11 @@ const QSet<QActivityNode *> *QInterruptibleActivityRegion::nodes() const
 void QInterruptibleActivityRegion::addNode(const QActivityNode *node)
 {
     d_ptr->nodes->insert(const_cast<QActivityNode *>(node));
-    // Adjust subsetted property(ies)
-    QActivityGroup::d_ptr->containedNodes->insert(const_cast<QActivityNode *>(node));
 }
 
 void QInterruptibleActivityRegion::removeNode(const QActivityNode *node)
 {
     d_ptr->nodes->remove(const_cast<QActivityNode *>(node));
-    // Adjust subsetted property(ies)
-    QActivityGroup::d_ptr->containedNodes->remove(const_cast<QActivityNode *>(node));
 }
 
 #include "moc_qinterruptibleactivityregion.cpp"

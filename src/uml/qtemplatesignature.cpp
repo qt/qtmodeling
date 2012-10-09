@@ -122,17 +122,11 @@ const QList<QTemplateParameter *> *QTemplateSignature::ownedParameters() const
 void QTemplateSignature::addOwnedParameter(const QTemplateParameter *ownedParameter)
 {
     d_ptr->ownedParameters->append(const_cast<QTemplateParameter *>(ownedParameter));
-    // Adjust subsetted property(ies)
-    QTemplateSignature::d_ptr->parameters->append(const_cast<QTemplateParameter *>(ownedParameter));
-    QElement::d_ptr->ownedElements->insert(const_cast<QTemplateParameter *>(ownedParameter));
 }
 
 void QTemplateSignature::removeOwnedParameter(const QTemplateParameter *ownedParameter)
 {
     d_ptr->ownedParameters->removeAll(const_cast<QTemplateParameter *>(ownedParameter));
-    // Adjust subsetted property(ies)
-    QTemplateSignature::d_ptr->parameters->removeAll(const_cast<QTemplateParameter *>(ownedParameter));
-    QElement::d_ptr->ownedElements->remove(const_cast<QTemplateParameter *>(ownedParameter));
 }
 
 #include "moc_qtemplatesignature.cpp"

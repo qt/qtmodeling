@@ -88,15 +88,11 @@ const QList<QInputPin *> *QInvocationAction::arguments() const
 void QInvocationAction::addArgument(const QInputPin *argument)
 {
     d_ptr->arguments->append(const_cast<QInputPin *>(argument));
-    // Adjust subsetted property(ies)
-    QAction::d_ptr->inputs->append(const_cast<QInputPin *>(argument));
 }
 
 void QInvocationAction::removeArgument(const QInputPin *argument)
 {
     d_ptr->arguments->removeAll(const_cast<QInputPin *>(argument));
-    // Adjust subsetted property(ies)
-    QAction::d_ptr->inputs->removeAll(const_cast<QInputPin *>(argument));
 }
 
 /*!

@@ -112,15 +112,11 @@ const QSet<QTransition *> *QRegion::transitions() const
 void QRegion::addTransition(const QTransition *transition)
 {
     d_ptr->transitions->insert(const_cast<QTransition *>(transition));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QTransition *>(transition));
 }
 
 void QRegion::removeTransition(const QTransition *transition)
 {
     d_ptr->transitions->remove(const_cast<QTransition *>(transition));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QTransition *>(transition));
 }
 
 /*!
@@ -168,15 +164,11 @@ const QSet<QVertex *> *QRegion::subvertices() const
 void QRegion::addSubvertex(const QVertex *subvertex)
 {
     d_ptr->subvertices->insert(const_cast<QVertex *>(subvertex));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->insert(const_cast<QVertex *>(subvertex));
 }
 
 void QRegion::removeSubvertex(const QVertex *subvertex)
 {
     d_ptr->subvertices->remove(const_cast<QVertex *>(subvertex));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedMembers->remove(const_cast<QVertex *>(subvertex));
 }
 
 /*!

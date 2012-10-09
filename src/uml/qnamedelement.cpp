@@ -147,13 +147,11 @@ const QSet<QDependency *> *QNamedElement::clientDependencies() const
 void QNamedElement::addClientDependency(const QDependency *clientDependency)
 {
     d_ptr->clientDependencies->insert(const_cast<QDependency *>(clientDependency));
-    // Adjust subsetted property(ies)
 }
 
 void QNamedElement::removeClientDependency(const QDependency *clientDependency)
 {
     d_ptr->clientDependencies->remove(const_cast<QDependency *>(clientDependency));
-    // Adjust subsetted property(ies)
 }
 
 /*!

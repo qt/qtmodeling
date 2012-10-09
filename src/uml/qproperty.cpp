@@ -240,15 +240,11 @@ const QList<QProperty *> *QProperty::qualifiers() const
 void QProperty::addQualifier(const QProperty *qualifier)
 {
     d_ptr->qualifiers->append(const_cast<QProperty *>(qualifier));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QProperty *>(qualifier));
 }
 
 void QProperty::removeQualifier(const QProperty *qualifier)
 {
     d_ptr->qualifiers->removeAll(const_cast<QProperty *>(qualifier));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QProperty *>(qualifier));
 }
 
 /*!
@@ -327,15 +323,11 @@ const QSet<QProperty *> *QProperty::redefinedProperties() const
 void QProperty::addRedefinedProperty(const QProperty *redefinedProperty)
 {
     d_ptr->redefinedProperties->insert(const_cast<QProperty *>(redefinedProperty));
-    // Adjust subsetted property(ies)
-    QRedefinableElement::d_ptr->redefinedElements->insert(const_cast<QProperty *>(redefinedProperty));
 }
 
 void QProperty::removeRedefinedProperty(const QProperty *redefinedProperty)
 {
     d_ptr->redefinedProperties->remove(const_cast<QProperty *>(redefinedProperty));
-    // Adjust subsetted property(ies)
-    QRedefinableElement::d_ptr->redefinedElements->remove(const_cast<QProperty *>(redefinedProperty));
 }
 
 /*!

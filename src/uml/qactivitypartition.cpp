@@ -138,15 +138,11 @@ const QSet<QActivityPartition *> *QActivityPartition::subpartitions() const
 void QActivityPartition::addSubpartition(const QActivityPartition *subpartition)
 {
     d_ptr->subpartitions->insert(const_cast<QActivityPartition *>(subpartition));
-    // Adjust subsetted property(ies)
-    QActivityGroup::d_ptr->subgroups->insert(const_cast<QActivityPartition *>(subpartition));
 }
 
 void QActivityPartition::removeSubpartition(const QActivityPartition *subpartition)
 {
     d_ptr->subpartitions->remove(const_cast<QActivityPartition *>(subpartition));
-    // Adjust subsetted property(ies)
-    QActivityGroup::d_ptr->subgroups->remove(const_cast<QActivityPartition *>(subpartition));
 }
 
 /*!
@@ -173,15 +169,11 @@ const QSet<QActivityNode *> *QActivityPartition::nodes() const
 void QActivityPartition::addNode(const QActivityNode *node)
 {
     d_ptr->nodes->insert(const_cast<QActivityNode *>(node));
-    // Adjust subsetted property(ies)
-    QActivityGroup::d_ptr->containedNodes->insert(const_cast<QActivityNode *>(node));
 }
 
 void QActivityPartition::removeNode(const QActivityNode *node)
 {
     d_ptr->nodes->remove(const_cast<QActivityNode *>(node));
-    // Adjust subsetted property(ies)
-    QActivityGroup::d_ptr->containedNodes->remove(const_cast<QActivityNode *>(node));
 }
 
 /*!
@@ -195,15 +187,11 @@ const QSet<QActivityEdge *> *QActivityPartition::edges() const
 void QActivityPartition::addEdge(const QActivityEdge *edge)
 {
     d_ptr->edges->insert(const_cast<QActivityEdge *>(edge));
-    // Adjust subsetted property(ies)
-    QActivityGroup::d_ptr->containedEdges->insert(const_cast<QActivityEdge *>(edge));
 }
 
 void QActivityPartition::removeEdge(const QActivityEdge *edge)
 {
     d_ptr->edges->remove(const_cast<QActivityEdge *>(edge));
-    // Adjust subsetted property(ies)
-    QActivityGroup::d_ptr->containedEdges->remove(const_cast<QActivityEdge *>(edge));
 }
 
 #include "moc_qactivitypartition.cpp"

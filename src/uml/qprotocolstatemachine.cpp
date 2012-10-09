@@ -86,15 +86,11 @@ const QSet<QProtocolConformance *> *QProtocolStateMachine::conformance() const
 void QProtocolStateMachine::addConformance(const QProtocolConformance *conformance)
 {
     d_ptr->conformance->insert(const_cast<QProtocolConformance *>(conformance));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->insert(const_cast<QProtocolConformance *>(conformance));
 }
 
 void QProtocolStateMachine::removeConformance(const QProtocolConformance *conformance)
 {
     d_ptr->conformance->remove(const_cast<QProtocolConformance *>(conformance));
-    // Adjust subsetted property(ies)
-    QElement::d_ptr->ownedElements->remove(const_cast<QProtocolConformance *>(conformance));
 }
 
 #include "moc_qprotocolstatemachine.cpp"

@@ -195,15 +195,11 @@ const QSet<QOperation *> *QOperation::redefinedOperations() const
 void QOperation::addRedefinedOperation(const QOperation *redefinedOperation)
 {
     d_ptr->redefinedOperations->insert(const_cast<QOperation *>(redefinedOperation));
-    // Adjust subsetted property(ies)
-    QRedefinableElement::d_ptr->redefinedElements->insert(const_cast<QOperation *>(redefinedOperation));
 }
 
 void QOperation::removeRedefinedOperation(const QOperation *redefinedOperation)
 {
     d_ptr->redefinedOperations->remove(const_cast<QOperation *>(redefinedOperation));
-    // Adjust subsetted property(ies)
-    QRedefinableElement::d_ptr->redefinedElements->remove(const_cast<QOperation *>(redefinedOperation));
 }
 
 /*!
@@ -217,15 +213,11 @@ const QSet<QConstraint *> *QOperation::postconditions() const
 void QOperation::addPostcondition(const QConstraint *postcondition)
 {
     d_ptr->postconditions->insert(const_cast<QConstraint *>(postcondition));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedRules->insert(const_cast<QConstraint *>(postcondition));
 }
 
 void QOperation::removePostcondition(const QConstraint *postcondition)
 {
     d_ptr->postconditions->remove(const_cast<QConstraint *>(postcondition));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedRules->remove(const_cast<QConstraint *>(postcondition));
 }
 
 /*!
@@ -286,15 +278,11 @@ const QSet<QConstraint *> *QOperation::preconditions() const
 void QOperation::addPrecondition(const QConstraint *precondition)
 {
     d_ptr->preconditions->insert(const_cast<QConstraint *>(precondition));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedRules->insert(const_cast<QConstraint *>(precondition));
 }
 
 void QOperation::removePrecondition(const QConstraint *precondition)
 {
     d_ptr->preconditions->remove(const_cast<QConstraint *>(precondition));
-    // Adjust subsetted property(ies)
-    QNamespace::d_ptr->ownedRules->remove(const_cast<QConstraint *>(precondition));
 }
 
 /*!

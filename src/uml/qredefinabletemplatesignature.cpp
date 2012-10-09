@@ -111,15 +111,11 @@ const QSet<QRedefinableTemplateSignature *> *QRedefinableTemplateSignature::exte
 void QRedefinableTemplateSignature::addExtendedSignature(const QRedefinableTemplateSignature *extendedSignature)
 {
     d_ptr->extendedSignatures->insert(const_cast<QRedefinableTemplateSignature *>(extendedSignature));
-    // Adjust subsetted property(ies)
-    QRedefinableElement::d_ptr->redefinedElements->insert(const_cast<QRedefinableTemplateSignature *>(extendedSignature));
 }
 
 void QRedefinableTemplateSignature::removeExtendedSignature(const QRedefinableTemplateSignature *extendedSignature)
 {
     d_ptr->extendedSignatures->remove(const_cast<QRedefinableTemplateSignature *>(extendedSignature));
-    // Adjust subsetted property(ies)
-    QRedefinableElement::d_ptr->redefinedElements->remove(const_cast<QRedefinableTemplateSignature *>(extendedSignature));
 }
 
 /*!
