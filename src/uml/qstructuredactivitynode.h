@@ -132,7 +132,7 @@ class Q_UML_EXPORT QStructuredActivityNode : public QObject, public QAction, pub
     Q_PROPERTY(QActivity * activity READ activity WRITE setActivity)
 
     Q_DISABLE_COPY(QStructuredActivityNode)
-    Q_DECLARE_PRIVATE(QStructuredActivityNode)
+    QTUML_DECLARE_PRIVATE(QStructuredActivityNode)
 
 public:
     explicit QStructuredActivityNode(QObject *parent = 0);
@@ -162,7 +162,7 @@ public:
     void setActivity(const QActivity *activity);
 
 protected:
-    QStructuredActivityNodePrivate *d_ptr;
+    explicit QStructuredActivityNode(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

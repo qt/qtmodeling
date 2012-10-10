@@ -57,7 +57,23 @@ QStereotypePrivate::~QStereotypePrivate()
 {
     delete icons;
 }
+  
+void QStereotypePrivate::addIcon(const QImage *icon) 
+{   
+    this->icons->insert(const_cast<QImage *>(icon)); 
 
+    // Adjust subsetted property(ies)
+    addOwnedElement(icon); 
+}
+ 
+void QStereotypePrivate::removeIcon(const QImage *icon) 
+{    
+    this->icons->remove(const_cast<QImage *>(icon)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(icon);
+}
+ 
 /*!
     \class QStereotype
 
@@ -67,13 +83,20 @@ QStereotypePrivate::~QStereotypePrivate()
  */
 
 QStereotype::QStereotype(QObject *parent)
-    : QClass(parent), d_ptr(new QStereotypePrivate)
+    : QClass(false, parent)
 {
+    d_umlptr = new QStereotypePrivate;
+}
+
+QStereotype::QStereotype(bool createPimpl, QObject *parent)
+    : QClass(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QStereotypePrivate;
 }
 
 QStereotype::~QStereotype()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -81,17 +104,20 @@ QStereotype::~QStereotype()
  */
 const QSet<QImage *> *QStereotype::icons() const
 {
-    return d_ptr->icons;
+    Q_D(const QStereotype);
+    return d->icons;
 }
 
 void QStereotype::addIcon(const QImage *icon)
 {
-    d_ptr->icons->insert(const_cast<QImage *>(icon));
+    Q_D(QStereotype);
+    d->addIcon(const_cast<QImage *>(icon));
 }
 
 void QStereotype::removeIcon(const QImage *icon)
 {
-    d_ptr->icons->remove(const_cast<QImage *>(icon));
+    Q_D(QStereotype);
+    d->removeIcon(const_cast<QImage *>(icon));
 }
 
 /*!

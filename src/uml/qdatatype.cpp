@@ -63,6 +63,42 @@ QDataTypePrivate::~QDataTypePrivate()
     delete ownedOperations;
     delete ownedAttributes;
 }
+  
+void QDataTypePrivate::addOwnedOperation(const QOperation *ownedOperation) 
+{   
+    this->ownedOperations->append(const_cast<QOperation *>(ownedOperation)); 
+
+    // Adjust subsetted property(ies)
+    addFeature(ownedOperation);
+    addOwnedMember(ownedOperation); 
+}
+ 
+void QDataTypePrivate::removeOwnedOperation(const QOperation *ownedOperation) 
+{    
+    this->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation)); 
+
+    // Adjust subsetted property(ies)
+    removeFeature(ownedOperation);
+    removeOwnedMember(ownedOperation);
+}
+  
+void QDataTypePrivate::addOwnedAttribute(const QProperty *ownedAttribute) 
+{   
+    this->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedMember(ownedAttribute);
+    addAttribute(ownedAttribute); 
+}
+ 
+void QDataTypePrivate::removeOwnedAttribute(const QProperty *ownedAttribute) 
+{    
+    this->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedMember(ownedAttribute);
+    removeAttribute(ownedAttribute);
+}
 
 /*!
     \class QDataType
@@ -73,13 +109,20 @@ QDataTypePrivate::~QDataTypePrivate()
  */
 
 QDataType::QDataType(QObject *parent)
-    : QObject(parent), d_ptr(new QDataTypePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QDataTypePrivate;
+}
+
+QDataType::QDataType(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QDataTypePrivate;
 }
 
 QDataType::~QDataType()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -87,17 +130,20 @@ QDataType::~QDataType()
  */
 const QList<QOperation *> *QDataType::ownedOperations() const
 {
-    return d_ptr->ownedOperations;
+    Q_D(const QDataType);
+    return d->ownedOperations;
 }
 
 void QDataType::addOwnedOperation(const QOperation *ownedOperation)
 {
-    d_ptr->ownedOperations->append(const_cast<QOperation *>(ownedOperation));
+    Q_D(QDataType);
+    d->addOwnedOperation(const_cast<QOperation *>(ownedOperation));
 }
 
 void QDataType::removeOwnedOperation(const QOperation *ownedOperation)
 {
-    d_ptr->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation));
+    Q_D(QDataType);
+    d->removeOwnedOperation(const_cast<QOperation *>(ownedOperation));
 }
 
 /*!
@@ -105,17 +151,20 @@ void QDataType::removeOwnedOperation(const QOperation *ownedOperation)
  */
 const QList<QProperty *> *QDataType::ownedAttributes() const
 {
-    return d_ptr->ownedAttributes;
+    Q_D(const QDataType);
+    return d->ownedAttributes;
 }
 
 void QDataType::addOwnedAttribute(const QProperty *ownedAttribute)
 {
-    d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
+    Q_D(QDataType);
+    d->addOwnedAttribute(const_cast<QProperty *>(ownedAttribute));
 }
 
 void QDataType::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
-    d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
+    Q_D(QDataType);
+    d->removeOwnedAttribute(const_cast<QProperty *>(ownedAttribute));
 }
 
 /*!

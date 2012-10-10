@@ -43,6 +43,14 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qnamespace_p.h"
+
+#include "qredefinableelement_p.h"
+
+#include "qvertex_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,22 +61,15 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QConstraint;
-
 class QRegion;
-
 class QStateMachine;
-
 class QClassifier;
-
 class QBehavior;
-
 class QConnectionPointReference;
-
 class QTrigger;
-
 class QPseudostate;
 
-class QStatePrivate
+class QStatePrivate : public QNamespacePrivate, public QRedefinableElementPrivate, public QVertexPrivate
 {
 public:
     explicit QStatePrivate();
@@ -84,6 +85,29 @@ public:
     QBehavior *doActivity;
     QStateMachine *submachine;
     QConstraint *stateInvariant;
+
+    // Attributes
+    void setSimple(bool isSimple);
+    void setComposite(bool isComposite);
+    void setOrthogonal(bool isOrthogonal);
+    void setSubmachineState(bool isSubmachineState);
+
+    // Association-ends
+    void addRegion(const QRegion *region);
+    void removeRegion(const QRegion *region);
+    void setExit(const QBehavior *exit);
+    void addConnection(const QConnectionPointReference *connection);
+    void removeConnection(const QConnectionPointReference *connection);
+    void setRedefinitionContext(const QClassifier *redefinitionContext);
+    void setRedefinedState(const QState *redefinedState);
+    void addDeferrableTrigger(const QTrigger *deferrableTrigger);
+    void removeDeferrableTrigger(const QTrigger *deferrableTrigger);
+    void addConnectionPoint(const QPseudostate *connectionPoint);
+    void removeConnectionPoint(const QPseudostate *connectionPoint);
+    void setEntry(const QBehavior *entry);
+    void setDoActivity(const QBehavior *doActivity);
+    void setSubmachine(const QStateMachine *submachine);
+    void setStateInvariant(const QConstraint *stateInvariant);
 };
 
 QT_END_NAMESPACE_QTUML

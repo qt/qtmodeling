@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qclassifier_p.h"
+
 // Qt includes
 #include <QtCore/QList>
 #include <QtCore/QSet>
@@ -54,12 +58,10 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QProperty;
-
 class QConnector;
-
 class QConnectableElement;
 
-class QStructuredClassifierPrivate
+class QStructuredClassifierPrivate : public virtual QClassifierPrivate
 {
 public:
     explicit QStructuredClassifierPrivate();
@@ -68,6 +70,16 @@ public:
     QSet<QConnectableElement *> *roles;
     QList<QProperty *> *ownedAttributes;
     QSet<QConnector *> *ownedConnectors;
+
+    // Association-ends
+    void addRole(const QConnectableElement *role);
+    void removeRole(const QConnectableElement *role);
+    void addOwnedAttribute(const QProperty *ownedAttribute);
+    void removeOwnedAttribute(const QProperty *ownedAttribute);
+    void addPart(const QProperty *part);
+    void removePart(const QProperty *part);
+    void addOwnedConnector(const QConnector *ownedConnector);
+    void removeOwnedConnector(const QConnector *ownedConnector);
 };
 
 QT_END_NAMESPACE_QTUML

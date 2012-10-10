@@ -62,13 +62,12 @@ QDeployedArtifactPrivate::~QDeployedArtifactPrivate()
  */
 
 QDeployedArtifact::QDeployedArtifact()
-    : d_ptr(new QDeployedArtifactPrivate)
 {
+    d_umlptr = new QDeployedArtifactPrivate;
 }
 
 QDeployedArtifact::~QDeployedArtifact()
 {
-    delete d_ptr;
 }
 
 QT_END_NAMESPACE_QTUML

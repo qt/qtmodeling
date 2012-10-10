@@ -85,7 +85,7 @@ class Q_UML_EXPORT QLiteralBoolean : public QObject, public QLiteralSpecificatio
     Q_PROPERTY(bool value READ value WRITE setValue)
 
     Q_DISABLE_COPY(QLiteralBoolean)
-    Q_DECLARE_PRIVATE(QLiteralBoolean)
+    QTUML_DECLARE_PRIVATE(QLiteralBoolean)
 
 public:
     explicit QLiteralBoolean(QObject *parent = 0);
@@ -100,7 +100,7 @@ public:
     bool isComputable() const;
 
 protected:
-    QLiteralBooleanPrivate *d_ptr;
+    explicit QLiteralBoolean(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

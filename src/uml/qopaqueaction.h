@@ -112,7 +112,7 @@ class Q_UML_EXPORT QOpaqueAction : public QObject, public QAction
     Q_PROPERTY(const QSet<QOutputPin *> * outputValues READ outputValues)
 
     Q_DISABLE_COPY(QOpaqueAction)
-    Q_DECLARE_PRIVATE(QOpaqueAction)
+    QTUML_DECLARE_PRIVATE(QOpaqueAction)
 
 public:
     explicit QOpaqueAction(QObject *parent = 0);
@@ -135,7 +135,7 @@ public:
     void removeOutputValue(const QOutputPin *outputValue);
 
 protected:
-    QOpaqueActionPrivate *d_ptr;
+    explicit QOpaqueAction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

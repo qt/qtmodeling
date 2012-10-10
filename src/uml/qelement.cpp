@@ -58,6 +58,37 @@ QElementPrivate::~QElementPrivate()
     delete ownedElements;
     delete ownedComments;
 }
+  
+void QElementPrivate::addOwnedElement(const QElement *ownedElement) 
+{   
+    this->ownedElements->insert(const_cast<QElement *>(ownedElement));  
+}
+ 
+void QElementPrivate::removeOwnedElement(const QElement *ownedElement) 
+{    
+    this->ownedElements->remove(const_cast<QElement *>(ownedElement)); 
+}
+  
+void QElementPrivate::setOwner(const QElement *owner) 
+{  
+    this->owner = const_cast<QElement *>(owner);   
+}
+  
+void QElementPrivate::addOwnedComment(const QComment *ownedComment) 
+{   
+    this->ownedComments->insert(const_cast<QComment *>(ownedComment)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedElement(ownedComment); 
+}
+ 
+void QElementPrivate::removeOwnedComment(const QComment *ownedComment) 
+{    
+    this->ownedComments->remove(const_cast<QComment *>(ownedComment)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(ownedComment);
+}
 
 /*!
     \class QElement
@@ -68,13 +99,13 @@ QElementPrivate::~QElementPrivate()
  */
 
 QElement::QElement()
-    : d_ptr(new QElementPrivate)
 {
+    d_umlptr = new QElementPrivate;
 }
 
 QElement::~QElement()
 {
-    delete d_ptr;
+    delete d_umlptr;
 }
 
 /*!
@@ -82,7 +113,8 @@ QElement::~QElement()
  */
 const QSet<QElement *> *QElement::ownedElements() const
 {
-    return d_ptr->ownedElements;
+    Q_D(const QElement);
+    return d->ownedElements;
 }
 
 /*!
@@ -90,7 +122,8 @@ const QSet<QElement *> *QElement::ownedElements() const
  */
 QElement *QElement::owner() const
 {
-    return d_ptr->owner;
+    Q_D(const QElement);
+    return d->owner;
 }
 
 /*!
@@ -98,17 +131,20 @@ QElement *QElement::owner() const
  */
 const QSet<QComment *> *QElement::ownedComments() const
 {
-    return d_ptr->ownedComments;
+    Q_D(const QElement);
+    return d->ownedComments;
 }
 
 void QElement::addOwnedComment(const QComment *ownedComment)
 {
-    d_ptr->ownedComments->insert(const_cast<QComment *>(ownedComment));
+    Q_D(QElement);
+    d->addOwnedComment(const_cast<QComment *>(ownedComment));
 }
 
 void QElement::removeOwnedComment(const QComment *ownedComment)
 {
-    d_ptr->ownedComments->remove(const_cast<QComment *>(ownedComment));
+    Q_D(QElement);
+    d->removeOwnedComment(const_cast<QComment *>(ownedComment));
 }
 
 /*!

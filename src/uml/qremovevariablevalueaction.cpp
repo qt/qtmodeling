@@ -57,6 +57,16 @@ QRemoveVariableValueActionPrivate::~QRemoveVariableValueActionPrivate()
 {
 }
 
+void QRemoveVariableValueActionPrivate::setRemoveDuplicates(bool isRemoveDuplicates)
+{
+    this->isRemoveDuplicates = isRemoveDuplicates;
+}
+  
+void QRemoveVariableValueActionPrivate::setRemoveAt(const QInputPin *removeAt) 
+{  
+    this->removeAt = const_cast<QInputPin *>(removeAt);   
+}
+
 /*!
     \class QRemoveVariableValueAction
 
@@ -66,13 +76,20 @@ QRemoveVariableValueActionPrivate::~QRemoveVariableValueActionPrivate()
  */
 
 QRemoveVariableValueAction::QRemoveVariableValueAction(QObject *parent)
-    : QObject(parent), d_ptr(new QRemoveVariableValueActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QRemoveVariableValueActionPrivate;
+}
+
+QRemoveVariableValueAction::QRemoveVariableValueAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QRemoveVariableValueActionPrivate;
 }
 
 QRemoveVariableValueAction::~QRemoveVariableValueAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -80,12 +97,14 @@ QRemoveVariableValueAction::~QRemoveVariableValueAction()
  */
 bool QRemoveVariableValueAction::isRemoveDuplicates() const
 {
-    return d_ptr->isRemoveDuplicates;
+    Q_D(const QRemoveVariableValueAction);
+    return d->isRemoveDuplicates;
 }
 
 void QRemoveVariableValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
 {
-    d_ptr->isRemoveDuplicates = isRemoveDuplicates;
+    Q_D(QRemoveVariableValueAction);
+    d->setRemoveDuplicates(isRemoveDuplicates);
 }
 
 /*!
@@ -93,12 +112,14 @@ void QRemoveVariableValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
  */
 QInputPin *QRemoveVariableValueAction::removeAt() const
 {
-    return d_ptr->removeAt;
+    Q_D(const QRemoveVariableValueAction);
+    return d->removeAt;
 }
 
 void QRemoveVariableValueAction::setRemoveAt(const QInputPin *removeAt)
 {
-    d_ptr->removeAt = const_cast<QInputPin *>(removeAt);
+    Q_D(QRemoveVariableValueAction);
+    d->setRemoveAt(const_cast<QInputPin *>(removeAt));
 }
 
 #include "moc_qremovevariablevalueaction.cpp"

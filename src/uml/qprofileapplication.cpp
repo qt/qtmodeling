@@ -61,6 +61,21 @@ QProfileApplicationPrivate::~QProfileApplicationPrivate()
 {
 }
 
+void QProfileApplicationPrivate::setStrict(bool isStrict)
+{
+    this->isStrict = isStrict;
+}
+  
+void QProfileApplicationPrivate::setApplyingPackage(const QPackage *applyingPackage) 
+{  
+    this->applyingPackage = const_cast<QPackage *>(applyingPackage);   
+}
+  
+void QProfileApplicationPrivate::setAppliedProfile(const QProfile *appliedProfile) 
+{  
+    this->appliedProfile = const_cast<QProfile *>(appliedProfile);   
+}
+
 /*!
     \class QProfileApplication
 
@@ -70,13 +85,20 @@ QProfileApplicationPrivate::~QProfileApplicationPrivate()
  */
 
 QProfileApplication::QProfileApplication(QObject *parent)
-    : QObject(parent), d_ptr(new QProfileApplicationPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QProfileApplicationPrivate;
+}
+
+QProfileApplication::QProfileApplication(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QProfileApplicationPrivate;
 }
 
 QProfileApplication::~QProfileApplication()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -84,12 +106,14 @@ QProfileApplication::~QProfileApplication()
  */
 bool QProfileApplication::isStrict() const
 {
-    return d_ptr->isStrict;
+    Q_D(const QProfileApplication);
+    return d->isStrict;
 }
 
 void QProfileApplication::setStrict(bool isStrict)
 {
-    d_ptr->isStrict = isStrict;
+    Q_D(QProfileApplication);
+    d->setStrict(isStrict);
 }
 
 /*!
@@ -97,12 +121,14 @@ void QProfileApplication::setStrict(bool isStrict)
  */
 QPackage *QProfileApplication::applyingPackage() const
 {
-    return d_ptr->applyingPackage;
+    Q_D(const QProfileApplication);
+    return d->applyingPackage;
 }
 
 void QProfileApplication::setApplyingPackage(const QPackage *applyingPackage)
 {
-    d_ptr->applyingPackage = const_cast<QPackage *>(applyingPackage);
+    Q_D(QProfileApplication);
+    d->setApplyingPackage(const_cast<QPackage *>(applyingPackage));
 }
 
 /*!
@@ -110,12 +136,14 @@ void QProfileApplication::setApplyingPackage(const QPackage *applyingPackage)
  */
 QProfile *QProfileApplication::appliedProfile() const
 {
-    return d_ptr->appliedProfile;
+    Q_D(const QProfileApplication);
+    return d->appliedProfile;
 }
 
 void QProfileApplication::setAppliedProfile(const QProfile *appliedProfile)
 {
-    d_ptr->appliedProfile = const_cast<QProfile *>(appliedProfile);
+    Q_D(QProfileApplication);
+    d->setAppliedProfile(const_cast<QProfile *>(appliedProfile));
 }
 
 #include "moc_qprofileapplication.cpp"

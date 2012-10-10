@@ -62,6 +62,45 @@ QBehavioredClassifierPrivate::~QBehavioredClassifierPrivate()
     delete ownedBehaviors;
     delete interfaceRealizations;
 }
+  
+void QBehavioredClassifierPrivate::addOwnedBehavior(const QBehavior *ownedBehavior) 
+{   
+    this->ownedBehaviors->insert(const_cast<QBehavior *>(ownedBehavior)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedMember(ownedBehavior); 
+}
+ 
+void QBehavioredClassifierPrivate::removeOwnedBehavior(const QBehavior *ownedBehavior) 
+{    
+    this->ownedBehaviors->remove(const_cast<QBehavior *>(ownedBehavior)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedMember(ownedBehavior);
+}
+  
+void QBehavioredClassifierPrivate::addInterfaceRealization(const QInterfaceRealization *interfaceRealization) 
+{   
+    this->interfaceRealizations->insert(const_cast<QInterfaceRealization *>(interfaceRealization)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedElement(interfaceRealization);
+    addClientDependency(interfaceRealization); 
+}
+ 
+void QBehavioredClassifierPrivate::removeInterfaceRealization(const QInterfaceRealization *interfaceRealization) 
+{    
+    this->interfaceRealizations->remove(const_cast<QInterfaceRealization *>(interfaceRealization)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(interfaceRealization);
+    removeClientDependency(interfaceRealization);
+}
+  
+void QBehavioredClassifierPrivate::setClassifierBehavior(const QBehavior *classifierBehavior) 
+{  
+    this->classifierBehavior = const_cast<QBehavior *>(classifierBehavior);   
+}
 
 /*!
     \class QBehavioredClassifier
@@ -72,13 +111,12 @@ QBehavioredClassifierPrivate::~QBehavioredClassifierPrivate()
  */
 
 QBehavioredClassifier::QBehavioredClassifier()
-    : d_ptr(new QBehavioredClassifierPrivate)
 {
+    d_umlptr = new QBehavioredClassifierPrivate;
 }
 
 QBehavioredClassifier::~QBehavioredClassifier()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -86,17 +124,20 @@ QBehavioredClassifier::~QBehavioredClassifier()
  */
 const QSet<QBehavior *> *QBehavioredClassifier::ownedBehaviors() const
 {
-    return d_ptr->ownedBehaviors;
+    Q_D(const QBehavioredClassifier);
+    return d->ownedBehaviors;
 }
 
 void QBehavioredClassifier::addOwnedBehavior(const QBehavior *ownedBehavior)
 {
-    d_ptr->ownedBehaviors->insert(const_cast<QBehavior *>(ownedBehavior));
+    Q_D(QBehavioredClassifier);
+    d->addOwnedBehavior(const_cast<QBehavior *>(ownedBehavior));
 }
 
 void QBehavioredClassifier::removeOwnedBehavior(const QBehavior *ownedBehavior)
 {
-    d_ptr->ownedBehaviors->remove(const_cast<QBehavior *>(ownedBehavior));
+    Q_D(QBehavioredClassifier);
+    d->removeOwnedBehavior(const_cast<QBehavior *>(ownedBehavior));
 }
 
 /*!
@@ -104,17 +145,20 @@ void QBehavioredClassifier::removeOwnedBehavior(const QBehavior *ownedBehavior)
  */
 const QSet<QInterfaceRealization *> *QBehavioredClassifier::interfaceRealizations() const
 {
-    return d_ptr->interfaceRealizations;
+    Q_D(const QBehavioredClassifier);
+    return d->interfaceRealizations;
 }
 
 void QBehavioredClassifier::addInterfaceRealization(const QInterfaceRealization *interfaceRealization)
 {
-    d_ptr->interfaceRealizations->insert(const_cast<QInterfaceRealization *>(interfaceRealization));
+    Q_D(QBehavioredClassifier);
+    d->addInterfaceRealization(const_cast<QInterfaceRealization *>(interfaceRealization));
 }
 
 void QBehavioredClassifier::removeInterfaceRealization(const QInterfaceRealization *interfaceRealization)
 {
-    d_ptr->interfaceRealizations->remove(const_cast<QInterfaceRealization *>(interfaceRealization));
+    Q_D(QBehavioredClassifier);
+    d->removeInterfaceRealization(const_cast<QInterfaceRealization *>(interfaceRealization));
 }
 
 /*!
@@ -122,12 +166,14 @@ void QBehavioredClassifier::removeInterfaceRealization(const QInterfaceRealizati
  */
 QBehavior *QBehavioredClassifier::classifierBehavior() const
 {
-    return d_ptr->classifierBehavior;
+    Q_D(const QBehavioredClassifier);
+    return d->classifierBehavior;
 }
 
 void QBehavioredClassifier::setClassifierBehavior(const QBehavior *classifierBehavior)
 {
-    d_ptr->classifierBehavior = const_cast<QBehavior *>(classifierBehavior);
+    Q_D(QBehavioredClassifier);
+    d->setClassifierBehavior(const_cast<QBehavior *>(classifierBehavior));
 }
 
 QT_END_NAMESPACE_QTUML

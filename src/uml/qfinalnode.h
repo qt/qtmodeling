@@ -57,16 +57,13 @@ class QFinalNodePrivate;
 class Q_UML_EXPORT QFinalNode : public QControlNode
 {
     Q_DISABLE_COPY(QFinalNode)
-    Q_DECLARE_PRIVATE(QFinalNode)
+    QTUML_DECLARE_PRIVATE(QFinalNode)
 
 public:
     virtual ~QFinalNode();
 
 protected:
     explicit QFinalNode();
-
-protected:
-    QFinalNodePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

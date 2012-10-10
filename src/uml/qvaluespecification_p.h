@@ -43,6 +43,12 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qtypedelement_p.h"
+
+#include "qpackageableelement_p.h"
+
 // Qt includes
 #include <QtCore/QString>
 
@@ -54,7 +60,7 @@ QT_MODULE(QtUml)
 
 class QParameterableElement;
 
-class QValueSpecificationPrivate
+class QValueSpecificationPrivate : public QTypedElementPrivate, public QPackageableElementPrivate
 {
 public:
     explicit QValueSpecificationPrivate();

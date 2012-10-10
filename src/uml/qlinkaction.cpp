@@ -61,6 +61,38 @@ QLinkActionPrivate::~QLinkActionPrivate()
     delete inputValues;
     delete endData;
 }
+  
+void QLinkActionPrivate::addInputValue(const QInputPin *inputValue) 
+{   
+    this->inputValues->insert(const_cast<QInputPin *>(inputValue)); 
+
+    // Adjust subsetted property(ies)
+    addInput(inputValue); 
+}
+ 
+void QLinkActionPrivate::removeInputValue(const QInputPin *inputValue) 
+{    
+    this->inputValues->remove(const_cast<QInputPin *>(inputValue)); 
+
+    // Adjust subsetted property(ies)
+    removeInput(inputValue);
+}
+  
+void QLinkActionPrivate::addEndData(const QLinkEndData *endData) 
+{   
+    this->endData->insert(const_cast<QLinkEndData *>(endData)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedElement(endData); 
+}
+ 
+void QLinkActionPrivate::removeEndData(const QLinkEndData *endData) 
+{    
+    this->endData->remove(const_cast<QLinkEndData *>(endData)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(endData);
+}
 
 /*!
     \class QLinkAction
@@ -71,13 +103,12 @@ QLinkActionPrivate::~QLinkActionPrivate()
  */
 
 QLinkAction::QLinkAction()
-    : d_ptr(new QLinkActionPrivate)
 {
+    d_umlptr = new QLinkActionPrivate;
 }
 
 QLinkAction::~QLinkAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -85,17 +116,20 @@ QLinkAction::~QLinkAction()
  */
 const QSet<QInputPin *> *QLinkAction::inputValues() const
 {
-    return d_ptr->inputValues;
+    Q_D(const QLinkAction);
+    return d->inputValues;
 }
 
 void QLinkAction::addInputValue(const QInputPin *inputValue)
 {
-    d_ptr->inputValues->insert(const_cast<QInputPin *>(inputValue));
+    Q_D(QLinkAction);
+    d->addInputValue(const_cast<QInputPin *>(inputValue));
 }
 
 void QLinkAction::removeInputValue(const QInputPin *inputValue)
 {
-    d_ptr->inputValues->remove(const_cast<QInputPin *>(inputValue));
+    Q_D(QLinkAction);
+    d->removeInputValue(const_cast<QInputPin *>(inputValue));
 }
 
 /*!
@@ -103,17 +137,20 @@ void QLinkAction::removeInputValue(const QInputPin *inputValue)
  */
 const QSet<QLinkEndData *> *QLinkAction::endData() const
 {
-    return d_ptr->endData;
+    Q_D(const QLinkAction);
+    return d->endData;
 }
 
 void QLinkAction::addEndData(const QLinkEndData *endData)
 {
-    d_ptr->endData->insert(const_cast<QLinkEndData *>(endData));
+    Q_D(QLinkAction);
+    d->addEndData(const_cast<QLinkEndData *>(endData));
 }
 
 void QLinkAction::removeEndData(const QLinkEndData *endData)
 {
-    d_ptr->endData->remove(const_cast<QLinkEndData *>(endData));
+    Q_D(QLinkAction);
+    d->removeEndData(const_cast<QLinkEndData *>(endData));
 }
 
 /*!

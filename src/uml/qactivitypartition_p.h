@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qactivitygroup_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,12 +57,10 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QActivityEdge;
-
 class QActivityNode;
-
 class QElement;
 
-class QActivityPartitionPrivate
+class QActivityPartitionPrivate : public QActivityGroupPrivate
 {
 public:
     explicit QActivityPartitionPrivate();
@@ -71,6 +73,20 @@ public:
     QActivityPartition *superPartition;
     QSet<QActivityNode *> *nodes;
     QSet<QActivityEdge *> *edges;
+
+    // Attributes
+    void setDimension(bool isDimension);
+    void setExternal(bool isExternal);
+
+    // Association-ends
+    void setRepresents(const QElement *represents);
+    void addSubpartition(const QActivityPartition *subpartition);
+    void removeSubpartition(const QActivityPartition *subpartition);
+    void setSuperPartition(const QActivityPartition *superPartition);
+    void addNode(const QActivityNode *node);
+    void removeNode(const QActivityNode *node);
+    void addEdge(const QActivityEdge *edge);
+    void removeEdge(const QActivityEdge *edge);
 };
 
 QT_END_NAMESPACE_QTUML

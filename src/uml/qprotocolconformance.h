@@ -77,7 +77,7 @@ class Q_UML_EXPORT QProtocolConformance : public QObject, public QDirectedRelati
     Q_PROPERTY(QProtocolStateMachine * generalMachine READ generalMachine WRITE setGeneralMachine)
 
     Q_DISABLE_COPY(QProtocolConformance)
-    Q_DECLARE_PRIVATE(QProtocolConformance)
+    QTUML_DECLARE_PRIVATE(QProtocolConformance)
 
 public:
     explicit QProtocolConformance(QObject *parent = 0);
@@ -90,7 +90,7 @@ public:
     void setGeneralMachine(const QProtocolStateMachine *generalMachine);
 
 protected:
-    QProtocolConformancePrivate *d_ptr;
+    explicit QProtocolConformance(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

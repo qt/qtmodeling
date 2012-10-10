@@ -59,7 +59,7 @@ class QInputPin;
 class Q_UML_EXPORT QWriteStructuralFeatureAction : public QStructuralFeatureAction
 {
     Q_DISABLE_COPY(QWriteStructuralFeatureAction)
-    Q_DECLARE_PRIVATE(QWriteStructuralFeatureAction)
+    QTUML_DECLARE_PRIVATE(QWriteStructuralFeatureAction)
 
 public:
     virtual ~QWriteStructuralFeatureAction();
@@ -72,9 +72,6 @@ public:
 
 protected:
     explicit QWriteStructuralFeatureAction();
-
-protected:
-    QWriteStructuralFeatureActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

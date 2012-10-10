@@ -110,7 +110,7 @@ class Q_UML_EXPORT QRemoveVariableValueAction : public QObject, public QWriteVar
     Q_PROPERTY(QInputPin * removeAt READ removeAt WRITE setRemoveAt)
 
     Q_DISABLE_COPY(QRemoveVariableValueAction)
-    Q_DECLARE_PRIVATE(QRemoveVariableValueAction)
+    QTUML_DECLARE_PRIVATE(QRemoveVariableValueAction)
 
 public:
     explicit QRemoveVariableValueAction(QObject *parent = 0);
@@ -125,7 +125,7 @@ public:
     void setRemoveAt(const QInputPin *removeAt);
 
 protected:
-    QRemoveVariableValueActionPrivate *d_ptr;
+    explicit QRemoveVariableValueAction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

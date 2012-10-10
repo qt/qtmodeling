@@ -82,7 +82,7 @@ class Q_UML_EXPORT QPackageImport : public QObject, public QDirectedRelationship
     Q_PROPERTY(QPackage * importedPackage READ importedPackage WRITE setImportedPackage)
 
     Q_DISABLE_COPY(QPackageImport)
-    Q_DECLARE_PRIVATE(QPackageImport)
+    QTUML_DECLARE_PRIVATE(QPackageImport)
 
 public:
     explicit QPackageImport(QObject *parent = 0);
@@ -99,7 +99,7 @@ public:
     void setImportedPackage(const QPackage *importedPackage);
 
 protected:
-    QPackageImportPrivate *d_ptr;
+    explicit QPackageImport(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

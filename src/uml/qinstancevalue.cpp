@@ -54,6 +54,11 @@ QInstanceValuePrivate::QInstanceValuePrivate() :
 QInstanceValuePrivate::~QInstanceValuePrivate()
 {
 }
+  
+void QInstanceValuePrivate::setInstance(const QInstanceSpecification *instance) 
+{  
+    this->instance = const_cast<QInstanceSpecification *>(instance);   
+}
 
 /*!
     \class QInstanceValue
@@ -64,13 +69,20 @@ QInstanceValuePrivate::~QInstanceValuePrivate()
  */
 
 QInstanceValue::QInstanceValue(QObject *parent)
-    : QObject(parent), d_ptr(new QInstanceValuePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QInstanceValuePrivate;
+}
+
+QInstanceValue::QInstanceValue(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QInstanceValuePrivate;
 }
 
 QInstanceValue::~QInstanceValue()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -78,12 +90,14 @@ QInstanceValue::~QInstanceValue()
  */
 QInstanceSpecification *QInstanceValue::instance() const
 {
-    return d_ptr->instance;
+    Q_D(const QInstanceValue);
+    return d->instance;
 }
 
 void QInstanceValue::setInstance(const QInstanceSpecification *instance)
 {
-    d_ptr->instance = const_cast<QInstanceSpecification *>(instance);
+    Q_D(QInstanceValue);
+    d->setInstance(const_cast<QInstanceSpecification *>(instance));
 }
 
 #include "moc_qinstancevalue.cpp"

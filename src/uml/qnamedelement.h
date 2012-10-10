@@ -69,7 +69,7 @@ class QStringExpression;
 class Q_UML_EXPORT QNamedElement : public virtual QElement
 {
     Q_DISABLE_COPY(QNamedElement)
-    Q_DECLARE_PRIVATE(QNamedElement)
+    QTUML_DECLARE_PRIVATE(QNamedElement)
 
 public:
     virtual ~QNamedElement();
@@ -97,9 +97,6 @@ public:
 
 protected:
     explicit QNamedElement();
-
-protected:
-    QNamedElementPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

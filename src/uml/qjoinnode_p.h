@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qcontrolnode_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,7 +55,7 @@ QT_MODULE(QtUml)
 
 class QValueSpecification;
 
-class QJoinNodePrivate
+class QJoinNodePrivate : public QControlNodePrivate
 {
 public:
     explicit QJoinNodePrivate();
@@ -59,6 +63,12 @@ public:
 
     bool isCombineDuplicate;
     QValueSpecification *joinSpec;
+
+    // Attributes
+    void setCombineDuplicate(bool isCombineDuplicate);
+
+    // Association-ends
+    void setJoinSpec(const QValueSpecification *joinSpec);
 };
 
 QT_END_NAMESPACE_QTUML

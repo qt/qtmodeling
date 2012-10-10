@@ -63,6 +63,13 @@ public:
     QSet<QElement *> *ownedElements;
     QElement *owner;
     QSet<QComment *> *ownedComments;
+
+    // Association-ends
+    void addOwnedElement(const QElement *ownedElement);
+    void removeOwnedElement(const QElement *ownedElement);
+    void setOwner(const QElement *owner);
+    void addOwnedComment(const QComment *ownedComment);
+    void removeOwnedComment(const QComment *ownedComment);
 };
 
 QT_END_NAMESPACE_QTUML

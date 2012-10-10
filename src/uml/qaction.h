@@ -65,7 +65,7 @@ class QInputPin;
 class Q_UML_EXPORT QAction : public QExecutableNode
 {
     Q_DISABLE_COPY(QAction)
-    Q_DECLARE_PRIVATE(QAction)
+    QTUML_DECLARE_PRIVATE(QAction)
 
 public:
     virtual ~QAction();
@@ -87,9 +87,6 @@ public:
 
 protected:
     explicit QAction();
-
-protected:
-    QActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qstructuralfeatureaction_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,13 +55,16 @@ QT_MODULE(QtUml)
 
 class QOutputPin;
 
-class QClearStructuralFeatureActionPrivate
+class QClearStructuralFeatureActionPrivate : public QStructuralFeatureActionPrivate
 {
 public:
     explicit QClearStructuralFeatureActionPrivate();
     virtual ~QClearStructuralFeatureActionPrivate();
 
     QOutputPin *result;
+
+    // Association-ends
+    void setResult(const QOutputPin *result);
 };
 
 QT_END_NAMESPACE_QTUML

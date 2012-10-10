@@ -77,7 +77,7 @@ class Q_UML_EXPORT QOpaqueBehavior : public QBehavior
     Q_PROPERTY(const QList<QString> * bodies READ bodies)
 
     Q_DISABLE_COPY(QOpaqueBehavior)
-    Q_DECLARE_PRIVATE(QOpaqueBehavior)
+    QTUML_DECLARE_PRIVATE(QOpaqueBehavior)
 
 public:
     explicit QOpaqueBehavior(QObject *parent = 0);
@@ -92,7 +92,7 @@ public:
     void removeBody(QString body);
 
 protected:
-    QOpaqueBehaviorPrivate *d_ptr;
+    explicit QOpaqueBehavior(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

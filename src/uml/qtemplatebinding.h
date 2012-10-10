@@ -83,7 +83,7 @@ class Q_UML_EXPORT QTemplateBinding : public QObject, public QDirectedRelationsh
     Q_PROPERTY(const QSet<QTemplateParameterSubstitution *> * parameterSubstitutions READ parameterSubstitutions)
 
     Q_DISABLE_COPY(QTemplateBinding)
-    Q_DECLARE_PRIVATE(QTemplateBinding)
+    QTUML_DECLARE_PRIVATE(QTemplateBinding)
 
 public:
     explicit QTemplateBinding(QObject *parent = 0);
@@ -99,7 +99,7 @@ public:
     void removeParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution);
 
 protected:
-    QTemplateBindingPrivate *d_ptr;
+    explicit QTemplateBinding(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -93,7 +93,7 @@ class Q_UML_EXPORT QJoinNode : public QObject, public QControlNode
     Q_PROPERTY(QValueSpecification * joinSpec READ joinSpec WRITE setJoinSpec)
 
     Q_DISABLE_COPY(QJoinNode)
-    Q_DECLARE_PRIVATE(QJoinNode)
+    QTUML_DECLARE_PRIVATE(QJoinNode)
 
 public:
     explicit QJoinNode(QObject *parent = 0);
@@ -108,7 +108,7 @@ public:
     void setJoinSpec(const QValueSpecification *joinSpec);
 
 protected:
-    QJoinNodePrivate *d_ptr;
+    explicit QJoinNode(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

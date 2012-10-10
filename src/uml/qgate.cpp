@@ -62,13 +62,20 @@ QGatePrivate::~QGatePrivate()
  */
 
 QGate::QGate(QObject *parent)
-    : QObject(parent), d_ptr(new QGatePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QGatePrivate;
+}
+
+QGate::QGate(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QGatePrivate;
 }
 
 QGate::~QGate()
 {
-    delete d_ptr;
 }
 
 #include "moc_qgate.cpp"

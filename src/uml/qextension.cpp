@@ -56,6 +56,11 @@ QExtensionPrivate::QExtensionPrivate() :
 QExtensionPrivate::~QExtensionPrivate()
 {
 }
+   
+void QExtensionPrivate::setOwnedEnd(const QExtensionEnd *ownedEnd) 
+{  
+    this->ownedEnd = const_cast<QExtensionEnd *>(ownedEnd);   
+}
 
 /*!
     \class QExtension
@@ -66,13 +71,20 @@ QExtensionPrivate::~QExtensionPrivate()
  */
 
 QExtension::QExtension(QObject *parent)
-    : QAssociation(parent), d_ptr(new QExtensionPrivate)
+    : QAssociation(false, parent)
 {
+    d_umlptr = new QExtensionPrivate;
+}
+
+QExtension::QExtension(bool createPimpl, QObject *parent)
+    : QAssociation(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QExtensionPrivate;
 }
 
 QExtension::~QExtension()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -96,12 +108,14 @@ QClass *QExtension::metaclass() const
  */
 QExtensionEnd *QExtension::ownedEnd() const
 {
-    return d_ptr->ownedEnd;
+    Q_D(const QExtension);
+    return d->ownedEnd;
 }
 
 void QExtension::setOwnedEnd(const QExtensionEnd *ownedEnd)
 {
-    d_ptr->ownedEnd = const_cast<QExtensionEnd *>(ownedEnd);
+    Q_D(QExtension);
+    d->setOwnedEnd(const_cast<QExtensionEnd *>(ownedEnd));
 }
 
 /*!

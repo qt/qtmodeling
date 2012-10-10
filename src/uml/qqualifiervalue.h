@@ -71,7 +71,7 @@ class Q_UML_EXPORT QQualifierValue : public QObject, public QElement
     Q_PROPERTY(QProperty * qualifier READ qualifier WRITE setQualifier)
 
     Q_DISABLE_COPY(QQualifierValue)
-    Q_DECLARE_PRIVATE(QQualifierValue)
+    QTUML_DECLARE_PRIVATE(QQualifierValue)
 
 public:
     explicit QQualifierValue(QObject *parent = 0);
@@ -84,7 +84,7 @@ public:
     void setQualifier(const QProperty *qualifier);
 
 protected:
-    QQualifierValuePrivate *d_ptr;
+    explicit QQualifierValue(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

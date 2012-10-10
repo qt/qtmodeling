@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qelement_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,12 +57,10 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QProperty;
-
 class QQualifierValue;
-
 class QInputPin;
 
-class QLinkEndDataPrivate
+class QLinkEndDataPrivate : public QElementPrivate
 {
 public:
     explicit QLinkEndDataPrivate();
@@ -67,6 +69,12 @@ public:
     QInputPin *value;
     QProperty *end;
     QSet<QQualifierValue *> *qualifiers;
+
+    // Association-ends
+    void setValue(const QInputPin *value);
+    void setEnd(const QProperty *end);
+    void addQualifier(const QQualifierValue *qualifier);
+    void removeQualifier(const QQualifierValue *qualifier);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qnamedelement_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,18 +57,23 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QRegion;
-
 class QTransition;
-
 class QStateMachine;
 
-class QVertexPrivate
+class QVertexPrivate : public virtual QNamedElementPrivate
 {
 public:
     explicit QVertexPrivate();
     virtual ~QVertexPrivate();
 
     QRegion *container;
+
+    // Association-ends
+    void addIncoming(const QTransition *incoming);
+    void removeIncoming(const QTransition *incoming);
+    void setContainer(const QRegion *container);
+    void addOutgoing(const QTransition *outgoing);
+    void removeOutgoing(const QTransition *outgoing);
 };
 
 QT_END_NAMESPACE_QTUML

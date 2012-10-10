@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qcombinedfragment_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -54,13 +58,17 @@ QT_MODULE(QtUml)
 
 class QNamedElement;
 
-class QConsiderIgnoreFragmentPrivate
+class QConsiderIgnoreFragmentPrivate : public QCombinedFragmentPrivate
 {
 public:
     explicit QConsiderIgnoreFragmentPrivate();
     virtual ~QConsiderIgnoreFragmentPrivate();
 
     QSet<QNamedElement *> *messages;
+
+    // Association-ends
+    void addMessage(const QNamedElement *message);
+    void removeMessage(const QNamedElement *message);
 };
 
 QT_END_NAMESPACE_QTUML

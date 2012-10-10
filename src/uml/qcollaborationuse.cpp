@@ -58,6 +58,27 @@ QCollaborationUsePrivate::~QCollaborationUsePrivate()
 {
     delete roleBindings;
 }
+  
+void QCollaborationUsePrivate::setType(const QCollaboration *type) 
+{  
+    this->type = const_cast<QCollaboration *>(type);   
+}
+  
+void QCollaborationUsePrivate::addRoleBinding(const QDependency *roleBinding) 
+{   
+    this->roleBindings->insert(const_cast<QDependency *>(roleBinding)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedElement(roleBinding); 
+}
+ 
+void QCollaborationUsePrivate::removeRoleBinding(const QDependency *roleBinding) 
+{    
+    this->roleBindings->remove(const_cast<QDependency *>(roleBinding)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(roleBinding);
+}
 
 /*!
     \class QCollaborationUse
@@ -68,13 +89,20 @@ QCollaborationUsePrivate::~QCollaborationUsePrivate()
  */
 
 QCollaborationUse::QCollaborationUse(QObject *parent)
-    : QObject(parent), d_ptr(new QCollaborationUsePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QCollaborationUsePrivate;
+}
+
+QCollaborationUse::QCollaborationUse(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QCollaborationUsePrivate;
 }
 
 QCollaborationUse::~QCollaborationUse()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -82,12 +110,14 @@ QCollaborationUse::~QCollaborationUse()
  */
 QCollaboration *QCollaborationUse::type() const
 {
-    return d_ptr->type;
+    Q_D(const QCollaborationUse);
+    return d->type;
 }
 
 void QCollaborationUse::setType(const QCollaboration *type)
 {
-    d_ptr->type = const_cast<QCollaboration *>(type);
+    Q_D(QCollaborationUse);
+    d->setType(const_cast<QCollaboration *>(type));
 }
 
 /*!
@@ -95,17 +125,20 @@ void QCollaborationUse::setType(const QCollaboration *type)
  */
 const QSet<QDependency *> *QCollaborationUse::roleBindings() const
 {
-    return d_ptr->roleBindings;
+    Q_D(const QCollaborationUse);
+    return d->roleBindings;
 }
 
 void QCollaborationUse::addRoleBinding(const QDependency *roleBinding)
 {
-    d_ptr->roleBindings->insert(const_cast<QDependency *>(roleBinding));
+    Q_D(QCollaborationUse);
+    d->addRoleBinding(const_cast<QDependency *>(roleBinding));
 }
 
 void QCollaborationUse::removeRoleBinding(const QDependency *roleBinding)
 {
-    d_ptr->roleBindings->remove(const_cast<QDependency *>(roleBinding));
+    Q_D(QCollaborationUse);
+    d->removeRoleBinding(const_cast<QDependency *>(roleBinding));
 }
 
 #include "moc_qcollaborationuse.cpp"

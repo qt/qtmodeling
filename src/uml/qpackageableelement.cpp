@@ -54,6 +54,11 @@ QPackageableElementPrivate::~QPackageableElementPrivate()
 {
 }
 
+void QPackageableElementPrivate::setVisibility(QtUml::VisibilityKind visibility)
+{
+    this->visibility = visibility;
+}
+
 /*!
     \class QPackageableElement
 
@@ -63,13 +68,12 @@ QPackageableElementPrivate::~QPackageableElementPrivate()
  */
 
 QPackageableElement::QPackageableElement()
-    : d_ptr(new QPackageableElementPrivate)
 {
+    d_umlptr = new QPackageableElementPrivate;
 }
 
 QPackageableElement::~QPackageableElement()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -77,12 +81,14 @@ QPackageableElement::~QPackageableElement()
  */
 QtUml::VisibilityKind QPackageableElement::visibility() const
 {
-    return d_ptr->visibility;
+    Q_D(const QPackageableElement);
+    return d->visibility;
 }
 
 void QPackageableElement::setVisibility(QtUml::VisibilityKind visibility)
 {
-    d_ptr->visibility = visibility;
+    Q_D(QPackageableElement);
+    d->setVisibility(visibility);
 }
 
 QT_END_NAMESPACE_QTUML

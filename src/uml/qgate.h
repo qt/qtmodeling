@@ -76,14 +76,14 @@ class Q_UML_EXPORT QGate : public QObject, public QMessageEnd
     Q_PROPERTY(QMessage * message READ message WRITE setMessage)
 
     Q_DISABLE_COPY(QGate)
-    Q_DECLARE_PRIVATE(QGate)
+    QTUML_DECLARE_PRIVATE(QGate)
 
 public:
     explicit QGate(QObject *parent = 0);
     virtual ~QGate();
 
 protected:
-    QGatePrivate *d_ptr;
+    explicit QGate(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

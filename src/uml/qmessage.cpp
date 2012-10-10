@@ -67,6 +67,52 @@ QMessagePrivate::~QMessagePrivate()
     delete arguments;
 }
 
+void QMessagePrivate::setMessageSort(QtUml::MessageSort messageSort)
+{
+    this->messageSort = messageSort;
+}
+  
+void QMessagePrivate::setSignature(const QNamedElement *signature) 
+{  
+    this->signature = const_cast<QNamedElement *>(signature);   
+}
+  
+void QMessagePrivate::addArgument(const QValueSpecification *argument) 
+{   
+    this->arguments->append(const_cast<QValueSpecification *>(argument)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedElement(argument); 
+}
+ 
+void QMessagePrivate::removeArgument(const QValueSpecification *argument) 
+{    
+    this->arguments->removeAll(const_cast<QValueSpecification *>(argument)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(argument);
+}
+  
+void QMessagePrivate::setReceiveEvent(const QMessageEnd *receiveEvent) 
+{  
+    this->receiveEvent = const_cast<QMessageEnd *>(receiveEvent);   
+}
+  
+void QMessagePrivate::setInteraction(const QInteraction *interaction) 
+{  
+    this->interaction = const_cast<QInteraction *>(interaction);   
+}
+  
+void QMessagePrivate::setSendEvent(const QMessageEnd *sendEvent) 
+{  
+    this->sendEvent = const_cast<QMessageEnd *>(sendEvent);   
+}
+  
+void QMessagePrivate::setConnector(const QConnector *connector) 
+{  
+    this->connector = const_cast<QConnector *>(connector);   
+}
+
 /*!
     \class QMessage
 
@@ -76,13 +122,20 @@ QMessagePrivate::~QMessagePrivate()
  */
 
 QMessage::QMessage(QObject *parent)
-    : QObject(parent), d_ptr(new QMessagePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QMessagePrivate;
+}
+
+QMessage::QMessage(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QMessagePrivate;
 }
 
 QMessage::~QMessage()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -90,12 +143,14 @@ QMessage::~QMessage()
  */
 QtUml::MessageSort QMessage::messageSort() const
 {
-    return d_ptr->messageSort;
+    Q_D(const QMessage);
+    return d->messageSort;
 }
 
 void QMessage::setMessageSort(QtUml::MessageSort messageSort)
 {
-    d_ptr->messageSort = messageSort;
+    Q_D(QMessage);
+    d->setMessageSort(messageSort);
 }
 
 /*!
@@ -111,12 +166,14 @@ QtUml::MessageKind QMessage::messageKind() const
  */
 QNamedElement *QMessage::signature() const
 {
-    return d_ptr->signature;
+    Q_D(const QMessage);
+    return d->signature;
 }
 
 void QMessage::setSignature(const QNamedElement *signature)
 {
-    d_ptr->signature = const_cast<QNamedElement *>(signature);
+    Q_D(QMessage);
+    d->setSignature(const_cast<QNamedElement *>(signature));
 }
 
 /*!
@@ -124,17 +181,20 @@ void QMessage::setSignature(const QNamedElement *signature)
  */
 const QList<QValueSpecification *> *QMessage::arguments() const
 {
-    return d_ptr->arguments;
+    Q_D(const QMessage);
+    return d->arguments;
 }
 
 void QMessage::addArgument(const QValueSpecification *argument)
 {
-    d_ptr->arguments->append(const_cast<QValueSpecification *>(argument));
+    Q_D(QMessage);
+    d->addArgument(const_cast<QValueSpecification *>(argument));
 }
 
 void QMessage::removeArgument(const QValueSpecification *argument)
 {
-    d_ptr->arguments->removeAll(const_cast<QValueSpecification *>(argument));
+    Q_D(QMessage);
+    d->removeArgument(const_cast<QValueSpecification *>(argument));
 }
 
 /*!
@@ -142,12 +202,14 @@ void QMessage::removeArgument(const QValueSpecification *argument)
  */
 QMessageEnd *QMessage::receiveEvent() const
 {
-    return d_ptr->receiveEvent;
+    Q_D(const QMessage);
+    return d->receiveEvent;
 }
 
 void QMessage::setReceiveEvent(const QMessageEnd *receiveEvent)
 {
-    d_ptr->receiveEvent = const_cast<QMessageEnd *>(receiveEvent);
+    Q_D(QMessage);
+    d->setReceiveEvent(const_cast<QMessageEnd *>(receiveEvent));
 }
 
 /*!
@@ -155,12 +217,14 @@ void QMessage::setReceiveEvent(const QMessageEnd *receiveEvent)
  */
 QInteraction *QMessage::interaction() const
 {
-    return d_ptr->interaction;
+    Q_D(const QMessage);
+    return d->interaction;
 }
 
 void QMessage::setInteraction(const QInteraction *interaction)
 {
-    d_ptr->interaction = const_cast<QInteraction *>(interaction);
+    Q_D(QMessage);
+    d->setInteraction(const_cast<QInteraction *>(interaction));
 }
 
 /*!
@@ -168,12 +232,14 @@ void QMessage::setInteraction(const QInteraction *interaction)
  */
 QMessageEnd *QMessage::sendEvent() const
 {
-    return d_ptr->sendEvent;
+    Q_D(const QMessage);
+    return d->sendEvent;
 }
 
 void QMessage::setSendEvent(const QMessageEnd *sendEvent)
 {
-    d_ptr->sendEvent = const_cast<QMessageEnd *>(sendEvent);
+    Q_D(QMessage);
+    d->setSendEvent(const_cast<QMessageEnd *>(sendEvent));
 }
 
 /*!
@@ -181,12 +247,14 @@ void QMessage::setSendEvent(const QMessageEnd *sendEvent)
  */
 QConnector *QMessage::connector() const
 {
-    return d_ptr->connector;
+    Q_D(const QMessage);
+    return d->connector;
 }
 
 void QMessage::setConnector(const QConnector *connector)
 {
-    d_ptr->connector = const_cast<QConnector *>(connector);
+    Q_D(QMessage);
+    d->setConnector(const_cast<QConnector *>(connector));
 }
 
 #include "moc_qmessage.cpp"

@@ -63,7 +63,7 @@ class Q_UML_EXPORT QManifestation : public QAbstraction
     Q_PROPERTY(QPackageableElement * utilizedElement READ utilizedElement WRITE setUtilizedElement)
 
     Q_DISABLE_COPY(QManifestation)
-    Q_DECLARE_PRIVATE(QManifestation)
+    QTUML_DECLARE_PRIVATE(QManifestation)
 
 public:
     explicit QManifestation(QObject *parent = 0);
@@ -74,7 +74,7 @@ public:
     void setUtilizedElement(const QPackageableElement *utilizedElement);
 
 protected:
-    QManifestationPrivate *d_ptr;
+    explicit QManifestation(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

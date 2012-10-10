@@ -113,7 +113,7 @@ class Q_UML_EXPORT QParameter : public QObject, public QMultiplicityElement, pub
     Q_PROPERTY(const QSet<QParameterSet *> * parameterSets READ parameterSets)
 
     Q_DISABLE_COPY(QParameter)
-    Q_DECLARE_PRIVATE(QParameter)
+    QTUML_DECLARE_PRIVATE(QParameter)
 
 public:
     explicit QParameter(QObject *parent = 0);
@@ -141,7 +141,7 @@ public:
     void removeParameterSet(const QParameterSet *parameterSet);
 
 protected:
-    QParameterPrivate *d_ptr;
+    explicit QParameter(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

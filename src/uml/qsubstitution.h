@@ -64,7 +64,7 @@ class Q_UML_EXPORT QSubstitution : public QRealization
     Q_PROPERTY(QClassifier * substitutingClassifier READ substitutingClassifier WRITE setSubstitutingClassifier)
 
     Q_DISABLE_COPY(QSubstitution)
-    Q_DECLARE_PRIVATE(QSubstitution)
+    QTUML_DECLARE_PRIVATE(QSubstitution)
 
 public:
     explicit QSubstitution(QObject *parent = 0);
@@ -77,7 +77,7 @@ public:
     void setSubstitutingClassifier(const QClassifier *substitutingClassifier);
 
 protected:
-    QSubstitutionPrivate *d_ptr;
+    explicit QSubstitution(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

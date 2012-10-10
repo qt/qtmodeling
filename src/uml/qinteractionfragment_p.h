@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qnamedelement_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,14 +57,11 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QGeneralOrdering;
-
 class QInteractionOperand;
-
 class QLifeline;
-
 class QInteraction;
 
-class QInteractionFragmentPrivate
+class QInteractionFragmentPrivate : public virtual QNamedElementPrivate
 {
 public:
     explicit QInteractionFragmentPrivate();
@@ -70,6 +71,14 @@ public:
     QInteraction *enclosingInteraction;
     QSet<QLifeline *> *covered;
     QInteractionOperand *enclosingOperand;
+
+    // Association-ends
+    void addGeneralOrdering(const QGeneralOrdering *generalOrdering);
+    void removeGeneralOrdering(const QGeneralOrdering *generalOrdering);
+    void setEnclosingInteraction(const QInteraction *enclosingInteraction);
+    void addCovered(const QLifeline *covered);
+    void removeCovered(const QLifeline *covered);
+    void setEnclosingOperand(const QInteractionOperand *enclosingOperand);
 };
 
 QT_END_NAMESPACE_QTUML

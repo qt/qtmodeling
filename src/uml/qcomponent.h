@@ -73,7 +73,7 @@ class Q_UML_EXPORT QComponent : public QClass
     Q_PROPERTY(const QSet<QPackageableElement *> * packagedElements READ packagedElements)
 
     Q_DISABLE_COPY(QComponent)
-    Q_DECLARE_PRIVATE(QComponent)
+    QTUML_DECLARE_PRIVATE(QComponent)
 
 public:
     explicit QComponent(QObject *parent = 0);
@@ -98,7 +98,7 @@ public:
     const QSet<QInterface *> *usedInterfaces(const QClassifier *classifier) const;
 
 protected:
-    QComponentPrivate *d_ptr;
+    explicit QComponent(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

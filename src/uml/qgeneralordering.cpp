@@ -55,6 +55,16 @@ QGeneralOrderingPrivate::QGeneralOrderingPrivate() :
 QGeneralOrderingPrivate::~QGeneralOrderingPrivate()
 {
 }
+  
+void QGeneralOrderingPrivate::setBefore(const QOccurrenceSpecification *before) 
+{  
+    this->before = const_cast<QOccurrenceSpecification *>(before);   
+}
+  
+void QGeneralOrderingPrivate::setAfter(const QOccurrenceSpecification *after) 
+{  
+    this->after = const_cast<QOccurrenceSpecification *>(after);   
+}
 
 /*!
     \class QGeneralOrdering
@@ -65,13 +75,20 @@ QGeneralOrderingPrivate::~QGeneralOrderingPrivate()
  */
 
 QGeneralOrdering::QGeneralOrdering(QObject *parent)
-    : QObject(parent), d_ptr(new QGeneralOrderingPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QGeneralOrderingPrivate;
+}
+
+QGeneralOrdering::QGeneralOrdering(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QGeneralOrderingPrivate;
 }
 
 QGeneralOrdering::~QGeneralOrdering()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,12 +96,14 @@ QGeneralOrdering::~QGeneralOrdering()
  */
 QOccurrenceSpecification *QGeneralOrdering::before() const
 {
-    return d_ptr->before;
+    Q_D(const QGeneralOrdering);
+    return d->before;
 }
 
 void QGeneralOrdering::setBefore(const QOccurrenceSpecification *before)
 {
-    d_ptr->before = const_cast<QOccurrenceSpecification *>(before);
+    Q_D(QGeneralOrdering);
+    d->setBefore(const_cast<QOccurrenceSpecification *>(before));
 }
 
 /*!
@@ -92,12 +111,14 @@ void QGeneralOrdering::setBefore(const QOccurrenceSpecification *before)
  */
 QOccurrenceSpecification *QGeneralOrdering::after() const
 {
-    return d_ptr->after;
+    Q_D(const QGeneralOrdering);
+    return d->after;
 }
 
 void QGeneralOrdering::setAfter(const QOccurrenceSpecification *after)
 {
-    d_ptr->after = const_cast<QOccurrenceSpecification *>(after);
+    Q_D(QGeneralOrdering);
+    d->setAfter(const_cast<QOccurrenceSpecification *>(after));
 }
 
 #include "moc_qgeneralordering.cpp"

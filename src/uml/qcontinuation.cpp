@@ -54,6 +54,11 @@ QContinuationPrivate::~QContinuationPrivate()
 {
 }
 
+void QContinuationPrivate::setSetting(bool setting)
+{
+    this->setting = setting;
+}
+
 /*!
     \class QContinuation
 
@@ -63,13 +68,20 @@ QContinuationPrivate::~QContinuationPrivate()
  */
 
 QContinuation::QContinuation(QObject *parent)
-    : QObject(parent), d_ptr(new QContinuationPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QContinuationPrivate;
+}
+
+QContinuation::QContinuation(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QContinuationPrivate;
 }
 
 QContinuation::~QContinuation()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -77,12 +89,14 @@ QContinuation::~QContinuation()
  */
 bool QContinuation::setting() const
 {
-    return d_ptr->setting;
+    Q_D(const QContinuation);
+    return d->setting;
 }
 
 void QContinuation::setSetting(bool setting)
 {
-    d_ptr->setting = setting;
+    Q_D(QContinuation);
+    d->setSetting(setting);
 }
 
 #include "moc_qcontinuation.cpp"

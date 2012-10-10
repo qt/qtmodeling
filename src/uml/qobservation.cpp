@@ -62,13 +62,12 @@ QObservationPrivate::~QObservationPrivate()
  */
 
 QObservation::QObservation()
-    : d_ptr(new QObservationPrivate)
 {
+    d_umlptr = new QObservationPrivate;
 }
 
 QObservation::~QObservation()
 {
-    delete d_ptr;
 }
 
 QT_END_NAMESPACE_QTUML

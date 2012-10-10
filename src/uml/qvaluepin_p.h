@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qinputpin_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,13 +55,16 @@ QT_MODULE(QtUml)
 
 class QValueSpecification;
 
-class QValuePinPrivate
+class QValuePinPrivate : public QInputPinPrivate
 {
 public:
     explicit QValuePinPrivate();
     virtual ~QValuePinPrivate();
 
     QValueSpecification *value;
+
+    // Association-ends
+    void setValue(const QValueSpecification *value);
 };
 
 QT_END_NAMESPACE_QTUML

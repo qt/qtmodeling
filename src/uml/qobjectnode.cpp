@@ -63,6 +63,36 @@ QObjectNodePrivate::~QObjectNodePrivate()
     delete inState;
 }
 
+void QObjectNodePrivate::setControlType(bool isControlType)
+{
+    this->isControlType = isControlType;
+}
+
+void QObjectNodePrivate::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
+{
+    this->ordering = ordering;
+}
+  
+void QObjectNodePrivate::setUpperBound(const QValueSpecification *upperBound) 
+{  
+    this->upperBound = const_cast<QValueSpecification *>(upperBound);   
+}
+  
+void QObjectNodePrivate::setSelection(const QBehavior *selection) 
+{  
+    this->selection = const_cast<QBehavior *>(selection);   
+}
+  
+void QObjectNodePrivate::addInState(const QState *inState) 
+{   
+    this->inState->insert(const_cast<QState *>(inState));  
+}
+ 
+void QObjectNodePrivate::removeInState(const QState *inState) 
+{    
+    this->inState->remove(const_cast<QState *>(inState)); 
+}
+
 /*!
     \class QObjectNode
 
@@ -72,13 +102,12 @@ QObjectNodePrivate::~QObjectNodePrivate()
  */
 
 QObjectNode::QObjectNode()
-    : d_ptr(new QObjectNodePrivate)
 {
+    d_umlptr = new QObjectNodePrivate;
 }
 
 QObjectNode::~QObjectNode()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -86,12 +115,14 @@ QObjectNode::~QObjectNode()
  */
 bool QObjectNode::isControlType() const
 {
-    return d_ptr->isControlType;
+    Q_D(const QObjectNode);
+    return d->isControlType;
 }
 
 void QObjectNode::setControlType(bool isControlType)
 {
-    d_ptr->isControlType = isControlType;
+    Q_D(QObjectNode);
+    d->setControlType(isControlType);
 }
 
 /*!
@@ -99,12 +130,14 @@ void QObjectNode::setControlType(bool isControlType)
  */
 QtUml::ObjectNodeOrderingKind QObjectNode::ordering() const
 {
-    return d_ptr->ordering;
+    Q_D(const QObjectNode);
+    return d->ordering;
 }
 
 void QObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
-    d_ptr->ordering = ordering;
+    Q_D(QObjectNode);
+    d->setOrdering(ordering);
 }
 
 /*!
@@ -112,12 +145,14 @@ void QObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
  */
 QValueSpecification *QObjectNode::upperBound() const
 {
-    return d_ptr->upperBound;
+    Q_D(const QObjectNode);
+    return d->upperBound;
 }
 
 void QObjectNode::setUpperBound(const QValueSpecification *upperBound)
 {
-    d_ptr->upperBound = const_cast<QValueSpecification *>(upperBound);
+    Q_D(QObjectNode);
+    d->setUpperBound(const_cast<QValueSpecification *>(upperBound));
 }
 
 /*!
@@ -125,12 +160,14 @@ void QObjectNode::setUpperBound(const QValueSpecification *upperBound)
  */
 QBehavior *QObjectNode::selection() const
 {
-    return d_ptr->selection;
+    Q_D(const QObjectNode);
+    return d->selection;
 }
 
 void QObjectNode::setSelection(const QBehavior *selection)
 {
-    d_ptr->selection = const_cast<QBehavior *>(selection);
+    Q_D(QObjectNode);
+    d->setSelection(const_cast<QBehavior *>(selection));
 }
 
 /*!
@@ -138,17 +175,20 @@ void QObjectNode::setSelection(const QBehavior *selection)
  */
 const QSet<QState *> *QObjectNode::inState() const
 {
-    return d_ptr->inState;
+    Q_D(const QObjectNode);
+    return d->inState;
 }
 
 void QObjectNode::addInState(const QState *inState)
 {
-    d_ptr->inState->insert(const_cast<QState *>(inState));
+    Q_D(QObjectNode);
+    d->addInState(const_cast<QState *>(inState));
 }
 
 void QObjectNode::removeInState(const QState *inState)
 {
-    d_ptr->inState->remove(const_cast<QState *>(inState));
+    Q_D(QObjectNode);
+    d->removeInState(const_cast<QState *>(inState));
 }
 
 QT_END_NAMESPACE_QTUML

@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qaction_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,10 +57,9 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QClassifier;
-
 class QInputPin;
 
-class QReclassifyObjectActionPrivate
+class QReclassifyObjectActionPrivate : public QActionPrivate
 {
 public:
     explicit QReclassifyObjectActionPrivate();
@@ -66,6 +69,16 @@ public:
     QSet<QClassifier *> *oldClassifiers;
     QInputPin *object;
     QSet<QClassifier *> *newClassifiers;
+
+    // Attributes
+    void setReplaceAll(bool isReplaceAll);
+
+    // Association-ends
+    void addOldClassifier(const QClassifier *oldClassifier);
+    void removeOldClassifier(const QClassifier *oldClassifier);
+    void setObject(const QInputPin *object);
+    void addNewClassifier(const QClassifier *newClassifier);
+    void removeNewClassifier(const QClassifier *newClassifier);
 };
 
 QT_END_NAMESPACE_QTUML

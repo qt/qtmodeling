@@ -62,13 +62,12 @@ QMessageEventPrivate::~QMessageEventPrivate()
  */
 
 QMessageEvent::QMessageEvent()
-    : d_ptr(new QMessageEventPrivate)
 {
+    d_umlptr = new QMessageEventPrivate;
 }
 
 QMessageEvent::~QMessageEvent()
 {
-    delete d_ptr;
 }
 
 QT_END_NAMESPACE_QTUML

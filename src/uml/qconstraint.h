@@ -90,7 +90,7 @@ class Q_UML_EXPORT QConstraint : public QObject, public QPackageableElement
     Q_PROPERTY(const QList<QElement *> * constrainedElements READ constrainedElements)
 
     Q_DISABLE_COPY(QConstraint)
-    Q_DECLARE_PRIVATE(QConstraint)
+    QTUML_DECLARE_PRIVATE(QConstraint)
 
 public:
     explicit QConstraint(QObject *parent = 0);
@@ -106,7 +106,7 @@ public:
     void removeConstrainedElement(const QElement *constrainedElement);
 
 protected:
-    QConstraintPrivate *d_ptr;
+    explicit QConstraint(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qredefinableelement_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,13 +55,16 @@ QT_MODULE(QtUml)
 
 class QUseCase;
 
-class QExtensionPointPrivate
+class QExtensionPointPrivate : public QRedefinableElementPrivate
 {
 public:
     explicit QExtensionPointPrivate();
     virtual ~QExtensionPointPrivate();
 
     QUseCase *useCase;
+
+    // Association-ends
+    void setUseCase(const QUseCase *useCase);
 };
 
 QT_END_NAMESPACE_QTUML

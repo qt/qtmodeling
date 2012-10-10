@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qbehavior_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,18 +57,13 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QStructuredActivityNode;
-
 class QVariable;
-
 class QActivityPartition;
-
 class QActivityGroup;
-
 class QActivityEdge;
-
 class QActivityNode;
 
-class QActivityPrivate
+class QActivityPrivate : public QBehaviorPrivate
 {
 public:
     explicit QActivityPrivate();
@@ -78,6 +77,24 @@ public:
     QSet<QStructuredActivityNode *> *structuredNodes;
     QSet<QActivityGroup *> *groups;
     QSet<QActivityEdge *> *edges;
+
+    // Attributes
+    void setReadOnly(bool isReadOnly);
+    void setSingleExecution(bool isSingleExecution);
+
+    // Association-ends
+    void addPartition(const QActivityPartition *partition);
+    void removePartition(const QActivityPartition *partition);
+    void addNode(const QActivityNode *node);
+    void removeNode(const QActivityNode *node);
+    void addVariable(const QVariable *variable);
+    void removeVariable(const QVariable *variable);
+    void addStructuredNode(const QStructuredActivityNode *structuredNode);
+    void removeStructuredNode(const QStructuredActivityNode *structuredNode);
+    void addGroup(const QActivityGroup *group);
+    void removeGroup(const QActivityGroup *group);
+    void addEdge(const QActivityEdge *edge);
+    void removeEdge(const QActivityEdge *edge);
 };
 
 QT_END_NAMESPACE_QTUML

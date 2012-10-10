@@ -62,13 +62,20 @@ QOutputPinPrivate::~QOutputPinPrivate()
  */
 
 QOutputPin::QOutputPin(QObject *parent)
-    : QObject(parent), d_ptr(new QOutputPinPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QOutputPinPrivate;
+}
+
+QOutputPin::QOutputPin(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QOutputPinPrivate;
 }
 
 QOutputPin::~QOutputPin()
 {
-    delete d_ptr;
 }
 
 #include "moc_qoutputpin.cpp"

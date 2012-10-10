@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qelement_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -52,13 +56,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QRelationshipPrivate
+
+class QRelationshipPrivate : public virtual QElementPrivate
 {
 public:
     explicit QRelationshipPrivate();
     virtual ~QRelationshipPrivate();
 
     QSet<QElement *> *relatedElements;
+
+    // Association-ends
+    void addRelatedElement(const QElement *relatedElement);
+    void removeRelatedElement(const QElement *relatedElement);
 };
 
 QT_END_NAMESPACE_QTUML

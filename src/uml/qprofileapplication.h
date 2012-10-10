@@ -79,7 +79,7 @@ class Q_UML_EXPORT QProfileApplication : public QObject, public QDirectedRelatio
     Q_PROPERTY(QProfile * appliedProfile READ appliedProfile WRITE setAppliedProfile)
 
     Q_DISABLE_COPY(QProfileApplication)
-    Q_DECLARE_PRIVATE(QProfileApplication)
+    QTUML_DECLARE_PRIVATE(QProfileApplication)
 
 public:
     explicit QProfileApplication(QObject *parent = 0);
@@ -96,7 +96,7 @@ public:
     void setAppliedProfile(const QProfile *appliedProfile);
 
 protected:
-    QProfileApplicationPrivate *d_ptr;
+    explicit QProfileApplication(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

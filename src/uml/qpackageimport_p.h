@@ -46,6 +46,10 @@
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
 
+// Base class includes
+
+#include "qdirectedrelationship_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -53,10 +57,9 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QPackage;
-
 class QNamespace;
 
-class QPackageImportPrivate
+class QPackageImportPrivate : public QDirectedRelationshipPrivate
 {
 public:
     explicit QPackageImportPrivate();
@@ -65,6 +68,13 @@ public:
     QtUml::VisibilityKind visibility;
     QNamespace *importingNamespace;
     QPackage *importedPackage;
+
+    // Attributes
+    void setVisibility(QtUml::VisibilityKind visibility);
+
+    // Association-ends
+    void setImportingNamespace(const QNamespace *importingNamespace);
+    void setImportedPackage(const QPackage *importedPackage);
 };
 
 QT_END_NAMESPACE_QTUML

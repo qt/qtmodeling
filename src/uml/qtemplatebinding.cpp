@@ -63,6 +63,32 @@ QTemplateBindingPrivate::~QTemplateBindingPrivate()
 {
     delete parameterSubstitutions;
 }
+  
+void QTemplateBindingPrivate::setSignature(const QTemplateSignature *signature) 
+{  
+    this->signature = const_cast<QTemplateSignature *>(signature);   
+}
+  
+void QTemplateBindingPrivate::setBoundElement(const QTemplateableElement *boundElement) 
+{  
+    this->boundElement = const_cast<QTemplateableElement *>(boundElement);   
+}
+  
+void QTemplateBindingPrivate::addParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution) 
+{   
+    this->parameterSubstitutions->insert(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedElement(parameterSubstitution); 
+}
+ 
+void QTemplateBindingPrivate::removeParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution) 
+{    
+    this->parameterSubstitutions->remove(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(parameterSubstitution);
+}
 
 /*!
     \class QTemplateBinding
@@ -73,13 +99,20 @@ QTemplateBindingPrivate::~QTemplateBindingPrivate()
  */
 
 QTemplateBinding::QTemplateBinding(QObject *parent)
-    : QObject(parent), d_ptr(new QTemplateBindingPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QTemplateBindingPrivate;
+}
+
+QTemplateBinding::QTemplateBinding(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QTemplateBindingPrivate;
 }
 
 QTemplateBinding::~QTemplateBinding()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -87,12 +120,14 @@ QTemplateBinding::~QTemplateBinding()
  */
 QTemplateSignature *QTemplateBinding::signature() const
 {
-    return d_ptr->signature;
+    Q_D(const QTemplateBinding);
+    return d->signature;
 }
 
 void QTemplateBinding::setSignature(const QTemplateSignature *signature)
 {
-    d_ptr->signature = const_cast<QTemplateSignature *>(signature);
+    Q_D(QTemplateBinding);
+    d->setSignature(const_cast<QTemplateSignature *>(signature));
 }
 
 /*!
@@ -100,12 +135,14 @@ void QTemplateBinding::setSignature(const QTemplateSignature *signature)
  */
 QTemplateableElement *QTemplateBinding::boundElement() const
 {
-    return d_ptr->boundElement;
+    Q_D(const QTemplateBinding);
+    return d->boundElement;
 }
 
 void QTemplateBinding::setBoundElement(const QTemplateableElement *boundElement)
 {
-    d_ptr->boundElement = const_cast<QTemplateableElement *>(boundElement);
+    Q_D(QTemplateBinding);
+    d->setBoundElement(const_cast<QTemplateableElement *>(boundElement));
 }
 
 /*!
@@ -113,17 +150,20 @@ void QTemplateBinding::setBoundElement(const QTemplateableElement *boundElement)
  */
 const QSet<QTemplateParameterSubstitution *> *QTemplateBinding::parameterSubstitutions() const
 {
-    return d_ptr->parameterSubstitutions;
+    Q_D(const QTemplateBinding);
+    return d->parameterSubstitutions;
 }
 
 void QTemplateBinding::addParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution)
 {
-    d_ptr->parameterSubstitutions->insert(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution));
+    Q_D(QTemplateBinding);
+    d->addParameterSubstitution(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution));
 }
 
 void QTemplateBinding::removeParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution)
 {
-    d_ptr->parameterSubstitutions->remove(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution));
+    Q_D(QTemplateBinding);
+    d->removeParameterSubstitution(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution));
 }
 
 #include "moc_qtemplatebinding.cpp"

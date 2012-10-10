@@ -46,6 +46,10 @@
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
 
+// Base class includes
+
+#include "qelement_p.h"
+
 // Qt includes
 #include <QtCore/QString>
 #include <QtCore/QList>
@@ -58,14 +62,11 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QPackage;
-
 class QNamespace;
-
 class QDependency;
-
 class QStringExpression;
 
-class QNamedElementPrivate
+class QNamedElementPrivate : public virtual QElementPrivate
 {
 public:
     explicit QNamedElementPrivate();
@@ -76,6 +77,17 @@ public:
     QStringExpression *nameExpression;
     QNamespace *namespace_;
     QSet<QDependency *> *clientDependencies;
+
+    // Attributes
+    void setName(QString name);
+    void setVisibility(QtUml::VisibilityKind visibility);
+    void setQualifiedName(QString qualifiedName);
+
+    // Association-ends
+    void setNameExpression(const QStringExpression *nameExpression);
+    void setNamespace_(const QNamespace *namespace_);
+    void addClientDependency(const QDependency *clientDependency);
+    void removeClientDependency(const QDependency *clientDependency);
 };
 
 QT_END_NAMESPACE_QTUML

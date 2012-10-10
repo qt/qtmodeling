@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qaction_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -50,12 +54,10 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QInputPin;
-
 class QProperty;
-
 class QOutputPin;
 
-class QReadLinkObjectEndQualifierActionPrivate
+class QReadLinkObjectEndQualifierActionPrivate : public QActionPrivate
 {
 public:
     explicit QReadLinkObjectEndQualifierActionPrivate();
@@ -64,6 +66,11 @@ public:
     QOutputPin *result;
     QInputPin *object;
     QProperty *qualifier;
+
+    // Association-ends
+    void setResult(const QOutputPin *result);
+    void setObject(const QInputPin *object);
+    void setQualifier(const QProperty *qualifier);
 };
 
 QT_END_NAMESPACE_QTUML

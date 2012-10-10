@@ -62,13 +62,20 @@ QForkNodePrivate::~QForkNodePrivate()
  */
 
 QForkNode::QForkNode(QObject *parent)
-    : QObject(parent), d_ptr(new QForkNodePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QForkNodePrivate;
+}
+
+QForkNode::QForkNode(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QForkNodePrivate;
 }
 
 QForkNode::~QForkNode()
 {
-    delete d_ptr;
 }
 
 #include "moc_qforknode.cpp"

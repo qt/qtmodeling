@@ -59,14 +59,14 @@ class Q_UML_EXPORT QFinalState : public QState
     Q_OBJECT
 
     Q_DISABLE_COPY(QFinalState)
-    Q_DECLARE_PRIVATE(QFinalState)
+    QTUML_DECLARE_PRIVATE(QFinalState)
 
 public:
     explicit QFinalState(QObject *parent = 0);
     virtual ~QFinalState();
 
 protected:
-    QFinalStatePrivate *d_ptr;
+    explicit QFinalState(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

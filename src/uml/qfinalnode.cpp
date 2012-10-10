@@ -62,13 +62,12 @@ QFinalNodePrivate::~QFinalNodePrivate()
  */
 
 QFinalNode::QFinalNode()
-    : d_ptr(new QFinalNodePrivate)
 {
+    d_umlptr = new QFinalNodePrivate;
 }
 
 QFinalNode::~QFinalNode()
 {
-    delete d_ptr;
 }
 
 QT_END_NAMESPACE_QTUML

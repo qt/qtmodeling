@@ -43,6 +43,12 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qbehavior_p.h"
+
+#include "qinteractionfragment_p.h"
+
 // Qt includes
 #include <QtCore/QList>
 #include <QtCore/QSet>
@@ -54,14 +60,11 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QMessage;
-
 class QLifeline;
-
 class QAction;
-
 class QGate;
 
-class QInteractionPrivate
+class QInteractionPrivate : public QBehaviorPrivate, public QInteractionFragmentPrivate
 {
 public:
     explicit QInteractionPrivate();
@@ -72,6 +75,18 @@ public:
     QSet<QGate *> *formalGates;
     QList<QInteractionFragment *> *fragments;
     QSet<QLifeline *> *lifelines;
+
+    // Association-ends
+    void addAction(const QAction *action);
+    void removeAction(const QAction *action);
+    void addMessage(const QMessage *message);
+    void removeMessage(const QMessage *message);
+    void addFormalGate(const QGate *formalGate);
+    void removeFormalGate(const QGate *formalGate);
+    void addFragment(const QInteractionFragment *fragment);
+    void removeFragment(const QInteractionFragment *fragment);
+    void addLifeline(const QLifeline *lifeline);
+    void removeLifeline(const QLifeline *lifeline);
 };
 
 QT_END_NAMESPACE_QTUML

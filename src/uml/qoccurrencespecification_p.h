@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qinteractionfragment_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,10 +57,9 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QLifeline;
-
 class QGeneralOrdering;
 
-class QOccurrenceSpecificationPrivate
+class QOccurrenceSpecificationPrivate : public QInteractionFragmentPrivate
 {
 public:
     explicit QOccurrenceSpecificationPrivate();
@@ -65,6 +68,13 @@ public:
     QLifeline *covered;
     QSet<QGeneralOrdering *> *toAfter;
     QSet<QGeneralOrdering *> *toBefore;
+
+    // Association-ends
+    void setCovered(const QLifeline *covered);
+    void addToAfter(const QGeneralOrdering *toAfter);
+    void removeToAfter(const QGeneralOrdering *toAfter);
+    void addToBefore(const QGeneralOrdering *toBefore);
+    void removeToBefore(const QGeneralOrdering *toBefore);
 };
 
 QT_END_NAMESPACE_QTUML

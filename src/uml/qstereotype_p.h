@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qclass_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,16 +57,20 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QImage;
-
 class QProfile;
 
-class QStereotypePrivate
+class QStereotypePrivate : public QClassPrivate
 {
 public:
     explicit QStereotypePrivate();
     virtual ~QStereotypePrivate();
 
     QSet<QImage *> *icons;
+
+    // Association-ends
+    void addIcon(const QImage *icon);
+    void removeIcon(const QImage *icon);
+    void setProfile(const QProfile *profile);
 };
 
 QT_END_NAMESPACE_QTUML

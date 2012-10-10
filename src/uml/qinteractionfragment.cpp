@@ -65,6 +65,42 @@ QInteractionFragmentPrivate::~QInteractionFragmentPrivate()
     delete generalOrderings;
     delete covered;
 }
+  
+void QInteractionFragmentPrivate::addGeneralOrdering(const QGeneralOrdering *generalOrdering) 
+{   
+    this->generalOrderings->insert(const_cast<QGeneralOrdering *>(generalOrdering)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedElement(generalOrdering); 
+}
+ 
+void QInteractionFragmentPrivate::removeGeneralOrdering(const QGeneralOrdering *generalOrdering) 
+{    
+    this->generalOrderings->remove(const_cast<QGeneralOrdering *>(generalOrdering)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(generalOrdering);
+}
+  
+void QInteractionFragmentPrivate::setEnclosingInteraction(const QInteraction *enclosingInteraction) 
+{  
+    this->enclosingInteraction = const_cast<QInteraction *>(enclosingInteraction);   
+}
+  
+void QInteractionFragmentPrivate::addCovered(const QLifeline *covered) 
+{   
+    this->covered->insert(const_cast<QLifeline *>(covered));  
+}
+ 
+void QInteractionFragmentPrivate::removeCovered(const QLifeline *covered) 
+{    
+    this->covered->remove(const_cast<QLifeline *>(covered)); 
+}
+  
+void QInteractionFragmentPrivate::setEnclosingOperand(const QInteractionOperand *enclosingOperand) 
+{  
+    this->enclosingOperand = const_cast<QInteractionOperand *>(enclosingOperand);   
+}
 
 /*!
     \class QInteractionFragment
@@ -75,13 +111,12 @@ QInteractionFragmentPrivate::~QInteractionFragmentPrivate()
  */
 
 QInteractionFragment::QInteractionFragment()
-    : d_ptr(new QInteractionFragmentPrivate)
 {
+    d_umlptr = new QInteractionFragmentPrivate;
 }
 
 QInteractionFragment::~QInteractionFragment()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -89,17 +124,20 @@ QInteractionFragment::~QInteractionFragment()
  */
 const QSet<QGeneralOrdering *> *QInteractionFragment::generalOrderings() const
 {
-    return d_ptr->generalOrderings;
+    Q_D(const QInteractionFragment);
+    return d->generalOrderings;
 }
 
 void QInteractionFragment::addGeneralOrdering(const QGeneralOrdering *generalOrdering)
 {
-    d_ptr->generalOrderings->insert(const_cast<QGeneralOrdering *>(generalOrdering));
+    Q_D(QInteractionFragment);
+    d->addGeneralOrdering(const_cast<QGeneralOrdering *>(generalOrdering));
 }
 
 void QInteractionFragment::removeGeneralOrdering(const QGeneralOrdering *generalOrdering)
 {
-    d_ptr->generalOrderings->remove(const_cast<QGeneralOrdering *>(generalOrdering));
+    Q_D(QInteractionFragment);
+    d->removeGeneralOrdering(const_cast<QGeneralOrdering *>(generalOrdering));
 }
 
 /*!
@@ -107,12 +145,14 @@ void QInteractionFragment::removeGeneralOrdering(const QGeneralOrdering *general
  */
 QInteraction *QInteractionFragment::enclosingInteraction() const
 {
-    return d_ptr->enclosingInteraction;
+    Q_D(const QInteractionFragment);
+    return d->enclosingInteraction;
 }
 
 void QInteractionFragment::setEnclosingInteraction(const QInteraction *enclosingInteraction)
 {
-    d_ptr->enclosingInteraction = const_cast<QInteraction *>(enclosingInteraction);
+    Q_D(QInteractionFragment);
+    d->setEnclosingInteraction(const_cast<QInteraction *>(enclosingInteraction));
 }
 
 /*!
@@ -120,17 +160,20 @@ void QInteractionFragment::setEnclosingInteraction(const QInteraction *enclosing
  */
 const QSet<QLifeline *> *QInteractionFragment::covered() const
 {
-    return d_ptr->covered;
+    Q_D(const QInteractionFragment);
+    return d->covered;
 }
 
 void QInteractionFragment::addCovered(const QLifeline *covered)
 {
-    d_ptr->covered->insert(const_cast<QLifeline *>(covered));
+    Q_D(QInteractionFragment);
+    d->addCovered(const_cast<QLifeline *>(covered));
 }
 
 void QInteractionFragment::removeCovered(const QLifeline *covered)
 {
-    d_ptr->covered->remove(const_cast<QLifeline *>(covered));
+    Q_D(QInteractionFragment);
+    d->removeCovered(const_cast<QLifeline *>(covered));
 }
 
 /*!
@@ -138,12 +181,14 @@ void QInteractionFragment::removeCovered(const QLifeline *covered)
  */
 QInteractionOperand *QInteractionFragment::enclosingOperand() const
 {
-    return d_ptr->enclosingOperand;
+    Q_D(const QInteractionFragment);
+    return d->enclosingOperand;
 }
 
 void QInteractionFragment::setEnclosingOperand(const QInteractionOperand *enclosingOperand)
 {
-    d_ptr->enclosingOperand = const_cast<QInteractionOperand *>(enclosingOperand);
+    Q_D(QInteractionFragment);
+    d->setEnclosingOperand(const_cast<QInteractionOperand *>(enclosingOperand));
 }
 
 QT_END_NAMESPACE_QTUML

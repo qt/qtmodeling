@@ -46,6 +46,10 @@
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
 
+// Base class includes
+
+#include "qinteractionfragment_p.h"
+
 // Qt includes
 #include <QtCore/QList>
 #include <QtCore/QSet>
@@ -57,10 +61,9 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QGate;
-
 class QInteractionOperand;
 
-class QCombinedFragmentPrivate
+class QCombinedFragmentPrivate : public QInteractionFragmentPrivate
 {
 public:
     explicit QCombinedFragmentPrivate();
@@ -69,6 +72,15 @@ public:
     QtUml::InteractionOperatorKind interactionOperator;
     QSet<QGate *> *cfragmentGates;
     QList<QInteractionOperand *> *operands;
+
+    // Attributes
+    void setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator);
+
+    // Association-ends
+    void addCfragmentGate(const QGate *cfragmentGate);
+    void removeCfragmentGate(const QGate *cfragmentGate);
+    void addOperand(const QInteractionOperand *operand);
+    void removeOperand(const QInteractionOperand *operand);
 };
 
 QT_END_NAMESPACE_QTUML

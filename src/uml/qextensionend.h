@@ -64,7 +64,7 @@ class Q_UML_EXPORT QExtensionEnd : public QProperty
     Q_PROPERTY(QStereotype * type READ type WRITE setType)
 
     Q_DISABLE_COPY(QExtensionEnd)
-    Q_DECLARE_PRIVATE(QExtensionEnd)
+    QTUML_DECLARE_PRIVATE(QExtensionEnd)
 
 public:
     explicit QExtensionEnd(QObject *parent = 0);
@@ -82,7 +82,7 @@ public:
     qint32 lowerBound() const;
 
 protected:
-    QExtensionEndPrivate *d_ptr;
+    explicit QExtensionEnd(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

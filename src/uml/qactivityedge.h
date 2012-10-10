@@ -67,7 +67,7 @@ class QActivityGroup;
 class Q_UML_EXPORT QActivityEdge : public QRedefinableElement
 {
     Q_DISABLE_COPY(QActivityEdge)
-    Q_DECLARE_PRIVATE(QActivityEdge)
+    QTUML_DECLARE_PRIVATE(QActivityEdge)
 
 public:
     virtual ~QActivityEdge();
@@ -97,9 +97,6 @@ public:
 
 protected:
     explicit QActivityEdge();
-
-protected:
-    QActivityEdgePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

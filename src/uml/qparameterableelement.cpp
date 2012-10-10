@@ -56,6 +56,16 @@ QParameterableElementPrivate::QParameterableElementPrivate() :
 QParameterableElementPrivate::~QParameterableElementPrivate()
 {
 }
+  
+void QParameterableElementPrivate::setOwningTemplateParameter(const QTemplateParameter *owningTemplateParameter) 
+{  
+    this->owningTemplateParameter = const_cast<QTemplateParameter *>(owningTemplateParameter);   
+}
+  
+void QParameterableElementPrivate::setTemplateParameter(const QTemplateParameter *templateParameter) 
+{  
+    this->templateParameter = const_cast<QTemplateParameter *>(templateParameter);   
+}
 
 /*!
     \class QParameterableElement
@@ -66,13 +76,12 @@ QParameterableElementPrivate::~QParameterableElementPrivate()
  */
 
 QParameterableElement::QParameterableElement()
-    : d_ptr(new QParameterableElementPrivate)
 {
+    d_umlptr = new QParameterableElementPrivate;
 }
 
 QParameterableElement::~QParameterableElement()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -80,12 +89,14 @@ QParameterableElement::~QParameterableElement()
  */
 QTemplateParameter *QParameterableElement::owningTemplateParameter() const
 {
-    return d_ptr->owningTemplateParameter;
+    Q_D(const QParameterableElement);
+    return d->owningTemplateParameter;
 }
 
 void QParameterableElement::setOwningTemplateParameter(const QTemplateParameter *owningTemplateParameter)
 {
-    d_ptr->owningTemplateParameter = const_cast<QTemplateParameter *>(owningTemplateParameter);
+    Q_D(QParameterableElement);
+    d->setOwningTemplateParameter(const_cast<QTemplateParameter *>(owningTemplateParameter));
 }
 
 /*!
@@ -93,12 +104,14 @@ void QParameterableElement::setOwningTemplateParameter(const QTemplateParameter 
  */
 QTemplateParameter *QParameterableElement::templateParameter() const
 {
-    return d_ptr->templateParameter;
+    Q_D(const QParameterableElement);
+    return d->templateParameter;
 }
 
 void QParameterableElement::setTemplateParameter(const QTemplateParameter *templateParameter)
 {
-    d_ptr->templateParameter = const_cast<QTemplateParameter *>(templateParameter);
+    Q_D(QParameterableElement);
+    d->setTemplateParameter(const_cast<QTemplateParameter *>(templateParameter));
 }
 
 /*!

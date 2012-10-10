@@ -109,7 +109,7 @@ class Q_UML_EXPORT QAcceptEventAction : public QObject, public QAction
     Q_PROPERTY(const QSet<QOutputPin *> * results READ results)
 
     Q_DISABLE_COPY(QAcceptEventAction)
-    Q_DECLARE_PRIVATE(QAcceptEventAction)
+    QTUML_DECLARE_PRIVATE(QAcceptEventAction)
 
 public:
     explicit QAcceptEventAction(QObject *parent = 0);
@@ -128,7 +128,7 @@ public:
     void removeResult(const QOutputPin *result);
 
 protected:
-    QAcceptEventActionPrivate *d_ptr;
+    explicit QAcceptEventAction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

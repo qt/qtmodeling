@@ -57,6 +57,21 @@ QTimeExpressionPrivate::~QTimeExpressionPrivate()
 {
     delete observations;
 }
+  
+void QTimeExpressionPrivate::addObservation(const QObservation *observation) 
+{   
+    this->observations->insert(const_cast<QObservation *>(observation));  
+}
+ 
+void QTimeExpressionPrivate::removeObservation(const QObservation *observation) 
+{    
+    this->observations->remove(const_cast<QObservation *>(observation)); 
+}
+  
+void QTimeExpressionPrivate::setExpr(const QValueSpecification *expr) 
+{  
+    this->expr = const_cast<QValueSpecification *>(expr);   
+}
 
 /*!
     \class QTimeExpression
@@ -67,13 +82,20 @@ QTimeExpressionPrivate::~QTimeExpressionPrivate()
  */
 
 QTimeExpression::QTimeExpression(QObject *parent)
-    : QObject(parent), d_ptr(new QTimeExpressionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QTimeExpressionPrivate;
+}
+
+QTimeExpression::QTimeExpression(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QTimeExpressionPrivate;
 }
 
 QTimeExpression::~QTimeExpression()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -81,17 +103,20 @@ QTimeExpression::~QTimeExpression()
  */
 const QSet<QObservation *> *QTimeExpression::observations() const
 {
-    return d_ptr->observations;
+    Q_D(const QTimeExpression);
+    return d->observations;
 }
 
 void QTimeExpression::addObservation(const QObservation *observation)
 {
-    d_ptr->observations->insert(const_cast<QObservation *>(observation));
+    Q_D(QTimeExpression);
+    d->addObservation(const_cast<QObservation *>(observation));
 }
 
 void QTimeExpression::removeObservation(const QObservation *observation)
 {
-    d_ptr->observations->remove(const_cast<QObservation *>(observation));
+    Q_D(QTimeExpression);
+    d->removeObservation(const_cast<QObservation *>(observation));
 }
 
 /*!
@@ -99,12 +124,14 @@ void QTimeExpression::removeObservation(const QObservation *observation)
  */
 QValueSpecification *QTimeExpression::expr() const
 {
-    return d_ptr->expr;
+    Q_D(const QTimeExpression);
+    return d->expr;
 }
 
 void QTimeExpression::setExpr(const QValueSpecification *expr)
 {
-    d_ptr->expr = const_cast<QValueSpecification *>(expr);
+    Q_D(QTimeExpression);
+    d->setExpr(const_cast<QValueSpecification *>(expr));
 }
 
 #include "moc_qtimeexpression.cpp"

@@ -60,6 +60,27 @@ QTemplateableElementPrivate::~QTemplateableElementPrivate()
 {
     delete templateBindings;
 }
+  
+void QTemplateableElementPrivate::setOwnedTemplateSignature(const QTemplateSignature *ownedTemplateSignature) 
+{  
+    this->ownedTemplateSignature = const_cast<QTemplateSignature *>(ownedTemplateSignature);   
+}
+  
+void QTemplateableElementPrivate::addTemplateBinding(const QTemplateBinding *templateBinding) 
+{   
+    this->templateBindings->insert(const_cast<QTemplateBinding *>(templateBinding)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedElement(templateBinding); 
+}
+ 
+void QTemplateableElementPrivate::removeTemplateBinding(const QTemplateBinding *templateBinding) 
+{    
+    this->templateBindings->remove(const_cast<QTemplateBinding *>(templateBinding)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(templateBinding);
+}
 
 /*!
     \class QTemplateableElement
@@ -70,13 +91,12 @@ QTemplateableElementPrivate::~QTemplateableElementPrivate()
  */
 
 QTemplateableElement::QTemplateableElement()
-    : d_ptr(new QTemplateableElementPrivate)
 {
+    d_umlptr = new QTemplateableElementPrivate;
 }
 
 QTemplateableElement::~QTemplateableElement()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -84,12 +104,14 @@ QTemplateableElement::~QTemplateableElement()
  */
 QTemplateSignature *QTemplateableElement::ownedTemplateSignature() const
 {
-    return d_ptr->ownedTemplateSignature;
+    Q_D(const QTemplateableElement);
+    return d->ownedTemplateSignature;
 }
 
 void QTemplateableElement::setOwnedTemplateSignature(const QTemplateSignature *ownedTemplateSignature)
 {
-    d_ptr->ownedTemplateSignature = const_cast<QTemplateSignature *>(ownedTemplateSignature);
+    Q_D(QTemplateableElement);
+    d->setOwnedTemplateSignature(const_cast<QTemplateSignature *>(ownedTemplateSignature));
 }
 
 /*!
@@ -97,17 +119,20 @@ void QTemplateableElement::setOwnedTemplateSignature(const QTemplateSignature *o
  */
 const QSet<QTemplateBinding *> *QTemplateableElement::templateBindings() const
 {
-    return d_ptr->templateBindings;
+    Q_D(const QTemplateableElement);
+    return d->templateBindings;
 }
 
 void QTemplateableElement::addTemplateBinding(const QTemplateBinding *templateBinding)
 {
-    d_ptr->templateBindings->insert(const_cast<QTemplateBinding *>(templateBinding));
+    Q_D(QTemplateableElement);
+    d->addTemplateBinding(const_cast<QTemplateBinding *>(templateBinding));
 }
 
 void QTemplateableElement::removeTemplateBinding(const QTemplateBinding *templateBinding)
 {
-    d_ptr->templateBindings->remove(const_cast<QTemplateBinding *>(templateBinding));
+    Q_D(QTemplateableElement);
+    d->removeTemplateBinding(const_cast<QTemplateBinding *>(templateBinding));
 }
 
 /*!

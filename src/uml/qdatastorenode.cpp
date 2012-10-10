@@ -62,13 +62,20 @@ QDataStoreNodePrivate::~QDataStoreNodePrivate()
  */
 
 QDataStoreNode::QDataStoreNode(QObject *parent)
-    : QCentralBufferNode(parent), d_ptr(new QDataStoreNodePrivate)
+    : QCentralBufferNode(false, parent)
 {
+    d_umlptr = new QDataStoreNodePrivate;
+}
+
+QDataStoreNode::QDataStoreNode(bool createPimpl, QObject *parent)
+    : QCentralBufferNode(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QDataStoreNodePrivate;
 }
 
 QDataStoreNode::~QDataStoreNode()
 {
-    delete d_ptr;
 }
 
 #include "moc_qdatastorenode.cpp"

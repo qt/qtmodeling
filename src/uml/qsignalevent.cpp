@@ -54,6 +54,11 @@ QSignalEventPrivate::QSignalEventPrivate() :
 QSignalEventPrivate::~QSignalEventPrivate()
 {
 }
+  
+void QSignalEventPrivate::setSignal(const QSignal *signal) 
+{  
+    this->signal = const_cast<QSignal *>(signal);   
+}
 
 /*!
     \class QSignalEvent
@@ -64,13 +69,20 @@ QSignalEventPrivate::~QSignalEventPrivate()
  */
 
 QSignalEvent::QSignalEvent(QObject *parent)
-    : QObject(parent), d_ptr(new QSignalEventPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QSignalEventPrivate;
+}
+
+QSignalEvent::QSignalEvent(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QSignalEventPrivate;
 }
 
 QSignalEvent::~QSignalEvent()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -78,12 +90,14 @@ QSignalEvent::~QSignalEvent()
  */
 QSignal *QSignalEvent::signal() const
 {
-    return d_ptr->signal;
+    Q_D(const QSignalEvent);
+    return d->signal;
 }
 
 void QSignalEvent::setSignal(const QSignal *signal)
 {
-    d_ptr->signal = const_cast<QSignal *>(signal);
+    Q_D(QSignalEvent);
+    d->setSignal(const_cast<QSignal *>(signal));
 }
 
 #include "moc_qsignalevent.cpp"

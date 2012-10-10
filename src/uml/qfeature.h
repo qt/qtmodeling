@@ -61,7 +61,7 @@ class QClassifier;
 class Q_UML_EXPORT QFeature : public QRedefinableElement
 {
     Q_DISABLE_COPY(QFeature)
-    Q_DECLARE_PRIVATE(QFeature)
+    QTUML_DECLARE_PRIVATE(QFeature)
 
 public:
     virtual ~QFeature();
@@ -75,9 +75,6 @@ public:
 
 protected:
     explicit QFeature();
-
-protected:
-    QFeaturePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

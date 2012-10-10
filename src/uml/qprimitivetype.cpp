@@ -62,13 +62,20 @@ QPrimitiveTypePrivate::~QPrimitiveTypePrivate()
  */
 
 QPrimitiveType::QPrimitiveType(QObject *parent)
-    : QDataType(parent), d_ptr(new QPrimitiveTypePrivate)
+    : QDataType(false, parent)
 {
+    d_umlptr = new QPrimitiveTypePrivate;
+}
+
+QPrimitiveType::QPrimitiveType(bool createPimpl, QObject *parent)
+    : QDataType(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QPrimitiveTypePrivate;
 }
 
 QPrimitiveType::~QPrimitiveType()
 {
-    delete d_ptr;
 }
 
 #include "moc_qprimitivetype.cpp"

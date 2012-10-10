@@ -64,7 +64,7 @@ class Q_UML_EXPORT QLinkEndCreationData : public QLinkEndData
     Q_PROPERTY(QInputPin * insertAt READ insertAt WRITE setInsertAt)
 
     Q_DISABLE_COPY(QLinkEndCreationData)
-    Q_DECLARE_PRIVATE(QLinkEndCreationData)
+    QTUML_DECLARE_PRIVATE(QLinkEndCreationData)
 
 public:
     explicit QLinkEndCreationData(QObject *parent = 0);
@@ -79,7 +79,7 @@ public:
     void setInsertAt(const QInputPin *insertAt);
 
 protected:
-    QLinkEndCreationDataPrivate *d_ptr;
+    explicit QLinkEndCreationData(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

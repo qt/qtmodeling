@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qaction_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -50,10 +54,9 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QClassifier;
-
 class QOutputPin;
 
-class QReadExtentActionPrivate
+class QReadExtentActionPrivate : public QActionPrivate
 {
 public:
     explicit QReadExtentActionPrivate();
@@ -61,6 +64,10 @@ public:
 
     QClassifier *classifier;
     QOutputPin *result;
+
+    // Association-ends
+    void setClassifier(const QClassifier *classifier);
+    void setResult(const QOutputPin *result);
 };
 
 QT_END_NAMESPACE_QTUML

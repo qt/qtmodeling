@@ -86,7 +86,7 @@ class Q_UML_EXPORT QInterval : public QObject, public QValueSpecification
     Q_PROPERTY(QValueSpecification * max READ max WRITE setMax)
 
     Q_DISABLE_COPY(QInterval)
-    Q_DECLARE_PRIVATE(QInterval)
+    QTUML_DECLARE_PRIVATE(QInterval)
 
 public:
     explicit QInterval(QObject *parent = 0);
@@ -99,7 +99,7 @@ public:
     void setMax(const QValueSpecification *max);
 
 protected:
-    QIntervalPrivate *d_ptr;
+    explicit QInterval(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

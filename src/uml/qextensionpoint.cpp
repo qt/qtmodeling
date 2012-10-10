@@ -55,6 +55,11 @@ QExtensionPointPrivate::QExtensionPointPrivate() :
 QExtensionPointPrivate::~QExtensionPointPrivate()
 {
 }
+  
+void QExtensionPointPrivate::setUseCase(const QUseCase *useCase) 
+{  
+    this->useCase = const_cast<QUseCase *>(useCase);   
+}
 
 /*!
     \class QExtensionPoint
@@ -65,13 +70,20 @@ QExtensionPointPrivate::~QExtensionPointPrivate()
  */
 
 QExtensionPoint::QExtensionPoint(QObject *parent)
-    : QObject(parent), d_ptr(new QExtensionPointPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QExtensionPointPrivate;
+}
+
+QExtensionPoint::QExtensionPoint(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QExtensionPointPrivate;
 }
 
 QExtensionPoint::~QExtensionPoint()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,12 +91,14 @@ QExtensionPoint::~QExtensionPoint()
  */
 QUseCase *QExtensionPoint::useCase() const
 {
-    return d_ptr->useCase;
+    Q_D(const QExtensionPoint);
+    return d->useCase;
 }
 
 void QExtensionPoint::setUseCase(const QUseCase *useCase)
 {
-    d_ptr->useCase = const_cast<QUseCase *>(useCase);
+    Q_D(QExtensionPoint);
+    d->setUseCase(const_cast<QUseCase *>(useCase));
 }
 
 #include "moc_qextensionpoint.cpp"

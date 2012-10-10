@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qelement_p.h"
+
 // Qt includes
 #include <QtCore/QString>
 
@@ -52,7 +56,8 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QImagePrivate
+
+class QImagePrivate : public QElementPrivate
 {
 public:
     explicit QImagePrivate();
@@ -61,6 +66,11 @@ public:
     QString format;
     QString location;
     QString content;
+
+    // Attributes
+    void setFormat(QString format);
+    void setLocation(QString location);
+    void setContent(QString content);
 };
 
 QT_END_NAMESPACE_QTUML

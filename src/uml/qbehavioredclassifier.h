@@ -62,7 +62,7 @@ class QInterfaceRealization;
 class Q_UML_EXPORT QBehavioredClassifier : public virtual QClassifier
 {
     Q_DISABLE_COPY(QBehavioredClassifier)
-    Q_DECLARE_PRIVATE(QBehavioredClassifier)
+    QTUML_DECLARE_PRIVATE(QBehavioredClassifier)
 
 public:
     virtual ~QBehavioredClassifier();
@@ -79,9 +79,6 @@ public:
 
 protected:
     explicit QBehavioredClassifier();
-
-protected:
-    QBehavioredClassifierPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

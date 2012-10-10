@@ -43,6 +43,12 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qdirectedrelationship_p.h"
+
+#include "qnamedelement_p.h"
+
 // Qt includes
 #include <QtCore/QList>
 
@@ -53,12 +59,10 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QConstraint;
-
 class QUseCase;
-
 class QExtensionPoint;
 
-class QExtendPrivate
+class QExtendPrivate : public QDirectedRelationshipPrivate, public QNamedElementPrivate
 {
 public:
     explicit QExtendPrivate();
@@ -68,6 +72,13 @@ public:
     QUseCase *extension;
     QList<QExtensionPoint *> *extensionLocations;
     QConstraint *condition;
+
+    // Association-ends
+    void setExtendedCase(const QUseCase *extendedCase);
+    void setExtension(const QUseCase *extension);
+    void addExtensionLocation(const QExtensionPoint *extensionLocation);
+    void removeExtensionLocation(const QExtensionPoint *extensionLocation);
+    void setCondition(const QConstraint *condition);
 };
 
 QT_END_NAMESPACE_QTUML

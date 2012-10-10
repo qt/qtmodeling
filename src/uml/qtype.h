@@ -58,7 +58,7 @@ class QPackage;
 class Q_UML_EXPORT QType : public QPackageableElement
 {
     Q_DISABLE_COPY(QType)
-    Q_DECLARE_PRIVATE(QType)
+    QTUML_DECLARE_PRIVATE(QType)
 
 public:
     virtual ~QType();
@@ -72,9 +72,6 @@ public:
 
 protected:
     explicit QType();
-
-protected:
-    QTypePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -54,6 +54,11 @@ QLiteralUnlimitedNaturalPrivate::~QLiteralUnlimitedNaturalPrivate()
 {
 }
 
+void QLiteralUnlimitedNaturalPrivate::setValue(qint32 value)
+{
+    this->value = value;
+}
+
 /*!
     \class QLiteralUnlimitedNatural
 
@@ -63,13 +68,20 @@ QLiteralUnlimitedNaturalPrivate::~QLiteralUnlimitedNaturalPrivate()
  */
 
 QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QObject *parent)
-    : QObject(parent), d_ptr(new QLiteralUnlimitedNaturalPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QLiteralUnlimitedNaturalPrivate;
+}
+
+QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QLiteralUnlimitedNaturalPrivate;
 }
 
 QLiteralUnlimitedNatural::~QLiteralUnlimitedNatural()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -77,12 +89,14 @@ QLiteralUnlimitedNatural::~QLiteralUnlimitedNatural()
  */
 qint32 QLiteralUnlimitedNatural::value() const
 {
-    return d_ptr->value;
+    Q_D(const QLiteralUnlimitedNatural);
+    return d->value;
 }
 
 void QLiteralUnlimitedNatural::setValue(qint32 value)
 {
-    d_ptr->value = value;
+    Q_D(QLiteralUnlimitedNatural);
+    d->setValue(value);
 }
 
 /*!

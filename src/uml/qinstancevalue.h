@@ -86,7 +86,7 @@ class Q_UML_EXPORT QInstanceValue : public QObject, public QValueSpecification
     Q_PROPERTY(QInstanceSpecification * instance READ instance WRITE setInstance)
 
     Q_DISABLE_COPY(QInstanceValue)
-    Q_DECLARE_PRIVATE(QInstanceValue)
+    QTUML_DECLARE_PRIVATE(QInstanceValue)
 
 public:
     explicit QInstanceValue(QObject *parent = 0);
@@ -97,7 +97,7 @@ public:
     void setInstance(const QInstanceSpecification *instance);
 
 protected:
-    QInstanceValuePrivate *d_ptr;
+    explicit QInstanceValue(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

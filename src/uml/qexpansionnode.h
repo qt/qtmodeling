@@ -103,7 +103,7 @@ class Q_UML_EXPORT QExpansionNode : public QObject, public QObjectNode
     Q_PROPERTY(QExpansionRegion * regionAsInput READ regionAsInput WRITE setRegionAsInput)
 
     Q_DISABLE_COPY(QExpansionNode)
-    Q_DECLARE_PRIVATE(QExpansionNode)
+    QTUML_DECLARE_PRIVATE(QExpansionNode)
 
 public:
     explicit QExpansionNode(QObject *parent = 0);
@@ -116,7 +116,7 @@ public:
     void setRegionAsInput(const QExpansionRegion *regionAsInput);
 
 protected:
-    QExpansionNodePrivate *d_ptr;
+    explicit QExpansionNode(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -66,6 +66,60 @@ QStructuredClassifierPrivate::~QStructuredClassifierPrivate()
     delete ownedAttributes;
     delete ownedConnectors;
 }
+  
+void QStructuredClassifierPrivate::addRole(const QConnectableElement *role) 
+{   
+    this->roles->insert(const_cast<QConnectableElement *>(role)); 
+
+    // Adjust subsetted property(ies)
+    addMember(role); 
+}
+ 
+void QStructuredClassifierPrivate::removeRole(const QConnectableElement *role) 
+{    
+    this->roles->remove(const_cast<QConnectableElement *>(role)); 
+
+    // Adjust subsetted property(ies)
+    removeMember(role);
+}
+  
+void QStructuredClassifierPrivate::addOwnedAttribute(const QProperty *ownedAttribute) 
+{   
+    this->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute)); 
+
+    // Adjust subsetted property(ies)
+    addAttribute(ownedAttribute);
+    addOwnedMember(ownedAttribute);
+    addRole(ownedAttribute); 
+}
+ 
+void QStructuredClassifierPrivate::removeOwnedAttribute(const QProperty *ownedAttribute) 
+{    
+    this->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute)); 
+
+    // Adjust subsetted property(ies)
+    removeAttribute(ownedAttribute);
+    removeOwnedMember(ownedAttribute);
+    removeRole(ownedAttribute);
+}
+   
+void QStructuredClassifierPrivate::addOwnedConnector(const QConnector *ownedConnector) 
+{   
+    this->ownedConnectors->insert(const_cast<QConnector *>(ownedConnector)); 
+
+    // Adjust subsetted property(ies)
+    addFeature(ownedConnector);
+    addOwnedMember(ownedConnector); 
+}
+ 
+void QStructuredClassifierPrivate::removeOwnedConnector(const QConnector *ownedConnector) 
+{    
+    this->ownedConnectors->remove(const_cast<QConnector *>(ownedConnector)); 
+
+    // Adjust subsetted property(ies)
+    removeFeature(ownedConnector);
+    removeOwnedMember(ownedConnector);
+}
 
 /*!
     \class QStructuredClassifier
@@ -76,13 +130,12 @@ QStructuredClassifierPrivate::~QStructuredClassifierPrivate()
  */
 
 QStructuredClassifier::QStructuredClassifier()
-    : d_ptr(new QStructuredClassifierPrivate)
 {
+    d_umlptr = new QStructuredClassifierPrivate;
 }
 
 QStructuredClassifier::~QStructuredClassifier()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -90,7 +143,8 @@ QStructuredClassifier::~QStructuredClassifier()
  */
 const QSet<QConnectableElement *> *QStructuredClassifier::roles() const
 {
-    return d_ptr->roles;
+    Q_D(const QStructuredClassifier);
+    return d->roles;
 }
 
 /*!
@@ -98,17 +152,20 @@ const QSet<QConnectableElement *> *QStructuredClassifier::roles() const
  */
 const QList<QProperty *> *QStructuredClassifier::ownedAttributes() const
 {
-    return d_ptr->ownedAttributes;
+    Q_D(const QStructuredClassifier);
+    return d->ownedAttributes;
 }
 
 void QStructuredClassifier::addOwnedAttribute(const QProperty *ownedAttribute)
 {
-    d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
+    Q_D(QStructuredClassifier);
+    d->addOwnedAttribute(const_cast<QProperty *>(ownedAttribute));
 }
 
 void QStructuredClassifier::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
-    d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
+    Q_D(QStructuredClassifier);
+    d->removeOwnedAttribute(const_cast<QProperty *>(ownedAttribute));
 }
 
 /*!
@@ -124,17 +181,20 @@ const QSet<QProperty *> *QStructuredClassifier::parts() const
  */
 const QSet<QConnector *> *QStructuredClassifier::ownedConnectors() const
 {
-    return d_ptr->ownedConnectors;
+    Q_D(const QStructuredClassifier);
+    return d->ownedConnectors;
 }
 
 void QStructuredClassifier::addOwnedConnector(const QConnector *ownedConnector)
 {
-    d_ptr->ownedConnectors->insert(const_cast<QConnector *>(ownedConnector));
+    Q_D(QStructuredClassifier);
+    d->addOwnedConnector(const_cast<QConnector *>(ownedConnector));
 }
 
 void QStructuredClassifier::removeOwnedConnector(const QConnector *ownedConnector)
 {
-    d_ptr->ownedConnectors->remove(const_cast<QConnector *>(ownedConnector));
+    Q_D(QStructuredClassifier);
+    d->removeOwnedConnector(const_cast<QConnector *>(ownedConnector));
 }
 
 QT_END_NAMESPACE_QTUML

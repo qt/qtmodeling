@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qclass_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,14 +57,11 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QClassifier;
-
 class QComponentRealization;
-
 class QPackageableElement;
-
 class QInterface;
 
-class QComponentPrivate
+class QComponentPrivate : public QClassPrivate
 {
 public:
     explicit QComponentPrivate();
@@ -69,6 +70,19 @@ public:
     bool isIndirectlyInstantiated;
     QSet<QComponentRealization *> *realizations;
     QSet<QPackageableElement *> *packagedElements;
+
+    // Attributes
+    void setIndirectlyInstantiated(bool isIndirectlyInstantiated);
+
+    // Association-ends
+    void addRealization(const QComponentRealization *realization);
+    void removeRealization(const QComponentRealization *realization);
+    void addRequired(const QInterface *required);
+    void removeRequired(const QInterface *required);
+    void addProvided(const QInterface *provided);
+    void removeProvided(const QInterface *provided);
+    void addPackagedElement(const QPackageableElement *packagedElement);
+    void removePackagedElement(const QPackageableElement *packagedElement);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qnamedelement_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,10 +57,9 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QDependency;
-
 class QCollaboration;
 
-class QCollaborationUsePrivate
+class QCollaborationUsePrivate : public QNamedElementPrivate
 {
 public:
     explicit QCollaborationUsePrivate();
@@ -64,6 +67,11 @@ public:
 
     QCollaboration *type;
     QSet<QDependency *> *roleBindings;
+
+    // Association-ends
+    void setType(const QCollaboration *type);
+    void addRoleBinding(const QDependency *roleBinding);
+    void removeRoleBinding(const QDependency *roleBinding);
 };
 
 QT_END_NAMESPACE_QTUML

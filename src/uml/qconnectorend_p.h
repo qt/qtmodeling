@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qmultiplicityelement_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -50,10 +54,9 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QProperty;
-
 class QConnectableElement;
 
-class QConnectorEndPrivate
+class QConnectorEndPrivate : public QMultiplicityElementPrivate
 {
 public:
     explicit QConnectorEndPrivate();
@@ -61,6 +64,11 @@ public:
 
     QConnectableElement *role;
     QProperty *partWithPort;
+
+    // Association-ends
+    void setRole(const QConnectableElement *role);
+    void setPartWithPort(const QProperty *partWithPort);
+    void setDefiningEnd(const QProperty *definingEnd);
 };
 
 QT_END_NAMESPACE_QTUML

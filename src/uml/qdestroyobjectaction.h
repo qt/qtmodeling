@@ -105,7 +105,7 @@ class Q_UML_EXPORT QDestroyObjectAction : public QObject, public QAction
     Q_PROPERTY(QInputPin * target READ target WRITE setTarget)
 
     Q_DISABLE_COPY(QDestroyObjectAction)
-    Q_DECLARE_PRIVATE(QDestroyObjectAction)
+    QTUML_DECLARE_PRIVATE(QDestroyObjectAction)
 
 public:
     explicit QDestroyObjectAction(QObject *parent = 0);
@@ -122,7 +122,7 @@ public:
     void setTarget(const QInputPin *target);
 
 protected:
-    QDestroyObjectActionPrivate *d_ptr;
+    explicit QDestroyObjectAction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

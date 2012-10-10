@@ -43,13 +43,18 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qvaluespecification_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QIntervalPrivate
+
+class QIntervalPrivate : public QValueSpecificationPrivate
 {
 public:
     explicit QIntervalPrivate();
@@ -57,6 +62,10 @@ public:
 
     QValueSpecification *min;
     QValueSpecification *max;
+
+    // Association-ends
+    void setMin(const QValueSpecification *min);
+    void setMax(const QValueSpecification *max);
 };
 
 QT_END_NAMESPACE_QTUML

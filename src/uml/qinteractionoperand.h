@@ -96,7 +96,7 @@ class Q_UML_EXPORT QInteractionOperand : public QObject, public QInteractionFrag
     Q_PROPERTY(QInteractionConstraint * guard READ guard WRITE setGuard)
 
     Q_DISABLE_COPY(QInteractionOperand)
-    Q_DECLARE_PRIVATE(QInteractionOperand)
+    QTUML_DECLARE_PRIVATE(QInteractionOperand)
 
 public:
     explicit QInteractionOperand(QObject *parent = 0);
@@ -110,7 +110,7 @@ public:
     void setGuard(const QInteractionConstraint *guard);
 
 protected:
-    QInteractionOperandPrivate *d_ptr;
+    explicit QInteractionOperand(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

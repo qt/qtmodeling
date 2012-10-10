@@ -53,6 +53,21 @@ QImagePrivate::~QImagePrivate()
 {
 }
 
+void QImagePrivate::setFormat(QString format)
+{
+    this->format = format;
+}
+
+void QImagePrivate::setLocation(QString location)
+{
+    this->location = location;
+}
+
+void QImagePrivate::setContent(QString content)
+{
+    this->content = content;
+}
+
 /*!
     \class QImage
 
@@ -62,13 +77,20 @@ QImagePrivate::~QImagePrivate()
  */
 
 QImage::QImage(QObject *parent)
-    : QObject(parent), d_ptr(new QImagePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QImagePrivate;
+}
+
+QImage::QImage(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QImagePrivate;
 }
 
 QImage::~QImage()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -76,12 +98,14 @@ QImage::~QImage()
  */
 QString QImage::format() const
 {
-    return d_ptr->format;
+    Q_D(const QImage);
+    return d->format;
 }
 
 void QImage::setFormat(QString format)
 {
-    d_ptr->format = format;
+    Q_D(QImage);
+    d->setFormat(format);
 }
 
 /*!
@@ -89,12 +113,14 @@ void QImage::setFormat(QString format)
  */
 QString QImage::location() const
 {
-    return d_ptr->location;
+    Q_D(const QImage);
+    return d->location;
 }
 
 void QImage::setLocation(QString location)
 {
-    d_ptr->location = location;
+    Q_D(QImage);
+    d->setLocation(location);
 }
 
 /*!
@@ -102,12 +128,14 @@ void QImage::setLocation(QString location)
  */
 QString QImage::content() const
 {
-    return d_ptr->content;
+    Q_D(const QImage);
+    return d->content;
 }
 
 void QImage::setContent(QString content)
 {
-    d_ptr->content = content;
+    Q_D(QImage);
+    d->setContent(content);
 }
 
 #include "moc_qimage.cpp"

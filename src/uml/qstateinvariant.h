@@ -84,7 +84,7 @@ class Q_UML_EXPORT QStateInvariant : public QObject, public QInteractionFragment
     Q_PROPERTY(QLifeline * covered READ covered WRITE setCovered)
 
     Q_DISABLE_COPY(QStateInvariant)
-    Q_DECLARE_PRIVATE(QStateInvariant)
+    QTUML_DECLARE_PRIVATE(QStateInvariant)
 
 public:
     explicit QStateInvariant(QObject *parent = 0);
@@ -97,7 +97,7 @@ public:
     void setCovered(const QLifeline *covered);
 
 protected:
-    QStateInvariantPrivate *d_ptr;
+    explicit QStateInvariant(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

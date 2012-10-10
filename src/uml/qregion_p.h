@@ -43,6 +43,12 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qredefinableelement_p.h"
+
+#include "qnamespace_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,16 +59,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QVertex;
-
 class QTransition;
-
 class QStateMachine;
-
 class QClassifier;
-
 class QState;
 
-class QRegionPrivate
+class QRegionPrivate : public QRedefinableElementPrivate, public QNamespacePrivate
 {
 public:
     explicit QRegionPrivate();
@@ -73,6 +75,16 @@ public:
     QStateMachine *stateMachine;
     QState *state;
     QSet<QVertex *> *subvertices;
+
+    // Association-ends
+    void setExtendedRegion(const QRegion *extendedRegion);
+    void addTransition(const QTransition *transition);
+    void removeTransition(const QTransition *transition);
+    void setStateMachine(const QStateMachine *stateMachine);
+    void setState(const QState *state);
+    void setRedefinitionContext(const QClassifier *redefinitionContext);
+    void addSubvertex(const QVertex *subvertex);
+    void removeSubvertex(const QVertex *subvertex);
 };
 
 QT_END_NAMESPACE_QTUML

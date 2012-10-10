@@ -69,6 +69,82 @@ QNamespacePrivate::~QNamespacePrivate()
     delete ownedRules;
     delete ownedMembers;
 }
+  
+void QNamespacePrivate::addPackageImport(const QPackageImport *packageImport) 
+{   
+    this->packageImports->insert(const_cast<QPackageImport *>(packageImport)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedElement(packageImport); 
+}
+ 
+void QNamespacePrivate::removePackageImport(const QPackageImport *packageImport) 
+{    
+    this->packageImports->remove(const_cast<QPackageImport *>(packageImport)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(packageImport);
+}
+  
+void QNamespacePrivate::addMember(const QNamedElement *member) 
+{   
+    this->members->insert(const_cast<QNamedElement *>(member));  
+}
+ 
+void QNamespacePrivate::removeMember(const QNamedElement *member) 
+{    
+    this->members->remove(const_cast<QNamedElement *>(member)); 
+}
+   
+void QNamespacePrivate::addElementImport(const QElementImport *elementImport) 
+{   
+    this->elementImports->insert(const_cast<QElementImport *>(elementImport)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedElement(elementImport); 
+}
+ 
+void QNamespacePrivate::removeElementImport(const QElementImport *elementImport) 
+{    
+    this->elementImports->remove(const_cast<QElementImport *>(elementImport)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(elementImport);
+}
+  
+void QNamespacePrivate::addOwnedRule(const QConstraint *ownedRule) 
+{   
+    this->ownedRules->insert(const_cast<QConstraint *>(ownedRule)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedMember(ownedRule); 
+}
+ 
+void QNamespacePrivate::removeOwnedRule(const QConstraint *ownedRule) 
+{    
+    this->ownedRules->remove(const_cast<QConstraint *>(ownedRule)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedMember(ownedRule);
+}
+  
+void QNamespacePrivate::addOwnedMember(const QNamedElement *ownedMember) 
+{   
+    this->ownedMembers->insert(const_cast<QNamedElement *>(ownedMember)); 
+
+    // Adjust subsetted property(ies)
+    addMember(ownedMember);
+    addOwnedElement(ownedMember); 
+}
+ 
+void QNamespacePrivate::removeOwnedMember(const QNamedElement *ownedMember) 
+{    
+    this->ownedMembers->remove(const_cast<QNamedElement *>(ownedMember)); 
+
+    // Adjust subsetted property(ies)
+    removeMember(ownedMember);
+    removeOwnedElement(ownedMember);
+}
 
 /*!
     \class QNamespace
@@ -79,13 +155,12 @@ QNamespacePrivate::~QNamespacePrivate()
  */
 
 QNamespace::QNamespace()
-    : d_ptr(new QNamespacePrivate)
 {
+    d_umlptr = new QNamespacePrivate;
 }
 
 QNamespace::~QNamespace()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -93,17 +168,20 @@ QNamespace::~QNamespace()
  */
 const QSet<QPackageImport *> *QNamespace::packageImports() const
 {
-    return d_ptr->packageImports;
+    Q_D(const QNamespace);
+    return d->packageImports;
 }
 
 void QNamespace::addPackageImport(const QPackageImport *packageImport)
 {
-    d_ptr->packageImports->insert(const_cast<QPackageImport *>(packageImport));
+    Q_D(QNamespace);
+    d->addPackageImport(const_cast<QPackageImport *>(packageImport));
 }
 
 void QNamespace::removePackageImport(const QPackageImport *packageImport)
 {
-    d_ptr->packageImports->remove(const_cast<QPackageImport *>(packageImport));
+    Q_D(QNamespace);
+    d->removePackageImport(const_cast<QPackageImport *>(packageImport));
 }
 
 /*!
@@ -111,7 +189,8 @@ void QNamespace::removePackageImport(const QPackageImport *packageImport)
  */
 const QSet<QNamedElement *> *QNamespace::members() const
 {
-    return d_ptr->members;
+    Q_D(const QNamespace);
+    return d->members;
 }
 
 /*!
@@ -127,17 +206,20 @@ const QSet<QPackageableElement *> *QNamespace::importedMembers() const
  */
 const QSet<QElementImport *> *QNamespace::elementImports() const
 {
-    return d_ptr->elementImports;
+    Q_D(const QNamespace);
+    return d->elementImports;
 }
 
 void QNamespace::addElementImport(const QElementImport *elementImport)
 {
-    d_ptr->elementImports->insert(const_cast<QElementImport *>(elementImport));
+    Q_D(QNamespace);
+    d->addElementImport(const_cast<QElementImport *>(elementImport));
 }
 
 void QNamespace::removeElementImport(const QElementImport *elementImport)
 {
-    d_ptr->elementImports->remove(const_cast<QElementImport *>(elementImport));
+    Q_D(QNamespace);
+    d->removeElementImport(const_cast<QElementImport *>(elementImport));
 }
 
 /*!
@@ -145,17 +227,20 @@ void QNamespace::removeElementImport(const QElementImport *elementImport)
  */
 const QSet<QConstraint *> *QNamespace::ownedRules() const
 {
-    return d_ptr->ownedRules;
+    Q_D(const QNamespace);
+    return d->ownedRules;
 }
 
 void QNamespace::addOwnedRule(const QConstraint *ownedRule)
 {
-    d_ptr->ownedRules->insert(const_cast<QConstraint *>(ownedRule));
+    Q_D(QNamespace);
+    d->addOwnedRule(const_cast<QConstraint *>(ownedRule));
 }
 
 void QNamespace::removeOwnedRule(const QConstraint *ownedRule)
 {
-    d_ptr->ownedRules->remove(const_cast<QConstraint *>(ownedRule));
+    Q_D(QNamespace);
+    d->removeOwnedRule(const_cast<QConstraint *>(ownedRule));
 }
 
 /*!
@@ -163,7 +248,8 @@ void QNamespace::removeOwnedRule(const QConstraint *ownedRule)
  */
 const QSet<QNamedElement *> *QNamespace::ownedMembers() const
 {
-    return d_ptr->ownedMembers;
+    Q_D(const QNamespace);
+    return d->ownedMembers;
 }
 
 /*!

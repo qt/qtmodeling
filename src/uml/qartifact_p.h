@@ -43,6 +43,12 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qdeployedartifact_p.h"
+
+#include "qclassifier_p.h"
+
 // Qt includes
 #include <QtCore/QString>
 #include <QtCore/QList>
@@ -55,12 +61,10 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QManifestation;
-
 class QProperty;
-
 class QOperation;
 
-class QArtifactPrivate
+class QArtifactPrivate : public QDeployedArtifactPrivate, public QClassifierPrivate
 {
 public:
     explicit QArtifactPrivate();
@@ -71,6 +75,19 @@ public:
     QList<QProperty *> *ownedAttributes;
     QSet<QManifestation *> *manifestations;
     QSet<QArtifact *> *nestedArtifacts;
+
+    // Attributes
+    void setFileName(QString fileName);
+
+    // Association-ends
+    void addOwnedOperation(const QOperation *ownedOperation);
+    void removeOwnedOperation(const QOperation *ownedOperation);
+    void addOwnedAttribute(const QProperty *ownedAttribute);
+    void removeOwnedAttribute(const QProperty *ownedAttribute);
+    void addManifestation(const QManifestation *manifestation);
+    void removeManifestation(const QManifestation *manifestation);
+    void addNestedArtifact(const QArtifact *nestedArtifact);
+    void removeNestedArtifact(const QArtifact *nestedArtifact);
 };
 
 QT_END_NAMESPACE_QTUML

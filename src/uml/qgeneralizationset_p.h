@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qpackageableelement_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,10 +57,9 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QGeneralization;
-
 class QClassifier;
 
-class QGeneralizationSetPrivate
+class QGeneralizationSetPrivate : public QPackageableElementPrivate
 {
 public:
     explicit QGeneralizationSetPrivate();
@@ -66,6 +69,15 @@ public:
     bool isDisjoint;
     QClassifier *powertype;
     QSet<QGeneralization *> *generalizations;
+
+    // Attributes
+    void setCovering(bool isCovering);
+    void setDisjoint(bool isDisjoint);
+
+    // Association-ends
+    void setPowertype(const QClassifier *powertype);
+    void addGeneralization(const QGeneralization *generalization);
+    void removeGeneralization(const QGeneralization *generalization);
 };
 
 QT_END_NAMESPACE_QTUML

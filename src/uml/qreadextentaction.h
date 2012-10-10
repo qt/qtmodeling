@@ -105,7 +105,7 @@ class Q_UML_EXPORT QReadExtentAction : public QObject, public QAction
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
     Q_DISABLE_COPY(QReadExtentAction)
-    Q_DECLARE_PRIVATE(QReadExtentAction)
+    QTUML_DECLARE_PRIVATE(QReadExtentAction)
 
 public:
     explicit QReadExtentAction(QObject *parent = 0);
@@ -118,7 +118,7 @@ public:
     void setResult(const QOutputPin *result);
 
 protected:
-    QReadExtentActionPrivate *d_ptr;
+    explicit QReadExtentAction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

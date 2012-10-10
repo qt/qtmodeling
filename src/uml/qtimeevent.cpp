@@ -57,6 +57,16 @@ QTimeEventPrivate::~QTimeEventPrivate()
 {
 }
 
+void QTimeEventPrivate::setRelative(bool isRelative)
+{
+    this->isRelative = isRelative;
+}
+  
+void QTimeEventPrivate::setWhen(const QTimeExpression *when) 
+{  
+    this->when = const_cast<QTimeExpression *>(when);   
+}
+
 /*!
     \class QTimeEvent
 
@@ -66,13 +76,20 @@ QTimeEventPrivate::~QTimeEventPrivate()
  */
 
 QTimeEvent::QTimeEvent(QObject *parent)
-    : QObject(parent), d_ptr(new QTimeEventPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QTimeEventPrivate;
+}
+
+QTimeEvent::QTimeEvent(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QTimeEventPrivate;
 }
 
 QTimeEvent::~QTimeEvent()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -80,12 +97,14 @@ QTimeEvent::~QTimeEvent()
  */
 bool QTimeEvent::isRelative() const
 {
-    return d_ptr->isRelative;
+    Q_D(const QTimeEvent);
+    return d->isRelative;
 }
 
 void QTimeEvent::setRelative(bool isRelative)
 {
-    d_ptr->isRelative = isRelative;
+    Q_D(QTimeEvent);
+    d->setRelative(isRelative);
 }
 
 /*!
@@ -93,12 +112,14 @@ void QTimeEvent::setRelative(bool isRelative)
  */
 QTimeExpression *QTimeEvent::when() const
 {
-    return d_ptr->when;
+    Q_D(const QTimeEvent);
+    return d->when;
 }
 
 void QTimeEvent::setWhen(const QTimeExpression *when)
 {
-    d_ptr->when = const_cast<QTimeExpression *>(when);
+    Q_D(QTimeEvent);
+    d->setWhen(const_cast<QTimeExpression *>(when));
 }
 
 #include "moc_qtimeevent.cpp"

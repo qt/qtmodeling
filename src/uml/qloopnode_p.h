@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qstructuredactivitynode_p.h"
+
 // Qt includes
 #include <QtCore/QList>
 #include <QtCore/QSet>
@@ -54,12 +58,10 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QOutputPin;
-
 class QExecutableNode;
-
 class QInputPin;
 
-class QLoopNodePrivate
+class QLoopNodePrivate : public QStructuredActivityNodePrivate
 {
 public:
     explicit QLoopNodePrivate();
@@ -74,6 +76,26 @@ public:
     QSet<QExecutableNode *> *setupParts;
     QSet<QExecutableNode *> *bodyParts;
     QSet<QExecutableNode *> *tests;
+
+    // Attributes
+    void setTestedFirst(bool isTestedFirst);
+
+    // Association-ends
+    void addLoopVariableInput(const QInputPin *loopVariableInput);
+    void removeLoopVariableInput(const QInputPin *loopVariableInput);
+    void setDecider(const QOutputPin *decider);
+    void addBodyOutput(const QOutputPin *bodyOutput);
+    void removeBodyOutput(const QOutputPin *bodyOutput);
+    void addLoopVariable(const QOutputPin *loopVariable);
+    void removeLoopVariable(const QOutputPin *loopVariable);
+    void addResult(const QOutputPin *result);
+    void removeResult(const QOutputPin *result);
+    void addSetupPart(const QExecutableNode *setupPart);
+    void removeSetupPart(const QExecutableNode *setupPart);
+    void addBodyPart(const QExecutableNode *bodyPart);
+    void removeBodyPart(const QExecutableNode *bodyPart);
+    void addTest(const QExecutableNode *test);
+    void removeTest(const QExecutableNode *test);
 };
 
 QT_END_NAMESPACE_QTUML

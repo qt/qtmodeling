@@ -88,7 +88,7 @@ class Q_UML_EXPORT QLiteralString : public QObject, public QLiteralSpecification
     Q_PROPERTY(QString value READ value WRITE setValue)
 
     Q_DISABLE_COPY(QLiteralString)
-    Q_DECLARE_PRIVATE(QLiteralString)
+    QTUML_DECLARE_PRIVATE(QLiteralString)
 
 public:
     explicit QLiteralString(QObject *parent = 0);
@@ -103,7 +103,7 @@ public:
     QString stringValue() const;
 
 protected:
-    QLiteralStringPrivate *d_ptr;
+    explicit QLiteralString(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

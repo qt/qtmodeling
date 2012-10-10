@@ -43,6 +43,12 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qencapsulatedclassifier_p.h"
+
+#include "qbehavioredclassifier_p.h"
+
 // Qt includes
 #include <QtCore/QList>
 #include <QtCore/QSet>
@@ -54,18 +60,13 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QReception;
-
 class QNamedElement;
-
 class QOperation;
-
 class QClassifier;
-
 class QExtension;
-
 class QProperty;
 
-class QClassPrivate
+class QClassPrivate : public QEncapsulatedClassifierPrivate, public QBehavioredClassifierPrivate
 {
 public:
     explicit QClassPrivate();
@@ -77,6 +78,24 @@ public:
     QSet<QReception *> *ownedReceptions;
     QList<QOperation *> *ownedOperations;
     QList<QProperty *> *ownedAttributes;
+
+    // Attributes
+    void setAbstract(bool isAbstract);
+    void setActive(bool isActive);
+
+    // Association-ends
+    void addNestedClassifier(const QClassifier *nestedClassifier);
+    void removeNestedClassifier(const QClassifier *nestedClassifier);
+    void addOwnedReception(const QReception *ownedReception);
+    void removeOwnedReception(const QReception *ownedReception);
+    void addExtension(const QExtension *extension);
+    void removeExtension(const QExtension *extension);
+    void addOwnedOperation(const QOperation *ownedOperation);
+    void removeOwnedOperation(const QOperation *ownedOperation);
+    void addOwnedAttribute(const QProperty *ownedAttribute);
+    void removeOwnedAttribute(const QProperty *ownedAttribute);
+    void addSuperClass(const QClass *superClass);
+    void removeSuperClass(const QClass *superClass);
 };
 
 QT_END_NAMESPACE_QTUML

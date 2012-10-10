@@ -55,6 +55,11 @@ QActionInputPinPrivate::QActionInputPinPrivate() :
 QActionInputPinPrivate::~QActionInputPinPrivate()
 {
 }
+  
+void QActionInputPinPrivate::setFromAction(const QAction *fromAction) 
+{  
+    this->fromAction = const_cast<QAction *>(fromAction);   
+}
 
 /*!
     \class QActionInputPin
@@ -65,13 +70,20 @@ QActionInputPinPrivate::~QActionInputPinPrivate()
  */
 
 QActionInputPin::QActionInputPin(QObject *parent)
-    : QInputPin(parent), d_ptr(new QActionInputPinPrivate)
+    : QInputPin(false, parent)
 {
+    d_umlptr = new QActionInputPinPrivate;
+}
+
+QActionInputPin::QActionInputPin(bool createPimpl, QObject *parent)
+    : QInputPin(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QActionInputPinPrivate;
 }
 
 QActionInputPin::~QActionInputPin()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,12 +91,14 @@ QActionInputPin::~QActionInputPin()
  */
 QAction *QActionInputPin::fromAction() const
 {
-    return d_ptr->fromAction;
+    Q_D(const QActionInputPin);
+    return d->fromAction;
 }
 
 void QActionInputPin::setFromAction(const QAction *fromAction)
 {
-    d_ptr->fromAction = const_cast<QAction *>(fromAction);
+    Q_D(QActionInputPin);
+    d->setFromAction(const_cast<QAction *>(fromAction));
 }
 
 #include "moc_qactioninputpin.cpp"

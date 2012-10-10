@@ -55,6 +55,21 @@ QCommentPrivate::~QCommentPrivate()
     delete annotatedElements;
 }
 
+void QCommentPrivate::setBody(QString body)
+{
+    this->body = body;
+}
+  
+void QCommentPrivate::addAnnotatedElement(const QElement *annotatedElement) 
+{   
+    this->annotatedElements->insert(const_cast<QElement *>(annotatedElement));  
+}
+ 
+void QCommentPrivate::removeAnnotatedElement(const QElement *annotatedElement) 
+{    
+    this->annotatedElements->remove(const_cast<QElement *>(annotatedElement)); 
+}
+
 /*!
     \class QComment
 
@@ -64,13 +79,20 @@ QCommentPrivate::~QCommentPrivate()
  */
 
 QComment::QComment(QObject *parent)
-    : QObject(parent), d_ptr(new QCommentPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QCommentPrivate;
+}
+
+QComment::QComment(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QCommentPrivate;
 }
 
 QComment::~QComment()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -78,12 +100,14 @@ QComment::~QComment()
  */
 QString QComment::body() const
 {
-    return d_ptr->body;
+    Q_D(const QComment);
+    return d->body;
 }
 
 void QComment::setBody(QString body)
 {
-    d_ptr->body = body;
+    Q_D(QComment);
+    d->setBody(body);
 }
 
 /*!
@@ -91,17 +115,20 @@ void QComment::setBody(QString body)
  */
 const QSet<QElement *> *QComment::annotatedElements() const
 {
-    return d_ptr->annotatedElements;
+    Q_D(const QComment);
+    return d->annotatedElements;
 }
 
 void QComment::addAnnotatedElement(const QElement *annotatedElement)
 {
-    d_ptr->annotatedElements->insert(const_cast<QElement *>(annotatedElement));
+    Q_D(QComment);
+    d->addAnnotatedElement(const_cast<QElement *>(annotatedElement));
 }
 
 void QComment::removeAnnotatedElement(const QElement *annotatedElement)
 {
-    d_ptr->annotatedElements->remove(const_cast<QElement *>(annotatedElement));
+    Q_D(QComment);
+    d->removeAnnotatedElement(const_cast<QElement *>(annotatedElement));
 }
 
 #include "moc_qcomment.cpp"

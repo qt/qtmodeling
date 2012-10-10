@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qaction_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -50,10 +54,9 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QAssociation;
-
 class QInputPin;
 
-class QClearAssociationActionPrivate
+class QClearAssociationActionPrivate : public QActionPrivate
 {
 public:
     explicit QClearAssociationActionPrivate();
@@ -61,6 +64,10 @@ public:
 
     QInputPin *object;
     QAssociation *association;
+
+    // Association-ends
+    void setObject(const QInputPin *object);
+    void setAssociation(const QAssociation *association);
 };
 
 QT_END_NAMESPACE_QTUML

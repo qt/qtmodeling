@@ -43,6 +43,14 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qtemplateableelement_p.h"
+
+#include "qbehavioralfeature_p.h"
+
+#include "qparameterableelement_p.h"
+
 // Qt includes
 #include <QtCore/QList>
 #include <QtCore/QSet>
@@ -54,22 +62,15 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QOperationTemplateParameter;
-
 class QType;
-
 class QRedefinableElement;
-
 class QParameter;
-
 class QInterface;
-
 class QConstraint;
-
 class QDataType;
-
 class QClass;
 
-class QOperationPrivate
+class QOperationPrivate : public QTemplateableElementPrivate, public QBehavioralFeaturePrivate, public QParameterableElementPrivate
 {
 public:
     explicit QOperationPrivate();
@@ -86,6 +87,31 @@ public:
     QSet<QConstraint *> *preconditions;
     QClass *class_;
     QSet<QType *> *raisedExceptions;
+
+    // Attributes
+    void setLower(qint32 lower);
+    void setQuery(bool isQuery);
+    void setUnique(bool isUnique);
+    void setUpper(qint32 upper);
+    void setOrdered(bool isOrdered);
+
+    // Association-ends
+    void addOwnedParameter(const QParameter *ownedParameter);
+    void removeOwnedParameter(const QParameter *ownedParameter);
+    void setBodyCondition(const QConstraint *bodyCondition);
+    void addRedefinedOperation(const QOperation *redefinedOperation);
+    void removeRedefinedOperation(const QOperation *redefinedOperation);
+    void addPostcondition(const QConstraint *postcondition);
+    void removePostcondition(const QConstraint *postcondition);
+    void setDatatype(const QDataType *datatype);
+    void setTemplateParameter(const QOperationTemplateParameter *templateParameter);
+    void setInterface(const QInterface *interface);
+    void setType(const QType *type);
+    void addPrecondition(const QConstraint *precondition);
+    void removePrecondition(const QConstraint *precondition);
+    void setClass_(const QClass *class_);
+    void addRaisedException(const QType *raisedException);
+    void removeRaisedException(const QType *raisedException);
 };
 
 QT_END_NAMESPACE_QTUML

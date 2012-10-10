@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qwritelinkaction_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -54,13 +58,17 @@ QT_MODULE(QtUml)
 
 class QLinkEndDestructionData;
 
-class QDestroyLinkActionPrivate
+class QDestroyLinkActionPrivate : public QWriteLinkActionPrivate
 {
 public:
     explicit QDestroyLinkActionPrivate();
     virtual ~QDestroyLinkActionPrivate();
 
     QSet<QLinkEndDestructionData *> *endData;
+
+    // Association-ends
+    void addEndData(const QLinkEndDestructionData *endData);
+    void removeEndData(const QLinkEndDestructionData *endData);
 };
 
 QT_END_NAMESPACE_QTUML

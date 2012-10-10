@@ -133,7 +133,7 @@ class Q_UML_EXPORT QUseCase : public QObject, public QBehavioredClassifier
     Q_PROPERTY(const QSet<QExtend *> * extends READ extends)
 
     Q_DISABLE_COPY(QUseCase)
-    Q_DECLARE_PRIVATE(QUseCase)
+    QTUML_DECLARE_PRIVATE(QUseCase)
 
 public:
     explicit QUseCase(QObject *parent = 0);
@@ -157,7 +157,7 @@ public:
     const QSet<QUseCase *> *allIncludedUseCases() const;
 
 protected:
-    QUseCasePrivate *d_ptr;
+    explicit QUseCase(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

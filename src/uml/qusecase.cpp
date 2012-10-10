@@ -67,6 +67,64 @@ QUseCasePrivate::~QUseCasePrivate()
     delete subjects;
     delete extends;
 }
+  
+void QUseCasePrivate::addExtensionPoint(const QExtensionPoint *extensionPoint) 
+{   
+    this->extensionPoints->insert(const_cast<QExtensionPoint *>(extensionPoint)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedMember(extensionPoint); 
+}
+ 
+void QUseCasePrivate::removeExtensionPoint(const QExtensionPoint *extensionPoint) 
+{    
+    this->extensionPoints->remove(const_cast<QExtensionPoint *>(extensionPoint)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedMember(extensionPoint);
+}
+  
+void QUseCasePrivate::addInclude(const QInclude *include) 
+{   
+    this->includes->insert(const_cast<QInclude *>(include)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedMember(include); 
+}
+ 
+void QUseCasePrivate::removeInclude(const QInclude *include) 
+{    
+    this->includes->remove(const_cast<QInclude *>(include)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedMember(include);
+}
+  
+void QUseCasePrivate::addSubject(const QClassifier *subject) 
+{   
+    this->subjects->insert(const_cast<QClassifier *>(subject));  
+}
+ 
+void QUseCasePrivate::removeSubject(const QClassifier *subject) 
+{    
+    this->subjects->remove(const_cast<QClassifier *>(subject)); 
+}
+  
+void QUseCasePrivate::addExtend(const QExtend *extend) 
+{   
+    this->extends->insert(const_cast<QExtend *>(extend)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedMember(extend); 
+}
+ 
+void QUseCasePrivate::removeExtend(const QExtend *extend) 
+{    
+    this->extends->remove(const_cast<QExtend *>(extend)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedMember(extend);
+}
 
 /*!
     \class QUseCase
@@ -77,13 +135,20 @@ QUseCasePrivate::~QUseCasePrivate()
  */
 
 QUseCase::QUseCase(QObject *parent)
-    : QObject(parent), d_ptr(new QUseCasePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QUseCasePrivate;
+}
+
+QUseCase::QUseCase(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QUseCasePrivate;
 }
 
 QUseCase::~QUseCase()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -91,17 +156,20 @@ QUseCase::~QUseCase()
  */
 const QSet<QExtensionPoint *> *QUseCase::extensionPoints() const
 {
-    return d_ptr->extensionPoints;
+    Q_D(const QUseCase);
+    return d->extensionPoints;
 }
 
 void QUseCase::addExtensionPoint(const QExtensionPoint *extensionPoint)
 {
-    d_ptr->extensionPoints->insert(const_cast<QExtensionPoint *>(extensionPoint));
+    Q_D(QUseCase);
+    d->addExtensionPoint(const_cast<QExtensionPoint *>(extensionPoint));
 }
 
 void QUseCase::removeExtensionPoint(const QExtensionPoint *extensionPoint)
 {
-    d_ptr->extensionPoints->remove(const_cast<QExtensionPoint *>(extensionPoint));
+    Q_D(QUseCase);
+    d->removeExtensionPoint(const_cast<QExtensionPoint *>(extensionPoint));
 }
 
 /*!
@@ -109,17 +177,20 @@ void QUseCase::removeExtensionPoint(const QExtensionPoint *extensionPoint)
  */
 const QSet<QInclude *> *QUseCase::includes() const
 {
-    return d_ptr->includes;
+    Q_D(const QUseCase);
+    return d->includes;
 }
 
 void QUseCase::addInclude(const QInclude *include)
 {
-    d_ptr->includes->insert(const_cast<QInclude *>(include));
+    Q_D(QUseCase);
+    d->addInclude(const_cast<QInclude *>(include));
 }
 
 void QUseCase::removeInclude(const QInclude *include)
 {
-    d_ptr->includes->remove(const_cast<QInclude *>(include));
+    Q_D(QUseCase);
+    d->removeInclude(const_cast<QInclude *>(include));
 }
 
 /*!
@@ -127,17 +198,20 @@ void QUseCase::removeInclude(const QInclude *include)
  */
 const QSet<QClassifier *> *QUseCase::subjects() const
 {
-    return d_ptr->subjects;
+    Q_D(const QUseCase);
+    return d->subjects;
 }
 
 void QUseCase::addSubject(const QClassifier *subject)
 {
-    d_ptr->subjects->insert(const_cast<QClassifier *>(subject));
+    Q_D(QUseCase);
+    d->addSubject(const_cast<QClassifier *>(subject));
 }
 
 void QUseCase::removeSubject(const QClassifier *subject)
 {
-    d_ptr->subjects->remove(const_cast<QClassifier *>(subject));
+    Q_D(QUseCase);
+    d->removeSubject(const_cast<QClassifier *>(subject));
 }
 
 /*!
@@ -145,17 +219,20 @@ void QUseCase::removeSubject(const QClassifier *subject)
  */
 const QSet<QExtend *> *QUseCase::extends() const
 {
-    return d_ptr->extends;
+    Q_D(const QUseCase);
+    return d->extends;
 }
 
 void QUseCase::addExtend(const QExtend *extend)
 {
-    d_ptr->extends->insert(const_cast<QExtend *>(extend));
+    Q_D(QUseCase);
+    d->addExtend(const_cast<QExtend *>(extend));
 }
 
 void QUseCase::removeExtend(const QExtend *extend)
 {
-    d_ptr->extends->remove(const_cast<QExtend *>(extend));
+    Q_D(QUseCase);
+    d->removeExtend(const_cast<QExtend *>(extend));
 }
 
 /*!

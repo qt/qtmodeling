@@ -63,7 +63,7 @@ class Q_UML_EXPORT QOperationTemplateParameter : public QTemplateParameter
     Q_PROPERTY(QOperation * parameteredElement READ parameteredElement WRITE setParameteredElement)
 
     Q_DISABLE_COPY(QOperationTemplateParameter)
-    Q_DECLARE_PRIVATE(QOperationTemplateParameter)
+    QTUML_DECLARE_PRIVATE(QOperationTemplateParameter)
 
 public:
     explicit QOperationTemplateParameter(QObject *parent = 0);
@@ -74,7 +74,7 @@ public:
     void setParameteredElement(const QOperation *parameteredElement);
 
 protected:
-    QOperationTemplateParameterPrivate *d_ptr;
+    explicit QOperationTemplateParameter(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

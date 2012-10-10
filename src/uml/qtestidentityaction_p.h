@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qaction_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -50,10 +54,9 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QInputPin;
-
 class QOutputPin;
 
-class QTestIdentityActionPrivate
+class QTestIdentityActionPrivate : public QActionPrivate
 {
 public:
     explicit QTestIdentityActionPrivate();
@@ -62,6 +65,11 @@ public:
     QInputPin *second;
     QOutputPin *result;
     QInputPin *first;
+
+    // Association-ends
+    void setSecond(const QInputPin *second);
+    void setResult(const QOutputPin *result);
+    void setFirst(const QInputPin *first);
 };
 
 QT_END_NAMESPACE_QTUML

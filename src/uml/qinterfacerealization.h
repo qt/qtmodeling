@@ -65,7 +65,7 @@ class Q_UML_EXPORT QInterfaceRealization : public QRealization
     Q_PROPERTY(QInterface * contract READ contract WRITE setContract)
 
     Q_DISABLE_COPY(QInterfaceRealization)
-    Q_DECLARE_PRIVATE(QInterfaceRealization)
+    QTUML_DECLARE_PRIVATE(QInterfaceRealization)
 
 public:
     explicit QInterfaceRealization(QObject *parent = 0);
@@ -78,7 +78,7 @@ public:
     void setContract(const QInterface *contract);
 
 protected:
-    QInterfaceRealizationPrivate *d_ptr;
+    explicit QInterfaceRealization(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qaction_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -50,10 +54,9 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QInputPin;
-
 class QStructuralFeature;
 
-class QStructuralFeatureActionPrivate
+class QStructuralFeatureActionPrivate : public QActionPrivate
 {
 public:
     explicit QStructuralFeatureActionPrivate();
@@ -61,6 +64,10 @@ public:
 
     QInputPin *object;
     QStructuralFeature *structuralFeature;
+
+    // Association-ends
+    void setObject(const QInputPin *object);
+    void setStructuralFeature(const QStructuralFeature *structuralFeature);
 };
 
 QT_END_NAMESPACE_QTUML

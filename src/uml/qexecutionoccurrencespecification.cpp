@@ -54,6 +54,11 @@ QExecutionOccurrenceSpecificationPrivate::QExecutionOccurrenceSpecificationPriva
 QExecutionOccurrenceSpecificationPrivate::~QExecutionOccurrenceSpecificationPrivate()
 {
 }
+  
+void QExecutionOccurrenceSpecificationPrivate::setExecution(const QExecutionSpecification *execution) 
+{  
+    this->execution = const_cast<QExecutionSpecification *>(execution);   
+}
 
 /*!
     \class QExecutionOccurrenceSpecification
@@ -64,13 +69,20 @@ QExecutionOccurrenceSpecificationPrivate::~QExecutionOccurrenceSpecificationPriv
  */
 
 QExecutionOccurrenceSpecification::QExecutionOccurrenceSpecification(QObject *parent)
-    : QOccurrenceSpecification(parent), d_ptr(new QExecutionOccurrenceSpecificationPrivate)
+    : QOccurrenceSpecification(false, parent)
 {
+    d_umlptr = new QExecutionOccurrenceSpecificationPrivate;
+}
+
+QExecutionOccurrenceSpecification::QExecutionOccurrenceSpecification(bool createPimpl, QObject *parent)
+    : QOccurrenceSpecification(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QExecutionOccurrenceSpecificationPrivate;
 }
 
 QExecutionOccurrenceSpecification::~QExecutionOccurrenceSpecification()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -78,12 +90,14 @@ QExecutionOccurrenceSpecification::~QExecutionOccurrenceSpecification()
  */
 QExecutionSpecification *QExecutionOccurrenceSpecification::execution() const
 {
-    return d_ptr->execution;
+    Q_D(const QExecutionOccurrenceSpecification);
+    return d->execution;
 }
 
 void QExecutionOccurrenceSpecification::setExecution(const QExecutionSpecification *execution)
 {
-    d_ptr->execution = const_cast<QExecutionSpecification *>(execution);
+    Q_D(QExecutionOccurrenceSpecification);
+    d->setExecution(const_cast<QExecutionSpecification *>(execution));
 }
 
 #include "moc_qexecutionoccurrencespecification.cpp"

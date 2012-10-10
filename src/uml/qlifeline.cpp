@@ -65,6 +65,36 @@ QLifelinePrivate::~QLifelinePrivate()
 {
     delete coveredBy;
 }
+  
+void QLifelinePrivate::setRepresents(const QConnectableElement *represents) 
+{  
+    this->represents = const_cast<QConnectableElement *>(represents);   
+}
+  
+void QLifelinePrivate::setDecomposedAs(const QPartDecomposition *decomposedAs) 
+{  
+    this->decomposedAs = const_cast<QPartDecomposition *>(decomposedAs);   
+}
+  
+void QLifelinePrivate::addCoveredBy(const QInteractionFragment *coveredBy) 
+{   
+    this->coveredBy->insert(const_cast<QInteractionFragment *>(coveredBy));  
+}
+ 
+void QLifelinePrivate::removeCoveredBy(const QInteractionFragment *coveredBy) 
+{    
+    this->coveredBy->remove(const_cast<QInteractionFragment *>(coveredBy)); 
+}
+  
+void QLifelinePrivate::setInteraction(const QInteraction *interaction) 
+{  
+    this->interaction = const_cast<QInteraction *>(interaction);   
+}
+  
+void QLifelinePrivate::setSelector(const QValueSpecification *selector) 
+{  
+    this->selector = const_cast<QValueSpecification *>(selector);   
+}
 
 /*!
     \class QLifeline
@@ -75,13 +105,20 @@ QLifelinePrivate::~QLifelinePrivate()
  */
 
 QLifeline::QLifeline(QObject *parent)
-    : QObject(parent), d_ptr(new QLifelinePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QLifelinePrivate;
+}
+
+QLifeline::QLifeline(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QLifelinePrivate;
 }
 
 QLifeline::~QLifeline()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -89,12 +126,14 @@ QLifeline::~QLifeline()
  */
 QConnectableElement *QLifeline::represents() const
 {
-    return d_ptr->represents;
+    Q_D(const QLifeline);
+    return d->represents;
 }
 
 void QLifeline::setRepresents(const QConnectableElement *represents)
 {
-    d_ptr->represents = const_cast<QConnectableElement *>(represents);
+    Q_D(QLifeline);
+    d->setRepresents(const_cast<QConnectableElement *>(represents));
 }
 
 /*!
@@ -102,12 +141,14 @@ void QLifeline::setRepresents(const QConnectableElement *represents)
  */
 QPartDecomposition *QLifeline::decomposedAs() const
 {
-    return d_ptr->decomposedAs;
+    Q_D(const QLifeline);
+    return d->decomposedAs;
 }
 
 void QLifeline::setDecomposedAs(const QPartDecomposition *decomposedAs)
 {
-    d_ptr->decomposedAs = const_cast<QPartDecomposition *>(decomposedAs);
+    Q_D(QLifeline);
+    d->setDecomposedAs(const_cast<QPartDecomposition *>(decomposedAs));
 }
 
 /*!
@@ -115,17 +156,20 @@ void QLifeline::setDecomposedAs(const QPartDecomposition *decomposedAs)
  */
 const QSet<QInteractionFragment *> *QLifeline::coveredBy() const
 {
-    return d_ptr->coveredBy;
+    Q_D(const QLifeline);
+    return d->coveredBy;
 }
 
 void QLifeline::addCoveredBy(const QInteractionFragment *coveredBy)
 {
-    d_ptr->coveredBy->insert(const_cast<QInteractionFragment *>(coveredBy));
+    Q_D(QLifeline);
+    d->addCoveredBy(const_cast<QInteractionFragment *>(coveredBy));
 }
 
 void QLifeline::removeCoveredBy(const QInteractionFragment *coveredBy)
 {
-    d_ptr->coveredBy->remove(const_cast<QInteractionFragment *>(coveredBy));
+    Q_D(QLifeline);
+    d->removeCoveredBy(const_cast<QInteractionFragment *>(coveredBy));
 }
 
 /*!
@@ -133,12 +177,14 @@ void QLifeline::removeCoveredBy(const QInteractionFragment *coveredBy)
  */
 QInteraction *QLifeline::interaction() const
 {
-    return d_ptr->interaction;
+    Q_D(const QLifeline);
+    return d->interaction;
 }
 
 void QLifeline::setInteraction(const QInteraction *interaction)
 {
-    d_ptr->interaction = const_cast<QInteraction *>(interaction);
+    Q_D(QLifeline);
+    d->setInteraction(const_cast<QInteraction *>(interaction));
 }
 
 /*!
@@ -146,12 +192,14 @@ void QLifeline::setInteraction(const QInteraction *interaction)
  */
 QValueSpecification *QLifeline::selector() const
 {
-    return d_ptr->selector;
+    Q_D(const QLifeline);
+    return d->selector;
 }
 
 void QLifeline::setSelector(const QValueSpecification *selector)
 {
-    d_ptr->selector = const_cast<QValueSpecification *>(selector);
+    Q_D(QLifeline);
+    d->setSelector(const_cast<QValueSpecification *>(selector));
 }
 
 #include "moc_qlifeline.cpp"

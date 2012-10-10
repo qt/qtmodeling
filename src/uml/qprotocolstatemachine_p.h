@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qstatemachine_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -54,13 +58,17 @@ QT_MODULE(QtUml)
 
 class QProtocolConformance;
 
-class QProtocolStateMachinePrivate
+class QProtocolStateMachinePrivate : public QStateMachinePrivate
 {
 public:
     explicit QProtocolStateMachinePrivate();
     virtual ~QProtocolStateMachinePrivate();
 
     QSet<QProtocolConformance *> *conformance;
+
+    // Association-ends
+    void addConformance(const QProtocolConformance *conformance);
+    void removeConformance(const QProtocolConformance *conformance);
 };
 
 QT_END_NAMESPACE_QTUML

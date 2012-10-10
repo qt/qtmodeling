@@ -83,7 +83,7 @@ class Q_UML_EXPORT QCallEvent : public QObject, public QMessageEvent
     Q_PROPERTY(QOperation * operation READ operation WRITE setOperation)
 
     Q_DISABLE_COPY(QCallEvent)
-    Q_DECLARE_PRIVATE(QCallEvent)
+    QTUML_DECLARE_PRIVATE(QCallEvent)
 
 public:
     explicit QCallEvent(QObject *parent = 0);
@@ -94,7 +94,7 @@ public:
     void setOperation(const QOperation *operation);
 
 protected:
-    QCallEventPrivate *d_ptr;
+    explicit QCallEvent(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qnamedelement_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -54,7 +58,7 @@ QT_MODULE(QtUml)
 
 class QClassifier;
 
-class QRedefinableElementPrivate
+class QRedefinableElementPrivate : public virtual QNamedElementPrivate
 {
 public:
     explicit QRedefinableElementPrivate();
@@ -63,6 +67,15 @@ public:
     bool isLeaf;
     QSet<QRedefinableElement *> *redefinedElements;
     QSet<QClassifier *> *redefinitionContexts;
+
+    // Attributes
+    void setLeaf(bool isLeaf);
+
+    // Association-ends
+    void addRedefinedElement(const QRedefinableElement *redefinedElement);
+    void removeRedefinedElement(const QRedefinableElement *redefinedElement);
+    void addRedefinitionContext(const QClassifier *redefinitionContext);
+    void removeRedefinitionContext(const QClassifier *redefinitionContext);
 };
 
 QT_END_NAMESPACE_QTUML

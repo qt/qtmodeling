@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qdirectedrelationship_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,7 +55,7 @@ QT_MODULE(QtUml)
 
 class QPackage;
 
-class QPackageMergePrivate
+class QPackageMergePrivate : public QDirectedRelationshipPrivate
 {
 public:
     explicit QPackageMergePrivate();
@@ -59,6 +63,10 @@ public:
 
     QPackage *mergedPackage;
     QPackage *receivingPackage;
+
+    // Association-ends
+    void setMergedPackage(const QPackage *mergedPackage);
+    void setReceivingPackage(const QPackage *receivingPackage);
 };
 
 QT_END_NAMESPACE_QTUML

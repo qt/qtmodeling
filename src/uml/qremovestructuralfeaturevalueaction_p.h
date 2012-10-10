@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qwritestructuralfeatureaction_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,7 +55,7 @@ QT_MODULE(QtUml)
 
 class QInputPin;
 
-class QRemoveStructuralFeatureValueActionPrivate
+class QRemoveStructuralFeatureValueActionPrivate : public QWriteStructuralFeatureActionPrivate
 {
 public:
     explicit QRemoveStructuralFeatureValueActionPrivate();
@@ -59,6 +63,12 @@ public:
 
     bool isRemoveDuplicates;
     QInputPin *removeAt;
+
+    // Attributes
+    void setRemoveDuplicates(bool isRemoveDuplicates);
+
+    // Association-ends
+    void setRemoveAt(const QInputPin *removeAt);
 };
 
 QT_END_NAMESPACE_QTUML

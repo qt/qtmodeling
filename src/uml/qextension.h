@@ -67,7 +67,7 @@ class Q_UML_EXPORT QExtension : public QAssociation
     Q_PROPERTY(QExtensionEnd * ownedEnd READ ownedEnd WRITE setOwnedEnd)
 
     Q_DISABLE_COPY(QExtension)
-    Q_DECLARE_PRIVATE(QExtension)
+    QTUML_DECLARE_PRIVATE(QExtension)
 
 public:
     explicit QExtension(QObject *parent = 0);
@@ -85,7 +85,7 @@ public:
     QProperty *metaclassEnd() const;
 
 protected:
-    QExtensionPrivate *d_ptr;
+    explicit QExtension(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -58,6 +58,27 @@ QCallActionPrivate::~QCallActionPrivate()
     delete results;
 }
 
+void QCallActionPrivate::setSynchronous(bool isSynchronous)
+{
+    this->isSynchronous = isSynchronous;
+}
+  
+void QCallActionPrivate::addResult(const QOutputPin *result) 
+{   
+    this->results->append(const_cast<QOutputPin *>(result)); 
+
+    // Adjust subsetted property(ies)
+    addOutput(result); 
+}
+ 
+void QCallActionPrivate::removeResult(const QOutputPin *result) 
+{    
+    this->results->removeAll(const_cast<QOutputPin *>(result)); 
+
+    // Adjust subsetted property(ies)
+    removeOutput(result);
+}
+
 /*!
     \class QCallAction
 
@@ -67,13 +88,12 @@ QCallActionPrivate::~QCallActionPrivate()
  */
 
 QCallAction::QCallAction()
-    : d_ptr(new QCallActionPrivate)
 {
+    d_umlptr = new QCallActionPrivate;
 }
 
 QCallAction::~QCallAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -81,12 +101,14 @@ QCallAction::~QCallAction()
  */
 bool QCallAction::isSynchronous() const
 {
-    return d_ptr->isSynchronous;
+    Q_D(const QCallAction);
+    return d->isSynchronous;
 }
 
 void QCallAction::setSynchronous(bool isSynchronous)
 {
-    d_ptr->isSynchronous = isSynchronous;
+    Q_D(QCallAction);
+    d->setSynchronous(isSynchronous);
 }
 
 /*!
@@ -94,17 +116,20 @@ void QCallAction::setSynchronous(bool isSynchronous)
  */
 const QList<QOutputPin *> *QCallAction::results() const
 {
-    return d_ptr->results;
+    Q_D(const QCallAction);
+    return d->results;
 }
 
 void QCallAction::addResult(const QOutputPin *result)
 {
-    d_ptr->results->append(const_cast<QOutputPin *>(result));
+    Q_D(QCallAction);
+    d->addResult(const_cast<QOutputPin *>(result));
 }
 
 void QCallAction::removeResult(const QOutputPin *result)
 {
-    d_ptr->results->removeAll(const_cast<QOutputPin *>(result));
+    Q_D(QCallAction);
+    d->removeResult(const_cast<QOutputPin *>(result));
 }
 
 QT_END_NAMESPACE_QTUML

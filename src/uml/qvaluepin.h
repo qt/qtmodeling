@@ -63,7 +63,7 @@ class Q_UML_EXPORT QValuePin : public QInputPin
     Q_PROPERTY(QValueSpecification * value READ value WRITE setValue)
 
     Q_DISABLE_COPY(QValuePin)
-    Q_DECLARE_PRIVATE(QValuePin)
+    QTUML_DECLARE_PRIVATE(QValuePin)
 
 public:
     explicit QValuePin(QObject *parent = 0);
@@ -74,7 +74,7 @@ public:
     void setValue(const QValueSpecification *value);
 
 protected:
-    QValuePinPrivate *d_ptr;
+    explicit QValuePin(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

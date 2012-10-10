@@ -57,6 +57,24 @@ QSignalPrivate::~QSignalPrivate()
 {
     delete ownedAttributes;
 }
+  
+void QSignalPrivate::addOwnedAttribute(const QProperty *ownedAttribute) 
+{   
+    this->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedMember(ownedAttribute);
+    addAttribute(ownedAttribute); 
+}
+ 
+void QSignalPrivate::removeOwnedAttribute(const QProperty *ownedAttribute) 
+{    
+    this->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedMember(ownedAttribute);
+    removeAttribute(ownedAttribute);
+}
 
 /*!
     \class QSignal
@@ -67,13 +85,20 @@ QSignalPrivate::~QSignalPrivate()
  */
 
 QSignal::QSignal(QObject *parent)
-    : QObject(parent), d_ptr(new QSignalPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QSignalPrivate;
+}
+
+QSignal::QSignal(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QSignalPrivate;
 }
 
 QSignal::~QSignal()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -81,17 +106,20 @@ QSignal::~QSignal()
  */
 const QList<QProperty *> *QSignal::ownedAttributes() const
 {
-    return d_ptr->ownedAttributes;
+    Q_D(const QSignal);
+    return d->ownedAttributes;
 }
 
 void QSignal::addOwnedAttribute(const QProperty *ownedAttribute)
 {
-    d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
+    Q_D(QSignal);
+    d->addOwnedAttribute(const_cast<QProperty *>(ownedAttribute));
 }
 
 void QSignal::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
-    d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
+    Q_D(QSignal);
+    d->removeOwnedAttribute(const_cast<QProperty *>(ownedAttribute));
 }
 
 #include "moc_qsignal.cpp"

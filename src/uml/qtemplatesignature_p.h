@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qelement_p.h"
+
 // Qt includes
 #include <QtCore/QList>
 
@@ -53,10 +57,9 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QTemplateParameter;
-
 class QTemplateableElement;
 
-class QTemplateSignaturePrivate
+class QTemplateSignaturePrivate : public virtual QElementPrivate
 {
 public:
     explicit QTemplateSignaturePrivate();
@@ -65,6 +68,13 @@ public:
     QList<QTemplateParameter *> *parameters;
     QTemplateableElement *template_;
     QList<QTemplateParameter *> *ownedParameters;
+
+    // Association-ends
+    void addParameter(const QTemplateParameter *parameter);
+    void removeParameter(const QTemplateParameter *parameter);
+    void setTemplate_(const QTemplateableElement *template_);
+    void addOwnedParameter(const QTemplateParameter *ownedParameter);
+    void removeOwnedParameter(const QTemplateParameter *ownedParameter);
 };
 
 QT_END_NAMESPACE_QTUML

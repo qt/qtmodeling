@@ -43,13 +43,18 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qmessageoccurrencespecification_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QDestructionOccurrenceSpecificationPrivate
+
+class QDestructionOccurrenceSpecificationPrivate : public QMessageOccurrenceSpecificationPrivate
 {
 public:
     explicit QDestructionOccurrenceSpecificationPrivate();

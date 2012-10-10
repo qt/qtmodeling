@@ -62,13 +62,20 @@ QDestructionOccurrenceSpecificationPrivate::~QDestructionOccurrenceSpecification
  */
 
 QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(QObject *parent)
-    : QMessageOccurrenceSpecification(parent), d_ptr(new QDestructionOccurrenceSpecificationPrivate)
+    : QMessageOccurrenceSpecification(false, parent)
 {
+    d_umlptr = new QDestructionOccurrenceSpecificationPrivate;
+}
+
+QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(bool createPimpl, QObject *parent)
+    : QMessageOccurrenceSpecification(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QDestructionOccurrenceSpecificationPrivate;
 }
 
 QDestructionOccurrenceSpecification::~QDestructionOccurrenceSpecification()
 {
-    delete d_ptr;
 }
 
 #include "moc_qdestructionoccurrencespecification.cpp"

@@ -54,6 +54,11 @@ QActivityParameterNodePrivate::QActivityParameterNodePrivate() :
 QActivityParameterNodePrivate::~QActivityParameterNodePrivate()
 {
 }
+  
+void QActivityParameterNodePrivate::setParameter(const QParameter *parameter) 
+{  
+    this->parameter = const_cast<QParameter *>(parameter);   
+}
 
 /*!
     \class QActivityParameterNode
@@ -64,13 +69,20 @@ QActivityParameterNodePrivate::~QActivityParameterNodePrivate()
  */
 
 QActivityParameterNode::QActivityParameterNode(QObject *parent)
-    : QObject(parent), d_ptr(new QActivityParameterNodePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QActivityParameterNodePrivate;
+}
+
+QActivityParameterNode::QActivityParameterNode(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QActivityParameterNodePrivate;
 }
 
 QActivityParameterNode::~QActivityParameterNode()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -78,12 +90,14 @@ QActivityParameterNode::~QActivityParameterNode()
  */
 QParameter *QActivityParameterNode::parameter() const
 {
-    return d_ptr->parameter;
+    Q_D(const QActivityParameterNode);
+    return d->parameter;
 }
 
 void QActivityParameterNode::setParameter(const QParameter *parameter)
 {
-    d_ptr->parameter = const_cast<QParameter *>(parameter);
+    Q_D(QActivityParameterNode);
+    d->setParameter(const_cast<QParameter *>(parameter));
 }
 
 #include "moc_qactivityparameternode.cpp"

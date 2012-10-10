@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qdirectedrelationship_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,10 +57,9 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QClassifier;
-
 class QGeneralizationSet;
 
-class QGeneralizationPrivate
+class QGeneralizationPrivate : public QDirectedRelationshipPrivate
 {
 public:
     explicit QGeneralizationPrivate();
@@ -66,6 +69,15 @@ public:
     QClassifier *specific;
     QSet<QGeneralizationSet *> *generalizationSets;
     QClassifier *general;
+
+    // Attributes
+    void setSubstitutable(bool isSubstitutable);
+
+    // Association-ends
+    void setSpecific(const QClassifier *specific);
+    void addGeneralizationSet(const QGeneralizationSet *generalizationSet);
+    void removeGeneralizationSet(const QGeneralizationSet *generalizationSet);
+    void setGeneral(const QClassifier *general);
 };
 
 QT_END_NAMESPACE_QTUML

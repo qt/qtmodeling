@@ -88,7 +88,7 @@ class Q_UML_EXPORT QRedefinableTemplateSignature : public QTemplateSignature, pu
     Q_PROPERTY(const QSet<QRedefinableTemplateSignature *> * extendedSignatures READ extendedSignatures)
 
     Q_DISABLE_COPY(QRedefinableTemplateSignature)
-    Q_DECLARE_PRIVATE(QRedefinableTemplateSignature)
+    QTUML_DECLARE_PRIVATE(QRedefinableTemplateSignature)
 
 public:
     explicit QRedefinableTemplateSignature(QObject *parent = 0);
@@ -106,7 +106,7 @@ public:
     bool isConsistentWith(const QRedefinableElement *redefinee) const;
 
 protected:
-    QRedefinableTemplateSignaturePrivate *d_ptr;
+    explicit QRedefinableTemplateSignature(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

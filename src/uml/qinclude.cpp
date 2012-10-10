@@ -58,6 +58,16 @@ QIncludePrivate::QIncludePrivate() :
 QIncludePrivate::~QIncludePrivate()
 {
 }
+  
+void QIncludePrivate::setIncludingCase(const QUseCase *includingCase) 
+{  
+    this->includingCase = const_cast<QUseCase *>(includingCase);   
+}
+  
+void QIncludePrivate::setAddition(const QUseCase *addition) 
+{  
+    this->addition = const_cast<QUseCase *>(addition);   
+}
 
 /*!
     \class QInclude
@@ -68,13 +78,20 @@ QIncludePrivate::~QIncludePrivate()
  */
 
 QInclude::QInclude(QObject *parent)
-    : QObject(parent), d_ptr(new QIncludePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QIncludePrivate;
+}
+
+QInclude::QInclude(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QIncludePrivate;
 }
 
 QInclude::~QInclude()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -82,12 +99,14 @@ QInclude::~QInclude()
  */
 QUseCase *QInclude::includingCase() const
 {
-    return d_ptr->includingCase;
+    Q_D(const QInclude);
+    return d->includingCase;
 }
 
 void QInclude::setIncludingCase(const QUseCase *includingCase)
 {
-    d_ptr->includingCase = const_cast<QUseCase *>(includingCase);
+    Q_D(QInclude);
+    d->setIncludingCase(const_cast<QUseCase *>(includingCase));
 }
 
 /*!
@@ -95,12 +114,14 @@ void QInclude::setIncludingCase(const QUseCase *includingCase)
  */
 QUseCase *QInclude::addition() const
 {
-    return d_ptr->addition;
+    Q_D(const QInclude);
+    return d->addition;
 }
 
 void QInclude::setAddition(const QUseCase *addition)
 {
-    d_ptr->addition = const_cast<QUseCase *>(addition);
+    Q_D(QInclude);
+    d->setAddition(const_cast<QUseCase *>(addition));
 }
 
 #include "moc_qinclude.cpp"

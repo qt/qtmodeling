@@ -57,6 +57,16 @@ QReadExtentActionPrivate::QReadExtentActionPrivate() :
 QReadExtentActionPrivate::~QReadExtentActionPrivate()
 {
 }
+  
+void QReadExtentActionPrivate::setClassifier(const QClassifier *classifier) 
+{  
+    this->classifier = const_cast<QClassifier *>(classifier);   
+}
+  
+void QReadExtentActionPrivate::setResult(const QOutputPin *result) 
+{  
+    this->result = const_cast<QOutputPin *>(result);   
+}
 
 /*!
     \class QReadExtentAction
@@ -67,13 +77,20 @@ QReadExtentActionPrivate::~QReadExtentActionPrivate()
  */
 
 QReadExtentAction::QReadExtentAction(QObject *parent)
-    : QObject(parent), d_ptr(new QReadExtentActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QReadExtentActionPrivate;
+}
+
+QReadExtentAction::QReadExtentAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QReadExtentActionPrivate;
 }
 
 QReadExtentAction::~QReadExtentAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -81,12 +98,14 @@ QReadExtentAction::~QReadExtentAction()
  */
 QClassifier *QReadExtentAction::classifier() const
 {
-    return d_ptr->classifier;
+    Q_D(const QReadExtentAction);
+    return d->classifier;
 }
 
 void QReadExtentAction::setClassifier(const QClassifier *classifier)
 {
-    d_ptr->classifier = const_cast<QClassifier *>(classifier);
+    Q_D(QReadExtentAction);
+    d->setClassifier(const_cast<QClassifier *>(classifier));
 }
 
 /*!
@@ -94,12 +113,14 @@ void QReadExtentAction::setClassifier(const QClassifier *classifier)
  */
 QOutputPin *QReadExtentAction::result() const
 {
-    return d_ptr->result;
+    Q_D(const QReadExtentAction);
+    return d->result;
 }
 
 void QReadExtentAction::setResult(const QOutputPin *result)
 {
-    d_ptr->result = const_cast<QOutputPin *>(result);
+    Q_D(QReadExtentAction);
+    d->setResult(const_cast<QOutputPin *>(result));
 }
 
 #include "moc_qreadextentaction.cpp"

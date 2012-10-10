@@ -88,14 +88,14 @@ class Q_UML_EXPORT QInitialNode : public QObject, public QControlNode
     Q_PROPERTY(const QSet<QActivityEdge *> * outgoings READ outgoings)
 
     Q_DISABLE_COPY(QInitialNode)
-    Q_DECLARE_PRIVATE(QInitialNode)
+    QTUML_DECLARE_PRIVATE(QInitialNode)
 
 public:
     explicit QInitialNode(QObject *parent = 0);
     virtual ~QInitialNode();
 
 protected:
-    QInitialNodePrivate *d_ptr;
+    explicit QInitialNode(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

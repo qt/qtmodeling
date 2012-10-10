@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qclassifier_p.h"
+
 // Qt includes
 #include <QtCore/QList>
 #include <QtCore/QSet>
@@ -54,14 +58,11 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QProtocolStateMachine;
-
 class QReception;
-
 class QProperty;
-
 class QOperation;
 
-class QInterfacePrivate
+class QInterfacePrivate : public QClassifierPrivate
 {
 public:
     explicit QInterfacePrivate();
@@ -73,6 +74,19 @@ public:
     QList<QOperation *> *ownedOperations;
     QList<QClassifier *> *nestedClassifiers;
     QList<QProperty *> *ownedAttributes;
+
+    // Association-ends
+    void setProtocol(const QProtocolStateMachine *protocol);
+    void addRedefinedInterface(const QInterface *redefinedInterface);
+    void removeRedefinedInterface(const QInterface *redefinedInterface);
+    void addOwnedReception(const QReception *ownedReception);
+    void removeOwnedReception(const QReception *ownedReception);
+    void addOwnedOperation(const QOperation *ownedOperation);
+    void removeOwnedOperation(const QOperation *ownedOperation);
+    void addNestedClassifier(const QClassifier *nestedClassifier);
+    void removeNestedClassifier(const QClassifier *nestedClassifier);
+    void addOwnedAttribute(const QProperty *ownedAttribute);
+    void removeOwnedAttribute(const QProperty *ownedAttribute);
 };
 
 QT_END_NAMESPACE_QTUML

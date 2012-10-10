@@ -54,6 +54,11 @@ QActionExecutionSpecificationPrivate::QActionExecutionSpecificationPrivate() :
 QActionExecutionSpecificationPrivate::~QActionExecutionSpecificationPrivate()
 {
 }
+  
+void QActionExecutionSpecificationPrivate::setAction(const QAction *action) 
+{  
+    this->action = const_cast<QAction *>(action);   
+}
 
 /*!
     \class QActionExecutionSpecification
@@ -64,13 +69,20 @@ QActionExecutionSpecificationPrivate::~QActionExecutionSpecificationPrivate()
  */
 
 QActionExecutionSpecification::QActionExecutionSpecification(QObject *parent)
-    : QObject(parent), d_ptr(new QActionExecutionSpecificationPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QActionExecutionSpecificationPrivate;
+}
+
+QActionExecutionSpecification::QActionExecutionSpecification(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QActionExecutionSpecificationPrivate;
 }
 
 QActionExecutionSpecification::~QActionExecutionSpecification()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -78,12 +90,14 @@ QActionExecutionSpecification::~QActionExecutionSpecification()
  */
 QAction *QActionExecutionSpecification::action() const
 {
-    return d_ptr->action;
+    Q_D(const QActionExecutionSpecification);
+    return d->action;
 }
 
 void QActionExecutionSpecification::setAction(const QAction *action)
 {
-    d_ptr->action = const_cast<QAction *>(action);
+    Q_D(QActionExecutionSpecification);
+    d->setAction(const_cast<QAction *>(action));
 }
 
 #include "moc_qactionexecutionspecification.cpp"

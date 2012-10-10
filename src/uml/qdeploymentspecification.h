@@ -68,7 +68,7 @@ class Q_UML_EXPORT QDeploymentSpecification : public QArtifact
     Q_PROPERTY(QDeployment * deployment READ deployment WRITE setDeployment)
 
     Q_DISABLE_COPY(QDeploymentSpecification)
-    Q_DECLARE_PRIVATE(QDeploymentSpecification)
+    QTUML_DECLARE_PRIVATE(QDeploymentSpecification)
 
 public:
     explicit QDeploymentSpecification(QObject *parent = 0);
@@ -85,7 +85,7 @@ public:
     void setDeployment(const QDeployment *deployment);
 
 protected:
-    QDeploymentSpecificationPrivate *d_ptr;
+    explicit QDeploymentSpecification(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

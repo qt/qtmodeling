@@ -82,7 +82,7 @@ class Q_UML_EXPORT QParameterSet : public QObject, public QNamedElement
     Q_PROPERTY(const QSet<QConstraint *> * conditions READ conditions)
 
     Q_DISABLE_COPY(QParameterSet)
-    Q_DECLARE_PRIVATE(QParameterSet)
+    QTUML_DECLARE_PRIVATE(QParameterSet)
 
 public:
     explicit QParameterSet(QObject *parent = 0);
@@ -97,7 +97,7 @@ public:
     void removeCondition(const QConstraint *condition);
 
 protected:
-    QParameterSetPrivate *d_ptr;
+    explicit QParameterSet(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

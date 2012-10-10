@@ -64,6 +64,53 @@ QConnectorPrivate::~QConnectorPrivate()
     delete contracts;
     delete ends;
 }
+  
+void QConnectorPrivate::addRedefinedConnector(const QConnector *redefinedConnector) 
+{   
+    this->redefinedConnectors->insert(const_cast<QConnector *>(redefinedConnector)); 
+
+    // Adjust subsetted property(ies)
+    addRedefinedElement(redefinedConnector); 
+}
+ 
+void QConnectorPrivate::removeRedefinedConnector(const QConnector *redefinedConnector) 
+{    
+    this->redefinedConnectors->remove(const_cast<QConnector *>(redefinedConnector)); 
+
+    // Adjust subsetted property(ies)
+    removeRedefinedElement(redefinedConnector);
+}
+  
+void QConnectorPrivate::addContract(const QBehavior *contract) 
+{   
+    this->contracts->insert(const_cast<QBehavior *>(contract));  
+}
+ 
+void QConnectorPrivate::removeContract(const QBehavior *contract) 
+{    
+    this->contracts->remove(const_cast<QBehavior *>(contract)); 
+}
+  
+void QConnectorPrivate::setType(const QAssociation *type) 
+{  
+    this->type = const_cast<QAssociation *>(type);   
+}
+  
+void QConnectorPrivate::addEnd(const QConnectorEnd *end) 
+{   
+    this->ends->append(const_cast<QConnectorEnd *>(end)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedElement(end); 
+}
+ 
+void QConnectorPrivate::removeEnd(const QConnectorEnd *end) 
+{    
+    this->ends->removeAll(const_cast<QConnectorEnd *>(end)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(end);
+}
 
 /*!
     \class QConnector
@@ -74,13 +121,20 @@ QConnectorPrivate::~QConnectorPrivate()
  */
 
 QConnector::QConnector(QObject *parent)
-    : QObject(parent), d_ptr(new QConnectorPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QConnectorPrivate;
+}
+
+QConnector::QConnector(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QConnectorPrivate;
 }
 
 QConnector::~QConnector()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -96,17 +150,20 @@ QtUml::ConnectorKind QConnector::kind() const
  */
 const QSet<QConnector *> *QConnector::redefinedConnectors() const
 {
-    return d_ptr->redefinedConnectors;
+    Q_D(const QConnector);
+    return d->redefinedConnectors;
 }
 
 void QConnector::addRedefinedConnector(const QConnector *redefinedConnector)
 {
-    d_ptr->redefinedConnectors->insert(const_cast<QConnector *>(redefinedConnector));
+    Q_D(QConnector);
+    d->addRedefinedConnector(const_cast<QConnector *>(redefinedConnector));
 }
 
 void QConnector::removeRedefinedConnector(const QConnector *redefinedConnector)
 {
-    d_ptr->redefinedConnectors->remove(const_cast<QConnector *>(redefinedConnector));
+    Q_D(QConnector);
+    d->removeRedefinedConnector(const_cast<QConnector *>(redefinedConnector));
 }
 
 /*!
@@ -114,17 +171,20 @@ void QConnector::removeRedefinedConnector(const QConnector *redefinedConnector)
  */
 const QSet<QBehavior *> *QConnector::contracts() const
 {
-    return d_ptr->contracts;
+    Q_D(const QConnector);
+    return d->contracts;
 }
 
 void QConnector::addContract(const QBehavior *contract)
 {
-    d_ptr->contracts->insert(const_cast<QBehavior *>(contract));
+    Q_D(QConnector);
+    d->addContract(const_cast<QBehavior *>(contract));
 }
 
 void QConnector::removeContract(const QBehavior *contract)
 {
-    d_ptr->contracts->remove(const_cast<QBehavior *>(contract));
+    Q_D(QConnector);
+    d->removeContract(const_cast<QBehavior *>(contract));
 }
 
 /*!
@@ -132,12 +192,14 @@ void QConnector::removeContract(const QBehavior *contract)
  */
 QAssociation *QConnector::type() const
 {
-    return d_ptr->type;
+    Q_D(const QConnector);
+    return d->type;
 }
 
 void QConnector::setType(const QAssociation *type)
 {
-    d_ptr->type = const_cast<QAssociation *>(type);
+    Q_D(QConnector);
+    d->setType(const_cast<QAssociation *>(type));
 }
 
 /*!
@@ -145,17 +207,20 @@ void QConnector::setType(const QAssociation *type)
  */
 const QList<QConnectorEnd *> *QConnector::ends() const
 {
-    return d_ptr->ends;
+    Q_D(const QConnector);
+    return d->ends;
 }
 
 void QConnector::addEnd(const QConnectorEnd *end)
 {
-    d_ptr->ends->append(const_cast<QConnectorEnd *>(end));
+    Q_D(QConnector);
+    d->addEnd(const_cast<QConnectorEnd *>(end));
 }
 
 void QConnector::removeEnd(const QConnectorEnd *end)
 {
-    d_ptr->ends->removeAll(const_cast<QConnectorEnd *>(end));
+    Q_D(QConnector);
+    d->removeEnd(const_cast<QConnectorEnd *>(end));
 }
 
 #include "moc_qconnector.cpp"

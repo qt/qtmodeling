@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qaction_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,12 +57,10 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QLinkEndData;
-
 class QInputPin;
-
 class QAssociation;
 
-class QLinkActionPrivate
+class QLinkActionPrivate : public QActionPrivate
 {
 public:
     explicit QLinkActionPrivate();
@@ -66,6 +68,12 @@ public:
 
     QSet<QInputPin *> *inputValues;
     QSet<QLinkEndData *> *endData;
+
+    // Association-ends
+    void addInputValue(const QInputPin *inputValue);
+    void removeInputValue(const QInputPin *inputValue);
+    void addEndData(const QLinkEndData *endData);
+    void removeEndData(const QLinkEndData *endData);
 };
 
 QT_END_NAMESPACE_QTUML

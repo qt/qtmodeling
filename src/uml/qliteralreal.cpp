@@ -53,6 +53,11 @@ QLiteralRealPrivate::~QLiteralRealPrivate()
 {
 }
 
+void QLiteralRealPrivate::setValue(qreal value)
+{
+    this->value = value;
+}
+
 /*!
     \class QLiteralReal
 
@@ -62,23 +67,32 @@ QLiteralRealPrivate::~QLiteralRealPrivate()
  */
 
 QLiteralReal::QLiteralReal(QObject *parent)
-    : QObject(parent), d_ptr(new QLiteralRealPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QLiteralRealPrivate;
+}
+
+QLiteralReal::QLiteralReal(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QLiteralRealPrivate;
 }
 
 QLiteralReal::~QLiteralReal()
 {
-    delete d_ptr;
 }
 
 qreal QLiteralReal::value() const
 {
-    return d_ptr->value;
+    Q_D(const QLiteralReal);
+    return d->value;
 }
 
 void QLiteralReal::setValue(qreal value)
 {
-    d_ptr->value = value;
+    Q_D(QLiteralReal);
+    d->setValue(value);
 }
 
 /*!

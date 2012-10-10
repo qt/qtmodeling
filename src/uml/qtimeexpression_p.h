@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qvaluespecification_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -54,7 +58,7 @@ QT_MODULE(QtUml)
 
 class QObservation;
 
-class QTimeExpressionPrivate
+class QTimeExpressionPrivate : public QValueSpecificationPrivate
 {
 public:
     explicit QTimeExpressionPrivate();
@@ -62,6 +66,11 @@ public:
 
     QSet<QObservation *> *observations;
     QValueSpecification *expr;
+
+    // Association-ends
+    void addObservation(const QObservation *observation);
+    void removeObservation(const QObservation *observation);
+    void setExpr(const QValueSpecification *expr);
 };
 
 QT_END_NAMESPACE_QTUML

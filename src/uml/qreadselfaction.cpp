@@ -55,6 +55,11 @@ QReadSelfActionPrivate::QReadSelfActionPrivate() :
 QReadSelfActionPrivate::~QReadSelfActionPrivate()
 {
 }
+  
+void QReadSelfActionPrivate::setResult(const QOutputPin *result) 
+{  
+    this->result = const_cast<QOutputPin *>(result);   
+}
 
 /*!
     \class QReadSelfAction
@@ -65,13 +70,20 @@ QReadSelfActionPrivate::~QReadSelfActionPrivate()
  */
 
 QReadSelfAction::QReadSelfAction(QObject *parent)
-    : QObject(parent), d_ptr(new QReadSelfActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QReadSelfActionPrivate;
+}
+
+QReadSelfAction::QReadSelfAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QReadSelfActionPrivate;
 }
 
 QReadSelfAction::~QReadSelfAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,12 +91,14 @@ QReadSelfAction::~QReadSelfAction()
  */
 QOutputPin *QReadSelfAction::result() const
 {
-    return d_ptr->result;
+    Q_D(const QReadSelfAction);
+    return d->result;
 }
 
 void QReadSelfAction::setResult(const QOutputPin *result)
 {
-    d_ptr->result = const_cast<QOutputPin *>(result);
+    Q_D(QReadSelfAction);
+    d->setResult(const_cast<QOutputPin *>(result));
 }
 
 #include "moc_qreadselfaction.cpp"

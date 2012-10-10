@@ -58,7 +58,7 @@ class QType;
 class Q_UML_EXPORT QTypedElement : public virtual QNamedElement
 {
     Q_DISABLE_COPY(QTypedElement)
-    Q_DECLARE_PRIVATE(QTypedElement)
+    QTUML_DECLARE_PRIVATE(QTypedElement)
 
 public:
     virtual ~QTypedElement();
@@ -69,9 +69,6 @@ public:
 
 protected:
     explicit QTypedElement();
-
-protected:
-    QTypedElementPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

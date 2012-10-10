@@ -62,13 +62,20 @@ QActorPrivate::~QActorPrivate()
  */
 
 QActor::QActor(QObject *parent)
-    : QObject(parent), d_ptr(new QActorPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QActorPrivate;
+}
+
+QActor::QActor(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QActorPrivate;
 }
 
 QActor::~QActor()
 {
-    delete d_ptr;
 }
 
 #include "moc_qactor.cpp"

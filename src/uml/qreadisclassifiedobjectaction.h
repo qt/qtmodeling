@@ -108,7 +108,7 @@ class Q_UML_EXPORT QReadIsClassifiedObjectAction : public QObject, public QActio
     Q_PROPERTY(QClassifier * classifier READ classifier WRITE setClassifier)
 
     Q_DISABLE_COPY(QReadIsClassifiedObjectAction)
-    Q_DECLARE_PRIVATE(QReadIsClassifiedObjectAction)
+    QTUML_DECLARE_PRIVATE(QReadIsClassifiedObjectAction)
 
 public:
     explicit QReadIsClassifiedObjectAction(QObject *parent = 0);
@@ -127,7 +127,7 @@ public:
     void setClassifier(const QClassifier *classifier);
 
 protected:
-    QReadIsClassifiedObjectActionPrivate *d_ptr;
+    explicit QReadIsClassifiedObjectAction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

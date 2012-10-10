@@ -43,6 +43,12 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qdirectedrelationship_p.h"
+
+#include "qnamedelement_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,7 +57,7 @@ QT_MODULE(QtUml)
 
 class QUseCase;
 
-class QIncludePrivate
+class QIncludePrivate : public QDirectedRelationshipPrivate, public QNamedElementPrivate
 {
 public:
     explicit QIncludePrivate();
@@ -59,6 +65,10 @@ public:
 
     QUseCase *includingCase;
     QUseCase *addition;
+
+    // Association-ends
+    void setIncludingCase(const QUseCase *includingCase);
+    void setAddition(const QUseCase *addition);
 };
 
 QT_END_NAMESPACE_QTUML

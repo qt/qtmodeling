@@ -57,7 +57,12 @@ QVertexPrivate::QVertexPrivate() :
 QVertexPrivate::~QVertexPrivate()
 {
 }
-
+   
+void QVertexPrivate::setContainer(const QRegion *container) 
+{  
+    this->container = const_cast<QRegion *>(container);   
+}
+ 
 /*!
     \class QVertex
 
@@ -67,13 +72,12 @@ QVertexPrivate::~QVertexPrivate()
  */
 
 QVertex::QVertex()
-    : d_ptr(new QVertexPrivate)
 {
+    d_umlptr = new QVertexPrivate;
 }
 
 QVertex::~QVertex()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -89,12 +93,14 @@ const QSet<QTransition *> *QVertex::incomings() const
  */
 QRegion *QVertex::container() const
 {
-    return d_ptr->container;
+    Q_D(const QVertex);
+    return d->container;
 }
 
 void QVertex::setContainer(const QRegion *container)
 {
-    d_ptr->container = const_cast<QRegion *>(container);
+    Q_D(QVertex);
+    d->setContainer(const_cast<QRegion *>(container));
 }
 
 /*!

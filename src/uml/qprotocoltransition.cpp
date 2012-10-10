@@ -58,6 +58,16 @@ QProtocolTransitionPrivate::QProtocolTransitionPrivate() :
 QProtocolTransitionPrivate::~QProtocolTransitionPrivate()
 {
 }
+  
+void QProtocolTransitionPrivate::setPostCondition(const QConstraint *postCondition) 
+{  
+    this->postCondition = const_cast<QConstraint *>(postCondition);   
+}
+   
+void QProtocolTransitionPrivate::setPreCondition(const QConstraint *preCondition) 
+{  
+    this->preCondition = const_cast<QConstraint *>(preCondition);   
+}
 
 /*!
     \class QProtocolTransition
@@ -68,13 +78,20 @@ QProtocolTransitionPrivate::~QProtocolTransitionPrivate()
  */
 
 QProtocolTransition::QProtocolTransition(QObject *parent)
-    : QTransition(parent), d_ptr(new QProtocolTransitionPrivate)
+    : QTransition(false, parent)
 {
+    d_umlptr = new QProtocolTransitionPrivate;
+}
+
+QProtocolTransition::QProtocolTransition(bool createPimpl, QObject *parent)
+    : QTransition(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QProtocolTransitionPrivate;
 }
 
 QProtocolTransition::~QProtocolTransition()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -82,12 +99,14 @@ QProtocolTransition::~QProtocolTransition()
  */
 QConstraint *QProtocolTransition::postCondition() const
 {
-    return d_ptr->postCondition;
+    Q_D(const QProtocolTransition);
+    return d->postCondition;
 }
 
 void QProtocolTransition::setPostCondition(const QConstraint *postCondition)
 {
-    d_ptr->postCondition = const_cast<QConstraint *>(postCondition);
+    Q_D(QProtocolTransition);
+    d->setPostCondition(const_cast<QConstraint *>(postCondition));
 }
 
 /*!
@@ -103,12 +122,14 @@ const QSet<QOperation *> *QProtocolTransition::referred() const
  */
 QConstraint *QProtocolTransition::preCondition() const
 {
-    return d_ptr->preCondition;
+    Q_D(const QProtocolTransition);
+    return d->preCondition;
 }
 
 void QProtocolTransition::setPreCondition(const QConstraint *preCondition)
 {
-    d_ptr->preCondition = const_cast<QConstraint *>(preCondition);
+    Q_D(QProtocolTransition);
+    d->setPreCondition(const_cast<QConstraint *>(preCondition));
 }
 
 #include "moc_qprotocoltransition.cpp"

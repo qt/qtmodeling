@@ -54,6 +54,11 @@ QIntervalConstraintPrivate::QIntervalConstraintPrivate() :
 QIntervalConstraintPrivate::~QIntervalConstraintPrivate()
 {
 }
+  
+void QIntervalConstraintPrivate::setSpecification(const QInterval *specification) 
+{  
+    this->specification = const_cast<QInterval *>(specification);   
+}
 
 /*!
     \class QIntervalConstraint
@@ -64,13 +69,20 @@ QIntervalConstraintPrivate::~QIntervalConstraintPrivate()
  */
 
 QIntervalConstraint::QIntervalConstraint(QObject *parent)
-    : QConstraint(parent), d_ptr(new QIntervalConstraintPrivate)
+    : QConstraint(false, parent)
 {
+    d_umlptr = new QIntervalConstraintPrivate;
+}
+
+QIntervalConstraint::QIntervalConstraint(bool createPimpl, QObject *parent)
+    : QConstraint(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QIntervalConstraintPrivate;
 }
 
 QIntervalConstraint::~QIntervalConstraint()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -78,12 +90,14 @@ QIntervalConstraint::~QIntervalConstraint()
  */
 QInterval *QIntervalConstraint::specification() const
 {
-    return d_ptr->specification;
+    Q_D(const QIntervalConstraint);
+    return d->specification;
 }
 
 void QIntervalConstraint::setSpecification(const QInterval *specification)
 {
-    d_ptr->specification = const_cast<QInterval *>(specification);
+    Q_D(QIntervalConstraint);
+    d->setSpecification(const_cast<QInterval *>(specification));
 }
 
 #include "moc_qintervalconstraint.cpp"

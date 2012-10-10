@@ -63,7 +63,7 @@ class Q_UML_EXPORT QExecutionOccurrenceSpecification : public QOccurrenceSpecifi
     Q_PROPERTY(QExecutionSpecification * execution READ execution WRITE setExecution)
 
     Q_DISABLE_COPY(QExecutionOccurrenceSpecification)
-    Q_DECLARE_PRIVATE(QExecutionOccurrenceSpecification)
+    QTUML_DECLARE_PRIVATE(QExecutionOccurrenceSpecification)
 
 public:
     explicit QExecutionOccurrenceSpecification(QObject *parent = 0);
@@ -74,7 +74,7 @@ public:
     void setExecution(const QExecutionSpecification *execution);
 
 protected:
-    QExecutionOccurrenceSpecificationPrivate *d_ptr;
+    explicit QExecutionOccurrenceSpecification(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

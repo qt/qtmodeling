@@ -106,7 +106,7 @@ class Q_UML_EXPORT QTestIdentityAction : public QObject, public QAction
     Q_PROPERTY(QInputPin * first READ first WRITE setFirst)
 
     Q_DISABLE_COPY(QTestIdentityAction)
-    Q_DECLARE_PRIVATE(QTestIdentityAction)
+    QTUML_DECLARE_PRIVATE(QTestIdentityAction)
 
 public:
     explicit QTestIdentityAction(QObject *parent = 0);
@@ -121,7 +121,7 @@ public:
     void setFirst(const QInputPin *first);
 
 protected:
-    QTestIdentityActionPrivate *d_ptr;
+    explicit QTestIdentityAction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

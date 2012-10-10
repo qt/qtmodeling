@@ -55,6 +55,11 @@ QStartClassifierBehaviorActionPrivate::QStartClassifierBehaviorActionPrivate() :
 QStartClassifierBehaviorActionPrivate::~QStartClassifierBehaviorActionPrivate()
 {
 }
+  
+void QStartClassifierBehaviorActionPrivate::setObject(const QInputPin *object) 
+{  
+    this->object = const_cast<QInputPin *>(object);   
+}
 
 /*!
     \class QStartClassifierBehaviorAction
@@ -65,13 +70,20 @@ QStartClassifierBehaviorActionPrivate::~QStartClassifierBehaviorActionPrivate()
  */
 
 QStartClassifierBehaviorAction::QStartClassifierBehaviorAction(QObject *parent)
-    : QObject(parent), d_ptr(new QStartClassifierBehaviorActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QStartClassifierBehaviorActionPrivate;
+}
+
+QStartClassifierBehaviorAction::QStartClassifierBehaviorAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QStartClassifierBehaviorActionPrivate;
 }
 
 QStartClassifierBehaviorAction::~QStartClassifierBehaviorAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,12 +91,14 @@ QStartClassifierBehaviorAction::~QStartClassifierBehaviorAction()
  */
 QInputPin *QStartClassifierBehaviorAction::object() const
 {
-    return d_ptr->object;
+    Q_D(const QStartClassifierBehaviorAction);
+    return d->object;
 }
 
 void QStartClassifierBehaviorAction::setObject(const QInputPin *object)
 {
-    d_ptr->object = const_cast<QInputPin *>(object);
+    Q_D(QStartClassifierBehaviorAction);
+    d->setObject(const_cast<QInputPin *>(object));
 }
 
 #include "moc_qstartclassifierbehavioraction.cpp"

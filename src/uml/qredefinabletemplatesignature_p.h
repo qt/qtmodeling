@@ -43,6 +43,12 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qtemplatesignature_p.h"
+
+#include "qredefinableelement_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,10 +59,9 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QClassifier;
-
 class QTemplateParameter;
 
-class QRedefinableTemplateSignaturePrivate
+class QRedefinableTemplateSignaturePrivate : public QTemplateSignaturePrivate, public QRedefinableElementPrivate
 {
 public:
     explicit QRedefinableTemplateSignaturePrivate();
@@ -64,6 +69,13 @@ public:
 
     QClassifier *classifier;
     QSet<QRedefinableTemplateSignature *> *extendedSignatures;
+
+    // Association-ends
+    void addInheritedParameter(const QTemplateParameter *inheritedParameter);
+    void removeInheritedParameter(const QTemplateParameter *inheritedParameter);
+    void setClassifier(const QClassifier *classifier);
+    void addExtendedSignature(const QRedefinableTemplateSignature *extendedSignature);
+    void removeExtendedSignature(const QRedefinableTemplateSignature *extendedSignature);
 };
 
 QT_END_NAMESPACE_QTUML

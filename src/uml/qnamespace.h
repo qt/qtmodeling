@@ -65,7 +65,7 @@ class QPackageableElement;
 class Q_UML_EXPORT QNamespace : public virtual QNamedElement
 {
     Q_DISABLE_COPY(QNamespace)
-    Q_DECLARE_PRIVATE(QNamespace)
+    QTUML_DECLARE_PRIVATE(QNamespace)
 
 public:
     virtual ~QNamespace();
@@ -92,9 +92,6 @@ public:
 
 protected:
     explicit QNamespace();
-
-protected:
-    QNamespacePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

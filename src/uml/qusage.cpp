@@ -62,13 +62,20 @@ QUsagePrivate::~QUsagePrivate()
  */
 
 QUsage::QUsage(QObject *parent)
-    : QDependency(parent), d_ptr(new QUsagePrivate)
+    : QDependency(false, parent)
 {
+    d_umlptr = new QUsagePrivate;
+}
+
+QUsage::QUsage(bool createPimpl, QObject *parent)
+    : QDependency(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QUsagePrivate;
 }
 
 QUsage::~QUsage()
 {
-    delete d_ptr;
 }
 
 #include "moc_qusage.cpp"

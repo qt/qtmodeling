@@ -99,7 +99,7 @@ class Q_UML_EXPORT QVariable : public QObject, public QMultiplicityElement, publ
     Q_PROPERTY(QActivity * activityScope READ activityScope WRITE setActivityScope)
 
     Q_DISABLE_COPY(QVariable)
-    Q_DECLARE_PRIVATE(QVariable)
+    QTUML_DECLARE_PRIVATE(QVariable)
 
 public:
     explicit QVariable(QObject *parent = 0);
@@ -115,7 +115,7 @@ public:
     bool isAccessibleBy(const QAction *a) const;
 
 protected:
-    QVariablePrivate *d_ptr;
+    explicit QVariable(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

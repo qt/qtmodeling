@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qoccurrencespecification_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,13 +55,16 @@ QT_MODULE(QtUml)
 
 class QExecutionSpecification;
 
-class QExecutionOccurrenceSpecificationPrivate
+class QExecutionOccurrenceSpecificationPrivate : public QOccurrenceSpecificationPrivate
 {
 public:
     explicit QExecutionOccurrenceSpecificationPrivate();
     virtual ~QExecutionOccurrenceSpecificationPrivate();
 
     QExecutionSpecification *execution;
+
+    // Association-ends
+    void setExecution(const QExecutionSpecification *execution);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -69,6 +69,64 @@ QPackagePrivate::~QPackagePrivate()
     delete packageMerges;
 }
 
+void QPackagePrivate::setURI(QString URI)
+{
+    this->URI = URI;
+}
+   
+void QPackagePrivate::addPackagedElement(const QPackageableElement *packagedElement) 
+{   
+    this->packagedElements->insert(const_cast<QPackageableElement *>(packagedElement)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedMember(packagedElement); 
+}
+ 
+void QPackagePrivate::removePackagedElement(const QPackageableElement *packagedElement) 
+{    
+    this->packagedElements->remove(const_cast<QPackageableElement *>(packagedElement)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedMember(packagedElement);
+}
+  
+void QPackagePrivate::setNestingPackage(const QPackage *nestingPackage) 
+{  
+    this->nestingPackage = const_cast<QPackage *>(nestingPackage);   
+}
+  
+void QPackagePrivate::addProfileApplication(const QProfileApplication *profileApplication) 
+{   
+    this->profileApplications->insert(const_cast<QProfileApplication *>(profileApplication)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedElement(profileApplication); 
+}
+ 
+void QPackagePrivate::removeProfileApplication(const QProfileApplication *profileApplication) 
+{    
+    this->profileApplications->remove(const_cast<QProfileApplication *>(profileApplication)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(profileApplication);
+}
+   
+void QPackagePrivate::addPackageMerge(const QPackageMerge *packageMerge) 
+{   
+    this->packageMerges->insert(const_cast<QPackageMerge *>(packageMerge)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedElement(packageMerge); 
+}
+ 
+void QPackagePrivate::removePackageMerge(const QPackageMerge *packageMerge) 
+{    
+    this->packageMerges->remove(const_cast<QPackageMerge *>(packageMerge)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(packageMerge);
+}
+ 
 /*!
     \class QPackage
 
@@ -78,13 +136,20 @@ QPackagePrivate::~QPackagePrivate()
  */
 
 QPackage::QPackage(QObject *parent)
-    : QObject(parent), d_ptr(new QPackagePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QPackagePrivate;
+}
+
+QPackage::QPackage(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QPackagePrivate;
 }
 
 QPackage::~QPackage()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -92,12 +157,14 @@ QPackage::~QPackage()
  */
 QString QPackage::URI() const
 {
-    return d_ptr->URI;
+    Q_D(const QPackage);
+    return d->URI;
 }
 
 void QPackage::setURI(QString URI)
 {
-    d_ptr->URI = URI;
+    Q_D(QPackage);
+    d->setURI(URI);
 }
 
 /*!
@@ -123,17 +190,20 @@ void QPackage::removeOwnedType(const QType *ownedType)
  */
 const QSet<QPackageableElement *> *QPackage::packagedElements() const
 {
-    return d_ptr->packagedElements;
+    Q_D(const QPackage);
+    return d->packagedElements;
 }
 
 void QPackage::addPackagedElement(const QPackageableElement *packagedElement)
 {
-    d_ptr->packagedElements->insert(const_cast<QPackageableElement *>(packagedElement));
+    Q_D(QPackage);
+    d->addPackagedElement(const_cast<QPackageableElement *>(packagedElement));
 }
 
 void QPackage::removePackagedElement(const QPackageableElement *packagedElement)
 {
-    d_ptr->packagedElements->remove(const_cast<QPackageableElement *>(packagedElement));
+    Q_D(QPackage);
+    d->removePackagedElement(const_cast<QPackageableElement *>(packagedElement));
 }
 
 /*!
@@ -141,12 +211,14 @@ void QPackage::removePackagedElement(const QPackageableElement *packagedElement)
  */
 QPackage *QPackage::nestingPackage() const
 {
-    return d_ptr->nestingPackage;
+    Q_D(const QPackage);
+    return d->nestingPackage;
 }
 
 void QPackage::setNestingPackage(const QPackage *nestingPackage)
 {
-    d_ptr->nestingPackage = const_cast<QPackage *>(nestingPackage);
+    Q_D(QPackage);
+    d->setNestingPackage(const_cast<QPackage *>(nestingPackage));
 }
 
 /*!
@@ -154,17 +226,20 @@ void QPackage::setNestingPackage(const QPackage *nestingPackage)
  */
 const QSet<QProfileApplication *> *QPackage::profileApplications() const
 {
-    return d_ptr->profileApplications;
+    Q_D(const QPackage);
+    return d->profileApplications;
 }
 
 void QPackage::addProfileApplication(const QProfileApplication *profileApplication)
 {
-    d_ptr->profileApplications->insert(const_cast<QProfileApplication *>(profileApplication));
+    Q_D(QPackage);
+    d->addProfileApplication(const_cast<QProfileApplication *>(profileApplication));
 }
 
 void QPackage::removeProfileApplication(const QProfileApplication *profileApplication)
 {
-    d_ptr->profileApplications->remove(const_cast<QProfileApplication *>(profileApplication));
+    Q_D(QPackage);
+    d->removeProfileApplication(const_cast<QProfileApplication *>(profileApplication));
 }
 
 /*!
@@ -180,17 +255,20 @@ const QSet<QStereotype *> *QPackage::ownedStereotypes() const
  */
 const QSet<QPackageMerge *> *QPackage::packageMerges() const
 {
-    return d_ptr->packageMerges;
+    Q_D(const QPackage);
+    return d->packageMerges;
 }
 
 void QPackage::addPackageMerge(const QPackageMerge *packageMerge)
 {
-    d_ptr->packageMerges->insert(const_cast<QPackageMerge *>(packageMerge));
+    Q_D(QPackage);
+    d->addPackageMerge(const_cast<QPackageMerge *>(packageMerge));
 }
 
 void QPackage::removePackageMerge(const QPackageMerge *packageMerge)
 {
-    d_ptr->packageMerges->remove(const_cast<QPackageMerge *>(packageMerge));
+    Q_D(QPackage);
+    d->removePackageMerge(const_cast<QPackageMerge *>(packageMerge));
 }
 
 /*!

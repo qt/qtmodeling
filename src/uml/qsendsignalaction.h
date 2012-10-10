@@ -109,7 +109,7 @@ class Q_UML_EXPORT QSendSignalAction : public QObject, public QInvocationAction
     Q_PROPERTY(QSignal * signal READ signal WRITE setSignal)
 
     Q_DISABLE_COPY(QSendSignalAction)
-    Q_DECLARE_PRIVATE(QSendSignalAction)
+    QTUML_DECLARE_PRIVATE(QSendSignalAction)
 
 public:
     explicit QSendSignalAction(QObject *parent = 0);
@@ -122,7 +122,7 @@ public:
     void setSignal(const QSignal *signal);
 
 protected:
-    QSendSignalActionPrivate *d_ptr;
+    explicit QSendSignalAction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

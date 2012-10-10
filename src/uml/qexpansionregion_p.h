@@ -46,6 +46,10 @@
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
 
+// Base class includes
+
+#include "qstructuredactivitynode_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -57,7 +61,7 @@ QT_MODULE(QtUml)
 
 class QExpansionNode;
 
-class QExpansionRegionPrivate
+class QExpansionRegionPrivate : public QStructuredActivityNodePrivate
 {
 public:
     explicit QExpansionRegionPrivate();
@@ -66,6 +70,15 @@ public:
     QtUml::ExpansionKind mode;
     QSet<QExpansionNode *> *inputElements;
     QSet<QExpansionNode *> *outputElements;
+
+    // Attributes
+    void setMode(QtUml::ExpansionKind mode);
+
+    // Association-ends
+    void addInputElement(const QExpansionNode *inputElement);
+    void removeInputElement(const QExpansionNode *inputElement);
+    void addOutputElement(const QExpansionNode *outputElement);
+    void removeOutputElement(const QExpansionNode *outputElement);
 };
 
 QT_END_NAMESPACE_QTUML

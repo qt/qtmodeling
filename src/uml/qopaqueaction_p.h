@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qaction_p.h"
+
 // Qt includes
 #include <QtCore/QString>
 #include <QtCore/QList>
@@ -55,10 +59,9 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QInputPin;
-
 class QOutputPin;
 
-class QOpaqueActionPrivate
+class QOpaqueActionPrivate : public QActionPrivate
 {
 public:
     explicit QOpaqueActionPrivate();
@@ -68,6 +71,18 @@ public:
     QList<QString> *languages;
     QSet<QInputPin *> *inputValues;
     QSet<QOutputPin *> *outputValues;
+
+    // Attributes
+    void addBody(QString body);
+    void removeBody(QString body);
+    void addLanguage(QString language);
+    void removeLanguage(QString language);
+
+    // Association-ends
+    void addInputValue(const QInputPin *inputValue);
+    void removeInputValue(const QInputPin *inputValue);
+    void addOutputValue(const QOutputPin *outputValue);
+    void removeOutputValue(const QOutputPin *outputValue);
 };
 
 QT_END_NAMESPACE_QTUML

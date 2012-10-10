@@ -58,6 +58,27 @@ QInteractionOperandPrivate::~QInteractionOperandPrivate()
 {
     delete fragments;
 }
+  
+void QInteractionOperandPrivate::addFragment(const QInteractionFragment *fragment) 
+{   
+    this->fragments->append(const_cast<QInteractionFragment *>(fragment)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedMember(fragment); 
+}
+ 
+void QInteractionOperandPrivate::removeFragment(const QInteractionFragment *fragment) 
+{    
+    this->fragments->removeAll(const_cast<QInteractionFragment *>(fragment)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedMember(fragment);
+}
+  
+void QInteractionOperandPrivate::setGuard(const QInteractionConstraint *guard) 
+{  
+    this->guard = const_cast<QInteractionConstraint *>(guard);   
+}
 
 /*!
     \class QInteractionOperand
@@ -68,13 +89,20 @@ QInteractionOperandPrivate::~QInteractionOperandPrivate()
  */
 
 QInteractionOperand::QInteractionOperand(QObject *parent)
-    : QObject(parent), d_ptr(new QInteractionOperandPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QInteractionOperandPrivate;
+}
+
+QInteractionOperand::QInteractionOperand(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QInteractionOperandPrivate;
 }
 
 QInteractionOperand::~QInteractionOperand()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -82,17 +110,20 @@ QInteractionOperand::~QInteractionOperand()
  */
 const QList<QInteractionFragment *> *QInteractionOperand::fragments() const
 {
-    return d_ptr->fragments;
+    Q_D(const QInteractionOperand);
+    return d->fragments;
 }
 
 void QInteractionOperand::addFragment(const QInteractionFragment *fragment)
 {
-    d_ptr->fragments->append(const_cast<QInteractionFragment *>(fragment));
+    Q_D(QInteractionOperand);
+    d->addFragment(const_cast<QInteractionFragment *>(fragment));
 }
 
 void QInteractionOperand::removeFragment(const QInteractionFragment *fragment)
 {
-    d_ptr->fragments->removeAll(const_cast<QInteractionFragment *>(fragment));
+    Q_D(QInteractionOperand);
+    d->removeFragment(const_cast<QInteractionFragment *>(fragment));
 }
 
 /*!
@@ -100,12 +131,14 @@ void QInteractionOperand::removeFragment(const QInteractionFragment *fragment)
  */
 QInteractionConstraint *QInteractionOperand::guard() const
 {
-    return d_ptr->guard;
+    Q_D(const QInteractionOperand);
+    return d->guard;
 }
 
 void QInteractionOperand::setGuard(const QInteractionConstraint *guard)
 {
-    d_ptr->guard = const_cast<QInteractionConstraint *>(guard);
+    Q_D(QInteractionOperand);
+    d->setGuard(const_cast<QInteractionConstraint *>(guard));
 }
 
 #include "moc_qinteractionoperand.cpp"

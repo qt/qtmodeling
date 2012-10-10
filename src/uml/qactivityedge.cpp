@@ -77,6 +77,83 @@ QActivityEdgePrivate::~QActivityEdgePrivate()
     delete inGroup;
     delete inPartition;
 }
+  
+void QActivityEdgePrivate::setSource(const QActivityNode *source) 
+{  
+    this->source = const_cast<QActivityNode *>(source);   
+}
+  
+void QActivityEdgePrivate::addRedefinedEdge(const QActivityEdge *redefinedEdge) 
+{   
+    this->redefinedEdges->insert(const_cast<QActivityEdge *>(redefinedEdge)); 
+
+    // Adjust subsetted property(ies)
+    addRedefinedElement(redefinedEdge); 
+}
+ 
+void QActivityEdgePrivate::removeRedefinedEdge(const QActivityEdge *redefinedEdge) 
+{    
+    this->redefinedEdges->remove(const_cast<QActivityEdge *>(redefinedEdge)); 
+
+    // Adjust subsetted property(ies)
+    removeRedefinedElement(redefinedEdge);
+}
+  
+void QActivityEdgePrivate::addInGroup(const QActivityGroup *inGroup) 
+{   
+    this->inGroup->insert(const_cast<QActivityGroup *>(inGroup));  
+}
+ 
+void QActivityEdgePrivate::removeInGroup(const QActivityGroup *inGroup) 
+{    
+    this->inGroup->remove(const_cast<QActivityGroup *>(inGroup)); 
+}
+  
+void QActivityEdgePrivate::setGuard(const QValueSpecification *guard) 
+{  
+    this->guard = const_cast<QValueSpecification *>(guard);   
+}
+  
+void QActivityEdgePrivate::addInPartition(const QActivityPartition *inPartition) 
+{   
+    this->inPartition->insert(const_cast<QActivityPartition *>(inPartition)); 
+
+    // Adjust subsetted property(ies)
+    addInGroup(inPartition); 
+}
+ 
+void QActivityEdgePrivate::removeInPartition(const QActivityPartition *inPartition) 
+{    
+    this->inPartition->remove(const_cast<QActivityPartition *>(inPartition)); 
+
+    // Adjust subsetted property(ies)
+    removeInGroup(inPartition);
+}
+  
+void QActivityEdgePrivate::setActivity(const QActivity *activity) 
+{  
+    this->activity = const_cast<QActivity *>(activity);   
+}
+  
+void QActivityEdgePrivate::setInterrupts(const QInterruptibleActivityRegion *interrupts) 
+{  
+    this->interrupts = const_cast<QInterruptibleActivityRegion *>(interrupts);   
+}
+  
+void QActivityEdgePrivate::setWeight(const QValueSpecification *weight) 
+{  
+    this->weight = const_cast<QValueSpecification *>(weight);   
+}
+  
+void QActivityEdgePrivate::setInStructuredNode(const QStructuredActivityNode *inStructuredNode) 
+{  
+    this->inStructuredNode = const_cast<QStructuredActivityNode *>(inStructuredNode);   
+}
+  
+void QActivityEdgePrivate::setTarget(const QActivityNode *target) 
+{  
+    this->target = const_cast<QActivityNode *>(target);   
+}
 
 /*!
     \class QActivityEdge
@@ -87,13 +164,12 @@ QActivityEdgePrivate::~QActivityEdgePrivate()
  */
 
 QActivityEdge::QActivityEdge()
-    : d_ptr(new QActivityEdgePrivate)
 {
+    d_umlptr = new QActivityEdgePrivate;
 }
 
 QActivityEdge::~QActivityEdge()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -101,12 +177,14 @@ QActivityEdge::~QActivityEdge()
  */
 QActivityNode *QActivityEdge::source() const
 {
-    return d_ptr->source;
+    Q_D(const QActivityEdge);
+    return d->source;
 }
 
 void QActivityEdge::setSource(const QActivityNode *source)
 {
-    d_ptr->source = const_cast<QActivityNode *>(source);
+    Q_D(QActivityEdge);
+    d->setSource(const_cast<QActivityNode *>(source));
 }
 
 /*!
@@ -114,17 +192,20 @@ void QActivityEdge::setSource(const QActivityNode *source)
  */
 const QSet<QActivityEdge *> *QActivityEdge::redefinedEdges() const
 {
-    return d_ptr->redefinedEdges;
+    Q_D(const QActivityEdge);
+    return d->redefinedEdges;
 }
 
 void QActivityEdge::addRedefinedEdge(const QActivityEdge *redefinedEdge)
 {
-    d_ptr->redefinedEdges->insert(const_cast<QActivityEdge *>(redefinedEdge));
+    Q_D(QActivityEdge);
+    d->addRedefinedEdge(const_cast<QActivityEdge *>(redefinedEdge));
 }
 
 void QActivityEdge::removeRedefinedEdge(const QActivityEdge *redefinedEdge)
 {
-    d_ptr->redefinedEdges->remove(const_cast<QActivityEdge *>(redefinedEdge));
+    Q_D(QActivityEdge);
+    d->removeRedefinedEdge(const_cast<QActivityEdge *>(redefinedEdge));
 }
 
 /*!
@@ -132,7 +213,8 @@ void QActivityEdge::removeRedefinedEdge(const QActivityEdge *redefinedEdge)
  */
 const QSet<QActivityGroup *> *QActivityEdge::inGroup() const
 {
-    return d_ptr->inGroup;
+    Q_D(const QActivityEdge);
+    return d->inGroup;
 }
 
 /*!
@@ -140,12 +222,14 @@ const QSet<QActivityGroup *> *QActivityEdge::inGroup() const
  */
 QValueSpecification *QActivityEdge::guard() const
 {
-    return d_ptr->guard;
+    Q_D(const QActivityEdge);
+    return d->guard;
 }
 
 void QActivityEdge::setGuard(const QValueSpecification *guard)
 {
-    d_ptr->guard = const_cast<QValueSpecification *>(guard);
+    Q_D(QActivityEdge);
+    d->setGuard(const_cast<QValueSpecification *>(guard));
 }
 
 /*!
@@ -153,17 +237,20 @@ void QActivityEdge::setGuard(const QValueSpecification *guard)
  */
 const QSet<QActivityPartition *> *QActivityEdge::inPartition() const
 {
-    return d_ptr->inPartition;
+    Q_D(const QActivityEdge);
+    return d->inPartition;
 }
 
 void QActivityEdge::addInPartition(const QActivityPartition *inPartition)
 {
-    d_ptr->inPartition->insert(const_cast<QActivityPartition *>(inPartition));
+    Q_D(QActivityEdge);
+    d->addInPartition(const_cast<QActivityPartition *>(inPartition));
 }
 
 void QActivityEdge::removeInPartition(const QActivityPartition *inPartition)
 {
-    d_ptr->inPartition->remove(const_cast<QActivityPartition *>(inPartition));
+    Q_D(QActivityEdge);
+    d->removeInPartition(const_cast<QActivityPartition *>(inPartition));
 }
 
 /*!
@@ -171,12 +258,14 @@ void QActivityEdge::removeInPartition(const QActivityPartition *inPartition)
  */
 QActivity *QActivityEdge::activity() const
 {
-    return d_ptr->activity;
+    Q_D(const QActivityEdge);
+    return d->activity;
 }
 
 void QActivityEdge::setActivity(const QActivity *activity)
 {
-    d_ptr->activity = const_cast<QActivity *>(activity);
+    Q_D(QActivityEdge);
+    d->setActivity(const_cast<QActivity *>(activity));
 }
 
 /*!
@@ -184,12 +273,14 @@ void QActivityEdge::setActivity(const QActivity *activity)
  */
 QInterruptibleActivityRegion *QActivityEdge::interrupts() const
 {
-    return d_ptr->interrupts;
+    Q_D(const QActivityEdge);
+    return d->interrupts;
 }
 
 void QActivityEdge::setInterrupts(const QInterruptibleActivityRegion *interrupts)
 {
-    d_ptr->interrupts = const_cast<QInterruptibleActivityRegion *>(interrupts);
+    Q_D(QActivityEdge);
+    d->setInterrupts(const_cast<QInterruptibleActivityRegion *>(interrupts));
 }
 
 /*!
@@ -197,12 +288,14 @@ void QActivityEdge::setInterrupts(const QInterruptibleActivityRegion *interrupts
  */
 QValueSpecification *QActivityEdge::weight() const
 {
-    return d_ptr->weight;
+    Q_D(const QActivityEdge);
+    return d->weight;
 }
 
 void QActivityEdge::setWeight(const QValueSpecification *weight)
 {
-    d_ptr->weight = const_cast<QValueSpecification *>(weight);
+    Q_D(QActivityEdge);
+    d->setWeight(const_cast<QValueSpecification *>(weight));
 }
 
 /*!
@@ -210,12 +303,14 @@ void QActivityEdge::setWeight(const QValueSpecification *weight)
  */
 QStructuredActivityNode *QActivityEdge::inStructuredNode() const
 {
-    return d_ptr->inStructuredNode;
+    Q_D(const QActivityEdge);
+    return d->inStructuredNode;
 }
 
 void QActivityEdge::setInStructuredNode(const QStructuredActivityNode *inStructuredNode)
 {
-    d_ptr->inStructuredNode = const_cast<QStructuredActivityNode *>(inStructuredNode);
+    Q_D(QActivityEdge);
+    d->setInStructuredNode(const_cast<QStructuredActivityNode *>(inStructuredNode));
 }
 
 /*!
@@ -223,12 +318,14 @@ void QActivityEdge::setInStructuredNode(const QStructuredActivityNode *inStructu
  */
 QActivityNode *QActivityEdge::target() const
 {
-    return d_ptr->target;
+    Q_D(const QActivityEdge);
+    return d->target;
 }
 
 void QActivityEdge::setTarget(const QActivityNode *target)
 {
-    d_ptr->target = const_cast<QActivityNode *>(target);
+    Q_D(QActivityEdge);
+    d->setTarget(const_cast<QActivityNode *>(target));
 }
 
 QT_END_NAMESPACE_QTUML

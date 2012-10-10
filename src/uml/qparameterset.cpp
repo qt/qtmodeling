@@ -59,6 +59,32 @@ QParameterSetPrivate::~QParameterSetPrivate()
     delete parameters;
     delete conditions;
 }
+  
+void QParameterSetPrivate::addParameter(const QParameter *parameter) 
+{   
+    this->parameters->insert(const_cast<QParameter *>(parameter));  
+}
+ 
+void QParameterSetPrivate::removeParameter(const QParameter *parameter) 
+{    
+    this->parameters->remove(const_cast<QParameter *>(parameter)); 
+}
+  
+void QParameterSetPrivate::addCondition(const QConstraint *condition) 
+{   
+    this->conditions->insert(const_cast<QConstraint *>(condition)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedElement(condition); 
+}
+ 
+void QParameterSetPrivate::removeCondition(const QConstraint *condition) 
+{    
+    this->conditions->remove(const_cast<QConstraint *>(condition)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(condition);
+}
 
 /*!
     \class QParameterSet
@@ -69,13 +95,20 @@ QParameterSetPrivate::~QParameterSetPrivate()
  */
 
 QParameterSet::QParameterSet(QObject *parent)
-    : QObject(parent), d_ptr(new QParameterSetPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QParameterSetPrivate;
+}
+
+QParameterSet::QParameterSet(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QParameterSetPrivate;
 }
 
 QParameterSet::~QParameterSet()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -83,17 +116,20 @@ QParameterSet::~QParameterSet()
  */
 const QSet<QParameter *> *QParameterSet::parameters() const
 {
-    return d_ptr->parameters;
+    Q_D(const QParameterSet);
+    return d->parameters;
 }
 
 void QParameterSet::addParameter(const QParameter *parameter)
 {
-    d_ptr->parameters->insert(const_cast<QParameter *>(parameter));
+    Q_D(QParameterSet);
+    d->addParameter(const_cast<QParameter *>(parameter));
 }
 
 void QParameterSet::removeParameter(const QParameter *parameter)
 {
-    d_ptr->parameters->remove(const_cast<QParameter *>(parameter));
+    Q_D(QParameterSet);
+    d->removeParameter(const_cast<QParameter *>(parameter));
 }
 
 /*!
@@ -101,17 +137,20 @@ void QParameterSet::removeParameter(const QParameter *parameter)
  */
 const QSet<QConstraint *> *QParameterSet::conditions() const
 {
-    return d_ptr->conditions;
+    Q_D(const QParameterSet);
+    return d->conditions;
 }
 
 void QParameterSet::addCondition(const QConstraint *condition)
 {
-    d_ptr->conditions->insert(const_cast<QConstraint *>(condition));
+    Q_D(QParameterSet);
+    d->addCondition(const_cast<QConstraint *>(condition));
 }
 
 void QParameterSet::removeCondition(const QConstraint *condition)
 {
-    d_ptr->conditions->remove(const_cast<QConstraint *>(condition));
+    Q_D(QParameterSet);
+    d->removeCondition(const_cast<QConstraint *>(condition));
 }
 
 #include "moc_qparameterset.cpp"

@@ -68,7 +68,7 @@ class Q_UML_EXPORT QStereotype : public QClass
     Q_PROPERTY(QProfile * profile READ profile)
 
     Q_DISABLE_COPY(QStereotype)
-    Q_DECLARE_PRIVATE(QStereotype)
+    QTUML_DECLARE_PRIVATE(QStereotype)
 
 public:
     explicit QStereotype(QObject *parent = 0);
@@ -84,7 +84,7 @@ public:
     QProfile *containingProfile() const;
 
 protected:
-    QStereotypePrivate *d_ptr;
+    explicit QStereotype(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

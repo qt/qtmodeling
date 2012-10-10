@@ -62,13 +62,12 @@ QWriteLinkActionPrivate::~QWriteLinkActionPrivate()
  */
 
 QWriteLinkAction::QWriteLinkAction()
-    : d_ptr(new QWriteLinkActionPrivate)
 {
+    d_umlptr = new QWriteLinkActionPrivate;
 }
 
 QWriteLinkAction::~QWriteLinkAction()
 {
-    delete d_ptr;
 }
 
 QT_END_NAMESPACE_QTUML

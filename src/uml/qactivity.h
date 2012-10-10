@@ -88,7 +88,7 @@ class Q_UML_EXPORT QActivity : public QBehavior
     Q_PROPERTY(const QSet<QActivityEdge *> * edges READ edges)
 
     Q_DISABLE_COPY(QActivity)
-    Q_DECLARE_PRIVATE(QActivity)
+    QTUML_DECLARE_PRIVATE(QActivity)
 
 public:
     explicit QActivity(QObject *parent = 0);
@@ -121,7 +121,7 @@ public:
     void removeEdge(const QActivityEdge *edge);
 
 protected:
-    QActivityPrivate *d_ptr;
+    explicit QActivity(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

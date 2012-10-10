@@ -57,6 +57,16 @@ QStateInvariantPrivate::QStateInvariantPrivate() :
 QStateInvariantPrivate::~QStateInvariantPrivate()
 {
 }
+  
+void QStateInvariantPrivate::setInvariant(const QConstraint *invariant) 
+{  
+    this->invariant = const_cast<QConstraint *>(invariant);   
+}
+  
+void QStateInvariantPrivate::setCovered(const QLifeline *covered) 
+{  
+    this->covered = const_cast<QLifeline *>(covered);   
+}
 
 /*!
     \class QStateInvariant
@@ -67,13 +77,20 @@ QStateInvariantPrivate::~QStateInvariantPrivate()
  */
 
 QStateInvariant::QStateInvariant(QObject *parent)
-    : QObject(parent), d_ptr(new QStateInvariantPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QStateInvariantPrivate;
+}
+
+QStateInvariant::QStateInvariant(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QStateInvariantPrivate;
 }
 
 QStateInvariant::~QStateInvariant()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -81,12 +98,14 @@ QStateInvariant::~QStateInvariant()
  */
 QConstraint *QStateInvariant::invariant() const
 {
-    return d_ptr->invariant;
+    Q_D(const QStateInvariant);
+    return d->invariant;
 }
 
 void QStateInvariant::setInvariant(const QConstraint *invariant)
 {
-    d_ptr->invariant = const_cast<QConstraint *>(invariant);
+    Q_D(QStateInvariant);
+    d->setInvariant(const_cast<QConstraint *>(invariant));
 }
 
 /*!
@@ -94,12 +113,14 @@ void QStateInvariant::setInvariant(const QConstraint *invariant)
  */
 QLifeline *QStateInvariant::covered() const
 {
-    return d_ptr->covered;
+    Q_D(const QStateInvariant);
+    return d->covered;
 }
 
 void QStateInvariant::setCovered(const QLifeline *covered)
 {
-    d_ptr->covered = const_cast<QLifeline *>(covered);
+    Q_D(QStateInvariant);
+    d->setCovered(const_cast<QLifeline *>(covered));
 }
 
 #include "moc_qstateinvariant.cpp"

@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qaction_p.h"
+
 // Qt includes
 #include <QtCore/QList>
 
@@ -53,10 +57,9 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QInputPin;
-
 class QPort;
 
-class QInvocationActionPrivate
+class QInvocationActionPrivate : public QActionPrivate
 {
 public:
     explicit QInvocationActionPrivate();
@@ -64,6 +67,11 @@ public:
 
     QList<QInputPin *> *arguments;
     QPort *onPort;
+
+    // Association-ends
+    void addArgument(const QInputPin *argument);
+    void removeArgument(const QInputPin *argument);
+    void setOnPort(const QPort *onPort);
 };
 
 QT_END_NAMESPACE_QTUML

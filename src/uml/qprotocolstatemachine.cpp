@@ -56,6 +56,22 @@ QProtocolStateMachinePrivate::~QProtocolStateMachinePrivate()
 {
     delete conformance;
 }
+  
+void QProtocolStateMachinePrivate::addConformance(const QProtocolConformance *conformance) 
+{   
+    this->conformance->insert(const_cast<QProtocolConformance *>(conformance)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedElement(conformance); 
+}
+ 
+void QProtocolStateMachinePrivate::removeConformance(const QProtocolConformance *conformance) 
+{    
+    this->conformance->remove(const_cast<QProtocolConformance *>(conformance)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(conformance);
+}
 
 /*!
     \class QProtocolStateMachine
@@ -66,13 +82,20 @@ QProtocolStateMachinePrivate::~QProtocolStateMachinePrivate()
  */
 
 QProtocolStateMachine::QProtocolStateMachine(QObject *parent)
-    : QStateMachine(parent), d_ptr(new QProtocolStateMachinePrivate)
+    : QStateMachine(false, parent)
 {
+    d_umlptr = new QProtocolStateMachinePrivate;
+}
+
+QProtocolStateMachine::QProtocolStateMachine(bool createPimpl, QObject *parent)
+    : QStateMachine(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QProtocolStateMachinePrivate;
 }
 
 QProtocolStateMachine::~QProtocolStateMachine()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -80,17 +103,20 @@ QProtocolStateMachine::~QProtocolStateMachine()
  */
 const QSet<QProtocolConformance *> *QProtocolStateMachine::conformance() const
 {
-    return d_ptr->conformance;
+    Q_D(const QProtocolStateMachine);
+    return d->conformance;
 }
 
 void QProtocolStateMachine::addConformance(const QProtocolConformance *conformance)
 {
-    d_ptr->conformance->insert(const_cast<QProtocolConformance *>(conformance));
+    Q_D(QProtocolStateMachine);
+    d->addConformance(const_cast<QProtocolConformance *>(conformance));
 }
 
 void QProtocolStateMachine::removeConformance(const QProtocolConformance *conformance)
 {
-    d_ptr->conformance->remove(const_cast<QProtocolConformance *>(conformance));
+    Q_D(QProtocolStateMachine);
+    d->removeConformance(const_cast<QProtocolConformance *>(conformance));
 }
 
 #include "moc_qprotocolstatemachine.cpp"

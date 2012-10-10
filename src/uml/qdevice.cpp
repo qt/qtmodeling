@@ -62,13 +62,20 @@ QDevicePrivate::~QDevicePrivate()
  */
 
 QDevice::QDevice(QObject *parent)
-    : QNode(parent), d_ptr(new QDevicePrivate)
+    : QNode(false, parent)
 {
+    d_umlptr = new QDevicePrivate;
+}
+
+QDevice::QDevice(bool createPimpl, QObject *parent)
+    : QNode(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QDevicePrivate;
 }
 
 QDevice::~QDevice()
 {
-    delete d_ptr;
 }
 
 #include "moc_qdevice.cpp"

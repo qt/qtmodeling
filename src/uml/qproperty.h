@@ -144,7 +144,7 @@ class Q_UML_EXPORT QProperty : public QObject, public QStructuralFeature, public
     Q_PROPERTY(QInterface * interface READ interface WRITE setInterface)
 
     Q_DISABLE_COPY(QProperty)
-    Q_DECLARE_PRIVATE(QProperty)
+    QTUML_DECLARE_PRIVATE(QProperty)
 
 public:
     explicit QProperty(QObject *parent = 0);
@@ -201,7 +201,7 @@ public:
     const QSet<QType *> *subsettingContext() const;
 
 protected:
-    QPropertyPrivate *d_ptr;
+    explicit QProperty(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

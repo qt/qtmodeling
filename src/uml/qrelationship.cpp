@@ -54,6 +54,16 @@ QRelationshipPrivate::~QRelationshipPrivate()
 {
     delete relatedElements;
 }
+  
+void QRelationshipPrivate::addRelatedElement(const QElement *relatedElement) 
+{   
+    this->relatedElements->insert(const_cast<QElement *>(relatedElement));  
+}
+ 
+void QRelationshipPrivate::removeRelatedElement(const QElement *relatedElement) 
+{    
+    this->relatedElements->remove(const_cast<QElement *>(relatedElement)); 
+}
 
 /*!
     \class QRelationship
@@ -64,13 +74,12 @@ QRelationshipPrivate::~QRelationshipPrivate()
  */
 
 QRelationship::QRelationship()
-    : d_ptr(new QRelationshipPrivate)
 {
+    d_umlptr = new QRelationshipPrivate;
 }
 
 QRelationship::~QRelationship()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -78,7 +87,8 @@ QRelationship::~QRelationship()
  */
 const QSet<QElement *> *QRelationship::relatedElements() const
 {
-    return d_ptr->relatedElements;
+    Q_D(const QRelationship);
+    return d->relatedElements;
 }
 
 QT_END_NAMESPACE_QTUML

@@ -82,7 +82,7 @@ class Q_UML_EXPORT QStateMachine : public QBehavior
     Q_PROPERTY(const QSet<QRegion *> * regions READ regions)
 
     Q_DISABLE_COPY(QStateMachine)
-    Q_DECLARE_PRIVATE(QStateMachine)
+    QTUML_DECLARE_PRIVATE(QStateMachine)
 
 public:
     explicit QStateMachine(QObject *parent = 0);
@@ -109,7 +109,7 @@ public:
     bool isRedefinitionContextValid(const QStateMachine *redefined) const;
 
 protected:
-    QStateMachinePrivate *d_ptr;
+    explicit QStateMachine(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

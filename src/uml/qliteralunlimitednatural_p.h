@@ -43,19 +43,27 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qliteralspecification_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QLiteralUnlimitedNaturalPrivate
+
+class QLiteralUnlimitedNaturalPrivate : public QLiteralSpecificationPrivate
 {
 public:
     explicit QLiteralUnlimitedNaturalPrivate();
     virtual ~QLiteralUnlimitedNaturalPrivate();
 
     qint32 value;
+
+    // Attributes
+    void setValue(qint32 value);
 };
 
 QT_END_NAMESPACE_QTUML

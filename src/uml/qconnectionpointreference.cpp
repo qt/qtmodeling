@@ -60,6 +60,31 @@ QConnectionPointReferencePrivate::~QConnectionPointReferencePrivate()
     delete exits;
     delete entries;
 }
+  
+void QConnectionPointReferencePrivate::addExit(const QPseudostate *exit) 
+{   
+    this->exits->insert(const_cast<QPseudostate *>(exit));  
+}
+ 
+void QConnectionPointReferencePrivate::removeExit(const QPseudostate *exit) 
+{    
+    this->exits->remove(const_cast<QPseudostate *>(exit)); 
+}
+  
+void QConnectionPointReferencePrivate::setState(const QState *state) 
+{  
+    this->state = const_cast<QState *>(state);   
+}
+  
+void QConnectionPointReferencePrivate::addEntry(const QPseudostate *entry) 
+{   
+    this->entries->insert(const_cast<QPseudostate *>(entry));  
+}
+ 
+void QConnectionPointReferencePrivate::removeEntry(const QPseudostate *entry) 
+{    
+    this->entries->remove(const_cast<QPseudostate *>(entry)); 
+}
 
 /*!
     \class QConnectionPointReference
@@ -70,13 +95,20 @@ QConnectionPointReferencePrivate::~QConnectionPointReferencePrivate()
  */
 
 QConnectionPointReference::QConnectionPointReference(QObject *parent)
-    : QObject(parent), d_ptr(new QConnectionPointReferencePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QConnectionPointReferencePrivate;
+}
+
+QConnectionPointReference::QConnectionPointReference(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QConnectionPointReferencePrivate;
 }
 
 QConnectionPointReference::~QConnectionPointReference()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -84,17 +116,20 @@ QConnectionPointReference::~QConnectionPointReference()
  */
 const QSet<QPseudostate *> *QConnectionPointReference::exits() const
 {
-    return d_ptr->exits;
+    Q_D(const QConnectionPointReference);
+    return d->exits;
 }
 
 void QConnectionPointReference::addExit(const QPseudostate *exit)
 {
-    d_ptr->exits->insert(const_cast<QPseudostate *>(exit));
+    Q_D(QConnectionPointReference);
+    d->addExit(const_cast<QPseudostate *>(exit));
 }
 
 void QConnectionPointReference::removeExit(const QPseudostate *exit)
 {
-    d_ptr->exits->remove(const_cast<QPseudostate *>(exit));
+    Q_D(QConnectionPointReference);
+    d->removeExit(const_cast<QPseudostate *>(exit));
 }
 
 /*!
@@ -102,12 +137,14 @@ void QConnectionPointReference::removeExit(const QPseudostate *exit)
  */
 QState *QConnectionPointReference::state() const
 {
-    return d_ptr->state;
+    Q_D(const QConnectionPointReference);
+    return d->state;
 }
 
 void QConnectionPointReference::setState(const QState *state)
 {
-    d_ptr->state = const_cast<QState *>(state);
+    Q_D(QConnectionPointReference);
+    d->setState(const_cast<QState *>(state));
 }
 
 /*!
@@ -115,17 +152,20 @@ void QConnectionPointReference::setState(const QState *state)
  */
 const QSet<QPseudostate *> *QConnectionPointReference::entries() const
 {
-    return d_ptr->entries;
+    Q_D(const QConnectionPointReference);
+    return d->entries;
 }
 
 void QConnectionPointReference::addEntry(const QPseudostate *entry)
 {
-    d_ptr->entries->insert(const_cast<QPseudostate *>(entry));
+    Q_D(QConnectionPointReference);
+    d->addEntry(const_cast<QPseudostate *>(entry));
 }
 
 void QConnectionPointReference::removeEntry(const QPseudostate *entry)
 {
-    d_ptr->entries->remove(const_cast<QPseudostate *>(entry));
+    Q_D(QConnectionPointReference);
+    d->removeEntry(const_cast<QPseudostate *>(entry));
 }
 
 #include "moc_qconnectionpointreference.cpp"

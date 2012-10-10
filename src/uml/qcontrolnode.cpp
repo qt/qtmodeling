@@ -62,13 +62,12 @@ QControlNodePrivate::~QControlNodePrivate()
  */
 
 QControlNode::QControlNode()
-    : d_ptr(new QControlNodePrivate)
 {
+    d_umlptr = new QControlNodePrivate;
 }
 
 QControlNode::~QControlNode()
 {
-    delete d_ptr;
 }
 
 QT_END_NAMESPACE_QTUML

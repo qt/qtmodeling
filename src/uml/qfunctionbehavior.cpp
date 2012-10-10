@@ -62,13 +62,20 @@ QFunctionBehaviorPrivate::~QFunctionBehaviorPrivate()
  */
 
 QFunctionBehavior::QFunctionBehavior(QObject *parent)
-    : QOpaqueBehavior(parent), d_ptr(new QFunctionBehaviorPrivate)
+    : QOpaqueBehavior(false, parent)
 {
+    d_umlptr = new QFunctionBehaviorPrivate;
+}
+
+QFunctionBehavior::QFunctionBehavior(bool createPimpl, QObject *parent)
+    : QOpaqueBehavior(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QFunctionBehaviorPrivate;
 }
 
 QFunctionBehavior::~QFunctionBehavior()
 {
-    delete d_ptr;
 }
 
 #include "moc_qfunctionbehavior.cpp"

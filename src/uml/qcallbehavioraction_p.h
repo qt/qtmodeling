@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qcallaction_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,13 +55,16 @@ QT_MODULE(QtUml)
 
 class QBehavior;
 
-class QCallBehaviorActionPrivate
+class QCallBehaviorActionPrivate : public QCallActionPrivate
 {
 public:
     explicit QCallBehaviorActionPrivate();
     virtual ~QCallBehaviorActionPrivate();
 
     QBehavior *behavior;
+
+    // Association-ends
+    void setBehavior(const QBehavior *behavior);
 };
 
 QT_END_NAMESPACE_QTUML

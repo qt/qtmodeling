@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qdirectedrelationship_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,12 +57,10 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QTemplateableElement;
-
 class QTemplateParameterSubstitution;
-
 class QTemplateSignature;
 
-class QTemplateBindingPrivate
+class QTemplateBindingPrivate : public QDirectedRelationshipPrivate
 {
 public:
     explicit QTemplateBindingPrivate();
@@ -67,6 +69,12 @@ public:
     QTemplateSignature *signature;
     QTemplateableElement *boundElement;
     QSet<QTemplateParameterSubstitution *> *parameterSubstitutions;
+
+    // Association-ends
+    void setSignature(const QTemplateSignature *signature);
+    void setBoundElement(const QTemplateableElement *boundElement);
+    void addParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution);
+    void removeParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution);
 };
 
 QT_END_NAMESPACE_QTUML

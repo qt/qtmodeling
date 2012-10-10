@@ -54,7 +54,7 @@ QEncapsulatedClassifierPrivate::QEncapsulatedClassifierPrivate()
 QEncapsulatedClassifierPrivate::~QEncapsulatedClassifierPrivate()
 {
 }
-
+ 
 /*!
     \class QEncapsulatedClassifier
 
@@ -64,13 +64,12 @@ QEncapsulatedClassifierPrivate::~QEncapsulatedClassifierPrivate()
  */
 
 QEncapsulatedClassifier::QEncapsulatedClassifier()
-    : d_ptr(new QEncapsulatedClassifierPrivate)
 {
+    d_umlptr = new QEncapsulatedClassifierPrivate;
 }
 
 QEncapsulatedClassifier::~QEncapsulatedClassifier()
 {
-    delete d_ptr;
 }
 
 /*!

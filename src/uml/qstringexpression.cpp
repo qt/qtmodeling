@@ -57,6 +57,27 @@ QStringExpressionPrivate::~QStringExpressionPrivate()
 {
     delete subExpressions;
 }
+  
+void QStringExpressionPrivate::setOwningExpression(const QStringExpression *owningExpression) 
+{  
+    this->owningExpression = const_cast<QStringExpression *>(owningExpression);   
+}
+  
+void QStringExpressionPrivate::addSubExpression(const QStringExpression *subExpression) 
+{   
+    this->subExpressions->insert(const_cast<QStringExpression *>(subExpression)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedElement(subExpression); 
+}
+ 
+void QStringExpressionPrivate::removeSubExpression(const QStringExpression *subExpression) 
+{    
+    this->subExpressions->remove(const_cast<QStringExpression *>(subExpression)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(subExpression);
+}
 
 /*!
     \class QStringExpression
@@ -67,13 +88,20 @@ QStringExpressionPrivate::~QStringExpressionPrivate()
  */
 
 QStringExpression::QStringExpression(QObject *parent)
-    : QExpression(parent), d_ptr(new QStringExpressionPrivate)
+    : QExpression(false, parent)
 {
+    d_umlptr = new QStringExpressionPrivate;
+}
+
+QStringExpression::QStringExpression(bool createPimpl, QObject *parent)
+    : QExpression(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QStringExpressionPrivate;
 }
 
 QStringExpression::~QStringExpression()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -81,12 +109,14 @@ QStringExpression::~QStringExpression()
  */
 QStringExpression *QStringExpression::owningExpression() const
 {
-    return d_ptr->owningExpression;
+    Q_D(const QStringExpression);
+    return d->owningExpression;
 }
 
 void QStringExpression::setOwningExpression(const QStringExpression *owningExpression)
 {
-    d_ptr->owningExpression = const_cast<QStringExpression *>(owningExpression);
+    Q_D(QStringExpression);
+    d->setOwningExpression(const_cast<QStringExpression *>(owningExpression));
 }
 
 /*!
@@ -94,17 +124,20 @@ void QStringExpression::setOwningExpression(const QStringExpression *owningExpre
  */
 const QSet<QStringExpression *> *QStringExpression::subExpressions() const
 {
-    return d_ptr->subExpressions;
+    Q_D(const QStringExpression);
+    return d->subExpressions;
 }
 
 void QStringExpression::addSubExpression(const QStringExpression *subExpression)
 {
-    d_ptr->subExpressions->insert(const_cast<QStringExpression *>(subExpression));
+    Q_D(QStringExpression);
+    d->addSubExpression(const_cast<QStringExpression *>(subExpression));
 }
 
 void QStringExpression::removeSubExpression(const QStringExpression *subExpression)
 {
-    d_ptr->subExpressions->remove(const_cast<QStringExpression *>(subExpression));
+    Q_D(QStringExpression);
+    d->removeSubExpression(const_cast<QStringExpression *>(subExpression));
 }
 
 /*!

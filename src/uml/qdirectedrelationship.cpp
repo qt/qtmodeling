@@ -59,6 +59,38 @@ QDirectedRelationshipPrivate::~QDirectedRelationshipPrivate()
     delete sources;
     delete targets;
 }
+  
+void QDirectedRelationshipPrivate::addSource(const QElement *source) 
+{   
+    this->sources->insert(const_cast<QElement *>(source)); 
+
+    // Adjust subsetted property(ies)
+    addRelatedElement(source); 
+}
+ 
+void QDirectedRelationshipPrivate::removeSource(const QElement *source) 
+{    
+    this->sources->remove(const_cast<QElement *>(source)); 
+
+    // Adjust subsetted property(ies)
+    removeRelatedElement(source);
+}
+  
+void QDirectedRelationshipPrivate::addTarget(const QElement *target) 
+{   
+    this->targets->insert(const_cast<QElement *>(target)); 
+
+    // Adjust subsetted property(ies)
+    addRelatedElement(target); 
+}
+ 
+void QDirectedRelationshipPrivate::removeTarget(const QElement *target) 
+{    
+    this->targets->remove(const_cast<QElement *>(target)); 
+
+    // Adjust subsetted property(ies)
+    removeRelatedElement(target);
+}
 
 /*!
     \class QDirectedRelationship
@@ -69,13 +101,12 @@ QDirectedRelationshipPrivate::~QDirectedRelationshipPrivate()
  */
 
 QDirectedRelationship::QDirectedRelationship()
-    : d_ptr(new QDirectedRelationshipPrivate)
 {
+    d_umlptr = new QDirectedRelationshipPrivate;
 }
 
 QDirectedRelationship::~QDirectedRelationship()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -83,7 +114,8 @@ QDirectedRelationship::~QDirectedRelationship()
  */
 const QSet<QElement *> *QDirectedRelationship::sources() const
 {
-    return d_ptr->sources;
+    Q_D(const QDirectedRelationship);
+    return d->sources;
 }
 
 /*!
@@ -91,7 +123,8 @@ const QSet<QElement *> *QDirectedRelationship::sources() const
  */
 const QSet<QElement *> *QDirectedRelationship::targets() const
 {
-    return d_ptr->targets;
+    Q_D(const QDirectedRelationship);
+    return d->targets;
 }
 
 QT_END_NAMESPACE_QTUML

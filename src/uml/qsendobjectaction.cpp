@@ -56,6 +56,16 @@ QSendObjectActionPrivate::QSendObjectActionPrivate() :
 QSendObjectActionPrivate::~QSendObjectActionPrivate()
 {
 }
+  
+void QSendObjectActionPrivate::setRequest(const QInputPin *request) 
+{  
+    this->request = const_cast<QInputPin *>(request);   
+}
+  
+void QSendObjectActionPrivate::setTarget(const QInputPin *target) 
+{  
+    this->target = const_cast<QInputPin *>(target);   
+}
 
 /*!
     \class QSendObjectAction
@@ -66,13 +76,20 @@ QSendObjectActionPrivate::~QSendObjectActionPrivate()
  */
 
 QSendObjectAction::QSendObjectAction(QObject *parent)
-    : QObject(parent), d_ptr(new QSendObjectActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QSendObjectActionPrivate;
+}
+
+QSendObjectAction::QSendObjectAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QSendObjectActionPrivate;
 }
 
 QSendObjectAction::~QSendObjectAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -80,12 +97,14 @@ QSendObjectAction::~QSendObjectAction()
  */
 QInputPin *QSendObjectAction::request() const
 {
-    return d_ptr->request;
+    Q_D(const QSendObjectAction);
+    return d->request;
 }
 
 void QSendObjectAction::setRequest(const QInputPin *request)
 {
-    d_ptr->request = const_cast<QInputPin *>(request);
+    Q_D(QSendObjectAction);
+    d->setRequest(const_cast<QInputPin *>(request));
 }
 
 /*!
@@ -93,12 +112,14 @@ void QSendObjectAction::setRequest(const QInputPin *request)
  */
 QInputPin *QSendObjectAction::target() const
 {
-    return d_ptr->target;
+    Q_D(const QSendObjectAction);
+    return d->target;
 }
 
 void QSendObjectAction::setTarget(const QInputPin *target)
 {
-    d_ptr->target = const_cast<QInputPin *>(target);
+    Q_D(QSendObjectAction);
+    d->setTarget(const_cast<QInputPin *>(target));
 }
 
 #include "moc_qsendobjectaction.cpp"

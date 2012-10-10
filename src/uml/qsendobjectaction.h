@@ -107,7 +107,7 @@ class Q_UML_EXPORT QSendObjectAction : public QObject, public QInvocationAction
     Q_PROPERTY(QInputPin * target READ target WRITE setTarget)
 
     Q_DISABLE_COPY(QSendObjectAction)
-    Q_DECLARE_PRIVATE(QSendObjectAction)
+    QTUML_DECLARE_PRIVATE(QSendObjectAction)
 
 public:
     explicit QSendObjectAction(QObject *parent = 0);
@@ -120,7 +120,7 @@ public:
     void setTarget(const QInputPin *target);
 
 protected:
-    QSendObjectActionPrivate *d_ptr;
+    explicit QSendObjectAction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

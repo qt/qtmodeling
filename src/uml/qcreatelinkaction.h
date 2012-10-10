@@ -109,7 +109,7 @@ class Q_UML_EXPORT QCreateLinkAction : public QObject, public QWriteLinkAction
     Q_PROPERTY(const QSet<QLinkEndCreationData *> * endData READ endData)
 
     Q_DISABLE_COPY(QCreateLinkAction)
-    Q_DECLARE_PRIVATE(QCreateLinkAction)
+    QTUML_DECLARE_PRIVATE(QCreateLinkAction)
 
 public:
     explicit QCreateLinkAction(QObject *parent = 0);
@@ -121,7 +121,7 @@ public:
     void removeEndData(const QLinkEndCreationData *endData);
 
 protected:
-    QCreateLinkActionPrivate *d_ptr;
+    explicit QCreateLinkAction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

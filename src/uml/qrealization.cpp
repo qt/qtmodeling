@@ -62,13 +62,20 @@ QRealizationPrivate::~QRealizationPrivate()
  */
 
 QRealization::QRealization(QObject *parent)
-    : QAbstraction(parent), d_ptr(new QRealizationPrivate)
+    : QAbstraction(false, parent)
 {
+    d_umlptr = new QRealizationPrivate;
+}
+
+QRealization::QRealization(bool createPimpl, QObject *parent)
+    : QAbstraction(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QRealizationPrivate;
 }
 
 QRealization::~QRealization()
 {
-    delete d_ptr;
 }
 
 #include "moc_qrealization.cpp"

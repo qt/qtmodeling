@@ -59,6 +59,38 @@ QDependencyPrivate::~QDependencyPrivate()
     delete clients;
     delete suppliers;
 }
+  
+void QDependencyPrivate::addClient(const QNamedElement *client) 
+{   
+    this->clients->insert(const_cast<QNamedElement *>(client)); 
+
+    // Adjust subsetted property(ies)
+    addSource(client); 
+}
+ 
+void QDependencyPrivate::removeClient(const QNamedElement *client) 
+{    
+    this->clients->remove(const_cast<QNamedElement *>(client)); 
+
+    // Adjust subsetted property(ies)
+    removeSource(client);
+}
+  
+void QDependencyPrivate::addSupplier(const QNamedElement *supplier) 
+{   
+    this->suppliers->insert(const_cast<QNamedElement *>(supplier)); 
+
+    // Adjust subsetted property(ies)
+    addTarget(supplier); 
+}
+ 
+void QDependencyPrivate::removeSupplier(const QNamedElement *supplier) 
+{    
+    this->suppliers->remove(const_cast<QNamedElement *>(supplier)); 
+
+    // Adjust subsetted property(ies)
+    removeTarget(supplier);
+}
 
 /*!
     \class QDependency
@@ -69,13 +101,20 @@ QDependencyPrivate::~QDependencyPrivate()
  */
 
 QDependency::QDependency(QObject *parent)
-    : QObject(parent), d_ptr(new QDependencyPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QDependencyPrivate;
+}
+
+QDependency::QDependency(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QDependencyPrivate;
 }
 
 QDependency::~QDependency()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -83,17 +122,20 @@ QDependency::~QDependency()
  */
 const QSet<QNamedElement *> *QDependency::clients() const
 {
-    return d_ptr->clients;
+    Q_D(const QDependency);
+    return d->clients;
 }
 
 void QDependency::addClient(const QNamedElement *client)
 {
-    d_ptr->clients->insert(const_cast<QNamedElement *>(client));
+    Q_D(QDependency);
+    d->addClient(const_cast<QNamedElement *>(client));
 }
 
 void QDependency::removeClient(const QNamedElement *client)
 {
-    d_ptr->clients->remove(const_cast<QNamedElement *>(client));
+    Q_D(QDependency);
+    d->removeClient(const_cast<QNamedElement *>(client));
 }
 
 /*!
@@ -101,17 +143,20 @@ void QDependency::removeClient(const QNamedElement *client)
  */
 const QSet<QNamedElement *> *QDependency::suppliers() const
 {
-    return d_ptr->suppliers;
+    Q_D(const QDependency);
+    return d->suppliers;
 }
 
 void QDependency::addSupplier(const QNamedElement *supplier)
 {
-    d_ptr->suppliers->insert(const_cast<QNamedElement *>(supplier));
+    Q_D(QDependency);
+    d->addSupplier(const_cast<QNamedElement *>(supplier));
 }
 
 void QDependency::removeSupplier(const QNamedElement *supplier)
 {
-    d_ptr->suppliers->remove(const_cast<QNamedElement *>(supplier));
+    Q_D(QDependency);
+    d->removeSupplier(const_cast<QNamedElement *>(supplier));
 }
 
 #include "moc_qdependency.cpp"

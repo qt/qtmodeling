@@ -109,7 +109,7 @@ class Q_UML_EXPORT QReplyAction : public QObject, public QAction
     Q_PROPERTY(const QSet<QInputPin *> * replyValues READ replyValues)
 
     Q_DISABLE_COPY(QReplyAction)
-    Q_DECLARE_PRIVATE(QReplyAction)
+    QTUML_DECLARE_PRIVATE(QReplyAction)
 
 public:
     explicit QReplyAction(QObject *parent = 0);
@@ -125,7 +125,7 @@ public:
     void removeReplyValue(const QInputPin *replyValue);
 
 protected:
-    QReplyActionPrivate *d_ptr;
+    explicit QReplyAction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

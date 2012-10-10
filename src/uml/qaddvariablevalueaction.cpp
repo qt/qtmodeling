@@ -57,6 +57,16 @@ QAddVariableValueActionPrivate::~QAddVariableValueActionPrivate()
 {
 }
 
+void QAddVariableValueActionPrivate::setReplaceAll(bool isReplaceAll)
+{
+    this->isReplaceAll = isReplaceAll;
+}
+  
+void QAddVariableValueActionPrivate::setInsertAt(const QInputPin *insertAt) 
+{  
+    this->insertAt = const_cast<QInputPin *>(insertAt);   
+}
+
 /*!
     \class QAddVariableValueAction
 
@@ -66,13 +76,20 @@ QAddVariableValueActionPrivate::~QAddVariableValueActionPrivate()
  */
 
 QAddVariableValueAction::QAddVariableValueAction(QObject *parent)
-    : QObject(parent), d_ptr(new QAddVariableValueActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QAddVariableValueActionPrivate;
+}
+
+QAddVariableValueAction::QAddVariableValueAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QAddVariableValueActionPrivate;
 }
 
 QAddVariableValueAction::~QAddVariableValueAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -80,12 +97,14 @@ QAddVariableValueAction::~QAddVariableValueAction()
  */
 bool QAddVariableValueAction::isReplaceAll() const
 {
-    return d_ptr->isReplaceAll;
+    Q_D(const QAddVariableValueAction);
+    return d->isReplaceAll;
 }
 
 void QAddVariableValueAction::setReplaceAll(bool isReplaceAll)
 {
-    d_ptr->isReplaceAll = isReplaceAll;
+    Q_D(QAddVariableValueAction);
+    d->setReplaceAll(isReplaceAll);
 }
 
 /*!
@@ -93,12 +112,14 @@ void QAddVariableValueAction::setReplaceAll(bool isReplaceAll)
  */
 QInputPin *QAddVariableValueAction::insertAt() const
 {
-    return d_ptr->insertAt;
+    Q_D(const QAddVariableValueAction);
+    return d->insertAt;
 }
 
 void QAddVariableValueAction::setInsertAt(const QInputPin *insertAt)
 {
-    d_ptr->insertAt = const_cast<QInputPin *>(insertAt);
+    Q_D(QAddVariableValueAction);
+    d->setInsertAt(const_cast<QInputPin *>(insertAt));
 }
 
 #include "moc_qaddvariablevalueaction.cpp"

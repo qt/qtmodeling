@@ -43,6 +43,14 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qaction_p.h"
+
+#include "qnamespace_p.h"
+
+#include "qactivitygroup_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,18 +61,13 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QOutputPin;
-
 class QVariable;
-
 class QInputPin;
-
 class QActivityEdge;
-
 class QActivity;
-
 class QActivityNode;
 
-class QStructuredActivityNodePrivate
+class QStructuredActivityNodePrivate : public QActionPrivate, public QNamespacePrivate, public QActivityGroupPrivate
 {
 public:
     explicit QStructuredActivityNodePrivate();
@@ -77,6 +80,22 @@ public:
     QSet<QActivityEdge *> *edges;
     QSet<QVariable *> *variables;
     QActivity *activity;
+
+    // Attributes
+    void setMustIsolate(bool mustIsolate);
+
+    // Association-ends
+    void addStructuredNodeInput(const QInputPin *structuredNodeInput);
+    void removeStructuredNodeInput(const QInputPin *structuredNodeInput);
+    void addNode(const QActivityNode *node);
+    void removeNode(const QActivityNode *node);
+    void addStructuredNodeOutput(const QOutputPin *structuredNodeOutput);
+    void removeStructuredNodeOutput(const QOutputPin *structuredNodeOutput);
+    void addEdge(const QActivityEdge *edge);
+    void removeEdge(const QActivityEdge *edge);
+    void addVariable(const QVariable *variable);
+    void removeVariable(const QVariable *variable);
+    void setActivity(const QActivity *activity);
 };
 
 QT_END_NAMESPACE_QTUML

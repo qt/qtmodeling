@@ -57,6 +57,16 @@ QInteractionConstraintPrivate::QInteractionConstraintPrivate() :
 QInteractionConstraintPrivate::~QInteractionConstraintPrivate()
 {
 }
+  
+void QInteractionConstraintPrivate::setMaxint(const QValueSpecification *maxint) 
+{  
+    this->maxint = const_cast<QValueSpecification *>(maxint);   
+}
+  
+void QInteractionConstraintPrivate::setMinint(const QValueSpecification *minint) 
+{  
+    this->minint = const_cast<QValueSpecification *>(minint);   
+}
 
 /*!
     \class QInteractionConstraint
@@ -67,13 +77,20 @@ QInteractionConstraintPrivate::~QInteractionConstraintPrivate()
  */
 
 QInteractionConstraint::QInteractionConstraint(QObject *parent)
-    : QConstraint(parent), d_ptr(new QInteractionConstraintPrivate)
+    : QConstraint(false, parent)
 {
+    d_umlptr = new QInteractionConstraintPrivate;
+}
+
+QInteractionConstraint::QInteractionConstraint(bool createPimpl, QObject *parent)
+    : QConstraint(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QInteractionConstraintPrivate;
 }
 
 QInteractionConstraint::~QInteractionConstraint()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -81,12 +98,14 @@ QInteractionConstraint::~QInteractionConstraint()
  */
 QValueSpecification *QInteractionConstraint::maxint() const
 {
-    return d_ptr->maxint;
+    Q_D(const QInteractionConstraint);
+    return d->maxint;
 }
 
 void QInteractionConstraint::setMaxint(const QValueSpecification *maxint)
 {
-    d_ptr->maxint = const_cast<QValueSpecification *>(maxint);
+    Q_D(QInteractionConstraint);
+    d->setMaxint(const_cast<QValueSpecification *>(maxint));
 }
 
 /*!
@@ -94,12 +113,14 @@ void QInteractionConstraint::setMaxint(const QValueSpecification *maxint)
  */
 QValueSpecification *QInteractionConstraint::minint() const
 {
-    return d_ptr->minint;
+    Q_D(const QInteractionConstraint);
+    return d->minint;
 }
 
 void QInteractionConstraint::setMinint(const QValueSpecification *minint)
 {
-    d_ptr->minint = const_cast<QValueSpecification *>(minint);
+    Q_D(QInteractionConstraint);
+    d->setMinint(const_cast<QValueSpecification *>(minint));
 }
 
 #include "moc_qinteractionconstraint.cpp"

@@ -89,6 +89,108 @@ QPropertyPrivate::~QPropertyPrivate()
     delete redefinedProperties;
 }
 
+void QPropertyPrivate::setDerived(bool isDerived)
+{
+    this->isDerived = isDerived;
+}
+
+void QPropertyPrivate::setReadOnly(bool isReadOnly)
+{
+    this->isReadOnly = isReadOnly;
+}
+
+void QPropertyPrivate::setID(bool isID)
+{
+    this->isID = isID;
+}
+
+void QPropertyPrivate::setDerivedUnion(bool isDerivedUnion)
+{
+    this->isDerivedUnion = isDerivedUnion;
+}
+
+void QPropertyPrivate::setAggregation(QtUml::AggregationKind aggregation)
+{
+    this->aggregation = aggregation;
+}
+  
+void QPropertyPrivate::addSubsettedProperty(const QProperty *subsettedProperty) 
+{   
+    this->subsettedProperties->insert(const_cast<QProperty *>(subsettedProperty));  
+}
+ 
+void QPropertyPrivate::removeSubsettedProperty(const QProperty *subsettedProperty) 
+{    
+    this->subsettedProperties->remove(const_cast<QProperty *>(subsettedProperty)); 
+}
+  
+void QPropertyPrivate::setOwningAssociation(const QAssociation *owningAssociation) 
+{  
+    this->owningAssociation = const_cast<QAssociation *>(owningAssociation);   
+}
+  
+void QPropertyPrivate::addQualifier(const QProperty *qualifier) 
+{   
+    this->qualifiers->append(const_cast<QProperty *>(qualifier)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedElement(qualifier); 
+}
+ 
+void QPropertyPrivate::removeQualifier(const QProperty *qualifier) 
+{    
+    this->qualifiers->removeAll(const_cast<QProperty *>(qualifier)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(qualifier);
+}
+  
+void QPropertyPrivate::setDefaultValue(const QValueSpecification *defaultValue) 
+{  
+    this->defaultValue = const_cast<QValueSpecification *>(defaultValue);   
+}
+  
+void QPropertyPrivate::setClass_(const QClass *class_) 
+{  
+    this->class_ = const_cast<QClass *>(class_);   
+}
+   
+void QPropertyPrivate::setAssociationEnd(const QProperty *associationEnd) 
+{  
+    this->associationEnd = const_cast<QProperty *>(associationEnd);   
+}
+  
+void QPropertyPrivate::setDatatype(const QDataType *datatype) 
+{  
+    this->datatype = const_cast<QDataType *>(datatype);   
+}
+  
+void QPropertyPrivate::addRedefinedProperty(const QProperty *redefinedProperty) 
+{   
+    this->redefinedProperties->insert(const_cast<QProperty *>(redefinedProperty)); 
+
+    // Adjust subsetted property(ies)
+    addRedefinedElement(redefinedProperty); 
+}
+ 
+void QPropertyPrivate::removeRedefinedProperty(const QProperty *redefinedProperty) 
+{    
+    this->redefinedProperties->remove(const_cast<QProperty *>(redefinedProperty)); 
+
+    // Adjust subsetted property(ies)
+    removeRedefinedElement(redefinedProperty);
+}
+  
+void QPropertyPrivate::setAssociation(const QAssociation *association) 
+{  
+    this->association = const_cast<QAssociation *>(association);   
+}
+  
+void QPropertyPrivate::setInterface(const QInterface *interface) 
+{  
+    this->interface = const_cast<QInterface *>(interface);   
+}
+
 /*!
     \class QProperty
 
@@ -98,13 +200,20 @@ QPropertyPrivate::~QPropertyPrivate()
  */
 
 QProperty::QProperty(QObject *parent)
-    : QObject(parent), d_ptr(new QPropertyPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QPropertyPrivate;
+}
+
+QProperty::QProperty(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QPropertyPrivate;
 }
 
 QProperty::~QProperty()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -112,12 +221,14 @@ QProperty::~QProperty()
  */
 bool QProperty::isDerived() const
 {
-    return d_ptr->isDerived;
+    Q_D(const QProperty);
+    return d->isDerived;
 }
 
 void QProperty::setDerived(bool isDerived)
 {
-    d_ptr->isDerived = isDerived;
+    Q_D(QProperty);
+    d->setDerived(isDerived);
 }
 
 /*!
@@ -151,12 +262,14 @@ void QProperty::setComposite(bool isComposite)
  */
 bool QProperty::isReadOnly() const
 {
-    return d_ptr->isReadOnly;
+    Q_D(const QProperty);
+    return d->isReadOnly;
 }
 
 void QProperty::setReadOnly(bool isReadOnly)
 {
-    d_ptr->isReadOnly = isReadOnly;
+    Q_D(QProperty);
+    d->setReadOnly(isReadOnly);
 }
 
 /*!
@@ -164,12 +277,14 @@ void QProperty::setReadOnly(bool isReadOnly)
  */
 bool QProperty::isID() const
 {
-    return d_ptr->isID;
+    Q_D(const QProperty);
+    return d->isID;
 }
 
 void QProperty::setID(bool isID)
 {
-    d_ptr->isID = isID;
+    Q_D(QProperty);
+    d->setID(isID);
 }
 
 /*!
@@ -177,12 +292,14 @@ void QProperty::setID(bool isID)
  */
 bool QProperty::isDerivedUnion() const
 {
-    return d_ptr->isDerivedUnion;
+    Q_D(const QProperty);
+    return d->isDerivedUnion;
 }
 
 void QProperty::setDerivedUnion(bool isDerivedUnion)
 {
-    d_ptr->isDerivedUnion = isDerivedUnion;
+    Q_D(QProperty);
+    d->setDerivedUnion(isDerivedUnion);
 }
 
 /*!
@@ -190,12 +307,14 @@ void QProperty::setDerivedUnion(bool isDerivedUnion)
  */
 QtUml::AggregationKind QProperty::aggregation() const
 {
-    return d_ptr->aggregation;
+    Q_D(const QProperty);
+    return d->aggregation;
 }
 
 void QProperty::setAggregation(QtUml::AggregationKind aggregation)
 {
-    d_ptr->aggregation = aggregation;
+    Q_D(QProperty);
+    d->setAggregation(aggregation);
 }
 
 /*!
@@ -203,17 +322,20 @@ void QProperty::setAggregation(QtUml::AggregationKind aggregation)
  */
 const QSet<QProperty *> *QProperty::subsettedProperties() const
 {
-    return d_ptr->subsettedProperties;
+    Q_D(const QProperty);
+    return d->subsettedProperties;
 }
 
 void QProperty::addSubsettedProperty(const QProperty *subsettedProperty)
 {
-    d_ptr->subsettedProperties->insert(const_cast<QProperty *>(subsettedProperty));
+    Q_D(QProperty);
+    d->addSubsettedProperty(const_cast<QProperty *>(subsettedProperty));
 }
 
 void QProperty::removeSubsettedProperty(const QProperty *subsettedProperty)
 {
-    d_ptr->subsettedProperties->remove(const_cast<QProperty *>(subsettedProperty));
+    Q_D(QProperty);
+    d->removeSubsettedProperty(const_cast<QProperty *>(subsettedProperty));
 }
 
 /*!
@@ -221,12 +343,14 @@ void QProperty::removeSubsettedProperty(const QProperty *subsettedProperty)
  */
 QAssociation *QProperty::owningAssociation() const
 {
-    return d_ptr->owningAssociation;
+    Q_D(const QProperty);
+    return d->owningAssociation;
 }
 
 void QProperty::setOwningAssociation(const QAssociation *owningAssociation)
 {
-    d_ptr->owningAssociation = const_cast<QAssociation *>(owningAssociation);
+    Q_D(QProperty);
+    d->setOwningAssociation(const_cast<QAssociation *>(owningAssociation));
 }
 
 /*!
@@ -234,17 +358,20 @@ void QProperty::setOwningAssociation(const QAssociation *owningAssociation)
  */
 const QList<QProperty *> *QProperty::qualifiers() const
 {
-    return d_ptr->qualifiers;
+    Q_D(const QProperty);
+    return d->qualifiers;
 }
 
 void QProperty::addQualifier(const QProperty *qualifier)
 {
-    d_ptr->qualifiers->append(const_cast<QProperty *>(qualifier));
+    Q_D(QProperty);
+    d->addQualifier(const_cast<QProperty *>(qualifier));
 }
 
 void QProperty::removeQualifier(const QProperty *qualifier)
 {
-    d_ptr->qualifiers->removeAll(const_cast<QProperty *>(qualifier));
+    Q_D(QProperty);
+    d->removeQualifier(const_cast<QProperty *>(qualifier));
 }
 
 /*!
@@ -252,12 +379,14 @@ void QProperty::removeQualifier(const QProperty *qualifier)
  */
 QValueSpecification *QProperty::defaultValue() const
 {
-    return d_ptr->defaultValue;
+    Q_D(const QProperty);
+    return d->defaultValue;
 }
 
 void QProperty::setDefaultValue(const QValueSpecification *defaultValue)
 {
-    d_ptr->defaultValue = const_cast<QValueSpecification *>(defaultValue);
+    Q_D(QProperty);
+    d->setDefaultValue(const_cast<QValueSpecification *>(defaultValue));
 }
 
 /*!
@@ -265,12 +394,14 @@ void QProperty::setDefaultValue(const QValueSpecification *defaultValue)
  */
 QClass *QProperty::class_() const
 {
-    return d_ptr->class_;
+    Q_D(const QProperty);
+    return d->class_;
 }
 
 void QProperty::setClass_(const QClass *class_)
 {
-    d_ptr->class_ = const_cast<QClass *>(class_);
+    Q_D(QProperty);
+    d->setClass_(const_cast<QClass *>(class_));
 }
 
 /*!
@@ -291,12 +422,14 @@ void QProperty::setOpposite(const QProperty *opposite)
  */
 QProperty *QProperty::associationEnd() const
 {
-    return d_ptr->associationEnd;
+    Q_D(const QProperty);
+    return d->associationEnd;
 }
 
 void QProperty::setAssociationEnd(const QProperty *associationEnd)
 {
-    d_ptr->associationEnd = const_cast<QProperty *>(associationEnd);
+    Q_D(QProperty);
+    d->setAssociationEnd(const_cast<QProperty *>(associationEnd));
 }
 
 /*!
@@ -304,12 +437,14 @@ void QProperty::setAssociationEnd(const QProperty *associationEnd)
  */
 QDataType *QProperty::datatype() const
 {
-    return d_ptr->datatype;
+    Q_D(const QProperty);
+    return d->datatype;
 }
 
 void QProperty::setDatatype(const QDataType *datatype)
 {
-    d_ptr->datatype = const_cast<QDataType *>(datatype);
+    Q_D(QProperty);
+    d->setDatatype(const_cast<QDataType *>(datatype));
 }
 
 /*!
@@ -317,17 +452,20 @@ void QProperty::setDatatype(const QDataType *datatype)
  */
 const QSet<QProperty *> *QProperty::redefinedProperties() const
 {
-    return d_ptr->redefinedProperties;
+    Q_D(const QProperty);
+    return d->redefinedProperties;
 }
 
 void QProperty::addRedefinedProperty(const QProperty *redefinedProperty)
 {
-    d_ptr->redefinedProperties->insert(const_cast<QProperty *>(redefinedProperty));
+    Q_D(QProperty);
+    d->addRedefinedProperty(const_cast<QProperty *>(redefinedProperty));
 }
 
 void QProperty::removeRedefinedProperty(const QProperty *redefinedProperty)
 {
-    d_ptr->redefinedProperties->remove(const_cast<QProperty *>(redefinedProperty));
+    Q_D(QProperty);
+    d->removeRedefinedProperty(const_cast<QProperty *>(redefinedProperty));
 }
 
 /*!
@@ -335,12 +473,14 @@ void QProperty::removeRedefinedProperty(const QProperty *redefinedProperty)
  */
 QAssociation *QProperty::association() const
 {
-    return d_ptr->association;
+    Q_D(const QProperty);
+    return d->association;
 }
 
 void QProperty::setAssociation(const QAssociation *association)
 {
-    d_ptr->association = const_cast<QAssociation *>(association);
+    Q_D(QProperty);
+    d->setAssociation(const_cast<QAssociation *>(association));
 }
 
 /*!
@@ -348,12 +488,14 @@ void QProperty::setAssociation(const QAssociation *association)
  */
 QInterface *QProperty::interface() const
 {
-    return d_ptr->interface;
+    Q_D(const QProperty);
+    return d->interface;
 }
 
 void QProperty::setInterface(const QInterface *interface)
 {
-    d_ptr->interface = const_cast<QInterface *>(interface);
+    Q_D(QProperty);
+    d->setInterface(const_cast<QInterface *>(interface));
 }
 
 /*!

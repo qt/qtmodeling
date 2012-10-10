@@ -60,6 +60,21 @@ QReadLinkObjectEndActionPrivate::QReadLinkObjectEndActionPrivate() :
 QReadLinkObjectEndActionPrivate::~QReadLinkObjectEndActionPrivate()
 {
 }
+  
+void QReadLinkObjectEndActionPrivate::setEnd(const QProperty *end) 
+{  
+    this->end = const_cast<QProperty *>(end);   
+}
+  
+void QReadLinkObjectEndActionPrivate::setObject(const QInputPin *object) 
+{  
+    this->object = const_cast<QInputPin *>(object);   
+}
+  
+void QReadLinkObjectEndActionPrivate::setResult(const QOutputPin *result) 
+{  
+    this->result = const_cast<QOutputPin *>(result);   
+}
 
 /*!
     \class QReadLinkObjectEndAction
@@ -70,13 +85,20 @@ QReadLinkObjectEndActionPrivate::~QReadLinkObjectEndActionPrivate()
  */
 
 QReadLinkObjectEndAction::QReadLinkObjectEndAction(QObject *parent)
-    : QObject(parent), d_ptr(new QReadLinkObjectEndActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QReadLinkObjectEndActionPrivate;
+}
+
+QReadLinkObjectEndAction::QReadLinkObjectEndAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QReadLinkObjectEndActionPrivate;
 }
 
 QReadLinkObjectEndAction::~QReadLinkObjectEndAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -84,12 +106,14 @@ QReadLinkObjectEndAction::~QReadLinkObjectEndAction()
  */
 QProperty *QReadLinkObjectEndAction::end() const
 {
-    return d_ptr->end;
+    Q_D(const QReadLinkObjectEndAction);
+    return d->end;
 }
 
 void QReadLinkObjectEndAction::setEnd(const QProperty *end)
 {
-    d_ptr->end = const_cast<QProperty *>(end);
+    Q_D(QReadLinkObjectEndAction);
+    d->setEnd(const_cast<QProperty *>(end));
 }
 
 /*!
@@ -97,12 +121,14 @@ void QReadLinkObjectEndAction::setEnd(const QProperty *end)
  */
 QInputPin *QReadLinkObjectEndAction::object() const
 {
-    return d_ptr->object;
+    Q_D(const QReadLinkObjectEndAction);
+    return d->object;
 }
 
 void QReadLinkObjectEndAction::setObject(const QInputPin *object)
 {
-    d_ptr->object = const_cast<QInputPin *>(object);
+    Q_D(QReadLinkObjectEndAction);
+    d->setObject(const_cast<QInputPin *>(object));
 }
 
 /*!
@@ -110,12 +136,14 @@ void QReadLinkObjectEndAction::setObject(const QInputPin *object)
  */
 QOutputPin *QReadLinkObjectEndAction::result() const
 {
-    return d_ptr->result;
+    Q_D(const QReadLinkObjectEndAction);
+    return d->result;
 }
 
 void QReadLinkObjectEndAction::setResult(const QOutputPin *result)
 {
-    d_ptr->result = const_cast<QOutputPin *>(result);
+    Q_D(QReadLinkObjectEndAction);
+    d->setResult(const_cast<QOutputPin *>(result));
 }
 
 #include "moc_qreadlinkobjectendaction.cpp"

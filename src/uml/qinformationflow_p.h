@@ -43,6 +43,12 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qdirectedrelationship_p.h"
+
+#include "qpackageableelement_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,18 +59,13 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QConnector;
-
 class QMessage;
-
 class QActivityEdge;
-
 class QNamedElement;
-
 class QClassifier;
-
 class QRelationship;
 
-class QInformationFlowPrivate
+class QInformationFlowPrivate : public QDirectedRelationshipPrivate, public QPackageableElementPrivate
 {
 public:
     explicit QInformationFlowPrivate();
@@ -77,6 +78,22 @@ public:
     QSet<QMessage *> *realizingMessages;
     QSet<QActivityEdge *> *realizingActivityEdges;
     QSet<QRelationship *> *realizations;
+
+    // Association-ends
+    void addInformationTarget(const QNamedElement *informationTarget);
+    void removeInformationTarget(const QNamedElement *informationTarget);
+    void addRealizingConnector(const QConnector *realizingConnector);
+    void removeRealizingConnector(const QConnector *realizingConnector);
+    void addConveyed(const QClassifier *conveyed);
+    void removeConveyed(const QClassifier *conveyed);
+    void addInformationSource(const QNamedElement *informationSource);
+    void removeInformationSource(const QNamedElement *informationSource);
+    void addRealizingMessage(const QMessage *realizingMessage);
+    void removeRealizingMessage(const QMessage *realizingMessage);
+    void addRealizingActivityEdge(const QActivityEdge *realizingActivityEdge);
+    void removeRealizingActivityEdge(const QActivityEdge *realizingActivityEdge);
+    void addRealization(const QRelationship *realization);
+    void removeRealization(const QRelationship *realization);
 };
 
 QT_END_NAMESPACE_QTUML

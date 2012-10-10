@@ -61,7 +61,7 @@ class QOutputPin;
 class Q_UML_EXPORT QCallAction : public QInvocationAction
 {
     Q_DISABLE_COPY(QCallAction)
-    Q_DECLARE_PRIVATE(QCallAction)
+    QTUML_DECLARE_PRIVATE(QCallAction)
 
 public:
     virtual ~QCallAction();
@@ -77,9 +77,6 @@ public:
 
 protected:
     explicit QCallAction();
-
-protected:
-    QCallActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

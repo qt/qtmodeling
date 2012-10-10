@@ -55,6 +55,22 @@ QNodePrivate::~QNodePrivate()
 {
     delete nestedNodes;
 }
+  
+void QNodePrivate::addNestedNode(const QNode *nestedNode) 
+{   
+    this->nestedNodes->insert(const_cast<QNode *>(nestedNode)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedMember(nestedNode); 
+}
+ 
+void QNodePrivate::removeNestedNode(const QNode *nestedNode) 
+{    
+    this->nestedNodes->remove(const_cast<QNode *>(nestedNode)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedMember(nestedNode);
+}
 
 /*!
     \class QNode
@@ -65,13 +81,20 @@ QNodePrivate::~QNodePrivate()
  */
 
 QNode::QNode(QObject *parent)
-    : QClass(parent), d_ptr(new QNodePrivate)
+    : QClass(false, parent)
 {
+    d_umlptr = new QNodePrivate;
+}
+
+QNode::QNode(bool createPimpl, QObject *parent)
+    : QClass(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QNodePrivate;
 }
 
 QNode::~QNode()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,17 +102,20 @@ QNode::~QNode()
  */
 const QSet<QNode *> *QNode::nestedNodes() const
 {
-    return d_ptr->nestedNodes;
+    Q_D(const QNode);
+    return d->nestedNodes;
 }
 
 void QNode::addNestedNode(const QNode *nestedNode)
 {
-    d_ptr->nestedNodes->insert(const_cast<QNode *>(nestedNode));
+    Q_D(QNode);
+    d->addNestedNode(const_cast<QNode *>(nestedNode));
 }
 
 void QNode::removeNestedNode(const QNode *nestedNode)
 {
-    d_ptr->nestedNodes->remove(const_cast<QNode *>(nestedNode));
+    Q_D(QNode);
+    d->removeNestedNode(const_cast<QNode *>(nestedNode));
 }
 
 #include "moc_qnode.cpp"

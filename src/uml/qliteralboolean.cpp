@@ -54,6 +54,11 @@ QLiteralBooleanPrivate::~QLiteralBooleanPrivate()
 {
 }
 
+void QLiteralBooleanPrivate::setValue(bool value)
+{
+    this->value = value;
+}
+
 /*!
     \class QLiteralBoolean
 
@@ -63,13 +68,20 @@ QLiteralBooleanPrivate::~QLiteralBooleanPrivate()
  */
 
 QLiteralBoolean::QLiteralBoolean(QObject *parent)
-    : QObject(parent), d_ptr(new QLiteralBooleanPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QLiteralBooleanPrivate;
+}
+
+QLiteralBoolean::QLiteralBoolean(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QLiteralBooleanPrivate;
 }
 
 QLiteralBoolean::~QLiteralBoolean()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -77,12 +89,14 @@ QLiteralBoolean::~QLiteralBoolean()
  */
 bool QLiteralBoolean::value() const
 {
-    return d_ptr->value;
+    Q_D(const QLiteralBoolean);
+    return d->value;
 }
 
 void QLiteralBoolean::setValue(bool value)
 {
-    d_ptr->value = value;
+    Q_D(QLiteralBoolean);
+    d->setValue(value);
 }
 
 /*!

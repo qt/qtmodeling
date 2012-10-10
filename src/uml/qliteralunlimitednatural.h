@@ -85,7 +85,7 @@ class Q_UML_EXPORT QLiteralUnlimitedNatural : public QObject, public QLiteralSpe
     Q_PROPERTY(qint32 value READ value WRITE setValue)
 
     Q_DISABLE_COPY(QLiteralUnlimitedNatural)
-    Q_DECLARE_PRIVATE(QLiteralUnlimitedNatural)
+    QTUML_DECLARE_PRIVATE(QLiteralUnlimitedNatural)
 
 public:
     explicit QLiteralUnlimitedNatural(QObject *parent = 0);
@@ -100,7 +100,7 @@ public:
     qint32 unlimitedValue() const;
 
 protected:
-    QLiteralUnlimitedNaturalPrivate *d_ptr;
+    explicit QLiteralUnlimitedNatural(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qinteractionfragment_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -50,10 +54,9 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QLifeline;
-
 class QConstraint;
 
-class QStateInvariantPrivate
+class QStateInvariantPrivate : public QInteractionFragmentPrivate
 {
 public:
     explicit QStateInvariantPrivate();
@@ -61,6 +64,10 @@ public:
 
     QConstraint *invariant;
     QLifeline *covered;
+
+    // Association-ends
+    void setInvariant(const QConstraint *invariant);
+    void setCovered(const QLifeline *covered);
 };
 
 QT_END_NAMESPACE_QTUML

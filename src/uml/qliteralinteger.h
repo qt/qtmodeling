@@ -85,7 +85,7 @@ class Q_UML_EXPORT QLiteralInteger : public QObject, public QLiteralSpecificatio
     Q_PROPERTY(qint32 value READ value WRITE setValue)
 
     Q_DISABLE_COPY(QLiteralInteger)
-    Q_DECLARE_PRIVATE(QLiteralInteger)
+    QTUML_DECLARE_PRIVATE(QLiteralInteger)
 
 public:
     explicit QLiteralInteger(QObject *parent = 0);
@@ -100,7 +100,7 @@ public:
     bool isComputable() const;
 
 protected:
-    QLiteralIntegerPrivate *d_ptr;
+    explicit QLiteralInteger(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

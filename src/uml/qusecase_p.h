@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qbehavioredclassifier_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,14 +57,11 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QClassifier;
-
 class QInclude;
-
 class QExtend;
-
 class QExtensionPoint;
 
-class QUseCasePrivate
+class QUseCasePrivate : public QBehavioredClassifierPrivate
 {
 public:
     explicit QUseCasePrivate();
@@ -70,6 +71,16 @@ public:
     QSet<QInclude *> *includes;
     QSet<QClassifier *> *subjects;
     QSet<QExtend *> *extends;
+
+    // Association-ends
+    void addExtensionPoint(const QExtensionPoint *extensionPoint);
+    void removeExtensionPoint(const QExtensionPoint *extensionPoint);
+    void addInclude(const QInclude *include);
+    void removeInclude(const QInclude *include);
+    void addSubject(const QClassifier *subject);
+    void removeSubject(const QClassifier *subject);
+    void addExtend(const QExtend *extend);
+    void removeExtend(const QExtend *extend);
 };
 
 QT_END_NAMESPACE_QTUML

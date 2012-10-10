@@ -59,6 +59,16 @@ QInterfaceRealizationPrivate::QInterfaceRealizationPrivate() :
 QInterfaceRealizationPrivate::~QInterfaceRealizationPrivate()
 {
 }
+  
+void QInterfaceRealizationPrivate::setImplementingClassifier(const QBehavioredClassifier *implementingClassifier) 
+{  
+    this->implementingClassifier = const_cast<QBehavioredClassifier *>(implementingClassifier);   
+}
+  
+void QInterfaceRealizationPrivate::setContract(const QInterface *contract) 
+{  
+    this->contract = const_cast<QInterface *>(contract);   
+}
 
 /*!
     \class QInterfaceRealization
@@ -69,13 +79,20 @@ QInterfaceRealizationPrivate::~QInterfaceRealizationPrivate()
  */
 
 QInterfaceRealization::QInterfaceRealization(QObject *parent)
-    : QRealization(parent), d_ptr(new QInterfaceRealizationPrivate)
+    : QRealization(false, parent)
 {
+    d_umlptr = new QInterfaceRealizationPrivate;
+}
+
+QInterfaceRealization::QInterfaceRealization(bool createPimpl, QObject *parent)
+    : QRealization(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QInterfaceRealizationPrivate;
 }
 
 QInterfaceRealization::~QInterfaceRealization()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -83,12 +100,14 @@ QInterfaceRealization::~QInterfaceRealization()
  */
 QBehavioredClassifier *QInterfaceRealization::implementingClassifier() const
 {
-    return d_ptr->implementingClassifier;
+    Q_D(const QInterfaceRealization);
+    return d->implementingClassifier;
 }
 
 void QInterfaceRealization::setImplementingClassifier(const QBehavioredClassifier *implementingClassifier)
 {
-    d_ptr->implementingClassifier = const_cast<QBehavioredClassifier *>(implementingClassifier);
+    Q_D(QInterfaceRealization);
+    d->setImplementingClassifier(const_cast<QBehavioredClassifier *>(implementingClassifier));
 }
 
 /*!
@@ -96,12 +115,14 @@ void QInterfaceRealization::setImplementingClassifier(const QBehavioredClassifie
  */
 QInterface *QInterfaceRealization::contract() const
 {
-    return d_ptr->contract;
+    Q_D(const QInterfaceRealization);
+    return d->contract;
 }
 
 void QInterfaceRealization::setContract(const QInterface *contract)
 {
-    d_ptr->contract = const_cast<QInterface *>(contract);
+    Q_D(QInterfaceRealization);
+    d->setContract(const_cast<QInterface *>(contract));
 }
 
 #include "moc_qinterfacerealization.cpp"

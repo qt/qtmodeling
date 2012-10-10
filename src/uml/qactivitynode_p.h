@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qredefinableelement_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,18 +57,13 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QStructuredActivityNode;
-
 class QActivityEdge;
-
 class QActivityPartition;
-
 class QActivityGroup;
-
 class QActivity;
-
 class QInterruptibleActivityRegion;
 
-class QActivityNodePrivate
+class QActivityNodePrivate : public QRedefinableElementPrivate
 {
 public:
     explicit QActivityNodePrivate();
@@ -78,6 +77,22 @@ public:
     QSet<QActivityPartition *> *inPartition;
     QSet<QInterruptibleActivityRegion *> *inInterruptibleRegion;
     QSet<QActivityEdge *> *outgoings;
+
+    // Association-ends
+    void addRedefinedNode(const QActivityNode *redefinedNode);
+    void removeRedefinedNode(const QActivityNode *redefinedNode);
+    void addIncoming(const QActivityEdge *incoming);
+    void removeIncoming(const QActivityEdge *incoming);
+    void setActivity(const QActivity *activity);
+    void addInGroup(const QActivityGroup *inGroup);
+    void removeInGroup(const QActivityGroup *inGroup);
+    void setInStructuredNode(const QStructuredActivityNode *inStructuredNode);
+    void addInPartition(const QActivityPartition *inPartition);
+    void removeInPartition(const QActivityPartition *inPartition);
+    void addInInterruptibleRegion(const QInterruptibleActivityRegion *inInterruptibleRegion);
+    void removeInInterruptibleRegion(const QInterruptibleActivityRegion *inInterruptibleRegion);
+    void addOutgoing(const QActivityEdge *outgoing);
+    void removeOutgoing(const QActivityEdge *outgoing);
 };
 
 QT_END_NAMESPACE_QTUML

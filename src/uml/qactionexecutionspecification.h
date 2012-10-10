@@ -87,7 +87,7 @@ class Q_UML_EXPORT QActionExecutionSpecification : public QObject, public QExecu
     Q_PROPERTY(QAction * action READ action WRITE setAction)
 
     Q_DISABLE_COPY(QActionExecutionSpecification)
-    Q_DECLARE_PRIVATE(QActionExecutionSpecification)
+    QTUML_DECLARE_PRIVATE(QActionExecutionSpecification)
 
 public:
     explicit QActionExecutionSpecification(QObject *parent = 0);
@@ -98,7 +98,7 @@ public:
     void setAction(const QAction *action);
 
 protected:
-    QActionExecutionSpecificationPrivate *d_ptr;
+    explicit QActionExecutionSpecification(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

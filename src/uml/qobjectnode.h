@@ -67,7 +67,7 @@ class QValueSpecification;
 class Q_UML_EXPORT QObjectNode : public QActivityNode, public QTypedElement
 {
     Q_DISABLE_COPY(QObjectNode)
-    Q_DECLARE_PRIVATE(QObjectNode)
+    QTUML_DECLARE_PRIVATE(QObjectNode)
 
 public:
     virtual ~QObjectNode();
@@ -89,9 +89,6 @@ public:
 
 protected:
     explicit QObjectNode();
-
-protected:
-    QObjectNodePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

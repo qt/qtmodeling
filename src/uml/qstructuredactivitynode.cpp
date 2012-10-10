@@ -78,6 +78,100 @@ QStructuredActivityNodePrivate::~QStructuredActivityNodePrivate()
     delete variables;
 }
 
+void QStructuredActivityNodePrivate::setMustIsolate(bool mustIsolate)
+{
+    this->mustIsolate = mustIsolate;
+}
+  
+void QStructuredActivityNodePrivate::addStructuredNodeInput(const QInputPin *structuredNodeInput) 
+{   
+    this->structuredNodeInputs->insert(const_cast<QInputPin *>(structuredNodeInput)); 
+
+    // Adjust subsetted property(ies)
+    addInput(structuredNodeInput); 
+}
+ 
+void QStructuredActivityNodePrivate::removeStructuredNodeInput(const QInputPin *structuredNodeInput) 
+{    
+    this->structuredNodeInputs->remove(const_cast<QInputPin *>(structuredNodeInput)); 
+
+    // Adjust subsetted property(ies)
+    removeInput(structuredNodeInput);
+}
+  
+void QStructuredActivityNodePrivate::addNode(const QActivityNode *node) 
+{   
+    this->nodes->insert(const_cast<QActivityNode *>(node)); 
+
+    // Adjust subsetted property(ies)
+    addContainedNode(node);
+    addOwnedElement(node); 
+}
+ 
+void QStructuredActivityNodePrivate::removeNode(const QActivityNode *node) 
+{    
+    this->nodes->remove(const_cast<QActivityNode *>(node)); 
+
+    // Adjust subsetted property(ies)
+    removeContainedNode(node);
+    removeOwnedElement(node);
+}
+  
+void QStructuredActivityNodePrivate::addStructuredNodeOutput(const QOutputPin *structuredNodeOutput) 
+{   
+    this->structuredNodeOutputs->insert(const_cast<QOutputPin *>(structuredNodeOutput)); 
+
+    // Adjust subsetted property(ies)
+    addOutput(structuredNodeOutput); 
+}
+ 
+void QStructuredActivityNodePrivate::removeStructuredNodeOutput(const QOutputPin *structuredNodeOutput) 
+{    
+    this->structuredNodeOutputs->remove(const_cast<QOutputPin *>(structuredNodeOutput)); 
+
+    // Adjust subsetted property(ies)
+    removeOutput(structuredNodeOutput);
+}
+  
+void QStructuredActivityNodePrivate::addEdge(const QActivityEdge *edge) 
+{   
+    this->edges->insert(const_cast<QActivityEdge *>(edge)); 
+
+    // Adjust subsetted property(ies)
+    addContainedEdge(edge);
+    addOwnedElement(edge); 
+}
+ 
+void QStructuredActivityNodePrivate::removeEdge(const QActivityEdge *edge) 
+{    
+    this->edges->remove(const_cast<QActivityEdge *>(edge)); 
+
+    // Adjust subsetted property(ies)
+    removeContainedEdge(edge);
+    removeOwnedElement(edge);
+}
+  
+void QStructuredActivityNodePrivate::addVariable(const QVariable *variable) 
+{   
+    this->variables->insert(const_cast<QVariable *>(variable)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedMember(variable); 
+}
+ 
+void QStructuredActivityNodePrivate::removeVariable(const QVariable *variable) 
+{    
+    this->variables->remove(const_cast<QVariable *>(variable)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedMember(variable);
+}
+  
+void QStructuredActivityNodePrivate::setActivity(const QActivity *activity) 
+{  
+    this->activity = const_cast<QActivity *>(activity);   
+}
+
 /*!
     \class QStructuredActivityNode
 
@@ -87,13 +181,20 @@ QStructuredActivityNodePrivate::~QStructuredActivityNodePrivate()
  */
 
 QStructuredActivityNode::QStructuredActivityNode(QObject *parent)
-    : QObject(parent), d_ptr(new QStructuredActivityNodePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QStructuredActivityNodePrivate;
+}
+
+QStructuredActivityNode::QStructuredActivityNode(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QStructuredActivityNodePrivate;
 }
 
 QStructuredActivityNode::~QStructuredActivityNode()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -101,27 +202,32 @@ QStructuredActivityNode::~QStructuredActivityNode()
  */
 bool QStructuredActivityNode::mustIsolate() const
 {
-    return d_ptr->mustIsolate;
+    Q_D(const QStructuredActivityNode);
+    return d->mustIsolate;
 }
 
 void QStructuredActivityNode::setMustIsolate(bool mustIsolate)
 {
-    d_ptr->mustIsolate = mustIsolate;
+    Q_D(QStructuredActivityNode);
+    d->setMustIsolate(mustIsolate);
 }
 
 const QSet<QInputPin *> *QStructuredActivityNode::structuredNodeInputs() const
 {
-    return d_ptr->structuredNodeInputs;
+    Q_D(const QStructuredActivityNode);
+    return d->structuredNodeInputs;
 }
 
 void QStructuredActivityNode::addStructuredNodeInput(const QInputPin *structuredNodeInput)
 {
-    d_ptr->structuredNodeInputs->insert(const_cast<QInputPin *>(structuredNodeInput));
+    Q_D(QStructuredActivityNode);
+    d->addStructuredNodeInput(const_cast<QInputPin *>(structuredNodeInput));
 }
 
 void QStructuredActivityNode::removeStructuredNodeInput(const QInputPin *structuredNodeInput)
 {
-    d_ptr->structuredNodeInputs->remove(const_cast<QInputPin *>(structuredNodeInput));
+    Q_D(QStructuredActivityNode);
+    d->removeStructuredNodeInput(const_cast<QInputPin *>(structuredNodeInput));
 }
 
 /*!
@@ -129,32 +235,38 @@ void QStructuredActivityNode::removeStructuredNodeInput(const QInputPin *structu
  */
 const QSet<QActivityNode *> *QStructuredActivityNode::nodes() const
 {
-    return d_ptr->nodes;
+    Q_D(const QStructuredActivityNode);
+    return d->nodes;
 }
 
 void QStructuredActivityNode::addNode(const QActivityNode *node)
 {
-    d_ptr->nodes->insert(const_cast<QActivityNode *>(node));
+    Q_D(QStructuredActivityNode);
+    d->addNode(const_cast<QActivityNode *>(node));
 }
 
 void QStructuredActivityNode::removeNode(const QActivityNode *node)
 {
-    d_ptr->nodes->remove(const_cast<QActivityNode *>(node));
+    Q_D(QStructuredActivityNode);
+    d->removeNode(const_cast<QActivityNode *>(node));
 }
 
 const QSet<QOutputPin *> *QStructuredActivityNode::structuredNodeOutputs() const
 {
-    return d_ptr->structuredNodeOutputs;
+    Q_D(const QStructuredActivityNode);
+    return d->structuredNodeOutputs;
 }
 
 void QStructuredActivityNode::addStructuredNodeOutput(const QOutputPin *structuredNodeOutput)
 {
-    d_ptr->structuredNodeOutputs->insert(const_cast<QOutputPin *>(structuredNodeOutput));
+    Q_D(QStructuredActivityNode);
+    d->addStructuredNodeOutput(const_cast<QOutputPin *>(structuredNodeOutput));
 }
 
 void QStructuredActivityNode::removeStructuredNodeOutput(const QOutputPin *structuredNodeOutput)
 {
-    d_ptr->structuredNodeOutputs->remove(const_cast<QOutputPin *>(structuredNodeOutput));
+    Q_D(QStructuredActivityNode);
+    d->removeStructuredNodeOutput(const_cast<QOutputPin *>(structuredNodeOutput));
 }
 
 /*!
@@ -162,17 +274,20 @@ void QStructuredActivityNode::removeStructuredNodeOutput(const QOutputPin *struc
  */
 const QSet<QActivityEdge *> *QStructuredActivityNode::edges() const
 {
-    return d_ptr->edges;
+    Q_D(const QStructuredActivityNode);
+    return d->edges;
 }
 
 void QStructuredActivityNode::addEdge(const QActivityEdge *edge)
 {
-    d_ptr->edges->insert(const_cast<QActivityEdge *>(edge));
+    Q_D(QStructuredActivityNode);
+    d->addEdge(const_cast<QActivityEdge *>(edge));
 }
 
 void QStructuredActivityNode::removeEdge(const QActivityEdge *edge)
 {
-    d_ptr->edges->remove(const_cast<QActivityEdge *>(edge));
+    Q_D(QStructuredActivityNode);
+    d->removeEdge(const_cast<QActivityEdge *>(edge));
 }
 
 /*!
@@ -180,17 +295,20 @@ void QStructuredActivityNode::removeEdge(const QActivityEdge *edge)
  */
 const QSet<QVariable *> *QStructuredActivityNode::variables() const
 {
-    return d_ptr->variables;
+    Q_D(const QStructuredActivityNode);
+    return d->variables;
 }
 
 void QStructuredActivityNode::addVariable(const QVariable *variable)
 {
-    d_ptr->variables->insert(const_cast<QVariable *>(variable));
+    Q_D(QStructuredActivityNode);
+    d->addVariable(const_cast<QVariable *>(variable));
 }
 
 void QStructuredActivityNode::removeVariable(const QVariable *variable)
 {
-    d_ptr->variables->remove(const_cast<QVariable *>(variable));
+    Q_D(QStructuredActivityNode);
+    d->removeVariable(const_cast<QVariable *>(variable));
 }
 
 /*!
@@ -198,12 +316,14 @@ void QStructuredActivityNode::removeVariable(const QVariable *variable)
  */
 QActivity *QStructuredActivityNode::activity() const
 {
-    return d_ptr->activity;
+    Q_D(const QStructuredActivityNode);
+    return d->activity;
 }
 
 void QStructuredActivityNode::setActivity(const QActivity *activity)
 {
-    d_ptr->activity = const_cast<QActivity *>(activity);
+    Q_D(QStructuredActivityNode);
+    d->setActivity(const_cast<QActivity *>(activity));
 }
 
 #include "moc_qstructuredactivitynode.cpp"

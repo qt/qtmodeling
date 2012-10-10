@@ -53,6 +53,11 @@ QLiteralStringPrivate::~QLiteralStringPrivate()
 {
 }
 
+void QLiteralStringPrivate::setValue(QString value)
+{
+    this->value = value;
+}
+
 /*!
     \class QLiteralString
 
@@ -62,13 +67,20 @@ QLiteralStringPrivate::~QLiteralStringPrivate()
  */
 
 QLiteralString::QLiteralString(QObject *parent)
-    : QObject(parent), d_ptr(new QLiteralStringPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QLiteralStringPrivate;
+}
+
+QLiteralString::QLiteralString(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QLiteralStringPrivate;
 }
 
 QLiteralString::~QLiteralString()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -76,12 +88,14 @@ QLiteralString::~QLiteralString()
  */
 QString QLiteralString::value() const
 {
-    return d_ptr->value;
+    Q_D(const QLiteralString);
+    return d->value;
 }
 
 void QLiteralString::setValue(QString value)
 {
-    d_ptr->value = value;
+    Q_D(QLiteralString);
+    d->setValue(value);
 }
 
 /*!

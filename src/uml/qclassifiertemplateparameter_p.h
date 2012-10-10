@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qtemplateparameter_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -54,7 +58,7 @@ QT_MODULE(QtUml)
 
 class QClassifier;
 
-class QClassifierTemplateParameterPrivate
+class QClassifierTemplateParameterPrivate : public QTemplateParameterPrivate
 {
 public:
     explicit QClassifierTemplateParameterPrivate();
@@ -63,6 +67,14 @@ public:
     bool allowSubstitutable;
     QClassifier *parameteredElement;
     QSet<QClassifier *> *constrainingClassifiers;
+
+    // Attributes
+    void setAllowSubstitutable(bool allowSubstitutable);
+
+    // Association-ends
+    void setParameteredElement(const QClassifier *parameteredElement);
+    void addConstrainingClassifier(const QClassifier *constrainingClassifier);
+    void removeConstrainingClassifier(const QClassifier *constrainingClassifier);
 };
 
 QT_END_NAMESPACE_QTUML

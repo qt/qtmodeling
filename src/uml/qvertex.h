@@ -63,7 +63,7 @@ class QStateMachine;
 class Q_UML_EXPORT QVertex : public virtual QNamedElement
 {
     Q_DISABLE_COPY(QVertex)
-    Q_DECLARE_PRIVATE(QVertex)
+    QTUML_DECLARE_PRIVATE(QVertex)
 
 public:
     virtual ~QVertex();
@@ -79,9 +79,6 @@ public:
 
 protected:
     explicit QVertex();
-
-protected:
-    QVertexPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

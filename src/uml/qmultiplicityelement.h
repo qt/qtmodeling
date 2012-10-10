@@ -58,7 +58,7 @@ class QValueSpecification;
 class Q_UML_EXPORT QMultiplicityElement : public virtual QElement
 {
     Q_DISABLE_COPY(QMultiplicityElement)
-    Q_DECLARE_PRIVATE(QMultiplicityElement)
+    QTUML_DECLARE_PRIVATE(QMultiplicityElement)
 
 public:
     virtual ~QMultiplicityElement();
@@ -90,9 +90,6 @@ public:
 
 protected:
     explicit QMultiplicityElement();
-
-protected:
-    QMultiplicityElementPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

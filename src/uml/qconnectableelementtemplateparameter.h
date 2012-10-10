@@ -63,7 +63,7 @@ class Q_UML_EXPORT QConnectableElementTemplateParameter : public QTemplateParame
     Q_PROPERTY(QConnectableElement * parameteredElement READ parameteredElement WRITE setParameteredElement)
 
     Q_DISABLE_COPY(QConnectableElementTemplateParameter)
-    Q_DECLARE_PRIVATE(QConnectableElementTemplateParameter)
+    QTUML_DECLARE_PRIVATE(QConnectableElementTemplateParameter)
 
 public:
     explicit QConnectableElementTemplateParameter(QObject *parent = 0);
@@ -74,7 +74,7 @@ public:
     void setParameteredElement(const QConnectableElement *parameteredElement);
 
 protected:
-    QConnectableElementTemplateParameterPrivate *d_ptr;
+    explicit QConnectableElementTemplateParameter(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

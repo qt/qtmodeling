@@ -43,6 +43,12 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qmultiplicityelement_p.h"
+
+#include "qconnectableelement_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -50,12 +56,10 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QActivity;
-
 class QStructuredActivityNode;
-
 class QAction;
 
-class QVariablePrivate
+class QVariablePrivate : public QMultiplicityElementPrivate, public QConnectableElementPrivate
 {
 public:
     explicit QVariablePrivate();
@@ -63,6 +67,10 @@ public:
 
     QStructuredActivityNode *scope;
     QActivity *activityScope;
+
+    // Association-ends
+    void setScope(const QStructuredActivityNode *scope);
+    void setActivityScope(const QActivity *activityScope);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -103,7 +103,7 @@ class Q_UML_EXPORT QReadSelfAction : public QObject, public QAction
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
     Q_DISABLE_COPY(QReadSelfAction)
-    Q_DECLARE_PRIVATE(QReadSelfAction)
+    QTUML_DECLARE_PRIVATE(QReadSelfAction)
 
 public:
     explicit QReadSelfAction(QObject *parent = 0);
@@ -114,7 +114,7 @@ public:
     void setResult(const QOutputPin *result);
 
 protected:
-    QReadSelfActionPrivate *d_ptr;
+    explicit QReadSelfAction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

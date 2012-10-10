@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qinterval_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,7 +55,7 @@ QT_MODULE(QtUml)
 
 class QTimeExpression;
 
-class QTimeIntervalPrivate
+class QTimeIntervalPrivate : public QIntervalPrivate
 {
 public:
     explicit QTimeIntervalPrivate();
@@ -59,6 +63,10 @@ public:
 
     QTimeExpression *max;
     QTimeExpression *min;
+
+    // Association-ends
+    void setMax(const QTimeExpression *max);
+    void setMin(const QTimeExpression *min);
 };
 
 QT_END_NAMESPACE_QTUML

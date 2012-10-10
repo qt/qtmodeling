@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qclassifier_p.h"
+
 // Qt includes
 #include <QtCore/QList>
 
@@ -54,13 +58,17 @@ QT_MODULE(QtUml)
 
 class QProperty;
 
-class QSignalPrivate
+class QSignalPrivate : public QClassifierPrivate
 {
 public:
     explicit QSignalPrivate();
     virtual ~QSignalPrivate();
 
     QList<QProperty *> *ownedAttributes;
+
+    // Association-ends
+    void addOwnedAttribute(const QProperty *ownedAttribute);
+    void removeOwnedAttribute(const QProperty *ownedAttribute);
 };
 
 QT_END_NAMESPACE_QTUML

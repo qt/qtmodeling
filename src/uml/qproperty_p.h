@@ -46,6 +46,14 @@
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
 
+// Base class includes
+
+#include "qstructuralfeature_p.h"
+
+#include "qconnectableelement_p.h"
+
+#include "qdeploymenttarget_p.h"
+
 // Qt includes
 #include <QtCore/QString>
 #include <QtCore/QList>
@@ -58,22 +66,15 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QRedefinableElement;
-
 class QParameterableElement;
-
 class QType;
-
 class QInterface;
-
 class QValueSpecification;
-
 class QAssociation;
-
 class QDataType;
-
 class QClass;
 
-class QPropertyPrivate
+class QPropertyPrivate : public QStructuralFeaturePrivate, public QConnectableElementPrivate, public QDeploymentTargetPrivate
 {
 public:
     explicit QPropertyPrivate();
@@ -94,6 +95,31 @@ public:
     QSet<QProperty *> *redefinedProperties;
     QAssociation *association;
     QInterface *interface;
+
+    // Attributes
+    void setDerived(bool isDerived);
+    void setDefault_(QString default_);
+    void setComposite(bool isComposite);
+    void setReadOnly(bool isReadOnly);
+    void setID(bool isID);
+    void setDerivedUnion(bool isDerivedUnion);
+    void setAggregation(QtUml::AggregationKind aggregation);
+
+    // Association-ends
+    void addSubsettedProperty(const QProperty *subsettedProperty);
+    void removeSubsettedProperty(const QProperty *subsettedProperty);
+    void setOwningAssociation(const QAssociation *owningAssociation);
+    void addQualifier(const QProperty *qualifier);
+    void removeQualifier(const QProperty *qualifier);
+    void setDefaultValue(const QValueSpecification *defaultValue);
+    void setClass_(const QClass *class_);
+    void setOpposite(const QProperty *opposite);
+    void setAssociationEnd(const QProperty *associationEnd);
+    void setDatatype(const QDataType *datatype);
+    void addRedefinedProperty(const QProperty *redefinedProperty);
+    void removeRedefinedProperty(const QProperty *redefinedProperty);
+    void setAssociation(const QAssociation *association);
+    void setInterface(const QInterface *interface);
 };
 
 QT_END_NAMESPACE_QTUML

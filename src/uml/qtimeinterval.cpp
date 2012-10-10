@@ -55,6 +55,16 @@ QTimeIntervalPrivate::QTimeIntervalPrivate() :
 QTimeIntervalPrivate::~QTimeIntervalPrivate()
 {
 }
+  
+void QTimeIntervalPrivate::setMax(const QTimeExpression *max) 
+{  
+    this->max = const_cast<QTimeExpression *>(max);   
+}
+  
+void QTimeIntervalPrivate::setMin(const QTimeExpression *min) 
+{  
+    this->min = const_cast<QTimeExpression *>(min);   
+}
 
 /*!
     \class QTimeInterval
@@ -65,13 +75,20 @@ QTimeIntervalPrivate::~QTimeIntervalPrivate()
  */
 
 QTimeInterval::QTimeInterval(QObject *parent)
-    : QInterval(parent), d_ptr(new QTimeIntervalPrivate)
+    : QInterval(false, parent)
 {
+    d_umlptr = new QTimeIntervalPrivate;
+}
+
+QTimeInterval::QTimeInterval(bool createPimpl, QObject *parent)
+    : QInterval(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QTimeIntervalPrivate;
 }
 
 QTimeInterval::~QTimeInterval()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,12 +96,14 @@ QTimeInterval::~QTimeInterval()
  */
 QTimeExpression *QTimeInterval::max() const
 {
-    return d_ptr->max;
+    Q_D(const QTimeInterval);
+    return d->max;
 }
 
 void QTimeInterval::setMax(const QTimeExpression *max)
 {
-    d_ptr->max = const_cast<QTimeExpression *>(max);
+    Q_D(QTimeInterval);
+    d->setMax(const_cast<QTimeExpression *>(max));
 }
 
 /*!
@@ -92,12 +111,14 @@ void QTimeInterval::setMax(const QTimeExpression *max)
  */
 QTimeExpression *QTimeInterval::min() const
 {
-    return d_ptr->min;
+    Q_D(const QTimeInterval);
+    return d->min;
 }
 
 void QTimeInterval::setMin(const QTimeExpression *min)
 {
-    d_ptr->min = const_cast<QTimeExpression *>(min);
+    Q_D(QTimeInterval);
+    d->setMin(const_cast<QTimeExpression *>(min));
 }
 
 #include "moc_qtimeinterval.cpp"

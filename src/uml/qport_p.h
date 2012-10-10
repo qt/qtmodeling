@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qproperty_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,10 +57,9 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QProtocolStateMachine;
-
 class QInterface;
 
-class QPortPrivate
+class QPortPrivate : public QPropertyPrivate
 {
 public:
     explicit QPortPrivate();
@@ -67,6 +70,20 @@ public:
     bool isService;
     QProtocolStateMachine *protocol;
     QSet<QPort *> *redefinedPorts;
+
+    // Attributes
+    void setConjugated(bool isConjugated);
+    void setBehavior(bool isBehavior);
+    void setService(bool isService);
+
+    // Association-ends
+    void setProtocol(const QProtocolStateMachine *protocol);
+    void addRequired(const QInterface *required);
+    void removeRequired(const QInterface *required);
+    void addProvided(const QInterface *provided);
+    void removeProvided(const QInterface *provided);
+    void addRedefinedPort(const QPort *redefinedPort);
+    void removeRedefinedPort(const QPort *redefinedPort);
 };
 
 QT_END_NAMESPACE_QTUML

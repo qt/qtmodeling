@@ -60,6 +60,26 @@ QMultiplicityElementPrivate::~QMultiplicityElementPrivate()
 {
 }
 
+void QMultiplicityElementPrivate::setUnique(bool isUnique)
+{
+    this->isUnique = isUnique;
+}
+
+void QMultiplicityElementPrivate::setOrdered(bool isOrdered)
+{
+    this->isOrdered = isOrdered;
+}
+  
+void QMultiplicityElementPrivate::setUpperValue(const QValueSpecification *upperValue) 
+{  
+    this->upperValue = const_cast<QValueSpecification *>(upperValue);   
+}
+  
+void QMultiplicityElementPrivate::setLowerValue(const QValueSpecification *lowerValue) 
+{  
+    this->lowerValue = const_cast<QValueSpecification *>(lowerValue);   
+}
+
 /*!
     \class QMultiplicityElement
 
@@ -69,13 +89,12 @@ QMultiplicityElementPrivate::~QMultiplicityElementPrivate()
  */
 
 QMultiplicityElement::QMultiplicityElement()
-    : d_ptr(new QMultiplicityElementPrivate)
 {
+    d_umlptr = new QMultiplicityElementPrivate;
 }
 
 QMultiplicityElement::~QMultiplicityElement()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -96,12 +115,14 @@ void QMultiplicityElement::setUpper(qint32 upper)
  */
 bool QMultiplicityElement::isUnique() const
 {
-    return d_ptr->isUnique;
+    Q_D(const QMultiplicityElement);
+    return d->isUnique;
 }
 
 void QMultiplicityElement::setUnique(bool isUnique)
 {
-    d_ptr->isUnique = isUnique;
+    Q_D(QMultiplicityElement);
+    d->setUnique(isUnique);
 }
 
 /*!
@@ -109,12 +130,14 @@ void QMultiplicityElement::setUnique(bool isUnique)
  */
 bool QMultiplicityElement::isOrdered() const
 {
-    return d_ptr->isOrdered;
+    Q_D(const QMultiplicityElement);
+    return d->isOrdered;
 }
 
 void QMultiplicityElement::setOrdered(bool isOrdered)
 {
-    d_ptr->isOrdered = isOrdered;
+    Q_D(QMultiplicityElement);
+    d->setOrdered(isOrdered);
 }
 
 /*!
@@ -135,12 +158,14 @@ void QMultiplicityElement::setLower(qint32 lower)
  */
 QValueSpecification *QMultiplicityElement::upperValue() const
 {
-    return d_ptr->upperValue;
+    Q_D(const QMultiplicityElement);
+    return d->upperValue;
 }
 
 void QMultiplicityElement::setUpperValue(const QValueSpecification *upperValue)
 {
-    d_ptr->upperValue = const_cast<QValueSpecification *>(upperValue);
+    Q_D(QMultiplicityElement);
+    d->setUpperValue(const_cast<QValueSpecification *>(upperValue));
 }
 
 /*!
@@ -148,12 +173,14 @@ void QMultiplicityElement::setUpperValue(const QValueSpecification *upperValue)
  */
 QValueSpecification *QMultiplicityElement::lowerValue() const
 {
-    return d_ptr->lowerValue;
+    Q_D(const QMultiplicityElement);
+    return d->lowerValue;
 }
 
 void QMultiplicityElement::setLowerValue(const QValueSpecification *lowerValue)
 {
-    d_ptr->lowerValue = const_cast<QValueSpecification *>(lowerValue);
+    Q_D(QMultiplicityElement);
+    d->setLowerValue(const_cast<QValueSpecification *>(lowerValue));
 }
 
 /*!

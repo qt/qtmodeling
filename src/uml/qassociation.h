@@ -132,7 +132,7 @@ class Q_UML_EXPORT QAssociation : public QObject, public QClassifier, public QRe
     Q_PROPERTY(const QList<QProperty *> * memberEnds READ memberEnds)
 
     Q_DISABLE_COPY(QAssociation)
-    Q_DECLARE_PRIVATE(QAssociation)
+    QTUML_DECLARE_PRIVATE(QAssociation)
 
 public:
     explicit QAssociation(QObject *parent = 0);
@@ -155,7 +155,7 @@ public:
     void removeMemberEnd(const QProperty *memberEnd);
 
 protected:
-    QAssociationPrivate *d_ptr;
+    explicit QAssociation(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

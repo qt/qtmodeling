@@ -1,11 +1,20 @@
-[%- MACRO HANDLESUBSETTEDPROPERTY(property, qsetMethod, qlistMethod) BLOCK -%]
+[%- MACRO HANDLESUBSETTEDPROPERTY(property, operation) BLOCK -%]
     [%- IF property.subsettedProperty != '' %]
+
     // Adjust subsetted property(ies)
     [%- FOREACH subsettedProperty IN property.subsettedProperty.split(' ') -%]
         [%- subsettedClass = subsettedProperty.split('-').0.replace('^', 'Q') -%]
         [%- IF classes.item(subsettedClass) -%]
-        [%- subsettedPropertyItem = classes.item(subsettedClass).item(property).item(subsettedProperty) %]
-    ${subsettedClass}::d_ptr->${subsettedPropertyItem.accessor.0.name}->[% IF subsettedPropertyItem.accessor.0.return.search('QSet') %]${qsetMethod}[% ELSE %]${qlistMethod}[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
+        [%- IF classes.item(subsettedClass).attribute.item(subsettedProperty) -%]
+        [%- subsettedPropertyItem = classes.item(subsettedClass).attribute.item(subsettedProperty) %]
+        [%- ELSE -%]
+        [%- subsettedPropertyItem = classes.item(subsettedClass).associationend.item(subsettedProperty) -%]
+        [%- END %]
+        [%- IF operation == 1 %]
+    ${subsettedPropertyItem.accessor.1.name}(${accessor.parameter.0.name});
+        [%- ELSE %]
+    ${subsettedPropertyItem.accessor.2.name}(${accessor.parameter.0.name});
+        [%- END -%]
         [%- END -%]
     [%- END -%]
     [%- END -%]
@@ -167,6 +176,50 @@ ${class.name}Private::~${class.name}Private()
 [%- END -%]
 }
 
+[%- FOREACH attribute IN class.attribute.values -%]
+[%- IF attribute.isDerived == 'false' or attribute.isDerivedUnion == 'true' -%]
+[%- FOREACH accessor IN attribute.accessor -%]
+[%- NEXT IF loop.first %]
+${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
+{
+    [%- IF accessor.name.search('^set') %]
+    this->${accessor.parameter.0.name} = [% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %];
+    [%- END %]
+    [%- IF accessor.name.search('^add') %]
+    this->${attribute.accessor.0.name}->[% IF attribute.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
+    [%- HANDLESUBSETTEDPROPERTY(attribute, 1) -%]
+    [%- END %]
+    [%- IF accessor.name.search('^remove') %]
+    this->${attribute.accessor.0.name}->[% IF attribute.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
+    [%- HANDLESUBSETTEDPROPERTY(attribute, 2) -%]
+    [%- END %]
+}
+[% END -%]
+[%- END %]
+[%- END -%]
+
+[%- FOREACH associationend IN class.associationend.values %] 
+[%- IF associationend.isDerived == 'false' or associationend.isDerivedUnion == 'true' -%]
+[%- FOREACH accessor IN associationend.accessor -%] 
+[%- NEXT IF loop.first %] 
+${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness} 
+{ 
+    [%- IF accessor.name.search('^set') %] 
+    this->${accessor.parameter.0.name} = [% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]; 
+    [%- END %] 
+    [%- IF accessor.name.search('^add') %] 
+    this->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]); 
+    [%- HANDLESUBSETTEDPROPERTY(associationend, 1) -%]
+    [%- END %] 
+    [%- IF accessor.name.search('^remove') %] 
+    this->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]); 
+    [%- HANDLESUBSETTEDPROPERTY(associationend, 2) -%]
+    [%- END %]
+}
+[% END -%]
+[%- END %]
+[%- END -%]
+
 [%- IF class.documentation %]
 /*!
     \class ${class.name}
@@ -178,16 +231,29 @@ ${class.name}Private::~${class.name}Private()
 [%- END %]
 
 ${class.name}::${class.name}([%- IF class.isAbstract == 'false' -%]QObject *parent[%- END -%])
+[%- IF class.isAbstract == 'false' %]
 [% GET '    : ' -%]
-[%- IF class.isAbstract == 'false' -%]
-[% IF class.superobject -%]${class.superobject.split('/').last}[%- ELSE -%]QObject[%- END -%](parent)[% GET ', ' -%]
-[%- END %]d_ptr(new ${class.name}Private)
+[% IF class.superobject -%]${class.superobject.split('/').last}(false, parent)[%- ELSE -%]QObject(parent)[%- END -%]
+[%- END %]
 {
+    d_umlptr = new ${class.name}Private;
 }
+[%- IF class.isAbstract == 'false' %]
+
+${class.name}::${class.name}(bool createPimpl, QObject *parent)
+[% GET '    : ' -%]
+[% IF class.superobject -%]${class.superobject.split('/').last}(createPimpl, parent)[%- ELSE -%]QObject(parent)[%- END %]
+{
+    if (createPimpl)
+        d_umlptr = new ${class.name}Private;
+}
+[%- END %]
 
 ${class.name}::~${class.name}()
 {
-    delete d_ptr;
+[%- IF not(class.superclass) %]
+    delete d_umlptr;
+[%- END %]
 }
 
 [%- FOREACH attribute IN class.attribute.values %]
@@ -199,26 +265,19 @@ ${class.name}::~${class.name}()
 [%- FOREACH accessor IN attribute.accessor %]
 ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
 {
-[%- IF attribute.isDerived == 'false' or attribute.isDerivedUnion == 'true' -%]
+[%- IF attribute.isDerived == 'false' or attribute.isDerivedUnion == 'true' %]
     [%- IF loop.first %]
-    return d_ptr->${accessor.name};
-    [%- ELSE -%]
-        [%- IF accessor.name.search('^set') %]
-    d_ptr->${accessor.parameter.0.name} = [% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %];
-        [%- END %]
-        [%- IF accessor.name.search('^add') %]
-    d_ptr->${attribute.accessor.0.name}->[% IF attribute.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
-        [%- HANDLESUBSETTEDPROPERTY('attribute', 'insert', 'append') -%]
-        [%- END %]
-        [%- IF accessor.name.search('^remove') %]
-    d_ptr->${attribute.accessor.0.name}->[% IF attribute.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
-        [%- HANDLESUBSETTEDPROPERTY('attribute', 'remove', 'removeAll') -%]
-        [%- END %]
+    Q_D(const ${class.name});
+    return d->${accessor.name};
+    [%- ELSE %]
+    Q_D(${class.name});
+    d->${accessor.name}([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
     [%- END %]
 [%- ELSE %]
     qWarning("${class.name}::${accessor.name}: to be implemented (this is a derived attribute)");
 [%- END %]
 }
+[% LAST IF attribute.isReadOnly == 'true' -%]
 [% END -%]
 [%- END -%]
 
@@ -231,26 +290,19 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
 [%- FOREACH accessor IN associationend.accessor %]
 ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
 {
-[%- IF associationend.isDerived == 'false' or associationend.isDerivedUnion == 'true' -%]
+[%- IF associationend.isDerived == 'false' or associationend.isDerivedUnion == 'true' %]
     [%- IF loop.first %]
-    return d_ptr->${accessor.name};
-    [%- ELSE -%]
-        [%- IF accessor.name.search('^set') %]
-    d_ptr->${accessor.parameter.0.name} = [% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %];
-        [%- END %]
-        [%- IF accessor.name.search('^add') %]
-    d_ptr->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
-        [%- HANDLESUBSETTEDPROPERTY('associationend', 'insert', 'append') -%]
-        [%- END %]
-        [%- IF accessor.name.search('^remove') %]
-    d_ptr->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
-        [%- HANDLESUBSETTEDPROPERTY('associationend', 'remove', 'removeAll') -%]
-        [%- END %]
+    Q_D(const ${class.name});
+    return d->${accessor.name};
+    [%- ELSE %]
+    Q_D(${class.name});
+    d->${accessor.name}([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
     [%- END %]
 [%- ELSE %]
     qWarning("${class.name}::${accessor.name}: to be implemented (this is a derived associationend)");
 [%- END %]
 }
+[% LAST IF associationend.isReadOnly == 'true' -%]
 [% END -%]
 [%- END -%]
 

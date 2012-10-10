@@ -46,6 +46,11 @@
 // Qt includes
 #include <QtCore/QSet>
 
+#define QTUML_DECLARE_PRIVATE(Class) \
+    inline Class##Private* d_func() { return reinterpret_cast<Class##Private *>(d_umlptr); } \
+    inline const Class##Private* d_func() const { return reinterpret_cast<const Class##Private *>(d_umlptr); } \
+    friend class Class##Private;
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -58,7 +63,7 @@ class QComment;
 class Q_UML_EXPORT QElement
 {
     Q_DISABLE_COPY(QElement)
-    Q_DECLARE_PRIVATE(QElement)
+    QTUML_DECLARE_PRIVATE(QElement)
 
 public:
     virtual ~QElement();
@@ -78,7 +83,7 @@ protected:
     explicit QElement();
 
 protected:
-    QElementPrivate *d_ptr;
+    QElementPrivate *d_umlptr;
 };
 
 QT_END_NAMESPACE_QTUML

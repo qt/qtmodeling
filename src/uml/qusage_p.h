@@ -43,13 +43,18 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qdependency_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QUsagePrivate
+
+class QUsagePrivate : public QDependencyPrivate
 {
 public:
     explicit QUsagePrivate();

@@ -90,7 +90,7 @@ class Q_UML_EXPORT QExpression : public QObject, public QValueSpecification
     Q_PROPERTY(const QList<QValueSpecification *> * operands READ operands)
 
     Q_DISABLE_COPY(QExpression)
-    Q_DECLARE_PRIVATE(QExpression)
+    QTUML_DECLARE_PRIVATE(QExpression)
 
 public:
     explicit QExpression(QObject *parent = 0);
@@ -106,7 +106,7 @@ public:
     void removeOperand(const QValueSpecification *operand);
 
 protected:
-    QExpressionPrivate *d_ptr;
+    explicit QExpression(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

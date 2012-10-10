@@ -68,7 +68,7 @@ class Q_UML_EXPORT QClassifierTemplateParameter : public QTemplateParameter
     Q_PROPERTY(const QSet<QClassifier *> * constrainingClassifiers READ constrainingClassifiers)
 
     Q_DISABLE_COPY(QClassifierTemplateParameter)
-    Q_DECLARE_PRIVATE(QClassifierTemplateParameter)
+    QTUML_DECLARE_PRIVATE(QClassifierTemplateParameter)
 
 public:
     explicit QClassifierTemplateParameter(QObject *parent = 0);
@@ -86,7 +86,7 @@ public:
     void removeConstrainingClassifier(const QClassifier *constrainingClassifier);
 
 protected:
-    QClassifierTemplateParameterPrivate *d_ptr;
+    explicit QClassifierTemplateParameter(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

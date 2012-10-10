@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qredefinableelement_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -54,7 +58,7 @@ QT_MODULE(QtUml)
 
 class QClassifier;
 
-class QFeaturePrivate
+class QFeaturePrivate : public QRedefinableElementPrivate
 {
 public:
     explicit QFeaturePrivate();
@@ -62,6 +66,13 @@ public:
 
     bool isStatic;
     QSet<QClassifier *> *featuringClassifiers;
+
+    // Attributes
+    void setStatic(bool isStatic);
+
+    // Association-ends
+    void addFeaturingClassifier(const QClassifier *featuringClassifier);
+    void removeFeaturingClassifier(const QClassifier *featuringClassifier);
 };
 
 QT_END_NAMESPACE_QTUML

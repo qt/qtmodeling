@@ -56,6 +56,22 @@ QCollaborationPrivate::~QCollaborationPrivate()
 {
     delete collaborationRoles;
 }
+  
+void QCollaborationPrivate::addCollaborationRole(const QConnectableElement *collaborationRole) 
+{   
+    this->collaborationRoles->insert(const_cast<QConnectableElement *>(collaborationRole)); 
+
+    // Adjust subsetted property(ies)
+    addRole(collaborationRole); 
+}
+ 
+void QCollaborationPrivate::removeCollaborationRole(const QConnectableElement *collaborationRole) 
+{    
+    this->collaborationRoles->remove(const_cast<QConnectableElement *>(collaborationRole)); 
+
+    // Adjust subsetted property(ies)
+    removeRole(collaborationRole);
+}
 
 /*!
     \class QCollaboration
@@ -66,13 +82,20 @@ QCollaborationPrivate::~QCollaborationPrivate()
  */
 
 QCollaboration::QCollaboration(QObject *parent)
-    : QObject(parent), d_ptr(new QCollaborationPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QCollaborationPrivate;
+}
+
+QCollaboration::QCollaboration(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QCollaborationPrivate;
 }
 
 QCollaboration::~QCollaboration()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -80,17 +103,20 @@ QCollaboration::~QCollaboration()
  */
 const QSet<QConnectableElement *> *QCollaboration::collaborationRoles() const
 {
-    return d_ptr->collaborationRoles;
+    Q_D(const QCollaboration);
+    return d->collaborationRoles;
 }
 
 void QCollaboration::addCollaborationRole(const QConnectableElement *collaborationRole)
 {
-    d_ptr->collaborationRoles->insert(const_cast<QConnectableElement *>(collaborationRole));
+    Q_D(QCollaboration);
+    d->addCollaborationRole(const_cast<QConnectableElement *>(collaborationRole));
 }
 
 void QCollaboration::removeCollaborationRole(const QConnectableElement *collaborationRole)
 {
-    d_ptr->collaborationRoles->remove(const_cast<QConnectableElement *>(collaborationRole));
+    Q_D(QCollaboration);
+    d->removeCollaborationRole(const_cast<QConnectableElement *>(collaborationRole));
 }
 
 #include "moc_qcollaboration.cpp"

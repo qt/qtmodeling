@@ -88,7 +88,7 @@ class Q_UML_EXPORT QOccurrenceSpecification : public QObject, public QInteractio
     Q_PROPERTY(const QSet<QGeneralOrdering *> * toBefore READ toBefore)
 
     Q_DISABLE_COPY(QOccurrenceSpecification)
-    Q_DECLARE_PRIVATE(QOccurrenceSpecification)
+    QTUML_DECLARE_PRIVATE(QOccurrenceSpecification)
 
 public:
     explicit QOccurrenceSpecification(QObject *parent = 0);
@@ -105,7 +105,7 @@ public:
     void removeToBefore(const QGeneralOrdering *toBefore);
 
 protected:
-    QOccurrenceSpecificationPrivate *d_ptr;
+    explicit QOccurrenceSpecification(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

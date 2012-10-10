@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qaction_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,13 +55,16 @@ QT_MODULE(QtUml)
 
 class QVariable;
 
-class QVariableActionPrivate
+class QVariableActionPrivate : public QActionPrivate
 {
 public:
     explicit QVariableActionPrivate();
     virtual ~QVariableActionPrivate();
 
     QVariable *variable;
+
+    // Association-ends
+    void setVariable(const QVariable *variable);
 };
 
 QT_END_NAMESPACE_QTUML
