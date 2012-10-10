@@ -64,7 +64,7 @@ public:
     QInputPin *request;
     QInputPin *target;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setRequest(const QInputPin *request);
     void setTarget(const QInputPin *target);
 };

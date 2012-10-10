@@ -65,7 +65,7 @@ public:
     QInputPin *target;
     QSignal *signal;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setTarget(const QInputPin *target);
     void setSignal(const QSignal *signal);
 };

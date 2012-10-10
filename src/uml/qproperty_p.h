@@ -96,7 +96,7 @@ public:
     QAssociation *association;
     QInterface *interface;
 
-    // Attributes
+    // Internal functions for attributes
     void setDerived(bool isDerived);
     void setDefault_(QString default_);
     void setComposite(bool isComposite);
@@ -105,7 +105,7 @@ public:
     void setDerivedUnion(bool isDerivedUnion);
     void setAggregation(QtUml::AggregationKind aggregation);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addSubsettedProperty(const QProperty *subsettedProperty);
     void removeSubsettedProperty(const QProperty *subsettedProperty);
     void setOwningAssociation(const QAssociation *owningAssociation);

@@ -54,10 +54,10 @@ QOperationTemplateParameterPrivate::QOperationTemplateParameterPrivate() :
 QOperationTemplateParameterPrivate::~QOperationTemplateParameterPrivate()
 {
 }
-  
-void QOperationTemplateParameterPrivate::setParameteredElement(const QOperation *parameteredElement) 
-{  
-    this->parameteredElement = const_cast<QOperation *>(parameteredElement);   
+
+void QOperationTemplateParameterPrivate::setParameteredElement(const QOperation *parameteredElement)
+{
+    this->parameteredElement = const_cast<QOperation *>(parameteredElement);
 }
 
 /*!

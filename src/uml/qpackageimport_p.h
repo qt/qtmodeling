@@ -69,10 +69,10 @@ public:
     QNamespace *importingNamespace;
     QPackage *importedPackage;
 
-    // Attributes
+    // Internal functions for attributes
     void setVisibility(QtUml::VisibilityKind visibility);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setImportingNamespace(const QNamespace *importingNamespace);
     void setImportedPackage(const QPackage *importedPackage);
 };

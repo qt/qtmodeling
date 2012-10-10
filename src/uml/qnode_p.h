@@ -67,7 +67,7 @@ public:
 
     QSet<QNode *> *nestedNodes;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addNestedNode(const QNode *nestedNode);
     void removeNestedNode(const QNode *nestedNode);
 };

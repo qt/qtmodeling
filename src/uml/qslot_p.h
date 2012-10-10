@@ -70,7 +70,7 @@ public:
     QStructuralFeature *definingFeature;
     QInstanceSpecification *owningInstance;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addValue(const QValueSpecification *value);
     void removeValue(const QValueSpecification *value);
     void setDefiningFeature(const QStructuralFeature *definingFeature);

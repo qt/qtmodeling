@@ -68,7 +68,7 @@ public:
     QSet<QActivityEdge *> *interruptingEdges;
     QSet<QActivityNode *> *nodes;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addInterruptingEdge(const QActivityEdge *interruptingEdge);
     void removeInterruptingEdge(const QActivityEdge *interruptingEdge);
     void addNode(const QActivityNode *node);

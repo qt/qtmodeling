@@ -57,15 +57,15 @@ QStateInvariantPrivate::QStateInvariantPrivate() :
 QStateInvariantPrivate::~QStateInvariantPrivate()
 {
 }
-  
-void QStateInvariantPrivate::setInvariant(const QConstraint *invariant) 
-{  
-    this->invariant = const_cast<QConstraint *>(invariant);   
+
+void QStateInvariantPrivate::setInvariant(const QConstraint *invariant)
+{
+    this->invariant = const_cast<QConstraint *>(invariant);
 }
-  
-void QStateInvariantPrivate::setCovered(const QLifeline *covered) 
-{  
-    this->covered = const_cast<QLifeline *>(covered);   
+
+void QStateInvariantPrivate::setCovered(const QLifeline *covered)
+{
+    this->covered = const_cast<QLifeline *>(covered);
 }
 
 /*!

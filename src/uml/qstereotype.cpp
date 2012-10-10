@@ -57,23 +57,23 @@ QStereotypePrivate::~QStereotypePrivate()
 {
     delete icons;
 }
-  
-void QStereotypePrivate::addIcon(const QImage *icon) 
-{   
-    this->icons->insert(const_cast<QImage *>(icon)); 
+
+void QStereotypePrivate::addIcon(const QImage *icon)
+{
+    this->icons->insert(const_cast<QImage *>(icon));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(icon); 
+    addOwnedElement(icon);
 }
- 
-void QStereotypePrivate::removeIcon(const QImage *icon) 
-{    
-    this->icons->remove(const_cast<QImage *>(icon)); 
+
+void QStereotypePrivate::removeIcon(const QImage *icon)
+{
+    this->icons->remove(const_cast<QImage *>(icon));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(icon);
 }
- 
+
 /*!
     \class QStereotype
 

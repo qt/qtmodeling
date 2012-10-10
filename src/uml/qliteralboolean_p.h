@@ -62,7 +62,7 @@ public:
 
     bool value;
 
-    // Attributes
+    // Internal functions for attributes
     void setValue(bool value);
 };
 

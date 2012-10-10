@@ -54,10 +54,10 @@ QSignalEventPrivate::QSignalEventPrivate() :
 QSignalEventPrivate::~QSignalEventPrivate()
 {
 }
-  
-void QSignalEventPrivate::setSignal(const QSignal *signal) 
-{  
-    this->signal = const_cast<QSignal *>(signal);   
+
+void QSignalEventPrivate::setSignal(const QSignal *signal)
+{
+    this->signal = const_cast<QSignal *>(signal);
 }
 
 /*!

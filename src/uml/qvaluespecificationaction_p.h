@@ -65,7 +65,7 @@ public:
     QValueSpecification *value;
     QOutputPin *result;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setValue(const QValueSpecification *value);
     void setResult(const QOutputPin *result);
 };

@@ -64,7 +64,7 @@ public:
     QProtocolStateMachine *specificMachine;
     QProtocolStateMachine *generalMachine;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setSpecificMachine(const QProtocolStateMachine *specificMachine);
     void setGeneralMachine(const QProtocolStateMachine *generalMachine);
 };

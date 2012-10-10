@@ -64,10 +64,10 @@ public:
     bool isRemoveDuplicates;
     QInputPin *removeAt;
 
-    // Attributes
+    // Internal functions for attributes
     void setRemoveDuplicates(bool isRemoveDuplicates);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setRemoveAt(const QInputPin *removeAt);
 };
 

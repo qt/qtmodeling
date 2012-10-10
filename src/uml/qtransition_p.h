@@ -84,10 +84,10 @@ public:
     QVertex *source;
     QSet<QTrigger *> *triggers;
 
-    // Attributes
+    // Internal functions for attributes
     void setKind(QtUml::TransitionKind kind);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setGuard(const QConstraint *guard);
     void setTarget(const QVertex *target);
     void setEffect(const QBehavior *effect);

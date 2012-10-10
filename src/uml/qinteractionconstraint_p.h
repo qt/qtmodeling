@@ -64,7 +64,7 @@ public:
     QValueSpecification *maxint;
     QValueSpecification *minint;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setMaxint(const QValueSpecification *maxint);
     void setMinint(const QValueSpecification *minint);
 };

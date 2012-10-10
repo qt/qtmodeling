@@ -57,23 +57,23 @@ QStringExpressionPrivate::~QStringExpressionPrivate()
 {
     delete subExpressions;
 }
-  
-void QStringExpressionPrivate::setOwningExpression(const QStringExpression *owningExpression) 
-{  
-    this->owningExpression = const_cast<QStringExpression *>(owningExpression);   
+
+void QStringExpressionPrivate::setOwningExpression(const QStringExpression *owningExpression)
+{
+    this->owningExpression = const_cast<QStringExpression *>(owningExpression);
 }
-  
-void QStringExpressionPrivate::addSubExpression(const QStringExpression *subExpression) 
-{   
-    this->subExpressions->insert(const_cast<QStringExpression *>(subExpression)); 
+
+void QStringExpressionPrivate::addSubExpression(const QStringExpression *subExpression)
+{
+    this->subExpressions->insert(const_cast<QStringExpression *>(subExpression));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(subExpression); 
+    addOwnedElement(subExpression);
 }
- 
-void QStringExpressionPrivate::removeSubExpression(const QStringExpression *subExpression) 
-{    
-    this->subExpressions->remove(const_cast<QStringExpression *>(subExpression)); 
+
+void QStringExpressionPrivate::removeSubExpression(const QStringExpression *subExpression)
+{
+    this->subExpressions->remove(const_cast<QStringExpression *>(subExpression));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(subExpression);

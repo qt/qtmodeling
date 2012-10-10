@@ -54,10 +54,10 @@ QExecutionOccurrenceSpecificationPrivate::QExecutionOccurrenceSpecificationPriva
 QExecutionOccurrenceSpecificationPrivate::~QExecutionOccurrenceSpecificationPrivate()
 {
 }
-  
-void QExecutionOccurrenceSpecificationPrivate::setExecution(const QExecutionSpecification *execution) 
-{  
-    this->execution = const_cast<QExecutionSpecification *>(execution);   
+
+void QExecutionOccurrenceSpecificationPrivate::setExecution(const QExecutionSpecification *execution)
+{
+    this->execution = const_cast<QExecutionSpecification *>(execution);
 }
 
 /*!

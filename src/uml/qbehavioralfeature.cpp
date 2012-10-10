@@ -79,57 +79,57 @@ void QBehavioralFeaturePrivate::setAbstract(bool isAbstract)
 {
     this->isAbstract = isAbstract;
 }
-  
-void QBehavioralFeaturePrivate::addRaisedException(const QType *raisedException) 
-{   
-    this->raisedExceptions->insert(const_cast<QType *>(raisedException));  
+
+void QBehavioralFeaturePrivate::addRaisedException(const QType *raisedException)
+{
+    this->raisedExceptions->insert(const_cast<QType *>(raisedException));
 }
- 
-void QBehavioralFeaturePrivate::removeRaisedException(const QType *raisedException) 
-{    
-    this->raisedExceptions->remove(const_cast<QType *>(raisedException)); 
+
+void QBehavioralFeaturePrivate::removeRaisedException(const QType *raisedException)
+{
+    this->raisedExceptions->remove(const_cast<QType *>(raisedException));
 }
-  
-void QBehavioralFeaturePrivate::addOwnedParameter(const QParameter *ownedParameter) 
-{   
-    this->ownedParameters->append(const_cast<QParameter *>(ownedParameter)); 
+
+void QBehavioralFeaturePrivate::addOwnedParameter(const QParameter *ownedParameter)
+{
+    this->ownedParameters->append(const_cast<QParameter *>(ownedParameter));
 
     // Adjust subsetted property(ies)
-    addOwnedMember(ownedParameter); 
+    addOwnedMember(ownedParameter);
 }
- 
-void QBehavioralFeaturePrivate::removeOwnedParameter(const QParameter *ownedParameter) 
-{    
-    this->ownedParameters->removeAll(const_cast<QParameter *>(ownedParameter)); 
+
+void QBehavioralFeaturePrivate::removeOwnedParameter(const QParameter *ownedParameter)
+{
+    this->ownedParameters->removeAll(const_cast<QParameter *>(ownedParameter));
 
     // Adjust subsetted property(ies)
     removeOwnedMember(ownedParameter);
 }
-  
-void QBehavioralFeaturePrivate::addOwnedParameterSet(const QParameterSet *ownedParameterSet) 
-{   
-    this->ownedParameterSets->insert(const_cast<QParameterSet *>(ownedParameterSet)); 
+
+void QBehavioralFeaturePrivate::addOwnedParameterSet(const QParameterSet *ownedParameterSet)
+{
+    this->ownedParameterSets->insert(const_cast<QParameterSet *>(ownedParameterSet));
 
     // Adjust subsetted property(ies)
-    addOwnedMember(ownedParameterSet); 
+    addOwnedMember(ownedParameterSet);
 }
- 
-void QBehavioralFeaturePrivate::removeOwnedParameterSet(const QParameterSet *ownedParameterSet) 
-{    
-    this->ownedParameterSets->remove(const_cast<QParameterSet *>(ownedParameterSet)); 
+
+void QBehavioralFeaturePrivate::removeOwnedParameterSet(const QParameterSet *ownedParameterSet)
+{
+    this->ownedParameterSets->remove(const_cast<QParameterSet *>(ownedParameterSet));
 
     // Adjust subsetted property(ies)
     removeOwnedMember(ownedParameterSet);
 }
-  
-void QBehavioralFeaturePrivate::addMethod(const QBehavior *method) 
-{   
-    this->methods->insert(const_cast<QBehavior *>(method));  
+
+void QBehavioralFeaturePrivate::addMethod(const QBehavior *method)
+{
+    this->methods->insert(const_cast<QBehavior *>(method));
 }
- 
-void QBehavioralFeaturePrivate::removeMethod(const QBehavior *method) 
-{    
-    this->methods->remove(const_cast<QBehavior *>(method)); 
+
+void QBehavioralFeaturePrivate::removeMethod(const QBehavior *method)
+{
+    this->methods->remove(const_cast<QBehavior *>(method));
 }
 
 /*!

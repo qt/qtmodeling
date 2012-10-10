@@ -65,7 +65,7 @@ public:
     QInputPin *object;
     QStructuralFeature *structuralFeature;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setObject(const QInputPin *object);
     void setStructuralFeature(const QStructuralFeature *structuralFeature);
 };

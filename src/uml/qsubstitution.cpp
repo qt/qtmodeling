@@ -58,15 +58,15 @@ QSubstitutionPrivate::QSubstitutionPrivate() :
 QSubstitutionPrivate::~QSubstitutionPrivate()
 {
 }
-  
-void QSubstitutionPrivate::setContract(const QClassifier *contract) 
-{  
-    this->contract = const_cast<QClassifier *>(contract);   
+
+void QSubstitutionPrivate::setContract(const QClassifier *contract)
+{
+    this->contract = const_cast<QClassifier *>(contract);
 }
-  
-void QSubstitutionPrivate::setSubstitutingClassifier(const QClassifier *substitutingClassifier) 
-{  
-    this->substitutingClassifier = const_cast<QClassifier *>(substitutingClassifier);   
+
+void QSubstitutionPrivate::setSubstitutingClassifier(const QClassifier *substitutingClassifier)
+{
+    this->substitutingClassifier = const_cast<QClassifier *>(substitutingClassifier);
 }
 
 /*!

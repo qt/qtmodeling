@@ -66,7 +66,7 @@ public:
 
     QSet<QProtocolConformance *> *conformance;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addConformance(const QProtocolConformance *conformance);
     void removeConformance(const QProtocolConformance *conformance);
 };

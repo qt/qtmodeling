@@ -69,10 +69,10 @@ public:
     QSet<QTrigger *> *triggers;
     QSet<QOutputPin *> *results;
 
-    // Attributes
+    // Internal functions for attributes
     void setUnmarshall(bool isUnmarshall);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addTrigger(const QTrigger *trigger);
     void removeTrigger(const QTrigger *trigger);
     void addResult(const QOutputPin *result);

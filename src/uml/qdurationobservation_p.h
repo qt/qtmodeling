@@ -67,11 +67,11 @@ public:
     QSet<bool> *firstEvents;
     QSet<QNamedElement *> *events;
 
-    // Attributes
+    // Internal functions for attributes
     void addFirstEvent(bool firstEvent);
     void removeFirstEvent(bool firstEvent);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addEvent(const QNamedElement *event);
     void removeEvent(const QNamedElement *event);
 };

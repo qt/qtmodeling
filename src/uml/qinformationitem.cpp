@@ -54,15 +54,15 @@ QInformationItemPrivate::~QInformationItemPrivate()
 {
     delete represented;
 }
-  
-void QInformationItemPrivate::addRepresented(const QClassifier *represented) 
-{   
-    this->represented->insert(const_cast<QClassifier *>(represented));  
+
+void QInformationItemPrivate::addRepresented(const QClassifier *represented)
+{
+    this->represented->insert(const_cast<QClassifier *>(represented));
 }
- 
-void QInformationItemPrivate::removeRepresented(const QClassifier *represented) 
-{    
-    this->represented->remove(const_cast<QClassifier *>(represented)); 
+
+void QInformationItemPrivate::removeRepresented(const QClassifier *represented)
+{
+    this->represented->remove(const_cast<QClassifier *>(represented));
 }
 
 /*!

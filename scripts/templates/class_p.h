@@ -120,7 +120,7 @@ public:
 [%- END -%]
 [%- IF class.item('attribute') %]
 
-    // Attributes
+    // Internal functions for attributes
 [%- FOREACH attribute IN class.attribute.values -%]
 [%- FOREACH accessor IN attribute.accessor -%]
 [%- NEXT IF loop.first %]
@@ -131,7 +131,7 @@ public:
 [%- END %]
 [%- IF class.item('associationend') %]
 
-    // Association-ends
+    // Internal functions for association-ends
 [%- FOREACH associationend IN class.associationend.values -%]
 [%- FOREACH accessor IN associationend.accessor -%]
 [%- NEXT IF loop.first %]

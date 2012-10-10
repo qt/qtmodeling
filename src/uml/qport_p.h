@@ -71,12 +71,12 @@ public:
     QProtocolStateMachine *protocol;
     QSet<QPort *> *redefinedPorts;
 
-    // Attributes
+    // Internal functions for attributes
     void setConjugated(bool isConjugated);
     void setBehavior(bool isBehavior);
     void setService(bool isService);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setProtocol(const QProtocolStateMachine *protocol);
     void addRequired(const QInterface *required);
     void removeRequired(const QInterface *required);

@@ -64,10 +64,10 @@ public:
     bool isRelative;
     QTimeExpression *when;
 
-    // Attributes
+    // Internal functions for attributes
     void setRelative(bool isRelative);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setWhen(const QTimeExpression *when);
 };
 

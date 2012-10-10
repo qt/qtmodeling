@@ -63,28 +63,28 @@ QTemplateBindingPrivate::~QTemplateBindingPrivate()
 {
     delete parameterSubstitutions;
 }
-  
-void QTemplateBindingPrivate::setSignature(const QTemplateSignature *signature) 
-{  
-    this->signature = const_cast<QTemplateSignature *>(signature);   
+
+void QTemplateBindingPrivate::setSignature(const QTemplateSignature *signature)
+{
+    this->signature = const_cast<QTemplateSignature *>(signature);
 }
-  
-void QTemplateBindingPrivate::setBoundElement(const QTemplateableElement *boundElement) 
-{  
-    this->boundElement = const_cast<QTemplateableElement *>(boundElement);   
+
+void QTemplateBindingPrivate::setBoundElement(const QTemplateableElement *boundElement)
+{
+    this->boundElement = const_cast<QTemplateableElement *>(boundElement);
 }
-  
-void QTemplateBindingPrivate::addParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution) 
-{   
-    this->parameterSubstitutions->insert(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution)); 
+
+void QTemplateBindingPrivate::addParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution)
+{
+    this->parameterSubstitutions->insert(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(parameterSubstitution); 
+    addOwnedElement(parameterSubstitution);
 }
- 
-void QTemplateBindingPrivate::removeParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution) 
-{    
-    this->parameterSubstitutions->remove(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution)); 
+
+void QTemplateBindingPrivate::removeParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution)
+{
+    this->parameterSubstitutions->remove(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(parameterSubstitution);

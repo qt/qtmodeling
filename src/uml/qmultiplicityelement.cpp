@@ -69,15 +69,15 @@ void QMultiplicityElementPrivate::setOrdered(bool isOrdered)
 {
     this->isOrdered = isOrdered;
 }
-  
-void QMultiplicityElementPrivate::setUpperValue(const QValueSpecification *upperValue) 
-{  
-    this->upperValue = const_cast<QValueSpecification *>(upperValue);   
+
+void QMultiplicityElementPrivate::setUpperValue(const QValueSpecification *upperValue)
+{
+    this->upperValue = const_cast<QValueSpecification *>(upperValue);
 }
-  
-void QMultiplicityElementPrivate::setLowerValue(const QValueSpecification *lowerValue) 
-{  
-    this->lowerValue = const_cast<QValueSpecification *>(lowerValue);   
+
+void QMultiplicityElementPrivate::setLowerValue(const QValueSpecification *lowerValue)
+{
+    this->lowerValue = const_cast<QValueSpecification *>(lowerValue);
 }
 
 /*!

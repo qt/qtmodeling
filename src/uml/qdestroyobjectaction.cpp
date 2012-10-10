@@ -67,10 +67,10 @@ void QDestroyObjectActionPrivate::setDestroyOwnedObjects(bool isDestroyOwnedObje
 {
     this->isDestroyOwnedObjects = isDestroyOwnedObjects;
 }
-  
-void QDestroyObjectActionPrivate::setTarget(const QInputPin *target) 
-{  
-    this->target = const_cast<QInputPin *>(target);   
+
+void QDestroyObjectActionPrivate::setTarget(const QInputPin *target)
+{
+    this->target = const_cast<QInputPin *>(target);
 }
 
 /*!

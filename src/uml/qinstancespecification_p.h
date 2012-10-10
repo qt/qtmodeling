@@ -74,7 +74,7 @@ public:
     QValueSpecification *specification;
     QSet<QSlot *> *slots_;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addClassifier(const QClassifier *classifier);
     void removeClassifier(const QClassifier *classifier);
     void setSpecification(const QValueSpecification *specification);

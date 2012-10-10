@@ -64,7 +64,7 @@ public:
 
     bool isControl;
 
-    // Attributes
+    // Internal functions for attributes
     void setControl(bool isControl);
 };
 

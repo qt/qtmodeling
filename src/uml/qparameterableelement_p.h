@@ -64,7 +64,7 @@ public:
     QTemplateParameter *owningTemplateParameter;
     QTemplateParameter *templateParameter;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setOwningTemplateParameter(const QTemplateParameter *owningTemplateParameter);
     void setTemplateParameter(const QTemplateParameter *templateParameter);
 };

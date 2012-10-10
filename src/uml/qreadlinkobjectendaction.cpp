@@ -60,20 +60,20 @@ QReadLinkObjectEndActionPrivate::QReadLinkObjectEndActionPrivate() :
 QReadLinkObjectEndActionPrivate::~QReadLinkObjectEndActionPrivate()
 {
 }
-  
-void QReadLinkObjectEndActionPrivate::setEnd(const QProperty *end) 
-{  
-    this->end = const_cast<QProperty *>(end);   
+
+void QReadLinkObjectEndActionPrivate::setEnd(const QProperty *end)
+{
+    this->end = const_cast<QProperty *>(end);
 }
-  
-void QReadLinkObjectEndActionPrivate::setObject(const QInputPin *object) 
-{  
-    this->object = const_cast<QInputPin *>(object);   
+
+void QReadLinkObjectEndActionPrivate::setObject(const QInputPin *object)
+{
+    this->object = const_cast<QInputPin *>(object);
 }
-  
-void QReadLinkObjectEndActionPrivate::setResult(const QOutputPin *result) 
-{  
-    this->result = const_cast<QOutputPin *>(result);   
+
+void QReadLinkObjectEndActionPrivate::setResult(const QOutputPin *result)
+{
+    this->result = const_cast<QOutputPin *>(result);
 }
 
 /*!

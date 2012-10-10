@@ -63,10 +63,10 @@ public:
 
     QStereotype *type;
 
-    // Attributes
+    // Internal functions for attributes
     void setLower(qint32 lower);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setType(const QStereotype *type);
 };
 

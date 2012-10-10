@@ -78,11 +78,11 @@ public:
     QSet<QActivityGroup *> *groups;
     QSet<QActivityEdge *> *edges;
 
-    // Attributes
+    // Internal functions for attributes
     void setReadOnly(bool isReadOnly);
     void setSingleExecution(bool isSingleExecution);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addPartition(const QActivityPartition *partition);
     void removePartition(const QActivityPartition *partition);
     void addNode(const QActivityNode *node);

@@ -67,7 +67,7 @@ public:
     QList<QString> *languages;
     QList<QString> *bodies;
 
-    // Attributes
+    // Internal functions for attributes
     void addLanguage(QString language);
     void removeLanguage(QString language);
     void addBody(QString body);

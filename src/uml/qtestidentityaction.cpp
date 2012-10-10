@@ -60,20 +60,20 @@ QTestIdentityActionPrivate::QTestIdentityActionPrivate() :
 QTestIdentityActionPrivate::~QTestIdentityActionPrivate()
 {
 }
-  
-void QTestIdentityActionPrivate::setSecond(const QInputPin *second) 
-{  
-    this->second = const_cast<QInputPin *>(second);   
+
+void QTestIdentityActionPrivate::setSecond(const QInputPin *second)
+{
+    this->second = const_cast<QInputPin *>(second);
 }
-  
-void QTestIdentityActionPrivate::setResult(const QOutputPin *result) 
-{  
-    this->result = const_cast<QOutputPin *>(result);   
+
+void QTestIdentityActionPrivate::setResult(const QOutputPin *result)
+{
+    this->result = const_cast<QOutputPin *>(result);
 }
-  
-void QTestIdentityActionPrivate::setFirst(const QInputPin *first) 
-{  
-    this->first = const_cast<QInputPin *>(first);   
+
+void QTestIdentityActionPrivate::setFirst(const QInputPin *first)
+{
+    this->first = const_cast<QInputPin *>(first);
 }
 
 /*!

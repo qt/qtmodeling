@@ -55,10 +55,10 @@ QStartClassifierBehaviorActionPrivate::QStartClassifierBehaviorActionPrivate() :
 QStartClassifierBehaviorActionPrivate::~QStartClassifierBehaviorActionPrivate()
 {
 }
-  
-void QStartClassifierBehaviorActionPrivate::setObject(const QInputPin *object) 
-{  
-    this->object = const_cast<QInputPin *>(object);   
+
+void QStartClassifierBehaviorActionPrivate::setObject(const QInputPin *object)
+{
+    this->object = const_cast<QInputPin *>(object);
 }
 
 /*!

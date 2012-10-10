@@ -56,15 +56,15 @@ QDecisionNodePrivate::QDecisionNodePrivate() :
 QDecisionNodePrivate::~QDecisionNodePrivate()
 {
 }
-  
-void QDecisionNodePrivate::setDecisionInputFlow(const QObjectFlow *decisionInputFlow) 
-{  
-    this->decisionInputFlow = const_cast<QObjectFlow *>(decisionInputFlow);   
+
+void QDecisionNodePrivate::setDecisionInputFlow(const QObjectFlow *decisionInputFlow)
+{
+    this->decisionInputFlow = const_cast<QObjectFlow *>(decisionInputFlow);
 }
-  
-void QDecisionNodePrivate::setDecisionInput(const QBehavior *decisionInput) 
-{  
-    this->decisionInput = const_cast<QBehavior *>(decisionInput);   
+
+void QDecisionNodePrivate::setDecisionInput(const QBehavior *decisionInput)
+{
+    this->decisionInput = const_cast<QBehavior *>(decisionInput);
 }
 
 /*!

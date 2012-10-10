@@ -68,10 +68,10 @@ public:
     QInputPin *collection;
     QBehavior *reducer;
 
-    // Attributes
+    // Internal functions for attributes
     void setOrdered(bool isOrdered);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setResult(const QOutputPin *result);
     void setCollection(const QInputPin *collection);
     void setReducer(const QBehavior *reducer);

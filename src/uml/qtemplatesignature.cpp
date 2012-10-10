@@ -61,34 +61,34 @@ QTemplateSignaturePrivate::~QTemplateSignaturePrivate()
     delete parameters;
     delete ownedParameters;
 }
-  
-void QTemplateSignaturePrivate::addParameter(const QTemplateParameter *parameter) 
-{   
-    this->parameters->append(const_cast<QTemplateParameter *>(parameter));  
+
+void QTemplateSignaturePrivate::addParameter(const QTemplateParameter *parameter)
+{
+    this->parameters->append(const_cast<QTemplateParameter *>(parameter));
 }
- 
-void QTemplateSignaturePrivate::removeParameter(const QTemplateParameter *parameter) 
-{    
-    this->parameters->removeAll(const_cast<QTemplateParameter *>(parameter)); 
+
+void QTemplateSignaturePrivate::removeParameter(const QTemplateParameter *parameter)
+{
+    this->parameters->removeAll(const_cast<QTemplateParameter *>(parameter));
 }
-  
-void QTemplateSignaturePrivate::setTemplate_(const QTemplateableElement *template_) 
-{  
-    this->template_ = const_cast<QTemplateableElement *>(template_);   
+
+void QTemplateSignaturePrivate::setTemplate_(const QTemplateableElement *template_)
+{
+    this->template_ = const_cast<QTemplateableElement *>(template_);
 }
-  
-void QTemplateSignaturePrivate::addOwnedParameter(const QTemplateParameter *ownedParameter) 
-{   
-    this->ownedParameters->append(const_cast<QTemplateParameter *>(ownedParameter)); 
+
+void QTemplateSignaturePrivate::addOwnedParameter(const QTemplateParameter *ownedParameter)
+{
+    this->ownedParameters->append(const_cast<QTemplateParameter *>(ownedParameter));
 
     // Adjust subsetted property(ies)
     addParameter(ownedParameter);
-    addOwnedElement(ownedParameter); 
+    addOwnedElement(ownedParameter);
 }
- 
-void QTemplateSignaturePrivate::removeOwnedParameter(const QTemplateParameter *ownedParameter) 
-{    
-    this->ownedParameters->removeAll(const_cast<QTemplateParameter *>(ownedParameter)); 
+
+void QTemplateSignaturePrivate::removeOwnedParameter(const QTemplateParameter *ownedParameter)
+{
+    this->ownedParameters->removeAll(const_cast<QTemplateParameter *>(ownedParameter));
 
     // Adjust subsetted property(ies)
     removeParameter(ownedParameter);

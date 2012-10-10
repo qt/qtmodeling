@@ -76,10 +76,10 @@ public:
     QSet<QManifestation *> *manifestations;
     QSet<QArtifact *> *nestedArtifacts;
 
-    // Attributes
+    // Internal functions for attributes
     void setFileName(QString fileName);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addOwnedOperation(const QOperation *ownedOperation);
     void removeOwnedOperation(const QOperation *ownedOperation);
     void addOwnedAttribute(const QProperty *ownedAttribute);

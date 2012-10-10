@@ -57,15 +57,15 @@ QSendSignalActionPrivate::QSendSignalActionPrivate() :
 QSendSignalActionPrivate::~QSendSignalActionPrivate()
 {
 }
-  
-void QSendSignalActionPrivate::setTarget(const QInputPin *target) 
-{  
-    this->target = const_cast<QInputPin *>(target);   
+
+void QSendSignalActionPrivate::setTarget(const QInputPin *target)
+{
+    this->target = const_cast<QInputPin *>(target);
 }
-  
-void QSendSignalActionPrivate::setSignal(const QSignal *signal) 
-{  
-    this->signal = const_cast<QSignal *>(signal);   
+
+void QSendSignalActionPrivate::setSignal(const QSignal *signal)
+{
+    this->signal = const_cast<QSignal *>(signal);
 }
 
 /*!

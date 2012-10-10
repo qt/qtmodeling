@@ -67,10 +67,10 @@ public:
     QString symbol;
     QList<QValueSpecification *> *operands;
 
-    // Attributes
+    // Internal functions for attributes
     void setSymbol(QString symbol);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addOperand(const QValueSpecification *operand);
     void removeOperand(const QValueSpecification *operand);
 };

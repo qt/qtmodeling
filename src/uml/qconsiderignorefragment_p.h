@@ -66,7 +66,7 @@ public:
 
     QSet<QNamedElement *> *messages;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addMessage(const QNamedElement *message);
     void removeMessage(const QNamedElement *message);
 };

@@ -69,7 +69,7 @@ public:
     QState *state;
     QSet<QPseudostate *> *entries;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addExit(const QPseudostate *exit);
     void removeExit(const QPseudostate *exit);
     void setState(const QState *state);

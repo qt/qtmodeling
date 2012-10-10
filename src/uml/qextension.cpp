@@ -56,10 +56,10 @@ QExtensionPrivate::QExtensionPrivate() :
 QExtensionPrivate::~QExtensionPrivate()
 {
 }
-   
-void QExtensionPrivate::setOwnedEnd(const QExtensionEnd *ownedEnd) 
-{  
-    this->ownedEnd = const_cast<QExtensionEnd *>(ownedEnd);   
+
+void QExtensionPrivate::setOwnedEnd(const QExtensionEnd *ownedEnd)
+{
+    this->ownedEnd = const_cast<QExtensionEnd *>(ownedEnd);
 }
 
 /*!

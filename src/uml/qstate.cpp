@@ -83,99 +83,99 @@ QStatePrivate::~QStatePrivate()
     delete deferrableTriggers;
     delete connectionPoints;
 }
-  
-void QStatePrivate::addRegion(const QRegion *region) 
-{   
-    this->regions->insert(const_cast<QRegion *>(region)); 
+
+void QStatePrivate::addRegion(const QRegion *region)
+{
+    this->regions->insert(const_cast<QRegion *>(region));
 
     // Adjust subsetted property(ies)
-    addOwnedMember(region); 
+    addOwnedMember(region);
 }
- 
-void QStatePrivate::removeRegion(const QRegion *region) 
-{    
-    this->regions->remove(const_cast<QRegion *>(region)); 
+
+void QStatePrivate::removeRegion(const QRegion *region)
+{
+    this->regions->remove(const_cast<QRegion *>(region));
 
     // Adjust subsetted property(ies)
     removeOwnedMember(region);
 }
-  
-void QStatePrivate::setExit(const QBehavior *exit) 
-{  
-    this->exit = const_cast<QBehavior *>(exit);   
+
+void QStatePrivate::setExit(const QBehavior *exit)
+{
+    this->exit = const_cast<QBehavior *>(exit);
 }
-  
-void QStatePrivate::addConnection(const QConnectionPointReference *connection) 
-{   
-    this->connections->insert(const_cast<QConnectionPointReference *>(connection)); 
+
+void QStatePrivate::addConnection(const QConnectionPointReference *connection)
+{
+    this->connections->insert(const_cast<QConnectionPointReference *>(connection));
 
     // Adjust subsetted property(ies)
-    addOwnedMember(connection); 
+    addOwnedMember(connection);
 }
- 
-void QStatePrivate::removeConnection(const QConnectionPointReference *connection) 
-{    
-    this->connections->remove(const_cast<QConnectionPointReference *>(connection)); 
+
+void QStatePrivate::removeConnection(const QConnectionPointReference *connection)
+{
+    this->connections->remove(const_cast<QConnectionPointReference *>(connection));
 
     // Adjust subsetted property(ies)
     removeOwnedMember(connection);
 }
-   
-void QStatePrivate::setRedefinedState(const QState *redefinedState) 
-{  
-    this->redefinedState = const_cast<QState *>(redefinedState);   
+
+void QStatePrivate::setRedefinedState(const QState *redefinedState)
+{
+    this->redefinedState = const_cast<QState *>(redefinedState);
 }
-  
-void QStatePrivate::addDeferrableTrigger(const QTrigger *deferrableTrigger) 
-{   
-    this->deferrableTriggers->insert(const_cast<QTrigger *>(deferrableTrigger)); 
+
+void QStatePrivate::addDeferrableTrigger(const QTrigger *deferrableTrigger)
+{
+    this->deferrableTriggers->insert(const_cast<QTrigger *>(deferrableTrigger));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(deferrableTrigger); 
+    addOwnedElement(deferrableTrigger);
 }
- 
-void QStatePrivate::removeDeferrableTrigger(const QTrigger *deferrableTrigger) 
-{    
-    this->deferrableTriggers->remove(const_cast<QTrigger *>(deferrableTrigger)); 
+
+void QStatePrivate::removeDeferrableTrigger(const QTrigger *deferrableTrigger)
+{
+    this->deferrableTriggers->remove(const_cast<QTrigger *>(deferrableTrigger));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(deferrableTrigger);
 }
-  
-void QStatePrivate::addConnectionPoint(const QPseudostate *connectionPoint) 
-{   
-    this->connectionPoints->insert(const_cast<QPseudostate *>(connectionPoint)); 
+
+void QStatePrivate::addConnectionPoint(const QPseudostate *connectionPoint)
+{
+    this->connectionPoints->insert(const_cast<QPseudostate *>(connectionPoint));
 
     // Adjust subsetted property(ies)
-    addOwnedMember(connectionPoint); 
+    addOwnedMember(connectionPoint);
 }
- 
-void QStatePrivate::removeConnectionPoint(const QPseudostate *connectionPoint) 
-{    
-    this->connectionPoints->remove(const_cast<QPseudostate *>(connectionPoint)); 
+
+void QStatePrivate::removeConnectionPoint(const QPseudostate *connectionPoint)
+{
+    this->connectionPoints->remove(const_cast<QPseudostate *>(connectionPoint));
 
     // Adjust subsetted property(ies)
     removeOwnedMember(connectionPoint);
 }
-  
-void QStatePrivate::setEntry(const QBehavior *entry) 
-{  
-    this->entry = const_cast<QBehavior *>(entry);   
+
+void QStatePrivate::setEntry(const QBehavior *entry)
+{
+    this->entry = const_cast<QBehavior *>(entry);
 }
-  
-void QStatePrivate::setDoActivity(const QBehavior *doActivity) 
-{  
-    this->doActivity = const_cast<QBehavior *>(doActivity);   
+
+void QStatePrivate::setDoActivity(const QBehavior *doActivity)
+{
+    this->doActivity = const_cast<QBehavior *>(doActivity);
 }
-  
-void QStatePrivate::setSubmachine(const QStateMachine *submachine) 
-{  
-    this->submachine = const_cast<QStateMachine *>(submachine);   
+
+void QStatePrivate::setSubmachine(const QStateMachine *submachine)
+{
+    this->submachine = const_cast<QStateMachine *>(submachine);
 }
-  
-void QStatePrivate::setStateInvariant(const QConstraint *stateInvariant) 
-{  
-    this->stateInvariant = const_cast<QConstraint *>(stateInvariant);   
+
+void QStatePrivate::setStateInvariant(const QConstraint *stateInvariant)
+{
+    this->stateInvariant = const_cast<QConstraint *>(stateInvariant);
 }
 
 /*!

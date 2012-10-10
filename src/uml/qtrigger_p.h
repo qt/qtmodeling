@@ -68,7 +68,7 @@ public:
     QSet<QPort *> *ports;
     QEvent *event;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addPort(const QPort *port);
     void removePort(const QPort *port);
     void setEvent(const QEvent *event);

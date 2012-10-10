@@ -61,10 +61,10 @@ void QAddStructuralFeatureValueActionPrivate::setReplaceAll(bool isReplaceAll)
 {
     this->isReplaceAll = isReplaceAll;
 }
-  
-void QAddStructuralFeatureValueActionPrivate::setInsertAt(const QInputPin *insertAt) 
-{  
-    this->insertAt = const_cast<QInputPin *>(insertAt);   
+
+void QAddStructuralFeatureValueActionPrivate::setInsertAt(const QInputPin *insertAt)
+{
+    this->insertAt = const_cast<QInputPin *>(insertAt);
 }
 
 /*!

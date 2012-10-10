@@ -65,11 +65,11 @@ public:
     bool isDestroyOwnedObjects;
     QInputPin *target;
 
-    // Attributes
+    // Internal functions for attributes
     void setDestroyLinks(bool isDestroyLinks);
     void setDestroyOwnedObjects(bool isDestroyOwnedObjects);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setTarget(const QInputPin *target);
 };
 

@@ -59,15 +59,15 @@ QInterfaceRealizationPrivate::QInterfaceRealizationPrivate() :
 QInterfaceRealizationPrivate::~QInterfaceRealizationPrivate()
 {
 }
-  
-void QInterfaceRealizationPrivate::setImplementingClassifier(const QBehavioredClassifier *implementingClassifier) 
-{  
-    this->implementingClassifier = const_cast<QBehavioredClassifier *>(implementingClassifier);   
+
+void QInterfaceRealizationPrivate::setImplementingClassifier(const QBehavioredClassifier *implementingClassifier)
+{
+    this->implementingClassifier = const_cast<QBehavioredClassifier *>(implementingClassifier);
 }
-  
-void QInterfaceRealizationPrivate::setContract(const QInterface *contract) 
-{  
-    this->contract = const_cast<QInterface *>(contract);   
+
+void QInterfaceRealizationPrivate::setContract(const QInterface *contract)
+{
+    this->contract = const_cast<QInterface *>(contract);
 }
 
 /*!

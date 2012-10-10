@@ -68,11 +68,11 @@ public:
     QString executionLocation;
     QDeployment *deployment;
 
-    // Attributes
+    // Internal functions for attributes
     void setDeploymentLocation(QString deploymentLocation);
     void setExecutionLocation(QString executionLocation);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setDeployment(const QDeployment *deployment);
 };
 

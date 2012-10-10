@@ -70,7 +70,7 @@ public:
     QSet<QDeploymentSpecification *> *configurations;
     QSet<QDeployedArtifact *> *deployedArtifacts;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setLocation(const QDeploymentTarget *location);
     void addConfiguration(const QDeploymentSpecification *configuration);
     void removeConfiguration(const QDeploymentSpecification *configuration);

@@ -61,31 +61,31 @@ QUnmarshallActionPrivate::~QUnmarshallActionPrivate()
 {
     delete results;
 }
-  
-void QUnmarshallActionPrivate::setObject(const QInputPin *object) 
-{  
-    this->object = const_cast<QInputPin *>(object);   
+
+void QUnmarshallActionPrivate::setObject(const QInputPin *object)
+{
+    this->object = const_cast<QInputPin *>(object);
 }
-  
-void QUnmarshallActionPrivate::addResult(const QOutputPin *result) 
-{   
-    this->results->insert(const_cast<QOutputPin *>(result)); 
+
+void QUnmarshallActionPrivate::addResult(const QOutputPin *result)
+{
+    this->results->insert(const_cast<QOutputPin *>(result));
 
     // Adjust subsetted property(ies)
-    addOutput(result); 
+    addOutput(result);
 }
- 
-void QUnmarshallActionPrivate::removeResult(const QOutputPin *result) 
-{    
-    this->results->remove(const_cast<QOutputPin *>(result)); 
+
+void QUnmarshallActionPrivate::removeResult(const QOutputPin *result)
+{
+    this->results->remove(const_cast<QOutputPin *>(result));
 
     // Adjust subsetted property(ies)
     removeOutput(result);
 }
-  
-void QUnmarshallActionPrivate::setUnmarshallType(const QClassifier *unmarshallType) 
-{  
-    this->unmarshallType = const_cast<QClassifier *>(unmarshallType);   
+
+void QUnmarshallActionPrivate::setUnmarshallType(const QClassifier *unmarshallType)
+{
+    this->unmarshallType = const_cast<QClassifier *>(unmarshallType);
 }
 
 /*!

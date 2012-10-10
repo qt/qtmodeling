@@ -76,23 +76,23 @@ void QPortPrivate::setService(bool isService)
 {
     this->isService = isService;
 }
-  
-void QPortPrivate::setProtocol(const QProtocolStateMachine *protocol) 
-{  
-    this->protocol = const_cast<QProtocolStateMachine *>(protocol);   
+
+void QPortPrivate::setProtocol(const QProtocolStateMachine *protocol)
+{
+    this->protocol = const_cast<QProtocolStateMachine *>(protocol);
 }
-    
-void QPortPrivate::addRedefinedPort(const QPort *redefinedPort) 
-{   
-    this->redefinedPorts->insert(const_cast<QPort *>(redefinedPort)); 
+
+void QPortPrivate::addRedefinedPort(const QPort *redefinedPort)
+{
+    this->redefinedPorts->insert(const_cast<QPort *>(redefinedPort));
 
     // Adjust subsetted property(ies)
-    addRedefinedProperty(redefinedPort); 
+    addRedefinedProperty(redefinedPort);
 }
- 
-void QPortPrivate::removeRedefinedPort(const QPort *redefinedPort) 
-{    
-    this->redefinedPorts->remove(const_cast<QPort *>(redefinedPort)); 
+
+void QPortPrivate::removeRedefinedPort(const QPort *redefinedPort)
+{
+    this->redefinedPorts->remove(const_cast<QPort *>(redefinedPort));
 
     // Adjust subsetted property(ies)
     removeRedefinedProperty(redefinedPort);

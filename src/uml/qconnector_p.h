@@ -75,10 +75,10 @@ public:
     QAssociation *type;
     QList<QConnectorEnd *> *ends;
 
-    // Attributes
+    // Internal functions for attributes
     void setKind(QtUml::ConnectorKind kind);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addRedefinedConnector(const QConnector *redefinedConnector);
     void removeRedefinedConnector(const QConnector *redefinedConnector);
     void addContract(const QBehavior *contract);

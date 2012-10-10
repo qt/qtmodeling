@@ -64,10 +64,10 @@ public:
     bool isCombineDuplicate;
     QValueSpecification *joinSpec;
 
-    // Attributes
+    // Internal functions for attributes
     void setCombineDuplicate(bool isCombineDuplicate);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setJoinSpec(const QValueSpecification *joinSpec);
 };
 

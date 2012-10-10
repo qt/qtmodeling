@@ -65,7 +65,7 @@ public:
     QConstraint *invariant;
     QLifeline *covered;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setInvariant(const QConstraint *invariant);
     void setCovered(const QLifeline *covered);
 };

@@ -67,25 +67,25 @@ void QGeneralizationPrivate::setSubstitutable(bool isSubstitutable)
 {
     this->isSubstitutable = isSubstitutable;
 }
-  
-void QGeneralizationPrivate::setSpecific(const QClassifier *specific) 
-{  
-    this->specific = const_cast<QClassifier *>(specific);   
+
+void QGeneralizationPrivate::setSpecific(const QClassifier *specific)
+{
+    this->specific = const_cast<QClassifier *>(specific);
 }
-  
-void QGeneralizationPrivate::addGeneralizationSet(const QGeneralizationSet *generalizationSet) 
-{   
-    this->generalizationSets->insert(const_cast<QGeneralizationSet *>(generalizationSet));  
+
+void QGeneralizationPrivate::addGeneralizationSet(const QGeneralizationSet *generalizationSet)
+{
+    this->generalizationSets->insert(const_cast<QGeneralizationSet *>(generalizationSet));
 }
- 
-void QGeneralizationPrivate::removeGeneralizationSet(const QGeneralizationSet *generalizationSet) 
-{    
-    this->generalizationSets->remove(const_cast<QGeneralizationSet *>(generalizationSet)); 
+
+void QGeneralizationPrivate::removeGeneralizationSet(const QGeneralizationSet *generalizationSet)
+{
+    this->generalizationSets->remove(const_cast<QGeneralizationSet *>(generalizationSet));
 }
-  
-void QGeneralizationPrivate::setGeneral(const QClassifier *general) 
-{  
-    this->general = const_cast<QClassifier *>(general);   
+
+void QGeneralizationPrivate::setGeneral(const QClassifier *general)
+{
+    this->general = const_cast<QClassifier *>(general);
 }
 
 /*!

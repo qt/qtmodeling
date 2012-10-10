@@ -54,10 +54,10 @@ QCallEventPrivate::QCallEventPrivate() :
 QCallEventPrivate::~QCallEventPrivate()
 {
 }
-  
-void QCallEventPrivate::setOperation(const QOperation *operation) 
-{  
-    this->operation = const_cast<QOperation *>(operation);   
+
+void QCallEventPrivate::setOperation(const QOperation *operation)
+{
+    this->operation = const_cast<QOperation *>(operation);
 }
 
 /*!

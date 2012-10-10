@@ -56,18 +56,18 @@ QProtocolStateMachinePrivate::~QProtocolStateMachinePrivate()
 {
     delete conformance;
 }
-  
-void QProtocolStateMachinePrivate::addConformance(const QProtocolConformance *conformance) 
-{   
-    this->conformance->insert(const_cast<QProtocolConformance *>(conformance)); 
+
+void QProtocolStateMachinePrivate::addConformance(const QProtocolConformance *conformance)
+{
+    this->conformance->insert(const_cast<QProtocolConformance *>(conformance));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(conformance); 
+    addOwnedElement(conformance);
 }
- 
-void QProtocolStateMachinePrivate::removeConformance(const QProtocolConformance *conformance) 
-{    
-    this->conformance->remove(const_cast<QProtocolConformance *>(conformance)); 
+
+void QProtocolStateMachinePrivate::removeConformance(const QProtocolConformance *conformance)
+{
+    this->conformance->remove(const_cast<QProtocolConformance *>(conformance));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(conformance);

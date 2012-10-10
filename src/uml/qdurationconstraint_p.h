@@ -67,11 +67,11 @@ public:
     QSet<bool> *firstEvents;
     QDurationInterval *specification;
 
-    // Attributes
+    // Internal functions for attributes
     void addFirstEvent(bool firstEvent);
     void removeFirstEvent(bool firstEvent);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setSpecification(const QDurationInterval *specification);
 };
 

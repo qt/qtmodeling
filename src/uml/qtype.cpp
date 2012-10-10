@@ -54,10 +54,10 @@ QTypePrivate::QTypePrivate() :
 QTypePrivate::~QTypePrivate()
 {
 }
-  
-void QTypePrivate::setPackage(const QPackage *package) 
-{  
-    this->package = const_cast<QPackage *>(package);   
+
+void QTypePrivate::setPackage(const QPackage *package)
+{
+    this->package = const_cast<QPackage *>(package);
 }
 
 /*!

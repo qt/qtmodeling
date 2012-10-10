@@ -69,7 +69,7 @@ public:
     QStringExpression *owningExpression;
     QSet<QStringExpression *> *subExpressions;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setOwningExpression(const QStringExpression *owningExpression);
     void addSubExpression(const QStringExpression *subExpression);
     void removeSubExpression(const QStringExpression *subExpression);

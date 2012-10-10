@@ -56,18 +56,18 @@ QCollaborationPrivate::~QCollaborationPrivate()
 {
     delete collaborationRoles;
 }
-  
-void QCollaborationPrivate::addCollaborationRole(const QConnectableElement *collaborationRole) 
-{   
-    this->collaborationRoles->insert(const_cast<QConnectableElement *>(collaborationRole)); 
+
+void QCollaborationPrivate::addCollaborationRole(const QConnectableElement *collaborationRole)
+{
+    this->collaborationRoles->insert(const_cast<QConnectableElement *>(collaborationRole));
 
     // Adjust subsetted property(ies)
-    addRole(collaborationRole); 
+    addRole(collaborationRole);
 }
- 
-void QCollaborationPrivate::removeCollaborationRole(const QConnectableElement *collaborationRole) 
-{    
-    this->collaborationRoles->remove(const_cast<QConnectableElement *>(collaborationRole)); 
+
+void QCollaborationPrivate::removeCollaborationRole(const QConnectableElement *collaborationRole)
+{
+    this->collaborationRoles->remove(const_cast<QConnectableElement *>(collaborationRole));
 
     // Adjust subsetted property(ies)
     removeRole(collaborationRole);

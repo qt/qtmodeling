@@ -67,10 +67,10 @@ public:
     bool isStatic;
     QSet<QClassifier *> *featuringClassifiers;
 
-    // Attributes
+    // Internal functions for attributes
     void setStatic(bool isStatic);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addFeaturingClassifier(const QClassifier *featuringClassifier);
     void removeFeaturingClassifier(const QClassifier *featuringClassifier);
 };

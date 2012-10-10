@@ -76,7 +76,7 @@ public:
     QList<QInteractionFragment *> *fragments;
     QSet<QLifeline *> *lifelines;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addAction(const QAction *action);
     void removeAction(const QAction *action);
     void addMessage(const QMessage *message);

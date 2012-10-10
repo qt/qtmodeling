@@ -63,7 +63,7 @@ public:
 
     QValueSpecification *changeExpression;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setChangeExpression(const QValueSpecification *changeExpression);
 };
 

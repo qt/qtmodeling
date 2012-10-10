@@ -55,10 +55,10 @@ QRaiseExceptionActionPrivate::QRaiseExceptionActionPrivate() :
 QRaiseExceptionActionPrivate::~QRaiseExceptionActionPrivate()
 {
 }
-  
-void QRaiseExceptionActionPrivate::setException(const QInputPin *exception) 
-{  
-    this->exception = const_cast<QInputPin *>(exception);   
+
+void QRaiseExceptionActionPrivate::setException(const QInputPin *exception)
+{
+    this->exception = const_cast<QInputPin *>(exception);
 }
 
 /*!

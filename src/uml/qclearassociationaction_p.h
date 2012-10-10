@@ -65,7 +65,7 @@ public:
     QInputPin *object;
     QAssociation *association;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setObject(const QInputPin *object);
     void setAssociation(const QAssociation *association);
 };

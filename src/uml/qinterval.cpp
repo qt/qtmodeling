@@ -54,15 +54,15 @@ QIntervalPrivate::QIntervalPrivate() :
 QIntervalPrivate::~QIntervalPrivate()
 {
 }
-  
-void QIntervalPrivate::setMin(const QValueSpecification *min) 
-{  
-    this->min = const_cast<QValueSpecification *>(min);   
+
+void QIntervalPrivate::setMin(const QValueSpecification *min)
+{
+    this->min = const_cast<QValueSpecification *>(min);
 }
-  
-void QIntervalPrivate::setMax(const QValueSpecification *max) 
-{  
-    this->max = const_cast<QValueSpecification *>(max);   
+
+void QIntervalPrivate::setMax(const QValueSpecification *max)
+{
+    this->max = const_cast<QValueSpecification *>(max);
 }
 
 /*!

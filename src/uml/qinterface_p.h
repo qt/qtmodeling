@@ -75,7 +75,7 @@ public:
     QList<QClassifier *> *nestedClassifiers;
     QList<QProperty *> *ownedAttributes;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setProtocol(const QProtocolStateMachine *protocol);
     void addRedefinedInterface(const QInterface *redefinedInterface);
     void removeRedefinedInterface(const QInterface *redefinedInterface);

@@ -64,7 +64,7 @@ public:
     QOccurrenceSpecification *start;
     QOccurrenceSpecification *finish;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setStart(const QOccurrenceSpecification *start);
     void setFinish(const QOccurrenceSpecification *finish);
 };

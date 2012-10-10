@@ -58,15 +58,15 @@ QPackageMergePrivate::QPackageMergePrivate() :
 QPackageMergePrivate::~QPackageMergePrivate()
 {
 }
-  
-void QPackageMergePrivate::setMergedPackage(const QPackage *mergedPackage) 
-{  
-    this->mergedPackage = const_cast<QPackage *>(mergedPackage);   
+
+void QPackageMergePrivate::setMergedPackage(const QPackage *mergedPackage)
+{
+    this->mergedPackage = const_cast<QPackage *>(mergedPackage);
 }
-  
-void QPackageMergePrivate::setReceivingPackage(const QPackage *receivingPackage) 
-{  
-    this->receivingPackage = const_cast<QPackage *>(receivingPackage);   
+
+void QPackageMergePrivate::setReceivingPackage(const QPackage *receivingPackage)
+{
+    this->receivingPackage = const_cast<QPackage *>(receivingPackage);
 }
 
 /*!

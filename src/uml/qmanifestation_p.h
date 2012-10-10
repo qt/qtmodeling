@@ -63,7 +63,7 @@ public:
 
     QPackageableElement *utilizedElement;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setUtilizedElement(const QPackageableElement *utilizedElement);
 };
 

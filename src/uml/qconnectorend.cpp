@@ -56,17 +56,17 @@ QConnectorEndPrivate::QConnectorEndPrivate() :
 QConnectorEndPrivate::~QConnectorEndPrivate()
 {
 }
-  
-void QConnectorEndPrivate::setRole(const QConnectableElement *role) 
-{  
-    this->role = const_cast<QConnectableElement *>(role);   
+
+void QConnectorEndPrivate::setRole(const QConnectableElement *role)
+{
+    this->role = const_cast<QConnectableElement *>(role);
 }
-  
-void QConnectorEndPrivate::setPartWithPort(const QProperty *partWithPort) 
-{  
-    this->partWithPort = const_cast<QProperty *>(partWithPort);   
+
+void QConnectorEndPrivate::setPartWithPort(const QProperty *partWithPort)
+{
+    this->partWithPort = const_cast<QProperty *>(partWithPort);
 }
- 
+
 /*!
     \class QConnectorEnd
 

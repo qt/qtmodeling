@@ -60,28 +60,28 @@ QReplyActionPrivate::~QReplyActionPrivate()
 {
     delete replyValues;
 }
-  
-void QReplyActionPrivate::setReplyToCall(const QTrigger *replyToCall) 
-{  
-    this->replyToCall = const_cast<QTrigger *>(replyToCall);   
+
+void QReplyActionPrivate::setReplyToCall(const QTrigger *replyToCall)
+{
+    this->replyToCall = const_cast<QTrigger *>(replyToCall);
 }
-  
-void QReplyActionPrivate::setReturnInformation(const QInputPin *returnInformation) 
-{  
-    this->returnInformation = const_cast<QInputPin *>(returnInformation);   
+
+void QReplyActionPrivate::setReturnInformation(const QInputPin *returnInformation)
+{
+    this->returnInformation = const_cast<QInputPin *>(returnInformation);
 }
-  
-void QReplyActionPrivate::addReplyValue(const QInputPin *replyValue) 
-{   
-    this->replyValues->insert(const_cast<QInputPin *>(replyValue)); 
+
+void QReplyActionPrivate::addReplyValue(const QInputPin *replyValue)
+{
+    this->replyValues->insert(const_cast<QInputPin *>(replyValue));
 
     // Adjust subsetted property(ies)
-    addInput(replyValue); 
+    addInput(replyValue);
 }
- 
-void QReplyActionPrivate::removeReplyValue(const QInputPin *replyValue) 
-{    
-    this->replyValues->remove(const_cast<QInputPin *>(replyValue)); 
+
+void QReplyActionPrivate::removeReplyValue(const QInputPin *replyValue)
+{
+    this->replyValues->remove(const_cast<QInputPin *>(replyValue));
 
     // Adjust subsetted property(ies)
     removeInput(replyValue);

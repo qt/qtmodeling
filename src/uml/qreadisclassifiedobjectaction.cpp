@@ -66,20 +66,20 @@ void QReadIsClassifiedObjectActionPrivate::setDirect(bool isDirect)
 {
     this->isDirect = isDirect;
 }
-  
-void QReadIsClassifiedObjectActionPrivate::setResult(const QOutputPin *result) 
-{  
-    this->result = const_cast<QOutputPin *>(result);   
+
+void QReadIsClassifiedObjectActionPrivate::setResult(const QOutputPin *result)
+{
+    this->result = const_cast<QOutputPin *>(result);
 }
-  
-void QReadIsClassifiedObjectActionPrivate::setObject(const QInputPin *object) 
-{  
-    this->object = const_cast<QInputPin *>(object);   
+
+void QReadIsClassifiedObjectActionPrivate::setObject(const QInputPin *object)
+{
+    this->object = const_cast<QInputPin *>(object);
 }
-  
-void QReadIsClassifiedObjectActionPrivate::setClassifier(const QClassifier *classifier) 
-{  
-    this->classifier = const_cast<QClassifier *>(classifier);   
+
+void QReadIsClassifiedObjectActionPrivate::setClassifier(const QClassifier *classifier)
+{
+    this->classifier = const_cast<QClassifier *>(classifier);
 }
 
 /*!

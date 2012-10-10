@@ -63,7 +63,7 @@ public:
 
     QVariable *variable;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setVariable(const QVariable *variable);
 };
 

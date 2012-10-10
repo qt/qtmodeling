@@ -57,15 +57,15 @@ QStructuralFeatureActionPrivate::QStructuralFeatureActionPrivate() :
 QStructuralFeatureActionPrivate::~QStructuralFeatureActionPrivate()
 {
 }
-  
-void QStructuralFeatureActionPrivate::setObject(const QInputPin *object) 
-{  
-    this->object = const_cast<QInputPin *>(object);   
+
+void QStructuralFeatureActionPrivate::setObject(const QInputPin *object)
+{
+    this->object = const_cast<QInputPin *>(object);
 }
-  
-void QStructuralFeatureActionPrivate::setStructuralFeature(const QStructuralFeature *structuralFeature) 
-{  
-    this->structuralFeature = const_cast<QStructuralFeature *>(structuralFeature);   
+
+void QStructuralFeatureActionPrivate::setStructuralFeature(const QStructuralFeature *structuralFeature)
+{
+    this->structuralFeature = const_cast<QStructuralFeature *>(structuralFeature);
 }
 
 /*!

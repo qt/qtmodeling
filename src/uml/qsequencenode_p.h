@@ -66,7 +66,7 @@ public:
 
     QList<QExecutableNode *> *executableNodes;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addExecutableNode(const QExecutableNode *executableNode);
     void removeExecutableNode(const QExecutableNode *executableNode);
 };

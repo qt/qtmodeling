@@ -55,15 +55,15 @@ QTimeIntervalPrivate::QTimeIntervalPrivate() :
 QTimeIntervalPrivate::~QTimeIntervalPrivate()
 {
 }
-  
-void QTimeIntervalPrivate::setMax(const QTimeExpression *max) 
-{  
-    this->max = const_cast<QTimeExpression *>(max);   
+
+void QTimeIntervalPrivate::setMax(const QTimeExpression *max)
+{
+    this->max = const_cast<QTimeExpression *>(max);
 }
-  
-void QTimeIntervalPrivate::setMin(const QTimeExpression *min) 
-{  
-    this->min = const_cast<QTimeExpression *>(min);   
+
+void QTimeIntervalPrivate::setMin(const QTimeExpression *min)
+{
+    this->min = const_cast<QTimeExpression *>(min);
 }
 
 /*!

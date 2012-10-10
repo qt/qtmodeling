@@ -74,7 +74,7 @@ public:
     QInteraction *interaction;
     QValueSpecification *selector;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setRepresents(const QConnectableElement *represents);
     void setDecomposedAs(const QPartDecomposition *decomposedAs);
     void addCoveredBy(const QInteractionFragment *coveredBy);

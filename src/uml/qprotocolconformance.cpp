@@ -58,15 +58,15 @@ QProtocolConformancePrivate::QProtocolConformancePrivate() :
 QProtocolConformancePrivate::~QProtocolConformancePrivate()
 {
 }
-  
-void QProtocolConformancePrivate::setSpecificMachine(const QProtocolStateMachine *specificMachine) 
-{  
-    this->specificMachine = const_cast<QProtocolStateMachine *>(specificMachine);   
+
+void QProtocolConformancePrivate::setSpecificMachine(const QProtocolStateMachine *specificMachine)
+{
+    this->specificMachine = const_cast<QProtocolStateMachine *>(specificMachine);
 }
-  
-void QProtocolConformancePrivate::setGeneralMachine(const QProtocolStateMachine *generalMachine) 
-{  
-    this->generalMachine = const_cast<QProtocolStateMachine *>(generalMachine);   
+
+void QProtocolConformancePrivate::setGeneralMachine(const QProtocolStateMachine *generalMachine)
+{
+    this->generalMachine = const_cast<QProtocolStateMachine *>(generalMachine);
 }
 
 /*!

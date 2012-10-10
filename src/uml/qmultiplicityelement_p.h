@@ -66,13 +66,13 @@ public:
     QValueSpecification *upperValue;
     QValueSpecification *lowerValue;
 
-    // Attributes
+    // Internal functions for attributes
     void setUpper(qint32 upper);
     void setUnique(bool isUnique);
     void setOrdered(bool isOrdered);
     void setLower(qint32 lower);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setUpperValue(const QValueSpecification *upperValue);
     void setLowerValue(const QValueSpecification *lowerValue);
 };

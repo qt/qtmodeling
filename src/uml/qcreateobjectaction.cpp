@@ -57,15 +57,15 @@ QCreateObjectActionPrivate::QCreateObjectActionPrivate() :
 QCreateObjectActionPrivate::~QCreateObjectActionPrivate()
 {
 }
-  
-void QCreateObjectActionPrivate::setClassifier(const QClassifier *classifier) 
-{  
-    this->classifier = const_cast<QClassifier *>(classifier);   
+
+void QCreateObjectActionPrivate::setClassifier(const QClassifier *classifier)
+{
+    this->classifier = const_cast<QClassifier *>(classifier);
 }
-  
-void QCreateObjectActionPrivate::setResult(const QOutputPin *result) 
-{  
-    this->result = const_cast<QOutputPin *>(result);   
+
+void QCreateObjectActionPrivate::setResult(const QOutputPin *result)
+{
+    this->result = const_cast<QOutputPin *>(result);
 }
 
 /*!

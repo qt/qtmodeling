@@ -65,41 +65,41 @@ QInteractionFragmentPrivate::~QInteractionFragmentPrivate()
     delete generalOrderings;
     delete covered;
 }
-  
-void QInteractionFragmentPrivate::addGeneralOrdering(const QGeneralOrdering *generalOrdering) 
-{   
-    this->generalOrderings->insert(const_cast<QGeneralOrdering *>(generalOrdering)); 
+
+void QInteractionFragmentPrivate::addGeneralOrdering(const QGeneralOrdering *generalOrdering)
+{
+    this->generalOrderings->insert(const_cast<QGeneralOrdering *>(generalOrdering));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(generalOrdering); 
+    addOwnedElement(generalOrdering);
 }
- 
-void QInteractionFragmentPrivate::removeGeneralOrdering(const QGeneralOrdering *generalOrdering) 
-{    
-    this->generalOrderings->remove(const_cast<QGeneralOrdering *>(generalOrdering)); 
+
+void QInteractionFragmentPrivate::removeGeneralOrdering(const QGeneralOrdering *generalOrdering)
+{
+    this->generalOrderings->remove(const_cast<QGeneralOrdering *>(generalOrdering));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(generalOrdering);
 }
-  
-void QInteractionFragmentPrivate::setEnclosingInteraction(const QInteraction *enclosingInteraction) 
-{  
-    this->enclosingInteraction = const_cast<QInteraction *>(enclosingInteraction);   
+
+void QInteractionFragmentPrivate::setEnclosingInteraction(const QInteraction *enclosingInteraction)
+{
+    this->enclosingInteraction = const_cast<QInteraction *>(enclosingInteraction);
 }
-  
-void QInteractionFragmentPrivate::addCovered(const QLifeline *covered) 
-{   
-    this->covered->insert(const_cast<QLifeline *>(covered));  
+
+void QInteractionFragmentPrivate::addCovered(const QLifeline *covered)
+{
+    this->covered->insert(const_cast<QLifeline *>(covered));
 }
- 
-void QInteractionFragmentPrivate::removeCovered(const QLifeline *covered) 
-{    
-    this->covered->remove(const_cast<QLifeline *>(covered)); 
+
+void QInteractionFragmentPrivate::removeCovered(const QLifeline *covered)
+{
+    this->covered->remove(const_cast<QLifeline *>(covered));
 }
-  
-void QInteractionFragmentPrivate::setEnclosingOperand(const QInteractionOperand *enclosingOperand) 
-{  
-    this->enclosingOperand = const_cast<QInteractionOperand *>(enclosingOperand);   
+
+void QInteractionFragmentPrivate::setEnclosingOperand(const QInteractionOperand *enclosingOperand)
+{
+    this->enclosingOperand = const_cast<QInteractionOperand *>(enclosingOperand);
 }
 
 /*!

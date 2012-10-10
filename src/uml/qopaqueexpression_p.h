@@ -70,13 +70,13 @@ public:
     QList<QString> *languages;
     QBehavior *behavior;
 
-    // Attributes
+    // Internal functions for attributes
     void addBody(QString body);
     void removeBody(QString body);
     void addLanguage(QString language);
     void removeLanguage(QString language);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setBehavior(const QBehavior *behavior);
     void setResult(const QParameter *result);
 };

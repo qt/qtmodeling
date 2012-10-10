@@ -56,15 +56,15 @@ QSendObjectActionPrivate::QSendObjectActionPrivate() :
 QSendObjectActionPrivate::~QSendObjectActionPrivate()
 {
 }
-  
-void QSendObjectActionPrivate::setRequest(const QInputPin *request) 
-{  
-    this->request = const_cast<QInputPin *>(request);   
+
+void QSendObjectActionPrivate::setRequest(const QInputPin *request)
+{
+    this->request = const_cast<QInputPin *>(request);
 }
-  
-void QSendObjectActionPrivate::setTarget(const QInputPin *target) 
-{  
-    this->target = const_cast<QInputPin *>(target);   
+
+void QSendObjectActionPrivate::setTarget(const QInputPin *target)
+{
+    this->target = const_cast<QInputPin *>(target);
 }
 
 /*!

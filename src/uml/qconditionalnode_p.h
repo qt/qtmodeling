@@ -71,11 +71,11 @@ public:
     QSet<QClause *> *clauses;
     QList<QOutputPin *> *results;
 
-    // Attributes
+    // Internal functions for attributes
     void setAssured(bool isAssured);
     void setDeterminate(bool isDeterminate);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addClause(const QClause *clause);
     void removeClause(const QClause *clause);
     void addResult(const QOutputPin *result);

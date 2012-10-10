@@ -55,10 +55,10 @@ QExtensionPointPrivate::QExtensionPointPrivate() :
 QExtensionPointPrivate::~QExtensionPointPrivate()
 {
 }
-  
-void QExtensionPointPrivate::setUseCase(const QUseCase *useCase) 
-{  
-    this->useCase = const_cast<QUseCase *>(useCase);   
+
+void QExtensionPointPrivate::setUseCase(const QUseCase *useCase)
+{
+    this->useCase = const_cast<QUseCase *>(useCase);
 }
 
 /*!

@@ -60,23 +60,23 @@ QComponentRealizationPrivate::~QComponentRealizationPrivate()
 {
     delete realizingClassifiers;
 }
-  
-void QComponentRealizationPrivate::setAbstraction(const QComponent *abstraction) 
-{  
-    this->abstraction = const_cast<QComponent *>(abstraction);   
+
+void QComponentRealizationPrivate::setAbstraction(const QComponent *abstraction)
+{
+    this->abstraction = const_cast<QComponent *>(abstraction);
 }
-  
-void QComponentRealizationPrivate::addRealizingClassifier(const QClassifier *realizingClassifier) 
-{   
-    this->realizingClassifiers->insert(const_cast<QClassifier *>(realizingClassifier)); 
+
+void QComponentRealizationPrivate::addRealizingClassifier(const QClassifier *realizingClassifier)
+{
+    this->realizingClassifiers->insert(const_cast<QClassifier *>(realizingClassifier));
 
     // Adjust subsetted property(ies)
-    addClient(realizingClassifier); 
+    addClient(realizingClassifier);
 }
- 
-void QComponentRealizationPrivate::removeRealizingClassifier(const QClassifier *realizingClassifier) 
-{    
-    this->realizingClassifiers->remove(const_cast<QClassifier *>(realizingClassifier)); 
+
+void QComponentRealizationPrivate::removeRealizingClassifier(const QClassifier *realizingClassifier)
+{
+    this->realizingClassifiers->remove(const_cast<QClassifier *>(realizingClassifier));
 
     // Adjust subsetted property(ies)
     removeClient(realizingClassifier);

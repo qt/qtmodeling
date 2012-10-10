@@ -59,28 +59,28 @@ QInterruptibleActivityRegionPrivate::~QInterruptibleActivityRegionPrivate()
     delete interruptingEdges;
     delete nodes;
 }
-  
-void QInterruptibleActivityRegionPrivate::addInterruptingEdge(const QActivityEdge *interruptingEdge) 
-{   
-    this->interruptingEdges->insert(const_cast<QActivityEdge *>(interruptingEdge));  
+
+void QInterruptibleActivityRegionPrivate::addInterruptingEdge(const QActivityEdge *interruptingEdge)
+{
+    this->interruptingEdges->insert(const_cast<QActivityEdge *>(interruptingEdge));
 }
- 
-void QInterruptibleActivityRegionPrivate::removeInterruptingEdge(const QActivityEdge *interruptingEdge) 
-{    
-    this->interruptingEdges->remove(const_cast<QActivityEdge *>(interruptingEdge)); 
+
+void QInterruptibleActivityRegionPrivate::removeInterruptingEdge(const QActivityEdge *interruptingEdge)
+{
+    this->interruptingEdges->remove(const_cast<QActivityEdge *>(interruptingEdge));
 }
-  
-void QInterruptibleActivityRegionPrivate::addNode(const QActivityNode *node) 
-{   
-    this->nodes->insert(const_cast<QActivityNode *>(node)); 
+
+void QInterruptibleActivityRegionPrivate::addNode(const QActivityNode *node)
+{
+    this->nodes->insert(const_cast<QActivityNode *>(node));
 
     // Adjust subsetted property(ies)
-    addContainedNode(node); 
+    addContainedNode(node);
 }
- 
-void QInterruptibleActivityRegionPrivate::removeNode(const QActivityNode *node) 
-{    
-    this->nodes->remove(const_cast<QActivityNode *>(node)); 
+
+void QInterruptibleActivityRegionPrivate::removeNode(const QActivityNode *node)
+{
+    this->nodes->remove(const_cast<QActivityNode *>(node));
 
     // Adjust subsetted property(ies)
     removeContainedNode(node);

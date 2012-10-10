@@ -61,10 +61,10 @@ void QTimeEventPrivate::setRelative(bool isRelative)
 {
     this->isRelative = isRelative;
 }
-  
-void QTimeEventPrivate::setWhen(const QTimeExpression *when) 
-{  
-    this->when = const_cast<QTimeExpression *>(when);   
+
+void QTimeEventPrivate::setWhen(const QTimeExpression *when)
+{
+    this->when = const_cast<QTimeExpression *>(when);
 }
 
 /*!

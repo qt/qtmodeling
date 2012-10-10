@@ -63,7 +63,7 @@ public:
 
     QSignal *signal;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setSignal(const QSignal *signal);
 };
 

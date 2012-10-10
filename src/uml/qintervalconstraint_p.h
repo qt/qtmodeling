@@ -63,7 +63,7 @@ public:
 
     QInterval *specification;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setSpecification(const QInterval *specification);
 };
 

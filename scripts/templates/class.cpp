@@ -6,10 +6,10 @@
         [%- subsettedClass = subsettedProperty.split('-').0.replace('^', 'Q') -%]
         [%- IF classes.item(subsettedClass) -%]
         [%- IF classes.item(subsettedClass).attribute.item(subsettedProperty) -%]
-        [%- subsettedPropertyItem = classes.item(subsettedClass).attribute.item(subsettedProperty) %]
+        [%- subsettedPropertyItem = classes.item(subsettedClass).attribute.item(subsettedProperty) -%]
         [%- ELSE -%]
         [%- subsettedPropertyItem = classes.item(subsettedClass).associationend.item(subsettedProperty) -%]
-        [%- END %]
+        [%- END -%]
         [%- IF operation == 1 %]
     ${subsettedPropertyItem.accessor.1.name}(${accessor.parameter.0.name});
         [%- ELSE %]
@@ -162,13 +162,13 @@ ${class.name}Private::${class.name}Private()
 
 ${class.name}Private::~${class.name}Private()
 {
-[% FOREACH attribute IN class.attribute.values %]
+[% FOREACH attribute IN class.attribute.values -%]
 [%- IF ((attribute.isDerived == "false" or attribute.isDerivedUnion == "true") and attribute.accessor.0.return.search('<')) -%]
     delete ${attribute.accessor.0.name};
 
 [%- END -%]
 [%- END -%]
-[%- FOREACH associationend IN class.associationend.values %]
+[%- FOREACH associationend IN class.associationend.values -%]
 [%- IF ((associationend.isDerived == "false" or associationend.isDerivedUnion == "true") and associationend.accessor.0.return.search('<')) -%]
     delete ${associationend.accessor.0.name};
 
@@ -184,40 +184,40 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
 {
     [%- IF accessor.name.search('^set') %]
     this->${accessor.parameter.0.name} = [% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %];
-    [%- END %]
+    [%- END -%]
     [%- IF accessor.name.search('^add') %]
     this->${attribute.accessor.0.name}->[% IF attribute.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
     [%- HANDLESUBSETTEDPROPERTY(attribute, 1) -%]
-    [%- END %]
+    [%- END -%]
     [%- IF accessor.name.search('^remove') %]
     this->${attribute.accessor.0.name}->[% IF attribute.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
     [%- HANDLESUBSETTEDPROPERTY(attribute, 2) -%]
     [%- END %]
 }
 [% END -%]
-[%- END %]
+[%- END -%]
 [%- END -%]
 
-[%- FOREACH associationend IN class.associationend.values %] 
+[%- FOREACH associationend IN class.associationend.values %]
 [%- IF associationend.isDerived == 'false' or associationend.isDerivedUnion == 'true' -%]
-[%- FOREACH accessor IN associationend.accessor -%] 
-[%- NEXT IF loop.first %] 
-${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness} 
-{ 
-    [%- IF accessor.name.search('^set') %] 
-    this->${accessor.parameter.0.name} = [% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]; 
-    [%- END %] 
-    [%- IF accessor.name.search('^add') %] 
-    this->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]); 
+[%- FOREACH accessor IN associationend.accessor -%]
+[%- NEXT IF loop.first %]
+${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
+{
+    [%- IF accessor.name.search('^set') %]
+    this->${accessor.parameter.0.name} = [% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %];
+    [%- END -%]
+    [%- IF accessor.name.search('^add') %]
+    this->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
     [%- HANDLESUBSETTEDPROPERTY(associationend, 1) -%]
-    [%- END %] 
-    [%- IF accessor.name.search('^remove') %] 
-    this->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]); 
+    [%- END -%]
+    [%- IF accessor.name.search('^remove') %]
+    this->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
     [%- HANDLESUBSETTEDPROPERTY(associationend, 2) -%]
     [%- END %]
 }
 [% END -%]
-[%- END %]
+[%- END -%]
 [%- END -%]
 
 [%- IF class.documentation %]

@@ -58,15 +58,15 @@ QProtocolTransitionPrivate::QProtocolTransitionPrivate() :
 QProtocolTransitionPrivate::~QProtocolTransitionPrivate()
 {
 }
-  
-void QProtocolTransitionPrivate::setPostCondition(const QConstraint *postCondition) 
-{  
-    this->postCondition = const_cast<QConstraint *>(postCondition);   
+
+void QProtocolTransitionPrivate::setPostCondition(const QConstraint *postCondition)
+{
+    this->postCondition = const_cast<QConstraint *>(postCondition);
 }
-   
-void QProtocolTransitionPrivate::setPreCondition(const QConstraint *preCondition) 
-{  
-    this->preCondition = const_cast<QConstraint *>(preCondition);   
+
+void QProtocolTransitionPrivate::setPreCondition(const QConstraint *preCondition)
+{
+    this->preCondition = const_cast<QConstraint *>(preCondition);
 }
 
 /*!

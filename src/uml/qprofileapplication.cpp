@@ -65,15 +65,15 @@ void QProfileApplicationPrivate::setStrict(bool isStrict)
 {
     this->isStrict = isStrict;
 }
-  
-void QProfileApplicationPrivate::setApplyingPackage(const QPackage *applyingPackage) 
-{  
-    this->applyingPackage = const_cast<QPackage *>(applyingPackage);   
+
+void QProfileApplicationPrivate::setApplyingPackage(const QPackage *applyingPackage)
+{
+    this->applyingPackage = const_cast<QPackage *>(applyingPackage);
 }
-  
-void QProfileApplicationPrivate::setAppliedProfile(const QProfile *appliedProfile) 
-{  
-    this->appliedProfile = const_cast<QProfile *>(appliedProfile);   
+
+void QProfileApplicationPrivate::setAppliedProfile(const QProfile *appliedProfile)
+{
+    this->appliedProfile = const_cast<QProfile *>(appliedProfile);
 }
 
 /*!

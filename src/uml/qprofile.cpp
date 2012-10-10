@@ -60,34 +60,34 @@ QProfilePrivate::~QProfilePrivate()
     delete metamodelReferences;
     delete metaclassReferences;
 }
-  
-void QProfilePrivate::addMetamodelReference(const QPackageImport *metamodelReference) 
-{   
-    this->metamodelReferences->insert(const_cast<QPackageImport *>(metamodelReference)); 
+
+void QProfilePrivate::addMetamodelReference(const QPackageImport *metamodelReference)
+{
+    this->metamodelReferences->insert(const_cast<QPackageImport *>(metamodelReference));
 
     // Adjust subsetted property(ies)
-    addPackageImport(metamodelReference); 
+    addPackageImport(metamodelReference);
 }
- 
-void QProfilePrivate::removeMetamodelReference(const QPackageImport *metamodelReference) 
-{    
-    this->metamodelReferences->remove(const_cast<QPackageImport *>(metamodelReference)); 
+
+void QProfilePrivate::removeMetamodelReference(const QPackageImport *metamodelReference)
+{
+    this->metamodelReferences->remove(const_cast<QPackageImport *>(metamodelReference));
 
     // Adjust subsetted property(ies)
     removePackageImport(metamodelReference);
 }
-  
-void QProfilePrivate::addMetaclassReference(const QElementImport *metaclassReference) 
-{   
-    this->metaclassReferences->insert(const_cast<QElementImport *>(metaclassReference)); 
+
+void QProfilePrivate::addMetaclassReference(const QElementImport *metaclassReference)
+{
+    this->metaclassReferences->insert(const_cast<QElementImport *>(metaclassReference));
 
     // Adjust subsetted property(ies)
-    addElementImport(metaclassReference); 
+    addElementImport(metaclassReference);
 }
- 
-void QProfilePrivate::removeMetaclassReference(const QElementImport *metaclassReference) 
-{    
-    this->metaclassReferences->remove(const_cast<QElementImport *>(metaclassReference)); 
+
+void QProfilePrivate::removeMetaclassReference(const QElementImport *metaclassReference)
+{
+    this->metaclassReferences->remove(const_cast<QElementImport *>(metaclassReference));
 
     // Adjust subsetted property(ies)
     removeElementImport(metaclassReference);

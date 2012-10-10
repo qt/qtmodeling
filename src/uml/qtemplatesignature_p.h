@@ -69,7 +69,7 @@ public:
     QTemplateableElement *template_;
     QList<QTemplateParameter *> *ownedParameters;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addParameter(const QTemplateParameter *parameter);
     void removeParameter(const QTemplateParameter *parameter);
     void setTemplate_(const QTemplateableElement *template_);

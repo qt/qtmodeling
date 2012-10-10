@@ -86,13 +86,13 @@ public:
     QStateMachine *submachine;
     QConstraint *stateInvariant;
 
-    // Attributes
+    // Internal functions for attributes
     void setSimple(bool isSimple);
     void setComposite(bool isComposite);
     void setOrthogonal(bool isOrthogonal);
     void setSubmachineState(bool isSubmachineState);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addRegion(const QRegion *region);
     void removeRegion(const QRegion *region);
     void setExit(const QBehavior *exit);

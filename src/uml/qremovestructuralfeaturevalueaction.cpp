@@ -61,10 +61,10 @@ void QRemoveStructuralFeatureValueActionPrivate::setRemoveDuplicates(bool isRemo
 {
     this->isRemoveDuplicates = isRemoveDuplicates;
 }
-  
-void QRemoveStructuralFeatureValueActionPrivate::setRemoveAt(const QInputPin *removeAt) 
-{  
-    this->removeAt = const_cast<QInputPin *>(removeAt);   
+
+void QRemoveStructuralFeatureValueActionPrivate::setRemoveAt(const QInputPin *removeAt)
+{
+    this->removeAt = const_cast<QInputPin *>(removeAt);
 }
 
 /*!

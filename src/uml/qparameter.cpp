@@ -83,25 +83,25 @@ void QParameterPrivate::setEffect(QtUml::ParameterEffectKind effect)
 {
     this->effect = effect;
 }
-  
-void QParameterPrivate::setOperation(const QOperation *operation) 
-{  
-    this->operation = const_cast<QOperation *>(operation);   
+
+void QParameterPrivate::setOperation(const QOperation *operation)
+{
+    this->operation = const_cast<QOperation *>(operation);
 }
-  
-void QParameterPrivate::setDefaultValue(const QValueSpecification *defaultValue) 
-{  
-    this->defaultValue = const_cast<QValueSpecification *>(defaultValue);   
+
+void QParameterPrivate::setDefaultValue(const QValueSpecification *defaultValue)
+{
+    this->defaultValue = const_cast<QValueSpecification *>(defaultValue);
 }
-  
-void QParameterPrivate::addParameterSet(const QParameterSet *parameterSet) 
-{   
-    this->parameterSets->insert(const_cast<QParameterSet *>(parameterSet));  
+
+void QParameterPrivate::addParameterSet(const QParameterSet *parameterSet)
+{
+    this->parameterSets->insert(const_cast<QParameterSet *>(parameterSet));
 }
- 
-void QParameterPrivate::removeParameterSet(const QParameterSet *parameterSet) 
-{    
-    this->parameterSets->remove(const_cast<QParameterSet *>(parameterSet)); 
+
+void QParameterPrivate::removeParameterSet(const QParameterSet *parameterSet)
+{
+    this->parameterSets->remove(const_cast<QParameterSet *>(parameterSet));
 }
 
 /*!

@@ -55,15 +55,15 @@ QConsiderIgnoreFragmentPrivate::~QConsiderIgnoreFragmentPrivate()
 {
     delete messages;
 }
-  
-void QConsiderIgnoreFragmentPrivate::addMessage(const QNamedElement *message) 
-{   
-    this->messages->insert(const_cast<QNamedElement *>(message));  
+
+void QConsiderIgnoreFragmentPrivate::addMessage(const QNamedElement *message)
+{
+    this->messages->insert(const_cast<QNamedElement *>(message));
 }
- 
-void QConsiderIgnoreFragmentPrivate::removeMessage(const QNamedElement *message) 
-{    
-    this->messages->remove(const_cast<QNamedElement *>(message)); 
+
+void QConsiderIgnoreFragmentPrivate::removeMessage(const QNamedElement *message)
+{
+    this->messages->remove(const_cast<QNamedElement *>(message));
 }
 
 /*!

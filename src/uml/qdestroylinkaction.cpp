@@ -55,15 +55,15 @@ QDestroyLinkActionPrivate::~QDestroyLinkActionPrivate()
 {
     delete endData;
 }
-  
-void QDestroyLinkActionPrivate::addEndData(const QLinkEndDestructionData *endData) 
-{   
-    this->endData->insert(const_cast<QLinkEndDestructionData *>(endData));  
+
+void QDestroyLinkActionPrivate::addEndData(const QLinkEndDestructionData *endData)
+{
+    this->endData->insert(const_cast<QLinkEndDestructionData *>(endData));
 }
- 
-void QDestroyLinkActionPrivate::removeEndData(const QLinkEndDestructionData *endData) 
-{    
-    this->endData->remove(const_cast<QLinkEndDestructionData *>(endData)); 
+
+void QDestroyLinkActionPrivate::removeEndData(const QLinkEndDestructionData *endData)
+{
+    this->endData->remove(const_cast<QLinkEndDestructionData *>(endData));
 }
 
 /*!

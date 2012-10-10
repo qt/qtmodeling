@@ -63,7 +63,7 @@ public:
 
     QInstanceSpecification *instance;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setInstance(const QInstanceSpecification *instance);
 };
 

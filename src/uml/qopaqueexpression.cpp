@@ -79,12 +79,12 @@ void QOpaqueExpressionPrivate::removeLanguage(QString language)
 {
     this->languages->removeAll(language);
 }
-  
-void QOpaqueExpressionPrivate::setBehavior(const QBehavior *behavior) 
-{  
-    this->behavior = const_cast<QBehavior *>(behavior);   
+
+void QOpaqueExpressionPrivate::setBehavior(const QBehavior *behavior)
+{
+    this->behavior = const_cast<QBehavior *>(behavior);
 }
- 
+
 /*!
     \class QOpaqueExpression
 

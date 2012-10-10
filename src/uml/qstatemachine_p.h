@@ -73,7 +73,7 @@ public:
     QSet<QState *> *submachineStates;
     QSet<QRegion *> *regions;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addExtendedStateMachine(const QStateMachine *extendedStateMachine);
     void removeExtendedStateMachine(const QStateMachine *extendedStateMachine);
     void addConnectionPoint(const QPseudostate *connectionPoint);

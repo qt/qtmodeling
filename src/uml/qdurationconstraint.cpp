@@ -66,10 +66,10 @@ void QDurationConstraintPrivate::removeFirstEvent(bool firstEvent)
 {
     this->firstEvents->remove(firstEvent);
 }
-  
-void QDurationConstraintPrivate::setSpecification(const QDurationInterval *specification) 
-{  
-    this->specification = const_cast<QDurationInterval *>(specification);   
+
+void QDurationConstraintPrivate::setSpecification(const QDurationInterval *specification)
+{
+    this->specification = const_cast<QDurationInterval *>(specification);
 }
 
 /*!

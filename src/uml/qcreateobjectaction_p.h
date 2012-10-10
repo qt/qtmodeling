@@ -65,7 +65,7 @@ public:
     QClassifier *classifier;
     QOutputPin *result;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setClassifier(const QClassifier *classifier);
     void setResult(const QOutputPin *result);
 };

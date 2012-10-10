@@ -65,15 +65,15 @@ void QPackageImportPrivate::setVisibility(QtUml::VisibilityKind visibility)
 {
     this->visibility = visibility;
 }
-  
-void QPackageImportPrivate::setImportingNamespace(const QNamespace *importingNamespace) 
-{  
-    this->importingNamespace = const_cast<QNamespace *>(importingNamespace);   
+
+void QPackageImportPrivate::setImportingNamespace(const QNamespace *importingNamespace)
+{
+    this->importingNamespace = const_cast<QNamespace *>(importingNamespace);
 }
-  
-void QPackageImportPrivate::setImportedPackage(const QPackage *importedPackage) 
-{  
-    this->importedPackage = const_cast<QPackage *>(importedPackage);   
+
+void QPackageImportPrivate::setImportedPackage(const QPackage *importedPackage)
+{
+    this->importedPackage = const_cast<QPackage *>(importedPackage);
 }
 
 /*!

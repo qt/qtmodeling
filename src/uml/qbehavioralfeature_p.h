@@ -81,11 +81,11 @@ public:
     QSet<QParameterSet *> *ownedParameterSets;
     QSet<QBehavior *> *methods;
 
-    // Attributes
+    // Internal functions for attributes
     void setConcurrency(QtUml::CallConcurrencyKind concurrency);
     void setAbstract(bool isAbstract);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addRaisedException(const QType *raisedException);
     void removeRaisedException(const QType *raisedException);
     void addOwnedParameter(const QParameter *ownedParameter);

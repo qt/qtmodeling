@@ -63,25 +63,25 @@ void QExpansionRegionPrivate::setMode(QtUml::ExpansionKind mode)
 {
     this->mode = mode;
 }
-  
-void QExpansionRegionPrivate::addInputElement(const QExpansionNode *inputElement) 
-{   
-    this->inputElements->insert(const_cast<QExpansionNode *>(inputElement));  
+
+void QExpansionRegionPrivate::addInputElement(const QExpansionNode *inputElement)
+{
+    this->inputElements->insert(const_cast<QExpansionNode *>(inputElement));
 }
- 
-void QExpansionRegionPrivate::removeInputElement(const QExpansionNode *inputElement) 
-{    
-    this->inputElements->remove(const_cast<QExpansionNode *>(inputElement)); 
+
+void QExpansionRegionPrivate::removeInputElement(const QExpansionNode *inputElement)
+{
+    this->inputElements->remove(const_cast<QExpansionNode *>(inputElement));
 }
-  
-void QExpansionRegionPrivate::addOutputElement(const QExpansionNode *outputElement) 
-{   
-    this->outputElements->insert(const_cast<QExpansionNode *>(outputElement));  
+
+void QExpansionRegionPrivate::addOutputElement(const QExpansionNode *outputElement)
+{
+    this->outputElements->insert(const_cast<QExpansionNode *>(outputElement));
 }
- 
-void QExpansionRegionPrivate::removeOutputElement(const QExpansionNode *outputElement) 
-{    
-    this->outputElements->remove(const_cast<QExpansionNode *>(outputElement)); 
+
+void QExpansionRegionPrivate::removeOutputElement(const QExpansionNode *outputElement)
+{
+    this->outputElements->remove(const_cast<QExpansionNode *>(outputElement));
 }
 
 /*!

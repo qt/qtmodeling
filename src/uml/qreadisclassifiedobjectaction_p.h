@@ -68,10 +68,10 @@ public:
     QInputPin *object;
     QClassifier *classifier;
 
-    // Attributes
+    // Internal functions for attributes
     void setDirect(bool isDirect);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setResult(const QOutputPin *result);
     void setObject(const QInputPin *object);
     void setClassifier(const QClassifier *classifier);

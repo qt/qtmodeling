@@ -74,66 +74,66 @@ void QActionPrivate::setLocallyReentrant(bool isLocallyReentrant)
 {
     this->isLocallyReentrant = isLocallyReentrant;
 }
-   
-void QActionPrivate::addLocalPostcondition(const QConstraint *localPostcondition) 
-{   
-    this->localPostconditions->insert(const_cast<QConstraint *>(localPostcondition)); 
+
+void QActionPrivate::addLocalPostcondition(const QConstraint *localPostcondition)
+{
+    this->localPostconditions->insert(const_cast<QConstraint *>(localPostcondition));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(localPostcondition); 
+    addOwnedElement(localPostcondition);
 }
- 
-void QActionPrivate::removeLocalPostcondition(const QConstraint *localPostcondition) 
-{    
-    this->localPostconditions->remove(const_cast<QConstraint *>(localPostcondition)); 
+
+void QActionPrivate::removeLocalPostcondition(const QConstraint *localPostcondition)
+{
+    this->localPostconditions->remove(const_cast<QConstraint *>(localPostcondition));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(localPostcondition);
 }
-  
-void QActionPrivate::addLocalPrecondition(const QConstraint *localPrecondition) 
-{   
-    this->localPreconditions->insert(const_cast<QConstraint *>(localPrecondition)); 
+
+void QActionPrivate::addLocalPrecondition(const QConstraint *localPrecondition)
+{
+    this->localPreconditions->insert(const_cast<QConstraint *>(localPrecondition));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(localPrecondition); 
+    addOwnedElement(localPrecondition);
 }
- 
-void QActionPrivate::removeLocalPrecondition(const QConstraint *localPrecondition) 
-{    
-    this->localPreconditions->remove(const_cast<QConstraint *>(localPrecondition)); 
+
+void QActionPrivate::removeLocalPrecondition(const QConstraint *localPrecondition)
+{
+    this->localPreconditions->remove(const_cast<QConstraint *>(localPrecondition));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(localPrecondition);
 }
-  
-void QActionPrivate::addInput(const QInputPin *input) 
-{   
-    this->inputs->append(const_cast<QInputPin *>(input)); 
+
+void QActionPrivate::addInput(const QInputPin *input)
+{
+    this->inputs->append(const_cast<QInputPin *>(input));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(input); 
+    addOwnedElement(input);
 }
- 
-void QActionPrivate::removeInput(const QInputPin *input) 
-{    
-    this->inputs->removeAll(const_cast<QInputPin *>(input)); 
+
+void QActionPrivate::removeInput(const QInputPin *input)
+{
+    this->inputs->removeAll(const_cast<QInputPin *>(input));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(input);
 }
-  
-void QActionPrivate::addOutput(const QOutputPin *output) 
-{   
-    this->outputs->append(const_cast<QOutputPin *>(output)); 
+
+void QActionPrivate::addOutput(const QOutputPin *output)
+{
+    this->outputs->append(const_cast<QOutputPin *>(output));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(output); 
+    addOwnedElement(output);
 }
- 
-void QActionPrivate::removeOutput(const QOutputPin *output) 
-{    
-    this->outputs->removeAll(const_cast<QOutputPin *>(output)); 
+
+void QActionPrivate::removeOutput(const QOutputPin *output)
+{
+    this->outputs->removeAll(const_cast<QOutputPin *>(output));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(output);

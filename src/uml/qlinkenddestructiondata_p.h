@@ -64,10 +64,10 @@ public:
     bool isDestroyDuplicates;
     QInputPin *destroyAt;
 
-    // Attributes
+    // Internal functions for attributes
     void setDestroyDuplicates(bool isDestroyDuplicates);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setDestroyAt(const QInputPin *destroyAt);
 };
 

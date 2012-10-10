@@ -59,28 +59,28 @@ QParameterSetPrivate::~QParameterSetPrivate()
     delete parameters;
     delete conditions;
 }
-  
-void QParameterSetPrivate::addParameter(const QParameter *parameter) 
-{   
-    this->parameters->insert(const_cast<QParameter *>(parameter));  
+
+void QParameterSetPrivate::addParameter(const QParameter *parameter)
+{
+    this->parameters->insert(const_cast<QParameter *>(parameter));
 }
- 
-void QParameterSetPrivate::removeParameter(const QParameter *parameter) 
-{    
-    this->parameters->remove(const_cast<QParameter *>(parameter)); 
+
+void QParameterSetPrivate::removeParameter(const QParameter *parameter)
+{
+    this->parameters->remove(const_cast<QParameter *>(parameter));
 }
-  
-void QParameterSetPrivate::addCondition(const QConstraint *condition) 
-{   
-    this->conditions->insert(const_cast<QConstraint *>(condition)); 
+
+void QParameterSetPrivate::addCondition(const QConstraint *condition)
+{
+    this->conditions->insert(const_cast<QConstraint *>(condition));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(condition); 
+    addOwnedElement(condition);
 }
- 
-void QParameterSetPrivate::removeCondition(const QConstraint *condition) 
-{    
-    this->conditions->remove(const_cast<QConstraint *>(condition)); 
+
+void QParameterSetPrivate::removeCondition(const QConstraint *condition)
+{
+    this->conditions->remove(const_cast<QConstraint *>(condition));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(condition);

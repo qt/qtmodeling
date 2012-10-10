@@ -71,10 +71,10 @@ public:
     QSet<QComponentRealization *> *realizations;
     QSet<QPackageableElement *> *packagedElements;
 
-    // Attributes
+    // Internal functions for attributes
     void setIndirectlyInstantiated(bool isIndirectlyInstantiated);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addRealization(const QComponentRealization *realization);
     void removeRealization(const QComponentRealization *realization);
     void addRequired(const QInterface *required);

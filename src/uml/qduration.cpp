@@ -57,20 +57,20 @@ QDurationPrivate::~QDurationPrivate()
 {
     delete observations;
 }
-  
-void QDurationPrivate::setExpr(const QValueSpecification *expr) 
-{  
-    this->expr = const_cast<QValueSpecification *>(expr);   
+
+void QDurationPrivate::setExpr(const QValueSpecification *expr)
+{
+    this->expr = const_cast<QValueSpecification *>(expr);
 }
-  
-void QDurationPrivate::addObservation(const QObservation *observation) 
-{   
-    this->observations->insert(const_cast<QObservation *>(observation));  
+
+void QDurationPrivate::addObservation(const QObservation *observation)
+{
+    this->observations->insert(const_cast<QObservation *>(observation));
 }
- 
-void QDurationPrivate::removeObservation(const QObservation *observation) 
-{    
-    this->observations->remove(const_cast<QObservation *>(observation)); 
+
+void QDurationPrivate::removeObservation(const QObservation *observation)
+{
+    this->observations->remove(const_cast<QObservation *>(observation));
 }
 
 /*!

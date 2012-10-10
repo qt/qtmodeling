@@ -63,7 +63,7 @@ public:
 
     QOpaqueExpression *mapping;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setMapping(const QOpaqueExpression *mapping);
 };
 

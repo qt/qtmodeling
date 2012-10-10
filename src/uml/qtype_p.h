@@ -63,7 +63,7 @@ public:
 
     QPackage *package;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setPackage(const QPackage *package);
 };
 

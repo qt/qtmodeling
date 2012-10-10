@@ -65,7 +65,7 @@ public:
 
     QSet<QElement *> *relatedElements;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addRelatedElement(const QElement *relatedElement);
     void removeRelatedElement(const QElement *relatedElement);
 };

@@ -72,25 +72,25 @@ void QObjectNodePrivate::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
     this->ordering = ordering;
 }
-  
-void QObjectNodePrivate::setUpperBound(const QValueSpecification *upperBound) 
-{  
-    this->upperBound = const_cast<QValueSpecification *>(upperBound);   
+
+void QObjectNodePrivate::setUpperBound(const QValueSpecification *upperBound)
+{
+    this->upperBound = const_cast<QValueSpecification *>(upperBound);
 }
-  
-void QObjectNodePrivate::setSelection(const QBehavior *selection) 
-{  
-    this->selection = const_cast<QBehavior *>(selection);   
+
+void QObjectNodePrivate::setSelection(const QBehavior *selection)
+{
+    this->selection = const_cast<QBehavior *>(selection);
 }
-  
-void QObjectNodePrivate::addInState(const QState *inState) 
-{   
-    this->inState->insert(const_cast<QState *>(inState));  
+
+void QObjectNodePrivate::addInState(const QState *inState)
+{
+    this->inState->insert(const_cast<QState *>(inState));
 }
- 
-void QObjectNodePrivate::removeInState(const QState *inState) 
-{    
-    this->inState->remove(const_cast<QState *>(inState)); 
+
+void QObjectNodePrivate::removeInState(const QState *inState)
+{
+    this->inState->remove(const_cast<QState *>(inState));
 }
 
 /*!

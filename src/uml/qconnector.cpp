@@ -64,49 +64,49 @@ QConnectorPrivate::~QConnectorPrivate()
     delete contracts;
     delete ends;
 }
-  
-void QConnectorPrivate::addRedefinedConnector(const QConnector *redefinedConnector) 
-{   
-    this->redefinedConnectors->insert(const_cast<QConnector *>(redefinedConnector)); 
+
+void QConnectorPrivate::addRedefinedConnector(const QConnector *redefinedConnector)
+{
+    this->redefinedConnectors->insert(const_cast<QConnector *>(redefinedConnector));
 
     // Adjust subsetted property(ies)
-    addRedefinedElement(redefinedConnector); 
+    addRedefinedElement(redefinedConnector);
 }
- 
-void QConnectorPrivate::removeRedefinedConnector(const QConnector *redefinedConnector) 
-{    
-    this->redefinedConnectors->remove(const_cast<QConnector *>(redefinedConnector)); 
+
+void QConnectorPrivate::removeRedefinedConnector(const QConnector *redefinedConnector)
+{
+    this->redefinedConnectors->remove(const_cast<QConnector *>(redefinedConnector));
 
     // Adjust subsetted property(ies)
     removeRedefinedElement(redefinedConnector);
 }
-  
-void QConnectorPrivate::addContract(const QBehavior *contract) 
-{   
-    this->contracts->insert(const_cast<QBehavior *>(contract));  
+
+void QConnectorPrivate::addContract(const QBehavior *contract)
+{
+    this->contracts->insert(const_cast<QBehavior *>(contract));
 }
- 
-void QConnectorPrivate::removeContract(const QBehavior *contract) 
-{    
-    this->contracts->remove(const_cast<QBehavior *>(contract)); 
+
+void QConnectorPrivate::removeContract(const QBehavior *contract)
+{
+    this->contracts->remove(const_cast<QBehavior *>(contract));
 }
-  
-void QConnectorPrivate::setType(const QAssociation *type) 
-{  
-    this->type = const_cast<QAssociation *>(type);   
+
+void QConnectorPrivate::setType(const QAssociation *type)
+{
+    this->type = const_cast<QAssociation *>(type);
 }
-  
-void QConnectorPrivate::addEnd(const QConnectorEnd *end) 
-{   
-    this->ends->append(const_cast<QConnectorEnd *>(end)); 
+
+void QConnectorPrivate::addEnd(const QConnectorEnd *end)
+{
+    this->ends->append(const_cast<QConnectorEnd *>(end));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(end); 
+    addOwnedElement(end);
 }
- 
-void QConnectorPrivate::removeEnd(const QConnectorEnd *end) 
-{    
-    this->ends->removeAll(const_cast<QConnectorEnd *>(end)); 
+
+void QConnectorPrivate::removeEnd(const QConnectorEnd *end)
+{
+    this->ends->removeAll(const_cast<QConnectorEnd *>(end));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(end);

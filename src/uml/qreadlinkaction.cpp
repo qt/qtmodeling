@@ -55,10 +55,10 @@ QReadLinkActionPrivate::QReadLinkActionPrivate() :
 QReadLinkActionPrivate::~QReadLinkActionPrivate()
 {
 }
-  
-void QReadLinkActionPrivate::setResult(const QOutputPin *result) 
-{  
-    this->result = const_cast<QOutputPin *>(result);   
+
+void QReadLinkActionPrivate::setResult(const QOutputPin *result)
+{
+    this->result = const_cast<QOutputPin *>(result);
 }
 
 /*!

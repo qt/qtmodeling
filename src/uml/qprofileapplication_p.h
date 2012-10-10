@@ -66,10 +66,10 @@ public:
     QPackage *applyingPackage;
     QProfile *appliedProfile;
 
-    // Attributes
+    // Internal functions for attributes
     void setStrict(bool isStrict);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setApplyingPackage(const QPackage *applyingPackage);
     void setAppliedProfile(const QProfile *appliedProfile);
 };

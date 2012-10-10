@@ -68,7 +68,7 @@ public:
     QParameterableElement *ownedDefault;
     QTemplateSignature *signature;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setDefault_(const QParameterableElement *default_);
     void setParameteredElement(const QParameterableElement *parameteredElement);
     void setOwnedParameteredElement(const QParameterableElement *ownedParameteredElement);

@@ -77,82 +77,82 @@ QActivityEdgePrivate::~QActivityEdgePrivate()
     delete inGroup;
     delete inPartition;
 }
-  
-void QActivityEdgePrivate::setSource(const QActivityNode *source) 
-{  
-    this->source = const_cast<QActivityNode *>(source);   
+
+void QActivityEdgePrivate::setSource(const QActivityNode *source)
+{
+    this->source = const_cast<QActivityNode *>(source);
 }
-  
-void QActivityEdgePrivate::addRedefinedEdge(const QActivityEdge *redefinedEdge) 
-{   
-    this->redefinedEdges->insert(const_cast<QActivityEdge *>(redefinedEdge)); 
+
+void QActivityEdgePrivate::addRedefinedEdge(const QActivityEdge *redefinedEdge)
+{
+    this->redefinedEdges->insert(const_cast<QActivityEdge *>(redefinedEdge));
 
     // Adjust subsetted property(ies)
-    addRedefinedElement(redefinedEdge); 
+    addRedefinedElement(redefinedEdge);
 }
- 
-void QActivityEdgePrivate::removeRedefinedEdge(const QActivityEdge *redefinedEdge) 
-{    
-    this->redefinedEdges->remove(const_cast<QActivityEdge *>(redefinedEdge)); 
+
+void QActivityEdgePrivate::removeRedefinedEdge(const QActivityEdge *redefinedEdge)
+{
+    this->redefinedEdges->remove(const_cast<QActivityEdge *>(redefinedEdge));
 
     // Adjust subsetted property(ies)
     removeRedefinedElement(redefinedEdge);
 }
-  
-void QActivityEdgePrivate::addInGroup(const QActivityGroup *inGroup) 
-{   
-    this->inGroup->insert(const_cast<QActivityGroup *>(inGroup));  
+
+void QActivityEdgePrivate::addInGroup(const QActivityGroup *inGroup)
+{
+    this->inGroup->insert(const_cast<QActivityGroup *>(inGroup));
 }
- 
-void QActivityEdgePrivate::removeInGroup(const QActivityGroup *inGroup) 
-{    
-    this->inGroup->remove(const_cast<QActivityGroup *>(inGroup)); 
+
+void QActivityEdgePrivate::removeInGroup(const QActivityGroup *inGroup)
+{
+    this->inGroup->remove(const_cast<QActivityGroup *>(inGroup));
 }
-  
-void QActivityEdgePrivate::setGuard(const QValueSpecification *guard) 
-{  
-    this->guard = const_cast<QValueSpecification *>(guard);   
+
+void QActivityEdgePrivate::setGuard(const QValueSpecification *guard)
+{
+    this->guard = const_cast<QValueSpecification *>(guard);
 }
-  
-void QActivityEdgePrivate::addInPartition(const QActivityPartition *inPartition) 
-{   
-    this->inPartition->insert(const_cast<QActivityPartition *>(inPartition)); 
+
+void QActivityEdgePrivate::addInPartition(const QActivityPartition *inPartition)
+{
+    this->inPartition->insert(const_cast<QActivityPartition *>(inPartition));
 
     // Adjust subsetted property(ies)
-    addInGroup(inPartition); 
+    addInGroup(inPartition);
 }
- 
-void QActivityEdgePrivate::removeInPartition(const QActivityPartition *inPartition) 
-{    
-    this->inPartition->remove(const_cast<QActivityPartition *>(inPartition)); 
+
+void QActivityEdgePrivate::removeInPartition(const QActivityPartition *inPartition)
+{
+    this->inPartition->remove(const_cast<QActivityPartition *>(inPartition));
 
     // Adjust subsetted property(ies)
     removeInGroup(inPartition);
 }
-  
-void QActivityEdgePrivate::setActivity(const QActivity *activity) 
-{  
-    this->activity = const_cast<QActivity *>(activity);   
+
+void QActivityEdgePrivate::setActivity(const QActivity *activity)
+{
+    this->activity = const_cast<QActivity *>(activity);
 }
-  
-void QActivityEdgePrivate::setInterrupts(const QInterruptibleActivityRegion *interrupts) 
-{  
-    this->interrupts = const_cast<QInterruptibleActivityRegion *>(interrupts);   
+
+void QActivityEdgePrivate::setInterrupts(const QInterruptibleActivityRegion *interrupts)
+{
+    this->interrupts = const_cast<QInterruptibleActivityRegion *>(interrupts);
 }
-  
-void QActivityEdgePrivate::setWeight(const QValueSpecification *weight) 
-{  
-    this->weight = const_cast<QValueSpecification *>(weight);   
+
+void QActivityEdgePrivate::setWeight(const QValueSpecification *weight)
+{
+    this->weight = const_cast<QValueSpecification *>(weight);
 }
-  
-void QActivityEdgePrivate::setInStructuredNode(const QStructuredActivityNode *inStructuredNode) 
-{  
-    this->inStructuredNode = const_cast<QStructuredActivityNode *>(inStructuredNode);   
+
+void QActivityEdgePrivate::setInStructuredNode(const QStructuredActivityNode *inStructuredNode)
+{
+    this->inStructuredNode = const_cast<QStructuredActivityNode *>(inStructuredNode);
 }
-  
-void QActivityEdgePrivate::setTarget(const QActivityNode *target) 
-{  
-    this->target = const_cast<QActivityNode *>(target);   
+
+void QActivityEdgePrivate::setTarget(const QActivityNode *target)
+{
+    this->target = const_cast<QActivityNode *>(target);
 }
 
 /*!

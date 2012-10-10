@@ -54,10 +54,10 @@ QMessageEndPrivate::QMessageEndPrivate() :
 QMessageEndPrivate::~QMessageEndPrivate()
 {
 }
-  
-void QMessageEndPrivate::setMessage(const QMessage *message) 
-{  
-    this->message = const_cast<QMessage *>(message);   
+
+void QMessageEndPrivate::setMessage(const QMessage *message)
+{
+    this->message = const_cast<QMessage *>(message);
 }
 
 /*!

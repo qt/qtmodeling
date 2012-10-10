@@ -55,10 +55,10 @@ QActionInputPinPrivate::QActionInputPinPrivate() :
 QActionInputPinPrivate::~QActionInputPinPrivate()
 {
 }
-  
-void QActionInputPinPrivate::setFromAction(const QAction *fromAction) 
-{  
-    this->fromAction = const_cast<QAction *>(fromAction);   
+
+void QActionInputPinPrivate::setFromAction(const QAction *fromAction)
+{
+    this->fromAction = const_cast<QAction *>(fromAction);
 }
 
 /*!

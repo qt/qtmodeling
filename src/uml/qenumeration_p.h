@@ -66,7 +66,7 @@ public:
 
     QList<QEnumerationLiteral *> *ownedLiterals;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addOwnedLiteral(const QEnumerationLiteral *ownedLiteral);
     void removeOwnedLiteral(const QEnumerationLiteral *ownedLiteral);
 };

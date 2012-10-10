@@ -65,7 +65,7 @@ public:
 
     QString value;
 
-    // Attributes
+    // Internal functions for attributes
     void setValue(QString value);
 };
 

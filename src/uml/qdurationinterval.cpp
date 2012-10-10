@@ -55,15 +55,15 @@ QDurationIntervalPrivate::QDurationIntervalPrivate() :
 QDurationIntervalPrivate::~QDurationIntervalPrivate()
 {
 }
-  
-void QDurationIntervalPrivate::setMax(const QDuration *max) 
-{  
-    this->max = const_cast<QDuration *>(max);   
+
+void QDurationIntervalPrivate::setMax(const QDuration *max)
+{
+    this->max = const_cast<QDuration *>(max);
 }
-  
-void QDurationIntervalPrivate::setMin(const QDuration *min) 
-{  
-    this->min = const_cast<QDuration *>(min);   
+
+void QDurationIntervalPrivate::setMin(const QDuration *min)
+{
+    this->min = const_cast<QDuration *>(min);
 }
 
 /*!

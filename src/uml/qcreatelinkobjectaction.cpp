@@ -55,10 +55,10 @@ QCreateLinkObjectActionPrivate::QCreateLinkObjectActionPrivate() :
 QCreateLinkObjectActionPrivate::~QCreateLinkObjectActionPrivate()
 {
 }
-  
-void QCreateLinkObjectActionPrivate::setResult(const QOutputPin *result) 
-{  
-    this->result = const_cast<QOutputPin *>(result);   
+
+void QCreateLinkObjectActionPrivate::setResult(const QOutputPin *result)
+{
+    this->result = const_cast<QOutputPin *>(result);
 }
 
 /*!

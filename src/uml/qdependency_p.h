@@ -69,7 +69,7 @@ public:
     QSet<QNamedElement *> *clients;
     QSet<QNamedElement *> *suppliers;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addClient(const QNamedElement *client);
     void removeClient(const QNamedElement *client);
     void addSupplier(const QNamedElement *supplier);

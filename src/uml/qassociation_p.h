@@ -73,10 +73,10 @@ public:
     QList<QProperty *> *ownedEnds;
     QList<QProperty *> *memberEnds;
 
-    // Attributes
+    // Internal functions for attributes
     void setDerived(bool isDerived);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addEndType(const QType *endType);
     void removeEndType(const QType *endType);
     void addNavigableOwnedEnd(const QProperty *navigableOwnedEnd);

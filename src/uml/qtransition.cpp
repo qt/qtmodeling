@@ -78,48 +78,48 @@ void QTransitionPrivate::setKind(QtUml::TransitionKind kind)
 {
     this->kind = kind;
 }
-  
-void QTransitionPrivate::setGuard(const QConstraint *guard) 
-{  
-    this->guard = const_cast<QConstraint *>(guard);   
+
+void QTransitionPrivate::setGuard(const QConstraint *guard)
+{
+    this->guard = const_cast<QConstraint *>(guard);
 }
-  
-void QTransitionPrivate::setTarget(const QVertex *target) 
-{  
-    this->target = const_cast<QVertex *>(target);   
+
+void QTransitionPrivate::setTarget(const QVertex *target)
+{
+    this->target = const_cast<QVertex *>(target);
 }
-  
-void QTransitionPrivate::setEffect(const QBehavior *effect) 
-{  
-    this->effect = const_cast<QBehavior *>(effect);   
+
+void QTransitionPrivate::setEffect(const QBehavior *effect)
+{
+    this->effect = const_cast<QBehavior *>(effect);
 }
-  
-void QTransitionPrivate::setContainer(const QRegion *container) 
-{  
-    this->container = const_cast<QRegion *>(container);   
+
+void QTransitionPrivate::setContainer(const QRegion *container)
+{
+    this->container = const_cast<QRegion *>(container);
 }
-   
-void QTransitionPrivate::setRedefinedTransition(const QTransition *redefinedTransition) 
-{  
-    this->redefinedTransition = const_cast<QTransition *>(redefinedTransition);   
+
+void QTransitionPrivate::setRedefinedTransition(const QTransition *redefinedTransition)
+{
+    this->redefinedTransition = const_cast<QTransition *>(redefinedTransition);
 }
-  
-void QTransitionPrivate::setSource(const QVertex *source) 
-{  
-    this->source = const_cast<QVertex *>(source);   
+
+void QTransitionPrivate::setSource(const QVertex *source)
+{
+    this->source = const_cast<QVertex *>(source);
 }
-  
-void QTransitionPrivate::addTrigger(const QTrigger *trigger) 
-{   
-    this->triggers->insert(const_cast<QTrigger *>(trigger)); 
+
+void QTransitionPrivate::addTrigger(const QTrigger *trigger)
+{
+    this->triggers->insert(const_cast<QTrigger *>(trigger));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(trigger); 
+    addOwnedElement(trigger);
 }
- 
-void QTransitionPrivate::removeTrigger(const QTrigger *trigger) 
-{    
-    this->triggers->remove(const_cast<QTrigger *>(trigger)); 
+
+void QTransitionPrivate::removeTrigger(const QTrigger *trigger)
+{
+    this->triggers->remove(const_cast<QTrigger *>(trigger));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(trigger);

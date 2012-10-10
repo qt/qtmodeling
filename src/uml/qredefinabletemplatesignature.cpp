@@ -60,23 +60,23 @@ QRedefinableTemplateSignaturePrivate::~QRedefinableTemplateSignaturePrivate()
 {
     delete extendedSignatures;
 }
-   
-void QRedefinableTemplateSignaturePrivate::setClassifier(const QClassifier *classifier) 
-{  
-    this->classifier = const_cast<QClassifier *>(classifier);   
+
+void QRedefinableTemplateSignaturePrivate::setClassifier(const QClassifier *classifier)
+{
+    this->classifier = const_cast<QClassifier *>(classifier);
 }
-  
-void QRedefinableTemplateSignaturePrivate::addExtendedSignature(const QRedefinableTemplateSignature *extendedSignature) 
-{   
-    this->extendedSignatures->insert(const_cast<QRedefinableTemplateSignature *>(extendedSignature)); 
+
+void QRedefinableTemplateSignaturePrivate::addExtendedSignature(const QRedefinableTemplateSignature *extendedSignature)
+{
+    this->extendedSignatures->insert(const_cast<QRedefinableTemplateSignature *>(extendedSignature));
 
     // Adjust subsetted property(ies)
-    addRedefinedElement(extendedSignature); 
+    addRedefinedElement(extendedSignature);
 }
- 
-void QRedefinableTemplateSignaturePrivate::removeExtendedSignature(const QRedefinableTemplateSignature *extendedSignature) 
-{    
-    this->extendedSignatures->remove(const_cast<QRedefinableTemplateSignature *>(extendedSignature)); 
+
+void QRedefinableTemplateSignaturePrivate::removeExtendedSignature(const QRedefinableTemplateSignature *extendedSignature)
+{
+    this->extendedSignatures->remove(const_cast<QRedefinableTemplateSignature *>(extendedSignature));
 
     // Adjust subsetted property(ies)
     removeRedefinedElement(extendedSignature);

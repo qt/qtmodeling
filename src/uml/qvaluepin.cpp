@@ -55,10 +55,10 @@ QValuePinPrivate::QValuePinPrivate() :
 QValuePinPrivate::~QValuePinPrivate()
 {
 }
-  
-void QValuePinPrivate::setValue(const QValueSpecification *value) 
-{  
-    this->value = const_cast<QValueSpecification *>(value);   
+
+void QValuePinPrivate::setValue(const QValueSpecification *value)
+{
+    this->value = const_cast<QValueSpecification *>(value);
 }
 
 /*!

@@ -72,7 +72,7 @@ public:
     QSet<QActivityEdge *> *containedEdges;
     QActivityGroup *superGroup;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setInActivity(const QActivity *inActivity);
     void addContainedNode(const QActivityNode *containedNode);
     void removeContainedNode(const QActivityNode *containedNode);

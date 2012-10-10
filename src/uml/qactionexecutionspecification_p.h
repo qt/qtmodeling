@@ -63,7 +63,7 @@ public:
 
     QAction *action;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setAction(const QAction *action);
 };
 

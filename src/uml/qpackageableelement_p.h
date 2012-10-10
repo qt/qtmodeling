@@ -67,7 +67,7 @@ public:
 
     QtUml::VisibilityKind visibility;
 
-    // Attributes
+    // Internal functions for attributes
     void setVisibility(QtUml::VisibilityKind visibility);
 };
 

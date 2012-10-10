@@ -70,7 +70,7 @@ public:
     QProperty *end;
     QSet<QQualifierValue *> *qualifiers;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setValue(const QInputPin *value);
     void setEnd(const QProperty *end);
     void addQualifier(const QQualifierValue *qualifier);

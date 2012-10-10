@@ -62,7 +62,7 @@ public:
 
     bool setting;
 
-    // Attributes
+    // Internal functions for attributes
     void setSetting(bool setting);
 };
 

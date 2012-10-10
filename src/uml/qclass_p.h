@@ -79,11 +79,11 @@ public:
     QList<QOperation *> *ownedOperations;
     QList<QProperty *> *ownedAttributes;
 
-    // Attributes
+    // Internal functions for attributes
     void setAbstract(bool isAbstract);
     void setActive(bool isActive);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addNestedClassifier(const QClassifier *nestedClassifier);
     void removeNestedClassifier(const QClassifier *nestedClassifier);
     void addOwnedReception(const QReception *ownedReception);

@@ -55,18 +55,18 @@ QNodePrivate::~QNodePrivate()
 {
     delete nestedNodes;
 }
-  
-void QNodePrivate::addNestedNode(const QNode *nestedNode) 
-{   
-    this->nestedNodes->insert(const_cast<QNode *>(nestedNode)); 
+
+void QNodePrivate::addNestedNode(const QNode *nestedNode)
+{
+    this->nestedNodes->insert(const_cast<QNode *>(nestedNode));
 
     // Adjust subsetted property(ies)
-    addOwnedMember(nestedNode); 
+    addOwnedMember(nestedNode);
 }
- 
-void QNodePrivate::removeNestedNode(const QNode *nestedNode) 
-{    
-    this->nestedNodes->remove(const_cast<QNode *>(nestedNode)); 
+
+void QNodePrivate::removeNestedNode(const QNode *nestedNode)
+{
+    this->nestedNodes->remove(const_cast<QNode *>(nestedNode));
 
     // Adjust subsetted property(ies)
     removeOwnedMember(nestedNode);

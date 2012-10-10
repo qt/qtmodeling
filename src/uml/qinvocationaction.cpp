@@ -58,26 +58,26 @@ QInvocationActionPrivate::~QInvocationActionPrivate()
 {
     delete arguments;
 }
-  
-void QInvocationActionPrivate::addArgument(const QInputPin *argument) 
-{   
-    this->arguments->append(const_cast<QInputPin *>(argument)); 
+
+void QInvocationActionPrivate::addArgument(const QInputPin *argument)
+{
+    this->arguments->append(const_cast<QInputPin *>(argument));
 
     // Adjust subsetted property(ies)
-    addInput(argument); 
+    addInput(argument);
 }
- 
-void QInvocationActionPrivate::removeArgument(const QInputPin *argument) 
-{    
-    this->arguments->removeAll(const_cast<QInputPin *>(argument)); 
+
+void QInvocationActionPrivate::removeArgument(const QInputPin *argument)
+{
+    this->arguments->removeAll(const_cast<QInputPin *>(argument));
 
     // Adjust subsetted property(ies)
     removeInput(argument);
 }
-  
-void QInvocationActionPrivate::setOnPort(const QPort *onPort) 
-{  
-    this->onPort = const_cast<QPort *>(onPort);   
+
+void QInvocationActionPrivate::setOnPort(const QPort *onPort)
+{
+    this->onPort = const_cast<QPort *>(onPort);
 }
 
 /*!

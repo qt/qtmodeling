@@ -63,7 +63,7 @@ public:
 
     QConnectableElement *parameteredElement;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setParameteredElement(const QConnectableElement *parameteredElement);
 };
 

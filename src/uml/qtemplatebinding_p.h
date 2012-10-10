@@ -70,7 +70,7 @@ public:
     QTemplateableElement *boundElement;
     QSet<QTemplateParameterSubstitution *> *parameterSubstitutions;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setSignature(const QTemplateSignature *signature);
     void setBoundElement(const QTemplateableElement *boundElement);
     void addParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution);

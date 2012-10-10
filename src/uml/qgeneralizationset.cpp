@@ -69,20 +69,20 @@ void QGeneralizationSetPrivate::setDisjoint(bool isDisjoint)
 {
     this->isDisjoint = isDisjoint;
 }
-  
-void QGeneralizationSetPrivate::setPowertype(const QClassifier *powertype) 
-{  
-    this->powertype = const_cast<QClassifier *>(powertype);   
+
+void QGeneralizationSetPrivate::setPowertype(const QClassifier *powertype)
+{
+    this->powertype = const_cast<QClassifier *>(powertype);
 }
-  
-void QGeneralizationSetPrivate::addGeneralization(const QGeneralization *generalization) 
-{   
-    this->generalizations->insert(const_cast<QGeneralization *>(generalization));  
+
+void QGeneralizationSetPrivate::addGeneralization(const QGeneralization *generalization)
+{
+    this->generalizations->insert(const_cast<QGeneralization *>(generalization));
 }
- 
-void QGeneralizationSetPrivate::removeGeneralization(const QGeneralization *generalization) 
-{    
-    this->generalizations->remove(const_cast<QGeneralization *>(generalization)); 
+
+void QGeneralizationSetPrivate::removeGeneralization(const QGeneralization *generalization)
+{
+    this->generalizations->remove(const_cast<QGeneralization *>(generalization));
 }
 
 /*!

@@ -72,7 +72,7 @@ public:
     QSet<QClassifier *> *subjects;
     QSet<QExtend *> *extends;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addExtensionPoint(const QExtensionPoint *extensionPoint);
     void removeExtensionPoint(const QExtensionPoint *extensionPoint);
     void addInclude(const QInclude *include);

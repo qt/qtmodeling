@@ -78,7 +78,7 @@ public:
     QSet<QInterruptibleActivityRegion *> *inInterruptibleRegion;
     QSet<QActivityEdge *> *outgoings;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addRedefinedNode(const QActivityNode *redefinedNode);
     void removeRedefinedNode(const QActivityNode *redefinedNode);
     void addIncoming(const QActivityEdge *incoming);

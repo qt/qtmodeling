@@ -65,10 +65,10 @@ public:
 
     QExtensionEnd *ownedEnd;
 
-    // Attributes
+    // Internal functions for attributes
     void setRequired(bool isRequired);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setMetaclass(const QClass *metaclass);
     void setOwnedEnd(const QExtensionEnd *ownedEnd);
 };

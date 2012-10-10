@@ -65,7 +65,7 @@ public:
     QConnectableElement *role;
     QProperty *partWithPort;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setRole(const QConnectableElement *role);
     void setPartWithPort(const QProperty *partWithPort);
     void setDefiningEnd(const QProperty *definingEnd);

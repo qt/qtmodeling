@@ -72,7 +72,7 @@ public:
     QSet<QLifeline *> *covered;
     QInteractionOperand *enclosingOperand;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addGeneralOrdering(const QGeneralOrdering *generalOrdering);
     void removeGeneralOrdering(const QGeneralOrdering *generalOrdering);
     void setEnclosingInteraction(const QInteraction *enclosingInteraction);

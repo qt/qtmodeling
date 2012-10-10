@@ -59,15 +59,15 @@ QVariablePrivate::QVariablePrivate() :
 QVariablePrivate::~QVariablePrivate()
 {
 }
-  
-void QVariablePrivate::setScope(const QStructuredActivityNode *scope) 
-{  
-    this->scope = const_cast<QStructuredActivityNode *>(scope);   
+
+void QVariablePrivate::setScope(const QStructuredActivityNode *scope)
+{
+    this->scope = const_cast<QStructuredActivityNode *>(scope);
 }
-  
-void QVariablePrivate::setActivityScope(const QActivity *activityScope) 
-{  
-    this->activityScope = const_cast<QActivity *>(activityScope);   
+
+void QVariablePrivate::setActivityScope(const QActivity *activityScope)
+{
+    this->activityScope = const_cast<QActivity *>(activityScope);
 }
 
 /*!

@@ -68,7 +68,7 @@ public:
     QSet<QParameter *> *parameters;
     QSet<QConstraint *> *conditions;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addParameter(const QParameter *parameter);
     void removeParameter(const QParameter *parameter);
     void addCondition(const QConstraint *condition);

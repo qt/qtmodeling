@@ -64,10 +64,10 @@ public:
     bool firstEvent;
     QNamedElement *event;
 
-    // Attributes
+    // Internal functions for attributes
     void setFirstEvent(bool firstEvent);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setEvent(const QNamedElement *event);
 };
 

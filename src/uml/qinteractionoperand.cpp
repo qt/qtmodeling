@@ -58,26 +58,26 @@ QInteractionOperandPrivate::~QInteractionOperandPrivate()
 {
     delete fragments;
 }
-  
-void QInteractionOperandPrivate::addFragment(const QInteractionFragment *fragment) 
-{   
-    this->fragments->append(const_cast<QInteractionFragment *>(fragment)); 
+
+void QInteractionOperandPrivate::addFragment(const QInteractionFragment *fragment)
+{
+    this->fragments->append(const_cast<QInteractionFragment *>(fragment));
 
     // Adjust subsetted property(ies)
-    addOwnedMember(fragment); 
+    addOwnedMember(fragment);
 }
- 
-void QInteractionOperandPrivate::removeFragment(const QInteractionFragment *fragment) 
-{    
-    this->fragments->removeAll(const_cast<QInteractionFragment *>(fragment)); 
+
+void QInteractionOperandPrivate::removeFragment(const QInteractionFragment *fragment)
+{
+    this->fragments->removeAll(const_cast<QInteractionFragment *>(fragment));
 
     // Adjust subsetted property(ies)
     removeOwnedMember(fragment);
 }
-  
-void QInteractionOperandPrivate::setGuard(const QInteractionConstraint *guard) 
-{  
-    this->guard = const_cast<QInteractionConstraint *>(guard);   
+
+void QInteractionOperandPrivate::setGuard(const QInteractionConstraint *guard)
+{
+    this->guard = const_cast<QInteractionConstraint *>(guard);
 }
 
 /*!

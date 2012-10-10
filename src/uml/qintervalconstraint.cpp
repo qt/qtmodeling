@@ -54,10 +54,10 @@ QIntervalConstraintPrivate::QIntervalConstraintPrivate() :
 QIntervalConstraintPrivate::~QIntervalConstraintPrivate()
 {
 }
-  
-void QIntervalConstraintPrivate::setSpecification(const QInterval *specification) 
-{  
-    this->specification = const_cast<QInterval *>(specification);   
+
+void QIntervalConstraintPrivate::setSpecification(const QInterval *specification)
+{
+    this->specification = const_cast<QInterval *>(specification);
 }
 
 /*!

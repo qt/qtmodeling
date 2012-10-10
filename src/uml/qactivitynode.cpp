@@ -75,93 +75,93 @@ QActivityNodePrivate::~QActivityNodePrivate()
     delete inInterruptibleRegion;
     delete outgoings;
 }
-  
-void QActivityNodePrivate::addRedefinedNode(const QActivityNode *redefinedNode) 
-{   
-    this->redefinedNodes->insert(const_cast<QActivityNode *>(redefinedNode)); 
+
+void QActivityNodePrivate::addRedefinedNode(const QActivityNode *redefinedNode)
+{
+    this->redefinedNodes->insert(const_cast<QActivityNode *>(redefinedNode));
 
     // Adjust subsetted property(ies)
-    addRedefinedElement(redefinedNode); 
+    addRedefinedElement(redefinedNode);
 }
- 
-void QActivityNodePrivate::removeRedefinedNode(const QActivityNode *redefinedNode) 
-{    
-    this->redefinedNodes->remove(const_cast<QActivityNode *>(redefinedNode)); 
+
+void QActivityNodePrivate::removeRedefinedNode(const QActivityNode *redefinedNode)
+{
+    this->redefinedNodes->remove(const_cast<QActivityNode *>(redefinedNode));
 
     // Adjust subsetted property(ies)
     removeRedefinedElement(redefinedNode);
 }
-  
-void QActivityNodePrivate::addIncoming(const QActivityEdge *incoming) 
-{   
-    this->incomings->insert(const_cast<QActivityEdge *>(incoming));  
+
+void QActivityNodePrivate::addIncoming(const QActivityEdge *incoming)
+{
+    this->incomings->insert(const_cast<QActivityEdge *>(incoming));
 }
- 
-void QActivityNodePrivate::removeIncoming(const QActivityEdge *incoming) 
-{    
-    this->incomings->remove(const_cast<QActivityEdge *>(incoming)); 
+
+void QActivityNodePrivate::removeIncoming(const QActivityEdge *incoming)
+{
+    this->incomings->remove(const_cast<QActivityEdge *>(incoming));
 }
-  
-void QActivityNodePrivate::setActivity(const QActivity *activity) 
-{  
-    this->activity = const_cast<QActivity *>(activity);   
+
+void QActivityNodePrivate::setActivity(const QActivity *activity)
+{
+    this->activity = const_cast<QActivity *>(activity);
 }
-  
-void QActivityNodePrivate::addInGroup(const QActivityGroup *inGroup) 
-{   
-    this->inGroup->insert(const_cast<QActivityGroup *>(inGroup));  
+
+void QActivityNodePrivate::addInGroup(const QActivityGroup *inGroup)
+{
+    this->inGroup->insert(const_cast<QActivityGroup *>(inGroup));
 }
- 
-void QActivityNodePrivate::removeInGroup(const QActivityGroup *inGroup) 
-{    
-    this->inGroup->remove(const_cast<QActivityGroup *>(inGroup)); 
+
+void QActivityNodePrivate::removeInGroup(const QActivityGroup *inGroup)
+{
+    this->inGroup->remove(const_cast<QActivityGroup *>(inGroup));
 }
-  
-void QActivityNodePrivate::setInStructuredNode(const QStructuredActivityNode *inStructuredNode) 
-{  
-    this->inStructuredNode = const_cast<QStructuredActivityNode *>(inStructuredNode);   
+
+void QActivityNodePrivate::setInStructuredNode(const QStructuredActivityNode *inStructuredNode)
+{
+    this->inStructuredNode = const_cast<QStructuredActivityNode *>(inStructuredNode);
 }
-  
-void QActivityNodePrivate::addInPartition(const QActivityPartition *inPartition) 
-{   
-    this->inPartition->insert(const_cast<QActivityPartition *>(inPartition)); 
+
+void QActivityNodePrivate::addInPartition(const QActivityPartition *inPartition)
+{
+    this->inPartition->insert(const_cast<QActivityPartition *>(inPartition));
 
     // Adjust subsetted property(ies)
-    addInGroup(inPartition); 
+    addInGroup(inPartition);
 }
- 
-void QActivityNodePrivate::removeInPartition(const QActivityPartition *inPartition) 
-{    
-    this->inPartition->remove(const_cast<QActivityPartition *>(inPartition)); 
+
+void QActivityNodePrivate::removeInPartition(const QActivityPartition *inPartition)
+{
+    this->inPartition->remove(const_cast<QActivityPartition *>(inPartition));
 
     // Adjust subsetted property(ies)
     removeInGroup(inPartition);
 }
-  
-void QActivityNodePrivate::addInInterruptibleRegion(const QInterruptibleActivityRegion *inInterruptibleRegion) 
-{   
-    this->inInterruptibleRegion->insert(const_cast<QInterruptibleActivityRegion *>(inInterruptibleRegion)); 
+
+void QActivityNodePrivate::addInInterruptibleRegion(const QInterruptibleActivityRegion *inInterruptibleRegion)
+{
+    this->inInterruptibleRegion->insert(const_cast<QInterruptibleActivityRegion *>(inInterruptibleRegion));
 
     // Adjust subsetted property(ies)
-    addInGroup(inInterruptibleRegion); 
+    addInGroup(inInterruptibleRegion);
 }
- 
-void QActivityNodePrivate::removeInInterruptibleRegion(const QInterruptibleActivityRegion *inInterruptibleRegion) 
-{    
-    this->inInterruptibleRegion->remove(const_cast<QInterruptibleActivityRegion *>(inInterruptibleRegion)); 
+
+void QActivityNodePrivate::removeInInterruptibleRegion(const QInterruptibleActivityRegion *inInterruptibleRegion)
+{
+    this->inInterruptibleRegion->remove(const_cast<QInterruptibleActivityRegion *>(inInterruptibleRegion));
 
     // Adjust subsetted property(ies)
     removeInGroup(inInterruptibleRegion);
 }
-  
-void QActivityNodePrivate::addOutgoing(const QActivityEdge *outgoing) 
-{   
-    this->outgoings->insert(const_cast<QActivityEdge *>(outgoing));  
+
+void QActivityNodePrivate::addOutgoing(const QActivityEdge *outgoing)
+{
+    this->outgoings->insert(const_cast<QActivityEdge *>(outgoing));
 }
- 
-void QActivityNodePrivate::removeOutgoing(const QActivityEdge *outgoing) 
-{    
-    this->outgoings->remove(const_cast<QActivityEdge *>(outgoing)); 
+
+void QActivityNodePrivate::removeOutgoing(const QActivityEdge *outgoing)
+{
+    this->outgoings->remove(const_cast<QActivityEdge *>(outgoing));
 }
 
 /*!

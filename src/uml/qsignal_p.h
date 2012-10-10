@@ -66,7 +66,7 @@ public:
 
     QList<QProperty *> *ownedAttributes;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addOwnedAttribute(const QProperty *ownedAttribute);
     void removeOwnedAttribute(const QProperty *ownedAttribute);
 };

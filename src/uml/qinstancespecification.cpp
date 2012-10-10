@@ -62,33 +62,33 @@ QInstanceSpecificationPrivate::~QInstanceSpecificationPrivate()
     delete classifiers;
     delete slots_;
 }
-  
-void QInstanceSpecificationPrivate::addClassifier(const QClassifier *classifier) 
-{   
-    this->classifiers->insert(const_cast<QClassifier *>(classifier));  
+
+void QInstanceSpecificationPrivate::addClassifier(const QClassifier *classifier)
+{
+    this->classifiers->insert(const_cast<QClassifier *>(classifier));
 }
- 
-void QInstanceSpecificationPrivate::removeClassifier(const QClassifier *classifier) 
-{    
-    this->classifiers->remove(const_cast<QClassifier *>(classifier)); 
+
+void QInstanceSpecificationPrivate::removeClassifier(const QClassifier *classifier)
+{
+    this->classifiers->remove(const_cast<QClassifier *>(classifier));
 }
-  
-void QInstanceSpecificationPrivate::setSpecification(const QValueSpecification *specification) 
-{  
-    this->specification = const_cast<QValueSpecification *>(specification);   
+
+void QInstanceSpecificationPrivate::setSpecification(const QValueSpecification *specification)
+{
+    this->specification = const_cast<QValueSpecification *>(specification);
 }
-  
-void QInstanceSpecificationPrivate::addSlot_(const QSlot *slot_) 
-{   
-    this->slots_->insert(const_cast<QSlot *>(slot_)); 
+
+void QInstanceSpecificationPrivate::addSlot_(const QSlot *slot_)
+{
+    this->slots_->insert(const_cast<QSlot *>(slot_));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(slot_); 
+    addOwnedElement(slot_);
 }
- 
-void QInstanceSpecificationPrivate::removeSlot_(const QSlot *slot_) 
-{    
-    this->slots_->remove(const_cast<QSlot *>(slot_)); 
+
+void QInstanceSpecificationPrivate::removeSlot_(const QSlot *slot_)
+{
+    this->slots_->remove(const_cast<QSlot *>(slot_));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(slot_);

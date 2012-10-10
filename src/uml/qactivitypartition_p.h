@@ -74,11 +74,11 @@ public:
     QSet<QActivityNode *> *nodes;
     QSet<QActivityEdge *> *edges;
 
-    // Attributes
+    // Internal functions for attributes
     void setDimension(bool isDimension);
     void setExternal(bool isExternal);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setRepresents(const QElement *represents);
     void addSubpartition(const QActivityPartition *subpartition);
     void removeSubpartition(const QActivityPartition *subpartition);
