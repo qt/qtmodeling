@@ -110,7 +110,7 @@ class Q_UML_EXPORT QTransition : public QObject, public QRedefinableElement, pub
     Q_PROPERTY(const QSet<QTrigger *> * triggers READ triggers)
 
     Q_DISABLE_COPY(QTransition)
-    Q_DECLARE_PRIVATE(QTransition)
+    QTUML_DECLARE_PRIVATE(QTransition)
 
 public:
     explicit QTransition(QObject *parent = 0);
@@ -143,7 +143,7 @@ public:
     bool isConsistentWith(const QRedefinableElement *redefinee) const;
 
 protected:
-    QTransitionPrivate *d_ptr;
+    explicit QTransition(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

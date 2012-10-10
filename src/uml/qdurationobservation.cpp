@@ -58,6 +58,26 @@ QDurationObservationPrivate::~QDurationObservationPrivate()
     delete events;
 }
 
+void QDurationObservationPrivate::addFirstEvent(bool firstEvent)
+{
+    this->firstEvents->insert(firstEvent);
+}
+
+void QDurationObservationPrivate::removeFirstEvent(bool firstEvent)
+{
+    this->firstEvents->remove(firstEvent);
+}
+  
+void QDurationObservationPrivate::addEvent(const QNamedElement *event) 
+{   
+    this->events->insert(const_cast<QNamedElement *>(event));  
+}
+ 
+void QDurationObservationPrivate::removeEvent(const QNamedElement *event) 
+{    
+    this->events->remove(const_cast<QNamedElement *>(event)); 
+}
+
 /*!
     \class QDurationObservation
 
@@ -67,13 +87,20 @@ QDurationObservationPrivate::~QDurationObservationPrivate()
  */
 
 QDurationObservation::QDurationObservation(QObject *parent)
-    : QObject(parent), d_ptr(new QDurationObservationPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QDurationObservationPrivate;
+}
+
+QDurationObservation::QDurationObservation(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QDurationObservationPrivate;
 }
 
 QDurationObservation::~QDurationObservation()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -81,17 +108,20 @@ QDurationObservation::~QDurationObservation()
  */
 const QSet<bool> *QDurationObservation::firstEvents() const
 {
-    return d_ptr->firstEvents;
+    Q_D(const QDurationObservation);
+    return d->firstEvents;
 }
 
 void QDurationObservation::addFirstEvent(bool firstEvent)
 {
-    d_ptr->firstEvents->insert(firstEvent);
+    Q_D(QDurationObservation);
+    d->addFirstEvent(firstEvent);
 }
 
 void QDurationObservation::removeFirstEvent(bool firstEvent)
 {
-    d_ptr->firstEvents->remove(firstEvent);
+    Q_D(QDurationObservation);
+    d->removeFirstEvent(firstEvent);
 }
 
 /*!
@@ -99,17 +129,20 @@ void QDurationObservation::removeFirstEvent(bool firstEvent)
  */
 const QSet<QNamedElement *> *QDurationObservation::events() const
 {
-    return d_ptr->events;
+    Q_D(const QDurationObservation);
+    return d->events;
 }
 
 void QDurationObservation::addEvent(const QNamedElement *event)
 {
-    d_ptr->events->insert(const_cast<QNamedElement *>(event));
+    Q_D(QDurationObservation);
+    d->addEvent(const_cast<QNamedElement *>(event));
 }
 
 void QDurationObservation::removeEvent(const QNamedElement *event)
 {
-    d_ptr->events->remove(const_cast<QNamedElement *>(event));
+    Q_D(QDurationObservation);
+    d->removeEvent(const_cast<QNamedElement *>(event));
 }
 
 #include "moc_qdurationobservation.cpp"

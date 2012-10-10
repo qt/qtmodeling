@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qclassifier_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -52,13 +56,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QInformationItemPrivate
+
+class QInformationItemPrivate : public QClassifierPrivate
 {
 public:
     explicit QInformationItemPrivate();
     virtual ~QInformationItemPrivate();
 
     QSet<QClassifier *> *represented;
+
+    // Association-ends
+    void addRepresented(const QClassifier *represented);
+    void removeRepresented(const QClassifier *represented);
 };
 
 QT_END_NAMESPACE_QTUML

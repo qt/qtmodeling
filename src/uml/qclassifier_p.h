@@ -43,6 +43,16 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qnamespace_p.h"
+
+#include "qtype_p.h"
+
+#include "qredefinableelement_p.h"
+
+#include "qtemplateableelement_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,26 +63,17 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QClassifierTemplateParameter;
-
 class QUseCase;
-
 class QSubstitution;
-
 class QGeneralizationSet;
-
 class QRedefinableTemplateSignature;
-
 class QProperty;
-
 class QNamedElement;
-
 class QCollaborationUse;
-
 class QGeneralization;
-
 class QFeature;
 
-class QClassifierPrivate
+class QClassifierPrivate : public QNamespacePrivate, public QTypePrivate, public QRedefinableElementPrivate, public QTemplateableElementPrivate
 {
 public:
     explicit QClassifierPrivate();
@@ -92,6 +93,37 @@ public:
     QCollaborationUse *representation;
     QSet<QGeneralization *> *generalizations;
     QSet<QSubstitution *> *substitutions;
+
+    // Attributes
+    void setAbstract(bool isAbstract);
+    void setFinalSpecialization(bool isFinalSpecialization);
+
+    // Association-ends
+    void addOwnedUseCase(const QUseCase *ownedUseCase);
+    void removeOwnedUseCase(const QUseCase *ownedUseCase);
+    void addPowertypeExtent(const QGeneralizationSet *powertypeExtent);
+    void removePowertypeExtent(const QGeneralizationSet *powertypeExtent);
+    void addUseCase(const QUseCase *useCase);
+    void removeUseCase(const QUseCase *useCase);
+    void setTemplateParameter(const QClassifierTemplateParameter *templateParameter);
+    void addRedefinedClassifier(const QClassifier *redefinedClassifier);
+    void removeRedefinedClassifier(const QClassifier *redefinedClassifier);
+    void setOwnedTemplateSignature(const QRedefinableTemplateSignature *ownedTemplateSignature);
+    void addCollaborationUse(const QCollaborationUse *collaborationUse);
+    void removeCollaborationUse(const QCollaborationUse *collaborationUse);
+    void addAttribute(const QProperty *attribute);
+    void removeAttribute(const QProperty *attribute);
+    void addFeature(const QFeature *feature);
+    void removeFeature(const QFeature *feature);
+    void addGeneral(const QClassifier *general);
+    void removeGeneral(const QClassifier *general);
+    void setRepresentation(const QCollaborationUse *representation);
+    void addGeneralization(const QGeneralization *generalization);
+    void removeGeneralization(const QGeneralization *generalization);
+    void addInheritedMember(const QNamedElement *inheritedMember);
+    void removeInheritedMember(const QNamedElement *inheritedMember);
+    void addSubstitution(const QSubstitution *substitution);
+    void removeSubstitution(const QSubstitution *substitution);
 };
 
 QT_END_NAMESPACE_QTUML

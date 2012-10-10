@@ -62,13 +62,20 @@ QFinalStatePrivate::~QFinalStatePrivate()
  */
 
 QFinalState::QFinalState(QObject *parent)
-    : QState(parent), d_ptr(new QFinalStatePrivate)
+    : QState(false, parent)
 {
+    d_umlptr = new QFinalStatePrivate;
+}
+
+QFinalState::QFinalState(bool createPimpl, QObject *parent)
+    : QState(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QFinalStatePrivate;
 }
 
 QFinalState::~QFinalState()
 {
-    delete d_ptr;
 }
 
 #include "moc_qfinalstate.cpp"

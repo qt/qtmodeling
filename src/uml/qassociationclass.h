@@ -60,14 +60,14 @@ class Q_UML_EXPORT QAssociationClass : public QClass, public QAssociation
     Q_OBJECT
 
     Q_DISABLE_COPY(QAssociationClass)
-    Q_DECLARE_PRIVATE(QAssociationClass)
+    QTUML_DECLARE_PRIVATE(QAssociationClass)
 
 public:
     explicit QAssociationClass(QObject *parent = 0);
     virtual ~QAssociationClass();
 
 protected:
-    QAssociationClassPrivate *d_ptr;
+    explicit QAssociationClass(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

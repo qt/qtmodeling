@@ -58,7 +58,7 @@ class QMessage;
 class Q_UML_EXPORT QMessageEnd : public virtual QNamedElement
 {
     Q_DISABLE_COPY(QMessageEnd)
-    Q_DECLARE_PRIVATE(QMessageEnd)
+    QTUML_DECLARE_PRIVATE(QMessageEnd)
 
 public:
     virtual ~QMessageEnd();
@@ -69,9 +69,6 @@ public:
 
 protected:
     explicit QMessageEnd();
-
-protected:
-    QMessageEndPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

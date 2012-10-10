@@ -86,7 +86,7 @@ class Q_UML_EXPORT QElementImport : public QObject, public QDirectedRelationship
     Q_PROPERTY(QNamespace * importingNamespace READ importingNamespace WRITE setImportingNamespace)
 
     Q_DISABLE_COPY(QElementImport)
-    Q_DECLARE_PRIVATE(QElementImport)
+    QTUML_DECLARE_PRIVATE(QElementImport)
 
 public:
     explicit QElementImport(QObject *parent = 0);
@@ -108,7 +108,7 @@ public:
     QString getName() const;
 
 protected:
-    QElementImportPrivate *d_ptr;
+    explicit QElementImport(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

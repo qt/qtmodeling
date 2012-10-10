@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qinstancespecification_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,13 +55,17 @@ QT_MODULE(QtUml)
 
 class QEnumeration;
 
-class QEnumerationLiteralPrivate
+class QEnumerationLiteralPrivate : public QInstanceSpecificationPrivate
 {
 public:
     explicit QEnumerationLiteralPrivate();
     virtual ~QEnumerationLiteralPrivate();
 
     QEnumeration *enumeration;
+
+    // Association-ends
+    void setClassifier(const QEnumeration *classifier);
+    void setEnumeration(const QEnumeration *enumeration);
 };
 
 QT_END_NAMESPACE_QTUML

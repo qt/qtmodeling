@@ -55,6 +55,11 @@ QReadStructuralFeatureActionPrivate::QReadStructuralFeatureActionPrivate() :
 QReadStructuralFeatureActionPrivate::~QReadStructuralFeatureActionPrivate()
 {
 }
+  
+void QReadStructuralFeatureActionPrivate::setResult(const QOutputPin *result) 
+{  
+    this->result = const_cast<QOutputPin *>(result);   
+}
 
 /*!
     \class QReadStructuralFeatureAction
@@ -65,13 +70,20 @@ QReadStructuralFeatureActionPrivate::~QReadStructuralFeatureActionPrivate()
  */
 
 QReadStructuralFeatureAction::QReadStructuralFeatureAction(QObject *parent)
-    : QObject(parent), d_ptr(new QReadStructuralFeatureActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QReadStructuralFeatureActionPrivate;
+}
+
+QReadStructuralFeatureAction::QReadStructuralFeatureAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QReadStructuralFeatureActionPrivate;
 }
 
 QReadStructuralFeatureAction::~QReadStructuralFeatureAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,12 +91,14 @@ QReadStructuralFeatureAction::~QReadStructuralFeatureAction()
  */
 QOutputPin *QReadStructuralFeatureAction::result() const
 {
-    return d_ptr->result;
+    Q_D(const QReadStructuralFeatureAction);
+    return d->result;
 }
 
 void QReadStructuralFeatureAction::setResult(const QOutputPin *result)
 {
-    d_ptr->result = const_cast<QOutputPin *>(result);
+    Q_D(QReadStructuralFeatureAction);
+    d->setResult(const_cast<QOutputPin *>(result));
 }
 
 #include "moc_qreadstructuralfeatureaction.cpp"

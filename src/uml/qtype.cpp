@@ -54,6 +54,11 @@ QTypePrivate::QTypePrivate() :
 QTypePrivate::~QTypePrivate()
 {
 }
+  
+void QTypePrivate::setPackage(const QPackage *package) 
+{  
+    this->package = const_cast<QPackage *>(package);   
+}
 
 /*!
     \class QType
@@ -64,13 +69,12 @@ QTypePrivate::~QTypePrivate()
  */
 
 QType::QType()
-    : d_ptr(new QTypePrivate)
 {
+    d_umlptr = new QTypePrivate;
 }
 
 QType::~QType()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -78,12 +82,14 @@ QType::~QType()
  */
 QPackage *QType::package() const
 {
-    return d_ptr->package;
+    Q_D(const QType);
+    return d->package;
 }
 
 void QType::setPackage(const QPackage *package)
 {
-    d_ptr->package = const_cast<QPackage *>(package);
+    Q_D(QType);
+    d->setPackage(const_cast<QPackage *>(package));
 }
 
 /*!

@@ -64,6 +64,43 @@ QDeploymentPrivate::~QDeploymentPrivate()
     delete configurations;
     delete deployedArtifacts;
 }
+  
+void QDeploymentPrivate::setLocation(const QDeploymentTarget *location) 
+{  
+    this->location = const_cast<QDeploymentTarget *>(location);   
+}
+  
+void QDeploymentPrivate::addConfiguration(const QDeploymentSpecification *configuration) 
+{   
+    this->configurations->insert(const_cast<QDeploymentSpecification *>(configuration)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedElement(configuration); 
+}
+ 
+void QDeploymentPrivate::removeConfiguration(const QDeploymentSpecification *configuration) 
+{    
+    this->configurations->remove(const_cast<QDeploymentSpecification *>(configuration)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(configuration);
+}
+  
+void QDeploymentPrivate::addDeployedArtifact(const QDeployedArtifact *deployedArtifact) 
+{   
+    this->deployedArtifacts->insert(const_cast<QDeployedArtifact *>(deployedArtifact)); 
+
+    // Adjust subsetted property(ies)
+    addSupplier(deployedArtifact); 
+}
+ 
+void QDeploymentPrivate::removeDeployedArtifact(const QDeployedArtifact *deployedArtifact) 
+{    
+    this->deployedArtifacts->remove(const_cast<QDeployedArtifact *>(deployedArtifact)); 
+
+    // Adjust subsetted property(ies)
+    removeSupplier(deployedArtifact);
+}
 
 /*!
     \class QDeployment
@@ -74,13 +111,20 @@ QDeploymentPrivate::~QDeploymentPrivate()
  */
 
 QDeployment::QDeployment(QObject *parent)
-    : QDependency(parent), d_ptr(new QDeploymentPrivate)
+    : QDependency(false, parent)
 {
+    d_umlptr = new QDeploymentPrivate;
+}
+
+QDeployment::QDeployment(bool createPimpl, QObject *parent)
+    : QDependency(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QDeploymentPrivate;
 }
 
 QDeployment::~QDeployment()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -88,12 +132,14 @@ QDeployment::~QDeployment()
  */
 QDeploymentTarget *QDeployment::location() const
 {
-    return d_ptr->location;
+    Q_D(const QDeployment);
+    return d->location;
 }
 
 void QDeployment::setLocation(const QDeploymentTarget *location)
 {
-    d_ptr->location = const_cast<QDeploymentTarget *>(location);
+    Q_D(QDeployment);
+    d->setLocation(const_cast<QDeploymentTarget *>(location));
 }
 
 /*!
@@ -101,17 +147,20 @@ void QDeployment::setLocation(const QDeploymentTarget *location)
  */
 const QSet<QDeploymentSpecification *> *QDeployment::configurations() const
 {
-    return d_ptr->configurations;
+    Q_D(const QDeployment);
+    return d->configurations;
 }
 
 void QDeployment::addConfiguration(const QDeploymentSpecification *configuration)
 {
-    d_ptr->configurations->insert(const_cast<QDeploymentSpecification *>(configuration));
+    Q_D(QDeployment);
+    d->addConfiguration(const_cast<QDeploymentSpecification *>(configuration));
 }
 
 void QDeployment::removeConfiguration(const QDeploymentSpecification *configuration)
 {
-    d_ptr->configurations->remove(const_cast<QDeploymentSpecification *>(configuration));
+    Q_D(QDeployment);
+    d->removeConfiguration(const_cast<QDeploymentSpecification *>(configuration));
 }
 
 /*!
@@ -119,17 +168,20 @@ void QDeployment::removeConfiguration(const QDeploymentSpecification *configurat
  */
 const QSet<QDeployedArtifact *> *QDeployment::deployedArtifacts() const
 {
-    return d_ptr->deployedArtifacts;
+    Q_D(const QDeployment);
+    return d->deployedArtifacts;
 }
 
 void QDeployment::addDeployedArtifact(const QDeployedArtifact *deployedArtifact)
 {
-    d_ptr->deployedArtifacts->insert(const_cast<QDeployedArtifact *>(deployedArtifact));
+    Q_D(QDeployment);
+    d->addDeployedArtifact(const_cast<QDeployedArtifact *>(deployedArtifact));
 }
 
 void QDeployment::removeDeployedArtifact(const QDeployedArtifact *deployedArtifact)
 {
-    d_ptr->deployedArtifacts->remove(const_cast<QDeployedArtifact *>(deployedArtifact));
+    Q_D(QDeployment);
+    d->removeDeployedArtifact(const_cast<QDeployedArtifact *>(deployedArtifact));
 }
 
 #include "moc_qdeployment.cpp"

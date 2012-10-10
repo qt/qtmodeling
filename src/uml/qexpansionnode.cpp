@@ -55,6 +55,16 @@ QExpansionNodePrivate::QExpansionNodePrivate() :
 QExpansionNodePrivate::~QExpansionNodePrivate()
 {
 }
+  
+void QExpansionNodePrivate::setRegionAsOutput(const QExpansionRegion *regionAsOutput) 
+{  
+    this->regionAsOutput = const_cast<QExpansionRegion *>(regionAsOutput);   
+}
+  
+void QExpansionNodePrivate::setRegionAsInput(const QExpansionRegion *regionAsInput) 
+{  
+    this->regionAsInput = const_cast<QExpansionRegion *>(regionAsInput);   
+}
 
 /*!
     \class QExpansionNode
@@ -65,13 +75,20 @@ QExpansionNodePrivate::~QExpansionNodePrivate()
  */
 
 QExpansionNode::QExpansionNode(QObject *parent)
-    : QObject(parent), d_ptr(new QExpansionNodePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QExpansionNodePrivate;
+}
+
+QExpansionNode::QExpansionNode(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QExpansionNodePrivate;
 }
 
 QExpansionNode::~QExpansionNode()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,12 +96,14 @@ QExpansionNode::~QExpansionNode()
  */
 QExpansionRegion *QExpansionNode::regionAsOutput() const
 {
-    return d_ptr->regionAsOutput;
+    Q_D(const QExpansionNode);
+    return d->regionAsOutput;
 }
 
 void QExpansionNode::setRegionAsOutput(const QExpansionRegion *regionAsOutput)
 {
-    d_ptr->regionAsOutput = const_cast<QExpansionRegion *>(regionAsOutput);
+    Q_D(QExpansionNode);
+    d->setRegionAsOutput(const_cast<QExpansionRegion *>(regionAsOutput));
 }
 
 /*!
@@ -92,12 +111,14 @@ void QExpansionNode::setRegionAsOutput(const QExpansionRegion *regionAsOutput)
  */
 QExpansionRegion *QExpansionNode::regionAsInput() const
 {
-    return d_ptr->regionAsInput;
+    Q_D(const QExpansionNode);
+    return d->regionAsInput;
 }
 
 void QExpansionNode::setRegionAsInput(const QExpansionRegion *regionAsInput)
 {
-    d_ptr->regionAsInput = const_cast<QExpansionRegion *>(regionAsInput);
+    Q_D(QExpansionNode);
+    d->setRegionAsInput(const_cast<QExpansionRegion *>(regionAsInput));
 }
 
 #include "moc_qexpansionnode.cpp"

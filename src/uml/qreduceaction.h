@@ -108,7 +108,7 @@ class Q_UML_EXPORT QReduceAction : public QObject, public QAction
     Q_PROPERTY(QBehavior * reducer READ reducer WRITE setReducer)
 
     Q_DISABLE_COPY(QReduceAction)
-    Q_DECLARE_PRIVATE(QReduceAction)
+    QTUML_DECLARE_PRIVATE(QReduceAction)
 
 public:
     explicit QReduceAction(QObject *parent = 0);
@@ -127,7 +127,7 @@ public:
     void setReducer(const QBehavior *reducer);
 
 protected:
-    QReduceActionPrivate *d_ptr;
+    explicit QReduceAction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

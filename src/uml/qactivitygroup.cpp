@@ -66,6 +66,52 @@ QActivityGroupPrivate::~QActivityGroupPrivate()
     delete subgroups;
     delete containedEdges;
 }
+  
+void QActivityGroupPrivate::setInActivity(const QActivity *inActivity) 
+{  
+    this->inActivity = const_cast<QActivity *>(inActivity);   
+}
+  
+void QActivityGroupPrivate::addContainedNode(const QActivityNode *containedNode) 
+{   
+    this->containedNodes->insert(const_cast<QActivityNode *>(containedNode));  
+}
+ 
+void QActivityGroupPrivate::removeContainedNode(const QActivityNode *containedNode) 
+{    
+    this->containedNodes->remove(const_cast<QActivityNode *>(containedNode)); 
+}
+  
+void QActivityGroupPrivate::addSubgroup(const QActivityGroup *subgroup) 
+{   
+    this->subgroups->insert(const_cast<QActivityGroup *>(subgroup)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedElement(subgroup); 
+}
+ 
+void QActivityGroupPrivate::removeSubgroup(const QActivityGroup *subgroup) 
+{    
+    this->subgroups->remove(const_cast<QActivityGroup *>(subgroup)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(subgroup);
+}
+  
+void QActivityGroupPrivate::addContainedEdge(const QActivityEdge *containedEdge) 
+{   
+    this->containedEdges->insert(const_cast<QActivityEdge *>(containedEdge));  
+}
+ 
+void QActivityGroupPrivate::removeContainedEdge(const QActivityEdge *containedEdge) 
+{    
+    this->containedEdges->remove(const_cast<QActivityEdge *>(containedEdge)); 
+}
+  
+void QActivityGroupPrivate::setSuperGroup(const QActivityGroup *superGroup) 
+{  
+    this->superGroup = const_cast<QActivityGroup *>(superGroup);   
+}
 
 /*!
     \class QActivityGroup
@@ -76,13 +122,12 @@ QActivityGroupPrivate::~QActivityGroupPrivate()
  */
 
 QActivityGroup::QActivityGroup()
-    : d_ptr(new QActivityGroupPrivate)
 {
+    d_umlptr = new QActivityGroupPrivate;
 }
 
 QActivityGroup::~QActivityGroup()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -90,12 +135,14 @@ QActivityGroup::~QActivityGroup()
  */
 QActivity *QActivityGroup::inActivity() const
 {
-    return d_ptr->inActivity;
+    Q_D(const QActivityGroup);
+    return d->inActivity;
 }
 
 void QActivityGroup::setInActivity(const QActivity *inActivity)
 {
-    d_ptr->inActivity = const_cast<QActivity *>(inActivity);
+    Q_D(QActivityGroup);
+    d->setInActivity(const_cast<QActivity *>(inActivity));
 }
 
 /*!
@@ -103,7 +150,8 @@ void QActivityGroup::setInActivity(const QActivity *inActivity)
  */
 const QSet<QActivityNode *> *QActivityGroup::containedNodes() const
 {
-    return d_ptr->containedNodes;
+    Q_D(const QActivityGroup);
+    return d->containedNodes;
 }
 
 /*!
@@ -111,7 +159,8 @@ const QSet<QActivityNode *> *QActivityGroup::containedNodes() const
  */
 const QSet<QActivityGroup *> *QActivityGroup::subgroups() const
 {
-    return d_ptr->subgroups;
+    Q_D(const QActivityGroup);
+    return d->subgroups;
 }
 
 /*!
@@ -119,7 +168,8 @@ const QSet<QActivityGroup *> *QActivityGroup::subgroups() const
  */
 const QSet<QActivityEdge *> *QActivityGroup::containedEdges() const
 {
-    return d_ptr->containedEdges;
+    Q_D(const QActivityGroup);
+    return d->containedEdges;
 }
 
 /*!
@@ -127,7 +177,8 @@ const QSet<QActivityEdge *> *QActivityGroup::containedEdges() const
  */
 QActivityGroup *QActivityGroup::superGroup() const
 {
-    return d_ptr->superGroup;
+    Q_D(const QActivityGroup);
+    return d->superGroup;
 }
 
 QT_END_NAMESPACE_QTUML

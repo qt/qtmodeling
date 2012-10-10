@@ -112,7 +112,7 @@ class Q_UML_EXPORT QRemoveStructuralFeatureValueAction : public QObject, public 
     Q_PROPERTY(QInputPin * removeAt READ removeAt WRITE setRemoveAt)
 
     Q_DISABLE_COPY(QRemoveStructuralFeatureValueAction)
-    Q_DECLARE_PRIVATE(QRemoveStructuralFeatureValueAction)
+    QTUML_DECLARE_PRIVATE(QRemoveStructuralFeatureValueAction)
 
 public:
     explicit QRemoveStructuralFeatureValueAction(QObject *parent = 0);
@@ -127,7 +127,7 @@ public:
     void setRemoveAt(const QInputPin *removeAt);
 
 protected:
-    QRemoveStructuralFeatureValueActionPrivate *d_ptr;
+    explicit QRemoveStructuralFeatureValueAction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

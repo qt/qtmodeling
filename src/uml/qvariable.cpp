@@ -59,6 +59,16 @@ QVariablePrivate::QVariablePrivate() :
 QVariablePrivate::~QVariablePrivate()
 {
 }
+  
+void QVariablePrivate::setScope(const QStructuredActivityNode *scope) 
+{  
+    this->scope = const_cast<QStructuredActivityNode *>(scope);   
+}
+  
+void QVariablePrivate::setActivityScope(const QActivity *activityScope) 
+{  
+    this->activityScope = const_cast<QActivity *>(activityScope);   
+}
 
 /*!
     \class QVariable
@@ -69,13 +79,20 @@ QVariablePrivate::~QVariablePrivate()
  */
 
 QVariable::QVariable(QObject *parent)
-    : QObject(parent), d_ptr(new QVariablePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QVariablePrivate;
+}
+
+QVariable::QVariable(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QVariablePrivate;
 }
 
 QVariable::~QVariable()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -83,12 +100,14 @@ QVariable::~QVariable()
  */
 QStructuredActivityNode *QVariable::scope() const
 {
-    return d_ptr->scope;
+    Q_D(const QVariable);
+    return d->scope;
 }
 
 void QVariable::setScope(const QStructuredActivityNode *scope)
 {
-    d_ptr->scope = const_cast<QStructuredActivityNode *>(scope);
+    Q_D(QVariable);
+    d->setScope(const_cast<QStructuredActivityNode *>(scope));
 }
 
 /*!
@@ -96,12 +115,14 @@ void QVariable::setScope(const QStructuredActivityNode *scope)
  */
 QActivity *QVariable::activityScope() const
 {
-    return d_ptr->activityScope;
+    Q_D(const QVariable);
+    return d->activityScope;
 }
 
 void QVariable::setActivityScope(const QActivity *activityScope)
 {
-    d_ptr->activityScope = const_cast<QActivity *>(activityScope);
+    Q_D(QVariable);
+    d->setActivityScope(const_cast<QActivity *>(activityScope));
 }
 
 /*!

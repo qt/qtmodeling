@@ -43,19 +43,27 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qinteractionfragment_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QContinuationPrivate
+
+class QContinuationPrivate : public QInteractionFragmentPrivate
 {
 public:
     explicit QContinuationPrivate();
     virtual ~QContinuationPrivate();
 
     bool setting;
+
+    // Attributes
+    void setSetting(bool setting);
 };
 
 QT_END_NAMESPACE_QTUML

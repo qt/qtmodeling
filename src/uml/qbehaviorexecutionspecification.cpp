@@ -54,6 +54,11 @@ QBehaviorExecutionSpecificationPrivate::QBehaviorExecutionSpecificationPrivate()
 QBehaviorExecutionSpecificationPrivate::~QBehaviorExecutionSpecificationPrivate()
 {
 }
+  
+void QBehaviorExecutionSpecificationPrivate::setBehavior(const QBehavior *behavior) 
+{  
+    this->behavior = const_cast<QBehavior *>(behavior);   
+}
 
 /*!
     \class QBehaviorExecutionSpecification
@@ -64,13 +69,20 @@ QBehaviorExecutionSpecificationPrivate::~QBehaviorExecutionSpecificationPrivate(
  */
 
 QBehaviorExecutionSpecification::QBehaviorExecutionSpecification(QObject *parent)
-    : QObject(parent), d_ptr(new QBehaviorExecutionSpecificationPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QBehaviorExecutionSpecificationPrivate;
+}
+
+QBehaviorExecutionSpecification::QBehaviorExecutionSpecification(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QBehaviorExecutionSpecificationPrivate;
 }
 
 QBehaviorExecutionSpecification::~QBehaviorExecutionSpecification()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -78,12 +90,14 @@ QBehaviorExecutionSpecification::~QBehaviorExecutionSpecification()
  */
 QBehavior *QBehaviorExecutionSpecification::behavior() const
 {
-    return d_ptr->behavior;
+    Q_D(const QBehaviorExecutionSpecification);
+    return d->behavior;
 }
 
 void QBehaviorExecutionSpecification::setBehavior(const QBehavior *behavior)
 {
-    d_ptr->behavior = const_cast<QBehavior *>(behavior);
+    Q_D(QBehaviorExecutionSpecification);
+    d->setBehavior(const_cast<QBehavior *>(behavior));
 }
 
 #include "moc_qbehaviorexecutionspecification.cpp"

@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qnamedelement_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,16 +57,21 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QPackageableElement;
-
 class QDeployment;
 
-class QDeploymentTargetPrivate
+class QDeploymentTargetPrivate : public virtual QNamedElementPrivate
 {
 public:
     explicit QDeploymentTargetPrivate();
     virtual ~QDeploymentTargetPrivate();
 
     QSet<QDeployment *> *deployments;
+
+    // Association-ends
+    void addDeployedElement(const QPackageableElement *deployedElement);
+    void removeDeployedElement(const QPackageableElement *deployedElement);
+    void addDeployment(const QDeployment *deployment);
+    void removeDeployment(const QDeployment *deployment);
 };
 
 QT_END_NAMESPACE_QTUML

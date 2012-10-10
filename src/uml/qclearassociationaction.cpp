@@ -57,6 +57,16 @@ QClearAssociationActionPrivate::QClearAssociationActionPrivate() :
 QClearAssociationActionPrivate::~QClearAssociationActionPrivate()
 {
 }
+  
+void QClearAssociationActionPrivate::setObject(const QInputPin *object) 
+{  
+    this->object = const_cast<QInputPin *>(object);   
+}
+  
+void QClearAssociationActionPrivate::setAssociation(const QAssociation *association) 
+{  
+    this->association = const_cast<QAssociation *>(association);   
+}
 
 /*!
     \class QClearAssociationAction
@@ -67,13 +77,20 @@ QClearAssociationActionPrivate::~QClearAssociationActionPrivate()
  */
 
 QClearAssociationAction::QClearAssociationAction(QObject *parent)
-    : QObject(parent), d_ptr(new QClearAssociationActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QClearAssociationActionPrivate;
+}
+
+QClearAssociationAction::QClearAssociationAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QClearAssociationActionPrivate;
 }
 
 QClearAssociationAction::~QClearAssociationAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -81,12 +98,14 @@ QClearAssociationAction::~QClearAssociationAction()
  */
 QInputPin *QClearAssociationAction::object() const
 {
-    return d_ptr->object;
+    Q_D(const QClearAssociationAction);
+    return d->object;
 }
 
 void QClearAssociationAction::setObject(const QInputPin *object)
 {
-    d_ptr->object = const_cast<QInputPin *>(object);
+    Q_D(QClearAssociationAction);
+    d->setObject(const_cast<QInputPin *>(object));
 }
 
 /*!
@@ -94,12 +113,14 @@ void QClearAssociationAction::setObject(const QInputPin *object)
  */
 QAssociation *QClearAssociationAction::association() const
 {
-    return d_ptr->association;
+    Q_D(const QClearAssociationAction);
+    return d->association;
 }
 
 void QClearAssociationAction::setAssociation(const QAssociation *association)
 {
-    d_ptr->association = const_cast<QAssociation *>(association);
+    Q_D(QClearAssociationAction);
+    d->setAssociation(const_cast<QAssociation *>(association));
 }
 
 #include "moc_qclearassociationaction.cpp"

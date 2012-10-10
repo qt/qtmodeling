@@ -58,7 +58,7 @@ class QVariable;
 class Q_UML_EXPORT QVariableAction : public QAction
 {
     Q_DISABLE_COPY(QVariableAction)
-    Q_DECLARE_PRIVATE(QVariableAction)
+    QTUML_DECLARE_PRIVATE(QVariableAction)
 
 public:
     virtual ~QVariableAction();
@@ -69,9 +69,6 @@ public:
 
 protected:
     explicit QVariableAction();
-
-protected:
-    QVariableActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

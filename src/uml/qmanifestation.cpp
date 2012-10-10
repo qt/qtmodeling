@@ -55,6 +55,11 @@ QManifestationPrivate::QManifestationPrivate() :
 QManifestationPrivate::~QManifestationPrivate()
 {
 }
+  
+void QManifestationPrivate::setUtilizedElement(const QPackageableElement *utilizedElement) 
+{  
+    this->utilizedElement = const_cast<QPackageableElement *>(utilizedElement);   
+}
 
 /*!
     \class QManifestation
@@ -65,13 +70,20 @@ QManifestationPrivate::~QManifestationPrivate()
  */
 
 QManifestation::QManifestation(QObject *parent)
-    : QAbstraction(parent), d_ptr(new QManifestationPrivate)
+    : QAbstraction(false, parent)
 {
+    d_umlptr = new QManifestationPrivate;
+}
+
+QManifestation::QManifestation(bool createPimpl, QObject *parent)
+    : QAbstraction(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QManifestationPrivate;
 }
 
 QManifestation::~QManifestation()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,12 +91,14 @@ QManifestation::~QManifestation()
  */
 QPackageableElement *QManifestation::utilizedElement() const
 {
-    return d_ptr->utilizedElement;
+    Q_D(const QManifestation);
+    return d->utilizedElement;
 }
 
 void QManifestation::setUtilizedElement(const QPackageableElement *utilizedElement)
 {
-    d_ptr->utilizedElement = const_cast<QPackageableElement *>(utilizedElement);
+    Q_D(QManifestation);
+    d->setUtilizedElement(const_cast<QPackageableElement *>(utilizedElement));
 }
 
 #include "moc_qmanifestation.cpp"

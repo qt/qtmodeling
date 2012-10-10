@@ -59,14 +59,14 @@ class Q_UML_EXPORT QUsage : public QDependency
     Q_OBJECT
 
     Q_DISABLE_COPY(QUsage)
-    Q_DECLARE_PRIVATE(QUsage)
+    QTUML_DECLARE_PRIVATE(QUsage)
 
 public:
     explicit QUsage(QObject *parent = 0);
     virtual ~QUsage();
 
 protected:
-    QUsagePrivate *d_ptr;
+    explicit QUsage(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

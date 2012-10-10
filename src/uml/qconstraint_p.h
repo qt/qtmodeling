@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qpackageableelement_p.h"
+
 // Qt includes
 #include <QtCore/QList>
 
@@ -53,12 +57,10 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QElement;
-
 class QNamespace;
-
 class QValueSpecification;
 
-class QConstraintPrivate
+class QConstraintPrivate : public QPackageableElementPrivate
 {
 public:
     explicit QConstraintPrivate();
@@ -67,6 +69,12 @@ public:
     QNamespace *context;
     QValueSpecification *specification;
     QList<QElement *> *constrainedElements;
+
+    // Association-ends
+    void setContext(const QNamespace *context);
+    void setSpecification(const QValueSpecification *specification);
+    void addConstrainedElement(const QElement *constrainedElement);
+    void removeConstrainedElement(const QElement *constrainedElement);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -62,13 +62,20 @@ QMergeNodePrivate::~QMergeNodePrivate()
  */
 
 QMergeNode::QMergeNode(QObject *parent)
-    : QObject(parent), d_ptr(new QMergeNodePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QMergeNodePrivate;
+}
+
+QMergeNode::QMergeNode(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QMergeNodePrivate;
 }
 
 QMergeNode::~QMergeNode()
 {
-    delete d_ptr;
 }
 
 #include "moc_qmergenode.cpp"

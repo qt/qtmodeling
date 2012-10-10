@@ -63,6 +63,40 @@ QNamedElementPrivate::~QNamedElementPrivate()
     delete clientDependencies;
 }
 
+void QNamedElementPrivate::setName(QString name)
+{
+    this->name = name;
+}
+
+void QNamedElementPrivate::setVisibility(QtUml::VisibilityKind visibility)
+{
+    this->visibility = visibility;
+}
+  
+void QNamedElementPrivate::setNameExpression(const QStringExpression *nameExpression) 
+{  
+    this->nameExpression = const_cast<QStringExpression *>(nameExpression);   
+}
+  
+void QNamedElementPrivate::setNamespace_(const QNamespace *namespace_) 
+{  
+    this->namespace_ = const_cast<QNamespace *>(namespace_);   
+}
+  
+void QNamedElementPrivate::addClientDependency(const QDependency *clientDependency) 
+{   
+    this->clientDependencies->insert(const_cast<QDependency *>(clientDependency)); 
+
+    // Adjust subsetted property(ies) 
+}
+ 
+void QNamedElementPrivate::removeClientDependency(const QDependency *clientDependency) 
+{    
+    this->clientDependencies->remove(const_cast<QDependency *>(clientDependency)); 
+
+    // Adjust subsetted property(ies)
+}
+
 /*!
     \class QNamedElement
 
@@ -72,13 +106,12 @@ QNamedElementPrivate::~QNamedElementPrivate()
  */
 
 QNamedElement::QNamedElement()
-    : d_ptr(new QNamedElementPrivate)
 {
+    d_umlptr = new QNamedElementPrivate;
 }
 
 QNamedElement::~QNamedElement()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -86,12 +119,14 @@ QNamedElement::~QNamedElement()
  */
 QString QNamedElement::name() const
 {
-    return d_ptr->name;
+    Q_D(const QNamedElement);
+    return d->name;
 }
 
 void QNamedElement::setName(QString name)
 {
-    d_ptr->name = name;
+    Q_D(QNamedElement);
+    d->setName(name);
 }
 
 /*!
@@ -99,12 +134,14 @@ void QNamedElement::setName(QString name)
  */
 QtUml::VisibilityKind QNamedElement::visibility() const
 {
-    return d_ptr->visibility;
+    Q_D(const QNamedElement);
+    return d->visibility;
 }
 
 void QNamedElement::setVisibility(QtUml::VisibilityKind visibility)
 {
-    d_ptr->visibility = visibility;
+    Q_D(QNamedElement);
+    d->setVisibility(visibility);
 }
 
 /*!
@@ -120,12 +157,14 @@ QString QNamedElement::qualifiedName() const
  */
 QStringExpression *QNamedElement::nameExpression() const
 {
-    return d_ptr->nameExpression;
+    Q_D(const QNamedElement);
+    return d->nameExpression;
 }
 
 void QNamedElement::setNameExpression(const QStringExpression *nameExpression)
 {
-    d_ptr->nameExpression = const_cast<QStringExpression *>(nameExpression);
+    Q_D(QNamedElement);
+    d->setNameExpression(const_cast<QStringExpression *>(nameExpression));
 }
 
 /*!
@@ -133,7 +172,8 @@ void QNamedElement::setNameExpression(const QStringExpression *nameExpression)
  */
 QNamespace *QNamedElement::namespace_() const
 {
-    return d_ptr->namespace_;
+    Q_D(const QNamedElement);
+    return d->namespace_;
 }
 
 /*!
@@ -141,17 +181,20 @@ QNamespace *QNamedElement::namespace_() const
  */
 const QSet<QDependency *> *QNamedElement::clientDependencies() const
 {
-    return d_ptr->clientDependencies;
+    Q_D(const QNamedElement);
+    return d->clientDependencies;
 }
 
 void QNamedElement::addClientDependency(const QDependency *clientDependency)
 {
-    d_ptr->clientDependencies->insert(const_cast<QDependency *>(clientDependency));
+    Q_D(QNamedElement);
+    d->addClientDependency(const_cast<QDependency *>(clientDependency));
 }
 
 void QNamedElement::removeClientDependency(const QDependency *clientDependency)
 {
-    d_ptr->clientDependencies->remove(const_cast<QDependency *>(clientDependency));
+    Q_D(QNamedElement);
+    d->removeClientDependency(const_cast<QDependency *>(clientDependency));
 }
 
 /*!

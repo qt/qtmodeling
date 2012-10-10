@@ -59,14 +59,14 @@ class Q_UML_EXPORT QPrimitiveType : public QDataType
     Q_OBJECT
 
     Q_DISABLE_COPY(QPrimitiveType)
-    Q_DECLARE_PRIVATE(QPrimitiveType)
+    QTUML_DECLARE_PRIVATE(QPrimitiveType)
 
 public:
     explicit QPrimitiveType(QObject *parent = 0);
     virtual ~QPrimitiveType();
 
 protected:
-    QPrimitiveTypePrivate *d_ptr;
+    explicit QPrimitiveType(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

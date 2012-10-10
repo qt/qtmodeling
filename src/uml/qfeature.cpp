@@ -57,6 +57,25 @@ QFeaturePrivate::~QFeaturePrivate()
     delete featuringClassifiers;
 }
 
+void QFeaturePrivate::setStatic(bool isStatic)
+{
+    this->isStatic = isStatic;
+}
+  
+void QFeaturePrivate::addFeaturingClassifier(const QClassifier *featuringClassifier) 
+{   
+    this->featuringClassifiers->insert(const_cast<QClassifier *>(featuringClassifier)); 
+
+    // Adjust subsetted property(ies) 
+}
+ 
+void QFeaturePrivate::removeFeaturingClassifier(const QClassifier *featuringClassifier) 
+{    
+    this->featuringClassifiers->remove(const_cast<QClassifier *>(featuringClassifier)); 
+
+    // Adjust subsetted property(ies)
+}
+
 /*!
     \class QFeature
 
@@ -66,13 +85,12 @@ QFeaturePrivate::~QFeaturePrivate()
  */
 
 QFeature::QFeature()
-    : d_ptr(new QFeaturePrivate)
 {
+    d_umlptr = new QFeaturePrivate;
 }
 
 QFeature::~QFeature()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -80,12 +98,14 @@ QFeature::~QFeature()
  */
 bool QFeature::isStatic() const
 {
-    return d_ptr->isStatic;
+    Q_D(const QFeature);
+    return d->isStatic;
 }
 
 void QFeature::setStatic(bool isStatic)
 {
-    d_ptr->isStatic = isStatic;
+    Q_D(QFeature);
+    d->setStatic(isStatic);
 }
 
 /*!
@@ -93,7 +113,8 @@ void QFeature::setStatic(bool isStatic)
  */
 const QSet<QClassifier *> *QFeature::featuringClassifiers() const
 {
-    return d_ptr->featuringClassifiers;
+    Q_D(const QFeature);
+    return d->featuringClassifiers;
 }
 
 QT_END_NAMESPACE_QTUML

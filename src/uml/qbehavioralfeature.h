@@ -70,7 +70,7 @@ class QParameter;
 class Q_UML_EXPORT QBehavioralFeature : public QNamespace, public QFeature
 {
     Q_DISABLE_COPY(QBehavioralFeature)
-    Q_DECLARE_PRIVATE(QBehavioralFeature)
+    QTUML_DECLARE_PRIVATE(QBehavioralFeature)
 
 public:
     virtual ~QBehavioralFeature();
@@ -100,9 +100,6 @@ public:
 
 protected:
     explicit QBehavioralFeature();
-
-protected:
-    QBehavioralFeaturePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

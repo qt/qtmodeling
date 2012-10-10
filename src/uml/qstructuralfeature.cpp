@@ -54,6 +54,11 @@ QStructuralFeaturePrivate::~QStructuralFeaturePrivate()
 {
 }
 
+void QStructuralFeaturePrivate::setReadOnly(bool isReadOnly)
+{
+    this->isReadOnly = isReadOnly;
+}
+
 /*!
     \class QStructuralFeature
 
@@ -63,13 +68,12 @@ QStructuralFeaturePrivate::~QStructuralFeaturePrivate()
  */
 
 QStructuralFeature::QStructuralFeature()
-    : d_ptr(new QStructuralFeaturePrivate)
 {
+    d_umlptr = new QStructuralFeaturePrivate;
 }
 
 QStructuralFeature::~QStructuralFeature()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -77,12 +81,14 @@ QStructuralFeature::~QStructuralFeature()
  */
 bool QStructuralFeature::isReadOnly() const
 {
-    return d_ptr->isReadOnly;
+    Q_D(const QStructuralFeature);
+    return d->isReadOnly;
 }
 
 void QStructuralFeature::setReadOnly(bool isReadOnly)
 {
-    d_ptr->isReadOnly = isReadOnly;
+    Q_D(QStructuralFeature);
+    d->setReadOnly(isReadOnly);
 }
 
 QT_END_NAMESPACE_QTUML

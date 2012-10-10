@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qwritestructuralfeatureaction_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,7 +55,7 @@ QT_MODULE(QtUml)
 
 class QInputPin;
 
-class QAddStructuralFeatureValueActionPrivate
+class QAddStructuralFeatureValueActionPrivate : public QWriteStructuralFeatureActionPrivate
 {
 public:
     explicit QAddStructuralFeatureValueActionPrivate();
@@ -59,6 +63,12 @@ public:
 
     bool isReplaceAll;
     QInputPin *insertAt;
+
+    // Attributes
+    void setReplaceAll(bool isReplaceAll);
+
+    // Association-ends
+    void setInsertAt(const QInputPin *insertAt);
 };
 
 QT_END_NAMESPACE_QTUML

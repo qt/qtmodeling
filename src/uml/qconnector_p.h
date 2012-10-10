@@ -46,6 +46,10 @@
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
 
+// Base class includes
+
+#include "qfeature_p.h"
+
 // Qt includes
 #include <QtCore/QList>
 #include <QtCore/QSet>
@@ -57,12 +61,10 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QBehavior;
-
 class QConnectorEnd;
-
 class QAssociation;
 
-class QConnectorPrivate
+class QConnectorPrivate : public QFeaturePrivate
 {
 public:
     explicit QConnectorPrivate();
@@ -72,6 +74,18 @@ public:
     QSet<QBehavior *> *contracts;
     QAssociation *type;
     QList<QConnectorEnd *> *ends;
+
+    // Attributes
+    void setKind(QtUml::ConnectorKind kind);
+
+    // Association-ends
+    void addRedefinedConnector(const QConnector *redefinedConnector);
+    void removeRedefinedConnector(const QConnector *redefinedConnector);
+    void addContract(const QBehavior *contract);
+    void removeContract(const QBehavior *contract);
+    void setType(const QAssociation *type);
+    void addEnd(const QConnectorEnd *end);
+    void removeEnd(const QConnectorEnd *end);
 };
 
 QT_END_NAMESPACE_QTUML

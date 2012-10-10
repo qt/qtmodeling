@@ -58,7 +58,7 @@ class QTemplateParameter;
 class Q_UML_EXPORT QParameterableElement : public virtual QElement
 {
     Q_DISABLE_COPY(QParameterableElement)
-    Q_DECLARE_PRIVATE(QParameterableElement)
+    QTUML_DECLARE_PRIVATE(QParameterableElement)
 
 public:
     virtual ~QParameterableElement();
@@ -75,9 +75,6 @@ public:
 
 protected:
     explicit QParameterableElement();
-
-protected:
-    QParameterableElementPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

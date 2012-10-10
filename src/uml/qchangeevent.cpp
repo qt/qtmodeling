@@ -55,6 +55,11 @@ QChangeEventPrivate::QChangeEventPrivate() :
 QChangeEventPrivate::~QChangeEventPrivate()
 {
 }
+  
+void QChangeEventPrivate::setChangeExpression(const QValueSpecification *changeExpression) 
+{  
+    this->changeExpression = const_cast<QValueSpecification *>(changeExpression);   
+}
 
 /*!
     \class QChangeEvent
@@ -65,13 +70,20 @@ QChangeEventPrivate::~QChangeEventPrivate()
  */
 
 QChangeEvent::QChangeEvent(QObject *parent)
-    : QObject(parent), d_ptr(new QChangeEventPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QChangeEventPrivate;
+}
+
+QChangeEvent::QChangeEvent(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QChangeEventPrivate;
 }
 
 QChangeEvent::~QChangeEvent()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,12 +91,14 @@ QChangeEvent::~QChangeEvent()
  */
 QValueSpecification *QChangeEvent::changeExpression() const
 {
-    return d_ptr->changeExpression;
+    Q_D(const QChangeEvent);
+    return d->changeExpression;
 }
 
 void QChangeEvent::setChangeExpression(const QValueSpecification *changeExpression)
 {
-    d_ptr->changeExpression = const_cast<QValueSpecification *>(changeExpression);
+    Q_D(QChangeEvent);
+    d->setChangeExpression(const_cast<QValueSpecification *>(changeExpression));
 }
 
 #include "moc_qchangeevent.cpp"

@@ -66,6 +66,63 @@ QAssociationPrivate::~QAssociationPrivate()
     delete memberEnds;
 }
 
+void QAssociationPrivate::setDerived(bool isDerived)
+{
+    this->isDerived = isDerived;
+}
+   
+void QAssociationPrivate::addNavigableOwnedEnd(const QProperty *navigableOwnedEnd) 
+{   
+    this->navigableOwnedEnds->insert(const_cast<QProperty *>(navigableOwnedEnd)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedEnd(navigableOwnedEnd); 
+}
+ 
+void QAssociationPrivate::removeNavigableOwnedEnd(const QProperty *navigableOwnedEnd) 
+{    
+    this->navigableOwnedEnds->remove(const_cast<QProperty *>(navigableOwnedEnd)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedEnd(navigableOwnedEnd);
+}
+  
+void QAssociationPrivate::addOwnedEnd(const QProperty *ownedEnd) 
+{   
+    this->ownedEnds->append(const_cast<QProperty *>(ownedEnd)); 
+
+    // Adjust subsetted property(ies)
+    addMemberEnd(ownedEnd);
+    addFeature(ownedEnd);
+    addOwnedMember(ownedEnd); 
+}
+ 
+void QAssociationPrivate::removeOwnedEnd(const QProperty *ownedEnd) 
+{    
+    this->ownedEnds->removeAll(const_cast<QProperty *>(ownedEnd)); 
+
+    // Adjust subsetted property(ies)
+    removeMemberEnd(ownedEnd);
+    removeFeature(ownedEnd);
+    removeOwnedMember(ownedEnd);
+}
+  
+void QAssociationPrivate::addMemberEnd(const QProperty *memberEnd) 
+{   
+    this->memberEnds->append(const_cast<QProperty *>(memberEnd)); 
+
+    // Adjust subsetted property(ies)
+    addMember(memberEnd); 
+}
+ 
+void QAssociationPrivate::removeMemberEnd(const QProperty *memberEnd) 
+{    
+    this->memberEnds->removeAll(const_cast<QProperty *>(memberEnd)); 
+
+    // Adjust subsetted property(ies)
+    removeMember(memberEnd);
+}
+
 /*!
     \class QAssociation
 
@@ -75,13 +132,20 @@ QAssociationPrivate::~QAssociationPrivate()
  */
 
 QAssociation::QAssociation(QObject *parent)
-    : QObject(parent), d_ptr(new QAssociationPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QAssociationPrivate;
+}
+
+QAssociation::QAssociation(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QAssociationPrivate;
 }
 
 QAssociation::~QAssociation()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -89,12 +153,14 @@ QAssociation::~QAssociation()
  */
 bool QAssociation::isDerived() const
 {
-    return d_ptr->isDerived;
+    Q_D(const QAssociation);
+    return d->isDerived;
 }
 
 void QAssociation::setDerived(bool isDerived)
 {
-    d_ptr->isDerived = isDerived;
+    Q_D(QAssociation);
+    d->setDerived(isDerived);
 }
 
 /*!
@@ -110,17 +176,20 @@ const QList<QType *> *QAssociation::endTypes() const
  */
 const QSet<QProperty *> *QAssociation::navigableOwnedEnds() const
 {
-    return d_ptr->navigableOwnedEnds;
+    Q_D(const QAssociation);
+    return d->navigableOwnedEnds;
 }
 
 void QAssociation::addNavigableOwnedEnd(const QProperty *navigableOwnedEnd)
 {
-    d_ptr->navigableOwnedEnds->insert(const_cast<QProperty *>(navigableOwnedEnd));
+    Q_D(QAssociation);
+    d->addNavigableOwnedEnd(const_cast<QProperty *>(navigableOwnedEnd));
 }
 
 void QAssociation::removeNavigableOwnedEnd(const QProperty *navigableOwnedEnd)
 {
-    d_ptr->navigableOwnedEnds->remove(const_cast<QProperty *>(navigableOwnedEnd));
+    Q_D(QAssociation);
+    d->removeNavigableOwnedEnd(const_cast<QProperty *>(navigableOwnedEnd));
 }
 
 /*!
@@ -128,17 +197,20 @@ void QAssociation::removeNavigableOwnedEnd(const QProperty *navigableOwnedEnd)
  */
 const QList<QProperty *> *QAssociation::ownedEnds() const
 {
-    return d_ptr->ownedEnds;
+    Q_D(const QAssociation);
+    return d->ownedEnds;
 }
 
 void QAssociation::addOwnedEnd(const QProperty *ownedEnd)
 {
-    d_ptr->ownedEnds->append(const_cast<QProperty *>(ownedEnd));
+    Q_D(QAssociation);
+    d->addOwnedEnd(const_cast<QProperty *>(ownedEnd));
 }
 
 void QAssociation::removeOwnedEnd(const QProperty *ownedEnd)
 {
-    d_ptr->ownedEnds->removeAll(const_cast<QProperty *>(ownedEnd));
+    Q_D(QAssociation);
+    d->removeOwnedEnd(const_cast<QProperty *>(ownedEnd));
 }
 
 /*!
@@ -146,17 +218,20 @@ void QAssociation::removeOwnedEnd(const QProperty *ownedEnd)
  */
 const QList<QProperty *> *QAssociation::memberEnds() const
 {
-    return d_ptr->memberEnds;
+    Q_D(const QAssociation);
+    return d->memberEnds;
 }
 
 void QAssociation::addMemberEnd(const QProperty *memberEnd)
 {
-    d_ptr->memberEnds->append(const_cast<QProperty *>(memberEnd));
+    Q_D(QAssociation);
+    d->addMemberEnd(const_cast<QProperty *>(memberEnd));
 }
 
 void QAssociation::removeMemberEnd(const QProperty *memberEnd)
 {
-    d_ptr->memberEnds->removeAll(const_cast<QProperty *>(memberEnd));
+    Q_D(QAssociation);
+    d->removeMemberEnd(const_cast<QProperty *>(memberEnd));
 }
 
 #include "moc_qassociation.cpp"

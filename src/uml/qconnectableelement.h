@@ -63,7 +63,7 @@ class QConnectableElementTemplateParameter;
 class Q_UML_EXPORT QConnectableElement : public virtual QTypedElement, public QParameterableElement
 {
     Q_DISABLE_COPY(QConnectableElement)
-    Q_DECLARE_PRIVATE(QConnectableElement)
+    QTUML_DECLARE_PRIVATE(QConnectableElement)
 
 public:
     virtual ~QConnectableElement();
@@ -75,9 +75,6 @@ public:
 
 protected:
     explicit QConnectableElement();
-
-protected:
-    QConnectableElementPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

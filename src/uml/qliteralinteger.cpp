@@ -53,6 +53,11 @@ QLiteralIntegerPrivate::~QLiteralIntegerPrivate()
 {
 }
 
+void QLiteralIntegerPrivate::setValue(qint32 value)
+{
+    this->value = value;
+}
+
 /*!
     \class QLiteralInteger
 
@@ -62,13 +67,20 @@ QLiteralIntegerPrivate::~QLiteralIntegerPrivate()
  */
 
 QLiteralInteger::QLiteralInteger(QObject *parent)
-    : QObject(parent), d_ptr(new QLiteralIntegerPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QLiteralIntegerPrivate;
+}
+
+QLiteralInteger::QLiteralInteger(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QLiteralIntegerPrivate;
 }
 
 QLiteralInteger::~QLiteralInteger()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -76,12 +88,14 @@ QLiteralInteger::~QLiteralInteger()
  */
 qint32 QLiteralInteger::value() const
 {
-    return d_ptr->value;
+    Q_D(const QLiteralInteger);
+    return d->value;
 }
 
 void QLiteralInteger::setValue(qint32 value)
 {
-    d_ptr->value = value;
+    Q_D(QLiteralInteger);
+    d->setValue(value);
 }
 
 /*!

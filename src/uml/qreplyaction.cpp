@@ -60,6 +60,32 @@ QReplyActionPrivate::~QReplyActionPrivate()
 {
     delete replyValues;
 }
+  
+void QReplyActionPrivate::setReplyToCall(const QTrigger *replyToCall) 
+{  
+    this->replyToCall = const_cast<QTrigger *>(replyToCall);   
+}
+  
+void QReplyActionPrivate::setReturnInformation(const QInputPin *returnInformation) 
+{  
+    this->returnInformation = const_cast<QInputPin *>(returnInformation);   
+}
+  
+void QReplyActionPrivate::addReplyValue(const QInputPin *replyValue) 
+{   
+    this->replyValues->insert(const_cast<QInputPin *>(replyValue)); 
+
+    // Adjust subsetted property(ies)
+    addInput(replyValue); 
+}
+ 
+void QReplyActionPrivate::removeReplyValue(const QInputPin *replyValue) 
+{    
+    this->replyValues->remove(const_cast<QInputPin *>(replyValue)); 
+
+    // Adjust subsetted property(ies)
+    removeInput(replyValue);
+}
 
 /*!
     \class QReplyAction
@@ -70,13 +96,20 @@ QReplyActionPrivate::~QReplyActionPrivate()
  */
 
 QReplyAction::QReplyAction(QObject *parent)
-    : QObject(parent), d_ptr(new QReplyActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QReplyActionPrivate;
+}
+
+QReplyAction::QReplyAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QReplyActionPrivate;
 }
 
 QReplyAction::~QReplyAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -84,12 +117,14 @@ QReplyAction::~QReplyAction()
  */
 QTrigger *QReplyAction::replyToCall() const
 {
-    return d_ptr->replyToCall;
+    Q_D(const QReplyAction);
+    return d->replyToCall;
 }
 
 void QReplyAction::setReplyToCall(const QTrigger *replyToCall)
 {
-    d_ptr->replyToCall = const_cast<QTrigger *>(replyToCall);
+    Q_D(QReplyAction);
+    d->setReplyToCall(const_cast<QTrigger *>(replyToCall));
 }
 
 /*!
@@ -97,12 +132,14 @@ void QReplyAction::setReplyToCall(const QTrigger *replyToCall)
  */
 QInputPin *QReplyAction::returnInformation() const
 {
-    return d_ptr->returnInformation;
+    Q_D(const QReplyAction);
+    return d->returnInformation;
 }
 
 void QReplyAction::setReturnInformation(const QInputPin *returnInformation)
 {
-    d_ptr->returnInformation = const_cast<QInputPin *>(returnInformation);
+    Q_D(QReplyAction);
+    d->setReturnInformation(const_cast<QInputPin *>(returnInformation));
 }
 
 /*!
@@ -110,17 +147,20 @@ void QReplyAction::setReturnInformation(const QInputPin *returnInformation)
  */
 const QSet<QInputPin *> *QReplyAction::replyValues() const
 {
-    return d_ptr->replyValues;
+    Q_D(const QReplyAction);
+    return d->replyValues;
 }
 
 void QReplyAction::addReplyValue(const QInputPin *replyValue)
 {
-    d_ptr->replyValues->insert(const_cast<QInputPin *>(replyValue));
+    Q_D(QReplyAction);
+    d->addReplyValue(const_cast<QInputPin *>(replyValue));
 }
 
 void QReplyAction::removeReplyValue(const QInputPin *replyValue)
 {
-    d_ptr->replyValues->remove(const_cast<QInputPin *>(replyValue));
+    Q_D(QReplyAction);
+    d->removeReplyValue(const_cast<QInputPin *>(replyValue));
 }
 
 #include "moc_qreplyaction.cpp"

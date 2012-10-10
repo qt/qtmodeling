@@ -84,7 +84,7 @@ class Q_UML_EXPORT QTimeEvent : public QObject, public QEvent
     Q_PROPERTY(QTimeExpression * when READ when WRITE setWhen)
 
     Q_DISABLE_COPY(QTimeEvent)
-    Q_DECLARE_PRIVATE(QTimeEvent)
+    QTUML_DECLARE_PRIVATE(QTimeEvent)
 
 public:
     explicit QTimeEvent(QObject *parent = 0);
@@ -99,7 +99,7 @@ public:
     void setWhen(const QTimeExpression *when);
 
 protected:
-    QTimeEventPrivate *d_ptr;
+    explicit QTimeEvent(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

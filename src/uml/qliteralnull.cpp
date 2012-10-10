@@ -62,13 +62,20 @@ QLiteralNullPrivate::~QLiteralNullPrivate()
  */
 
 QLiteralNull::QLiteralNull(QObject *parent)
-    : QObject(parent), d_ptr(new QLiteralNullPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QLiteralNullPrivate;
+}
+
+QLiteralNull::QLiteralNull(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QLiteralNullPrivate;
 }
 
 QLiteralNull::~QLiteralNull()
 {
-    delete d_ptr;
 }
 
 /*!

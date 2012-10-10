@@ -55,6 +55,11 @@ QAcceptCallActionPrivate::QAcceptCallActionPrivate() :
 QAcceptCallActionPrivate::~QAcceptCallActionPrivate()
 {
 }
+  
+void QAcceptCallActionPrivate::setReturnInformation(const QOutputPin *returnInformation) 
+{  
+    this->returnInformation = const_cast<QOutputPin *>(returnInformation);   
+}
 
 /*!
     \class QAcceptCallAction
@@ -65,13 +70,20 @@ QAcceptCallActionPrivate::~QAcceptCallActionPrivate()
  */
 
 QAcceptCallAction::QAcceptCallAction(QObject *parent)
-    : QAcceptEventAction(parent), d_ptr(new QAcceptCallActionPrivate)
+    : QAcceptEventAction(false, parent)
 {
+    d_umlptr = new QAcceptCallActionPrivate;
+}
+
+QAcceptCallAction::QAcceptCallAction(bool createPimpl, QObject *parent)
+    : QAcceptEventAction(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QAcceptCallActionPrivate;
 }
 
 QAcceptCallAction::~QAcceptCallAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,12 +91,14 @@ QAcceptCallAction::~QAcceptCallAction()
  */
 QOutputPin *QAcceptCallAction::returnInformation() const
 {
-    return d_ptr->returnInformation;
+    Q_D(const QAcceptCallAction);
+    return d->returnInformation;
 }
 
 void QAcceptCallAction::setReturnInformation(const QOutputPin *returnInformation)
 {
-    d_ptr->returnInformation = const_cast<QOutputPin *>(returnInformation);
+    Q_D(QAcceptCallAction);
+    d->setReturnInformation(const_cast<QOutputPin *>(returnInformation));
 }
 
 #include "moc_qacceptcallaction.cpp"

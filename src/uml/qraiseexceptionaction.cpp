@@ -55,6 +55,11 @@ QRaiseExceptionActionPrivate::QRaiseExceptionActionPrivate() :
 QRaiseExceptionActionPrivate::~QRaiseExceptionActionPrivate()
 {
 }
+  
+void QRaiseExceptionActionPrivate::setException(const QInputPin *exception) 
+{  
+    this->exception = const_cast<QInputPin *>(exception);   
+}
 
 /*!
     \class QRaiseExceptionAction
@@ -65,13 +70,20 @@ QRaiseExceptionActionPrivate::~QRaiseExceptionActionPrivate()
  */
 
 QRaiseExceptionAction::QRaiseExceptionAction(QObject *parent)
-    : QObject(parent), d_ptr(new QRaiseExceptionActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QRaiseExceptionActionPrivate;
+}
+
+QRaiseExceptionAction::QRaiseExceptionAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QRaiseExceptionActionPrivate;
 }
 
 QRaiseExceptionAction::~QRaiseExceptionAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,12 +91,14 @@ QRaiseExceptionAction::~QRaiseExceptionAction()
  */
 QInputPin *QRaiseExceptionAction::exception() const
 {
-    return d_ptr->exception;
+    Q_D(const QRaiseExceptionAction);
+    return d->exception;
 }
 
 void QRaiseExceptionAction::setException(const QInputPin *exception)
 {
-    d_ptr->exception = const_cast<QInputPin *>(exception);
+    Q_D(QRaiseExceptionAction);
+    d->setException(const_cast<QInputPin *>(exception));
 }
 
 #include "moc_qraiseexceptionaction.cpp"

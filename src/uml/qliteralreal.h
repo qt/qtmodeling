@@ -85,7 +85,7 @@ class Q_UML_EXPORT QLiteralReal : public QObject, public QLiteralSpecification
     Q_PROPERTY(qreal value READ value WRITE setValue)
 
     Q_DISABLE_COPY(QLiteralReal)
-    Q_DECLARE_PRIVATE(QLiteralReal)
+    QTUML_DECLARE_PRIVATE(QLiteralReal)
 
 public:
     explicit QLiteralReal(QObject *parent = 0);
@@ -100,7 +100,7 @@ public:
     qreal realValue() const;
 
 protected:
-    QLiteralRealPrivate *d_ptr;
+    explicit QLiteralReal(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

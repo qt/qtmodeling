@@ -55,6 +55,11 @@ QAbstractionPrivate::QAbstractionPrivate() :
 QAbstractionPrivate::~QAbstractionPrivate()
 {
 }
+  
+void QAbstractionPrivate::setMapping(const QOpaqueExpression *mapping) 
+{  
+    this->mapping = const_cast<QOpaqueExpression *>(mapping);   
+}
 
 /*!
     \class QAbstraction
@@ -65,13 +70,20 @@ QAbstractionPrivate::~QAbstractionPrivate()
  */
 
 QAbstraction::QAbstraction(QObject *parent)
-    : QDependency(parent), d_ptr(new QAbstractionPrivate)
+    : QDependency(false, parent)
 {
+    d_umlptr = new QAbstractionPrivate;
+}
+
+QAbstraction::QAbstraction(bool createPimpl, QObject *parent)
+    : QDependency(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QAbstractionPrivate;
 }
 
 QAbstraction::~QAbstraction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,12 +91,14 @@ QAbstraction::~QAbstraction()
  */
 QOpaqueExpression *QAbstraction::mapping() const
 {
-    return d_ptr->mapping;
+    Q_D(const QAbstraction);
+    return d->mapping;
 }
 
 void QAbstraction::setMapping(const QOpaqueExpression *mapping)
 {
-    d_ptr->mapping = const_cast<QOpaqueExpression *>(mapping);
+    Q_D(QAbstraction);
+    d->setMapping(const_cast<QOpaqueExpression *>(mapping));
 }
 
 #include "moc_qabstraction.cpp"

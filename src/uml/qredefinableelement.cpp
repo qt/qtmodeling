@@ -59,6 +59,31 @@ QRedefinableElementPrivate::~QRedefinableElementPrivate()
     delete redefinitionContexts;
 }
 
+void QRedefinableElementPrivate::setLeaf(bool isLeaf)
+{
+    this->isLeaf = isLeaf;
+}
+  
+void QRedefinableElementPrivate::addRedefinedElement(const QRedefinableElement *redefinedElement) 
+{   
+    this->redefinedElements->insert(const_cast<QRedefinableElement *>(redefinedElement));  
+}
+ 
+void QRedefinableElementPrivate::removeRedefinedElement(const QRedefinableElement *redefinedElement) 
+{    
+    this->redefinedElements->remove(const_cast<QRedefinableElement *>(redefinedElement)); 
+}
+  
+void QRedefinableElementPrivate::addRedefinitionContext(const QClassifier *redefinitionContext) 
+{   
+    this->redefinitionContexts->insert(const_cast<QClassifier *>(redefinitionContext));  
+}
+ 
+void QRedefinableElementPrivate::removeRedefinitionContext(const QClassifier *redefinitionContext) 
+{    
+    this->redefinitionContexts->remove(const_cast<QClassifier *>(redefinitionContext)); 
+}
+
 /*!
     \class QRedefinableElement
 
@@ -68,13 +93,12 @@ QRedefinableElementPrivate::~QRedefinableElementPrivate()
  */
 
 QRedefinableElement::QRedefinableElement()
-    : d_ptr(new QRedefinableElementPrivate)
 {
+    d_umlptr = new QRedefinableElementPrivate;
 }
 
 QRedefinableElement::~QRedefinableElement()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -82,12 +106,14 @@ QRedefinableElement::~QRedefinableElement()
  */
 bool QRedefinableElement::isLeaf() const
 {
-    return d_ptr->isLeaf;
+    Q_D(const QRedefinableElement);
+    return d->isLeaf;
 }
 
 void QRedefinableElement::setLeaf(bool isLeaf)
 {
-    d_ptr->isLeaf = isLeaf;
+    Q_D(QRedefinableElement);
+    d->setLeaf(isLeaf);
 }
 
 /*!
@@ -95,7 +121,8 @@ void QRedefinableElement::setLeaf(bool isLeaf)
  */
 const QSet<QRedefinableElement *> *QRedefinableElement::redefinedElements() const
 {
-    return d_ptr->redefinedElements;
+    Q_D(const QRedefinableElement);
+    return d->redefinedElements;
 }
 
 /*!
@@ -103,7 +130,8 @@ const QSet<QRedefinableElement *> *QRedefinableElement::redefinedElements() cons
  */
 const QSet<QClassifier *> *QRedefinableElement::redefinitionContexts() const
 {
-    return d_ptr->redefinitionContexts;
+    Q_D(const QRedefinableElement);
+    return d->redefinitionContexts;
 }
 
 /*!

@@ -62,13 +62,20 @@ QAnyReceiveEventPrivate::~QAnyReceiveEventPrivate()
  */
 
 QAnyReceiveEvent::QAnyReceiveEvent(QObject *parent)
-    : QObject(parent), d_ptr(new QAnyReceiveEventPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QAnyReceiveEventPrivate;
+}
+
+QAnyReceiveEvent::QAnyReceiveEvent(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QAnyReceiveEventPrivate;
 }
 
 QAnyReceiveEvent::~QAnyReceiveEvent()
 {
-    delete d_ptr;
 }
 
 #include "moc_qanyreceiveevent.cpp"

@@ -76,7 +76,7 @@ class Q_UML_EXPORT QSlot : public QObject, public QElement
     Q_PROPERTY(QInstanceSpecification * owningInstance READ owningInstance WRITE setOwningInstance)
 
     Q_DISABLE_COPY(QSlot)
-    Q_DECLARE_PRIVATE(QSlot)
+    QTUML_DECLARE_PRIVATE(QSlot)
 
 public:
     explicit QSlot(QObject *parent = 0);
@@ -92,7 +92,7 @@ public:
     void setOwningInstance(const QInstanceSpecification *owningInstance);
 
 protected:
-    QSlotPrivate *d_ptr;
+    explicit QSlot(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

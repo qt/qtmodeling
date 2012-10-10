@@ -58,6 +58,16 @@ QSubstitutionPrivate::QSubstitutionPrivate() :
 QSubstitutionPrivate::~QSubstitutionPrivate()
 {
 }
+  
+void QSubstitutionPrivate::setContract(const QClassifier *contract) 
+{  
+    this->contract = const_cast<QClassifier *>(contract);   
+}
+  
+void QSubstitutionPrivate::setSubstitutingClassifier(const QClassifier *substitutingClassifier) 
+{  
+    this->substitutingClassifier = const_cast<QClassifier *>(substitutingClassifier);   
+}
 
 /*!
     \class QSubstitution
@@ -68,13 +78,20 @@ QSubstitutionPrivate::~QSubstitutionPrivate()
  */
 
 QSubstitution::QSubstitution(QObject *parent)
-    : QRealization(parent), d_ptr(new QSubstitutionPrivate)
+    : QRealization(false, parent)
 {
+    d_umlptr = new QSubstitutionPrivate;
+}
+
+QSubstitution::QSubstitution(bool createPimpl, QObject *parent)
+    : QRealization(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QSubstitutionPrivate;
 }
 
 QSubstitution::~QSubstitution()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -82,12 +99,14 @@ QSubstitution::~QSubstitution()
  */
 QClassifier *QSubstitution::contract() const
 {
-    return d_ptr->contract;
+    Q_D(const QSubstitution);
+    return d->contract;
 }
 
 void QSubstitution::setContract(const QClassifier *contract)
 {
-    d_ptr->contract = const_cast<QClassifier *>(contract);
+    Q_D(QSubstitution);
+    d->setContract(const_cast<QClassifier *>(contract));
 }
 
 /*!
@@ -95,12 +114,14 @@ void QSubstitution::setContract(const QClassifier *contract)
  */
 QClassifier *QSubstitution::substitutingClassifier() const
 {
-    return d_ptr->substitutingClassifier;
+    Q_D(const QSubstitution);
+    return d->substitutingClassifier;
 }
 
 void QSubstitution::setSubstitutingClassifier(const QClassifier *substitutingClassifier)
 {
-    d_ptr->substitutingClassifier = const_cast<QClassifier *>(substitutingClassifier);
+    Q_D(QSubstitution);
+    d->setSubstitutingClassifier(const_cast<QClassifier *>(substitutingClassifier));
 }
 
 #include "moc_qsubstitution.cpp"

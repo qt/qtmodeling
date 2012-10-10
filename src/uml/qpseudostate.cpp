@@ -60,6 +60,21 @@ QPseudostatePrivate::~QPseudostatePrivate()
 {
 }
 
+void QPseudostatePrivate::setKind(QtUml::PseudostateKind kind)
+{
+    this->kind = kind;
+}
+  
+void QPseudostatePrivate::setState(const QState *state) 
+{  
+    this->state = const_cast<QState *>(state);   
+}
+  
+void QPseudostatePrivate::setStateMachine(const QStateMachine *stateMachine) 
+{  
+    this->stateMachine = const_cast<QStateMachine *>(stateMachine);   
+}
+
 /*!
     \class QPseudostate
 
@@ -69,13 +84,20 @@ QPseudostatePrivate::~QPseudostatePrivate()
  */
 
 QPseudostate::QPseudostate(QObject *parent)
-    : QObject(parent), d_ptr(new QPseudostatePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QPseudostatePrivate;
+}
+
+QPseudostate::QPseudostate(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QPseudostatePrivate;
 }
 
 QPseudostate::~QPseudostate()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -83,12 +105,14 @@ QPseudostate::~QPseudostate()
  */
 QtUml::PseudostateKind QPseudostate::kind() const
 {
-    return d_ptr->kind;
+    Q_D(const QPseudostate);
+    return d->kind;
 }
 
 void QPseudostate::setKind(QtUml::PseudostateKind kind)
 {
-    d_ptr->kind = kind;
+    Q_D(QPseudostate);
+    d->setKind(kind);
 }
 
 /*!
@@ -96,12 +120,14 @@ void QPseudostate::setKind(QtUml::PseudostateKind kind)
  */
 QState *QPseudostate::state() const
 {
-    return d_ptr->state;
+    Q_D(const QPseudostate);
+    return d->state;
 }
 
 void QPseudostate::setState(const QState *state)
 {
-    d_ptr->state = const_cast<QState *>(state);
+    Q_D(QPseudostate);
+    d->setState(const_cast<QState *>(state));
 }
 
 /*!
@@ -109,12 +135,14 @@ void QPseudostate::setState(const QState *state)
  */
 QStateMachine *QPseudostate::stateMachine() const
 {
-    return d_ptr->stateMachine;
+    Q_D(const QPseudostate);
+    return d->stateMachine;
 }
 
 void QPseudostate::setStateMachine(const QStateMachine *stateMachine)
 {
-    d_ptr->stateMachine = const_cast<QStateMachine *>(stateMachine);
+    Q_D(QPseudostate);
+    d->setStateMachine(const_cast<QStateMachine *>(stateMachine));
 }
 
 #include "moc_qpseudostate.cpp"

@@ -66,7 +66,7 @@ class QInterruptibleActivityRegion;
 class Q_UML_EXPORT QActivityNode : public QRedefinableElement
 {
     Q_DISABLE_COPY(QActivityNode)
-    Q_DECLARE_PRIVATE(QActivityNode)
+    QTUML_DECLARE_PRIVATE(QActivityNode)
 
 public:
     virtual ~QActivityNode();
@@ -95,9 +95,6 @@ public:
 
 protected:
     explicit QActivityNode();
-
-protected:
-    QActivityNodePrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -59,14 +59,14 @@ class Q_UML_EXPORT QExecutionEnvironment : public QNode
     Q_OBJECT
 
     Q_DISABLE_COPY(QExecutionEnvironment)
-    Q_DECLARE_PRIVATE(QExecutionEnvironment)
+    QTUML_DECLARE_PRIVATE(QExecutionEnvironment)
 
 public:
     explicit QExecutionEnvironment(QObject *parent = 0);
     virtual ~QExecutionEnvironment();
 
 protected:
-    QExecutionEnvironmentPrivate *d_ptr;
+    explicit QExecutionEnvironment(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

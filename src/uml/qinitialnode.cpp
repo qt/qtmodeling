@@ -62,13 +62,20 @@ QInitialNodePrivate::~QInitialNodePrivate()
  */
 
 QInitialNode::QInitialNode(QObject *parent)
-    : QObject(parent), d_ptr(new QInitialNodePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QInitialNodePrivate;
+}
+
+QInitialNode::QInitialNode(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QInitialNodePrivate;
 }
 
 QInitialNode::~QInitialNode()
 {
-    delete d_ptr;
 }
 
 #include "moc_qinitialnode.cpp"

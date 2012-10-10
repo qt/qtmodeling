@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qevent_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,13 +55,16 @@ QT_MODULE(QtUml)
 
 class QValueSpecification;
 
-class QChangeEventPrivate
+class QChangeEventPrivate : public QEventPrivate
 {
 public:
     explicit QChangeEventPrivate();
     virtual ~QChangeEventPrivate();
 
     QValueSpecification *changeExpression;
+
+    // Association-ends
+    void setChangeExpression(const QValueSpecification *changeExpression);
 };
 
 QT_END_NAMESPACE_QTUML

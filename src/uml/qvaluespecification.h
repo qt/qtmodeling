@@ -62,7 +62,7 @@ class QParameterableElement;
 class Q_UML_EXPORT QValueSpecification : public QTypedElement, public QPackageableElement
 {
     Q_DISABLE_COPY(QValueSpecification)
-    Q_DECLARE_PRIVATE(QValueSpecification)
+    QTUML_DECLARE_PRIVATE(QValueSpecification)
 
 public:
     virtual ~QValueSpecification();
@@ -79,9 +79,6 @@ public:
 
 protected:
     explicit QValueSpecification();
-
-protected:
-    QValueSpecificationPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

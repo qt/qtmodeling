@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qexecutablenode_p.h"
+
 // Qt includes
 #include <QtCore/QList>
 #include <QtCore/QSet>
@@ -54,14 +58,11 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QOutputPin;
-
 class QConstraint;
-
 class QClassifier;
-
 class QInputPin;
 
-class QActionPrivate
+class QActionPrivate : public QExecutableNodePrivate
 {
 public:
     explicit QActionPrivate();
@@ -72,6 +73,20 @@ public:
     QSet<QConstraint *> *localPreconditions;
     QList<QInputPin *> *inputs;
     QList<QOutputPin *> *outputs;
+
+    // Attributes
+    void setLocallyReentrant(bool isLocallyReentrant);
+
+    // Association-ends
+    void setContext(const QClassifier *context);
+    void addLocalPostcondition(const QConstraint *localPostcondition);
+    void removeLocalPostcondition(const QConstraint *localPostcondition);
+    void addLocalPrecondition(const QConstraint *localPrecondition);
+    void removeLocalPrecondition(const QConstraint *localPrecondition);
+    void addInput(const QInputPin *input);
+    void removeInput(const QInputPin *input);
+    void addOutput(const QOutputPin *output);
+    void removeOutput(const QOutputPin *output);
 };
 
 QT_END_NAMESPACE_QTUML

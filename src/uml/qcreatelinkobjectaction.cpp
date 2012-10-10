@@ -55,6 +55,11 @@ QCreateLinkObjectActionPrivate::QCreateLinkObjectActionPrivate() :
 QCreateLinkObjectActionPrivate::~QCreateLinkObjectActionPrivate()
 {
 }
+  
+void QCreateLinkObjectActionPrivate::setResult(const QOutputPin *result) 
+{  
+    this->result = const_cast<QOutputPin *>(result);   
+}
 
 /*!
     \class QCreateLinkObjectAction
@@ -65,13 +70,20 @@ QCreateLinkObjectActionPrivate::~QCreateLinkObjectActionPrivate()
  */
 
 QCreateLinkObjectAction::QCreateLinkObjectAction(QObject *parent)
-    : QCreateLinkAction(parent), d_ptr(new QCreateLinkObjectActionPrivate)
+    : QCreateLinkAction(false, parent)
 {
+    d_umlptr = new QCreateLinkObjectActionPrivate;
+}
+
+QCreateLinkObjectAction::QCreateLinkObjectAction(bool createPimpl, QObject *parent)
+    : QCreateLinkAction(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QCreateLinkObjectActionPrivate;
 }
 
 QCreateLinkObjectAction::~QCreateLinkObjectAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,12 +91,14 @@ QCreateLinkObjectAction::~QCreateLinkObjectAction()
  */
 QOutputPin *QCreateLinkObjectAction::result() const
 {
-    return d_ptr->result;
+    Q_D(const QCreateLinkObjectAction);
+    return d->result;
 }
 
 void QCreateLinkObjectAction::setResult(const QOutputPin *result)
 {
-    d_ptr->result = const_cast<QOutputPin *>(result);
+    Q_D(QCreateLinkObjectAction);
+    d->setResult(const_cast<QOutputPin *>(result));
 }
 
 #include "moc_qcreatelinkobjectaction.cpp"

@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qobjectnode_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,13 +55,16 @@ QT_MODULE(QtUml)
 
 class QParameter;
 
-class QActivityParameterNodePrivate
+class QActivityParameterNodePrivate : public QObjectNodePrivate
 {
 public:
     explicit QActivityParameterNodePrivate();
     virtual ~QActivityParameterNodePrivate();
 
     QParameter *parameter;
+
+    // Association-ends
+    void setParameter(const QParameter *parameter);
 };
 
 QT_END_NAMESPACE_QTUML

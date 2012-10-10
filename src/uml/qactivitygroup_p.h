@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qnamedelement_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,12 +57,10 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QActivityEdge;
-
 class QActivityNode;
-
 class QActivity;
 
-class QActivityGroupPrivate
+class QActivityGroupPrivate : public virtual QNamedElementPrivate
 {
 public:
     explicit QActivityGroupPrivate();
@@ -69,6 +71,16 @@ public:
     QSet<QActivityGroup *> *subgroups;
     QSet<QActivityEdge *> *containedEdges;
     QActivityGroup *superGroup;
+
+    // Association-ends
+    void setInActivity(const QActivity *inActivity);
+    void addContainedNode(const QActivityNode *containedNode);
+    void removeContainedNode(const QActivityNode *containedNode);
+    void addSubgroup(const QActivityGroup *subgroup);
+    void removeSubgroup(const QActivityGroup *subgroup);
+    void addContainedEdge(const QActivityEdge *containedEdge);
+    void removeContainedEdge(const QActivityEdge *containedEdge);
+    void setSuperGroup(const QActivityGroup *superGroup);
 };
 
 QT_END_NAMESPACE_QTUML

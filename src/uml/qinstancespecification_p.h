@@ -43,6 +43,14 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qdeployedartifact_p.h"
+
+#include "qpackageableelement_p.h"
+
+#include "qdeploymenttarget_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,12 +61,10 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QClassifier;
-
 class QSlot;
-
 class QValueSpecification;
 
-class QInstanceSpecificationPrivate
+class QInstanceSpecificationPrivate : public QDeployedArtifactPrivate, public QPackageableElementPrivate, public QDeploymentTargetPrivate
 {
 public:
     explicit QInstanceSpecificationPrivate();
@@ -67,6 +73,13 @@ public:
     QSet<QClassifier *> *classifiers;
     QValueSpecification *specification;
     QSet<QSlot *> *slots_;
+
+    // Association-ends
+    void addClassifier(const QClassifier *classifier);
+    void removeClassifier(const QClassifier *classifier);
+    void setSpecification(const QValueSpecification *specification);
+    void addSlot_(const QSlot *slot_);
+    void removeSlot_(const QSlot *slot_);
 };
 
 QT_END_NAMESPACE_QTUML

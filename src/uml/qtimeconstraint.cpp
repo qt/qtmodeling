@@ -56,6 +56,16 @@ QTimeConstraintPrivate::~QTimeConstraintPrivate()
 {
 }
 
+void QTimeConstraintPrivate::setFirstEvent(bool firstEvent)
+{
+    this->firstEvent = firstEvent;
+}
+  
+void QTimeConstraintPrivate::setSpecification(const QTimeInterval *specification) 
+{  
+    this->specification = const_cast<QTimeInterval *>(specification);   
+}
+
 /*!
     \class QTimeConstraint
 
@@ -65,13 +75,20 @@ QTimeConstraintPrivate::~QTimeConstraintPrivate()
  */
 
 QTimeConstraint::QTimeConstraint(QObject *parent)
-    : QIntervalConstraint(parent), d_ptr(new QTimeConstraintPrivate)
+    : QIntervalConstraint(false, parent)
 {
+    d_umlptr = new QTimeConstraintPrivate;
+}
+
+QTimeConstraint::QTimeConstraint(bool createPimpl, QObject *parent)
+    : QIntervalConstraint(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QTimeConstraintPrivate;
 }
 
 QTimeConstraint::~QTimeConstraint()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,12 +96,14 @@ QTimeConstraint::~QTimeConstraint()
  */
 bool QTimeConstraint::firstEvent() const
 {
-    return d_ptr->firstEvent;
+    Q_D(const QTimeConstraint);
+    return d->firstEvent;
 }
 
 void QTimeConstraint::setFirstEvent(bool firstEvent)
 {
-    d_ptr->firstEvent = firstEvent;
+    Q_D(QTimeConstraint);
+    d->setFirstEvent(firstEvent);
 }
 
 /*!
@@ -92,12 +111,14 @@ void QTimeConstraint::setFirstEvent(bool firstEvent)
  */
 QTimeInterval *QTimeConstraint::specification() const
 {
-    return d_ptr->specification;
+    Q_D(const QTimeConstraint);
+    return d->specification;
 }
 
 void QTimeConstraint::setSpecification(const QTimeInterval *specification)
 {
-    d_ptr->specification = const_cast<QTimeInterval *>(specification);
+    Q_D(QTimeConstraint);
+    d->setSpecification(const_cast<QTimeInterval *>(specification));
 }
 
 #include "moc_qtimeconstraint.cpp"

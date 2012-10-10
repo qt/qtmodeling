@@ -62,13 +62,20 @@ QClearVariableActionPrivate::~QClearVariableActionPrivate()
  */
 
 QClearVariableAction::QClearVariableAction(QObject *parent)
-    : QObject(parent), d_ptr(new QClearVariableActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QClearVariableActionPrivate;
+}
+
+QClearVariableAction::QClearVariableAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QClearVariableActionPrivate;
 }
 
 QClearVariableAction::~QClearVariableAction()
 {
-    delete d_ptr;
 }
 
 #include "moc_qclearvariableaction.cpp"

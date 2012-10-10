@@ -58,6 +58,27 @@ QInvocationActionPrivate::~QInvocationActionPrivate()
 {
     delete arguments;
 }
+  
+void QInvocationActionPrivate::addArgument(const QInputPin *argument) 
+{   
+    this->arguments->append(const_cast<QInputPin *>(argument)); 
+
+    // Adjust subsetted property(ies)
+    addInput(argument); 
+}
+ 
+void QInvocationActionPrivate::removeArgument(const QInputPin *argument) 
+{    
+    this->arguments->removeAll(const_cast<QInputPin *>(argument)); 
+
+    // Adjust subsetted property(ies)
+    removeInput(argument);
+}
+  
+void QInvocationActionPrivate::setOnPort(const QPort *onPort) 
+{  
+    this->onPort = const_cast<QPort *>(onPort);   
+}
 
 /*!
     \class QInvocationAction
@@ -68,13 +89,12 @@ QInvocationActionPrivate::~QInvocationActionPrivate()
  */
 
 QInvocationAction::QInvocationAction()
-    : d_ptr(new QInvocationActionPrivate)
 {
+    d_umlptr = new QInvocationActionPrivate;
 }
 
 QInvocationAction::~QInvocationAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -82,17 +102,20 @@ QInvocationAction::~QInvocationAction()
  */
 const QList<QInputPin *> *QInvocationAction::arguments() const
 {
-    return d_ptr->arguments;
+    Q_D(const QInvocationAction);
+    return d->arguments;
 }
 
 void QInvocationAction::addArgument(const QInputPin *argument)
 {
-    d_ptr->arguments->append(const_cast<QInputPin *>(argument));
+    Q_D(QInvocationAction);
+    d->addArgument(const_cast<QInputPin *>(argument));
 }
 
 void QInvocationAction::removeArgument(const QInputPin *argument)
 {
-    d_ptr->arguments->removeAll(const_cast<QInputPin *>(argument));
+    Q_D(QInvocationAction);
+    d->removeArgument(const_cast<QInputPin *>(argument));
 }
 
 /*!
@@ -100,12 +123,14 @@ void QInvocationAction::removeArgument(const QInputPin *argument)
  */
 QPort *QInvocationAction::onPort() const
 {
-    return d_ptr->onPort;
+    Q_D(const QInvocationAction);
+    return d->onPort;
 }
 
 void QInvocationAction::setOnPort(const QPort *onPort)
 {
-    d_ptr->onPort = const_cast<QPort *>(onPort);
+    Q_D(QInvocationAction);
+    d->setOnPort(const_cast<QPort *>(onPort));
 }
 
 QT_END_NAMESPACE_QTUML

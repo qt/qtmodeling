@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qnamedelement_p.h"
+
 // Qt includes
 #include <QtCore/QString>
 #include <QtCore/QSet>
@@ -54,14 +58,11 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QPackageImport;
-
 class QConstraint;
-
 class QElementImport;
-
 class QPackageableElement;
 
-class QNamespacePrivate
+class QNamespacePrivate : public virtual QNamedElementPrivate
 {
 public:
     explicit QNamespacePrivate();
@@ -72,6 +73,20 @@ public:
     QSet<QElementImport *> *elementImports;
     QSet<QConstraint *> *ownedRules;
     QSet<QNamedElement *> *ownedMembers;
+
+    // Association-ends
+    void addPackageImport(const QPackageImport *packageImport);
+    void removePackageImport(const QPackageImport *packageImport);
+    void addMember(const QNamedElement *member);
+    void removeMember(const QNamedElement *member);
+    void addImportedMember(const QPackageableElement *importedMember);
+    void removeImportedMember(const QPackageableElement *importedMember);
+    void addElementImport(const QElementImport *elementImport);
+    void removeElementImport(const QElementImport *elementImport);
+    void addOwnedRule(const QConstraint *ownedRule);
+    void removeOwnedRule(const QConstraint *ownedRule);
+    void addOwnedMember(const QNamedElement *ownedMember);
+    void removeOwnedMember(const QNamedElement *ownedMember);
 };
 
 QT_END_NAMESPACE_QTUML

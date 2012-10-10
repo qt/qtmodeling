@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qbehavior_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,16 +57,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QNamespace;
-
 class QRedefinableElement;
-
 class QState;
-
 class QPseudostate;
-
 class QRegion;
 
-class QStateMachinePrivate
+class QStateMachinePrivate : public QBehaviorPrivate
 {
 public:
     explicit QStateMachinePrivate();
@@ -72,6 +72,16 @@ public:
     QSet<QPseudostate *> *connectionPoints;
     QSet<QState *> *submachineStates;
     QSet<QRegion *> *regions;
+
+    // Association-ends
+    void addExtendedStateMachine(const QStateMachine *extendedStateMachine);
+    void removeExtendedStateMachine(const QStateMachine *extendedStateMachine);
+    void addConnectionPoint(const QPseudostate *connectionPoint);
+    void removeConnectionPoint(const QPseudostate *connectionPoint);
+    void addSubmachineState(const QState *submachineState);
+    void removeSubmachineState(const QState *submachineState);
+    void addRegion(const QRegion *region);
+    void removeRegion(const QRegion *region);
 };
 
 QT_END_NAMESPACE_QTUML

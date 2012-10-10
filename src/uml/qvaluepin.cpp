@@ -55,6 +55,11 @@ QValuePinPrivate::QValuePinPrivate() :
 QValuePinPrivate::~QValuePinPrivate()
 {
 }
+  
+void QValuePinPrivate::setValue(const QValueSpecification *value) 
+{  
+    this->value = const_cast<QValueSpecification *>(value);   
+}
 
 /*!
     \class QValuePin
@@ -65,13 +70,20 @@ QValuePinPrivate::~QValuePinPrivate()
  */
 
 QValuePin::QValuePin(QObject *parent)
-    : QInputPin(parent), d_ptr(new QValuePinPrivate)
+    : QInputPin(false, parent)
 {
+    d_umlptr = new QValuePinPrivate;
+}
+
+QValuePin::QValuePin(bool createPimpl, QObject *parent)
+    : QInputPin(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QValuePinPrivate;
 }
 
 QValuePin::~QValuePin()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,12 +91,14 @@ QValuePin::~QValuePin()
  */
 QValueSpecification *QValuePin::value() const
 {
-    return d_ptr->value;
+    Q_D(const QValuePin);
+    return d->value;
 }
 
 void QValuePin::setValue(const QValueSpecification *value)
 {
-    d_ptr->value = const_cast<QValueSpecification *>(value);
+    Q_D(QValuePin);
+    d->setValue(const_cast<QValueSpecification *>(value));
 }
 
 #include "moc_qvaluepin.cpp"

@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qaction_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,13 +55,16 @@ QT_MODULE(QtUml)
 
 class QInputPin;
 
-class QStartClassifierBehaviorActionPrivate
+class QStartClassifierBehaviorActionPrivate : public QActionPrivate
 {
 public:
     explicit QStartClassifierBehaviorActionPrivate();
     virtual ~QStartClassifierBehaviorActionPrivate();
 
     QInputPin *object;
+
+    // Association-ends
+    void setObject(const QInputPin *object);
 };
 
 QT_END_NAMESPACE_QTUML

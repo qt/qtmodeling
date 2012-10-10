@@ -64,6 +64,43 @@ QComponentPrivate::~QComponentPrivate()
     delete packagedElements;
 }
 
+void QComponentPrivate::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
+{
+    this->isIndirectlyInstantiated = isIndirectlyInstantiated;
+}
+  
+void QComponentPrivate::addRealization(const QComponentRealization *realization) 
+{   
+    this->realizations->insert(const_cast<QComponentRealization *>(realization)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedElement(realization); 
+}
+ 
+void QComponentPrivate::removeRealization(const QComponentRealization *realization) 
+{    
+    this->realizations->remove(const_cast<QComponentRealization *>(realization)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(realization);
+}
+    
+void QComponentPrivate::addPackagedElement(const QPackageableElement *packagedElement) 
+{   
+    this->packagedElements->insert(const_cast<QPackageableElement *>(packagedElement)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedMember(packagedElement); 
+}
+ 
+void QComponentPrivate::removePackagedElement(const QPackageableElement *packagedElement) 
+{    
+    this->packagedElements->remove(const_cast<QPackageableElement *>(packagedElement)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedMember(packagedElement);
+}
+
 /*!
     \class QComponent
 
@@ -73,13 +110,20 @@ QComponentPrivate::~QComponentPrivate()
  */
 
 QComponent::QComponent(QObject *parent)
-    : QClass(parent), d_ptr(new QComponentPrivate)
+    : QClass(false, parent)
 {
+    d_umlptr = new QComponentPrivate;
+}
+
+QComponent::QComponent(bool createPimpl, QObject *parent)
+    : QClass(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QComponentPrivate;
 }
 
 QComponent::~QComponent()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -87,12 +131,14 @@ QComponent::~QComponent()
  */
 bool QComponent::isIndirectlyInstantiated() const
 {
-    return d_ptr->isIndirectlyInstantiated;
+    Q_D(const QComponent);
+    return d->isIndirectlyInstantiated;
 }
 
 void QComponent::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
 {
-    d_ptr->isIndirectlyInstantiated = isIndirectlyInstantiated;
+    Q_D(QComponent);
+    d->setIndirectlyInstantiated(isIndirectlyInstantiated);
 }
 
 /*!
@@ -100,17 +146,20 @@ void QComponent::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
  */
 const QSet<QComponentRealization *> *QComponent::realizations() const
 {
-    return d_ptr->realizations;
+    Q_D(const QComponent);
+    return d->realizations;
 }
 
 void QComponent::addRealization(const QComponentRealization *realization)
 {
-    d_ptr->realizations->insert(const_cast<QComponentRealization *>(realization));
+    Q_D(QComponent);
+    d->addRealization(const_cast<QComponentRealization *>(realization));
 }
 
 void QComponent::removeRealization(const QComponentRealization *realization)
 {
-    d_ptr->realizations->remove(const_cast<QComponentRealization *>(realization));
+    Q_D(QComponent);
+    d->removeRealization(const_cast<QComponentRealization *>(realization));
 }
 
 /*!
@@ -134,17 +183,20 @@ const QSet<QInterface *> *QComponent::provided() const
  */
 const QSet<QPackageableElement *> *QComponent::packagedElements() const
 {
-    return d_ptr->packagedElements;
+    Q_D(const QComponent);
+    return d->packagedElements;
 }
 
 void QComponent::addPackagedElement(const QPackageableElement *packagedElement)
 {
-    d_ptr->packagedElements->insert(const_cast<QPackageableElement *>(packagedElement));
+    Q_D(QComponent);
+    d->addPackagedElement(const_cast<QPackageableElement *>(packagedElement));
 }
 
 void QComponent::removePackagedElement(const QPackageableElement *packagedElement)
 {
-    d_ptr->packagedElements->remove(const_cast<QPackageableElement *>(packagedElement));
+    Q_D(QComponent);
+    d->removePackagedElement(const_cast<QPackageableElement *>(packagedElement));
 }
 
 /*!

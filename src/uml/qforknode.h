@@ -88,14 +88,14 @@ class Q_UML_EXPORT QForkNode : public QObject, public QControlNode
     Q_PROPERTY(const QSet<QActivityEdge *> * outgoings READ outgoings)
 
     Q_DISABLE_COPY(QForkNode)
-    Q_DECLARE_PRIVATE(QForkNode)
+    QTUML_DECLARE_PRIVATE(QForkNode)
 
 public:
     explicit QForkNode(QObject *parent = 0);
     virtual ~QForkNode();
 
 protected:
-    QForkNodePrivate *d_ptr;
+    explicit QForkNode(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

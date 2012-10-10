@@ -54,6 +54,16 @@ QInformationItemPrivate::~QInformationItemPrivate()
 {
     delete represented;
 }
+  
+void QInformationItemPrivate::addRepresented(const QClassifier *represented) 
+{   
+    this->represented->insert(const_cast<QClassifier *>(represented));  
+}
+ 
+void QInformationItemPrivate::removeRepresented(const QClassifier *represented) 
+{    
+    this->represented->remove(const_cast<QClassifier *>(represented)); 
+}
 
 /*!
     \class QInformationItem
@@ -64,13 +74,20 @@ QInformationItemPrivate::~QInformationItemPrivate()
  */
 
 QInformationItem::QInformationItem(QObject *parent)
-    : QObject(parent), d_ptr(new QInformationItemPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QInformationItemPrivate;
+}
+
+QInformationItem::QInformationItem(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QInformationItemPrivate;
 }
 
 QInformationItem::~QInformationItem()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -78,17 +95,20 @@ QInformationItem::~QInformationItem()
  */
 const QSet<QClassifier *> *QInformationItem::represented() const
 {
-    return d_ptr->represented;
+    Q_D(const QInformationItem);
+    return d->represented;
 }
 
 void QInformationItem::addRepresented(const QClassifier *represented)
 {
-    d_ptr->represented->insert(const_cast<QClassifier *>(represented));
+    Q_D(QInformationItem);
+    d->addRepresented(const_cast<QClassifier *>(represented));
 }
 
 void QInformationItem::removeRepresented(const QClassifier *represented)
 {
-    d_ptr->represented->remove(const_cast<QClassifier *>(represented));
+    Q_D(QInformationItem);
+    d->removeRepresented(const_cast<QClassifier *>(represented));
 }
 
 #include "moc_qinformationitem.cpp"

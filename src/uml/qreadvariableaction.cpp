@@ -55,6 +55,11 @@ QReadVariableActionPrivate::QReadVariableActionPrivate() :
 QReadVariableActionPrivate::~QReadVariableActionPrivate()
 {
 }
+  
+void QReadVariableActionPrivate::setResult(const QOutputPin *result) 
+{  
+    this->result = const_cast<QOutputPin *>(result);   
+}
 
 /*!
     \class QReadVariableAction
@@ -65,13 +70,20 @@ QReadVariableActionPrivate::~QReadVariableActionPrivate()
  */
 
 QReadVariableAction::QReadVariableAction(QObject *parent)
-    : QObject(parent), d_ptr(new QReadVariableActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QReadVariableActionPrivate;
+}
+
+QReadVariableAction::QReadVariableAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QReadVariableActionPrivate;
 }
 
 QReadVariableAction::~QReadVariableAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,12 +91,14 @@ QReadVariableAction::~QReadVariableAction()
  */
 QOutputPin *QReadVariableAction::result() const
 {
-    return d_ptr->result;
+    Q_D(const QReadVariableAction);
+    return d->result;
 }
 
 void QReadVariableAction::setResult(const QOutputPin *result)
 {
-    d_ptr->result = const_cast<QOutputPin *>(result);
+    Q_D(QReadVariableAction);
+    d->setResult(const_cast<QOutputPin *>(result));
 }
 
 #include "moc_qreadvariableaction.cpp"

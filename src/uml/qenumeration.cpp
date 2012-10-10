@@ -56,6 +56,22 @@ QEnumerationPrivate::~QEnumerationPrivate()
 {
     delete ownedLiterals;
 }
+  
+void QEnumerationPrivate::addOwnedLiteral(const QEnumerationLiteral *ownedLiteral) 
+{   
+    this->ownedLiterals->append(const_cast<QEnumerationLiteral *>(ownedLiteral)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedMember(ownedLiteral); 
+}
+ 
+void QEnumerationPrivate::removeOwnedLiteral(const QEnumerationLiteral *ownedLiteral) 
+{    
+    this->ownedLiterals->removeAll(const_cast<QEnumerationLiteral *>(ownedLiteral)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedMember(ownedLiteral);
+}
 
 /*!
     \class QEnumeration
@@ -66,13 +82,20 @@ QEnumerationPrivate::~QEnumerationPrivate()
  */
 
 QEnumeration::QEnumeration(QObject *parent)
-    : QDataType(parent), d_ptr(new QEnumerationPrivate)
+    : QDataType(false, parent)
 {
+    d_umlptr = new QEnumerationPrivate;
+}
+
+QEnumeration::QEnumeration(bool createPimpl, QObject *parent)
+    : QDataType(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QEnumerationPrivate;
 }
 
 QEnumeration::~QEnumeration()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -80,17 +103,20 @@ QEnumeration::~QEnumeration()
  */
 const QList<QEnumerationLiteral *> *QEnumeration::ownedLiterals() const
 {
-    return d_ptr->ownedLiterals;
+    Q_D(const QEnumeration);
+    return d->ownedLiterals;
 }
 
 void QEnumeration::addOwnedLiteral(const QEnumerationLiteral *ownedLiteral)
 {
-    d_ptr->ownedLiterals->append(const_cast<QEnumerationLiteral *>(ownedLiteral));
+    Q_D(QEnumeration);
+    d->addOwnedLiteral(const_cast<QEnumerationLiteral *>(ownedLiteral));
 }
 
 void QEnumeration::removeOwnedLiteral(const QEnumerationLiteral *ownedLiteral)
 {
-    d_ptr->ownedLiterals->removeAll(const_cast<QEnumerationLiteral *>(ownedLiteral));
+    Q_D(QEnumeration);
+    d->removeOwnedLiteral(const_cast<QEnumerationLiteral *>(ownedLiteral));
 }
 
 #include "moc_qenumeration.cpp"

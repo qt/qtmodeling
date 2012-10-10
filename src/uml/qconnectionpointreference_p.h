@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qvertex_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,10 +57,9 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QPseudostate;
-
 class QState;
 
-class QConnectionPointReferencePrivate
+class QConnectionPointReferencePrivate : public QVertexPrivate
 {
 public:
     explicit QConnectionPointReferencePrivate();
@@ -65,6 +68,13 @@ public:
     QSet<QPseudostate *> *exits;
     QState *state;
     QSet<QPseudostate *> *entries;
+
+    // Association-ends
+    void addExit(const QPseudostate *exit);
+    void removeExit(const QPseudostate *exit);
+    void setState(const QState *state);
+    void addEntry(const QPseudostate *entry);
+    void removeEntry(const QPseudostate *entry);
 };
 
 QT_END_NAMESPACE_QTUML

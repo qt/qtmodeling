@@ -54,6 +54,11 @@ QOperationTemplateParameterPrivate::QOperationTemplateParameterPrivate() :
 QOperationTemplateParameterPrivate::~QOperationTemplateParameterPrivate()
 {
 }
+  
+void QOperationTemplateParameterPrivate::setParameteredElement(const QOperation *parameteredElement) 
+{  
+    this->parameteredElement = const_cast<QOperation *>(parameteredElement);   
+}
 
 /*!
     \class QOperationTemplateParameter
@@ -64,13 +69,20 @@ QOperationTemplateParameterPrivate::~QOperationTemplateParameterPrivate()
  */
 
 QOperationTemplateParameter::QOperationTemplateParameter(QObject *parent)
-    : QTemplateParameter(parent), d_ptr(new QOperationTemplateParameterPrivate)
+    : QTemplateParameter(false, parent)
 {
+    d_umlptr = new QOperationTemplateParameterPrivate;
+}
+
+QOperationTemplateParameter::QOperationTemplateParameter(bool createPimpl, QObject *parent)
+    : QTemplateParameter(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QOperationTemplateParameterPrivate;
 }
 
 QOperationTemplateParameter::~QOperationTemplateParameter()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -78,12 +90,14 @@ QOperationTemplateParameter::~QOperationTemplateParameter()
  */
 QOperation *QOperationTemplateParameter::parameteredElement() const
 {
-    return d_ptr->parameteredElement;
+    Q_D(const QOperationTemplateParameter);
+    return d->parameteredElement;
 }
 
 void QOperationTemplateParameter::setParameteredElement(const QOperation *parameteredElement)
 {
-    d_ptr->parameteredElement = const_cast<QOperation *>(parameteredElement);
+    Q_D(QOperationTemplateParameter);
+    d->setParameteredElement(const_cast<QOperation *>(parameteredElement));
 }
 
 #include "moc_qoperationtemplateparameter.cpp"

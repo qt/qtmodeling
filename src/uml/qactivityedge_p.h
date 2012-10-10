@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qredefinableelement_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,20 +57,14 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QInterruptibleActivityRegion;
-
 class QStructuredActivityNode;
-
 class QActivityNode;
-
 class QActivityPartition;
-
 class QValueSpecification;
-
 class QActivity;
-
 class QActivityGroup;
 
-class QActivityEdgePrivate
+class QActivityEdgePrivate : public QRedefinableElementPrivate
 {
 public:
     explicit QActivityEdgePrivate();
@@ -82,6 +80,21 @@ public:
     QValueSpecification *weight;
     QStructuredActivityNode *inStructuredNode;
     QActivityNode *target;
+
+    // Association-ends
+    void setSource(const QActivityNode *source);
+    void addRedefinedEdge(const QActivityEdge *redefinedEdge);
+    void removeRedefinedEdge(const QActivityEdge *redefinedEdge);
+    void addInGroup(const QActivityGroup *inGroup);
+    void removeInGroup(const QActivityGroup *inGroup);
+    void setGuard(const QValueSpecification *guard);
+    void addInPartition(const QActivityPartition *inPartition);
+    void removeInPartition(const QActivityPartition *inPartition);
+    void setActivity(const QActivity *activity);
+    void setInterrupts(const QInterruptibleActivityRegion *interrupts);
+    void setWeight(const QValueSpecification *weight);
+    void setInStructuredNode(const QStructuredActivityNode *inStructuredNode);
+    void setTarget(const QActivityNode *target);
 };
 
 QT_END_NAMESPACE_QTUML

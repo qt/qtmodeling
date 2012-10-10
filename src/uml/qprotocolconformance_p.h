@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qdirectedrelationship_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,7 +55,7 @@ QT_MODULE(QtUml)
 
 class QProtocolStateMachine;
 
-class QProtocolConformancePrivate
+class QProtocolConformancePrivate : public QDirectedRelationshipPrivate
 {
 public:
     explicit QProtocolConformancePrivate();
@@ -59,6 +63,10 @@ public:
 
     QProtocolStateMachine *specificMachine;
     QProtocolStateMachine *generalMachine;
+
+    // Association-ends
+    void setSpecificMachine(const QProtocolStateMachine *specificMachine);
+    void setGeneralMachine(const QProtocolStateMachine *generalMachine);
 };
 
 QT_END_NAMESPACE_QTUML

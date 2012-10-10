@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qaction_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,10 +57,9 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QTrigger;
-
 class QInputPin;
 
-class QReplyActionPrivate
+class QReplyActionPrivate : public QActionPrivate
 {
 public:
     explicit QReplyActionPrivate();
@@ -65,6 +68,12 @@ public:
     QTrigger *replyToCall;
     QInputPin *returnInformation;
     QSet<QInputPin *> *replyValues;
+
+    // Association-ends
+    void setReplyToCall(const QTrigger *replyToCall);
+    void setReturnInformation(const QInputPin *returnInformation);
+    void addReplyValue(const QInputPin *replyValue);
+    void removeReplyValue(const QInputPin *replyValue);
 };
 
 QT_END_NAMESPACE_QTUML

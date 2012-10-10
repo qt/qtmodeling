@@ -60,6 +60,21 @@ QTestIdentityActionPrivate::QTestIdentityActionPrivate() :
 QTestIdentityActionPrivate::~QTestIdentityActionPrivate()
 {
 }
+  
+void QTestIdentityActionPrivate::setSecond(const QInputPin *second) 
+{  
+    this->second = const_cast<QInputPin *>(second);   
+}
+  
+void QTestIdentityActionPrivate::setResult(const QOutputPin *result) 
+{  
+    this->result = const_cast<QOutputPin *>(result);   
+}
+  
+void QTestIdentityActionPrivate::setFirst(const QInputPin *first) 
+{  
+    this->first = const_cast<QInputPin *>(first);   
+}
 
 /*!
     \class QTestIdentityAction
@@ -70,13 +85,20 @@ QTestIdentityActionPrivate::~QTestIdentityActionPrivate()
  */
 
 QTestIdentityAction::QTestIdentityAction(QObject *parent)
-    : QObject(parent), d_ptr(new QTestIdentityActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QTestIdentityActionPrivate;
+}
+
+QTestIdentityAction::QTestIdentityAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QTestIdentityActionPrivate;
 }
 
 QTestIdentityAction::~QTestIdentityAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -84,12 +106,14 @@ QTestIdentityAction::~QTestIdentityAction()
  */
 QInputPin *QTestIdentityAction::second() const
 {
-    return d_ptr->second;
+    Q_D(const QTestIdentityAction);
+    return d->second;
 }
 
 void QTestIdentityAction::setSecond(const QInputPin *second)
 {
-    d_ptr->second = const_cast<QInputPin *>(second);
+    Q_D(QTestIdentityAction);
+    d->setSecond(const_cast<QInputPin *>(second));
 }
 
 /*!
@@ -97,12 +121,14 @@ void QTestIdentityAction::setSecond(const QInputPin *second)
  */
 QOutputPin *QTestIdentityAction::result() const
 {
-    return d_ptr->result;
+    Q_D(const QTestIdentityAction);
+    return d->result;
 }
 
 void QTestIdentityAction::setResult(const QOutputPin *result)
 {
-    d_ptr->result = const_cast<QOutputPin *>(result);
+    Q_D(QTestIdentityAction);
+    d->setResult(const_cast<QOutputPin *>(result));
 }
 
 /*!
@@ -110,12 +136,14 @@ void QTestIdentityAction::setResult(const QOutputPin *result)
  */
 QInputPin *QTestIdentityAction::first() const
 {
-    return d_ptr->first;
+    Q_D(const QTestIdentityAction);
+    return d->first;
 }
 
 void QTestIdentityAction::setFirst(const QInputPin *first)
 {
-    d_ptr->first = const_cast<QInputPin *>(first);
+    Q_D(QTestIdentityAction);
+    d->setFirst(const_cast<QInputPin *>(first));
 }
 
 #include "moc_qtestidentityaction.cpp"

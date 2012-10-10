@@ -57,6 +57,21 @@ QDurationConstraintPrivate::~QDurationConstraintPrivate()
     delete firstEvents;
 }
 
+void QDurationConstraintPrivate::addFirstEvent(bool firstEvent)
+{
+    this->firstEvents->insert(firstEvent);
+}
+
+void QDurationConstraintPrivate::removeFirstEvent(bool firstEvent)
+{
+    this->firstEvents->remove(firstEvent);
+}
+  
+void QDurationConstraintPrivate::setSpecification(const QDurationInterval *specification) 
+{  
+    this->specification = const_cast<QDurationInterval *>(specification);   
+}
+
 /*!
     \class QDurationConstraint
 
@@ -66,13 +81,20 @@ QDurationConstraintPrivate::~QDurationConstraintPrivate()
  */
 
 QDurationConstraint::QDurationConstraint(QObject *parent)
-    : QIntervalConstraint(parent), d_ptr(new QDurationConstraintPrivate)
+    : QIntervalConstraint(false, parent)
 {
+    d_umlptr = new QDurationConstraintPrivate;
+}
+
+QDurationConstraint::QDurationConstraint(bool createPimpl, QObject *parent)
+    : QIntervalConstraint(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QDurationConstraintPrivate;
 }
 
 QDurationConstraint::~QDurationConstraint()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -80,17 +102,20 @@ QDurationConstraint::~QDurationConstraint()
  */
 const QSet<bool> *QDurationConstraint::firstEvents() const
 {
-    return d_ptr->firstEvents;
+    Q_D(const QDurationConstraint);
+    return d->firstEvents;
 }
 
 void QDurationConstraint::addFirstEvent(bool firstEvent)
 {
-    d_ptr->firstEvents->insert(firstEvent);
+    Q_D(QDurationConstraint);
+    d->addFirstEvent(firstEvent);
 }
 
 void QDurationConstraint::removeFirstEvent(bool firstEvent)
 {
-    d_ptr->firstEvents->remove(firstEvent);
+    Q_D(QDurationConstraint);
+    d->removeFirstEvent(firstEvent);
 }
 
 /*!
@@ -98,12 +123,14 @@ void QDurationConstraint::removeFirstEvent(bool firstEvent)
  */
 QDurationInterval *QDurationConstraint::specification() const
 {
-    return d_ptr->specification;
+    Q_D(const QDurationConstraint);
+    return d->specification;
 }
 
 void QDurationConstraint::setSpecification(const QDurationInterval *specification)
 {
-    d_ptr->specification = const_cast<QDurationInterval *>(specification);
+    Q_D(QDurationConstraint);
+    d->setSpecification(const_cast<QDurationInterval *>(specification));
 }
 
 #include "moc_qdurationconstraint.cpp"

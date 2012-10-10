@@ -64,7 +64,7 @@ class Q_UML_EXPORT QInteractionConstraint : public QConstraint
     Q_PROPERTY(QValueSpecification * minint READ minint WRITE setMinint)
 
     Q_DISABLE_COPY(QInteractionConstraint)
-    Q_DECLARE_PRIVATE(QInteractionConstraint)
+    QTUML_DECLARE_PRIVATE(QInteractionConstraint)
 
 public:
     explicit QInteractionConstraint(QObject *parent = 0);
@@ -77,7 +77,7 @@ public:
     void setMinint(const QValueSpecification *minint);
 
 protected:
-    QInteractionConstraintPrivate *d_ptr;
+    explicit QInteractionConstraint(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

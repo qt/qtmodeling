@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qaction_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,7 +55,7 @@ QT_MODULE(QtUml)
 
 class QInputPin;
 
-class QDestroyObjectActionPrivate
+class QDestroyObjectActionPrivate : public QActionPrivate
 {
 public:
     explicit QDestroyObjectActionPrivate();
@@ -60,6 +64,13 @@ public:
     bool isDestroyLinks;
     bool isDestroyOwnedObjects;
     QInputPin *target;
+
+    // Attributes
+    void setDestroyLinks(bool isDestroyLinks);
+    void setDestroyOwnedObjects(bool isDestroyOwnedObjects);
+
+    // Association-ends
+    void setTarget(const QInputPin *target);
 };
 
 QT_END_NAMESPACE_QTUML

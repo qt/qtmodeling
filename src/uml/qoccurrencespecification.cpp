@@ -59,6 +59,31 @@ QOccurrenceSpecificationPrivate::~QOccurrenceSpecificationPrivate()
     delete toAfter;
     delete toBefore;
 }
+  
+void QOccurrenceSpecificationPrivate::setCovered(const QLifeline *covered) 
+{  
+    this->covered = const_cast<QLifeline *>(covered);   
+}
+  
+void QOccurrenceSpecificationPrivate::addToAfter(const QGeneralOrdering *toAfter) 
+{   
+    this->toAfter->insert(const_cast<QGeneralOrdering *>(toAfter));  
+}
+ 
+void QOccurrenceSpecificationPrivate::removeToAfter(const QGeneralOrdering *toAfter) 
+{    
+    this->toAfter->remove(const_cast<QGeneralOrdering *>(toAfter)); 
+}
+  
+void QOccurrenceSpecificationPrivate::addToBefore(const QGeneralOrdering *toBefore) 
+{   
+    this->toBefore->insert(const_cast<QGeneralOrdering *>(toBefore));  
+}
+ 
+void QOccurrenceSpecificationPrivate::removeToBefore(const QGeneralOrdering *toBefore) 
+{    
+    this->toBefore->remove(const_cast<QGeneralOrdering *>(toBefore)); 
+}
 
 /*!
     \class QOccurrenceSpecification
@@ -69,13 +94,20 @@ QOccurrenceSpecificationPrivate::~QOccurrenceSpecificationPrivate()
  */
 
 QOccurrenceSpecification::QOccurrenceSpecification(QObject *parent)
-    : QObject(parent), d_ptr(new QOccurrenceSpecificationPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QOccurrenceSpecificationPrivate;
+}
+
+QOccurrenceSpecification::QOccurrenceSpecification(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QOccurrenceSpecificationPrivate;
 }
 
 QOccurrenceSpecification::~QOccurrenceSpecification()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -83,12 +115,14 @@ QOccurrenceSpecification::~QOccurrenceSpecification()
  */
 QLifeline *QOccurrenceSpecification::covered() const
 {
-    return d_ptr->covered;
+    Q_D(const QOccurrenceSpecification);
+    return d->covered;
 }
 
 void QOccurrenceSpecification::setCovered(const QLifeline *covered)
 {
-    d_ptr->covered = const_cast<QLifeline *>(covered);
+    Q_D(QOccurrenceSpecification);
+    d->setCovered(const_cast<QLifeline *>(covered));
 }
 
 /*!
@@ -96,17 +130,20 @@ void QOccurrenceSpecification::setCovered(const QLifeline *covered)
  */
 const QSet<QGeneralOrdering *> *QOccurrenceSpecification::toAfter() const
 {
-    return d_ptr->toAfter;
+    Q_D(const QOccurrenceSpecification);
+    return d->toAfter;
 }
 
 void QOccurrenceSpecification::addToAfter(const QGeneralOrdering *toAfter)
 {
-    d_ptr->toAfter->insert(const_cast<QGeneralOrdering *>(toAfter));
+    Q_D(QOccurrenceSpecification);
+    d->addToAfter(const_cast<QGeneralOrdering *>(toAfter));
 }
 
 void QOccurrenceSpecification::removeToAfter(const QGeneralOrdering *toAfter)
 {
-    d_ptr->toAfter->remove(const_cast<QGeneralOrdering *>(toAfter));
+    Q_D(QOccurrenceSpecification);
+    d->removeToAfter(const_cast<QGeneralOrdering *>(toAfter));
 }
 
 /*!
@@ -114,17 +151,20 @@ void QOccurrenceSpecification::removeToAfter(const QGeneralOrdering *toAfter)
  */
 const QSet<QGeneralOrdering *> *QOccurrenceSpecification::toBefore() const
 {
-    return d_ptr->toBefore;
+    Q_D(const QOccurrenceSpecification);
+    return d->toBefore;
 }
 
 void QOccurrenceSpecification::addToBefore(const QGeneralOrdering *toBefore)
 {
-    d_ptr->toBefore->insert(const_cast<QGeneralOrdering *>(toBefore));
+    Q_D(QOccurrenceSpecification);
+    d->addToBefore(const_cast<QGeneralOrdering *>(toBefore));
 }
 
 void QOccurrenceSpecification::removeToBefore(const QGeneralOrdering *toBefore)
 {
-    d_ptr->toBefore->remove(const_cast<QGeneralOrdering *>(toBefore));
+    Q_D(QOccurrenceSpecification);
+    d->removeToBefore(const_cast<QGeneralOrdering *>(toBefore));
 }
 
 #include "moc_qoccurrencespecification.cpp"

@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qliteralspecification_p.h"
+
 // Qt includes
 #include <QtCore/QString>
 
@@ -52,13 +56,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QLiteralStringPrivate
+
+class QLiteralStringPrivate : public QLiteralSpecificationPrivate
 {
 public:
     explicit QLiteralStringPrivate();
     virtual ~QLiteralStringPrivate();
 
     QString value;
+
+    // Attributes
+    void setValue(QString value);
 };
 
 QT_END_NAMESPACE_QTUML

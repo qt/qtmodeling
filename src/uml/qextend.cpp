@@ -64,6 +64,31 @@ QExtendPrivate::~QExtendPrivate()
 {
     delete extensionLocations;
 }
+  
+void QExtendPrivate::setExtendedCase(const QUseCase *extendedCase) 
+{  
+    this->extendedCase = const_cast<QUseCase *>(extendedCase);   
+}
+  
+void QExtendPrivate::setExtension(const QUseCase *extension) 
+{  
+    this->extension = const_cast<QUseCase *>(extension);   
+}
+  
+void QExtendPrivate::addExtensionLocation(const QExtensionPoint *extensionLocation) 
+{   
+    this->extensionLocations->append(const_cast<QExtensionPoint *>(extensionLocation));  
+}
+ 
+void QExtendPrivate::removeExtensionLocation(const QExtensionPoint *extensionLocation) 
+{    
+    this->extensionLocations->removeAll(const_cast<QExtensionPoint *>(extensionLocation)); 
+}
+  
+void QExtendPrivate::setCondition(const QConstraint *condition) 
+{  
+    this->condition = const_cast<QConstraint *>(condition);   
+}
 
 /*!
     \class QExtend
@@ -74,13 +99,20 @@ QExtendPrivate::~QExtendPrivate()
  */
 
 QExtend::QExtend(QObject *parent)
-    : QObject(parent), d_ptr(new QExtendPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QExtendPrivate;
+}
+
+QExtend::QExtend(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QExtendPrivate;
 }
 
 QExtend::~QExtend()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -88,12 +120,14 @@ QExtend::~QExtend()
  */
 QUseCase *QExtend::extendedCase() const
 {
-    return d_ptr->extendedCase;
+    Q_D(const QExtend);
+    return d->extendedCase;
 }
 
 void QExtend::setExtendedCase(const QUseCase *extendedCase)
 {
-    d_ptr->extendedCase = const_cast<QUseCase *>(extendedCase);
+    Q_D(QExtend);
+    d->setExtendedCase(const_cast<QUseCase *>(extendedCase));
 }
 
 /*!
@@ -101,12 +135,14 @@ void QExtend::setExtendedCase(const QUseCase *extendedCase)
  */
 QUseCase *QExtend::extension() const
 {
-    return d_ptr->extension;
+    Q_D(const QExtend);
+    return d->extension;
 }
 
 void QExtend::setExtension(const QUseCase *extension)
 {
-    d_ptr->extension = const_cast<QUseCase *>(extension);
+    Q_D(QExtend);
+    d->setExtension(const_cast<QUseCase *>(extension));
 }
 
 /*!
@@ -114,17 +150,20 @@ void QExtend::setExtension(const QUseCase *extension)
  */
 const QList<QExtensionPoint *> *QExtend::extensionLocations() const
 {
-    return d_ptr->extensionLocations;
+    Q_D(const QExtend);
+    return d->extensionLocations;
 }
 
 void QExtend::addExtensionLocation(const QExtensionPoint *extensionLocation)
 {
-    d_ptr->extensionLocations->append(const_cast<QExtensionPoint *>(extensionLocation));
+    Q_D(QExtend);
+    d->addExtensionLocation(const_cast<QExtensionPoint *>(extensionLocation));
 }
 
 void QExtend::removeExtensionLocation(const QExtensionPoint *extensionLocation)
 {
-    d_ptr->extensionLocations->removeAll(const_cast<QExtensionPoint *>(extensionLocation));
+    Q_D(QExtend);
+    d->removeExtensionLocation(const_cast<QExtensionPoint *>(extensionLocation));
 }
 
 /*!
@@ -132,12 +171,14 @@ void QExtend::removeExtensionLocation(const QExtensionPoint *extensionLocation)
  */
 QConstraint *QExtend::condition() const
 {
-    return d_ptr->condition;
+    Q_D(const QExtend);
+    return d->condition;
 }
 
 void QExtend::setCondition(const QConstraint *condition)
 {
-    d_ptr->condition = const_cast<QConstraint *>(condition);
+    Q_D(QExtend);
+    d->setCondition(const_cast<QConstraint *>(condition));
 }
 
 #include "moc_qextend.cpp"

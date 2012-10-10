@@ -57,6 +57,21 @@ QTriggerPrivate::~QTriggerPrivate()
 {
     delete ports;
 }
+  
+void QTriggerPrivate::addPort(const QPort *port) 
+{   
+    this->ports->insert(const_cast<QPort *>(port));  
+}
+ 
+void QTriggerPrivate::removePort(const QPort *port) 
+{    
+    this->ports->remove(const_cast<QPort *>(port)); 
+}
+  
+void QTriggerPrivate::setEvent(const QEvent *event) 
+{  
+    this->event = const_cast<QEvent *>(event);   
+}
 
 /*!
     \class QTrigger
@@ -67,13 +82,20 @@ QTriggerPrivate::~QTriggerPrivate()
  */
 
 QTrigger::QTrigger(QObject *parent)
-    : QObject(parent), d_ptr(new QTriggerPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QTriggerPrivate;
+}
+
+QTrigger::QTrigger(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QTriggerPrivate;
 }
 
 QTrigger::~QTrigger()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -81,17 +103,20 @@ QTrigger::~QTrigger()
  */
 const QSet<QPort *> *QTrigger::ports() const
 {
-    return d_ptr->ports;
+    Q_D(const QTrigger);
+    return d->ports;
 }
 
 void QTrigger::addPort(const QPort *port)
 {
-    d_ptr->ports->insert(const_cast<QPort *>(port));
+    Q_D(QTrigger);
+    d->addPort(const_cast<QPort *>(port));
 }
 
 void QTrigger::removePort(const QPort *port)
 {
-    d_ptr->ports->remove(const_cast<QPort *>(port));
+    Q_D(QTrigger);
+    d->removePort(const_cast<QPort *>(port));
 }
 
 /*!
@@ -99,12 +124,14 @@ void QTrigger::removePort(const QPort *port)
  */
 QEvent *QTrigger::event() const
 {
-    return d_ptr->event;
+    Q_D(const QTrigger);
+    return d->event;
 }
 
 void QTrigger::setEvent(const QEvent *event)
 {
-    d_ptr->event = const_cast<QEvent *>(event);
+    Q_D(QTrigger);
+    d->setEvent(const_cast<QEvent *>(event));
 }
 
 #include "moc_qtrigger.cpp"

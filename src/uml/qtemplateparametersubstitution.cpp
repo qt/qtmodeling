@@ -61,6 +61,26 @@ QTemplateParameterSubstitutionPrivate::QTemplateParameterSubstitutionPrivate() :
 QTemplateParameterSubstitutionPrivate::~QTemplateParameterSubstitutionPrivate()
 {
 }
+  
+void QTemplateParameterSubstitutionPrivate::setOwnedActual(const QParameterableElement *ownedActual) 
+{  
+    this->ownedActual = const_cast<QParameterableElement *>(ownedActual);   
+}
+  
+void QTemplateParameterSubstitutionPrivate::setFormal(const QTemplateParameter *formal) 
+{  
+    this->formal = const_cast<QTemplateParameter *>(formal);   
+}
+  
+void QTemplateParameterSubstitutionPrivate::setActual(const QParameterableElement *actual) 
+{  
+    this->actual = const_cast<QParameterableElement *>(actual);   
+}
+  
+void QTemplateParameterSubstitutionPrivate::setTemplateBinding(const QTemplateBinding *templateBinding) 
+{  
+    this->templateBinding = const_cast<QTemplateBinding *>(templateBinding);   
+}
 
 /*!
     \class QTemplateParameterSubstitution
@@ -71,13 +91,20 @@ QTemplateParameterSubstitutionPrivate::~QTemplateParameterSubstitutionPrivate()
  */
 
 QTemplateParameterSubstitution::QTemplateParameterSubstitution(QObject *parent)
-    : QObject(parent), d_ptr(new QTemplateParameterSubstitutionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QTemplateParameterSubstitutionPrivate;
+}
+
+QTemplateParameterSubstitution::QTemplateParameterSubstitution(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QTemplateParameterSubstitutionPrivate;
 }
 
 QTemplateParameterSubstitution::~QTemplateParameterSubstitution()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -85,12 +112,14 @@ QTemplateParameterSubstitution::~QTemplateParameterSubstitution()
  */
 QParameterableElement *QTemplateParameterSubstitution::ownedActual() const
 {
-    return d_ptr->ownedActual;
+    Q_D(const QTemplateParameterSubstitution);
+    return d->ownedActual;
 }
 
 void QTemplateParameterSubstitution::setOwnedActual(const QParameterableElement *ownedActual)
 {
-    d_ptr->ownedActual = const_cast<QParameterableElement *>(ownedActual);
+    Q_D(QTemplateParameterSubstitution);
+    d->setOwnedActual(const_cast<QParameterableElement *>(ownedActual));
 }
 
 /*!
@@ -98,12 +127,14 @@ void QTemplateParameterSubstitution::setOwnedActual(const QParameterableElement 
  */
 QTemplateParameter *QTemplateParameterSubstitution::formal() const
 {
-    return d_ptr->formal;
+    Q_D(const QTemplateParameterSubstitution);
+    return d->formal;
 }
 
 void QTemplateParameterSubstitution::setFormal(const QTemplateParameter *formal)
 {
-    d_ptr->formal = const_cast<QTemplateParameter *>(formal);
+    Q_D(QTemplateParameterSubstitution);
+    d->setFormal(const_cast<QTemplateParameter *>(formal));
 }
 
 /*!
@@ -111,12 +142,14 @@ void QTemplateParameterSubstitution::setFormal(const QTemplateParameter *formal)
  */
 QParameterableElement *QTemplateParameterSubstitution::actual() const
 {
-    return d_ptr->actual;
+    Q_D(const QTemplateParameterSubstitution);
+    return d->actual;
 }
 
 void QTemplateParameterSubstitution::setActual(const QParameterableElement *actual)
 {
-    d_ptr->actual = const_cast<QParameterableElement *>(actual);
+    Q_D(QTemplateParameterSubstitution);
+    d->setActual(const_cast<QParameterableElement *>(actual));
 }
 
 /*!
@@ -124,12 +157,14 @@ void QTemplateParameterSubstitution::setActual(const QParameterableElement *actu
  */
 QTemplateBinding *QTemplateParameterSubstitution::templateBinding() const
 {
-    return d_ptr->templateBinding;
+    Q_D(const QTemplateParameterSubstitution);
+    return d->templateBinding;
 }
 
 void QTemplateParameterSubstitution::setTemplateBinding(const QTemplateBinding *templateBinding)
 {
-    d_ptr->templateBinding = const_cast<QTemplateBinding *>(templateBinding);
+    Q_D(QTemplateParameterSubstitution);
+    d->setTemplateBinding(const_cast<QTemplateBinding *>(templateBinding));
 }
 
 #include "moc_qtemplateparametersubstitution.cpp"

@@ -55,6 +55,11 @@ QConnectableElementPrivate::QConnectableElementPrivate() :
 QConnectableElementPrivate::~QConnectableElementPrivate()
 {
 }
+   
+void QConnectableElementPrivate::setTemplateParameter(const QConnectableElementTemplateParameter *templateParameter) 
+{  
+    this->templateParameter = const_cast<QConnectableElementTemplateParameter *>(templateParameter);   
+}
 
 /*!
     \class QConnectableElement
@@ -65,13 +70,12 @@ QConnectableElementPrivate::~QConnectableElementPrivate()
  */
 
 QConnectableElement::QConnectableElement()
-    : d_ptr(new QConnectableElementPrivate)
 {
+    d_umlptr = new QConnectableElementPrivate;
 }
 
 QConnectableElement::~QConnectableElement()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -87,12 +91,14 @@ const QList<QConnectorEnd *> *QConnectableElement::ends() const
  */
 QConnectableElementTemplateParameter *QConnectableElement::templateParameter() const
 {
-    return d_ptr->templateParameter;
+    Q_D(const QConnectableElement);
+    return d->templateParameter;
 }
 
 void QConnectableElement::setTemplateParameter(const QConnectableElementTemplateParameter *templateParameter)
 {
-    d_ptr->templateParameter = const_cast<QConnectableElementTemplateParameter *>(templateParameter);
+    Q_D(QConnectableElement);
+    d->setTemplateParameter(const_cast<QConnectableElementTemplateParameter *>(templateParameter));
 }
 
 QT_END_NAMESPACE_QTUML

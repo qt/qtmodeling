@@ -54,6 +54,11 @@ QCallBehaviorActionPrivate::QCallBehaviorActionPrivate() :
 QCallBehaviorActionPrivate::~QCallBehaviorActionPrivate()
 {
 }
+  
+void QCallBehaviorActionPrivate::setBehavior(const QBehavior *behavior) 
+{  
+    this->behavior = const_cast<QBehavior *>(behavior);   
+}
 
 /*!
     \class QCallBehaviorAction
@@ -64,13 +69,20 @@ QCallBehaviorActionPrivate::~QCallBehaviorActionPrivate()
  */
 
 QCallBehaviorAction::QCallBehaviorAction(QObject *parent)
-    : QObject(parent), d_ptr(new QCallBehaviorActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QCallBehaviorActionPrivate;
+}
+
+QCallBehaviorAction::QCallBehaviorAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QCallBehaviorActionPrivate;
 }
 
 QCallBehaviorAction::~QCallBehaviorAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -78,12 +90,14 @@ QCallBehaviorAction::~QCallBehaviorAction()
  */
 QBehavior *QCallBehaviorAction::behavior() const
 {
-    return d_ptr->behavior;
+    Q_D(const QCallBehaviorAction);
+    return d->behavior;
 }
 
 void QCallBehaviorAction::setBehavior(const QBehavior *behavior)
 {
-    d_ptr->behavior = const_cast<QBehavior *>(behavior);
+    Q_D(QCallBehaviorAction);
+    d->setBehavior(const_cast<QBehavior *>(behavior));
 }
 
 #include "moc_qcallbehavioraction.cpp"

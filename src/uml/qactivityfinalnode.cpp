@@ -62,13 +62,20 @@ QActivityFinalNodePrivate::~QActivityFinalNodePrivate()
  */
 
 QActivityFinalNode::QActivityFinalNode(QObject *parent)
-    : QObject(parent), d_ptr(new QActivityFinalNodePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QActivityFinalNodePrivate;
+}
+
+QActivityFinalNode::QActivityFinalNode(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QActivityFinalNodePrivate;
 }
 
 QActivityFinalNode::~QActivityFinalNode()
 {
-    delete d_ptr;
 }
 
 #include "moc_qactivityfinalnode.cpp"

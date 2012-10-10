@@ -106,7 +106,7 @@ class Q_UML_EXPORT QReadVariableAction : public QObject, public QVariableAction
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
     Q_DISABLE_COPY(QReadVariableAction)
-    Q_DECLARE_PRIVATE(QReadVariableAction)
+    QTUML_DECLARE_PRIVATE(QReadVariableAction)
 
 public:
     explicit QReadVariableAction(QObject *parent = 0);
@@ -117,7 +117,7 @@ public:
     void setResult(const QOutputPin *result);
 
 protected:
-    QReadVariableActionPrivate *d_ptr;
+    explicit QReadVariableAction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

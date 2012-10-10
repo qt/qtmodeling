@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qelement_p.h"
+
 // Qt includes
 #include <QtCore/QList>
 
@@ -53,12 +57,10 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QStructuralFeature;
-
 class QInstanceSpecification;
-
 class QValueSpecification;
 
-class QSlotPrivate
+class QSlotPrivate : public QElementPrivate
 {
 public:
     explicit QSlotPrivate();
@@ -67,6 +69,12 @@ public:
     QList<QValueSpecification *> *values;
     QStructuralFeature *definingFeature;
     QInstanceSpecification *owningInstance;
+
+    // Association-ends
+    void addValue(const QValueSpecification *value);
+    void removeValue(const QValueSpecification *value);
+    void setDefiningFeature(const QStructuralFeature *definingFeature);
+    void setOwningInstance(const QInstanceSpecification *owningInstance);
 };
 
 QT_END_NAMESPACE_QTUML

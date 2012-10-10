@@ -89,7 +89,7 @@ class Q_UML_EXPORT QInterruptibleActivityRegion : public QObject, public QActivi
     Q_PROPERTY(const QSet<QActivityNode *> * nodes READ nodes)
 
     Q_DISABLE_COPY(QInterruptibleActivityRegion)
-    Q_DECLARE_PRIVATE(QInterruptibleActivityRegion)
+    QTUML_DECLARE_PRIVATE(QInterruptibleActivityRegion)
 
 public:
     explicit QInterruptibleActivityRegion(QObject *parent = 0);
@@ -104,7 +104,7 @@ public:
     void removeNode(const QActivityNode *node);
 
 protected:
-    QInterruptibleActivityRegionPrivate *d_ptr;
+    explicit QInterruptibleActivityRegion(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

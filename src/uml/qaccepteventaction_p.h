@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qaction_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,10 +57,9 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QOutputPin;
-
 class QTrigger;
 
-class QAcceptEventActionPrivate
+class QAcceptEventActionPrivate : public QActionPrivate
 {
 public:
     explicit QAcceptEventActionPrivate();
@@ -65,6 +68,15 @@ public:
     bool isUnmarshall;
     QSet<QTrigger *> *triggers;
     QSet<QOutputPin *> *results;
+
+    // Attributes
+    void setUnmarshall(bool isUnmarshall);
+
+    // Association-ends
+    void addTrigger(const QTrigger *trigger);
+    void removeTrigger(const QTrigger *trigger);
+    void addResult(const QOutputPin *result);
+    void removeResult(const QOutputPin *result);
 };
 
 QT_END_NAMESPACE_QTUML

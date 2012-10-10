@@ -57,6 +57,16 @@ QRemoveStructuralFeatureValueActionPrivate::~QRemoveStructuralFeatureValueAction
 {
 }
 
+void QRemoveStructuralFeatureValueActionPrivate::setRemoveDuplicates(bool isRemoveDuplicates)
+{
+    this->isRemoveDuplicates = isRemoveDuplicates;
+}
+  
+void QRemoveStructuralFeatureValueActionPrivate::setRemoveAt(const QInputPin *removeAt) 
+{  
+    this->removeAt = const_cast<QInputPin *>(removeAt);   
+}
+
 /*!
     \class QRemoveStructuralFeatureValueAction
 
@@ -66,13 +76,20 @@ QRemoveStructuralFeatureValueActionPrivate::~QRemoveStructuralFeatureValueAction
  */
 
 QRemoveStructuralFeatureValueAction::QRemoveStructuralFeatureValueAction(QObject *parent)
-    : QObject(parent), d_ptr(new QRemoveStructuralFeatureValueActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QRemoveStructuralFeatureValueActionPrivate;
+}
+
+QRemoveStructuralFeatureValueAction::QRemoveStructuralFeatureValueAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QRemoveStructuralFeatureValueActionPrivate;
 }
 
 QRemoveStructuralFeatureValueAction::~QRemoveStructuralFeatureValueAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -80,12 +97,14 @@ QRemoveStructuralFeatureValueAction::~QRemoveStructuralFeatureValueAction()
  */
 bool QRemoveStructuralFeatureValueAction::isRemoveDuplicates() const
 {
-    return d_ptr->isRemoveDuplicates;
+    Q_D(const QRemoveStructuralFeatureValueAction);
+    return d->isRemoveDuplicates;
 }
 
 void QRemoveStructuralFeatureValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
 {
-    d_ptr->isRemoveDuplicates = isRemoveDuplicates;
+    Q_D(QRemoveStructuralFeatureValueAction);
+    d->setRemoveDuplicates(isRemoveDuplicates);
 }
 
 /*!
@@ -93,12 +112,14 @@ void QRemoveStructuralFeatureValueAction::setRemoveDuplicates(bool isRemoveDupli
  */
 QInputPin *QRemoveStructuralFeatureValueAction::removeAt() const
 {
-    return d_ptr->removeAt;
+    Q_D(const QRemoveStructuralFeatureValueAction);
+    return d->removeAt;
 }
 
 void QRemoveStructuralFeatureValueAction::setRemoveAt(const QInputPin *removeAt)
 {
-    d_ptr->removeAt = const_cast<QInputPin *>(removeAt);
+    Q_D(QRemoveStructuralFeatureValueAction);
+    d->setRemoveAt(const_cast<QInputPin *>(removeAt));
 }
 
 #include "moc_qremovestructuralfeaturevalueaction.cpp"

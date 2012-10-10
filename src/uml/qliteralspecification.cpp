@@ -62,13 +62,12 @@ QLiteralSpecificationPrivate::~QLiteralSpecificationPrivate()
  */
 
 QLiteralSpecification::QLiteralSpecification()
-    : d_ptr(new QLiteralSpecificationPrivate)
 {
+    d_umlptr = new QLiteralSpecificationPrivate;
 }
 
 QLiteralSpecification::~QLiteralSpecification()
 {
-    delete d_ptr;
 }
 
 QT_END_NAMESPACE_QTUML

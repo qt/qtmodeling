@@ -54,6 +54,11 @@ QExtensionEndPrivate::QExtensionEndPrivate() :
 QExtensionEndPrivate::~QExtensionEndPrivate()
 {
 }
+  
+void QExtensionEndPrivate::setType(const QStereotype *type) 
+{  
+    this->type = const_cast<QStereotype *>(type);   
+}
 
 /*!
     \class QExtensionEnd
@@ -64,13 +69,20 @@ QExtensionEndPrivate::~QExtensionEndPrivate()
  */
 
 QExtensionEnd::QExtensionEnd(QObject *parent)
-    : QProperty(parent), d_ptr(new QExtensionEndPrivate)
+    : QProperty(false, parent)
 {
+    d_umlptr = new QExtensionEndPrivate;
+}
+
+QExtensionEnd::QExtensionEnd(bool createPimpl, QObject *parent)
+    : QProperty(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QExtensionEndPrivate;
 }
 
 QExtensionEnd::~QExtensionEnd()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -91,12 +103,14 @@ void QExtensionEnd::setLower(qint32 lower)
  */
 QStereotype *QExtensionEnd::type() const
 {
-    return d_ptr->type;
+    Q_D(const QExtensionEnd);
+    return d->type;
 }
 
 void QExtensionEnd::setType(const QStereotype *type)
 {
-    d_ptr->type = const_cast<QStereotype *>(type);
+    Q_D(QExtensionEnd);
+    d->setType(const_cast<QStereotype *>(type));
 }
 
 /*!

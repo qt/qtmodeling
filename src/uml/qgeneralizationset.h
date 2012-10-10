@@ -90,7 +90,7 @@ class Q_UML_EXPORT QGeneralizationSet : public QObject, public QPackageableEleme
     Q_PROPERTY(const QSet<QGeneralization *> * generalizations READ generalizations)
 
     Q_DISABLE_COPY(QGeneralizationSet)
-    Q_DECLARE_PRIVATE(QGeneralizationSet)
+    QTUML_DECLARE_PRIVATE(QGeneralizationSet)
 
 public:
     explicit QGeneralizationSet(QObject *parent = 0);
@@ -110,7 +110,7 @@ public:
     void removeGeneralization(const QGeneralization *generalization);
 
 protected:
-    QGeneralizationSetPrivate *d_ptr;
+    explicit QGeneralizationSet(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

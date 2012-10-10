@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qconstraint_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,13 +55,16 @@ QT_MODULE(QtUml)
 
 class QInterval;
 
-class QIntervalConstraintPrivate
+class QIntervalConstraintPrivate : public QConstraintPrivate
 {
 public:
     explicit QIntervalConstraintPrivate();
     virtual ~QIntervalConstraintPrivate();
 
     QInterval *specification;
+
+    // Association-ends
+    void setSpecification(const QInterval *specification);
 };
 
 QT_END_NAMESPACE_QTUML

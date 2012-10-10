@@ -58,6 +58,16 @@ QProtocolConformancePrivate::QProtocolConformancePrivate() :
 QProtocolConformancePrivate::~QProtocolConformancePrivate()
 {
 }
+  
+void QProtocolConformancePrivate::setSpecificMachine(const QProtocolStateMachine *specificMachine) 
+{  
+    this->specificMachine = const_cast<QProtocolStateMachine *>(specificMachine);   
+}
+  
+void QProtocolConformancePrivate::setGeneralMachine(const QProtocolStateMachine *generalMachine) 
+{  
+    this->generalMachine = const_cast<QProtocolStateMachine *>(generalMachine);   
+}
 
 /*!
     \class QProtocolConformance
@@ -68,13 +78,20 @@ QProtocolConformancePrivate::~QProtocolConformancePrivate()
  */
 
 QProtocolConformance::QProtocolConformance(QObject *parent)
-    : QObject(parent), d_ptr(new QProtocolConformancePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QProtocolConformancePrivate;
+}
+
+QProtocolConformance::QProtocolConformance(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QProtocolConformancePrivate;
 }
 
 QProtocolConformance::~QProtocolConformance()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -82,12 +99,14 @@ QProtocolConformance::~QProtocolConformance()
  */
 QProtocolStateMachine *QProtocolConformance::specificMachine() const
 {
-    return d_ptr->specificMachine;
+    Q_D(const QProtocolConformance);
+    return d->specificMachine;
 }
 
 void QProtocolConformance::setSpecificMachine(const QProtocolStateMachine *specificMachine)
 {
-    d_ptr->specificMachine = const_cast<QProtocolStateMachine *>(specificMachine);
+    Q_D(QProtocolConformance);
+    d->setSpecificMachine(const_cast<QProtocolStateMachine *>(specificMachine));
 }
 
 /*!
@@ -95,12 +114,14 @@ void QProtocolConformance::setSpecificMachine(const QProtocolStateMachine *speci
  */
 QProtocolStateMachine *QProtocolConformance::generalMachine() const
 {
-    return d_ptr->generalMachine;
+    Q_D(const QProtocolConformance);
+    return d->generalMachine;
 }
 
 void QProtocolConformance::setGeneralMachine(const QProtocolStateMachine *generalMachine)
 {
-    d_ptr->generalMachine = const_cast<QProtocolStateMachine *>(generalMachine);
+    Q_D(QProtocolConformance);
+    d->setGeneralMachine(const_cast<QProtocolStateMachine *>(generalMachine));
 }
 
 #include "moc_qprotocolconformance.cpp"

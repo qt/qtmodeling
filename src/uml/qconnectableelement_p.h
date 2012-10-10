@@ -43,6 +43,12 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qtypedelement_p.h"
+
+#include "qparameterableelement_p.h"
+
 // Qt includes
 #include <QtCore/QList>
 
@@ -53,16 +59,20 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QConnectorEnd;
-
 class QConnectableElementTemplateParameter;
 
-class QConnectableElementPrivate
+class QConnectableElementPrivate : public virtual QTypedElementPrivate, public QParameterableElementPrivate
 {
 public:
     explicit QConnectableElementPrivate();
     virtual ~QConnectableElementPrivate();
 
     QConnectableElementTemplateParameter *templateParameter;
+
+    // Association-ends
+    void addEnd(const QConnectorEnd *end);
+    void removeEnd(const QConnectorEnd *end);
+    void setTemplateParameter(const QConnectableElementTemplateParameter *templateParameter);
 };
 
 QT_END_NAMESPACE_QTUML

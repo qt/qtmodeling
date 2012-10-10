@@ -97,7 +97,7 @@ class Q_UML_EXPORT QObjectFlow : public QObject, public QActivityEdge
     Q_PROPERTY(QBehavior * transformation READ transformation WRITE setTransformation)
 
     Q_DISABLE_COPY(QObjectFlow)
-    Q_DECLARE_PRIVATE(QObjectFlow)
+    QTUML_DECLARE_PRIVATE(QObjectFlow)
 
 public:
     explicit QObjectFlow(QObject *parent = 0);
@@ -116,7 +116,7 @@ public:
     void setTransformation(const QBehavior *transformation);
 
 protected:
-    QObjectFlowPrivate *d_ptr;
+    explicit QObjectFlow(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

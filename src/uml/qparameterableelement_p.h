@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qelement_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,7 +55,7 @@ QT_MODULE(QtUml)
 
 class QTemplateParameter;
 
-class QParameterableElementPrivate
+class QParameterableElementPrivate : public virtual QElementPrivate
 {
 public:
     explicit QParameterableElementPrivate();
@@ -59,6 +63,10 @@ public:
 
     QTemplateParameter *owningTemplateParameter;
     QTemplateParameter *templateParameter;
+
+    // Association-ends
+    void setOwningTemplateParameter(const QTemplateParameter *owningTemplateParameter);
+    void setTemplateParameter(const QTemplateParameter *templateParameter);
 };
 
 QT_END_NAMESPACE_QTUML

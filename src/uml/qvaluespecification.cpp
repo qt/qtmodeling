@@ -63,13 +63,12 @@ QValueSpecificationPrivate::~QValueSpecificationPrivate()
  */
 
 QValueSpecification::QValueSpecification()
-    : d_ptr(new QValueSpecificationPrivate)
 {
+    d_umlptr = new QValueSpecificationPrivate;
 }
 
 QValueSpecification::~QValueSpecification()
 {
-    delete d_ptr;
 }
 
 /*!

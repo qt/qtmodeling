@@ -62,13 +62,20 @@ QPartDecompositionPrivate::~QPartDecompositionPrivate()
  */
 
 QPartDecomposition::QPartDecomposition(QObject *parent)
-    : QInteractionUse(parent), d_ptr(new QPartDecompositionPrivate)
+    : QInteractionUse(false, parent)
 {
+    d_umlptr = new QPartDecompositionPrivate;
+}
+
+QPartDecomposition::QPartDecomposition(bool createPimpl, QObject *parent)
+    : QInteractionUse(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QPartDecompositionPrivate;
 }
 
 QPartDecomposition::~QPartDecomposition()
 {
-    delete d_ptr;
 }
 
 #include "moc_qpartdecomposition.cpp"

@@ -62,13 +62,20 @@ QControlFlowPrivate::~QControlFlowPrivate()
  */
 
 QControlFlow::QControlFlow(QObject *parent)
-    : QObject(parent), d_ptr(new QControlFlowPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QControlFlowPrivate;
+}
+
+QControlFlow::QControlFlow(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QControlFlowPrivate;
 }
 
 QControlFlow::~QControlFlow()
 {
-    delete d_ptr;
 }
 
 #include "moc_qcontrolflow.cpp"

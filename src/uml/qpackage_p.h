@@ -43,6 +43,14 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qnamespace_p.h"
+
+#include "qpackageableelement_p.h"
+
+#include "qtemplateableelement_p.h"
+
 // Qt includes
 #include <QtCore/QString>
 #include <QtCore/QSet>
@@ -54,18 +62,13 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QProfile;
-
 class QNamedElement;
-
 class QProfileApplication;
-
 class QType;
-
 class QStereotype;
-
 class QPackageMerge;
 
-class QPackagePrivate
+class QPackagePrivate : public QNamespacePrivate, public QPackageableElementPrivate, public QTemplateableElementPrivate
 {
 public:
     explicit QPackagePrivate();
@@ -76,6 +79,24 @@ public:
     QPackage *nestingPackage;
     QSet<QProfileApplication *> *profileApplications;
     QSet<QPackageMerge *> *packageMerges;
+
+    // Attributes
+    void setURI(QString URI);
+
+    // Association-ends
+    void addOwnedType(const QType *ownedType);
+    void removeOwnedType(const QType *ownedType);
+    void addPackagedElement(const QPackageableElement *packagedElement);
+    void removePackagedElement(const QPackageableElement *packagedElement);
+    void setNestingPackage(const QPackage *nestingPackage);
+    void addProfileApplication(const QProfileApplication *profileApplication);
+    void removeProfileApplication(const QProfileApplication *profileApplication);
+    void addOwnedStereotype(const QStereotype *ownedStereotype);
+    void removeOwnedStereotype(const QStereotype *ownedStereotype);
+    void addPackageMerge(const QPackageMerge *packageMerge);
+    void removePackageMerge(const QPackageMerge *packageMerge);
+    void addNestedPackage(const QPackage *nestedPackage);
+    void removeNestedPackage(const QPackage *nestedPackage);
 };
 
 QT_END_NAMESPACE_QTUML

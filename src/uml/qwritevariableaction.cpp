@@ -55,6 +55,11 @@ QWriteVariableActionPrivate::QWriteVariableActionPrivate() :
 QWriteVariableActionPrivate::~QWriteVariableActionPrivate()
 {
 }
+  
+void QWriteVariableActionPrivate::setValue(const QInputPin *value) 
+{  
+    this->value = const_cast<QInputPin *>(value);   
+}
 
 /*!
     \class QWriteVariableAction
@@ -65,13 +70,12 @@ QWriteVariableActionPrivate::~QWriteVariableActionPrivate()
  */
 
 QWriteVariableAction::QWriteVariableAction()
-    : d_ptr(new QWriteVariableActionPrivate)
 {
+    d_umlptr = new QWriteVariableActionPrivate;
 }
 
 QWriteVariableAction::~QWriteVariableAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,12 +83,14 @@ QWriteVariableAction::~QWriteVariableAction()
  */
 QInputPin *QWriteVariableAction::value() const
 {
-    return d_ptr->value;
+    Q_D(const QWriteVariableAction);
+    return d->value;
 }
 
 void QWriteVariableAction::setValue(const QInputPin *value)
 {
-    d_ptr->value = const_cast<QInputPin *>(value);
+    Q_D(QWriteVariableAction);
+    d->setValue(const_cast<QInputPin *>(value));
 }
 
 QT_END_NAMESPACE_QTUML

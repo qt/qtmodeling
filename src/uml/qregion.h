@@ -102,7 +102,7 @@ class Q_UML_EXPORT QRegion : public QObject, public QRedefinableElement, public 
     Q_PROPERTY(const QSet<QVertex *> * subvertices READ subvertices)
 
     Q_DISABLE_COPY(QRegion)
-    Q_DECLARE_PRIVATE(QRegion)
+    QTUML_DECLARE_PRIVATE(QRegion)
 
 public:
     explicit QRegion(QObject *parent = 0);
@@ -130,7 +130,7 @@ public:
     bool isRedefinitionContextValid(const QRegion *redefined) const;
 
 protected:
-    QRegionPrivate *d_ptr;
+    explicit QRegion(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

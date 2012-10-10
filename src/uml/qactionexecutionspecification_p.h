@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qexecutionspecification_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,13 +55,16 @@ QT_MODULE(QtUml)
 
 class QAction;
 
-class QActionExecutionSpecificationPrivate
+class QActionExecutionSpecificationPrivate : public QExecutionSpecificationPrivate
 {
 public:
     explicit QActionExecutionSpecificationPrivate();
     virtual ~QActionExecutionSpecificationPrivate();
 
     QAction *action;
+
+    // Association-ends
+    void setAction(const QAction *action);
 };
 
 QT_END_NAMESPACE_QTUML

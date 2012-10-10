@@ -126,7 +126,7 @@ class Q_UML_EXPORT QDataType : public QObject, public QClassifier
     Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
 
     Q_DISABLE_COPY(QDataType)
-    Q_DECLARE_PRIVATE(QDataType)
+    QTUML_DECLARE_PRIVATE(QDataType)
 
 public:
     explicit QDataType(QObject *parent = 0);
@@ -144,7 +144,7 @@ public:
     const QSet<QNamedElement *> *inherit(const QSet<QNamedElement *> *inhs) const;
 
 protected:
-    QDataTypePrivate *d_ptr;
+    explicit QDataType(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

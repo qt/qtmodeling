@@ -64,6 +64,46 @@ QParameterPrivate::~QParameterPrivate()
     delete parameterSets;
 }
 
+void QParameterPrivate::setException(bool isException)
+{
+    this->isException = isException;
+}
+
+void QParameterPrivate::setDirection(QtUml::ParameterDirectionKind direction)
+{
+    this->direction = direction;
+}
+
+void QParameterPrivate::setStream(bool isStream)
+{
+    this->isStream = isStream;
+}
+
+void QParameterPrivate::setEffect(QtUml::ParameterEffectKind effect)
+{
+    this->effect = effect;
+}
+  
+void QParameterPrivate::setOperation(const QOperation *operation) 
+{  
+    this->operation = const_cast<QOperation *>(operation);   
+}
+  
+void QParameterPrivate::setDefaultValue(const QValueSpecification *defaultValue) 
+{  
+    this->defaultValue = const_cast<QValueSpecification *>(defaultValue);   
+}
+  
+void QParameterPrivate::addParameterSet(const QParameterSet *parameterSet) 
+{   
+    this->parameterSets->insert(const_cast<QParameterSet *>(parameterSet));  
+}
+ 
+void QParameterPrivate::removeParameterSet(const QParameterSet *parameterSet) 
+{    
+    this->parameterSets->remove(const_cast<QParameterSet *>(parameterSet)); 
+}
+
 /*!
     \class QParameter
 
@@ -73,13 +113,20 @@ QParameterPrivate::~QParameterPrivate()
  */
 
 QParameter::QParameter(QObject *parent)
-    : QObject(parent), d_ptr(new QParameterPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QParameterPrivate;
+}
+
+QParameter::QParameter(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QParameterPrivate;
 }
 
 QParameter::~QParameter()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -87,12 +134,14 @@ QParameter::~QParameter()
  */
 bool QParameter::isException() const
 {
-    return d_ptr->isException;
+    Q_D(const QParameter);
+    return d->isException;
 }
 
 void QParameter::setException(bool isException)
 {
-    d_ptr->isException = isException;
+    Q_D(QParameter);
+    d->setException(isException);
 }
 
 /*!
@@ -113,12 +162,14 @@ void QParameter::setDefault_(QString default_)
  */
 QtUml::ParameterDirectionKind QParameter::direction() const
 {
-    return d_ptr->direction;
+    Q_D(const QParameter);
+    return d->direction;
 }
 
 void QParameter::setDirection(QtUml::ParameterDirectionKind direction)
 {
-    d_ptr->direction = direction;
+    Q_D(QParameter);
+    d->setDirection(direction);
 }
 
 /*!
@@ -126,12 +177,14 @@ void QParameter::setDirection(QtUml::ParameterDirectionKind direction)
  */
 bool QParameter::isStream() const
 {
-    return d_ptr->isStream;
+    Q_D(const QParameter);
+    return d->isStream;
 }
 
 void QParameter::setStream(bool isStream)
 {
-    d_ptr->isStream = isStream;
+    Q_D(QParameter);
+    d->setStream(isStream);
 }
 
 /*!
@@ -139,12 +192,14 @@ void QParameter::setStream(bool isStream)
  */
 QtUml::ParameterEffectKind QParameter::effect() const
 {
-    return d_ptr->effect;
+    Q_D(const QParameter);
+    return d->effect;
 }
 
 void QParameter::setEffect(QtUml::ParameterEffectKind effect)
 {
-    d_ptr->effect = effect;
+    Q_D(QParameter);
+    d->setEffect(effect);
 }
 
 /*!
@@ -152,12 +207,14 @@ void QParameter::setEffect(QtUml::ParameterEffectKind effect)
  */
 QOperation *QParameter::operation() const
 {
-    return d_ptr->operation;
+    Q_D(const QParameter);
+    return d->operation;
 }
 
 void QParameter::setOperation(const QOperation *operation)
 {
-    d_ptr->operation = const_cast<QOperation *>(operation);
+    Q_D(QParameter);
+    d->setOperation(const_cast<QOperation *>(operation));
 }
 
 /*!
@@ -165,12 +222,14 @@ void QParameter::setOperation(const QOperation *operation)
  */
 QValueSpecification *QParameter::defaultValue() const
 {
-    return d_ptr->defaultValue;
+    Q_D(const QParameter);
+    return d->defaultValue;
 }
 
 void QParameter::setDefaultValue(const QValueSpecification *defaultValue)
 {
-    d_ptr->defaultValue = const_cast<QValueSpecification *>(defaultValue);
+    Q_D(QParameter);
+    d->setDefaultValue(const_cast<QValueSpecification *>(defaultValue));
 }
 
 /*!
@@ -178,17 +237,20 @@ void QParameter::setDefaultValue(const QValueSpecification *defaultValue)
  */
 const QSet<QParameterSet *> *QParameter::parameterSets() const
 {
-    return d_ptr->parameterSets;
+    Q_D(const QParameter);
+    return d->parameterSets;
 }
 
 void QParameter::addParameterSet(const QParameterSet *parameterSet)
 {
-    d_ptr->parameterSets->insert(const_cast<QParameterSet *>(parameterSet));
+    Q_D(QParameter);
+    d->addParameterSet(const_cast<QParameterSet *>(parameterSet));
 }
 
 void QParameter::removeParameterSet(const QParameterSet *parameterSet)
 {
-    d_ptr->parameterSets->remove(const_cast<QParameterSet *>(parameterSet));
+    Q_D(QParameter);
+    d->removeParameterSet(const_cast<QParameterSet *>(parameterSet));
 }
 
 #include "moc_qparameter.cpp"

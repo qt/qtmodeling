@@ -62,13 +62,20 @@ QInputPinPrivate::~QInputPinPrivate()
  */
 
 QInputPin::QInputPin(QObject *parent)
-    : QObject(parent), d_ptr(new QInputPinPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QInputPinPrivate;
+}
+
+QInputPin::QInputPin(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QInputPinPrivate;
 }
 
 QInputPin::~QInputPin()
 {
-    delete d_ptr;
 }
 
 #include "moc_qinputpin.cpp"

@@ -54,6 +54,11 @@ QBroadcastSignalActionPrivate::QBroadcastSignalActionPrivate() :
 QBroadcastSignalActionPrivate::~QBroadcastSignalActionPrivate()
 {
 }
+  
+void QBroadcastSignalActionPrivate::setSignal(const QSignal *signal) 
+{  
+    this->signal = const_cast<QSignal *>(signal);   
+}
 
 /*!
     \class QBroadcastSignalAction
@@ -64,13 +69,20 @@ QBroadcastSignalActionPrivate::~QBroadcastSignalActionPrivate()
  */
 
 QBroadcastSignalAction::QBroadcastSignalAction(QObject *parent)
-    : QObject(parent), d_ptr(new QBroadcastSignalActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QBroadcastSignalActionPrivate;
+}
+
+QBroadcastSignalAction::QBroadcastSignalAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QBroadcastSignalActionPrivate;
 }
 
 QBroadcastSignalAction::~QBroadcastSignalAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -78,12 +90,14 @@ QBroadcastSignalAction::~QBroadcastSignalAction()
  */
 QSignal *QBroadcastSignalAction::signal() const
 {
-    return d_ptr->signal;
+    Q_D(const QBroadcastSignalAction);
+    return d->signal;
 }
 
 void QBroadcastSignalAction::setSignal(const QSignal *signal)
 {
-    d_ptr->signal = const_cast<QSignal *>(signal);
+    Q_D(QBroadcastSignalAction);
+    d->setSignal(const_cast<QSignal *>(signal));
 }
 
 #include "moc_qbroadcastsignalaction.cpp"

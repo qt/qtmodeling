@@ -55,6 +55,11 @@ QClearStructuralFeatureActionPrivate::QClearStructuralFeatureActionPrivate() :
 QClearStructuralFeatureActionPrivate::~QClearStructuralFeatureActionPrivate()
 {
 }
+  
+void QClearStructuralFeatureActionPrivate::setResult(const QOutputPin *result) 
+{  
+    this->result = const_cast<QOutputPin *>(result);   
+}
 
 /*!
     \class QClearStructuralFeatureAction
@@ -65,13 +70,20 @@ QClearStructuralFeatureActionPrivate::~QClearStructuralFeatureActionPrivate()
  */
 
 QClearStructuralFeatureAction::QClearStructuralFeatureAction(QObject *parent)
-    : QObject(parent), d_ptr(new QClearStructuralFeatureActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QClearStructuralFeatureActionPrivate;
+}
+
+QClearStructuralFeatureAction::QClearStructuralFeatureAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QClearStructuralFeatureActionPrivate;
 }
 
 QClearStructuralFeatureAction::~QClearStructuralFeatureAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,12 +91,14 @@ QClearStructuralFeatureAction::~QClearStructuralFeatureAction()
  */
 QOutputPin *QClearStructuralFeatureAction::result() const
 {
-    return d_ptr->result;
+    Q_D(const QClearStructuralFeatureAction);
+    return d->result;
 }
 
 void QClearStructuralFeatureAction::setResult(const QOutputPin *result)
 {
-    d_ptr->result = const_cast<QOutputPin *>(result);
+    Q_D(QClearStructuralFeatureAction);
+    d->setResult(const_cast<QOutputPin *>(result));
 }
 
 #include "moc_qclearstructuralfeatureaction.cpp"

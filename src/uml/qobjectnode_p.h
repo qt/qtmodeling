@@ -46,6 +46,12 @@
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
 
+// Base class includes
+
+#include "qactivitynode_p.h"
+
+#include "qtypedelement_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -56,12 +62,10 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QState;
-
 class QBehavior;
-
 class QValueSpecification;
 
-class QObjectNodePrivate
+class QObjectNodePrivate : public QActivityNodePrivate, public QTypedElementPrivate
 {
 public:
     explicit QObjectNodePrivate();
@@ -72,6 +76,16 @@ public:
     QValueSpecification *upperBound;
     QBehavior *selection;
     QSet<QState *> *inState;
+
+    // Attributes
+    void setControlType(bool isControlType);
+    void setOrdering(QtUml::ObjectNodeOrderingKind ordering);
+
+    // Association-ends
+    void setUpperBound(const QValueSpecification *upperBound);
+    void setSelection(const QBehavior *selection);
+    void addInState(const QState *inState);
+    void removeInState(const QState *inState);
 };
 
 QT_END_NAMESPACE_QTUML

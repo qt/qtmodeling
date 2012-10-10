@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qintervalconstraint_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -54,7 +58,7 @@ QT_MODULE(QtUml)
 
 class QDurationInterval;
 
-class QDurationConstraintPrivate
+class QDurationConstraintPrivate : public QIntervalConstraintPrivate
 {
 public:
     explicit QDurationConstraintPrivate();
@@ -62,6 +66,13 @@ public:
 
     QSet<bool> *firstEvents;
     QDurationInterval *specification;
+
+    // Attributes
+    void addFirstEvent(bool firstEvent);
+    void removeFirstEvent(bool firstEvent);
+
+    // Association-ends
+    void setSpecification(const QDurationInterval *specification);
 };
 
 QT_END_NAMESPACE_QTUML

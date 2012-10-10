@@ -54,6 +54,11 @@ QPinPrivate::~QPinPrivate()
 {
 }
 
+void QPinPrivate::setControl(bool isControl)
+{
+    this->isControl = isControl;
+}
+
 /*!
     \class QPin
 
@@ -63,13 +68,12 @@ QPinPrivate::~QPinPrivate()
  */
 
 QPin::QPin()
-    : d_ptr(new QPinPrivate)
 {
+    d_umlptr = new QPinPrivate;
 }
 
 QPin::~QPin()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -77,12 +81,14 @@ QPin::~QPin()
  */
 bool QPin::isControl() const
 {
-    return d_ptr->isControl;
+    Q_D(const QPin);
+    return d->isControl;
 }
 
 void QPin::setControl(bool isControl)
 {
-    d_ptr->isControl = isControl;
+    Q_D(QPin);
+    d->setControl(isControl);
 }
 
 QT_END_NAMESPACE_QTUML

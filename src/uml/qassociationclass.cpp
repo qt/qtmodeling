@@ -62,13 +62,20 @@ QAssociationClassPrivate::~QAssociationClassPrivate()
  */
 
 QAssociationClass::QAssociationClass(QObject *parent)
-    : (parent), d_ptr(new QAssociationClassPrivate)
+    : (false, parent)
 {
+    d_umlptr = new QAssociationClassPrivate;
+}
+
+QAssociationClass::QAssociationClass(bool createPimpl, QObject *parent)
+    : (createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QAssociationClassPrivate;
 }
 
 QAssociationClass::~QAssociationClass()
 {
-    delete d_ptr;
 }
 
 #include "moc_qassociationclass.cpp"

@@ -79,7 +79,7 @@ class Q_UML_EXPORT QClause : public QObject, public QElement
     Q_PROPERTY(const QSet<QExecutableNode *> * tests READ tests)
 
     Q_DISABLE_COPY(QClause)
-    Q_DECLARE_PRIVATE(QClause)
+    QTUML_DECLARE_PRIVATE(QClause)
 
 public:
     explicit QClause(QObject *parent = 0);
@@ -105,7 +105,7 @@ public:
     void removeTest(const QExecutableNode *test);
 
 protected:
-    QClausePrivate *d_ptr;
+    explicit QClause(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -62,13 +62,20 @@ QMessageOccurrenceSpecificationPrivate::~QMessageOccurrenceSpecificationPrivate(
  */
 
 QMessageOccurrenceSpecification::QMessageOccurrenceSpecification(QObject *parent)
-    : QOccurrenceSpecification(parent), d_ptr(new QMessageOccurrenceSpecificationPrivate)
+    : QOccurrenceSpecification(false, parent)
 {
+    d_umlptr = new QMessageOccurrenceSpecificationPrivate;
+}
+
+QMessageOccurrenceSpecification::QMessageOccurrenceSpecification(bool createPimpl, QObject *parent)
+    : QOccurrenceSpecification(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QMessageOccurrenceSpecificationPrivate;
 }
 
 QMessageOccurrenceSpecification::~QMessageOccurrenceSpecification()
 {
-    delete d_ptr;
 }
 
 #include "moc_qmessageoccurrencespecification.cpp"

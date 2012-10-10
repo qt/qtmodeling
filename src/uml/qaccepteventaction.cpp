@@ -62,6 +62,43 @@ QAcceptEventActionPrivate::~QAcceptEventActionPrivate()
     delete results;
 }
 
+void QAcceptEventActionPrivate::setUnmarshall(bool isUnmarshall)
+{
+    this->isUnmarshall = isUnmarshall;
+}
+  
+void QAcceptEventActionPrivate::addTrigger(const QTrigger *trigger) 
+{   
+    this->triggers->insert(const_cast<QTrigger *>(trigger)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedElement(trigger); 
+}
+ 
+void QAcceptEventActionPrivate::removeTrigger(const QTrigger *trigger) 
+{    
+    this->triggers->remove(const_cast<QTrigger *>(trigger)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(trigger);
+}
+  
+void QAcceptEventActionPrivate::addResult(const QOutputPin *result) 
+{   
+    this->results->insert(const_cast<QOutputPin *>(result)); 
+
+    // Adjust subsetted property(ies)
+    addOutput(result); 
+}
+ 
+void QAcceptEventActionPrivate::removeResult(const QOutputPin *result) 
+{    
+    this->results->remove(const_cast<QOutputPin *>(result)); 
+
+    // Adjust subsetted property(ies)
+    removeOutput(result);
+}
+
 /*!
     \class QAcceptEventAction
 
@@ -71,13 +108,20 @@ QAcceptEventActionPrivate::~QAcceptEventActionPrivate()
  */
 
 QAcceptEventAction::QAcceptEventAction(QObject *parent)
-    : QObject(parent), d_ptr(new QAcceptEventActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QAcceptEventActionPrivate;
+}
+
+QAcceptEventAction::QAcceptEventAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QAcceptEventActionPrivate;
 }
 
 QAcceptEventAction::~QAcceptEventAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -85,12 +129,14 @@ QAcceptEventAction::~QAcceptEventAction()
  */
 bool QAcceptEventAction::isUnmarshall() const
 {
-    return d_ptr->isUnmarshall;
+    Q_D(const QAcceptEventAction);
+    return d->isUnmarshall;
 }
 
 void QAcceptEventAction::setUnmarshall(bool isUnmarshall)
 {
-    d_ptr->isUnmarshall = isUnmarshall;
+    Q_D(QAcceptEventAction);
+    d->setUnmarshall(isUnmarshall);
 }
 
 /*!
@@ -98,17 +144,20 @@ void QAcceptEventAction::setUnmarshall(bool isUnmarshall)
  */
 const QSet<QTrigger *> *QAcceptEventAction::triggers() const
 {
-    return d_ptr->triggers;
+    Q_D(const QAcceptEventAction);
+    return d->triggers;
 }
 
 void QAcceptEventAction::addTrigger(const QTrigger *trigger)
 {
-    d_ptr->triggers->insert(const_cast<QTrigger *>(trigger));
+    Q_D(QAcceptEventAction);
+    d->addTrigger(const_cast<QTrigger *>(trigger));
 }
 
 void QAcceptEventAction::removeTrigger(const QTrigger *trigger)
 {
-    d_ptr->triggers->remove(const_cast<QTrigger *>(trigger));
+    Q_D(QAcceptEventAction);
+    d->removeTrigger(const_cast<QTrigger *>(trigger));
 }
 
 /*!
@@ -116,17 +165,20 @@ void QAcceptEventAction::removeTrigger(const QTrigger *trigger)
  */
 const QSet<QOutputPin *> *QAcceptEventAction::results() const
 {
-    return d_ptr->results;
+    Q_D(const QAcceptEventAction);
+    return d->results;
 }
 
 void QAcceptEventAction::addResult(const QOutputPin *result)
 {
-    d_ptr->results->insert(const_cast<QOutputPin *>(result));
+    Q_D(QAcceptEventAction);
+    d->addResult(const_cast<QOutputPin *>(result));
 }
 
 void QAcceptEventAction::removeResult(const QOutputPin *result)
 {
-    d_ptr->results->remove(const_cast<QOutputPin *>(result));
+    Q_D(QAcceptEventAction);
+    d->removeResult(const_cast<QOutputPin *>(result));
 }
 
 #include "moc_qaccepteventaction.cpp"

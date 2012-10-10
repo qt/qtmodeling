@@ -131,7 +131,7 @@ class Q_UML_EXPORT QArtifact : public QObject, public QDeployedArtifact, public 
     Q_PROPERTY(const QSet<QArtifact *> * nestedArtifacts READ nestedArtifacts)
 
     Q_DISABLE_COPY(QArtifact)
-    Q_DECLARE_PRIVATE(QArtifact)
+    QTUML_DECLARE_PRIVATE(QArtifact)
 
 public:
     explicit QArtifact(QObject *parent = 0);
@@ -156,7 +156,7 @@ public:
     void removeNestedArtifact(const QArtifact *nestedArtifact);
 
 protected:
-    QArtifactPrivate *d_ptr;
+    explicit QArtifact(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -54,6 +54,11 @@ QTypedElementPrivate::QTypedElementPrivate() :
 QTypedElementPrivate::~QTypedElementPrivate()
 {
 }
+  
+void QTypedElementPrivate::setType(const QType *type) 
+{  
+    this->type = const_cast<QType *>(type);   
+}
 
 /*!
     \class QTypedElement
@@ -64,13 +69,12 @@ QTypedElementPrivate::~QTypedElementPrivate()
  */
 
 QTypedElement::QTypedElement()
-    : d_ptr(new QTypedElementPrivate)
 {
+    d_umlptr = new QTypedElementPrivate;
 }
 
 QTypedElement::~QTypedElement()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -78,12 +82,14 @@ QTypedElement::~QTypedElement()
  */
 QType *QTypedElement::type() const
 {
-    return d_ptr->type;
+    Q_D(const QTypedElement);
+    return d->type;
 }
 
 void QTypedElement::setType(const QType *type)
 {
-    d_ptr->type = const_cast<QType *>(type);
+    Q_D(QTypedElement);
+    d->setType(const_cast<QType *>(type));
 }
 
 QT_END_NAMESPACE_QTUML

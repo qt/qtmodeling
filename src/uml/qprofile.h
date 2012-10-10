@@ -68,7 +68,7 @@ class Q_UML_EXPORT QProfile : public QPackage
     Q_PROPERTY(const QSet<QElementImport *> * metaclassReferences READ metaclassReferences)
 
     Q_DISABLE_COPY(QProfile)
-    Q_DECLARE_PRIVATE(QProfile)
+    QTUML_DECLARE_PRIVATE(QProfile)
 
 public:
     explicit QProfile(QObject *parent = 0);
@@ -83,7 +83,7 @@ public:
     void removeMetaclassReference(const QElementImport *metaclassReference);
 
 protected:
-    QProfilePrivate *d_ptr;
+    explicit QProfile(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

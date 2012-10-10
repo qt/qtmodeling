@@ -120,7 +120,7 @@ class Q_UML_EXPORT QState : public QObject, public QNamespace, public QRedefinab
     Q_PROPERTY(QConstraint * stateInvariant READ stateInvariant WRITE setStateInvariant)
 
     Q_DISABLE_COPY(QState)
-    Q_DECLARE_PRIVATE(QState)
+    QTUML_DECLARE_PRIVATE(QState)
 
 public:
     explicit QState(QObject *parent = 0);
@@ -165,7 +165,7 @@ public:
     bool isRedefinitionContextValid(const QState *redefined) const;
 
 protected:
-    QStatePrivate *d_ptr;
+    explicit QState(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

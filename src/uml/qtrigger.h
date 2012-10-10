@@ -82,7 +82,7 @@ class Q_UML_EXPORT QTrigger : public QObject, public QNamedElement
     Q_PROPERTY(QEvent * event READ event WRITE setEvent)
 
     Q_DISABLE_COPY(QTrigger)
-    Q_DECLARE_PRIVATE(QTrigger)
+    QTUML_DECLARE_PRIVATE(QTrigger)
 
 public:
     explicit QTrigger(QObject *parent = 0);
@@ -96,7 +96,7 @@ public:
     void setEvent(const QEvent *event);
 
 protected:
-    QTriggerPrivate *d_ptr;
+    explicit QTrigger(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

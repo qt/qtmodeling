@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qstructuredactivitynode_p.h"
+
 // Qt includes
 #include <QtCore/QList>
 
@@ -54,13 +58,17 @@ QT_MODULE(QtUml)
 
 class QExecutableNode;
 
-class QSequenceNodePrivate
+class QSequenceNodePrivate : public QStructuredActivityNodePrivate
 {
 public:
     explicit QSequenceNodePrivate();
     virtual ~QSequenceNodePrivate();
 
     QList<QExecutableNode *> *executableNodes;
+
+    // Association-ends
+    void addExecutableNode(const QExecutableNode *executableNode);
+    void removeExecutableNode(const QExecutableNode *executableNode);
 };
 
 QT_END_NAMESPACE_QTUML

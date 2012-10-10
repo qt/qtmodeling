@@ -73,7 +73,7 @@ class Q_UML_EXPORT QPort : public QProperty
     Q_PROPERTY(const QSet<QPort *> * redefinedPorts READ redefinedPorts)
 
     Q_DISABLE_COPY(QPort)
-    Q_DECLARE_PRIVATE(QPort)
+    QTUML_DECLARE_PRIVATE(QPort)
 
 public:
     explicit QPort(QObject *parent = 0);
@@ -97,7 +97,7 @@ public:
     void removeRedefinedPort(const QPort *redefinedPort);
 
 protected:
-    QPortPrivate *d_ptr;
+    explicit QPort(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

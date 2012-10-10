@@ -110,7 +110,7 @@ class Q_UML_EXPORT QUnmarshallAction : public QObject, public QAction
     Q_PROPERTY(QClassifier * unmarshallType READ unmarshallType WRITE setUnmarshallType)
 
     Q_DISABLE_COPY(QUnmarshallAction)
-    Q_DECLARE_PRIVATE(QUnmarshallAction)
+    QTUML_DECLARE_PRIVATE(QUnmarshallAction)
 
 public:
     explicit QUnmarshallAction(QObject *parent = 0);
@@ -126,7 +126,7 @@ public:
     void setUnmarshallType(const QClassifier *unmarshallType);
 
 protected:
-    QUnmarshallActionPrivate *d_ptr;
+    explicit QUnmarshallAction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

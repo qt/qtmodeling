@@ -58,6 +58,26 @@ QObjectFlowPrivate::~QObjectFlowPrivate()
 {
 }
 
+void QObjectFlowPrivate::setMultireceive(bool isMultireceive)
+{
+    this->isMultireceive = isMultireceive;
+}
+
+void QObjectFlowPrivate::setMulticast(bool isMulticast)
+{
+    this->isMulticast = isMulticast;
+}
+  
+void QObjectFlowPrivate::setSelection(const QBehavior *selection) 
+{  
+    this->selection = const_cast<QBehavior *>(selection);   
+}
+  
+void QObjectFlowPrivate::setTransformation(const QBehavior *transformation) 
+{  
+    this->transformation = const_cast<QBehavior *>(transformation);   
+}
+
 /*!
     \class QObjectFlow
 
@@ -67,13 +87,20 @@ QObjectFlowPrivate::~QObjectFlowPrivate()
  */
 
 QObjectFlow::QObjectFlow(QObject *parent)
-    : QObject(parent), d_ptr(new QObjectFlowPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QObjectFlowPrivate;
+}
+
+QObjectFlow::QObjectFlow(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QObjectFlowPrivate;
 }
 
 QObjectFlow::~QObjectFlow()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -81,12 +108,14 @@ QObjectFlow::~QObjectFlow()
  */
 bool QObjectFlow::isMultireceive() const
 {
-    return d_ptr->isMultireceive;
+    Q_D(const QObjectFlow);
+    return d->isMultireceive;
 }
 
 void QObjectFlow::setMultireceive(bool isMultireceive)
 {
-    d_ptr->isMultireceive = isMultireceive;
+    Q_D(QObjectFlow);
+    d->setMultireceive(isMultireceive);
 }
 
 /*!
@@ -94,12 +123,14 @@ void QObjectFlow::setMultireceive(bool isMultireceive)
  */
 bool QObjectFlow::isMulticast() const
 {
-    return d_ptr->isMulticast;
+    Q_D(const QObjectFlow);
+    return d->isMulticast;
 }
 
 void QObjectFlow::setMulticast(bool isMulticast)
 {
-    d_ptr->isMulticast = isMulticast;
+    Q_D(QObjectFlow);
+    d->setMulticast(isMulticast);
 }
 
 /*!
@@ -107,12 +138,14 @@ void QObjectFlow::setMulticast(bool isMulticast)
  */
 QBehavior *QObjectFlow::selection() const
 {
-    return d_ptr->selection;
+    Q_D(const QObjectFlow);
+    return d->selection;
 }
 
 void QObjectFlow::setSelection(const QBehavior *selection)
 {
-    d_ptr->selection = const_cast<QBehavior *>(selection);
+    Q_D(QObjectFlow);
+    d->setSelection(const_cast<QBehavior *>(selection));
 }
 
 /*!
@@ -120,12 +153,14 @@ void QObjectFlow::setSelection(const QBehavior *selection)
  */
 QBehavior *QObjectFlow::transformation() const
 {
-    return d_ptr->transformation;
+    Q_D(const QObjectFlow);
+    return d->transformation;
 }
 
 void QObjectFlow::setTransformation(const QBehavior *transformation)
 {
-    d_ptr->transformation = const_cast<QBehavior *>(transformation);
+    Q_D(QObjectFlow);
+    d->setTransformation(const_cast<QBehavior *>(transformation));
 }
 
 #include "moc_qobjectflow.cpp"

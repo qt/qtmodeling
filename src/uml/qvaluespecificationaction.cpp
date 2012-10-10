@@ -58,6 +58,16 @@ QValueSpecificationActionPrivate::QValueSpecificationActionPrivate() :
 QValueSpecificationActionPrivate::~QValueSpecificationActionPrivate()
 {
 }
+  
+void QValueSpecificationActionPrivate::setValue(const QValueSpecification *value) 
+{  
+    this->value = const_cast<QValueSpecification *>(value);   
+}
+  
+void QValueSpecificationActionPrivate::setResult(const QOutputPin *result) 
+{  
+    this->result = const_cast<QOutputPin *>(result);   
+}
 
 /*!
     \class QValueSpecificationAction
@@ -68,13 +78,20 @@ QValueSpecificationActionPrivate::~QValueSpecificationActionPrivate()
  */
 
 QValueSpecificationAction::QValueSpecificationAction(QObject *parent)
-    : QObject(parent), d_ptr(new QValueSpecificationActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QValueSpecificationActionPrivate;
+}
+
+QValueSpecificationAction::QValueSpecificationAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QValueSpecificationActionPrivate;
 }
 
 QValueSpecificationAction::~QValueSpecificationAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -82,12 +99,14 @@ QValueSpecificationAction::~QValueSpecificationAction()
  */
 QValueSpecification *QValueSpecificationAction::value() const
 {
-    return d_ptr->value;
+    Q_D(const QValueSpecificationAction);
+    return d->value;
 }
 
 void QValueSpecificationAction::setValue(const QValueSpecification *value)
 {
-    d_ptr->value = const_cast<QValueSpecification *>(value);
+    Q_D(QValueSpecificationAction);
+    d->setValue(const_cast<QValueSpecification *>(value));
 }
 
 /*!
@@ -95,12 +114,14 @@ void QValueSpecificationAction::setValue(const QValueSpecification *value)
  */
 QOutputPin *QValueSpecificationAction::result() const
 {
-    return d_ptr->result;
+    Q_D(const QValueSpecificationAction);
+    return d->result;
 }
 
 void QValueSpecificationAction::setResult(const QOutputPin *result)
 {
-    d_ptr->result = const_cast<QOutputPin *>(result);
+    Q_D(QValueSpecificationAction);
+    d->setResult(const_cast<QOutputPin *>(result));
 }
 
 #include "moc_qvaluespecificationaction.cpp"

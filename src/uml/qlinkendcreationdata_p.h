@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qlinkenddata_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,7 +55,7 @@ QT_MODULE(QtUml)
 
 class QInputPin;
 
-class QLinkEndCreationDataPrivate
+class QLinkEndCreationDataPrivate : public QLinkEndDataPrivate
 {
 public:
     explicit QLinkEndCreationDataPrivate();
@@ -59,6 +63,12 @@ public:
 
     bool isReplaceAll;
     QInputPin *insertAt;
+
+    // Attributes
+    void setReplaceAll(bool isReplaceAll);
+
+    // Association-ends
+    void setInsertAt(const QInputPin *insertAt);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -62,6 +62,36 @@ QReclassifyObjectActionPrivate::~QReclassifyObjectActionPrivate()
     delete newClassifiers;
 }
 
+void QReclassifyObjectActionPrivate::setReplaceAll(bool isReplaceAll)
+{
+    this->isReplaceAll = isReplaceAll;
+}
+  
+void QReclassifyObjectActionPrivate::addOldClassifier(const QClassifier *oldClassifier) 
+{   
+    this->oldClassifiers->insert(const_cast<QClassifier *>(oldClassifier));  
+}
+ 
+void QReclassifyObjectActionPrivate::removeOldClassifier(const QClassifier *oldClassifier) 
+{    
+    this->oldClassifiers->remove(const_cast<QClassifier *>(oldClassifier)); 
+}
+  
+void QReclassifyObjectActionPrivate::setObject(const QInputPin *object) 
+{  
+    this->object = const_cast<QInputPin *>(object);   
+}
+  
+void QReclassifyObjectActionPrivate::addNewClassifier(const QClassifier *newClassifier) 
+{   
+    this->newClassifiers->insert(const_cast<QClassifier *>(newClassifier));  
+}
+ 
+void QReclassifyObjectActionPrivate::removeNewClassifier(const QClassifier *newClassifier) 
+{    
+    this->newClassifiers->remove(const_cast<QClassifier *>(newClassifier)); 
+}
+
 /*!
     \class QReclassifyObjectAction
 
@@ -71,13 +101,20 @@ QReclassifyObjectActionPrivate::~QReclassifyObjectActionPrivate()
  */
 
 QReclassifyObjectAction::QReclassifyObjectAction(QObject *parent)
-    : QObject(parent), d_ptr(new QReclassifyObjectActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QReclassifyObjectActionPrivate;
+}
+
+QReclassifyObjectAction::QReclassifyObjectAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QReclassifyObjectActionPrivate;
 }
 
 QReclassifyObjectAction::~QReclassifyObjectAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -85,12 +122,14 @@ QReclassifyObjectAction::~QReclassifyObjectAction()
  */
 bool QReclassifyObjectAction::isReplaceAll() const
 {
-    return d_ptr->isReplaceAll;
+    Q_D(const QReclassifyObjectAction);
+    return d->isReplaceAll;
 }
 
 void QReclassifyObjectAction::setReplaceAll(bool isReplaceAll)
 {
-    d_ptr->isReplaceAll = isReplaceAll;
+    Q_D(QReclassifyObjectAction);
+    d->setReplaceAll(isReplaceAll);
 }
 
 /*!
@@ -98,17 +137,20 @@ void QReclassifyObjectAction::setReplaceAll(bool isReplaceAll)
  */
 const QSet<QClassifier *> *QReclassifyObjectAction::oldClassifiers() const
 {
-    return d_ptr->oldClassifiers;
+    Q_D(const QReclassifyObjectAction);
+    return d->oldClassifiers;
 }
 
 void QReclassifyObjectAction::addOldClassifier(const QClassifier *oldClassifier)
 {
-    d_ptr->oldClassifiers->insert(const_cast<QClassifier *>(oldClassifier));
+    Q_D(QReclassifyObjectAction);
+    d->addOldClassifier(const_cast<QClassifier *>(oldClassifier));
 }
 
 void QReclassifyObjectAction::removeOldClassifier(const QClassifier *oldClassifier)
 {
-    d_ptr->oldClassifiers->remove(const_cast<QClassifier *>(oldClassifier));
+    Q_D(QReclassifyObjectAction);
+    d->removeOldClassifier(const_cast<QClassifier *>(oldClassifier));
 }
 
 /*!
@@ -116,12 +158,14 @@ void QReclassifyObjectAction::removeOldClassifier(const QClassifier *oldClassifi
  */
 QInputPin *QReclassifyObjectAction::object() const
 {
-    return d_ptr->object;
+    Q_D(const QReclassifyObjectAction);
+    return d->object;
 }
 
 void QReclassifyObjectAction::setObject(const QInputPin *object)
 {
-    d_ptr->object = const_cast<QInputPin *>(object);
+    Q_D(QReclassifyObjectAction);
+    d->setObject(const_cast<QInputPin *>(object));
 }
 
 /*!
@@ -129,17 +173,20 @@ void QReclassifyObjectAction::setObject(const QInputPin *object)
  */
 const QSet<QClassifier *> *QReclassifyObjectAction::newClassifiers() const
 {
-    return d_ptr->newClassifiers;
+    Q_D(const QReclassifyObjectAction);
+    return d->newClassifiers;
 }
 
 void QReclassifyObjectAction::addNewClassifier(const QClassifier *newClassifier)
 {
-    d_ptr->newClassifiers->insert(const_cast<QClassifier *>(newClassifier));
+    Q_D(QReclassifyObjectAction);
+    d->addNewClassifier(const_cast<QClassifier *>(newClassifier));
 }
 
 void QReclassifyObjectAction::removeNewClassifier(const QClassifier *newClassifier)
 {
-    d_ptr->newClassifiers->remove(const_cast<QClassifier *>(newClassifier));
+    Q_D(QReclassifyObjectAction);
+    d->removeNewClassifier(const_cast<QClassifier *>(newClassifier));
 }
 
 #include "moc_qreclassifyobjectaction.cpp"

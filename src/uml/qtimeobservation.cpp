@@ -56,6 +56,16 @@ QTimeObservationPrivate::~QTimeObservationPrivate()
 {
 }
 
+void QTimeObservationPrivate::setFirstEvent(bool firstEvent)
+{
+    this->firstEvent = firstEvent;
+}
+  
+void QTimeObservationPrivate::setEvent(const QNamedElement *event) 
+{  
+    this->event = const_cast<QNamedElement *>(event);   
+}
+
 /*!
     \class QTimeObservation
 
@@ -65,13 +75,20 @@ QTimeObservationPrivate::~QTimeObservationPrivate()
  */
 
 QTimeObservation::QTimeObservation(QObject *parent)
-    : QObject(parent), d_ptr(new QTimeObservationPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QTimeObservationPrivate;
+}
+
+QTimeObservation::QTimeObservation(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QTimeObservationPrivate;
 }
 
 QTimeObservation::~QTimeObservation()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,12 +96,14 @@ QTimeObservation::~QTimeObservation()
  */
 bool QTimeObservation::firstEvent() const
 {
-    return d_ptr->firstEvent;
+    Q_D(const QTimeObservation);
+    return d->firstEvent;
 }
 
 void QTimeObservation::setFirstEvent(bool firstEvent)
 {
-    d_ptr->firstEvent = firstEvent;
+    Q_D(QTimeObservation);
+    d->setFirstEvent(firstEvent);
 }
 
 /*!
@@ -92,12 +111,14 @@ void QTimeObservation::setFirstEvent(bool firstEvent)
  */
 QNamedElement *QTimeObservation::event() const
 {
-    return d_ptr->event;
+    Q_D(const QTimeObservation);
+    return d->event;
 }
 
 void QTimeObservation::setEvent(const QNamedElement *event)
 {
-    d_ptr->event = const_cast<QNamedElement *>(event);
+    Q_D(QTimeObservation);
+    d->setEvent(const_cast<QNamedElement *>(event));
 }
 
 #include "moc_qtimeobservation.cpp"

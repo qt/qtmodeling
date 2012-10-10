@@ -58,7 +58,7 @@ class QPinPrivate;
 class Q_UML_EXPORT QPin : public QMultiplicityElement, public QObjectNode
 {
     Q_DISABLE_COPY(QPin)
-    Q_DECLARE_PRIVATE(QPin)
+    QTUML_DECLARE_PRIVATE(QPin)
 
 public:
     virtual ~QPin();
@@ -69,9 +69,6 @@ public:
 
 protected:
     explicit QPin();
-
-protected:
-    QPinPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

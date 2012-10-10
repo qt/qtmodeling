@@ -77,7 +77,7 @@ class Q_UML_EXPORT QPackageMerge : public QObject, public QDirectedRelationship
     Q_PROPERTY(QPackage * receivingPackage READ receivingPackage WRITE setReceivingPackage)
 
     Q_DISABLE_COPY(QPackageMerge)
-    Q_DECLARE_PRIVATE(QPackageMerge)
+    QTUML_DECLARE_PRIVATE(QPackageMerge)
 
 public:
     explicit QPackageMerge(QObject *parent = 0);
@@ -90,7 +90,7 @@ public:
     void setReceivingPackage(const QPackage *receivingPackage);
 
 protected:
-    QPackageMergePrivate *d_ptr;
+    explicit QPackageMerge(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

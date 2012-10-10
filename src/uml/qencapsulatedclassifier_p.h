@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qstructuredclassifier_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -54,12 +58,16 @@ QT_MODULE(QtUml)
 
 class QPort;
 
-class QEncapsulatedClassifierPrivate
+class QEncapsulatedClassifierPrivate : public QStructuredClassifierPrivate
 {
 public:
     explicit QEncapsulatedClassifierPrivate();
     virtual ~QEncapsulatedClassifierPrivate();
 
+
+    // Association-ends
+    void addOwnedPort(const QPort *ownedPort);
+    void removeOwnedPort(const QPort *ownedPort);
 };
 
 QT_END_NAMESPACE_QTUML

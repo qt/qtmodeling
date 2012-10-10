@@ -134,7 +134,7 @@ class Q_UML_EXPORT QCollaboration : public QObject, public QStructuredClassifier
     Q_PROPERTY(const QSet<QConnectableElement *> * collaborationRoles READ collaborationRoles)
 
     Q_DISABLE_COPY(QCollaboration)
-    Q_DECLARE_PRIVATE(QCollaboration)
+    QTUML_DECLARE_PRIVATE(QCollaboration)
 
 public:
     explicit QCollaboration(QObject *parent = 0);
@@ -146,7 +146,7 @@ public:
     void removeCollaborationRole(const QConnectableElement *collaborationRole);
 
 protected:
-    QCollaborationPrivate *d_ptr;
+    explicit QCollaboration(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

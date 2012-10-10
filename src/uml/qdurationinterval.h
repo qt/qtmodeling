@@ -64,7 +64,7 @@ class Q_UML_EXPORT QDurationInterval : public QInterval
     Q_PROPERTY(QDuration * min READ min WRITE setMin)
 
     Q_DISABLE_COPY(QDurationInterval)
-    Q_DECLARE_PRIVATE(QDurationInterval)
+    QTUML_DECLARE_PRIVATE(QDurationInterval)
 
 public:
     explicit QDurationInterval(QObject *parent = 0);
@@ -77,7 +77,7 @@ public:
     void setMin(const QDuration *min);
 
 protected:
-    QDurationIntervalPrivate *d_ptr;
+    explicit QDurationInterval(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

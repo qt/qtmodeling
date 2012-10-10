@@ -54,6 +54,11 @@ QVariableActionPrivate::QVariableActionPrivate() :
 QVariableActionPrivate::~QVariableActionPrivate()
 {
 }
+  
+void QVariableActionPrivate::setVariable(const QVariable *variable) 
+{  
+    this->variable = const_cast<QVariable *>(variable);   
+}
 
 /*!
     \class QVariableAction
@@ -64,13 +69,12 @@ QVariableActionPrivate::~QVariableActionPrivate()
  */
 
 QVariableAction::QVariableAction()
-    : d_ptr(new QVariableActionPrivate)
 {
+    d_umlptr = new QVariableActionPrivate;
 }
 
 QVariableAction::~QVariableAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -78,12 +82,14 @@ QVariableAction::~QVariableAction()
  */
 QVariable *QVariableAction::variable() const
 {
-    return d_ptr->variable;
+    Q_D(const QVariableAction);
+    return d->variable;
 }
 
 void QVariableAction::setVariable(const QVariable *variable)
 {
-    d_ptr->variable = const_cast<QVariable *>(variable);
+    Q_D(QVariableAction);
+    d->setVariable(const_cast<QVariable *>(variable));
 }
 
 QT_END_NAMESPACE_QTUML

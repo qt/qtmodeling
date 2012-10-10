@@ -56,6 +56,16 @@ QLinkEndDestructionDataPrivate::~QLinkEndDestructionDataPrivate()
 {
 }
 
+void QLinkEndDestructionDataPrivate::setDestroyDuplicates(bool isDestroyDuplicates)
+{
+    this->isDestroyDuplicates = isDestroyDuplicates;
+}
+  
+void QLinkEndDestructionDataPrivate::setDestroyAt(const QInputPin *destroyAt) 
+{  
+    this->destroyAt = const_cast<QInputPin *>(destroyAt);   
+}
+
 /*!
     \class QLinkEndDestructionData
 
@@ -65,13 +75,20 @@ QLinkEndDestructionDataPrivate::~QLinkEndDestructionDataPrivate()
  */
 
 QLinkEndDestructionData::QLinkEndDestructionData(QObject *parent)
-    : QLinkEndData(parent), d_ptr(new QLinkEndDestructionDataPrivate)
+    : QLinkEndData(false, parent)
 {
+    d_umlptr = new QLinkEndDestructionDataPrivate;
+}
+
+QLinkEndDestructionData::QLinkEndDestructionData(bool createPimpl, QObject *parent)
+    : QLinkEndData(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QLinkEndDestructionDataPrivate;
 }
 
 QLinkEndDestructionData::~QLinkEndDestructionData()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,12 +96,14 @@ QLinkEndDestructionData::~QLinkEndDestructionData()
  */
 bool QLinkEndDestructionData::isDestroyDuplicates() const
 {
-    return d_ptr->isDestroyDuplicates;
+    Q_D(const QLinkEndDestructionData);
+    return d->isDestroyDuplicates;
 }
 
 void QLinkEndDestructionData::setDestroyDuplicates(bool isDestroyDuplicates)
 {
-    d_ptr->isDestroyDuplicates = isDestroyDuplicates;
+    Q_D(QLinkEndDestructionData);
+    d->setDestroyDuplicates(isDestroyDuplicates);
 }
 
 /*!
@@ -92,12 +111,14 @@ void QLinkEndDestructionData::setDestroyDuplicates(bool isDestroyDuplicates)
  */
 QInputPin *QLinkEndDestructionData::destroyAt() const
 {
-    return d_ptr->destroyAt;
+    Q_D(const QLinkEndDestructionData);
+    return d->destroyAt;
 }
 
 void QLinkEndDestructionData::setDestroyAt(const QInputPin *destroyAt)
 {
-    d_ptr->destroyAt = const_cast<QInputPin *>(destroyAt);
+    Q_D(QLinkEndDestructionData);
+    d->setDestroyAt(const_cast<QInputPin *>(destroyAt));
 }
 
 #include "moc_qlinkenddestructiondata.cpp"

@@ -61,7 +61,7 @@ class QPackageableElementPrivate;
 class Q_UML_EXPORT QPackageableElement : public QParameterableElement, public virtual QNamedElement
 {
     Q_DISABLE_COPY(QPackageableElement)
-    Q_DECLARE_PRIVATE(QPackageableElement)
+    QTUML_DECLARE_PRIVATE(QPackageableElement)
 
 public:
     virtual ~QPackageableElement();
@@ -72,9 +72,6 @@ public:
 
 protected:
     explicit QPackageableElement();
-
-protected:
-    QPackageableElementPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

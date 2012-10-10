@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qelement_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,12 +57,10 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QObjectNode;
-
 class QClassifier;
-
 class QExecutableNode;
 
-class QExceptionHandlerPrivate
+class QExceptionHandlerPrivate : public QElementPrivate
 {
 public:
     explicit QExceptionHandlerPrivate();
@@ -68,6 +70,13 @@ public:
     QSet<QClassifier *> *exceptionTypes;
     QExecutableNode *protectedNode;
     QObjectNode *exceptionInput;
+
+    // Association-ends
+    void setHandlerBody(const QExecutableNode *handlerBody);
+    void addExceptionType(const QClassifier *exceptionType);
+    void removeExceptionType(const QClassifier *exceptionType);
+    void setProtectedNode(const QExecutableNode *protectedNode);
+    void setExceptionInput(const QObjectNode *exceptionInput);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -82,7 +82,7 @@ class Q_UML_EXPORT QExtensionPoint : public QObject, public QRedefinableElement
     Q_PROPERTY(QUseCase * useCase READ useCase WRITE setUseCase)
 
     Q_DISABLE_COPY(QExtensionPoint)
-    Q_DECLARE_PRIVATE(QExtensionPoint)
+    QTUML_DECLARE_PRIVATE(QExtensionPoint)
 
 public:
     explicit QExtensionPoint(QObject *parent = 0);
@@ -93,7 +93,7 @@ public:
     void setUseCase(const QUseCase *useCase);
 
 protected:
-    QExtensionPointPrivate *d_ptr;
+    explicit QExtensionPoint(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -76,7 +76,7 @@ class Q_UML_EXPORT QLinkEndData : public QObject, public QElement
     Q_PROPERTY(const QSet<QQualifierValue *> * qualifiers READ qualifiers)
 
     Q_DISABLE_COPY(QLinkEndData)
-    Q_DECLARE_PRIVATE(QLinkEndData)
+    QTUML_DECLARE_PRIVATE(QLinkEndData)
 
 public:
     explicit QLinkEndData(QObject *parent = 0);
@@ -92,7 +92,7 @@ public:
     void removeQualifier(const QQualifierValue *qualifier);
 
 protected:
-    QLinkEndDataPrivate *d_ptr;
+    explicit QLinkEndData(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -73,7 +73,7 @@ class QFeature;
 class Q_UML_EXPORT QClassifier : public QNamespace, public QType, public QRedefinableElement, public QTemplateableElement
 {
     Q_DISABLE_COPY(QClassifier)
-    Q_DECLARE_PRIVATE(QClassifier)
+    QTUML_DECLARE_PRIVATE(QClassifier)
 
 public:
     virtual ~QClassifier();
@@ -132,9 +132,6 @@ public:
 
 protected:
     explicit QClassifier();
-
-protected:
-    QClassifierPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

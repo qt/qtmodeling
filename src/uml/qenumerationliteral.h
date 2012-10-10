@@ -64,7 +64,7 @@ class Q_UML_EXPORT QEnumerationLiteral : public QInstanceSpecification
     Q_PROPERTY(QEnumeration * enumeration READ enumeration WRITE setEnumeration)
 
     Q_DISABLE_COPY(QEnumerationLiteral)
-    Q_DECLARE_PRIVATE(QEnumerationLiteral)
+    QTUML_DECLARE_PRIVATE(QEnumerationLiteral)
 
 public:
     explicit QEnumerationLiteral(QObject *parent = 0);
@@ -76,7 +76,7 @@ public:
     void setEnumeration(const QEnumeration *enumeration);
 
 protected:
-    QEnumerationLiteralPrivate *d_ptr;
+    explicit QEnumerationLiteral(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -61,6 +61,26 @@ QElementImportPrivate::~QElementImportPrivate()
 {
 }
 
+void QElementImportPrivate::setAlias(QString alias)
+{
+    this->alias = alias;
+}
+
+void QElementImportPrivate::setVisibility(QtUml::VisibilityKind visibility)
+{
+    this->visibility = visibility;
+}
+  
+void QElementImportPrivate::setImportedElement(const QPackageableElement *importedElement) 
+{  
+    this->importedElement = const_cast<QPackageableElement *>(importedElement);   
+}
+  
+void QElementImportPrivate::setImportingNamespace(const QNamespace *importingNamespace) 
+{  
+    this->importingNamespace = const_cast<QNamespace *>(importingNamespace);   
+}
+
 /*!
     \class QElementImport
 
@@ -70,13 +90,20 @@ QElementImportPrivate::~QElementImportPrivate()
  */
 
 QElementImport::QElementImport(QObject *parent)
-    : QObject(parent), d_ptr(new QElementImportPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QElementImportPrivate;
+}
+
+QElementImport::QElementImport(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QElementImportPrivate;
 }
 
 QElementImport::~QElementImport()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -84,12 +111,14 @@ QElementImport::~QElementImport()
  */
 QString QElementImport::alias() const
 {
-    return d_ptr->alias;
+    Q_D(const QElementImport);
+    return d->alias;
 }
 
 void QElementImport::setAlias(QString alias)
 {
-    d_ptr->alias = alias;
+    Q_D(QElementImport);
+    d->setAlias(alias);
 }
 
 /*!
@@ -97,12 +126,14 @@ void QElementImport::setAlias(QString alias)
  */
 QtUml::VisibilityKind QElementImport::visibility() const
 {
-    return d_ptr->visibility;
+    Q_D(const QElementImport);
+    return d->visibility;
 }
 
 void QElementImport::setVisibility(QtUml::VisibilityKind visibility)
 {
-    d_ptr->visibility = visibility;
+    Q_D(QElementImport);
+    d->setVisibility(visibility);
 }
 
 /*!
@@ -110,12 +141,14 @@ void QElementImport::setVisibility(QtUml::VisibilityKind visibility)
  */
 QPackageableElement *QElementImport::importedElement() const
 {
-    return d_ptr->importedElement;
+    Q_D(const QElementImport);
+    return d->importedElement;
 }
 
 void QElementImport::setImportedElement(const QPackageableElement *importedElement)
 {
-    d_ptr->importedElement = const_cast<QPackageableElement *>(importedElement);
+    Q_D(QElementImport);
+    d->setImportedElement(const_cast<QPackageableElement *>(importedElement));
 }
 
 /*!
@@ -123,12 +156,14 @@ void QElementImport::setImportedElement(const QPackageableElement *importedEleme
  */
 QNamespace *QElementImport::importingNamespace() const
 {
-    return d_ptr->importingNamespace;
+    Q_D(const QElementImport);
+    return d->importingNamespace;
 }
 
 void QElementImport::setImportingNamespace(const QNamespace *importingNamespace)
 {
-    d_ptr->importingNamespace = const_cast<QNamespace *>(importingNamespace);
+    Q_D(QElementImport);
+    d->setImportingNamespace(const_cast<QNamespace *>(importingNamespace));
 }
 
 /*!

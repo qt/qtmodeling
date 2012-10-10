@@ -64,7 +64,7 @@ class Q_UML_EXPORT QLinkEndDestructionData : public QLinkEndData
     Q_PROPERTY(QInputPin * destroyAt READ destroyAt WRITE setDestroyAt)
 
     Q_DISABLE_COPY(QLinkEndDestructionData)
-    Q_DECLARE_PRIVATE(QLinkEndDestructionData)
+    QTUML_DECLARE_PRIVATE(QLinkEndDestructionData)
 
 public:
     explicit QLinkEndDestructionData(QObject *parent = 0);
@@ -79,7 +79,7 @@ public:
     void setDestroyAt(const QInputPin *destroyAt);
 
 protected:
-    QLinkEndDestructionDataPrivate *d_ptr;
+    explicit QLinkEndDestructionData(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

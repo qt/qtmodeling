@@ -54,6 +54,11 @@ QCallEventPrivate::QCallEventPrivate() :
 QCallEventPrivate::~QCallEventPrivate()
 {
 }
+  
+void QCallEventPrivate::setOperation(const QOperation *operation) 
+{  
+    this->operation = const_cast<QOperation *>(operation);   
+}
 
 /*!
     \class QCallEvent
@@ -64,13 +69,20 @@ QCallEventPrivate::~QCallEventPrivate()
  */
 
 QCallEvent::QCallEvent(QObject *parent)
-    : QObject(parent), d_ptr(new QCallEventPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QCallEventPrivate;
+}
+
+QCallEvent::QCallEvent(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QCallEventPrivate;
 }
 
 QCallEvent::~QCallEvent()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -78,12 +90,14 @@ QCallEvent::~QCallEvent()
  */
 QOperation *QCallEvent::operation() const
 {
-    return d_ptr->operation;
+    Q_D(const QCallEvent);
+    return d->operation;
 }
 
 void QCallEvent::setOperation(const QOperation *operation)
 {
-    d_ptr->operation = const_cast<QOperation *>(operation);
+    Q_D(QCallEvent);
+    d->setOperation(const_cast<QOperation *>(operation));
 }
 
 #include "moc_qcallevent.cpp"

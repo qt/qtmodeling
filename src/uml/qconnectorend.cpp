@@ -56,7 +56,17 @@ QConnectorEndPrivate::QConnectorEndPrivate() :
 QConnectorEndPrivate::~QConnectorEndPrivate()
 {
 }
-
+  
+void QConnectorEndPrivate::setRole(const QConnectableElement *role) 
+{  
+    this->role = const_cast<QConnectableElement *>(role);   
+}
+  
+void QConnectorEndPrivate::setPartWithPort(const QProperty *partWithPort) 
+{  
+    this->partWithPort = const_cast<QProperty *>(partWithPort);   
+}
+ 
 /*!
     \class QConnectorEnd
 
@@ -66,13 +76,20 @@ QConnectorEndPrivate::~QConnectorEndPrivate()
  */
 
 QConnectorEnd::QConnectorEnd(QObject *parent)
-    : QObject(parent), d_ptr(new QConnectorEndPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QConnectorEndPrivate;
+}
+
+QConnectorEnd::QConnectorEnd(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QConnectorEndPrivate;
 }
 
 QConnectorEnd::~QConnectorEnd()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -80,12 +97,14 @@ QConnectorEnd::~QConnectorEnd()
  */
 QConnectableElement *QConnectorEnd::role() const
 {
-    return d_ptr->role;
+    Q_D(const QConnectorEnd);
+    return d->role;
 }
 
 void QConnectorEnd::setRole(const QConnectableElement *role)
 {
-    d_ptr->role = const_cast<QConnectableElement *>(role);
+    Q_D(QConnectorEnd);
+    d->setRole(const_cast<QConnectableElement *>(role));
 }
 
 /*!
@@ -93,12 +112,14 @@ void QConnectorEnd::setRole(const QConnectableElement *role)
  */
 QProperty *QConnectorEnd::partWithPort() const
 {
-    return d_ptr->partWithPort;
+    Q_D(const QConnectorEnd);
+    return d->partWithPort;
 }
 
 void QConnectorEnd::setPartWithPort(const QProperty *partWithPort)
 {
-    d_ptr->partWithPort = const_cast<QProperty *>(partWithPort);
+    Q_D(QConnectorEnd);
+    d->setPartWithPort(const_cast<QProperty *>(partWithPort));
 }
 
 /*!

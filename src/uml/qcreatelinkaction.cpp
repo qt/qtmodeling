@@ -55,6 +55,16 @@ QCreateLinkActionPrivate::~QCreateLinkActionPrivate()
 {
     delete endData;
 }
+  
+void QCreateLinkActionPrivate::addEndData(const QLinkEndCreationData *endData) 
+{   
+    this->endData->insert(const_cast<QLinkEndCreationData *>(endData));  
+}
+ 
+void QCreateLinkActionPrivate::removeEndData(const QLinkEndCreationData *endData) 
+{    
+    this->endData->remove(const_cast<QLinkEndCreationData *>(endData)); 
+}
 
 /*!
     \class QCreateLinkAction
@@ -65,13 +75,20 @@ QCreateLinkActionPrivate::~QCreateLinkActionPrivate()
  */
 
 QCreateLinkAction::QCreateLinkAction(QObject *parent)
-    : QObject(parent), d_ptr(new QCreateLinkActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QCreateLinkActionPrivate;
+}
+
+QCreateLinkAction::QCreateLinkAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QCreateLinkActionPrivate;
 }
 
 QCreateLinkAction::~QCreateLinkAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,17 +96,20 @@ QCreateLinkAction::~QCreateLinkAction()
  */
 const QSet<QLinkEndCreationData *> *QCreateLinkAction::endData() const
 {
-    return d_ptr->endData;
+    Q_D(const QCreateLinkAction);
+    return d->endData;
 }
 
 void QCreateLinkAction::addEndData(const QLinkEndCreationData *endData)
 {
-    d_ptr->endData->insert(const_cast<QLinkEndCreationData *>(endData));
+    Q_D(QCreateLinkAction);
+    d->addEndData(const_cast<QLinkEndCreationData *>(endData));
 }
 
 void QCreateLinkAction::removeEndData(const QLinkEndCreationData *endData)
 {
-    d_ptr->endData->remove(const_cast<QLinkEndCreationData *>(endData));
+    Q_D(QCreateLinkAction);
+    d->removeEndData(const_cast<QLinkEndCreationData *>(endData));
 }
 
 #include "moc_qcreatelinkaction.cpp"

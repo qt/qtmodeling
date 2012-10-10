@@ -61,6 +61,21 @@ QPackageImportPrivate::~QPackageImportPrivate()
 {
 }
 
+void QPackageImportPrivate::setVisibility(QtUml::VisibilityKind visibility)
+{
+    this->visibility = visibility;
+}
+  
+void QPackageImportPrivate::setImportingNamespace(const QNamespace *importingNamespace) 
+{  
+    this->importingNamespace = const_cast<QNamespace *>(importingNamespace);   
+}
+  
+void QPackageImportPrivate::setImportedPackage(const QPackage *importedPackage) 
+{  
+    this->importedPackage = const_cast<QPackage *>(importedPackage);   
+}
+
 /*!
     \class QPackageImport
 
@@ -70,13 +85,20 @@ QPackageImportPrivate::~QPackageImportPrivate()
  */
 
 QPackageImport::QPackageImport(QObject *parent)
-    : QObject(parent), d_ptr(new QPackageImportPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QPackageImportPrivate;
+}
+
+QPackageImport::QPackageImport(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QPackageImportPrivate;
 }
 
 QPackageImport::~QPackageImport()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -84,12 +106,14 @@ QPackageImport::~QPackageImport()
  */
 QtUml::VisibilityKind QPackageImport::visibility() const
 {
-    return d_ptr->visibility;
+    Q_D(const QPackageImport);
+    return d->visibility;
 }
 
 void QPackageImport::setVisibility(QtUml::VisibilityKind visibility)
 {
-    d_ptr->visibility = visibility;
+    Q_D(QPackageImport);
+    d->setVisibility(visibility);
 }
 
 /*!
@@ -97,12 +121,14 @@ void QPackageImport::setVisibility(QtUml::VisibilityKind visibility)
  */
 QNamespace *QPackageImport::importingNamespace() const
 {
-    return d_ptr->importingNamespace;
+    Q_D(const QPackageImport);
+    return d->importingNamespace;
 }
 
 void QPackageImport::setImportingNamespace(const QNamespace *importingNamespace)
 {
-    d_ptr->importingNamespace = const_cast<QNamespace *>(importingNamespace);
+    Q_D(QPackageImport);
+    d->setImportingNamespace(const_cast<QNamespace *>(importingNamespace));
 }
 
 /*!
@@ -110,12 +136,14 @@ void QPackageImport::setImportingNamespace(const QNamespace *importingNamespace)
  */
 QPackage *QPackageImport::importedPackage() const
 {
-    return d_ptr->importedPackage;
+    Q_D(const QPackageImport);
+    return d->importedPackage;
 }
 
 void QPackageImport::setImportedPackage(const QPackage *importedPackage)
 {
-    d_ptr->importedPackage = const_cast<QPackage *>(importedPackage);
+    Q_D(QPackageImport);
+    d->setImportedPackage(const_cast<QPackage *>(importedPackage));
 }
 
 #include "moc_qpackageimport.cpp"

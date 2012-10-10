@@ -99,7 +99,7 @@ class Q_UML_EXPORT QConnector : public QObject, public QFeature
     Q_PROPERTY(const QList<QConnectorEnd *> * ends READ ends)
 
     Q_DISABLE_COPY(QConnector)
-    Q_DECLARE_PRIVATE(QConnector)
+    QTUML_DECLARE_PRIVATE(QConnector)
 
 public:
     explicit QConnector(QObject *parent = 0);
@@ -122,7 +122,7 @@ public:
     void removeEnd(const QConnectorEnd *end);
 
 protected:
-    QConnectorPrivate *d_ptr;
+    explicit QConnector(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

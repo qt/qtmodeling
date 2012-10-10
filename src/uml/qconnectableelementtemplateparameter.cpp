@@ -54,6 +54,11 @@ QConnectableElementTemplateParameterPrivate::QConnectableElementTemplateParamete
 QConnectableElementTemplateParameterPrivate::~QConnectableElementTemplateParameterPrivate()
 {
 }
+  
+void QConnectableElementTemplateParameterPrivate::setParameteredElement(const QConnectableElement *parameteredElement) 
+{  
+    this->parameteredElement = const_cast<QConnectableElement *>(parameteredElement);   
+}
 
 /*!
     \class QConnectableElementTemplateParameter
@@ -64,13 +69,20 @@ QConnectableElementTemplateParameterPrivate::~QConnectableElementTemplateParamet
  */
 
 QConnectableElementTemplateParameter::QConnectableElementTemplateParameter(QObject *parent)
-    : QTemplateParameter(parent), d_ptr(new QConnectableElementTemplateParameterPrivate)
+    : QTemplateParameter(false, parent)
 {
+    d_umlptr = new QConnectableElementTemplateParameterPrivate;
+}
+
+QConnectableElementTemplateParameter::QConnectableElementTemplateParameter(bool createPimpl, QObject *parent)
+    : QTemplateParameter(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QConnectableElementTemplateParameterPrivate;
 }
 
 QConnectableElementTemplateParameter::~QConnectableElementTemplateParameter()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -78,12 +90,14 @@ QConnectableElementTemplateParameter::~QConnectableElementTemplateParameter()
  */
 QConnectableElement *QConnectableElementTemplateParameter::parameteredElement() const
 {
-    return d_ptr->parameteredElement;
+    Q_D(const QConnectableElementTemplateParameter);
+    return d->parameteredElement;
 }
 
 void QConnectableElementTemplateParameter::setParameteredElement(const QConnectableElement *parameteredElement)
 {
-    d_ptr->parameteredElement = const_cast<QConnectableElement *>(parameteredElement);
+    Q_D(QConnectableElementTemplateParameter);
+    d->setParameteredElement(const_cast<QConnectableElement *>(parameteredElement));
 }
 
 #include "moc_qconnectableelementtemplateparameter.cpp"

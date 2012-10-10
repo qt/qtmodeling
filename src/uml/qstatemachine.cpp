@@ -67,6 +67,58 @@ QStateMachinePrivate::~QStateMachinePrivate()
     delete submachineStates;
     delete regions;
 }
+  
+void QStateMachinePrivate::addExtendedStateMachine(const QStateMachine *extendedStateMachine) 
+{   
+    this->extendedStateMachines->insert(const_cast<QStateMachine *>(extendedStateMachine));  
+}
+ 
+void QStateMachinePrivate::removeExtendedStateMachine(const QStateMachine *extendedStateMachine) 
+{    
+    this->extendedStateMachines->remove(const_cast<QStateMachine *>(extendedStateMachine)); 
+}
+  
+void QStateMachinePrivate::addConnectionPoint(const QPseudostate *connectionPoint) 
+{   
+    this->connectionPoints->insert(const_cast<QPseudostate *>(connectionPoint)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedMember(connectionPoint); 
+}
+ 
+void QStateMachinePrivate::removeConnectionPoint(const QPseudostate *connectionPoint) 
+{    
+    this->connectionPoints->remove(const_cast<QPseudostate *>(connectionPoint)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedMember(connectionPoint);
+}
+  
+void QStateMachinePrivate::addSubmachineState(const QState *submachineState) 
+{   
+    this->submachineStates->insert(const_cast<QState *>(submachineState));  
+}
+ 
+void QStateMachinePrivate::removeSubmachineState(const QState *submachineState) 
+{    
+    this->submachineStates->remove(const_cast<QState *>(submachineState)); 
+}
+  
+void QStateMachinePrivate::addRegion(const QRegion *region) 
+{   
+    this->regions->insert(const_cast<QRegion *>(region)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedMember(region); 
+}
+ 
+void QStateMachinePrivate::removeRegion(const QRegion *region) 
+{    
+    this->regions->remove(const_cast<QRegion *>(region)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedMember(region);
+}
 
 /*!
     \class QStateMachine
@@ -77,13 +129,20 @@ QStateMachinePrivate::~QStateMachinePrivate()
  */
 
 QStateMachine::QStateMachine(QObject *parent)
-    : QBehavior(parent), d_ptr(new QStateMachinePrivate)
+    : QBehavior(false, parent)
 {
+    d_umlptr = new QStateMachinePrivate;
+}
+
+QStateMachine::QStateMachine(bool createPimpl, QObject *parent)
+    : QBehavior(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QStateMachinePrivate;
 }
 
 QStateMachine::~QStateMachine()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -91,17 +150,20 @@ QStateMachine::~QStateMachine()
  */
 const QSet<QStateMachine *> *QStateMachine::extendedStateMachines() const
 {
-    return d_ptr->extendedStateMachines;
+    Q_D(const QStateMachine);
+    return d->extendedStateMachines;
 }
 
 void QStateMachine::addExtendedStateMachine(const QStateMachine *extendedStateMachine)
 {
-    d_ptr->extendedStateMachines->insert(const_cast<QStateMachine *>(extendedStateMachine));
+    Q_D(QStateMachine);
+    d->addExtendedStateMachine(const_cast<QStateMachine *>(extendedStateMachine));
 }
 
 void QStateMachine::removeExtendedStateMachine(const QStateMachine *extendedStateMachine)
 {
-    d_ptr->extendedStateMachines->remove(const_cast<QStateMachine *>(extendedStateMachine));
+    Q_D(QStateMachine);
+    d->removeExtendedStateMachine(const_cast<QStateMachine *>(extendedStateMachine));
 }
 
 /*!
@@ -109,17 +171,20 @@ void QStateMachine::removeExtendedStateMachine(const QStateMachine *extendedStat
  */
 const QSet<QPseudostate *> *QStateMachine::connectionPoints() const
 {
-    return d_ptr->connectionPoints;
+    Q_D(const QStateMachine);
+    return d->connectionPoints;
 }
 
 void QStateMachine::addConnectionPoint(const QPseudostate *connectionPoint)
 {
-    d_ptr->connectionPoints->insert(const_cast<QPseudostate *>(connectionPoint));
+    Q_D(QStateMachine);
+    d->addConnectionPoint(const_cast<QPseudostate *>(connectionPoint));
 }
 
 void QStateMachine::removeConnectionPoint(const QPseudostate *connectionPoint)
 {
-    d_ptr->connectionPoints->remove(const_cast<QPseudostate *>(connectionPoint));
+    Q_D(QStateMachine);
+    d->removeConnectionPoint(const_cast<QPseudostate *>(connectionPoint));
 }
 
 /*!
@@ -127,17 +192,20 @@ void QStateMachine::removeConnectionPoint(const QPseudostate *connectionPoint)
  */
 const QSet<QState *> *QStateMachine::submachineStates() const
 {
-    return d_ptr->submachineStates;
+    Q_D(const QStateMachine);
+    return d->submachineStates;
 }
 
 void QStateMachine::addSubmachineState(const QState *submachineState)
 {
-    d_ptr->submachineStates->insert(const_cast<QState *>(submachineState));
+    Q_D(QStateMachine);
+    d->addSubmachineState(const_cast<QState *>(submachineState));
 }
 
 void QStateMachine::removeSubmachineState(const QState *submachineState)
 {
-    d_ptr->submachineStates->remove(const_cast<QState *>(submachineState));
+    Q_D(QStateMachine);
+    d->removeSubmachineState(const_cast<QState *>(submachineState));
 }
 
 /*!
@@ -145,17 +213,20 @@ void QStateMachine::removeSubmachineState(const QState *submachineState)
  */
 const QSet<QRegion *> *QStateMachine::regions() const
 {
-    return d_ptr->regions;
+    Q_D(const QStateMachine);
+    return d->regions;
 }
 
 void QStateMachine::addRegion(const QRegion *region)
 {
-    d_ptr->regions->insert(const_cast<QRegion *>(region));
+    Q_D(QStateMachine);
+    d->addRegion(const_cast<QRegion *>(region));
 }
 
 void QStateMachine::removeRegion(const QRegion *region)
 {
-    d_ptr->regions->remove(const_cast<QRegion *>(region));
+    Q_D(QStateMachine);
+    d->removeRegion(const_cast<QRegion *>(region));
 }
 
 /*!

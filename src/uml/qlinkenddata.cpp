@@ -60,6 +60,32 @@ QLinkEndDataPrivate::~QLinkEndDataPrivate()
 {
     delete qualifiers;
 }
+  
+void QLinkEndDataPrivate::setValue(const QInputPin *value) 
+{  
+    this->value = const_cast<QInputPin *>(value);   
+}
+  
+void QLinkEndDataPrivate::setEnd(const QProperty *end) 
+{  
+    this->end = const_cast<QProperty *>(end);   
+}
+  
+void QLinkEndDataPrivate::addQualifier(const QQualifierValue *qualifier) 
+{   
+    this->qualifiers->insert(const_cast<QQualifierValue *>(qualifier)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedElement(qualifier); 
+}
+ 
+void QLinkEndDataPrivate::removeQualifier(const QQualifierValue *qualifier) 
+{    
+    this->qualifiers->remove(const_cast<QQualifierValue *>(qualifier)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(qualifier);
+}
 
 /*!
     \class QLinkEndData
@@ -70,13 +96,20 @@ QLinkEndDataPrivate::~QLinkEndDataPrivate()
  */
 
 QLinkEndData::QLinkEndData(QObject *parent)
-    : QObject(parent), d_ptr(new QLinkEndDataPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QLinkEndDataPrivate;
+}
+
+QLinkEndData::QLinkEndData(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QLinkEndDataPrivate;
 }
 
 QLinkEndData::~QLinkEndData()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -84,12 +117,14 @@ QLinkEndData::~QLinkEndData()
  */
 QInputPin *QLinkEndData::value() const
 {
-    return d_ptr->value;
+    Q_D(const QLinkEndData);
+    return d->value;
 }
 
 void QLinkEndData::setValue(const QInputPin *value)
 {
-    d_ptr->value = const_cast<QInputPin *>(value);
+    Q_D(QLinkEndData);
+    d->setValue(const_cast<QInputPin *>(value));
 }
 
 /*!
@@ -97,12 +132,14 @@ void QLinkEndData::setValue(const QInputPin *value)
  */
 QProperty *QLinkEndData::end() const
 {
-    return d_ptr->end;
+    Q_D(const QLinkEndData);
+    return d->end;
 }
 
 void QLinkEndData::setEnd(const QProperty *end)
 {
-    d_ptr->end = const_cast<QProperty *>(end);
+    Q_D(QLinkEndData);
+    d->setEnd(const_cast<QProperty *>(end));
 }
 
 /*!
@@ -110,17 +147,20 @@ void QLinkEndData::setEnd(const QProperty *end)
  */
 const QSet<QQualifierValue *> *QLinkEndData::qualifiers() const
 {
-    return d_ptr->qualifiers;
+    Q_D(const QLinkEndData);
+    return d->qualifiers;
 }
 
 void QLinkEndData::addQualifier(const QQualifierValue *qualifier)
 {
-    d_ptr->qualifiers->insert(const_cast<QQualifierValue *>(qualifier));
+    Q_D(QLinkEndData);
+    d->addQualifier(const_cast<QQualifierValue *>(qualifier));
 }
 
 void QLinkEndData::removeQualifier(const QQualifierValue *qualifier)
 {
-    d_ptr->qualifiers->remove(const_cast<QQualifierValue *>(qualifier));
+    Q_D(QLinkEndData);
+    d->removeQualifier(const_cast<QQualifierValue *>(qualifier));
 }
 
 #include "moc_qlinkenddata.cpp"

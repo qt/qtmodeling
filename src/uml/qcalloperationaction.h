@@ -113,7 +113,7 @@ class Q_UML_EXPORT QCallOperationAction : public QObject, public QCallAction
     Q_PROPERTY(QInputPin * target READ target WRITE setTarget)
 
     Q_DISABLE_COPY(QCallOperationAction)
-    Q_DECLARE_PRIVATE(QCallOperationAction)
+    QTUML_DECLARE_PRIVATE(QCallOperationAction)
 
 public:
     explicit QCallOperationAction(QObject *parent = 0);
@@ -126,7 +126,7 @@ public:
     void setTarget(const QInputPin *target);
 
 protected:
-    QCallOperationActionPrivate *d_ptr;
+    explicit QCallOperationAction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

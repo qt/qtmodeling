@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qtransition_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,10 +57,9 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QConstraint;
-
 class QOperation;
 
-class QProtocolTransitionPrivate
+class QProtocolTransitionPrivate : public QTransitionPrivate
 {
 public:
     explicit QProtocolTransitionPrivate();
@@ -64,6 +67,12 @@ public:
 
     QConstraint *postCondition;
     QConstraint *preCondition;
+
+    // Association-ends
+    void setPostCondition(const QConstraint *postCondition);
+    void addReferred(const QOperation *referred);
+    void removeReferred(const QOperation *referred);
+    void setPreCondition(const QConstraint *preCondition);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -56,6 +56,27 @@ QExpressionPrivate::~QExpressionPrivate()
     delete operands;
 }
 
+void QExpressionPrivate::setSymbol(QString symbol)
+{
+    this->symbol = symbol;
+}
+  
+void QExpressionPrivate::addOperand(const QValueSpecification *operand) 
+{   
+    this->operands->append(const_cast<QValueSpecification *>(operand)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedElement(operand); 
+}
+ 
+void QExpressionPrivate::removeOperand(const QValueSpecification *operand) 
+{    
+    this->operands->removeAll(const_cast<QValueSpecification *>(operand)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(operand);
+}
+
 /*!
     \class QExpression
 
@@ -65,13 +86,20 @@ QExpressionPrivate::~QExpressionPrivate()
  */
 
 QExpression::QExpression(QObject *parent)
-    : QObject(parent), d_ptr(new QExpressionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QExpressionPrivate;
+}
+
+QExpression::QExpression(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QExpressionPrivate;
 }
 
 QExpression::~QExpression()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,12 +107,14 @@ QExpression::~QExpression()
  */
 QString QExpression::symbol() const
 {
-    return d_ptr->symbol;
+    Q_D(const QExpression);
+    return d->symbol;
 }
 
 void QExpression::setSymbol(QString symbol)
 {
-    d_ptr->symbol = symbol;
+    Q_D(QExpression);
+    d->setSymbol(symbol);
 }
 
 /*!
@@ -92,17 +122,20 @@ void QExpression::setSymbol(QString symbol)
  */
 const QList<QValueSpecification *> *QExpression::operands() const
 {
-    return d_ptr->operands;
+    Q_D(const QExpression);
+    return d->operands;
 }
 
 void QExpression::addOperand(const QValueSpecification *operand)
 {
-    d_ptr->operands->append(const_cast<QValueSpecification *>(operand));
+    Q_D(QExpression);
+    d->addOperand(const_cast<QValueSpecification *>(operand));
 }
 
 void QExpression::removeOperand(const QValueSpecification *operand)
 {
-    d_ptr->operands->removeAll(const_cast<QValueSpecification *>(operand));
+    Q_D(QExpression);
+    d->removeOperand(const_cast<QValueSpecification *>(operand));
 }
 
 #include "moc_qexpression.cpp"

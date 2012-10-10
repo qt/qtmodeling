@@ -62,7 +62,7 @@ class QDeployment;
 class Q_UML_EXPORT QDeploymentTarget : public virtual QNamedElement
 {
     Q_DISABLE_COPY(QDeploymentTarget)
-    Q_DECLARE_PRIVATE(QDeploymentTarget)
+    QTUML_DECLARE_PRIVATE(QDeploymentTarget)
 
 public:
     virtual ~QDeploymentTarget();
@@ -75,9 +75,6 @@ public:
 
 protected:
     explicit QDeploymentTarget();
-
-protected:
-    QDeploymentTargetPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

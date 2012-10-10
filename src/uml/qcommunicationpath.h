@@ -59,14 +59,14 @@ class Q_UML_EXPORT QCommunicationPath : public QAssociation
     Q_OBJECT
 
     Q_DISABLE_COPY(QCommunicationPath)
-    Q_DECLARE_PRIVATE(QCommunicationPath)
+    QTUML_DECLARE_PRIVATE(QCommunicationPath)
 
 public:
     explicit QCommunicationPath(QObject *parent = 0);
     virtual ~QCommunicationPath();
 
 protected:
-    QCommunicationPathPrivate *d_ptr;
+    explicit QCommunicationPath(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

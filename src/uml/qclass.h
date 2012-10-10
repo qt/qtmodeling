@@ -147,7 +147,7 @@ class Q_UML_EXPORT QClass : public QObject, public QEncapsulatedClassifier, publ
     Q_PROPERTY(const QSet<QClass *> * superClasses READ superClasses)
 
     Q_DISABLE_COPY(QClass)
-    Q_DECLARE_PRIVATE(QClass)
+    QTUML_DECLARE_PRIVATE(QClass)
 
 public:
     explicit QClass(QObject *parent = 0);
@@ -181,7 +181,7 @@ public:
     const QSet<QNamedElement *> *inherit(const QSet<QNamedElement *> *inhs) const;
 
 protected:
-    QClassPrivate *d_ptr;
+    explicit QClass(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

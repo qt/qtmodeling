@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qnamedelement_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,10 +57,9 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QEvent;
-
 class QPort;
 
-class QTriggerPrivate
+class QTriggerPrivate : public QNamedElementPrivate
 {
 public:
     explicit QTriggerPrivate();
@@ -64,6 +67,11 @@ public:
 
     QSet<QPort *> *ports;
     QEvent *event;
+
+    // Association-ends
+    void addPort(const QPort *port);
+    void removePort(const QPort *port);
+    void setEvent(const QEvent *event);
 };
 
 QT_END_NAMESPACE_QTUML

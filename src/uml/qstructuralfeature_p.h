@@ -43,19 +43,31 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qtypedelement_p.h"
+
+#include "qmultiplicityelement_p.h"
+
+#include "qfeature_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QStructuralFeaturePrivate
+
+class QStructuralFeaturePrivate : public virtual QTypedElementPrivate, public QMultiplicityElementPrivate, public QFeaturePrivate
 {
 public:
     explicit QStructuralFeaturePrivate();
     virtual ~QStructuralFeaturePrivate();
 
     bool isReadOnly;
+
+    // Attributes
+    void setReadOnly(bool isReadOnly);
 };
 
 QT_END_NAMESPACE_QTUML

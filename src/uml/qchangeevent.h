@@ -83,7 +83,7 @@ class Q_UML_EXPORT QChangeEvent : public QObject, public QEvent
     Q_PROPERTY(QValueSpecification * changeExpression READ changeExpression WRITE setChangeExpression)
 
     Q_DISABLE_COPY(QChangeEvent)
-    Q_DECLARE_PRIVATE(QChangeEvent)
+    QTUML_DECLARE_PRIVATE(QChangeEvent)
 
 public:
     explicit QChangeEvent(QObject *parent = 0);
@@ -94,7 +94,7 @@ public:
     void setChangeExpression(const QValueSpecification *changeExpression);
 
 protected:
-    QChangeEventPrivate *d_ptr;
+    explicit QChangeEvent(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

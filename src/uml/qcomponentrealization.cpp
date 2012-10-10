@@ -60,6 +60,27 @@ QComponentRealizationPrivate::~QComponentRealizationPrivate()
 {
     delete realizingClassifiers;
 }
+  
+void QComponentRealizationPrivate::setAbstraction(const QComponent *abstraction) 
+{  
+    this->abstraction = const_cast<QComponent *>(abstraction);   
+}
+  
+void QComponentRealizationPrivate::addRealizingClassifier(const QClassifier *realizingClassifier) 
+{   
+    this->realizingClassifiers->insert(const_cast<QClassifier *>(realizingClassifier)); 
+
+    // Adjust subsetted property(ies)
+    addClient(realizingClassifier); 
+}
+ 
+void QComponentRealizationPrivate::removeRealizingClassifier(const QClassifier *realizingClassifier) 
+{    
+    this->realizingClassifiers->remove(const_cast<QClassifier *>(realizingClassifier)); 
+
+    // Adjust subsetted property(ies)
+    removeClient(realizingClassifier);
+}
 
 /*!
     \class QComponentRealization
@@ -70,13 +91,20 @@ QComponentRealizationPrivate::~QComponentRealizationPrivate()
  */
 
 QComponentRealization::QComponentRealization(QObject *parent)
-    : QRealization(parent), d_ptr(new QComponentRealizationPrivate)
+    : QRealization(false, parent)
 {
+    d_umlptr = new QComponentRealizationPrivate;
+}
+
+QComponentRealization::QComponentRealization(bool createPimpl, QObject *parent)
+    : QRealization(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QComponentRealizationPrivate;
 }
 
 QComponentRealization::~QComponentRealization()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -84,12 +112,14 @@ QComponentRealization::~QComponentRealization()
  */
 QComponent *QComponentRealization::abstraction() const
 {
-    return d_ptr->abstraction;
+    Q_D(const QComponentRealization);
+    return d->abstraction;
 }
 
 void QComponentRealization::setAbstraction(const QComponent *abstraction)
 {
-    d_ptr->abstraction = const_cast<QComponent *>(abstraction);
+    Q_D(QComponentRealization);
+    d->setAbstraction(const_cast<QComponent *>(abstraction));
 }
 
 /*!
@@ -97,17 +127,20 @@ void QComponentRealization::setAbstraction(const QComponent *abstraction)
  */
 const QSet<QClassifier *> *QComponentRealization::realizingClassifiers() const
 {
-    return d_ptr->realizingClassifiers;
+    Q_D(const QComponentRealization);
+    return d->realizingClassifiers;
 }
 
 void QComponentRealization::addRealizingClassifier(const QClassifier *realizingClassifier)
 {
-    d_ptr->realizingClassifiers->insert(const_cast<QClassifier *>(realizingClassifier));
+    Q_D(QComponentRealization);
+    d->addRealizingClassifier(const_cast<QClassifier *>(realizingClassifier));
 }
 
 void QComponentRealization::removeRealizingClassifier(const QClassifier *realizingClassifier)
 {
-    d_ptr->realizingClassifiers->remove(const_cast<QClassifier *>(realizingClassifier));
+    Q_D(QComponentRealization);
+    d->removeRealizingClassifier(const_cast<QClassifier *>(realizingClassifier));
 }
 
 #include "moc_qcomponentrealization.cpp"

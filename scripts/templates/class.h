@@ -125,6 +125,14 @@
 [%- END -%]
 [%- END -%]
 
+[%- IF not(class.superclass) %]
+
+#define QTUML_DECLARE_PRIVATE(Class) \
+    inline Class##Private* d_func() { return reinterpret_cast<Class##Private *>(d_umlptr); } \
+    inline const Class##Private* d_func() const { return reinterpret_cast<const Class##Private *>(d_umlptr); } \
+    friend class Class##Private;
+[%- END -%]
+
 
 QT_BEGIN_HEADER
 [%- currentNamespace = '' -%]
@@ -168,7 +176,7 @@ class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name}[%- IF 
     [%- GENERATEPROPERTIES(class) -%]
 [% END %]
     Q_DISABLE_COPY(${class.name})
-    Q_DECLARE_PRIVATE(${class.name})
+    QTUML_DECLARE_PRIVATE(${class.name})
 
 public:
     [%- IF class.isAbstract == 'false' %]
@@ -181,6 +189,7 @@ public:
     [%- FOREACH attribute IN class.attribute.values -%]
     [%- FOREACH accessor IN attribute.accessor %]
     ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
+    [%- LAST IF attribute.isReadOnly == 'true' -%]
     [%- END -%]
     [%- END -%]
     [%- END %]
@@ -190,6 +199,7 @@ public:
     [%- FOREACH associationend IN class.associationend.values -%]
     [%- FOREACH accessor IN associationend.accessor %]
     ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
+    [%- LAST IF associationend.isReadOnly == 'true' -%]
     [%- END -%]
     [%- END -%]
     [%- END %]
@@ -204,10 +214,16 @@ public:
 
 protected:
     explicit ${class.name}();
-[%- END %]
+[%- ELSE %]
 
 protected:
-    ${class.name}Private *d_ptr;
+    explicit ${class.name}(bool createPimpl, QObject *parent = 0);
+[%- END %]
+[%- IF not(class.superclass) %]
+
+protected:
+    ${class.name}Private *d_umlptr;
+[%- END %]
 };
 
 QT_END_NAMESPACE_${namespace.replace('/', '_').upper}

@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qinvocationaction_p.h"
+
 // Qt includes
 #include <QtCore/QList>
 
@@ -54,7 +58,7 @@ QT_MODULE(QtUml)
 
 class QOutputPin;
 
-class QCallActionPrivate
+class QCallActionPrivate : public QInvocationActionPrivate
 {
 public:
     explicit QCallActionPrivate();
@@ -62,6 +66,13 @@ public:
 
     bool isSynchronous;
     QList<QOutputPin *> *results;
+
+    // Attributes
+    void setSynchronous(bool isSynchronous);
+
+    // Association-ends
+    void addResult(const QOutputPin *result);
+    void removeResult(const QOutputPin *result);
 };
 
 QT_END_NAMESPACE_QTUML

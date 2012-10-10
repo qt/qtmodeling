@@ -43,6 +43,12 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qinteractionfragment_p.h"
+
+#include "qnamespace_p.h"
+
 // Qt includes
 #include <QtCore/QList>
 
@@ -54,7 +60,7 @@ QT_MODULE(QtUml)
 
 class QInteractionConstraint;
 
-class QInteractionOperandPrivate
+class QInteractionOperandPrivate : public QInteractionFragmentPrivate, public QNamespacePrivate
 {
 public:
     explicit QInteractionOperandPrivate();
@@ -62,6 +68,11 @@ public:
 
     QList<QInteractionFragment *> *fragments;
     QInteractionConstraint *guard;
+
+    // Association-ends
+    void addFragment(const QInteractionFragment *fragment);
+    void removeFragment(const QInteractionFragment *fragment);
+    void setGuard(const QInteractionConstraint *guard);
 };
 
 QT_END_NAMESPACE_QTUML

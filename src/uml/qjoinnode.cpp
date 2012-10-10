@@ -57,6 +57,16 @@ QJoinNodePrivate::~QJoinNodePrivate()
 {
 }
 
+void QJoinNodePrivate::setCombineDuplicate(bool isCombineDuplicate)
+{
+    this->isCombineDuplicate = isCombineDuplicate;
+}
+  
+void QJoinNodePrivate::setJoinSpec(const QValueSpecification *joinSpec) 
+{  
+    this->joinSpec = const_cast<QValueSpecification *>(joinSpec);   
+}
+
 /*!
     \class QJoinNode
 
@@ -66,13 +76,20 @@ QJoinNodePrivate::~QJoinNodePrivate()
  */
 
 QJoinNode::QJoinNode(QObject *parent)
-    : QObject(parent), d_ptr(new QJoinNodePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QJoinNodePrivate;
+}
+
+QJoinNode::QJoinNode(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QJoinNodePrivate;
 }
 
 QJoinNode::~QJoinNode()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -80,12 +97,14 @@ QJoinNode::~QJoinNode()
  */
 bool QJoinNode::isCombineDuplicate() const
 {
-    return d_ptr->isCombineDuplicate;
+    Q_D(const QJoinNode);
+    return d->isCombineDuplicate;
 }
 
 void QJoinNode::setCombineDuplicate(bool isCombineDuplicate)
 {
-    d_ptr->isCombineDuplicate = isCombineDuplicate;
+    Q_D(QJoinNode);
+    d->setCombineDuplicate(isCombineDuplicate);
 }
 
 /*!
@@ -93,12 +112,14 @@ void QJoinNode::setCombineDuplicate(bool isCombineDuplicate)
  */
 QValueSpecification *QJoinNode::joinSpec() const
 {
-    return d_ptr->joinSpec;
+    Q_D(const QJoinNode);
+    return d->joinSpec;
 }
 
 void QJoinNode::setJoinSpec(const QValueSpecification *joinSpec)
 {
-    d_ptr->joinSpec = const_cast<QValueSpecification *>(joinSpec);
+    Q_D(QJoinNode);
+    d->setJoinSpec(const_cast<QValueSpecification *>(joinSpec));
 }
 
 #include "moc_qjoinnode.cpp"

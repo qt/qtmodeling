@@ -94,7 +94,7 @@ class Q_UML_EXPORT QInteractionUse : public QObject, public QInteractionFragment
     Q_PROPERTY(QProperty * returnValueRecipient READ returnValueRecipient WRITE setReturnValueRecipient)
 
     Q_DISABLE_COPY(QInteractionUse)
-    Q_DECLARE_PRIVATE(QInteractionUse)
+    QTUML_DECLARE_PRIVATE(QInteractionUse)
 
 public:
     explicit QInteractionUse(QObject *parent = 0);
@@ -115,7 +115,7 @@ public:
     void setReturnValueRecipient(const QProperty *returnValueRecipient);
 
 protected:
-    QInteractionUsePrivate *d_ptr;
+    explicit QInteractionUse(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

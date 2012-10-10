@@ -50,6 +50,16 @@
 #include <${include}>
 [%- END -%]
 [%- END -%]
+[%- IF class.item('superclass') %]
+
+// Base class includes
+[%- FOREACH superclass IN class.superclass %]
+[%- IF superclass.include != 'QtCore/QObject' %]
+
+#include "${superclass.include.split('/').last.lower}_p.h"
+[%- END -%]
+[%- END -%]
+[%- END -%]
 [%- IF class.item('qtinclude') %]
 
 // Qt includes
@@ -86,13 +96,13 @@ QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
 QT_MODULE([% namespace.split('/').0 %])
 
 [%- FOREACH forwarddecl IN class.forwarddecl -%]
-[%- IF forwarddecl.namespace == namespace.replace('/', '::') %]
+[%- IF forwarddecl.namespace == namespace.replace('/', '::') -%]
+
 class ${forwarddecl.content};
-
 [%- END -%]
-[%- END -%]
+[%- END %]
 
-class ${class.name}Private
+class ${class.name}Private[%- IF class.superclass -%] : [% END -%][% FOREACH superclass = class.superclass %][% IF superclass.include != 'QtCore/QObject' %]public ${superclass.name.split('/').last}Private[% IF !loop.last %], [% END %][% END %][% END %]
 {
 public:
     explicit ${class.name}Private();
@@ -108,7 +118,28 @@ public:
     ${associationend.accessor.0.return.remove('^const ')}${associationend.accessor.0.name};
 [%- END -%]
 [%- END -%]
+[%- IF class.item('attribute') %]
 
+    // Attributes
+[%- FOREACH attribute IN class.attribute.values -%]
+[%- FOREACH accessor IN attribute.accessor -%]
+[%- NEXT IF loop.first %]
+    ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END
+ -%])${accessor.constness};
+[%- END -%]
+[%- END -%]
+[%- END %]
+[%- IF class.item('associationend') %]
+
+    // Association-ends
+[%- FOREACH associationend IN class.associationend.values -%]
+[%- FOREACH accessor IN associationend.accessor -%]
+[%- NEXT IF loop.first %]
+    ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END
+ -%])${accessor.constness};
+[%- END -%]
+[%- END -%]
+[%- END %]
 };
 
 QT_END_NAMESPACE_${namespace.replace('/', '_').upper}

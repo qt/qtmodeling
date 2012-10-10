@@ -107,7 +107,7 @@ class Q_UML_EXPORT QClearStructuralFeatureAction : public QObject, public QStruc
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
     Q_DISABLE_COPY(QClearStructuralFeatureAction)
-    Q_DECLARE_PRIVATE(QClearStructuralFeatureAction)
+    QTUML_DECLARE_PRIVATE(QClearStructuralFeatureAction)
 
 public:
     explicit QClearStructuralFeatureAction(QObject *parent = 0);
@@ -118,7 +118,7 @@ public:
     void setResult(const QOutputPin *result);
 
 protected:
-    QClearStructuralFeatureActionPrivate *d_ptr;
+    explicit QClearStructuralFeatureAction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

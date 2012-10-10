@@ -96,7 +96,7 @@ class Q_UML_EXPORT QInstanceSpecification : public QObject, public QDeployedArti
     Q_PROPERTY(const QSet<QSlot *> * slots_ READ slots_)
 
     Q_DISABLE_COPY(QInstanceSpecification)
-    Q_DECLARE_PRIVATE(QInstanceSpecification)
+    QTUML_DECLARE_PRIVATE(QInstanceSpecification)
 
 public:
     explicit QInstanceSpecification(QObject *parent = 0);
@@ -113,7 +113,7 @@ public:
     void removeSlot_(const QSlot *slot_);
 
 protected:
-    QInstanceSpecificationPrivate *d_ptr;
+    explicit QInstanceSpecification(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

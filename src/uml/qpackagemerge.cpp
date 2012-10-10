@@ -58,6 +58,16 @@ QPackageMergePrivate::QPackageMergePrivate() :
 QPackageMergePrivate::~QPackageMergePrivate()
 {
 }
+  
+void QPackageMergePrivate::setMergedPackage(const QPackage *mergedPackage) 
+{  
+    this->mergedPackage = const_cast<QPackage *>(mergedPackage);   
+}
+  
+void QPackageMergePrivate::setReceivingPackage(const QPackage *receivingPackage) 
+{  
+    this->receivingPackage = const_cast<QPackage *>(receivingPackage);   
+}
 
 /*!
     \class QPackageMerge
@@ -68,13 +78,20 @@ QPackageMergePrivate::~QPackageMergePrivate()
  */
 
 QPackageMerge::QPackageMerge(QObject *parent)
-    : QObject(parent), d_ptr(new QPackageMergePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QPackageMergePrivate;
+}
+
+QPackageMerge::QPackageMerge(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QPackageMergePrivate;
 }
 
 QPackageMerge::~QPackageMerge()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -82,12 +99,14 @@ QPackageMerge::~QPackageMerge()
  */
 QPackage *QPackageMerge::mergedPackage() const
 {
-    return d_ptr->mergedPackage;
+    Q_D(const QPackageMerge);
+    return d->mergedPackage;
 }
 
 void QPackageMerge::setMergedPackage(const QPackage *mergedPackage)
 {
-    d_ptr->mergedPackage = const_cast<QPackage *>(mergedPackage);
+    Q_D(QPackageMerge);
+    d->setMergedPackage(const_cast<QPackage *>(mergedPackage));
 }
 
 /*!
@@ -95,12 +114,14 @@ void QPackageMerge::setMergedPackage(const QPackage *mergedPackage)
  */
 QPackage *QPackageMerge::receivingPackage() const
 {
-    return d_ptr->receivingPackage;
+    Q_D(const QPackageMerge);
+    return d->receivingPackage;
 }
 
 void QPackageMerge::setReceivingPackage(const QPackage *receivingPackage)
 {
-    d_ptr->receivingPackage = const_cast<QPackage *>(receivingPackage);
+    Q_D(QPackageMerge);
+    d->setReceivingPackage(const_cast<QPackage *>(receivingPackage));
 }
 
 #include "moc_qpackagemerge.cpp"

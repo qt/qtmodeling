@@ -66,7 +66,7 @@ class QParameter;
 class Q_UML_EXPORT QBehavior : public QClass
 {
     Q_DISABLE_COPY(QBehavior)
-    Q_DECLARE_PRIVATE(QBehavior)
+    QTUML_DECLARE_PRIVATE(QBehavior)
 
 public:
     virtual ~QBehavior();
@@ -96,10 +96,7 @@ public:
     QBehavioredClassifier *context() const;
 
 protected:
-    explicit QBehavior(QObject *parent = 0);
-
-protected:
-    QBehaviorPrivate *d_ptr;
+    explicit QBehavior(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

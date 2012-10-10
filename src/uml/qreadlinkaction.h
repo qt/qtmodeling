@@ -107,7 +107,7 @@ class Q_UML_EXPORT QReadLinkAction : public QObject, public QLinkAction
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
     Q_DISABLE_COPY(QReadLinkAction)
-    Q_DECLARE_PRIVATE(QReadLinkAction)
+    QTUML_DECLARE_PRIVATE(QReadLinkAction)
 
 public:
     explicit QReadLinkAction(QObject *parent = 0);
@@ -118,7 +118,7 @@ public:
     void setResult(const QOutputPin *result);
 
 protected:
-    QReadLinkActionPrivate *d_ptr;
+    explicit QReadLinkAction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

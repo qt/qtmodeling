@@ -62,13 +62,20 @@ QFlowFinalNodePrivate::~QFlowFinalNodePrivate()
  */
 
 QFlowFinalNode::QFlowFinalNode(QObject *parent)
-    : QObject(parent), d_ptr(new QFlowFinalNodePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QFlowFinalNodePrivate;
+}
+
+QFlowFinalNode::QFlowFinalNode(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QFlowFinalNodePrivate;
 }
 
 QFlowFinalNode::~QFlowFinalNode()
 {
-    delete d_ptr;
 }
 
 #include "moc_qflowfinalnode.cpp"

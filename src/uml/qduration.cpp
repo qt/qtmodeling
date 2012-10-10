@@ -57,6 +57,21 @@ QDurationPrivate::~QDurationPrivate()
 {
     delete observations;
 }
+  
+void QDurationPrivate::setExpr(const QValueSpecification *expr) 
+{  
+    this->expr = const_cast<QValueSpecification *>(expr);   
+}
+  
+void QDurationPrivate::addObservation(const QObservation *observation) 
+{   
+    this->observations->insert(const_cast<QObservation *>(observation));  
+}
+ 
+void QDurationPrivate::removeObservation(const QObservation *observation) 
+{    
+    this->observations->remove(const_cast<QObservation *>(observation)); 
+}
 
 /*!
     \class QDuration
@@ -67,13 +82,20 @@ QDurationPrivate::~QDurationPrivate()
  */
 
 QDuration::QDuration(QObject *parent)
-    : QObject(parent), d_ptr(new QDurationPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QDurationPrivate;
+}
+
+QDuration::QDuration(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QDurationPrivate;
 }
 
 QDuration::~QDuration()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -81,12 +103,14 @@ QDuration::~QDuration()
  */
 QValueSpecification *QDuration::expr() const
 {
-    return d_ptr->expr;
+    Q_D(const QDuration);
+    return d->expr;
 }
 
 void QDuration::setExpr(const QValueSpecification *expr)
 {
-    d_ptr->expr = const_cast<QValueSpecification *>(expr);
+    Q_D(QDuration);
+    d->setExpr(const_cast<QValueSpecification *>(expr));
 }
 
 /*!
@@ -94,17 +118,20 @@ void QDuration::setExpr(const QValueSpecification *expr)
  */
 const QSet<QObservation *> *QDuration::observations() const
 {
-    return d_ptr->observations;
+    Q_D(const QDuration);
+    return d->observations;
 }
 
 void QDuration::addObservation(const QObservation *observation)
 {
-    d_ptr->observations->insert(const_cast<QObservation *>(observation));
+    Q_D(QDuration);
+    d->addObservation(const_cast<QObservation *>(observation));
 }
 
 void QDuration::removeObservation(const QObservation *observation)
 {
-    d_ptr->observations->remove(const_cast<QObservation *>(observation));
+    Q_D(QDuration);
+    d->removeObservation(const_cast<QObservation *>(observation));
 }
 
 #include "moc_qduration.cpp"

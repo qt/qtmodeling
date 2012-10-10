@@ -112,7 +112,7 @@ class Q_UML_EXPORT QAddStructuralFeatureValueAction : public QObject, public QWr
     Q_PROPERTY(QInputPin * insertAt READ insertAt WRITE setInsertAt)
 
     Q_DISABLE_COPY(QAddStructuralFeatureValueAction)
-    Q_DECLARE_PRIVATE(QAddStructuralFeatureValueAction)
+    QTUML_DECLARE_PRIVATE(QAddStructuralFeatureValueAction)
 
 public:
     explicit QAddStructuralFeatureValueAction(QObject *parent = 0);
@@ -127,7 +127,7 @@ public:
     void setInsertAt(const QInputPin *insertAt);
 
 protected:
-    QAddStructuralFeatureValueActionPrivate *d_ptr;
+    explicit QAddStructuralFeatureValueAction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

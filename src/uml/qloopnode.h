@@ -77,7 +77,7 @@ class Q_UML_EXPORT QLoopNode : public QStructuredActivityNode
     Q_PROPERTY(const QSet<QExecutableNode *> * tests READ tests)
 
     Q_DISABLE_COPY(QLoopNode)
-    Q_DECLARE_PRIVATE(QLoopNode)
+    QTUML_DECLARE_PRIVATE(QLoopNode)
 
 public:
     explicit QLoopNode(QObject *parent = 0);
@@ -113,7 +113,7 @@ public:
     void removeTest(const QExecutableNode *test);
 
 protected:
-    QLoopNodePrivate *d_ptr;
+    explicit QLoopNode(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

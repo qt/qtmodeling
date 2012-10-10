@@ -54,6 +54,11 @@ QReceptionPrivate::QReceptionPrivate() :
 QReceptionPrivate::~QReceptionPrivate()
 {
 }
+  
+void QReceptionPrivate::setSignal(const QSignal *signal) 
+{  
+    this->signal = const_cast<QSignal *>(signal);   
+}
 
 /*!
     \class QReception
@@ -64,13 +69,20 @@ QReceptionPrivate::~QReceptionPrivate()
  */
 
 QReception::QReception(QObject *parent)
-    : QObject(parent), d_ptr(new QReceptionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QReceptionPrivate;
+}
+
+QReception::QReception(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QReceptionPrivate;
 }
 
 QReception::~QReception()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -78,12 +90,14 @@ QReception::~QReception()
  */
 QSignal *QReception::signal() const
 {
-    return d_ptr->signal;
+    Q_D(const QReception);
+    return d->signal;
 }
 
 void QReception::setSignal(const QSignal *signal)
 {
-    d_ptr->signal = const_cast<QSignal *>(signal);
+    Q_D(QReception);
+    d->setSignal(const_cast<QSignal *>(signal));
 }
 
 #include "moc_qreception.cpp"

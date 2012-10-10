@@ -56,6 +56,16 @@ QDecisionNodePrivate::QDecisionNodePrivate() :
 QDecisionNodePrivate::~QDecisionNodePrivate()
 {
 }
+  
+void QDecisionNodePrivate::setDecisionInputFlow(const QObjectFlow *decisionInputFlow) 
+{  
+    this->decisionInputFlow = const_cast<QObjectFlow *>(decisionInputFlow);   
+}
+  
+void QDecisionNodePrivate::setDecisionInput(const QBehavior *decisionInput) 
+{  
+    this->decisionInput = const_cast<QBehavior *>(decisionInput);   
+}
 
 /*!
     \class QDecisionNode
@@ -66,13 +76,20 @@ QDecisionNodePrivate::~QDecisionNodePrivate()
  */
 
 QDecisionNode::QDecisionNode(QObject *parent)
-    : QObject(parent), d_ptr(new QDecisionNodePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QDecisionNodePrivate;
+}
+
+QDecisionNode::QDecisionNode(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QDecisionNodePrivate;
 }
 
 QDecisionNode::~QDecisionNode()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -80,12 +97,14 @@ QDecisionNode::~QDecisionNode()
  */
 QObjectFlow *QDecisionNode::decisionInputFlow() const
 {
-    return d_ptr->decisionInputFlow;
+    Q_D(const QDecisionNode);
+    return d->decisionInputFlow;
 }
 
 void QDecisionNode::setDecisionInputFlow(const QObjectFlow *decisionInputFlow)
 {
-    d_ptr->decisionInputFlow = const_cast<QObjectFlow *>(decisionInputFlow);
+    Q_D(QDecisionNode);
+    d->setDecisionInputFlow(const_cast<QObjectFlow *>(decisionInputFlow));
 }
 
 /*!
@@ -93,12 +112,14 @@ void QDecisionNode::setDecisionInputFlow(const QObjectFlow *decisionInputFlow)
  */
 QBehavior *QDecisionNode::decisionInput() const
 {
-    return d_ptr->decisionInput;
+    Q_D(const QDecisionNode);
+    return d->decisionInput;
 }
 
 void QDecisionNode::setDecisionInput(const QBehavior *decisionInput)
 {
-    d_ptr->decisionInput = const_cast<QBehavior *>(decisionInput);
+    Q_D(QDecisionNode);
+    d->setDecisionInput(const_cast<QBehavior *>(decisionInput));
 }
 
 #include "moc_qdecisionnode.cpp"

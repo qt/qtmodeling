@@ -76,6 +76,97 @@ QInterfacePrivate::~QInterfacePrivate()
     delete nestedClassifiers;
     delete ownedAttributes;
 }
+  
+void QInterfacePrivate::setProtocol(const QProtocolStateMachine *protocol) 
+{  
+    this->protocol = const_cast<QProtocolStateMachine *>(protocol);   
+}
+  
+void QInterfacePrivate::addRedefinedInterface(const QInterface *redefinedInterface) 
+{   
+    this->redefinedInterfaces->insert(const_cast<QInterface *>(redefinedInterface)); 
+
+    // Adjust subsetted property(ies)
+    addRedefinedClassifier(redefinedInterface); 
+}
+ 
+void QInterfacePrivate::removeRedefinedInterface(const QInterface *redefinedInterface) 
+{    
+    this->redefinedInterfaces->remove(const_cast<QInterface *>(redefinedInterface)); 
+
+    // Adjust subsetted property(ies)
+    removeRedefinedClassifier(redefinedInterface);
+}
+  
+void QInterfacePrivate::addOwnedReception(const QReception *ownedReception) 
+{   
+    this->ownedReceptions->insert(const_cast<QReception *>(ownedReception)); 
+
+    // Adjust subsetted property(ies)
+    addFeature(ownedReception);
+    addOwnedMember(ownedReception); 
+}
+ 
+void QInterfacePrivate::removeOwnedReception(const QReception *ownedReception) 
+{    
+    this->ownedReceptions->remove(const_cast<QReception *>(ownedReception)); 
+
+    // Adjust subsetted property(ies)
+    removeFeature(ownedReception);
+    removeOwnedMember(ownedReception);
+}
+  
+void QInterfacePrivate::addOwnedOperation(const QOperation *ownedOperation) 
+{   
+    this->ownedOperations->append(const_cast<QOperation *>(ownedOperation)); 
+
+    // Adjust subsetted property(ies)
+    addFeature(ownedOperation);
+    addOwnedMember(ownedOperation); 
+}
+ 
+void QInterfacePrivate::removeOwnedOperation(const QOperation *ownedOperation) 
+{    
+    this->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation)); 
+
+    // Adjust subsetted property(ies)
+    removeFeature(ownedOperation);
+    removeOwnedMember(ownedOperation);
+}
+  
+void QInterfacePrivate::addNestedClassifier(const QClassifier *nestedClassifier) 
+{   
+    this->nestedClassifiers->append(const_cast<QClassifier *>(nestedClassifier)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedMember(nestedClassifier); 
+}
+ 
+void QInterfacePrivate::removeNestedClassifier(const QClassifier *nestedClassifier) 
+{    
+    this->nestedClassifiers->removeAll(const_cast<QClassifier *>(nestedClassifier)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedMember(nestedClassifier);
+}
+  
+void QInterfacePrivate::addOwnedAttribute(const QProperty *ownedAttribute) 
+{   
+    this->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedMember(ownedAttribute);
+    addAttribute(ownedAttribute); 
+}
+ 
+void QInterfacePrivate::removeOwnedAttribute(const QProperty *ownedAttribute) 
+{    
+    this->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedMember(ownedAttribute);
+    removeAttribute(ownedAttribute);
+}
 
 /*!
     \class QInterface
@@ -86,13 +177,20 @@ QInterfacePrivate::~QInterfacePrivate()
  */
 
 QInterface::QInterface(QObject *parent)
-    : QObject(parent), d_ptr(new QInterfacePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QInterfacePrivate;
+}
+
+QInterface::QInterface(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QInterfacePrivate;
 }
 
 QInterface::~QInterface()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -100,12 +198,14 @@ QInterface::~QInterface()
  */
 QProtocolStateMachine *QInterface::protocol() const
 {
-    return d_ptr->protocol;
+    Q_D(const QInterface);
+    return d->protocol;
 }
 
 void QInterface::setProtocol(const QProtocolStateMachine *protocol)
 {
-    d_ptr->protocol = const_cast<QProtocolStateMachine *>(protocol);
+    Q_D(QInterface);
+    d->setProtocol(const_cast<QProtocolStateMachine *>(protocol));
 }
 
 /*!
@@ -113,17 +213,20 @@ void QInterface::setProtocol(const QProtocolStateMachine *protocol)
  */
 const QSet<QInterface *> *QInterface::redefinedInterfaces() const
 {
-    return d_ptr->redefinedInterfaces;
+    Q_D(const QInterface);
+    return d->redefinedInterfaces;
 }
 
 void QInterface::addRedefinedInterface(const QInterface *redefinedInterface)
 {
-    d_ptr->redefinedInterfaces->insert(const_cast<QInterface *>(redefinedInterface));
+    Q_D(QInterface);
+    d->addRedefinedInterface(const_cast<QInterface *>(redefinedInterface));
 }
 
 void QInterface::removeRedefinedInterface(const QInterface *redefinedInterface)
 {
-    d_ptr->redefinedInterfaces->remove(const_cast<QInterface *>(redefinedInterface));
+    Q_D(QInterface);
+    d->removeRedefinedInterface(const_cast<QInterface *>(redefinedInterface));
 }
 
 /*!
@@ -131,17 +234,20 @@ void QInterface::removeRedefinedInterface(const QInterface *redefinedInterface)
  */
 const QSet<QReception *> *QInterface::ownedReceptions() const
 {
-    return d_ptr->ownedReceptions;
+    Q_D(const QInterface);
+    return d->ownedReceptions;
 }
 
 void QInterface::addOwnedReception(const QReception *ownedReception)
 {
-    d_ptr->ownedReceptions->insert(const_cast<QReception *>(ownedReception));
+    Q_D(QInterface);
+    d->addOwnedReception(const_cast<QReception *>(ownedReception));
 }
 
 void QInterface::removeOwnedReception(const QReception *ownedReception)
 {
-    d_ptr->ownedReceptions->remove(const_cast<QReception *>(ownedReception));
+    Q_D(QInterface);
+    d->removeOwnedReception(const_cast<QReception *>(ownedReception));
 }
 
 /*!
@@ -149,17 +255,20 @@ void QInterface::removeOwnedReception(const QReception *ownedReception)
  */
 const QList<QOperation *> *QInterface::ownedOperations() const
 {
-    return d_ptr->ownedOperations;
+    Q_D(const QInterface);
+    return d->ownedOperations;
 }
 
 void QInterface::addOwnedOperation(const QOperation *ownedOperation)
 {
-    d_ptr->ownedOperations->append(const_cast<QOperation *>(ownedOperation));
+    Q_D(QInterface);
+    d->addOwnedOperation(const_cast<QOperation *>(ownedOperation));
 }
 
 void QInterface::removeOwnedOperation(const QOperation *ownedOperation)
 {
-    d_ptr->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation));
+    Q_D(QInterface);
+    d->removeOwnedOperation(const_cast<QOperation *>(ownedOperation));
 }
 
 /*!
@@ -167,17 +276,20 @@ void QInterface::removeOwnedOperation(const QOperation *ownedOperation)
  */
 const QList<QClassifier *> *QInterface::nestedClassifiers() const
 {
-    return d_ptr->nestedClassifiers;
+    Q_D(const QInterface);
+    return d->nestedClassifiers;
 }
 
 void QInterface::addNestedClassifier(const QClassifier *nestedClassifier)
 {
-    d_ptr->nestedClassifiers->append(const_cast<QClassifier *>(nestedClassifier));
+    Q_D(QInterface);
+    d->addNestedClassifier(const_cast<QClassifier *>(nestedClassifier));
 }
 
 void QInterface::removeNestedClassifier(const QClassifier *nestedClassifier)
 {
-    d_ptr->nestedClassifiers->removeAll(const_cast<QClassifier *>(nestedClassifier));
+    Q_D(QInterface);
+    d->removeNestedClassifier(const_cast<QClassifier *>(nestedClassifier));
 }
 
 /*!
@@ -185,17 +297,20 @@ void QInterface::removeNestedClassifier(const QClassifier *nestedClassifier)
  */
 const QList<QProperty *> *QInterface::ownedAttributes() const
 {
-    return d_ptr->ownedAttributes;
+    Q_D(const QInterface);
+    return d->ownedAttributes;
 }
 
 void QInterface::addOwnedAttribute(const QProperty *ownedAttribute)
 {
-    d_ptr->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
+    Q_D(QInterface);
+    d->addOwnedAttribute(const_cast<QProperty *>(ownedAttribute));
 }
 
 void QInterface::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
-    d_ptr->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
+    Q_D(QInterface);
+    d->removeOwnedAttribute(const_cast<QProperty *>(ownedAttribute));
 }
 
 #include "moc_qinterface.cpp"

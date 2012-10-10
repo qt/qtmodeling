@@ -57,16 +57,13 @@ class QWriteLinkActionPrivate;
 class Q_UML_EXPORT QWriteLinkAction : public QLinkAction
 {
     Q_DISABLE_COPY(QWriteLinkAction)
-    Q_DECLARE_PRIVATE(QWriteLinkAction)
+    QTUML_DECLARE_PRIVATE(QWriteLinkAction)
 
 public:
     virtual ~QWriteLinkAction();
 
 protected:
     explicit QWriteLinkAction();
-
-protected:
-    QWriteLinkActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

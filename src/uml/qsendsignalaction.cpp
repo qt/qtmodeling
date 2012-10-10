@@ -57,6 +57,16 @@ QSendSignalActionPrivate::QSendSignalActionPrivate() :
 QSendSignalActionPrivate::~QSendSignalActionPrivate()
 {
 }
+  
+void QSendSignalActionPrivate::setTarget(const QInputPin *target) 
+{  
+    this->target = const_cast<QInputPin *>(target);   
+}
+  
+void QSendSignalActionPrivate::setSignal(const QSignal *signal) 
+{  
+    this->signal = const_cast<QSignal *>(signal);   
+}
 
 /*!
     \class QSendSignalAction
@@ -67,13 +77,20 @@ QSendSignalActionPrivate::~QSendSignalActionPrivate()
  */
 
 QSendSignalAction::QSendSignalAction(QObject *parent)
-    : QObject(parent), d_ptr(new QSendSignalActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QSendSignalActionPrivate;
+}
+
+QSendSignalAction::QSendSignalAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QSendSignalActionPrivate;
 }
 
 QSendSignalAction::~QSendSignalAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -81,12 +98,14 @@ QSendSignalAction::~QSendSignalAction()
  */
 QInputPin *QSendSignalAction::target() const
 {
-    return d_ptr->target;
+    Q_D(const QSendSignalAction);
+    return d->target;
 }
 
 void QSendSignalAction::setTarget(const QInputPin *target)
 {
-    d_ptr->target = const_cast<QInputPin *>(target);
+    Q_D(QSendSignalAction);
+    d->setTarget(const_cast<QInputPin *>(target));
 }
 
 /*!
@@ -94,12 +113,14 @@ void QSendSignalAction::setTarget(const QInputPin *target)
  */
 QSignal *QSendSignalAction::signal() const
 {
-    return d_ptr->signal;
+    Q_D(const QSendSignalAction);
+    return d->signal;
 }
 
 void QSendSignalAction::setSignal(const QSignal *signal)
 {
-    d_ptr->signal = const_cast<QSignal *>(signal);
+    Q_D(QSendSignalAction);
+    d->setSignal(const_cast<QSignal *>(signal));
 }
 
 #include "moc_qsendsignalaction.cpp"

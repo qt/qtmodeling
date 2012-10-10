@@ -103,7 +103,7 @@ class Q_UML_EXPORT QStartClassifierBehaviorAction : public QObject, public QActi
     Q_PROPERTY(QInputPin * object READ object WRITE setObject)
 
     Q_DISABLE_COPY(QStartClassifierBehaviorAction)
-    Q_DECLARE_PRIVATE(QStartClassifierBehaviorAction)
+    QTUML_DECLARE_PRIVATE(QStartClassifierBehaviorAction)
 
 public:
     explicit QStartClassifierBehaviorAction(QObject *parent = 0);
@@ -114,7 +114,7 @@ public:
     void setObject(const QInputPin *object);
 
 protected:
-    QStartClassifierBehaviorActionPrivate *d_ptr;
+    explicit QStartClassifierBehaviorAction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

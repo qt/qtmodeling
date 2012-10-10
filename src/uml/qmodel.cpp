@@ -53,6 +53,11 @@ QModelPrivate::~QModelPrivate()
 {
 }
 
+void QModelPrivate::setViewpoint(QString viewpoint)
+{
+    this->viewpoint = viewpoint;
+}
+
 /*!
     \class QModel
 
@@ -62,13 +67,20 @@ QModelPrivate::~QModelPrivate()
  */
 
 QModel::QModel(QObject *parent)
-    : QPackage(parent), d_ptr(new QModelPrivate)
+    : QPackage(false, parent)
 {
+    d_umlptr = new QModelPrivate;
+}
+
+QModel::QModel(bool createPimpl, QObject *parent)
+    : QPackage(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QModelPrivate;
 }
 
 QModel::~QModel()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -76,12 +88,14 @@ QModel::~QModel()
  */
 QString QModel::viewpoint() const
 {
-    return d_ptr->viewpoint;
+    Q_D(const QModel);
+    return d->viewpoint;
 }
 
 void QModel::setViewpoint(QString viewpoint)
 {
-    d_ptr->viewpoint = viewpoint;
+    Q_D(QModel);
+    d->setViewpoint(viewpoint);
 }
 
 #include "moc_qmodel.cpp"

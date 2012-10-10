@@ -57,6 +57,16 @@ QCallOperationActionPrivate::QCallOperationActionPrivate() :
 QCallOperationActionPrivate::~QCallOperationActionPrivate()
 {
 }
+  
+void QCallOperationActionPrivate::setOperation(const QOperation *operation) 
+{  
+    this->operation = const_cast<QOperation *>(operation);   
+}
+  
+void QCallOperationActionPrivate::setTarget(const QInputPin *target) 
+{  
+    this->target = const_cast<QInputPin *>(target);   
+}
 
 /*!
     \class QCallOperationAction
@@ -67,13 +77,20 @@ QCallOperationActionPrivate::~QCallOperationActionPrivate()
  */
 
 QCallOperationAction::QCallOperationAction(QObject *parent)
-    : QObject(parent), d_ptr(new QCallOperationActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QCallOperationActionPrivate;
+}
+
+QCallOperationAction::QCallOperationAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QCallOperationActionPrivate;
 }
 
 QCallOperationAction::~QCallOperationAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -81,12 +98,14 @@ QCallOperationAction::~QCallOperationAction()
  */
 QOperation *QCallOperationAction::operation() const
 {
-    return d_ptr->operation;
+    Q_D(const QCallOperationAction);
+    return d->operation;
 }
 
 void QCallOperationAction::setOperation(const QOperation *operation)
 {
-    d_ptr->operation = const_cast<QOperation *>(operation);
+    Q_D(QCallOperationAction);
+    d->setOperation(const_cast<QOperation *>(operation));
 }
 
 /*!
@@ -94,12 +113,14 @@ void QCallOperationAction::setOperation(const QOperation *operation)
  */
 QInputPin *QCallOperationAction::target() const
 {
-    return d_ptr->target;
+    Q_D(const QCallOperationAction);
+    return d->target;
 }
 
 void QCallOperationAction::setTarget(const QInputPin *target)
 {
-    d_ptr->target = const_cast<QInputPin *>(target);
+    Q_D(QCallOperationAction);
+    d->setTarget(const_cast<QInputPin *>(target));
 }
 
 #include "moc_qcalloperationaction.cpp"

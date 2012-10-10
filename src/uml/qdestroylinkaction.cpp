@@ -55,6 +55,16 @@ QDestroyLinkActionPrivate::~QDestroyLinkActionPrivate()
 {
     delete endData;
 }
+  
+void QDestroyLinkActionPrivate::addEndData(const QLinkEndDestructionData *endData) 
+{   
+    this->endData->insert(const_cast<QLinkEndDestructionData *>(endData));  
+}
+ 
+void QDestroyLinkActionPrivate::removeEndData(const QLinkEndDestructionData *endData) 
+{    
+    this->endData->remove(const_cast<QLinkEndDestructionData *>(endData)); 
+}
 
 /*!
     \class QDestroyLinkAction
@@ -65,13 +75,20 @@ QDestroyLinkActionPrivate::~QDestroyLinkActionPrivate()
  */
 
 QDestroyLinkAction::QDestroyLinkAction(QObject *parent)
-    : QObject(parent), d_ptr(new QDestroyLinkActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QDestroyLinkActionPrivate;
+}
+
+QDestroyLinkAction::QDestroyLinkAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QDestroyLinkActionPrivate;
 }
 
 QDestroyLinkAction::~QDestroyLinkAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,17 +96,20 @@ QDestroyLinkAction::~QDestroyLinkAction()
  */
 const QSet<QLinkEndDestructionData *> *QDestroyLinkAction::endData() const
 {
-    return d_ptr->endData;
+    Q_D(const QDestroyLinkAction);
+    return d->endData;
 }
 
 void QDestroyLinkAction::addEndData(const QLinkEndDestructionData *endData)
 {
-    d_ptr->endData->insert(const_cast<QLinkEndDestructionData *>(endData));
+    Q_D(QDestroyLinkAction);
+    d->addEndData(const_cast<QLinkEndDestructionData *>(endData));
 }
 
 void QDestroyLinkAction::removeEndData(const QLinkEndDestructionData *endData)
 {
-    d_ptr->endData->remove(const_cast<QLinkEndDestructionData *>(endData));
+    Q_D(QDestroyLinkAction);
+    d->removeEndData(const_cast<QLinkEndDestructionData *>(endData));
 }
 
 #include "moc_qdestroylinkaction.cpp"

@@ -43,6 +43,12 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qpackageableelement_p.h"
+
+#include "qdirectedrelationship_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -54,7 +60,7 @@ QT_MODULE(QtUml)
 
 class QNamedElement;
 
-class QDependencyPrivate
+class QDependencyPrivate : public QPackageableElementPrivate, public QDirectedRelationshipPrivate
 {
 public:
     explicit QDependencyPrivate();
@@ -62,6 +68,12 @@ public:
 
     QSet<QNamedElement *> *clients;
     QSet<QNamedElement *> *suppliers;
+
+    // Association-ends
+    void addClient(const QNamedElement *client);
+    void removeClient(const QNamedElement *client);
+    void addSupplier(const QNamedElement *supplier);
+    void removeSupplier(const QNamedElement *supplier);
 };
 
 QT_END_NAMESPACE_QTUML

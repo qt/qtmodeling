@@ -111,7 +111,7 @@ class Q_UML_EXPORT QCallBehaviorAction : public QObject, public QCallAction
     Q_PROPERTY(QBehavior * behavior READ behavior WRITE setBehavior)
 
     Q_DISABLE_COPY(QCallBehaviorAction)
-    Q_DECLARE_PRIVATE(QCallBehaviorAction)
+    QTUML_DECLARE_PRIVATE(QCallBehaviorAction)
 
 public:
     explicit QCallBehaviorAction(QObject *parent = 0);
@@ -122,7 +122,7 @@ public:
     void setBehavior(const QBehavior *behavior);
 
 protected:
-    QCallBehaviorActionPrivate *d_ptr;
+    explicit QCallBehaviorAction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

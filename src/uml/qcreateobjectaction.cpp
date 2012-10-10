@@ -57,6 +57,16 @@ QCreateObjectActionPrivate::QCreateObjectActionPrivate() :
 QCreateObjectActionPrivate::~QCreateObjectActionPrivate()
 {
 }
+  
+void QCreateObjectActionPrivate::setClassifier(const QClassifier *classifier) 
+{  
+    this->classifier = const_cast<QClassifier *>(classifier);   
+}
+  
+void QCreateObjectActionPrivate::setResult(const QOutputPin *result) 
+{  
+    this->result = const_cast<QOutputPin *>(result);   
+}
 
 /*!
     \class QCreateObjectAction
@@ -67,13 +77,20 @@ QCreateObjectActionPrivate::~QCreateObjectActionPrivate()
  */
 
 QCreateObjectAction::QCreateObjectAction(QObject *parent)
-    : QObject(parent), d_ptr(new QCreateObjectActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QCreateObjectActionPrivate;
+}
+
+QCreateObjectAction::QCreateObjectAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QCreateObjectActionPrivate;
 }
 
 QCreateObjectAction::~QCreateObjectAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -81,12 +98,14 @@ QCreateObjectAction::~QCreateObjectAction()
  */
 QClassifier *QCreateObjectAction::classifier() const
 {
-    return d_ptr->classifier;
+    Q_D(const QCreateObjectAction);
+    return d->classifier;
 }
 
 void QCreateObjectAction::setClassifier(const QClassifier *classifier)
 {
-    d_ptr->classifier = const_cast<QClassifier *>(classifier);
+    Q_D(QCreateObjectAction);
+    d->setClassifier(const_cast<QClassifier *>(classifier));
 }
 
 /*!
@@ -94,12 +113,14 @@ void QCreateObjectAction::setClassifier(const QClassifier *classifier)
  */
 QOutputPin *QCreateObjectAction::result() const
 {
-    return d_ptr->result;
+    Q_D(const QCreateObjectAction);
+    return d->result;
 }
 
 void QCreateObjectAction::setResult(const QOutputPin *result)
 {
-    d_ptr->result = const_cast<QOutputPin *>(result);
+    Q_D(QCreateObjectAction);
+    d->setResult(const_cast<QOutputPin *>(result));
 }
 
 #include "moc_qcreateobjectaction.cpp"

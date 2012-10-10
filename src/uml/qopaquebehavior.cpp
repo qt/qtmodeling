@@ -57,6 +57,26 @@ QOpaqueBehaviorPrivate::~QOpaqueBehaviorPrivate()
     delete bodies;
 }
 
+void QOpaqueBehaviorPrivate::addLanguage(QString language)
+{
+    this->languages->append(language);
+}
+
+void QOpaqueBehaviorPrivate::removeLanguage(QString language)
+{
+    this->languages->removeAll(language);
+}
+
+void QOpaqueBehaviorPrivate::addBody(QString body)
+{
+    this->bodies->append(body);
+}
+
+void QOpaqueBehaviorPrivate::removeBody(QString body)
+{
+    this->bodies->removeAll(body);
+}
+
 /*!
     \class QOpaqueBehavior
 
@@ -66,13 +86,20 @@ QOpaqueBehaviorPrivate::~QOpaqueBehaviorPrivate()
  */
 
 QOpaqueBehavior::QOpaqueBehavior(QObject *parent)
-    : QBehavior(parent), d_ptr(new QOpaqueBehaviorPrivate)
+    : QBehavior(false, parent)
 {
+    d_umlptr = new QOpaqueBehaviorPrivate;
+}
+
+QOpaqueBehavior::QOpaqueBehavior(bool createPimpl, QObject *parent)
+    : QBehavior(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QOpaqueBehaviorPrivate;
 }
 
 QOpaqueBehavior::~QOpaqueBehavior()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -80,17 +107,20 @@ QOpaqueBehavior::~QOpaqueBehavior()
  */
 const QList<QString> *QOpaqueBehavior::languages() const
 {
-    return d_ptr->languages;
+    Q_D(const QOpaqueBehavior);
+    return d->languages;
 }
 
 void QOpaqueBehavior::addLanguage(QString language)
 {
-    d_ptr->languages->append(language);
+    Q_D(QOpaqueBehavior);
+    d->addLanguage(language);
 }
 
 void QOpaqueBehavior::removeLanguage(QString language)
 {
-    d_ptr->languages->removeAll(language);
+    Q_D(QOpaqueBehavior);
+    d->removeLanguage(language);
 }
 
 /*!
@@ -98,17 +128,20 @@ void QOpaqueBehavior::removeLanguage(QString language)
  */
 const QList<QString> *QOpaqueBehavior::bodies() const
 {
-    return d_ptr->bodies;
+    Q_D(const QOpaqueBehavior);
+    return d->bodies;
 }
 
 void QOpaqueBehavior::addBody(QString body)
 {
-    d_ptr->bodies->append(body);
+    Q_D(QOpaqueBehavior);
+    d->addBody(body);
 }
 
 void QOpaqueBehavior::removeBody(QString body)
 {
-    d_ptr->bodies->removeAll(body);
+    Q_D(QOpaqueBehavior);
+    d->removeBody(body);
 }
 
 #include "moc_qopaquebehavior.cpp"

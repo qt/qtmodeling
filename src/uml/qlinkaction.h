@@ -63,7 +63,7 @@ class QAssociation;
 class Q_UML_EXPORT QLinkAction : public QAction
 {
     Q_DISABLE_COPY(QLinkAction)
-    Q_DECLARE_PRIVATE(QLinkAction)
+    QTUML_DECLARE_PRIVATE(QLinkAction)
 
 public:
     virtual ~QLinkAction();
@@ -81,9 +81,6 @@ public:
 
 protected:
     explicit QLinkAction();
-
-protected:
-    QLinkActionPrivate *d_ptr;
 };
 
 QT_END_NAMESPACE_QTUML

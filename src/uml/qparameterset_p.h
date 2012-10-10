@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qnamedelement_p.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -53,10 +57,9 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QConstraint;
-
 class QParameter;
 
-class QParameterSetPrivate
+class QParameterSetPrivate : public QNamedElementPrivate
 {
 public:
     explicit QParameterSetPrivate();
@@ -64,6 +67,12 @@ public:
 
     QSet<QParameter *> *parameters;
     QSet<QConstraint *> *conditions;
+
+    // Association-ends
+    void addParameter(const QParameter *parameter);
+    void removeParameter(const QParameter *parameter);
+    void addCondition(const QConstraint *condition);
+    void removeCondition(const QConstraint *condition);
 };
 
 QT_END_NAMESPACE_QTUML

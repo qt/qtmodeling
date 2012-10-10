@@ -71,7 +71,7 @@ class Q_UML_EXPORT QConditionalNode : public QStructuredActivityNode
     Q_PROPERTY(const QList<QOutputPin *> * results READ results)
 
     Q_DISABLE_COPY(QConditionalNode)
-    Q_DECLARE_PRIVATE(QConditionalNode)
+    QTUML_DECLARE_PRIVATE(QConditionalNode)
 
 public:
     explicit QConditionalNode(QObject *parent = 0);
@@ -92,7 +92,7 @@ public:
     void removeResult(const QOutputPin *result);
 
 protected:
-    QConditionalNodePrivate *d_ptr;
+    explicit QConditionalNode(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

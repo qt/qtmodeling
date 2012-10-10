@@ -59,6 +59,31 @@ QExpansionRegionPrivate::~QExpansionRegionPrivate()
     delete outputElements;
 }
 
+void QExpansionRegionPrivate::setMode(QtUml::ExpansionKind mode)
+{
+    this->mode = mode;
+}
+  
+void QExpansionRegionPrivate::addInputElement(const QExpansionNode *inputElement) 
+{   
+    this->inputElements->insert(const_cast<QExpansionNode *>(inputElement));  
+}
+ 
+void QExpansionRegionPrivate::removeInputElement(const QExpansionNode *inputElement) 
+{    
+    this->inputElements->remove(const_cast<QExpansionNode *>(inputElement)); 
+}
+  
+void QExpansionRegionPrivate::addOutputElement(const QExpansionNode *outputElement) 
+{   
+    this->outputElements->insert(const_cast<QExpansionNode *>(outputElement));  
+}
+ 
+void QExpansionRegionPrivate::removeOutputElement(const QExpansionNode *outputElement) 
+{    
+    this->outputElements->remove(const_cast<QExpansionNode *>(outputElement)); 
+}
+
 /*!
     \class QExpansionRegion
 
@@ -68,13 +93,20 @@ QExpansionRegionPrivate::~QExpansionRegionPrivate()
  */
 
 QExpansionRegion::QExpansionRegion(QObject *parent)
-    : QStructuredActivityNode(parent), d_ptr(new QExpansionRegionPrivate)
+    : QStructuredActivityNode(false, parent)
 {
+    d_umlptr = new QExpansionRegionPrivate;
+}
+
+QExpansionRegion::QExpansionRegion(bool createPimpl, QObject *parent)
+    : QStructuredActivityNode(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QExpansionRegionPrivate;
 }
 
 QExpansionRegion::~QExpansionRegion()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -82,12 +114,14 @@ QExpansionRegion::~QExpansionRegion()
  */
 QtUml::ExpansionKind QExpansionRegion::mode() const
 {
-    return d_ptr->mode;
+    Q_D(const QExpansionRegion);
+    return d->mode;
 }
 
 void QExpansionRegion::setMode(QtUml::ExpansionKind mode)
 {
-    d_ptr->mode = mode;
+    Q_D(QExpansionRegion);
+    d->setMode(mode);
 }
 
 /*!
@@ -95,17 +129,20 @@ void QExpansionRegion::setMode(QtUml::ExpansionKind mode)
  */
 const QSet<QExpansionNode *> *QExpansionRegion::inputElements() const
 {
-    return d_ptr->inputElements;
+    Q_D(const QExpansionRegion);
+    return d->inputElements;
 }
 
 void QExpansionRegion::addInputElement(const QExpansionNode *inputElement)
 {
-    d_ptr->inputElements->insert(const_cast<QExpansionNode *>(inputElement));
+    Q_D(QExpansionRegion);
+    d->addInputElement(const_cast<QExpansionNode *>(inputElement));
 }
 
 void QExpansionRegion::removeInputElement(const QExpansionNode *inputElement)
 {
-    d_ptr->inputElements->remove(const_cast<QExpansionNode *>(inputElement));
+    Q_D(QExpansionRegion);
+    d->removeInputElement(const_cast<QExpansionNode *>(inputElement));
 }
 
 /*!
@@ -113,17 +150,20 @@ void QExpansionRegion::removeInputElement(const QExpansionNode *inputElement)
  */
 const QSet<QExpansionNode *> *QExpansionRegion::outputElements() const
 {
-    return d_ptr->outputElements;
+    Q_D(const QExpansionRegion);
+    return d->outputElements;
 }
 
 void QExpansionRegion::addOutputElement(const QExpansionNode *outputElement)
 {
-    d_ptr->outputElements->insert(const_cast<QExpansionNode *>(outputElement));
+    Q_D(QExpansionRegion);
+    d->addOutputElement(const_cast<QExpansionNode *>(outputElement));
 }
 
 void QExpansionRegion::removeOutputElement(const QExpansionNode *outputElement)
 {
-    d_ptr->outputElements->remove(const_cast<QExpansionNode *>(outputElement));
+    Q_D(QExpansionRegion);
+    d->removeOutputElement(const_cast<QExpansionNode *>(outputElement));
 }
 
 #include "moc_qexpansionregion.cpp"

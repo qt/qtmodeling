@@ -62,13 +62,20 @@ QCentralBufferNodePrivate::~QCentralBufferNodePrivate()
  */
 
 QCentralBufferNode::QCentralBufferNode(QObject *parent)
-    : QObject(parent), d_ptr(new QCentralBufferNodePrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QCentralBufferNodePrivate;
+}
+
+QCentralBufferNode::QCentralBufferNode(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QCentralBufferNodePrivate;
 }
 
 QCentralBufferNode::~QCentralBufferNode()
 {
-    delete d_ptr;
 }
 
 #include "moc_qcentralbuffernode.cpp"

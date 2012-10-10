@@ -80,7 +80,7 @@ class Q_UML_EXPORT QConnectorEnd : public QObject, public QMultiplicityElement
     Q_PROPERTY(QProperty * definingEnd READ definingEnd)
 
     Q_DISABLE_COPY(QConnectorEnd)
-    Q_DECLARE_PRIVATE(QConnectorEnd)
+    QTUML_DECLARE_PRIVATE(QConnectorEnd)
 
 public:
     explicit QConnectorEnd(QObject *parent = 0);
@@ -94,7 +94,7 @@ public:
     QProperty *definingEnd() const;
 
 protected:
-    QConnectorEndPrivate *d_ptr;
+    explicit QConnectorEnd(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

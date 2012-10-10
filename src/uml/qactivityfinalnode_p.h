@@ -43,13 +43,18 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qfinalnode_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QActivityFinalNodePrivate
+
+class QActivityFinalNodePrivate : public QFinalNodePrivate
 {
 public:
     explicit QActivityFinalNodePrivate();

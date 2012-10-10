@@ -88,7 +88,7 @@ class Q_UML_EXPORT QPseudostate : public QObject, public QVertex
     Q_PROPERTY(QStateMachine * stateMachine READ stateMachine WRITE setStateMachine)
 
     Q_DISABLE_COPY(QPseudostate)
-    Q_DECLARE_PRIVATE(QPseudostate)
+    QTUML_DECLARE_PRIVATE(QPseudostate)
 
 public:
     explicit QPseudostate(QObject *parent = 0);
@@ -105,7 +105,7 @@ public:
     void setStateMachine(const QStateMachine *stateMachine);
 
 protected:
-    QPseudostatePrivate *d_ptr;
+    explicit QPseudostate(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -43,13 +43,20 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qclass_p.h"
+
+#include "qassociation_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QAssociationClassPrivate
+
+class QAssociationClassPrivate : public QClassPrivate, public QAssociationPrivate
 {
 public:
     explicit QAssociationClassPrivate();

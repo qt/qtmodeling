@@ -66,7 +66,7 @@ class Q_UML_EXPORT QSequenceNode : public QStructuredActivityNode
     Q_PROPERTY(const QList<QExecutableNode *> * executableNodes READ executableNodes)
 
     Q_DISABLE_COPY(QSequenceNode)
-    Q_DECLARE_PRIVATE(QSequenceNode)
+    QTUML_DECLARE_PRIVATE(QSequenceNode)
 
 public:
     explicit QSequenceNode(QObject *parent = 0);
@@ -78,7 +78,7 @@ public:
     void removeExecutableNode(const QExecutableNode *executableNode);
 
 protected:
-    QSequenceNodePrivate *d_ptr;
+    explicit QSequenceNode(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

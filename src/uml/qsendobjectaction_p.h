@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qinvocationaction_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,7 +55,7 @@ QT_MODULE(QtUml)
 
 class QInputPin;
 
-class QSendObjectActionPrivate
+class QSendObjectActionPrivate : public QInvocationActionPrivate
 {
 public:
     explicit QSendObjectActionPrivate();
@@ -59,6 +63,10 @@ public:
 
     QInputPin *request;
     QInputPin *target;
+
+    // Association-ends
+    void setRequest(const QInputPin *request);
+    void setTarget(const QInputPin *target);
 };
 
 QT_END_NAMESPACE_QTUML

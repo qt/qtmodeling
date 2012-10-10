@@ -110,7 +110,7 @@ class Q_UML_EXPORT QReclassifyObjectAction : public QObject, public QAction
     Q_PROPERTY(const QSet<QClassifier *> * newClassifiers READ newClassifiers)
 
     Q_DISABLE_COPY(QReclassifyObjectAction)
-    Q_DECLARE_PRIVATE(QReclassifyObjectAction)
+    QTUML_DECLARE_PRIVATE(QReclassifyObjectAction)
 
 public:
     explicit QReclassifyObjectAction(QObject *parent = 0);
@@ -131,7 +131,7 @@ public:
     void removeNewClassifier(const QClassifier *newClassifier);
 
 protected:
-    QReclassifyObjectActionPrivate *d_ptr;
+    explicit QReclassifyObjectAction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

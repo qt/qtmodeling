@@ -46,6 +46,12 @@
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
 
+// Base class includes
+
+#include "qnamespace_p.h"
+
+#include "qfeature_p.h"
+
 // Qt includes
 #include <QtCore/QList>
 #include <QtCore/QSet>
@@ -57,16 +63,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QType;
-
 class QNamedElement;
-
 class QParameterSet;
-
 class QBehavior;
-
 class QParameter;
 
-class QBehavioralFeaturePrivate
+class QBehavioralFeaturePrivate : public QNamespacePrivate, public QFeaturePrivate
 {
 public:
     explicit QBehavioralFeaturePrivate();
@@ -78,6 +80,20 @@ public:
     QList<QParameter *> *ownedParameters;
     QSet<QParameterSet *> *ownedParameterSets;
     QSet<QBehavior *> *methods;
+
+    // Attributes
+    void setConcurrency(QtUml::CallConcurrencyKind concurrency);
+    void setAbstract(bool isAbstract);
+
+    // Association-ends
+    void addRaisedException(const QType *raisedException);
+    void removeRaisedException(const QType *raisedException);
+    void addOwnedParameter(const QParameter *ownedParameter);
+    void removeOwnedParameter(const QParameter *ownedParameter);
+    void addOwnedParameterSet(const QParameterSet *ownedParameterSet);
+    void removeOwnedParameterSet(const QParameterSet *ownedParameterSet);
+    void addMethod(const QBehavior *method);
+    void removeMethod(const QBehavior *method);
 };
 
 QT_END_NAMESPACE_QTUML

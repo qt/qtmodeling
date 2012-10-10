@@ -94,7 +94,7 @@ class Q_UML_EXPORT QOpaqueExpression : public QObject, public QValueSpecificatio
     Q_PROPERTY(QParameter * result READ result)
 
     Q_DISABLE_COPY(QOpaqueExpression)
-    Q_DECLARE_PRIVATE(QOpaqueExpression)
+    QTUML_DECLARE_PRIVATE(QOpaqueExpression)
 
 public:
     explicit QOpaqueExpression(QObject *parent = 0);
@@ -120,7 +120,7 @@ public:
     qint32 value() const;
 
 protected:
-    QOpaqueExpressionPrivate *d_ptr;
+    explicit QOpaqueExpression(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

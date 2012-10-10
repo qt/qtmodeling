@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qaction_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,13 +55,16 @@ QT_MODULE(QtUml)
 
 class QInputPin;
 
-class QRaiseExceptionActionPrivate
+class QRaiseExceptionActionPrivate : public QActionPrivate
 {
 public:
     explicit QRaiseExceptionActionPrivate();
     virtual ~QRaiseExceptionActionPrivate();
 
     QInputPin *exception;
+
+    // Association-ends
+    void setException(const QInputPin *exception);
 };
 
 QT_END_NAMESPACE_QTUML

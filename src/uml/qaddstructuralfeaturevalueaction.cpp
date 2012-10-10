@@ -57,6 +57,16 @@ QAddStructuralFeatureValueActionPrivate::~QAddStructuralFeatureValueActionPrivat
 {
 }
 
+void QAddStructuralFeatureValueActionPrivate::setReplaceAll(bool isReplaceAll)
+{
+    this->isReplaceAll = isReplaceAll;
+}
+  
+void QAddStructuralFeatureValueActionPrivate::setInsertAt(const QInputPin *insertAt) 
+{  
+    this->insertAt = const_cast<QInputPin *>(insertAt);   
+}
+
 /*!
     \class QAddStructuralFeatureValueAction
 
@@ -66,13 +76,20 @@ QAddStructuralFeatureValueActionPrivate::~QAddStructuralFeatureValueActionPrivat
  */
 
 QAddStructuralFeatureValueAction::QAddStructuralFeatureValueAction(QObject *parent)
-    : QObject(parent), d_ptr(new QAddStructuralFeatureValueActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QAddStructuralFeatureValueActionPrivate;
+}
+
+QAddStructuralFeatureValueAction::QAddStructuralFeatureValueAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QAddStructuralFeatureValueActionPrivate;
 }
 
 QAddStructuralFeatureValueAction::~QAddStructuralFeatureValueAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -80,12 +97,14 @@ QAddStructuralFeatureValueAction::~QAddStructuralFeatureValueAction()
  */
 bool QAddStructuralFeatureValueAction::isReplaceAll() const
 {
-    return d_ptr->isReplaceAll;
+    Q_D(const QAddStructuralFeatureValueAction);
+    return d->isReplaceAll;
 }
 
 void QAddStructuralFeatureValueAction::setReplaceAll(bool isReplaceAll)
 {
-    d_ptr->isReplaceAll = isReplaceAll;
+    Q_D(QAddStructuralFeatureValueAction);
+    d->setReplaceAll(isReplaceAll);
 }
 
 /*!
@@ -93,12 +112,14 @@ void QAddStructuralFeatureValueAction::setReplaceAll(bool isReplaceAll)
  */
 QInputPin *QAddStructuralFeatureValueAction::insertAt() const
 {
-    return d_ptr->insertAt;
+    Q_D(const QAddStructuralFeatureValueAction);
+    return d->insertAt;
 }
 
 void QAddStructuralFeatureValueAction::setInsertAt(const QInputPin *insertAt)
 {
-    d_ptr->insertAt = const_cast<QInputPin *>(insertAt);
+    Q_D(QAddStructuralFeatureValueAction);
+    d->setInsertAt(const_cast<QInputPin *>(insertAt));
 }
 
 #include "moc_qaddstructuralfeaturevalueaction.cpp"

@@ -55,6 +55,11 @@ QEnumerationLiteralPrivate::QEnumerationLiteralPrivate() :
 QEnumerationLiteralPrivate::~QEnumerationLiteralPrivate()
 {
 }
+   
+void QEnumerationLiteralPrivate::setEnumeration(const QEnumeration *enumeration) 
+{  
+    this->enumeration = const_cast<QEnumeration *>(enumeration);   
+}
 
 /*!
     \class QEnumerationLiteral
@@ -65,13 +70,20 @@ QEnumerationLiteralPrivate::~QEnumerationLiteralPrivate()
  */
 
 QEnumerationLiteral::QEnumerationLiteral(QObject *parent)
-    : QInstanceSpecification(parent), d_ptr(new QEnumerationLiteralPrivate)
+    : QInstanceSpecification(false, parent)
 {
+    d_umlptr = new QEnumerationLiteralPrivate;
+}
+
+QEnumerationLiteral::QEnumerationLiteral(bool createPimpl, QObject *parent)
+    : QInstanceSpecification(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QEnumerationLiteralPrivate;
 }
 
 QEnumerationLiteral::~QEnumerationLiteral()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -87,12 +99,14 @@ QEnumeration *QEnumerationLiteral::classifier() const
  */
 QEnumeration *QEnumerationLiteral::enumeration() const
 {
-    return d_ptr->enumeration;
+    Q_D(const QEnumerationLiteral);
+    return d->enumeration;
 }
 
 void QEnumerationLiteral::setEnumeration(const QEnumeration *enumeration)
 {
-    d_ptr->enumeration = const_cast<QEnumeration *>(enumeration);
+    Q_D(QEnumerationLiteral);
+    d->setEnumeration(const_cast<QEnumeration *>(enumeration));
 }
 
 #include "moc_qenumerationliteral.cpp"

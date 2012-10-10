@@ -55,6 +55,11 @@ QReadLinkActionPrivate::QReadLinkActionPrivate() :
 QReadLinkActionPrivate::~QReadLinkActionPrivate()
 {
 }
+  
+void QReadLinkActionPrivate::setResult(const QOutputPin *result) 
+{  
+    this->result = const_cast<QOutputPin *>(result);   
+}
 
 /*!
     \class QReadLinkAction
@@ -65,13 +70,20 @@ QReadLinkActionPrivate::~QReadLinkActionPrivate()
  */
 
 QReadLinkAction::QReadLinkAction(QObject *parent)
-    : QObject(parent), d_ptr(new QReadLinkActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QReadLinkActionPrivate;
+}
+
+QReadLinkAction::QReadLinkAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QReadLinkActionPrivate;
 }
 
 QReadLinkAction::~QReadLinkAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -79,12 +91,14 @@ QReadLinkAction::~QReadLinkAction()
  */
 QOutputPin *QReadLinkAction::result() const
 {
-    return d_ptr->result;
+    Q_D(const QReadLinkAction);
+    return d->result;
 }
 
 void QReadLinkAction::setResult(const QOutputPin *result)
 {
-    d_ptr->result = const_cast<QOutputPin *>(result);
+    Q_D(QReadLinkAction);
+    d->setResult(const_cast<QOutputPin *>(result));
 }
 
 #include "moc_qreadlinkaction.cpp"

@@ -98,14 +98,14 @@ class Q_UML_EXPORT QCentralBufferNode : public QObject, public QObjectNode
     Q_PROPERTY(const QSet<QState *> * inState READ inState)
 
     Q_DISABLE_COPY(QCentralBufferNode)
-    Q_DECLARE_PRIVATE(QCentralBufferNode)
+    QTUML_DECLARE_PRIVATE(QCentralBufferNode)
 
 public:
     explicit QCentralBufferNode(QObject *parent = 0);
     virtual ~QCentralBufferNode();
 
 protected:
-    QCentralBufferNodePrivate *d_ptr;
+    explicit QCentralBufferNode(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qintervalconstraint_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,7 +55,7 @@ QT_MODULE(QtUml)
 
 class QTimeInterval;
 
-class QTimeConstraintPrivate
+class QTimeConstraintPrivate : public QIntervalConstraintPrivate
 {
 public:
     explicit QTimeConstraintPrivate();
@@ -59,6 +63,12 @@ public:
 
     bool firstEvent;
     QTimeInterval *specification;
+
+    // Attributes
+    void setFirstEvent(bool firstEvent);
+
+    // Association-ends
+    void setSpecification(const QTimeInterval *specification);
 };
 
 QT_END_NAMESPACE_QTUML

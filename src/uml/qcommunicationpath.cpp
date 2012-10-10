@@ -62,13 +62,20 @@ QCommunicationPathPrivate::~QCommunicationPathPrivate()
  */
 
 QCommunicationPath::QCommunicationPath(QObject *parent)
-    : QAssociation(parent), d_ptr(new QCommunicationPathPrivate)
+    : QAssociation(false, parent)
 {
+    d_umlptr = new QCommunicationPathPrivate;
+}
+
+QCommunicationPath::QCommunicationPath(bool createPimpl, QObject *parent)
+    : QAssociation(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QCommunicationPathPrivate;
 }
 
 QCommunicationPath::~QCommunicationPath()
 {
-    delete d_ptr;
 }
 
 #include "moc_qcommunicationpath.cpp"

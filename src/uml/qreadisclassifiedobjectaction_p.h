@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qaction_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -50,12 +54,10 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QClassifier;
-
 class QInputPin;
-
 class QOutputPin;
 
-class QReadIsClassifiedObjectActionPrivate
+class QReadIsClassifiedObjectActionPrivate : public QActionPrivate
 {
 public:
     explicit QReadIsClassifiedObjectActionPrivate();
@@ -65,6 +67,14 @@ public:
     QOutputPin *result;
     QInputPin *object;
     QClassifier *classifier;
+
+    // Attributes
+    void setDirect(bool isDirect);
+
+    // Association-ends
+    void setResult(const QOutputPin *result);
+    void setObject(const QInputPin *object);
+    void setClassifier(const QClassifier *classifier);
 };
 
 QT_END_NAMESPACE_QTUML

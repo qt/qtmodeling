@@ -107,7 +107,7 @@ class Q_UML_EXPORT QBroadcastSignalAction : public QObject, public QInvocationAc
     Q_PROPERTY(QSignal * signal READ signal WRITE setSignal)
 
     Q_DISABLE_COPY(QBroadcastSignalAction)
-    Q_DECLARE_PRIVATE(QBroadcastSignalAction)
+    QTUML_DECLARE_PRIVATE(QBroadcastSignalAction)
 
 public:
     explicit QBroadcastSignalAction(QObject *parent = 0);
@@ -118,7 +118,7 @@ public:
     void setSignal(const QSignal *signal);
 
 protected:
-    QBroadcastSignalActionPrivate *d_ptr;
+    explicit QBroadcastSignalAction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -62,13 +62,20 @@ QExecutionEnvironmentPrivate::~QExecutionEnvironmentPrivate()
  */
 
 QExecutionEnvironment::QExecutionEnvironment(QObject *parent)
-    : QNode(parent), d_ptr(new QExecutionEnvironmentPrivate)
+    : QNode(false, parent)
 {
+    d_umlptr = new QExecutionEnvironmentPrivate;
+}
+
+QExecutionEnvironment::QExecutionEnvironment(bool createPimpl, QObject *parent)
+    : QNode(createPimpl, parent)
+{
+    if (createPimpl)
+        d_umlptr = new QExecutionEnvironmentPrivate;
 }
 
 QExecutionEnvironment::~QExecutionEnvironment()
 {
-    delete d_ptr;
 }
 
 #include "moc_qexecutionenvironment.cpp"

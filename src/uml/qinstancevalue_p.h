@@ -43,6 +43,10 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+
+#include "qvaluespecification_p.h"
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -51,13 +55,16 @@ QT_MODULE(QtUml)
 
 class QInstanceSpecification;
 
-class QInstanceValuePrivate
+class QInstanceValuePrivate : public QValueSpecificationPrivate
 {
 public:
     explicit QInstanceValuePrivate();
     virtual ~QInstanceValuePrivate();
 
     QInstanceSpecification *instance;
+
+    // Association-ends
+    void setInstance(const QInstanceSpecification *instance);
 };
 
 QT_END_NAMESPACE_QTUML

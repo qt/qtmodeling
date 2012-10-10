@@ -63,7 +63,7 @@ class Q_UML_EXPORT QAbstraction : public QDependency
     Q_PROPERTY(QOpaqueExpression * mapping READ mapping WRITE setMapping)
 
     Q_DISABLE_COPY(QAbstraction)
-    Q_DECLARE_PRIVATE(QAbstraction)
+    QTUML_DECLARE_PRIVATE(QAbstraction)
 
 public:
     explicit QAbstraction(QObject *parent = 0);
@@ -74,7 +74,7 @@ public:
     void setMapping(const QOpaqueExpression *mapping);
 
 protected:
-    QAbstractionPrivate *d_ptr;
+    explicit QAbstraction(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

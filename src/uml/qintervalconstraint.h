@@ -63,7 +63,7 @@ class Q_UML_EXPORT QIntervalConstraint : public QConstraint
     Q_PROPERTY(QInterval * specification READ specification WRITE setSpecification)
 
     Q_DISABLE_COPY(QIntervalConstraint)
-    Q_DECLARE_PRIVATE(QIntervalConstraint)
+    QTUML_DECLARE_PRIVATE(QIntervalConstraint)
 
 public:
     explicit QIntervalConstraint(QObject *parent = 0);
@@ -74,7 +74,7 @@ public:
     void setSpecification(const QInterval *specification);
 
 protected:
-    QIntervalConstraintPrivate *d_ptr;
+    explicit QIntervalConstraint(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

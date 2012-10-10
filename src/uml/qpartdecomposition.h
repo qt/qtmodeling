@@ -59,14 +59,14 @@ class Q_UML_EXPORT QPartDecomposition : public QInteractionUse
     Q_OBJECT
 
     Q_DISABLE_COPY(QPartDecomposition)
-    Q_DECLARE_PRIVATE(QPartDecomposition)
+    QTUML_DECLARE_PRIVATE(QPartDecomposition)
 
 public:
     explicit QPartDecomposition(QObject *parent = 0);
     virtual ~QPartDecomposition();
 
 protected:
-    QPartDecompositionPrivate *d_ptr;
+    explicit QPartDecomposition(bool createPimpl, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -58,6 +58,24 @@ QDeploymentTargetPrivate::~QDeploymentTargetPrivate()
 {
     delete deployments;
 }
+   
+void QDeploymentTargetPrivate::addDeployment(const QDeployment *deployment) 
+{   
+    this->deployments->insert(const_cast<QDeployment *>(deployment)); 
+
+    // Adjust subsetted property(ies)
+    addOwnedElement(deployment);
+    addClientDependency(deployment); 
+}
+ 
+void QDeploymentTargetPrivate::removeDeployment(const QDeployment *deployment) 
+{    
+    this->deployments->remove(const_cast<QDeployment *>(deployment)); 
+
+    // Adjust subsetted property(ies)
+    removeOwnedElement(deployment);
+    removeClientDependency(deployment);
+}
 
 /*!
     \class QDeploymentTarget
@@ -68,13 +86,12 @@ QDeploymentTargetPrivate::~QDeploymentTargetPrivate()
  */
 
 QDeploymentTarget::QDeploymentTarget()
-    : d_ptr(new QDeploymentTargetPrivate)
 {
+    d_umlptr = new QDeploymentTargetPrivate;
 }
 
 QDeploymentTarget::~QDeploymentTarget()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -90,17 +107,20 @@ const QSet<QPackageableElement *> *QDeploymentTarget::deployedElements() const
  */
 const QSet<QDeployment *> *QDeploymentTarget::deployments() const
 {
-    return d_ptr->deployments;
+    Q_D(const QDeploymentTarget);
+    return d->deployments;
 }
 
 void QDeploymentTarget::addDeployment(const QDeployment *deployment)
 {
-    d_ptr->deployments->insert(const_cast<QDeployment *>(deployment));
+    Q_D(QDeploymentTarget);
+    d->addDeployment(const_cast<QDeployment *>(deployment));
 }
 
 void QDeploymentTarget::removeDeployment(const QDeployment *deployment)
 {
-    d_ptr->deployments->remove(const_cast<QDeployment *>(deployment));
+    Q_D(QDeploymentTarget);
+    d->removeDeployment(const_cast<QDeployment *>(deployment));
 }
 
 QT_END_NAMESPACE_QTUML

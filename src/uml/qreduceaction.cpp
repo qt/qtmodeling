@@ -62,6 +62,26 @@ QReduceActionPrivate::~QReduceActionPrivate()
 {
 }
 
+void QReduceActionPrivate::setOrdered(bool isOrdered)
+{
+    this->isOrdered = isOrdered;
+}
+  
+void QReduceActionPrivate::setResult(const QOutputPin *result) 
+{  
+    this->result = const_cast<QOutputPin *>(result);   
+}
+  
+void QReduceActionPrivate::setCollection(const QInputPin *collection) 
+{  
+    this->collection = const_cast<QInputPin *>(collection);   
+}
+  
+void QReduceActionPrivate::setReducer(const QBehavior *reducer) 
+{  
+    this->reducer = const_cast<QBehavior *>(reducer);   
+}
+
 /*!
     \class QReduceAction
 
@@ -71,13 +91,20 @@ QReduceActionPrivate::~QReduceActionPrivate()
  */
 
 QReduceAction::QReduceAction(QObject *parent)
-    : QObject(parent), d_ptr(new QReduceActionPrivate)
+    : QObject(parent)
 {
+    d_umlptr = new QReduceActionPrivate;
+}
+
+QReduceAction::QReduceAction(bool createPimpl, QObject *parent)
+    : QObject(parent)
+{
+    if (createPimpl)
+        d_umlptr = new QReduceActionPrivate;
 }
 
 QReduceAction::~QReduceAction()
 {
-    delete d_ptr;
 }
 
 /*!
@@ -85,12 +112,14 @@ QReduceAction::~QReduceAction()
  */
 bool QReduceAction::isOrdered() const
 {
-    return d_ptr->isOrdered;
+    Q_D(const QReduceAction);
+    return d->isOrdered;
 }
 
 void QReduceAction::setOrdered(bool isOrdered)
 {
-    d_ptr->isOrdered = isOrdered;
+    Q_D(QReduceAction);
+    d->setOrdered(isOrdered);
 }
 
 /*!
@@ -98,12 +127,14 @@ void QReduceAction::setOrdered(bool isOrdered)
  */
 QOutputPin *QReduceAction::result() const
 {
-    return d_ptr->result;
+    Q_D(const QReduceAction);
+    return d->result;
 }
 
 void QReduceAction::setResult(const QOutputPin *result)
 {
-    d_ptr->result = const_cast<QOutputPin *>(result);
+    Q_D(QReduceAction);
+    d->setResult(const_cast<QOutputPin *>(result));
 }
 
 /*!
@@ -111,12 +142,14 @@ void QReduceAction::setResult(const QOutputPin *result)
  */
 QInputPin *QReduceAction::collection() const
 {
-    return d_ptr->collection;
+    Q_D(const QReduceAction);
+    return d->collection;
 }
 
 void QReduceAction::setCollection(const QInputPin *collection)
 {
-    d_ptr->collection = const_cast<QInputPin *>(collection);
+    Q_D(QReduceAction);
+    d->setCollection(const_cast<QInputPin *>(collection));
 }
 
 /*!
@@ -124,12 +157,14 @@ void QReduceAction::setCollection(const QInputPin *collection)
  */
 QBehavior *QReduceAction::reducer() const
 {
-    return d_ptr->reducer;
+    Q_D(const QReduceAction);
+    return d->reducer;
 }
 
 void QReduceAction::setReducer(const QBehavior *reducer)
 {
-    d_ptr->reducer = const_cast<QBehavior *>(reducer);
+    Q_D(QReduceAction);
+    d->setReducer(const_cast<QBehavior *>(reducer));
 }
 
 #include "moc_qreduceaction.cpp"
