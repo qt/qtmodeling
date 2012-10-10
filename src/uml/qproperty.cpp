@@ -126,13 +126,20 @@ void QPropertyPrivate::removeSubsettedProperty(const QProperty *subsettedPropert
 
 void QPropertyPrivate::setOwningAssociation(const QAssociation *owningAssociation)
 {
+    // Adjust subsetted property(ies)
+    removeFeaturingClassifier(this->owningAssociation);
+    removeRedefinitionContext(this->owningAssociation);
     this->owningAssociation = const_cast<QAssociation *>(owningAssociation);
+    // Adjust subsetted property(ies)
+    addFeaturingClassifier(owningAssociation);
+    addRedefinitionContext(owningAssociation);
+    setNamespace_(owningAssociation);
+    setAssociation(owningAssociation);
 }
 
 void QPropertyPrivate::addQualifier(const QProperty *qualifier)
 {
     this->qualifiers->append(const_cast<QProperty *>(qualifier));
-
     // Adjust subsetted property(ies)
     addOwnedElement(qualifier);
 }
@@ -140,35 +147,43 @@ void QPropertyPrivate::addQualifier(const QProperty *qualifier)
 void QPropertyPrivate::removeQualifier(const QProperty *qualifier)
 {
     this->qualifiers->removeAll(const_cast<QProperty *>(qualifier));
-
     // Adjust subsetted property(ies)
     removeOwnedElement(qualifier);
 }
 
 void QPropertyPrivate::setDefaultValue(const QValueSpecification *defaultValue)
 {
+    // Adjust subsetted property(ies)
+    removeOwnedElement(this->defaultValue);
     this->defaultValue = const_cast<QValueSpecification *>(defaultValue);
+    // Adjust subsetted property(ies)
+    addOwnedElement(defaultValue);
 }
 
 void QPropertyPrivate::setClass_(const QClass *class_)
 {
     this->class_ = const_cast<QClass *>(class_);
+    // Adjust subsetted property(ies)
+    setNamespace_(class_);
 }
 
 void QPropertyPrivate::setAssociationEnd(const QProperty *associationEnd)
 {
     this->associationEnd = const_cast<QProperty *>(associationEnd);
+    // Adjust subsetted property(ies)
+    setOwner(associationEnd);
 }
 
 void QPropertyPrivate::setDatatype(const QDataType *datatype)
 {
     this->datatype = const_cast<QDataType *>(datatype);
+    // Adjust subsetted property(ies)
+    setNamespace_(datatype);
 }
 
 void QPropertyPrivate::addRedefinedProperty(const QProperty *redefinedProperty)
 {
     this->redefinedProperties->insert(const_cast<QProperty *>(redefinedProperty));
-
     // Adjust subsetted property(ies)
     addRedefinedElement(redefinedProperty);
 }
@@ -176,7 +191,6 @@ void QPropertyPrivate::addRedefinedProperty(const QProperty *redefinedProperty)
 void QPropertyPrivate::removeRedefinedProperty(const QProperty *redefinedProperty)
 {
     this->redefinedProperties->remove(const_cast<QProperty *>(redefinedProperty));
-
     // Adjust subsetted property(ies)
     removeRedefinedElement(redefinedProperty);
 }
@@ -189,6 +203,8 @@ void QPropertyPrivate::setAssociation(const QAssociation *association)
 void QPropertyPrivate::setInterface(const QInterface *interface)
 {
     this->interface = const_cast<QInterface *>(interface);
+    // Adjust subsetted property(ies)
+    setNamespace_(interface);
 }
 
 /*!

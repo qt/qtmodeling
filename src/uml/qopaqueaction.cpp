@@ -88,7 +88,6 @@ void QOpaqueActionPrivate::removeLanguage(QString language)
 void QOpaqueActionPrivate::addInputValue(const QInputPin *inputValue)
 {
     this->inputValues->insert(const_cast<QInputPin *>(inputValue));
-
     // Adjust subsetted property(ies)
     addInput(inputValue);
 }
@@ -96,7 +95,6 @@ void QOpaqueActionPrivate::addInputValue(const QInputPin *inputValue)
 void QOpaqueActionPrivate::removeInputValue(const QInputPin *inputValue)
 {
     this->inputValues->remove(const_cast<QInputPin *>(inputValue));
-
     // Adjust subsetted property(ies)
     removeInput(inputValue);
 }
@@ -104,7 +102,6 @@ void QOpaqueActionPrivate::removeInputValue(const QInputPin *inputValue)
 void QOpaqueActionPrivate::addOutputValue(const QOutputPin *outputValue)
 {
     this->outputValues->insert(const_cast<QOutputPin *>(outputValue));
-
     // Adjust subsetted property(ies)
     addOutput(outputValue);
 }
@@ -112,7 +109,6 @@ void QOpaqueActionPrivate::addOutputValue(const QOutputPin *outputValue)
 void QOpaqueActionPrivate::removeOutputValue(const QOutputPin *outputValue)
 {
     this->outputValues->remove(const_cast<QOutputPin *>(outputValue));
-
     // Adjust subsetted property(ies)
     removeOutput(outputValue);
 }

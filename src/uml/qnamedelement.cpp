@@ -75,26 +75,28 @@ void QNamedElementPrivate::setVisibility(QtUml::VisibilityKind visibility)
 
 void QNamedElementPrivate::setNameExpression(const QStringExpression *nameExpression)
 {
+    // Adjust subsetted property(ies)
+    removeOwnedElement(this->nameExpression);
     this->nameExpression = const_cast<QStringExpression *>(nameExpression);
+    // Adjust subsetted property(ies)
+    addOwnedElement(nameExpression);
 }
 
 void QNamedElementPrivate::setNamespace_(const QNamespace *namespace_)
 {
     this->namespace_ = const_cast<QNamespace *>(namespace_);
+    // Adjust subsetted property(ies)
+    setOwner(namespace_);
 }
 
 void QNamedElementPrivate::addClientDependency(const QDependency *clientDependency)
 {
     this->clientDependencies->insert(const_cast<QDependency *>(clientDependency));
-
-    // Adjust subsetted property(ies)
 }
 
 void QNamedElementPrivate::removeClientDependency(const QDependency *clientDependency)
 {
     this->clientDependencies->remove(const_cast<QDependency *>(clientDependency));
-
-    // Adjust subsetted property(ies)
 }
 
 /*!

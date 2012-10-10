@@ -61,7 +61,6 @@ QStereotypePrivate::~QStereotypePrivate()
 void QStereotypePrivate::addIcon(const QImage *icon)
 {
     this->icons->insert(const_cast<QImage *>(icon));
-
     // Adjust subsetted property(ies)
     addOwnedElement(icon);
 }
@@ -69,7 +68,6 @@ void QStereotypePrivate::addIcon(const QImage *icon)
 void QStereotypePrivate::removeIcon(const QImage *icon)
 {
     this->icons->remove(const_cast<QImage *>(icon));
-
     // Adjust subsetted property(ies)
     removeOwnedElement(icon);
 }

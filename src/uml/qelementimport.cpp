@@ -73,12 +73,21 @@ void QElementImportPrivate::setVisibility(QtUml::VisibilityKind visibility)
 
 void QElementImportPrivate::setImportedElement(const QPackageableElement *importedElement)
 {
+    // Adjust subsetted property(ies)
+    removeTarget(this->importedElement);
     this->importedElement = const_cast<QPackageableElement *>(importedElement);
+    // Adjust subsetted property(ies)
+    addTarget(importedElement);
 }
 
 void QElementImportPrivate::setImportingNamespace(const QNamespace *importingNamespace)
 {
+    // Adjust subsetted property(ies)
+    removeSource(this->importingNamespace);
     this->importingNamespace = const_cast<QNamespace *>(importingNamespace);
+    // Adjust subsetted property(ies)
+    setOwner(importingNamespace);
+    addSource(importingNamespace);
 }
 
 /*!

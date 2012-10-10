@@ -62,12 +62,21 @@ QInterfaceRealizationPrivate::~QInterfaceRealizationPrivate()
 
 void QInterfaceRealizationPrivate::setImplementingClassifier(const QBehavioredClassifier *implementingClassifier)
 {
+    // Adjust subsetted property(ies)
+    removeClient(this->implementingClassifier);
     this->implementingClassifier = const_cast<QBehavioredClassifier *>(implementingClassifier);
+    // Adjust subsetted property(ies)
+    setOwner(implementingClassifier);
+    addClient(implementingClassifier);
 }
 
 void QInterfaceRealizationPrivate::setContract(const QInterface *contract)
 {
+    // Adjust subsetted property(ies)
+    removeSupplier(this->contract);
     this->contract = const_cast<QInterface *>(contract);
+    // Adjust subsetted property(ies)
+    addSupplier(contract);
 }
 
 /*!

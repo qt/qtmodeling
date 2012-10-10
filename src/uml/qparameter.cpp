@@ -91,7 +91,11 @@ void QParameterPrivate::setOperation(const QOperation *operation)
 
 void QParameterPrivate::setDefaultValue(const QValueSpecification *defaultValue)
 {
+    // Adjust subsetted property(ies)
+    removeOwnedElement(this->defaultValue);
     this->defaultValue = const_cast<QValueSpecification *>(defaultValue);
+    // Adjust subsetted property(ies)
+    addOwnedElement(defaultValue);
 }
 
 void QParameterPrivate::addParameterSet(const QParameterSet *parameterSet)

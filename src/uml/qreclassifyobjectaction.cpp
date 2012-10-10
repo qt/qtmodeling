@@ -79,7 +79,11 @@ void QReclassifyObjectActionPrivate::removeOldClassifier(const QClassifier *oldC
 
 void QReclassifyObjectActionPrivate::setObject(const QInputPin *object)
 {
+    // Adjust subsetted property(ies)
+    removeInput(this->object);
     this->object = const_cast<QInputPin *>(object);
+    // Adjust subsetted property(ies)
+    addInput(object);
 }
 
 void QReclassifyObjectActionPrivate::addNewClassifier(const QClassifier *newClassifier)

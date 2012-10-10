@@ -60,7 +60,11 @@ QClearAssociationActionPrivate::~QClearAssociationActionPrivate()
 
 void QClearAssociationActionPrivate::setObject(const QInputPin *object)
 {
+    // Adjust subsetted property(ies)
+    removeInput(this->object);
     this->object = const_cast<QInputPin *>(object);
+    // Adjust subsetted property(ies)
+    addInput(object);
 }
 
 void QClearAssociationActionPrivate::setAssociation(const QAssociation *association)

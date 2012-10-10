@@ -85,7 +85,6 @@ void QPortPrivate::setProtocol(const QProtocolStateMachine *protocol)
 void QPortPrivate::addRedefinedPort(const QPort *redefinedPort)
 {
     this->redefinedPorts->insert(const_cast<QPort *>(redefinedPort));
-
     // Adjust subsetted property(ies)
     addRedefinedProperty(redefinedPort);
 }
@@ -93,7 +92,6 @@ void QPortPrivate::addRedefinedPort(const QPort *redefinedPort)
 void QPortPrivate::removeRedefinedPort(const QPort *redefinedPort)
 {
     this->redefinedPorts->remove(const_cast<QPort *>(redefinedPort));
-
     // Adjust subsetted property(ies)
     removeRedefinedProperty(redefinedPort);
 }

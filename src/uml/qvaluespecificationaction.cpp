@@ -61,12 +61,20 @@ QValueSpecificationActionPrivate::~QValueSpecificationActionPrivate()
 
 void QValueSpecificationActionPrivate::setValue(const QValueSpecification *value)
 {
+    // Adjust subsetted property(ies)
+    removeOwnedElement(this->value);
     this->value = const_cast<QValueSpecification *>(value);
+    // Adjust subsetted property(ies)
+    addOwnedElement(value);
 }
 
 void QValueSpecificationActionPrivate::setResult(const QOutputPin *result)
 {
+    // Adjust subsetted property(ies)
+    removeOutput(this->result);
     this->result = const_cast<QOutputPin *>(result);
+    // Adjust subsetted property(ies)
+    addOutput(result);
 }
 
 /*!

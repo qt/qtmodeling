@@ -74,6 +74,8 @@ void QConnectionPointReferencePrivate::removeExit(const QPseudostate *exit)
 void QConnectionPointReferencePrivate::setState(const QState *state)
 {
     this->state = const_cast<QState *>(state);
+    // Adjust subsetted property(ies)
+    setNamespace_(state);
 }
 
 void QConnectionPointReferencePrivate::addEntry(const QPseudostate *entry)

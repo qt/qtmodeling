@@ -60,7 +60,11 @@ QDurationPrivate::~QDurationPrivate()
 
 void QDurationPrivate::setExpr(const QValueSpecification *expr)
 {
+    // Adjust subsetted property(ies)
+    removeOwnedElement(this->expr);
     this->expr = const_cast<QValueSpecification *>(expr);
+    // Adjust subsetted property(ies)
+    addOwnedElement(expr);
 }
 
 void QDurationPrivate::addObservation(const QObservation *observation)

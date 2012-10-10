@@ -68,11 +68,15 @@ void QPseudostatePrivate::setKind(QtUml::PseudostateKind kind)
 void QPseudostatePrivate::setState(const QState *state)
 {
     this->state = const_cast<QState *>(state);
+    // Adjust subsetted property(ies)
+    setNamespace_(state);
 }
 
 void QPseudostatePrivate::setStateMachine(const QStateMachine *stateMachine)
 {
     this->stateMachine = const_cast<QStateMachine *>(stateMachine);
+    // Adjust subsetted property(ies)
+    setNamespace_(stateMachine);
 }
 
 /*!

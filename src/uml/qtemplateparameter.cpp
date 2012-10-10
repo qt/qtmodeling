@@ -75,17 +75,29 @@ void QTemplateParameterPrivate::setParameteredElement(const QParameterableElemen
 
 void QTemplateParameterPrivate::setOwnedParameteredElement(const QParameterableElement *ownedParameteredElement)
 {
+    // Adjust subsetted property(ies)
+    removeOwnedElement(this->ownedParameteredElement);
     this->ownedParameteredElement = const_cast<QParameterableElement *>(ownedParameteredElement);
+    // Adjust subsetted property(ies)
+    setParameteredElement(ownedParameteredElement);
+    addOwnedElement(ownedParameteredElement);
 }
 
 void QTemplateParameterPrivate::setOwnedDefault(const QParameterableElement *ownedDefault)
 {
+    // Adjust subsetted property(ies)
+    removeOwnedElement(this->ownedDefault);
     this->ownedDefault = const_cast<QParameterableElement *>(ownedDefault);
+    // Adjust subsetted property(ies)
+    addOwnedElement(ownedDefault);
+    setDefault_(ownedDefault);
 }
 
 void QTemplateParameterPrivate::setSignature(const QTemplateSignature *signature)
 {
     this->signature = const_cast<QTemplateSignature *>(signature);
+    // Adjust subsetted property(ies)
+    setOwner(signature);
 }
 
 /*!

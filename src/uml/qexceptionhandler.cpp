@@ -80,6 +80,8 @@ void QExceptionHandlerPrivate::removeExceptionType(const QClassifier *exceptionT
 void QExceptionHandlerPrivate::setProtectedNode(const QExecutableNode *protectedNode)
 {
     this->protectedNode = const_cast<QExecutableNode *>(protectedNode);
+    // Adjust subsetted property(ies)
+    setOwner(protectedNode);
 }
 
 void QExceptionHandlerPrivate::setExceptionInput(const QObjectNode *exceptionInput)

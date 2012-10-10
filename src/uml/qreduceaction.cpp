@@ -69,12 +69,20 @@ void QReduceActionPrivate::setOrdered(bool isOrdered)
 
 void QReduceActionPrivate::setResult(const QOutputPin *result)
 {
+    // Adjust subsetted property(ies)
+    removeOutput(this->result);
     this->result = const_cast<QOutputPin *>(result);
+    // Adjust subsetted property(ies)
+    addOutput(result);
 }
 
 void QReduceActionPrivate::setCollection(const QInputPin *collection)
 {
+    // Adjust subsetted property(ies)
+    removeInput(this->collection);
     this->collection = const_cast<QInputPin *>(collection);
+    // Adjust subsetted property(ies)
+    addInput(collection);
 }
 
 void QReduceActionPrivate::setReducer(const QBehavior *reducer)

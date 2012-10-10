@@ -66,7 +66,6 @@ QBehavioredClassifierPrivate::~QBehavioredClassifierPrivate()
 void QBehavioredClassifierPrivate::addOwnedBehavior(const QBehavior *ownedBehavior)
 {
     this->ownedBehaviors->insert(const_cast<QBehavior *>(ownedBehavior));
-
     // Adjust subsetted property(ies)
     addOwnedMember(ownedBehavior);
 }
@@ -74,7 +73,6 @@ void QBehavioredClassifierPrivate::addOwnedBehavior(const QBehavior *ownedBehavi
 void QBehavioredClassifierPrivate::removeOwnedBehavior(const QBehavior *ownedBehavior)
 {
     this->ownedBehaviors->remove(const_cast<QBehavior *>(ownedBehavior));
-
     // Adjust subsetted property(ies)
     removeOwnedMember(ownedBehavior);
 }
@@ -82,7 +80,6 @@ void QBehavioredClassifierPrivate::removeOwnedBehavior(const QBehavior *ownedBeh
 void QBehavioredClassifierPrivate::addInterfaceRealization(const QInterfaceRealization *interfaceRealization)
 {
     this->interfaceRealizations->insert(const_cast<QInterfaceRealization *>(interfaceRealization));
-
     // Adjust subsetted property(ies)
     addOwnedElement(interfaceRealization);
     addClientDependency(interfaceRealization);
@@ -91,7 +88,6 @@ void QBehavioredClassifierPrivate::addInterfaceRealization(const QInterfaceReali
 void QBehavioredClassifierPrivate::removeInterfaceRealization(const QInterfaceRealization *interfaceRealization)
 {
     this->interfaceRealizations->remove(const_cast<QInterfaceRealization *>(interfaceRealization));
-
     // Adjust subsetted property(ies)
     removeOwnedElement(interfaceRealization);
     removeClientDependency(interfaceRealization);
@@ -99,7 +95,11 @@ void QBehavioredClassifierPrivate::removeInterfaceRealization(const QInterfaceRe
 
 void QBehavioredClassifierPrivate::setClassifierBehavior(const QBehavior *classifierBehavior)
 {
+    // Adjust subsetted property(ies)
+    removeOwnedBehavior(this->classifierBehavior);
     this->classifierBehavior = const_cast<QBehavior *>(classifierBehavior);
+    // Adjust subsetted property(ies)
+    addOwnedBehavior(classifierBehavior);
 }
 
 /*!

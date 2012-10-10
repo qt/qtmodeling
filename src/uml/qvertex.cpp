@@ -61,6 +61,8 @@ QVertexPrivate::~QVertexPrivate()
 void QVertexPrivate::setContainer(const QRegion *container)
 {
     this->container = const_cast<QRegion *>(container);
+    // Adjust subsetted property(ies)
+    setNamespace_(container);
 }
 
 /*!

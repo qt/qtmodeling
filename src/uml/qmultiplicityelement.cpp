@@ -72,12 +72,20 @@ void QMultiplicityElementPrivate::setOrdered(bool isOrdered)
 
 void QMultiplicityElementPrivate::setUpperValue(const QValueSpecification *upperValue)
 {
+    // Adjust subsetted property(ies)
+    removeOwnedElement(this->upperValue);
     this->upperValue = const_cast<QValueSpecification *>(upperValue);
+    // Adjust subsetted property(ies)
+    addOwnedElement(upperValue);
 }
 
 void QMultiplicityElementPrivate::setLowerValue(const QValueSpecification *lowerValue)
 {
+    // Adjust subsetted property(ies)
+    removeOwnedElement(this->lowerValue);
     this->lowerValue = const_cast<QValueSpecification *>(lowerValue);
+    // Adjust subsetted property(ies)
+    addOwnedElement(lowerValue);
 }
 
 /*!

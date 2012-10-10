@@ -61,12 +61,21 @@ QSubstitutionPrivate::~QSubstitutionPrivate()
 
 void QSubstitutionPrivate::setContract(const QClassifier *contract)
 {
+    // Adjust subsetted property(ies)
+    removeSupplier(this->contract);
     this->contract = const_cast<QClassifier *>(contract);
+    // Adjust subsetted property(ies)
+    addSupplier(contract);
 }
 
 void QSubstitutionPrivate::setSubstitutingClassifier(const QClassifier *substitutingClassifier)
 {
+    // Adjust subsetted property(ies)
+    removeClient(this->substitutingClassifier);
     this->substitutingClassifier = const_cast<QClassifier *>(substitutingClassifier);
+    // Adjust subsetted property(ies)
+    setOwner(substitutingClassifier);
+    addClient(substitutingClassifier);
 }
 
 /*!
