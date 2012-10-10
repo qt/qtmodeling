@@ -89,7 +89,6 @@ void QBehaviorPrivate::setSpecification(const QBehavioralFeature *specification)
 void QBehaviorPrivate::addPostcondition(const QConstraint *postcondition)
 {
     this->postconditions->insert(const_cast<QConstraint *>(postcondition));
-
     // Adjust subsetted property(ies)
     addOwnedRule(postcondition);
 }
@@ -97,7 +96,6 @@ void QBehaviorPrivate::addPostcondition(const QConstraint *postcondition)
 void QBehaviorPrivate::removePostcondition(const QConstraint *postcondition)
 {
     this->postconditions->remove(const_cast<QConstraint *>(postcondition));
-
     // Adjust subsetted property(ies)
     removeOwnedRule(postcondition);
 }
@@ -105,7 +103,6 @@ void QBehaviorPrivate::removePostcondition(const QConstraint *postcondition)
 void QBehaviorPrivate::addPrecondition(const QConstraint *precondition)
 {
     this->preconditions->insert(const_cast<QConstraint *>(precondition));
-
     // Adjust subsetted property(ies)
     addOwnedRule(precondition);
 }
@@ -113,7 +110,6 @@ void QBehaviorPrivate::addPrecondition(const QConstraint *precondition)
 void QBehaviorPrivate::removePrecondition(const QConstraint *precondition)
 {
     this->preconditions->remove(const_cast<QConstraint *>(precondition));
-
     // Adjust subsetted property(ies)
     removeOwnedRule(precondition);
 }
@@ -121,7 +117,6 @@ void QBehaviorPrivate::removePrecondition(const QConstraint *precondition)
 void QBehaviorPrivate::addRedefinedBehavior(const QBehavior *redefinedBehavior)
 {
     this->redefinedBehaviors->insert(const_cast<QBehavior *>(redefinedBehavior));
-
     // Adjust subsetted property(ies)
     addRedefinedClassifier(redefinedBehavior);
 }
@@ -129,7 +124,6 @@ void QBehaviorPrivate::addRedefinedBehavior(const QBehavior *redefinedBehavior)
 void QBehaviorPrivate::removeRedefinedBehavior(const QBehavior *redefinedBehavior)
 {
     this->redefinedBehaviors->remove(const_cast<QBehavior *>(redefinedBehavior));
-
     // Adjust subsetted property(ies)
     removeRedefinedClassifier(redefinedBehavior);
 }
@@ -137,7 +131,6 @@ void QBehaviorPrivate::removeRedefinedBehavior(const QBehavior *redefinedBehavio
 void QBehaviorPrivate::addOwnedParameter(const QParameter *ownedParameter)
 {
     this->ownedParameters->append(const_cast<QParameter *>(ownedParameter));
-
     // Adjust subsetted property(ies)
     addOwnedMember(ownedParameter);
 }
@@ -145,7 +138,6 @@ void QBehaviorPrivate::addOwnedParameter(const QParameter *ownedParameter)
 void QBehaviorPrivate::removeOwnedParameter(const QParameter *ownedParameter)
 {
     this->ownedParameters->removeAll(const_cast<QParameter *>(ownedParameter));
-
     // Adjust subsetted property(ies)
     removeOwnedMember(ownedParameter);
 }
@@ -153,7 +145,6 @@ void QBehaviorPrivate::removeOwnedParameter(const QParameter *ownedParameter)
 void QBehaviorPrivate::addOwnedParameterSet(const QParameterSet *ownedParameterSet)
 {
     this->ownedParameterSets->insert(const_cast<QParameterSet *>(ownedParameterSet));
-
     // Adjust subsetted property(ies)
     addOwnedMember(ownedParameterSet);
 }
@@ -161,7 +152,6 @@ void QBehaviorPrivate::addOwnedParameterSet(const QParameterSet *ownedParameterS
 void QBehaviorPrivate::removeOwnedParameterSet(const QParameterSet *ownedParameterSet)
 {
     this->ownedParameterSets->remove(const_cast<QParameterSet *>(ownedParameterSet));
-
     // Adjust subsetted property(ies)
     removeOwnedMember(ownedParameterSet);
 }

@@ -68,12 +68,21 @@ void QProfileApplicationPrivate::setStrict(bool isStrict)
 
 void QProfileApplicationPrivate::setApplyingPackage(const QPackage *applyingPackage)
 {
+    // Adjust subsetted property(ies)
+    removeSource(this->applyingPackage);
     this->applyingPackage = const_cast<QPackage *>(applyingPackage);
+    // Adjust subsetted property(ies)
+    setOwner(applyingPackage);
+    addSource(applyingPackage);
 }
 
 void QProfileApplicationPrivate::setAppliedProfile(const QProfile *appliedProfile)
 {
+    // Adjust subsetted property(ies)
+    removeTarget(this->appliedProfile);
     this->appliedProfile = const_cast<QProfile *>(appliedProfile);
+    // Adjust subsetted property(ies)
+    addTarget(appliedProfile);
 }
 
 /*!

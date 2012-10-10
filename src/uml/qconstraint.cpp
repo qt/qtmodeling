@@ -65,11 +65,17 @@ QConstraintPrivate::~QConstraintPrivate()
 void QConstraintPrivate::setContext(const QNamespace *context)
 {
     this->context = const_cast<QNamespace *>(context);
+    // Adjust subsetted property(ies)
+    setNamespace_(context);
 }
 
 void QConstraintPrivate::setSpecification(const QValueSpecification *specification)
 {
+    // Adjust subsetted property(ies)
+    removeOwnedElement(this->specification);
     this->specification = const_cast<QValueSpecification *>(specification);
+    // Adjust subsetted property(ies)
+    addOwnedElement(specification);
 }
 
 void QConstraintPrivate::addConstrainedElement(const QElement *constrainedElement)

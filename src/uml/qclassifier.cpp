@@ -107,7 +107,6 @@ void QClassifierPrivate::setFinalSpecialization(bool isFinalSpecialization)
 void QClassifierPrivate::addOwnedUseCase(const QUseCase *ownedUseCase)
 {
     this->ownedUseCases->insert(const_cast<QUseCase *>(ownedUseCase));
-
     // Adjust subsetted property(ies)
     addOwnedMember(ownedUseCase);
 }
@@ -115,7 +114,6 @@ void QClassifierPrivate::addOwnedUseCase(const QUseCase *ownedUseCase)
 void QClassifierPrivate::removeOwnedUseCase(const QUseCase *ownedUseCase)
 {
     this->ownedUseCases->remove(const_cast<QUseCase *>(ownedUseCase));
-
     // Adjust subsetted property(ies)
     removeOwnedMember(ownedUseCase);
 }
@@ -148,7 +146,6 @@ void QClassifierPrivate::setTemplateParameter(const QClassifierTemplateParameter
 void QClassifierPrivate::addRedefinedClassifier(const QClassifier *redefinedClassifier)
 {
     this->redefinedClassifiers->insert(const_cast<QClassifier *>(redefinedClassifier));
-
     // Adjust subsetted property(ies)
     addRedefinedElement(redefinedClassifier);
 }
@@ -156,7 +153,6 @@ void QClassifierPrivate::addRedefinedClassifier(const QClassifier *redefinedClas
 void QClassifierPrivate::removeRedefinedClassifier(const QClassifier *redefinedClassifier)
 {
     this->redefinedClassifiers->remove(const_cast<QClassifier *>(redefinedClassifier));
-
     // Adjust subsetted property(ies)
     removeRedefinedElement(redefinedClassifier);
 }
@@ -169,7 +165,6 @@ void QClassifierPrivate::setOwnedTemplateSignature(const QRedefinableTemplateSig
 void QClassifierPrivate::addCollaborationUse(const QCollaborationUse *collaborationUse)
 {
     this->collaborationUses->insert(const_cast<QCollaborationUse *>(collaborationUse));
-
     // Adjust subsetted property(ies)
     addOwnedElement(collaborationUse);
 }
@@ -177,7 +172,6 @@ void QClassifierPrivate::addCollaborationUse(const QCollaborationUse *collaborat
 void QClassifierPrivate::removeCollaborationUse(const QCollaborationUse *collaborationUse)
 {
     this->collaborationUses->remove(const_cast<QCollaborationUse *>(collaborationUse));
-
     // Adjust subsetted property(ies)
     removeOwnedElement(collaborationUse);
 }
@@ -185,7 +179,6 @@ void QClassifierPrivate::removeCollaborationUse(const QCollaborationUse *collabo
 void QClassifierPrivate::addAttribute(const QProperty *attribute)
 {
     this->attributes->insert(const_cast<QProperty *>(attribute));
-
     // Adjust subsetted property(ies)
     addFeature(attribute);
 }
@@ -193,7 +186,6 @@ void QClassifierPrivate::addAttribute(const QProperty *attribute)
 void QClassifierPrivate::removeAttribute(const QProperty *attribute)
 {
     this->attributes->remove(const_cast<QProperty *>(attribute));
-
     // Adjust subsetted property(ies)
     removeFeature(attribute);
 }
@@ -201,7 +193,6 @@ void QClassifierPrivate::removeAttribute(const QProperty *attribute)
 void QClassifierPrivate::addFeature(const QFeature *feature)
 {
     this->features->insert(const_cast<QFeature *>(feature));
-
     // Adjust subsetted property(ies)
     addMember(feature);
 }
@@ -209,20 +200,22 @@ void QClassifierPrivate::addFeature(const QFeature *feature)
 void QClassifierPrivate::removeFeature(const QFeature *feature)
 {
     this->features->remove(const_cast<QFeature *>(feature));
-
     // Adjust subsetted property(ies)
     removeMember(feature);
 }
 
 void QClassifierPrivate::setRepresentation(const QCollaborationUse *representation)
 {
+    // Adjust subsetted property(ies)
+    removeCollaborationUse(this->representation);
     this->representation = const_cast<QCollaborationUse *>(representation);
+    // Adjust subsetted property(ies)
+    addCollaborationUse(representation);
 }
 
 void QClassifierPrivate::addGeneralization(const QGeneralization *generalization)
 {
     this->generalizations->insert(const_cast<QGeneralization *>(generalization));
-
     // Adjust subsetted property(ies)
     addOwnedElement(generalization);
 }
@@ -230,7 +223,6 @@ void QClassifierPrivate::addGeneralization(const QGeneralization *generalization
 void QClassifierPrivate::removeGeneralization(const QGeneralization *generalization)
 {
     this->generalizations->remove(const_cast<QGeneralization *>(generalization));
-
     // Adjust subsetted property(ies)
     removeOwnedElement(generalization);
 }
@@ -238,7 +230,6 @@ void QClassifierPrivate::removeGeneralization(const QGeneralization *generalizat
 void QClassifierPrivate::addSubstitution(const QSubstitution *substitution)
 {
     this->substitutions->insert(const_cast<QSubstitution *>(substitution));
-
     // Adjust subsetted property(ies)
     addOwnedElement(substitution);
     addClientDependency(substitution);
@@ -247,7 +238,6 @@ void QClassifierPrivate::addSubstitution(const QSubstitution *substitution)
 void QClassifierPrivate::removeSubstitution(const QSubstitution *substitution)
 {
     this->substitutions->remove(const_cast<QSubstitution *>(substitution));
-
     // Adjust subsetted property(ies)
     removeOwnedElement(substitution);
     removeClientDependency(substitution);

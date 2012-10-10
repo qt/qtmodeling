@@ -65,7 +65,11 @@ void QCreateObjectActionPrivate::setClassifier(const QClassifier *classifier)
 
 void QCreateObjectActionPrivate::setResult(const QOutputPin *result)
 {
+    // Adjust subsetted property(ies)
+    removeOutput(this->result);
     this->result = const_cast<QOutputPin *>(result);
+    // Adjust subsetted property(ies)
+    addOutput(result);
 }
 
 /*!

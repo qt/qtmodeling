@@ -58,7 +58,11 @@ QValuePinPrivate::~QValuePinPrivate()
 
 void QValuePinPrivate::setValue(const QValueSpecification *value)
 {
+    // Adjust subsetted property(ies)
+    removeOwnedElement(this->value);
     this->value = const_cast<QValueSpecification *>(value);
+    // Adjust subsetted property(ies)
+    addOwnedElement(value);
 }
 
 /*!

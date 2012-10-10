@@ -72,7 +72,6 @@ void QComponentPrivate::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
 void QComponentPrivate::addRealization(const QComponentRealization *realization)
 {
     this->realizations->insert(const_cast<QComponentRealization *>(realization));
-
     // Adjust subsetted property(ies)
     addOwnedElement(realization);
 }
@@ -80,7 +79,6 @@ void QComponentPrivate::addRealization(const QComponentRealization *realization)
 void QComponentPrivate::removeRealization(const QComponentRealization *realization)
 {
     this->realizations->remove(const_cast<QComponentRealization *>(realization));
-
     // Adjust subsetted property(ies)
     removeOwnedElement(realization);
 }
@@ -88,7 +86,6 @@ void QComponentPrivate::removeRealization(const QComponentRealization *realizati
 void QComponentPrivate::addPackagedElement(const QPackageableElement *packagedElement)
 {
     this->packagedElements->insert(const_cast<QPackageableElement *>(packagedElement));
-
     // Adjust subsetted property(ies)
     addOwnedMember(packagedElement);
 }
@@ -96,7 +93,6 @@ void QComponentPrivate::addPackagedElement(const QPackageableElement *packagedEl
 void QComponentPrivate::removePackagedElement(const QPackageableElement *packagedElement)
 {
     this->packagedElements->remove(const_cast<QPackageableElement *>(packagedElement));
-
     // Adjust subsetted property(ies)
     removeOwnedMember(packagedElement);
 }

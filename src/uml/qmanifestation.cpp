@@ -58,7 +58,11 @@ QManifestationPrivate::~QManifestationPrivate()
 
 void QManifestationPrivate::setUtilizedElement(const QPackageableElement *utilizedElement)
 {
+    // Adjust subsetted property(ies)
+    removeSupplier(this->utilizedElement);
     this->utilizedElement = const_cast<QPackageableElement *>(utilizedElement);
+    // Adjust subsetted property(ies)
+    addSupplier(utilizedElement);
 }
 
 /*!

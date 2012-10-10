@@ -78,7 +78,6 @@ QInformationFlowPrivate::~QInformationFlowPrivate()
 void QInformationFlowPrivate::addInformationTarget(const QNamedElement *informationTarget)
 {
     this->informationTargets->insert(const_cast<QNamedElement *>(informationTarget));
-
     // Adjust subsetted property(ies)
     addTarget(informationTarget);
 }
@@ -86,7 +85,6 @@ void QInformationFlowPrivate::addInformationTarget(const QNamedElement *informat
 void QInformationFlowPrivate::removeInformationTarget(const QNamedElement *informationTarget)
 {
     this->informationTargets->remove(const_cast<QNamedElement *>(informationTarget));
-
     // Adjust subsetted property(ies)
     removeTarget(informationTarget);
 }
@@ -114,7 +112,6 @@ void QInformationFlowPrivate::removeConveyed(const QClassifier *conveyed)
 void QInformationFlowPrivate::addInformationSource(const QNamedElement *informationSource)
 {
     this->informationSources->insert(const_cast<QNamedElement *>(informationSource));
-
     // Adjust subsetted property(ies)
     addSource(informationSource);
 }
@@ -122,7 +119,6 @@ void QInformationFlowPrivate::addInformationSource(const QNamedElement *informat
 void QInformationFlowPrivate::removeInformationSource(const QNamedElement *informationSource)
 {
     this->informationSources->remove(const_cast<QNamedElement *>(informationSource));
-
     // Adjust subsetted property(ies)
     removeSource(informationSource);
 }

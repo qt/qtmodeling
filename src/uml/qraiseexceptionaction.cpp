@@ -58,7 +58,11 @@ QRaiseExceptionActionPrivate::~QRaiseExceptionActionPrivate()
 
 void QRaiseExceptionActionPrivate::setException(const QInputPin *exception)
 {
+    // Adjust subsetted property(ies)
+    removeInput(this->exception);
     this->exception = const_cast<QInputPin *>(exception);
+    // Adjust subsetted property(ies)
+    addInput(exception);
 }
 
 /*!

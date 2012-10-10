@@ -77,7 +77,6 @@ void QPackagePrivate::setURI(QString URI)
 void QPackagePrivate::addPackagedElement(const QPackageableElement *packagedElement)
 {
     this->packagedElements->insert(const_cast<QPackageableElement *>(packagedElement));
-
     // Adjust subsetted property(ies)
     addOwnedMember(packagedElement);
 }
@@ -85,7 +84,6 @@ void QPackagePrivate::addPackagedElement(const QPackageableElement *packagedElem
 void QPackagePrivate::removePackagedElement(const QPackageableElement *packagedElement)
 {
     this->packagedElements->remove(const_cast<QPackageableElement *>(packagedElement));
-
     // Adjust subsetted property(ies)
     removeOwnedMember(packagedElement);
 }
@@ -98,7 +96,6 @@ void QPackagePrivate::setNestingPackage(const QPackage *nestingPackage)
 void QPackagePrivate::addProfileApplication(const QProfileApplication *profileApplication)
 {
     this->profileApplications->insert(const_cast<QProfileApplication *>(profileApplication));
-
     // Adjust subsetted property(ies)
     addOwnedElement(profileApplication);
 }
@@ -106,7 +103,6 @@ void QPackagePrivate::addProfileApplication(const QProfileApplication *profileAp
 void QPackagePrivate::removeProfileApplication(const QProfileApplication *profileApplication)
 {
     this->profileApplications->remove(const_cast<QProfileApplication *>(profileApplication));
-
     // Adjust subsetted property(ies)
     removeOwnedElement(profileApplication);
 }
@@ -114,7 +110,6 @@ void QPackagePrivate::removeProfileApplication(const QProfileApplication *profil
 void QPackagePrivate::addPackageMerge(const QPackageMerge *packageMerge)
 {
     this->packageMerges->insert(const_cast<QPackageMerge *>(packageMerge));
-
     // Adjust subsetted property(ies)
     addOwnedElement(packageMerge);
 }
@@ -122,7 +117,6 @@ void QPackagePrivate::addPackageMerge(const QPackageMerge *packageMerge)
 void QPackagePrivate::removePackageMerge(const QPackageMerge *packageMerge)
 {
     this->packageMerges->remove(const_cast<QPackageMerge *>(packageMerge));
-
     // Adjust subsetted property(ies)
     removeOwnedElement(packageMerge);
 }

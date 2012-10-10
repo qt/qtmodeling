@@ -69,6 +69,8 @@ void QDeploymentSpecificationPrivate::setExecutionLocation(QString executionLoca
 void QDeploymentSpecificationPrivate::setDeployment(const QDeployment *deployment)
 {
     this->deployment = const_cast<QDeployment *>(deployment);
+    // Adjust subsetted property(ies)
+    setOwner(deployment);
 }
 
 /*!

@@ -87,7 +87,6 @@ QStatePrivate::~QStatePrivate()
 void QStatePrivate::addRegion(const QRegion *region)
 {
     this->regions->insert(const_cast<QRegion *>(region));
-
     // Adjust subsetted property(ies)
     addOwnedMember(region);
 }
@@ -95,20 +94,22 @@ void QStatePrivate::addRegion(const QRegion *region)
 void QStatePrivate::removeRegion(const QRegion *region)
 {
     this->regions->remove(const_cast<QRegion *>(region));
-
     // Adjust subsetted property(ies)
     removeOwnedMember(region);
 }
 
 void QStatePrivate::setExit(const QBehavior *exit)
 {
+    // Adjust subsetted property(ies)
+    removeOwnedElement(this->exit);
     this->exit = const_cast<QBehavior *>(exit);
+    // Adjust subsetted property(ies)
+    addOwnedElement(exit);
 }
 
 void QStatePrivate::addConnection(const QConnectionPointReference *connection)
 {
     this->connections->insert(const_cast<QConnectionPointReference *>(connection));
-
     // Adjust subsetted property(ies)
     addOwnedMember(connection);
 }
@@ -116,20 +117,22 @@ void QStatePrivate::addConnection(const QConnectionPointReference *connection)
 void QStatePrivate::removeConnection(const QConnectionPointReference *connection)
 {
     this->connections->remove(const_cast<QConnectionPointReference *>(connection));
-
     // Adjust subsetted property(ies)
     removeOwnedMember(connection);
 }
 
 void QStatePrivate::setRedefinedState(const QState *redefinedState)
 {
+    // Adjust subsetted property(ies)
+    removeRedefinedElement(this->redefinedState);
     this->redefinedState = const_cast<QState *>(redefinedState);
+    // Adjust subsetted property(ies)
+    addRedefinedElement(redefinedState);
 }
 
 void QStatePrivate::addDeferrableTrigger(const QTrigger *deferrableTrigger)
 {
     this->deferrableTriggers->insert(const_cast<QTrigger *>(deferrableTrigger));
-
     // Adjust subsetted property(ies)
     addOwnedElement(deferrableTrigger);
 }
@@ -137,7 +140,6 @@ void QStatePrivate::addDeferrableTrigger(const QTrigger *deferrableTrigger)
 void QStatePrivate::removeDeferrableTrigger(const QTrigger *deferrableTrigger)
 {
     this->deferrableTriggers->remove(const_cast<QTrigger *>(deferrableTrigger));
-
     // Adjust subsetted property(ies)
     removeOwnedElement(deferrableTrigger);
 }
@@ -145,7 +147,6 @@ void QStatePrivate::removeDeferrableTrigger(const QTrigger *deferrableTrigger)
 void QStatePrivate::addConnectionPoint(const QPseudostate *connectionPoint)
 {
     this->connectionPoints->insert(const_cast<QPseudostate *>(connectionPoint));
-
     // Adjust subsetted property(ies)
     addOwnedMember(connectionPoint);
 }
@@ -153,19 +154,26 @@ void QStatePrivate::addConnectionPoint(const QPseudostate *connectionPoint)
 void QStatePrivate::removeConnectionPoint(const QPseudostate *connectionPoint)
 {
     this->connectionPoints->remove(const_cast<QPseudostate *>(connectionPoint));
-
     // Adjust subsetted property(ies)
     removeOwnedMember(connectionPoint);
 }
 
 void QStatePrivate::setEntry(const QBehavior *entry)
 {
+    // Adjust subsetted property(ies)
+    removeOwnedElement(this->entry);
     this->entry = const_cast<QBehavior *>(entry);
+    // Adjust subsetted property(ies)
+    addOwnedElement(entry);
 }
 
 void QStatePrivate::setDoActivity(const QBehavior *doActivity)
 {
+    // Adjust subsetted property(ies)
+    removeOwnedElement(this->doActivity);
     this->doActivity = const_cast<QBehavior *>(doActivity);
+    // Adjust subsetted property(ies)
+    addOwnedElement(doActivity);
 }
 
 void QStatePrivate::setSubmachine(const QStateMachine *submachine)
@@ -175,7 +183,11 @@ void QStatePrivate::setSubmachine(const QStateMachine *submachine)
 
 void QStatePrivate::setStateInvariant(const QConstraint *stateInvariant)
 {
+    // Adjust subsetted property(ies)
+    removeOwnedRule(this->stateInvariant);
     this->stateInvariant = const_cast<QConstraint *>(stateInvariant);
+    // Adjust subsetted property(ies)
+    addOwnedRule(stateInvariant);
 }
 
 /*!

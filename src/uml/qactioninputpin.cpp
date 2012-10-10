@@ -58,7 +58,11 @@ QActionInputPinPrivate::~QActionInputPinPrivate()
 
 void QActionInputPinPrivate::setFromAction(const QAction *fromAction)
 {
+    // Adjust subsetted property(ies)
+    removeOwnedElement(this->fromAction);
     this->fromAction = const_cast<QAction *>(fromAction);
+    // Adjust subsetted property(ies)
+    addOwnedElement(fromAction);
 }
 
 /*!

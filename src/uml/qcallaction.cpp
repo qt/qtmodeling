@@ -66,7 +66,6 @@ void QCallActionPrivate::setSynchronous(bool isSynchronous)
 void QCallActionPrivate::addResult(const QOutputPin *result)
 {
     this->results->append(const_cast<QOutputPin *>(result));
-
     // Adjust subsetted property(ies)
     addOutput(result);
 }
@@ -74,7 +73,6 @@ void QCallActionPrivate::addResult(const QOutputPin *result)
 void QCallActionPrivate::removeResult(const QOutputPin *result)
 {
     this->results->removeAll(const_cast<QOutputPin *>(result));
-
     // Adjust subsetted property(ies)
     removeOutput(result);
 }

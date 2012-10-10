@@ -80,7 +80,6 @@ void QMessagePrivate::setSignature(const QNamedElement *signature)
 void QMessagePrivate::addArgument(const QValueSpecification *argument)
 {
     this->arguments->append(const_cast<QValueSpecification *>(argument));
-
     // Adjust subsetted property(ies)
     addOwnedElement(argument);
 }
@@ -88,7 +87,6 @@ void QMessagePrivate::addArgument(const QValueSpecification *argument)
 void QMessagePrivate::removeArgument(const QValueSpecification *argument)
 {
     this->arguments->removeAll(const_cast<QValueSpecification *>(argument));
-
     // Adjust subsetted property(ies)
     removeOwnedElement(argument);
 }
@@ -101,6 +99,8 @@ void QMessagePrivate::setReceiveEvent(const QMessageEnd *receiveEvent)
 void QMessagePrivate::setInteraction(const QInteraction *interaction)
 {
     this->interaction = const_cast<QInteraction *>(interaction);
+    // Adjust subsetted property(ies)
+    setNamespace_(interaction);
 }
 
 void QMessagePrivate::setSendEvent(const QMessageEnd *sendEvent)

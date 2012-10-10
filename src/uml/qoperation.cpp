@@ -107,13 +107,16 @@ void QOperationPrivate::removeOwnedParameter(const QParameter *ownedParameter)
 
 void QOperationPrivate::setBodyCondition(const QConstraint *bodyCondition)
 {
+    // Adjust subsetted property(ies)
+    removeOwnedRule(this->bodyCondition);
     this->bodyCondition = const_cast<QConstraint *>(bodyCondition);
+    // Adjust subsetted property(ies)
+    addOwnedRule(bodyCondition);
 }
 
 void QOperationPrivate::addRedefinedOperation(const QOperation *redefinedOperation)
 {
     this->redefinedOperations->insert(const_cast<QOperation *>(redefinedOperation));
-
     // Adjust subsetted property(ies)
     addRedefinedElement(redefinedOperation);
 }
@@ -121,7 +124,6 @@ void QOperationPrivate::addRedefinedOperation(const QOperation *redefinedOperati
 void QOperationPrivate::removeRedefinedOperation(const QOperation *redefinedOperation)
 {
     this->redefinedOperations->remove(const_cast<QOperation *>(redefinedOperation));
-
     // Adjust subsetted property(ies)
     removeRedefinedElement(redefinedOperation);
 }
@@ -129,7 +131,6 @@ void QOperationPrivate::removeRedefinedOperation(const QOperation *redefinedOper
 void QOperationPrivate::addPostcondition(const QConstraint *postcondition)
 {
     this->postconditions->insert(const_cast<QConstraint *>(postcondition));
-
     // Adjust subsetted property(ies)
     addOwnedRule(postcondition);
 }
@@ -137,14 +138,20 @@ void QOperationPrivate::addPostcondition(const QConstraint *postcondition)
 void QOperationPrivate::removePostcondition(const QConstraint *postcondition)
 {
     this->postconditions->remove(const_cast<QConstraint *>(postcondition));
-
     // Adjust subsetted property(ies)
     removeOwnedRule(postcondition);
 }
 
 void QOperationPrivate::setDatatype(const QDataType *datatype)
 {
+    // Adjust subsetted property(ies)
+    removeFeaturingClassifier(this->datatype);
+    removeRedefinitionContext(this->datatype);
     this->datatype = const_cast<QDataType *>(datatype);
+    // Adjust subsetted property(ies)
+    addFeaturingClassifier(datatype);
+    addRedefinitionContext(datatype);
+    setNamespace_(datatype);
 }
 
 void QOperationPrivate::setTemplateParameter(const QOperationTemplateParameter *templateParameter)
@@ -154,13 +161,19 @@ void QOperationPrivate::setTemplateParameter(const QOperationTemplateParameter *
 
 void QOperationPrivate::setInterface(const QInterface *interface)
 {
+    // Adjust subsetted property(ies)
+    removeFeaturingClassifier(this->interface);
+    removeRedefinitionContext(this->interface);
     this->interface = const_cast<QInterface *>(interface);
+    // Adjust subsetted property(ies)
+    addFeaturingClassifier(interface);
+    addRedefinitionContext(interface);
+    setNamespace_(interface);
 }
 
 void QOperationPrivate::addPrecondition(const QConstraint *precondition)
 {
     this->preconditions->insert(const_cast<QConstraint *>(precondition));
-
     // Adjust subsetted property(ies)
     addOwnedRule(precondition);
 }
@@ -168,14 +181,20 @@ void QOperationPrivate::addPrecondition(const QConstraint *precondition)
 void QOperationPrivate::removePrecondition(const QConstraint *precondition)
 {
     this->preconditions->remove(const_cast<QConstraint *>(precondition));
-
     // Adjust subsetted property(ies)
     removeOwnedRule(precondition);
 }
 
 void QOperationPrivate::setClass_(const QClass *class_)
 {
+    // Adjust subsetted property(ies)
+    removeFeaturingClassifier(this->class_);
+    removeRedefinitionContext(this->class_);
     this->class_ = const_cast<QClass *>(class_);
+    // Adjust subsetted property(ies)
+    addFeaturingClassifier(class_);
+    addRedefinitionContext(class_);
+    setNamespace_(class_);
 }
 
 void QOperationPrivate::addRaisedException(const QType *raisedException)

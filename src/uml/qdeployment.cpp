@@ -67,13 +67,17 @@ QDeploymentPrivate::~QDeploymentPrivate()
 
 void QDeploymentPrivate::setLocation(const QDeploymentTarget *location)
 {
+    // Adjust subsetted property(ies)
+    removeClient(this->location);
     this->location = const_cast<QDeploymentTarget *>(location);
+    // Adjust subsetted property(ies)
+    setOwner(location);
+    addClient(location);
 }
 
 void QDeploymentPrivate::addConfiguration(const QDeploymentSpecification *configuration)
 {
     this->configurations->insert(const_cast<QDeploymentSpecification *>(configuration));
-
     // Adjust subsetted property(ies)
     addOwnedElement(configuration);
 }
@@ -81,7 +85,6 @@ void QDeploymentPrivate::addConfiguration(const QDeploymentSpecification *config
 void QDeploymentPrivate::removeConfiguration(const QDeploymentSpecification *configuration)
 {
     this->configurations->remove(const_cast<QDeploymentSpecification *>(configuration));
-
     // Adjust subsetted property(ies)
     removeOwnedElement(configuration);
 }
@@ -89,7 +92,6 @@ void QDeploymentPrivate::removeConfiguration(const QDeploymentSpecification *con
 void QDeploymentPrivate::addDeployedArtifact(const QDeployedArtifact *deployedArtifact)
 {
     this->deployedArtifacts->insert(const_cast<QDeployedArtifact *>(deployedArtifact));
-
     // Adjust subsetted property(ies)
     addSupplier(deployedArtifact);
 }
@@ -97,7 +99,6 @@ void QDeploymentPrivate::addDeployedArtifact(const QDeployedArtifact *deployedAr
 void QDeploymentPrivate::removeDeployedArtifact(const QDeployedArtifact *deployedArtifact)
 {
     this->deployedArtifacts->remove(const_cast<QDeployedArtifact *>(deployedArtifact));
-
     // Adjust subsetted property(ies)
     removeSupplier(deployedArtifact);
 }

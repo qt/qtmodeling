@@ -64,7 +64,11 @@ void QAddVariableValueActionPrivate::setReplaceAll(bool isReplaceAll)
 
 void QAddVariableValueActionPrivate::setInsertAt(const QInputPin *insertAt)
 {
+    // Adjust subsetted property(ies)
+    removeInput(this->insertAt);
     this->insertAt = const_cast<QInputPin *>(insertAt);
+    // Adjust subsetted property(ies)
+    addInput(insertAt);
 }
 
 /*!

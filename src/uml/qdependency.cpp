@@ -63,7 +63,6 @@ QDependencyPrivate::~QDependencyPrivate()
 void QDependencyPrivate::addClient(const QNamedElement *client)
 {
     this->clients->insert(const_cast<QNamedElement *>(client));
-
     // Adjust subsetted property(ies)
     addSource(client);
 }
@@ -71,7 +70,6 @@ void QDependencyPrivate::addClient(const QNamedElement *client)
 void QDependencyPrivate::removeClient(const QNamedElement *client)
 {
     this->clients->remove(const_cast<QNamedElement *>(client));
-
     // Adjust subsetted property(ies)
     removeSource(client);
 }
@@ -79,7 +77,6 @@ void QDependencyPrivate::removeClient(const QNamedElement *client)
 void QDependencyPrivate::addSupplier(const QNamedElement *supplier)
 {
     this->suppliers->insert(const_cast<QNamedElement *>(supplier));
-
     // Adjust subsetted property(ies)
     addTarget(supplier);
 }
@@ -87,7 +84,6 @@ void QDependencyPrivate::addSupplier(const QNamedElement *supplier)
 void QDependencyPrivate::removeSupplier(const QNamedElement *supplier)
 {
     this->suppliers->remove(const_cast<QNamedElement *>(supplier));
-
     // Adjust subsetted property(ies)
     removeTarget(supplier);
 }

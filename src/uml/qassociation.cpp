@@ -74,7 +74,6 @@ void QAssociationPrivate::setDerived(bool isDerived)
 void QAssociationPrivate::addNavigableOwnedEnd(const QProperty *navigableOwnedEnd)
 {
     this->navigableOwnedEnds->insert(const_cast<QProperty *>(navigableOwnedEnd));
-
     // Adjust subsetted property(ies)
     addOwnedEnd(navigableOwnedEnd);
 }
@@ -82,7 +81,6 @@ void QAssociationPrivate::addNavigableOwnedEnd(const QProperty *navigableOwnedEn
 void QAssociationPrivate::removeNavigableOwnedEnd(const QProperty *navigableOwnedEnd)
 {
     this->navigableOwnedEnds->remove(const_cast<QProperty *>(navigableOwnedEnd));
-
     // Adjust subsetted property(ies)
     removeOwnedEnd(navigableOwnedEnd);
 }
@@ -90,7 +88,6 @@ void QAssociationPrivate::removeNavigableOwnedEnd(const QProperty *navigableOwne
 void QAssociationPrivate::addOwnedEnd(const QProperty *ownedEnd)
 {
     this->ownedEnds->append(const_cast<QProperty *>(ownedEnd));
-
     // Adjust subsetted property(ies)
     addMemberEnd(ownedEnd);
     addFeature(ownedEnd);
@@ -100,7 +97,6 @@ void QAssociationPrivate::addOwnedEnd(const QProperty *ownedEnd)
 void QAssociationPrivate::removeOwnedEnd(const QProperty *ownedEnd)
 {
     this->ownedEnds->removeAll(const_cast<QProperty *>(ownedEnd));
-
     // Adjust subsetted property(ies)
     removeMemberEnd(ownedEnd);
     removeFeature(ownedEnd);
@@ -110,7 +106,6 @@ void QAssociationPrivate::removeOwnedEnd(const QProperty *ownedEnd)
 void QAssociationPrivate::addMemberEnd(const QProperty *memberEnd)
 {
     this->memberEnds->append(const_cast<QProperty *>(memberEnd));
-
     // Adjust subsetted property(ies)
     addMember(memberEnd);
 }
@@ -118,7 +113,6 @@ void QAssociationPrivate::addMemberEnd(const QProperty *memberEnd)
 void QAssociationPrivate::removeMemberEnd(const QProperty *memberEnd)
 {
     this->memberEnds->removeAll(const_cast<QProperty *>(memberEnd));
-
     // Adjust subsetted property(ies)
     removeMember(memberEnd);
 }

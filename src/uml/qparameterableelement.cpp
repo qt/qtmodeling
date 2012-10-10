@@ -60,6 +60,9 @@ QParameterableElementPrivate::~QParameterableElementPrivate()
 void QParameterableElementPrivate::setOwningTemplateParameter(const QTemplateParameter *owningTemplateParameter)
 {
     this->owningTemplateParameter = const_cast<QTemplateParameter *>(owningTemplateParameter);
+    // Adjust subsetted property(ies)
+    setTemplateParameter(owningTemplateParameter);
+    setOwner(owningTemplateParameter);
 }
 
 void QParameterableElementPrivate::setTemplateParameter(const QTemplateParameter *templateParameter)

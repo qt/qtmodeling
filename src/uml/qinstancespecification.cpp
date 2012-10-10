@@ -75,13 +75,16 @@ void QInstanceSpecificationPrivate::removeClassifier(const QClassifier *classifi
 
 void QInstanceSpecificationPrivate::setSpecification(const QValueSpecification *specification)
 {
+    // Adjust subsetted property(ies)
+    removeOwnedElement(this->specification);
     this->specification = const_cast<QValueSpecification *>(specification);
+    // Adjust subsetted property(ies)
+    addOwnedElement(specification);
 }
 
 void QInstanceSpecificationPrivate::addSlot_(const QSlot *slot_)
 {
     this->slots_->insert(const_cast<QSlot *>(slot_));
-
     // Adjust subsetted property(ies)
     addOwnedElement(slot_);
 }
@@ -89,7 +92,6 @@ void QInstanceSpecificationPrivate::addSlot_(const QSlot *slot_)
 void QInstanceSpecificationPrivate::removeSlot_(const QSlot *slot_)
 {
     this->slots_->remove(const_cast<QSlot *>(slot_));
-
     // Adjust subsetted property(ies)
     removeOwnedElement(slot_);
 }

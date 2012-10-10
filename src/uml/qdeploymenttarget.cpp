@@ -62,7 +62,6 @@ QDeploymentTargetPrivate::~QDeploymentTargetPrivate()
 void QDeploymentTargetPrivate::addDeployment(const QDeployment *deployment)
 {
     this->deployments->insert(const_cast<QDeployment *>(deployment));
-
     // Adjust subsetted property(ies)
     addOwnedElement(deployment);
     addClientDependency(deployment);
@@ -71,7 +70,6 @@ void QDeploymentTargetPrivate::addDeployment(const QDeployment *deployment)
 void QDeploymentTargetPrivate::removeDeployment(const QDeployment *deployment)
 {
     this->deployments->remove(const_cast<QDeployment *>(deployment));
-
     // Adjust subsetted property(ies)
     removeOwnedElement(deployment);
     removeClientDependency(deployment);

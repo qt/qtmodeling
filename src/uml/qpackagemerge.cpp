@@ -61,12 +61,21 @@ QPackageMergePrivate::~QPackageMergePrivate()
 
 void QPackageMergePrivate::setMergedPackage(const QPackage *mergedPackage)
 {
+    // Adjust subsetted property(ies)
+    removeTarget(this->mergedPackage);
     this->mergedPackage = const_cast<QPackage *>(mergedPackage);
+    // Adjust subsetted property(ies)
+    addTarget(mergedPackage);
 }
 
 void QPackageMergePrivate::setReceivingPackage(const QPackage *receivingPackage)
 {
+    // Adjust subsetted property(ies)
+    removeSource(this->receivingPackage);
     this->receivingPackage = const_cast<QPackage *>(receivingPackage);
+    // Adjust subsetted property(ies)
+    setOwner(receivingPackage);
+    addSource(receivingPackage);
 }
 
 /*!

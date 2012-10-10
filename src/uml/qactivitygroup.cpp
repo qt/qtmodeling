@@ -70,6 +70,8 @@ QActivityGroupPrivate::~QActivityGroupPrivate()
 void QActivityGroupPrivate::setInActivity(const QActivity *inActivity)
 {
     this->inActivity = const_cast<QActivity *>(inActivity);
+    // Adjust subsetted property(ies)
+    setOwner(inActivity);
 }
 
 void QActivityGroupPrivate::addContainedNode(const QActivityNode *containedNode)
@@ -85,7 +87,6 @@ void QActivityGroupPrivate::removeContainedNode(const QActivityNode *containedNo
 void QActivityGroupPrivate::addSubgroup(const QActivityGroup *subgroup)
 {
     this->subgroups->insert(const_cast<QActivityGroup *>(subgroup));
-
     // Adjust subsetted property(ies)
     addOwnedElement(subgroup);
 }
@@ -93,7 +94,6 @@ void QActivityGroupPrivate::addSubgroup(const QActivityGroup *subgroup)
 void QActivityGroupPrivate::removeSubgroup(const QActivityGroup *subgroup)
 {
     this->subgroups->remove(const_cast<QActivityGroup *>(subgroup));
-
     // Adjust subsetted property(ies)
     removeOwnedElement(subgroup);
 }
@@ -111,6 +111,8 @@ void QActivityGroupPrivate::removeContainedEdge(const QActivityEdge *containedEd
 void QActivityGroupPrivate::setSuperGroup(const QActivityGroup *superGroup)
 {
     this->superGroup = const_cast<QActivityGroup *>(superGroup);
+    // Adjust subsetted property(ies)
+    setOwner(superGroup);
 }
 
 /*!

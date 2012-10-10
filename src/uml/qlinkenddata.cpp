@@ -74,7 +74,6 @@ void QLinkEndDataPrivate::setEnd(const QProperty *end)
 void QLinkEndDataPrivate::addQualifier(const QQualifierValue *qualifier)
 {
     this->qualifiers->insert(const_cast<QQualifierValue *>(qualifier));
-
     // Adjust subsetted property(ies)
     addOwnedElement(qualifier);
 }
@@ -82,7 +81,6 @@ void QLinkEndDataPrivate::addQualifier(const QQualifierValue *qualifier)
 void QLinkEndDataPrivate::removeQualifier(const QQualifierValue *qualifier)
 {
     this->qualifiers->remove(const_cast<QQualifierValue *>(qualifier));
-
     // Adjust subsetted property(ies)
     removeOwnedElement(qualifier);
 }

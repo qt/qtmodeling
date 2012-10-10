@@ -60,7 +60,6 @@ QEnumerationPrivate::~QEnumerationPrivate()
 void QEnumerationPrivate::addOwnedLiteral(const QEnumerationLiteral *ownedLiteral)
 {
     this->ownedLiterals->append(const_cast<QEnumerationLiteral *>(ownedLiteral));
-
     // Adjust subsetted property(ies)
     addOwnedMember(ownedLiteral);
 }
@@ -68,7 +67,6 @@ void QEnumerationPrivate::addOwnedLiteral(const QEnumerationLiteral *ownedLitera
 void QEnumerationPrivate::removeOwnedLiteral(const QEnumerationLiteral *ownedLiteral)
 {
     this->ownedLiterals->removeAll(const_cast<QEnumerationLiteral *>(ownedLiteral));
-
     // Adjust subsetted property(ies)
     removeOwnedMember(ownedLiteral);
 }

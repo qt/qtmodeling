@@ -64,7 +64,6 @@ QProfilePrivate::~QProfilePrivate()
 void QProfilePrivate::addMetamodelReference(const QPackageImport *metamodelReference)
 {
     this->metamodelReferences->insert(const_cast<QPackageImport *>(metamodelReference));
-
     // Adjust subsetted property(ies)
     addPackageImport(metamodelReference);
 }
@@ -72,7 +71,6 @@ void QProfilePrivate::addMetamodelReference(const QPackageImport *metamodelRefer
 void QProfilePrivate::removeMetamodelReference(const QPackageImport *metamodelReference)
 {
     this->metamodelReferences->remove(const_cast<QPackageImport *>(metamodelReference));
-
     // Adjust subsetted property(ies)
     removePackageImport(metamodelReference);
 }
@@ -80,7 +78,6 @@ void QProfilePrivate::removeMetamodelReference(const QPackageImport *metamodelRe
 void QProfilePrivate::addMetaclassReference(const QElementImport *metaclassReference)
 {
     this->metaclassReferences->insert(const_cast<QElementImport *>(metaclassReference));
-
     // Adjust subsetted property(ies)
     addElementImport(metaclassReference);
 }
@@ -88,7 +85,6 @@ void QProfilePrivate::addMetaclassReference(const QElementImport *metaclassRefer
 void QProfilePrivate::removeMetaclassReference(const QElementImport *metaclassReference)
 {
     this->metaclassReferences->remove(const_cast<QElementImport *>(metaclassReference));
-
     // Adjust subsetted property(ies)
     removeElementImport(metaclassReference);
 }

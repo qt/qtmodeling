@@ -70,7 +70,12 @@ void QGeneralizationPrivate::setSubstitutable(bool isSubstitutable)
 
 void QGeneralizationPrivate::setSpecific(const QClassifier *specific)
 {
+    // Adjust subsetted property(ies)
+    removeSource(this->specific);
     this->specific = const_cast<QClassifier *>(specific);
+    // Adjust subsetted property(ies)
+    setOwner(specific);
+    addSource(specific);
 }
 
 void QGeneralizationPrivate::addGeneralizationSet(const QGeneralizationSet *generalizationSet)
@@ -85,7 +90,11 @@ void QGeneralizationPrivate::removeGeneralizationSet(const QGeneralizationSet *g
 
 void QGeneralizationPrivate::setGeneral(const QClassifier *general)
 {
+    // Adjust subsetted property(ies)
+    removeTarget(this->general);
     this->general = const_cast<QClassifier *>(general);
+    // Adjust subsetted property(ies)
+    addTarget(general);
 }
 
 /*!

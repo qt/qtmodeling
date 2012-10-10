@@ -75,12 +75,13 @@ void QTemplateSignaturePrivate::removeParameter(const QTemplateParameter *parame
 void QTemplateSignaturePrivate::setTemplate_(const QTemplateableElement *template_)
 {
     this->template_ = const_cast<QTemplateableElement *>(template_);
+    // Adjust subsetted property(ies)
+    setOwner(template_);
 }
 
 void QTemplateSignaturePrivate::addOwnedParameter(const QTemplateParameter *ownedParameter)
 {
     this->ownedParameters->append(const_cast<QTemplateParameter *>(ownedParameter));
-
     // Adjust subsetted property(ies)
     addParameter(ownedParameter);
     addOwnedElement(ownedParameter);
@@ -89,7 +90,6 @@ void QTemplateSignaturePrivate::addOwnedParameter(const QTemplateParameter *owne
 void QTemplateSignaturePrivate::removeOwnedParameter(const QTemplateParameter *ownedParameter)
 {
     this->ownedParameters->removeAll(const_cast<QTemplateParameter *>(ownedParameter));
-
     // Adjust subsetted property(ies)
     removeParameter(ownedParameter);
     removeOwnedElement(ownedParameter);

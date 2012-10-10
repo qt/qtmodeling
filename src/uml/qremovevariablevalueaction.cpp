@@ -64,7 +64,11 @@ void QRemoveVariableValueActionPrivate::setRemoveDuplicates(bool isRemoveDuplica
 
 void QRemoveVariableValueActionPrivate::setRemoveAt(const QInputPin *removeAt)
 {
+    // Adjust subsetted property(ies)
+    removeInput(this->removeAt);
     this->removeAt = const_cast<QInputPin *>(removeAt);
+    // Adjust subsetted property(ies)
+    addInput(removeAt);
 }
 
 /*!
