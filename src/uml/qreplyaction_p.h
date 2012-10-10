@@ -69,7 +69,7 @@ public:
     QInputPin *returnInformation;
     QSet<QInputPin *> *replyValues;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setReplyToCall(const QTrigger *replyToCall);
     void setReturnInformation(const QInputPin *returnInformation);
     void addReplyValue(const QInputPin *replyValue);

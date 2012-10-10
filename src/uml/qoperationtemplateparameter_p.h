@@ -63,7 +63,7 @@ public:
 
     QOperation *parameteredElement;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setParameteredElement(const QOperation *parameteredElement);
 };
 

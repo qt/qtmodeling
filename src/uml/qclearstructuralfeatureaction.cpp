@@ -55,10 +55,10 @@ QClearStructuralFeatureActionPrivate::QClearStructuralFeatureActionPrivate() :
 QClearStructuralFeatureActionPrivate::~QClearStructuralFeatureActionPrivate()
 {
 }
-  
-void QClearStructuralFeatureActionPrivate::setResult(const QOutputPin *result) 
-{  
-    this->result = const_cast<QOutputPin *>(result);   
+
+void QClearStructuralFeatureActionPrivate::setResult(const QOutputPin *result)
+{
+    this->result = const_cast<QOutputPin *>(result);
 }
 
 /*!

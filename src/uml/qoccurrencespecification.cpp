@@ -59,30 +59,30 @@ QOccurrenceSpecificationPrivate::~QOccurrenceSpecificationPrivate()
     delete toAfter;
     delete toBefore;
 }
-  
-void QOccurrenceSpecificationPrivate::setCovered(const QLifeline *covered) 
-{  
-    this->covered = const_cast<QLifeline *>(covered);   
+
+void QOccurrenceSpecificationPrivate::setCovered(const QLifeline *covered)
+{
+    this->covered = const_cast<QLifeline *>(covered);
 }
-  
-void QOccurrenceSpecificationPrivate::addToAfter(const QGeneralOrdering *toAfter) 
-{   
-    this->toAfter->insert(const_cast<QGeneralOrdering *>(toAfter));  
+
+void QOccurrenceSpecificationPrivate::addToAfter(const QGeneralOrdering *toAfter)
+{
+    this->toAfter->insert(const_cast<QGeneralOrdering *>(toAfter));
 }
- 
-void QOccurrenceSpecificationPrivate::removeToAfter(const QGeneralOrdering *toAfter) 
-{    
-    this->toAfter->remove(const_cast<QGeneralOrdering *>(toAfter)); 
+
+void QOccurrenceSpecificationPrivate::removeToAfter(const QGeneralOrdering *toAfter)
+{
+    this->toAfter->remove(const_cast<QGeneralOrdering *>(toAfter));
 }
-  
-void QOccurrenceSpecificationPrivate::addToBefore(const QGeneralOrdering *toBefore) 
-{   
-    this->toBefore->insert(const_cast<QGeneralOrdering *>(toBefore));  
+
+void QOccurrenceSpecificationPrivate::addToBefore(const QGeneralOrdering *toBefore)
+{
+    this->toBefore->insert(const_cast<QGeneralOrdering *>(toBefore));
 }
- 
-void QOccurrenceSpecificationPrivate::removeToBefore(const QGeneralOrdering *toBefore) 
-{    
-    this->toBefore->remove(const_cast<QGeneralOrdering *>(toBefore)); 
+
+void QOccurrenceSpecificationPrivate::removeToBefore(const QGeneralOrdering *toBefore)
+{
+    this->toBefore->remove(const_cast<QGeneralOrdering *>(toBefore));
 }
 
 /*!

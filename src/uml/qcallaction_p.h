@@ -67,10 +67,10 @@ public:
     bool isSynchronous;
     QList<QOutputPin *> *results;
 
-    // Attributes
+    // Internal functions for attributes
     void setSynchronous(bool isSynchronous);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addResult(const QOutputPin *result);
     void removeResult(const QOutputPin *result);
 };

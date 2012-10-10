@@ -54,10 +54,10 @@ QActionExecutionSpecificationPrivate::QActionExecutionSpecificationPrivate() :
 QActionExecutionSpecificationPrivate::~QActionExecutionSpecificationPrivate()
 {
 }
-  
-void QActionExecutionSpecificationPrivate::setAction(const QAction *action) 
-{  
-    this->action = const_cast<QAction *>(action);   
+
+void QActionExecutionSpecificationPrivate::setAction(const QAction *action)
+{
+    this->action = const_cast<QAction *>(action);
 }
 
 /*!

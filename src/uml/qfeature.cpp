@@ -61,17 +61,17 @@ void QFeaturePrivate::setStatic(bool isStatic)
 {
     this->isStatic = isStatic;
 }
-  
-void QFeaturePrivate::addFeaturingClassifier(const QClassifier *featuringClassifier) 
-{   
-    this->featuringClassifiers->insert(const_cast<QClassifier *>(featuringClassifier)); 
 
-    // Adjust subsetted property(ies) 
+void QFeaturePrivate::addFeaturingClassifier(const QClassifier *featuringClassifier)
+{
+    this->featuringClassifiers->insert(const_cast<QClassifier *>(featuringClassifier));
+
+    // Adjust subsetted property(ies)
 }
- 
-void QFeaturePrivate::removeFeaturingClassifier(const QClassifier *featuringClassifier) 
-{    
-    this->featuringClassifiers->remove(const_cast<QClassifier *>(featuringClassifier)); 
+
+void QFeaturePrivate::removeFeaturingClassifier(const QClassifier *featuringClassifier)
+{
+    this->featuringClassifiers->remove(const_cast<QClassifier *>(featuringClassifier));
 
     // Adjust subsetted property(ies)
 }

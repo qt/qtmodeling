@@ -69,10 +69,10 @@ public:
     QState *state;
     QStateMachine *stateMachine;
 
-    // Attributes
+    // Internal functions for attributes
     void setKind(QtUml::PseudostateKind kind);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setState(const QState *state);
     void setStateMachine(const QStateMachine *stateMachine);
 };

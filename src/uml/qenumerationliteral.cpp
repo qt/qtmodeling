@@ -55,10 +55,10 @@ QEnumerationLiteralPrivate::QEnumerationLiteralPrivate() :
 QEnumerationLiteralPrivate::~QEnumerationLiteralPrivate()
 {
 }
-   
-void QEnumerationLiteralPrivate::setEnumeration(const QEnumeration *enumeration) 
-{  
-    this->enumeration = const_cast<QEnumeration *>(enumeration);   
+
+void QEnumerationLiteralPrivate::setEnumeration(const QEnumeration *enumeration)
+{
+    this->enumeration = const_cast<QEnumeration *>(enumeration);
 }
 
 /*!

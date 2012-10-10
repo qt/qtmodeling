@@ -66,7 +66,7 @@ public:
 
     QSet<QLinkEndCreationData *> *endData;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addEndData(const QLinkEndCreationData *endData);
     void removeEndData(const QLinkEndCreationData *endData);
 };

@@ -61,25 +61,25 @@ QConstraintPrivate::~QConstraintPrivate()
 {
     delete constrainedElements;
 }
-  
-void QConstraintPrivate::setContext(const QNamespace *context) 
-{  
-    this->context = const_cast<QNamespace *>(context);   
+
+void QConstraintPrivate::setContext(const QNamespace *context)
+{
+    this->context = const_cast<QNamespace *>(context);
 }
-  
-void QConstraintPrivate::setSpecification(const QValueSpecification *specification) 
-{  
-    this->specification = const_cast<QValueSpecification *>(specification);   
+
+void QConstraintPrivate::setSpecification(const QValueSpecification *specification)
+{
+    this->specification = const_cast<QValueSpecification *>(specification);
 }
-  
-void QConstraintPrivate::addConstrainedElement(const QElement *constrainedElement) 
-{   
-    this->constrainedElements->append(const_cast<QElement *>(constrainedElement));  
+
+void QConstraintPrivate::addConstrainedElement(const QElement *constrainedElement)
+{
+    this->constrainedElements->append(const_cast<QElement *>(constrainedElement));
 }
- 
-void QConstraintPrivate::removeConstrainedElement(const QElement *constrainedElement) 
-{    
-    this->constrainedElements->removeAll(const_cast<QElement *>(constrainedElement)); 
+
+void QConstraintPrivate::removeConstrainedElement(const QElement *constrainedElement)
+{
+    this->constrainedElements->removeAll(const_cast<QElement *>(constrainedElement));
 }
 
 /*!

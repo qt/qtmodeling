@@ -58,15 +58,15 @@ QValueSpecificationActionPrivate::QValueSpecificationActionPrivate() :
 QValueSpecificationActionPrivate::~QValueSpecificationActionPrivate()
 {
 }
-  
-void QValueSpecificationActionPrivate::setValue(const QValueSpecification *value) 
-{  
-    this->value = const_cast<QValueSpecification *>(value);   
+
+void QValueSpecificationActionPrivate::setValue(const QValueSpecification *value)
+{
+    this->value = const_cast<QValueSpecification *>(value);
 }
-  
-void QValueSpecificationActionPrivate::setResult(const QOutputPin *result) 
-{  
-    this->result = const_cast<QOutputPin *>(result);   
+
+void QValueSpecificationActionPrivate::setResult(const QOutputPin *result)
+{
+    this->result = const_cast<QOutputPin *>(result);
 }
 
 /*!

@@ -64,10 +64,10 @@ public:
     bool isReplaceAll;
     QInputPin *insertAt;
 
-    // Attributes
+    // Internal functions for attributes
     void setReplaceAll(bool isReplaceAll);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setInsertAt(const QInputPin *insertAt);
 };
 

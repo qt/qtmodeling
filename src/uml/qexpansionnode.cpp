@@ -55,15 +55,15 @@ QExpansionNodePrivate::QExpansionNodePrivate() :
 QExpansionNodePrivate::~QExpansionNodePrivate()
 {
 }
-  
-void QExpansionNodePrivate::setRegionAsOutput(const QExpansionRegion *regionAsOutput) 
-{  
-    this->regionAsOutput = const_cast<QExpansionRegion *>(regionAsOutput);   
+
+void QExpansionNodePrivate::setRegionAsOutput(const QExpansionRegion *regionAsOutput)
+{
+    this->regionAsOutput = const_cast<QExpansionRegion *>(regionAsOutput);
 }
-  
-void QExpansionNodePrivate::setRegionAsInput(const QExpansionRegion *regionAsInput) 
-{  
-    this->regionAsInput = const_cast<QExpansionRegion *>(regionAsInput);   
+
+void QExpansionNodePrivate::setRegionAsInput(const QExpansionRegion *regionAsInput)
+{
+    this->regionAsInput = const_cast<QExpansionRegion *>(regionAsInput);
 }
 
 /*!

@@ -69,7 +69,7 @@ public:
     QList<QInteractionFragment *> *fragments;
     QInteractionConstraint *guard;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addFragment(const QInteractionFragment *fragment);
     void removeFragment(const QInteractionFragment *fragment);
     void setGuard(const QInteractionConstraint *guard);

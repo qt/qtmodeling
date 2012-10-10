@@ -74,10 +74,10 @@ public:
     QList<QInputPin *> *inputs;
     QList<QOutputPin *> *outputs;
 
-    // Attributes
+    // Internal functions for attributes
     void setLocallyReentrant(bool isLocallyReentrant);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setContext(const QClassifier *context);
     void addLocalPostcondition(const QConstraint *localPostcondition);
     void removeLocalPostcondition(const QConstraint *localPostcondition);

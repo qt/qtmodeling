@@ -59,15 +59,15 @@ void QCommentPrivate::setBody(QString body)
 {
     this->body = body;
 }
-  
-void QCommentPrivate::addAnnotatedElement(const QElement *annotatedElement) 
-{   
-    this->annotatedElements->insert(const_cast<QElement *>(annotatedElement));  
+
+void QCommentPrivate::addAnnotatedElement(const QElement *annotatedElement)
+{
+    this->annotatedElements->insert(const_cast<QElement *>(annotatedElement));
 }
- 
-void QCommentPrivate::removeAnnotatedElement(const QElement *annotatedElement) 
-{    
-    this->annotatedElements->remove(const_cast<QElement *>(annotatedElement)); 
+
+void QCommentPrivate::removeAnnotatedElement(const QElement *annotatedElement)
+{
+    this->annotatedElements->remove(const_cast<QElement *>(annotatedElement));
 }
 
 /*!

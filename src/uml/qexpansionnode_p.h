@@ -64,7 +64,7 @@ public:
     QExpansionRegion *regionAsOutput;
     QExpansionRegion *regionAsInput;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setRegionAsOutput(const QExpansionRegion *regionAsOutput);
     void setRegionAsInput(const QExpansionRegion *regionAsInput);
 };

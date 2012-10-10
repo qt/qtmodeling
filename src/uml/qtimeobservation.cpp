@@ -60,10 +60,10 @@ void QTimeObservationPrivate::setFirstEvent(bool firstEvent)
 {
     this->firstEvent = firstEvent;
 }
-  
-void QTimeObservationPrivate::setEvent(const QNamedElement *event) 
-{  
-    this->event = const_cast<QNamedElement *>(event);   
+
+void QTimeObservationPrivate::setEvent(const QNamedElement *event)
+{
+    this->event = const_cast<QNamedElement *>(event);
 }
 
 /*!

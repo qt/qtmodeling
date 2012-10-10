@@ -63,7 +63,7 @@ public:
 
     QExecutionSpecification *execution;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setExecution(const QExecutionSpecification *execution);
 };
 

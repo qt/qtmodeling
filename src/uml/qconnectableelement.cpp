@@ -55,10 +55,10 @@ QConnectableElementPrivate::QConnectableElementPrivate() :
 QConnectableElementPrivate::~QConnectableElementPrivate()
 {
 }
-   
-void QConnectableElementPrivate::setTemplateParameter(const QConnectableElementTemplateParameter *templateParameter) 
-{  
-    this->templateParameter = const_cast<QConnectableElementTemplateParameter *>(templateParameter);   
+
+void QConnectableElementPrivate::setTemplateParameter(const QConnectableElementTemplateParameter *templateParameter)
+{
+    this->templateParameter = const_cast<QConnectableElementTemplateParameter *>(templateParameter);
 }
 
 /*!

@@ -67,15 +67,15 @@ void QObjectFlowPrivate::setMulticast(bool isMulticast)
 {
     this->isMulticast = isMulticast;
 }
-  
-void QObjectFlowPrivate::setSelection(const QBehavior *selection) 
-{  
-    this->selection = const_cast<QBehavior *>(selection);   
+
+void QObjectFlowPrivate::setSelection(const QBehavior *selection)
+{
+    this->selection = const_cast<QBehavior *>(selection);
 }
-  
-void QObjectFlowPrivate::setTransformation(const QBehavior *transformation) 
-{  
-    this->transformation = const_cast<QBehavior *>(transformation);   
+
+void QObjectFlowPrivate::setTransformation(const QBehavior *transformation)
+{
+    this->transformation = const_cast<QBehavior *>(transformation);
 }
 
 /*!

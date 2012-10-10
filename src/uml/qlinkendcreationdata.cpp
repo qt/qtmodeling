@@ -60,10 +60,10 @@ void QLinkEndCreationDataPrivate::setReplaceAll(bool isReplaceAll)
 {
     this->isReplaceAll = isReplaceAll;
 }
-  
-void QLinkEndCreationDataPrivate::setInsertAt(const QInputPin *insertAt) 
-{  
-    this->insertAt = const_cast<QInputPin *>(insertAt);   
+
+void QLinkEndCreationDataPrivate::setInsertAt(const QInputPin *insertAt)
+{
+    this->insertAt = const_cast<QInputPin *>(insertAt);
 }
 
 /*!

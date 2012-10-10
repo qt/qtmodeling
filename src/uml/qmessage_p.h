@@ -79,11 +79,11 @@ public:
     QMessageEnd *sendEvent;
     QConnector *connector;
 
-    // Attributes
+    // Internal functions for attributes
     void setMessageSort(QtUml::MessageSort messageSort);
     void setMessageKind(QtUml::MessageKind messageKind);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setSignature(const QNamedElement *signature);
     void addArgument(const QValueSpecification *argument);
     void removeArgument(const QValueSpecification *argument);

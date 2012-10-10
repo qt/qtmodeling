@@ -67,7 +67,7 @@ public:
     QSet<QObservation *> *observations;
     QValueSpecification *expr;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addObservation(const QObservation *observation);
     void removeObservation(const QObservation *observation);
     void setExpr(const QValueSpecification *expr);

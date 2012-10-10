@@ -73,7 +73,7 @@ public:
     QSet<QExecutableNode *> *bodies;
     QSet<QExecutableNode *> *tests;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addSuccessorClause(const QClause *successorClause);
     void removeSuccessorClause(const QClause *successorClause);
     void setDecider(const QOutputPin *decider);

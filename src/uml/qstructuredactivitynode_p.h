@@ -81,10 +81,10 @@ public:
     QSet<QVariable *> *variables;
     QActivity *activity;
 
-    // Attributes
+    // Internal functions for attributes
     void setMustIsolate(bool mustIsolate);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addStructuredNodeInput(const QInputPin *structuredNodeInput);
     void removeStructuredNodeInput(const QInputPin *structuredNodeInput);
     void addNode(const QActivityNode *node);

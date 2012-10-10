@@ -62,7 +62,7 @@ public:
 
     qint32 value;
 
-    // Attributes
+    // Internal functions for attributes
     void setValue(qint32 value);
 };
 

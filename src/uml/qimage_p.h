@@ -67,7 +67,7 @@ public:
     QString location;
     QString content;
 
-    // Attributes
+    // Internal functions for attributes
     void setFormat(QString format);
     void setLocation(QString location);
     void setContent(QString content);

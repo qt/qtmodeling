@@ -58,15 +58,15 @@ QIncludePrivate::QIncludePrivate() :
 QIncludePrivate::~QIncludePrivate()
 {
 }
-  
-void QIncludePrivate::setIncludingCase(const QUseCase *includingCase) 
-{  
-    this->includingCase = const_cast<QUseCase *>(includingCase);   
+
+void QIncludePrivate::setIncludingCase(const QUseCase *includingCase)
+{
+    this->includingCase = const_cast<QUseCase *>(includingCase);
 }
-  
-void QIncludePrivate::setAddition(const QUseCase *addition) 
-{  
-    this->addition = const_cast<QUseCase *>(addition);   
+
+void QIncludePrivate::setAddition(const QUseCase *addition)
+{
+    this->addition = const_cast<QUseCase *>(addition);
 }
 
 /*!

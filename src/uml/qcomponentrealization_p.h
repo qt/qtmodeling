@@ -68,7 +68,7 @@ public:
     QComponent *abstraction;
     QSet<QClassifier *> *realizingClassifiers;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setAbstraction(const QComponent *abstraction);
     void addRealizingClassifier(const QClassifier *realizingClassifier);
     void removeRealizingClassifier(const QClassifier *realizingClassifier);

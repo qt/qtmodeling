@@ -65,7 +65,7 @@ public:
     virtual ~QEncapsulatedClassifierPrivate();
 
 
-    // Association-ends
+    // Internal functions for association-ends
     void addOwnedPort(const QPort *ownedPort);
     void removeOwnedPort(const QPort *ownedPort);
 };

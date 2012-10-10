@@ -88,14 +88,14 @@ public:
     QClass *class_;
     QSet<QType *> *raisedExceptions;
 
-    // Attributes
+    // Internal functions for attributes
     void setLower(qint32 lower);
     void setQuery(bool isQuery);
     void setUnique(bool isUnique);
     void setUpper(qint32 upper);
     void setOrdered(bool isOrdered);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addOwnedParameter(const QParameter *ownedParameter);
     void removeOwnedParameter(const QParameter *ownedParameter);
     void setBodyCondition(const QConstraint *bodyCondition);

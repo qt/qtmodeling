@@ -73,7 +73,7 @@ public:
     QList<QExtensionPoint *> *extensionLocations;
     QConstraint *condition;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setExtendedCase(const QUseCase *extendedCase);
     void setExtension(const QUseCase *extension);
     void addExtensionLocation(const QExtensionPoint *extensionLocation);

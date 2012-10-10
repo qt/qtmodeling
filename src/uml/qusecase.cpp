@@ -67,60 +67,60 @@ QUseCasePrivate::~QUseCasePrivate()
     delete subjects;
     delete extends;
 }
-  
-void QUseCasePrivate::addExtensionPoint(const QExtensionPoint *extensionPoint) 
-{   
-    this->extensionPoints->insert(const_cast<QExtensionPoint *>(extensionPoint)); 
+
+void QUseCasePrivate::addExtensionPoint(const QExtensionPoint *extensionPoint)
+{
+    this->extensionPoints->insert(const_cast<QExtensionPoint *>(extensionPoint));
 
     // Adjust subsetted property(ies)
-    addOwnedMember(extensionPoint); 
+    addOwnedMember(extensionPoint);
 }
- 
-void QUseCasePrivate::removeExtensionPoint(const QExtensionPoint *extensionPoint) 
-{    
-    this->extensionPoints->remove(const_cast<QExtensionPoint *>(extensionPoint)); 
+
+void QUseCasePrivate::removeExtensionPoint(const QExtensionPoint *extensionPoint)
+{
+    this->extensionPoints->remove(const_cast<QExtensionPoint *>(extensionPoint));
 
     // Adjust subsetted property(ies)
     removeOwnedMember(extensionPoint);
 }
-  
-void QUseCasePrivate::addInclude(const QInclude *include) 
-{   
-    this->includes->insert(const_cast<QInclude *>(include)); 
+
+void QUseCasePrivate::addInclude(const QInclude *include)
+{
+    this->includes->insert(const_cast<QInclude *>(include));
 
     // Adjust subsetted property(ies)
-    addOwnedMember(include); 
+    addOwnedMember(include);
 }
- 
-void QUseCasePrivate::removeInclude(const QInclude *include) 
-{    
-    this->includes->remove(const_cast<QInclude *>(include)); 
+
+void QUseCasePrivate::removeInclude(const QInclude *include)
+{
+    this->includes->remove(const_cast<QInclude *>(include));
 
     // Adjust subsetted property(ies)
     removeOwnedMember(include);
 }
-  
-void QUseCasePrivate::addSubject(const QClassifier *subject) 
-{   
-    this->subjects->insert(const_cast<QClassifier *>(subject));  
+
+void QUseCasePrivate::addSubject(const QClassifier *subject)
+{
+    this->subjects->insert(const_cast<QClassifier *>(subject));
 }
- 
-void QUseCasePrivate::removeSubject(const QClassifier *subject) 
-{    
-    this->subjects->remove(const_cast<QClassifier *>(subject)); 
+
+void QUseCasePrivate::removeSubject(const QClassifier *subject)
+{
+    this->subjects->remove(const_cast<QClassifier *>(subject));
 }
-  
-void QUseCasePrivate::addExtend(const QExtend *extend) 
-{   
-    this->extends->insert(const_cast<QExtend *>(extend)); 
+
+void QUseCasePrivate::addExtend(const QExtend *extend)
+{
+    this->extends->insert(const_cast<QExtend *>(extend));
 
     // Adjust subsetted property(ies)
-    addOwnedMember(extend); 
+    addOwnedMember(extend);
 }
- 
-void QUseCasePrivate::removeExtend(const QExtend *extend) 
-{    
-    this->extends->remove(const_cast<QExtend *>(extend)); 
+
+void QUseCasePrivate::removeExtend(const QExtend *extend)
+{
+    this->extends->remove(const_cast<QExtend *>(extend));
 
     // Adjust subsetted property(ies)
     removeOwnedMember(extend);

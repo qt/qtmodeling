@@ -71,7 +71,7 @@ public:
     QExecutableNode *protectedNode;
     QObjectNode *exceptionInput;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setHandlerBody(const QExecutableNode *handlerBody);
     void addExceptionType(const QClassifier *exceptionType);
     void removeExceptionType(const QClassifier *exceptionType);

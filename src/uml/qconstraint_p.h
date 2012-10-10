@@ -70,7 +70,7 @@ public:
     QValueSpecification *specification;
     QList<QElement *> *constrainedElements;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setContext(const QNamespace *context);
     void setSpecification(const QValueSpecification *specification);
     void addConstrainedElement(const QElement *constrainedElement);

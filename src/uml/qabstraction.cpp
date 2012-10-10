@@ -55,10 +55,10 @@ QAbstractionPrivate::QAbstractionPrivate() :
 QAbstractionPrivate::~QAbstractionPrivate()
 {
 }
-  
-void QAbstractionPrivate::setMapping(const QOpaqueExpression *mapping) 
-{  
-    this->mapping = const_cast<QOpaqueExpression *>(mapping);   
+
+void QAbstractionPrivate::setMapping(const QOpaqueExpression *mapping)
+{
+    this->mapping = const_cast<QOpaqueExpression *>(mapping);
 }
 
 /*!

@@ -61,25 +61,25 @@ QTemplateParameterSubstitutionPrivate::QTemplateParameterSubstitutionPrivate() :
 QTemplateParameterSubstitutionPrivate::~QTemplateParameterSubstitutionPrivate()
 {
 }
-  
-void QTemplateParameterSubstitutionPrivate::setOwnedActual(const QParameterableElement *ownedActual) 
-{  
-    this->ownedActual = const_cast<QParameterableElement *>(ownedActual);   
+
+void QTemplateParameterSubstitutionPrivate::setOwnedActual(const QParameterableElement *ownedActual)
+{
+    this->ownedActual = const_cast<QParameterableElement *>(ownedActual);
 }
-  
-void QTemplateParameterSubstitutionPrivate::setFormal(const QTemplateParameter *formal) 
-{  
-    this->formal = const_cast<QTemplateParameter *>(formal);   
+
+void QTemplateParameterSubstitutionPrivate::setFormal(const QTemplateParameter *formal)
+{
+    this->formal = const_cast<QTemplateParameter *>(formal);
 }
-  
-void QTemplateParameterSubstitutionPrivate::setActual(const QParameterableElement *actual) 
-{  
-    this->actual = const_cast<QParameterableElement *>(actual);   
+
+void QTemplateParameterSubstitutionPrivate::setActual(const QParameterableElement *actual)
+{
+    this->actual = const_cast<QParameterableElement *>(actual);
 }
-  
-void QTemplateParameterSubstitutionPrivate::setTemplateBinding(const QTemplateBinding *templateBinding) 
-{  
-    this->templateBinding = const_cast<QTemplateBinding *>(templateBinding);   
+
+void QTemplateParameterSubstitutionPrivate::setTemplateBinding(const QTemplateBinding *templateBinding)
+{
+    this->templateBinding = const_cast<QTemplateBinding *>(templateBinding);
 }
 
 /*!

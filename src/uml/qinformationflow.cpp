@@ -74,87 +74,87 @@ QInformationFlowPrivate::~QInformationFlowPrivate()
     delete realizingActivityEdges;
     delete realizations;
 }
-  
-void QInformationFlowPrivate::addInformationTarget(const QNamedElement *informationTarget) 
-{   
-    this->informationTargets->insert(const_cast<QNamedElement *>(informationTarget)); 
+
+void QInformationFlowPrivate::addInformationTarget(const QNamedElement *informationTarget)
+{
+    this->informationTargets->insert(const_cast<QNamedElement *>(informationTarget));
 
     // Adjust subsetted property(ies)
-    addTarget(informationTarget); 
+    addTarget(informationTarget);
 }
- 
-void QInformationFlowPrivate::removeInformationTarget(const QNamedElement *informationTarget) 
-{    
-    this->informationTargets->remove(const_cast<QNamedElement *>(informationTarget)); 
+
+void QInformationFlowPrivate::removeInformationTarget(const QNamedElement *informationTarget)
+{
+    this->informationTargets->remove(const_cast<QNamedElement *>(informationTarget));
 
     // Adjust subsetted property(ies)
     removeTarget(informationTarget);
 }
-  
-void QInformationFlowPrivate::addRealizingConnector(const QConnector *realizingConnector) 
-{   
-    this->realizingConnectors->insert(const_cast<QConnector *>(realizingConnector));  
+
+void QInformationFlowPrivate::addRealizingConnector(const QConnector *realizingConnector)
+{
+    this->realizingConnectors->insert(const_cast<QConnector *>(realizingConnector));
 }
- 
-void QInformationFlowPrivate::removeRealizingConnector(const QConnector *realizingConnector) 
-{    
-    this->realizingConnectors->remove(const_cast<QConnector *>(realizingConnector)); 
+
+void QInformationFlowPrivate::removeRealizingConnector(const QConnector *realizingConnector)
+{
+    this->realizingConnectors->remove(const_cast<QConnector *>(realizingConnector));
 }
-  
-void QInformationFlowPrivate::addConveyed(const QClassifier *conveyed) 
-{   
-    this->conveyed->insert(const_cast<QClassifier *>(conveyed));  
+
+void QInformationFlowPrivate::addConveyed(const QClassifier *conveyed)
+{
+    this->conveyed->insert(const_cast<QClassifier *>(conveyed));
 }
- 
-void QInformationFlowPrivate::removeConveyed(const QClassifier *conveyed) 
-{    
-    this->conveyed->remove(const_cast<QClassifier *>(conveyed)); 
+
+void QInformationFlowPrivate::removeConveyed(const QClassifier *conveyed)
+{
+    this->conveyed->remove(const_cast<QClassifier *>(conveyed));
 }
-  
-void QInformationFlowPrivate::addInformationSource(const QNamedElement *informationSource) 
-{   
-    this->informationSources->insert(const_cast<QNamedElement *>(informationSource)); 
+
+void QInformationFlowPrivate::addInformationSource(const QNamedElement *informationSource)
+{
+    this->informationSources->insert(const_cast<QNamedElement *>(informationSource));
 
     // Adjust subsetted property(ies)
-    addSource(informationSource); 
+    addSource(informationSource);
 }
- 
-void QInformationFlowPrivate::removeInformationSource(const QNamedElement *informationSource) 
-{    
-    this->informationSources->remove(const_cast<QNamedElement *>(informationSource)); 
+
+void QInformationFlowPrivate::removeInformationSource(const QNamedElement *informationSource)
+{
+    this->informationSources->remove(const_cast<QNamedElement *>(informationSource));
 
     // Adjust subsetted property(ies)
     removeSource(informationSource);
 }
-  
-void QInformationFlowPrivate::addRealizingMessage(const QMessage *realizingMessage) 
-{   
-    this->realizingMessages->insert(const_cast<QMessage *>(realizingMessage));  
+
+void QInformationFlowPrivate::addRealizingMessage(const QMessage *realizingMessage)
+{
+    this->realizingMessages->insert(const_cast<QMessage *>(realizingMessage));
 }
- 
-void QInformationFlowPrivate::removeRealizingMessage(const QMessage *realizingMessage) 
-{    
-    this->realizingMessages->remove(const_cast<QMessage *>(realizingMessage)); 
+
+void QInformationFlowPrivate::removeRealizingMessage(const QMessage *realizingMessage)
+{
+    this->realizingMessages->remove(const_cast<QMessage *>(realizingMessage));
 }
-  
-void QInformationFlowPrivate::addRealizingActivityEdge(const QActivityEdge *realizingActivityEdge) 
-{   
-    this->realizingActivityEdges->insert(const_cast<QActivityEdge *>(realizingActivityEdge));  
+
+void QInformationFlowPrivate::addRealizingActivityEdge(const QActivityEdge *realizingActivityEdge)
+{
+    this->realizingActivityEdges->insert(const_cast<QActivityEdge *>(realizingActivityEdge));
 }
- 
-void QInformationFlowPrivate::removeRealizingActivityEdge(const QActivityEdge *realizingActivityEdge) 
-{    
-    this->realizingActivityEdges->remove(const_cast<QActivityEdge *>(realizingActivityEdge)); 
+
+void QInformationFlowPrivate::removeRealizingActivityEdge(const QActivityEdge *realizingActivityEdge)
+{
+    this->realizingActivityEdges->remove(const_cast<QActivityEdge *>(realizingActivityEdge));
 }
-  
-void QInformationFlowPrivate::addRealization(const QRelationship *realization) 
-{   
-    this->realizations->insert(const_cast<QRelationship *>(realization));  
+
+void QInformationFlowPrivate::addRealization(const QRelationship *realization)
+{
+    this->realizations->insert(const_cast<QRelationship *>(realization));
 }
- 
-void QInformationFlowPrivate::removeRealization(const QRelationship *realization) 
-{    
-    this->realizations->remove(const_cast<QRelationship *>(realization)); 
+
+void QInformationFlowPrivate::removeRealization(const QRelationship *realization)
+{
+    this->realizations->remove(const_cast<QRelationship *>(realization));
 }
 
 /*!

@@ -57,15 +57,15 @@ QCallOperationActionPrivate::QCallOperationActionPrivate() :
 QCallOperationActionPrivate::~QCallOperationActionPrivate()
 {
 }
-  
-void QCallOperationActionPrivate::setOperation(const QOperation *operation) 
-{  
-    this->operation = const_cast<QOperation *>(operation);   
+
+void QCallOperationActionPrivate::setOperation(const QOperation *operation)
+{
+    this->operation = const_cast<QOperation *>(operation);
 }
-  
-void QCallOperationActionPrivate::setTarget(const QInputPin *target) 
-{  
-    this->target = const_cast<QInputPin *>(target);   
+
+void QCallOperationActionPrivate::setTarget(const QInputPin *target)
+{
+    this->target = const_cast<QInputPin *>(target);
 }
 
 /*!

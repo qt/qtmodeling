@@ -65,35 +65,35 @@ QLifelinePrivate::~QLifelinePrivate()
 {
     delete coveredBy;
 }
-  
-void QLifelinePrivate::setRepresents(const QConnectableElement *represents) 
-{  
-    this->represents = const_cast<QConnectableElement *>(represents);   
+
+void QLifelinePrivate::setRepresents(const QConnectableElement *represents)
+{
+    this->represents = const_cast<QConnectableElement *>(represents);
 }
-  
-void QLifelinePrivate::setDecomposedAs(const QPartDecomposition *decomposedAs) 
-{  
-    this->decomposedAs = const_cast<QPartDecomposition *>(decomposedAs);   
+
+void QLifelinePrivate::setDecomposedAs(const QPartDecomposition *decomposedAs)
+{
+    this->decomposedAs = const_cast<QPartDecomposition *>(decomposedAs);
 }
-  
-void QLifelinePrivate::addCoveredBy(const QInteractionFragment *coveredBy) 
-{   
-    this->coveredBy->insert(const_cast<QInteractionFragment *>(coveredBy));  
+
+void QLifelinePrivate::addCoveredBy(const QInteractionFragment *coveredBy)
+{
+    this->coveredBy->insert(const_cast<QInteractionFragment *>(coveredBy));
 }
- 
-void QLifelinePrivate::removeCoveredBy(const QInteractionFragment *coveredBy) 
-{    
-    this->coveredBy->remove(const_cast<QInteractionFragment *>(coveredBy)); 
+
+void QLifelinePrivate::removeCoveredBy(const QInteractionFragment *coveredBy)
+{
+    this->coveredBy->remove(const_cast<QInteractionFragment *>(coveredBy));
 }
-  
-void QLifelinePrivate::setInteraction(const QInteraction *interaction) 
-{  
-    this->interaction = const_cast<QInteraction *>(interaction);   
+
+void QLifelinePrivate::setInteraction(const QInteraction *interaction)
+{
+    this->interaction = const_cast<QInteraction *>(interaction);
 }
-  
-void QLifelinePrivate::setSelector(const QValueSpecification *selector) 
-{  
-    this->selector = const_cast<QValueSpecification *>(selector);   
+
+void QLifelinePrivate::setSelector(const QValueSpecification *selector)
+{
+    this->selector = const_cast<QValueSpecification *>(selector);
 }
 
 /*!

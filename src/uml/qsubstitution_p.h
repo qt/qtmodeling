@@ -64,7 +64,7 @@ public:
     QClassifier *contract;
     QClassifier *substitutingClassifier;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setContract(const QClassifier *contract);
     void setSubstitutingClassifier(const QClassifier *substitutingClassifier);
 };

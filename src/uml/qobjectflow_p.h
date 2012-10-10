@@ -66,11 +66,11 @@ public:
     QBehavior *selection;
     QBehavior *transformation;
 
-    // Attributes
+    // Internal functions for attributes
     void setMultireceive(bool isMultireceive);
     void setMulticast(bool isMulticast);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setSelection(const QBehavior *selection);
     void setTransformation(const QBehavior *transformation);
 };

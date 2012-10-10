@@ -60,23 +60,23 @@ QTemplateableElementPrivate::~QTemplateableElementPrivate()
 {
     delete templateBindings;
 }
-  
-void QTemplateableElementPrivate::setOwnedTemplateSignature(const QTemplateSignature *ownedTemplateSignature) 
-{  
-    this->ownedTemplateSignature = const_cast<QTemplateSignature *>(ownedTemplateSignature);   
+
+void QTemplateableElementPrivate::setOwnedTemplateSignature(const QTemplateSignature *ownedTemplateSignature)
+{
+    this->ownedTemplateSignature = const_cast<QTemplateSignature *>(ownedTemplateSignature);
 }
-  
-void QTemplateableElementPrivate::addTemplateBinding(const QTemplateBinding *templateBinding) 
-{   
-    this->templateBindings->insert(const_cast<QTemplateBinding *>(templateBinding)); 
+
+void QTemplateableElementPrivate::addTemplateBinding(const QTemplateBinding *templateBinding)
+{
+    this->templateBindings->insert(const_cast<QTemplateBinding *>(templateBinding));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(templateBinding); 
+    addOwnedElement(templateBinding);
 }
- 
-void QTemplateableElementPrivate::removeTemplateBinding(const QTemplateBinding *templateBinding) 
-{    
-    this->templateBindings->remove(const_cast<QTemplateBinding *>(templateBinding)); 
+
+void QTemplateableElementPrivate::removeTemplateBinding(const QTemplateBinding *templateBinding)
+{
+    this->templateBindings->remove(const_cast<QTemplateBinding *>(templateBinding));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(templateBinding);

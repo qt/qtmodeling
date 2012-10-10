@@ -63,7 +63,7 @@ public:
 
     QOutputPin *returnInformation;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setReturnInformation(const QOutputPin *returnInformation);
 };
 

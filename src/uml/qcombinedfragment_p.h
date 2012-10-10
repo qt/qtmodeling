@@ -73,10 +73,10 @@ public:
     QSet<QGate *> *cfragmentGates;
     QList<QInteractionOperand *> *operands;
 
-    // Attributes
+    // Internal functions for attributes
     void setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addCfragmentGate(const QGate *cfragmentGate);
     void removeCfragmentGate(const QGate *cfragmentGate);
     void addOperand(const QInteractionOperand *operand);

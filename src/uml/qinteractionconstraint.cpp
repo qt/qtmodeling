@@ -57,15 +57,15 @@ QInteractionConstraintPrivate::QInteractionConstraintPrivate() :
 QInteractionConstraintPrivate::~QInteractionConstraintPrivate()
 {
 }
-  
-void QInteractionConstraintPrivate::setMaxint(const QValueSpecification *maxint) 
-{  
-    this->maxint = const_cast<QValueSpecification *>(maxint);   
+
+void QInteractionConstraintPrivate::setMaxint(const QValueSpecification *maxint)
+{
+    this->maxint = const_cast<QValueSpecification *>(maxint);
 }
-  
-void QInteractionConstraintPrivate::setMinint(const QValueSpecification *minint) 
-{  
-    this->minint = const_cast<QValueSpecification *>(minint);   
+
+void QInteractionConstraintPrivate::setMinint(const QValueSpecification *minint)
+{
+    this->minint = const_cast<QValueSpecification *>(minint);
 }
 
 /*!

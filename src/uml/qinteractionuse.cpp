@@ -66,52 +66,52 @@ QInteractionUsePrivate::~QInteractionUsePrivate()
     delete actualGates;
     delete arguments;
 }
-  
-void QInteractionUsePrivate::addActualGate(const QGate *actualGate) 
-{   
-    this->actualGates->insert(const_cast<QGate *>(actualGate)); 
+
+void QInteractionUsePrivate::addActualGate(const QGate *actualGate)
+{
+    this->actualGates->insert(const_cast<QGate *>(actualGate));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(actualGate); 
+    addOwnedElement(actualGate);
 }
- 
-void QInteractionUsePrivate::removeActualGate(const QGate *actualGate) 
-{    
-    this->actualGates->remove(const_cast<QGate *>(actualGate)); 
+
+void QInteractionUsePrivate::removeActualGate(const QGate *actualGate)
+{
+    this->actualGates->remove(const_cast<QGate *>(actualGate));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(actualGate);
 }
-  
-void QInteractionUsePrivate::setReturnValue(const QValueSpecification *returnValue) 
-{  
-    this->returnValue = const_cast<QValueSpecification *>(returnValue);   
+
+void QInteractionUsePrivate::setReturnValue(const QValueSpecification *returnValue)
+{
+    this->returnValue = const_cast<QValueSpecification *>(returnValue);
 }
-  
-void QInteractionUsePrivate::setRefersTo(const QInteraction *refersTo) 
-{  
-    this->refersTo = const_cast<QInteraction *>(refersTo);   
+
+void QInteractionUsePrivate::setRefersTo(const QInteraction *refersTo)
+{
+    this->refersTo = const_cast<QInteraction *>(refersTo);
 }
-  
-void QInteractionUsePrivate::addArgument(const QValueSpecification *argument) 
-{   
-    this->arguments->append(const_cast<QValueSpecification *>(argument)); 
+
+void QInteractionUsePrivate::addArgument(const QValueSpecification *argument)
+{
+    this->arguments->append(const_cast<QValueSpecification *>(argument));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(argument); 
+    addOwnedElement(argument);
 }
- 
-void QInteractionUsePrivate::removeArgument(const QValueSpecification *argument) 
-{    
-    this->arguments->removeAll(const_cast<QValueSpecification *>(argument)); 
+
+void QInteractionUsePrivate::removeArgument(const QValueSpecification *argument)
+{
+    this->arguments->removeAll(const_cast<QValueSpecification *>(argument));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(argument);
 }
-  
-void QInteractionUsePrivate::setReturnValueRecipient(const QProperty *returnValueRecipient) 
-{  
-    this->returnValueRecipient = const_cast<QProperty *>(returnValueRecipient);   
+
+void QInteractionUsePrivate::setReturnValueRecipient(const QProperty *returnValueRecipient)
+{
+    this->returnValueRecipient = const_cast<QProperty *>(returnValueRecipient);
 }
 
 /*!

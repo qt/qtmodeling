@@ -65,7 +65,7 @@ public:
     QObjectFlow *decisionInputFlow;
     QBehavior *decisionInput;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setDecisionInputFlow(const QObjectFlow *decisionInputFlow);
     void setDecisionInput(const QBehavior *decisionInput);
 };

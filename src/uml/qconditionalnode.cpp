@@ -71,31 +71,31 @@ void QConditionalNodePrivate::setDeterminate(bool isDeterminate)
 {
     this->isDeterminate = isDeterminate;
 }
-  
-void QConditionalNodePrivate::addClause(const QClause *clause) 
-{   
-    this->clauses->insert(const_cast<QClause *>(clause)); 
+
+void QConditionalNodePrivate::addClause(const QClause *clause)
+{
+    this->clauses->insert(const_cast<QClause *>(clause));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(clause); 
+    addOwnedElement(clause);
 }
- 
-void QConditionalNodePrivate::removeClause(const QClause *clause) 
-{    
-    this->clauses->remove(const_cast<QClause *>(clause)); 
+
+void QConditionalNodePrivate::removeClause(const QClause *clause)
+{
+    this->clauses->remove(const_cast<QClause *>(clause));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(clause);
 }
-  
-void QConditionalNodePrivate::addResult(const QOutputPin *result) 
-{   
-    this->results->append(const_cast<QOutputPin *>(result));  
+
+void QConditionalNodePrivate::addResult(const QOutputPin *result)
+{
+    this->results->append(const_cast<QOutputPin *>(result));
 }
- 
-void QConditionalNodePrivate::removeResult(const QOutputPin *result) 
-{    
-    this->results->removeAll(const_cast<QOutputPin *>(result)); 
+
+void QConditionalNodePrivate::removeResult(const QOutputPin *result)
+{
+    this->results->removeAll(const_cast<QOutputPin *>(result));
 }
 
 /*!

@@ -66,7 +66,7 @@ public:
 
     bool isReadOnly;
 
-    // Attributes
+    // Internal functions for attributes
     void setReadOnly(bool isReadOnly);
 };
 

@@ -70,7 +70,7 @@ public:
     QSet<QOutputPin *> *results;
     QClassifier *unmarshallType;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setObject(const QInputPin *object);
     void addResult(const QOutputPin *result);
     void removeResult(const QOutputPin *result);

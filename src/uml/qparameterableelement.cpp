@@ -56,15 +56,15 @@ QParameterableElementPrivate::QParameterableElementPrivate() :
 QParameterableElementPrivate::~QParameterableElementPrivate()
 {
 }
-  
-void QParameterableElementPrivate::setOwningTemplateParameter(const QTemplateParameter *owningTemplateParameter) 
-{  
-    this->owningTemplateParameter = const_cast<QTemplateParameter *>(owningTemplateParameter);   
+
+void QParameterableElementPrivate::setOwningTemplateParameter(const QTemplateParameter *owningTemplateParameter)
+{
+    this->owningTemplateParameter = const_cast<QTemplateParameter *>(owningTemplateParameter);
 }
-  
-void QParameterableElementPrivate::setTemplateParameter(const QTemplateParameter *templateParameter) 
-{  
-    this->templateParameter = const_cast<QTemplateParameter *>(templateParameter);   
+
+void QParameterableElementPrivate::setTemplateParameter(const QTemplateParameter *templateParameter)
+{
+    this->templateParameter = const_cast<QTemplateParameter *>(templateParameter);
 }
 
 /*!

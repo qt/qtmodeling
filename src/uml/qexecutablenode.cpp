@@ -56,18 +56,18 @@ QExecutableNodePrivate::~QExecutableNodePrivate()
 {
     delete handlers;
 }
-  
-void QExecutableNodePrivate::addHandler(const QExceptionHandler *handler) 
-{   
-    this->handlers->insert(const_cast<QExceptionHandler *>(handler)); 
+
+void QExecutableNodePrivate::addHandler(const QExceptionHandler *handler)
+{
+    this->handlers->insert(const_cast<QExceptionHandler *>(handler));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(handler); 
+    addOwnedElement(handler);
 }
- 
-void QExecutableNodePrivate::removeHandler(const QExceptionHandler *handler) 
-{    
-    this->handlers->remove(const_cast<QExceptionHandler *>(handler)); 
+
+void QExecutableNodePrivate::removeHandler(const QExceptionHandler *handler)
+{
+    this->handlers->remove(const_cast<QExceptionHandler *>(handler));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(handler);

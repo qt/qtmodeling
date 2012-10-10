@@ -64,15 +64,15 @@ void QPseudostatePrivate::setKind(QtUml::PseudostateKind kind)
 {
     this->kind = kind;
 }
-  
-void QPseudostatePrivate::setState(const QState *state) 
-{  
-    this->state = const_cast<QState *>(state);   
+
+void QPseudostatePrivate::setState(const QState *state)
+{
+    this->state = const_cast<QState *>(state);
 }
-  
-void QPseudostatePrivate::setStateMachine(const QStateMachine *stateMachine) 
-{  
-    this->stateMachine = const_cast<QStateMachine *>(stateMachine);   
+
+void QPseudostatePrivate::setStateMachine(const QStateMachine *stateMachine)
+{
+    this->stateMachine = const_cast<QStateMachine *>(stateMachine);
 }
 
 /*!

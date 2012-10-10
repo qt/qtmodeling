@@ -54,10 +54,10 @@ QBroadcastSignalActionPrivate::QBroadcastSignalActionPrivate() :
 QBroadcastSignalActionPrivate::~QBroadcastSignalActionPrivate()
 {
 }
-  
-void QBroadcastSignalActionPrivate::setSignal(const QSignal *signal) 
-{  
-    this->signal = const_cast<QSignal *>(signal);   
+
+void QBroadcastSignalActionPrivate::setSignal(const QSignal *signal)
+{
+    this->signal = const_cast<QSignal *>(signal);
 }
 
 /*!

@@ -57,15 +57,15 @@ QReadExtentActionPrivate::QReadExtentActionPrivate() :
 QReadExtentActionPrivate::~QReadExtentActionPrivate()
 {
 }
-  
-void QReadExtentActionPrivate::setClassifier(const QClassifier *classifier) 
-{  
-    this->classifier = const_cast<QClassifier *>(classifier);   
+
+void QReadExtentActionPrivate::setClassifier(const QClassifier *classifier)
+{
+    this->classifier = const_cast<QClassifier *>(classifier);
 }
-  
-void QReadExtentActionPrivate::setResult(const QOutputPin *result) 
-{  
-    this->result = const_cast<QOutputPin *>(result);   
+
+void QReadExtentActionPrivate::setResult(const QOutputPin *result)
+{
+    this->result = const_cast<QOutputPin *>(result);
 }
 
 /*!

@@ -67,54 +67,54 @@ QStateMachinePrivate::~QStateMachinePrivate()
     delete submachineStates;
     delete regions;
 }
-  
-void QStateMachinePrivate::addExtendedStateMachine(const QStateMachine *extendedStateMachine) 
-{   
-    this->extendedStateMachines->insert(const_cast<QStateMachine *>(extendedStateMachine));  
+
+void QStateMachinePrivate::addExtendedStateMachine(const QStateMachine *extendedStateMachine)
+{
+    this->extendedStateMachines->insert(const_cast<QStateMachine *>(extendedStateMachine));
 }
- 
-void QStateMachinePrivate::removeExtendedStateMachine(const QStateMachine *extendedStateMachine) 
-{    
-    this->extendedStateMachines->remove(const_cast<QStateMachine *>(extendedStateMachine)); 
+
+void QStateMachinePrivate::removeExtendedStateMachine(const QStateMachine *extendedStateMachine)
+{
+    this->extendedStateMachines->remove(const_cast<QStateMachine *>(extendedStateMachine));
 }
-  
-void QStateMachinePrivate::addConnectionPoint(const QPseudostate *connectionPoint) 
-{   
-    this->connectionPoints->insert(const_cast<QPseudostate *>(connectionPoint)); 
+
+void QStateMachinePrivate::addConnectionPoint(const QPseudostate *connectionPoint)
+{
+    this->connectionPoints->insert(const_cast<QPseudostate *>(connectionPoint));
 
     // Adjust subsetted property(ies)
-    addOwnedMember(connectionPoint); 
+    addOwnedMember(connectionPoint);
 }
- 
-void QStateMachinePrivate::removeConnectionPoint(const QPseudostate *connectionPoint) 
-{    
-    this->connectionPoints->remove(const_cast<QPseudostate *>(connectionPoint)); 
+
+void QStateMachinePrivate::removeConnectionPoint(const QPseudostate *connectionPoint)
+{
+    this->connectionPoints->remove(const_cast<QPseudostate *>(connectionPoint));
 
     // Adjust subsetted property(ies)
     removeOwnedMember(connectionPoint);
 }
-  
-void QStateMachinePrivate::addSubmachineState(const QState *submachineState) 
-{   
-    this->submachineStates->insert(const_cast<QState *>(submachineState));  
+
+void QStateMachinePrivate::addSubmachineState(const QState *submachineState)
+{
+    this->submachineStates->insert(const_cast<QState *>(submachineState));
 }
- 
-void QStateMachinePrivate::removeSubmachineState(const QState *submachineState) 
-{    
-    this->submachineStates->remove(const_cast<QState *>(submachineState)); 
+
+void QStateMachinePrivate::removeSubmachineState(const QState *submachineState)
+{
+    this->submachineStates->remove(const_cast<QState *>(submachineState));
 }
-  
-void QStateMachinePrivate::addRegion(const QRegion *region) 
-{   
-    this->regions->insert(const_cast<QRegion *>(region)); 
+
+void QStateMachinePrivate::addRegion(const QRegion *region)
+{
+    this->regions->insert(const_cast<QRegion *>(region));
 
     // Adjust subsetted property(ies)
-    addOwnedMember(region); 
+    addOwnedMember(region);
 }
- 
-void QStateMachinePrivate::removeRegion(const QRegion *region) 
-{    
-    this->regions->remove(const_cast<QRegion *>(region)); 
+
+void QStateMachinePrivate::removeRegion(const QRegion *region)
+{
+    this->regions->remove(const_cast<QRegion *>(region));
 
     // Adjust subsetted property(ies)
     removeOwnedMember(region);

@@ -63,7 +63,7 @@ public:
 
     QUseCase *useCase;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setUseCase(const QUseCase *useCase);
 };
 

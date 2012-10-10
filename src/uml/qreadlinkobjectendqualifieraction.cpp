@@ -60,20 +60,20 @@ QReadLinkObjectEndQualifierActionPrivate::QReadLinkObjectEndQualifierActionPriva
 QReadLinkObjectEndQualifierActionPrivate::~QReadLinkObjectEndQualifierActionPrivate()
 {
 }
-  
-void QReadLinkObjectEndQualifierActionPrivate::setResult(const QOutputPin *result) 
-{  
-    this->result = const_cast<QOutputPin *>(result);   
+
+void QReadLinkObjectEndQualifierActionPrivate::setResult(const QOutputPin *result)
+{
+    this->result = const_cast<QOutputPin *>(result);
 }
-  
-void QReadLinkObjectEndQualifierActionPrivate::setObject(const QInputPin *object) 
-{  
-    this->object = const_cast<QInputPin *>(object);   
+
+void QReadLinkObjectEndQualifierActionPrivate::setObject(const QInputPin *object)
+{
+    this->object = const_cast<QInputPin *>(object);
 }
-  
-void QReadLinkObjectEndQualifierActionPrivate::setQualifier(const QProperty *qualifier) 
-{  
-    this->qualifier = const_cast<QProperty *>(qualifier);   
+
+void QReadLinkObjectEndQualifierActionPrivate::setQualifier(const QProperty *qualifier)
+{
+    this->qualifier = const_cast<QProperty *>(qualifier);
 }
 
 /*!

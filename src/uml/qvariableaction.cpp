@@ -54,10 +54,10 @@ QVariableActionPrivate::QVariableActionPrivate() :
 QVariableActionPrivate::~QVariableActionPrivate()
 {
 }
-  
-void QVariableActionPrivate::setVariable(const QVariable *variable) 
-{  
-    this->variable = const_cast<QVariable *>(variable);   
+
+void QVariableActionPrivate::setVariable(const QVariable *variable)
+{
+    this->variable = const_cast<QVariable *>(variable);
 }
 
 /*!

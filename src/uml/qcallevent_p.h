@@ -63,7 +63,7 @@ public:
 
     QOperation *operation;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setOperation(const QOperation *operation);
 };
 

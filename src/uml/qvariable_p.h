@@ -68,7 +68,7 @@ public:
     QStructuredActivityNode *scope;
     QActivity *activityScope;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setScope(const QStructuredActivityNode *scope);
     void setActivityScope(const QActivity *activityScope);
 };

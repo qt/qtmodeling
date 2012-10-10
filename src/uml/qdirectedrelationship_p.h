@@ -67,7 +67,7 @@ public:
     QSet<QElement *> *sources;
     QSet<QElement *> *targets;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addSource(const QElement *source);
     void removeSource(const QElement *source);
     void addTarget(const QElement *target);

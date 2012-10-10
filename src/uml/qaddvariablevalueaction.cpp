@@ -61,10 +61,10 @@ void QAddVariableValueActionPrivate::setReplaceAll(bool isReplaceAll)
 {
     this->isReplaceAll = isReplaceAll;
 }
-  
-void QAddVariableValueActionPrivate::setInsertAt(const QInputPin *insertAt) 
-{  
-    this->insertAt = const_cast<QInputPin *>(insertAt);   
+
+void QAddVariableValueActionPrivate::setInsertAt(const QInputPin *insertAt)
+{
+    this->insertAt = const_cast<QInputPin *>(insertAt);
 }
 
 /*!

@@ -64,10 +64,10 @@ public:
     bool firstEvent;
     QTimeInterval *specification;
 
-    // Attributes
+    // Internal functions for attributes
     void setFirstEvent(bool firstEvent);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setSpecification(const QTimeInterval *specification);
 };
 

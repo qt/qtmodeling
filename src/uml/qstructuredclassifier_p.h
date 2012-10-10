@@ -71,7 +71,7 @@ public:
     QList<QProperty *> *ownedAttributes;
     QSet<QConnector *> *ownedConnectors;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addRole(const QConnectableElement *role);
     void removeRole(const QConnectableElement *role);
     void addOwnedAttribute(const QProperty *ownedAttribute);

@@ -55,15 +55,15 @@ QCreateLinkActionPrivate::~QCreateLinkActionPrivate()
 {
     delete endData;
 }
-  
-void QCreateLinkActionPrivate::addEndData(const QLinkEndCreationData *endData) 
-{   
-    this->endData->insert(const_cast<QLinkEndCreationData *>(endData));  
+
+void QCreateLinkActionPrivate::addEndData(const QLinkEndCreationData *endData)
+{
+    this->endData->insert(const_cast<QLinkEndCreationData *>(endData));
 }
- 
-void QCreateLinkActionPrivate::removeEndData(const QLinkEndCreationData *endData) 
-{    
-    this->endData->remove(const_cast<QLinkEndCreationData *>(endData)); 
+
+void QCreateLinkActionPrivate::removeEndData(const QLinkEndCreationData *endData)
+{
+    this->endData->remove(const_cast<QLinkEndCreationData *>(endData));
 }
 
 /*!

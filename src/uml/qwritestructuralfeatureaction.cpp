@@ -58,15 +58,15 @@ QWriteStructuralFeatureActionPrivate::QWriteStructuralFeatureActionPrivate() :
 QWriteStructuralFeatureActionPrivate::~QWriteStructuralFeatureActionPrivate()
 {
 }
-  
-void QWriteStructuralFeatureActionPrivate::setResult(const QOutputPin *result) 
-{  
-    this->result = const_cast<QOutputPin *>(result);   
+
+void QWriteStructuralFeatureActionPrivate::setResult(const QOutputPin *result)
+{
+    this->result = const_cast<QOutputPin *>(result);
 }
-  
-void QWriteStructuralFeatureActionPrivate::setValue(const QInputPin *value) 
-{  
-    this->value = const_cast<QInputPin *>(value);   
+
+void QWriteStructuralFeatureActionPrivate::setValue(const QInputPin *value)
+{
+    this->value = const_cast<QInputPin *>(value);
 }
 
 /*!

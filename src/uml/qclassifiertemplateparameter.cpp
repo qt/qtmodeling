@@ -62,20 +62,20 @@ void QClassifierTemplateParameterPrivate::setAllowSubstitutable(bool allowSubsti
 {
     this->allowSubstitutable = allowSubstitutable;
 }
-  
-void QClassifierTemplateParameterPrivate::setParameteredElement(const QClassifier *parameteredElement) 
-{  
-    this->parameteredElement = const_cast<QClassifier *>(parameteredElement);   
+
+void QClassifierTemplateParameterPrivate::setParameteredElement(const QClassifier *parameteredElement)
+{
+    this->parameteredElement = const_cast<QClassifier *>(parameteredElement);
 }
-  
-void QClassifierTemplateParameterPrivate::addConstrainingClassifier(const QClassifier *constrainingClassifier) 
-{   
-    this->constrainingClassifiers->insert(const_cast<QClassifier *>(constrainingClassifier));  
+
+void QClassifierTemplateParameterPrivate::addConstrainingClassifier(const QClassifier *constrainingClassifier)
+{
+    this->constrainingClassifiers->insert(const_cast<QClassifier *>(constrainingClassifier));
 }
- 
-void QClassifierTemplateParameterPrivate::removeConstrainingClassifier(const QClassifier *constrainingClassifier) 
-{    
-    this->constrainingClassifiers->remove(const_cast<QClassifier *>(constrainingClassifier)); 
+
+void QClassifierTemplateParameterPrivate::removeConstrainingClassifier(const QClassifier *constrainingClassifier)
+{
+    this->constrainingClassifiers->remove(const_cast<QClassifier *>(constrainingClassifier));
 }
 
 /*!

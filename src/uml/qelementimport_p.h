@@ -73,11 +73,11 @@ public:
     QPackageableElement *importedElement;
     QNamespace *importingNamespace;
 
-    // Attributes
+    // Internal functions for attributes
     void setAlias(QString alias);
     void setVisibility(QtUml::VisibilityKind visibility);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setImportedElement(const QPackageableElement *importedElement);
     void setImportingNamespace(const QNamespace *importingNamespace);
 };

@@ -68,7 +68,7 @@ public:
     QSet<QPackageImport *> *metamodelReferences;
     QSet<QElementImport *> *metaclassReferences;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addMetamodelReference(const QPackageImport *metamodelReference);
     void removeMetamodelReference(const QPackageImport *metamodelReference);
     void addMetaclassReference(const QElementImport *metaclassReference);

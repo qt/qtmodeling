@@ -81,14 +81,14 @@ public:
     QValueSpecification *defaultValue;
     QSet<QParameterSet *> *parameterSets;
 
-    // Attributes
+    // Internal functions for attributes
     void setException(bool isException);
     void setDefault_(QString default_);
     void setDirection(QtUml::ParameterDirectionKind direction);
     void setStream(bool isStream);
     void setEffect(QtUml::ParameterEffectKind effect);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setOperation(const QOperation *operation);
     void setDefaultValue(const QValueSpecification *defaultValue);
     void addParameterSet(const QParameterSet *parameterSet);

@@ -62,30 +62,30 @@ QTemplateParameterPrivate::QTemplateParameterPrivate() :
 QTemplateParameterPrivate::~QTemplateParameterPrivate()
 {
 }
-  
-void QTemplateParameterPrivate::setDefault_(const QParameterableElement *default_) 
-{  
-    this->default_ = const_cast<QParameterableElement *>(default_);   
+
+void QTemplateParameterPrivate::setDefault_(const QParameterableElement *default_)
+{
+    this->default_ = const_cast<QParameterableElement *>(default_);
 }
-  
-void QTemplateParameterPrivate::setParameteredElement(const QParameterableElement *parameteredElement) 
-{  
-    this->parameteredElement = const_cast<QParameterableElement *>(parameteredElement);   
+
+void QTemplateParameterPrivate::setParameteredElement(const QParameterableElement *parameteredElement)
+{
+    this->parameteredElement = const_cast<QParameterableElement *>(parameteredElement);
 }
-  
-void QTemplateParameterPrivate::setOwnedParameteredElement(const QParameterableElement *ownedParameteredElement) 
-{  
-    this->ownedParameteredElement = const_cast<QParameterableElement *>(ownedParameteredElement);   
+
+void QTemplateParameterPrivate::setOwnedParameteredElement(const QParameterableElement *ownedParameteredElement)
+{
+    this->ownedParameteredElement = const_cast<QParameterableElement *>(ownedParameteredElement);
 }
-  
-void QTemplateParameterPrivate::setOwnedDefault(const QParameterableElement *ownedDefault) 
-{  
-    this->ownedDefault = const_cast<QParameterableElement *>(ownedDefault);   
+
+void QTemplateParameterPrivate::setOwnedDefault(const QParameterableElement *ownedDefault)
+{
+    this->ownedDefault = const_cast<QParameterableElement *>(ownedDefault);
 }
-  
-void QTemplateParameterPrivate::setSignature(const QTemplateSignature *signature) 
-{  
-    this->signature = const_cast<QTemplateSignature *>(signature);   
+
+void QTemplateParameterPrivate::setSignature(const QTemplateSignature *signature)
+{
+    this->signature = const_cast<QTemplateSignature *>(signature);
 }
 
 /*!

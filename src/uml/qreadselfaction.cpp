@@ -55,10 +55,10 @@ QReadSelfActionPrivate::QReadSelfActionPrivate() :
 QReadSelfActionPrivate::~QReadSelfActionPrivate()
 {
 }
-  
-void QReadSelfActionPrivate::setResult(const QOutputPin *result) 
-{  
-    this->result = const_cast<QOutputPin *>(result);   
+
+void QReadSelfActionPrivate::setResult(const QOutputPin *result)
+{
+    this->result = const_cast<QOutputPin *>(result);
 }
 
 /*!

@@ -69,49 +69,49 @@ QRegionPrivate::~QRegionPrivate()
     delete transitions;
     delete subvertices;
 }
-  
-void QRegionPrivate::setExtendedRegion(const QRegion *extendedRegion) 
-{  
-    this->extendedRegion = const_cast<QRegion *>(extendedRegion);   
+
+void QRegionPrivate::setExtendedRegion(const QRegion *extendedRegion)
+{
+    this->extendedRegion = const_cast<QRegion *>(extendedRegion);
 }
-  
-void QRegionPrivate::addTransition(const QTransition *transition) 
-{   
-    this->transitions->insert(const_cast<QTransition *>(transition)); 
+
+void QRegionPrivate::addTransition(const QTransition *transition)
+{
+    this->transitions->insert(const_cast<QTransition *>(transition));
 
     // Adjust subsetted property(ies)
-    addOwnedMember(transition); 
+    addOwnedMember(transition);
 }
- 
-void QRegionPrivate::removeTransition(const QTransition *transition) 
-{    
-    this->transitions->remove(const_cast<QTransition *>(transition)); 
+
+void QRegionPrivate::removeTransition(const QTransition *transition)
+{
+    this->transitions->remove(const_cast<QTransition *>(transition));
 
     // Adjust subsetted property(ies)
     removeOwnedMember(transition);
 }
-  
-void QRegionPrivate::setStateMachine(const QStateMachine *stateMachine) 
-{  
-    this->stateMachine = const_cast<QStateMachine *>(stateMachine);   
+
+void QRegionPrivate::setStateMachine(const QStateMachine *stateMachine)
+{
+    this->stateMachine = const_cast<QStateMachine *>(stateMachine);
 }
-  
-void QRegionPrivate::setState(const QState *state) 
-{  
-    this->state = const_cast<QState *>(state);   
+
+void QRegionPrivate::setState(const QState *state)
+{
+    this->state = const_cast<QState *>(state);
 }
-   
-void QRegionPrivate::addSubvertex(const QVertex *subvertex) 
-{   
-    this->subvertices->insert(const_cast<QVertex *>(subvertex)); 
+
+void QRegionPrivate::addSubvertex(const QVertex *subvertex)
+{
+    this->subvertices->insert(const_cast<QVertex *>(subvertex));
 
     // Adjust subsetted property(ies)
-    addOwnedMember(subvertex); 
+    addOwnedMember(subvertex);
 }
- 
-void QRegionPrivate::removeSubvertex(const QVertex *subvertex) 
-{    
-    this->subvertices->remove(const_cast<QVertex *>(subvertex)); 
+
+void QRegionPrivate::removeSubvertex(const QVertex *subvertex)
+{
+    this->subvertices->remove(const_cast<QVertex *>(subvertex));
 
     // Adjust subsetted property(ies)
     removeOwnedMember(subvertex);

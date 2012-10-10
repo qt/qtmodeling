@@ -54,10 +54,10 @@ QExtensionEndPrivate::QExtensionEndPrivate() :
 QExtensionEndPrivate::~QExtensionEndPrivate()
 {
 }
-  
-void QExtensionEndPrivate::setType(const QStereotype *type) 
-{  
-    this->type = const_cast<QStereotype *>(type);   
+
+void QExtensionEndPrivate::setType(const QStereotype *type)
+{
+    this->type = const_cast<QStereotype *>(type);
 }
 
 /*!

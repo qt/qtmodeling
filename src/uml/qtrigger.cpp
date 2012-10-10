@@ -57,20 +57,20 @@ QTriggerPrivate::~QTriggerPrivate()
 {
     delete ports;
 }
-  
-void QTriggerPrivate::addPort(const QPort *port) 
-{   
-    this->ports->insert(const_cast<QPort *>(port));  
+
+void QTriggerPrivate::addPort(const QPort *port)
+{
+    this->ports->insert(const_cast<QPort *>(port));
 }
- 
-void QTriggerPrivate::removePort(const QPort *port) 
-{    
-    this->ports->remove(const_cast<QPort *>(port)); 
+
+void QTriggerPrivate::removePort(const QPort *port)
+{
+    this->ports->remove(const_cast<QPort *>(port));
 }
-  
-void QTriggerPrivate::setEvent(const QEvent *event) 
-{  
-    this->event = const_cast<QEvent *>(event);   
+
+void QTriggerPrivate::setEvent(const QEvent *event)
+{
+    this->event = const_cast<QEvent *>(event);
 }
 
 /*!

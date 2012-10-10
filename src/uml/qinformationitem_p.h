@@ -65,7 +65,7 @@ public:
 
     QSet<QClassifier *> *represented;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addRepresented(const QClassifier *represented);
     void removeRepresented(const QClassifier *represented);
 };

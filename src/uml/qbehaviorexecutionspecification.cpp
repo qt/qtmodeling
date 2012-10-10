@@ -54,10 +54,10 @@ QBehaviorExecutionSpecificationPrivate::QBehaviorExecutionSpecificationPrivate()
 QBehaviorExecutionSpecificationPrivate::~QBehaviorExecutionSpecificationPrivate()
 {
 }
-  
-void QBehaviorExecutionSpecificationPrivate::setBehavior(const QBehavior *behavior) 
-{  
-    this->behavior = const_cast<QBehavior *>(behavior);   
+
+void QBehaviorExecutionSpecificationPrivate::setBehavior(const QBehavior *behavior)
+{
+    this->behavior = const_cast<QBehavior *>(behavior);
 }
 
 /*!

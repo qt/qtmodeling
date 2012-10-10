@@ -61,31 +61,31 @@ QSlotPrivate::~QSlotPrivate()
 {
     delete values;
 }
-  
-void QSlotPrivate::addValue(const QValueSpecification *value) 
-{   
-    this->values->append(const_cast<QValueSpecification *>(value)); 
+
+void QSlotPrivate::addValue(const QValueSpecification *value)
+{
+    this->values->append(const_cast<QValueSpecification *>(value));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(value); 
+    addOwnedElement(value);
 }
- 
-void QSlotPrivate::removeValue(const QValueSpecification *value) 
-{    
-    this->values->removeAll(const_cast<QValueSpecification *>(value)); 
+
+void QSlotPrivate::removeValue(const QValueSpecification *value)
+{
+    this->values->removeAll(const_cast<QValueSpecification *>(value));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(value);
 }
-  
-void QSlotPrivate::setDefiningFeature(const QStructuralFeature *definingFeature) 
-{  
-    this->definingFeature = const_cast<QStructuralFeature *>(definingFeature);   
+
+void QSlotPrivate::setDefiningFeature(const QStructuralFeature *definingFeature)
+{
+    this->definingFeature = const_cast<QStructuralFeature *>(definingFeature);
 }
-  
-void QSlotPrivate::setOwningInstance(const QInstanceSpecification *owningInstance) 
-{  
-    this->owningInstance = const_cast<QInstanceSpecification *>(owningInstance);   
+
+void QSlotPrivate::setOwningInstance(const QInstanceSpecification *owningInstance)
+{
+    this->owningInstance = const_cast<QInstanceSpecification *>(owningInstance);
 }
 
 /*!

@@ -65,10 +65,10 @@ void QDeploymentSpecificationPrivate::setExecutionLocation(QString executionLoca
 {
     this->executionLocation = executionLocation;
 }
-  
-void QDeploymentSpecificationPrivate::setDeployment(const QDeployment *deployment) 
-{  
-    this->deployment = const_cast<QDeployment *>(deployment);   
+
+void QDeploymentSpecificationPrivate::setDeployment(const QDeployment *deployment)
+{
+    this->deployment = const_cast<QDeployment *>(deployment);
 }
 
 /*!

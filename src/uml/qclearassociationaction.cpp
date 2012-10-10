@@ -57,15 +57,15 @@ QClearAssociationActionPrivate::QClearAssociationActionPrivate() :
 QClearAssociationActionPrivate::~QClearAssociationActionPrivate()
 {
 }
-  
-void QClearAssociationActionPrivate::setObject(const QInputPin *object) 
-{  
-    this->object = const_cast<QInputPin *>(object);   
+
+void QClearAssociationActionPrivate::setObject(const QInputPin *object)
+{
+    this->object = const_cast<QInputPin *>(object);
 }
-  
-void QClearAssociationActionPrivate::setAssociation(const QAssociation *association) 
-{  
-    this->association = const_cast<QAssociation *>(association);   
+
+void QClearAssociationActionPrivate::setAssociation(const QAssociation *association)
+{
+    this->association = const_cast<QAssociation *>(association);
 }
 
 /*!

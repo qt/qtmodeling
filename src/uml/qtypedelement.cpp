@@ -54,10 +54,10 @@ QTypedElementPrivate::QTypedElementPrivate() :
 QTypedElementPrivate::~QTypedElementPrivate()
 {
 }
-  
-void QTypedElementPrivate::setType(const QType *type) 
-{  
-    this->type = const_cast<QType *>(type);   
+
+void QTypedElementPrivate::setType(const QType *type)
+{
+    this->type = const_cast<QType *>(type);
 }
 
 /*!

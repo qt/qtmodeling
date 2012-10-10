@@ -60,10 +60,10 @@ void QTimeConstraintPrivate::setFirstEvent(bool firstEvent)
 {
     this->firstEvent = firstEvent;
 }
-  
-void QTimeConstraintPrivate::setSpecification(const QTimeInterval *specification) 
-{  
-    this->specification = const_cast<QTimeInterval *>(specification);   
+
+void QTimeConstraintPrivate::setSpecification(const QTimeInterval *specification)
+{
+    this->specification = const_cast<QTimeInterval *>(specification);
 }
 
 /*!

@@ -77,11 +77,11 @@ public:
     QBehavior *selection;
     QSet<QState *> *inState;
 
-    // Attributes
+    // Internal functions for attributes
     void setControlType(bool isControlType);
     void setOrdering(QtUml::ObjectNodeOrderingKind ordering);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setUpperBound(const QValueSpecification *upperBound);
     void setSelection(const QBehavior *selection);
     void addInState(const QState *inState);

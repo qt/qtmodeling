@@ -78,12 +78,12 @@ public:
     QNamespace *namespace_;
     QSet<QDependency *> *clientDependencies;
 
-    // Attributes
+    // Internal functions for attributes
     void setName(QString name);
     void setVisibility(QtUml::VisibilityKind visibility);
     void setQualifiedName(QString qualifiedName);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setNameExpression(const QStringExpression *nameExpression);
     void setNamespace_(const QNamespace *namespace_);
     void addClientDependency(const QDependency *clientDependency);

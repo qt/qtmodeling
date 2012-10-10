@@ -55,15 +55,15 @@ QExecutionSpecificationPrivate::QExecutionSpecificationPrivate() :
 QExecutionSpecificationPrivate::~QExecutionSpecificationPrivate()
 {
 }
-  
-void QExecutionSpecificationPrivate::setStart(const QOccurrenceSpecification *start) 
-{  
-    this->start = const_cast<QOccurrenceSpecification *>(start);   
+
+void QExecutionSpecificationPrivate::setStart(const QOccurrenceSpecification *start)
+{
+    this->start = const_cast<QOccurrenceSpecification *>(start);
 }
-  
-void QExecutionSpecificationPrivate::setFinish(const QOccurrenceSpecification *finish) 
-{  
-    this->finish = const_cast<QOccurrenceSpecification *>(finish);   
+
+void QExecutionSpecificationPrivate::setFinish(const QOccurrenceSpecification *finish)
+{
+    this->finish = const_cast<QOccurrenceSpecification *>(finish);
 }
 
 /*!

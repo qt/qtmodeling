@@ -67,10 +67,10 @@ public:
     QString body;
     QSet<QElement *> *annotatedElements;
 
-    // Attributes
+    // Internal functions for attributes
     void setBody(QString body);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addAnnotatedElement(const QElement *annotatedElement);
     void removeAnnotatedElement(const QElement *annotatedElement);
 };

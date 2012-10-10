@@ -55,10 +55,10 @@ QChangeEventPrivate::QChangeEventPrivate() :
 QChangeEventPrivate::~QChangeEventPrivate()
 {
 }
-  
-void QChangeEventPrivate::setChangeExpression(const QValueSpecification *changeExpression) 
-{  
-    this->changeExpression = const_cast<QValueSpecification *>(changeExpression);   
+
+void QChangeEventPrivate::setChangeExpression(const QValueSpecification *changeExpression)
+{
+    this->changeExpression = const_cast<QValueSpecification *>(changeExpression);
 }
 
 /*!

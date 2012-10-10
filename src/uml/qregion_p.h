@@ -76,7 +76,7 @@ public:
     QState *state;
     QSet<QVertex *> *subvertices;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setExtendedRegion(const QRegion *extendedRegion);
     void addTransition(const QTransition *transition);
     void removeTransition(const QTransition *transition);

@@ -77,10 +77,10 @@ public:
     QList<QParameter *> *ownedParameters;
     QSet<QParameterSet *> *ownedParameterSets;
 
-    // Attributes
+    // Internal functions for attributes
     void setReentrant(bool isReentrant);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setSpecification(const QBehavioralFeature *specification);
     void addPostcondition(const QConstraint *postcondition);
     void removePostcondition(const QConstraint *postcondition);

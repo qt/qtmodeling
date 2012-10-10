@@ -72,27 +72,27 @@ void QNamedElementPrivate::setVisibility(QtUml::VisibilityKind visibility)
 {
     this->visibility = visibility;
 }
-  
-void QNamedElementPrivate::setNameExpression(const QStringExpression *nameExpression) 
-{  
-    this->nameExpression = const_cast<QStringExpression *>(nameExpression);   
-}
-  
-void QNamedElementPrivate::setNamespace_(const QNamespace *namespace_) 
-{  
-    this->namespace_ = const_cast<QNamespace *>(namespace_);   
-}
-  
-void QNamedElementPrivate::addClientDependency(const QDependency *clientDependency) 
-{   
-    this->clientDependencies->insert(const_cast<QDependency *>(clientDependency)); 
 
-    // Adjust subsetted property(ies) 
+void QNamedElementPrivate::setNameExpression(const QStringExpression *nameExpression)
+{
+    this->nameExpression = const_cast<QStringExpression *>(nameExpression);
 }
- 
-void QNamedElementPrivate::removeClientDependency(const QDependency *clientDependency) 
-{    
-    this->clientDependencies->remove(const_cast<QDependency *>(clientDependency)); 
+
+void QNamedElementPrivate::setNamespace_(const QNamespace *namespace_)
+{
+    this->namespace_ = const_cast<QNamespace *>(namespace_);
+}
+
+void QNamedElementPrivate::addClientDependency(const QDependency *clientDependency)
+{
+    this->clientDependencies->insert(const_cast<QDependency *>(clientDependency));
+
+    // Adjust subsetted property(ies)
+}
+
+void QNamedElementPrivate::removeClientDependency(const QDependency *clientDependency)
+{
+    this->clientDependencies->remove(const_cast<QDependency *>(clientDependency));
 
     // Adjust subsetted property(ies)
 }

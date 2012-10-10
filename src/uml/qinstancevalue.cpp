@@ -54,10 +54,10 @@ QInstanceValuePrivate::QInstanceValuePrivate() :
 QInstanceValuePrivate::~QInstanceValuePrivate()
 {
 }
-  
-void QInstanceValuePrivate::setInstance(const QInstanceSpecification *instance) 
-{  
-    this->instance = const_cast<QInstanceSpecification *>(instance);   
+
+void QInstanceValuePrivate::setInstance(const QInstanceSpecification *instance)
+{
+    this->instance = const_cast<QInstanceSpecification *>(instance);
 }
 
 /*!

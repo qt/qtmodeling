@@ -65,7 +65,7 @@ public:
     QOperation *operation;
     QInputPin *target;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setOperation(const QOperation *operation);
     void setTarget(const QInputPin *target);
 };

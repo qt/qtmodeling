@@ -80,10 +80,10 @@ public:
     QSet<QProfileApplication *> *profileApplications;
     QSet<QPackageMerge *> *packageMerges;
 
-    // Attributes
+    // Internal functions for attributes
     void setURI(QString URI);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addOwnedType(const QType *ownedType);
     void removeOwnedType(const QType *ownedType);
     void addPackagedElement(const QPackageableElement *packagedElement);

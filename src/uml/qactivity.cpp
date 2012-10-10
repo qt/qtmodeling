@@ -86,100 +86,100 @@ void QActivityPrivate::setSingleExecution(bool isSingleExecution)
 {
     this->isSingleExecution = isSingleExecution;
 }
-  
-void QActivityPrivate::addPartition(const QActivityPartition *partition) 
-{   
-    this->partitions->insert(const_cast<QActivityPartition *>(partition)); 
+
+void QActivityPrivate::addPartition(const QActivityPartition *partition)
+{
+    this->partitions->insert(const_cast<QActivityPartition *>(partition));
 
     // Adjust subsetted property(ies)
-    addGroup(partition); 
+    addGroup(partition);
 }
- 
-void QActivityPrivate::removePartition(const QActivityPartition *partition) 
-{    
-    this->partitions->remove(const_cast<QActivityPartition *>(partition)); 
+
+void QActivityPrivate::removePartition(const QActivityPartition *partition)
+{
+    this->partitions->remove(const_cast<QActivityPartition *>(partition));
 
     // Adjust subsetted property(ies)
     removeGroup(partition);
 }
-  
-void QActivityPrivate::addNode(const QActivityNode *node) 
-{   
-    this->nodes->insert(const_cast<QActivityNode *>(node)); 
+
+void QActivityPrivate::addNode(const QActivityNode *node)
+{
+    this->nodes->insert(const_cast<QActivityNode *>(node));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(node); 
+    addOwnedElement(node);
 }
- 
-void QActivityPrivate::removeNode(const QActivityNode *node) 
-{    
-    this->nodes->remove(const_cast<QActivityNode *>(node)); 
+
+void QActivityPrivate::removeNode(const QActivityNode *node)
+{
+    this->nodes->remove(const_cast<QActivityNode *>(node));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(node);
 }
-  
-void QActivityPrivate::addVariable(const QVariable *variable) 
-{   
-    this->variables->insert(const_cast<QVariable *>(variable)); 
+
+void QActivityPrivate::addVariable(const QVariable *variable)
+{
+    this->variables->insert(const_cast<QVariable *>(variable));
 
     // Adjust subsetted property(ies)
-    addOwnedMember(variable); 
+    addOwnedMember(variable);
 }
- 
-void QActivityPrivate::removeVariable(const QVariable *variable) 
-{    
-    this->variables->remove(const_cast<QVariable *>(variable)); 
+
+void QActivityPrivate::removeVariable(const QVariable *variable)
+{
+    this->variables->remove(const_cast<QVariable *>(variable));
 
     // Adjust subsetted property(ies)
     removeOwnedMember(variable);
 }
-  
-void QActivityPrivate::addStructuredNode(const QStructuredActivityNode *structuredNode) 
-{   
-    this->structuredNodes->insert(const_cast<QStructuredActivityNode *>(structuredNode)); 
+
+void QActivityPrivate::addStructuredNode(const QStructuredActivityNode *structuredNode)
+{
+    this->structuredNodes->insert(const_cast<QStructuredActivityNode *>(structuredNode));
 
     // Adjust subsetted property(ies)
     addGroup(structuredNode);
-    addNode(structuredNode); 
+    addNode(structuredNode);
 }
- 
-void QActivityPrivate::removeStructuredNode(const QStructuredActivityNode *structuredNode) 
-{    
-    this->structuredNodes->remove(const_cast<QStructuredActivityNode *>(structuredNode)); 
+
+void QActivityPrivate::removeStructuredNode(const QStructuredActivityNode *structuredNode)
+{
+    this->structuredNodes->remove(const_cast<QStructuredActivityNode *>(structuredNode));
 
     // Adjust subsetted property(ies)
     removeGroup(structuredNode);
     removeNode(structuredNode);
 }
-  
-void QActivityPrivate::addGroup(const QActivityGroup *group) 
-{   
-    this->groups->insert(const_cast<QActivityGroup *>(group)); 
+
+void QActivityPrivate::addGroup(const QActivityGroup *group)
+{
+    this->groups->insert(const_cast<QActivityGroup *>(group));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(group); 
+    addOwnedElement(group);
 }
- 
-void QActivityPrivate::removeGroup(const QActivityGroup *group) 
-{    
-    this->groups->remove(const_cast<QActivityGroup *>(group)); 
+
+void QActivityPrivate::removeGroup(const QActivityGroup *group)
+{
+    this->groups->remove(const_cast<QActivityGroup *>(group));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(group);
 }
-  
-void QActivityPrivate::addEdge(const QActivityEdge *edge) 
-{   
-    this->edges->insert(const_cast<QActivityEdge *>(edge)); 
+
+void QActivityPrivate::addEdge(const QActivityEdge *edge)
+{
+    this->edges->insert(const_cast<QActivityEdge *>(edge));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(edge); 
+    addOwnedElement(edge);
 }
- 
-void QActivityPrivate::removeEdge(const QActivityEdge *edge) 
-{    
-    this->edges->remove(const_cast<QActivityEdge *>(edge)); 
+
+void QActivityPrivate::removeEdge(const QActivityEdge *edge)
+{
+    this->edges->remove(const_cast<QActivityEdge *>(edge));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(edge);

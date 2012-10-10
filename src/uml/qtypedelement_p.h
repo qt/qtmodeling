@@ -63,7 +63,7 @@ public:
 
     QType *type;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setType(const QType *type);
 };
 

@@ -67,7 +67,7 @@ public:
 
     QSet<QImage *> *icons;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addIcon(const QImage *icon);
     void removeIcon(const QImage *icon);
     void setProfile(const QProfile *profile);

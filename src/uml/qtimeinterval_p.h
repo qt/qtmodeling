@@ -64,7 +64,7 @@ public:
     QTimeExpression *max;
     QTimeExpression *min;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setMax(const QTimeExpression *max);
     void setMin(const QTimeExpression *min);
 };

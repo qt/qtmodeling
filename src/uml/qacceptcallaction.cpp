@@ -55,10 +55,10 @@ QAcceptCallActionPrivate::QAcceptCallActionPrivate() :
 QAcceptCallActionPrivate::~QAcceptCallActionPrivate()
 {
 }
-  
-void QAcceptCallActionPrivate::setReturnInformation(const QOutputPin *returnInformation) 
-{  
-    this->returnInformation = const_cast<QOutputPin *>(returnInformation);   
+
+void QAcceptCallActionPrivate::setReturnInformation(const QOutputPin *returnInformation)
+{
+    this->returnInformation = const_cast<QOutputPin *>(returnInformation);
 }
 
 /*!

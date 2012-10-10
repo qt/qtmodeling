@@ -55,15 +55,15 @@ QGeneralOrderingPrivate::QGeneralOrderingPrivate() :
 QGeneralOrderingPrivate::~QGeneralOrderingPrivate()
 {
 }
-  
-void QGeneralOrderingPrivate::setBefore(const QOccurrenceSpecification *before) 
-{  
-    this->before = const_cast<QOccurrenceSpecification *>(before);   
+
+void QGeneralOrderingPrivate::setBefore(const QOccurrenceSpecification *before)
+{
+    this->before = const_cast<QOccurrenceSpecification *>(before);
 }
-  
-void QGeneralOrderingPrivate::setAfter(const QOccurrenceSpecification *after) 
-{  
-    this->after = const_cast<QOccurrenceSpecification *>(after);   
+
+void QGeneralOrderingPrivate::setAfter(const QOccurrenceSpecification *after)
+{
+    this->after = const_cast<QOccurrenceSpecification *>(after);
 }
 
 /*!

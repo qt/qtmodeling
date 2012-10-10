@@ -65,7 +65,7 @@ public:
 
     QString viewpoint;
 
-    // Attributes
+    // Internal functions for attributes
     void setViewpoint(QString viewpoint);
 };
 

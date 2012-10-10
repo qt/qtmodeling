@@ -54,7 +54,7 @@ QEncapsulatedClassifierPrivate::QEncapsulatedClassifierPrivate()
 QEncapsulatedClassifierPrivate::~QEncapsulatedClassifierPrivate()
 {
 }
- 
+
 /*!
     \class QEncapsulatedClassifier
 

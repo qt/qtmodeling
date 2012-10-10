@@ -71,46 +71,46 @@ void QMessagePrivate::setMessageSort(QtUml::MessageSort messageSort)
 {
     this->messageSort = messageSort;
 }
-  
-void QMessagePrivate::setSignature(const QNamedElement *signature) 
-{  
-    this->signature = const_cast<QNamedElement *>(signature);   
+
+void QMessagePrivate::setSignature(const QNamedElement *signature)
+{
+    this->signature = const_cast<QNamedElement *>(signature);
 }
-  
-void QMessagePrivate::addArgument(const QValueSpecification *argument) 
-{   
-    this->arguments->append(const_cast<QValueSpecification *>(argument)); 
+
+void QMessagePrivate::addArgument(const QValueSpecification *argument)
+{
+    this->arguments->append(const_cast<QValueSpecification *>(argument));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(argument); 
+    addOwnedElement(argument);
 }
- 
-void QMessagePrivate::removeArgument(const QValueSpecification *argument) 
-{    
-    this->arguments->removeAll(const_cast<QValueSpecification *>(argument)); 
+
+void QMessagePrivate::removeArgument(const QValueSpecification *argument)
+{
+    this->arguments->removeAll(const_cast<QValueSpecification *>(argument));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(argument);
 }
-  
-void QMessagePrivate::setReceiveEvent(const QMessageEnd *receiveEvent) 
-{  
-    this->receiveEvent = const_cast<QMessageEnd *>(receiveEvent);   
+
+void QMessagePrivate::setReceiveEvent(const QMessageEnd *receiveEvent)
+{
+    this->receiveEvent = const_cast<QMessageEnd *>(receiveEvent);
 }
-  
-void QMessagePrivate::setInteraction(const QInteraction *interaction) 
-{  
-    this->interaction = const_cast<QInteraction *>(interaction);   
+
+void QMessagePrivate::setInteraction(const QInteraction *interaction)
+{
+    this->interaction = const_cast<QInteraction *>(interaction);
 }
-  
-void QMessagePrivate::setSendEvent(const QMessageEnd *sendEvent) 
-{  
-    this->sendEvent = const_cast<QMessageEnd *>(sendEvent);   
+
+void QMessagePrivate::setSendEvent(const QMessageEnd *sendEvent)
+{
+    this->sendEvent = const_cast<QMessageEnd *>(sendEvent);
 }
-  
-void QMessagePrivate::setConnector(const QConnector *connector) 
-{  
-    this->connector = const_cast<QConnector *>(connector);   
+
+void QMessagePrivate::setConnector(const QConnector *connector)
+{
+    this->connector = const_cast<QConnector *>(connector);
 }
 
 /*!

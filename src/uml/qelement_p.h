@@ -64,7 +64,7 @@ public:
     QElement *owner;
     QSet<QComment *> *ownedComments;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addOwnedElement(const QElement *ownedElement);
     void removeOwnedElement(const QElement *ownedElement);
     void setOwner(const QElement *owner);

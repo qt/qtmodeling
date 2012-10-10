@@ -61,10 +61,10 @@ void QRemoveVariableValueActionPrivate::setRemoveDuplicates(bool isRemoveDuplica
 {
     this->isRemoveDuplicates = isRemoveDuplicates;
 }
-  
-void QRemoveVariableValueActionPrivate::setRemoveAt(const QInputPin *removeAt) 
-{  
-    this->removeAt = const_cast<QInputPin *>(removeAt);   
+
+void QRemoveVariableValueActionPrivate::setRemoveAt(const QInputPin *removeAt)
+{
+    this->removeAt = const_cast<QInputPin *>(removeAt);
 }
 
 /*!

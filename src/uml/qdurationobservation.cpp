@@ -67,15 +67,15 @@ void QDurationObservationPrivate::removeFirstEvent(bool firstEvent)
 {
     this->firstEvents->remove(firstEvent);
 }
-  
-void QDurationObservationPrivate::addEvent(const QNamedElement *event) 
-{   
-    this->events->insert(const_cast<QNamedElement *>(event));  
+
+void QDurationObservationPrivate::addEvent(const QNamedElement *event)
+{
+    this->events->insert(const_cast<QNamedElement *>(event));
 }
- 
-void QDurationObservationPrivate::removeEvent(const QNamedElement *event) 
-{    
-    this->events->remove(const_cast<QNamedElement *>(event)); 
+
+void QDurationObservationPrivate::removeEvent(const QNamedElement *event)
+{
+    this->events->remove(const_cast<QNamedElement *>(event));
 }
 
 /*!

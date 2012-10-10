@@ -61,30 +61,30 @@ QExceptionHandlerPrivate::~QExceptionHandlerPrivate()
 {
     delete exceptionTypes;
 }
-  
-void QExceptionHandlerPrivate::setHandlerBody(const QExecutableNode *handlerBody) 
-{  
-    this->handlerBody = const_cast<QExecutableNode *>(handlerBody);   
+
+void QExceptionHandlerPrivate::setHandlerBody(const QExecutableNode *handlerBody)
+{
+    this->handlerBody = const_cast<QExecutableNode *>(handlerBody);
 }
-  
-void QExceptionHandlerPrivate::addExceptionType(const QClassifier *exceptionType) 
-{   
-    this->exceptionTypes->insert(const_cast<QClassifier *>(exceptionType));  
+
+void QExceptionHandlerPrivate::addExceptionType(const QClassifier *exceptionType)
+{
+    this->exceptionTypes->insert(const_cast<QClassifier *>(exceptionType));
 }
- 
-void QExceptionHandlerPrivate::removeExceptionType(const QClassifier *exceptionType) 
-{    
-    this->exceptionTypes->remove(const_cast<QClassifier *>(exceptionType)); 
+
+void QExceptionHandlerPrivate::removeExceptionType(const QClassifier *exceptionType)
+{
+    this->exceptionTypes->remove(const_cast<QClassifier *>(exceptionType));
 }
-  
-void QExceptionHandlerPrivate::setProtectedNode(const QExecutableNode *protectedNode) 
-{  
-    this->protectedNode = const_cast<QExecutableNode *>(protectedNode);   
+
+void QExceptionHandlerPrivate::setProtectedNode(const QExecutableNode *protectedNode)
+{
+    this->protectedNode = const_cast<QExecutableNode *>(protectedNode);
 }
-  
-void QExceptionHandlerPrivate::setExceptionInput(const QObjectNode *exceptionInput) 
-{  
-    this->exceptionInput = const_cast<QObjectNode *>(exceptionInput);   
+
+void QExceptionHandlerPrivate::setExceptionInput(const QObjectNode *exceptionInput)
+{
+    this->exceptionInput = const_cast<QObjectNode *>(exceptionInput);
 }
 
 /*!

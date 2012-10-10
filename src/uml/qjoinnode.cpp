@@ -61,10 +61,10 @@ void QJoinNodePrivate::setCombineDuplicate(bool isCombineDuplicate)
 {
     this->isCombineDuplicate = isCombineDuplicate;
 }
-  
-void QJoinNodePrivate::setJoinSpec(const QValueSpecification *joinSpec) 
-{  
-    this->joinSpec = const_cast<QValueSpecification *>(joinSpec);   
+
+void QJoinNodePrivate::setJoinSpec(const QValueSpecification *joinSpec)
+{
+    this->joinSpec = const_cast<QValueSpecification *>(joinSpec);
 }
 
 /*!

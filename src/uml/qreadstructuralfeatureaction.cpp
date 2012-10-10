@@ -55,10 +55,10 @@ QReadStructuralFeatureActionPrivate::QReadStructuralFeatureActionPrivate() :
 QReadStructuralFeatureActionPrivate::~QReadStructuralFeatureActionPrivate()
 {
 }
-  
-void QReadStructuralFeatureActionPrivate::setResult(const QOutputPin *result) 
-{  
-    this->result = const_cast<QOutputPin *>(result);   
+
+void QReadStructuralFeatureActionPrivate::setResult(const QOutputPin *result)
+{
+    this->result = const_cast<QOutputPin *>(result);
 }
 
 /*!

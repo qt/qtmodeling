@@ -63,7 +63,7 @@ public:
 
     QParameter *parameter;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setParameter(const QParameter *parameter);
 };
 

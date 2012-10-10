@@ -66,20 +66,20 @@ void QReduceActionPrivate::setOrdered(bool isOrdered)
 {
     this->isOrdered = isOrdered;
 }
-  
-void QReduceActionPrivate::setResult(const QOutputPin *result) 
-{  
-    this->result = const_cast<QOutputPin *>(result);   
+
+void QReduceActionPrivate::setResult(const QOutputPin *result)
+{
+    this->result = const_cast<QOutputPin *>(result);
 }
-  
-void QReduceActionPrivate::setCollection(const QInputPin *collection) 
-{  
-    this->collection = const_cast<QInputPin *>(collection);   
+
+void QReduceActionPrivate::setCollection(const QInputPin *collection)
+{
+    this->collection = const_cast<QInputPin *>(collection);
 }
-  
-void QReduceActionPrivate::setReducer(const QBehavior *reducer) 
-{  
-    this->reducer = const_cast<QBehavior *>(reducer);   
+
+void QReduceActionPrivate::setReducer(const QBehavior *reducer)
+{
+    this->reducer = const_cast<QBehavior *>(reducer);
 }
 
 /*!

@@ -81,7 +81,7 @@ public:
     QStructuredActivityNode *inStructuredNode;
     QActivityNode *target;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setSource(const QActivityNode *source);
     void addRedefinedEdge(const QActivityEdge *redefinedEdge);
     void removeRedefinedEdge(const QActivityEdge *redefinedEdge);

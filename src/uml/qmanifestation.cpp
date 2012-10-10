@@ -55,10 +55,10 @@ QManifestationPrivate::QManifestationPrivate() :
 QManifestationPrivate::~QManifestationPrivate()
 {
 }
-  
-void QManifestationPrivate::setUtilizedElement(const QPackageableElement *utilizedElement) 
-{  
-    this->utilizedElement = const_cast<QPackageableElement *>(utilizedElement);   
+
+void QManifestationPrivate::setUtilizedElement(const QPackageableElement *utilizedElement)
+{
+    this->utilizedElement = const_cast<QPackageableElement *>(utilizedElement);
 }
 
 /*!

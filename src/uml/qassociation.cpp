@@ -70,54 +70,54 @@ void QAssociationPrivate::setDerived(bool isDerived)
 {
     this->isDerived = isDerived;
 }
-   
-void QAssociationPrivate::addNavigableOwnedEnd(const QProperty *navigableOwnedEnd) 
-{   
-    this->navigableOwnedEnds->insert(const_cast<QProperty *>(navigableOwnedEnd)); 
+
+void QAssociationPrivate::addNavigableOwnedEnd(const QProperty *navigableOwnedEnd)
+{
+    this->navigableOwnedEnds->insert(const_cast<QProperty *>(navigableOwnedEnd));
 
     // Adjust subsetted property(ies)
-    addOwnedEnd(navigableOwnedEnd); 
+    addOwnedEnd(navigableOwnedEnd);
 }
- 
-void QAssociationPrivate::removeNavigableOwnedEnd(const QProperty *navigableOwnedEnd) 
-{    
-    this->navigableOwnedEnds->remove(const_cast<QProperty *>(navigableOwnedEnd)); 
+
+void QAssociationPrivate::removeNavigableOwnedEnd(const QProperty *navigableOwnedEnd)
+{
+    this->navigableOwnedEnds->remove(const_cast<QProperty *>(navigableOwnedEnd));
 
     // Adjust subsetted property(ies)
     removeOwnedEnd(navigableOwnedEnd);
 }
-  
-void QAssociationPrivate::addOwnedEnd(const QProperty *ownedEnd) 
-{   
-    this->ownedEnds->append(const_cast<QProperty *>(ownedEnd)); 
+
+void QAssociationPrivate::addOwnedEnd(const QProperty *ownedEnd)
+{
+    this->ownedEnds->append(const_cast<QProperty *>(ownedEnd));
 
     // Adjust subsetted property(ies)
     addMemberEnd(ownedEnd);
     addFeature(ownedEnd);
-    addOwnedMember(ownedEnd); 
+    addOwnedMember(ownedEnd);
 }
- 
-void QAssociationPrivate::removeOwnedEnd(const QProperty *ownedEnd) 
-{    
-    this->ownedEnds->removeAll(const_cast<QProperty *>(ownedEnd)); 
+
+void QAssociationPrivate::removeOwnedEnd(const QProperty *ownedEnd)
+{
+    this->ownedEnds->removeAll(const_cast<QProperty *>(ownedEnd));
 
     // Adjust subsetted property(ies)
     removeMemberEnd(ownedEnd);
     removeFeature(ownedEnd);
     removeOwnedMember(ownedEnd);
 }
-  
-void QAssociationPrivate::addMemberEnd(const QProperty *memberEnd) 
-{   
-    this->memberEnds->append(const_cast<QProperty *>(memberEnd)); 
+
+void QAssociationPrivate::addMemberEnd(const QProperty *memberEnd)
+{
+    this->memberEnds->append(const_cast<QProperty *>(memberEnd));
 
     // Adjust subsetted property(ies)
-    addMember(memberEnd); 
+    addMember(memberEnd);
 }
- 
-void QAssociationPrivate::removeMemberEnd(const QProperty *memberEnd) 
-{    
-    this->memberEnds->removeAll(const_cast<QProperty *>(memberEnd)); 
+
+void QAssociationPrivate::removeMemberEnd(const QProperty *memberEnd)
+{
+    this->memberEnds->removeAll(const_cast<QProperty *>(memberEnd));
 
     // Adjust subsetted property(ies)
     removeMember(memberEnd);

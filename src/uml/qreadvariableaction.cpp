@@ -55,10 +55,10 @@ QReadVariableActionPrivate::QReadVariableActionPrivate() :
 QReadVariableActionPrivate::~QReadVariableActionPrivate()
 {
 }
-  
-void QReadVariableActionPrivate::setResult(const QOutputPin *result) 
-{  
-    this->result = const_cast<QOutputPin *>(result);   
+
+void QReadVariableActionPrivate::setResult(const QOutputPin *result)
+{
+    this->result = const_cast<QOutputPin *>(result);
 }
 
 /*!

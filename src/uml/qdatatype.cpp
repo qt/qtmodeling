@@ -63,37 +63,37 @@ QDataTypePrivate::~QDataTypePrivate()
     delete ownedOperations;
     delete ownedAttributes;
 }
-  
-void QDataTypePrivate::addOwnedOperation(const QOperation *ownedOperation) 
-{   
-    this->ownedOperations->append(const_cast<QOperation *>(ownedOperation)); 
+
+void QDataTypePrivate::addOwnedOperation(const QOperation *ownedOperation)
+{
+    this->ownedOperations->append(const_cast<QOperation *>(ownedOperation));
 
     // Adjust subsetted property(ies)
     addFeature(ownedOperation);
-    addOwnedMember(ownedOperation); 
+    addOwnedMember(ownedOperation);
 }
- 
-void QDataTypePrivate::removeOwnedOperation(const QOperation *ownedOperation) 
-{    
-    this->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation)); 
+
+void QDataTypePrivate::removeOwnedOperation(const QOperation *ownedOperation)
+{
+    this->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation));
 
     // Adjust subsetted property(ies)
     removeFeature(ownedOperation);
     removeOwnedMember(ownedOperation);
 }
-  
-void QDataTypePrivate::addOwnedAttribute(const QProperty *ownedAttribute) 
-{   
-    this->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute)); 
+
+void QDataTypePrivate::addOwnedAttribute(const QProperty *ownedAttribute)
+{
+    this->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
 
     // Adjust subsetted property(ies)
     addOwnedMember(ownedAttribute);
-    addAttribute(ownedAttribute); 
+    addAttribute(ownedAttribute);
 }
- 
-void QDataTypePrivate::removeOwnedAttribute(const QProperty *ownedAttribute) 
-{    
-    this->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute)); 
+
+void QDataTypePrivate::removeOwnedAttribute(const QProperty *ownedAttribute)
+{
+    this->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
 
     // Adjust subsetted property(ies)
     removeOwnedMember(ownedAttribute);

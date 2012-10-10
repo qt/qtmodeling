@@ -70,10 +70,10 @@ public:
     QInputPin *object;
     QSet<QClassifier *> *newClassifiers;
 
-    // Attributes
+    // Internal functions for attributes
     void setReplaceAll(bool isReplaceAll);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addOldClassifier(const QClassifier *oldClassifier);
     void removeOldClassifier(const QClassifier *oldClassifier);
     void setObject(const QInputPin *object);

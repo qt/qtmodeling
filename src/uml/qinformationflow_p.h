@@ -79,7 +79,7 @@ public:
     QSet<QActivityEdge *> *realizingActivityEdges;
     QSet<QRelationship *> *realizations;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addInformationTarget(const QNamedElement *informationTarget);
     void removeInformationTarget(const QNamedElement *informationTarget);
     void addRealizingConnector(const QConnector *realizingConnector);

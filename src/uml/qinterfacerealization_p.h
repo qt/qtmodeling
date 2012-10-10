@@ -65,7 +65,7 @@ public:
     QBehavioredClassifier *implementingClassifier;
     QInterface *contract;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setImplementingClassifier(const QBehavioredClassifier *implementingClassifier);
     void setContract(const QInterface *contract);
 };

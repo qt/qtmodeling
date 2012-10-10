@@ -63,7 +63,7 @@ public:
 
     QValueSpecification *value;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setValue(const QValueSpecification *value);
 };
 

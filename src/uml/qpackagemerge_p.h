@@ -64,7 +64,7 @@ public:
     QPackage *mergedPackage;
     QPackage *receivingPackage;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setMergedPackage(const QPackage *mergedPackage);
     void setReceivingPackage(const QPackage *receivingPackage);
 };

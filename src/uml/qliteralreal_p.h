@@ -62,7 +62,7 @@ public:
 
     qreal value;
 
-    // Attributes
+    // Internal functions for attributes
     void setValue(qreal value);
 };
 

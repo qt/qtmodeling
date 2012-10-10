@@ -69,7 +69,7 @@ public:
     QSet<QGeneralOrdering *> *toAfter;
     QSet<QGeneralOrdering *> *toBefore;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setCovered(const QLifeline *covered);
     void addToAfter(const QGeneralOrdering *toAfter);
     void removeToAfter(const QGeneralOrdering *toAfter);

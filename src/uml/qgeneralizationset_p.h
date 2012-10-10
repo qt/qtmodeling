@@ -70,11 +70,11 @@ public:
     QClassifier *powertype;
     QSet<QGeneralization *> *generalizations;
 
-    // Attributes
+    // Internal functions for attributes
     void setCovering(bool isCovering);
     void setDisjoint(bool isDisjoint);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setPowertype(const QClassifier *powertype);
     void addGeneralization(const QGeneralization *generalization);
     void removeGeneralization(const QGeneralization *generalization);

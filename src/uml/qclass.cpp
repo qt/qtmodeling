@@ -85,77 +85,77 @@ void QClassPrivate::setActive(bool isActive)
 {
     this->isActive = isActive;
 }
-  
-void QClassPrivate::addNestedClassifier(const QClassifier *nestedClassifier) 
-{   
-    this->nestedClassifiers->append(const_cast<QClassifier *>(nestedClassifier)); 
+
+void QClassPrivate::addNestedClassifier(const QClassifier *nestedClassifier)
+{
+    this->nestedClassifiers->append(const_cast<QClassifier *>(nestedClassifier));
 
     // Adjust subsetted property(ies)
-    addOwnedMember(nestedClassifier); 
+    addOwnedMember(nestedClassifier);
 }
- 
-void QClassPrivate::removeNestedClassifier(const QClassifier *nestedClassifier) 
-{    
-    this->nestedClassifiers->removeAll(const_cast<QClassifier *>(nestedClassifier)); 
+
+void QClassPrivate::removeNestedClassifier(const QClassifier *nestedClassifier)
+{
+    this->nestedClassifiers->removeAll(const_cast<QClassifier *>(nestedClassifier));
 
     // Adjust subsetted property(ies)
     removeOwnedMember(nestedClassifier);
 }
-  
-void QClassPrivate::addOwnedReception(const QReception *ownedReception) 
-{   
-    this->ownedReceptions->insert(const_cast<QReception *>(ownedReception)); 
+
+void QClassPrivate::addOwnedReception(const QReception *ownedReception)
+{
+    this->ownedReceptions->insert(const_cast<QReception *>(ownedReception));
 
     // Adjust subsetted property(ies)
     addFeature(ownedReception);
-    addOwnedMember(ownedReception); 
+    addOwnedMember(ownedReception);
 }
- 
-void QClassPrivate::removeOwnedReception(const QReception *ownedReception) 
-{    
-    this->ownedReceptions->remove(const_cast<QReception *>(ownedReception)); 
+
+void QClassPrivate::removeOwnedReception(const QReception *ownedReception)
+{
+    this->ownedReceptions->remove(const_cast<QReception *>(ownedReception));
 
     // Adjust subsetted property(ies)
     removeFeature(ownedReception);
     removeOwnedMember(ownedReception);
 }
-   
-void QClassPrivate::addOwnedOperation(const QOperation *ownedOperation) 
-{   
-    this->ownedOperations->append(const_cast<QOperation *>(ownedOperation)); 
+
+void QClassPrivate::addOwnedOperation(const QOperation *ownedOperation)
+{
+    this->ownedOperations->append(const_cast<QOperation *>(ownedOperation));
 
     // Adjust subsetted property(ies)
     addFeature(ownedOperation);
-    addOwnedMember(ownedOperation); 
+    addOwnedMember(ownedOperation);
 }
- 
-void QClassPrivate::removeOwnedOperation(const QOperation *ownedOperation) 
-{    
-    this->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation)); 
+
+void QClassPrivate::removeOwnedOperation(const QOperation *ownedOperation)
+{
+    this->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation));
 
     // Adjust subsetted property(ies)
     removeFeature(ownedOperation);
     removeOwnedMember(ownedOperation);
 }
-  
-void QClassPrivate::addOwnedAttribute(const QProperty *ownedAttribute) 
-{   
-    this->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute)); 
+
+void QClassPrivate::addOwnedAttribute(const QProperty *ownedAttribute)
+{
+    this->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
 
     // Adjust subsetted property(ies)
     addOwnedMember(ownedAttribute);
-    addAttribute(ownedAttribute); 
+    addAttribute(ownedAttribute);
 }
- 
-void QClassPrivate::removeOwnedAttribute(const QProperty *ownedAttribute) 
-{    
-    this->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute)); 
+
+void QClassPrivate::removeOwnedAttribute(const QProperty *ownedAttribute)
+{
+    this->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
 
     // Adjust subsetted property(ies)
     removeOwnedMember(ownedAttribute);
     removeAttribute(ownedAttribute);
 }
- 
+
 /*!
     \class QClass
 

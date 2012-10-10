@@ -58,33 +58,33 @@ QElementPrivate::~QElementPrivate()
     delete ownedElements;
     delete ownedComments;
 }
-  
-void QElementPrivate::addOwnedElement(const QElement *ownedElement) 
-{   
-    this->ownedElements->insert(const_cast<QElement *>(ownedElement));  
+
+void QElementPrivate::addOwnedElement(const QElement *ownedElement)
+{
+    this->ownedElements->insert(const_cast<QElement *>(ownedElement));
 }
- 
-void QElementPrivate::removeOwnedElement(const QElement *ownedElement) 
-{    
-    this->ownedElements->remove(const_cast<QElement *>(ownedElement)); 
+
+void QElementPrivate::removeOwnedElement(const QElement *ownedElement)
+{
+    this->ownedElements->remove(const_cast<QElement *>(ownedElement));
 }
-  
-void QElementPrivate::setOwner(const QElement *owner) 
-{  
-    this->owner = const_cast<QElement *>(owner);   
+
+void QElementPrivate::setOwner(const QElement *owner)
+{
+    this->owner = const_cast<QElement *>(owner);
 }
-  
-void QElementPrivate::addOwnedComment(const QComment *ownedComment) 
-{   
-    this->ownedComments->insert(const_cast<QComment *>(ownedComment)); 
+
+void QElementPrivate::addOwnedComment(const QComment *ownedComment)
+{
+    this->ownedComments->insert(const_cast<QComment *>(ownedComment));
 
     // Adjust subsetted property(ies)
-    addOwnedElement(ownedComment); 
+    addOwnedElement(ownedComment);
 }
- 
-void QElementPrivate::removeOwnedComment(const QComment *ownedComment) 
-{    
-    this->ownedComments->remove(const_cast<QComment *>(ownedComment)); 
+
+void QElementPrivate::removeOwnedComment(const QComment *ownedComment)
+{
+    this->ownedComments->remove(const_cast<QComment *>(ownedComment));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(ownedComment);

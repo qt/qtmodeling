@@ -70,7 +70,7 @@ public:
     QList<QOperation *> *ownedOperations;
     QList<QProperty *> *ownedAttributes;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addOwnedOperation(const QOperation *ownedOperation);
     void removeOwnedOperation(const QOperation *ownedOperation);
     void addOwnedAttribute(const QProperty *ownedAttribute);

@@ -66,7 +66,7 @@ public:
 
     QSet<QExceptionHandler *> *handlers;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addHandler(const QExceptionHandler *handler);
     void removeHandler(const QExceptionHandler *handler);
 };

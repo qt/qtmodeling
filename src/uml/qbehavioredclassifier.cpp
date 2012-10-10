@@ -62,44 +62,44 @@ QBehavioredClassifierPrivate::~QBehavioredClassifierPrivate()
     delete ownedBehaviors;
     delete interfaceRealizations;
 }
-  
-void QBehavioredClassifierPrivate::addOwnedBehavior(const QBehavior *ownedBehavior) 
-{   
-    this->ownedBehaviors->insert(const_cast<QBehavior *>(ownedBehavior)); 
+
+void QBehavioredClassifierPrivate::addOwnedBehavior(const QBehavior *ownedBehavior)
+{
+    this->ownedBehaviors->insert(const_cast<QBehavior *>(ownedBehavior));
 
     // Adjust subsetted property(ies)
-    addOwnedMember(ownedBehavior); 
+    addOwnedMember(ownedBehavior);
 }
- 
-void QBehavioredClassifierPrivate::removeOwnedBehavior(const QBehavior *ownedBehavior) 
-{    
-    this->ownedBehaviors->remove(const_cast<QBehavior *>(ownedBehavior)); 
+
+void QBehavioredClassifierPrivate::removeOwnedBehavior(const QBehavior *ownedBehavior)
+{
+    this->ownedBehaviors->remove(const_cast<QBehavior *>(ownedBehavior));
 
     // Adjust subsetted property(ies)
     removeOwnedMember(ownedBehavior);
 }
-  
-void QBehavioredClassifierPrivate::addInterfaceRealization(const QInterfaceRealization *interfaceRealization) 
-{   
-    this->interfaceRealizations->insert(const_cast<QInterfaceRealization *>(interfaceRealization)); 
+
+void QBehavioredClassifierPrivate::addInterfaceRealization(const QInterfaceRealization *interfaceRealization)
+{
+    this->interfaceRealizations->insert(const_cast<QInterfaceRealization *>(interfaceRealization));
 
     // Adjust subsetted property(ies)
     addOwnedElement(interfaceRealization);
-    addClientDependency(interfaceRealization); 
+    addClientDependency(interfaceRealization);
 }
- 
-void QBehavioredClassifierPrivate::removeInterfaceRealization(const QInterfaceRealization *interfaceRealization) 
-{    
-    this->interfaceRealizations->remove(const_cast<QInterfaceRealization *>(interfaceRealization)); 
+
+void QBehavioredClassifierPrivate::removeInterfaceRealization(const QInterfaceRealization *interfaceRealization)
+{
+    this->interfaceRealizations->remove(const_cast<QInterfaceRealization *>(interfaceRealization));
 
     // Adjust subsetted property(ies)
     removeOwnedElement(interfaceRealization);
     removeClientDependency(interfaceRealization);
 }
-  
-void QBehavioredClassifierPrivate::setClassifierBehavior(const QBehavior *classifierBehavior) 
-{  
-    this->classifierBehavior = const_cast<QBehavior *>(classifierBehavior);   
+
+void QBehavioredClassifierPrivate::setClassifierBehavior(const QBehavior *classifierBehavior)
+{
+    this->classifierBehavior = const_cast<QBehavior *>(classifierBehavior);
 }
 
 /*!

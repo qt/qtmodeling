@@ -68,7 +68,7 @@ public:
 
     QRegion *container;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addIncoming(const QTransition *incoming);
     void removeIncoming(const QTransition *incoming);
     void setContainer(const QRegion *container);

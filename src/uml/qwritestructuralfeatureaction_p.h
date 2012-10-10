@@ -65,7 +65,7 @@ public:
     QOutputPin *result;
     QInputPin *value;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setResult(const QOutputPin *result);
     void setValue(const QInputPin *value);
 };

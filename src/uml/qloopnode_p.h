@@ -77,10 +77,10 @@ public:
     QSet<QExecutableNode *> *bodyParts;
     QSet<QExecutableNode *> *tests;
 
-    // Attributes
+    // Internal functions for attributes
     void setTestedFirst(bool isTestedFirst);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addLoopVariableInput(const QInputPin *loopVariableInput);
     void removeLoopVariableInput(const QInputPin *loopVariableInput);
     void setDecider(const QOutputPin *decider);

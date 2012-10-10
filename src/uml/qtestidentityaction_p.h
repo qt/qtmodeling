@@ -66,7 +66,7 @@ public:
     QOutputPin *result;
     QInputPin *first;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setSecond(const QInputPin *second);
     void setResult(const QOutputPin *result);
     void setFirst(const QInputPin *first);

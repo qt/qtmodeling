@@ -70,10 +70,10 @@ public:
     QSet<QGeneralizationSet *> *generalizationSets;
     QClassifier *general;
 
-    // Attributes
+    // Internal functions for attributes
     void setSubstitutable(bool isSubstitutable);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setSpecific(const QClassifier *specific);
     void addGeneralizationSet(const QGeneralizationSet *generalizationSet);
     void removeGeneralizationSet(const QGeneralizationSet *generalizationSet);

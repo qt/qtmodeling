@@ -76,92 +76,92 @@ QInterfacePrivate::~QInterfacePrivate()
     delete nestedClassifiers;
     delete ownedAttributes;
 }
-  
-void QInterfacePrivate::setProtocol(const QProtocolStateMachine *protocol) 
-{  
-    this->protocol = const_cast<QProtocolStateMachine *>(protocol);   
+
+void QInterfacePrivate::setProtocol(const QProtocolStateMachine *protocol)
+{
+    this->protocol = const_cast<QProtocolStateMachine *>(protocol);
 }
-  
-void QInterfacePrivate::addRedefinedInterface(const QInterface *redefinedInterface) 
-{   
-    this->redefinedInterfaces->insert(const_cast<QInterface *>(redefinedInterface)); 
+
+void QInterfacePrivate::addRedefinedInterface(const QInterface *redefinedInterface)
+{
+    this->redefinedInterfaces->insert(const_cast<QInterface *>(redefinedInterface));
 
     // Adjust subsetted property(ies)
-    addRedefinedClassifier(redefinedInterface); 
+    addRedefinedClassifier(redefinedInterface);
 }
- 
-void QInterfacePrivate::removeRedefinedInterface(const QInterface *redefinedInterface) 
-{    
-    this->redefinedInterfaces->remove(const_cast<QInterface *>(redefinedInterface)); 
+
+void QInterfacePrivate::removeRedefinedInterface(const QInterface *redefinedInterface)
+{
+    this->redefinedInterfaces->remove(const_cast<QInterface *>(redefinedInterface));
 
     // Adjust subsetted property(ies)
     removeRedefinedClassifier(redefinedInterface);
 }
-  
-void QInterfacePrivate::addOwnedReception(const QReception *ownedReception) 
-{   
-    this->ownedReceptions->insert(const_cast<QReception *>(ownedReception)); 
+
+void QInterfacePrivate::addOwnedReception(const QReception *ownedReception)
+{
+    this->ownedReceptions->insert(const_cast<QReception *>(ownedReception));
 
     // Adjust subsetted property(ies)
     addFeature(ownedReception);
-    addOwnedMember(ownedReception); 
+    addOwnedMember(ownedReception);
 }
- 
-void QInterfacePrivate::removeOwnedReception(const QReception *ownedReception) 
-{    
-    this->ownedReceptions->remove(const_cast<QReception *>(ownedReception)); 
+
+void QInterfacePrivate::removeOwnedReception(const QReception *ownedReception)
+{
+    this->ownedReceptions->remove(const_cast<QReception *>(ownedReception));
 
     // Adjust subsetted property(ies)
     removeFeature(ownedReception);
     removeOwnedMember(ownedReception);
 }
-  
-void QInterfacePrivate::addOwnedOperation(const QOperation *ownedOperation) 
-{   
-    this->ownedOperations->append(const_cast<QOperation *>(ownedOperation)); 
+
+void QInterfacePrivate::addOwnedOperation(const QOperation *ownedOperation)
+{
+    this->ownedOperations->append(const_cast<QOperation *>(ownedOperation));
 
     // Adjust subsetted property(ies)
     addFeature(ownedOperation);
-    addOwnedMember(ownedOperation); 
+    addOwnedMember(ownedOperation);
 }
- 
-void QInterfacePrivate::removeOwnedOperation(const QOperation *ownedOperation) 
-{    
-    this->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation)); 
+
+void QInterfacePrivate::removeOwnedOperation(const QOperation *ownedOperation)
+{
+    this->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation));
 
     // Adjust subsetted property(ies)
     removeFeature(ownedOperation);
     removeOwnedMember(ownedOperation);
 }
-  
-void QInterfacePrivate::addNestedClassifier(const QClassifier *nestedClassifier) 
-{   
-    this->nestedClassifiers->append(const_cast<QClassifier *>(nestedClassifier)); 
+
+void QInterfacePrivate::addNestedClassifier(const QClassifier *nestedClassifier)
+{
+    this->nestedClassifiers->append(const_cast<QClassifier *>(nestedClassifier));
 
     // Adjust subsetted property(ies)
-    addOwnedMember(nestedClassifier); 
+    addOwnedMember(nestedClassifier);
 }
- 
-void QInterfacePrivate::removeNestedClassifier(const QClassifier *nestedClassifier) 
-{    
-    this->nestedClassifiers->removeAll(const_cast<QClassifier *>(nestedClassifier)); 
+
+void QInterfacePrivate::removeNestedClassifier(const QClassifier *nestedClassifier)
+{
+    this->nestedClassifiers->removeAll(const_cast<QClassifier *>(nestedClassifier));
 
     // Adjust subsetted property(ies)
     removeOwnedMember(nestedClassifier);
 }
-  
-void QInterfacePrivate::addOwnedAttribute(const QProperty *ownedAttribute) 
-{   
-    this->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute)); 
+
+void QInterfacePrivate::addOwnedAttribute(const QProperty *ownedAttribute)
+{
+    this->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
 
     // Adjust subsetted property(ies)
     addOwnedMember(ownedAttribute);
-    addAttribute(ownedAttribute); 
+    addAttribute(ownedAttribute);
 }
- 
-void QInterfacePrivate::removeOwnedAttribute(const QProperty *ownedAttribute) 
-{    
-    this->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute)); 
+
+void QInterfacePrivate::removeOwnedAttribute(const QProperty *ownedAttribute)
+{
+    this->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
 
     // Adjust subsetted property(ies)
     removeOwnedMember(ownedAttribute);

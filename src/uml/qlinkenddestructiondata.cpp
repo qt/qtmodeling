@@ -60,10 +60,10 @@ void QLinkEndDestructionDataPrivate::setDestroyDuplicates(bool isDestroyDuplicat
 {
     this->isDestroyDuplicates = isDestroyDuplicates;
 }
-  
-void QLinkEndDestructionDataPrivate::setDestroyAt(const QInputPin *destroyAt) 
-{  
-    this->destroyAt = const_cast<QInputPin *>(destroyAt);   
+
+void QLinkEndDestructionDataPrivate::setDestroyAt(const QInputPin *destroyAt)
+{
+    this->destroyAt = const_cast<QInputPin *>(destroyAt);
 }
 
 /*!

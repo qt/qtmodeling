@@ -74,7 +74,7 @@ public:
     QSet<QConstraint *> *ownedRules;
     QSet<QNamedElement *> *ownedMembers;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addPackageImport(const QPackageImport *packageImport);
     void removePackageImport(const QPackageImport *packageImport);
     void addMember(const QNamedElement *member);

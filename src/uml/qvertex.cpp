@@ -57,12 +57,12 @@ QVertexPrivate::QVertexPrivate() :
 QVertexPrivate::~QVertexPrivate()
 {
 }
-   
-void QVertexPrivate::setContainer(const QRegion *container) 
-{  
-    this->container = const_cast<QRegion *>(container);   
+
+void QVertexPrivate::setContainer(const QRegion *container)
+{
+    this->container = const_cast<QRegion *>(container);
 }
- 
+
 /*!
     \class QVertex
 

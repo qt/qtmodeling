@@ -54,10 +54,10 @@ QActivityParameterNodePrivate::QActivityParameterNodePrivate() :
 QActivityParameterNodePrivate::~QActivityParameterNodePrivate()
 {
 }
-  
-void QActivityParameterNodePrivate::setParameter(const QParameter *parameter) 
-{  
-    this->parameter = const_cast<QParameter *>(parameter);   
+
+void QActivityParameterNodePrivate::setParameter(const QParameter *parameter)
+{
+    this->parameter = const_cast<QParameter *>(parameter);
 }
 
 /*!

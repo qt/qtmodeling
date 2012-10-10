@@ -64,30 +64,30 @@ QExtendPrivate::~QExtendPrivate()
 {
     delete extensionLocations;
 }
-  
-void QExtendPrivate::setExtendedCase(const QUseCase *extendedCase) 
-{  
-    this->extendedCase = const_cast<QUseCase *>(extendedCase);   
+
+void QExtendPrivate::setExtendedCase(const QUseCase *extendedCase)
+{
+    this->extendedCase = const_cast<QUseCase *>(extendedCase);
 }
-  
-void QExtendPrivate::setExtension(const QUseCase *extension) 
-{  
-    this->extension = const_cast<QUseCase *>(extension);   
+
+void QExtendPrivate::setExtension(const QUseCase *extension)
+{
+    this->extension = const_cast<QUseCase *>(extension);
 }
-  
-void QExtendPrivate::addExtensionLocation(const QExtensionPoint *extensionLocation) 
-{   
-    this->extensionLocations->append(const_cast<QExtensionPoint *>(extensionLocation));  
+
+void QExtendPrivate::addExtensionLocation(const QExtensionPoint *extensionLocation)
+{
+    this->extensionLocations->append(const_cast<QExtensionPoint *>(extensionLocation));
 }
- 
-void QExtendPrivate::removeExtensionLocation(const QExtensionPoint *extensionLocation) 
-{    
-    this->extensionLocations->removeAll(const_cast<QExtensionPoint *>(extensionLocation)); 
+
+void QExtendPrivate::removeExtensionLocation(const QExtensionPoint *extensionLocation)
+{
+    this->extensionLocations->removeAll(const_cast<QExtensionPoint *>(extensionLocation));
 }
-  
-void QExtendPrivate::setCondition(const QConstraint *condition) 
-{  
-    this->condition = const_cast<QConstraint *>(condition);   
+
+void QExtendPrivate::setCondition(const QConstraint *condition)
+{
+    this->condition = const_cast<QConstraint *>(condition);
 }
 
 /*!

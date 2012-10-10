@@ -94,11 +94,11 @@ public:
     QSet<QGeneralization *> *generalizations;
     QSet<QSubstitution *> *substitutions;
 
-    // Attributes
+    // Internal functions for attributes
     void setAbstract(bool isAbstract);
     void setFinalSpecialization(bool isFinalSpecialization);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addOwnedUseCase(const QUseCase *ownedUseCase);
     void removeOwnedUseCase(const QUseCase *ownedUseCase);
     void addPowertypeExtent(const QGeneralizationSet *powertypeExtent);

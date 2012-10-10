@@ -54,10 +54,10 @@ QCallBehaviorActionPrivate::QCallBehaviorActionPrivate() :
 QCallBehaviorActionPrivate::~QCallBehaviorActionPrivate()
 {
 }
-  
-void QCallBehaviorActionPrivate::setBehavior(const QBehavior *behavior) 
-{  
-    this->behavior = const_cast<QBehavior *>(behavior);   
+
+void QCallBehaviorActionPrivate::setBehavior(const QBehavior *behavior)
+{
+    this->behavior = const_cast<QBehavior *>(behavior);
 }
 
 /*!

@@ -63,7 +63,7 @@ public:
 
     QInputPin *exception;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setException(const QInputPin *exception);
 };
 

@@ -55,10 +55,10 @@ QWriteVariableActionPrivate::QWriteVariableActionPrivate() :
 QWriteVariableActionPrivate::~QWriteVariableActionPrivate()
 {
 }
-  
-void QWriteVariableActionPrivate::setValue(const QInputPin *value) 
-{  
-    this->value = const_cast<QInputPin *>(value);   
+
+void QWriteVariableActionPrivate::setValue(const QInputPin *value)
+{
+    this->value = const_cast<QInputPin *>(value);
 }
 
 /*!

@@ -66,55 +66,55 @@ QStructuredClassifierPrivate::~QStructuredClassifierPrivate()
     delete ownedAttributes;
     delete ownedConnectors;
 }
-  
-void QStructuredClassifierPrivate::addRole(const QConnectableElement *role) 
-{   
-    this->roles->insert(const_cast<QConnectableElement *>(role)); 
+
+void QStructuredClassifierPrivate::addRole(const QConnectableElement *role)
+{
+    this->roles->insert(const_cast<QConnectableElement *>(role));
 
     // Adjust subsetted property(ies)
-    addMember(role); 
+    addMember(role);
 }
- 
-void QStructuredClassifierPrivate::removeRole(const QConnectableElement *role) 
-{    
-    this->roles->remove(const_cast<QConnectableElement *>(role)); 
+
+void QStructuredClassifierPrivate::removeRole(const QConnectableElement *role)
+{
+    this->roles->remove(const_cast<QConnectableElement *>(role));
 
     // Adjust subsetted property(ies)
     removeMember(role);
 }
-  
-void QStructuredClassifierPrivate::addOwnedAttribute(const QProperty *ownedAttribute) 
-{   
-    this->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute)); 
+
+void QStructuredClassifierPrivate::addOwnedAttribute(const QProperty *ownedAttribute)
+{
+    this->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
 
     // Adjust subsetted property(ies)
     addAttribute(ownedAttribute);
     addOwnedMember(ownedAttribute);
-    addRole(ownedAttribute); 
+    addRole(ownedAttribute);
 }
- 
-void QStructuredClassifierPrivate::removeOwnedAttribute(const QProperty *ownedAttribute) 
-{    
-    this->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute)); 
+
+void QStructuredClassifierPrivate::removeOwnedAttribute(const QProperty *ownedAttribute)
+{
+    this->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
 
     // Adjust subsetted property(ies)
     removeAttribute(ownedAttribute);
     removeOwnedMember(ownedAttribute);
     removeRole(ownedAttribute);
 }
-   
-void QStructuredClassifierPrivate::addOwnedConnector(const QConnector *ownedConnector) 
-{   
-    this->ownedConnectors->insert(const_cast<QConnector *>(ownedConnector)); 
+
+void QStructuredClassifierPrivate::addOwnedConnector(const QConnector *ownedConnector)
+{
+    this->ownedConnectors->insert(const_cast<QConnector *>(ownedConnector));
 
     // Adjust subsetted property(ies)
     addFeature(ownedConnector);
-    addOwnedMember(ownedConnector); 
+    addOwnedMember(ownedConnector);
 }
- 
-void QStructuredClassifierPrivate::removeOwnedConnector(const QConnector *ownedConnector) 
-{    
-    this->ownedConnectors->remove(const_cast<QConnector *>(ownedConnector)); 
+
+void QStructuredClassifierPrivate::removeOwnedConnector(const QConnector *ownedConnector)
+{
+    this->ownedConnectors->remove(const_cast<QConnector *>(ownedConnector));
 
     // Adjust subsetted property(ies)
     removeFeature(ownedConnector);

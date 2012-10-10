@@ -57,19 +57,19 @@ QSignalPrivate::~QSignalPrivate()
 {
     delete ownedAttributes;
 }
-  
-void QSignalPrivate::addOwnedAttribute(const QProperty *ownedAttribute) 
-{   
-    this->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute)); 
+
+void QSignalPrivate::addOwnedAttribute(const QProperty *ownedAttribute)
+{
+    this->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
 
     // Adjust subsetted property(ies)
     addOwnedMember(ownedAttribute);
-    addAttribute(ownedAttribute); 
+    addAttribute(ownedAttribute);
 }
- 
-void QSignalPrivate::removeOwnedAttribute(const QProperty *ownedAttribute) 
-{    
-    this->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute)); 
+
+void QSignalPrivate::removeOwnedAttribute(const QProperty *ownedAttribute)
+{
+    this->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
 
     // Adjust subsetted property(ies)
     removeOwnedMember(ownedAttribute);

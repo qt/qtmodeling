@@ -69,7 +69,7 @@ public:
     QSet<QInterfaceRealization *> *interfaceRealizations;
     QBehavior *classifierBehavior;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addOwnedBehavior(const QBehavior *ownedBehavior);
     void removeOwnedBehavior(const QBehavior *ownedBehavior);
     void addInterfaceRealization(const QInterfaceRealization *interfaceRealization);

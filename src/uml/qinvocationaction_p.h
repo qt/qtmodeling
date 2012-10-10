@@ -68,7 +68,7 @@ public:
     QList<QInputPin *> *arguments;
     QPort *onPort;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addArgument(const QInputPin *argument);
     void removeArgument(const QInputPin *argument);
     void setOnPort(const QPort *onPort);

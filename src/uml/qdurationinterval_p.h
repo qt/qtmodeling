@@ -64,7 +64,7 @@ public:
     QDuration *max;
     QDuration *min;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setMax(const QDuration *max);
     void setMin(const QDuration *min);
 };

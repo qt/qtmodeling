@@ -55,15 +55,15 @@ QSequenceNodePrivate::~QSequenceNodePrivate()
 {
     delete executableNodes;
 }
-  
-void QSequenceNodePrivate::addExecutableNode(const QExecutableNode *executableNode) 
-{   
-    this->executableNodes->append(const_cast<QExecutableNode *>(executableNode));  
+
+void QSequenceNodePrivate::addExecutableNode(const QExecutableNode *executableNode)
+{
+    this->executableNodes->append(const_cast<QExecutableNode *>(executableNode));
 }
- 
-void QSequenceNodePrivate::removeExecutableNode(const QExecutableNode *executableNode) 
-{    
-    this->executableNodes->removeAll(const_cast<QExecutableNode *>(executableNode)); 
+
+void QSequenceNodePrivate::removeExecutableNode(const QExecutableNode *executableNode)
+{
+    this->executableNodes->removeAll(const_cast<QExecutableNode *>(executableNode));
 }
 
 /*!

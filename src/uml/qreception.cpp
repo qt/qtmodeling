@@ -54,10 +54,10 @@ QReceptionPrivate::QReceptionPrivate() :
 QReceptionPrivate::~QReceptionPrivate()
 {
 }
-  
-void QReceptionPrivate::setSignal(const QSignal *signal) 
-{  
-    this->signal = const_cast<QSignal *>(signal);   
+
+void QReceptionPrivate::setSignal(const QSignal *signal)
+{
+    this->signal = const_cast<QSignal *>(signal);
 }
 
 /*!

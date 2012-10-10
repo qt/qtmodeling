@@ -55,10 +55,10 @@ QStartObjectBehaviorActionPrivate::QStartObjectBehaviorActionPrivate() :
 QStartObjectBehaviorActionPrivate::~QStartObjectBehaviorActionPrivate()
 {
 }
-  
-void QStartObjectBehaviorActionPrivate::setObject(const QInputPin *object) 
-{  
-    this->object = const_cast<QInputPin *>(object);   
+
+void QStartObjectBehaviorActionPrivate::setObject(const QInputPin *object)
+{
+    this->object = const_cast<QInputPin *>(object);
 }
 
 /*!

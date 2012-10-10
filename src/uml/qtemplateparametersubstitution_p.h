@@ -68,7 +68,7 @@ public:
     QParameterableElement *actual;
     QTemplateBinding *templateBinding;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setOwnedActual(const QParameterableElement *ownedActual);
     void setFormal(const QTemplateParameter *formal);
     void setActual(const QParameterableElement *actual);

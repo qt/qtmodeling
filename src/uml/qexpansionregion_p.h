@@ -71,10 +71,10 @@ public:
     QSet<QExpansionNode *> *inputElements;
     QSet<QExpansionNode *> *outputElements;
 
-    // Attributes
+    // Internal functions for attributes
     void setMode(QtUml::ExpansionKind mode);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addInputElement(const QExpansionNode *inputElement);
     void removeInputElement(const QExpansionNode *inputElement);
     void addOutputElement(const QExpansionNode *outputElement);

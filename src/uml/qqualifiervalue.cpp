@@ -56,15 +56,15 @@ QQualifierValuePrivate::QQualifierValuePrivate() :
 QQualifierValuePrivate::~QQualifierValuePrivate()
 {
 }
-  
-void QQualifierValuePrivate::setValue(const QInputPin *value) 
-{  
-    this->value = const_cast<QInputPin *>(value);   
+
+void QQualifierValuePrivate::setValue(const QInputPin *value)
+{
+    this->value = const_cast<QInputPin *>(value);
 }
-  
-void QQualifierValuePrivate::setQualifier(const QProperty *qualifier) 
-{  
-    this->qualifier = const_cast<QProperty *>(qualifier);   
+
+void QQualifierValuePrivate::setQualifier(const QProperty *qualifier)
+{
+    this->qualifier = const_cast<QProperty *>(qualifier);
 }
 
 /*!

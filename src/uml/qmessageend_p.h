@@ -63,7 +63,7 @@ public:
 
     QMessage *message;
 
-    // Association-ends
+    // Internal functions for association-ends
     void setMessage(const QMessage *message);
 };
 

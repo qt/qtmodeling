@@ -68,10 +68,10 @@ public:
     QClassifier *parameteredElement;
     QSet<QClassifier *> *constrainingClassifiers;
 
-    // Attributes
+    // Internal functions for attributes
     void setAllowSubstitutable(bool allowSubstitutable);
 
-    // Association-ends
+    // Internal functions for association-ends
     void setParameteredElement(const QClassifier *parameteredElement);
     void addConstrainingClassifier(const QClassifier *constrainingClassifier);
     void removeConstrainingClassifier(const QClassifier *constrainingClassifier);

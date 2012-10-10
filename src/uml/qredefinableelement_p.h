@@ -68,10 +68,10 @@ public:
     QSet<QRedefinableElement *> *redefinedElements;
     QSet<QClassifier *> *redefinitionContexts;
 
-    // Attributes
+    // Internal functions for attributes
     void setLeaf(bool isLeaf);
 
-    // Association-ends
+    // Internal functions for association-ends
     void addRedefinedElement(const QRedefinableElement *redefinedElement);
     void removeRedefinedElement(const QRedefinableElement *redefinedElement);
     void addRedefinitionContext(const QClassifier *redefinitionContext);

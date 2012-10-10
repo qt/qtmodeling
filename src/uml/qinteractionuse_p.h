@@ -74,7 +74,7 @@ public:
     QList<QValueSpecification *> *arguments;
     QProperty *returnValueRecipient;
 
-    // Association-ends
+    // Internal functions for association-ends
     void addActualGate(const QGate *actualGate);
     void removeActualGate(const QGate *actualGate);
     void setReturnValue(const QValueSpecification *returnValue);
