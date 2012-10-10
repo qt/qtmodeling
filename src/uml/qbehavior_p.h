@@ -92,7 +92,6 @@ public:
     void removeOwnedParameter(const QParameter *ownedParameter);
     void addOwnedParameterSet(const QParameterSet *ownedParameterSet);
     void removeOwnedParameterSet(const QParameterSet *ownedParameterSet);
-    void setContext(const QBehavioredClassifier *context);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -84,19 +84,13 @@ public:
     void setURI(QString URI);
 
     // Internal functions for association-ends
-    void addOwnedType(const QType *ownedType);
-    void removeOwnedType(const QType *ownedType);
     void addPackagedElement(const QPackageableElement *packagedElement);
     void removePackagedElement(const QPackageableElement *packagedElement);
     void setNestingPackage(const QPackage *nestingPackage);
     void addProfileApplication(const QProfileApplication *profileApplication);
     void removeProfileApplication(const QProfileApplication *profileApplication);
-    void addOwnedStereotype(const QStereotype *ownedStereotype);
-    void removeOwnedStereotype(const QStereotype *ownedStereotype);
     void addPackageMerge(const QPackageMerge *packageMerge);
     void removePackageMerge(const QPackageMerge *packageMerge);
-    void addNestedPackage(const QPackage *nestedPackage);
-    void removeNestedPackage(const QPackage *nestedPackage);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -78,7 +78,6 @@ public:
 
     // Internal functions for association-ends
     void setBehavior(const QBehavior *behavior);
-    void setResult(const QParameter *result);
 };
 
 QT_END_NAMESPACE_QTUML

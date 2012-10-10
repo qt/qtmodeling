@@ -98,8 +98,6 @@ public:
 
     // Internal functions for attributes
     void setDerived(bool isDerived);
-    void setDefault_(QString default_);
-    void setComposite(bool isComposite);
     void setReadOnly(bool isReadOnly);
     void setID(bool isID);
     void setDerivedUnion(bool isDerivedUnion);
@@ -113,7 +111,6 @@ public:
     void removeQualifier(const QProperty *qualifier);
     void setDefaultValue(const QValueSpecification *defaultValue);
     void setClass_(const QClass *class_);
-    void setOpposite(const QProperty *opposite);
     void setAssociationEnd(const QProperty *associationEnd);
     void setDatatype(const QDataType *datatype);
     void addRedefinedProperty(const QProperty *redefinedProperty);

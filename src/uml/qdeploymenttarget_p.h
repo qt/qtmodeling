@@ -68,8 +68,6 @@ public:
     QSet<QDeployment *> *deployments;
 
     // Internal functions for association-ends
-    void addDeployedElement(const QPackageableElement *deployedElement);
-    void removeDeployedElement(const QPackageableElement *deployedElement);
     void addDeployment(const QDeployment *deployment);
     void removeDeployment(const QDeployment *deployment);
 };

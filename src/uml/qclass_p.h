@@ -88,14 +88,10 @@ public:
     void removeNestedClassifier(const QClassifier *nestedClassifier);
     void addOwnedReception(const QReception *ownedReception);
     void removeOwnedReception(const QReception *ownedReception);
-    void addExtension(const QExtension *extension);
-    void removeExtension(const QExtension *extension);
     void addOwnedOperation(const QOperation *ownedOperation);
     void removeOwnedOperation(const QOperation *ownedOperation);
     void addOwnedAttribute(const QProperty *ownedAttribute);
     void removeOwnedAttribute(const QProperty *ownedAttribute);
-    void addSuperClass(const QClass *superClass);
-    void removeSuperClass(const QClass *superClass);
 };
 
 QT_END_NAMESPACE_QTUML

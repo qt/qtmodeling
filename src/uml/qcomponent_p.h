@@ -77,10 +77,6 @@ public:
     // Internal functions for association-ends
     void addRealization(const QComponentRealization *realization);
     void removeRealization(const QComponentRealization *realization);
-    void addRequired(const QInterface *required);
-    void removeRequired(const QInterface *required);
-    void addProvided(const QInterface *provided);
-    void removeProvided(const QInterface *provided);
     void addPackagedElement(const QPackageableElement *packagedElement);
     void removePackagedElement(const QPackageableElement *packagedElement);
 };

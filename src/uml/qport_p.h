@@ -78,10 +78,6 @@ public:
 
     // Internal functions for association-ends
     void setProtocol(const QProtocolStateMachine *protocol);
-    void addRequired(const QInterface *required);
-    void removeRequired(const QInterface *required);
-    void addProvided(const QInterface *provided);
-    void removeProvided(const QInterface *provided);
     void addRedefinedPort(const QPort *redefinedPort);
     void removeRedefinedPort(const QPort *redefinedPort);
 };

@@ -70,7 +70,6 @@ public:
     // Internal functions for association-ends
     void addIcon(const QImage *icon);
     void removeIcon(const QImage *icon);
-    void setProfile(const QProfile *profile);
 };
 
 QT_END_NAMESPACE_QTUML

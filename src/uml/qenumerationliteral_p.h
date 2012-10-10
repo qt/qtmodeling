@@ -64,7 +64,6 @@ public:
     QEnumeration *enumeration;
 
     // Internal functions for association-ends
-    void setClassifier(const QEnumeration *classifier);
     void setEnumeration(const QEnumeration *enumeration);
 };
 

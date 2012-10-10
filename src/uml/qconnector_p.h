@@ -76,7 +76,6 @@ public:
     QList<QConnectorEnd *> *ends;
 
     // Internal functions for attributes
-    void setKind(QtUml::ConnectorKind kind);
 
     // Internal functions for association-ends
     void addRedefinedConnector(const QConnector *redefinedConnector);

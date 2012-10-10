@@ -92,7 +92,6 @@ public:
     void setTarget(const QVertex *target);
     void setEffect(const QBehavior *effect);
     void setContainer(const QRegion *container);
-    void setRedefinitionContext(const QClassifier *redefinitionContext);
     void setRedefinedTransition(const QTransition *redefinedTransition);
     void setSource(const QVertex *source);
     void addTrigger(const QTrigger *trigger);

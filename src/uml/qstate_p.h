@@ -87,10 +87,6 @@ public:
     QConstraint *stateInvariant;
 
     // Internal functions for attributes
-    void setSimple(bool isSimple);
-    void setComposite(bool isComposite);
-    void setOrthogonal(bool isOrthogonal);
-    void setSubmachineState(bool isSubmachineState);
 
     // Internal functions for association-ends
     void addRegion(const QRegion *region);
@@ -98,7 +94,6 @@ public:
     void setExit(const QBehavior *exit);
     void addConnection(const QConnectionPointReference *connection);
     void removeConnection(const QConnectionPointReference *connection);
-    void setRedefinitionContext(const QClassifier *redefinitionContext);
     void setRedefinedState(const QState *redefinedState);
     void addDeferrableTrigger(const QTrigger *deferrableTrigger);
     void removeDeferrableTrigger(const QTrigger *deferrableTrigger);

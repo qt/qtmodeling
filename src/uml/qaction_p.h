@@ -78,7 +78,6 @@ public:
     void setLocallyReentrant(bool isLocallyReentrant);
 
     // Internal functions for association-ends
-    void setContext(const QClassifier *context);
     void addLocalPostcondition(const QConstraint *localPostcondition);
     void removeLocalPostcondition(const QConstraint *localPostcondition);
     void addLocalPrecondition(const QConstraint *localPrecondition);

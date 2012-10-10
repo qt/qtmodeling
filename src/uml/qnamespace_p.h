@@ -79,8 +79,6 @@ public:
     void removePackageImport(const QPackageImport *packageImport);
     void addMember(const QNamedElement *member);
     void removeMember(const QNamedElement *member);
-    void addImportedMember(const QPackageableElement *importedMember);
-    void removeImportedMember(const QPackageableElement *importedMember);
     void addElementImport(const QElementImport *elementImport);
     void removeElementImport(const QElementImport *elementImport);
     void addOwnedRule(const QConstraint *ownedRule);
