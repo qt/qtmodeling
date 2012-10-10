@@ -71,8 +71,6 @@ public:
     QSet<QRedefinableTemplateSignature *> *extendedSignatures;
 
     // Internal functions for association-ends
-    void addInheritedParameter(const QTemplateParameter *inheritedParameter);
-    void removeInheritedParameter(const QTemplateParameter *inheritedParameter);
     void setClassifier(const QClassifier *classifier);
     void addExtendedSignature(const QRedefinableTemplateSignature *extendedSignature);
     void removeExtendedSignature(const QRedefinableTemplateSignature *extendedSignature);

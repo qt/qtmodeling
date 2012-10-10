@@ -77,8 +77,6 @@ public:
     void setDerived(bool isDerived);
 
     // Internal functions for association-ends
-    void addEndType(const QType *endType);
-    void removeEndType(const QType *endType);
     void addNavigableOwnedEnd(const QProperty *navigableOwnedEnd);
     void removeNavigableOwnedEnd(const QProperty *navigableOwnedEnd);
     void addOwnedEnd(const QProperty *ownedEnd);

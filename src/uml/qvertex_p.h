@@ -69,11 +69,7 @@ public:
     QRegion *container;
 
     // Internal functions for association-ends
-    void addIncoming(const QTransition *incoming);
-    void removeIncoming(const QTransition *incoming);
     void setContainer(const QRegion *container);
-    void addOutgoing(const QTransition *outgoing);
-    void removeOutgoing(const QTransition *outgoing);
 };
 
 QT_END_NAMESPACE_QTUML

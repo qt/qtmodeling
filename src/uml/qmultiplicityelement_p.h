@@ -67,10 +67,8 @@ public:
     QValueSpecification *lowerValue;
 
     // Internal functions for attributes
-    void setUpper(qint32 upper);
     void setUnique(bool isUnique);
     void setOrdered(bool isOrdered);
-    void setLower(qint32 lower);
 
     // Internal functions for association-ends
     void setUpperValue(const QValueSpecification *upperValue);

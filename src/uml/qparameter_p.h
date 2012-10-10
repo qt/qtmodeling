@@ -83,7 +83,6 @@ public:
 
     // Internal functions for attributes
     void setException(bool isException);
-    void setDefault_(QString default_);
     void setDirection(QtUml::ParameterDirectionKind direction);
     void setStream(bool isStream);
     void setEffect(QtUml::ParameterEffectKind effect);

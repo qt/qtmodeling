@@ -70,8 +70,6 @@ public:
 
     // Internal functions for association-ends
     void setPostCondition(const QConstraint *postCondition);
-    void addReferred(const QOperation *referred);
-    void removeReferred(const QOperation *referred);
     void setPreCondition(const QConstraint *preCondition);
 };
 

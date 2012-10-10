@@ -81,7 +81,6 @@ public:
 
     // Internal functions for attributes
     void setMessageSort(QtUml::MessageSort messageSort);
-    void setMessageKind(QtUml::MessageKind messageKind);
 
     // Internal functions for association-ends
     void setSignature(const QNamedElement *signature);

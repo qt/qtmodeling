@@ -76,8 +76,6 @@ public:
     void removeRole(const QConnectableElement *role);
     void addOwnedAttribute(const QProperty *ownedAttribute);
     void removeOwnedAttribute(const QProperty *ownedAttribute);
-    void addPart(const QProperty *part);
-    void removePart(const QProperty *part);
     void addOwnedConnector(const QConnector *ownedConnector);
     void removeOwnedConnector(const QConnector *ownedConnector);
 };

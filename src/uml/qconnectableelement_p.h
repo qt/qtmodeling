@@ -70,8 +70,6 @@ public:
     QConnectableElementTemplateParameter *templateParameter;
 
     // Internal functions for association-ends
-    void addEnd(const QConnectorEnd *end);
-    void removeEnd(const QConnectorEnd *end);
     void setTemplateParameter(const QConnectableElementTemplateParameter *templateParameter);
 };
 

@@ -66,8 +66,6 @@ public:
 
 
     // Internal functions for association-ends
-    void addOwnedPort(const QPort *ownedPort);
-    void removeOwnedPort(const QPort *ownedPort);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -115,13 +115,9 @@ public:
     void removeAttribute(const QProperty *attribute);
     void addFeature(const QFeature *feature);
     void removeFeature(const QFeature *feature);
-    void addGeneral(const QClassifier *general);
-    void removeGeneral(const QClassifier *general);
     void setRepresentation(const QCollaborationUse *representation);
     void addGeneralization(const QGeneralization *generalization);
     void removeGeneralization(const QGeneralization *generalization);
-    void addInheritedMember(const QNamedElement *inheritedMember);
-    void removeInheritedMember(const QNamedElement *inheritedMember);
     void addSubstitution(const QSubstitution *substitution);
     void removeSubstitution(const QSubstitution *substitution);
 };

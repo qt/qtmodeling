@@ -81,7 +81,6 @@ public:
     // Internal functions for attributes
     void setName(QString name);
     void setVisibility(QtUml::VisibilityKind visibility);
-    void setQualifiedName(QString qualifiedName);
 
     // Internal functions for association-ends
     void setNameExpression(const QStringExpression *nameExpression);

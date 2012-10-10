@@ -122,10 +122,12 @@ public:
 
     // Internal functions for attributes
 [%- FOREACH attribute IN class.attribute.values -%]
+[%- IF (attribute.isDerived == "false" or attribute.isDerivedUnion == "true") -%]
 [%- FOREACH accessor IN attribute.accessor -%]
 [%- NEXT IF loop.first %]
     ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END
  -%])${accessor.constness};
+[%- END -%]
 [%- END -%]
 [%- END -%]
 [%- END %]
@@ -133,10 +135,12 @@ public:
 
     // Internal functions for association-ends
 [%- FOREACH associationend IN class.associationend.values -%]
+[%- IF (associationend.isDerived == "false" or associationend.isDerivedUnion == "true") -%]
 [%- FOREACH accessor IN associationend.accessor -%]
 [%- NEXT IF loop.first %]
     ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END
  -%])${accessor.constness};
+[%- END -%]
 [%- END -%]
 [%- END -%]
 [%- END %]

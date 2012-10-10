@@ -82,7 +82,6 @@ public:
     void removeTransition(const QTransition *transition);
     void setStateMachine(const QStateMachine *stateMachine);
     void setState(const QState *state);
-    void setRedefinitionContext(const QClassifier *redefinitionContext);
     void addSubvertex(const QVertex *subvertex);
     void removeSubvertex(const QVertex *subvertex);
 };

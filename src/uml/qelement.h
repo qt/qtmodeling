@@ -84,6 +84,9 @@ protected:
 
 protected:
     QElementPrivate *d_umlptr;
+
+private:
+    void allOwnedElements(QSet<QElement *> *allOwnedElements_) const;
 };
 
 QT_END_NAMESPACE_QTUML

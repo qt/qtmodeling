@@ -89,11 +89,7 @@ public:
     QSet<QType *> *raisedExceptions;
 
     // Internal functions for attributes
-    void setLower(qint32 lower);
     void setQuery(bool isQuery);
-    void setUnique(bool isUnique);
-    void setUpper(qint32 upper);
-    void setOrdered(bool isOrdered);
 
     // Internal functions for association-ends
     void addOwnedParameter(const QParameter *ownedParameter);
@@ -106,7 +102,6 @@ public:
     void setDatatype(const QDataType *datatype);
     void setTemplateParameter(const QOperationTemplateParameter *templateParameter);
     void setInterface(const QInterface *interface);
-    void setType(const QType *type);
     void addPrecondition(const QConstraint *precondition);
     void removePrecondition(const QConstraint *precondition);
     void setClass_(const QClass *class_);
