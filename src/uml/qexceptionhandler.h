@@ -77,7 +77,6 @@ class Q_UML_EXPORT QExceptionHandler : public QObject, public QElement
     Q_PROPERTY(QObjectNode * exceptionInput READ exceptionInput WRITE setExceptionInput)
 
     Q_DISABLE_COPY(QExceptionHandler)
-    QTUML_DECLARE_PRIVATE(QExceptionHandler)
 
 public:
     explicit QExceptionHandler(QObject *parent = 0);

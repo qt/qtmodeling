@@ -107,13 +107,13 @@ QExpression::~QExpression()
  */
 QString QExpression::symbol() const
 {
-    Q_D(const QExpression);
+    QTUML_D(const QExpression);
     return d->symbol;
 }
 
 void QExpression::setSymbol(QString symbol)
 {
-    Q_D(QExpression);
+    QTUML_D(QExpression);
     d->setSymbol(symbol);
 }
 
@@ -122,19 +122,19 @@ void QExpression::setSymbol(QString symbol)
  */
 const QList<QValueSpecification *> *QExpression::operands() const
 {
-    Q_D(const QExpression);
+    QTUML_D(const QExpression);
     return d->operands;
 }
 
 void QExpression::addOperand(const QValueSpecification *operand)
 {
-    Q_D(QExpression);
+    QTUML_D(QExpression);
     d->addOperand(const_cast<QValueSpecification *>(operand));
 }
 
 void QExpression::removeOperand(const QValueSpecification *operand)
 {
-    Q_D(QExpression);
+    QTUML_D(QExpression);
     d->removeOperand(const_cast<QValueSpecification *>(operand));
 }
 

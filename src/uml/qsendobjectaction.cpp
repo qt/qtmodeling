@@ -103,13 +103,13 @@ QSendObjectAction::~QSendObjectAction()
  */
 QInputPin *QSendObjectAction::request() const
 {
-    Q_D(const QSendObjectAction);
+    QTUML_D(const QSendObjectAction);
     return d->request;
 }
 
 void QSendObjectAction::setRequest(const QInputPin *request)
 {
-    Q_D(QSendObjectAction);
+    QTUML_D(QSendObjectAction);
     d->setRequest(const_cast<QInputPin *>(request));
 }
 
@@ -118,13 +118,13 @@ void QSendObjectAction::setRequest(const QInputPin *request)
  */
 QInputPin *QSendObjectAction::target() const
 {
-    Q_D(const QSendObjectAction);
+    QTUML_D(const QSendObjectAction);
     return d->target;
 }
 
 void QSendObjectAction::setTarget(const QInputPin *target)
 {
-    Q_D(QSendObjectAction);
+    QTUML_D(QSendObjectAction);
     d->setTarget(const_cast<QInputPin *>(target));
 }
 

@@ -103,7 +103,6 @@ class Q_UML_EXPORT QExpansionNode : public QObject, public QObjectNode
     Q_PROPERTY(QExpansionRegion * regionAsInput READ regionAsInput WRITE setRegionAsInput)
 
     Q_DISABLE_COPY(QExpansionNode)
-    QTUML_DECLARE_PRIVATE(QExpansionNode)
 
 public:
     explicit QExpansionNode(QObject *parent = 0);

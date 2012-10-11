@@ -107,7 +107,6 @@ class Q_UML_EXPORT QBroadcastSignalAction : public QObject, public QInvocationAc
     Q_PROPERTY(QSignal * signal READ signal WRITE setSignal)
 
     Q_DISABLE_COPY(QBroadcastSignalAction)
-    QTUML_DECLARE_PRIVATE(QBroadcastSignalAction)
 
 public:
     explicit QBroadcastSignalAction(QObject *parent = 0);

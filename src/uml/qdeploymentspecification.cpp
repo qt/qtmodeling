@@ -104,13 +104,13 @@ QDeploymentSpecification::~QDeploymentSpecification()
  */
 QString QDeploymentSpecification::deploymentLocation() const
 {
-    Q_D(const QDeploymentSpecification);
+    QTUML_D(const QDeploymentSpecification);
     return d->deploymentLocation;
 }
 
 void QDeploymentSpecification::setDeploymentLocation(QString deploymentLocation)
 {
-    Q_D(QDeploymentSpecification);
+    QTUML_D(QDeploymentSpecification);
     d->setDeploymentLocation(deploymentLocation);
 }
 
@@ -119,13 +119,13 @@ void QDeploymentSpecification::setDeploymentLocation(QString deploymentLocation)
  */
 QString QDeploymentSpecification::executionLocation() const
 {
-    Q_D(const QDeploymentSpecification);
+    QTUML_D(const QDeploymentSpecification);
     return d->executionLocation;
 }
 
 void QDeploymentSpecification::setExecutionLocation(QString executionLocation)
 {
-    Q_D(QDeploymentSpecification);
+    QTUML_D(QDeploymentSpecification);
     d->setExecutionLocation(executionLocation);
 }
 
@@ -134,13 +134,13 @@ void QDeploymentSpecification::setExecutionLocation(QString executionLocation)
  */
 QDeployment *QDeploymentSpecification::deployment() const
 {
-    Q_D(const QDeploymentSpecification);
+    QTUML_D(const QDeploymentSpecification);
     return d->deployment;
 }
 
 void QDeploymentSpecification::setDeployment(const QDeployment *deployment)
 {
-    Q_D(QDeploymentSpecification);
+    QTUML_D(QDeploymentSpecification);
     d->setDeployment(const_cast<QDeployment *>(deployment));
 }
 

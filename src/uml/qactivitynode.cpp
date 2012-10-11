@@ -196,19 +196,19 @@ QActivityNode::~QActivityNode()
  */
 const QSet<QActivityNode *> *QActivityNode::redefinedNodes() const
 {
-    Q_D(const QActivityNode);
+    QTUML_D(const QActivityNode);
     return d->redefinedNodes;
 }
 
 void QActivityNode::addRedefinedNode(const QActivityNode *redefinedNode)
 {
-    Q_D(QActivityNode);
+    QTUML_D(QActivityNode);
     d->addRedefinedNode(const_cast<QActivityNode *>(redefinedNode));
 }
 
 void QActivityNode::removeRedefinedNode(const QActivityNode *redefinedNode)
 {
-    Q_D(QActivityNode);
+    QTUML_D(QActivityNode);
     d->removeRedefinedNode(const_cast<QActivityNode *>(redefinedNode));
 }
 
@@ -217,19 +217,19 @@ void QActivityNode::removeRedefinedNode(const QActivityNode *redefinedNode)
  */
 const QSet<QActivityEdge *> *QActivityNode::incomings() const
 {
-    Q_D(const QActivityNode);
+    QTUML_D(const QActivityNode);
     return d->incomings;
 }
 
 void QActivityNode::addIncoming(const QActivityEdge *incoming)
 {
-    Q_D(QActivityNode);
+    QTUML_D(QActivityNode);
     d->addIncoming(const_cast<QActivityEdge *>(incoming));
 }
 
 void QActivityNode::removeIncoming(const QActivityEdge *incoming)
 {
-    Q_D(QActivityNode);
+    QTUML_D(QActivityNode);
     d->removeIncoming(const_cast<QActivityEdge *>(incoming));
 }
 
@@ -238,13 +238,13 @@ void QActivityNode::removeIncoming(const QActivityEdge *incoming)
  */
 QActivity *QActivityNode::activity() const
 {
-    Q_D(const QActivityNode);
+    QTUML_D(const QActivityNode);
     return d->activity;
 }
 
 void QActivityNode::setActivity(const QActivity *activity)
 {
-    Q_D(QActivityNode);
+    QTUML_D(QActivityNode);
     d->setActivity(const_cast<QActivity *>(activity));
 }
 
@@ -253,7 +253,7 @@ void QActivityNode::setActivity(const QActivity *activity)
  */
 const QSet<QActivityGroup *> *QActivityNode::inGroup() const
 {
-    Q_D(const QActivityNode);
+    QTUML_D(const QActivityNode);
     return d->inGroup;
 }
 
@@ -262,13 +262,13 @@ const QSet<QActivityGroup *> *QActivityNode::inGroup() const
  */
 QStructuredActivityNode *QActivityNode::inStructuredNode() const
 {
-    Q_D(const QActivityNode);
+    QTUML_D(const QActivityNode);
     return d->inStructuredNode;
 }
 
 void QActivityNode::setInStructuredNode(const QStructuredActivityNode *inStructuredNode)
 {
-    Q_D(QActivityNode);
+    QTUML_D(QActivityNode);
     d->setInStructuredNode(const_cast<QStructuredActivityNode *>(inStructuredNode));
 }
 
@@ -277,19 +277,19 @@ void QActivityNode::setInStructuredNode(const QStructuredActivityNode *inStructu
  */
 const QSet<QActivityPartition *> *QActivityNode::inPartition() const
 {
-    Q_D(const QActivityNode);
+    QTUML_D(const QActivityNode);
     return d->inPartition;
 }
 
 void QActivityNode::addInPartition(const QActivityPartition *inPartition)
 {
-    Q_D(QActivityNode);
+    QTUML_D(QActivityNode);
     d->addInPartition(const_cast<QActivityPartition *>(inPartition));
 }
 
 void QActivityNode::removeInPartition(const QActivityPartition *inPartition)
 {
-    Q_D(QActivityNode);
+    QTUML_D(QActivityNode);
     d->removeInPartition(const_cast<QActivityPartition *>(inPartition));
 }
 
@@ -298,19 +298,19 @@ void QActivityNode::removeInPartition(const QActivityPartition *inPartition)
  */
 const QSet<QInterruptibleActivityRegion *> *QActivityNode::inInterruptibleRegion() const
 {
-    Q_D(const QActivityNode);
+    QTUML_D(const QActivityNode);
     return d->inInterruptibleRegion;
 }
 
 void QActivityNode::addInInterruptibleRegion(const QInterruptibleActivityRegion *inInterruptibleRegion)
 {
-    Q_D(QActivityNode);
+    QTUML_D(QActivityNode);
     d->addInInterruptibleRegion(const_cast<QInterruptibleActivityRegion *>(inInterruptibleRegion));
 }
 
 void QActivityNode::removeInInterruptibleRegion(const QInterruptibleActivityRegion *inInterruptibleRegion)
 {
-    Q_D(QActivityNode);
+    QTUML_D(QActivityNode);
     d->removeInInterruptibleRegion(const_cast<QInterruptibleActivityRegion *>(inInterruptibleRegion));
 }
 
@@ -319,19 +319,19 @@ void QActivityNode::removeInInterruptibleRegion(const QInterruptibleActivityRegi
  */
 const QSet<QActivityEdge *> *QActivityNode::outgoings() const
 {
-    Q_D(const QActivityNode);
+    QTUML_D(const QActivityNode);
     return d->outgoings;
 }
 
 void QActivityNode::addOutgoing(const QActivityEdge *outgoing)
 {
-    Q_D(QActivityNode);
+    QTUML_D(QActivityNode);
     d->addOutgoing(const_cast<QActivityEdge *>(outgoing));
 }
 
 void QActivityNode::removeOutgoing(const QActivityEdge *outgoing)
 {
-    Q_D(QActivityNode);
+    QTUML_D(QActivityNode);
     d->removeOutgoing(const_cast<QActivityEdge *>(outgoing));
 }
 

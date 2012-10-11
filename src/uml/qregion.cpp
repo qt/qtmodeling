@@ -159,13 +159,13 @@ QRegion::~QRegion()
  */
 QRegion *QRegion::extendedRegion() const
 {
-    Q_D(const QRegion);
+    QTUML_D(const QRegion);
     return d->extendedRegion;
 }
 
 void QRegion::setExtendedRegion(const QRegion *extendedRegion)
 {
-    Q_D(QRegion);
+    QTUML_D(QRegion);
     d->setExtendedRegion(const_cast<QRegion *>(extendedRegion));
 }
 
@@ -174,19 +174,19 @@ void QRegion::setExtendedRegion(const QRegion *extendedRegion)
  */
 const QSet<QTransition *> *QRegion::transitions() const
 {
-    Q_D(const QRegion);
+    QTUML_D(const QRegion);
     return d->transitions;
 }
 
 void QRegion::addTransition(const QTransition *transition)
 {
-    Q_D(QRegion);
+    QTUML_D(QRegion);
     d->addTransition(const_cast<QTransition *>(transition));
 }
 
 void QRegion::removeTransition(const QTransition *transition)
 {
-    Q_D(QRegion);
+    QTUML_D(QRegion);
     d->removeTransition(const_cast<QTransition *>(transition));
 }
 
@@ -195,13 +195,13 @@ void QRegion::removeTransition(const QTransition *transition)
  */
 QStateMachine *QRegion::stateMachine() const
 {
-    Q_D(const QRegion);
+    QTUML_D(const QRegion);
     return d->stateMachine;
 }
 
 void QRegion::setStateMachine(const QStateMachine *stateMachine)
 {
-    Q_D(QRegion);
+    QTUML_D(QRegion);
     d->setStateMachine(const_cast<QStateMachine *>(stateMachine));
 }
 
@@ -210,13 +210,13 @@ void QRegion::setStateMachine(const QStateMachine *stateMachine)
  */
 QState *QRegion::state() const
 {
-    Q_D(const QRegion);
+    QTUML_D(const QRegion);
     return d->state;
 }
 
 void QRegion::setState(const QState *state)
 {
-    Q_D(QRegion);
+    QTUML_D(QRegion);
     d->setState(const_cast<QState *>(state));
 }
 
@@ -233,19 +233,19 @@ QClassifier *QRegion::redefinitionContext() const
  */
 const QSet<QVertex *> *QRegion::subvertices() const
 {
-    Q_D(const QRegion);
+    QTUML_D(const QRegion);
     return d->subvertices;
 }
 
 void QRegion::addSubvertex(const QVertex *subvertex)
 {
-    Q_D(QRegion);
+    QTUML_D(QRegion);
     d->addSubvertex(const_cast<QVertex *>(subvertex));
 }
 
 void QRegion::removeSubvertex(const QVertex *subvertex)
 {
-    Q_D(QRegion);
+    QTUML_D(QRegion);
     d->removeSubvertex(const_cast<QVertex *>(subvertex));
 }
 

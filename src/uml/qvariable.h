@@ -99,7 +99,6 @@ class Q_UML_EXPORT QVariable : public QObject, public QMultiplicityElement, publ
     Q_PROPERTY(QActivity * activityScope READ activityScope WRITE setActivityScope)
 
     Q_DISABLE_COPY(QVariable)
-    QTUML_DECLARE_PRIVATE(QVariable)
 
 public:
     explicit QVariable(QObject *parent = 0);

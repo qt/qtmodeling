@@ -63,7 +63,6 @@ class QActivity;
 class Q_UML_EXPORT QActivityGroup : public virtual QNamedElement
 {
     Q_DISABLE_COPY(QActivityGroup)
-    QTUML_DECLARE_PRIVATE(QActivityGroup)
 
 public:
     virtual ~QActivityGroup();

@@ -103,13 +103,13 @@ QAddStructuralFeatureValueAction::~QAddStructuralFeatureValueAction()
  */
 bool QAddStructuralFeatureValueAction::isReplaceAll() const
 {
-    Q_D(const QAddStructuralFeatureValueAction);
+    QTUML_D(const QAddStructuralFeatureValueAction);
     return d->isReplaceAll;
 }
 
 void QAddStructuralFeatureValueAction::setReplaceAll(bool isReplaceAll)
 {
-    Q_D(QAddStructuralFeatureValueAction);
+    QTUML_D(QAddStructuralFeatureValueAction);
     d->setReplaceAll(isReplaceAll);
 }
 
@@ -118,13 +118,13 @@ void QAddStructuralFeatureValueAction::setReplaceAll(bool isReplaceAll)
  */
 QInputPin *QAddStructuralFeatureValueAction::insertAt() const
 {
-    Q_D(const QAddStructuralFeatureValueAction);
+    QTUML_D(const QAddStructuralFeatureValueAction);
     return d->insertAt;
 }
 
 void QAddStructuralFeatureValueAction::setInsertAt(const QInputPin *insertAt)
 {
-    Q_D(QAddStructuralFeatureValueAction);
+    QTUML_D(QAddStructuralFeatureValueAction);
     d->setInsertAt(const_cast<QInputPin *>(insertAt));
 }
 

@@ -81,13 +81,13 @@ QStructuralFeature::~QStructuralFeature()
  */
 bool QStructuralFeature::isReadOnly() const
 {
-    Q_D(const QStructuralFeature);
+    QTUML_D(const QStructuralFeature);
     return d->isReadOnly;
 }
 
 void QStructuralFeature::setReadOnly(bool isReadOnly)
 {
-    Q_D(QStructuralFeature);
+    QTUML_D(QStructuralFeature);
     d->setReadOnly(isReadOnly);
 }
 

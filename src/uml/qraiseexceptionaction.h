@@ -103,7 +103,6 @@ class Q_UML_EXPORT QRaiseExceptionAction : public QObject, public QAction
     Q_PROPERTY(QInputPin * exception READ exception WRITE setException)
 
     Q_DISABLE_COPY(QRaiseExceptionAction)
-    QTUML_DECLARE_PRIVATE(QRaiseExceptionAction)
 
 public:
     explicit QRaiseExceptionAction(QObject *parent = 0);

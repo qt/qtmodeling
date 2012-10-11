@@ -103,19 +103,19 @@ QTrigger::~QTrigger()
  */
 const QSet<QPort *> *QTrigger::ports() const
 {
-    Q_D(const QTrigger);
+    QTUML_D(const QTrigger);
     return d->ports;
 }
 
 void QTrigger::addPort(const QPort *port)
 {
-    Q_D(QTrigger);
+    QTUML_D(QTrigger);
     d->addPort(const_cast<QPort *>(port));
 }
 
 void QTrigger::removePort(const QPort *port)
 {
-    Q_D(QTrigger);
+    QTUML_D(QTrigger);
     d->removePort(const_cast<QPort *>(port));
 }
 
@@ -124,13 +124,13 @@ void QTrigger::removePort(const QPort *port)
  */
 QEvent *QTrigger::event() const
 {
-    Q_D(const QTrigger);
+    QTUML_D(const QTrigger);
     return d->event;
 }
 
 void QTrigger::setEvent(const QEvent *event)
 {
-    Q_D(QTrigger);
+    QTUML_D(QTrigger);
     d->setEvent(const_cast<QEvent *>(event));
 }
 

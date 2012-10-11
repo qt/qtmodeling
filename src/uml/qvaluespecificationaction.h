@@ -105,7 +105,6 @@ class Q_UML_EXPORT QValueSpecificationAction : public QObject, public QAction
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
     Q_DISABLE_COPY(QValueSpecificationAction)
-    QTUML_DECLARE_PRIVATE(QValueSpecificationAction)
 
 public:
     explicit QValueSpecificationAction(QObject *parent = 0);

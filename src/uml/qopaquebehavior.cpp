@@ -107,19 +107,19 @@ QOpaqueBehavior::~QOpaqueBehavior()
  */
 const QList<QString> *QOpaqueBehavior::languages() const
 {
-    Q_D(const QOpaqueBehavior);
+    QTUML_D(const QOpaqueBehavior);
     return d->languages;
 }
 
 void QOpaqueBehavior::addLanguage(QString language)
 {
-    Q_D(QOpaqueBehavior);
+    QTUML_D(QOpaqueBehavior);
     d->addLanguage(language);
 }
 
 void QOpaqueBehavior::removeLanguage(QString language)
 {
-    Q_D(QOpaqueBehavior);
+    QTUML_D(QOpaqueBehavior);
     d->removeLanguage(language);
 }
 
@@ -128,19 +128,19 @@ void QOpaqueBehavior::removeLanguage(QString language)
  */
 const QList<QString> *QOpaqueBehavior::bodies() const
 {
-    Q_D(const QOpaqueBehavior);
+    QTUML_D(const QOpaqueBehavior);
     return d->bodies;
 }
 
 void QOpaqueBehavior::addBody(QString body)
 {
-    Q_D(QOpaqueBehavior);
+    QTUML_D(QOpaqueBehavior);
     d->addBody(body);
 }
 
 void QOpaqueBehavior::removeBody(QString body)
 {
-    Q_D(QOpaqueBehavior);
+    QTUML_D(QOpaqueBehavior);
     d->removeBody(body);
 }
 

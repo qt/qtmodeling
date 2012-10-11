@@ -135,7 +135,6 @@ class Q_UML_EXPORT QOperation : public QObject, public QTemplateableElement, pub
     Q_PROPERTY(const QSet<QType *> * raisedExceptions READ raisedExceptions)
 
     Q_DISABLE_COPY(QOperation)
-    QTUML_DECLARE_PRIVATE(QOperation)
 
 public:
     explicit QOperation(QObject *parent = 0);

@@ -109,7 +109,6 @@ class Q_UML_EXPORT QAcceptEventAction : public QObject, public QAction
     Q_PROPERTY(const QSet<QOutputPin *> * results READ results)
 
     Q_DISABLE_COPY(QAcceptEventAction)
-    QTUML_DECLARE_PRIVATE(QAcceptEventAction)
 
 public:
     explicit QAcceptEventAction(QObject *parent = 0);

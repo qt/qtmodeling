@@ -270,19 +270,19 @@ bool QState::isSubmachineState() const
  */
 const QSet<QRegion *> *QState::regions() const
 {
-    Q_D(const QState);
+    QTUML_D(const QState);
     return d->regions;
 }
 
 void QState::addRegion(const QRegion *region)
 {
-    Q_D(QState);
+    QTUML_D(QState);
     d->addRegion(const_cast<QRegion *>(region));
 }
 
 void QState::removeRegion(const QRegion *region)
 {
-    Q_D(QState);
+    QTUML_D(QState);
     d->removeRegion(const_cast<QRegion *>(region));
 }
 
@@ -291,13 +291,13 @@ void QState::removeRegion(const QRegion *region)
  */
 QBehavior *QState::exit() const
 {
-    Q_D(const QState);
+    QTUML_D(const QState);
     return d->exit;
 }
 
 void QState::setExit(const QBehavior *exit)
 {
-    Q_D(QState);
+    QTUML_D(QState);
     d->setExit(const_cast<QBehavior *>(exit));
 }
 
@@ -306,19 +306,19 @@ void QState::setExit(const QBehavior *exit)
  */
 const QSet<QConnectionPointReference *> *QState::connections() const
 {
-    Q_D(const QState);
+    QTUML_D(const QState);
     return d->connections;
 }
 
 void QState::addConnection(const QConnectionPointReference *connection)
 {
-    Q_D(QState);
+    QTUML_D(QState);
     d->addConnection(const_cast<QConnectionPointReference *>(connection));
 }
 
 void QState::removeConnection(const QConnectionPointReference *connection)
 {
-    Q_D(QState);
+    QTUML_D(QState);
     d->removeConnection(const_cast<QConnectionPointReference *>(connection));
 }
 
@@ -335,13 +335,13 @@ QClassifier *QState::redefinitionContext() const
  */
 QState *QState::redefinedState() const
 {
-    Q_D(const QState);
+    QTUML_D(const QState);
     return d->redefinedState;
 }
 
 void QState::setRedefinedState(const QState *redefinedState)
 {
-    Q_D(QState);
+    QTUML_D(QState);
     d->setRedefinedState(const_cast<QState *>(redefinedState));
 }
 
@@ -350,19 +350,19 @@ void QState::setRedefinedState(const QState *redefinedState)
  */
 const QSet<QTrigger *> *QState::deferrableTriggers() const
 {
-    Q_D(const QState);
+    QTUML_D(const QState);
     return d->deferrableTriggers;
 }
 
 void QState::addDeferrableTrigger(const QTrigger *deferrableTrigger)
 {
-    Q_D(QState);
+    QTUML_D(QState);
     d->addDeferrableTrigger(const_cast<QTrigger *>(deferrableTrigger));
 }
 
 void QState::removeDeferrableTrigger(const QTrigger *deferrableTrigger)
 {
-    Q_D(QState);
+    QTUML_D(QState);
     d->removeDeferrableTrigger(const_cast<QTrigger *>(deferrableTrigger));
 }
 
@@ -371,19 +371,19 @@ void QState::removeDeferrableTrigger(const QTrigger *deferrableTrigger)
  */
 const QSet<QPseudostate *> *QState::connectionPoints() const
 {
-    Q_D(const QState);
+    QTUML_D(const QState);
     return d->connectionPoints;
 }
 
 void QState::addConnectionPoint(const QPseudostate *connectionPoint)
 {
-    Q_D(QState);
+    QTUML_D(QState);
     d->addConnectionPoint(const_cast<QPseudostate *>(connectionPoint));
 }
 
 void QState::removeConnectionPoint(const QPseudostate *connectionPoint)
 {
-    Q_D(QState);
+    QTUML_D(QState);
     d->removeConnectionPoint(const_cast<QPseudostate *>(connectionPoint));
 }
 
@@ -392,13 +392,13 @@ void QState::removeConnectionPoint(const QPseudostate *connectionPoint)
  */
 QBehavior *QState::entry() const
 {
-    Q_D(const QState);
+    QTUML_D(const QState);
     return d->entry;
 }
 
 void QState::setEntry(const QBehavior *entry)
 {
-    Q_D(QState);
+    QTUML_D(QState);
     d->setEntry(const_cast<QBehavior *>(entry));
 }
 
@@ -407,13 +407,13 @@ void QState::setEntry(const QBehavior *entry)
  */
 QBehavior *QState::doActivity() const
 {
-    Q_D(const QState);
+    QTUML_D(const QState);
     return d->doActivity;
 }
 
 void QState::setDoActivity(const QBehavior *doActivity)
 {
-    Q_D(QState);
+    QTUML_D(QState);
     d->setDoActivity(const_cast<QBehavior *>(doActivity));
 }
 
@@ -422,13 +422,13 @@ void QState::setDoActivity(const QBehavior *doActivity)
  */
 QStateMachine *QState::submachine() const
 {
-    Q_D(const QState);
+    QTUML_D(const QState);
     return d->submachine;
 }
 
 void QState::setSubmachine(const QStateMachine *submachine)
 {
-    Q_D(QState);
+    QTUML_D(QState);
     d->setSubmachine(const_cast<QStateMachine *>(submachine));
 }
 
@@ -437,13 +437,13 @@ void QState::setSubmachine(const QStateMachine *submachine)
  */
 QConstraint *QState::stateInvariant() const
 {
-    Q_D(const QState);
+    QTUML_D(const QState);
     return d->stateInvariant;
 }
 
 void QState::setStateInvariant(const QConstraint *stateInvariant)
 {
-    Q_D(QState);
+    QTUML_D(QState);
     d->setStateInvariant(const_cast<QConstraint *>(stateInvariant));
 }
 

@@ -62,7 +62,6 @@ class QPort;
 class Q_UML_EXPORT QInvocationAction : public QAction
 {
     Q_DISABLE_COPY(QInvocationAction)
-    QTUML_DECLARE_PRIVATE(QInvocationAction)
 
 public:
     virtual ~QInvocationAction();

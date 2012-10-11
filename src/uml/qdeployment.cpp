@@ -139,13 +139,13 @@ QDeployment::~QDeployment()
  */
 QDeploymentTarget *QDeployment::location() const
 {
-    Q_D(const QDeployment);
+    QTUML_D(const QDeployment);
     return d->location;
 }
 
 void QDeployment::setLocation(const QDeploymentTarget *location)
 {
-    Q_D(QDeployment);
+    QTUML_D(QDeployment);
     d->setLocation(const_cast<QDeploymentTarget *>(location));
 }
 
@@ -154,19 +154,19 @@ void QDeployment::setLocation(const QDeploymentTarget *location)
  */
 const QSet<QDeploymentSpecification *> *QDeployment::configurations() const
 {
-    Q_D(const QDeployment);
+    QTUML_D(const QDeployment);
     return d->configurations;
 }
 
 void QDeployment::addConfiguration(const QDeploymentSpecification *configuration)
 {
-    Q_D(QDeployment);
+    QTUML_D(QDeployment);
     d->addConfiguration(const_cast<QDeploymentSpecification *>(configuration));
 }
 
 void QDeployment::removeConfiguration(const QDeploymentSpecification *configuration)
 {
-    Q_D(QDeployment);
+    QTUML_D(QDeployment);
     d->removeConfiguration(const_cast<QDeploymentSpecification *>(configuration));
 }
 
@@ -175,19 +175,19 @@ void QDeployment::removeConfiguration(const QDeploymentSpecification *configurat
  */
 const QSet<QDeployedArtifact *> *QDeployment::deployedArtifacts() const
 {
-    Q_D(const QDeployment);
+    QTUML_D(const QDeployment);
     return d->deployedArtifacts;
 }
 
 void QDeployment::addDeployedArtifact(const QDeployedArtifact *deployedArtifact)
 {
-    Q_D(QDeployment);
+    QTUML_D(QDeployment);
     d->addDeployedArtifact(const_cast<QDeployedArtifact *>(deployedArtifact));
 }
 
 void QDeployment::removeDeployedArtifact(const QDeployedArtifact *deployedArtifact)
 {
-    Q_D(QDeployment);
+    QTUML_D(QDeployment);
     d->removeDeployedArtifact(const_cast<QDeployedArtifact *>(deployedArtifact));
 }
 

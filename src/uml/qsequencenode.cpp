@@ -96,19 +96,19 @@ QSequenceNode::~QSequenceNode()
  */
 const QList<QExecutableNode *> *QSequenceNode::executableNodes() const
 {
-    Q_D(const QSequenceNode);
+    QTUML_D(const QSequenceNode);
     return d->executableNodes;
 }
 
 void QSequenceNode::addExecutableNode(const QExecutableNode *executableNode)
 {
-    Q_D(QSequenceNode);
+    QTUML_D(QSequenceNode);
     d->addExecutableNode(const_cast<QExecutableNode *>(executableNode));
 }
 
 void QSequenceNode::removeExecutableNode(const QExecutableNode *executableNode)
 {
-    Q_D(QSequenceNode);
+    QTUML_D(QSequenceNode);
     d->removeExecutableNode(const_cast<QExecutableNode *>(executableNode));
 }
 

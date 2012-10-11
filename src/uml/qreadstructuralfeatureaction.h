@@ -107,7 +107,6 @@ class Q_UML_EXPORT QReadStructuralFeatureAction : public QObject, public QStruct
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
     Q_DISABLE_COPY(QReadStructuralFeatureAction)
-    QTUML_DECLARE_PRIVATE(QReadStructuralFeatureAction)
 
 public:
     explicit QReadStructuralFeatureAction(QObject *parent = 0);

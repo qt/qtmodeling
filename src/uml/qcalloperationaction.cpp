@@ -104,13 +104,13 @@ QCallOperationAction::~QCallOperationAction()
  */
 QOperation *QCallOperationAction::operation() const
 {
-    Q_D(const QCallOperationAction);
+    QTUML_D(const QCallOperationAction);
     return d->operation;
 }
 
 void QCallOperationAction::setOperation(const QOperation *operation)
 {
-    Q_D(QCallOperationAction);
+    QTUML_D(QCallOperationAction);
     d->setOperation(const_cast<QOperation *>(operation));
 }
 
@@ -119,13 +119,13 @@ void QCallOperationAction::setOperation(const QOperation *operation)
  */
 QInputPin *QCallOperationAction::target() const
 {
-    Q_D(const QCallOperationAction);
+    QTUML_D(const QCallOperationAction);
     return d->target;
 }
 
 void QCallOperationAction::setTarget(const QInputPin *target)
 {
-    Q_D(QCallOperationAction);
+    QTUML_D(QCallOperationAction);
     d->setTarget(const_cast<QInputPin *>(target));
 }
 

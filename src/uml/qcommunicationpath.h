@@ -59,7 +59,6 @@ class Q_UML_EXPORT QCommunicationPath : public QAssociation
     Q_OBJECT
 
     Q_DISABLE_COPY(QCommunicationPath)
-    QTUML_DECLARE_PRIVATE(QCommunicationPath)
 
 public:
     explicit QCommunicationPath(QObject *parent = 0);

@@ -103,7 +103,6 @@ class Q_UML_EXPORT QReadSelfAction : public QObject, public QAction
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
     Q_DISABLE_COPY(QReadSelfAction)
-    QTUML_DECLARE_PRIVATE(QReadSelfAction)
 
 public:
     explicit QReadSelfAction(QObject *parent = 0);

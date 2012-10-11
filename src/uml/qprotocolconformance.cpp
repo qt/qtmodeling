@@ -112,13 +112,13 @@ QProtocolConformance::~QProtocolConformance()
  */
 QProtocolStateMachine *QProtocolConformance::specificMachine() const
 {
-    Q_D(const QProtocolConformance);
+    QTUML_D(const QProtocolConformance);
     return d->specificMachine;
 }
 
 void QProtocolConformance::setSpecificMachine(const QProtocolStateMachine *specificMachine)
 {
-    Q_D(QProtocolConformance);
+    QTUML_D(QProtocolConformance);
     d->setSpecificMachine(const_cast<QProtocolStateMachine *>(specificMachine));
 }
 
@@ -127,13 +127,13 @@ void QProtocolConformance::setSpecificMachine(const QProtocolStateMachine *speci
  */
 QProtocolStateMachine *QProtocolConformance::generalMachine() const
 {
-    Q_D(const QProtocolConformance);
+    QTUML_D(const QProtocolConformance);
     return d->generalMachine;
 }
 
 void QProtocolConformance::setGeneralMachine(const QProtocolStateMachine *generalMachine)
 {
-    Q_D(QProtocolConformance);
+    QTUML_D(QProtocolConformance);
     d->setGeneralMachine(const_cast<QProtocolStateMachine *>(generalMachine));
 }
 

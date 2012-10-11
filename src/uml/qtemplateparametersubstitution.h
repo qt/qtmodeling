@@ -74,7 +74,6 @@ class Q_UML_EXPORT QTemplateParameterSubstitution : public QObject, public QElem
     Q_PROPERTY(QTemplateBinding * templateBinding READ templateBinding WRITE setTemplateBinding)
 
     Q_DISABLE_COPY(QTemplateParameterSubstitution)
-    QTUML_DECLARE_PRIVATE(QTemplateParameterSubstitution)
 
 public:
     explicit QTemplateParameterSubstitution(QObject *parent = 0);

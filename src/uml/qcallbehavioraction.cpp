@@ -90,13 +90,13 @@ QCallBehaviorAction::~QCallBehaviorAction()
  */
 QBehavior *QCallBehaviorAction::behavior() const
 {
-    Q_D(const QCallBehaviorAction);
+    QTUML_D(const QCallBehaviorAction);
     return d->behavior;
 }
 
 void QCallBehaviorAction::setBehavior(const QBehavior *behavior)
 {
-    Q_D(QCallBehaviorAction);
+    QTUML_D(QCallBehaviorAction);
     d->setBehavior(const_cast<QBehavior *>(behavior));
 }
 

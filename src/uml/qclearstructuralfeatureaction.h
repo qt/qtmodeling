@@ -107,7 +107,6 @@ class Q_UML_EXPORT QClearStructuralFeatureAction : public QObject, public QStruc
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
     Q_DISABLE_COPY(QClearStructuralFeatureAction)
-    QTUML_DECLARE_PRIVATE(QClearStructuralFeatureAction)
 
 public:
     explicit QClearStructuralFeatureAction(QObject *parent = 0);

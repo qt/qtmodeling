@@ -119,13 +119,13 @@ QPackageImport::~QPackageImport()
  */
 QtUml::VisibilityKind QPackageImport::visibility() const
 {
-    Q_D(const QPackageImport);
+    QTUML_D(const QPackageImport);
     return d->visibility;
 }
 
 void QPackageImport::setVisibility(QtUml::VisibilityKind visibility)
 {
-    Q_D(QPackageImport);
+    QTUML_D(QPackageImport);
     d->setVisibility(visibility);
 }
 
@@ -134,13 +134,13 @@ void QPackageImport::setVisibility(QtUml::VisibilityKind visibility)
  */
 QNamespace *QPackageImport::importingNamespace() const
 {
-    Q_D(const QPackageImport);
+    QTUML_D(const QPackageImport);
     return d->importingNamespace;
 }
 
 void QPackageImport::setImportingNamespace(const QNamespace *importingNamespace)
 {
-    Q_D(QPackageImport);
+    QTUML_D(QPackageImport);
     d->setImportingNamespace(const_cast<QNamespace *>(importingNamespace));
 }
 
@@ -149,13 +149,13 @@ void QPackageImport::setImportingNamespace(const QNamespace *importingNamespace)
  */
 QPackage *QPackageImport::importedPackage() const
 {
-    Q_D(const QPackageImport);
+    QTUML_D(const QPackageImport);
     return d->importedPackage;
 }
 
 void QPackageImport::setImportedPackage(const QPackage *importedPackage)
 {
-    Q_D(QPackageImport);
+    QTUML_D(QPackageImport);
     d->setImportedPackage(const_cast<QPackage *>(importedPackage));
 }
 

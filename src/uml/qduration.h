@@ -90,7 +90,6 @@ class Q_UML_EXPORT QDuration : public QObject, public QValueSpecification
     Q_PROPERTY(const QSet<QObservation *> * observations READ observations)
 
     Q_DISABLE_COPY(QDuration)
-    QTUML_DECLARE_PRIVATE(QDuration)
 
 public:
     explicit QDuration(QObject *parent = 0);

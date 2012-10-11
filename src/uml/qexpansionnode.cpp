@@ -96,13 +96,13 @@ QExpansionNode::~QExpansionNode()
  */
 QExpansionRegion *QExpansionNode::regionAsOutput() const
 {
-    Q_D(const QExpansionNode);
+    QTUML_D(const QExpansionNode);
     return d->regionAsOutput;
 }
 
 void QExpansionNode::setRegionAsOutput(const QExpansionRegion *regionAsOutput)
 {
-    Q_D(QExpansionNode);
+    QTUML_D(QExpansionNode);
     d->setRegionAsOutput(const_cast<QExpansionRegion *>(regionAsOutput));
 }
 
@@ -111,13 +111,13 @@ void QExpansionNode::setRegionAsOutput(const QExpansionRegion *regionAsOutput)
  */
 QExpansionRegion *QExpansionNode::regionAsInput() const
 {
-    Q_D(const QExpansionNode);
+    QTUML_D(const QExpansionNode);
     return d->regionAsInput;
 }
 
 void QExpansionNode::setRegionAsInput(const QExpansionRegion *regionAsInput)
 {
-    Q_D(QExpansionNode);
+    QTUML_D(QExpansionNode);
     d->setRegionAsInput(const_cast<QExpansionRegion *>(regionAsInput));
 }
 

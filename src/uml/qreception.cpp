@@ -90,13 +90,13 @@ QReception::~QReception()
  */
 QSignal *QReception::signal() const
 {
-    Q_D(const QReception);
+    QTUML_D(const QReception);
     return d->signal;
 }
 
 void QReception::setSignal(const QSignal *signal)
 {
-    Q_D(QReception);
+    QTUML_D(QReception);
     d->setSignal(const_cast<QSignal *>(signal));
 }
 

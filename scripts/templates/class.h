@@ -127,10 +127,7 @@
 
 [%- IF not(class.superclass) %]
 
-#define QTUML_DECLARE_PRIVATE(Class) \
-    inline Class##Private* d_func() { return reinterpret_cast<Class##Private *>(d_umlptr); } \
-    inline const Class##Private* d_func() const { return reinterpret_cast<const Class##Private *>(d_umlptr); } \
-    friend class Class##Private;
+#define QTUML_D(Class) Class##Private * const d = dynamic_cast<Class##Private *>(d_umlptr);
 [%- END -%]
 
 
@@ -176,7 +173,6 @@ class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name}[%- IF 
     [%- GENERATEPROPERTIES(class) -%]
 [% END %]
     Q_DISABLE_COPY(${class.name})
-    QTUML_DECLARE_PRIVATE(${class.name})
 
 public:
     [%- IF class.isAbstract == 'false' %]

@@ -63,7 +63,6 @@ class Q_UML_EXPORT QValuePin : public QInputPin
     Q_PROPERTY(QValueSpecification * value READ value WRITE setValue)
 
     Q_DISABLE_COPY(QValuePin)
-    QTUML_DECLARE_PRIVATE(QValuePin)
 
 public:
     explicit QValuePin(QObject *parent = 0);

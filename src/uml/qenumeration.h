@@ -66,7 +66,6 @@ class Q_UML_EXPORT QEnumeration : public QDataType
     Q_PROPERTY(const QList<QEnumerationLiteral *> * ownedLiterals READ ownedLiterals)
 
     Q_DISABLE_COPY(QEnumeration)
-    QTUML_DECLARE_PRIVATE(QEnumeration)
 
 public:
     explicit QEnumeration(QObject *parent = 0);

@@ -59,7 +59,6 @@ class Q_UML_EXPORT QRealization : public QAbstraction
     Q_OBJECT
 
     Q_DISABLE_COPY(QRealization)
-    QTUML_DECLARE_PRIVATE(QRealization)
 
 public:
     explicit QRealization(QObject *parent = 0);

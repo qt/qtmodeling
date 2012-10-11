@@ -84,7 +84,6 @@ class Q_UML_EXPORT QStateInvariant : public QObject, public QInteractionFragment
     Q_PROPERTY(QLifeline * covered READ covered WRITE setCovered)
 
     Q_DISABLE_COPY(QStateInvariant)
-    QTUML_DECLARE_PRIVATE(QStateInvariant)
 
 public:
     explicit QStateInvariant(QObject *parent = 0);

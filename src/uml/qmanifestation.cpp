@@ -97,13 +97,13 @@ QManifestation::~QManifestation()
  */
 QPackageableElement *QManifestation::utilizedElement() const
 {
-    Q_D(const QManifestation);
+    QTUML_D(const QManifestation);
     return d->utilizedElement;
 }
 
 void QManifestation::setUtilizedElement(const QPackageableElement *utilizedElement)
 {
-    Q_D(QManifestation);
+    QTUML_D(QManifestation);
     d->setUtilizedElement(const_cast<QPackageableElement *>(utilizedElement));
 }
 

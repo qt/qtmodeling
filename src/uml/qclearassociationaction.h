@@ -105,7 +105,6 @@ class Q_UML_EXPORT QClearAssociationAction : public QObject, public QAction
     Q_PROPERTY(QAssociation * association READ association WRITE setAssociation)
 
     Q_DISABLE_COPY(QClearAssociationAction)
-    QTUML_DECLARE_PRIVATE(QClearAssociationAction)
 
 public:
     explicit QClearAssociationAction(QObject *parent = 0);

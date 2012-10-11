@@ -111,13 +111,13 @@ QValueSpecificationAction::~QValueSpecificationAction()
  */
 QValueSpecification *QValueSpecificationAction::value() const
 {
-    Q_D(const QValueSpecificationAction);
+    QTUML_D(const QValueSpecificationAction);
     return d->value;
 }
 
 void QValueSpecificationAction::setValue(const QValueSpecification *value)
 {
-    Q_D(QValueSpecificationAction);
+    QTUML_D(QValueSpecificationAction);
     d->setValue(const_cast<QValueSpecification *>(value));
 }
 
@@ -126,13 +126,13 @@ void QValueSpecificationAction::setValue(const QValueSpecification *value)
  */
 QOutputPin *QValueSpecificationAction::result() const
 {
-    Q_D(const QValueSpecificationAction);
+    QTUML_D(const QValueSpecificationAction);
     return d->result;
 }
 
 void QValueSpecificationAction::setResult(const QOutputPin *result)
 {
-    Q_D(QValueSpecificationAction);
+    QTUML_D(QValueSpecificationAction);
     d->setResult(const_cast<QOutputPin *>(result));
 }
 

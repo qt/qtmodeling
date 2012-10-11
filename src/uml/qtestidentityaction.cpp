@@ -124,13 +124,13 @@ QTestIdentityAction::~QTestIdentityAction()
  */
 QInputPin *QTestIdentityAction::second() const
 {
-    Q_D(const QTestIdentityAction);
+    QTUML_D(const QTestIdentityAction);
     return d->second;
 }
 
 void QTestIdentityAction::setSecond(const QInputPin *second)
 {
-    Q_D(QTestIdentityAction);
+    QTUML_D(QTestIdentityAction);
     d->setSecond(const_cast<QInputPin *>(second));
 }
 
@@ -139,13 +139,13 @@ void QTestIdentityAction::setSecond(const QInputPin *second)
  */
 QOutputPin *QTestIdentityAction::result() const
 {
-    Q_D(const QTestIdentityAction);
+    QTUML_D(const QTestIdentityAction);
     return d->result;
 }
 
 void QTestIdentityAction::setResult(const QOutputPin *result)
 {
-    Q_D(QTestIdentityAction);
+    QTUML_D(QTestIdentityAction);
     d->setResult(const_cast<QOutputPin *>(result));
 }
 
@@ -154,13 +154,13 @@ void QTestIdentityAction::setResult(const QOutputPin *result)
  */
 QInputPin *QTestIdentityAction::first() const
 {
-    Q_D(const QTestIdentityAction);
+    QTUML_D(const QTestIdentityAction);
     return d->first;
 }
 
 void QTestIdentityAction::setFirst(const QInputPin *first)
 {
-    Q_D(QTestIdentityAction);
+    QTUML_D(QTestIdentityAction);
     d->setFirst(const_cast<QInputPin *>(first));
 }
 

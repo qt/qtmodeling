@@ -98,13 +98,13 @@ QImage::~QImage()
  */
 QString QImage::format() const
 {
-    Q_D(const QImage);
+    QTUML_D(const QImage);
     return d->format;
 }
 
 void QImage::setFormat(QString format)
 {
-    Q_D(QImage);
+    QTUML_D(QImage);
     d->setFormat(format);
 }
 
@@ -113,13 +113,13 @@ void QImage::setFormat(QString format)
  */
 QString QImage::location() const
 {
-    Q_D(const QImage);
+    QTUML_D(const QImage);
     return d->location;
 }
 
 void QImage::setLocation(QString location)
 {
-    Q_D(QImage);
+    QTUML_D(QImage);
     d->setLocation(location);
 }
 
@@ -128,13 +128,13 @@ void QImage::setLocation(QString location)
  */
 QString QImage::content() const
 {
-    Q_D(const QImage);
+    QTUML_D(const QImage);
     return d->content;
 }
 
 void QImage::setContent(QString content)
 {
-    Q_D(QImage);
+    QTUML_D(QImage);
     d->setContent(content);
 }
 

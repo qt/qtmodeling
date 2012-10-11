@@ -89,13 +89,13 @@ QLiteralUnlimitedNatural::~QLiteralUnlimitedNatural()
  */
 qint32 QLiteralUnlimitedNatural::value() const
 {
-    Q_D(const QLiteralUnlimitedNatural);
+    QTUML_D(const QLiteralUnlimitedNatural);
     return d->value;
 }
 
 void QLiteralUnlimitedNatural::setValue(qint32 value)
 {
-    Q_D(QLiteralUnlimitedNatural);
+    QTUML_D(QLiteralUnlimitedNatural);
     d->setValue(value);
 }
 

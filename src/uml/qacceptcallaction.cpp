@@ -97,13 +97,13 @@ QAcceptCallAction::~QAcceptCallAction()
  */
 QOutputPin *QAcceptCallAction::returnInformation() const
 {
-    Q_D(const QAcceptCallAction);
+    QTUML_D(const QAcceptCallAction);
     return d->returnInformation;
 }
 
 void QAcceptCallAction::setReturnInformation(const QOutputPin *returnInformation)
 {
-    Q_D(QAcceptCallAction);
+    QTUML_D(QAcceptCallAction);
     d->setReturnInformation(const_cast<QOutputPin *>(returnInformation));
 }
 

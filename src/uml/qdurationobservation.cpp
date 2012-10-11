@@ -108,19 +108,19 @@ QDurationObservation::~QDurationObservation()
  */
 const QSet<bool> *QDurationObservation::firstEvents() const
 {
-    Q_D(const QDurationObservation);
+    QTUML_D(const QDurationObservation);
     return d->firstEvents;
 }
 
 void QDurationObservation::addFirstEvent(bool firstEvent)
 {
-    Q_D(QDurationObservation);
+    QTUML_D(QDurationObservation);
     d->addFirstEvent(firstEvent);
 }
 
 void QDurationObservation::removeFirstEvent(bool firstEvent)
 {
-    Q_D(QDurationObservation);
+    QTUML_D(QDurationObservation);
     d->removeFirstEvent(firstEvent);
 }
 
@@ -129,19 +129,19 @@ void QDurationObservation::removeFirstEvent(bool firstEvent)
  */
 const QSet<QNamedElement *> *QDurationObservation::events() const
 {
-    Q_D(const QDurationObservation);
+    QTUML_D(const QDurationObservation);
     return d->events;
 }
 
 void QDurationObservation::addEvent(const QNamedElement *event)
 {
-    Q_D(QDurationObservation);
+    QTUML_D(QDurationObservation);
     d->addEvent(const_cast<QNamedElement *>(event));
 }
 
 void QDurationObservation::removeEvent(const QNamedElement *event)
 {
-    Q_D(QDurationObservation);
+    QTUML_D(QDurationObservation);
     d->removeEvent(const_cast<QNamedElement *>(event));
 }
 

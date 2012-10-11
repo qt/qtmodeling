@@ -88,7 +88,6 @@ class Q_UML_EXPORT QMergeNode : public QObject, public QControlNode
     Q_PROPERTY(const QSet<QActivityEdge *> * outgoings READ outgoings)
 
     Q_DISABLE_COPY(QMergeNode)
-    QTUML_DECLARE_PRIVATE(QMergeNode)
 
 public:
     explicit QMergeNode(QObject *parent = 0);

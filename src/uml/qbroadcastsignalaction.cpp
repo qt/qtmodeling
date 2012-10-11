@@ -90,13 +90,13 @@ QBroadcastSignalAction::~QBroadcastSignalAction()
  */
 QSignal *QBroadcastSignalAction::signal() const
 {
-    Q_D(const QBroadcastSignalAction);
+    QTUML_D(const QBroadcastSignalAction);
     return d->signal;
 }
 
 void QBroadcastSignalAction::setSignal(const QSignal *signal)
 {
-    Q_D(QBroadcastSignalAction);
+    QTUML_D(QBroadcastSignalAction);
     d->setSignal(const_cast<QSignal *>(signal));
 }
 

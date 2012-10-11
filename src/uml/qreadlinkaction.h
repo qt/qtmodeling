@@ -107,7 +107,6 @@ class Q_UML_EXPORT QReadLinkAction : public QObject, public QLinkAction
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
     Q_DISABLE_COPY(QReadLinkAction)
-    QTUML_DECLARE_PRIVATE(QReadLinkAction)
 
 public:
     explicit QReadLinkAction(QObject *parent = 0);

@@ -76,7 +76,6 @@ class Q_UML_EXPORT QGate : public QObject, public QMessageEnd
     Q_PROPERTY(QMessage * message READ message WRITE setMessage)
 
     Q_DISABLE_COPY(QGate)
-    QTUML_DECLARE_PRIVATE(QGate)
 
 public:
     explicit QGate(QObject *parent = 0);

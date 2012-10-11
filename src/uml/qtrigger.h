@@ -82,7 +82,6 @@ class Q_UML_EXPORT QTrigger : public QObject, public QNamedElement
     Q_PROPERTY(QEvent * event READ event WRITE setEvent)
 
     Q_DISABLE_COPY(QTrigger)
-    QTUML_DECLARE_PRIVATE(QTrigger)
 
 public:
     explicit QTrigger(QObject *parent = 0);

@@ -70,7 +70,6 @@ class Q_UML_EXPORT QDeployment : public QDependency
     Q_PROPERTY(const QSet<QDeployedArtifact *> * deployedArtifacts READ deployedArtifacts)
 
     Q_DISABLE_COPY(QDeployment)
-    QTUML_DECLARE_PRIVATE(QDeployment)
 
 public:
     explicit QDeployment(QObject *parent = 0);

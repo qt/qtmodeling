@@ -82,13 +82,13 @@ QType::~QType()
  */
 QPackage *QType::package() const
 {
-    Q_D(const QType);
+    QTUML_D(const QType);
     return d->package;
 }
 
 void QType::setPackage(const QPackage *package)
 {
-    Q_D(QType);
+    QTUML_D(QType);
     d->setPackage(const_cast<QPackage *>(package));
 }
 

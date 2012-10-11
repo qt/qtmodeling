@@ -110,13 +110,13 @@ QCollaborationUse::~QCollaborationUse()
  */
 QCollaboration *QCollaborationUse::type() const
 {
-    Q_D(const QCollaborationUse);
+    QTUML_D(const QCollaborationUse);
     return d->type;
 }
 
 void QCollaborationUse::setType(const QCollaboration *type)
 {
-    Q_D(QCollaborationUse);
+    QTUML_D(QCollaborationUse);
     d->setType(const_cast<QCollaboration *>(type));
 }
 
@@ -125,19 +125,19 @@ void QCollaborationUse::setType(const QCollaboration *type)
  */
 const QSet<QDependency *> *QCollaborationUse::roleBindings() const
 {
-    Q_D(const QCollaborationUse);
+    QTUML_D(const QCollaborationUse);
     return d->roleBindings;
 }
 
 void QCollaborationUse::addRoleBinding(const QDependency *roleBinding)
 {
-    Q_D(QCollaborationUse);
+    QTUML_D(QCollaborationUse);
     d->addRoleBinding(const_cast<QDependency *>(roleBinding));
 }
 
 void QCollaborationUse::removeRoleBinding(const QDependency *roleBinding)
 {
-    Q_D(QCollaborationUse);
+    QTUML_D(QCollaborationUse);
     d->removeRoleBinding(const_cast<QDependency *>(roleBinding));
 }
 

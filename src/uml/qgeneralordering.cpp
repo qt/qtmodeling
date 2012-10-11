@@ -96,13 +96,13 @@ QGeneralOrdering::~QGeneralOrdering()
  */
 QOccurrenceSpecification *QGeneralOrdering::before() const
 {
-    Q_D(const QGeneralOrdering);
+    QTUML_D(const QGeneralOrdering);
     return d->before;
 }
 
 void QGeneralOrdering::setBefore(const QOccurrenceSpecification *before)
 {
-    Q_D(QGeneralOrdering);
+    QTUML_D(QGeneralOrdering);
     d->setBefore(const_cast<QOccurrenceSpecification *>(before));
 }
 
@@ -111,13 +111,13 @@ void QGeneralOrdering::setBefore(const QOccurrenceSpecification *before)
  */
 QOccurrenceSpecification *QGeneralOrdering::after() const
 {
-    Q_D(const QGeneralOrdering);
+    QTUML_D(const QGeneralOrdering);
     return d->after;
 }
 
 void QGeneralOrdering::setAfter(const QOccurrenceSpecification *after)
 {
-    Q_D(QGeneralOrdering);
+    QTUML_D(QGeneralOrdering);
     d->setAfter(const_cast<QOccurrenceSpecification *>(after));
 }
 

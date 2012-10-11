@@ -168,19 +168,19 @@ QNamespace::~QNamespace()
  */
 const QSet<QPackageImport *> *QNamespace::packageImports() const
 {
-    Q_D(const QNamespace);
+    QTUML_D(const QNamespace);
     return d->packageImports;
 }
 
 void QNamespace::addPackageImport(const QPackageImport *packageImport)
 {
-    Q_D(QNamespace);
+    QTUML_D(QNamespace);
     d->addPackageImport(const_cast<QPackageImport *>(packageImport));
 }
 
 void QNamespace::removePackageImport(const QPackageImport *packageImport)
 {
-    Q_D(QNamespace);
+    QTUML_D(QNamespace);
     d->removePackageImport(const_cast<QPackageImport *>(packageImport));
 }
 
@@ -189,7 +189,7 @@ void QNamespace::removePackageImport(const QPackageImport *packageImport)
  */
 const QSet<QNamedElement *> *QNamespace::members() const
 {
-    Q_D(const QNamespace);
+    QTUML_D(const QNamespace);
     return d->members;
 }
 
@@ -206,19 +206,19 @@ const QSet<QPackageableElement *> *QNamespace::importedMembers() const
  */
 const QSet<QElementImport *> *QNamespace::elementImports() const
 {
-    Q_D(const QNamespace);
+    QTUML_D(const QNamespace);
     return d->elementImports;
 }
 
 void QNamespace::addElementImport(const QElementImport *elementImport)
 {
-    Q_D(QNamespace);
+    QTUML_D(QNamespace);
     d->addElementImport(const_cast<QElementImport *>(elementImport));
 }
 
 void QNamespace::removeElementImport(const QElementImport *elementImport)
 {
-    Q_D(QNamespace);
+    QTUML_D(QNamespace);
     d->removeElementImport(const_cast<QElementImport *>(elementImport));
 }
 
@@ -227,19 +227,19 @@ void QNamespace::removeElementImport(const QElementImport *elementImport)
  */
 const QSet<QConstraint *> *QNamespace::ownedRules() const
 {
-    Q_D(const QNamespace);
+    QTUML_D(const QNamespace);
     return d->ownedRules;
 }
 
 void QNamespace::addOwnedRule(const QConstraint *ownedRule)
 {
-    Q_D(QNamespace);
+    QTUML_D(QNamespace);
     d->addOwnedRule(const_cast<QConstraint *>(ownedRule));
 }
 
 void QNamespace::removeOwnedRule(const QConstraint *ownedRule)
 {
-    Q_D(QNamespace);
+    QTUML_D(QNamespace);
     d->removeOwnedRule(const_cast<QConstraint *>(ownedRule));
 }
 
@@ -248,7 +248,7 @@ void QNamespace::removeOwnedRule(const QConstraint *ownedRule)
  */
 const QSet<QNamedElement *> *QNamespace::ownedMembers() const
 {
-    Q_D(const QNamespace);
+    QTUML_D(const QNamespace);
     return d->ownedMembers;
 }
 

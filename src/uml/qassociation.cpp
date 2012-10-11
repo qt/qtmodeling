@@ -153,13 +153,13 @@ QAssociation::~QAssociation()
  */
 bool QAssociation::isDerived() const
 {
-    Q_D(const QAssociation);
+    QTUML_D(const QAssociation);
     return d->isDerived;
 }
 
 void QAssociation::setDerived(bool isDerived)
 {
-    Q_D(QAssociation);
+    QTUML_D(QAssociation);
     d->setDerived(isDerived);
 }
 
@@ -176,19 +176,19 @@ const QList<QType *> *QAssociation::endTypes() const
  */
 const QSet<QProperty *> *QAssociation::navigableOwnedEnds() const
 {
-    Q_D(const QAssociation);
+    QTUML_D(const QAssociation);
     return d->navigableOwnedEnds;
 }
 
 void QAssociation::addNavigableOwnedEnd(const QProperty *navigableOwnedEnd)
 {
-    Q_D(QAssociation);
+    QTUML_D(QAssociation);
     d->addNavigableOwnedEnd(const_cast<QProperty *>(navigableOwnedEnd));
 }
 
 void QAssociation::removeNavigableOwnedEnd(const QProperty *navigableOwnedEnd)
 {
-    Q_D(QAssociation);
+    QTUML_D(QAssociation);
     d->removeNavigableOwnedEnd(const_cast<QProperty *>(navigableOwnedEnd));
 }
 
@@ -197,19 +197,19 @@ void QAssociation::removeNavigableOwnedEnd(const QProperty *navigableOwnedEnd)
  */
 const QList<QProperty *> *QAssociation::ownedEnds() const
 {
-    Q_D(const QAssociation);
+    QTUML_D(const QAssociation);
     return d->ownedEnds;
 }
 
 void QAssociation::addOwnedEnd(const QProperty *ownedEnd)
 {
-    Q_D(QAssociation);
+    QTUML_D(QAssociation);
     d->addOwnedEnd(const_cast<QProperty *>(ownedEnd));
 }
 
 void QAssociation::removeOwnedEnd(const QProperty *ownedEnd)
 {
-    Q_D(QAssociation);
+    QTUML_D(QAssociation);
     d->removeOwnedEnd(const_cast<QProperty *>(ownedEnd));
 }
 
@@ -218,19 +218,19 @@ void QAssociation::removeOwnedEnd(const QProperty *ownedEnd)
  */
 const QList<QProperty *> *QAssociation::memberEnds() const
 {
-    Q_D(const QAssociation);
+    QTUML_D(const QAssociation);
     return d->memberEnds;
 }
 
 void QAssociation::addMemberEnd(const QProperty *memberEnd)
 {
-    Q_D(QAssociation);
+    QTUML_D(QAssociation);
     d->addMemberEnd(const_cast<QProperty *>(memberEnd));
 }
 
 void QAssociation::removeMemberEnd(const QProperty *memberEnd)
 {
-    Q_D(QAssociation);
+    QTUML_D(QAssociation);
     d->removeMemberEnd(const_cast<QProperty *>(memberEnd));
 }
 

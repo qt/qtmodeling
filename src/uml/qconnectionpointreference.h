@@ -88,7 +88,6 @@ class Q_UML_EXPORT QConnectionPointReference : public QObject, public QVertex
     Q_PROPERTY(const QSet<QPseudostate *> * entries READ entries)
 
     Q_DISABLE_COPY(QConnectionPointReference)
-    QTUML_DECLARE_PRIVATE(QConnectionPointReference)
 
 public:
     explicit QConnectionPointReference(QObject *parent = 0);

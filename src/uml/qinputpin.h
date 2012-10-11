@@ -109,7 +109,6 @@ class Q_UML_EXPORT QInputPin : public QObject, public QPin
     Q_PROPERTY(bool isControl READ isControl WRITE setControl)
 
     Q_DISABLE_COPY(QInputPin)
-    QTUML_DECLARE_PRIVATE(QInputPin)
 
 public:
     explicit QInputPin(QObject *parent = 0);

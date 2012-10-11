@@ -65,7 +65,6 @@ class Q_UML_EXPORT QModel : public QPackage
     Q_PROPERTY(QString viewpoint READ viewpoint WRITE setViewpoint)
 
     Q_DISABLE_COPY(QModel)
-    QTUML_DECLARE_PRIVATE(QModel)
 
 public:
     explicit QModel(QObject *parent = 0);

@@ -103,13 +103,13 @@ QWriteStructuralFeatureAction::~QWriteStructuralFeatureAction()
  */
 QOutputPin *QWriteStructuralFeatureAction::result() const
 {
-    Q_D(const QWriteStructuralFeatureAction);
+    QTUML_D(const QWriteStructuralFeatureAction);
     return d->result;
 }
 
 void QWriteStructuralFeatureAction::setResult(const QOutputPin *result)
 {
-    Q_D(QWriteStructuralFeatureAction);
+    QTUML_D(QWriteStructuralFeatureAction);
     d->setResult(const_cast<QOutputPin *>(result));
 }
 
@@ -118,13 +118,13 @@ void QWriteStructuralFeatureAction::setResult(const QOutputPin *result)
  */
 QInputPin *QWriteStructuralFeatureAction::value() const
 {
-    Q_D(const QWriteStructuralFeatureAction);
+    QTUML_D(const QWriteStructuralFeatureAction);
     return d->value;
 }
 
 void QWriteStructuralFeatureAction::setValue(const QInputPin *value)
 {
-    Q_D(QWriteStructuralFeatureAction);
+    QTUML_D(QWriteStructuralFeatureAction);
     d->setValue(const_cast<QInputPin *>(value));
 }
 

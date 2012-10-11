@@ -94,7 +94,6 @@ class Q_UML_EXPORT QMessage : public QObject, public QNamedElement
     Q_PROPERTY(QConnector * connector READ connector WRITE setConnector)
 
     Q_DISABLE_COPY(QMessage)
-    QTUML_DECLARE_PRIVATE(QMessage)
 
 public:
     explicit QMessage(QObject *parent = 0);

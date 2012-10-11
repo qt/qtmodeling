@@ -108,13 +108,13 @@ QClass *QExtension::metaclass() const
  */
 QExtensionEnd *QExtension::ownedEnd() const
 {
-    Q_D(const QExtension);
+    QTUML_D(const QExtension);
     return d->ownedEnd;
 }
 
 void QExtension::setOwnedEnd(const QExtensionEnd *ownedEnd)
 {
-    Q_D(QExtension);
+    QTUML_D(QExtension);
     d->setOwnedEnd(const_cast<QExtensionEnd *>(ownedEnd));
 }
 

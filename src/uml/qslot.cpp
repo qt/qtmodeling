@@ -121,19 +121,19 @@ QSlot::~QSlot()
  */
 const QList<QValueSpecification *> *QSlot::values() const
 {
-    Q_D(const QSlot);
+    QTUML_D(const QSlot);
     return d->values;
 }
 
 void QSlot::addValue(const QValueSpecification *value)
 {
-    Q_D(QSlot);
+    QTUML_D(QSlot);
     d->addValue(const_cast<QValueSpecification *>(value));
 }
 
 void QSlot::removeValue(const QValueSpecification *value)
 {
-    Q_D(QSlot);
+    QTUML_D(QSlot);
     d->removeValue(const_cast<QValueSpecification *>(value));
 }
 
@@ -142,13 +142,13 @@ void QSlot::removeValue(const QValueSpecification *value)
  */
 QStructuralFeature *QSlot::definingFeature() const
 {
-    Q_D(const QSlot);
+    QTUML_D(const QSlot);
     return d->definingFeature;
 }
 
 void QSlot::setDefiningFeature(const QStructuralFeature *definingFeature)
 {
-    Q_D(QSlot);
+    QTUML_D(QSlot);
     d->setDefiningFeature(const_cast<QStructuralFeature *>(definingFeature));
 }
 
@@ -157,13 +157,13 @@ void QSlot::setDefiningFeature(const QStructuralFeature *definingFeature)
  */
 QInstanceSpecification *QSlot::owningInstance() const
 {
-    Q_D(const QSlot);
+    QTUML_D(const QSlot);
     return d->owningInstance;
 }
 
 void QSlot::setOwningInstance(const QInstanceSpecification *owningInstance)
 {
-    Q_D(QSlot);
+    QTUML_D(QSlot);
     d->setOwningInstance(const_cast<QInstanceSpecification *>(owningInstance));
 }
 

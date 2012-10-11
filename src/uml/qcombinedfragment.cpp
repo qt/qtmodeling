@@ -129,13 +129,13 @@ QCombinedFragment::~QCombinedFragment()
  */
 QtUml::InteractionOperatorKind QCombinedFragment::interactionOperator() const
 {
-    Q_D(const QCombinedFragment);
+    QTUML_D(const QCombinedFragment);
     return d->interactionOperator;
 }
 
 void QCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator)
 {
-    Q_D(QCombinedFragment);
+    QTUML_D(QCombinedFragment);
     d->setInteractionOperator(interactionOperator);
 }
 
@@ -144,19 +144,19 @@ void QCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind in
  */
 const QSet<QGate *> *QCombinedFragment::cfragmentGates() const
 {
-    Q_D(const QCombinedFragment);
+    QTUML_D(const QCombinedFragment);
     return d->cfragmentGates;
 }
 
 void QCombinedFragment::addCfragmentGate(const QGate *cfragmentGate)
 {
-    Q_D(QCombinedFragment);
+    QTUML_D(QCombinedFragment);
     d->addCfragmentGate(const_cast<QGate *>(cfragmentGate));
 }
 
 void QCombinedFragment::removeCfragmentGate(const QGate *cfragmentGate)
 {
-    Q_D(QCombinedFragment);
+    QTUML_D(QCombinedFragment);
     d->removeCfragmentGate(const_cast<QGate *>(cfragmentGate));
 }
 
@@ -165,19 +165,19 @@ void QCombinedFragment::removeCfragmentGate(const QGate *cfragmentGate)
  */
 const QList<QInteractionOperand *> *QCombinedFragment::operands() const
 {
-    Q_D(const QCombinedFragment);
+    QTUML_D(const QCombinedFragment);
     return d->operands;
 }
 
 void QCombinedFragment::addOperand(const QInteractionOperand *operand)
 {
-    Q_D(QCombinedFragment);
+    QTUML_D(QCombinedFragment);
     d->addOperand(const_cast<QInteractionOperand *>(operand));
 }
 
 void QCombinedFragment::removeOperand(const QInteractionOperand *operand)
 {
-    Q_D(QCombinedFragment);
+    QTUML_D(QCombinedFragment);
     d->removeOperand(const_cast<QInteractionOperand *>(operand));
 }
 

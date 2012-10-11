@@ -58,7 +58,6 @@ class QMessage;
 class Q_UML_EXPORT QMessageEnd : public virtual QNamedElement
 {
     Q_DISABLE_COPY(QMessageEnd)
-    QTUML_DECLARE_PRIVATE(QMessageEnd)
 
 public:
     virtual ~QMessageEnd();

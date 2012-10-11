@@ -83,7 +83,6 @@ class Q_UML_EXPORT QGeneralization : public QObject, public QDirectedRelationshi
     Q_PROPERTY(QClassifier * general READ general WRITE setGeneral)
 
     Q_DISABLE_COPY(QGeneralization)
-    QTUML_DECLARE_PRIVATE(QGeneralization)
 
 public:
     explicit QGeneralization(QObject *parent = 0);

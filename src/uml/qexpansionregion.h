@@ -71,7 +71,6 @@ class Q_UML_EXPORT QExpansionRegion : public QStructuredActivityNode
     Q_PROPERTY(const QSet<QExpansionNode *> * outputElements READ outputElements)
 
     Q_DISABLE_COPY(QExpansionRegion)
-    QTUML_DECLARE_PRIVATE(QExpansionRegion)
 
 public:
     explicit QExpansionRegion(QObject *parent = 0);

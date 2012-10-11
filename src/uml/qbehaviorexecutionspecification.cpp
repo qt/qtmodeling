@@ -90,13 +90,13 @@ QBehaviorExecutionSpecification::~QBehaviorExecutionSpecification()
  */
 QBehavior *QBehaviorExecutionSpecification::behavior() const
 {
-    Q_D(const QBehaviorExecutionSpecification);
+    QTUML_D(const QBehaviorExecutionSpecification);
     return d->behavior;
 }
 
 void QBehaviorExecutionSpecification::setBehavior(const QBehavior *behavior)
 {
-    Q_D(QBehaviorExecutionSpecification);
+    QTUML_D(QBehaviorExecutionSpecification);
     d->setBehavior(const_cast<QBehavior *>(behavior));
 }
 

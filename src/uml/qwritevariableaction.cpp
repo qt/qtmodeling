@@ -89,13 +89,13 @@ QWriteVariableAction::~QWriteVariableAction()
  */
 QInputPin *QWriteVariableAction::value() const
 {
-    Q_D(const QWriteVariableAction);
+    QTUML_D(const QWriteVariableAction);
     return d->value;
 }
 
 void QWriteVariableAction::setValue(const QInputPin *value)
 {
-    Q_D(QWriteVariableAction);
+    QTUML_D(QWriteVariableAction);
     d->setValue(const_cast<QInputPin *>(value));
 }
 

@@ -82,7 +82,6 @@ class Q_UML_EXPORT QExtensionPoint : public QObject, public QRedefinableElement
     Q_PROPERTY(QUseCase * useCase READ useCase WRITE setUseCase)
 
     Q_DISABLE_COPY(QExtensionPoint)
-    QTUML_DECLARE_PRIVATE(QExtensionPoint)
 
 public:
     explicit QExtensionPoint(QObject *parent = 0);

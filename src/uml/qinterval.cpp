@@ -95,13 +95,13 @@ QInterval::~QInterval()
  */
 QValueSpecification *QInterval::min() const
 {
-    Q_D(const QInterval);
+    QTUML_D(const QInterval);
     return d->min;
 }
 
 void QInterval::setMin(const QValueSpecification *min)
 {
-    Q_D(QInterval);
+    QTUML_D(QInterval);
     d->setMin(const_cast<QValueSpecification *>(min));
 }
 
@@ -110,13 +110,13 @@ void QInterval::setMin(const QValueSpecification *min)
  */
 QValueSpecification *QInterval::max() const
 {
-    Q_D(const QInterval);
+    QTUML_D(const QInterval);
     return d->max;
 }
 
 void QInterval::setMax(const QValueSpecification *max)
 {
-    Q_D(QInterval);
+    QTUML_D(QInterval);
     d->setMax(const_cast<QValueSpecification *>(max));
 }
 

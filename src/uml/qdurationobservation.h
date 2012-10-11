@@ -87,7 +87,6 @@ class Q_UML_EXPORT QDurationObservation : public QObject, public QObservation
     Q_PROPERTY(const QSet<QNamedElement *> * events READ events)
 
     Q_DISABLE_COPY(QDurationObservation)
-    QTUML_DECLARE_PRIVATE(QDurationObservation)
 
 public:
     explicit QDurationObservation(QObject *parent = 0);

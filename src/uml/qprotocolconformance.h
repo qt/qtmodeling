@@ -77,7 +77,6 @@ class Q_UML_EXPORT QProtocolConformance : public QObject, public QDirectedRelati
     Q_PROPERTY(QProtocolStateMachine * generalMachine READ generalMachine WRITE setGeneralMachine)
 
     Q_DISABLE_COPY(QProtocolConformance)
-    QTUML_DECLARE_PRIVATE(QProtocolConformance)
 
 public:
     explicit QProtocolConformance(QObject *parent = 0);

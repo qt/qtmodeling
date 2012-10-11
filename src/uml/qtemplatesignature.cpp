@@ -128,19 +128,19 @@ QTemplateSignature::~QTemplateSignature()
  */
 const QList<QTemplateParameter *> *QTemplateSignature::parameters() const
 {
-    Q_D(const QTemplateSignature);
+    QTUML_D(const QTemplateSignature);
     return d->parameters;
 }
 
 void QTemplateSignature::addParameter(const QTemplateParameter *parameter)
 {
-    Q_D(QTemplateSignature);
+    QTUML_D(QTemplateSignature);
     d->addParameter(const_cast<QTemplateParameter *>(parameter));
 }
 
 void QTemplateSignature::removeParameter(const QTemplateParameter *parameter)
 {
-    Q_D(QTemplateSignature);
+    QTUML_D(QTemplateSignature);
     d->removeParameter(const_cast<QTemplateParameter *>(parameter));
 }
 
@@ -149,13 +149,13 @@ void QTemplateSignature::removeParameter(const QTemplateParameter *parameter)
  */
 QTemplateableElement *QTemplateSignature::template_() const
 {
-    Q_D(const QTemplateSignature);
+    QTUML_D(const QTemplateSignature);
     return d->template_;
 }
 
 void QTemplateSignature::setTemplate_(const QTemplateableElement *template_)
 {
-    Q_D(QTemplateSignature);
+    QTUML_D(QTemplateSignature);
     d->setTemplate_(const_cast<QTemplateableElement *>(template_));
 }
 
@@ -164,19 +164,19 @@ void QTemplateSignature::setTemplate_(const QTemplateableElement *template_)
  */
 const QList<QTemplateParameter *> *QTemplateSignature::ownedParameters() const
 {
-    Q_D(const QTemplateSignature);
+    QTUML_D(const QTemplateSignature);
     return d->ownedParameters;
 }
 
 void QTemplateSignature::addOwnedParameter(const QTemplateParameter *ownedParameter)
 {
-    Q_D(QTemplateSignature);
+    QTUML_D(QTemplateSignature);
     d->addOwnedParameter(const_cast<QTemplateParameter *>(ownedParameter));
 }
 
 void QTemplateSignature::removeOwnedParameter(const QTemplateParameter *ownedParameter)
 {
-    Q_D(QTemplateSignature);
+    QTUML_D(QTemplateSignature);
     d->removeOwnedParameter(const_cast<QTemplateParameter *>(ownedParameter));
 }
 

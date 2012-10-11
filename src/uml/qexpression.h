@@ -90,7 +90,6 @@ class Q_UML_EXPORT QExpression : public QObject, public QValueSpecification
     Q_PROPERTY(const QList<QValueSpecification *> * operands READ operands)
 
     Q_DISABLE_COPY(QExpression)
-    QTUML_DECLARE_PRIVATE(QExpression)
 
 public:
     explicit QExpression(QObject *parent = 0);

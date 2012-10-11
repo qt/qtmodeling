@@ -89,7 +89,6 @@ class Q_UML_EXPORT QInterruptibleActivityRegion : public QObject, public QActivi
     Q_PROPERTY(const QSet<QActivityNode *> * nodes READ nodes)
 
     Q_DISABLE_COPY(QInterruptibleActivityRegion)
-    QTUML_DECLARE_PRIVATE(QInterruptibleActivityRegion)
 
 public:
     explicit QInterruptibleActivityRegion(QObject *parent = 0);

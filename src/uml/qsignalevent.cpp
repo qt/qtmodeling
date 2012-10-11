@@ -90,13 +90,13 @@ QSignalEvent::~QSignalEvent()
  */
 QSignal *QSignalEvent::signal() const
 {
-    Q_D(const QSignalEvent);
+    QTUML_D(const QSignalEvent);
     return d->signal;
 }
 
 void QSignalEvent::setSignal(const QSignal *signal)
 {
-    Q_D(QSignalEvent);
+    QTUML_D(QSignalEvent);
     d->setSignal(const_cast<QSignal *>(signal));
 }
 

@@ -69,7 +69,6 @@ class Q_UML_EXPORT QProtocolTransition : public QTransition
     Q_PROPERTY(QConstraint * preCondition READ preCondition WRITE setPreCondition)
 
     Q_DISABLE_COPY(QProtocolTransition)
-    QTUML_DECLARE_PRIVATE(QProtocolTransition)
 
 public:
     explicit QProtocolTransition(QObject *parent = 0);

@@ -71,7 +71,6 @@ class Q_UML_EXPORT QConditionalNode : public QStructuredActivityNode
     Q_PROPERTY(const QList<QOutputPin *> * results READ results)
 
     Q_DISABLE_COPY(QConditionalNode)
-    QTUML_DECLARE_PRIVATE(QConditionalNode)
 
 public:
     explicit QConditionalNode(QObject *parent = 0);

@@ -109,13 +109,13 @@ QDuration::~QDuration()
  */
 QValueSpecification *QDuration::expr() const
 {
-    Q_D(const QDuration);
+    QTUML_D(const QDuration);
     return d->expr;
 }
 
 void QDuration::setExpr(const QValueSpecification *expr)
 {
-    Q_D(QDuration);
+    QTUML_D(QDuration);
     d->setExpr(const_cast<QValueSpecification *>(expr));
 }
 
@@ -124,19 +124,19 @@ void QDuration::setExpr(const QValueSpecification *expr)
  */
 const QSet<QObservation *> *QDuration::observations() const
 {
-    Q_D(const QDuration);
+    QTUML_D(const QDuration);
     return d->observations;
 }
 
 void QDuration::addObservation(const QObservation *observation)
 {
-    Q_D(QDuration);
+    QTUML_D(QDuration);
     d->addObservation(const_cast<QObservation *>(observation));
 }
 
 void QDuration::removeObservation(const QObservation *observation)
 {
-    Q_D(QDuration);
+    QTUML_D(QDuration);
     d->removeObservation(const_cast<QObservation *>(observation));
 }
 

@@ -81,13 +81,13 @@ QPackageableElement::~QPackageableElement()
  */
 QtUml::VisibilityKind QPackageableElement::visibility() const
 {
-    Q_D(const QPackageableElement);
+    QTUML_D(const QPackageableElement);
     return d->visibility;
 }
 
 void QPackageableElement::setVisibility(QtUml::VisibilityKind visibility)
 {
-    Q_D(QPackageableElement);
+    QTUML_D(QPackageableElement);
     d->setVisibility(visibility);
 }
 

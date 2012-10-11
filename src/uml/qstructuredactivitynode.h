@@ -132,7 +132,6 @@ class Q_UML_EXPORT QStructuredActivityNode : public QObject, public QAction, pub
     Q_PROPERTY(QActivity * activity READ activity WRITE setActivity)
 
     Q_DISABLE_COPY(QStructuredActivityNode)
-    QTUML_DECLARE_PRIVATE(QStructuredActivityNode)
 
 public:
     explicit QStructuredActivityNode(QObject *parent = 0);

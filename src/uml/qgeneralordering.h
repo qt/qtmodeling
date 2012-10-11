@@ -78,7 +78,6 @@ class Q_UML_EXPORT QGeneralOrdering : public QObject, public QNamedElement
     Q_PROPERTY(QOccurrenceSpecification * after READ after WRITE setAfter)
 
     Q_DISABLE_COPY(QGeneralOrdering)
-    QTUML_DECLARE_PRIVATE(QGeneralOrdering)
 
 public:
     explicit QGeneralOrdering(QObject *parent = 0);

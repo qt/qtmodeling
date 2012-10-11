@@ -74,7 +74,6 @@ class Q_UML_EXPORT QTemplateParameter : public QObject, public QElement
     Q_PROPERTY(QTemplateSignature * signature READ signature WRITE setSignature)
 
     Q_DISABLE_COPY(QTemplateParameter)
-    QTUML_DECLARE_PRIVATE(QTemplateParameter)
 
 public:
     explicit QTemplateParameter(QObject *parent = 0);

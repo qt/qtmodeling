@@ -105,7 +105,6 @@ class Q_UML_EXPORT QCreateObjectAction : public QObject, public QAction
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
     Q_DISABLE_COPY(QCreateObjectAction)
-    QTUML_DECLARE_PRIVATE(QCreateObjectAction)
 
 public:
     explicit QCreateObjectAction(QObject *parent = 0);

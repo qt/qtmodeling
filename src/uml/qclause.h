@@ -79,7 +79,6 @@ class Q_UML_EXPORT QClause : public QObject, public QElement
     Q_PROPERTY(const QSet<QExecutableNode *> * tests READ tests)
 
     Q_DISABLE_COPY(QClause)
-    QTUML_DECLARE_PRIVATE(QClause)
 
 public:
     explicit QClause(QObject *parent = 0);

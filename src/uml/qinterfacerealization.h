@@ -65,7 +65,6 @@ class Q_UML_EXPORT QInterfaceRealization : public QRealization
     Q_PROPERTY(QInterface * contract READ contract WRITE setContract)
 
     Q_DISABLE_COPY(QInterfaceRealization)
-    QTUML_DECLARE_PRIVATE(QInterfaceRealization)
 
 public:
     explicit QInterfaceRealization(QObject *parent = 0);

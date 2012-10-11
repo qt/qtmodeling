@@ -83,7 +83,6 @@ class Q_UML_EXPORT QNode : public QClass, public QDeploymentTarget
     Q_PROPERTY(const QSet<QNode *> * nestedNodes READ nestedNodes)
 
     Q_DISABLE_COPY(QNode)
-    QTUML_DECLARE_PRIVATE(QNode)
 
 public:
     explicit QNode(QObject *parent = 0);

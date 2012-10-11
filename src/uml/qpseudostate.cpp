@@ -111,13 +111,13 @@ QPseudostate::~QPseudostate()
  */
 QtUml::PseudostateKind QPseudostate::kind() const
 {
-    Q_D(const QPseudostate);
+    QTUML_D(const QPseudostate);
     return d->kind;
 }
 
 void QPseudostate::setKind(QtUml::PseudostateKind kind)
 {
-    Q_D(QPseudostate);
+    QTUML_D(QPseudostate);
     d->setKind(kind);
 }
 
@@ -126,13 +126,13 @@ void QPseudostate::setKind(QtUml::PseudostateKind kind)
  */
 QState *QPseudostate::state() const
 {
-    Q_D(const QPseudostate);
+    QTUML_D(const QPseudostate);
     return d->state;
 }
 
 void QPseudostate::setState(const QState *state)
 {
-    Q_D(QPseudostate);
+    QTUML_D(QPseudostate);
     d->setState(const_cast<QState *>(state));
 }
 
@@ -141,13 +141,13 @@ void QPseudostate::setState(const QState *state)
  */
 QStateMachine *QPseudostate::stateMachine() const
 {
-    Q_D(const QPseudostate);
+    QTUML_D(const QPseudostate);
     return d->stateMachine;
 }
 
 void QPseudostate::setStateMachine(const QStateMachine *stateMachine)
 {
-    Q_D(QPseudostate);
+    QTUML_D(QPseudostate);
     d->setStateMachine(const_cast<QStateMachine *>(stateMachine));
 }
 

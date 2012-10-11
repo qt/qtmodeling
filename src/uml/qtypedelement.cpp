@@ -82,13 +82,13 @@ QTypedElement::~QTypedElement()
  */
 QType *QTypedElement::type() const
 {
-    Q_D(const QTypedElement);
+    QTUML_D(const QTypedElement);
     return d->type;
 }
 
 void QTypedElement::setType(const QType *type)
 {
-    Q_D(QTypedElement);
+    QTUML_D(QTypedElement);
     d->setType(const_cast<QType *>(type));
 }
 

@@ -116,19 +116,19 @@ QParameterSet::~QParameterSet()
  */
 const QSet<QParameter *> *QParameterSet::parameters() const
 {
-    Q_D(const QParameterSet);
+    QTUML_D(const QParameterSet);
     return d->parameters;
 }
 
 void QParameterSet::addParameter(const QParameter *parameter)
 {
-    Q_D(QParameterSet);
+    QTUML_D(QParameterSet);
     d->addParameter(const_cast<QParameter *>(parameter));
 }
 
 void QParameterSet::removeParameter(const QParameter *parameter)
 {
-    Q_D(QParameterSet);
+    QTUML_D(QParameterSet);
     d->removeParameter(const_cast<QParameter *>(parameter));
 }
 
@@ -137,19 +137,19 @@ void QParameterSet::removeParameter(const QParameter *parameter)
  */
 const QSet<QConstraint *> *QParameterSet::conditions() const
 {
-    Q_D(const QParameterSet);
+    QTUML_D(const QParameterSet);
     return d->conditions;
 }
 
 void QParameterSet::addCondition(const QConstraint *condition)
 {
-    Q_D(QParameterSet);
+    QTUML_D(QParameterSet);
     d->addCondition(const_cast<QConstraint *>(condition));
 }
 
 void QParameterSet::removeCondition(const QConstraint *condition)
 {
-    Q_D(QParameterSet);
+    QTUML_D(QParameterSet);
     d->removeCondition(const_cast<QConstraint *>(condition));
 }
 

@@ -93,7 +93,6 @@ class Q_UML_EXPORT QExtend : public QObject, public QDirectedRelationship, publi
     Q_PROPERTY(QConstraint * condition READ condition WRITE setCondition)
 
     Q_DISABLE_COPY(QExtend)
-    QTUML_DECLARE_PRIVATE(QExtend)
 
 public:
     explicit QExtend(QObject *parent = 0);

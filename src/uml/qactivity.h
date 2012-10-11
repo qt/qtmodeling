@@ -88,7 +88,6 @@ class Q_UML_EXPORT QActivity : public QBehavior
     Q_PROPERTY(const QSet<QActivityEdge *> * edges READ edges)
 
     Q_DISABLE_COPY(QActivity)
-    QTUML_DECLARE_PRIVATE(QActivity)
 
 public:
     explicit QActivity(QObject *parent = 0);

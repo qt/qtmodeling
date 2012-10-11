@@ -126,7 +126,6 @@ class Q_UML_EXPORT QDataType : public QObject, public QClassifier
     Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
 
     Q_DISABLE_COPY(QDataType)
-    QTUML_DECLARE_PRIVATE(QDataType)
 
 public:
     explicit QDataType(QObject *parent = 0);

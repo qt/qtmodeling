@@ -128,13 +128,13 @@ QPort::~QPort()
  */
 bool QPort::isConjugated() const
 {
-    Q_D(const QPort);
+    QTUML_D(const QPort);
     return d->isConjugated;
 }
 
 void QPort::setConjugated(bool isConjugated)
 {
-    Q_D(QPort);
+    QTUML_D(QPort);
     d->setConjugated(isConjugated);
 }
 
@@ -143,13 +143,13 @@ void QPort::setConjugated(bool isConjugated)
  */
 bool QPort::isBehavior() const
 {
-    Q_D(const QPort);
+    QTUML_D(const QPort);
     return d->isBehavior;
 }
 
 void QPort::setBehavior(bool isBehavior)
 {
-    Q_D(QPort);
+    QTUML_D(QPort);
     d->setBehavior(isBehavior);
 }
 
@@ -158,13 +158,13 @@ void QPort::setBehavior(bool isBehavior)
  */
 bool QPort::isService() const
 {
-    Q_D(const QPort);
+    QTUML_D(const QPort);
     return d->isService;
 }
 
 void QPort::setService(bool isService)
 {
-    Q_D(QPort);
+    QTUML_D(QPort);
     d->setService(isService);
 }
 
@@ -173,13 +173,13 @@ void QPort::setService(bool isService)
  */
 QProtocolStateMachine *QPort::protocol() const
 {
-    Q_D(const QPort);
+    QTUML_D(const QPort);
     return d->protocol;
 }
 
 void QPort::setProtocol(const QProtocolStateMachine *protocol)
 {
-    Q_D(QPort);
+    QTUML_D(QPort);
     d->setProtocol(const_cast<QProtocolStateMachine *>(protocol));
 }
 
@@ -204,19 +204,19 @@ const QSet<QInterface *> *QPort::provided() const
  */
 const QSet<QPort *> *QPort::redefinedPorts() const
 {
-    Q_D(const QPort);
+    QTUML_D(const QPort);
     return d->redefinedPorts;
 }
 
 void QPort::addRedefinedPort(const QPort *redefinedPort)
 {
-    Q_D(QPort);
+    QTUML_D(QPort);
     d->addRedefinedPort(const_cast<QPort *>(redefinedPort));
 }
 
 void QPort::removeRedefinedPort(const QPort *redefinedPort)
 {
-    Q_D(QPort);
+    QTUML_D(QPort);
     d->removeRedefinedPort(const_cast<QPort *>(redefinedPort));
 }
 

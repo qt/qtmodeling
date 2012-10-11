@@ -79,7 +79,6 @@ class Q_UML_EXPORT QAnyReceiveEvent : public QObject, public QMessageEvent
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     Q_DISABLE_COPY(QAnyReceiveEvent)
-    QTUML_DECLARE_PRIVATE(QAnyReceiveEvent)
 
 public:
     explicit QAnyReceiveEvent(QObject *parent = 0);

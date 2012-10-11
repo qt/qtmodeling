@@ -103,19 +103,19 @@ QProtocolStateMachine::~QProtocolStateMachine()
  */
 const QSet<QProtocolConformance *> *QProtocolStateMachine::conformance() const
 {
-    Q_D(const QProtocolStateMachine);
+    QTUML_D(const QProtocolStateMachine);
     return d->conformance;
 }
 
 void QProtocolStateMachine::addConformance(const QProtocolConformance *conformance)
 {
-    Q_D(QProtocolStateMachine);
+    QTUML_D(QProtocolStateMachine);
     d->addConformance(const_cast<QProtocolConformance *>(conformance));
 }
 
 void QProtocolStateMachine::removeConformance(const QProtocolConformance *conformance)
 {
-    Q_D(QProtocolStateMachine);
+    QTUML_D(QProtocolStateMachine);
     d->removeConformance(const_cast<QProtocolConformance *>(conformance));
 }
 

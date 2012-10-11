@@ -107,7 +107,6 @@ class Q_UML_EXPORT QReadLinkObjectEndQualifierAction : public QObject, public QA
     Q_PROPERTY(QProperty * qualifier READ qualifier WRITE setQualifier)
 
     Q_DISABLE_COPY(QReadLinkObjectEndQualifierAction)
-    QTUML_DECLARE_PRIVATE(QReadLinkObjectEndQualifierAction)
 
 public:
     explicit QReadLinkObjectEndQualifierAction(QObject *parent = 0);

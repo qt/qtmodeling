@@ -77,7 +77,6 @@ class Q_UML_EXPORT QStringExpression : public QExpression, public QTemplateableE
     Q_PROPERTY(const QSet<QStringExpression *> * subExpressions READ subExpressions)
 
     Q_DISABLE_COPY(QStringExpression)
-    QTUML_DECLARE_PRIVATE(QStringExpression)
 
 public:
     explicit QStringExpression(QObject *parent = 0);

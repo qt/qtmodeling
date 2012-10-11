@@ -95,19 +95,19 @@ QInformationItem::~QInformationItem()
  */
 const QSet<QClassifier *> *QInformationItem::represented() const
 {
-    Q_D(const QInformationItem);
+    QTUML_D(const QInformationItem);
     return d->represented;
 }
 
 void QInformationItem::addRepresented(const QClassifier *represented)
 {
-    Q_D(QInformationItem);
+    QTUML_D(QInformationItem);
     d->addRepresented(const_cast<QClassifier *>(represented));
 }
 
 void QInformationItem::removeRepresented(const QClassifier *represented)
 {
-    Q_D(QInformationItem);
+    QTUML_D(QInformationItem);
     d->removeRepresented(const_cast<QClassifier *>(represented));
 }
 

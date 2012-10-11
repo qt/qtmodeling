@@ -97,13 +97,13 @@ QRaiseExceptionAction::~QRaiseExceptionAction()
  */
 QInputPin *QRaiseExceptionAction::exception() const
 {
-    Q_D(const QRaiseExceptionAction);
+    QTUML_D(const QRaiseExceptionAction);
     return d->exception;
 }
 
 void QRaiseExceptionAction::setException(const QInputPin *exception)
 {
-    Q_D(QRaiseExceptionAction);
+    QTUML_D(QRaiseExceptionAction);
     d->setException(const_cast<QInputPin *>(exception));
 }
 

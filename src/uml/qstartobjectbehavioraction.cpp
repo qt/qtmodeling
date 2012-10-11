@@ -97,13 +97,13 @@ QStartObjectBehaviorAction::~QStartObjectBehaviorAction()
  */
 QInputPin *QStartObjectBehaviorAction::object() const
 {
-    Q_D(const QStartObjectBehaviorAction);
+    QTUML_D(const QStartObjectBehaviorAction);
     return d->object;
 }
 
 void QStartObjectBehaviorAction::setObject(const QInputPin *object)
 {
-    Q_D(QStartObjectBehaviorAction);
+    QTUML_D(QStartObjectBehaviorAction);
     d->setObject(const_cast<QInputPin *>(object));
 }
 

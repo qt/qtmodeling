@@ -90,13 +90,13 @@ QOperationTemplateParameter::~QOperationTemplateParameter()
  */
 QOperation *QOperationTemplateParameter::parameteredElement() const
 {
-    Q_D(const QOperationTemplateParameter);
+    QTUML_D(const QOperationTemplateParameter);
     return d->parameteredElement;
 }
 
 void QOperationTemplateParameter::setParameteredElement(const QOperation *parameteredElement)
 {
-    Q_D(QOperationTemplateParameter);
+    QTUML_D(QOperationTemplateParameter);
     d->setParameteredElement(const_cast<QOperation *>(parameteredElement));
 }
 

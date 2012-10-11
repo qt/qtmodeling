@@ -66,7 +66,6 @@ class Q_UML_EXPORT QProtocolStateMachine : public QStateMachine
     Q_PROPERTY(const QSet<QProtocolConformance *> * conformance READ conformance)
 
     Q_DISABLE_COPY(QProtocolStateMachine)
-    QTUML_DECLARE_PRIVATE(QProtocolStateMachine)
 
 public:
     explicit QProtocolStateMachine(QObject *parent = 0);

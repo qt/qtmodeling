@@ -82,7 +82,6 @@ class Q_UML_EXPORT QLiteralNull : public QObject, public QLiteralSpecification
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     Q_DISABLE_COPY(QLiteralNull)
-    QTUML_DECLARE_PRIVATE(QLiteralNull)
 
 public:
     explicit QLiteralNull(QObject *parent = 0);

@@ -91,13 +91,13 @@ const QList<QConnectorEnd *> *QConnectableElement::ends() const
  */
 QConnectableElementTemplateParameter *QConnectableElement::templateParameter() const
 {
-    Q_D(const QConnectableElement);
+    QTUML_D(const QConnectableElement);
     return d->templateParameter;
 }
 
 void QConnectableElement::setTemplateParameter(const QConnectableElementTemplateParameter *templateParameter)
 {
-    Q_D(QConnectableElement);
+    QTUML_D(QConnectableElement);
     d->setTemplateParameter(const_cast<QConnectableElementTemplateParameter *>(templateParameter));
 }
 

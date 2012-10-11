@@ -102,19 +102,19 @@ QInvocationAction::~QInvocationAction()
  */
 const QList<QInputPin *> *QInvocationAction::arguments() const
 {
-    Q_D(const QInvocationAction);
+    QTUML_D(const QInvocationAction);
     return d->arguments;
 }
 
 void QInvocationAction::addArgument(const QInputPin *argument)
 {
-    Q_D(QInvocationAction);
+    QTUML_D(QInvocationAction);
     d->addArgument(const_cast<QInputPin *>(argument));
 }
 
 void QInvocationAction::removeArgument(const QInputPin *argument)
 {
-    Q_D(QInvocationAction);
+    QTUML_D(QInvocationAction);
     d->removeArgument(const_cast<QInputPin *>(argument));
 }
 
@@ -123,13 +123,13 @@ void QInvocationAction::removeArgument(const QInputPin *argument)
  */
 QPort *QInvocationAction::onPort() const
 {
-    Q_D(const QInvocationAction);
+    QTUML_D(const QInvocationAction);
     return d->onPort;
 }
 
 void QInvocationAction::setOnPort(const QPort *onPort)
 {
-    Q_D(QInvocationAction);
+    QTUML_D(QInvocationAction);
     d->setOnPort(const_cast<QPort *>(onPort));
 }
 

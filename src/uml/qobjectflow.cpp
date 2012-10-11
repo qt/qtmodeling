@@ -108,13 +108,13 @@ QObjectFlow::~QObjectFlow()
  */
 bool QObjectFlow::isMultireceive() const
 {
-    Q_D(const QObjectFlow);
+    QTUML_D(const QObjectFlow);
     return d->isMultireceive;
 }
 
 void QObjectFlow::setMultireceive(bool isMultireceive)
 {
-    Q_D(QObjectFlow);
+    QTUML_D(QObjectFlow);
     d->setMultireceive(isMultireceive);
 }
 
@@ -123,13 +123,13 @@ void QObjectFlow::setMultireceive(bool isMultireceive)
  */
 bool QObjectFlow::isMulticast() const
 {
-    Q_D(const QObjectFlow);
+    QTUML_D(const QObjectFlow);
     return d->isMulticast;
 }
 
 void QObjectFlow::setMulticast(bool isMulticast)
 {
-    Q_D(QObjectFlow);
+    QTUML_D(QObjectFlow);
     d->setMulticast(isMulticast);
 }
 
@@ -138,13 +138,13 @@ void QObjectFlow::setMulticast(bool isMulticast)
  */
 QBehavior *QObjectFlow::selection() const
 {
-    Q_D(const QObjectFlow);
+    QTUML_D(const QObjectFlow);
     return d->selection;
 }
 
 void QObjectFlow::setSelection(const QBehavior *selection)
 {
-    Q_D(QObjectFlow);
+    QTUML_D(QObjectFlow);
     d->setSelection(const_cast<QBehavior *>(selection));
 }
 
@@ -153,13 +153,13 @@ void QObjectFlow::setSelection(const QBehavior *selection)
  */
 QBehavior *QObjectFlow::transformation() const
 {
-    Q_D(const QObjectFlow);
+    QTUML_D(const QObjectFlow);
     return d->transformation;
 }
 
 void QObjectFlow::setTransformation(const QBehavior *transformation)
 {
-    Q_D(QObjectFlow);
+    QTUML_D(QObjectFlow);
     d->setTransformation(const_cast<QBehavior *>(transformation));
 }
 

@@ -110,7 +110,6 @@ class Q_UML_EXPORT QAddVariableValueAction : public QObject, public QWriteVariab
     Q_PROPERTY(QInputPin * insertAt READ insertAt WRITE setInsertAt)
 
     Q_DISABLE_COPY(QAddVariableValueAction)
-    QTUML_DECLARE_PRIVATE(QAddVariableValueAction)
 
 public:
     explicit QAddVariableValueAction(QObject *parent = 0);

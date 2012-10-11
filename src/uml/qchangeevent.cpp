@@ -97,13 +97,13 @@ QChangeEvent::~QChangeEvent()
  */
 QValueSpecification *QChangeEvent::changeExpression() const
 {
-    Q_D(const QChangeEvent);
+    QTUML_D(const QChangeEvent);
     return d->changeExpression;
 }
 
 void QChangeEvent::setChangeExpression(const QValueSpecification *changeExpression)
 {
-    Q_D(QChangeEvent);
+    QTUML_D(QChangeEvent);
     d->setChangeExpression(const_cast<QValueSpecification *>(changeExpression));
 }
 

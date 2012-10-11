@@ -58,7 +58,6 @@ class QValueSpecification;
 class Q_UML_EXPORT QMultiplicityElement : public virtual QElement
 {
     Q_DISABLE_COPY(QMultiplicityElement)
-    QTUML_DECLARE_PRIVATE(QMultiplicityElement)
 
 public:
     virtual ~QMultiplicityElement();

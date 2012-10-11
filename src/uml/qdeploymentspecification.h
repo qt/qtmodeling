@@ -68,7 +68,6 @@ class Q_UML_EXPORT QDeploymentSpecification : public QArtifact
     Q_PROPERTY(QDeployment * deployment READ deployment WRITE setDeployment)
 
     Q_DISABLE_COPY(QDeploymentSpecification)
-    QTUML_DECLARE_PRIVATE(QDeploymentSpecification)
 
 public:
     explicit QDeploymentSpecification(QObject *parent = 0);

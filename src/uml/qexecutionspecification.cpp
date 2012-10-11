@@ -88,13 +88,13 @@ QExecutionSpecification::~QExecutionSpecification()
  */
 QOccurrenceSpecification *QExecutionSpecification::start() const
 {
-    Q_D(const QExecutionSpecification);
+    QTUML_D(const QExecutionSpecification);
     return d->start;
 }
 
 void QExecutionSpecification::setStart(const QOccurrenceSpecification *start)
 {
-    Q_D(QExecutionSpecification);
+    QTUML_D(QExecutionSpecification);
     d->setStart(const_cast<QOccurrenceSpecification *>(start));
 }
 
@@ -103,13 +103,13 @@ void QExecutionSpecification::setStart(const QOccurrenceSpecification *start)
  */
 QOccurrenceSpecification *QExecutionSpecification::finish() const
 {
-    Q_D(const QExecutionSpecification);
+    QTUML_D(const QExecutionSpecification);
     return d->finish;
 }
 
 void QExecutionSpecification::setFinish(const QOccurrenceSpecification *finish)
 {
-    Q_D(QExecutionSpecification);
+    QTUML_D(QExecutionSpecification);
     d->setFinish(const_cast<QOccurrenceSpecification *>(finish));
 }
 

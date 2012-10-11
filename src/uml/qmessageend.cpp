@@ -82,13 +82,13 @@ QMessageEnd::~QMessageEnd()
  */
 QMessage *QMessageEnd::message() const
 {
-    Q_D(const QMessageEnd);
+    QTUML_D(const QMessageEnd);
     return d->message;
 }
 
 void QMessageEnd::setMessage(const QMessage *message)
 {
-    Q_D(QMessageEnd);
+    QTUML_D(QMessageEnd);
     d->setMessage(const_cast<QMessage *>(message));
 }
 

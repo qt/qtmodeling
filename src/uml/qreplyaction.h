@@ -109,7 +109,6 @@ class Q_UML_EXPORT QReplyAction : public QObject, public QAction
     Q_PROPERTY(const QSet<QInputPin *> * replyValues READ replyValues)
 
     Q_DISABLE_COPY(QReplyAction)
-    QTUML_DECLARE_PRIVATE(QReplyAction)
 
 public:
     explicit QReplyAction(QObject *parent = 0);

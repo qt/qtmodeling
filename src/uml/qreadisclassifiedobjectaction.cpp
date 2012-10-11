@@ -124,13 +124,13 @@ QReadIsClassifiedObjectAction::~QReadIsClassifiedObjectAction()
  */
 bool QReadIsClassifiedObjectAction::isDirect() const
 {
-    Q_D(const QReadIsClassifiedObjectAction);
+    QTUML_D(const QReadIsClassifiedObjectAction);
     return d->isDirect;
 }
 
 void QReadIsClassifiedObjectAction::setDirect(bool isDirect)
 {
-    Q_D(QReadIsClassifiedObjectAction);
+    QTUML_D(QReadIsClassifiedObjectAction);
     d->setDirect(isDirect);
 }
 
@@ -139,13 +139,13 @@ void QReadIsClassifiedObjectAction::setDirect(bool isDirect)
  */
 QOutputPin *QReadIsClassifiedObjectAction::result() const
 {
-    Q_D(const QReadIsClassifiedObjectAction);
+    QTUML_D(const QReadIsClassifiedObjectAction);
     return d->result;
 }
 
 void QReadIsClassifiedObjectAction::setResult(const QOutputPin *result)
 {
-    Q_D(QReadIsClassifiedObjectAction);
+    QTUML_D(QReadIsClassifiedObjectAction);
     d->setResult(const_cast<QOutputPin *>(result));
 }
 
@@ -154,13 +154,13 @@ void QReadIsClassifiedObjectAction::setResult(const QOutputPin *result)
  */
 QInputPin *QReadIsClassifiedObjectAction::object() const
 {
-    Q_D(const QReadIsClassifiedObjectAction);
+    QTUML_D(const QReadIsClassifiedObjectAction);
     return d->object;
 }
 
 void QReadIsClassifiedObjectAction::setObject(const QInputPin *object)
 {
-    Q_D(QReadIsClassifiedObjectAction);
+    QTUML_D(QReadIsClassifiedObjectAction);
     d->setObject(const_cast<QInputPin *>(object));
 }
 
@@ -169,13 +169,13 @@ void QReadIsClassifiedObjectAction::setObject(const QInputPin *object)
  */
 QClassifier *QReadIsClassifiedObjectAction::classifier() const
 {
-    Q_D(const QReadIsClassifiedObjectAction);
+    QTUML_D(const QReadIsClassifiedObjectAction);
     return d->classifier;
 }
 
 void QReadIsClassifiedObjectAction::setClassifier(const QClassifier *classifier)
 {
-    Q_D(QReadIsClassifiedObjectAction);
+    QTUML_D(QReadIsClassifiedObjectAction);
     d->setClassifier(const_cast<QClassifier *>(classifier));
 }
 

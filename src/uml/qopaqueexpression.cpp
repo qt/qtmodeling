@@ -115,19 +115,19 @@ QOpaqueExpression::~QOpaqueExpression()
  */
 const QList<QString> *QOpaqueExpression::bodies() const
 {
-    Q_D(const QOpaqueExpression);
+    QTUML_D(const QOpaqueExpression);
     return d->bodies;
 }
 
 void QOpaqueExpression::addBody(QString body)
 {
-    Q_D(QOpaqueExpression);
+    QTUML_D(QOpaqueExpression);
     d->addBody(body);
 }
 
 void QOpaqueExpression::removeBody(QString body)
 {
-    Q_D(QOpaqueExpression);
+    QTUML_D(QOpaqueExpression);
     d->removeBody(body);
 }
 
@@ -136,19 +136,19 @@ void QOpaqueExpression::removeBody(QString body)
  */
 const QList<QString> *QOpaqueExpression::languages() const
 {
-    Q_D(const QOpaqueExpression);
+    QTUML_D(const QOpaqueExpression);
     return d->languages;
 }
 
 void QOpaqueExpression::addLanguage(QString language)
 {
-    Q_D(QOpaqueExpression);
+    QTUML_D(QOpaqueExpression);
     d->addLanguage(language);
 }
 
 void QOpaqueExpression::removeLanguage(QString language)
 {
-    Q_D(QOpaqueExpression);
+    QTUML_D(QOpaqueExpression);
     d->removeLanguage(language);
 }
 
@@ -157,13 +157,13 @@ void QOpaqueExpression::removeLanguage(QString language)
  */
 QBehavior *QOpaqueExpression::behavior() const
 {
-    Q_D(const QOpaqueExpression);
+    QTUML_D(const QOpaqueExpression);
     return d->behavior;
 }
 
 void QOpaqueExpression::setBehavior(const QBehavior *behavior)
 {
-    Q_D(QOpaqueExpression);
+    QTUML_D(QOpaqueExpression);
     d->setBehavior(const_cast<QBehavior *>(behavior));
 }
 

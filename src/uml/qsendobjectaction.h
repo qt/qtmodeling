@@ -107,7 +107,6 @@ class Q_UML_EXPORT QSendObjectAction : public QObject, public QInvocationAction
     Q_PROPERTY(QInputPin * target READ target WRITE setTarget)
 
     Q_DISABLE_COPY(QSendObjectAction)
-    QTUML_DECLARE_PRIVATE(QSendObjectAction)
 
 public:
     explicit QSendObjectAction(QObject *parent = 0);

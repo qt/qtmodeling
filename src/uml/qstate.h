@@ -120,7 +120,6 @@ class Q_UML_EXPORT QState : public QObject, public QNamespace, public QRedefinab
     Q_PROPERTY(QConstraint * stateInvariant READ stateInvariant WRITE setStateInvariant)
 
     Q_DISABLE_COPY(QState)
-    QTUML_DECLARE_PRIVATE(QState)
 
 public:
     explicit QState(QObject *parent = 0);

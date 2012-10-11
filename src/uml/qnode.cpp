@@ -102,19 +102,19 @@ QNode::~QNode()
  */
 const QSet<QNode *> *QNode::nestedNodes() const
 {
-    Q_D(const QNode);
+    QTUML_D(const QNode);
     return d->nestedNodes;
 }
 
 void QNode::addNestedNode(const QNode *nestedNode)
 {
-    Q_D(QNode);
+    QTUML_D(QNode);
     d->addNestedNode(const_cast<QNode *>(nestedNode));
 }
 
 void QNode::removeNestedNode(const QNode *nestedNode)
 {
-    Q_D(QNode);
+    QTUML_D(QNode);
     d->removeNestedNode(const_cast<QNode *>(nestedNode));
 }
 

@@ -96,13 +96,13 @@ QTimeConstraint::~QTimeConstraint()
  */
 bool QTimeConstraint::firstEvent() const
 {
-    Q_D(const QTimeConstraint);
+    QTUML_D(const QTimeConstraint);
     return d->firstEvent;
 }
 
 void QTimeConstraint::setFirstEvent(bool firstEvent)
 {
-    Q_D(QTimeConstraint);
+    QTUML_D(QTimeConstraint);
     d->setFirstEvent(firstEvent);
 }
 
@@ -111,13 +111,13 @@ void QTimeConstraint::setFirstEvent(bool firstEvent)
  */
 QTimeInterval *QTimeConstraint::specification() const
 {
-    Q_D(const QTimeConstraint);
+    QTUML_D(const QTimeConstraint);
     return d->specification;
 }
 
 void QTimeConstraint::setSpecification(const QTimeInterval *specification)
 {
-    Q_D(QTimeConstraint);
+    QTUML_D(QTimeConstraint);
     d->setSpecification(const_cast<QTimeInterval *>(specification));
 }
 

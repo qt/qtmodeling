@@ -90,13 +90,13 @@ QCallEvent::~QCallEvent()
  */
 QOperation *QCallEvent::operation() const
 {
-    Q_D(const QCallEvent);
+    QTUML_D(const QCallEvent);
     return d->operation;
 }
 
 void QCallEvent::setOperation(const QOperation *operation)
 {
-    Q_D(QCallEvent);
+    QTUML_D(QCallEvent);
     d->setOperation(const_cast<QOperation *>(operation));
 }
 

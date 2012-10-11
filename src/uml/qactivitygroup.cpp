@@ -141,13 +141,13 @@ QActivityGroup::~QActivityGroup()
  */
 QActivity *QActivityGroup::inActivity() const
 {
-    Q_D(const QActivityGroup);
+    QTUML_D(const QActivityGroup);
     return d->inActivity;
 }
 
 void QActivityGroup::setInActivity(const QActivity *inActivity)
 {
-    Q_D(QActivityGroup);
+    QTUML_D(QActivityGroup);
     d->setInActivity(const_cast<QActivity *>(inActivity));
 }
 
@@ -156,7 +156,7 @@ void QActivityGroup::setInActivity(const QActivity *inActivity)
  */
 const QSet<QActivityNode *> *QActivityGroup::containedNodes() const
 {
-    Q_D(const QActivityGroup);
+    QTUML_D(const QActivityGroup);
     return d->containedNodes;
 }
 
@@ -165,7 +165,7 @@ const QSet<QActivityNode *> *QActivityGroup::containedNodes() const
  */
 const QSet<QActivityGroup *> *QActivityGroup::subgroups() const
 {
-    Q_D(const QActivityGroup);
+    QTUML_D(const QActivityGroup);
     return d->subgroups;
 }
 
@@ -174,7 +174,7 @@ const QSet<QActivityGroup *> *QActivityGroup::subgroups() const
  */
 const QSet<QActivityEdge *> *QActivityGroup::containedEdges() const
 {
-    Q_D(const QActivityGroup);
+    QTUML_D(const QActivityGroup);
     return d->containedEdges;
 }
 
@@ -183,7 +183,7 @@ const QSet<QActivityEdge *> *QActivityGroup::containedEdges() const
  */
 QActivityGroup *QActivityGroup::superGroup() const
 {
-    Q_D(const QActivityGroup);
+    QTUML_D(const QActivityGroup);
     return d->superGroup;
 }
 

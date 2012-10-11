@@ -64,7 +64,6 @@ class QConnectableElement;
 class Q_UML_EXPORT QStructuredClassifier : public virtual QClassifier
 {
     Q_DISABLE_COPY(QStructuredClassifier)
-    QTUML_DECLARE_PRIVATE(QStructuredClassifier)
 
 public:
     virtual ~QStructuredClassifier();

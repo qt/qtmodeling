@@ -57,7 +57,6 @@ class QDeployedArtifactPrivate;
 class Q_UML_EXPORT QDeployedArtifact : public virtual QNamedElement
 {
     Q_DISABLE_COPY(QDeployedArtifact)
-    QTUML_DECLARE_PRIVATE(QDeployedArtifact)
 
 public:
     virtual ~QDeployedArtifact();

@@ -68,7 +68,6 @@ class Q_UML_EXPORT QComponentRealization : public QRealization
     Q_PROPERTY(const QSet<QClassifier *> * realizingClassifiers READ realizingClassifiers)
 
     Q_DISABLE_COPY(QComponentRealization)
-    QTUML_DECLARE_PRIVATE(QComponentRealization)
 
 public:
     explicit QComponentRealization(QObject *parent = 0);

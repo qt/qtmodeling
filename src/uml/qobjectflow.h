@@ -97,7 +97,6 @@ class Q_UML_EXPORT QObjectFlow : public QObject, public QActivityEdge
     Q_PROPERTY(QBehavior * transformation READ transformation WRITE setTransformation)
 
     Q_DISABLE_COPY(QObjectFlow)
-    QTUML_DECLARE_PRIVATE(QObjectFlow)
 
 public:
     explicit QObjectFlow(QObject *parent = 0);

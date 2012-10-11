@@ -88,7 +88,6 @@ class Q_UML_EXPORT QOccurrenceSpecification : public QObject, public QInteractio
     Q_PROPERTY(const QSet<QGeneralOrdering *> * toBefore READ toBefore)
 
     Q_DISABLE_COPY(QOccurrenceSpecification)
-    QTUML_DECLARE_PRIVATE(QOccurrenceSpecification)
 
 public:
     explicit QOccurrenceSpecification(QObject *parent = 0);

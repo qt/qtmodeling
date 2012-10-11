@@ -96,7 +96,6 @@ class Q_UML_EXPORT QInstanceSpecification : public QObject, public QDeployedArti
     Q_PROPERTY(const QSet<QSlot *> * slots_ READ slots_)
 
     Q_DISABLE_COPY(QInstanceSpecification)
-    QTUML_DECLARE_PRIVATE(QInstanceSpecification)
 
 public:
     explicit QInstanceSpecification(QObject *parent = 0);

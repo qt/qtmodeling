@@ -96,7 +96,6 @@ class Q_UML_EXPORT QInteractionOperand : public QObject, public QInteractionFrag
     Q_PROPERTY(QInteractionConstraint * guard READ guard WRITE setGuard)
 
     Q_DISABLE_COPY(QInteractionOperand)
-    QTUML_DECLARE_PRIVATE(QInteractionOperand)
 
 public:
     explicit QInteractionOperand(QObject *parent = 0);

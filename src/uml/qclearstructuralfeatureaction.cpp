@@ -97,13 +97,13 @@ QClearStructuralFeatureAction::~QClearStructuralFeatureAction()
  */
 QOutputPin *QClearStructuralFeatureAction::result() const
 {
-    Q_D(const QClearStructuralFeatureAction);
+    QTUML_D(const QClearStructuralFeatureAction);
     return d->result;
 }
 
 void QClearStructuralFeatureAction::setResult(const QOutputPin *result)
 {
-    Q_D(QClearStructuralFeatureAction);
+    QTUML_D(QClearStructuralFeatureAction);
     d->setResult(const_cast<QOutputPin *>(result));
 }
 

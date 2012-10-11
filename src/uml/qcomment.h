@@ -73,7 +73,6 @@ class Q_UML_EXPORT QComment : public QObject, public QElement
     Q_PROPERTY(const QSet<QElement *> * annotatedElements READ annotatedElements)
 
     Q_DISABLE_COPY(QComment)
-    QTUML_DECLARE_PRIVATE(QComment)
 
 public:
     explicit QComment(QObject *parent = 0);

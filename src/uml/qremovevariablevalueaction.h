@@ -110,7 +110,6 @@ class Q_UML_EXPORT QRemoveVariableValueAction : public QObject, public QWriteVar
     Q_PROPERTY(QInputPin * removeAt READ removeAt WRITE setRemoveAt)
 
     Q_DISABLE_COPY(QRemoveVariableValueAction)
-    QTUML_DECLARE_PRIVATE(QRemoveVariableValueAction)
 
 public:
     explicit QRemoveVariableValueAction(QObject *parent = 0);

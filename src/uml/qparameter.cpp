@@ -140,13 +140,13 @@ QParameter::~QParameter()
  */
 bool QParameter::isException() const
 {
-    Q_D(const QParameter);
+    QTUML_D(const QParameter);
     return d->isException;
 }
 
 void QParameter::setException(bool isException)
 {
-    Q_D(QParameter);
+    QTUML_D(QParameter);
     d->setException(isException);
 }
 
@@ -168,13 +168,13 @@ void QParameter::setDefault_(QString default_)
  */
 QtUml::ParameterDirectionKind QParameter::direction() const
 {
-    Q_D(const QParameter);
+    QTUML_D(const QParameter);
     return d->direction;
 }
 
 void QParameter::setDirection(QtUml::ParameterDirectionKind direction)
 {
-    Q_D(QParameter);
+    QTUML_D(QParameter);
     d->setDirection(direction);
 }
 
@@ -183,13 +183,13 @@ void QParameter::setDirection(QtUml::ParameterDirectionKind direction)
  */
 bool QParameter::isStream() const
 {
-    Q_D(const QParameter);
+    QTUML_D(const QParameter);
     return d->isStream;
 }
 
 void QParameter::setStream(bool isStream)
 {
-    Q_D(QParameter);
+    QTUML_D(QParameter);
     d->setStream(isStream);
 }
 
@@ -198,13 +198,13 @@ void QParameter::setStream(bool isStream)
  */
 QtUml::ParameterEffectKind QParameter::effect() const
 {
-    Q_D(const QParameter);
+    QTUML_D(const QParameter);
     return d->effect;
 }
 
 void QParameter::setEffect(QtUml::ParameterEffectKind effect)
 {
-    Q_D(QParameter);
+    QTUML_D(QParameter);
     d->setEffect(effect);
 }
 
@@ -213,13 +213,13 @@ void QParameter::setEffect(QtUml::ParameterEffectKind effect)
  */
 QOperation *QParameter::operation() const
 {
-    Q_D(const QParameter);
+    QTUML_D(const QParameter);
     return d->operation;
 }
 
 void QParameter::setOperation(const QOperation *operation)
 {
-    Q_D(QParameter);
+    QTUML_D(QParameter);
     d->setOperation(const_cast<QOperation *>(operation));
 }
 
@@ -228,13 +228,13 @@ void QParameter::setOperation(const QOperation *operation)
  */
 QValueSpecification *QParameter::defaultValue() const
 {
-    Q_D(const QParameter);
+    QTUML_D(const QParameter);
     return d->defaultValue;
 }
 
 void QParameter::setDefaultValue(const QValueSpecification *defaultValue)
 {
-    Q_D(QParameter);
+    QTUML_D(QParameter);
     d->setDefaultValue(const_cast<QValueSpecification *>(defaultValue));
 }
 
@@ -243,19 +243,19 @@ void QParameter::setDefaultValue(const QValueSpecification *defaultValue)
  */
 const QSet<QParameterSet *> *QParameter::parameterSets() const
 {
-    Q_D(const QParameter);
+    QTUML_D(const QParameter);
     return d->parameterSets;
 }
 
 void QParameter::addParameterSet(const QParameterSet *parameterSet)
 {
-    Q_D(QParameter);
+    QTUML_D(QParameter);
     d->addParameterSet(const_cast<QParameterSet *>(parameterSet));
 }
 
 void QParameter::removeParameterSet(const QParameterSet *parameterSet)
 {
-    Q_D(QParameter);
+    QTUML_D(QParameter);
     d->removeParameterSet(const_cast<QParameterSet *>(parameterSet));
 }
 

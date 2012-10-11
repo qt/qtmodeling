@@ -63,7 +63,6 @@ class Q_UML_EXPORT QActionInputPin : public QInputPin
     Q_PROPERTY(QAction * fromAction READ fromAction WRITE setFromAction)
 
     Q_DISABLE_COPY(QActionInputPin)
-    QTUML_DECLARE_PRIVATE(QActionInputPin)
 
 public:
     explicit QActionInputPin(QObject *parent = 0);

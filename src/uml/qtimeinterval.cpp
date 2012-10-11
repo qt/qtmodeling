@@ -96,13 +96,13 @@ QTimeInterval::~QTimeInterval()
  */
 QTimeExpression *QTimeInterval::max() const
 {
-    Q_D(const QTimeInterval);
+    QTUML_D(const QTimeInterval);
     return d->max;
 }
 
 void QTimeInterval::setMax(const QTimeExpression *max)
 {
-    Q_D(QTimeInterval);
+    QTUML_D(QTimeInterval);
     d->setMax(const_cast<QTimeExpression *>(max));
 }
 
@@ -111,13 +111,13 @@ void QTimeInterval::setMax(const QTimeExpression *max)
  */
 QTimeExpression *QTimeInterval::min() const
 {
-    Q_D(const QTimeInterval);
+    QTUML_D(const QTimeInterval);
     return d->min;
 }
 
 void QTimeInterval::setMin(const QTimeExpression *min)
 {
-    Q_D(QTimeInterval);
+    QTUML_D(QTimeInterval);
     d->setMin(const_cast<QTimeExpression *>(min));
 }
 

@@ -90,13 +90,13 @@ QIntervalConstraint::~QIntervalConstraint()
  */
 QInterval *QIntervalConstraint::specification() const
 {
-    Q_D(const QIntervalConstraint);
+    QTUML_D(const QIntervalConstraint);
     return d->specification;
 }
 
 void QIntervalConstraint::setSpecification(const QInterval *specification)
 {
-    Q_D(QIntervalConstraint);
+    QTUML_D(QIntervalConstraint);
     d->setSpecification(const_cast<QInterval *>(specification));
 }
 

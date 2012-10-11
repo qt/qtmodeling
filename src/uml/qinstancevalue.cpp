@@ -90,13 +90,13 @@ QInstanceValue::~QInstanceValue()
  */
 QInstanceSpecification *QInstanceValue::instance() const
 {
-    Q_D(const QInstanceValue);
+    QTUML_D(const QInstanceValue);
     return d->instance;
 }
 
 void QInstanceValue::setInstance(const QInstanceSpecification *instance)
 {
-    Q_D(QInstanceValue);
+    QTUML_D(QInstanceValue);
     d->setInstance(const_cast<QInstanceSpecification *>(instance));
 }
 

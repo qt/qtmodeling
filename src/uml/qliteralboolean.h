@@ -85,7 +85,6 @@ class Q_UML_EXPORT QLiteralBoolean : public QObject, public QLiteralSpecificatio
     Q_PROPERTY(bool value READ value WRITE setValue)
 
     Q_DISABLE_COPY(QLiteralBoolean)
-    QTUML_DECLARE_PRIVATE(QLiteralBoolean)
 
 public:
     explicit QLiteralBoolean(QObject *parent = 0);

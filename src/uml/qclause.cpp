@@ -151,19 +151,19 @@ QClause::~QClause()
  */
 const QSet<QClause *> *QClause::successorClauses() const
 {
-    Q_D(const QClause);
+    QTUML_D(const QClause);
     return d->successorClauses;
 }
 
 void QClause::addSuccessorClause(const QClause *successorClause)
 {
-    Q_D(QClause);
+    QTUML_D(QClause);
     d->addSuccessorClause(const_cast<QClause *>(successorClause));
 }
 
 void QClause::removeSuccessorClause(const QClause *successorClause)
 {
-    Q_D(QClause);
+    QTUML_D(QClause);
     d->removeSuccessorClause(const_cast<QClause *>(successorClause));
 }
 
@@ -172,13 +172,13 @@ void QClause::removeSuccessorClause(const QClause *successorClause)
  */
 QOutputPin *QClause::decider() const
 {
-    Q_D(const QClause);
+    QTUML_D(const QClause);
     return d->decider;
 }
 
 void QClause::setDecider(const QOutputPin *decider)
 {
-    Q_D(QClause);
+    QTUML_D(QClause);
     d->setDecider(const_cast<QOutputPin *>(decider));
 }
 
@@ -187,19 +187,19 @@ void QClause::setDecider(const QOutputPin *decider)
  */
 const QSet<QClause *> *QClause::predecessorClauses() const
 {
-    Q_D(const QClause);
+    QTUML_D(const QClause);
     return d->predecessorClauses;
 }
 
 void QClause::addPredecessorClause(const QClause *predecessorClause)
 {
-    Q_D(QClause);
+    QTUML_D(QClause);
     d->addPredecessorClause(const_cast<QClause *>(predecessorClause));
 }
 
 void QClause::removePredecessorClause(const QClause *predecessorClause)
 {
-    Q_D(QClause);
+    QTUML_D(QClause);
     d->removePredecessorClause(const_cast<QClause *>(predecessorClause));
 }
 
@@ -208,19 +208,19 @@ void QClause::removePredecessorClause(const QClause *predecessorClause)
  */
 const QList<QOutputPin *> *QClause::bodyOutputs() const
 {
-    Q_D(const QClause);
+    QTUML_D(const QClause);
     return d->bodyOutputs;
 }
 
 void QClause::addBodyOutput(const QOutputPin *bodyOutput)
 {
-    Q_D(QClause);
+    QTUML_D(QClause);
     d->addBodyOutput(const_cast<QOutputPin *>(bodyOutput));
 }
 
 void QClause::removeBodyOutput(const QOutputPin *bodyOutput)
 {
-    Q_D(QClause);
+    QTUML_D(QClause);
     d->removeBodyOutput(const_cast<QOutputPin *>(bodyOutput));
 }
 
@@ -229,19 +229,19 @@ void QClause::removeBodyOutput(const QOutputPin *bodyOutput)
  */
 const QSet<QExecutableNode *> *QClause::bodies() const
 {
-    Q_D(const QClause);
+    QTUML_D(const QClause);
     return d->bodies;
 }
 
 void QClause::addBody(const QExecutableNode *body)
 {
-    Q_D(QClause);
+    QTUML_D(QClause);
     d->addBody(const_cast<QExecutableNode *>(body));
 }
 
 void QClause::removeBody(const QExecutableNode *body)
 {
-    Q_D(QClause);
+    QTUML_D(QClause);
     d->removeBody(const_cast<QExecutableNode *>(body));
 }
 
@@ -250,19 +250,19 @@ void QClause::removeBody(const QExecutableNode *body)
  */
 const QSet<QExecutableNode *> *QClause::tests() const
 {
-    Q_D(const QClause);
+    QTUML_D(const QClause);
     return d->tests;
 }
 
 void QClause::addTest(const QExecutableNode *test)
 {
-    Q_D(QClause);
+    QTUML_D(QClause);
     d->addTest(const_cast<QExecutableNode *>(test));
 }
 
 void QClause::removeTest(const QExecutableNode *test)
 {
-    Q_D(QClause);
+    QTUML_D(QClause);
     d->removeTest(const_cast<QExecutableNode *>(test));
 }
 

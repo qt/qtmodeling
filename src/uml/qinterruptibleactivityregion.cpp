@@ -116,19 +116,19 @@ QInterruptibleActivityRegion::~QInterruptibleActivityRegion()
  */
 const QSet<QActivityEdge *> *QInterruptibleActivityRegion::interruptingEdges() const
 {
-    Q_D(const QInterruptibleActivityRegion);
+    QTUML_D(const QInterruptibleActivityRegion);
     return d->interruptingEdges;
 }
 
 void QInterruptibleActivityRegion::addInterruptingEdge(const QActivityEdge *interruptingEdge)
 {
-    Q_D(QInterruptibleActivityRegion);
+    QTUML_D(QInterruptibleActivityRegion);
     d->addInterruptingEdge(const_cast<QActivityEdge *>(interruptingEdge));
 }
 
 void QInterruptibleActivityRegion::removeInterruptingEdge(const QActivityEdge *interruptingEdge)
 {
-    Q_D(QInterruptibleActivityRegion);
+    QTUML_D(QInterruptibleActivityRegion);
     d->removeInterruptingEdge(const_cast<QActivityEdge *>(interruptingEdge));
 }
 
@@ -137,19 +137,19 @@ void QInterruptibleActivityRegion::removeInterruptingEdge(const QActivityEdge *i
  */
 const QSet<QActivityNode *> *QInterruptibleActivityRegion::nodes() const
 {
-    Q_D(const QInterruptibleActivityRegion);
+    QTUML_D(const QInterruptibleActivityRegion);
     return d->nodes;
 }
 
 void QInterruptibleActivityRegion::addNode(const QActivityNode *node)
 {
-    Q_D(QInterruptibleActivityRegion);
+    QTUML_D(QInterruptibleActivityRegion);
     d->addNode(const_cast<QActivityNode *>(node));
 }
 
 void QInterruptibleActivityRegion::removeNode(const QActivityNode *node)
 {
-    Q_D(QInterruptibleActivityRegion);
+    QTUML_D(QInterruptibleActivityRegion);
     d->removeNode(const_cast<QActivityNode *>(node));
 }
 

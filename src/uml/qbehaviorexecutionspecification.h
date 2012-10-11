@@ -87,7 +87,6 @@ class Q_UML_EXPORT QBehaviorExecutionSpecification : public QObject, public QExe
     Q_PROPERTY(QBehavior * behavior READ behavior WRITE setBehavior)
 
     Q_DISABLE_COPY(QBehaviorExecutionSpecification)
-    QTUML_DECLARE_PRIVATE(QBehaviorExecutionSpecification)
 
 public:
     explicit QBehaviorExecutionSpecification(QObject *parent = 0);

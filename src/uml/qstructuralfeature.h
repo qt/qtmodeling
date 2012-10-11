@@ -59,7 +59,6 @@ class QStructuralFeaturePrivate;
 class Q_UML_EXPORT QStructuralFeature : public virtual QTypedElement, public QMultiplicityElement, public QFeature
 {
     Q_DISABLE_COPY(QStructuralFeature)
-    QTUML_DECLARE_PRIVATE(QStructuralFeature)
 
 public:
     virtual ~QStructuralFeature();

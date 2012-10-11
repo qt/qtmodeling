@@ -73,7 +73,6 @@ class Q_UML_EXPORT QImage : public QObject, public QElement
     Q_PROPERTY(QString content READ content WRITE setContent)
 
     Q_DISABLE_COPY(QImage)
-    QTUML_DECLARE_PRIVATE(QImage)
 
 public:
     explicit QImage(QObject *parent = 0);

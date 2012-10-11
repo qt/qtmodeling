@@ -61,7 +61,6 @@ class QExceptionHandler;
 class Q_UML_EXPORT QExecutableNode : public QActivityNode
 {
     Q_DISABLE_COPY(QExecutableNode)
-    QTUML_DECLARE_PRIVATE(QExecutableNode)
 
 public:
     virtual ~QExecutableNode();

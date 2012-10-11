@@ -130,19 +130,19 @@ QInstanceSpecification::~QInstanceSpecification()
  */
 const QSet<QClassifier *> *QInstanceSpecification::classifiers() const
 {
-    Q_D(const QInstanceSpecification);
+    QTUML_D(const QInstanceSpecification);
     return d->classifiers;
 }
 
 void QInstanceSpecification::addClassifier(const QClassifier *classifier)
 {
-    Q_D(QInstanceSpecification);
+    QTUML_D(QInstanceSpecification);
     d->addClassifier(const_cast<QClassifier *>(classifier));
 }
 
 void QInstanceSpecification::removeClassifier(const QClassifier *classifier)
 {
-    Q_D(QInstanceSpecification);
+    QTUML_D(QInstanceSpecification);
     d->removeClassifier(const_cast<QClassifier *>(classifier));
 }
 
@@ -151,13 +151,13 @@ void QInstanceSpecification::removeClassifier(const QClassifier *classifier)
  */
 QValueSpecification *QInstanceSpecification::specification() const
 {
-    Q_D(const QInstanceSpecification);
+    QTUML_D(const QInstanceSpecification);
     return d->specification;
 }
 
 void QInstanceSpecification::setSpecification(const QValueSpecification *specification)
 {
-    Q_D(QInstanceSpecification);
+    QTUML_D(QInstanceSpecification);
     d->setSpecification(const_cast<QValueSpecification *>(specification));
 }
 
@@ -166,19 +166,19 @@ void QInstanceSpecification::setSpecification(const QValueSpecification *specifi
  */
 const QSet<QSlot *> *QInstanceSpecification::slots_() const
 {
-    Q_D(const QInstanceSpecification);
+    QTUML_D(const QInstanceSpecification);
     return d->slots_;
 }
 
 void QInstanceSpecification::addSlot_(const QSlot *slot_)
 {
-    Q_D(QInstanceSpecification);
+    QTUML_D(QInstanceSpecification);
     d->addSlot_(const_cast<QSlot *>(slot_));
 }
 
 void QInstanceSpecification::removeSlot_(const QSlot *slot_)
 {
-    Q_D(QInstanceSpecification);
+    QTUML_D(QInstanceSpecification);
     d->removeSlot_(const_cast<QSlot *>(slot_));
 }
 

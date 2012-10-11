@@ -97,13 +97,13 @@ QReadVariableAction::~QReadVariableAction()
  */
 QOutputPin *QReadVariableAction::result() const
 {
-    Q_D(const QReadVariableAction);
+    QTUML_D(const QReadVariableAction);
     return d->result;
 }
 
 void QReadVariableAction::setResult(const QOutputPin *result)
 {
-    Q_D(QReadVariableAction);
+    QTUML_D(QReadVariableAction);
     d->setResult(const_cast<QOutputPin *>(result));
 }
 

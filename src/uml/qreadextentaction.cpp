@@ -104,13 +104,13 @@ QReadExtentAction::~QReadExtentAction()
  */
 QClassifier *QReadExtentAction::classifier() const
 {
-    Q_D(const QReadExtentAction);
+    QTUML_D(const QReadExtentAction);
     return d->classifier;
 }
 
 void QReadExtentAction::setClassifier(const QClassifier *classifier)
 {
-    Q_D(QReadExtentAction);
+    QTUML_D(QReadExtentAction);
     d->setClassifier(const_cast<QClassifier *>(classifier));
 }
 
@@ -119,13 +119,13 @@ void QReadExtentAction::setClassifier(const QClassifier *classifier)
  */
 QOutputPin *QReadExtentAction::result() const
 {
-    Q_D(const QReadExtentAction);
+    QTUML_D(const QReadExtentAction);
     return d->result;
 }
 
 void QReadExtentAction::setResult(const QOutputPin *result)
 {
-    Q_D(QReadExtentAction);
+    QTUML_D(QReadExtentAction);
     d->setResult(const_cast<QOutputPin *>(result));
 }
 

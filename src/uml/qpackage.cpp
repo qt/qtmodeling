@@ -157,13 +157,13 @@ QPackage::~QPackage()
  */
 QString QPackage::URI() const
 {
-    Q_D(const QPackage);
+    QTUML_D(const QPackage);
     return d->URI;
 }
 
 void QPackage::setURI(QString URI)
 {
-    Q_D(QPackage);
+    QTUML_D(QPackage);
     d->setURI(URI);
 }
 
@@ -190,19 +190,19 @@ void QPackage::removeOwnedType(const QType *ownedType)
  */
 const QSet<QPackageableElement *> *QPackage::packagedElements() const
 {
-    Q_D(const QPackage);
+    QTUML_D(const QPackage);
     return d->packagedElements;
 }
 
 void QPackage::addPackagedElement(const QPackageableElement *packagedElement)
 {
-    Q_D(QPackage);
+    QTUML_D(QPackage);
     d->addPackagedElement(const_cast<QPackageableElement *>(packagedElement));
 }
 
 void QPackage::removePackagedElement(const QPackageableElement *packagedElement)
 {
-    Q_D(QPackage);
+    QTUML_D(QPackage);
     d->removePackagedElement(const_cast<QPackageableElement *>(packagedElement));
 }
 
@@ -211,13 +211,13 @@ void QPackage::removePackagedElement(const QPackageableElement *packagedElement)
  */
 QPackage *QPackage::nestingPackage() const
 {
-    Q_D(const QPackage);
+    QTUML_D(const QPackage);
     return d->nestingPackage;
 }
 
 void QPackage::setNestingPackage(const QPackage *nestingPackage)
 {
-    Q_D(QPackage);
+    QTUML_D(QPackage);
     d->setNestingPackage(const_cast<QPackage *>(nestingPackage));
 }
 
@@ -226,19 +226,19 @@ void QPackage::setNestingPackage(const QPackage *nestingPackage)
  */
 const QSet<QProfileApplication *> *QPackage::profileApplications() const
 {
-    Q_D(const QPackage);
+    QTUML_D(const QPackage);
     return d->profileApplications;
 }
 
 void QPackage::addProfileApplication(const QProfileApplication *profileApplication)
 {
-    Q_D(QPackage);
+    QTUML_D(QPackage);
     d->addProfileApplication(const_cast<QProfileApplication *>(profileApplication));
 }
 
 void QPackage::removeProfileApplication(const QProfileApplication *profileApplication)
 {
-    Q_D(QPackage);
+    QTUML_D(QPackage);
     d->removeProfileApplication(const_cast<QProfileApplication *>(profileApplication));
 }
 
@@ -255,19 +255,19 @@ const QSet<QStereotype *> *QPackage::ownedStereotypes() const
  */
 const QSet<QPackageMerge *> *QPackage::packageMerges() const
 {
-    Q_D(const QPackage);
+    QTUML_D(const QPackage);
     return d->packageMerges;
 }
 
 void QPackage::addPackageMerge(const QPackageMerge *packageMerge)
 {
-    Q_D(QPackage);
+    QTUML_D(QPackage);
     d->addPackageMerge(const_cast<QPackageMerge *>(packageMerge));
 }
 
 void QPackage::removePackageMerge(const QPackageMerge *packageMerge)
 {
-    Q_D(QPackage);
+    QTUML_D(QPackage);
     d->removePackageMerge(const_cast<QPackageMerge *>(packageMerge));
 }
 

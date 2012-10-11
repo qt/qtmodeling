@@ -59,7 +59,6 @@ class Q_UML_EXPORT QPartDecomposition : public QInteractionUse
     Q_OBJECT
 
     Q_DISABLE_COPY(QPartDecomposition)
-    QTUML_DECLARE_PRIVATE(QPartDecomposition)
 
 public:
     explicit QPartDecomposition(QObject *parent = 0);

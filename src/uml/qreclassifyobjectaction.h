@@ -110,7 +110,6 @@ class Q_UML_EXPORT QReclassifyObjectAction : public QObject, public QAction
     Q_PROPERTY(const QSet<QClassifier *> * newClassifiers READ newClassifiers)
 
     Q_DISABLE_COPY(QReclassifyObjectAction)
-    QTUML_DECLARE_PRIVATE(QReclassifyObjectAction)
 
 public:
     explicit QReclassifyObjectAction(QObject *parent = 0);

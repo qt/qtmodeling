@@ -121,7 +121,6 @@ class Q_UML_EXPORT QInformationItem : public QObject, public QClassifier
     Q_PROPERTY(const QSet<QClassifier *> * represented READ represented)
 
     Q_DISABLE_COPY(QInformationItem)
-    QTUML_DECLARE_PRIVATE(QInformationItem)
 
 public:
     explicit QInformationItem(QObject *parent = 0);

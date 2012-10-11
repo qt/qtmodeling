@@ -103,7 +103,6 @@ class Q_UML_EXPORT QStartClassifierBehaviorAction : public QObject, public QActi
     Q_PROPERTY(QInputPin * object READ object WRITE setObject)
 
     Q_DISABLE_COPY(QStartClassifierBehaviorAction)
-    QTUML_DECLARE_PRIVATE(QStartClassifierBehaviorAction)
 
 public:
     explicit QStartClassifierBehaviorAction(QObject *parent = 0);

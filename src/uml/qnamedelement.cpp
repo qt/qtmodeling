@@ -124,13 +124,13 @@ QNamedElement::~QNamedElement()
  */
 QString QNamedElement::name() const
 {
-    Q_D(const QNamedElement);
+    QTUML_D(const QNamedElement);
     return d->name;
 }
 
 void QNamedElement::setName(QString name)
 {
-    Q_D(QNamedElement);
+    QTUML_D(QNamedElement);
     d->setName(name);
 }
 
@@ -139,13 +139,13 @@ void QNamedElement::setName(QString name)
  */
 QtUml::VisibilityKind QNamedElement::visibility() const
 {
-    Q_D(const QNamedElement);
+    QTUML_D(const QNamedElement);
     return d->visibility;
 }
 
 void QNamedElement::setVisibility(QtUml::VisibilityKind visibility)
 {
-    Q_D(QNamedElement);
+    QTUML_D(QNamedElement);
     d->setVisibility(visibility);
 }
 
@@ -154,7 +154,7 @@ void QNamedElement::setVisibility(QtUml::VisibilityKind visibility)
  */
 QString QNamedElement::qualifiedName() const
 {
-    Q_D(const QNamedElement);
+    QTUML_D(const QNamedElement);
     if (d->name.isEmpty()) return QString();
     QString qualifiedName_(d->name);
     QScopedPointer< const QList<QNamespace *> > allNamespaces_(allNamespaces());
@@ -172,13 +172,13 @@ QString QNamedElement::qualifiedName() const
  */
 QStringExpression *QNamedElement::nameExpression() const
 {
-    Q_D(const QNamedElement);
+    QTUML_D(const QNamedElement);
     return d->nameExpression;
 }
 
 void QNamedElement::setNameExpression(const QStringExpression *nameExpression)
 {
-    Q_D(QNamedElement);
+    QTUML_D(QNamedElement);
     d->setNameExpression(const_cast<QStringExpression *>(nameExpression));
 }
 
@@ -187,7 +187,7 @@ void QNamedElement::setNameExpression(const QStringExpression *nameExpression)
  */
 QNamespace *QNamedElement::namespace_() const
 {
-    Q_D(const QNamedElement);
+    QTUML_D(const QNamedElement);
     return d->namespace_;
 }
 
@@ -196,19 +196,19 @@ QNamespace *QNamedElement::namespace_() const
  */
 const QSet<QDependency *> *QNamedElement::clientDependencies() const
 {
-    Q_D(const QNamedElement);
+    QTUML_D(const QNamedElement);
     return d->clientDependencies;
 }
 
 void QNamedElement::addClientDependency(const QDependency *clientDependency)
 {
-    Q_D(QNamedElement);
+    QTUML_D(QNamedElement);
     d->addClientDependency(const_cast<QDependency *>(clientDependency));
 }
 
 void QNamedElement::removeClientDependency(const QDependency *clientDependency)
 {
-    Q_D(QNamedElement);
+    QTUML_D(QNamedElement);
     d->removeClientDependency(const_cast<QDependency *>(clientDependency));
 }
 
@@ -217,7 +217,7 @@ void QNamedElement::removeClientDependency(const QDependency *clientDependency)
  */
 const QList<QNamespace *> *QNamedElement::allNamespaces() const
 {
-    Q_D(const QNamedElement);
+    QTUML_D(const QNamedElement);
     if (!d->namespace_) {
         return new QList<QNamespace *>;
     }
