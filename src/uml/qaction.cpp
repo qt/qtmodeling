@@ -149,7 +149,6 @@ void QActionPrivate::removeOutput(const QOutputPin *output)
 
 QAction::QAction()
 {
-    d_umlptr = new QActionPrivate;
 }
 
 QAction::~QAction()

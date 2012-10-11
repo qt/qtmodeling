@@ -76,7 +76,6 @@ void QExecutionSpecificationPrivate::setFinish(const QOccurrenceSpecification *f
 
 QExecutionSpecification::QExecutionSpecification()
 {
-    d_umlptr = new QExecutionSpecificationPrivate;
 }
 
 QExecutionSpecification::~QExecutionSpecification()

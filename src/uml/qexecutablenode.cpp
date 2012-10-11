@@ -83,7 +83,6 @@ void QExecutableNodePrivate::removeHandler(const QExceptionHandler *handler)
 
 QExecutableNode::QExecutableNode()
 {
-    d_umlptr = new QExecutableNodePrivate;
 }
 
 QExecutableNode::~QExecutableNode()

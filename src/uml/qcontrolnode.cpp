@@ -63,7 +63,6 @@ QControlNodePrivate::~QControlNodePrivate()
 
 QControlNode::QControlNode()
 {
-    d_umlptr = new QControlNodePrivate;
 }
 
 QControlNode::~QControlNode()

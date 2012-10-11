@@ -63,7 +63,6 @@ QObservationPrivate::~QObservationPrivate()
 
 QObservation::QObservation()
 {
-    d_umlptr = new QObservationPrivate;
 }
 
 QObservation::~QObservation()

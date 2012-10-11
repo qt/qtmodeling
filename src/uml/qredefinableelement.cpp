@@ -94,7 +94,6 @@ void QRedefinableElementPrivate::removeRedefinitionContext(const QClassifier *re
 
 QRedefinableElement::QRedefinableElement()
 {
-    d_umlptr = new QRedefinableElementPrivate;
 }
 
 QRedefinableElement::~QRedefinableElement()

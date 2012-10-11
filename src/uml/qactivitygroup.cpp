@@ -129,7 +129,6 @@ void QActivityGroupPrivate::setSuperGroup(const QActivityGroup *superGroup)
 
 QActivityGroup::QActivityGroup()
 {
-    d_umlptr = new QActivityGroupPrivate;
 }
 
 QActivityGroup::~QActivityGroup()

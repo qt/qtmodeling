@@ -75,7 +75,6 @@ void QRelationshipPrivate::removeRelatedElement(const QElement *relatedElement)
 
 QRelationship::QRelationship()
 {
-    d_umlptr = new QRelationshipPrivate;
 }
 
 QRelationship::~QRelationship()

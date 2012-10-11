@@ -87,7 +87,6 @@ void QDeploymentTargetPrivate::removeDeployment(const QDeployment *deployment)
 
 QDeploymentTarget::QDeploymentTarget()
 {
-    d_umlptr = new QDeploymentTargetPrivate;
 }
 
 QDeploymentTarget::~QDeploymentTarget()

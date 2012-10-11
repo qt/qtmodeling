@@ -64,7 +64,6 @@ QValueSpecificationPrivate::~QValueSpecificationPrivate()
 
 QValueSpecification::QValueSpecification()
 {
-    d_umlptr = new QValueSpecificationPrivate;
 }
 
 QValueSpecification::~QValueSpecification()

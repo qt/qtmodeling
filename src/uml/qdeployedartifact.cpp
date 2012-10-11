@@ -63,7 +63,6 @@ QDeployedArtifactPrivate::~QDeployedArtifactPrivate()
 
 QDeployedArtifact::QDeployedArtifact()
 {
-    d_umlptr = new QDeployedArtifactPrivate;
 }
 
 QDeployedArtifact::~QDeployedArtifact()

@@ -90,7 +90,6 @@ void QInvocationActionPrivate::setOnPort(const QPort *onPort)
 
 QInvocationAction::QInvocationAction()
 {
-    d_umlptr = new QInvocationActionPrivate;
 }
 
 QInvocationAction::~QInvocationAction()

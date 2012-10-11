@@ -63,7 +63,6 @@ QEventPrivate::~QEventPrivate()
 
 QEvent::QEvent()
 {
-    d_umlptr = new QEventPrivate;
 }
 
 QEvent::~QEvent()

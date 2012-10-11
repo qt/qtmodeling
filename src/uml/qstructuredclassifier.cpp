@@ -131,7 +131,6 @@ void QStructuredClassifierPrivate::removeOwnedConnector(const QConnector *ownedC
 
 QStructuredClassifier::QStructuredClassifier()
 {
-    d_umlptr = new QStructuredClassifierPrivate;
 }
 
 QStructuredClassifier::~QStructuredClassifier()

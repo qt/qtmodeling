@@ -71,7 +71,6 @@ void QConnectableElementPrivate::setTemplateParameter(const QConnectableElementT
 
 QConnectableElement::QConnectableElement()
 {
-    d_umlptr = new QConnectableElementPrivate;
 }
 
 QConnectableElement::~QConnectableElement()

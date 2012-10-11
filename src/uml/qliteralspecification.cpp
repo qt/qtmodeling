@@ -63,7 +63,6 @@ QLiteralSpecificationPrivate::~QLiteralSpecificationPrivate()
 
 QLiteralSpecification::QLiteralSpecification()
 {
-    d_umlptr = new QLiteralSpecificationPrivate;
 }
 
 QLiteralSpecification::~QLiteralSpecification()

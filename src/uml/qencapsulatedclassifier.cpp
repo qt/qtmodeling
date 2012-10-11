@@ -65,7 +65,6 @@ QEncapsulatedClassifierPrivate::~QEncapsulatedClassifierPrivate()
 
 QEncapsulatedClassifier::QEncapsulatedClassifier()
 {
-    d_umlptr = new QEncapsulatedClassifierPrivate;
 }
 
 QEncapsulatedClassifier::~QEncapsulatedClassifier()

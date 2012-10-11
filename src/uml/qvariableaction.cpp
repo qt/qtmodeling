@@ -70,7 +70,6 @@ void QVariableActionPrivate::setVariable(const QVariable *variable)
 
 QVariableAction::QVariableAction()
 {
-    d_umlptr = new QVariableActionPrivate;
 }
 
 QVariableAction::~QVariableAction()

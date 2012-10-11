@@ -112,7 +112,6 @@ void QNamedElementPrivate::removeClientDependency(const QDependency *clientDepen
 
 QNamedElement::QNamedElement()
 {
-    d_umlptr = new QNamedElementPrivate;
 }
 
 QNamedElement::~QNamedElement()

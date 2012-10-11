@@ -63,7 +63,6 @@ QWriteLinkActionPrivate::~QWriteLinkActionPrivate()
 
 QWriteLinkAction::QWriteLinkAction()
 {
-    d_umlptr = new QWriteLinkActionPrivate;
 }
 
 QWriteLinkAction::~QWriteLinkAction()

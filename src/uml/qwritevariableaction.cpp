@@ -77,7 +77,6 @@ void QWriteVariableActionPrivate::setValue(const QInputPin *value)
 
 QWriteVariableAction::QWriteVariableAction()
 {
-    d_umlptr = new QWriteVariableActionPrivate;
 }
 
 QWriteVariableAction::~QWriteVariableAction()

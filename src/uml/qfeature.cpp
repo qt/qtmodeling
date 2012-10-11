@@ -82,7 +82,6 @@ void QFeaturePrivate::removeFeaturingClassifier(const QClassifier *featuringClas
 
 QFeature::QFeature()
 {
-    d_umlptr = new QFeaturePrivate;
 }
 
 QFeature::~QFeature()

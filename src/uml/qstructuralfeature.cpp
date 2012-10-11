@@ -69,7 +69,6 @@ void QStructuralFeaturePrivate::setReadOnly(bool isReadOnly)
 
 QStructuralFeature::QStructuralFeature()
 {
-    d_umlptr = new QStructuralFeaturePrivate;
 }
 
 QStructuralFeature::~QStructuralFeature()

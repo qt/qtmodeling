@@ -98,7 +98,6 @@ void QTemplateableElementPrivate::removeTemplateBinding(const QTemplateBinding *
 
 QTemplateableElement::QTemplateableElement()
 {
-    d_umlptr = new QTemplateableElementPrivate;
 }
 
 QTemplateableElement::~QTemplateableElement()

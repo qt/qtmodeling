@@ -76,7 +76,6 @@ void QVertexPrivate::setContainer(const QRegion *container)
 
 QVertex::QVertex()
 {
-    d_umlptr = new QVertexPrivate;
 }
 
 QVertex::~QVertex()

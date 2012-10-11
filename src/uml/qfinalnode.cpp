@@ -63,7 +63,6 @@ QFinalNodePrivate::~QFinalNodePrivate()
 
 QFinalNode::QFinalNode()
 {
-    d_umlptr = new QFinalNodePrivate;
 }
 
 QFinalNode::~QFinalNode()

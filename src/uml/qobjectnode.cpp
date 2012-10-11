@@ -109,7 +109,6 @@ void QObjectNodePrivate::removeInState(const QState *inState)
 
 QObjectNode::QObjectNode()
 {
-    d_umlptr = new QObjectNodePrivate;
 }
 
 QObjectNode::~QObjectNode()

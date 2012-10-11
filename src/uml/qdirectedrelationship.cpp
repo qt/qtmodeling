@@ -102,7 +102,6 @@ void QDirectedRelationshipPrivate::removeTarget(const QElement *target)
 
 QDirectedRelationship::QDirectedRelationship()
 {
-    d_umlptr = new QDirectedRelationshipPrivate;
 }
 
 QDirectedRelationship::~QDirectedRelationship()
