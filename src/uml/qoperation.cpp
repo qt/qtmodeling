@@ -83,6 +83,8 @@ QOperationPrivate::QOperationPrivate() :
 
 QOperationPrivate::~QOperationPrivate()
 {
+    foreach (QParameter *parameter, *ownedParameters)
+        delete parameter;
     delete ownedParameters;
     delete redefinedOperations;
     delete postconditions;

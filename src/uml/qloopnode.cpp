@@ -63,9 +63,13 @@ QLoopNodePrivate::QLoopNodePrivate() :
 
 QLoopNodePrivate::~QLoopNodePrivate()
 {
+    foreach (QInputPin *inputpin, *loopVariableInputs)
+        delete inputpin;
     delete loopVariableInputs;
     delete bodyOutputs;
     delete loopVariables;
+    foreach (QOutputPin *outputpin, *results)
+        delete outputpin;
     delete results;
     delete setupParts;
     delete bodyParts;

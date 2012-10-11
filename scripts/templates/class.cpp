@@ -24,7 +24,7 @@
     // Adjust subsetted property(ies)
             [%- found = 'true' -%]
             [%- END %]
-    ${subsettedPropertyItem.accessor.2.name}([% IF singlevalued == "true" %]this->[% END %]${accessor.parameter.0.name});
+    ${subsettedPropertyItem.accessor.2.name}([% IF singlevalued == 'true' %]this->[% END %]${accessor.parameter.0.name});
         [%- END -%]
         [%- END -%]
         [%- END -%]
@@ -107,7 +107,7 @@ QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
 ${class.name}Private::${class.name}Private()
 [%- found = 'false' -%]
 [%- FOREACH attribute IN class.attribute.values %]
-[%- IF attribute.isDerived == "false" or attribute.isDerivedUnion == "true" -%]
+[%- IF attribute.isDerived == 'false' or attribute.isDerivedUnion == 'true' -%]
 [%- IF attribute.accessor.0.return.search('<') -%]
 [%- IF found == 'true' -%]
 ,
@@ -126,7 +126,7 @@ ${class.name}Private::${class.name}Private()
 [% END -%]
     ${attribute.accessor.0.name}(0)
 [%- ELSE -%]
-[%- IF attribute.defaultValue != "" -%]
+[%- IF attribute.defaultValue != '' -%]
 [%- IF found == 'true' -%]
 ,
 [% ELSE -%]
@@ -140,7 +140,7 @@ ${class.name}Private::${class.name}Private()
 [%- END -%]
 [%- END -%]
 [%- FOREACH associationend IN class.associationend.values %]
-[%- IF associationend.isDerived == "false" or associationend.isDerivedUnion == "true" -%]
+[%- IF associationend.isDerived == 'false' or associationend.isDerivedUnion == 'true' -%]
 [%- IF associationend.accessor.0.return.search('<') -%]
 [%- IF found == 'true' -%]
 ,
@@ -159,7 +159,7 @@ ${class.name}Private::${class.name}Private()
 [% END -%]
     ${associationend.accessor.0.name}(0)
 [%- ELSE -%]
-[%- IF associationend.defaultValue != "" -%]
+[%- IF associationend.defaultValue != '' -%]
 [%- IF found == 'true' -%]
 ,
 [% ELSE -%]
@@ -178,13 +178,23 @@ ${class.name}Private::${class.name}Private()
 ${class.name}Private::~${class.name}Private()
 {
 [% FOREACH attribute IN class.attribute.values -%]
-[%- IF ((attribute.isDerived == "false" or attribute.isDerivedUnion == "true") and attribute.accessor.0.return.search('<')) -%]
+[%- IF attribute.aggregation == 'composite' and attribute.accessor.0.return.search('<') and attribute.subsettedProperty == '' -%]
+    foreach (${attribute.accessor.1.parameter.0.type.remove('^const ')}${attribute.accessor.1.parameter.0.type.remove('^const Q').remove('\*').trim.lower}, *${attribute.accessor.0.name})
+        delete ${attribute.accessor.1.parameter.0.type.remove('^const Q').remove('\*').trim.lower};
+
+[%- END -%]
+[%- IF ((attribute.isDerived == 'false' or attribute.isDerivedUnion == 'true') and attribute.accessor.0.return.search('<')) or (attribute.accessor.0.return.search('\*$') and attribute.aggregation == 'composite' and attribute.subsettedProperty == '') -%]
     delete ${attribute.accessor.0.name};
 
 [%- END -%]
 [%- END -%]
 [%- FOREACH associationend IN class.associationend.values -%]
-[%- IF ((associationend.isDerived == "false" or associationend.isDerivedUnion == "true") and associationend.accessor.0.return.search('<')) -%]
+[%- IF associationend.aggregation == 'composite' and associationend.accessor.0.return.search('<') and associationend.subsettedProperty == '' -%]
+    foreach (${associationend.accessor.1.parameter.0.type.remove('^const ')}${associationend.accessor.1.parameter.0.type.remove('^const Q').remove('\*').trim.lower}, *${associationend.accessor.0.name})
+        delete ${associationend.accessor.1.parameter.0.type.remove('^const Q').remove('\*').trim.lower};
+
+[%- END -%]
+[%- IF ((associationend.isDerived == 'false' or associationend.isDerivedUnion == 'true') and associationend.accessor.0.return.search('<')) or (associationend.accessor.0.return.search('\*$') and associationend.aggregation == 'composite' and associationend.subsettedProperty == '') -%]
     delete ${associationend.accessor.0.name};
 
 [%- END -%]
@@ -198,17 +208,17 @@ ${class.name}Private::~${class.name}Private()
 ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
 {
     [%- IF accessor.name.search('^set') %]
-    [%- HANDLESUBSETTEDPROPERTY(attribute, 2, "true") %]
+    [%- HANDLESUBSETTEDPROPERTY(attribute, 2, 'true') %]
     this->${accessor.parameter.0.name} = [% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %];
-    [%- HANDLESUBSETTEDPROPERTY(attribute, 1, "true") -%]
+    [%- HANDLESUBSETTEDPROPERTY(attribute, 1, 'true') -%]
     [%- END -%]
     [%- IF accessor.name.search('^add') %]
     this->${attribute.accessor.0.name}->[% IF attribute.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
-    [%- HANDLESUBSETTEDPROPERTY(attribute, 1, "false") -%]
+    [%- HANDLESUBSETTEDPROPERTY(attribute, 1, 'false') -%]
     [%- END -%]
     [%- IF accessor.name.search('^remove') %]
     this->${attribute.accessor.0.name}->[% IF attribute.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
-    [%- HANDLESUBSETTEDPROPERTY(attribute, 2, "false") -%]
+    [%- HANDLESUBSETTEDPROPERTY(attribute, 2, 'false') -%]
     [%- END %]
 }
 [% END -%]
@@ -222,17 +232,17 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
 ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
 {
     [%- IF accessor.name.search('^set') %]
-    [%- HANDLESUBSETTEDPROPERTY(associationend, 2, "true") %]
+    [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'true') %]
     this->${accessor.parameter.0.name} = [% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %];
-    [%- HANDLESUBSETTEDPROPERTY(associationend, 1, "true") -%]
+    [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'true') -%]
     [%- END -%]
     [%- IF accessor.name.search('^add') %]
     this->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
-    [%- HANDLESUBSETTEDPROPERTY(associationend, 1, "false") -%]
+    [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'false') -%]
     [%- END -%]
     [%- IF accessor.name.search('^remove') %]
     this->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
-    [%- HANDLESUBSETTEDPROPERTY(associationend, 2, "false") -%]
+    [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'false') -%]
     [%- END %]
 }
 [% END -%]

@@ -1,10 +1,12 @@
-#include <QtCore/QDebug>
 #include <QtUml/QModel>
 #include <QtUml/QPackage>
 #include <QtUml/QPrimitiveType>
 #include <QtUml/QEnumeration>
 #include <QtUml/QEnumerationLiteral>
 #include <QtUml/QClass>
+
+#include <QtCore/QDebug>
+#include <QtCore/QScopedPointer>
 
 int main ()
 {
@@ -21,6 +23,7 @@ int main ()
     QtUml::QEnumerationLiteral *directionIn = new QtUml::QEnumerationLiteral;
     directionIn->setName("DirectionIn");
     enumeration->addOwnedLiteral(directionIn);
+    model->addOwnedType(enumeration);
     QtUml::QClass *class_ = new QtUml::QClass;
     class_->setName("Student");
     class_->setAbstract(false);
@@ -31,21 +34,21 @@ int main ()
     qDebug() << "package->ownedMembers()->size():" << package->ownedMembers()->size();
     qDebug() << "package->ownedRules()->size():" << package->ownedRules()->size();
     qDebug() << "package->packagedElements()->size():" << package->packagedElements()->size();
-    const QSet<QtUml::QPackage *> *nestedPackages = package->nestedPackages();
+
+    typedef const QSet<QtUml::QPackage *> QPackageList;
+    QScopedPointer<QPackageList> nestedPackages (model->nestedPackages());
     qDebug() << "package->nestedPackages()->size():" << nestedPackages->size();
-    const QSet<QtUml::QStereotype *> *ownedStereotypes = package->ownedStereotypes();
+
+    typedef const QSet<QtUml::QStereotype *> QStereotypeList;
+    QScopedPointer<QStereotypeList> ownedStereotypes (package->ownedStereotypes());
     qDebug() << "package->ownedStereotypes()->size():" << ownedStereotypes->size();
-    const QSet<QtUml::QType *> *ownedTypes = package->ownedTypes();
+
+    typedef const QSet<QtUml::QType *> QTypeList;
+    QScopedPointer<QTypeList> ownedTypes (package->ownedTypes());
     qDebug() << "package->ownedTypes()->size():" << ownedTypes->size();
 
-    delete model;
-    delete package;
-    delete primitiveType;
-    delete enumeration;
-    delete directionIn;
-    delete class_;
-    delete nestedPackages;
-    delete ownedStereotypes;
-    delete ownedTypes;
-}
+    delete model; // That will delete all owned elements
 
+    // All containers created by nestedPackages(), ownedStereotypes(), and ownedTypes()
+    // are destroyed by QScopedPointer
+}

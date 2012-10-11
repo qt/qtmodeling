@@ -53,6 +53,8 @@ QCreateLinkActionPrivate::QCreateLinkActionPrivate() :
 
 QCreateLinkActionPrivate::~QCreateLinkActionPrivate()
 {
+    foreach (QLinkEndCreationData *linkendcreationdata, *endData)
+        delete linkendcreationdata;
     delete endData;
 }
 

@@ -55,6 +55,7 @@ QDurationConstraintPrivate::QDurationConstraintPrivate() :
 QDurationConstraintPrivate::~QDurationConstraintPrivate()
 {
     delete firstEvents;
+    delete specification;
 }
 
 void QDurationConstraintPrivate::addFirstEvent(bool firstEvent)

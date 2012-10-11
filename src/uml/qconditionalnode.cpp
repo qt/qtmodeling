@@ -59,6 +59,8 @@ QConditionalNodePrivate::QConditionalNodePrivate() :
 QConditionalNodePrivate::~QConditionalNodePrivate()
 {
     delete clauses;
+    foreach (QOutputPin *outputpin, *results)
+        delete outputpin;
     delete results;
 }
 

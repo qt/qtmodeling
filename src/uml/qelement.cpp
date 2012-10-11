@@ -55,6 +55,8 @@ QElementPrivate::QElementPrivate() :
 
 QElementPrivate::~QElementPrivate()
 {
+    foreach (QElement *element, *ownedElements)
+        delete element;
     delete ownedElements;
     delete ownedComments;
 }

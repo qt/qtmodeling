@@ -53,6 +53,7 @@ QIntervalConstraintPrivate::QIntervalConstraintPrivate() :
 
 QIntervalConstraintPrivate::~QIntervalConstraintPrivate()
 {
+    delete specification;
 }
 
 void QIntervalConstraintPrivate::setSpecification(const QInterval *specification)
