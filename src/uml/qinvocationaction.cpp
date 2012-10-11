@@ -62,6 +62,7 @@ QInvocationActionPrivate::~QInvocationActionPrivate()
 void QInvocationActionPrivate::addArgument(const QInputPin *argument)
 {
     this->arguments->append(const_cast<QInputPin *>(argument));
+
     // Adjust subsetted property(ies)
     addInput(argument);
 }
@@ -69,6 +70,7 @@ void QInvocationActionPrivate::addArgument(const QInputPin *argument)
 void QInvocationActionPrivate::removeArgument(const QInputPin *argument)
 {
     this->arguments->removeAll(const_cast<QInputPin *>(argument));
+
     // Adjust subsetted property(ies)
     removeInput(argument);
 }

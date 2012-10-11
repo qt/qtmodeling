@@ -63,7 +63,9 @@ void QProtocolTransitionPrivate::setPostCondition(const QConstraint *postConditi
 {
     // Adjust subsetted property(ies)
     removeOwnedRule(this->postCondition);
+
     this->postCondition = const_cast<QConstraint *>(postCondition);
+
     // Adjust subsetted property(ies)
     addOwnedRule(postCondition);
 }
@@ -71,6 +73,7 @@ void QProtocolTransitionPrivate::setPostCondition(const QConstraint *postConditi
 void QProtocolTransitionPrivate::setPreCondition(const QConstraint *preCondition)
 {
     this->preCondition = const_cast<QConstraint *>(preCondition);
+
     // Adjust subsetted property(ies)
     setGuard(preCondition);
 }

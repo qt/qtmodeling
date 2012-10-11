@@ -59,6 +59,7 @@ QExtensionPointPrivate::~QExtensionPointPrivate()
 void QExtensionPointPrivate::setUseCase(const QUseCase *useCase)
 {
     this->useCase = const_cast<QUseCase *>(useCase);
+
     // Adjust subsetted property(ies)
     setNamespace_(useCase);
 }

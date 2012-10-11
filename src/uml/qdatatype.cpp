@@ -67,6 +67,7 @@ QDataTypePrivate::~QDataTypePrivate()
 void QDataTypePrivate::addOwnedOperation(const QOperation *ownedOperation)
 {
     this->ownedOperations->append(const_cast<QOperation *>(ownedOperation));
+
     // Adjust subsetted property(ies)
     addFeature(ownedOperation);
     addOwnedMember(ownedOperation);
@@ -75,6 +76,7 @@ void QDataTypePrivate::addOwnedOperation(const QOperation *ownedOperation)
 void QDataTypePrivate::removeOwnedOperation(const QOperation *ownedOperation)
 {
     this->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation));
+
     // Adjust subsetted property(ies)
     removeFeature(ownedOperation);
     removeOwnedMember(ownedOperation);
@@ -83,6 +85,7 @@ void QDataTypePrivate::removeOwnedOperation(const QOperation *ownedOperation)
 void QDataTypePrivate::addOwnedAttribute(const QProperty *ownedAttribute)
 {
     this->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
+
     // Adjust subsetted property(ies)
     addOwnedMember(ownedAttribute);
     addAttribute(ownedAttribute);
@@ -91,6 +94,7 @@ void QDataTypePrivate::addOwnedAttribute(const QProperty *ownedAttribute)
 void QDataTypePrivate::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
     this->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
+
     // Adjust subsetted property(ies)
     removeOwnedMember(ownedAttribute);
     removeAttribute(ownedAttribute);

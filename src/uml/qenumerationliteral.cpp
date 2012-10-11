@@ -59,6 +59,7 @@ QEnumerationLiteralPrivate::~QEnumerationLiteralPrivate()
 void QEnumerationLiteralPrivate::setEnumeration(const QEnumeration *enumeration)
 {
     this->enumeration = const_cast<QEnumeration *>(enumeration);
+
     // Adjust subsetted property(ies)
     setNamespace_(enumeration);
 }

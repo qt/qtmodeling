@@ -60,7 +60,9 @@ void QAbstractionPrivate::setMapping(const QOpaqueExpression *mapping)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->mapping);
+
     this->mapping = const_cast<QOpaqueExpression *>(mapping);
+
     // Adjust subsetted property(ies)
     addOwnedElement(mapping);
 }

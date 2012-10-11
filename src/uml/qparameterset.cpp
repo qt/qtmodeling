@@ -73,6 +73,7 @@ void QParameterSetPrivate::removeParameter(const QParameter *parameter)
 void QParameterSetPrivate::addCondition(const QConstraint *condition)
 {
     this->conditions->insert(const_cast<QConstraint *>(condition));
+
     // Adjust subsetted property(ies)
     addOwnedElement(condition);
 }
@@ -80,6 +81,7 @@ void QParameterSetPrivate::addCondition(const QConstraint *condition)
 void QParameterSetPrivate::removeCondition(const QConstraint *condition)
 {
     this->conditions->remove(const_cast<QConstraint *>(condition));
+
     // Adjust subsetted property(ies)
     removeOwnedElement(condition);
 }

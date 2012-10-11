@@ -63,6 +63,7 @@ QVariablePrivate::~QVariablePrivate()
 void QVariablePrivate::setScope(const QStructuredActivityNode *scope)
 {
     this->scope = const_cast<QStructuredActivityNode *>(scope);
+
     // Adjust subsetted property(ies)
     setNamespace_(scope);
 }
@@ -70,6 +71,7 @@ void QVariablePrivate::setScope(const QStructuredActivityNode *scope)
 void QVariablePrivate::setActivityScope(const QActivity *activityScope)
 {
     this->activityScope = const_cast<QActivity *>(activityScope);
+
     // Adjust subsetted property(ies)
     setNamespace_(activityScope);
 }

@@ -60,7 +60,9 @@ void QAcceptCallActionPrivate::setReturnInformation(const QOutputPin *returnInfo
 {
     // Adjust subsetted property(ies)
     removeOutput(this->returnInformation);
+
     this->returnInformation = const_cast<QOutputPin *>(returnInformation);
+
     // Adjust subsetted property(ies)
     addOutput(returnInformation);
 }

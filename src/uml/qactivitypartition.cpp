@@ -88,6 +88,7 @@ void QActivityPartitionPrivate::setRepresents(const QElement *represents)
 void QActivityPartitionPrivate::addSubpartition(const QActivityPartition *subpartition)
 {
     this->subpartitions->insert(const_cast<QActivityPartition *>(subpartition));
+
     // Adjust subsetted property(ies)
     addSubgroup(subpartition);
 }
@@ -95,6 +96,7 @@ void QActivityPartitionPrivate::addSubpartition(const QActivityPartition *subpar
 void QActivityPartitionPrivate::removeSubpartition(const QActivityPartition *subpartition)
 {
     this->subpartitions->remove(const_cast<QActivityPartition *>(subpartition));
+
     // Adjust subsetted property(ies)
     removeSubgroup(subpartition);
 }
@@ -102,6 +104,7 @@ void QActivityPartitionPrivate::removeSubpartition(const QActivityPartition *sub
 void QActivityPartitionPrivate::setSuperPartition(const QActivityPartition *superPartition)
 {
     this->superPartition = const_cast<QActivityPartition *>(superPartition);
+
     // Adjust subsetted property(ies)
     setSuperGroup(superPartition);
 }
@@ -109,6 +112,7 @@ void QActivityPartitionPrivate::setSuperPartition(const QActivityPartition *supe
 void QActivityPartitionPrivate::addNode(const QActivityNode *node)
 {
     this->nodes->insert(const_cast<QActivityNode *>(node));
+
     // Adjust subsetted property(ies)
     addContainedNode(node);
 }
@@ -116,6 +120,7 @@ void QActivityPartitionPrivate::addNode(const QActivityNode *node)
 void QActivityPartitionPrivate::removeNode(const QActivityNode *node)
 {
     this->nodes->remove(const_cast<QActivityNode *>(node));
+
     // Adjust subsetted property(ies)
     removeContainedNode(node);
 }
@@ -123,6 +128,7 @@ void QActivityPartitionPrivate::removeNode(const QActivityNode *node)
 void QActivityPartitionPrivate::addEdge(const QActivityEdge *edge)
 {
     this->edges->insert(const_cast<QActivityEdge *>(edge));
+
     // Adjust subsetted property(ies)
     addContainedEdge(edge);
 }
@@ -130,6 +136,7 @@ void QActivityPartitionPrivate::addEdge(const QActivityEdge *edge)
 void QActivityPartitionPrivate::removeEdge(const QActivityEdge *edge)
 {
     this->edges->remove(const_cast<QActivityEdge *>(edge));
+
     // Adjust subsetted property(ies)
     removeContainedEdge(edge);
 }

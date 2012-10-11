@@ -66,7 +66,9 @@ void QTimeEventPrivate::setWhen(const QTimeExpression *when)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->when);
+
     this->when = const_cast<QTimeExpression *>(when);
+
     // Adjust subsetted property(ies)
     addOwnedElement(when);
 }

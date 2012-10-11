@@ -93,6 +93,7 @@ void QBehavioralFeaturePrivate::removeRaisedException(const QType *raisedExcepti
 void QBehavioralFeaturePrivate::addOwnedParameter(const QParameter *ownedParameter)
 {
     this->ownedParameters->append(const_cast<QParameter *>(ownedParameter));
+
     // Adjust subsetted property(ies)
     addOwnedMember(ownedParameter);
 }
@@ -100,6 +101,7 @@ void QBehavioralFeaturePrivate::addOwnedParameter(const QParameter *ownedParamet
 void QBehavioralFeaturePrivate::removeOwnedParameter(const QParameter *ownedParameter)
 {
     this->ownedParameters->removeAll(const_cast<QParameter *>(ownedParameter));
+
     // Adjust subsetted property(ies)
     removeOwnedMember(ownedParameter);
 }
@@ -107,6 +109,7 @@ void QBehavioralFeaturePrivate::removeOwnedParameter(const QParameter *ownedPara
 void QBehavioralFeaturePrivate::addOwnedParameterSet(const QParameterSet *ownedParameterSet)
 {
     this->ownedParameterSets->insert(const_cast<QParameterSet *>(ownedParameterSet));
+
     // Adjust subsetted property(ies)
     addOwnedMember(ownedParameterSet);
 }
@@ -114,6 +117,7 @@ void QBehavioralFeaturePrivate::addOwnedParameterSet(const QParameterSet *ownedP
 void QBehavioralFeaturePrivate::removeOwnedParameterSet(const QParameterSet *ownedParameterSet)
 {
     this->ownedParameterSets->remove(const_cast<QParameterSet *>(ownedParameterSet));
+
     // Adjust subsetted property(ies)
     removeOwnedMember(ownedParameterSet);
 }

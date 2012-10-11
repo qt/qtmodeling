@@ -86,6 +86,7 @@ void QActivityEdgePrivate::setSource(const QActivityNode *source)
 void QActivityEdgePrivate::addRedefinedEdge(const QActivityEdge *redefinedEdge)
 {
     this->redefinedEdges->insert(const_cast<QActivityEdge *>(redefinedEdge));
+
     // Adjust subsetted property(ies)
     addRedefinedElement(redefinedEdge);
 }
@@ -93,6 +94,7 @@ void QActivityEdgePrivate::addRedefinedEdge(const QActivityEdge *redefinedEdge)
 void QActivityEdgePrivate::removeRedefinedEdge(const QActivityEdge *redefinedEdge)
 {
     this->redefinedEdges->remove(const_cast<QActivityEdge *>(redefinedEdge));
+
     // Adjust subsetted property(ies)
     removeRedefinedElement(redefinedEdge);
 }
@@ -111,7 +113,9 @@ void QActivityEdgePrivate::setGuard(const QValueSpecification *guard)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->guard);
+
     this->guard = const_cast<QValueSpecification *>(guard);
+
     // Adjust subsetted property(ies)
     addOwnedElement(guard);
 }
@@ -119,6 +123,7 @@ void QActivityEdgePrivate::setGuard(const QValueSpecification *guard)
 void QActivityEdgePrivate::addInPartition(const QActivityPartition *inPartition)
 {
     this->inPartition->insert(const_cast<QActivityPartition *>(inPartition));
+
     // Adjust subsetted property(ies)
     addInGroup(inPartition);
 }
@@ -126,6 +131,7 @@ void QActivityEdgePrivate::addInPartition(const QActivityPartition *inPartition)
 void QActivityEdgePrivate::removeInPartition(const QActivityPartition *inPartition)
 {
     this->inPartition->remove(const_cast<QActivityPartition *>(inPartition));
+
     // Adjust subsetted property(ies)
     removeInGroup(inPartition);
 }
@@ -133,6 +139,7 @@ void QActivityEdgePrivate::removeInPartition(const QActivityPartition *inPartiti
 void QActivityEdgePrivate::setActivity(const QActivity *activity)
 {
     this->activity = const_cast<QActivity *>(activity);
+
     // Adjust subsetted property(ies)
     setOwner(activity);
 }
@@ -146,7 +153,9 @@ void QActivityEdgePrivate::setWeight(const QValueSpecification *weight)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->weight);
+
     this->weight = const_cast<QValueSpecification *>(weight);
+
     // Adjust subsetted property(ies)
     addOwnedElement(weight);
 }
@@ -155,7 +164,9 @@ void QActivityEdgePrivate::setInStructuredNode(const QStructuredActivityNode *in
 {
     // Adjust subsetted property(ies)
     removeInGroup(this->inStructuredNode);
+
     this->inStructuredNode = const_cast<QStructuredActivityNode *>(inStructuredNode);
+
     // Adjust subsetted property(ies)
     addInGroup(inStructuredNode);
     setOwner(inStructuredNode);

@@ -71,6 +71,7 @@ QUseCasePrivate::~QUseCasePrivate()
 void QUseCasePrivate::addExtensionPoint(const QExtensionPoint *extensionPoint)
 {
     this->extensionPoints->insert(const_cast<QExtensionPoint *>(extensionPoint));
+
     // Adjust subsetted property(ies)
     addOwnedMember(extensionPoint);
 }
@@ -78,6 +79,7 @@ void QUseCasePrivate::addExtensionPoint(const QExtensionPoint *extensionPoint)
 void QUseCasePrivate::removeExtensionPoint(const QExtensionPoint *extensionPoint)
 {
     this->extensionPoints->remove(const_cast<QExtensionPoint *>(extensionPoint));
+
     // Adjust subsetted property(ies)
     removeOwnedMember(extensionPoint);
 }
@@ -85,6 +87,7 @@ void QUseCasePrivate::removeExtensionPoint(const QExtensionPoint *extensionPoint
 void QUseCasePrivate::addInclude(const QInclude *include)
 {
     this->includes->insert(const_cast<QInclude *>(include));
+
     // Adjust subsetted property(ies)
     addOwnedMember(include);
 }
@@ -92,6 +95,7 @@ void QUseCasePrivate::addInclude(const QInclude *include)
 void QUseCasePrivate::removeInclude(const QInclude *include)
 {
     this->includes->remove(const_cast<QInclude *>(include));
+
     // Adjust subsetted property(ies)
     removeOwnedMember(include);
 }
@@ -109,6 +113,7 @@ void QUseCasePrivate::removeSubject(const QClassifier *subject)
 void QUseCasePrivate::addExtend(const QExtend *extend)
 {
     this->extends->insert(const_cast<QExtend *>(extend));
+
     // Adjust subsetted property(ies)
     addOwnedMember(extend);
 }
@@ -116,6 +121,7 @@ void QUseCasePrivate::addExtend(const QExtend *extend)
 void QUseCasePrivate::removeExtend(const QExtend *extend)
 {
     this->extends->remove(const_cast<QExtend *>(extend));
+
     // Adjust subsetted property(ies)
     removeOwnedMember(extend);
 }

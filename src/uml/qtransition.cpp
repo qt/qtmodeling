@@ -83,7 +83,9 @@ void QTransitionPrivate::setGuard(const QConstraint *guard)
 {
     // Adjust subsetted property(ies)
     removeOwnedRule(this->guard);
+
     this->guard = const_cast<QConstraint *>(guard);
+
     // Adjust subsetted property(ies)
     addOwnedRule(guard);
 }
@@ -97,7 +99,9 @@ void QTransitionPrivate::setEffect(const QBehavior *effect)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->effect);
+
     this->effect = const_cast<QBehavior *>(effect);
+
     // Adjust subsetted property(ies)
     addOwnedElement(effect);
 }
@@ -105,6 +109,7 @@ void QTransitionPrivate::setEffect(const QBehavior *effect)
 void QTransitionPrivate::setContainer(const QRegion *container)
 {
     this->container = const_cast<QRegion *>(container);
+
     // Adjust subsetted property(ies)
     setNamespace_(container);
 }
@@ -113,7 +118,9 @@ void QTransitionPrivate::setRedefinedTransition(const QTransition *redefinedTran
 {
     // Adjust subsetted property(ies)
     removeRedefinedElement(this->redefinedTransition);
+
     this->redefinedTransition = const_cast<QTransition *>(redefinedTransition);
+
     // Adjust subsetted property(ies)
     addRedefinedElement(redefinedTransition);
 }
@@ -126,6 +133,7 @@ void QTransitionPrivate::setSource(const QVertex *source)
 void QTransitionPrivate::addTrigger(const QTrigger *trigger)
 {
     this->triggers->insert(const_cast<QTrigger *>(trigger));
+
     // Adjust subsetted property(ies)
     addOwnedElement(trigger);
 }
@@ -133,6 +141,7 @@ void QTransitionPrivate::addTrigger(const QTrigger *trigger)
 void QTransitionPrivate::removeTrigger(const QTrigger *trigger)
 {
     this->triggers->remove(const_cast<QTrigger *>(trigger));
+
     // Adjust subsetted property(ies)
     removeOwnedElement(trigger);
 }

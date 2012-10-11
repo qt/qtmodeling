@@ -62,6 +62,7 @@ QInteractionOperandPrivate::~QInteractionOperandPrivate()
 void QInteractionOperandPrivate::addFragment(const QInteractionFragment *fragment)
 {
     this->fragments->append(const_cast<QInteractionFragment *>(fragment));
+
     // Adjust subsetted property(ies)
     addOwnedMember(fragment);
 }
@@ -69,6 +70,7 @@ void QInteractionOperandPrivate::addFragment(const QInteractionFragment *fragmen
 void QInteractionOperandPrivate::removeFragment(const QInteractionFragment *fragment)
 {
     this->fragments->removeAll(const_cast<QInteractionFragment *>(fragment));
+
     // Adjust subsetted property(ies)
     removeOwnedMember(fragment);
 }
@@ -77,7 +79,9 @@ void QInteractionOperandPrivate::setGuard(const QInteractionConstraint *guard)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->guard);
+
     this->guard = const_cast<QInteractionConstraint *>(guard);
+
     // Adjust subsetted property(ies)
     addOwnedElement(guard);
 }

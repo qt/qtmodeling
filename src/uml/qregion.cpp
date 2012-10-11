@@ -74,7 +74,9 @@ void QRegionPrivate::setExtendedRegion(const QRegion *extendedRegion)
 {
     // Adjust subsetted property(ies)
     removeRedefinedElement(this->extendedRegion);
+
     this->extendedRegion = const_cast<QRegion *>(extendedRegion);
+
     // Adjust subsetted property(ies)
     addRedefinedElement(extendedRegion);
 }
@@ -82,6 +84,7 @@ void QRegionPrivate::setExtendedRegion(const QRegion *extendedRegion)
 void QRegionPrivate::addTransition(const QTransition *transition)
 {
     this->transitions->insert(const_cast<QTransition *>(transition));
+
     // Adjust subsetted property(ies)
     addOwnedMember(transition);
 }
@@ -89,6 +92,7 @@ void QRegionPrivate::addTransition(const QTransition *transition)
 void QRegionPrivate::removeTransition(const QTransition *transition)
 {
     this->transitions->remove(const_cast<QTransition *>(transition));
+
     // Adjust subsetted property(ies)
     removeOwnedMember(transition);
 }
@@ -96,6 +100,7 @@ void QRegionPrivate::removeTransition(const QTransition *transition)
 void QRegionPrivate::setStateMachine(const QStateMachine *stateMachine)
 {
     this->stateMachine = const_cast<QStateMachine *>(stateMachine);
+
     // Adjust subsetted property(ies)
     setNamespace_(stateMachine);
 }
@@ -103,6 +108,7 @@ void QRegionPrivate::setStateMachine(const QStateMachine *stateMachine)
 void QRegionPrivate::setState(const QState *state)
 {
     this->state = const_cast<QState *>(state);
+
     // Adjust subsetted property(ies)
     setNamespace_(state);
 }
@@ -110,6 +116,7 @@ void QRegionPrivate::setState(const QState *state)
 void QRegionPrivate::addSubvertex(const QVertex *subvertex)
 {
     this->subvertices->insert(const_cast<QVertex *>(subvertex));
+
     // Adjust subsetted property(ies)
     addOwnedMember(subvertex);
 }
@@ -117,6 +124,7 @@ void QRegionPrivate::addSubvertex(const QVertex *subvertex)
 void QRegionPrivate::removeSubvertex(const QVertex *subvertex)
 {
     this->subvertices->remove(const_cast<QVertex *>(subvertex));
+
     // Adjust subsetted property(ies)
     removeOwnedMember(subvertex);
 }

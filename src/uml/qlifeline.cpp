@@ -89,6 +89,7 @@ void QLifelinePrivate::removeCoveredBy(const QInteractionFragment *coveredBy)
 void QLifelinePrivate::setInteraction(const QInteraction *interaction)
 {
     this->interaction = const_cast<QInteraction *>(interaction);
+
     // Adjust subsetted property(ies)
     setNamespace_(interaction);
 }
@@ -97,7 +98,9 @@ void QLifelinePrivate::setSelector(const QValueSpecification *selector)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->selector);
+
     this->selector = const_cast<QValueSpecification *>(selector);
+
     // Adjust subsetted property(ies)
     addOwnedElement(selector);
 }

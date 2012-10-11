@@ -66,7 +66,9 @@ void QSendObjectActionPrivate::setTarget(const QInputPin *target)
 {
     // Adjust subsetted property(ies)
     removeInput(this->target);
+
     this->target = const_cast<QInputPin *>(target);
+
     // Adjust subsetted property(ies)
     addInput(target);
 }

@@ -68,6 +68,7 @@ QConnectorPrivate::~QConnectorPrivate()
 void QConnectorPrivate::addRedefinedConnector(const QConnector *redefinedConnector)
 {
     this->redefinedConnectors->insert(const_cast<QConnector *>(redefinedConnector));
+
     // Adjust subsetted property(ies)
     addRedefinedElement(redefinedConnector);
 }
@@ -75,6 +76,7 @@ void QConnectorPrivate::addRedefinedConnector(const QConnector *redefinedConnect
 void QConnectorPrivate::removeRedefinedConnector(const QConnector *redefinedConnector)
 {
     this->redefinedConnectors->remove(const_cast<QConnector *>(redefinedConnector));
+
     // Adjust subsetted property(ies)
     removeRedefinedElement(redefinedConnector);
 }
@@ -97,6 +99,7 @@ void QConnectorPrivate::setType(const QAssociation *type)
 void QConnectorPrivate::addEnd(const QConnectorEnd *end)
 {
     this->ends->append(const_cast<QConnectorEnd *>(end));
+
     // Adjust subsetted property(ies)
     addOwnedElement(end);
 }
@@ -104,6 +107,7 @@ void QConnectorPrivate::addEnd(const QConnectorEnd *end)
 void QConnectorPrivate::removeEnd(const QConnectorEnd *end)
 {
     this->ends->removeAll(const_cast<QConnectorEnd *>(end));
+
     // Adjust subsetted property(ies)
     removeOwnedElement(end);
 }

@@ -69,7 +69,9 @@ void QExtendPrivate::setExtendedCase(const QUseCase *extendedCase)
 {
     // Adjust subsetted property(ies)
     removeTarget(this->extendedCase);
+
     this->extendedCase = const_cast<QUseCase *>(extendedCase);
+
     // Adjust subsetted property(ies)
     addTarget(extendedCase);
 }
@@ -78,7 +80,9 @@ void QExtendPrivate::setExtension(const QUseCase *extension)
 {
     // Adjust subsetted property(ies)
     removeSource(this->extension);
+
     this->extension = const_cast<QUseCase *>(extension);
+
     // Adjust subsetted property(ies)
     addSource(extension);
     setNamespace_(extension);
@@ -98,7 +102,9 @@ void QExtendPrivate::setCondition(const QConstraint *condition)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->condition);
+
     this->condition = const_cast<QConstraint *>(condition);
+
     // Adjust subsetted property(ies)
     addOwnedElement(condition);
 }

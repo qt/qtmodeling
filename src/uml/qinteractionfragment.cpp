@@ -69,6 +69,7 @@ QInteractionFragmentPrivate::~QInteractionFragmentPrivate()
 void QInteractionFragmentPrivate::addGeneralOrdering(const QGeneralOrdering *generalOrdering)
 {
     this->generalOrderings->insert(const_cast<QGeneralOrdering *>(generalOrdering));
+
     // Adjust subsetted property(ies)
     addOwnedElement(generalOrdering);
 }
@@ -76,6 +77,7 @@ void QInteractionFragmentPrivate::addGeneralOrdering(const QGeneralOrdering *gen
 void QInteractionFragmentPrivate::removeGeneralOrdering(const QGeneralOrdering *generalOrdering)
 {
     this->generalOrderings->remove(const_cast<QGeneralOrdering *>(generalOrdering));
+
     // Adjust subsetted property(ies)
     removeOwnedElement(generalOrdering);
 }
@@ -83,6 +85,7 @@ void QInteractionFragmentPrivate::removeGeneralOrdering(const QGeneralOrdering *
 void QInteractionFragmentPrivate::setEnclosingInteraction(const QInteraction *enclosingInteraction)
 {
     this->enclosingInteraction = const_cast<QInteraction *>(enclosingInteraction);
+
     // Adjust subsetted property(ies)
     setNamespace_(enclosingInteraction);
 }
@@ -100,6 +103,7 @@ void QInteractionFragmentPrivate::removeCovered(const QLifeline *covered)
 void QInteractionFragmentPrivate::setEnclosingOperand(const QInteractionOperand *enclosingOperand)
 {
     this->enclosingOperand = const_cast<QInteractionOperand *>(enclosingOperand);
+
     // Adjust subsetted property(ies)
     setNamespace_(enclosingOperand);
 }

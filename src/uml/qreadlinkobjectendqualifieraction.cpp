@@ -65,7 +65,9 @@ void QReadLinkObjectEndQualifierActionPrivate::setResult(const QOutputPin *resul
 {
     // Adjust subsetted property(ies)
     removeOutput(this->result);
+
     this->result = const_cast<QOutputPin *>(result);
+
     // Adjust subsetted property(ies)
     addOutput(result);
 }
@@ -74,7 +76,9 @@ void QReadLinkObjectEndQualifierActionPrivate::setObject(const QInputPin *object
 {
     // Adjust subsetted property(ies)
     removeInput(this->object);
+
     this->object = const_cast<QInputPin *>(object);
+
     // Adjust subsetted property(ies)
     addInput(object);
 }

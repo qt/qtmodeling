@@ -70,7 +70,9 @@ void QPackageImportPrivate::setImportingNamespace(const QNamespace *importingNam
 {
     // Adjust subsetted property(ies)
     removeSource(this->importingNamespace);
+
     this->importingNamespace = const_cast<QNamespace *>(importingNamespace);
+
     // Adjust subsetted property(ies)
     setOwner(importingNamespace);
     addSource(importingNamespace);
@@ -80,7 +82,9 @@ void QPackageImportPrivate::setImportedPackage(const QPackage *importedPackage)
 {
     // Adjust subsetted property(ies)
     removeTarget(this->importedPackage);
+
     this->importedPackage = const_cast<QPackage *>(importedPackage);
+
     // Adjust subsetted property(ies)
     addTarget(importedPackage);
 }

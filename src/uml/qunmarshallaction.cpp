@@ -66,7 +66,9 @@ void QUnmarshallActionPrivate::setObject(const QInputPin *object)
 {
     // Adjust subsetted property(ies)
     removeInput(this->object);
+
     this->object = const_cast<QInputPin *>(object);
+
     // Adjust subsetted property(ies)
     addInput(object);
 }
@@ -74,6 +76,7 @@ void QUnmarshallActionPrivate::setObject(const QInputPin *object)
 void QUnmarshallActionPrivate::addResult(const QOutputPin *result)
 {
     this->results->insert(const_cast<QOutputPin *>(result));
+
     // Adjust subsetted property(ies)
     addOutput(result);
 }
@@ -81,6 +84,7 @@ void QUnmarshallActionPrivate::addResult(const QOutputPin *result)
 void QUnmarshallActionPrivate::removeResult(const QOutputPin *result)
 {
     this->results->remove(const_cast<QOutputPin *>(result));
+
     // Adjust subsetted property(ies)
     removeOutput(result);
 }

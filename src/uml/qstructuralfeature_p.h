@@ -57,7 +57,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-
 class QStructuralFeaturePrivate : public virtual QTypedElementPrivate, public QMultiplicityElementPrivate, public QFeaturePrivate
 {
 public:

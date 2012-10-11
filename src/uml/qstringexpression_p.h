@@ -59,7 +59,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-
 class QStringExpressionPrivate : public QExpressionPrivate, public QTemplateableElementPrivate
 {
 public:

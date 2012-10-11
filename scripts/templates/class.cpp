@@ -11,12 +11,16 @@
         [%- END -%]
         [%- IF operation == 1 and subsettedPropertyItem.accessor.1 -%]
             [%- IF found == 'false' %]
+
     // Adjust subsetted property(ies)
             [%- found = 'true' -%]
             [%- END %]
     ${subsettedPropertyItem.accessor.1.name}(${accessor.parameter.0.name});
         [%- ELSE -%][%- IF operation == 2 and subsettedPropertyItem.accessor.2 -%]
-            [%- IF found == 'false' %]
+            [%- IF found == 'false' -%]
+            [%- IF singlevalued == 'false' %]
+
+            [%- END %]
     // Adjust subsetted property(ies)
             [%- found = 'true' -%]
             [%- END %]
@@ -24,6 +28,9 @@
         [%- END -%]
         [%- END -%]
         [%- END -%]
+    [%- END -%]
+    [%- IF found == 'true' and operation == 2 and singlevalued == 'true' %]
+
     [%- END -%]
     [%- END -%]
 [%- END -%]

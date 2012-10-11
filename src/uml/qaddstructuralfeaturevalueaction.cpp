@@ -66,7 +66,9 @@ void QAddStructuralFeatureValueActionPrivate::setInsertAt(const QInputPin *inser
 {
     // Adjust subsetted property(ies)
     removeInput(this->insertAt);
+
     this->insertAt = const_cast<QInputPin *>(insertAt);
+
     // Adjust subsetted property(ies)
     addInput(insertAt);
 }

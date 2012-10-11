@@ -77,6 +77,7 @@ void QElementPrivate::setOwner(const QElement *owner)
 void QElementPrivate::addOwnedComment(const QComment *ownedComment)
 {
     this->ownedComments->insert(const_cast<QComment *>(ownedComment));
+
     // Adjust subsetted property(ies)
     addOwnedElement(ownedComment);
 }
@@ -84,6 +85,7 @@ void QElementPrivate::addOwnedComment(const QComment *ownedComment)
 void QElementPrivate::removeOwnedComment(const QComment *ownedComment)
 {
     this->ownedComments->remove(const_cast<QComment *>(ownedComment));
+
     // Adjust subsetted property(ies)
     removeOwnedElement(ownedComment);
 }

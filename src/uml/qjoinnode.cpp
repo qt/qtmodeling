@@ -66,7 +66,9 @@ void QJoinNodePrivate::setJoinSpec(const QValueSpecification *joinSpec)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->joinSpec);
+
     this->joinSpec = const_cast<QValueSpecification *>(joinSpec);
+
     // Adjust subsetted property(ies)
     addOwnedElement(joinSpec);
 }

@@ -72,7 +72,9 @@ void QTimeExpressionPrivate::setExpr(const QValueSpecification *expr)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->expr);
+
     this->expr = const_cast<QValueSpecification *>(expr);
+
     // Adjust subsetted property(ies)
     addOwnedElement(expr);
 }

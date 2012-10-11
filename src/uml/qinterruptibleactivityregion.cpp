@@ -73,6 +73,7 @@ void QInterruptibleActivityRegionPrivate::removeInterruptingEdge(const QActivity
 void QInterruptibleActivityRegionPrivate::addNode(const QActivityNode *node)
 {
     this->nodes->insert(const_cast<QActivityNode *>(node));
+
     // Adjust subsetted property(ies)
     addContainedNode(node);
 }
@@ -80,6 +81,7 @@ void QInterruptibleActivityRegionPrivate::addNode(const QActivityNode *node)
 void QInterruptibleActivityRegionPrivate::removeNode(const QActivityNode *node)
 {
     this->nodes->remove(const_cast<QActivityNode *>(node));
+
     // Adjust subsetted property(ies)
     removeContainedNode(node);
 }

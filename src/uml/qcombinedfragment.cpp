@@ -70,6 +70,7 @@ void QCombinedFragmentPrivate::setInteractionOperator(QtUml::InteractionOperator
 void QCombinedFragmentPrivate::addCfragmentGate(const QGate *cfragmentGate)
 {
     this->cfragmentGates->insert(const_cast<QGate *>(cfragmentGate));
+
     // Adjust subsetted property(ies)
     addOwnedElement(cfragmentGate);
 }
@@ -77,6 +78,7 @@ void QCombinedFragmentPrivate::addCfragmentGate(const QGate *cfragmentGate)
 void QCombinedFragmentPrivate::removeCfragmentGate(const QGate *cfragmentGate)
 {
     this->cfragmentGates->remove(const_cast<QGate *>(cfragmentGate));
+
     // Adjust subsetted property(ies)
     removeOwnedElement(cfragmentGate);
 }
@@ -84,6 +86,7 @@ void QCombinedFragmentPrivate::removeCfragmentGate(const QGate *cfragmentGate)
 void QCombinedFragmentPrivate::addOperand(const QInteractionOperand *operand)
 {
     this->operands->append(const_cast<QInteractionOperand *>(operand));
+
     // Adjust subsetted property(ies)
     addOwnedElement(operand);
 }
@@ -91,6 +94,7 @@ void QCombinedFragmentPrivate::addOperand(const QInteractionOperand *operand)
 void QCombinedFragmentPrivate::removeOperand(const QInteractionOperand *operand)
 {
     this->operands->removeAll(const_cast<QInteractionOperand *>(operand));
+
     // Adjust subsetted property(ies)
     removeOwnedElement(operand);
 }

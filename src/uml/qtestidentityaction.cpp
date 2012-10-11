@@ -65,7 +65,9 @@ void QTestIdentityActionPrivate::setSecond(const QInputPin *second)
 {
     // Adjust subsetted property(ies)
     removeInput(this->second);
+
     this->second = const_cast<QInputPin *>(second);
+
     // Adjust subsetted property(ies)
     addInput(second);
 }
@@ -74,7 +76,9 @@ void QTestIdentityActionPrivate::setResult(const QOutputPin *result)
 {
     // Adjust subsetted property(ies)
     removeOutput(this->result);
+
     this->result = const_cast<QOutputPin *>(result);
+
     // Adjust subsetted property(ies)
     addOutput(result);
 }
@@ -83,7 +87,9 @@ void QTestIdentityActionPrivate::setFirst(const QInputPin *first)
 {
     // Adjust subsetted property(ies)
     removeInput(this->first);
+
     this->first = const_cast<QInputPin *>(first);
+
     // Adjust subsetted property(ies)
     addInput(first);
 }

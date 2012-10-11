@@ -73,6 +73,7 @@ QNamespacePrivate::~QNamespacePrivate()
 void QNamespacePrivate::addPackageImport(const QPackageImport *packageImport)
 {
     this->packageImports->insert(const_cast<QPackageImport *>(packageImport));
+
     // Adjust subsetted property(ies)
     addOwnedElement(packageImport);
 }
@@ -80,6 +81,7 @@ void QNamespacePrivate::addPackageImport(const QPackageImport *packageImport)
 void QNamespacePrivate::removePackageImport(const QPackageImport *packageImport)
 {
     this->packageImports->remove(const_cast<QPackageImport *>(packageImport));
+
     // Adjust subsetted property(ies)
     removeOwnedElement(packageImport);
 }
@@ -97,6 +99,7 @@ void QNamespacePrivate::removeMember(const QNamedElement *member)
 void QNamespacePrivate::addElementImport(const QElementImport *elementImport)
 {
     this->elementImports->insert(const_cast<QElementImport *>(elementImport));
+
     // Adjust subsetted property(ies)
     addOwnedElement(elementImport);
 }
@@ -104,6 +107,7 @@ void QNamespacePrivate::addElementImport(const QElementImport *elementImport)
 void QNamespacePrivate::removeElementImport(const QElementImport *elementImport)
 {
     this->elementImports->remove(const_cast<QElementImport *>(elementImport));
+
     // Adjust subsetted property(ies)
     removeOwnedElement(elementImport);
 }
@@ -111,6 +115,7 @@ void QNamespacePrivate::removeElementImport(const QElementImport *elementImport)
 void QNamespacePrivate::addOwnedRule(const QConstraint *ownedRule)
 {
     this->ownedRules->insert(const_cast<QConstraint *>(ownedRule));
+
     // Adjust subsetted property(ies)
     addOwnedMember(ownedRule);
 }
@@ -118,6 +123,7 @@ void QNamespacePrivate::addOwnedRule(const QConstraint *ownedRule)
 void QNamespacePrivate::removeOwnedRule(const QConstraint *ownedRule)
 {
     this->ownedRules->remove(const_cast<QConstraint *>(ownedRule));
+
     // Adjust subsetted property(ies)
     removeOwnedMember(ownedRule);
 }
@@ -125,6 +131,7 @@ void QNamespacePrivate::removeOwnedRule(const QConstraint *ownedRule)
 void QNamespacePrivate::addOwnedMember(const QNamedElement *ownedMember)
 {
     this->ownedMembers->insert(const_cast<QNamedElement *>(ownedMember));
+
     // Adjust subsetted property(ies)
     addMember(ownedMember);
     addOwnedElement(ownedMember);
@@ -133,6 +140,7 @@ void QNamespacePrivate::addOwnedMember(const QNamedElement *ownedMember)
 void QNamespacePrivate::removeOwnedMember(const QNamedElement *ownedMember)
 {
     this->ownedMembers->remove(const_cast<QNamedElement *>(ownedMember));
+
     // Adjust subsetted property(ies)
     removeMember(ownedMember);
     removeOwnedElement(ownedMember);

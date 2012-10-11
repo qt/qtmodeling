@@ -65,7 +65,9 @@ void QRedefinableTemplateSignaturePrivate::setClassifier(const QClassifier *clas
 {
     // Adjust subsetted property(ies)
     removeRedefinitionContext(this->classifier);
+
     this->classifier = const_cast<QClassifier *>(classifier);
+
     // Adjust subsetted property(ies)
     addRedefinitionContext(classifier);
 }
@@ -73,6 +75,7 @@ void QRedefinableTemplateSignaturePrivate::setClassifier(const QClassifier *clas
 void QRedefinableTemplateSignaturePrivate::addExtendedSignature(const QRedefinableTemplateSignature *extendedSignature)
 {
     this->extendedSignatures->insert(const_cast<QRedefinableTemplateSignature *>(extendedSignature));
+
     // Adjust subsetted property(ies)
     addRedefinedElement(extendedSignature);
 }
@@ -80,6 +83,7 @@ void QRedefinableTemplateSignaturePrivate::addExtendedSignature(const QRedefinab
 void QRedefinableTemplateSignaturePrivate::removeExtendedSignature(const QRedefinableTemplateSignature *extendedSignature)
 {
     this->extendedSignatures->remove(const_cast<QRedefinableTemplateSignature *>(extendedSignature));
+
     // Adjust subsetted property(ies)
     removeRedefinedElement(extendedSignature);
 }
