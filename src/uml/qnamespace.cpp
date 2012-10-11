@@ -175,7 +175,6 @@ void QNamespacePrivate::removeOwnedMember(const QNamedElement *ownedMember)
 
 QNamespace::QNamespace()
 {
-    d_umlptr = new QNamespacePrivate;
 }
 
 QNamespace::~QNamespace()

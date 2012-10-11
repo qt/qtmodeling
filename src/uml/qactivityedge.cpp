@@ -187,7 +187,6 @@ void QActivityEdgePrivate::setTarget(const QActivityNode *target)
 
 QActivityEdge::QActivityEdge()
 {
-    d_umlptr = new QActivityEdgePrivate;
 }
 
 QActivityEdge::~QActivityEdge()

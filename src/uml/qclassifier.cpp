@@ -269,7 +269,6 @@ void QClassifierPrivate::removeSubstitution(const QSubstitution *substitution)
 
 QClassifier::QClassifier()
 {
-    d_umlptr = new QClassifierPrivate;
 }
 
 QClassifier::~QClassifier()

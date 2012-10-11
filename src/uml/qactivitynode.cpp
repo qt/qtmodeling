@@ -184,7 +184,6 @@ void QActivityNodePrivate::removeOutgoing(const QActivityEdge *outgoing)
 
 QActivityNode::QActivityNode()
 {
-    d_umlptr = new QActivityNodePrivate;
 }
 
 QActivityNode::~QActivityNode()

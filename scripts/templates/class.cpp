@@ -255,7 +255,9 @@ ${class.name}::${class.name}([%- IF class.isAbstract == 'false' -%]QObject *pare
 [% IF class.superobject -%]${class.superobject.split('/').last}(false, parent)[%- ELSE -%]QObject(parent)[%- END -%]
 [%- END %]
 {
+[%- IF class.isAbstract == 'false' %]
     d_umlptr = new ${class.name}Private;
+[%- END %]
 }
 [%- IF class.isAbstract == 'false' %]
 

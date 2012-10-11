@@ -81,7 +81,6 @@ void QParameterableElementPrivate::setTemplateParameter(const QTemplateParameter
 
 QParameterableElement::QParameterableElement()
 {
-    d_umlptr = new QParameterableElementPrivate;
 }
 
 QParameterableElement::~QParameterableElement()

@@ -104,7 +104,6 @@ void QLinkActionPrivate::removeEndData(const QLinkEndData *endData)
 
 QLinkAction::QLinkAction()
 {
-    d_umlptr = new QLinkActionPrivate;
 }
 
 QLinkAction::~QLinkAction()

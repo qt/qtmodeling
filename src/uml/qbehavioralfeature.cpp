@@ -142,7 +142,6 @@ void QBehavioralFeaturePrivate::removeMethod(const QBehavior *method)
 
 QBehavioralFeature::QBehavioralFeature()
 {
-    d_umlptr = new QBehavioralFeaturePrivate;
 }
 
 QBehavioralFeature::~QBehavioralFeature()

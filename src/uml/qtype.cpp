@@ -70,7 +70,6 @@ void QTypePrivate::setPackage(const QPackage *package)
 
 QType::QType()
 {
-    d_umlptr = new QTypePrivate;
 }
 
 QType::~QType()

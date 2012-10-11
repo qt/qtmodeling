@@ -70,7 +70,6 @@ void QMessageEndPrivate::setMessage(const QMessage *message)
 
 QMessageEnd::QMessageEnd()
 {
-    d_umlptr = new QMessageEndPrivate;
 }
 
 QMessageEnd::~QMessageEnd()

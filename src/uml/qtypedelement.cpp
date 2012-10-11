@@ -70,7 +70,6 @@ void QTypedElementPrivate::setType(const QType *type)
 
 QTypedElement::QTypedElement()
 {
-    d_umlptr = new QTypedElementPrivate;
 }
 
 QTypedElement::~QTypedElement()

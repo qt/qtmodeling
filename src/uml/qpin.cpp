@@ -69,7 +69,6 @@ void QPinPrivate::setControl(bool isControl)
 
 QPin::QPin()
 {
-    d_umlptr = new QPinPrivate;
 }
 
 QPin::~QPin()

@@ -89,7 +89,6 @@ void QCallActionPrivate::removeResult(const QOutputPin *result)
 
 QCallAction::QCallAction()
 {
-    d_umlptr = new QCallActionPrivate;
 }
 
 QCallAction::~QCallAction()

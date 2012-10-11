@@ -100,7 +100,6 @@ void QElementPrivate::removeOwnedComment(const QComment *ownedComment)
 
 QElement::QElement()
 {
-    d_umlptr = new QElementPrivate;
 }
 
 QElement::~QElement()

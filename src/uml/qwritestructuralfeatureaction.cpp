@@ -91,7 +91,6 @@ void QWriteStructuralFeatureActionPrivate::setValue(const QInputPin *value)
 
 QWriteStructuralFeatureAction::QWriteStructuralFeatureAction()
 {
-    d_umlptr = new QWriteStructuralFeatureActionPrivate;
 }
 
 QWriteStructuralFeatureAction::~QWriteStructuralFeatureAction()

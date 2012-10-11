@@ -69,7 +69,6 @@ void QPackageableElementPrivate::setVisibility(QtUml::VisibilityKind visibility)
 
 QPackageableElement::QPackageableElement()
 {
-    d_umlptr = new QPackageableElementPrivate;
 }
 
 QPackageableElement::~QPackageableElement()

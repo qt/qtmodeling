@@ -177,8 +177,6 @@ void QBehaviorPrivate::removeOwnedParameterSet(const QParameterSet *ownedParamet
 QBehavior::QBehavior(bool createPimpl, QObject *parent)
     : QClass(createPimpl, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QBehaviorPrivate;
 }
 
 QBehavior::~QBehavior()

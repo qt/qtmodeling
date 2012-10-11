@@ -118,7 +118,6 @@ void QBehavioredClassifierPrivate::setClassifierBehavior(const QBehavior *classi
 
 QBehavioredClassifier::QBehavioredClassifier()
 {
-    d_umlptr = new QBehavioredClassifierPrivate;
 }
 
 QBehavioredClassifier::~QBehavioredClassifier()

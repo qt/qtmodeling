@@ -102,7 +102,6 @@ void QMultiplicityElementPrivate::setLowerValue(const QValueSpecification *lower
 
 QMultiplicityElement::QMultiplicityElement()
 {
-    d_umlptr = new QMultiplicityElementPrivate;
 }
 
 QMultiplicityElement::~QMultiplicityElement()

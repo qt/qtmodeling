@@ -84,7 +84,6 @@ void QStructuralFeatureActionPrivate::setStructuralFeature(const QStructuralFeat
 
 QStructuralFeatureAction::QStructuralFeatureAction()
 {
-    d_umlptr = new QStructuralFeatureActionPrivate;
 }
 
 QStructuralFeatureAction::~QStructuralFeatureAction()

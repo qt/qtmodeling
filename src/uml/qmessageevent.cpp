@@ -63,7 +63,6 @@ QMessageEventPrivate::~QMessageEventPrivate()
 
 QMessageEvent::QMessageEvent()
 {
-    d_umlptr = new QMessageEventPrivate;
 }
 
 QMessageEvent::~QMessageEvent()

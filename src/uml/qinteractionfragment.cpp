@@ -118,7 +118,6 @@ void QInteractionFragmentPrivate::setEnclosingOperand(const QInteractionOperand 
 
 QInteractionFragment::QInteractionFragment()
 {
-    d_umlptr = new QInteractionFragmentPrivate;
 }
 
 QInteractionFragment::~QInteractionFragment()
