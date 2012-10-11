@@ -49,6 +49,7 @@
 #include <QtUml/QConstraint>
 #include <QtUml/QElementImport>
 #include <QtUml/QPackageableElement>
+#include <QtUml/QPackage>
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -76,6 +77,11 @@ void QNamespacePrivate::addPackageImport(const QPackageImport *packageImport)
 
     // Adjust subsetted property(ies)
     addOwnedElement(packageImport);
+
+    // Adjust indirectly subsetted property(ies)
+    // This is because importedMembers is derived (not derivedUnion) and subsets member
+    foreach (QPackageableElement *packageableElement, *packageImport->importedPackage()->packagedElements())
+        addMember(packageableElement);
 }
 
 void QNamespacePrivate::removePackageImport(const QPackageImport *packageImport)
@@ -84,6 +90,11 @@ void QNamespacePrivate::removePackageImport(const QPackageImport *packageImport)
 
     // Adjust subsetted property(ies)
     removeOwnedElement(packageImport);
+
+    // Adjust indirectly subsetted property(ies)
+    // This is because importedMembers is derived (not derivedUnion) and subsets member
+    foreach (QPackageableElement *packageableElement, *packageImport->importedPackage()->packagedElements())
+        removeMember(packageableElement);
 }
 
 void QNamespacePrivate::addMember(const QNamedElement *member)
@@ -102,6 +113,10 @@ void QNamespacePrivate::addElementImport(const QElementImport *elementImport)
 
     // Adjust subsetted property(ies)
     addOwnedElement(elementImport);
+
+    // Adjust indirectly subsetted property(ies)
+    // This is because importedMembers is derived (not derivedUnion) and subsets member
+    addMember(elementImport->importedElement());
 }
 
 void QNamespacePrivate::removeElementImport(const QElementImport *elementImport)
@@ -110,6 +125,10 @@ void QNamespacePrivate::removeElementImport(const QElementImport *elementImport)
 
     // Adjust subsetted property(ies)
     removeOwnedElement(elementImport);
+
+    // Adjust indirectly subsetted property(ies)
+    // This is because importedMembers is derived (not derivedUnion) and subsets member
+    removeMember(elementImport->importedElement());
 }
 
 void QNamespacePrivate::addOwnedRule(const QConstraint *ownedRule)
@@ -195,10 +214,16 @@ const QSet<QNamedElement *> *QNamespace::members() const
 
 /*!
     References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
+    It is the caller's responsibility to delete the returned set.
  */
 const QSet<QPackageableElement *> *QNamespace::importedMembers() const
 {
-    qWarning("QNamespace::importedMembers: to be implemented (this is a derived associationend)");
+    QTUML_D(const QNamespace);
+    QSet<QPackageableElement *> * importedMembers_ = new QSet<QPackageableElement *>;
+    foreach (QElementImport *elementImport, *d->elementImports)
+        importedMembers_->insert(elementImport->importedElement());
+    foreach (QPackageImport *packageImport, *d->packageImports)
+        importedMembers_->unite(*packageImport->importedPackage()->packagedElements());
 }
 
 /*!

@@ -214,6 +214,7 @@ void QNamedElement::removeClientDependency(const QDependency *clientDependency)
 
 /*!
     The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
+    It is the caller's responsibility to delete the returned list.
  */
 const QList<QNamespace *> *QNamedElement::allNamespaces() const
 {
