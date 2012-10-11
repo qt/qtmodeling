@@ -134,7 +134,6 @@ class Q_UML_EXPORT QCollaboration : public QObject, public QStructuredClassifier
     Q_PROPERTY(const QSet<QConnectableElement *> * collaborationRoles READ collaborationRoles)
 
     Q_DISABLE_COPY(QCollaboration)
-    QTUML_DECLARE_PRIVATE(QCollaboration)
 
 public:
     explicit QCollaboration(QObject *parent = 0);

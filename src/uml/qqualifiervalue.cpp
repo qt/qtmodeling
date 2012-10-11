@@ -97,13 +97,13 @@ QQualifierValue::~QQualifierValue()
  */
 QInputPin *QQualifierValue::value() const
 {
-    Q_D(const QQualifierValue);
+    QTUML_D(const QQualifierValue);
     return d->value;
 }
 
 void QQualifierValue::setValue(const QInputPin *value)
 {
-    Q_D(QQualifierValue);
+    QTUML_D(QQualifierValue);
     d->setValue(const_cast<QInputPin *>(value));
 }
 
@@ -112,13 +112,13 @@ void QQualifierValue::setValue(const QInputPin *value)
  */
 QProperty *QQualifierValue::qualifier() const
 {
-    Q_D(const QQualifierValue);
+    QTUML_D(const QQualifierValue);
     return d->qualifier;
 }
 
 void QQualifierValue::setQualifier(const QProperty *qualifier)
 {
-    Q_D(QQualifierValue);
+    QTUML_D(QQualifierValue);
     d->setQualifier(const_cast<QProperty *>(qualifier));
 }
 

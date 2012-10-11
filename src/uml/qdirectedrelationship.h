@@ -61,7 +61,6 @@ class QElement;
 class Q_UML_EXPORT QDirectedRelationship : public QRelationship
 {
     Q_DISABLE_COPY(QDirectedRelationship)
-    QTUML_DECLARE_PRIVATE(QDirectedRelationship)
 
 public:
     virtual ~QDirectedRelationship();

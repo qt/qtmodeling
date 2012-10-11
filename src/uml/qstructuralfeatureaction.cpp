@@ -96,13 +96,13 @@ QStructuralFeatureAction::~QStructuralFeatureAction()
  */
 QInputPin *QStructuralFeatureAction::object() const
 {
-    Q_D(const QStructuralFeatureAction);
+    QTUML_D(const QStructuralFeatureAction);
     return d->object;
 }
 
 void QStructuralFeatureAction::setObject(const QInputPin *object)
 {
-    Q_D(QStructuralFeatureAction);
+    QTUML_D(QStructuralFeatureAction);
     d->setObject(const_cast<QInputPin *>(object));
 }
 
@@ -111,13 +111,13 @@ void QStructuralFeatureAction::setObject(const QInputPin *object)
  */
 QStructuralFeature *QStructuralFeatureAction::structuralFeature() const
 {
-    Q_D(const QStructuralFeatureAction);
+    QTUML_D(const QStructuralFeatureAction);
     return d->structuralFeature;
 }
 
 void QStructuralFeatureAction::setStructuralFeature(const QStructuralFeature *structuralFeature)
 {
-    Q_D(QStructuralFeatureAction);
+    QTUML_D(QStructuralFeatureAction);
     d->setStructuralFeature(const_cast<QStructuralFeature *>(structuralFeature));
 }
 

@@ -102,19 +102,19 @@ QDurationConstraint::~QDurationConstraint()
  */
 const QSet<bool> *QDurationConstraint::firstEvents() const
 {
-    Q_D(const QDurationConstraint);
+    QTUML_D(const QDurationConstraint);
     return d->firstEvents;
 }
 
 void QDurationConstraint::addFirstEvent(bool firstEvent)
 {
-    Q_D(QDurationConstraint);
+    QTUML_D(QDurationConstraint);
     d->addFirstEvent(firstEvent);
 }
 
 void QDurationConstraint::removeFirstEvent(bool firstEvent)
 {
-    Q_D(QDurationConstraint);
+    QTUML_D(QDurationConstraint);
     d->removeFirstEvent(firstEvent);
 }
 
@@ -123,13 +123,13 @@ void QDurationConstraint::removeFirstEvent(bool firstEvent)
  */
 QDurationInterval *QDurationConstraint::specification() const
 {
-    Q_D(const QDurationConstraint);
+    QTUML_D(const QDurationConstraint);
     return d->specification;
 }
 
 void QDurationConstraint::setSpecification(const QDurationInterval *specification)
 {
-    Q_D(QDurationConstraint);
+    QTUML_D(QDurationConstraint);
     d->setSpecification(const_cast<QDurationInterval *>(specification));
 }
 

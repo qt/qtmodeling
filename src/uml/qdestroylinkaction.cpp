@@ -96,19 +96,19 @@ QDestroyLinkAction::~QDestroyLinkAction()
  */
 const QSet<QLinkEndDestructionData *> *QDestroyLinkAction::endData() const
 {
-    Q_D(const QDestroyLinkAction);
+    QTUML_D(const QDestroyLinkAction);
     return d->endData;
 }
 
 void QDestroyLinkAction::addEndData(const QLinkEndDestructionData *endData)
 {
-    Q_D(QDestroyLinkAction);
+    QTUML_D(QDestroyLinkAction);
     d->addEndData(const_cast<QLinkEndDestructionData *>(endData));
 }
 
 void QDestroyLinkAction::removeEndData(const QLinkEndDestructionData *endData)
 {
-    Q_D(QDestroyLinkAction);
+    QTUML_D(QDestroyLinkAction);
     d->removeEndData(const_cast<QLinkEndDestructionData *>(endData));
 }
 

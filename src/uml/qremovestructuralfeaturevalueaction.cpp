@@ -103,13 +103,13 @@ QRemoveStructuralFeatureValueAction::~QRemoveStructuralFeatureValueAction()
  */
 bool QRemoveStructuralFeatureValueAction::isRemoveDuplicates() const
 {
-    Q_D(const QRemoveStructuralFeatureValueAction);
+    QTUML_D(const QRemoveStructuralFeatureValueAction);
     return d->isRemoveDuplicates;
 }
 
 void QRemoveStructuralFeatureValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
 {
-    Q_D(QRemoveStructuralFeatureValueAction);
+    QTUML_D(QRemoveStructuralFeatureValueAction);
     d->setRemoveDuplicates(isRemoveDuplicates);
 }
 
@@ -118,13 +118,13 @@ void QRemoveStructuralFeatureValueAction::setRemoveDuplicates(bool isRemoveDupli
  */
 QInputPin *QRemoveStructuralFeatureValueAction::removeAt() const
 {
-    Q_D(const QRemoveStructuralFeatureValueAction);
+    QTUML_D(const QRemoveStructuralFeatureValueAction);
     return d->removeAt;
 }
 
 void QRemoveStructuralFeatureValueAction::setRemoveAt(const QInputPin *removeAt)
 {
-    Q_D(QRemoveStructuralFeatureValueAction);
+    QTUML_D(QRemoveStructuralFeatureValueAction);
     d->setRemoveAt(const_cast<QInputPin *>(removeAt));
 }
 

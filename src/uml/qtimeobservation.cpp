@@ -96,13 +96,13 @@ QTimeObservation::~QTimeObservation()
  */
 bool QTimeObservation::firstEvent() const
 {
-    Q_D(const QTimeObservation);
+    QTUML_D(const QTimeObservation);
     return d->firstEvent;
 }
 
 void QTimeObservation::setFirstEvent(bool firstEvent)
 {
-    Q_D(QTimeObservation);
+    QTUML_D(QTimeObservation);
     d->setFirstEvent(firstEvent);
 }
 
@@ -111,13 +111,13 @@ void QTimeObservation::setFirstEvent(bool firstEvent)
  */
 QNamedElement *QTimeObservation::event() const
 {
-    Q_D(const QTimeObservation);
+    QTUML_D(const QTimeObservation);
     return d->event;
 }
 
 void QTimeObservation::setEvent(const QNamedElement *event)
 {
-    Q_D(QTimeObservation);
+    QTUML_D(QTimeObservation);
     d->setEvent(const_cast<QNamedElement *>(event));
 }
 

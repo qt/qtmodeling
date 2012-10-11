@@ -90,13 +90,13 @@ QActionExecutionSpecification::~QActionExecutionSpecification()
  */
 QAction *QActionExecutionSpecification::action() const
 {
-    Q_D(const QActionExecutionSpecification);
+    QTUML_D(const QActionExecutionSpecification);
     return d->action;
 }
 
 void QActionExecutionSpecification::setAction(const QAction *action)
 {
-    Q_D(QActionExecutionSpecification);
+    QTUML_D(QActionExecutionSpecification);
     d->setAction(const_cast<QAction *>(action));
 }
 

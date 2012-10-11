@@ -104,7 +104,6 @@ class Q_UML_EXPORT QInteraction : public QBehavior, public QInteractionFragment
     Q_PROPERTY(const QSet<QLifeline *> * lifelines READ lifelines)
 
     Q_DISABLE_COPY(QInteraction)
-    QTUML_DECLARE_PRIVATE(QInteraction)
 
 public:
     explicit QInteraction(QObject *parent = 0);

@@ -113,7 +113,6 @@ class Q_UML_EXPORT QPackage : public QObject, public QNamespace, public QPackage
     Q_PROPERTY(const QSet<QPackage *> * nestedPackages READ nestedPackages)
 
     Q_DISABLE_COPY(QPackage)
-    QTUML_DECLARE_PRIVATE(QPackage)
 
 public:
     explicit QPackage(QObject *parent = 0);

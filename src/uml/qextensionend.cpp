@@ -103,13 +103,13 @@ void QExtensionEnd::setLower(qint32 lower)
  */
 QStereotype *QExtensionEnd::type() const
 {
-    Q_D(const QExtensionEnd);
+    QTUML_D(const QExtensionEnd);
     return d->type;
 }
 
 void QExtensionEnd::setType(const QStereotype *type)
 {
-    Q_D(QExtensionEnd);
+    QTUML_D(QExtensionEnd);
     d->setType(const_cast<QStereotype *>(type));
 }
 

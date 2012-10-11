@@ -128,13 +128,13 @@ QConditionalNode::~QConditionalNode()
  */
 bool QConditionalNode::isAssured() const
 {
-    Q_D(const QConditionalNode);
+    QTUML_D(const QConditionalNode);
     return d->isAssured;
 }
 
 void QConditionalNode::setAssured(bool isAssured)
 {
-    Q_D(QConditionalNode);
+    QTUML_D(QConditionalNode);
     d->setAssured(isAssured);
 }
 
@@ -143,13 +143,13 @@ void QConditionalNode::setAssured(bool isAssured)
  */
 bool QConditionalNode::isDeterminate() const
 {
-    Q_D(const QConditionalNode);
+    QTUML_D(const QConditionalNode);
     return d->isDeterminate;
 }
 
 void QConditionalNode::setDeterminate(bool isDeterminate)
 {
-    Q_D(QConditionalNode);
+    QTUML_D(QConditionalNode);
     d->setDeterminate(isDeterminate);
 }
 
@@ -158,19 +158,19 @@ void QConditionalNode::setDeterminate(bool isDeterminate)
  */
 const QSet<QClause *> *QConditionalNode::clauses() const
 {
-    Q_D(const QConditionalNode);
+    QTUML_D(const QConditionalNode);
     return d->clauses;
 }
 
 void QConditionalNode::addClause(const QClause *clause)
 {
-    Q_D(QConditionalNode);
+    QTUML_D(QConditionalNode);
     d->addClause(const_cast<QClause *>(clause));
 }
 
 void QConditionalNode::removeClause(const QClause *clause)
 {
-    Q_D(QConditionalNode);
+    QTUML_D(QConditionalNode);
     d->removeClause(const_cast<QClause *>(clause));
 }
 
@@ -179,19 +179,19 @@ void QConditionalNode::removeClause(const QClause *clause)
  */
 const QList<QOutputPin *> *QConditionalNode::results() const
 {
-    Q_D(const QConditionalNode);
+    QTUML_D(const QConditionalNode);
     return d->results;
 }
 
 void QConditionalNode::addResult(const QOutputPin *result)
 {
-    Q_D(QConditionalNode);
+    QTUML_D(QConditionalNode);
     d->addResult(const_cast<QOutputPin *>(result));
 }
 
 void QConditionalNode::removeResult(const QOutputPin *result)
 {
-    Q_D(QConditionalNode);
+    QTUML_D(QConditionalNode);
     d->removeResult(const_cast<QOutputPin *>(result));
 }
 

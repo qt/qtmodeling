@@ -115,13 +115,13 @@ QGeneralizationSet::~QGeneralizationSet()
  */
 bool QGeneralizationSet::isCovering() const
 {
-    Q_D(const QGeneralizationSet);
+    QTUML_D(const QGeneralizationSet);
     return d->isCovering;
 }
 
 void QGeneralizationSet::setCovering(bool isCovering)
 {
-    Q_D(QGeneralizationSet);
+    QTUML_D(QGeneralizationSet);
     d->setCovering(isCovering);
 }
 
@@ -130,13 +130,13 @@ void QGeneralizationSet::setCovering(bool isCovering)
  */
 bool QGeneralizationSet::isDisjoint() const
 {
-    Q_D(const QGeneralizationSet);
+    QTUML_D(const QGeneralizationSet);
     return d->isDisjoint;
 }
 
 void QGeneralizationSet::setDisjoint(bool isDisjoint)
 {
-    Q_D(QGeneralizationSet);
+    QTUML_D(QGeneralizationSet);
     d->setDisjoint(isDisjoint);
 }
 
@@ -145,13 +145,13 @@ void QGeneralizationSet::setDisjoint(bool isDisjoint)
  */
 QClassifier *QGeneralizationSet::powertype() const
 {
-    Q_D(const QGeneralizationSet);
+    QTUML_D(const QGeneralizationSet);
     return d->powertype;
 }
 
 void QGeneralizationSet::setPowertype(const QClassifier *powertype)
 {
-    Q_D(QGeneralizationSet);
+    QTUML_D(QGeneralizationSet);
     d->setPowertype(const_cast<QClassifier *>(powertype));
 }
 
@@ -160,19 +160,19 @@ void QGeneralizationSet::setPowertype(const QClassifier *powertype)
  */
 const QSet<QGeneralization *> *QGeneralizationSet::generalizations() const
 {
-    Q_D(const QGeneralizationSet);
+    QTUML_D(const QGeneralizationSet);
     return d->generalizations;
 }
 
 void QGeneralizationSet::addGeneralization(const QGeneralization *generalization)
 {
-    Q_D(QGeneralizationSet);
+    QTUML_D(QGeneralizationSet);
     d->addGeneralization(const_cast<QGeneralization *>(generalization));
 }
 
 void QGeneralizationSet::removeGeneralization(const QGeneralization *generalization)
 {
-    Q_D(QGeneralizationSet);
+    QTUML_D(QGeneralizationSet);
     d->removeGeneralization(const_cast<QGeneralization *>(generalization));
 }
 

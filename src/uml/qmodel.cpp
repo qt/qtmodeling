@@ -88,13 +88,13 @@ QModel::~QModel()
  */
 QString QModel::viewpoint() const
 {
-    Q_D(const QModel);
+    QTUML_D(const QModel);
     return d->viewpoint;
 }
 
 void QModel::setViewpoint(QString viewpoint)
 {
-    Q_D(QModel);
+    QTUML_D(QModel);
     d->setViewpoint(viewpoint);
 }
 

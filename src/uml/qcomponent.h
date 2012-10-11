@@ -73,7 +73,6 @@ class Q_UML_EXPORT QComponent : public QClass
     Q_PROPERTY(const QSet<QPackageableElement *> * packagedElements READ packagedElements)
 
     Q_DISABLE_COPY(QComponent)
-    QTUML_DECLARE_PRIVATE(QComponent)
 
 public:
     explicit QComponent(QObject *parent = 0);

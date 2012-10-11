@@ -57,7 +57,6 @@ class QFinalNodePrivate;
 class Q_UML_EXPORT QFinalNode : public QControlNode
 {
     Q_DISABLE_COPY(QFinalNode)
-    QTUML_DECLARE_PRIVATE(QFinalNode)
 
 public:
     virtual ~QFinalNode();

@@ -135,13 +135,13 @@ QLifeline::~QLifeline()
  */
 QConnectableElement *QLifeline::represents() const
 {
-    Q_D(const QLifeline);
+    QTUML_D(const QLifeline);
     return d->represents;
 }
 
 void QLifeline::setRepresents(const QConnectableElement *represents)
 {
-    Q_D(QLifeline);
+    QTUML_D(QLifeline);
     d->setRepresents(const_cast<QConnectableElement *>(represents));
 }
 
@@ -150,13 +150,13 @@ void QLifeline::setRepresents(const QConnectableElement *represents)
  */
 QPartDecomposition *QLifeline::decomposedAs() const
 {
-    Q_D(const QLifeline);
+    QTUML_D(const QLifeline);
     return d->decomposedAs;
 }
 
 void QLifeline::setDecomposedAs(const QPartDecomposition *decomposedAs)
 {
-    Q_D(QLifeline);
+    QTUML_D(QLifeline);
     d->setDecomposedAs(const_cast<QPartDecomposition *>(decomposedAs));
 }
 
@@ -165,19 +165,19 @@ void QLifeline::setDecomposedAs(const QPartDecomposition *decomposedAs)
  */
 const QSet<QInteractionFragment *> *QLifeline::coveredBy() const
 {
-    Q_D(const QLifeline);
+    QTUML_D(const QLifeline);
     return d->coveredBy;
 }
 
 void QLifeline::addCoveredBy(const QInteractionFragment *coveredBy)
 {
-    Q_D(QLifeline);
+    QTUML_D(QLifeline);
     d->addCoveredBy(const_cast<QInteractionFragment *>(coveredBy));
 }
 
 void QLifeline::removeCoveredBy(const QInteractionFragment *coveredBy)
 {
-    Q_D(QLifeline);
+    QTUML_D(QLifeline);
     d->removeCoveredBy(const_cast<QInteractionFragment *>(coveredBy));
 }
 
@@ -186,13 +186,13 @@ void QLifeline::removeCoveredBy(const QInteractionFragment *coveredBy)
  */
 QInteraction *QLifeline::interaction() const
 {
-    Q_D(const QLifeline);
+    QTUML_D(const QLifeline);
     return d->interaction;
 }
 
 void QLifeline::setInteraction(const QInteraction *interaction)
 {
-    Q_D(QLifeline);
+    QTUML_D(QLifeline);
     d->setInteraction(const_cast<QInteraction *>(interaction));
 }
 
@@ -201,13 +201,13 @@ void QLifeline::setInteraction(const QInteraction *interaction)
  */
 QValueSpecification *QLifeline::selector() const
 {
-    Q_D(const QLifeline);
+    QTUML_D(const QLifeline);
     return d->selector;
 }
 
 void QLifeline::setSelector(const QValueSpecification *selector)
 {
-    Q_D(QLifeline);
+    QTUML_D(QLifeline);
     d->setSelector(const_cast<QValueSpecification *>(selector));
 }
 

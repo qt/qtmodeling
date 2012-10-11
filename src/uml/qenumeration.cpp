@@ -103,19 +103,19 @@ QEnumeration::~QEnumeration()
  */
 const QList<QEnumerationLiteral *> *QEnumeration::ownedLiterals() const
 {
-    Q_D(const QEnumeration);
+    QTUML_D(const QEnumeration);
     return d->ownedLiterals;
 }
 
 void QEnumeration::addOwnedLiteral(const QEnumerationLiteral *ownedLiteral)
 {
-    Q_D(QEnumeration);
+    QTUML_D(QEnumeration);
     d->addOwnedLiteral(const_cast<QEnumerationLiteral *>(ownedLiteral));
 }
 
 void QEnumeration::removeOwnedLiteral(const QEnumerationLiteral *ownedLiteral)
 {
-    Q_D(QEnumeration);
+    QTUML_D(QEnumeration);
     d->removeOwnedLiteral(const_cast<QEnumerationLiteral *>(ownedLiteral));
 }
 

@@ -106,7 +106,6 @@ class Q_UML_EXPORT QTestIdentityAction : public QObject, public QAction
     Q_PROPERTY(QInputPin * first READ first WRITE setFirst)
 
     Q_DISABLE_COPY(QTestIdentityAction)
-    QTUML_DECLARE_PRIVATE(QTestIdentityAction)
 
 public:
     explicit QTestIdentityAction(QObject *parent = 0);

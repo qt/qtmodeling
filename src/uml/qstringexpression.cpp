@@ -112,13 +112,13 @@ QStringExpression::~QStringExpression()
  */
 QStringExpression *QStringExpression::owningExpression() const
 {
-    Q_D(const QStringExpression);
+    QTUML_D(const QStringExpression);
     return d->owningExpression;
 }
 
 void QStringExpression::setOwningExpression(const QStringExpression *owningExpression)
 {
-    Q_D(QStringExpression);
+    QTUML_D(QStringExpression);
     d->setOwningExpression(const_cast<QStringExpression *>(owningExpression));
 }
 
@@ -127,19 +127,19 @@ void QStringExpression::setOwningExpression(const QStringExpression *owningExpre
  */
 const QSet<QStringExpression *> *QStringExpression::subExpressions() const
 {
-    Q_D(const QStringExpression);
+    QTUML_D(const QStringExpression);
     return d->subExpressions;
 }
 
 void QStringExpression::addSubExpression(const QStringExpression *subExpression)
 {
-    Q_D(QStringExpression);
+    QTUML_D(QStringExpression);
     d->addSubExpression(const_cast<QStringExpression *>(subExpression));
 }
 
 void QStringExpression::removeSubExpression(const QStringExpression *subExpression)
 {
-    Q_D(QStringExpression);
+    QTUML_D(QStringExpression);
     d->removeSubExpression(const_cast<QStringExpression *>(subExpression));
 }
 

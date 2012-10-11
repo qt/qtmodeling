@@ -58,7 +58,6 @@ class QInputPin;
 class Q_UML_EXPORT QWriteVariableAction : public QVariableAction
 {
     Q_DISABLE_COPY(QWriteVariableAction)
-    QTUML_DECLARE_PRIVATE(QWriteVariableAction)
 
 public:
     virtual ~QWriteVariableAction();

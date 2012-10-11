@@ -97,13 +97,13 @@ QConnectorEnd::~QConnectorEnd()
  */
 QConnectableElement *QConnectorEnd::role() const
 {
-    Q_D(const QConnectorEnd);
+    QTUML_D(const QConnectorEnd);
     return d->role;
 }
 
 void QConnectorEnd::setRole(const QConnectableElement *role)
 {
-    Q_D(QConnectorEnd);
+    QTUML_D(QConnectorEnd);
     d->setRole(const_cast<QConnectableElement *>(role));
 }
 
@@ -112,13 +112,13 @@ void QConnectorEnd::setRole(const QConnectableElement *role)
  */
 QProperty *QConnectorEnd::partWithPort() const
 {
-    Q_D(const QConnectorEnd);
+    QTUML_D(const QConnectorEnd);
     return d->partWithPort;
 }
 
 void QConnectorEnd::setPartWithPort(const QProperty *partWithPort)
 {
-    Q_D(QConnectorEnd);
+    QTUML_D(QConnectorEnd);
     d->setPartWithPort(const_cast<QProperty *>(partWithPort));
 }
 

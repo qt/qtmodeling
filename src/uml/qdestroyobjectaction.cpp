@@ -109,13 +109,13 @@ QDestroyObjectAction::~QDestroyObjectAction()
  */
 bool QDestroyObjectAction::isDestroyLinks() const
 {
-    Q_D(const QDestroyObjectAction);
+    QTUML_D(const QDestroyObjectAction);
     return d->isDestroyLinks;
 }
 
 void QDestroyObjectAction::setDestroyLinks(bool isDestroyLinks)
 {
-    Q_D(QDestroyObjectAction);
+    QTUML_D(QDestroyObjectAction);
     d->setDestroyLinks(isDestroyLinks);
 }
 
@@ -124,13 +124,13 @@ void QDestroyObjectAction::setDestroyLinks(bool isDestroyLinks)
  */
 bool QDestroyObjectAction::isDestroyOwnedObjects() const
 {
-    Q_D(const QDestroyObjectAction);
+    QTUML_D(const QDestroyObjectAction);
     return d->isDestroyOwnedObjects;
 }
 
 void QDestroyObjectAction::setDestroyOwnedObjects(bool isDestroyOwnedObjects)
 {
-    Q_D(QDestroyObjectAction);
+    QTUML_D(QDestroyObjectAction);
     d->setDestroyOwnedObjects(isDestroyOwnedObjects);
 }
 
@@ -139,13 +139,13 @@ void QDestroyObjectAction::setDestroyOwnedObjects(bool isDestroyOwnedObjects)
  */
 QInputPin *QDestroyObjectAction::target() const
 {
-    Q_D(const QDestroyObjectAction);
+    QTUML_D(const QDestroyObjectAction);
     return d->target;
 }
 
 void QDestroyObjectAction::setTarget(const QInputPin *target)
 {
-    Q_D(QDestroyObjectAction);
+    QTUML_D(QDestroyObjectAction);
     d->setTarget(const_cast<QInputPin *>(target));
 }
 

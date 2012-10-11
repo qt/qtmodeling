@@ -131,13 +131,13 @@ QGeneralization::~QGeneralization()
  */
 bool QGeneralization::isSubstitutable() const
 {
-    Q_D(const QGeneralization);
+    QTUML_D(const QGeneralization);
     return d->isSubstitutable;
 }
 
 void QGeneralization::setSubstitutable(bool isSubstitutable)
 {
-    Q_D(QGeneralization);
+    QTUML_D(QGeneralization);
     d->setSubstitutable(isSubstitutable);
 }
 
@@ -146,13 +146,13 @@ void QGeneralization::setSubstitutable(bool isSubstitutable)
  */
 QClassifier *QGeneralization::specific() const
 {
-    Q_D(const QGeneralization);
+    QTUML_D(const QGeneralization);
     return d->specific;
 }
 
 void QGeneralization::setSpecific(const QClassifier *specific)
 {
-    Q_D(QGeneralization);
+    QTUML_D(QGeneralization);
     d->setSpecific(const_cast<QClassifier *>(specific));
 }
 
@@ -161,19 +161,19 @@ void QGeneralization::setSpecific(const QClassifier *specific)
  */
 const QSet<QGeneralizationSet *> *QGeneralization::generalizationSets() const
 {
-    Q_D(const QGeneralization);
+    QTUML_D(const QGeneralization);
     return d->generalizationSets;
 }
 
 void QGeneralization::addGeneralizationSet(const QGeneralizationSet *generalizationSet)
 {
-    Q_D(QGeneralization);
+    QTUML_D(QGeneralization);
     d->addGeneralizationSet(const_cast<QGeneralizationSet *>(generalizationSet));
 }
 
 void QGeneralization::removeGeneralizationSet(const QGeneralizationSet *generalizationSet)
 {
-    Q_D(QGeneralization);
+    QTUML_D(QGeneralization);
     d->removeGeneralizationSet(const_cast<QGeneralizationSet *>(generalizationSet));
 }
 
@@ -182,13 +182,13 @@ void QGeneralization::removeGeneralizationSet(const QGeneralizationSet *generali
  */
 QClassifier *QGeneralization::general() const
 {
-    Q_D(const QGeneralization);
+    QTUML_D(const QGeneralization);
     return d->general;
 }
 
 void QGeneralization::setGeneral(const QClassifier *general)
 {
-    Q_D(QGeneralization);
+    QTUML_D(QGeneralization);
     d->setGeneral(const_cast<QClassifier *>(general));
 }
 

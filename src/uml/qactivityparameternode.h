@@ -102,7 +102,6 @@ class Q_UML_EXPORT QActivityParameterNode : public QObject, public QObjectNode
     Q_PROPERTY(QParameter * parameter READ parameter WRITE setParameter)
 
     Q_DISABLE_COPY(QActivityParameterNode)
-    QTUML_DECLARE_PRIVATE(QActivityParameterNode)
 
 public:
     explicit QActivityParameterNode(QObject *parent = 0);

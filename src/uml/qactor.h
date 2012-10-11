@@ -120,7 +120,6 @@ class Q_UML_EXPORT QActor : public QObject, public QBehavioredClassifier
     Q_PROPERTY(QBehavior * classifierBehavior READ classifierBehavior WRITE setClassifierBehavior)
 
     Q_DISABLE_COPY(QActor)
-    QTUML_DECLARE_PRIVATE(QActor)
 
 public:
     explicit QActor(QObject *parent = 0);

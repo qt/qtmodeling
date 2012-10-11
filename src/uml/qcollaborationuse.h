@@ -82,7 +82,6 @@ class Q_UML_EXPORT QCollaborationUse : public QObject, public QNamedElement
     Q_PROPERTY(const QSet<QDependency *> * roleBindings READ roleBindings)
 
     Q_DISABLE_COPY(QCollaborationUse)
-    QTUML_DECLARE_PRIVATE(QCollaborationUse)
 
 public:
     explicit QCollaborationUse(QObject *parent = 0);

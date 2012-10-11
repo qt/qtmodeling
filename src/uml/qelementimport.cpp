@@ -124,13 +124,13 @@ QElementImport::~QElementImport()
  */
 QString QElementImport::alias() const
 {
-    Q_D(const QElementImport);
+    QTUML_D(const QElementImport);
     return d->alias;
 }
 
 void QElementImport::setAlias(QString alias)
 {
-    Q_D(QElementImport);
+    QTUML_D(QElementImport);
     d->setAlias(alias);
 }
 
@@ -139,13 +139,13 @@ void QElementImport::setAlias(QString alias)
  */
 QtUml::VisibilityKind QElementImport::visibility() const
 {
-    Q_D(const QElementImport);
+    QTUML_D(const QElementImport);
     return d->visibility;
 }
 
 void QElementImport::setVisibility(QtUml::VisibilityKind visibility)
 {
-    Q_D(QElementImport);
+    QTUML_D(QElementImport);
     d->setVisibility(visibility);
 }
 
@@ -154,13 +154,13 @@ void QElementImport::setVisibility(QtUml::VisibilityKind visibility)
  */
 QPackageableElement *QElementImport::importedElement() const
 {
-    Q_D(const QElementImport);
+    QTUML_D(const QElementImport);
     return d->importedElement;
 }
 
 void QElementImport::setImportedElement(const QPackageableElement *importedElement)
 {
-    Q_D(QElementImport);
+    QTUML_D(QElementImport);
     d->setImportedElement(const_cast<QPackageableElement *>(importedElement));
 }
 
@@ -169,13 +169,13 @@ void QElementImport::setImportedElement(const QPackageableElement *importedEleme
  */
 QNamespace *QElementImport::importingNamespace() const
 {
-    Q_D(const QElementImport);
+    QTUML_D(const QElementImport);
     return d->importingNamespace;
 }
 
 void QElementImport::setImportingNamespace(const QNamespace *importingNamespace)
 {
-    Q_D(QElementImport);
+    QTUML_D(QElementImport);
     d->setImportingNamespace(const_cast<QNamespace *>(importingNamespace));
 }
 

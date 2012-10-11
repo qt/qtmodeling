@@ -82,13 +82,13 @@ QVariableAction::~QVariableAction()
  */
 QVariable *QVariableAction::variable() const
 {
-    Q_D(const QVariableAction);
+    QTUML_D(const QVariableAction);
     return d->variable;
 }
 
 void QVariableAction::setVariable(const QVariable *variable)
 {
-    Q_D(QVariableAction);
+    QTUML_D(QVariableAction);
     d->setVariable(const_cast<QVariable *>(variable));
 }
 

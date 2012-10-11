@@ -59,7 +59,6 @@ class Q_UML_EXPORT QFinalState : public QState
     Q_OBJECT
 
     Q_DISABLE_COPY(QFinalState)
-    QTUML_DECLARE_PRIVATE(QFinalState)
 
 public:
     explicit QFinalState(QObject *parent = 0);

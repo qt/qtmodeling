@@ -59,7 +59,6 @@ class Q_UML_EXPORT QDevice : public QNode
     Q_OBJECT
 
     Q_DISABLE_COPY(QDevice)
-    QTUML_DECLARE_PRIVATE(QDevice)
 
 public:
     explicit QDevice(QObject *parent = 0);

@@ -59,7 +59,6 @@ class Q_UML_EXPORT QDestructionOccurrenceSpecification : public QMessageOccurren
     Q_OBJECT
 
     Q_DISABLE_COPY(QDestructionOccurrenceSpecification)
-    QTUML_DECLARE_PRIVATE(QDestructionOccurrenceSpecification)
 
 public:
     explicit QDestructionOccurrenceSpecification(QObject *parent = 0);

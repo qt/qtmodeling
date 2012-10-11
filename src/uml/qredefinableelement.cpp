@@ -106,13 +106,13 @@ QRedefinableElement::~QRedefinableElement()
  */
 bool QRedefinableElement::isLeaf() const
 {
-    Q_D(const QRedefinableElement);
+    QTUML_D(const QRedefinableElement);
     return d->isLeaf;
 }
 
 void QRedefinableElement::setLeaf(bool isLeaf)
 {
-    Q_D(QRedefinableElement);
+    QTUML_D(QRedefinableElement);
     d->setLeaf(isLeaf);
 }
 
@@ -121,7 +121,7 @@ void QRedefinableElement::setLeaf(bool isLeaf)
  */
 const QSet<QRedefinableElement *> *QRedefinableElement::redefinedElements() const
 {
-    Q_D(const QRedefinableElement);
+    QTUML_D(const QRedefinableElement);
     return d->redefinedElements;
 }
 
@@ -130,7 +130,7 @@ const QSet<QRedefinableElement *> *QRedefinableElement::redefinedElements() cons
  */
 const QSet<QClassifier *> *QRedefinableElement::redefinitionContexts() const
 {
-    Q_D(const QRedefinableElement);
+    QTUML_D(const QRedefinableElement);
     return d->redefinitionContexts;
 }
 

@@ -104,13 +104,13 @@ QClearAssociationAction::~QClearAssociationAction()
  */
 QInputPin *QClearAssociationAction::object() const
 {
-    Q_D(const QClearAssociationAction);
+    QTUML_D(const QClearAssociationAction);
     return d->object;
 }
 
 void QClearAssociationAction::setObject(const QInputPin *object)
 {
-    Q_D(QClearAssociationAction);
+    QTUML_D(QClearAssociationAction);
     d->setObject(const_cast<QInputPin *>(object));
 }
 
@@ -119,13 +119,13 @@ void QClearAssociationAction::setObject(const QInputPin *object)
  */
 QAssociation *QClearAssociationAction::association() const
 {
-    Q_D(const QClearAssociationAction);
+    QTUML_D(const QClearAssociationAction);
     return d->association;
 }
 
 void QClearAssociationAction::setAssociation(const QAssociation *association)
 {
-    Q_D(QClearAssociationAction);
+    QTUML_D(QClearAssociationAction);
     d->setAssociation(const_cast<QAssociation *>(association));
 }
 

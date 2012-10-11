@@ -108,13 +108,13 @@ QProtocolTransition::~QProtocolTransition()
  */
 QConstraint *QProtocolTransition::postCondition() const
 {
-    Q_D(const QProtocolTransition);
+    QTUML_D(const QProtocolTransition);
     return d->postCondition;
 }
 
 void QProtocolTransition::setPostCondition(const QConstraint *postCondition)
 {
-    Q_D(QProtocolTransition);
+    QTUML_D(QProtocolTransition);
     d->setPostCondition(const_cast<QConstraint *>(postCondition));
 }
 
@@ -131,13 +131,13 @@ const QSet<QOperation *> *QProtocolTransition::referred() const
  */
 QConstraint *QProtocolTransition::preCondition() const
 {
-    Q_D(const QProtocolTransition);
+    QTUML_D(const QProtocolTransition);
     return d->preCondition;
 }
 
 void QProtocolTransition::setPreCondition(const QConstraint *preCondition)
 {
-    Q_D(QProtocolTransition);
+    QTUML_D(QProtocolTransition);
     d->setPreCondition(const_cast<QConstraint *>(preCondition));
 }
 

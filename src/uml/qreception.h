@@ -102,7 +102,6 @@ class Q_UML_EXPORT QReception : public QObject, public QBehavioralFeature
     Q_PROPERTY(QSignal * signal READ signal WRITE setSignal)
 
     Q_DISABLE_COPY(QReception)
-    QTUML_DECLARE_PRIVATE(QReception)
 
 public:
     explicit QReception(QObject *parent = 0);

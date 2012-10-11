@@ -59,7 +59,6 @@ class Q_UML_EXPORT QUsage : public QDependency
     Q_OBJECT
 
     Q_DISABLE_COPY(QUsage)
-    QTUML_DECLARE_PRIVATE(QUsage)
 
 public:
     explicit QUsage(QObject *parent = 0);

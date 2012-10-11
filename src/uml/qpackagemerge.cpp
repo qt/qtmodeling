@@ -112,13 +112,13 @@ QPackageMerge::~QPackageMerge()
  */
 QPackage *QPackageMerge::mergedPackage() const
 {
-    Q_D(const QPackageMerge);
+    QTUML_D(const QPackageMerge);
     return d->mergedPackage;
 }
 
 void QPackageMerge::setMergedPackage(const QPackage *mergedPackage)
 {
-    Q_D(QPackageMerge);
+    QTUML_D(QPackageMerge);
     d->setMergedPackage(const_cast<QPackage *>(mergedPackage));
 }
 
@@ -127,13 +127,13 @@ void QPackageMerge::setMergedPackage(const QPackage *mergedPackage)
  */
 QPackage *QPackageMerge::receivingPackage() const
 {
-    Q_D(const QPackageMerge);
+    QTUML_D(const QPackageMerge);
     return d->receivingPackage;
 }
 
 void QPackageMerge::setReceivingPackage(const QPackage *receivingPackage)
 {
-    Q_D(QPackageMerge);
+    QTUML_D(QPackageMerge);
     d->setReceivingPackage(const_cast<QPackage *>(receivingPackage));
 }
 

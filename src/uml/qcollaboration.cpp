@@ -103,19 +103,19 @@ QCollaboration::~QCollaboration()
  */
 const QSet<QConnectableElement *> *QCollaboration::collaborationRoles() const
 {
-    Q_D(const QCollaboration);
+    QTUML_D(const QCollaboration);
     return d->collaborationRoles;
 }
 
 void QCollaboration::addCollaborationRole(const QConnectableElement *collaborationRole)
 {
-    Q_D(QCollaboration);
+    QTUML_D(QCollaboration);
     d->addCollaborationRole(const_cast<QConnectableElement *>(collaborationRole));
 }
 
 void QCollaboration::removeCollaborationRole(const QConnectableElement *collaborationRole)
 {
-    Q_D(QCollaboration);
+    QTUML_D(QCollaboration);
     d->removeCollaborationRole(const_cast<QConnectableElement *>(collaborationRole));
 }
 

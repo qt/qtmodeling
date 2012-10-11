@@ -122,7 +122,6 @@ class Q_UML_EXPORT QSignal : public QObject, public QClassifier
     Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
 
     Q_DISABLE_COPY(QSignal)
-    QTUML_DECLARE_PRIVATE(QSignal)
 
 public:
     explicit QSignal(QObject *parent = 0);

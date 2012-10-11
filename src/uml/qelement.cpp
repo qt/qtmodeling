@@ -113,7 +113,7 @@ QElement::~QElement()
  */
 const QSet<QElement *> *QElement::ownedElements() const
 {
-    Q_D(const QElement);
+    QTUML_D(const QElement);
     return d->ownedElements;
 }
 
@@ -122,7 +122,7 @@ const QSet<QElement *> *QElement::ownedElements() const
  */
 QElement *QElement::owner() const
 {
-    Q_D(const QElement);
+    QTUML_D(const QElement);
     return d->owner;
 }
 
@@ -131,19 +131,19 @@ QElement *QElement::owner() const
  */
 const QSet<QComment *> *QElement::ownedComments() const
 {
-    Q_D(const QElement);
+    QTUML_D(const QElement);
     return d->ownedComments;
 }
 
 void QElement::addOwnedComment(const QComment *ownedComment)
 {
-    Q_D(QElement);
+    QTUML_D(QElement);
     d->addOwnedComment(const_cast<QComment *>(ownedComment));
 }
 
 void QElement::removeOwnedComment(const QComment *ownedComment)
 {
-    Q_D(QElement);
+    QTUML_D(QElement);
     d->removeOwnedComment(const_cast<QComment *>(ownedComment));
 }
 
@@ -168,7 +168,7 @@ bool QElement::mustBeOwned() const
 
 void QElement::allOwnedElements(QSet<QElement *> *allOwnedElements_) const
 {
-    Q_D(const QElement);
+    QTUML_D(const QElement);
     allOwnedElements_->unite(*d->ownedElements);
     foreach (QElement *element, *d->ownedElements)
         element->allOwnedElements(allOwnedElements_);

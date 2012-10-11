@@ -58,7 +58,6 @@ class QOccurrenceSpecification;
 class Q_UML_EXPORT QExecutionSpecification : public QInteractionFragment
 {
     Q_DISABLE_COPY(QExecutionSpecification)
-    QTUML_DECLARE_PRIVATE(QExecutionSpecification)
 
 public:
     virtual ~QExecutionSpecification();

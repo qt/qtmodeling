@@ -104,13 +104,13 @@ QStateInvariant::~QStateInvariant()
  */
 QConstraint *QStateInvariant::invariant() const
 {
-    Q_D(const QStateInvariant);
+    QTUML_D(const QStateInvariant);
     return d->invariant;
 }
 
 void QStateInvariant::setInvariant(const QConstraint *invariant)
 {
-    Q_D(QStateInvariant);
+    QTUML_D(QStateInvariant);
     d->setInvariant(const_cast<QConstraint *>(invariant));
 }
 
@@ -119,13 +119,13 @@ void QStateInvariant::setInvariant(const QConstraint *invariant)
  */
 QLifeline *QStateInvariant::covered() const
 {
-    Q_D(const QStateInvariant);
+    QTUML_D(const QStateInvariant);
     return d->covered;
 }
 
 void QStateInvariant::setCovered(const QLifeline *covered)
 {
-    Q_D(QStateInvariant);
+    QTUML_D(QStateInvariant);
     d->setCovered(const_cast<QLifeline *>(covered));
 }
 

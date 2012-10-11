@@ -85,13 +85,13 @@ QLiteralReal::~QLiteralReal()
 
 qreal QLiteralReal::value() const
 {
-    Q_D(const QLiteralReal);
+    QTUML_D(const QLiteralReal);
     return d->value;
 }
 
 void QLiteralReal::setValue(qreal value)
 {
-    Q_D(QLiteralReal);
+    QTUML_D(QLiteralReal);
     d->setValue(value);
 }
 

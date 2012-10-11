@@ -96,19 +96,19 @@ QCreateLinkAction::~QCreateLinkAction()
  */
 const QSet<QLinkEndCreationData *> *QCreateLinkAction::endData() const
 {
-    Q_D(const QCreateLinkAction);
+    QTUML_D(const QCreateLinkAction);
     return d->endData;
 }
 
 void QCreateLinkAction::addEndData(const QLinkEndCreationData *endData)
 {
-    Q_D(QCreateLinkAction);
+    QTUML_D(QCreateLinkAction);
     d->addEndData(const_cast<QLinkEndCreationData *>(endData));
 }
 
 void QCreateLinkAction::removeEndData(const QLinkEndCreationData *endData)
 {
-    Q_D(QCreateLinkAction);
+    QTUML_D(QCreateLinkAction);
     d->removeEndData(const_cast<QLinkEndCreationData *>(endData));
 }
 

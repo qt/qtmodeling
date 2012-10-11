@@ -101,13 +101,13 @@ QCallAction::~QCallAction()
  */
 bool QCallAction::isSynchronous() const
 {
-    Q_D(const QCallAction);
+    QTUML_D(const QCallAction);
     return d->isSynchronous;
 }
 
 void QCallAction::setSynchronous(bool isSynchronous)
 {
-    Q_D(QCallAction);
+    QTUML_D(QCallAction);
     d->setSynchronous(isSynchronous);
 }
 
@@ -116,19 +116,19 @@ void QCallAction::setSynchronous(bool isSynchronous)
  */
 const QList<QOutputPin *> *QCallAction::results() const
 {
-    Q_D(const QCallAction);
+    QTUML_D(const QCallAction);
     return d->results;
 }
 
 void QCallAction::addResult(const QOutputPin *result)
 {
-    Q_D(QCallAction);
+    QTUML_D(QCallAction);
     d->addResult(const_cast<QOutputPin *>(result));
 }
 
 void QCallAction::removeResult(const QOutputPin *result)
 {
-    Q_D(QCallAction);
+    QTUML_D(QCallAction);
     d->removeResult(const_cast<QOutputPin *>(result));
 }
 

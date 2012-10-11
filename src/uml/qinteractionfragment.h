@@ -64,7 +64,6 @@ class QInteraction;
 class Q_UML_EXPORT QInteractionFragment : public virtual QNamedElement
 {
     Q_DISABLE_COPY(QInteractionFragment)
-    QTUML_DECLARE_PRIVATE(QInteractionFragment)
 
 public:
     virtual ~QInteractionFragment();

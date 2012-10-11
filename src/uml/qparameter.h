@@ -113,7 +113,6 @@ class Q_UML_EXPORT QParameter : public QObject, public QMultiplicityElement, pub
     Q_PROPERTY(const QSet<QParameterSet *> * parameterSets READ parameterSets)
 
     Q_DISABLE_COPY(QParameter)
-    QTUML_DECLARE_PRIVATE(QParameter)
 
 public:
     explicit QParameter(QObject *parent = 0);

@@ -113,7 +113,6 @@ class Q_UML_EXPORT QCallOperationAction : public QObject, public QCallAction
     Q_PROPERTY(QInputPin * target READ target WRITE setTarget)
 
     Q_DISABLE_COPY(QCallOperationAction)
-    QTUML_DECLARE_PRIVATE(QCallOperationAction)
 
 public:
     explicit QCallOperationAction(QObject *parent = 0);

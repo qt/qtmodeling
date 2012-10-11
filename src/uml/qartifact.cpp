@@ -176,13 +176,13 @@ QArtifact::~QArtifact()
  */
 QString QArtifact::fileName() const
 {
-    Q_D(const QArtifact);
+    QTUML_D(const QArtifact);
     return d->fileName;
 }
 
 void QArtifact::setFileName(QString fileName)
 {
-    Q_D(QArtifact);
+    QTUML_D(QArtifact);
     d->setFileName(fileName);
 }
 
@@ -191,19 +191,19 @@ void QArtifact::setFileName(QString fileName)
  */
 const QList<QOperation *> *QArtifact::ownedOperations() const
 {
-    Q_D(const QArtifact);
+    QTUML_D(const QArtifact);
     return d->ownedOperations;
 }
 
 void QArtifact::addOwnedOperation(const QOperation *ownedOperation)
 {
-    Q_D(QArtifact);
+    QTUML_D(QArtifact);
     d->addOwnedOperation(const_cast<QOperation *>(ownedOperation));
 }
 
 void QArtifact::removeOwnedOperation(const QOperation *ownedOperation)
 {
-    Q_D(QArtifact);
+    QTUML_D(QArtifact);
     d->removeOwnedOperation(const_cast<QOperation *>(ownedOperation));
 }
 
@@ -212,19 +212,19 @@ void QArtifact::removeOwnedOperation(const QOperation *ownedOperation)
  */
 const QList<QProperty *> *QArtifact::ownedAttributes() const
 {
-    Q_D(const QArtifact);
+    QTUML_D(const QArtifact);
     return d->ownedAttributes;
 }
 
 void QArtifact::addOwnedAttribute(const QProperty *ownedAttribute)
 {
-    Q_D(QArtifact);
+    QTUML_D(QArtifact);
     d->addOwnedAttribute(const_cast<QProperty *>(ownedAttribute));
 }
 
 void QArtifact::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
-    Q_D(QArtifact);
+    QTUML_D(QArtifact);
     d->removeOwnedAttribute(const_cast<QProperty *>(ownedAttribute));
 }
 
@@ -233,19 +233,19 @@ void QArtifact::removeOwnedAttribute(const QProperty *ownedAttribute)
  */
 const QSet<QManifestation *> *QArtifact::manifestations() const
 {
-    Q_D(const QArtifact);
+    QTUML_D(const QArtifact);
     return d->manifestations;
 }
 
 void QArtifact::addManifestation(const QManifestation *manifestation)
 {
-    Q_D(QArtifact);
+    QTUML_D(QArtifact);
     d->addManifestation(const_cast<QManifestation *>(manifestation));
 }
 
 void QArtifact::removeManifestation(const QManifestation *manifestation)
 {
-    Q_D(QArtifact);
+    QTUML_D(QArtifact);
     d->removeManifestation(const_cast<QManifestation *>(manifestation));
 }
 
@@ -254,19 +254,19 @@ void QArtifact::removeManifestation(const QManifestation *manifestation)
  */
 const QSet<QArtifact *> *QArtifact::nestedArtifacts() const
 {
-    Q_D(const QArtifact);
+    QTUML_D(const QArtifact);
     return d->nestedArtifacts;
 }
 
 void QArtifact::addNestedArtifact(const QArtifact *nestedArtifact)
 {
-    Q_D(QArtifact);
+    QTUML_D(QArtifact);
     d->addNestedArtifact(const_cast<QArtifact *>(nestedArtifact));
 }
 
 void QArtifact::removeNestedArtifact(const QArtifact *nestedArtifact)
 {
-    Q_D(QArtifact);
+    QTUML_D(QArtifact);
     d->removeNestedArtifact(const_cast<QArtifact *>(nestedArtifact));
 }
 

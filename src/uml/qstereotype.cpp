@@ -104,19 +104,19 @@ QStereotype::~QStereotype()
  */
 const QSet<QImage *> *QStereotype::icons() const
 {
-    Q_D(const QStereotype);
+    QTUML_D(const QStereotype);
     return d->icons;
 }
 
 void QStereotype::addIcon(const QImage *icon)
 {
-    Q_D(QStereotype);
+    QTUML_D(QStereotype);
     d->addIcon(const_cast<QImage *>(icon));
 }
 
 void QStereotype::removeIcon(const QImage *icon)
 {
-    Q_D(QStereotype);
+    QTUML_D(QStereotype);
     d->removeIcon(const_cast<QImage *>(icon));
 }
 

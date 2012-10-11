@@ -103,13 +103,13 @@ QRemoveVariableValueAction::~QRemoveVariableValueAction()
  */
 bool QRemoveVariableValueAction::isRemoveDuplicates() const
 {
-    Q_D(const QRemoveVariableValueAction);
+    QTUML_D(const QRemoveVariableValueAction);
     return d->isRemoveDuplicates;
 }
 
 void QRemoveVariableValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
 {
-    Q_D(QRemoveVariableValueAction);
+    QTUML_D(QRemoveVariableValueAction);
     d->setRemoveDuplicates(isRemoveDuplicates);
 }
 
@@ -118,13 +118,13 @@ void QRemoveVariableValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
  */
 QInputPin *QRemoveVariableValueAction::removeAt() const
 {
-    Q_D(const QRemoveVariableValueAction);
+    QTUML_D(const QRemoveVariableValueAction);
     return d->removeAt;
 }
 
 void QRemoveVariableValueAction::setRemoveAt(const QInputPin *removeAt)
 {
-    Q_D(QRemoveVariableValueAction);
+    QTUML_D(QRemoveVariableValueAction);
     d->setRemoveAt(const_cast<QInputPin *>(removeAt));
 }
 

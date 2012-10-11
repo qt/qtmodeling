@@ -130,19 +130,19 @@ QDataType::~QDataType()
  */
 const QList<QOperation *> *QDataType::ownedOperations() const
 {
-    Q_D(const QDataType);
+    QTUML_D(const QDataType);
     return d->ownedOperations;
 }
 
 void QDataType::addOwnedOperation(const QOperation *ownedOperation)
 {
-    Q_D(QDataType);
+    QTUML_D(QDataType);
     d->addOwnedOperation(const_cast<QOperation *>(ownedOperation));
 }
 
 void QDataType::removeOwnedOperation(const QOperation *ownedOperation)
 {
-    Q_D(QDataType);
+    QTUML_D(QDataType);
     d->removeOwnedOperation(const_cast<QOperation *>(ownedOperation));
 }
 
@@ -151,19 +151,19 @@ void QDataType::removeOwnedOperation(const QOperation *ownedOperation)
  */
 const QList<QProperty *> *QDataType::ownedAttributes() const
 {
-    Q_D(const QDataType);
+    QTUML_D(const QDataType);
     return d->ownedAttributes;
 }
 
 void QDataType::addOwnedAttribute(const QProperty *ownedAttribute)
 {
-    Q_D(QDataType);
+    QTUML_D(QDataType);
     d->addOwnedAttribute(const_cast<QProperty *>(ownedAttribute));
 }
 
 void QDataType::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
-    Q_D(QDataType);
+    QTUML_D(QDataType);
     d->removeOwnedAttribute(const_cast<QProperty *>(ownedAttribute));
 }
 

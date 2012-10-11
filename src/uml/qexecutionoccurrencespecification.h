@@ -63,7 +63,6 @@ class Q_UML_EXPORT QExecutionOccurrenceSpecification : public QOccurrenceSpecifi
     Q_PROPERTY(QExecutionSpecification * execution READ execution WRITE setExecution)
 
     Q_DISABLE_COPY(QExecutionOccurrenceSpecification)
-    QTUML_DECLARE_PRIVATE(QExecutionOccurrenceSpecification)
 
 public:
     explicit QExecutionOccurrenceSpecification(QObject *parent = 0);

@@ -88,7 +88,6 @@ class Q_UML_EXPORT QLifeline : public QObject, public QNamedElement
     Q_PROPERTY(QValueSpecification * selector READ selector WRITE setSelector)
 
     Q_DISABLE_COPY(QLifeline)
-    QTUML_DECLARE_PRIVATE(QLifeline)
 
 public:
     explicit QLifeline(QObject *parent = 0);

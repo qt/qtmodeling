@@ -105,7 +105,6 @@ class Q_UML_EXPORT QReadExtentAction : public QObject, public QAction
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
     Q_DISABLE_COPY(QReadExtentAction)
-    QTUML_DECLARE_PRIVATE(QReadExtentAction)
 
 public:
     explicit QReadExtentAction(QObject *parent = 0);

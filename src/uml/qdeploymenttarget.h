@@ -62,7 +62,6 @@ class QDeployment;
 class Q_UML_EXPORT QDeploymentTarget : public virtual QNamedElement
 {
     Q_DISABLE_COPY(QDeploymentTarget)
-    QTUML_DECLARE_PRIVATE(QDeploymentTarget)
 
 public:
     virtual ~QDeploymentTarget();

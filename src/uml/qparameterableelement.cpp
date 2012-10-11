@@ -93,13 +93,13 @@ QParameterableElement::~QParameterableElement()
  */
 QTemplateParameter *QParameterableElement::owningTemplateParameter() const
 {
-    Q_D(const QParameterableElement);
+    QTUML_D(const QParameterableElement);
     return d->owningTemplateParameter;
 }
 
 void QParameterableElement::setOwningTemplateParameter(const QTemplateParameter *owningTemplateParameter)
 {
-    Q_D(QParameterableElement);
+    QTUML_D(QParameterableElement);
     d->setOwningTemplateParameter(const_cast<QTemplateParameter *>(owningTemplateParameter));
 }
 
@@ -108,13 +108,13 @@ void QParameterableElement::setOwningTemplateParameter(const QTemplateParameter 
  */
 QTemplateParameter *QParameterableElement::templateParameter() const
 {
-    Q_D(const QParameterableElement);
+    QTUML_D(const QParameterableElement);
     return d->templateParameter;
 }
 
 void QParameterableElement::setTemplateParameter(const QTemplateParameter *templateParameter)
 {
-    Q_D(QParameterableElement);
+    QTUML_D(QParameterableElement);
     d->setTemplateParameter(const_cast<QTemplateParameter *>(templateParameter));
 }
 

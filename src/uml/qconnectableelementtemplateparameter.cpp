@@ -90,13 +90,13 @@ QConnectableElementTemplateParameter::~QConnectableElementTemplateParameter()
  */
 QConnectableElement *QConnectableElementTemplateParameter::parameteredElement() const
 {
-    Q_D(const QConnectableElementTemplateParameter);
+    QTUML_D(const QConnectableElementTemplateParameter);
     return d->parameteredElement;
 }
 
 void QConnectableElementTemplateParameter::setParameteredElement(const QConnectableElement *parameteredElement)
 {
-    Q_D(QConnectableElementTemplateParameter);
+    QTUML_D(QConnectableElementTemplateParameter);
     d->setParameteredElement(const_cast<QConnectableElement *>(parameteredElement));
 }
 

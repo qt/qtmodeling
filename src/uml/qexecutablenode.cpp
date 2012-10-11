@@ -95,19 +95,19 @@ QExecutableNode::~QExecutableNode()
  */
 const QSet<QExceptionHandler *> *QExecutableNode::handlers() const
 {
-    Q_D(const QExecutableNode);
+    QTUML_D(const QExecutableNode);
     return d->handlers;
 }
 
 void QExecutableNode::addHandler(const QExceptionHandler *handler)
 {
-    Q_D(QExecutableNode);
+    QTUML_D(QExecutableNode);
     d->addHandler(const_cast<QExceptionHandler *>(handler));
 }
 
 void QExecutableNode::removeHandler(const QExceptionHandler *handler)
 {
-    Q_D(QExecutableNode);
+    QTUML_D(QExecutableNode);
     d->removeHandler(const_cast<QExceptionHandler *>(handler));
 }
 

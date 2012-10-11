@@ -133,13 +133,13 @@ QTemplateBinding::~QTemplateBinding()
  */
 QTemplateSignature *QTemplateBinding::signature() const
 {
-    Q_D(const QTemplateBinding);
+    QTUML_D(const QTemplateBinding);
     return d->signature;
 }
 
 void QTemplateBinding::setSignature(const QTemplateSignature *signature)
 {
-    Q_D(QTemplateBinding);
+    QTUML_D(QTemplateBinding);
     d->setSignature(const_cast<QTemplateSignature *>(signature));
 }
 
@@ -148,13 +148,13 @@ void QTemplateBinding::setSignature(const QTemplateSignature *signature)
  */
 QTemplateableElement *QTemplateBinding::boundElement() const
 {
-    Q_D(const QTemplateBinding);
+    QTUML_D(const QTemplateBinding);
     return d->boundElement;
 }
 
 void QTemplateBinding::setBoundElement(const QTemplateableElement *boundElement)
 {
-    Q_D(QTemplateBinding);
+    QTUML_D(QTemplateBinding);
     d->setBoundElement(const_cast<QTemplateableElement *>(boundElement));
 }
 
@@ -163,19 +163,19 @@ void QTemplateBinding::setBoundElement(const QTemplateableElement *boundElement)
  */
 const QSet<QTemplateParameterSubstitution *> *QTemplateBinding::parameterSubstitutions() const
 {
-    Q_D(const QTemplateBinding);
+    QTUML_D(const QTemplateBinding);
     return d->parameterSubstitutions;
 }
 
 void QTemplateBinding::addParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution)
 {
-    Q_D(QTemplateBinding);
+    QTUML_D(QTemplateBinding);
     d->addParameterSubstitution(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution));
 }
 
 void QTemplateBinding::removeParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution)
 {
-    Q_D(QTemplateBinding);
+    QTUML_D(QTemplateBinding);
     d->removeParameterSubstitution(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution));
 }
 

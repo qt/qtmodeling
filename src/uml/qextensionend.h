@@ -64,7 +64,6 @@ class Q_UML_EXPORT QExtensionEnd : public QProperty
     Q_PROPERTY(QStereotype * type READ type WRITE setType)
 
     Q_DISABLE_COPY(QExtensionEnd)
-    QTUML_DECLARE_PRIVATE(QExtensionEnd)
 
 public:
     explicit QExtensionEnd(QObject *parent = 0);

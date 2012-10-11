@@ -122,19 +122,19 @@ QDependency::~QDependency()
  */
 const QSet<QNamedElement *> *QDependency::clients() const
 {
-    Q_D(const QDependency);
+    QTUML_D(const QDependency);
     return d->clients;
 }
 
 void QDependency::addClient(const QNamedElement *client)
 {
-    Q_D(QDependency);
+    QTUML_D(QDependency);
     d->addClient(const_cast<QNamedElement *>(client));
 }
 
 void QDependency::removeClient(const QNamedElement *client)
 {
-    Q_D(QDependency);
+    QTUML_D(QDependency);
     d->removeClient(const_cast<QNamedElement *>(client));
 }
 
@@ -143,19 +143,19 @@ void QDependency::removeClient(const QNamedElement *client)
  */
 const QSet<QNamedElement *> *QDependency::suppliers() const
 {
-    Q_D(const QDependency);
+    QTUML_D(const QDependency);
     return d->suppliers;
 }
 
 void QDependency::addSupplier(const QNamedElement *supplier)
 {
-    Q_D(QDependency);
+    QTUML_D(QDependency);
     d->addSupplier(const_cast<QNamedElement *>(supplier));
 }
 
 void QDependency::removeSupplier(const QNamedElement *supplier)
 {
-    Q_D(QDependency);
+    QTUML_D(QDependency);
     d->removeSupplier(const_cast<QNamedElement *>(supplier));
 }
 

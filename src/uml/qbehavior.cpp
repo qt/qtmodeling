@@ -190,13 +190,13 @@ QBehavior::~QBehavior()
  */
 bool QBehavior::isReentrant() const
 {
-    Q_D(const QBehavior);
+    QTUML_D(const QBehavior);
     return d->isReentrant;
 }
 
 void QBehavior::setReentrant(bool isReentrant)
 {
-    Q_D(QBehavior);
+    QTUML_D(QBehavior);
     d->setReentrant(isReentrant);
 }
 
@@ -205,13 +205,13 @@ void QBehavior::setReentrant(bool isReentrant)
  */
 QBehavioralFeature *QBehavior::specification() const
 {
-    Q_D(const QBehavior);
+    QTUML_D(const QBehavior);
     return d->specification;
 }
 
 void QBehavior::setSpecification(const QBehavioralFeature *specification)
 {
-    Q_D(QBehavior);
+    QTUML_D(QBehavior);
     d->setSpecification(const_cast<QBehavioralFeature *>(specification));
 }
 
@@ -220,19 +220,19 @@ void QBehavior::setSpecification(const QBehavioralFeature *specification)
  */
 const QSet<QConstraint *> *QBehavior::postconditions() const
 {
-    Q_D(const QBehavior);
+    QTUML_D(const QBehavior);
     return d->postconditions;
 }
 
 void QBehavior::addPostcondition(const QConstraint *postcondition)
 {
-    Q_D(QBehavior);
+    QTUML_D(QBehavior);
     d->addPostcondition(const_cast<QConstraint *>(postcondition));
 }
 
 void QBehavior::removePostcondition(const QConstraint *postcondition)
 {
-    Q_D(QBehavior);
+    QTUML_D(QBehavior);
     d->removePostcondition(const_cast<QConstraint *>(postcondition));
 }
 
@@ -241,19 +241,19 @@ void QBehavior::removePostcondition(const QConstraint *postcondition)
  */
 const QSet<QConstraint *> *QBehavior::preconditions() const
 {
-    Q_D(const QBehavior);
+    QTUML_D(const QBehavior);
     return d->preconditions;
 }
 
 void QBehavior::addPrecondition(const QConstraint *precondition)
 {
-    Q_D(QBehavior);
+    QTUML_D(QBehavior);
     d->addPrecondition(const_cast<QConstraint *>(precondition));
 }
 
 void QBehavior::removePrecondition(const QConstraint *precondition)
 {
-    Q_D(QBehavior);
+    QTUML_D(QBehavior);
     d->removePrecondition(const_cast<QConstraint *>(precondition));
 }
 
@@ -262,19 +262,19 @@ void QBehavior::removePrecondition(const QConstraint *precondition)
  */
 const QSet<QBehavior *> *QBehavior::redefinedBehaviors() const
 {
-    Q_D(const QBehavior);
+    QTUML_D(const QBehavior);
     return d->redefinedBehaviors;
 }
 
 void QBehavior::addRedefinedBehavior(const QBehavior *redefinedBehavior)
 {
-    Q_D(QBehavior);
+    QTUML_D(QBehavior);
     d->addRedefinedBehavior(const_cast<QBehavior *>(redefinedBehavior));
 }
 
 void QBehavior::removeRedefinedBehavior(const QBehavior *redefinedBehavior)
 {
-    Q_D(QBehavior);
+    QTUML_D(QBehavior);
     d->removeRedefinedBehavior(const_cast<QBehavior *>(redefinedBehavior));
 }
 
@@ -283,19 +283,19 @@ void QBehavior::removeRedefinedBehavior(const QBehavior *redefinedBehavior)
  */
 const QList<QParameter *> *QBehavior::ownedParameters() const
 {
-    Q_D(const QBehavior);
+    QTUML_D(const QBehavior);
     return d->ownedParameters;
 }
 
 void QBehavior::addOwnedParameter(const QParameter *ownedParameter)
 {
-    Q_D(QBehavior);
+    QTUML_D(QBehavior);
     d->addOwnedParameter(const_cast<QParameter *>(ownedParameter));
 }
 
 void QBehavior::removeOwnedParameter(const QParameter *ownedParameter)
 {
-    Q_D(QBehavior);
+    QTUML_D(QBehavior);
     d->removeOwnedParameter(const_cast<QParameter *>(ownedParameter));
 }
 
@@ -304,19 +304,19 @@ void QBehavior::removeOwnedParameter(const QParameter *ownedParameter)
  */
 const QSet<QParameterSet *> *QBehavior::ownedParameterSets() const
 {
-    Q_D(const QBehavior);
+    QTUML_D(const QBehavior);
     return d->ownedParameterSets;
 }
 
 void QBehavior::addOwnedParameterSet(const QParameterSet *ownedParameterSet)
 {
-    Q_D(QBehavior);
+    QTUML_D(QBehavior);
     d->addOwnedParameterSet(const_cast<QParameterSet *>(ownedParameterSet));
 }
 
 void QBehavior::removeOwnedParameterSet(const QParameterSet *ownedParameterSet)
 {
-    Q_D(QBehavior);
+    QTUML_D(QBehavior);
     d->removeOwnedParameterSet(const_cast<QParameterSet *>(ownedParameterSet));
 }
 

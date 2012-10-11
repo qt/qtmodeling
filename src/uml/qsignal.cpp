@@ -106,19 +106,19 @@ QSignal::~QSignal()
  */
 const QList<QProperty *> *QSignal::ownedAttributes() const
 {
-    Q_D(const QSignal);
+    QTUML_D(const QSignal);
     return d->ownedAttributes;
 }
 
 void QSignal::addOwnedAttribute(const QProperty *ownedAttribute)
 {
-    Q_D(QSignal);
+    QTUML_D(QSignal);
     d->addOwnedAttribute(const_cast<QProperty *>(ownedAttribute));
 }
 
 void QSignal::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
-    Q_D(QSignal);
+    QTUML_D(QSignal);
     d->removeOwnedAttribute(const_cast<QProperty *>(ownedAttribute));
 }
 

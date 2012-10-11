@@ -90,7 +90,6 @@ class Q_UML_EXPORT QTimeExpression : public QObject, public QValueSpecification
     Q_PROPERTY(QValueSpecification * expr READ expr WRITE setExpr)
 
     Q_DISABLE_COPY(QTimeExpression)
-    QTUML_DECLARE_PRIVATE(QTimeExpression)
 
 public:
     explicit QTimeExpression(QObject *parent = 0);

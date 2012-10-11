@@ -97,13 +97,13 @@ QReadLinkAction::~QReadLinkAction()
  */
 QOutputPin *QReadLinkAction::result() const
 {
-    Q_D(const QReadLinkAction);
+    QTUML_D(const QReadLinkAction);
     return d->result;
 }
 
 void QReadLinkAction::setResult(const QOutputPin *result)
 {
-    Q_D(QReadLinkAction);
+    QTUML_D(QReadLinkAction);
     d->setResult(const_cast<QOutputPin *>(result));
 }
 

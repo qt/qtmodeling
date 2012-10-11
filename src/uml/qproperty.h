@@ -144,7 +144,6 @@ class Q_UML_EXPORT QProperty : public QObject, public QStructuralFeature, public
     Q_PROPERTY(QInterface * interface READ interface WRITE setInterface)
 
     Q_DISABLE_COPY(QProperty)
-    QTUML_DECLARE_PRIVATE(QProperty)
 
 public:
     explicit QProperty(QObject *parent = 0);

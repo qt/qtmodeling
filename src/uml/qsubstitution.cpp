@@ -112,13 +112,13 @@ QSubstitution::~QSubstitution()
  */
 QClassifier *QSubstitution::contract() const
 {
-    Q_D(const QSubstitution);
+    QTUML_D(const QSubstitution);
     return d->contract;
 }
 
 void QSubstitution::setContract(const QClassifier *contract)
 {
-    Q_D(QSubstitution);
+    QTUML_D(QSubstitution);
     d->setContract(const_cast<QClassifier *>(contract));
 }
 
@@ -127,13 +127,13 @@ void QSubstitution::setContract(const QClassifier *contract)
  */
 QClassifier *QSubstitution::substitutingClassifier() const
 {
-    Q_D(const QSubstitution);
+    QTUML_D(const QSubstitution);
     return d->substitutingClassifier;
 }
 
 void QSubstitution::setSubstitutingClassifier(const QClassifier *substitutingClassifier)
 {
-    Q_D(QSubstitution);
+    QTUML_D(QSubstitution);
     d->setSubstitutingClassifier(const_cast<QClassifier *>(substitutingClassifier));
 }
 

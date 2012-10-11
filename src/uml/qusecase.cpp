@@ -156,19 +156,19 @@ QUseCase::~QUseCase()
  */
 const QSet<QExtensionPoint *> *QUseCase::extensionPoints() const
 {
-    Q_D(const QUseCase);
+    QTUML_D(const QUseCase);
     return d->extensionPoints;
 }
 
 void QUseCase::addExtensionPoint(const QExtensionPoint *extensionPoint)
 {
-    Q_D(QUseCase);
+    QTUML_D(QUseCase);
     d->addExtensionPoint(const_cast<QExtensionPoint *>(extensionPoint));
 }
 
 void QUseCase::removeExtensionPoint(const QExtensionPoint *extensionPoint)
 {
-    Q_D(QUseCase);
+    QTUML_D(QUseCase);
     d->removeExtensionPoint(const_cast<QExtensionPoint *>(extensionPoint));
 }
 
@@ -177,19 +177,19 @@ void QUseCase::removeExtensionPoint(const QExtensionPoint *extensionPoint)
  */
 const QSet<QInclude *> *QUseCase::includes() const
 {
-    Q_D(const QUseCase);
+    QTUML_D(const QUseCase);
     return d->includes;
 }
 
 void QUseCase::addInclude(const QInclude *include)
 {
-    Q_D(QUseCase);
+    QTUML_D(QUseCase);
     d->addInclude(const_cast<QInclude *>(include));
 }
 
 void QUseCase::removeInclude(const QInclude *include)
 {
-    Q_D(QUseCase);
+    QTUML_D(QUseCase);
     d->removeInclude(const_cast<QInclude *>(include));
 }
 
@@ -198,19 +198,19 @@ void QUseCase::removeInclude(const QInclude *include)
  */
 const QSet<QClassifier *> *QUseCase::subjects() const
 {
-    Q_D(const QUseCase);
+    QTUML_D(const QUseCase);
     return d->subjects;
 }
 
 void QUseCase::addSubject(const QClassifier *subject)
 {
-    Q_D(QUseCase);
+    QTUML_D(QUseCase);
     d->addSubject(const_cast<QClassifier *>(subject));
 }
 
 void QUseCase::removeSubject(const QClassifier *subject)
 {
-    Q_D(QUseCase);
+    QTUML_D(QUseCase);
     d->removeSubject(const_cast<QClassifier *>(subject));
 }
 
@@ -219,19 +219,19 @@ void QUseCase::removeSubject(const QClassifier *subject)
  */
 const QSet<QExtend *> *QUseCase::extends() const
 {
-    Q_D(const QUseCase);
+    QTUML_D(const QUseCase);
     return d->extends;
 }
 
 void QUseCase::addExtend(const QExtend *extend)
 {
-    Q_D(QUseCase);
+    QTUML_D(QUseCase);
     d->addExtend(const_cast<QExtend *>(extend));
 }
 
 void QUseCase::removeExtend(const QExtend *extend)
 {
-    Q_D(QUseCase);
+    QTUML_D(QUseCase);
     d->removeExtend(const_cast<QExtend *>(extend));
 }
 

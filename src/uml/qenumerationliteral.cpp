@@ -102,13 +102,13 @@ QEnumeration *QEnumerationLiteral::classifier() const
  */
 QEnumeration *QEnumerationLiteral::enumeration() const
 {
-    Q_D(const QEnumerationLiteral);
+    QTUML_D(const QEnumerationLiteral);
     return d->enumeration;
 }
 
 void QEnumerationLiteral::setEnumeration(const QEnumeration *enumeration)
 {
-    Q_D(QEnumerationLiteral);
+    QTUML_D(QEnumerationLiteral);
     d->setEnumeration(const_cast<QEnumeration *>(enumeration));
 }
 

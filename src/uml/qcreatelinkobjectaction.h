@@ -63,7 +63,6 @@ class Q_UML_EXPORT QCreateLinkObjectAction : public QCreateLinkAction
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
     Q_DISABLE_COPY(QCreateLinkObjectAction)
-    QTUML_DECLARE_PRIVATE(QCreateLinkObjectAction)
 
 public:
     explicit QCreateLinkObjectAction(QObject *parent = 0);

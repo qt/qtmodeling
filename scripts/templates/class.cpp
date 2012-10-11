@@ -286,10 +286,10 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
 {
 [%- IF attribute.isDerived == 'false' or attribute.isDerivedUnion == 'true' %]
     [%- IF loop.first %]
-    Q_D(const ${class.name});
+    QTUML_D(const ${class.name});
     return d->${accessor.name};
     [%- ELSE %]
-    Q_D(${class.name});
+    QTUML_D(${class.name});
     d->${accessor.name}([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
     [%- END %]
 [%- ELSE %]
@@ -311,10 +311,10 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
 {
 [%- IF associationend.isDerived == 'false' or associationend.isDerivedUnion == 'true' %]
     [%- IF loop.first %]
-    Q_D(const ${class.name});
+    QTUML_D(const ${class.name});
     return d->${accessor.name};
     [%- ELSE %]
-    Q_D(${class.name});
+    QTUML_D(${class.name});
     d->${accessor.name}([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
     [%- END %]
 [%- ELSE %]

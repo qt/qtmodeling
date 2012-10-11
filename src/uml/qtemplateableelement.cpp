@@ -110,13 +110,13 @@ QTemplateableElement::~QTemplateableElement()
  */
 QTemplateSignature *QTemplateableElement::ownedTemplateSignature() const
 {
-    Q_D(const QTemplateableElement);
+    QTUML_D(const QTemplateableElement);
     return d->ownedTemplateSignature;
 }
 
 void QTemplateableElement::setOwnedTemplateSignature(const QTemplateSignature *ownedTemplateSignature)
 {
-    Q_D(QTemplateableElement);
+    QTUML_D(QTemplateableElement);
     d->setOwnedTemplateSignature(const_cast<QTemplateSignature *>(ownedTemplateSignature));
 }
 
@@ -125,19 +125,19 @@ void QTemplateableElement::setOwnedTemplateSignature(const QTemplateSignature *o
  */
 const QSet<QTemplateBinding *> *QTemplateableElement::templateBindings() const
 {
-    Q_D(const QTemplateableElement);
+    QTUML_D(const QTemplateableElement);
     return d->templateBindings;
 }
 
 void QTemplateableElement::addTemplateBinding(const QTemplateBinding *templateBinding)
 {
-    Q_D(QTemplateableElement);
+    QTUML_D(QTemplateableElement);
     d->addTemplateBinding(const_cast<QTemplateBinding *>(templateBinding));
 }
 
 void QTemplateableElement::removeTemplateBinding(const QTemplateBinding *templateBinding)
 {
-    Q_D(QTemplateableElement);
+    QTUML_D(QTemplateableElement);
     d->removeTemplateBinding(const_cast<QTemplateBinding *>(templateBinding));
 }
 

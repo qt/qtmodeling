@@ -59,7 +59,6 @@ class Q_UML_EXPORT QExecutionEnvironment : public QNode
     Q_OBJECT
 
     Q_DISABLE_COPY(QExecutionEnvironment)
-    QTUML_DECLARE_PRIVATE(QExecutionEnvironment)
 
 public:
     explicit QExecutionEnvironment(QObject *parent = 0);

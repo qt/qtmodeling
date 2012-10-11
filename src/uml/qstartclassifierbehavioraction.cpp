@@ -97,13 +97,13 @@ QStartClassifierBehaviorAction::~QStartClassifierBehaviorAction()
  */
 QInputPin *QStartClassifierBehaviorAction::object() const
 {
-    Q_D(const QStartClassifierBehaviorAction);
+    QTUML_D(const QStartClassifierBehaviorAction);
     return d->object;
 }
 
 void QStartClassifierBehaviorAction::setObject(const QInputPin *object)
 {
-    Q_D(QStartClassifierBehaviorAction);
+    QTUML_D(QStartClassifierBehaviorAction);
     d->setObject(const_cast<QInputPin *>(object));
 }
 

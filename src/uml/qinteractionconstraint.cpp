@@ -110,13 +110,13 @@ QInteractionConstraint::~QInteractionConstraint()
  */
 QValueSpecification *QInteractionConstraint::maxint() const
 {
-    Q_D(const QInteractionConstraint);
+    QTUML_D(const QInteractionConstraint);
     return d->maxint;
 }
 
 void QInteractionConstraint::setMaxint(const QValueSpecification *maxint)
 {
-    Q_D(QInteractionConstraint);
+    QTUML_D(QInteractionConstraint);
     d->setMaxint(const_cast<QValueSpecification *>(maxint));
 }
 
@@ -125,13 +125,13 @@ void QInteractionConstraint::setMaxint(const QValueSpecification *maxint)
  */
 QValueSpecification *QInteractionConstraint::minint() const
 {
-    Q_D(const QInteractionConstraint);
+    QTUML_D(const QInteractionConstraint);
     return d->minint;
 }
 
 void QInteractionConstraint::setMinint(const QValueSpecification *minint)
 {
-    Q_D(QInteractionConstraint);
+    QTUML_D(QInteractionConstraint);
     d->setMinint(const_cast<QValueSpecification *>(minint));
 }
 

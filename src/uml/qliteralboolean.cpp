@@ -89,13 +89,13 @@ QLiteralBoolean::~QLiteralBoolean()
  */
 bool QLiteralBoolean::value() const
 {
-    Q_D(const QLiteralBoolean);
+    QTUML_D(const QLiteralBoolean);
     return d->value;
 }
 
 void QLiteralBoolean::setValue(bool value)
 {
-    Q_D(QLiteralBoolean);
+    QTUML_D(QLiteralBoolean);
     d->setValue(value);
 }
 

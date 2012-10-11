@@ -97,13 +97,13 @@ QAbstraction::~QAbstraction()
  */
 QOpaqueExpression *QAbstraction::mapping() const
 {
-    Q_D(const QAbstraction);
+    QTUML_D(const QAbstraction);
     return d->mapping;
 }
 
 void QAbstraction::setMapping(const QOpaqueExpression *mapping)
 {
-    Q_D(QAbstraction);
+    QTUML_D(QAbstraction);
     d->setMapping(const_cast<QOpaqueExpression *>(mapping));
 }
 

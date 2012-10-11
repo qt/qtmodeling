@@ -127,13 +127,13 @@ void QMultiplicityElement::setUpper(qint32 upper)
  */
 bool QMultiplicityElement::isUnique() const
 {
-    Q_D(const QMultiplicityElement);
+    QTUML_D(const QMultiplicityElement);
     return d->isUnique;
 }
 
 void QMultiplicityElement::setUnique(bool isUnique)
 {
-    Q_D(QMultiplicityElement);
+    QTUML_D(QMultiplicityElement);
     d->setUnique(isUnique);
 }
 
@@ -142,13 +142,13 @@ void QMultiplicityElement::setUnique(bool isUnique)
  */
 bool QMultiplicityElement::isOrdered() const
 {
-    Q_D(const QMultiplicityElement);
+    QTUML_D(const QMultiplicityElement);
     return d->isOrdered;
 }
 
 void QMultiplicityElement::setOrdered(bool isOrdered)
 {
-    Q_D(QMultiplicityElement);
+    QTUML_D(QMultiplicityElement);
     d->setOrdered(isOrdered);
 }
 
@@ -170,13 +170,13 @@ void QMultiplicityElement::setLower(qint32 lower)
  */
 QValueSpecification *QMultiplicityElement::upperValue() const
 {
-    Q_D(const QMultiplicityElement);
+    QTUML_D(const QMultiplicityElement);
     return d->upperValue;
 }
 
 void QMultiplicityElement::setUpperValue(const QValueSpecification *upperValue)
 {
-    Q_D(QMultiplicityElement);
+    QTUML_D(QMultiplicityElement);
     d->setUpperValue(const_cast<QValueSpecification *>(upperValue));
 }
 
@@ -185,13 +185,13 @@ void QMultiplicityElement::setUpperValue(const QValueSpecification *upperValue)
  */
 QValueSpecification *QMultiplicityElement::lowerValue() const
 {
-    Q_D(const QMultiplicityElement);
+    QTUML_D(const QMultiplicityElement);
     return d->lowerValue;
 }
 
 void QMultiplicityElement::setLowerValue(const QValueSpecification *lowerValue)
 {
-    Q_D(QMultiplicityElement);
+    QTUML_D(QMultiplicityElement);
     d->setLowerValue(const_cast<QValueSpecification *>(lowerValue));
 }
 

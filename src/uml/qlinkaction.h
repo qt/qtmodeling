@@ -63,7 +63,6 @@ class QAssociation;
 class Q_UML_EXPORT QLinkAction : public QAction
 {
     Q_DISABLE_COPY(QLinkAction)
-    QTUML_DECLARE_PRIVATE(QLinkAction)
 
 public:
     virtual ~QLinkAction();

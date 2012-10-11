@@ -94,7 +94,6 @@ class Q_UML_EXPORT QDecisionNode : public QObject, public QControlNode
     Q_PROPERTY(QBehavior * decisionInput READ decisionInput WRITE setDecisionInput)
 
     Q_DISABLE_COPY(QDecisionNode)
-    QTUML_DECLARE_PRIVATE(QDecisionNode)
 
 public:
     explicit QDecisionNode(QObject *parent = 0);

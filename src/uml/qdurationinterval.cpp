@@ -96,13 +96,13 @@ QDurationInterval::~QDurationInterval()
  */
 QDuration *QDurationInterval::max() const
 {
-    Q_D(const QDurationInterval);
+    QTUML_D(const QDurationInterval);
     return d->max;
 }
 
 void QDurationInterval::setMax(const QDuration *max)
 {
-    Q_D(QDurationInterval);
+    QTUML_D(QDurationInterval);
     d->setMax(const_cast<QDuration *>(max));
 }
 
@@ -111,13 +111,13 @@ void QDurationInterval::setMax(const QDuration *max)
  */
 QDuration *QDurationInterval::min() const
 {
-    Q_D(const QDurationInterval);
+    QTUML_D(const QDurationInterval);
     return d->min;
 }
 
 void QDurationInterval::setMin(const QDuration *min)
 {
-    Q_D(QDurationInterval);
+    QTUML_D(QDurationInterval);
     d->setMin(const_cast<QDuration *>(min));
 }
 

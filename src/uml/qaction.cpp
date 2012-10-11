@@ -161,13 +161,13 @@ QAction::~QAction()
  */
 bool QAction::isLocallyReentrant() const
 {
-    Q_D(const QAction);
+    QTUML_D(const QAction);
     return d->isLocallyReentrant;
 }
 
 void QAction::setLocallyReentrant(bool isLocallyReentrant)
 {
-    Q_D(QAction);
+    QTUML_D(QAction);
     d->setLocallyReentrant(isLocallyReentrant);
 }
 
@@ -184,19 +184,19 @@ QClassifier *QAction::context() const
  */
 const QSet<QConstraint *> *QAction::localPostconditions() const
 {
-    Q_D(const QAction);
+    QTUML_D(const QAction);
     return d->localPostconditions;
 }
 
 void QAction::addLocalPostcondition(const QConstraint *localPostcondition)
 {
-    Q_D(QAction);
+    QTUML_D(QAction);
     d->addLocalPostcondition(const_cast<QConstraint *>(localPostcondition));
 }
 
 void QAction::removeLocalPostcondition(const QConstraint *localPostcondition)
 {
-    Q_D(QAction);
+    QTUML_D(QAction);
     d->removeLocalPostcondition(const_cast<QConstraint *>(localPostcondition));
 }
 
@@ -205,19 +205,19 @@ void QAction::removeLocalPostcondition(const QConstraint *localPostcondition)
  */
 const QSet<QConstraint *> *QAction::localPreconditions() const
 {
-    Q_D(const QAction);
+    QTUML_D(const QAction);
     return d->localPreconditions;
 }
 
 void QAction::addLocalPrecondition(const QConstraint *localPrecondition)
 {
-    Q_D(QAction);
+    QTUML_D(QAction);
     d->addLocalPrecondition(const_cast<QConstraint *>(localPrecondition));
 }
 
 void QAction::removeLocalPrecondition(const QConstraint *localPrecondition)
 {
-    Q_D(QAction);
+    QTUML_D(QAction);
     d->removeLocalPrecondition(const_cast<QConstraint *>(localPrecondition));
 }
 
@@ -226,7 +226,7 @@ void QAction::removeLocalPrecondition(const QConstraint *localPrecondition)
  */
 const QList<QInputPin *> *QAction::inputs() const
 {
-    Q_D(const QAction);
+    QTUML_D(const QAction);
     return d->inputs;
 }
 
@@ -235,7 +235,7 @@ const QList<QInputPin *> *QAction::inputs() const
  */
 const QList<QOutputPin *> *QAction::outputs() const
 {
-    Q_D(const QAction);
+    QTUML_D(const QAction);
     return d->outputs;
 }
 

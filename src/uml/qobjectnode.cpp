@@ -121,13 +121,13 @@ QObjectNode::~QObjectNode()
  */
 bool QObjectNode::isControlType() const
 {
-    Q_D(const QObjectNode);
+    QTUML_D(const QObjectNode);
     return d->isControlType;
 }
 
 void QObjectNode::setControlType(bool isControlType)
 {
-    Q_D(QObjectNode);
+    QTUML_D(QObjectNode);
     d->setControlType(isControlType);
 }
 
@@ -136,13 +136,13 @@ void QObjectNode::setControlType(bool isControlType)
  */
 QtUml::ObjectNodeOrderingKind QObjectNode::ordering() const
 {
-    Q_D(const QObjectNode);
+    QTUML_D(const QObjectNode);
     return d->ordering;
 }
 
 void QObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
-    Q_D(QObjectNode);
+    QTUML_D(QObjectNode);
     d->setOrdering(ordering);
 }
 
@@ -151,13 +151,13 @@ void QObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
  */
 QValueSpecification *QObjectNode::upperBound() const
 {
-    Q_D(const QObjectNode);
+    QTUML_D(const QObjectNode);
     return d->upperBound;
 }
 
 void QObjectNode::setUpperBound(const QValueSpecification *upperBound)
 {
-    Q_D(QObjectNode);
+    QTUML_D(QObjectNode);
     d->setUpperBound(const_cast<QValueSpecification *>(upperBound));
 }
 
@@ -166,13 +166,13 @@ void QObjectNode::setUpperBound(const QValueSpecification *upperBound)
  */
 QBehavior *QObjectNode::selection() const
 {
-    Q_D(const QObjectNode);
+    QTUML_D(const QObjectNode);
     return d->selection;
 }
 
 void QObjectNode::setSelection(const QBehavior *selection)
 {
-    Q_D(QObjectNode);
+    QTUML_D(QObjectNode);
     d->setSelection(const_cast<QBehavior *>(selection));
 }
 
@@ -181,19 +181,19 @@ void QObjectNode::setSelection(const QBehavior *selection)
  */
 const QSet<QState *> *QObjectNode::inState() const
 {
-    Q_D(const QObjectNode);
+    QTUML_D(const QObjectNode);
     return d->inState;
 }
 
 void QObjectNode::addInState(const QState *inState)
 {
-    Q_D(QObjectNode);
+    QTUML_D(QObjectNode);
     d->addInState(const_cast<QState *>(inState));
 }
 
 void QObjectNode::removeInState(const QState *inState)
 {
-    Q_D(QObjectNode);
+    QTUML_D(QObjectNode);
     d->removeInState(const_cast<QState *>(inState));
 }
 

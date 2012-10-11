@@ -123,13 +123,13 @@ QReplyAction::~QReplyAction()
  */
 QTrigger *QReplyAction::replyToCall() const
 {
-    Q_D(const QReplyAction);
+    QTUML_D(const QReplyAction);
     return d->replyToCall;
 }
 
 void QReplyAction::setReplyToCall(const QTrigger *replyToCall)
 {
-    Q_D(QReplyAction);
+    QTUML_D(QReplyAction);
     d->setReplyToCall(const_cast<QTrigger *>(replyToCall));
 }
 
@@ -138,13 +138,13 @@ void QReplyAction::setReplyToCall(const QTrigger *replyToCall)
  */
 QInputPin *QReplyAction::returnInformation() const
 {
-    Q_D(const QReplyAction);
+    QTUML_D(const QReplyAction);
     return d->returnInformation;
 }
 
 void QReplyAction::setReturnInformation(const QInputPin *returnInformation)
 {
-    Q_D(QReplyAction);
+    QTUML_D(QReplyAction);
     d->setReturnInformation(const_cast<QInputPin *>(returnInformation));
 }
 
@@ -153,19 +153,19 @@ void QReplyAction::setReturnInformation(const QInputPin *returnInformation)
  */
 const QSet<QInputPin *> *QReplyAction::replyValues() const
 {
-    Q_D(const QReplyAction);
+    QTUML_D(const QReplyAction);
     return d->replyValues;
 }
 
 void QReplyAction::addReplyValue(const QInputPin *replyValue)
 {
-    Q_D(QReplyAction);
+    QTUML_D(QReplyAction);
     d->addReplyValue(const_cast<QInputPin *>(replyValue));
 }
 
 void QReplyAction::removeReplyValue(const QInputPin *replyValue)
 {
-    Q_D(QReplyAction);
+    QTUML_D(QReplyAction);
     d->removeReplyValue(const_cast<QInputPin *>(replyValue));
 }
 

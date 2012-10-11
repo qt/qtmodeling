@@ -97,13 +97,13 @@ QReadStructuralFeatureAction::~QReadStructuralFeatureAction()
  */
 QOutputPin *QReadStructuralFeatureAction::result() const
 {
-    Q_D(const QReadStructuralFeatureAction);
+    QTUML_D(const QReadStructuralFeatureAction);
     return d->result;
 }
 
 void QReadStructuralFeatureAction::setResult(const QOutputPin *result)
 {
-    Q_D(QReadStructuralFeatureAction);
+    QTUML_D(QReadStructuralFeatureAction);
     d->setResult(const_cast<QOutputPin *>(result));
 }
 

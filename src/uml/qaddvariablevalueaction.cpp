@@ -103,13 +103,13 @@ QAddVariableValueAction::~QAddVariableValueAction()
  */
 bool QAddVariableValueAction::isReplaceAll() const
 {
-    Q_D(const QAddVariableValueAction);
+    QTUML_D(const QAddVariableValueAction);
     return d->isReplaceAll;
 }
 
 void QAddVariableValueAction::setReplaceAll(bool isReplaceAll)
 {
-    Q_D(QAddVariableValueAction);
+    QTUML_D(QAddVariableValueAction);
     d->setReplaceAll(isReplaceAll);
 }
 
@@ -118,13 +118,13 @@ void QAddVariableValueAction::setReplaceAll(bool isReplaceAll)
  */
 QInputPin *QAddVariableValueAction::insertAt() const
 {
-    Q_D(const QAddVariableValueAction);
+    QTUML_D(const QAddVariableValueAction);
     return d->insertAt;
 }
 
 void QAddVariableValueAction::setInsertAt(const QInputPin *insertAt)
 {
-    Q_D(QAddVariableValueAction);
+    QTUML_D(QAddVariableValueAction);
     d->setInsertAt(const_cast<QInputPin *>(insertAt));
 }
 

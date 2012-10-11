@@ -119,13 +119,13 @@ QProfileApplication::~QProfileApplication()
  */
 bool QProfileApplication::isStrict() const
 {
-    Q_D(const QProfileApplication);
+    QTUML_D(const QProfileApplication);
     return d->isStrict;
 }
 
 void QProfileApplication::setStrict(bool isStrict)
 {
-    Q_D(QProfileApplication);
+    QTUML_D(QProfileApplication);
     d->setStrict(isStrict);
 }
 
@@ -134,13 +134,13 @@ void QProfileApplication::setStrict(bool isStrict)
  */
 QPackage *QProfileApplication::applyingPackage() const
 {
-    Q_D(const QProfileApplication);
+    QTUML_D(const QProfileApplication);
     return d->applyingPackage;
 }
 
 void QProfileApplication::setApplyingPackage(const QPackage *applyingPackage)
 {
-    Q_D(QProfileApplication);
+    QTUML_D(QProfileApplication);
     d->setApplyingPackage(const_cast<QPackage *>(applyingPackage));
 }
 
@@ -149,13 +149,13 @@ void QProfileApplication::setApplyingPackage(const QPackage *applyingPackage)
  */
 QProfile *QProfileApplication::appliedProfile() const
 {
-    Q_D(const QProfileApplication);
+    QTUML_D(const QProfileApplication);
     return d->appliedProfile;
 }
 
 void QProfileApplication::setAppliedProfile(const QProfile *appliedProfile)
 {
-    Q_D(QProfileApplication);
+    QTUML_D(QProfileApplication);
     d->setAppliedProfile(const_cast<QProfile *>(appliedProfile));
 }
 

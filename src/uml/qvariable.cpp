@@ -106,13 +106,13 @@ QVariable::~QVariable()
  */
 QStructuredActivityNode *QVariable::scope() const
 {
-    Q_D(const QVariable);
+    QTUML_D(const QVariable);
     return d->scope;
 }
 
 void QVariable::setScope(const QStructuredActivityNode *scope)
 {
-    Q_D(QVariable);
+    QTUML_D(QVariable);
     d->setScope(const_cast<QStructuredActivityNode *>(scope));
 }
 
@@ -121,13 +121,13 @@ void QVariable::setScope(const QStructuredActivityNode *scope)
  */
 QActivity *QVariable::activityScope() const
 {
-    Q_D(const QVariable);
+    QTUML_D(const QVariable);
     return d->activityScope;
 }
 
 void QVariable::setActivityScope(const QActivity *activityScope)
 {
-    Q_D(QVariable);
+    QTUML_D(QVariable);
     d->setActivityScope(const_cast<QActivity *>(activityScope));
 }
 

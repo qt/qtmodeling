@@ -111,7 +111,6 @@ class Q_UML_EXPORT QStartObjectBehaviorAction : public QObject, public QCallActi
     Q_PROPERTY(QInputPin * object READ object WRITE setObject)
 
     Q_DISABLE_COPY(QStartObjectBehaviorAction)
-    QTUML_DECLARE_PRIVATE(QStartObjectBehaviorAction)
 
 public:
     explicit QStartObjectBehaviorAction(QObject *parent = 0);

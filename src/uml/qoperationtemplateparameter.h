@@ -63,7 +63,6 @@ class Q_UML_EXPORT QOperationTemplateParameter : public QTemplateParameter
     Q_PROPERTY(QOperation * parameteredElement READ parameteredElement WRITE setParameteredElement)
 
     Q_DISABLE_COPY(QOperationTemplateParameter)
-    QTUML_DECLARE_PRIVATE(QOperationTemplateParameter)
 
 public:
     explicit QOperationTemplateParameter(QObject *parent = 0);

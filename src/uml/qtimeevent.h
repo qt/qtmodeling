@@ -84,7 +84,6 @@ class Q_UML_EXPORT QTimeEvent : public QObject, public QEvent
     Q_PROPERTY(QTimeExpression * when READ when WRITE setWhen)
 
     Q_DISABLE_COPY(QTimeEvent)
-    QTUML_DECLARE_PRIVATE(QTimeEvent)
 
 public:
     explicit QTimeEvent(QObject *parent = 0);

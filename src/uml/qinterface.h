@@ -131,7 +131,6 @@ class Q_UML_EXPORT QInterface : public QObject, public QClassifier
     Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
 
     Q_DISABLE_COPY(QInterface)
-    QTUML_DECLARE_PRIVATE(QInterface)
 
 public:
     explicit QInterface(QObject *parent = 0);

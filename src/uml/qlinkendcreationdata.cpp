@@ -96,13 +96,13 @@ QLinkEndCreationData::~QLinkEndCreationData()
  */
 bool QLinkEndCreationData::isReplaceAll() const
 {
-    Q_D(const QLinkEndCreationData);
+    QTUML_D(const QLinkEndCreationData);
     return d->isReplaceAll;
 }
 
 void QLinkEndCreationData::setReplaceAll(bool isReplaceAll)
 {
-    Q_D(QLinkEndCreationData);
+    QTUML_D(QLinkEndCreationData);
     d->setReplaceAll(isReplaceAll);
 }
 
@@ -111,13 +111,13 @@ void QLinkEndCreationData::setReplaceAll(bool isReplaceAll)
  */
 QInputPin *QLinkEndCreationData::insertAt() const
 {
-    Q_D(const QLinkEndCreationData);
+    QTUML_D(const QLinkEndCreationData);
     return d->insertAt;
 }
 
 void QLinkEndCreationData::setInsertAt(const QInputPin *insertAt)
 {
-    Q_D(QLinkEndCreationData);
+    QTUML_D(QLinkEndCreationData);
     d->setInsertAt(const_cast<QInputPin *>(insertAt));
 }
 

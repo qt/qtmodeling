@@ -119,13 +119,13 @@ QComponentRealization::~QComponentRealization()
  */
 QComponent *QComponentRealization::abstraction() const
 {
-    Q_D(const QComponentRealization);
+    QTUML_D(const QComponentRealization);
     return d->abstraction;
 }
 
 void QComponentRealization::setAbstraction(const QComponent *abstraction)
 {
-    Q_D(QComponentRealization);
+    QTUML_D(QComponentRealization);
     d->setAbstraction(const_cast<QComponent *>(abstraction));
 }
 
@@ -134,19 +134,19 @@ void QComponentRealization::setAbstraction(const QComponent *abstraction)
  */
 const QSet<QClassifier *> *QComponentRealization::realizingClassifiers() const
 {
-    Q_D(const QComponentRealization);
+    QTUML_D(const QComponentRealization);
     return d->realizingClassifiers;
 }
 
 void QComponentRealization::addRealizingClassifier(const QClassifier *realizingClassifier)
 {
-    Q_D(QComponentRealization);
+    QTUML_D(QComponentRealization);
     d->addRealizingClassifier(const_cast<QClassifier *>(realizingClassifier));
 }
 
 void QComponentRealization::removeRealizingClassifier(const QClassifier *realizingClassifier)
 {
-    Q_D(QComponentRealization);
+    QTUML_D(QComponentRealization);
     d->removeRealizingClassifier(const_cast<QClassifier *>(realizingClassifier));
 }
 

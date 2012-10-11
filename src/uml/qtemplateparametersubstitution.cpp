@@ -122,13 +122,13 @@ QTemplateParameterSubstitution::~QTemplateParameterSubstitution()
  */
 QParameterableElement *QTemplateParameterSubstitution::ownedActual() const
 {
-    Q_D(const QTemplateParameterSubstitution);
+    QTUML_D(const QTemplateParameterSubstitution);
     return d->ownedActual;
 }
 
 void QTemplateParameterSubstitution::setOwnedActual(const QParameterableElement *ownedActual)
 {
-    Q_D(QTemplateParameterSubstitution);
+    QTUML_D(QTemplateParameterSubstitution);
     d->setOwnedActual(const_cast<QParameterableElement *>(ownedActual));
 }
 
@@ -137,13 +137,13 @@ void QTemplateParameterSubstitution::setOwnedActual(const QParameterableElement 
  */
 QTemplateParameter *QTemplateParameterSubstitution::formal() const
 {
-    Q_D(const QTemplateParameterSubstitution);
+    QTUML_D(const QTemplateParameterSubstitution);
     return d->formal;
 }
 
 void QTemplateParameterSubstitution::setFormal(const QTemplateParameter *formal)
 {
-    Q_D(QTemplateParameterSubstitution);
+    QTUML_D(QTemplateParameterSubstitution);
     d->setFormal(const_cast<QTemplateParameter *>(formal));
 }
 
@@ -152,13 +152,13 @@ void QTemplateParameterSubstitution::setFormal(const QTemplateParameter *formal)
  */
 QParameterableElement *QTemplateParameterSubstitution::actual() const
 {
-    Q_D(const QTemplateParameterSubstitution);
+    QTUML_D(const QTemplateParameterSubstitution);
     return d->actual;
 }
 
 void QTemplateParameterSubstitution::setActual(const QParameterableElement *actual)
 {
-    Q_D(QTemplateParameterSubstitution);
+    QTUML_D(QTemplateParameterSubstitution);
     d->setActual(const_cast<QParameterableElement *>(actual));
 }
 
@@ -167,13 +167,13 @@ void QTemplateParameterSubstitution::setActual(const QParameterableElement *actu
  */
 QTemplateBinding *QTemplateParameterSubstitution::templateBinding() const
 {
-    Q_D(const QTemplateParameterSubstitution);
+    QTUML_D(const QTemplateParameterSubstitution);
     return d->templateBinding;
 }
 
 void QTemplateParameterSubstitution::setTemplateBinding(const QTemplateBinding *templateBinding)
 {
-    Q_D(QTemplateParameterSubstitution);
+    QTUML_D(QTemplateParameterSubstitution);
     d->setTemplateBinding(const_cast<QTemplateBinding *>(templateBinding));
 }
 

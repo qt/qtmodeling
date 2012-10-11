@@ -124,13 +124,13 @@ QUnmarshallAction::~QUnmarshallAction()
  */
 QInputPin *QUnmarshallAction::object() const
 {
-    Q_D(const QUnmarshallAction);
+    QTUML_D(const QUnmarshallAction);
     return d->object;
 }
 
 void QUnmarshallAction::setObject(const QInputPin *object)
 {
-    Q_D(QUnmarshallAction);
+    QTUML_D(QUnmarshallAction);
     d->setObject(const_cast<QInputPin *>(object));
 }
 
@@ -139,19 +139,19 @@ void QUnmarshallAction::setObject(const QInputPin *object)
  */
 const QSet<QOutputPin *> *QUnmarshallAction::results() const
 {
-    Q_D(const QUnmarshallAction);
+    QTUML_D(const QUnmarshallAction);
     return d->results;
 }
 
 void QUnmarshallAction::addResult(const QOutputPin *result)
 {
-    Q_D(QUnmarshallAction);
+    QTUML_D(QUnmarshallAction);
     d->addResult(const_cast<QOutputPin *>(result));
 }
 
 void QUnmarshallAction::removeResult(const QOutputPin *result)
 {
-    Q_D(QUnmarshallAction);
+    QTUML_D(QUnmarshallAction);
     d->removeResult(const_cast<QOutputPin *>(result));
 }
 
@@ -160,13 +160,13 @@ void QUnmarshallAction::removeResult(const QOutputPin *result)
  */
 QClassifier *QUnmarshallAction::unmarshallType() const
 {
-    Q_D(const QUnmarshallAction);
+    QTUML_D(const QUnmarshallAction);
     return d->unmarshallType;
 }
 
 void QUnmarshallAction::setUnmarshallType(const QClassifier *unmarshallType)
 {
-    Q_D(QUnmarshallAction);
+    QTUML_D(QUnmarshallAction);
     d->setUnmarshallType(const_cast<QClassifier *>(unmarshallType));
 }
 

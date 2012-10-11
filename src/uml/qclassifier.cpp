@@ -281,13 +281,13 @@ QClassifier::~QClassifier()
  */
 bool QClassifier::isAbstract() const
 {
-    Q_D(const QClassifier);
+    QTUML_D(const QClassifier);
     return d->isAbstract;
 }
 
 void QClassifier::setAbstract(bool isAbstract)
 {
-    Q_D(QClassifier);
+    QTUML_D(QClassifier);
     d->setAbstract(isAbstract);
 }
 
@@ -296,13 +296,13 @@ void QClassifier::setAbstract(bool isAbstract)
  */
 bool QClassifier::isFinalSpecialization() const
 {
-    Q_D(const QClassifier);
+    QTUML_D(const QClassifier);
     return d->isFinalSpecialization;
 }
 
 void QClassifier::setFinalSpecialization(bool isFinalSpecialization)
 {
-    Q_D(QClassifier);
+    QTUML_D(QClassifier);
     d->setFinalSpecialization(isFinalSpecialization);
 }
 
@@ -311,19 +311,19 @@ void QClassifier::setFinalSpecialization(bool isFinalSpecialization)
  */
 const QSet<QUseCase *> *QClassifier::ownedUseCases() const
 {
-    Q_D(const QClassifier);
+    QTUML_D(const QClassifier);
     return d->ownedUseCases;
 }
 
 void QClassifier::addOwnedUseCase(const QUseCase *ownedUseCase)
 {
-    Q_D(QClassifier);
+    QTUML_D(QClassifier);
     d->addOwnedUseCase(const_cast<QUseCase *>(ownedUseCase));
 }
 
 void QClassifier::removeOwnedUseCase(const QUseCase *ownedUseCase)
 {
-    Q_D(QClassifier);
+    QTUML_D(QClassifier);
     d->removeOwnedUseCase(const_cast<QUseCase *>(ownedUseCase));
 }
 
@@ -332,19 +332,19 @@ void QClassifier::removeOwnedUseCase(const QUseCase *ownedUseCase)
  */
 const QSet<QGeneralizationSet *> *QClassifier::powertypeExtents() const
 {
-    Q_D(const QClassifier);
+    QTUML_D(const QClassifier);
     return d->powertypeExtents;
 }
 
 void QClassifier::addPowertypeExtent(const QGeneralizationSet *powertypeExtent)
 {
-    Q_D(QClassifier);
+    QTUML_D(QClassifier);
     d->addPowertypeExtent(const_cast<QGeneralizationSet *>(powertypeExtent));
 }
 
 void QClassifier::removePowertypeExtent(const QGeneralizationSet *powertypeExtent)
 {
-    Q_D(QClassifier);
+    QTUML_D(QClassifier);
     d->removePowertypeExtent(const_cast<QGeneralizationSet *>(powertypeExtent));
 }
 
@@ -353,19 +353,19 @@ void QClassifier::removePowertypeExtent(const QGeneralizationSet *powertypeExten
  */
 const QSet<QUseCase *> *QClassifier::useCases() const
 {
-    Q_D(const QClassifier);
+    QTUML_D(const QClassifier);
     return d->useCases;
 }
 
 void QClassifier::addUseCase(const QUseCase *useCase)
 {
-    Q_D(QClassifier);
+    QTUML_D(QClassifier);
     d->addUseCase(const_cast<QUseCase *>(useCase));
 }
 
 void QClassifier::removeUseCase(const QUseCase *useCase)
 {
-    Q_D(QClassifier);
+    QTUML_D(QClassifier);
     d->removeUseCase(const_cast<QUseCase *>(useCase));
 }
 
@@ -374,13 +374,13 @@ void QClassifier::removeUseCase(const QUseCase *useCase)
  */
 QClassifierTemplateParameter *QClassifier::templateParameter() const
 {
-    Q_D(const QClassifier);
+    QTUML_D(const QClassifier);
     return d->templateParameter;
 }
 
 void QClassifier::setTemplateParameter(const QClassifierTemplateParameter *templateParameter)
 {
-    Q_D(QClassifier);
+    QTUML_D(QClassifier);
     d->setTemplateParameter(const_cast<QClassifierTemplateParameter *>(templateParameter));
 }
 
@@ -389,19 +389,19 @@ void QClassifier::setTemplateParameter(const QClassifierTemplateParameter *templ
  */
 const QSet<QClassifier *> *QClassifier::redefinedClassifiers() const
 {
-    Q_D(const QClassifier);
+    QTUML_D(const QClassifier);
     return d->redefinedClassifiers;
 }
 
 void QClassifier::addRedefinedClassifier(const QClassifier *redefinedClassifier)
 {
-    Q_D(QClassifier);
+    QTUML_D(QClassifier);
     d->addRedefinedClassifier(const_cast<QClassifier *>(redefinedClassifier));
 }
 
 void QClassifier::removeRedefinedClassifier(const QClassifier *redefinedClassifier)
 {
-    Q_D(QClassifier);
+    QTUML_D(QClassifier);
     d->removeRedefinedClassifier(const_cast<QClassifier *>(redefinedClassifier));
 }
 
@@ -410,13 +410,13 @@ void QClassifier::removeRedefinedClassifier(const QClassifier *redefinedClassifi
  */
 QRedefinableTemplateSignature *QClassifier::ownedTemplateSignature() const
 {
-    Q_D(const QClassifier);
+    QTUML_D(const QClassifier);
     return d->ownedTemplateSignature;
 }
 
 void QClassifier::setOwnedTemplateSignature(const QRedefinableTemplateSignature *ownedTemplateSignature)
 {
-    Q_D(QClassifier);
+    QTUML_D(QClassifier);
     d->setOwnedTemplateSignature(const_cast<QRedefinableTemplateSignature *>(ownedTemplateSignature));
 }
 
@@ -425,19 +425,19 @@ void QClassifier::setOwnedTemplateSignature(const QRedefinableTemplateSignature 
  */
 const QSet<QCollaborationUse *> *QClassifier::collaborationUses() const
 {
-    Q_D(const QClassifier);
+    QTUML_D(const QClassifier);
     return d->collaborationUses;
 }
 
 void QClassifier::addCollaborationUse(const QCollaborationUse *collaborationUse)
 {
-    Q_D(QClassifier);
+    QTUML_D(QClassifier);
     d->addCollaborationUse(const_cast<QCollaborationUse *>(collaborationUse));
 }
 
 void QClassifier::removeCollaborationUse(const QCollaborationUse *collaborationUse)
 {
-    Q_D(QClassifier);
+    QTUML_D(QClassifier);
     d->removeCollaborationUse(const_cast<QCollaborationUse *>(collaborationUse));
 }
 
@@ -446,7 +446,7 @@ void QClassifier::removeCollaborationUse(const QCollaborationUse *collaborationU
  */
 const QSet<QProperty *> *QClassifier::attributes() const
 {
-    Q_D(const QClassifier);
+    QTUML_D(const QClassifier);
     return d->attributes;
 }
 
@@ -455,7 +455,7 @@ const QSet<QProperty *> *QClassifier::attributes() const
  */
 const QSet<QFeature *> *QClassifier::features() const
 {
-    Q_D(const QClassifier);
+    QTUML_D(const QClassifier);
     return d->features;
 }
 
@@ -482,13 +482,13 @@ void QClassifier::removeGeneral(const QClassifier *general)
  */
 QCollaborationUse *QClassifier::representation() const
 {
-    Q_D(const QClassifier);
+    QTUML_D(const QClassifier);
     return d->representation;
 }
 
 void QClassifier::setRepresentation(const QCollaborationUse *representation)
 {
-    Q_D(QClassifier);
+    QTUML_D(QClassifier);
     d->setRepresentation(const_cast<QCollaborationUse *>(representation));
 }
 
@@ -497,19 +497,19 @@ void QClassifier::setRepresentation(const QCollaborationUse *representation)
  */
 const QSet<QGeneralization *> *QClassifier::generalizations() const
 {
-    Q_D(const QClassifier);
+    QTUML_D(const QClassifier);
     return d->generalizations;
 }
 
 void QClassifier::addGeneralization(const QGeneralization *generalization)
 {
-    Q_D(QClassifier);
+    QTUML_D(QClassifier);
     d->addGeneralization(const_cast<QGeneralization *>(generalization));
 }
 
 void QClassifier::removeGeneralization(const QGeneralization *generalization)
 {
-    Q_D(QClassifier);
+    QTUML_D(QClassifier);
     d->removeGeneralization(const_cast<QGeneralization *>(generalization));
 }
 
@@ -526,19 +526,19 @@ const QSet<QNamedElement *> *QClassifier::inheritedMembers() const
  */
 const QSet<QSubstitution *> *QClassifier::substitutions() const
 {
-    Q_D(const QClassifier);
+    QTUML_D(const QClassifier);
     return d->substitutions;
 }
 
 void QClassifier::addSubstitution(const QSubstitution *substitution)
 {
-    Q_D(QClassifier);
+    QTUML_D(QClassifier);
     d->addSubstitution(const_cast<QSubstitution *>(substitution));
 }
 
 void QClassifier::removeSubstitution(const QSubstitution *substitution)
 {
-    Q_D(QClassifier);
+    QTUML_D(QClassifier);
     d->removeSubstitution(const_cast<QSubstitution *>(substitution));
 }
 

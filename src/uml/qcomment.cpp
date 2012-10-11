@@ -100,13 +100,13 @@ QComment::~QComment()
  */
 QString QComment::body() const
 {
-    Q_D(const QComment);
+    QTUML_D(const QComment);
     return d->body;
 }
 
 void QComment::setBody(QString body)
 {
-    Q_D(QComment);
+    QTUML_D(QComment);
     d->setBody(body);
 }
 
@@ -115,19 +115,19 @@ void QComment::setBody(QString body)
  */
 const QSet<QElement *> *QComment::annotatedElements() const
 {
-    Q_D(const QComment);
+    QTUML_D(const QComment);
     return d->annotatedElements;
 }
 
 void QComment::addAnnotatedElement(const QElement *annotatedElement)
 {
-    Q_D(QComment);
+    QTUML_D(QComment);
     d->addAnnotatedElement(const_cast<QElement *>(annotatedElement));
 }
 
 void QComment::removeAnnotatedElement(const QElement *annotatedElement)
 {
-    Q_D(QComment);
+    QTUML_D(QComment);
     d->removeAnnotatedElement(const_cast<QElement *>(annotatedElement));
 }
 

@@ -96,13 +96,13 @@ const QSet<QTransition *> *QVertex::incomings() const
  */
 QRegion *QVertex::container() const
 {
-    Q_D(const QVertex);
+    QTUML_D(const QVertex);
     return d->container;
 }
 
 void QVertex::setContainer(const QRegion *container)
 {
-    Q_D(QVertex);
+    QTUML_D(QVertex);
     d->setContainer(const_cast<QRegion *>(container));
 }
 

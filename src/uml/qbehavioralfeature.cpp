@@ -154,13 +154,13 @@ QBehavioralFeature::~QBehavioralFeature()
  */
 QtUml::CallConcurrencyKind QBehavioralFeature::concurrency() const
 {
-    Q_D(const QBehavioralFeature);
+    QTUML_D(const QBehavioralFeature);
     return d->concurrency;
 }
 
 void QBehavioralFeature::setConcurrency(QtUml::CallConcurrencyKind concurrency)
 {
-    Q_D(QBehavioralFeature);
+    QTUML_D(QBehavioralFeature);
     d->setConcurrency(concurrency);
 }
 
@@ -169,13 +169,13 @@ void QBehavioralFeature::setConcurrency(QtUml::CallConcurrencyKind concurrency)
  */
 bool QBehavioralFeature::isAbstract() const
 {
-    Q_D(const QBehavioralFeature);
+    QTUML_D(const QBehavioralFeature);
     return d->isAbstract;
 }
 
 void QBehavioralFeature::setAbstract(bool isAbstract)
 {
-    Q_D(QBehavioralFeature);
+    QTUML_D(QBehavioralFeature);
     d->setAbstract(isAbstract);
 }
 
@@ -184,19 +184,19 @@ void QBehavioralFeature::setAbstract(bool isAbstract)
  */
 const QSet<QType *> *QBehavioralFeature::raisedExceptions() const
 {
-    Q_D(const QBehavioralFeature);
+    QTUML_D(const QBehavioralFeature);
     return d->raisedExceptions;
 }
 
 void QBehavioralFeature::addRaisedException(const QType *raisedException)
 {
-    Q_D(QBehavioralFeature);
+    QTUML_D(QBehavioralFeature);
     d->addRaisedException(const_cast<QType *>(raisedException));
 }
 
 void QBehavioralFeature::removeRaisedException(const QType *raisedException)
 {
-    Q_D(QBehavioralFeature);
+    QTUML_D(QBehavioralFeature);
     d->removeRaisedException(const_cast<QType *>(raisedException));
 }
 
@@ -205,19 +205,19 @@ void QBehavioralFeature::removeRaisedException(const QType *raisedException)
  */
 const QList<QParameter *> *QBehavioralFeature::ownedParameters() const
 {
-    Q_D(const QBehavioralFeature);
+    QTUML_D(const QBehavioralFeature);
     return d->ownedParameters;
 }
 
 void QBehavioralFeature::addOwnedParameter(const QParameter *ownedParameter)
 {
-    Q_D(QBehavioralFeature);
+    QTUML_D(QBehavioralFeature);
     d->addOwnedParameter(const_cast<QParameter *>(ownedParameter));
 }
 
 void QBehavioralFeature::removeOwnedParameter(const QParameter *ownedParameter)
 {
-    Q_D(QBehavioralFeature);
+    QTUML_D(QBehavioralFeature);
     d->removeOwnedParameter(const_cast<QParameter *>(ownedParameter));
 }
 
@@ -226,19 +226,19 @@ void QBehavioralFeature::removeOwnedParameter(const QParameter *ownedParameter)
  */
 const QSet<QParameterSet *> *QBehavioralFeature::ownedParameterSets() const
 {
-    Q_D(const QBehavioralFeature);
+    QTUML_D(const QBehavioralFeature);
     return d->ownedParameterSets;
 }
 
 void QBehavioralFeature::addOwnedParameterSet(const QParameterSet *ownedParameterSet)
 {
-    Q_D(QBehavioralFeature);
+    QTUML_D(QBehavioralFeature);
     d->addOwnedParameterSet(const_cast<QParameterSet *>(ownedParameterSet));
 }
 
 void QBehavioralFeature::removeOwnedParameterSet(const QParameterSet *ownedParameterSet)
 {
-    Q_D(QBehavioralFeature);
+    QTUML_D(QBehavioralFeature);
     d->removeOwnedParameterSet(const_cast<QParameterSet *>(ownedParameterSet));
 }
 
@@ -247,19 +247,19 @@ void QBehavioralFeature::removeOwnedParameterSet(const QParameterSet *ownedParam
  */
 const QSet<QBehavior *> *QBehavioralFeature::methods() const
 {
-    Q_D(const QBehavioralFeature);
+    QTUML_D(const QBehavioralFeature);
     return d->methods;
 }
 
 void QBehavioralFeature::addMethod(const QBehavior *method)
 {
-    Q_D(QBehavioralFeature);
+    QTUML_D(QBehavioralFeature);
     d->addMethod(const_cast<QBehavior *>(method));
 }
 
 void QBehavioralFeature::removeMethod(const QBehavior *method)
 {
-    Q_D(QBehavioralFeature);
+    QTUML_D(QBehavioralFeature);
     d->removeMethod(const_cast<QBehavior *>(method));
 }
 

@@ -182,19 +182,19 @@ QInteraction::~QInteraction()
  */
 const QSet<QAction *> *QInteraction::actions() const
 {
-    Q_D(const QInteraction);
+    QTUML_D(const QInteraction);
     return d->actions;
 }
 
 void QInteraction::addAction(const QAction *action)
 {
-    Q_D(QInteraction);
+    QTUML_D(QInteraction);
     d->addAction(const_cast<QAction *>(action));
 }
 
 void QInteraction::removeAction(const QAction *action)
 {
-    Q_D(QInteraction);
+    QTUML_D(QInteraction);
     d->removeAction(const_cast<QAction *>(action));
 }
 
@@ -203,19 +203,19 @@ void QInteraction::removeAction(const QAction *action)
  */
 const QSet<QMessage *> *QInteraction::messages() const
 {
-    Q_D(const QInteraction);
+    QTUML_D(const QInteraction);
     return d->messages;
 }
 
 void QInteraction::addMessage(const QMessage *message)
 {
-    Q_D(QInteraction);
+    QTUML_D(QInteraction);
     d->addMessage(const_cast<QMessage *>(message));
 }
 
 void QInteraction::removeMessage(const QMessage *message)
 {
-    Q_D(QInteraction);
+    QTUML_D(QInteraction);
     d->removeMessage(const_cast<QMessage *>(message));
 }
 
@@ -224,19 +224,19 @@ void QInteraction::removeMessage(const QMessage *message)
  */
 const QSet<QGate *> *QInteraction::formalGates() const
 {
-    Q_D(const QInteraction);
+    QTUML_D(const QInteraction);
     return d->formalGates;
 }
 
 void QInteraction::addFormalGate(const QGate *formalGate)
 {
-    Q_D(QInteraction);
+    QTUML_D(QInteraction);
     d->addFormalGate(const_cast<QGate *>(formalGate));
 }
 
 void QInteraction::removeFormalGate(const QGate *formalGate)
 {
-    Q_D(QInteraction);
+    QTUML_D(QInteraction);
     d->removeFormalGate(const_cast<QGate *>(formalGate));
 }
 
@@ -245,19 +245,19 @@ void QInteraction::removeFormalGate(const QGate *formalGate)
  */
 const QList<QInteractionFragment *> *QInteraction::fragments() const
 {
-    Q_D(const QInteraction);
+    QTUML_D(const QInteraction);
     return d->fragments;
 }
 
 void QInteraction::addFragment(const QInteractionFragment *fragment)
 {
-    Q_D(QInteraction);
+    QTUML_D(QInteraction);
     d->addFragment(const_cast<QInteractionFragment *>(fragment));
 }
 
 void QInteraction::removeFragment(const QInteractionFragment *fragment)
 {
-    Q_D(QInteraction);
+    QTUML_D(QInteraction);
     d->removeFragment(const_cast<QInteractionFragment *>(fragment));
 }
 
@@ -266,19 +266,19 @@ void QInteraction::removeFragment(const QInteractionFragment *fragment)
  */
 const QSet<QLifeline *> *QInteraction::lifelines() const
 {
-    Q_D(const QInteraction);
+    QTUML_D(const QInteraction);
     return d->lifelines;
 }
 
 void QInteraction::addLifeline(const QLifeline *lifeline)
 {
-    Q_D(QInteraction);
+    QTUML_D(QInteraction);
     d->addLifeline(const_cast<QLifeline *>(lifeline));
 }
 
 void QInteraction::removeLifeline(const QLifeline *lifeline)
 {
-    Q_D(QInteraction);
+    QTUML_D(QInteraction);
     d->removeLifeline(const_cast<QLifeline *>(lifeline));
 }
 

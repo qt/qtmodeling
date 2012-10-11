@@ -65,7 +65,6 @@ class QInputPin;
 class Q_UML_EXPORT QAction : public QExecutableNode
 {
     Q_DISABLE_COPY(QAction)
-    QTUML_DECLARE_PRIVATE(QAction)
 
 public:
     virtual ~QAction();

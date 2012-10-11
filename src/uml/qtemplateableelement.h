@@ -63,7 +63,6 @@ class QParameterableElement;
 class Q_UML_EXPORT QTemplateableElement : public virtual QElement
 {
     Q_DISABLE_COPY(QTemplateableElement)
-    QTUML_DECLARE_PRIVATE(QTemplateableElement)
 
 public:
     virtual ~QTemplateableElement();

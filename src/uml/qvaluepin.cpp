@@ -97,13 +97,13 @@ QValuePin::~QValuePin()
  */
 QValueSpecification *QValuePin::value() const
 {
-    Q_D(const QValuePin);
+    QTUML_D(const QValuePin);
     return d->value;
 }
 
 void QValuePin::setValue(const QValueSpecification *value)
 {
-    Q_D(QValuePin);
+    QTUML_D(QValuePin);
     d->setValue(const_cast<QValueSpecification *>(value));
 }
 

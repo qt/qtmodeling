@@ -87,7 +87,6 @@ class Q_UML_EXPORT QActionExecutionSpecification : public QObject, public QExecu
     Q_PROPERTY(QAction * action READ action WRITE setAction)
 
     Q_DISABLE_COPY(QActionExecutionSpecification)
-    QTUML_DECLARE_PRIVATE(QActionExecutionSpecification)
 
 public:
     explicit QActionExecutionSpecification(QObject *parent = 0);

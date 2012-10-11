@@ -88,7 +88,6 @@ class Q_UML_EXPORT QFlowFinalNode : public QObject, public QFinalNode
     Q_PROPERTY(const QSet<QActivityEdge *> * outgoings READ outgoings)
 
     Q_DISABLE_COPY(QFlowFinalNode)
-    QTUML_DECLARE_PRIVATE(QFlowFinalNode)
 
 public:
     explicit QFlowFinalNode(QObject *parent = 0);

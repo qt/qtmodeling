@@ -96,13 +96,13 @@ QLinkEndDestructionData::~QLinkEndDestructionData()
  */
 bool QLinkEndDestructionData::isDestroyDuplicates() const
 {
-    Q_D(const QLinkEndDestructionData);
+    QTUML_D(const QLinkEndDestructionData);
     return d->isDestroyDuplicates;
 }
 
 void QLinkEndDestructionData::setDestroyDuplicates(bool isDestroyDuplicates)
 {
-    Q_D(QLinkEndDestructionData);
+    QTUML_D(QLinkEndDestructionData);
     d->setDestroyDuplicates(isDestroyDuplicates);
 }
 
@@ -111,13 +111,13 @@ void QLinkEndDestructionData::setDestroyDuplicates(bool isDestroyDuplicates)
  */
 QInputPin *QLinkEndDestructionData::destroyAt() const
 {
-    Q_D(const QLinkEndDestructionData);
+    QTUML_D(const QLinkEndDestructionData);
     return d->destroyAt;
 }
 
 void QLinkEndDestructionData::setDestroyAt(const QInputPin *destroyAt)
 {
-    Q_D(QLinkEndDestructionData);
+    QTUML_D(QLinkEndDestructionData);
     d->setDestroyAt(const_cast<QInputPin *>(destroyAt));
 }
 

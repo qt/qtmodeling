@@ -97,13 +97,13 @@ QCreateLinkObjectAction::~QCreateLinkObjectAction()
  */
 QOutputPin *QCreateLinkObjectAction::result() const
 {
-    Q_D(const QCreateLinkObjectAction);
+    QTUML_D(const QCreateLinkObjectAction);
     return d->result;
 }
 
 void QCreateLinkObjectAction::setResult(const QOutputPin *result)
 {
-    Q_D(QCreateLinkObjectAction);
+    QTUML_D(QCreateLinkObjectAction);
     d->setResult(const_cast<QOutputPin *>(result));
 }
 

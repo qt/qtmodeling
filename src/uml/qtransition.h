@@ -110,7 +110,6 @@ class Q_UML_EXPORT QTransition : public QObject, public QRedefinableElement, pub
     Q_PROPERTY(const QSet<QTrigger *> * triggers READ triggers)
 
     Q_DISABLE_COPY(QTransition)
-    QTUML_DECLARE_PRIVATE(QTransition)
 
 public:
     explicit QTransition(QObject *parent = 0);

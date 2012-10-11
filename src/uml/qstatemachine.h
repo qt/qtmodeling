@@ -82,7 +82,6 @@ class Q_UML_EXPORT QStateMachine : public QBehavior
     Q_PROPERTY(const QSet<QRegion *> * regions READ regions)
 
     Q_DISABLE_COPY(QStateMachine)
-    QTUML_DECLARE_PRIVATE(QStateMachine)
 
 public:
     explicit QStateMachine(QObject *parent = 0);

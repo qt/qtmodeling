@@ -93,7 +93,6 @@ class Q_UML_EXPORT QCombinedFragment : public QObject, public QInteractionFragme
     Q_PROPERTY(const QList<QInteractionOperand *> * operands READ operands)
 
     Q_DISABLE_COPY(QCombinedFragment)
-    QTUML_DECLARE_PRIVATE(QCombinedFragment)
 
 public:
     explicit QCombinedFragment(QObject *parent = 0);

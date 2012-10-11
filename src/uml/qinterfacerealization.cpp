@@ -113,13 +113,13 @@ QInterfaceRealization::~QInterfaceRealization()
  */
 QBehavioredClassifier *QInterfaceRealization::implementingClassifier() const
 {
-    Q_D(const QInterfaceRealization);
+    QTUML_D(const QInterfaceRealization);
     return d->implementingClassifier;
 }
 
 void QInterfaceRealization::setImplementingClassifier(const QBehavioredClassifier *implementingClassifier)
 {
-    Q_D(QInterfaceRealization);
+    QTUML_D(QInterfaceRealization);
     d->setImplementingClassifier(const_cast<QBehavioredClassifier *>(implementingClassifier));
 }
 
@@ -128,13 +128,13 @@ void QInterfaceRealization::setImplementingClassifier(const QBehavioredClassifie
  */
 QInterface *QInterfaceRealization::contract() const
 {
-    Q_D(const QInterfaceRealization);
+    QTUML_D(const QInterfaceRealization);
     return d->contract;
 }
 
 void QInterfaceRealization::setContract(const QInterface *contract)
 {
-    Q_D(QInterfaceRealization);
+    QTUML_D(QInterfaceRealization);
     d->setContract(const_cast<QInterface *>(contract));
 }
 

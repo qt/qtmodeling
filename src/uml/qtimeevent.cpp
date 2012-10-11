@@ -103,13 +103,13 @@ QTimeEvent::~QTimeEvent()
  */
 bool QTimeEvent::isRelative() const
 {
-    Q_D(const QTimeEvent);
+    QTUML_D(const QTimeEvent);
     return d->isRelative;
 }
 
 void QTimeEvent::setRelative(bool isRelative)
 {
-    Q_D(QTimeEvent);
+    QTUML_D(QTimeEvent);
     d->setRelative(isRelative);
 }
 
@@ -118,13 +118,13 @@ void QTimeEvent::setRelative(bool isRelative)
  */
 QTimeExpression *QTimeEvent::when() const
 {
-    Q_D(const QTimeEvent);
+    QTUML_D(const QTimeEvent);
     return d->when;
 }
 
 void QTimeEvent::setWhen(const QTimeExpression *when)
 {
-    Q_D(QTimeEvent);
+    QTUML_D(QTimeEvent);
     d->setWhen(const_cast<QTimeExpression *>(when));
 }
 

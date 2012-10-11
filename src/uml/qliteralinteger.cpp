@@ -88,13 +88,13 @@ QLiteralInteger::~QLiteralInteger()
  */
 qint32 QLiteralInteger::value() const
 {
-    Q_D(const QLiteralInteger);
+    QTUML_D(const QLiteralInteger);
     return d->value;
 }
 
 void QLiteralInteger::setValue(qint32 value)
 {
-    Q_D(QLiteralInteger);
+    QTUML_D(QLiteralInteger);
     d->setValue(value);
 }
 

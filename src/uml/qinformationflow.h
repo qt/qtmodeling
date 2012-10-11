@@ -105,7 +105,6 @@ class Q_UML_EXPORT QInformationFlow : public QObject, public QDirectedRelationsh
     Q_PROPERTY(const QSet<QRelationship *> * realizations READ realizations)
 
     Q_DISABLE_COPY(QInformationFlow)
-    QTUML_DECLARE_PRIVATE(QInformationFlow)
 
 public:
     explicit QInformationFlow(QObject *parent = 0);

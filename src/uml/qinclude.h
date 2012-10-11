@@ -86,7 +86,6 @@ class Q_UML_EXPORT QInclude : public QObject, public QDirectedRelationship, publ
     Q_PROPERTY(QUseCase * addition READ addition WRITE setAddition)
 
     Q_DISABLE_COPY(QInclude)
-    QTUML_DECLARE_PRIVATE(QInclude)
 
 public:
     explicit QInclude(QObject *parent = 0);

@@ -90,13 +90,13 @@ QActivityParameterNode::~QActivityParameterNode()
  */
 QParameter *QActivityParameterNode::parameter() const
 {
-    Q_D(const QActivityParameterNode);
+    QTUML_D(const QActivityParameterNode);
     return d->parameter;
 }
 
 void QActivityParameterNode::setParameter(const QParameter *parameter)
 {
-    Q_D(QActivityParameterNode);
+    QTUML_D(QActivityParameterNode);
     d->setParameter(const_cast<QParameter *>(parameter));
 }
 

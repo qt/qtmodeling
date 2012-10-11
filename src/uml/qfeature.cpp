@@ -94,13 +94,13 @@ QFeature::~QFeature()
  */
 bool QFeature::isStatic() const
 {
-    Q_D(const QFeature);
+    QTUML_D(const QFeature);
     return d->isStatic;
 }
 
 void QFeature::setStatic(bool isStatic)
 {
-    Q_D(QFeature);
+    QTUML_D(QFeature);
     d->setStatic(isStatic);
 }
 
@@ -109,7 +109,7 @@ void QFeature::setStatic(bool isStatic)
  */
 const QSet<QClassifier *> *QFeature::featuringClassifiers() const
 {
-    Q_D(const QFeature);
+    QTUML_D(const QFeature);
     return d->featuringClassifiers;
 }
 

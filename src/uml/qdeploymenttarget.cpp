@@ -107,19 +107,19 @@ const QSet<QPackageableElement *> *QDeploymentTarget::deployedElements() const
  */
 const QSet<QDeployment *> *QDeploymentTarget::deployments() const
 {
-    Q_D(const QDeploymentTarget);
+    QTUML_D(const QDeploymentTarget);
     return d->deployments;
 }
 
 void QDeploymentTarget::addDeployment(const QDeployment *deployment)
 {
-    Q_D(QDeploymentTarget);
+    QTUML_D(QDeploymentTarget);
     d->addDeployment(const_cast<QDeployment *>(deployment));
 }
 
 void QDeploymentTarget::removeDeployment(const QDeployment *deployment)
 {
-    Q_D(QDeploymentTarget);
+    QTUML_D(QDeploymentTarget);
     d->removeDeployment(const_cast<QDeployment *>(deployment));
 }
 

@@ -82,7 +82,6 @@ class Q_UML_EXPORT QPackageImport : public QObject, public QDirectedRelationship
     Q_PROPERTY(QPackage * importedPackage READ importedPackage WRITE setImportedPackage)
 
     Q_DISABLE_COPY(QPackageImport)
-    QTUML_DECLARE_PRIVATE(QPackageImport)
 
 public:
     explicit QPackageImport(QObject *parent = 0);

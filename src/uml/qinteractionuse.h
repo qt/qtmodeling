@@ -94,7 +94,6 @@ class Q_UML_EXPORT QInteractionUse : public QObject, public QInteractionFragment
     Q_PROPERTY(QProperty * returnValueRecipient READ returnValueRecipient WRITE setReturnValueRecipient)
 
     Q_DISABLE_COPY(QInteractionUse)
-    QTUML_DECLARE_PRIVATE(QInteractionUse)
 
 public:
     explicit QInteractionUse(QObject *parent = 0);

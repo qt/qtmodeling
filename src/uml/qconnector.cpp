@@ -150,19 +150,19 @@ QtUml::ConnectorKind QConnector::kind() const
  */
 const QSet<QConnector *> *QConnector::redefinedConnectors() const
 {
-    Q_D(const QConnector);
+    QTUML_D(const QConnector);
     return d->redefinedConnectors;
 }
 
 void QConnector::addRedefinedConnector(const QConnector *redefinedConnector)
 {
-    Q_D(QConnector);
+    QTUML_D(QConnector);
     d->addRedefinedConnector(const_cast<QConnector *>(redefinedConnector));
 }
 
 void QConnector::removeRedefinedConnector(const QConnector *redefinedConnector)
 {
-    Q_D(QConnector);
+    QTUML_D(QConnector);
     d->removeRedefinedConnector(const_cast<QConnector *>(redefinedConnector));
 }
 
@@ -171,19 +171,19 @@ void QConnector::removeRedefinedConnector(const QConnector *redefinedConnector)
  */
 const QSet<QBehavior *> *QConnector::contracts() const
 {
-    Q_D(const QConnector);
+    QTUML_D(const QConnector);
     return d->contracts;
 }
 
 void QConnector::addContract(const QBehavior *contract)
 {
-    Q_D(QConnector);
+    QTUML_D(QConnector);
     d->addContract(const_cast<QBehavior *>(contract));
 }
 
 void QConnector::removeContract(const QBehavior *contract)
 {
-    Q_D(QConnector);
+    QTUML_D(QConnector);
     d->removeContract(const_cast<QBehavior *>(contract));
 }
 
@@ -192,13 +192,13 @@ void QConnector::removeContract(const QBehavior *contract)
  */
 QAssociation *QConnector::type() const
 {
-    Q_D(const QConnector);
+    QTUML_D(const QConnector);
     return d->type;
 }
 
 void QConnector::setType(const QAssociation *type)
 {
-    Q_D(QConnector);
+    QTUML_D(QConnector);
     d->setType(const_cast<QAssociation *>(type));
 }
 
@@ -207,19 +207,19 @@ void QConnector::setType(const QAssociation *type)
  */
 const QList<QConnectorEnd *> *QConnector::ends() const
 {
-    Q_D(const QConnector);
+    QTUML_D(const QConnector);
     return d->ends;
 }
 
 void QConnector::addEnd(const QConnectorEnd *end)
 {
-    Q_D(QConnector);
+    QTUML_D(QConnector);
     d->addEnd(const_cast<QConnectorEnd *>(end));
 }
 
 void QConnector::removeEnd(const QConnectorEnd *end)
 {
-    Q_D(QConnector);
+    QTUML_D(QConnector);
     d->removeEnd(const_cast<QConnectorEnd *>(end));
 }
 

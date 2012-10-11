@@ -83,7 +83,6 @@ class Q_UML_EXPORT QSignalEvent : public QObject, public QMessageEvent
     Q_PROPERTY(QSignal * signal READ signal WRITE setSignal)
 
     Q_DISABLE_COPY(QSignalEvent)
-    QTUML_DECLARE_PRIVATE(QSignalEvent)
 
 public:
     explicit QSignalEvent(QObject *parent = 0);

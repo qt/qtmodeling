@@ -116,19 +116,19 @@ QInteractionOperand::~QInteractionOperand()
  */
 const QList<QInteractionFragment *> *QInteractionOperand::fragments() const
 {
-    Q_D(const QInteractionOperand);
+    QTUML_D(const QInteractionOperand);
     return d->fragments;
 }
 
 void QInteractionOperand::addFragment(const QInteractionFragment *fragment)
 {
-    Q_D(QInteractionOperand);
+    QTUML_D(QInteractionOperand);
     d->addFragment(const_cast<QInteractionFragment *>(fragment));
 }
 
 void QInteractionOperand::removeFragment(const QInteractionFragment *fragment)
 {
-    Q_D(QInteractionOperand);
+    QTUML_D(QInteractionOperand);
     d->removeFragment(const_cast<QInteractionFragment *>(fragment));
 }
 
@@ -137,13 +137,13 @@ void QInteractionOperand::removeFragment(const QInteractionFragment *fragment)
  */
 QInteractionConstraint *QInteractionOperand::guard() const
 {
-    Q_D(const QInteractionOperand);
+    QTUML_D(const QInteractionOperand);
     return d->guard;
 }
 
 void QInteractionOperand::setGuard(const QInteractionConstraint *guard)
 {
-    Q_D(QInteractionOperand);
+    QTUML_D(QInteractionOperand);
     d->setGuard(const_cast<QInteractionConstraint *>(guard));
 }
 

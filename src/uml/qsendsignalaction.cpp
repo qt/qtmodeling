@@ -104,13 +104,13 @@ QSendSignalAction::~QSendSignalAction()
  */
 QInputPin *QSendSignalAction::target() const
 {
-    Q_D(const QSendSignalAction);
+    QTUML_D(const QSendSignalAction);
     return d->target;
 }
 
 void QSendSignalAction::setTarget(const QInputPin *target)
 {
-    Q_D(QSendSignalAction);
+    QTUML_D(QSendSignalAction);
     d->setTarget(const_cast<QInputPin *>(target));
 }
 
@@ -119,13 +119,13 @@ void QSendSignalAction::setTarget(const QInputPin *target)
  */
 QSignal *QSendSignalAction::signal() const
 {
-    Q_D(const QSendSignalAction);
+    QTUML_D(const QSendSignalAction);
     return d->signal;
 }
 
 void QSendSignalAction::setSignal(const QSignal *signal)
 {
-    Q_D(QSendSignalAction);
+    QTUML_D(QSendSignalAction);
     d->setSignal(const_cast<QSignal *>(signal));
 }
 

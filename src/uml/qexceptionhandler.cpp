@@ -120,13 +120,13 @@ QExceptionHandler::~QExceptionHandler()
  */
 QExecutableNode *QExceptionHandler::handlerBody() const
 {
-    Q_D(const QExceptionHandler);
+    QTUML_D(const QExceptionHandler);
     return d->handlerBody;
 }
 
 void QExceptionHandler::setHandlerBody(const QExecutableNode *handlerBody)
 {
-    Q_D(QExceptionHandler);
+    QTUML_D(QExceptionHandler);
     d->setHandlerBody(const_cast<QExecutableNode *>(handlerBody));
 }
 
@@ -135,19 +135,19 @@ void QExceptionHandler::setHandlerBody(const QExecutableNode *handlerBody)
  */
 const QSet<QClassifier *> *QExceptionHandler::exceptionTypes() const
 {
-    Q_D(const QExceptionHandler);
+    QTUML_D(const QExceptionHandler);
     return d->exceptionTypes;
 }
 
 void QExceptionHandler::addExceptionType(const QClassifier *exceptionType)
 {
-    Q_D(QExceptionHandler);
+    QTUML_D(QExceptionHandler);
     d->addExceptionType(const_cast<QClassifier *>(exceptionType));
 }
 
 void QExceptionHandler::removeExceptionType(const QClassifier *exceptionType)
 {
-    Q_D(QExceptionHandler);
+    QTUML_D(QExceptionHandler);
     d->removeExceptionType(const_cast<QClassifier *>(exceptionType));
 }
 
@@ -156,13 +156,13 @@ void QExceptionHandler::removeExceptionType(const QClassifier *exceptionType)
  */
 QExecutableNode *QExceptionHandler::protectedNode() const
 {
-    Q_D(const QExceptionHandler);
+    QTUML_D(const QExceptionHandler);
     return d->protectedNode;
 }
 
 void QExceptionHandler::setProtectedNode(const QExecutableNode *protectedNode)
 {
-    Q_D(QExceptionHandler);
+    QTUML_D(QExceptionHandler);
     d->setProtectedNode(const_cast<QExecutableNode *>(protectedNode));
 }
 
@@ -171,13 +171,13 @@ void QExceptionHandler::setProtectedNode(const QExecutableNode *protectedNode)
  */
 QObjectNode *QExceptionHandler::exceptionInput() const
 {
-    Q_D(const QExceptionHandler);
+    QTUML_D(const QExceptionHandler);
     return d->exceptionInput;
 }
 
 void QExceptionHandler::setExceptionInput(const QObjectNode *exceptionInput)
 {
-    Q_D(QExceptionHandler);
+    QTUML_D(QExceptionHandler);
     d->setExceptionInput(const_cast<QObjectNode *>(exceptionInput));
 }
 

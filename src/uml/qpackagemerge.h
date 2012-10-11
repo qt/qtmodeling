@@ -77,7 +77,6 @@ class Q_UML_EXPORT QPackageMerge : public QObject, public QDirectedRelationship
     Q_PROPERTY(QPackage * receivingPackage READ receivingPackage WRITE setReceivingPackage)
 
     Q_DISABLE_COPY(QPackageMerge)
-    QTUML_DECLARE_PRIVATE(QPackageMerge)
 
 public:
     explicit QPackageMerge(QObject *parent = 0);

@@ -112,7 +112,6 @@ class Q_UML_EXPORT QAddStructuralFeatureValueAction : public QObject, public QWr
     Q_PROPERTY(QInputPin * insertAt READ insertAt WRITE setInsertAt)
 
     Q_DISABLE_COPY(QAddStructuralFeatureValueAction)
-    QTUML_DECLARE_PRIVATE(QAddStructuralFeatureValueAction)
 
 public:
     explicit QAddStructuralFeatureValueAction(QObject *parent = 0);

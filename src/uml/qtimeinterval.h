@@ -64,7 +64,6 @@ class Q_UML_EXPORT QTimeInterval : public QInterval
     Q_PROPERTY(QTimeExpression * min READ min WRITE setMin)
 
     Q_DISABLE_COPY(QTimeInterval)
-    QTUML_DECLARE_PRIVATE(QTimeInterval)
 
 public:
     explicit QTimeInterval(QObject *parent = 0);

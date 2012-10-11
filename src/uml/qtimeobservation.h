@@ -84,7 +84,6 @@ class Q_UML_EXPORT QTimeObservation : public QObject, public QObservation
     Q_PROPERTY(QNamedElement * event READ event WRITE setEvent)
 
     Q_DISABLE_COPY(QTimeObservation)
-    QTUML_DECLARE_PRIVATE(QTimeObservation)
 
 public:
     explicit QTimeObservation(QObject *parent = 0);

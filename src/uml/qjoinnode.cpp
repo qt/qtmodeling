@@ -103,13 +103,13 @@ QJoinNode::~QJoinNode()
  */
 bool QJoinNode::isCombineDuplicate() const
 {
-    Q_D(const QJoinNode);
+    QTUML_D(const QJoinNode);
     return d->isCombineDuplicate;
 }
 
 void QJoinNode::setCombineDuplicate(bool isCombineDuplicate)
 {
-    Q_D(QJoinNode);
+    QTUML_D(QJoinNode);
     d->setCombineDuplicate(isCombineDuplicate);
 }
 
@@ -118,13 +118,13 @@ void QJoinNode::setCombineDuplicate(bool isCombineDuplicate)
  */
 QValueSpecification *QJoinNode::joinSpec() const
 {
-    Q_D(const QJoinNode);
+    QTUML_D(const QJoinNode);
     return d->joinSpec;
 }
 
 void QJoinNode::setJoinSpec(const QValueSpecification *joinSpec)
 {
-    Q_D(QJoinNode);
+    QTUML_D(QJoinNode);
     d->setJoinSpec(const_cast<QValueSpecification *>(joinSpec));
 }
 

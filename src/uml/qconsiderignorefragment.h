@@ -66,7 +66,6 @@ class Q_UML_EXPORT QConsiderIgnoreFragment : public QCombinedFragment
     Q_PROPERTY(const QSet<QNamedElement *> * messages READ messages)
 
     Q_DISABLE_COPY(QConsiderIgnoreFragment)
-    QTUML_DECLARE_PRIVATE(QConsiderIgnoreFragment)
 
 public:
     explicit QConsiderIgnoreFragment(QObject *parent = 0);

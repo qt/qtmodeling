@@ -95,7 +95,6 @@ class Q_UML_EXPORT QDependency : public QObject, public QPackageableElement, pub
     Q_PROPERTY(const QSet<QNamedElement *> * suppliers READ suppliers)
 
     Q_DISABLE_COPY(QDependency)
-    QTUML_DECLARE_PRIVATE(QDependency)
 
 public:
     explicit QDependency(QObject *parent = 0);

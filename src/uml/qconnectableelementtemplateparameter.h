@@ -63,7 +63,6 @@ class Q_UML_EXPORT QConnectableElementTemplateParameter : public QTemplateParame
     Q_PROPERTY(QConnectableElement * parameteredElement READ parameteredElement WRITE setParameteredElement)
 
     Q_DISABLE_COPY(QConnectableElementTemplateParameter)
-    QTUML_DECLARE_PRIVATE(QConnectableElementTemplateParameter)
 
 public:
     explicit QConnectableElementTemplateParameter(QObject *parent = 0);

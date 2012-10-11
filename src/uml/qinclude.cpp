@@ -112,13 +112,13 @@ QInclude::~QInclude()
  */
 QUseCase *QInclude::includingCase() const
 {
-    Q_D(const QInclude);
+    QTUML_D(const QInclude);
     return d->includingCase;
 }
 
 void QInclude::setIncludingCase(const QUseCase *includingCase)
 {
-    Q_D(QInclude);
+    QTUML_D(QInclude);
     d->setIncludingCase(const_cast<QUseCase *>(includingCase));
 }
 
@@ -127,13 +127,13 @@ void QInclude::setIncludingCase(const QUseCase *includingCase)
  */
 QUseCase *QInclude::addition() const
 {
-    Q_D(const QInclude);
+    QTUML_D(const QInclude);
     return d->addition;
 }
 
 void QInclude::setAddition(const QUseCase *addition)
 {
-    Q_D(QInclude);
+    QTUML_D(QInclude);
     d->setAddition(const_cast<QUseCase *>(addition));
 }
 

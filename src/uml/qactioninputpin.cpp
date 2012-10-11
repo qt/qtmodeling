@@ -97,13 +97,13 @@ QActionInputPin::~QActionInputPin()
  */
 QAction *QActionInputPin::fromAction() const
 {
-    Q_D(const QActionInputPin);
+    QTUML_D(const QActionInputPin);
     return d->fromAction;
 }
 
 void QActionInputPin::setFromAction(const QAction *fromAction)
 {
-    Q_D(QActionInputPin);
+    QTUML_D(QActionInputPin);
     d->setFromAction(const_cast<QAction *>(fromAction));
 }
 

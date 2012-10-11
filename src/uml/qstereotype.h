@@ -68,7 +68,6 @@ class Q_UML_EXPORT QStereotype : public QClass
     Q_PROPERTY(QProfile * profile READ profile)
 
     Q_DISABLE_COPY(QStereotype)
-    QTUML_DECLARE_PRIVATE(QStereotype)
 
 public:
     explicit QStereotype(QObject *parent = 0);

@@ -59,7 +59,6 @@ class QStructuralFeature;
 class Q_UML_EXPORT QStructuralFeatureAction : public QAction
 {
     Q_DISABLE_COPY(QStructuralFeatureAction)
-    QTUML_DECLARE_PRIVATE(QStructuralFeatureAction)
 
 public:
     virtual ~QStructuralFeatureAction();

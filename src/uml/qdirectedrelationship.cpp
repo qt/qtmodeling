@@ -114,7 +114,7 @@ QDirectedRelationship::~QDirectedRelationship()
  */
 const QSet<QElement *> *QDirectedRelationship::sources() const
 {
-    Q_D(const QDirectedRelationship);
+    QTUML_D(const QDirectedRelationship);
     return d->sources;
 }
 
@@ -123,7 +123,7 @@ const QSet<QElement *> *QDirectedRelationship::sources() const
  */
 const QSet<QElement *> *QDirectedRelationship::targets() const
 {
-    Q_D(const QDirectedRelationship);
+    QTUML_D(const QDirectedRelationship);
     return d->targets;
 }
 

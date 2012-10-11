@@ -105,7 +105,6 @@ class Q_UML_EXPORT QDestroyObjectAction : public QObject, public QAction
     Q_PROPERTY(QInputPin * target READ target WRITE setTarget)
 
     Q_DISABLE_COPY(QDestroyObjectAction)
-    QTUML_DECLARE_PRIVATE(QDestroyObjectAction)
 
 public:
     explicit QDestroyObjectAction(QObject *parent = 0);

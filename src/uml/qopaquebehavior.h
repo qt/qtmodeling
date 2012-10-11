@@ -77,7 +77,6 @@ class Q_UML_EXPORT QOpaqueBehavior : public QBehavior
     Q_PROPERTY(const QList<QString> * bodies READ bodies)
 
     Q_DISABLE_COPY(QOpaqueBehavior)
-    QTUML_DECLARE_PRIVATE(QOpaqueBehavior)
 
 public:
     explicit QOpaqueBehavior(QObject *parent = 0);

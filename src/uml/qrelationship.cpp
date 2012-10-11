@@ -87,7 +87,7 @@ QRelationship::~QRelationship()
  */
 const QSet<QElement *> *QRelationship::relatedElements() const
 {
-    Q_D(const QRelationship);
+    QTUML_D(const QRelationship);
     return d->relatedElements;
 }
 

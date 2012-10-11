@@ -104,13 +104,13 @@ QCreateObjectAction::~QCreateObjectAction()
  */
 QClassifier *QCreateObjectAction::classifier() const
 {
-    Q_D(const QCreateObjectAction);
+    QTUML_D(const QCreateObjectAction);
     return d->classifier;
 }
 
 void QCreateObjectAction::setClassifier(const QClassifier *classifier)
 {
-    Q_D(QCreateObjectAction);
+    QTUML_D(QCreateObjectAction);
     d->setClassifier(const_cast<QClassifier *>(classifier));
 }
 
@@ -119,13 +119,13 @@ void QCreateObjectAction::setClassifier(const QClassifier *classifier)
  */
 QOutputPin *QCreateObjectAction::result() const
 {
-    Q_D(const QCreateObjectAction);
+    QTUML_D(const QCreateObjectAction);
     return d->result;
 }
 
 void QCreateObjectAction::setResult(const QOutputPin *result)
 {
-    Q_D(QCreateObjectAction);
+    QTUML_D(QCreateObjectAction);
     d->setResult(const_cast<QOutputPin *>(result));
 }
 

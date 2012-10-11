@@ -94,7 +94,6 @@ class Q_UML_EXPORT QOpaqueExpression : public QObject, public QValueSpecificatio
     Q_PROPERTY(QParameter * result READ result)
 
     Q_DISABLE_COPY(QOpaqueExpression)
-    QTUML_DECLARE_PRIVATE(QOpaqueExpression)
 
 public:
     explicit QOpaqueExpression(QObject *parent = 0);

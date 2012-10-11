@@ -96,19 +96,19 @@ QConsiderIgnoreFragment::~QConsiderIgnoreFragment()
  */
 const QSet<QNamedElement *> *QConsiderIgnoreFragment::messages() const
 {
-    Q_D(const QConsiderIgnoreFragment);
+    QTUML_D(const QConsiderIgnoreFragment);
     return d->messages;
 }
 
 void QConsiderIgnoreFragment::addMessage(const QNamedElement *message)
 {
-    Q_D(QConsiderIgnoreFragment);
+    QTUML_D(QConsiderIgnoreFragment);
     d->addMessage(const_cast<QNamedElement *>(message));
 }
 
 void QConsiderIgnoreFragment::removeMessage(const QNamedElement *message)
 {
-    Q_D(QConsiderIgnoreFragment);
+    QTUML_D(QConsiderIgnoreFragment);
     d->removeMessage(const_cast<QNamedElement *>(message));
 }
 

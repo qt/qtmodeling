@@ -89,13 +89,13 @@ QContinuation::~QContinuation()
  */
 bool QContinuation::setting() const
 {
-    Q_D(const QContinuation);
+    QTUML_D(const QContinuation);
     return d->setting;
 }
 
 void QContinuation::setSetting(bool setting)
 {
-    Q_D(QContinuation);
+    QTUML_D(QContinuation);
     d->setSetting(setting);
 }
 

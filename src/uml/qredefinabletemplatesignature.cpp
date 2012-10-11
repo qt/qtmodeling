@@ -126,13 +126,13 @@ const QSet<QTemplateParameter *> *QRedefinableTemplateSignature::inheritedParame
  */
 QClassifier *QRedefinableTemplateSignature::classifier() const
 {
-    Q_D(const QRedefinableTemplateSignature);
+    QTUML_D(const QRedefinableTemplateSignature);
     return d->classifier;
 }
 
 void QRedefinableTemplateSignature::setClassifier(const QClassifier *classifier)
 {
-    Q_D(QRedefinableTemplateSignature);
+    QTUML_D(QRedefinableTemplateSignature);
     d->setClassifier(const_cast<QClassifier *>(classifier));
 }
 
@@ -141,19 +141,19 @@ void QRedefinableTemplateSignature::setClassifier(const QClassifier *classifier)
  */
 const QSet<QRedefinableTemplateSignature *> *QRedefinableTemplateSignature::extendedSignatures() const
 {
-    Q_D(const QRedefinableTemplateSignature);
+    QTUML_D(const QRedefinableTemplateSignature);
     return d->extendedSignatures;
 }
 
 void QRedefinableTemplateSignature::addExtendedSignature(const QRedefinableTemplateSignature *extendedSignature)
 {
-    Q_D(QRedefinableTemplateSignature);
+    QTUML_D(QRedefinableTemplateSignature);
     d->addExtendedSignature(const_cast<QRedefinableTemplateSignature *>(extendedSignature));
 }
 
 void QRedefinableTemplateSignature::removeExtendedSignature(const QRedefinableTemplateSignature *extendedSignature)
 {
-    Q_D(QRedefinableTemplateSignature);
+    QTUML_D(QRedefinableTemplateSignature);
     d->removeExtendedSignature(const_cast<QRedefinableTemplateSignature *>(extendedSignature));
 }
 

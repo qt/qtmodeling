@@ -90,13 +90,13 @@ QExecutionOccurrenceSpecification::~QExecutionOccurrenceSpecification()
  */
 QExecutionSpecification *QExecutionOccurrenceSpecification::execution() const
 {
-    Q_D(const QExecutionOccurrenceSpecification);
+    QTUML_D(const QExecutionOccurrenceSpecification);
     return d->execution;
 }
 
 void QExecutionOccurrenceSpecification::setExecution(const QExecutionSpecification *execution)
 {
-    Q_D(QExecutionOccurrenceSpecification);
+    QTUML_D(QExecutionOccurrenceSpecification);
     d->setExecution(const_cast<QExecutionSpecification *>(execution));
 }
 

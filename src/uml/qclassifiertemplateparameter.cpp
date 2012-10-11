@@ -108,13 +108,13 @@ QClassifierTemplateParameter::~QClassifierTemplateParameter()
  */
 bool QClassifierTemplateParameter::allowSubstitutable() const
 {
-    Q_D(const QClassifierTemplateParameter);
+    QTUML_D(const QClassifierTemplateParameter);
     return d->allowSubstitutable;
 }
 
 void QClassifierTemplateParameter::setAllowSubstitutable(bool allowSubstitutable)
 {
-    Q_D(QClassifierTemplateParameter);
+    QTUML_D(QClassifierTemplateParameter);
     d->setAllowSubstitutable(allowSubstitutable);
 }
 
@@ -123,13 +123,13 @@ void QClassifierTemplateParameter::setAllowSubstitutable(bool allowSubstitutable
  */
 QClassifier *QClassifierTemplateParameter::parameteredElement() const
 {
-    Q_D(const QClassifierTemplateParameter);
+    QTUML_D(const QClassifierTemplateParameter);
     return d->parameteredElement;
 }
 
 void QClassifierTemplateParameter::setParameteredElement(const QClassifier *parameteredElement)
 {
-    Q_D(QClassifierTemplateParameter);
+    QTUML_D(QClassifierTemplateParameter);
     d->setParameteredElement(const_cast<QClassifier *>(parameteredElement));
 }
 
@@ -138,19 +138,19 @@ void QClassifierTemplateParameter::setParameteredElement(const QClassifier *para
  */
 const QSet<QClassifier *> *QClassifierTemplateParameter::constrainingClassifiers() const
 {
-    Q_D(const QClassifierTemplateParameter);
+    QTUML_D(const QClassifierTemplateParameter);
     return d->constrainingClassifiers;
 }
 
 void QClassifierTemplateParameter::addConstrainingClassifier(const QClassifier *constrainingClassifier)
 {
-    Q_D(QClassifierTemplateParameter);
+    QTUML_D(QClassifierTemplateParameter);
     d->addConstrainingClassifier(const_cast<QClassifier *>(constrainingClassifier));
 }
 
 void QClassifierTemplateParameter::removeConstrainingClassifier(const QClassifier *constrainingClassifier)
 {
-    Q_D(QClassifierTemplateParameter);
+    QTUML_D(QClassifierTemplateParameter);
     d->removeConstrainingClassifier(const_cast<QClassifier *>(constrainingClassifier));
 }
 

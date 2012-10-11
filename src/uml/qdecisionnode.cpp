@@ -97,13 +97,13 @@ QDecisionNode::~QDecisionNode()
  */
 QObjectFlow *QDecisionNode::decisionInputFlow() const
 {
-    Q_D(const QDecisionNode);
+    QTUML_D(const QDecisionNode);
     return d->decisionInputFlow;
 }
 
 void QDecisionNode::setDecisionInputFlow(const QObjectFlow *decisionInputFlow)
 {
-    Q_D(QDecisionNode);
+    QTUML_D(QDecisionNode);
     d->setDecisionInputFlow(const_cast<QObjectFlow *>(decisionInputFlow));
 }
 
@@ -112,13 +112,13 @@ void QDecisionNode::setDecisionInputFlow(const QObjectFlow *decisionInputFlow)
  */
 QBehavior *QDecisionNode::decisionInput() const
 {
-    Q_D(const QDecisionNode);
+    QTUML_D(const QDecisionNode);
     return d->decisionInput;
 }
 
 void QDecisionNode::setDecisionInput(const QBehavior *decisionInput)
 {
-    Q_D(QDecisionNode);
+    QTUML_D(QDecisionNode);
     d->setDecisionInput(const_cast<QBehavior *>(decisionInput));
 }
 

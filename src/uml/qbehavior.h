@@ -66,7 +66,6 @@ class QParameter;
 class Q_UML_EXPORT QBehavior : public QClass
 {
     Q_DISABLE_COPY(QBehavior)
-    QTUML_DECLARE_PRIVATE(QBehavior)
 
 public:
     virtual ~QBehavior();

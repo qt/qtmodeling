@@ -83,7 +83,6 @@ class Q_UML_EXPORT QChangeEvent : public QObject, public QEvent
     Q_PROPERTY(QValueSpecification * changeExpression READ changeExpression WRITE setChangeExpression)
 
     Q_DISABLE_COPY(QChangeEvent)
-    QTUML_DECLARE_PRIVATE(QChangeEvent)
 
 public:
     explicit QChangeEvent(QObject *parent = 0);

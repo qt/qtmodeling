@@ -109,19 +109,19 @@ QTimeExpression::~QTimeExpression()
  */
 const QSet<QObservation *> *QTimeExpression::observations() const
 {
-    Q_D(const QTimeExpression);
+    QTUML_D(const QTimeExpression);
     return d->observations;
 }
 
 void QTimeExpression::addObservation(const QObservation *observation)
 {
-    Q_D(QTimeExpression);
+    QTUML_D(QTimeExpression);
     d->addObservation(const_cast<QObservation *>(observation));
 }
 
 void QTimeExpression::removeObservation(const QObservation *observation)
 {
-    Q_D(QTimeExpression);
+    QTUML_D(QTimeExpression);
     d->removeObservation(const_cast<QObservation *>(observation));
 }
 
@@ -130,13 +130,13 @@ void QTimeExpression::removeObservation(const QObservation *observation)
  */
 QValueSpecification *QTimeExpression::expr() const
 {
-    Q_D(const QTimeExpression);
+    QTUML_D(const QTimeExpression);
     return d->expr;
 }
 
 void QTimeExpression::setExpr(const QValueSpecification *expr)
 {
-    Q_D(QTimeExpression);
+    QTUML_D(QTimeExpression);
     d->setExpr(const_cast<QValueSpecification *>(expr));
 }
 

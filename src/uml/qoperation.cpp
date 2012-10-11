@@ -259,13 +259,13 @@ qint32 QOperation::lower() const
  */
 bool QOperation::isQuery() const
 {
-    Q_D(const QOperation);
+    QTUML_D(const QOperation);
     return d->isQuery;
 }
 
 void QOperation::setQuery(bool isQuery)
 {
-    Q_D(QOperation);
+    QTUML_D(QOperation);
     d->setQuery(isQuery);
 }
 
@@ -298,19 +298,19 @@ bool QOperation::isOrdered() const
  */
 const QList<QParameter *> *QOperation::ownedParameters() const
 {
-    Q_D(const QOperation);
+    QTUML_D(const QOperation);
     return d->ownedParameters;
 }
 
 void QOperation::addOwnedParameter(const QParameter *ownedParameter)
 {
-    Q_D(QOperation);
+    QTUML_D(QOperation);
     d->addOwnedParameter(const_cast<QParameter *>(ownedParameter));
 }
 
 void QOperation::removeOwnedParameter(const QParameter *ownedParameter)
 {
-    Q_D(QOperation);
+    QTUML_D(QOperation);
     d->removeOwnedParameter(const_cast<QParameter *>(ownedParameter));
 }
 
@@ -319,13 +319,13 @@ void QOperation::removeOwnedParameter(const QParameter *ownedParameter)
  */
 QConstraint *QOperation::bodyCondition() const
 {
-    Q_D(const QOperation);
+    QTUML_D(const QOperation);
     return d->bodyCondition;
 }
 
 void QOperation::setBodyCondition(const QConstraint *bodyCondition)
 {
-    Q_D(QOperation);
+    QTUML_D(QOperation);
     d->setBodyCondition(const_cast<QConstraint *>(bodyCondition));
 }
 
@@ -334,19 +334,19 @@ void QOperation::setBodyCondition(const QConstraint *bodyCondition)
  */
 const QSet<QOperation *> *QOperation::redefinedOperations() const
 {
-    Q_D(const QOperation);
+    QTUML_D(const QOperation);
     return d->redefinedOperations;
 }
 
 void QOperation::addRedefinedOperation(const QOperation *redefinedOperation)
 {
-    Q_D(QOperation);
+    QTUML_D(QOperation);
     d->addRedefinedOperation(const_cast<QOperation *>(redefinedOperation));
 }
 
 void QOperation::removeRedefinedOperation(const QOperation *redefinedOperation)
 {
-    Q_D(QOperation);
+    QTUML_D(QOperation);
     d->removeRedefinedOperation(const_cast<QOperation *>(redefinedOperation));
 }
 
@@ -355,19 +355,19 @@ void QOperation::removeRedefinedOperation(const QOperation *redefinedOperation)
  */
 const QSet<QConstraint *> *QOperation::postconditions() const
 {
-    Q_D(const QOperation);
+    QTUML_D(const QOperation);
     return d->postconditions;
 }
 
 void QOperation::addPostcondition(const QConstraint *postcondition)
 {
-    Q_D(QOperation);
+    QTUML_D(QOperation);
     d->addPostcondition(const_cast<QConstraint *>(postcondition));
 }
 
 void QOperation::removePostcondition(const QConstraint *postcondition)
 {
-    Q_D(QOperation);
+    QTUML_D(QOperation);
     d->removePostcondition(const_cast<QConstraint *>(postcondition));
 }
 
@@ -376,13 +376,13 @@ void QOperation::removePostcondition(const QConstraint *postcondition)
  */
 QDataType *QOperation::datatype() const
 {
-    Q_D(const QOperation);
+    QTUML_D(const QOperation);
     return d->datatype;
 }
 
 void QOperation::setDatatype(const QDataType *datatype)
 {
-    Q_D(QOperation);
+    QTUML_D(QOperation);
     d->setDatatype(const_cast<QDataType *>(datatype));
 }
 
@@ -391,13 +391,13 @@ void QOperation::setDatatype(const QDataType *datatype)
  */
 QOperationTemplateParameter *QOperation::templateParameter() const
 {
-    Q_D(const QOperation);
+    QTUML_D(const QOperation);
     return d->templateParameter;
 }
 
 void QOperation::setTemplateParameter(const QOperationTemplateParameter *templateParameter)
 {
-    Q_D(QOperation);
+    QTUML_D(QOperation);
     d->setTemplateParameter(const_cast<QOperationTemplateParameter *>(templateParameter));
 }
 
@@ -406,13 +406,13 @@ void QOperation::setTemplateParameter(const QOperationTemplateParameter *templat
  */
 QInterface *QOperation::interface() const
 {
-    Q_D(const QOperation);
+    QTUML_D(const QOperation);
     return d->interface;
 }
 
 void QOperation::setInterface(const QInterface *interface)
 {
-    Q_D(QOperation);
+    QTUML_D(QOperation);
     d->setInterface(const_cast<QInterface *>(interface));
 }
 
@@ -429,19 +429,19 @@ QType *QOperation::type() const
  */
 const QSet<QConstraint *> *QOperation::preconditions() const
 {
-    Q_D(const QOperation);
+    QTUML_D(const QOperation);
     return d->preconditions;
 }
 
 void QOperation::addPrecondition(const QConstraint *precondition)
 {
-    Q_D(QOperation);
+    QTUML_D(QOperation);
     d->addPrecondition(const_cast<QConstraint *>(precondition));
 }
 
 void QOperation::removePrecondition(const QConstraint *precondition)
 {
-    Q_D(QOperation);
+    QTUML_D(QOperation);
     d->removePrecondition(const_cast<QConstraint *>(precondition));
 }
 
@@ -450,13 +450,13 @@ void QOperation::removePrecondition(const QConstraint *precondition)
  */
 QClass *QOperation::class_() const
 {
-    Q_D(const QOperation);
+    QTUML_D(const QOperation);
     return d->class_;
 }
 
 void QOperation::setClass_(const QClass *class_)
 {
-    Q_D(QOperation);
+    QTUML_D(QOperation);
     d->setClass_(const_cast<QClass *>(class_));
 }
 
@@ -465,19 +465,19 @@ void QOperation::setClass_(const QClass *class_)
  */
 const QSet<QType *> *QOperation::raisedExceptions() const
 {
-    Q_D(const QOperation);
+    QTUML_D(const QOperation);
     return d->raisedExceptions;
 }
 
 void QOperation::addRaisedException(const QType *raisedException)
 {
-    Q_D(QOperation);
+    QTUML_D(QOperation);
     d->addRaisedException(const_cast<QType *>(raisedException));
 }
 
 void QOperation::removeRaisedException(const QType *raisedException)
 {
-    Q_D(QOperation);
+    QTUML_D(QOperation);
     d->removeRaisedException(const_cast<QType *>(raisedException));
 }
 

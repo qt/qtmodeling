@@ -106,7 +106,6 @@ class Q_UML_EXPORT QReadVariableAction : public QObject, public QVariableAction
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
     Q_DISABLE_COPY(QReadVariableAction)
-    QTUML_DECLARE_PRIVATE(QReadVariableAction)
 
 public:
     explicit QReadVariableAction(QObject *parent = 0);

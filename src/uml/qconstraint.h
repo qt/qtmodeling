@@ -90,7 +90,6 @@ class Q_UML_EXPORT QConstraint : public QObject, public QPackageableElement
     Q_PROPERTY(const QList<QElement *> * constrainedElements READ constrainedElements)
 
     Q_DISABLE_COPY(QConstraint)
-    QTUML_DECLARE_PRIVATE(QConstraint)
 
 public:
     explicit QConstraint(QObject *parent = 0);

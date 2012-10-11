@@ -81,13 +81,13 @@ QPin::~QPin()
  */
 bool QPin::isControl() const
 {
-    Q_D(const QPin);
+    QTUML_D(const QPin);
     return d->isControl;
 }
 
 void QPin::setControl(bool isControl)
 {
-    Q_D(QPin);
+    QTUML_D(QPin);
     d->setControl(isControl);
 }
 

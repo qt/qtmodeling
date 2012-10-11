@@ -95,7 +95,6 @@ class Q_UML_EXPORT QActivityPartition : public QObject, public QActivityGroup
     Q_PROPERTY(const QSet<QActivityEdge *> * edges READ edges)
 
     Q_DISABLE_COPY(QActivityPartition)
-    QTUML_DECLARE_PRIVATE(QActivityPartition)
 
 public:
     explicit QActivityPartition(QObject *parent = 0);

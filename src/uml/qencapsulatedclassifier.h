@@ -61,7 +61,6 @@ class QPort;
 class Q_UML_EXPORT QEncapsulatedClassifier : public QStructuredClassifier
 {
     Q_DISABLE_COPY(QEncapsulatedClassifier)
-    QTUML_DECLARE_PRIVATE(QEncapsulatedClassifier)
 
 public:
     virtual ~QEncapsulatedClassifier();

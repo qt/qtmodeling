@@ -88,13 +88,13 @@ QLiteralString::~QLiteralString()
  */
 QString QLiteralString::value() const
 {
-    Q_D(const QLiteralString);
+    QTUML_D(const QLiteralString);
     return d->value;
 }
 
 void QLiteralString::setValue(QString value)
 {
-    Q_D(QLiteralString);
+    QTUML_D(QLiteralString);
     d->setValue(value);
 }
 

@@ -82,7 +82,6 @@ class Q_UML_EXPORT QParameterSet : public QObject, public QNamedElement
     Q_PROPERTY(const QSet<QConstraint *> * conditions READ conditions)
 
     Q_DISABLE_COPY(QParameterSet)
-    QTUML_DECLARE_PRIVATE(QParameterSet)
 
 public:
     explicit QParameterSet(QObject *parent = 0);

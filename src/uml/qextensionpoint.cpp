@@ -94,13 +94,13 @@ QExtensionPoint::~QExtensionPoint()
  */
 QUseCase *QExtensionPoint::useCase() const
 {
-    Q_D(const QExtensionPoint);
+    QTUML_D(const QExtensionPoint);
     return d->useCase;
 }
 
 void QExtensionPoint::setUseCase(const QUseCase *useCase)
 {
-    Q_D(QExtensionPoint);
+    QTUML_D(QExtensionPoint);
     d->setUseCase(const_cast<QUseCase *>(useCase));
 }
 

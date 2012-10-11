@@ -147,19 +147,19 @@ QOpaqueAction::~QOpaqueAction()
  */
 const QList<QString> *QOpaqueAction::bodies() const
 {
-    Q_D(const QOpaqueAction);
+    QTUML_D(const QOpaqueAction);
     return d->bodies;
 }
 
 void QOpaqueAction::addBody(QString body)
 {
-    Q_D(QOpaqueAction);
+    QTUML_D(QOpaqueAction);
     d->addBody(body);
 }
 
 void QOpaqueAction::removeBody(QString body)
 {
-    Q_D(QOpaqueAction);
+    QTUML_D(QOpaqueAction);
     d->removeBody(body);
 }
 
@@ -168,19 +168,19 @@ void QOpaqueAction::removeBody(QString body)
  */
 const QList<QString> *QOpaqueAction::languages() const
 {
-    Q_D(const QOpaqueAction);
+    QTUML_D(const QOpaqueAction);
     return d->languages;
 }
 
 void QOpaqueAction::addLanguage(QString language)
 {
-    Q_D(QOpaqueAction);
+    QTUML_D(QOpaqueAction);
     d->addLanguage(language);
 }
 
 void QOpaqueAction::removeLanguage(QString language)
 {
-    Q_D(QOpaqueAction);
+    QTUML_D(QOpaqueAction);
     d->removeLanguage(language);
 }
 
@@ -189,19 +189,19 @@ void QOpaqueAction::removeLanguage(QString language)
  */
 const QSet<QInputPin *> *QOpaqueAction::inputValues() const
 {
-    Q_D(const QOpaqueAction);
+    QTUML_D(const QOpaqueAction);
     return d->inputValues;
 }
 
 void QOpaqueAction::addInputValue(const QInputPin *inputValue)
 {
-    Q_D(QOpaqueAction);
+    QTUML_D(QOpaqueAction);
     d->addInputValue(const_cast<QInputPin *>(inputValue));
 }
 
 void QOpaqueAction::removeInputValue(const QInputPin *inputValue)
 {
-    Q_D(QOpaqueAction);
+    QTUML_D(QOpaqueAction);
     d->removeInputValue(const_cast<QInputPin *>(inputValue));
 }
 
@@ -210,19 +210,19 @@ void QOpaqueAction::removeInputValue(const QInputPin *inputValue)
  */
 const QSet<QOutputPin *> *QOpaqueAction::outputValues() const
 {
-    Q_D(const QOpaqueAction);
+    QTUML_D(const QOpaqueAction);
     return d->outputValues;
 }
 
 void QOpaqueAction::addOutputValue(const QOutputPin *outputValue)
 {
-    Q_D(QOpaqueAction);
+    QTUML_D(QOpaqueAction);
     d->addOutputValue(const_cast<QOutputPin *>(outputValue));
 }
 
 void QOpaqueAction::removeOutputValue(const QOutputPin *outputValue)
 {
-    Q_D(QOpaqueAction);
+    QTUML_D(QOpaqueAction);
     d->removeOutputValue(const_cast<QOutputPin *>(outputValue));
 }
 

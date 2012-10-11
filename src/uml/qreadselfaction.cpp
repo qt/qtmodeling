@@ -97,13 +97,13 @@ QReadSelfAction::~QReadSelfAction()
  */
 QOutputPin *QReadSelfAction::result() const
 {
-    Q_D(const QReadSelfAction);
+    QTUML_D(const QReadSelfAction);
     return d->result;
 }
 
 void QReadSelfAction::setResult(const QOutputPin *result)
 {
-    Q_D(QReadSelfAction);
+    QTUML_D(QReadSelfAction);
     d->setResult(const_cast<QOutputPin *>(result));
 }
 

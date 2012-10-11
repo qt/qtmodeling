@@ -132,7 +132,6 @@ class Q_UML_EXPORT QAssociation : public QObject, public QClassifier, public QRe
     Q_PROPERTY(const QList<QProperty *> * memberEnds READ memberEnds)
 
     Q_DISABLE_COPY(QAssociation)
-    QTUML_DECLARE_PRIVATE(QAssociation)
 
 public:
     explicit QAssociation(QObject *parent = 0);

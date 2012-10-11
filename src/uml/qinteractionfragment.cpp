@@ -130,19 +130,19 @@ QInteractionFragment::~QInteractionFragment()
  */
 const QSet<QGeneralOrdering *> *QInteractionFragment::generalOrderings() const
 {
-    Q_D(const QInteractionFragment);
+    QTUML_D(const QInteractionFragment);
     return d->generalOrderings;
 }
 
 void QInteractionFragment::addGeneralOrdering(const QGeneralOrdering *generalOrdering)
 {
-    Q_D(QInteractionFragment);
+    QTUML_D(QInteractionFragment);
     d->addGeneralOrdering(const_cast<QGeneralOrdering *>(generalOrdering));
 }
 
 void QInteractionFragment::removeGeneralOrdering(const QGeneralOrdering *generalOrdering)
 {
-    Q_D(QInteractionFragment);
+    QTUML_D(QInteractionFragment);
     d->removeGeneralOrdering(const_cast<QGeneralOrdering *>(generalOrdering));
 }
 
@@ -151,13 +151,13 @@ void QInteractionFragment::removeGeneralOrdering(const QGeneralOrdering *general
  */
 QInteraction *QInteractionFragment::enclosingInteraction() const
 {
-    Q_D(const QInteractionFragment);
+    QTUML_D(const QInteractionFragment);
     return d->enclosingInteraction;
 }
 
 void QInteractionFragment::setEnclosingInteraction(const QInteraction *enclosingInteraction)
 {
-    Q_D(QInteractionFragment);
+    QTUML_D(QInteractionFragment);
     d->setEnclosingInteraction(const_cast<QInteraction *>(enclosingInteraction));
 }
 
@@ -166,19 +166,19 @@ void QInteractionFragment::setEnclosingInteraction(const QInteraction *enclosing
  */
 const QSet<QLifeline *> *QInteractionFragment::covered() const
 {
-    Q_D(const QInteractionFragment);
+    QTUML_D(const QInteractionFragment);
     return d->covered;
 }
 
 void QInteractionFragment::addCovered(const QLifeline *covered)
 {
-    Q_D(QInteractionFragment);
+    QTUML_D(QInteractionFragment);
     d->addCovered(const_cast<QLifeline *>(covered));
 }
 
 void QInteractionFragment::removeCovered(const QLifeline *covered)
 {
-    Q_D(QInteractionFragment);
+    QTUML_D(QInteractionFragment);
     d->removeCovered(const_cast<QLifeline *>(covered));
 }
 
@@ -187,13 +187,13 @@ void QInteractionFragment::removeCovered(const QLifeline *covered)
  */
 QInteractionOperand *QInteractionFragment::enclosingOperand() const
 {
-    Q_D(const QInteractionFragment);
+    QTUML_D(const QInteractionFragment);
     return d->enclosingOperand;
 }
 
 void QInteractionFragment::setEnclosingOperand(const QInteractionOperand *enclosingOperand)
 {
-    Q_D(QInteractionFragment);
+    QTUML_D(QInteractionFragment);
     d->setEnclosingOperand(const_cast<QInteractionOperand *>(enclosingOperand));
 }
 
