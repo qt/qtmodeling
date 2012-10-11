@@ -154,7 +154,17 @@ void QNamedElement::setVisibility(QtUml::VisibilityKind visibility)
  */
 QString QNamedElement::qualifiedName() const
 {
-    qWarning("QNamedElement::qualifiedName: to be implemented (this is a derived attribute)");
+    Q_D(const QNamedElement);
+    if (d->name.isEmpty()) return QString();
+    QString qualifiedName_(d->name);
+    QScopedPointer< const QList<QNamespace *> > allNamespaces_(allNamespaces());
+    QString separator_ = separator();
+    foreach (QNamespace *namespace_, *allNamespaces_) {
+        if (namespace_->name().isEmpty())
+            return QString();
+        qualifiedName_.prepend(separator_).prepend(namespace_->name());
+    }
+    return qualifiedName_;
 }
 
 /*!
@@ -207,7 +217,14 @@ void QNamedElement::removeClientDependency(const QDependency *clientDependency)
  */
 const QList<QNamespace *> *QNamedElement::allNamespaces() const
 {
-    qWarning("QNamedElement::allNamespaces: operation to be implemented");
+    Q_D(const QNamedElement);
+    if (!d->namespace_) {
+        return new QList<QNamespace *>;
+    }
+    else {
+        QList<QNamespace *> *allNamespaces_ = const_cast<QList<QNamespace *> *>(d->namespace_->allNamespaces());
+        allNamespaces_->append(d->namespace_);
+    }
 }
 
 /*!
@@ -231,7 +248,7 @@ bool QNamedElement::isDistinguishableFrom(const QNamedElement *n, const QNamespa
  */
 QString QNamedElement::separator() const
 {
-    qWarning("QNamedElement::separator: operation to be implemented");
+    return "::";
 }
 
 QT_END_NAMESPACE_QTUML
