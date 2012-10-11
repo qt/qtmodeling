@@ -64,6 +64,7 @@ void QExpressionPrivate::setSymbol(QString symbol)
 void QExpressionPrivate::addOperand(const QValueSpecification *operand)
 {
     this->operands->append(const_cast<QValueSpecification *>(operand));
+
     // Adjust subsetted property(ies)
     addOwnedElement(operand);
 }
@@ -71,6 +72,7 @@ void QExpressionPrivate::addOperand(const QValueSpecification *operand)
 void QExpressionPrivate::removeOperand(const QValueSpecification *operand)
 {
     this->operands->removeAll(const_cast<QValueSpecification *>(operand));
+
     // Adjust subsetted property(ies)
     removeOwnedElement(operand);
 }

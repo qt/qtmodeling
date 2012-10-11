@@ -79,6 +79,7 @@ QActivityNodePrivate::~QActivityNodePrivate()
 void QActivityNodePrivate::addRedefinedNode(const QActivityNode *redefinedNode)
 {
     this->redefinedNodes->insert(const_cast<QActivityNode *>(redefinedNode));
+
     // Adjust subsetted property(ies)
     addRedefinedElement(redefinedNode);
 }
@@ -86,6 +87,7 @@ void QActivityNodePrivate::addRedefinedNode(const QActivityNode *redefinedNode)
 void QActivityNodePrivate::removeRedefinedNode(const QActivityNode *redefinedNode)
 {
     this->redefinedNodes->remove(const_cast<QActivityNode *>(redefinedNode));
+
     // Adjust subsetted property(ies)
     removeRedefinedElement(redefinedNode);
 }
@@ -103,6 +105,7 @@ void QActivityNodePrivate::removeIncoming(const QActivityEdge *incoming)
 void QActivityNodePrivate::setActivity(const QActivity *activity)
 {
     this->activity = const_cast<QActivity *>(activity);
+
     // Adjust subsetted property(ies)
     setOwner(activity);
 }
@@ -121,7 +124,9 @@ void QActivityNodePrivate::setInStructuredNode(const QStructuredActivityNode *in
 {
     // Adjust subsetted property(ies)
     removeInGroup(this->inStructuredNode);
+
     this->inStructuredNode = const_cast<QStructuredActivityNode *>(inStructuredNode);
+
     // Adjust subsetted property(ies)
     addInGroup(inStructuredNode);
     setOwner(inStructuredNode);
@@ -130,6 +135,7 @@ void QActivityNodePrivate::setInStructuredNode(const QStructuredActivityNode *in
 void QActivityNodePrivate::addInPartition(const QActivityPartition *inPartition)
 {
     this->inPartition->insert(const_cast<QActivityPartition *>(inPartition));
+
     // Adjust subsetted property(ies)
     addInGroup(inPartition);
 }
@@ -137,6 +143,7 @@ void QActivityNodePrivate::addInPartition(const QActivityPartition *inPartition)
 void QActivityNodePrivate::removeInPartition(const QActivityPartition *inPartition)
 {
     this->inPartition->remove(const_cast<QActivityPartition *>(inPartition));
+
     // Adjust subsetted property(ies)
     removeInGroup(inPartition);
 }
@@ -144,6 +151,7 @@ void QActivityNodePrivate::removeInPartition(const QActivityPartition *inPartiti
 void QActivityNodePrivate::addInInterruptibleRegion(const QInterruptibleActivityRegion *inInterruptibleRegion)
 {
     this->inInterruptibleRegion->insert(const_cast<QInterruptibleActivityRegion *>(inInterruptibleRegion));
+
     // Adjust subsetted property(ies)
     addInGroup(inInterruptibleRegion);
 }
@@ -151,6 +159,7 @@ void QActivityNodePrivate::addInInterruptibleRegion(const QInterruptibleActivity
 void QActivityNodePrivate::removeInInterruptibleRegion(const QInterruptibleActivityRegion *inInterruptibleRegion)
 {
     this->inInterruptibleRegion->remove(const_cast<QInterruptibleActivityRegion *>(inInterruptibleRegion));
+
     // Adjust subsetted property(ies)
     removeInGroup(inInterruptibleRegion);
 }

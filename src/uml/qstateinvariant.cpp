@@ -62,7 +62,9 @@ void QStateInvariantPrivate::setInvariant(const QConstraint *invariant)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->invariant);
+
     this->invariant = const_cast<QConstraint *>(invariant);
+
     // Adjust subsetted property(ies)
     addOwnedElement(invariant);
 }

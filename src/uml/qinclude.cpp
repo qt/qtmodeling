@@ -63,7 +63,9 @@ void QIncludePrivate::setIncludingCase(const QUseCase *includingCase)
 {
     // Adjust subsetted property(ies)
     removeSource(this->includingCase);
+
     this->includingCase = const_cast<QUseCase *>(includingCase);
+
     // Adjust subsetted property(ies)
     addSource(includingCase);
     setNamespace_(includingCase);
@@ -73,7 +75,9 @@ void QIncludePrivate::setAddition(const QUseCase *addition)
 {
     // Adjust subsetted property(ies)
     removeTarget(this->addition);
+
     this->addition = const_cast<QUseCase *>(addition);
+
     // Adjust subsetted property(ies)
     addTarget(addition);
 }

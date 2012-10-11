@@ -77,7 +77,9 @@ void QNamedElementPrivate::setNameExpression(const QStringExpression *nameExpres
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->nameExpression);
+
     this->nameExpression = const_cast<QStringExpression *>(nameExpression);
+
     // Adjust subsetted property(ies)
     addOwnedElement(nameExpression);
 }
@@ -85,6 +87,7 @@ void QNamedElementPrivate::setNameExpression(const QStringExpression *nameExpres
 void QNamedElementPrivate::setNamespace_(const QNamespace *namespace_)
 {
     this->namespace_ = const_cast<QNamespace *>(namespace_);
+
     // Adjust subsetted property(ies)
     setOwner(namespace_);
 }

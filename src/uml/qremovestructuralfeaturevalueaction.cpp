@@ -66,7 +66,9 @@ void QRemoveStructuralFeatureValueActionPrivate::setRemoveAt(const QInputPin *re
 {
     // Adjust subsetted property(ies)
     removeInput(this->removeAt);
+
     this->removeAt = const_cast<QInputPin *>(removeAt);
+
     // Adjust subsetted property(ies)
     addInput(removeAt);
 }

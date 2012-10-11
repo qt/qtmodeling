@@ -60,7 +60,9 @@ void QWriteVariableActionPrivate::setValue(const QInputPin *value)
 {
     // Adjust subsetted property(ies)
     removeInput(this->value);
+
     this->value = const_cast<QInputPin *>(value);
+
     // Adjust subsetted property(ies)
     addInput(value);
 }

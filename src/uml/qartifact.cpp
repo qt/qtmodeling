@@ -79,6 +79,7 @@ void QArtifactPrivate::setFileName(QString fileName)
 void QArtifactPrivate::addOwnedOperation(const QOperation *ownedOperation)
 {
     this->ownedOperations->append(const_cast<QOperation *>(ownedOperation));
+
     // Adjust subsetted property(ies)
     addFeature(ownedOperation);
     addOwnedMember(ownedOperation);
@@ -87,6 +88,7 @@ void QArtifactPrivate::addOwnedOperation(const QOperation *ownedOperation)
 void QArtifactPrivate::removeOwnedOperation(const QOperation *ownedOperation)
 {
     this->ownedOperations->removeAll(const_cast<QOperation *>(ownedOperation));
+
     // Adjust subsetted property(ies)
     removeFeature(ownedOperation);
     removeOwnedMember(ownedOperation);
@@ -95,6 +97,7 @@ void QArtifactPrivate::removeOwnedOperation(const QOperation *ownedOperation)
 void QArtifactPrivate::addOwnedAttribute(const QProperty *ownedAttribute)
 {
     this->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
+
     // Adjust subsetted property(ies)
     addOwnedMember(ownedAttribute);
     addAttribute(ownedAttribute);
@@ -103,6 +106,7 @@ void QArtifactPrivate::addOwnedAttribute(const QProperty *ownedAttribute)
 void QArtifactPrivate::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
     this->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
+
     // Adjust subsetted property(ies)
     removeOwnedMember(ownedAttribute);
     removeAttribute(ownedAttribute);
@@ -111,6 +115,7 @@ void QArtifactPrivate::removeOwnedAttribute(const QProperty *ownedAttribute)
 void QArtifactPrivate::addManifestation(const QManifestation *manifestation)
 {
     this->manifestations->insert(const_cast<QManifestation *>(manifestation));
+
     // Adjust subsetted property(ies)
     addOwnedElement(manifestation);
     addClientDependency(manifestation);
@@ -119,6 +124,7 @@ void QArtifactPrivate::addManifestation(const QManifestation *manifestation)
 void QArtifactPrivate::removeManifestation(const QManifestation *manifestation)
 {
     this->manifestations->remove(const_cast<QManifestation *>(manifestation));
+
     // Adjust subsetted property(ies)
     removeOwnedElement(manifestation);
     removeClientDependency(manifestation);
@@ -127,6 +133,7 @@ void QArtifactPrivate::removeManifestation(const QManifestation *manifestation)
 void QArtifactPrivate::addNestedArtifact(const QArtifact *nestedArtifact)
 {
     this->nestedArtifacts->insert(const_cast<QArtifact *>(nestedArtifact));
+
     // Adjust subsetted property(ies)
     addOwnedMember(nestedArtifact);
 }
@@ -134,6 +141,7 @@ void QArtifactPrivate::addNestedArtifact(const QArtifact *nestedArtifact)
 void QArtifactPrivate::removeNestedArtifact(const QArtifact *nestedArtifact)
 {
     this->nestedArtifacts->remove(const_cast<QArtifact *>(nestedArtifact));
+
     // Adjust subsetted property(ies)
     removeOwnedMember(nestedArtifact);
 }

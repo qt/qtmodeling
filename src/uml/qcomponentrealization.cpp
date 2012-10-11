@@ -65,7 +65,9 @@ void QComponentRealizationPrivate::setAbstraction(const QComponent *abstraction)
 {
     // Adjust subsetted property(ies)
     removeSupplier(this->abstraction);
+
     this->abstraction = const_cast<QComponent *>(abstraction);
+
     // Adjust subsetted property(ies)
     addSupplier(abstraction);
     setOwner(abstraction);
@@ -74,6 +76,7 @@ void QComponentRealizationPrivate::setAbstraction(const QComponent *abstraction)
 void QComponentRealizationPrivate::addRealizingClassifier(const QClassifier *realizingClassifier)
 {
     this->realizingClassifiers->insert(const_cast<QClassifier *>(realizingClassifier));
+
     // Adjust subsetted property(ies)
     addClient(realizingClassifier);
 }
@@ -81,6 +84,7 @@ void QComponentRealizationPrivate::addRealizingClassifier(const QClassifier *rea
 void QComponentRealizationPrivate::removeRealizingClassifier(const QClassifier *realizingClassifier)
 {
     this->realizingClassifiers->remove(const_cast<QClassifier *>(realizingClassifier));
+
     // Adjust subsetted property(ies)
     removeClient(realizingClassifier);
 }

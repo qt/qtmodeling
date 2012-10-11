@@ -65,6 +65,7 @@ QLinkActionPrivate::~QLinkActionPrivate()
 void QLinkActionPrivate::addInputValue(const QInputPin *inputValue)
 {
     this->inputValues->insert(const_cast<QInputPin *>(inputValue));
+
     // Adjust subsetted property(ies)
     addInput(inputValue);
 }
@@ -72,6 +73,7 @@ void QLinkActionPrivate::addInputValue(const QInputPin *inputValue)
 void QLinkActionPrivate::removeInputValue(const QInputPin *inputValue)
 {
     this->inputValues->remove(const_cast<QInputPin *>(inputValue));
+
     // Adjust subsetted property(ies)
     removeInput(inputValue);
 }
@@ -79,6 +81,7 @@ void QLinkActionPrivate::removeInputValue(const QInputPin *inputValue)
 void QLinkActionPrivate::addEndData(const QLinkEndData *endData)
 {
     this->endData->insert(const_cast<QLinkEndData *>(endData));
+
     // Adjust subsetted property(ies)
     addOwnedElement(endData);
 }
@@ -86,6 +89,7 @@ void QLinkActionPrivate::addEndData(const QLinkEndData *endData)
 void QLinkActionPrivate::removeEndData(const QLinkEndData *endData)
 {
     this->endData->remove(const_cast<QLinkEndData *>(endData));
+
     // Adjust subsetted property(ies)
     removeOwnedElement(endData);
 }

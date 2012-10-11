@@ -70,6 +70,7 @@ QStructuredClassifierPrivate::~QStructuredClassifierPrivate()
 void QStructuredClassifierPrivate::addRole(const QConnectableElement *role)
 {
     this->roles->insert(const_cast<QConnectableElement *>(role));
+
     // Adjust subsetted property(ies)
     addMember(role);
 }
@@ -77,6 +78,7 @@ void QStructuredClassifierPrivate::addRole(const QConnectableElement *role)
 void QStructuredClassifierPrivate::removeRole(const QConnectableElement *role)
 {
     this->roles->remove(const_cast<QConnectableElement *>(role));
+
     // Adjust subsetted property(ies)
     removeMember(role);
 }
@@ -84,6 +86,7 @@ void QStructuredClassifierPrivate::removeRole(const QConnectableElement *role)
 void QStructuredClassifierPrivate::addOwnedAttribute(const QProperty *ownedAttribute)
 {
     this->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
+
     // Adjust subsetted property(ies)
     addAttribute(ownedAttribute);
     addOwnedMember(ownedAttribute);
@@ -93,6 +96,7 @@ void QStructuredClassifierPrivate::addOwnedAttribute(const QProperty *ownedAttri
 void QStructuredClassifierPrivate::removeOwnedAttribute(const QProperty *ownedAttribute)
 {
     this->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
+
     // Adjust subsetted property(ies)
     removeAttribute(ownedAttribute);
     removeOwnedMember(ownedAttribute);
@@ -102,6 +106,7 @@ void QStructuredClassifierPrivate::removeOwnedAttribute(const QProperty *ownedAt
 void QStructuredClassifierPrivate::addOwnedConnector(const QConnector *ownedConnector)
 {
     this->ownedConnectors->insert(const_cast<QConnector *>(ownedConnector));
+
     // Adjust subsetted property(ies)
     addFeature(ownedConnector);
     addOwnedMember(ownedConnector);
@@ -110,6 +115,7 @@ void QStructuredClassifierPrivate::addOwnedConnector(const QConnector *ownedConn
 void QStructuredClassifierPrivate::removeOwnedConnector(const QConnector *ownedConnector)
 {
     this->ownedConnectors->remove(const_cast<QConnector *>(ownedConnector));
+
     // Adjust subsetted property(ies)
     removeFeature(ownedConnector);
     removeOwnedMember(ownedConnector);

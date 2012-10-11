@@ -67,6 +67,7 @@ void QCollaborationUsePrivate::setType(const QCollaboration *type)
 void QCollaborationUsePrivate::addRoleBinding(const QDependency *roleBinding)
 {
     this->roleBindings->insert(const_cast<QDependency *>(roleBinding));
+
     // Adjust subsetted property(ies)
     addOwnedElement(roleBinding);
 }
@@ -74,6 +75,7 @@ void QCollaborationUsePrivate::addRoleBinding(const QDependency *roleBinding)
 void QCollaborationUsePrivate::removeRoleBinding(const QDependency *roleBinding)
 {
     this->roleBindings->remove(const_cast<QDependency *>(roleBinding));
+
     // Adjust subsetted property(ies)
     removeOwnedElement(roleBinding);
 }

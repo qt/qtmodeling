@@ -75,6 +75,7 @@ void QConditionalNodePrivate::setDeterminate(bool isDeterminate)
 void QConditionalNodePrivate::addClause(const QClause *clause)
 {
     this->clauses->insert(const_cast<QClause *>(clause));
+
     // Adjust subsetted property(ies)
     addOwnedElement(clause);
 }
@@ -82,6 +83,7 @@ void QConditionalNodePrivate::addClause(const QClause *clause)
 void QConditionalNodePrivate::removeClause(const QClause *clause)
 {
     this->clauses->remove(const_cast<QClause *>(clause));
+
     // Adjust subsetted property(ies)
     removeOwnedElement(clause);
 }

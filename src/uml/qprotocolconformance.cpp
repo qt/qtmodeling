@@ -63,7 +63,9 @@ void QProtocolConformancePrivate::setSpecificMachine(const QProtocolStateMachine
 {
     // Adjust subsetted property(ies)
     removeSource(this->specificMachine);
+
     this->specificMachine = const_cast<QProtocolStateMachine *>(specificMachine);
+
     // Adjust subsetted property(ies)
     setOwner(specificMachine);
     addSource(specificMachine);
@@ -73,7 +75,9 @@ void QProtocolConformancePrivate::setGeneralMachine(const QProtocolStateMachine 
 {
     // Adjust subsetted property(ies)
     removeTarget(this->generalMachine);
+
     this->generalMachine = const_cast<QProtocolStateMachine *>(generalMachine);
+
     // Adjust subsetted property(ies)
     addTarget(generalMachine);
 }

@@ -70,6 +70,7 @@ void QAcceptEventActionPrivate::setUnmarshall(bool isUnmarshall)
 void QAcceptEventActionPrivate::addTrigger(const QTrigger *trigger)
 {
     this->triggers->insert(const_cast<QTrigger *>(trigger));
+
     // Adjust subsetted property(ies)
     addOwnedElement(trigger);
 }
@@ -77,6 +78,7 @@ void QAcceptEventActionPrivate::addTrigger(const QTrigger *trigger)
 void QAcceptEventActionPrivate::removeTrigger(const QTrigger *trigger)
 {
     this->triggers->remove(const_cast<QTrigger *>(trigger));
+
     // Adjust subsetted property(ies)
     removeOwnedElement(trigger);
 }
@@ -84,6 +86,7 @@ void QAcceptEventActionPrivate::removeTrigger(const QTrigger *trigger)
 void QAcceptEventActionPrivate::addResult(const QOutputPin *result)
 {
     this->results->insert(const_cast<QOutputPin *>(result));
+
     // Adjust subsetted property(ies)
     addOutput(result);
 }
@@ -91,6 +94,7 @@ void QAcceptEventActionPrivate::addResult(const QOutputPin *result)
 void QAcceptEventActionPrivate::removeResult(const QOutputPin *result)
 {
     this->results->remove(const_cast<QOutputPin *>(result));
+
     // Adjust subsetted property(ies)
     removeOutput(result);
 }

@@ -60,7 +60,9 @@ void QChangeEventPrivate::setChangeExpression(const QValueSpecification *changeE
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->changeExpression);
+
     this->changeExpression = const_cast<QValueSpecification *>(changeExpression);
+
     // Adjust subsetted property(ies)
     addOwnedElement(changeExpression);
 }

@@ -66,7 +66,9 @@ void QTemplateParameterSubstitutionPrivate::setOwnedActual(const QParameterableE
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->ownedActual);
+
     this->ownedActual = const_cast<QParameterableElement *>(ownedActual);
+
     // Adjust subsetted property(ies)
     addOwnedElement(ownedActual);
     setActual(ownedActual);
@@ -85,6 +87,7 @@ void QTemplateParameterSubstitutionPrivate::setActual(const QParameterableElemen
 void QTemplateParameterSubstitutionPrivate::setTemplateBinding(const QTemplateBinding *templateBinding)
 {
     this->templateBinding = const_cast<QTemplateBinding *>(templateBinding);
+
     // Adjust subsetted property(ies)
     setOwner(templateBinding);
 }

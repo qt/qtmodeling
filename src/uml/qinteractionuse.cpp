@@ -70,6 +70,7 @@ QInteractionUsePrivate::~QInteractionUsePrivate()
 void QInteractionUsePrivate::addActualGate(const QGate *actualGate)
 {
     this->actualGates->insert(const_cast<QGate *>(actualGate));
+
     // Adjust subsetted property(ies)
     addOwnedElement(actualGate);
 }
@@ -77,6 +78,7 @@ void QInteractionUsePrivate::addActualGate(const QGate *actualGate)
 void QInteractionUsePrivate::removeActualGate(const QGate *actualGate)
 {
     this->actualGates->remove(const_cast<QGate *>(actualGate));
+
     // Adjust subsetted property(ies)
     removeOwnedElement(actualGate);
 }
@@ -85,7 +87,9 @@ void QInteractionUsePrivate::setReturnValue(const QValueSpecification *returnVal
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->returnValue);
+
     this->returnValue = const_cast<QValueSpecification *>(returnValue);
+
     // Adjust subsetted property(ies)
     addOwnedElement(returnValue);
 }
@@ -98,6 +102,7 @@ void QInteractionUsePrivate::setRefersTo(const QInteraction *refersTo)
 void QInteractionUsePrivate::addArgument(const QValueSpecification *argument)
 {
     this->arguments->append(const_cast<QValueSpecification *>(argument));
+
     // Adjust subsetted property(ies)
     addOwnedElement(argument);
 }
@@ -105,6 +110,7 @@ void QInteractionUsePrivate::addArgument(const QValueSpecification *argument)
 void QInteractionUsePrivate::removeArgument(const QValueSpecification *argument)
 {
     this->arguments->removeAll(const_cast<QValueSpecification *>(argument));
+
     // Adjust subsetted property(ies)
     removeOwnedElement(argument);
 }

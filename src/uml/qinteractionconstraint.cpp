@@ -62,7 +62,9 @@ void QInteractionConstraintPrivate::setMaxint(const QValueSpecification *maxint)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->maxint);
+
     this->maxint = const_cast<QValueSpecification *>(maxint);
+
     // Adjust subsetted property(ies)
     addOwnedElement(maxint);
 }
@@ -71,7 +73,9 @@ void QInteractionConstraintPrivate::setMinint(const QValueSpecification *minint)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->minint);
+
     this->minint = const_cast<QValueSpecification *>(minint);
+
     // Adjust subsetted property(ies)
     addOwnedElement(minint);
 }

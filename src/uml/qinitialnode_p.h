@@ -53,7 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-
 class QInitialNodePrivate : public QControlNodePrivate
 {
 public:

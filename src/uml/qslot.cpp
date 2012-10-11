@@ -65,6 +65,7 @@ QSlotPrivate::~QSlotPrivate()
 void QSlotPrivate::addValue(const QValueSpecification *value)
 {
     this->values->append(const_cast<QValueSpecification *>(value));
+
     // Adjust subsetted property(ies)
     addOwnedElement(value);
 }
@@ -72,6 +73,7 @@ void QSlotPrivate::addValue(const QValueSpecification *value)
 void QSlotPrivate::removeValue(const QValueSpecification *value)
 {
     this->values->removeAll(const_cast<QValueSpecification *>(value));
+
     // Adjust subsetted property(ies)
     removeOwnedElement(value);
 }
@@ -84,6 +86,7 @@ void QSlotPrivate::setDefiningFeature(const QStructuralFeature *definingFeature)
 void QSlotPrivate::setOwningInstance(const QInstanceSpecification *owningInstance)
 {
     this->owningInstance = const_cast<QInstanceSpecification *>(owningInstance);
+
     // Adjust subsetted property(ies)
     setOwner(owningInstance);
 }

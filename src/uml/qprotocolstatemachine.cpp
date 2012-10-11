@@ -60,6 +60,7 @@ QProtocolStateMachinePrivate::~QProtocolStateMachinePrivate()
 void QProtocolStateMachinePrivate::addConformance(const QProtocolConformance *conformance)
 {
     this->conformance->insert(const_cast<QProtocolConformance *>(conformance));
+
     // Adjust subsetted property(ies)
     addOwnedElement(conformance);
 }
@@ -67,6 +68,7 @@ void QProtocolStateMachinePrivate::addConformance(const QProtocolConformance *co
 void QProtocolStateMachinePrivate::removeConformance(const QProtocolConformance *conformance)
 {
     this->conformance->remove(const_cast<QProtocolConformance *>(conformance));
+
     // Adjust subsetted property(ies)
     removeOwnedElement(conformance);
 }

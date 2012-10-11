@@ -81,6 +81,7 @@ void QStateMachinePrivate::removeExtendedStateMachine(const QStateMachine *exten
 void QStateMachinePrivate::addConnectionPoint(const QPseudostate *connectionPoint)
 {
     this->connectionPoints->insert(const_cast<QPseudostate *>(connectionPoint));
+
     // Adjust subsetted property(ies)
     addOwnedMember(connectionPoint);
 }
@@ -88,6 +89,7 @@ void QStateMachinePrivate::addConnectionPoint(const QPseudostate *connectionPoin
 void QStateMachinePrivate::removeConnectionPoint(const QPseudostate *connectionPoint)
 {
     this->connectionPoints->remove(const_cast<QPseudostate *>(connectionPoint));
+
     // Adjust subsetted property(ies)
     removeOwnedMember(connectionPoint);
 }
@@ -105,6 +107,7 @@ void QStateMachinePrivate::removeSubmachineState(const QState *submachineState)
 void QStateMachinePrivate::addRegion(const QRegion *region)
 {
     this->regions->insert(const_cast<QRegion *>(region));
+
     // Adjust subsetted property(ies)
     addOwnedMember(region);
 }
@@ -112,6 +115,7 @@ void QStateMachinePrivate::addRegion(const QRegion *region)
 void QStateMachinePrivate::removeRegion(const QRegion *region)
 {
     this->regions->remove(const_cast<QRegion *>(region));
+
     // Adjust subsetted property(ies)
     removeOwnedMember(region);
 }

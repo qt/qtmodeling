@@ -95,13 +95,17 @@ QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
 
 QT_MODULE([% namespace.split('/').0 %])
 
+[%- found = 'false' -%]
 [%- FOREACH forwarddecl IN class.forwarddecl -%]
 [%- IF forwarddecl.namespace == namespace.replace('/', '::') -%]
+[%- IF found == 'false' %]
 
+[%- found = 'true' -%]
+[%- END -%]
 class ${forwarddecl.content};
+
 [%- END -%]
 [%- END %]
-
 class ${class.name}Private[%- IF class.superclass -%] : [% END -%][% FOREACH superclass = class.superclass %][% IF superclass.include != 'QtCore/QObject' %]public ${superclass.name.split('/').last}Private[% IF !loop.last %], [% END %][% END %][% END %]
 {
 public:

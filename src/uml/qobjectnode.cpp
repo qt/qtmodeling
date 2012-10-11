@@ -77,7 +77,9 @@ void QObjectNodePrivate::setUpperBound(const QValueSpecification *upperBound)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->upperBound);
+
     this->upperBound = const_cast<QValueSpecification *>(upperBound);
+
     // Adjust subsetted property(ies)
     addOwnedElement(upperBound);
 }
