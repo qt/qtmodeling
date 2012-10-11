@@ -101,6 +101,13 @@ void QPackagePrivate::addProfileApplication(const QProfileApplication *profileAp
 
     // Adjust subsetted property(ies)
     addOwnedElement(profileApplication);
+
+    // Adjust indirectly subsetted property(ies)
+    // This is because ownedStereotypes is derived (not derivedUnion) and subsets packagedElements
+    foreach (QProfileApplication *profileApplication, *this->profileApplications)
+        foreach (QPackageableElement *packageableElement, *profileApplication->appliedProfile()->packagedElements())
+            if (QStereotype *stereotype = dynamic_cast<QStereotype *>(packageableElement))
+                addPackagedElement(stereotype);
 }
 
 void QPackagePrivate::removeProfileApplication(const QProfileApplication *profileApplication)
@@ -109,6 +116,13 @@ void QPackagePrivate::removeProfileApplication(const QProfileApplication *profil
 
     // Adjust subsetted property(ies)
     removeOwnedElement(profileApplication);
+
+    // Adjust indirectly subsetted property(ies)
+    // This is because ownedStereotypes is derived (not derivedUnion) and subsets packagedElements
+    foreach (QProfileApplication *profileApplication, *this->profileApplications)
+        foreach (QPackageableElement *packageableElement, *profileApplication->appliedProfile()->packagedElements())
+            if (QStereotype *stereotype = dynamic_cast<QStereotype *>(packageableElement))
+                removePackagedElement(stereotype);
 }
 
 void QPackagePrivate::addPackageMerge(const QPackageMerge *packageMerge)
@@ -169,20 +183,28 @@ void QPackage::setURI(QString URI)
 
 /*!
     References the packaged elements that are Types.
+    It is the caller's responsibility to delete the returned set.
  */
 const QSet<QType *> *QPackage::ownedTypes() const
 {
-    qWarning("QPackage::ownedTypes: to be implemented (this is a derived associationend)");
+    QTUML_D(QPackage);
+    QSet<QType *> *ownedTypes_ = new QSet<QType *>;
+    foreach (QPackageableElement *packageableElement, *d->packagedElements)
+        if (QType *type = dynamic_cast<QType *>(packageableElement))
+            ownedTypes_->insert(type);
+    return ownedTypes_;
 }
 
 void QPackage::addOwnedType(const QType *ownedType)
 {
-    qWarning("QPackage::addOwnedType: to be implemented (this is a derived associationend)");
+    QTUML_D(QPackage)
+    d->addPackagedElement(ownedType);
 }
 
 void QPackage::removeOwnedType(const QType *ownedType)
 {
-    qWarning("QPackage::removeOwnedType: to be implemented (this is a derived associationend)");
+    QTUML_D(QPackage)
+    d->removePackagedElement(ownedType);
 }
 
 /*!
@@ -244,10 +266,16 @@ void QPackage::removeProfileApplication(const QProfileApplication *profileApplic
 
 /*!
     References the Stereotypes that are owned by the Package
+    It is the caller's responsibility to delete the returned set.
  */
 const QSet<QStereotype *> *QPackage::ownedStereotypes() const
 {
-    qWarning("QPackage::ownedStereotypes: to be implemented (this is a derived associationend)");
+    QTUML_D(QPackage);
+    QSet<QStereotype *> *ownedStereotypes_ = new QSet<QStereotype *>;
+    foreach (QPackageableElement *packageableElement, *d->packagedElements)
+        if (QStereotype *stereotype = dynamic_cast<QStereotype *>(packageableElement))
+            ownedStereotypes_->insert(stereotype);
+    return ownedStereotypes_;
 }
 
 /*!
@@ -273,20 +301,28 @@ void QPackage::removePackageMerge(const QPackageMerge *packageMerge)
 
 /*!
     References the packaged elements that are Packages.
+    It is the caller's responsibility to delete the returned set.
  */
 const QSet<QPackage *> *QPackage::nestedPackages() const
 {
-    qWarning("QPackage::nestedPackages: to be implemented (this is a derived associationend)");
+    QTUML_D(QPackage);
+    QSet<QPackage *> *nestedPackages_ = new QSet<QPackage *>;
+    foreach (QPackageableElement *packageableElement, *d->packagedElements)
+        if (QPackage *package = dynamic_cast<QPackage *>(packageableElement))
+            nestedPackages_->insert(package);
+    return nestedPackages_;
 }
 
 void QPackage::addNestedPackage(const QPackage *nestedPackage)
 {
-    qWarning("QPackage::addNestedPackage: to be implemented (this is a derived associationend)");
+    QTUML_D(QPackage)
+    d->addPackagedElement(nestedPackage);
 }
 
 void QPackage::removeNestedPackage(const QPackage *nestedPackage)
 {
-    qWarning("QPackage::removeNestedPackage: to be implemented (this is a derived associationend)");
+    QTUML_D(QPackage)
+    d->removePackagedElement(nestedPackage);
 }
 
 /*!
