@@ -286,7 +286,7 @@ return
         let $defaultValue := qtxmi:defaultValue($attribute, $namespace)
         where $attribute[not(@association)]
         return
-        <attribute isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}" isReadOnly="{$isReadOnly}" subsettedProperty="{$attribute/@subsettedProperty}" redefinedProperty="{$attribute/@redefinedProperty}" id="{$attribute/@xmi:id}" defaultValue="{$defaultValue}">
+        <attribute isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}" isReadOnly="{$isReadOnly}" subsettedProperty="{$attribute/@subsettedProperty}" redefinedProperty="{$attribute/@redefinedProperty}" id="{$attribute/@xmi:id}" defaultValue="{$defaultValue}" aggregation="{if (not($attribute/@aggregation)) then "none" else $attribute/@aggregation}">
         <accessor return="{$unqualifiedType}" name="{qtxmi:modifiedFunctionName($attribute)}" constness=" const"/>
         {
         if (not($attribute/upperValue/@value) or $attribute/upperValue/@value = "1") then
@@ -328,7 +328,7 @@ return
         let $defaultValue := qtxmi:defaultValue($attribute, $namespace)
         where $attribute[@association]
         return
-        <associationend isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}" isReadOnly="{$isReadOnly}" subsettedProperty="{$attribute/@subsettedProperty}" redefinedProperty="{$attribute/@redefinedProperty}" id="{$attribute/@xmi:id}" defaultValue="{$defaultValue}">
+        <associationend isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}" isReadOnly="{$isReadOnly}" subsettedProperty="{$attribute/@subsettedProperty}" redefinedProperty="{$attribute/@redefinedProperty}" id="{$attribute/@xmi:id}" defaultValue="{$defaultValue}" aggregation="{if (not($attribute/@aggregation)) then "none" else $attribute/@aggregation}">
         <accessor return="{$unqualifiedType}" name="{qtxmi:modifiedFunctionName($attribute)}" constness=" const"/>
         {
         if (not($attribute/upperValue/@value) or $attribute/upperValue/@value = "1") then

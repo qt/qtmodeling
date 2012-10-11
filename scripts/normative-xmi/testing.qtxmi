@@ -3,21 +3,21 @@
         <class name="QBaseClass" isAbstract="true">
             <qtinclude>QtCore/QSet</qtinclude>
             <forwarddecl namespace="QtUnknown::">QUsedClass</forwarddecl>
-            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="BaseClass-readWriteSingleValuedPrimitiveAttribute" defaultValue="true">
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="BaseClass-readWriteSingleValuedPrimitiveAttribute" defaultValue="true" aggregation="none">
                 <accessor return="bool " name="readWriteSingleValuedPrimitiveAttribute" constness=" const"/>
                 <accessor return="void " name="setReadWriteSingleValuedPrimitiveAttribute" constness="">
                     <parameter type="bool " name="readWriteSingleValuedPrimitiveAttribute"/>
                 </accessor>
                 <documentation>readWriteSingleValuedPrimitiveAttribute.</documentation>
             </attribute>
-            <attribute isDerived="true" isDerivedUnion="true" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="BaseClass-subsettedReadWriteAttribute" defaultValue="">
+            <attribute isDerived="true" isDerivedUnion="true" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="BaseClass-subsettedReadWriteAttribute" defaultValue="" aggregation="none">
                 <accessor return="QUsedClass *" name="subsettedReadWriteAttribute" constness=" const"/>
                 <accessor return="void " name="setSubsettedReadWriteAttribute" constness="">
                     <parameter type="const QUsedClass *" name="subsettedReadWriteAttribute"/>
                 </accessor>
                 <documentation>subsettedReadWriteAttribute.</documentation>
             </attribute>
-            <attribute isDerived="true" isDerivedUnion="true" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="BaseClass-subsettedReadOnlyAttribute" defaultValue="">
+            <attribute isDerived="true" isDerivedUnion="true" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="BaseClass-subsettedReadOnlyAttribute" defaultValue="" aggregation="none">
                 <accessor return="const QSet&lt;QUsedClass *&gt; *" name="subsettedReadOnlyAttributes" constness=" const"/>
                 <accessor return="void " name="addSubsettedReadOnlyAttribute" constness="">
                     <parameter type="const QUsedClass *" name="subsettedReadOnlyAttribute"/>
@@ -27,7 +27,7 @@
                 </accessor>
                 <documentation>subsettedReadOnlyAttribute.</documentation>
             </attribute>
-            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="BaseClass-slot" defaultValue="">
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="BaseClass-slot" defaultValue="" aggregation="none">
                 <accessor return="const QSet&lt;bool&gt; *" name="slots_" constness=" const"/>
                 <accessor return="void " name="addSlot_" constness="">
                     <parameter type="bool " name="slot_"/>
@@ -37,7 +37,7 @@
                 </accessor>
                 <documentation>name mapped attribute.</documentation>
             </attribute>
-            <attribute isDerived="true" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="BaseClass-readWriteDerivedAttribute" defaultValue="">
+            <attribute isDerived="true" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="BaseClass-readWriteDerivedAttribute" defaultValue="" aggregation="none">
                 <accessor return="const QSet&lt;bool&gt; *" name="readWriteDerivedAttributes" constness=" const"/>
                 <accessor return="void " name="addReadWriteDerivedAttribute" constness="">
                     <parameter type="bool " name="readWriteDerivedAttribute"/>
@@ -47,7 +47,7 @@
                 </accessor>
                 <documentation>readWriteDerivedAttribute.</documentation>
             </attribute>
-            <attribute isDerived="true" isDerivedUnion="false" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="BaseClass-readOnlyDerivedAttribute" defaultValue="">
+            <attribute isDerived="true" isDerivedUnion="false" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="BaseClass-readOnlyDerivedAttribute" defaultValue="" aggregation="none">
                 <accessor return="const QSet&lt;bool&gt; *" name="readOnlyDerivedAttributes" constness=" const"/>
                 <accessor return="void " name="addReadOnlyDerivedAttribute" constness="">
                     <parameter type="bool " name="readOnlyDerivedAttribute"/>
@@ -57,7 +57,7 @@
                 </accessor>
                 <documentation>readOnlyDerivedAttribute.</documentation>
             </attribute>
-            <attribute isDerived="true" isDerivedUnion="true" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="BaseClass-readWriteDerivedUnionAttribute" defaultValue="">
+            <attribute isDerived="true" isDerivedUnion="true" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="BaseClass-readWriteDerivedUnionAttribute" defaultValue="" aggregation="none">
                 <accessor return="const QSet&lt;bool&gt; *" name="readWriteDerivedUnionAttributes" constness=" const"/>
                 <accessor return="void " name="addReadWriteDerivedUnionAttribute" constness="">
                     <parameter type="bool " name="readWriteDerivedUnionAttribute"/>
@@ -67,7 +67,7 @@
                 </accessor>
                 <documentation>readWriteDerivedUnionAttribute.</documentation>
             </attribute>
-            <attribute isDerived="true" isDerivedUnion="true" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="BaseClass-readOnlyDerivedUnionAttribute" defaultValue="">
+            <attribute isDerived="true" isDerivedUnion="true" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="BaseClass-readOnlyDerivedUnionAttribute" defaultValue="" aggregation="none">
                 <accessor return="const QSet&lt;bool&gt; *" name="readOnlyDerivedUnionAttributes" constness=" const"/>
                 <accessor return="void " name="addReadOnlyDerivedUnionAttribute" constness="">
                     <parameter type="bool " name="readOnlyDerivedUnionAttribute"/>
@@ -91,7 +91,7 @@
             <superclass include="QtUnknown/QBaseClass" name="QBaseClass"/>
             <qtinclude>QtCore/QSet</qtinclude>
             <forwarddecl namespace="QtUnknown::">QUsedClass</forwarddecl>
-            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="BaseClass-subsettedReadWriteAttribute" redefinedProperty="" id="TestingClass-subsetReadWriteAttribute" defaultValue="">
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="BaseClass-subsettedReadWriteAttribute" redefinedProperty="" id="TestingClass-subsetReadWriteAttribute" defaultValue="" aggregation="none">
                 <accessor return="const QSet&lt;QUsedClass *&gt; *" name="subsetReadWriteAttributes" constness=" const"/>
                 <accessor return="void " name="addSubsetReadWriteAttribute" constness="">
                     <parameter type="const QUsedClass *" name="subsetReadWriteAttribute"/>
@@ -101,28 +101,28 @@
                 </accessor>
                 <documentation>subsetReadWriteAttribute.</documentation>
             </attribute>
-            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="true" subsettedProperty="BaseClass-subsettedReadOnlyAttribute" redefinedProperty="" id="TestingClass-subsetReadOnlyAttribute" defaultValue="">
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="true" subsettedProperty="BaseClass-subsettedReadOnlyAttribute" redefinedProperty="" id="TestingClass-subsetReadOnlyAttribute" defaultValue="" aggregation="none">
                 <accessor return="QUsedClass *" name="subsetReadOnlyAttribute" constness=" const"/>
                 <accessor return="void " name="setSubsetReadOnlyAttribute" constness="">
                     <parameter type="const QUsedClass *" name="subsetReadOnlyAttribute"/>
                 </accessor>
                 <documentation>subsetReadOnlyAttribute.</documentation>
             </attribute>
-            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="BaseClass-readWriteSingleValuedPrimitiveAttribute" id="TestingClass-readWriteSingleValuedPrimitiveAttribute" defaultValue="false">
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="BaseClass-readWriteSingleValuedPrimitiveAttribute" id="TestingClass-readWriteSingleValuedPrimitiveAttribute" defaultValue="false" aggregation="none">
                 <accessor return="bool " name="readWriteSingleValuedPrimitiveAttribute" constness=" const"/>
                 <accessor return="void " name="setReadWriteSingleValuedPrimitiveAttribute" constness="">
                     <parameter type="bool " name="readWriteSingleValuedPrimitiveAttribute"/>
                 </accessor>
                 <documentation>readWriteSingleValuedPrimitiveAttribute.</documentation>
             </attribute>
-            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="TestingClass-readOnlySingleValuedPrimitiveAttribute" defaultValue="1">
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="TestingClass-readOnlySingleValuedPrimitiveAttribute" defaultValue="1" aggregation="none">
                 <accessor return="qint32 " name="readOnlySingleValuedPrimitiveAttribute" constness=" const"/>
                 <accessor return="void " name="setReadOnlySingleValuedPrimitiveAttribute" constness="">
                     <parameter type="qint32 " name="readOnlySingleValuedPrimitiveAttribute"/>
                 </accessor>
                 <documentation>readOnlySingleValuedPrimitiveAttribute.</documentation>
             </attribute>
-            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="TestingClass-readWriteMultiValuedPrimitiveAttribute" defaultValue="">
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="TestingClass-readWriteMultiValuedPrimitiveAttribute" defaultValue="" aggregation="none">
                 <accessor return="const QSet&lt;bool&gt; *" name="readWriteMultiValuedPrimitiveAttributes" constness=" const"/>
                 <accessor return="void " name="addReadWriteMultiValuedPrimitiveAttribute" constness="">
                     <parameter type="bool " name="readWriteMultiValuedPrimitiveAttribute"/>
@@ -132,7 +132,7 @@
                 </accessor>
                 <documentation>readWriteMultiValuedPrimitiveAttribute.</documentation>
             </attribute>
-            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="TestingClass-readOnlyMultiValuedPrimitiveAttribute" defaultValue="">
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="TestingClass-readOnlyMultiValuedPrimitiveAttribute" defaultValue="" aggregation="none">
                 <accessor return="const QSet&lt;bool&gt; *" name="readOnlyMultiValuedPrimitiveAttributes" constness=" const"/>
                 <accessor return="void " name="addReadOnlyMultiValuedPrimitiveAttribute" constness="">
                     <parameter type="bool " name="readOnlyMultiValuedPrimitiveAttribute"/>
@@ -142,21 +142,21 @@
                 </accessor>
                 <documentation>readOnlyMultiValuedPrimitiveAttribute.</documentation>
             </attribute>
-            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="TestingClass-readWriteSingleValuedEnumerationAttribute" defaultValue="QtUnknown::VisibilityPublic">
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="TestingClass-readWriteSingleValuedEnumerationAttribute" defaultValue="QtUnknown::VisibilityPublic" aggregation="none">
                 <accessor return="QtUnknown::VisibilityKind " name="readWriteSingleValuedEnumerationAttribute" constness=" const"/>
                 <accessor return="void " name="setReadWriteSingleValuedEnumerationAttribute" constness="">
                     <parameter type="QtUnknown::VisibilityKind " name="readWriteSingleValuedEnumerationAttribute"/>
                 </accessor>
                 <documentation>readWriteSingleValuedEnumerationAttribute.</documentation>
             </attribute>
-            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="TestingClass-readOnlySingleValuedEnumerationAttribute" defaultValue="">
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="TestingClass-readOnlySingleValuedEnumerationAttribute" defaultValue="" aggregation="none">
                 <accessor return="QtUnknown::VisibilityKind " name="readOnlySingleValuedEnumerationAttribute" constness=" const"/>
                 <accessor return="void " name="setReadOnlySingleValuedEnumerationAttribute" constness="">
                     <parameter type="QtUnknown::VisibilityKind " name="readOnlySingleValuedEnumerationAttribute"/>
                 </accessor>
                 <documentation>readOnlySingleValuedEnumerationAttribute.</documentation>
             </attribute>
-            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="TestingClass-readWriteMultiValuedEnumerationAttribute" defaultValue="">
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="TestingClass-readWriteMultiValuedEnumerationAttribute" defaultValue="" aggregation="none">
                 <accessor return="const QSet&lt;QtUnknown::VisibilityKind&gt; *" name="readWriteMultiValuedEnumerationAttributes" constness=" const"/>
                 <accessor return="void " name="addReadWriteMultiValuedEnumerationAttribute" constness="">
                     <parameter type="QtUnknown::VisibilityKind " name="readWriteMultiValuedEnumerationAttribute"/>
@@ -166,7 +166,7 @@
                 </accessor>
                 <documentation>readWriteMultiValuedEnumerationAttribute.</documentation>
             </attribute>
-            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="TestingClass-readOnlyMultiValuedEnumerationAttribute" defaultValue="">
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="TestingClass-readOnlyMultiValuedEnumerationAttribute" defaultValue="" aggregation="none">
                 <accessor return="const QSet&lt;QtUnknown::VisibilityKind&gt; *" name="readOnlyMultiValuedEnumerationAttributes" constness=" const"/>
                 <accessor return="void " name="addReadOnlyMultiValuedEnumerationAttribute" constness="">
                     <parameter type="QtUnknown::VisibilityKind " name="readOnlyMultiValuedEnumerationAttribute"/>
@@ -176,21 +176,21 @@
                 </accessor>
                 <documentation>readOnlyMultiValuedEnumerationAttribute.</documentation>
             </attribute>
-            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="TestingClass-readWriteSingleValuedObjectAttribute" defaultValue="">
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="TestingClass-readWriteSingleValuedObjectAttribute" defaultValue="" aggregation="none">
                 <accessor return="QUsedClass *" name="readWriteSingleValuedObjectAttribute" constness=" const"/>
                 <accessor return="void " name="setReadWriteSingleValuedObjectAttribute" constness="">
                     <parameter type="const QUsedClass *" name="readWriteSingleValuedObjectAttribute"/>
                 </accessor>
                 <documentation>readWriteSingleValuedObjectAttribute.</documentation>
             </attribute>
-            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="TestingClass-readOnlySingleValuedObjectAttribute" defaultValue="">
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="TestingClass-readOnlySingleValuedObjectAttribute" defaultValue="" aggregation="none">
                 <accessor return="QUsedClass *" name="readOnlySingleValuedObjectAttribute" constness=" const"/>
                 <accessor return="void " name="setReadOnlySingleValuedObjectAttribute" constness="">
                     <parameter type="const QUsedClass *" name="readOnlySingleValuedObjectAttribute"/>
                 </accessor>
                 <documentation>readOnlySingleValuedObjectAttribute.</documentation>
             </attribute>
-            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="TestingClass-readWriteMultiValuedObjectAttribute" defaultValue="">
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="TestingClass-readWriteMultiValuedObjectAttribute" defaultValue="" aggregation="none">
                 <accessor return="const QSet&lt;QUsedClass *&gt; *" name="readWriteMultiValuedObjectAttributes" constness=" const"/>
                 <accessor return="void " name="addReadWriteMultiValuedObjectAttribute" constness="">
                     <parameter type="const QUsedClass *" name="readWriteMultiValuedObjectAttribute"/>
@@ -200,7 +200,7 @@
                 </accessor>
                 <documentation>readWriteMultiValuedObjectAttribute.</documentation>
             </attribute>
-            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="TestingClass-readOnlyMultiValuedObjectAttribute" defaultValue="">
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="TestingClass-readOnlyMultiValuedObjectAttribute" defaultValue="" aggregation="none">
                 <accessor return="const QSet&lt;QUsedClass *&gt; *" name="readOnlyMultiValuedObjectAttributes" constness=" const"/>
                 <accessor return="void " name="addReadOnlyMultiValuedObjectAttribute" constness="">
                     <parameter type="const QUsedClass *" name="readOnlyMultiValuedObjectAttribute"/>
