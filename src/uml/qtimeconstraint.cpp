@@ -54,6 +54,7 @@ QTimeConstraintPrivate::QTimeConstraintPrivate() :
 
 QTimeConstraintPrivate::~QTimeConstraintPrivate()
 {
+    delete specification;
 }
 
 void QTimeConstraintPrivate::setFirstEvent(bool firstEvent)

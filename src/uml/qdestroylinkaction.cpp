@@ -53,6 +53,8 @@ QDestroyLinkActionPrivate::QDestroyLinkActionPrivate() :
 
 QDestroyLinkActionPrivate::~QDestroyLinkActionPrivate()
 {
+    foreach (QLinkEndDestructionData *linkenddestructiondata, *endData)
+        delete linkenddestructiondata;
     delete endData;
 }
 

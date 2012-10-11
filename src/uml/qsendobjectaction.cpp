@@ -55,6 +55,7 @@ QSendObjectActionPrivate::QSendObjectActionPrivate() :
 
 QSendObjectActionPrivate::~QSendObjectActionPrivate()
 {
+    delete request;
 }
 
 void QSendObjectActionPrivate::setRequest(const QInputPin *request)

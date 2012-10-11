@@ -55,6 +55,7 @@ QExtensionPrivate::QExtensionPrivate() :
 
 QExtensionPrivate::~QExtensionPrivate()
 {
+    delete ownedEnd;
 }
 
 void QExtensionPrivate::setOwnedEnd(const QExtensionEnd *ownedEnd)

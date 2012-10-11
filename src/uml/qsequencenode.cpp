@@ -53,6 +53,8 @@ QSequenceNodePrivate::QSequenceNodePrivate() :
 
 QSequenceNodePrivate::~QSequenceNodePrivate()
 {
+    foreach (QExecutableNode *executablenode, *executableNodes)
+        delete executablenode;
     delete executableNodes;
 }
 
