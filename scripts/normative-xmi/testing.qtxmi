@@ -176,13 +176,6 @@
                 </accessor>
                 <documentation>readOnlyMultiValuedEnumerationAttribute.</documentation>
             </attribute>
-            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="TestingClass-readWriteSingleValuedObjectAttribute" defaultValue="" aggregation="none">
-                <accessor return="QUsedClass *" name="readWriteSingleValuedObjectAttribute" constness=" const"/>
-                <accessor return="void " name="setReadWriteSingleValuedObjectAttribute" constness="">
-                    <parameter type="const QUsedClass *" name="readWriteSingleValuedObjectAttribute"/>
-                </accessor>
-                <documentation>readWriteSingleValuedObjectAttribute.</documentation>
-            </attribute>
             <attribute isDerived="false" isDerivedUnion="false" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="TestingClass-readOnlySingleValuedObjectAttribute" defaultValue="" aggregation="none">
                 <accessor return="QUsedClass *" name="readOnlySingleValuedObjectAttribute" constness=" const"/>
                 <accessor return="void " name="setReadOnlySingleValuedObjectAttribute" constness="">
@@ -210,6 +203,20 @@
                 </accessor>
                 <documentation>readOnlyMultiValuedObjectAttribute.</documentation>
             </attribute>
+            <associationend isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="UsedClass-oppositeReadWriteSingleValuedObjectAttribute" defaultValue="" aggregation="none" oppositeEnd="TestingClass-readWriteSingleValuedObjectAttribute">
+                <accessor return="QTestingClass *" name="oppositeReadWriteSingleValuedObjectAttribute" constness=" const"/>
+                <accessor return="void " name="setOppositeReadWriteSingleValuedObjectAttribute" constness="">
+                    <parameter type="const QTestingClass *" name="oppositeReadWriteSingleValuedObjectAttribute"/>
+                </accessor>
+                <documentation>oppositeReadWriteSingleValuedObjectAttribute.</documentation>
+            </associationend>
+            <associationend isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="TestingClass-readWriteSingleValuedObjectAttribute" defaultValue="" aggregation="none" oppositeEnd="UsedClass-oppositeReadWriteSingleValuedObjectAttribute">
+                <accessor return="QUsedClass *" name="readWriteSingleValuedObjectAttribute" constness=" const"/>
+                <accessor return="void " name="setReadWriteSingleValuedObjectAttribute" constness="">
+                    <parameter type="const QUsedClass *" name="readWriteSingleValuedObjectAttribute"/>
+                </accessor>
+                <documentation>readWriteSingleValuedObjectAttribute.</documentation>
+            </associationend>
             <operation return="bool " name="opReturnPrimitiveSV" constness=" const">
                 <documentation>Testing opReturnPrimitiveSV.</documentation>
             </operation>

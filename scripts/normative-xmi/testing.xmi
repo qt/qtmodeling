@@ -117,6 +117,12 @@
         </ownedComment>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="BaseClass-aRealOperation-result-_upperValue" value="*"/>
       </ownedAttribute>
+      <packagedElement xmi:type="uml:Association" xmi:id="myassociation" name="myassociation" memberEnd="UsedClass-oppositeReadWriteSingleValuedObjectAttribute TestingClass-readWriteSingleValuedObjectAttribute"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="UsedClass-oppositeReadWriteSingleValuedObjectAttribute" name="oppositeReadWriteSingleValuedObjectAttribute" type="TestingClass" association="myassociation">
+        <ownedComment xmi:type="uml:Comment" xmi:id="UsedClass-oppositeReadWriteSingleValuedObjectAttribute-_ownedComment.0" annotatedElement="UsedClass-oppositeReadWriteSingleValuedObjectAttribute">
+          <body>oppositeReadWriteSingleValuedObjectAttribute.</body>
+        </ownedComment>
+      </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-subsetReadOnlyAttribute" name="subsetReadOnlyAttribute" type="UsedClass" isReadOnly="true" subsettedProperty="BaseClass-subsettedReadOnlyAttribute">
         <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-subsetReadOnlyAttribute-_ownedComment.0" annotatedElement="TestingClass-subsetReadOnlyAttribute">
           <body>subsetReadOnlyAttribute.</body>
@@ -184,7 +190,7 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TestingClass-extension-_upperValue" value="*"/>
       </ownedAttribute>
       <!-- OBJECT -->
-      <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-readWriteSingleValuedObjectAttribute" name="readWriteSingleValuedObjectAttribute" type="UsedClass">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-readWriteSingleValuedObjectAttribute" name="readWriteSingleValuedObjectAttribute" type="UsedClass" association="myassociation">
         <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-readWriteSingleValuedObjectAttribute-_ownedComment.0" annotatedElement="TestingClass-readWriteSingleValuedObjectAttribute">
           <body>readWriteSingleValuedObjectAttribute.</body>
         </ownedComment>
