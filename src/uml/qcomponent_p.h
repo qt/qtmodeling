@@ -75,10 +75,10 @@ public:
     void setIndirectlyInstantiated(bool isIndirectlyInstantiated);
 
     // Internal functions for association-ends
-    void addRealization(const QComponentRealization *realization);
-    void removeRealization(const QComponentRealization *realization);
-    void addPackagedElement(const QPackageableElement *packagedElement);
-    void removePackagedElement(const QPackageableElement *packagedElement);
+    void addRealization(QComponentRealization *realization);
+    void removeRealization(QComponentRealization *realization);
+    void addPackagedElement(QPackageableElement *packagedElement);
+    void removePackagedElement(QPackageableElement *packagedElement);
 };
 
 QT_END_NAMESPACE_QTUML

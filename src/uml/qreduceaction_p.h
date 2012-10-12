@@ -72,9 +72,9 @@ public:
     void setOrdered(bool isOrdered);
 
     // Internal functions for association-ends
-    void setResult(const QOutputPin *result);
-    void setCollection(const QInputPin *collection);
-    void setReducer(const QBehavior *reducer);
+    void setResult(QOutputPin *result);
+    void setCollection(QInputPin *collection);
+    void setReducer(QBehavior *reducer);
 };
 
 QT_END_NAMESPACE_QTUML

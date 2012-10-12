@@ -69,11 +69,11 @@ public:
 
     // Association-ends
     const QSet<QInputPin *> *inputValues() const;
-    void addInputValue(const QInputPin *inputValue);
-    void removeInputValue(const QInputPin *inputValue);
+    void addInputValue(QInputPin *inputValue);
+    void removeInputValue(QInputPin *inputValue);
     const QSet<QLinkEndData *> *endData() const;
-    void addEndData(const QLinkEndData *endData);
-    void removeEndData(const QLinkEndData *endData);
+    void addEndData(QLinkEndData *endData);
+    void removeEndData(QLinkEndData *endData);
 
     // Operations
     QAssociation *association() const;

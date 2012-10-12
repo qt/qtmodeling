@@ -55,9 +55,9 @@ QReceptionPrivate::~QReceptionPrivate()
 {
 }
 
-void QReceptionPrivate::setSignal(const QSignal *signal)
+void QReceptionPrivate::setSignal(QSignal *signal)
 {
-    this->signal = const_cast<QSignal *>(signal);
+    this->signal = signal;
 }
 
 /*!
@@ -94,10 +94,12 @@ QSignal *QReception::signal() const
     return d->signal;
 }
 
-void QReception::setSignal(const QSignal *signal)
+void QReception::setSignal(QSignal *signal)
 {
     QTUML_D(QReception);
-    d->setSignal(const_cast<QSignal *>(signal));
+    if (d->signal != signal) {
+        d->setSignal(signal);
+    }
 }
 
 #include "moc_qreception.cpp"

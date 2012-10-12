@@ -73,7 +73,7 @@ public:
     void setExecutionLocation(QString executionLocation);
 
     // Internal functions for association-ends
-    void setDeployment(const QDeployment *deployment);
+    void setDeployment(QDeployment *deployment);
 };
 
 QT_END_NAMESPACE_QTUML

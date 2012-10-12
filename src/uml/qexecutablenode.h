@@ -67,8 +67,8 @@ public:
 
     // Association-ends
     const QSet<QExceptionHandler *> *handlers() const;
-    void addHandler(const QExceptionHandler *handler);
-    void removeHandler(const QExceptionHandler *handler);
+    void addHandler(QExceptionHandler *handler);
+    void removeHandler(QExceptionHandler *handler);
 
 protected:
     explicit QExecutableNode();

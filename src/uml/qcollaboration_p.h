@@ -69,8 +69,8 @@ public:
     QSet<QConnectableElement *> *collaborationRoles;
 
     // Internal functions for association-ends
-    void addCollaborationRole(const QConnectableElement *collaborationRole);
-    void removeCollaborationRole(const QConnectableElement *collaborationRole);
+    void addCollaborationRole(QConnectableElement *collaborationRole);
+    void removeCollaborationRole(QConnectableElement *collaborationRole);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -73,8 +73,8 @@ public:
 
     // Association-ends
     const QSet<QNamedElement *> *messages() const;
-    void addMessage(const QNamedElement *message);
-    void removeMessage(const QNamedElement *message);
+    void addMessage(QNamedElement *message);
+    void removeMessage(QNamedElement *message);
 
 protected:
     explicit QConsiderIgnoreFragment(bool createPimpl, QObject *parent = 0);

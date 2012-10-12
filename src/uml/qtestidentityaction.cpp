@@ -61,34 +61,34 @@ QTestIdentityActionPrivate::~QTestIdentityActionPrivate()
 {
 }
 
-void QTestIdentityActionPrivate::setSecond(const QInputPin *second)
+void QTestIdentityActionPrivate::setSecond(QInputPin *second)
 {
     // Adjust subsetted property(ies)
     removeInput(this->second);
 
-    this->second = const_cast<QInputPin *>(second);
+    this->second = second;
 
     // Adjust subsetted property(ies)
     addInput(second);
 }
 
-void QTestIdentityActionPrivate::setResult(const QOutputPin *result)
+void QTestIdentityActionPrivate::setResult(QOutputPin *result)
 {
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
-    this->result = const_cast<QOutputPin *>(result);
+    this->result = result;
 
     // Adjust subsetted property(ies)
     addOutput(result);
 }
 
-void QTestIdentityActionPrivate::setFirst(const QInputPin *first)
+void QTestIdentityActionPrivate::setFirst(QInputPin *first)
 {
     // Adjust subsetted property(ies)
     removeInput(this->first);
 
-    this->first = const_cast<QInputPin *>(first);
+    this->first = first;
 
     // Adjust subsetted property(ies)
     addInput(first);
@@ -128,10 +128,12 @@ QInputPin *QTestIdentityAction::second() const
     return d->second;
 }
 
-void QTestIdentityAction::setSecond(const QInputPin *second)
+void QTestIdentityAction::setSecond(QInputPin *second)
 {
     QTUML_D(QTestIdentityAction);
-    d->setSecond(const_cast<QInputPin *>(second));
+    if (d->second != second) {
+        d->setSecond(second);
+    }
 }
 
 /*!
@@ -143,10 +145,12 @@ QOutputPin *QTestIdentityAction::result() const
     return d->result;
 }
 
-void QTestIdentityAction::setResult(const QOutputPin *result)
+void QTestIdentityAction::setResult(QOutputPin *result)
 {
     QTUML_D(QTestIdentityAction);
-    d->setResult(const_cast<QOutputPin *>(result));
+    if (d->result != result) {
+        d->setResult(result);
+    }
 }
 
 /*!
@@ -158,10 +162,12 @@ QInputPin *QTestIdentityAction::first() const
     return d->first;
 }
 
-void QTestIdentityAction::setFirst(const QInputPin *first)
+void QTestIdentityAction::setFirst(QInputPin *first)
 {
     QTUML_D(QTestIdentityAction);
-    d->setFirst(const_cast<QInputPin *>(first));
+    if (d->first != first) {
+        d->setFirst(first);
+    }
 }
 
 #include "moc_qtestidentityaction.cpp"

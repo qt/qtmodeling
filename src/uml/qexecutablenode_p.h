@@ -67,8 +67,8 @@ public:
     QSet<QExceptionHandler *> *handlers;
 
     // Internal functions for association-ends
-    void addHandler(const QExceptionHandler *handler);
-    void removeHandler(const QExceptionHandler *handler);
+    void addHandler(QExceptionHandler *handler);
+    void removeHandler(QExceptionHandler *handler);
 };
 
 QT_END_NAMESPACE_QTUML

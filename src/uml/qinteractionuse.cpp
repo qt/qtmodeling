@@ -67,57 +67,57 @@ QInteractionUsePrivate::~QInteractionUsePrivate()
     delete arguments;
 }
 
-void QInteractionUsePrivate::addActualGate(const QGate *actualGate)
+void QInteractionUsePrivate::addActualGate(QGate *actualGate)
 {
-    this->actualGates->insert(const_cast<QGate *>(actualGate));
+    this->actualGates->insert(actualGate);
 
     // Adjust subsetted property(ies)
     addOwnedElement(actualGate);
 }
 
-void QInteractionUsePrivate::removeActualGate(const QGate *actualGate)
+void QInteractionUsePrivate::removeActualGate(QGate *actualGate)
 {
-    this->actualGates->remove(const_cast<QGate *>(actualGate));
+    this->actualGates->remove(actualGate);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(actualGate);
 }
 
-void QInteractionUsePrivate::setReturnValue(const QValueSpecification *returnValue)
+void QInteractionUsePrivate::setReturnValue(QValueSpecification *returnValue)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->returnValue);
 
-    this->returnValue = const_cast<QValueSpecification *>(returnValue);
+    this->returnValue = returnValue;
 
     // Adjust subsetted property(ies)
     addOwnedElement(returnValue);
 }
 
-void QInteractionUsePrivate::setRefersTo(const QInteraction *refersTo)
+void QInteractionUsePrivate::setRefersTo(QInteraction *refersTo)
 {
-    this->refersTo = const_cast<QInteraction *>(refersTo);
+    this->refersTo = refersTo;
 }
 
-void QInteractionUsePrivate::addArgument(const QValueSpecification *argument)
+void QInteractionUsePrivate::addArgument(QValueSpecification *argument)
 {
-    this->arguments->append(const_cast<QValueSpecification *>(argument));
+    this->arguments->append(argument);
 
     // Adjust subsetted property(ies)
     addOwnedElement(argument);
 }
 
-void QInteractionUsePrivate::removeArgument(const QValueSpecification *argument)
+void QInteractionUsePrivate::removeArgument(QValueSpecification *argument)
 {
-    this->arguments->removeAll(const_cast<QValueSpecification *>(argument));
+    this->arguments->removeAll(argument);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(argument);
 }
 
-void QInteractionUsePrivate::setReturnValueRecipient(const QProperty *returnValueRecipient)
+void QInteractionUsePrivate::setReturnValueRecipient(QProperty *returnValueRecipient)
 {
-    this->returnValueRecipient = const_cast<QProperty *>(returnValueRecipient);
+    this->returnValueRecipient = returnValueRecipient;
 }
 
 /*!
@@ -154,16 +154,20 @@ const QSet<QGate *> *QInteractionUse::actualGates() const
     return d->actualGates;
 }
 
-void QInteractionUse::addActualGate(const QGate *actualGate)
+void QInteractionUse::addActualGate(QGate *actualGate)
 {
     QTUML_D(QInteractionUse);
-    d->addActualGate(const_cast<QGate *>(actualGate));
+    if (!d->actualGates->contains(actualGate)) {
+        d->addActualGate(actualGate);
+    }
 }
 
-void QInteractionUse::removeActualGate(const QGate *actualGate)
+void QInteractionUse::removeActualGate(QGate *actualGate)
 {
     QTUML_D(QInteractionUse);
-    d->removeActualGate(const_cast<QGate *>(actualGate));
+    if (d->actualGates->contains(actualGate)) {
+        d->removeActualGate(actualGate);
+    }
 }
 
 /*!
@@ -175,10 +179,12 @@ QValueSpecification *QInteractionUse::returnValue() const
     return d->returnValue;
 }
 
-void QInteractionUse::setReturnValue(const QValueSpecification *returnValue)
+void QInteractionUse::setReturnValue(QValueSpecification *returnValue)
 {
     QTUML_D(QInteractionUse);
-    d->setReturnValue(const_cast<QValueSpecification *>(returnValue));
+    if (d->returnValue != returnValue) {
+        d->setReturnValue(returnValue);
+    }
 }
 
 /*!
@@ -190,10 +196,12 @@ QInteraction *QInteractionUse::refersTo() const
     return d->refersTo;
 }
 
-void QInteractionUse::setRefersTo(const QInteraction *refersTo)
+void QInteractionUse::setRefersTo(QInteraction *refersTo)
 {
     QTUML_D(QInteractionUse);
-    d->setRefersTo(const_cast<QInteraction *>(refersTo));
+    if (d->refersTo != refersTo) {
+        d->setRefersTo(refersTo);
+    }
 }
 
 /*!
@@ -205,16 +213,20 @@ const QList<QValueSpecification *> *QInteractionUse::arguments() const
     return d->arguments;
 }
 
-void QInteractionUse::addArgument(const QValueSpecification *argument)
+void QInteractionUse::addArgument(QValueSpecification *argument)
 {
     QTUML_D(QInteractionUse);
-    d->addArgument(const_cast<QValueSpecification *>(argument));
+    if (!d->arguments->contains(argument)) {
+        d->addArgument(argument);
+    }
 }
 
-void QInteractionUse::removeArgument(const QValueSpecification *argument)
+void QInteractionUse::removeArgument(QValueSpecification *argument)
 {
     QTUML_D(QInteractionUse);
-    d->removeArgument(const_cast<QValueSpecification *>(argument));
+    if (d->arguments->contains(argument)) {
+        d->removeArgument(argument);
+    }
 }
 
 /*!
@@ -226,10 +238,12 @@ QProperty *QInteractionUse::returnValueRecipient() const
     return d->returnValueRecipient;
 }
 
-void QInteractionUse::setReturnValueRecipient(const QProperty *returnValueRecipient)
+void QInteractionUse::setReturnValueRecipient(QProperty *returnValueRecipient)
 {
     QTUML_D(QInteractionUse);
-    d->setReturnValueRecipient(const_cast<QProperty *>(returnValueRecipient));
+    if (d->returnValueRecipient != returnValueRecipient) {
+        d->setReturnValueRecipient(returnValueRecipient);
+    }
 }
 
 #include "moc_qinteractionuse.cpp"

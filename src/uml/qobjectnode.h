@@ -79,12 +79,12 @@ public:
 
     // Association-ends
     QValueSpecification *upperBound() const;
-    void setUpperBound(const QValueSpecification *upperBound);
+    void setUpperBound(QValueSpecification *upperBound);
     QBehavior *selection() const;
-    void setSelection(const QBehavior *selection);
+    void setSelection(QBehavior *selection);
     const QSet<QState *> *inState() const;
-    void addInState(const QState *inState);
-    void removeInState(const QState *inState);
+    void addInState(QState *inState);
+    void removeInState(QState *inState);
 
 protected:
     explicit QObjectNode();

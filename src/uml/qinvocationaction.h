@@ -68,10 +68,10 @@ public:
 
     // Association-ends
     const QList<QInputPin *> *arguments() const;
-    void addArgument(const QInputPin *argument);
-    void removeArgument(const QInputPin *argument);
+    void addArgument(QInputPin *argument);
+    void removeArgument(QInputPin *argument);
     QPort *onPort() const;
-    void setOnPort(const QPort *onPort);
+    void setOnPort(QPort *onPort);
 
 protected:
     explicit QInvocationAction();

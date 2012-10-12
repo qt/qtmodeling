@@ -67,8 +67,8 @@ public:
     QUseCase *addition;
 
     // Internal functions for association-ends
-    void setIncludingCase(const QUseCase *includingCase);
-    void setAddition(const QUseCase *addition);
+    void setIncludingCase(QUseCase *includingCase);
+    void setAddition(QUseCase *addition);
 };
 
 QT_END_NAMESPACE_QTUML

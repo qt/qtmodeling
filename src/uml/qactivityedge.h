@@ -73,26 +73,26 @@ public:
 
     // Association-ends
     QActivityNode *source() const;
-    void setSource(const QActivityNode *source);
+    void setSource(QActivityNode *source);
     const QSet<QActivityEdge *> *redefinedEdges() const;
-    void addRedefinedEdge(const QActivityEdge *redefinedEdge);
-    void removeRedefinedEdge(const QActivityEdge *redefinedEdge);
+    void addRedefinedEdge(QActivityEdge *redefinedEdge);
+    void removeRedefinedEdge(QActivityEdge *redefinedEdge);
     const QSet<QActivityGroup *> *inGroup() const;
     QValueSpecification *guard() const;
-    void setGuard(const QValueSpecification *guard);
+    void setGuard(QValueSpecification *guard);
     const QSet<QActivityPartition *> *inPartition() const;
-    void addInPartition(const QActivityPartition *inPartition);
-    void removeInPartition(const QActivityPartition *inPartition);
+    void addInPartition(QActivityPartition *inPartition);
+    void removeInPartition(QActivityPartition *inPartition);
     QActivity *activity() const;
-    void setActivity(const QActivity *activity);
+    void setActivity(QActivity *activity);
     QInterruptibleActivityRegion *interrupts() const;
-    void setInterrupts(const QInterruptibleActivityRegion *interrupts);
+    void setInterrupts(QInterruptibleActivityRegion *interrupts);
     QValueSpecification *weight() const;
-    void setWeight(const QValueSpecification *weight);
+    void setWeight(QValueSpecification *weight);
     QStructuredActivityNode *inStructuredNode() const;
-    void setInStructuredNode(const QStructuredActivityNode *inStructuredNode);
+    void setInStructuredNode(QStructuredActivityNode *inStructuredNode);
     QActivityNode *target() const;
-    void setTarget(const QActivityNode *target);
+    void setTarget(QActivityNode *target);
 
 protected:
     explicit QActivityEdge();

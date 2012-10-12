@@ -97,12 +97,12 @@ public:
 
     // Association-ends
     QNamespace *context() const;
-    void setContext(const QNamespace *context);
+    void setContext(QNamespace *context);
     QValueSpecification *specification() const;
-    void setSpecification(const QValueSpecification *specification);
+    void setSpecification(QValueSpecification *specification);
     const QList<QElement *> *constrainedElements() const;
-    void addConstrainedElement(const QElement *constrainedElement);
-    void removeConstrainedElement(const QElement *constrainedElement);
+    void addConstrainedElement(QElement *constrainedElement);
+    void removeConstrainedElement(QElement *constrainedElement);
 
 protected:
     explicit QConstraint(bool createPimpl, QObject *parent = 0);

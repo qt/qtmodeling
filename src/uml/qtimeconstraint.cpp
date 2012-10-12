@@ -62,9 +62,9 @@ void QTimeConstraintPrivate::setFirstEvent(bool firstEvent)
     this->firstEvent = firstEvent;
 }
 
-void QTimeConstraintPrivate::setSpecification(const QTimeInterval *specification)
+void QTimeConstraintPrivate::setSpecification(QTimeInterval *specification)
 {
-    this->specification = const_cast<QTimeInterval *>(specification);
+    this->specification = specification;
 }
 
 /*!
@@ -104,7 +104,9 @@ bool QTimeConstraint::firstEvent() const
 void QTimeConstraint::setFirstEvent(bool firstEvent)
 {
     QTUML_D(QTimeConstraint);
-    d->setFirstEvent(firstEvent);
+    if (d->firstEvent != firstEvent) {
+        d->setFirstEvent(firstEvent);
+    }
 }
 
 /*!
@@ -116,10 +118,12 @@ QTimeInterval *QTimeConstraint::specification() const
     return d->specification;
 }
 
-void QTimeConstraint::setSpecification(const QTimeInterval *specification)
+void QTimeConstraint::setSpecification(QTimeInterval *specification)
 {
     QTUML_D(QTimeConstraint);
-    d->setSpecification(const_cast<QTimeInterval *>(specification));
+    if (d->specification != specification) {
+        d->setSpecification(specification);
+    }
 }
 
 #include "moc_qtimeconstraint.cpp"

@@ -73,14 +73,14 @@ public:
     QSet<QExtend *> *extends;
 
     // Internal functions for association-ends
-    void addExtensionPoint(const QExtensionPoint *extensionPoint);
-    void removeExtensionPoint(const QExtensionPoint *extensionPoint);
-    void addInclude(const QInclude *include);
-    void removeInclude(const QInclude *include);
-    void addSubject(const QClassifier *subject);
-    void removeSubject(const QClassifier *subject);
-    void addExtend(const QExtend *extend);
-    void removeExtend(const QExtend *extend);
+    void addExtensionPoint(QExtensionPoint *extensionPoint);
+    void removeExtensionPoint(QExtensionPoint *extensionPoint);
+    void addInclude(QInclude *include);
+    void removeInclude(QInclude *include);
+    void addSubject(QClassifier *subject);
+    void removeSubject(QClassifier *subject);
+    void addExtend(QExtend *extend);
+    void removeExtend(QExtend *extend);
 };
 
 QT_END_NAMESPACE_QTUML

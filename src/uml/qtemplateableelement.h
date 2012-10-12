@@ -69,10 +69,10 @@ public:
 
     // Association-ends
     QTemplateSignature *ownedTemplateSignature() const;
-    void setOwnedTemplateSignature(const QTemplateSignature *ownedTemplateSignature);
+    void setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature);
     const QSet<QTemplateBinding *> *templateBindings() const;
-    void addTemplateBinding(const QTemplateBinding *templateBinding);
-    void removeTemplateBinding(const QTemplateBinding *templateBinding);
+    void addTemplateBinding(QTemplateBinding *templateBinding);
+    void removeTemplateBinding(QTemplateBinding *templateBinding);
 
     // Operations
     bool isTemplate() const;

@@ -56,12 +56,12 @@ QStartClassifierBehaviorActionPrivate::~QStartClassifierBehaviorActionPrivate()
 {
 }
 
-void QStartClassifierBehaviorActionPrivate::setObject(const QInputPin *object)
+void QStartClassifierBehaviorActionPrivate::setObject(QInputPin *object)
 {
     // Adjust subsetted property(ies)
     removeInput(this->object);
 
-    this->object = const_cast<QInputPin *>(object);
+    this->object = object;
 
     // Adjust subsetted property(ies)
     addInput(object);
@@ -101,10 +101,12 @@ QInputPin *QStartClassifierBehaviorAction::object() const
     return d->object;
 }
 
-void QStartClassifierBehaviorAction::setObject(const QInputPin *object)
+void QStartClassifierBehaviorAction::setObject(QInputPin *object)
 {
     QTUML_D(QStartClassifierBehaviorAction);
-    d->setObject(const_cast<QInputPin *>(object));
+    if (d->object != object) {
+        d->setObject(object);
+    }
 }
 
 #include "moc_qstartclassifierbehavioraction.cpp"

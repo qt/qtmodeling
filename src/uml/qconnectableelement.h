@@ -70,7 +70,7 @@ public:
     // Association-ends
     const QList<QConnectorEnd *> *ends() const;
     QConnectableElementTemplateParameter *templateParameter() const;
-    void setTemplateParameter(const QConnectableElementTemplateParameter *templateParameter);
+    void setTemplateParameter(QConnectableElementTemplateParameter *templateParameter);
 
 protected:
     explicit QConnectableElement();

@@ -67,8 +67,8 @@ public:
     QSet<QNode *> *nestedNodes;
 
     // Internal functions for association-ends
-    void addNestedNode(const QNode *nestedNode);
-    void removeNestedNode(const QNode *nestedNode);
+    void addNestedNode(QNode *nestedNode);
+    void removeNestedNode(QNode *nestedNode);
 };
 
 QT_END_NAMESPACE_QTUML

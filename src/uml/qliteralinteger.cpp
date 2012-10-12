@@ -95,7 +95,9 @@ qint32 QLiteralInteger::value() const
 void QLiteralInteger::setValue(qint32 value)
 {
     QTUML_D(QLiteralInteger);
-    d->setValue(value);
+    if (d->value != value) {
+        d->setValue(value);
+    }
 }
 
 /*!

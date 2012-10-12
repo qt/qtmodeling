@@ -61,27 +61,27 @@ QLinkEndDataPrivate::~QLinkEndDataPrivate()
     delete qualifiers;
 }
 
-void QLinkEndDataPrivate::setValue(const QInputPin *value)
+void QLinkEndDataPrivate::setValue(QInputPin *value)
 {
-    this->value = const_cast<QInputPin *>(value);
+    this->value = value;
 }
 
-void QLinkEndDataPrivate::setEnd(const QProperty *end)
+void QLinkEndDataPrivate::setEnd(QProperty *end)
 {
-    this->end = const_cast<QProperty *>(end);
+    this->end = end;
 }
 
-void QLinkEndDataPrivate::addQualifier(const QQualifierValue *qualifier)
+void QLinkEndDataPrivate::addQualifier(QQualifierValue *qualifier)
 {
-    this->qualifiers->insert(const_cast<QQualifierValue *>(qualifier));
+    this->qualifiers->insert(qualifier);
 
     // Adjust subsetted property(ies)
     addOwnedElement(qualifier);
 }
 
-void QLinkEndDataPrivate::removeQualifier(const QQualifierValue *qualifier)
+void QLinkEndDataPrivate::removeQualifier(QQualifierValue *qualifier)
 {
-    this->qualifiers->remove(const_cast<QQualifierValue *>(qualifier));
+    this->qualifiers->remove(qualifier);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(qualifier);
@@ -121,10 +121,12 @@ QInputPin *QLinkEndData::value() const
     return d->value;
 }
 
-void QLinkEndData::setValue(const QInputPin *value)
+void QLinkEndData::setValue(QInputPin *value)
 {
     QTUML_D(QLinkEndData);
-    d->setValue(const_cast<QInputPin *>(value));
+    if (d->value != value) {
+        d->setValue(value);
+    }
 }
 
 /*!
@@ -136,10 +138,12 @@ QProperty *QLinkEndData::end() const
     return d->end;
 }
 
-void QLinkEndData::setEnd(const QProperty *end)
+void QLinkEndData::setEnd(QProperty *end)
 {
     QTUML_D(QLinkEndData);
-    d->setEnd(const_cast<QProperty *>(end));
+    if (d->end != end) {
+        d->setEnd(end);
+    }
 }
 
 /*!
@@ -151,16 +155,20 @@ const QSet<QQualifierValue *> *QLinkEndData::qualifiers() const
     return d->qualifiers;
 }
 
-void QLinkEndData::addQualifier(const QQualifierValue *qualifier)
+void QLinkEndData::addQualifier(QQualifierValue *qualifier)
 {
     QTUML_D(QLinkEndData);
-    d->addQualifier(const_cast<QQualifierValue *>(qualifier));
+    if (!d->qualifiers->contains(qualifier)) {
+        d->addQualifier(qualifier);
+    }
 }
 
-void QLinkEndData::removeQualifier(const QQualifierValue *qualifier)
+void QLinkEndData::removeQualifier(QQualifierValue *qualifier)
 {
     QTUML_D(QLinkEndData);
-    d->removeQualifier(const_cast<QQualifierValue *>(qualifier));
+    if (d->qualifiers->contains(qualifier)) {
+        d->removeQualifier(qualifier);
+    }
 }
 
 #include "moc_qlinkenddata.cpp"

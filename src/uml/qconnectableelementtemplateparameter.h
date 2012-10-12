@@ -70,7 +70,7 @@ public:
 
     // Association-ends
     QConnectableElement *parameteredElement() const;
-    void setParameteredElement(const QConnectableElement *parameteredElement);
+    void setParameteredElement(QConnectableElement *parameteredElement);
 
 protected:
     explicit QConnectableElementTemplateParameter(bool createPimpl, QObject *parent = 0);

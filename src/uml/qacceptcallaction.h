@@ -70,7 +70,7 @@ public:
 
     // Association-ends
     QOutputPin *returnInformation() const;
-    void setReturnInformation(const QOutputPin *returnInformation);
+    void setReturnInformation(QOutputPin *returnInformation);
 
 protected:
     explicit QAcceptCallAction(bool createPimpl, QObject *parent = 0);

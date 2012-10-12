@@ -65,11 +65,11 @@ public:
     QSet<QComment *> *ownedComments;
 
     // Internal functions for association-ends
-    void addOwnedElement(const QElement *ownedElement);
-    void removeOwnedElement(const QElement *ownedElement);
-    void setOwner(const QElement *owner);
-    void addOwnedComment(const QComment *ownedComment);
-    void removeOwnedComment(const QComment *ownedComment);
+    void addOwnedElement(QElement *ownedElement);
+    void removeOwnedElement(QElement *ownedElement);
+    void setOwner(QElement *owner);
+    void addOwnedComment(QComment *ownedComment);
+    void removeOwnedComment(QComment *ownedComment);
 };
 
 QT_END_NAMESPACE_QTUML

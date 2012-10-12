@@ -84,125 +84,125 @@ QStatePrivate::~QStatePrivate()
     delete connectionPoints;
 }
 
-void QStatePrivate::addRegion(const QRegion *region)
+void QStatePrivate::addRegion(QRegion *region)
 {
-    this->regions->insert(const_cast<QRegion *>(region));
+    this->regions->insert(region);
 
     // Adjust subsetted property(ies)
     addOwnedMember(region);
 }
 
-void QStatePrivate::removeRegion(const QRegion *region)
+void QStatePrivate::removeRegion(QRegion *region)
 {
-    this->regions->remove(const_cast<QRegion *>(region));
+    this->regions->remove(region);
 
     // Adjust subsetted property(ies)
     removeOwnedMember(region);
 }
 
-void QStatePrivate::setExit(const QBehavior *exit)
+void QStatePrivate::setExit(QBehavior *exit)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->exit);
 
-    this->exit = const_cast<QBehavior *>(exit);
+    this->exit = exit;
 
     // Adjust subsetted property(ies)
     addOwnedElement(exit);
 }
 
-void QStatePrivate::addConnection(const QConnectionPointReference *connection)
+void QStatePrivate::addConnection(QConnectionPointReference *connection)
 {
-    this->connections->insert(const_cast<QConnectionPointReference *>(connection));
+    this->connections->insert(connection);
 
     // Adjust subsetted property(ies)
     addOwnedMember(connection);
 }
 
-void QStatePrivate::removeConnection(const QConnectionPointReference *connection)
+void QStatePrivate::removeConnection(QConnectionPointReference *connection)
 {
-    this->connections->remove(const_cast<QConnectionPointReference *>(connection));
+    this->connections->remove(connection);
 
     // Adjust subsetted property(ies)
     removeOwnedMember(connection);
 }
 
-void QStatePrivate::setRedefinedState(const QState *redefinedState)
+void QStatePrivate::setRedefinedState(QState *redefinedState)
 {
     // Adjust subsetted property(ies)
     removeRedefinedElement(this->redefinedState);
 
-    this->redefinedState = const_cast<QState *>(redefinedState);
+    this->redefinedState = redefinedState;
 
     // Adjust subsetted property(ies)
     addRedefinedElement(redefinedState);
 }
 
-void QStatePrivate::addDeferrableTrigger(const QTrigger *deferrableTrigger)
+void QStatePrivate::addDeferrableTrigger(QTrigger *deferrableTrigger)
 {
-    this->deferrableTriggers->insert(const_cast<QTrigger *>(deferrableTrigger));
+    this->deferrableTriggers->insert(deferrableTrigger);
 
     // Adjust subsetted property(ies)
     addOwnedElement(deferrableTrigger);
 }
 
-void QStatePrivate::removeDeferrableTrigger(const QTrigger *deferrableTrigger)
+void QStatePrivate::removeDeferrableTrigger(QTrigger *deferrableTrigger)
 {
-    this->deferrableTriggers->remove(const_cast<QTrigger *>(deferrableTrigger));
+    this->deferrableTriggers->remove(deferrableTrigger);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(deferrableTrigger);
 }
 
-void QStatePrivate::addConnectionPoint(const QPseudostate *connectionPoint)
+void QStatePrivate::addConnectionPoint(QPseudostate *connectionPoint)
 {
-    this->connectionPoints->insert(const_cast<QPseudostate *>(connectionPoint));
+    this->connectionPoints->insert(connectionPoint);
 
     // Adjust subsetted property(ies)
     addOwnedMember(connectionPoint);
 }
 
-void QStatePrivate::removeConnectionPoint(const QPseudostate *connectionPoint)
+void QStatePrivate::removeConnectionPoint(QPseudostate *connectionPoint)
 {
-    this->connectionPoints->remove(const_cast<QPseudostate *>(connectionPoint));
+    this->connectionPoints->remove(connectionPoint);
 
     // Adjust subsetted property(ies)
     removeOwnedMember(connectionPoint);
 }
 
-void QStatePrivate::setEntry(const QBehavior *entry)
+void QStatePrivate::setEntry(QBehavior *entry)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->entry);
 
-    this->entry = const_cast<QBehavior *>(entry);
+    this->entry = entry;
 
     // Adjust subsetted property(ies)
     addOwnedElement(entry);
 }
 
-void QStatePrivate::setDoActivity(const QBehavior *doActivity)
+void QStatePrivate::setDoActivity(QBehavior *doActivity)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->doActivity);
 
-    this->doActivity = const_cast<QBehavior *>(doActivity);
+    this->doActivity = doActivity;
 
     // Adjust subsetted property(ies)
     addOwnedElement(doActivity);
 }
 
-void QStatePrivate::setSubmachine(const QStateMachine *submachine)
+void QStatePrivate::setSubmachine(QStateMachine *submachine)
 {
-    this->submachine = const_cast<QStateMachine *>(submachine);
+    this->submachine = submachine;
 }
 
-void QStatePrivate::setStateInvariant(const QConstraint *stateInvariant)
+void QStatePrivate::setStateInvariant(QConstraint *stateInvariant)
 {
     // Adjust subsetted property(ies)
     removeOwnedRule(this->stateInvariant);
 
-    this->stateInvariant = const_cast<QConstraint *>(stateInvariant);
+    this->stateInvariant = stateInvariant;
 
     // Adjust subsetted property(ies)
     addOwnedRule(stateInvariant);
@@ -274,16 +274,26 @@ const QSet<QRegion *> *QState::regions() const
     return d->regions;
 }
 
-void QState::addRegion(const QRegion *region)
+void QState::addRegion(QRegion *region)
 {
     QTUML_D(QState);
-    d->addRegion(const_cast<QRegion *>(region));
+    if (!d->regions->contains(region)) {
+        d->addRegion(region);
+
+        // Adjust opposite property
+        region->setState(this);
+    }
 }
 
-void QState::removeRegion(const QRegion *region)
+void QState::removeRegion(QRegion *region)
 {
     QTUML_D(QState);
-    d->removeRegion(const_cast<QRegion *>(region));
+    if (d->regions->contains(region)) {
+        d->removeRegion(region);
+
+        // Adjust opposite property
+        region->setState(0);
+    }
 }
 
 /*!
@@ -295,10 +305,12 @@ QBehavior *QState::exit() const
     return d->exit;
 }
 
-void QState::setExit(const QBehavior *exit)
+void QState::setExit(QBehavior *exit)
 {
     QTUML_D(QState);
-    d->setExit(const_cast<QBehavior *>(exit));
+    if (d->exit != exit) {
+        d->setExit(exit);
+    }
 }
 
 /*!
@@ -310,16 +322,26 @@ const QSet<QConnectionPointReference *> *QState::connections() const
     return d->connections;
 }
 
-void QState::addConnection(const QConnectionPointReference *connection)
+void QState::addConnection(QConnectionPointReference *connection)
 {
     QTUML_D(QState);
-    d->addConnection(const_cast<QConnectionPointReference *>(connection));
+    if (!d->connections->contains(connection)) {
+        d->addConnection(connection);
+
+        // Adjust opposite property
+        connection->setState(this);
+    }
 }
 
-void QState::removeConnection(const QConnectionPointReference *connection)
+void QState::removeConnection(QConnectionPointReference *connection)
 {
     QTUML_D(QState);
-    d->removeConnection(const_cast<QConnectionPointReference *>(connection));
+    if (d->connections->contains(connection)) {
+        d->removeConnection(connection);
+
+        // Adjust opposite property
+        connection->setState(0);
+    }
 }
 
 /*!
@@ -339,10 +361,12 @@ QState *QState::redefinedState() const
     return d->redefinedState;
 }
 
-void QState::setRedefinedState(const QState *redefinedState)
+void QState::setRedefinedState(QState *redefinedState)
 {
     QTUML_D(QState);
-    d->setRedefinedState(const_cast<QState *>(redefinedState));
+    if (d->redefinedState != redefinedState) {
+        d->setRedefinedState(redefinedState);
+    }
 }
 
 /*!
@@ -354,16 +378,20 @@ const QSet<QTrigger *> *QState::deferrableTriggers() const
     return d->deferrableTriggers;
 }
 
-void QState::addDeferrableTrigger(const QTrigger *deferrableTrigger)
+void QState::addDeferrableTrigger(QTrigger *deferrableTrigger)
 {
     QTUML_D(QState);
-    d->addDeferrableTrigger(const_cast<QTrigger *>(deferrableTrigger));
+    if (!d->deferrableTriggers->contains(deferrableTrigger)) {
+        d->addDeferrableTrigger(deferrableTrigger);
+    }
 }
 
-void QState::removeDeferrableTrigger(const QTrigger *deferrableTrigger)
+void QState::removeDeferrableTrigger(QTrigger *deferrableTrigger)
 {
     QTUML_D(QState);
-    d->removeDeferrableTrigger(const_cast<QTrigger *>(deferrableTrigger));
+    if (d->deferrableTriggers->contains(deferrableTrigger)) {
+        d->removeDeferrableTrigger(deferrableTrigger);
+    }
 }
 
 /*!
@@ -375,16 +403,26 @@ const QSet<QPseudostate *> *QState::connectionPoints() const
     return d->connectionPoints;
 }
 
-void QState::addConnectionPoint(const QPseudostate *connectionPoint)
+void QState::addConnectionPoint(QPseudostate *connectionPoint)
 {
     QTUML_D(QState);
-    d->addConnectionPoint(const_cast<QPseudostate *>(connectionPoint));
+    if (!d->connectionPoints->contains(connectionPoint)) {
+        d->addConnectionPoint(connectionPoint);
+
+        // Adjust opposite property
+        connectionPoint->setState(this);
+    }
 }
 
-void QState::removeConnectionPoint(const QPseudostate *connectionPoint)
+void QState::removeConnectionPoint(QPseudostate *connectionPoint)
 {
     QTUML_D(QState);
-    d->removeConnectionPoint(const_cast<QPseudostate *>(connectionPoint));
+    if (d->connectionPoints->contains(connectionPoint)) {
+        d->removeConnectionPoint(connectionPoint);
+
+        // Adjust opposite property
+        connectionPoint->setState(0);
+    }
 }
 
 /*!
@@ -396,10 +434,12 @@ QBehavior *QState::entry() const
     return d->entry;
 }
 
-void QState::setEntry(const QBehavior *entry)
+void QState::setEntry(QBehavior *entry)
 {
     QTUML_D(QState);
-    d->setEntry(const_cast<QBehavior *>(entry));
+    if (d->entry != entry) {
+        d->setEntry(entry);
+    }
 }
 
 /*!
@@ -411,10 +451,12 @@ QBehavior *QState::doActivity() const
     return d->doActivity;
 }
 
-void QState::setDoActivity(const QBehavior *doActivity)
+void QState::setDoActivity(QBehavior *doActivity)
 {
     QTUML_D(QState);
-    d->setDoActivity(const_cast<QBehavior *>(doActivity));
+    if (d->doActivity != doActivity) {
+        d->setDoActivity(doActivity);
+    }
 }
 
 /*!
@@ -426,10 +468,15 @@ QStateMachine *QState::submachine() const
     return d->submachine;
 }
 
-void QState::setSubmachine(const QStateMachine *submachine)
+void QState::setSubmachine(QStateMachine *submachine)
 {
     QTUML_D(QState);
-    d->setSubmachine(const_cast<QStateMachine *>(submachine));
+    if (d->submachine != submachine) {
+        d->setSubmachine(submachine);
+
+        // Adjust opposite property
+        submachine->addSubmachineState(this);
+    }
 }
 
 /*!
@@ -441,10 +488,12 @@ QConstraint *QState::stateInvariant() const
     return d->stateInvariant;
 }
 
-void QState::setStateInvariant(const QConstraint *stateInvariant)
+void QState::setStateInvariant(QConstraint *stateInvariant)
 {
     QTUML_D(QState);
-    d->setStateInvariant(const_cast<QConstraint *>(stateInvariant));
+    if (d->stateInvariant != stateInvariant) {
+        d->setStateInvariant(stateInvariant);
+    }
 }
 
 /*!

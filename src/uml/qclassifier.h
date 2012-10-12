@@ -85,38 +85,38 @@ public:
 
     // Association-ends
     const QSet<QUseCase *> *ownedUseCases() const;
-    void addOwnedUseCase(const QUseCase *ownedUseCase);
-    void removeOwnedUseCase(const QUseCase *ownedUseCase);
+    void addOwnedUseCase(QUseCase *ownedUseCase);
+    void removeOwnedUseCase(QUseCase *ownedUseCase);
     const QSet<QGeneralizationSet *> *powertypeExtents() const;
-    void addPowertypeExtent(const QGeneralizationSet *powertypeExtent);
-    void removePowertypeExtent(const QGeneralizationSet *powertypeExtent);
+    void addPowertypeExtent(QGeneralizationSet *powertypeExtent);
+    void removePowertypeExtent(QGeneralizationSet *powertypeExtent);
     const QSet<QUseCase *> *useCases() const;
-    void addUseCase(const QUseCase *useCase);
-    void removeUseCase(const QUseCase *useCase);
+    void addUseCase(QUseCase *useCase);
+    void removeUseCase(QUseCase *useCase);
     QClassifierTemplateParameter *templateParameter() const;
-    void setTemplateParameter(const QClassifierTemplateParameter *templateParameter);
+    void setTemplateParameter(QClassifierTemplateParameter *templateParameter);
     const QSet<QClassifier *> *redefinedClassifiers() const;
-    void addRedefinedClassifier(const QClassifier *redefinedClassifier);
-    void removeRedefinedClassifier(const QClassifier *redefinedClassifier);
+    void addRedefinedClassifier(QClassifier *redefinedClassifier);
+    void removeRedefinedClassifier(QClassifier *redefinedClassifier);
     QRedefinableTemplateSignature *ownedTemplateSignature() const;
-    void setOwnedTemplateSignature(const QRedefinableTemplateSignature *ownedTemplateSignature);
+    void setOwnedTemplateSignature(QRedefinableTemplateSignature *ownedTemplateSignature);
     const QSet<QCollaborationUse *> *collaborationUses() const;
-    void addCollaborationUse(const QCollaborationUse *collaborationUse);
-    void removeCollaborationUse(const QCollaborationUse *collaborationUse);
+    void addCollaborationUse(QCollaborationUse *collaborationUse);
+    void removeCollaborationUse(QCollaborationUse *collaborationUse);
     const QSet<QProperty *> *attributes() const;
     const QSet<QFeature *> *features() const;
     const QSet<QClassifier *> *generals() const;
-    void addGeneral(const QClassifier *general);
-    void removeGeneral(const QClassifier *general);
+    void addGeneral(QClassifier *general);
+    void removeGeneral(QClassifier *general);
     QCollaborationUse *representation() const;
-    void setRepresentation(const QCollaborationUse *representation);
+    void setRepresentation(QCollaborationUse *representation);
     const QSet<QGeneralization *> *generalizations() const;
-    void addGeneralization(const QGeneralization *generalization);
-    void removeGeneralization(const QGeneralization *generalization);
+    void addGeneralization(QGeneralization *generalization);
+    void removeGeneralization(QGeneralization *generalization);
     const QSet<QNamedElement *> *inheritedMembers() const;
     const QSet<QSubstitution *> *substitutions() const;
-    void addSubstitution(const QSubstitution *substitution);
-    void removeSubstitution(const QSubstitution *substitution);
+    void addSubstitution(QSubstitution *substitution);
+    void removeSubstitution(QSubstitution *substitution);
 
     // Operations
     const QSet<QFeature *> *allFeatures() const;

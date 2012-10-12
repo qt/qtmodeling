@@ -144,14 +144,14 @@ public:
     // Association-ends
     const QList<QType *> *endTypes() const;
     const QSet<QProperty *> *navigableOwnedEnds() const;
-    void addNavigableOwnedEnd(const QProperty *navigableOwnedEnd);
-    void removeNavigableOwnedEnd(const QProperty *navigableOwnedEnd);
+    void addNavigableOwnedEnd(QProperty *navigableOwnedEnd);
+    void removeNavigableOwnedEnd(QProperty *navigableOwnedEnd);
     const QList<QProperty *> *ownedEnds() const;
-    void addOwnedEnd(const QProperty *ownedEnd);
-    void removeOwnedEnd(const QProperty *ownedEnd);
+    void addOwnedEnd(QProperty *ownedEnd);
+    void removeOwnedEnd(QProperty *ownedEnd);
     const QList<QProperty *> *memberEnds() const;
-    void addMemberEnd(const QProperty *memberEnd);
-    void removeMemberEnd(const QProperty *memberEnd);
+    void addMemberEnd(QProperty *memberEnd);
+    void removeMemberEnd(QProperty *memberEnd);
 
 protected:
     explicit QAssociation(bool createPimpl, QObject *parent = 0);

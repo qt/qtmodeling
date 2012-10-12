@@ -73,14 +73,14 @@ public:
     QActivityGroup *superGroup;
 
     // Internal functions for association-ends
-    void setInActivity(const QActivity *inActivity);
-    void addContainedNode(const QActivityNode *containedNode);
-    void removeContainedNode(const QActivityNode *containedNode);
-    void addSubgroup(const QActivityGroup *subgroup);
-    void removeSubgroup(const QActivityGroup *subgroup);
-    void addContainedEdge(const QActivityEdge *containedEdge);
-    void removeContainedEdge(const QActivityEdge *containedEdge);
-    void setSuperGroup(const QActivityGroup *superGroup);
+    void setInActivity(QActivity *inActivity);
+    void addContainedNode(QActivityNode *containedNode);
+    void removeContainedNode(QActivityNode *containedNode);
+    void addSubgroup(QActivityGroup *subgroup);
+    void removeSubgroup(QActivityGroup *subgroup);
+    void addContainedEdge(QActivityEdge *containedEdge);
+    void removeContainedEdge(QActivityEdge *containedEdge);
+    void setSuperGroup(QActivityGroup *superGroup);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -141,8 +141,8 @@ public:
 
     // Association-ends
     const QSet<QConnectableElement *> *collaborationRoles() const;
-    void addCollaborationRole(const QConnectableElement *collaborationRole);
-    void removeCollaborationRole(const QConnectableElement *collaborationRole);
+    void addCollaborationRole(QConnectableElement *collaborationRole);
+    void removeCollaborationRole(QConnectableElement *collaborationRole);
 
 protected:
     explicit QCollaboration(bool createPimpl, QObject *parent = 0);

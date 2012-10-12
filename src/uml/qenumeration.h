@@ -73,8 +73,8 @@ public:
 
     // Association-ends
     const QList<QEnumerationLiteral *> *ownedLiterals() const;
-    void addOwnedLiteral(const QEnumerationLiteral *ownedLiteral);
-    void removeOwnedLiteral(const QEnumerationLiteral *ownedLiteral);
+    void addOwnedLiteral(QEnumerationLiteral *ownedLiteral);
+    void removeOwnedLiteral(QEnumerationLiteral *ownedLiteral);
 
 protected:
     explicit QEnumeration(bool createPimpl, QObject *parent = 0);

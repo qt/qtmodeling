@@ -106,18 +106,18 @@ public:
 
     // Association-ends
     QNamedElement *signature() const;
-    void setSignature(const QNamedElement *signature);
+    void setSignature(QNamedElement *signature);
     const QList<QValueSpecification *> *arguments() const;
-    void addArgument(const QValueSpecification *argument);
-    void removeArgument(const QValueSpecification *argument);
+    void addArgument(QValueSpecification *argument);
+    void removeArgument(QValueSpecification *argument);
     QMessageEnd *receiveEvent() const;
-    void setReceiveEvent(const QMessageEnd *receiveEvent);
+    void setReceiveEvent(QMessageEnd *receiveEvent);
     QInteraction *interaction() const;
-    void setInteraction(const QInteraction *interaction);
+    void setInteraction(QInteraction *interaction);
     QMessageEnd *sendEvent() const;
-    void setSendEvent(const QMessageEnd *sendEvent);
+    void setSendEvent(QMessageEnd *sendEvent);
     QConnector *connector() const;
-    void setConnector(const QConnector *connector);
+    void setConnector(QConnector *connector);
 
 protected:
     explicit QMessage(bool createPimpl, QObject *parent = 0);

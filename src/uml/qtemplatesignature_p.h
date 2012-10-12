@@ -70,11 +70,11 @@ public:
     QList<QTemplateParameter *> *ownedParameters;
 
     // Internal functions for association-ends
-    void addParameter(const QTemplateParameter *parameter);
-    void removeParameter(const QTemplateParameter *parameter);
-    void setTemplate_(const QTemplateableElement *template_);
-    void addOwnedParameter(const QTemplateParameter *ownedParameter);
-    void removeOwnedParameter(const QTemplateParameter *ownedParameter);
+    void addParameter(QTemplateParameter *parameter);
+    void removeParameter(QTemplateParameter *parameter);
+    void setTemplate_(QTemplateableElement *template_);
+    void addOwnedParameter(QTemplateParameter *ownedParameter);
+    void removeOwnedParameter(QTemplateParameter *ownedParameter);
 };
 
 QT_END_NAMESPACE_QTUML

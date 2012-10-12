@@ -81,15 +81,15 @@ public:
 
     // Association-ends
     QParameterableElement *default_() const;
-    void setDefault_(const QParameterableElement *default_);
+    void setDefault_(QParameterableElement *default_);
     QParameterableElement *parameteredElement() const;
-    void setParameteredElement(const QParameterableElement *parameteredElement);
+    void setParameteredElement(QParameterableElement *parameteredElement);
     QParameterableElement *ownedParameteredElement() const;
-    void setOwnedParameteredElement(const QParameterableElement *ownedParameteredElement);
+    void setOwnedParameteredElement(QParameterableElement *ownedParameteredElement);
     QParameterableElement *ownedDefault() const;
-    void setOwnedDefault(const QParameterableElement *ownedDefault);
+    void setOwnedDefault(QParameterableElement *ownedDefault);
     QTemplateSignature *signature() const;
-    void setSignature(const QTemplateSignature *signature);
+    void setSignature(QTemplateSignature *signature);
 
 protected:
     explicit QTemplateParameter(bool createPimpl, QObject *parent = 0);

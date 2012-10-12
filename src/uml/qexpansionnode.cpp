@@ -56,14 +56,14 @@ QExpansionNodePrivate::~QExpansionNodePrivate()
 {
 }
 
-void QExpansionNodePrivate::setRegionAsOutput(const QExpansionRegion *regionAsOutput)
+void QExpansionNodePrivate::setRegionAsOutput(QExpansionRegion *regionAsOutput)
 {
-    this->regionAsOutput = const_cast<QExpansionRegion *>(regionAsOutput);
+    this->regionAsOutput = regionAsOutput;
 }
 
-void QExpansionNodePrivate::setRegionAsInput(const QExpansionRegion *regionAsInput)
+void QExpansionNodePrivate::setRegionAsInput(QExpansionRegion *regionAsInput)
 {
-    this->regionAsInput = const_cast<QExpansionRegion *>(regionAsInput);
+    this->regionAsInput = regionAsInput;
 }
 
 /*!
@@ -100,10 +100,15 @@ QExpansionRegion *QExpansionNode::regionAsOutput() const
     return d->regionAsOutput;
 }
 
-void QExpansionNode::setRegionAsOutput(const QExpansionRegion *regionAsOutput)
+void QExpansionNode::setRegionAsOutput(QExpansionRegion *regionAsOutput)
 {
     QTUML_D(QExpansionNode);
-    d->setRegionAsOutput(const_cast<QExpansionRegion *>(regionAsOutput));
+    if (d->regionAsOutput != regionAsOutput) {
+        d->setRegionAsOutput(regionAsOutput);
+
+        // Adjust opposite property
+        regionAsOutput->addOutputElement(this);
+    }
 }
 
 /*!
@@ -115,10 +120,15 @@ QExpansionRegion *QExpansionNode::regionAsInput() const
     return d->regionAsInput;
 }
 
-void QExpansionNode::setRegionAsInput(const QExpansionRegion *regionAsInput)
+void QExpansionNode::setRegionAsInput(QExpansionRegion *regionAsInput)
 {
     QTUML_D(QExpansionNode);
-    d->setRegionAsInput(const_cast<QExpansionRegion *>(regionAsInput));
+    if (d->regionAsInput != regionAsInput) {
+        d->setRegionAsInput(regionAsInput);
+
+        // Adjust opposite property
+        regionAsInput->addInputElement(this);
+    }
 }
 
 #include "moc_qexpansionnode.cpp"

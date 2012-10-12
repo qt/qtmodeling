@@ -89,10 +89,10 @@ public:
 
     // Association-ends
     QCollaboration *type() const;
-    void setType(const QCollaboration *type);
+    void setType(QCollaboration *type);
     const QSet<QDependency *> *roleBindings() const;
-    void addRoleBinding(const QDependency *roleBinding);
-    void removeRoleBinding(const QDependency *roleBinding);
+    void addRoleBinding(QDependency *roleBinding);
+    void removeRoleBinding(QDependency *roleBinding);
 
 protected:
     explicit QCollaborationUse(bool createPimpl, QObject *parent = 0);

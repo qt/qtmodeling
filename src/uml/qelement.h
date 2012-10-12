@@ -68,8 +68,8 @@ public:
     const QSet<QElement *> *ownedElements() const;
     QElement *owner() const;
     const QSet<QComment *> *ownedComments() const;
-    void addOwnedComment(const QComment *ownedComment);
-    void removeOwnedComment(const QComment *ownedComment);
+    void addOwnedComment(QComment *ownedComment);
+    void removeOwnedComment(QComment *ownedComment);
 
     // Operations
     const QSet<QElement *> *allOwnedElements() const;

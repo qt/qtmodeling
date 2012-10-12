@@ -114,13 +114,17 @@ const QList<QString> *QOpaqueBehavior::languages() const
 void QOpaqueBehavior::addLanguage(QString language)
 {
     QTUML_D(QOpaqueBehavior);
-    d->addLanguage(language);
+    if (!d->languages->contains(language)) {
+        d->addLanguage(language);
+    }
 }
 
 void QOpaqueBehavior::removeLanguage(QString language)
 {
     QTUML_D(QOpaqueBehavior);
-    d->removeLanguage(language);
+    if (d->languages->contains(language)) {
+        d->removeLanguage(language);
+    }
 }
 
 /*!
@@ -135,13 +139,17 @@ const QList<QString> *QOpaqueBehavior::bodies() const
 void QOpaqueBehavior::addBody(QString body)
 {
     QTUML_D(QOpaqueBehavior);
-    d->addBody(body);
+    if (!d->bodies->contains(body)) {
+        d->addBody(body);
+    }
 }
 
 void QOpaqueBehavior::removeBody(QString body)
 {
     QTUML_D(QOpaqueBehavior);
-    d->removeBody(body);
+    if (d->bodies->contains(body)) {
+        d->removeBody(body);
+    }
 }
 
 #include "moc_qopaquebehavior.cpp"

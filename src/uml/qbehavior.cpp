@@ -81,86 +81,86 @@ void QBehaviorPrivate::setReentrant(bool isReentrant)
     this->isReentrant = isReentrant;
 }
 
-void QBehaviorPrivate::setSpecification(const QBehavioralFeature *specification)
+void QBehaviorPrivate::setSpecification(QBehavioralFeature *specification)
 {
-    this->specification = const_cast<QBehavioralFeature *>(specification);
+    this->specification = specification;
 }
 
-void QBehaviorPrivate::addPostcondition(const QConstraint *postcondition)
+void QBehaviorPrivate::addPostcondition(QConstraint *postcondition)
 {
-    this->postconditions->insert(const_cast<QConstraint *>(postcondition));
+    this->postconditions->insert(postcondition);
 
     // Adjust subsetted property(ies)
     addOwnedRule(postcondition);
 }
 
-void QBehaviorPrivate::removePostcondition(const QConstraint *postcondition)
+void QBehaviorPrivate::removePostcondition(QConstraint *postcondition)
 {
-    this->postconditions->remove(const_cast<QConstraint *>(postcondition));
+    this->postconditions->remove(postcondition);
 
     // Adjust subsetted property(ies)
     removeOwnedRule(postcondition);
 }
 
-void QBehaviorPrivate::addPrecondition(const QConstraint *precondition)
+void QBehaviorPrivate::addPrecondition(QConstraint *precondition)
 {
-    this->preconditions->insert(const_cast<QConstraint *>(precondition));
+    this->preconditions->insert(precondition);
 
     // Adjust subsetted property(ies)
     addOwnedRule(precondition);
 }
 
-void QBehaviorPrivate::removePrecondition(const QConstraint *precondition)
+void QBehaviorPrivate::removePrecondition(QConstraint *precondition)
 {
-    this->preconditions->remove(const_cast<QConstraint *>(precondition));
+    this->preconditions->remove(precondition);
 
     // Adjust subsetted property(ies)
     removeOwnedRule(precondition);
 }
 
-void QBehaviorPrivate::addRedefinedBehavior(const QBehavior *redefinedBehavior)
+void QBehaviorPrivate::addRedefinedBehavior(QBehavior *redefinedBehavior)
 {
-    this->redefinedBehaviors->insert(const_cast<QBehavior *>(redefinedBehavior));
+    this->redefinedBehaviors->insert(redefinedBehavior);
 
     // Adjust subsetted property(ies)
     addRedefinedClassifier(redefinedBehavior);
 }
 
-void QBehaviorPrivate::removeRedefinedBehavior(const QBehavior *redefinedBehavior)
+void QBehaviorPrivate::removeRedefinedBehavior(QBehavior *redefinedBehavior)
 {
-    this->redefinedBehaviors->remove(const_cast<QBehavior *>(redefinedBehavior));
+    this->redefinedBehaviors->remove(redefinedBehavior);
 
     // Adjust subsetted property(ies)
     removeRedefinedClassifier(redefinedBehavior);
 }
 
-void QBehaviorPrivate::addOwnedParameter(const QParameter *ownedParameter)
+void QBehaviorPrivate::addOwnedParameter(QParameter *ownedParameter)
 {
-    this->ownedParameters->append(const_cast<QParameter *>(ownedParameter));
+    this->ownedParameters->append(ownedParameter);
 
     // Adjust subsetted property(ies)
     addOwnedMember(ownedParameter);
 }
 
-void QBehaviorPrivate::removeOwnedParameter(const QParameter *ownedParameter)
+void QBehaviorPrivate::removeOwnedParameter(QParameter *ownedParameter)
 {
-    this->ownedParameters->removeAll(const_cast<QParameter *>(ownedParameter));
+    this->ownedParameters->removeAll(ownedParameter);
 
     // Adjust subsetted property(ies)
     removeOwnedMember(ownedParameter);
 }
 
-void QBehaviorPrivate::addOwnedParameterSet(const QParameterSet *ownedParameterSet)
+void QBehaviorPrivate::addOwnedParameterSet(QParameterSet *ownedParameterSet)
 {
-    this->ownedParameterSets->insert(const_cast<QParameterSet *>(ownedParameterSet));
+    this->ownedParameterSets->insert(ownedParameterSet);
 
     // Adjust subsetted property(ies)
     addOwnedMember(ownedParameterSet);
 }
 
-void QBehaviorPrivate::removeOwnedParameterSet(const QParameterSet *ownedParameterSet)
+void QBehaviorPrivate::removeOwnedParameterSet(QParameterSet *ownedParameterSet)
 {
-    this->ownedParameterSets->remove(const_cast<QParameterSet *>(ownedParameterSet));
+    this->ownedParameterSets->remove(ownedParameterSet);
 
     // Adjust subsetted property(ies)
     removeOwnedMember(ownedParameterSet);
@@ -195,7 +195,9 @@ bool QBehavior::isReentrant() const
 void QBehavior::setReentrant(bool isReentrant)
 {
     QTUML_D(QBehavior);
-    d->setReentrant(isReentrant);
+    if (d->isReentrant != isReentrant) {
+        d->setReentrant(isReentrant);
+    }
 }
 
 /*!
@@ -207,10 +209,15 @@ QBehavioralFeature *QBehavior::specification() const
     return d->specification;
 }
 
-void QBehavior::setSpecification(const QBehavioralFeature *specification)
+void QBehavior::setSpecification(QBehavioralFeature *specification)
 {
     QTUML_D(QBehavior);
-    d->setSpecification(const_cast<QBehavioralFeature *>(specification));
+    if (d->specification != specification) {
+        d->setSpecification(specification);
+
+        // Adjust opposite property
+        specification->addMethod(this);
+    }
 }
 
 /*!
@@ -222,16 +229,20 @@ const QSet<QConstraint *> *QBehavior::postconditions() const
     return d->postconditions;
 }
 
-void QBehavior::addPostcondition(const QConstraint *postcondition)
+void QBehavior::addPostcondition(QConstraint *postcondition)
 {
     QTUML_D(QBehavior);
-    d->addPostcondition(const_cast<QConstraint *>(postcondition));
+    if (!d->postconditions->contains(postcondition)) {
+        d->addPostcondition(postcondition);
+    }
 }
 
-void QBehavior::removePostcondition(const QConstraint *postcondition)
+void QBehavior::removePostcondition(QConstraint *postcondition)
 {
     QTUML_D(QBehavior);
-    d->removePostcondition(const_cast<QConstraint *>(postcondition));
+    if (d->postconditions->contains(postcondition)) {
+        d->removePostcondition(postcondition);
+    }
 }
 
 /*!
@@ -243,16 +254,20 @@ const QSet<QConstraint *> *QBehavior::preconditions() const
     return d->preconditions;
 }
 
-void QBehavior::addPrecondition(const QConstraint *precondition)
+void QBehavior::addPrecondition(QConstraint *precondition)
 {
     QTUML_D(QBehavior);
-    d->addPrecondition(const_cast<QConstraint *>(precondition));
+    if (!d->preconditions->contains(precondition)) {
+        d->addPrecondition(precondition);
+    }
 }
 
-void QBehavior::removePrecondition(const QConstraint *precondition)
+void QBehavior::removePrecondition(QConstraint *precondition)
 {
     QTUML_D(QBehavior);
-    d->removePrecondition(const_cast<QConstraint *>(precondition));
+    if (d->preconditions->contains(precondition)) {
+        d->removePrecondition(precondition);
+    }
 }
 
 /*!
@@ -264,16 +279,20 @@ const QSet<QBehavior *> *QBehavior::redefinedBehaviors() const
     return d->redefinedBehaviors;
 }
 
-void QBehavior::addRedefinedBehavior(const QBehavior *redefinedBehavior)
+void QBehavior::addRedefinedBehavior(QBehavior *redefinedBehavior)
 {
     QTUML_D(QBehavior);
-    d->addRedefinedBehavior(const_cast<QBehavior *>(redefinedBehavior));
+    if (!d->redefinedBehaviors->contains(redefinedBehavior)) {
+        d->addRedefinedBehavior(redefinedBehavior);
+    }
 }
 
-void QBehavior::removeRedefinedBehavior(const QBehavior *redefinedBehavior)
+void QBehavior::removeRedefinedBehavior(QBehavior *redefinedBehavior)
 {
     QTUML_D(QBehavior);
-    d->removeRedefinedBehavior(const_cast<QBehavior *>(redefinedBehavior));
+    if (d->redefinedBehaviors->contains(redefinedBehavior)) {
+        d->removeRedefinedBehavior(redefinedBehavior);
+    }
 }
 
 /*!
@@ -285,16 +304,20 @@ const QList<QParameter *> *QBehavior::ownedParameters() const
     return d->ownedParameters;
 }
 
-void QBehavior::addOwnedParameter(const QParameter *ownedParameter)
+void QBehavior::addOwnedParameter(QParameter *ownedParameter)
 {
     QTUML_D(QBehavior);
-    d->addOwnedParameter(const_cast<QParameter *>(ownedParameter));
+    if (!d->ownedParameters->contains(ownedParameter)) {
+        d->addOwnedParameter(ownedParameter);
+    }
 }
 
-void QBehavior::removeOwnedParameter(const QParameter *ownedParameter)
+void QBehavior::removeOwnedParameter(QParameter *ownedParameter)
 {
     QTUML_D(QBehavior);
-    d->removeOwnedParameter(const_cast<QParameter *>(ownedParameter));
+    if (d->ownedParameters->contains(ownedParameter)) {
+        d->removeOwnedParameter(ownedParameter);
+    }
 }
 
 /*!
@@ -306,16 +329,20 @@ const QSet<QParameterSet *> *QBehavior::ownedParameterSets() const
     return d->ownedParameterSets;
 }
 
-void QBehavior::addOwnedParameterSet(const QParameterSet *ownedParameterSet)
+void QBehavior::addOwnedParameterSet(QParameterSet *ownedParameterSet)
 {
     QTUML_D(QBehavior);
-    d->addOwnedParameterSet(const_cast<QParameterSet *>(ownedParameterSet));
+    if (!d->ownedParameterSets->contains(ownedParameterSet)) {
+        d->addOwnedParameterSet(ownedParameterSet);
+    }
 }
 
-void QBehavior::removeOwnedParameterSet(const QParameterSet *ownedParameterSet)
+void QBehavior::removeOwnedParameterSet(QParameterSet *ownedParameterSet)
 {
     QTUML_D(QBehavior);
-    d->removeOwnedParameterSet(const_cast<QParameterSet *>(ownedParameterSet));
+    if (d->ownedParameterSets->contains(ownedParameterSet)) {
+        d->removeOwnedParameterSet(ownedParameterSet);
+    }
 }
 
 /*!

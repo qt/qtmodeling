@@ -58,25 +58,25 @@ QStringExpressionPrivate::~QStringExpressionPrivate()
     delete subExpressions;
 }
 
-void QStringExpressionPrivate::setOwningExpression(const QStringExpression *owningExpression)
+void QStringExpressionPrivate::setOwningExpression(QStringExpression *owningExpression)
 {
-    this->owningExpression = const_cast<QStringExpression *>(owningExpression);
+    this->owningExpression = owningExpression;
 
     // Adjust subsetted property(ies)
     setOwner(owningExpression);
 }
 
-void QStringExpressionPrivate::addSubExpression(const QStringExpression *subExpression)
+void QStringExpressionPrivate::addSubExpression(QStringExpression *subExpression)
 {
-    this->subExpressions->insert(const_cast<QStringExpression *>(subExpression));
+    this->subExpressions->insert(subExpression);
 
     // Adjust subsetted property(ies)
     addOwnedElement(subExpression);
 }
 
-void QStringExpressionPrivate::removeSubExpression(const QStringExpression *subExpression)
+void QStringExpressionPrivate::removeSubExpression(QStringExpression *subExpression)
 {
-    this->subExpressions->remove(const_cast<QStringExpression *>(subExpression));
+    this->subExpressions->remove(subExpression);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(subExpression);
@@ -116,10 +116,15 @@ QStringExpression *QStringExpression::owningExpression() const
     return d->owningExpression;
 }
 
-void QStringExpression::setOwningExpression(const QStringExpression *owningExpression)
+void QStringExpression::setOwningExpression(QStringExpression *owningExpression)
 {
     QTUML_D(QStringExpression);
-    d->setOwningExpression(const_cast<QStringExpression *>(owningExpression));
+    if (d->owningExpression != owningExpression) {
+        d->setOwningExpression(owningExpression);
+
+        // Adjust opposite property
+        owningExpression->addSubExpression(this);
+    }
 }
 
 /*!
@@ -131,16 +136,26 @@ const QSet<QStringExpression *> *QStringExpression::subExpressions() const
     return d->subExpressions;
 }
 
-void QStringExpression::addSubExpression(const QStringExpression *subExpression)
+void QStringExpression::addSubExpression(QStringExpression *subExpression)
 {
     QTUML_D(QStringExpression);
-    d->addSubExpression(const_cast<QStringExpression *>(subExpression));
+    if (!d->subExpressions->contains(subExpression)) {
+        d->addSubExpression(subExpression);
+
+        // Adjust opposite property
+        subExpression->setOwningExpression(this);
+    }
 }
 
-void QStringExpression::removeSubExpression(const QStringExpression *subExpression)
+void QStringExpression::removeSubExpression(QStringExpression *subExpression)
 {
     QTUML_D(QStringExpression);
-    d->removeSubExpression(const_cast<QStringExpression *>(subExpression));
+    if (d->subExpressions->contains(subExpression)) {
+        d->removeSubExpression(subExpression);
+
+        // Adjust opposite property
+        subExpression->setOwningExpression(0);
+    }
 }
 
 /*!

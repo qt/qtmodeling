@@ -73,8 +73,8 @@ public:
     void setVisibility(QtUml::VisibilityKind visibility);
 
     // Internal functions for association-ends
-    void setImportingNamespace(const QNamespace *importingNamespace);
-    void setImportedPackage(const QPackage *importedPackage);
+    void setImportingNamespace(QNamespace *importingNamespace);
+    void setImportedPackage(QPackage *importedPackage);
 };
 
 QT_END_NAMESPACE_QTUML

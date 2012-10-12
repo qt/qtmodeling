@@ -68,34 +68,34 @@ void QGeneralizationPrivate::setSubstitutable(bool isSubstitutable)
     this->isSubstitutable = isSubstitutable;
 }
 
-void QGeneralizationPrivate::setSpecific(const QClassifier *specific)
+void QGeneralizationPrivate::setSpecific(QClassifier *specific)
 {
     // Adjust subsetted property(ies)
     removeSource(this->specific);
 
-    this->specific = const_cast<QClassifier *>(specific);
+    this->specific = specific;
 
     // Adjust subsetted property(ies)
     setOwner(specific);
     addSource(specific);
 }
 
-void QGeneralizationPrivate::addGeneralizationSet(const QGeneralizationSet *generalizationSet)
+void QGeneralizationPrivate::addGeneralizationSet(QGeneralizationSet *generalizationSet)
 {
-    this->generalizationSets->insert(const_cast<QGeneralizationSet *>(generalizationSet));
+    this->generalizationSets->insert(generalizationSet);
 }
 
-void QGeneralizationPrivate::removeGeneralizationSet(const QGeneralizationSet *generalizationSet)
+void QGeneralizationPrivate::removeGeneralizationSet(QGeneralizationSet *generalizationSet)
 {
-    this->generalizationSets->remove(const_cast<QGeneralizationSet *>(generalizationSet));
+    this->generalizationSets->remove(generalizationSet);
 }
 
-void QGeneralizationPrivate::setGeneral(const QClassifier *general)
+void QGeneralizationPrivate::setGeneral(QClassifier *general)
 {
     // Adjust subsetted property(ies)
     removeTarget(this->general);
 
-    this->general = const_cast<QClassifier *>(general);
+    this->general = general;
 
     // Adjust subsetted property(ies)
     addTarget(general);
@@ -138,7 +138,9 @@ bool QGeneralization::isSubstitutable() const
 void QGeneralization::setSubstitutable(bool isSubstitutable)
 {
     QTUML_D(QGeneralization);
-    d->setSubstitutable(isSubstitutable);
+    if (d->isSubstitutable != isSubstitutable) {
+        d->setSubstitutable(isSubstitutable);
+    }
 }
 
 /*!
@@ -150,10 +152,15 @@ QClassifier *QGeneralization::specific() const
     return d->specific;
 }
 
-void QGeneralization::setSpecific(const QClassifier *specific)
+void QGeneralization::setSpecific(QClassifier *specific)
 {
     QTUML_D(QGeneralization);
-    d->setSpecific(const_cast<QClassifier *>(specific));
+    if (d->specific != specific) {
+        d->setSpecific(specific);
+
+        // Adjust opposite property
+        specific->addGeneralization(this);
+    }
 }
 
 /*!
@@ -165,16 +172,26 @@ const QSet<QGeneralizationSet *> *QGeneralization::generalizationSets() const
     return d->generalizationSets;
 }
 
-void QGeneralization::addGeneralizationSet(const QGeneralizationSet *generalizationSet)
+void QGeneralization::addGeneralizationSet(QGeneralizationSet *generalizationSet)
 {
     QTUML_D(QGeneralization);
-    d->addGeneralizationSet(const_cast<QGeneralizationSet *>(generalizationSet));
+    if (!d->generalizationSets->contains(generalizationSet)) {
+        d->addGeneralizationSet(generalizationSet);
+
+        // Adjust opposite property
+        generalizationSet->addGeneralization(this);
+    }
 }
 
-void QGeneralization::removeGeneralizationSet(const QGeneralizationSet *generalizationSet)
+void QGeneralization::removeGeneralizationSet(QGeneralizationSet *generalizationSet)
 {
     QTUML_D(QGeneralization);
-    d->removeGeneralizationSet(const_cast<QGeneralizationSet *>(generalizationSet));
+    if (d->generalizationSets->contains(generalizationSet)) {
+        d->removeGeneralizationSet(generalizationSet);
+
+        // Adjust opposite property
+        generalizationSet->removeGeneralization(this);
+    }
 }
 
 /*!
@@ -186,10 +203,12 @@ QClassifier *QGeneralization::general() const
     return d->general;
 }
 
-void QGeneralization::setGeneral(const QClassifier *general)
+void QGeneralization::setGeneral(QClassifier *general)
 {
     QTUML_D(QGeneralization);
-    d->setGeneral(const_cast<QClassifier *>(general));
+    if (d->general != general) {
+        d->setGeneral(general);
+    }
 }
 
 #include "moc_qgeneralization.cpp"

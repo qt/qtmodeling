@@ -71,8 +71,8 @@ public:
     void setSynchronous(bool isSynchronous);
 
     // Internal functions for association-ends
-    void addResult(const QOutputPin *result);
-    void removeResult(const QOutputPin *result);
+    void addResult(QOutputPin *result);
+    void removeResult(QOutputPin *result);
 };
 
 QT_END_NAMESPACE_QTUML

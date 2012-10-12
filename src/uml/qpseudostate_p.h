@@ -73,8 +73,8 @@ public:
     void setKind(QtUml::PseudostateKind kind);
 
     // Internal functions for association-ends
-    void setState(const QState *state);
-    void setStateMachine(const QStateMachine *stateMachine);
+    void setState(QState *state);
+    void setStateMachine(QStateMachine *stateMachine);
 };
 
 QT_END_NAMESPACE_QTUML

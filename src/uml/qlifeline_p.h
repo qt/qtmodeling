@@ -75,12 +75,12 @@ public:
     QValueSpecification *selector;
 
     // Internal functions for association-ends
-    void setRepresents(const QConnectableElement *represents);
-    void setDecomposedAs(const QPartDecomposition *decomposedAs);
-    void addCoveredBy(const QInteractionFragment *coveredBy);
-    void removeCoveredBy(const QInteractionFragment *coveredBy);
-    void setInteraction(const QInteraction *interaction);
-    void setSelector(const QValueSpecification *selector);
+    void setRepresents(QConnectableElement *represents);
+    void setDecomposedAs(QPartDecomposition *decomposedAs);
+    void addCoveredBy(QInteractionFragment *coveredBy);
+    void removeCoveredBy(QInteractionFragment *coveredBy);
+    void setInteraction(QInteraction *interaction);
+    void setSelector(QValueSpecification *selector);
 };
 
 QT_END_NAMESPACE_QTUML

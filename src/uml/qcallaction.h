@@ -71,8 +71,8 @@ public:
 
     // Association-ends
     const QList<QOutputPin *> *results() const;
-    void addResult(const QOutputPin *result);
-    void removeResult(const QOutputPin *result);
+    void addResult(QOutputPin *result);
+    void removeResult(QOutputPin *result);
 
 protected:
     explicit QCallAction();

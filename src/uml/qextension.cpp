@@ -58,9 +58,9 @@ QExtensionPrivate::~QExtensionPrivate()
     delete ownedEnd;
 }
 
-void QExtensionPrivate::setOwnedEnd(const QExtensionEnd *ownedEnd)
+void QExtensionPrivate::setOwnedEnd(QExtensionEnd *ownedEnd)
 {
-    this->ownedEnd = const_cast<QExtensionEnd *>(ownedEnd);
+    this->ownedEnd = ownedEnd;
 }
 
 /*!
@@ -113,10 +113,12 @@ QExtensionEnd *QExtension::ownedEnd() const
     return d->ownedEnd;
 }
 
-void QExtension::setOwnedEnd(const QExtensionEnd *ownedEnd)
+void QExtension::setOwnedEnd(QExtensionEnd *ownedEnd)
 {
     QTUML_D(QExtension);
-    d->setOwnedEnd(const_cast<QExtensionEnd *>(ownedEnd));
+    if (d->ownedEnd != ownedEnd) {
+        d->setOwnedEnd(ownedEnd);
+    }
 }
 
 /*!

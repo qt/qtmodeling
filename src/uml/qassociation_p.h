@@ -77,12 +77,12 @@ public:
     void setDerived(bool isDerived);
 
     // Internal functions for association-ends
-    void addNavigableOwnedEnd(const QProperty *navigableOwnedEnd);
-    void removeNavigableOwnedEnd(const QProperty *navigableOwnedEnd);
-    void addOwnedEnd(const QProperty *ownedEnd);
-    void removeOwnedEnd(const QProperty *ownedEnd);
-    void addMemberEnd(const QProperty *memberEnd);
-    void removeMemberEnd(const QProperty *memberEnd);
+    void addNavigableOwnedEnd(QProperty *navigableOwnedEnd);
+    void removeNavigableOwnedEnd(QProperty *navigableOwnedEnd);
+    void addOwnedEnd(QProperty *ownedEnd);
+    void removeOwnedEnd(QProperty *ownedEnd);
+    void addMemberEnd(QProperty *memberEnd);
+    void removeMemberEnd(QProperty *memberEnd);
 };
 
 QT_END_NAMESPACE_QTUML

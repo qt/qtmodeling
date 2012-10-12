@@ -70,7 +70,7 @@ public:
 
     // Association-ends
     QValueSpecification *value() const;
-    void setValue(const QValueSpecification *value);
+    void setValue(QValueSpecification *value);
 
 protected:
     explicit QValuePin(bool createPimpl, QObject *parent = 0);

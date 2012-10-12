@@ -56,12 +56,12 @@ QReadStructuralFeatureActionPrivate::~QReadStructuralFeatureActionPrivate()
 {
 }
 
-void QReadStructuralFeatureActionPrivate::setResult(const QOutputPin *result)
+void QReadStructuralFeatureActionPrivate::setResult(QOutputPin *result)
 {
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
-    this->result = const_cast<QOutputPin *>(result);
+    this->result = result;
 
     // Adjust subsetted property(ies)
     addOutput(result);
@@ -101,10 +101,12 @@ QOutputPin *QReadStructuralFeatureAction::result() const
     return d->result;
 }
 
-void QReadStructuralFeatureAction::setResult(const QOutputPin *result)
+void QReadStructuralFeatureAction::setResult(QOutputPin *result)
 {
     QTUML_D(QReadStructuralFeatureAction);
-    d->setResult(const_cast<QOutputPin *>(result));
+    if (d->result != result) {
+        d->setResult(result);
+    }
 }
 
 #include "moc_qreadstructuralfeatureaction.cpp"

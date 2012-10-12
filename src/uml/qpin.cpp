@@ -87,7 +87,9 @@ bool QPin::isControl() const
 void QPin::setControl(bool isControl)
 {
     QTUML_D(QPin);
-    d->setControl(isControl);
+    if (d->isControl != isControl) {
+        d->setControl(isControl);
+    }
 }
 
 QT_END_NAMESPACE_QTUML

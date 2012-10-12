@@ -59,23 +59,23 @@ QPackageMergePrivate::~QPackageMergePrivate()
 {
 }
 
-void QPackageMergePrivate::setMergedPackage(const QPackage *mergedPackage)
+void QPackageMergePrivate::setMergedPackage(QPackage *mergedPackage)
 {
     // Adjust subsetted property(ies)
     removeTarget(this->mergedPackage);
 
-    this->mergedPackage = const_cast<QPackage *>(mergedPackage);
+    this->mergedPackage = mergedPackage;
 
     // Adjust subsetted property(ies)
     addTarget(mergedPackage);
 }
 
-void QPackageMergePrivate::setReceivingPackage(const QPackage *receivingPackage)
+void QPackageMergePrivate::setReceivingPackage(QPackage *receivingPackage)
 {
     // Adjust subsetted property(ies)
     removeSource(this->receivingPackage);
 
-    this->receivingPackage = const_cast<QPackage *>(receivingPackage);
+    this->receivingPackage = receivingPackage;
 
     // Adjust subsetted property(ies)
     setOwner(receivingPackage);
@@ -116,10 +116,12 @@ QPackage *QPackageMerge::mergedPackage() const
     return d->mergedPackage;
 }
 
-void QPackageMerge::setMergedPackage(const QPackage *mergedPackage)
+void QPackageMerge::setMergedPackage(QPackage *mergedPackage)
 {
     QTUML_D(QPackageMerge);
-    d->setMergedPackage(const_cast<QPackage *>(mergedPackage));
+    if (d->mergedPackage != mergedPackage) {
+        d->setMergedPackage(mergedPackage);
+    }
 }
 
 /*!
@@ -131,10 +133,15 @@ QPackage *QPackageMerge::receivingPackage() const
     return d->receivingPackage;
 }
 
-void QPackageMerge::setReceivingPackage(const QPackage *receivingPackage)
+void QPackageMerge::setReceivingPackage(QPackage *receivingPackage)
 {
     QTUML_D(QPackageMerge);
-    d->setReceivingPackage(const_cast<QPackage *>(receivingPackage));
+    if (d->receivingPackage != receivingPackage) {
+        d->setReceivingPackage(receivingPackage);
+
+        // Adjust opposite property
+        receivingPackage->addPackageMerge(this);
+    }
 }
 
 #include "moc_qpackagemerge.cpp"

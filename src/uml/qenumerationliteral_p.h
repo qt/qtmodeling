@@ -64,7 +64,7 @@ public:
     QEnumeration *enumeration;
 
     // Internal functions for association-ends
-    void setEnumeration(const QEnumeration *enumeration);
+    void setEnumeration(QEnumeration *enumeration);
 };
 
 QT_END_NAMESPACE_QTUML

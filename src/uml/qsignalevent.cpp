@@ -55,9 +55,9 @@ QSignalEventPrivate::~QSignalEventPrivate()
 {
 }
 
-void QSignalEventPrivate::setSignal(const QSignal *signal)
+void QSignalEventPrivate::setSignal(QSignal *signal)
 {
-    this->signal = const_cast<QSignal *>(signal);
+    this->signal = signal;
 }
 
 /*!
@@ -94,10 +94,12 @@ QSignal *QSignalEvent::signal() const
     return d->signal;
 }
 
-void QSignalEvent::setSignal(const QSignal *signal)
+void QSignalEvent::setSignal(QSignal *signal)
 {
     QTUML_D(QSignalEvent);
-    d->setSignal(const_cast<QSignal *>(signal));
+    if (d->signal != signal) {
+        d->setSignal(signal);
+    }
 }
 
 #include "moc_qsignalevent.cpp"

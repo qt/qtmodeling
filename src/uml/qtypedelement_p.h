@@ -64,7 +64,7 @@ public:
     QType *type;
 
     // Internal functions for association-ends
-    void setType(const QType *type);
+    void setType(QType *type);
 };
 
 QT_END_NAMESPACE_QTUML

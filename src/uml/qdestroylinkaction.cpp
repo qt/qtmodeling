@@ -58,14 +58,14 @@ QDestroyLinkActionPrivate::~QDestroyLinkActionPrivate()
     delete endData;
 }
 
-void QDestroyLinkActionPrivate::addEndData(const QLinkEndDestructionData *endData)
+void QDestroyLinkActionPrivate::addEndData(QLinkEndDestructionData *endData)
 {
-    this->endData->insert(const_cast<QLinkEndDestructionData *>(endData));
+    this->endData->insert(endData);
 }
 
-void QDestroyLinkActionPrivate::removeEndData(const QLinkEndDestructionData *endData)
+void QDestroyLinkActionPrivate::removeEndData(QLinkEndDestructionData *endData)
 {
-    this->endData->remove(const_cast<QLinkEndDestructionData *>(endData));
+    this->endData->remove(endData);
 }
 
 /*!
@@ -102,16 +102,20 @@ const QSet<QLinkEndDestructionData *> *QDestroyLinkAction::endData() const
     return d->endData;
 }
 
-void QDestroyLinkAction::addEndData(const QLinkEndDestructionData *endData)
+void QDestroyLinkAction::addEndData(QLinkEndDestructionData *endData)
 {
     QTUML_D(QDestroyLinkAction);
-    d->addEndData(const_cast<QLinkEndDestructionData *>(endData));
+    if (!d->endData->contains(endData)) {
+        d->addEndData(endData);
+    }
 }
 
-void QDestroyLinkAction::removeEndData(const QLinkEndDestructionData *endData)
+void QDestroyLinkAction::removeEndData(QLinkEndDestructionData *endData)
 {
     QTUML_D(QDestroyLinkAction);
-    d->removeEndData(const_cast<QLinkEndDestructionData *>(endData));
+    if (d->endData->contains(endData)) {
+        d->removeEndData(endData);
+    }
 }
 
 #include "moc_qdestroylinkaction.cpp"

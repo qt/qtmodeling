@@ -89,10 +89,10 @@ public:
 
     // Association-ends
     const QSet<QPort *> *ports() const;
-    void addPort(const QPort *port);
-    void removePort(const QPort *port);
+    void addPort(QPort *port);
+    void removePort(QPort *port);
     QEvent *event() const;
-    void setEvent(const QEvent *event);
+    void setEvent(QEvent *event);
 
 protected:
     explicit QTrigger(bool createPimpl, QObject *parent = 0);

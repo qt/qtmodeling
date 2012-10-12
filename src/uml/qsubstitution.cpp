@@ -59,23 +59,23 @@ QSubstitutionPrivate::~QSubstitutionPrivate()
 {
 }
 
-void QSubstitutionPrivate::setContract(const QClassifier *contract)
+void QSubstitutionPrivate::setContract(QClassifier *contract)
 {
     // Adjust subsetted property(ies)
     removeSupplier(this->contract);
 
-    this->contract = const_cast<QClassifier *>(contract);
+    this->contract = contract;
 
     // Adjust subsetted property(ies)
     addSupplier(contract);
 }
 
-void QSubstitutionPrivate::setSubstitutingClassifier(const QClassifier *substitutingClassifier)
+void QSubstitutionPrivate::setSubstitutingClassifier(QClassifier *substitutingClassifier)
 {
     // Adjust subsetted property(ies)
     removeClient(this->substitutingClassifier);
 
-    this->substitutingClassifier = const_cast<QClassifier *>(substitutingClassifier);
+    this->substitutingClassifier = substitutingClassifier;
 
     // Adjust subsetted property(ies)
     setOwner(substitutingClassifier);
@@ -116,10 +116,12 @@ QClassifier *QSubstitution::contract() const
     return d->contract;
 }
 
-void QSubstitution::setContract(const QClassifier *contract)
+void QSubstitution::setContract(QClassifier *contract)
 {
     QTUML_D(QSubstitution);
-    d->setContract(const_cast<QClassifier *>(contract));
+    if (d->contract != contract) {
+        d->setContract(contract);
+    }
 }
 
 /*!
@@ -131,10 +133,15 @@ QClassifier *QSubstitution::substitutingClassifier() const
     return d->substitutingClassifier;
 }
 
-void QSubstitution::setSubstitutingClassifier(const QClassifier *substitutingClassifier)
+void QSubstitution::setSubstitutingClassifier(QClassifier *substitutingClassifier)
 {
     QTUML_D(QSubstitution);
-    d->setSubstitutingClassifier(const_cast<QClassifier *>(substitutingClassifier));
+    if (d->substitutingClassifier != substitutingClassifier) {
+        d->setSubstitutingClassifier(substitutingClassifier);
+
+        // Adjust opposite property
+        substitutingClassifier->addSubstitution(this);
+    }
 }
 
 #include "moc_qsubstitution.cpp"

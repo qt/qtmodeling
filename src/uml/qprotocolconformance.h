@@ -84,9 +84,9 @@ public:
 
     // Association-ends
     QProtocolStateMachine *specificMachine() const;
-    void setSpecificMachine(const QProtocolStateMachine *specificMachine);
+    void setSpecificMachine(QProtocolStateMachine *specificMachine);
     QProtocolStateMachine *generalMachine() const;
-    void setGeneralMachine(const QProtocolStateMachine *generalMachine);
+    void setGeneralMachine(QProtocolStateMachine *generalMachine);
 
 protected:
     explicit QProtocolConformance(bool createPimpl, QObject *parent = 0);

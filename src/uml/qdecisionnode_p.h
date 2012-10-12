@@ -66,8 +66,8 @@ public:
     QBehavior *decisionInput;
 
     // Internal functions for association-ends
-    void setDecisionInputFlow(const QObjectFlow *decisionInputFlow);
-    void setDecisionInput(const QBehavior *decisionInput);
+    void setDecisionInputFlow(QObjectFlow *decisionInputFlow);
+    void setDecisionInput(QBehavior *decisionInput);
 };
 
 QT_END_NAMESPACE_QTUML

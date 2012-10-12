@@ -84,9 +84,9 @@ public:
 
     // Association-ends
     QPackage *mergedPackage() const;
-    void setMergedPackage(const QPackage *mergedPackage);
+    void setMergedPackage(QPackage *mergedPackage);
     QPackage *receivingPackage() const;
-    void setReceivingPackage(const QPackage *receivingPackage);
+    void setReceivingPackage(QPackage *receivingPackage);
 
 protected:
     explicit QPackageMerge(bool createPimpl, QObject *parent = 0);

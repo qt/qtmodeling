@@ -82,13 +82,13 @@ public:
 
     // Association-ends
     const QList<QTemplateParameter *> *parameters() const;
-    void addParameter(const QTemplateParameter *parameter);
-    void removeParameter(const QTemplateParameter *parameter);
+    void addParameter(QTemplateParameter *parameter);
+    void removeParameter(QTemplateParameter *parameter);
     QTemplateableElement *template_() const;
-    void setTemplate_(const QTemplateableElement *template_);
+    void setTemplate_(QTemplateableElement *template_);
     const QList<QTemplateParameter *> *ownedParameters() const;
-    void addOwnedParameter(const QTemplateParameter *ownedParameter);
-    void removeOwnedParameter(const QTemplateParameter *ownedParameter);
+    void addOwnedParameter(QTemplateParameter *ownedParameter);
+    void removeOwnedParameter(QTemplateParameter *ownedParameter);
 
 protected:
     explicit QTemplateSignature(bool createPimpl, QObject *parent = 0);

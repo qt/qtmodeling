@@ -74,10 +74,10 @@ public:
     void setSubstitutable(bool isSubstitutable);
 
     // Internal functions for association-ends
-    void setSpecific(const QClassifier *specific);
-    void addGeneralizationSet(const QGeneralizationSet *generalizationSet);
-    void removeGeneralizationSet(const QGeneralizationSet *generalizationSet);
-    void setGeneral(const QClassifier *general);
+    void setSpecific(QClassifier *specific);
+    void addGeneralizationSet(QGeneralizationSet *generalizationSet);
+    void removeGeneralizationSet(QGeneralizationSet *generalizationSet);
+    void setGeneral(QClassifier *general);
 };
 
 QT_END_NAMESPACE_QTUML

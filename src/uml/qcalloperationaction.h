@@ -120,9 +120,9 @@ public:
 
     // Association-ends
     QOperation *operation() const;
-    void setOperation(const QOperation *operation);
+    void setOperation(QOperation *operation);
     QInputPin *target() const;
-    void setTarget(const QInputPin *target);
+    void setTarget(QInputPin *target);
 
 protected:
     explicit QCallOperationAction(bool createPimpl, QObject *parent = 0);

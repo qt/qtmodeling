@@ -79,7 +79,7 @@ public:
 
     // Association-ends
     QDurationInterval *specification() const;
-    void setSpecification(const QDurationInterval *specification);
+    void setSpecification(QDurationInterval *specification);
 
 protected:
     explicit QDurationConstraint(bool createPimpl, QObject *parent = 0);

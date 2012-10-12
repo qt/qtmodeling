@@ -56,9 +56,9 @@ QExtensionPointPrivate::~QExtensionPointPrivate()
 {
 }
 
-void QExtensionPointPrivate::setUseCase(const QUseCase *useCase)
+void QExtensionPointPrivate::setUseCase(QUseCase *useCase)
 {
-    this->useCase = const_cast<QUseCase *>(useCase);
+    this->useCase = useCase;
 
     // Adjust subsetted property(ies)
     setNamespace_(useCase);
@@ -98,10 +98,15 @@ QUseCase *QExtensionPoint::useCase() const
     return d->useCase;
 }
 
-void QExtensionPoint::setUseCase(const QUseCase *useCase)
+void QExtensionPoint::setUseCase(QUseCase *useCase)
 {
     QTUML_D(QExtensionPoint);
-    d->setUseCase(const_cast<QUseCase *>(useCase));
+    if (d->useCase != useCase) {
+        d->setUseCase(useCase);
+
+        // Adjust opposite property
+        useCase->addExtensionPoint(this);
+    }
 }
 
 #include "moc_qextensionpoint.cpp"

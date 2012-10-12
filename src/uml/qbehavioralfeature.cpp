@@ -80,56 +80,56 @@ void QBehavioralFeaturePrivate::setAbstract(bool isAbstract)
     this->isAbstract = isAbstract;
 }
 
-void QBehavioralFeaturePrivate::addRaisedException(const QType *raisedException)
+void QBehavioralFeaturePrivate::addRaisedException(QType *raisedException)
 {
-    this->raisedExceptions->insert(const_cast<QType *>(raisedException));
+    this->raisedExceptions->insert(raisedException);
 }
 
-void QBehavioralFeaturePrivate::removeRaisedException(const QType *raisedException)
+void QBehavioralFeaturePrivate::removeRaisedException(QType *raisedException)
 {
-    this->raisedExceptions->remove(const_cast<QType *>(raisedException));
+    this->raisedExceptions->remove(raisedException);
 }
 
-void QBehavioralFeaturePrivate::addOwnedParameter(const QParameter *ownedParameter)
+void QBehavioralFeaturePrivate::addOwnedParameter(QParameter *ownedParameter)
 {
-    this->ownedParameters->append(const_cast<QParameter *>(ownedParameter));
+    this->ownedParameters->append(ownedParameter);
 
     // Adjust subsetted property(ies)
     addOwnedMember(ownedParameter);
 }
 
-void QBehavioralFeaturePrivate::removeOwnedParameter(const QParameter *ownedParameter)
+void QBehavioralFeaturePrivate::removeOwnedParameter(QParameter *ownedParameter)
 {
-    this->ownedParameters->removeAll(const_cast<QParameter *>(ownedParameter));
+    this->ownedParameters->removeAll(ownedParameter);
 
     // Adjust subsetted property(ies)
     removeOwnedMember(ownedParameter);
 }
 
-void QBehavioralFeaturePrivate::addOwnedParameterSet(const QParameterSet *ownedParameterSet)
+void QBehavioralFeaturePrivate::addOwnedParameterSet(QParameterSet *ownedParameterSet)
 {
-    this->ownedParameterSets->insert(const_cast<QParameterSet *>(ownedParameterSet));
+    this->ownedParameterSets->insert(ownedParameterSet);
 
     // Adjust subsetted property(ies)
     addOwnedMember(ownedParameterSet);
 }
 
-void QBehavioralFeaturePrivate::removeOwnedParameterSet(const QParameterSet *ownedParameterSet)
+void QBehavioralFeaturePrivate::removeOwnedParameterSet(QParameterSet *ownedParameterSet)
 {
-    this->ownedParameterSets->remove(const_cast<QParameterSet *>(ownedParameterSet));
+    this->ownedParameterSets->remove(ownedParameterSet);
 
     // Adjust subsetted property(ies)
     removeOwnedMember(ownedParameterSet);
 }
 
-void QBehavioralFeaturePrivate::addMethod(const QBehavior *method)
+void QBehavioralFeaturePrivate::addMethod(QBehavior *method)
 {
-    this->methods->insert(const_cast<QBehavior *>(method));
+    this->methods->insert(method);
 }
 
-void QBehavioralFeaturePrivate::removeMethod(const QBehavior *method)
+void QBehavioralFeaturePrivate::removeMethod(QBehavior *method)
 {
-    this->methods->remove(const_cast<QBehavior *>(method));
+    this->methods->remove(method);
 }
 
 /*!
@@ -160,7 +160,9 @@ QtUml::CallConcurrencyKind QBehavioralFeature::concurrency() const
 void QBehavioralFeature::setConcurrency(QtUml::CallConcurrencyKind concurrency)
 {
     QTUML_D(QBehavioralFeature);
-    d->setConcurrency(concurrency);
+    if (d->concurrency != concurrency) {
+        d->setConcurrency(concurrency);
+    }
 }
 
 /*!
@@ -175,7 +177,9 @@ bool QBehavioralFeature::isAbstract() const
 void QBehavioralFeature::setAbstract(bool isAbstract)
 {
     QTUML_D(QBehavioralFeature);
-    d->setAbstract(isAbstract);
+    if (d->isAbstract != isAbstract) {
+        d->setAbstract(isAbstract);
+    }
 }
 
 /*!
@@ -187,16 +191,20 @@ const QSet<QType *> *QBehavioralFeature::raisedExceptions() const
     return d->raisedExceptions;
 }
 
-void QBehavioralFeature::addRaisedException(const QType *raisedException)
+void QBehavioralFeature::addRaisedException(QType *raisedException)
 {
     QTUML_D(QBehavioralFeature);
-    d->addRaisedException(const_cast<QType *>(raisedException));
+    if (!d->raisedExceptions->contains(raisedException)) {
+        d->addRaisedException(raisedException);
+    }
 }
 
-void QBehavioralFeature::removeRaisedException(const QType *raisedException)
+void QBehavioralFeature::removeRaisedException(QType *raisedException)
 {
     QTUML_D(QBehavioralFeature);
-    d->removeRaisedException(const_cast<QType *>(raisedException));
+    if (d->raisedExceptions->contains(raisedException)) {
+        d->removeRaisedException(raisedException);
+    }
 }
 
 /*!
@@ -208,16 +216,20 @@ const QList<QParameter *> *QBehavioralFeature::ownedParameters() const
     return d->ownedParameters;
 }
 
-void QBehavioralFeature::addOwnedParameter(const QParameter *ownedParameter)
+void QBehavioralFeature::addOwnedParameter(QParameter *ownedParameter)
 {
     QTUML_D(QBehavioralFeature);
-    d->addOwnedParameter(const_cast<QParameter *>(ownedParameter));
+    if (!d->ownedParameters->contains(ownedParameter)) {
+        d->addOwnedParameter(ownedParameter);
+    }
 }
 
-void QBehavioralFeature::removeOwnedParameter(const QParameter *ownedParameter)
+void QBehavioralFeature::removeOwnedParameter(QParameter *ownedParameter)
 {
     QTUML_D(QBehavioralFeature);
-    d->removeOwnedParameter(const_cast<QParameter *>(ownedParameter));
+    if (d->ownedParameters->contains(ownedParameter)) {
+        d->removeOwnedParameter(ownedParameter);
+    }
 }
 
 /*!
@@ -229,16 +241,20 @@ const QSet<QParameterSet *> *QBehavioralFeature::ownedParameterSets() const
     return d->ownedParameterSets;
 }
 
-void QBehavioralFeature::addOwnedParameterSet(const QParameterSet *ownedParameterSet)
+void QBehavioralFeature::addOwnedParameterSet(QParameterSet *ownedParameterSet)
 {
     QTUML_D(QBehavioralFeature);
-    d->addOwnedParameterSet(const_cast<QParameterSet *>(ownedParameterSet));
+    if (!d->ownedParameterSets->contains(ownedParameterSet)) {
+        d->addOwnedParameterSet(ownedParameterSet);
+    }
 }
 
-void QBehavioralFeature::removeOwnedParameterSet(const QParameterSet *ownedParameterSet)
+void QBehavioralFeature::removeOwnedParameterSet(QParameterSet *ownedParameterSet)
 {
     QTUML_D(QBehavioralFeature);
-    d->removeOwnedParameterSet(const_cast<QParameterSet *>(ownedParameterSet));
+    if (d->ownedParameterSets->contains(ownedParameterSet)) {
+        d->removeOwnedParameterSet(ownedParameterSet);
+    }
 }
 
 /*!
@@ -250,16 +266,26 @@ const QSet<QBehavior *> *QBehavioralFeature::methods() const
     return d->methods;
 }
 
-void QBehavioralFeature::addMethod(const QBehavior *method)
+void QBehavioralFeature::addMethod(QBehavior *method)
 {
     QTUML_D(QBehavioralFeature);
-    d->addMethod(const_cast<QBehavior *>(method));
+    if (!d->methods->contains(method)) {
+        d->addMethod(method);
+
+        // Adjust opposite property
+        method->setSpecification(this);
+    }
 }
 
-void QBehavioralFeature::removeMethod(const QBehavior *method)
+void QBehavioralFeature::removeMethod(QBehavior *method)
 {
     QTUML_D(QBehavioralFeature);
-    d->removeMethod(const_cast<QBehavior *>(method));
+    if (d->methods->contains(method)) {
+        d->removeMethod(method);
+
+        // Adjust opposite property
+        method->setSpecification(0);
+    }
 }
 
 /*!

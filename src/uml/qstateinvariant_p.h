@@ -66,8 +66,8 @@ public:
     QLifeline *covered;
 
     // Internal functions for association-ends
-    void setInvariant(const QConstraint *invariant);
-    void setCovered(const QLifeline *covered);
+    void setInvariant(QConstraint *invariant);
+    void setCovered(QLifeline *covered);
 };
 
 QT_END_NAMESPACE_QTUML

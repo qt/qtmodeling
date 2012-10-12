@@ -65,8 +65,8 @@ public:
     QProtocolStateMachine *generalMachine;
 
     // Internal functions for association-ends
-    void setSpecificMachine(const QProtocolStateMachine *specificMachine);
-    void setGeneralMachine(const QProtocolStateMachine *generalMachine);
+    void setSpecificMachine(QProtocolStateMachine *specificMachine);
+    void setGeneralMachine(QProtocolStateMachine *generalMachine);
 };
 
 QT_END_NAMESPACE_QTUML

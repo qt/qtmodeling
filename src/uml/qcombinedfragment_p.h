@@ -77,10 +77,10 @@ public:
     void setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator);
 
     // Internal functions for association-ends
-    void addCfragmentGate(const QGate *cfragmentGate);
-    void removeCfragmentGate(const QGate *cfragmentGate);
-    void addOperand(const QInteractionOperand *operand);
-    void removeOperand(const QInteractionOperand *operand);
+    void addCfragmentGate(QGate *cfragmentGate);
+    void removeCfragmentGate(QGate *cfragmentGate);
+    void addOperand(QInteractionOperand *operand);
+    void removeOperand(QInteractionOperand *operand);
 };
 
 QT_END_NAMESPACE_QTUML

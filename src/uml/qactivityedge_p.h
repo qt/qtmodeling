@@ -82,19 +82,19 @@ public:
     QActivityNode *target;
 
     // Internal functions for association-ends
-    void setSource(const QActivityNode *source);
-    void addRedefinedEdge(const QActivityEdge *redefinedEdge);
-    void removeRedefinedEdge(const QActivityEdge *redefinedEdge);
-    void addInGroup(const QActivityGroup *inGroup);
-    void removeInGroup(const QActivityGroup *inGroup);
-    void setGuard(const QValueSpecification *guard);
-    void addInPartition(const QActivityPartition *inPartition);
-    void removeInPartition(const QActivityPartition *inPartition);
-    void setActivity(const QActivity *activity);
-    void setInterrupts(const QInterruptibleActivityRegion *interrupts);
-    void setWeight(const QValueSpecification *weight);
-    void setInStructuredNode(const QStructuredActivityNode *inStructuredNode);
-    void setTarget(const QActivityNode *target);
+    void setSource(QActivityNode *source);
+    void addRedefinedEdge(QActivityEdge *redefinedEdge);
+    void removeRedefinedEdge(QActivityEdge *redefinedEdge);
+    void addInGroup(QActivityGroup *inGroup);
+    void removeInGroup(QActivityGroup *inGroup);
+    void setGuard(QValueSpecification *guard);
+    void addInPartition(QActivityPartition *inPartition);
+    void removeInPartition(QActivityPartition *inPartition);
+    void setActivity(QActivity *activity);
+    void setInterrupts(QInterruptibleActivityRegion *interrupts);
+    void setWeight(QValueSpecification *weight);
+    void setInStructuredNode(QStructuredActivityNode *inStructuredNode);
+    void setTarget(QActivityNode *target);
 };
 
 QT_END_NAMESPACE_QTUML

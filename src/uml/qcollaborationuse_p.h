@@ -69,9 +69,9 @@ public:
     QSet<QDependency *> *roleBindings;
 
     // Internal functions for association-ends
-    void setType(const QCollaboration *type);
-    void addRoleBinding(const QDependency *roleBinding);
-    void removeRoleBinding(const QDependency *roleBinding);
+    void setType(QCollaboration *type);
+    void addRoleBinding(QDependency *roleBinding);
+    void removeRoleBinding(QDependency *roleBinding);
 };
 
 QT_END_NAMESPACE_QTUML

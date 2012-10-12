@@ -68,10 +68,10 @@ public:
     QSet<QElement *> *targets;
 
     // Internal functions for association-ends
-    void addSource(const QElement *source);
-    void removeSource(const QElement *source);
-    void addTarget(const QElement *target);
-    void removeTarget(const QElement *target);
+    void addSource(QElement *source);
+    void removeSource(QElement *source);
+    void addTarget(QElement *target);
+    void removeTarget(QElement *target);
 };
 
 QT_END_NAMESPACE_QTUML

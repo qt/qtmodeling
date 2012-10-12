@@ -70,7 +70,7 @@ public:
 
     // Association-ends
     QOperation *parameteredElement() const;
-    void setParameteredElement(const QOperation *parameteredElement);
+    void setParameteredElement(QOperation *parameteredElement);
 
 protected:
     explicit QOperationTemplateParameter(bool createPimpl, QObject *parent = 0);

@@ -113,11 +113,11 @@ public:
 
     // Association-ends
     QInputPin *second() const;
-    void setSecond(const QInputPin *second);
+    void setSecond(QInputPin *second);
     QOutputPin *result() const;
-    void setResult(const QOutputPin *result);
+    void setResult(QOutputPin *result);
     QInputPin *first() const;
-    void setFirst(const QInputPin *first);
+    void setFirst(QInputPin *first);
 
 protected:
     explicit QTestIdentityAction(bool createPimpl, QObject *parent = 0);

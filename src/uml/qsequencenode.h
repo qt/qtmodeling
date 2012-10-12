@@ -73,8 +73,8 @@ public:
 
     // Association-ends
     const QList<QExecutableNode *> *executableNodes() const;
-    void addExecutableNode(const QExecutableNode *executableNode);
-    void removeExecutableNode(const QExecutableNode *executableNode);
+    void addExecutableNode(QExecutableNode *executableNode);
+    void removeExecutableNode(QExecutableNode *executableNode);
 
 protected:
     explicit QSequenceNode(bool createPimpl, QObject *parent = 0);

@@ -90,7 +90,7 @@ public:
 
     // Association-ends
     QSignal *signal() const;
-    void setSignal(const QSignal *signal);
+    void setSignal(QSignal *signal);
 
 protected:
     explicit QSignalEvent(bool createPimpl, QObject *parent = 0);

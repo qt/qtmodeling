@@ -118,7 +118,7 @@ public:
 
     // Association-ends
     QInputPin *object() const;
-    void setObject(const QInputPin *object);
+    void setObject(QInputPin *object);
 
 protected:
     explicit QStartObjectBehaviorAction(bool createPimpl, QObject *parent = 0);

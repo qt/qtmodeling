@@ -74,9 +74,9 @@ public:
 
     // Association-ends
     QValueSpecification *upperValue() const;
-    void setUpperValue(const QValueSpecification *upperValue);
+    void setUpperValue(QValueSpecification *upperValue);
     QValueSpecification *lowerValue() const;
-    void setLowerValue(const QValueSpecification *lowerValue);
+    void setLowerValue(QValueSpecification *lowerValue);
 
     // Operations
     bool compatibleWith(const QMultiplicityElement *other) const;

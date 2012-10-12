@@ -69,9 +69,9 @@ public:
     QEvent *event;
 
     // Internal functions for association-ends
-    void addPort(const QPort *port);
-    void removePort(const QPort *port);
-    void setEvent(const QEvent *event);
+    void addPort(QPort *port);
+    void removePort(QPort *port);
+    void setEvent(QEvent *event);
 };
 
 QT_END_NAMESPACE_QTUML

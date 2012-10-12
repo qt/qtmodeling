@@ -64,7 +64,7 @@ public:
     QInstanceSpecification *instance;
 
     // Internal functions for association-ends
-    void setInstance(const QInstanceSpecification *instance);
+    void setInstance(QInstanceSpecification *instance);
 };
 
 QT_END_NAMESPACE_QTUML

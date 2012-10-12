@@ -76,10 +76,10 @@ public:
     void setDeterminate(bool isDeterminate);
 
     // Internal functions for association-ends
-    void addClause(const QClause *clause);
-    void removeClause(const QClause *clause);
-    void addResult(const QOutputPin *result);
-    void removeResult(const QOutputPin *result);
+    void addClause(QClause *clause);
+    void removeClause(QClause *clause);
+    void addResult(QOutputPin *result);
+    void removeResult(QOutputPin *result);
 };
 
 QT_END_NAMESPACE_QTUML

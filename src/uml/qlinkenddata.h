@@ -83,12 +83,12 @@ public:
 
     // Association-ends
     QInputPin *value() const;
-    void setValue(const QInputPin *value);
+    void setValue(QInputPin *value);
     QProperty *end() const;
-    void setEnd(const QProperty *end);
+    void setEnd(QProperty *end);
     const QSet<QQualifierValue *> *qualifiers() const;
-    void addQualifier(const QQualifierValue *qualifier);
-    void removeQualifier(const QQualifierValue *qualifier);
+    void addQualifier(QQualifierValue *qualifier);
+    void removeQualifier(QQualifierValue *qualifier);
 
 protected:
     explicit QLinkEndData(bool createPimpl, QObject *parent = 0);

@@ -70,10 +70,10 @@ public:
     QSet<QInputPin *> *replyValues;
 
     // Internal functions for association-ends
-    void setReplyToCall(const QTrigger *replyToCall);
-    void setReturnInformation(const QInputPin *returnInformation);
-    void addReplyValue(const QInputPin *replyValue);
-    void removeReplyValue(const QInputPin *replyValue);
+    void setReplyToCall(QTrigger *replyToCall);
+    void setReturnInformation(QInputPin *returnInformation);
+    void addReplyValue(QInputPin *replyValue);
+    void removeReplyValue(QInputPin *replyValue);
 };
 
 QT_END_NAMESPACE_QTUML

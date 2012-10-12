@@ -80,20 +80,20 @@ public:
     QSet<QRelationship *> *realizations;
 
     // Internal functions for association-ends
-    void addInformationTarget(const QNamedElement *informationTarget);
-    void removeInformationTarget(const QNamedElement *informationTarget);
-    void addRealizingConnector(const QConnector *realizingConnector);
-    void removeRealizingConnector(const QConnector *realizingConnector);
-    void addConveyed(const QClassifier *conveyed);
-    void removeConveyed(const QClassifier *conveyed);
-    void addInformationSource(const QNamedElement *informationSource);
-    void removeInformationSource(const QNamedElement *informationSource);
-    void addRealizingMessage(const QMessage *realizingMessage);
-    void removeRealizingMessage(const QMessage *realizingMessage);
-    void addRealizingActivityEdge(const QActivityEdge *realizingActivityEdge);
-    void removeRealizingActivityEdge(const QActivityEdge *realizingActivityEdge);
-    void addRealization(const QRelationship *realization);
-    void removeRealization(const QRelationship *realization);
+    void addInformationTarget(QNamedElement *informationTarget);
+    void removeInformationTarget(QNamedElement *informationTarget);
+    void addRealizingConnector(QConnector *realizingConnector);
+    void removeRealizingConnector(QConnector *realizingConnector);
+    void addConveyed(QClassifier *conveyed);
+    void removeConveyed(QClassifier *conveyed);
+    void addInformationSource(QNamedElement *informationSource);
+    void removeInformationSource(QNamedElement *informationSource);
+    void addRealizingMessage(QMessage *realizingMessage);
+    void removeRealizingMessage(QMessage *realizingMessage);
+    void addRealizingActivityEdge(QActivityEdge *realizingActivityEdge);
+    void removeRealizingActivityEdge(QActivityEdge *realizingActivityEdge);
+    void addRealization(QRelationship *realization);
+    void removeRealization(QRelationship *realization);
 };
 
 QT_END_NAMESPACE_QTUML

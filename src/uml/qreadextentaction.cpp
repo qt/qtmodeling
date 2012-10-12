@@ -58,17 +58,17 @@ QReadExtentActionPrivate::~QReadExtentActionPrivate()
 {
 }
 
-void QReadExtentActionPrivate::setClassifier(const QClassifier *classifier)
+void QReadExtentActionPrivate::setClassifier(QClassifier *classifier)
 {
-    this->classifier = const_cast<QClassifier *>(classifier);
+    this->classifier = classifier;
 }
 
-void QReadExtentActionPrivate::setResult(const QOutputPin *result)
+void QReadExtentActionPrivate::setResult(QOutputPin *result)
 {
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
-    this->result = const_cast<QOutputPin *>(result);
+    this->result = result;
 
     // Adjust subsetted property(ies)
     addOutput(result);
@@ -108,10 +108,12 @@ QClassifier *QReadExtentAction::classifier() const
     return d->classifier;
 }
 
-void QReadExtentAction::setClassifier(const QClassifier *classifier)
+void QReadExtentAction::setClassifier(QClassifier *classifier)
 {
     QTUML_D(QReadExtentAction);
-    d->setClassifier(const_cast<QClassifier *>(classifier));
+    if (d->classifier != classifier) {
+        d->setClassifier(classifier);
+    }
 }
 
 /*!
@@ -123,10 +125,12 @@ QOutputPin *QReadExtentAction::result() const
     return d->result;
 }
 
-void QReadExtentAction::setResult(const QOutputPin *result)
+void QReadExtentAction::setResult(QOutputPin *result)
 {
     QTUML_D(QReadExtentAction);
-    d->setResult(const_cast<QOutputPin *>(result));
+    if (d->result != result) {
+        d->setResult(result);
+    }
 }
 
 #include "moc_qreadextentaction.cpp"

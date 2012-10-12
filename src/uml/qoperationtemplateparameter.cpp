@@ -55,9 +55,9 @@ QOperationTemplateParameterPrivate::~QOperationTemplateParameterPrivate()
 {
 }
 
-void QOperationTemplateParameterPrivate::setParameteredElement(const QOperation *parameteredElement)
+void QOperationTemplateParameterPrivate::setParameteredElement(QOperation *parameteredElement)
 {
-    this->parameteredElement = const_cast<QOperation *>(parameteredElement);
+    this->parameteredElement = parameteredElement;
 }
 
 /*!
@@ -94,10 +94,15 @@ QOperation *QOperationTemplateParameter::parameteredElement() const
     return d->parameteredElement;
 }
 
-void QOperationTemplateParameter::setParameteredElement(const QOperation *parameteredElement)
+void QOperationTemplateParameter::setParameteredElement(QOperation *parameteredElement)
 {
     QTUML_D(QOperationTemplateParameter);
-    d->setParameteredElement(const_cast<QOperation *>(parameteredElement));
+    if (d->parameteredElement != parameteredElement) {
+        d->setParameteredElement(parameteredElement);
+
+        // Adjust opposite property
+        parameteredElement->setTemplateParameter(this);
+    }
 }
 
 #include "moc_qoperationtemplateparameter.cpp"

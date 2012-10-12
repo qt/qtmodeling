@@ -64,7 +64,7 @@ public:
     QOutputPin *returnInformation;
 
     // Internal functions for association-ends
-    void setReturnInformation(const QOutputPin *returnInformation);
+    void setReturnInformation(QOutputPin *returnInformation);
 };
 
 QT_END_NAMESPACE_QTUML

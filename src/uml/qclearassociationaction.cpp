@@ -58,20 +58,20 @@ QClearAssociationActionPrivate::~QClearAssociationActionPrivate()
 {
 }
 
-void QClearAssociationActionPrivate::setObject(const QInputPin *object)
+void QClearAssociationActionPrivate::setObject(QInputPin *object)
 {
     // Adjust subsetted property(ies)
     removeInput(this->object);
 
-    this->object = const_cast<QInputPin *>(object);
+    this->object = object;
 
     // Adjust subsetted property(ies)
     addInput(object);
 }
 
-void QClearAssociationActionPrivate::setAssociation(const QAssociation *association)
+void QClearAssociationActionPrivate::setAssociation(QAssociation *association)
 {
-    this->association = const_cast<QAssociation *>(association);
+    this->association = association;
 }
 
 /*!
@@ -108,10 +108,12 @@ QInputPin *QClearAssociationAction::object() const
     return d->object;
 }
 
-void QClearAssociationAction::setObject(const QInputPin *object)
+void QClearAssociationAction::setObject(QInputPin *object)
 {
     QTUML_D(QClearAssociationAction);
-    d->setObject(const_cast<QInputPin *>(object));
+    if (d->object != object) {
+        d->setObject(object);
+    }
 }
 
 /*!
@@ -123,10 +125,12 @@ QAssociation *QClearAssociationAction::association() const
     return d->association;
 }
 
-void QClearAssociationAction::setAssociation(const QAssociation *association)
+void QClearAssociationAction::setAssociation(QAssociation *association)
 {
     QTUML_D(QClearAssociationAction);
-    d->setAssociation(const_cast<QAssociation *>(association));
+    if (d->association != association) {
+        d->setAssociation(association);
+    }
 }
 
 #include "moc_qclearassociationaction.cpp"

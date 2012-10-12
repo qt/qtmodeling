@@ -64,7 +64,7 @@ public:
     QConnectableElement *parameteredElement;
 
     // Internal functions for association-ends
-    void setParameteredElement(const QConnectableElement *parameteredElement);
+    void setParameteredElement(QConnectableElement *parameteredElement);
 };
 
 QT_END_NAMESPACE_QTUML

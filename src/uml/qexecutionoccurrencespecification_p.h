@@ -64,7 +64,7 @@ public:
     QExecutionSpecification *execution;
 
     // Internal functions for association-ends
-    void setExecution(const QExecutionSpecification *execution);
+    void setExecution(QExecutionSpecification *execution);
 };
 
 QT_END_NAMESPACE_QTUML

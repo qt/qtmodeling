@@ -71,9 +71,9 @@ public:
 
     // Association-ends
     QClassifier *contract() const;
-    void setContract(const QClassifier *contract);
+    void setContract(QClassifier *contract);
     QClassifier *substitutingClassifier() const;
-    void setSubstitutingClassifier(const QClassifier *substitutingClassifier);
+    void setSubstitutingClassifier(QClassifier *substitutingClassifier);
 
 protected:
     explicit QSubstitution(bool createPimpl, QObject *parent = 0);

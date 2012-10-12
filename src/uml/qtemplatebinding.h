@@ -90,12 +90,12 @@ public:
 
     // Association-ends
     QTemplateSignature *signature() const;
-    void setSignature(const QTemplateSignature *signature);
+    void setSignature(QTemplateSignature *signature);
     QTemplateableElement *boundElement() const;
-    void setBoundElement(const QTemplateableElement *boundElement);
+    void setBoundElement(QTemplateableElement *boundElement);
     const QSet<QTemplateParameterSubstitution *> *parameterSubstitutions() const;
-    void addParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution);
-    void removeParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution);
+    void addParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution);
+    void removeParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution);
 
 protected:
     explicit QTemplateBinding(bool createPimpl, QObject *parent = 0);

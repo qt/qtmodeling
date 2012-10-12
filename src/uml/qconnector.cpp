@@ -65,48 +65,48 @@ QConnectorPrivate::~QConnectorPrivate()
     delete ends;
 }
 
-void QConnectorPrivate::addRedefinedConnector(const QConnector *redefinedConnector)
+void QConnectorPrivate::addRedefinedConnector(QConnector *redefinedConnector)
 {
-    this->redefinedConnectors->insert(const_cast<QConnector *>(redefinedConnector));
+    this->redefinedConnectors->insert(redefinedConnector);
 
     // Adjust subsetted property(ies)
     addRedefinedElement(redefinedConnector);
 }
 
-void QConnectorPrivate::removeRedefinedConnector(const QConnector *redefinedConnector)
+void QConnectorPrivate::removeRedefinedConnector(QConnector *redefinedConnector)
 {
-    this->redefinedConnectors->remove(const_cast<QConnector *>(redefinedConnector));
+    this->redefinedConnectors->remove(redefinedConnector);
 
     // Adjust subsetted property(ies)
     removeRedefinedElement(redefinedConnector);
 }
 
-void QConnectorPrivate::addContract(const QBehavior *contract)
+void QConnectorPrivate::addContract(QBehavior *contract)
 {
-    this->contracts->insert(const_cast<QBehavior *>(contract));
+    this->contracts->insert(contract);
 }
 
-void QConnectorPrivate::removeContract(const QBehavior *contract)
+void QConnectorPrivate::removeContract(QBehavior *contract)
 {
-    this->contracts->remove(const_cast<QBehavior *>(contract));
+    this->contracts->remove(contract);
 }
 
-void QConnectorPrivate::setType(const QAssociation *type)
+void QConnectorPrivate::setType(QAssociation *type)
 {
-    this->type = const_cast<QAssociation *>(type);
+    this->type = type;
 }
 
-void QConnectorPrivate::addEnd(const QConnectorEnd *end)
+void QConnectorPrivate::addEnd(QConnectorEnd *end)
 {
-    this->ends->append(const_cast<QConnectorEnd *>(end));
+    this->ends->append(end);
 
     // Adjust subsetted property(ies)
     addOwnedElement(end);
 }
 
-void QConnectorPrivate::removeEnd(const QConnectorEnd *end)
+void QConnectorPrivate::removeEnd(QConnectorEnd *end)
 {
-    this->ends->removeAll(const_cast<QConnectorEnd *>(end));
+    this->ends->removeAll(end);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(end);
@@ -154,16 +154,20 @@ const QSet<QConnector *> *QConnector::redefinedConnectors() const
     return d->redefinedConnectors;
 }
 
-void QConnector::addRedefinedConnector(const QConnector *redefinedConnector)
+void QConnector::addRedefinedConnector(QConnector *redefinedConnector)
 {
     QTUML_D(QConnector);
-    d->addRedefinedConnector(const_cast<QConnector *>(redefinedConnector));
+    if (!d->redefinedConnectors->contains(redefinedConnector)) {
+        d->addRedefinedConnector(redefinedConnector);
+    }
 }
 
-void QConnector::removeRedefinedConnector(const QConnector *redefinedConnector)
+void QConnector::removeRedefinedConnector(QConnector *redefinedConnector)
 {
     QTUML_D(QConnector);
-    d->removeRedefinedConnector(const_cast<QConnector *>(redefinedConnector));
+    if (d->redefinedConnectors->contains(redefinedConnector)) {
+        d->removeRedefinedConnector(redefinedConnector);
+    }
 }
 
 /*!
@@ -175,16 +179,20 @@ const QSet<QBehavior *> *QConnector::contracts() const
     return d->contracts;
 }
 
-void QConnector::addContract(const QBehavior *contract)
+void QConnector::addContract(QBehavior *contract)
 {
     QTUML_D(QConnector);
-    d->addContract(const_cast<QBehavior *>(contract));
+    if (!d->contracts->contains(contract)) {
+        d->addContract(contract);
+    }
 }
 
-void QConnector::removeContract(const QBehavior *contract)
+void QConnector::removeContract(QBehavior *contract)
 {
     QTUML_D(QConnector);
-    d->removeContract(const_cast<QBehavior *>(contract));
+    if (d->contracts->contains(contract)) {
+        d->removeContract(contract);
+    }
 }
 
 /*!
@@ -196,10 +204,12 @@ QAssociation *QConnector::type() const
     return d->type;
 }
 
-void QConnector::setType(const QAssociation *type)
+void QConnector::setType(QAssociation *type)
 {
     QTUML_D(QConnector);
-    d->setType(const_cast<QAssociation *>(type));
+    if (d->type != type) {
+        d->setType(type);
+    }
 }
 
 /*!
@@ -211,16 +221,20 @@ const QList<QConnectorEnd *> *QConnector::ends() const
     return d->ends;
 }
 
-void QConnector::addEnd(const QConnectorEnd *end)
+void QConnector::addEnd(QConnectorEnd *end)
 {
     QTUML_D(QConnector);
-    d->addEnd(const_cast<QConnectorEnd *>(end));
+    if (!d->ends->contains(end)) {
+        d->addEnd(end);
+    }
 }
 
-void QConnector::removeEnd(const QConnectorEnd *end)
+void QConnector::removeEnd(QConnectorEnd *end)
 {
     QTUML_D(QConnector);
-    d->removeEnd(const_cast<QConnectorEnd *>(end));
+    if (d->ends->contains(end)) {
+        d->removeEnd(end);
+    }
 }
 
 #include "moc_qconnector.cpp"

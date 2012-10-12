@@ -101,17 +101,17 @@ public:
 
     // Association-ends
     const QSet<QGate *> *actualGates() const;
-    void addActualGate(const QGate *actualGate);
-    void removeActualGate(const QGate *actualGate);
+    void addActualGate(QGate *actualGate);
+    void removeActualGate(QGate *actualGate);
     QValueSpecification *returnValue() const;
-    void setReturnValue(const QValueSpecification *returnValue);
+    void setReturnValue(QValueSpecification *returnValue);
     QInteraction *refersTo() const;
-    void setRefersTo(const QInteraction *refersTo);
+    void setRefersTo(QInteraction *refersTo);
     const QList<QValueSpecification *> *arguments() const;
-    void addArgument(const QValueSpecification *argument);
-    void removeArgument(const QValueSpecification *argument);
+    void addArgument(QValueSpecification *argument);
+    void removeArgument(QValueSpecification *argument);
     QProperty *returnValueRecipient() const;
-    void setReturnValueRecipient(const QProperty *returnValueRecipient);
+    void setReturnValueRecipient(QProperty *returnValueRecipient);
 
 protected:
     explicit QInteractionUse(bool createPimpl, QObject *parent = 0);

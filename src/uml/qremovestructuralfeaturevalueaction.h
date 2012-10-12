@@ -123,7 +123,7 @@ public:
 
     // Association-ends
     QInputPin *removeAt() const;
-    void setRemoveAt(const QInputPin *removeAt);
+    void setRemoveAt(QInputPin *removeAt);
 
 protected:
     explicit QRemoveStructuralFeatureValueAction(bool createPimpl, QObject *parent = 0);

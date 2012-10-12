@@ -86,22 +86,22 @@ public:
 
     // Association-ends
     const QSet<QClause *> *successorClauses() const;
-    void addSuccessorClause(const QClause *successorClause);
-    void removeSuccessorClause(const QClause *successorClause);
+    void addSuccessorClause(QClause *successorClause);
+    void removeSuccessorClause(QClause *successorClause);
     QOutputPin *decider() const;
-    void setDecider(const QOutputPin *decider);
+    void setDecider(QOutputPin *decider);
     const QSet<QClause *> *predecessorClauses() const;
-    void addPredecessorClause(const QClause *predecessorClause);
-    void removePredecessorClause(const QClause *predecessorClause);
+    void addPredecessorClause(QClause *predecessorClause);
+    void removePredecessorClause(QClause *predecessorClause);
     const QList<QOutputPin *> *bodyOutputs() const;
-    void addBodyOutput(const QOutputPin *bodyOutput);
-    void removeBodyOutput(const QOutputPin *bodyOutput);
+    void addBodyOutput(QOutputPin *bodyOutput);
+    void removeBodyOutput(QOutputPin *bodyOutput);
     const QSet<QExecutableNode *> *bodies() const;
-    void addBody(const QExecutableNode *body);
-    void removeBody(const QExecutableNode *body);
+    void addBody(QExecutableNode *body);
+    void removeBody(QExecutableNode *body);
     const QSet<QExecutableNode *> *tests() const;
-    void addTest(const QExecutableNode *test);
-    void removeTest(const QExecutableNode *test);
+    void addTest(QExecutableNode *test);
+    void removeTest(QExecutableNode *test);
 
 protected:
     explicit QClause(bool createPimpl, QObject *parent = 0);

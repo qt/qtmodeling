@@ -76,10 +76,10 @@ public:
 
     // Association-ends
     QConstraint *postCondition() const;
-    void setPostCondition(const QConstraint *postCondition);
+    void setPostCondition(QConstraint *postCondition);
     const QSet<QOperation *> *referred() const;
     QConstraint *preCondition() const;
-    void setPreCondition(const QConstraint *preCondition);
+    void setPreCondition(QConstraint *preCondition);
 
 protected:
     explicit QProtocolTransition(bool createPimpl, QObject *parent = 0);

@@ -55,9 +55,9 @@ QCallBehaviorActionPrivate::~QCallBehaviorActionPrivate()
 {
 }
 
-void QCallBehaviorActionPrivate::setBehavior(const QBehavior *behavior)
+void QCallBehaviorActionPrivate::setBehavior(QBehavior *behavior)
 {
-    this->behavior = const_cast<QBehavior *>(behavior);
+    this->behavior = behavior;
 }
 
 /*!
@@ -94,10 +94,12 @@ QBehavior *QCallBehaviorAction::behavior() const
     return d->behavior;
 }
 
-void QCallBehaviorAction::setBehavior(const QBehavior *behavior)
+void QCallBehaviorAction::setBehavior(QBehavior *behavior)
 {
     QTUML_D(QCallBehaviorAction);
-    d->setBehavior(const_cast<QBehavior *>(behavior));
+    if (d->behavior != behavior) {
+        d->setBehavior(behavior);
+    }
 }
 
 #include "moc_qcallbehavioraction.cpp"

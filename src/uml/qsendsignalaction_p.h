@@ -66,8 +66,8 @@ public:
     QSignal *signal;
 
     // Internal functions for association-ends
-    void setTarget(const QInputPin *target);
-    void setSignal(const QSignal *signal);
+    void setTarget(QInputPin *target);
+    void setSignal(QSignal *signal);
 };
 
 QT_END_NAMESPACE_QTUML

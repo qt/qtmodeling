@@ -96,11 +96,11 @@ public:
 
     // Association-ends
     const QSet<QActivityEdge *> *interruptingEdges() const;
-    void addInterruptingEdge(const QActivityEdge *interruptingEdge);
-    void removeInterruptingEdge(const QActivityEdge *interruptingEdge);
+    void addInterruptingEdge(QActivityEdge *interruptingEdge);
+    void removeInterruptingEdge(QActivityEdge *interruptingEdge);
     const QSet<QActivityNode *> *nodes() const;
-    void addNode(const QActivityNode *node);
-    void removeNode(const QActivityNode *node);
+    void addNode(QActivityNode *node);
+    void removeNode(QActivityNode *node);
 
 protected:
     explicit QInterruptibleActivityRegion(bool createPimpl, QObject *parent = 0);

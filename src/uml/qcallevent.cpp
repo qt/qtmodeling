@@ -55,9 +55,9 @@ QCallEventPrivate::~QCallEventPrivate()
 {
 }
 
-void QCallEventPrivate::setOperation(const QOperation *operation)
+void QCallEventPrivate::setOperation(QOperation *operation)
 {
-    this->operation = const_cast<QOperation *>(operation);
+    this->operation = operation;
 }
 
 /*!
@@ -94,10 +94,12 @@ QOperation *QCallEvent::operation() const
     return d->operation;
 }
 
-void QCallEvent::setOperation(const QOperation *operation)
+void QCallEvent::setOperation(QOperation *operation)
 {
     QTUML_D(QCallEvent);
-    d->setOperation(const_cast<QOperation *>(operation));
+    if (d->operation != operation) {
+        d->setOperation(operation);
+    }
 }
 
 #include "moc_qcallevent.cpp"

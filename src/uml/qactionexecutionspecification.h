@@ -94,7 +94,7 @@ public:
 
     // Association-ends
     QAction *action() const;
-    void setAction(const QAction *action);
+    void setAction(QAction *action);
 
 protected:
     explicit QActionExecutionSpecification(bool createPimpl, QObject *parent = 0);

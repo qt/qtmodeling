@@ -58,17 +58,17 @@ QCreateObjectActionPrivate::~QCreateObjectActionPrivate()
 {
 }
 
-void QCreateObjectActionPrivate::setClassifier(const QClassifier *classifier)
+void QCreateObjectActionPrivate::setClassifier(QClassifier *classifier)
 {
-    this->classifier = const_cast<QClassifier *>(classifier);
+    this->classifier = classifier;
 }
 
-void QCreateObjectActionPrivate::setResult(const QOutputPin *result)
+void QCreateObjectActionPrivate::setResult(QOutputPin *result)
 {
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
-    this->result = const_cast<QOutputPin *>(result);
+    this->result = result;
 
     // Adjust subsetted property(ies)
     addOutput(result);
@@ -108,10 +108,12 @@ QClassifier *QCreateObjectAction::classifier() const
     return d->classifier;
 }
 
-void QCreateObjectAction::setClassifier(const QClassifier *classifier)
+void QCreateObjectAction::setClassifier(QClassifier *classifier)
 {
     QTUML_D(QCreateObjectAction);
-    d->setClassifier(const_cast<QClassifier *>(classifier));
+    if (d->classifier != classifier) {
+        d->setClassifier(classifier);
+    }
 }
 
 /*!
@@ -123,10 +125,12 @@ QOutputPin *QCreateObjectAction::result() const
     return d->result;
 }
 
-void QCreateObjectAction::setResult(const QOutputPin *result)
+void QCreateObjectAction::setResult(QOutputPin *result)
 {
     QTUML_D(QCreateObjectAction);
-    d->setResult(const_cast<QOutputPin *>(result));
+    if (d->result != result) {
+        d->setResult(result);
+    }
 }
 
 #include "moc_qcreateobjectaction.cpp"

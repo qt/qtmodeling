@@ -68,9 +68,9 @@ public:
     QSet<QObservation *> *observations;
 
     // Internal functions for association-ends
-    void setExpr(const QValueSpecification *expr);
-    void addObservation(const QObservation *observation);
-    void removeObservation(const QObservation *observation);
+    void setExpr(QValueSpecification *expr);
+    void addObservation(QObservation *observation);
+    void removeObservation(QObservation *observation);
 };
 
 QT_END_NAMESPACE_QTUML

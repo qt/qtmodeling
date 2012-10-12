@@ -66,8 +66,8 @@ public:
     QOutputPin *result;
 
     // Internal functions for association-ends
-    void setClassifier(const QClassifier *classifier);
-    void setResult(const QOutputPin *result);
+    void setClassifier(QClassifier *classifier);
+    void setResult(QOutputPin *result);
 };
 
 QT_END_NAMESPACE_QTUML

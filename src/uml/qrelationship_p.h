@@ -65,8 +65,8 @@ public:
     QSet<QElement *> *relatedElements;
 
     // Internal functions for association-ends
-    void addRelatedElement(const QElement *relatedElement);
-    void removeRelatedElement(const QElement *relatedElement);
+    void addRelatedElement(QElement *relatedElement);
+    void removeRelatedElement(QElement *relatedElement);
 };
 
 QT_END_NAMESPACE_QTUML

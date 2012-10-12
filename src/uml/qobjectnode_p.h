@@ -82,10 +82,10 @@ public:
     void setOrdering(QtUml::ObjectNodeOrderingKind ordering);
 
     // Internal functions for association-ends
-    void setUpperBound(const QValueSpecification *upperBound);
-    void setSelection(const QBehavior *selection);
-    void addInState(const QState *inState);
-    void removeInState(const QState *inState);
+    void setUpperBound(QValueSpecification *upperBound);
+    void setSelection(QBehavior *selection);
+    void addInState(QState *inState);
+    void removeInState(QState *inState);
 };
 
 QT_END_NAMESPACE_QTUML

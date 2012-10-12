@@ -62,36 +62,36 @@ QUnmarshallActionPrivate::~QUnmarshallActionPrivate()
     delete results;
 }
 
-void QUnmarshallActionPrivate::setObject(const QInputPin *object)
+void QUnmarshallActionPrivate::setObject(QInputPin *object)
 {
     // Adjust subsetted property(ies)
     removeInput(this->object);
 
-    this->object = const_cast<QInputPin *>(object);
+    this->object = object;
 
     // Adjust subsetted property(ies)
     addInput(object);
 }
 
-void QUnmarshallActionPrivate::addResult(const QOutputPin *result)
+void QUnmarshallActionPrivate::addResult(QOutputPin *result)
 {
-    this->results->insert(const_cast<QOutputPin *>(result));
+    this->results->insert(result);
 
     // Adjust subsetted property(ies)
     addOutput(result);
 }
 
-void QUnmarshallActionPrivate::removeResult(const QOutputPin *result)
+void QUnmarshallActionPrivate::removeResult(QOutputPin *result)
 {
-    this->results->remove(const_cast<QOutputPin *>(result));
+    this->results->remove(result);
 
     // Adjust subsetted property(ies)
     removeOutput(result);
 }
 
-void QUnmarshallActionPrivate::setUnmarshallType(const QClassifier *unmarshallType)
+void QUnmarshallActionPrivate::setUnmarshallType(QClassifier *unmarshallType)
 {
-    this->unmarshallType = const_cast<QClassifier *>(unmarshallType);
+    this->unmarshallType = unmarshallType;
 }
 
 /*!
@@ -128,10 +128,12 @@ QInputPin *QUnmarshallAction::object() const
     return d->object;
 }
 
-void QUnmarshallAction::setObject(const QInputPin *object)
+void QUnmarshallAction::setObject(QInputPin *object)
 {
     QTUML_D(QUnmarshallAction);
-    d->setObject(const_cast<QInputPin *>(object));
+    if (d->object != object) {
+        d->setObject(object);
+    }
 }
 
 /*!
@@ -143,16 +145,20 @@ const QSet<QOutputPin *> *QUnmarshallAction::results() const
     return d->results;
 }
 
-void QUnmarshallAction::addResult(const QOutputPin *result)
+void QUnmarshallAction::addResult(QOutputPin *result)
 {
     QTUML_D(QUnmarshallAction);
-    d->addResult(const_cast<QOutputPin *>(result));
+    if (!d->results->contains(result)) {
+        d->addResult(result);
+    }
 }
 
-void QUnmarshallAction::removeResult(const QOutputPin *result)
+void QUnmarshallAction::removeResult(QOutputPin *result)
 {
     QTUML_D(QUnmarshallAction);
-    d->removeResult(const_cast<QOutputPin *>(result));
+    if (d->results->contains(result)) {
+        d->removeResult(result);
+    }
 }
 
 /*!
@@ -164,10 +170,12 @@ QClassifier *QUnmarshallAction::unmarshallType() const
     return d->unmarshallType;
 }
 
-void QUnmarshallAction::setUnmarshallType(const QClassifier *unmarshallType)
+void QUnmarshallAction::setUnmarshallType(QClassifier *unmarshallType)
 {
     QTUML_D(QUnmarshallAction);
-    d->setUnmarshallType(const_cast<QClassifier *>(unmarshallType));
+    if (d->unmarshallType != unmarshallType) {
+        d->setUnmarshallType(unmarshallType);
+    }
 }
 
 #include "moc_qunmarshallaction.cpp"

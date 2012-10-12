@@ -61,28 +61,28 @@ QTemplateableElementPrivate::~QTemplateableElementPrivate()
     delete templateBindings;
 }
 
-void QTemplateableElementPrivate::setOwnedTemplateSignature(const QTemplateSignature *ownedTemplateSignature)
+void QTemplateableElementPrivate::setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->ownedTemplateSignature);
 
-    this->ownedTemplateSignature = const_cast<QTemplateSignature *>(ownedTemplateSignature);
+    this->ownedTemplateSignature = ownedTemplateSignature;
 
     // Adjust subsetted property(ies)
     addOwnedElement(ownedTemplateSignature);
 }
 
-void QTemplateableElementPrivate::addTemplateBinding(const QTemplateBinding *templateBinding)
+void QTemplateableElementPrivate::addTemplateBinding(QTemplateBinding *templateBinding)
 {
-    this->templateBindings->insert(const_cast<QTemplateBinding *>(templateBinding));
+    this->templateBindings->insert(templateBinding);
 
     // Adjust subsetted property(ies)
     addOwnedElement(templateBinding);
 }
 
-void QTemplateableElementPrivate::removeTemplateBinding(const QTemplateBinding *templateBinding)
+void QTemplateableElementPrivate::removeTemplateBinding(QTemplateBinding *templateBinding)
 {
-    this->templateBindings->remove(const_cast<QTemplateBinding *>(templateBinding));
+    this->templateBindings->remove(templateBinding);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(templateBinding);
@@ -113,10 +113,15 @@ QTemplateSignature *QTemplateableElement::ownedTemplateSignature() const
     return d->ownedTemplateSignature;
 }
 
-void QTemplateableElement::setOwnedTemplateSignature(const QTemplateSignature *ownedTemplateSignature)
+void QTemplateableElement::setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature)
 {
     QTUML_D(QTemplateableElement);
-    d->setOwnedTemplateSignature(const_cast<QTemplateSignature *>(ownedTemplateSignature));
+    if (d->ownedTemplateSignature != ownedTemplateSignature) {
+        d->setOwnedTemplateSignature(ownedTemplateSignature);
+
+        // Adjust opposite property
+        ownedTemplateSignature->setTemplate_(this);
+    }
 }
 
 /*!
@@ -128,16 +133,26 @@ const QSet<QTemplateBinding *> *QTemplateableElement::templateBindings() const
     return d->templateBindings;
 }
 
-void QTemplateableElement::addTemplateBinding(const QTemplateBinding *templateBinding)
+void QTemplateableElement::addTemplateBinding(QTemplateBinding *templateBinding)
 {
     QTUML_D(QTemplateableElement);
-    d->addTemplateBinding(const_cast<QTemplateBinding *>(templateBinding));
+    if (!d->templateBindings->contains(templateBinding)) {
+        d->addTemplateBinding(templateBinding);
+
+        // Adjust opposite property
+        templateBinding->setBoundElement(this);
+    }
 }
 
-void QTemplateableElement::removeTemplateBinding(const QTemplateBinding *templateBinding)
+void QTemplateableElement::removeTemplateBinding(QTemplateBinding *templateBinding)
 {
     QTUML_D(QTemplateableElement);
-    d->removeTemplateBinding(const_cast<QTemplateBinding *>(templateBinding));
+    if (d->templateBindings->contains(templateBinding)) {
+        d->removeTemplateBinding(templateBinding);
+
+        // Adjust opposite property
+        templateBinding->setBoundElement(0);
+    }
 }
 
 /*!

@@ -68,7 +68,7 @@ public:
     void setReplaceAll(bool isReplaceAll);
 
     // Internal functions for association-ends
-    void setInsertAt(const QInputPin *insertAt);
+    void setInsertAt(QInputPin *insertAt);
 };
 
 QT_END_NAMESPACE_QTUML

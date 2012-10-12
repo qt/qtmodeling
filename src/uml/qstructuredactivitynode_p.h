@@ -85,17 +85,17 @@ public:
     void setMustIsolate(bool mustIsolate);
 
     // Internal functions for association-ends
-    void addStructuredNodeInput(const QInputPin *structuredNodeInput);
-    void removeStructuredNodeInput(const QInputPin *structuredNodeInput);
-    void addNode(const QActivityNode *node);
-    void removeNode(const QActivityNode *node);
-    void addStructuredNodeOutput(const QOutputPin *structuredNodeOutput);
-    void removeStructuredNodeOutput(const QOutputPin *structuredNodeOutput);
-    void addEdge(const QActivityEdge *edge);
-    void removeEdge(const QActivityEdge *edge);
-    void addVariable(const QVariable *variable);
-    void removeVariable(const QVariable *variable);
-    void setActivity(const QActivity *activity);
+    void addStructuredNodeInput(QInputPin *structuredNodeInput);
+    void removeStructuredNodeInput(QInputPin *structuredNodeInput);
+    void addNode(QActivityNode *node);
+    void removeNode(QActivityNode *node);
+    void addStructuredNodeOutput(QOutputPin *structuredNodeOutput);
+    void removeStructuredNodeOutput(QOutputPin *structuredNodeOutput);
+    void addEdge(QActivityEdge *edge);
+    void removeEdge(QActivityEdge *edge);
+    void addVariable(QVariable *variable);
+    void removeVariable(QVariable *variable);
+    void setActivity(QActivity *activity);
 };
 
 QT_END_NAMESPACE_QTUML

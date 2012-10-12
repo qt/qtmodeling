@@ -78,9 +78,9 @@ public:
 
     // Association-ends
     QInputPin *value() const;
-    void setValue(const QInputPin *value);
+    void setValue(QInputPin *value);
     QProperty *qualifier() const;
-    void setQualifier(const QProperty *qualifier);
+    void setQualifier(QProperty *qualifier);
 
 protected:
     explicit QQualifierValue(bool createPimpl, QObject *parent = 0);

@@ -64,7 +64,7 @@ public:
 
     // Association-ends
     QType *type() const;
-    void setType(const QType *type);
+    void setType(QType *type);
 
 protected:
     explicit QTypedElement();

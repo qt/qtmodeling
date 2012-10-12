@@ -95,7 +95,7 @@ public:
 
     // Association-ends
     QTimeExpression *when() const;
-    void setWhen(const QTimeExpression *when);
+    void setWhen(QTimeExpression *when);
 
 protected:
     explicit QTimeEvent(bool createPimpl, QObject *parent = 0);

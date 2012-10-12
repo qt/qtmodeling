@@ -69,8 +69,8 @@ public:
     QActivity *activityScope;
 
     // Internal functions for association-ends
-    void setScope(const QStructuredActivityNode *scope);
-    void setActivityScope(const QActivity *activityScope);
+    void setScope(QStructuredActivityNode *scope);
+    void setActivityScope(QActivity *activityScope);
 };
 
 QT_END_NAMESPACE_QTUML

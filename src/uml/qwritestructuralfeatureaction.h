@@ -65,9 +65,9 @@ public:
 
     // Association-ends
     QOutputPin *result() const;
-    void setResult(const QOutputPin *result);
+    void setResult(QOutputPin *result);
     QInputPin *value() const;
-    void setValue(const QInputPin *value);
+    void setValue(QInputPin *value);
 
 protected:
     explicit QWriteStructuralFeatureAction();

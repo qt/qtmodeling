@@ -70,7 +70,7 @@ public:
 
     // Association-ends
     QOutputPin *result() const;
-    void setResult(const QOutputPin *result);
+    void setResult(QOutputPin *result);
 
 protected:
     explicit QCreateLinkObjectAction(bool createPimpl, QObject *parent = 0);

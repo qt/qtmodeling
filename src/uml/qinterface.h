@@ -138,22 +138,22 @@ public:
 
     // Association-ends
     QProtocolStateMachine *protocol() const;
-    void setProtocol(const QProtocolStateMachine *protocol);
+    void setProtocol(QProtocolStateMachine *protocol);
     const QSet<QInterface *> *redefinedInterfaces() const;
-    void addRedefinedInterface(const QInterface *redefinedInterface);
-    void removeRedefinedInterface(const QInterface *redefinedInterface);
+    void addRedefinedInterface(QInterface *redefinedInterface);
+    void removeRedefinedInterface(QInterface *redefinedInterface);
     const QSet<QReception *> *ownedReceptions() const;
-    void addOwnedReception(const QReception *ownedReception);
-    void removeOwnedReception(const QReception *ownedReception);
+    void addOwnedReception(QReception *ownedReception);
+    void removeOwnedReception(QReception *ownedReception);
     const QList<QOperation *> *ownedOperations() const;
-    void addOwnedOperation(const QOperation *ownedOperation);
-    void removeOwnedOperation(const QOperation *ownedOperation);
+    void addOwnedOperation(QOperation *ownedOperation);
+    void removeOwnedOperation(QOperation *ownedOperation);
     const QList<QClassifier *> *nestedClassifiers() const;
-    void addNestedClassifier(const QClassifier *nestedClassifier);
-    void removeNestedClassifier(const QClassifier *nestedClassifier);
+    void addNestedClassifier(QClassifier *nestedClassifier);
+    void removeNestedClassifier(QClassifier *nestedClassifier);
     const QList<QProperty *> *ownedAttributes() const;
-    void addOwnedAttribute(const QProperty *ownedAttribute);
-    void removeOwnedAttribute(const QProperty *ownedAttribute);
+    void addOwnedAttribute(QProperty *ownedAttribute);
+    void removeOwnedAttribute(QProperty *ownedAttribute);
 
 protected:
     explicit QInterface(bool createPimpl, QObject *parent = 0);

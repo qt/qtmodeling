@@ -99,9 +99,9 @@ public:
 
     // Association-ends
     QState *state() const;
-    void setState(const QState *state);
+    void setState(QState *state);
     QStateMachine *stateMachine() const;
-    void setStateMachine(const QStateMachine *stateMachine);
+    void setStateMachine(QStateMachine *stateMachine);
 
 protected:
     explicit QPseudostate(bool createPimpl, QObject *parent = 0);

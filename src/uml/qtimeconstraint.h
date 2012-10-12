@@ -75,7 +75,7 @@ public:
 
     // Association-ends
     QTimeInterval *specification() const;
-    void setSpecification(const QTimeInterval *specification);
+    void setSpecification(QTimeInterval *specification);
 
 protected:
     explicit QTimeConstraint(bool createPimpl, QObject *parent = 0);

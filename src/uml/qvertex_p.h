@@ -69,7 +69,7 @@ public:
     QRegion *container;
 
     // Internal functions for association-ends
-    void setContainer(const QRegion *container);
+    void setContainer(QRegion *container);
 };
 
 QT_END_NAMESPACE_QTUML

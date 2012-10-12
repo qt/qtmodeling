@@ -55,9 +55,9 @@ QInstanceValuePrivate::~QInstanceValuePrivate()
 {
 }
 
-void QInstanceValuePrivate::setInstance(const QInstanceSpecification *instance)
+void QInstanceValuePrivate::setInstance(QInstanceSpecification *instance)
 {
-    this->instance = const_cast<QInstanceSpecification *>(instance);
+    this->instance = instance;
 }
 
 /*!
@@ -94,10 +94,12 @@ QInstanceSpecification *QInstanceValue::instance() const
     return d->instance;
 }
 
-void QInstanceValue::setInstance(const QInstanceSpecification *instance)
+void QInstanceValue::setInstance(QInstanceSpecification *instance)
 {
     QTUML_D(QInstanceValue);
-    d->setInstance(const_cast<QInstanceSpecification *>(instance));
+    if (d->instance != instance) {
+        d->setInstance(instance);
+    }
 }
 
 #include "moc_qinstancevalue.cpp"

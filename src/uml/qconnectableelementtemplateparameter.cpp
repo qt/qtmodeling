@@ -55,9 +55,9 @@ QConnectableElementTemplateParameterPrivate::~QConnectableElementTemplateParamet
 {
 }
 
-void QConnectableElementTemplateParameterPrivate::setParameteredElement(const QConnectableElement *parameteredElement)
+void QConnectableElementTemplateParameterPrivate::setParameteredElement(QConnectableElement *parameteredElement)
 {
-    this->parameteredElement = const_cast<QConnectableElement *>(parameteredElement);
+    this->parameteredElement = parameteredElement;
 }
 
 /*!
@@ -94,10 +94,15 @@ QConnectableElement *QConnectableElementTemplateParameter::parameteredElement() 
     return d->parameteredElement;
 }
 
-void QConnectableElementTemplateParameter::setParameteredElement(const QConnectableElement *parameteredElement)
+void QConnectableElementTemplateParameter::setParameteredElement(QConnectableElement *parameteredElement)
 {
     QTUML_D(QConnectableElementTemplateParameter);
-    d->setParameteredElement(const_cast<QConnectableElement *>(parameteredElement));
+    if (d->parameteredElement != parameteredElement) {
+        d->setParameteredElement(parameteredElement);
+
+        // Adjust opposite property
+        parameteredElement->setTemplateParameter(this);
+    }
 }
 
 #include "moc_qconnectableelementtemplateparameter.cpp"

@@ -56,14 +56,14 @@ QTimeIntervalPrivate::~QTimeIntervalPrivate()
 {
 }
 
-void QTimeIntervalPrivate::setMax(const QTimeExpression *max)
+void QTimeIntervalPrivate::setMax(QTimeExpression *max)
 {
-    this->max = const_cast<QTimeExpression *>(max);
+    this->max = max;
 }
 
-void QTimeIntervalPrivate::setMin(const QTimeExpression *min)
+void QTimeIntervalPrivate::setMin(QTimeExpression *min)
 {
-    this->min = const_cast<QTimeExpression *>(min);
+    this->min = min;
 }
 
 /*!
@@ -100,10 +100,12 @@ QTimeExpression *QTimeInterval::max() const
     return d->max;
 }
 
-void QTimeInterval::setMax(const QTimeExpression *max)
+void QTimeInterval::setMax(QTimeExpression *max)
 {
     QTUML_D(QTimeInterval);
-    d->setMax(const_cast<QTimeExpression *>(max));
+    if (d->max != max) {
+        d->setMax(max);
+    }
 }
 
 /*!
@@ -115,10 +117,12 @@ QTimeExpression *QTimeInterval::min() const
     return d->min;
 }
 
-void QTimeInterval::setMin(const QTimeExpression *min)
+void QTimeInterval::setMin(QTimeExpression *min)
 {
     QTUML_D(QTimeInterval);
-    d->setMin(const_cast<QTimeExpression *>(min));
+    if (d->min != min) {
+        d->setMin(min);
+    }
 }
 
 #include "moc_qtimeinterval.cpp"

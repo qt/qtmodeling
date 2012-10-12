@@ -56,14 +56,14 @@ QExecutionSpecificationPrivate::~QExecutionSpecificationPrivate()
 {
 }
 
-void QExecutionSpecificationPrivate::setStart(const QOccurrenceSpecification *start)
+void QExecutionSpecificationPrivate::setStart(QOccurrenceSpecification *start)
 {
-    this->start = const_cast<QOccurrenceSpecification *>(start);
+    this->start = start;
 }
 
-void QExecutionSpecificationPrivate::setFinish(const QOccurrenceSpecification *finish)
+void QExecutionSpecificationPrivate::setFinish(QOccurrenceSpecification *finish)
 {
-    this->finish = const_cast<QOccurrenceSpecification *>(finish);
+    this->finish = finish;
 }
 
 /*!
@@ -91,10 +91,12 @@ QOccurrenceSpecification *QExecutionSpecification::start() const
     return d->start;
 }
 
-void QExecutionSpecification::setStart(const QOccurrenceSpecification *start)
+void QExecutionSpecification::setStart(QOccurrenceSpecification *start)
 {
     QTUML_D(QExecutionSpecification);
-    d->setStart(const_cast<QOccurrenceSpecification *>(start));
+    if (d->start != start) {
+        d->setStart(start);
+    }
 }
 
 /*!
@@ -106,10 +108,12 @@ QOccurrenceSpecification *QExecutionSpecification::finish() const
     return d->finish;
 }
 
-void QExecutionSpecification::setFinish(const QOccurrenceSpecification *finish)
+void QExecutionSpecification::setFinish(QOccurrenceSpecification *finish)
 {
     QTUML_D(QExecutionSpecification);
-    d->setFinish(const_cast<QOccurrenceSpecification *>(finish));
+    if (d->finish != finish) {
+        d->setFinish(finish);
+    }
 }
 
 QT_END_NAMESPACE_QTUML

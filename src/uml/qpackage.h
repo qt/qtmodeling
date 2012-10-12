@@ -124,23 +124,23 @@ public:
 
     // Association-ends
     const QSet<QType *> *ownedTypes() const;
-    void addOwnedType(const QType *ownedType);
-    void removeOwnedType(const QType *ownedType);
+    void addOwnedType(QType *ownedType);
+    void removeOwnedType(QType *ownedType);
     const QSet<QPackageableElement *> *packagedElements() const;
-    void addPackagedElement(const QPackageableElement *packagedElement);
-    void removePackagedElement(const QPackageableElement *packagedElement);
+    void addPackagedElement(QPackageableElement *packagedElement);
+    void removePackagedElement(QPackageableElement *packagedElement);
     QPackage *nestingPackage() const;
-    void setNestingPackage(const QPackage *nestingPackage);
+    void setNestingPackage(QPackage *nestingPackage);
     const QSet<QProfileApplication *> *profileApplications() const;
-    void addProfileApplication(const QProfileApplication *profileApplication);
-    void removeProfileApplication(const QProfileApplication *profileApplication);
+    void addProfileApplication(QProfileApplication *profileApplication);
+    void removeProfileApplication(QProfileApplication *profileApplication);
     const QSet<QStereotype *> *ownedStereotypes() const;
     const QSet<QPackageMerge *> *packageMerges() const;
-    void addPackageMerge(const QPackageMerge *packageMerge);
-    void removePackageMerge(const QPackageMerge *packageMerge);
+    void addPackageMerge(QPackageMerge *packageMerge);
+    void removePackageMerge(QPackageMerge *packageMerge);
     const QSet<QPackage *> *nestedPackages() const;
-    void addNestedPackage(const QPackage *nestedPackage);
-    void removeNestedPackage(const QPackage *nestedPackage);
+    void addNestedPackage(QPackage *nestedPackage);
+    void removeNestedPackage(QPackage *nestedPackage);
 
     // Operations
     const QSet<QStereotype *> *allApplicableStereotypes() const;

@@ -56,14 +56,14 @@ QDurationIntervalPrivate::~QDurationIntervalPrivate()
 {
 }
 
-void QDurationIntervalPrivate::setMax(const QDuration *max)
+void QDurationIntervalPrivate::setMax(QDuration *max)
 {
-    this->max = const_cast<QDuration *>(max);
+    this->max = max;
 }
 
-void QDurationIntervalPrivate::setMin(const QDuration *min)
+void QDurationIntervalPrivate::setMin(QDuration *min)
 {
-    this->min = const_cast<QDuration *>(min);
+    this->min = min;
 }
 
 /*!
@@ -100,10 +100,12 @@ QDuration *QDurationInterval::max() const
     return d->max;
 }
 
-void QDurationInterval::setMax(const QDuration *max)
+void QDurationInterval::setMax(QDuration *max)
 {
     QTUML_D(QDurationInterval);
-    d->setMax(const_cast<QDuration *>(max));
+    if (d->max != max) {
+        d->setMax(max);
+    }
 }
 
 /*!
@@ -115,10 +117,12 @@ QDuration *QDurationInterval::min() const
     return d->min;
 }
 
-void QDurationInterval::setMin(const QDuration *min)
+void QDurationInterval::setMin(QDuration *min)
 {
     QTUML_D(QDurationInterval);
-    d->setMin(const_cast<QDuration *>(min));
+    if (d->min != min) {
+        d->setMin(min);
+    }
 }
 
 #include "moc_qdurationinterval.cpp"

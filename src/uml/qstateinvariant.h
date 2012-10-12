@@ -91,9 +91,9 @@ public:
 
     // Association-ends
     QConstraint *invariant() const;
-    void setInvariant(const QConstraint *invariant);
+    void setInvariant(QConstraint *invariant);
     QLifeline *covered() const;
-    void setCovered(const QLifeline *covered);
+    void setCovered(QLifeline *covered);
 
 protected:
     explicit QStateInvariant(bool createPimpl, QObject *parent = 0);

@@ -132,12 +132,12 @@ public:
 
     // Association-ends
     QOperation *operation() const;
-    void setOperation(const QOperation *operation);
+    void setOperation(QOperation *operation);
     QValueSpecification *defaultValue() const;
-    void setDefaultValue(const QValueSpecification *defaultValue);
+    void setDefaultValue(QValueSpecification *defaultValue);
     const QSet<QParameterSet *> *parameterSets() const;
-    void addParameterSet(const QParameterSet *parameterSet);
-    void removeParameterSet(const QParameterSet *parameterSet);
+    void addParameterSet(QParameterSet *parameterSet);
+    void removeParameterSet(QParameterSet *parameterSet);
 
 protected:
     explicit QParameter(bool createPimpl, QObject *parent = 0);

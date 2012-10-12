@@ -62,12 +62,12 @@ void QRemoveVariableValueActionPrivate::setRemoveDuplicates(bool isRemoveDuplica
     this->isRemoveDuplicates = isRemoveDuplicates;
 }
 
-void QRemoveVariableValueActionPrivate::setRemoveAt(const QInputPin *removeAt)
+void QRemoveVariableValueActionPrivate::setRemoveAt(QInputPin *removeAt)
 {
     // Adjust subsetted property(ies)
     removeInput(this->removeAt);
 
-    this->removeAt = const_cast<QInputPin *>(removeAt);
+    this->removeAt = removeAt;
 
     // Adjust subsetted property(ies)
     addInput(removeAt);
@@ -110,7 +110,9 @@ bool QRemoveVariableValueAction::isRemoveDuplicates() const
 void QRemoveVariableValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
 {
     QTUML_D(QRemoveVariableValueAction);
-    d->setRemoveDuplicates(isRemoveDuplicates);
+    if (d->isRemoveDuplicates != isRemoveDuplicates) {
+        d->setRemoveDuplicates(isRemoveDuplicates);
+    }
 }
 
 /*!
@@ -122,10 +124,12 @@ QInputPin *QRemoveVariableValueAction::removeAt() const
     return d->removeAt;
 }
 
-void QRemoveVariableValueAction::setRemoveAt(const QInputPin *removeAt)
+void QRemoveVariableValueAction::setRemoveAt(QInputPin *removeAt)
 {
     QTUML_D(QRemoveVariableValueAction);
-    d->setRemoveAt(const_cast<QInputPin *>(removeAt));
+    if (d->removeAt != removeAt) {
+        d->setRemoveAt(removeAt);
+    }
 }
 
 #include "moc_qremovevariablevalueaction.cpp"

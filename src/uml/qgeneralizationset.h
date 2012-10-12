@@ -103,10 +103,10 @@ public:
 
     // Association-ends
     QClassifier *powertype() const;
-    void setPowertype(const QClassifier *powertype);
+    void setPowertype(QClassifier *powertype);
     const QSet<QGeneralization *> *generalizations() const;
-    void addGeneralization(const QGeneralization *generalization);
-    void removeGeneralization(const QGeneralization *generalization);
+    void addGeneralization(QGeneralization *generalization);
+    void removeGeneralization(QGeneralization *generalization);
 
 protected:
     explicit QGeneralizationSet(bool createPimpl, QObject *parent = 0);

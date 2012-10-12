@@ -80,14 +80,14 @@ public:
     void setFileName(QString fileName);
 
     // Internal functions for association-ends
-    void addOwnedOperation(const QOperation *ownedOperation);
-    void removeOwnedOperation(const QOperation *ownedOperation);
-    void addOwnedAttribute(const QProperty *ownedAttribute);
-    void removeOwnedAttribute(const QProperty *ownedAttribute);
-    void addManifestation(const QManifestation *manifestation);
-    void removeManifestation(const QManifestation *manifestation);
-    void addNestedArtifact(const QArtifact *nestedArtifact);
-    void removeNestedArtifact(const QArtifact *nestedArtifact);
+    void addOwnedOperation(QOperation *ownedOperation);
+    void removeOwnedOperation(QOperation *ownedOperation);
+    void addOwnedAttribute(QProperty *ownedAttribute);
+    void removeOwnedAttribute(QProperty *ownedAttribute);
+    void addManifestation(QManifestation *manifestation);
+    void removeManifestation(QManifestation *manifestation);
+    void addNestedArtifact(QArtifact *nestedArtifact);
+    void removeNestedArtifact(QArtifact *nestedArtifact);
 };
 
 QT_END_NAMESPACE_QTUML

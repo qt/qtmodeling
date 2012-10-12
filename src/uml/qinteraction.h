@@ -111,20 +111,20 @@ public:
 
     // Association-ends
     const QSet<QAction *> *actions() const;
-    void addAction(const QAction *action);
-    void removeAction(const QAction *action);
+    void addAction(QAction *action);
+    void removeAction(QAction *action);
     const QSet<QMessage *> *messages() const;
-    void addMessage(const QMessage *message);
-    void removeMessage(const QMessage *message);
+    void addMessage(QMessage *message);
+    void removeMessage(QMessage *message);
     const QSet<QGate *> *formalGates() const;
-    void addFormalGate(const QGate *formalGate);
-    void removeFormalGate(const QGate *formalGate);
+    void addFormalGate(QGate *formalGate);
+    void removeFormalGate(QGate *formalGate);
     const QList<QInteractionFragment *> *fragments() const;
-    void addFragment(const QInteractionFragment *fragment);
-    void removeFragment(const QInteractionFragment *fragment);
+    void addFragment(QInteractionFragment *fragment);
+    void removeFragment(QInteractionFragment *fragment);
     const QSet<QLifeline *> *lifelines() const;
-    void addLifeline(const QLifeline *lifeline);
-    void removeLifeline(const QLifeline *lifeline);
+    void addLifeline(QLifeline *lifeline);
+    void removeLifeline(QLifeline *lifeline);
 
 protected:
     explicit QInteraction(bool createPimpl, QObject *parent = 0);

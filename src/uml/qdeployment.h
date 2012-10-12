@@ -77,13 +77,13 @@ public:
 
     // Association-ends
     QDeploymentTarget *location() const;
-    void setLocation(const QDeploymentTarget *location);
+    void setLocation(QDeploymentTarget *location);
     const QSet<QDeploymentSpecification *> *configurations() const;
-    void addConfiguration(const QDeploymentSpecification *configuration);
-    void removeConfiguration(const QDeploymentSpecification *configuration);
+    void addConfiguration(QDeploymentSpecification *configuration);
+    void removeConfiguration(QDeploymentSpecification *configuration);
     const QSet<QDeployedArtifact *> *deployedArtifacts() const;
-    void addDeployedArtifact(const QDeployedArtifact *deployedArtifact);
-    void removeDeployedArtifact(const QDeployedArtifact *deployedArtifact);
+    void addDeployedArtifact(QDeployedArtifact *deployedArtifact);
+    void removeDeployedArtifact(QDeployedArtifact *deployedArtifact);
 
 protected:
     explicit QDeployment(bool createPimpl, QObject *parent = 0);

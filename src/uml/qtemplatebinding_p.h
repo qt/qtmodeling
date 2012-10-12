@@ -71,10 +71,10 @@ public:
     QSet<QTemplateParameterSubstitution *> *parameterSubstitutions;
 
     // Internal functions for association-ends
-    void setSignature(const QTemplateSignature *signature);
-    void setBoundElement(const QTemplateableElement *boundElement);
-    void addParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution);
-    void removeParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution);
+    void setSignature(QTemplateSignature *signature);
+    void setBoundElement(QTemplateableElement *boundElement);
+    void addParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution);
+    void removeParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution);
 };
 
 QT_END_NAMESPACE_QTUML

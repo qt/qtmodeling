@@ -109,7 +109,7 @@ public:
 
     // Association-ends
     QParameter *parameter() const;
-    void setParameter(const QParameter *parameter);
+    void setParameter(QParameter *parameter);
 
 protected:
     explicit QActivityParameterNode(bool createPimpl, QObject *parent = 0);

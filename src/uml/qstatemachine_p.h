@@ -74,14 +74,14 @@ public:
     QSet<QRegion *> *regions;
 
     // Internal functions for association-ends
-    void addExtendedStateMachine(const QStateMachine *extendedStateMachine);
-    void removeExtendedStateMachine(const QStateMachine *extendedStateMachine);
-    void addConnectionPoint(const QPseudostate *connectionPoint);
-    void removeConnectionPoint(const QPseudostate *connectionPoint);
-    void addSubmachineState(const QState *submachineState);
-    void removeSubmachineState(const QState *submachineState);
-    void addRegion(const QRegion *region);
-    void removeRegion(const QRegion *region);
+    void addExtendedStateMachine(QStateMachine *extendedStateMachine);
+    void removeExtendedStateMachine(QStateMachine *extendedStateMachine);
+    void addConnectionPoint(QPseudostate *connectionPoint);
+    void removeConnectionPoint(QPseudostate *connectionPoint);
+    void addSubmachineState(QState *submachineState);
+    void removeSubmachineState(QState *submachineState);
+    void addRegion(QRegion *region);
+    void removeRegion(QRegion *region);
 };
 
 QT_END_NAMESPACE_QTUML

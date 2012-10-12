@@ -64,7 +64,7 @@ public:
     QOperation *parameteredElement;
 
     // Internal functions for association-ends
-    void setParameteredElement(const QOperation *parameteredElement);
+    void setParameteredElement(QOperation *parameteredElement);
 };
 
 QT_END_NAMESPACE_QTUML

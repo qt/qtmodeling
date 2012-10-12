@@ -82,17 +82,17 @@ public:
 
     // Association-ends
     const QSet<QType *> *raisedExceptions() const;
-    void addRaisedException(const QType *raisedException);
-    void removeRaisedException(const QType *raisedException);
+    void addRaisedException(QType *raisedException);
+    void removeRaisedException(QType *raisedException);
     const QList<QParameter *> *ownedParameters() const;
-    void addOwnedParameter(const QParameter *ownedParameter);
-    void removeOwnedParameter(const QParameter *ownedParameter);
+    void addOwnedParameter(QParameter *ownedParameter);
+    void removeOwnedParameter(QParameter *ownedParameter);
     const QSet<QParameterSet *> *ownedParameterSets() const;
-    void addOwnedParameterSet(const QParameterSet *ownedParameterSet);
-    void removeOwnedParameterSet(const QParameterSet *ownedParameterSet);
+    void addOwnedParameterSet(QParameterSet *ownedParameterSet);
+    void removeOwnedParameterSet(QParameterSet *ownedParameterSet);
     const QSet<QBehavior *> *methods() const;
-    void addMethod(const QBehavior *method);
-    void removeMethod(const QBehavior *method);
+    void addMethod(QBehavior *method);
+    void removeMethod(QBehavior *method);
 
     // Operations
     bool isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const;

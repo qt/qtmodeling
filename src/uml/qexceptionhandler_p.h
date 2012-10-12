@@ -72,11 +72,11 @@ public:
     QObjectNode *exceptionInput;
 
     // Internal functions for association-ends
-    void setHandlerBody(const QExecutableNode *handlerBody);
-    void addExceptionType(const QClassifier *exceptionType);
-    void removeExceptionType(const QClassifier *exceptionType);
-    void setProtectedNode(const QExecutableNode *protectedNode);
-    void setExceptionInput(const QObjectNode *exceptionInput);
+    void setHandlerBody(QExecutableNode *handlerBody);
+    void addExceptionType(QClassifier *exceptionType);
+    void removeExceptionType(QClassifier *exceptionType);
+    void setProtectedNode(QExecutableNode *protectedNode);
+    void setExceptionInput(QObjectNode *exceptionInput);
 };
 
 QT_END_NAMESPACE_QTUML

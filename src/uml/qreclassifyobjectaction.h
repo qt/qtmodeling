@@ -121,13 +121,13 @@ public:
 
     // Association-ends
     const QSet<QClassifier *> *oldClassifiers() const;
-    void addOldClassifier(const QClassifier *oldClassifier);
-    void removeOldClassifier(const QClassifier *oldClassifier);
+    void addOldClassifier(QClassifier *oldClassifier);
+    void removeOldClassifier(QClassifier *oldClassifier);
     QInputPin *object() const;
-    void setObject(const QInputPin *object);
+    void setObject(QInputPin *object);
     const QSet<QClassifier *> *newClassifiers() const;
-    void addNewClassifier(const QClassifier *newClassifier);
-    void removeNewClassifier(const QClassifier *newClassifier);
+    void addNewClassifier(QClassifier *newClassifier);
+    void removeNewClassifier(QClassifier *newClassifier);
 
 protected:
     explicit QReclassifyObjectAction(bool createPimpl, QObject *parent = 0);

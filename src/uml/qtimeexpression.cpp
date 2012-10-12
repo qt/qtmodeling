@@ -58,22 +58,22 @@ QTimeExpressionPrivate::~QTimeExpressionPrivate()
     delete observations;
 }
 
-void QTimeExpressionPrivate::addObservation(const QObservation *observation)
+void QTimeExpressionPrivate::addObservation(QObservation *observation)
 {
-    this->observations->insert(const_cast<QObservation *>(observation));
+    this->observations->insert(observation);
 }
 
-void QTimeExpressionPrivate::removeObservation(const QObservation *observation)
+void QTimeExpressionPrivate::removeObservation(QObservation *observation)
 {
-    this->observations->remove(const_cast<QObservation *>(observation));
+    this->observations->remove(observation);
 }
 
-void QTimeExpressionPrivate::setExpr(const QValueSpecification *expr)
+void QTimeExpressionPrivate::setExpr(QValueSpecification *expr)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->expr);
 
-    this->expr = const_cast<QValueSpecification *>(expr);
+    this->expr = expr;
 
     // Adjust subsetted property(ies)
     addOwnedElement(expr);
@@ -113,16 +113,20 @@ const QSet<QObservation *> *QTimeExpression::observations() const
     return d->observations;
 }
 
-void QTimeExpression::addObservation(const QObservation *observation)
+void QTimeExpression::addObservation(QObservation *observation)
 {
     QTUML_D(QTimeExpression);
-    d->addObservation(const_cast<QObservation *>(observation));
+    if (!d->observations->contains(observation)) {
+        d->addObservation(observation);
+    }
 }
 
-void QTimeExpression::removeObservation(const QObservation *observation)
+void QTimeExpression::removeObservation(QObservation *observation)
 {
     QTUML_D(QTimeExpression);
-    d->removeObservation(const_cast<QObservation *>(observation));
+    if (d->observations->contains(observation)) {
+        d->removeObservation(observation);
+    }
 }
 
 /*!
@@ -134,10 +138,12 @@ QValueSpecification *QTimeExpression::expr() const
     return d->expr;
 }
 
-void QTimeExpression::setExpr(const QValueSpecification *expr)
+void QTimeExpression::setExpr(QValueSpecification *expr)
 {
     QTUML_D(QTimeExpression);
-    d->setExpr(const_cast<QValueSpecification *>(expr));
+    if (d->expr != expr) {
+        d->setExpr(expr);
+    }
 }
 
 #include "moc_qtimeexpression.cpp"

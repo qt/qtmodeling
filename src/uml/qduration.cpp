@@ -58,25 +58,25 @@ QDurationPrivate::~QDurationPrivate()
     delete observations;
 }
 
-void QDurationPrivate::setExpr(const QValueSpecification *expr)
+void QDurationPrivate::setExpr(QValueSpecification *expr)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->expr);
 
-    this->expr = const_cast<QValueSpecification *>(expr);
+    this->expr = expr;
 
     // Adjust subsetted property(ies)
     addOwnedElement(expr);
 }
 
-void QDurationPrivate::addObservation(const QObservation *observation)
+void QDurationPrivate::addObservation(QObservation *observation)
 {
-    this->observations->insert(const_cast<QObservation *>(observation));
+    this->observations->insert(observation);
 }
 
-void QDurationPrivate::removeObservation(const QObservation *observation)
+void QDurationPrivate::removeObservation(QObservation *observation)
 {
-    this->observations->remove(const_cast<QObservation *>(observation));
+    this->observations->remove(observation);
 }
 
 /*!
@@ -113,10 +113,12 @@ QValueSpecification *QDuration::expr() const
     return d->expr;
 }
 
-void QDuration::setExpr(const QValueSpecification *expr)
+void QDuration::setExpr(QValueSpecification *expr)
 {
     QTUML_D(QDuration);
-    d->setExpr(const_cast<QValueSpecification *>(expr));
+    if (d->expr != expr) {
+        d->setExpr(expr);
+    }
 }
 
 /*!
@@ -128,16 +130,20 @@ const QSet<QObservation *> *QDuration::observations() const
     return d->observations;
 }
 
-void QDuration::addObservation(const QObservation *observation)
+void QDuration::addObservation(QObservation *observation)
 {
     QTUML_D(QDuration);
-    d->addObservation(const_cast<QObservation *>(observation));
+    if (!d->observations->contains(observation)) {
+        d->addObservation(observation);
+    }
 }
 
-void QDuration::removeObservation(const QObservation *observation)
+void QDuration::removeObservation(QObservation *observation)
 {
     QTUML_D(QDuration);
-    d->removeObservation(const_cast<QObservation *>(observation));
+    if (d->observations->contains(observation)) {
+        d->removeObservation(observation);
+    }
 }
 
 #include "moc_qduration.cpp"

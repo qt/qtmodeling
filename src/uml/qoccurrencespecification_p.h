@@ -70,11 +70,11 @@ public:
     QSet<QGeneralOrdering *> *toBefore;
 
     // Internal functions for association-ends
-    void setCovered(const QLifeline *covered);
-    void addToAfter(const QGeneralOrdering *toAfter);
-    void removeToAfter(const QGeneralOrdering *toAfter);
-    void addToBefore(const QGeneralOrdering *toBefore);
-    void removeToBefore(const QGeneralOrdering *toBefore);
+    void setCovered(QLifeline *covered);
+    void addToAfter(QGeneralOrdering *toAfter);
+    void removeToAfter(QGeneralOrdering *toAfter);
+    void addToBefore(QGeneralOrdering *toBefore);
+    void removeToBefore(QGeneralOrdering *toBefore);
 };
 
 QT_END_NAMESPACE_QTUML

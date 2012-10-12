@@ -56,14 +56,14 @@ QGeneralOrderingPrivate::~QGeneralOrderingPrivate()
 {
 }
 
-void QGeneralOrderingPrivate::setBefore(const QOccurrenceSpecification *before)
+void QGeneralOrderingPrivate::setBefore(QOccurrenceSpecification *before)
 {
-    this->before = const_cast<QOccurrenceSpecification *>(before);
+    this->before = before;
 }
 
-void QGeneralOrderingPrivate::setAfter(const QOccurrenceSpecification *after)
+void QGeneralOrderingPrivate::setAfter(QOccurrenceSpecification *after)
 {
-    this->after = const_cast<QOccurrenceSpecification *>(after);
+    this->after = after;
 }
 
 /*!
@@ -100,10 +100,15 @@ QOccurrenceSpecification *QGeneralOrdering::before() const
     return d->before;
 }
 
-void QGeneralOrdering::setBefore(const QOccurrenceSpecification *before)
+void QGeneralOrdering::setBefore(QOccurrenceSpecification *before)
 {
     QTUML_D(QGeneralOrdering);
-    d->setBefore(const_cast<QOccurrenceSpecification *>(before));
+    if (d->before != before) {
+        d->setBefore(before);
+
+        // Adjust opposite property
+        before->addToAfter(this);
+    }
 }
 
 /*!
@@ -115,10 +120,15 @@ QOccurrenceSpecification *QGeneralOrdering::after() const
     return d->after;
 }
 
-void QGeneralOrdering::setAfter(const QOccurrenceSpecification *after)
+void QGeneralOrdering::setAfter(QOccurrenceSpecification *after)
 {
     QTUML_D(QGeneralOrdering);
-    d->setAfter(const_cast<QOccurrenceSpecification *>(after));
+    if (d->after != after) {
+        d->setAfter(after);
+
+        // Adjust opposite property
+        after->addToBefore(this);
+    }
 }
 
 #include "moc_qgeneralordering.cpp"

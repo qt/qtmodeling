@@ -83,18 +83,18 @@ public:
     void setSingleExecution(bool isSingleExecution);
 
     // Internal functions for association-ends
-    void addPartition(const QActivityPartition *partition);
-    void removePartition(const QActivityPartition *partition);
-    void addNode(const QActivityNode *node);
-    void removeNode(const QActivityNode *node);
-    void addVariable(const QVariable *variable);
-    void removeVariable(const QVariable *variable);
-    void addStructuredNode(const QStructuredActivityNode *structuredNode);
-    void removeStructuredNode(const QStructuredActivityNode *structuredNode);
-    void addGroup(const QActivityGroup *group);
-    void removeGroup(const QActivityGroup *group);
-    void addEdge(const QActivityEdge *edge);
-    void removeEdge(const QActivityEdge *edge);
+    void addPartition(QActivityPartition *partition);
+    void removePartition(QActivityPartition *partition);
+    void addNode(QActivityNode *node);
+    void removeNode(QActivityNode *node);
+    void addVariable(QVariable *variable);
+    void removeVariable(QVariable *variable);
+    void addStructuredNode(QStructuredActivityNode *structuredNode);
+    void removeStructuredNode(QStructuredActivityNode *structuredNode);
+    void addGroup(QActivityGroup *group);
+    void removeGroup(QActivityGroup *group);
+    void addEdge(QActivityEdge *edge);
+    void removeEdge(QActivityEdge *edge);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -59,23 +59,23 @@ QWriteStructuralFeatureActionPrivate::~QWriteStructuralFeatureActionPrivate()
 {
 }
 
-void QWriteStructuralFeatureActionPrivate::setResult(const QOutputPin *result)
+void QWriteStructuralFeatureActionPrivate::setResult(QOutputPin *result)
 {
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
-    this->result = const_cast<QOutputPin *>(result);
+    this->result = result;
 
     // Adjust subsetted property(ies)
     addOutput(result);
 }
 
-void QWriteStructuralFeatureActionPrivate::setValue(const QInputPin *value)
+void QWriteStructuralFeatureActionPrivate::setValue(QInputPin *value)
 {
     // Adjust subsetted property(ies)
     removeInput(this->value);
 
-    this->value = const_cast<QInputPin *>(value);
+    this->value = value;
 
     // Adjust subsetted property(ies)
     addInput(value);
@@ -106,10 +106,12 @@ QOutputPin *QWriteStructuralFeatureAction::result() const
     return d->result;
 }
 
-void QWriteStructuralFeatureAction::setResult(const QOutputPin *result)
+void QWriteStructuralFeatureAction::setResult(QOutputPin *result)
 {
     QTUML_D(QWriteStructuralFeatureAction);
-    d->setResult(const_cast<QOutputPin *>(result));
+    if (d->result != result) {
+        d->setResult(result);
+    }
 }
 
 /*!
@@ -121,10 +123,12 @@ QInputPin *QWriteStructuralFeatureAction::value() const
     return d->value;
 }
 
-void QWriteStructuralFeatureAction::setValue(const QInputPin *value)
+void QWriteStructuralFeatureAction::setValue(QInputPin *value)
 {
     QTUML_D(QWriteStructuralFeatureAction);
-    d->setValue(const_cast<QInputPin *>(value));
+    if (d->value != value) {
+        d->setValue(value);
+    }
 }
 
 QT_END_NAMESPACE_QTUML

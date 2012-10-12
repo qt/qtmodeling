@@ -58,17 +58,17 @@ QSendObjectActionPrivate::~QSendObjectActionPrivate()
     delete request;
 }
 
-void QSendObjectActionPrivate::setRequest(const QInputPin *request)
+void QSendObjectActionPrivate::setRequest(QInputPin *request)
 {
-    this->request = const_cast<QInputPin *>(request);
+    this->request = request;
 }
 
-void QSendObjectActionPrivate::setTarget(const QInputPin *target)
+void QSendObjectActionPrivate::setTarget(QInputPin *target)
 {
     // Adjust subsetted property(ies)
     removeInput(this->target);
 
-    this->target = const_cast<QInputPin *>(target);
+    this->target = target;
 
     // Adjust subsetted property(ies)
     addInput(target);
@@ -108,10 +108,12 @@ QInputPin *QSendObjectAction::request() const
     return d->request;
 }
 
-void QSendObjectAction::setRequest(const QInputPin *request)
+void QSendObjectAction::setRequest(QInputPin *request)
 {
     QTUML_D(QSendObjectAction);
-    d->setRequest(const_cast<QInputPin *>(request));
+    if (d->request != request) {
+        d->setRequest(request);
+    }
 }
 
 /*!
@@ -123,10 +125,12 @@ QInputPin *QSendObjectAction::target() const
     return d->target;
 }
 
-void QSendObjectAction::setTarget(const QInputPin *target)
+void QSendObjectAction::setTarget(QInputPin *target)
 {
     QTUML_D(QSendObjectAction);
-    d->setTarget(const_cast<QInputPin *>(target));
+    if (d->target != target) {
+        d->setTarget(target);
+    }
 }
 
 #include "moc_qsendobjectaction.cpp"

@@ -92,7 +92,9 @@ qreal QLiteralReal::value() const
 void QLiteralReal::setValue(qreal value)
 {
     QTUML_D(QLiteralReal);
-    d->setValue(value);
+    if (d->value != value) {
+        d->setValue(value);
+    }
 }
 
 /*!

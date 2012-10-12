@@ -75,10 +75,10 @@ public:
 
     // Association-ends
     QComponent *abstraction() const;
-    void setAbstraction(const QComponent *abstraction);
+    void setAbstraction(QComponent *abstraction);
     const QSet<QClassifier *> *realizingClassifiers() const;
-    void addRealizingClassifier(const QClassifier *realizingClassifier);
-    void removeRealizingClassifier(const QClassifier *realizingClassifier);
+    void addRealizingClassifier(QClassifier *realizingClassifier);
+    void removeRealizingClassifier(QClassifier *realizingClassifier);
 
 protected:
     explicit QComponentRealization(bool createPimpl, QObject *parent = 0);

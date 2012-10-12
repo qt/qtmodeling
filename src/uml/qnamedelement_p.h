@@ -83,10 +83,10 @@ public:
     void setVisibility(QtUml::VisibilityKind visibility);
 
     // Internal functions for association-ends
-    void setNameExpression(const QStringExpression *nameExpression);
-    void setNamespace_(const QNamespace *namespace_);
-    void addClientDependency(const QDependency *clientDependency);
-    void removeClientDependency(const QDependency *clientDependency);
+    void setNameExpression(QStringExpression *nameExpression);
+    void setNamespace_(QNamespace *namespace_);
+    void addClientDependency(QDependency *clientDependency);
+    void removeClientDependency(QDependency *clientDependency);
 };
 
 QT_END_NAMESPACE_QTUML

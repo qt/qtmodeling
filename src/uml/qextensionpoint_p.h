@@ -64,7 +64,7 @@ public:
     QUseCase *useCase;
 
     // Internal functions for association-ends
-    void setUseCase(const QUseCase *useCase);
+    void setUseCase(QUseCase *useCase);
 };
 
 QT_END_NAMESPACE_QTUML

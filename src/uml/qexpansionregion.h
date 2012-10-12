@@ -82,11 +82,11 @@ public:
 
     // Association-ends
     const QSet<QExpansionNode *> *inputElements() const;
-    void addInputElement(const QExpansionNode *inputElement);
-    void removeInputElement(const QExpansionNode *inputElement);
+    void addInputElement(QExpansionNode *inputElement);
+    void removeInputElement(QExpansionNode *inputElement);
     const QSet<QExpansionNode *> *outputElements() const;
-    void addOutputElement(const QExpansionNode *outputElement);
-    void removeOutputElement(const QExpansionNode *outputElement);
+    void addOutputElement(QExpansionNode *outputElement);
+    void removeOutputElement(QExpansionNode *outputElement);
 
 protected:
     explicit QExpansionRegion(bool createPimpl, QObject *parent = 0);

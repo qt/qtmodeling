@@ -69,11 +69,11 @@ public:
     QTemplateSignature *signature;
 
     // Internal functions for association-ends
-    void setDefault_(const QParameterableElement *default_);
-    void setParameteredElement(const QParameterableElement *parameteredElement);
-    void setOwnedParameteredElement(const QParameterableElement *ownedParameteredElement);
-    void setOwnedDefault(const QParameterableElement *ownedDefault);
-    void setSignature(const QTemplateSignature *signature);
+    void setDefault_(QParameterableElement *default_);
+    void setParameteredElement(QParameterableElement *parameteredElement);
+    void setOwnedParameteredElement(QParameterableElement *ownedParameteredElement);
+    void setOwnedDefault(QParameterableElement *ownedDefault);
+    void setSignature(QTemplateSignature *signature);
 };
 
 QT_END_NAMESPACE_QTUML

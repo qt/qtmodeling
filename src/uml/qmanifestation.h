@@ -70,7 +70,7 @@ public:
 
     // Association-ends
     QPackageableElement *utilizedElement() const;
-    void setUtilizedElement(const QPackageableElement *utilizedElement);
+    void setUtilizedElement(QPackageableElement *utilizedElement);
 
 protected:
     explicit QManifestation(bool createPimpl, QObject *parent = 0);

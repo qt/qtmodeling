@@ -73,12 +73,12 @@ public:
     QInteractionOperand *enclosingOperand;
 
     // Internal functions for association-ends
-    void addGeneralOrdering(const QGeneralOrdering *generalOrdering);
-    void removeGeneralOrdering(const QGeneralOrdering *generalOrdering);
-    void setEnclosingInteraction(const QInteraction *enclosingInteraction);
-    void addCovered(const QLifeline *covered);
-    void removeCovered(const QLifeline *covered);
-    void setEnclosingOperand(const QInteractionOperand *enclosingOperand);
+    void addGeneralOrdering(QGeneralOrdering *generalOrdering);
+    void removeGeneralOrdering(QGeneralOrdering *generalOrdering);
+    void setEnclosingInteraction(QInteraction *enclosingInteraction);
+    void addCovered(QLifeline *covered);
+    void removeCovered(QLifeline *covered);
+    void setEnclosingOperand(QInteractionOperand *enclosingOperand);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -114,11 +114,11 @@ public:
 
     // Association-ends
     QProperty *end() const;
-    void setEnd(const QProperty *end);
+    void setEnd(QProperty *end);
     QInputPin *object() const;
-    void setObject(const QInputPin *object);
+    void setObject(QInputPin *object);
     QOutputPin *result() const;
-    void setResult(const QOutputPin *result);
+    void setResult(QOutputPin *result);
 
 protected:
     explicit QReadLinkObjectEndAction(bool createPimpl, QObject *parent = 0);

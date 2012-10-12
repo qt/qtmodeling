@@ -71,10 +71,10 @@ public:
     QInstanceSpecification *owningInstance;
 
     // Internal functions for association-ends
-    void addValue(const QValueSpecification *value);
-    void removeValue(const QValueSpecification *value);
-    void setDefiningFeature(const QStructuralFeature *definingFeature);
-    void setOwningInstance(const QInstanceSpecification *owningInstance);
+    void addValue(QValueSpecification *value);
+    void removeValue(QValueSpecification *value);
+    void setDefiningFeature(QStructuralFeature *definingFeature);
+    void setOwningInstance(QInstanceSpecification *owningInstance);
 };
 
 QT_END_NAMESPACE_QTUML

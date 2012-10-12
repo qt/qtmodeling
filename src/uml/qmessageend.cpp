@@ -55,9 +55,9 @@ QMessageEndPrivate::~QMessageEndPrivate()
 {
 }
 
-void QMessageEndPrivate::setMessage(const QMessage *message)
+void QMessageEndPrivate::setMessage(QMessage *message)
 {
-    this->message = const_cast<QMessage *>(message);
+    this->message = message;
 }
 
 /*!
@@ -85,10 +85,12 @@ QMessage *QMessageEnd::message() const
     return d->message;
 }
 
-void QMessageEnd::setMessage(const QMessage *message)
+void QMessageEnd::setMessage(QMessage *message)
 {
     QTUML_D(QMessageEnd);
-    d->setMessage(const_cast<QMessage *>(message));
+    if (d->message != message) {
+        d->setMessage(message);
+    }
 }
 
 QT_END_NAMESPACE_QTUML

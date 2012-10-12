@@ -70,9 +70,9 @@ public:
     QInteractionConstraint *guard;
 
     // Internal functions for association-ends
-    void addFragment(const QInteractionFragment *fragment);
-    void removeFragment(const QInteractionFragment *fragment);
-    void setGuard(const QInteractionConstraint *guard);
+    void addFragment(QInteractionFragment *fragment);
+    void removeFragment(QInteractionFragment *fragment);
+    void setGuard(QInteractionConstraint *guard);
 };
 
 QT_END_NAMESPACE_QTUML

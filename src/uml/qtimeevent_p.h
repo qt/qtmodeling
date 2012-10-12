@@ -68,7 +68,7 @@ public:
     void setRelative(bool isRelative);
 
     // Internal functions for association-ends
-    void setWhen(const QTimeExpression *when);
+    void setWhen(QTimeExpression *when);
 };
 
 QT_END_NAMESPACE_QTUML

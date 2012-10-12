@@ -74,11 +74,11 @@ public:
     void setReplaceAll(bool isReplaceAll);
 
     // Internal functions for association-ends
-    void addOldClassifier(const QClassifier *oldClassifier);
-    void removeOldClassifier(const QClassifier *oldClassifier);
-    void setObject(const QInputPin *object);
-    void addNewClassifier(const QClassifier *newClassifier);
-    void removeNewClassifier(const QClassifier *newClassifier);
+    void addOldClassifier(QClassifier *oldClassifier);
+    void removeOldClassifier(QClassifier *oldClassifier);
+    void setObject(QInputPin *object);
+    void addNewClassifier(QClassifier *newClassifier);
+    void removeNewClassifier(QClassifier *newClassifier);
 };
 
 QT_END_NAMESPACE_QTUML

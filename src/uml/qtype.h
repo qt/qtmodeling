@@ -64,7 +64,7 @@ public:
 
     // Association-ends
     QPackage *package() const;
-    void setPackage(const QPackage *package);
+    void setPackage(QPackage *package);
 
     // Operations
     bool conformsTo(const QType *other) const;

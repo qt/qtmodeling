@@ -114,9 +114,9 @@ public:
 
     // Association-ends
     QInputPin *request() const;
-    void setRequest(const QInputPin *request);
+    void setRequest(QInputPin *request);
     QInputPin *target() const;
-    void setTarget(const QInputPin *target);
+    void setTarget(QInputPin *target);
 
 protected:
     explicit QSendObjectAction(bool createPimpl, QObject *parent = 0);

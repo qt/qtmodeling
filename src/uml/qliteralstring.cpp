@@ -95,7 +95,9 @@ QString QLiteralString::value() const
 void QLiteralString::setValue(QString value)
 {
     QTUML_D(QLiteralString);
-    d->setValue(value);
+    if (d->value != value) {
+        d->setValue(value);
+    }
 }
 
 /*!

@@ -83,13 +83,13 @@ public:
     void setMessageSort(QtUml::MessageSort messageSort);
 
     // Internal functions for association-ends
-    void setSignature(const QNamedElement *signature);
-    void addArgument(const QValueSpecification *argument);
-    void removeArgument(const QValueSpecification *argument);
-    void setReceiveEvent(const QMessageEnd *receiveEvent);
-    void setInteraction(const QInteraction *interaction);
-    void setSendEvent(const QMessageEnd *sendEvent);
-    void setConnector(const QConnector *connector);
+    void setSignature(QNamedElement *signature);
+    void addArgument(QValueSpecification *argument);
+    void removeArgument(QValueSpecification *argument);
+    void setReceiveEvent(QMessageEnd *receiveEvent);
+    void setInteraction(QInteraction *interaction);
+    void setSendEvent(QMessageEnd *sendEvent);
+    void setConnector(QConnector *connector);
 };
 
 QT_END_NAMESPACE_QTUML

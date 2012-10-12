@@ -66,8 +66,8 @@ public:
     QInterface *contract;
 
     // Internal functions for association-ends
-    void setImplementingClassifier(const QBehavioredClassifier *implementingClassifier);
-    void setContract(const QInterface *contract);
+    void setImplementingClassifier(QBehavioredClassifier *implementingClassifier);
+    void setContract(QInterface *contract);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -62,14 +62,14 @@ void QFeaturePrivate::setStatic(bool isStatic)
     this->isStatic = isStatic;
 }
 
-void QFeaturePrivate::addFeaturingClassifier(const QClassifier *featuringClassifier)
+void QFeaturePrivate::addFeaturingClassifier(QClassifier *featuringClassifier)
 {
-    this->featuringClassifiers->insert(const_cast<QClassifier *>(featuringClassifier));
+    this->featuringClassifiers->insert(featuringClassifier);
 }
 
-void QFeaturePrivate::removeFeaturingClassifier(const QClassifier *featuringClassifier)
+void QFeaturePrivate::removeFeaturingClassifier(QClassifier *featuringClassifier)
 {
-    this->featuringClassifiers->remove(const_cast<QClassifier *>(featuringClassifier));
+    this->featuringClassifiers->remove(featuringClassifier);
 }
 
 /*!
@@ -100,7 +100,9 @@ bool QFeature::isStatic() const
 void QFeature::setStatic(bool isStatic)
 {
     QTUML_D(QFeature);
-    d->setStatic(isStatic);
+    if (d->isStatic != isStatic) {
+        d->setStatic(isStatic);
+    }
 }
 
 /*!

@@ -68,9 +68,9 @@ public:
     QProperty *qualifier;
 
     // Internal functions for association-ends
-    void setResult(const QOutputPin *result);
-    void setObject(const QInputPin *object);
-    void setQualifier(const QProperty *qualifier);
+    void setResult(QOutputPin *result);
+    void setObject(QInputPin *object);
+    void setQualifier(QProperty *qualifier);
 };
 
 QT_END_NAMESPACE_QTUML

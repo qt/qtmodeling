@@ -79,14 +79,14 @@ public:
     void setExternal(bool isExternal);
 
     // Internal functions for association-ends
-    void setRepresents(const QElement *represents);
-    void addSubpartition(const QActivityPartition *subpartition);
-    void removeSubpartition(const QActivityPartition *subpartition);
-    void setSuperPartition(const QActivityPartition *superPartition);
-    void addNode(const QActivityNode *node);
-    void removeNode(const QActivityNode *node);
-    void addEdge(const QActivityEdge *edge);
-    void removeEdge(const QActivityEdge *edge);
+    void setRepresents(QElement *represents);
+    void addSubpartition(QActivityPartition *subpartition);
+    void removeSubpartition(QActivityPartition *subpartition);
+    void setSuperPartition(QActivityPartition *superPartition);
+    void addNode(QActivityNode *node);
+    void removeNode(QActivityNode *node);
+    void addEdge(QActivityEdge *edge);
+    void removeEdge(QActivityEdge *edge);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -64,7 +64,7 @@ public:
     QOperation *operation;
 
     // Internal functions for association-ends
-    void setOperation(const QOperation *operation);
+    void setOperation(QOperation *operation);
 };
 
 QT_END_NAMESPACE_QTUML

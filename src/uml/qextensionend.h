@@ -75,7 +75,7 @@ public:
 
     // Association-ends
     QStereotype *type() const;
-    void setType(const QStereotype *type);
+    void setType(QStereotype *type);
 
     // Operations
     qint32 lowerBound() const;

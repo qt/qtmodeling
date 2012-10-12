@@ -69,9 +69,9 @@ public:
     QSet<QClassifier *> *realizingClassifiers;
 
     // Internal functions for association-ends
-    void setAbstraction(const QComponent *abstraction);
-    void addRealizingClassifier(const QClassifier *realizingClassifier);
-    void removeRealizingClassifier(const QClassifier *realizingClassifier);
+    void setAbstraction(QComponent *abstraction);
+    void addRealizingClassifier(QClassifier *realizingClassifier);
+    void removeRealizingClassifier(QClassifier *realizingClassifier);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -69,7 +69,7 @@ public:
 
     // Association-ends
     QActivity *inActivity() const;
-    void setInActivity(const QActivity *inActivity);
+    void setInActivity(QActivity *inActivity);
     const QSet<QActivityNode *> *containedNodes() const;
     const QSet<QActivityGroup *> *subgroups() const;
     const QSet<QActivityEdge *> *containedEdges() const;

@@ -75,10 +75,10 @@ public:
     void setMode(QtUml::ExpansionKind mode);
 
     // Internal functions for association-ends
-    void addInputElement(const QExpansionNode *inputElement);
-    void removeInputElement(const QExpansionNode *inputElement);
-    void addOutputElement(const QExpansionNode *outputElement);
-    void removeOutputElement(const QExpansionNode *outputElement);
+    void addInputElement(QExpansionNode *inputElement);
+    void removeInputElement(QExpansionNode *inputElement);
+    void addOutputElement(QExpansionNode *outputElement);
+    void removeOutputElement(QExpansionNode *outputElement);
 };
 
 QT_END_NAMESPACE_QTUML

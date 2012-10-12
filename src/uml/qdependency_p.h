@@ -70,10 +70,10 @@ public:
     QSet<QNamedElement *> *suppliers;
 
     // Internal functions for association-ends
-    void addClient(const QNamedElement *client);
-    void removeClient(const QNamedElement *client);
-    void addSupplier(const QNamedElement *supplier);
-    void removeSupplier(const QNamedElement *supplier);
+    void addClient(QNamedElement *client);
+    void removeClient(QNamedElement *client);
+    void addSupplier(QNamedElement *supplier);
+    void removeSupplier(QNamedElement *supplier);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -67,8 +67,8 @@ public:
     QSet<QNamedElement *> *messages;
 
     // Internal functions for association-ends
-    void addMessage(const QNamedElement *message);
-    void removeMessage(const QNamedElement *message);
+    void addMessage(QNamedElement *message);
+    void removeMessage(QNamedElement *message);
 };
 
 QT_END_NAMESPACE_QTUML

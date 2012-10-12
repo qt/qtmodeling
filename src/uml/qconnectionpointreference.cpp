@@ -61,32 +61,32 @@ QConnectionPointReferencePrivate::~QConnectionPointReferencePrivate()
     delete entries;
 }
 
-void QConnectionPointReferencePrivate::addExit(const QPseudostate *exit)
+void QConnectionPointReferencePrivate::addExit(QPseudostate *exit)
 {
-    this->exits->insert(const_cast<QPseudostate *>(exit));
+    this->exits->insert(exit);
 }
 
-void QConnectionPointReferencePrivate::removeExit(const QPseudostate *exit)
+void QConnectionPointReferencePrivate::removeExit(QPseudostate *exit)
 {
-    this->exits->remove(const_cast<QPseudostate *>(exit));
+    this->exits->remove(exit);
 }
 
-void QConnectionPointReferencePrivate::setState(const QState *state)
+void QConnectionPointReferencePrivate::setState(QState *state)
 {
-    this->state = const_cast<QState *>(state);
+    this->state = state;
 
     // Adjust subsetted property(ies)
     setNamespace_(state);
 }
 
-void QConnectionPointReferencePrivate::addEntry(const QPseudostate *entry)
+void QConnectionPointReferencePrivate::addEntry(QPseudostate *entry)
 {
-    this->entries->insert(const_cast<QPseudostate *>(entry));
+    this->entries->insert(entry);
 }
 
-void QConnectionPointReferencePrivate::removeEntry(const QPseudostate *entry)
+void QConnectionPointReferencePrivate::removeEntry(QPseudostate *entry)
 {
-    this->entries->remove(const_cast<QPseudostate *>(entry));
+    this->entries->remove(entry);
 }
 
 /*!
@@ -123,16 +123,20 @@ const QSet<QPseudostate *> *QConnectionPointReference::exits() const
     return d->exits;
 }
 
-void QConnectionPointReference::addExit(const QPseudostate *exit)
+void QConnectionPointReference::addExit(QPseudostate *exit)
 {
     QTUML_D(QConnectionPointReference);
-    d->addExit(const_cast<QPseudostate *>(exit));
+    if (!d->exits->contains(exit)) {
+        d->addExit(exit);
+    }
 }
 
-void QConnectionPointReference::removeExit(const QPseudostate *exit)
+void QConnectionPointReference::removeExit(QPseudostate *exit)
 {
     QTUML_D(QConnectionPointReference);
-    d->removeExit(const_cast<QPseudostate *>(exit));
+    if (d->exits->contains(exit)) {
+        d->removeExit(exit);
+    }
 }
 
 /*!
@@ -144,10 +148,15 @@ QState *QConnectionPointReference::state() const
     return d->state;
 }
 
-void QConnectionPointReference::setState(const QState *state)
+void QConnectionPointReference::setState(QState *state)
 {
     QTUML_D(QConnectionPointReference);
-    d->setState(const_cast<QState *>(state));
+    if (d->state != state) {
+        d->setState(state);
+
+        // Adjust opposite property
+        state->addConnection(this);
+    }
 }
 
 /*!
@@ -159,16 +168,20 @@ const QSet<QPseudostate *> *QConnectionPointReference::entries() const
     return d->entries;
 }
 
-void QConnectionPointReference::addEntry(const QPseudostate *entry)
+void QConnectionPointReference::addEntry(QPseudostate *entry)
 {
     QTUML_D(QConnectionPointReference);
-    d->addEntry(const_cast<QPseudostate *>(entry));
+    if (!d->entries->contains(entry)) {
+        d->addEntry(entry);
+    }
 }
 
-void QConnectionPointReference::removeEntry(const QPseudostate *entry)
+void QConnectionPointReference::removeEntry(QPseudostate *entry)
 {
     QTUML_D(QConnectionPointReference);
-    d->removeEntry(const_cast<QPseudostate *>(entry));
+    if (d->entries->contains(entry)) {
+        d->removeEntry(entry);
+    }
 }
 
 #include "moc_qconnectionpointreference.cpp"

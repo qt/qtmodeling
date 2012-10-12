@@ -62,12 +62,12 @@ void QAddVariableValueActionPrivate::setReplaceAll(bool isReplaceAll)
     this->isReplaceAll = isReplaceAll;
 }
 
-void QAddVariableValueActionPrivate::setInsertAt(const QInputPin *insertAt)
+void QAddVariableValueActionPrivate::setInsertAt(QInputPin *insertAt)
 {
     // Adjust subsetted property(ies)
     removeInput(this->insertAt);
 
-    this->insertAt = const_cast<QInputPin *>(insertAt);
+    this->insertAt = insertAt;
 
     // Adjust subsetted property(ies)
     addInput(insertAt);
@@ -110,7 +110,9 @@ bool QAddVariableValueAction::isReplaceAll() const
 void QAddVariableValueAction::setReplaceAll(bool isReplaceAll)
 {
     QTUML_D(QAddVariableValueAction);
-    d->setReplaceAll(isReplaceAll);
+    if (d->isReplaceAll != isReplaceAll) {
+        d->setReplaceAll(isReplaceAll);
+    }
 }
 
 /*!
@@ -122,10 +124,12 @@ QInputPin *QAddVariableValueAction::insertAt() const
     return d->insertAt;
 }
 
-void QAddVariableValueAction::setInsertAt(const QInputPin *insertAt)
+void QAddVariableValueAction::setInsertAt(QInputPin *insertAt)
 {
     QTUML_D(QAddVariableValueAction);
-    d->setInsertAt(const_cast<QInputPin *>(insertAt));
+    if (d->insertAt != insertAt) {
+        d->setInsertAt(insertAt);
+    }
 }
 
 #include "moc_qaddvariablevalueaction.cpp"

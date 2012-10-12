@@ -57,17 +57,17 @@ QCollaborationPrivate::~QCollaborationPrivate()
     delete collaborationRoles;
 }
 
-void QCollaborationPrivate::addCollaborationRole(const QConnectableElement *collaborationRole)
+void QCollaborationPrivate::addCollaborationRole(QConnectableElement *collaborationRole)
 {
-    this->collaborationRoles->insert(const_cast<QConnectableElement *>(collaborationRole));
+    this->collaborationRoles->insert(collaborationRole);
 
     // Adjust subsetted property(ies)
     addRole(collaborationRole);
 }
 
-void QCollaborationPrivate::removeCollaborationRole(const QConnectableElement *collaborationRole)
+void QCollaborationPrivate::removeCollaborationRole(QConnectableElement *collaborationRole)
 {
-    this->collaborationRoles->remove(const_cast<QConnectableElement *>(collaborationRole));
+    this->collaborationRoles->remove(collaborationRole);
 
     // Adjust subsetted property(ies)
     removeRole(collaborationRole);
@@ -107,16 +107,20 @@ const QSet<QConnectableElement *> *QCollaboration::collaborationRoles() const
     return d->collaborationRoles;
 }
 
-void QCollaboration::addCollaborationRole(const QConnectableElement *collaborationRole)
+void QCollaboration::addCollaborationRole(QConnectableElement *collaborationRole)
 {
     QTUML_D(QCollaboration);
-    d->addCollaborationRole(const_cast<QConnectableElement *>(collaborationRole));
+    if (!d->collaborationRoles->contains(collaborationRole)) {
+        d->addCollaborationRole(collaborationRole);
+    }
 }
 
-void QCollaboration::removeCollaborationRole(const QConnectableElement *collaborationRole)
+void QCollaboration::removeCollaborationRole(QConnectableElement *collaborationRole)
 {
     QTUML_D(QCollaboration);
-    d->removeCollaborationRole(const_cast<QConnectableElement *>(collaborationRole));
+    if (d->collaborationRoles->contains(collaborationRole)) {
+        d->removeCollaborationRole(collaborationRole);
+    }
 }
 
 #include "moc_qcollaboration.cpp"

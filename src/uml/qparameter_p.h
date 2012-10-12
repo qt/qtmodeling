@@ -88,10 +88,10 @@ public:
     void setEffect(QtUml::ParameterEffectKind effect);
 
     // Internal functions for association-ends
-    void setOperation(const QOperation *operation);
-    void setDefaultValue(const QValueSpecification *defaultValue);
-    void addParameterSet(const QParameterSet *parameterSet);
-    void removeParameterSet(const QParameterSet *parameterSet);
+    void setOperation(QOperation *operation);
+    void setDefaultValue(QValueSpecification *defaultValue);
+    void addParameterSet(QParameterSet *parameterSet);
+    void removeParameterSet(QParameterSet *parameterSet);
 };
 
 QT_END_NAMESPACE_QTUML

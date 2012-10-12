@@ -119,11 +119,11 @@ public:
 
     // Association-ends
     QOutputPin *result() const;
-    void setResult(const QOutputPin *result);
+    void setResult(QOutputPin *result);
     QInputPin *collection() const;
-    void setCollection(const QInputPin *collection);
+    void setCollection(QInputPin *collection);
     QBehavior *reducer() const;
-    void setReducer(const QBehavior *reducer);
+    void setReducer(QBehavior *reducer);
 
 protected:
     explicit QReduceAction(bool createPimpl, QObject *parent = 0);

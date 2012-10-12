@@ -68,7 +68,7 @@ public:
     // Internal functions for attributes
 
     // Internal functions for association-ends
-    void setOwnedEnd(const QExtensionEnd *ownedEnd);
+    void setOwnedEnd(QExtensionEnd *ownedEnd);
 };
 
 QT_END_NAMESPACE_QTUML

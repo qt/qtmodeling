@@ -105,7 +105,9 @@ QString QImage::format() const
 void QImage::setFormat(QString format)
 {
     QTUML_D(QImage);
-    d->setFormat(format);
+    if (d->format != format) {
+        d->setFormat(format);
+    }
 }
 
 /*!
@@ -120,7 +122,9 @@ QString QImage::location() const
 void QImage::setLocation(QString location)
 {
     QTUML_D(QImage);
-    d->setLocation(location);
+    if (d->location != location) {
+        d->setLocation(location);
+    }
 }
 
 /*!
@@ -135,7 +139,9 @@ QString QImage::content() const
 void QImage::setContent(QString content)
 {
     QTUML_D(QImage);
-    d->setContent(content);
+    if (d->content != content) {
+        d->setContent(content);
+    }
 }
 
 #include "moc_qimage.cpp"

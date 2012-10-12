@@ -60,14 +60,14 @@ void QCommentPrivate::setBody(QString body)
     this->body = body;
 }
 
-void QCommentPrivate::addAnnotatedElement(const QElement *annotatedElement)
+void QCommentPrivate::addAnnotatedElement(QElement *annotatedElement)
 {
-    this->annotatedElements->insert(const_cast<QElement *>(annotatedElement));
+    this->annotatedElements->insert(annotatedElement);
 }
 
-void QCommentPrivate::removeAnnotatedElement(const QElement *annotatedElement)
+void QCommentPrivate::removeAnnotatedElement(QElement *annotatedElement)
 {
-    this->annotatedElements->remove(const_cast<QElement *>(annotatedElement));
+    this->annotatedElements->remove(annotatedElement);
 }
 
 /*!
@@ -107,7 +107,9 @@ QString QComment::body() const
 void QComment::setBody(QString body)
 {
     QTUML_D(QComment);
-    d->setBody(body);
+    if (d->body != body) {
+        d->setBody(body);
+    }
 }
 
 /*!
@@ -119,16 +121,20 @@ const QSet<QElement *> *QComment::annotatedElements() const
     return d->annotatedElements;
 }
 
-void QComment::addAnnotatedElement(const QElement *annotatedElement)
+void QComment::addAnnotatedElement(QElement *annotatedElement)
 {
     QTUML_D(QComment);
-    d->addAnnotatedElement(const_cast<QElement *>(annotatedElement));
+    if (!d->annotatedElements->contains(annotatedElement)) {
+        d->addAnnotatedElement(annotatedElement);
+    }
 }
 
-void QComment::removeAnnotatedElement(const QElement *annotatedElement)
+void QComment::removeAnnotatedElement(QElement *annotatedElement)
 {
     QTUML_D(QComment);
-    d->removeAnnotatedElement(const_cast<QElement *>(annotatedElement));
+    if (d->annotatedElements->contains(annotatedElement)) {
+        d->removeAnnotatedElement(annotatedElement);
+    }
 }
 
 #include "moc_qcomment.cpp"

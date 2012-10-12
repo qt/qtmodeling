@@ -119,11 +119,11 @@ public:
 
     // Association-ends
     QOutputPin *result() const;
-    void setResult(const QOutputPin *result);
+    void setResult(QOutputPin *result);
     QInputPin *object() const;
-    void setObject(const QInputPin *object);
+    void setObject(QInputPin *object);
     QClassifier *classifier() const;
-    void setClassifier(const QClassifier *classifier);
+    void setClassifier(QClassifier *classifier);
 
 protected:
     explicit QReadIsClassifiedObjectAction(bool createPimpl, QObject *parent = 0);

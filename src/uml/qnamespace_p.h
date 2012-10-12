@@ -75,16 +75,16 @@ public:
     QSet<QNamedElement *> *ownedMembers;
 
     // Internal functions for association-ends
-    void addPackageImport(const QPackageImport *packageImport);
-    void removePackageImport(const QPackageImport *packageImport);
-    void addMember(const QNamedElement *member);
-    void removeMember(const QNamedElement *member);
-    void addElementImport(const QElementImport *elementImport);
-    void removeElementImport(const QElementImport *elementImport);
-    void addOwnedRule(const QConstraint *ownedRule);
-    void removeOwnedRule(const QConstraint *ownedRule);
-    void addOwnedMember(const QNamedElement *ownedMember);
-    void removeOwnedMember(const QNamedElement *ownedMember);
+    void addPackageImport(QPackageImport *packageImport);
+    void removePackageImport(QPackageImport *packageImport);
+    void addMember(QNamedElement *member);
+    void removeMember(QNamedElement *member);
+    void addElementImport(QElementImport *elementImport);
+    void removeElementImport(QElementImport *elementImport);
+    void addOwnedRule(QConstraint *ownedRule);
+    void removeOwnedRule(QConstraint *ownedRule);
+    void addOwnedMember(QNamedElement *ownedMember);
+    void removeOwnedMember(QNamedElement *ownedMember);
 };
 
 QT_END_NAMESPACE_QTUML

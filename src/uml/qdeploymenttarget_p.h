@@ -68,8 +68,8 @@ public:
     QSet<QDeployment *> *deployments;
 
     // Internal functions for association-ends
-    void addDeployment(const QDeployment *deployment);
-    void removeDeployment(const QDeployment *deployment);
+    void addDeployment(QDeployment *deployment);
+    void removeDeployment(QDeployment *deployment);
 };
 
 QT_END_NAMESPACE_QTUML

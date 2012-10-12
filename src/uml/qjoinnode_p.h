@@ -68,7 +68,7 @@ public:
     void setCombineDuplicate(bool isCombineDuplicate);
 
     // Internal functions for association-ends
-    void setJoinSpec(const QValueSpecification *joinSpec);
+    void setJoinSpec(QValueSpecification *joinSpec);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -109,7 +109,7 @@ public:
 
     // Association-ends
     QBehavior *behavior() const;
-    void setBehavior(const QBehavior *behavior);
+    void setBehavior(QBehavior *behavior);
     QParameter *result() const;
 
     // Operations

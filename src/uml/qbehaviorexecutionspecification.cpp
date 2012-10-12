@@ -55,9 +55,9 @@ QBehaviorExecutionSpecificationPrivate::~QBehaviorExecutionSpecificationPrivate(
 {
 }
 
-void QBehaviorExecutionSpecificationPrivate::setBehavior(const QBehavior *behavior)
+void QBehaviorExecutionSpecificationPrivate::setBehavior(QBehavior *behavior)
 {
-    this->behavior = const_cast<QBehavior *>(behavior);
+    this->behavior = behavior;
 }
 
 /*!
@@ -94,10 +94,12 @@ QBehavior *QBehaviorExecutionSpecification::behavior() const
     return d->behavior;
 }
 
-void QBehaviorExecutionSpecification::setBehavior(const QBehavior *behavior)
+void QBehaviorExecutionSpecification::setBehavior(QBehavior *behavior)
 {
     QTUML_D(QBehaviorExecutionSpecification);
-    d->setBehavior(const_cast<QBehavior *>(behavior));
+    if (d->behavior != behavior) {
+        d->setBehavior(behavior);
+    }
 }
 
 #include "moc_qbehaviorexecutionspecification.cpp"

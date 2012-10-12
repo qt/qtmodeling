@@ -106,9 +106,9 @@ public:
 
     // Association-ends
     QStructuredActivityNode *scope() const;
-    void setScope(const QStructuredActivityNode *scope);
+    void setScope(QStructuredActivityNode *scope);
     QActivity *activityScope() const;
-    void setActivityScope(const QActivity *activityScope);
+    void setActivityScope(QActivity *activityScope);
 
     // Operations
     bool isAccessibleBy(const QAction *a) const;

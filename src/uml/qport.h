@@ -88,12 +88,12 @@ public:
 
     // Association-ends
     QProtocolStateMachine *protocol() const;
-    void setProtocol(const QProtocolStateMachine *protocol);
+    void setProtocol(QProtocolStateMachine *protocol);
     const QSet<QInterface *> *required() const;
     const QSet<QInterface *> *provided() const;
     const QSet<QPort *> *redefinedPorts() const;
-    void addRedefinedPort(const QPort *redefinedPort);
-    void removeRedefinedPort(const QPort *redefinedPort);
+    void addRedefinedPort(QPort *redefinedPort);
+    void removeRedefinedPort(QPort *redefinedPort);
 
 protected:
     explicit QPort(bool createPimpl, QObject *parent = 0);

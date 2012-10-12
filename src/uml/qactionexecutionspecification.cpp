@@ -55,9 +55,9 @@ QActionExecutionSpecificationPrivate::~QActionExecutionSpecificationPrivate()
 {
 }
 
-void QActionExecutionSpecificationPrivate::setAction(const QAction *action)
+void QActionExecutionSpecificationPrivate::setAction(QAction *action)
 {
-    this->action = const_cast<QAction *>(action);
+    this->action = action;
 }
 
 /*!
@@ -94,10 +94,12 @@ QAction *QActionExecutionSpecification::action() const
     return d->action;
 }
 
-void QActionExecutionSpecification::setAction(const QAction *action)
+void QActionExecutionSpecification::setAction(QAction *action)
 {
     QTUML_D(QActionExecutionSpecification);
-    d->setAction(const_cast<QAction *>(action));
+    if (d->action != action) {
+        d->setAction(action);
+    }
 }
 
 #include "moc_qactionexecutionspecification.cpp"

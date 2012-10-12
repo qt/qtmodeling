@@ -73,10 +73,10 @@ public:
     void setUnmarshall(bool isUnmarshall);
 
     // Internal functions for association-ends
-    void addTrigger(const QTrigger *trigger);
-    void removeTrigger(const QTrigger *trigger);
-    void addResult(const QOutputPin *result);
-    void removeResult(const QOutputPin *result);
+    void addTrigger(QTrigger *trigger);
+    void removeTrigger(QTrigger *trigger);
+    void addResult(QOutputPin *result);
+    void removeResult(QOutputPin *result);
 };
 
 QT_END_NAMESPACE_QTUML

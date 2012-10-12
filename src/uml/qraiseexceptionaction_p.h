@@ -64,7 +64,7 @@ public:
     QInputPin *exception;
 
     // Internal functions for association-ends
-    void setException(const QInputPin *exception);
+    void setException(QInputPin *exception);
 };
 
 QT_END_NAMESPACE_QTUML

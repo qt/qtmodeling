@@ -90,8 +90,8 @@ public:
 
     // Association-ends
     const QSet<QNode *> *nestedNodes() const;
-    void addNestedNode(const QNode *nestedNode);
-    void removeNestedNode(const QNode *nestedNode);
+    void addNestedNode(QNode *nestedNode);
+    void removeNestedNode(QNode *nestedNode);
 
 protected:
     explicit QNode(bool createPimpl, QObject *parent = 0);

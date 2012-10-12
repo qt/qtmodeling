@@ -56,12 +56,12 @@ QActionInputPinPrivate::~QActionInputPinPrivate()
 {
 }
 
-void QActionInputPinPrivate::setFromAction(const QAction *fromAction)
+void QActionInputPinPrivate::setFromAction(QAction *fromAction)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->fromAction);
 
-    this->fromAction = const_cast<QAction *>(fromAction);
+    this->fromAction = fromAction;
 
     // Adjust subsetted property(ies)
     addOwnedElement(fromAction);
@@ -101,10 +101,12 @@ QAction *QActionInputPin::fromAction() const
     return d->fromAction;
 }
 
-void QActionInputPin::setFromAction(const QAction *fromAction)
+void QActionInputPin::setFromAction(QAction *fromAction)
 {
     QTUML_D(QActionInputPin);
-    d->setFromAction(const_cast<QAction *>(fromAction));
+    if (d->fromAction != fromAction) {
+        d->setFromAction(fromAction);
+    }
 }
 
 #include "moc_qactioninputpin.cpp"

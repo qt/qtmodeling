@@ -110,9 +110,9 @@ public:
 
     // Association-ends
     QExpansionRegion *regionAsOutput() const;
-    void setRegionAsOutput(const QExpansionRegion *regionAsOutput);
+    void setRegionAsOutput(QExpansionRegion *regionAsOutput);
     QExpansionRegion *regionAsInput() const;
-    void setRegionAsInput(const QExpansionRegion *regionAsInput);
+    void setRegionAsInput(QExpansionRegion *regionAsInput);
 
 protected:
     explicit QExpansionNode(bool createPimpl, QObject *parent = 0);

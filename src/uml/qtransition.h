@@ -121,21 +121,21 @@ public:
 
     // Association-ends
     QConstraint *guard() const;
-    void setGuard(const QConstraint *guard);
+    void setGuard(QConstraint *guard);
     QVertex *target() const;
-    void setTarget(const QVertex *target);
+    void setTarget(QVertex *target);
     QBehavior *effect() const;
-    void setEffect(const QBehavior *effect);
+    void setEffect(QBehavior *effect);
     QRegion *container() const;
-    void setContainer(const QRegion *container);
+    void setContainer(QRegion *container);
     QClassifier *redefinitionContext() const;
     QTransition *redefinedTransition() const;
-    void setRedefinedTransition(const QTransition *redefinedTransition);
+    void setRedefinedTransition(QTransition *redefinedTransition);
     QVertex *source() const;
-    void setSource(const QVertex *source);
+    void setSource(QVertex *source);
     const QSet<QTrigger *> *triggers() const;
-    void addTrigger(const QTrigger *trigger);
-    void removeTrigger(const QTrigger *trigger);
+    void addTrigger(QTrigger *trigger);
+    void removeTrigger(QTrigger *trigger);
 
     // Operations
     QStateMachine *containingStateMachine() const;

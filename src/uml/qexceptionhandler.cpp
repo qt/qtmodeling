@@ -62,32 +62,32 @@ QExceptionHandlerPrivate::~QExceptionHandlerPrivate()
     delete exceptionTypes;
 }
 
-void QExceptionHandlerPrivate::setHandlerBody(const QExecutableNode *handlerBody)
+void QExceptionHandlerPrivate::setHandlerBody(QExecutableNode *handlerBody)
 {
-    this->handlerBody = const_cast<QExecutableNode *>(handlerBody);
+    this->handlerBody = handlerBody;
 }
 
-void QExceptionHandlerPrivate::addExceptionType(const QClassifier *exceptionType)
+void QExceptionHandlerPrivate::addExceptionType(QClassifier *exceptionType)
 {
-    this->exceptionTypes->insert(const_cast<QClassifier *>(exceptionType));
+    this->exceptionTypes->insert(exceptionType);
 }
 
-void QExceptionHandlerPrivate::removeExceptionType(const QClassifier *exceptionType)
+void QExceptionHandlerPrivate::removeExceptionType(QClassifier *exceptionType)
 {
-    this->exceptionTypes->remove(const_cast<QClassifier *>(exceptionType));
+    this->exceptionTypes->remove(exceptionType);
 }
 
-void QExceptionHandlerPrivate::setProtectedNode(const QExecutableNode *protectedNode)
+void QExceptionHandlerPrivate::setProtectedNode(QExecutableNode *protectedNode)
 {
-    this->protectedNode = const_cast<QExecutableNode *>(protectedNode);
+    this->protectedNode = protectedNode;
 
     // Adjust subsetted property(ies)
     setOwner(protectedNode);
 }
 
-void QExceptionHandlerPrivate::setExceptionInput(const QObjectNode *exceptionInput)
+void QExceptionHandlerPrivate::setExceptionInput(QObjectNode *exceptionInput)
 {
-    this->exceptionInput = const_cast<QObjectNode *>(exceptionInput);
+    this->exceptionInput = exceptionInput;
 }
 
 /*!
@@ -124,10 +124,12 @@ QExecutableNode *QExceptionHandler::handlerBody() const
     return d->handlerBody;
 }
 
-void QExceptionHandler::setHandlerBody(const QExecutableNode *handlerBody)
+void QExceptionHandler::setHandlerBody(QExecutableNode *handlerBody)
 {
     QTUML_D(QExceptionHandler);
-    d->setHandlerBody(const_cast<QExecutableNode *>(handlerBody));
+    if (d->handlerBody != handlerBody) {
+        d->setHandlerBody(handlerBody);
+    }
 }
 
 /*!
@@ -139,16 +141,20 @@ const QSet<QClassifier *> *QExceptionHandler::exceptionTypes() const
     return d->exceptionTypes;
 }
 
-void QExceptionHandler::addExceptionType(const QClassifier *exceptionType)
+void QExceptionHandler::addExceptionType(QClassifier *exceptionType)
 {
     QTUML_D(QExceptionHandler);
-    d->addExceptionType(const_cast<QClassifier *>(exceptionType));
+    if (!d->exceptionTypes->contains(exceptionType)) {
+        d->addExceptionType(exceptionType);
+    }
 }
 
-void QExceptionHandler::removeExceptionType(const QClassifier *exceptionType)
+void QExceptionHandler::removeExceptionType(QClassifier *exceptionType)
 {
     QTUML_D(QExceptionHandler);
-    d->removeExceptionType(const_cast<QClassifier *>(exceptionType));
+    if (d->exceptionTypes->contains(exceptionType)) {
+        d->removeExceptionType(exceptionType);
+    }
 }
 
 /*!
@@ -160,10 +166,15 @@ QExecutableNode *QExceptionHandler::protectedNode() const
     return d->protectedNode;
 }
 
-void QExceptionHandler::setProtectedNode(const QExecutableNode *protectedNode)
+void QExceptionHandler::setProtectedNode(QExecutableNode *protectedNode)
 {
     QTUML_D(QExceptionHandler);
-    d->setProtectedNode(const_cast<QExecutableNode *>(protectedNode));
+    if (d->protectedNode != protectedNode) {
+        d->setProtectedNode(protectedNode);
+
+        // Adjust opposite property
+        protectedNode->addHandler(this);
+    }
 }
 
 /*!
@@ -175,10 +186,12 @@ QObjectNode *QExceptionHandler::exceptionInput() const
     return d->exceptionInput;
 }
 
-void QExceptionHandler::setExceptionInput(const QObjectNode *exceptionInput)
+void QExceptionHandler::setExceptionInput(QObjectNode *exceptionInput)
 {
     QTUML_D(QExceptionHandler);
-    d->setExceptionInput(const_cast<QObjectNode *>(exceptionInput));
+    if (d->exceptionInput != exceptionInput) {
+        d->setExceptionInput(exceptionInput);
+    }
 }
 
 #include "moc_qexceptionhandler.cpp"

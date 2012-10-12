@@ -101,9 +101,9 @@ public:
 
     // Association-ends
     QObjectFlow *decisionInputFlow() const;
-    void setDecisionInputFlow(const QObjectFlow *decisionInputFlow);
+    void setDecisionInputFlow(QObjectFlow *decisionInputFlow);
     QBehavior *decisionInput() const;
-    void setDecisionInput(const QBehavior *decisionInput);
+    void setDecisionInput(QBehavior *decisionInput);
 
 protected:
     explicit QDecisionNode(bool createPimpl, QObject *parent = 0);

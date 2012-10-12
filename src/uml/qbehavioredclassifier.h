@@ -68,13 +68,13 @@ public:
 
     // Association-ends
     const QSet<QBehavior *> *ownedBehaviors() const;
-    void addOwnedBehavior(const QBehavior *ownedBehavior);
-    void removeOwnedBehavior(const QBehavior *ownedBehavior);
+    void addOwnedBehavior(QBehavior *ownedBehavior);
+    void removeOwnedBehavior(QBehavior *ownedBehavior);
     const QSet<QInterfaceRealization *> *interfaceRealizations() const;
-    void addInterfaceRealization(const QInterfaceRealization *interfaceRealization);
-    void removeInterfaceRealization(const QInterfaceRealization *interfaceRealization);
+    void addInterfaceRealization(QInterfaceRealization *interfaceRealization);
+    void removeInterfaceRealization(QInterfaceRealization *interfaceRealization);
     QBehavior *classifierBehavior() const;
-    void setClassifierBehavior(const QBehavior *classifierBehavior);
+    void setClassifierBehavior(QBehavior *classifierBehavior);
 
 protected:
     explicit QBehavioredClassifier();

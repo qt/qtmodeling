@@ -81,13 +81,13 @@ public:
 
     // Association-ends
     QParameterableElement *ownedActual() const;
-    void setOwnedActual(const QParameterableElement *ownedActual);
+    void setOwnedActual(QParameterableElement *ownedActual);
     QTemplateParameter *formal() const;
-    void setFormal(const QTemplateParameter *formal);
+    void setFormal(QTemplateParameter *formal);
     QParameterableElement *actual() const;
-    void setActual(const QParameterableElement *actual);
+    void setActual(QParameterableElement *actual);
     QTemplateBinding *templateBinding() const;
-    void setTemplateBinding(const QTemplateBinding *templateBinding);
+    void setTemplateBinding(QTemplateBinding *templateBinding);
 
 protected:
     explicit QTemplateParameterSubstitution(bool createPimpl, QObject *parent = 0);

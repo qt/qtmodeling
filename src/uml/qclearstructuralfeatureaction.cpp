@@ -56,12 +56,12 @@ QClearStructuralFeatureActionPrivate::~QClearStructuralFeatureActionPrivate()
 {
 }
 
-void QClearStructuralFeatureActionPrivate::setResult(const QOutputPin *result)
+void QClearStructuralFeatureActionPrivate::setResult(QOutputPin *result)
 {
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
-    this->result = const_cast<QOutputPin *>(result);
+    this->result = result;
 
     // Adjust subsetted property(ies)
     addOutput(result);
@@ -101,10 +101,12 @@ QOutputPin *QClearStructuralFeatureAction::result() const
     return d->result;
 }
 
-void QClearStructuralFeatureAction::setResult(const QOutputPin *result)
+void QClearStructuralFeatureAction::setResult(QOutputPin *result)
 {
     QTUML_D(QClearStructuralFeatureAction);
-    d->setResult(const_cast<QOutputPin *>(result));
+    if (d->result != result) {
+        d->setResult(result);
+    }
 }
 
 #include "moc_qclearstructuralfeatureaction.cpp"

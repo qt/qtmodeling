@@ -70,7 +70,7 @@ public:
     QConnectableElementTemplateParameter *templateParameter;
 
     // Internal functions for association-ends
-    void setTemplateParameter(const QConnectableElementTemplateParameter *templateParameter);
+    void setTemplateParameter(QConnectableElementTemplateParameter *templateParameter);
 };
 
 QT_END_NAMESPACE_QTUML

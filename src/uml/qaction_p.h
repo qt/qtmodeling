@@ -78,14 +78,14 @@ public:
     void setLocallyReentrant(bool isLocallyReentrant);
 
     // Internal functions for association-ends
-    void addLocalPostcondition(const QConstraint *localPostcondition);
-    void removeLocalPostcondition(const QConstraint *localPostcondition);
-    void addLocalPrecondition(const QConstraint *localPrecondition);
-    void removeLocalPrecondition(const QConstraint *localPrecondition);
-    void addInput(const QInputPin *input);
-    void removeInput(const QInputPin *input);
-    void addOutput(const QOutputPin *output);
-    void removeOutput(const QOutputPin *output);
+    void addLocalPostcondition(QConstraint *localPostcondition);
+    void removeLocalPostcondition(QConstraint *localPostcondition);
+    void addLocalPrecondition(QConstraint *localPrecondition);
+    void removeLocalPrecondition(QConstraint *localPrecondition);
+    void addInput(QInputPin *input);
+    void removeInput(QInputPin *input);
+    void addOutput(QOutputPin *output);
+    void removeOutput(QOutputPin *output);
 };
 
 QT_END_NAMESPACE_QTUML

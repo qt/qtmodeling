@@ -99,27 +99,27 @@ public:
     void setFinalSpecialization(bool isFinalSpecialization);
 
     // Internal functions for association-ends
-    void addOwnedUseCase(const QUseCase *ownedUseCase);
-    void removeOwnedUseCase(const QUseCase *ownedUseCase);
-    void addPowertypeExtent(const QGeneralizationSet *powertypeExtent);
-    void removePowertypeExtent(const QGeneralizationSet *powertypeExtent);
-    void addUseCase(const QUseCase *useCase);
-    void removeUseCase(const QUseCase *useCase);
-    void setTemplateParameter(const QClassifierTemplateParameter *templateParameter);
-    void addRedefinedClassifier(const QClassifier *redefinedClassifier);
-    void removeRedefinedClassifier(const QClassifier *redefinedClassifier);
-    void setOwnedTemplateSignature(const QRedefinableTemplateSignature *ownedTemplateSignature);
-    void addCollaborationUse(const QCollaborationUse *collaborationUse);
-    void removeCollaborationUse(const QCollaborationUse *collaborationUse);
-    void addAttribute(const QProperty *attribute);
-    void removeAttribute(const QProperty *attribute);
-    void addFeature(const QFeature *feature);
-    void removeFeature(const QFeature *feature);
-    void setRepresentation(const QCollaborationUse *representation);
-    void addGeneralization(const QGeneralization *generalization);
-    void removeGeneralization(const QGeneralization *generalization);
-    void addSubstitution(const QSubstitution *substitution);
-    void removeSubstitution(const QSubstitution *substitution);
+    void addOwnedUseCase(QUseCase *ownedUseCase);
+    void removeOwnedUseCase(QUseCase *ownedUseCase);
+    void addPowertypeExtent(QGeneralizationSet *powertypeExtent);
+    void removePowertypeExtent(QGeneralizationSet *powertypeExtent);
+    void addUseCase(QUseCase *useCase);
+    void removeUseCase(QUseCase *useCase);
+    void setTemplateParameter(QClassifierTemplateParameter *templateParameter);
+    void addRedefinedClassifier(QClassifier *redefinedClassifier);
+    void removeRedefinedClassifier(QClassifier *redefinedClassifier);
+    void setOwnedTemplateSignature(QRedefinableTemplateSignature *ownedTemplateSignature);
+    void addCollaborationUse(QCollaborationUse *collaborationUse);
+    void removeCollaborationUse(QCollaborationUse *collaborationUse);
+    void addAttribute(QProperty *attribute);
+    void removeAttribute(QProperty *attribute);
+    void addFeature(QFeature *feature);
+    void removeFeature(QFeature *feature);
+    void setRepresentation(QCollaborationUse *representation);
+    void addGeneralization(QGeneralization *generalization);
+    void removeGeneralization(QGeneralization *generalization);
+    void addSubstitution(QSubstitution *substitution);
+    void removeSubstitution(QSubstitution *substitution);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -55,9 +55,9 @@ QExtensionEndPrivate::~QExtensionEndPrivate()
 {
 }
 
-void QExtensionEndPrivate::setType(const QStereotype *type)
+void QExtensionEndPrivate::setType(QStereotype *type)
 {
-    this->type = const_cast<QStereotype *>(type);
+    this->type = type;
 }
 
 /*!
@@ -107,10 +107,12 @@ QStereotype *QExtensionEnd::type() const
     return d->type;
 }
 
-void QExtensionEnd::setType(const QStereotype *type)
+void QExtensionEnd::setType(QStereotype *type)
 {
     QTUML_D(QExtensionEnd);
-    d->setType(const_cast<QStereotype *>(type));
+    if (d->type != type) {
+        d->setType(type);
+    }
 }
 
 /*!

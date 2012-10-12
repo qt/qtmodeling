@@ -70,7 +70,7 @@ public:
     // Association-ends
     const QSet<QTransition *> *incomings() const;
     QRegion *container() const;
-    void setContainer(const QRegion *container);
+    void setContainer(QRegion *container);
     const QSet<QTransition *> *outgoings() const;
 
     // Operations

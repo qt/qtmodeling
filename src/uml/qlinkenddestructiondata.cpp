@@ -61,9 +61,9 @@ void QLinkEndDestructionDataPrivate::setDestroyDuplicates(bool isDestroyDuplicat
     this->isDestroyDuplicates = isDestroyDuplicates;
 }
 
-void QLinkEndDestructionDataPrivate::setDestroyAt(const QInputPin *destroyAt)
+void QLinkEndDestructionDataPrivate::setDestroyAt(QInputPin *destroyAt)
 {
-    this->destroyAt = const_cast<QInputPin *>(destroyAt);
+    this->destroyAt = destroyAt;
 }
 
 /*!
@@ -103,7 +103,9 @@ bool QLinkEndDestructionData::isDestroyDuplicates() const
 void QLinkEndDestructionData::setDestroyDuplicates(bool isDestroyDuplicates)
 {
     QTUML_D(QLinkEndDestructionData);
-    d->setDestroyDuplicates(isDestroyDuplicates);
+    if (d->isDestroyDuplicates != isDestroyDuplicates) {
+        d->setDestroyDuplicates(isDestroyDuplicates);
+    }
 }
 
 /*!
@@ -115,10 +117,12 @@ QInputPin *QLinkEndDestructionData::destroyAt() const
     return d->destroyAt;
 }
 
-void QLinkEndDestructionData::setDestroyAt(const QInputPin *destroyAt)
+void QLinkEndDestructionData::setDestroyAt(QInputPin *destroyAt)
 {
     QTUML_D(QLinkEndDestructionData);
-    d->setDestroyAt(const_cast<QInputPin *>(destroyAt));
+    if (d->destroyAt != destroyAt) {
+        d->setDestroyAt(destroyAt);
+    }
 }
 
 #include "moc_qlinkenddestructiondata.cpp"

@@ -84,8 +84,8 @@ public:
 
     // Association-ends
     const QSet<QElement *> *annotatedElements() const;
-    void addAnnotatedElement(const QElement *annotatedElement);
-    void removeAnnotatedElement(const QElement *annotatedElement);
+    void addAnnotatedElement(QElement *annotatedElement);
+    void removeAnnotatedElement(QElement *annotatedElement);
 
 protected:
     explicit QComment(bool createPimpl, QObject *parent = 0);

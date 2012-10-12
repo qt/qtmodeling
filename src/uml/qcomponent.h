@@ -84,13 +84,13 @@ public:
 
     // Association-ends
     const QSet<QComponentRealization *> *realizations() const;
-    void addRealization(const QComponentRealization *realization);
-    void removeRealization(const QComponentRealization *realization);
+    void addRealization(QComponentRealization *realization);
+    void removeRealization(QComponentRealization *realization);
     const QSet<QInterface *> *required() const;
     const QSet<QInterface *> *provided() const;
     const QSet<QPackageableElement *> *packagedElements() const;
-    void addPackagedElement(const QPackageableElement *packagedElement);
-    void removePackagedElement(const QPackageableElement *packagedElement);
+    void addPackagedElement(QPackageableElement *packagedElement);
+    void removePackagedElement(QPackageableElement *packagedElement);
 
     // Operations
     const QSet<QInterface *> *realizedInterfaces(const QClassifier *classifier) const;

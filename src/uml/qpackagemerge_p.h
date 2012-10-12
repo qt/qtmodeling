@@ -65,8 +65,8 @@ public:
     QPackage *receivingPackage;
 
     // Internal functions for association-ends
-    void setMergedPackage(const QPackage *mergedPackage);
-    void setReceivingPackage(const QPackage *receivingPackage);
+    void setMergedPackage(QPackage *mergedPackage);
+    void setReceivingPackage(QPackage *receivingPackage);
 };
 
 QT_END_NAMESPACE_QTUML

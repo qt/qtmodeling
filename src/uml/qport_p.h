@@ -77,9 +77,9 @@ public:
     void setService(bool isService);
 
     // Internal functions for association-ends
-    void setProtocol(const QProtocolStateMachine *protocol);
-    void addRedefinedPort(const QPort *redefinedPort);
-    void removeRedefinedPort(const QPort *redefinedPort);
+    void setProtocol(QProtocolStateMachine *protocol);
+    void addRedefinedPort(QPort *redefinedPort);
+    void removeRedefinedPort(QPort *redefinedPort);
 };
 
 QT_END_NAMESPACE_QTUML

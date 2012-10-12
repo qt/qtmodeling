@@ -75,9 +75,9 @@ public:
     void setDisjoint(bool isDisjoint);
 
     // Internal functions for association-ends
-    void setPowertype(const QClassifier *powertype);
-    void addGeneralization(const QGeneralization *generalization);
-    void removeGeneralization(const QGeneralization *generalization);
+    void setPowertype(QClassifier *powertype);
+    void addGeneralization(QGeneralization *generalization);
+    void removeGeneralization(QGeneralization *generalization);
 };
 
 QT_END_NAMESPACE_QTUML

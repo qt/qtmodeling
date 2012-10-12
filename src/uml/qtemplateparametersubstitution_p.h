@@ -69,10 +69,10 @@ public:
     QTemplateBinding *templateBinding;
 
     // Internal functions for association-ends
-    void setOwnedActual(const QParameterableElement *ownedActual);
-    void setFormal(const QTemplateParameter *formal);
-    void setActual(const QParameterableElement *actual);
-    void setTemplateBinding(const QTemplateBinding *templateBinding);
+    void setOwnedActual(QParameterableElement *ownedActual);
+    void setFormal(QTemplateParameter *formal);
+    void setActual(QParameterableElement *actual);
+    void setTemplateBinding(QTemplateBinding *templateBinding);
 };
 
 QT_END_NAMESPACE_QTUML

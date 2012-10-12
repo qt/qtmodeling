@@ -70,7 +70,7 @@ public:
     void setDestroyOwnedObjects(bool isDestroyOwnedObjects);
 
     // Internal functions for association-ends
-    void setTarget(const QInputPin *target);
+    void setTarget(QInputPin *target);
 };
 
 QT_END_NAMESPACE_QTUML

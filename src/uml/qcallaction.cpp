@@ -63,17 +63,17 @@ void QCallActionPrivate::setSynchronous(bool isSynchronous)
     this->isSynchronous = isSynchronous;
 }
 
-void QCallActionPrivate::addResult(const QOutputPin *result)
+void QCallActionPrivate::addResult(QOutputPin *result)
 {
-    this->results->append(const_cast<QOutputPin *>(result));
+    this->results->append(result);
 
     // Adjust subsetted property(ies)
     addOutput(result);
 }
 
-void QCallActionPrivate::removeResult(const QOutputPin *result)
+void QCallActionPrivate::removeResult(QOutputPin *result)
 {
-    this->results->removeAll(const_cast<QOutputPin *>(result));
+    this->results->removeAll(result);
 
     // Adjust subsetted property(ies)
     removeOutput(result);
@@ -107,7 +107,9 @@ bool QCallAction::isSynchronous() const
 void QCallAction::setSynchronous(bool isSynchronous)
 {
     QTUML_D(QCallAction);
-    d->setSynchronous(isSynchronous);
+    if (d->isSynchronous != isSynchronous) {
+        d->setSynchronous(isSynchronous);
+    }
 }
 
 /*!
@@ -119,16 +121,20 @@ const QList<QOutputPin *> *QCallAction::results() const
     return d->results;
 }
 
-void QCallAction::addResult(const QOutputPin *result)
+void QCallAction::addResult(QOutputPin *result)
 {
     QTUML_D(QCallAction);
-    d->addResult(const_cast<QOutputPin *>(result));
+    if (!d->results->contains(result)) {
+        d->addResult(result);
+    }
 }
 
-void QCallAction::removeResult(const QOutputPin *result)
+void QCallAction::removeResult(QOutputPin *result)
 {
     QTUML_D(QCallAction);
-    d->removeResult(const_cast<QOutputPin *>(result));
+    if (d->results->contains(result)) {
+        d->removeResult(result);
+    }
 }
 
 QT_END_NAMESPACE_QTUML

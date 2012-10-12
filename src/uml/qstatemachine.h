@@ -89,17 +89,17 @@ public:
 
     // Association-ends
     const QSet<QStateMachine *> *extendedStateMachines() const;
-    void addExtendedStateMachine(const QStateMachine *extendedStateMachine);
-    void removeExtendedStateMachine(const QStateMachine *extendedStateMachine);
+    void addExtendedStateMachine(QStateMachine *extendedStateMachine);
+    void removeExtendedStateMachine(QStateMachine *extendedStateMachine);
     const QSet<QPseudostate *> *connectionPoints() const;
-    void addConnectionPoint(const QPseudostate *connectionPoint);
-    void removeConnectionPoint(const QPseudostate *connectionPoint);
+    void addConnectionPoint(QPseudostate *connectionPoint);
+    void removeConnectionPoint(QPseudostate *connectionPoint);
     const QSet<QState *> *submachineStates() const;
-    void addSubmachineState(const QState *submachineState);
-    void removeSubmachineState(const QState *submachineState);
+    void addSubmachineState(QState *submachineState);
+    void removeSubmachineState(QState *submachineState);
     const QSet<QRegion *> *regions() const;
-    void addRegion(const QRegion *region);
-    void removeRegion(const QRegion *region);
+    void addRegion(QRegion *region);
+    void removeRegion(QRegion *region);
 
     // Operations
     QNamespace *LCA(const QState *s1, const QState *s2) const;

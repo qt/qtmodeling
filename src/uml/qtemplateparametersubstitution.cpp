@@ -62,31 +62,31 @@ QTemplateParameterSubstitutionPrivate::~QTemplateParameterSubstitutionPrivate()
 {
 }
 
-void QTemplateParameterSubstitutionPrivate::setOwnedActual(const QParameterableElement *ownedActual)
+void QTemplateParameterSubstitutionPrivate::setOwnedActual(QParameterableElement *ownedActual)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->ownedActual);
 
-    this->ownedActual = const_cast<QParameterableElement *>(ownedActual);
+    this->ownedActual = ownedActual;
 
     // Adjust subsetted property(ies)
     addOwnedElement(ownedActual);
     setActual(ownedActual);
 }
 
-void QTemplateParameterSubstitutionPrivate::setFormal(const QTemplateParameter *formal)
+void QTemplateParameterSubstitutionPrivate::setFormal(QTemplateParameter *formal)
 {
-    this->formal = const_cast<QTemplateParameter *>(formal);
+    this->formal = formal;
 }
 
-void QTemplateParameterSubstitutionPrivate::setActual(const QParameterableElement *actual)
+void QTemplateParameterSubstitutionPrivate::setActual(QParameterableElement *actual)
 {
-    this->actual = const_cast<QParameterableElement *>(actual);
+    this->actual = actual;
 }
 
-void QTemplateParameterSubstitutionPrivate::setTemplateBinding(const QTemplateBinding *templateBinding)
+void QTemplateParameterSubstitutionPrivate::setTemplateBinding(QTemplateBinding *templateBinding)
 {
-    this->templateBinding = const_cast<QTemplateBinding *>(templateBinding);
+    this->templateBinding = templateBinding;
 
     // Adjust subsetted property(ies)
     setOwner(templateBinding);
@@ -126,10 +126,12 @@ QParameterableElement *QTemplateParameterSubstitution::ownedActual() const
     return d->ownedActual;
 }
 
-void QTemplateParameterSubstitution::setOwnedActual(const QParameterableElement *ownedActual)
+void QTemplateParameterSubstitution::setOwnedActual(QParameterableElement *ownedActual)
 {
     QTUML_D(QTemplateParameterSubstitution);
-    d->setOwnedActual(const_cast<QParameterableElement *>(ownedActual));
+    if (d->ownedActual != ownedActual) {
+        d->setOwnedActual(ownedActual);
+    }
 }
 
 /*!
@@ -141,10 +143,12 @@ QTemplateParameter *QTemplateParameterSubstitution::formal() const
     return d->formal;
 }
 
-void QTemplateParameterSubstitution::setFormal(const QTemplateParameter *formal)
+void QTemplateParameterSubstitution::setFormal(QTemplateParameter *formal)
 {
     QTUML_D(QTemplateParameterSubstitution);
-    d->setFormal(const_cast<QTemplateParameter *>(formal));
+    if (d->formal != formal) {
+        d->setFormal(formal);
+    }
 }
 
 /*!
@@ -156,10 +160,12 @@ QParameterableElement *QTemplateParameterSubstitution::actual() const
     return d->actual;
 }
 
-void QTemplateParameterSubstitution::setActual(const QParameterableElement *actual)
+void QTemplateParameterSubstitution::setActual(QParameterableElement *actual)
 {
     QTUML_D(QTemplateParameterSubstitution);
-    d->setActual(const_cast<QParameterableElement *>(actual));
+    if (d->actual != actual) {
+        d->setActual(actual);
+    }
 }
 
 /*!
@@ -171,10 +177,15 @@ QTemplateBinding *QTemplateParameterSubstitution::templateBinding() const
     return d->templateBinding;
 }
 
-void QTemplateParameterSubstitution::setTemplateBinding(const QTemplateBinding *templateBinding)
+void QTemplateParameterSubstitution::setTemplateBinding(QTemplateBinding *templateBinding)
 {
     QTUML_D(QTemplateParameterSubstitution);
-    d->setTemplateBinding(const_cast<QTemplateBinding *>(templateBinding));
+    if (d->templateBinding != templateBinding) {
+        d->setTemplateBinding(templateBinding);
+
+        // Adjust opposite property
+        templateBinding->addParameterSubstitution(this);
+    }
 }
 
 #include "moc_qtemplateparametersubstitution.cpp"

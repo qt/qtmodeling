@@ -71,9 +71,9 @@ public:
     QSet<QRedefinableTemplateSignature *> *extendedSignatures;
 
     // Internal functions for association-ends
-    void setClassifier(const QClassifier *classifier);
-    void addExtendedSignature(const QRedefinableTemplateSignature *extendedSignature);
-    void removeExtendedSignature(const QRedefinableTemplateSignature *extendedSignature);
+    void setClassifier(QClassifier *classifier);
+    void addExtendedSignature(QRedefinableTemplateSignature *extendedSignature);
+    void removeExtendedSignature(QRedefinableTemplateSignature *extendedSignature);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -78,7 +78,7 @@ public:
     // Association-ends
     QClass *metaclass() const;
     QExtensionEnd *ownedEnd() const;
-    void setOwnedEnd(const QExtensionEnd *ownedEnd);
+    void setOwnedEnd(QExtensionEnd *ownedEnd);
 
     // Operations
     QProperty *metaclassEnd() const;

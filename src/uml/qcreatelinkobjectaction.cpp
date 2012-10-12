@@ -56,12 +56,12 @@ QCreateLinkObjectActionPrivate::~QCreateLinkObjectActionPrivate()
 {
 }
 
-void QCreateLinkObjectActionPrivate::setResult(const QOutputPin *result)
+void QCreateLinkObjectActionPrivate::setResult(QOutputPin *result)
 {
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
-    this->result = const_cast<QOutputPin *>(result);
+    this->result = result;
 
     // Adjust subsetted property(ies)
     addOutput(result);
@@ -101,10 +101,12 @@ QOutputPin *QCreateLinkObjectAction::result() const
     return d->result;
 }
 
-void QCreateLinkObjectAction::setResult(const QOutputPin *result)
+void QCreateLinkObjectAction::setResult(QOutputPin *result)
 {
     QTUML_D(QCreateLinkObjectAction);
-    d->setResult(const_cast<QOutputPin *>(result));
+    if (d->result != result) {
+        d->setResult(result);
+    }
 }
 
 #include "moc_qcreatelinkobjectaction.cpp"

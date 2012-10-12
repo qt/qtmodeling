@@ -128,8 +128,8 @@ public:
 
     // Association-ends
     const QSet<QClassifier *> *represented() const;
-    void addRepresented(const QClassifier *represented);
-    void removeRepresented(const QClassifier *represented);
+    void addRepresented(QClassifier *represented);
+    void removeRepresented(QClassifier *represented);
 
 protected:
     explicit QInformationItem(bool createPimpl, QObject *parent = 0);

@@ -64,7 +64,7 @@ public:
     QAction *action;
 
     // Internal functions for association-ends
-    void setAction(const QAction *action);
+    void setAction(QAction *action);
 };
 
 QT_END_NAMESPACE_QTUML
