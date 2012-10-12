@@ -199,6 +199,19 @@ declare function qtxmi:defaultValue ($property as node(), $namespace) as xs:stri
     return $defaultValue
 };
 
+declare function qtxmi:oppositeEnd($property as node()) as xs:string {
+    let $memberEnd := if ($property/@association) then
+                          string(doc($xmiFile)//packagedElement[@xmi:id = $property/@association]/@memberEnd)
+                      else ""
+    let $oppositeEnd := if ($memberEnd != "") then
+                            tokenize($memberEnd, " ")[1]
+                        else ""
+    let $oppositeEnd := if ($oppositeEnd != "" and $oppositeEnd = $property/@xmi:id) then
+                            tokenize($memberEnd, " ")[2]
+                        else $oppositeEnd
+    return if (starts-with($oppositeEnd, "A_")) then "" else $oppositeEnd
+};
+
 <qtxmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:qtxmi="http://www.qt-project.org">
 {
 for $namespace in distinct-values((doc($xmiFile)//packagedElement[@xmi:type="uml:Package"] | doc($xmiFile)//uml:Package)/@xmi:id)
@@ -328,7 +341,7 @@ return
         let $defaultValue := qtxmi:defaultValue($attribute, $namespace)
         where $attribute[@association]
         return
-        <associationend isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}" isReadOnly="{$isReadOnly}" subsettedProperty="{$attribute/@subsettedProperty}" redefinedProperty="{$attribute/@redefinedProperty}" id="{$attribute/@xmi:id}" defaultValue="{$defaultValue}" aggregation="{if (not($attribute/@aggregation)) then "none" else $attribute/@aggregation}">
+        <associationend isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}" isReadOnly="{$isReadOnly}" subsettedProperty="{$attribute/@subsettedProperty}" redefinedProperty="{$attribute/@redefinedProperty}" id="{$attribute/@xmi:id}" defaultValue="{$defaultValue}" aggregation="{if (not($attribute/@aggregation)) then "none" else $attribute/@aggregation}" oppositeEnd="{qtxmi:oppositeEnd($attribute)}">
         <accessor return="{$unqualifiedType}" name="{qtxmi:modifiedFunctionName($attribute)}" constness=" const"/>
         {
         if (not($attribute/upperValue/@value) or $attribute/upperValue/@value = "1") then
