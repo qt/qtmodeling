@@ -90,7 +90,7 @@ public:
 
     // Association-ends
     QOperation *operation() const;
-    void setOperation(const QOperation *operation);
+    void setOperation(QOperation *operation);
 
 protected:
     explicit QCallEvent(bool createPimpl, QObject *parent = 0);

@@ -85,33 +85,33 @@ void QOpaqueActionPrivate::removeLanguage(QString language)
     this->languages->removeAll(language);
 }
 
-void QOpaqueActionPrivate::addInputValue(const QInputPin *inputValue)
+void QOpaqueActionPrivate::addInputValue(QInputPin *inputValue)
 {
-    this->inputValues->insert(const_cast<QInputPin *>(inputValue));
+    this->inputValues->insert(inputValue);
 
     // Adjust subsetted property(ies)
     addInput(inputValue);
 }
 
-void QOpaqueActionPrivate::removeInputValue(const QInputPin *inputValue)
+void QOpaqueActionPrivate::removeInputValue(QInputPin *inputValue)
 {
-    this->inputValues->remove(const_cast<QInputPin *>(inputValue));
+    this->inputValues->remove(inputValue);
 
     // Adjust subsetted property(ies)
     removeInput(inputValue);
 }
 
-void QOpaqueActionPrivate::addOutputValue(const QOutputPin *outputValue)
+void QOpaqueActionPrivate::addOutputValue(QOutputPin *outputValue)
 {
-    this->outputValues->insert(const_cast<QOutputPin *>(outputValue));
+    this->outputValues->insert(outputValue);
 
     // Adjust subsetted property(ies)
     addOutput(outputValue);
 }
 
-void QOpaqueActionPrivate::removeOutputValue(const QOutputPin *outputValue)
+void QOpaqueActionPrivate::removeOutputValue(QOutputPin *outputValue)
 {
-    this->outputValues->remove(const_cast<QOutputPin *>(outputValue));
+    this->outputValues->remove(outputValue);
 
     // Adjust subsetted property(ies)
     removeOutput(outputValue);
@@ -154,13 +154,17 @@ const QList<QString> *QOpaqueAction::bodies() const
 void QOpaqueAction::addBody(QString body)
 {
     QTUML_D(QOpaqueAction);
-    d->addBody(body);
+    if (!d->bodies->contains(body)) {
+        d->addBody(body);
+    }
 }
 
 void QOpaqueAction::removeBody(QString body)
 {
     QTUML_D(QOpaqueAction);
-    d->removeBody(body);
+    if (d->bodies->contains(body)) {
+        d->removeBody(body);
+    }
 }
 
 /*!
@@ -175,13 +179,17 @@ const QList<QString> *QOpaqueAction::languages() const
 void QOpaqueAction::addLanguage(QString language)
 {
     QTUML_D(QOpaqueAction);
-    d->addLanguage(language);
+    if (!d->languages->contains(language)) {
+        d->addLanguage(language);
+    }
 }
 
 void QOpaqueAction::removeLanguage(QString language)
 {
     QTUML_D(QOpaqueAction);
-    d->removeLanguage(language);
+    if (d->languages->contains(language)) {
+        d->removeLanguage(language);
+    }
 }
 
 /*!
@@ -193,16 +201,20 @@ const QSet<QInputPin *> *QOpaqueAction::inputValues() const
     return d->inputValues;
 }
 
-void QOpaqueAction::addInputValue(const QInputPin *inputValue)
+void QOpaqueAction::addInputValue(QInputPin *inputValue)
 {
     QTUML_D(QOpaqueAction);
-    d->addInputValue(const_cast<QInputPin *>(inputValue));
+    if (!d->inputValues->contains(inputValue)) {
+        d->addInputValue(inputValue);
+    }
 }
 
-void QOpaqueAction::removeInputValue(const QInputPin *inputValue)
+void QOpaqueAction::removeInputValue(QInputPin *inputValue)
 {
     QTUML_D(QOpaqueAction);
-    d->removeInputValue(const_cast<QInputPin *>(inputValue));
+    if (d->inputValues->contains(inputValue)) {
+        d->removeInputValue(inputValue);
+    }
 }
 
 /*!
@@ -214,16 +226,20 @@ const QSet<QOutputPin *> *QOpaqueAction::outputValues() const
     return d->outputValues;
 }
 
-void QOpaqueAction::addOutputValue(const QOutputPin *outputValue)
+void QOpaqueAction::addOutputValue(QOutputPin *outputValue)
 {
     QTUML_D(QOpaqueAction);
-    d->addOutputValue(const_cast<QOutputPin *>(outputValue));
+    if (!d->outputValues->contains(outputValue)) {
+        d->addOutputValue(outputValue);
+    }
 }
 
-void QOpaqueAction::removeOutputValue(const QOutputPin *outputValue)
+void QOpaqueAction::removeOutputValue(QOutputPin *outputValue)
 {
     QTUML_D(QOpaqueAction);
-    d->removeOutputValue(const_cast<QOutputPin *>(outputValue));
+    if (d->outputValues->contains(outputValue)) {
+        d->removeOutputValue(outputValue);
+    }
 }
 
 #include "moc_qopaqueaction.cpp"

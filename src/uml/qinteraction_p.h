@@ -77,16 +77,16 @@ public:
     QSet<QLifeline *> *lifelines;
 
     // Internal functions for association-ends
-    void addAction(const QAction *action);
-    void removeAction(const QAction *action);
-    void addMessage(const QMessage *message);
-    void removeMessage(const QMessage *message);
-    void addFormalGate(const QGate *formalGate);
-    void removeFormalGate(const QGate *formalGate);
-    void addFragment(const QInteractionFragment *fragment);
-    void removeFragment(const QInteractionFragment *fragment);
-    void addLifeline(const QLifeline *lifeline);
-    void removeLifeline(const QLifeline *lifeline);
+    void addAction(QAction *action);
+    void removeAction(QAction *action);
+    void addMessage(QMessage *message);
+    void removeMessage(QMessage *message);
+    void addFormalGate(QGate *formalGate);
+    void removeFormalGate(QGate *formalGate);
+    void addFragment(QInteractionFragment *fragment);
+    void removeFragment(QInteractionFragment *fragment);
+    void addLifeline(QLifeline *lifeline);
+    void removeLifeline(QLifeline *lifeline);
 };
 
 QT_END_NAMESPACE_QTUML

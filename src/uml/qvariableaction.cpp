@@ -55,9 +55,9 @@ QVariableActionPrivate::~QVariableActionPrivate()
 {
 }
 
-void QVariableActionPrivate::setVariable(const QVariable *variable)
+void QVariableActionPrivate::setVariable(QVariable *variable)
 {
-    this->variable = const_cast<QVariable *>(variable);
+    this->variable = variable;
 }
 
 /*!
@@ -85,10 +85,12 @@ QVariable *QVariableAction::variable() const
     return d->variable;
 }
 
-void QVariableAction::setVariable(const QVariable *variable)
+void QVariableAction::setVariable(QVariable *variable)
 {
     QTUML_D(QVariableAction);
-    d->setVariable(const_cast<QVariable *>(variable));
+    if (d->variable != variable) {
+        d->setVariable(variable);
+    }
 }
 
 QT_END_NAMESPACE_QTUML

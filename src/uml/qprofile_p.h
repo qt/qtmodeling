@@ -69,10 +69,10 @@ public:
     QSet<QElementImport *> *metaclassReferences;
 
     // Internal functions for association-ends
-    void addMetamodelReference(const QPackageImport *metamodelReference);
-    void removeMetamodelReference(const QPackageImport *metamodelReference);
-    void addMetaclassReference(const QElementImport *metaclassReference);
-    void removeMetaclassReference(const QElementImport *metaclassReference);
+    void addMetamodelReference(QPackageImport *metamodelReference);
+    void removeMetamodelReference(QPackageImport *metamodelReference);
+    void addMetaclassReference(QElementImport *metaclassReference);
+    void removeMetaclassReference(QElementImport *metaclassReference);
 };
 
 QT_END_NAMESPACE_QTUML

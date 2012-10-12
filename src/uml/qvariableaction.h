@@ -64,7 +64,7 @@ public:
 
     // Association-ends
     QVariable *variable() const;
-    void setVariable(const QVariable *variable);
+    void setVariable(QVariable *variable);
 
 protected:
     explicit QVariableAction();

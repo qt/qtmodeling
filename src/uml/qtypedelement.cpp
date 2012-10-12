@@ -55,9 +55,9 @@ QTypedElementPrivate::~QTypedElementPrivate()
 {
 }
 
-void QTypedElementPrivate::setType(const QType *type)
+void QTypedElementPrivate::setType(QType *type)
 {
-    this->type = const_cast<QType *>(type);
+    this->type = type;
 }
 
 /*!
@@ -85,10 +85,12 @@ QType *QTypedElement::type() const
     return d->type;
 }
 
-void QTypedElement::setType(const QType *type)
+void QTypedElement::setType(QType *type)
 {
     QTUML_D(QTypedElement);
-    d->setType(const_cast<QType *>(type));
+    if (d->type != type) {
+        d->setType(type);
+    }
 }
 
 QT_END_NAMESPACE_QTUML

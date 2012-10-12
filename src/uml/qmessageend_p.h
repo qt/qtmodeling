@@ -64,7 +64,7 @@ public:
     QMessage *message;
 
     // Internal functions for association-ends
-    void setMessage(const QMessage *message);
+    void setMessage(QMessage *message);
 };
 
 QT_END_NAMESPACE_QTUML

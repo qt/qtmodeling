@@ -58,20 +58,20 @@ QStateInvariantPrivate::~QStateInvariantPrivate()
 {
 }
 
-void QStateInvariantPrivate::setInvariant(const QConstraint *invariant)
+void QStateInvariantPrivate::setInvariant(QConstraint *invariant)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->invariant);
 
-    this->invariant = const_cast<QConstraint *>(invariant);
+    this->invariant = invariant;
 
     // Adjust subsetted property(ies)
     addOwnedElement(invariant);
 }
 
-void QStateInvariantPrivate::setCovered(const QLifeline *covered)
+void QStateInvariantPrivate::setCovered(QLifeline *covered)
 {
-    this->covered = const_cast<QLifeline *>(covered);
+    this->covered = covered;
 }
 
 /*!
@@ -108,10 +108,12 @@ QConstraint *QStateInvariant::invariant() const
     return d->invariant;
 }
 
-void QStateInvariant::setInvariant(const QConstraint *invariant)
+void QStateInvariant::setInvariant(QConstraint *invariant)
 {
     QTUML_D(QStateInvariant);
-    d->setInvariant(const_cast<QConstraint *>(invariant));
+    if (d->invariant != invariant) {
+        d->setInvariant(invariant);
+    }
 }
 
 /*!
@@ -123,10 +125,12 @@ QLifeline *QStateInvariant::covered() const
     return d->covered;
 }
 
-void QStateInvariant::setCovered(const QLifeline *covered)
+void QStateInvariant::setCovered(QLifeline *covered)
 {
     QTUML_D(QStateInvariant);
-    d->setCovered(const_cast<QLifeline *>(covered));
+    if (d->covered != covered) {
+        d->setCovered(covered);
+    }
 }
 
 #include "moc_qstateinvariant.cpp"

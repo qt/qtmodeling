@@ -72,10 +72,10 @@ public:
     void setLeaf(bool isLeaf);
 
     // Internal functions for association-ends
-    void addRedefinedElement(const QRedefinableElement *redefinedElement);
-    void removeRedefinedElement(const QRedefinableElement *redefinedElement);
-    void addRedefinitionContext(const QClassifier *redefinitionContext);
-    void removeRedefinitionContext(const QClassifier *redefinitionContext);
+    void addRedefinedElement(QRedefinableElement *redefinedElement);
+    void removeRedefinedElement(QRedefinableElement *redefinedElement);
+    void addRedefinitionContext(QClassifier *redefinitionContext);
+    void removeRedefinitionContext(QClassifier *redefinitionContext);
 };
 
 QT_END_NAMESPACE_QTUML

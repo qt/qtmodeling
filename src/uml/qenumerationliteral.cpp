@@ -56,9 +56,9 @@ QEnumerationLiteralPrivate::~QEnumerationLiteralPrivate()
 {
 }
 
-void QEnumerationLiteralPrivate::setEnumeration(const QEnumeration *enumeration)
+void QEnumerationLiteralPrivate::setEnumeration(QEnumeration *enumeration)
 {
-    this->enumeration = const_cast<QEnumeration *>(enumeration);
+    this->enumeration = enumeration;
 
     // Adjust subsetted property(ies)
     setNamespace_(enumeration);
@@ -106,10 +106,15 @@ QEnumeration *QEnumerationLiteral::enumeration() const
     return d->enumeration;
 }
 
-void QEnumerationLiteral::setEnumeration(const QEnumeration *enumeration)
+void QEnumerationLiteral::setEnumeration(QEnumeration *enumeration)
 {
     QTUML_D(QEnumerationLiteral);
-    d->setEnumeration(const_cast<QEnumeration *>(enumeration));
+    if (d->enumeration != enumeration) {
+        d->setEnumeration(enumeration);
+
+        // Adjust opposite property
+        enumeration->addOwnedLiteral(this);
+    }
 }
 
 #include "moc_qenumerationliteral.cpp"

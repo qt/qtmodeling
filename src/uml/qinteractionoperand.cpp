@@ -59,28 +59,28 @@ QInteractionOperandPrivate::~QInteractionOperandPrivate()
     delete fragments;
 }
 
-void QInteractionOperandPrivate::addFragment(const QInteractionFragment *fragment)
+void QInteractionOperandPrivate::addFragment(QInteractionFragment *fragment)
 {
-    this->fragments->append(const_cast<QInteractionFragment *>(fragment));
+    this->fragments->append(fragment);
 
     // Adjust subsetted property(ies)
     addOwnedMember(fragment);
 }
 
-void QInteractionOperandPrivate::removeFragment(const QInteractionFragment *fragment)
+void QInteractionOperandPrivate::removeFragment(QInteractionFragment *fragment)
 {
-    this->fragments->removeAll(const_cast<QInteractionFragment *>(fragment));
+    this->fragments->removeAll(fragment);
 
     // Adjust subsetted property(ies)
     removeOwnedMember(fragment);
 }
 
-void QInteractionOperandPrivate::setGuard(const QInteractionConstraint *guard)
+void QInteractionOperandPrivate::setGuard(QInteractionConstraint *guard)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->guard);
 
-    this->guard = const_cast<QInteractionConstraint *>(guard);
+    this->guard = guard;
 
     // Adjust subsetted property(ies)
     addOwnedElement(guard);
@@ -120,16 +120,26 @@ const QList<QInteractionFragment *> *QInteractionOperand::fragments() const
     return d->fragments;
 }
 
-void QInteractionOperand::addFragment(const QInteractionFragment *fragment)
+void QInteractionOperand::addFragment(QInteractionFragment *fragment)
 {
     QTUML_D(QInteractionOperand);
-    d->addFragment(const_cast<QInteractionFragment *>(fragment));
+    if (!d->fragments->contains(fragment)) {
+        d->addFragment(fragment);
+
+        // Adjust opposite property
+        fragment->setEnclosingOperand(this);
+    }
 }
 
-void QInteractionOperand::removeFragment(const QInteractionFragment *fragment)
+void QInteractionOperand::removeFragment(QInteractionFragment *fragment)
 {
     QTUML_D(QInteractionOperand);
-    d->removeFragment(const_cast<QInteractionFragment *>(fragment));
+    if (d->fragments->contains(fragment)) {
+        d->removeFragment(fragment);
+
+        // Adjust opposite property
+        fragment->setEnclosingOperand(0);
+    }
 }
 
 /*!
@@ -141,10 +151,12 @@ QInteractionConstraint *QInteractionOperand::guard() const
     return d->guard;
 }
 
-void QInteractionOperand::setGuard(const QInteractionConstraint *guard)
+void QInteractionOperand::setGuard(QInteractionConstraint *guard)
 {
     QTUML_D(QInteractionOperand);
-    d->setGuard(const_cast<QInteractionConstraint *>(guard));
+    if (d->guard != guard) {
+        d->setGuard(guard);
+    }
 }
 
 #include "moc_qinteractionoperand.cpp"

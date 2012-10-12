@@ -55,9 +55,9 @@ QTypePrivate::~QTypePrivate()
 {
 }
 
-void QTypePrivate::setPackage(const QPackage *package)
+void QTypePrivate::setPackage(QPackage *package)
 {
-    this->package = const_cast<QPackage *>(package);
+    this->package = package;
 }
 
 /*!
@@ -85,10 +85,12 @@ QPackage *QType::package() const
     return d->package;
 }
 
-void QType::setPackage(const QPackage *package)
+void QType::setPackage(QPackage *package)
 {
     QTUML_D(QType);
-    d->setPackage(const_cast<QPackage *>(package));
+    if (d->package != package) {
+        d->setPackage(package);
+    }
 }
 
 /*!

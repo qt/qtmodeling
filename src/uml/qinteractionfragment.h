@@ -70,15 +70,15 @@ public:
 
     // Association-ends
     const QSet<QGeneralOrdering *> *generalOrderings() const;
-    void addGeneralOrdering(const QGeneralOrdering *generalOrdering);
-    void removeGeneralOrdering(const QGeneralOrdering *generalOrdering);
+    void addGeneralOrdering(QGeneralOrdering *generalOrdering);
+    void removeGeneralOrdering(QGeneralOrdering *generalOrdering);
     QInteraction *enclosingInteraction() const;
-    void setEnclosingInteraction(const QInteraction *enclosingInteraction);
+    void setEnclosingInteraction(QInteraction *enclosingInteraction);
     const QSet<QLifeline *> *covered() const;
-    void addCovered(const QLifeline *covered);
-    void removeCovered(const QLifeline *covered);
+    void addCovered(QLifeline *covered);
+    void removeCovered(QLifeline *covered);
     QInteractionOperand *enclosingOperand() const;
-    void setEnclosingOperand(const QInteractionOperand *enclosingOperand);
+    void setEnclosingOperand(QInteractionOperand *enclosingOperand);
 
 protected:
     explicit QInteractionFragment();

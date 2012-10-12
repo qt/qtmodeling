@@ -64,7 +64,7 @@ public:
     QOpaqueExpression *mapping;
 
     // Internal functions for association-ends
-    void setMapping(const QOpaqueExpression *mapping);
+    void setMapping(QOpaqueExpression *mapping);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -71,10 +71,10 @@ public:
     QList<QElement *> *constrainedElements;
 
     // Internal functions for association-ends
-    void setContext(const QNamespace *context);
-    void setSpecification(const QValueSpecification *specification);
-    void addConstrainedElement(const QElement *constrainedElement);
-    void removeConstrainedElement(const QElement *constrainedElement);
+    void setContext(QNamespace *context);
+    void setSpecification(QValueSpecification *specification);
+    void addConstrainedElement(QElement *constrainedElement);
+    void removeConstrainedElement(QElement *constrainedElement);
 };
 
 QT_END_NAMESPACE_QTUML

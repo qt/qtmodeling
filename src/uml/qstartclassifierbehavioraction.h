@@ -110,7 +110,7 @@ public:
 
     // Association-ends
     QInputPin *object() const;
-    void setObject(const QInputPin *object);
+    void setObject(QInputPin *object);
 
 protected:
     explicit QStartClassifierBehaviorAction(bool createPimpl, QObject *parent = 0);

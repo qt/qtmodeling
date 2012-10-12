@@ -150,31 +150,31 @@ public:
 
     // Association-ends
     const QList<QParameter *> *ownedParameters() const;
-    void addOwnedParameter(const QParameter *ownedParameter);
-    void removeOwnedParameter(const QParameter *ownedParameter);
+    void addOwnedParameter(QParameter *ownedParameter);
+    void removeOwnedParameter(QParameter *ownedParameter);
     QConstraint *bodyCondition() const;
-    void setBodyCondition(const QConstraint *bodyCondition);
+    void setBodyCondition(QConstraint *bodyCondition);
     const QSet<QOperation *> *redefinedOperations() const;
-    void addRedefinedOperation(const QOperation *redefinedOperation);
-    void removeRedefinedOperation(const QOperation *redefinedOperation);
+    void addRedefinedOperation(QOperation *redefinedOperation);
+    void removeRedefinedOperation(QOperation *redefinedOperation);
     const QSet<QConstraint *> *postconditions() const;
-    void addPostcondition(const QConstraint *postcondition);
-    void removePostcondition(const QConstraint *postcondition);
+    void addPostcondition(QConstraint *postcondition);
+    void removePostcondition(QConstraint *postcondition);
     QDataType *datatype() const;
-    void setDatatype(const QDataType *datatype);
+    void setDatatype(QDataType *datatype);
     QOperationTemplateParameter *templateParameter() const;
-    void setTemplateParameter(const QOperationTemplateParameter *templateParameter);
+    void setTemplateParameter(QOperationTemplateParameter *templateParameter);
     QInterface *interface() const;
-    void setInterface(const QInterface *interface);
+    void setInterface(QInterface *interface);
     QType *type() const;
     const QSet<QConstraint *> *preconditions() const;
-    void addPrecondition(const QConstraint *precondition);
-    void removePrecondition(const QConstraint *precondition);
+    void addPrecondition(QConstraint *precondition);
+    void removePrecondition(QConstraint *precondition);
     QClass *class_() const;
-    void setClass_(const QClass *class_);
+    void setClass_(QClass *class_);
     const QSet<QType *> *raisedExceptions() const;
-    void addRaisedException(const QType *raisedException);
-    void removeRaisedException(const QType *raisedException);
+    void addRaisedException(QType *raisedException);
+    void removeRaisedException(QType *raisedException);
 
     // Operations
     bool isConsistentWith(const QRedefinableElement *redefinee) const;

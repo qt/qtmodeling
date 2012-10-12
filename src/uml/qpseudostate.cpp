@@ -65,17 +65,17 @@ void QPseudostatePrivate::setKind(QtUml::PseudostateKind kind)
     this->kind = kind;
 }
 
-void QPseudostatePrivate::setState(const QState *state)
+void QPseudostatePrivate::setState(QState *state)
 {
-    this->state = const_cast<QState *>(state);
+    this->state = state;
 
     // Adjust subsetted property(ies)
     setNamespace_(state);
 }
 
-void QPseudostatePrivate::setStateMachine(const QStateMachine *stateMachine)
+void QPseudostatePrivate::setStateMachine(QStateMachine *stateMachine)
 {
-    this->stateMachine = const_cast<QStateMachine *>(stateMachine);
+    this->stateMachine = stateMachine;
 
     // Adjust subsetted property(ies)
     setNamespace_(stateMachine);
@@ -118,7 +118,9 @@ QtUml::PseudostateKind QPseudostate::kind() const
 void QPseudostate::setKind(QtUml::PseudostateKind kind)
 {
     QTUML_D(QPseudostate);
-    d->setKind(kind);
+    if (d->kind != kind) {
+        d->setKind(kind);
+    }
 }
 
 /*!
@@ -130,10 +132,15 @@ QState *QPseudostate::state() const
     return d->state;
 }
 
-void QPseudostate::setState(const QState *state)
+void QPseudostate::setState(QState *state)
 {
     QTUML_D(QPseudostate);
-    d->setState(const_cast<QState *>(state));
+    if (d->state != state) {
+        d->setState(state);
+
+        // Adjust opposite property
+        state->addConnectionPoint(this);
+    }
 }
 
 /*!
@@ -145,10 +152,15 @@ QStateMachine *QPseudostate::stateMachine() const
     return d->stateMachine;
 }
 
-void QPseudostate::setStateMachine(const QStateMachine *stateMachine)
+void QPseudostate::setStateMachine(QStateMachine *stateMachine)
 {
     QTUML_D(QPseudostate);
-    d->setStateMachine(const_cast<QStateMachine *>(stateMachine));
+    if (d->stateMachine != stateMachine) {
+        d->setStateMachine(stateMachine);
+
+        // Adjust opposite property
+        stateMachine->addConnectionPoint(this);
+    }
 }
 
 #include "moc_qpseudostate.cpp"

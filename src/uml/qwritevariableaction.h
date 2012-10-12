@@ -64,7 +64,7 @@ public:
 
     // Association-ends
     QInputPin *value() const;
-    void setValue(const QInputPin *value);
+    void setValue(QInputPin *value);
 
 protected:
     explicit QWriteVariableAction();

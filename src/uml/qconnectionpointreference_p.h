@@ -70,11 +70,11 @@ public:
     QSet<QPseudostate *> *entries;
 
     // Internal functions for association-ends
-    void addExit(const QPseudostate *exit);
-    void removeExit(const QPseudostate *exit);
-    void setState(const QState *state);
-    void addEntry(const QPseudostate *entry);
-    void removeEntry(const QPseudostate *entry);
+    void addExit(QPseudostate *exit);
+    void removeExit(QPseudostate *exit);
+    void setState(QState *state);
+    void addEntry(QPseudostate *entry);
+    void removeEntry(QPseudostate *entry);
 };
 
 QT_END_NAMESPACE_QTUML

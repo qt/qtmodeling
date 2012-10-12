@@ -57,14 +57,14 @@ QConnectorEndPrivate::~QConnectorEndPrivate()
 {
 }
 
-void QConnectorEndPrivate::setRole(const QConnectableElement *role)
+void QConnectorEndPrivate::setRole(QConnectableElement *role)
 {
-    this->role = const_cast<QConnectableElement *>(role);
+    this->role = role;
 }
 
-void QConnectorEndPrivate::setPartWithPort(const QProperty *partWithPort)
+void QConnectorEndPrivate::setPartWithPort(QProperty *partWithPort)
 {
-    this->partWithPort = const_cast<QProperty *>(partWithPort);
+    this->partWithPort = partWithPort;
 }
 
 /*!
@@ -101,10 +101,12 @@ QConnectableElement *QConnectorEnd::role() const
     return d->role;
 }
 
-void QConnectorEnd::setRole(const QConnectableElement *role)
+void QConnectorEnd::setRole(QConnectableElement *role)
 {
     QTUML_D(QConnectorEnd);
-    d->setRole(const_cast<QConnectableElement *>(role));
+    if (d->role != role) {
+        d->setRole(role);
+    }
 }
 
 /*!
@@ -116,10 +118,12 @@ QProperty *QConnectorEnd::partWithPort() const
     return d->partWithPort;
 }
 
-void QConnectorEnd::setPartWithPort(const QProperty *partWithPort)
+void QConnectorEnd::setPartWithPort(QProperty *partWithPort)
 {
     QTUML_D(QConnectorEnd);
-    d->setPartWithPort(const_cast<QProperty *>(partWithPort));
+    if (d->partWithPort != partWithPort) {
+        d->setPartWithPort(partWithPort);
+    }
 }
 
 /*!

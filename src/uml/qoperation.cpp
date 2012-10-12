@@ -97,66 +97,66 @@ void QOperationPrivate::setQuery(bool isQuery)
     this->isQuery = isQuery;
 }
 
-void QOperationPrivate::addOwnedParameter(const QParameter *ownedParameter)
+void QOperationPrivate::addOwnedParameter(QParameter *ownedParameter)
 {
-    this->ownedParameters->append(const_cast<QParameter *>(ownedParameter));
+    this->ownedParameters->append(ownedParameter);
 }
 
-void QOperationPrivate::removeOwnedParameter(const QParameter *ownedParameter)
+void QOperationPrivate::removeOwnedParameter(QParameter *ownedParameter)
 {
-    this->ownedParameters->removeAll(const_cast<QParameter *>(ownedParameter));
+    this->ownedParameters->removeAll(ownedParameter);
 }
 
-void QOperationPrivate::setBodyCondition(const QConstraint *bodyCondition)
+void QOperationPrivate::setBodyCondition(QConstraint *bodyCondition)
 {
     // Adjust subsetted property(ies)
     removeOwnedRule(this->bodyCondition);
 
-    this->bodyCondition = const_cast<QConstraint *>(bodyCondition);
+    this->bodyCondition = bodyCondition;
 
     // Adjust subsetted property(ies)
     addOwnedRule(bodyCondition);
 }
 
-void QOperationPrivate::addRedefinedOperation(const QOperation *redefinedOperation)
+void QOperationPrivate::addRedefinedOperation(QOperation *redefinedOperation)
 {
-    this->redefinedOperations->insert(const_cast<QOperation *>(redefinedOperation));
+    this->redefinedOperations->insert(redefinedOperation);
 
     // Adjust subsetted property(ies)
     addRedefinedElement(redefinedOperation);
 }
 
-void QOperationPrivate::removeRedefinedOperation(const QOperation *redefinedOperation)
+void QOperationPrivate::removeRedefinedOperation(QOperation *redefinedOperation)
 {
-    this->redefinedOperations->remove(const_cast<QOperation *>(redefinedOperation));
+    this->redefinedOperations->remove(redefinedOperation);
 
     // Adjust subsetted property(ies)
     removeRedefinedElement(redefinedOperation);
 }
 
-void QOperationPrivate::addPostcondition(const QConstraint *postcondition)
+void QOperationPrivate::addPostcondition(QConstraint *postcondition)
 {
-    this->postconditions->insert(const_cast<QConstraint *>(postcondition));
+    this->postconditions->insert(postcondition);
 
     // Adjust subsetted property(ies)
     addOwnedRule(postcondition);
 }
 
-void QOperationPrivate::removePostcondition(const QConstraint *postcondition)
+void QOperationPrivate::removePostcondition(QConstraint *postcondition)
 {
-    this->postconditions->remove(const_cast<QConstraint *>(postcondition));
+    this->postconditions->remove(postcondition);
 
     // Adjust subsetted property(ies)
     removeOwnedRule(postcondition);
 }
 
-void QOperationPrivate::setDatatype(const QDataType *datatype)
+void QOperationPrivate::setDatatype(QDataType *datatype)
 {
     // Adjust subsetted property(ies)
     removeFeaturingClassifier(this->datatype);
     removeRedefinitionContext(this->datatype);
 
-    this->datatype = const_cast<QDataType *>(datatype);
+    this->datatype = datatype;
 
     // Adjust subsetted property(ies)
     addFeaturingClassifier(datatype);
@@ -164,18 +164,18 @@ void QOperationPrivate::setDatatype(const QDataType *datatype)
     setNamespace_(datatype);
 }
 
-void QOperationPrivate::setTemplateParameter(const QOperationTemplateParameter *templateParameter)
+void QOperationPrivate::setTemplateParameter(QOperationTemplateParameter *templateParameter)
 {
-    this->templateParameter = const_cast<QOperationTemplateParameter *>(templateParameter);
+    this->templateParameter = templateParameter;
 }
 
-void QOperationPrivate::setInterface(const QInterface *interface)
+void QOperationPrivate::setInterface(QInterface *interface)
 {
     // Adjust subsetted property(ies)
     removeFeaturingClassifier(this->interface);
     removeRedefinitionContext(this->interface);
 
-    this->interface = const_cast<QInterface *>(interface);
+    this->interface = interface;
 
     // Adjust subsetted property(ies)
     addFeaturingClassifier(interface);
@@ -183,29 +183,29 @@ void QOperationPrivate::setInterface(const QInterface *interface)
     setNamespace_(interface);
 }
 
-void QOperationPrivate::addPrecondition(const QConstraint *precondition)
+void QOperationPrivate::addPrecondition(QConstraint *precondition)
 {
-    this->preconditions->insert(const_cast<QConstraint *>(precondition));
+    this->preconditions->insert(precondition);
 
     // Adjust subsetted property(ies)
     addOwnedRule(precondition);
 }
 
-void QOperationPrivate::removePrecondition(const QConstraint *precondition)
+void QOperationPrivate::removePrecondition(QConstraint *precondition)
 {
-    this->preconditions->remove(const_cast<QConstraint *>(precondition));
+    this->preconditions->remove(precondition);
 
     // Adjust subsetted property(ies)
     removeOwnedRule(precondition);
 }
 
-void QOperationPrivate::setClass_(const QClass *class_)
+void QOperationPrivate::setClass_(QClass *class_)
 {
     // Adjust subsetted property(ies)
     removeFeaturingClassifier(this->class_);
     removeRedefinitionContext(this->class_);
 
-    this->class_ = const_cast<QClass *>(class_);
+    this->class_ = class_;
 
     // Adjust subsetted property(ies)
     addFeaturingClassifier(class_);
@@ -213,14 +213,14 @@ void QOperationPrivate::setClass_(const QClass *class_)
     setNamespace_(class_);
 }
 
-void QOperationPrivate::addRaisedException(const QType *raisedException)
+void QOperationPrivate::addRaisedException(QType *raisedException)
 {
-    this->raisedExceptions->insert(const_cast<QType *>(raisedException));
+    this->raisedExceptions->insert(raisedException);
 }
 
-void QOperationPrivate::removeRaisedException(const QType *raisedException)
+void QOperationPrivate::removeRaisedException(QType *raisedException)
 {
-    this->raisedExceptions->remove(const_cast<QType *>(raisedException));
+    this->raisedExceptions->remove(raisedException);
 }
 
 /*!
@@ -268,7 +268,9 @@ bool QOperation::isQuery() const
 void QOperation::setQuery(bool isQuery)
 {
     QTUML_D(QOperation);
-    d->setQuery(isQuery);
+    if (d->isQuery != isQuery) {
+        d->setQuery(isQuery);
+    }
 }
 
 /*!
@@ -304,16 +306,26 @@ const QList<QParameter *> *QOperation::ownedParameters() const
     return d->ownedParameters;
 }
 
-void QOperation::addOwnedParameter(const QParameter *ownedParameter)
+void QOperation::addOwnedParameter(QParameter *ownedParameter)
 {
     QTUML_D(QOperation);
-    d->addOwnedParameter(const_cast<QParameter *>(ownedParameter));
+    if (!d->ownedParameters->contains(ownedParameter)) {
+        d->addOwnedParameter(ownedParameter);
+
+        // Adjust opposite property
+        ownedParameter->setOperation(this);
+    }
 }
 
-void QOperation::removeOwnedParameter(const QParameter *ownedParameter)
+void QOperation::removeOwnedParameter(QParameter *ownedParameter)
 {
     QTUML_D(QOperation);
-    d->removeOwnedParameter(const_cast<QParameter *>(ownedParameter));
+    if (d->ownedParameters->contains(ownedParameter)) {
+        d->removeOwnedParameter(ownedParameter);
+
+        // Adjust opposite property
+        ownedParameter->setOperation(0);
+    }
 }
 
 /*!
@@ -325,10 +337,12 @@ QConstraint *QOperation::bodyCondition() const
     return d->bodyCondition;
 }
 
-void QOperation::setBodyCondition(const QConstraint *bodyCondition)
+void QOperation::setBodyCondition(QConstraint *bodyCondition)
 {
     QTUML_D(QOperation);
-    d->setBodyCondition(const_cast<QConstraint *>(bodyCondition));
+    if (d->bodyCondition != bodyCondition) {
+        d->setBodyCondition(bodyCondition);
+    }
 }
 
 /*!
@@ -340,16 +354,20 @@ const QSet<QOperation *> *QOperation::redefinedOperations() const
     return d->redefinedOperations;
 }
 
-void QOperation::addRedefinedOperation(const QOperation *redefinedOperation)
+void QOperation::addRedefinedOperation(QOperation *redefinedOperation)
 {
     QTUML_D(QOperation);
-    d->addRedefinedOperation(const_cast<QOperation *>(redefinedOperation));
+    if (!d->redefinedOperations->contains(redefinedOperation)) {
+        d->addRedefinedOperation(redefinedOperation);
+    }
 }
 
-void QOperation::removeRedefinedOperation(const QOperation *redefinedOperation)
+void QOperation::removeRedefinedOperation(QOperation *redefinedOperation)
 {
     QTUML_D(QOperation);
-    d->removeRedefinedOperation(const_cast<QOperation *>(redefinedOperation));
+    if (d->redefinedOperations->contains(redefinedOperation)) {
+        d->removeRedefinedOperation(redefinedOperation);
+    }
 }
 
 /*!
@@ -361,16 +379,20 @@ const QSet<QConstraint *> *QOperation::postconditions() const
     return d->postconditions;
 }
 
-void QOperation::addPostcondition(const QConstraint *postcondition)
+void QOperation::addPostcondition(QConstraint *postcondition)
 {
     QTUML_D(QOperation);
-    d->addPostcondition(const_cast<QConstraint *>(postcondition));
+    if (!d->postconditions->contains(postcondition)) {
+        d->addPostcondition(postcondition);
+    }
 }
 
-void QOperation::removePostcondition(const QConstraint *postcondition)
+void QOperation::removePostcondition(QConstraint *postcondition)
 {
     QTUML_D(QOperation);
-    d->removePostcondition(const_cast<QConstraint *>(postcondition));
+    if (d->postconditions->contains(postcondition)) {
+        d->removePostcondition(postcondition);
+    }
 }
 
 /*!
@@ -382,10 +404,15 @@ QDataType *QOperation::datatype() const
     return d->datatype;
 }
 
-void QOperation::setDatatype(const QDataType *datatype)
+void QOperation::setDatatype(QDataType *datatype)
 {
     QTUML_D(QOperation);
-    d->setDatatype(const_cast<QDataType *>(datatype));
+    if (d->datatype != datatype) {
+        d->setDatatype(datatype);
+
+        // Adjust opposite property
+        datatype->addOwnedOperation(this);
+    }
 }
 
 /*!
@@ -397,10 +424,15 @@ QOperationTemplateParameter *QOperation::templateParameter() const
     return d->templateParameter;
 }
 
-void QOperation::setTemplateParameter(const QOperationTemplateParameter *templateParameter)
+void QOperation::setTemplateParameter(QOperationTemplateParameter *templateParameter)
 {
     QTUML_D(QOperation);
-    d->setTemplateParameter(const_cast<QOperationTemplateParameter *>(templateParameter));
+    if (d->templateParameter != templateParameter) {
+        d->setTemplateParameter(templateParameter);
+
+        // Adjust opposite property
+        templateParameter->setParameteredElement(this);
+    }
 }
 
 /*!
@@ -412,10 +444,15 @@ QInterface *QOperation::interface() const
     return d->interface;
 }
 
-void QOperation::setInterface(const QInterface *interface)
+void QOperation::setInterface(QInterface *interface)
 {
     QTUML_D(QOperation);
-    d->setInterface(const_cast<QInterface *>(interface));
+    if (d->interface != interface) {
+        d->setInterface(interface);
+
+        // Adjust opposite property
+        interface->addOwnedOperation(this);
+    }
 }
 
 /*!
@@ -435,16 +472,20 @@ const QSet<QConstraint *> *QOperation::preconditions() const
     return d->preconditions;
 }
 
-void QOperation::addPrecondition(const QConstraint *precondition)
+void QOperation::addPrecondition(QConstraint *precondition)
 {
     QTUML_D(QOperation);
-    d->addPrecondition(const_cast<QConstraint *>(precondition));
+    if (!d->preconditions->contains(precondition)) {
+        d->addPrecondition(precondition);
+    }
 }
 
-void QOperation::removePrecondition(const QConstraint *precondition)
+void QOperation::removePrecondition(QConstraint *precondition)
 {
     QTUML_D(QOperation);
-    d->removePrecondition(const_cast<QConstraint *>(precondition));
+    if (d->preconditions->contains(precondition)) {
+        d->removePrecondition(precondition);
+    }
 }
 
 /*!
@@ -456,10 +497,15 @@ QClass *QOperation::class_() const
     return d->class_;
 }
 
-void QOperation::setClass_(const QClass *class_)
+void QOperation::setClass_(QClass *class_)
 {
     QTUML_D(QOperation);
-    d->setClass_(const_cast<QClass *>(class_));
+    if (d->class_ != class_) {
+        d->setClass_(class_);
+
+        // Adjust opposite property
+        class_->addOwnedOperation(this);
+    }
 }
 
 /*!
@@ -471,16 +517,20 @@ const QSet<QType *> *QOperation::raisedExceptions() const
     return d->raisedExceptions;
 }
 
-void QOperation::addRaisedException(const QType *raisedException)
+void QOperation::addRaisedException(QType *raisedException)
 {
     QTUML_D(QOperation);
-    d->addRaisedException(const_cast<QType *>(raisedException));
+    if (!d->raisedExceptions->contains(raisedException)) {
+        d->addRaisedException(raisedException);
+    }
 }
 
-void QOperation::removeRaisedException(const QType *raisedException)
+void QOperation::removeRaisedException(QType *raisedException)
 {
     QTUML_D(QOperation);
-    d->removeRaisedException(const_cast<QType *>(raisedException));
+    if (d->raisedExceptions->contains(raisedException)) {
+        d->removeRaisedException(raisedException);
+    }
 }
 
 /*!

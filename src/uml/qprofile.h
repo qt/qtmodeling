@@ -75,11 +75,11 @@ public:
 
     // Association-ends
     const QSet<QPackageImport *> *metamodelReferences() const;
-    void addMetamodelReference(const QPackageImport *metamodelReference);
-    void removeMetamodelReference(const QPackageImport *metamodelReference);
+    void addMetamodelReference(QPackageImport *metamodelReference);
+    void removeMetamodelReference(QPackageImport *metamodelReference);
     const QSet<QElementImport *> *metaclassReferences() const;
-    void addMetaclassReference(const QElementImport *metaclassReference);
-    void removeMetaclassReference(const QElementImport *metaclassReference);
+    void addMetaclassReference(QElementImport *metaclassReference);
+    void removeMetaclassReference(QElementImport *metaclassReference);
 
 protected:
     explicit QProfile(bool createPimpl, QObject *parent = 0);

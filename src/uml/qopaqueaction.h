@@ -127,11 +127,11 @@ public:
 
     // Association-ends
     const QSet<QInputPin *> *inputValues() const;
-    void addInputValue(const QInputPin *inputValue);
-    void removeInputValue(const QInputPin *inputValue);
+    void addInputValue(QInputPin *inputValue);
+    void removeInputValue(QInputPin *inputValue);
     const QSet<QOutputPin *> *outputValues() const;
-    void addOutputValue(const QOutputPin *outputValue);
-    void removeOutputValue(const QOutputPin *outputValue);
+    void addOutputValue(QOutputPin *outputValue);
+    void removeOutputValue(QOutputPin *outputValue);
 
 protected:
     explicit QOpaqueAction(bool createPimpl, QObject *parent = 0);

@@ -64,40 +64,40 @@ QTemplateBindingPrivate::~QTemplateBindingPrivate()
     delete parameterSubstitutions;
 }
 
-void QTemplateBindingPrivate::setSignature(const QTemplateSignature *signature)
+void QTemplateBindingPrivate::setSignature(QTemplateSignature *signature)
 {
     // Adjust subsetted property(ies)
     removeTarget(this->signature);
 
-    this->signature = const_cast<QTemplateSignature *>(signature);
+    this->signature = signature;
 
     // Adjust subsetted property(ies)
     addTarget(signature);
 }
 
-void QTemplateBindingPrivate::setBoundElement(const QTemplateableElement *boundElement)
+void QTemplateBindingPrivate::setBoundElement(QTemplateableElement *boundElement)
 {
     // Adjust subsetted property(ies)
     removeSource(this->boundElement);
 
-    this->boundElement = const_cast<QTemplateableElement *>(boundElement);
+    this->boundElement = boundElement;
 
     // Adjust subsetted property(ies)
     setOwner(boundElement);
     addSource(boundElement);
 }
 
-void QTemplateBindingPrivate::addParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution)
+void QTemplateBindingPrivate::addParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution)
 {
-    this->parameterSubstitutions->insert(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution));
+    this->parameterSubstitutions->insert(parameterSubstitution);
 
     // Adjust subsetted property(ies)
     addOwnedElement(parameterSubstitution);
 }
 
-void QTemplateBindingPrivate::removeParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution)
+void QTemplateBindingPrivate::removeParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution)
 {
-    this->parameterSubstitutions->remove(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution));
+    this->parameterSubstitutions->remove(parameterSubstitution);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(parameterSubstitution);
@@ -137,10 +137,12 @@ QTemplateSignature *QTemplateBinding::signature() const
     return d->signature;
 }
 
-void QTemplateBinding::setSignature(const QTemplateSignature *signature)
+void QTemplateBinding::setSignature(QTemplateSignature *signature)
 {
     QTUML_D(QTemplateBinding);
-    d->setSignature(const_cast<QTemplateSignature *>(signature));
+    if (d->signature != signature) {
+        d->setSignature(signature);
+    }
 }
 
 /*!
@@ -152,10 +154,15 @@ QTemplateableElement *QTemplateBinding::boundElement() const
     return d->boundElement;
 }
 
-void QTemplateBinding::setBoundElement(const QTemplateableElement *boundElement)
+void QTemplateBinding::setBoundElement(QTemplateableElement *boundElement)
 {
     QTUML_D(QTemplateBinding);
-    d->setBoundElement(const_cast<QTemplateableElement *>(boundElement));
+    if (d->boundElement != boundElement) {
+        d->setBoundElement(boundElement);
+
+        // Adjust opposite property
+        boundElement->addTemplateBinding(this);
+    }
 }
 
 /*!
@@ -167,16 +174,26 @@ const QSet<QTemplateParameterSubstitution *> *QTemplateBinding::parameterSubstit
     return d->parameterSubstitutions;
 }
 
-void QTemplateBinding::addParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution)
+void QTemplateBinding::addParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution)
 {
     QTUML_D(QTemplateBinding);
-    d->addParameterSubstitution(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution));
+    if (!d->parameterSubstitutions->contains(parameterSubstitution)) {
+        d->addParameterSubstitution(parameterSubstitution);
+
+        // Adjust opposite property
+        parameterSubstitution->setTemplateBinding(this);
+    }
 }
 
-void QTemplateBinding::removeParameterSubstitution(const QTemplateParameterSubstitution *parameterSubstitution)
+void QTemplateBinding::removeParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution)
 {
     QTUML_D(QTemplateBinding);
-    d->removeParameterSubstitution(const_cast<QTemplateParameterSubstitution *>(parameterSubstitution));
+    if (d->parameterSubstitutions->contains(parameterSubstitution)) {
+        d->removeParameterSubstitution(parameterSubstitution);
+
+        // Adjust opposite property
+        parameterSubstitution->setTemplateBinding(0);
+    }
 }
 
 #include "moc_qtemplatebinding.cpp"

@@ -66,7 +66,7 @@ public:
     // Internal functions for attributes
 
     // Internal functions for association-ends
-    void setType(const QStereotype *type);
+    void setType(QStereotype *type);
 };
 
 QT_END_NAMESPACE_QTUML

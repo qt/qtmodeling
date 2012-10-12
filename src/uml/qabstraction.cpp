@@ -56,12 +56,12 @@ QAbstractionPrivate::~QAbstractionPrivate()
 {
 }
 
-void QAbstractionPrivate::setMapping(const QOpaqueExpression *mapping)
+void QAbstractionPrivate::setMapping(QOpaqueExpression *mapping)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->mapping);
 
-    this->mapping = const_cast<QOpaqueExpression *>(mapping);
+    this->mapping = mapping;
 
     // Adjust subsetted property(ies)
     addOwnedElement(mapping);
@@ -101,10 +101,12 @@ QOpaqueExpression *QAbstraction::mapping() const
     return d->mapping;
 }
 
-void QAbstraction::setMapping(const QOpaqueExpression *mapping)
+void QAbstraction::setMapping(QOpaqueExpression *mapping)
 {
     QTUML_D(QAbstraction);
-    d->setMapping(const_cast<QOpaqueExpression *>(mapping));
+    if (d->mapping != mapping) {
+        d->setMapping(mapping);
+    }
 }
 
 #include "moc_qabstraction.cpp"

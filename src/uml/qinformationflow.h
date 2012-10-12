@@ -112,26 +112,26 @@ public:
 
     // Association-ends
     const QSet<QNamedElement *> *informationTargets() const;
-    void addInformationTarget(const QNamedElement *informationTarget);
-    void removeInformationTarget(const QNamedElement *informationTarget);
+    void addInformationTarget(QNamedElement *informationTarget);
+    void removeInformationTarget(QNamedElement *informationTarget);
     const QSet<QConnector *> *realizingConnectors() const;
-    void addRealizingConnector(const QConnector *realizingConnector);
-    void removeRealizingConnector(const QConnector *realizingConnector);
+    void addRealizingConnector(QConnector *realizingConnector);
+    void removeRealizingConnector(QConnector *realizingConnector);
     const QSet<QClassifier *> *conveyed() const;
-    void addConveyed(const QClassifier *conveyed);
-    void removeConveyed(const QClassifier *conveyed);
+    void addConveyed(QClassifier *conveyed);
+    void removeConveyed(QClassifier *conveyed);
     const QSet<QNamedElement *> *informationSources() const;
-    void addInformationSource(const QNamedElement *informationSource);
-    void removeInformationSource(const QNamedElement *informationSource);
+    void addInformationSource(QNamedElement *informationSource);
+    void removeInformationSource(QNamedElement *informationSource);
     const QSet<QMessage *> *realizingMessages() const;
-    void addRealizingMessage(const QMessage *realizingMessage);
-    void removeRealizingMessage(const QMessage *realizingMessage);
+    void addRealizingMessage(QMessage *realizingMessage);
+    void removeRealizingMessage(QMessage *realizingMessage);
     const QSet<QActivityEdge *> *realizingActivityEdges() const;
-    void addRealizingActivityEdge(const QActivityEdge *realizingActivityEdge);
-    void removeRealizingActivityEdge(const QActivityEdge *realizingActivityEdge);
+    void addRealizingActivityEdge(QActivityEdge *realizingActivityEdge);
+    void removeRealizingActivityEdge(QActivityEdge *realizingActivityEdge);
     const QSet<QRelationship *> *realizations() const;
-    void addRealization(const QRelationship *realization);
-    void removeRealization(const QRelationship *realization);
+    void addRealization(QRelationship *realization);
+    void removeRealization(QRelationship *realization);
 
 protected:
     explicit QInformationFlow(bool createPimpl, QObject *parent = 0);

@@ -65,8 +65,8 @@ public:
     QTimeExpression *min;
 
     // Internal functions for association-ends
-    void setMax(const QTimeExpression *max);
-    void setMin(const QTimeExpression *min);
+    void setMax(QTimeExpression *max);
+    void setMin(QTimeExpression *min);
 };
 
 QT_END_NAMESPACE_QTUML

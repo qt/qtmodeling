@@ -118,7 +118,7 @@ public:
 
     // Association-ends
     QBehavior *behavior() const;
-    void setBehavior(const QBehavior *behavior);
+    void setBehavior(QBehavior *behavior);
 
 protected:
     explicit QCallBehaviorAction(bool createPimpl, QObject *parent = 0);

@@ -68,7 +68,7 @@ public:
     void setDestroyDuplicates(bool isDestroyDuplicates);
 
     // Internal functions for association-ends
-    void setDestroyAt(const QInputPin *destroyAt);
+    void setDestroyAt(QInputPin *destroyAt);
 };
 
 QT_END_NAMESPACE_QTUML

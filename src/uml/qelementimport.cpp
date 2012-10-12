@@ -71,23 +71,23 @@ void QElementImportPrivate::setVisibility(QtUml::VisibilityKind visibility)
     this->visibility = visibility;
 }
 
-void QElementImportPrivate::setImportedElement(const QPackageableElement *importedElement)
+void QElementImportPrivate::setImportedElement(QPackageableElement *importedElement)
 {
     // Adjust subsetted property(ies)
     removeTarget(this->importedElement);
 
-    this->importedElement = const_cast<QPackageableElement *>(importedElement);
+    this->importedElement = importedElement;
 
     // Adjust subsetted property(ies)
     addTarget(importedElement);
 }
 
-void QElementImportPrivate::setImportingNamespace(const QNamespace *importingNamespace)
+void QElementImportPrivate::setImportingNamespace(QNamespace *importingNamespace)
 {
     // Adjust subsetted property(ies)
     removeSource(this->importingNamespace);
 
-    this->importingNamespace = const_cast<QNamespace *>(importingNamespace);
+    this->importingNamespace = importingNamespace;
 
     // Adjust subsetted property(ies)
     setOwner(importingNamespace);
@@ -131,7 +131,9 @@ QString QElementImport::alias() const
 void QElementImport::setAlias(QString alias)
 {
     QTUML_D(QElementImport);
-    d->setAlias(alias);
+    if (d->alias != alias) {
+        d->setAlias(alias);
+    }
 }
 
 /*!
@@ -146,7 +148,9 @@ QtUml::VisibilityKind QElementImport::visibility() const
 void QElementImport::setVisibility(QtUml::VisibilityKind visibility)
 {
     QTUML_D(QElementImport);
-    d->setVisibility(visibility);
+    if (d->visibility != visibility) {
+        d->setVisibility(visibility);
+    }
 }
 
 /*!
@@ -158,10 +162,12 @@ QPackageableElement *QElementImport::importedElement() const
     return d->importedElement;
 }
 
-void QElementImport::setImportedElement(const QPackageableElement *importedElement)
+void QElementImport::setImportedElement(QPackageableElement *importedElement)
 {
     QTUML_D(QElementImport);
-    d->setImportedElement(const_cast<QPackageableElement *>(importedElement));
+    if (d->importedElement != importedElement) {
+        d->setImportedElement(importedElement);
+    }
 }
 
 /*!
@@ -173,10 +179,15 @@ QNamespace *QElementImport::importingNamespace() const
     return d->importingNamespace;
 }
 
-void QElementImport::setImportingNamespace(const QNamespace *importingNamespace)
+void QElementImport::setImportingNamespace(QNamespace *importingNamespace)
 {
     QTUML_D(QElementImport);
-    d->setImportingNamespace(const_cast<QNamespace *>(importingNamespace));
+    if (d->importingNamespace != importingNamespace) {
+        d->setImportingNamespace(importingNamespace);
+
+        // Adjust opposite property
+        importingNamespace->addElementImport(this);
+    }
 }
 
 /*!

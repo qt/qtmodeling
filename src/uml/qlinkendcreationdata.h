@@ -75,7 +75,7 @@ public:
 
     // Association-ends
     QInputPin *insertAt() const;
-    void setInsertAt(const QInputPin *insertAt);
+    void setInsertAt(QInputPin *insertAt);
 
 protected:
     explicit QLinkEndCreationData(bool createPimpl, QObject *parent = 0);

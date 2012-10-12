@@ -76,22 +76,22 @@ public:
 
     // Association-ends
     QBehavioralFeature *specification() const;
-    void setSpecification(const QBehavioralFeature *specification);
+    void setSpecification(QBehavioralFeature *specification);
     const QSet<QConstraint *> *postconditions() const;
-    void addPostcondition(const QConstraint *postcondition);
-    void removePostcondition(const QConstraint *postcondition);
+    void addPostcondition(QConstraint *postcondition);
+    void removePostcondition(QConstraint *postcondition);
     const QSet<QConstraint *> *preconditions() const;
-    void addPrecondition(const QConstraint *precondition);
-    void removePrecondition(const QConstraint *precondition);
+    void addPrecondition(QConstraint *precondition);
+    void removePrecondition(QConstraint *precondition);
     const QSet<QBehavior *> *redefinedBehaviors() const;
-    void addRedefinedBehavior(const QBehavior *redefinedBehavior);
-    void removeRedefinedBehavior(const QBehavior *redefinedBehavior);
+    void addRedefinedBehavior(QBehavior *redefinedBehavior);
+    void removeRedefinedBehavior(QBehavior *redefinedBehavior);
     const QList<QParameter *> *ownedParameters() const;
-    void addOwnedParameter(const QParameter *ownedParameter);
-    void removeOwnedParameter(const QParameter *ownedParameter);
+    void addOwnedParameter(QParameter *ownedParameter);
+    void removeOwnedParameter(QParameter *ownedParameter);
     const QSet<QParameterSet *> *ownedParameterSets() const;
-    void addOwnedParameterSet(const QParameterSet *ownedParameterSet);
-    void removeOwnedParameterSet(const QParameterSet *ownedParameterSet);
+    void addOwnedParameterSet(QParameterSet *ownedParameterSet);
+    void removeOwnedParameterSet(QParameterSet *ownedParameterSet);
     QBehavioredClassifier *context() const;
 
 protected:

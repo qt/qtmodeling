@@ -67,8 +67,8 @@ public:
     QSet<QProtocolConformance *> *conformance;
 
     // Internal functions for association-ends
-    void addConformance(const QProtocolConformance *conformance);
-    void removeConformance(const QProtocolConformance *conformance);
+    void addConformance(QProtocolConformance *conformance);
+    void removeConformance(QProtocolConformance *conformance);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -95,13 +95,13 @@ public:
 
     // Association-ends
     QLifeline *covered() const;
-    void setCovered(const QLifeline *covered);
+    void setCovered(QLifeline *covered);
     const QSet<QGeneralOrdering *> *toAfter() const;
-    void addToAfter(const QGeneralOrdering *toAfter);
-    void removeToAfter(const QGeneralOrdering *toAfter);
+    void addToAfter(QGeneralOrdering *toAfter);
+    void removeToAfter(QGeneralOrdering *toAfter);
     const QSet<QGeneralOrdering *> *toBefore() const;
-    void addToBefore(const QGeneralOrdering *toBefore);
-    void removeToBefore(const QGeneralOrdering *toBefore);
+    void addToBefore(QGeneralOrdering *toBefore);
+    void removeToBefore(QGeneralOrdering *toBefore);
 
 protected:
     explicit QOccurrenceSpecification(bool createPimpl, QObject *parent = 0);

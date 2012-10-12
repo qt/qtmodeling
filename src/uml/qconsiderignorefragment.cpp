@@ -56,14 +56,14 @@ QConsiderIgnoreFragmentPrivate::~QConsiderIgnoreFragmentPrivate()
     delete messages;
 }
 
-void QConsiderIgnoreFragmentPrivate::addMessage(const QNamedElement *message)
+void QConsiderIgnoreFragmentPrivate::addMessage(QNamedElement *message)
 {
-    this->messages->insert(const_cast<QNamedElement *>(message));
+    this->messages->insert(message);
 }
 
-void QConsiderIgnoreFragmentPrivate::removeMessage(const QNamedElement *message)
+void QConsiderIgnoreFragmentPrivate::removeMessage(QNamedElement *message)
 {
-    this->messages->remove(const_cast<QNamedElement *>(message));
+    this->messages->remove(message);
 }
 
 /*!
@@ -100,16 +100,20 @@ const QSet<QNamedElement *> *QConsiderIgnoreFragment::messages() const
     return d->messages;
 }
 
-void QConsiderIgnoreFragment::addMessage(const QNamedElement *message)
+void QConsiderIgnoreFragment::addMessage(QNamedElement *message)
 {
     QTUML_D(QConsiderIgnoreFragment);
-    d->addMessage(const_cast<QNamedElement *>(message));
+    if (!d->messages->contains(message)) {
+        d->addMessage(message);
+    }
 }
 
-void QConsiderIgnoreFragment::removeMessage(const QNamedElement *message)
+void QConsiderIgnoreFragment::removeMessage(QNamedElement *message)
 {
     QTUML_D(QConsiderIgnoreFragment);
-    d->removeMessage(const_cast<QNamedElement *>(message));
+    if (d->messages->contains(message)) {
+        d->removeMessage(message);
+    }
 }
 
 #include "moc_qconsiderignorefragment.cpp"

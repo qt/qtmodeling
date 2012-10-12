@@ -103,13 +103,13 @@ public:
 
     // Association-ends
     const QSet<QClassifier *> *classifiers() const;
-    void addClassifier(const QClassifier *classifier);
-    void removeClassifier(const QClassifier *classifier);
+    void addClassifier(QClassifier *classifier);
+    void removeClassifier(QClassifier *classifier);
     QValueSpecification *specification() const;
-    void setSpecification(const QValueSpecification *specification);
+    void setSpecification(QValueSpecification *specification);
     const QSet<QSlot *> *slots_() const;
-    void addSlot_(const QSlot *slot_);
-    void removeSlot_(const QSlot *slot_);
+    void addSlot_(QSlot *slot_);
+    void removeSlot_(QSlot *slot_);
 
 protected:
     explicit QInstanceSpecification(bool createPimpl, QObject *parent = 0);

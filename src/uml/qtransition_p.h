@@ -88,14 +88,14 @@ public:
     void setKind(QtUml::TransitionKind kind);
 
     // Internal functions for association-ends
-    void setGuard(const QConstraint *guard);
-    void setTarget(const QVertex *target);
-    void setEffect(const QBehavior *effect);
-    void setContainer(const QRegion *container);
-    void setRedefinedTransition(const QTransition *redefinedTransition);
-    void setSource(const QVertex *source);
-    void addTrigger(const QTrigger *trigger);
-    void removeTrigger(const QTrigger *trigger);
+    void setGuard(QConstraint *guard);
+    void setTarget(QVertex *target);
+    void setEffect(QBehavior *effect);
+    void setContainer(QRegion *container);
+    void setRedefinedTransition(QTransition *redefinedTransition);
+    void setSource(QVertex *source);
+    void addTrigger(QTrigger *trigger);
+    void removeTrigger(QTrigger *trigger);
 };
 
 QT_END_NAMESPACE_QTUML

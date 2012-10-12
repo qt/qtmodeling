@@ -84,14 +84,14 @@ public:
 
     // Association-ends
     QExecutableNode *handlerBody() const;
-    void setHandlerBody(const QExecutableNode *handlerBody);
+    void setHandlerBody(QExecutableNode *handlerBody);
     const QSet<QClassifier *> *exceptionTypes() const;
-    void addExceptionType(const QClassifier *exceptionType);
-    void removeExceptionType(const QClassifier *exceptionType);
+    void addExceptionType(QClassifier *exceptionType);
+    void removeExceptionType(QClassifier *exceptionType);
     QExecutableNode *protectedNode() const;
-    void setProtectedNode(const QExecutableNode *protectedNode);
+    void setProtectedNode(QExecutableNode *protectedNode);
     QObjectNode *exceptionInput() const;
-    void setExceptionInput(const QObjectNode *exceptionInput);
+    void setExceptionInput(QObjectNode *exceptionInput);
 
 protected:
     explicit QExceptionHandler(bool createPimpl, QObject *parent = 0);

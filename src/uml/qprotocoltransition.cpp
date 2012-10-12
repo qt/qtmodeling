@@ -59,20 +59,20 @@ QProtocolTransitionPrivate::~QProtocolTransitionPrivate()
 {
 }
 
-void QProtocolTransitionPrivate::setPostCondition(const QConstraint *postCondition)
+void QProtocolTransitionPrivate::setPostCondition(QConstraint *postCondition)
 {
     // Adjust subsetted property(ies)
     removeOwnedRule(this->postCondition);
 
-    this->postCondition = const_cast<QConstraint *>(postCondition);
+    this->postCondition = postCondition;
 
     // Adjust subsetted property(ies)
     addOwnedRule(postCondition);
 }
 
-void QProtocolTransitionPrivate::setPreCondition(const QConstraint *preCondition)
+void QProtocolTransitionPrivate::setPreCondition(QConstraint *preCondition)
 {
-    this->preCondition = const_cast<QConstraint *>(preCondition);
+    this->preCondition = preCondition;
 
     // Adjust subsetted property(ies)
     setGuard(preCondition);
@@ -112,10 +112,12 @@ QConstraint *QProtocolTransition::postCondition() const
     return d->postCondition;
 }
 
-void QProtocolTransition::setPostCondition(const QConstraint *postCondition)
+void QProtocolTransition::setPostCondition(QConstraint *postCondition)
 {
     QTUML_D(QProtocolTransition);
-    d->setPostCondition(const_cast<QConstraint *>(postCondition));
+    if (d->postCondition != postCondition) {
+        d->setPostCondition(postCondition);
+    }
 }
 
 /*!
@@ -135,10 +137,12 @@ QConstraint *QProtocolTransition::preCondition() const
     return d->preCondition;
 }
 
-void QProtocolTransition::setPreCondition(const QConstraint *preCondition)
+void QProtocolTransition::setPreCondition(QConstraint *preCondition)
 {
     QTUML_D(QProtocolTransition);
-    d->setPreCondition(const_cast<QConstraint *>(preCondition));
+    if (d->preCondition != preCondition) {
+        d->setPreCondition(preCondition);
+    }
 }
 
 #include "moc_qprotocoltransition.cpp"

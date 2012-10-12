@@ -72,12 +72,12 @@ public:
     QSet<QConnector *> *ownedConnectors;
 
     // Internal functions for association-ends
-    void addRole(const QConnectableElement *role);
-    void removeRole(const QConnectableElement *role);
-    void addOwnedAttribute(const QProperty *ownedAttribute);
-    void removeOwnedAttribute(const QProperty *ownedAttribute);
-    void addOwnedConnector(const QConnector *ownedConnector);
-    void removeOwnedConnector(const QConnector *ownedConnector);
+    void addRole(QConnectableElement *role);
+    void removeRole(QConnectableElement *role);
+    void addOwnedAttribute(QProperty *ownedAttribute);
+    void removeOwnedAttribute(QProperty *ownedAttribute);
+    void addOwnedConnector(QConnector *ownedConnector);
+    void removeOwnedConnector(QConnector *ownedConnector);
 };
 
 QT_END_NAMESPACE_QTUML

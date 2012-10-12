@@ -71,10 +71,10 @@ public:
     QList<QProperty *> *ownedAttributes;
 
     // Internal functions for association-ends
-    void addOwnedOperation(const QOperation *ownedOperation);
-    void removeOwnedOperation(const QOperation *ownedOperation);
-    void addOwnedAttribute(const QProperty *ownedAttribute);
-    void removeOwnedAttribute(const QProperty *ownedAttribute);
+    void addOwnedOperation(QOperation *ownedOperation);
+    void removeOwnedOperation(QOperation *ownedOperation);
+    void addOwnedAttribute(QProperty *ownedAttribute);
+    void removeOwnedAttribute(QProperty *ownedAttribute);
 };
 
 QT_END_NAMESPACE_QTUML

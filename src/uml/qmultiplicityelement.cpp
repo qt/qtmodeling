@@ -70,23 +70,23 @@ void QMultiplicityElementPrivate::setOrdered(bool isOrdered)
     this->isOrdered = isOrdered;
 }
 
-void QMultiplicityElementPrivate::setUpperValue(const QValueSpecification *upperValue)
+void QMultiplicityElementPrivate::setUpperValue(QValueSpecification *upperValue)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->upperValue);
 
-    this->upperValue = const_cast<QValueSpecification *>(upperValue);
+    this->upperValue = upperValue;
 
     // Adjust subsetted property(ies)
     addOwnedElement(upperValue);
 }
 
-void QMultiplicityElementPrivate::setLowerValue(const QValueSpecification *lowerValue)
+void QMultiplicityElementPrivate::setLowerValue(QValueSpecification *lowerValue)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->lowerValue);
 
-    this->lowerValue = const_cast<QValueSpecification *>(lowerValue);
+    this->lowerValue = lowerValue;
 
     // Adjust subsetted property(ies)
     addOwnedElement(lowerValue);
@@ -133,7 +133,9 @@ bool QMultiplicityElement::isUnique() const
 void QMultiplicityElement::setUnique(bool isUnique)
 {
     QTUML_D(QMultiplicityElement);
-    d->setUnique(isUnique);
+    if (d->isUnique != isUnique) {
+        d->setUnique(isUnique);
+    }
 }
 
 /*!
@@ -148,7 +150,9 @@ bool QMultiplicityElement::isOrdered() const
 void QMultiplicityElement::setOrdered(bool isOrdered)
 {
     QTUML_D(QMultiplicityElement);
-    d->setOrdered(isOrdered);
+    if (d->isOrdered != isOrdered) {
+        d->setOrdered(isOrdered);
+    }
 }
 
 /*!
@@ -173,10 +177,12 @@ QValueSpecification *QMultiplicityElement::upperValue() const
     return d->upperValue;
 }
 
-void QMultiplicityElement::setUpperValue(const QValueSpecification *upperValue)
+void QMultiplicityElement::setUpperValue(QValueSpecification *upperValue)
 {
     QTUML_D(QMultiplicityElement);
-    d->setUpperValue(const_cast<QValueSpecification *>(upperValue));
+    if (d->upperValue != upperValue) {
+        d->setUpperValue(upperValue);
+    }
 }
 
 /*!
@@ -188,10 +194,12 @@ QValueSpecification *QMultiplicityElement::lowerValue() const
     return d->lowerValue;
 }
 
-void QMultiplicityElement::setLowerValue(const QValueSpecification *lowerValue)
+void QMultiplicityElement::setLowerValue(QValueSpecification *lowerValue)
 {
     QTUML_D(QMultiplicityElement);
-    d->setLowerValue(const_cast<QValueSpecification *>(lowerValue));
+    if (d->lowerValue != lowerValue) {
+        d->setLowerValue(lowerValue);
+    }
 }
 
 /*!

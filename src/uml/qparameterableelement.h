@@ -64,9 +64,9 @@ public:
 
     // Association-ends
     QTemplateParameter *owningTemplateParameter() const;
-    void setOwningTemplateParameter(const QTemplateParameter *owningTemplateParameter);
+    void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
     QTemplateParameter *templateParameter() const;
-    void setTemplateParameter(const QTemplateParameter *templateParameter);
+    void setTemplateParameter(QTemplateParameter *templateParameter);
 
     // Operations
     bool isCompatibleWith(const QParameterableElement *p) const;

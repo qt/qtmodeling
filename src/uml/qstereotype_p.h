@@ -68,8 +68,8 @@ public:
     QSet<QImage *> *icons;
 
     // Internal functions for association-ends
-    void addIcon(const QImage *icon);
-    void removeIcon(const QImage *icon);
+    void addIcon(QImage *icon);
+    void removeIcon(QImage *icon);
 };
 
 QT_END_NAMESPACE_QTUML

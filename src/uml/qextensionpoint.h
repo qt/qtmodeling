@@ -89,7 +89,7 @@ public:
 
     // Association-ends
     QUseCase *useCase() const;
-    void setUseCase(const QUseCase *useCase);
+    void setUseCase(QUseCase *useCase);
 
 protected:
     explicit QExtensionPoint(bool createPimpl, QObject *parent = 0);

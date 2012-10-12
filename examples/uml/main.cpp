@@ -66,7 +66,7 @@ int main ()
     QScopedPointer<QTypeList> ownedTypes (model->ownedTypes());
     qDebug() << "package->ownedTypes()->size():" << ownedTypes->size();
 
-    qDebug() << "class_->qualifiedName:" << class_->qualifiedName();
+    qDebug() << "package->nestingPackage->name():" << package->nestingPackage()->name();
 
     checkProperties(model);
 

@@ -58,17 +58,17 @@ QStereotypePrivate::~QStereotypePrivate()
     delete icons;
 }
 
-void QStereotypePrivate::addIcon(const QImage *icon)
+void QStereotypePrivate::addIcon(QImage *icon)
 {
-    this->icons->insert(const_cast<QImage *>(icon));
+    this->icons->insert(icon);
 
     // Adjust subsetted property(ies)
     addOwnedElement(icon);
 }
 
-void QStereotypePrivate::removeIcon(const QImage *icon)
+void QStereotypePrivate::removeIcon(QImage *icon)
 {
-    this->icons->remove(const_cast<QImage *>(icon));
+    this->icons->remove(icon);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(icon);
@@ -108,16 +108,20 @@ const QSet<QImage *> *QStereotype::icons() const
     return d->icons;
 }
 
-void QStereotype::addIcon(const QImage *icon)
+void QStereotype::addIcon(QImage *icon)
 {
     QTUML_D(QStereotype);
-    d->addIcon(const_cast<QImage *>(icon));
+    if (!d->icons->contains(icon)) {
+        d->addIcon(icon);
+    }
 }
 
-void QStereotype::removeIcon(const QImage *icon)
+void QStereotype::removeIcon(QImage *icon)
 {
     QTUML_D(QStereotype);
-    d->removeIcon(const_cast<QImage *>(icon));
+    if (d->icons->contains(icon)) {
+        d->removeIcon(icon);
+    }
 }
 
 /*!

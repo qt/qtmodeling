@@ -70,9 +70,9 @@ public:
     QSet<QTemplateBinding *> *templateBindings;
 
     // Internal functions for association-ends
-    void setOwnedTemplateSignature(const QTemplateSignature *ownedTemplateSignature);
-    void addTemplateBinding(const QTemplateBinding *templateBinding);
-    void removeTemplateBinding(const QTemplateBinding *templateBinding);
+    void setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature);
+    void addTemplateBinding(QTemplateBinding *templateBinding);
+    void removeTemplateBinding(QTemplateBinding *templateBinding);
 };
 
 QT_END_NAMESPACE_QTUML

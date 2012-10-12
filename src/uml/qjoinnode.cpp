@@ -62,12 +62,12 @@ void QJoinNodePrivate::setCombineDuplicate(bool isCombineDuplicate)
     this->isCombineDuplicate = isCombineDuplicate;
 }
 
-void QJoinNodePrivate::setJoinSpec(const QValueSpecification *joinSpec)
+void QJoinNodePrivate::setJoinSpec(QValueSpecification *joinSpec)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->joinSpec);
 
-    this->joinSpec = const_cast<QValueSpecification *>(joinSpec);
+    this->joinSpec = joinSpec;
 
     // Adjust subsetted property(ies)
     addOwnedElement(joinSpec);
@@ -110,7 +110,9 @@ bool QJoinNode::isCombineDuplicate() const
 void QJoinNode::setCombineDuplicate(bool isCombineDuplicate)
 {
     QTUML_D(QJoinNode);
-    d->setCombineDuplicate(isCombineDuplicate);
+    if (d->isCombineDuplicate != isCombineDuplicate) {
+        d->setCombineDuplicate(isCombineDuplicate);
+    }
 }
 
 /*!
@@ -122,10 +124,12 @@ QValueSpecification *QJoinNode::joinSpec() const
     return d->joinSpec;
 }
 
-void QJoinNode::setJoinSpec(const QValueSpecification *joinSpec)
+void QJoinNode::setJoinSpec(QValueSpecification *joinSpec)
 {
     QTUML_D(QJoinNode);
-    d->setJoinSpec(const_cast<QValueSpecification *>(joinSpec));
+    if (d->joinSpec != joinSpec) {
+        d->setJoinSpec(joinSpec);
+    }
 }
 
 #include "moc_qjoinnode.cpp"

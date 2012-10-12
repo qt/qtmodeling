@@ -56,12 +56,12 @@ QWriteVariableActionPrivate::~QWriteVariableActionPrivate()
 {
 }
 
-void QWriteVariableActionPrivate::setValue(const QInputPin *value)
+void QWriteVariableActionPrivate::setValue(QInputPin *value)
 {
     // Adjust subsetted property(ies)
     removeInput(this->value);
 
-    this->value = const_cast<QInputPin *>(value);
+    this->value = value;
 
     // Adjust subsetted property(ies)
     addInput(value);
@@ -92,10 +92,12 @@ QInputPin *QWriteVariableAction::value() const
     return d->value;
 }
 
-void QWriteVariableAction::setValue(const QInputPin *value)
+void QWriteVariableAction::setValue(QInputPin *value)
 {
     QTUML_D(QWriteVariableAction);
-    d->setValue(const_cast<QInputPin *>(value));
+    if (d->value != value) {
+        d->setValue(value);
+    }
 }
 
 QT_END_NAMESPACE_QTUML

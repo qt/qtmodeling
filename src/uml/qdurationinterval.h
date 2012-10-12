@@ -71,9 +71,9 @@ public:
 
     // Association-ends
     QDuration *max() const;
-    void setMax(const QDuration *max);
+    void setMax(QDuration *max);
     QDuration *min() const;
-    void setMin(const QDuration *min);
+    void setMin(QDuration *min);
 
 protected:
     explicit QDurationInterval(bool createPimpl, QObject *parent = 0);

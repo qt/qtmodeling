@@ -75,7 +75,7 @@ public:
 
     // Association-ends
     QInputPin *destroyAt() const;
-    void setDestroyAt(const QInputPin *destroyAt);
+    void setDestroyAt(QInputPin *destroyAt);
 
 protected:
     explicit QLinkEndDestructionData(bool createPimpl, QObject *parent = 0);

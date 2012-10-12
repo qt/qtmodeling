@@ -84,30 +84,30 @@ void QParameterPrivate::setEffect(QtUml::ParameterEffectKind effect)
     this->effect = effect;
 }
 
-void QParameterPrivate::setOperation(const QOperation *operation)
+void QParameterPrivate::setOperation(QOperation *operation)
 {
-    this->operation = const_cast<QOperation *>(operation);
+    this->operation = operation;
 }
 
-void QParameterPrivate::setDefaultValue(const QValueSpecification *defaultValue)
+void QParameterPrivate::setDefaultValue(QValueSpecification *defaultValue)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->defaultValue);
 
-    this->defaultValue = const_cast<QValueSpecification *>(defaultValue);
+    this->defaultValue = defaultValue;
 
     // Adjust subsetted property(ies)
     addOwnedElement(defaultValue);
 }
 
-void QParameterPrivate::addParameterSet(const QParameterSet *parameterSet)
+void QParameterPrivate::addParameterSet(QParameterSet *parameterSet)
 {
-    this->parameterSets->insert(const_cast<QParameterSet *>(parameterSet));
+    this->parameterSets->insert(parameterSet);
 }
 
-void QParameterPrivate::removeParameterSet(const QParameterSet *parameterSet)
+void QParameterPrivate::removeParameterSet(QParameterSet *parameterSet)
 {
-    this->parameterSets->remove(const_cast<QParameterSet *>(parameterSet));
+    this->parameterSets->remove(parameterSet);
 }
 
 /*!
@@ -147,7 +147,9 @@ bool QParameter::isException() const
 void QParameter::setException(bool isException)
 {
     QTUML_D(QParameter);
-    d->setException(isException);
+    if (d->isException != isException) {
+        d->setException(isException);
+    }
 }
 
 /*!
@@ -175,7 +177,9 @@ QtUml::ParameterDirectionKind QParameter::direction() const
 void QParameter::setDirection(QtUml::ParameterDirectionKind direction)
 {
     QTUML_D(QParameter);
-    d->setDirection(direction);
+    if (d->direction != direction) {
+        d->setDirection(direction);
+    }
 }
 
 /*!
@@ -190,7 +194,9 @@ bool QParameter::isStream() const
 void QParameter::setStream(bool isStream)
 {
     QTUML_D(QParameter);
-    d->setStream(isStream);
+    if (d->isStream != isStream) {
+        d->setStream(isStream);
+    }
 }
 
 /*!
@@ -205,7 +211,9 @@ QtUml::ParameterEffectKind QParameter::effect() const
 void QParameter::setEffect(QtUml::ParameterEffectKind effect)
 {
     QTUML_D(QParameter);
-    d->setEffect(effect);
+    if (d->effect != effect) {
+        d->setEffect(effect);
+    }
 }
 
 /*!
@@ -217,10 +225,15 @@ QOperation *QParameter::operation() const
     return d->operation;
 }
 
-void QParameter::setOperation(const QOperation *operation)
+void QParameter::setOperation(QOperation *operation)
 {
     QTUML_D(QParameter);
-    d->setOperation(const_cast<QOperation *>(operation));
+    if (d->operation != operation) {
+        d->setOperation(operation);
+
+        // Adjust opposite property
+        operation->addOwnedParameter(this);
+    }
 }
 
 /*!
@@ -232,10 +245,12 @@ QValueSpecification *QParameter::defaultValue() const
     return d->defaultValue;
 }
 
-void QParameter::setDefaultValue(const QValueSpecification *defaultValue)
+void QParameter::setDefaultValue(QValueSpecification *defaultValue)
 {
     QTUML_D(QParameter);
-    d->setDefaultValue(const_cast<QValueSpecification *>(defaultValue));
+    if (d->defaultValue != defaultValue) {
+        d->setDefaultValue(defaultValue);
+    }
 }
 
 /*!
@@ -247,16 +262,26 @@ const QSet<QParameterSet *> *QParameter::parameterSets() const
     return d->parameterSets;
 }
 
-void QParameter::addParameterSet(const QParameterSet *parameterSet)
+void QParameter::addParameterSet(QParameterSet *parameterSet)
 {
     QTUML_D(QParameter);
-    d->addParameterSet(const_cast<QParameterSet *>(parameterSet));
+    if (!d->parameterSets->contains(parameterSet)) {
+        d->addParameterSet(parameterSet);
+
+        // Adjust opposite property
+        parameterSet->addParameter(this);
+    }
 }
 
-void QParameter::removeParameterSet(const QParameterSet *parameterSet)
+void QParameter::removeParameterSet(QParameterSet *parameterSet)
 {
     QTUML_D(QParameter);
-    d->removeParameterSet(const_cast<QParameterSet *>(parameterSet));
+    if (d->parameterSets->contains(parameterSet)) {
+        d->removeParameterSet(parameterSet);
+
+        // Adjust opposite property
+        parameterSet->removeParameter(this);
+    }
 }
 
 #include "moc_qparameter.cpp"

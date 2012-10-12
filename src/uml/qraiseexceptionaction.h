@@ -110,7 +110,7 @@ public:
 
     // Association-ends
     QInputPin *exception() const;
-    void setException(const QInputPin *exception);
+    void setException(QInputPin *exception);
 
 protected:
     explicit QRaiseExceptionAction(bool createPimpl, QObject *parent = 0);

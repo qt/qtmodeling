@@ -96,7 +96,9 @@ qint32 QLiteralUnlimitedNatural::value() const
 void QLiteralUnlimitedNatural::setValue(qint32 value)
 {
     QTUML_D(QLiteralUnlimitedNatural);
-    d->setValue(value);
+    if (d->value != value) {
+        d->setValue(value);
+    }
 }
 
 /*!

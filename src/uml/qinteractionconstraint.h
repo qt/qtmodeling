@@ -71,9 +71,9 @@ public:
 
     // Association-ends
     QValueSpecification *maxint() const;
-    void setMaxint(const QValueSpecification *maxint);
+    void setMaxint(QValueSpecification *maxint);
     QValueSpecification *minint() const;
-    void setMinint(const QValueSpecification *minint);
+    void setMinint(QValueSpecification *minint);
 
 protected:
     explicit QInteractionConstraint(bool createPimpl, QObject *parent = 0);

@@ -61,17 +61,17 @@ void QExpressionPrivate::setSymbol(QString symbol)
     this->symbol = symbol;
 }
 
-void QExpressionPrivate::addOperand(const QValueSpecification *operand)
+void QExpressionPrivate::addOperand(QValueSpecification *operand)
 {
-    this->operands->append(const_cast<QValueSpecification *>(operand));
+    this->operands->append(operand);
 
     // Adjust subsetted property(ies)
     addOwnedElement(operand);
 }
 
-void QExpressionPrivate::removeOperand(const QValueSpecification *operand)
+void QExpressionPrivate::removeOperand(QValueSpecification *operand)
 {
-    this->operands->removeAll(const_cast<QValueSpecification *>(operand));
+    this->operands->removeAll(operand);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(operand);
@@ -114,7 +114,9 @@ QString QExpression::symbol() const
 void QExpression::setSymbol(QString symbol)
 {
     QTUML_D(QExpression);
-    d->setSymbol(symbol);
+    if (d->symbol != symbol) {
+        d->setSymbol(symbol);
+    }
 }
 
 /*!
@@ -126,16 +128,20 @@ const QList<QValueSpecification *> *QExpression::operands() const
     return d->operands;
 }
 
-void QExpression::addOperand(const QValueSpecification *operand)
+void QExpression::addOperand(QValueSpecification *operand)
 {
     QTUML_D(QExpression);
-    d->addOperand(const_cast<QValueSpecification *>(operand));
+    if (!d->operands->contains(operand)) {
+        d->addOperand(operand);
+    }
 }
 
-void QExpression::removeOperand(const QValueSpecification *operand)
+void QExpression::removeOperand(QValueSpecification *operand)
 {
     QTUML_D(QExpression);
-    d->removeOperand(const_cast<QValueSpecification *>(operand));
+    if (d->operands->contains(operand)) {
+        d->removeOperand(operand);
+    }
 }
 
 #include "moc_qexpression.cpp"

@@ -87,7 +87,9 @@ QtUml::VisibilityKind QPackageableElement::visibility() const
 void QPackageableElement::setVisibility(QtUml::VisibilityKind visibility)
 {
     QTUML_D(QPackageableElement);
-    d->setVisibility(visibility);
+    if (d->visibility != visibility) {
+        d->setVisibility(visibility);
+    }
 }
 
 QT_END_NAMESPACE_QTUML

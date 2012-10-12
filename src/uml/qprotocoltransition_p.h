@@ -69,8 +69,8 @@ public:
     QConstraint *preCondition;
 
     // Internal functions for association-ends
-    void setPostCondition(const QConstraint *postCondition);
-    void setPreCondition(const QConstraint *preCondition);
+    void setPostCondition(QConstraint *postCondition);
+    void setPreCondition(QConstraint *preCondition);
 };
 
 QT_END_NAMESPACE_QTUML

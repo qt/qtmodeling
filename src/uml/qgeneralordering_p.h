@@ -65,8 +65,8 @@ public:
     QOccurrenceSpecification *after;
 
     // Internal functions for association-ends
-    void setBefore(const QOccurrenceSpecification *before);
-    void setAfter(const QOccurrenceSpecification *after);
+    void setBefore(QOccurrenceSpecification *before);
+    void setAfter(QOccurrenceSpecification *after);
 };
 
 QT_END_NAMESPACE_QTUML

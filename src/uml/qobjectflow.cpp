@@ -68,14 +68,14 @@ void QObjectFlowPrivate::setMulticast(bool isMulticast)
     this->isMulticast = isMulticast;
 }
 
-void QObjectFlowPrivate::setSelection(const QBehavior *selection)
+void QObjectFlowPrivate::setSelection(QBehavior *selection)
 {
-    this->selection = const_cast<QBehavior *>(selection);
+    this->selection = selection;
 }
 
-void QObjectFlowPrivate::setTransformation(const QBehavior *transformation)
+void QObjectFlowPrivate::setTransformation(QBehavior *transformation)
 {
-    this->transformation = const_cast<QBehavior *>(transformation);
+    this->transformation = transformation;
 }
 
 /*!
@@ -115,7 +115,9 @@ bool QObjectFlow::isMultireceive() const
 void QObjectFlow::setMultireceive(bool isMultireceive)
 {
     QTUML_D(QObjectFlow);
-    d->setMultireceive(isMultireceive);
+    if (d->isMultireceive != isMultireceive) {
+        d->setMultireceive(isMultireceive);
+    }
 }
 
 /*!
@@ -130,7 +132,9 @@ bool QObjectFlow::isMulticast() const
 void QObjectFlow::setMulticast(bool isMulticast)
 {
     QTUML_D(QObjectFlow);
-    d->setMulticast(isMulticast);
+    if (d->isMulticast != isMulticast) {
+        d->setMulticast(isMulticast);
+    }
 }
 
 /*!
@@ -142,10 +146,12 @@ QBehavior *QObjectFlow::selection() const
     return d->selection;
 }
 
-void QObjectFlow::setSelection(const QBehavior *selection)
+void QObjectFlow::setSelection(QBehavior *selection)
 {
     QTUML_D(QObjectFlow);
-    d->setSelection(const_cast<QBehavior *>(selection));
+    if (d->selection != selection) {
+        d->setSelection(selection);
+    }
 }
 
 /*!
@@ -157,10 +163,12 @@ QBehavior *QObjectFlow::transformation() const
     return d->transformation;
 }
 
-void QObjectFlow::setTransformation(const QBehavior *transformation)
+void QObjectFlow::setTransformation(QBehavior *transformation)
 {
     QTUML_D(QObjectFlow);
-    d->setTransformation(const_cast<QBehavior *>(transformation));
+    if (d->transformation != transformation) {
+        d->setTransformation(transformation);
+    }
 }
 
 #include "moc_qobjectflow.cpp"

@@ -93,9 +93,9 @@ public:
 
     // Association-ends
     QNamespace *importingNamespace() const;
-    void setImportingNamespace(const QNamespace *importingNamespace);
+    void setImportingNamespace(QNamespace *importingNamespace);
     QPackage *importedPackage() const;
-    void setImportedPackage(const QPackage *importedPackage);
+    void setImportedPackage(QPackage *importedPackage);
 
 protected:
     explicit QPackageImport(bool createPimpl, QObject *parent = 0);

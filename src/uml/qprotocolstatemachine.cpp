@@ -57,17 +57,17 @@ QProtocolStateMachinePrivate::~QProtocolStateMachinePrivate()
     delete conformance;
 }
 
-void QProtocolStateMachinePrivate::addConformance(const QProtocolConformance *conformance)
+void QProtocolStateMachinePrivate::addConformance(QProtocolConformance *conformance)
 {
-    this->conformance->insert(const_cast<QProtocolConformance *>(conformance));
+    this->conformance->insert(conformance);
 
     // Adjust subsetted property(ies)
     addOwnedElement(conformance);
 }
 
-void QProtocolStateMachinePrivate::removeConformance(const QProtocolConformance *conformance)
+void QProtocolStateMachinePrivate::removeConformance(QProtocolConformance *conformance)
 {
-    this->conformance->remove(const_cast<QProtocolConformance *>(conformance));
+    this->conformance->remove(conformance);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(conformance);
@@ -107,16 +107,26 @@ const QSet<QProtocolConformance *> *QProtocolStateMachine::conformance() const
     return d->conformance;
 }
 
-void QProtocolStateMachine::addConformance(const QProtocolConformance *conformance)
+void QProtocolStateMachine::addConformance(QProtocolConformance *conformance)
 {
     QTUML_D(QProtocolStateMachine);
-    d->addConformance(const_cast<QProtocolConformance *>(conformance));
+    if (!d->conformance->contains(conformance)) {
+        d->addConformance(conformance);
+
+        // Adjust opposite property
+        conformance->setSpecificMachine(this);
+    }
 }
 
-void QProtocolStateMachine::removeConformance(const QProtocolConformance *conformance)
+void QProtocolStateMachine::removeConformance(QProtocolConformance *conformance)
 {
     QTUML_D(QProtocolStateMachine);
-    d->removeConformance(const_cast<QProtocolConformance *>(conformance));
+    if (d->conformance->contains(conformance)) {
+        d->removeConformance(conformance);
+
+        // Adjust opposite property
+        conformance->setSpecificMachine(0);
+    }
 }
 
 #include "moc_qprotocolstatemachine.cpp"

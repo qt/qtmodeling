@@ -59,24 +59,24 @@ QProtocolConformancePrivate::~QProtocolConformancePrivate()
 {
 }
 
-void QProtocolConformancePrivate::setSpecificMachine(const QProtocolStateMachine *specificMachine)
+void QProtocolConformancePrivate::setSpecificMachine(QProtocolStateMachine *specificMachine)
 {
     // Adjust subsetted property(ies)
     removeSource(this->specificMachine);
 
-    this->specificMachine = const_cast<QProtocolStateMachine *>(specificMachine);
+    this->specificMachine = specificMachine;
 
     // Adjust subsetted property(ies)
     setOwner(specificMachine);
     addSource(specificMachine);
 }
 
-void QProtocolConformancePrivate::setGeneralMachine(const QProtocolStateMachine *generalMachine)
+void QProtocolConformancePrivate::setGeneralMachine(QProtocolStateMachine *generalMachine)
 {
     // Adjust subsetted property(ies)
     removeTarget(this->generalMachine);
 
-    this->generalMachine = const_cast<QProtocolStateMachine *>(generalMachine);
+    this->generalMachine = generalMachine;
 
     // Adjust subsetted property(ies)
     addTarget(generalMachine);
@@ -116,10 +116,15 @@ QProtocolStateMachine *QProtocolConformance::specificMachine() const
     return d->specificMachine;
 }
 
-void QProtocolConformance::setSpecificMachine(const QProtocolStateMachine *specificMachine)
+void QProtocolConformance::setSpecificMachine(QProtocolStateMachine *specificMachine)
 {
     QTUML_D(QProtocolConformance);
-    d->setSpecificMachine(const_cast<QProtocolStateMachine *>(specificMachine));
+    if (d->specificMachine != specificMachine) {
+        d->setSpecificMachine(specificMachine);
+
+        // Adjust opposite property
+        specificMachine->addConformance(this);
+    }
 }
 
 /*!
@@ -131,10 +136,12 @@ QProtocolStateMachine *QProtocolConformance::generalMachine() const
     return d->generalMachine;
 }
 
-void QProtocolConformance::setGeneralMachine(const QProtocolStateMachine *generalMachine)
+void QProtocolConformance::setGeneralMachine(QProtocolStateMachine *generalMachine)
 {
     QTUML_D(QProtocolConformance);
-    d->setGeneralMachine(const_cast<QProtocolStateMachine *>(generalMachine));
+    if (d->generalMachine != generalMachine) {
+        d->setGeneralMachine(generalMachine);
+    }
 }
 
 #include "moc_qprotocolconformance.cpp"

@@ -93,9 +93,9 @@ public:
 
     // Association-ends
     QValueSpecification *min() const;
-    void setMin(const QValueSpecification *min);
+    void setMin(QValueSpecification *min);
     QValueSpecification *max() const;
-    void setMax(const QValueSpecification *max);
+    void setMax(QValueSpecification *max);
 
 protected:
     explicit QInterval(bool createPimpl, QObject *parent = 0);

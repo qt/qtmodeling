@@ -59,18 +59,18 @@ QDeploymentTargetPrivate::~QDeploymentTargetPrivate()
     delete deployments;
 }
 
-void QDeploymentTargetPrivate::addDeployment(const QDeployment *deployment)
+void QDeploymentTargetPrivate::addDeployment(QDeployment *deployment)
 {
-    this->deployments->insert(const_cast<QDeployment *>(deployment));
+    this->deployments->insert(deployment);
 
     // Adjust subsetted property(ies)
     addOwnedElement(deployment);
     addClientDependency(deployment);
 }
 
-void QDeploymentTargetPrivate::removeDeployment(const QDeployment *deployment)
+void QDeploymentTargetPrivate::removeDeployment(QDeployment *deployment)
 {
-    this->deployments->remove(const_cast<QDeployment *>(deployment));
+    this->deployments->remove(deployment);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(deployment);
@@ -110,16 +110,26 @@ const QSet<QDeployment *> *QDeploymentTarget::deployments() const
     return d->deployments;
 }
 
-void QDeploymentTarget::addDeployment(const QDeployment *deployment)
+void QDeploymentTarget::addDeployment(QDeployment *deployment)
 {
     QTUML_D(QDeploymentTarget);
-    d->addDeployment(const_cast<QDeployment *>(deployment));
+    if (!d->deployments->contains(deployment)) {
+        d->addDeployment(deployment);
+
+        // Adjust opposite property
+        deployment->setLocation(this);
+    }
 }
 
-void QDeploymentTarget::removeDeployment(const QDeployment *deployment)
+void QDeploymentTarget::removeDeployment(QDeployment *deployment)
 {
     QTUML_D(QDeploymentTarget);
-    d->removeDeployment(const_cast<QDeployment *>(deployment));
+    if (d->deployments->contains(deployment)) {
+        d->removeDeployment(deployment);
+
+        // Adjust opposite property
+        deployment->setLocation(0);
+    }
 }
 
 QT_END_NAMESPACE_QTUML

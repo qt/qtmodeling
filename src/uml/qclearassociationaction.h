@@ -112,9 +112,9 @@ public:
 
     // Association-ends
     QInputPin *object() const;
-    void setObject(const QInputPin *object);
+    void setObject(QInputPin *object);
     QAssociation *association() const;
-    void setAssociation(const QAssociation *association);
+    void setAssociation(QAssociation *association);
 
 protected:
     explicit QClearAssociationAction(bool createPimpl, QObject *parent = 0);

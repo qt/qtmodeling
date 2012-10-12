@@ -70,8 +70,8 @@ public:
     void setSymbol(QString symbol);
 
     // Internal functions for association-ends
-    void addOperand(const QValueSpecification *operand);
-    void removeOperand(const QValueSpecification *operand);
+    void addOperand(QValueSpecification *operand);
+    void removeOperand(QValueSpecification *operand);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -60,17 +60,17 @@ QVariablePrivate::~QVariablePrivate()
 {
 }
 
-void QVariablePrivate::setScope(const QStructuredActivityNode *scope)
+void QVariablePrivate::setScope(QStructuredActivityNode *scope)
 {
-    this->scope = const_cast<QStructuredActivityNode *>(scope);
+    this->scope = scope;
 
     // Adjust subsetted property(ies)
     setNamespace_(scope);
 }
 
-void QVariablePrivate::setActivityScope(const QActivity *activityScope)
+void QVariablePrivate::setActivityScope(QActivity *activityScope)
 {
-    this->activityScope = const_cast<QActivity *>(activityScope);
+    this->activityScope = activityScope;
 
     // Adjust subsetted property(ies)
     setNamespace_(activityScope);
@@ -110,10 +110,15 @@ QStructuredActivityNode *QVariable::scope() const
     return d->scope;
 }
 
-void QVariable::setScope(const QStructuredActivityNode *scope)
+void QVariable::setScope(QStructuredActivityNode *scope)
 {
     QTUML_D(QVariable);
-    d->setScope(const_cast<QStructuredActivityNode *>(scope));
+    if (d->scope != scope) {
+        d->setScope(scope);
+
+        // Adjust opposite property
+        scope->addVariable(this);
+    }
 }
 
 /*!
@@ -125,10 +130,15 @@ QActivity *QVariable::activityScope() const
     return d->activityScope;
 }
 
-void QVariable::setActivityScope(const QActivity *activityScope)
+void QVariable::setActivityScope(QActivity *activityScope)
 {
     QTUML_D(QVariable);
-    d->setActivityScope(const_cast<QActivity *>(activityScope));
+    if (d->activityScope != activityScope) {
+        d->setActivityScope(activityScope);
+
+        // Adjust opposite property
+        activityScope->addVariable(this);
+    }
 }
 
 /*!

@@ -99,8 +99,8 @@ public:
 
     // Association-ends
     const QSet<QNamedElement *> *events() const;
-    void addEvent(const QNamedElement *event);
-    void removeEvent(const QNamedElement *event);
+    void addEvent(QNamedElement *event);
+    void removeEvent(QNamedElement *event);
 
 protected:
     explicit QDurationObservation(bool createPimpl, QObject *parent = 0);

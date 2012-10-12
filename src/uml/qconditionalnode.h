@@ -84,11 +84,11 @@ public:
 
     // Association-ends
     const QSet<QClause *> *clauses() const;
-    void addClause(const QClause *clause);
-    void removeClause(const QClause *clause);
+    void addClause(QClause *clause);
+    void removeClause(QClause *clause);
     const QList<QOutputPin *> *results() const;
-    void addResult(const QOutputPin *result);
-    void removeResult(const QOutputPin *result);
+    void addResult(QOutputPin *result);
+    void removeResult(QOutputPin *result);
 
 protected:
     explicit QConditionalNode(bool createPimpl, QObject *parent = 0);

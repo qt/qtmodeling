@@ -95,13 +95,13 @@ public:
 
     // Association-ends
     const QSet<QPseudostate *> *exits() const;
-    void addExit(const QPseudostate *exit);
-    void removeExit(const QPseudostate *exit);
+    void addExit(QPseudostate *exit);
+    void removeExit(QPseudostate *exit);
     QState *state() const;
-    void setState(const QState *state);
+    void setState(QState *state);
     const QSet<QPseudostate *> *entries() const;
-    void addEntry(const QPseudostate *entry);
-    void removeEntry(const QPseudostate *entry);
+    void addEntry(QPseudostate *entry);
+    void removeEntry(QPseudostate *entry);
 
 protected:
     explicit QConnectionPointReference(bool createPimpl, QObject *parent = 0);

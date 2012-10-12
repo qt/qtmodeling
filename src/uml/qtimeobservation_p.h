@@ -68,7 +68,7 @@ public:
     void setFirstEvent(bool firstEvent);
 
     // Internal functions for association-ends
-    void setEvent(const QNamedElement *event);
+    void setEvent(QNamedElement *event);
 };
 
 QT_END_NAMESPACE_QTUML

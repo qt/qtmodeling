@@ -62,36 +62,36 @@ QTemplateSignaturePrivate::~QTemplateSignaturePrivate()
     delete ownedParameters;
 }
 
-void QTemplateSignaturePrivate::addParameter(const QTemplateParameter *parameter)
+void QTemplateSignaturePrivate::addParameter(QTemplateParameter *parameter)
 {
-    this->parameters->append(const_cast<QTemplateParameter *>(parameter));
+    this->parameters->append(parameter);
 }
 
-void QTemplateSignaturePrivate::removeParameter(const QTemplateParameter *parameter)
+void QTemplateSignaturePrivate::removeParameter(QTemplateParameter *parameter)
 {
-    this->parameters->removeAll(const_cast<QTemplateParameter *>(parameter));
+    this->parameters->removeAll(parameter);
 }
 
-void QTemplateSignaturePrivate::setTemplate_(const QTemplateableElement *template_)
+void QTemplateSignaturePrivate::setTemplate_(QTemplateableElement *template_)
 {
-    this->template_ = const_cast<QTemplateableElement *>(template_);
+    this->template_ = template_;
 
     // Adjust subsetted property(ies)
     setOwner(template_);
 }
 
-void QTemplateSignaturePrivate::addOwnedParameter(const QTemplateParameter *ownedParameter)
+void QTemplateSignaturePrivate::addOwnedParameter(QTemplateParameter *ownedParameter)
 {
-    this->ownedParameters->append(const_cast<QTemplateParameter *>(ownedParameter));
+    this->ownedParameters->append(ownedParameter);
 
     // Adjust subsetted property(ies)
     addParameter(ownedParameter);
     addOwnedElement(ownedParameter);
 }
 
-void QTemplateSignaturePrivate::removeOwnedParameter(const QTemplateParameter *ownedParameter)
+void QTemplateSignaturePrivate::removeOwnedParameter(QTemplateParameter *ownedParameter)
 {
-    this->ownedParameters->removeAll(const_cast<QTemplateParameter *>(ownedParameter));
+    this->ownedParameters->removeAll(ownedParameter);
 
     // Adjust subsetted property(ies)
     removeParameter(ownedParameter);
@@ -132,16 +132,20 @@ const QList<QTemplateParameter *> *QTemplateSignature::parameters() const
     return d->parameters;
 }
 
-void QTemplateSignature::addParameter(const QTemplateParameter *parameter)
+void QTemplateSignature::addParameter(QTemplateParameter *parameter)
 {
     QTUML_D(QTemplateSignature);
-    d->addParameter(const_cast<QTemplateParameter *>(parameter));
+    if (!d->parameters->contains(parameter)) {
+        d->addParameter(parameter);
+    }
 }
 
-void QTemplateSignature::removeParameter(const QTemplateParameter *parameter)
+void QTemplateSignature::removeParameter(QTemplateParameter *parameter)
 {
     QTUML_D(QTemplateSignature);
-    d->removeParameter(const_cast<QTemplateParameter *>(parameter));
+    if (d->parameters->contains(parameter)) {
+        d->removeParameter(parameter);
+    }
 }
 
 /*!
@@ -153,10 +157,15 @@ QTemplateableElement *QTemplateSignature::template_() const
     return d->template_;
 }
 
-void QTemplateSignature::setTemplate_(const QTemplateableElement *template_)
+void QTemplateSignature::setTemplate_(QTemplateableElement *template_)
 {
     QTUML_D(QTemplateSignature);
-    d->setTemplate_(const_cast<QTemplateableElement *>(template_));
+    if (d->template_ != template_) {
+        d->setTemplate_(template_);
+
+        // Adjust opposite property
+        template_->setOwnedTemplateSignature(this);
+    }
 }
 
 /*!
@@ -168,16 +177,26 @@ const QList<QTemplateParameter *> *QTemplateSignature::ownedParameters() const
     return d->ownedParameters;
 }
 
-void QTemplateSignature::addOwnedParameter(const QTemplateParameter *ownedParameter)
+void QTemplateSignature::addOwnedParameter(QTemplateParameter *ownedParameter)
 {
     QTUML_D(QTemplateSignature);
-    d->addOwnedParameter(const_cast<QTemplateParameter *>(ownedParameter));
+    if (!d->ownedParameters->contains(ownedParameter)) {
+        d->addOwnedParameter(ownedParameter);
+
+        // Adjust opposite property
+        ownedParameter->setSignature(this);
+    }
 }
 
-void QTemplateSignature::removeOwnedParameter(const QTemplateParameter *ownedParameter)
+void QTemplateSignature::removeOwnedParameter(QTemplateParameter *ownedParameter)
 {
     QTUML_D(QTemplateSignature);
-    d->removeOwnedParameter(const_cast<QTemplateParameter *>(ownedParameter));
+    if (d->ownedParameters->contains(ownedParameter)) {
+        d->removeOwnedParameter(ownedParameter);
+
+        // Adjust opposite property
+        ownedParameter->setSignature(0);
+    }
 }
 
 #include "moc_qtemplatesignature.cpp"

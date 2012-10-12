@@ -86,14 +86,14 @@ public:
     void setAbstract(bool isAbstract);
 
     // Internal functions for association-ends
-    void addRaisedException(const QType *raisedException);
-    void removeRaisedException(const QType *raisedException);
-    void addOwnedParameter(const QParameter *ownedParameter);
-    void removeOwnedParameter(const QParameter *ownedParameter);
-    void addOwnedParameterSet(const QParameterSet *ownedParameterSet);
-    void removeOwnedParameterSet(const QParameterSet *ownedParameterSet);
-    void addMethod(const QBehavior *method);
-    void removeMethod(const QBehavior *method);
+    void addRaisedException(QType *raisedException);
+    void removeRaisedException(QType *raisedException);
+    void addOwnedParameter(QParameter *ownedParameter);
+    void removeOwnedParameter(QParameter *ownedParameter);
+    void addOwnedParameterSet(QParameterSet *ownedParameterSet);
+    void removeOwnedParameterSet(QParameterSet *ownedParameterSet);
+    void addMethod(QBehavior *method);
+    void removeMethod(QBehavior *method);
 };
 
 QT_END_NAMESPACE_QTUML

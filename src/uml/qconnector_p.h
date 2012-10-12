@@ -78,13 +78,13 @@ public:
     // Internal functions for attributes
 
     // Internal functions for association-ends
-    void addRedefinedConnector(const QConnector *redefinedConnector);
-    void removeRedefinedConnector(const QConnector *redefinedConnector);
-    void addContract(const QBehavior *contract);
-    void removeContract(const QBehavior *contract);
-    void setType(const QAssociation *type);
-    void addEnd(const QConnectorEnd *end);
-    void removeEnd(const QConnectorEnd *end);
+    void addRedefinedConnector(QConnector *redefinedConnector);
+    void removeRedefinedConnector(QConnector *redefinedConnector);
+    void addContract(QBehavior *contract);
+    void removeContract(QBehavior *contract);
+    void setType(QAssociation *type);
+    void addEnd(QConnectorEnd *end);
+    void removeEnd(QConnectorEnd *end);
 };
 
 QT_END_NAMESPACE_QTUML

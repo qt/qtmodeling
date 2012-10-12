@@ -64,9 +64,9 @@ public:
 
     // Association-ends
     QOccurrenceSpecification *start() const;
-    void setStart(const QOccurrenceSpecification *start);
+    void setStart(QOccurrenceSpecification *start);
     QOccurrenceSpecification *finish() const;
-    void setFinish(const QOccurrenceSpecification *finish);
+    void setFinish(QOccurrenceSpecification *finish);
 
 protected:
     explicit QExecutionSpecification();

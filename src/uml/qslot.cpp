@@ -62,30 +62,30 @@ QSlotPrivate::~QSlotPrivate()
     delete values;
 }
 
-void QSlotPrivate::addValue(const QValueSpecification *value)
+void QSlotPrivate::addValue(QValueSpecification *value)
 {
-    this->values->append(const_cast<QValueSpecification *>(value));
+    this->values->append(value);
 
     // Adjust subsetted property(ies)
     addOwnedElement(value);
 }
 
-void QSlotPrivate::removeValue(const QValueSpecification *value)
+void QSlotPrivate::removeValue(QValueSpecification *value)
 {
-    this->values->removeAll(const_cast<QValueSpecification *>(value));
+    this->values->removeAll(value);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(value);
 }
 
-void QSlotPrivate::setDefiningFeature(const QStructuralFeature *definingFeature)
+void QSlotPrivate::setDefiningFeature(QStructuralFeature *definingFeature)
 {
-    this->definingFeature = const_cast<QStructuralFeature *>(definingFeature);
+    this->definingFeature = definingFeature;
 }
 
-void QSlotPrivate::setOwningInstance(const QInstanceSpecification *owningInstance)
+void QSlotPrivate::setOwningInstance(QInstanceSpecification *owningInstance)
 {
-    this->owningInstance = const_cast<QInstanceSpecification *>(owningInstance);
+    this->owningInstance = owningInstance;
 
     // Adjust subsetted property(ies)
     setOwner(owningInstance);
@@ -125,16 +125,20 @@ const QList<QValueSpecification *> *QSlot::values() const
     return d->values;
 }
 
-void QSlot::addValue(const QValueSpecification *value)
+void QSlot::addValue(QValueSpecification *value)
 {
     QTUML_D(QSlot);
-    d->addValue(const_cast<QValueSpecification *>(value));
+    if (!d->values->contains(value)) {
+        d->addValue(value);
+    }
 }
 
-void QSlot::removeValue(const QValueSpecification *value)
+void QSlot::removeValue(QValueSpecification *value)
 {
     QTUML_D(QSlot);
-    d->removeValue(const_cast<QValueSpecification *>(value));
+    if (d->values->contains(value)) {
+        d->removeValue(value);
+    }
 }
 
 /*!
@@ -146,10 +150,12 @@ QStructuralFeature *QSlot::definingFeature() const
     return d->definingFeature;
 }
 
-void QSlot::setDefiningFeature(const QStructuralFeature *definingFeature)
+void QSlot::setDefiningFeature(QStructuralFeature *definingFeature)
 {
     QTUML_D(QSlot);
-    d->setDefiningFeature(const_cast<QStructuralFeature *>(definingFeature));
+    if (d->definingFeature != definingFeature) {
+        d->setDefiningFeature(definingFeature);
+    }
 }
 
 /*!
@@ -161,10 +167,15 @@ QInstanceSpecification *QSlot::owningInstance() const
     return d->owningInstance;
 }
 
-void QSlot::setOwningInstance(const QInstanceSpecification *owningInstance)
+void QSlot::setOwningInstance(QInstanceSpecification *owningInstance)
 {
     QTUML_D(QSlot);
-    d->setOwningInstance(const_cast<QInstanceSpecification *>(owningInstance));
+    if (d->owningInstance != owningInstance) {
+        d->setOwningInstance(owningInstance);
+
+        // Adjust opposite property
+        owningInstance->addSlot_(this);
+    }
 }
 
 #include "moc_qslot.cpp"

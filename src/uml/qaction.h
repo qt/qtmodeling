@@ -76,11 +76,11 @@ public:
     // Association-ends
     QClassifier *context() const;
     const QSet<QConstraint *> *localPostconditions() const;
-    void addLocalPostcondition(const QConstraint *localPostcondition);
-    void removeLocalPostcondition(const QConstraint *localPostcondition);
+    void addLocalPostcondition(QConstraint *localPostcondition);
+    void removeLocalPostcondition(QConstraint *localPostcondition);
     const QSet<QConstraint *> *localPreconditions() const;
-    void addLocalPrecondition(const QConstraint *localPrecondition);
-    void removeLocalPrecondition(const QConstraint *localPrecondition);
+    void addLocalPrecondition(QConstraint *localPrecondition);
+    void removeLocalPrecondition(QConstraint *localPrecondition);
     const QList<QInputPin *> *inputs() const;
     const QList<QOutputPin *> *outputs() const;
 

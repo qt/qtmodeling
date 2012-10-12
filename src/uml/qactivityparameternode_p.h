@@ -64,7 +64,7 @@ public:
     QParameter *parameter;
 
     // Internal functions for association-ends
-    void setParameter(const QParameter *parameter);
+    void setParameter(QParameter *parameter);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -103,10 +103,10 @@ public:
 
     // Association-ends
     const QList<QInteractionFragment *> *fragments() const;
-    void addFragment(const QInteractionFragment *fragment);
-    void removeFragment(const QInteractionFragment *fragment);
+    void addFragment(QInteractionFragment *fragment);
+    void removeFragment(QInteractionFragment *fragment);
     QInteractionConstraint *guard() const;
-    void setGuard(const QInteractionConstraint *guard);
+    void setGuard(QInteractionConstraint *guard);
 
 protected:
     explicit QInteractionOperand(bool createPimpl, QObject *parent = 0);

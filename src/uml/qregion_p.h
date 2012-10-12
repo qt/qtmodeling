@@ -77,13 +77,13 @@ public:
     QSet<QVertex *> *subvertices;
 
     // Internal functions for association-ends
-    void setExtendedRegion(const QRegion *extendedRegion);
-    void addTransition(const QTransition *transition);
-    void removeTransition(const QTransition *transition);
-    void setStateMachine(const QStateMachine *stateMachine);
-    void setState(const QState *state);
-    void addSubvertex(const QVertex *subvertex);
-    void removeSubvertex(const QVertex *subvertex);
+    void setExtendedRegion(QRegion *extendedRegion);
+    void addTransition(QTransition *transition);
+    void removeTransition(QTransition *transition);
+    void setStateMachine(QStateMachine *stateMachine);
+    void setState(QState *state);
+    void addSubvertex(QVertex *subvertex);
+    void removeSubvertex(QVertex *subvertex);
 };
 
 QT_END_NAMESPACE_QTUML

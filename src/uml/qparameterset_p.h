@@ -69,10 +69,10 @@ public:
     QSet<QConstraint *> *conditions;
 
     // Internal functions for association-ends
-    void addParameter(const QParameter *parameter);
-    void removeParameter(const QParameter *parameter);
-    void addCondition(const QConstraint *condition);
-    void removeCondition(const QConstraint *condition);
+    void addParameter(QParameter *parameter);
+    void removeParameter(QParameter *parameter);
+    void addCondition(QConstraint *condition);
+    void removeCondition(QConstraint *condition);
 };
 
 QT_END_NAMESPACE_QTUML

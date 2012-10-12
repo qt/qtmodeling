@@ -62,12 +62,12 @@ void QTimeEventPrivate::setRelative(bool isRelative)
     this->isRelative = isRelative;
 }
 
-void QTimeEventPrivate::setWhen(const QTimeExpression *when)
+void QTimeEventPrivate::setWhen(QTimeExpression *when)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->when);
 
-    this->when = const_cast<QTimeExpression *>(when);
+    this->when = when;
 
     // Adjust subsetted property(ies)
     addOwnedElement(when);
@@ -110,7 +110,9 @@ bool QTimeEvent::isRelative() const
 void QTimeEvent::setRelative(bool isRelative)
 {
     QTUML_D(QTimeEvent);
-    d->setRelative(isRelative);
+    if (d->isRelative != isRelative) {
+        d->setRelative(isRelative);
+    }
 }
 
 /*!
@@ -122,10 +124,12 @@ QTimeExpression *QTimeEvent::when() const
     return d->when;
 }
 
-void QTimeEvent::setWhen(const QTimeExpression *when)
+void QTimeEvent::setWhen(QTimeExpression *when)
 {
     QTUML_D(QTimeEvent);
-    d->setWhen(const_cast<QTimeExpression *>(when));
+    if (d->when != when) {
+        d->setWhen(when);
+    }
 }
 
 #include "moc_qtimeevent.cpp"

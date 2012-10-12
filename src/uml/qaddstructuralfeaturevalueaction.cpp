@@ -62,12 +62,12 @@ void QAddStructuralFeatureValueActionPrivate::setReplaceAll(bool isReplaceAll)
     this->isReplaceAll = isReplaceAll;
 }
 
-void QAddStructuralFeatureValueActionPrivate::setInsertAt(const QInputPin *insertAt)
+void QAddStructuralFeatureValueActionPrivate::setInsertAt(QInputPin *insertAt)
 {
     // Adjust subsetted property(ies)
     removeInput(this->insertAt);
 
-    this->insertAt = const_cast<QInputPin *>(insertAt);
+    this->insertAt = insertAt;
 
     // Adjust subsetted property(ies)
     addInput(insertAt);
@@ -110,7 +110,9 @@ bool QAddStructuralFeatureValueAction::isReplaceAll() const
 void QAddStructuralFeatureValueAction::setReplaceAll(bool isReplaceAll)
 {
     QTUML_D(QAddStructuralFeatureValueAction);
-    d->setReplaceAll(isReplaceAll);
+    if (d->isReplaceAll != isReplaceAll) {
+        d->setReplaceAll(isReplaceAll);
+    }
 }
 
 /*!
@@ -122,10 +124,12 @@ QInputPin *QAddStructuralFeatureValueAction::insertAt() const
     return d->insertAt;
 }
 
-void QAddStructuralFeatureValueAction::setInsertAt(const QInputPin *insertAt)
+void QAddStructuralFeatureValueAction::setInsertAt(QInputPin *insertAt)
 {
     QTUML_D(QAddStructuralFeatureValueAction);
-    d->setInsertAt(const_cast<QInputPin *>(insertAt));
+    if (d->insertAt != insertAt) {
+        d->setInsertAt(insertAt);
+    }
 }
 
 #include "moc_qaddstructuralfeaturevalueaction.cpp"

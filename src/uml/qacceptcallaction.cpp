@@ -56,12 +56,12 @@ QAcceptCallActionPrivate::~QAcceptCallActionPrivate()
 {
 }
 
-void QAcceptCallActionPrivate::setReturnInformation(const QOutputPin *returnInformation)
+void QAcceptCallActionPrivate::setReturnInformation(QOutputPin *returnInformation)
 {
     // Adjust subsetted property(ies)
     removeOutput(this->returnInformation);
 
-    this->returnInformation = const_cast<QOutputPin *>(returnInformation);
+    this->returnInformation = returnInformation;
 
     // Adjust subsetted property(ies)
     addOutput(returnInformation);
@@ -101,10 +101,12 @@ QOutputPin *QAcceptCallAction::returnInformation() const
     return d->returnInformation;
 }
 
-void QAcceptCallAction::setReturnInformation(const QOutputPin *returnInformation)
+void QAcceptCallAction::setReturnInformation(QOutputPin *returnInformation)
 {
     QTUML_D(QAcceptCallAction);
-    d->setReturnInformation(const_cast<QOutputPin *>(returnInformation));
+    if (d->returnInformation != returnInformation) {
+        d->setReturnInformation(returnInformation);
+    }
 }
 
 #include "moc_qacceptcallaction.cpp"

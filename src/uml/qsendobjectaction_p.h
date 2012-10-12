@@ -65,8 +65,8 @@ public:
     QInputPin *target;
 
     // Internal functions for association-ends
-    void setRequest(const QInputPin *request);
-    void setTarget(const QInputPin *target);
+    void setRequest(QInputPin *request);
+    void setTarget(QInputPin *target);
 };
 
 QT_END_NAMESPACE_QTUML

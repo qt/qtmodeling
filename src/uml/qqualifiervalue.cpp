@@ -57,14 +57,14 @@ QQualifierValuePrivate::~QQualifierValuePrivate()
 {
 }
 
-void QQualifierValuePrivate::setValue(const QInputPin *value)
+void QQualifierValuePrivate::setValue(QInputPin *value)
 {
-    this->value = const_cast<QInputPin *>(value);
+    this->value = value;
 }
 
-void QQualifierValuePrivate::setQualifier(const QProperty *qualifier)
+void QQualifierValuePrivate::setQualifier(QProperty *qualifier)
 {
-    this->qualifier = const_cast<QProperty *>(qualifier);
+    this->qualifier = qualifier;
 }
 
 /*!
@@ -101,10 +101,12 @@ QInputPin *QQualifierValue::value() const
     return d->value;
 }
 
-void QQualifierValue::setValue(const QInputPin *value)
+void QQualifierValue::setValue(QInputPin *value)
 {
     QTUML_D(QQualifierValue);
-    d->setValue(const_cast<QInputPin *>(value));
+    if (d->value != value) {
+        d->setValue(value);
+    }
 }
 
 /*!
@@ -116,10 +118,12 @@ QProperty *QQualifierValue::qualifier() const
     return d->qualifier;
 }
 
-void QQualifierValue::setQualifier(const QProperty *qualifier)
+void QQualifierValue::setQualifier(QProperty *qualifier)
 {
     QTUML_D(QQualifierValue);
-    d->setQualifier(const_cast<QProperty *>(qualifier));
+    if (d->qualifier != qualifier) {
+        d->setQualifier(qualifier);
+    }
 }
 
 #include "moc_qqualifiervalue.cpp"

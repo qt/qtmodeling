@@ -61,9 +61,9 @@ void QTimeObservationPrivate::setFirstEvent(bool firstEvent)
     this->firstEvent = firstEvent;
 }
 
-void QTimeObservationPrivate::setEvent(const QNamedElement *event)
+void QTimeObservationPrivate::setEvent(QNamedElement *event)
 {
-    this->event = const_cast<QNamedElement *>(event);
+    this->event = event;
 }
 
 /*!
@@ -103,7 +103,9 @@ bool QTimeObservation::firstEvent() const
 void QTimeObservation::setFirstEvent(bool firstEvent)
 {
     QTUML_D(QTimeObservation);
-    d->setFirstEvent(firstEvent);
+    if (d->firstEvent != firstEvent) {
+        d->setFirstEvent(firstEvent);
+    }
 }
 
 /*!
@@ -115,10 +117,12 @@ QNamedElement *QTimeObservation::event() const
     return d->event;
 }
 
-void QTimeObservation::setEvent(const QNamedElement *event)
+void QTimeObservation::setEvent(QNamedElement *event)
 {
     QTUML_D(QTimeObservation);
-    d->setEvent(const_cast<QNamedElement *>(event));
+    if (d->event != event) {
+        d->setEvent(event);
+    }
 }
 
 #include "moc_qtimeobservation.cpp"

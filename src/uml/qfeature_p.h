@@ -71,8 +71,8 @@ public:
     void setStatic(bool isStatic);
 
     // Internal functions for association-ends
-    void addFeaturingClassifier(const QClassifier *featuringClassifier);
-    void removeFeaturingClassifier(const QClassifier *featuringClassifier);
+    void addFeaturingClassifier(QClassifier *featuringClassifier);
+    void removeFeaturingClassifier(QClassifier *featuringClassifier);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -55,9 +55,9 @@ QExecutionOccurrenceSpecificationPrivate::~QExecutionOccurrenceSpecificationPriv
 {
 }
 
-void QExecutionOccurrenceSpecificationPrivate::setExecution(const QExecutionSpecification *execution)
+void QExecutionOccurrenceSpecificationPrivate::setExecution(QExecutionSpecification *execution)
 {
-    this->execution = const_cast<QExecutionSpecification *>(execution);
+    this->execution = execution;
 }
 
 /*!
@@ -94,10 +94,12 @@ QExecutionSpecification *QExecutionOccurrenceSpecification::execution() const
     return d->execution;
 }
 
-void QExecutionOccurrenceSpecification::setExecution(const QExecutionSpecification *execution)
+void QExecutionOccurrenceSpecification::setExecution(QExecutionSpecification *execution)
 {
     QTUML_D(QExecutionOccurrenceSpecification);
-    d->setExecution(const_cast<QExecutionSpecification *>(execution));
+    if (d->execution != execution) {
+        d->setExecution(execution);
+    }
 }
 
 #include "moc_qexecutionoccurrencespecification.cpp"

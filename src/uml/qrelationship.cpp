@@ -55,14 +55,14 @@ QRelationshipPrivate::~QRelationshipPrivate()
     delete relatedElements;
 }
 
-void QRelationshipPrivate::addRelatedElement(const QElement *relatedElement)
+void QRelationshipPrivate::addRelatedElement(QElement *relatedElement)
 {
-    this->relatedElements->insert(const_cast<QElement *>(relatedElement));
+    this->relatedElements->insert(relatedElement);
 }
 
-void QRelationshipPrivate::removeRelatedElement(const QElement *relatedElement)
+void QRelationshipPrivate::removeRelatedElement(QElement *relatedElement)
 {
-    this->relatedElements->remove(const_cast<QElement *>(relatedElement));
+    this->relatedElements->remove(relatedElement);
 }
 
 /*!

@@ -77,7 +77,7 @@ public:
     void removeLanguage(QString language);
 
     // Internal functions for association-ends
-    void setBehavior(const QBehavior *behavior);
+    void setBehavior(QBehavior *behavior);
 };
 
 QT_END_NAMESPACE_QTUML

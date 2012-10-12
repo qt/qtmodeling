@@ -57,17 +57,17 @@ QEnumerationPrivate::~QEnumerationPrivate()
     delete ownedLiterals;
 }
 
-void QEnumerationPrivate::addOwnedLiteral(const QEnumerationLiteral *ownedLiteral)
+void QEnumerationPrivate::addOwnedLiteral(QEnumerationLiteral *ownedLiteral)
 {
-    this->ownedLiterals->append(const_cast<QEnumerationLiteral *>(ownedLiteral));
+    this->ownedLiterals->append(ownedLiteral);
 
     // Adjust subsetted property(ies)
     addOwnedMember(ownedLiteral);
 }
 
-void QEnumerationPrivate::removeOwnedLiteral(const QEnumerationLiteral *ownedLiteral)
+void QEnumerationPrivate::removeOwnedLiteral(QEnumerationLiteral *ownedLiteral)
 {
-    this->ownedLiterals->removeAll(const_cast<QEnumerationLiteral *>(ownedLiteral));
+    this->ownedLiterals->removeAll(ownedLiteral);
 
     // Adjust subsetted property(ies)
     removeOwnedMember(ownedLiteral);
@@ -107,16 +107,26 @@ const QList<QEnumerationLiteral *> *QEnumeration::ownedLiterals() const
     return d->ownedLiterals;
 }
 
-void QEnumeration::addOwnedLiteral(const QEnumerationLiteral *ownedLiteral)
+void QEnumeration::addOwnedLiteral(QEnumerationLiteral *ownedLiteral)
 {
     QTUML_D(QEnumeration);
-    d->addOwnedLiteral(const_cast<QEnumerationLiteral *>(ownedLiteral));
+    if (!d->ownedLiterals->contains(ownedLiteral)) {
+        d->addOwnedLiteral(ownedLiteral);
+
+        // Adjust opposite property
+        ownedLiteral->setEnumeration(this);
+    }
 }
 
-void QEnumeration::removeOwnedLiteral(const QEnumerationLiteral *ownedLiteral)
+void QEnumeration::removeOwnedLiteral(QEnumerationLiteral *ownedLiteral)
 {
     QTUML_D(QEnumeration);
-    d->removeOwnedLiteral(const_cast<QEnumerationLiteral *>(ownedLiteral));
+    if (d->ownedLiterals->contains(ownedLiteral)) {
+        d->removeOwnedLiteral(ownedLiteral);
+
+        // Adjust opposite property
+        ownedLiteral->setEnumeration(0);
+    }
 }
 
 #include "moc_qenumeration.cpp"

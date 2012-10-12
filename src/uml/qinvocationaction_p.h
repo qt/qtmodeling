@@ -69,9 +69,9 @@ public:
     QPort *onPort;
 
     // Internal functions for association-ends
-    void addArgument(const QInputPin *argument);
-    void removeArgument(const QInputPin *argument);
-    void setOnPort(const QPort *onPort);
+    void addArgument(QInputPin *argument);
+    void removeArgument(QInputPin *argument);
+    void setOnPort(QPort *onPort);
 };
 
 QT_END_NAMESPACE_QTUML

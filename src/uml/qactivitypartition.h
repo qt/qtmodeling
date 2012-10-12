@@ -108,18 +108,18 @@ public:
 
     // Association-ends
     QElement *represents() const;
-    void setRepresents(const QElement *represents);
+    void setRepresents(QElement *represents);
     const QSet<QActivityPartition *> *subpartitions() const;
-    void addSubpartition(const QActivityPartition *subpartition);
-    void removeSubpartition(const QActivityPartition *subpartition);
+    void addSubpartition(QActivityPartition *subpartition);
+    void removeSubpartition(QActivityPartition *subpartition);
     QActivityPartition *superPartition() const;
-    void setSuperPartition(const QActivityPartition *superPartition);
+    void setSuperPartition(QActivityPartition *superPartition);
     const QSet<QActivityNode *> *nodes() const;
-    void addNode(const QActivityNode *node);
-    void removeNode(const QActivityNode *node);
+    void addNode(QActivityNode *node);
+    void removeNode(QActivityNode *node);
     const QSet<QActivityEdge *> *edges() const;
-    void addEdge(const QActivityEdge *edge);
-    void removeEdge(const QActivityEdge *edge);
+    void addEdge(QActivityEdge *edge);
+    void removeEdge(QActivityEdge *edge);
 
 protected:
     explicit QActivityPartition(bool createPimpl, QObject *parent = 0);

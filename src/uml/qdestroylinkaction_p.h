@@ -67,8 +67,8 @@ public:
     QSet<QLinkEndDestructionData *> *endData;
 
     // Internal functions for association-ends
-    void addEndData(const QLinkEndDestructionData *endData);
-    void removeEndData(const QLinkEndDestructionData *endData);
+    void addEndData(QLinkEndDestructionData *endData);
+    void removeEndData(QLinkEndDestructionData *endData);
 };
 
 QT_END_NAMESPACE_QTUML

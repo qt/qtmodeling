@@ -71,9 +71,9 @@ public:
 
     // Association-ends
     QTimeExpression *max() const;
-    void setMax(const QTimeExpression *max);
+    void setMax(QTimeExpression *max);
     QTimeExpression *min() const;
-    void setMin(const QTimeExpression *min);
+    void setMin(QTimeExpression *min);
 
 protected:
     explicit QTimeInterval(bool createPimpl, QObject *parent = 0);

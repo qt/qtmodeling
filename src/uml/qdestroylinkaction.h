@@ -116,8 +116,8 @@ public:
 
     // Association-ends
     const QSet<QLinkEndDestructionData *> *endData() const;
-    void addEndData(const QLinkEndDestructionData *endData);
-    void removeEndData(const QLinkEndDestructionData *endData);
+    void addEndData(QLinkEndDestructionData *endData);
+    void removeEndData(QLinkEndDestructionData *endData);
 
 protected:
     explicit QDestroyLinkAction(bool createPimpl, QObject *parent = 0);

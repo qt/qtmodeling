@@ -95,7 +95,7 @@ public:
 
     // Association-ends
     QNamedElement *event() const;
-    void setEvent(const QNamedElement *event);
+    void setEvent(QNamedElement *event);
 
 protected:
     explicit QTimeObservation(bool createPimpl, QObject *parent = 0);

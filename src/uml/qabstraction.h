@@ -70,7 +70,7 @@ public:
 
     // Association-ends
     QOpaqueExpression *mapping() const;
-    void setMapping(const QOpaqueExpression *mapping);
+    void setMapping(QOpaqueExpression *mapping);
 
 protected:
     explicit QAbstraction(bool createPimpl, QObject *parent = 0);

@@ -104,7 +104,7 @@ public:
 
     // Association-ends
     QValueSpecification *joinSpec() const;
-    void setJoinSpec(const QValueSpecification *joinSpec);
+    void setJoinSpec(QValueSpecification *joinSpec);
 
 protected:
     explicit QJoinNode(bool createPimpl, QObject *parent = 0);

@@ -82,11 +82,11 @@ public:
 
     // Association-ends
     QStringExpression *nameExpression() const;
-    void setNameExpression(const QStringExpression *nameExpression);
+    void setNameExpression(QStringExpression *nameExpression);
     QNamespace *namespace_() const;
     const QSet<QDependency *> *clientDependencies() const;
-    void addClientDependency(const QDependency *clientDependency);
-    void removeClientDependency(const QDependency *clientDependency);
+    void addClientDependency(QDependency *clientDependency);
+    void removeClientDependency(QDependency *clientDependency);
 
     // Operations
     const QList<QNamespace *> *allNamespaces() const;

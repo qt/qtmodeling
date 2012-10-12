@@ -72,8 +72,8 @@ public:
     void removeFirstEvent(bool firstEvent);
 
     // Internal functions for association-ends
-    void addEvent(const QNamedElement *event);
-    void removeEvent(const QNamedElement *event);
+    void addEvent(QNamedElement *event);
+    void removeEvent(QNamedElement *event);
 };
 
 QT_END_NAMESPACE_QTUML

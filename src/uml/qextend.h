@@ -100,14 +100,14 @@ public:
 
     // Association-ends
     QUseCase *extendedCase() const;
-    void setExtendedCase(const QUseCase *extendedCase);
+    void setExtendedCase(QUseCase *extendedCase);
     QUseCase *extension() const;
-    void setExtension(const QUseCase *extension);
+    void setExtension(QUseCase *extension);
     const QList<QExtensionPoint *> *extensionLocations() const;
-    void addExtensionLocation(const QExtensionPoint *extensionLocation);
-    void removeExtensionLocation(const QExtensionPoint *extensionLocation);
+    void addExtensionLocation(QExtensionPoint *extensionLocation);
+    void removeExtensionLocation(QExtensionPoint *extensionLocation);
     QConstraint *condition() const;
-    void setCondition(const QConstraint *condition);
+    void setCondition(QConstraint *condition);
 
 protected:
     explicit QExtend(bool createPimpl, QObject *parent = 0);

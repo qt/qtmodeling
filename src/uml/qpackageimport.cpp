@@ -66,24 +66,24 @@ void QPackageImportPrivate::setVisibility(QtUml::VisibilityKind visibility)
     this->visibility = visibility;
 }
 
-void QPackageImportPrivate::setImportingNamespace(const QNamespace *importingNamespace)
+void QPackageImportPrivate::setImportingNamespace(QNamespace *importingNamespace)
 {
     // Adjust subsetted property(ies)
     removeSource(this->importingNamespace);
 
-    this->importingNamespace = const_cast<QNamespace *>(importingNamespace);
+    this->importingNamespace = importingNamespace;
 
     // Adjust subsetted property(ies)
     setOwner(importingNamespace);
     addSource(importingNamespace);
 }
 
-void QPackageImportPrivate::setImportedPackage(const QPackage *importedPackage)
+void QPackageImportPrivate::setImportedPackage(QPackage *importedPackage)
 {
     // Adjust subsetted property(ies)
     removeTarget(this->importedPackage);
 
-    this->importedPackage = const_cast<QPackage *>(importedPackage);
+    this->importedPackage = importedPackage;
 
     // Adjust subsetted property(ies)
     addTarget(importedPackage);
@@ -126,7 +126,9 @@ QtUml::VisibilityKind QPackageImport::visibility() const
 void QPackageImport::setVisibility(QtUml::VisibilityKind visibility)
 {
     QTUML_D(QPackageImport);
-    d->setVisibility(visibility);
+    if (d->visibility != visibility) {
+        d->setVisibility(visibility);
+    }
 }
 
 /*!
@@ -138,10 +140,15 @@ QNamespace *QPackageImport::importingNamespace() const
     return d->importingNamespace;
 }
 
-void QPackageImport::setImportingNamespace(const QNamespace *importingNamespace)
+void QPackageImport::setImportingNamespace(QNamespace *importingNamespace)
 {
     QTUML_D(QPackageImport);
-    d->setImportingNamespace(const_cast<QNamespace *>(importingNamespace));
+    if (d->importingNamespace != importingNamespace) {
+        d->setImportingNamespace(importingNamespace);
+
+        // Adjust opposite property
+        importingNamespace->addPackageImport(this);
+    }
 }
 
 /*!
@@ -153,10 +160,12 @@ QPackage *QPackageImport::importedPackage() const
     return d->importedPackage;
 }
 
-void QPackageImport::setImportedPackage(const QPackage *importedPackage)
+void QPackageImport::setImportedPackage(QPackage *importedPackage)
 {
     QTUML_D(QPackageImport);
-    d->setImportedPackage(const_cast<QPackage *>(importedPackage));
+    if (d->importedPackage != importedPackage) {
+        d->setImportedPackage(importedPackage);
+    }
 }
 
 #include "moc_qpackageimport.cpp"

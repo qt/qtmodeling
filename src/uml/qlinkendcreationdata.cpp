@@ -61,9 +61,9 @@ void QLinkEndCreationDataPrivate::setReplaceAll(bool isReplaceAll)
     this->isReplaceAll = isReplaceAll;
 }
 
-void QLinkEndCreationDataPrivate::setInsertAt(const QInputPin *insertAt)
+void QLinkEndCreationDataPrivate::setInsertAt(QInputPin *insertAt)
 {
-    this->insertAt = const_cast<QInputPin *>(insertAt);
+    this->insertAt = insertAt;
 }
 
 /*!
@@ -103,7 +103,9 @@ bool QLinkEndCreationData::isReplaceAll() const
 void QLinkEndCreationData::setReplaceAll(bool isReplaceAll)
 {
     QTUML_D(QLinkEndCreationData);
-    d->setReplaceAll(isReplaceAll);
+    if (d->isReplaceAll != isReplaceAll) {
+        d->setReplaceAll(isReplaceAll);
+    }
 }
 
 /*!
@@ -115,10 +117,12 @@ QInputPin *QLinkEndCreationData::insertAt() const
     return d->insertAt;
 }
 
-void QLinkEndCreationData::setInsertAt(const QInputPin *insertAt)
+void QLinkEndCreationData::setInsertAt(QInputPin *insertAt)
 {
     QTUML_D(QLinkEndCreationData);
-    d->setInsertAt(const_cast<QInputPin *>(insertAt));
+    if (d->insertAt != insertAt) {
+        d->setInsertAt(insertAt);
+    }
 }
 
 #include "moc_qlinkendcreationdata.cpp"

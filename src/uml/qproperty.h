@@ -167,30 +167,30 @@ public:
 
     // Association-ends
     const QSet<QProperty *> *subsettedProperties() const;
-    void addSubsettedProperty(const QProperty *subsettedProperty);
-    void removeSubsettedProperty(const QProperty *subsettedProperty);
+    void addSubsettedProperty(QProperty *subsettedProperty);
+    void removeSubsettedProperty(QProperty *subsettedProperty);
     QAssociation *owningAssociation() const;
-    void setOwningAssociation(const QAssociation *owningAssociation);
+    void setOwningAssociation(QAssociation *owningAssociation);
     const QList<QProperty *> *qualifiers() const;
-    void addQualifier(const QProperty *qualifier);
-    void removeQualifier(const QProperty *qualifier);
+    void addQualifier(QProperty *qualifier);
+    void removeQualifier(QProperty *qualifier);
     QValueSpecification *defaultValue() const;
-    void setDefaultValue(const QValueSpecification *defaultValue);
+    void setDefaultValue(QValueSpecification *defaultValue);
     QClass *class_() const;
-    void setClass_(const QClass *class_);
+    void setClass_(QClass *class_);
     QProperty *opposite() const;
-    void setOpposite(const QProperty *opposite);
+    void setOpposite(QProperty *opposite);
     QProperty *associationEnd() const;
-    void setAssociationEnd(const QProperty *associationEnd);
+    void setAssociationEnd(QProperty *associationEnd);
     QDataType *datatype() const;
-    void setDatatype(const QDataType *datatype);
+    void setDatatype(QDataType *datatype);
     const QSet<QProperty *> *redefinedProperties() const;
-    void addRedefinedProperty(const QProperty *redefinedProperty);
-    void removeRedefinedProperty(const QProperty *redefinedProperty);
+    void addRedefinedProperty(QProperty *redefinedProperty);
+    void removeRedefinedProperty(QProperty *redefinedProperty);
     QAssociation *association() const;
-    void setAssociation(const QAssociation *association);
+    void setAssociation(QAssociation *association);
     QInterface *interface() const;
-    void setInterface(const QInterface *interface);
+    void setInterface(QInterface *interface);
 
     // Operations
     bool isAttribute(const QProperty *p) const;

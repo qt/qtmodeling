@@ -55,9 +55,9 @@ QActivityParameterNodePrivate::~QActivityParameterNodePrivate()
 {
 }
 
-void QActivityParameterNodePrivate::setParameter(const QParameter *parameter)
+void QActivityParameterNodePrivate::setParameter(QParameter *parameter)
 {
-    this->parameter = const_cast<QParameter *>(parameter);
+    this->parameter = parameter;
 }
 
 /*!
@@ -94,10 +94,12 @@ QParameter *QActivityParameterNode::parameter() const
     return d->parameter;
 }
 
-void QActivityParameterNode::setParameter(const QParameter *parameter)
+void QActivityParameterNode::setParameter(QParameter *parameter)
 {
     QTUML_D(QActivityParameterNode);
-    d->setParameter(const_cast<QParameter *>(parameter));
+    if (d->parameter != parameter) {
+        d->setParameter(parameter);
+    }
 }
 
 #include "moc_qactivityparameternode.cpp"

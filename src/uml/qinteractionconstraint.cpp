@@ -58,23 +58,23 @@ QInteractionConstraintPrivate::~QInteractionConstraintPrivate()
 {
 }
 
-void QInteractionConstraintPrivate::setMaxint(const QValueSpecification *maxint)
+void QInteractionConstraintPrivate::setMaxint(QValueSpecification *maxint)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->maxint);
 
-    this->maxint = const_cast<QValueSpecification *>(maxint);
+    this->maxint = maxint;
 
     // Adjust subsetted property(ies)
     addOwnedElement(maxint);
 }
 
-void QInteractionConstraintPrivate::setMinint(const QValueSpecification *minint)
+void QInteractionConstraintPrivate::setMinint(QValueSpecification *minint)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->minint);
 
-    this->minint = const_cast<QValueSpecification *>(minint);
+    this->minint = minint;
 
     // Adjust subsetted property(ies)
     addOwnedElement(minint);
@@ -114,10 +114,12 @@ QValueSpecification *QInteractionConstraint::maxint() const
     return d->maxint;
 }
 
-void QInteractionConstraint::setMaxint(const QValueSpecification *maxint)
+void QInteractionConstraint::setMaxint(QValueSpecification *maxint)
 {
     QTUML_D(QInteractionConstraint);
-    d->setMaxint(const_cast<QValueSpecification *>(maxint));
+    if (d->maxint != maxint) {
+        d->setMaxint(maxint);
+    }
 }
 
 /*!
@@ -129,10 +131,12 @@ QValueSpecification *QInteractionConstraint::minint() const
     return d->minint;
 }
 
-void QInteractionConstraint::setMinint(const QValueSpecification *minint)
+void QInteractionConstraint::setMinint(QValueSpecification *minint)
 {
     QTUML_D(QInteractionConstraint);
-    d->setMinint(const_cast<QValueSpecification *>(minint));
+    if (d->minint != minint) {
+        d->setMinint(minint);
+    }
 }
 
 #include "moc_qinteractionconstraint.cpp"

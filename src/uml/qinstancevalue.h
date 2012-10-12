@@ -93,7 +93,7 @@ public:
 
     // Association-ends
     QInstanceSpecification *instance() const;
-    void setInstance(const QInstanceSpecification *instance);
+    void setInstance(QInstanceSpecification *instance);
 
 protected:
     explicit QInstanceValue(bool createPimpl, QObject *parent = 0);

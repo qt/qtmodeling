@@ -64,7 +64,7 @@ public:
     QSignal *signal;
 
     // Internal functions for association-ends
-    void setSignal(const QSignal *signal);
+    void setSignal(QSignal *signal);
 };
 
 QT_END_NAMESPACE_QTUML

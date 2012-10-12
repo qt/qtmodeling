@@ -104,11 +104,11 @@ public:
 
     // Association-ends
     const QSet<QGate *> *cfragmentGates() const;
-    void addCfragmentGate(const QGate *cfragmentGate);
-    void removeCfragmentGate(const QGate *cfragmentGate);
+    void addCfragmentGate(QGate *cfragmentGate);
+    void removeCfragmentGate(QGate *cfragmentGate);
     const QList<QInteractionOperand *> *operands() const;
-    void addOperand(const QInteractionOperand *operand);
-    void removeOperand(const QInteractionOperand *operand);
+    void addOperand(QInteractionOperand *operand);
+    void removeOperand(QInteractionOperand *operand);
 
 protected:
     explicit QCombinedFragment(bool createPimpl, QObject *parent = 0);

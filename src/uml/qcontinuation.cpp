@@ -96,7 +96,9 @@ bool QContinuation::setting() const
 void QContinuation::setSetting(bool setting)
 {
     QTUML_D(QContinuation);
-    d->setSetting(setting);
+    if (d->setting != setting) {
+        d->setSetting(setting);
+    }
 }
 
 #include "moc_qcontinuation.cpp"

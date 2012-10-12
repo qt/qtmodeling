@@ -56,9 +56,9 @@ QConnectableElementPrivate::~QConnectableElementPrivate()
 {
 }
 
-void QConnectableElementPrivate::setTemplateParameter(const QConnectableElementTemplateParameter *templateParameter)
+void QConnectableElementPrivate::setTemplateParameter(QConnectableElementTemplateParameter *templateParameter)
 {
-    this->templateParameter = const_cast<QConnectableElementTemplateParameter *>(templateParameter);
+    this->templateParameter = templateParameter;
 }
 
 /*!
@@ -94,10 +94,15 @@ QConnectableElementTemplateParameter *QConnectableElement::templateParameter() c
     return d->templateParameter;
 }
 
-void QConnectableElement::setTemplateParameter(const QConnectableElementTemplateParameter *templateParameter)
+void QConnectableElement::setTemplateParameter(QConnectableElementTemplateParameter *templateParameter)
 {
     QTUML_D(QConnectableElement);
-    d->setTemplateParameter(const_cast<QConnectableElementTemplateParameter *>(templateParameter));
+    if (d->templateParameter != templateParameter) {
+        d->setTemplateParameter(templateParameter);
+
+        // Adjust opposite property
+        templateParameter->setParameteredElement(this);
+    }
 }
 
 QT_END_NAMESPACE_QTUML

@@ -72,9 +72,9 @@ public:
 
     // Association-ends
     QBehavioredClassifier *implementingClassifier() const;
-    void setImplementingClassifier(const QBehavioredClassifier *implementingClassifier);
+    void setImplementingClassifier(QBehavioredClassifier *implementingClassifier);
     QInterface *contract() const;
-    void setContract(const QInterface *contract);
+    void setContract(QInterface *contract);
 
 protected:
     explicit QInterfaceRealization(bool createPimpl, QObject *parent = 0);

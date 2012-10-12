@@ -56,12 +56,12 @@ QValuePinPrivate::~QValuePinPrivate()
 {
 }
 
-void QValuePinPrivate::setValue(const QValueSpecification *value)
+void QValuePinPrivate::setValue(QValueSpecification *value)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->value);
 
-    this->value = const_cast<QValueSpecification *>(value);
+    this->value = value;
 
     // Adjust subsetted property(ies)
     addOwnedElement(value);
@@ -101,10 +101,12 @@ QValueSpecification *QValuePin::value() const
     return d->value;
 }
 
-void QValuePin::setValue(const QValueSpecification *value)
+void QValuePin::setValue(QValueSpecification *value)
 {
     QTUML_D(QValuePin);
-    d->setValue(const_cast<QValueSpecification *>(value));
+    if (d->value != value) {
+        d->setValue(value);
+    }
 }
 
 #include "moc_qvaluepin.cpp"

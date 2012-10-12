@@ -79,68 +79,68 @@ void QTransitionPrivate::setKind(QtUml::TransitionKind kind)
     this->kind = kind;
 }
 
-void QTransitionPrivate::setGuard(const QConstraint *guard)
+void QTransitionPrivate::setGuard(QConstraint *guard)
 {
     // Adjust subsetted property(ies)
     removeOwnedRule(this->guard);
 
-    this->guard = const_cast<QConstraint *>(guard);
+    this->guard = guard;
 
     // Adjust subsetted property(ies)
     addOwnedRule(guard);
 }
 
-void QTransitionPrivate::setTarget(const QVertex *target)
+void QTransitionPrivate::setTarget(QVertex *target)
 {
-    this->target = const_cast<QVertex *>(target);
+    this->target = target;
 }
 
-void QTransitionPrivate::setEffect(const QBehavior *effect)
+void QTransitionPrivate::setEffect(QBehavior *effect)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->effect);
 
-    this->effect = const_cast<QBehavior *>(effect);
+    this->effect = effect;
 
     // Adjust subsetted property(ies)
     addOwnedElement(effect);
 }
 
-void QTransitionPrivate::setContainer(const QRegion *container)
+void QTransitionPrivate::setContainer(QRegion *container)
 {
-    this->container = const_cast<QRegion *>(container);
+    this->container = container;
 
     // Adjust subsetted property(ies)
     setNamespace_(container);
 }
 
-void QTransitionPrivate::setRedefinedTransition(const QTransition *redefinedTransition)
+void QTransitionPrivate::setRedefinedTransition(QTransition *redefinedTransition)
 {
     // Adjust subsetted property(ies)
     removeRedefinedElement(this->redefinedTransition);
 
-    this->redefinedTransition = const_cast<QTransition *>(redefinedTransition);
+    this->redefinedTransition = redefinedTransition;
 
     // Adjust subsetted property(ies)
     addRedefinedElement(redefinedTransition);
 }
 
-void QTransitionPrivate::setSource(const QVertex *source)
+void QTransitionPrivate::setSource(QVertex *source)
 {
-    this->source = const_cast<QVertex *>(source);
+    this->source = source;
 }
 
-void QTransitionPrivate::addTrigger(const QTrigger *trigger)
+void QTransitionPrivate::addTrigger(QTrigger *trigger)
 {
-    this->triggers->insert(const_cast<QTrigger *>(trigger));
+    this->triggers->insert(trigger);
 
     // Adjust subsetted property(ies)
     addOwnedElement(trigger);
 }
 
-void QTransitionPrivate::removeTrigger(const QTrigger *trigger)
+void QTransitionPrivate::removeTrigger(QTrigger *trigger)
 {
-    this->triggers->remove(const_cast<QTrigger *>(trigger));
+    this->triggers->remove(trigger);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(trigger);
@@ -183,7 +183,9 @@ QtUml::TransitionKind QTransition::kind() const
 void QTransition::setKind(QtUml::TransitionKind kind)
 {
     QTUML_D(QTransition);
-    d->setKind(kind);
+    if (d->kind != kind) {
+        d->setKind(kind);
+    }
 }
 
 /*!
@@ -195,10 +197,12 @@ QConstraint *QTransition::guard() const
     return d->guard;
 }
 
-void QTransition::setGuard(const QConstraint *guard)
+void QTransition::setGuard(QConstraint *guard)
 {
     QTUML_D(QTransition);
-    d->setGuard(const_cast<QConstraint *>(guard));
+    if (d->guard != guard) {
+        d->setGuard(guard);
+    }
 }
 
 /*!
@@ -210,10 +214,12 @@ QVertex *QTransition::target() const
     return d->target;
 }
 
-void QTransition::setTarget(const QVertex *target)
+void QTransition::setTarget(QVertex *target)
 {
     QTUML_D(QTransition);
-    d->setTarget(const_cast<QVertex *>(target));
+    if (d->target != target) {
+        d->setTarget(target);
+    }
 }
 
 /*!
@@ -225,10 +231,12 @@ QBehavior *QTransition::effect() const
     return d->effect;
 }
 
-void QTransition::setEffect(const QBehavior *effect)
+void QTransition::setEffect(QBehavior *effect)
 {
     QTUML_D(QTransition);
-    d->setEffect(const_cast<QBehavior *>(effect));
+    if (d->effect != effect) {
+        d->setEffect(effect);
+    }
 }
 
 /*!
@@ -240,10 +248,15 @@ QRegion *QTransition::container() const
     return d->container;
 }
 
-void QTransition::setContainer(const QRegion *container)
+void QTransition::setContainer(QRegion *container)
 {
     QTUML_D(QTransition);
-    d->setContainer(const_cast<QRegion *>(container));
+    if (d->container != container) {
+        d->setContainer(container);
+
+        // Adjust opposite property
+        container->addTransition(this);
+    }
 }
 
 /*!
@@ -263,10 +276,12 @@ QTransition *QTransition::redefinedTransition() const
     return d->redefinedTransition;
 }
 
-void QTransition::setRedefinedTransition(const QTransition *redefinedTransition)
+void QTransition::setRedefinedTransition(QTransition *redefinedTransition)
 {
     QTUML_D(QTransition);
-    d->setRedefinedTransition(const_cast<QTransition *>(redefinedTransition));
+    if (d->redefinedTransition != redefinedTransition) {
+        d->setRedefinedTransition(redefinedTransition);
+    }
 }
 
 /*!
@@ -278,10 +293,12 @@ QVertex *QTransition::source() const
     return d->source;
 }
 
-void QTransition::setSource(const QVertex *source)
+void QTransition::setSource(QVertex *source)
 {
     QTUML_D(QTransition);
-    d->setSource(const_cast<QVertex *>(source));
+    if (d->source != source) {
+        d->setSource(source);
+    }
 }
 
 /*!
@@ -293,16 +310,20 @@ const QSet<QTrigger *> *QTransition::triggers() const
     return d->triggers;
 }
 
-void QTransition::addTrigger(const QTrigger *trigger)
+void QTransition::addTrigger(QTrigger *trigger)
 {
     QTUML_D(QTransition);
-    d->addTrigger(const_cast<QTrigger *>(trigger));
+    if (!d->triggers->contains(trigger)) {
+        d->addTrigger(trigger);
+    }
 }
 
-void QTransition::removeTrigger(const QTrigger *trigger)
+void QTransition::removeTrigger(QTrigger *trigger)
 {
     QTUML_D(QTransition);
-    d->removeTrigger(const_cast<QTrigger *>(trigger));
+    if (d->triggers->contains(trigger)) {
+        d->removeTrigger(trigger);
+    }
 }
 
 /*!

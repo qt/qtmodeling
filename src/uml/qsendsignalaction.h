@@ -116,9 +116,9 @@ public:
 
     // Association-ends
     QInputPin *target() const;
-    void setTarget(const QInputPin *target);
+    void setTarget(QInputPin *target);
     QSignal *signal() const;
-    void setSignal(const QSignal *signal);
+    void setSignal(QSignal *signal);
 
 protected:
     explicit QSendSignalAction(bool createPimpl, QObject *parent = 0);

@@ -114,7 +114,7 @@ public:
 
     // Association-ends
     QSignal *signal() const;
-    void setSignal(const QSignal *signal);
+    void setSignal(QSignal *signal);
 
 protected:
     explicit QBroadcastSignalAction(bool createPimpl, QObject *parent = 0);

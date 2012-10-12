@@ -72,81 +72,81 @@ QInteractionPrivate::~QInteractionPrivate()
     delete lifelines;
 }
 
-void QInteractionPrivate::addAction(const QAction *action)
+void QInteractionPrivate::addAction(QAction *action)
 {
-    this->actions->insert(const_cast<QAction *>(action));
+    this->actions->insert(action);
 
     // Adjust subsetted property(ies)
     addOwnedElement(action);
 }
 
-void QInteractionPrivate::removeAction(const QAction *action)
+void QInteractionPrivate::removeAction(QAction *action)
 {
-    this->actions->remove(const_cast<QAction *>(action));
+    this->actions->remove(action);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(action);
 }
 
-void QInteractionPrivate::addMessage(const QMessage *message)
+void QInteractionPrivate::addMessage(QMessage *message)
 {
-    this->messages->insert(const_cast<QMessage *>(message));
+    this->messages->insert(message);
 
     // Adjust subsetted property(ies)
     addOwnedMember(message);
 }
 
-void QInteractionPrivate::removeMessage(const QMessage *message)
+void QInteractionPrivate::removeMessage(QMessage *message)
 {
-    this->messages->remove(const_cast<QMessage *>(message));
+    this->messages->remove(message);
 
     // Adjust subsetted property(ies)
     removeOwnedMember(message);
 }
 
-void QInteractionPrivate::addFormalGate(const QGate *formalGate)
+void QInteractionPrivate::addFormalGate(QGate *formalGate)
 {
-    this->formalGates->insert(const_cast<QGate *>(formalGate));
+    this->formalGates->insert(formalGate);
 
     // Adjust subsetted property(ies)
     addOwnedMember(formalGate);
 }
 
-void QInteractionPrivate::removeFormalGate(const QGate *formalGate)
+void QInteractionPrivate::removeFormalGate(QGate *formalGate)
 {
-    this->formalGates->remove(const_cast<QGate *>(formalGate));
+    this->formalGates->remove(formalGate);
 
     // Adjust subsetted property(ies)
     removeOwnedMember(formalGate);
 }
 
-void QInteractionPrivate::addFragment(const QInteractionFragment *fragment)
+void QInteractionPrivate::addFragment(QInteractionFragment *fragment)
 {
-    this->fragments->append(const_cast<QInteractionFragment *>(fragment));
+    this->fragments->append(fragment);
 
     // Adjust subsetted property(ies)
     addOwnedMember(fragment);
 }
 
-void QInteractionPrivate::removeFragment(const QInteractionFragment *fragment)
+void QInteractionPrivate::removeFragment(QInteractionFragment *fragment)
 {
-    this->fragments->removeAll(const_cast<QInteractionFragment *>(fragment));
+    this->fragments->removeAll(fragment);
 
     // Adjust subsetted property(ies)
     removeOwnedMember(fragment);
 }
 
-void QInteractionPrivate::addLifeline(const QLifeline *lifeline)
+void QInteractionPrivate::addLifeline(QLifeline *lifeline)
 {
-    this->lifelines->insert(const_cast<QLifeline *>(lifeline));
+    this->lifelines->insert(lifeline);
 
     // Adjust subsetted property(ies)
     addOwnedMember(lifeline);
 }
 
-void QInteractionPrivate::removeLifeline(const QLifeline *lifeline)
+void QInteractionPrivate::removeLifeline(QLifeline *lifeline)
 {
-    this->lifelines->remove(const_cast<QLifeline *>(lifeline));
+    this->lifelines->remove(lifeline);
 
     // Adjust subsetted property(ies)
     removeOwnedMember(lifeline);
@@ -186,16 +186,20 @@ const QSet<QAction *> *QInteraction::actions() const
     return d->actions;
 }
 
-void QInteraction::addAction(const QAction *action)
+void QInteraction::addAction(QAction *action)
 {
     QTUML_D(QInteraction);
-    d->addAction(const_cast<QAction *>(action));
+    if (!d->actions->contains(action)) {
+        d->addAction(action);
+    }
 }
 
-void QInteraction::removeAction(const QAction *action)
+void QInteraction::removeAction(QAction *action)
 {
     QTUML_D(QInteraction);
-    d->removeAction(const_cast<QAction *>(action));
+    if (d->actions->contains(action)) {
+        d->removeAction(action);
+    }
 }
 
 /*!
@@ -207,16 +211,26 @@ const QSet<QMessage *> *QInteraction::messages() const
     return d->messages;
 }
 
-void QInteraction::addMessage(const QMessage *message)
+void QInteraction::addMessage(QMessage *message)
 {
     QTUML_D(QInteraction);
-    d->addMessage(const_cast<QMessage *>(message));
+    if (!d->messages->contains(message)) {
+        d->addMessage(message);
+
+        // Adjust opposite property
+        message->setInteraction(this);
+    }
 }
 
-void QInteraction::removeMessage(const QMessage *message)
+void QInteraction::removeMessage(QMessage *message)
 {
     QTUML_D(QInteraction);
-    d->removeMessage(const_cast<QMessage *>(message));
+    if (d->messages->contains(message)) {
+        d->removeMessage(message);
+
+        // Adjust opposite property
+        message->setInteraction(0);
+    }
 }
 
 /*!
@@ -228,16 +242,20 @@ const QSet<QGate *> *QInteraction::formalGates() const
     return d->formalGates;
 }
 
-void QInteraction::addFormalGate(const QGate *formalGate)
+void QInteraction::addFormalGate(QGate *formalGate)
 {
     QTUML_D(QInteraction);
-    d->addFormalGate(const_cast<QGate *>(formalGate));
+    if (!d->formalGates->contains(formalGate)) {
+        d->addFormalGate(formalGate);
+    }
 }
 
-void QInteraction::removeFormalGate(const QGate *formalGate)
+void QInteraction::removeFormalGate(QGate *formalGate)
 {
     QTUML_D(QInteraction);
-    d->removeFormalGate(const_cast<QGate *>(formalGate));
+    if (d->formalGates->contains(formalGate)) {
+        d->removeFormalGate(formalGate);
+    }
 }
 
 /*!
@@ -249,16 +267,26 @@ const QList<QInteractionFragment *> *QInteraction::fragments() const
     return d->fragments;
 }
 
-void QInteraction::addFragment(const QInteractionFragment *fragment)
+void QInteraction::addFragment(QInteractionFragment *fragment)
 {
     QTUML_D(QInteraction);
-    d->addFragment(const_cast<QInteractionFragment *>(fragment));
+    if (!d->fragments->contains(fragment)) {
+        d->addFragment(fragment);
+
+        // Adjust opposite property
+        fragment->setEnclosingInteraction(this);
+    }
 }
 
-void QInteraction::removeFragment(const QInteractionFragment *fragment)
+void QInteraction::removeFragment(QInteractionFragment *fragment)
 {
     QTUML_D(QInteraction);
-    d->removeFragment(const_cast<QInteractionFragment *>(fragment));
+    if (d->fragments->contains(fragment)) {
+        d->removeFragment(fragment);
+
+        // Adjust opposite property
+        fragment->setEnclosingInteraction(0);
+    }
 }
 
 /*!
@@ -270,16 +298,26 @@ const QSet<QLifeline *> *QInteraction::lifelines() const
     return d->lifelines;
 }
 
-void QInteraction::addLifeline(const QLifeline *lifeline)
+void QInteraction::addLifeline(QLifeline *lifeline)
 {
     QTUML_D(QInteraction);
-    d->addLifeline(const_cast<QLifeline *>(lifeline));
+    if (!d->lifelines->contains(lifeline)) {
+        d->addLifeline(lifeline);
+
+        // Adjust opposite property
+        lifeline->setInteraction(this);
+    }
 }
 
-void QInteraction::removeLifeline(const QLifeline *lifeline)
+void QInteraction::removeLifeline(QLifeline *lifeline)
 {
     QTUML_D(QInteraction);
-    d->removeLifeline(const_cast<QLifeline *>(lifeline));
+    if (d->lifelines->contains(lifeline)) {
+        d->removeLifeline(lifeline);
+
+        // Adjust opposite property
+        lifeline->setInteraction(0);
+    }
 }
 
 #include "moc_qinteraction.cpp"

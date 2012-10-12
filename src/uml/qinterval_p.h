@@ -63,8 +63,8 @@ public:
     QValueSpecification *max;
 
     // Internal functions for association-ends
-    void setMin(const QValueSpecification *min);
-    void setMax(const QValueSpecification *max);
+    void setMin(QValueSpecification *min);
+    void setMax(QValueSpecification *max);
 };
 
 QT_END_NAMESPACE_QTUML

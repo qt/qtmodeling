@@ -99,9 +99,9 @@ public:
 
     // Association-ends
     QPackageableElement *importedElement() const;
-    void setImportedElement(const QPackageableElement *importedElement);
+    void setImportedElement(QPackageableElement *importedElement);
     QNamespace *importingNamespace() const;
-    void setImportingNamespace(const QNamespace *importingNamespace);
+    void setImportingNamespace(QNamespace *importingNamespace);
 
     // Operations
     QString getName() const;

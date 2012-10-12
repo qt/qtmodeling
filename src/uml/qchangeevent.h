@@ -90,7 +90,7 @@ public:
 
     // Association-ends
     QValueSpecification *changeExpression() const;
-    void setChangeExpression(const QValueSpecification *changeExpression);
+    void setChangeExpression(QValueSpecification *changeExpression);
 
 protected:
     explicit QChangeEvent(bool createPimpl, QObject *parent = 0);

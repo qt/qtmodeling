@@ -56,12 +56,12 @@ QManifestationPrivate::~QManifestationPrivate()
 {
 }
 
-void QManifestationPrivate::setUtilizedElement(const QPackageableElement *utilizedElement)
+void QManifestationPrivate::setUtilizedElement(QPackageableElement *utilizedElement)
 {
     // Adjust subsetted property(ies)
     removeSupplier(this->utilizedElement);
 
-    this->utilizedElement = const_cast<QPackageableElement *>(utilizedElement);
+    this->utilizedElement = utilizedElement;
 
     // Adjust subsetted property(ies)
     addSupplier(utilizedElement);
@@ -101,10 +101,12 @@ QPackageableElement *QManifestation::utilizedElement() const
     return d->utilizedElement;
 }
 
-void QManifestation::setUtilizedElement(const QPackageableElement *utilizedElement)
+void QManifestation::setUtilizedElement(QPackageableElement *utilizedElement)
 {
     QTUML_D(QManifestation);
-    d->setUtilizedElement(const_cast<QPackageableElement *>(utilizedElement));
+    if (d->utilizedElement != utilizedElement) {
+        d->setUtilizedElement(utilizedElement);
+    }
 }
 
 #include "moc_qmanifestation.cpp"

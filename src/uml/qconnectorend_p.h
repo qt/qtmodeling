@@ -66,8 +66,8 @@ public:
     QProperty *partWithPort;
 
     // Internal functions for association-ends
-    void setRole(const QConnectableElement *role);
-    void setPartWithPort(const QProperty *partWithPort);
+    void setRole(QConnectableElement *role);
+    void setPartWithPort(QProperty *partWithPort);
 };
 
 QT_END_NAMESPACE_QTUML

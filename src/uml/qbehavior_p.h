@@ -81,17 +81,17 @@ public:
     void setReentrant(bool isReentrant);
 
     // Internal functions for association-ends
-    void setSpecification(const QBehavioralFeature *specification);
-    void addPostcondition(const QConstraint *postcondition);
-    void removePostcondition(const QConstraint *postcondition);
-    void addPrecondition(const QConstraint *precondition);
-    void removePrecondition(const QConstraint *precondition);
-    void addRedefinedBehavior(const QBehavior *redefinedBehavior);
-    void removeRedefinedBehavior(const QBehavior *redefinedBehavior);
-    void addOwnedParameter(const QParameter *ownedParameter);
-    void removeOwnedParameter(const QParameter *ownedParameter);
-    void addOwnedParameterSet(const QParameterSet *ownedParameterSet);
-    void removeOwnedParameterSet(const QParameterSet *ownedParameterSet);
+    void setSpecification(QBehavioralFeature *specification);
+    void addPostcondition(QConstraint *postcondition);
+    void removePostcondition(QConstraint *postcondition);
+    void addPrecondition(QConstraint *precondition);
+    void removePrecondition(QConstraint *precondition);
+    void addRedefinedBehavior(QBehavior *redefinedBehavior);
+    void removeRedefinedBehavior(QBehavior *redefinedBehavior);
+    void addOwnedParameter(QParameter *ownedParameter);
+    void removeOwnedParameter(QParameter *ownedParameter);
+    void addOwnedParameterSet(QParameterSet *ownedParameterSet);
+    void removeOwnedParameterSet(QParameterSet *ownedParameterSet);
 };
 
 QT_END_NAMESPACE_QTUML

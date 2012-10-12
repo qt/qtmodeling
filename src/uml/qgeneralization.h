@@ -94,12 +94,12 @@ public:
 
     // Association-ends
     QClassifier *specific() const;
-    void setSpecific(const QClassifier *specific);
+    void setSpecific(QClassifier *specific);
     const QSet<QGeneralizationSet *> *generalizationSets() const;
-    void addGeneralizationSet(const QGeneralizationSet *generalizationSet);
-    void removeGeneralizationSet(const QGeneralizationSet *generalizationSet);
+    void addGeneralizationSet(QGeneralizationSet *generalizationSet);
+    void removeGeneralizationSet(QGeneralizationSet *generalizationSet);
     QClassifier *general() const;
-    void setGeneral(const QClassifier *general);
+    void setGeneral(QClassifier *general);
 
 protected:
     explicit QGeneralization(bool createPimpl, QObject *parent = 0);

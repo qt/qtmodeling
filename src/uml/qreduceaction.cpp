@@ -67,31 +67,31 @@ void QReduceActionPrivate::setOrdered(bool isOrdered)
     this->isOrdered = isOrdered;
 }
 
-void QReduceActionPrivate::setResult(const QOutputPin *result)
+void QReduceActionPrivate::setResult(QOutputPin *result)
 {
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
-    this->result = const_cast<QOutputPin *>(result);
+    this->result = result;
 
     // Adjust subsetted property(ies)
     addOutput(result);
 }
 
-void QReduceActionPrivate::setCollection(const QInputPin *collection)
+void QReduceActionPrivate::setCollection(QInputPin *collection)
 {
     // Adjust subsetted property(ies)
     removeInput(this->collection);
 
-    this->collection = const_cast<QInputPin *>(collection);
+    this->collection = collection;
 
     // Adjust subsetted property(ies)
     addInput(collection);
 }
 
-void QReduceActionPrivate::setReducer(const QBehavior *reducer)
+void QReduceActionPrivate::setReducer(QBehavior *reducer)
 {
-    this->reducer = const_cast<QBehavior *>(reducer);
+    this->reducer = reducer;
 }
 
 /*!
@@ -131,7 +131,9 @@ bool QReduceAction::isOrdered() const
 void QReduceAction::setOrdered(bool isOrdered)
 {
     QTUML_D(QReduceAction);
-    d->setOrdered(isOrdered);
+    if (d->isOrdered != isOrdered) {
+        d->setOrdered(isOrdered);
+    }
 }
 
 /*!
@@ -143,10 +145,12 @@ QOutputPin *QReduceAction::result() const
     return d->result;
 }
 
-void QReduceAction::setResult(const QOutputPin *result)
+void QReduceAction::setResult(QOutputPin *result)
 {
     QTUML_D(QReduceAction);
-    d->setResult(const_cast<QOutputPin *>(result));
+    if (d->result != result) {
+        d->setResult(result);
+    }
 }
 
 /*!
@@ -158,10 +162,12 @@ QInputPin *QReduceAction::collection() const
     return d->collection;
 }
 
-void QReduceAction::setCollection(const QInputPin *collection)
+void QReduceAction::setCollection(QInputPin *collection)
 {
     QTUML_D(QReduceAction);
-    d->setCollection(const_cast<QInputPin *>(collection));
+    if (d->collection != collection) {
+        d->setCollection(collection);
+    }
 }
 
 /*!
@@ -173,10 +179,12 @@ QBehavior *QReduceAction::reducer() const
     return d->reducer;
 }
 
-void QReduceAction::setReducer(const QBehavior *reducer)
+void QReduceAction::setReducer(QBehavior *reducer)
 {
     QTUML_D(QReduceAction);
-    d->setReducer(const_cast<QBehavior *>(reducer));
+    if (d->reducer != reducer) {
+        d->setReducer(reducer);
+    }
 }
 
 #include "moc_qreduceaction.cpp"

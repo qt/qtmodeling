@@ -65,8 +65,8 @@ public:
     QExpansionRegion *regionAsInput;
 
     // Internal functions for association-ends
-    void setRegionAsOutput(const QExpansionRegion *regionAsOutput);
-    void setRegionAsInput(const QExpansionRegion *regionAsInput);
+    void setRegionAsOutput(QExpansionRegion *regionAsOutput);
+    void setRegionAsInput(QExpansionRegion *regionAsInput);
 };
 
 QT_END_NAMESPACE_QTUML

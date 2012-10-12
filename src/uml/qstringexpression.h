@@ -84,10 +84,10 @@ public:
 
     // Association-ends
     QStringExpression *owningExpression() const;
-    void setOwningExpression(const QStringExpression *owningExpression);
+    void setOwningExpression(QStringExpression *owningExpression);
     const QSet<QStringExpression *> *subExpressions() const;
-    void addSubExpression(const QStringExpression *subExpression);
-    void removeSubExpression(const QStringExpression *subExpression);
+    void addSubExpression(QStringExpression *subExpression);
+    void removeSubExpression(QStringExpression *subExpression);
 
     // Operations
     QString stringValue() const;

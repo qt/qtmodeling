@@ -76,17 +76,17 @@ public:
     QList<QProperty *> *ownedAttributes;
 
     // Internal functions for association-ends
-    void setProtocol(const QProtocolStateMachine *protocol);
-    void addRedefinedInterface(const QInterface *redefinedInterface);
-    void removeRedefinedInterface(const QInterface *redefinedInterface);
-    void addOwnedReception(const QReception *ownedReception);
-    void removeOwnedReception(const QReception *ownedReception);
-    void addOwnedOperation(const QOperation *ownedOperation);
-    void removeOwnedOperation(const QOperation *ownedOperation);
-    void addNestedClassifier(const QClassifier *nestedClassifier);
-    void removeNestedClassifier(const QClassifier *nestedClassifier);
-    void addOwnedAttribute(const QProperty *ownedAttribute);
-    void removeOwnedAttribute(const QProperty *ownedAttribute);
+    void setProtocol(QProtocolStateMachine *protocol);
+    void addRedefinedInterface(QInterface *redefinedInterface);
+    void removeRedefinedInterface(QInterface *redefinedInterface);
+    void addOwnedReception(QReception *ownedReception);
+    void removeOwnedReception(QReception *ownedReception);
+    void addOwnedOperation(QOperation *ownedOperation);
+    void removeOwnedOperation(QOperation *ownedOperation);
+    void addNestedClassifier(QClassifier *nestedClassifier);
+    void removeNestedClassifier(QClassifier *nestedClassifier);
+    void addOwnedAttribute(QProperty *ownedAttribute);
+    void removeOwnedAttribute(QProperty *ownedAttribute);
 };
 
 QT_END_NAMESPACE_QTUML

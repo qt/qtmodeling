@@ -58,9 +58,9 @@ QVertexPrivate::~QVertexPrivate()
 {
 }
 
-void QVertexPrivate::setContainer(const QRegion *container)
+void QVertexPrivate::setContainer(QRegion *container)
 {
-    this->container = const_cast<QRegion *>(container);
+    this->container = container;
 
     // Adjust subsetted property(ies)
     setNamespace_(container);
@@ -99,10 +99,15 @@ QRegion *QVertex::container() const
     return d->container;
 }
 
-void QVertex::setContainer(const QRegion *container)
+void QVertex::setContainer(QRegion *container)
 {
     QTUML_D(QVertex);
-    d->setContainer(const_cast<QRegion *>(container));
+    if (d->container != container) {
+        d->setContainer(container);
+
+        // Adjust opposite property
+        container->addSubvertex(this);
+    }
 }
 
 /*!

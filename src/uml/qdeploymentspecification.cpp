@@ -66,9 +66,9 @@ void QDeploymentSpecificationPrivate::setExecutionLocation(QString executionLoca
     this->executionLocation = executionLocation;
 }
 
-void QDeploymentSpecificationPrivate::setDeployment(const QDeployment *deployment)
+void QDeploymentSpecificationPrivate::setDeployment(QDeployment *deployment)
 {
-    this->deployment = const_cast<QDeployment *>(deployment);
+    this->deployment = deployment;
 
     // Adjust subsetted property(ies)
     setOwner(deployment);
@@ -111,7 +111,9 @@ QString QDeploymentSpecification::deploymentLocation() const
 void QDeploymentSpecification::setDeploymentLocation(QString deploymentLocation)
 {
     QTUML_D(QDeploymentSpecification);
-    d->setDeploymentLocation(deploymentLocation);
+    if (d->deploymentLocation != deploymentLocation) {
+        d->setDeploymentLocation(deploymentLocation);
+    }
 }
 
 /*!
@@ -126,7 +128,9 @@ QString QDeploymentSpecification::executionLocation() const
 void QDeploymentSpecification::setExecutionLocation(QString executionLocation)
 {
     QTUML_D(QDeploymentSpecification);
-    d->setExecutionLocation(executionLocation);
+    if (d->executionLocation != executionLocation) {
+        d->setExecutionLocation(executionLocation);
+    }
 }
 
 /*!
@@ -138,10 +142,15 @@ QDeployment *QDeploymentSpecification::deployment() const
     return d->deployment;
 }
 
-void QDeploymentSpecification::setDeployment(const QDeployment *deployment)
+void QDeploymentSpecification::setDeployment(QDeployment *deployment)
 {
     QTUML_D(QDeploymentSpecification);
-    d->setDeployment(const_cast<QDeployment *>(deployment));
+    if (d->deployment != deployment) {
+        d->setDeployment(deployment);
+
+        // Adjust opposite property
+        deployment->addConfiguration(this);
+    }
 }
 
 #include "moc_qdeploymentspecification.cpp"

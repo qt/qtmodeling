@@ -66,8 +66,8 @@ public:
     QStructuralFeature *structuralFeature;
 
     // Internal functions for association-ends
-    void setObject(const QInputPin *object);
-    void setStructuralFeature(const QStructuralFeature *structuralFeature);
+    void setObject(QInputPin *object);
+    void setStructuralFeature(QStructuralFeature *structuralFeature);
 };
 
 QT_END_NAMESPACE_QTUML

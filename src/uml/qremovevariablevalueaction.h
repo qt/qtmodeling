@@ -121,7 +121,7 @@ public:
 
     // Association-ends
     QInputPin *removeAt() const;
-    void setRemoveAt(const QInputPin *removeAt);
+    void setRemoveAt(QInputPin *removeAt);
 
 protected:
     explicit QRemoveVariableValueAction(bool createPimpl, QObject *parent = 0);

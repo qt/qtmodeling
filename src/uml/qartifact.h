@@ -142,17 +142,17 @@ public:
 
     // Association-ends
     const QList<QOperation *> *ownedOperations() const;
-    void addOwnedOperation(const QOperation *ownedOperation);
-    void removeOwnedOperation(const QOperation *ownedOperation);
+    void addOwnedOperation(QOperation *ownedOperation);
+    void removeOwnedOperation(QOperation *ownedOperation);
     const QList<QProperty *> *ownedAttributes() const;
-    void addOwnedAttribute(const QProperty *ownedAttribute);
-    void removeOwnedAttribute(const QProperty *ownedAttribute);
+    void addOwnedAttribute(QProperty *ownedAttribute);
+    void removeOwnedAttribute(QProperty *ownedAttribute);
     const QSet<QManifestation *> *manifestations() const;
-    void addManifestation(const QManifestation *manifestation);
-    void removeManifestation(const QManifestation *manifestation);
+    void addManifestation(QManifestation *manifestation);
+    void removeManifestation(QManifestation *manifestation);
     const QSet<QArtifact *> *nestedArtifacts() const;
-    void addNestedArtifact(const QArtifact *nestedArtifact);
-    void removeNestedArtifact(const QArtifact *nestedArtifact);
+    void addNestedArtifact(QArtifact *nestedArtifact);
+    void removeNestedArtifact(QArtifact *nestedArtifact);
 
 protected:
     explicit QArtifact(bool createPimpl, QObject *parent = 0);

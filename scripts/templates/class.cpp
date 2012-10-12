@@ -34,6 +34,20 @@
     [%- END -%]
     [%- END -%]
 [%- END -%]
+[%- MACRO HANDLEOPPOSITEEND(property, accessor, operation) BLOCK -%]
+[%- opposite = classes.item(property.oppositeEnd.split('-').0.replace('^', 'Q')).associationend.item(property.oppositeEnd) -%]
+[%- IF property.oppositeEnd != '' and (opposite.isDerived == 'false' or opposite.isDerivedUnion == 'true') %]
+
+        // Adjust opposite property
+    [%- IF operation == 1 %]
+        ${accessor.parameter.0.name}->${opposite.accessor.1.name}(this);
+    [%- ELSE -%][%- IF operation == 2 and opposite.accessor.size > 2 %]
+        ${accessor.parameter.0.name}->${opposite.accessor.2.name}(this);
+    [%- ELSE %]
+        ${accessor.parameter.0.name}->${opposite.accessor.1.name}(0);
+    [%- END -%][%- END -%]
+[%- END -%]
+[%- END -%]
 /****************************************************************************
 **
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
@@ -179,8 +193,8 @@ ${class.name}Private::~${class.name}Private()
 {
 [% FOREACH attribute IN class.attribute.values -%]
 [%- IF attribute.aggregation == 'composite' and attribute.accessor.0.return.search('<') and attribute.subsettedProperty == '' -%]
-    foreach (${attribute.accessor.1.parameter.0.type.remove('^const ')}${attribute.accessor.1.parameter.0.type.remove('^const Q').remove('\*').trim.lower}, *${attribute.accessor.0.name})
-        delete ${attribute.accessor.1.parameter.0.type.remove('^const Q').remove('\*').trim.lower};
+    foreach (${attribute.accessor.1.parameter.0.type.remove('^const ')}${attribute.accessor.1.parameter.0.type.remove('^Q').remove('\*').trim.lower}, *${attribute.accessor.0.name})
+        delete ${attribute.accessor.1.parameter.0.type.remove('^Q').remove('\*').trim.lower};
 
 [%- END -%]
 [%- IF ((attribute.isDerived == 'false' or attribute.isDerivedUnion == 'true') and attribute.accessor.0.return.search('<')) or (attribute.accessor.0.return.search('\*$') and attribute.aggregation == 'composite' and attribute.subsettedProperty == '') -%]
@@ -190,8 +204,8 @@ ${class.name}Private::~${class.name}Private()
 [%- END -%]
 [%- FOREACH associationend IN class.associationend.values -%]
 [%- IF associationend.aggregation == 'composite' and associationend.accessor.0.return.search('<') and associationend.subsettedProperty == '' -%]
-    foreach (${associationend.accessor.1.parameter.0.type.remove('^const ')}${associationend.accessor.1.parameter.0.type.remove('^const Q').remove('\*').trim.lower}, *${associationend.accessor.0.name})
-        delete ${associationend.accessor.1.parameter.0.type.remove('^const Q').remove('\*').trim.lower};
+    foreach (${associationend.accessor.1.parameter.0.type.remove('^const ')}${associationend.accessor.1.parameter.0.type.remove('^Q').remove('\*').trim.lower}, *${associationend.accessor.0.name})
+        delete ${associationend.accessor.1.parameter.0.type.remove('^Q').remove('\*').trim.lower};
 
 [%- END -%]
 [%- IF ((associationend.isDerived == 'false' or associationend.isDerivedUnion == 'true') and associationend.accessor.0.return.search('<')) or (associationend.accessor.0.return.search('\*$') and associationend.aggregation == 'composite' and associationend.subsettedProperty == '') -%]
@@ -209,15 +223,15 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
 {
     [%- IF accessor.name.search('^set') %]
     [%- HANDLESUBSETTEDPROPERTY(attribute, 2, 'true') %]
-    this->${accessor.parameter.0.name} = [% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %];
+    this->${accessor.parameter.0.name} = ${accessor.parameter.0.name};
     [%- HANDLESUBSETTEDPROPERTY(attribute, 1, 'true') -%]
     [%- END -%]
     [%- IF accessor.name.search('^add') %]
-    this->${attribute.accessor.0.name}->[% IF attribute.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
+    this->${attribute.accessor.0.name}->[% IF attribute.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %](${accessor.parameter.0.name});
     [%- HANDLESUBSETTEDPROPERTY(attribute, 1, 'false') -%]
     [%- END -%]
     [%- IF accessor.name.search('^remove') %]
-    this->${attribute.accessor.0.name}->[% IF attribute.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
+    this->${attribute.accessor.0.name}->[% IF attribute.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %](${accessor.parameter.0.name});
     [%- HANDLESUBSETTEDPROPERTY(attribute, 2, 'false') -%]
     [%- END %]
 }
@@ -233,15 +247,15 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
 {
     [%- IF accessor.name.search('^set') %]
     [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'true') %]
-    this->${accessor.parameter.0.name} = [% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %];
+    this->${accessor.parameter.0.name} = ${accessor.parameter.0.name};
     [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'true') -%]
     [%- END -%]
     [%- IF accessor.name.search('^add') %]
-    this->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
+    this->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %](${accessor.parameter.0.name});
     [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'false') -%]
     [%- END -%]
     [%- IF accessor.name.search('^remove') %]
-    this->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %]([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
+    this->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %](${accessor.parameter.0.name});
     [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'false') -%]
     [%- END %]
 }
@@ -302,8 +316,14 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
     return d->${accessor.name};
     [%- ELSE %]
     QTUML_D(${class.name});
-    d->${accessor.name}([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
+    [%- IF attribute.accessor.0.return.search('<') %]
+    if ([% IF loop.count == 2 %]![% END %]d->${attribute.accessor.0.name}->contains(${accessor.parameter.0.name})) {
+    [%- ELSE %]
+    if (d->${attribute.accessor.0.name} != ${accessor.parameter.0.name}) {
     [%- END %]
+        d->${accessor.name}(${accessor.parameter.0.name});
+    }
+    [%- END -%]
 [%- ELSE %]
     qWarning("${class.name}::${accessor.name}: to be implemented (this is a derived attribute)");
 [%- END %]
@@ -327,11 +347,22 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
     return d->${accessor.name};
     [%- ELSE %]
     QTUML_D(${class.name});
-    d->${accessor.name}([% IF accessor.parameter.0.type.search('^const ') %]const_cast<${accessor.parameter.0.type.remove('^const ')}>([% END %]${accessor.parameter.0.name}[% IF accessor.parameter.0.type.search('^const ') %])[% END %]);
+    [%- IF associationend.accessor.0.return.search('<') %]
+    if ([% IF loop.count == 2 %]![% END %]d->${associationend.accessor.0.name}->contains(${accessor.parameter.0.name})) {
+    [%- ELSE %]
+    if (d->${associationend.accessor.0.name} != ${accessor.parameter.0.name}) {
+    [%- END %]
+        d->${accessor.name}(${accessor.parameter.0.name});
     [%- END %]
 [%- ELSE %]
     qWarning("${class.name}::${accessor.name}: to be implemented (this is a derived associationend)");
 [%- END %]
+    [%- IF loop.count != 1 -%]
+    [%- HANDLEOPPOSITEEND(associationend, accessor, loop.count - 1) -%]
+    [%- END %]
+    [%- IF (associationend.isDerived == 'false' or associationend.isDerivedUnion == 'true') and !loop.first %]
+    }
+    [%- END %]
 }
 [% LAST IF associationend.isReadOnly == 'true' -%]
 [% END -%]

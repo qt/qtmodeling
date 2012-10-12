@@ -120,11 +120,11 @@ public:
 
     // Association-ends
     const QSet<QTrigger *> *triggers() const;
-    void addTrigger(const QTrigger *trigger);
-    void removeTrigger(const QTrigger *trigger);
+    void addTrigger(QTrigger *trigger);
+    void removeTrigger(QTrigger *trigger);
     const QSet<QOutputPin *> *results() const;
-    void addResult(const QOutputPin *result);
-    void removeResult(const QOutputPin *result);
+    void addResult(QOutputPin *result);
+    void removeResult(QOutputPin *result);
 
 protected:
     explicit QAcceptEventAction(bool createPimpl, QObject *parent = 0);

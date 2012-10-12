@@ -69,8 +69,8 @@ public:
     // Association-ends
     const QSet<QPackageableElement *> *deployedElements() const;
     const QSet<QDeployment *> *deployments() const;
-    void addDeployment(const QDeployment *deployment);
-    void removeDeployment(const QDeployment *deployment);
+    void addDeployment(QDeployment *deployment);
+    void removeDeployment(QDeployment *deployment);
 
 protected:
     explicit QDeploymentTarget();

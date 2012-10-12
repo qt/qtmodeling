@@ -73,8 +73,8 @@ public:
 
     // Association-ends
     const QSet<QProtocolConformance *> *conformance() const;
-    void addConformance(const QProtocolConformance *conformance);
-    void removeConformance(const QProtocolConformance *conformance);
+    void addConformance(QProtocolConformance *conformance);
+    void removeConformance(QProtocolConformance *conformance);
 
 protected:
     explicit QProtocolStateMachine(bool createPimpl, QObject *parent = 0);

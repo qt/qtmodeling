@@ -60,33 +60,33 @@ QDirectedRelationshipPrivate::~QDirectedRelationshipPrivate()
     delete targets;
 }
 
-void QDirectedRelationshipPrivate::addSource(const QElement *source)
+void QDirectedRelationshipPrivate::addSource(QElement *source)
 {
-    this->sources->insert(const_cast<QElement *>(source));
+    this->sources->insert(source);
 
     // Adjust subsetted property(ies)
     addRelatedElement(source);
 }
 
-void QDirectedRelationshipPrivate::removeSource(const QElement *source)
+void QDirectedRelationshipPrivate::removeSource(QElement *source)
 {
-    this->sources->remove(const_cast<QElement *>(source));
+    this->sources->remove(source);
 
     // Adjust subsetted property(ies)
     removeRelatedElement(source);
 }
 
-void QDirectedRelationshipPrivate::addTarget(const QElement *target)
+void QDirectedRelationshipPrivate::addTarget(QElement *target)
 {
-    this->targets->insert(const_cast<QElement *>(target));
+    this->targets->insert(target);
 
     // Adjust subsetted property(ies)
     addRelatedElement(target);
 }
 
-void QDirectedRelationshipPrivate::removeTarget(const QElement *target)
+void QDirectedRelationshipPrivate::removeTarget(QElement *target)
 {
-    this->targets->remove(const_cast<QElement *>(target));
+    this->targets->remove(target);
 
     // Adjust subsetted property(ies)
     removeRelatedElement(target);

@@ -71,10 +71,10 @@ public:
     QClassifier *unmarshallType;
 
     // Internal functions for association-ends
-    void setObject(const QInputPin *object);
-    void addResult(const QOutputPin *result);
-    void removeResult(const QOutputPin *result);
-    void setUnmarshallType(const QClassifier *unmarshallType);
+    void setObject(QInputPin *object);
+    void addResult(QOutputPin *result);
+    void removeResult(QOutputPin *result);
+    void setUnmarshallType(QClassifier *unmarshallType);
 };
 
 QT_END_NAMESPACE_QTUML

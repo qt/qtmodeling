@@ -68,9 +68,9 @@ void QDurationConstraintPrivate::removeFirstEvent(bool firstEvent)
     this->firstEvents->remove(firstEvent);
 }
 
-void QDurationConstraintPrivate::setSpecification(const QDurationInterval *specification)
+void QDurationConstraintPrivate::setSpecification(QDurationInterval *specification)
 {
-    this->specification = const_cast<QDurationInterval *>(specification);
+    this->specification = specification;
 }
 
 /*!
@@ -110,13 +110,17 @@ const QSet<bool> *QDurationConstraint::firstEvents() const
 void QDurationConstraint::addFirstEvent(bool firstEvent)
 {
     QTUML_D(QDurationConstraint);
-    d->addFirstEvent(firstEvent);
+    if (!d->firstEvents->contains(firstEvent)) {
+        d->addFirstEvent(firstEvent);
+    }
 }
 
 void QDurationConstraint::removeFirstEvent(bool firstEvent)
 {
     QTUML_D(QDurationConstraint);
-    d->removeFirstEvent(firstEvent);
+    if (d->firstEvents->contains(firstEvent)) {
+        d->removeFirstEvent(firstEvent);
+    }
 }
 
 /*!
@@ -128,10 +132,12 @@ QDurationInterval *QDurationConstraint::specification() const
     return d->specification;
 }
 
-void QDurationConstraint::setSpecification(const QDurationInterval *specification)
+void QDurationConstraint::setSpecification(QDurationInterval *specification)
 {
     QTUML_D(QDurationConstraint);
-    d->setSpecification(const_cast<QDurationInterval *>(specification));
+    if (d->specification != specification) {
+        d->setSpecification(specification);
+    }
 }
 
 #include "moc_qdurationconstraint.cpp"

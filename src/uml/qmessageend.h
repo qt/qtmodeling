@@ -64,7 +64,7 @@ public:
 
     // Association-ends
     QMessage *message() const;
-    void setMessage(const QMessage *message);
+    void setMessage(QMessage *message);
 
 protected:
     explicit QMessageEnd();

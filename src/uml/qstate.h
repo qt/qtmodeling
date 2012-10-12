@@ -133,30 +133,30 @@ public:
 
     // Association-ends
     const QSet<QRegion *> *regions() const;
-    void addRegion(const QRegion *region);
-    void removeRegion(const QRegion *region);
+    void addRegion(QRegion *region);
+    void removeRegion(QRegion *region);
     QBehavior *exit() const;
-    void setExit(const QBehavior *exit);
+    void setExit(QBehavior *exit);
     const QSet<QConnectionPointReference *> *connections() const;
-    void addConnection(const QConnectionPointReference *connection);
-    void removeConnection(const QConnectionPointReference *connection);
+    void addConnection(QConnectionPointReference *connection);
+    void removeConnection(QConnectionPointReference *connection);
     QClassifier *redefinitionContext() const;
     QState *redefinedState() const;
-    void setRedefinedState(const QState *redefinedState);
+    void setRedefinedState(QState *redefinedState);
     const QSet<QTrigger *> *deferrableTriggers() const;
-    void addDeferrableTrigger(const QTrigger *deferrableTrigger);
-    void removeDeferrableTrigger(const QTrigger *deferrableTrigger);
+    void addDeferrableTrigger(QTrigger *deferrableTrigger);
+    void removeDeferrableTrigger(QTrigger *deferrableTrigger);
     const QSet<QPseudostate *> *connectionPoints() const;
-    void addConnectionPoint(const QPseudostate *connectionPoint);
-    void removeConnectionPoint(const QPseudostate *connectionPoint);
+    void addConnectionPoint(QPseudostate *connectionPoint);
+    void removeConnectionPoint(QPseudostate *connectionPoint);
     QBehavior *entry() const;
-    void setEntry(const QBehavior *entry);
+    void setEntry(QBehavior *entry);
     QBehavior *doActivity() const;
-    void setDoActivity(const QBehavior *doActivity);
+    void setDoActivity(QBehavior *doActivity);
     QStateMachine *submachine() const;
-    void setSubmachine(const QStateMachine *submachine);
+    void setSubmachine(QStateMachine *submachine);
     QConstraint *stateInvariant() const;
-    void setStateInvariant(const QConstraint *stateInvariant);
+    void setStateInvariant(QConstraint *stateInvariant);
 
     // Operations
     QStateMachine *containingStateMachine() const;

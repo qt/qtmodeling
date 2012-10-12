@@ -70,8 +70,8 @@ public:
     void setBody(QString body);
 
     // Internal functions for association-ends
-    void addAnnotatedElement(const QElement *annotatedElement);
-    void removeAnnotatedElement(const QElement *annotatedElement);
+    void addAnnotatedElement(QElement *annotatedElement);
+    void removeAnnotatedElement(QElement *annotatedElement);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -64,7 +64,7 @@ public:
     QPackage *package;
 
     // Internal functions for association-ends
-    void setPackage(const QPackage *package);
+    void setPackage(QPackage *package);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -79,10 +79,10 @@ public:
 
     // Association-ends
     QClassifier *parameteredElement() const;
-    void setParameteredElement(const QClassifier *parameteredElement);
+    void setParameteredElement(QClassifier *parameteredElement);
     const QSet<QClassifier *> *constrainingClassifiers() const;
-    void addConstrainingClassifier(const QClassifier *constrainingClassifier);
-    void removeConstrainingClassifier(const QClassifier *constrainingClassifier);
+    void addConstrainingClassifier(QClassifier *constrainingClassifier);
+    void removeConstrainingClassifier(QClassifier *constrainingClassifier);
 
 protected:
     explicit QClassifierTemplateParameter(bool createPimpl, QObject *parent = 0);

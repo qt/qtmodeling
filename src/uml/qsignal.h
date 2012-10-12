@@ -129,8 +129,8 @@ public:
 
     // Association-ends
     const QList<QProperty *> *ownedAttributes() const;
-    void addOwnedAttribute(const QProperty *ownedAttribute);
-    void removeOwnedAttribute(const QProperty *ownedAttribute);
+    void addOwnedAttribute(QProperty *ownedAttribute);
+    void removeOwnedAttribute(QProperty *ownedAttribute);
 
 protected:
     explicit QSignal(bool createPimpl, QObject *parent = 0);

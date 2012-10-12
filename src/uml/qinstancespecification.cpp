@@ -63,38 +63,38 @@ QInstanceSpecificationPrivate::~QInstanceSpecificationPrivate()
     delete slots_;
 }
 
-void QInstanceSpecificationPrivate::addClassifier(const QClassifier *classifier)
+void QInstanceSpecificationPrivate::addClassifier(QClassifier *classifier)
 {
-    this->classifiers->insert(const_cast<QClassifier *>(classifier));
+    this->classifiers->insert(classifier);
 }
 
-void QInstanceSpecificationPrivate::removeClassifier(const QClassifier *classifier)
+void QInstanceSpecificationPrivate::removeClassifier(QClassifier *classifier)
 {
-    this->classifiers->remove(const_cast<QClassifier *>(classifier));
+    this->classifiers->remove(classifier);
 }
 
-void QInstanceSpecificationPrivate::setSpecification(const QValueSpecification *specification)
+void QInstanceSpecificationPrivate::setSpecification(QValueSpecification *specification)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->specification);
 
-    this->specification = const_cast<QValueSpecification *>(specification);
+    this->specification = specification;
 
     // Adjust subsetted property(ies)
     addOwnedElement(specification);
 }
 
-void QInstanceSpecificationPrivate::addSlot_(const QSlot *slot_)
+void QInstanceSpecificationPrivate::addSlot_(QSlot *slot_)
 {
-    this->slots_->insert(const_cast<QSlot *>(slot_));
+    this->slots_->insert(slot_);
 
     // Adjust subsetted property(ies)
     addOwnedElement(slot_);
 }
 
-void QInstanceSpecificationPrivate::removeSlot_(const QSlot *slot_)
+void QInstanceSpecificationPrivate::removeSlot_(QSlot *slot_)
 {
-    this->slots_->remove(const_cast<QSlot *>(slot_));
+    this->slots_->remove(slot_);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(slot_);
@@ -134,16 +134,20 @@ const QSet<QClassifier *> *QInstanceSpecification::classifiers() const
     return d->classifiers;
 }
 
-void QInstanceSpecification::addClassifier(const QClassifier *classifier)
+void QInstanceSpecification::addClassifier(QClassifier *classifier)
 {
     QTUML_D(QInstanceSpecification);
-    d->addClassifier(const_cast<QClassifier *>(classifier));
+    if (!d->classifiers->contains(classifier)) {
+        d->addClassifier(classifier);
+    }
 }
 
-void QInstanceSpecification::removeClassifier(const QClassifier *classifier)
+void QInstanceSpecification::removeClassifier(QClassifier *classifier)
 {
     QTUML_D(QInstanceSpecification);
-    d->removeClassifier(const_cast<QClassifier *>(classifier));
+    if (d->classifiers->contains(classifier)) {
+        d->removeClassifier(classifier);
+    }
 }
 
 /*!
@@ -155,10 +159,12 @@ QValueSpecification *QInstanceSpecification::specification() const
     return d->specification;
 }
 
-void QInstanceSpecification::setSpecification(const QValueSpecification *specification)
+void QInstanceSpecification::setSpecification(QValueSpecification *specification)
 {
     QTUML_D(QInstanceSpecification);
-    d->setSpecification(const_cast<QValueSpecification *>(specification));
+    if (d->specification != specification) {
+        d->setSpecification(specification);
+    }
 }
 
 /*!
@@ -170,16 +176,26 @@ const QSet<QSlot *> *QInstanceSpecification::slots_() const
     return d->slots_;
 }
 
-void QInstanceSpecification::addSlot_(const QSlot *slot_)
+void QInstanceSpecification::addSlot_(QSlot *slot_)
 {
     QTUML_D(QInstanceSpecification);
-    d->addSlot_(const_cast<QSlot *>(slot_));
+    if (!d->slots_->contains(slot_)) {
+        d->addSlot_(slot_);
+
+        // Adjust opposite property
+        slot_->setOwningInstance(this);
+    }
 }
 
-void QInstanceSpecification::removeSlot_(const QSlot *slot_)
+void QInstanceSpecification::removeSlot_(QSlot *slot_)
 {
     QTUML_D(QInstanceSpecification);
-    d->removeSlot_(const_cast<QSlot *>(slot_));
+    if (d->slots_->contains(slot_)) {
+        d->removeSlot_(slot_);
+
+        // Adjust opposite property
+        slot_->setOwningInstance(0);
+    }
 }
 
 #include "moc_qinstancespecification.cpp"

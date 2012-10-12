@@ -65,8 +65,8 @@ public:
     QClassifier *substitutingClassifier;
 
     // Internal functions for association-ends
-    void setContract(const QClassifier *contract);
-    void setSubstitutingClassifier(const QClassifier *substitutingClassifier);
+    void setContract(QClassifier *contract);
+    void setSubstitutingClassifier(QClassifier *substitutingClassifier);
 };
 
 QT_END_NAMESPACE_QTUML

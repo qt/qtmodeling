@@ -62,12 +62,12 @@ void QRemoveStructuralFeatureValueActionPrivate::setRemoveDuplicates(bool isRemo
     this->isRemoveDuplicates = isRemoveDuplicates;
 }
 
-void QRemoveStructuralFeatureValueActionPrivate::setRemoveAt(const QInputPin *removeAt)
+void QRemoveStructuralFeatureValueActionPrivate::setRemoveAt(QInputPin *removeAt)
 {
     // Adjust subsetted property(ies)
     removeInput(this->removeAt);
 
-    this->removeAt = const_cast<QInputPin *>(removeAt);
+    this->removeAt = removeAt;
 
     // Adjust subsetted property(ies)
     addInput(removeAt);
@@ -110,7 +110,9 @@ bool QRemoveStructuralFeatureValueAction::isRemoveDuplicates() const
 void QRemoveStructuralFeatureValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
 {
     QTUML_D(QRemoveStructuralFeatureValueAction);
-    d->setRemoveDuplicates(isRemoveDuplicates);
+    if (d->isRemoveDuplicates != isRemoveDuplicates) {
+        d->setRemoveDuplicates(isRemoveDuplicates);
+    }
 }
 
 /*!
@@ -122,10 +124,12 @@ QInputPin *QRemoveStructuralFeatureValueAction::removeAt() const
     return d->removeAt;
 }
 
-void QRemoveStructuralFeatureValueAction::setRemoveAt(const QInputPin *removeAt)
+void QRemoveStructuralFeatureValueAction::setRemoveAt(QInputPin *removeAt)
 {
     QTUML_D(QRemoveStructuralFeatureValueAction);
-    d->setRemoveAt(const_cast<QInputPin *>(removeAt));
+    if (d->removeAt != removeAt) {
+        d->setRemoveAt(removeAt);
+    }
 }
 
 #include "moc_qremovestructuralfeaturevalueaction.cpp"

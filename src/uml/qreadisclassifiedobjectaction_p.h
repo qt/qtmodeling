@@ -72,9 +72,9 @@ public:
     void setDirect(bool isDirect);
 
     // Internal functions for association-ends
-    void setResult(const QOutputPin *result);
-    void setObject(const QInputPin *object);
-    void setClassifier(const QClassifier *classifier);
+    void setResult(QOutputPin *result);
+    void setObject(QInputPin *object);
+    void setClassifier(QClassifier *classifier);
 };
 
 QT_END_NAMESPACE_QTUML

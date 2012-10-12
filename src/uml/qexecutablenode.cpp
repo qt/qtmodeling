@@ -57,17 +57,17 @@ QExecutableNodePrivate::~QExecutableNodePrivate()
     delete handlers;
 }
 
-void QExecutableNodePrivate::addHandler(const QExceptionHandler *handler)
+void QExecutableNodePrivate::addHandler(QExceptionHandler *handler)
 {
-    this->handlers->insert(const_cast<QExceptionHandler *>(handler));
+    this->handlers->insert(handler);
 
     // Adjust subsetted property(ies)
     addOwnedElement(handler);
 }
 
-void QExecutableNodePrivate::removeHandler(const QExceptionHandler *handler)
+void QExecutableNodePrivate::removeHandler(QExceptionHandler *handler)
 {
-    this->handlers->remove(const_cast<QExceptionHandler *>(handler));
+    this->handlers->remove(handler);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(handler);
@@ -98,16 +98,26 @@ const QSet<QExceptionHandler *> *QExecutableNode::handlers() const
     return d->handlers;
 }
 
-void QExecutableNode::addHandler(const QExceptionHandler *handler)
+void QExecutableNode::addHandler(QExceptionHandler *handler)
 {
     QTUML_D(QExecutableNode);
-    d->addHandler(const_cast<QExceptionHandler *>(handler));
+    if (!d->handlers->contains(handler)) {
+        d->addHandler(handler);
+
+        // Adjust opposite property
+        handler->setProtectedNode(this);
+    }
 }
 
-void QExecutableNode::removeHandler(const QExceptionHandler *handler)
+void QExecutableNode::removeHandler(QExceptionHandler *handler)
 {
     QTUML_D(QExecutableNode);
-    d->removeHandler(const_cast<QExceptionHandler *>(handler));
+    if (d->handlers->contains(handler)) {
+        d->removeHandler(handler);
+
+        // Adjust opposite property
+        handler->setProtectedNode(0);
+    }
 }
 
 QT_END_NAMESPACE_QTUML

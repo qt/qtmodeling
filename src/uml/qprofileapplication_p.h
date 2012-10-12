@@ -70,8 +70,8 @@ public:
     void setStrict(bool isStrict);
 
     // Internal functions for association-ends
-    void setApplyingPackage(const QPackage *applyingPackage);
-    void setAppliedProfile(const QProfile *appliedProfile);
+    void setApplyingPackage(QPackage *applyingPackage);
+    void setAppliedProfile(QProfile *appliedProfile);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -67,53 +67,53 @@ QActivityGroupPrivate::~QActivityGroupPrivate()
     delete containedEdges;
 }
 
-void QActivityGroupPrivate::setInActivity(const QActivity *inActivity)
+void QActivityGroupPrivate::setInActivity(QActivity *inActivity)
 {
-    this->inActivity = const_cast<QActivity *>(inActivity);
+    this->inActivity = inActivity;
 
     // Adjust subsetted property(ies)
     setOwner(inActivity);
 }
 
-void QActivityGroupPrivate::addContainedNode(const QActivityNode *containedNode)
+void QActivityGroupPrivate::addContainedNode(QActivityNode *containedNode)
 {
-    this->containedNodes->insert(const_cast<QActivityNode *>(containedNode));
+    this->containedNodes->insert(containedNode);
 }
 
-void QActivityGroupPrivate::removeContainedNode(const QActivityNode *containedNode)
+void QActivityGroupPrivate::removeContainedNode(QActivityNode *containedNode)
 {
-    this->containedNodes->remove(const_cast<QActivityNode *>(containedNode));
+    this->containedNodes->remove(containedNode);
 }
 
-void QActivityGroupPrivate::addSubgroup(const QActivityGroup *subgroup)
+void QActivityGroupPrivate::addSubgroup(QActivityGroup *subgroup)
 {
-    this->subgroups->insert(const_cast<QActivityGroup *>(subgroup));
+    this->subgroups->insert(subgroup);
 
     // Adjust subsetted property(ies)
     addOwnedElement(subgroup);
 }
 
-void QActivityGroupPrivate::removeSubgroup(const QActivityGroup *subgroup)
+void QActivityGroupPrivate::removeSubgroup(QActivityGroup *subgroup)
 {
-    this->subgroups->remove(const_cast<QActivityGroup *>(subgroup));
+    this->subgroups->remove(subgroup);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(subgroup);
 }
 
-void QActivityGroupPrivate::addContainedEdge(const QActivityEdge *containedEdge)
+void QActivityGroupPrivate::addContainedEdge(QActivityEdge *containedEdge)
 {
-    this->containedEdges->insert(const_cast<QActivityEdge *>(containedEdge));
+    this->containedEdges->insert(containedEdge);
 }
 
-void QActivityGroupPrivate::removeContainedEdge(const QActivityEdge *containedEdge)
+void QActivityGroupPrivate::removeContainedEdge(QActivityEdge *containedEdge)
 {
-    this->containedEdges->remove(const_cast<QActivityEdge *>(containedEdge));
+    this->containedEdges->remove(containedEdge);
 }
 
-void QActivityGroupPrivate::setSuperGroup(const QActivityGroup *superGroup)
+void QActivityGroupPrivate::setSuperGroup(QActivityGroup *superGroup)
 {
-    this->superGroup = const_cast<QActivityGroup *>(superGroup);
+    this->superGroup = superGroup;
 
     // Adjust subsetted property(ies)
     setOwner(superGroup);
@@ -144,10 +144,15 @@ QActivity *QActivityGroup::inActivity() const
     return d->inActivity;
 }
 
-void QActivityGroup::setInActivity(const QActivity *inActivity)
+void QActivityGroup::setInActivity(QActivity *inActivity)
 {
     QTUML_D(QActivityGroup);
-    d->setInActivity(const_cast<QActivity *>(inActivity));
+    if (d->inActivity != inActivity) {
+        d->setInActivity(inActivity);
+
+        // Adjust opposite property
+        inActivity->addGroup(this);
+    }
 }
 
 /*!

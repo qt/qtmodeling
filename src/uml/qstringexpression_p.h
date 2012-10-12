@@ -69,9 +69,9 @@ public:
     QSet<QStringExpression *> *subExpressions;
 
     // Internal functions for association-ends
-    void setOwningExpression(const QStringExpression *owningExpression);
-    void addSubExpression(const QStringExpression *subExpression);
-    void removeSubExpression(const QStringExpression *subExpression);
+    void setOwningExpression(QStringExpression *owningExpression);
+    void addSubExpression(QStringExpression *subExpression);
+    void removeSubExpression(QStringExpression *subExpression);
 };
 
 QT_END_NAMESPACE_QTUML

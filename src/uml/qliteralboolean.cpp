@@ -96,7 +96,9 @@ bool QLiteralBoolean::value() const
 void QLiteralBoolean::setValue(bool value)
 {
     QTUML_D(QLiteralBoolean);
-    d->setValue(value);
+    if (d->value != value) {
+        d->setValue(value);
+    }
 }
 
 /*!

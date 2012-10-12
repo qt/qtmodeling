@@ -71,8 +71,8 @@ public:
     void setMulticast(bool isMulticast);
 
     // Internal functions for association-ends
-    void setSelection(const QBehavior *selection);
-    void setTransformation(const QBehavior *transformation);
+    void setSelection(QBehavior *selection);
+    void setTransformation(QBehavior *transformation);
 };
 
 QT_END_NAMESPACE_QTUML

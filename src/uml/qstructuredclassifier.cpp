@@ -67,25 +67,25 @@ QStructuredClassifierPrivate::~QStructuredClassifierPrivate()
     delete ownedConnectors;
 }
 
-void QStructuredClassifierPrivate::addRole(const QConnectableElement *role)
+void QStructuredClassifierPrivate::addRole(QConnectableElement *role)
 {
-    this->roles->insert(const_cast<QConnectableElement *>(role));
+    this->roles->insert(role);
 
     // Adjust subsetted property(ies)
     addMember(role);
 }
 
-void QStructuredClassifierPrivate::removeRole(const QConnectableElement *role)
+void QStructuredClassifierPrivate::removeRole(QConnectableElement *role)
 {
-    this->roles->remove(const_cast<QConnectableElement *>(role));
+    this->roles->remove(role);
 
     // Adjust subsetted property(ies)
     removeMember(role);
 }
 
-void QStructuredClassifierPrivate::addOwnedAttribute(const QProperty *ownedAttribute)
+void QStructuredClassifierPrivate::addOwnedAttribute(QProperty *ownedAttribute)
 {
-    this->ownedAttributes->append(const_cast<QProperty *>(ownedAttribute));
+    this->ownedAttributes->append(ownedAttribute);
 
     // Adjust subsetted property(ies)
     addAttribute(ownedAttribute);
@@ -93,9 +93,9 @@ void QStructuredClassifierPrivate::addOwnedAttribute(const QProperty *ownedAttri
     addRole(ownedAttribute);
 }
 
-void QStructuredClassifierPrivate::removeOwnedAttribute(const QProperty *ownedAttribute)
+void QStructuredClassifierPrivate::removeOwnedAttribute(QProperty *ownedAttribute)
 {
-    this->ownedAttributes->removeAll(const_cast<QProperty *>(ownedAttribute));
+    this->ownedAttributes->removeAll(ownedAttribute);
 
     // Adjust subsetted property(ies)
     removeAttribute(ownedAttribute);
@@ -103,18 +103,18 @@ void QStructuredClassifierPrivate::removeOwnedAttribute(const QProperty *ownedAt
     removeRole(ownedAttribute);
 }
 
-void QStructuredClassifierPrivate::addOwnedConnector(const QConnector *ownedConnector)
+void QStructuredClassifierPrivate::addOwnedConnector(QConnector *ownedConnector)
 {
-    this->ownedConnectors->insert(const_cast<QConnector *>(ownedConnector));
+    this->ownedConnectors->insert(ownedConnector);
 
     // Adjust subsetted property(ies)
     addFeature(ownedConnector);
     addOwnedMember(ownedConnector);
 }
 
-void QStructuredClassifierPrivate::removeOwnedConnector(const QConnector *ownedConnector)
+void QStructuredClassifierPrivate::removeOwnedConnector(QConnector *ownedConnector)
 {
-    this->ownedConnectors->remove(const_cast<QConnector *>(ownedConnector));
+    this->ownedConnectors->remove(ownedConnector);
 
     // Adjust subsetted property(ies)
     removeFeature(ownedConnector);
@@ -155,16 +155,20 @@ const QList<QProperty *> *QStructuredClassifier::ownedAttributes() const
     return d->ownedAttributes;
 }
 
-void QStructuredClassifier::addOwnedAttribute(const QProperty *ownedAttribute)
+void QStructuredClassifier::addOwnedAttribute(QProperty *ownedAttribute)
 {
     QTUML_D(QStructuredClassifier);
-    d->addOwnedAttribute(const_cast<QProperty *>(ownedAttribute));
+    if (!d->ownedAttributes->contains(ownedAttribute)) {
+        d->addOwnedAttribute(ownedAttribute);
+    }
 }
 
-void QStructuredClassifier::removeOwnedAttribute(const QProperty *ownedAttribute)
+void QStructuredClassifier::removeOwnedAttribute(QProperty *ownedAttribute)
 {
     QTUML_D(QStructuredClassifier);
-    d->removeOwnedAttribute(const_cast<QProperty *>(ownedAttribute));
+    if (d->ownedAttributes->contains(ownedAttribute)) {
+        d->removeOwnedAttribute(ownedAttribute);
+    }
 }
 
 /*!
@@ -184,16 +188,20 @@ const QSet<QConnector *> *QStructuredClassifier::ownedConnectors() const
     return d->ownedConnectors;
 }
 
-void QStructuredClassifier::addOwnedConnector(const QConnector *ownedConnector)
+void QStructuredClassifier::addOwnedConnector(QConnector *ownedConnector)
 {
     QTUML_D(QStructuredClassifier);
-    d->addOwnedConnector(const_cast<QConnector *>(ownedConnector));
+    if (!d->ownedConnectors->contains(ownedConnector)) {
+        d->addOwnedConnector(ownedConnector);
+    }
 }
 
-void QStructuredClassifier::removeOwnedConnector(const QConnector *ownedConnector)
+void QStructuredClassifier::removeOwnedConnector(QConnector *ownedConnector)
 {
     QTUML_D(QStructuredClassifier);
-    d->removeOwnedConnector(const_cast<QConnector *>(ownedConnector));
+    if (d->ownedConnectors->contains(ownedConnector)) {
+        d->removeOwnedConnector(ownedConnector);
+    }
 }
 
 QT_END_NAMESPACE_QTUML

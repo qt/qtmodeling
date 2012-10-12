@@ -70,7 +70,7 @@ public:
 
     // Association-ends
     QAction *fromAction() const;
-    void setFromAction(const QAction *fromAction);
+    void setFromAction(QAction *fromAction);
 
 protected:
     explicit QActionInputPin(bool createPimpl, QObject *parent = 0);

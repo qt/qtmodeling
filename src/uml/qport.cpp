@@ -77,22 +77,22 @@ void QPortPrivate::setService(bool isService)
     this->isService = isService;
 }
 
-void QPortPrivate::setProtocol(const QProtocolStateMachine *protocol)
+void QPortPrivate::setProtocol(QProtocolStateMachine *protocol)
 {
-    this->protocol = const_cast<QProtocolStateMachine *>(protocol);
+    this->protocol = protocol;
 }
 
-void QPortPrivate::addRedefinedPort(const QPort *redefinedPort)
+void QPortPrivate::addRedefinedPort(QPort *redefinedPort)
 {
-    this->redefinedPorts->insert(const_cast<QPort *>(redefinedPort));
+    this->redefinedPorts->insert(redefinedPort);
 
     // Adjust subsetted property(ies)
     addRedefinedProperty(redefinedPort);
 }
 
-void QPortPrivate::removeRedefinedPort(const QPort *redefinedPort)
+void QPortPrivate::removeRedefinedPort(QPort *redefinedPort)
 {
-    this->redefinedPorts->remove(const_cast<QPort *>(redefinedPort));
+    this->redefinedPorts->remove(redefinedPort);
 
     // Adjust subsetted property(ies)
     removeRedefinedProperty(redefinedPort);
@@ -135,7 +135,9 @@ bool QPort::isConjugated() const
 void QPort::setConjugated(bool isConjugated)
 {
     QTUML_D(QPort);
-    d->setConjugated(isConjugated);
+    if (d->isConjugated != isConjugated) {
+        d->setConjugated(isConjugated);
+    }
 }
 
 /*!
@@ -150,7 +152,9 @@ bool QPort::isBehavior() const
 void QPort::setBehavior(bool isBehavior)
 {
     QTUML_D(QPort);
-    d->setBehavior(isBehavior);
+    if (d->isBehavior != isBehavior) {
+        d->setBehavior(isBehavior);
+    }
 }
 
 /*!
@@ -165,7 +169,9 @@ bool QPort::isService() const
 void QPort::setService(bool isService)
 {
     QTUML_D(QPort);
-    d->setService(isService);
+    if (d->isService != isService) {
+        d->setService(isService);
+    }
 }
 
 /*!
@@ -177,10 +183,12 @@ QProtocolStateMachine *QPort::protocol() const
     return d->protocol;
 }
 
-void QPort::setProtocol(const QProtocolStateMachine *protocol)
+void QPort::setProtocol(QProtocolStateMachine *protocol)
 {
     QTUML_D(QPort);
-    d->setProtocol(const_cast<QProtocolStateMachine *>(protocol));
+    if (d->protocol != protocol) {
+        d->setProtocol(protocol);
+    }
 }
 
 /*!
@@ -208,16 +216,20 @@ const QSet<QPort *> *QPort::redefinedPorts() const
     return d->redefinedPorts;
 }
 
-void QPort::addRedefinedPort(const QPort *redefinedPort)
+void QPort::addRedefinedPort(QPort *redefinedPort)
 {
     QTUML_D(QPort);
-    d->addRedefinedPort(const_cast<QPort *>(redefinedPort));
+    if (!d->redefinedPorts->contains(redefinedPort)) {
+        d->addRedefinedPort(redefinedPort);
+    }
 }
 
-void QPort::removeRedefinedPort(const QPort *redefinedPort)
+void QPort::removeRedefinedPort(QPort *redefinedPort)
 {
     QTUML_D(QPort);
-    d->removeRedefinedPort(const_cast<QPort *>(redefinedPort));
+    if (d->redefinedPorts->contains(redefinedPort)) {
+        d->removeRedefinedPort(redefinedPort);
+    }
 }
 
 #include "moc_qport.cpp"

@@ -97,10 +97,10 @@ public:
 
     // Association-ends
     QValueSpecification *expr() const;
-    void setExpr(const QValueSpecification *expr);
+    void setExpr(QValueSpecification *expr);
     const QSet<QObservation *> *observations() const;
-    void addObservation(const QObservation *observation);
-    void removeObservation(const QObservation *observation);
+    void addObservation(QObservation *observation);
+    void removeObservation(QObservation *observation);
 
 protected:
     explicit QDuration(bool createPimpl, QObject *parent = 0);

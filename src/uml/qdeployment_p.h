@@ -71,11 +71,11 @@ public:
     QSet<QDeployedArtifact *> *deployedArtifacts;
 
     // Internal functions for association-ends
-    void setLocation(const QDeploymentTarget *location);
-    void addConfiguration(const QDeploymentSpecification *configuration);
-    void removeConfiguration(const QDeploymentSpecification *configuration);
-    void addDeployedArtifact(const QDeployedArtifact *deployedArtifact);
-    void removeDeployedArtifact(const QDeployedArtifact *deployedArtifact);
+    void setLocation(QDeploymentTarget *location);
+    void addConfiguration(QDeploymentSpecification *configuration);
+    void removeConfiguration(QDeploymentSpecification *configuration);
+    void addDeployedArtifact(QDeployedArtifact *deployedArtifact);
+    void removeDeployedArtifact(QDeployedArtifact *deployedArtifact);
 };
 
 QT_END_NAMESPACE_QTUML

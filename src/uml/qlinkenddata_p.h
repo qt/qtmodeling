@@ -71,10 +71,10 @@ public:
     QSet<QQualifierValue *> *qualifiers;
 
     // Internal functions for association-ends
-    void setValue(const QInputPin *value);
-    void setEnd(const QProperty *end);
-    void addQualifier(const QQualifierValue *qualifier);
-    void removeQualifier(const QQualifierValue *qualifier);
+    void setValue(QInputPin *value);
+    void setEnd(QProperty *end);
+    void addQualifier(QQualifierValue *qualifier);
+    void removeQualifier(QQualifierValue *qualifier);
 };
 
 QT_END_NAMESPACE_QTUML

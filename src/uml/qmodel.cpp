@@ -95,7 +95,9 @@ QString QModel::viewpoint() const
 void QModel::setViewpoint(QString viewpoint)
 {
     QTUML_D(QModel);
-    d->setViewpoint(viewpoint);
+    if (d->viewpoint != viewpoint) {
+        d->setViewpoint(viewpoint);
+    }
 }
 
 #include "moc_qmodel.cpp"

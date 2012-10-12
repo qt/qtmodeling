@@ -64,7 +64,7 @@ public:
     QPackageableElement *utilizedElement;
 
     // Internal functions for association-ends
-    void setUtilizedElement(const QPackageableElement *utilizedElement);
+    void setUtilizedElement(QPackageableElement *utilizedElement);
 };
 
 QT_END_NAMESPACE_QTUML

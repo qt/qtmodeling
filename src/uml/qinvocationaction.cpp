@@ -59,25 +59,25 @@ QInvocationActionPrivate::~QInvocationActionPrivate()
     delete arguments;
 }
 
-void QInvocationActionPrivate::addArgument(const QInputPin *argument)
+void QInvocationActionPrivate::addArgument(QInputPin *argument)
 {
-    this->arguments->append(const_cast<QInputPin *>(argument));
+    this->arguments->append(argument);
 
     // Adjust subsetted property(ies)
     addInput(argument);
 }
 
-void QInvocationActionPrivate::removeArgument(const QInputPin *argument)
+void QInvocationActionPrivate::removeArgument(QInputPin *argument)
 {
-    this->arguments->removeAll(const_cast<QInputPin *>(argument));
+    this->arguments->removeAll(argument);
 
     // Adjust subsetted property(ies)
     removeInput(argument);
 }
 
-void QInvocationActionPrivate::setOnPort(const QPort *onPort)
+void QInvocationActionPrivate::setOnPort(QPort *onPort)
 {
-    this->onPort = const_cast<QPort *>(onPort);
+    this->onPort = onPort;
 }
 
 /*!
@@ -105,16 +105,20 @@ const QList<QInputPin *> *QInvocationAction::arguments() const
     return d->arguments;
 }
 
-void QInvocationAction::addArgument(const QInputPin *argument)
+void QInvocationAction::addArgument(QInputPin *argument)
 {
     QTUML_D(QInvocationAction);
-    d->addArgument(const_cast<QInputPin *>(argument));
+    if (!d->arguments->contains(argument)) {
+        d->addArgument(argument);
+    }
 }
 
-void QInvocationAction::removeArgument(const QInputPin *argument)
+void QInvocationAction::removeArgument(QInputPin *argument)
 {
     QTUML_D(QInvocationAction);
-    d->removeArgument(const_cast<QInputPin *>(argument));
+    if (d->arguments->contains(argument)) {
+        d->removeArgument(argument);
+    }
 }
 
 /*!
@@ -126,10 +130,12 @@ QPort *QInvocationAction::onPort() const
     return d->onPort;
 }
 
-void QInvocationAction::setOnPort(const QPort *onPort)
+void QInvocationAction::setOnPort(QPort *onPort)
 {
     QTUML_D(QInvocationAction);
-    d->setOnPort(const_cast<QPort *>(onPort));
+    if (d->onPort != onPort) {
+        d->setOnPort(onPort);
+    }
 }
 
 QT_END_NAMESPACE_QTUML

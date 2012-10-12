@@ -160,21 +160,21 @@ public:
 
     // Association-ends
     const QList<QClassifier *> *nestedClassifiers() const;
-    void addNestedClassifier(const QClassifier *nestedClassifier);
-    void removeNestedClassifier(const QClassifier *nestedClassifier);
+    void addNestedClassifier(QClassifier *nestedClassifier);
+    void removeNestedClassifier(QClassifier *nestedClassifier);
     const QSet<QReception *> *ownedReceptions() const;
-    void addOwnedReception(const QReception *ownedReception);
-    void removeOwnedReception(const QReception *ownedReception);
+    void addOwnedReception(QReception *ownedReception);
+    void removeOwnedReception(QReception *ownedReception);
     const QSet<QExtension *> *extensions() const;
     const QList<QOperation *> *ownedOperations() const;
-    void addOwnedOperation(const QOperation *ownedOperation);
-    void removeOwnedOperation(const QOperation *ownedOperation);
+    void addOwnedOperation(QOperation *ownedOperation);
+    void removeOwnedOperation(QOperation *ownedOperation);
     const QList<QProperty *> *ownedAttributes() const;
-    void addOwnedAttribute(const QProperty *ownedAttribute);
-    void removeOwnedAttribute(const QProperty *ownedAttribute);
+    void addOwnedAttribute(QProperty *ownedAttribute);
+    void removeOwnedAttribute(QProperty *ownedAttribute);
     const QSet<QClass *> *superClasses() const;
-    void addSuperClass(const QClass *superClass);
-    void removeSuperClass(const QClass *superClass);
+    void addSuperClass(QClass *superClass);
+    void removeSuperClass(QClass *superClass);
 
     // Operations
     const QSet<QNamedElement *> *inherit(const QSet<QNamedElement *> *inhs) const;

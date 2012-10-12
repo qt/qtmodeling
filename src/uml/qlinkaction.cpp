@@ -62,33 +62,33 @@ QLinkActionPrivate::~QLinkActionPrivate()
     delete endData;
 }
 
-void QLinkActionPrivate::addInputValue(const QInputPin *inputValue)
+void QLinkActionPrivate::addInputValue(QInputPin *inputValue)
 {
-    this->inputValues->insert(const_cast<QInputPin *>(inputValue));
+    this->inputValues->insert(inputValue);
 
     // Adjust subsetted property(ies)
     addInput(inputValue);
 }
 
-void QLinkActionPrivate::removeInputValue(const QInputPin *inputValue)
+void QLinkActionPrivate::removeInputValue(QInputPin *inputValue)
 {
-    this->inputValues->remove(const_cast<QInputPin *>(inputValue));
+    this->inputValues->remove(inputValue);
 
     // Adjust subsetted property(ies)
     removeInput(inputValue);
 }
 
-void QLinkActionPrivate::addEndData(const QLinkEndData *endData)
+void QLinkActionPrivate::addEndData(QLinkEndData *endData)
 {
-    this->endData->insert(const_cast<QLinkEndData *>(endData));
+    this->endData->insert(endData);
 
     // Adjust subsetted property(ies)
     addOwnedElement(endData);
 }
 
-void QLinkActionPrivate::removeEndData(const QLinkEndData *endData)
+void QLinkActionPrivate::removeEndData(QLinkEndData *endData)
 {
-    this->endData->remove(const_cast<QLinkEndData *>(endData));
+    this->endData->remove(endData);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(endData);
@@ -119,16 +119,20 @@ const QSet<QInputPin *> *QLinkAction::inputValues() const
     return d->inputValues;
 }
 
-void QLinkAction::addInputValue(const QInputPin *inputValue)
+void QLinkAction::addInputValue(QInputPin *inputValue)
 {
     QTUML_D(QLinkAction);
-    d->addInputValue(const_cast<QInputPin *>(inputValue));
+    if (!d->inputValues->contains(inputValue)) {
+        d->addInputValue(inputValue);
+    }
 }
 
-void QLinkAction::removeInputValue(const QInputPin *inputValue)
+void QLinkAction::removeInputValue(QInputPin *inputValue)
 {
     QTUML_D(QLinkAction);
-    d->removeInputValue(const_cast<QInputPin *>(inputValue));
+    if (d->inputValues->contains(inputValue)) {
+        d->removeInputValue(inputValue);
+    }
 }
 
 /*!
@@ -140,16 +144,20 @@ const QSet<QLinkEndData *> *QLinkAction::endData() const
     return d->endData;
 }
 
-void QLinkAction::addEndData(const QLinkEndData *endData)
+void QLinkAction::addEndData(QLinkEndData *endData)
 {
     QTUML_D(QLinkAction);
-    d->addEndData(const_cast<QLinkEndData *>(endData));
+    if (!d->endData->contains(endData)) {
+        d->addEndData(endData);
+    }
 }
 
-void QLinkAction::removeEndData(const QLinkEndData *endData)
+void QLinkAction::removeEndData(QLinkEndData *endData)
 {
     QTUML_D(QLinkAction);
-    d->removeEndData(const_cast<QLinkEndData *>(endData));
+    if (d->endData->contains(endData)) {
+        d->removeEndData(endData);
+    }
 }
 
 /*!

@@ -61,33 +61,33 @@ QProfilePrivate::~QProfilePrivate()
     delete metaclassReferences;
 }
 
-void QProfilePrivate::addMetamodelReference(const QPackageImport *metamodelReference)
+void QProfilePrivate::addMetamodelReference(QPackageImport *metamodelReference)
 {
-    this->metamodelReferences->insert(const_cast<QPackageImport *>(metamodelReference));
+    this->metamodelReferences->insert(metamodelReference);
 
     // Adjust subsetted property(ies)
     addPackageImport(metamodelReference);
 }
 
-void QProfilePrivate::removeMetamodelReference(const QPackageImport *metamodelReference)
+void QProfilePrivate::removeMetamodelReference(QPackageImport *metamodelReference)
 {
-    this->metamodelReferences->remove(const_cast<QPackageImport *>(metamodelReference));
+    this->metamodelReferences->remove(metamodelReference);
 
     // Adjust subsetted property(ies)
     removePackageImport(metamodelReference);
 }
 
-void QProfilePrivate::addMetaclassReference(const QElementImport *metaclassReference)
+void QProfilePrivate::addMetaclassReference(QElementImport *metaclassReference)
 {
-    this->metaclassReferences->insert(const_cast<QElementImport *>(metaclassReference));
+    this->metaclassReferences->insert(metaclassReference);
 
     // Adjust subsetted property(ies)
     addElementImport(metaclassReference);
 }
 
-void QProfilePrivate::removeMetaclassReference(const QElementImport *metaclassReference)
+void QProfilePrivate::removeMetaclassReference(QElementImport *metaclassReference)
 {
-    this->metaclassReferences->remove(const_cast<QElementImport *>(metaclassReference));
+    this->metaclassReferences->remove(metaclassReference);
 
     // Adjust subsetted property(ies)
     removeElementImport(metaclassReference);
@@ -127,16 +127,20 @@ const QSet<QPackageImport *> *QProfile::metamodelReferences() const
     return d->metamodelReferences;
 }
 
-void QProfile::addMetamodelReference(const QPackageImport *metamodelReference)
+void QProfile::addMetamodelReference(QPackageImport *metamodelReference)
 {
     QTUML_D(QProfile);
-    d->addMetamodelReference(const_cast<QPackageImport *>(metamodelReference));
+    if (!d->metamodelReferences->contains(metamodelReference)) {
+        d->addMetamodelReference(metamodelReference);
+    }
 }
 
-void QProfile::removeMetamodelReference(const QPackageImport *metamodelReference)
+void QProfile::removeMetamodelReference(QPackageImport *metamodelReference)
 {
     QTUML_D(QProfile);
-    d->removeMetamodelReference(const_cast<QPackageImport *>(metamodelReference));
+    if (d->metamodelReferences->contains(metamodelReference)) {
+        d->removeMetamodelReference(metamodelReference);
+    }
 }
 
 /*!
@@ -148,16 +152,20 @@ const QSet<QElementImport *> *QProfile::metaclassReferences() const
     return d->metaclassReferences;
 }
 
-void QProfile::addMetaclassReference(const QElementImport *metaclassReference)
+void QProfile::addMetaclassReference(QElementImport *metaclassReference)
 {
     QTUML_D(QProfile);
-    d->addMetaclassReference(const_cast<QElementImport *>(metaclassReference));
+    if (!d->metaclassReferences->contains(metaclassReference)) {
+        d->addMetaclassReference(metaclassReference);
+    }
 }
 
-void QProfile::removeMetaclassReference(const QElementImport *metaclassReference)
+void QProfile::removeMetaclassReference(QElementImport *metaclassReference)
 {
     QTUML_D(QProfile);
-    d->removeMetaclassReference(const_cast<QElementImport *>(metaclassReference));
+    if (d->metaclassReferences->contains(metaclassReference)) {
+        d->removeMetaclassReference(metaclassReference);
+    }
 }
 
 #include "moc_qprofile.cpp"

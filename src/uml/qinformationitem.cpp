@@ -55,14 +55,14 @@ QInformationItemPrivate::~QInformationItemPrivate()
     delete represented;
 }
 
-void QInformationItemPrivate::addRepresented(const QClassifier *represented)
+void QInformationItemPrivate::addRepresented(QClassifier *represented)
 {
-    this->represented->insert(const_cast<QClassifier *>(represented));
+    this->represented->insert(represented);
 }
 
-void QInformationItemPrivate::removeRepresented(const QClassifier *represented)
+void QInformationItemPrivate::removeRepresented(QClassifier *represented)
 {
-    this->represented->remove(const_cast<QClassifier *>(represented));
+    this->represented->remove(represented);
 }
 
 /*!
@@ -99,16 +99,20 @@ const QSet<QClassifier *> *QInformationItem::represented() const
     return d->represented;
 }
 
-void QInformationItem::addRepresented(const QClassifier *represented)
+void QInformationItem::addRepresented(QClassifier *represented)
 {
     QTUML_D(QInformationItem);
-    d->addRepresented(const_cast<QClassifier *>(represented));
+    if (!d->represented->contains(represented)) {
+        d->addRepresented(represented);
+    }
 }
 
-void QInformationItem::removeRepresented(const QClassifier *represented)
+void QInformationItem::removeRepresented(QClassifier *represented)
 {
     QTUML_D(QInformationItem);
-    d->removeRepresented(const_cast<QClassifier *>(represented));
+    if (d->represented->contains(represented)) {
+        d->removeRepresented(represented);
+    }
 }
 
 #include "moc_qinformationitem.cpp"

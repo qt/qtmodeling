@@ -55,9 +55,9 @@ QBroadcastSignalActionPrivate::~QBroadcastSignalActionPrivate()
 {
 }
 
-void QBroadcastSignalActionPrivate::setSignal(const QSignal *signal)
+void QBroadcastSignalActionPrivate::setSignal(QSignal *signal)
 {
-    this->signal = const_cast<QSignal *>(signal);
+    this->signal = signal;
 }
 
 /*!
@@ -94,10 +94,12 @@ QSignal *QBroadcastSignalAction::signal() const
     return d->signal;
 }
 
-void QBroadcastSignalAction::setSignal(const QSignal *signal)
+void QBroadcastSignalAction::setSignal(QSignal *signal)
 {
     QTUML_D(QBroadcastSignalAction);
-    d->setSignal(const_cast<QSignal *>(signal));
+    if (d->signal != signal) {
+        d->setSignal(signal);
+    }
 }
 
 #include "moc_qbroadcastsignalaction.cpp"

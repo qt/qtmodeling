@@ -65,8 +65,8 @@ public:
     QTemplateParameter *templateParameter;
 
     // Internal functions for association-ends
-    void setOwningTemplateParameter(const QTemplateParameter *owningTemplateParameter);
-    void setTemplateParameter(const QTemplateParameter *templateParameter);
+    void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
+    void setTemplateParameter(QTemplateParameter *templateParameter);
 };
 
 QT_END_NAMESPACE_QTUML

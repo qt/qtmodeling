@@ -96,10 +96,10 @@ public:
     // Association-ends
     const QSet<QTemplateParameter *> *inheritedParameters() const;
     QClassifier *classifier() const;
-    void setClassifier(const QClassifier *classifier);
+    void setClassifier(QClassifier *classifier);
     const QSet<QRedefinableTemplateSignature *> *extendedSignatures() const;
-    void addExtendedSignature(const QRedefinableTemplateSignature *extendedSignature);
-    void removeExtendedSignature(const QRedefinableTemplateSignature *extendedSignature);
+    void addExtendedSignature(QRedefinableTemplateSignature *extendedSignature);
+    void removeExtendedSignature(QRedefinableTemplateSignature *extendedSignature);
 
     // Operations
     bool isConsistentWith(const QRedefinableElement *redefinee) const;

@@ -59,23 +59,23 @@ QValueSpecificationActionPrivate::~QValueSpecificationActionPrivate()
 {
 }
 
-void QValueSpecificationActionPrivate::setValue(const QValueSpecification *value)
+void QValueSpecificationActionPrivate::setValue(QValueSpecification *value)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->value);
 
-    this->value = const_cast<QValueSpecification *>(value);
+    this->value = value;
 
     // Adjust subsetted property(ies)
     addOwnedElement(value);
 }
 
-void QValueSpecificationActionPrivate::setResult(const QOutputPin *result)
+void QValueSpecificationActionPrivate::setResult(QOutputPin *result)
 {
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
-    this->result = const_cast<QOutputPin *>(result);
+    this->result = result;
 
     // Adjust subsetted property(ies)
     addOutput(result);
@@ -115,10 +115,12 @@ QValueSpecification *QValueSpecificationAction::value() const
     return d->value;
 }
 
-void QValueSpecificationAction::setValue(const QValueSpecification *value)
+void QValueSpecificationAction::setValue(QValueSpecification *value)
 {
     QTUML_D(QValueSpecificationAction);
-    d->setValue(const_cast<QValueSpecification *>(value));
+    if (d->value != value) {
+        d->setValue(value);
+    }
 }
 
 /*!
@@ -130,10 +132,12 @@ QOutputPin *QValueSpecificationAction::result() const
     return d->result;
 }
 
-void QValueSpecificationAction::setResult(const QOutputPin *result)
+void QValueSpecificationAction::setResult(QOutputPin *result)
 {
     QTUML_D(QValueSpecificationAction);
-    d->setResult(const_cast<QOutputPin *>(result));
+    if (d->result != result) {
+        d->setResult(result);
+    }
 }
 
 #include "moc_qvaluespecificationaction.cpp"

@@ -56,12 +56,12 @@ QReadVariableActionPrivate::~QReadVariableActionPrivate()
 {
 }
 
-void QReadVariableActionPrivate::setResult(const QOutputPin *result)
+void QReadVariableActionPrivate::setResult(QOutputPin *result)
 {
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
-    this->result = const_cast<QOutputPin *>(result);
+    this->result = result;
 
     // Adjust subsetted property(ies)
     addOutput(result);
@@ -101,10 +101,12 @@ QOutputPin *QReadVariableAction::result() const
     return d->result;
 }
 
-void QReadVariableAction::setResult(const QOutputPin *result)
+void QReadVariableAction::setResult(QOutputPin *result)
 {
     QTUML_D(QReadVariableAction);
-    d->setResult(const_cast<QOutputPin *>(result));
+    if (d->result != result) {
+        d->setResult(result);
+    }
 }
 
 #include "moc_qreadvariableaction.cpp"

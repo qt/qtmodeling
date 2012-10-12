@@ -61,31 +61,31 @@ QReadLinkObjectEndQualifierActionPrivate::~QReadLinkObjectEndQualifierActionPriv
 {
 }
 
-void QReadLinkObjectEndQualifierActionPrivate::setResult(const QOutputPin *result)
+void QReadLinkObjectEndQualifierActionPrivate::setResult(QOutputPin *result)
 {
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
-    this->result = const_cast<QOutputPin *>(result);
+    this->result = result;
 
     // Adjust subsetted property(ies)
     addOutput(result);
 }
 
-void QReadLinkObjectEndQualifierActionPrivate::setObject(const QInputPin *object)
+void QReadLinkObjectEndQualifierActionPrivate::setObject(QInputPin *object)
 {
     // Adjust subsetted property(ies)
     removeInput(this->object);
 
-    this->object = const_cast<QInputPin *>(object);
+    this->object = object;
 
     // Adjust subsetted property(ies)
     addInput(object);
 }
 
-void QReadLinkObjectEndQualifierActionPrivate::setQualifier(const QProperty *qualifier)
+void QReadLinkObjectEndQualifierActionPrivate::setQualifier(QProperty *qualifier)
 {
-    this->qualifier = const_cast<QProperty *>(qualifier);
+    this->qualifier = qualifier;
 }
 
 /*!
@@ -122,10 +122,12 @@ QOutputPin *QReadLinkObjectEndQualifierAction::result() const
     return d->result;
 }
 
-void QReadLinkObjectEndQualifierAction::setResult(const QOutputPin *result)
+void QReadLinkObjectEndQualifierAction::setResult(QOutputPin *result)
 {
     QTUML_D(QReadLinkObjectEndQualifierAction);
-    d->setResult(const_cast<QOutputPin *>(result));
+    if (d->result != result) {
+        d->setResult(result);
+    }
 }
 
 /*!
@@ -137,10 +139,12 @@ QInputPin *QReadLinkObjectEndQualifierAction::object() const
     return d->object;
 }
 
-void QReadLinkObjectEndQualifierAction::setObject(const QInputPin *object)
+void QReadLinkObjectEndQualifierAction::setObject(QInputPin *object)
 {
     QTUML_D(QReadLinkObjectEndQualifierAction);
-    d->setObject(const_cast<QInputPin *>(object));
+    if (d->object != object) {
+        d->setObject(object);
+    }
 }
 
 /*!
@@ -152,10 +156,12 @@ QProperty *QReadLinkObjectEndQualifierAction::qualifier() const
     return d->qualifier;
 }
 
-void QReadLinkObjectEndQualifierAction::setQualifier(const QProperty *qualifier)
+void QReadLinkObjectEndQualifierAction::setQualifier(QProperty *qualifier)
 {
     QTUML_D(QReadLinkObjectEndQualifierAction);
-    d->setQualifier(const_cast<QProperty *>(qualifier));
+    if (d->qualifier != qualifier) {
+        d->setQualifier(qualifier);
+    }
 }
 
 #include "moc_qreadlinkobjectendqualifieraction.cpp"

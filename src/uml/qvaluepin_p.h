@@ -64,7 +64,7 @@ public:
     QValueSpecification *value;
 
     // Internal functions for association-ends
-    void setValue(const QValueSpecification *value);
+    void setValue(QValueSpecification *value);
 };
 
 QT_END_NAMESPACE_QTUML

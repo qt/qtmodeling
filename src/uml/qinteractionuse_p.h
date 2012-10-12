@@ -75,13 +75,13 @@ public:
     QProperty *returnValueRecipient;
 
     // Internal functions for association-ends
-    void addActualGate(const QGate *actualGate);
-    void removeActualGate(const QGate *actualGate);
-    void setReturnValue(const QValueSpecification *returnValue);
-    void setRefersTo(const QInteraction *refersTo);
-    void addArgument(const QValueSpecification *argument);
-    void removeArgument(const QValueSpecification *argument);
-    void setReturnValueRecipient(const QProperty *returnValueRecipient);
+    void addActualGate(QGate *actualGate);
+    void removeActualGate(QGate *actualGate);
+    void setReturnValue(QValueSpecification *returnValue);
+    void setRefersTo(QInteraction *refersTo);
+    void addArgument(QValueSpecification *argument);
+    void removeArgument(QValueSpecification *argument);
+    void setReturnValueRecipient(QProperty *returnValueRecipient);
 };
 
 QT_END_NAMESPACE_QTUML

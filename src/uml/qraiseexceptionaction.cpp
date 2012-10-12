@@ -56,12 +56,12 @@ QRaiseExceptionActionPrivate::~QRaiseExceptionActionPrivate()
 {
 }
 
-void QRaiseExceptionActionPrivate::setException(const QInputPin *exception)
+void QRaiseExceptionActionPrivate::setException(QInputPin *exception)
 {
     // Adjust subsetted property(ies)
     removeInput(this->exception);
 
-    this->exception = const_cast<QInputPin *>(exception);
+    this->exception = exception;
 
     // Adjust subsetted property(ies)
     addInput(exception);
@@ -101,10 +101,12 @@ QInputPin *QRaiseExceptionAction::exception() const
     return d->exception;
 }
 
-void QRaiseExceptionAction::setException(const QInputPin *exception)
+void QRaiseExceptionAction::setException(QInputPin *exception)
 {
     QTUML_D(QRaiseExceptionAction);
-    d->setException(const_cast<QInputPin *>(exception));
+    if (d->exception != exception) {
+        d->setException(exception);
+    }
 }
 
 #include "moc_qraiseexceptionaction.cpp"

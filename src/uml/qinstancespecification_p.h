@@ -75,11 +75,11 @@ public:
     QSet<QSlot *> *slots_;
 
     // Internal functions for association-ends
-    void addClassifier(const QClassifier *classifier);
-    void removeClassifier(const QClassifier *classifier);
-    void setSpecification(const QValueSpecification *specification);
-    void addSlot_(const QSlot *slot_);
-    void removeSlot_(const QSlot *slot_);
+    void addClassifier(QClassifier *classifier);
+    void removeClassifier(QClassifier *classifier);
+    void setSpecification(QValueSpecification *specification);
+    void addSlot_(QSlot *slot_);
+    void removeSlot_(QSlot *slot_);
 };
 
 QT_END_NAMESPACE_QTUML

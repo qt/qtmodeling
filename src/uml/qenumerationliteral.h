@@ -72,7 +72,7 @@ public:
     // Association-ends
     QEnumeration *classifier() const;
     QEnumeration *enumeration() const;
-    void setEnumeration(const QEnumeration *enumeration);
+    void setEnumeration(QEnumeration *enumeration);
 
 protected:
     explicit QEnumerationLiteral(bool createPimpl, QObject *parent = 0);

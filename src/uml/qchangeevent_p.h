@@ -64,7 +64,7 @@ public:
     QValueSpecification *changeExpression;
 
     // Internal functions for association-ends
-    void setChangeExpression(const QValueSpecification *changeExpression);
+    void setChangeExpression(QValueSpecification *changeExpression);
 };
 
 QT_END_NAMESPACE_QTUML

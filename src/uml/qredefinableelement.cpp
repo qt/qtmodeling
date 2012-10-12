@@ -64,24 +64,24 @@ void QRedefinableElementPrivate::setLeaf(bool isLeaf)
     this->isLeaf = isLeaf;
 }
 
-void QRedefinableElementPrivate::addRedefinedElement(const QRedefinableElement *redefinedElement)
+void QRedefinableElementPrivate::addRedefinedElement(QRedefinableElement *redefinedElement)
 {
-    this->redefinedElements->insert(const_cast<QRedefinableElement *>(redefinedElement));
+    this->redefinedElements->insert(redefinedElement);
 }
 
-void QRedefinableElementPrivate::removeRedefinedElement(const QRedefinableElement *redefinedElement)
+void QRedefinableElementPrivate::removeRedefinedElement(QRedefinableElement *redefinedElement)
 {
-    this->redefinedElements->remove(const_cast<QRedefinableElement *>(redefinedElement));
+    this->redefinedElements->remove(redefinedElement);
 }
 
-void QRedefinableElementPrivate::addRedefinitionContext(const QClassifier *redefinitionContext)
+void QRedefinableElementPrivate::addRedefinitionContext(QClassifier *redefinitionContext)
 {
-    this->redefinitionContexts->insert(const_cast<QClassifier *>(redefinitionContext));
+    this->redefinitionContexts->insert(redefinitionContext);
 }
 
-void QRedefinableElementPrivate::removeRedefinitionContext(const QClassifier *redefinitionContext)
+void QRedefinableElementPrivate::removeRedefinitionContext(QClassifier *redefinitionContext)
 {
-    this->redefinitionContexts->remove(const_cast<QClassifier *>(redefinitionContext));
+    this->redefinitionContexts->remove(redefinitionContext);
 }
 
 /*!
@@ -112,7 +112,9 @@ bool QRedefinableElement::isLeaf() const
 void QRedefinableElement::setLeaf(bool isLeaf)
 {
     QTUML_D(QRedefinableElement);
-    d->setLeaf(isLeaf);
+    if (d->isLeaf != isLeaf) {
+        d->setLeaf(isLeaf);
+    }
 }
 
 /*!

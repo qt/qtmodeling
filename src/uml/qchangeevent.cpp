@@ -56,12 +56,12 @@ QChangeEventPrivate::~QChangeEventPrivate()
 {
 }
 
-void QChangeEventPrivate::setChangeExpression(const QValueSpecification *changeExpression)
+void QChangeEventPrivate::setChangeExpression(QValueSpecification *changeExpression)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->changeExpression);
 
-    this->changeExpression = const_cast<QValueSpecification *>(changeExpression);
+    this->changeExpression = changeExpression;
 
     // Adjust subsetted property(ies)
     addOwnedElement(changeExpression);
@@ -101,10 +101,12 @@ QValueSpecification *QChangeEvent::changeExpression() const
     return d->changeExpression;
 }
 
-void QChangeEvent::setChangeExpression(const QValueSpecification *changeExpression)
+void QChangeEvent::setChangeExpression(QValueSpecification *changeExpression)
 {
     QTUML_D(QChangeEvent);
-    d->setChangeExpression(const_cast<QValueSpecification *>(changeExpression));
+    if (d->changeExpression != changeExpression) {
+        d->setChangeExpression(changeExpression);
+    }
 }
 
 #include "moc_qchangeevent.cpp"

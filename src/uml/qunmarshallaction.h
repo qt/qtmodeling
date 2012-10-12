@@ -117,12 +117,12 @@ public:
 
     // Association-ends
     QInputPin *object() const;
-    void setObject(const QInputPin *object);
+    void setObject(QInputPin *object);
     const QSet<QOutputPin *> *results() const;
-    void addResult(const QOutputPin *result);
-    void removeResult(const QOutputPin *result);
+    void addResult(QOutputPin *result);
+    void removeResult(QOutputPin *result);
     QClassifier *unmarshallType() const;
-    void setUnmarshallType(const QClassifier *unmarshallType);
+    void setUnmarshallType(QClassifier *unmarshallType);
 
 protected:
     explicit QUnmarshallAction(bool createPimpl, QObject *parent = 0);

@@ -101,23 +101,23 @@ public:
 
     // Association-ends
     const QSet<QActivityPartition *> *partitions() const;
-    void addPartition(const QActivityPartition *partition);
-    void removePartition(const QActivityPartition *partition);
+    void addPartition(QActivityPartition *partition);
+    void removePartition(QActivityPartition *partition);
     const QSet<QActivityNode *> *nodes() const;
-    void addNode(const QActivityNode *node);
-    void removeNode(const QActivityNode *node);
+    void addNode(QActivityNode *node);
+    void removeNode(QActivityNode *node);
     const QSet<QVariable *> *variables() const;
-    void addVariable(const QVariable *variable);
-    void removeVariable(const QVariable *variable);
+    void addVariable(QVariable *variable);
+    void removeVariable(QVariable *variable);
     const QSet<QStructuredActivityNode *> *structuredNodes() const;
-    void addStructuredNode(const QStructuredActivityNode *structuredNode);
-    void removeStructuredNode(const QStructuredActivityNode *structuredNode);
+    void addStructuredNode(QStructuredActivityNode *structuredNode);
+    void removeStructuredNode(QStructuredActivityNode *structuredNode);
     const QSet<QActivityGroup *> *groups() const;
-    void addGroup(const QActivityGroup *group);
-    void removeGroup(const QActivityGroup *group);
+    void addGroup(QActivityGroup *group);
+    void removeGroup(QActivityGroup *group);
     const QSet<QActivityEdge *> *edges() const;
-    void addEdge(const QActivityEdge *edge);
-    void removeEdge(const QActivityEdge *edge);
+    void addEdge(QActivityEdge *edge);
+    void removeEdge(QActivityEdge *edge);
 
 protected:
     explicit QActivity(bool createPimpl, QObject *parent = 0);

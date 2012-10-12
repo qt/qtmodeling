@@ -101,8 +101,8 @@ public:
 
     // Association-ends
     const QList<QValueSpecification *> *operands() const;
-    void addOperand(const QValueSpecification *operand);
-    void removeOperand(const QValueSpecification *operand);
+    void addOperand(QValueSpecification *operand);
+    void removeOperand(QValueSpecification *operand);
 
 protected:
     explicit QExpression(bool createPimpl, QObject *parent = 0);

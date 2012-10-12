@@ -72,9 +72,9 @@ public:
     void setAllowSubstitutable(bool allowSubstitutable);
 
     // Internal functions for association-ends
-    void setParameteredElement(const QClassifier *parameteredElement);
-    void addConstrainingClassifier(const QClassifier *constrainingClassifier);
-    void removeConstrainingClassifier(const QClassifier *constrainingClassifier);
+    void setParameteredElement(QClassifier *parameteredElement);
+    void addConstrainingClassifier(QClassifier *constrainingClassifier);
+    void removeConstrainingClassifier(QClassifier *constrainingClassifier);
 };
 
 QT_END_NAMESPACE_QTUML

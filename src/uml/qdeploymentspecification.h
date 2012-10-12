@@ -81,7 +81,7 @@ public:
 
     // Association-ends
     QDeployment *deployment() const;
-    void setDeployment(const QDeployment *deployment);
+    void setDeployment(QDeployment *deployment);
 
 protected:
     explicit QDeploymentSpecification(bool createPimpl, QObject *parent = 0);

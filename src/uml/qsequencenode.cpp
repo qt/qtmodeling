@@ -58,14 +58,14 @@ QSequenceNodePrivate::~QSequenceNodePrivate()
     delete executableNodes;
 }
 
-void QSequenceNodePrivate::addExecutableNode(const QExecutableNode *executableNode)
+void QSequenceNodePrivate::addExecutableNode(QExecutableNode *executableNode)
 {
-    this->executableNodes->append(const_cast<QExecutableNode *>(executableNode));
+    this->executableNodes->append(executableNode);
 }
 
-void QSequenceNodePrivate::removeExecutableNode(const QExecutableNode *executableNode)
+void QSequenceNodePrivate::removeExecutableNode(QExecutableNode *executableNode)
 {
-    this->executableNodes->removeAll(const_cast<QExecutableNode *>(executableNode));
+    this->executableNodes->removeAll(executableNode);
 }
 
 /*!
@@ -102,16 +102,20 @@ const QList<QExecutableNode *> *QSequenceNode::executableNodes() const
     return d->executableNodes;
 }
 
-void QSequenceNode::addExecutableNode(const QExecutableNode *executableNode)
+void QSequenceNode::addExecutableNode(QExecutableNode *executableNode)
 {
     QTUML_D(QSequenceNode);
-    d->addExecutableNode(const_cast<QExecutableNode *>(executableNode));
+    if (!d->executableNodes->contains(executableNode)) {
+        d->addExecutableNode(executableNode);
+    }
 }
 
-void QSequenceNode::removeExecutableNode(const QExecutableNode *executableNode)
+void QSequenceNode::removeExecutableNode(QExecutableNode *executableNode)
 {
     QTUML_D(QSequenceNode);
-    d->removeExecutableNode(const_cast<QExecutableNode *>(executableNode));
+    if (d->executableNodes->contains(executableNode)) {
+        d->removeExecutableNode(executableNode);
+    }
 }
 
 #include "moc_qsequencenode.cpp"

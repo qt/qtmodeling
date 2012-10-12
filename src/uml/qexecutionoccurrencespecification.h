@@ -70,7 +70,7 @@ public:
 
     // Association-ends
     QExecutionSpecification *execution() const;
-    void setExecution(const QExecutionSpecification *execution);
+    void setExecution(QExecutionSpecification *execution);
 
 protected:
     explicit QExecutionOccurrenceSpecification(bool createPimpl, QObject *parent = 0);

@@ -110,9 +110,9 @@ public:
 
     // Association-ends
     QBehavior *selection() const;
-    void setSelection(const QBehavior *selection);
+    void setSelection(QBehavior *selection);
     QBehavior *transformation() const;
-    void setTransformation(const QBehavior *transformation);
+    void setTransformation(QBehavior *transformation);
 
 protected:
     explicit QObjectFlow(bool createPimpl, QObject *parent = 0);

@@ -64,7 +64,7 @@ public:
     QVariable *variable;
 
     // Internal functions for association-ends
-    void setVariable(const QVariable *variable);
+    void setVariable(QVariable *variable);
 };
 
 QT_END_NAMESPACE_QTUML

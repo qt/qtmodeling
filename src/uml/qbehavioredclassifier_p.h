@@ -70,11 +70,11 @@ public:
     QBehavior *classifierBehavior;
 
     // Internal functions for association-ends
-    void addOwnedBehavior(const QBehavior *ownedBehavior);
-    void removeOwnedBehavior(const QBehavior *ownedBehavior);
-    void addInterfaceRealization(const QInterfaceRealization *interfaceRealization);
-    void removeInterfaceRealization(const QInterfaceRealization *interfaceRealization);
-    void setClassifierBehavior(const QBehavior *classifierBehavior);
+    void addOwnedBehavior(QBehavior *ownedBehavior);
+    void removeOwnedBehavior(QBehavior *ownedBehavior);
+    void addInterfaceRealization(QInterfaceRealization *interfaceRealization);
+    void removeInterfaceRealization(QInterfaceRealization *interfaceRealization);
+    void setClassifierBehavior(QBehavior *classifierBehavior);
 };
 
 QT_END_NAMESPACE_QTUML

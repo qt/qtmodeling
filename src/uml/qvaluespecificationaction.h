@@ -112,9 +112,9 @@ public:
 
     // Association-ends
     QValueSpecification *value() const;
-    void setValue(const QValueSpecification *value);
+    void setValue(QValueSpecification *value);
     QOutputPin *result() const;
-    void setResult(const QOutputPin *result);
+    void setResult(QOutputPin *result);
 
 protected:
     explicit QValueSpecificationAction(bool createPimpl, QObject *parent = 0);

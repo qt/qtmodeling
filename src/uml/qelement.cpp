@@ -61,32 +61,32 @@ QElementPrivate::~QElementPrivate()
     delete ownedComments;
 }
 
-void QElementPrivate::addOwnedElement(const QElement *ownedElement)
+void QElementPrivate::addOwnedElement(QElement *ownedElement)
 {
-    this->ownedElements->insert(const_cast<QElement *>(ownedElement));
+    this->ownedElements->insert(ownedElement);
 }
 
-void QElementPrivate::removeOwnedElement(const QElement *ownedElement)
+void QElementPrivate::removeOwnedElement(QElement *ownedElement)
 {
-    this->ownedElements->remove(const_cast<QElement *>(ownedElement));
+    this->ownedElements->remove(ownedElement);
 }
 
-void QElementPrivate::setOwner(const QElement *owner)
+void QElementPrivate::setOwner(QElement *owner)
 {
-    this->owner = const_cast<QElement *>(owner);
+    this->owner = owner;
 }
 
-void QElementPrivate::addOwnedComment(const QComment *ownedComment)
+void QElementPrivate::addOwnedComment(QComment *ownedComment)
 {
-    this->ownedComments->insert(const_cast<QComment *>(ownedComment));
+    this->ownedComments->insert(ownedComment);
 
     // Adjust subsetted property(ies)
     addOwnedElement(ownedComment);
 }
 
-void QElementPrivate::removeOwnedComment(const QComment *ownedComment)
+void QElementPrivate::removeOwnedComment(QComment *ownedComment)
 {
-    this->ownedComments->remove(const_cast<QComment *>(ownedComment));
+    this->ownedComments->remove(ownedComment);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(ownedComment);
@@ -136,16 +136,20 @@ const QSet<QComment *> *QElement::ownedComments() const
     return d->ownedComments;
 }
 
-void QElement::addOwnedComment(const QComment *ownedComment)
+void QElement::addOwnedComment(QComment *ownedComment)
 {
     QTUML_D(QElement);
-    d->addOwnedComment(const_cast<QComment *>(ownedComment));
+    if (!d->ownedComments->contains(ownedComment)) {
+        d->addOwnedComment(ownedComment);
+    }
 }
 
-void QElement::removeOwnedComment(const QComment *ownedComment)
+void QElement::removeOwnedComment(QComment *ownedComment)
 {
     QTUML_D(QElement);
-    d->removeOwnedComment(const_cast<QComment *>(ownedComment));
+    if (d->ownedComments->contains(ownedComment)) {
+        d->removeOwnedComment(ownedComment);
+    }
 }
 
 /*!

@@ -85,9 +85,9 @@ public:
 
     // Association-ends
     QOccurrenceSpecification *before() const;
-    void setBefore(const QOccurrenceSpecification *before);
+    void setBefore(QOccurrenceSpecification *before);
     QOccurrenceSpecification *after() const;
-    void setAfter(const QOccurrenceSpecification *after);
+    void setAfter(QOccurrenceSpecification *after);
 
 protected:
     explicit QGeneralOrdering(bool createPimpl, QObject *parent = 0);

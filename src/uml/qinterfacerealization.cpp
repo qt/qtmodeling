@@ -60,24 +60,24 @@ QInterfaceRealizationPrivate::~QInterfaceRealizationPrivate()
 {
 }
 
-void QInterfaceRealizationPrivate::setImplementingClassifier(const QBehavioredClassifier *implementingClassifier)
+void QInterfaceRealizationPrivate::setImplementingClassifier(QBehavioredClassifier *implementingClassifier)
 {
     // Adjust subsetted property(ies)
     removeClient(this->implementingClassifier);
 
-    this->implementingClassifier = const_cast<QBehavioredClassifier *>(implementingClassifier);
+    this->implementingClassifier = implementingClassifier;
 
     // Adjust subsetted property(ies)
     setOwner(implementingClassifier);
     addClient(implementingClassifier);
 }
 
-void QInterfaceRealizationPrivate::setContract(const QInterface *contract)
+void QInterfaceRealizationPrivate::setContract(QInterface *contract)
 {
     // Adjust subsetted property(ies)
     removeSupplier(this->contract);
 
-    this->contract = const_cast<QInterface *>(contract);
+    this->contract = contract;
 
     // Adjust subsetted property(ies)
     addSupplier(contract);
@@ -117,10 +117,15 @@ QBehavioredClassifier *QInterfaceRealization::implementingClassifier() const
     return d->implementingClassifier;
 }
 
-void QInterfaceRealization::setImplementingClassifier(const QBehavioredClassifier *implementingClassifier)
+void QInterfaceRealization::setImplementingClassifier(QBehavioredClassifier *implementingClassifier)
 {
     QTUML_D(QInterfaceRealization);
-    d->setImplementingClassifier(const_cast<QBehavioredClassifier *>(implementingClassifier));
+    if (d->implementingClassifier != implementingClassifier) {
+        d->setImplementingClassifier(implementingClassifier);
+
+        // Adjust opposite property
+        implementingClassifier->addInterfaceRealization(this);
+    }
 }
 
 /*!
@@ -132,10 +137,12 @@ QInterface *QInterfaceRealization::contract() const
     return d->contract;
 }
 
-void QInterfaceRealization::setContract(const QInterface *contract)
+void QInterfaceRealization::setContract(QInterface *contract)
 {
     QTUML_D(QInterfaceRealization);
-    d->setContract(const_cast<QInterface *>(contract));
+    if (d->contract != contract) {
+        d->setContract(contract);
+    }
 }
 
 #include "moc_qinterfacerealization.cpp"

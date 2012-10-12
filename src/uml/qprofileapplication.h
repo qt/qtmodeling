@@ -90,9 +90,9 @@ public:
 
     // Association-ends
     QPackage *applyingPackage() const;
-    void setApplyingPackage(const QPackage *applyingPackage);
+    void setApplyingPackage(QPackage *applyingPackage);
     QProfile *appliedProfile() const;
-    void setAppliedProfile(const QProfile *appliedProfile);
+    void setAppliedProfile(QProfile *appliedProfile);
 
 protected:
     explicit QProfileApplication(bool createPimpl, QObject *parent = 0);

@@ -69,33 +69,33 @@ void QComponentPrivate::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
     this->isIndirectlyInstantiated = isIndirectlyInstantiated;
 }
 
-void QComponentPrivate::addRealization(const QComponentRealization *realization)
+void QComponentPrivate::addRealization(QComponentRealization *realization)
 {
-    this->realizations->insert(const_cast<QComponentRealization *>(realization));
+    this->realizations->insert(realization);
 
     // Adjust subsetted property(ies)
     addOwnedElement(realization);
 }
 
-void QComponentPrivate::removeRealization(const QComponentRealization *realization)
+void QComponentPrivate::removeRealization(QComponentRealization *realization)
 {
-    this->realizations->remove(const_cast<QComponentRealization *>(realization));
+    this->realizations->remove(realization);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(realization);
 }
 
-void QComponentPrivate::addPackagedElement(const QPackageableElement *packagedElement)
+void QComponentPrivate::addPackagedElement(QPackageableElement *packagedElement)
 {
-    this->packagedElements->insert(const_cast<QPackageableElement *>(packagedElement));
+    this->packagedElements->insert(packagedElement);
 
     // Adjust subsetted property(ies)
     addOwnedMember(packagedElement);
 }
 
-void QComponentPrivate::removePackagedElement(const QPackageableElement *packagedElement)
+void QComponentPrivate::removePackagedElement(QPackageableElement *packagedElement)
 {
-    this->packagedElements->remove(const_cast<QPackageableElement *>(packagedElement));
+    this->packagedElements->remove(packagedElement);
 
     // Adjust subsetted property(ies)
     removeOwnedMember(packagedElement);
@@ -138,7 +138,9 @@ bool QComponent::isIndirectlyInstantiated() const
 void QComponent::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
 {
     QTUML_D(QComponent);
-    d->setIndirectlyInstantiated(isIndirectlyInstantiated);
+    if (d->isIndirectlyInstantiated != isIndirectlyInstantiated) {
+        d->setIndirectlyInstantiated(isIndirectlyInstantiated);
+    }
 }
 
 /*!
@@ -150,16 +152,26 @@ const QSet<QComponentRealization *> *QComponent::realizations() const
     return d->realizations;
 }
 
-void QComponent::addRealization(const QComponentRealization *realization)
+void QComponent::addRealization(QComponentRealization *realization)
 {
     QTUML_D(QComponent);
-    d->addRealization(const_cast<QComponentRealization *>(realization));
+    if (!d->realizations->contains(realization)) {
+        d->addRealization(realization);
+
+        // Adjust opposite property
+        realization->setAbstraction(this);
+    }
 }
 
-void QComponent::removeRealization(const QComponentRealization *realization)
+void QComponent::removeRealization(QComponentRealization *realization)
 {
     QTUML_D(QComponent);
-    d->removeRealization(const_cast<QComponentRealization *>(realization));
+    if (d->realizations->contains(realization)) {
+        d->removeRealization(realization);
+
+        // Adjust opposite property
+        realization->setAbstraction(0);
+    }
 }
 
 /*!
@@ -187,16 +199,20 @@ const QSet<QPackageableElement *> *QComponent::packagedElements() const
     return d->packagedElements;
 }
 
-void QComponent::addPackagedElement(const QPackageableElement *packagedElement)
+void QComponent::addPackagedElement(QPackageableElement *packagedElement)
 {
     QTUML_D(QComponent);
-    d->addPackagedElement(const_cast<QPackageableElement *>(packagedElement));
+    if (!d->packagedElements->contains(packagedElement)) {
+        d->addPackagedElement(packagedElement);
+    }
 }
 
-void QComponent::removePackagedElement(const QPackageableElement *packagedElement)
+void QComponent::removePackagedElement(QPackageableElement *packagedElement)
 {
     QTUML_D(QComponent);
-    d->removePackagedElement(const_cast<QPackageableElement *>(packagedElement));
+    if (d->packagedElements->contains(packagedElement)) {
+        d->removePackagedElement(packagedElement);
+    }
 }
 
 /*!

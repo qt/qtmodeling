@@ -56,12 +56,12 @@ QReadSelfActionPrivate::~QReadSelfActionPrivate()
 {
 }
 
-void QReadSelfActionPrivate::setResult(const QOutputPin *result)
+void QReadSelfActionPrivate::setResult(QOutputPin *result)
 {
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
-    this->result = const_cast<QOutputPin *>(result);
+    this->result = result;
 
     // Adjust subsetted property(ies)
     addOutput(result);
@@ -101,10 +101,12 @@ QOutputPin *QReadSelfAction::result() const
     return d->result;
 }
 
-void QReadSelfAction::setResult(const QOutputPin *result)
+void QReadSelfAction::setResult(QOutputPin *result)
 {
     QTUML_D(QReadSelfAction);
-    d->setResult(const_cast<QOutputPin *>(result));
+    if (d->result != result) {
+        d->setResult(result);
+    }
 }
 
 #include "moc_qreadselfaction.cpp"

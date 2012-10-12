@@ -140,17 +140,17 @@ public:
 
     // Association-ends
     const QSet<QExtensionPoint *> *extensionPoints() const;
-    void addExtensionPoint(const QExtensionPoint *extensionPoint);
-    void removeExtensionPoint(const QExtensionPoint *extensionPoint);
+    void addExtensionPoint(QExtensionPoint *extensionPoint);
+    void removeExtensionPoint(QExtensionPoint *extensionPoint);
     const QSet<QInclude *> *includes() const;
-    void addInclude(const QInclude *include);
-    void removeInclude(const QInclude *include);
+    void addInclude(QInclude *include);
+    void removeInclude(QInclude *include);
     const QSet<QClassifier *> *subjects() const;
-    void addSubject(const QClassifier *subject);
-    void removeSubject(const QClassifier *subject);
+    void addSubject(QClassifier *subject);
+    void removeSubject(QClassifier *subject);
     const QSet<QExtend *> *extends() const;
-    void addExtend(const QExtend *extend);
-    void removeExtend(const QExtend *extend);
+    void addExtend(QExtend *extend);
+    void removeExtend(QExtend *extend);
 
     // Operations
     const QSet<QUseCase *> *allIncludedUseCases() const;

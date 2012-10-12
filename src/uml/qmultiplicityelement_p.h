@@ -71,8 +71,8 @@ public:
     void setOrdered(bool isOrdered);
 
     // Internal functions for association-ends
-    void setUpperValue(const QValueSpecification *upperValue);
-    void setLowerValue(const QValueSpecification *lowerValue);
+    void setUpperValue(QValueSpecification *upperValue);
+    void setLowerValue(QValueSpecification *lowerValue);
 };
 
 QT_END_NAMESPACE_QTUML

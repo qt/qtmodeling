@@ -73,33 +73,33 @@ void QNamedElementPrivate::setVisibility(QtUml::VisibilityKind visibility)
     this->visibility = visibility;
 }
 
-void QNamedElementPrivate::setNameExpression(const QStringExpression *nameExpression)
+void QNamedElementPrivate::setNameExpression(QStringExpression *nameExpression)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->nameExpression);
 
-    this->nameExpression = const_cast<QStringExpression *>(nameExpression);
+    this->nameExpression = nameExpression;
 
     // Adjust subsetted property(ies)
     addOwnedElement(nameExpression);
 }
 
-void QNamedElementPrivate::setNamespace_(const QNamespace *namespace_)
+void QNamedElementPrivate::setNamespace_(QNamespace *namespace_)
 {
-    this->namespace_ = const_cast<QNamespace *>(namespace_);
+    this->namespace_ = namespace_;
 
     // Adjust subsetted property(ies)
     setOwner(namespace_);
 }
 
-void QNamedElementPrivate::addClientDependency(const QDependency *clientDependency)
+void QNamedElementPrivate::addClientDependency(QDependency *clientDependency)
 {
-    this->clientDependencies->insert(const_cast<QDependency *>(clientDependency));
+    this->clientDependencies->insert(clientDependency);
 }
 
-void QNamedElementPrivate::removeClientDependency(const QDependency *clientDependency)
+void QNamedElementPrivate::removeClientDependency(QDependency *clientDependency)
 {
-    this->clientDependencies->remove(const_cast<QDependency *>(clientDependency));
+    this->clientDependencies->remove(clientDependency);
 }
 
 /*!
@@ -130,7 +130,9 @@ QString QNamedElement::name() const
 void QNamedElement::setName(QString name)
 {
     QTUML_D(QNamedElement);
-    d->setName(name);
+    if (d->name != name) {
+        d->setName(name);
+    }
 }
 
 /*!
@@ -145,7 +147,9 @@ QtUml::VisibilityKind QNamedElement::visibility() const
 void QNamedElement::setVisibility(QtUml::VisibilityKind visibility)
 {
     QTUML_D(QNamedElement);
-    d->setVisibility(visibility);
+    if (d->visibility != visibility) {
+        d->setVisibility(visibility);
+    }
 }
 
 /*!
@@ -175,10 +179,12 @@ QStringExpression *QNamedElement::nameExpression() const
     return d->nameExpression;
 }
 
-void QNamedElement::setNameExpression(const QStringExpression *nameExpression)
+void QNamedElement::setNameExpression(QStringExpression *nameExpression)
 {
     QTUML_D(QNamedElement);
-    d->setNameExpression(const_cast<QStringExpression *>(nameExpression));
+    if (d->nameExpression != nameExpression) {
+        d->setNameExpression(nameExpression);
+    }
 }
 
 /*!
@@ -199,16 +205,26 @@ const QSet<QDependency *> *QNamedElement::clientDependencies() const
     return d->clientDependencies;
 }
 
-void QNamedElement::addClientDependency(const QDependency *clientDependency)
+void QNamedElement::addClientDependency(QDependency *clientDependency)
 {
     QTUML_D(QNamedElement);
-    d->addClientDependency(const_cast<QDependency *>(clientDependency));
+    if (!d->clientDependencies->contains(clientDependency)) {
+        d->addClientDependency(clientDependency);
+
+        // Adjust opposite property
+        clientDependency->addClient(this);
+    }
 }
 
-void QNamedElement::removeClientDependency(const QDependency *clientDependency)
+void QNamedElement::removeClientDependency(QDependency *clientDependency)
 {
     QTUML_D(QNamedElement);
-    d->removeClientDependency(const_cast<QDependency *>(clientDependency));
+    if (d->clientDependencies->contains(clientDependency)) {
+        d->removeClientDependency(clientDependency);
+
+        // Adjust opposite property
+        clientDependency->removeClient(this);
+    }
 }
 
 /*!

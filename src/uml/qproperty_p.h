@@ -104,19 +104,19 @@ public:
     void setAggregation(QtUml::AggregationKind aggregation);
 
     // Internal functions for association-ends
-    void addSubsettedProperty(const QProperty *subsettedProperty);
-    void removeSubsettedProperty(const QProperty *subsettedProperty);
-    void setOwningAssociation(const QAssociation *owningAssociation);
-    void addQualifier(const QProperty *qualifier);
-    void removeQualifier(const QProperty *qualifier);
-    void setDefaultValue(const QValueSpecification *defaultValue);
-    void setClass_(const QClass *class_);
-    void setAssociationEnd(const QProperty *associationEnd);
-    void setDatatype(const QDataType *datatype);
-    void addRedefinedProperty(const QProperty *redefinedProperty);
-    void removeRedefinedProperty(const QProperty *redefinedProperty);
-    void setAssociation(const QAssociation *association);
-    void setInterface(const QInterface *interface);
+    void addSubsettedProperty(QProperty *subsettedProperty);
+    void removeSubsettedProperty(QProperty *subsettedProperty);
+    void setOwningAssociation(QAssociation *owningAssociation);
+    void addQualifier(QProperty *qualifier);
+    void removeQualifier(QProperty *qualifier);
+    void setDefaultValue(QValueSpecification *defaultValue);
+    void setClass_(QClass *class_);
+    void setAssociationEnd(QProperty *associationEnd);
+    void setDatatype(QDataType *datatype);
+    void addRedefinedProperty(QProperty *redefinedProperty);
+    void removeRedefinedProperty(QProperty *redefinedProperty);
+    void setAssociation(QAssociation *association);
+    void setInterface(QInterface *interface);
 };
 
 QT_END_NAMESPACE_QTUML

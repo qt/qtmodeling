@@ -109,16 +109,16 @@ public:
 
     // Association-ends
     const QSet<QConnector *> *redefinedConnectors() const;
-    void addRedefinedConnector(const QConnector *redefinedConnector);
-    void removeRedefinedConnector(const QConnector *redefinedConnector);
+    void addRedefinedConnector(QConnector *redefinedConnector);
+    void removeRedefinedConnector(QConnector *redefinedConnector);
     const QSet<QBehavior *> *contracts() const;
-    void addContract(const QBehavior *contract);
-    void removeContract(const QBehavior *contract);
+    void addContract(QBehavior *contract);
+    void removeContract(QBehavior *contract);
     QAssociation *type() const;
-    void setType(const QAssociation *type);
+    void setType(QAssociation *type);
     const QList<QConnectorEnd *> *ends() const;
-    void addEnd(const QConnectorEnd *end);
-    void removeEnd(const QConnectorEnd *end);
+    void addEnd(QConnectorEnd *end);
+    void removeEnd(QConnectorEnd *end);
 
 protected:
     explicit QConnector(bool createPimpl, QObject *parent = 0);

@@ -71,16 +71,16 @@ public:
 
     // Association-ends
     const QSet<QPackageImport *> *packageImports() const;
-    void addPackageImport(const QPackageImport *packageImport);
-    void removePackageImport(const QPackageImport *packageImport);
+    void addPackageImport(QPackageImport *packageImport);
+    void removePackageImport(QPackageImport *packageImport);
     const QSet<QNamedElement *> *members() const;
     const QSet<QPackageableElement *> *importedMembers() const;
     const QSet<QElementImport *> *elementImports() const;
-    void addElementImport(const QElementImport *elementImport);
-    void removeElementImport(const QElementImport *elementImport);
+    void addElementImport(QElementImport *elementImport);
+    void removeElementImport(QElementImport *elementImport);
     const QSet<QConstraint *> *ownedRules() const;
-    void addOwnedRule(const QConstraint *ownedRule);
-    void removeOwnedRule(const QConstraint *ownedRule);
+    void addOwnedRule(QConstraint *ownedRule);
+    void removeOwnedRule(QConstraint *ownedRule);
     const QSet<QNamedElement *> *ownedMembers() const;
 
     // Operations

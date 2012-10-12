@@ -89,11 +89,11 @@ public:
 
     // Association-ends
     const QSet<QParameter *> *parameters() const;
-    void addParameter(const QParameter *parameter);
-    void removeParameter(const QParameter *parameter);
+    void addParameter(QParameter *parameter);
+    void removeParameter(QParameter *parameter);
     const QSet<QConstraint *> *conditions() const;
-    void addCondition(const QConstraint *condition);
-    void removeCondition(const QConstraint *condition);
+    void addCondition(QConstraint *condition);
+    void removeCondition(QConstraint *condition);
 
 protected:
     explicit QParameterSet(bool createPimpl, QObject *parent = 0);

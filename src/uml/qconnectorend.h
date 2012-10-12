@@ -87,9 +87,9 @@ public:
 
     // Association-ends
     QConnectableElement *role() const;
-    void setRole(const QConnectableElement *role);
+    void setRole(QConnectableElement *role);
     QProperty *partWithPort() const;
-    void setPartWithPort(const QProperty *partWithPort);
+    void setPartWithPort(QProperty *partWithPort);
     QProperty *definingEnd() const;
 
 protected:

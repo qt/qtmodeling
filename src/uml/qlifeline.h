@@ -95,16 +95,16 @@ public:
 
     // Association-ends
     QConnectableElement *represents() const;
-    void setRepresents(const QConnectableElement *represents);
+    void setRepresents(QConnectableElement *represents);
     QPartDecomposition *decomposedAs() const;
-    void setDecomposedAs(const QPartDecomposition *decomposedAs);
+    void setDecomposedAs(QPartDecomposition *decomposedAs);
     const QSet<QInteractionFragment *> *coveredBy() const;
-    void addCoveredBy(const QInteractionFragment *coveredBy);
-    void removeCoveredBy(const QInteractionFragment *coveredBy);
+    void addCoveredBy(QInteractionFragment *coveredBy);
+    void removeCoveredBy(QInteractionFragment *coveredBy);
     QInteraction *interaction() const;
-    void setInteraction(const QInteraction *interaction);
+    void setInteraction(QInteraction *interaction);
     QValueSpecification *selector() const;
-    void setSelector(const QValueSpecification *selector);
+    void setSelector(QValueSpecification *selector);
 
 protected:
     explicit QLifeline(bool createPimpl, QObject *parent = 0);

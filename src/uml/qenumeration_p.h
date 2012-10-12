@@ -67,8 +67,8 @@ public:
     QList<QEnumerationLiteral *> *ownedLiterals;
 
     // Internal functions for association-ends
-    void addOwnedLiteral(const QEnumerationLiteral *ownedLiteral);
-    void removeOwnedLiteral(const QEnumerationLiteral *ownedLiteral);
+    void addOwnedLiteral(QEnumerationLiteral *ownedLiteral);
+    void removeOwnedLiteral(QEnumerationLiteral *ownedLiteral);
 };
 
 QT_END_NAMESPACE_QTUML

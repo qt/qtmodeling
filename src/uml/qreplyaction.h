@@ -116,12 +116,12 @@ public:
 
     // Association-ends
     QTrigger *replyToCall() const;
-    void setReplyToCall(const QTrigger *replyToCall);
+    void setReplyToCall(QTrigger *replyToCall);
     QInputPin *returnInformation() const;
-    void setReturnInformation(const QInputPin *returnInformation);
+    void setReturnInformation(QInputPin *returnInformation);
     const QSet<QInputPin *> *replyValues() const;
-    void addReplyValue(const QInputPin *replyValue);
-    void removeReplyValue(const QInputPin *replyValue);
+    void addReplyValue(QInputPin *replyValue);
+    void removeReplyValue(QInputPin *replyValue);
 
 protected:
     explicit QReplyAction(bool createPimpl, QObject *parent = 0);

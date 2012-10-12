@@ -66,24 +66,24 @@ void QProfileApplicationPrivate::setStrict(bool isStrict)
     this->isStrict = isStrict;
 }
 
-void QProfileApplicationPrivate::setApplyingPackage(const QPackage *applyingPackage)
+void QProfileApplicationPrivate::setApplyingPackage(QPackage *applyingPackage)
 {
     // Adjust subsetted property(ies)
     removeSource(this->applyingPackage);
 
-    this->applyingPackage = const_cast<QPackage *>(applyingPackage);
+    this->applyingPackage = applyingPackage;
 
     // Adjust subsetted property(ies)
     setOwner(applyingPackage);
     addSource(applyingPackage);
 }
 
-void QProfileApplicationPrivate::setAppliedProfile(const QProfile *appliedProfile)
+void QProfileApplicationPrivate::setAppliedProfile(QProfile *appliedProfile)
 {
     // Adjust subsetted property(ies)
     removeTarget(this->appliedProfile);
 
-    this->appliedProfile = const_cast<QProfile *>(appliedProfile);
+    this->appliedProfile = appliedProfile;
 
     // Adjust subsetted property(ies)
     addTarget(appliedProfile);
@@ -126,7 +126,9 @@ bool QProfileApplication::isStrict() const
 void QProfileApplication::setStrict(bool isStrict)
 {
     QTUML_D(QProfileApplication);
-    d->setStrict(isStrict);
+    if (d->isStrict != isStrict) {
+        d->setStrict(isStrict);
+    }
 }
 
 /*!
@@ -138,10 +140,15 @@ QPackage *QProfileApplication::applyingPackage() const
     return d->applyingPackage;
 }
 
-void QProfileApplication::setApplyingPackage(const QPackage *applyingPackage)
+void QProfileApplication::setApplyingPackage(QPackage *applyingPackage)
 {
     QTUML_D(QProfileApplication);
-    d->setApplyingPackage(const_cast<QPackage *>(applyingPackage));
+    if (d->applyingPackage != applyingPackage) {
+        d->setApplyingPackage(applyingPackage);
+
+        // Adjust opposite property
+        applyingPackage->addProfileApplication(this);
+    }
 }
 
 /*!
@@ -153,10 +160,12 @@ QProfile *QProfileApplication::appliedProfile() const
     return d->appliedProfile;
 }
 
-void QProfileApplication::setAppliedProfile(const QProfile *appliedProfile)
+void QProfileApplication::setAppliedProfile(QProfile *appliedProfile)
 {
     QTUML_D(QProfileApplication);
-    d->setAppliedProfile(const_cast<QProfile *>(appliedProfile));
+    if (d->appliedProfile != appliedProfile) {
+        d->setAppliedProfile(appliedProfile);
+    }
 }
 
 #include "moc_qprofileapplication.cpp"

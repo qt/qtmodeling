@@ -72,7 +72,7 @@ public:
     void removeFirstEvent(bool firstEvent);
 
     // Internal functions for association-ends
-    void setSpecification(const QDurationInterval *specification);
+    void setSpecification(QDurationInterval *specification);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -57,18 +57,18 @@ QParameterableElementPrivate::~QParameterableElementPrivate()
 {
 }
 
-void QParameterableElementPrivate::setOwningTemplateParameter(const QTemplateParameter *owningTemplateParameter)
+void QParameterableElementPrivate::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
 {
-    this->owningTemplateParameter = const_cast<QTemplateParameter *>(owningTemplateParameter);
+    this->owningTemplateParameter = owningTemplateParameter;
 
     // Adjust subsetted property(ies)
     setTemplateParameter(owningTemplateParameter);
     setOwner(owningTemplateParameter);
 }
 
-void QParameterableElementPrivate::setTemplateParameter(const QTemplateParameter *templateParameter)
+void QParameterableElementPrivate::setTemplateParameter(QTemplateParameter *templateParameter)
 {
-    this->templateParameter = const_cast<QTemplateParameter *>(templateParameter);
+    this->templateParameter = templateParameter;
 }
 
 /*!
@@ -96,10 +96,15 @@ QTemplateParameter *QParameterableElement::owningTemplateParameter() const
     return d->owningTemplateParameter;
 }
 
-void QParameterableElement::setOwningTemplateParameter(const QTemplateParameter *owningTemplateParameter)
+void QParameterableElement::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
 {
     QTUML_D(QParameterableElement);
-    d->setOwningTemplateParameter(const_cast<QTemplateParameter *>(owningTemplateParameter));
+    if (d->owningTemplateParameter != owningTemplateParameter) {
+        d->setOwningTemplateParameter(owningTemplateParameter);
+
+        // Adjust opposite property
+        owningTemplateParameter->setOwnedParameteredElement(this);
+    }
 }
 
 /*!
@@ -111,10 +116,15 @@ QTemplateParameter *QParameterableElement::templateParameter() const
     return d->templateParameter;
 }
 
-void QParameterableElement::setTemplateParameter(const QTemplateParameter *templateParameter)
+void QParameterableElement::setTemplateParameter(QTemplateParameter *templateParameter)
 {
     QTUML_D(QParameterableElement);
-    d->setTemplateParameter(const_cast<QTemplateParameter *>(templateParameter));
+    if (d->templateParameter != templateParameter) {
+        d->setTemplateParameter(templateParameter);
+
+        // Adjust opposite property
+        templateParameter->setParameteredElement(this);
+    }
 }
 
 /*!

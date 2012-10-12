@@ -87,7 +87,9 @@ bool QStructuralFeature::isReadOnly() const
 void QStructuralFeature::setReadOnly(bool isReadOnly)
 {
     QTUML_D(QStructuralFeature);
-    d->setReadOnly(isReadOnly);
+    if (d->isReadOnly != isReadOnly) {
+        d->setReadOnly(isReadOnly);
+    }
 }
 
 QT_END_NAMESPACE_QTUML

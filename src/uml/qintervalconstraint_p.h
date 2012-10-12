@@ -64,7 +64,7 @@ public:
     QInterval *specification;
 
     // Internal functions for association-ends
-    void setSpecification(const QInterval *specification);
+    void setSpecification(QInterval *specification);
 };
 
 QT_END_NAMESPACE_QTUML

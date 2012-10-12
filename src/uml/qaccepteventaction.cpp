@@ -67,33 +67,33 @@ void QAcceptEventActionPrivate::setUnmarshall(bool isUnmarshall)
     this->isUnmarshall = isUnmarshall;
 }
 
-void QAcceptEventActionPrivate::addTrigger(const QTrigger *trigger)
+void QAcceptEventActionPrivate::addTrigger(QTrigger *trigger)
 {
-    this->triggers->insert(const_cast<QTrigger *>(trigger));
+    this->triggers->insert(trigger);
 
     // Adjust subsetted property(ies)
     addOwnedElement(trigger);
 }
 
-void QAcceptEventActionPrivate::removeTrigger(const QTrigger *trigger)
+void QAcceptEventActionPrivate::removeTrigger(QTrigger *trigger)
 {
-    this->triggers->remove(const_cast<QTrigger *>(trigger));
+    this->triggers->remove(trigger);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(trigger);
 }
 
-void QAcceptEventActionPrivate::addResult(const QOutputPin *result)
+void QAcceptEventActionPrivate::addResult(QOutputPin *result)
 {
-    this->results->insert(const_cast<QOutputPin *>(result));
+    this->results->insert(result);
 
     // Adjust subsetted property(ies)
     addOutput(result);
 }
 
-void QAcceptEventActionPrivate::removeResult(const QOutputPin *result)
+void QAcceptEventActionPrivate::removeResult(QOutputPin *result)
 {
-    this->results->remove(const_cast<QOutputPin *>(result));
+    this->results->remove(result);
 
     // Adjust subsetted property(ies)
     removeOutput(result);
@@ -136,7 +136,9 @@ bool QAcceptEventAction::isUnmarshall() const
 void QAcceptEventAction::setUnmarshall(bool isUnmarshall)
 {
     QTUML_D(QAcceptEventAction);
-    d->setUnmarshall(isUnmarshall);
+    if (d->isUnmarshall != isUnmarshall) {
+        d->setUnmarshall(isUnmarshall);
+    }
 }
 
 /*!
@@ -148,16 +150,20 @@ const QSet<QTrigger *> *QAcceptEventAction::triggers() const
     return d->triggers;
 }
 
-void QAcceptEventAction::addTrigger(const QTrigger *trigger)
+void QAcceptEventAction::addTrigger(QTrigger *trigger)
 {
     QTUML_D(QAcceptEventAction);
-    d->addTrigger(const_cast<QTrigger *>(trigger));
+    if (!d->triggers->contains(trigger)) {
+        d->addTrigger(trigger);
+    }
 }
 
-void QAcceptEventAction::removeTrigger(const QTrigger *trigger)
+void QAcceptEventAction::removeTrigger(QTrigger *trigger)
 {
     QTUML_D(QAcceptEventAction);
-    d->removeTrigger(const_cast<QTrigger *>(trigger));
+    if (d->triggers->contains(trigger)) {
+        d->removeTrigger(trigger);
+    }
 }
 
 /*!
@@ -169,16 +175,20 @@ const QSet<QOutputPin *> *QAcceptEventAction::results() const
     return d->results;
 }
 
-void QAcceptEventAction::addResult(const QOutputPin *result)
+void QAcceptEventAction::addResult(QOutputPin *result)
 {
     QTUML_D(QAcceptEventAction);
-    d->addResult(const_cast<QOutputPin *>(result));
+    if (!d->results->contains(result)) {
+        d->addResult(result);
+    }
 }
 
-void QAcceptEventAction::removeResult(const QOutputPin *result)
+void QAcceptEventAction::removeResult(QOutputPin *result)
 {
     QTUML_D(QAcceptEventAction);
-    d->removeResult(const_cast<QOutputPin *>(result));
+    if (d->results->contains(result)) {
+        d->removeResult(result);
+    }
 }
 
 #include "moc_qaccepteventaction.cpp"

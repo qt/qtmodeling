@@ -109,18 +109,18 @@ public:
 
     // Association-ends
     QRegion *extendedRegion() const;
-    void setExtendedRegion(const QRegion *extendedRegion);
+    void setExtendedRegion(QRegion *extendedRegion);
     const QSet<QTransition *> *transitions() const;
-    void addTransition(const QTransition *transition);
-    void removeTransition(const QTransition *transition);
+    void addTransition(QTransition *transition);
+    void removeTransition(QTransition *transition);
     QStateMachine *stateMachine() const;
-    void setStateMachine(const QStateMachine *stateMachine);
+    void setStateMachine(QStateMachine *stateMachine);
     QState *state() const;
-    void setState(const QState *state);
+    void setState(QState *state);
     QClassifier *redefinitionContext() const;
     const QSet<QVertex *> *subvertices() const;
-    void addSubvertex(const QVertex *subvertex);
-    void removeSubvertex(const QVertex *subvertex);
+    void addSubvertex(QVertex *subvertex);
+    void removeSubvertex(QVertex *subvertex);
 
     // Operations
     bool belongsToPSM() const;

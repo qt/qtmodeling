@@ -71,12 +71,12 @@ public:
     // Association-ends
     const QSet<QConnectableElement *> *roles() const;
     const QList<QProperty *> *ownedAttributes() const;
-    void addOwnedAttribute(const QProperty *ownedAttribute);
-    void removeOwnedAttribute(const QProperty *ownedAttribute);
+    void addOwnedAttribute(QProperty *ownedAttribute);
+    void removeOwnedAttribute(QProperty *ownedAttribute);
     const QSet<QProperty *> *parts() const;
     const QSet<QConnector *> *ownedConnectors() const;
-    void addOwnedConnector(const QConnector *ownedConnector);
-    void removeOwnedConnector(const QConnector *ownedConnector);
+    void addOwnedConnector(QConnector *ownedConnector);
+    void removeOwnedConnector(QConnector *ownedConnector);
 
 protected:
     explicit QStructuredClassifier();

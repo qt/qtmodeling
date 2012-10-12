@@ -74,11 +74,11 @@ public:
     QConstraint *condition;
 
     // Internal functions for association-ends
-    void setExtendedCase(const QUseCase *extendedCase);
-    void setExtension(const QUseCase *extension);
-    void addExtensionLocation(const QExtensionPoint *extensionLocation);
-    void removeExtensionLocation(const QExtensionPoint *extensionLocation);
-    void setCondition(const QConstraint *condition);
+    void setExtendedCase(QUseCase *extendedCase);
+    void setExtension(QUseCase *extension);
+    void addExtensionLocation(QExtensionPoint *extensionLocation);
+    void removeExtensionLocation(QExtensionPoint *extensionLocation);
+    void setCondition(QConstraint *condition);
 };
 
 QT_END_NAMESPACE_QTUML

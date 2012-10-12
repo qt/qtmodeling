@@ -93,9 +93,9 @@ public:
 
     // Association-ends
     QUseCase *includingCase() const;
-    void setIncludingCase(const QUseCase *includingCase);
+    void setIncludingCase(QUseCase *includingCase);
     QUseCase *addition() const;
-    void setAddition(const QUseCase *addition);
+    void setAddition(QUseCase *addition);
 
 protected:
     explicit QInclude(bool createPimpl, QObject *parent = 0);

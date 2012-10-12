@@ -70,7 +70,7 @@ public:
 
     // Association-ends
     QInterval *specification() const;
-    void setSpecification(const QInterval *specification);
+    void setSpecification(QInterval *specification);
 
 protected:
     explicit QIntervalConstraint(bool createPimpl, QObject *parent = 0);

@@ -75,65 +75,65 @@ void QActionPrivate::setLocallyReentrant(bool isLocallyReentrant)
     this->isLocallyReentrant = isLocallyReentrant;
 }
 
-void QActionPrivate::addLocalPostcondition(const QConstraint *localPostcondition)
+void QActionPrivate::addLocalPostcondition(QConstraint *localPostcondition)
 {
-    this->localPostconditions->insert(const_cast<QConstraint *>(localPostcondition));
+    this->localPostconditions->insert(localPostcondition);
 
     // Adjust subsetted property(ies)
     addOwnedElement(localPostcondition);
 }
 
-void QActionPrivate::removeLocalPostcondition(const QConstraint *localPostcondition)
+void QActionPrivate::removeLocalPostcondition(QConstraint *localPostcondition)
 {
-    this->localPostconditions->remove(const_cast<QConstraint *>(localPostcondition));
+    this->localPostconditions->remove(localPostcondition);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(localPostcondition);
 }
 
-void QActionPrivate::addLocalPrecondition(const QConstraint *localPrecondition)
+void QActionPrivate::addLocalPrecondition(QConstraint *localPrecondition)
 {
-    this->localPreconditions->insert(const_cast<QConstraint *>(localPrecondition));
+    this->localPreconditions->insert(localPrecondition);
 
     // Adjust subsetted property(ies)
     addOwnedElement(localPrecondition);
 }
 
-void QActionPrivate::removeLocalPrecondition(const QConstraint *localPrecondition)
+void QActionPrivate::removeLocalPrecondition(QConstraint *localPrecondition)
 {
-    this->localPreconditions->remove(const_cast<QConstraint *>(localPrecondition));
+    this->localPreconditions->remove(localPrecondition);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(localPrecondition);
 }
 
-void QActionPrivate::addInput(const QInputPin *input)
+void QActionPrivate::addInput(QInputPin *input)
 {
-    this->inputs->append(const_cast<QInputPin *>(input));
+    this->inputs->append(input);
 
     // Adjust subsetted property(ies)
     addOwnedElement(input);
 }
 
-void QActionPrivate::removeInput(const QInputPin *input)
+void QActionPrivate::removeInput(QInputPin *input)
 {
-    this->inputs->removeAll(const_cast<QInputPin *>(input));
+    this->inputs->removeAll(input);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(input);
 }
 
-void QActionPrivate::addOutput(const QOutputPin *output)
+void QActionPrivate::addOutput(QOutputPin *output)
 {
-    this->outputs->append(const_cast<QOutputPin *>(output));
+    this->outputs->append(output);
 
     // Adjust subsetted property(ies)
     addOwnedElement(output);
 }
 
-void QActionPrivate::removeOutput(const QOutputPin *output)
+void QActionPrivate::removeOutput(QOutputPin *output)
 {
-    this->outputs->removeAll(const_cast<QOutputPin *>(output));
+    this->outputs->removeAll(output);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(output);
@@ -167,7 +167,9 @@ bool QAction::isLocallyReentrant() const
 void QAction::setLocallyReentrant(bool isLocallyReentrant)
 {
     QTUML_D(QAction);
-    d->setLocallyReentrant(isLocallyReentrant);
+    if (d->isLocallyReentrant != isLocallyReentrant) {
+        d->setLocallyReentrant(isLocallyReentrant);
+    }
 }
 
 /*!
@@ -187,16 +189,20 @@ const QSet<QConstraint *> *QAction::localPostconditions() const
     return d->localPostconditions;
 }
 
-void QAction::addLocalPostcondition(const QConstraint *localPostcondition)
+void QAction::addLocalPostcondition(QConstraint *localPostcondition)
 {
     QTUML_D(QAction);
-    d->addLocalPostcondition(const_cast<QConstraint *>(localPostcondition));
+    if (!d->localPostconditions->contains(localPostcondition)) {
+        d->addLocalPostcondition(localPostcondition);
+    }
 }
 
-void QAction::removeLocalPostcondition(const QConstraint *localPostcondition)
+void QAction::removeLocalPostcondition(QConstraint *localPostcondition)
 {
     QTUML_D(QAction);
-    d->removeLocalPostcondition(const_cast<QConstraint *>(localPostcondition));
+    if (d->localPostconditions->contains(localPostcondition)) {
+        d->removeLocalPostcondition(localPostcondition);
+    }
 }
 
 /*!
@@ -208,16 +214,20 @@ const QSet<QConstraint *> *QAction::localPreconditions() const
     return d->localPreconditions;
 }
 
-void QAction::addLocalPrecondition(const QConstraint *localPrecondition)
+void QAction::addLocalPrecondition(QConstraint *localPrecondition)
 {
     QTUML_D(QAction);
-    d->addLocalPrecondition(const_cast<QConstraint *>(localPrecondition));
+    if (!d->localPreconditions->contains(localPrecondition)) {
+        d->addLocalPrecondition(localPrecondition);
+    }
 }
 
-void QAction::removeLocalPrecondition(const QConstraint *localPrecondition)
+void QAction::removeLocalPrecondition(QConstraint *localPrecondition)
 {
     QTUML_D(QAction);
-    d->removeLocalPrecondition(const_cast<QConstraint *>(localPrecondition));
+    if (d->localPreconditions->contains(localPrecondition)) {
+        d->removeLocalPrecondition(localPrecondition);
+    }
 }
 
 /*!

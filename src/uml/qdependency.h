@@ -102,11 +102,11 @@ public:
 
     // Association-ends
     const QSet<QNamedElement *> *clients() const;
-    void addClient(const QNamedElement *client);
-    void removeClient(const QNamedElement *client);
+    void addClient(QNamedElement *client);
+    void removeClient(QNamedElement *client);
     const QSet<QNamedElement *> *suppliers() const;
-    void addSupplier(const QNamedElement *supplier);
-    void removeSupplier(const QNamedElement *supplier);
+    void addSupplier(QNamedElement *supplier);
+    void removeSupplier(QNamedElement *supplier);
 
 protected:
     explicit QDependency(bool createPimpl, QObject *parent = 0);

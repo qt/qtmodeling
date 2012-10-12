@@ -70,10 +70,10 @@ public:
     QSet<QLinkEndData *> *endData;
 
     // Internal functions for association-ends
-    void addInputValue(const QInputPin *inputValue);
-    void removeInputValue(const QInputPin *inputValue);
-    void addEndData(const QLinkEndData *endData);
-    void removeEndData(const QLinkEndData *endData);
+    void addInputValue(QInputPin *inputValue);
+    void removeInputValue(QInputPin *inputValue);
+    void addEndData(QLinkEndData *endData);
+    void removeEndData(QLinkEndData *endData);
 };
 
 QT_END_NAMESPACE_QTUML

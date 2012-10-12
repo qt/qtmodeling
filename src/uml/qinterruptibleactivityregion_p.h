@@ -69,10 +69,10 @@ public:
     QSet<QActivityNode *> *nodes;
 
     // Internal functions for association-ends
-    void addInterruptingEdge(const QActivityEdge *interruptingEdge);
-    void removeInterruptingEdge(const QActivityEdge *interruptingEdge);
-    void addNode(const QActivityNode *node);
-    void removeNode(const QActivityNode *node);
+    void addInterruptingEdge(QActivityEdge *interruptingEdge);
+    void removeInterruptingEdge(QActivityEdge *interruptingEdge);
+    void addNode(QActivityNode *node);
+    void removeNode(QActivityNode *node);
 };
 
 QT_END_NAMESPACE_QTUML

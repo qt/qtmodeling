@@ -56,9 +56,9 @@ QIntervalConstraintPrivate::~QIntervalConstraintPrivate()
     delete specification;
 }
 
-void QIntervalConstraintPrivate::setSpecification(const QInterval *specification)
+void QIntervalConstraintPrivate::setSpecification(QInterval *specification)
 {
-    this->specification = const_cast<QInterval *>(specification);
+    this->specification = specification;
 }
 
 /*!
@@ -95,10 +95,12 @@ QInterval *QIntervalConstraint::specification() const
     return d->specification;
 }
 
-void QIntervalConstraint::setSpecification(const QInterval *specification)
+void QIntervalConstraint::setSpecification(QInterval *specification)
 {
     QTUML_D(QIntervalConstraint);
-    d->setSpecification(const_cast<QInterval *>(specification));
+    if (d->specification != specification) {
+        d->setSpecification(specification);
+    }
 }
 
 #include "moc_qintervalconstraint.cpp"

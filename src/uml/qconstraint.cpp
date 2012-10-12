@@ -62,33 +62,33 @@ QConstraintPrivate::~QConstraintPrivate()
     delete constrainedElements;
 }
 
-void QConstraintPrivate::setContext(const QNamespace *context)
+void QConstraintPrivate::setContext(QNamespace *context)
 {
-    this->context = const_cast<QNamespace *>(context);
+    this->context = context;
 
     // Adjust subsetted property(ies)
     setNamespace_(context);
 }
 
-void QConstraintPrivate::setSpecification(const QValueSpecification *specification)
+void QConstraintPrivate::setSpecification(QValueSpecification *specification)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->specification);
 
-    this->specification = const_cast<QValueSpecification *>(specification);
+    this->specification = specification;
 
     // Adjust subsetted property(ies)
     addOwnedElement(specification);
 }
 
-void QConstraintPrivate::addConstrainedElement(const QElement *constrainedElement)
+void QConstraintPrivate::addConstrainedElement(QElement *constrainedElement)
 {
-    this->constrainedElements->append(const_cast<QElement *>(constrainedElement));
+    this->constrainedElements->append(constrainedElement);
 }
 
-void QConstraintPrivate::removeConstrainedElement(const QElement *constrainedElement)
+void QConstraintPrivate::removeConstrainedElement(QElement *constrainedElement)
 {
-    this->constrainedElements->removeAll(const_cast<QElement *>(constrainedElement));
+    this->constrainedElements->removeAll(constrainedElement);
 }
 
 /*!
@@ -125,10 +125,15 @@ QNamespace *QConstraint::context() const
     return d->context;
 }
 
-void QConstraint::setContext(const QNamespace *context)
+void QConstraint::setContext(QNamespace *context)
 {
     QTUML_D(QConstraint);
-    d->setContext(const_cast<QNamespace *>(context));
+    if (d->context != context) {
+        d->setContext(context);
+
+        // Adjust opposite property
+        context->addOwnedRule(this);
+    }
 }
 
 /*!
@@ -140,10 +145,12 @@ QValueSpecification *QConstraint::specification() const
     return d->specification;
 }
 
-void QConstraint::setSpecification(const QValueSpecification *specification)
+void QConstraint::setSpecification(QValueSpecification *specification)
 {
     QTUML_D(QConstraint);
-    d->setSpecification(const_cast<QValueSpecification *>(specification));
+    if (d->specification != specification) {
+        d->setSpecification(specification);
+    }
 }
 
 /*!
@@ -155,16 +162,20 @@ const QList<QElement *> *QConstraint::constrainedElements() const
     return d->constrainedElements;
 }
 
-void QConstraint::addConstrainedElement(const QElement *constrainedElement)
+void QConstraint::addConstrainedElement(QElement *constrainedElement)
 {
     QTUML_D(QConstraint);
-    d->addConstrainedElement(const_cast<QElement *>(constrainedElement));
+    if (!d->constrainedElements->contains(constrainedElement)) {
+        d->addConstrainedElement(constrainedElement);
+    }
 }
 
-void QConstraint::removeConstrainedElement(const QElement *constrainedElement)
+void QConstraint::removeConstrainedElement(QElement *constrainedElement)
 {
     QTUML_D(QConstraint);
-    d->removeConstrainedElement(const_cast<QElement *>(constrainedElement));
+    if (d->constrainedElements->contains(constrainedElement)) {
+        d->removeConstrainedElement(constrainedElement);
+    }
 }
 
 #include "moc_qconstraint.cpp"

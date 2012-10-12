@@ -72,48 +72,48 @@ void QMessagePrivate::setMessageSort(QtUml::MessageSort messageSort)
     this->messageSort = messageSort;
 }
 
-void QMessagePrivate::setSignature(const QNamedElement *signature)
+void QMessagePrivate::setSignature(QNamedElement *signature)
 {
-    this->signature = const_cast<QNamedElement *>(signature);
+    this->signature = signature;
 }
 
-void QMessagePrivate::addArgument(const QValueSpecification *argument)
+void QMessagePrivate::addArgument(QValueSpecification *argument)
 {
-    this->arguments->append(const_cast<QValueSpecification *>(argument));
+    this->arguments->append(argument);
 
     // Adjust subsetted property(ies)
     addOwnedElement(argument);
 }
 
-void QMessagePrivate::removeArgument(const QValueSpecification *argument)
+void QMessagePrivate::removeArgument(QValueSpecification *argument)
 {
-    this->arguments->removeAll(const_cast<QValueSpecification *>(argument));
+    this->arguments->removeAll(argument);
 
     // Adjust subsetted property(ies)
     removeOwnedElement(argument);
 }
 
-void QMessagePrivate::setReceiveEvent(const QMessageEnd *receiveEvent)
+void QMessagePrivate::setReceiveEvent(QMessageEnd *receiveEvent)
 {
-    this->receiveEvent = const_cast<QMessageEnd *>(receiveEvent);
+    this->receiveEvent = receiveEvent;
 }
 
-void QMessagePrivate::setInteraction(const QInteraction *interaction)
+void QMessagePrivate::setInteraction(QInteraction *interaction)
 {
-    this->interaction = const_cast<QInteraction *>(interaction);
+    this->interaction = interaction;
 
     // Adjust subsetted property(ies)
     setNamespace_(interaction);
 }
 
-void QMessagePrivate::setSendEvent(const QMessageEnd *sendEvent)
+void QMessagePrivate::setSendEvent(QMessageEnd *sendEvent)
 {
-    this->sendEvent = const_cast<QMessageEnd *>(sendEvent);
+    this->sendEvent = sendEvent;
 }
 
-void QMessagePrivate::setConnector(const QConnector *connector)
+void QMessagePrivate::setConnector(QConnector *connector)
 {
-    this->connector = const_cast<QConnector *>(connector);
+    this->connector = connector;
 }
 
 /*!
@@ -153,7 +153,9 @@ QtUml::MessageSort QMessage::messageSort() const
 void QMessage::setMessageSort(QtUml::MessageSort messageSort)
 {
     QTUML_D(QMessage);
-    d->setMessageSort(messageSort);
+    if (d->messageSort != messageSort) {
+        d->setMessageSort(messageSort);
+    }
 }
 
 /*!
@@ -173,10 +175,12 @@ QNamedElement *QMessage::signature() const
     return d->signature;
 }
 
-void QMessage::setSignature(const QNamedElement *signature)
+void QMessage::setSignature(QNamedElement *signature)
 {
     QTUML_D(QMessage);
-    d->setSignature(const_cast<QNamedElement *>(signature));
+    if (d->signature != signature) {
+        d->setSignature(signature);
+    }
 }
 
 /*!
@@ -188,16 +192,20 @@ const QList<QValueSpecification *> *QMessage::arguments() const
     return d->arguments;
 }
 
-void QMessage::addArgument(const QValueSpecification *argument)
+void QMessage::addArgument(QValueSpecification *argument)
 {
     QTUML_D(QMessage);
-    d->addArgument(const_cast<QValueSpecification *>(argument));
+    if (!d->arguments->contains(argument)) {
+        d->addArgument(argument);
+    }
 }
 
-void QMessage::removeArgument(const QValueSpecification *argument)
+void QMessage::removeArgument(QValueSpecification *argument)
 {
     QTUML_D(QMessage);
-    d->removeArgument(const_cast<QValueSpecification *>(argument));
+    if (d->arguments->contains(argument)) {
+        d->removeArgument(argument);
+    }
 }
 
 /*!
@@ -209,10 +217,12 @@ QMessageEnd *QMessage::receiveEvent() const
     return d->receiveEvent;
 }
 
-void QMessage::setReceiveEvent(const QMessageEnd *receiveEvent)
+void QMessage::setReceiveEvent(QMessageEnd *receiveEvent)
 {
     QTUML_D(QMessage);
-    d->setReceiveEvent(const_cast<QMessageEnd *>(receiveEvent));
+    if (d->receiveEvent != receiveEvent) {
+        d->setReceiveEvent(receiveEvent);
+    }
 }
 
 /*!
@@ -224,10 +234,15 @@ QInteraction *QMessage::interaction() const
     return d->interaction;
 }
 
-void QMessage::setInteraction(const QInteraction *interaction)
+void QMessage::setInteraction(QInteraction *interaction)
 {
     QTUML_D(QMessage);
-    d->setInteraction(const_cast<QInteraction *>(interaction));
+    if (d->interaction != interaction) {
+        d->setInteraction(interaction);
+
+        // Adjust opposite property
+        interaction->addMessage(this);
+    }
 }
 
 /*!
@@ -239,10 +254,12 @@ QMessageEnd *QMessage::sendEvent() const
     return d->sendEvent;
 }
 
-void QMessage::setSendEvent(const QMessageEnd *sendEvent)
+void QMessage::setSendEvent(QMessageEnd *sendEvent)
 {
     QTUML_D(QMessage);
-    d->setSendEvent(const_cast<QMessageEnd *>(sendEvent));
+    if (d->sendEvent != sendEvent) {
+        d->setSendEvent(sendEvent);
+    }
 }
 
 /*!
@@ -254,10 +271,12 @@ QConnector *QMessage::connector() const
     return d->connector;
 }
 
-void QMessage::setConnector(const QConnector *connector)
+void QMessage::setConnector(QConnector *connector)
 {
     QTUML_D(QMessage);
-    d->setConnector(const_cast<QConnector *>(connector));
+    if (d->connector != connector) {
+        d->setConnector(connector);
+    }
 }
 
 #include "moc_qmessage.cpp"

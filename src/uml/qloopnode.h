@@ -88,28 +88,28 @@ public:
 
     // Association-ends
     const QList<QInputPin *> *loopVariableInputs() const;
-    void addLoopVariableInput(const QInputPin *loopVariableInput);
-    void removeLoopVariableInput(const QInputPin *loopVariableInput);
+    void addLoopVariableInput(QInputPin *loopVariableInput);
+    void removeLoopVariableInput(QInputPin *loopVariableInput);
     QOutputPin *decider() const;
-    void setDecider(const QOutputPin *decider);
+    void setDecider(QOutputPin *decider);
     const QList<QOutputPin *> *bodyOutputs() const;
-    void addBodyOutput(const QOutputPin *bodyOutput);
-    void removeBodyOutput(const QOutputPin *bodyOutput);
+    void addBodyOutput(QOutputPin *bodyOutput);
+    void removeBodyOutput(QOutputPin *bodyOutput);
     const QList<QOutputPin *> *loopVariables() const;
-    void addLoopVariable(const QOutputPin *loopVariable);
-    void removeLoopVariable(const QOutputPin *loopVariable);
+    void addLoopVariable(QOutputPin *loopVariable);
+    void removeLoopVariable(QOutputPin *loopVariable);
     const QList<QOutputPin *> *results() const;
-    void addResult(const QOutputPin *result);
-    void removeResult(const QOutputPin *result);
+    void addResult(QOutputPin *result);
+    void removeResult(QOutputPin *result);
     const QSet<QExecutableNode *> *setupParts() const;
-    void addSetupPart(const QExecutableNode *setupPart);
-    void removeSetupPart(const QExecutableNode *setupPart);
+    void addSetupPart(QExecutableNode *setupPart);
+    void removeSetupPart(QExecutableNode *setupPart);
     const QSet<QExecutableNode *> *bodyParts() const;
-    void addBodyPart(const QExecutableNode *bodyPart);
-    void removeBodyPart(const QExecutableNode *bodyPart);
+    void addBodyPart(QExecutableNode *bodyPart);
+    void removeBodyPart(QExecutableNode *bodyPart);
     const QSet<QExecutableNode *> *tests() const;
-    void addTest(const QExecutableNode *test);
-    void removeTest(const QExecutableNode *test);
+    void addTest(QExecutableNode *test);
+    void removeTest(QExecutableNode *test);
 
 protected:
     explicit QLoopNode(bool createPimpl, QObject *parent = 0);

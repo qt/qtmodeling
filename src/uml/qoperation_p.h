@@ -92,21 +92,21 @@ public:
     void setQuery(bool isQuery);
 
     // Internal functions for association-ends
-    void addOwnedParameter(const QParameter *ownedParameter);
-    void removeOwnedParameter(const QParameter *ownedParameter);
-    void setBodyCondition(const QConstraint *bodyCondition);
-    void addRedefinedOperation(const QOperation *redefinedOperation);
-    void removeRedefinedOperation(const QOperation *redefinedOperation);
-    void addPostcondition(const QConstraint *postcondition);
-    void removePostcondition(const QConstraint *postcondition);
-    void setDatatype(const QDataType *datatype);
-    void setTemplateParameter(const QOperationTemplateParameter *templateParameter);
-    void setInterface(const QInterface *interface);
-    void addPrecondition(const QConstraint *precondition);
-    void removePrecondition(const QConstraint *precondition);
-    void setClass_(const QClass *class_);
-    void addRaisedException(const QType *raisedException);
-    void removeRaisedException(const QType *raisedException);
+    void addOwnedParameter(QParameter *ownedParameter);
+    void removeOwnedParameter(QParameter *ownedParameter);
+    void setBodyCondition(QConstraint *bodyCondition);
+    void addRedefinedOperation(QOperation *redefinedOperation);
+    void removeRedefinedOperation(QOperation *redefinedOperation);
+    void addPostcondition(QConstraint *postcondition);
+    void removePostcondition(QConstraint *postcondition);
+    void setDatatype(QDataType *datatype);
+    void setTemplateParameter(QOperationTemplateParameter *templateParameter);
+    void setInterface(QInterface *interface);
+    void addPrecondition(QConstraint *precondition);
+    void removePrecondition(QConstraint *precondition);
+    void setClass_(QClass *class_);
+    void addRaisedException(QType *raisedException);
+    void removeRaisedException(QType *raisedException);
 };
 
 QT_END_NAMESPACE_QTUML

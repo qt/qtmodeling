@@ -58,20 +58,20 @@ QSendSignalActionPrivate::~QSendSignalActionPrivate()
 {
 }
 
-void QSendSignalActionPrivate::setTarget(const QInputPin *target)
+void QSendSignalActionPrivate::setTarget(QInputPin *target)
 {
     // Adjust subsetted property(ies)
     removeInput(this->target);
 
-    this->target = const_cast<QInputPin *>(target);
+    this->target = target;
 
     // Adjust subsetted property(ies)
     addInput(target);
 }
 
-void QSendSignalActionPrivate::setSignal(const QSignal *signal)
+void QSendSignalActionPrivate::setSignal(QSignal *signal)
 {
-    this->signal = const_cast<QSignal *>(signal);
+    this->signal = signal;
 }
 
 /*!
@@ -108,10 +108,12 @@ QInputPin *QSendSignalAction::target() const
     return d->target;
 }
 
-void QSendSignalAction::setTarget(const QInputPin *target)
+void QSendSignalAction::setTarget(QInputPin *target)
 {
     QTUML_D(QSendSignalAction);
-    d->setTarget(const_cast<QInputPin *>(target));
+    if (d->target != target) {
+        d->setTarget(target);
+    }
 }
 
 /*!
@@ -123,10 +125,12 @@ QSignal *QSendSignalAction::signal() const
     return d->signal;
 }
 
-void QSendSignalAction::setSignal(const QSignal *signal)
+void QSendSignalAction::setSignal(QSignal *signal)
 {
     QTUML_D(QSendSignalAction);
-    d->setSignal(const_cast<QSignal *>(signal));
+    if (d->signal != signal) {
+        d->setSignal(signal);
+    }
 }
 
 #include "moc_qsendsignalaction.cpp"

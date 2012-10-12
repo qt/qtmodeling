@@ -60,33 +60,33 @@ QDependencyPrivate::~QDependencyPrivate()
     delete suppliers;
 }
 
-void QDependencyPrivate::addClient(const QNamedElement *client)
+void QDependencyPrivate::addClient(QNamedElement *client)
 {
-    this->clients->insert(const_cast<QNamedElement *>(client));
+    this->clients->insert(client);
 
     // Adjust subsetted property(ies)
     addSource(client);
 }
 
-void QDependencyPrivate::removeClient(const QNamedElement *client)
+void QDependencyPrivate::removeClient(QNamedElement *client)
 {
-    this->clients->remove(const_cast<QNamedElement *>(client));
+    this->clients->remove(client);
 
     // Adjust subsetted property(ies)
     removeSource(client);
 }
 
-void QDependencyPrivate::addSupplier(const QNamedElement *supplier)
+void QDependencyPrivate::addSupplier(QNamedElement *supplier)
 {
-    this->suppliers->insert(const_cast<QNamedElement *>(supplier));
+    this->suppliers->insert(supplier);
 
     // Adjust subsetted property(ies)
     addTarget(supplier);
 }
 
-void QDependencyPrivate::removeSupplier(const QNamedElement *supplier)
+void QDependencyPrivate::removeSupplier(QNamedElement *supplier)
 {
-    this->suppliers->remove(const_cast<QNamedElement *>(supplier));
+    this->suppliers->remove(supplier);
 
     // Adjust subsetted property(ies)
     removeTarget(supplier);
@@ -126,16 +126,26 @@ const QSet<QNamedElement *> *QDependency::clients() const
     return d->clients;
 }
 
-void QDependency::addClient(const QNamedElement *client)
+void QDependency::addClient(QNamedElement *client)
 {
     QTUML_D(QDependency);
-    d->addClient(const_cast<QNamedElement *>(client));
+    if (!d->clients->contains(client)) {
+        d->addClient(client);
+
+        // Adjust opposite property
+        client->addClientDependency(this);
+    }
 }
 
-void QDependency::removeClient(const QNamedElement *client)
+void QDependency::removeClient(QNamedElement *client)
 {
     QTUML_D(QDependency);
-    d->removeClient(const_cast<QNamedElement *>(client));
+    if (d->clients->contains(client)) {
+        d->removeClient(client);
+
+        // Adjust opposite property
+        client->removeClientDependency(this);
+    }
 }
 
 /*!
@@ -147,16 +157,20 @@ const QSet<QNamedElement *> *QDependency::suppliers() const
     return d->suppliers;
 }
 
-void QDependency::addSupplier(const QNamedElement *supplier)
+void QDependency::addSupplier(QNamedElement *supplier)
 {
     QTUML_D(QDependency);
-    d->addSupplier(const_cast<QNamedElement *>(supplier));
+    if (!d->suppliers->contains(supplier)) {
+        d->addSupplier(supplier);
+    }
 }
 
-void QDependency::removeSupplier(const QNamedElement *supplier)
+void QDependency::removeSupplier(QNamedElement *supplier)
 {
     QTUML_D(QDependency);
-    d->removeSupplier(const_cast<QNamedElement *>(supplier));
+    if (d->suppliers->contains(supplier)) {
+        d->removeSupplier(supplier);
+    }
 }
 
 #include "moc_qdependency.cpp"

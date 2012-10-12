@@ -56,17 +56,17 @@ QNodePrivate::~QNodePrivate()
     delete nestedNodes;
 }
 
-void QNodePrivate::addNestedNode(const QNode *nestedNode)
+void QNodePrivate::addNestedNode(QNode *nestedNode)
 {
-    this->nestedNodes->insert(const_cast<QNode *>(nestedNode));
+    this->nestedNodes->insert(nestedNode);
 
     // Adjust subsetted property(ies)
     addOwnedMember(nestedNode);
 }
 
-void QNodePrivate::removeNestedNode(const QNode *nestedNode)
+void QNodePrivate::removeNestedNode(QNode *nestedNode)
 {
-    this->nestedNodes->remove(const_cast<QNode *>(nestedNode));
+    this->nestedNodes->remove(nestedNode);
 
     // Adjust subsetted property(ies)
     removeOwnedMember(nestedNode);
@@ -106,16 +106,20 @@ const QSet<QNode *> *QNode::nestedNodes() const
     return d->nestedNodes;
 }
 
-void QNode::addNestedNode(const QNode *nestedNode)
+void QNode::addNestedNode(QNode *nestedNode)
 {
     QTUML_D(QNode);
-    d->addNestedNode(const_cast<QNode *>(nestedNode));
+    if (!d->nestedNodes->contains(nestedNode)) {
+        d->addNestedNode(nestedNode);
+    }
 }
 
-void QNode::removeNestedNode(const QNode *nestedNode)
+void QNode::removeNestedNode(QNode *nestedNode)
 {
     QTUML_D(QNode);
-    d->removeNestedNode(const_cast<QNode *>(nestedNode));
+    if (d->nestedNodes->contains(nestedNode)) {
+        d->removeNestedNode(nestedNode);
+    }
 }
 
 #include "moc_qnode.cpp"

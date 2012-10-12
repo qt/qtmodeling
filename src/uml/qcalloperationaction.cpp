@@ -58,17 +58,17 @@ QCallOperationActionPrivate::~QCallOperationActionPrivate()
 {
 }
 
-void QCallOperationActionPrivate::setOperation(const QOperation *operation)
+void QCallOperationActionPrivate::setOperation(QOperation *operation)
 {
-    this->operation = const_cast<QOperation *>(operation);
+    this->operation = operation;
 }
 
-void QCallOperationActionPrivate::setTarget(const QInputPin *target)
+void QCallOperationActionPrivate::setTarget(QInputPin *target)
 {
     // Adjust subsetted property(ies)
     removeInput(this->target);
 
-    this->target = const_cast<QInputPin *>(target);
+    this->target = target;
 
     // Adjust subsetted property(ies)
     addInput(target);
@@ -108,10 +108,12 @@ QOperation *QCallOperationAction::operation() const
     return d->operation;
 }
 
-void QCallOperationAction::setOperation(const QOperation *operation)
+void QCallOperationAction::setOperation(QOperation *operation)
 {
     QTUML_D(QCallOperationAction);
-    d->setOperation(const_cast<QOperation *>(operation));
+    if (d->operation != operation) {
+        d->setOperation(operation);
+    }
 }
 
 /*!
@@ -123,10 +125,12 @@ QInputPin *QCallOperationAction::target() const
     return d->target;
 }
 
-void QCallOperationAction::setTarget(const QInputPin *target)
+void QCallOperationAction::setTarget(QInputPin *target)
 {
     QTUML_D(QCallOperationAction);
-    d->setTarget(const_cast<QInputPin *>(target));
+    if (d->target != target) {
+        d->setTarget(target);
+    }
 }
 
 #include "moc_qcalloperationaction.cpp"

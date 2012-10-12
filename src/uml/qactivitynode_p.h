@@ -79,20 +79,20 @@ public:
     QSet<QActivityEdge *> *outgoings;
 
     // Internal functions for association-ends
-    void addRedefinedNode(const QActivityNode *redefinedNode);
-    void removeRedefinedNode(const QActivityNode *redefinedNode);
-    void addIncoming(const QActivityEdge *incoming);
-    void removeIncoming(const QActivityEdge *incoming);
-    void setActivity(const QActivity *activity);
-    void addInGroup(const QActivityGroup *inGroup);
-    void removeInGroup(const QActivityGroup *inGroup);
-    void setInStructuredNode(const QStructuredActivityNode *inStructuredNode);
-    void addInPartition(const QActivityPartition *inPartition);
-    void removeInPartition(const QActivityPartition *inPartition);
-    void addInInterruptibleRegion(const QInterruptibleActivityRegion *inInterruptibleRegion);
-    void removeInInterruptibleRegion(const QInterruptibleActivityRegion *inInterruptibleRegion);
-    void addOutgoing(const QActivityEdge *outgoing);
-    void removeOutgoing(const QActivityEdge *outgoing);
+    void addRedefinedNode(QActivityNode *redefinedNode);
+    void removeRedefinedNode(QActivityNode *redefinedNode);
+    void addIncoming(QActivityEdge *incoming);
+    void removeIncoming(QActivityEdge *incoming);
+    void setActivity(QActivity *activity);
+    void addInGroup(QActivityGroup *inGroup);
+    void removeInGroup(QActivityGroup *inGroup);
+    void setInStructuredNode(QStructuredActivityNode *inStructuredNode);
+    void addInPartition(QActivityPartition *inPartition);
+    void removeInPartition(QActivityPartition *inPartition);
+    void addInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion);
+    void removeInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion);
+    void addOutgoing(QActivityEdge *outgoing);
+    void removeOutgoing(QActivityEdge *outgoing);
 };
 
 QT_END_NAMESPACE_QTUML

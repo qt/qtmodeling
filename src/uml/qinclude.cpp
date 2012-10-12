@@ -59,24 +59,24 @@ QIncludePrivate::~QIncludePrivate()
 {
 }
 
-void QIncludePrivate::setIncludingCase(const QUseCase *includingCase)
+void QIncludePrivate::setIncludingCase(QUseCase *includingCase)
 {
     // Adjust subsetted property(ies)
     removeSource(this->includingCase);
 
-    this->includingCase = const_cast<QUseCase *>(includingCase);
+    this->includingCase = includingCase;
 
     // Adjust subsetted property(ies)
     addSource(includingCase);
     setNamespace_(includingCase);
 }
 
-void QIncludePrivate::setAddition(const QUseCase *addition)
+void QIncludePrivate::setAddition(QUseCase *addition)
 {
     // Adjust subsetted property(ies)
     removeTarget(this->addition);
 
-    this->addition = const_cast<QUseCase *>(addition);
+    this->addition = addition;
 
     // Adjust subsetted property(ies)
     addTarget(addition);
@@ -116,10 +116,15 @@ QUseCase *QInclude::includingCase() const
     return d->includingCase;
 }
 
-void QInclude::setIncludingCase(const QUseCase *includingCase)
+void QInclude::setIncludingCase(QUseCase *includingCase)
 {
     QTUML_D(QInclude);
-    d->setIncludingCase(const_cast<QUseCase *>(includingCase));
+    if (d->includingCase != includingCase) {
+        d->setIncludingCase(includingCase);
+
+        // Adjust opposite property
+        includingCase->addInclude(this);
+    }
 }
 
 /*!
@@ -131,10 +136,12 @@ QUseCase *QInclude::addition() const
     return d->addition;
 }
 
-void QInclude::setAddition(const QUseCase *addition)
+void QInclude::setAddition(QUseCase *addition)
 {
     QTUML_D(QInclude);
-    d->setAddition(const_cast<QUseCase *>(addition));
+    if (d->addition != addition) {
+        d->setAddition(addition);
+    }
 }
 
 #include "moc_qinclude.cpp"

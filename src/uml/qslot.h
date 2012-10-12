@@ -83,12 +83,12 @@ public:
 
     // Association-ends
     const QList<QValueSpecification *> *values() const;
-    void addValue(const QValueSpecification *value);
-    void removeValue(const QValueSpecification *value);
+    void addValue(QValueSpecification *value);
+    void removeValue(QValueSpecification *value);
     QStructuralFeature *definingFeature() const;
-    void setDefiningFeature(const QStructuralFeature *definingFeature);
+    void setDefiningFeature(QStructuralFeature *definingFeature);
     QInstanceSpecification *owningInstance() const;
-    void setOwningInstance(const QInstanceSpecification *owningInstance);
+    void setOwningInstance(QInstanceSpecification *owningInstance);
 
 protected:
     explicit QSlot(bool createPimpl, QObject *parent = 0);

@@ -63,43 +63,43 @@ QTemplateParameterPrivate::~QTemplateParameterPrivate()
 {
 }
 
-void QTemplateParameterPrivate::setDefault_(const QParameterableElement *default_)
+void QTemplateParameterPrivate::setDefault_(QParameterableElement *default_)
 {
-    this->default_ = const_cast<QParameterableElement *>(default_);
+    this->default_ = default_;
 }
 
-void QTemplateParameterPrivate::setParameteredElement(const QParameterableElement *parameteredElement)
+void QTemplateParameterPrivate::setParameteredElement(QParameterableElement *parameteredElement)
 {
-    this->parameteredElement = const_cast<QParameterableElement *>(parameteredElement);
+    this->parameteredElement = parameteredElement;
 }
 
-void QTemplateParameterPrivate::setOwnedParameteredElement(const QParameterableElement *ownedParameteredElement)
+void QTemplateParameterPrivate::setOwnedParameteredElement(QParameterableElement *ownedParameteredElement)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->ownedParameteredElement);
 
-    this->ownedParameteredElement = const_cast<QParameterableElement *>(ownedParameteredElement);
+    this->ownedParameteredElement = ownedParameteredElement;
 
     // Adjust subsetted property(ies)
     setParameteredElement(ownedParameteredElement);
     addOwnedElement(ownedParameteredElement);
 }
 
-void QTemplateParameterPrivate::setOwnedDefault(const QParameterableElement *ownedDefault)
+void QTemplateParameterPrivate::setOwnedDefault(QParameterableElement *ownedDefault)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->ownedDefault);
 
-    this->ownedDefault = const_cast<QParameterableElement *>(ownedDefault);
+    this->ownedDefault = ownedDefault;
 
     // Adjust subsetted property(ies)
     addOwnedElement(ownedDefault);
     setDefault_(ownedDefault);
 }
 
-void QTemplateParameterPrivate::setSignature(const QTemplateSignature *signature)
+void QTemplateParameterPrivate::setSignature(QTemplateSignature *signature)
 {
-    this->signature = const_cast<QTemplateSignature *>(signature);
+    this->signature = signature;
 
     // Adjust subsetted property(ies)
     setOwner(signature);
@@ -139,10 +139,12 @@ QParameterableElement *QTemplateParameter::default_() const
     return d->default_;
 }
 
-void QTemplateParameter::setDefault_(const QParameterableElement *default_)
+void QTemplateParameter::setDefault_(QParameterableElement *default_)
 {
     QTUML_D(QTemplateParameter);
-    d->setDefault_(const_cast<QParameterableElement *>(default_));
+    if (d->default_ != default_) {
+        d->setDefault_(default_);
+    }
 }
 
 /*!
@@ -154,10 +156,15 @@ QParameterableElement *QTemplateParameter::parameteredElement() const
     return d->parameteredElement;
 }
 
-void QTemplateParameter::setParameteredElement(const QParameterableElement *parameteredElement)
+void QTemplateParameter::setParameteredElement(QParameterableElement *parameteredElement)
 {
     QTUML_D(QTemplateParameter);
-    d->setParameteredElement(const_cast<QParameterableElement *>(parameteredElement));
+    if (d->parameteredElement != parameteredElement) {
+        d->setParameteredElement(parameteredElement);
+
+        // Adjust opposite property
+        parameteredElement->setTemplateParameter(this);
+    }
 }
 
 /*!
@@ -169,10 +176,15 @@ QParameterableElement *QTemplateParameter::ownedParameteredElement() const
     return d->ownedParameteredElement;
 }
 
-void QTemplateParameter::setOwnedParameteredElement(const QParameterableElement *ownedParameteredElement)
+void QTemplateParameter::setOwnedParameteredElement(QParameterableElement *ownedParameteredElement)
 {
     QTUML_D(QTemplateParameter);
-    d->setOwnedParameteredElement(const_cast<QParameterableElement *>(ownedParameteredElement));
+    if (d->ownedParameteredElement != ownedParameteredElement) {
+        d->setOwnedParameteredElement(ownedParameteredElement);
+
+        // Adjust opposite property
+        ownedParameteredElement->setOwningTemplateParameter(this);
+    }
 }
 
 /*!
@@ -184,10 +196,12 @@ QParameterableElement *QTemplateParameter::ownedDefault() const
     return d->ownedDefault;
 }
 
-void QTemplateParameter::setOwnedDefault(const QParameterableElement *ownedDefault)
+void QTemplateParameter::setOwnedDefault(QParameterableElement *ownedDefault)
 {
     QTUML_D(QTemplateParameter);
-    d->setOwnedDefault(const_cast<QParameterableElement *>(ownedDefault));
+    if (d->ownedDefault != ownedDefault) {
+        d->setOwnedDefault(ownedDefault);
+    }
 }
 
 /*!
@@ -199,10 +213,15 @@ QTemplateSignature *QTemplateParameter::signature() const
     return d->signature;
 }
 
-void QTemplateParameter::setSignature(const QTemplateSignature *signature)
+void QTemplateParameter::setSignature(QTemplateSignature *signature)
 {
     QTUML_D(QTemplateParameter);
-    d->setSignature(const_cast<QTemplateSignature *>(signature));
+    if (d->signature != signature) {
+        d->setSignature(signature);
+
+        // Adjust opposite property
+        signature->addOwnedParameter(this);
+    }
 }
 
 #include "moc_qtemplateparameter.cpp"

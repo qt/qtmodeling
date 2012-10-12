@@ -133,11 +133,11 @@ public:
 
     // Association-ends
     const QList<QOperation *> *ownedOperations() const;
-    void addOwnedOperation(const QOperation *ownedOperation);
-    void removeOwnedOperation(const QOperation *ownedOperation);
+    void addOwnedOperation(QOperation *ownedOperation);
+    void removeOwnedOperation(QOperation *ownedOperation);
     const QList<QProperty *> *ownedAttributes() const;
-    void addOwnedAttribute(const QProperty *ownedAttribute);
-    void removeOwnedAttribute(const QProperty *ownedAttribute);
+    void addOwnedAttribute(QProperty *ownedAttribute);
+    void removeOwnedAttribute(QProperty *ownedAttribute);
 
     // Operations
     const QSet<QNamedElement *> *inherit(const QSet<QNamedElement *> *inhs) const;

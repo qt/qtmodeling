@@ -56,12 +56,12 @@ QReadLinkActionPrivate::~QReadLinkActionPrivate()
 {
 }
 
-void QReadLinkActionPrivate::setResult(const QOutputPin *result)
+void QReadLinkActionPrivate::setResult(QOutputPin *result)
 {
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
-    this->result = const_cast<QOutputPin *>(result);
+    this->result = result;
 
     // Adjust subsetted property(ies)
     addOutput(result);
@@ -101,10 +101,12 @@ QOutputPin *QReadLinkAction::result() const
     return d->result;
 }
 
-void QReadLinkAction::setResult(const QOutputPin *result)
+void QReadLinkAction::setResult(QOutputPin *result)
 {
     QTUML_D(QReadLinkAction);
-    d->setResult(const_cast<QOutputPin *>(result));
+    if (d->result != result) {
+        d->setResult(result);
+    }
 }
 
 #include "moc_qreadlinkaction.cpp"

@@ -89,20 +89,20 @@ public:
     // Internal functions for attributes
 
     // Internal functions for association-ends
-    void addRegion(const QRegion *region);
-    void removeRegion(const QRegion *region);
-    void setExit(const QBehavior *exit);
-    void addConnection(const QConnectionPointReference *connection);
-    void removeConnection(const QConnectionPointReference *connection);
-    void setRedefinedState(const QState *redefinedState);
-    void addDeferrableTrigger(const QTrigger *deferrableTrigger);
-    void removeDeferrableTrigger(const QTrigger *deferrableTrigger);
-    void addConnectionPoint(const QPseudostate *connectionPoint);
-    void removeConnectionPoint(const QPseudostate *connectionPoint);
-    void setEntry(const QBehavior *entry);
-    void setDoActivity(const QBehavior *doActivity);
-    void setSubmachine(const QStateMachine *submachine);
-    void setStateInvariant(const QConstraint *stateInvariant);
+    void addRegion(QRegion *region);
+    void removeRegion(QRegion *region);
+    void setExit(QBehavior *exit);
+    void addConnection(QConnectionPointReference *connection);
+    void removeConnection(QConnectionPointReference *connection);
+    void setRedefinedState(QState *redefinedState);
+    void addDeferrableTrigger(QTrigger *deferrableTrigger);
+    void removeDeferrableTrigger(QTrigger *deferrableTrigger);
+    void addConnectionPoint(QPseudostate *connectionPoint);
+    void removeConnectionPoint(QPseudostate *connectionPoint);
+    void setEntry(QBehavior *entry);
+    void setDoActivity(QBehavior *doActivity);
+    void setSubmachine(QStateMachine *submachine);
+    void setStateInvariant(QConstraint *stateInvariant);
 };
 
 QT_END_NAMESPACE_QTUML

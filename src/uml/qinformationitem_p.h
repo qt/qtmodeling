@@ -65,8 +65,8 @@ public:
     QSet<QClassifier *> *represented;
 
     // Internal functions for association-ends
-    void addRepresented(const QClassifier *represented);
-    void removeRepresented(const QClassifier *represented);
+    void addRepresented(QClassifier *represented);
+    void removeRepresented(QClassifier *represented);
 };
 
 QT_END_NAMESPACE_QTUML

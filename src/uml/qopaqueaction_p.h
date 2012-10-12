@@ -79,10 +79,10 @@ public:
     void removeLanguage(QString language);
 
     // Internal functions for association-ends
-    void addInputValue(const QInputPin *inputValue);
-    void removeInputValue(const QInputPin *inputValue);
-    void addOutputValue(const QOutputPin *outputValue);
-    void removeOutputValue(const QOutputPin *outputValue);
+    void addInputValue(QInputPin *inputValue);
+    void removeInputValue(QInputPin *inputValue);
+    void addOutputValue(QOutputPin *outputValue);
+    void removeOutputValue(QOutputPin *outputValue);
 };
 
 QT_END_NAMESPACE_QTUML

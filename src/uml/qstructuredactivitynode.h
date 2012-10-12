@@ -143,22 +143,22 @@ public:
 
     // Association-ends
     const QSet<QInputPin *> *structuredNodeInputs() const;
-    void addStructuredNodeInput(const QInputPin *structuredNodeInput);
-    void removeStructuredNodeInput(const QInputPin *structuredNodeInput);
+    void addStructuredNodeInput(QInputPin *structuredNodeInput);
+    void removeStructuredNodeInput(QInputPin *structuredNodeInput);
     const QSet<QActivityNode *> *nodes() const;
-    void addNode(const QActivityNode *node);
-    void removeNode(const QActivityNode *node);
+    void addNode(QActivityNode *node);
+    void removeNode(QActivityNode *node);
     const QSet<QOutputPin *> *structuredNodeOutputs() const;
-    void addStructuredNodeOutput(const QOutputPin *structuredNodeOutput);
-    void removeStructuredNodeOutput(const QOutputPin *structuredNodeOutput);
+    void addStructuredNodeOutput(QOutputPin *structuredNodeOutput);
+    void removeStructuredNodeOutput(QOutputPin *structuredNodeOutput);
     const QSet<QActivityEdge *> *edges() const;
-    void addEdge(const QActivityEdge *edge);
-    void removeEdge(const QActivityEdge *edge);
+    void addEdge(QActivityEdge *edge);
+    void removeEdge(QActivityEdge *edge);
     const QSet<QVariable *> *variables() const;
-    void addVariable(const QVariable *variable);
-    void removeVariable(const QVariable *variable);
+    void addVariable(QVariable *variable);
+    void removeVariable(QVariable *variable);
     QActivity *activity() const;
-    void setActivity(const QActivity *activity);
+    void setActivity(QActivity *activity);
 
 protected:
     explicit QStructuredActivityNode(bool createPimpl, QObject *parent = 0);

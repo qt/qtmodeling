@@ -66,40 +66,40 @@ QLifelinePrivate::~QLifelinePrivate()
     delete coveredBy;
 }
 
-void QLifelinePrivate::setRepresents(const QConnectableElement *represents)
+void QLifelinePrivate::setRepresents(QConnectableElement *represents)
 {
-    this->represents = const_cast<QConnectableElement *>(represents);
+    this->represents = represents;
 }
 
-void QLifelinePrivate::setDecomposedAs(const QPartDecomposition *decomposedAs)
+void QLifelinePrivate::setDecomposedAs(QPartDecomposition *decomposedAs)
 {
-    this->decomposedAs = const_cast<QPartDecomposition *>(decomposedAs);
+    this->decomposedAs = decomposedAs;
 }
 
-void QLifelinePrivate::addCoveredBy(const QInteractionFragment *coveredBy)
+void QLifelinePrivate::addCoveredBy(QInteractionFragment *coveredBy)
 {
-    this->coveredBy->insert(const_cast<QInteractionFragment *>(coveredBy));
+    this->coveredBy->insert(coveredBy);
 }
 
-void QLifelinePrivate::removeCoveredBy(const QInteractionFragment *coveredBy)
+void QLifelinePrivate::removeCoveredBy(QInteractionFragment *coveredBy)
 {
-    this->coveredBy->remove(const_cast<QInteractionFragment *>(coveredBy));
+    this->coveredBy->remove(coveredBy);
 }
 
-void QLifelinePrivate::setInteraction(const QInteraction *interaction)
+void QLifelinePrivate::setInteraction(QInteraction *interaction)
 {
-    this->interaction = const_cast<QInteraction *>(interaction);
+    this->interaction = interaction;
 
     // Adjust subsetted property(ies)
     setNamespace_(interaction);
 }
 
-void QLifelinePrivate::setSelector(const QValueSpecification *selector)
+void QLifelinePrivate::setSelector(QValueSpecification *selector)
 {
     // Adjust subsetted property(ies)
     removeOwnedElement(this->selector);
 
-    this->selector = const_cast<QValueSpecification *>(selector);
+    this->selector = selector;
 
     // Adjust subsetted property(ies)
     addOwnedElement(selector);
@@ -139,10 +139,12 @@ QConnectableElement *QLifeline::represents() const
     return d->represents;
 }
 
-void QLifeline::setRepresents(const QConnectableElement *represents)
+void QLifeline::setRepresents(QConnectableElement *represents)
 {
     QTUML_D(QLifeline);
-    d->setRepresents(const_cast<QConnectableElement *>(represents));
+    if (d->represents != represents) {
+        d->setRepresents(represents);
+    }
 }
 
 /*!
@@ -154,10 +156,12 @@ QPartDecomposition *QLifeline::decomposedAs() const
     return d->decomposedAs;
 }
 
-void QLifeline::setDecomposedAs(const QPartDecomposition *decomposedAs)
+void QLifeline::setDecomposedAs(QPartDecomposition *decomposedAs)
 {
     QTUML_D(QLifeline);
-    d->setDecomposedAs(const_cast<QPartDecomposition *>(decomposedAs));
+    if (d->decomposedAs != decomposedAs) {
+        d->setDecomposedAs(decomposedAs);
+    }
 }
 
 /*!
@@ -169,16 +173,26 @@ const QSet<QInteractionFragment *> *QLifeline::coveredBy() const
     return d->coveredBy;
 }
 
-void QLifeline::addCoveredBy(const QInteractionFragment *coveredBy)
+void QLifeline::addCoveredBy(QInteractionFragment *coveredBy)
 {
     QTUML_D(QLifeline);
-    d->addCoveredBy(const_cast<QInteractionFragment *>(coveredBy));
+    if (!d->coveredBy->contains(coveredBy)) {
+        d->addCoveredBy(coveredBy);
+
+        // Adjust opposite property
+        coveredBy->addCovered(this);
+    }
 }
 
-void QLifeline::removeCoveredBy(const QInteractionFragment *coveredBy)
+void QLifeline::removeCoveredBy(QInteractionFragment *coveredBy)
 {
     QTUML_D(QLifeline);
-    d->removeCoveredBy(const_cast<QInteractionFragment *>(coveredBy));
+    if (d->coveredBy->contains(coveredBy)) {
+        d->removeCoveredBy(coveredBy);
+
+        // Adjust opposite property
+        coveredBy->removeCovered(this);
+    }
 }
 
 /*!
@@ -190,10 +204,15 @@ QInteraction *QLifeline::interaction() const
     return d->interaction;
 }
 
-void QLifeline::setInteraction(const QInteraction *interaction)
+void QLifeline::setInteraction(QInteraction *interaction)
 {
     QTUML_D(QLifeline);
-    d->setInteraction(const_cast<QInteraction *>(interaction));
+    if (d->interaction != interaction) {
+        d->setInteraction(interaction);
+
+        // Adjust opposite property
+        interaction->addLifeline(this);
+    }
 }
 
 /*!
@@ -205,10 +224,12 @@ QValueSpecification *QLifeline::selector() const
     return d->selector;
 }
 
-void QLifeline::setSelector(const QValueSpecification *selector)
+void QLifeline::setSelector(QValueSpecification *selector)
 {
     QTUML_D(QLifeline);
-    d->setSelector(const_cast<QValueSpecification *>(selector));
+    if (d->selector != selector) {
+        d->setSelector(selector);
+    }
 }
 
 #include "moc_qlifeline.cpp"
