@@ -42,7 +42,6 @@
 #include "qreadisclassifiedobjectaction.h"
 #include "qreadisclassifiedobjectaction_p.h"
 #include "qaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QClassifier>
 #include <QtUml/QInputPin>

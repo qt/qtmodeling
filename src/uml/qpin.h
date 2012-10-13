@@ -53,8 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QPinPrivate;
-
 class Q_UML_EXPORT QPin : public QMultiplicityElement, public QObjectNode
 {
     Q_DISABLE_COPY(QPin)

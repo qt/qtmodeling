@@ -53,8 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QControlFlowPrivate;
-
 class Q_UML_EXPORT QControlFlow : public QObject, public QActivityEdge
 {
     Q_OBJECT

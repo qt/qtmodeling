@@ -42,8 +42,6 @@
 #include "qnamespace.h"
 #include "qnamespace_p.h"
 #include "qelement_p.h"
-#include "qelement_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QPackageImport>
 #include <QtUml/QConstraint>

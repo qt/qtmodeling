@@ -53,8 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QClearVariableActionPrivate;
-
 class Q_UML_EXPORT QClearVariableAction : public QObject, public QVariableAction
 {
     Q_OBJECT

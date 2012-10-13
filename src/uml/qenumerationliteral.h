@@ -52,7 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QEnumerationLiteralPrivate;
 class QEnumeration;
 
 class Q_UML_EXPORT QEnumerationLiteral : public QInstanceSpecification

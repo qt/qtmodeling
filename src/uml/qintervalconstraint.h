@@ -52,7 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QIntervalConstraintPrivate;
 class QInterval;
 
 class Q_UML_EXPORT QIntervalConstraint : public QConstraint

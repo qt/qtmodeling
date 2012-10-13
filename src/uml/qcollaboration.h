@@ -57,7 +57,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QCollaborationPrivate;
 class QConnectableElement;
 
 class Q_UML_EXPORT QCollaboration : public QObject, public QStructuredClassifier, public QBehavioredClassifier

@@ -43,7 +43,6 @@
 #include "qinteractionfragment_p.h"
 #include "qelement_p.h"
 #include "qnamedelement_p.h"
-#include "qnamedelement_p.h"
 
 #include <QtUml/QGeneralOrdering>
 #include <QtUml/QInteractionOperand>

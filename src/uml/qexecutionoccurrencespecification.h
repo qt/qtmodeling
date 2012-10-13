@@ -52,7 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QExecutionOccurrenceSpecificationPrivate;
 class QExecutionSpecification;
 
 class Q_UML_EXPORT QExecutionOccurrenceSpecification : public QOccurrenceSpecification

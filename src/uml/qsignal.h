@@ -56,7 +56,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QSignalPrivate;
 class QProperty;
 
 class Q_UML_EXPORT QSignal : public QObject, public QClassifier

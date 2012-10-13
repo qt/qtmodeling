@@ -55,7 +55,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QDeploymentPrivate;
 class QDeploymentSpecification;
 class QDeployedArtifact;
 class QDeploymentTarget;

@@ -42,8 +42,6 @@
 #include "qusecase.h"
 #include "qusecase_p.h"
 #include "qnamespace_p.h"
-#include "qnamespace_p.h"
-#include "qnamespace_p.h"
 
 #include <QtUml/QClassifier>
 #include <QtUml/QInclude>

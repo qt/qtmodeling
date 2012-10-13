@@ -52,7 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QInteractionConstraintPrivate;
 class QValueSpecification;
 
 class Q_UML_EXPORT QInteractionConstraint : public QConstraint

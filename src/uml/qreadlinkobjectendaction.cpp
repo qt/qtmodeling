@@ -42,7 +42,6 @@
 #include "qreadlinkobjectendaction.h"
 #include "qreadlinkobjectendaction_p.h"
 #include "qaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QProperty>
 #include <QtUml/QInputPin>

@@ -53,7 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QTimeObservationPrivate;
 class QNamedElement;
 
 class Q_UML_EXPORT QTimeObservation : public QObject, public QObservation

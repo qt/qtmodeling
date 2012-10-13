@@ -43,11 +43,8 @@
 #include "qartifact_p.h"
 #include "qclassifier_p.h"
 #include "qnamespace_p.h"
-#include "qnamespace_p.h"
-#include "qclassifier_p.h"
 #include "qelement_p.h"
 #include "qnamedelement_p.h"
-#include "qnamespace_p.h"
 
 #include <QtUml/QManifestation>
 #include <QtUml/QProperty>

@@ -43,7 +43,6 @@
 #include "qprofileapplication_p.h"
 #include "qelement_p.h"
 #include "qdirectedrelationship_p.h"
-#include "qdirectedrelationship_p.h"
 
 #include <QtUml/QProfile>
 #include <QtUml/QPackage>

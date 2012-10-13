@@ -42,7 +42,6 @@
 #include "qinstancespecification.h"
 #include "qinstancespecification_p.h"
 #include "qelement_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QClassifier>
 #include <QtUml/QSlot>

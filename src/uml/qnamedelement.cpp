@@ -42,7 +42,6 @@
 #include "qnamedelement.h"
 #include "qnamedelement_p.h"
 #include "qelement_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QPackage>
 #include <QtUml/QNamespace>
@@ -238,8 +237,13 @@ const QList<QNamespace *> *QNamedElement::allNamespaces() const
         return new QList<QNamespace *>;
     }
     else {
-        QList<QNamespace *> *allNamespaces_ = const_cast<QList<QNamespace *> *>(d->namespace_->allNamespaces());
-        allNamespaces_->append(d->namespace_);
+        QList<QNamespace *> *allNamespaces_ = new QList<QNamespace *>;
+        QNamespace *namespace_ = this->namespace_();
+        while (namespace_) {
+            allNamespaces_->append(namespace_);
+            namespace_ = namespace_->namespace_();
+        }
+        return allNamespaces_;
     }
 }
 

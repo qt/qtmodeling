@@ -53,8 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QAssociationClassPrivate;
-
 class Q_UML_EXPORT QAssociationClass : public QClass, public QAssociation
 {
     Q_OBJECT

@@ -55,7 +55,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QClassifierTemplateParameterPrivate;
 class QClassifier;
 
 class Q_UML_EXPORT QClassifierTemplateParameter : public QTemplateParameter

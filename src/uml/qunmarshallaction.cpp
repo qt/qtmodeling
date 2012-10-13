@@ -42,7 +42,6 @@
 #include "qunmarshallaction.h"
 #include "qunmarshallaction_p.h"
 #include "qaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 #include <QtUml/QOutputPin>

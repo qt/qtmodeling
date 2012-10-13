@@ -63,7 +63,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QPropertyPrivate;
 class QRedefinableElement;
 class QParameterableElement;
 class QType;

@@ -53,8 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QCentralBufferNodePrivate;
-
 class Q_UML_EXPORT QCentralBufferNode : public QObject, public QObjectNode
 {
     Q_OBJECT

@@ -42,7 +42,6 @@
 #include "qtemplatesignature.h"
 #include "qtemplatesignature_p.h"
 #include "qelement_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QTemplateParameter>
 #include <QtUml/QTemplateableElement>

@@ -41,6 +41,7 @@
 
 #include "qtype.h"
 #include "qtype_p.h"
+#include "qnamedelement_p.h"
 
 #include <QtUml/QPackage>
 
@@ -58,6 +59,9 @@ QTypePrivate::~QTypePrivate()
 void QTypePrivate::setPackage(QPackage *package)
 {
     this->package = package;
+
+    // Adjust subsetted property(ies)
+    setNamespace_(package);
 }
 
 /*!

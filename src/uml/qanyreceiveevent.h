@@ -53,8 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QAnyReceiveEventPrivate;
-
 class Q_UML_EXPORT QAnyReceiveEvent : public QObject, public QMessageEvent
 {
     Q_OBJECT

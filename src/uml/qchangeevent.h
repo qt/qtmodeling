@@ -53,7 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QChangeEventPrivate;
 class QValueSpecification;
 
 class Q_UML_EXPORT QChangeEvent : public QObject, public QEvent

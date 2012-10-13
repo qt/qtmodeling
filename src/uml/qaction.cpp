@@ -42,9 +42,6 @@
 #include "qaction.h"
 #include "qaction_p.h"
 #include "qelement_p.h"
-#include "qelement_p.h"
-#include "qelement_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QOutputPin>
 #include <QtUml/QConstraint>

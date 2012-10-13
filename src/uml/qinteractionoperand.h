@@ -57,7 +57,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QInteractionOperandPrivate;
 class QInteractionConstraint;
 
 class Q_UML_EXPORT QInteractionOperand : public QObject, public QInteractionFragment, public QNamespace

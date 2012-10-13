@@ -43,8 +43,6 @@
 #include "qtemplatebinding_p.h"
 #include "qdirectedrelationship_p.h"
 #include "qelement_p.h"
-#include "qdirectedrelationship_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QTemplateableElement>
 #include <QtUml/QTemplateParameterSubstitution>

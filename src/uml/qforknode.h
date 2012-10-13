@@ -53,8 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QForkNodePrivate;
-
 class Q_UML_EXPORT QForkNode : public QObject, public QControlNode
 {
     Q_OBJECT

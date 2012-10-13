@@ -60,7 +60,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QConnectorPrivate;
 class QBehavior;
 class QConnectorEnd;
 class QAssociation;

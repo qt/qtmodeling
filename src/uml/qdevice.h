@@ -52,8 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QDevicePrivate;
-
 class Q_UML_EXPORT QDevice : public QNode
 {
     Q_OBJECT

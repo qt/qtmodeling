@@ -53,8 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QGatePrivate;
-
 class Q_UML_EXPORT QGate : public QObject, public QMessageEnd
 {
     Q_OBJECT

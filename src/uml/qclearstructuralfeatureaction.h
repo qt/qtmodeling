@@ -53,7 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QClearStructuralFeatureActionPrivate;
 class QOutputPin;
 
 class Q_UML_EXPORT QClearStructuralFeatureAction : public QObject, public QStructuralFeatureAction

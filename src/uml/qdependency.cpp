@@ -42,7 +42,6 @@
 #include "qdependency.h"
 #include "qdependency_p.h"
 #include "qdirectedrelationship_p.h"
-#include "qdirectedrelationship_p.h"
 
 #include <QtUml/QNamedElement>
 

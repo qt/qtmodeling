@@ -55,7 +55,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QLinkActionPrivate;
 class QLinkEndData;
 class QInputPin;
 class QAssociation;

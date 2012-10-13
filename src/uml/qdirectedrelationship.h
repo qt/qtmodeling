@@ -55,7 +55,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QDirectedRelationshipPrivate;
 class QElement;
 
 class Q_UML_EXPORT QDirectedRelationship : public QRelationship

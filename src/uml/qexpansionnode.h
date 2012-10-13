@@ -53,7 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QExpansionNodePrivate;
 class QExpansionRegion;
 
 class Q_UML_EXPORT QExpansionNode : public QObject, public QObjectNode

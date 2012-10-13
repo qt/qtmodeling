@@ -53,8 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QActivityFinalNodePrivate;
-
 class Q_UML_EXPORT QActivityFinalNode : public QObject, public QFinalNode
 {
     Q_OBJECT

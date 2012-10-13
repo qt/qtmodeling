@@ -56,7 +56,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QValueSpecificationPrivate;
 class QParameterableElement;
 
 class Q_UML_EXPORT QValueSpecification : public QTypedElement, public QPackageableElement

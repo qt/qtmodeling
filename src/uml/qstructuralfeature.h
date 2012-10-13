@@ -54,8 +54,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QStructuralFeaturePrivate;
-
 class Q_UML_EXPORT QStructuralFeature : public virtual QTypedElement, public QMultiplicityElement, public QFeature
 {
     Q_DISABLE_COPY(QStructuralFeature)

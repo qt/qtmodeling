@@ -52,7 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QExecutionSpecificationPrivate;
 class QOccurrenceSpecification;
 
 class Q_UML_EXPORT QExecutionSpecification : public QInteractionFragment

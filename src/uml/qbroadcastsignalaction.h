@@ -53,7 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QBroadcastSignalActionPrivate;
 class QSignal;
 
 class Q_UML_EXPORT QBroadcastSignalAction : public QObject, public QInvocationAction

@@ -43,8 +43,6 @@
 #include "qactivity_p.h"
 #include "qelement_p.h"
 #include "qnamespace_p.h"
-#include "qelement_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QStructuredActivityNode>
 #include <QtUml/QVariable>

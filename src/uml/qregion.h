@@ -57,7 +57,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QRegionPrivate;
 class QVertex;
 class QTransition;
 class QStateMachine;

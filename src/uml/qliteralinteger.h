@@ -53,8 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QLiteralIntegerPrivate;
-
 class Q_UML_EXPORT QLiteralInteger : public QObject, public QLiteralSpecification
 {
     Q_OBJECT

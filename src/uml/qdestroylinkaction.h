@@ -56,7 +56,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QDestroyLinkActionPrivate;
 class QLinkEndDestructionData;
 
 class Q_UML_EXPORT QDestroyLinkAction : public QObject, public QWriteLinkAction

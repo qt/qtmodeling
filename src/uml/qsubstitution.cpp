@@ -43,7 +43,6 @@
 #include "qsubstitution_p.h"
 #include "qdependency_p.h"
 #include "qelement_p.h"
-#include "qdependency_p.h"
 
 #include <QtUml/QClassifier>
 

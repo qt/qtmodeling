@@ -54,7 +54,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QIncludePrivate;
 class QUseCase;
 
 class Q_UML_EXPORT QInclude : public QObject, public QDirectedRelationship, public QNamedElement

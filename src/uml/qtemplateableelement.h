@@ -55,7 +55,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QTemplateableElementPrivate;
 class QTemplateSignature;
 class QTemplateBinding;
 class QParameterableElement;

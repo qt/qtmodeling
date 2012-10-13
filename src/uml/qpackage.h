@@ -59,7 +59,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QPackagePrivate;
 class QProfile;
 class QNamedElement;
 class QProfileApplication;

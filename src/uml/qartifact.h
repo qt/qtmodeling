@@ -59,7 +59,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QArtifactPrivate;
 class QManifestation;
 class QProperty;
 class QOperation;

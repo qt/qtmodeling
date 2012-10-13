@@ -156,10 +156,16 @@ QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
 
 QT_MODULE([% namespace.split('/').0 %])
 
+[%- IF not(class.superclass) %]
 class ${class.name}Private;
-
+[% END %]
+[%- found = 'false' -%]
 [%- FOREACH forwarddecl IN class.forwarddecl -%]
 [%- IF forwarddecl.namespace == namespace.replace('/', '::') -%]
+[%- IF found == 'false' %]
+
+[%- found = 'true' -%]
+[%- END -%]
 class ${forwarddecl.content};
 
 [%- END -%]

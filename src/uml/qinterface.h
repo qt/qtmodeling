@@ -57,7 +57,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QInterfacePrivate;
 class QProtocolStateMachine;
 class QReception;
 class QProperty;

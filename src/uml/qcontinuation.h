@@ -53,8 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QContinuationPrivate;
-
 class Q_UML_EXPORT QContinuation : public QObject, public QInteractionFragment
 {
     Q_OBJECT

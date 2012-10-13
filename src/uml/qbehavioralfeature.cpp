@@ -42,7 +42,6 @@
 #include "qbehavioralfeature.h"
 #include "qbehavioralfeature_p.h"
 #include "qnamespace_p.h"
-#include "qnamespace_p.h"
 
 #include <QtUml/QType>
 #include <QtUml/QNamedElement>

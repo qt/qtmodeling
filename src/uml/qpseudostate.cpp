@@ -42,7 +42,6 @@
 #include "qpseudostate.h"
 #include "qpseudostate_p.h"
 #include "qnamedelement_p.h"
-#include "qnamedelement_p.h"
 
 #include <QtUml/QState>
 #include <QtUml/QStateMachine>

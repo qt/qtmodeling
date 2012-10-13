@@ -42,7 +42,6 @@
 #include "qreplyaction.h"
 #include "qreplyaction_p.h"
 #include "qaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QTrigger>
 #include <QtUml/QInputPin>

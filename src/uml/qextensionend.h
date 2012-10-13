@@ -52,7 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QExtensionEndPrivate;
 class QStereotype;
 
 class Q_UML_EXPORT QExtensionEnd : public QProperty

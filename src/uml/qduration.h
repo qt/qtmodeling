@@ -56,7 +56,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QDurationPrivate;
 class QObservation;
 
 class Q_UML_EXPORT QDuration : public QObject, public QValueSpecification

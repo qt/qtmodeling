@@ -42,7 +42,6 @@
 #include "qwritestructuralfeatureaction.h"
 #include "qwritestructuralfeatureaction_p.h"
 #include "qaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QOutputPin>
 #include <QtUml/QInputPin>

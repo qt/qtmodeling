@@ -55,7 +55,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QRedefinableElementPrivate;
 class QClassifier;
 
 class Q_UML_EXPORT QRedefinableElement : public virtual QNamedElement

@@ -57,7 +57,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QDependencyPrivate;
 class QNamedElement;
 
 class Q_UML_EXPORT QDependency : public QObject, public QPackageableElement, public QDirectedRelationship

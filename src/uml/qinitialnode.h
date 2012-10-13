@@ -53,8 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QInitialNodePrivate;
-
 class Q_UML_EXPORT QInitialNode : public QObject, public QControlNode
 {
     Q_OBJECT

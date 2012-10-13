@@ -53,8 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QMergeNodePrivate;
-
 class Q_UML_EXPORT QMergeNode : public QObject, public QControlNode
 {
     Q_OBJECT

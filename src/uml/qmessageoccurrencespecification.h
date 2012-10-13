@@ -53,8 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QMessageOccurrenceSpecificationPrivate;
-
 class Q_UML_EXPORT QMessageOccurrenceSpecification : public QOccurrenceSpecification, public QMessageEnd
 {
     Q_OBJECT

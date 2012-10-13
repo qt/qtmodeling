@@ -55,8 +55,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QModelPrivate;
-
 class Q_UML_EXPORT QModel : public QPackage
 {
     Q_OBJECT

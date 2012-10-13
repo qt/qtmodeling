@@ -44,7 +44,6 @@
 #include "qrelationship_p.h"
 #include "qclassifier_p.h"
 #include "qnamespace_p.h"
-#include "qnamespace_p.h"
 
 #include <QtUml/QType>
 #include <QtUml/QProperty>

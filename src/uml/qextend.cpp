@@ -42,7 +42,6 @@
 #include "qextend.h"
 #include "qextend_p.h"
 #include "qdirectedrelationship_p.h"
-#include "qdirectedrelationship_p.h"
 #include "qnamedelement_p.h"
 #include "qelement_p.h"
 

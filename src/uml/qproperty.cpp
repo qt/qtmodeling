@@ -45,12 +45,6 @@
 #include "qredefinableelement_p.h"
 #include "qnamedelement_p.h"
 #include "qelement_p.h"
-#include "qelement_p.h"
-#include "qnamedelement_p.h"
-#include "qelement_p.h"
-#include "qnamedelement_p.h"
-#include "qredefinableelement_p.h"
-#include "qnamedelement_p.h"
 
 #include <QtUml/QRedefinableElement>
 #include <QtUml/QParameterableElement>
@@ -168,10 +162,16 @@ void QPropertyPrivate::setDefaultValue(QValueSpecification *defaultValue)
 
 void QPropertyPrivate::setClass_(QClass *class_)
 {
+    // Adjust subsetted property(ies)
+    removeFeaturingClassifier(this->class_);
+    removeRedefinitionContext(this->class_);
+
     this->class_ = class_;
 
     // Adjust subsetted property(ies)
     setNamespace_(class_);
+    addFeaturingClassifier(class_);
+    addRedefinitionContext(class_);
 }
 
 void QPropertyPrivate::setAssociationEnd(QProperty *associationEnd)
@@ -184,10 +184,16 @@ void QPropertyPrivate::setAssociationEnd(QProperty *associationEnd)
 
 void QPropertyPrivate::setDatatype(QDataType *datatype)
 {
+    // Adjust subsetted property(ies)
+    removeFeaturingClassifier(this->datatype);
+    removeRedefinitionContext(this->datatype);
+
     this->datatype = datatype;
 
     // Adjust subsetted property(ies)
     setNamespace_(datatype);
+    addFeaturingClassifier(datatype);
+    addRedefinitionContext(datatype);
 }
 
 void QPropertyPrivate::addRedefinedProperty(QProperty *redefinedProperty)
@@ -213,10 +219,16 @@ void QPropertyPrivate::setAssociation(QAssociation *association)
 
 void QPropertyPrivate::setInterface(QInterface *interface)
 {
+    // Adjust subsetted property(ies)
+    removeFeaturingClassifier(this->interface);
+    removeRedefinitionContext(this->interface);
+
     this->interface = interface;
 
     // Adjust subsetted property(ies)
     setNamespace_(interface);
+    addFeaturingClassifier(interface);
+    addRedefinitionContext(interface);
 }
 
 /*!

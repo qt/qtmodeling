@@ -53,8 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QActorPrivate;
-
 class Q_UML_EXPORT QActor : public QObject, public QBehavioredClassifier
 {
     Q_OBJECT

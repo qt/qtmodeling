@@ -42,7 +42,6 @@
 #include "qstatemachine.h"
 #include "qstatemachine_p.h"
 #include "qnamespace_p.h"
-#include "qnamespace_p.h"
 
 #include <QtUml/QNamespace>
 #include <QtUml/QRedefinableElement>

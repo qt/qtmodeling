@@ -44,8 +44,6 @@
 #include "qredefinableelement_p.h"
 #include "qnamespace_p.h"
 #include "qnamedelement_p.h"
-#include "qnamedelement_p.h"
-#include "qnamespace_p.h"
 
 #include <QtUml/QVertex>
 #include <QtUml/QTransition>

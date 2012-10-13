@@ -56,8 +56,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QImagePrivate;
-
 class Q_UML_EXPORT QImage : public QObject, public QElement
 {
     Q_OBJECT

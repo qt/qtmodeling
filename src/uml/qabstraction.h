@@ -52,7 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QAbstractionPrivate;
 class QOpaqueExpression;
 
 class Q_UML_EXPORT QAbstraction : public QDependency

@@ -42,7 +42,6 @@
 #include "qstringexpression.h"
 #include "qstringexpression_p.h"
 #include "qelement_p.h"
-#include "qelement_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML

@@ -117,6 +117,10 @@
         </ownedComment>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="BaseClass-aRealOperation-result-_upperValue" value="*"/>
       </ownedAttribute>
+      <packagedElement xmi:type="uml:Association" xmi:id="A_myassociation2" name="A_myassociation2" memberEnd="A_myassociation2-end TestingClass-readWriteSingleValuedEnumerationAttribute">
+         <ownedEnd xmi:type="uml:Property" xmi:id="A_myassociation2-end" name="end" visibility="public" type="VisibilityKind" subsettedProperty="TestingClass-readWriteMultiValuedEnumerationAttribute" association="A_myassociation2">
+         </ownedEnd>
+      </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="myassociation" name="myassociation" memberEnd="UsedClass-oppositeReadWriteSingleValuedObjectAttribute TestingClass-readWriteSingleValuedObjectAttribute"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="UsedClass-oppositeReadWriteSingleValuedObjectAttribute" name="oppositeReadWriteSingleValuedObjectAttribute" type="TestingClass" association="myassociation">
         <ownedComment xmi:type="uml:Comment" xmi:id="UsedClass-oppositeReadWriteSingleValuedObjectAttribute-_ownedComment.0" annotatedElement="UsedClass-oppositeReadWriteSingleValuedObjectAttribute">
@@ -165,7 +169,7 @@
         <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <!-- ENUMERATION -->
-      <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-readWriteSingleValuedEnumerationAttribute" name="readWriteSingleValuedEnumerationAttribute" type="VisibilityKind">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-readWriteSingleValuedEnumerationAttribute" name="readWriteSingleValuedEnumerationAttribute" type="VisibilityKind" association="A_myassociation2" subsettedProperty="TestingClass-readOnlySingleValuedEnumerationAttribute A_myassociation2-end">
         <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-readWriteSingleValuedEnumerationAttribute-_ownedComment.0" annotatedElement="TestingClass-readWriteSingleValuedEnumerationAttribute">
           <body>readWriteSingleValuedEnumerationAttribute.</body>
         </ownedComment>
@@ -175,7 +179,7 @@
         <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-readOnlySingleValuedEnumerationAttribute-_ownedComment.0" annotatedElement="TestingClass-readOnlySingleValuedEnumerationAttribute">
           <body>readOnlySingleValuedEnumerationAttribute.</body>
         </ownedComment>
-        <defaultValue xmi:type="uml:InstanceValue" xmi:id="TestingClass-readWriteSingleValuedEnumerationAttribute-_defaultValue" type="VisibilityKind"/>
+        <defaultValue xmi:type="uml:InstanceValue" xmi:id="TestingClass-readOnlySingleValuedEnumerationAttribute-_defaultValue" type="VisibilityKind"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="TestingClass-readWriteMultiValuedEnumerationAttribute" name="readWriteMultiValuedEnumerationAttribute" type="VisibilityKind">
         <ownedComment xmi:type="uml:Comment" xmi:id="TestingClass-readWriteMultiValuedEnumerationAttribute-_ownedComment.0" annotatedElement="TestingClass-readWriteMultiValuedEnumerationAttribute">

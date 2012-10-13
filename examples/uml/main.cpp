@@ -44,7 +44,7 @@ int main ()
     class_->setAbstract(false);
 
     model->addOwnedType(primitiveType);
-    model->addOwnedType(enumeration);
+    package->addOwnedType(enumeration);
     model->addNestedPackage(package);
     package->addOwnedType(class_);
 
@@ -53,7 +53,7 @@ int main ()
     qDebug() << "package->ownedMembers()->size():" << model->ownedMembers()->size();
     qDebug() << "package->ownedRules()->size():" << model->ownedRules()->size();
     qDebug() << "package->packagedElements()->size():" << model->packagedElements()->size();
-    model->removePackagedElement(model->packagedElements()->values().last());
+    //model->removeNestedPackage(package);
     qDebug() << "package->ownedMembers()->size():" << model->ownedMembers()->size();
     qDebug() << "package->packagedElements()->size():" << model->packagedElements()->size();
 
@@ -66,7 +66,11 @@ int main ()
     QScopedPointer<QTypeList> ownedTypes (model->ownedTypes());
     qDebug() << "package->ownedTypes()->size():" << ownedTypes->size();
 
-    qDebug() << "package->nestingPackage->name():" << package->nestingPackage()->name();
+    qDebug() << "package->qualifiedName():" << package->qualifiedName();
+    qDebug() << "class_->qualifiedName():" << class_->qualifiedName();
+    qDebug() << "enumeration->qualifiedName():" << enumeration->qualifiedName();
+    qDebug() << "primitiveType->qualifiedName():" << primitiveType->qualifiedName();
+    qDebug() << "directionIn->qualifiedName():" << directionIn->qualifiedName();
 
     checkProperties(model);
 

@@ -52,7 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QSubstitutionPrivate;
 class QClassifier;
 
 class Q_UML_EXPORT QSubstitution : public QRealization

@@ -52,8 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QPrimitiveTypePrivate;
-
 class Q_UML_EXPORT QPrimitiveType : public QDataType
 {
     Q_OBJECT

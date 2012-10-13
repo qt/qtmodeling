@@ -52,8 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QLiteralSpecificationPrivate;
-
 class Q_UML_EXPORT QLiteralSpecification : public QValueSpecification
 {
     Q_DISABLE_COPY(QLiteralSpecification)
