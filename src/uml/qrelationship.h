@@ -55,8 +55,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QRelationshipPrivate;
-
 class Q_UML_EXPORT QRelationship : public virtual QElement
 {
     Q_DISABLE_COPY(QRelationship)

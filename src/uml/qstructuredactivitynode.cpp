@@ -44,9 +44,6 @@
 #include "qaction_p.h"
 #include "qactivitygroup_p.h"
 #include "qelement_p.h"
-#include "qaction_p.h"
-#include "qactivitygroup_p.h"
-#include "qelement_p.h"
 #include "qnamespace_p.h"
 
 #include <QtUml/QOutputPin>

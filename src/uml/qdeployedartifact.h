@@ -52,8 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QDeployedArtifactPrivate;
-
 class Q_UML_EXPORT QDeployedArtifact : public virtual QNamedElement
 {
     Q_DISABLE_COPY(QDeployedArtifact)

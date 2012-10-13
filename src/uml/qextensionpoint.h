@@ -53,7 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QExtensionPointPrivate;
 class QUseCase;
 
 class Q_UML_EXPORT QExtensionPoint : public QObject, public QRedefinableElement

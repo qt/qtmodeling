@@ -52,7 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QTypedElementPrivate;
 class QType;
 
 class Q_UML_EXPORT QTypedElement : public virtual QNamedElement

@@ -42,7 +42,7 @@
 #include "qpackage.h"
 #include "qpackage_p.h"
 #include "qnamespace_p.h"
-#include "qelement_p.h"
+#include "qnamedelement_p.h"
 #include "qelement_p.h"
 
 #include <QtUml/QProfile>
@@ -93,6 +93,9 @@ void QPackagePrivate::removePackagedElement(QPackageableElement *packagedElement
 void QPackagePrivate::setNestingPackage(QPackage *nestingPackage)
 {
     this->nestingPackage = nestingPackage;
+
+    // Adjust subsetted property(ies)
+    setNamespace_(nestingPackage);
 }
 
 void QPackagePrivate::addProfileApplication(QProfileApplication *profileApplication)

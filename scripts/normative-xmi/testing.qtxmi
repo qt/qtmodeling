@@ -142,13 +142,6 @@
                 </accessor>
                 <documentation>readOnlyMultiValuedPrimitiveAttribute.</documentation>
             </attribute>
-            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="TestingClass-readWriteSingleValuedEnumerationAttribute" defaultValue="QtUnknown::VisibilityPublic" aggregation="none">
-                <accessor return="QtUnknown::VisibilityKind " name="readWriteSingleValuedEnumerationAttribute" constness=" const"/>
-                <accessor return="void " name="setReadWriteSingleValuedEnumerationAttribute" constness="">
-                    <parameter type="QtUnknown::VisibilityKind " name="readWriteSingleValuedEnumerationAttribute"/>
-                </accessor>
-                <documentation>readWriteSingleValuedEnumerationAttribute.</documentation>
-            </attribute>
             <attribute isDerived="false" isDerivedUnion="false" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="TestingClass-readOnlySingleValuedEnumerationAttribute" defaultValue="" aggregation="none">
                 <accessor return="QtUnknown::VisibilityKind " name="readOnlySingleValuedEnumerationAttribute" constness=" const"/>
                 <accessor return="void " name="setReadOnlySingleValuedEnumerationAttribute" constness="">
@@ -209,6 +202,13 @@
                     <parameter type="QTestingClass *" name="oppositeReadWriteSingleValuedObjectAttribute"/>
                 </accessor>
                 <documentation>oppositeReadWriteSingleValuedObjectAttribute.</documentation>
+            </associationend>
+            <associationend isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="TestingClass-readOnlySingleValuedEnumerationAttribute TestingClass-readWriteMultiValuedEnumerationAttribute" redefinedProperty="" id="TestingClass-readWriteSingleValuedEnumerationAttribute" defaultValue="QtUnknown::VisibilityPublic" aggregation="none" oppositeEnd="">
+                <accessor return="QtUnknown::VisibilityKind " name="readWriteSingleValuedEnumerationAttribute" constness=" const"/>
+                <accessor return="void " name="setReadWriteSingleValuedEnumerationAttribute" constness="">
+                    <parameter type="QtUnknown::VisibilityKind " name="readWriteSingleValuedEnumerationAttribute"/>
+                </accessor>
+                <documentation>readWriteSingleValuedEnumerationAttribute.</documentation>
             </associationend>
             <associationend isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="TestingClass-readWriteSingleValuedObjectAttribute" defaultValue="" aggregation="none" oppositeEnd="UsedClass-oppositeReadWriteSingleValuedObjectAttribute">
                 <accessor return="QUsedClass *" name="readWriteSingleValuedObjectAttribute" constness=" const"/>

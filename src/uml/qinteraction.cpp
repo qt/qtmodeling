@@ -43,9 +43,6 @@
 #include "qinteraction_p.h"
 #include "qelement_p.h"
 #include "qnamespace_p.h"
-#include "qnamespace_p.h"
-#include "qnamespace_p.h"
-#include "qnamespace_p.h"
 
 #include <QtUml/QMessage>
 #include <QtUml/QLifeline>

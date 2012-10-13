@@ -57,8 +57,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QCommentPrivate;
-
 class Q_UML_EXPORT QComment : public QObject, public QElement
 {
     Q_OBJECT

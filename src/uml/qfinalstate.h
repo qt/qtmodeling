@@ -52,8 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QFinalStatePrivate;
-
 class Q_UML_EXPORT QFinalState : public QState
 {
     Q_OBJECT

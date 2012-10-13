@@ -43,7 +43,6 @@
 #include "qpackageimport_p.h"
 #include "qelement_p.h"
 #include "qdirectedrelationship_p.h"
-#include "qdirectedrelationship_p.h"
 
 #include <QtUml/QPackage>
 #include <QtUml/QNamespace>

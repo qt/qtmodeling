@@ -53,7 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QJoinNodePrivate;
 class QValueSpecification;
 
 class Q_UML_EXPORT QJoinNode : public QObject, public QControlNode

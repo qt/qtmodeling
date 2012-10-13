@@ -52,7 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QDurationIntervalPrivate;
 class QDuration;
 
 class Q_UML_EXPORT QDurationInterval : public QInterval

@@ -56,7 +56,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QUnmarshallActionPrivate;
 class QInputPin;
 class QOutputPin;
 class QClassifier;

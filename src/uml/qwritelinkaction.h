@@ -52,8 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QWriteLinkActionPrivate;
-
 class Q_UML_EXPORT QWriteLinkAction : public QLinkAction
 {
     Q_DISABLE_COPY(QWriteLinkAction)

@@ -60,7 +60,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QNamedElementPrivate;
 class QPackage;
 class QNamespace;
 class QDependency;

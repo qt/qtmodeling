@@ -43,7 +43,6 @@
 #include "qredefinabletemplatesignature_p.h"
 #include "qtemplatesignature_p.h"
 #include "qredefinableelement_p.h"
-#include "qredefinableelement_p.h"
 
 #include <QtUml/QClassifier>
 #include <QtUml/QTemplateParameter>

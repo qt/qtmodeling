@@ -53,7 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QDestroyObjectActionPrivate;
 class QInputPin;
 
 class Q_UML_EXPORT QDestroyObjectAction : public QObject, public QAction

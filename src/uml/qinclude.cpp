@@ -43,7 +43,6 @@
 #include "qinclude_p.h"
 #include "qdirectedrelationship_p.h"
 #include "qnamedelement_p.h"
-#include "qdirectedrelationship_p.h"
 
 #include <QtUml/QUseCase>
 

@@ -53,8 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QIntervalPrivate;
-
 class Q_UML_EXPORT QInterval : public QObject, public QValueSpecification
 {
     Q_OBJECT

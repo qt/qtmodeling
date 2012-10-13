@@ -53,7 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QReadStructuralFeatureActionPrivate;
 class QOutputPin;
 
 class Q_UML_EXPORT QReadStructuralFeatureAction : public QObject, public QStructuralFeatureAction

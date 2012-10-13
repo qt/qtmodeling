@@ -52,8 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QControlNodePrivate;
-
 class Q_UML_EXPORT QControlNode : public QActivityNode
 {
     Q_DISABLE_COPY(QControlNode)

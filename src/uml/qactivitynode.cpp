@@ -43,7 +43,6 @@
 #include "qactivitynode_p.h"
 #include "qredefinableelement_p.h"
 #include "qelement_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QStructuredActivityNode>
 #include <QtUml/QActivityEdge>

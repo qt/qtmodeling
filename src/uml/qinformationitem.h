@@ -56,8 +56,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QInformationItemPrivate;
-
 class Q_UML_EXPORT QInformationItem : public QObject, public QClassifier
 {
     Q_OBJECT

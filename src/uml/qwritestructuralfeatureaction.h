@@ -52,7 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QWriteStructuralFeatureActionPrivate;
 class QOutputPin;
 class QInputPin;
 

@@ -52,7 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QMessageEndPrivate;
 class QMessage;
 
 class Q_UML_EXPORT QMessageEnd : public virtual QNamedElement

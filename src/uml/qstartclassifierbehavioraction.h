@@ -53,7 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QStartClassifierBehaviorActionPrivate;
 class QInputPin;
 
 class Q_UML_EXPORT QStartClassifierBehaviorAction : public QObject, public QAction

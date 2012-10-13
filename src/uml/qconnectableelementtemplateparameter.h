@@ -52,7 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QConnectableElementTemplateParameterPrivate;
 class QConnectableElement;
 
 class Q_UML_EXPORT QConnectableElementTemplateParameter : public QTemplateParameter

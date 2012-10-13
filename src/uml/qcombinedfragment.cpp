@@ -42,7 +42,6 @@
 #include "qcombinedfragment.h"
 #include "qcombinedfragment_p.h"
 #include "qelement_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QGate>
 #include <QtUml/QInteractionOperand>

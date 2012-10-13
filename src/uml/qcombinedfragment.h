@@ -60,7 +60,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QCombinedFragmentPrivate;
 class QGate;
 class QInteractionOperand;
 

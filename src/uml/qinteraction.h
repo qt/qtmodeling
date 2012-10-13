@@ -57,7 +57,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QInteractionPrivate;
 class QMessage;
 class QLifeline;
 class QAction;

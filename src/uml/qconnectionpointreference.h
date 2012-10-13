@@ -56,7 +56,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QConnectionPointReferencePrivate;
 class QPseudostate;
 class QState;
 

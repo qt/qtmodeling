@@ -42,9 +42,6 @@
 #include "qactivitypartition.h"
 #include "qactivitypartition_p.h"
 #include "qactivitygroup_p.h"
-#include "qactivitygroup_p.h"
-#include "qactivitygroup_p.h"
-#include "qactivitygroup_p.h"
 
 #include <QtUml/QActivityEdge>
 #include <QtUml/QActivityNode>

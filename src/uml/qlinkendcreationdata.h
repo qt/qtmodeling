@@ -52,7 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QLinkEndCreationDataPrivate;
 class QInputPin;
 
 class Q_UML_EXPORT QLinkEndCreationData : public QLinkEndData

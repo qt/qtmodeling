@@ -52,8 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QEventPrivate;
-
 class Q_UML_EXPORT QEvent : public QPackageableElement
 {
     Q_DISABLE_COPY(QEvent)

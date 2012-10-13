@@ -52,8 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QUsagePrivate;
-
 class Q_UML_EXPORT QUsage : public QDependency
 {
     Q_OBJECT

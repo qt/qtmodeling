@@ -52,8 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QFunctionBehaviorPrivate;
-
 class Q_UML_EXPORT QFunctionBehavior : public QOpaqueBehavior
 {
     Q_OBJECT

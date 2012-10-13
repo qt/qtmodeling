@@ -53,8 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QLiteralNullPrivate;
-
 class Q_UML_EXPORT QLiteralNull : public QObject, public QLiteralSpecification
 {
     Q_OBJECT

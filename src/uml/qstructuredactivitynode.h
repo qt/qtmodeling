@@ -58,7 +58,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QStructuredActivityNodePrivate;
 class QOutputPin;
 class QVariable;
 class QInputPin;

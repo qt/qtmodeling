@@ -52,7 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QCreateLinkObjectActionPrivate;
 class QOutputPin;
 
 class Q_UML_EXPORT QCreateLinkObjectAction : public QCreateLinkAction

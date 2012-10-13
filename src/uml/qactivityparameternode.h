@@ -53,7 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QActivityParameterNodePrivate;
 class QParameter;
 
 class Q_UML_EXPORT QActivityParameterNode : public QObject, public QObjectNode

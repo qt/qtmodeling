@@ -42,8 +42,6 @@
 #include "qinteractionuse.h"
 #include "qinteractionuse_p.h"
 #include "qelement_p.h"
-#include "qelement_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QProperty>
 #include <QtUml/QInteraction>

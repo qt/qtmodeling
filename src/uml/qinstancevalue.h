@@ -53,7 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QInstanceValuePrivate;
 class QInstanceSpecification;
 
 class Q_UML_EXPORT QInstanceValue : public QObject, public QValueSpecification

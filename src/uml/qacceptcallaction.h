@@ -52,7 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QAcceptCallActionPrivate;
 class QOutputPin;
 
 class Q_UML_EXPORT QAcceptCallAction : public QAcceptEventAction

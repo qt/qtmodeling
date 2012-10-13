@@ -53,8 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QOutputPinPrivate;
-
 class Q_UML_EXPORT QOutputPin : public QObject, public QPin
 {
     Q_OBJECT

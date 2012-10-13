@@ -42,7 +42,6 @@
 #include "qprofile.h"
 #include "qprofile_p.h"
 #include "qnamespace_p.h"
-#include "qnamespace_p.h"
 
 #include <QtUml/QElementImport>
 #include <QtUml/QPackageImport>

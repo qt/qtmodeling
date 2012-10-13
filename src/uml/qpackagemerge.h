@@ -53,7 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QPackageMergePrivate;
 class QPackage;
 
 class Q_UML_EXPORT QPackageMerge : public QObject, public QDirectedRelationship

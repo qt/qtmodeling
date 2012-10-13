@@ -52,7 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QOperationTemplateParameterPrivate;
 class QOperation;
 
 class Q_UML_EXPORT QOperationTemplateParameter : public QTemplateParameter

@@ -43,9 +43,6 @@
 #include "qactivityedge_p.h"
 #include "qredefinableelement_p.h"
 #include "qelement_p.h"
-#include "qelement_p.h"
-#include "qelement_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QInterruptibleActivityRegion>
 #include <QtUml/QStructuredActivityNode>

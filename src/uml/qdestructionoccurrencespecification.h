@@ -52,8 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QDestructionOccurrenceSpecificationPrivate;
-
 class Q_UML_EXPORT QDestructionOccurrenceSpecification : public QMessageOccurrenceSpecification
 {
     Q_OBJECT

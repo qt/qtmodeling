@@ -53,7 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QReadVariableActionPrivate;
 class QOutputPin;
 
 class Q_UML_EXPORT QReadVariableAction : public QObject, public QVariableAction

@@ -56,7 +56,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QRedefinableTemplateSignaturePrivate;
 class QClassifier;
 class QTemplateParameter;
 

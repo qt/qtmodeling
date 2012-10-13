@@ -3,7 +3,6 @@
     [%- found = 'false' -%]
     [%- FOREACH subsettedProperty IN property.subsettedProperty.split(' ') -%]
         [%- subsettedClass = subsettedProperty.split('-').0.replace('^', 'Q') -%]
-        [%- IF classes.item(subsettedClass) -%]
         [%- IF classes.item(subsettedClass).attribute.item(subsettedProperty) -%]
         [%- subsettedPropertyItem = classes.item(subsettedClass).attribute.item(subsettedProperty) -%]
         [%- ELSE -%]
@@ -25,7 +24,6 @@
             [%- found = 'true' -%]
             [%- END %]
     ${subsettedPropertyItem.accessor.2.name}([% IF singlevalued == 'true' %]this->[% END %]${accessor.parameter.0.name});
-        [%- END -%]
         [%- END -%]
         [%- END -%]
     [%- END -%]
@@ -107,7 +105,7 @@
 [%- END -%]
 [%- END -%]
 [%- END -%]
-[%- FOREACH subsettedClass IN subsettedClasses -%]
+[%- FOREACH subsettedClass IN subsettedClasses.unique -%]
 #include "${subsettedClass.lower}_p.h"
 
 [%- END %]

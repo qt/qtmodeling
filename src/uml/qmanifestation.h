@@ -52,7 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QManifestationPrivate;
 class QPackageableElement;
 
 class Q_UML_EXPORT QManifestation : public QAbstraction

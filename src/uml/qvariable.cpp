@@ -42,7 +42,6 @@
 #include "qvariable.h"
 #include "qvariable_p.h"
 #include "qnamedelement_p.h"
-#include "qnamedelement_p.h"
 
 #include <QtUml/QActivity>
 #include <QtUml/QStructuredActivityNode>

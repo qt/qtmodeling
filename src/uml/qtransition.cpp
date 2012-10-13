@@ -45,7 +45,6 @@
 #include "qelement_p.h"
 #include "qnamedelement_p.h"
 #include "qredefinableelement_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QTrigger>
 #include <QtUml/QVertex>

@@ -53,7 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QRemoveStructuralFeatureValueActionPrivate;
 class QInputPin;
 
 class Q_UML_EXPORT QRemoveStructuralFeatureValueAction : public QObject, public QWriteStructuralFeatureAction

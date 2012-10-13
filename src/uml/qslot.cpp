@@ -42,7 +42,6 @@
 #include "qslot.h"
 #include "qslot_p.h"
 #include "qelement_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QStructuralFeature>
 #include <QtUml/QInstanceSpecification>

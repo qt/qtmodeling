@@ -52,8 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QRealizationPrivate;
-
 class Q_UML_EXPORT QRealization : public QAbstraction
 {
     Q_OBJECT

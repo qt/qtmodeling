@@ -53,7 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QSignalEventPrivate;
 class QSignal;
 
 class Q_UML_EXPORT QSignalEvent : public QObject, public QMessageEvent

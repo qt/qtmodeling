@@ -44,10 +44,6 @@
 #include "qnamespace_p.h"
 #include "qredefinableelement_p.h"
 #include "qelement_p.h"
-#include "qnamespace_p.h"
-#include "qelement_p.h"
-#include "qnamespace_p.h"
-#include "qelement_p.h"
 #include "qnamedelement_p.h"
 
 #include <QtUml/QClassifierTemplateParameter>
@@ -87,6 +83,7 @@ QClassifierPrivate::~QClassifierPrivate()
     delete powertypeExtents;
     delete useCases;
     delete redefinedClassifiers;
+    delete ownedTemplateSignature;
     delete collaborationUses;
     delete attributes;
     delete features;

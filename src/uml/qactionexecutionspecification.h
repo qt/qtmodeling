@@ -53,7 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QActionExecutionSpecificationPrivate;
 class QAction;
 
 class Q_UML_EXPORT QActionExecutionSpecification : public QObject, public QExecutionSpecification

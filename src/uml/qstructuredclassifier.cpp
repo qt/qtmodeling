@@ -43,9 +43,6 @@
 #include "qstructuredclassifier_p.h"
 #include "qnamespace_p.h"
 #include "qclassifier_p.h"
-#include "qnamespace_p.h"
-#include "qclassifier_p.h"
-#include "qnamespace_p.h"
 
 #include <QtUml/QProperty>
 #include <QtUml/QConnector>

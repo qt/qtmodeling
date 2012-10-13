@@ -42,7 +42,6 @@
 #include "qdirectedrelationship.h"
 #include "qdirectedrelationship_p.h"
 #include "qrelationship_p.h"
-#include "qrelationship_p.h"
 
 #include <QtUml/QElement>
 

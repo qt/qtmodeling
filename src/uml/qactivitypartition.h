@@ -56,7 +56,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QActivityPartitionPrivate;
 class QActivityEdge;
 class QActivityNode;
 class QElement;

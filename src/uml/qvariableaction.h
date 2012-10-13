@@ -52,7 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QVariableActionPrivate;
 class QVariable;
 
 class Q_UML_EXPORT QVariableAction : public QAction

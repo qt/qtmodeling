@@ -42,8 +42,6 @@
 #include "qtestidentityaction.h"
 #include "qtestidentityaction_p.h"
 #include "qaction_p.h"
-#include "qaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 #include <QtUml/QOutputPin>

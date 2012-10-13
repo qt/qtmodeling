@@ -41,6 +41,7 @@
 
 #include "qparameter.h"
 #include "qparameter_p.h"
+#include "qnamedelement_p.h"
 #include "qelement_p.h"
 
 #include <QtUml/QValueSpecification>
@@ -87,6 +88,9 @@ void QParameterPrivate::setEffect(QtUml::ParameterEffectKind effect)
 void QParameterPrivate::setOperation(QOperation *operation)
 {
     this->operation = operation;
+
+    // Adjust subsetted property(ies)
+    setNamespace_(operation);
 }
 
 void QParameterPrivate::setDefaultValue(QValueSpecification *defaultValue)

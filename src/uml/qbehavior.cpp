@@ -42,10 +42,7 @@
 #include "qbehavior.h"
 #include "qbehavior_p.h"
 #include "qnamespace_p.h"
-#include "qnamespace_p.h"
 #include "qclassifier_p.h"
-#include "qnamespace_p.h"
-#include "qnamespace_p.h"
 #include "qredefinableelement_p.h"
 
 #include <QtUml/QConstraint>

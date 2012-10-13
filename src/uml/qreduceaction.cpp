@@ -42,7 +42,6 @@
 #include "qreduceaction.h"
 #include "qreduceaction_p.h"
 #include "qaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 #include <QtUml/QBehavior>

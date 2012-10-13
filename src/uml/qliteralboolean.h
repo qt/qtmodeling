@@ -53,8 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QLiteralBooleanPrivate;
-
 class Q_UML_EXPORT QLiteralBoolean : public QObject, public QLiteralSpecification
 {
     Q_OBJECT

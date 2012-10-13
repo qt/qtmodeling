@@ -43,13 +43,6 @@
 #include "qinterface_p.h"
 #include "qnamespace_p.h"
 #include "qclassifier_p.h"
-#include "qclassifier_p.h"
-#include "qnamespace_p.h"
-#include "qclassifier_p.h"
-#include "qnamespace_p.h"
-#include "qnamespace_p.h"
-#include "qnamespace_p.h"
-#include "qclassifier_p.h"
 
 #include <QtUml/QProtocolStateMachine>
 #include <QtUml/QReception>

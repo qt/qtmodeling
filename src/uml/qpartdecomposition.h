@@ -52,8 +52,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QPartDecompositionPrivate;
-
 class Q_UML_EXPORT QPartDecomposition : public QInteractionUse
 {
     Q_OBJECT

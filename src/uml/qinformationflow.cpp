@@ -42,7 +42,6 @@
 #include "qinformationflow.h"
 #include "qinformationflow_p.h"
 #include "qdirectedrelationship_p.h"
-#include "qdirectedrelationship_p.h"
 
 #include <QtUml/QConnector>
 #include <QtUml/QMessage>

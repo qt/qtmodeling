@@ -53,7 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QReadSelfActionPrivate;
 class QOutputPin;
 
 class Q_UML_EXPORT QReadSelfAction : public QObject, public QAction

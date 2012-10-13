@@ -43,16 +43,7 @@
 #include "qoperation_p.h"
 #include "qnamespace_p.h"
 #include "qredefinableelement_p.h"
-#include "qnamespace_p.h"
 #include "qfeature_p.h"
-#include "qredefinableelement_p.h"
-#include "qnamedelement_p.h"
-#include "qfeature_p.h"
-#include "qredefinableelement_p.h"
-#include "qnamedelement_p.h"
-#include "qnamespace_p.h"
-#include "qfeature_p.h"
-#include "qredefinableelement_p.h"
 #include "qnamedelement_p.h"
 
 #include <QtUml/QOperationTemplateParameter>

@@ -55,7 +55,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QCallActionPrivate;
 class QOutputPin;
 
 class Q_UML_EXPORT QCallAction : public QInvocationAction
