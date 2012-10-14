@@ -60,6 +60,8 @@ QSubstitutionPrivate::~QSubstitutionPrivate()
 
 void QSubstitutionPrivate::setContract(QClassifier *contract)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeSupplier(this->contract);
 
@@ -71,6 +73,8 @@ void QSubstitutionPrivate::setContract(QClassifier *contract)
 
 void QSubstitutionPrivate::setSubstitutingClassifier(QClassifier *substitutingClassifier)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeClient(this->substitutingClassifier);
 
@@ -111,12 +115,16 @@ QSubstitution::~QSubstitution()
  */
 QClassifier *QSubstitution::contract() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QSubstitution);
     return d->contract;
 }
 
 void QSubstitution::setContract(QClassifier *contract)
 {
+    // This is a read-write association end
+
     QTUML_D(QSubstitution);
     if (d->contract != contract) {
         d->setContract(contract);
@@ -128,12 +136,16 @@ void QSubstitution::setContract(QClassifier *contract)
  */
 QClassifier *QSubstitution::substitutingClassifier() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QSubstitution);
     return d->substitutingClassifier;
 }
 
 void QSubstitution::setSubstitutingClassifier(QClassifier *substitutingClassifier)
 {
+    // This is a read-write association end
+
     QTUML_D(QSubstitution);
     if (d->substitutingClassifier != substitutingClassifier) {
         d->setSubstitutingClassifier(substitutingClassifier);

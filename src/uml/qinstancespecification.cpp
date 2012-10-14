@@ -64,16 +64,22 @@ QInstanceSpecificationPrivate::~QInstanceSpecificationPrivate()
 
 void QInstanceSpecificationPrivate::addClassifier(QClassifier *classifier)
 {
+    // This is a read-write association end
+
     this->classifiers->insert(classifier);
 }
 
 void QInstanceSpecificationPrivate::removeClassifier(QClassifier *classifier)
 {
+    // This is a read-write association end
+
     this->classifiers->remove(classifier);
 }
 
 void QInstanceSpecificationPrivate::setSpecification(QValueSpecification *specification)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->specification);
 
@@ -85,6 +91,8 @@ void QInstanceSpecificationPrivate::setSpecification(QValueSpecification *specif
 
 void QInstanceSpecificationPrivate::addSlot_(QSlot *slot_)
 {
+    // This is a read-write association end
+
     this->slots_->insert(slot_);
 
     // Adjust subsetted property(ies)
@@ -93,6 +101,8 @@ void QInstanceSpecificationPrivate::addSlot_(QSlot *slot_)
 
 void QInstanceSpecificationPrivate::removeSlot_(QSlot *slot_)
 {
+    // This is a read-write association end
+
     this->slots_->remove(slot_);
 
     // Adjust subsetted property(ies)
@@ -129,12 +139,16 @@ QInstanceSpecification::~QInstanceSpecification()
  */
 const QSet<QClassifier *> *QInstanceSpecification::classifiers() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInstanceSpecification);
     return d->classifiers;
 }
 
 void QInstanceSpecification::addClassifier(QClassifier *classifier)
 {
+    // This is a read-write association end
+
     QTUML_D(QInstanceSpecification);
     if (!d->classifiers->contains(classifier)) {
         d->addClassifier(classifier);
@@ -143,6 +157,8 @@ void QInstanceSpecification::addClassifier(QClassifier *classifier)
 
 void QInstanceSpecification::removeClassifier(QClassifier *classifier)
 {
+    // This is a read-write association end
+
     QTUML_D(QInstanceSpecification);
     if (d->classifiers->contains(classifier)) {
         d->removeClassifier(classifier);
@@ -154,12 +170,16 @@ void QInstanceSpecification::removeClassifier(QClassifier *classifier)
  */
 QValueSpecification *QInstanceSpecification::specification() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInstanceSpecification);
     return d->specification;
 }
 
 void QInstanceSpecification::setSpecification(QValueSpecification *specification)
 {
+    // This is a read-write association end
+
     QTUML_D(QInstanceSpecification);
     if (d->specification != specification) {
         d->setSpecification(specification);
@@ -171,12 +191,16 @@ void QInstanceSpecification::setSpecification(QValueSpecification *specification
  */
 const QSet<QSlot *> *QInstanceSpecification::slots_() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInstanceSpecification);
     return d->slots_;
 }
 
 void QInstanceSpecification::addSlot_(QSlot *slot_)
 {
+    // This is a read-write association end
+
     QTUML_D(QInstanceSpecification);
     if (!d->slots_->contains(slot_)) {
         d->addSlot_(slot_);
@@ -188,6 +212,8 @@ void QInstanceSpecification::addSlot_(QSlot *slot_)
 
 void QInstanceSpecification::removeSlot_(QSlot *slot_)
 {
+    // This is a read-write association end
+
     QTUML_D(QInstanceSpecification);
     if (d->slots_->contains(slot_)) {
         d->removeSlot_(slot_);

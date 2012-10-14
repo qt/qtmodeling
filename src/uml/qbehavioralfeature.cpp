@@ -71,26 +71,36 @@ QBehavioralFeaturePrivate::~QBehavioralFeaturePrivate()
 
 void QBehavioralFeaturePrivate::setConcurrency(QtUml::CallConcurrencyKind concurrency)
 {
+    // This is a read-write attribute
+
     this->concurrency = concurrency;
 }
 
 void QBehavioralFeaturePrivate::setAbstract(bool isAbstract)
 {
+    // This is a read-write attribute
+
     this->isAbstract = isAbstract;
 }
 
 void QBehavioralFeaturePrivate::addRaisedException(QType *raisedException)
 {
+    // This is a read-write association end
+
     this->raisedExceptions->insert(raisedException);
 }
 
 void QBehavioralFeaturePrivate::removeRaisedException(QType *raisedException)
 {
+    // This is a read-write association end
+
     this->raisedExceptions->remove(raisedException);
 }
 
 void QBehavioralFeaturePrivate::addOwnedParameter(QParameter *ownedParameter)
 {
+    // This is a read-write association end
+
     this->ownedParameters->append(ownedParameter);
 
     // Adjust subsetted property(ies)
@@ -99,6 +109,8 @@ void QBehavioralFeaturePrivate::addOwnedParameter(QParameter *ownedParameter)
 
 void QBehavioralFeaturePrivate::removeOwnedParameter(QParameter *ownedParameter)
 {
+    // This is a read-write association end
+
     this->ownedParameters->removeAll(ownedParameter);
 
     // Adjust subsetted property(ies)
@@ -107,6 +119,8 @@ void QBehavioralFeaturePrivate::removeOwnedParameter(QParameter *ownedParameter)
 
 void QBehavioralFeaturePrivate::addOwnedParameterSet(QParameterSet *ownedParameterSet)
 {
+    // This is a read-write association end
+
     this->ownedParameterSets->insert(ownedParameterSet);
 
     // Adjust subsetted property(ies)
@@ -115,6 +129,8 @@ void QBehavioralFeaturePrivate::addOwnedParameterSet(QParameterSet *ownedParamet
 
 void QBehavioralFeaturePrivate::removeOwnedParameterSet(QParameterSet *ownedParameterSet)
 {
+    // This is a read-write association end
+
     this->ownedParameterSets->remove(ownedParameterSet);
 
     // Adjust subsetted property(ies)
@@ -123,11 +139,15 @@ void QBehavioralFeaturePrivate::removeOwnedParameterSet(QParameterSet *ownedPara
 
 void QBehavioralFeaturePrivate::addMethod(QBehavior *method)
 {
+    // This is a read-write association end
+
     this->methods->insert(method);
 }
 
 void QBehavioralFeaturePrivate::removeMethod(QBehavior *method)
 {
+    // This is a read-write association end
+
     this->methods->remove(method);
 }
 
@@ -152,12 +172,16 @@ QBehavioralFeature::~QBehavioralFeature()
  */
 QtUml::CallConcurrencyKind QBehavioralFeature::concurrency() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QBehavioralFeature);
     return d->concurrency;
 }
 
 void QBehavioralFeature::setConcurrency(QtUml::CallConcurrencyKind concurrency)
 {
+    // This is a read-write attribute
+
     QTUML_D(QBehavioralFeature);
     if (d->concurrency != concurrency) {
         d->setConcurrency(concurrency);
@@ -169,12 +193,16 @@ void QBehavioralFeature::setConcurrency(QtUml::CallConcurrencyKind concurrency)
  */
 bool QBehavioralFeature::isAbstract() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QBehavioralFeature);
     return d->isAbstract;
 }
 
 void QBehavioralFeature::setAbstract(bool isAbstract)
 {
+    // This is a read-write attribute
+
     QTUML_D(QBehavioralFeature);
     if (d->isAbstract != isAbstract) {
         d->setAbstract(isAbstract);
@@ -186,12 +214,16 @@ void QBehavioralFeature::setAbstract(bool isAbstract)
  */
 const QSet<QType *> *QBehavioralFeature::raisedExceptions() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QBehavioralFeature);
     return d->raisedExceptions;
 }
 
 void QBehavioralFeature::addRaisedException(QType *raisedException)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehavioralFeature);
     if (!d->raisedExceptions->contains(raisedException)) {
         d->addRaisedException(raisedException);
@@ -200,6 +232,8 @@ void QBehavioralFeature::addRaisedException(QType *raisedException)
 
 void QBehavioralFeature::removeRaisedException(QType *raisedException)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehavioralFeature);
     if (d->raisedExceptions->contains(raisedException)) {
         d->removeRaisedException(raisedException);
@@ -211,12 +245,16 @@ void QBehavioralFeature::removeRaisedException(QType *raisedException)
  */
 const QList<QParameter *> *QBehavioralFeature::ownedParameters() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QBehavioralFeature);
     return d->ownedParameters;
 }
 
 void QBehavioralFeature::addOwnedParameter(QParameter *ownedParameter)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehavioralFeature);
     if (!d->ownedParameters->contains(ownedParameter)) {
         d->addOwnedParameter(ownedParameter);
@@ -225,6 +263,8 @@ void QBehavioralFeature::addOwnedParameter(QParameter *ownedParameter)
 
 void QBehavioralFeature::removeOwnedParameter(QParameter *ownedParameter)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehavioralFeature);
     if (d->ownedParameters->contains(ownedParameter)) {
         d->removeOwnedParameter(ownedParameter);
@@ -236,12 +276,16 @@ void QBehavioralFeature::removeOwnedParameter(QParameter *ownedParameter)
  */
 const QSet<QParameterSet *> *QBehavioralFeature::ownedParameterSets() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QBehavioralFeature);
     return d->ownedParameterSets;
 }
 
 void QBehavioralFeature::addOwnedParameterSet(QParameterSet *ownedParameterSet)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehavioralFeature);
     if (!d->ownedParameterSets->contains(ownedParameterSet)) {
         d->addOwnedParameterSet(ownedParameterSet);
@@ -250,6 +294,8 @@ void QBehavioralFeature::addOwnedParameterSet(QParameterSet *ownedParameterSet)
 
 void QBehavioralFeature::removeOwnedParameterSet(QParameterSet *ownedParameterSet)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehavioralFeature);
     if (d->ownedParameterSets->contains(ownedParameterSet)) {
         d->removeOwnedParameterSet(ownedParameterSet);
@@ -261,12 +307,16 @@ void QBehavioralFeature::removeOwnedParameterSet(QParameterSet *ownedParameterSe
  */
 const QSet<QBehavior *> *QBehavioralFeature::methods() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QBehavioralFeature);
     return d->methods;
 }
 
 void QBehavioralFeature::addMethod(QBehavior *method)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehavioralFeature);
     if (!d->methods->contains(method)) {
         d->addMethod(method);
@@ -278,6 +328,8 @@ void QBehavioralFeature::addMethod(QBehavior *method)
 
 void QBehavioralFeature::removeMethod(QBehavior *method)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehavioralFeature);
     if (d->methods->contains(method)) {
         d->removeMethod(method);

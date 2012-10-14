@@ -64,21 +64,29 @@ QReclassifyObjectActionPrivate::~QReclassifyObjectActionPrivate()
 
 void QReclassifyObjectActionPrivate::setReplaceAll(bool isReplaceAll)
 {
+    // This is a read-write attribute
+
     this->isReplaceAll = isReplaceAll;
 }
 
 void QReclassifyObjectActionPrivate::addOldClassifier(QClassifier *oldClassifier)
 {
+    // This is a read-write association end
+
     this->oldClassifiers->insert(oldClassifier);
 }
 
 void QReclassifyObjectActionPrivate::removeOldClassifier(QClassifier *oldClassifier)
 {
+    // This is a read-write association end
+
     this->oldClassifiers->remove(oldClassifier);
 }
 
 void QReclassifyObjectActionPrivate::setObject(QInputPin *object)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeInput(this->object);
 
@@ -90,11 +98,15 @@ void QReclassifyObjectActionPrivate::setObject(QInputPin *object)
 
 void QReclassifyObjectActionPrivate::addNewClassifier(QClassifier *newClassifier)
 {
+    // This is a read-write association end
+
     this->newClassifiers->insert(newClassifier);
 }
 
 void QReclassifyObjectActionPrivate::removeNewClassifier(QClassifier *newClassifier)
 {
+    // This is a read-write association end
+
     this->newClassifiers->remove(newClassifier);
 }
 
@@ -128,12 +140,16 @@ QReclassifyObjectAction::~QReclassifyObjectAction()
  */
 bool QReclassifyObjectAction::isReplaceAll() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QReclassifyObjectAction);
     return d->isReplaceAll;
 }
 
 void QReclassifyObjectAction::setReplaceAll(bool isReplaceAll)
 {
+    // This is a read-write attribute
+
     QTUML_D(QReclassifyObjectAction);
     if (d->isReplaceAll != isReplaceAll) {
         d->setReplaceAll(isReplaceAll);
@@ -145,12 +161,16 @@ void QReclassifyObjectAction::setReplaceAll(bool isReplaceAll)
  */
 const QSet<QClassifier *> *QReclassifyObjectAction::oldClassifiers() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReclassifyObjectAction);
     return d->oldClassifiers;
 }
 
 void QReclassifyObjectAction::addOldClassifier(QClassifier *oldClassifier)
 {
+    // This is a read-write association end
+
     QTUML_D(QReclassifyObjectAction);
     if (!d->oldClassifiers->contains(oldClassifier)) {
         d->addOldClassifier(oldClassifier);
@@ -159,6 +179,8 @@ void QReclassifyObjectAction::addOldClassifier(QClassifier *oldClassifier)
 
 void QReclassifyObjectAction::removeOldClassifier(QClassifier *oldClassifier)
 {
+    // This is a read-write association end
+
     QTUML_D(QReclassifyObjectAction);
     if (d->oldClassifiers->contains(oldClassifier)) {
         d->removeOldClassifier(oldClassifier);
@@ -170,12 +192,16 @@ void QReclassifyObjectAction::removeOldClassifier(QClassifier *oldClassifier)
  */
 QInputPin *QReclassifyObjectAction::object() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReclassifyObjectAction);
     return d->object;
 }
 
 void QReclassifyObjectAction::setObject(QInputPin *object)
 {
+    // This is a read-write association end
+
     QTUML_D(QReclassifyObjectAction);
     if (d->object != object) {
         d->setObject(object);
@@ -187,12 +213,16 @@ void QReclassifyObjectAction::setObject(QInputPin *object)
  */
 const QSet<QClassifier *> *QReclassifyObjectAction::newClassifiers() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReclassifyObjectAction);
     return d->newClassifiers;
 }
 
 void QReclassifyObjectAction::addNewClassifier(QClassifier *newClassifier)
 {
+    // This is a read-write association end
+
     QTUML_D(QReclassifyObjectAction);
     if (!d->newClassifiers->contains(newClassifier)) {
         d->addNewClassifier(newClassifier);
@@ -201,6 +231,8 @@ void QReclassifyObjectAction::addNewClassifier(QClassifier *newClassifier)
 
 void QReclassifyObjectAction::removeNewClassifier(QClassifier *newClassifier)
 {
+    // This is a read-write association end
+
     QTUML_D(QReclassifyObjectAction);
     if (d->newClassifiers->contains(newClassifier)) {
         d->removeNewClassifier(newClassifier);

@@ -58,6 +58,8 @@ QClearStructuralFeatureActionPrivate::~QClearStructuralFeatureActionPrivate()
 
 void QClearStructuralFeatureActionPrivate::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
@@ -97,12 +99,16 @@ QClearStructuralFeatureAction::~QClearStructuralFeatureAction()
  */
 QOutputPin *QClearStructuralFeatureAction::result() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QClearStructuralFeatureAction);
     return d->result;
 }
 
 void QClearStructuralFeatureAction::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     QTUML_D(QClearStructuralFeatureAction);
     if (d->result != result) {
         d->setResult(result);

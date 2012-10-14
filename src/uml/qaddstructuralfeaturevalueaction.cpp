@@ -59,11 +59,15 @@ QAddStructuralFeatureValueActionPrivate::~QAddStructuralFeatureValueActionPrivat
 
 void QAddStructuralFeatureValueActionPrivate::setReplaceAll(bool isReplaceAll)
 {
+    // This is a read-write attribute
+
     this->isReplaceAll = isReplaceAll;
 }
 
 void QAddStructuralFeatureValueActionPrivate::setInsertAt(QInputPin *insertAt)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeInput(this->insertAt);
 
@@ -103,12 +107,16 @@ QAddStructuralFeatureValueAction::~QAddStructuralFeatureValueAction()
  */
 bool QAddStructuralFeatureValueAction::isReplaceAll() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QAddStructuralFeatureValueAction);
     return d->isReplaceAll;
 }
 
 void QAddStructuralFeatureValueAction::setReplaceAll(bool isReplaceAll)
 {
+    // This is a read-write attribute
+
     QTUML_D(QAddStructuralFeatureValueAction);
     if (d->isReplaceAll != isReplaceAll) {
         d->setReplaceAll(isReplaceAll);
@@ -120,12 +128,16 @@ void QAddStructuralFeatureValueAction::setReplaceAll(bool isReplaceAll)
  */
 QInputPin *QAddStructuralFeatureValueAction::insertAt() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QAddStructuralFeatureValueAction);
     return d->insertAt;
 }
 
 void QAddStructuralFeatureValueAction::setInsertAt(QInputPin *insertAt)
 {
+    // This is a read-write association end
+
     QTUML_D(QAddStructuralFeatureValueAction);
     if (d->insertAt != insertAt) {
         d->setInsertAt(insertAt);

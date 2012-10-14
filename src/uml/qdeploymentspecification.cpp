@@ -58,16 +58,22 @@ QDeploymentSpecificationPrivate::~QDeploymentSpecificationPrivate()
 
 void QDeploymentSpecificationPrivate::setDeploymentLocation(QString deploymentLocation)
 {
+    // This is a read-write attribute
+
     this->deploymentLocation = deploymentLocation;
 }
 
 void QDeploymentSpecificationPrivate::setExecutionLocation(QString executionLocation)
 {
+    // This is a read-write attribute
+
     this->executionLocation = executionLocation;
 }
 
 void QDeploymentSpecificationPrivate::setDeployment(QDeployment *deployment)
 {
+    // This is a read-write association end
+
     this->deployment = deployment;
 
     // Adjust subsetted property(ies)
@@ -104,12 +110,16 @@ QDeploymentSpecification::~QDeploymentSpecification()
  */
 QString QDeploymentSpecification::deploymentLocation() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QDeploymentSpecification);
     return d->deploymentLocation;
 }
 
 void QDeploymentSpecification::setDeploymentLocation(QString deploymentLocation)
 {
+    // This is a read-write attribute
+
     QTUML_D(QDeploymentSpecification);
     if (d->deploymentLocation != deploymentLocation) {
         d->setDeploymentLocation(deploymentLocation);
@@ -121,12 +131,16 @@ void QDeploymentSpecification::setDeploymentLocation(QString deploymentLocation)
  */
 QString QDeploymentSpecification::executionLocation() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QDeploymentSpecification);
     return d->executionLocation;
 }
 
 void QDeploymentSpecification::setExecutionLocation(QString executionLocation)
 {
+    // This is a read-write attribute
+
     QTUML_D(QDeploymentSpecification);
     if (d->executionLocation != executionLocation) {
         d->setExecutionLocation(executionLocation);
@@ -138,12 +152,16 @@ void QDeploymentSpecification::setExecutionLocation(QString executionLocation)
  */
 QDeployment *QDeploymentSpecification::deployment() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QDeploymentSpecification);
     return d->deployment;
 }
 
 void QDeploymentSpecification::setDeployment(QDeployment *deployment)
 {
+    // This is a read-write association end
+
     QTUML_D(QDeploymentSpecification);
     if (d->deployment != deployment) {
         d->setDeployment(deployment);

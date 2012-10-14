@@ -60,11 +60,15 @@ QCreateObjectActionPrivate::~QCreateObjectActionPrivate()
 
 void QCreateObjectActionPrivate::setClassifier(QClassifier *classifier)
 {
+    // This is a read-write association end
+
     this->classifier = classifier;
 }
 
 void QCreateObjectActionPrivate::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
@@ -104,12 +108,16 @@ QCreateObjectAction::~QCreateObjectAction()
  */
 QClassifier *QCreateObjectAction::classifier() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QCreateObjectAction);
     return d->classifier;
 }
 
 void QCreateObjectAction::setClassifier(QClassifier *classifier)
 {
+    // This is a read-write association end
+
     QTUML_D(QCreateObjectAction);
     if (d->classifier != classifier) {
         d->setClassifier(classifier);
@@ -121,12 +129,16 @@ void QCreateObjectAction::setClassifier(QClassifier *classifier)
  */
 QOutputPin *QCreateObjectAction::result() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QCreateObjectAction);
     return d->result;
 }
 
 void QCreateObjectAction::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     QTUML_D(QCreateObjectAction);
     if (d->result != result) {
         d->setResult(result);

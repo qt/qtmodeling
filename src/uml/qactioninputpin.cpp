@@ -58,6 +58,8 @@ QActionInputPinPrivate::~QActionInputPinPrivate()
 
 void QActionInputPinPrivate::setFromAction(QAction *fromAction)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->fromAction);
 
@@ -97,12 +99,16 @@ QActionInputPin::~QActionInputPin()
  */
 QAction *QActionInputPin::fromAction() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QActionInputPin);
     return d->fromAction;
 }
 
 void QActionInputPin::setFromAction(QAction *fromAction)
 {
+    // This is a read-write association end
+
     QTUML_D(QActionInputPin);
     if (d->fromAction != fromAction) {
         d->setFromAction(fromAction);

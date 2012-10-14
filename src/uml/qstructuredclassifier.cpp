@@ -66,6 +66,8 @@ QStructuredClassifierPrivate::~QStructuredClassifierPrivate()
 
 void QStructuredClassifierPrivate::addRole(QConnectableElement *role)
 {
+    // This is a read-only derived-union association end
+
     this->roles->insert(role);
 
     // Adjust subsetted property(ies)
@@ -74,6 +76,8 @@ void QStructuredClassifierPrivate::addRole(QConnectableElement *role)
 
 void QStructuredClassifierPrivate::removeRole(QConnectableElement *role)
 {
+    // This is a read-only derived-union association end
+
     this->roles->remove(role);
 
     // Adjust subsetted property(ies)
@@ -82,6 +86,8 @@ void QStructuredClassifierPrivate::removeRole(QConnectableElement *role)
 
 void QStructuredClassifierPrivate::addOwnedAttribute(QProperty *ownedAttribute)
 {
+    // This is a read-write association end
+
     this->ownedAttributes->append(ownedAttribute);
 
     // Adjust subsetted property(ies)
@@ -92,6 +98,8 @@ void QStructuredClassifierPrivate::addOwnedAttribute(QProperty *ownedAttribute)
 
 void QStructuredClassifierPrivate::removeOwnedAttribute(QProperty *ownedAttribute)
 {
+    // This is a read-write association end
+
     this->ownedAttributes->removeAll(ownedAttribute);
 
     // Adjust subsetted property(ies)
@@ -102,6 +110,8 @@ void QStructuredClassifierPrivate::removeOwnedAttribute(QProperty *ownedAttribut
 
 void QStructuredClassifierPrivate::addOwnedConnector(QConnector *ownedConnector)
 {
+    // This is a read-write association end
+
     this->ownedConnectors->insert(ownedConnector);
 
     // Adjust subsetted property(ies)
@@ -111,6 +121,8 @@ void QStructuredClassifierPrivate::addOwnedConnector(QConnector *ownedConnector)
 
 void QStructuredClassifierPrivate::removeOwnedConnector(QConnector *ownedConnector)
 {
+    // This is a read-write association end
+
     this->ownedConnectors->remove(ownedConnector);
 
     // Adjust subsetted property(ies)
@@ -139,6 +151,8 @@ QStructuredClassifier::~QStructuredClassifier()
  */
 const QSet<QConnectableElement *> *QStructuredClassifier::roles() const
 {
+    // This is a read-only derived-union association end
+
     QTUML_D(const QStructuredClassifier);
     return d->roles;
 }
@@ -148,12 +162,16 @@ const QSet<QConnectableElement *> *QStructuredClassifier::roles() const
  */
 const QList<QProperty *> *QStructuredClassifier::ownedAttributes() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QStructuredClassifier);
     return d->ownedAttributes;
 }
 
 void QStructuredClassifier::addOwnedAttribute(QProperty *ownedAttribute)
 {
+    // This is a read-write association end
+
     QTUML_D(QStructuredClassifier);
     if (!d->ownedAttributes->contains(ownedAttribute)) {
         d->addOwnedAttribute(ownedAttribute);
@@ -162,6 +180,8 @@ void QStructuredClassifier::addOwnedAttribute(QProperty *ownedAttribute)
 
 void QStructuredClassifier::removeOwnedAttribute(QProperty *ownedAttribute)
 {
+    // This is a read-write association end
+
     QTUML_D(QStructuredClassifier);
     if (d->ownedAttributes->contains(ownedAttribute)) {
         d->removeOwnedAttribute(ownedAttribute);
@@ -173,7 +193,12 @@ void QStructuredClassifier::removeOwnedAttribute(QProperty *ownedAttribute)
  */
 const QSet<QProperty *> *QStructuredClassifier::parts() const
 {
+    // This is a read-only derived association end
+
     qWarning("QStructuredClassifier::parts: to be implemented (this is a derived associationend)");
+
+    QTUML_D(const QStructuredClassifier);
+    //return <derived-return>;
 }
 
 /*!
@@ -181,12 +206,16 @@ const QSet<QProperty *> *QStructuredClassifier::parts() const
  */
 const QSet<QConnector *> *QStructuredClassifier::ownedConnectors() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QStructuredClassifier);
     return d->ownedConnectors;
 }
 
 void QStructuredClassifier::addOwnedConnector(QConnector *ownedConnector)
 {
+    // This is a read-write association end
+
     QTUML_D(QStructuredClassifier);
     if (!d->ownedConnectors->contains(ownedConnector)) {
         d->addOwnedConnector(ownedConnector);
@@ -195,6 +224,8 @@ void QStructuredClassifier::addOwnedConnector(QConnector *ownedConnector)
 
 void QStructuredClassifier::removeOwnedConnector(QConnector *ownedConnector)
 {
+    // This is a read-write association end
+
     QTUML_D(QStructuredClassifier);
     if (d->ownedConnectors->contains(ownedConnector)) {
         d->removeOwnedConnector(ownedConnector);

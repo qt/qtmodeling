@@ -61,6 +61,8 @@ QInteractionOperandPrivate::~QInteractionOperandPrivate()
 
 void QInteractionOperandPrivate::addFragment(QInteractionFragment *fragment)
 {
+    // This is a read-write association end
+
     this->fragments->append(fragment);
 
     // Adjust subsetted property(ies)
@@ -69,6 +71,8 @@ void QInteractionOperandPrivate::addFragment(QInteractionFragment *fragment)
 
 void QInteractionOperandPrivate::removeFragment(QInteractionFragment *fragment)
 {
+    // This is a read-write association end
+
     this->fragments->removeAll(fragment);
 
     // Adjust subsetted property(ies)
@@ -77,6 +81,8 @@ void QInteractionOperandPrivate::removeFragment(QInteractionFragment *fragment)
 
 void QInteractionOperandPrivate::setGuard(QInteractionConstraint *guard)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->guard);
 
@@ -116,12 +122,16 @@ QInteractionOperand::~QInteractionOperand()
  */
 const QList<QInteractionFragment *> *QInteractionOperand::fragments() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInteractionOperand);
     return d->fragments;
 }
 
 void QInteractionOperand::addFragment(QInteractionFragment *fragment)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteractionOperand);
     if (!d->fragments->contains(fragment)) {
         d->addFragment(fragment);
@@ -133,6 +143,8 @@ void QInteractionOperand::addFragment(QInteractionFragment *fragment)
 
 void QInteractionOperand::removeFragment(QInteractionFragment *fragment)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteractionOperand);
     if (d->fragments->contains(fragment)) {
         d->removeFragment(fragment);
@@ -147,12 +159,16 @@ void QInteractionOperand::removeFragment(QInteractionFragment *fragment)
  */
 QInteractionConstraint *QInteractionOperand::guard() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInteractionOperand);
     return d->guard;
 }
 
 void QInteractionOperand::setGuard(QInteractionConstraint *guard)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteractionOperand);
     if (d->guard != guard) {
         d->setGuard(guard);

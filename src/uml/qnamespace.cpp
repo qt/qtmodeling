@@ -71,6 +71,8 @@ QNamespacePrivate::~QNamespacePrivate()
 
 void QNamespacePrivate::addPackageImport(QPackageImport *packageImport)
 {
+    // This is a read-write association end
+
     this->packageImports->insert(packageImport);
 
     // Adjust subsetted property(ies)
@@ -84,6 +86,8 @@ void QNamespacePrivate::addPackageImport(QPackageImport *packageImport)
 
 void QNamespacePrivate::removePackageImport(QPackageImport *packageImport)
 {
+    // This is a read-write association end
+
     this->packageImports->remove(packageImport);
 
     // Adjust subsetted property(ies)
@@ -97,16 +101,22 @@ void QNamespacePrivate::removePackageImport(QPackageImport *packageImport)
 
 void QNamespacePrivate::addMember(QNamedElement *member)
 {
+    // This is a read-only derived-union association end
+
     this->members->insert(member);
 }
 
 void QNamespacePrivate::removeMember(QNamedElement *member)
 {
+    // This is a read-only derived-union association end
+
     this->members->remove(member);
 }
 
 void QNamespacePrivate::addElementImport(QElementImport *elementImport)
 {
+    // This is a read-write association end
+
     this->elementImports->insert(elementImport);
 
     // Adjust subsetted property(ies)
@@ -119,6 +129,8 @@ void QNamespacePrivate::addElementImport(QElementImport *elementImport)
 
 void QNamespacePrivate::removeElementImport(QElementImport *elementImport)
 {
+    // This is a read-write association end
+
     this->elementImports->remove(elementImport);
 
     // Adjust subsetted property(ies)
@@ -131,6 +143,8 @@ void QNamespacePrivate::removeElementImport(QElementImport *elementImport)
 
 void QNamespacePrivate::addOwnedRule(QConstraint *ownedRule)
 {
+    // This is a read-write association end
+
     this->ownedRules->insert(ownedRule);
 
     // Adjust subsetted property(ies)
@@ -139,6 +153,8 @@ void QNamespacePrivate::addOwnedRule(QConstraint *ownedRule)
 
 void QNamespacePrivate::removeOwnedRule(QConstraint *ownedRule)
 {
+    // This is a read-write association end
+
     this->ownedRules->remove(ownedRule);
 
     // Adjust subsetted property(ies)
@@ -147,6 +163,8 @@ void QNamespacePrivate::removeOwnedRule(QConstraint *ownedRule)
 
 void QNamespacePrivate::addOwnedMember(QNamedElement *ownedMember)
 {
+    // This is a read-only derived-union association end
+
     this->ownedMembers->insert(ownedMember);
 
     // Adjust subsetted property(ies)
@@ -156,6 +174,8 @@ void QNamespacePrivate::addOwnedMember(QNamedElement *ownedMember)
 
 void QNamespacePrivate::removeOwnedMember(QNamedElement *ownedMember)
 {
+    // This is a read-only derived-union association end
+
     this->ownedMembers->remove(ownedMember);
 
     // Adjust subsetted property(ies)
@@ -184,12 +204,16 @@ QNamespace::~QNamespace()
  */
 const QSet<QPackageImport *> *QNamespace::packageImports() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QNamespace);
     return d->packageImports;
 }
 
 void QNamespace::addPackageImport(QPackageImport *packageImport)
 {
+    // This is a read-write association end
+
     QTUML_D(QNamespace);
     if (!d->packageImports->contains(packageImport)) {
         d->addPackageImport(packageImport);
@@ -201,6 +225,8 @@ void QNamespace::addPackageImport(QPackageImport *packageImport)
 
 void QNamespace::removePackageImport(QPackageImport *packageImport)
 {
+    // This is a read-write association end
+
     QTUML_D(QNamespace);
     if (d->packageImports->contains(packageImport)) {
         d->removePackageImport(packageImport);
@@ -215,6 +241,8 @@ void QNamespace::removePackageImport(QPackageImport *packageImport)
  */
 const QSet<QNamedElement *> *QNamespace::members() const
 {
+    // This is a read-only derived-union association end
+
     QTUML_D(const QNamespace);
     return d->members;
 }
@@ -225,6 +253,8 @@ const QSet<QNamedElement *> *QNamespace::members() const
  */
 const QSet<QPackageableElement *> *QNamespace::importedMembers() const
 {
+    // This is a read-only derived association end
+
     QTUML_D(const QNamespace);
     QSet<QPackageableElement *> * importedMembers_ = new QSet<QPackageableElement *>;
     foreach (QElementImport *elementImport, *d->elementImports)
@@ -238,12 +268,16 @@ const QSet<QPackageableElement *> *QNamespace::importedMembers() const
  */
 const QSet<QElementImport *> *QNamespace::elementImports() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QNamespace);
     return d->elementImports;
 }
 
 void QNamespace::addElementImport(QElementImport *elementImport)
 {
+    // This is a read-write association end
+
     QTUML_D(QNamespace);
     if (!d->elementImports->contains(elementImport)) {
         d->addElementImport(elementImport);
@@ -255,6 +289,8 @@ void QNamespace::addElementImport(QElementImport *elementImport)
 
 void QNamespace::removeElementImport(QElementImport *elementImport)
 {
+    // This is a read-write association end
+
     QTUML_D(QNamespace);
     if (d->elementImports->contains(elementImport)) {
         d->removeElementImport(elementImport);
@@ -269,12 +305,16 @@ void QNamespace::removeElementImport(QElementImport *elementImport)
  */
 const QSet<QConstraint *> *QNamespace::ownedRules() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QNamespace);
     return d->ownedRules;
 }
 
 void QNamespace::addOwnedRule(QConstraint *ownedRule)
 {
+    // This is a read-write association end
+
     QTUML_D(QNamespace);
     if (!d->ownedRules->contains(ownedRule)) {
         d->addOwnedRule(ownedRule);
@@ -286,6 +326,8 @@ void QNamespace::addOwnedRule(QConstraint *ownedRule)
 
 void QNamespace::removeOwnedRule(QConstraint *ownedRule)
 {
+    // This is a read-write association end
+
     QTUML_D(QNamespace);
     if (d->ownedRules->contains(ownedRule)) {
         d->removeOwnedRule(ownedRule);
@@ -300,6 +342,8 @@ void QNamespace::removeOwnedRule(QConstraint *ownedRule)
  */
 const QSet<QNamedElement *> *QNamespace::ownedMembers() const
 {
+    // This is a read-only derived-union association end
+
     QTUML_D(const QNamespace);
     return d->ownedMembers;
 }

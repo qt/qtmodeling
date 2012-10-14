@@ -58,6 +58,8 @@ QNodePrivate::~QNodePrivate()
 
 void QNodePrivate::addNestedNode(QNode *nestedNode)
 {
+    // This is a read-write association end
+
     this->nestedNodes->insert(nestedNode);
 
     // Adjust subsetted property(ies)
@@ -66,6 +68,8 @@ void QNodePrivate::addNestedNode(QNode *nestedNode)
 
 void QNodePrivate::removeNestedNode(QNode *nestedNode)
 {
+    // This is a read-write association end
+
     this->nestedNodes->remove(nestedNode);
 
     // Adjust subsetted property(ies)
@@ -102,12 +106,16 @@ QNode::~QNode()
  */
 const QSet<QNode *> *QNode::nestedNodes() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QNode);
     return d->nestedNodes;
 }
 
 void QNode::addNestedNode(QNode *nestedNode)
 {
+    // This is a read-write association end
+
     QTUML_D(QNode);
     if (!d->nestedNodes->contains(nestedNode)) {
         d->addNestedNode(nestedNode);
@@ -116,6 +124,8 @@ void QNode::addNestedNode(QNode *nestedNode)
 
 void QNode::removeNestedNode(QNode *nestedNode)
 {
+    // This is a read-write association end
+
     QTUML_D(QNode);
     if (d->nestedNodes->contains(nestedNode)) {
         d->removeNestedNode(nestedNode);

@@ -62,11 +62,15 @@ QProfileApplicationPrivate::~QProfileApplicationPrivate()
 
 void QProfileApplicationPrivate::setStrict(bool isStrict)
 {
+    // This is a read-write attribute
+
     this->isStrict = isStrict;
 }
 
 void QProfileApplicationPrivate::setApplyingPackage(QPackage *applyingPackage)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeSource(this->applyingPackage);
 
@@ -79,6 +83,8 @@ void QProfileApplicationPrivate::setApplyingPackage(QPackage *applyingPackage)
 
 void QProfileApplicationPrivate::setAppliedProfile(QProfile *appliedProfile)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeTarget(this->appliedProfile);
 
@@ -118,12 +124,16 @@ QProfileApplication::~QProfileApplication()
  */
 bool QProfileApplication::isStrict() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QProfileApplication);
     return d->isStrict;
 }
 
 void QProfileApplication::setStrict(bool isStrict)
 {
+    // This is a read-write attribute
+
     QTUML_D(QProfileApplication);
     if (d->isStrict != isStrict) {
         d->setStrict(isStrict);
@@ -135,12 +145,16 @@ void QProfileApplication::setStrict(bool isStrict)
  */
 QPackage *QProfileApplication::applyingPackage() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QProfileApplication);
     return d->applyingPackage;
 }
 
 void QProfileApplication::setApplyingPackage(QPackage *applyingPackage)
 {
+    // This is a read-write association end
+
     QTUML_D(QProfileApplication);
     if (d->applyingPackage != applyingPackage) {
         d->setApplyingPackage(applyingPackage);
@@ -155,12 +169,16 @@ void QProfileApplication::setApplyingPackage(QPackage *applyingPackage)
  */
 QProfile *QProfileApplication::appliedProfile() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QProfileApplication);
     return d->appliedProfile;
 }
 
 void QProfileApplication::setAppliedProfile(QProfile *appliedProfile)
 {
+    // This is a read-write association end
+
     QTUML_D(QProfileApplication);
     if (d->appliedProfile != appliedProfile) {
         d->setAppliedProfile(appliedProfile);

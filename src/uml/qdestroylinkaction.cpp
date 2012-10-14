@@ -60,11 +60,15 @@ QDestroyLinkActionPrivate::~QDestroyLinkActionPrivate()
 
 void QDestroyLinkActionPrivate::addEndData(QLinkEndDestructionData *endData)
 {
+    // This is a read-write association end
+
     this->endData->insert(endData);
 }
 
 void QDestroyLinkActionPrivate::removeEndData(QLinkEndDestructionData *endData)
 {
+    // This is a read-write association end
+
     this->endData->remove(endData);
 }
 
@@ -98,12 +102,16 @@ QDestroyLinkAction::~QDestroyLinkAction()
  */
 const QSet<QLinkEndDestructionData *> *QDestroyLinkAction::endData() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QDestroyLinkAction);
     return d->endData;
 }
 
 void QDestroyLinkAction::addEndData(QLinkEndDestructionData *endData)
 {
+    // This is a read-write association end
+
     QTUML_D(QDestroyLinkAction);
     if (!d->endData->contains(endData)) {
         d->addEndData(endData);
@@ -112,6 +120,8 @@ void QDestroyLinkAction::addEndData(QLinkEndDestructionData *endData)
 
 void QDestroyLinkAction::removeEndData(QLinkEndDestructionData *endData)
 {
+    // This is a read-write association end
+
     QTUML_D(QDestroyLinkAction);
     if (d->endData->contains(endData)) {
         d->removeEndData(endData);

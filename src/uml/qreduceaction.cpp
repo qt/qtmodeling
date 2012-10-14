@@ -63,11 +63,15 @@ QReduceActionPrivate::~QReduceActionPrivate()
 
 void QReduceActionPrivate::setOrdered(bool isOrdered)
 {
+    // This is a read-write attribute
+
     this->isOrdered = isOrdered;
 }
 
 void QReduceActionPrivate::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
@@ -79,6 +83,8 @@ void QReduceActionPrivate::setResult(QOutputPin *result)
 
 void QReduceActionPrivate::setCollection(QInputPin *collection)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeInput(this->collection);
 
@@ -90,6 +96,8 @@ void QReduceActionPrivate::setCollection(QInputPin *collection)
 
 void QReduceActionPrivate::setReducer(QBehavior *reducer)
 {
+    // This is a read-write association end
+
     this->reducer = reducer;
 }
 
@@ -123,12 +131,16 @@ QReduceAction::~QReduceAction()
  */
 bool QReduceAction::isOrdered() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QReduceAction);
     return d->isOrdered;
 }
 
 void QReduceAction::setOrdered(bool isOrdered)
 {
+    // This is a read-write attribute
+
     QTUML_D(QReduceAction);
     if (d->isOrdered != isOrdered) {
         d->setOrdered(isOrdered);
@@ -140,12 +152,16 @@ void QReduceAction::setOrdered(bool isOrdered)
  */
 QOutputPin *QReduceAction::result() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReduceAction);
     return d->result;
 }
 
 void QReduceAction::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     QTUML_D(QReduceAction);
     if (d->result != result) {
         d->setResult(result);
@@ -157,12 +173,16 @@ void QReduceAction::setResult(QOutputPin *result)
  */
 QInputPin *QReduceAction::collection() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReduceAction);
     return d->collection;
 }
 
 void QReduceAction::setCollection(QInputPin *collection)
 {
+    // This is a read-write association end
+
     QTUML_D(QReduceAction);
     if (d->collection != collection) {
         d->setCollection(collection);
@@ -174,12 +194,16 @@ void QReduceAction::setCollection(QInputPin *collection)
  */
 QBehavior *QReduceAction::reducer() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReduceAction);
     return d->reducer;
 }
 
 void QReduceAction::setReducer(QBehavior *reducer)
 {
+    // This is a read-write association end
+
     QTUML_D(QReduceAction);
     if (d->reducer != reducer) {
         d->setReducer(reducer);

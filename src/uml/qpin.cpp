@@ -56,6 +56,8 @@ QPinPrivate::~QPinPrivate()
 
 void QPinPrivate::setControl(bool isControl)
 {
+    // This is a read-write attribute
+
     this->isControl = isControl;
 }
 
@@ -80,12 +82,16 @@ QPin::~QPin()
  */
 bool QPin::isControl() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QPin);
     return d->isControl;
 }
 
 void QPin::setControl(bool isControl)
 {
+    // This is a read-write attribute
+
     QTUML_D(QPin);
     if (d->isControl != isControl) {
         d->setControl(isControl);

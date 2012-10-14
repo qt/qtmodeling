@@ -58,6 +58,8 @@ QStartObjectBehaviorActionPrivate::~QStartObjectBehaviorActionPrivate()
 
 void QStartObjectBehaviorActionPrivate::setObject(QInputPin *object)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeInput(this->object);
 
@@ -97,12 +99,16 @@ QStartObjectBehaviorAction::~QStartObjectBehaviorAction()
  */
 QInputPin *QStartObjectBehaviorAction::object() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QStartObjectBehaviorAction);
     return d->object;
 }
 
 void QStartObjectBehaviorAction::setObject(QInputPin *object)
 {
+    // This is a read-write association end
+
     QTUML_D(QStartObjectBehaviorAction);
     if (d->object != object) {
         d->setObject(object);

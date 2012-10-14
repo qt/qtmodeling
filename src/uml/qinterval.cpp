@@ -57,11 +57,15 @@ QIntervalPrivate::~QIntervalPrivate()
 
 void QIntervalPrivate::setMin(QValueSpecification *min)
 {
+    // This is a read-write association end
+
     this->min = min;
 }
 
 void QIntervalPrivate::setMax(QValueSpecification *max)
 {
+    // This is a read-write association end
+
     this->max = max;
 }
 
@@ -95,12 +99,16 @@ QInterval::~QInterval()
  */
 QValueSpecification *QInterval::min() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInterval);
     return d->min;
 }
 
 void QInterval::setMin(QValueSpecification *min)
 {
+    // This is a read-write association end
+
     QTUML_D(QInterval);
     if (d->min != min) {
         d->setMin(min);
@@ -112,12 +120,16 @@ void QInterval::setMin(QValueSpecification *min)
  */
 QValueSpecification *QInterval::max() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInterval);
     return d->max;
 }
 
 void QInterval::setMax(QValueSpecification *max)
 {
+    // This is a read-write association end
+
     QTUML_D(QInterval);
     if (d->max != max) {
         d->setMax(max);

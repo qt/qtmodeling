@@ -61,26 +61,36 @@ QRedefinableElementPrivate::~QRedefinableElementPrivate()
 
 void QRedefinableElementPrivate::setLeaf(bool isLeaf)
 {
+    // This is a read-write attribute
+
     this->isLeaf = isLeaf;
 }
 
 void QRedefinableElementPrivate::addRedefinedElement(QRedefinableElement *redefinedElement)
 {
+    // This is a read-only derived-union association end
+
     this->redefinedElements->insert(redefinedElement);
 }
 
 void QRedefinableElementPrivate::removeRedefinedElement(QRedefinableElement *redefinedElement)
 {
+    // This is a read-only derived-union association end
+
     this->redefinedElements->remove(redefinedElement);
 }
 
 void QRedefinableElementPrivate::addRedefinitionContext(QClassifier *redefinitionContext)
 {
+    // This is a read-only derived-union association end
+
     this->redefinitionContexts->insert(redefinitionContext);
 }
 
 void QRedefinableElementPrivate::removeRedefinitionContext(QClassifier *redefinitionContext)
 {
+    // This is a read-only derived-union association end
+
     this->redefinitionContexts->remove(redefinitionContext);
 }
 
@@ -105,12 +115,16 @@ QRedefinableElement::~QRedefinableElement()
  */
 bool QRedefinableElement::isLeaf() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QRedefinableElement);
     return d->isLeaf;
 }
 
 void QRedefinableElement::setLeaf(bool isLeaf)
 {
+    // This is a read-write attribute
+
     QTUML_D(QRedefinableElement);
     if (d->isLeaf != isLeaf) {
         d->setLeaf(isLeaf);
@@ -122,6 +136,8 @@ void QRedefinableElement::setLeaf(bool isLeaf)
  */
 const QSet<QRedefinableElement *> *QRedefinableElement::redefinedElements() const
 {
+    // This is a read-only derived-union association end
+
     QTUML_D(const QRedefinableElement);
     return d->redefinedElements;
 }
@@ -131,6 +147,8 @@ const QSet<QRedefinableElement *> *QRedefinableElement::redefinedElements() cons
  */
 const QSet<QClassifier *> *QRedefinableElement::redefinitionContexts() const
 {
+    // This is a read-only derived-union association end
+
     QTUML_D(const QRedefinableElement);
     return d->redefinitionContexts;
 }

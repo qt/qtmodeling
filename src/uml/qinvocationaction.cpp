@@ -61,6 +61,8 @@ QInvocationActionPrivate::~QInvocationActionPrivate()
 
 void QInvocationActionPrivate::addArgument(QInputPin *argument)
 {
+    // This is a read-write association end
+
     this->arguments->append(argument);
 
     // Adjust subsetted property(ies)
@@ -69,6 +71,8 @@ void QInvocationActionPrivate::addArgument(QInputPin *argument)
 
 void QInvocationActionPrivate::removeArgument(QInputPin *argument)
 {
+    // This is a read-write association end
+
     this->arguments->removeAll(argument);
 
     // Adjust subsetted property(ies)
@@ -77,6 +81,8 @@ void QInvocationActionPrivate::removeArgument(QInputPin *argument)
 
 void QInvocationActionPrivate::setOnPort(QPort *onPort)
 {
+    // This is a read-write association end
+
     this->onPort = onPort;
 }
 
@@ -101,12 +107,16 @@ QInvocationAction::~QInvocationAction()
  */
 const QList<QInputPin *> *QInvocationAction::arguments() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInvocationAction);
     return d->arguments;
 }
 
 void QInvocationAction::addArgument(QInputPin *argument)
 {
+    // This is a read-write association end
+
     QTUML_D(QInvocationAction);
     if (!d->arguments->contains(argument)) {
         d->addArgument(argument);
@@ -115,6 +125,8 @@ void QInvocationAction::addArgument(QInputPin *argument)
 
 void QInvocationAction::removeArgument(QInputPin *argument)
 {
+    // This is a read-write association end
+
     QTUML_D(QInvocationAction);
     if (d->arguments->contains(argument)) {
         d->removeArgument(argument);
@@ -126,12 +138,16 @@ void QInvocationAction::removeArgument(QInputPin *argument)
  */
 QPort *QInvocationAction::onPort() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInvocationAction);
     return d->onPort;
 }
 
 void QInvocationAction::setOnPort(QPort *onPort)
 {
+    // This is a read-write association end
+
     QTUML_D(QInvocationAction);
     if (d->onPort != onPort) {
         d->setOnPort(onPort);

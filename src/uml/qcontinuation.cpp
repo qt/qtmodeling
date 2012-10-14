@@ -56,6 +56,8 @@ QContinuationPrivate::~QContinuationPrivate()
 
 void QContinuationPrivate::setSetting(bool setting)
 {
+    // This is a read-write attribute
+
     this->setting = setting;
 }
 
@@ -89,12 +91,16 @@ QContinuation::~QContinuation()
  */
 bool QContinuation::setting() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QContinuation);
     return d->setting;
 }
 
 void QContinuation::setSetting(bool setting)
 {
+    // This is a read-write attribute
+
     QTUML_D(QContinuation);
     if (d->setting != setting) {
         d->setSetting(setting);

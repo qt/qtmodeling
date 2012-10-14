@@ -60,11 +60,15 @@ QSequenceNodePrivate::~QSequenceNodePrivate()
 
 void QSequenceNodePrivate::addExecutableNode(QExecutableNode *executableNode)
 {
+    // This is a read-write association end
+
     this->executableNodes->append(executableNode);
 }
 
 void QSequenceNodePrivate::removeExecutableNode(QExecutableNode *executableNode)
 {
+    // This is a read-write association end
+
     this->executableNodes->removeAll(executableNode);
 }
 
@@ -98,12 +102,16 @@ QSequenceNode::~QSequenceNode()
  */
 const QList<QExecutableNode *> *QSequenceNode::executableNodes() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QSequenceNode);
     return d->executableNodes;
 }
 
 void QSequenceNode::addExecutableNode(QExecutableNode *executableNode)
 {
+    // This is a read-write association end
+
     QTUML_D(QSequenceNode);
     if (!d->executableNodes->contains(executableNode)) {
         d->addExecutableNode(executableNode);
@@ -112,6 +120,8 @@ void QSequenceNode::addExecutableNode(QExecutableNode *executableNode)
 
 void QSequenceNode::removeExecutableNode(QExecutableNode *executableNode)
 {
+    // This is a read-write association end
+
     QTUML_D(QSequenceNode);
     if (d->executableNodes->contains(executableNode)) {
         d->removeExecutableNode(executableNode);

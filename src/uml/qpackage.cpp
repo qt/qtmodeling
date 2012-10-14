@@ -71,11 +71,15 @@ QPackagePrivate::~QPackagePrivate()
 
 void QPackagePrivate::setURI(QString URI)
 {
+    // This is a read-write attribute
+
     this->URI = URI;
 }
 
 void QPackagePrivate::addPackagedElement(QPackageableElement *packagedElement)
 {
+    // This is a read-write association end
+
     this->packagedElements->insert(packagedElement);
 
     // Adjust subsetted property(ies)
@@ -84,6 +88,8 @@ void QPackagePrivate::addPackagedElement(QPackageableElement *packagedElement)
 
 void QPackagePrivate::removePackagedElement(QPackageableElement *packagedElement)
 {
+    // This is a read-write association end
+
     this->packagedElements->remove(packagedElement);
 
     // Adjust subsetted property(ies)
@@ -92,6 +98,8 @@ void QPackagePrivate::removePackagedElement(QPackageableElement *packagedElement
 
 void QPackagePrivate::setNestingPackage(QPackage *nestingPackage)
 {
+    // This is a read-write association end
+
     this->nestingPackage = nestingPackage;
 
     // Adjust subsetted property(ies)
@@ -100,6 +108,8 @@ void QPackagePrivate::setNestingPackage(QPackage *nestingPackage)
 
 void QPackagePrivate::addProfileApplication(QProfileApplication *profileApplication)
 {
+    // This is a read-write association end
+
     this->profileApplications->insert(profileApplication);
 
     // Adjust subsetted property(ies)
@@ -115,6 +125,8 @@ void QPackagePrivate::addProfileApplication(QProfileApplication *profileApplicat
 
 void QPackagePrivate::removeProfileApplication(QProfileApplication *profileApplication)
 {
+    // This is a read-write association end
+
     this->profileApplications->remove(profileApplication);
 
     // Adjust subsetted property(ies)
@@ -130,6 +142,8 @@ void QPackagePrivate::removeProfileApplication(QProfileApplication *profileAppli
 
 void QPackagePrivate::addPackageMerge(QPackageMerge *packageMerge)
 {
+    // This is a read-write association end
+
     this->packageMerges->insert(packageMerge);
 
     // Adjust subsetted property(ies)
@@ -138,6 +152,8 @@ void QPackagePrivate::addPackageMerge(QPackageMerge *packageMerge)
 
 void QPackagePrivate::removePackageMerge(QPackageMerge *packageMerge)
 {
+    // This is a read-write association end
+
     this->packageMerges->remove(packageMerge);
 
     // Adjust subsetted property(ies)
@@ -174,12 +190,16 @@ QPackage::~QPackage()
  */
 QString QPackage::URI() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QPackage);
     return d->URI;
 }
 
 void QPackage::setURI(QString URI)
 {
+    // This is a read-write attribute
+
     QTUML_D(QPackage);
     if (d->URI != URI) {
         d->setURI(URI);
@@ -192,7 +212,9 @@ void QPackage::setURI(QString URI)
  */
 const QSet<QType *> *QPackage::ownedTypes() const
 {
-    QTUML_D(QPackage);
+    // This is a read-write derived association end
+
+    QTUML_D(const QPackage);
     QSet<QType *> *ownedTypes_ = new QSet<QType *>;
     foreach (QPackageableElement *packageableElement, *d->packagedElements)
         if (QType *type = dynamic_cast<QType *>(packageableElement))
@@ -202,7 +224,9 @@ const QSet<QType *> *QPackage::ownedTypes() const
 
 void QPackage::addOwnedType(QType *ownedType)
 {
-    QTUML_D(QPackage)
+    // This is a read-write derived association end
+
+    QTUML_D(QPackage);
     if (!d->packagedElements->contains(ownedType)) {
         d->addPackagedElement(ownedType);
 
@@ -213,7 +237,9 @@ void QPackage::addOwnedType(QType *ownedType)
 
 void QPackage::removeOwnedType(QType *ownedType)
 {
-    QTUML_D(QPackage)
+    // This is a read-write derived association end
+
+    QTUML_D(QPackage);
     if (d->packagedElements->contains(ownedType)) {
         d->removePackagedElement(ownedType);
 
@@ -227,12 +253,16 @@ void QPackage::removeOwnedType(QType *ownedType)
  */
 const QSet<QPackageableElement *> *QPackage::packagedElements() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QPackage);
     return d->packagedElements;
 }
 
 void QPackage::addPackagedElement(QPackageableElement *packagedElement)
 {
+    // This is a read-write association end
+
     QTUML_D(QPackage);
     if (!d->packagedElements->contains(packagedElement)) {
         d->addPackagedElement(packagedElement);
@@ -241,6 +271,8 @@ void QPackage::addPackagedElement(QPackageableElement *packagedElement)
 
 void QPackage::removePackagedElement(QPackageableElement *packagedElement)
 {
+    // This is a read-write association end
+
     QTUML_D(QPackage);
     if (d->packagedElements->contains(packagedElement)) {
         d->removePackagedElement(packagedElement);
@@ -252,12 +284,16 @@ void QPackage::removePackagedElement(QPackageableElement *packagedElement)
  */
 QPackage *QPackage::nestingPackage() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QPackage);
     return d->nestingPackage;
 }
 
 void QPackage::setNestingPackage(QPackage *nestingPackage)
 {
+    // This is a read-write association end
+
     QTUML_D(QPackage);
     if (d->nestingPackage != nestingPackage) {
         d->setNestingPackage(nestingPackage);
@@ -269,12 +305,16 @@ void QPackage::setNestingPackage(QPackage *nestingPackage)
  */
 const QSet<QProfileApplication *> *QPackage::profileApplications() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QPackage);
     return d->profileApplications;
 }
 
 void QPackage::addProfileApplication(QProfileApplication *profileApplication)
 {
+    // This is a read-write association end
+
     QTUML_D(QPackage);
     if (!d->profileApplications->contains(profileApplication)) {
         d->addProfileApplication(profileApplication);
@@ -286,6 +326,8 @@ void QPackage::addProfileApplication(QProfileApplication *profileApplication)
 
 void QPackage::removeProfileApplication(QProfileApplication *profileApplication)
 {
+    // This is a read-write association end
+
     QTUML_D(QPackage);
     if (d->profileApplications->contains(profileApplication)) {
         d->removeProfileApplication(profileApplication);
@@ -301,7 +343,9 @@ void QPackage::removeProfileApplication(QProfileApplication *profileApplication)
  */
 const QSet<QStereotype *> *QPackage::ownedStereotypes() const
 {
-    QTUML_D(QPackage);
+    // This is a read-only derived association end
+
+    QTUML_D(const QPackage);
     QSet<QStereotype *> *ownedStereotypes_ = new QSet<QStereotype *>;
     foreach (QPackageableElement *packageableElement, *d->packagedElements)
         if (QStereotype *stereotype = dynamic_cast<QStereotype *>(packageableElement))
@@ -314,12 +358,16 @@ const QSet<QStereotype *> *QPackage::ownedStereotypes() const
  */
 const QSet<QPackageMerge *> *QPackage::packageMerges() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QPackage);
     return d->packageMerges;
 }
 
 void QPackage::addPackageMerge(QPackageMerge *packageMerge)
 {
+    // This is a read-write association end
+
     QTUML_D(QPackage);
     if (!d->packageMerges->contains(packageMerge)) {
         d->addPackageMerge(packageMerge);
@@ -331,6 +379,8 @@ void QPackage::addPackageMerge(QPackageMerge *packageMerge)
 
 void QPackage::removePackageMerge(QPackageMerge *packageMerge)
 {
+    // This is a read-write association end
+
     QTUML_D(QPackage);
     if (d->packageMerges->contains(packageMerge)) {
         d->removePackageMerge(packageMerge);
@@ -346,7 +396,9 @@ void QPackage::removePackageMerge(QPackageMerge *packageMerge)
  */
 const QSet<QPackage *> *QPackage::nestedPackages() const
 {
-    QTUML_D(QPackage);
+    // This is a read-write derived association end
+
+    QTUML_D(const QPackage);
     QSet<QPackage *> *nestedPackages_ = new QSet<QPackage *>;
     foreach (QPackageableElement *packageableElement, *d->packagedElements)
         if (QPackage *package = dynamic_cast<QPackage *>(packageableElement))
@@ -356,7 +408,9 @@ const QSet<QPackage *> *QPackage::nestedPackages() const
 
 void QPackage::addNestedPackage(QPackage *nestedPackage)
 {
-    QTUML_D(QPackage)
+    // This is a read-write derived association end
+
+    QTUML_D(QPackage);
     if (!d->packagedElements->contains(nestedPackage)) {
         d->addPackagedElement(nestedPackage);
 
@@ -367,7 +421,9 @@ void QPackage::addNestedPackage(QPackage *nestedPackage)
 
 void QPackage::removeNestedPackage(QPackage *nestedPackage)
 {
-    QTUML_D(QPackage)
+    // This is a read-write derived association end
+
+    QTUML_D(QPackage);
     if (d->packagedElements->contains(nestedPackage)) {
         d->removePackagedElement(nestedPackage);
 

@@ -59,11 +59,15 @@ QRemoveVariableValueActionPrivate::~QRemoveVariableValueActionPrivate()
 
 void QRemoveVariableValueActionPrivate::setRemoveDuplicates(bool isRemoveDuplicates)
 {
+    // This is a read-write attribute
+
     this->isRemoveDuplicates = isRemoveDuplicates;
 }
 
 void QRemoveVariableValueActionPrivate::setRemoveAt(QInputPin *removeAt)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeInput(this->removeAt);
 
@@ -103,12 +107,16 @@ QRemoveVariableValueAction::~QRemoveVariableValueAction()
  */
 bool QRemoveVariableValueAction::isRemoveDuplicates() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QRemoveVariableValueAction);
     return d->isRemoveDuplicates;
 }
 
 void QRemoveVariableValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
 {
+    // This is a read-write attribute
+
     QTUML_D(QRemoveVariableValueAction);
     if (d->isRemoveDuplicates != isRemoveDuplicates) {
         d->setRemoveDuplicates(isRemoveDuplicates);
@@ -120,12 +128,16 @@ void QRemoveVariableValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
  */
 QInputPin *QRemoveVariableValueAction::removeAt() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QRemoveVariableValueAction);
     return d->removeAt;
 }
 
 void QRemoveVariableValueAction::setRemoveAt(QInputPin *removeAt)
 {
+    // This is a read-write association end
+
     QTUML_D(QRemoveVariableValueAction);
     if (d->removeAt != removeAt) {
         d->setRemoveAt(removeAt);

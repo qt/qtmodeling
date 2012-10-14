@@ -58,6 +58,8 @@ QAcceptCallActionPrivate::~QAcceptCallActionPrivate()
 
 void QAcceptCallActionPrivate::setReturnInformation(QOutputPin *returnInformation)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOutput(this->returnInformation);
 
@@ -97,12 +99,16 @@ QAcceptCallAction::~QAcceptCallAction()
  */
 QOutputPin *QAcceptCallAction::returnInformation() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QAcceptCallAction);
     return d->returnInformation;
 }
 
 void QAcceptCallAction::setReturnInformation(QOutputPin *returnInformation)
 {
+    // This is a read-write association end
+
     QTUML_D(QAcceptCallAction);
     if (d->returnInformation != returnInformation) {
         d->setReturnInformation(returnInformation);

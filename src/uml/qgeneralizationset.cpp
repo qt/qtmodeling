@@ -62,26 +62,36 @@ QGeneralizationSetPrivate::~QGeneralizationSetPrivate()
 
 void QGeneralizationSetPrivate::setCovering(bool isCovering)
 {
+    // This is a read-write attribute
+
     this->isCovering = isCovering;
 }
 
 void QGeneralizationSetPrivate::setDisjoint(bool isDisjoint)
 {
+    // This is a read-write attribute
+
     this->isDisjoint = isDisjoint;
 }
 
 void QGeneralizationSetPrivate::setPowertype(QClassifier *powertype)
 {
+    // This is a read-write association end
+
     this->powertype = powertype;
 }
 
 void QGeneralizationSetPrivate::addGeneralization(QGeneralization *generalization)
 {
+    // This is a read-write association end
+
     this->generalizations->insert(generalization);
 }
 
 void QGeneralizationSetPrivate::removeGeneralization(QGeneralization *generalization)
 {
+    // This is a read-write association end
+
     this->generalizations->remove(generalization);
 }
 
@@ -115,12 +125,16 @@ QGeneralizationSet::~QGeneralizationSet()
  */
 bool QGeneralizationSet::isCovering() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QGeneralizationSet);
     return d->isCovering;
 }
 
 void QGeneralizationSet::setCovering(bool isCovering)
 {
+    // This is a read-write attribute
+
     QTUML_D(QGeneralizationSet);
     if (d->isCovering != isCovering) {
         d->setCovering(isCovering);
@@ -132,12 +146,16 @@ void QGeneralizationSet::setCovering(bool isCovering)
  */
 bool QGeneralizationSet::isDisjoint() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QGeneralizationSet);
     return d->isDisjoint;
 }
 
 void QGeneralizationSet::setDisjoint(bool isDisjoint)
 {
+    // This is a read-write attribute
+
     QTUML_D(QGeneralizationSet);
     if (d->isDisjoint != isDisjoint) {
         d->setDisjoint(isDisjoint);
@@ -149,12 +167,16 @@ void QGeneralizationSet::setDisjoint(bool isDisjoint)
  */
 QClassifier *QGeneralizationSet::powertype() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QGeneralizationSet);
     return d->powertype;
 }
 
 void QGeneralizationSet::setPowertype(QClassifier *powertype)
 {
+    // This is a read-write association end
+
     QTUML_D(QGeneralizationSet);
     if (d->powertype != powertype) {
         d->setPowertype(powertype);
@@ -169,12 +191,16 @@ void QGeneralizationSet::setPowertype(QClassifier *powertype)
  */
 const QSet<QGeneralization *> *QGeneralizationSet::generalizations() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QGeneralizationSet);
     return d->generalizations;
 }
 
 void QGeneralizationSet::addGeneralization(QGeneralization *generalization)
 {
+    // This is a read-write association end
+
     QTUML_D(QGeneralizationSet);
     if (!d->generalizations->contains(generalization)) {
         d->addGeneralization(generalization);
@@ -186,6 +212,8 @@ void QGeneralizationSet::addGeneralization(QGeneralization *generalization)
 
 void QGeneralizationSet::removeGeneralization(QGeneralization *generalization)
 {
+    // This is a read-write association end
+
     QTUML_D(QGeneralizationSet);
     if (d->generalizations->contains(generalization)) {
         d->removeGeneralization(generalization);

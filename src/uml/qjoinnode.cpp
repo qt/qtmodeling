@@ -59,11 +59,15 @@ QJoinNodePrivate::~QJoinNodePrivate()
 
 void QJoinNodePrivate::setCombineDuplicate(bool isCombineDuplicate)
 {
+    // This is a read-write attribute
+
     this->isCombineDuplicate = isCombineDuplicate;
 }
 
 void QJoinNodePrivate::setJoinSpec(QValueSpecification *joinSpec)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->joinSpec);
 
@@ -103,12 +107,16 @@ QJoinNode::~QJoinNode()
  */
 bool QJoinNode::isCombineDuplicate() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QJoinNode);
     return d->isCombineDuplicate;
 }
 
 void QJoinNode::setCombineDuplicate(bool isCombineDuplicate)
 {
+    // This is a read-write attribute
+
     QTUML_D(QJoinNode);
     if (d->isCombineDuplicate != isCombineDuplicate) {
         d->setCombineDuplicate(isCombineDuplicate);
@@ -120,12 +128,16 @@ void QJoinNode::setCombineDuplicate(bool isCombineDuplicate)
  */
 QValueSpecification *QJoinNode::joinSpec() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QJoinNode);
     return d->joinSpec;
 }
 
 void QJoinNode::setJoinSpec(QValueSpecification *joinSpec)
 {
+    // This is a read-write association end
+
     QTUML_D(QJoinNode);
     if (d->joinSpec != joinSpec) {
         d->setJoinSpec(joinSpec);

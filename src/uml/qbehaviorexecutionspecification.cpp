@@ -57,6 +57,8 @@ QBehaviorExecutionSpecificationPrivate::~QBehaviorExecutionSpecificationPrivate(
 
 void QBehaviorExecutionSpecificationPrivate::setBehavior(QBehavior *behavior)
 {
+    // This is a read-write association end
+
     this->behavior = behavior;
 }
 
@@ -90,12 +92,16 @@ QBehaviorExecutionSpecification::~QBehaviorExecutionSpecification()
  */
 QBehavior *QBehaviorExecutionSpecification::behavior() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QBehaviorExecutionSpecification);
     return d->behavior;
 }
 
 void QBehaviorExecutionSpecification::setBehavior(QBehavior *behavior)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehaviorExecutionSpecification);
     if (d->behavior != behavior) {
         d->setBehavior(behavior);

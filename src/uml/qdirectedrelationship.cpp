@@ -61,6 +61,8 @@ QDirectedRelationshipPrivate::~QDirectedRelationshipPrivate()
 
 void QDirectedRelationshipPrivate::addSource(QElement *source)
 {
+    // This is a read-only derived-union association end
+
     this->sources->insert(source);
 
     // Adjust subsetted property(ies)
@@ -69,6 +71,8 @@ void QDirectedRelationshipPrivate::addSource(QElement *source)
 
 void QDirectedRelationshipPrivate::removeSource(QElement *source)
 {
+    // This is a read-only derived-union association end
+
     this->sources->remove(source);
 
     // Adjust subsetted property(ies)
@@ -77,6 +81,8 @@ void QDirectedRelationshipPrivate::removeSource(QElement *source)
 
 void QDirectedRelationshipPrivate::addTarget(QElement *target)
 {
+    // This is a read-only derived-union association end
+
     this->targets->insert(target);
 
     // Adjust subsetted property(ies)
@@ -85,6 +91,8 @@ void QDirectedRelationshipPrivate::addTarget(QElement *target)
 
 void QDirectedRelationshipPrivate::removeTarget(QElement *target)
 {
+    // This is a read-only derived-union association end
+
     this->targets->remove(target);
 
     // Adjust subsetted property(ies)
@@ -112,6 +120,8 @@ QDirectedRelationship::~QDirectedRelationship()
  */
 const QSet<QElement *> *QDirectedRelationship::sources() const
 {
+    // This is a read-only derived-union association end
+
     QTUML_D(const QDirectedRelationship);
     return d->sources;
 }
@@ -121,6 +131,8 @@ const QSet<QElement *> *QDirectedRelationship::sources() const
  */
 const QSet<QElement *> *QDirectedRelationship::targets() const
 {
+    // This is a read-only derived-union association end
+
     QTUML_D(const QDirectedRelationship);
     return d->targets;
 }

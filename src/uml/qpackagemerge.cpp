@@ -60,6 +60,8 @@ QPackageMergePrivate::~QPackageMergePrivate()
 
 void QPackageMergePrivate::setMergedPackage(QPackage *mergedPackage)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeTarget(this->mergedPackage);
 
@@ -71,6 +73,8 @@ void QPackageMergePrivate::setMergedPackage(QPackage *mergedPackage)
 
 void QPackageMergePrivate::setReceivingPackage(QPackage *receivingPackage)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeSource(this->receivingPackage);
 
@@ -111,12 +115,16 @@ QPackageMerge::~QPackageMerge()
  */
 QPackage *QPackageMerge::mergedPackage() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QPackageMerge);
     return d->mergedPackage;
 }
 
 void QPackageMerge::setMergedPackage(QPackage *mergedPackage)
 {
+    // This is a read-write association end
+
     QTUML_D(QPackageMerge);
     if (d->mergedPackage != mergedPackage) {
         d->setMergedPackage(mergedPackage);
@@ -128,12 +136,16 @@ void QPackageMerge::setMergedPackage(QPackage *mergedPackage)
  */
 QPackage *QPackageMerge::receivingPackage() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QPackageMerge);
     return d->receivingPackage;
 }
 
 void QPackageMerge::setReceivingPackage(QPackage *receivingPackage)
 {
+    // This is a read-write association end
+
     QTUML_D(QPackageMerge);
     if (d->receivingPackage != receivingPackage) {
         d->setReceivingPackage(receivingPackage);

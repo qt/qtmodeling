@@ -57,6 +57,8 @@ QVariableActionPrivate::~QVariableActionPrivate()
 
 void QVariableActionPrivate::setVariable(QVariable *variable)
 {
+    // This is a read-write association end
+
     this->variable = variable;
 }
 
@@ -81,12 +83,16 @@ QVariableAction::~QVariableAction()
  */
 QVariable *QVariableAction::variable() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QVariableAction);
     return d->variable;
 }
 
 void QVariableAction::setVariable(QVariable *variable)
 {
+    // This is a read-write association end
+
     QTUML_D(QVariableAction);
     if (d->variable != variable) {
         d->setVariable(variable);

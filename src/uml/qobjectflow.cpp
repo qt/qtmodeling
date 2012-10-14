@@ -60,21 +60,29 @@ QObjectFlowPrivate::~QObjectFlowPrivate()
 
 void QObjectFlowPrivate::setMultireceive(bool isMultireceive)
 {
+    // This is a read-write attribute
+
     this->isMultireceive = isMultireceive;
 }
 
 void QObjectFlowPrivate::setMulticast(bool isMulticast)
 {
+    // This is a read-write attribute
+
     this->isMulticast = isMulticast;
 }
 
 void QObjectFlowPrivate::setSelection(QBehavior *selection)
 {
+    // This is a read-write association end
+
     this->selection = selection;
 }
 
 void QObjectFlowPrivate::setTransformation(QBehavior *transformation)
 {
+    // This is a read-write association end
+
     this->transformation = transformation;
 }
 
@@ -108,12 +116,16 @@ QObjectFlow::~QObjectFlow()
  */
 bool QObjectFlow::isMultireceive() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QObjectFlow);
     return d->isMultireceive;
 }
 
 void QObjectFlow::setMultireceive(bool isMultireceive)
 {
+    // This is a read-write attribute
+
     QTUML_D(QObjectFlow);
     if (d->isMultireceive != isMultireceive) {
         d->setMultireceive(isMultireceive);
@@ -125,12 +137,16 @@ void QObjectFlow::setMultireceive(bool isMultireceive)
  */
 bool QObjectFlow::isMulticast() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QObjectFlow);
     return d->isMulticast;
 }
 
 void QObjectFlow::setMulticast(bool isMulticast)
 {
+    // This is a read-write attribute
+
     QTUML_D(QObjectFlow);
     if (d->isMulticast != isMulticast) {
         d->setMulticast(isMulticast);
@@ -142,12 +158,16 @@ void QObjectFlow::setMulticast(bool isMulticast)
  */
 QBehavior *QObjectFlow::selection() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QObjectFlow);
     return d->selection;
 }
 
 void QObjectFlow::setSelection(QBehavior *selection)
 {
+    // This is a read-write association end
+
     QTUML_D(QObjectFlow);
     if (d->selection != selection) {
         d->setSelection(selection);
@@ -159,12 +179,16 @@ void QObjectFlow::setSelection(QBehavior *selection)
  */
 QBehavior *QObjectFlow::transformation() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QObjectFlow);
     return d->transformation;
 }
 
 void QObjectFlow::setTransformation(QBehavior *transformation)
 {
+    // This is a read-write association end
+
     QTUML_D(QObjectFlow);
     if (d->transformation != transformation) {
         d->setTransformation(transformation);

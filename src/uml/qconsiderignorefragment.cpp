@@ -58,11 +58,15 @@ QConsiderIgnoreFragmentPrivate::~QConsiderIgnoreFragmentPrivate()
 
 void QConsiderIgnoreFragmentPrivate::addMessage(QNamedElement *message)
 {
+    // This is a read-write association end
+
     this->messages->insert(message);
 }
 
 void QConsiderIgnoreFragmentPrivate::removeMessage(QNamedElement *message)
 {
+    // This is a read-write association end
+
     this->messages->remove(message);
 }
 
@@ -96,12 +100,16 @@ QConsiderIgnoreFragment::~QConsiderIgnoreFragment()
  */
 const QSet<QNamedElement *> *QConsiderIgnoreFragment::messages() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QConsiderIgnoreFragment);
     return d->messages;
 }
 
 void QConsiderIgnoreFragment::addMessage(QNamedElement *message)
 {
+    // This is a read-write association end
+
     QTUML_D(QConsiderIgnoreFragment);
     if (!d->messages->contains(message)) {
         d->addMessage(message);
@@ -110,6 +118,8 @@ void QConsiderIgnoreFragment::addMessage(QNamedElement *message)
 
 void QConsiderIgnoreFragment::removeMessage(QNamedElement *message)
 {
+    // This is a read-write association end
+
     QTUML_D(QConsiderIgnoreFragment);
     if (d->messages->contains(message)) {
         d->removeMessage(message);

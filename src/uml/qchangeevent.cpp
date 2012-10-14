@@ -58,6 +58,8 @@ QChangeEventPrivate::~QChangeEventPrivate()
 
 void QChangeEventPrivate::setChangeExpression(QValueSpecification *changeExpression)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->changeExpression);
 
@@ -97,12 +99,16 @@ QChangeEvent::~QChangeEvent()
  */
 QValueSpecification *QChangeEvent::changeExpression() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QChangeEvent);
     return d->changeExpression;
 }
 
 void QChangeEvent::setChangeExpression(QValueSpecification *changeExpression)
 {
+    // This is a read-write association end
+
     QTUML_D(QChangeEvent);
     if (d->changeExpression != changeExpression) {
         d->setChangeExpression(changeExpression);

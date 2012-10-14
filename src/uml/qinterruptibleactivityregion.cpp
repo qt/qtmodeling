@@ -62,16 +62,22 @@ QInterruptibleActivityRegionPrivate::~QInterruptibleActivityRegionPrivate()
 
 void QInterruptibleActivityRegionPrivate::addInterruptingEdge(QActivityEdge *interruptingEdge)
 {
+    // This is a read-write association end
+
     this->interruptingEdges->insert(interruptingEdge);
 }
 
 void QInterruptibleActivityRegionPrivate::removeInterruptingEdge(QActivityEdge *interruptingEdge)
 {
+    // This is a read-write association end
+
     this->interruptingEdges->remove(interruptingEdge);
 }
 
 void QInterruptibleActivityRegionPrivate::addNode(QActivityNode *node)
 {
+    // This is a read-write association end
+
     this->nodes->insert(node);
 
     // Adjust subsetted property(ies)
@@ -80,6 +86,8 @@ void QInterruptibleActivityRegionPrivate::addNode(QActivityNode *node)
 
 void QInterruptibleActivityRegionPrivate::removeNode(QActivityNode *node)
 {
+    // This is a read-write association end
+
     this->nodes->remove(node);
 
     // Adjust subsetted property(ies)
@@ -116,12 +124,16 @@ QInterruptibleActivityRegion::~QInterruptibleActivityRegion()
  */
 const QSet<QActivityEdge *> *QInterruptibleActivityRegion::interruptingEdges() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInterruptibleActivityRegion);
     return d->interruptingEdges;
 }
 
 void QInterruptibleActivityRegion::addInterruptingEdge(QActivityEdge *interruptingEdge)
 {
+    // This is a read-write association end
+
     QTUML_D(QInterruptibleActivityRegion);
     if (!d->interruptingEdges->contains(interruptingEdge)) {
         d->addInterruptingEdge(interruptingEdge);
@@ -133,6 +145,8 @@ void QInterruptibleActivityRegion::addInterruptingEdge(QActivityEdge *interrupti
 
 void QInterruptibleActivityRegion::removeInterruptingEdge(QActivityEdge *interruptingEdge)
 {
+    // This is a read-write association end
+
     QTUML_D(QInterruptibleActivityRegion);
     if (d->interruptingEdges->contains(interruptingEdge)) {
         d->removeInterruptingEdge(interruptingEdge);
@@ -147,12 +161,16 @@ void QInterruptibleActivityRegion::removeInterruptingEdge(QActivityEdge *interru
  */
 const QSet<QActivityNode *> *QInterruptibleActivityRegion::nodes() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInterruptibleActivityRegion);
     return d->nodes;
 }
 
 void QInterruptibleActivityRegion::addNode(QActivityNode *node)
 {
+    // This is a read-write association end
+
     QTUML_D(QInterruptibleActivityRegion);
     if (!d->nodes->contains(node)) {
         d->addNode(node);
@@ -164,6 +182,8 @@ void QInterruptibleActivityRegion::addNode(QActivityNode *node)
 
 void QInterruptibleActivityRegion::removeNode(QActivityNode *node)
 {
+    // This is a read-write association end
+
     QTUML_D(QInterruptibleActivityRegion);
     if (d->nodes->contains(node)) {
         d->removeNode(node);

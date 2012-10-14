@@ -59,6 +59,8 @@ QProtocolStateMachinePrivate::~QProtocolStateMachinePrivate()
 
 void QProtocolStateMachinePrivate::addConformance(QProtocolConformance *conformance)
 {
+    // This is a read-write association end
+
     this->conformance->insert(conformance);
 
     // Adjust subsetted property(ies)
@@ -67,6 +69,8 @@ void QProtocolStateMachinePrivate::addConformance(QProtocolConformance *conforma
 
 void QProtocolStateMachinePrivate::removeConformance(QProtocolConformance *conformance)
 {
+    // This is a read-write association end
+
     this->conformance->remove(conformance);
 
     // Adjust subsetted property(ies)
@@ -103,12 +107,16 @@ QProtocolStateMachine::~QProtocolStateMachine()
  */
 const QSet<QProtocolConformance *> *QProtocolStateMachine::conformance() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QProtocolStateMachine);
     return d->conformance;
 }
 
 void QProtocolStateMachine::addConformance(QProtocolConformance *conformance)
 {
+    // This is a read-write association end
+
     QTUML_D(QProtocolStateMachine);
     if (!d->conformance->contains(conformance)) {
         d->addConformance(conformance);
@@ -120,6 +128,8 @@ void QProtocolStateMachine::addConformance(QProtocolConformance *conformance)
 
 void QProtocolStateMachine::removeConformance(QProtocolConformance *conformance)
 {
+    // This is a read-write association end
+
     QTUML_D(QProtocolStateMachine);
     if (d->conformance->contains(conformance)) {
         d->removeConformance(conformance);

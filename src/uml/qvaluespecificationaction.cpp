@@ -61,6 +61,8 @@ QValueSpecificationActionPrivate::~QValueSpecificationActionPrivate()
 
 void QValueSpecificationActionPrivate::setValue(QValueSpecification *value)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->value);
 
@@ -72,6 +74,8 @@ void QValueSpecificationActionPrivate::setValue(QValueSpecification *value)
 
 void QValueSpecificationActionPrivate::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
@@ -111,12 +115,16 @@ QValueSpecificationAction::~QValueSpecificationAction()
  */
 QValueSpecification *QValueSpecificationAction::value() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QValueSpecificationAction);
     return d->value;
 }
 
 void QValueSpecificationAction::setValue(QValueSpecification *value)
 {
+    // This is a read-write association end
+
     QTUML_D(QValueSpecificationAction);
     if (d->value != value) {
         d->setValue(value);
@@ -128,12 +136,16 @@ void QValueSpecificationAction::setValue(QValueSpecification *value)
  */
 QOutputPin *QValueSpecificationAction::result() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QValueSpecificationAction);
     return d->result;
 }
 
 void QValueSpecificationAction::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     QTUML_D(QValueSpecificationAction);
     if (d->result != result) {
         d->setResult(result);

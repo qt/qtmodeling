@@ -62,11 +62,15 @@ QPackageImportPrivate::~QPackageImportPrivate()
 
 void QPackageImportPrivate::setVisibility(QtUml::VisibilityKind visibility)
 {
+    // This is a read-write attribute
+
     this->visibility = visibility;
 }
 
 void QPackageImportPrivate::setImportingNamespace(QNamespace *importingNamespace)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeSource(this->importingNamespace);
 
@@ -79,6 +83,8 @@ void QPackageImportPrivate::setImportingNamespace(QNamespace *importingNamespace
 
 void QPackageImportPrivate::setImportedPackage(QPackage *importedPackage)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeTarget(this->importedPackage);
 
@@ -118,12 +124,16 @@ QPackageImport::~QPackageImport()
  */
 QtUml::VisibilityKind QPackageImport::visibility() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QPackageImport);
     return d->visibility;
 }
 
 void QPackageImport::setVisibility(QtUml::VisibilityKind visibility)
 {
+    // This is a read-write attribute
+
     QTUML_D(QPackageImport);
     if (d->visibility != visibility) {
         d->setVisibility(visibility);
@@ -135,12 +145,16 @@ void QPackageImport::setVisibility(QtUml::VisibilityKind visibility)
  */
 QNamespace *QPackageImport::importingNamespace() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QPackageImport);
     return d->importingNamespace;
 }
 
 void QPackageImport::setImportingNamespace(QNamespace *importingNamespace)
 {
+    // This is a read-write association end
+
     QTUML_D(QPackageImport);
     if (d->importingNamespace != importingNamespace) {
         d->setImportingNamespace(importingNamespace);
@@ -155,12 +169,16 @@ void QPackageImport::setImportingNamespace(QNamespace *importingNamespace)
  */
 QPackage *QPackageImport::importedPackage() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QPackageImport);
     return d->importedPackage;
 }
 
 void QPackageImport::setImportedPackage(QPackage *importedPackage)
 {
+    // This is a read-write association end
+
     QTUML_D(QPackageImport);
     if (d->importedPackage != importedPackage) {
         d->setImportedPackage(importedPackage);

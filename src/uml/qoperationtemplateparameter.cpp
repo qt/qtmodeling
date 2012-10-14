@@ -57,6 +57,8 @@ QOperationTemplateParameterPrivate::~QOperationTemplateParameterPrivate()
 
 void QOperationTemplateParameterPrivate::setParameteredElement(QOperation *parameteredElement)
 {
+    // This is a read-write association end
+
     this->parameteredElement = parameteredElement;
 }
 
@@ -90,12 +92,16 @@ QOperationTemplateParameter::~QOperationTemplateParameter()
  */
 QOperation *QOperationTemplateParameter::parameteredElement() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QOperationTemplateParameter);
     return d->parameteredElement;
 }
 
 void QOperationTemplateParameter::setParameteredElement(QOperation *parameteredElement)
 {
+    // This is a read-write association end
+
     QTUML_D(QOperationTemplateParameter);
     if (d->parameteredElement != parameteredElement) {
         d->setParameteredElement(parameteredElement);

@@ -67,6 +67,8 @@ QConnectorPrivate::~QConnectorPrivate()
 
 void QConnectorPrivate::addRedefinedConnector(QConnector *redefinedConnector)
 {
+    // This is a read-write association end
+
     this->redefinedConnectors->insert(redefinedConnector);
 
     // Adjust subsetted property(ies)
@@ -75,6 +77,8 @@ void QConnectorPrivate::addRedefinedConnector(QConnector *redefinedConnector)
 
 void QConnectorPrivate::removeRedefinedConnector(QConnector *redefinedConnector)
 {
+    // This is a read-write association end
+
     this->redefinedConnectors->remove(redefinedConnector);
 
     // Adjust subsetted property(ies)
@@ -83,21 +87,29 @@ void QConnectorPrivate::removeRedefinedConnector(QConnector *redefinedConnector)
 
 void QConnectorPrivate::addContract(QBehavior *contract)
 {
+    // This is a read-write association end
+
     this->contracts->insert(contract);
 }
 
 void QConnectorPrivate::removeContract(QBehavior *contract)
 {
+    // This is a read-write association end
+
     this->contracts->remove(contract);
 }
 
 void QConnectorPrivate::setType(QAssociation *type)
 {
+    // This is a read-write association end
+
     this->type = type;
 }
 
 void QConnectorPrivate::addEnd(QConnectorEnd *end)
 {
+    // This is a read-write association end
+
     this->ends->append(end);
 
     // Adjust subsetted property(ies)
@@ -106,6 +118,8 @@ void QConnectorPrivate::addEnd(QConnectorEnd *end)
 
 void QConnectorPrivate::removeEnd(QConnectorEnd *end)
 {
+    // This is a read-write association end
+
     this->ends->removeAll(end);
 
     // Adjust subsetted property(ies)
@@ -142,7 +156,12 @@ QConnector::~QConnector()
  */
 QtUml::ConnectorKind QConnector::kind() const
 {
+    // This is a read-only derived attribute
+
     qWarning("QConnector::kind: to be implemented (this is a derived attribute)");
+
+    QTUML_D(const QConnector);
+    //return <derived-return>;
 }
 
 /*!
@@ -150,12 +169,16 @@ QtUml::ConnectorKind QConnector::kind() const
  */
 const QSet<QConnector *> *QConnector::redefinedConnectors() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QConnector);
     return d->redefinedConnectors;
 }
 
 void QConnector::addRedefinedConnector(QConnector *redefinedConnector)
 {
+    // This is a read-write association end
+
     QTUML_D(QConnector);
     if (!d->redefinedConnectors->contains(redefinedConnector)) {
         d->addRedefinedConnector(redefinedConnector);
@@ -164,6 +187,8 @@ void QConnector::addRedefinedConnector(QConnector *redefinedConnector)
 
 void QConnector::removeRedefinedConnector(QConnector *redefinedConnector)
 {
+    // This is a read-write association end
+
     QTUML_D(QConnector);
     if (d->redefinedConnectors->contains(redefinedConnector)) {
         d->removeRedefinedConnector(redefinedConnector);
@@ -175,12 +200,16 @@ void QConnector::removeRedefinedConnector(QConnector *redefinedConnector)
  */
 const QSet<QBehavior *> *QConnector::contracts() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QConnector);
     return d->contracts;
 }
 
 void QConnector::addContract(QBehavior *contract)
 {
+    // This is a read-write association end
+
     QTUML_D(QConnector);
     if (!d->contracts->contains(contract)) {
         d->addContract(contract);
@@ -189,6 +218,8 @@ void QConnector::addContract(QBehavior *contract)
 
 void QConnector::removeContract(QBehavior *contract)
 {
+    // This is a read-write association end
+
     QTUML_D(QConnector);
     if (d->contracts->contains(contract)) {
         d->removeContract(contract);
@@ -200,12 +231,16 @@ void QConnector::removeContract(QBehavior *contract)
  */
 QAssociation *QConnector::type() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QConnector);
     return d->type;
 }
 
 void QConnector::setType(QAssociation *type)
 {
+    // This is a read-write association end
+
     QTUML_D(QConnector);
     if (d->type != type) {
         d->setType(type);
@@ -217,12 +252,16 @@ void QConnector::setType(QAssociation *type)
  */
 const QList<QConnectorEnd *> *QConnector::ends() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QConnector);
     return d->ends;
 }
 
 void QConnector::addEnd(QConnectorEnd *end)
 {
+    // This is a read-write association end
+
     QTUML_D(QConnector);
     if (!d->ends->contains(end)) {
         d->addEnd(end);
@@ -231,6 +270,8 @@ void QConnector::addEnd(QConnectorEnd *end)
 
 void QConnector::removeEnd(QConnectorEnd *end)
 {
+    // This is a read-write association end
+
     QTUML_D(QConnector);
     if (d->ends->contains(end)) {
         d->removeEnd(end);

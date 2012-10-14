@@ -67,6 +67,8 @@ QInteractionUsePrivate::~QInteractionUsePrivate()
 
 void QInteractionUsePrivate::addActualGate(QGate *actualGate)
 {
+    // This is a read-write association end
+
     this->actualGates->insert(actualGate);
 
     // Adjust subsetted property(ies)
@@ -75,6 +77,8 @@ void QInteractionUsePrivate::addActualGate(QGate *actualGate)
 
 void QInteractionUsePrivate::removeActualGate(QGate *actualGate)
 {
+    // This is a read-write association end
+
     this->actualGates->remove(actualGate);
 
     // Adjust subsetted property(ies)
@@ -83,6 +87,8 @@ void QInteractionUsePrivate::removeActualGate(QGate *actualGate)
 
 void QInteractionUsePrivate::setReturnValue(QValueSpecification *returnValue)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->returnValue);
 
@@ -94,11 +100,15 @@ void QInteractionUsePrivate::setReturnValue(QValueSpecification *returnValue)
 
 void QInteractionUsePrivate::setRefersTo(QInteraction *refersTo)
 {
+    // This is a read-write association end
+
     this->refersTo = refersTo;
 }
 
 void QInteractionUsePrivate::addArgument(QValueSpecification *argument)
 {
+    // This is a read-write association end
+
     this->arguments->append(argument);
 
     // Adjust subsetted property(ies)
@@ -107,6 +117,8 @@ void QInteractionUsePrivate::addArgument(QValueSpecification *argument)
 
 void QInteractionUsePrivate::removeArgument(QValueSpecification *argument)
 {
+    // This is a read-write association end
+
     this->arguments->removeAll(argument);
 
     // Adjust subsetted property(ies)
@@ -115,6 +127,8 @@ void QInteractionUsePrivate::removeArgument(QValueSpecification *argument)
 
 void QInteractionUsePrivate::setReturnValueRecipient(QProperty *returnValueRecipient)
 {
+    // This is a read-write association end
+
     this->returnValueRecipient = returnValueRecipient;
 }
 
@@ -148,12 +162,16 @@ QInteractionUse::~QInteractionUse()
  */
 const QSet<QGate *> *QInteractionUse::actualGates() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInteractionUse);
     return d->actualGates;
 }
 
 void QInteractionUse::addActualGate(QGate *actualGate)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteractionUse);
     if (!d->actualGates->contains(actualGate)) {
         d->addActualGate(actualGate);
@@ -162,6 +180,8 @@ void QInteractionUse::addActualGate(QGate *actualGate)
 
 void QInteractionUse::removeActualGate(QGate *actualGate)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteractionUse);
     if (d->actualGates->contains(actualGate)) {
         d->removeActualGate(actualGate);
@@ -173,12 +193,16 @@ void QInteractionUse::removeActualGate(QGate *actualGate)
  */
 QValueSpecification *QInteractionUse::returnValue() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInteractionUse);
     return d->returnValue;
 }
 
 void QInteractionUse::setReturnValue(QValueSpecification *returnValue)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteractionUse);
     if (d->returnValue != returnValue) {
         d->setReturnValue(returnValue);
@@ -190,12 +214,16 @@ void QInteractionUse::setReturnValue(QValueSpecification *returnValue)
  */
 QInteraction *QInteractionUse::refersTo() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInteractionUse);
     return d->refersTo;
 }
 
 void QInteractionUse::setRefersTo(QInteraction *refersTo)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteractionUse);
     if (d->refersTo != refersTo) {
         d->setRefersTo(refersTo);
@@ -207,12 +235,16 @@ void QInteractionUse::setRefersTo(QInteraction *refersTo)
  */
 const QList<QValueSpecification *> *QInteractionUse::arguments() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInteractionUse);
     return d->arguments;
 }
 
 void QInteractionUse::addArgument(QValueSpecification *argument)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteractionUse);
     if (!d->arguments->contains(argument)) {
         d->addArgument(argument);
@@ -221,6 +253,8 @@ void QInteractionUse::addArgument(QValueSpecification *argument)
 
 void QInteractionUse::removeArgument(QValueSpecification *argument)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteractionUse);
     if (d->arguments->contains(argument)) {
         d->removeArgument(argument);
@@ -232,12 +266,16 @@ void QInteractionUse::removeArgument(QValueSpecification *argument)
  */
 QProperty *QInteractionUse::returnValueRecipient() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInteractionUse);
     return d->returnValueRecipient;
 }
 
 void QInteractionUse::setReturnValueRecipient(QProperty *returnValueRecipient)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteractionUse);
     if (d->returnValueRecipient != returnValueRecipient) {
         d->setReturnValueRecipient(returnValueRecipient);

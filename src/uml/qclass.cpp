@@ -73,16 +73,22 @@ QClassPrivate::~QClassPrivate()
 
 void QClassPrivate::setAbstract(bool isAbstract)
 {
+    // This is a read-write attribute
+
     this->isAbstract = isAbstract;
 }
 
 void QClassPrivate::setActive(bool isActive)
 {
+    // This is a read-write attribute
+
     this->isActive = isActive;
 }
 
 void QClassPrivate::addNestedClassifier(QClassifier *nestedClassifier)
 {
+    // This is a read-write association end
+
     this->nestedClassifiers->append(nestedClassifier);
 
     // Adjust subsetted property(ies)
@@ -91,6 +97,8 @@ void QClassPrivate::addNestedClassifier(QClassifier *nestedClassifier)
 
 void QClassPrivate::removeNestedClassifier(QClassifier *nestedClassifier)
 {
+    // This is a read-write association end
+
     this->nestedClassifiers->removeAll(nestedClassifier);
 
     // Adjust subsetted property(ies)
@@ -99,6 +107,8 @@ void QClassPrivate::removeNestedClassifier(QClassifier *nestedClassifier)
 
 void QClassPrivate::addOwnedReception(QReception *ownedReception)
 {
+    // This is a read-write association end
+
     this->ownedReceptions->insert(ownedReception);
 
     // Adjust subsetted property(ies)
@@ -108,6 +118,8 @@ void QClassPrivate::addOwnedReception(QReception *ownedReception)
 
 void QClassPrivate::removeOwnedReception(QReception *ownedReception)
 {
+    // This is a read-write association end
+
     this->ownedReceptions->remove(ownedReception);
 
     // Adjust subsetted property(ies)
@@ -117,6 +129,8 @@ void QClassPrivate::removeOwnedReception(QReception *ownedReception)
 
 void QClassPrivate::addOwnedOperation(QOperation *ownedOperation)
 {
+    // This is a read-write association end
+
     this->ownedOperations->append(ownedOperation);
 
     // Adjust subsetted property(ies)
@@ -126,6 +140,8 @@ void QClassPrivate::addOwnedOperation(QOperation *ownedOperation)
 
 void QClassPrivate::removeOwnedOperation(QOperation *ownedOperation)
 {
+    // This is a read-write association end
+
     this->ownedOperations->removeAll(ownedOperation);
 
     // Adjust subsetted property(ies)
@@ -135,6 +151,8 @@ void QClassPrivate::removeOwnedOperation(QOperation *ownedOperation)
 
 void QClassPrivate::addOwnedAttribute(QProperty *ownedAttribute)
 {
+    // This is a read-write association end
+
     this->ownedAttributes->append(ownedAttribute);
 
     // Adjust subsetted property(ies)
@@ -144,6 +162,8 @@ void QClassPrivate::addOwnedAttribute(QProperty *ownedAttribute)
 
 void QClassPrivate::removeOwnedAttribute(QProperty *ownedAttribute)
 {
+    // This is a read-write association end
+
     this->ownedAttributes->removeAll(ownedAttribute);
 
     // Adjust subsetted property(ies)
@@ -181,12 +201,16 @@ QClass::~QClass()
  */
 bool QClass::isAbstract() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QClass);
     return d->isAbstract;
 }
 
 void QClass::setAbstract(bool isAbstract)
 {
+    // This is a read-write attribute
+
     QTUML_D(QClass);
     if (d->isAbstract != isAbstract) {
         d->setAbstract(isAbstract);
@@ -198,12 +222,16 @@ void QClass::setAbstract(bool isAbstract)
  */
 bool QClass::isActive() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QClass);
     return d->isActive;
 }
 
 void QClass::setActive(bool isActive)
 {
+    // This is a read-write attribute
+
     QTUML_D(QClass);
     if (d->isActive != isActive) {
         d->setActive(isActive);
@@ -215,12 +243,16 @@ void QClass::setActive(bool isActive)
  */
 const QList<QClassifier *> *QClass::nestedClassifiers() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QClass);
     return d->nestedClassifiers;
 }
 
 void QClass::addNestedClassifier(QClassifier *nestedClassifier)
 {
+    // This is a read-write association end
+
     QTUML_D(QClass);
     if (!d->nestedClassifiers->contains(nestedClassifier)) {
         d->addNestedClassifier(nestedClassifier);
@@ -229,6 +261,8 @@ void QClass::addNestedClassifier(QClassifier *nestedClassifier)
 
 void QClass::removeNestedClassifier(QClassifier *nestedClassifier)
 {
+    // This is a read-write association end
+
     QTUML_D(QClass);
     if (d->nestedClassifiers->contains(nestedClassifier)) {
         d->removeNestedClassifier(nestedClassifier);
@@ -240,12 +274,16 @@ void QClass::removeNestedClassifier(QClassifier *nestedClassifier)
  */
 const QSet<QReception *> *QClass::ownedReceptions() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QClass);
     return d->ownedReceptions;
 }
 
 void QClass::addOwnedReception(QReception *ownedReception)
 {
+    // This is a read-write association end
+
     QTUML_D(QClass);
     if (!d->ownedReceptions->contains(ownedReception)) {
         d->addOwnedReception(ownedReception);
@@ -254,6 +292,8 @@ void QClass::addOwnedReception(QReception *ownedReception)
 
 void QClass::removeOwnedReception(QReception *ownedReception)
 {
+    // This is a read-write association end
+
     QTUML_D(QClass);
     if (d->ownedReceptions->contains(ownedReception)) {
         d->removeOwnedReception(ownedReception);
@@ -265,7 +305,12 @@ void QClass::removeOwnedReception(QReception *ownedReception)
  */
 const QSet<QExtension *> *QClass::extensions() const
 {
+    // This is a read-only derived association end
+
     qWarning("QClass::extensions: to be implemented (this is a derived associationend)");
+
+    QTUML_D(const QClass);
+    //return <derived-return>;
 }
 
 /*!
@@ -273,12 +318,16 @@ const QSet<QExtension *> *QClass::extensions() const
  */
 const QList<QOperation *> *QClass::ownedOperations() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QClass);
     return d->ownedOperations;
 }
 
 void QClass::addOwnedOperation(QOperation *ownedOperation)
 {
+    // This is a read-write association end
+
     QTUML_D(QClass);
     if (!d->ownedOperations->contains(ownedOperation)) {
         d->addOwnedOperation(ownedOperation);
@@ -290,6 +339,8 @@ void QClass::addOwnedOperation(QOperation *ownedOperation)
 
 void QClass::removeOwnedOperation(QOperation *ownedOperation)
 {
+    // This is a read-write association end
+
     QTUML_D(QClass);
     if (d->ownedOperations->contains(ownedOperation)) {
         d->removeOwnedOperation(ownedOperation);
@@ -304,12 +355,16 @@ void QClass::removeOwnedOperation(QOperation *ownedOperation)
  */
 const QList<QProperty *> *QClass::ownedAttributes() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QClass);
     return d->ownedAttributes;
 }
 
 void QClass::addOwnedAttribute(QProperty *ownedAttribute)
 {
+    // This is a read-write association end
+
     QTUML_D(QClass);
     if (!d->ownedAttributes->contains(ownedAttribute)) {
         d->addOwnedAttribute(ownedAttribute);
@@ -321,6 +376,8 @@ void QClass::addOwnedAttribute(QProperty *ownedAttribute)
 
 void QClass::removeOwnedAttribute(QProperty *ownedAttribute)
 {
+    // This is a read-write association end
+
     QTUML_D(QClass);
     if (d->ownedAttributes->contains(ownedAttribute)) {
         d->removeOwnedAttribute(ownedAttribute);
@@ -335,17 +392,36 @@ void QClass::removeOwnedAttribute(QProperty *ownedAttribute)
  */
 const QSet<QClass *> *QClass::superClasses() const
 {
+    // This is a read-write derived association end
+
     qWarning("QClass::superClasses: to be implemented (this is a derived associationend)");
+
+    QTUML_D(const QClass);
+    //return <derived-return>;
 }
 
 void QClass::addSuperClass(QClass *superClass)
 {
+    // This is a read-write derived association end
+
     qWarning("QClass::addSuperClass: to be implemented (this is a derived associationend)");
+
+    QTUML_D(QClass);
+    if (true /* <derived-inclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 void QClass::removeSuperClass(QClass *superClass)
 {
+    // This is a read-write derived association end
+
     qWarning("QClass::removeSuperClass: to be implemented (this is a derived associationend)");
+
+    QTUML_D(QClass);
+    if (true /* <derived-exclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!

@@ -61,6 +61,8 @@ QInterfaceRealizationPrivate::~QInterfaceRealizationPrivate()
 
 void QInterfaceRealizationPrivate::setImplementingClassifier(QBehavioredClassifier *implementingClassifier)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeClient(this->implementingClassifier);
 
@@ -73,6 +75,8 @@ void QInterfaceRealizationPrivate::setImplementingClassifier(QBehavioredClassifi
 
 void QInterfaceRealizationPrivate::setContract(QInterface *contract)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeSupplier(this->contract);
 
@@ -112,12 +116,16 @@ QInterfaceRealization::~QInterfaceRealization()
  */
 QBehavioredClassifier *QInterfaceRealization::implementingClassifier() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInterfaceRealization);
     return d->implementingClassifier;
 }
 
 void QInterfaceRealization::setImplementingClassifier(QBehavioredClassifier *implementingClassifier)
 {
+    // This is a read-write association end
+
     QTUML_D(QInterfaceRealization);
     if (d->implementingClassifier != implementingClassifier) {
         d->setImplementingClassifier(implementingClassifier);
@@ -132,12 +140,16 @@ void QInterfaceRealization::setImplementingClassifier(QBehavioredClassifier *imp
  */
 QInterface *QInterfaceRealization::contract() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInterfaceRealization);
     return d->contract;
 }
 
 void QInterfaceRealization::setContract(QInterface *contract)
 {
+    // This is a read-write association end
+
     QTUML_D(QInterfaceRealization);
     if (d->contract != contract) {
         d->setContract(contract);

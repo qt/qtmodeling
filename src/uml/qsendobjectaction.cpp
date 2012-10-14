@@ -60,11 +60,15 @@ QSendObjectActionPrivate::~QSendObjectActionPrivate()
 
 void QSendObjectActionPrivate::setRequest(QInputPin *request)
 {
+    // This is a read-write association end
+
     this->request = request;
 }
 
 void QSendObjectActionPrivate::setTarget(QInputPin *target)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeInput(this->target);
 
@@ -104,12 +108,16 @@ QSendObjectAction::~QSendObjectAction()
  */
 QInputPin *QSendObjectAction::request() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QSendObjectAction);
     return d->request;
 }
 
 void QSendObjectAction::setRequest(QInputPin *request)
 {
+    // This is a read-write association end
+
     QTUML_D(QSendObjectAction);
     if (d->request != request) {
         d->setRequest(request);
@@ -121,12 +129,16 @@ void QSendObjectAction::setRequest(QInputPin *request)
  */
 QInputPin *QSendObjectAction::target() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QSendObjectAction);
     return d->target;
 }
 
 void QSendObjectAction::setTarget(QInputPin *target)
 {
+    // This is a read-write association end
+
     QTUML_D(QSendObjectAction);
     if (d->target != target) {
         d->setTarget(target);

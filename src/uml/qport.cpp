@@ -64,26 +64,36 @@ QPortPrivate::~QPortPrivate()
 
 void QPortPrivate::setConjugated(bool isConjugated)
 {
+    // This is a read-write attribute
+
     this->isConjugated = isConjugated;
 }
 
 void QPortPrivate::setBehavior(bool isBehavior)
 {
+    // This is a read-write attribute
+
     this->isBehavior = isBehavior;
 }
 
 void QPortPrivate::setService(bool isService)
 {
+    // This is a read-write attribute
+
     this->isService = isService;
 }
 
 void QPortPrivate::setProtocol(QProtocolStateMachine *protocol)
 {
+    // This is a read-write association end
+
     this->protocol = protocol;
 }
 
 void QPortPrivate::addRedefinedPort(QPort *redefinedPort)
 {
+    // This is a read-write association end
+
     this->redefinedPorts->insert(redefinedPort);
 
     // Adjust subsetted property(ies)
@@ -92,6 +102,8 @@ void QPortPrivate::addRedefinedPort(QPort *redefinedPort)
 
 void QPortPrivate::removeRedefinedPort(QPort *redefinedPort)
 {
+    // This is a read-write association end
+
     this->redefinedPorts->remove(redefinedPort);
 
     // Adjust subsetted property(ies)
@@ -128,12 +140,16 @@ QPort::~QPort()
  */
 bool QPort::isConjugated() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QPort);
     return d->isConjugated;
 }
 
 void QPort::setConjugated(bool isConjugated)
 {
+    // This is a read-write attribute
+
     QTUML_D(QPort);
     if (d->isConjugated != isConjugated) {
         d->setConjugated(isConjugated);
@@ -145,12 +161,16 @@ void QPort::setConjugated(bool isConjugated)
  */
 bool QPort::isBehavior() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QPort);
     return d->isBehavior;
 }
 
 void QPort::setBehavior(bool isBehavior)
 {
+    // This is a read-write attribute
+
     QTUML_D(QPort);
     if (d->isBehavior != isBehavior) {
         d->setBehavior(isBehavior);
@@ -162,12 +182,16 @@ void QPort::setBehavior(bool isBehavior)
  */
 bool QPort::isService() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QPort);
     return d->isService;
 }
 
 void QPort::setService(bool isService)
 {
+    // This is a read-write attribute
+
     QTUML_D(QPort);
     if (d->isService != isService) {
         d->setService(isService);
@@ -179,12 +203,16 @@ void QPort::setService(bool isService)
  */
 QProtocolStateMachine *QPort::protocol() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QPort);
     return d->protocol;
 }
 
 void QPort::setProtocol(QProtocolStateMachine *protocol)
 {
+    // This is a read-write association end
+
     QTUML_D(QPort);
     if (d->protocol != protocol) {
         d->setProtocol(protocol);
@@ -196,7 +224,12 @@ void QPort::setProtocol(QProtocolStateMachine *protocol)
  */
 const QSet<QInterface *> *QPort::required() const
 {
+    // This is a read-only derived association end
+
     qWarning("QPort::required: to be implemented (this is a derived associationend)");
+
+    QTUML_D(const QPort);
+    //return <derived-return>;
 }
 
 /*!
@@ -204,7 +237,12 @@ const QSet<QInterface *> *QPort::required() const
  */
 const QSet<QInterface *> *QPort::provided() const
 {
+    // This is a read-only derived association end
+
     qWarning("QPort::provided: to be implemented (this is a derived associationend)");
+
+    QTUML_D(const QPort);
+    //return <derived-return>;
 }
 
 /*!
@@ -212,12 +250,16 @@ const QSet<QInterface *> *QPort::provided() const
  */
 const QSet<QPort *> *QPort::redefinedPorts() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QPort);
     return d->redefinedPorts;
 }
 
 void QPort::addRedefinedPort(QPort *redefinedPort)
 {
+    // This is a read-write association end
+
     QTUML_D(QPort);
     if (!d->redefinedPorts->contains(redefinedPort)) {
         d->addRedefinedPort(redefinedPort);
@@ -226,6 +268,8 @@ void QPort::addRedefinedPort(QPort *redefinedPort)
 
 void QPort::removeRedefinedPort(QPort *redefinedPort)
 {
+    // This is a read-write association end
+
     QTUML_D(QPort);
     if (d->redefinedPorts->contains(redefinedPort)) {
         d->removeRedefinedPort(redefinedPort);

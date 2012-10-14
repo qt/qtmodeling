@@ -60,6 +60,8 @@ QVertexPrivate::~QVertexPrivate()
 
 void QVertexPrivate::setContainer(QRegion *container)
 {
+    // This is a read-write association end
+
     this->container = container;
 
     // Adjust subsetted property(ies)
@@ -87,7 +89,12 @@ QVertex::~QVertex()
  */
 const QSet<QTransition *> *QVertex::incomings() const
 {
+    // This is a read-only derived association end
+
     qWarning("QVertex::incomings: to be implemented (this is a derived associationend)");
+
+    QTUML_D(const QVertex);
+    //return <derived-return>;
 }
 
 /*!
@@ -95,12 +102,16 @@ const QSet<QTransition *> *QVertex::incomings() const
  */
 QRegion *QVertex::container() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QVertex);
     return d->container;
 }
 
 void QVertex::setContainer(QRegion *container)
 {
+    // This is a read-write association end
+
     QTUML_D(QVertex);
     if (d->container != container) {
         d->setContainer(container);
@@ -115,7 +126,12 @@ void QVertex::setContainer(QRegion *container)
  */
 const QSet<QTransition *> *QVertex::outgoings() const
 {
+    // This is a read-only derived association end
+
     qWarning("QVertex::outgoings: to be implemented (this is a derived associationend)");
+
+    QTUML_D(const QVertex);
+    //return <derived-return>;
 }
 
 /*!

@@ -57,6 +57,8 @@ QInstanceValuePrivate::~QInstanceValuePrivate()
 
 void QInstanceValuePrivate::setInstance(QInstanceSpecification *instance)
 {
+    // This is a read-write association end
+
     this->instance = instance;
 }
 
@@ -90,12 +92,16 @@ QInstanceValue::~QInstanceValue()
  */
 QInstanceSpecification *QInstanceValue::instance() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInstanceValue);
     return d->instance;
 }
 
 void QInstanceValue::setInstance(QInstanceSpecification *instance)
 {
+    // This is a read-write association end
+
     QTUML_D(QInstanceValue);
     if (d->instance != instance) {
         d->setInstance(instance);

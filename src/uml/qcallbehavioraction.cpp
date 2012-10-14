@@ -57,6 +57,8 @@ QCallBehaviorActionPrivate::~QCallBehaviorActionPrivate()
 
 void QCallBehaviorActionPrivate::setBehavior(QBehavior *behavior)
 {
+    // This is a read-write association end
+
     this->behavior = behavior;
 }
 
@@ -90,12 +92,16 @@ QCallBehaviorAction::~QCallBehaviorAction()
  */
 QBehavior *QCallBehaviorAction::behavior() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QCallBehaviorAction);
     return d->behavior;
 }
 
 void QCallBehaviorAction::setBehavior(QBehavior *behavior)
 {
+    // This is a read-write association end
+
     QTUML_D(QCallBehaviorAction);
     if (d->behavior != behavior) {
         d->setBehavior(behavior);

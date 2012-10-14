@@ -58,6 +58,8 @@ QReadStructuralFeatureActionPrivate::~QReadStructuralFeatureActionPrivate()
 
 void QReadStructuralFeatureActionPrivate::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
@@ -97,12 +99,16 @@ QReadStructuralFeatureAction::~QReadStructuralFeatureAction()
  */
 QOutputPin *QReadStructuralFeatureAction::result() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReadStructuralFeatureAction);
     return d->result;
 }
 
 void QReadStructuralFeatureAction::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     QTUML_D(QReadStructuralFeatureAction);
     if (d->result != result) {
         d->setResult(result);

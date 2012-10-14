@@ -56,6 +56,8 @@ QLiteralBooleanPrivate::~QLiteralBooleanPrivate()
 
 void QLiteralBooleanPrivate::setValue(bool value)
 {
+    // This is a read-write attribute
+
     this->value = value;
 }
 
@@ -89,12 +91,16 @@ QLiteralBoolean::~QLiteralBoolean()
  */
 bool QLiteralBoolean::value() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QLiteralBoolean);
     return d->value;
 }
 
 void QLiteralBoolean::setValue(bool value)
 {
+    // This is a read-write attribute
+
     QTUML_D(QLiteralBoolean);
     if (d->value != value) {
         d->setValue(value);

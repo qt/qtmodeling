@@ -57,6 +57,8 @@ QExecutionOccurrenceSpecificationPrivate::~QExecutionOccurrenceSpecificationPriv
 
 void QExecutionOccurrenceSpecificationPrivate::setExecution(QExecutionSpecification *execution)
 {
+    // This is a read-write association end
+
     this->execution = execution;
 }
 
@@ -90,12 +92,16 @@ QExecutionOccurrenceSpecification::~QExecutionOccurrenceSpecification()
  */
 QExecutionSpecification *QExecutionOccurrenceSpecification::execution() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QExecutionOccurrenceSpecification);
     return d->execution;
 }
 
 void QExecutionOccurrenceSpecification::setExecution(QExecutionSpecification *execution)
 {
+    // This is a read-write association end
+
     QTUML_D(QExecutionOccurrenceSpecification);
     if (d->execution != execution) {
         d->setExecution(execution);

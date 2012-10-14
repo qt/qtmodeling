@@ -58,6 +58,8 @@ QStartClassifierBehaviorActionPrivate::~QStartClassifierBehaviorActionPrivate()
 
 void QStartClassifierBehaviorActionPrivate::setObject(QInputPin *object)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeInput(this->object);
 
@@ -97,12 +99,16 @@ QStartClassifierBehaviorAction::~QStartClassifierBehaviorAction()
  */
 QInputPin *QStartClassifierBehaviorAction::object() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QStartClassifierBehaviorAction);
     return d->object;
 }
 
 void QStartClassifierBehaviorAction::setObject(QInputPin *object)
 {
+    // This is a read-write association end
+
     QTUML_D(QStartClassifierBehaviorAction);
     if (d->object != object) {
         d->setObject(object);

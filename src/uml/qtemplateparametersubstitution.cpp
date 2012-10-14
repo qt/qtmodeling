@@ -63,6 +63,8 @@ QTemplateParameterSubstitutionPrivate::~QTemplateParameterSubstitutionPrivate()
 
 void QTemplateParameterSubstitutionPrivate::setOwnedActual(QParameterableElement *ownedActual)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->ownedActual);
 
@@ -75,16 +77,22 @@ void QTemplateParameterSubstitutionPrivate::setOwnedActual(QParameterableElement
 
 void QTemplateParameterSubstitutionPrivate::setFormal(QTemplateParameter *formal)
 {
+    // This is a read-write association end
+
     this->formal = formal;
 }
 
 void QTemplateParameterSubstitutionPrivate::setActual(QParameterableElement *actual)
 {
+    // This is a read-write association end
+
     this->actual = actual;
 }
 
 void QTemplateParameterSubstitutionPrivate::setTemplateBinding(QTemplateBinding *templateBinding)
 {
+    // This is a read-write association end
+
     this->templateBinding = templateBinding;
 
     // Adjust subsetted property(ies)
@@ -121,12 +129,16 @@ QTemplateParameterSubstitution::~QTemplateParameterSubstitution()
  */
 QParameterableElement *QTemplateParameterSubstitution::ownedActual() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTemplateParameterSubstitution);
     return d->ownedActual;
 }
 
 void QTemplateParameterSubstitution::setOwnedActual(QParameterableElement *ownedActual)
 {
+    // This is a read-write association end
+
     QTUML_D(QTemplateParameterSubstitution);
     if (d->ownedActual != ownedActual) {
         d->setOwnedActual(ownedActual);
@@ -138,12 +150,16 @@ void QTemplateParameterSubstitution::setOwnedActual(QParameterableElement *owned
  */
 QTemplateParameter *QTemplateParameterSubstitution::formal() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTemplateParameterSubstitution);
     return d->formal;
 }
 
 void QTemplateParameterSubstitution::setFormal(QTemplateParameter *formal)
 {
+    // This is a read-write association end
+
     QTUML_D(QTemplateParameterSubstitution);
     if (d->formal != formal) {
         d->setFormal(formal);
@@ -155,12 +171,16 @@ void QTemplateParameterSubstitution::setFormal(QTemplateParameter *formal)
  */
 QParameterableElement *QTemplateParameterSubstitution::actual() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTemplateParameterSubstitution);
     return d->actual;
 }
 
 void QTemplateParameterSubstitution::setActual(QParameterableElement *actual)
 {
+    // This is a read-write association end
+
     QTUML_D(QTemplateParameterSubstitution);
     if (d->actual != actual) {
         d->setActual(actual);
@@ -172,12 +192,16 @@ void QTemplateParameterSubstitution::setActual(QParameterableElement *actual)
  */
 QTemplateBinding *QTemplateParameterSubstitution::templateBinding() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTemplateParameterSubstitution);
     return d->templateBinding;
 }
 
 void QTemplateParameterSubstitution::setTemplateBinding(QTemplateBinding *templateBinding)
 {
+    // This is a read-write association end
+
     QTUML_D(QTemplateParameterSubstitution);
     if (d->templateBinding != templateBinding) {
         d->setTemplateBinding(templateBinding);

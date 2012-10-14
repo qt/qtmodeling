@@ -69,21 +69,29 @@ QActivityPartitionPrivate::~QActivityPartitionPrivate()
 
 void QActivityPartitionPrivate::setDimension(bool isDimension)
 {
+    // This is a read-write attribute
+
     this->isDimension = isDimension;
 }
 
 void QActivityPartitionPrivate::setExternal(bool isExternal)
 {
+    // This is a read-write attribute
+
     this->isExternal = isExternal;
 }
 
 void QActivityPartitionPrivate::setRepresents(QElement *represents)
 {
+    // This is a read-write association end
+
     this->represents = represents;
 }
 
 void QActivityPartitionPrivate::addSubpartition(QActivityPartition *subpartition)
 {
+    // This is a read-write association end
+
     this->subpartitions->insert(subpartition);
 
     // Adjust subsetted property(ies)
@@ -92,6 +100,8 @@ void QActivityPartitionPrivate::addSubpartition(QActivityPartition *subpartition
 
 void QActivityPartitionPrivate::removeSubpartition(QActivityPartition *subpartition)
 {
+    // This is a read-write association end
+
     this->subpartitions->remove(subpartition);
 
     // Adjust subsetted property(ies)
@@ -100,6 +110,8 @@ void QActivityPartitionPrivate::removeSubpartition(QActivityPartition *subpartit
 
 void QActivityPartitionPrivate::setSuperPartition(QActivityPartition *superPartition)
 {
+    // This is a read-write association end
+
     this->superPartition = superPartition;
 
     // Adjust subsetted property(ies)
@@ -108,6 +120,8 @@ void QActivityPartitionPrivate::setSuperPartition(QActivityPartition *superParti
 
 void QActivityPartitionPrivate::addNode(QActivityNode *node)
 {
+    // This is a read-write association end
+
     this->nodes->insert(node);
 
     // Adjust subsetted property(ies)
@@ -116,6 +130,8 @@ void QActivityPartitionPrivate::addNode(QActivityNode *node)
 
 void QActivityPartitionPrivate::removeNode(QActivityNode *node)
 {
+    // This is a read-write association end
+
     this->nodes->remove(node);
 
     // Adjust subsetted property(ies)
@@ -124,6 +140,8 @@ void QActivityPartitionPrivate::removeNode(QActivityNode *node)
 
 void QActivityPartitionPrivate::addEdge(QActivityEdge *edge)
 {
+    // This is a read-write association end
+
     this->edges->insert(edge);
 
     // Adjust subsetted property(ies)
@@ -132,6 +150,8 @@ void QActivityPartitionPrivate::addEdge(QActivityEdge *edge)
 
 void QActivityPartitionPrivate::removeEdge(QActivityEdge *edge)
 {
+    // This is a read-write association end
+
     this->edges->remove(edge);
 
     // Adjust subsetted property(ies)
@@ -168,12 +188,16 @@ QActivityPartition::~QActivityPartition()
  */
 bool QActivityPartition::isDimension() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QActivityPartition);
     return d->isDimension;
 }
 
 void QActivityPartition::setDimension(bool isDimension)
 {
+    // This is a read-write attribute
+
     QTUML_D(QActivityPartition);
     if (d->isDimension != isDimension) {
         d->setDimension(isDimension);
@@ -185,12 +209,16 @@ void QActivityPartition::setDimension(bool isDimension)
  */
 bool QActivityPartition::isExternal() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QActivityPartition);
     return d->isExternal;
 }
 
 void QActivityPartition::setExternal(bool isExternal)
 {
+    // This is a read-write attribute
+
     QTUML_D(QActivityPartition);
     if (d->isExternal != isExternal) {
         d->setExternal(isExternal);
@@ -202,12 +230,16 @@ void QActivityPartition::setExternal(bool isExternal)
  */
 QElement *QActivityPartition::represents() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QActivityPartition);
     return d->represents;
 }
 
 void QActivityPartition::setRepresents(QElement *represents)
 {
+    // This is a read-write association end
+
     QTUML_D(QActivityPartition);
     if (d->represents != represents) {
         d->setRepresents(represents);
@@ -219,12 +251,16 @@ void QActivityPartition::setRepresents(QElement *represents)
  */
 const QSet<QActivityPartition *> *QActivityPartition::subpartitions() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QActivityPartition);
     return d->subpartitions;
 }
 
 void QActivityPartition::addSubpartition(QActivityPartition *subpartition)
 {
+    // This is a read-write association end
+
     QTUML_D(QActivityPartition);
     if (!d->subpartitions->contains(subpartition)) {
         d->addSubpartition(subpartition);
@@ -236,6 +272,8 @@ void QActivityPartition::addSubpartition(QActivityPartition *subpartition)
 
 void QActivityPartition::removeSubpartition(QActivityPartition *subpartition)
 {
+    // This is a read-write association end
+
     QTUML_D(QActivityPartition);
     if (d->subpartitions->contains(subpartition)) {
         d->removeSubpartition(subpartition);
@@ -250,12 +288,16 @@ void QActivityPartition::removeSubpartition(QActivityPartition *subpartition)
  */
 QActivityPartition *QActivityPartition::superPartition() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QActivityPartition);
     return d->superPartition;
 }
 
 void QActivityPartition::setSuperPartition(QActivityPartition *superPartition)
 {
+    // This is a read-write association end
+
     QTUML_D(QActivityPartition);
     if (d->superPartition != superPartition) {
         d->setSuperPartition(superPartition);
@@ -270,12 +312,16 @@ void QActivityPartition::setSuperPartition(QActivityPartition *superPartition)
  */
 const QSet<QActivityNode *> *QActivityPartition::nodes() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QActivityPartition);
     return d->nodes;
 }
 
 void QActivityPartition::addNode(QActivityNode *node)
 {
+    // This is a read-write association end
+
     QTUML_D(QActivityPartition);
     if (!d->nodes->contains(node)) {
         d->addNode(node);
@@ -287,6 +333,8 @@ void QActivityPartition::addNode(QActivityNode *node)
 
 void QActivityPartition::removeNode(QActivityNode *node)
 {
+    // This is a read-write association end
+
     QTUML_D(QActivityPartition);
     if (d->nodes->contains(node)) {
         d->removeNode(node);
@@ -301,12 +349,16 @@ void QActivityPartition::removeNode(QActivityNode *node)
  */
 const QSet<QActivityEdge *> *QActivityPartition::edges() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QActivityPartition);
     return d->edges;
 }
 
 void QActivityPartition::addEdge(QActivityEdge *edge)
 {
+    // This is a read-write association end
+
     QTUML_D(QActivityPartition);
     if (!d->edges->contains(edge)) {
         d->addEdge(edge);
@@ -318,6 +370,8 @@ void QActivityPartition::addEdge(QActivityEdge *edge)
 
 void QActivityPartition::removeEdge(QActivityEdge *edge)
 {
+    // This is a read-write association end
+
     QTUML_D(QActivityPartition);
     if (d->edges->contains(edge)) {
         d->removeEdge(edge);

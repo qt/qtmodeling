@@ -75,11 +75,15 @@ QTransitionPrivate::~QTransitionPrivate()
 
 void QTransitionPrivate::setKind(QtUml::TransitionKind kind)
 {
+    // This is a read-write attribute
+
     this->kind = kind;
 }
 
 void QTransitionPrivate::setGuard(QConstraint *guard)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedRule(this->guard);
 
@@ -91,11 +95,15 @@ void QTransitionPrivate::setGuard(QConstraint *guard)
 
 void QTransitionPrivate::setTarget(QVertex *target)
 {
+    // This is a read-write association end
+
     this->target = target;
 }
 
 void QTransitionPrivate::setEffect(QBehavior *effect)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->effect);
 
@@ -107,6 +115,8 @@ void QTransitionPrivate::setEffect(QBehavior *effect)
 
 void QTransitionPrivate::setContainer(QRegion *container)
 {
+    // This is a read-write association end
+
     this->container = container;
 
     // Adjust subsetted property(ies)
@@ -115,6 +125,8 @@ void QTransitionPrivate::setContainer(QRegion *container)
 
 void QTransitionPrivate::setRedefinedTransition(QTransition *redefinedTransition)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeRedefinedElement(this->redefinedTransition);
 
@@ -126,11 +138,15 @@ void QTransitionPrivate::setRedefinedTransition(QTransition *redefinedTransition
 
 void QTransitionPrivate::setSource(QVertex *source)
 {
+    // This is a read-write association end
+
     this->source = source;
 }
 
 void QTransitionPrivate::addTrigger(QTrigger *trigger)
 {
+    // This is a read-write association end
+
     this->triggers->insert(trigger);
 
     // Adjust subsetted property(ies)
@@ -139,6 +155,8 @@ void QTransitionPrivate::addTrigger(QTrigger *trigger)
 
 void QTransitionPrivate::removeTrigger(QTrigger *trigger)
 {
+    // This is a read-write association end
+
     this->triggers->remove(trigger);
 
     // Adjust subsetted property(ies)
@@ -175,12 +193,16 @@ QTransition::~QTransition()
  */
 QtUml::TransitionKind QTransition::kind() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QTransition);
     return d->kind;
 }
 
 void QTransition::setKind(QtUml::TransitionKind kind)
 {
+    // This is a read-write attribute
+
     QTUML_D(QTransition);
     if (d->kind != kind) {
         d->setKind(kind);
@@ -192,12 +214,16 @@ void QTransition::setKind(QtUml::TransitionKind kind)
  */
 QConstraint *QTransition::guard() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTransition);
     return d->guard;
 }
 
 void QTransition::setGuard(QConstraint *guard)
 {
+    // This is a read-write association end
+
     QTUML_D(QTransition);
     if (d->guard != guard) {
         d->setGuard(guard);
@@ -209,12 +235,16 @@ void QTransition::setGuard(QConstraint *guard)
  */
 QVertex *QTransition::target() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTransition);
     return d->target;
 }
 
 void QTransition::setTarget(QVertex *target)
 {
+    // This is a read-write association end
+
     QTUML_D(QTransition);
     if (d->target != target) {
         d->setTarget(target);
@@ -226,12 +256,16 @@ void QTransition::setTarget(QVertex *target)
  */
 QBehavior *QTransition::effect() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTransition);
     return d->effect;
 }
 
 void QTransition::setEffect(QBehavior *effect)
 {
+    // This is a read-write association end
+
     QTUML_D(QTransition);
     if (d->effect != effect) {
         d->setEffect(effect);
@@ -243,12 +277,16 @@ void QTransition::setEffect(QBehavior *effect)
  */
 QRegion *QTransition::container() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTransition);
     return d->container;
 }
 
 void QTransition::setContainer(QRegion *container)
 {
+    // This is a read-write association end
+
     QTUML_D(QTransition);
     if (d->container != container) {
         d->setContainer(container);
@@ -263,7 +301,12 @@ void QTransition::setContainer(QRegion *container)
  */
 QClassifier *QTransition::redefinitionContext() const
 {
+    // This is a read-only derived association end
+
     qWarning("QTransition::redefinitionContext: to be implemented (this is a derived associationend)");
+
+    QTUML_D(const QTransition);
+    //return <derived-return>;
 }
 
 /*!
@@ -271,12 +314,16 @@ QClassifier *QTransition::redefinitionContext() const
  */
 QTransition *QTransition::redefinedTransition() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTransition);
     return d->redefinedTransition;
 }
 
 void QTransition::setRedefinedTransition(QTransition *redefinedTransition)
 {
+    // This is a read-write association end
+
     QTUML_D(QTransition);
     if (d->redefinedTransition != redefinedTransition) {
         d->setRedefinedTransition(redefinedTransition);
@@ -288,12 +335,16 @@ void QTransition::setRedefinedTransition(QTransition *redefinedTransition)
  */
 QVertex *QTransition::source() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTransition);
     return d->source;
 }
 
 void QTransition::setSource(QVertex *source)
 {
+    // This is a read-write association end
+
     QTUML_D(QTransition);
     if (d->source != source) {
         d->setSource(source);
@@ -305,12 +356,16 @@ void QTransition::setSource(QVertex *source)
  */
 const QSet<QTrigger *> *QTransition::triggers() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTransition);
     return d->triggers;
 }
 
 void QTransition::addTrigger(QTrigger *trigger)
 {
+    // This is a read-write association end
+
     QTUML_D(QTransition);
     if (!d->triggers->contains(trigger)) {
         d->addTrigger(trigger);
@@ -319,6 +374,8 @@ void QTransition::addTrigger(QTrigger *trigger)
 
 void QTransition::removeTrigger(QTrigger *trigger)
 {
+    // This is a read-write association end
+
     QTUML_D(QTransition);
     if (d->triggers->contains(trigger)) {
         d->removeTrigger(trigger);

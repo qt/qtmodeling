@@ -61,6 +61,8 @@ QProtocolTransitionPrivate::~QProtocolTransitionPrivate()
 
 void QProtocolTransitionPrivate::setPostCondition(QConstraint *postCondition)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedRule(this->postCondition);
 
@@ -72,6 +74,8 @@ void QProtocolTransitionPrivate::setPostCondition(QConstraint *postCondition)
 
 void QProtocolTransitionPrivate::setPreCondition(QConstraint *preCondition)
 {
+    // This is a read-write association end
+
     this->preCondition = preCondition;
 
     // Adjust subsetted property(ies)
@@ -108,12 +112,16 @@ QProtocolTransition::~QProtocolTransition()
  */
 QConstraint *QProtocolTransition::postCondition() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QProtocolTransition);
     return d->postCondition;
 }
 
 void QProtocolTransition::setPostCondition(QConstraint *postCondition)
 {
+    // This is a read-write association end
+
     QTUML_D(QProtocolTransition);
     if (d->postCondition != postCondition) {
         d->setPostCondition(postCondition);
@@ -125,7 +133,12 @@ void QProtocolTransition::setPostCondition(QConstraint *postCondition)
  */
 const QSet<QOperation *> *QProtocolTransition::referred() const
 {
+    // This is a read-only derived association end
+
     qWarning("QProtocolTransition::referred: to be implemented (this is a derived associationend)");
+
+    QTUML_D(const QProtocolTransition);
+    //return <derived-return>;
 }
 
 /*!
@@ -133,12 +146,16 @@ const QSet<QOperation *> *QProtocolTransition::referred() const
  */
 QConstraint *QProtocolTransition::preCondition() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QProtocolTransition);
     return d->preCondition;
 }
 
 void QProtocolTransition::setPreCondition(QConstraint *preCondition)
 {
+    // This is a read-write association end
+
     QTUML_D(QProtocolTransition);
     if (d->preCondition != preCondition) {
         d->setPreCondition(preCondition);

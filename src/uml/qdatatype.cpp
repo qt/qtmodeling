@@ -64,6 +64,8 @@ QDataTypePrivate::~QDataTypePrivate()
 
 void QDataTypePrivate::addOwnedOperation(QOperation *ownedOperation)
 {
+    // This is a read-write association end
+
     this->ownedOperations->append(ownedOperation);
 
     // Adjust subsetted property(ies)
@@ -73,6 +75,8 @@ void QDataTypePrivate::addOwnedOperation(QOperation *ownedOperation)
 
 void QDataTypePrivate::removeOwnedOperation(QOperation *ownedOperation)
 {
+    // This is a read-write association end
+
     this->ownedOperations->removeAll(ownedOperation);
 
     // Adjust subsetted property(ies)
@@ -82,6 +86,8 @@ void QDataTypePrivate::removeOwnedOperation(QOperation *ownedOperation)
 
 void QDataTypePrivate::addOwnedAttribute(QProperty *ownedAttribute)
 {
+    // This is a read-write association end
+
     this->ownedAttributes->append(ownedAttribute);
 
     // Adjust subsetted property(ies)
@@ -91,6 +97,8 @@ void QDataTypePrivate::addOwnedAttribute(QProperty *ownedAttribute)
 
 void QDataTypePrivate::removeOwnedAttribute(QProperty *ownedAttribute)
 {
+    // This is a read-write association end
+
     this->ownedAttributes->removeAll(ownedAttribute);
 
     // Adjust subsetted property(ies)
@@ -128,12 +136,16 @@ QDataType::~QDataType()
  */
 const QList<QOperation *> *QDataType::ownedOperations() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QDataType);
     return d->ownedOperations;
 }
 
 void QDataType::addOwnedOperation(QOperation *ownedOperation)
 {
+    // This is a read-write association end
+
     QTUML_D(QDataType);
     if (!d->ownedOperations->contains(ownedOperation)) {
         d->addOwnedOperation(ownedOperation);
@@ -145,6 +157,8 @@ void QDataType::addOwnedOperation(QOperation *ownedOperation)
 
 void QDataType::removeOwnedOperation(QOperation *ownedOperation)
 {
+    // This is a read-write association end
+
     QTUML_D(QDataType);
     if (d->ownedOperations->contains(ownedOperation)) {
         d->removeOwnedOperation(ownedOperation);
@@ -159,12 +173,16 @@ void QDataType::removeOwnedOperation(QOperation *ownedOperation)
  */
 const QList<QProperty *> *QDataType::ownedAttributes() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QDataType);
     return d->ownedAttributes;
 }
 
 void QDataType::addOwnedAttribute(QProperty *ownedAttribute)
 {
+    // This is a read-write association end
+
     QTUML_D(QDataType);
     if (!d->ownedAttributes->contains(ownedAttribute)) {
         d->addOwnedAttribute(ownedAttribute);
@@ -176,6 +194,8 @@ void QDataType::addOwnedAttribute(QProperty *ownedAttribute)
 
 void QDataType::removeOwnedAttribute(QProperty *ownedAttribute)
 {
+    // This is a read-write association end
+
     QTUML_D(QDataType);
     if (d->ownedAttributes->contains(ownedAttribute)) {
         d->removeOwnedAttribute(ownedAttribute);

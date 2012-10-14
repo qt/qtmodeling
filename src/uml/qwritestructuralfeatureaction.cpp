@@ -60,6 +60,8 @@ QWriteStructuralFeatureActionPrivate::~QWriteStructuralFeatureActionPrivate()
 
 void QWriteStructuralFeatureActionPrivate::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
@@ -71,6 +73,8 @@ void QWriteStructuralFeatureActionPrivate::setResult(QOutputPin *result)
 
 void QWriteStructuralFeatureActionPrivate::setValue(QInputPin *value)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeInput(this->value);
 
@@ -101,12 +105,16 @@ QWriteStructuralFeatureAction::~QWriteStructuralFeatureAction()
  */
 QOutputPin *QWriteStructuralFeatureAction::result() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QWriteStructuralFeatureAction);
     return d->result;
 }
 
 void QWriteStructuralFeatureAction::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     QTUML_D(QWriteStructuralFeatureAction);
     if (d->result != result) {
         d->setResult(result);
@@ -118,12 +126,16 @@ void QWriteStructuralFeatureAction::setResult(QOutputPin *result)
  */
 QInputPin *QWriteStructuralFeatureAction::value() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QWriteStructuralFeatureAction);
     return d->value;
 }
 
 void QWriteStructuralFeatureAction::setValue(QInputPin *value)
 {
+    // This is a read-write association end
+
     QTUML_D(QWriteStructuralFeatureAction);
     if (d->value != value) {
         d->setValue(value);

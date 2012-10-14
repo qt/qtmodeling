@@ -57,6 +57,8 @@ QConnectableElementTemplateParameterPrivate::~QConnectableElementTemplateParamet
 
 void QConnectableElementTemplateParameterPrivate::setParameteredElement(QConnectableElement *parameteredElement)
 {
+    // This is a read-write association end
+
     this->parameteredElement = parameteredElement;
 }
 
@@ -90,12 +92,16 @@ QConnectableElementTemplateParameter::~QConnectableElementTemplateParameter()
  */
 QConnectableElement *QConnectableElementTemplateParameter::parameteredElement() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QConnectableElementTemplateParameter);
     return d->parameteredElement;
 }
 
 void QConnectableElementTemplateParameter::setParameteredElement(QConnectableElement *parameteredElement)
 {
+    // This is a read-write association end
+
     QTUML_D(QConnectableElementTemplateParameter);
     if (d->parameteredElement != parameteredElement) {
         d->setParameteredElement(parameteredElement);

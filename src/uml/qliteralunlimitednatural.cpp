@@ -56,6 +56,8 @@ QLiteralUnlimitedNaturalPrivate::~QLiteralUnlimitedNaturalPrivate()
 
 void QLiteralUnlimitedNaturalPrivate::setValue(qint32 value)
 {
+    // This is a read-write attribute
+
     this->value = value;
 }
 
@@ -89,12 +91,16 @@ QLiteralUnlimitedNatural::~QLiteralUnlimitedNatural()
  */
 qint32 QLiteralUnlimitedNatural::value() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QLiteralUnlimitedNatural);
     return d->value;
 }
 
 void QLiteralUnlimitedNatural::setValue(qint32 value)
 {
+    // This is a read-write attribute
+
     QTUML_D(QLiteralUnlimitedNatural);
     if (d->value != value) {
         d->setValue(value);

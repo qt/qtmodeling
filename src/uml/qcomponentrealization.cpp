@@ -62,6 +62,8 @@ QComponentRealizationPrivate::~QComponentRealizationPrivate()
 
 void QComponentRealizationPrivate::setAbstraction(QComponent *abstraction)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeSupplier(this->abstraction);
 
@@ -74,6 +76,8 @@ void QComponentRealizationPrivate::setAbstraction(QComponent *abstraction)
 
 void QComponentRealizationPrivate::addRealizingClassifier(QClassifier *realizingClassifier)
 {
+    // This is a read-write association end
+
     this->realizingClassifiers->insert(realizingClassifier);
 
     // Adjust subsetted property(ies)
@@ -82,6 +86,8 @@ void QComponentRealizationPrivate::addRealizingClassifier(QClassifier *realizing
 
 void QComponentRealizationPrivate::removeRealizingClassifier(QClassifier *realizingClassifier)
 {
+    // This is a read-write association end
+
     this->realizingClassifiers->remove(realizingClassifier);
 
     // Adjust subsetted property(ies)
@@ -118,12 +124,16 @@ QComponentRealization::~QComponentRealization()
  */
 QComponent *QComponentRealization::abstraction() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QComponentRealization);
     return d->abstraction;
 }
 
 void QComponentRealization::setAbstraction(QComponent *abstraction)
 {
+    // This is a read-write association end
+
     QTUML_D(QComponentRealization);
     if (d->abstraction != abstraction) {
         d->setAbstraction(abstraction);
@@ -138,12 +148,16 @@ void QComponentRealization::setAbstraction(QComponent *abstraction)
  */
 const QSet<QClassifier *> *QComponentRealization::realizingClassifiers() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QComponentRealization);
     return d->realizingClassifiers;
 }
 
 void QComponentRealization::addRealizingClassifier(QClassifier *realizingClassifier)
 {
+    // This is a read-write association end
+
     QTUML_D(QComponentRealization);
     if (!d->realizingClassifiers->contains(realizingClassifier)) {
         d->addRealizingClassifier(realizingClassifier);
@@ -152,6 +166,8 @@ void QComponentRealization::addRealizingClassifier(QClassifier *realizingClassif
 
 void QComponentRealization::removeRealizingClassifier(QClassifier *realizingClassifier)
 {
+    // This is a read-write association end
+
     QTUML_D(QComponentRealization);
     if (d->realizingClassifiers->contains(realizingClassifier)) {
         d->removeRealizingClassifier(realizingClassifier);

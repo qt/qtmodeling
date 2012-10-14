@@ -60,16 +60,22 @@ QDestroyObjectActionPrivate::~QDestroyObjectActionPrivate()
 
 void QDestroyObjectActionPrivate::setDestroyLinks(bool isDestroyLinks)
 {
+    // This is a read-write attribute
+
     this->isDestroyLinks = isDestroyLinks;
 }
 
 void QDestroyObjectActionPrivate::setDestroyOwnedObjects(bool isDestroyOwnedObjects)
 {
+    // This is a read-write attribute
+
     this->isDestroyOwnedObjects = isDestroyOwnedObjects;
 }
 
 void QDestroyObjectActionPrivate::setTarget(QInputPin *target)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeInput(this->target);
 
@@ -109,12 +115,16 @@ QDestroyObjectAction::~QDestroyObjectAction()
  */
 bool QDestroyObjectAction::isDestroyLinks() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QDestroyObjectAction);
     return d->isDestroyLinks;
 }
 
 void QDestroyObjectAction::setDestroyLinks(bool isDestroyLinks)
 {
+    // This is a read-write attribute
+
     QTUML_D(QDestroyObjectAction);
     if (d->isDestroyLinks != isDestroyLinks) {
         d->setDestroyLinks(isDestroyLinks);
@@ -126,12 +136,16 @@ void QDestroyObjectAction::setDestroyLinks(bool isDestroyLinks)
  */
 bool QDestroyObjectAction::isDestroyOwnedObjects() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QDestroyObjectAction);
     return d->isDestroyOwnedObjects;
 }
 
 void QDestroyObjectAction::setDestroyOwnedObjects(bool isDestroyOwnedObjects)
 {
+    // This is a read-write attribute
+
     QTUML_D(QDestroyObjectAction);
     if (d->isDestroyOwnedObjects != isDestroyOwnedObjects) {
         d->setDestroyOwnedObjects(isDestroyOwnedObjects);
@@ -143,12 +157,16 @@ void QDestroyObjectAction::setDestroyOwnedObjects(bool isDestroyOwnedObjects)
  */
 QInputPin *QDestroyObjectAction::target() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QDestroyObjectAction);
     return d->target;
 }
 
 void QDestroyObjectAction::setTarget(QInputPin *target)
 {
+    // This is a read-write association end
+
     QTUML_D(QDestroyObjectAction);
     if (d->target != target) {
         d->setTarget(target);

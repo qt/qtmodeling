@@ -60,6 +60,8 @@ QClearAssociationActionPrivate::~QClearAssociationActionPrivate()
 
 void QClearAssociationActionPrivate::setObject(QInputPin *object)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeInput(this->object);
 
@@ -71,6 +73,8 @@ void QClearAssociationActionPrivate::setObject(QInputPin *object)
 
 void QClearAssociationActionPrivate::setAssociation(QAssociation *association)
 {
+    // This is a read-write association end
+
     this->association = association;
 }
 
@@ -104,12 +108,16 @@ QClearAssociationAction::~QClearAssociationAction()
  */
 QInputPin *QClearAssociationAction::object() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QClearAssociationAction);
     return d->object;
 }
 
 void QClearAssociationAction::setObject(QInputPin *object)
 {
+    // This is a read-write association end
+
     QTUML_D(QClearAssociationAction);
     if (d->object != object) {
         d->setObject(object);
@@ -121,12 +129,16 @@ void QClearAssociationAction::setObject(QInputPin *object)
  */
 QAssociation *QClearAssociationAction::association() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QClearAssociationAction);
     return d->association;
 }
 
 void QClearAssociationAction::setAssociation(QAssociation *association)
 {
+    // This is a read-write association end
+
     QTUML_D(QClearAssociationAction);
     if (d->association != association) {
         d->setAssociation(association);

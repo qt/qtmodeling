@@ -64,6 +64,8 @@ QTemplateBindingPrivate::~QTemplateBindingPrivate()
 
 void QTemplateBindingPrivate::setSignature(QTemplateSignature *signature)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeTarget(this->signature);
 
@@ -75,6 +77,8 @@ void QTemplateBindingPrivate::setSignature(QTemplateSignature *signature)
 
 void QTemplateBindingPrivate::setBoundElement(QTemplateableElement *boundElement)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeSource(this->boundElement);
 
@@ -87,6 +91,8 @@ void QTemplateBindingPrivate::setBoundElement(QTemplateableElement *boundElement
 
 void QTemplateBindingPrivate::addParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution)
 {
+    // This is a read-write association end
+
     this->parameterSubstitutions->insert(parameterSubstitution);
 
     // Adjust subsetted property(ies)
@@ -95,6 +101,8 @@ void QTemplateBindingPrivate::addParameterSubstitution(QTemplateParameterSubstit
 
 void QTemplateBindingPrivate::removeParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution)
 {
+    // This is a read-write association end
+
     this->parameterSubstitutions->remove(parameterSubstitution);
 
     // Adjust subsetted property(ies)
@@ -131,12 +139,16 @@ QTemplateBinding::~QTemplateBinding()
  */
 QTemplateSignature *QTemplateBinding::signature() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTemplateBinding);
     return d->signature;
 }
 
 void QTemplateBinding::setSignature(QTemplateSignature *signature)
 {
+    // This is a read-write association end
+
     QTUML_D(QTemplateBinding);
     if (d->signature != signature) {
         d->setSignature(signature);
@@ -148,12 +160,16 @@ void QTemplateBinding::setSignature(QTemplateSignature *signature)
  */
 QTemplateableElement *QTemplateBinding::boundElement() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTemplateBinding);
     return d->boundElement;
 }
 
 void QTemplateBinding::setBoundElement(QTemplateableElement *boundElement)
 {
+    // This is a read-write association end
+
     QTUML_D(QTemplateBinding);
     if (d->boundElement != boundElement) {
         d->setBoundElement(boundElement);
@@ -168,12 +184,16 @@ void QTemplateBinding::setBoundElement(QTemplateableElement *boundElement)
  */
 const QSet<QTemplateParameterSubstitution *> *QTemplateBinding::parameterSubstitutions() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTemplateBinding);
     return d->parameterSubstitutions;
 }
 
 void QTemplateBinding::addParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution)
 {
+    // This is a read-write association end
+
     QTUML_D(QTemplateBinding);
     if (!d->parameterSubstitutions->contains(parameterSubstitution)) {
         d->addParameterSubstitution(parameterSubstitution);
@@ -185,6 +205,8 @@ void QTemplateBinding::addParameterSubstitution(QTemplateParameterSubstitution *
 
 void QTemplateBinding::removeParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution)
 {
+    // This is a read-write association end
+
     QTUML_D(QTemplateBinding);
     if (d->parameterSubstitutions->contains(parameterSubstitution)) {
         d->removeParameterSubstitution(parameterSubstitution);

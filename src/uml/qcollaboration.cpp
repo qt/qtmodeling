@@ -59,6 +59,8 @@ QCollaborationPrivate::~QCollaborationPrivate()
 
 void QCollaborationPrivate::addCollaborationRole(QConnectableElement *collaborationRole)
 {
+    // This is a read-write association end
+
     this->collaborationRoles->insert(collaborationRole);
 
     // Adjust subsetted property(ies)
@@ -67,6 +69,8 @@ void QCollaborationPrivate::addCollaborationRole(QConnectableElement *collaborat
 
 void QCollaborationPrivate::removeCollaborationRole(QConnectableElement *collaborationRole)
 {
+    // This is a read-write association end
+
     this->collaborationRoles->remove(collaborationRole);
 
     // Adjust subsetted property(ies)
@@ -103,12 +107,16 @@ QCollaboration::~QCollaboration()
  */
 const QSet<QConnectableElement *> *QCollaboration::collaborationRoles() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QCollaboration);
     return d->collaborationRoles;
 }
 
 void QCollaboration::addCollaborationRole(QConnectableElement *collaborationRole)
 {
+    // This is a read-write association end
+
     QTUML_D(QCollaboration);
     if (!d->collaborationRoles->contains(collaborationRole)) {
         d->addCollaborationRole(collaborationRole);
@@ -117,6 +125,8 @@ void QCollaboration::addCollaborationRole(QConnectableElement *collaborationRole
 
 void QCollaboration::removeCollaborationRole(QConnectableElement *collaborationRole)
 {
+    // This is a read-write association end
+
     QTUML_D(QCollaboration);
     if (d->collaborationRoles->contains(collaborationRole)) {
         d->removeCollaborationRole(collaborationRole);

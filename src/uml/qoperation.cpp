@@ -85,21 +85,29 @@ QOperationPrivate::~QOperationPrivate()
 
 void QOperationPrivate::setQuery(bool isQuery)
 {
+    // This is a read-write attribute
+
     this->isQuery = isQuery;
 }
 
 void QOperationPrivate::addOwnedParameter(QParameter *ownedParameter)
 {
+    // This is a read-write association end
+
     this->ownedParameters->append(ownedParameter);
 }
 
 void QOperationPrivate::removeOwnedParameter(QParameter *ownedParameter)
 {
+    // This is a read-write association end
+
     this->ownedParameters->removeAll(ownedParameter);
 }
 
 void QOperationPrivate::setBodyCondition(QConstraint *bodyCondition)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedRule(this->bodyCondition);
 
@@ -111,6 +119,8 @@ void QOperationPrivate::setBodyCondition(QConstraint *bodyCondition)
 
 void QOperationPrivate::addRedefinedOperation(QOperation *redefinedOperation)
 {
+    // This is a read-write association end
+
     this->redefinedOperations->insert(redefinedOperation);
 
     // Adjust subsetted property(ies)
@@ -119,6 +129,8 @@ void QOperationPrivate::addRedefinedOperation(QOperation *redefinedOperation)
 
 void QOperationPrivate::removeRedefinedOperation(QOperation *redefinedOperation)
 {
+    // This is a read-write association end
+
     this->redefinedOperations->remove(redefinedOperation);
 
     // Adjust subsetted property(ies)
@@ -127,6 +139,8 @@ void QOperationPrivate::removeRedefinedOperation(QOperation *redefinedOperation)
 
 void QOperationPrivate::addPostcondition(QConstraint *postcondition)
 {
+    // This is a read-write association end
+
     this->postconditions->insert(postcondition);
 
     // Adjust subsetted property(ies)
@@ -135,6 +149,8 @@ void QOperationPrivate::addPostcondition(QConstraint *postcondition)
 
 void QOperationPrivate::removePostcondition(QConstraint *postcondition)
 {
+    // This is a read-write association end
+
     this->postconditions->remove(postcondition);
 
     // Adjust subsetted property(ies)
@@ -143,6 +159,8 @@ void QOperationPrivate::removePostcondition(QConstraint *postcondition)
 
 void QOperationPrivate::setDatatype(QDataType *datatype)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeFeaturingClassifier(this->datatype);
     removeRedefinitionContext(this->datatype);
@@ -157,11 +175,15 @@ void QOperationPrivate::setDatatype(QDataType *datatype)
 
 void QOperationPrivate::setTemplateParameter(QOperationTemplateParameter *templateParameter)
 {
+    // This is a read-write association end
+
     this->templateParameter = templateParameter;
 }
 
 void QOperationPrivate::setInterface(QInterface *interface)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeFeaturingClassifier(this->interface);
     removeRedefinitionContext(this->interface);
@@ -176,6 +198,8 @@ void QOperationPrivate::setInterface(QInterface *interface)
 
 void QOperationPrivate::addPrecondition(QConstraint *precondition)
 {
+    // This is a read-write association end
+
     this->preconditions->insert(precondition);
 
     // Adjust subsetted property(ies)
@@ -184,6 +208,8 @@ void QOperationPrivate::addPrecondition(QConstraint *precondition)
 
 void QOperationPrivate::removePrecondition(QConstraint *precondition)
 {
+    // This is a read-write association end
+
     this->preconditions->remove(precondition);
 
     // Adjust subsetted property(ies)
@@ -192,6 +218,8 @@ void QOperationPrivate::removePrecondition(QConstraint *precondition)
 
 void QOperationPrivate::setClass_(QClass *class_)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeFeaturingClassifier(this->class_);
     removeRedefinitionContext(this->class_);
@@ -206,11 +234,15 @@ void QOperationPrivate::setClass_(QClass *class_)
 
 void QOperationPrivate::addRaisedException(QType *raisedException)
 {
+    // This is a read-write association end
+
     this->raisedExceptions->insert(raisedException);
 }
 
 void QOperationPrivate::removeRaisedException(QType *raisedException)
 {
+    // This is a read-write association end
+
     this->raisedExceptions->remove(raisedException);
 }
 
@@ -244,7 +276,12 @@ QOperation::~QOperation()
  */
 qint32 QOperation::lower() const
 {
+    // This is a read-only derived attribute
+
     qWarning("QOperation::lower: to be implemented (this is a derived attribute)");
+
+    QTUML_D(const QOperation);
+    //return <derived-return>;
 }
 
 /*!
@@ -252,12 +289,16 @@ qint32 QOperation::lower() const
  */
 bool QOperation::isQuery() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QOperation);
     return d->isQuery;
 }
 
 void QOperation::setQuery(bool isQuery)
 {
+    // This is a read-write attribute
+
     QTUML_D(QOperation);
     if (d->isQuery != isQuery) {
         d->setQuery(isQuery);
@@ -269,7 +310,12 @@ void QOperation::setQuery(bool isQuery)
  */
 bool QOperation::isUnique() const
 {
+    // This is a read-only derived attribute
+
     qWarning("QOperation::isUnique: to be implemented (this is a derived attribute)");
+
+    QTUML_D(const QOperation);
+    //return <derived-return>;
 }
 
 /*!
@@ -277,7 +323,12 @@ bool QOperation::isUnique() const
  */
 qint32 QOperation::upper() const
 {
+    // This is a read-only derived attribute
+
     qWarning("QOperation::upper: to be implemented (this is a derived attribute)");
+
+    QTUML_D(const QOperation);
+    //return <derived-return>;
 }
 
 /*!
@@ -285,7 +336,12 @@ qint32 QOperation::upper() const
  */
 bool QOperation::isOrdered() const
 {
+    // This is a read-only derived attribute
+
     qWarning("QOperation::isOrdered: to be implemented (this is a derived attribute)");
+
+    QTUML_D(const QOperation);
+    //return <derived-return>;
 }
 
 /*!
@@ -293,12 +349,16 @@ bool QOperation::isOrdered() const
  */
 const QList<QParameter *> *QOperation::ownedParameters() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QOperation);
     return d->ownedParameters;
 }
 
 void QOperation::addOwnedParameter(QParameter *ownedParameter)
 {
+    // This is a read-write association end
+
     QTUML_D(QOperation);
     if (!d->ownedParameters->contains(ownedParameter)) {
         d->addOwnedParameter(ownedParameter);
@@ -310,6 +370,8 @@ void QOperation::addOwnedParameter(QParameter *ownedParameter)
 
 void QOperation::removeOwnedParameter(QParameter *ownedParameter)
 {
+    // This is a read-write association end
+
     QTUML_D(QOperation);
     if (d->ownedParameters->contains(ownedParameter)) {
         d->removeOwnedParameter(ownedParameter);
@@ -324,12 +386,16 @@ void QOperation::removeOwnedParameter(QParameter *ownedParameter)
  */
 QConstraint *QOperation::bodyCondition() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QOperation);
     return d->bodyCondition;
 }
 
 void QOperation::setBodyCondition(QConstraint *bodyCondition)
 {
+    // This is a read-write association end
+
     QTUML_D(QOperation);
     if (d->bodyCondition != bodyCondition) {
         d->setBodyCondition(bodyCondition);
@@ -341,12 +407,16 @@ void QOperation::setBodyCondition(QConstraint *bodyCondition)
  */
 const QSet<QOperation *> *QOperation::redefinedOperations() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QOperation);
     return d->redefinedOperations;
 }
 
 void QOperation::addRedefinedOperation(QOperation *redefinedOperation)
 {
+    // This is a read-write association end
+
     QTUML_D(QOperation);
     if (!d->redefinedOperations->contains(redefinedOperation)) {
         d->addRedefinedOperation(redefinedOperation);
@@ -355,6 +425,8 @@ void QOperation::addRedefinedOperation(QOperation *redefinedOperation)
 
 void QOperation::removeRedefinedOperation(QOperation *redefinedOperation)
 {
+    // This is a read-write association end
+
     QTUML_D(QOperation);
     if (d->redefinedOperations->contains(redefinedOperation)) {
         d->removeRedefinedOperation(redefinedOperation);
@@ -366,12 +438,16 @@ void QOperation::removeRedefinedOperation(QOperation *redefinedOperation)
  */
 const QSet<QConstraint *> *QOperation::postconditions() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QOperation);
     return d->postconditions;
 }
 
 void QOperation::addPostcondition(QConstraint *postcondition)
 {
+    // This is a read-write association end
+
     QTUML_D(QOperation);
     if (!d->postconditions->contains(postcondition)) {
         d->addPostcondition(postcondition);
@@ -380,6 +456,8 @@ void QOperation::addPostcondition(QConstraint *postcondition)
 
 void QOperation::removePostcondition(QConstraint *postcondition)
 {
+    // This is a read-write association end
+
     QTUML_D(QOperation);
     if (d->postconditions->contains(postcondition)) {
         d->removePostcondition(postcondition);
@@ -391,12 +469,16 @@ void QOperation::removePostcondition(QConstraint *postcondition)
  */
 QDataType *QOperation::datatype() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QOperation);
     return d->datatype;
 }
 
 void QOperation::setDatatype(QDataType *datatype)
 {
+    // This is a read-write association end
+
     QTUML_D(QOperation);
     if (d->datatype != datatype) {
         d->setDatatype(datatype);
@@ -411,12 +493,16 @@ void QOperation::setDatatype(QDataType *datatype)
  */
 QOperationTemplateParameter *QOperation::templateParameter() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QOperation);
     return d->templateParameter;
 }
 
 void QOperation::setTemplateParameter(QOperationTemplateParameter *templateParameter)
 {
+    // This is a read-write association end
+
     QTUML_D(QOperation);
     if (d->templateParameter != templateParameter) {
         d->setTemplateParameter(templateParameter);
@@ -431,12 +517,16 @@ void QOperation::setTemplateParameter(QOperationTemplateParameter *templateParam
  */
 QInterface *QOperation::interface() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QOperation);
     return d->interface;
 }
 
 void QOperation::setInterface(QInterface *interface)
 {
+    // This is a read-write association end
+
     QTUML_D(QOperation);
     if (d->interface != interface) {
         d->setInterface(interface);
@@ -451,7 +541,12 @@ void QOperation::setInterface(QInterface *interface)
  */
 QType *QOperation::type() const
 {
+    // This is a read-only derived association end
+
     qWarning("QOperation::type: to be implemented (this is a derived associationend)");
+
+    QTUML_D(const QOperation);
+    //return <derived-return>;
 }
 
 /*!
@@ -459,12 +554,16 @@ QType *QOperation::type() const
  */
 const QSet<QConstraint *> *QOperation::preconditions() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QOperation);
     return d->preconditions;
 }
 
 void QOperation::addPrecondition(QConstraint *precondition)
 {
+    // This is a read-write association end
+
     QTUML_D(QOperation);
     if (!d->preconditions->contains(precondition)) {
         d->addPrecondition(precondition);
@@ -473,6 +572,8 @@ void QOperation::addPrecondition(QConstraint *precondition)
 
 void QOperation::removePrecondition(QConstraint *precondition)
 {
+    // This is a read-write association end
+
     QTUML_D(QOperation);
     if (d->preconditions->contains(precondition)) {
         d->removePrecondition(precondition);
@@ -484,12 +585,16 @@ void QOperation::removePrecondition(QConstraint *precondition)
  */
 QClass *QOperation::class_() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QOperation);
     return d->class_;
 }
 
 void QOperation::setClass_(QClass *class_)
 {
+    // This is a read-write association end
+
     QTUML_D(QOperation);
     if (d->class_ != class_) {
         d->setClass_(class_);
@@ -504,12 +609,16 @@ void QOperation::setClass_(QClass *class_)
  */
 const QSet<QType *> *QOperation::raisedExceptions() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QOperation);
     return d->raisedExceptions;
 }
 
 void QOperation::addRaisedException(QType *raisedException)
 {
+    // This is a read-write association end
+
     QTUML_D(QOperation);
     if (!d->raisedExceptions->contains(raisedException)) {
         d->addRaisedException(raisedException);
@@ -518,6 +627,8 @@ void QOperation::addRaisedException(QType *raisedException)
 
 void QOperation::removeRaisedException(QType *raisedException)
 {
+    // This is a read-write association end
+
     QTUML_D(QOperation);
     if (d->raisedExceptions->contains(raisedException)) {
         d->removeRaisedException(raisedException);

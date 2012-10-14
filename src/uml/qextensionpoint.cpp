@@ -58,6 +58,8 @@ QExtensionPointPrivate::~QExtensionPointPrivate()
 
 void QExtensionPointPrivate::setUseCase(QUseCase *useCase)
 {
+    // This is a read-write association end
+
     this->useCase = useCase;
 
     // Adjust subsetted property(ies)
@@ -94,12 +96,16 @@ QExtensionPoint::~QExtensionPoint()
  */
 QUseCase *QExtensionPoint::useCase() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QExtensionPoint);
     return d->useCase;
 }
 
 void QExtensionPoint::setUseCase(QUseCase *useCase)
 {
+    // This is a read-write association end
+
     QTUML_D(QExtensionPoint);
     if (d->useCase != useCase) {
         d->setUseCase(useCase);

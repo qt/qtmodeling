@@ -66,11 +66,15 @@ QComponentPrivate::~QComponentPrivate()
 
 void QComponentPrivate::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
 {
+    // This is a read-write attribute
+
     this->isIndirectlyInstantiated = isIndirectlyInstantiated;
 }
 
 void QComponentPrivate::addRealization(QComponentRealization *realization)
 {
+    // This is a read-write association end
+
     this->realizations->insert(realization);
 
     // Adjust subsetted property(ies)
@@ -79,6 +83,8 @@ void QComponentPrivate::addRealization(QComponentRealization *realization)
 
 void QComponentPrivate::removeRealization(QComponentRealization *realization)
 {
+    // This is a read-write association end
+
     this->realizations->remove(realization);
 
     // Adjust subsetted property(ies)
@@ -87,6 +93,8 @@ void QComponentPrivate::removeRealization(QComponentRealization *realization)
 
 void QComponentPrivate::addPackagedElement(QPackageableElement *packagedElement)
 {
+    // This is a read-write association end
+
     this->packagedElements->insert(packagedElement);
 
     // Adjust subsetted property(ies)
@@ -95,6 +103,8 @@ void QComponentPrivate::addPackagedElement(QPackageableElement *packagedElement)
 
 void QComponentPrivate::removePackagedElement(QPackageableElement *packagedElement)
 {
+    // This is a read-write association end
+
     this->packagedElements->remove(packagedElement);
 
     // Adjust subsetted property(ies)
@@ -131,12 +141,16 @@ QComponent::~QComponent()
  */
 bool QComponent::isIndirectlyInstantiated() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QComponent);
     return d->isIndirectlyInstantiated;
 }
 
 void QComponent::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
 {
+    // This is a read-write attribute
+
     QTUML_D(QComponent);
     if (d->isIndirectlyInstantiated != isIndirectlyInstantiated) {
         d->setIndirectlyInstantiated(isIndirectlyInstantiated);
@@ -148,12 +162,16 @@ void QComponent::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
  */
 const QSet<QComponentRealization *> *QComponent::realizations() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QComponent);
     return d->realizations;
 }
 
 void QComponent::addRealization(QComponentRealization *realization)
 {
+    // This is a read-write association end
+
     QTUML_D(QComponent);
     if (!d->realizations->contains(realization)) {
         d->addRealization(realization);
@@ -165,6 +183,8 @@ void QComponent::addRealization(QComponentRealization *realization)
 
 void QComponent::removeRealization(QComponentRealization *realization)
 {
+    // This is a read-write association end
+
     QTUML_D(QComponent);
     if (d->realizations->contains(realization)) {
         d->removeRealization(realization);
@@ -179,7 +199,12 @@ void QComponent::removeRealization(QComponentRealization *realization)
  */
 const QSet<QInterface *> *QComponent::required() const
 {
+    // This is a read-only derived association end
+
     qWarning("QComponent::required: to be implemented (this is a derived associationend)");
+
+    QTUML_D(const QComponent);
+    //return <derived-return>;
 }
 
 /*!
@@ -187,7 +212,12 @@ const QSet<QInterface *> *QComponent::required() const
  */
 const QSet<QInterface *> *QComponent::provided() const
 {
+    // This is a read-only derived association end
+
     qWarning("QComponent::provided: to be implemented (this is a derived associationend)");
+
+    QTUML_D(const QComponent);
+    //return <derived-return>;
 }
 
 /*!
@@ -195,12 +225,16 @@ const QSet<QInterface *> *QComponent::provided() const
  */
 const QSet<QPackageableElement *> *QComponent::packagedElements() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QComponent);
     return d->packagedElements;
 }
 
 void QComponent::addPackagedElement(QPackageableElement *packagedElement)
 {
+    // This is a read-write association end
+
     QTUML_D(QComponent);
     if (!d->packagedElements->contains(packagedElement)) {
         d->addPackagedElement(packagedElement);
@@ -209,6 +243,8 @@ void QComponent::addPackagedElement(QPackageableElement *packagedElement)
 
 void QComponent::removePackagedElement(QPackageableElement *packagedElement)
 {
+    // This is a read-write association end
+
     QTUML_D(QComponent);
     if (d->packagedElements->contains(packagedElement)) {
         d->removePackagedElement(packagedElement);

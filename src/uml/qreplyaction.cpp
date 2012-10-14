@@ -62,11 +62,15 @@ QReplyActionPrivate::~QReplyActionPrivate()
 
 void QReplyActionPrivate::setReplyToCall(QTrigger *replyToCall)
 {
+    // This is a read-write association end
+
     this->replyToCall = replyToCall;
 }
 
 void QReplyActionPrivate::setReturnInformation(QInputPin *returnInformation)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeInput(this->returnInformation);
 
@@ -78,6 +82,8 @@ void QReplyActionPrivate::setReturnInformation(QInputPin *returnInformation)
 
 void QReplyActionPrivate::addReplyValue(QInputPin *replyValue)
 {
+    // This is a read-write association end
+
     this->replyValues->insert(replyValue);
 
     // Adjust subsetted property(ies)
@@ -86,6 +92,8 @@ void QReplyActionPrivate::addReplyValue(QInputPin *replyValue)
 
 void QReplyActionPrivate::removeReplyValue(QInputPin *replyValue)
 {
+    // This is a read-write association end
+
     this->replyValues->remove(replyValue);
 
     // Adjust subsetted property(ies)
@@ -122,12 +130,16 @@ QReplyAction::~QReplyAction()
  */
 QTrigger *QReplyAction::replyToCall() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReplyAction);
     return d->replyToCall;
 }
 
 void QReplyAction::setReplyToCall(QTrigger *replyToCall)
 {
+    // This is a read-write association end
+
     QTUML_D(QReplyAction);
     if (d->replyToCall != replyToCall) {
         d->setReplyToCall(replyToCall);
@@ -139,12 +151,16 @@ void QReplyAction::setReplyToCall(QTrigger *replyToCall)
  */
 QInputPin *QReplyAction::returnInformation() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReplyAction);
     return d->returnInformation;
 }
 
 void QReplyAction::setReturnInformation(QInputPin *returnInformation)
 {
+    // This is a read-write association end
+
     QTUML_D(QReplyAction);
     if (d->returnInformation != returnInformation) {
         d->setReturnInformation(returnInformation);
@@ -156,12 +172,16 @@ void QReplyAction::setReturnInformation(QInputPin *returnInformation)
  */
 const QSet<QInputPin *> *QReplyAction::replyValues() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReplyAction);
     return d->replyValues;
 }
 
 void QReplyAction::addReplyValue(QInputPin *replyValue)
 {
+    // This is a read-write association end
+
     QTUML_D(QReplyAction);
     if (!d->replyValues->contains(replyValue)) {
         d->addReplyValue(replyValue);
@@ -170,6 +190,8 @@ void QReplyAction::addReplyValue(QInputPin *replyValue)
 
 void QReplyAction::removeReplyValue(QInputPin *replyValue)
 {
+    // This is a read-write association end
+
     QTUML_D(QReplyAction);
     if (d->replyValues->contains(replyValue)) {
         d->removeReplyValue(replyValue);

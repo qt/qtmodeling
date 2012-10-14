@@ -60,6 +60,8 @@ QDurationPrivate::~QDurationPrivate()
 
 void QDurationPrivate::setExpr(QValueSpecification *expr)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->expr);
 
@@ -71,11 +73,15 @@ void QDurationPrivate::setExpr(QValueSpecification *expr)
 
 void QDurationPrivate::addObservation(QObservation *observation)
 {
+    // This is a read-write association end
+
     this->observations->insert(observation);
 }
 
 void QDurationPrivate::removeObservation(QObservation *observation)
 {
+    // This is a read-write association end
+
     this->observations->remove(observation);
 }
 
@@ -109,12 +115,16 @@ QDuration::~QDuration()
  */
 QValueSpecification *QDuration::expr() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QDuration);
     return d->expr;
 }
 
 void QDuration::setExpr(QValueSpecification *expr)
 {
+    // This is a read-write association end
+
     QTUML_D(QDuration);
     if (d->expr != expr) {
         d->setExpr(expr);
@@ -126,12 +136,16 @@ void QDuration::setExpr(QValueSpecification *expr)
  */
 const QSet<QObservation *> *QDuration::observations() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QDuration);
     return d->observations;
 }
 
 void QDuration::addObservation(QObservation *observation)
 {
+    // This is a read-write association end
+
     QTUML_D(QDuration);
     if (!d->observations->contains(observation)) {
         d->addObservation(observation);
@@ -140,6 +154,8 @@ void QDuration::addObservation(QObservation *observation)
 
 void QDuration::removeObservation(QObservation *observation)
 {
+    // This is a read-write association end
+
     QTUML_D(QDuration);
     if (d->observations->contains(observation)) {
         d->removeObservation(observation);

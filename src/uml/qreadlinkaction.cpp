@@ -58,6 +58,8 @@ QReadLinkActionPrivate::~QReadLinkActionPrivate()
 
 void QReadLinkActionPrivate::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
@@ -97,12 +99,16 @@ QReadLinkAction::~QReadLinkAction()
  */
 QOutputPin *QReadLinkAction::result() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReadLinkAction);
     return d->result;
 }
 
 void QReadLinkAction::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     QTUML_D(QReadLinkAction);
     if (d->result != result) {
         d->setResult(result);

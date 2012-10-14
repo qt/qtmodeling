@@ -66,6 +66,8 @@ QExtendPrivate::~QExtendPrivate()
 
 void QExtendPrivate::setExtendedCase(QUseCase *extendedCase)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeTarget(this->extendedCase);
 
@@ -77,6 +79,8 @@ void QExtendPrivate::setExtendedCase(QUseCase *extendedCase)
 
 void QExtendPrivate::setExtension(QUseCase *extension)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeSource(this->extension);
 
@@ -89,16 +93,22 @@ void QExtendPrivate::setExtension(QUseCase *extension)
 
 void QExtendPrivate::addExtensionLocation(QExtensionPoint *extensionLocation)
 {
+    // This is a read-write association end
+
     this->extensionLocations->append(extensionLocation);
 }
 
 void QExtendPrivate::removeExtensionLocation(QExtensionPoint *extensionLocation)
 {
+    // This is a read-write association end
+
     this->extensionLocations->removeAll(extensionLocation);
 }
 
 void QExtendPrivate::setCondition(QConstraint *condition)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->condition);
 
@@ -138,12 +148,16 @@ QExtend::~QExtend()
  */
 QUseCase *QExtend::extendedCase() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QExtend);
     return d->extendedCase;
 }
 
 void QExtend::setExtendedCase(QUseCase *extendedCase)
 {
+    // This is a read-write association end
+
     QTUML_D(QExtend);
     if (d->extendedCase != extendedCase) {
         d->setExtendedCase(extendedCase);
@@ -155,12 +169,16 @@ void QExtend::setExtendedCase(QUseCase *extendedCase)
  */
 QUseCase *QExtend::extension() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QExtend);
     return d->extension;
 }
 
 void QExtend::setExtension(QUseCase *extension)
 {
+    // This is a read-write association end
+
     QTUML_D(QExtend);
     if (d->extension != extension) {
         d->setExtension(extension);
@@ -175,12 +193,16 @@ void QExtend::setExtension(QUseCase *extension)
  */
 const QList<QExtensionPoint *> *QExtend::extensionLocations() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QExtend);
     return d->extensionLocations;
 }
 
 void QExtend::addExtensionLocation(QExtensionPoint *extensionLocation)
 {
+    // This is a read-write association end
+
     QTUML_D(QExtend);
     if (!d->extensionLocations->contains(extensionLocation)) {
         d->addExtensionLocation(extensionLocation);
@@ -189,6 +211,8 @@ void QExtend::addExtensionLocation(QExtensionPoint *extensionLocation)
 
 void QExtend::removeExtensionLocation(QExtensionPoint *extensionLocation)
 {
+    // This is a read-write association end
+
     QTUML_D(QExtend);
     if (d->extensionLocations->contains(extensionLocation)) {
         d->removeExtensionLocation(extensionLocation);
@@ -200,12 +224,16 @@ void QExtend::removeExtensionLocation(QExtensionPoint *extensionLocation)
  */
 QConstraint *QExtend::condition() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QExtend);
     return d->condition;
 }
 
 void QExtend::setCondition(QConstraint *condition)
 {
+    // This is a read-write association end
+
     QTUML_D(QExtend);
     if (d->condition != condition) {
         d->setCondition(condition);

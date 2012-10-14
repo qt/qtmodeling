@@ -61,6 +61,8 @@ QTestIdentityActionPrivate::~QTestIdentityActionPrivate()
 
 void QTestIdentityActionPrivate::setSecond(QInputPin *second)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeInput(this->second);
 
@@ -72,6 +74,8 @@ void QTestIdentityActionPrivate::setSecond(QInputPin *second)
 
 void QTestIdentityActionPrivate::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
@@ -83,6 +87,8 @@ void QTestIdentityActionPrivate::setResult(QOutputPin *result)
 
 void QTestIdentityActionPrivate::setFirst(QInputPin *first)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeInput(this->first);
 
@@ -122,12 +128,16 @@ QTestIdentityAction::~QTestIdentityAction()
  */
 QInputPin *QTestIdentityAction::second() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTestIdentityAction);
     return d->second;
 }
 
 void QTestIdentityAction::setSecond(QInputPin *second)
 {
+    // This is a read-write association end
+
     QTUML_D(QTestIdentityAction);
     if (d->second != second) {
         d->setSecond(second);
@@ -139,12 +149,16 @@ void QTestIdentityAction::setSecond(QInputPin *second)
  */
 QOutputPin *QTestIdentityAction::result() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTestIdentityAction);
     return d->result;
 }
 
 void QTestIdentityAction::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     QTUML_D(QTestIdentityAction);
     if (d->result != result) {
         d->setResult(result);
@@ -156,12 +170,16 @@ void QTestIdentityAction::setResult(QOutputPin *result)
  */
 QInputPin *QTestIdentityAction::first() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTestIdentityAction);
     return d->first;
 }
 
 void QTestIdentityAction::setFirst(QInputPin *first)
 {
+    // This is a read-write association end
+
     QTUML_D(QTestIdentityAction);
     if (d->first != first) {
         d->setFirst(first);

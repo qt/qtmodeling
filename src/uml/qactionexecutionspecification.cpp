@@ -57,6 +57,8 @@ QActionExecutionSpecificationPrivate::~QActionExecutionSpecificationPrivate()
 
 void QActionExecutionSpecificationPrivate::setAction(QAction *action)
 {
+    // This is a read-write association end
+
     this->action = action;
 }
 
@@ -90,12 +92,16 @@ QActionExecutionSpecification::~QActionExecutionSpecification()
  */
 QAction *QActionExecutionSpecification::action() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QActionExecutionSpecification);
     return d->action;
 }
 
 void QActionExecutionSpecification::setAction(QAction *action)
 {
+    // This is a read-write association end
+
     QTUML_D(QActionExecutionSpecification);
     if (d->action != action) {
         d->setAction(action);

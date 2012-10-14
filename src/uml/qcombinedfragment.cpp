@@ -63,11 +63,15 @@ QCombinedFragmentPrivate::~QCombinedFragmentPrivate()
 
 void QCombinedFragmentPrivate::setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator)
 {
+    // This is a read-write attribute
+
     this->interactionOperator = interactionOperator;
 }
 
 void QCombinedFragmentPrivate::addCfragmentGate(QGate *cfragmentGate)
 {
+    // This is a read-write association end
+
     this->cfragmentGates->insert(cfragmentGate);
 
     // Adjust subsetted property(ies)
@@ -76,6 +80,8 @@ void QCombinedFragmentPrivate::addCfragmentGate(QGate *cfragmentGate)
 
 void QCombinedFragmentPrivate::removeCfragmentGate(QGate *cfragmentGate)
 {
+    // This is a read-write association end
+
     this->cfragmentGates->remove(cfragmentGate);
 
     // Adjust subsetted property(ies)
@@ -84,6 +90,8 @@ void QCombinedFragmentPrivate::removeCfragmentGate(QGate *cfragmentGate)
 
 void QCombinedFragmentPrivate::addOperand(QInteractionOperand *operand)
 {
+    // This is a read-write association end
+
     this->operands->append(operand);
 
     // Adjust subsetted property(ies)
@@ -92,6 +100,8 @@ void QCombinedFragmentPrivate::addOperand(QInteractionOperand *operand)
 
 void QCombinedFragmentPrivate::removeOperand(QInteractionOperand *operand)
 {
+    // This is a read-write association end
+
     this->operands->removeAll(operand);
 
     // Adjust subsetted property(ies)
@@ -128,12 +138,16 @@ QCombinedFragment::~QCombinedFragment()
  */
 QtUml::InteractionOperatorKind QCombinedFragment::interactionOperator() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QCombinedFragment);
     return d->interactionOperator;
 }
 
 void QCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator)
 {
+    // This is a read-write attribute
+
     QTUML_D(QCombinedFragment);
     if (d->interactionOperator != interactionOperator) {
         d->setInteractionOperator(interactionOperator);
@@ -145,12 +159,16 @@ void QCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind in
  */
 const QSet<QGate *> *QCombinedFragment::cfragmentGates() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QCombinedFragment);
     return d->cfragmentGates;
 }
 
 void QCombinedFragment::addCfragmentGate(QGate *cfragmentGate)
 {
+    // This is a read-write association end
+
     QTUML_D(QCombinedFragment);
     if (!d->cfragmentGates->contains(cfragmentGate)) {
         d->addCfragmentGate(cfragmentGate);
@@ -159,6 +177,8 @@ void QCombinedFragment::addCfragmentGate(QGate *cfragmentGate)
 
 void QCombinedFragment::removeCfragmentGate(QGate *cfragmentGate)
 {
+    // This is a read-write association end
+
     QTUML_D(QCombinedFragment);
     if (d->cfragmentGates->contains(cfragmentGate)) {
         d->removeCfragmentGate(cfragmentGate);
@@ -170,12 +190,16 @@ void QCombinedFragment::removeCfragmentGate(QGate *cfragmentGate)
  */
 const QList<QInteractionOperand *> *QCombinedFragment::operands() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QCombinedFragment);
     return d->operands;
 }
 
 void QCombinedFragment::addOperand(QInteractionOperand *operand)
 {
+    // This is a read-write association end
+
     QTUML_D(QCombinedFragment);
     if (!d->operands->contains(operand)) {
         d->addOperand(operand);
@@ -184,6 +208,8 @@ void QCombinedFragment::addOperand(QInteractionOperand *operand)
 
 void QCombinedFragment::removeOperand(QInteractionOperand *operand)
 {
+    // This is a read-write association end
+
     QTUML_D(QCombinedFragment);
     if (d->operands->contains(operand)) {
         d->removeOperand(operand);

@@ -61,6 +61,8 @@ QVariablePrivate::~QVariablePrivate()
 
 void QVariablePrivate::setScope(QStructuredActivityNode *scope)
 {
+    // This is a read-write association end
+
     this->scope = scope;
 
     // Adjust subsetted property(ies)
@@ -69,6 +71,8 @@ void QVariablePrivate::setScope(QStructuredActivityNode *scope)
 
 void QVariablePrivate::setActivityScope(QActivity *activityScope)
 {
+    // This is a read-write association end
+
     this->activityScope = activityScope;
 
     // Adjust subsetted property(ies)
@@ -105,12 +109,16 @@ QVariable::~QVariable()
  */
 QStructuredActivityNode *QVariable::scope() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QVariable);
     return d->scope;
 }
 
 void QVariable::setScope(QStructuredActivityNode *scope)
 {
+    // This is a read-write association end
+
     QTUML_D(QVariable);
     if (d->scope != scope) {
         d->setScope(scope);
@@ -125,12 +133,16 @@ void QVariable::setScope(QStructuredActivityNode *scope)
  */
 QActivity *QVariable::activityScope() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QVariable);
     return d->activityScope;
 }
 
 void QVariable::setActivityScope(QActivity *activityScope)
 {
+    // This is a read-write association end
+
     QTUML_D(QVariable);
     if (d->activityScope != activityScope) {
         d->setActivityScope(activityScope);

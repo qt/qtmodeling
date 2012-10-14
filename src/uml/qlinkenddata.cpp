@@ -63,16 +63,22 @@ QLinkEndDataPrivate::~QLinkEndDataPrivate()
 
 void QLinkEndDataPrivate::setValue(QInputPin *value)
 {
+    // This is a read-write association end
+
     this->value = value;
 }
 
 void QLinkEndDataPrivate::setEnd(QProperty *end)
 {
+    // This is a read-write association end
+
     this->end = end;
 }
 
 void QLinkEndDataPrivate::addQualifier(QQualifierValue *qualifier)
 {
+    // This is a read-write association end
+
     this->qualifiers->insert(qualifier);
 
     // Adjust subsetted property(ies)
@@ -81,6 +87,8 @@ void QLinkEndDataPrivate::addQualifier(QQualifierValue *qualifier)
 
 void QLinkEndDataPrivate::removeQualifier(QQualifierValue *qualifier)
 {
+    // This is a read-write association end
+
     this->qualifiers->remove(qualifier);
 
     // Adjust subsetted property(ies)
@@ -117,12 +125,16 @@ QLinkEndData::~QLinkEndData()
  */
 QInputPin *QLinkEndData::value() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QLinkEndData);
     return d->value;
 }
 
 void QLinkEndData::setValue(QInputPin *value)
 {
+    // This is a read-write association end
+
     QTUML_D(QLinkEndData);
     if (d->value != value) {
         d->setValue(value);
@@ -134,12 +146,16 @@ void QLinkEndData::setValue(QInputPin *value)
  */
 QProperty *QLinkEndData::end() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QLinkEndData);
     return d->end;
 }
 
 void QLinkEndData::setEnd(QProperty *end)
 {
+    // This is a read-write association end
+
     QTUML_D(QLinkEndData);
     if (d->end != end) {
         d->setEnd(end);
@@ -151,12 +167,16 @@ void QLinkEndData::setEnd(QProperty *end)
  */
 const QSet<QQualifierValue *> *QLinkEndData::qualifiers() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QLinkEndData);
     return d->qualifiers;
 }
 
 void QLinkEndData::addQualifier(QQualifierValue *qualifier)
 {
+    // This is a read-write association end
+
     QTUML_D(QLinkEndData);
     if (!d->qualifiers->contains(qualifier)) {
         d->addQualifier(qualifier);
@@ -165,6 +185,8 @@ void QLinkEndData::addQualifier(QQualifierValue *qualifier)
 
 void QLinkEndData::removeQualifier(QQualifierValue *qualifier)
 {
+    // This is a read-write association end
+
     QTUML_D(QLinkEndData);
     if (d->qualifiers->contains(qualifier)) {
         d->removeQualifier(qualifier);

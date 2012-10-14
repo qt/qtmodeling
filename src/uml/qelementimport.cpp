@@ -62,16 +62,22 @@ QElementImportPrivate::~QElementImportPrivate()
 
 void QElementImportPrivate::setAlias(QString alias)
 {
+    // This is a read-write attribute
+
     this->alias = alias;
 }
 
 void QElementImportPrivate::setVisibility(QtUml::VisibilityKind visibility)
 {
+    // This is a read-write attribute
+
     this->visibility = visibility;
 }
 
 void QElementImportPrivate::setImportedElement(QPackageableElement *importedElement)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeTarget(this->importedElement);
 
@@ -83,6 +89,8 @@ void QElementImportPrivate::setImportedElement(QPackageableElement *importedElem
 
 void QElementImportPrivate::setImportingNamespace(QNamespace *importingNamespace)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeSource(this->importingNamespace);
 
@@ -123,12 +131,16 @@ QElementImport::~QElementImport()
  */
 QString QElementImport::alias() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QElementImport);
     return d->alias;
 }
 
 void QElementImport::setAlias(QString alias)
 {
+    // This is a read-write attribute
+
     QTUML_D(QElementImport);
     if (d->alias != alias) {
         d->setAlias(alias);
@@ -140,12 +152,16 @@ void QElementImport::setAlias(QString alias)
  */
 QtUml::VisibilityKind QElementImport::visibility() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QElementImport);
     return d->visibility;
 }
 
 void QElementImport::setVisibility(QtUml::VisibilityKind visibility)
 {
+    // This is a read-write attribute
+
     QTUML_D(QElementImport);
     if (d->visibility != visibility) {
         d->setVisibility(visibility);
@@ -157,12 +173,16 @@ void QElementImport::setVisibility(QtUml::VisibilityKind visibility)
  */
 QPackageableElement *QElementImport::importedElement() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QElementImport);
     return d->importedElement;
 }
 
 void QElementImport::setImportedElement(QPackageableElement *importedElement)
 {
+    // This is a read-write association end
+
     QTUML_D(QElementImport);
     if (d->importedElement != importedElement) {
         d->setImportedElement(importedElement);
@@ -174,12 +194,16 @@ void QElementImport::setImportedElement(QPackageableElement *importedElement)
  */
 QNamespace *QElementImport::importingNamespace() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QElementImport);
     return d->importingNamespace;
 }
 
 void QElementImport::setImportingNamespace(QNamespace *importingNamespace)
 {
+    // This is a read-write association end
+
     QTUML_D(QElementImport);
     if (d->importingNamespace != importingNamespace) {
         d->setImportingNamespace(importingNamespace);

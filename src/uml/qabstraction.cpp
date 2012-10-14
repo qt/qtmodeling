@@ -58,6 +58,8 @@ QAbstractionPrivate::~QAbstractionPrivate()
 
 void QAbstractionPrivate::setMapping(QOpaqueExpression *mapping)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->mapping);
 
@@ -97,12 +99,16 @@ QAbstraction::~QAbstraction()
  */
 QOpaqueExpression *QAbstraction::mapping() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QAbstraction);
     return d->mapping;
 }
 
 void QAbstraction::setMapping(QOpaqueExpression *mapping)
 {
+    // This is a read-write association end
+
     QTUML_D(QAbstraction);
     if (d->mapping != mapping) {
         d->setMapping(mapping);

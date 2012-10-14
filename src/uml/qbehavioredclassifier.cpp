@@ -65,6 +65,8 @@ QBehavioredClassifierPrivate::~QBehavioredClassifierPrivate()
 
 void QBehavioredClassifierPrivate::addOwnedBehavior(QBehavior *ownedBehavior)
 {
+    // This is a read-write association end
+
     this->ownedBehaviors->insert(ownedBehavior);
 
     // Adjust subsetted property(ies)
@@ -73,6 +75,8 @@ void QBehavioredClassifierPrivate::addOwnedBehavior(QBehavior *ownedBehavior)
 
 void QBehavioredClassifierPrivate::removeOwnedBehavior(QBehavior *ownedBehavior)
 {
+    // This is a read-write association end
+
     this->ownedBehaviors->remove(ownedBehavior);
 
     // Adjust subsetted property(ies)
@@ -81,6 +85,8 @@ void QBehavioredClassifierPrivate::removeOwnedBehavior(QBehavior *ownedBehavior)
 
 void QBehavioredClassifierPrivate::addInterfaceRealization(QInterfaceRealization *interfaceRealization)
 {
+    // This is a read-write association end
+
     this->interfaceRealizations->insert(interfaceRealization);
 
     // Adjust subsetted property(ies)
@@ -90,6 +96,8 @@ void QBehavioredClassifierPrivate::addInterfaceRealization(QInterfaceRealization
 
 void QBehavioredClassifierPrivate::removeInterfaceRealization(QInterfaceRealization *interfaceRealization)
 {
+    // This is a read-write association end
+
     this->interfaceRealizations->remove(interfaceRealization);
 
     // Adjust subsetted property(ies)
@@ -99,6 +107,8 @@ void QBehavioredClassifierPrivate::removeInterfaceRealization(QInterfaceRealizat
 
 void QBehavioredClassifierPrivate::setClassifierBehavior(QBehavior *classifierBehavior)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedBehavior(this->classifierBehavior);
 
@@ -129,12 +139,16 @@ QBehavioredClassifier::~QBehavioredClassifier()
  */
 const QSet<QBehavior *> *QBehavioredClassifier::ownedBehaviors() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QBehavioredClassifier);
     return d->ownedBehaviors;
 }
 
 void QBehavioredClassifier::addOwnedBehavior(QBehavior *ownedBehavior)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehavioredClassifier);
     if (!d->ownedBehaviors->contains(ownedBehavior)) {
         d->addOwnedBehavior(ownedBehavior);
@@ -143,6 +157,8 @@ void QBehavioredClassifier::addOwnedBehavior(QBehavior *ownedBehavior)
 
 void QBehavioredClassifier::removeOwnedBehavior(QBehavior *ownedBehavior)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehavioredClassifier);
     if (d->ownedBehaviors->contains(ownedBehavior)) {
         d->removeOwnedBehavior(ownedBehavior);
@@ -154,12 +170,16 @@ void QBehavioredClassifier::removeOwnedBehavior(QBehavior *ownedBehavior)
  */
 const QSet<QInterfaceRealization *> *QBehavioredClassifier::interfaceRealizations() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QBehavioredClassifier);
     return d->interfaceRealizations;
 }
 
 void QBehavioredClassifier::addInterfaceRealization(QInterfaceRealization *interfaceRealization)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehavioredClassifier);
     if (!d->interfaceRealizations->contains(interfaceRealization)) {
         d->addInterfaceRealization(interfaceRealization);
@@ -171,6 +191,8 @@ void QBehavioredClassifier::addInterfaceRealization(QInterfaceRealization *inter
 
 void QBehavioredClassifier::removeInterfaceRealization(QInterfaceRealization *interfaceRealization)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehavioredClassifier);
     if (d->interfaceRealizations->contains(interfaceRealization)) {
         d->removeInterfaceRealization(interfaceRealization);
@@ -185,12 +207,16 @@ void QBehavioredClassifier::removeInterfaceRealization(QInterfaceRealization *in
  */
 QBehavior *QBehavioredClassifier::classifierBehavior() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QBehavioredClassifier);
     return d->classifierBehavior;
 }
 
 void QBehavioredClassifier::setClassifierBehavior(QBehavior *classifierBehavior)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehavioredClassifier);
     if (d->classifierBehavior != classifierBehavior) {
         d->setClassifierBehavior(classifierBehavior);

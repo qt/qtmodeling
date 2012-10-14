@@ -57,11 +57,15 @@ QInformationItemPrivate::~QInformationItemPrivate()
 
 void QInformationItemPrivate::addRepresented(QClassifier *represented)
 {
+    // This is a read-write association end
+
     this->represented->insert(represented);
 }
 
 void QInformationItemPrivate::removeRepresented(QClassifier *represented)
 {
+    // This is a read-write association end
+
     this->represented->remove(represented);
 }
 
@@ -95,12 +99,16 @@ QInformationItem::~QInformationItem()
  */
 const QSet<QClassifier *> *QInformationItem::represented() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInformationItem);
     return d->represented;
 }
 
 void QInformationItem::addRepresented(QClassifier *represented)
 {
+    // This is a read-write association end
+
     QTUML_D(QInformationItem);
     if (!d->represented->contains(represented)) {
         d->addRepresented(represented);
@@ -109,6 +117,8 @@ void QInformationItem::addRepresented(QClassifier *represented)
 
 void QInformationItem::removeRepresented(QClassifier *represented)
 {
+    // This is a read-write association end
+
     QTUML_D(QInformationItem);
     if (d->represented->contains(represented)) {
         d->removeRepresented(represented);

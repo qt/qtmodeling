@@ -58,6 +58,8 @@ QValuePinPrivate::~QValuePinPrivate()
 
 void QValuePinPrivate::setValue(QValueSpecification *value)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->value);
 
@@ -97,12 +99,16 @@ QValuePin::~QValuePin()
  */
 QValueSpecification *QValuePin::value() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QValuePin);
     return d->value;
 }
 
 void QValuePin::setValue(QValueSpecification *value)
 {
+    // This is a read-write association end
+
     QTUML_D(QValuePin);
     if (d->value != value) {
         d->setValue(value);

@@ -61,6 +61,8 @@ QDependencyPrivate::~QDependencyPrivate()
 
 void QDependencyPrivate::addClient(QNamedElement *client)
 {
+    // This is a read-write association end
+
     this->clients->insert(client);
 
     // Adjust subsetted property(ies)
@@ -69,6 +71,8 @@ void QDependencyPrivate::addClient(QNamedElement *client)
 
 void QDependencyPrivate::removeClient(QNamedElement *client)
 {
+    // This is a read-write association end
+
     this->clients->remove(client);
 
     // Adjust subsetted property(ies)
@@ -77,6 +81,8 @@ void QDependencyPrivate::removeClient(QNamedElement *client)
 
 void QDependencyPrivate::addSupplier(QNamedElement *supplier)
 {
+    // This is a read-write association end
+
     this->suppliers->insert(supplier);
 
     // Adjust subsetted property(ies)
@@ -85,6 +91,8 @@ void QDependencyPrivate::addSupplier(QNamedElement *supplier)
 
 void QDependencyPrivate::removeSupplier(QNamedElement *supplier)
 {
+    // This is a read-write association end
+
     this->suppliers->remove(supplier);
 
     // Adjust subsetted property(ies)
@@ -121,12 +129,16 @@ QDependency::~QDependency()
  */
 const QSet<QNamedElement *> *QDependency::clients() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QDependency);
     return d->clients;
 }
 
 void QDependency::addClient(QNamedElement *client)
 {
+    // This is a read-write association end
+
     QTUML_D(QDependency);
     if (!d->clients->contains(client)) {
         d->addClient(client);
@@ -138,6 +150,8 @@ void QDependency::addClient(QNamedElement *client)
 
 void QDependency::removeClient(QNamedElement *client)
 {
+    // This is a read-write association end
+
     QTUML_D(QDependency);
     if (d->clients->contains(client)) {
         d->removeClient(client);
@@ -152,12 +166,16 @@ void QDependency::removeClient(QNamedElement *client)
  */
 const QSet<QNamedElement *> *QDependency::suppliers() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QDependency);
     return d->suppliers;
 }
 
 void QDependency::addSupplier(QNamedElement *supplier)
 {
+    // This is a read-write association end
+
     QTUML_D(QDependency);
     if (!d->suppliers->contains(supplier)) {
         d->addSupplier(supplier);
@@ -166,6 +184,8 @@ void QDependency::addSupplier(QNamedElement *supplier)
 
 void QDependency::removeSupplier(QNamedElement *supplier)
 {
+    // This is a read-write association end
+
     QTUML_D(QDependency);
     if (d->suppliers->contains(supplier)) {
         d->removeSupplier(supplier);

@@ -60,16 +60,22 @@ QDurationConstraintPrivate::~QDurationConstraintPrivate()
 
 void QDurationConstraintPrivate::addFirstEvent(bool firstEvent)
 {
+    // This is a read-write attribute
+
     this->firstEvents->insert(firstEvent);
 }
 
 void QDurationConstraintPrivate::removeFirstEvent(bool firstEvent)
 {
+    // This is a read-write attribute
+
     this->firstEvents->remove(firstEvent);
 }
 
 void QDurationConstraintPrivate::setSpecification(QDurationInterval *specification)
 {
+    // This is a read-write association end
+
     this->specification = specification;
 }
 
@@ -103,12 +109,16 @@ QDurationConstraint::~QDurationConstraint()
  */
 const QSet<bool> *QDurationConstraint::firstEvents() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QDurationConstraint);
     return d->firstEvents;
 }
 
 void QDurationConstraint::addFirstEvent(bool firstEvent)
 {
+    // This is a read-write attribute
+
     QTUML_D(QDurationConstraint);
     if (!d->firstEvents->contains(firstEvent)) {
         d->addFirstEvent(firstEvent);
@@ -117,6 +127,8 @@ void QDurationConstraint::addFirstEvent(bool firstEvent)
 
 void QDurationConstraint::removeFirstEvent(bool firstEvent)
 {
+    // This is a read-write attribute
+
     QTUML_D(QDurationConstraint);
     if (d->firstEvents->contains(firstEvent)) {
         d->removeFirstEvent(firstEvent);
@@ -128,12 +140,16 @@ void QDurationConstraint::removeFirstEvent(bool firstEvent)
  */
 QDurationInterval *QDurationConstraint::specification() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QDurationConstraint);
     return d->specification;
 }
 
 void QDurationConstraint::setSpecification(QDurationInterval *specification)
 {
+    // This is a read-write association end
+
     QTUML_D(QDurationConstraint);
     if (d->specification != specification) {
         d->setSpecification(specification);

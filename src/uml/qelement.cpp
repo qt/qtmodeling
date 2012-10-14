@@ -63,21 +63,29 @@ QElementPrivate::~QElementPrivate()
 
 void QElementPrivate::addOwnedElement(QElement *ownedElement)
 {
+    // This is a read-only derived-union association end
+
     this->ownedElements->insert(ownedElement);
 }
 
 void QElementPrivate::removeOwnedElement(QElement *ownedElement)
 {
+    // This is a read-only derived-union association end
+
     this->ownedElements->remove(ownedElement);
 }
 
 void QElementPrivate::setOwner(QElement *owner)
 {
+    // This is a read-only derived-union association end
+
     this->owner = owner;
 }
 
 void QElementPrivate::addOwnedComment(QComment *ownedComment)
 {
+    // This is a read-write association end
+
     this->ownedComments->insert(ownedComment);
 
     // Adjust subsetted property(ies)
@@ -86,6 +94,8 @@ void QElementPrivate::addOwnedComment(QComment *ownedComment)
 
 void QElementPrivate::removeOwnedComment(QComment *ownedComment)
 {
+    // This is a read-write association end
+
     this->ownedComments->remove(ownedComment);
 
     // Adjust subsetted property(ies)
@@ -114,6 +124,8 @@ QElement::~QElement()
  */
 const QSet<QElement *> *QElement::ownedElements() const
 {
+    // This is a read-only derived-union association end
+
     QTUML_D(const QElement);
     return d->ownedElements;
 }
@@ -123,6 +135,8 @@ const QSet<QElement *> *QElement::ownedElements() const
  */
 QElement *QElement::owner() const
 {
+    // This is a read-only derived-union association end
+
     QTUML_D(const QElement);
     return d->owner;
 }
@@ -132,12 +146,16 @@ QElement *QElement::owner() const
  */
 const QSet<QComment *> *QElement::ownedComments() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QElement);
     return d->ownedComments;
 }
 
 void QElement::addOwnedComment(QComment *ownedComment)
 {
+    // This is a read-write association end
+
     QTUML_D(QElement);
     if (!d->ownedComments->contains(ownedComment)) {
         d->addOwnedComment(ownedComment);
@@ -146,6 +164,8 @@ void QElement::addOwnedComment(QComment *ownedComment)
 
 void QElement::removeOwnedComment(QComment *ownedComment)
 {
+    // This is a read-write association end
+
     QTUML_D(QElement);
     if (d->ownedComments->contains(ownedComment)) {
         d->removeOwnedComment(ownedComment);

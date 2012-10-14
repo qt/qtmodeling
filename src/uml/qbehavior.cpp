@@ -75,16 +75,22 @@ QBehaviorPrivate::~QBehaviorPrivate()
 
 void QBehaviorPrivate::setReentrant(bool isReentrant)
 {
+    // This is a read-write attribute
+
     this->isReentrant = isReentrant;
 }
 
 void QBehaviorPrivate::setSpecification(QBehavioralFeature *specification)
 {
+    // This is a read-write association end
+
     this->specification = specification;
 }
 
 void QBehaviorPrivate::addPostcondition(QConstraint *postcondition)
 {
+    // This is a read-write association end
+
     this->postconditions->insert(postcondition);
 
     // Adjust subsetted property(ies)
@@ -93,6 +99,8 @@ void QBehaviorPrivate::addPostcondition(QConstraint *postcondition)
 
 void QBehaviorPrivate::removePostcondition(QConstraint *postcondition)
 {
+    // This is a read-write association end
+
     this->postconditions->remove(postcondition);
 
     // Adjust subsetted property(ies)
@@ -101,6 +109,8 @@ void QBehaviorPrivate::removePostcondition(QConstraint *postcondition)
 
 void QBehaviorPrivate::addPrecondition(QConstraint *precondition)
 {
+    // This is a read-write association end
+
     this->preconditions->insert(precondition);
 
     // Adjust subsetted property(ies)
@@ -109,6 +119,8 @@ void QBehaviorPrivate::addPrecondition(QConstraint *precondition)
 
 void QBehaviorPrivate::removePrecondition(QConstraint *precondition)
 {
+    // This is a read-write association end
+
     this->preconditions->remove(precondition);
 
     // Adjust subsetted property(ies)
@@ -117,6 +129,8 @@ void QBehaviorPrivate::removePrecondition(QConstraint *precondition)
 
 void QBehaviorPrivate::addRedefinedBehavior(QBehavior *redefinedBehavior)
 {
+    // This is a read-write association end
+
     this->redefinedBehaviors->insert(redefinedBehavior);
 
     // Adjust subsetted property(ies)
@@ -125,6 +139,8 @@ void QBehaviorPrivate::addRedefinedBehavior(QBehavior *redefinedBehavior)
 
 void QBehaviorPrivate::removeRedefinedBehavior(QBehavior *redefinedBehavior)
 {
+    // This is a read-write association end
+
     this->redefinedBehaviors->remove(redefinedBehavior);
 
     // Adjust subsetted property(ies)
@@ -133,6 +149,8 @@ void QBehaviorPrivate::removeRedefinedBehavior(QBehavior *redefinedBehavior)
 
 void QBehaviorPrivate::addOwnedParameter(QParameter *ownedParameter)
 {
+    // This is a read-write association end
+
     this->ownedParameters->append(ownedParameter);
 
     // Adjust subsetted property(ies)
@@ -141,6 +159,8 @@ void QBehaviorPrivate::addOwnedParameter(QParameter *ownedParameter)
 
 void QBehaviorPrivate::removeOwnedParameter(QParameter *ownedParameter)
 {
+    // This is a read-write association end
+
     this->ownedParameters->removeAll(ownedParameter);
 
     // Adjust subsetted property(ies)
@@ -149,6 +169,8 @@ void QBehaviorPrivate::removeOwnedParameter(QParameter *ownedParameter)
 
 void QBehaviorPrivate::addOwnedParameterSet(QParameterSet *ownedParameterSet)
 {
+    // This is a read-write association end
+
     this->ownedParameterSets->insert(ownedParameterSet);
 
     // Adjust subsetted property(ies)
@@ -157,6 +179,8 @@ void QBehaviorPrivate::addOwnedParameterSet(QParameterSet *ownedParameterSet)
 
 void QBehaviorPrivate::removeOwnedParameterSet(QParameterSet *ownedParameterSet)
 {
+    // This is a read-write association end
+
     this->ownedParameterSets->remove(ownedParameterSet);
 
     // Adjust subsetted property(ies)
@@ -185,12 +209,16 @@ QBehavior::~QBehavior()
  */
 bool QBehavior::isReentrant() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QBehavior);
     return d->isReentrant;
 }
 
 void QBehavior::setReentrant(bool isReentrant)
 {
+    // This is a read-write attribute
+
     QTUML_D(QBehavior);
     if (d->isReentrant != isReentrant) {
         d->setReentrant(isReentrant);
@@ -202,12 +230,16 @@ void QBehavior::setReentrant(bool isReentrant)
  */
 QBehavioralFeature *QBehavior::specification() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QBehavior);
     return d->specification;
 }
 
 void QBehavior::setSpecification(QBehavioralFeature *specification)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehavior);
     if (d->specification != specification) {
         d->setSpecification(specification);
@@ -222,12 +254,16 @@ void QBehavior::setSpecification(QBehavioralFeature *specification)
  */
 const QSet<QConstraint *> *QBehavior::postconditions() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QBehavior);
     return d->postconditions;
 }
 
 void QBehavior::addPostcondition(QConstraint *postcondition)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehavior);
     if (!d->postconditions->contains(postcondition)) {
         d->addPostcondition(postcondition);
@@ -236,6 +272,8 @@ void QBehavior::addPostcondition(QConstraint *postcondition)
 
 void QBehavior::removePostcondition(QConstraint *postcondition)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehavior);
     if (d->postconditions->contains(postcondition)) {
         d->removePostcondition(postcondition);
@@ -247,12 +285,16 @@ void QBehavior::removePostcondition(QConstraint *postcondition)
  */
 const QSet<QConstraint *> *QBehavior::preconditions() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QBehavior);
     return d->preconditions;
 }
 
 void QBehavior::addPrecondition(QConstraint *precondition)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehavior);
     if (!d->preconditions->contains(precondition)) {
         d->addPrecondition(precondition);
@@ -261,6 +303,8 @@ void QBehavior::addPrecondition(QConstraint *precondition)
 
 void QBehavior::removePrecondition(QConstraint *precondition)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehavior);
     if (d->preconditions->contains(precondition)) {
         d->removePrecondition(precondition);
@@ -272,12 +316,16 @@ void QBehavior::removePrecondition(QConstraint *precondition)
  */
 const QSet<QBehavior *> *QBehavior::redefinedBehaviors() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QBehavior);
     return d->redefinedBehaviors;
 }
 
 void QBehavior::addRedefinedBehavior(QBehavior *redefinedBehavior)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehavior);
     if (!d->redefinedBehaviors->contains(redefinedBehavior)) {
         d->addRedefinedBehavior(redefinedBehavior);
@@ -286,6 +334,8 @@ void QBehavior::addRedefinedBehavior(QBehavior *redefinedBehavior)
 
 void QBehavior::removeRedefinedBehavior(QBehavior *redefinedBehavior)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehavior);
     if (d->redefinedBehaviors->contains(redefinedBehavior)) {
         d->removeRedefinedBehavior(redefinedBehavior);
@@ -297,12 +347,16 @@ void QBehavior::removeRedefinedBehavior(QBehavior *redefinedBehavior)
  */
 const QList<QParameter *> *QBehavior::ownedParameters() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QBehavior);
     return d->ownedParameters;
 }
 
 void QBehavior::addOwnedParameter(QParameter *ownedParameter)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehavior);
     if (!d->ownedParameters->contains(ownedParameter)) {
         d->addOwnedParameter(ownedParameter);
@@ -311,6 +365,8 @@ void QBehavior::addOwnedParameter(QParameter *ownedParameter)
 
 void QBehavior::removeOwnedParameter(QParameter *ownedParameter)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehavior);
     if (d->ownedParameters->contains(ownedParameter)) {
         d->removeOwnedParameter(ownedParameter);
@@ -322,12 +378,16 @@ void QBehavior::removeOwnedParameter(QParameter *ownedParameter)
  */
 const QSet<QParameterSet *> *QBehavior::ownedParameterSets() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QBehavior);
     return d->ownedParameterSets;
 }
 
 void QBehavior::addOwnedParameterSet(QParameterSet *ownedParameterSet)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehavior);
     if (!d->ownedParameterSets->contains(ownedParameterSet)) {
         d->addOwnedParameterSet(ownedParameterSet);
@@ -336,6 +396,8 @@ void QBehavior::addOwnedParameterSet(QParameterSet *ownedParameterSet)
 
 void QBehavior::removeOwnedParameterSet(QParameterSet *ownedParameterSet)
 {
+    // This is a read-write association end
+
     QTUML_D(QBehavior);
     if (d->ownedParameterSets->contains(ownedParameterSet)) {
         d->removeOwnedParameterSet(ownedParameterSet);
@@ -347,7 +409,12 @@ void QBehavior::removeOwnedParameterSet(QParameterSet *ownedParameterSet)
  */
 QBehavioredClassifier *QBehavior::context() const
 {
+    // This is a read-only derived association end
+
     qWarning("QBehavior::context: to be implemented (this is a derived associationend)");
+
+    QTUML_D(const QBehavior);
+    //return <derived-return>;
 }
 
 QT_END_NAMESPACE_QTUML

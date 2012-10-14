@@ -67,6 +67,8 @@ QActivityGroupPrivate::~QActivityGroupPrivate()
 
 void QActivityGroupPrivate::setInActivity(QActivity *inActivity)
 {
+    // This is a read-write association end
+
     this->inActivity = inActivity;
 
     // Adjust subsetted property(ies)
@@ -75,16 +77,22 @@ void QActivityGroupPrivate::setInActivity(QActivity *inActivity)
 
 void QActivityGroupPrivate::addContainedNode(QActivityNode *containedNode)
 {
+    // This is a read-only derived-union association end
+
     this->containedNodes->insert(containedNode);
 }
 
 void QActivityGroupPrivate::removeContainedNode(QActivityNode *containedNode)
 {
+    // This is a read-only derived-union association end
+
     this->containedNodes->remove(containedNode);
 }
 
 void QActivityGroupPrivate::addSubgroup(QActivityGroup *subgroup)
 {
+    // This is a read-only derived-union association end
+
     this->subgroups->insert(subgroup);
 
     // Adjust subsetted property(ies)
@@ -93,6 +101,8 @@ void QActivityGroupPrivate::addSubgroup(QActivityGroup *subgroup)
 
 void QActivityGroupPrivate::removeSubgroup(QActivityGroup *subgroup)
 {
+    // This is a read-only derived-union association end
+
     this->subgroups->remove(subgroup);
 
     // Adjust subsetted property(ies)
@@ -101,16 +111,22 @@ void QActivityGroupPrivate::removeSubgroup(QActivityGroup *subgroup)
 
 void QActivityGroupPrivate::addContainedEdge(QActivityEdge *containedEdge)
 {
+    // This is a read-only derived-union association end
+
     this->containedEdges->insert(containedEdge);
 }
 
 void QActivityGroupPrivate::removeContainedEdge(QActivityEdge *containedEdge)
 {
+    // This is a read-only derived-union association end
+
     this->containedEdges->remove(containedEdge);
 }
 
 void QActivityGroupPrivate::setSuperGroup(QActivityGroup *superGroup)
 {
+    // This is a read-only derived-union association end
+
     this->superGroup = superGroup;
 
     // Adjust subsetted property(ies)
@@ -138,12 +154,16 @@ QActivityGroup::~QActivityGroup()
  */
 QActivity *QActivityGroup::inActivity() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QActivityGroup);
     return d->inActivity;
 }
 
 void QActivityGroup::setInActivity(QActivity *inActivity)
 {
+    // This is a read-write association end
+
     QTUML_D(QActivityGroup);
     if (d->inActivity != inActivity) {
         d->setInActivity(inActivity);
@@ -158,6 +178,8 @@ void QActivityGroup::setInActivity(QActivity *inActivity)
  */
 const QSet<QActivityNode *> *QActivityGroup::containedNodes() const
 {
+    // This is a read-only derived-union association end
+
     QTUML_D(const QActivityGroup);
     return d->containedNodes;
 }
@@ -167,6 +189,8 @@ const QSet<QActivityNode *> *QActivityGroup::containedNodes() const
  */
 const QSet<QActivityGroup *> *QActivityGroup::subgroups() const
 {
+    // This is a read-only derived-union association end
+
     QTUML_D(const QActivityGroup);
     return d->subgroups;
 }
@@ -176,6 +200,8 @@ const QSet<QActivityGroup *> *QActivityGroup::subgroups() const
  */
 const QSet<QActivityEdge *> *QActivityGroup::containedEdges() const
 {
+    // This is a read-only derived-union association end
+
     QTUML_D(const QActivityGroup);
     return d->containedEdges;
 }
@@ -185,6 +211,8 @@ const QSet<QActivityEdge *> *QActivityGroup::containedEdges() const
  */
 QActivityGroup *QActivityGroup::superGroup() const
 {
+    // This is a read-only derived-union association end
+
     QTUML_D(const QActivityGroup);
     return d->superGroup;
 }

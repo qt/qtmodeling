@@ -63,11 +63,15 @@ QReadIsClassifiedObjectActionPrivate::~QReadIsClassifiedObjectActionPrivate()
 
 void QReadIsClassifiedObjectActionPrivate::setDirect(bool isDirect)
 {
+    // This is a read-write attribute
+
     this->isDirect = isDirect;
 }
 
 void QReadIsClassifiedObjectActionPrivate::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
@@ -79,6 +83,8 @@ void QReadIsClassifiedObjectActionPrivate::setResult(QOutputPin *result)
 
 void QReadIsClassifiedObjectActionPrivate::setObject(QInputPin *object)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeInput(this->object);
 
@@ -90,6 +96,8 @@ void QReadIsClassifiedObjectActionPrivate::setObject(QInputPin *object)
 
 void QReadIsClassifiedObjectActionPrivate::setClassifier(QClassifier *classifier)
 {
+    // This is a read-write association end
+
     this->classifier = classifier;
 }
 
@@ -123,12 +131,16 @@ QReadIsClassifiedObjectAction::~QReadIsClassifiedObjectAction()
  */
 bool QReadIsClassifiedObjectAction::isDirect() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QReadIsClassifiedObjectAction);
     return d->isDirect;
 }
 
 void QReadIsClassifiedObjectAction::setDirect(bool isDirect)
 {
+    // This is a read-write attribute
+
     QTUML_D(QReadIsClassifiedObjectAction);
     if (d->isDirect != isDirect) {
         d->setDirect(isDirect);
@@ -140,12 +152,16 @@ void QReadIsClassifiedObjectAction::setDirect(bool isDirect)
  */
 QOutputPin *QReadIsClassifiedObjectAction::result() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReadIsClassifiedObjectAction);
     return d->result;
 }
 
 void QReadIsClassifiedObjectAction::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     QTUML_D(QReadIsClassifiedObjectAction);
     if (d->result != result) {
         d->setResult(result);
@@ -157,12 +173,16 @@ void QReadIsClassifiedObjectAction::setResult(QOutputPin *result)
  */
 QInputPin *QReadIsClassifiedObjectAction::object() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReadIsClassifiedObjectAction);
     return d->object;
 }
 
 void QReadIsClassifiedObjectAction::setObject(QInputPin *object)
 {
+    // This is a read-write association end
+
     QTUML_D(QReadIsClassifiedObjectAction);
     if (d->object != object) {
         d->setObject(object);
@@ -174,12 +194,16 @@ void QReadIsClassifiedObjectAction::setObject(QInputPin *object)
  */
 QClassifier *QReadIsClassifiedObjectAction::classifier() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReadIsClassifiedObjectAction);
     return d->classifier;
 }
 
 void QReadIsClassifiedObjectAction::setClassifier(QClassifier *classifier)
 {
+    // This is a read-write association end
+
     QTUML_D(QReadIsClassifiedObjectAction);
     if (d->classifier != classifier) {
         d->setClassifier(classifier);

@@ -62,6 +62,8 @@ QTemplateableElementPrivate::~QTemplateableElementPrivate()
 
 void QTemplateableElementPrivate::setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->ownedTemplateSignature);
 
@@ -73,6 +75,8 @@ void QTemplateableElementPrivate::setOwnedTemplateSignature(QTemplateSignature *
 
 void QTemplateableElementPrivate::addTemplateBinding(QTemplateBinding *templateBinding)
 {
+    // This is a read-write association end
+
     this->templateBindings->insert(templateBinding);
 
     // Adjust subsetted property(ies)
@@ -81,6 +85,8 @@ void QTemplateableElementPrivate::addTemplateBinding(QTemplateBinding *templateB
 
 void QTemplateableElementPrivate::removeTemplateBinding(QTemplateBinding *templateBinding)
 {
+    // This is a read-write association end
+
     this->templateBindings->remove(templateBinding);
 
     // Adjust subsetted property(ies)
@@ -108,12 +114,16 @@ QTemplateableElement::~QTemplateableElement()
  */
 QTemplateSignature *QTemplateableElement::ownedTemplateSignature() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTemplateableElement);
     return d->ownedTemplateSignature;
 }
 
 void QTemplateableElement::setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature)
 {
+    // This is a read-write association end
+
     QTUML_D(QTemplateableElement);
     if (d->ownedTemplateSignature != ownedTemplateSignature) {
         d->setOwnedTemplateSignature(ownedTemplateSignature);
@@ -128,12 +138,16 @@ void QTemplateableElement::setOwnedTemplateSignature(QTemplateSignature *ownedTe
  */
 const QSet<QTemplateBinding *> *QTemplateableElement::templateBindings() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTemplateableElement);
     return d->templateBindings;
 }
 
 void QTemplateableElement::addTemplateBinding(QTemplateBinding *templateBinding)
 {
+    // This is a read-write association end
+
     QTUML_D(QTemplateableElement);
     if (!d->templateBindings->contains(templateBinding)) {
         d->addTemplateBinding(templateBinding);
@@ -145,6 +159,8 @@ void QTemplateableElement::addTemplateBinding(QTemplateBinding *templateBinding)
 
 void QTemplateableElement::removeTemplateBinding(QTemplateBinding *templateBinding)
 {
+    // This is a read-write association end
+
     QTUML_D(QTemplateableElement);
     if (d->templateBindings->contains(templateBinding)) {
         d->removeTemplateBinding(templateBinding);

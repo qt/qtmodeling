@@ -57,6 +57,8 @@ QTypedElementPrivate::~QTypedElementPrivate()
 
 void QTypedElementPrivate::setType(QType *type)
 {
+    // This is a read-write association end
+
     this->type = type;
 }
 
@@ -81,12 +83,16 @@ QTypedElement::~QTypedElement()
  */
 QType *QTypedElement::type() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTypedElement);
     return d->type;
 }
 
 void QTypedElement::setType(QType *type)
 {
+    // This is a read-write association end
+
     QTUML_D(QTypedElement);
     if (d->type != type) {
         d->setType(type);

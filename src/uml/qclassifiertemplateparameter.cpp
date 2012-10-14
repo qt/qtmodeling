@@ -60,21 +60,29 @@ QClassifierTemplateParameterPrivate::~QClassifierTemplateParameterPrivate()
 
 void QClassifierTemplateParameterPrivate::setAllowSubstitutable(bool allowSubstitutable)
 {
+    // This is a read-write attribute
+
     this->allowSubstitutable = allowSubstitutable;
 }
 
 void QClassifierTemplateParameterPrivate::setParameteredElement(QClassifier *parameteredElement)
 {
+    // This is a read-write association end
+
     this->parameteredElement = parameteredElement;
 }
 
 void QClassifierTemplateParameterPrivate::addConstrainingClassifier(QClassifier *constrainingClassifier)
 {
+    // This is a read-write association end
+
     this->constrainingClassifiers->insert(constrainingClassifier);
 }
 
 void QClassifierTemplateParameterPrivate::removeConstrainingClassifier(QClassifier *constrainingClassifier)
 {
+    // This is a read-write association end
+
     this->constrainingClassifiers->remove(constrainingClassifier);
 }
 
@@ -108,12 +116,16 @@ QClassifierTemplateParameter::~QClassifierTemplateParameter()
  */
 bool QClassifierTemplateParameter::allowSubstitutable() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QClassifierTemplateParameter);
     return d->allowSubstitutable;
 }
 
 void QClassifierTemplateParameter::setAllowSubstitutable(bool allowSubstitutable)
 {
+    // This is a read-write attribute
+
     QTUML_D(QClassifierTemplateParameter);
     if (d->allowSubstitutable != allowSubstitutable) {
         d->setAllowSubstitutable(allowSubstitutable);
@@ -125,12 +137,16 @@ void QClassifierTemplateParameter::setAllowSubstitutable(bool allowSubstitutable
  */
 QClassifier *QClassifierTemplateParameter::parameteredElement() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QClassifierTemplateParameter);
     return d->parameteredElement;
 }
 
 void QClassifierTemplateParameter::setParameteredElement(QClassifier *parameteredElement)
 {
+    // This is a read-write association end
+
     QTUML_D(QClassifierTemplateParameter);
     if (d->parameteredElement != parameteredElement) {
         d->setParameteredElement(parameteredElement);
@@ -145,12 +161,16 @@ void QClassifierTemplateParameter::setParameteredElement(QClassifier *parametere
  */
 const QSet<QClassifier *> *QClassifierTemplateParameter::constrainingClassifiers() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QClassifierTemplateParameter);
     return d->constrainingClassifiers;
 }
 
 void QClassifierTemplateParameter::addConstrainingClassifier(QClassifier *constrainingClassifier)
 {
+    // This is a read-write association end
+
     QTUML_D(QClassifierTemplateParameter);
     if (!d->constrainingClassifiers->contains(constrainingClassifier)) {
         d->addConstrainingClassifier(constrainingClassifier);
@@ -159,6 +179,8 @@ void QClassifierTemplateParameter::addConstrainingClassifier(QClassifier *constr
 
 void QClassifierTemplateParameter::removeConstrainingClassifier(QClassifier *constrainingClassifier)
 {
+    // This is a read-write association end
+
     QTUML_D(QClassifierTemplateParameter);
     if (d->constrainingClassifiers->contains(constrainingClassifier)) {
         d->removeConstrainingClassifier(constrainingClassifier);

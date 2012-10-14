@@ -58,11 +58,15 @@ QLinkEndDestructionDataPrivate::~QLinkEndDestructionDataPrivate()
 
 void QLinkEndDestructionDataPrivate::setDestroyDuplicates(bool isDestroyDuplicates)
 {
+    // This is a read-write attribute
+
     this->isDestroyDuplicates = isDestroyDuplicates;
 }
 
 void QLinkEndDestructionDataPrivate::setDestroyAt(QInputPin *destroyAt)
 {
+    // This is a read-write association end
+
     this->destroyAt = destroyAt;
 }
 
@@ -96,12 +100,16 @@ QLinkEndDestructionData::~QLinkEndDestructionData()
  */
 bool QLinkEndDestructionData::isDestroyDuplicates() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QLinkEndDestructionData);
     return d->isDestroyDuplicates;
 }
 
 void QLinkEndDestructionData::setDestroyDuplicates(bool isDestroyDuplicates)
 {
+    // This is a read-write attribute
+
     QTUML_D(QLinkEndDestructionData);
     if (d->isDestroyDuplicates != isDestroyDuplicates) {
         d->setDestroyDuplicates(isDestroyDuplicates);
@@ -113,12 +121,16 @@ void QLinkEndDestructionData::setDestroyDuplicates(bool isDestroyDuplicates)
  */
 QInputPin *QLinkEndDestructionData::destroyAt() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QLinkEndDestructionData);
     return d->destroyAt;
 }
 
 void QLinkEndDestructionData::setDestroyAt(QInputPin *destroyAt)
 {
+    // This is a read-write association end
+
     QTUML_D(QLinkEndDestructionData);
     if (d->destroyAt != destroyAt) {
         d->setDestroyAt(destroyAt);

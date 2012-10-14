@@ -60,11 +60,15 @@ QCallActionPrivate::~QCallActionPrivate()
 
 void QCallActionPrivate::setSynchronous(bool isSynchronous)
 {
+    // This is a read-write attribute
+
     this->isSynchronous = isSynchronous;
 }
 
 void QCallActionPrivate::addResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     this->results->append(result);
 
     // Adjust subsetted property(ies)
@@ -73,6 +77,8 @@ void QCallActionPrivate::addResult(QOutputPin *result)
 
 void QCallActionPrivate::removeResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     this->results->removeAll(result);
 
     // Adjust subsetted property(ies)
@@ -100,12 +106,16 @@ QCallAction::~QCallAction()
  */
 bool QCallAction::isSynchronous() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QCallAction);
     return d->isSynchronous;
 }
 
 void QCallAction::setSynchronous(bool isSynchronous)
 {
+    // This is a read-write attribute
+
     QTUML_D(QCallAction);
     if (d->isSynchronous != isSynchronous) {
         d->setSynchronous(isSynchronous);
@@ -117,12 +127,16 @@ void QCallAction::setSynchronous(bool isSynchronous)
  */
 const QList<QOutputPin *> *QCallAction::results() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QCallAction);
     return d->results;
 }
 
 void QCallAction::addResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     QTUML_D(QCallAction);
     if (!d->results->contains(result)) {
         d->addResult(result);
@@ -131,6 +145,8 @@ void QCallAction::addResult(QOutputPin *result)
 
 void QCallAction::removeResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     QTUML_D(QCallAction);
     if (d->results->contains(result)) {
         d->removeResult(result);

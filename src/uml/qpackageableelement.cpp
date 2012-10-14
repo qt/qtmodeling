@@ -56,6 +56,8 @@ QPackageableElementPrivate::~QPackageableElementPrivate()
 
 void QPackageableElementPrivate::setVisibility(QtUml::VisibilityKind visibility)
 {
+    // This is a read-write attribute
+
     this->visibility = visibility;
 }
 
@@ -80,12 +82,16 @@ QPackageableElement::~QPackageableElement()
  */
 QtUml::VisibilityKind QPackageableElement::visibility() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QPackageableElement);
     return d->visibility;
 }
 
 void QPackageableElement::setVisibility(QtUml::VisibilityKind visibility)
 {
+    // This is a read-write attribute
+
     QTUML_D(QPackageableElement);
     if (d->visibility != visibility) {
         d->setVisibility(visibility);

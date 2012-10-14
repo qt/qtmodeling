@@ -58,11 +58,15 @@ QTimeObservationPrivate::~QTimeObservationPrivate()
 
 void QTimeObservationPrivate::setFirstEvent(bool firstEvent)
 {
+    // This is a read-write attribute
+
     this->firstEvent = firstEvent;
 }
 
 void QTimeObservationPrivate::setEvent(QNamedElement *event)
 {
+    // This is a read-write association end
+
     this->event = event;
 }
 
@@ -96,12 +100,16 @@ QTimeObservation::~QTimeObservation()
  */
 bool QTimeObservation::firstEvent() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QTimeObservation);
     return d->firstEvent;
 }
 
 void QTimeObservation::setFirstEvent(bool firstEvent)
 {
+    // This is a read-write attribute
+
     QTUML_D(QTimeObservation);
     if (d->firstEvent != firstEvent) {
         d->setFirstEvent(firstEvent);
@@ -113,12 +121,16 @@ void QTimeObservation::setFirstEvent(bool firstEvent)
  */
 QNamedElement *QTimeObservation::event() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTimeObservation);
     return d->event;
 }
 
 void QTimeObservation::setEvent(QNamedElement *event)
 {
+    // This is a read-write association end
+
     QTUML_D(QTimeObservation);
     if (d->event != event) {
         d->setEvent(event);

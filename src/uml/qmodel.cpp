@@ -55,6 +55,8 @@ QModelPrivate::~QModelPrivate()
 
 void QModelPrivate::setViewpoint(QString viewpoint)
 {
+    // This is a read-write attribute
+
     this->viewpoint = viewpoint;
 }
 
@@ -88,12 +90,16 @@ QModel::~QModel()
  */
 QString QModel::viewpoint() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QModel);
     return d->viewpoint;
 }
 
 void QModel::setViewpoint(QString viewpoint)
 {
+    // This is a read-write attribute
+
     QTUML_D(QModel);
     if (d->viewpoint != viewpoint) {
         d->setViewpoint(viewpoint);

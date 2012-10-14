@@ -60,21 +60,29 @@ QDurationObservationPrivate::~QDurationObservationPrivate()
 
 void QDurationObservationPrivate::addFirstEvent(bool firstEvent)
 {
+    // This is a read-write attribute
+
     this->firstEvents->insert(firstEvent);
 }
 
 void QDurationObservationPrivate::removeFirstEvent(bool firstEvent)
 {
+    // This is a read-write attribute
+
     this->firstEvents->remove(firstEvent);
 }
 
 void QDurationObservationPrivate::addEvent(QNamedElement *event)
 {
+    // This is a read-write association end
+
     this->events->insert(event);
 }
 
 void QDurationObservationPrivate::removeEvent(QNamedElement *event)
 {
+    // This is a read-write association end
+
     this->events->remove(event);
 }
 
@@ -108,12 +116,16 @@ QDurationObservation::~QDurationObservation()
  */
 const QSet<bool> *QDurationObservation::firstEvents() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QDurationObservation);
     return d->firstEvents;
 }
 
 void QDurationObservation::addFirstEvent(bool firstEvent)
 {
+    // This is a read-write attribute
+
     QTUML_D(QDurationObservation);
     if (!d->firstEvents->contains(firstEvent)) {
         d->addFirstEvent(firstEvent);
@@ -122,6 +134,8 @@ void QDurationObservation::addFirstEvent(bool firstEvent)
 
 void QDurationObservation::removeFirstEvent(bool firstEvent)
 {
+    // This is a read-write attribute
+
     QTUML_D(QDurationObservation);
     if (d->firstEvents->contains(firstEvent)) {
         d->removeFirstEvent(firstEvent);
@@ -133,12 +147,16 @@ void QDurationObservation::removeFirstEvent(bool firstEvent)
  */
 const QSet<QNamedElement *> *QDurationObservation::events() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QDurationObservation);
     return d->events;
 }
 
 void QDurationObservation::addEvent(QNamedElement *event)
 {
+    // This is a read-write association end
+
     QTUML_D(QDurationObservation);
     if (!d->events->contains(event)) {
         d->addEvent(event);
@@ -147,6 +165,8 @@ void QDurationObservation::addEvent(QNamedElement *event)
 
 void QDurationObservation::removeEvent(QNamedElement *event)
 {
+    // This is a read-write association end
+
     QTUML_D(QDurationObservation);
     if (d->events->contains(event)) {
         d->removeEvent(event);

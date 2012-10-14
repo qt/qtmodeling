@@ -57,6 +57,8 @@ QExtensionEndPrivate::~QExtensionEndPrivate()
 
 void QExtensionEndPrivate::setType(QStereotype *type)
 {
+    // This is a read-write association end
+
     this->type = type;
 }
 
@@ -90,12 +92,24 @@ QExtensionEnd::~QExtensionEnd()
  */
 qint32 QExtensionEnd::lower() const
 {
+    // This is a read-write derived attribute
+
     qWarning("QExtensionEnd::lower: to be implemented (this is a derived attribute)");
+
+    QTUML_D(const QExtensionEnd);
+    //return <derived-return>;
 }
 
 void QExtensionEnd::setLower(qint32 lower)
 {
+    // This is a read-write derived attribute
+
     qWarning("QExtensionEnd::setLower: to be implemented (this is a derived attribute)");
+
+    QTUML_D(QExtensionEnd);
+    if (true /* <change-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
@@ -103,12 +117,16 @@ void QExtensionEnd::setLower(qint32 lower)
  */
 QStereotype *QExtensionEnd::type() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QExtensionEnd);
     return d->type;
 }
 
 void QExtensionEnd::setType(QStereotype *type)
 {
+    // This is a read-write association end
+
     QTUML_D(QExtensionEnd);
     if (d->type != type) {
         d->setType(type);

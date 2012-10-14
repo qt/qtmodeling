@@ -60,11 +60,15 @@ QCallOperationActionPrivate::~QCallOperationActionPrivate()
 
 void QCallOperationActionPrivate::setOperation(QOperation *operation)
 {
+    // This is a read-write association end
+
     this->operation = operation;
 }
 
 void QCallOperationActionPrivate::setTarget(QInputPin *target)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeInput(this->target);
 
@@ -104,12 +108,16 @@ QCallOperationAction::~QCallOperationAction()
  */
 QOperation *QCallOperationAction::operation() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QCallOperationAction);
     return d->operation;
 }
 
 void QCallOperationAction::setOperation(QOperation *operation)
 {
+    // This is a read-write association end
+
     QTUML_D(QCallOperationAction);
     if (d->operation != operation) {
         d->setOperation(operation);
@@ -121,12 +129,16 @@ void QCallOperationAction::setOperation(QOperation *operation)
  */
 QInputPin *QCallOperationAction::target() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QCallOperationAction);
     return d->target;
 }
 
 void QCallOperationAction::setTarget(QInputPin *target)
 {
+    // This is a read-write association end
+
     QTUML_D(QCallOperationAction);
     if (d->target != target) {
         d->setTarget(target);

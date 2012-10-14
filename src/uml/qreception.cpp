@@ -57,6 +57,8 @@ QReceptionPrivate::~QReceptionPrivate()
 
 void QReceptionPrivate::setSignal(QSignal *signal)
 {
+    // This is a read-write association end
+
     this->signal = signal;
 }
 
@@ -90,12 +92,16 @@ QReception::~QReception()
  */
 QSignal *QReception::signal() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReception);
     return d->signal;
 }
 
 void QReception::setSignal(QSignal *signal)
 {
+    // This is a read-write association end
+
     QTUML_D(QReception);
     if (d->signal != signal) {
         d->setSignal(signal);

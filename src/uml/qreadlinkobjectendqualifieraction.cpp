@@ -62,6 +62,8 @@ QReadLinkObjectEndQualifierActionPrivate::~QReadLinkObjectEndQualifierActionPriv
 
 void QReadLinkObjectEndQualifierActionPrivate::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
@@ -73,6 +75,8 @@ void QReadLinkObjectEndQualifierActionPrivate::setResult(QOutputPin *result)
 
 void QReadLinkObjectEndQualifierActionPrivate::setObject(QInputPin *object)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeInput(this->object);
 
@@ -84,6 +88,8 @@ void QReadLinkObjectEndQualifierActionPrivate::setObject(QInputPin *object)
 
 void QReadLinkObjectEndQualifierActionPrivate::setQualifier(QProperty *qualifier)
 {
+    // This is a read-write association end
+
     this->qualifier = qualifier;
 }
 
@@ -117,12 +123,16 @@ QReadLinkObjectEndQualifierAction::~QReadLinkObjectEndQualifierAction()
  */
 QOutputPin *QReadLinkObjectEndQualifierAction::result() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReadLinkObjectEndQualifierAction);
     return d->result;
 }
 
 void QReadLinkObjectEndQualifierAction::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     QTUML_D(QReadLinkObjectEndQualifierAction);
     if (d->result != result) {
         d->setResult(result);
@@ -134,12 +144,16 @@ void QReadLinkObjectEndQualifierAction::setResult(QOutputPin *result)
  */
 QInputPin *QReadLinkObjectEndQualifierAction::object() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReadLinkObjectEndQualifierAction);
     return d->object;
 }
 
 void QReadLinkObjectEndQualifierAction::setObject(QInputPin *object)
 {
+    // This is a read-write association end
+
     QTUML_D(QReadLinkObjectEndQualifierAction);
     if (d->object != object) {
         d->setObject(object);
@@ -151,12 +165,16 @@ void QReadLinkObjectEndQualifierAction::setObject(QInputPin *object)
  */
 QProperty *QReadLinkObjectEndQualifierAction::qualifier() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReadLinkObjectEndQualifierAction);
     return d->qualifier;
 }
 
 void QReadLinkObjectEndQualifierAction::setQualifier(QProperty *qualifier)
 {
+    // This is a read-write association end
+
     QTUML_D(QReadLinkObjectEndQualifierAction);
     if (d->qualifier != qualifier) {
         d->setQualifier(qualifier);

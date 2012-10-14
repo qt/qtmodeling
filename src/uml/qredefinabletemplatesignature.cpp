@@ -62,6 +62,8 @@ QRedefinableTemplateSignaturePrivate::~QRedefinableTemplateSignaturePrivate()
 
 void QRedefinableTemplateSignaturePrivate::setClassifier(QClassifier *classifier)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeRedefinitionContext(this->classifier);
 
@@ -73,6 +75,8 @@ void QRedefinableTemplateSignaturePrivate::setClassifier(QClassifier *classifier
 
 void QRedefinableTemplateSignaturePrivate::addExtendedSignature(QRedefinableTemplateSignature *extendedSignature)
 {
+    // This is a read-write association end
+
     this->extendedSignatures->insert(extendedSignature);
 
     // Adjust subsetted property(ies)
@@ -81,6 +85,8 @@ void QRedefinableTemplateSignaturePrivate::addExtendedSignature(QRedefinableTemp
 
 void QRedefinableTemplateSignaturePrivate::removeExtendedSignature(QRedefinableTemplateSignature *extendedSignature)
 {
+    // This is a read-write association end
+
     this->extendedSignatures->remove(extendedSignature);
 
     // Adjust subsetted property(ies)
@@ -117,7 +123,12 @@ QRedefinableTemplateSignature::~QRedefinableTemplateSignature()
  */
 const QSet<QTemplateParameter *> *QRedefinableTemplateSignature::inheritedParameters() const
 {
+    // This is a read-only derived association end
+
     qWarning("QRedefinableTemplateSignature::inheritedParameters: to be implemented (this is a derived associationend)");
+
+    QTUML_D(const QRedefinableTemplateSignature);
+    //return <derived-return>;
 }
 
 /*!
@@ -125,12 +136,16 @@ const QSet<QTemplateParameter *> *QRedefinableTemplateSignature::inheritedParame
  */
 QClassifier *QRedefinableTemplateSignature::classifier() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QRedefinableTemplateSignature);
     return d->classifier;
 }
 
 void QRedefinableTemplateSignature::setClassifier(QClassifier *classifier)
 {
+    // This is a read-write association end
+
     QTUML_D(QRedefinableTemplateSignature);
     if (d->classifier != classifier) {
         d->setClassifier(classifier);
@@ -145,12 +160,16 @@ void QRedefinableTemplateSignature::setClassifier(QClassifier *classifier)
  */
 const QSet<QRedefinableTemplateSignature *> *QRedefinableTemplateSignature::extendedSignatures() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QRedefinableTemplateSignature);
     return d->extendedSignatures;
 }
 
 void QRedefinableTemplateSignature::addExtendedSignature(QRedefinableTemplateSignature *extendedSignature)
 {
+    // This is a read-write association end
+
     QTUML_D(QRedefinableTemplateSignature);
     if (!d->extendedSignatures->contains(extendedSignature)) {
         d->addExtendedSignature(extendedSignature);
@@ -159,6 +178,8 @@ void QRedefinableTemplateSignature::addExtendedSignature(QRedefinableTemplateSig
 
 void QRedefinableTemplateSignature::removeExtendedSignature(QRedefinableTemplateSignature *extendedSignature)
 {
+    // This is a read-write association end
+
     QTUML_D(QRedefinableTemplateSignature);
     if (d->extendedSignatures->contains(extendedSignature)) {
         d->removeExtendedSignature(extendedSignature);
