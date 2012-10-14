@@ -57,6 +57,8 @@ QBroadcastSignalActionPrivate::~QBroadcastSignalActionPrivate()
 
 void QBroadcastSignalActionPrivate::setSignal(QSignal *signal)
 {
+    // This is a read-write association end
+
     this->signal = signal;
 }
 
@@ -90,12 +92,16 @@ QBroadcastSignalAction::~QBroadcastSignalAction()
  */
 QSignal *QBroadcastSignalAction::signal() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QBroadcastSignalAction);
     return d->signal;
 }
 
 void QBroadcastSignalAction::setSignal(QSignal *signal)
 {
+    // This is a read-write association end
+
     QTUML_D(QBroadcastSignalAction);
     if (d->signal != signal) {
         d->setSignal(signal);

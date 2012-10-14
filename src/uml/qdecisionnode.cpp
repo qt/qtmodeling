@@ -59,11 +59,15 @@ QDecisionNodePrivate::~QDecisionNodePrivate()
 
 void QDecisionNodePrivate::setDecisionInputFlow(QObjectFlow *decisionInputFlow)
 {
+    // This is a read-write association end
+
     this->decisionInputFlow = decisionInputFlow;
 }
 
 void QDecisionNodePrivate::setDecisionInput(QBehavior *decisionInput)
 {
+    // This is a read-write association end
+
     this->decisionInput = decisionInput;
 }
 
@@ -97,12 +101,16 @@ QDecisionNode::~QDecisionNode()
  */
 QObjectFlow *QDecisionNode::decisionInputFlow() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QDecisionNode);
     return d->decisionInputFlow;
 }
 
 void QDecisionNode::setDecisionInputFlow(QObjectFlow *decisionInputFlow)
 {
+    // This is a read-write association end
+
     QTUML_D(QDecisionNode);
     if (d->decisionInputFlow != decisionInputFlow) {
         d->setDecisionInputFlow(decisionInputFlow);
@@ -114,12 +122,16 @@ void QDecisionNode::setDecisionInputFlow(QObjectFlow *decisionInputFlow)
  */
 QBehavior *QDecisionNode::decisionInput() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QDecisionNode);
     return d->decisionInput;
 }
 
 void QDecisionNode::setDecisionInput(QBehavior *decisionInput)
 {
+    // This is a read-write association end
+
     QTUML_D(QDecisionNode);
     if (d->decisionInput != decisionInput) {
         d->setDecisionInput(decisionInput);

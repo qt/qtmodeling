@@ -57,6 +57,8 @@ QMessageEndPrivate::~QMessageEndPrivate()
 
 void QMessageEndPrivate::setMessage(QMessage *message)
 {
+    // This is a read-write association end
+
     this->message = message;
 }
 
@@ -81,12 +83,16 @@ QMessageEnd::~QMessageEnd()
  */
 QMessage *QMessageEnd::message() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QMessageEnd);
     return d->message;
 }
 
 void QMessageEnd::setMessage(QMessage *message)
 {
+    // This is a read-write association end
+
     QTUML_D(QMessageEnd);
     if (d->message != message) {
         d->setMessage(message);

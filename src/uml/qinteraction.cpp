@@ -71,6 +71,8 @@ QInteractionPrivate::~QInteractionPrivate()
 
 void QInteractionPrivate::addAction(QAction *action)
 {
+    // This is a read-write association end
+
     this->actions->insert(action);
 
     // Adjust subsetted property(ies)
@@ -79,6 +81,8 @@ void QInteractionPrivate::addAction(QAction *action)
 
 void QInteractionPrivate::removeAction(QAction *action)
 {
+    // This is a read-write association end
+
     this->actions->remove(action);
 
     // Adjust subsetted property(ies)
@@ -87,6 +91,8 @@ void QInteractionPrivate::removeAction(QAction *action)
 
 void QInteractionPrivate::addMessage(QMessage *message)
 {
+    // This is a read-write association end
+
     this->messages->insert(message);
 
     // Adjust subsetted property(ies)
@@ -95,6 +101,8 @@ void QInteractionPrivate::addMessage(QMessage *message)
 
 void QInteractionPrivate::removeMessage(QMessage *message)
 {
+    // This is a read-write association end
+
     this->messages->remove(message);
 
     // Adjust subsetted property(ies)
@@ -103,6 +111,8 @@ void QInteractionPrivate::removeMessage(QMessage *message)
 
 void QInteractionPrivate::addFormalGate(QGate *formalGate)
 {
+    // This is a read-write association end
+
     this->formalGates->insert(formalGate);
 
     // Adjust subsetted property(ies)
@@ -111,6 +121,8 @@ void QInteractionPrivate::addFormalGate(QGate *formalGate)
 
 void QInteractionPrivate::removeFormalGate(QGate *formalGate)
 {
+    // This is a read-write association end
+
     this->formalGates->remove(formalGate);
 
     // Adjust subsetted property(ies)
@@ -119,6 +131,8 @@ void QInteractionPrivate::removeFormalGate(QGate *formalGate)
 
 void QInteractionPrivate::addFragment(QInteractionFragment *fragment)
 {
+    // This is a read-write association end
+
     this->fragments->append(fragment);
 
     // Adjust subsetted property(ies)
@@ -127,6 +141,8 @@ void QInteractionPrivate::addFragment(QInteractionFragment *fragment)
 
 void QInteractionPrivate::removeFragment(QInteractionFragment *fragment)
 {
+    // This is a read-write association end
+
     this->fragments->removeAll(fragment);
 
     // Adjust subsetted property(ies)
@@ -135,6 +151,8 @@ void QInteractionPrivate::removeFragment(QInteractionFragment *fragment)
 
 void QInteractionPrivate::addLifeline(QLifeline *lifeline)
 {
+    // This is a read-write association end
+
     this->lifelines->insert(lifeline);
 
     // Adjust subsetted property(ies)
@@ -143,6 +161,8 @@ void QInteractionPrivate::addLifeline(QLifeline *lifeline)
 
 void QInteractionPrivate::removeLifeline(QLifeline *lifeline)
 {
+    // This is a read-write association end
+
     this->lifelines->remove(lifeline);
 
     // Adjust subsetted property(ies)
@@ -179,12 +199,16 @@ QInteraction::~QInteraction()
  */
 const QSet<QAction *> *QInteraction::actions() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInteraction);
     return d->actions;
 }
 
 void QInteraction::addAction(QAction *action)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteraction);
     if (!d->actions->contains(action)) {
         d->addAction(action);
@@ -193,6 +217,8 @@ void QInteraction::addAction(QAction *action)
 
 void QInteraction::removeAction(QAction *action)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteraction);
     if (d->actions->contains(action)) {
         d->removeAction(action);
@@ -204,12 +230,16 @@ void QInteraction::removeAction(QAction *action)
  */
 const QSet<QMessage *> *QInteraction::messages() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInteraction);
     return d->messages;
 }
 
 void QInteraction::addMessage(QMessage *message)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteraction);
     if (!d->messages->contains(message)) {
         d->addMessage(message);
@@ -221,6 +251,8 @@ void QInteraction::addMessage(QMessage *message)
 
 void QInteraction::removeMessage(QMessage *message)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteraction);
     if (d->messages->contains(message)) {
         d->removeMessage(message);
@@ -235,12 +267,16 @@ void QInteraction::removeMessage(QMessage *message)
  */
 const QSet<QGate *> *QInteraction::formalGates() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInteraction);
     return d->formalGates;
 }
 
 void QInteraction::addFormalGate(QGate *formalGate)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteraction);
     if (!d->formalGates->contains(formalGate)) {
         d->addFormalGate(formalGate);
@@ -249,6 +285,8 @@ void QInteraction::addFormalGate(QGate *formalGate)
 
 void QInteraction::removeFormalGate(QGate *formalGate)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteraction);
     if (d->formalGates->contains(formalGate)) {
         d->removeFormalGate(formalGate);
@@ -260,12 +298,16 @@ void QInteraction::removeFormalGate(QGate *formalGate)
  */
 const QList<QInteractionFragment *> *QInteraction::fragments() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInteraction);
     return d->fragments;
 }
 
 void QInteraction::addFragment(QInteractionFragment *fragment)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteraction);
     if (!d->fragments->contains(fragment)) {
         d->addFragment(fragment);
@@ -277,6 +319,8 @@ void QInteraction::addFragment(QInteractionFragment *fragment)
 
 void QInteraction::removeFragment(QInteractionFragment *fragment)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteraction);
     if (d->fragments->contains(fragment)) {
         d->removeFragment(fragment);
@@ -291,12 +335,16 @@ void QInteraction::removeFragment(QInteractionFragment *fragment)
  */
 const QSet<QLifeline *> *QInteraction::lifelines() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInteraction);
     return d->lifelines;
 }
 
 void QInteraction::addLifeline(QLifeline *lifeline)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteraction);
     if (!d->lifelines->contains(lifeline)) {
         d->addLifeline(lifeline);
@@ -308,6 +356,8 @@ void QInteraction::addLifeline(QLifeline *lifeline)
 
 void QInteraction::removeLifeline(QLifeline *lifeline)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteraction);
     if (d->lifelines->contains(lifeline)) {
         d->removeLifeline(lifeline);

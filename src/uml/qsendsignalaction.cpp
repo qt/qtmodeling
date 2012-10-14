@@ -60,6 +60,8 @@ QSendSignalActionPrivate::~QSendSignalActionPrivate()
 
 void QSendSignalActionPrivate::setTarget(QInputPin *target)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeInput(this->target);
 
@@ -71,6 +73,8 @@ void QSendSignalActionPrivate::setTarget(QInputPin *target)
 
 void QSendSignalActionPrivate::setSignal(QSignal *signal)
 {
+    // This is a read-write association end
+
     this->signal = signal;
 }
 
@@ -104,12 +108,16 @@ QSendSignalAction::~QSendSignalAction()
  */
 QInputPin *QSendSignalAction::target() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QSendSignalAction);
     return d->target;
 }
 
 void QSendSignalAction::setTarget(QInputPin *target)
 {
+    // This is a read-write association end
+
     QTUML_D(QSendSignalAction);
     if (d->target != target) {
         d->setTarget(target);
@@ -121,12 +129,16 @@ void QSendSignalAction::setTarget(QInputPin *target)
  */
 QSignal *QSendSignalAction::signal() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QSendSignalAction);
     return d->signal;
 }
 
 void QSendSignalAction::setSignal(QSignal *signal)
 {
+    // This is a read-write association end
+
     QTUML_D(QSendSignalAction);
     if (d->signal != signal) {
         d->setSignal(signal);

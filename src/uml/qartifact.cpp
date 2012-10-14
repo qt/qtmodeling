@@ -70,11 +70,15 @@ QArtifactPrivate::~QArtifactPrivate()
 
 void QArtifactPrivate::setFileName(QString fileName)
 {
+    // This is a read-write attribute
+
     this->fileName = fileName;
 }
 
 void QArtifactPrivate::addOwnedOperation(QOperation *ownedOperation)
 {
+    // This is a read-write association end
+
     this->ownedOperations->append(ownedOperation);
 
     // Adjust subsetted property(ies)
@@ -84,6 +88,8 @@ void QArtifactPrivate::addOwnedOperation(QOperation *ownedOperation)
 
 void QArtifactPrivate::removeOwnedOperation(QOperation *ownedOperation)
 {
+    // This is a read-write association end
+
     this->ownedOperations->removeAll(ownedOperation);
 
     // Adjust subsetted property(ies)
@@ -93,6 +99,8 @@ void QArtifactPrivate::removeOwnedOperation(QOperation *ownedOperation)
 
 void QArtifactPrivate::addOwnedAttribute(QProperty *ownedAttribute)
 {
+    // This is a read-write association end
+
     this->ownedAttributes->append(ownedAttribute);
 
     // Adjust subsetted property(ies)
@@ -102,6 +110,8 @@ void QArtifactPrivate::addOwnedAttribute(QProperty *ownedAttribute)
 
 void QArtifactPrivate::removeOwnedAttribute(QProperty *ownedAttribute)
 {
+    // This is a read-write association end
+
     this->ownedAttributes->removeAll(ownedAttribute);
 
     // Adjust subsetted property(ies)
@@ -111,6 +121,8 @@ void QArtifactPrivate::removeOwnedAttribute(QProperty *ownedAttribute)
 
 void QArtifactPrivate::addManifestation(QManifestation *manifestation)
 {
+    // This is a read-write association end
+
     this->manifestations->insert(manifestation);
 
     // Adjust subsetted property(ies)
@@ -120,6 +132,8 @@ void QArtifactPrivate::addManifestation(QManifestation *manifestation)
 
 void QArtifactPrivate::removeManifestation(QManifestation *manifestation)
 {
+    // This is a read-write association end
+
     this->manifestations->remove(manifestation);
 
     // Adjust subsetted property(ies)
@@ -129,6 +143,8 @@ void QArtifactPrivate::removeManifestation(QManifestation *manifestation)
 
 void QArtifactPrivate::addNestedArtifact(QArtifact *nestedArtifact)
 {
+    // This is a read-write association end
+
     this->nestedArtifacts->insert(nestedArtifact);
 
     // Adjust subsetted property(ies)
@@ -137,6 +153,8 @@ void QArtifactPrivate::addNestedArtifact(QArtifact *nestedArtifact)
 
 void QArtifactPrivate::removeNestedArtifact(QArtifact *nestedArtifact)
 {
+    // This is a read-write association end
+
     this->nestedArtifacts->remove(nestedArtifact);
 
     // Adjust subsetted property(ies)
@@ -173,12 +191,16 @@ QArtifact::~QArtifact()
  */
 QString QArtifact::fileName() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QArtifact);
     return d->fileName;
 }
 
 void QArtifact::setFileName(QString fileName)
 {
+    // This is a read-write attribute
+
     QTUML_D(QArtifact);
     if (d->fileName != fileName) {
         d->setFileName(fileName);
@@ -190,12 +212,16 @@ void QArtifact::setFileName(QString fileName)
  */
 const QList<QOperation *> *QArtifact::ownedOperations() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QArtifact);
     return d->ownedOperations;
 }
 
 void QArtifact::addOwnedOperation(QOperation *ownedOperation)
 {
+    // This is a read-write association end
+
     QTUML_D(QArtifact);
     if (!d->ownedOperations->contains(ownedOperation)) {
         d->addOwnedOperation(ownedOperation);
@@ -204,6 +230,8 @@ void QArtifact::addOwnedOperation(QOperation *ownedOperation)
 
 void QArtifact::removeOwnedOperation(QOperation *ownedOperation)
 {
+    // This is a read-write association end
+
     QTUML_D(QArtifact);
     if (d->ownedOperations->contains(ownedOperation)) {
         d->removeOwnedOperation(ownedOperation);
@@ -215,12 +243,16 @@ void QArtifact::removeOwnedOperation(QOperation *ownedOperation)
  */
 const QList<QProperty *> *QArtifact::ownedAttributes() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QArtifact);
     return d->ownedAttributes;
 }
 
 void QArtifact::addOwnedAttribute(QProperty *ownedAttribute)
 {
+    // This is a read-write association end
+
     QTUML_D(QArtifact);
     if (!d->ownedAttributes->contains(ownedAttribute)) {
         d->addOwnedAttribute(ownedAttribute);
@@ -229,6 +261,8 @@ void QArtifact::addOwnedAttribute(QProperty *ownedAttribute)
 
 void QArtifact::removeOwnedAttribute(QProperty *ownedAttribute)
 {
+    // This is a read-write association end
+
     QTUML_D(QArtifact);
     if (d->ownedAttributes->contains(ownedAttribute)) {
         d->removeOwnedAttribute(ownedAttribute);
@@ -240,12 +274,16 @@ void QArtifact::removeOwnedAttribute(QProperty *ownedAttribute)
  */
 const QSet<QManifestation *> *QArtifact::manifestations() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QArtifact);
     return d->manifestations;
 }
 
 void QArtifact::addManifestation(QManifestation *manifestation)
 {
+    // This is a read-write association end
+
     QTUML_D(QArtifact);
     if (!d->manifestations->contains(manifestation)) {
         d->addManifestation(manifestation);
@@ -254,6 +292,8 @@ void QArtifact::addManifestation(QManifestation *manifestation)
 
 void QArtifact::removeManifestation(QManifestation *manifestation)
 {
+    // This is a read-write association end
+
     QTUML_D(QArtifact);
     if (d->manifestations->contains(manifestation)) {
         d->removeManifestation(manifestation);
@@ -265,12 +305,16 @@ void QArtifact::removeManifestation(QManifestation *manifestation)
  */
 const QSet<QArtifact *> *QArtifact::nestedArtifacts() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QArtifact);
     return d->nestedArtifacts;
 }
 
 void QArtifact::addNestedArtifact(QArtifact *nestedArtifact)
 {
+    // This is a read-write association end
+
     QTUML_D(QArtifact);
     if (!d->nestedArtifacts->contains(nestedArtifact)) {
         d->addNestedArtifact(nestedArtifact);
@@ -279,6 +323,8 @@ void QArtifact::addNestedArtifact(QArtifact *nestedArtifact)
 
 void QArtifact::removeNestedArtifact(QArtifact *nestedArtifact)
 {
+    // This is a read-write association end
+
     QTUML_D(QArtifact);
     if (d->nestedArtifacts->contains(nestedArtifact)) {
         d->removeNestedArtifact(nestedArtifact);

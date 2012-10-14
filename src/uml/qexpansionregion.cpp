@@ -61,26 +61,36 @@ QExpansionRegionPrivate::~QExpansionRegionPrivate()
 
 void QExpansionRegionPrivate::setMode(QtUml::ExpansionKind mode)
 {
+    // This is a read-write attribute
+
     this->mode = mode;
 }
 
 void QExpansionRegionPrivate::addInputElement(QExpansionNode *inputElement)
 {
+    // This is a read-write association end
+
     this->inputElements->insert(inputElement);
 }
 
 void QExpansionRegionPrivate::removeInputElement(QExpansionNode *inputElement)
 {
+    // This is a read-write association end
+
     this->inputElements->remove(inputElement);
 }
 
 void QExpansionRegionPrivate::addOutputElement(QExpansionNode *outputElement)
 {
+    // This is a read-write association end
+
     this->outputElements->insert(outputElement);
 }
 
 void QExpansionRegionPrivate::removeOutputElement(QExpansionNode *outputElement)
 {
+    // This is a read-write association end
+
     this->outputElements->remove(outputElement);
 }
 
@@ -114,12 +124,16 @@ QExpansionRegion::~QExpansionRegion()
  */
 QtUml::ExpansionKind QExpansionRegion::mode() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QExpansionRegion);
     return d->mode;
 }
 
 void QExpansionRegion::setMode(QtUml::ExpansionKind mode)
 {
+    // This is a read-write attribute
+
     QTUML_D(QExpansionRegion);
     if (d->mode != mode) {
         d->setMode(mode);
@@ -131,12 +145,16 @@ void QExpansionRegion::setMode(QtUml::ExpansionKind mode)
  */
 const QSet<QExpansionNode *> *QExpansionRegion::inputElements() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QExpansionRegion);
     return d->inputElements;
 }
 
 void QExpansionRegion::addInputElement(QExpansionNode *inputElement)
 {
+    // This is a read-write association end
+
     QTUML_D(QExpansionRegion);
     if (!d->inputElements->contains(inputElement)) {
         d->addInputElement(inputElement);
@@ -148,6 +166,8 @@ void QExpansionRegion::addInputElement(QExpansionNode *inputElement)
 
 void QExpansionRegion::removeInputElement(QExpansionNode *inputElement)
 {
+    // This is a read-write association end
+
     QTUML_D(QExpansionRegion);
     if (d->inputElements->contains(inputElement)) {
         d->removeInputElement(inputElement);
@@ -162,12 +182,16 @@ void QExpansionRegion::removeInputElement(QExpansionNode *inputElement)
  */
 const QSet<QExpansionNode *> *QExpansionRegion::outputElements() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QExpansionRegion);
     return d->outputElements;
 }
 
 void QExpansionRegion::addOutputElement(QExpansionNode *outputElement)
 {
+    // This is a read-write association end
+
     QTUML_D(QExpansionRegion);
     if (!d->outputElements->contains(outputElement)) {
         d->addOutputElement(outputElement);
@@ -179,6 +203,8 @@ void QExpansionRegion::addOutputElement(QExpansionNode *outputElement)
 
 void QExpansionRegion::removeOutputElement(QExpansionNode *outputElement)
 {
+    // This is a read-write association end
+
     QTUML_D(QExpansionRegion);
     if (d->outputElements->contains(outputElement)) {
         d->removeOutputElement(outputElement);

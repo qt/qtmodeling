@@ -64,16 +64,22 @@ QNamedElementPrivate::~QNamedElementPrivate()
 
 void QNamedElementPrivate::setName(QString name)
 {
+    // This is a read-write attribute
+
     this->name = name;
 }
 
 void QNamedElementPrivate::setVisibility(QtUml::VisibilityKind visibility)
 {
+    // This is a read-write attribute
+
     this->visibility = visibility;
 }
 
 void QNamedElementPrivate::setNameExpression(QStringExpression *nameExpression)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->nameExpression);
 
@@ -85,6 +91,8 @@ void QNamedElementPrivate::setNameExpression(QStringExpression *nameExpression)
 
 void QNamedElementPrivate::setNamespace_(QNamespace *namespace_)
 {
+    // This is a read-only derived-union association end
+
     this->namespace_ = namespace_;
 
     // Adjust subsetted property(ies)
@@ -93,11 +101,15 @@ void QNamedElementPrivate::setNamespace_(QNamespace *namespace_)
 
 void QNamedElementPrivate::addClientDependency(QDependency *clientDependency)
 {
+    // This is a read-write association end
+
     this->clientDependencies->insert(clientDependency);
 }
 
 void QNamedElementPrivate::removeClientDependency(QDependency *clientDependency)
 {
+    // This is a read-write association end
+
     this->clientDependencies->remove(clientDependency);
 }
 
@@ -122,12 +134,16 @@ QNamedElement::~QNamedElement()
  */
 QString QNamedElement::name() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QNamedElement);
     return d->name;
 }
 
 void QNamedElement::setName(QString name)
 {
+    // This is a read-write attribute
+
     QTUML_D(QNamedElement);
     if (d->name != name) {
         d->setName(name);
@@ -139,12 +155,16 @@ void QNamedElement::setName(QString name)
  */
 QtUml::VisibilityKind QNamedElement::visibility() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QNamedElement);
     return d->visibility;
 }
 
 void QNamedElement::setVisibility(QtUml::VisibilityKind visibility)
 {
+    // This is a read-write attribute
+
     QTUML_D(QNamedElement);
     if (d->visibility != visibility) {
         d->setVisibility(visibility);
@@ -156,6 +176,8 @@ void QNamedElement::setVisibility(QtUml::VisibilityKind visibility)
  */
 QString QNamedElement::qualifiedName() const
 {
+    // This is a read-only derived attribute
+
     QTUML_D(const QNamedElement);
     if (d->name.isEmpty()) return QString();
     QString qualifiedName_(d->name);
@@ -174,12 +196,16 @@ QString QNamedElement::qualifiedName() const
  */
 QStringExpression *QNamedElement::nameExpression() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QNamedElement);
     return d->nameExpression;
 }
 
 void QNamedElement::setNameExpression(QStringExpression *nameExpression)
 {
+    // This is a read-write association end
+
     QTUML_D(QNamedElement);
     if (d->nameExpression != nameExpression) {
         d->setNameExpression(nameExpression);
@@ -191,6 +217,8 @@ void QNamedElement::setNameExpression(QStringExpression *nameExpression)
  */
 QNamespace *QNamedElement::namespace_() const
 {
+    // This is a read-only derived-union association end
+
     QTUML_D(const QNamedElement);
     return d->namespace_;
 }
@@ -200,12 +228,16 @@ QNamespace *QNamedElement::namespace_() const
  */
 const QSet<QDependency *> *QNamedElement::clientDependencies() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QNamedElement);
     return d->clientDependencies;
 }
 
 void QNamedElement::addClientDependency(QDependency *clientDependency)
 {
+    // This is a read-write association end
+
     QTUML_D(QNamedElement);
     if (!d->clientDependencies->contains(clientDependency)) {
         d->addClientDependency(clientDependency);
@@ -217,6 +249,8 @@ void QNamedElement::addClientDependency(QDependency *clientDependency)
 
 void QNamedElement::removeClientDependency(QDependency *clientDependency)
 {
+    // This is a read-write association end
+
     QTUML_D(QNamedElement);
     if (d->clientDependencies->contains(clientDependency)) {
         d->removeClientDependency(clientDependency);

@@ -61,16 +61,22 @@ QMultiplicityElementPrivate::~QMultiplicityElementPrivate()
 
 void QMultiplicityElementPrivate::setUnique(bool isUnique)
 {
+    // This is a read-write attribute
+
     this->isUnique = isUnique;
 }
 
 void QMultiplicityElementPrivate::setOrdered(bool isOrdered)
 {
+    // This is a read-write attribute
+
     this->isOrdered = isOrdered;
 }
 
 void QMultiplicityElementPrivate::setUpperValue(QValueSpecification *upperValue)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->upperValue);
 
@@ -82,6 +88,8 @@ void QMultiplicityElementPrivate::setUpperValue(QValueSpecification *upperValue)
 
 void QMultiplicityElementPrivate::setLowerValue(QValueSpecification *lowerValue)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->lowerValue);
 
@@ -112,12 +120,24 @@ QMultiplicityElement::~QMultiplicityElement()
  */
 qint32 QMultiplicityElement::upper() const
 {
+    // This is a read-write derived attribute
+
     qWarning("QMultiplicityElement::upper: to be implemented (this is a derived attribute)");
+
+    QTUML_D(const QMultiplicityElement);
+    //return <derived-return>;
 }
 
 void QMultiplicityElement::setUpper(qint32 upper)
 {
+    // This is a read-write derived attribute
+
     qWarning("QMultiplicityElement::setUpper: to be implemented (this is a derived attribute)");
+
+    QTUML_D(QMultiplicityElement);
+    if (true /* <change-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
@@ -125,12 +145,16 @@ void QMultiplicityElement::setUpper(qint32 upper)
  */
 bool QMultiplicityElement::isUnique() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QMultiplicityElement);
     return d->isUnique;
 }
 
 void QMultiplicityElement::setUnique(bool isUnique)
 {
+    // This is a read-write attribute
+
     QTUML_D(QMultiplicityElement);
     if (d->isUnique != isUnique) {
         d->setUnique(isUnique);
@@ -142,12 +166,16 @@ void QMultiplicityElement::setUnique(bool isUnique)
  */
 bool QMultiplicityElement::isOrdered() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QMultiplicityElement);
     return d->isOrdered;
 }
 
 void QMultiplicityElement::setOrdered(bool isOrdered)
 {
+    // This is a read-write attribute
+
     QTUML_D(QMultiplicityElement);
     if (d->isOrdered != isOrdered) {
         d->setOrdered(isOrdered);
@@ -159,12 +187,24 @@ void QMultiplicityElement::setOrdered(bool isOrdered)
  */
 qint32 QMultiplicityElement::lower() const
 {
+    // This is a read-write derived attribute
+
     qWarning("QMultiplicityElement::lower: to be implemented (this is a derived attribute)");
+
+    QTUML_D(const QMultiplicityElement);
+    //return <derived-return>;
 }
 
 void QMultiplicityElement::setLower(qint32 lower)
 {
+    // This is a read-write derived attribute
+
     qWarning("QMultiplicityElement::setLower: to be implemented (this is a derived attribute)");
+
+    QTUML_D(QMultiplicityElement);
+    if (true /* <change-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
@@ -172,12 +212,16 @@ void QMultiplicityElement::setLower(qint32 lower)
  */
 QValueSpecification *QMultiplicityElement::upperValue() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QMultiplicityElement);
     return d->upperValue;
 }
 
 void QMultiplicityElement::setUpperValue(QValueSpecification *upperValue)
 {
+    // This is a read-write association end
+
     QTUML_D(QMultiplicityElement);
     if (d->upperValue != upperValue) {
         d->setUpperValue(upperValue);
@@ -189,12 +233,16 @@ void QMultiplicityElement::setUpperValue(QValueSpecification *upperValue)
  */
 QValueSpecification *QMultiplicityElement::lowerValue() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QMultiplicityElement);
     return d->lowerValue;
 }
 
 void QMultiplicityElement::setLowerValue(QValueSpecification *lowerValue)
 {
+    // This is a read-write association end
+
     QTUML_D(QMultiplicityElement);
     if (d->lowerValue != lowerValue) {
         d->setLowerValue(lowerValue);

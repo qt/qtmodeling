@@ -77,11 +77,15 @@ QActivityEdgePrivate::~QActivityEdgePrivate()
 
 void QActivityEdgePrivate::setSource(QActivityNode *source)
 {
+    // This is a read-write association end
+
     this->source = source;
 }
 
 void QActivityEdgePrivate::addRedefinedEdge(QActivityEdge *redefinedEdge)
 {
+    // This is a read-write association end
+
     this->redefinedEdges->insert(redefinedEdge);
 
     // Adjust subsetted property(ies)
@@ -90,6 +94,8 @@ void QActivityEdgePrivate::addRedefinedEdge(QActivityEdge *redefinedEdge)
 
 void QActivityEdgePrivate::removeRedefinedEdge(QActivityEdge *redefinedEdge)
 {
+    // This is a read-write association end
+
     this->redefinedEdges->remove(redefinedEdge);
 
     // Adjust subsetted property(ies)
@@ -98,16 +104,22 @@ void QActivityEdgePrivate::removeRedefinedEdge(QActivityEdge *redefinedEdge)
 
 void QActivityEdgePrivate::addInGroup(QActivityGroup *inGroup)
 {
+    // This is a read-only derived-union association end
+
     this->inGroup->insert(inGroup);
 }
 
 void QActivityEdgePrivate::removeInGroup(QActivityGroup *inGroup)
 {
+    // This is a read-only derived-union association end
+
     this->inGroup->remove(inGroup);
 }
 
 void QActivityEdgePrivate::setGuard(QValueSpecification *guard)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->guard);
 
@@ -119,6 +131,8 @@ void QActivityEdgePrivate::setGuard(QValueSpecification *guard)
 
 void QActivityEdgePrivate::addInPartition(QActivityPartition *inPartition)
 {
+    // This is a read-write association end
+
     this->inPartition->insert(inPartition);
 
     // Adjust subsetted property(ies)
@@ -127,6 +141,8 @@ void QActivityEdgePrivate::addInPartition(QActivityPartition *inPartition)
 
 void QActivityEdgePrivate::removeInPartition(QActivityPartition *inPartition)
 {
+    // This is a read-write association end
+
     this->inPartition->remove(inPartition);
 
     // Adjust subsetted property(ies)
@@ -135,6 +151,8 @@ void QActivityEdgePrivate::removeInPartition(QActivityPartition *inPartition)
 
 void QActivityEdgePrivate::setActivity(QActivity *activity)
 {
+    // This is a read-write association end
+
     this->activity = activity;
 
     // Adjust subsetted property(ies)
@@ -143,11 +161,15 @@ void QActivityEdgePrivate::setActivity(QActivity *activity)
 
 void QActivityEdgePrivate::setInterrupts(QInterruptibleActivityRegion *interrupts)
 {
+    // This is a read-write association end
+
     this->interrupts = interrupts;
 }
 
 void QActivityEdgePrivate::setWeight(QValueSpecification *weight)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->weight);
 
@@ -159,6 +181,8 @@ void QActivityEdgePrivate::setWeight(QValueSpecification *weight)
 
 void QActivityEdgePrivate::setInStructuredNode(QStructuredActivityNode *inStructuredNode)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeInGroup(this->inStructuredNode);
 
@@ -171,6 +195,8 @@ void QActivityEdgePrivate::setInStructuredNode(QStructuredActivityNode *inStruct
 
 void QActivityEdgePrivate::setTarget(QActivityNode *target)
 {
+    // This is a read-write association end
+
     this->target = target;
 }
 
@@ -195,12 +221,16 @@ QActivityEdge::~QActivityEdge()
  */
 QActivityNode *QActivityEdge::source() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QActivityEdge);
     return d->source;
 }
 
 void QActivityEdge::setSource(QActivityNode *source)
 {
+    // This is a read-write association end
+
     QTUML_D(QActivityEdge);
     if (d->source != source) {
         d->setSource(source);
@@ -215,12 +245,16 @@ void QActivityEdge::setSource(QActivityNode *source)
  */
 const QSet<QActivityEdge *> *QActivityEdge::redefinedEdges() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QActivityEdge);
     return d->redefinedEdges;
 }
 
 void QActivityEdge::addRedefinedEdge(QActivityEdge *redefinedEdge)
 {
+    // This is a read-write association end
+
     QTUML_D(QActivityEdge);
     if (!d->redefinedEdges->contains(redefinedEdge)) {
         d->addRedefinedEdge(redefinedEdge);
@@ -229,6 +263,8 @@ void QActivityEdge::addRedefinedEdge(QActivityEdge *redefinedEdge)
 
 void QActivityEdge::removeRedefinedEdge(QActivityEdge *redefinedEdge)
 {
+    // This is a read-write association end
+
     QTUML_D(QActivityEdge);
     if (d->redefinedEdges->contains(redefinedEdge)) {
         d->removeRedefinedEdge(redefinedEdge);
@@ -240,6 +276,8 @@ void QActivityEdge::removeRedefinedEdge(QActivityEdge *redefinedEdge)
  */
 const QSet<QActivityGroup *> *QActivityEdge::inGroup() const
 {
+    // This is a read-only derived-union association end
+
     QTUML_D(const QActivityEdge);
     return d->inGroup;
 }
@@ -249,12 +287,16 @@ const QSet<QActivityGroup *> *QActivityEdge::inGroup() const
  */
 QValueSpecification *QActivityEdge::guard() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QActivityEdge);
     return d->guard;
 }
 
 void QActivityEdge::setGuard(QValueSpecification *guard)
 {
+    // This is a read-write association end
+
     QTUML_D(QActivityEdge);
     if (d->guard != guard) {
         d->setGuard(guard);
@@ -266,12 +308,16 @@ void QActivityEdge::setGuard(QValueSpecification *guard)
  */
 const QSet<QActivityPartition *> *QActivityEdge::inPartition() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QActivityEdge);
     return d->inPartition;
 }
 
 void QActivityEdge::addInPartition(QActivityPartition *inPartition)
 {
+    // This is a read-write association end
+
     QTUML_D(QActivityEdge);
     if (!d->inPartition->contains(inPartition)) {
         d->addInPartition(inPartition);
@@ -283,6 +329,8 @@ void QActivityEdge::addInPartition(QActivityPartition *inPartition)
 
 void QActivityEdge::removeInPartition(QActivityPartition *inPartition)
 {
+    // This is a read-write association end
+
     QTUML_D(QActivityEdge);
     if (d->inPartition->contains(inPartition)) {
         d->removeInPartition(inPartition);
@@ -297,12 +345,16 @@ void QActivityEdge::removeInPartition(QActivityPartition *inPartition)
  */
 QActivity *QActivityEdge::activity() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QActivityEdge);
     return d->activity;
 }
 
 void QActivityEdge::setActivity(QActivity *activity)
 {
+    // This is a read-write association end
+
     QTUML_D(QActivityEdge);
     if (d->activity != activity) {
         d->setActivity(activity);
@@ -317,12 +369,16 @@ void QActivityEdge::setActivity(QActivity *activity)
  */
 QInterruptibleActivityRegion *QActivityEdge::interrupts() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QActivityEdge);
     return d->interrupts;
 }
 
 void QActivityEdge::setInterrupts(QInterruptibleActivityRegion *interrupts)
 {
+    // This is a read-write association end
+
     QTUML_D(QActivityEdge);
     if (d->interrupts != interrupts) {
         d->setInterrupts(interrupts);
@@ -337,12 +393,16 @@ void QActivityEdge::setInterrupts(QInterruptibleActivityRegion *interrupts)
  */
 QValueSpecification *QActivityEdge::weight() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QActivityEdge);
     return d->weight;
 }
 
 void QActivityEdge::setWeight(QValueSpecification *weight)
 {
+    // This is a read-write association end
+
     QTUML_D(QActivityEdge);
     if (d->weight != weight) {
         d->setWeight(weight);
@@ -354,12 +414,16 @@ void QActivityEdge::setWeight(QValueSpecification *weight)
  */
 QStructuredActivityNode *QActivityEdge::inStructuredNode() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QActivityEdge);
     return d->inStructuredNode;
 }
 
 void QActivityEdge::setInStructuredNode(QStructuredActivityNode *inStructuredNode)
 {
+    // This is a read-write association end
+
     QTUML_D(QActivityEdge);
     if (d->inStructuredNode != inStructuredNode) {
         d->setInStructuredNode(inStructuredNode);
@@ -374,12 +438,16 @@ void QActivityEdge::setInStructuredNode(QStructuredActivityNode *inStructuredNod
  */
 QActivityNode *QActivityEdge::target() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QActivityEdge);
     return d->target;
 }
 
 void QActivityEdge::setTarget(QActivityNode *target)
 {
+    // This is a read-write association end
+
     QTUML_D(QActivityEdge);
     if (d->target != target) {
         d->setTarget(target);

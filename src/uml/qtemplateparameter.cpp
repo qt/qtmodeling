@@ -63,16 +63,22 @@ QTemplateParameterPrivate::~QTemplateParameterPrivate()
 
 void QTemplateParameterPrivate::setDefault_(QParameterableElement *default_)
 {
+    // This is a read-write association end
+
     this->default_ = default_;
 }
 
 void QTemplateParameterPrivate::setParameteredElement(QParameterableElement *parameteredElement)
 {
+    // This is a read-write association end
+
     this->parameteredElement = parameteredElement;
 }
 
 void QTemplateParameterPrivate::setOwnedParameteredElement(QParameterableElement *ownedParameteredElement)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->ownedParameteredElement);
 
@@ -85,6 +91,8 @@ void QTemplateParameterPrivate::setOwnedParameteredElement(QParameterableElement
 
 void QTemplateParameterPrivate::setOwnedDefault(QParameterableElement *ownedDefault)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->ownedDefault);
 
@@ -97,6 +105,8 @@ void QTemplateParameterPrivate::setOwnedDefault(QParameterableElement *ownedDefa
 
 void QTemplateParameterPrivate::setSignature(QTemplateSignature *signature)
 {
+    // This is a read-write association end
+
     this->signature = signature;
 
     // Adjust subsetted property(ies)
@@ -133,12 +143,16 @@ QTemplateParameter::~QTemplateParameter()
  */
 QParameterableElement *QTemplateParameter::default_() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTemplateParameter);
     return d->default_;
 }
 
 void QTemplateParameter::setDefault_(QParameterableElement *default_)
 {
+    // This is a read-write association end
+
     QTUML_D(QTemplateParameter);
     if (d->default_ != default_) {
         d->setDefault_(default_);
@@ -150,12 +164,16 @@ void QTemplateParameter::setDefault_(QParameterableElement *default_)
  */
 QParameterableElement *QTemplateParameter::parameteredElement() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTemplateParameter);
     return d->parameteredElement;
 }
 
 void QTemplateParameter::setParameteredElement(QParameterableElement *parameteredElement)
 {
+    // This is a read-write association end
+
     QTUML_D(QTemplateParameter);
     if (d->parameteredElement != parameteredElement) {
         d->setParameteredElement(parameteredElement);
@@ -170,12 +188,16 @@ void QTemplateParameter::setParameteredElement(QParameterableElement *parametere
  */
 QParameterableElement *QTemplateParameter::ownedParameteredElement() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTemplateParameter);
     return d->ownedParameteredElement;
 }
 
 void QTemplateParameter::setOwnedParameteredElement(QParameterableElement *ownedParameteredElement)
 {
+    // This is a read-write association end
+
     QTUML_D(QTemplateParameter);
     if (d->ownedParameteredElement != ownedParameteredElement) {
         d->setOwnedParameteredElement(ownedParameteredElement);
@@ -190,12 +212,16 @@ void QTemplateParameter::setOwnedParameteredElement(QParameterableElement *owned
  */
 QParameterableElement *QTemplateParameter::ownedDefault() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTemplateParameter);
     return d->ownedDefault;
 }
 
 void QTemplateParameter::setOwnedDefault(QParameterableElement *ownedDefault)
 {
+    // This is a read-write association end
+
     QTUML_D(QTemplateParameter);
     if (d->ownedDefault != ownedDefault) {
         d->setOwnedDefault(ownedDefault);
@@ -207,12 +233,16 @@ void QTemplateParameter::setOwnedDefault(QParameterableElement *ownedDefault)
  */
 QTemplateSignature *QTemplateParameter::signature() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTemplateParameter);
     return d->signature;
 }
 
 void QTemplateParameter::setSignature(QTemplateSignature *signature)
 {
+    // This is a read-write association end
+
     QTUML_D(QTemplateParameter);
     if (d->signature != signature) {
         d->setSignature(signature);

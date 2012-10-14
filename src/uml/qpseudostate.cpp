@@ -61,11 +61,15 @@ QPseudostatePrivate::~QPseudostatePrivate()
 
 void QPseudostatePrivate::setKind(QtUml::PseudostateKind kind)
 {
+    // This is a read-write attribute
+
     this->kind = kind;
 }
 
 void QPseudostatePrivate::setState(QState *state)
 {
+    // This is a read-write association end
+
     this->state = state;
 
     // Adjust subsetted property(ies)
@@ -74,6 +78,8 @@ void QPseudostatePrivate::setState(QState *state)
 
 void QPseudostatePrivate::setStateMachine(QStateMachine *stateMachine)
 {
+    // This is a read-write association end
+
     this->stateMachine = stateMachine;
 
     // Adjust subsetted property(ies)
@@ -110,12 +116,16 @@ QPseudostate::~QPseudostate()
  */
 QtUml::PseudostateKind QPseudostate::kind() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QPseudostate);
     return d->kind;
 }
 
 void QPseudostate::setKind(QtUml::PseudostateKind kind)
 {
+    // This is a read-write attribute
+
     QTUML_D(QPseudostate);
     if (d->kind != kind) {
         d->setKind(kind);
@@ -127,12 +137,16 @@ void QPseudostate::setKind(QtUml::PseudostateKind kind)
  */
 QState *QPseudostate::state() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QPseudostate);
     return d->state;
 }
 
 void QPseudostate::setState(QState *state)
 {
+    // This is a read-write association end
+
     QTUML_D(QPseudostate);
     if (d->state != state) {
         d->setState(state);
@@ -147,12 +161,16 @@ void QPseudostate::setState(QState *state)
  */
 QStateMachine *QPseudostate::stateMachine() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QPseudostate);
     return d->stateMachine;
 }
 
 void QPseudostate::setStateMachine(QStateMachine *stateMachine)
 {
+    // This is a read-write association end
+
     QTUML_D(QPseudostate);
     if (d->stateMachine != stateMachine) {
         d->setStateMachine(stateMachine);

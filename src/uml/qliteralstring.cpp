@@ -55,6 +55,8 @@ QLiteralStringPrivate::~QLiteralStringPrivate()
 
 void QLiteralStringPrivate::setValue(QString value)
 {
+    // This is a read-write attribute
+
     this->value = value;
 }
 
@@ -88,12 +90,16 @@ QLiteralString::~QLiteralString()
  */
 QString QLiteralString::value() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QLiteralString);
     return d->value;
 }
 
 void QLiteralString::setValue(QString value)
 {
+    // This is a read-write attribute
+
     QTUML_D(QLiteralString);
     if (d->value != value) {
         d->setValue(value);

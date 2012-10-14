@@ -57,6 +57,8 @@ QActivityParameterNodePrivate::~QActivityParameterNodePrivate()
 
 void QActivityParameterNodePrivate::setParameter(QParameter *parameter)
 {
+    // This is a read-write association end
+
     this->parameter = parameter;
 }
 
@@ -90,12 +92,16 @@ QActivityParameterNode::~QActivityParameterNode()
  */
 QParameter *QActivityParameterNode::parameter() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QActivityParameterNode);
     return d->parameter;
 }
 
 void QActivityParameterNode::setParameter(QParameter *parameter)
 {
+    // This is a read-write association end
+
     QTUML_D(QActivityParameterNode);
     if (d->parameter != parameter) {
         d->setParameter(parameter);

@@ -58,6 +58,8 @@ QReadSelfActionPrivate::~QReadSelfActionPrivate()
 
 void QReadSelfActionPrivate::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
@@ -97,12 +99,16 @@ QReadSelfAction::~QReadSelfAction()
  */
 QOutputPin *QReadSelfAction::result() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReadSelfAction);
     return d->result;
 }
 
 void QReadSelfAction::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     QTUML_D(QReadSelfAction);
     if (d->result != result) {
         d->setResult(result);

@@ -55,6 +55,8 @@ QLiteralIntegerPrivate::~QLiteralIntegerPrivate()
 
 void QLiteralIntegerPrivate::setValue(qint32 value)
 {
+    // This is a read-write attribute
+
     this->value = value;
 }
 
@@ -88,12 +90,16 @@ QLiteralInteger::~QLiteralInteger()
  */
 qint32 QLiteralInteger::value() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QLiteralInteger);
     return d->value;
 }
 
 void QLiteralInteger::setValue(qint32 value)
 {
+    // This is a read-write attribute
+
     QTUML_D(QLiteralInteger);
     if (d->value != value) {
         d->setValue(value);

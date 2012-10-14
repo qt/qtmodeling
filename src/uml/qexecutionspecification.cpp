@@ -58,11 +58,15 @@ QExecutionSpecificationPrivate::~QExecutionSpecificationPrivate()
 
 void QExecutionSpecificationPrivate::setStart(QOccurrenceSpecification *start)
 {
+    // This is a read-write association end
+
     this->start = start;
 }
 
 void QExecutionSpecificationPrivate::setFinish(QOccurrenceSpecification *finish)
 {
+    // This is a read-write association end
+
     this->finish = finish;
 }
 
@@ -87,12 +91,16 @@ QExecutionSpecification::~QExecutionSpecification()
  */
 QOccurrenceSpecification *QExecutionSpecification::start() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QExecutionSpecification);
     return d->start;
 }
 
 void QExecutionSpecification::setStart(QOccurrenceSpecification *start)
 {
+    // This is a read-write association end
+
     QTUML_D(QExecutionSpecification);
     if (d->start != start) {
         d->setStart(start);
@@ -104,12 +112,16 @@ void QExecutionSpecification::setStart(QOccurrenceSpecification *start)
  */
 QOccurrenceSpecification *QExecutionSpecification::finish() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QExecutionSpecification);
     return d->finish;
 }
 
 void QExecutionSpecification::setFinish(QOccurrenceSpecification *finish)
 {
+    // This is a read-write association end
+
     QTUML_D(QExecutionSpecification);
     if (d->finish != finish) {
         d->setFinish(finish);

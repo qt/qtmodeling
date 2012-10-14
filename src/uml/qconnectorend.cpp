@@ -59,11 +59,15 @@ QConnectorEndPrivate::~QConnectorEndPrivate()
 
 void QConnectorEndPrivate::setRole(QConnectableElement *role)
 {
+    // This is a read-write association end
+
     this->role = role;
 }
 
 void QConnectorEndPrivate::setPartWithPort(QProperty *partWithPort)
 {
+    // This is a read-write association end
+
     this->partWithPort = partWithPort;
 }
 
@@ -97,12 +101,16 @@ QConnectorEnd::~QConnectorEnd()
  */
 QConnectableElement *QConnectorEnd::role() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QConnectorEnd);
     return d->role;
 }
 
 void QConnectorEnd::setRole(QConnectableElement *role)
 {
+    // This is a read-write association end
+
     QTUML_D(QConnectorEnd);
     if (d->role != role) {
         d->setRole(role);
@@ -114,12 +122,16 @@ void QConnectorEnd::setRole(QConnectableElement *role)
  */
 QProperty *QConnectorEnd::partWithPort() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QConnectorEnd);
     return d->partWithPort;
 }
 
 void QConnectorEnd::setPartWithPort(QProperty *partWithPort)
 {
+    // This is a read-write association end
+
     QTUML_D(QConnectorEnd);
     if (d->partWithPort != partWithPort) {
         d->setPartWithPort(partWithPort);
@@ -131,7 +143,12 @@ void QConnectorEnd::setPartWithPort(QProperty *partWithPort)
  */
 QProperty *QConnectorEnd::definingEnd() const
 {
+    // This is a read-only derived association end
+
     qWarning("QConnectorEnd::definingEnd: to be implemented (this is a derived associationend)");
+
+    QTUML_D(const QConnectorEnd);
+    //return <derived-return>;
 }
 
 #include "moc_qconnectorend.cpp"

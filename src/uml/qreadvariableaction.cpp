@@ -58,6 +58,8 @@ QReadVariableActionPrivate::~QReadVariableActionPrivate()
 
 void QReadVariableActionPrivate::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
@@ -97,12 +99,16 @@ QReadVariableAction::~QReadVariableAction()
  */
 QOutputPin *QReadVariableAction::result() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReadVariableAction);
     return d->result;
 }
 
 void QReadVariableAction::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     QTUML_D(QReadVariableAction);
     if (d->result != result) {
         d->setResult(result);

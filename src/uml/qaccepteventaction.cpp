@@ -64,11 +64,15 @@ QAcceptEventActionPrivate::~QAcceptEventActionPrivate()
 
 void QAcceptEventActionPrivate::setUnmarshall(bool isUnmarshall)
 {
+    // This is a read-write attribute
+
     this->isUnmarshall = isUnmarshall;
 }
 
 void QAcceptEventActionPrivate::addTrigger(QTrigger *trigger)
 {
+    // This is a read-write association end
+
     this->triggers->insert(trigger);
 
     // Adjust subsetted property(ies)
@@ -77,6 +81,8 @@ void QAcceptEventActionPrivate::addTrigger(QTrigger *trigger)
 
 void QAcceptEventActionPrivate::removeTrigger(QTrigger *trigger)
 {
+    // This is a read-write association end
+
     this->triggers->remove(trigger);
 
     // Adjust subsetted property(ies)
@@ -85,6 +91,8 @@ void QAcceptEventActionPrivate::removeTrigger(QTrigger *trigger)
 
 void QAcceptEventActionPrivate::addResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     this->results->insert(result);
 
     // Adjust subsetted property(ies)
@@ -93,6 +101,8 @@ void QAcceptEventActionPrivate::addResult(QOutputPin *result)
 
 void QAcceptEventActionPrivate::removeResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     this->results->remove(result);
 
     // Adjust subsetted property(ies)
@@ -129,12 +139,16 @@ QAcceptEventAction::~QAcceptEventAction()
  */
 bool QAcceptEventAction::isUnmarshall() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QAcceptEventAction);
     return d->isUnmarshall;
 }
 
 void QAcceptEventAction::setUnmarshall(bool isUnmarshall)
 {
+    // This is a read-write attribute
+
     QTUML_D(QAcceptEventAction);
     if (d->isUnmarshall != isUnmarshall) {
         d->setUnmarshall(isUnmarshall);
@@ -146,12 +160,16 @@ void QAcceptEventAction::setUnmarshall(bool isUnmarshall)
  */
 const QSet<QTrigger *> *QAcceptEventAction::triggers() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QAcceptEventAction);
     return d->triggers;
 }
 
 void QAcceptEventAction::addTrigger(QTrigger *trigger)
 {
+    // This is a read-write association end
+
     QTUML_D(QAcceptEventAction);
     if (!d->triggers->contains(trigger)) {
         d->addTrigger(trigger);
@@ -160,6 +178,8 @@ void QAcceptEventAction::addTrigger(QTrigger *trigger)
 
 void QAcceptEventAction::removeTrigger(QTrigger *trigger)
 {
+    // This is a read-write association end
+
     QTUML_D(QAcceptEventAction);
     if (d->triggers->contains(trigger)) {
         d->removeTrigger(trigger);
@@ -171,12 +191,16 @@ void QAcceptEventAction::removeTrigger(QTrigger *trigger)
  */
 const QSet<QOutputPin *> *QAcceptEventAction::results() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QAcceptEventAction);
     return d->results;
 }
 
 void QAcceptEventAction::addResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     QTUML_D(QAcceptEventAction);
     if (!d->results->contains(result)) {
         d->addResult(result);
@@ -185,6 +209,8 @@ void QAcceptEventAction::addResult(QOutputPin *result)
 
 void QAcceptEventAction::removeResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     QTUML_D(QAcceptEventAction);
     if (d->results->contains(result)) {
         d->removeResult(result);

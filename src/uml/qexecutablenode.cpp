@@ -59,6 +59,8 @@ QExecutableNodePrivate::~QExecutableNodePrivate()
 
 void QExecutableNodePrivate::addHandler(QExceptionHandler *handler)
 {
+    // This is a read-write association end
+
     this->handlers->insert(handler);
 
     // Adjust subsetted property(ies)
@@ -67,6 +69,8 @@ void QExecutableNodePrivate::addHandler(QExceptionHandler *handler)
 
 void QExecutableNodePrivate::removeHandler(QExceptionHandler *handler)
 {
+    // This is a read-write association end
+
     this->handlers->remove(handler);
 
     // Adjust subsetted property(ies)
@@ -94,12 +98,16 @@ QExecutableNode::~QExecutableNode()
  */
 const QSet<QExceptionHandler *> *QExecutableNode::handlers() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QExecutableNode);
     return d->handlers;
 }
 
 void QExecutableNode::addHandler(QExceptionHandler *handler)
 {
+    // This is a read-write association end
+
     QTUML_D(QExecutableNode);
     if (!d->handlers->contains(handler)) {
         d->addHandler(handler);
@@ -111,6 +119,8 @@ void QExecutableNode::addHandler(QExceptionHandler *handler)
 
 void QExecutableNode::removeHandler(QExceptionHandler *handler)
 {
+    // This is a read-write association end
+
     QTUML_D(QExecutableNode);
     if (d->handlers->contains(handler)) {
         d->removeHandler(handler);

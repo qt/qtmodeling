@@ -62,11 +62,15 @@ QReadLinkObjectEndActionPrivate::~QReadLinkObjectEndActionPrivate()
 
 void QReadLinkObjectEndActionPrivate::setEnd(QProperty *end)
 {
+    // This is a read-write association end
+
     this->end = end;
 }
 
 void QReadLinkObjectEndActionPrivate::setObject(QInputPin *object)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeInput(this->object);
 
@@ -78,6 +82,8 @@ void QReadLinkObjectEndActionPrivate::setObject(QInputPin *object)
 
 void QReadLinkObjectEndActionPrivate::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
@@ -117,12 +123,16 @@ QReadLinkObjectEndAction::~QReadLinkObjectEndAction()
  */
 QProperty *QReadLinkObjectEndAction::end() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReadLinkObjectEndAction);
     return d->end;
 }
 
 void QReadLinkObjectEndAction::setEnd(QProperty *end)
 {
+    // This is a read-write association end
+
     QTUML_D(QReadLinkObjectEndAction);
     if (d->end != end) {
         d->setEnd(end);
@@ -134,12 +144,16 @@ void QReadLinkObjectEndAction::setEnd(QProperty *end)
  */
 QInputPin *QReadLinkObjectEndAction::object() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReadLinkObjectEndAction);
     return d->object;
 }
 
 void QReadLinkObjectEndAction::setObject(QInputPin *object)
 {
+    // This is a read-write association end
+
     QTUML_D(QReadLinkObjectEndAction);
     if (d->object != object) {
         d->setObject(object);
@@ -151,12 +165,16 @@ void QReadLinkObjectEndAction::setObject(QInputPin *object)
  */
 QOutputPin *QReadLinkObjectEndAction::result() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReadLinkObjectEndAction);
     return d->result;
 }
 
 void QReadLinkObjectEndAction::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     QTUML_D(QReadLinkObjectEndAction);
     if (d->result != result) {
         d->setResult(result);

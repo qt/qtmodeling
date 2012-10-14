@@ -58,6 +58,8 @@ QCreateLinkObjectActionPrivate::~QCreateLinkObjectActionPrivate()
 
 void QCreateLinkObjectActionPrivate::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
@@ -97,12 +99,16 @@ QCreateLinkObjectAction::~QCreateLinkObjectAction()
  */
 QOutputPin *QCreateLinkObjectAction::result() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QCreateLinkObjectAction);
     return d->result;
 }
 
 void QCreateLinkObjectAction::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     QTUML_D(QCreateLinkObjectAction);
     if (d->result != result) {
         d->setResult(result);

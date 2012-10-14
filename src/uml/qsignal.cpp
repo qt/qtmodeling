@@ -60,6 +60,8 @@ QSignalPrivate::~QSignalPrivate()
 
 void QSignalPrivate::addOwnedAttribute(QProperty *ownedAttribute)
 {
+    // This is a read-write association end
+
     this->ownedAttributes->append(ownedAttribute);
 
     // Adjust subsetted property(ies)
@@ -69,6 +71,8 @@ void QSignalPrivate::addOwnedAttribute(QProperty *ownedAttribute)
 
 void QSignalPrivate::removeOwnedAttribute(QProperty *ownedAttribute)
 {
+    // This is a read-write association end
+
     this->ownedAttributes->removeAll(ownedAttribute);
 
     // Adjust subsetted property(ies)
@@ -106,12 +110,16 @@ QSignal::~QSignal()
  */
 const QList<QProperty *> *QSignal::ownedAttributes() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QSignal);
     return d->ownedAttributes;
 }
 
 void QSignal::addOwnedAttribute(QProperty *ownedAttribute)
 {
+    // This is a read-write association end
+
     QTUML_D(QSignal);
     if (!d->ownedAttributes->contains(ownedAttribute)) {
         d->addOwnedAttribute(ownedAttribute);
@@ -120,6 +128,8 @@ void QSignal::addOwnedAttribute(QProperty *ownedAttribute)
 
 void QSignal::removeOwnedAttribute(QProperty *ownedAttribute)
 {
+    // This is a read-write association end
+
     QTUML_D(QSignal);
     if (d->ownedAttributes->contains(ownedAttribute)) {
         d->removeOwnedAttribute(ownedAttribute);

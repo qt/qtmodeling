@@ -58,6 +58,8 @@ QManifestationPrivate::~QManifestationPrivate()
 
 void QManifestationPrivate::setUtilizedElement(QPackageableElement *utilizedElement)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeSupplier(this->utilizedElement);
 
@@ -97,12 +99,16 @@ QManifestation::~QManifestation()
  */
 QPackageableElement *QManifestation::utilizedElement() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QManifestation);
     return d->utilizedElement;
 }
 
 void QManifestation::setUtilizedElement(QPackageableElement *utilizedElement)
 {
+    // This is a read-write association end
+
     QTUML_D(QManifestation);
     if (d->utilizedElement != utilizedElement) {
         d->setUtilizedElement(utilizedElement);

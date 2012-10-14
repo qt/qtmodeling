@@ -58,11 +58,15 @@ QLinkEndCreationDataPrivate::~QLinkEndCreationDataPrivate()
 
 void QLinkEndCreationDataPrivate::setReplaceAll(bool isReplaceAll)
 {
+    // This is a read-write attribute
+
     this->isReplaceAll = isReplaceAll;
 }
 
 void QLinkEndCreationDataPrivate::setInsertAt(QInputPin *insertAt)
 {
+    // This is a read-write association end
+
     this->insertAt = insertAt;
 }
 
@@ -96,12 +100,16 @@ QLinkEndCreationData::~QLinkEndCreationData()
  */
 bool QLinkEndCreationData::isReplaceAll() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QLinkEndCreationData);
     return d->isReplaceAll;
 }
 
 void QLinkEndCreationData::setReplaceAll(bool isReplaceAll)
 {
+    // This is a read-write attribute
+
     QTUML_D(QLinkEndCreationData);
     if (d->isReplaceAll != isReplaceAll) {
         d->setReplaceAll(isReplaceAll);
@@ -113,12 +121,16 @@ void QLinkEndCreationData::setReplaceAll(bool isReplaceAll)
  */
 QInputPin *QLinkEndCreationData::insertAt() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QLinkEndCreationData);
     return d->insertAt;
 }
 
 void QLinkEndCreationData::setInsertAt(QInputPin *insertAt)
 {
+    // This is a read-write association end
+
     QTUML_D(QLinkEndCreationData);
     if (d->insertAt != insertAt) {
         d->setInsertAt(insertAt);

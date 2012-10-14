@@ -60,6 +60,8 @@ QIncludePrivate::~QIncludePrivate()
 
 void QIncludePrivate::setIncludingCase(QUseCase *includingCase)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeSource(this->includingCase);
 
@@ -72,6 +74,8 @@ void QIncludePrivate::setIncludingCase(QUseCase *includingCase)
 
 void QIncludePrivate::setAddition(QUseCase *addition)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeTarget(this->addition);
 
@@ -111,12 +115,16 @@ QInclude::~QInclude()
  */
 QUseCase *QInclude::includingCase() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInclude);
     return d->includingCase;
 }
 
 void QInclude::setIncludingCase(QUseCase *includingCase)
 {
+    // This is a read-write association end
+
     QTUML_D(QInclude);
     if (d->includingCase != includingCase) {
         d->setIncludingCase(includingCase);
@@ -131,12 +139,16 @@ void QInclude::setIncludingCase(QUseCase *includingCase)
  */
 QUseCase *QInclude::addition() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInclude);
     return d->addition;
 }
 
 void QInclude::setAddition(QUseCase *addition)
 {
+    // This is a read-write association end
+
     QTUML_D(QInclude);
     if (d->addition != addition) {
         d->setAddition(addition);

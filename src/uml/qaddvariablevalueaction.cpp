@@ -59,11 +59,15 @@ QAddVariableValueActionPrivate::~QAddVariableValueActionPrivate()
 
 void QAddVariableValueActionPrivate::setReplaceAll(bool isReplaceAll)
 {
+    // This is a read-write attribute
+
     this->isReplaceAll = isReplaceAll;
 }
 
 void QAddVariableValueActionPrivate::setInsertAt(QInputPin *insertAt)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeInput(this->insertAt);
 
@@ -103,12 +107,16 @@ QAddVariableValueAction::~QAddVariableValueAction()
  */
 bool QAddVariableValueAction::isReplaceAll() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QAddVariableValueAction);
     return d->isReplaceAll;
 }
 
 void QAddVariableValueAction::setReplaceAll(bool isReplaceAll)
 {
+    // This is a read-write attribute
+
     QTUML_D(QAddVariableValueAction);
     if (d->isReplaceAll != isReplaceAll) {
         d->setReplaceAll(isReplaceAll);
@@ -120,12 +128,16 @@ void QAddVariableValueAction::setReplaceAll(bool isReplaceAll)
  */
 QInputPin *QAddVariableValueAction::insertAt() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QAddVariableValueAction);
     return d->insertAt;
 }
 
 void QAddVariableValueAction::setInsertAt(QInputPin *insertAt)
 {
+    // This is a read-write association end
+
     QTUML_D(QAddVariableValueAction);
     if (d->insertAt != insertAt) {
         d->setInsertAt(insertAt);

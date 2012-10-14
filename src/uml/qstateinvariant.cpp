@@ -60,6 +60,8 @@ QStateInvariantPrivate::~QStateInvariantPrivate()
 
 void QStateInvariantPrivate::setInvariant(QConstraint *invariant)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->invariant);
 
@@ -71,6 +73,8 @@ void QStateInvariantPrivate::setInvariant(QConstraint *invariant)
 
 void QStateInvariantPrivate::setCovered(QLifeline *covered)
 {
+    // This is a read-write association end
+
     this->covered = covered;
 }
 
@@ -104,12 +108,16 @@ QStateInvariant::~QStateInvariant()
  */
 QConstraint *QStateInvariant::invariant() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QStateInvariant);
     return d->invariant;
 }
 
 void QStateInvariant::setInvariant(QConstraint *invariant)
 {
+    // This is a read-write association end
+
     QTUML_D(QStateInvariant);
     if (d->invariant != invariant) {
         d->setInvariant(invariant);
@@ -121,12 +129,16 @@ void QStateInvariant::setInvariant(QConstraint *invariant)
  */
 QLifeline *QStateInvariant::covered() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QStateInvariant);
     return d->covered;
 }
 
 void QStateInvariant::setCovered(QLifeline *covered)
 {
+    // This is a read-write association end
+
     QTUML_D(QStateInvariant);
     if (d->covered != covered) {
         d->setCovered(covered);

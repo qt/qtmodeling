@@ -58,11 +58,15 @@ QGeneralOrderingPrivate::~QGeneralOrderingPrivate()
 
 void QGeneralOrderingPrivate::setBefore(QOccurrenceSpecification *before)
 {
+    // This is a read-write association end
+
     this->before = before;
 }
 
 void QGeneralOrderingPrivate::setAfter(QOccurrenceSpecification *after)
 {
+    // This is a read-write association end
+
     this->after = after;
 }
 
@@ -96,12 +100,16 @@ QGeneralOrdering::~QGeneralOrdering()
  */
 QOccurrenceSpecification *QGeneralOrdering::before() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QGeneralOrdering);
     return d->before;
 }
 
 void QGeneralOrdering::setBefore(QOccurrenceSpecification *before)
 {
+    // This is a read-write association end
+
     QTUML_D(QGeneralOrdering);
     if (d->before != before) {
         d->setBefore(before);
@@ -116,12 +124,16 @@ void QGeneralOrdering::setBefore(QOccurrenceSpecification *before)
  */
 QOccurrenceSpecification *QGeneralOrdering::after() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QGeneralOrdering);
     return d->after;
 }
 
 void QGeneralOrdering::setAfter(QOccurrenceSpecification *after)
 {
+    // This is a read-write association end
+
     QTUML_D(QGeneralOrdering);
     if (d->after != after) {
         d->setAfter(after);

@@ -63,6 +63,8 @@ QUnmarshallActionPrivate::~QUnmarshallActionPrivate()
 
 void QUnmarshallActionPrivate::setObject(QInputPin *object)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeInput(this->object);
 
@@ -74,6 +76,8 @@ void QUnmarshallActionPrivate::setObject(QInputPin *object)
 
 void QUnmarshallActionPrivate::addResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     this->results->insert(result);
 
     // Adjust subsetted property(ies)
@@ -82,6 +86,8 @@ void QUnmarshallActionPrivate::addResult(QOutputPin *result)
 
 void QUnmarshallActionPrivate::removeResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     this->results->remove(result);
 
     // Adjust subsetted property(ies)
@@ -90,6 +96,8 @@ void QUnmarshallActionPrivate::removeResult(QOutputPin *result)
 
 void QUnmarshallActionPrivate::setUnmarshallType(QClassifier *unmarshallType)
 {
+    // This is a read-write association end
+
     this->unmarshallType = unmarshallType;
 }
 
@@ -123,12 +131,16 @@ QUnmarshallAction::~QUnmarshallAction()
  */
 QInputPin *QUnmarshallAction::object() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QUnmarshallAction);
     return d->object;
 }
 
 void QUnmarshallAction::setObject(QInputPin *object)
 {
+    // This is a read-write association end
+
     QTUML_D(QUnmarshallAction);
     if (d->object != object) {
         d->setObject(object);
@@ -140,12 +152,16 @@ void QUnmarshallAction::setObject(QInputPin *object)
  */
 const QSet<QOutputPin *> *QUnmarshallAction::results() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QUnmarshallAction);
     return d->results;
 }
 
 void QUnmarshallAction::addResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     QTUML_D(QUnmarshallAction);
     if (!d->results->contains(result)) {
         d->addResult(result);
@@ -154,6 +170,8 @@ void QUnmarshallAction::addResult(QOutputPin *result)
 
 void QUnmarshallAction::removeResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     QTUML_D(QUnmarshallAction);
     if (d->results->contains(result)) {
         d->removeResult(result);
@@ -165,12 +183,16 @@ void QUnmarshallAction::removeResult(QOutputPin *result)
  */
 QClassifier *QUnmarshallAction::unmarshallType() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QUnmarshallAction);
     return d->unmarshallType;
 }
 
 void QUnmarshallAction::setUnmarshallType(QClassifier *unmarshallType)
 {
+    // This is a read-write association end
+
     QTUML_D(QUnmarshallAction);
     if (d->unmarshallType != unmarshallType) {
         d->setUnmarshallType(unmarshallType);

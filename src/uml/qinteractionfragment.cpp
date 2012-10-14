@@ -67,6 +67,8 @@ QInteractionFragmentPrivate::~QInteractionFragmentPrivate()
 
 void QInteractionFragmentPrivate::addGeneralOrdering(QGeneralOrdering *generalOrdering)
 {
+    // This is a read-write association end
+
     this->generalOrderings->insert(generalOrdering);
 
     // Adjust subsetted property(ies)
@@ -75,6 +77,8 @@ void QInteractionFragmentPrivate::addGeneralOrdering(QGeneralOrdering *generalOr
 
 void QInteractionFragmentPrivate::removeGeneralOrdering(QGeneralOrdering *generalOrdering)
 {
+    // This is a read-write association end
+
     this->generalOrderings->remove(generalOrdering);
 
     // Adjust subsetted property(ies)
@@ -83,6 +87,8 @@ void QInteractionFragmentPrivate::removeGeneralOrdering(QGeneralOrdering *genera
 
 void QInteractionFragmentPrivate::setEnclosingInteraction(QInteraction *enclosingInteraction)
 {
+    // This is a read-write association end
+
     this->enclosingInteraction = enclosingInteraction;
 
     // Adjust subsetted property(ies)
@@ -91,16 +97,22 @@ void QInteractionFragmentPrivate::setEnclosingInteraction(QInteraction *enclosin
 
 void QInteractionFragmentPrivate::addCovered(QLifeline *covered)
 {
+    // This is a read-write association end
+
     this->covered->insert(covered);
 }
 
 void QInteractionFragmentPrivate::removeCovered(QLifeline *covered)
 {
+    // This is a read-write association end
+
     this->covered->remove(covered);
 }
 
 void QInteractionFragmentPrivate::setEnclosingOperand(QInteractionOperand *enclosingOperand)
 {
+    // This is a read-write association end
+
     this->enclosingOperand = enclosingOperand;
 
     // Adjust subsetted property(ies)
@@ -128,12 +140,16 @@ QInteractionFragment::~QInteractionFragment()
  */
 const QSet<QGeneralOrdering *> *QInteractionFragment::generalOrderings() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInteractionFragment);
     return d->generalOrderings;
 }
 
 void QInteractionFragment::addGeneralOrdering(QGeneralOrdering *generalOrdering)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteractionFragment);
     if (!d->generalOrderings->contains(generalOrdering)) {
         d->addGeneralOrdering(generalOrdering);
@@ -142,6 +158,8 @@ void QInteractionFragment::addGeneralOrdering(QGeneralOrdering *generalOrdering)
 
 void QInteractionFragment::removeGeneralOrdering(QGeneralOrdering *generalOrdering)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteractionFragment);
     if (d->generalOrderings->contains(generalOrdering)) {
         d->removeGeneralOrdering(generalOrdering);
@@ -153,12 +171,16 @@ void QInteractionFragment::removeGeneralOrdering(QGeneralOrdering *generalOrderi
  */
 QInteraction *QInteractionFragment::enclosingInteraction() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInteractionFragment);
     return d->enclosingInteraction;
 }
 
 void QInteractionFragment::setEnclosingInteraction(QInteraction *enclosingInteraction)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteractionFragment);
     if (d->enclosingInteraction != enclosingInteraction) {
         d->setEnclosingInteraction(enclosingInteraction);
@@ -173,12 +195,16 @@ void QInteractionFragment::setEnclosingInteraction(QInteraction *enclosingIntera
  */
 const QSet<QLifeline *> *QInteractionFragment::covered() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInteractionFragment);
     return d->covered;
 }
 
 void QInteractionFragment::addCovered(QLifeline *covered)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteractionFragment);
     if (!d->covered->contains(covered)) {
         d->addCovered(covered);
@@ -190,6 +216,8 @@ void QInteractionFragment::addCovered(QLifeline *covered)
 
 void QInteractionFragment::removeCovered(QLifeline *covered)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteractionFragment);
     if (d->covered->contains(covered)) {
         d->removeCovered(covered);
@@ -204,12 +232,16 @@ void QInteractionFragment::removeCovered(QLifeline *covered)
  */
 QInteractionOperand *QInteractionFragment::enclosingOperand() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInteractionFragment);
     return d->enclosingOperand;
 }
 
 void QInteractionFragment::setEnclosingOperand(QInteractionOperand *enclosingOperand)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteractionFragment);
     if (d->enclosingOperand != enclosingOperand) {
         d->setEnclosingOperand(enclosingOperand);

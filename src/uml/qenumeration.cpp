@@ -59,6 +59,8 @@ QEnumerationPrivate::~QEnumerationPrivate()
 
 void QEnumerationPrivate::addOwnedLiteral(QEnumerationLiteral *ownedLiteral)
 {
+    // This is a read-write association end
+
     this->ownedLiterals->append(ownedLiteral);
 
     // Adjust subsetted property(ies)
@@ -67,6 +69,8 @@ void QEnumerationPrivate::addOwnedLiteral(QEnumerationLiteral *ownedLiteral)
 
 void QEnumerationPrivate::removeOwnedLiteral(QEnumerationLiteral *ownedLiteral)
 {
+    // This is a read-write association end
+
     this->ownedLiterals->removeAll(ownedLiteral);
 
     // Adjust subsetted property(ies)
@@ -103,12 +107,16 @@ QEnumeration::~QEnumeration()
  */
 const QList<QEnumerationLiteral *> *QEnumeration::ownedLiterals() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QEnumeration);
     return d->ownedLiterals;
 }
 
 void QEnumeration::addOwnedLiteral(QEnumerationLiteral *ownedLiteral)
 {
+    // This is a read-write association end
+
     QTUML_D(QEnumeration);
     if (!d->ownedLiterals->contains(ownedLiteral)) {
         d->addOwnedLiteral(ownedLiteral);
@@ -120,6 +128,8 @@ void QEnumeration::addOwnedLiteral(QEnumerationLiteral *ownedLiteral)
 
 void QEnumeration::removeOwnedLiteral(QEnumerationLiteral *ownedLiteral)
 {
+    // This is a read-write association end
+
     QTUML_D(QEnumeration);
     if (d->ownedLiterals->contains(ownedLiteral)) {
         d->removeOwnedLiteral(ownedLiteral);

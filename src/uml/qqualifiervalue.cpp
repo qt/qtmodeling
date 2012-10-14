@@ -59,11 +59,15 @@ QQualifierValuePrivate::~QQualifierValuePrivate()
 
 void QQualifierValuePrivate::setValue(QInputPin *value)
 {
+    // This is a read-write association end
+
     this->value = value;
 }
 
 void QQualifierValuePrivate::setQualifier(QProperty *qualifier)
 {
+    // This is a read-write association end
+
     this->qualifier = qualifier;
 }
 
@@ -97,12 +101,16 @@ QQualifierValue::~QQualifierValue()
  */
 QInputPin *QQualifierValue::value() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QQualifierValue);
     return d->value;
 }
 
 void QQualifierValue::setValue(QInputPin *value)
 {
+    // This is a read-write association end
+
     QTUML_D(QQualifierValue);
     if (d->value != value) {
         d->setValue(value);
@@ -114,12 +122,16 @@ void QQualifierValue::setValue(QInputPin *value)
  */
 QProperty *QQualifierValue::qualifier() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QQualifierValue);
     return d->qualifier;
 }
 
 void QQualifierValue::setQualifier(QProperty *qualifier)
 {
+    // This is a read-write association end
+
     QTUML_D(QQualifierValue);
     if (d->qualifier != qualifier) {
         d->setQualifier(qualifier);

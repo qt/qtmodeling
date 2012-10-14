@@ -61,6 +61,8 @@ QDeploymentTargetPrivate::~QDeploymentTargetPrivate()
 
 void QDeploymentTargetPrivate::addDeployment(QDeployment *deployment)
 {
+    // This is a read-write association end
+
     this->deployments->insert(deployment);
 
     // Adjust subsetted property(ies)
@@ -70,6 +72,8 @@ void QDeploymentTargetPrivate::addDeployment(QDeployment *deployment)
 
 void QDeploymentTargetPrivate::removeDeployment(QDeployment *deployment)
 {
+    // This is a read-write association end
+
     this->deployments->remove(deployment);
 
     // Adjust subsetted property(ies)
@@ -98,7 +102,12 @@ QDeploymentTarget::~QDeploymentTarget()
  */
 const QSet<QPackageableElement *> *QDeploymentTarget::deployedElements() const
 {
+    // This is a read-only derived association end
+
     qWarning("QDeploymentTarget::deployedElements: to be implemented (this is a derived associationend)");
+
+    QTUML_D(const QDeploymentTarget);
+    //return <derived-return>;
 }
 
 /*!
@@ -106,12 +115,16 @@ const QSet<QPackageableElement *> *QDeploymentTarget::deployedElements() const
  */
 const QSet<QDeployment *> *QDeploymentTarget::deployments() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QDeploymentTarget);
     return d->deployments;
 }
 
 void QDeploymentTarget::addDeployment(QDeployment *deployment)
 {
+    // This is a read-write association end
+
     QTUML_D(QDeploymentTarget);
     if (!d->deployments->contains(deployment)) {
         d->addDeployment(deployment);
@@ -123,6 +136,8 @@ void QDeploymentTarget::addDeployment(QDeployment *deployment)
 
 void QDeploymentTarget::removeDeployment(QDeployment *deployment)
 {
+    // This is a read-write association end
+
     QTUML_D(QDeploymentTarget);
     if (d->deployments->contains(deployment)) {
         d->removeDeployment(deployment);

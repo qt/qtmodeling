@@ -62,6 +62,8 @@ QProfilePrivate::~QProfilePrivate()
 
 void QProfilePrivate::addMetamodelReference(QPackageImport *metamodelReference)
 {
+    // This is a read-write association end
+
     this->metamodelReferences->insert(metamodelReference);
 
     // Adjust subsetted property(ies)
@@ -70,6 +72,8 @@ void QProfilePrivate::addMetamodelReference(QPackageImport *metamodelReference)
 
 void QProfilePrivate::removeMetamodelReference(QPackageImport *metamodelReference)
 {
+    // This is a read-write association end
+
     this->metamodelReferences->remove(metamodelReference);
 
     // Adjust subsetted property(ies)
@@ -78,6 +82,8 @@ void QProfilePrivate::removeMetamodelReference(QPackageImport *metamodelReferenc
 
 void QProfilePrivate::addMetaclassReference(QElementImport *metaclassReference)
 {
+    // This is a read-write association end
+
     this->metaclassReferences->insert(metaclassReference);
 
     // Adjust subsetted property(ies)
@@ -86,6 +92,8 @@ void QProfilePrivate::addMetaclassReference(QElementImport *metaclassReference)
 
 void QProfilePrivate::removeMetaclassReference(QElementImport *metaclassReference)
 {
+    // This is a read-write association end
+
     this->metaclassReferences->remove(metaclassReference);
 
     // Adjust subsetted property(ies)
@@ -122,12 +130,16 @@ QProfile::~QProfile()
  */
 const QSet<QPackageImport *> *QProfile::metamodelReferences() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QProfile);
     return d->metamodelReferences;
 }
 
 void QProfile::addMetamodelReference(QPackageImport *metamodelReference)
 {
+    // This is a read-write association end
+
     QTUML_D(QProfile);
     if (!d->metamodelReferences->contains(metamodelReference)) {
         d->addMetamodelReference(metamodelReference);
@@ -136,6 +148,8 @@ void QProfile::addMetamodelReference(QPackageImport *metamodelReference)
 
 void QProfile::removeMetamodelReference(QPackageImport *metamodelReference)
 {
+    // This is a read-write association end
+
     QTUML_D(QProfile);
     if (d->metamodelReferences->contains(metamodelReference)) {
         d->removeMetamodelReference(metamodelReference);
@@ -147,12 +161,16 @@ void QProfile::removeMetamodelReference(QPackageImport *metamodelReference)
  */
 const QSet<QElementImport *> *QProfile::metaclassReferences() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QProfile);
     return d->metaclassReferences;
 }
 
 void QProfile::addMetaclassReference(QElementImport *metaclassReference)
 {
+    // This is a read-write association end
+
     QTUML_D(QProfile);
     if (!d->metaclassReferences->contains(metaclassReference)) {
         d->addMetaclassReference(metaclassReference);
@@ -161,6 +179,8 @@ void QProfile::addMetaclassReference(QElementImport *metaclassReference)
 
 void QProfile::removeMetaclassReference(QElementImport *metaclassReference)
 {
+    // This is a read-write association end
+
     QTUML_D(QProfile);
     if (d->metaclassReferences->contains(metaclassReference)) {
         d->removeMetaclassReference(metaclassReference);

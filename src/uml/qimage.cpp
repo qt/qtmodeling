@@ -55,16 +55,22 @@ QImagePrivate::~QImagePrivate()
 
 void QImagePrivate::setFormat(QString format)
 {
+    // This is a read-write attribute
+
     this->format = format;
 }
 
 void QImagePrivate::setLocation(QString location)
 {
+    // This is a read-write attribute
+
     this->location = location;
 }
 
 void QImagePrivate::setContent(QString content)
 {
+    // This is a read-write attribute
+
     this->content = content;
 }
 
@@ -98,12 +104,16 @@ QImage::~QImage()
  */
 QString QImage::format() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QImage);
     return d->format;
 }
 
 void QImage::setFormat(QString format)
 {
+    // This is a read-write attribute
+
     QTUML_D(QImage);
     if (d->format != format) {
         d->setFormat(format);
@@ -115,12 +125,16 @@ void QImage::setFormat(QString format)
  */
 QString QImage::location() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QImage);
     return d->location;
 }
 
 void QImage::setLocation(QString location)
 {
+    // This is a read-write attribute
+
     QTUML_D(QImage);
     if (d->location != location) {
         d->setLocation(location);
@@ -132,12 +146,16 @@ void QImage::setLocation(QString location)
  */
 QString QImage::content() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QImage);
     return d->content;
 }
 
 void QImage::setContent(QString content)
 {
+    // This is a read-write attribute
+
     QTUML_D(QImage);
     if (d->content != content) {
         d->setContent(content);

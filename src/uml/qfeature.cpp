@@ -59,16 +59,22 @@ QFeaturePrivate::~QFeaturePrivate()
 
 void QFeaturePrivate::setStatic(bool isStatic)
 {
+    // This is a read-write attribute
+
     this->isStatic = isStatic;
 }
 
 void QFeaturePrivate::addFeaturingClassifier(QClassifier *featuringClassifier)
 {
+    // This is a read-only derived-union association end
+
     this->featuringClassifiers->insert(featuringClassifier);
 }
 
 void QFeaturePrivate::removeFeaturingClassifier(QClassifier *featuringClassifier)
 {
+    // This is a read-only derived-union association end
+
     this->featuringClassifiers->remove(featuringClassifier);
 }
 
@@ -93,12 +99,16 @@ QFeature::~QFeature()
  */
 bool QFeature::isStatic() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QFeature);
     return d->isStatic;
 }
 
 void QFeature::setStatic(bool isStatic)
 {
+    // This is a read-write attribute
+
     QTUML_D(QFeature);
     if (d->isStatic != isStatic) {
         d->setStatic(isStatic);
@@ -110,6 +120,8 @@ void QFeature::setStatic(bool isStatic)
  */
 const QSet<QClassifier *> *QFeature::featuringClassifiers() const
 {
+    // This is a read-only derived-union association end
+
     QTUML_D(const QFeature);
     return d->featuringClassifiers;
 }

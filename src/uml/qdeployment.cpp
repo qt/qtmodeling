@@ -65,6 +65,8 @@ QDeploymentPrivate::~QDeploymentPrivate()
 
 void QDeploymentPrivate::setLocation(QDeploymentTarget *location)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeClient(this->location);
 
@@ -77,6 +79,8 @@ void QDeploymentPrivate::setLocation(QDeploymentTarget *location)
 
 void QDeploymentPrivate::addConfiguration(QDeploymentSpecification *configuration)
 {
+    // This is a read-write association end
+
     this->configurations->insert(configuration);
 
     // Adjust subsetted property(ies)
@@ -85,6 +89,8 @@ void QDeploymentPrivate::addConfiguration(QDeploymentSpecification *configuratio
 
 void QDeploymentPrivate::removeConfiguration(QDeploymentSpecification *configuration)
 {
+    // This is a read-write association end
+
     this->configurations->remove(configuration);
 
     // Adjust subsetted property(ies)
@@ -93,6 +99,8 @@ void QDeploymentPrivate::removeConfiguration(QDeploymentSpecification *configura
 
 void QDeploymentPrivate::addDeployedArtifact(QDeployedArtifact *deployedArtifact)
 {
+    // This is a read-write association end
+
     this->deployedArtifacts->insert(deployedArtifact);
 
     // Adjust subsetted property(ies)
@@ -101,6 +109,8 @@ void QDeploymentPrivate::addDeployedArtifact(QDeployedArtifact *deployedArtifact
 
 void QDeploymentPrivate::removeDeployedArtifact(QDeployedArtifact *deployedArtifact)
 {
+    // This is a read-write association end
+
     this->deployedArtifacts->remove(deployedArtifact);
 
     // Adjust subsetted property(ies)
@@ -137,12 +147,16 @@ QDeployment::~QDeployment()
  */
 QDeploymentTarget *QDeployment::location() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QDeployment);
     return d->location;
 }
 
 void QDeployment::setLocation(QDeploymentTarget *location)
 {
+    // This is a read-write association end
+
     QTUML_D(QDeployment);
     if (d->location != location) {
         d->setLocation(location);
@@ -157,12 +171,16 @@ void QDeployment::setLocation(QDeploymentTarget *location)
  */
 const QSet<QDeploymentSpecification *> *QDeployment::configurations() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QDeployment);
     return d->configurations;
 }
 
 void QDeployment::addConfiguration(QDeploymentSpecification *configuration)
 {
+    // This is a read-write association end
+
     QTUML_D(QDeployment);
     if (!d->configurations->contains(configuration)) {
         d->addConfiguration(configuration);
@@ -174,6 +192,8 @@ void QDeployment::addConfiguration(QDeploymentSpecification *configuration)
 
 void QDeployment::removeConfiguration(QDeploymentSpecification *configuration)
 {
+    // This is a read-write association end
+
     QTUML_D(QDeployment);
     if (d->configurations->contains(configuration)) {
         d->removeConfiguration(configuration);
@@ -188,12 +208,16 @@ void QDeployment::removeConfiguration(QDeploymentSpecification *configuration)
  */
 const QSet<QDeployedArtifact *> *QDeployment::deployedArtifacts() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QDeployment);
     return d->deployedArtifacts;
 }
 
 void QDeployment::addDeployedArtifact(QDeployedArtifact *deployedArtifact)
 {
+    // This is a read-write association end
+
     QTUML_D(QDeployment);
     if (!d->deployedArtifacts->contains(deployedArtifact)) {
         d->addDeployedArtifact(deployedArtifact);
@@ -202,6 +226,8 @@ void QDeployment::addDeployedArtifact(QDeployedArtifact *deployedArtifact)
 
 void QDeployment::removeDeployedArtifact(QDeployedArtifact *deployedArtifact)
 {
+    // This is a read-write association end
+
     QTUML_D(QDeployment);
     if (d->deployedArtifacts->contains(deployedArtifact)) {
         d->removeDeployedArtifact(deployedArtifact);

@@ -57,6 +57,8 @@ QCallEventPrivate::~QCallEventPrivate()
 
 void QCallEventPrivate::setOperation(QOperation *operation)
 {
+    // This is a read-write association end
+
     this->operation = operation;
 }
 
@@ -90,12 +92,16 @@ QCallEvent::~QCallEvent()
  */
 QOperation *QCallEvent::operation() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QCallEvent);
     return d->operation;
 }
 
 void QCallEvent::setOperation(QOperation *operation)
 {
+    // This is a read-write association end
+
     QTUML_D(QCallEvent);
     if (d->operation != operation) {
         d->setOperation(operation);

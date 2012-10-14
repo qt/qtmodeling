@@ -58,6 +58,8 @@ QIntervalConstraintPrivate::~QIntervalConstraintPrivate()
 
 void QIntervalConstraintPrivate::setSpecification(QInterval *specification)
 {
+    // This is a read-write association end
+
     this->specification = specification;
 }
 
@@ -91,12 +93,16 @@ QIntervalConstraint::~QIntervalConstraint()
  */
 QInterval *QIntervalConstraint::specification() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QIntervalConstraint);
     return d->specification;
 }
 
 void QIntervalConstraint::setSpecification(QInterval *specification)
 {
+    // This is a read-write association end
+
     QTUML_D(QIntervalConstraint);
     if (d->specification != specification) {
         d->setSpecification(specification);

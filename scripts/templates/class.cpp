@@ -219,6 +219,8 @@ ${class.name}Private::~${class.name}Private()
 [%- NEXT IF loop.first %]
 ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
 {
+    // This is a [% IF attribute.isReadOnly == 'true' %]read-only [% ELSE %]read-write [% END %][% IF attribute.isDerivedUnion == 'true' %]derived-union [% ELSE %][% IF attribute.isDerived == 'true' %]derived [% END %][% END %]attribute
+
     [%- IF accessor.name.search('^set') %]
     [%- HANDLESUBSETTEDPROPERTY(attribute, 2, 'true') %]
     this->${accessor.parameter.0.name} = ${accessor.parameter.0.name};
@@ -243,6 +245,8 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
 [%- NEXT IF loop.first %]
 ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
 {
+    // This is a [% IF associationend.isReadOnly == 'true' %]read-only [% ELSE %]read-write [% END %][% IF associationend.isDerivedUnion == 'true' %]derived-union [% ELSE %][% IF associationend.isDerived == 'true' %]derived [% END %][% END %]association end
+
     [%- IF accessor.name.search('^set') %]
     [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'true') %]
     this->${accessor.parameter.0.name} = ${accessor.parameter.0.name};
@@ -308,6 +312,8 @@ ${class.name}::~${class.name}()
 [%- FOREACH accessor IN attribute.accessor %]
 ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
 {
+    // This is a [% IF attribute.isReadOnly == 'true' %]read-only [% ELSE %]read-write [% END %][% IF attribute.isDerivedUnion == 'true' %]derived-union [% ELSE %][% IF attribute.isDerived == 'true' %]derived [% END %][% END %]attribute
+
 [%- IF attribute.isDerived == 'false' or attribute.isDerivedUnion == 'true' %]
     [%- IF loop.first %]
     QTUML_D(const ${class.name});
@@ -324,6 +330,20 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
     [%- END -%]
 [%- ELSE %]
     qWarning("${class.name}::${accessor.name}: to be implemented (this is a derived attribute)");
+
+    [%- IF loop.first %]
+    QTUML_D(const ${class.name});
+    //return <derived-return>;
+    [%- ELSE %]
+    QTUML_D(${class.name});
+    [%- IF attribute.accessor.0.return.search('<') %]
+    if (true /* <derived-[% IF loop.count == 2 %]inclusion[% ELSE %]exclusion[% END %]-criteria> */) {
+    [%- ELSE %]
+    if (true /* <change-criteria> */) {
+    [%- END %]
+        // <derived-code>
+    }
+    [%- END -%]
 [%- END %]
 }
 [% LAST IF attribute.isReadOnly == 'true' -%]
@@ -339,6 +359,8 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
 [%- FOREACH accessor IN associationend.accessor %]
 ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
 {
+    // This is a [% IF associationend.isReadOnly == 'true' %]read-only [% ELSE %]read-write [% END %][% IF associationend.isDerivedUnion == 'true' %]derived-union [% ELSE %][% IF associationend.isDerived == 'true' %]derived [% END %][% END %]association end
+
 [%- IF associationend.isDerived == 'false' or associationend.isDerivedUnion == 'true' %]
     [%- IF loop.first %]
     QTUML_D(const ${class.name});
@@ -354,11 +376,24 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
     [%- END %]
 [%- ELSE %]
     qWarning("${class.name}::${accessor.name}: to be implemented (this is a derived associationend)");
+
+    [%- IF loop.first %]
+    QTUML_D(const ${class.name});
+    //return <derived-return>;
+    [%- ELSE %]
+    QTUML_D(${class.name});
+    [%- IF associationend.accessor.0.return.search('<') %]
+    if (true /* <derived-[% IF loop.count == 2 %]inclusion[% ELSE %]exclusion[% END %]-criteria> */) {
+    [%- ELSE %]
+    if (true /* <change-criteria */) {
+    [%- END %]
+        // <derived-code>
+    [%- END %]
 [%- END %]
     [%- IF loop.count != 1 -%]
     [%- HANDLEOPPOSITEEND(associationend, accessor, loop.count - 1) -%]
     [%- END %]
-    [%- IF (associationend.isDerived == 'false' or associationend.isDerivedUnion == 'true') and !loop.first %]
+    [%- IF !loop.first %]
     }
     [%- END %]
 }

@@ -64,11 +64,15 @@ QGeneralizationPrivate::~QGeneralizationPrivate()
 
 void QGeneralizationPrivate::setSubstitutable(bool isSubstitutable)
 {
+    // This is a read-write attribute
+
     this->isSubstitutable = isSubstitutable;
 }
 
 void QGeneralizationPrivate::setSpecific(QClassifier *specific)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeSource(this->specific);
 
@@ -81,16 +85,22 @@ void QGeneralizationPrivate::setSpecific(QClassifier *specific)
 
 void QGeneralizationPrivate::addGeneralizationSet(QGeneralizationSet *generalizationSet)
 {
+    // This is a read-write association end
+
     this->generalizationSets->insert(generalizationSet);
 }
 
 void QGeneralizationPrivate::removeGeneralizationSet(QGeneralizationSet *generalizationSet)
 {
+    // This is a read-write association end
+
     this->generalizationSets->remove(generalizationSet);
 }
 
 void QGeneralizationPrivate::setGeneral(QClassifier *general)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeTarget(this->general);
 
@@ -130,12 +140,16 @@ QGeneralization::~QGeneralization()
  */
 bool QGeneralization::isSubstitutable() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QGeneralization);
     return d->isSubstitutable;
 }
 
 void QGeneralization::setSubstitutable(bool isSubstitutable)
 {
+    // This is a read-write attribute
+
     QTUML_D(QGeneralization);
     if (d->isSubstitutable != isSubstitutable) {
         d->setSubstitutable(isSubstitutable);
@@ -147,12 +161,16 @@ void QGeneralization::setSubstitutable(bool isSubstitutable)
  */
 QClassifier *QGeneralization::specific() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QGeneralization);
     return d->specific;
 }
 
 void QGeneralization::setSpecific(QClassifier *specific)
 {
+    // This is a read-write association end
+
     QTUML_D(QGeneralization);
     if (d->specific != specific) {
         d->setSpecific(specific);
@@ -167,12 +185,16 @@ void QGeneralization::setSpecific(QClassifier *specific)
  */
 const QSet<QGeneralizationSet *> *QGeneralization::generalizationSets() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QGeneralization);
     return d->generalizationSets;
 }
 
 void QGeneralization::addGeneralizationSet(QGeneralizationSet *generalizationSet)
 {
+    // This is a read-write association end
+
     QTUML_D(QGeneralization);
     if (!d->generalizationSets->contains(generalizationSet)) {
         d->addGeneralizationSet(generalizationSet);
@@ -184,6 +206,8 @@ void QGeneralization::addGeneralizationSet(QGeneralizationSet *generalizationSet
 
 void QGeneralization::removeGeneralizationSet(QGeneralizationSet *generalizationSet)
 {
+    // This is a read-write association end
+
     QTUML_D(QGeneralization);
     if (d->generalizationSets->contains(generalizationSet)) {
         d->removeGeneralizationSet(generalizationSet);
@@ -198,12 +222,16 @@ void QGeneralization::removeGeneralizationSet(QGeneralizationSet *generalization
  */
 QClassifier *QGeneralization::general() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QGeneralization);
     return d->general;
 }
 
 void QGeneralization::setGeneral(QClassifier *general)
 {
+    // This is a read-write association end
+
     QTUML_D(QGeneralization);
     if (d->general != general) {
         d->setGeneral(general);

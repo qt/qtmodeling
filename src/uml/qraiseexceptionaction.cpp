@@ -58,6 +58,8 @@ QRaiseExceptionActionPrivate::~QRaiseExceptionActionPrivate()
 
 void QRaiseExceptionActionPrivate::setException(QInputPin *exception)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeInput(this->exception);
 
@@ -97,12 +99,16 @@ QRaiseExceptionAction::~QRaiseExceptionAction()
  */
 QInputPin *QRaiseExceptionAction::exception() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QRaiseExceptionAction);
     return d->exception;
 }
 
 void QRaiseExceptionAction::setException(QInputPin *exception)
 {
+    // This is a read-write association end
+
     QTUML_D(QRaiseExceptionAction);
     if (d->exception != exception) {
         d->setException(exception);

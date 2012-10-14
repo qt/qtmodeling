@@ -58,6 +58,8 @@ QWriteVariableActionPrivate::~QWriteVariableActionPrivate()
 
 void QWriteVariableActionPrivate::setValue(QInputPin *value)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeInput(this->value);
 
@@ -88,12 +90,16 @@ QWriteVariableAction::~QWriteVariableAction()
  */
 QInputPin *QWriteVariableAction::value() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QWriteVariableAction);
     return d->value;
 }
 
 void QWriteVariableAction::setValue(QInputPin *value)
 {
+    // This is a read-write association end
+
     QTUML_D(QWriteVariableAction);
     if (d->value != value) {
         d->setValue(value);

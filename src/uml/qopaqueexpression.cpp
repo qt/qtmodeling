@@ -62,26 +62,36 @@ QOpaqueExpressionPrivate::~QOpaqueExpressionPrivate()
 
 void QOpaqueExpressionPrivate::addBody(QString body)
 {
+    // This is a read-write attribute
+
     this->bodies->append(body);
 }
 
 void QOpaqueExpressionPrivate::removeBody(QString body)
 {
+    // This is a read-write attribute
+
     this->bodies->removeAll(body);
 }
 
 void QOpaqueExpressionPrivate::addLanguage(QString language)
 {
+    // This is a read-write attribute
+
     this->languages->append(language);
 }
 
 void QOpaqueExpressionPrivate::removeLanguage(QString language)
 {
+    // This is a read-write attribute
+
     this->languages->removeAll(language);
 }
 
 void QOpaqueExpressionPrivate::setBehavior(QBehavior *behavior)
 {
+    // This is a read-write association end
+
     this->behavior = behavior;
 }
 
@@ -115,12 +125,16 @@ QOpaqueExpression::~QOpaqueExpression()
  */
 const QList<QString> *QOpaqueExpression::bodies() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QOpaqueExpression);
     return d->bodies;
 }
 
 void QOpaqueExpression::addBody(QString body)
 {
+    // This is a read-write attribute
+
     QTUML_D(QOpaqueExpression);
     if (!d->bodies->contains(body)) {
         d->addBody(body);
@@ -129,6 +143,8 @@ void QOpaqueExpression::addBody(QString body)
 
 void QOpaqueExpression::removeBody(QString body)
 {
+    // This is a read-write attribute
+
     QTUML_D(QOpaqueExpression);
     if (d->bodies->contains(body)) {
         d->removeBody(body);
@@ -140,12 +156,16 @@ void QOpaqueExpression::removeBody(QString body)
  */
 const QList<QString> *QOpaqueExpression::languages() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QOpaqueExpression);
     return d->languages;
 }
 
 void QOpaqueExpression::addLanguage(QString language)
 {
+    // This is a read-write attribute
+
     QTUML_D(QOpaqueExpression);
     if (!d->languages->contains(language)) {
         d->addLanguage(language);
@@ -154,6 +174,8 @@ void QOpaqueExpression::addLanguage(QString language)
 
 void QOpaqueExpression::removeLanguage(QString language)
 {
+    // This is a read-write attribute
+
     QTUML_D(QOpaqueExpression);
     if (d->languages->contains(language)) {
         d->removeLanguage(language);
@@ -165,12 +187,16 @@ void QOpaqueExpression::removeLanguage(QString language)
  */
 QBehavior *QOpaqueExpression::behavior() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QOpaqueExpression);
     return d->behavior;
 }
 
 void QOpaqueExpression::setBehavior(QBehavior *behavior)
 {
+    // This is a read-write association end
+
     QTUML_D(QOpaqueExpression);
     if (d->behavior != behavior) {
         d->setBehavior(behavior);
@@ -182,7 +208,12 @@ void QOpaqueExpression::setBehavior(QBehavior *behavior)
  */
 QParameter *QOpaqueExpression::result() const
 {
+    // This is a read-only derived association end
+
     qWarning("QOpaqueExpression::result: to be implemented (this is a derived associationend)");
+
+    QTUML_D(const QOpaqueExpression);
+    //return <derived-return>;
 }
 
 /*!

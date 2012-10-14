@@ -64,6 +64,8 @@ QConstraintPrivate::~QConstraintPrivate()
 
 void QConstraintPrivate::setContext(QNamespace *context)
 {
+    // This is a read-write association end
+
     this->context = context;
 
     // Adjust subsetted property(ies)
@@ -72,6 +74,8 @@ void QConstraintPrivate::setContext(QNamespace *context)
 
 void QConstraintPrivate::setSpecification(QValueSpecification *specification)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->specification);
 
@@ -83,11 +87,15 @@ void QConstraintPrivate::setSpecification(QValueSpecification *specification)
 
 void QConstraintPrivate::addConstrainedElement(QElement *constrainedElement)
 {
+    // This is a read-write association end
+
     this->constrainedElements->append(constrainedElement);
 }
 
 void QConstraintPrivate::removeConstrainedElement(QElement *constrainedElement)
 {
+    // This is a read-write association end
+
     this->constrainedElements->removeAll(constrainedElement);
 }
 
@@ -121,12 +129,16 @@ QConstraint::~QConstraint()
  */
 QNamespace *QConstraint::context() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QConstraint);
     return d->context;
 }
 
 void QConstraint::setContext(QNamespace *context)
 {
+    // This is a read-write association end
+
     QTUML_D(QConstraint);
     if (d->context != context) {
         d->setContext(context);
@@ -141,12 +153,16 @@ void QConstraint::setContext(QNamespace *context)
  */
 QValueSpecification *QConstraint::specification() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QConstraint);
     return d->specification;
 }
 
 void QConstraint::setSpecification(QValueSpecification *specification)
 {
+    // This is a read-write association end
+
     QTUML_D(QConstraint);
     if (d->specification != specification) {
         d->setSpecification(specification);
@@ -158,12 +174,16 @@ void QConstraint::setSpecification(QValueSpecification *specification)
  */
 const QList<QElement *> *QConstraint::constrainedElements() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QConstraint);
     return d->constrainedElements;
 }
 
 void QConstraint::addConstrainedElement(QElement *constrainedElement)
 {
+    // This is a read-write association end
+
     QTUML_D(QConstraint);
     if (!d->constrainedElements->contains(constrainedElement)) {
         d->addConstrainedElement(constrainedElement);
@@ -172,6 +192,8 @@ void QConstraint::addConstrainedElement(QElement *constrainedElement)
 
 void QConstraint::removeConstrainedElement(QElement *constrainedElement)
 {
+    // This is a read-write association end
+
     QTUML_D(QConstraint);
     if (d->constrainedElements->contains(constrainedElement)) {
         d->removeConstrainedElement(constrainedElement);

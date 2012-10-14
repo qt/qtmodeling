@@ -67,26 +67,36 @@ QParameterPrivate::~QParameterPrivate()
 
 void QParameterPrivate::setException(bool isException)
 {
+    // This is a read-write attribute
+
     this->isException = isException;
 }
 
 void QParameterPrivate::setDirection(QtUml::ParameterDirectionKind direction)
 {
+    // This is a read-write attribute
+
     this->direction = direction;
 }
 
 void QParameterPrivate::setStream(bool isStream)
 {
+    // This is a read-write attribute
+
     this->isStream = isStream;
 }
 
 void QParameterPrivate::setEffect(QtUml::ParameterEffectKind effect)
 {
+    // This is a read-write attribute
+
     this->effect = effect;
 }
 
 void QParameterPrivate::setOperation(QOperation *operation)
 {
+    // This is a read-write association end
+
     this->operation = operation;
 
     // Adjust subsetted property(ies)
@@ -95,6 +105,8 @@ void QParameterPrivate::setOperation(QOperation *operation)
 
 void QParameterPrivate::setDefaultValue(QValueSpecification *defaultValue)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->defaultValue);
 
@@ -106,11 +118,15 @@ void QParameterPrivate::setDefaultValue(QValueSpecification *defaultValue)
 
 void QParameterPrivate::addParameterSet(QParameterSet *parameterSet)
 {
+    // This is a read-write association end
+
     this->parameterSets->insert(parameterSet);
 }
 
 void QParameterPrivate::removeParameterSet(QParameterSet *parameterSet)
 {
+    // This is a read-write association end
+
     this->parameterSets->remove(parameterSet);
 }
 
@@ -144,12 +160,16 @@ QParameter::~QParameter()
  */
 bool QParameter::isException() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QParameter);
     return d->isException;
 }
 
 void QParameter::setException(bool isException)
 {
+    // This is a read-write attribute
+
     QTUML_D(QParameter);
     if (d->isException != isException) {
         d->setException(isException);
@@ -161,12 +181,24 @@ void QParameter::setException(bool isException)
  */
 QString QParameter::default_() const
 {
+    // This is a read-write derived attribute
+
     qWarning("QParameter::default_: to be implemented (this is a derived attribute)");
+
+    QTUML_D(const QParameter);
+    //return <derived-return>;
 }
 
 void QParameter::setDefault_(QString default_)
 {
+    // This is a read-write derived attribute
+
     qWarning("QParameter::setDefault_: to be implemented (this is a derived attribute)");
+
+    QTUML_D(QParameter);
+    if (true /* <change-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
@@ -174,12 +206,16 @@ void QParameter::setDefault_(QString default_)
  */
 QtUml::ParameterDirectionKind QParameter::direction() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QParameter);
     return d->direction;
 }
 
 void QParameter::setDirection(QtUml::ParameterDirectionKind direction)
 {
+    // This is a read-write attribute
+
     QTUML_D(QParameter);
     if (d->direction != direction) {
         d->setDirection(direction);
@@ -191,12 +227,16 @@ void QParameter::setDirection(QtUml::ParameterDirectionKind direction)
  */
 bool QParameter::isStream() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QParameter);
     return d->isStream;
 }
 
 void QParameter::setStream(bool isStream)
 {
+    // This is a read-write attribute
+
     QTUML_D(QParameter);
     if (d->isStream != isStream) {
         d->setStream(isStream);
@@ -208,12 +248,16 @@ void QParameter::setStream(bool isStream)
  */
 QtUml::ParameterEffectKind QParameter::effect() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QParameter);
     return d->effect;
 }
 
 void QParameter::setEffect(QtUml::ParameterEffectKind effect)
 {
+    // This is a read-write attribute
+
     QTUML_D(QParameter);
     if (d->effect != effect) {
         d->setEffect(effect);
@@ -225,12 +269,16 @@ void QParameter::setEffect(QtUml::ParameterEffectKind effect)
  */
 QOperation *QParameter::operation() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QParameter);
     return d->operation;
 }
 
 void QParameter::setOperation(QOperation *operation)
 {
+    // This is a read-write association end
+
     QTUML_D(QParameter);
     if (d->operation != operation) {
         d->setOperation(operation);
@@ -245,12 +293,16 @@ void QParameter::setOperation(QOperation *operation)
  */
 QValueSpecification *QParameter::defaultValue() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QParameter);
     return d->defaultValue;
 }
 
 void QParameter::setDefaultValue(QValueSpecification *defaultValue)
 {
+    // This is a read-write association end
+
     QTUML_D(QParameter);
     if (d->defaultValue != defaultValue) {
         d->setDefaultValue(defaultValue);
@@ -262,12 +314,16 @@ void QParameter::setDefaultValue(QValueSpecification *defaultValue)
  */
 const QSet<QParameterSet *> *QParameter::parameterSets() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QParameter);
     return d->parameterSets;
 }
 
 void QParameter::addParameterSet(QParameterSet *parameterSet)
 {
+    // This is a read-write association end
+
     QTUML_D(QParameter);
     if (!d->parameterSets->contains(parameterSet)) {
         d->addParameterSet(parameterSet);
@@ -279,6 +335,8 @@ void QParameter::addParameterSet(QParameterSet *parameterSet)
 
 void QParameter::removeParameterSet(QParameterSet *parameterSet)
 {
+    // This is a read-write association end
+
     QTUML_D(QParameter);
     if (d->parameterSets->contains(parameterSet)) {
         d->removeParameterSet(parameterSet);

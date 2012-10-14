@@ -59,6 +59,8 @@ QStringExpressionPrivate::~QStringExpressionPrivate()
 
 void QStringExpressionPrivate::setOwningExpression(QStringExpression *owningExpression)
 {
+    // This is a read-write association end
+
     this->owningExpression = owningExpression;
 
     // Adjust subsetted property(ies)
@@ -67,6 +69,8 @@ void QStringExpressionPrivate::setOwningExpression(QStringExpression *owningExpr
 
 void QStringExpressionPrivate::addSubExpression(QStringExpression *subExpression)
 {
+    // This is a read-write association end
+
     this->subExpressions->insert(subExpression);
 
     // Adjust subsetted property(ies)
@@ -75,6 +79,8 @@ void QStringExpressionPrivate::addSubExpression(QStringExpression *subExpression
 
 void QStringExpressionPrivate::removeSubExpression(QStringExpression *subExpression)
 {
+    // This is a read-write association end
+
     this->subExpressions->remove(subExpression);
 
     // Adjust subsetted property(ies)
@@ -111,12 +117,16 @@ QStringExpression::~QStringExpression()
  */
 QStringExpression *QStringExpression::owningExpression() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QStringExpression);
     return d->owningExpression;
 }
 
 void QStringExpression::setOwningExpression(QStringExpression *owningExpression)
 {
+    // This is a read-write association end
+
     QTUML_D(QStringExpression);
     if (d->owningExpression != owningExpression) {
         d->setOwningExpression(owningExpression);
@@ -131,12 +141,16 @@ void QStringExpression::setOwningExpression(QStringExpression *owningExpression)
  */
 const QSet<QStringExpression *> *QStringExpression::subExpressions() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QStringExpression);
     return d->subExpressions;
 }
 
 void QStringExpression::addSubExpression(QStringExpression *subExpression)
 {
+    // This is a read-write association end
+
     QTUML_D(QStringExpression);
     if (!d->subExpressions->contains(subExpression)) {
         d->addSubExpression(subExpression);
@@ -148,6 +162,8 @@ void QStringExpression::addSubExpression(QStringExpression *subExpression)
 
 void QStringExpression::removeSubExpression(QStringExpression *subExpression)
 {
+    // This is a read-write association end
+
     QTUML_D(QStringExpression);
     if (d->subExpressions->contains(subExpression)) {
         d->removeSubExpression(subExpression);

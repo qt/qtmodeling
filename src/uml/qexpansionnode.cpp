@@ -58,11 +58,15 @@ QExpansionNodePrivate::~QExpansionNodePrivate()
 
 void QExpansionNodePrivate::setRegionAsOutput(QExpansionRegion *regionAsOutput)
 {
+    // This is a read-write association end
+
     this->regionAsOutput = regionAsOutput;
 }
 
 void QExpansionNodePrivate::setRegionAsInput(QExpansionRegion *regionAsInput)
 {
+    // This is a read-write association end
+
     this->regionAsInput = regionAsInput;
 }
 
@@ -96,12 +100,16 @@ QExpansionNode::~QExpansionNode()
  */
 QExpansionRegion *QExpansionNode::regionAsOutput() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QExpansionNode);
     return d->regionAsOutput;
 }
 
 void QExpansionNode::setRegionAsOutput(QExpansionRegion *regionAsOutput)
 {
+    // This is a read-write association end
+
     QTUML_D(QExpansionNode);
     if (d->regionAsOutput != regionAsOutput) {
         d->setRegionAsOutput(regionAsOutput);
@@ -116,12 +124,16 @@ void QExpansionNode::setRegionAsOutput(QExpansionRegion *regionAsOutput)
  */
 QExpansionRegion *QExpansionNode::regionAsInput() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QExpansionNode);
     return d->regionAsInput;
 }
 
 void QExpansionNode::setRegionAsInput(QExpansionRegion *regionAsInput)
 {
+    // This is a read-write association end
+
     QTUML_D(QExpansionNode);
     if (d->regionAsInput != regionAsInput) {
         d->setRegionAsInput(regionAsInput);

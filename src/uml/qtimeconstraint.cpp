@@ -59,11 +59,15 @@ QTimeConstraintPrivate::~QTimeConstraintPrivate()
 
 void QTimeConstraintPrivate::setFirstEvent(bool firstEvent)
 {
+    // This is a read-write attribute
+
     this->firstEvent = firstEvent;
 }
 
 void QTimeConstraintPrivate::setSpecification(QTimeInterval *specification)
 {
+    // This is a read-write association end
+
     this->specification = specification;
 }
 
@@ -97,12 +101,16 @@ QTimeConstraint::~QTimeConstraint()
  */
 bool QTimeConstraint::firstEvent() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QTimeConstraint);
     return d->firstEvent;
 }
 
 void QTimeConstraint::setFirstEvent(bool firstEvent)
 {
+    // This is a read-write attribute
+
     QTUML_D(QTimeConstraint);
     if (d->firstEvent != firstEvent) {
         d->setFirstEvent(firstEvent);
@@ -114,12 +122,16 @@ void QTimeConstraint::setFirstEvent(bool firstEvent)
  */
 QTimeInterval *QTimeConstraint::specification() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTimeConstraint);
     return d->specification;
 }
 
 void QTimeConstraint::setSpecification(QTimeInterval *specification)
 {
+    // This is a read-write association end
+
     QTUML_D(QTimeConstraint);
     if (d->specification != specification) {
         d->setSpecification(specification);

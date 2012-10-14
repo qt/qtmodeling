@@ -58,6 +58,8 @@ QEnumerationLiteralPrivate::~QEnumerationLiteralPrivate()
 
 void QEnumerationLiteralPrivate::setEnumeration(QEnumeration *enumeration)
 {
+    // This is a read-write association end
+
     this->enumeration = enumeration;
 
     // Adjust subsetted property(ies)
@@ -94,7 +96,12 @@ QEnumerationLiteral::~QEnumerationLiteral()
  */
 QEnumeration *QEnumerationLiteral::classifier() const
 {
+    // This is a read-only derived association end
+
     qWarning("QEnumerationLiteral::classifier: to be implemented (this is a derived associationend)");
+
+    QTUML_D(const QEnumerationLiteral);
+    //return <derived-return>;
 }
 
 /*!
@@ -102,12 +109,16 @@ QEnumeration *QEnumerationLiteral::classifier() const
  */
 QEnumeration *QEnumerationLiteral::enumeration() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QEnumerationLiteral);
     return d->enumeration;
 }
 
 void QEnumerationLiteral::setEnumeration(QEnumeration *enumeration)
 {
+    // This is a read-write association end
+
     QTUML_D(QEnumerationLiteral);
     if (d->enumeration != enumeration) {
         d->setEnumeration(enumeration);

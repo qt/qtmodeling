@@ -65,16 +65,22 @@ QObjectNodePrivate::~QObjectNodePrivate()
 
 void QObjectNodePrivate::setControlType(bool isControlType)
 {
+    // This is a read-write attribute
+
     this->isControlType = isControlType;
 }
 
 void QObjectNodePrivate::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
+    // This is a read-write attribute
+
     this->ordering = ordering;
 }
 
 void QObjectNodePrivate::setUpperBound(QValueSpecification *upperBound)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->upperBound);
 
@@ -86,16 +92,22 @@ void QObjectNodePrivate::setUpperBound(QValueSpecification *upperBound)
 
 void QObjectNodePrivate::setSelection(QBehavior *selection)
 {
+    // This is a read-write association end
+
     this->selection = selection;
 }
 
 void QObjectNodePrivate::addInState(QState *inState)
 {
+    // This is a read-write association end
+
     this->inState->insert(inState);
 }
 
 void QObjectNodePrivate::removeInState(QState *inState)
 {
+    // This is a read-write association end
+
     this->inState->remove(inState);
 }
 
@@ -120,12 +132,16 @@ QObjectNode::~QObjectNode()
  */
 bool QObjectNode::isControlType() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QObjectNode);
     return d->isControlType;
 }
 
 void QObjectNode::setControlType(bool isControlType)
 {
+    // This is a read-write attribute
+
     QTUML_D(QObjectNode);
     if (d->isControlType != isControlType) {
         d->setControlType(isControlType);
@@ -137,12 +153,16 @@ void QObjectNode::setControlType(bool isControlType)
  */
 QtUml::ObjectNodeOrderingKind QObjectNode::ordering() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QObjectNode);
     return d->ordering;
 }
 
 void QObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
+    // This is a read-write attribute
+
     QTUML_D(QObjectNode);
     if (d->ordering != ordering) {
         d->setOrdering(ordering);
@@ -154,12 +174,16 @@ void QObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
  */
 QValueSpecification *QObjectNode::upperBound() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QObjectNode);
     return d->upperBound;
 }
 
 void QObjectNode::setUpperBound(QValueSpecification *upperBound)
 {
+    // This is a read-write association end
+
     QTUML_D(QObjectNode);
     if (d->upperBound != upperBound) {
         d->setUpperBound(upperBound);
@@ -171,12 +195,16 @@ void QObjectNode::setUpperBound(QValueSpecification *upperBound)
  */
 QBehavior *QObjectNode::selection() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QObjectNode);
     return d->selection;
 }
 
 void QObjectNode::setSelection(QBehavior *selection)
 {
+    // This is a read-write association end
+
     QTUML_D(QObjectNode);
     if (d->selection != selection) {
         d->setSelection(selection);
@@ -188,12 +216,16 @@ void QObjectNode::setSelection(QBehavior *selection)
  */
 const QSet<QState *> *QObjectNode::inState() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QObjectNode);
     return d->inState;
 }
 
 void QObjectNode::addInState(QState *inState)
 {
+    // This is a read-write association end
+
     QTUML_D(QObjectNode);
     if (!d->inState->contains(inState)) {
         d->addInState(inState);
@@ -202,6 +234,8 @@ void QObjectNode::addInState(QState *inState)
 
 void QObjectNode::removeInState(QState *inState)
 {
+    // This is a read-write association end
+
     QTUML_D(QObjectNode);
     if (d->inState->contains(inState)) {
         d->removeInState(inState);

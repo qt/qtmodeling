@@ -58,11 +58,15 @@ QDurationIntervalPrivate::~QDurationIntervalPrivate()
 
 void QDurationIntervalPrivate::setMax(QDuration *max)
 {
+    // This is a read-write association end
+
     this->max = max;
 }
 
 void QDurationIntervalPrivate::setMin(QDuration *min)
 {
+    // This is a read-write association end
+
     this->min = min;
 }
 
@@ -96,12 +100,16 @@ QDurationInterval::~QDurationInterval()
  */
 QDuration *QDurationInterval::max() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QDurationInterval);
     return d->max;
 }
 
 void QDurationInterval::setMax(QDuration *max)
 {
+    // This is a read-write association end
+
     QTUML_D(QDurationInterval);
     if (d->max != max) {
         d->setMax(max);
@@ -113,12 +121,16 @@ void QDurationInterval::setMax(QDuration *max)
  */
 QDuration *QDurationInterval::min() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QDurationInterval);
     return d->min;
 }
 
 void QDurationInterval::setMin(QDuration *min)
 {
+    // This is a read-write association end
+
     QTUML_D(QDurationInterval);
     if (d->min != min) {
         d->setMin(min);

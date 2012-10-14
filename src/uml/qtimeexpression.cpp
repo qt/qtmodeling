@@ -60,16 +60,22 @@ QTimeExpressionPrivate::~QTimeExpressionPrivate()
 
 void QTimeExpressionPrivate::addObservation(QObservation *observation)
 {
+    // This is a read-write association end
+
     this->observations->insert(observation);
 }
 
 void QTimeExpressionPrivate::removeObservation(QObservation *observation)
 {
+    // This is a read-write association end
+
     this->observations->remove(observation);
 }
 
 void QTimeExpressionPrivate::setExpr(QValueSpecification *expr)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->expr);
 
@@ -109,12 +115,16 @@ QTimeExpression::~QTimeExpression()
  */
 const QSet<QObservation *> *QTimeExpression::observations() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTimeExpression);
     return d->observations;
 }
 
 void QTimeExpression::addObservation(QObservation *observation)
 {
+    // This is a read-write association end
+
     QTUML_D(QTimeExpression);
     if (!d->observations->contains(observation)) {
         d->addObservation(observation);
@@ -123,6 +133,8 @@ void QTimeExpression::addObservation(QObservation *observation)
 
 void QTimeExpression::removeObservation(QObservation *observation)
 {
+    // This is a read-write association end
+
     QTUML_D(QTimeExpression);
     if (d->observations->contains(observation)) {
         d->removeObservation(observation);
@@ -134,12 +146,16 @@ void QTimeExpression::removeObservation(QObservation *observation)
  */
 QValueSpecification *QTimeExpression::expr() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTimeExpression);
     return d->expr;
 }
 
 void QTimeExpression::setExpr(QValueSpecification *expr)
 {
+    // This is a read-write association end
+
     QTUML_D(QTimeExpression);
     if (d->expr != expr) {
         d->setExpr(expr);

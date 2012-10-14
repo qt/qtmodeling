@@ -59,11 +59,15 @@ QTimeEventPrivate::~QTimeEventPrivate()
 
 void QTimeEventPrivate::setRelative(bool isRelative)
 {
+    // This is a read-write attribute
+
     this->isRelative = isRelative;
 }
 
 void QTimeEventPrivate::setWhen(QTimeExpression *when)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->when);
 
@@ -103,12 +107,16 @@ QTimeEvent::~QTimeEvent()
  */
 bool QTimeEvent::isRelative() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QTimeEvent);
     return d->isRelative;
 }
 
 void QTimeEvent::setRelative(bool isRelative)
 {
+    // This is a read-write attribute
+
     QTUML_D(QTimeEvent);
     if (d->isRelative != isRelative) {
         d->setRelative(isRelative);
@@ -120,12 +128,16 @@ void QTimeEvent::setRelative(bool isRelative)
  */
 QTimeExpression *QTimeEvent::when() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTimeEvent);
     return d->when;
 }
 
 void QTimeEvent::setWhen(QTimeExpression *when)
 {
+    // This is a read-write association end
+
     QTUML_D(QTimeEvent);
     if (d->when != when) {
         d->setWhen(when);

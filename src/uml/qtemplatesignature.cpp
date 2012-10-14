@@ -63,16 +63,22 @@ QTemplateSignaturePrivate::~QTemplateSignaturePrivate()
 
 void QTemplateSignaturePrivate::addParameter(QTemplateParameter *parameter)
 {
+    // This is a read-write association end
+
     this->parameters->append(parameter);
 }
 
 void QTemplateSignaturePrivate::removeParameter(QTemplateParameter *parameter)
 {
+    // This is a read-write association end
+
     this->parameters->removeAll(parameter);
 }
 
 void QTemplateSignaturePrivate::setTemplate_(QTemplateableElement *template_)
 {
+    // This is a read-write association end
+
     this->template_ = template_;
 
     // Adjust subsetted property(ies)
@@ -81,6 +87,8 @@ void QTemplateSignaturePrivate::setTemplate_(QTemplateableElement *template_)
 
 void QTemplateSignaturePrivate::addOwnedParameter(QTemplateParameter *ownedParameter)
 {
+    // This is a read-write association end
+
     this->ownedParameters->append(ownedParameter);
 
     // Adjust subsetted property(ies)
@@ -90,6 +98,8 @@ void QTemplateSignaturePrivate::addOwnedParameter(QTemplateParameter *ownedParam
 
 void QTemplateSignaturePrivate::removeOwnedParameter(QTemplateParameter *ownedParameter)
 {
+    // This is a read-write association end
+
     this->ownedParameters->removeAll(ownedParameter);
 
     // Adjust subsetted property(ies)
@@ -127,12 +137,16 @@ QTemplateSignature::~QTemplateSignature()
  */
 const QList<QTemplateParameter *> *QTemplateSignature::parameters() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTemplateSignature);
     return d->parameters;
 }
 
 void QTemplateSignature::addParameter(QTemplateParameter *parameter)
 {
+    // This is a read-write association end
+
     QTUML_D(QTemplateSignature);
     if (!d->parameters->contains(parameter)) {
         d->addParameter(parameter);
@@ -141,6 +155,8 @@ void QTemplateSignature::addParameter(QTemplateParameter *parameter)
 
 void QTemplateSignature::removeParameter(QTemplateParameter *parameter)
 {
+    // This is a read-write association end
+
     QTUML_D(QTemplateSignature);
     if (d->parameters->contains(parameter)) {
         d->removeParameter(parameter);
@@ -152,12 +168,16 @@ void QTemplateSignature::removeParameter(QTemplateParameter *parameter)
  */
 QTemplateableElement *QTemplateSignature::template_() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTemplateSignature);
     return d->template_;
 }
 
 void QTemplateSignature::setTemplate_(QTemplateableElement *template_)
 {
+    // This is a read-write association end
+
     QTUML_D(QTemplateSignature);
     if (d->template_ != template_) {
         d->setTemplate_(template_);
@@ -172,12 +192,16 @@ void QTemplateSignature::setTemplate_(QTemplateableElement *template_)
  */
 const QList<QTemplateParameter *> *QTemplateSignature::ownedParameters() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTemplateSignature);
     return d->ownedParameters;
 }
 
 void QTemplateSignature::addOwnedParameter(QTemplateParameter *ownedParameter)
 {
+    // This is a read-write association end
+
     QTUML_D(QTemplateSignature);
     if (!d->ownedParameters->contains(ownedParameter)) {
         d->addOwnedParameter(ownedParameter);
@@ -189,6 +213,8 @@ void QTemplateSignature::addOwnedParameter(QTemplateParameter *ownedParameter)
 
 void QTemplateSignature::removeOwnedParameter(QTemplateParameter *ownedParameter)
 {
+    // This is a read-write association end
+
     QTUML_D(QTemplateSignature);
     if (d->ownedParameters->contains(ownedParameter)) {
         d->removeOwnedParameter(ownedParameter);

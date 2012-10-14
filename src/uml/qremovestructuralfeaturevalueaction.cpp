@@ -59,11 +59,15 @@ QRemoveStructuralFeatureValueActionPrivate::~QRemoveStructuralFeatureValueAction
 
 void QRemoveStructuralFeatureValueActionPrivate::setRemoveDuplicates(bool isRemoveDuplicates)
 {
+    // This is a read-write attribute
+
     this->isRemoveDuplicates = isRemoveDuplicates;
 }
 
 void QRemoveStructuralFeatureValueActionPrivate::setRemoveAt(QInputPin *removeAt)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeInput(this->removeAt);
 
@@ -103,12 +107,16 @@ QRemoveStructuralFeatureValueAction::~QRemoveStructuralFeatureValueAction()
  */
 bool QRemoveStructuralFeatureValueAction::isRemoveDuplicates() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QRemoveStructuralFeatureValueAction);
     return d->isRemoveDuplicates;
 }
 
 void QRemoveStructuralFeatureValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
 {
+    // This is a read-write attribute
+
     QTUML_D(QRemoveStructuralFeatureValueAction);
     if (d->isRemoveDuplicates != isRemoveDuplicates) {
         d->setRemoveDuplicates(isRemoveDuplicates);
@@ -120,12 +128,16 @@ void QRemoveStructuralFeatureValueAction::setRemoveDuplicates(bool isRemoveDupli
  */
 QInputPin *QRemoveStructuralFeatureValueAction::removeAt() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QRemoveStructuralFeatureValueAction);
     return d->removeAt;
 }
 
 void QRemoveStructuralFeatureValueAction::setRemoveAt(QInputPin *removeAt)
 {
+    // This is a read-write association end
+
     QTUML_D(QRemoveStructuralFeatureValueAction);
     if (d->removeAt != removeAt) {
         d->setRemoveAt(removeAt);

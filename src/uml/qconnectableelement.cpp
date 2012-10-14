@@ -58,6 +58,8 @@ QConnectableElementPrivate::~QConnectableElementPrivate()
 
 void QConnectableElementPrivate::setTemplateParameter(QConnectableElementTemplateParameter *templateParameter)
 {
+    // This is a read-write association end
+
     this->templateParameter = templateParameter;
 }
 
@@ -82,7 +84,12 @@ QConnectableElement::~QConnectableElement()
  */
 const QList<QConnectorEnd *> *QConnectableElement::ends() const
 {
+    // This is a read-only derived association end
+
     qWarning("QConnectableElement::ends: to be implemented (this is a derived associationend)");
+
+    QTUML_D(const QConnectableElement);
+    //return <derived-return>;
 }
 
 /*!
@@ -90,12 +97,16 @@ const QList<QConnectorEnd *> *QConnectableElement::ends() const
  */
 QConnectableElementTemplateParameter *QConnectableElement::templateParameter() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QConnectableElement);
     return d->templateParameter;
 }
 
 void QConnectableElement::setTemplateParameter(QConnectableElementTemplateParameter *templateParameter)
 {
+    // This is a read-write association end
+
     QTUML_D(QConnectableElement);
     if (d->templateParameter != templateParameter) {
         d->setTemplateParameter(templateParameter);

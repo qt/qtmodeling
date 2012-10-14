@@ -59,21 +59,29 @@ QOpaqueBehaviorPrivate::~QOpaqueBehaviorPrivate()
 
 void QOpaqueBehaviorPrivate::addLanguage(QString language)
 {
+    // This is a read-write attribute
+
     this->languages->append(language);
 }
 
 void QOpaqueBehaviorPrivate::removeLanguage(QString language)
 {
+    // This is a read-write attribute
+
     this->languages->removeAll(language);
 }
 
 void QOpaqueBehaviorPrivate::addBody(QString body)
 {
+    // This is a read-write attribute
+
     this->bodies->append(body);
 }
 
 void QOpaqueBehaviorPrivate::removeBody(QString body)
 {
+    // This is a read-write attribute
+
     this->bodies->removeAll(body);
 }
 
@@ -107,12 +115,16 @@ QOpaqueBehavior::~QOpaqueBehavior()
  */
 const QList<QString> *QOpaqueBehavior::languages() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QOpaqueBehavior);
     return d->languages;
 }
 
 void QOpaqueBehavior::addLanguage(QString language)
 {
+    // This is a read-write attribute
+
     QTUML_D(QOpaqueBehavior);
     if (!d->languages->contains(language)) {
         d->addLanguage(language);
@@ -121,6 +133,8 @@ void QOpaqueBehavior::addLanguage(QString language)
 
 void QOpaqueBehavior::removeLanguage(QString language)
 {
+    // This is a read-write attribute
+
     QTUML_D(QOpaqueBehavior);
     if (d->languages->contains(language)) {
         d->removeLanguage(language);
@@ -132,12 +146,16 @@ void QOpaqueBehavior::removeLanguage(QString language)
  */
 const QList<QString> *QOpaqueBehavior::bodies() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QOpaqueBehavior);
     return d->bodies;
 }
 
 void QOpaqueBehavior::addBody(QString body)
 {
+    // This is a read-write attribute
+
     QTUML_D(QOpaqueBehavior);
     if (!d->bodies->contains(body)) {
         d->addBody(body);
@@ -146,6 +164,8 @@ void QOpaqueBehavior::addBody(QString body)
 
 void QOpaqueBehavior::removeBody(QString body)
 {
+    // This is a read-write attribute
+
     QTUML_D(QOpaqueBehavior);
     if (d->bodies->contains(body)) {
         d->removeBody(body);

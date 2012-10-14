@@ -64,6 +64,8 @@ QLinkActionPrivate::~QLinkActionPrivate()
 
 void QLinkActionPrivate::addInputValue(QInputPin *inputValue)
 {
+    // This is a read-write association end
+
     this->inputValues->insert(inputValue);
 
     // Adjust subsetted property(ies)
@@ -72,6 +74,8 @@ void QLinkActionPrivate::addInputValue(QInputPin *inputValue)
 
 void QLinkActionPrivate::removeInputValue(QInputPin *inputValue)
 {
+    // This is a read-write association end
+
     this->inputValues->remove(inputValue);
 
     // Adjust subsetted property(ies)
@@ -80,6 +84,8 @@ void QLinkActionPrivate::removeInputValue(QInputPin *inputValue)
 
 void QLinkActionPrivate::addEndData(QLinkEndData *endData)
 {
+    // This is a read-write association end
+
     this->endData->insert(endData);
 
     // Adjust subsetted property(ies)
@@ -88,6 +94,8 @@ void QLinkActionPrivate::addEndData(QLinkEndData *endData)
 
 void QLinkActionPrivate::removeEndData(QLinkEndData *endData)
 {
+    // This is a read-write association end
+
     this->endData->remove(endData);
 
     // Adjust subsetted property(ies)
@@ -115,12 +123,16 @@ QLinkAction::~QLinkAction()
  */
 const QSet<QInputPin *> *QLinkAction::inputValues() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QLinkAction);
     return d->inputValues;
 }
 
 void QLinkAction::addInputValue(QInputPin *inputValue)
 {
+    // This is a read-write association end
+
     QTUML_D(QLinkAction);
     if (!d->inputValues->contains(inputValue)) {
         d->addInputValue(inputValue);
@@ -129,6 +141,8 @@ void QLinkAction::addInputValue(QInputPin *inputValue)
 
 void QLinkAction::removeInputValue(QInputPin *inputValue)
 {
+    // This is a read-write association end
+
     QTUML_D(QLinkAction);
     if (d->inputValues->contains(inputValue)) {
         d->removeInputValue(inputValue);
@@ -140,12 +154,16 @@ void QLinkAction::removeInputValue(QInputPin *inputValue)
  */
 const QSet<QLinkEndData *> *QLinkAction::endData() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QLinkAction);
     return d->endData;
 }
 
 void QLinkAction::addEndData(QLinkEndData *endData)
 {
+    // This is a read-write association end
+
     QTUML_D(QLinkAction);
     if (!d->endData->contains(endData)) {
         d->addEndData(endData);
@@ -154,6 +172,8 @@ void QLinkAction::addEndData(QLinkEndData *endData)
 
 void QLinkAction::removeEndData(QLinkEndData *endData)
 {
+    // This is a read-write association end
+
     QTUML_D(QLinkAction);
     if (d->endData->contains(endData)) {
         d->removeEndData(endData);

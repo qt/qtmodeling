@@ -60,6 +60,8 @@ QStereotypePrivate::~QStereotypePrivate()
 
 void QStereotypePrivate::addIcon(QImage *icon)
 {
+    // This is a read-write association end
+
     this->icons->insert(icon);
 
     // Adjust subsetted property(ies)
@@ -68,6 +70,8 @@ void QStereotypePrivate::addIcon(QImage *icon)
 
 void QStereotypePrivate::removeIcon(QImage *icon)
 {
+    // This is a read-write association end
+
     this->icons->remove(icon);
 
     // Adjust subsetted property(ies)
@@ -104,12 +108,16 @@ QStereotype::~QStereotype()
  */
 const QSet<QImage *> *QStereotype::icons() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QStereotype);
     return d->icons;
 }
 
 void QStereotype::addIcon(QImage *icon)
 {
+    // This is a read-write association end
+
     QTUML_D(QStereotype);
     if (!d->icons->contains(icon)) {
         d->addIcon(icon);
@@ -118,6 +126,8 @@ void QStereotype::addIcon(QImage *icon)
 
 void QStereotype::removeIcon(QImage *icon)
 {
+    // This is a read-write association end
+
     QTUML_D(QStereotype);
     if (d->icons->contains(icon)) {
         d->removeIcon(icon);
@@ -129,7 +139,12 @@ void QStereotype::removeIcon(QImage *icon)
  */
 QProfile *QStereotype::profile() const
 {
+    // This is a read-only derived association end
+
     qWarning("QStereotype::profile: to be implemented (this is a derived associationend)");
+
+    QTUML_D(const QStereotype);
+    //return <derived-return>;
 }
 
 /*!

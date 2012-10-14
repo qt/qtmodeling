@@ -60,16 +60,22 @@ QTriggerPrivate::~QTriggerPrivate()
 
 void QTriggerPrivate::addPort(QPort *port)
 {
+    // This is a read-write association end
+
     this->ports->insert(port);
 }
 
 void QTriggerPrivate::removePort(QPort *port)
 {
+    // This is a read-write association end
+
     this->ports->remove(port);
 }
 
 void QTriggerPrivate::setEvent(QEvent *event)
 {
+    // This is a read-write association end
+
     this->event = event;
 }
 
@@ -103,12 +109,16 @@ QTrigger::~QTrigger()
  */
 const QSet<QPort *> *QTrigger::ports() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTrigger);
     return d->ports;
 }
 
 void QTrigger::addPort(QPort *port)
 {
+    // This is a read-write association end
+
     QTUML_D(QTrigger);
     if (!d->ports->contains(port)) {
         d->addPort(port);
@@ -117,6 +127,8 @@ void QTrigger::addPort(QPort *port)
 
 void QTrigger::removePort(QPort *port)
 {
+    // This is a read-write association end
+
     QTUML_D(QTrigger);
     if (d->ports->contains(port)) {
         d->removePort(port);
@@ -128,12 +140,16 @@ void QTrigger::removePort(QPort *port)
  */
 QEvent *QTrigger::event() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QTrigger);
     return d->event;
 }
 
 void QTrigger::setEvent(QEvent *event)
 {
+    // This is a read-write association end
+
     QTUML_D(QTrigger);
     if (d->event != event) {
         d->setEvent(event);

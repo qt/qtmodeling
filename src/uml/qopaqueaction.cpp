@@ -66,26 +66,36 @@ QOpaqueActionPrivate::~QOpaqueActionPrivate()
 
 void QOpaqueActionPrivate::addBody(QString body)
 {
+    // This is a read-write attribute
+
     this->bodies->append(body);
 }
 
 void QOpaqueActionPrivate::removeBody(QString body)
 {
+    // This is a read-write attribute
+
     this->bodies->removeAll(body);
 }
 
 void QOpaqueActionPrivate::addLanguage(QString language)
 {
+    // This is a read-write attribute
+
     this->languages->append(language);
 }
 
 void QOpaqueActionPrivate::removeLanguage(QString language)
 {
+    // This is a read-write attribute
+
     this->languages->removeAll(language);
 }
 
 void QOpaqueActionPrivate::addInputValue(QInputPin *inputValue)
 {
+    // This is a read-write association end
+
     this->inputValues->insert(inputValue);
 
     // Adjust subsetted property(ies)
@@ -94,6 +104,8 @@ void QOpaqueActionPrivate::addInputValue(QInputPin *inputValue)
 
 void QOpaqueActionPrivate::removeInputValue(QInputPin *inputValue)
 {
+    // This is a read-write association end
+
     this->inputValues->remove(inputValue);
 
     // Adjust subsetted property(ies)
@@ -102,6 +114,8 @@ void QOpaqueActionPrivate::removeInputValue(QInputPin *inputValue)
 
 void QOpaqueActionPrivate::addOutputValue(QOutputPin *outputValue)
 {
+    // This is a read-write association end
+
     this->outputValues->insert(outputValue);
 
     // Adjust subsetted property(ies)
@@ -110,6 +124,8 @@ void QOpaqueActionPrivate::addOutputValue(QOutputPin *outputValue)
 
 void QOpaqueActionPrivate::removeOutputValue(QOutputPin *outputValue)
 {
+    // This is a read-write association end
+
     this->outputValues->remove(outputValue);
 
     // Adjust subsetted property(ies)
@@ -146,12 +162,16 @@ QOpaqueAction::~QOpaqueAction()
  */
 const QList<QString> *QOpaqueAction::bodies() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QOpaqueAction);
     return d->bodies;
 }
 
 void QOpaqueAction::addBody(QString body)
 {
+    // This is a read-write attribute
+
     QTUML_D(QOpaqueAction);
     if (!d->bodies->contains(body)) {
         d->addBody(body);
@@ -160,6 +180,8 @@ void QOpaqueAction::addBody(QString body)
 
 void QOpaqueAction::removeBody(QString body)
 {
+    // This is a read-write attribute
+
     QTUML_D(QOpaqueAction);
     if (d->bodies->contains(body)) {
         d->removeBody(body);
@@ -171,12 +193,16 @@ void QOpaqueAction::removeBody(QString body)
  */
 const QList<QString> *QOpaqueAction::languages() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QOpaqueAction);
     return d->languages;
 }
 
 void QOpaqueAction::addLanguage(QString language)
 {
+    // This is a read-write attribute
+
     QTUML_D(QOpaqueAction);
     if (!d->languages->contains(language)) {
         d->addLanguage(language);
@@ -185,6 +211,8 @@ void QOpaqueAction::addLanguage(QString language)
 
 void QOpaqueAction::removeLanguage(QString language)
 {
+    // This is a read-write attribute
+
     QTUML_D(QOpaqueAction);
     if (d->languages->contains(language)) {
         d->removeLanguage(language);
@@ -196,12 +224,16 @@ void QOpaqueAction::removeLanguage(QString language)
  */
 const QSet<QInputPin *> *QOpaqueAction::inputValues() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QOpaqueAction);
     return d->inputValues;
 }
 
 void QOpaqueAction::addInputValue(QInputPin *inputValue)
 {
+    // This is a read-write association end
+
     QTUML_D(QOpaqueAction);
     if (!d->inputValues->contains(inputValue)) {
         d->addInputValue(inputValue);
@@ -210,6 +242,8 @@ void QOpaqueAction::addInputValue(QInputPin *inputValue)
 
 void QOpaqueAction::removeInputValue(QInputPin *inputValue)
 {
+    // This is a read-write association end
+
     QTUML_D(QOpaqueAction);
     if (d->inputValues->contains(inputValue)) {
         d->removeInputValue(inputValue);
@@ -221,12 +255,16 @@ void QOpaqueAction::removeInputValue(QInputPin *inputValue)
  */
 const QSet<QOutputPin *> *QOpaqueAction::outputValues() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QOpaqueAction);
     return d->outputValues;
 }
 
 void QOpaqueAction::addOutputValue(QOutputPin *outputValue)
 {
+    // This is a read-write association end
+
     QTUML_D(QOpaqueAction);
     if (!d->outputValues->contains(outputValue)) {
         d->addOutputValue(outputValue);
@@ -235,6 +273,8 @@ void QOpaqueAction::addOutputValue(QOutputPin *outputValue)
 
 void QOpaqueAction::removeOutputValue(QOutputPin *outputValue)
 {
+    // This is a read-write association end
+
     QTUML_D(QOpaqueAction);
     if (d->outputValues->contains(outputValue)) {
         d->removeOutputValue(outputValue);

@@ -80,6 +80,8 @@ QStatePrivate::~QStatePrivate()
 
 void QStatePrivate::addRegion(QRegion *region)
 {
+    // This is a read-write association end
+
     this->regions->insert(region);
 
     // Adjust subsetted property(ies)
@@ -88,6 +90,8 @@ void QStatePrivate::addRegion(QRegion *region)
 
 void QStatePrivate::removeRegion(QRegion *region)
 {
+    // This is a read-write association end
+
     this->regions->remove(region);
 
     // Adjust subsetted property(ies)
@@ -96,6 +100,8 @@ void QStatePrivate::removeRegion(QRegion *region)
 
 void QStatePrivate::setExit(QBehavior *exit)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->exit);
 
@@ -107,6 +113,8 @@ void QStatePrivate::setExit(QBehavior *exit)
 
 void QStatePrivate::addConnection(QConnectionPointReference *connection)
 {
+    // This is a read-write association end
+
     this->connections->insert(connection);
 
     // Adjust subsetted property(ies)
@@ -115,6 +123,8 @@ void QStatePrivate::addConnection(QConnectionPointReference *connection)
 
 void QStatePrivate::removeConnection(QConnectionPointReference *connection)
 {
+    // This is a read-write association end
+
     this->connections->remove(connection);
 
     // Adjust subsetted property(ies)
@@ -123,6 +133,8 @@ void QStatePrivate::removeConnection(QConnectionPointReference *connection)
 
 void QStatePrivate::setRedefinedState(QState *redefinedState)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeRedefinedElement(this->redefinedState);
 
@@ -134,6 +146,8 @@ void QStatePrivate::setRedefinedState(QState *redefinedState)
 
 void QStatePrivate::addDeferrableTrigger(QTrigger *deferrableTrigger)
 {
+    // This is a read-write association end
+
     this->deferrableTriggers->insert(deferrableTrigger);
 
     // Adjust subsetted property(ies)
@@ -142,6 +156,8 @@ void QStatePrivate::addDeferrableTrigger(QTrigger *deferrableTrigger)
 
 void QStatePrivate::removeDeferrableTrigger(QTrigger *deferrableTrigger)
 {
+    // This is a read-write association end
+
     this->deferrableTriggers->remove(deferrableTrigger);
 
     // Adjust subsetted property(ies)
@@ -150,6 +166,8 @@ void QStatePrivate::removeDeferrableTrigger(QTrigger *deferrableTrigger)
 
 void QStatePrivate::addConnectionPoint(QPseudostate *connectionPoint)
 {
+    // This is a read-write association end
+
     this->connectionPoints->insert(connectionPoint);
 
     // Adjust subsetted property(ies)
@@ -158,6 +176,8 @@ void QStatePrivate::addConnectionPoint(QPseudostate *connectionPoint)
 
 void QStatePrivate::removeConnectionPoint(QPseudostate *connectionPoint)
 {
+    // This is a read-write association end
+
     this->connectionPoints->remove(connectionPoint);
 
     // Adjust subsetted property(ies)
@@ -166,6 +186,8 @@ void QStatePrivate::removeConnectionPoint(QPseudostate *connectionPoint)
 
 void QStatePrivate::setEntry(QBehavior *entry)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->entry);
 
@@ -177,6 +199,8 @@ void QStatePrivate::setEntry(QBehavior *entry)
 
 void QStatePrivate::setDoActivity(QBehavior *doActivity)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->doActivity);
 
@@ -188,11 +212,15 @@ void QStatePrivate::setDoActivity(QBehavior *doActivity)
 
 void QStatePrivate::setSubmachine(QStateMachine *submachine)
 {
+    // This is a read-write association end
+
     this->submachine = submachine;
 }
 
 void QStatePrivate::setStateInvariant(QConstraint *stateInvariant)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedRule(this->stateInvariant);
 
@@ -232,7 +260,12 @@ QState::~QState()
  */
 bool QState::isSimple() const
 {
+    // This is a read-only derived attribute
+
     qWarning("QState::isSimple: to be implemented (this is a derived attribute)");
+
+    QTUML_D(const QState);
+    //return <derived-return>;
 }
 
 /*!
@@ -240,7 +273,12 @@ bool QState::isSimple() const
  */
 bool QState::isComposite() const
 {
+    // This is a read-only derived attribute
+
     qWarning("QState::isComposite: to be implemented (this is a derived attribute)");
+
+    QTUML_D(const QState);
+    //return <derived-return>;
 }
 
 /*!
@@ -248,7 +286,12 @@ bool QState::isComposite() const
  */
 bool QState::isOrthogonal() const
 {
+    // This is a read-only derived attribute
+
     qWarning("QState::isOrthogonal: to be implemented (this is a derived attribute)");
+
+    QTUML_D(const QState);
+    //return <derived-return>;
 }
 
 /*!
@@ -256,7 +299,12 @@ bool QState::isOrthogonal() const
  */
 bool QState::isSubmachineState() const
 {
+    // This is a read-only derived attribute
+
     qWarning("QState::isSubmachineState: to be implemented (this is a derived attribute)");
+
+    QTUML_D(const QState);
+    //return <derived-return>;
 }
 
 /*!
@@ -264,12 +312,16 @@ bool QState::isSubmachineState() const
  */
 const QSet<QRegion *> *QState::regions() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QState);
     return d->regions;
 }
 
 void QState::addRegion(QRegion *region)
 {
+    // This is a read-write association end
+
     QTUML_D(QState);
     if (!d->regions->contains(region)) {
         d->addRegion(region);
@@ -281,6 +333,8 @@ void QState::addRegion(QRegion *region)
 
 void QState::removeRegion(QRegion *region)
 {
+    // This is a read-write association end
+
     QTUML_D(QState);
     if (d->regions->contains(region)) {
         d->removeRegion(region);
@@ -295,12 +349,16 @@ void QState::removeRegion(QRegion *region)
  */
 QBehavior *QState::exit() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QState);
     return d->exit;
 }
 
 void QState::setExit(QBehavior *exit)
 {
+    // This is a read-write association end
+
     QTUML_D(QState);
     if (d->exit != exit) {
         d->setExit(exit);
@@ -312,12 +370,16 @@ void QState::setExit(QBehavior *exit)
  */
 const QSet<QConnectionPointReference *> *QState::connections() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QState);
     return d->connections;
 }
 
 void QState::addConnection(QConnectionPointReference *connection)
 {
+    // This is a read-write association end
+
     QTUML_D(QState);
     if (!d->connections->contains(connection)) {
         d->addConnection(connection);
@@ -329,6 +391,8 @@ void QState::addConnection(QConnectionPointReference *connection)
 
 void QState::removeConnection(QConnectionPointReference *connection)
 {
+    // This is a read-write association end
+
     QTUML_D(QState);
     if (d->connections->contains(connection)) {
         d->removeConnection(connection);
@@ -343,7 +407,12 @@ void QState::removeConnection(QConnectionPointReference *connection)
  */
 QClassifier *QState::redefinitionContext() const
 {
+    // This is a read-only derived association end
+
     qWarning("QState::redefinitionContext: to be implemented (this is a derived associationend)");
+
+    QTUML_D(const QState);
+    //return <derived-return>;
 }
 
 /*!
@@ -351,12 +420,16 @@ QClassifier *QState::redefinitionContext() const
  */
 QState *QState::redefinedState() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QState);
     return d->redefinedState;
 }
 
 void QState::setRedefinedState(QState *redefinedState)
 {
+    // This is a read-write association end
+
     QTUML_D(QState);
     if (d->redefinedState != redefinedState) {
         d->setRedefinedState(redefinedState);
@@ -368,12 +441,16 @@ void QState::setRedefinedState(QState *redefinedState)
  */
 const QSet<QTrigger *> *QState::deferrableTriggers() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QState);
     return d->deferrableTriggers;
 }
 
 void QState::addDeferrableTrigger(QTrigger *deferrableTrigger)
 {
+    // This is a read-write association end
+
     QTUML_D(QState);
     if (!d->deferrableTriggers->contains(deferrableTrigger)) {
         d->addDeferrableTrigger(deferrableTrigger);
@@ -382,6 +459,8 @@ void QState::addDeferrableTrigger(QTrigger *deferrableTrigger)
 
 void QState::removeDeferrableTrigger(QTrigger *deferrableTrigger)
 {
+    // This is a read-write association end
+
     QTUML_D(QState);
     if (d->deferrableTriggers->contains(deferrableTrigger)) {
         d->removeDeferrableTrigger(deferrableTrigger);
@@ -393,12 +472,16 @@ void QState::removeDeferrableTrigger(QTrigger *deferrableTrigger)
  */
 const QSet<QPseudostate *> *QState::connectionPoints() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QState);
     return d->connectionPoints;
 }
 
 void QState::addConnectionPoint(QPseudostate *connectionPoint)
 {
+    // This is a read-write association end
+
     QTUML_D(QState);
     if (!d->connectionPoints->contains(connectionPoint)) {
         d->addConnectionPoint(connectionPoint);
@@ -410,6 +493,8 @@ void QState::addConnectionPoint(QPseudostate *connectionPoint)
 
 void QState::removeConnectionPoint(QPseudostate *connectionPoint)
 {
+    // This is a read-write association end
+
     QTUML_D(QState);
     if (d->connectionPoints->contains(connectionPoint)) {
         d->removeConnectionPoint(connectionPoint);
@@ -424,12 +509,16 @@ void QState::removeConnectionPoint(QPseudostate *connectionPoint)
  */
 QBehavior *QState::entry() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QState);
     return d->entry;
 }
 
 void QState::setEntry(QBehavior *entry)
 {
+    // This is a read-write association end
+
     QTUML_D(QState);
     if (d->entry != entry) {
         d->setEntry(entry);
@@ -441,12 +530,16 @@ void QState::setEntry(QBehavior *entry)
  */
 QBehavior *QState::doActivity() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QState);
     return d->doActivity;
 }
 
 void QState::setDoActivity(QBehavior *doActivity)
 {
+    // This is a read-write association end
+
     QTUML_D(QState);
     if (d->doActivity != doActivity) {
         d->setDoActivity(doActivity);
@@ -458,12 +551,16 @@ void QState::setDoActivity(QBehavior *doActivity)
  */
 QStateMachine *QState::submachine() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QState);
     return d->submachine;
 }
 
 void QState::setSubmachine(QStateMachine *submachine)
 {
+    // This is a read-write association end
+
     QTUML_D(QState);
     if (d->submachine != submachine) {
         d->setSubmachine(submachine);
@@ -478,12 +575,16 @@ void QState::setSubmachine(QStateMachine *submachine)
  */
 QConstraint *QState::stateInvariant() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QState);
     return d->stateInvariant;
 }
 
 void QState::setStateInvariant(QConstraint *stateInvariant)
 {
+    // This is a read-write association end
+
     QTUML_D(QState);
     if (d->stateInvariant != stateInvariant) {
         d->setStateInvariant(stateInvariant);

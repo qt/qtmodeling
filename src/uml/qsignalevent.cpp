@@ -57,6 +57,8 @@ QSignalEventPrivate::~QSignalEventPrivate()
 
 void QSignalEventPrivate::setSignal(QSignal *signal)
 {
+    // This is a read-write association end
+
     this->signal = signal;
 }
 
@@ -90,12 +92,16 @@ QSignalEvent::~QSignalEvent()
  */
 QSignal *QSignalEvent::signal() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QSignalEvent);
     return d->signal;
 }
 
 void QSignalEvent::setSignal(QSignal *signal)
 {
+    // This is a read-write association end
+
     QTUML_D(QSignalEvent);
     if (d->signal != signal) {
         d->setSignal(signal);

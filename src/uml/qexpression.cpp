@@ -58,11 +58,15 @@ QExpressionPrivate::~QExpressionPrivate()
 
 void QExpressionPrivate::setSymbol(QString symbol)
 {
+    // This is a read-write attribute
+
     this->symbol = symbol;
 }
 
 void QExpressionPrivate::addOperand(QValueSpecification *operand)
 {
+    // This is a read-write association end
+
     this->operands->append(operand);
 
     // Adjust subsetted property(ies)
@@ -71,6 +75,8 @@ void QExpressionPrivate::addOperand(QValueSpecification *operand)
 
 void QExpressionPrivate::removeOperand(QValueSpecification *operand)
 {
+    // This is a read-write association end
+
     this->operands->removeAll(operand);
 
     // Adjust subsetted property(ies)
@@ -107,12 +113,16 @@ QExpression::~QExpression()
  */
 QString QExpression::symbol() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QExpression);
     return d->symbol;
 }
 
 void QExpression::setSymbol(QString symbol)
 {
+    // This is a read-write attribute
+
     QTUML_D(QExpression);
     if (d->symbol != symbol) {
         d->setSymbol(symbol);
@@ -124,12 +134,16 @@ void QExpression::setSymbol(QString symbol)
  */
 const QList<QValueSpecification *> *QExpression::operands() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QExpression);
     return d->operands;
 }
 
 void QExpression::addOperand(QValueSpecification *operand)
 {
+    // This is a read-write association end
+
     QTUML_D(QExpression);
     if (!d->operands->contains(operand)) {
         d->addOperand(operand);
@@ -138,6 +152,8 @@ void QExpression::addOperand(QValueSpecification *operand)
 
 void QExpression::removeOperand(QValueSpecification *operand)
 {
+    // This is a read-write association end
+
     QTUML_D(QExpression);
     if (d->operands->contains(operand)) {
         d->removeOperand(operand);

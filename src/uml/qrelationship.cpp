@@ -57,11 +57,15 @@ QRelationshipPrivate::~QRelationshipPrivate()
 
 void QRelationshipPrivate::addRelatedElement(QElement *relatedElement)
 {
+    // This is a read-only derived-union association end
+
     this->relatedElements->insert(relatedElement);
 }
 
 void QRelationshipPrivate::removeRelatedElement(QElement *relatedElement)
 {
+    // This is a read-only derived-union association end
+
     this->relatedElements->remove(relatedElement);
 }
 
@@ -86,6 +90,8 @@ QRelationship::~QRelationship()
  */
 const QSet<QElement *> *QRelationship::relatedElements() const
 {
+    // This is a read-only derived-union association end
+
     QTUML_D(const QRelationship);
     return d->relatedElements;
 }

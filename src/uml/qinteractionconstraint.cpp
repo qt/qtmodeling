@@ -59,6 +59,8 @@ QInteractionConstraintPrivate::~QInteractionConstraintPrivate()
 
 void QInteractionConstraintPrivate::setMaxint(QValueSpecification *maxint)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->maxint);
 
@@ -70,6 +72,8 @@ void QInteractionConstraintPrivate::setMaxint(QValueSpecification *maxint)
 
 void QInteractionConstraintPrivate::setMinint(QValueSpecification *minint)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->minint);
 
@@ -109,12 +113,16 @@ QInteractionConstraint::~QInteractionConstraint()
  */
 QValueSpecification *QInteractionConstraint::maxint() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInteractionConstraint);
     return d->maxint;
 }
 
 void QInteractionConstraint::setMaxint(QValueSpecification *maxint)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteractionConstraint);
     if (d->maxint != maxint) {
         d->setMaxint(maxint);
@@ -126,12 +134,16 @@ void QInteractionConstraint::setMaxint(QValueSpecification *maxint)
  */
 QValueSpecification *QInteractionConstraint::minint() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QInteractionConstraint);
     return d->minint;
 }
 
 void QInteractionConstraint::setMinint(QValueSpecification *minint)
 {
+    // This is a read-write association end
+
     QTUML_D(QInteractionConstraint);
     if (d->minint != minint) {
         d->setMinint(minint);

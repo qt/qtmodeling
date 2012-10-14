@@ -62,26 +62,36 @@ QOccurrenceSpecificationPrivate::~QOccurrenceSpecificationPrivate()
 
 void QOccurrenceSpecificationPrivate::setCovered(QLifeline *covered)
 {
+    // This is a read-write association end
+
     this->covered = covered;
 }
 
 void QOccurrenceSpecificationPrivate::addToAfter(QGeneralOrdering *toAfter)
 {
+    // This is a read-write association end
+
     this->toAfter->insert(toAfter);
 }
 
 void QOccurrenceSpecificationPrivate::removeToAfter(QGeneralOrdering *toAfter)
 {
+    // This is a read-write association end
+
     this->toAfter->remove(toAfter);
 }
 
 void QOccurrenceSpecificationPrivate::addToBefore(QGeneralOrdering *toBefore)
 {
+    // This is a read-write association end
+
     this->toBefore->insert(toBefore);
 }
 
 void QOccurrenceSpecificationPrivate::removeToBefore(QGeneralOrdering *toBefore)
 {
+    // This is a read-write association end
+
     this->toBefore->remove(toBefore);
 }
 
@@ -115,12 +125,16 @@ QOccurrenceSpecification::~QOccurrenceSpecification()
  */
 QLifeline *QOccurrenceSpecification::covered() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QOccurrenceSpecification);
     return d->covered;
 }
 
 void QOccurrenceSpecification::setCovered(QLifeline *covered)
 {
+    // This is a read-write association end
+
     QTUML_D(QOccurrenceSpecification);
     if (d->covered != covered) {
         d->setCovered(covered);
@@ -132,12 +146,16 @@ void QOccurrenceSpecification::setCovered(QLifeline *covered)
  */
 const QSet<QGeneralOrdering *> *QOccurrenceSpecification::toAfter() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QOccurrenceSpecification);
     return d->toAfter;
 }
 
 void QOccurrenceSpecification::addToAfter(QGeneralOrdering *toAfter)
 {
+    // This is a read-write association end
+
     QTUML_D(QOccurrenceSpecification);
     if (!d->toAfter->contains(toAfter)) {
         d->addToAfter(toAfter);
@@ -149,6 +167,8 @@ void QOccurrenceSpecification::addToAfter(QGeneralOrdering *toAfter)
 
 void QOccurrenceSpecification::removeToAfter(QGeneralOrdering *toAfter)
 {
+    // This is a read-write association end
+
     QTUML_D(QOccurrenceSpecification);
     if (d->toAfter->contains(toAfter)) {
         d->removeToAfter(toAfter);
@@ -163,12 +183,16 @@ void QOccurrenceSpecification::removeToAfter(QGeneralOrdering *toAfter)
  */
 const QSet<QGeneralOrdering *> *QOccurrenceSpecification::toBefore() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QOccurrenceSpecification);
     return d->toBefore;
 }
 
 void QOccurrenceSpecification::addToBefore(QGeneralOrdering *toBefore)
 {
+    // This is a read-write association end
+
     QTUML_D(QOccurrenceSpecification);
     if (!d->toBefore->contains(toBefore)) {
         d->addToBefore(toBefore);
@@ -180,6 +204,8 @@ void QOccurrenceSpecification::addToBefore(QGeneralOrdering *toBefore)
 
 void QOccurrenceSpecification::removeToBefore(QGeneralOrdering *toBefore)
 {
+    // This is a read-write association end
+
     QTUML_D(QOccurrenceSpecification);
     if (d->toBefore->contains(toBefore)) {
         d->removeToBefore(toBefore);

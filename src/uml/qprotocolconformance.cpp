@@ -60,6 +60,8 @@ QProtocolConformancePrivate::~QProtocolConformancePrivate()
 
 void QProtocolConformancePrivate::setSpecificMachine(QProtocolStateMachine *specificMachine)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeSource(this->specificMachine);
 
@@ -72,6 +74,8 @@ void QProtocolConformancePrivate::setSpecificMachine(QProtocolStateMachine *spec
 
 void QProtocolConformancePrivate::setGeneralMachine(QProtocolStateMachine *generalMachine)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeTarget(this->generalMachine);
 
@@ -111,12 +115,16 @@ QProtocolConformance::~QProtocolConformance()
  */
 QProtocolStateMachine *QProtocolConformance::specificMachine() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QProtocolConformance);
     return d->specificMachine;
 }
 
 void QProtocolConformance::setSpecificMachine(QProtocolStateMachine *specificMachine)
 {
+    // This is a read-write association end
+
     QTUML_D(QProtocolConformance);
     if (d->specificMachine != specificMachine) {
         d->setSpecificMachine(specificMachine);
@@ -131,12 +139,16 @@ void QProtocolConformance::setSpecificMachine(QProtocolStateMachine *specificMac
  */
 QProtocolStateMachine *QProtocolConformance::generalMachine() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QProtocolConformance);
     return d->generalMachine;
 }
 
 void QProtocolConformance::setGeneralMachine(QProtocolStateMachine *generalMachine)
 {
+    // This is a read-write association end
+
     QTUML_D(QProtocolConformance);
     if (d->generalMachine != generalMachine) {
         d->setGeneralMachine(generalMachine);

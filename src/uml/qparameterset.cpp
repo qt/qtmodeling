@@ -62,16 +62,22 @@ QParameterSetPrivate::~QParameterSetPrivate()
 
 void QParameterSetPrivate::addParameter(QParameter *parameter)
 {
+    // This is a read-write association end
+
     this->parameters->insert(parameter);
 }
 
 void QParameterSetPrivate::removeParameter(QParameter *parameter)
 {
+    // This is a read-write association end
+
     this->parameters->remove(parameter);
 }
 
 void QParameterSetPrivate::addCondition(QConstraint *condition)
 {
+    // This is a read-write association end
+
     this->conditions->insert(condition);
 
     // Adjust subsetted property(ies)
@@ -80,6 +86,8 @@ void QParameterSetPrivate::addCondition(QConstraint *condition)
 
 void QParameterSetPrivate::removeCondition(QConstraint *condition)
 {
+    // This is a read-write association end
+
     this->conditions->remove(condition);
 
     // Adjust subsetted property(ies)
@@ -116,12 +124,16 @@ QParameterSet::~QParameterSet()
  */
 const QSet<QParameter *> *QParameterSet::parameters() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QParameterSet);
     return d->parameters;
 }
 
 void QParameterSet::addParameter(QParameter *parameter)
 {
+    // This is a read-write association end
+
     QTUML_D(QParameterSet);
     if (!d->parameters->contains(parameter)) {
         d->addParameter(parameter);
@@ -133,6 +145,8 @@ void QParameterSet::addParameter(QParameter *parameter)
 
 void QParameterSet::removeParameter(QParameter *parameter)
 {
+    // This is a read-write association end
+
     QTUML_D(QParameterSet);
     if (d->parameters->contains(parameter)) {
         d->removeParameter(parameter);
@@ -147,12 +161,16 @@ void QParameterSet::removeParameter(QParameter *parameter)
  */
 const QSet<QConstraint *> *QParameterSet::conditions() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QParameterSet);
     return d->conditions;
 }
 
 void QParameterSet::addCondition(QConstraint *condition)
 {
+    // This is a read-write association end
+
     QTUML_D(QParameterSet);
     if (!d->conditions->contains(condition)) {
         d->addCondition(condition);
@@ -161,6 +179,8 @@ void QParameterSet::addCondition(QConstraint *condition)
 
 void QParameterSet::removeCondition(QConstraint *condition)
 {
+    // This is a read-write association end
+
     QTUML_D(QParameterSet);
     if (d->conditions->contains(condition)) {
         d->removeCondition(condition);

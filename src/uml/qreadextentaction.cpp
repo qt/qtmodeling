@@ -60,11 +60,15 @@ QReadExtentActionPrivate::~QReadExtentActionPrivate()
 
 void QReadExtentActionPrivate::setClassifier(QClassifier *classifier)
 {
+    // This is a read-write association end
+
     this->classifier = classifier;
 }
 
 void QReadExtentActionPrivate::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOutput(this->result);
 
@@ -104,12 +108,16 @@ QReadExtentAction::~QReadExtentAction()
  */
 QClassifier *QReadExtentAction::classifier() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReadExtentAction);
     return d->classifier;
 }
 
 void QReadExtentAction::setClassifier(QClassifier *classifier)
 {
+    // This is a read-write association end
+
     QTUML_D(QReadExtentAction);
     if (d->classifier != classifier) {
         d->setClassifier(classifier);
@@ -121,12 +129,16 @@ void QReadExtentAction::setClassifier(QClassifier *classifier)
  */
 QOutputPin *QReadExtentAction::result() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QReadExtentAction);
     return d->result;
 }
 
 void QReadExtentAction::setResult(QOutputPin *result)
 {
+    // This is a read-write association end
+
     QTUML_D(QReadExtentAction);
     if (d->result != result) {
         d->setResult(result);

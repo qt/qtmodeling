@@ -59,6 +59,8 @@ QParameterableElementPrivate::~QParameterableElementPrivate()
 
 void QParameterableElementPrivate::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
 {
+    // This is a read-write association end
+
     this->owningTemplateParameter = owningTemplateParameter;
 
     // Adjust subsetted property(ies)
@@ -68,6 +70,8 @@ void QParameterableElementPrivate::setOwningTemplateParameter(QTemplateParameter
 
 void QParameterableElementPrivate::setTemplateParameter(QTemplateParameter *templateParameter)
 {
+    // This is a read-write association end
+
     this->templateParameter = templateParameter;
 }
 
@@ -92,12 +96,16 @@ QParameterableElement::~QParameterableElement()
  */
 QTemplateParameter *QParameterableElement::owningTemplateParameter() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QParameterableElement);
     return d->owningTemplateParameter;
 }
 
 void QParameterableElement::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
 {
+    // This is a read-write association end
+
     QTUML_D(QParameterableElement);
     if (d->owningTemplateParameter != owningTemplateParameter) {
         d->setOwningTemplateParameter(owningTemplateParameter);
@@ -112,12 +120,16 @@ void QParameterableElement::setOwningTemplateParameter(QTemplateParameter *ownin
  */
 QTemplateParameter *QParameterableElement::templateParameter() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QParameterableElement);
     return d->templateParameter;
 }
 
 void QParameterableElement::setTemplateParameter(QTemplateParameter *templateParameter)
 {
+    // This is a read-write association end
+
     QTUML_D(QParameterableElement);
     if (d->templateParameter != templateParameter) {
         d->setTemplateParameter(templateParameter);

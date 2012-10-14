@@ -61,11 +61,15 @@ QCollaborationUsePrivate::~QCollaborationUsePrivate()
 
 void QCollaborationUsePrivate::setType(QCollaboration *type)
 {
+    // This is a read-write association end
+
     this->type = type;
 }
 
 void QCollaborationUsePrivate::addRoleBinding(QDependency *roleBinding)
 {
+    // This is a read-write association end
+
     this->roleBindings->insert(roleBinding);
 
     // Adjust subsetted property(ies)
@@ -74,6 +78,8 @@ void QCollaborationUsePrivate::addRoleBinding(QDependency *roleBinding)
 
 void QCollaborationUsePrivate::removeRoleBinding(QDependency *roleBinding)
 {
+    // This is a read-write association end
+
     this->roleBindings->remove(roleBinding);
 
     // Adjust subsetted property(ies)
@@ -110,12 +116,16 @@ QCollaborationUse::~QCollaborationUse()
  */
 QCollaboration *QCollaborationUse::type() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QCollaborationUse);
     return d->type;
 }
 
 void QCollaborationUse::setType(QCollaboration *type)
 {
+    // This is a read-write association end
+
     QTUML_D(QCollaborationUse);
     if (d->type != type) {
         d->setType(type);
@@ -127,12 +137,16 @@ void QCollaborationUse::setType(QCollaboration *type)
  */
 const QSet<QDependency *> *QCollaborationUse::roleBindings() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QCollaborationUse);
     return d->roleBindings;
 }
 
 void QCollaborationUse::addRoleBinding(QDependency *roleBinding)
 {
+    // This is a read-write association end
+
     QTUML_D(QCollaborationUse);
     if (!d->roleBindings->contains(roleBinding)) {
         d->addRoleBinding(roleBinding);
@@ -141,6 +155,8 @@ void QCollaborationUse::addRoleBinding(QDependency *roleBinding)
 
 void QCollaborationUse::removeRoleBinding(QDependency *roleBinding)
 {
+    // This is a read-write association end
+
     QTUML_D(QCollaborationUse);
     if (d->roleBindings->contains(roleBinding)) {
         d->removeRoleBinding(roleBinding);

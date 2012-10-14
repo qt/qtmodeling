@@ -60,6 +60,8 @@ QExtensionPrivate::~QExtensionPrivate()
 
 void QExtensionPrivate::setOwnedEnd(QExtensionEnd *ownedEnd)
 {
+    // This is a read-write association end
+
     this->ownedEnd = ownedEnd;
 }
 
@@ -93,7 +95,12 @@ QExtension::~QExtension()
  */
 bool QExtension::isRequired() const
 {
+    // This is a read-only derived attribute
+
     qWarning("QExtension::isRequired: to be implemented (this is a derived attribute)");
+
+    QTUML_D(const QExtension);
+    //return <derived-return>;
 }
 
 /*!
@@ -101,7 +108,12 @@ bool QExtension::isRequired() const
  */
 QClass *QExtension::metaclass() const
 {
+    // This is a read-only derived association end
+
     qWarning("QExtension::metaclass: to be implemented (this is a derived associationend)");
+
+    QTUML_D(const QExtension);
+    //return <derived-return>;
 }
 
 /*!
@@ -109,12 +121,16 @@ QClass *QExtension::metaclass() const
  */
 QExtensionEnd *QExtension::ownedEnd() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QExtension);
     return d->ownedEnd;
 }
 
 void QExtension::setOwnedEnd(QExtensionEnd *ownedEnd)
 {
+    // This is a read-write association end
+
     QTUML_D(QExtension);
     if (d->ownedEnd != ownedEnd) {
         d->setOwnedEnd(ownedEnd);

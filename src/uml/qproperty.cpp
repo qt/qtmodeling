@@ -85,41 +85,57 @@ QPropertyPrivate::~QPropertyPrivate()
 
 void QPropertyPrivate::setDerived(bool isDerived)
 {
+    // This is a read-write attribute
+
     this->isDerived = isDerived;
 }
 
 void QPropertyPrivate::setReadOnly(bool isReadOnly)
 {
+    // This is a read-write attribute
+
     this->isReadOnly = isReadOnly;
 }
 
 void QPropertyPrivate::setID(bool isID)
 {
+    // This is a read-write attribute
+
     this->isID = isID;
 }
 
 void QPropertyPrivate::setDerivedUnion(bool isDerivedUnion)
 {
+    // This is a read-write attribute
+
     this->isDerivedUnion = isDerivedUnion;
 }
 
 void QPropertyPrivate::setAggregation(QtUml::AggregationKind aggregation)
 {
+    // This is a read-write attribute
+
     this->aggregation = aggregation;
 }
 
 void QPropertyPrivate::addSubsettedProperty(QProperty *subsettedProperty)
 {
+    // This is a read-write association end
+
     this->subsettedProperties->insert(subsettedProperty);
 }
 
 void QPropertyPrivate::removeSubsettedProperty(QProperty *subsettedProperty)
 {
+    // This is a read-write association end
+
     this->subsettedProperties->remove(subsettedProperty);
 }
 
 void QPropertyPrivate::setOwningAssociation(QAssociation *owningAssociation)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeFeaturingClassifier(this->owningAssociation);
     removeRedefinitionContext(this->owningAssociation);
@@ -135,6 +151,8 @@ void QPropertyPrivate::setOwningAssociation(QAssociation *owningAssociation)
 
 void QPropertyPrivate::addQualifier(QProperty *qualifier)
 {
+    // This is a read-write association end
+
     this->qualifiers->append(qualifier);
 
     // Adjust subsetted property(ies)
@@ -143,6 +161,8 @@ void QPropertyPrivate::addQualifier(QProperty *qualifier)
 
 void QPropertyPrivate::removeQualifier(QProperty *qualifier)
 {
+    // This is a read-write association end
+
     this->qualifiers->removeAll(qualifier);
 
     // Adjust subsetted property(ies)
@@ -151,6 +171,8 @@ void QPropertyPrivate::removeQualifier(QProperty *qualifier)
 
 void QPropertyPrivate::setDefaultValue(QValueSpecification *defaultValue)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeOwnedElement(this->defaultValue);
 
@@ -162,6 +184,8 @@ void QPropertyPrivate::setDefaultValue(QValueSpecification *defaultValue)
 
 void QPropertyPrivate::setClass_(QClass *class_)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeFeaturingClassifier(this->class_);
     removeRedefinitionContext(this->class_);
@@ -176,6 +200,8 @@ void QPropertyPrivate::setClass_(QClass *class_)
 
 void QPropertyPrivate::setAssociationEnd(QProperty *associationEnd)
 {
+    // This is a read-write association end
+
     this->associationEnd = associationEnd;
 
     // Adjust subsetted property(ies)
@@ -184,6 +210,8 @@ void QPropertyPrivate::setAssociationEnd(QProperty *associationEnd)
 
 void QPropertyPrivate::setDatatype(QDataType *datatype)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeFeaturingClassifier(this->datatype);
     removeRedefinitionContext(this->datatype);
@@ -198,6 +226,8 @@ void QPropertyPrivate::setDatatype(QDataType *datatype)
 
 void QPropertyPrivate::addRedefinedProperty(QProperty *redefinedProperty)
 {
+    // This is a read-write association end
+
     this->redefinedProperties->insert(redefinedProperty);
 
     // Adjust subsetted property(ies)
@@ -206,6 +236,8 @@ void QPropertyPrivate::addRedefinedProperty(QProperty *redefinedProperty)
 
 void QPropertyPrivate::removeRedefinedProperty(QProperty *redefinedProperty)
 {
+    // This is a read-write association end
+
     this->redefinedProperties->remove(redefinedProperty);
 
     // Adjust subsetted property(ies)
@@ -214,11 +246,15 @@ void QPropertyPrivate::removeRedefinedProperty(QProperty *redefinedProperty)
 
 void QPropertyPrivate::setAssociation(QAssociation *association)
 {
+    // This is a read-write association end
+
     this->association = association;
 }
 
 void QPropertyPrivate::setInterface(QInterface *interface)
 {
+    // This is a read-write association end
+
     // Adjust subsetted property(ies)
     removeFeaturingClassifier(this->interface);
     removeRedefinitionContext(this->interface);
@@ -261,12 +297,16 @@ QProperty::~QProperty()
  */
 bool QProperty::isDerived() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QProperty);
     return d->isDerived;
 }
 
 void QProperty::setDerived(bool isDerived)
 {
+    // This is a read-write attribute
+
     QTUML_D(QProperty);
     if (d->isDerived != isDerived) {
         d->setDerived(isDerived);
@@ -278,12 +318,24 @@ void QProperty::setDerived(bool isDerived)
  */
 QString QProperty::default_() const
 {
+    // This is a read-write derived attribute
+
     qWarning("QProperty::default_: to be implemented (this is a derived attribute)");
+
+    QTUML_D(const QProperty);
+    //return <derived-return>;
 }
 
 void QProperty::setDefault_(QString default_)
 {
+    // This is a read-write derived attribute
+
     qWarning("QProperty::setDefault_: to be implemented (this is a derived attribute)");
+
+    QTUML_D(QProperty);
+    if (true /* <change-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
@@ -291,12 +343,24 @@ void QProperty::setDefault_(QString default_)
  */
 bool QProperty::isComposite() const
 {
+    // This is a read-write derived attribute
+
     qWarning("QProperty::isComposite: to be implemented (this is a derived attribute)");
+
+    QTUML_D(const QProperty);
+    //return <derived-return>;
 }
 
 void QProperty::setComposite(bool isComposite)
 {
+    // This is a read-write derived attribute
+
     qWarning("QProperty::setComposite: to be implemented (this is a derived attribute)");
+
+    QTUML_D(QProperty);
+    if (true /* <change-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
@@ -304,12 +368,16 @@ void QProperty::setComposite(bool isComposite)
  */
 bool QProperty::isReadOnly() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QProperty);
     return d->isReadOnly;
 }
 
 void QProperty::setReadOnly(bool isReadOnly)
 {
+    // This is a read-write attribute
+
     QTUML_D(QProperty);
     if (d->isReadOnly != isReadOnly) {
         d->setReadOnly(isReadOnly);
@@ -321,12 +389,16 @@ void QProperty::setReadOnly(bool isReadOnly)
  */
 bool QProperty::isID() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QProperty);
     return d->isID;
 }
 
 void QProperty::setID(bool isID)
 {
+    // This is a read-write attribute
+
     QTUML_D(QProperty);
     if (d->isID != isID) {
         d->setID(isID);
@@ -338,12 +410,16 @@ void QProperty::setID(bool isID)
  */
 bool QProperty::isDerivedUnion() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QProperty);
     return d->isDerivedUnion;
 }
 
 void QProperty::setDerivedUnion(bool isDerivedUnion)
 {
+    // This is a read-write attribute
+
     QTUML_D(QProperty);
     if (d->isDerivedUnion != isDerivedUnion) {
         d->setDerivedUnion(isDerivedUnion);
@@ -355,12 +431,16 @@ void QProperty::setDerivedUnion(bool isDerivedUnion)
  */
 QtUml::AggregationKind QProperty::aggregation() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QProperty);
     return d->aggregation;
 }
 
 void QProperty::setAggregation(QtUml::AggregationKind aggregation)
 {
+    // This is a read-write attribute
+
     QTUML_D(QProperty);
     if (d->aggregation != aggregation) {
         d->setAggregation(aggregation);
@@ -372,12 +452,16 @@ void QProperty::setAggregation(QtUml::AggregationKind aggregation)
  */
 const QSet<QProperty *> *QProperty::subsettedProperties() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QProperty);
     return d->subsettedProperties;
 }
 
 void QProperty::addSubsettedProperty(QProperty *subsettedProperty)
 {
+    // This is a read-write association end
+
     QTUML_D(QProperty);
     if (!d->subsettedProperties->contains(subsettedProperty)) {
         d->addSubsettedProperty(subsettedProperty);
@@ -386,6 +470,8 @@ void QProperty::addSubsettedProperty(QProperty *subsettedProperty)
 
 void QProperty::removeSubsettedProperty(QProperty *subsettedProperty)
 {
+    // This is a read-write association end
+
     QTUML_D(QProperty);
     if (d->subsettedProperties->contains(subsettedProperty)) {
         d->removeSubsettedProperty(subsettedProperty);
@@ -397,12 +483,16 @@ void QProperty::removeSubsettedProperty(QProperty *subsettedProperty)
  */
 QAssociation *QProperty::owningAssociation() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QProperty);
     return d->owningAssociation;
 }
 
 void QProperty::setOwningAssociation(QAssociation *owningAssociation)
 {
+    // This is a read-write association end
+
     QTUML_D(QProperty);
     if (d->owningAssociation != owningAssociation) {
         d->setOwningAssociation(owningAssociation);
@@ -417,12 +507,16 @@ void QProperty::setOwningAssociation(QAssociation *owningAssociation)
  */
 const QList<QProperty *> *QProperty::qualifiers() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QProperty);
     return d->qualifiers;
 }
 
 void QProperty::addQualifier(QProperty *qualifier)
 {
+    // This is a read-write association end
+
     QTUML_D(QProperty);
     if (!d->qualifiers->contains(qualifier)) {
         d->addQualifier(qualifier);
@@ -434,6 +528,8 @@ void QProperty::addQualifier(QProperty *qualifier)
 
 void QProperty::removeQualifier(QProperty *qualifier)
 {
+    // This is a read-write association end
+
     QTUML_D(QProperty);
     if (d->qualifiers->contains(qualifier)) {
         d->removeQualifier(qualifier);
@@ -448,12 +544,16 @@ void QProperty::removeQualifier(QProperty *qualifier)
  */
 QValueSpecification *QProperty::defaultValue() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QProperty);
     return d->defaultValue;
 }
 
 void QProperty::setDefaultValue(QValueSpecification *defaultValue)
 {
+    // This is a read-write association end
+
     QTUML_D(QProperty);
     if (d->defaultValue != defaultValue) {
         d->setDefaultValue(defaultValue);
@@ -465,12 +565,16 @@ void QProperty::setDefaultValue(QValueSpecification *defaultValue)
  */
 QClass *QProperty::class_() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QProperty);
     return d->class_;
 }
 
 void QProperty::setClass_(QClass *class_)
 {
+    // This is a read-write association end
+
     QTUML_D(QProperty);
     if (d->class_ != class_) {
         d->setClass_(class_);
@@ -485,12 +589,24 @@ void QProperty::setClass_(QClass *class_)
  */
 QProperty *QProperty::opposite() const
 {
+    // This is a read-write derived association end
+
     qWarning("QProperty::opposite: to be implemented (this is a derived associationend)");
+
+    QTUML_D(const QProperty);
+    //return <derived-return>;
 }
 
 void QProperty::setOpposite(QProperty *opposite)
 {
+    // This is a read-write derived association end
+
     qWarning("QProperty::setOpposite: to be implemented (this is a derived associationend)");
+
+    QTUML_D(QProperty);
+    if (true /* <change-criteria */) {
+        // <derived-code>
+    }
 }
 
 /*!
@@ -498,12 +614,16 @@ void QProperty::setOpposite(QProperty *opposite)
  */
 QProperty *QProperty::associationEnd() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QProperty);
     return d->associationEnd;
 }
 
 void QProperty::setAssociationEnd(QProperty *associationEnd)
 {
+    // This is a read-write association end
+
     QTUML_D(QProperty);
     if (d->associationEnd != associationEnd) {
         d->setAssociationEnd(associationEnd);
@@ -518,12 +638,16 @@ void QProperty::setAssociationEnd(QProperty *associationEnd)
  */
 QDataType *QProperty::datatype() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QProperty);
     return d->datatype;
 }
 
 void QProperty::setDatatype(QDataType *datatype)
 {
+    // This is a read-write association end
+
     QTUML_D(QProperty);
     if (d->datatype != datatype) {
         d->setDatatype(datatype);
@@ -538,12 +662,16 @@ void QProperty::setDatatype(QDataType *datatype)
  */
 const QSet<QProperty *> *QProperty::redefinedProperties() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QProperty);
     return d->redefinedProperties;
 }
 
 void QProperty::addRedefinedProperty(QProperty *redefinedProperty)
 {
+    // This is a read-write association end
+
     QTUML_D(QProperty);
     if (!d->redefinedProperties->contains(redefinedProperty)) {
         d->addRedefinedProperty(redefinedProperty);
@@ -552,6 +680,8 @@ void QProperty::addRedefinedProperty(QProperty *redefinedProperty)
 
 void QProperty::removeRedefinedProperty(QProperty *redefinedProperty)
 {
+    // This is a read-write association end
+
     QTUML_D(QProperty);
     if (d->redefinedProperties->contains(redefinedProperty)) {
         d->removeRedefinedProperty(redefinedProperty);
@@ -563,12 +693,16 @@ void QProperty::removeRedefinedProperty(QProperty *redefinedProperty)
  */
 QAssociation *QProperty::association() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QProperty);
     return d->association;
 }
 
 void QProperty::setAssociation(QAssociation *association)
 {
+    // This is a read-write association end
+
     QTUML_D(QProperty);
     if (d->association != association) {
         d->setAssociation(association);
@@ -583,12 +717,16 @@ void QProperty::setAssociation(QAssociation *association)
  */
 QInterface *QProperty::interface() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QProperty);
     return d->interface;
 }
 
 void QProperty::setInterface(QInterface *interface)
 {
+    // This is a read-write association end
+
     QTUML_D(QProperty);
     if (d->interface != interface) {
         d->setInterface(interface);

@@ -69,16 +69,22 @@ QMessagePrivate::~QMessagePrivate()
 
 void QMessagePrivate::setMessageSort(QtUml::MessageSort messageSort)
 {
+    // This is a read-write attribute
+
     this->messageSort = messageSort;
 }
 
 void QMessagePrivate::setSignature(QNamedElement *signature)
 {
+    // This is a read-write association end
+
     this->signature = signature;
 }
 
 void QMessagePrivate::addArgument(QValueSpecification *argument)
 {
+    // This is a read-write association end
+
     this->arguments->append(argument);
 
     // Adjust subsetted property(ies)
@@ -87,6 +93,8 @@ void QMessagePrivate::addArgument(QValueSpecification *argument)
 
 void QMessagePrivate::removeArgument(QValueSpecification *argument)
 {
+    // This is a read-write association end
+
     this->arguments->removeAll(argument);
 
     // Adjust subsetted property(ies)
@@ -95,11 +103,15 @@ void QMessagePrivate::removeArgument(QValueSpecification *argument)
 
 void QMessagePrivate::setReceiveEvent(QMessageEnd *receiveEvent)
 {
+    // This is a read-write association end
+
     this->receiveEvent = receiveEvent;
 }
 
 void QMessagePrivate::setInteraction(QInteraction *interaction)
 {
+    // This is a read-write association end
+
     this->interaction = interaction;
 
     // Adjust subsetted property(ies)
@@ -108,11 +120,15 @@ void QMessagePrivate::setInteraction(QInteraction *interaction)
 
 void QMessagePrivate::setSendEvent(QMessageEnd *sendEvent)
 {
+    // This is a read-write association end
+
     this->sendEvent = sendEvent;
 }
 
 void QMessagePrivate::setConnector(QConnector *connector)
 {
+    // This is a read-write association end
+
     this->connector = connector;
 }
 
@@ -146,12 +162,16 @@ QMessage::~QMessage()
  */
 QtUml::MessageSort QMessage::messageSort() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QMessage);
     return d->messageSort;
 }
 
 void QMessage::setMessageSort(QtUml::MessageSort messageSort)
 {
+    // This is a read-write attribute
+
     QTUML_D(QMessage);
     if (d->messageSort != messageSort) {
         d->setMessageSort(messageSort);
@@ -163,7 +183,12 @@ void QMessage::setMessageSort(QtUml::MessageSort messageSort)
  */
 QtUml::MessageKind QMessage::messageKind() const
 {
+    // This is a read-only derived attribute
+
     qWarning("QMessage::messageKind: to be implemented (this is a derived attribute)");
+
+    QTUML_D(const QMessage);
+    //return <derived-return>;
 }
 
 /*!
@@ -171,12 +196,16 @@ QtUml::MessageKind QMessage::messageKind() const
  */
 QNamedElement *QMessage::signature() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QMessage);
     return d->signature;
 }
 
 void QMessage::setSignature(QNamedElement *signature)
 {
+    // This is a read-write association end
+
     QTUML_D(QMessage);
     if (d->signature != signature) {
         d->setSignature(signature);
@@ -188,12 +217,16 @@ void QMessage::setSignature(QNamedElement *signature)
  */
 const QList<QValueSpecification *> *QMessage::arguments() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QMessage);
     return d->arguments;
 }
 
 void QMessage::addArgument(QValueSpecification *argument)
 {
+    // This is a read-write association end
+
     QTUML_D(QMessage);
     if (!d->arguments->contains(argument)) {
         d->addArgument(argument);
@@ -202,6 +235,8 @@ void QMessage::addArgument(QValueSpecification *argument)
 
 void QMessage::removeArgument(QValueSpecification *argument)
 {
+    // This is a read-write association end
+
     QTUML_D(QMessage);
     if (d->arguments->contains(argument)) {
         d->removeArgument(argument);
@@ -213,12 +248,16 @@ void QMessage::removeArgument(QValueSpecification *argument)
  */
 QMessageEnd *QMessage::receiveEvent() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QMessage);
     return d->receiveEvent;
 }
 
 void QMessage::setReceiveEvent(QMessageEnd *receiveEvent)
 {
+    // This is a read-write association end
+
     QTUML_D(QMessage);
     if (d->receiveEvent != receiveEvent) {
         d->setReceiveEvent(receiveEvent);
@@ -230,12 +269,16 @@ void QMessage::setReceiveEvent(QMessageEnd *receiveEvent)
  */
 QInteraction *QMessage::interaction() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QMessage);
     return d->interaction;
 }
 
 void QMessage::setInteraction(QInteraction *interaction)
 {
+    // This is a read-write association end
+
     QTUML_D(QMessage);
     if (d->interaction != interaction) {
         d->setInteraction(interaction);
@@ -250,12 +293,16 @@ void QMessage::setInteraction(QInteraction *interaction)
  */
 QMessageEnd *QMessage::sendEvent() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QMessage);
     return d->sendEvent;
 }
 
 void QMessage::setSendEvent(QMessageEnd *sendEvent)
 {
+    // This is a read-write association end
+
     QTUML_D(QMessage);
     if (d->sendEvent != sendEvent) {
         d->setSendEvent(sendEvent);
@@ -267,12 +314,16 @@ void QMessage::setSendEvent(QMessageEnd *sendEvent)
  */
 QConnector *QMessage::connector() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QMessage);
     return d->connector;
 }
 
 void QMessage::setConnector(QConnector *connector)
 {
+    // This is a read-write association end
+
     QTUML_D(QMessage);
     if (d->connector != connector) {
         d->setConnector(connector);

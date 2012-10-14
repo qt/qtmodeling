@@ -57,16 +57,22 @@ QCommentPrivate::~QCommentPrivate()
 
 void QCommentPrivate::setBody(QString body)
 {
+    // This is a read-write attribute
+
     this->body = body;
 }
 
 void QCommentPrivate::addAnnotatedElement(QElement *annotatedElement)
 {
+    // This is a read-write association end
+
     this->annotatedElements->insert(annotatedElement);
 }
 
 void QCommentPrivate::removeAnnotatedElement(QElement *annotatedElement)
 {
+    // This is a read-write association end
+
     this->annotatedElements->remove(annotatedElement);
 }
 
@@ -100,12 +106,16 @@ QComment::~QComment()
  */
 QString QComment::body() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QComment);
     return d->body;
 }
 
 void QComment::setBody(QString body)
 {
+    // This is a read-write attribute
+
     QTUML_D(QComment);
     if (d->body != body) {
         d->setBody(body);
@@ -117,12 +127,16 @@ void QComment::setBody(QString body)
  */
 const QSet<QElement *> *QComment::annotatedElements() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QComment);
     return d->annotatedElements;
 }
 
 void QComment::addAnnotatedElement(QElement *annotatedElement)
 {
+    // This is a read-write association end
+
     QTUML_D(QComment);
     if (!d->annotatedElements->contains(annotatedElement)) {
         d->addAnnotatedElement(annotatedElement);
@@ -131,6 +145,8 @@ void QComment::addAnnotatedElement(QElement *annotatedElement)
 
 void QComment::removeAnnotatedElement(QElement *annotatedElement)
 {
+    // This is a read-write association end
+
     QTUML_D(QComment);
     if (d->annotatedElements->contains(annotatedElement)) {
         d->removeAnnotatedElement(annotatedElement);

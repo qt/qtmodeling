@@ -58,6 +58,8 @@ QTypePrivate::~QTypePrivate()
 
 void QTypePrivate::setPackage(QPackage *package)
 {
+    // This is a read-write association end
+
     this->package = package;
 
     // Adjust subsetted property(ies)
@@ -85,12 +87,16 @@ QType::~QType()
  */
 QPackage *QType::package() const
 {
+    // This is a read-write association end
+
     QTUML_D(const QType);
     return d->package;
 }
 
 void QType::setPackage(QPackage *package)
 {
+    // This is a read-write association end
+
     QTUML_D(QType);
     if (d->package != package) {
         d->setPackage(package);

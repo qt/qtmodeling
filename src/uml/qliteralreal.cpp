@@ -55,6 +55,8 @@ QLiteralRealPrivate::~QLiteralRealPrivate()
 
 void QLiteralRealPrivate::setValue(qreal value)
 {
+    // This is a read-write attribute
+
     this->value = value;
 }
 
@@ -85,12 +87,16 @@ QLiteralReal::~QLiteralReal()
 
 qreal QLiteralReal::value() const
 {
+    // This is a read-write attribute
+
     QTUML_D(const QLiteralReal);
     return d->value;
 }
 
 void QLiteralReal::setValue(qreal value)
 {
+    // This is a read-write attribute
+
     QTUML_D(QLiteralReal);
     if (d->value != value) {
         d->setValue(value);
