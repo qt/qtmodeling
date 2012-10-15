@@ -66,12 +66,11 @@ void QElementPrivate::addOwnedElement(QElement *ownedElement)
     // This is a read-only derived-union association end
 
     if (!this->ownedElements->contains(ownedElement)) {
-        qDebug() << "QElementPrivate::addOwnedElement" << ownedElement;
         this->ownedElements->insert(ownedElement);
 
         // Adjust opposite property
         QTUML_Q(QElement);
-        setOwner(q);
+        (dynamic_cast<QElementPrivate *>(ownedElement->d_umlptr))->setOwner(q);
     }
 }
 
@@ -84,7 +83,7 @@ void QElementPrivate::removeOwnedElement(QElement *ownedElement)
 
         // Adjust opposite property
         QTUML_Q(QElement);
-        setOwner(0);
+        (dynamic_cast<QElementPrivate *>(ownedElement->d_umlptr))->setOwner(0);
     }
 }
 
@@ -92,14 +91,12 @@ void QElementPrivate::setOwner(QElement *owner)
 {
     // This is a read-only derived-union association end
 
-    qDebug() << "QElementPrivate::setOwner" << this->owner << "!=" << owner << "?";
     if (this->owner != owner) {
-        qDebug() << "QElementPrivate::setOwner" << owner;
         this->owner = owner;
 
         // Adjust opposite property
         QTUML_Q(QElement);
-        addOwnedElement(q);
+        (dynamic_cast<QElementPrivate *>(owner->d_umlptr))->addOwnedElement(q);
     }
 }
 

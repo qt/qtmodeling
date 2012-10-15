@@ -30,7 +30,6 @@ int main ()
     QtUml::QPackage *package = new QtUml::QPackage;
     package->setName("Package1");
 
-/*
     QtUml::QPrimitiveType *primitiveType = new QtUml::QPrimitiveType;
     primitiveType->setName("String");
 
@@ -46,22 +45,20 @@ int main ()
 
     model->addOwnedType(primitiveType);
     package->addOwnedType(enumeration);
-*/
-
     model->addNestedPackage(package);
-/*
     package->addOwnedType(class_);
-*/
 
     qDebug() << "model->ownedElements()->size():" << model->ownedElements()->size();
     qDebug() << "model->members()->size():" << model->members()->size();
     qDebug() << "model->ownedMembers()->size():" << model->ownedMembers()->size();
     qDebug() << "model->ownedRules()->size():" << model->ownedRules()->size();
     qDebug() << "model->packagedElements()->size():" << model->packagedElements()->size();
+
 /*
     model->removeNestedPackage(package);
     qDebug() << "model->ownedMembers()->size():" << model->ownedMembers()->size();
     qDebug() << "model->packagedElements()->size():" << model->packagedElements()->size();
+*/
 
     QScopedPointer<QPackageList> nestedPackages (model->nestedPackages());
     qDebug() << "model->nestedPackages()->size():" << nestedPackages->size();
@@ -79,10 +76,10 @@ int main ()
     qDebug() << "directionIn->qualifiedName():" << directionIn->qualifiedName();
 
     checkProperties(model);
-*/
 
-    //delete model; // That will delete all owned elements
+    delete model; // That will delete all owned elements
 
     // All containers created by nestedPackages(), ownedStereotypes(), and ownedTypes()
     // are destroyed by QScopedPointer
 }
+

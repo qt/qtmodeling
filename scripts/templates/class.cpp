@@ -60,19 +60,19 @@
         [%- IF opposite.isReadOnly == 'false' %]
         ${accessor.parameter.0.name}->${opposite.accessor.1.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
         [%- ELSE %]
-        [% IF accessor.parameter.0.type.replace(' \*$', '') != class.name %](dynamic_cast<${accessor.parameter.0.type.replace(' \*$', '').replace('$', 'Private *')}>(${accessor.parameter.0.name}->d_umlptr))->[% END %]${opposite.accessor.1.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
+        (dynamic_cast<${accessor.parameter.0.type.replace(' \*$', '').replace('$', 'Private *')}>(${accessor.parameter.0.name}->d_umlptr))->${opposite.accessor.1.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
         [%- END %]
     [%- ELSE -%][%- IF operation == 2 and opposite.accessor.size > 2 %]
         [%- IF opposite.isReadOnly == 'false' %]
         ${accessor.parameter.0.name}->${opposite.accessor.2.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
         [%- ELSE %]
-        [% IF accessor.parameter.0.type.replace(' \*$', '') != class.name %](dynamic_cast<${accessor.parameter.0.type.replace(' \*$', '').replace('$', 'Private *')}>(${accessor.parameter.0.name}->d_umlptr))->[% END %]${opposite.accessor.2.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
+        (dynamic_cast<${accessor.parameter.0.type.replace(' \*$', '').replace('$', 'Private *')}>(${accessor.parameter.0.name}->d_umlptr))->${opposite.accessor.2.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
         [%- END %]
     [%- ELSE %]
         [%- IF opposite.isReadOnly == 'false' %]
         ${accessor.parameter.0.name}->${opposite.accessor.1.name}(0);
         [%- ELSE %]
-        [% IF accessor.parameter.0.type.replace(' \*$', '') != class.name %](dynamic_cast<${accessor.parameter.0.type.replace(' \*$', '').replace('$', 'Private *')}>(${accessor.parameter.0.name}->d_umlptr))->[% END %]${opposite.accessor.1.name}(0);
+        (dynamic_cast<${accessor.parameter.0.type.replace(' \*$', '').replace('$', 'Private *')}>(${accessor.parameter.0.name}->d_umlptr))->${opposite.accessor.1.name}(0);
         [%- END %]
     [%- END -%][%- END -%]
 [%- END -%]
