@@ -46,28 +46,15 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QConsiderIgnoreFragmentPrivate::QConsiderIgnoreFragmentPrivate() :
+QConsiderIgnoreFragmentPrivate::QConsiderIgnoreFragmentPrivate(QConsiderIgnoreFragment *q_umlptr) :
     messages(new QSet<QNamedElement *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QConsiderIgnoreFragmentPrivate::~QConsiderIgnoreFragmentPrivate()
 {
     delete messages;
-}
-
-void QConsiderIgnoreFragmentPrivate::addMessage(QNamedElement *message)
-{
-    // This is a read-write association end
-
-    this->messages->insert(message);
-}
-
-void QConsiderIgnoreFragmentPrivate::removeMessage(QNamedElement *message)
-{
-    // This is a read-write association end
-
-    this->messages->remove(message);
 }
 
 /*!
@@ -81,7 +68,7 @@ void QConsiderIgnoreFragmentPrivate::removeMessage(QNamedElement *message)
 QConsiderIgnoreFragment::QConsiderIgnoreFragment(QObject *parent)
     : QCombinedFragment(false, parent)
 {
-    d_umlptr = new QConsiderIgnoreFragmentPrivate;
+    d_umlptr = new QConsiderIgnoreFragmentPrivate(this);
 }
 
 QConsiderIgnoreFragment::QConsiderIgnoreFragment(bool createPimpl, QObject *parent)
@@ -112,7 +99,7 @@ void QConsiderIgnoreFragment::addMessage(QNamedElement *message)
 
     QTUML_D(QConsiderIgnoreFragment);
     if (!d->messages->contains(message)) {
-        d->addMessage(message);
+        d->messages->insert(message);
     }
 }
 
@@ -122,7 +109,7 @@ void QConsiderIgnoreFragment::removeMessage(QNamedElement *message)
 
     QTUML_D(QConsiderIgnoreFragment);
     if (d->messages->contains(message)) {
-        d->removeMessage(message);
+        d->messages->remove(message);
     }
 }
 

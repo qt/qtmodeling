@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qclassifier_p.h"
 
 // Qt includes
@@ -62,19 +61,14 @@ class QInterfaceRealization;
 class QBehavioredClassifierPrivate : public virtual QClassifierPrivate
 {
 public:
-    explicit QBehavioredClassifierPrivate();
     virtual ~QBehavioredClassifierPrivate();
 
     QSet<QBehavior *> *ownedBehaviors;
     QSet<QInterfaceRealization *> *interfaceRealizations;
     QBehavior *classifierBehavior;
 
-    // Internal functions for association-ends
-    void addOwnedBehavior(QBehavior *ownedBehavior);
-    void removeOwnedBehavior(QBehavior *ownedBehavior);
-    void addInterfaceRealization(QInterfaceRealization *interfaceRealization);
-    void removeInterfaceRealization(QInterfaceRealization *interfaceRealization);
-    void setClassifierBehavior(QBehavior *classifierBehavior);
+protected:
+    explicit QBehavioredClassifierPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

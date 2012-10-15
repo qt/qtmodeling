@@ -41,40 +41,20 @@
 
 #include "qtimeevent.h"
 #include "qtimeevent_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QTimeExpression>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QTimeEventPrivate::QTimeEventPrivate() :
+QTimeEventPrivate::QTimeEventPrivate(QTimeEvent *q_umlptr) :
     isRelative(false),
     when(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QTimeEventPrivate::~QTimeEventPrivate()
 {
-}
-
-void QTimeEventPrivate::setRelative(bool isRelative)
-{
-    // This is a read-write attribute
-
-    this->isRelative = isRelative;
-}
-
-void QTimeEventPrivate::setWhen(QTimeExpression *when)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->when);
-
-    this->when = when;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(when);
 }
 
 /*!
@@ -88,7 +68,7 @@ void QTimeEventPrivate::setWhen(QTimeExpression *when)
 QTimeEvent::QTimeEvent(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QTimeEventPrivate;
+    d_umlptr = new QTimeEventPrivate(this);
 }
 
 QTimeEvent::QTimeEvent(bool createPimpl, QObject *parent)
@@ -119,7 +99,7 @@ void QTimeEvent::setRelative(bool isRelative)
 
     QTUML_D(QTimeEvent);
     if (d->isRelative != isRelative) {
-        d->setRelative(isRelative);
+        d->isRelative = isRelative;
     }
 }
 
@@ -140,7 +120,13 @@ void QTimeEvent::setWhen(QTimeExpression *when)
 
     QTUML_D(QTimeEvent);
     if (d->when != when) {
-        d->setWhen(when);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->when);
+
+        d->when = when;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(when);
     }
 }
 

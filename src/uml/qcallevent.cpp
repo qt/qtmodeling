@@ -46,20 +46,14 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCallEventPrivate::QCallEventPrivate() :
+QCallEventPrivate::QCallEventPrivate(QCallEvent *q_umlptr) :
     operation(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QCallEventPrivate::~QCallEventPrivate()
 {
-}
-
-void QCallEventPrivate::setOperation(QOperation *operation)
-{
-    // This is a read-write association end
-
-    this->operation = operation;
 }
 
 /*!
@@ -73,7 +67,7 @@ void QCallEventPrivate::setOperation(QOperation *operation)
 QCallEvent::QCallEvent(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QCallEventPrivate;
+    d_umlptr = new QCallEventPrivate(this);
 }
 
 QCallEvent::QCallEvent(bool createPimpl, QObject *parent)
@@ -104,7 +98,7 @@ void QCallEvent::setOperation(QOperation *operation)
 
     QTUML_D(QCallEvent);
     if (d->operation != operation) {
-        d->setOperation(operation);
+        d->operation = operation;
     }
 }
 

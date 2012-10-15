@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QFinalStatePrivate::QFinalStatePrivate()
+QFinalStatePrivate::QFinalStatePrivate(QFinalState *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QFinalStatePrivate::~QFinalStatePrivate()
@@ -64,7 +65,7 @@ QFinalStatePrivate::~QFinalStatePrivate()
 QFinalState::QFinalState(QObject *parent)
     : QState(false, parent)
 {
-    d_umlptr = new QFinalStatePrivate;
+    d_umlptr = new QFinalStatePrivate(this);
 }
 
 QFinalState::QFinalState(bool createPimpl, QObject *parent)

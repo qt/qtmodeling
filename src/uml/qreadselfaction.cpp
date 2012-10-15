@@ -41,32 +41,19 @@
 
 #include "qreadselfaction.h"
 #include "qreadselfaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QReadSelfActionPrivate::QReadSelfActionPrivate() :
+QReadSelfActionPrivate::QReadSelfActionPrivate(QReadSelfAction *q_umlptr) :
     result(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QReadSelfActionPrivate::~QReadSelfActionPrivate()
 {
-}
-
-void QReadSelfActionPrivate::setResult(QOutputPin *result)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOutput(this->result);
-
-    this->result = result;
-
-    // Adjust subsetted property(ies)
-    addOutput(result);
 }
 
 /*!
@@ -80,7 +67,7 @@ void QReadSelfActionPrivate::setResult(QOutputPin *result)
 QReadSelfAction::QReadSelfAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QReadSelfActionPrivate;
+    d_umlptr = new QReadSelfActionPrivate(this);
 }
 
 QReadSelfAction::QReadSelfAction(bool createPimpl, QObject *parent)
@@ -111,7 +98,13 @@ void QReadSelfAction::setResult(QOutputPin *result)
 
     QTUML_D(QReadSelfAction);
     if (d->result != result) {
-        d->setResult(result);
+        // Adjust subsetted property(ies)
+        d->removeOutput(d->result);
+
+        d->result = result;
+
+        // Adjust subsetted property(ies)
+        d->addOutput(result);
     }
 }
 

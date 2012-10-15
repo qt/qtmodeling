@@ -41,32 +41,19 @@
 
 #include "qacceptcallaction.h"
 #include "qacceptcallaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QAcceptCallActionPrivate::QAcceptCallActionPrivate() :
+QAcceptCallActionPrivate::QAcceptCallActionPrivate(QAcceptCallAction *q_umlptr) :
     returnInformation(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QAcceptCallActionPrivate::~QAcceptCallActionPrivate()
 {
-}
-
-void QAcceptCallActionPrivate::setReturnInformation(QOutputPin *returnInformation)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOutput(this->returnInformation);
-
-    this->returnInformation = returnInformation;
-
-    // Adjust subsetted property(ies)
-    addOutput(returnInformation);
 }
 
 /*!
@@ -80,7 +67,7 @@ void QAcceptCallActionPrivate::setReturnInformation(QOutputPin *returnInformatio
 QAcceptCallAction::QAcceptCallAction(QObject *parent)
     : QAcceptEventAction(false, parent)
 {
-    d_umlptr = new QAcceptCallActionPrivate;
+    d_umlptr = new QAcceptCallActionPrivate(this);
 }
 
 QAcceptCallAction::QAcceptCallAction(bool createPimpl, QObject *parent)
@@ -111,7 +98,13 @@ void QAcceptCallAction::setReturnInformation(QOutputPin *returnInformation)
 
     QTUML_D(QAcceptCallAction);
     if (d->returnInformation != returnInformation) {
-        d->setReturnInformation(returnInformation);
+        // Adjust subsetted property(ies)
+        d->removeOutput(d->returnInformation);
+
+        d->returnInformation = returnInformation;
+
+        // Adjust subsetted property(ies)
+        d->addOutput(returnInformation);
     }
 }
 

@@ -41,55 +41,21 @@
 
 #include "qinteractionoperand.h"
 #include "qinteractionoperand_p.h"
-#include "qnamespace_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QInteractionConstraint>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInteractionOperandPrivate::QInteractionOperandPrivate() :
+QInteractionOperandPrivate::QInteractionOperandPrivate(QInteractionOperand *q_umlptr) :
     fragments(new QList<QInteractionFragment *>),
     guard(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QInteractionOperandPrivate::~QInteractionOperandPrivate()
 {
     delete fragments;
-}
-
-void QInteractionOperandPrivate::addFragment(QInteractionFragment *fragment)
-{
-    // This is a read-write association end
-
-    this->fragments->append(fragment);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(fragment);
-}
-
-void QInteractionOperandPrivate::removeFragment(QInteractionFragment *fragment)
-{
-    // This is a read-write association end
-
-    this->fragments->removeAll(fragment);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(fragment);
-}
-
-void QInteractionOperandPrivate::setGuard(QInteractionConstraint *guard)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->guard);
-
-    this->guard = guard;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(guard);
 }
 
 /*!
@@ -103,7 +69,7 @@ void QInteractionOperandPrivate::setGuard(QInteractionConstraint *guard)
 QInteractionOperand::QInteractionOperand(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QInteractionOperandPrivate;
+    d_umlptr = new QInteractionOperandPrivate(this);
 }
 
 QInteractionOperand::QInteractionOperand(bool createPimpl, QObject *parent)
@@ -134,7 +100,10 @@ void QInteractionOperand::addFragment(QInteractionFragment *fragment)
 
     QTUML_D(QInteractionOperand);
     if (!d->fragments->contains(fragment)) {
-        d->addFragment(fragment);
+        d->fragments->append(fragment);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(fragment);
 
         // Adjust opposite property
         fragment->setEnclosingOperand(this);
@@ -147,7 +116,10 @@ void QInteractionOperand::removeFragment(QInteractionFragment *fragment)
 
     QTUML_D(QInteractionOperand);
     if (d->fragments->contains(fragment)) {
-        d->removeFragment(fragment);
+        d->fragments->removeAll(fragment);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(fragment);
 
         // Adjust opposite property
         fragment->setEnclosingOperand(0);
@@ -171,7 +143,13 @@ void QInteractionOperand::setGuard(QInteractionConstraint *guard)
 
     QTUML_D(QInteractionOperand);
     if (d->guard != guard) {
-        d->setGuard(guard);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->guard);
+
+        d->guard = guard;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(guard);
     }
 }
 

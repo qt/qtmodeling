@@ -41,48 +41,21 @@
 
 #include "qduration.h"
 #include "qduration_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QObservation>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDurationPrivate::QDurationPrivate() :
+QDurationPrivate::QDurationPrivate(QDuration *q_umlptr) :
     expr(0),
     observations(new QSet<QObservation *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QDurationPrivate::~QDurationPrivate()
 {
     delete observations;
-}
-
-void QDurationPrivate::setExpr(QValueSpecification *expr)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->expr);
-
-    this->expr = expr;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(expr);
-}
-
-void QDurationPrivate::addObservation(QObservation *observation)
-{
-    // This is a read-write association end
-
-    this->observations->insert(observation);
-}
-
-void QDurationPrivate::removeObservation(QObservation *observation)
-{
-    // This is a read-write association end
-
-    this->observations->remove(observation);
 }
 
 /*!
@@ -96,7 +69,7 @@ void QDurationPrivate::removeObservation(QObservation *observation)
 QDuration::QDuration(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QDurationPrivate;
+    d_umlptr = new QDurationPrivate(this);
 }
 
 QDuration::QDuration(bool createPimpl, QObject *parent)
@@ -127,7 +100,13 @@ void QDuration::setExpr(QValueSpecification *expr)
 
     QTUML_D(QDuration);
     if (d->expr != expr) {
-        d->setExpr(expr);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->expr);
+
+        d->expr = expr;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(expr);
     }
 }
 
@@ -148,7 +127,7 @@ void QDuration::addObservation(QObservation *observation)
 
     QTUML_D(QDuration);
     if (!d->observations->contains(observation)) {
-        d->addObservation(observation);
+        d->observations->insert(observation);
     }
 }
 
@@ -158,7 +137,7 @@ void QDuration::removeObservation(QObservation *observation)
 
     QTUML_D(QDuration);
     if (d->observations->contains(observation)) {
-        d->removeObservation(observation);
+        d->observations->remove(observation);
     }
 }
 

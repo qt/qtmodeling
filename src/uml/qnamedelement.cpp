@@ -41,7 +41,7 @@
 
 #include "qnamedelement.h"
 #include "qnamedelement_p.h"
-#include "qelement_p.h"
+#include "qnamespace_p.h"
 
 #include <QtUml/QPackage>
 #include <QtUml/QNamespace>
@@ -62,55 +62,21 @@ QNamedElementPrivate::~QNamedElementPrivate()
     delete clientDependencies;
 }
 
-void QNamedElementPrivate::setName(QString name)
-{
-    // This is a read-write attribute
-
-    this->name = name;
-}
-
-void QNamedElementPrivate::setVisibility(QtUml::VisibilityKind visibility)
-{
-    // This is a read-write attribute
-
-    this->visibility = visibility;
-}
-
-void QNamedElementPrivate::setNameExpression(QStringExpression *nameExpression)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->nameExpression);
-
-    this->nameExpression = nameExpression;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(nameExpression);
-}
-
 void QNamedElementPrivate::setNamespace_(QNamespace *namespace_)
 {
     // This is a read-only derived-union association end
 
-    this->namespace_ = namespace_;
+    if (this->namespace_ != namespace_) {
+        qDebug() << "QNamedElementPrivate::setNamespace_";
+        this->namespace_ = namespace_;
 
-    // Adjust subsetted property(ies)
-    setOwner(namespace_);
-}
+        // Adjust subsetted property(ies)
+        setOwner(namespace_);
 
-void QNamedElementPrivate::addClientDependency(QDependency *clientDependency)
-{
-    // This is a read-write association end
-
-    this->clientDependencies->insert(clientDependency);
-}
-
-void QNamedElementPrivate::removeClientDependency(QDependency *clientDependency)
-{
-    // This is a read-write association end
-
-    this->clientDependencies->remove(clientDependency);
+        // Adjust opposite property
+        QTUML_Q(QNamedElement);
+        (dynamic_cast<QNamespacePrivate *>(namespace_->d_umlptr))->addOwnedMember(q);
+    }
 }
 
 /*!
@@ -146,7 +112,7 @@ void QNamedElement::setName(QString name)
 
     QTUML_D(QNamedElement);
     if (d->name != name) {
-        d->setName(name);
+        d->name = name;
     }
 }
 
@@ -167,7 +133,7 @@ void QNamedElement::setVisibility(QtUml::VisibilityKind visibility)
 
     QTUML_D(QNamedElement);
     if (d->visibility != visibility) {
-        d->setVisibility(visibility);
+        d->visibility = visibility;
     }
 }
 
@@ -208,7 +174,13 @@ void QNamedElement::setNameExpression(QStringExpression *nameExpression)
 
     QTUML_D(QNamedElement);
     if (d->nameExpression != nameExpression) {
-        d->setNameExpression(nameExpression);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->nameExpression);
+
+        d->nameExpression = nameExpression;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(nameExpression);
     }
 }
 
@@ -240,7 +212,7 @@ void QNamedElement::addClientDependency(QDependency *clientDependency)
 
     QTUML_D(QNamedElement);
     if (!d->clientDependencies->contains(clientDependency)) {
-        d->addClientDependency(clientDependency);
+        d->clientDependencies->insert(clientDependency);
 
         // Adjust opposite property
         clientDependency->addClient(this);
@@ -253,7 +225,7 @@ void QNamedElement::removeClientDependency(QDependency *clientDependency)
 
     QTUML_D(QNamedElement);
     if (d->clientDependencies->contains(clientDependency)) {
-        d->removeClientDependency(clientDependency);
+        d->clientDependencies->remove(clientDependency);
 
         // Adjust opposite property
         clientDependency->removeClient(this);

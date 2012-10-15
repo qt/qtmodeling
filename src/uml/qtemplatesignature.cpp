@@ -41,70 +41,24 @@
 
 #include "qtemplatesignature.h"
 #include "qtemplatesignature_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QTemplateParameter>
 #include <QtUml/QTemplateableElement>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QTemplateSignaturePrivate::QTemplateSignaturePrivate() :
+QTemplateSignaturePrivate::QTemplateSignaturePrivate(QTemplateSignature *q_umlptr) :
     parameters(new QList<QTemplateParameter *>),
     template_(0),
     ownedParameters(new QList<QTemplateParameter *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QTemplateSignaturePrivate::~QTemplateSignaturePrivate()
 {
     delete parameters;
     delete ownedParameters;
-}
-
-void QTemplateSignaturePrivate::addParameter(QTemplateParameter *parameter)
-{
-    // This is a read-write association end
-
-    this->parameters->append(parameter);
-}
-
-void QTemplateSignaturePrivate::removeParameter(QTemplateParameter *parameter)
-{
-    // This is a read-write association end
-
-    this->parameters->removeAll(parameter);
-}
-
-void QTemplateSignaturePrivate::setTemplate_(QTemplateableElement *template_)
-{
-    // This is a read-write association end
-
-    this->template_ = template_;
-
-    // Adjust subsetted property(ies)
-    setOwner(template_);
-}
-
-void QTemplateSignaturePrivate::addOwnedParameter(QTemplateParameter *ownedParameter)
-{
-    // This is a read-write association end
-
-    this->ownedParameters->append(ownedParameter);
-
-    // Adjust subsetted property(ies)
-    addParameter(ownedParameter);
-    addOwnedElement(ownedParameter);
-}
-
-void QTemplateSignaturePrivate::removeOwnedParameter(QTemplateParameter *ownedParameter)
-{
-    // This is a read-write association end
-
-    this->ownedParameters->removeAll(ownedParameter);
-
-    // Adjust subsetted property(ies)
-    removeParameter(ownedParameter);
-    removeOwnedElement(ownedParameter);
 }
 
 /*!
@@ -118,7 +72,7 @@ void QTemplateSignaturePrivate::removeOwnedParameter(QTemplateParameter *ownedPa
 QTemplateSignature::QTemplateSignature(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QTemplateSignaturePrivate;
+    d_umlptr = new QTemplateSignaturePrivate(this);
 }
 
 QTemplateSignature::QTemplateSignature(bool createPimpl, QObject *parent)
@@ -149,7 +103,7 @@ void QTemplateSignature::addParameter(QTemplateParameter *parameter)
 
     QTUML_D(QTemplateSignature);
     if (!d->parameters->contains(parameter)) {
-        d->addParameter(parameter);
+        d->parameters->append(parameter);
     }
 }
 
@@ -159,7 +113,7 @@ void QTemplateSignature::removeParameter(QTemplateParameter *parameter)
 
     QTUML_D(QTemplateSignature);
     if (d->parameters->contains(parameter)) {
-        d->removeParameter(parameter);
+        d->parameters->removeAll(parameter);
     }
 }
 
@@ -180,7 +134,10 @@ void QTemplateSignature::setTemplate_(QTemplateableElement *template_)
 
     QTUML_D(QTemplateSignature);
     if (d->template_ != template_) {
-        d->setTemplate_(template_);
+        d->template_ = template_;
+
+        // Adjust subsetted property(ies)
+        d->setOwner(template_);
 
         // Adjust opposite property
         template_->setOwnedTemplateSignature(this);
@@ -204,7 +161,11 @@ void QTemplateSignature::addOwnedParameter(QTemplateParameter *ownedParameter)
 
     QTUML_D(QTemplateSignature);
     if (!d->ownedParameters->contains(ownedParameter)) {
-        d->addOwnedParameter(ownedParameter);
+        d->ownedParameters->append(ownedParameter);
+
+        // Adjust subsetted property(ies)
+        addParameter(ownedParameter);
+        d->addOwnedElement(ownedParameter);
 
         // Adjust opposite property
         ownedParameter->setSignature(this);
@@ -217,7 +178,11 @@ void QTemplateSignature::removeOwnedParameter(QTemplateParameter *ownedParameter
 
     QTUML_D(QTemplateSignature);
     if (d->ownedParameters->contains(ownedParameter)) {
-        d->removeOwnedParameter(ownedParameter);
+        d->ownedParameters->removeAll(ownedParameter);
+
+        // Adjust subsetted property(ies)
+        removeParameter(ownedParameter);
+        d->removeOwnedElement(ownedParameter);
 
         // Adjust opposite property
         ownedParameter->setSignature(0);

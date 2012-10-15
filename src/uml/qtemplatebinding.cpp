@@ -41,8 +41,6 @@
 
 #include "qtemplatebinding.h"
 #include "qtemplatebinding_p.h"
-#include "qdirectedrelationship_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QTemplateableElement>
 #include <QtUml/QTemplateParameterSubstitution>
@@ -50,63 +48,17 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QTemplateBindingPrivate::QTemplateBindingPrivate() :
+QTemplateBindingPrivate::QTemplateBindingPrivate(QTemplateBinding *q_umlptr) :
     signature(0),
     boundElement(0),
     parameterSubstitutions(new QSet<QTemplateParameterSubstitution *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QTemplateBindingPrivate::~QTemplateBindingPrivate()
 {
     delete parameterSubstitutions;
-}
-
-void QTemplateBindingPrivate::setSignature(QTemplateSignature *signature)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeTarget(this->signature);
-
-    this->signature = signature;
-
-    // Adjust subsetted property(ies)
-    addTarget(signature);
-}
-
-void QTemplateBindingPrivate::setBoundElement(QTemplateableElement *boundElement)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeSource(this->boundElement);
-
-    this->boundElement = boundElement;
-
-    // Adjust subsetted property(ies)
-    setOwner(boundElement);
-    addSource(boundElement);
-}
-
-void QTemplateBindingPrivate::addParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution)
-{
-    // This is a read-write association end
-
-    this->parameterSubstitutions->insert(parameterSubstitution);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(parameterSubstitution);
-}
-
-void QTemplateBindingPrivate::removeParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution)
-{
-    // This is a read-write association end
-
-    this->parameterSubstitutions->remove(parameterSubstitution);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(parameterSubstitution);
 }
 
 /*!
@@ -120,7 +72,7 @@ void QTemplateBindingPrivate::removeParameterSubstitution(QTemplateParameterSubs
 QTemplateBinding::QTemplateBinding(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QTemplateBindingPrivate;
+    d_umlptr = new QTemplateBindingPrivate(this);
 }
 
 QTemplateBinding::QTemplateBinding(bool createPimpl, QObject *parent)
@@ -151,7 +103,13 @@ void QTemplateBinding::setSignature(QTemplateSignature *signature)
 
     QTUML_D(QTemplateBinding);
     if (d->signature != signature) {
-        d->setSignature(signature);
+        // Adjust subsetted property(ies)
+        d->removeTarget(d->signature);
+
+        d->signature = signature;
+
+        // Adjust subsetted property(ies)
+        d->addTarget(signature);
     }
 }
 
@@ -172,7 +130,14 @@ void QTemplateBinding::setBoundElement(QTemplateableElement *boundElement)
 
     QTUML_D(QTemplateBinding);
     if (d->boundElement != boundElement) {
-        d->setBoundElement(boundElement);
+        // Adjust subsetted property(ies)
+        d->removeSource(d->boundElement);
+
+        d->boundElement = boundElement;
+
+        // Adjust subsetted property(ies)
+        d->setOwner(boundElement);
+        d->addSource(boundElement);
 
         // Adjust opposite property
         boundElement->addTemplateBinding(this);
@@ -196,7 +161,10 @@ void QTemplateBinding::addParameterSubstitution(QTemplateParameterSubstitution *
 
     QTUML_D(QTemplateBinding);
     if (!d->parameterSubstitutions->contains(parameterSubstitution)) {
-        d->addParameterSubstitution(parameterSubstitution);
+        d->parameterSubstitutions->insert(parameterSubstitution);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(parameterSubstitution);
 
         // Adjust opposite property
         parameterSubstitution->setTemplateBinding(this);
@@ -209,7 +177,10 @@ void QTemplateBinding::removeParameterSubstitution(QTemplateParameterSubstitutio
 
     QTUML_D(QTemplateBinding);
     if (d->parameterSubstitutions->contains(parameterSubstitution)) {
-        d->removeParameterSubstitution(parameterSubstitution);
+        d->parameterSubstitutions->remove(parameterSubstitution);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(parameterSubstitution);
 
         // Adjust opposite property
         parameterSubstitution->setTemplateBinding(0);

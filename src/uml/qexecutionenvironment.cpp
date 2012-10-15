@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QExecutionEnvironmentPrivate::QExecutionEnvironmentPrivate()
+QExecutionEnvironmentPrivate::QExecutionEnvironmentPrivate(QExecutionEnvironment *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QExecutionEnvironmentPrivate::~QExecutionEnvironmentPrivate()
@@ -64,7 +65,7 @@ QExecutionEnvironmentPrivate::~QExecutionEnvironmentPrivate()
 QExecutionEnvironment::QExecutionEnvironment(QObject *parent)
     : QNode(false, parent)
 {
-    d_umlptr = new QExecutionEnvironmentPrivate;
+    d_umlptr = new QExecutionEnvironmentPrivate(this);
 }
 
 QExecutionEnvironment::QExecutionEnvironment(bool createPimpl, QObject *parent)

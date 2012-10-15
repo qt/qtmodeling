@@ -41,8 +41,6 @@
 
 #include "qmessage.h"
 #include "qmessage_p.h"
-#include "qelement_p.h"
-#include "qnamedelement_p.h"
 
 #include <QtUml/QMessageEnd>
 #include <QtUml/QInteraction>
@@ -51,7 +49,7 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QMessagePrivate::QMessagePrivate() :
+QMessagePrivate::QMessagePrivate(QMessage *q_umlptr) :
     messageSort(QtUml::MessageSynchCall),
     signature(0),
     arguments(new QList<QValueSpecification *>),
@@ -60,76 +58,12 @@ QMessagePrivate::QMessagePrivate() :
     sendEvent(0),
     connector(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QMessagePrivate::~QMessagePrivate()
 {
     delete arguments;
-}
-
-void QMessagePrivate::setMessageSort(QtUml::MessageSort messageSort)
-{
-    // This is a read-write attribute
-
-    this->messageSort = messageSort;
-}
-
-void QMessagePrivate::setSignature(QNamedElement *signature)
-{
-    // This is a read-write association end
-
-    this->signature = signature;
-}
-
-void QMessagePrivate::addArgument(QValueSpecification *argument)
-{
-    // This is a read-write association end
-
-    this->arguments->append(argument);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(argument);
-}
-
-void QMessagePrivate::removeArgument(QValueSpecification *argument)
-{
-    // This is a read-write association end
-
-    this->arguments->removeAll(argument);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(argument);
-}
-
-void QMessagePrivate::setReceiveEvent(QMessageEnd *receiveEvent)
-{
-    // This is a read-write association end
-
-    this->receiveEvent = receiveEvent;
-}
-
-void QMessagePrivate::setInteraction(QInteraction *interaction)
-{
-    // This is a read-write association end
-
-    this->interaction = interaction;
-
-    // Adjust subsetted property(ies)
-    setNamespace_(interaction);
-}
-
-void QMessagePrivate::setSendEvent(QMessageEnd *sendEvent)
-{
-    // This is a read-write association end
-
-    this->sendEvent = sendEvent;
-}
-
-void QMessagePrivate::setConnector(QConnector *connector)
-{
-    // This is a read-write association end
-
-    this->connector = connector;
 }
 
 /*!
@@ -143,7 +77,7 @@ void QMessagePrivate::setConnector(QConnector *connector)
 QMessage::QMessage(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QMessagePrivate;
+    d_umlptr = new QMessagePrivate(this);
 }
 
 QMessage::QMessage(bool createPimpl, QObject *parent)
@@ -174,7 +108,7 @@ void QMessage::setMessageSort(QtUml::MessageSort messageSort)
 
     QTUML_D(QMessage);
     if (d->messageSort != messageSort) {
-        d->setMessageSort(messageSort);
+        d->messageSort = messageSort;
     }
 }
 
@@ -187,7 +121,7 @@ QtUml::MessageKind QMessage::messageKind() const
 
     qWarning("QMessage::messageKind: to be implemented (this is a derived attribute)");
 
-    QTUML_D(const QMessage);
+    //QTUML_D(const QMessage);
     //return <derived-return>;
 }
 
@@ -208,7 +142,7 @@ void QMessage::setSignature(QNamedElement *signature)
 
     QTUML_D(QMessage);
     if (d->signature != signature) {
-        d->setSignature(signature);
+        d->signature = signature;
     }
 }
 
@@ -229,7 +163,10 @@ void QMessage::addArgument(QValueSpecification *argument)
 
     QTUML_D(QMessage);
     if (!d->arguments->contains(argument)) {
-        d->addArgument(argument);
+        d->arguments->append(argument);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(argument);
     }
 }
 
@@ -239,7 +176,10 @@ void QMessage::removeArgument(QValueSpecification *argument)
 
     QTUML_D(QMessage);
     if (d->arguments->contains(argument)) {
-        d->removeArgument(argument);
+        d->arguments->removeAll(argument);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(argument);
     }
 }
 
@@ -260,7 +200,7 @@ void QMessage::setReceiveEvent(QMessageEnd *receiveEvent)
 
     QTUML_D(QMessage);
     if (d->receiveEvent != receiveEvent) {
-        d->setReceiveEvent(receiveEvent);
+        d->receiveEvent = receiveEvent;
     }
 }
 
@@ -281,7 +221,10 @@ void QMessage::setInteraction(QInteraction *interaction)
 
     QTUML_D(QMessage);
     if (d->interaction != interaction) {
-        d->setInteraction(interaction);
+        d->interaction = interaction;
+
+        // Adjust subsetted property(ies)
+        d->setNamespace_(interaction);
 
         // Adjust opposite property
         interaction->addMessage(this);
@@ -305,7 +248,7 @@ void QMessage::setSendEvent(QMessageEnd *sendEvent)
 
     QTUML_D(QMessage);
     if (d->sendEvent != sendEvent) {
-        d->setSendEvent(sendEvent);
+        d->sendEvent = sendEvent;
     }
 }
 
@@ -326,7 +269,7 @@ void QMessage::setConnector(QConnector *connector)
 
     QTUML_D(QMessage);
     if (d->connector != connector) {
-        d->setConnector(connector);
+        d->connector = connector;
     }
 }
 

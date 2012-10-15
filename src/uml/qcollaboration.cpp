@@ -41,40 +41,20 @@
 
 #include "qcollaboration.h"
 #include "qcollaboration_p.h"
-#include "qstructuredclassifier_p.h"
 
 #include <QtUml/QConnectableElement>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCollaborationPrivate::QCollaborationPrivate() :
+QCollaborationPrivate::QCollaborationPrivate(QCollaboration *q_umlptr) :
     collaborationRoles(new QSet<QConnectableElement *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QCollaborationPrivate::~QCollaborationPrivate()
 {
     delete collaborationRoles;
-}
-
-void QCollaborationPrivate::addCollaborationRole(QConnectableElement *collaborationRole)
-{
-    // This is a read-write association end
-
-    this->collaborationRoles->insert(collaborationRole);
-
-    // Adjust subsetted property(ies)
-    addRole(collaborationRole);
-}
-
-void QCollaborationPrivate::removeCollaborationRole(QConnectableElement *collaborationRole)
-{
-    // This is a read-write association end
-
-    this->collaborationRoles->remove(collaborationRole);
-
-    // Adjust subsetted property(ies)
-    removeRole(collaborationRole);
 }
 
 /*!
@@ -88,7 +68,7 @@ void QCollaborationPrivate::removeCollaborationRole(QConnectableElement *collabo
 QCollaboration::QCollaboration(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QCollaborationPrivate;
+    d_umlptr = new QCollaborationPrivate(this);
 }
 
 QCollaboration::QCollaboration(bool createPimpl, QObject *parent)
@@ -119,7 +99,10 @@ void QCollaboration::addCollaborationRole(QConnectableElement *collaborationRole
 
     QTUML_D(QCollaboration);
     if (!d->collaborationRoles->contains(collaborationRole)) {
-        d->addCollaborationRole(collaborationRole);
+        d->collaborationRoles->insert(collaborationRole);
+
+        // Adjust subsetted property(ies)
+        d->addRole(collaborationRole);
     }
 }
 
@@ -129,7 +112,10 @@ void QCollaboration::removeCollaborationRole(QConnectableElement *collaborationR
 
     QTUML_D(QCollaboration);
     if (d->collaborationRoles->contains(collaborationRole)) {
-        d->removeCollaborationRole(collaborationRole);
+        d->collaborationRoles->remove(collaborationRole);
+
+        // Adjust subsetted property(ies)
+        d->removeRole(collaborationRole);
     }
 }
 

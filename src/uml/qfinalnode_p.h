@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qcontrolnode_p.h"
 
 QT_BEGIN_HEADER
@@ -56,9 +55,11 @@ QT_MODULE(QtUml)
 class QFinalNodePrivate : public QControlNodePrivate
 {
 public:
-    explicit QFinalNodePrivate();
     virtual ~QFinalNodePrivate();
 
+
+protected:
+    explicit QFinalNodePrivate();
 };
 
 QT_END_NAMESPACE_QTUML

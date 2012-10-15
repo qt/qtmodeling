@@ -41,41 +41,21 @@
 
 #include "qsendobjectaction.h"
 #include "qsendobjectaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QSendObjectActionPrivate::QSendObjectActionPrivate() :
+QSendObjectActionPrivate::QSendObjectActionPrivate(QSendObjectAction *q_umlptr) :
     request(0),
     target(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QSendObjectActionPrivate::~QSendObjectActionPrivate()
 {
     delete request;
-}
-
-void QSendObjectActionPrivate::setRequest(QInputPin *request)
-{
-    // This is a read-write association end
-
-    this->request = request;
-}
-
-void QSendObjectActionPrivate::setTarget(QInputPin *target)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeInput(this->target);
-
-    this->target = target;
-
-    // Adjust subsetted property(ies)
-    addInput(target);
 }
 
 /*!
@@ -89,7 +69,7 @@ void QSendObjectActionPrivate::setTarget(QInputPin *target)
 QSendObjectAction::QSendObjectAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QSendObjectActionPrivate;
+    d_umlptr = new QSendObjectActionPrivate(this);
 }
 
 QSendObjectAction::QSendObjectAction(bool createPimpl, QObject *parent)
@@ -120,7 +100,7 @@ void QSendObjectAction::setRequest(QInputPin *request)
 
     QTUML_D(QSendObjectAction);
     if (d->request != request) {
-        d->setRequest(request);
+        d->request = request;
     }
 }
 
@@ -141,7 +121,13 @@ void QSendObjectAction::setTarget(QInputPin *target)
 
     QTUML_D(QSendObjectAction);
     if (d->target != target) {
-        d->setTarget(target);
+        // Adjust subsetted property(ies)
+        d->removeInput(d->target);
+
+        d->target = target;
+
+        // Adjust subsetted property(ies)
+        d->addInput(target);
     }
 }
 

@@ -44,9 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qtypedelement_p.h"
-
 #include "qparameterableelement_p.h"
 
 // Qt includes
@@ -64,13 +62,16 @@ class QConnectableElementTemplateParameter;
 class QConnectableElementPrivate : public virtual QTypedElementPrivate, public QParameterableElementPrivate
 {
 public:
-    explicit QConnectableElementPrivate();
     virtual ~QConnectableElementPrivate();
 
     QConnectableElementTemplateParameter *templateParameter;
 
-    // Internal functions for association-ends
-    void setTemplateParameter(QConnectableElementTemplateParameter *templateParameter);
+    // Internal functions for read-only subsetted association ends
+    void addEnd(QConnectorEnd *end);
+    void removeEnd(QConnectorEnd *end);
+
+protected:
+    explicit QConnectableElementPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

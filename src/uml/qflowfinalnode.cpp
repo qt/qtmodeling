@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QFlowFinalNodePrivate::QFlowFinalNodePrivate()
+QFlowFinalNodePrivate::QFlowFinalNodePrivate(QFlowFinalNode *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QFlowFinalNodePrivate::~QFlowFinalNodePrivate()
@@ -64,7 +65,7 @@ QFlowFinalNodePrivate::~QFlowFinalNodePrivate()
 QFlowFinalNode::QFlowFinalNode(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QFlowFinalNodePrivate;
+    d_umlptr = new QFlowFinalNodePrivate(this);
 }
 
 QFlowFinalNode::QFlowFinalNode(bool createPimpl, QObject *parent)

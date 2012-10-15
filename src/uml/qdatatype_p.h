@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qclassifier_p.h"
 
 // Qt includes
@@ -60,21 +59,16 @@ QT_MODULE(QtUml)
 class QProperty;
 class QOperation;
 class QNamedElement;
+class QDataType;
 
 class QDataTypePrivate : public QClassifierPrivate
 {
 public:
-    explicit QDataTypePrivate();
+    explicit QDataTypePrivate(QDataType *q_umlptr = 0);
     virtual ~QDataTypePrivate();
 
     QList<QOperation *> *ownedOperations;
     QList<QProperty *> *ownedAttributes;
-
-    // Internal functions for association-ends
-    void addOwnedOperation(QOperation *ownedOperation);
-    void removeOwnedOperation(QOperation *ownedOperation);
-    void addOwnedAttribute(QProperty *ownedAttribute);
-    void removeOwnedAttribute(QProperty *ownedAttribute);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -41,14 +41,11 @@
 
 #include "qstate.h"
 #include "qstate_p.h"
-#include "qnamespace_p.h"
-#include "qelement_p.h"
-#include "qredefinableelement_p.h"
 
-#include <QtUml/QConstraint>
-#include <QtUml/QRegion>
 #include <QtUml/QStateMachine>
 #include <QtUml/QClassifier>
+#include <QtUml/QConstraint>
+#include <QtUml/QRegion>
 #include <QtUml/QBehavior>
 #include <QtUml/QConnectionPointReference>
 #include <QtUml/QTrigger>
@@ -56,7 +53,7 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QStatePrivate::QStatePrivate() :
+QStatePrivate::QStatePrivate(QState *q_umlptr) :
     regions(new QSet<QRegion *>),
     exit(0),
     connections(new QSet<QConnectionPointReference *>),
@@ -68,6 +65,7 @@ QStatePrivate::QStatePrivate() :
     submachine(0),
     stateInvariant(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QStatePrivate::~QStatePrivate()
@@ -76,158 +74,6 @@ QStatePrivate::~QStatePrivate()
     delete connections;
     delete deferrableTriggers;
     delete connectionPoints;
-}
-
-void QStatePrivate::addRegion(QRegion *region)
-{
-    // This is a read-write association end
-
-    this->regions->insert(region);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(region);
-}
-
-void QStatePrivate::removeRegion(QRegion *region)
-{
-    // This is a read-write association end
-
-    this->regions->remove(region);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(region);
-}
-
-void QStatePrivate::setExit(QBehavior *exit)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->exit);
-
-    this->exit = exit;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(exit);
-}
-
-void QStatePrivate::addConnection(QConnectionPointReference *connection)
-{
-    // This is a read-write association end
-
-    this->connections->insert(connection);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(connection);
-}
-
-void QStatePrivate::removeConnection(QConnectionPointReference *connection)
-{
-    // This is a read-write association end
-
-    this->connections->remove(connection);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(connection);
-}
-
-void QStatePrivate::setRedefinedState(QState *redefinedState)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeRedefinedElement(this->redefinedState);
-
-    this->redefinedState = redefinedState;
-
-    // Adjust subsetted property(ies)
-    addRedefinedElement(redefinedState);
-}
-
-void QStatePrivate::addDeferrableTrigger(QTrigger *deferrableTrigger)
-{
-    // This is a read-write association end
-
-    this->deferrableTriggers->insert(deferrableTrigger);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(deferrableTrigger);
-}
-
-void QStatePrivate::removeDeferrableTrigger(QTrigger *deferrableTrigger)
-{
-    // This is a read-write association end
-
-    this->deferrableTriggers->remove(deferrableTrigger);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(deferrableTrigger);
-}
-
-void QStatePrivate::addConnectionPoint(QPseudostate *connectionPoint)
-{
-    // This is a read-write association end
-
-    this->connectionPoints->insert(connectionPoint);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(connectionPoint);
-}
-
-void QStatePrivate::removeConnectionPoint(QPseudostate *connectionPoint)
-{
-    // This is a read-write association end
-
-    this->connectionPoints->remove(connectionPoint);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(connectionPoint);
-}
-
-void QStatePrivate::setEntry(QBehavior *entry)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->entry);
-
-    this->entry = entry;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(entry);
-}
-
-void QStatePrivate::setDoActivity(QBehavior *doActivity)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->doActivity);
-
-    this->doActivity = doActivity;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(doActivity);
-}
-
-void QStatePrivate::setSubmachine(QStateMachine *submachine)
-{
-    // This is a read-write association end
-
-    this->submachine = submachine;
-}
-
-void QStatePrivate::setStateInvariant(QConstraint *stateInvariant)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedRule(this->stateInvariant);
-
-    this->stateInvariant = stateInvariant;
-
-    // Adjust subsetted property(ies)
-    addOwnedRule(stateInvariant);
 }
 
 /*!
@@ -241,7 +87,7 @@ void QStatePrivate::setStateInvariant(QConstraint *stateInvariant)
 QState::QState(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QStatePrivate;
+    d_umlptr = new QStatePrivate(this);
 }
 
 QState::QState(bool createPimpl, QObject *parent)
@@ -264,7 +110,7 @@ bool QState::isSimple() const
 
     qWarning("QState::isSimple: to be implemented (this is a derived attribute)");
 
-    QTUML_D(const QState);
+    //QTUML_D(const QState);
     //return <derived-return>;
 }
 
@@ -277,7 +123,7 @@ bool QState::isComposite() const
 
     qWarning("QState::isComposite: to be implemented (this is a derived attribute)");
 
-    QTUML_D(const QState);
+    //QTUML_D(const QState);
     //return <derived-return>;
 }
 
@@ -290,7 +136,7 @@ bool QState::isOrthogonal() const
 
     qWarning("QState::isOrthogonal: to be implemented (this is a derived attribute)");
 
-    QTUML_D(const QState);
+    //QTUML_D(const QState);
     //return <derived-return>;
 }
 
@@ -303,7 +149,7 @@ bool QState::isSubmachineState() const
 
     qWarning("QState::isSubmachineState: to be implemented (this is a derived attribute)");
 
-    QTUML_D(const QState);
+    //QTUML_D(const QState);
     //return <derived-return>;
 }
 
@@ -324,7 +170,10 @@ void QState::addRegion(QRegion *region)
 
     QTUML_D(QState);
     if (!d->regions->contains(region)) {
-        d->addRegion(region);
+        d->regions->insert(region);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(region);
 
         // Adjust opposite property
         region->setState(this);
@@ -337,7 +186,10 @@ void QState::removeRegion(QRegion *region)
 
     QTUML_D(QState);
     if (d->regions->contains(region)) {
-        d->removeRegion(region);
+        d->regions->remove(region);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(region);
 
         // Adjust opposite property
         region->setState(0);
@@ -361,7 +213,13 @@ void QState::setExit(QBehavior *exit)
 
     QTUML_D(QState);
     if (d->exit != exit) {
-        d->setExit(exit);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->exit);
+
+        d->exit = exit;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(exit);
     }
 }
 
@@ -382,7 +240,10 @@ void QState::addConnection(QConnectionPointReference *connection)
 
     QTUML_D(QState);
     if (!d->connections->contains(connection)) {
-        d->addConnection(connection);
+        d->connections->insert(connection);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(connection);
 
         // Adjust opposite property
         connection->setState(this);
@@ -395,7 +256,10 @@ void QState::removeConnection(QConnectionPointReference *connection)
 
     QTUML_D(QState);
     if (d->connections->contains(connection)) {
-        d->removeConnection(connection);
+        d->connections->remove(connection);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(connection);
 
         // Adjust opposite property
         connection->setState(0);
@@ -411,7 +275,7 @@ QClassifier *QState::redefinitionContext() const
 
     qWarning("QState::redefinitionContext: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QState);
+    //QTUML_D(const QState);
     //return <derived-return>;
 }
 
@@ -432,7 +296,13 @@ void QState::setRedefinedState(QState *redefinedState)
 
     QTUML_D(QState);
     if (d->redefinedState != redefinedState) {
-        d->setRedefinedState(redefinedState);
+        // Adjust subsetted property(ies)
+        d->removeRedefinedElement(d->redefinedState);
+
+        d->redefinedState = redefinedState;
+
+        // Adjust subsetted property(ies)
+        d->addRedefinedElement(redefinedState);
     }
 }
 
@@ -453,7 +323,10 @@ void QState::addDeferrableTrigger(QTrigger *deferrableTrigger)
 
     QTUML_D(QState);
     if (!d->deferrableTriggers->contains(deferrableTrigger)) {
-        d->addDeferrableTrigger(deferrableTrigger);
+        d->deferrableTriggers->insert(deferrableTrigger);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(deferrableTrigger);
     }
 }
 
@@ -463,7 +336,10 @@ void QState::removeDeferrableTrigger(QTrigger *deferrableTrigger)
 
     QTUML_D(QState);
     if (d->deferrableTriggers->contains(deferrableTrigger)) {
-        d->removeDeferrableTrigger(deferrableTrigger);
+        d->deferrableTriggers->remove(deferrableTrigger);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(deferrableTrigger);
     }
 }
 
@@ -484,7 +360,10 @@ void QState::addConnectionPoint(QPseudostate *connectionPoint)
 
     QTUML_D(QState);
     if (!d->connectionPoints->contains(connectionPoint)) {
-        d->addConnectionPoint(connectionPoint);
+        d->connectionPoints->insert(connectionPoint);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(connectionPoint);
 
         // Adjust opposite property
         connectionPoint->setState(this);
@@ -497,7 +376,10 @@ void QState::removeConnectionPoint(QPseudostate *connectionPoint)
 
     QTUML_D(QState);
     if (d->connectionPoints->contains(connectionPoint)) {
-        d->removeConnectionPoint(connectionPoint);
+        d->connectionPoints->remove(connectionPoint);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(connectionPoint);
 
         // Adjust opposite property
         connectionPoint->setState(0);
@@ -521,7 +403,13 @@ void QState::setEntry(QBehavior *entry)
 
     QTUML_D(QState);
     if (d->entry != entry) {
-        d->setEntry(entry);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->entry);
+
+        d->entry = entry;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(entry);
     }
 }
 
@@ -542,7 +430,13 @@ void QState::setDoActivity(QBehavior *doActivity)
 
     QTUML_D(QState);
     if (d->doActivity != doActivity) {
-        d->setDoActivity(doActivity);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->doActivity);
+
+        d->doActivity = doActivity;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(doActivity);
     }
 }
 
@@ -563,7 +457,7 @@ void QState::setSubmachine(QStateMachine *submachine)
 
     QTUML_D(QState);
     if (d->submachine != submachine) {
-        d->setSubmachine(submachine);
+        d->submachine = submachine;
 
         // Adjust opposite property
         submachine->addSubmachineState(this);
@@ -587,7 +481,13 @@ void QState::setStateInvariant(QConstraint *stateInvariant)
 
     QTUML_D(QState);
     if (d->stateInvariant != stateInvariant) {
-        d->setStateInvariant(stateInvariant);
+        // Adjust subsetted property(ies)
+        removeOwnedRule(d->stateInvariant);
+
+        d->stateInvariant = stateInvariant;
+
+        // Adjust subsetted property(ies)
+        addOwnedRule(stateInvariant);
     }
 }
 

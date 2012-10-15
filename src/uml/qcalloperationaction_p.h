@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qcallaction_p.h"
 
 QT_BEGIN_HEADER
@@ -55,19 +54,16 @@ QT_MODULE(QtUml)
 
 class QOperation;
 class QInputPin;
+class QCallOperationAction;
 
 class QCallOperationActionPrivate : public QCallActionPrivate
 {
 public:
-    explicit QCallOperationActionPrivate();
+    explicit QCallOperationActionPrivate(QCallOperationAction *q_umlptr = 0);
     virtual ~QCallOperationActionPrivate();
 
     QOperation *operation;
     QInputPin *target;
-
-    // Internal functions for association-ends
-    void setOperation(QOperation *operation);
-    void setTarget(QInputPin *target);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -41,41 +41,21 @@
 
 #include "qsendsignalaction.h"
 #include "qsendsignalaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QSignal>
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QSendSignalActionPrivate::QSendSignalActionPrivate() :
+QSendSignalActionPrivate::QSendSignalActionPrivate(QSendSignalAction *q_umlptr) :
     target(0),
     signal(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QSendSignalActionPrivate::~QSendSignalActionPrivate()
 {
-}
-
-void QSendSignalActionPrivate::setTarget(QInputPin *target)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeInput(this->target);
-
-    this->target = target;
-
-    // Adjust subsetted property(ies)
-    addInput(target);
-}
-
-void QSendSignalActionPrivate::setSignal(QSignal *signal)
-{
-    // This is a read-write association end
-
-    this->signal = signal;
 }
 
 /*!
@@ -89,7 +69,7 @@ void QSendSignalActionPrivate::setSignal(QSignal *signal)
 QSendSignalAction::QSendSignalAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QSendSignalActionPrivate;
+    d_umlptr = new QSendSignalActionPrivate(this);
 }
 
 QSendSignalAction::QSendSignalAction(bool createPimpl, QObject *parent)
@@ -120,7 +100,13 @@ void QSendSignalAction::setTarget(QInputPin *target)
 
     QTUML_D(QSendSignalAction);
     if (d->target != target) {
-        d->setTarget(target);
+        // Adjust subsetted property(ies)
+        d->removeInput(d->target);
+
+        d->target = target;
+
+        // Adjust subsetted property(ies)
+        d->addInput(target);
     }
 }
 
@@ -141,7 +127,7 @@ void QSendSignalAction::setSignal(QSignal *signal)
 
     QTUML_D(QSendSignalAction);
     if (d->signal != signal) {
-        d->setSignal(signal);
+        d->signal = signal;
     }
 }
 

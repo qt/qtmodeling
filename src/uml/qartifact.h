@@ -59,9 +59,9 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QManifestation;
-class QProperty;
 class QOperation;
+class QProperty;
+class QManifestation;
 
 class Q_UML_EXPORT QArtifact : public QObject, public QDeployedArtifact, public QClassifier
 {

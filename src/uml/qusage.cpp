@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QUsagePrivate::QUsagePrivate()
+QUsagePrivate::QUsagePrivate(QUsage *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QUsagePrivate::~QUsagePrivate()
@@ -64,7 +65,7 @@ QUsagePrivate::~QUsagePrivate()
 QUsage::QUsage(QObject *parent)
     : QDependency(false, parent)
 {
-    d_umlptr = new QUsagePrivate;
+    d_umlptr = new QUsagePrivate(this);
 }
 
 QUsage::QUsage(bool createPimpl, QObject *parent)

@@ -41,57 +41,23 @@
 
 #include "qparameterset.h"
 #include "qparameterset_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QConstraint>
 #include <QtUml/QParameter>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QParameterSetPrivate::QParameterSetPrivate() :
+QParameterSetPrivate::QParameterSetPrivate(QParameterSet *q_umlptr) :
     parameters(new QSet<QParameter *>),
     conditions(new QSet<QConstraint *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QParameterSetPrivate::~QParameterSetPrivate()
 {
     delete parameters;
     delete conditions;
-}
-
-void QParameterSetPrivate::addParameter(QParameter *parameter)
-{
-    // This is a read-write association end
-
-    this->parameters->insert(parameter);
-}
-
-void QParameterSetPrivate::removeParameter(QParameter *parameter)
-{
-    // This is a read-write association end
-
-    this->parameters->remove(parameter);
-}
-
-void QParameterSetPrivate::addCondition(QConstraint *condition)
-{
-    // This is a read-write association end
-
-    this->conditions->insert(condition);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(condition);
-}
-
-void QParameterSetPrivate::removeCondition(QConstraint *condition)
-{
-    // This is a read-write association end
-
-    this->conditions->remove(condition);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(condition);
 }
 
 /*!
@@ -105,7 +71,7 @@ void QParameterSetPrivate::removeCondition(QConstraint *condition)
 QParameterSet::QParameterSet(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QParameterSetPrivate;
+    d_umlptr = new QParameterSetPrivate(this);
 }
 
 QParameterSet::QParameterSet(bool createPimpl, QObject *parent)
@@ -136,7 +102,7 @@ void QParameterSet::addParameter(QParameter *parameter)
 
     QTUML_D(QParameterSet);
     if (!d->parameters->contains(parameter)) {
-        d->addParameter(parameter);
+        d->parameters->insert(parameter);
 
         // Adjust opposite property
         parameter->addParameterSet(this);
@@ -149,7 +115,7 @@ void QParameterSet::removeParameter(QParameter *parameter)
 
     QTUML_D(QParameterSet);
     if (d->parameters->contains(parameter)) {
-        d->removeParameter(parameter);
+        d->parameters->remove(parameter);
 
         // Adjust opposite property
         parameter->removeParameterSet(this);
@@ -173,7 +139,10 @@ void QParameterSet::addCondition(QConstraint *condition)
 
     QTUML_D(QParameterSet);
     if (!d->conditions->contains(condition)) {
-        d->addCondition(condition);
+        d->conditions->insert(condition);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(condition);
     }
 }
 
@@ -183,7 +152,10 @@ void QParameterSet::removeCondition(QConstraint *condition)
 
     QTUML_D(QParameterSet);
     if (d->conditions->contains(condition)) {
-        d->removeCondition(condition);
+        d->conditions->remove(condition);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(condition);
     }
 }
 

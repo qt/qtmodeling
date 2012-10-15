@@ -41,40 +41,20 @@
 
 #include "qprotocolstatemachine.h"
 #include "qprotocolstatemachine_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QProtocolConformance>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QProtocolStateMachinePrivate::QProtocolStateMachinePrivate() :
+QProtocolStateMachinePrivate::QProtocolStateMachinePrivate(QProtocolStateMachine *q_umlptr) :
     conformance(new QSet<QProtocolConformance *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QProtocolStateMachinePrivate::~QProtocolStateMachinePrivate()
 {
     delete conformance;
-}
-
-void QProtocolStateMachinePrivate::addConformance(QProtocolConformance *conformance)
-{
-    // This is a read-write association end
-
-    this->conformance->insert(conformance);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(conformance);
-}
-
-void QProtocolStateMachinePrivate::removeConformance(QProtocolConformance *conformance)
-{
-    // This is a read-write association end
-
-    this->conformance->remove(conformance);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(conformance);
 }
 
 /*!
@@ -88,7 +68,7 @@ void QProtocolStateMachinePrivate::removeConformance(QProtocolConformance *confo
 QProtocolStateMachine::QProtocolStateMachine(QObject *parent)
     : QStateMachine(false, parent)
 {
-    d_umlptr = new QProtocolStateMachinePrivate;
+    d_umlptr = new QProtocolStateMachinePrivate(this);
 }
 
 QProtocolStateMachine::QProtocolStateMachine(bool createPimpl, QObject *parent)
@@ -119,7 +99,10 @@ void QProtocolStateMachine::addConformance(QProtocolConformance *conformance)
 
     QTUML_D(QProtocolStateMachine);
     if (!d->conformance->contains(conformance)) {
-        d->addConformance(conformance);
+        d->conformance->insert(conformance);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(conformance);
 
         // Adjust opposite property
         conformance->setSpecificMachine(this);
@@ -132,7 +115,10 @@ void QProtocolStateMachine::removeConformance(QProtocolConformance *conformance)
 
     QTUML_D(QProtocolStateMachine);
     if (d->conformance->contains(conformance)) {
-        d->removeConformance(conformance);
+        d->conformance->remove(conformance);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(conformance);
 
         // Adjust opposite property
         conformance->setSpecificMachine(0);

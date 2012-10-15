@@ -41,61 +41,22 @@
 
 #include "qtestidentityaction.h"
 #include "qtestidentityaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QTestIdentityActionPrivate::QTestIdentityActionPrivate() :
+QTestIdentityActionPrivate::QTestIdentityActionPrivate(QTestIdentityAction *q_umlptr) :
     second(0),
     result(0),
     first(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QTestIdentityActionPrivate::~QTestIdentityActionPrivate()
 {
-}
-
-void QTestIdentityActionPrivate::setSecond(QInputPin *second)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeInput(this->second);
-
-    this->second = second;
-
-    // Adjust subsetted property(ies)
-    addInput(second);
-}
-
-void QTestIdentityActionPrivate::setResult(QOutputPin *result)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOutput(this->result);
-
-    this->result = result;
-
-    // Adjust subsetted property(ies)
-    addOutput(result);
-}
-
-void QTestIdentityActionPrivate::setFirst(QInputPin *first)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeInput(this->first);
-
-    this->first = first;
-
-    // Adjust subsetted property(ies)
-    addInput(first);
 }
 
 /*!
@@ -109,7 +70,7 @@ void QTestIdentityActionPrivate::setFirst(QInputPin *first)
 QTestIdentityAction::QTestIdentityAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QTestIdentityActionPrivate;
+    d_umlptr = new QTestIdentityActionPrivate(this);
 }
 
 QTestIdentityAction::QTestIdentityAction(bool createPimpl, QObject *parent)
@@ -140,7 +101,13 @@ void QTestIdentityAction::setSecond(QInputPin *second)
 
     QTUML_D(QTestIdentityAction);
     if (d->second != second) {
-        d->setSecond(second);
+        // Adjust subsetted property(ies)
+        d->removeInput(d->second);
+
+        d->second = second;
+
+        // Adjust subsetted property(ies)
+        d->addInput(second);
     }
 }
 
@@ -161,7 +128,13 @@ void QTestIdentityAction::setResult(QOutputPin *result)
 
     QTUML_D(QTestIdentityAction);
     if (d->result != result) {
-        d->setResult(result);
+        // Adjust subsetted property(ies)
+        d->removeOutput(d->result);
+
+        d->result = result;
+
+        // Adjust subsetted property(ies)
+        d->addOutput(result);
     }
 }
 
@@ -182,7 +155,13 @@ void QTestIdentityAction::setFirst(QInputPin *first)
 
     QTUML_D(QTestIdentityAction);
     if (d->first != first) {
-        d->setFirst(first);
+        // Adjust subsetted property(ies)
+        d->removeInput(d->first);
+
+        d->first = first;
+
+        // Adjust subsetted property(ies)
+        d->addInput(first);
     }
 }
 

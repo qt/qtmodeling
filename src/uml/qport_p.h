@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qproperty_p.h"
 
 // Qt includes
@@ -58,11 +57,12 @@ QT_MODULE(QtUml)
 
 class QProtocolStateMachine;
 class QInterface;
+class QPort;
 
 class QPortPrivate : public QPropertyPrivate
 {
 public:
-    explicit QPortPrivate();
+    explicit QPortPrivate(QPort *q_umlptr = 0);
     virtual ~QPortPrivate();
 
     bool isConjugated;
@@ -70,16 +70,6 @@ public:
     bool isService;
     QProtocolStateMachine *protocol;
     QSet<QPort *> *redefinedPorts;
-
-    // Internal functions for attributes
-    void setConjugated(bool isConjugated);
-    void setBehavior(bool isBehavior);
-    void setService(bool isService);
-
-    // Internal functions for association-ends
-    void setProtocol(QProtocolStateMachine *protocol);
-    void addRedefinedPort(QPort *redefinedPort);
-    void removeRedefinedPort(QPort *redefinedPort);
 };
 
 QT_END_NAMESPACE_QTUML

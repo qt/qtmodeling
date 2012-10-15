@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qpackageableelement_p.h"
 
 QT_BEGIN_HEADER
@@ -54,17 +53,17 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QPackage;
+class QType;
 
 class QTypePrivate : public QPackageableElementPrivate
 {
 public:
-    explicit QTypePrivate();
     virtual ~QTypePrivate();
 
     QPackage *package;
 
-    // Internal functions for association-ends
-    void setPackage(QPackage *package);
+protected:
+    explicit QTypePrivate();
 };
 
 QT_END_NAMESPACE_QTUML

@@ -41,57 +41,23 @@
 
 #include "qinterruptibleactivityregion.h"
 #include "qinterruptibleactivityregion_p.h"
-#include "qactivitygroup_p.h"
 
 #include <QtUml/QActivityEdge>
 #include <QtUml/QActivityNode>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInterruptibleActivityRegionPrivate::QInterruptibleActivityRegionPrivate() :
+QInterruptibleActivityRegionPrivate::QInterruptibleActivityRegionPrivate(QInterruptibleActivityRegion *q_umlptr) :
     interruptingEdges(new QSet<QActivityEdge *>),
     nodes(new QSet<QActivityNode *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QInterruptibleActivityRegionPrivate::~QInterruptibleActivityRegionPrivate()
 {
     delete interruptingEdges;
     delete nodes;
-}
-
-void QInterruptibleActivityRegionPrivate::addInterruptingEdge(QActivityEdge *interruptingEdge)
-{
-    // This is a read-write association end
-
-    this->interruptingEdges->insert(interruptingEdge);
-}
-
-void QInterruptibleActivityRegionPrivate::removeInterruptingEdge(QActivityEdge *interruptingEdge)
-{
-    // This is a read-write association end
-
-    this->interruptingEdges->remove(interruptingEdge);
-}
-
-void QInterruptibleActivityRegionPrivate::addNode(QActivityNode *node)
-{
-    // This is a read-write association end
-
-    this->nodes->insert(node);
-
-    // Adjust subsetted property(ies)
-    addContainedNode(node);
-}
-
-void QInterruptibleActivityRegionPrivate::removeNode(QActivityNode *node)
-{
-    // This is a read-write association end
-
-    this->nodes->remove(node);
-
-    // Adjust subsetted property(ies)
-    removeContainedNode(node);
 }
 
 /*!
@@ -105,7 +71,7 @@ void QInterruptibleActivityRegionPrivate::removeNode(QActivityNode *node)
 QInterruptibleActivityRegion::QInterruptibleActivityRegion(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QInterruptibleActivityRegionPrivate;
+    d_umlptr = new QInterruptibleActivityRegionPrivate(this);
 }
 
 QInterruptibleActivityRegion::QInterruptibleActivityRegion(bool createPimpl, QObject *parent)
@@ -136,7 +102,7 @@ void QInterruptibleActivityRegion::addInterruptingEdge(QActivityEdge *interrupti
 
     QTUML_D(QInterruptibleActivityRegion);
     if (!d->interruptingEdges->contains(interruptingEdge)) {
-        d->addInterruptingEdge(interruptingEdge);
+        d->interruptingEdges->insert(interruptingEdge);
 
         // Adjust opposite property
         interruptingEdge->setInterrupts(this);
@@ -149,7 +115,7 @@ void QInterruptibleActivityRegion::removeInterruptingEdge(QActivityEdge *interru
 
     QTUML_D(QInterruptibleActivityRegion);
     if (d->interruptingEdges->contains(interruptingEdge)) {
-        d->removeInterruptingEdge(interruptingEdge);
+        d->interruptingEdges->remove(interruptingEdge);
 
         // Adjust opposite property
         interruptingEdge->setInterrupts(0);
@@ -173,7 +139,10 @@ void QInterruptibleActivityRegion::addNode(QActivityNode *node)
 
     QTUML_D(QInterruptibleActivityRegion);
     if (!d->nodes->contains(node)) {
-        d->addNode(node);
+        d->nodes->insert(node);
+
+        // Adjust subsetted property(ies)
+        d->addContainedNode(node);
 
         // Adjust opposite property
         node->addInInterruptibleRegion(this);
@@ -186,7 +155,10 @@ void QInterruptibleActivityRegion::removeNode(QActivityNode *node)
 
     QTUML_D(QInterruptibleActivityRegion);
     if (d->nodes->contains(node)) {
-        d->removeNode(node);
+        d->nodes->remove(node);
+
+        // Adjust subsetted property(ies)
+        d->removeContainedNode(node);
 
         // Adjust opposite property
         node->removeInInterruptibleRegion(this);

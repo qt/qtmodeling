@@ -44,9 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qencapsulatedclassifier_p.h"
-
 #include "qbehavioredclassifier_p.h"
 
 // Qt includes
@@ -59,6 +57,7 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QClass;
 class QReception;
 class QNamedElement;
 class QOperation;
@@ -69,7 +68,7 @@ class QProperty;
 class QClassPrivate : public QEncapsulatedClassifierPrivate, public QBehavioredClassifierPrivate
 {
 public:
-    explicit QClassPrivate();
+    explicit QClassPrivate(QClass *q_umlptr = 0);
     virtual ~QClassPrivate();
 
     bool isAbstract;
@@ -79,19 +78,9 @@ public:
     QList<QOperation *> *ownedOperations;
     QList<QProperty *> *ownedAttributes;
 
-    // Internal functions for attributes
-    void setAbstract(bool isAbstract);
-    void setActive(bool isActive);
-
-    // Internal functions for association-ends
-    void addNestedClassifier(QClassifier *nestedClassifier);
-    void removeNestedClassifier(QClassifier *nestedClassifier);
-    void addOwnedReception(QReception *ownedReception);
-    void removeOwnedReception(QReception *ownedReception);
-    void addOwnedOperation(QOperation *ownedOperation);
-    void removeOwnedOperation(QOperation *ownedOperation);
-    void addOwnedAttribute(QProperty *ownedAttribute);
-    void removeOwnedAttribute(QProperty *ownedAttribute);
+    // Internal functions for read-only subsetted association ends
+    void addExtension(QExtension *extension);
+    void removeExtension(QExtension *extension);
 };
 
 QT_END_NAMESPACE_QTUML

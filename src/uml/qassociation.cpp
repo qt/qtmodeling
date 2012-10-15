@@ -41,21 +41,19 @@
 
 #include "qassociation.h"
 #include "qassociation_p.h"
-#include "qrelationship_p.h"
-#include "qclassifier_p.h"
-#include "qnamespace_p.h"
 
 #include <QtUml/QType>
 #include <QtUml/QProperty>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QAssociationPrivate::QAssociationPrivate() :
+QAssociationPrivate::QAssociationPrivate(QAssociation *q_umlptr) :
     isDerived(false),
     navigableOwnedEnds(new QSet<QProperty *>),
     ownedEnds(new QList<QProperty *>),
     memberEnds(new QList<QProperty *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QAssociationPrivate::~QAssociationPrivate()
@@ -63,77 +61,6 @@ QAssociationPrivate::~QAssociationPrivate()
     delete navigableOwnedEnds;
     delete ownedEnds;
     delete memberEnds;
-}
-
-void QAssociationPrivate::setDerived(bool isDerived)
-{
-    // This is a read-write attribute
-
-    this->isDerived = isDerived;
-}
-
-void QAssociationPrivate::addNavigableOwnedEnd(QProperty *navigableOwnedEnd)
-{
-    // This is a read-write association end
-
-    this->navigableOwnedEnds->insert(navigableOwnedEnd);
-
-    // Adjust subsetted property(ies)
-    addOwnedEnd(navigableOwnedEnd);
-}
-
-void QAssociationPrivate::removeNavigableOwnedEnd(QProperty *navigableOwnedEnd)
-{
-    // This is a read-write association end
-
-    this->navigableOwnedEnds->remove(navigableOwnedEnd);
-
-    // Adjust subsetted property(ies)
-    removeOwnedEnd(navigableOwnedEnd);
-}
-
-void QAssociationPrivate::addOwnedEnd(QProperty *ownedEnd)
-{
-    // This is a read-write association end
-
-    this->ownedEnds->append(ownedEnd);
-
-    // Adjust subsetted property(ies)
-    addMemberEnd(ownedEnd);
-    addFeature(ownedEnd);
-    addOwnedMember(ownedEnd);
-}
-
-void QAssociationPrivate::removeOwnedEnd(QProperty *ownedEnd)
-{
-    // This is a read-write association end
-
-    this->ownedEnds->removeAll(ownedEnd);
-
-    // Adjust subsetted property(ies)
-    removeMemberEnd(ownedEnd);
-    removeFeature(ownedEnd);
-    removeOwnedMember(ownedEnd);
-}
-
-void QAssociationPrivate::addMemberEnd(QProperty *memberEnd)
-{
-    // This is a read-write association end
-
-    this->memberEnds->append(memberEnd);
-
-    // Adjust subsetted property(ies)
-    addMember(memberEnd);
-}
-
-void QAssociationPrivate::removeMemberEnd(QProperty *memberEnd)
-{
-    // This is a read-write association end
-
-    this->memberEnds->removeAll(memberEnd);
-
-    // Adjust subsetted property(ies)
-    removeMember(memberEnd);
 }
 
 /*!
@@ -147,7 +74,7 @@ void QAssociationPrivate::removeMemberEnd(QProperty *memberEnd)
 QAssociation::QAssociation(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QAssociationPrivate;
+    d_umlptr = new QAssociationPrivate(this);
 }
 
 QAssociation::QAssociation(bool createPimpl, QObject *parent)
@@ -178,7 +105,7 @@ void QAssociation::setDerived(bool isDerived)
 
     QTUML_D(QAssociation);
     if (d->isDerived != isDerived) {
-        d->setDerived(isDerived);
+        d->isDerived = isDerived;
     }
 }
 
@@ -191,7 +118,7 @@ const QList<QType *> *QAssociation::endTypes() const
 
     qWarning("QAssociation::endTypes: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QAssociation);
+    //QTUML_D(const QAssociation);
     //return <derived-return>;
 }
 
@@ -212,7 +139,10 @@ void QAssociation::addNavigableOwnedEnd(QProperty *navigableOwnedEnd)
 
     QTUML_D(QAssociation);
     if (!d->navigableOwnedEnds->contains(navigableOwnedEnd)) {
-        d->addNavigableOwnedEnd(navigableOwnedEnd);
+        d->navigableOwnedEnds->insert(navigableOwnedEnd);
+
+        // Adjust subsetted property(ies)
+        addOwnedEnd(navigableOwnedEnd);
     }
 }
 
@@ -222,7 +152,10 @@ void QAssociation::removeNavigableOwnedEnd(QProperty *navigableOwnedEnd)
 
     QTUML_D(QAssociation);
     if (d->navigableOwnedEnds->contains(navigableOwnedEnd)) {
-        d->removeNavigableOwnedEnd(navigableOwnedEnd);
+        d->navigableOwnedEnds->remove(navigableOwnedEnd);
+
+        // Adjust subsetted property(ies)
+        removeOwnedEnd(navigableOwnedEnd);
     }
 }
 
@@ -243,7 +176,12 @@ void QAssociation::addOwnedEnd(QProperty *ownedEnd)
 
     QTUML_D(QAssociation);
     if (!d->ownedEnds->contains(ownedEnd)) {
-        d->addOwnedEnd(ownedEnd);
+        d->ownedEnds->append(ownedEnd);
+
+        // Adjust subsetted property(ies)
+        addMemberEnd(ownedEnd);
+        d->addFeature(ownedEnd);
+        d->addOwnedMember(ownedEnd);
 
         // Adjust opposite property
         ownedEnd->setOwningAssociation(this);
@@ -256,7 +194,12 @@ void QAssociation::removeOwnedEnd(QProperty *ownedEnd)
 
     QTUML_D(QAssociation);
     if (d->ownedEnds->contains(ownedEnd)) {
-        d->removeOwnedEnd(ownedEnd);
+        d->ownedEnds->removeAll(ownedEnd);
+
+        // Adjust subsetted property(ies)
+        removeMemberEnd(ownedEnd);
+        d->removeFeature(ownedEnd);
+        d->removeOwnedMember(ownedEnd);
 
         // Adjust opposite property
         ownedEnd->setOwningAssociation(0);
@@ -280,7 +223,10 @@ void QAssociation::addMemberEnd(QProperty *memberEnd)
 
     QTUML_D(QAssociation);
     if (!d->memberEnds->contains(memberEnd)) {
-        d->addMemberEnd(memberEnd);
+        d->memberEnds->append(memberEnd);
+
+        // Adjust subsetted property(ies)
+        d->addMember(memberEnd);
 
         // Adjust opposite property
         memberEnd->setAssociation(this);
@@ -293,7 +239,10 @@ void QAssociation::removeMemberEnd(QProperty *memberEnd)
 
     QTUML_D(QAssociation);
     if (d->memberEnds->contains(memberEnd)) {
-        d->removeMemberEnd(memberEnd);
+        d->memberEnds->removeAll(memberEnd);
+
+        // Adjust subsetted property(ies)
+        d->removeMember(memberEnd);
 
         // Adjust opposite property
         memberEnd->setAssociation(0);

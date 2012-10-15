@@ -41,32 +41,19 @@
 
 #include "qmanifestation.h"
 #include "qmanifestation_p.h"
-#include "qdependency_p.h"
 
 #include <QtUml/QPackageableElement>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QManifestationPrivate::QManifestationPrivate() :
+QManifestationPrivate::QManifestationPrivate(QManifestation *q_umlptr) :
     utilizedElement(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QManifestationPrivate::~QManifestationPrivate()
 {
-}
-
-void QManifestationPrivate::setUtilizedElement(QPackageableElement *utilizedElement)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeSupplier(this->utilizedElement);
-
-    this->utilizedElement = utilizedElement;
-
-    // Adjust subsetted property(ies)
-    addSupplier(utilizedElement);
 }
 
 /*!
@@ -80,7 +67,7 @@ void QManifestationPrivate::setUtilizedElement(QPackageableElement *utilizedElem
 QManifestation::QManifestation(QObject *parent)
     : QAbstraction(false, parent)
 {
-    d_umlptr = new QManifestationPrivate;
+    d_umlptr = new QManifestationPrivate(this);
 }
 
 QManifestation::QManifestation(bool createPimpl, QObject *parent)
@@ -111,7 +98,13 @@ void QManifestation::setUtilizedElement(QPackageableElement *utilizedElement)
 
     QTUML_D(QManifestation);
     if (d->utilizedElement != utilizedElement) {
-        d->setUtilizedElement(utilizedElement);
+        // Adjust subsetted property(ies)
+        removeSupplier(d->utilizedElement);
+
+        d->utilizedElement = utilizedElement;
+
+        // Adjust subsetted property(ies)
+        addSupplier(utilizedElement);
     }
 }
 

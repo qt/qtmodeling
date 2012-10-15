@@ -41,6 +41,7 @@
 
 #include "qfeature.h"
 #include "qfeature_p.h"
+#include "qclassifier_p.h"
 
 #include <QtUml/QClassifier>
 
@@ -57,25 +58,30 @@ QFeaturePrivate::~QFeaturePrivate()
     delete featuringClassifiers;
 }
 
-void QFeaturePrivate::setStatic(bool isStatic)
-{
-    // This is a read-write attribute
-
-    this->isStatic = isStatic;
-}
-
 void QFeaturePrivate::addFeaturingClassifier(QClassifier *featuringClassifier)
 {
     // This is a read-only derived-union association end
 
-    this->featuringClassifiers->insert(featuringClassifier);
+    if (!this->featuringClassifiers->contains(featuringClassifier)) {
+        this->featuringClassifiers->insert(featuringClassifier);
+
+        // Adjust opposite property
+        QTUML_Q(QFeature);
+        (dynamic_cast<QClassifierPrivate *>(featuringClassifier->d_umlptr))->addFeature(q);
+    }
 }
 
 void QFeaturePrivate::removeFeaturingClassifier(QClassifier *featuringClassifier)
 {
     // This is a read-only derived-union association end
 
-    this->featuringClassifiers->remove(featuringClassifier);
+    if (this->featuringClassifiers->contains(featuringClassifier)) {
+        this->featuringClassifiers->remove(featuringClassifier);
+
+        // Adjust opposite property
+        QTUML_Q(QFeature);
+        (dynamic_cast<QClassifierPrivate *>(featuringClassifier->d_umlptr))->removeFeature(q);
+    }
 }
 
 /*!
@@ -111,7 +117,7 @@ void QFeature::setStatic(bool isStatic)
 
     QTUML_D(QFeature);
     if (d->isStatic != isStatic) {
-        d->setStatic(isStatic);
+        d->isStatic = isStatic;
     }
 }
 

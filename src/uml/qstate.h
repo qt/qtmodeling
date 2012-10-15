@@ -58,10 +58,10 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QConstraint;
-class QRegion;
 class QStateMachine;
 class QClassifier;
+class QConstraint;
+class QRegion;
 class QBehavior;
 class QConnectionPointReference;
 class QTrigger;

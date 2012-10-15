@@ -63,13 +63,13 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QRedefinableElement;
-class QParameterableElement;
 class QType;
 class QInterface;
+class QRedefinableElement;
+class QParameterableElement;
 class QValueSpecification;
-class QAssociation;
 class QDataType;
+class QAssociation;
 class QClass;
 
 class Q_UML_EXPORT QProperty : public QObject, public QStructuralFeature, public QConnectableElement, public QDeploymentTarget

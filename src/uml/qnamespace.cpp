@@ -41,7 +41,7 @@
 
 #include "qnamespace.h"
 #include "qnamespace_p.h"
-#include "qelement_p.h"
+#include "qnamedelement_p.h"
 
 #include <QtUml/QPackageImport>
 #include <QtUml/QConstraint>
@@ -69,118 +69,58 @@ QNamespacePrivate::~QNamespacePrivate()
     delete ownedMembers;
 }
 
-void QNamespacePrivate::addPackageImport(QPackageImport *packageImport)
-{
-    // This is a read-write association end
-
-    this->packageImports->insert(packageImport);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(packageImport);
-
-    // Adjust indirectly subsetted property(ies)
-    // This is because importedMembers is derived (not derivedUnion) and subsets member
-    foreach (QPackageableElement *packageableElement, *packageImport->importedPackage()->packagedElements())
-        addMember(packageableElement);
-}
-
-void QNamespacePrivate::removePackageImport(QPackageImport *packageImport)
-{
-    // This is a read-write association end
-
-    this->packageImports->remove(packageImport);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(packageImport);
-
-    // Adjust indirectly subsetted property(ies)
-    // This is because importedMembers is derived (not derivedUnion) and subsets member
-    foreach (QPackageableElement *packageableElement, *packageImport->importedPackage()->packagedElements())
-        removeMember(packageableElement);
-}
-
 void QNamespacePrivate::addMember(QNamedElement *member)
 {
     // This is a read-only derived-union association end
 
-    this->members->insert(member);
+    if (!this->members->contains(member)) {
+        qDebug() << "QNamespacePrivate::addMember";
+        this->members->insert(member);
+    }
 }
 
 void QNamespacePrivate::removeMember(QNamedElement *member)
 {
     // This is a read-only derived-union association end
 
-    this->members->remove(member);
-}
-
-void QNamespacePrivate::addElementImport(QElementImport *elementImport)
-{
-    // This is a read-write association end
-
-    this->elementImports->insert(elementImport);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(elementImport);
-
-    // Adjust indirectly subsetted property(ies)
-    // This is because importedMembers is derived (not derivedUnion) and subsets member
-    addMember(elementImport->importedElement());
-}
-
-void QNamespacePrivate::removeElementImport(QElementImport *elementImport)
-{
-    // This is a read-write association end
-
-    this->elementImports->remove(elementImport);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(elementImport);
-
-    // Adjust indirectly subsetted property(ies)
-    // This is because importedMembers is derived (not derivedUnion) and subsets member
-    removeMember(elementImport->importedElement());
-}
-
-void QNamespacePrivate::addOwnedRule(QConstraint *ownedRule)
-{
-    // This is a read-write association end
-
-    this->ownedRules->insert(ownedRule);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(ownedRule);
-}
-
-void QNamespacePrivate::removeOwnedRule(QConstraint *ownedRule)
-{
-    // This is a read-write association end
-
-    this->ownedRules->remove(ownedRule);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(ownedRule);
+    if (this->members->contains(member)) {
+        this->members->remove(member);
+    }
 }
 
 void QNamespacePrivate::addOwnedMember(QNamedElement *ownedMember)
 {
     // This is a read-only derived-union association end
 
-    this->ownedMembers->insert(ownedMember);
+    if (!this->ownedMembers->contains(ownedMember)) {
+        qDebug() << "QNamespacePrivate::addOwnedMember";
+        this->ownedMembers->insert(ownedMember);
 
-    // Adjust subsetted property(ies)
-    addMember(ownedMember);
-    addOwnedElement(ownedMember);
+        // Adjust subsetted property(ies)
+        addMember(ownedMember);
+        addOwnedElement(ownedMember);
+
+        // Adjust opposite property
+        QTUML_Q(QNamespace);
+        (dynamic_cast<QNamedElementPrivate *>(ownedMember->d_umlptr))->setNamespace_(q);
+    }
 }
 
 void QNamespacePrivate::removeOwnedMember(QNamedElement *ownedMember)
 {
     // This is a read-only derived-union association end
 
-    this->ownedMembers->remove(ownedMember);
+    if (this->ownedMembers->contains(ownedMember)) {
+        this->ownedMembers->remove(ownedMember);
 
-    // Adjust subsetted property(ies)
-    removeMember(ownedMember);
-    removeOwnedElement(ownedMember);
+        // Adjust subsetted property(ies)
+        removeMember(ownedMember);
+        removeOwnedElement(ownedMember);
+
+        // Adjust opposite property
+        QTUML_Q(QNamespace);
+        (dynamic_cast<QNamedElementPrivate *>(ownedMember->d_umlptr))->setNamespace_(0);
+    }
 }
 
 /*!
@@ -216,10 +156,18 @@ void QNamespace::addPackageImport(QPackageImport *packageImport)
 
     QTUML_D(QNamespace);
     if (!d->packageImports->contains(packageImport)) {
-        d->addPackageImport(packageImport);
+        d->packageImports->insert(packageImport);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(packageImport);
 
         // Adjust opposite property
         packageImport->setImportingNamespace(this);
+
+        // Adjust indirectly subsetted property(ies)
+        // This is because importedMembers is derived (not derivedUnion) and subsets member
+        foreach (QPackageableElement *packageableElement, *packageImport->importedPackage()->packagedElements())
+            d->addMember(packageableElement);
     }
 }
 
@@ -229,10 +177,18 @@ void QNamespace::removePackageImport(QPackageImport *packageImport)
 
     QTUML_D(QNamespace);
     if (d->packageImports->contains(packageImport)) {
-        d->removePackageImport(packageImport);
+        d->packageImports->remove(packageImport);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(packageImport);
 
         // Adjust opposite property
         packageImport->setImportingNamespace(0);
+
+        // Adjust indirectly subsetted property(ies)
+        // This is because importedMembers is derived (not derivedUnion) and subsets member
+        foreach (QPackageableElement *packageableElement, *packageImport->importedPackage()->packagedElements())
+            d->removeMember(packageableElement);
     }
 }
 
@@ -280,7 +236,10 @@ void QNamespace::addElementImport(QElementImport *elementImport)
 
     QTUML_D(QNamespace);
     if (!d->elementImports->contains(elementImport)) {
-        d->addElementImport(elementImport);
+        d->elementImports->insert(elementImport);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(elementImport);
 
         // Adjust opposite property
         elementImport->setImportingNamespace(this);
@@ -293,7 +252,10 @@ void QNamespace::removeElementImport(QElementImport *elementImport)
 
     QTUML_D(QNamespace);
     if (d->elementImports->contains(elementImport)) {
-        d->removeElementImport(elementImport);
+        d->elementImports->remove(elementImport);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(elementImport);
 
         // Adjust opposite property
         elementImport->setImportingNamespace(0);
@@ -317,7 +279,10 @@ void QNamespace::addOwnedRule(QConstraint *ownedRule)
 
     QTUML_D(QNamespace);
     if (!d->ownedRules->contains(ownedRule)) {
-        d->addOwnedRule(ownedRule);
+        d->ownedRules->insert(ownedRule);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(ownedRule);
 
         // Adjust opposite property
         ownedRule->setContext(this);
@@ -330,7 +295,10 @@ void QNamespace::removeOwnedRule(QConstraint *ownedRule)
 
     QTUML_D(QNamespace);
     if (d->ownedRules->contains(ownedRule)) {
-        d->removeOwnedRule(ownedRule);
+        d->ownedRules->remove(ownedRule);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(ownedRule);
 
         // Adjust opposite property
         ownedRule->setContext(0);

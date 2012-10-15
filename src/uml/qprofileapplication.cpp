@@ -41,57 +41,22 @@
 
 #include "qprofileapplication.h"
 #include "qprofileapplication_p.h"
-#include "qelement_p.h"
-#include "qdirectedrelationship_p.h"
 
 #include <QtUml/QProfile>
 #include <QtUml/QPackage>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QProfileApplicationPrivate::QProfileApplicationPrivate() :
+QProfileApplicationPrivate::QProfileApplicationPrivate(QProfileApplication *q_umlptr) :
     isStrict(false),
     applyingPackage(0),
     appliedProfile(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QProfileApplicationPrivate::~QProfileApplicationPrivate()
 {
-}
-
-void QProfileApplicationPrivate::setStrict(bool isStrict)
-{
-    // This is a read-write attribute
-
-    this->isStrict = isStrict;
-}
-
-void QProfileApplicationPrivate::setApplyingPackage(QPackage *applyingPackage)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeSource(this->applyingPackage);
-
-    this->applyingPackage = applyingPackage;
-
-    // Adjust subsetted property(ies)
-    setOwner(applyingPackage);
-    addSource(applyingPackage);
-}
-
-void QProfileApplicationPrivate::setAppliedProfile(QProfile *appliedProfile)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeTarget(this->appliedProfile);
-
-    this->appliedProfile = appliedProfile;
-
-    // Adjust subsetted property(ies)
-    addTarget(appliedProfile);
 }
 
 /*!
@@ -105,7 +70,7 @@ void QProfileApplicationPrivate::setAppliedProfile(QProfile *appliedProfile)
 QProfileApplication::QProfileApplication(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QProfileApplicationPrivate;
+    d_umlptr = new QProfileApplicationPrivate(this);
 }
 
 QProfileApplication::QProfileApplication(bool createPimpl, QObject *parent)
@@ -136,7 +101,7 @@ void QProfileApplication::setStrict(bool isStrict)
 
     QTUML_D(QProfileApplication);
     if (d->isStrict != isStrict) {
-        d->setStrict(isStrict);
+        d->isStrict = isStrict;
     }
 }
 
@@ -157,7 +122,14 @@ void QProfileApplication::setApplyingPackage(QPackage *applyingPackage)
 
     QTUML_D(QProfileApplication);
     if (d->applyingPackage != applyingPackage) {
-        d->setApplyingPackage(applyingPackage);
+        // Adjust subsetted property(ies)
+        d->removeSource(d->applyingPackage);
+
+        d->applyingPackage = applyingPackage;
+
+        // Adjust subsetted property(ies)
+        d->setOwner(applyingPackage);
+        d->addSource(applyingPackage);
 
         // Adjust opposite property
         applyingPackage->addProfileApplication(this);
@@ -181,7 +153,13 @@ void QProfileApplication::setAppliedProfile(QProfile *appliedProfile)
 
     QTUML_D(QProfileApplication);
     if (d->appliedProfile != appliedProfile) {
-        d->setAppliedProfile(appliedProfile);
+        // Adjust subsetted property(ies)
+        d->removeTarget(d->appliedProfile);
+
+        d->appliedProfile = appliedProfile;
+
+        // Adjust subsetted property(ies)
+        d->addTarget(appliedProfile);
     }
 }
 

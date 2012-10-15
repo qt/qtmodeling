@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qstatemachine_p.h"
 
 // Qt includes
@@ -57,18 +56,15 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QProtocolConformance;
+class QProtocolStateMachine;
 
 class QProtocolStateMachinePrivate : public QStateMachinePrivate
 {
 public:
-    explicit QProtocolStateMachinePrivate();
+    explicit QProtocolStateMachinePrivate(QProtocolStateMachine *q_umlptr = 0);
     virtual ~QProtocolStateMachinePrivate();
 
     QSet<QProtocolConformance *> *conformance;
-
-    // Internal functions for association-ends
-    void addConformance(QProtocolConformance *conformance);
-    void removeConformance(QProtocolConformance *conformance);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -41,48 +41,20 @@
 
 #include "qinclude.h"
 #include "qinclude_p.h"
-#include "qdirectedrelationship_p.h"
-#include "qnamedelement_p.h"
 
 #include <QtUml/QUseCase>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QIncludePrivate::QIncludePrivate() :
+QIncludePrivate::QIncludePrivate(QInclude *q_umlptr) :
     includingCase(0),
     addition(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QIncludePrivate::~QIncludePrivate()
 {
-}
-
-void QIncludePrivate::setIncludingCase(QUseCase *includingCase)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeSource(this->includingCase);
-
-    this->includingCase = includingCase;
-
-    // Adjust subsetted property(ies)
-    addSource(includingCase);
-    setNamespace_(includingCase);
-}
-
-void QIncludePrivate::setAddition(QUseCase *addition)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeTarget(this->addition);
-
-    this->addition = addition;
-
-    // Adjust subsetted property(ies)
-    addTarget(addition);
 }
 
 /*!
@@ -96,7 +68,7 @@ void QIncludePrivate::setAddition(QUseCase *addition)
 QInclude::QInclude(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QIncludePrivate;
+    d_umlptr = new QIncludePrivate(this);
 }
 
 QInclude::QInclude(bool createPimpl, QObject *parent)
@@ -127,7 +99,14 @@ void QInclude::setIncludingCase(QUseCase *includingCase)
 
     QTUML_D(QInclude);
     if (d->includingCase != includingCase) {
-        d->setIncludingCase(includingCase);
+        // Adjust subsetted property(ies)
+        d->removeSource(d->includingCase);
+
+        d->includingCase = includingCase;
+
+        // Adjust subsetted property(ies)
+        d->addSource(includingCase);
+        d->setNamespace_(includingCase);
 
         // Adjust opposite property
         includingCase->addInclude(this);
@@ -151,7 +130,13 @@ void QInclude::setAddition(QUseCase *addition)
 
     QTUML_D(QInclude);
     if (d->addition != addition) {
-        d->setAddition(addition);
+        // Adjust subsetted property(ies)
+        d->removeTarget(d->addition);
+
+        d->addition = addition;
+
+        // Adjust subsetted property(ies)
+        d->addTarget(addition);
     }
 }
 

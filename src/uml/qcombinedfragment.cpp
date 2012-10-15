@@ -41,71 +41,24 @@
 
 #include "qcombinedfragment.h"
 #include "qcombinedfragment_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QGate>
 #include <QtUml/QInteractionOperand>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCombinedFragmentPrivate::QCombinedFragmentPrivate() :
+QCombinedFragmentPrivate::QCombinedFragmentPrivate(QCombinedFragment *q_umlptr) :
     interactionOperator(QtUml::InteractionOperatorSeq),
     cfragmentGates(new QSet<QGate *>),
     operands(new QList<QInteractionOperand *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QCombinedFragmentPrivate::~QCombinedFragmentPrivate()
 {
     delete cfragmentGates;
     delete operands;
-}
-
-void QCombinedFragmentPrivate::setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator)
-{
-    // This is a read-write attribute
-
-    this->interactionOperator = interactionOperator;
-}
-
-void QCombinedFragmentPrivate::addCfragmentGate(QGate *cfragmentGate)
-{
-    // This is a read-write association end
-
-    this->cfragmentGates->insert(cfragmentGate);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(cfragmentGate);
-}
-
-void QCombinedFragmentPrivate::removeCfragmentGate(QGate *cfragmentGate)
-{
-    // This is a read-write association end
-
-    this->cfragmentGates->remove(cfragmentGate);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(cfragmentGate);
-}
-
-void QCombinedFragmentPrivate::addOperand(QInteractionOperand *operand)
-{
-    // This is a read-write association end
-
-    this->operands->append(operand);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(operand);
-}
-
-void QCombinedFragmentPrivate::removeOperand(QInteractionOperand *operand)
-{
-    // This is a read-write association end
-
-    this->operands->removeAll(operand);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(operand);
 }
 
 /*!
@@ -119,7 +72,7 @@ void QCombinedFragmentPrivate::removeOperand(QInteractionOperand *operand)
 QCombinedFragment::QCombinedFragment(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QCombinedFragmentPrivate;
+    d_umlptr = new QCombinedFragmentPrivate(this);
 }
 
 QCombinedFragment::QCombinedFragment(bool createPimpl, QObject *parent)
@@ -150,7 +103,7 @@ void QCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind in
 
     QTUML_D(QCombinedFragment);
     if (d->interactionOperator != interactionOperator) {
-        d->setInteractionOperator(interactionOperator);
+        d->interactionOperator = interactionOperator;
     }
 }
 
@@ -171,7 +124,10 @@ void QCombinedFragment::addCfragmentGate(QGate *cfragmentGate)
 
     QTUML_D(QCombinedFragment);
     if (!d->cfragmentGates->contains(cfragmentGate)) {
-        d->addCfragmentGate(cfragmentGate);
+        d->cfragmentGates->insert(cfragmentGate);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(cfragmentGate);
     }
 }
 
@@ -181,7 +137,10 @@ void QCombinedFragment::removeCfragmentGate(QGate *cfragmentGate)
 
     QTUML_D(QCombinedFragment);
     if (d->cfragmentGates->contains(cfragmentGate)) {
-        d->removeCfragmentGate(cfragmentGate);
+        d->cfragmentGates->remove(cfragmentGate);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(cfragmentGate);
     }
 }
 
@@ -202,7 +161,10 @@ void QCombinedFragment::addOperand(QInteractionOperand *operand)
 
     QTUML_D(QCombinedFragment);
     if (!d->operands->contains(operand)) {
-        d->addOperand(operand);
+        d->operands->append(operand);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(operand);
     }
 }
 
@@ -212,7 +174,10 @@ void QCombinedFragment::removeOperand(QInteractionOperand *operand)
 
     QTUML_D(QCombinedFragment);
     if (d->operands->contains(operand)) {
-        d->removeOperand(operand);
+        d->operands->removeAll(operand);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(operand);
     }
 }
 

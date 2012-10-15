@@ -41,43 +41,20 @@
 
 #include "qsignal.h"
 #include "qsignal_p.h"
-#include "qnamespace_p.h"
-#include "qclassifier_p.h"
 
 #include <QtUml/QProperty>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QSignalPrivate::QSignalPrivate() :
+QSignalPrivate::QSignalPrivate(QSignal *q_umlptr) :
     ownedAttributes(new QList<QProperty *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QSignalPrivate::~QSignalPrivate()
 {
     delete ownedAttributes;
-}
-
-void QSignalPrivate::addOwnedAttribute(QProperty *ownedAttribute)
-{
-    // This is a read-write association end
-
-    this->ownedAttributes->append(ownedAttribute);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(ownedAttribute);
-    addAttribute(ownedAttribute);
-}
-
-void QSignalPrivate::removeOwnedAttribute(QProperty *ownedAttribute)
-{
-    // This is a read-write association end
-
-    this->ownedAttributes->removeAll(ownedAttribute);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(ownedAttribute);
-    removeAttribute(ownedAttribute);
 }
 
 /*!
@@ -91,7 +68,7 @@ void QSignalPrivate::removeOwnedAttribute(QProperty *ownedAttribute)
 QSignal::QSignal(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QSignalPrivate;
+    d_umlptr = new QSignalPrivate(this);
 }
 
 QSignal::QSignal(bool createPimpl, QObject *parent)
@@ -122,7 +99,11 @@ void QSignal::addOwnedAttribute(QProperty *ownedAttribute)
 
     QTUML_D(QSignal);
     if (!d->ownedAttributes->contains(ownedAttribute)) {
-        d->addOwnedAttribute(ownedAttribute);
+        d->ownedAttributes->append(ownedAttribute);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(ownedAttribute);
+        d->addAttribute(ownedAttribute);
     }
 }
 
@@ -132,7 +113,11 @@ void QSignal::removeOwnedAttribute(QProperty *ownedAttribute)
 
     QTUML_D(QSignal);
     if (d->ownedAttributes->contains(ownedAttribute)) {
-        d->removeOwnedAttribute(ownedAttribute);
+        d->ownedAttributes->removeAll(ownedAttribute);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(ownedAttribute);
+        d->removeAttribute(ownedAttribute);
     }
 }
 

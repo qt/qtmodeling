@@ -41,40 +41,20 @@
 
 #include "qremovestructuralfeaturevalueaction.h"
 #include "qremovestructuralfeaturevalueaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QRemoveStructuralFeatureValueActionPrivate::QRemoveStructuralFeatureValueActionPrivate() :
+QRemoveStructuralFeatureValueActionPrivate::QRemoveStructuralFeatureValueActionPrivate(QRemoveStructuralFeatureValueAction *q_umlptr) :
     isRemoveDuplicates(false),
     removeAt(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QRemoveStructuralFeatureValueActionPrivate::~QRemoveStructuralFeatureValueActionPrivate()
 {
-}
-
-void QRemoveStructuralFeatureValueActionPrivate::setRemoveDuplicates(bool isRemoveDuplicates)
-{
-    // This is a read-write attribute
-
-    this->isRemoveDuplicates = isRemoveDuplicates;
-}
-
-void QRemoveStructuralFeatureValueActionPrivate::setRemoveAt(QInputPin *removeAt)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeInput(this->removeAt);
-
-    this->removeAt = removeAt;
-
-    // Adjust subsetted property(ies)
-    addInput(removeAt);
 }
 
 /*!
@@ -88,7 +68,7 @@ void QRemoveStructuralFeatureValueActionPrivate::setRemoveAt(QInputPin *removeAt
 QRemoveStructuralFeatureValueAction::QRemoveStructuralFeatureValueAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QRemoveStructuralFeatureValueActionPrivate;
+    d_umlptr = new QRemoveStructuralFeatureValueActionPrivate(this);
 }
 
 QRemoveStructuralFeatureValueAction::QRemoveStructuralFeatureValueAction(bool createPimpl, QObject *parent)
@@ -119,7 +99,7 @@ void QRemoveStructuralFeatureValueAction::setRemoveDuplicates(bool isRemoveDupli
 
     QTUML_D(QRemoveStructuralFeatureValueAction);
     if (d->isRemoveDuplicates != isRemoveDuplicates) {
-        d->setRemoveDuplicates(isRemoveDuplicates);
+        d->isRemoveDuplicates = isRemoveDuplicates;
     }
 }
 
@@ -140,7 +120,13 @@ void QRemoveStructuralFeatureValueAction::setRemoveAt(QInputPin *removeAt)
 
     QTUML_D(QRemoveStructuralFeatureValueAction);
     if (d->removeAt != removeAt) {
-        d->setRemoveAt(removeAt);
+        // Adjust subsetted property(ies)
+        d->removeInput(d->removeAt);
+
+        d->removeAt = removeAt;
+
+        // Adjust subsetted property(ies)
+        d->addInput(removeAt);
     }
 }
 

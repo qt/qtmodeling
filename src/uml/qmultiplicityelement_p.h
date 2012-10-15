@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qelement_p.h"
 
 QT_BEGIN_HEADER
@@ -54,11 +53,11 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QValueSpecification;
+class QMultiplicityElement;
 
 class QMultiplicityElementPrivate : public virtual QElementPrivate
 {
 public:
-    explicit QMultiplicityElementPrivate();
     virtual ~QMultiplicityElementPrivate();
 
     bool isUnique;
@@ -66,13 +65,8 @@ public:
     QValueSpecification *upperValue;
     QValueSpecification *lowerValue;
 
-    // Internal functions for attributes
-    void setUnique(bool isUnique);
-    void setOrdered(bool isOrdered);
-
-    // Internal functions for association-ends
-    void setUpperValue(QValueSpecification *upperValue);
-    void setLowerValue(QValueSpecification *lowerValue);
+protected:
+    explicit QMultiplicityElementPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

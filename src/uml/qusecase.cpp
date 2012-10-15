@@ -41,7 +41,6 @@
 
 #include "qusecase.h"
 #include "qusecase_p.h"
-#include "qnamespace_p.h"
 
 #include <QtUml/QClassifier>
 #include <QtUml/QInclude>
@@ -50,12 +49,13 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QUseCasePrivate::QUseCasePrivate() :
+QUseCasePrivate::QUseCasePrivate(QUseCase *q_umlptr) :
     extensionPoints(new QSet<QExtensionPoint *>),
     includes(new QSet<QInclude *>),
     subjects(new QSet<QClassifier *>),
     extends(new QSet<QExtend *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QUseCasePrivate::~QUseCasePrivate()
@@ -64,80 +64,6 @@ QUseCasePrivate::~QUseCasePrivate()
     delete includes;
     delete subjects;
     delete extends;
-}
-
-void QUseCasePrivate::addExtensionPoint(QExtensionPoint *extensionPoint)
-{
-    // This is a read-write association end
-
-    this->extensionPoints->insert(extensionPoint);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(extensionPoint);
-}
-
-void QUseCasePrivate::removeExtensionPoint(QExtensionPoint *extensionPoint)
-{
-    // This is a read-write association end
-
-    this->extensionPoints->remove(extensionPoint);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(extensionPoint);
-}
-
-void QUseCasePrivate::addInclude(QInclude *include)
-{
-    // This is a read-write association end
-
-    this->includes->insert(include);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(include);
-}
-
-void QUseCasePrivate::removeInclude(QInclude *include)
-{
-    // This is a read-write association end
-
-    this->includes->remove(include);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(include);
-}
-
-void QUseCasePrivate::addSubject(QClassifier *subject)
-{
-    // This is a read-write association end
-
-    this->subjects->insert(subject);
-}
-
-void QUseCasePrivate::removeSubject(QClassifier *subject)
-{
-    // This is a read-write association end
-
-    this->subjects->remove(subject);
-}
-
-void QUseCasePrivate::addExtend(QExtend *extend)
-{
-    // This is a read-write association end
-
-    this->extends->insert(extend);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(extend);
-}
-
-void QUseCasePrivate::removeExtend(QExtend *extend)
-{
-    // This is a read-write association end
-
-    this->extends->remove(extend);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(extend);
 }
 
 /*!
@@ -151,7 +77,7 @@ void QUseCasePrivate::removeExtend(QExtend *extend)
 QUseCase::QUseCase(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QUseCasePrivate;
+    d_umlptr = new QUseCasePrivate(this);
 }
 
 QUseCase::QUseCase(bool createPimpl, QObject *parent)
@@ -182,7 +108,10 @@ void QUseCase::addExtensionPoint(QExtensionPoint *extensionPoint)
 
     QTUML_D(QUseCase);
     if (!d->extensionPoints->contains(extensionPoint)) {
-        d->addExtensionPoint(extensionPoint);
+        d->extensionPoints->insert(extensionPoint);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(extensionPoint);
 
         // Adjust opposite property
         extensionPoint->setUseCase(this);
@@ -195,7 +124,10 @@ void QUseCase::removeExtensionPoint(QExtensionPoint *extensionPoint)
 
     QTUML_D(QUseCase);
     if (d->extensionPoints->contains(extensionPoint)) {
-        d->removeExtensionPoint(extensionPoint);
+        d->extensionPoints->remove(extensionPoint);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(extensionPoint);
 
         // Adjust opposite property
         extensionPoint->setUseCase(0);
@@ -219,7 +151,10 @@ void QUseCase::addInclude(QInclude *include)
 
     QTUML_D(QUseCase);
     if (!d->includes->contains(include)) {
-        d->addInclude(include);
+        d->includes->insert(include);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(include);
 
         // Adjust opposite property
         include->setIncludingCase(this);
@@ -232,7 +167,10 @@ void QUseCase::removeInclude(QInclude *include)
 
     QTUML_D(QUseCase);
     if (d->includes->contains(include)) {
-        d->removeInclude(include);
+        d->includes->remove(include);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(include);
 
         // Adjust opposite property
         include->setIncludingCase(0);
@@ -256,7 +194,7 @@ void QUseCase::addSubject(QClassifier *subject)
 
     QTUML_D(QUseCase);
     if (!d->subjects->contains(subject)) {
-        d->addSubject(subject);
+        d->subjects->insert(subject);
 
         // Adjust opposite property
         subject->addUseCase(this);
@@ -269,7 +207,7 @@ void QUseCase::removeSubject(QClassifier *subject)
 
     QTUML_D(QUseCase);
     if (d->subjects->contains(subject)) {
-        d->removeSubject(subject);
+        d->subjects->remove(subject);
 
         // Adjust opposite property
         subject->removeUseCase(this);
@@ -293,7 +231,10 @@ void QUseCase::addExtend(QExtend *extend)
 
     QTUML_D(QUseCase);
     if (!d->extends->contains(extend)) {
-        d->addExtend(extend);
+        d->extends->insert(extend);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(extend);
 
         // Adjust opposite property
         extend->setExtension(this);
@@ -306,7 +247,10 @@ void QUseCase::removeExtend(QExtend *extend)
 
     QTUML_D(QUseCase);
     if (d->extends->contains(extend)) {
-        d->removeExtend(extend);
+        d->extends->remove(extend);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(extend);
 
         // Adjust opposite property
         extend->setExtension(0);

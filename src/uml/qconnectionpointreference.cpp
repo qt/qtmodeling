@@ -41,62 +41,24 @@
 
 #include "qconnectionpointreference.h"
 #include "qconnectionpointreference_p.h"
-#include "qnamedelement_p.h"
 
 #include <QtUml/QPseudostate>
 #include <QtUml/QState>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QConnectionPointReferencePrivate::QConnectionPointReferencePrivate() :
+QConnectionPointReferencePrivate::QConnectionPointReferencePrivate(QConnectionPointReference *q_umlptr) :
     exits(new QSet<QPseudostate *>),
     state(0),
     entries(new QSet<QPseudostate *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QConnectionPointReferencePrivate::~QConnectionPointReferencePrivate()
 {
     delete exits;
     delete entries;
-}
-
-void QConnectionPointReferencePrivate::addExit(QPseudostate *exit)
-{
-    // This is a read-write association end
-
-    this->exits->insert(exit);
-}
-
-void QConnectionPointReferencePrivate::removeExit(QPseudostate *exit)
-{
-    // This is a read-write association end
-
-    this->exits->remove(exit);
-}
-
-void QConnectionPointReferencePrivate::setState(QState *state)
-{
-    // This is a read-write association end
-
-    this->state = state;
-
-    // Adjust subsetted property(ies)
-    setNamespace_(state);
-}
-
-void QConnectionPointReferencePrivate::addEntry(QPseudostate *entry)
-{
-    // This is a read-write association end
-
-    this->entries->insert(entry);
-}
-
-void QConnectionPointReferencePrivate::removeEntry(QPseudostate *entry)
-{
-    // This is a read-write association end
-
-    this->entries->remove(entry);
 }
 
 /*!
@@ -110,7 +72,7 @@ void QConnectionPointReferencePrivate::removeEntry(QPseudostate *entry)
 QConnectionPointReference::QConnectionPointReference(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QConnectionPointReferencePrivate;
+    d_umlptr = new QConnectionPointReferencePrivate(this);
 }
 
 QConnectionPointReference::QConnectionPointReference(bool createPimpl, QObject *parent)
@@ -141,7 +103,7 @@ void QConnectionPointReference::addExit(QPseudostate *exit)
 
     QTUML_D(QConnectionPointReference);
     if (!d->exits->contains(exit)) {
-        d->addExit(exit);
+        d->exits->insert(exit);
     }
 }
 
@@ -151,7 +113,7 @@ void QConnectionPointReference::removeExit(QPseudostate *exit)
 
     QTUML_D(QConnectionPointReference);
     if (d->exits->contains(exit)) {
-        d->removeExit(exit);
+        d->exits->remove(exit);
     }
 }
 
@@ -172,7 +134,10 @@ void QConnectionPointReference::setState(QState *state)
 
     QTUML_D(QConnectionPointReference);
     if (d->state != state) {
-        d->setState(state);
+        d->state = state;
+
+        // Adjust subsetted property(ies)
+        d->setNamespace_(state);
 
         // Adjust opposite property
         state->addConnection(this);
@@ -196,7 +161,7 @@ void QConnectionPointReference::addEntry(QPseudostate *entry)
 
     QTUML_D(QConnectionPointReference);
     if (!d->entries->contains(entry)) {
-        d->addEntry(entry);
+        d->entries->insert(entry);
     }
 }
 
@@ -206,7 +171,7 @@ void QConnectionPointReference::removeEntry(QPseudostate *entry)
 
     QTUML_D(QConnectionPointReference);
     if (d->entries->contains(entry)) {
-        d->removeEntry(entry);
+        d->entries->remove(entry);
     }
 }
 

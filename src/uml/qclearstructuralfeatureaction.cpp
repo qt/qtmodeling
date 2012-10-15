@@ -41,32 +41,19 @@
 
 #include "qclearstructuralfeatureaction.h"
 #include "qclearstructuralfeatureaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QClearStructuralFeatureActionPrivate::QClearStructuralFeatureActionPrivate() :
+QClearStructuralFeatureActionPrivate::QClearStructuralFeatureActionPrivate(QClearStructuralFeatureAction *q_umlptr) :
     result(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QClearStructuralFeatureActionPrivate::~QClearStructuralFeatureActionPrivate()
 {
-}
-
-void QClearStructuralFeatureActionPrivate::setResult(QOutputPin *result)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOutput(this->result);
-
-    this->result = result;
-
-    // Adjust subsetted property(ies)
-    addOutput(result);
 }
 
 /*!
@@ -80,7 +67,7 @@ void QClearStructuralFeatureActionPrivate::setResult(QOutputPin *result)
 QClearStructuralFeatureAction::QClearStructuralFeatureAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QClearStructuralFeatureActionPrivate;
+    d_umlptr = new QClearStructuralFeatureActionPrivate(this);
 }
 
 QClearStructuralFeatureAction::QClearStructuralFeatureAction(bool createPimpl, QObject *parent)
@@ -111,7 +98,13 @@ void QClearStructuralFeatureAction::setResult(QOutputPin *result)
 
     QTUML_D(QClearStructuralFeatureAction);
     if (d->result != result) {
-        d->setResult(result);
+        // Adjust subsetted property(ies)
+        d->removeOutput(d->result);
+
+        d->result = result;
+
+        // Adjust subsetted property(ies)
+        d->addOutput(result);
     }
 }
 

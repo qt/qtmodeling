@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qpackage_p.h"
 
 // Qt includes
@@ -55,17 +54,15 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
+class QModel;
 
 class QModelPrivate : public QPackagePrivate
 {
 public:
-    explicit QModelPrivate();
+    explicit QModelPrivate(QModel *q_umlptr = 0);
     virtual ~QModelPrivate();
 
     QString viewpoint;
-
-    // Internal functions for attributes
-    void setViewpoint(QString viewpoint);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -41,49 +41,22 @@
 
 #include "qcollaborationuse.h"
 #include "qcollaborationuse_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QDependency>
 #include <QtUml/QCollaboration>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCollaborationUsePrivate::QCollaborationUsePrivate() :
+QCollaborationUsePrivate::QCollaborationUsePrivate(QCollaborationUse *q_umlptr) :
     type(0),
     roleBindings(new QSet<QDependency *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QCollaborationUsePrivate::~QCollaborationUsePrivate()
 {
     delete roleBindings;
-}
-
-void QCollaborationUsePrivate::setType(QCollaboration *type)
-{
-    // This is a read-write association end
-
-    this->type = type;
-}
-
-void QCollaborationUsePrivate::addRoleBinding(QDependency *roleBinding)
-{
-    // This is a read-write association end
-
-    this->roleBindings->insert(roleBinding);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(roleBinding);
-}
-
-void QCollaborationUsePrivate::removeRoleBinding(QDependency *roleBinding)
-{
-    // This is a read-write association end
-
-    this->roleBindings->remove(roleBinding);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(roleBinding);
 }
 
 /*!
@@ -97,7 +70,7 @@ void QCollaborationUsePrivate::removeRoleBinding(QDependency *roleBinding)
 QCollaborationUse::QCollaborationUse(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QCollaborationUsePrivate;
+    d_umlptr = new QCollaborationUsePrivate(this);
 }
 
 QCollaborationUse::QCollaborationUse(bool createPimpl, QObject *parent)
@@ -128,7 +101,7 @@ void QCollaborationUse::setType(QCollaboration *type)
 
     QTUML_D(QCollaborationUse);
     if (d->type != type) {
-        d->setType(type);
+        d->type = type;
     }
 }
 
@@ -149,7 +122,10 @@ void QCollaborationUse::addRoleBinding(QDependency *roleBinding)
 
     QTUML_D(QCollaborationUse);
     if (!d->roleBindings->contains(roleBinding)) {
-        d->addRoleBinding(roleBinding);
+        d->roleBindings->insert(roleBinding);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(roleBinding);
     }
 }
 
@@ -159,7 +135,10 @@ void QCollaborationUse::removeRoleBinding(QDependency *roleBinding)
 
     QTUML_D(QCollaborationUse);
     if (d->roleBindings->contains(roleBinding)) {
-        d->removeRoleBinding(roleBinding);
+        d->roleBindings->remove(roleBinding);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(roleBinding);
     }
 }
 

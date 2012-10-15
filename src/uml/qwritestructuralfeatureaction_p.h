@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qstructuralfeatureaction_p.h"
 
 QT_BEGIN_HEADER
@@ -59,15 +58,13 @@ class QInputPin;
 class QWriteStructuralFeatureActionPrivate : public QStructuralFeatureActionPrivate
 {
 public:
-    explicit QWriteStructuralFeatureActionPrivate();
     virtual ~QWriteStructuralFeatureActionPrivate();
 
     QOutputPin *result;
     QInputPin *value;
 
-    // Internal functions for association-ends
-    void setResult(QOutputPin *result);
-    void setValue(QInputPin *value);
+protected:
+    explicit QWriteStructuralFeatureActionPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

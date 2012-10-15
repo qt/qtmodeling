@@ -56,9 +56,9 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QElement;
 class QActivityEdge;
 class QActivityNode;
-class QElement;
 
 class Q_UML_EXPORT QActivityPartition : public QObject, public QActivityGroup
 {

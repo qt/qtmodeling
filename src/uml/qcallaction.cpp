@@ -41,7 +41,6 @@
 
 #include "qcallaction.h"
 #include "qcallaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QOutputPin>
 
@@ -56,33 +55,6 @@ QCallActionPrivate::QCallActionPrivate() :
 QCallActionPrivate::~QCallActionPrivate()
 {
     delete results;
-}
-
-void QCallActionPrivate::setSynchronous(bool isSynchronous)
-{
-    // This is a read-write attribute
-
-    this->isSynchronous = isSynchronous;
-}
-
-void QCallActionPrivate::addResult(QOutputPin *result)
-{
-    // This is a read-write association end
-
-    this->results->append(result);
-
-    // Adjust subsetted property(ies)
-    addOutput(result);
-}
-
-void QCallActionPrivate::removeResult(QOutputPin *result)
-{
-    // This is a read-write association end
-
-    this->results->removeAll(result);
-
-    // Adjust subsetted property(ies)
-    removeOutput(result);
 }
 
 /*!
@@ -118,7 +90,7 @@ void QCallAction::setSynchronous(bool isSynchronous)
 
     QTUML_D(QCallAction);
     if (d->isSynchronous != isSynchronous) {
-        d->setSynchronous(isSynchronous);
+        d->isSynchronous = isSynchronous;
     }
 }
 
@@ -139,7 +111,10 @@ void QCallAction::addResult(QOutputPin *result)
 
     QTUML_D(QCallAction);
     if (!d->results->contains(result)) {
-        d->addResult(result);
+        d->results->append(result);
+
+        // Adjust subsetted property(ies)
+        d->addOutput(result);
     }
 }
 
@@ -149,7 +124,10 @@ void QCallAction::removeResult(QOutputPin *result)
 
     QTUML_D(QCallAction);
     if (d->results->contains(result)) {
-        d->removeResult(result);
+        d->results->removeAll(result);
+
+        // Adjust subsetted property(ies)
+        d->removeOutput(result);
     }
 }
 

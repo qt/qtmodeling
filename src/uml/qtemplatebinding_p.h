@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qdirectedrelationship_p.h"
 
 // Qt includes
@@ -59,22 +58,17 @@ QT_MODULE(QtUml)
 class QTemplateableElement;
 class QTemplateParameterSubstitution;
 class QTemplateSignature;
+class QTemplateBinding;
 
 class QTemplateBindingPrivate : public QDirectedRelationshipPrivate
 {
 public:
-    explicit QTemplateBindingPrivate();
+    explicit QTemplateBindingPrivate(QTemplateBinding *q_umlptr = 0);
     virtual ~QTemplateBindingPrivate();
 
     QTemplateSignature *signature;
     QTemplateableElement *boundElement;
     QSet<QTemplateParameterSubstitution *> *parameterSubstitutions;
-
-    // Internal functions for association-ends
-    void setSignature(QTemplateSignature *signature);
-    void setBoundElement(QTemplateableElement *boundElement);
-    void addParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution);
-    void removeParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution);
 };
 
 QT_END_NAMESPACE_QTUML

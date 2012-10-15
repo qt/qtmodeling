@@ -41,43 +41,19 @@
 
 #include "qdeploymentspecification.h"
 #include "qdeploymentspecification_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QDeployment>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDeploymentSpecificationPrivate::QDeploymentSpecificationPrivate() :
+QDeploymentSpecificationPrivate::QDeploymentSpecificationPrivate(QDeploymentSpecification *q_umlptr) :
     deployment(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QDeploymentSpecificationPrivate::~QDeploymentSpecificationPrivate()
 {
-}
-
-void QDeploymentSpecificationPrivate::setDeploymentLocation(QString deploymentLocation)
-{
-    // This is a read-write attribute
-
-    this->deploymentLocation = deploymentLocation;
-}
-
-void QDeploymentSpecificationPrivate::setExecutionLocation(QString executionLocation)
-{
-    // This is a read-write attribute
-
-    this->executionLocation = executionLocation;
-}
-
-void QDeploymentSpecificationPrivate::setDeployment(QDeployment *deployment)
-{
-    // This is a read-write association end
-
-    this->deployment = deployment;
-
-    // Adjust subsetted property(ies)
-    setOwner(deployment);
 }
 
 /*!
@@ -91,7 +67,7 @@ void QDeploymentSpecificationPrivate::setDeployment(QDeployment *deployment)
 QDeploymentSpecification::QDeploymentSpecification(QObject *parent)
     : QArtifact(false, parent)
 {
-    d_umlptr = new QDeploymentSpecificationPrivate;
+    d_umlptr = new QDeploymentSpecificationPrivate(this);
 }
 
 QDeploymentSpecification::QDeploymentSpecification(bool createPimpl, QObject *parent)
@@ -122,7 +98,7 @@ void QDeploymentSpecification::setDeploymentLocation(QString deploymentLocation)
 
     QTUML_D(QDeploymentSpecification);
     if (d->deploymentLocation != deploymentLocation) {
-        d->setDeploymentLocation(deploymentLocation);
+        d->deploymentLocation = deploymentLocation;
     }
 }
 
@@ -143,7 +119,7 @@ void QDeploymentSpecification::setExecutionLocation(QString executionLocation)
 
     QTUML_D(QDeploymentSpecification);
     if (d->executionLocation != executionLocation) {
-        d->setExecutionLocation(executionLocation);
+        d->executionLocation = executionLocation;
     }
 }
 
@@ -164,7 +140,10 @@ void QDeploymentSpecification::setDeployment(QDeployment *deployment)
 
     QTUML_D(QDeploymentSpecification);
     if (d->deployment != deployment) {
-        d->setDeployment(deployment);
+        d->deployment = deployment;
+
+        // Adjust subsetted property(ies)
+        d->setOwner(deployment);
 
         // Adjust opposite property
         deployment->addConfiguration(this);

@@ -41,49 +41,22 @@
 
 #include "qpseudostate.h"
 #include "qpseudostate_p.h"
-#include "qnamedelement_p.h"
 
 #include <QtUml/QState>
 #include <QtUml/QStateMachine>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QPseudostatePrivate::QPseudostatePrivate() :
+QPseudostatePrivate::QPseudostatePrivate(QPseudostate *q_umlptr) :
     kind(QtUml::PseudostateInitial),
     state(0),
     stateMachine(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QPseudostatePrivate::~QPseudostatePrivate()
 {
-}
-
-void QPseudostatePrivate::setKind(QtUml::PseudostateKind kind)
-{
-    // This is a read-write attribute
-
-    this->kind = kind;
-}
-
-void QPseudostatePrivate::setState(QState *state)
-{
-    // This is a read-write association end
-
-    this->state = state;
-
-    // Adjust subsetted property(ies)
-    setNamespace_(state);
-}
-
-void QPseudostatePrivate::setStateMachine(QStateMachine *stateMachine)
-{
-    // This is a read-write association end
-
-    this->stateMachine = stateMachine;
-
-    // Adjust subsetted property(ies)
-    setNamespace_(stateMachine);
 }
 
 /*!
@@ -97,7 +70,7 @@ void QPseudostatePrivate::setStateMachine(QStateMachine *stateMachine)
 QPseudostate::QPseudostate(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QPseudostatePrivate;
+    d_umlptr = new QPseudostatePrivate(this);
 }
 
 QPseudostate::QPseudostate(bool createPimpl, QObject *parent)
@@ -128,7 +101,7 @@ void QPseudostate::setKind(QtUml::PseudostateKind kind)
 
     QTUML_D(QPseudostate);
     if (d->kind != kind) {
-        d->setKind(kind);
+        d->kind = kind;
     }
 }
 
@@ -149,7 +122,10 @@ void QPseudostate::setState(QState *state)
 
     QTUML_D(QPseudostate);
     if (d->state != state) {
-        d->setState(state);
+        d->state = state;
+
+        // Adjust subsetted property(ies)
+        d->setNamespace_(state);
 
         // Adjust opposite property
         state->addConnectionPoint(this);
@@ -173,7 +149,10 @@ void QPseudostate::setStateMachine(QStateMachine *stateMachine)
 
     QTUML_D(QPseudostate);
     if (d->stateMachine != stateMachine) {
-        d->setStateMachine(stateMachine);
+        d->stateMachine = stateMachine;
+
+        // Adjust subsetted property(ies)
+        d->setNamespace_(stateMachine);
 
         // Adjust opposite property
         stateMachine->addConnectionPoint(this);

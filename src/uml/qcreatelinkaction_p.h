@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qwritelinkaction_p.h"
 
 // Qt includes
@@ -57,18 +56,15 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QLinkEndCreationData;
+class QCreateLinkAction;
 
 class QCreateLinkActionPrivate : public QWriteLinkActionPrivate
 {
 public:
-    explicit QCreateLinkActionPrivate();
+    explicit QCreateLinkActionPrivate(QCreateLinkAction *q_umlptr = 0);
     virtual ~QCreateLinkActionPrivate();
 
     QSet<QLinkEndCreationData *> *endData;
-
-    // Internal functions for association-ends
-    void addEndData(QLinkEndCreationData *endData);
-    void removeEndData(QLinkEndCreationData *endData);
 };
 
 QT_END_NAMESPACE_QTUML

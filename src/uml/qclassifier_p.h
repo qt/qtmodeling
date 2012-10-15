@@ -44,13 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qnamespace_p.h"
-
 #include "qtype_p.h"
-
 #include "qredefinableelement_p.h"
-
 #include "qtemplateableelement_p.h"
 
 // Qt includes
@@ -62,21 +58,21 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QRedefinableTemplateSignature;
 class QClassifierTemplateParameter;
 class QUseCase;
 class QSubstitution;
 class QGeneralizationSet;
-class QRedefinableTemplateSignature;
-class QProperty;
 class QNamedElement;
-class QCollaborationUse;
+class QProperty;
 class QGeneralization;
+class QCollaborationUse;
+class QClassifier;
 class QFeature;
 
 class QClassifierPrivate : public QNamespacePrivate, public QTypePrivate, public QRedefinableElementPrivate, public QTemplateableElementPrivate
 {
 public:
-    explicit QClassifierPrivate();
     virtual ~QClassifierPrivate();
 
     bool isAbstract;
@@ -94,32 +90,14 @@ public:
     QSet<QGeneralization *> *generalizations;
     QSet<QSubstitution *> *substitutions;
 
-    // Internal functions for attributes
-    void setAbstract(bool isAbstract);
-    void setFinalSpecialization(bool isFinalSpecialization);
-
-    // Internal functions for association-ends
-    void addOwnedUseCase(QUseCase *ownedUseCase);
-    void removeOwnedUseCase(QUseCase *ownedUseCase);
-    void addPowertypeExtent(QGeneralizationSet *powertypeExtent);
-    void removePowertypeExtent(QGeneralizationSet *powertypeExtent);
-    void addUseCase(QUseCase *useCase);
-    void removeUseCase(QUseCase *useCase);
-    void setTemplateParameter(QClassifierTemplateParameter *templateParameter);
-    void addRedefinedClassifier(QClassifier *redefinedClassifier);
-    void removeRedefinedClassifier(QClassifier *redefinedClassifier);
-    void setOwnedTemplateSignature(QRedefinableTemplateSignature *ownedTemplateSignature);
-    void addCollaborationUse(QCollaborationUse *collaborationUse);
-    void removeCollaborationUse(QCollaborationUse *collaborationUse);
+    // Internal functions for read-only subsetted association ends
     void addAttribute(QProperty *attribute);
     void removeAttribute(QProperty *attribute);
     void addFeature(QFeature *feature);
     void removeFeature(QFeature *feature);
-    void setRepresentation(QCollaborationUse *representation);
-    void addGeneralization(QGeneralization *generalization);
-    void removeGeneralization(QGeneralization *generalization);
-    void addSubstitution(QSubstitution *substitution);
-    void removeSubstitution(QSubstitution *substitution);
+
+protected:
+    explicit QClassifierPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

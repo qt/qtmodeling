@@ -41,32 +41,19 @@
 
 #include "qraiseexceptionaction.h"
 #include "qraiseexceptionaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QRaiseExceptionActionPrivate::QRaiseExceptionActionPrivate() :
+QRaiseExceptionActionPrivate::QRaiseExceptionActionPrivate(QRaiseExceptionAction *q_umlptr) :
     exception(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QRaiseExceptionActionPrivate::~QRaiseExceptionActionPrivate()
 {
-}
-
-void QRaiseExceptionActionPrivate::setException(QInputPin *exception)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeInput(this->exception);
-
-    this->exception = exception;
-
-    // Adjust subsetted property(ies)
-    addInput(exception);
 }
 
 /*!
@@ -80,7 +67,7 @@ void QRaiseExceptionActionPrivate::setException(QInputPin *exception)
 QRaiseExceptionAction::QRaiseExceptionAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QRaiseExceptionActionPrivate;
+    d_umlptr = new QRaiseExceptionActionPrivate(this);
 }
 
 QRaiseExceptionAction::QRaiseExceptionAction(bool createPimpl, QObject *parent)
@@ -111,7 +98,13 @@ void QRaiseExceptionAction::setException(QInputPin *exception)
 
     QTUML_D(QRaiseExceptionAction);
     if (d->exception != exception) {
-        d->setException(exception);
+        // Adjust subsetted property(ies)
+        d->removeInput(d->exception);
+
+        d->exception = exception;
+
+        // Adjust subsetted property(ies)
+        d->addInput(exception);
     }
 }
 

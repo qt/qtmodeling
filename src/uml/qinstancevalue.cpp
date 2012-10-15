@@ -46,20 +46,14 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInstanceValuePrivate::QInstanceValuePrivate() :
+QInstanceValuePrivate::QInstanceValuePrivate(QInstanceValue *q_umlptr) :
     instance(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QInstanceValuePrivate::~QInstanceValuePrivate()
 {
-}
-
-void QInstanceValuePrivate::setInstance(QInstanceSpecification *instance)
-{
-    // This is a read-write association end
-
-    this->instance = instance;
 }
 
 /*!
@@ -73,7 +67,7 @@ void QInstanceValuePrivate::setInstance(QInstanceSpecification *instance)
 QInstanceValue::QInstanceValue(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QInstanceValuePrivate;
+    d_umlptr = new QInstanceValuePrivate(this);
 }
 
 QInstanceValue::QInstanceValue(bool createPimpl, QObject *parent)
@@ -104,7 +98,7 @@ void QInstanceValue::setInstance(QInstanceSpecification *instance)
 
     QTUML_D(QInstanceValue);
     if (d->instance != instance) {
-        d->setInstance(instance);
+        d->instance = instance;
     }
 }
 

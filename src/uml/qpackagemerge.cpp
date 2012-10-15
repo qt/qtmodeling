@@ -41,48 +41,20 @@
 
 #include "qpackagemerge.h"
 #include "qpackagemerge_p.h"
-#include "qdirectedrelationship_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QPackage>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QPackageMergePrivate::QPackageMergePrivate() :
+QPackageMergePrivate::QPackageMergePrivate(QPackageMerge *q_umlptr) :
     mergedPackage(0),
     receivingPackage(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QPackageMergePrivate::~QPackageMergePrivate()
 {
-}
-
-void QPackageMergePrivate::setMergedPackage(QPackage *mergedPackage)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeTarget(this->mergedPackage);
-
-    this->mergedPackage = mergedPackage;
-
-    // Adjust subsetted property(ies)
-    addTarget(mergedPackage);
-}
-
-void QPackageMergePrivate::setReceivingPackage(QPackage *receivingPackage)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeSource(this->receivingPackage);
-
-    this->receivingPackage = receivingPackage;
-
-    // Adjust subsetted property(ies)
-    setOwner(receivingPackage);
-    addSource(receivingPackage);
 }
 
 /*!
@@ -96,7 +68,7 @@ void QPackageMergePrivate::setReceivingPackage(QPackage *receivingPackage)
 QPackageMerge::QPackageMerge(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QPackageMergePrivate;
+    d_umlptr = new QPackageMergePrivate(this);
 }
 
 QPackageMerge::QPackageMerge(bool createPimpl, QObject *parent)
@@ -127,7 +99,13 @@ void QPackageMerge::setMergedPackage(QPackage *mergedPackage)
 
     QTUML_D(QPackageMerge);
     if (d->mergedPackage != mergedPackage) {
-        d->setMergedPackage(mergedPackage);
+        // Adjust subsetted property(ies)
+        d->removeTarget(d->mergedPackage);
+
+        d->mergedPackage = mergedPackage;
+
+        // Adjust subsetted property(ies)
+        d->addTarget(mergedPackage);
     }
 }
 
@@ -148,7 +126,14 @@ void QPackageMerge::setReceivingPackage(QPackage *receivingPackage)
 
     QTUML_D(QPackageMerge);
     if (d->receivingPackage != receivingPackage) {
-        d->setReceivingPackage(receivingPackage);
+        // Adjust subsetted property(ies)
+        d->removeSource(d->receivingPackage);
+
+        d->receivingPackage = receivingPackage;
+
+        // Adjust subsetted property(ies)
+        d->setOwner(receivingPackage);
+        d->addSource(receivingPackage);
 
         // Adjust opposite property
         receivingPackage->addPackageMerge(this);

@@ -47,7 +47,6 @@
 #include <QtUml/QtUmlEnumerations>
 
 // Base class includes
-
 #include "qvertex_p.h"
 
 QT_BEGIN_HEADER
@@ -58,23 +57,17 @@ QT_MODULE(QtUml)
 
 class QState;
 class QStateMachine;
+class QPseudostate;
 
 class QPseudostatePrivate : public QVertexPrivate
 {
 public:
-    explicit QPseudostatePrivate();
+    explicit QPseudostatePrivate(QPseudostate *q_umlptr = 0);
     virtual ~QPseudostatePrivate();
 
     QtUml::PseudostateKind kind;
     QState *state;
     QStateMachine *stateMachine;
-
-    // Internal functions for attributes
-    void setKind(QtUml::PseudostateKind kind);
-
-    // Internal functions for association-ends
-    void setState(QState *state);
-    void setStateMachine(QStateMachine *stateMachine);
 };
 
 QT_END_NAMESPACE_QTUML

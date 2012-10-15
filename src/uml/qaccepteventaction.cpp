@@ -41,72 +41,24 @@
 
 #include "qaccepteventaction.h"
 #include "qaccepteventaction_p.h"
-#include "qelement_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QOutputPin>
 #include <QtUml/QTrigger>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QAcceptEventActionPrivate::QAcceptEventActionPrivate() :
+QAcceptEventActionPrivate::QAcceptEventActionPrivate(QAcceptEventAction *q_umlptr) :
     isUnmarshall(false),
     triggers(new QSet<QTrigger *>),
     results(new QSet<QOutputPin *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QAcceptEventActionPrivate::~QAcceptEventActionPrivate()
 {
     delete triggers;
     delete results;
-}
-
-void QAcceptEventActionPrivate::setUnmarshall(bool isUnmarshall)
-{
-    // This is a read-write attribute
-
-    this->isUnmarshall = isUnmarshall;
-}
-
-void QAcceptEventActionPrivate::addTrigger(QTrigger *trigger)
-{
-    // This is a read-write association end
-
-    this->triggers->insert(trigger);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(trigger);
-}
-
-void QAcceptEventActionPrivate::removeTrigger(QTrigger *trigger)
-{
-    // This is a read-write association end
-
-    this->triggers->remove(trigger);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(trigger);
-}
-
-void QAcceptEventActionPrivate::addResult(QOutputPin *result)
-{
-    // This is a read-write association end
-
-    this->results->insert(result);
-
-    // Adjust subsetted property(ies)
-    addOutput(result);
-}
-
-void QAcceptEventActionPrivate::removeResult(QOutputPin *result)
-{
-    // This is a read-write association end
-
-    this->results->remove(result);
-
-    // Adjust subsetted property(ies)
-    removeOutput(result);
 }
 
 /*!
@@ -120,7 +72,7 @@ void QAcceptEventActionPrivate::removeResult(QOutputPin *result)
 QAcceptEventAction::QAcceptEventAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QAcceptEventActionPrivate;
+    d_umlptr = new QAcceptEventActionPrivate(this);
 }
 
 QAcceptEventAction::QAcceptEventAction(bool createPimpl, QObject *parent)
@@ -151,7 +103,7 @@ void QAcceptEventAction::setUnmarshall(bool isUnmarshall)
 
     QTUML_D(QAcceptEventAction);
     if (d->isUnmarshall != isUnmarshall) {
-        d->setUnmarshall(isUnmarshall);
+        d->isUnmarshall = isUnmarshall;
     }
 }
 
@@ -172,7 +124,10 @@ void QAcceptEventAction::addTrigger(QTrigger *trigger)
 
     QTUML_D(QAcceptEventAction);
     if (!d->triggers->contains(trigger)) {
-        d->addTrigger(trigger);
+        d->triggers->insert(trigger);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(trigger);
     }
 }
 
@@ -182,7 +137,10 @@ void QAcceptEventAction::removeTrigger(QTrigger *trigger)
 
     QTUML_D(QAcceptEventAction);
     if (d->triggers->contains(trigger)) {
-        d->removeTrigger(trigger);
+        d->triggers->remove(trigger);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(trigger);
     }
 }
 
@@ -203,7 +161,10 @@ void QAcceptEventAction::addResult(QOutputPin *result)
 
     QTUML_D(QAcceptEventAction);
     if (!d->results->contains(result)) {
-        d->addResult(result);
+        d->results->insert(result);
+
+        // Adjust subsetted property(ies)
+        d->addOutput(result);
     }
 }
 
@@ -213,7 +174,10 @@ void QAcceptEventAction::removeResult(QOutputPin *result)
 
     QTUML_D(QAcceptEventAction);
     if (d->results->contains(result)) {
-        d->removeResult(result);
+        d->results->remove(result);
+
+        // Adjust subsetted property(ies)
+        d->removeOutput(result);
     }
 }
 

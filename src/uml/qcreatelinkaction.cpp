@@ -46,9 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCreateLinkActionPrivate::QCreateLinkActionPrivate() :
+QCreateLinkActionPrivate::QCreateLinkActionPrivate(QCreateLinkAction *q_umlptr) :
     endData(new QSet<QLinkEndCreationData *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QCreateLinkActionPrivate::~QCreateLinkActionPrivate()
@@ -56,20 +57,6 @@ QCreateLinkActionPrivate::~QCreateLinkActionPrivate()
     foreach (QLinkEndCreationData *linkendcreationdata, *endData)
         delete linkendcreationdata;
     delete endData;
-}
-
-void QCreateLinkActionPrivate::addEndData(QLinkEndCreationData *endData)
-{
-    // This is a read-write association end
-
-    this->endData->insert(endData);
-}
-
-void QCreateLinkActionPrivate::removeEndData(QLinkEndCreationData *endData)
-{
-    // This is a read-write association end
-
-    this->endData->remove(endData);
 }
 
 /*!
@@ -83,7 +70,7 @@ void QCreateLinkActionPrivate::removeEndData(QLinkEndCreationData *endData)
 QCreateLinkAction::QCreateLinkAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QCreateLinkActionPrivate;
+    d_umlptr = new QCreateLinkActionPrivate(this);
 }
 
 QCreateLinkAction::QCreateLinkAction(bool createPimpl, QObject *parent)
@@ -114,7 +101,7 @@ void QCreateLinkAction::addEndData(QLinkEndCreationData *endData)
 
     QTUML_D(QCreateLinkAction);
     if (!d->endData->contains(endData)) {
-        d->addEndData(endData);
+        d->endData->insert(endData);
     }
 }
 
@@ -124,7 +111,7 @@ void QCreateLinkAction::removeEndData(QLinkEndCreationData *endData)
 
     QTUML_D(QCreateLinkAction);
     if (d->endData->contains(endData)) {
-        d->removeEndData(endData);
+        d->endData->remove(endData);
     }
 }
 

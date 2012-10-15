@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qartifact_p.h"
 
 // Qt includes
@@ -57,23 +56,17 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QDeployment;
+class QDeploymentSpecification;
 
 class QDeploymentSpecificationPrivate : public QArtifactPrivate
 {
 public:
-    explicit QDeploymentSpecificationPrivate();
+    explicit QDeploymentSpecificationPrivate(QDeploymentSpecification *q_umlptr = 0);
     virtual ~QDeploymentSpecificationPrivate();
 
     QString deploymentLocation;
     QString executionLocation;
     QDeployment *deployment;
-
-    // Internal functions for attributes
-    void setDeploymentLocation(QString deploymentLocation);
-    void setExecutionLocation(QString executionLocation);
-
-    // Internal functions for association-ends
-    void setDeployment(QDeployment *deployment);
 };
 
 QT_END_NAMESPACE_QTUML

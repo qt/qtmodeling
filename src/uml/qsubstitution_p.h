@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qrealization_p.h"
 
 QT_BEGIN_HEADER
@@ -54,19 +53,16 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QClassifier;
+class QSubstitution;
 
 class QSubstitutionPrivate : public QRealizationPrivate
 {
 public:
-    explicit QSubstitutionPrivate();
+    explicit QSubstitutionPrivate(QSubstitution *q_umlptr = 0);
     virtual ~QSubstitutionPrivate();
 
     QClassifier *contract;
     QClassifier *substitutingClassifier;
-
-    // Internal functions for association-ends
-    void setContract(QClassifier *contract);
-    void setSubstitutingClassifier(QClassifier *substitutingClassifier);
 };
 
 QT_END_NAMESPACE_QTUML

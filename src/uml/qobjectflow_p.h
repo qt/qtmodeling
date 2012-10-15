@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qactivityedge_p.h"
 
 QT_BEGIN_HEADER
@@ -54,25 +53,18 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QBehavior;
+class QObjectFlow;
 
 class QObjectFlowPrivate : public QActivityEdgePrivate
 {
 public:
-    explicit QObjectFlowPrivate();
+    explicit QObjectFlowPrivate(QObjectFlow *q_umlptr = 0);
     virtual ~QObjectFlowPrivate();
 
     bool isMultireceive;
     bool isMulticast;
     QBehavior *selection;
     QBehavior *transformation;
-
-    // Internal functions for attributes
-    void setMultireceive(bool isMultireceive);
-    void setMulticast(bool isMulticast);
-
-    // Internal functions for association-ends
-    void setSelection(QBehavior *selection);
-    void setTransformation(QBehavior *transformation);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCommunicationPathPrivate::QCommunicationPathPrivate()
+QCommunicationPathPrivate::QCommunicationPathPrivate(QCommunicationPath *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QCommunicationPathPrivate::~QCommunicationPathPrivate()
@@ -64,7 +65,7 @@ QCommunicationPathPrivate::~QCommunicationPathPrivate()
 QCommunicationPath::QCommunicationPath(QObject *parent)
     : QAssociation(false, parent)
 {
-    d_umlptr = new QCommunicationPathPrivate;
+    d_umlptr = new QCommunicationPathPrivate(this);
 }
 
 QCommunicationPath::QCommunicationPath(bool createPimpl, QObject *parent)

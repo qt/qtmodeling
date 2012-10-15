@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qinputpin_p.h"
 
 QT_BEGIN_HEADER
@@ -54,17 +53,15 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QAction;
+class QActionInputPin;
 
 class QActionInputPinPrivate : public QInputPinPrivate
 {
 public:
-    explicit QActionInputPinPrivate();
+    explicit QActionInputPinPrivate(QActionInputPin *q_umlptr = 0);
     virtual ~QActionInputPinPrivate();
 
     QAction *fromAction;
-
-    // Internal functions for association-ends
-    void setFromAction(QAction *fromAction);
 };
 
 QT_END_NAMESPACE_QTUML

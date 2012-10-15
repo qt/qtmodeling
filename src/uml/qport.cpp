@@ -41,73 +41,25 @@
 
 #include "qport.h"
 #include "qport_p.h"
-#include "qproperty_p.h"
 
 #include <QtUml/QProtocolStateMachine>
 #include <QtUml/QInterface>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QPortPrivate::QPortPrivate() :
+QPortPrivate::QPortPrivate(QPort *q_umlptr) :
     isConjugated(false),
     isBehavior(false),
     isService(true),
     protocol(0),
     redefinedPorts(new QSet<QPort *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QPortPrivate::~QPortPrivate()
 {
     delete redefinedPorts;
-}
-
-void QPortPrivate::setConjugated(bool isConjugated)
-{
-    // This is a read-write attribute
-
-    this->isConjugated = isConjugated;
-}
-
-void QPortPrivate::setBehavior(bool isBehavior)
-{
-    // This is a read-write attribute
-
-    this->isBehavior = isBehavior;
-}
-
-void QPortPrivate::setService(bool isService)
-{
-    // This is a read-write attribute
-
-    this->isService = isService;
-}
-
-void QPortPrivate::setProtocol(QProtocolStateMachine *protocol)
-{
-    // This is a read-write association end
-
-    this->protocol = protocol;
-}
-
-void QPortPrivate::addRedefinedPort(QPort *redefinedPort)
-{
-    // This is a read-write association end
-
-    this->redefinedPorts->insert(redefinedPort);
-
-    // Adjust subsetted property(ies)
-    addRedefinedProperty(redefinedPort);
-}
-
-void QPortPrivate::removeRedefinedPort(QPort *redefinedPort)
-{
-    // This is a read-write association end
-
-    this->redefinedPorts->remove(redefinedPort);
-
-    // Adjust subsetted property(ies)
-    removeRedefinedProperty(redefinedPort);
 }
 
 /*!
@@ -121,7 +73,7 @@ void QPortPrivate::removeRedefinedPort(QPort *redefinedPort)
 QPort::QPort(QObject *parent)
     : QProperty(false, parent)
 {
-    d_umlptr = new QPortPrivate;
+    d_umlptr = new QPortPrivate(this);
 }
 
 QPort::QPort(bool createPimpl, QObject *parent)
@@ -152,7 +104,7 @@ void QPort::setConjugated(bool isConjugated)
 
     QTUML_D(QPort);
     if (d->isConjugated != isConjugated) {
-        d->setConjugated(isConjugated);
+        d->isConjugated = isConjugated;
     }
 }
 
@@ -173,7 +125,7 @@ void QPort::setBehavior(bool isBehavior)
 
     QTUML_D(QPort);
     if (d->isBehavior != isBehavior) {
-        d->setBehavior(isBehavior);
+        d->isBehavior = isBehavior;
     }
 }
 
@@ -194,7 +146,7 @@ void QPort::setService(bool isService)
 
     QTUML_D(QPort);
     if (d->isService != isService) {
-        d->setService(isService);
+        d->isService = isService;
     }
 }
 
@@ -215,7 +167,7 @@ void QPort::setProtocol(QProtocolStateMachine *protocol)
 
     QTUML_D(QPort);
     if (d->protocol != protocol) {
-        d->setProtocol(protocol);
+        d->protocol = protocol;
     }
 }
 
@@ -228,7 +180,7 @@ const QSet<QInterface *> *QPort::required() const
 
     qWarning("QPort::required: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QPort);
+    //QTUML_D(const QPort);
     //return <derived-return>;
 }
 
@@ -241,7 +193,7 @@ const QSet<QInterface *> *QPort::provided() const
 
     qWarning("QPort::provided: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QPort);
+    //QTUML_D(const QPort);
     //return <derived-return>;
 }
 
@@ -262,7 +214,10 @@ void QPort::addRedefinedPort(QPort *redefinedPort)
 
     QTUML_D(QPort);
     if (!d->redefinedPorts->contains(redefinedPort)) {
-        d->addRedefinedPort(redefinedPort);
+        d->redefinedPorts->insert(redefinedPort);
+
+        // Adjust subsetted property(ies)
+        addRedefinedProperty(redefinedPort);
     }
 }
 
@@ -272,7 +227,10 @@ void QPort::removeRedefinedPort(QPort *redefinedPort)
 
     QTUML_D(QPort);
     if (d->redefinedPorts->contains(redefinedPort)) {
-        d->removeRedefinedPort(redefinedPort);
+        d->redefinedPorts->remove(redefinedPort);
+
+        // Adjust subsetted property(ies)
+        removeRedefinedProperty(redefinedPort);
     }
 }
 

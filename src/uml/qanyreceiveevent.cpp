@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QAnyReceiveEventPrivate::QAnyReceiveEventPrivate()
+QAnyReceiveEventPrivate::QAnyReceiveEventPrivate(QAnyReceiveEvent *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QAnyReceiveEventPrivate::~QAnyReceiveEventPrivate()
@@ -64,7 +65,7 @@ QAnyReceiveEventPrivate::~QAnyReceiveEventPrivate()
 QAnyReceiveEvent::QAnyReceiveEvent(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QAnyReceiveEventPrivate;
+    d_umlptr = new QAnyReceiveEventPrivate(this);
 }
 
 QAnyReceiveEvent::QAnyReceiveEvent(bool createPimpl, QObject *parent)

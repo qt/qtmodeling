@@ -41,32 +41,19 @@
 
 #include "qreadvariableaction.h"
 #include "qreadvariableaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QReadVariableActionPrivate::QReadVariableActionPrivate() :
+QReadVariableActionPrivate::QReadVariableActionPrivate(QReadVariableAction *q_umlptr) :
     result(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QReadVariableActionPrivate::~QReadVariableActionPrivate()
 {
-}
-
-void QReadVariableActionPrivate::setResult(QOutputPin *result)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOutput(this->result);
-
-    this->result = result;
-
-    // Adjust subsetted property(ies)
-    addOutput(result);
 }
 
 /*!
@@ -80,7 +67,7 @@ void QReadVariableActionPrivate::setResult(QOutputPin *result)
 QReadVariableAction::QReadVariableAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QReadVariableActionPrivate;
+    d_umlptr = new QReadVariableActionPrivate(this);
 }
 
 QReadVariableAction::QReadVariableAction(bool createPimpl, QObject *parent)
@@ -111,7 +98,13 @@ void QReadVariableAction::setResult(QOutputPin *result)
 
     QTUML_D(QReadVariableAction);
     if (d->result != result) {
-        d->setResult(result);
+        // Adjust subsetted property(ies)
+        d->removeOutput(d->result);
+
+        d->result = result;
+
+        // Adjust subsetted property(ies)
+        d->addOutput(result);
     }
 }
 

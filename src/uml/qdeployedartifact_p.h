@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qnamedelement_p.h"
 
 QT_BEGIN_HEADER
@@ -56,9 +55,11 @@ QT_MODULE(QtUml)
 class QDeployedArtifactPrivate : public virtual QNamedElementPrivate
 {
 public:
-    explicit QDeployedArtifactPrivate();
     virtual ~QDeployedArtifactPrivate();
 
+
+protected:
+    explicit QDeployedArtifactPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

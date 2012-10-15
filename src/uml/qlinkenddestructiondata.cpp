@@ -46,28 +46,15 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QLinkEndDestructionDataPrivate::QLinkEndDestructionDataPrivate() :
+QLinkEndDestructionDataPrivate::QLinkEndDestructionDataPrivate(QLinkEndDestructionData *q_umlptr) :
     isDestroyDuplicates(false),
     destroyAt(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QLinkEndDestructionDataPrivate::~QLinkEndDestructionDataPrivate()
 {
-}
-
-void QLinkEndDestructionDataPrivate::setDestroyDuplicates(bool isDestroyDuplicates)
-{
-    // This is a read-write attribute
-
-    this->isDestroyDuplicates = isDestroyDuplicates;
-}
-
-void QLinkEndDestructionDataPrivate::setDestroyAt(QInputPin *destroyAt)
-{
-    // This is a read-write association end
-
-    this->destroyAt = destroyAt;
 }
 
 /*!
@@ -81,7 +68,7 @@ void QLinkEndDestructionDataPrivate::setDestroyAt(QInputPin *destroyAt)
 QLinkEndDestructionData::QLinkEndDestructionData(QObject *parent)
     : QLinkEndData(false, parent)
 {
-    d_umlptr = new QLinkEndDestructionDataPrivate;
+    d_umlptr = new QLinkEndDestructionDataPrivate(this);
 }
 
 QLinkEndDestructionData::QLinkEndDestructionData(bool createPimpl, QObject *parent)
@@ -112,7 +99,7 @@ void QLinkEndDestructionData::setDestroyDuplicates(bool isDestroyDuplicates)
 
     QTUML_D(QLinkEndDestructionData);
     if (d->isDestroyDuplicates != isDestroyDuplicates) {
-        d->setDestroyDuplicates(isDestroyDuplicates);
+        d->isDestroyDuplicates = isDestroyDuplicates;
     }
 }
 
@@ -133,7 +120,7 @@ void QLinkEndDestructionData::setDestroyAt(QInputPin *destroyAt)
 
     QTUML_D(QLinkEndDestructionData);
     if (d->destroyAt != destroyAt) {
-        d->setDestroyAt(destroyAt);
+        d->destroyAt = destroyAt;
     }
 }
 

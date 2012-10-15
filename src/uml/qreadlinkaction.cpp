@@ -41,32 +41,19 @@
 
 #include "qreadlinkaction.h"
 #include "qreadlinkaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QReadLinkActionPrivate::QReadLinkActionPrivate() :
+QReadLinkActionPrivate::QReadLinkActionPrivate(QReadLinkAction *q_umlptr) :
     result(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QReadLinkActionPrivate::~QReadLinkActionPrivate()
 {
-}
-
-void QReadLinkActionPrivate::setResult(QOutputPin *result)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOutput(this->result);
-
-    this->result = result;
-
-    // Adjust subsetted property(ies)
-    addOutput(result);
 }
 
 /*!
@@ -80,7 +67,7 @@ void QReadLinkActionPrivate::setResult(QOutputPin *result)
 QReadLinkAction::QReadLinkAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QReadLinkActionPrivate;
+    d_umlptr = new QReadLinkActionPrivate(this);
 }
 
 QReadLinkAction::QReadLinkAction(bool createPimpl, QObject *parent)
@@ -111,7 +98,13 @@ void QReadLinkAction::setResult(QOutputPin *result)
 
     QTUML_D(QReadLinkAction);
     if (d->result != result) {
-        d->setResult(result);
+        // Adjust subsetted property(ies)
+        d->removeOutput(d->result);
+
+        d->result = result;
+
+        // Adjust subsetted property(ies)
+        d->addOutput(result);
     }
 }
 

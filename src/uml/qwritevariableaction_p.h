@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qvariableaction_p.h"
 
 QT_BEGIN_HEADER
@@ -58,13 +57,12 @@ class QInputPin;
 class QWriteVariableActionPrivate : public QVariableActionPrivate
 {
 public:
-    explicit QWriteVariableActionPrivate();
     virtual ~QWriteVariableActionPrivate();
 
     QInputPin *value;
 
-    // Internal functions for association-ends
-    void setValue(QInputPin *value);
+protected:
+    explicit QWriteVariableActionPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

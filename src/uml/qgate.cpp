@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QGatePrivate::QGatePrivate()
+QGatePrivate::QGatePrivate(QGate *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QGatePrivate::~QGatePrivate()
@@ -64,7 +65,7 @@ QGatePrivate::~QGatePrivate()
 QGate::QGate(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QGatePrivate;
+    d_umlptr = new QGatePrivate(this);
 }
 
 QGate::QGate(bool createPimpl, QObject *parent)

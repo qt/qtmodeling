@@ -41,32 +41,19 @@
 
 #include "qreadstructuralfeatureaction.h"
 #include "qreadstructuralfeatureaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QReadStructuralFeatureActionPrivate::QReadStructuralFeatureActionPrivate() :
+QReadStructuralFeatureActionPrivate::QReadStructuralFeatureActionPrivate(QReadStructuralFeatureAction *q_umlptr) :
     result(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QReadStructuralFeatureActionPrivate::~QReadStructuralFeatureActionPrivate()
 {
-}
-
-void QReadStructuralFeatureActionPrivate::setResult(QOutputPin *result)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOutput(this->result);
-
-    this->result = result;
-
-    // Adjust subsetted property(ies)
-    addOutput(result);
 }
 
 /*!
@@ -80,7 +67,7 @@ void QReadStructuralFeatureActionPrivate::setResult(QOutputPin *result)
 QReadStructuralFeatureAction::QReadStructuralFeatureAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QReadStructuralFeatureActionPrivate;
+    d_umlptr = new QReadStructuralFeatureActionPrivate(this);
 }
 
 QReadStructuralFeatureAction::QReadStructuralFeatureAction(bool createPimpl, QObject *parent)
@@ -111,7 +98,13 @@ void QReadStructuralFeatureAction::setResult(QOutputPin *result)
 
     QTUML_D(QReadStructuralFeatureAction);
     if (d->result != result) {
-        d->setResult(result);
+        // Adjust subsetted property(ies)
+        d->removeOutput(d->result);
+
+        d->result = result;
+
+        // Adjust subsetted property(ies)
+        d->addOutput(result);
     }
 }
 

@@ -46,9 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QSequenceNodePrivate::QSequenceNodePrivate() :
+QSequenceNodePrivate::QSequenceNodePrivate(QSequenceNode *q_umlptr) :
     executableNodes(new QList<QExecutableNode *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QSequenceNodePrivate::~QSequenceNodePrivate()
@@ -56,20 +57,6 @@ QSequenceNodePrivate::~QSequenceNodePrivate()
     foreach (QExecutableNode *executablenode, *executableNodes)
         delete executablenode;
     delete executableNodes;
-}
-
-void QSequenceNodePrivate::addExecutableNode(QExecutableNode *executableNode)
-{
-    // This is a read-write association end
-
-    this->executableNodes->append(executableNode);
-}
-
-void QSequenceNodePrivate::removeExecutableNode(QExecutableNode *executableNode)
-{
-    // This is a read-write association end
-
-    this->executableNodes->removeAll(executableNode);
 }
 
 /*!
@@ -83,7 +70,7 @@ void QSequenceNodePrivate::removeExecutableNode(QExecutableNode *executableNode)
 QSequenceNode::QSequenceNode(QObject *parent)
     : QStructuredActivityNode(false, parent)
 {
-    d_umlptr = new QSequenceNodePrivate;
+    d_umlptr = new QSequenceNodePrivate(this);
 }
 
 QSequenceNode::QSequenceNode(bool createPimpl, QObject *parent)
@@ -114,7 +101,7 @@ void QSequenceNode::addExecutableNode(QExecutableNode *executableNode)
 
     QTUML_D(QSequenceNode);
     if (!d->executableNodes->contains(executableNode)) {
-        d->addExecutableNode(executableNode);
+        d->executableNodes->append(executableNode);
     }
 }
 
@@ -124,7 +111,7 @@ void QSequenceNode::removeExecutableNode(QExecutableNode *executableNode)
 
     QTUML_D(QSequenceNode);
     if (d->executableNodes->contains(executableNode)) {
-        d->removeExecutableNode(executableNode);
+        d->executableNodes->removeAll(executableNode);
     }
 }
 

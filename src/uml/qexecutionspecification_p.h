@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qinteractionfragment_p.h"
 
 QT_BEGIN_HEADER
@@ -58,15 +57,13 @@ class QOccurrenceSpecification;
 class QExecutionSpecificationPrivate : public QInteractionFragmentPrivate
 {
 public:
-    explicit QExecutionSpecificationPrivate();
     virtual ~QExecutionSpecificationPrivate();
 
     QOccurrenceSpecification *start;
     QOccurrenceSpecification *finish;
 
-    // Internal functions for association-ends
-    void setStart(QOccurrenceSpecification *start);
-    void setFinish(QOccurrenceSpecification *finish);
+protected:
+    explicit QExecutionSpecificationPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

@@ -41,32 +41,19 @@
 
 #include "qabstraction.h"
 #include "qabstraction_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QOpaqueExpression>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QAbstractionPrivate::QAbstractionPrivate() :
+QAbstractionPrivate::QAbstractionPrivate(QAbstraction *q_umlptr) :
     mapping(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QAbstractionPrivate::~QAbstractionPrivate()
 {
-}
-
-void QAbstractionPrivate::setMapping(QOpaqueExpression *mapping)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->mapping);
-
-    this->mapping = mapping;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(mapping);
 }
 
 /*!
@@ -80,7 +67,7 @@ void QAbstractionPrivate::setMapping(QOpaqueExpression *mapping)
 QAbstraction::QAbstraction(QObject *parent)
     : QDependency(false, parent)
 {
-    d_umlptr = new QAbstractionPrivate;
+    d_umlptr = new QAbstractionPrivate(this);
 }
 
 QAbstraction::QAbstraction(bool createPimpl, QObject *parent)
@@ -111,7 +98,13 @@ void QAbstraction::setMapping(QOpaqueExpression *mapping)
 
     QTUML_D(QAbstraction);
     if (d->mapping != mapping) {
-        d->setMapping(mapping);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->mapping);
+
+        d->mapping = mapping;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(mapping);
     }
 }
 

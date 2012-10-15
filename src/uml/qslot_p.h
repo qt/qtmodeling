@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qelement_p.h"
 
 // Qt includes
@@ -59,22 +58,17 @@ QT_MODULE(QtUml)
 class QStructuralFeature;
 class QInstanceSpecification;
 class QValueSpecification;
+class QSlot;
 
 class QSlotPrivate : public QElementPrivate
 {
 public:
-    explicit QSlotPrivate();
+    explicit QSlotPrivate(QSlot *q_umlptr = 0);
     virtual ~QSlotPrivate();
 
     QList<QValueSpecification *> *values;
     QStructuralFeature *definingFeature;
     QInstanceSpecification *owningInstance;
-
-    // Internal functions for association-ends
-    void addValue(QValueSpecification *value);
-    void removeValue(QValueSpecification *value);
-    void setDefiningFeature(QStructuralFeature *definingFeature);
-    void setOwningInstance(QInstanceSpecification *owningInstance);
 };
 
 QT_END_NAMESPACE_QTUML

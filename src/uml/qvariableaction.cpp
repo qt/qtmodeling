@@ -55,13 +55,6 @@ QVariableActionPrivate::~QVariableActionPrivate()
 {
 }
 
-void QVariableActionPrivate::setVariable(QVariable *variable)
-{
-    // This is a read-write association end
-
-    this->variable = variable;
-}
-
 /*!
     \class QVariableAction
 
@@ -95,7 +88,7 @@ void QVariableAction::setVariable(QVariable *variable)
 
     QTUML_D(QVariableAction);
     if (d->variable != variable) {
-        d->setVariable(variable);
+        d->variable = variable;
     }
 }
 

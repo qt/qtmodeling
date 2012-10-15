@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qwritevariableaction_p.h"
 
 QT_BEGIN_HEADER
@@ -54,21 +53,16 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QInputPin;
+class QRemoveVariableValueAction;
 
 class QRemoveVariableValueActionPrivate : public QWriteVariableActionPrivate
 {
 public:
-    explicit QRemoveVariableValueActionPrivate();
+    explicit QRemoveVariableValueActionPrivate(QRemoveVariableValueAction *q_umlptr = 0);
     virtual ~QRemoveVariableValueActionPrivate();
 
     bool isRemoveDuplicates;
     QInputPin *removeAt;
-
-    // Internal functions for attributes
-    void setRemoveDuplicates(bool isRemoveDuplicates);
-
-    // Internal functions for association-ends
-    void setRemoveAt(QInputPin *removeAt);
 };
 
 QT_END_NAMESPACE_QTUML

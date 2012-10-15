@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qaction_p.h"
 
 // Qt includes
@@ -63,17 +62,13 @@ class QAssociation;
 class QLinkActionPrivate : public QActionPrivate
 {
 public:
-    explicit QLinkActionPrivate();
     virtual ~QLinkActionPrivate();
 
     QSet<QInputPin *> *inputValues;
     QSet<QLinkEndData *> *endData;
 
-    // Internal functions for association-ends
-    void addInputValue(QInputPin *inputValue);
-    void removeInputValue(QInputPin *inputValue);
-    void addEndData(QLinkEndData *endData);
-    void removeEndData(QLinkEndData *endData);
+protected:
+    explicit QLinkActionPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

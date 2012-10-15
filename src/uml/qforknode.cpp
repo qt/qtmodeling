@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QForkNodePrivate::QForkNodePrivate()
+QForkNodePrivate::QForkNodePrivate(QForkNode *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QForkNodePrivate::~QForkNodePrivate()
@@ -64,7 +65,7 @@ QForkNodePrivate::~QForkNodePrivate()
 QForkNode::QForkNode(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QForkNodePrivate;
+    d_umlptr = new QForkNodePrivate(this);
 }
 
 QForkNode::QForkNode(bool createPimpl, QObject *parent)

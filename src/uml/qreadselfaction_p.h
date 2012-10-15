@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qaction_p.h"
 
 QT_BEGIN_HEADER
@@ -54,17 +53,15 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QOutputPin;
+class QReadSelfAction;
 
 class QReadSelfActionPrivate : public QActionPrivate
 {
 public:
-    explicit QReadSelfActionPrivate();
+    explicit QReadSelfActionPrivate(QReadSelfAction *q_umlptr = 0);
     virtual ~QReadSelfActionPrivate();
 
     QOutputPin *result;
-
-    // Internal functions for association-ends
-    void setResult(QOutputPin *result);
 };
 
 QT_END_NAMESPACE_QTUML

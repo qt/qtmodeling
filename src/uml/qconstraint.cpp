@@ -41,8 +41,6 @@
 
 #include "qconstraint.h"
 #include "qconstraint_p.h"
-#include "qnamedelement_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QElement>
 #include <QtUml/QNamespace>
@@ -50,53 +48,17 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QConstraintPrivate::QConstraintPrivate() :
+QConstraintPrivate::QConstraintPrivate(QConstraint *q_umlptr) :
     context(0),
     specification(0),
     constrainedElements(new QList<QElement *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QConstraintPrivate::~QConstraintPrivate()
 {
     delete constrainedElements;
-}
-
-void QConstraintPrivate::setContext(QNamespace *context)
-{
-    // This is a read-write association end
-
-    this->context = context;
-
-    // Adjust subsetted property(ies)
-    setNamespace_(context);
-}
-
-void QConstraintPrivate::setSpecification(QValueSpecification *specification)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->specification);
-
-    this->specification = specification;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(specification);
-}
-
-void QConstraintPrivate::addConstrainedElement(QElement *constrainedElement)
-{
-    // This is a read-write association end
-
-    this->constrainedElements->append(constrainedElement);
-}
-
-void QConstraintPrivate::removeConstrainedElement(QElement *constrainedElement)
-{
-    // This is a read-write association end
-
-    this->constrainedElements->removeAll(constrainedElement);
 }
 
 /*!
@@ -110,7 +72,7 @@ void QConstraintPrivate::removeConstrainedElement(QElement *constrainedElement)
 QConstraint::QConstraint(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QConstraintPrivate;
+    d_umlptr = new QConstraintPrivate(this);
 }
 
 QConstraint::QConstraint(bool createPimpl, QObject *parent)
@@ -141,7 +103,10 @@ void QConstraint::setContext(QNamespace *context)
 
     QTUML_D(QConstraint);
     if (d->context != context) {
-        d->setContext(context);
+        d->context = context;
+
+        // Adjust subsetted property(ies)
+        d->setNamespace_(context);
 
         // Adjust opposite property
         context->addOwnedRule(this);
@@ -165,7 +130,13 @@ void QConstraint::setSpecification(QValueSpecification *specification)
 
     QTUML_D(QConstraint);
     if (d->specification != specification) {
-        d->setSpecification(specification);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->specification);
+
+        d->specification = specification;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(specification);
     }
 }
 
@@ -186,7 +157,7 @@ void QConstraint::addConstrainedElement(QElement *constrainedElement)
 
     QTUML_D(QConstraint);
     if (!d->constrainedElements->contains(constrainedElement)) {
-        d->addConstrainedElement(constrainedElement);
+        d->constrainedElements->append(constrainedElement);
     }
 }
 
@@ -196,7 +167,7 @@ void QConstraint::removeConstrainedElement(QElement *constrainedElement)
 
     QTUML_D(QConstraint);
     if (d->constrainedElements->contains(constrainedElement)) {
-        d->removeConstrainedElement(constrainedElement);
+        d->constrainedElements->removeAll(constrainedElement);
     }
 }
 

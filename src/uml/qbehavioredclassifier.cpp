@@ -41,9 +41,6 @@
 
 #include "qbehavioredclassifier.h"
 #include "qbehavioredclassifier_p.h"
-#include "qnamespace_p.h"
-#include "qelement_p.h"
-#include "qnamedelement_p.h"
 
 #include <QtUml/QBehavior>
 #include <QtUml/QInterfaceRealization>
@@ -61,61 +58,6 @@ QBehavioredClassifierPrivate::~QBehavioredClassifierPrivate()
 {
     delete ownedBehaviors;
     delete interfaceRealizations;
-}
-
-void QBehavioredClassifierPrivate::addOwnedBehavior(QBehavior *ownedBehavior)
-{
-    // This is a read-write association end
-
-    this->ownedBehaviors->insert(ownedBehavior);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(ownedBehavior);
-}
-
-void QBehavioredClassifierPrivate::removeOwnedBehavior(QBehavior *ownedBehavior)
-{
-    // This is a read-write association end
-
-    this->ownedBehaviors->remove(ownedBehavior);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(ownedBehavior);
-}
-
-void QBehavioredClassifierPrivate::addInterfaceRealization(QInterfaceRealization *interfaceRealization)
-{
-    // This is a read-write association end
-
-    this->interfaceRealizations->insert(interfaceRealization);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(interfaceRealization);
-    addClientDependency(interfaceRealization);
-}
-
-void QBehavioredClassifierPrivate::removeInterfaceRealization(QInterfaceRealization *interfaceRealization)
-{
-    // This is a read-write association end
-
-    this->interfaceRealizations->remove(interfaceRealization);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(interfaceRealization);
-    removeClientDependency(interfaceRealization);
-}
-
-void QBehavioredClassifierPrivate::setClassifierBehavior(QBehavior *classifierBehavior)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedBehavior(this->classifierBehavior);
-
-    this->classifierBehavior = classifierBehavior;
-
-    // Adjust subsetted property(ies)
-    addOwnedBehavior(classifierBehavior);
 }
 
 /*!
@@ -151,7 +93,10 @@ void QBehavioredClassifier::addOwnedBehavior(QBehavior *ownedBehavior)
 
     QTUML_D(QBehavioredClassifier);
     if (!d->ownedBehaviors->contains(ownedBehavior)) {
-        d->addOwnedBehavior(ownedBehavior);
+        d->ownedBehaviors->insert(ownedBehavior);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(ownedBehavior);
     }
 }
 
@@ -161,7 +106,10 @@ void QBehavioredClassifier::removeOwnedBehavior(QBehavior *ownedBehavior)
 
     QTUML_D(QBehavioredClassifier);
     if (d->ownedBehaviors->contains(ownedBehavior)) {
-        d->removeOwnedBehavior(ownedBehavior);
+        d->ownedBehaviors->remove(ownedBehavior);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(ownedBehavior);
     }
 }
 
@@ -182,7 +130,11 @@ void QBehavioredClassifier::addInterfaceRealization(QInterfaceRealization *inter
 
     QTUML_D(QBehavioredClassifier);
     if (!d->interfaceRealizations->contains(interfaceRealization)) {
-        d->addInterfaceRealization(interfaceRealization);
+        d->interfaceRealizations->insert(interfaceRealization);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(interfaceRealization);
+        addClientDependency(interfaceRealization);
 
         // Adjust opposite property
         interfaceRealization->setImplementingClassifier(this);
@@ -195,7 +147,11 @@ void QBehavioredClassifier::removeInterfaceRealization(QInterfaceRealization *in
 
     QTUML_D(QBehavioredClassifier);
     if (d->interfaceRealizations->contains(interfaceRealization)) {
-        d->removeInterfaceRealization(interfaceRealization);
+        d->interfaceRealizations->remove(interfaceRealization);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(interfaceRealization);
+        removeClientDependency(interfaceRealization);
 
         // Adjust opposite property
         interfaceRealization->setImplementingClassifier(0);
@@ -219,7 +175,13 @@ void QBehavioredClassifier::setClassifierBehavior(QBehavior *classifierBehavior)
 
     QTUML_D(QBehavioredClassifier);
     if (d->classifierBehavior != classifierBehavior) {
-        d->setClassifierBehavior(classifierBehavior);
+        // Adjust subsetted property(ies)
+        removeOwnedBehavior(d->classifierBehavior);
+
+        d->classifierBehavior = classifierBehavior;
+
+        // Adjust subsetted property(ies)
+        addOwnedBehavior(classifierBehavior);
     }
 }
 

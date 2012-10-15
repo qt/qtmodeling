@@ -41,7 +41,6 @@
 
 #include "qvariable.h"
 #include "qvariable_p.h"
-#include "qnamedelement_p.h"
 
 #include <QtUml/QActivity>
 #include <QtUml/QStructuredActivityNode>
@@ -49,34 +48,15 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QVariablePrivate::QVariablePrivate() :
+QVariablePrivate::QVariablePrivate(QVariable *q_umlptr) :
     scope(0),
     activityScope(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QVariablePrivate::~QVariablePrivate()
 {
-}
-
-void QVariablePrivate::setScope(QStructuredActivityNode *scope)
-{
-    // This is a read-write association end
-
-    this->scope = scope;
-
-    // Adjust subsetted property(ies)
-    setNamespace_(scope);
-}
-
-void QVariablePrivate::setActivityScope(QActivity *activityScope)
-{
-    // This is a read-write association end
-
-    this->activityScope = activityScope;
-
-    // Adjust subsetted property(ies)
-    setNamespace_(activityScope);
 }
 
 /*!
@@ -90,7 +70,7 @@ void QVariablePrivate::setActivityScope(QActivity *activityScope)
 QVariable::QVariable(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QVariablePrivate;
+    d_umlptr = new QVariablePrivate(this);
 }
 
 QVariable::QVariable(bool createPimpl, QObject *parent)
@@ -121,7 +101,10 @@ void QVariable::setScope(QStructuredActivityNode *scope)
 
     QTUML_D(QVariable);
     if (d->scope != scope) {
-        d->setScope(scope);
+        d->scope = scope;
+
+        // Adjust subsetted property(ies)
+        d->setNamespace_(scope);
 
         // Adjust opposite property
         scope->addVariable(this);
@@ -145,7 +128,10 @@ void QVariable::setActivityScope(QActivity *activityScope)
 
     QTUML_D(QVariable);
     if (d->activityScope != activityScope) {
-        d->setActivityScope(activityScope);
+        d->activityScope = activityScope;
+
+        // Adjust subsetted property(ies)
+        d->setNamespace_(activityScope);
 
         // Adjust opposite property
         activityScope->addVariable(this);

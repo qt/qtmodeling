@@ -41,57 +41,22 @@
 
 #include "qcomponentrealization.h"
 #include "qcomponentrealization_p.h"
-#include "qdependency_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QComponent>
 #include <QtUml/QClassifier>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QComponentRealizationPrivate::QComponentRealizationPrivate() :
+QComponentRealizationPrivate::QComponentRealizationPrivate(QComponentRealization *q_umlptr) :
     abstraction(0),
     realizingClassifiers(new QSet<QClassifier *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QComponentRealizationPrivate::~QComponentRealizationPrivate()
 {
     delete realizingClassifiers;
-}
-
-void QComponentRealizationPrivate::setAbstraction(QComponent *abstraction)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeSupplier(this->abstraction);
-
-    this->abstraction = abstraction;
-
-    // Adjust subsetted property(ies)
-    addSupplier(abstraction);
-    setOwner(abstraction);
-}
-
-void QComponentRealizationPrivate::addRealizingClassifier(QClassifier *realizingClassifier)
-{
-    // This is a read-write association end
-
-    this->realizingClassifiers->insert(realizingClassifier);
-
-    // Adjust subsetted property(ies)
-    addClient(realizingClassifier);
-}
-
-void QComponentRealizationPrivate::removeRealizingClassifier(QClassifier *realizingClassifier)
-{
-    // This is a read-write association end
-
-    this->realizingClassifiers->remove(realizingClassifier);
-
-    // Adjust subsetted property(ies)
-    removeClient(realizingClassifier);
 }
 
 /*!
@@ -105,7 +70,7 @@ void QComponentRealizationPrivate::removeRealizingClassifier(QClassifier *realiz
 QComponentRealization::QComponentRealization(QObject *parent)
     : QRealization(false, parent)
 {
-    d_umlptr = new QComponentRealizationPrivate;
+    d_umlptr = new QComponentRealizationPrivate(this);
 }
 
 QComponentRealization::QComponentRealization(bool createPimpl, QObject *parent)
@@ -136,7 +101,14 @@ void QComponentRealization::setAbstraction(QComponent *abstraction)
 
     QTUML_D(QComponentRealization);
     if (d->abstraction != abstraction) {
-        d->setAbstraction(abstraction);
+        // Adjust subsetted property(ies)
+        removeSupplier(d->abstraction);
+
+        d->abstraction = abstraction;
+
+        // Adjust subsetted property(ies)
+        addSupplier(abstraction);
+        d->setOwner(abstraction);
 
         // Adjust opposite property
         abstraction->addRealization(this);
@@ -160,7 +132,10 @@ void QComponentRealization::addRealizingClassifier(QClassifier *realizingClassif
 
     QTUML_D(QComponentRealization);
     if (!d->realizingClassifiers->contains(realizingClassifier)) {
-        d->addRealizingClassifier(realizingClassifier);
+        d->realizingClassifiers->insert(realizingClassifier);
+
+        // Adjust subsetted property(ies)
+        addClient(realizingClassifier);
     }
 }
 
@@ -170,7 +145,10 @@ void QComponentRealization::removeRealizingClassifier(QClassifier *realizingClas
 
     QTUML_D(QComponentRealization);
     if (d->realizingClassifiers->contains(realizingClassifier)) {
-        d->removeRealizingClassifier(realizingClassifier);
+        d->realizingClassifiers->remove(realizingClassifier);
+
+        // Adjust subsetted property(ies)
+        removeClient(realizingClassifier);
     }
 }
 

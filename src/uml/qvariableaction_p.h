@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qaction_p.h"
 
 QT_BEGIN_HEADER
@@ -58,13 +57,12 @@ class QVariable;
 class QVariableActionPrivate : public QActionPrivate
 {
 public:
-    explicit QVariableActionPrivate();
     virtual ~QVariableActionPrivate();
 
     QVariable *variable;
 
-    // Internal functions for association-ends
-    void setVariable(QVariable *variable);
+protected:
+    explicit QVariableActionPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qmessageevent_p.h"
 
 QT_BEGIN_HEADER
@@ -54,17 +53,15 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QSignal;
+class QSignalEvent;
 
 class QSignalEventPrivate : public QMessageEventPrivate
 {
 public:
-    explicit QSignalEventPrivate();
+    explicit QSignalEventPrivate(QSignalEvent *q_umlptr = 0);
     virtual ~QSignalEventPrivate();
 
     QSignal *signal;
-
-    // Internal functions for association-ends
-    void setSignal(QSignal *signal);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -41,21 +41,20 @@
 
 #include "qconnector.h"
 #include "qconnector_p.h"
-#include "qredefinableelement_p.h"
-#include "qelement_p.h"
 
+#include <QtUml/QAssociation>
 #include <QtUml/QBehavior>
 #include <QtUml/QConnectorEnd>
-#include <QtUml/QAssociation>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QConnectorPrivate::QConnectorPrivate() :
+QConnectorPrivate::QConnectorPrivate(QConnector *q_umlptr) :
     redefinedConnectors(new QSet<QConnector *>),
     contracts(new QSet<QBehavior *>),
     type(0),
     ends(new QList<QConnectorEnd *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QConnectorPrivate::~QConnectorPrivate()
@@ -63,67 +62,6 @@ QConnectorPrivate::~QConnectorPrivate()
     delete redefinedConnectors;
     delete contracts;
     delete ends;
-}
-
-void QConnectorPrivate::addRedefinedConnector(QConnector *redefinedConnector)
-{
-    // This is a read-write association end
-
-    this->redefinedConnectors->insert(redefinedConnector);
-
-    // Adjust subsetted property(ies)
-    addRedefinedElement(redefinedConnector);
-}
-
-void QConnectorPrivate::removeRedefinedConnector(QConnector *redefinedConnector)
-{
-    // This is a read-write association end
-
-    this->redefinedConnectors->remove(redefinedConnector);
-
-    // Adjust subsetted property(ies)
-    removeRedefinedElement(redefinedConnector);
-}
-
-void QConnectorPrivate::addContract(QBehavior *contract)
-{
-    // This is a read-write association end
-
-    this->contracts->insert(contract);
-}
-
-void QConnectorPrivate::removeContract(QBehavior *contract)
-{
-    // This is a read-write association end
-
-    this->contracts->remove(contract);
-}
-
-void QConnectorPrivate::setType(QAssociation *type)
-{
-    // This is a read-write association end
-
-    this->type = type;
-}
-
-void QConnectorPrivate::addEnd(QConnectorEnd *end)
-{
-    // This is a read-write association end
-
-    this->ends->append(end);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(end);
-}
-
-void QConnectorPrivate::removeEnd(QConnectorEnd *end)
-{
-    // This is a read-write association end
-
-    this->ends->removeAll(end);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(end);
 }
 
 /*!
@@ -137,7 +75,7 @@ void QConnectorPrivate::removeEnd(QConnectorEnd *end)
 QConnector::QConnector(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QConnectorPrivate;
+    d_umlptr = new QConnectorPrivate(this);
 }
 
 QConnector::QConnector(bool createPimpl, QObject *parent)
@@ -160,7 +98,7 @@ QtUml::ConnectorKind QConnector::kind() const
 
     qWarning("QConnector::kind: to be implemented (this is a derived attribute)");
 
-    QTUML_D(const QConnector);
+    //QTUML_D(const QConnector);
     //return <derived-return>;
 }
 
@@ -181,7 +119,10 @@ void QConnector::addRedefinedConnector(QConnector *redefinedConnector)
 
     QTUML_D(QConnector);
     if (!d->redefinedConnectors->contains(redefinedConnector)) {
-        d->addRedefinedConnector(redefinedConnector);
+        d->redefinedConnectors->insert(redefinedConnector);
+
+        // Adjust subsetted property(ies)
+        d->addRedefinedElement(redefinedConnector);
     }
 }
 
@@ -191,7 +132,10 @@ void QConnector::removeRedefinedConnector(QConnector *redefinedConnector)
 
     QTUML_D(QConnector);
     if (d->redefinedConnectors->contains(redefinedConnector)) {
-        d->removeRedefinedConnector(redefinedConnector);
+        d->redefinedConnectors->remove(redefinedConnector);
+
+        // Adjust subsetted property(ies)
+        d->removeRedefinedElement(redefinedConnector);
     }
 }
 
@@ -212,7 +156,7 @@ void QConnector::addContract(QBehavior *contract)
 
     QTUML_D(QConnector);
     if (!d->contracts->contains(contract)) {
-        d->addContract(contract);
+        d->contracts->insert(contract);
     }
 }
 
@@ -222,7 +166,7 @@ void QConnector::removeContract(QBehavior *contract)
 
     QTUML_D(QConnector);
     if (d->contracts->contains(contract)) {
-        d->removeContract(contract);
+        d->contracts->remove(contract);
     }
 }
 
@@ -243,7 +187,7 @@ void QConnector::setType(QAssociation *type)
 
     QTUML_D(QConnector);
     if (d->type != type) {
-        d->setType(type);
+        d->type = type;
     }
 }
 
@@ -264,7 +208,10 @@ void QConnector::addEnd(QConnectorEnd *end)
 
     QTUML_D(QConnector);
     if (!d->ends->contains(end)) {
-        d->addEnd(end);
+        d->ends->append(end);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(end);
     }
 }
 
@@ -274,7 +221,10 @@ void QConnector::removeEnd(QConnectorEnd *end)
 
     QTUML_D(QConnector);
     if (d->ends->contains(end)) {
-        d->removeEnd(end);
+        d->ends->removeAll(end);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(end);
     }
 }
 

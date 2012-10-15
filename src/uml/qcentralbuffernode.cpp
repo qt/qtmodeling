@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCentralBufferNodePrivate::QCentralBufferNodePrivate()
+QCentralBufferNodePrivate::QCentralBufferNodePrivate(QCentralBufferNode *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QCentralBufferNodePrivate::~QCentralBufferNodePrivate()
@@ -64,7 +65,7 @@ QCentralBufferNodePrivate::~QCentralBufferNodePrivate()
 QCentralBufferNode::QCentralBufferNode(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QCentralBufferNodePrivate;
+    d_umlptr = new QCentralBufferNodePrivate(this);
 }
 
 QCentralBufferNode::QCentralBufferNode(bool createPimpl, QObject *parent)

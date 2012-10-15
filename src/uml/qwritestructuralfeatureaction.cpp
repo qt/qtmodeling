@@ -41,7 +41,6 @@
 
 #include "qwritestructuralfeatureaction.h"
 #include "qwritestructuralfeatureaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QOutputPin>
 #include <QtUml/QInputPin>
@@ -56,32 +55,6 @@ QWriteStructuralFeatureActionPrivate::QWriteStructuralFeatureActionPrivate() :
 
 QWriteStructuralFeatureActionPrivate::~QWriteStructuralFeatureActionPrivate()
 {
-}
-
-void QWriteStructuralFeatureActionPrivate::setResult(QOutputPin *result)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOutput(this->result);
-
-    this->result = result;
-
-    // Adjust subsetted property(ies)
-    addOutput(result);
-}
-
-void QWriteStructuralFeatureActionPrivate::setValue(QInputPin *value)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeInput(this->value);
-
-    this->value = value;
-
-    // Adjust subsetted property(ies)
-    addInput(value);
 }
 
 /*!
@@ -117,7 +90,13 @@ void QWriteStructuralFeatureAction::setResult(QOutputPin *result)
 
     QTUML_D(QWriteStructuralFeatureAction);
     if (d->result != result) {
-        d->setResult(result);
+        // Adjust subsetted property(ies)
+        d->removeOutput(d->result);
+
+        d->result = result;
+
+        // Adjust subsetted property(ies)
+        d->addOutput(result);
     }
 }
 
@@ -138,7 +117,13 @@ void QWriteStructuralFeatureAction::setValue(QInputPin *value)
 
     QTUML_D(QWriteStructuralFeatureAction);
     if (d->value != value) {
-        d->setValue(value);
+        // Adjust subsetted property(ies)
+        d->removeInput(d->value);
+
+        d->value = value;
+
+        // Adjust subsetted property(ies)
+        d->addInput(value);
     }
 }
 

@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDestructionOccurrenceSpecificationPrivate::QDestructionOccurrenceSpecificationPrivate()
+QDestructionOccurrenceSpecificationPrivate::QDestructionOccurrenceSpecificationPrivate(QDestructionOccurrenceSpecification *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QDestructionOccurrenceSpecificationPrivate::~QDestructionOccurrenceSpecificationPrivate()
@@ -64,7 +65,7 @@ QDestructionOccurrenceSpecificationPrivate::~QDestructionOccurrenceSpecification
 QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(QObject *parent)
     : QMessageOccurrenceSpecification(false, parent)
 {
-    d_umlptr = new QDestructionOccurrenceSpecificationPrivate;
+    d_umlptr = new QDestructionOccurrenceSpecificationPrivate(this);
 }
 
 QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(bool createPimpl, QObject *parent)

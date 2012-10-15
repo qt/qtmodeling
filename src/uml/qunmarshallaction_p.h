@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qaction_p.h"
 
 // Qt includes
@@ -59,22 +58,17 @@ QT_MODULE(QtUml)
 class QInputPin;
 class QOutputPin;
 class QClassifier;
+class QUnmarshallAction;
 
 class QUnmarshallActionPrivate : public QActionPrivate
 {
 public:
-    explicit QUnmarshallActionPrivate();
+    explicit QUnmarshallActionPrivate(QUnmarshallAction *q_umlptr = 0);
     virtual ~QUnmarshallActionPrivate();
 
     QInputPin *object;
     QSet<QOutputPin *> *results;
     QClassifier *unmarshallType;
-
-    // Internal functions for association-ends
-    void setObject(QInputPin *object);
-    void addResult(QOutputPin *result);
-    void removeResult(QOutputPin *result);
-    void setUnmarshallType(QClassifier *unmarshallType);
 };
 
 QT_END_NAMESPACE_QTUML

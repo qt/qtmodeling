@@ -41,7 +41,6 @@
 
 #include "qobjectnode.h"
 #include "qobjectnode_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QState>
 #include <QtUml/QBehavior>
@@ -61,54 +60,6 @@ QObjectNodePrivate::QObjectNodePrivate() :
 QObjectNodePrivate::~QObjectNodePrivate()
 {
     delete inState;
-}
-
-void QObjectNodePrivate::setControlType(bool isControlType)
-{
-    // This is a read-write attribute
-
-    this->isControlType = isControlType;
-}
-
-void QObjectNodePrivate::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
-{
-    // This is a read-write attribute
-
-    this->ordering = ordering;
-}
-
-void QObjectNodePrivate::setUpperBound(QValueSpecification *upperBound)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->upperBound);
-
-    this->upperBound = upperBound;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(upperBound);
-}
-
-void QObjectNodePrivate::setSelection(QBehavior *selection)
-{
-    // This is a read-write association end
-
-    this->selection = selection;
-}
-
-void QObjectNodePrivate::addInState(QState *inState)
-{
-    // This is a read-write association end
-
-    this->inState->insert(inState);
-}
-
-void QObjectNodePrivate::removeInState(QState *inState)
-{
-    // This is a read-write association end
-
-    this->inState->remove(inState);
 }
 
 /*!
@@ -144,7 +95,7 @@ void QObjectNode::setControlType(bool isControlType)
 
     QTUML_D(QObjectNode);
     if (d->isControlType != isControlType) {
-        d->setControlType(isControlType);
+        d->isControlType = isControlType;
     }
 }
 
@@ -165,7 +116,7 @@ void QObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 
     QTUML_D(QObjectNode);
     if (d->ordering != ordering) {
-        d->setOrdering(ordering);
+        d->ordering = ordering;
     }
 }
 
@@ -186,7 +137,13 @@ void QObjectNode::setUpperBound(QValueSpecification *upperBound)
 
     QTUML_D(QObjectNode);
     if (d->upperBound != upperBound) {
-        d->setUpperBound(upperBound);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->upperBound);
+
+        d->upperBound = upperBound;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(upperBound);
     }
 }
 
@@ -207,7 +164,7 @@ void QObjectNode::setSelection(QBehavior *selection)
 
     QTUML_D(QObjectNode);
     if (d->selection != selection) {
-        d->setSelection(selection);
+        d->selection = selection;
     }
 }
 
@@ -228,7 +185,7 @@ void QObjectNode::addInState(QState *inState)
 
     QTUML_D(QObjectNode);
     if (!d->inState->contains(inState)) {
-        d->addInState(inState);
+        d->inState->insert(inState);
     }
 }
 
@@ -238,7 +195,7 @@ void QObjectNode::removeInState(QState *inState)
 
     QTUML_D(QObjectNode);
     if (d->inState->contains(inState)) {
-        d->removeInState(inState);
+        d->inState->remove(inState);
     }
 }
 

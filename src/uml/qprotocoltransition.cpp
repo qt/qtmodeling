@@ -41,45 +41,21 @@
 
 #include "qprotocoltransition.h"
 #include "qprotocoltransition_p.h"
-#include "qnamespace_p.h"
-#include "qtransition_p.h"
 
 #include <QtUml/QConstraint>
 #include <QtUml/QOperation>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QProtocolTransitionPrivate::QProtocolTransitionPrivate() :
+QProtocolTransitionPrivate::QProtocolTransitionPrivate(QProtocolTransition *q_umlptr) :
     postCondition(0),
     preCondition(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QProtocolTransitionPrivate::~QProtocolTransitionPrivate()
 {
-}
-
-void QProtocolTransitionPrivate::setPostCondition(QConstraint *postCondition)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedRule(this->postCondition);
-
-    this->postCondition = postCondition;
-
-    // Adjust subsetted property(ies)
-    addOwnedRule(postCondition);
-}
-
-void QProtocolTransitionPrivate::setPreCondition(QConstraint *preCondition)
-{
-    // This is a read-write association end
-
-    this->preCondition = preCondition;
-
-    // Adjust subsetted property(ies)
-    setGuard(preCondition);
 }
 
 /*!
@@ -93,7 +69,7 @@ void QProtocolTransitionPrivate::setPreCondition(QConstraint *preCondition)
 QProtocolTransition::QProtocolTransition(QObject *parent)
     : QTransition(false, parent)
 {
-    d_umlptr = new QProtocolTransitionPrivate;
+    d_umlptr = new QProtocolTransitionPrivate(this);
 }
 
 QProtocolTransition::QProtocolTransition(bool createPimpl, QObject *parent)
@@ -124,7 +100,13 @@ void QProtocolTransition::setPostCondition(QConstraint *postCondition)
 
     QTUML_D(QProtocolTransition);
     if (d->postCondition != postCondition) {
-        d->setPostCondition(postCondition);
+        // Adjust subsetted property(ies)
+        removeOwnedRule(d->postCondition);
+
+        d->postCondition = postCondition;
+
+        // Adjust subsetted property(ies)
+        addOwnedRule(postCondition);
     }
 }
 
@@ -137,7 +119,7 @@ const QSet<QOperation *> *QProtocolTransition::referred() const
 
     qWarning("QProtocolTransition::referred: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QProtocolTransition);
+    //QTUML_D(const QProtocolTransition);
     //return <derived-return>;
 }
 
@@ -158,7 +140,10 @@ void QProtocolTransition::setPreCondition(QConstraint *preCondition)
 
     QTUML_D(QProtocolTransition);
     if (d->preCondition != preCondition) {
-        d->setPreCondition(preCondition);
+        d->preCondition = preCondition;
+
+        // Adjust subsetted property(ies)
+        setGuard(preCondition);
     }
 }
 

@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qclassifier_p.h"
 
 // Qt includes
@@ -57,18 +56,15 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QProperty;
+class QSignal;
 
 class QSignalPrivate : public QClassifierPrivate
 {
 public:
-    explicit QSignalPrivate();
+    explicit QSignalPrivate(QSignal *q_umlptr = 0);
     virtual ~QSignalPrivate();
 
     QList<QProperty *> *ownedAttributes;
-
-    // Internal functions for association-ends
-    void addOwnedAttribute(QProperty *ownedAttribute);
-    void removeOwnedAttribute(QProperty *ownedAttribute);
 };
 
 QT_END_NAMESPACE_QTUML

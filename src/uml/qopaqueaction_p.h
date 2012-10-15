@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qaction_p.h"
 
 // Qt includes
@@ -60,29 +59,18 @@ QT_MODULE(QtUml)
 
 class QInputPin;
 class QOutputPin;
+class QOpaqueAction;
 
 class QOpaqueActionPrivate : public QActionPrivate
 {
 public:
-    explicit QOpaqueActionPrivate();
+    explicit QOpaqueActionPrivate(QOpaqueAction *q_umlptr = 0);
     virtual ~QOpaqueActionPrivate();
 
     QList<QString> *bodies;
     QList<QString> *languages;
     QSet<QInputPin *> *inputValues;
     QSet<QOutputPin *> *outputValues;
-
-    // Internal functions for attributes
-    void addBody(QString body);
-    void removeBody(QString body);
-    void addLanguage(QString language);
-    void removeLanguage(QString language);
-
-    // Internal functions for association-ends
-    void addInputValue(QInputPin *inputValue);
-    void removeInputValue(QInputPin *inputValue);
-    void addOutputValue(QOutputPin *outputValue);
-    void removeOutputValue(QOutputPin *outputValue);
 };
 
 QT_END_NAMESPACE_QTUML

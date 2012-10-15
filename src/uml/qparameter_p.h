@@ -48,9 +48,7 @@
 #include <QtUml/QtUmlEnumerations>
 
 // Base class includes
-
 #include "qmultiplicityelement_p.h"
-
 #include "qconnectableelement_p.h"
 
 // Qt includes
@@ -66,11 +64,12 @@ QT_MODULE(QtUml)
 class QValueSpecification;
 class QOperation;
 class QParameterSet;
+class QParameter;
 
 class QParameterPrivate : public QMultiplicityElementPrivate, public QConnectableElementPrivate
 {
 public:
-    explicit QParameterPrivate();
+    explicit QParameterPrivate(QParameter *q_umlptr = 0);
     virtual ~QParameterPrivate();
 
     bool isException;
@@ -80,18 +79,6 @@ public:
     QOperation *operation;
     QValueSpecification *defaultValue;
     QSet<QParameterSet *> *parameterSets;
-
-    // Internal functions for attributes
-    void setException(bool isException);
-    void setDirection(QtUml::ParameterDirectionKind direction);
-    void setStream(bool isStream);
-    void setEffect(QtUml::ParameterEffectKind effect);
-
-    // Internal functions for association-ends
-    void setOperation(QOperation *operation);
-    void setDefaultValue(QValueSpecification *defaultValue);
-    void addParameterSet(QParameterSet *parameterSet);
-    void removeParameterSet(QParameterSet *parameterSet);
 };
 
 QT_END_NAMESPACE_QTUML

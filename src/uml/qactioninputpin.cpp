@@ -41,32 +41,19 @@
 
 #include "qactioninputpin.h"
 #include "qactioninputpin_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QAction>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QActionInputPinPrivate::QActionInputPinPrivate() :
+QActionInputPinPrivate::QActionInputPinPrivate(QActionInputPin *q_umlptr) :
     fromAction(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QActionInputPinPrivate::~QActionInputPinPrivate()
 {
-}
-
-void QActionInputPinPrivate::setFromAction(QAction *fromAction)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->fromAction);
-
-    this->fromAction = fromAction;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(fromAction);
 }
 
 /*!
@@ -80,7 +67,7 @@ void QActionInputPinPrivate::setFromAction(QAction *fromAction)
 QActionInputPin::QActionInputPin(QObject *parent)
     : QInputPin(false, parent)
 {
-    d_umlptr = new QActionInputPinPrivate;
+    d_umlptr = new QActionInputPinPrivate(this);
 }
 
 QActionInputPin::QActionInputPin(bool createPimpl, QObject *parent)
@@ -111,7 +98,13 @@ void QActionInputPin::setFromAction(QAction *fromAction)
 
     QTUML_D(QActionInputPin);
     if (d->fromAction != fromAction) {
-        d->setFromAction(fromAction);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->fromAction);
+
+        d->fromAction = fromAction;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(fromAction);
     }
 }
 

@@ -44,9 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qdirectedrelationship_p.h"
-
 #include "qpackageableelement_p.h"
 
 // Qt includes
@@ -64,11 +62,12 @@ class QActivityEdge;
 class QNamedElement;
 class QClassifier;
 class QRelationship;
+class QInformationFlow;
 
 class QInformationFlowPrivate : public QDirectedRelationshipPrivate, public QPackageableElementPrivate
 {
 public:
-    explicit QInformationFlowPrivate();
+    explicit QInformationFlowPrivate(QInformationFlow *q_umlptr = 0);
     virtual ~QInformationFlowPrivate();
 
     QSet<QNamedElement *> *informationTargets;
@@ -78,22 +77,6 @@ public:
     QSet<QMessage *> *realizingMessages;
     QSet<QActivityEdge *> *realizingActivityEdges;
     QSet<QRelationship *> *realizations;
-
-    // Internal functions for association-ends
-    void addInformationTarget(QNamedElement *informationTarget);
-    void removeInformationTarget(QNamedElement *informationTarget);
-    void addRealizingConnector(QConnector *realizingConnector);
-    void removeRealizingConnector(QConnector *realizingConnector);
-    void addConveyed(QClassifier *conveyed);
-    void removeConveyed(QClassifier *conveyed);
-    void addInformationSource(QNamedElement *informationSource);
-    void removeInformationSource(QNamedElement *informationSource);
-    void addRealizingMessage(QMessage *realizingMessage);
-    void removeRealizingMessage(QMessage *realizingMessage);
-    void addRealizingActivityEdge(QActivityEdge *realizingActivityEdge);
-    void removeRealizingActivityEdge(QActivityEdge *realizingActivityEdge);
-    void addRealization(QRelationship *realization);
-    void removeRealization(QRelationship *realization);
 };
 
 QT_END_NAMESPACE_QTUML

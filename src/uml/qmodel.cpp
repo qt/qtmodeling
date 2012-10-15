@@ -45,19 +45,13 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QModelPrivate::QModelPrivate()
+QModelPrivate::QModelPrivate(QModel *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QModelPrivate::~QModelPrivate()
 {
-}
-
-void QModelPrivate::setViewpoint(QString viewpoint)
-{
-    // This is a read-write attribute
-
-    this->viewpoint = viewpoint;
 }
 
 /*!
@@ -71,7 +65,7 @@ void QModelPrivate::setViewpoint(QString viewpoint)
 QModel::QModel(QObject *parent)
     : QPackage(false, parent)
 {
-    d_umlptr = new QModelPrivate;
+    d_umlptr = new QModelPrivate(this);
 }
 
 QModel::QModel(bool createPimpl, QObject *parent)
@@ -102,7 +96,7 @@ void QModel::setViewpoint(QString viewpoint)
 
     QTUML_D(QModel);
     if (d->viewpoint != viewpoint) {
-        d->setViewpoint(viewpoint);
+        d->viewpoint = viewpoint;
     }
 }
 

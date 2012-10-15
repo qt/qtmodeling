@@ -41,73 +41,24 @@
 
 #include "qgeneralization.h"
 #include "qgeneralization_p.h"
-#include "qelement_p.h"
-#include "qdirectedrelationship_p.h"
 
 #include <QtUml/QClassifier>
 #include <QtUml/QGeneralizationSet>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QGeneralizationPrivate::QGeneralizationPrivate() :
+QGeneralizationPrivate::QGeneralizationPrivate(QGeneralization *q_umlptr) :
     isSubstitutable(true),
     specific(0),
     generalizationSets(new QSet<QGeneralizationSet *>),
     general(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QGeneralizationPrivate::~QGeneralizationPrivate()
 {
     delete generalizationSets;
-}
-
-void QGeneralizationPrivate::setSubstitutable(bool isSubstitutable)
-{
-    // This is a read-write attribute
-
-    this->isSubstitutable = isSubstitutable;
-}
-
-void QGeneralizationPrivate::setSpecific(QClassifier *specific)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeSource(this->specific);
-
-    this->specific = specific;
-
-    // Adjust subsetted property(ies)
-    setOwner(specific);
-    addSource(specific);
-}
-
-void QGeneralizationPrivate::addGeneralizationSet(QGeneralizationSet *generalizationSet)
-{
-    // This is a read-write association end
-
-    this->generalizationSets->insert(generalizationSet);
-}
-
-void QGeneralizationPrivate::removeGeneralizationSet(QGeneralizationSet *generalizationSet)
-{
-    // This is a read-write association end
-
-    this->generalizationSets->remove(generalizationSet);
-}
-
-void QGeneralizationPrivate::setGeneral(QClassifier *general)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeTarget(this->general);
-
-    this->general = general;
-
-    // Adjust subsetted property(ies)
-    addTarget(general);
 }
 
 /*!
@@ -121,7 +72,7 @@ void QGeneralizationPrivate::setGeneral(QClassifier *general)
 QGeneralization::QGeneralization(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QGeneralizationPrivate;
+    d_umlptr = new QGeneralizationPrivate(this);
 }
 
 QGeneralization::QGeneralization(bool createPimpl, QObject *parent)
@@ -152,7 +103,7 @@ void QGeneralization::setSubstitutable(bool isSubstitutable)
 
     QTUML_D(QGeneralization);
     if (d->isSubstitutable != isSubstitutable) {
-        d->setSubstitutable(isSubstitutable);
+        d->isSubstitutable = isSubstitutable;
     }
 }
 
@@ -173,7 +124,14 @@ void QGeneralization::setSpecific(QClassifier *specific)
 
     QTUML_D(QGeneralization);
     if (d->specific != specific) {
-        d->setSpecific(specific);
+        // Adjust subsetted property(ies)
+        d->removeSource(d->specific);
+
+        d->specific = specific;
+
+        // Adjust subsetted property(ies)
+        d->setOwner(specific);
+        d->addSource(specific);
 
         // Adjust opposite property
         specific->addGeneralization(this);
@@ -197,7 +155,7 @@ void QGeneralization::addGeneralizationSet(QGeneralizationSet *generalizationSet
 
     QTUML_D(QGeneralization);
     if (!d->generalizationSets->contains(generalizationSet)) {
-        d->addGeneralizationSet(generalizationSet);
+        d->generalizationSets->insert(generalizationSet);
 
         // Adjust opposite property
         generalizationSet->addGeneralization(this);
@@ -210,7 +168,7 @@ void QGeneralization::removeGeneralizationSet(QGeneralizationSet *generalization
 
     QTUML_D(QGeneralization);
     if (d->generalizationSets->contains(generalizationSet)) {
-        d->removeGeneralizationSet(generalizationSet);
+        d->generalizationSets->remove(generalizationSet);
 
         // Adjust opposite property
         generalizationSet->removeGeneralization(this);
@@ -234,7 +192,13 @@ void QGeneralization::setGeneral(QClassifier *general)
 
     QTUML_D(QGeneralization);
     if (d->general != general) {
-        d->setGeneral(general);
+        // Adjust subsetted property(ies)
+        d->removeTarget(d->general);
+
+        d->general = general;
+
+        // Adjust subsetted property(ies)
+        d->addTarget(general);
     }
 }
 

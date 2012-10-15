@@ -41,7 +41,6 @@
 
 #include "qreadlinkobjectendaction.h"
 #include "qreadlinkobjectendaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QProperty>
 #include <QtUml/QInputPin>
@@ -49,48 +48,16 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QReadLinkObjectEndActionPrivate::QReadLinkObjectEndActionPrivate() :
+QReadLinkObjectEndActionPrivate::QReadLinkObjectEndActionPrivate(QReadLinkObjectEndAction *q_umlptr) :
     end(0),
     object(0),
     result(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QReadLinkObjectEndActionPrivate::~QReadLinkObjectEndActionPrivate()
 {
-}
-
-void QReadLinkObjectEndActionPrivate::setEnd(QProperty *end)
-{
-    // This is a read-write association end
-
-    this->end = end;
-}
-
-void QReadLinkObjectEndActionPrivate::setObject(QInputPin *object)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeInput(this->object);
-
-    this->object = object;
-
-    // Adjust subsetted property(ies)
-    addInput(object);
-}
-
-void QReadLinkObjectEndActionPrivate::setResult(QOutputPin *result)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOutput(this->result);
-
-    this->result = result;
-
-    // Adjust subsetted property(ies)
-    addOutput(result);
 }
 
 /*!
@@ -104,7 +71,7 @@ void QReadLinkObjectEndActionPrivate::setResult(QOutputPin *result)
 QReadLinkObjectEndAction::QReadLinkObjectEndAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QReadLinkObjectEndActionPrivate;
+    d_umlptr = new QReadLinkObjectEndActionPrivate(this);
 }
 
 QReadLinkObjectEndAction::QReadLinkObjectEndAction(bool createPimpl, QObject *parent)
@@ -135,7 +102,7 @@ void QReadLinkObjectEndAction::setEnd(QProperty *end)
 
     QTUML_D(QReadLinkObjectEndAction);
     if (d->end != end) {
-        d->setEnd(end);
+        d->end = end;
     }
 }
 
@@ -156,7 +123,13 @@ void QReadLinkObjectEndAction::setObject(QInputPin *object)
 
     QTUML_D(QReadLinkObjectEndAction);
     if (d->object != object) {
-        d->setObject(object);
+        // Adjust subsetted property(ies)
+        d->removeInput(d->object);
+
+        d->object = object;
+
+        // Adjust subsetted property(ies)
+        d->addInput(object);
     }
 }
 
@@ -177,7 +150,13 @@ void QReadLinkObjectEndAction::setResult(QOutputPin *result)
 
     QTUML_D(QReadLinkObjectEndAction);
     if (d->result != result) {
-        d->setResult(result);
+        // Adjust subsetted property(ies)
+        d->removeOutput(d->result);
+
+        d->result = result;
+
+        // Adjust subsetted property(ies)
+        d->addOutput(result);
     }
 }
 

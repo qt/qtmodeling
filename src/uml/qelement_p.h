@@ -53,23 +53,27 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QComment;
+class QElement;
 
 class QElementPrivate
 {
 public:
-    explicit QElementPrivate();
     virtual ~QElementPrivate();
 
     QSet<QElement *> *ownedElements;
     QElement *owner;
     QSet<QComment *> *ownedComments;
 
-    // Internal functions for association-ends
+    // Internal functions for read-only subsetted association ends
     void addOwnedElement(QElement *ownedElement);
     void removeOwnedElement(QElement *ownedElement);
     void setOwner(QElement *owner);
-    void addOwnedComment(QComment *ownedComment);
-    void removeOwnedComment(QComment *ownedComment);
+
+protected:
+    explicit QElementPrivate();
+
+protected:
+    QElement *q_umlptr;
 };
 
 QT_END_NAMESPACE_QTUML

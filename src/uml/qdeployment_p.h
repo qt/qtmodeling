@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qdependency_p.h"
 
 // Qt includes
@@ -59,23 +58,17 @@ QT_MODULE(QtUml)
 class QDeploymentSpecification;
 class QDeployedArtifact;
 class QDeploymentTarget;
+class QDeployment;
 
 class QDeploymentPrivate : public QDependencyPrivate
 {
 public:
-    explicit QDeploymentPrivate();
+    explicit QDeploymentPrivate(QDeployment *q_umlptr = 0);
     virtual ~QDeploymentPrivate();
 
     QDeploymentTarget *location;
     QSet<QDeploymentSpecification *> *configurations;
     QSet<QDeployedArtifact *> *deployedArtifacts;
-
-    // Internal functions for association-ends
-    void setLocation(QDeploymentTarget *location);
-    void addConfiguration(QDeploymentSpecification *configuration);
-    void removeConfiguration(QDeploymentSpecification *configuration);
-    void addDeployedArtifact(QDeployedArtifact *deployedArtifact);
-    void removeDeployedArtifact(QDeployedArtifact *deployedArtifact);
 };
 
 QT_END_NAMESPACE_QTUML

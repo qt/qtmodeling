@@ -41,29 +41,19 @@
 
 #include "qextensionpoint.h"
 #include "qextensionpoint_p.h"
-#include "qnamedelement_p.h"
 
 #include <QtUml/QUseCase>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QExtensionPointPrivate::QExtensionPointPrivate() :
+QExtensionPointPrivate::QExtensionPointPrivate(QExtensionPoint *q_umlptr) :
     useCase(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QExtensionPointPrivate::~QExtensionPointPrivate()
 {
-}
-
-void QExtensionPointPrivate::setUseCase(QUseCase *useCase)
-{
-    // This is a read-write association end
-
-    this->useCase = useCase;
-
-    // Adjust subsetted property(ies)
-    setNamespace_(useCase);
 }
 
 /*!
@@ -77,7 +67,7 @@ void QExtensionPointPrivate::setUseCase(QUseCase *useCase)
 QExtensionPoint::QExtensionPoint(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QExtensionPointPrivate;
+    d_umlptr = new QExtensionPointPrivate(this);
 }
 
 QExtensionPoint::QExtensionPoint(bool createPimpl, QObject *parent)
@@ -108,7 +98,10 @@ void QExtensionPoint::setUseCase(QUseCase *useCase)
 
     QTUML_D(QExtensionPoint);
     if (d->useCase != useCase) {
-        d->setUseCase(useCase);
+        d->useCase = useCase;
+
+        // Adjust subsetted property(ies)
+        d->setNamespace_(useCase);
 
         // Adjust opposite property
         useCase->addExtensionPoint(this);

@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qcontrolnode_p.h"
 
 QT_BEGIN_HEADER
@@ -52,11 +51,12 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
+class QForkNode;
 
 class QForkNodePrivate : public QControlNodePrivate
 {
 public:
-    explicit QForkNodePrivate();
+    explicit QForkNodePrivate(QForkNode *q_umlptr = 0);
     virtual ~QForkNodePrivate();
 
 };

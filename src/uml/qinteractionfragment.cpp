@@ -41,8 +41,6 @@
 
 #include "qinteractionfragment.h"
 #include "qinteractionfragment_p.h"
-#include "qelement_p.h"
-#include "qnamedelement_p.h"
 
 #include <QtUml/QGeneralOrdering>
 #include <QtUml/QInteractionOperand>
@@ -63,60 +61,6 @@ QInteractionFragmentPrivate::~QInteractionFragmentPrivate()
 {
     delete generalOrderings;
     delete covered;
-}
-
-void QInteractionFragmentPrivate::addGeneralOrdering(QGeneralOrdering *generalOrdering)
-{
-    // This is a read-write association end
-
-    this->generalOrderings->insert(generalOrdering);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(generalOrdering);
-}
-
-void QInteractionFragmentPrivate::removeGeneralOrdering(QGeneralOrdering *generalOrdering)
-{
-    // This is a read-write association end
-
-    this->generalOrderings->remove(generalOrdering);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(generalOrdering);
-}
-
-void QInteractionFragmentPrivate::setEnclosingInteraction(QInteraction *enclosingInteraction)
-{
-    // This is a read-write association end
-
-    this->enclosingInteraction = enclosingInteraction;
-
-    // Adjust subsetted property(ies)
-    setNamespace_(enclosingInteraction);
-}
-
-void QInteractionFragmentPrivate::addCovered(QLifeline *covered)
-{
-    // This is a read-write association end
-
-    this->covered->insert(covered);
-}
-
-void QInteractionFragmentPrivate::removeCovered(QLifeline *covered)
-{
-    // This is a read-write association end
-
-    this->covered->remove(covered);
-}
-
-void QInteractionFragmentPrivate::setEnclosingOperand(QInteractionOperand *enclosingOperand)
-{
-    // This is a read-write association end
-
-    this->enclosingOperand = enclosingOperand;
-
-    // Adjust subsetted property(ies)
-    setNamespace_(enclosingOperand);
 }
 
 /*!
@@ -152,7 +96,10 @@ void QInteractionFragment::addGeneralOrdering(QGeneralOrdering *generalOrdering)
 
     QTUML_D(QInteractionFragment);
     if (!d->generalOrderings->contains(generalOrdering)) {
-        d->addGeneralOrdering(generalOrdering);
+        d->generalOrderings->insert(generalOrdering);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(generalOrdering);
     }
 }
 
@@ -162,7 +109,10 @@ void QInteractionFragment::removeGeneralOrdering(QGeneralOrdering *generalOrderi
 
     QTUML_D(QInteractionFragment);
     if (d->generalOrderings->contains(generalOrdering)) {
-        d->removeGeneralOrdering(generalOrdering);
+        d->generalOrderings->remove(generalOrdering);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(generalOrdering);
     }
 }
 
@@ -183,7 +133,10 @@ void QInteractionFragment::setEnclosingInteraction(QInteraction *enclosingIntera
 
     QTUML_D(QInteractionFragment);
     if (d->enclosingInteraction != enclosingInteraction) {
-        d->setEnclosingInteraction(enclosingInteraction);
+        d->enclosingInteraction = enclosingInteraction;
+
+        // Adjust subsetted property(ies)
+        d->setNamespace_(enclosingInteraction);
 
         // Adjust opposite property
         enclosingInteraction->addFragment(this);
@@ -207,7 +160,7 @@ void QInteractionFragment::addCovered(QLifeline *covered)
 
     QTUML_D(QInteractionFragment);
     if (!d->covered->contains(covered)) {
-        d->addCovered(covered);
+        d->covered->insert(covered);
 
         // Adjust opposite property
         covered->addCoveredBy(this);
@@ -220,7 +173,7 @@ void QInteractionFragment::removeCovered(QLifeline *covered)
 
     QTUML_D(QInteractionFragment);
     if (d->covered->contains(covered)) {
-        d->removeCovered(covered);
+        d->covered->remove(covered);
 
         // Adjust opposite property
         covered->removeCoveredBy(this);
@@ -244,7 +197,10 @@ void QInteractionFragment::setEnclosingOperand(QInteractionOperand *enclosingOpe
 
     QTUML_D(QInteractionFragment);
     if (d->enclosingOperand != enclosingOperand) {
-        d->setEnclosingOperand(enclosingOperand);
+        d->enclosingOperand = enclosingOperand;
+
+        // Adjust subsetted property(ies)
+        d->setNamespace_(enclosingOperand);
 
         // Adjust opposite property
         enclosingOperand->addFragment(this);

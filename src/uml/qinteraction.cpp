@@ -41,8 +41,6 @@
 
 #include "qinteraction.h"
 #include "qinteraction_p.h"
-#include "qelement_p.h"
-#include "qnamespace_p.h"
 
 #include <QtUml/QMessage>
 #include <QtUml/QLifeline>
@@ -51,13 +49,14 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInteractionPrivate::QInteractionPrivate() :
+QInteractionPrivate::QInteractionPrivate(QInteraction *q_umlptr) :
     actions(new QSet<QAction *>),
     messages(new QSet<QMessage *>),
     formalGates(new QSet<QGate *>),
     fragments(new QList<QInteractionFragment *>),
     lifelines(new QSet<QLifeline *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QInteractionPrivate::~QInteractionPrivate()
@@ -67,106 +66,6 @@ QInteractionPrivate::~QInteractionPrivate()
     delete formalGates;
     delete fragments;
     delete lifelines;
-}
-
-void QInteractionPrivate::addAction(QAction *action)
-{
-    // This is a read-write association end
-
-    this->actions->insert(action);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(action);
-}
-
-void QInteractionPrivate::removeAction(QAction *action)
-{
-    // This is a read-write association end
-
-    this->actions->remove(action);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(action);
-}
-
-void QInteractionPrivate::addMessage(QMessage *message)
-{
-    // This is a read-write association end
-
-    this->messages->insert(message);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(message);
-}
-
-void QInteractionPrivate::removeMessage(QMessage *message)
-{
-    // This is a read-write association end
-
-    this->messages->remove(message);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(message);
-}
-
-void QInteractionPrivate::addFormalGate(QGate *formalGate)
-{
-    // This is a read-write association end
-
-    this->formalGates->insert(formalGate);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(formalGate);
-}
-
-void QInteractionPrivate::removeFormalGate(QGate *formalGate)
-{
-    // This is a read-write association end
-
-    this->formalGates->remove(formalGate);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(formalGate);
-}
-
-void QInteractionPrivate::addFragment(QInteractionFragment *fragment)
-{
-    // This is a read-write association end
-
-    this->fragments->append(fragment);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(fragment);
-}
-
-void QInteractionPrivate::removeFragment(QInteractionFragment *fragment)
-{
-    // This is a read-write association end
-
-    this->fragments->removeAll(fragment);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(fragment);
-}
-
-void QInteractionPrivate::addLifeline(QLifeline *lifeline)
-{
-    // This is a read-write association end
-
-    this->lifelines->insert(lifeline);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(lifeline);
-}
-
-void QInteractionPrivate::removeLifeline(QLifeline *lifeline)
-{
-    // This is a read-write association end
-
-    this->lifelines->remove(lifeline);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(lifeline);
 }
 
 /*!
@@ -180,7 +79,7 @@ void QInteractionPrivate::removeLifeline(QLifeline *lifeline)
 QInteraction::QInteraction(QObject *parent)
     : QBehavior(false, parent)
 {
-    d_umlptr = new QInteractionPrivate;
+    d_umlptr = new QInteractionPrivate(this);
 }
 
 QInteraction::QInteraction(bool createPimpl, QObject *parent)
@@ -211,7 +110,10 @@ void QInteraction::addAction(QAction *action)
 
     QTUML_D(QInteraction);
     if (!d->actions->contains(action)) {
-        d->addAction(action);
+        d->actions->insert(action);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(action);
     }
 }
 
@@ -221,7 +123,10 @@ void QInteraction::removeAction(QAction *action)
 
     QTUML_D(QInteraction);
     if (d->actions->contains(action)) {
-        d->removeAction(action);
+        d->actions->remove(action);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(action);
     }
 }
 
@@ -242,7 +147,10 @@ void QInteraction::addMessage(QMessage *message)
 
     QTUML_D(QInteraction);
     if (!d->messages->contains(message)) {
-        d->addMessage(message);
+        d->messages->insert(message);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(message);
 
         // Adjust opposite property
         message->setInteraction(this);
@@ -255,7 +163,10 @@ void QInteraction::removeMessage(QMessage *message)
 
     QTUML_D(QInteraction);
     if (d->messages->contains(message)) {
-        d->removeMessage(message);
+        d->messages->remove(message);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(message);
 
         // Adjust opposite property
         message->setInteraction(0);
@@ -279,7 +190,10 @@ void QInteraction::addFormalGate(QGate *formalGate)
 
     QTUML_D(QInteraction);
     if (!d->formalGates->contains(formalGate)) {
-        d->addFormalGate(formalGate);
+        d->formalGates->insert(formalGate);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(formalGate);
     }
 }
 
@@ -289,7 +203,10 @@ void QInteraction::removeFormalGate(QGate *formalGate)
 
     QTUML_D(QInteraction);
     if (d->formalGates->contains(formalGate)) {
-        d->removeFormalGate(formalGate);
+        d->formalGates->remove(formalGate);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(formalGate);
     }
 }
 
@@ -310,7 +227,10 @@ void QInteraction::addFragment(QInteractionFragment *fragment)
 
     QTUML_D(QInteraction);
     if (!d->fragments->contains(fragment)) {
-        d->addFragment(fragment);
+        d->fragments->append(fragment);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(fragment);
 
         // Adjust opposite property
         fragment->setEnclosingInteraction(this);
@@ -323,7 +243,10 @@ void QInteraction::removeFragment(QInteractionFragment *fragment)
 
     QTUML_D(QInteraction);
     if (d->fragments->contains(fragment)) {
-        d->removeFragment(fragment);
+        d->fragments->removeAll(fragment);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(fragment);
 
         // Adjust opposite property
         fragment->setEnclosingInteraction(0);
@@ -347,7 +270,10 @@ void QInteraction::addLifeline(QLifeline *lifeline)
 
     QTUML_D(QInteraction);
     if (!d->lifelines->contains(lifeline)) {
-        d->addLifeline(lifeline);
+        d->lifelines->insert(lifeline);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(lifeline);
 
         // Adjust opposite property
         lifeline->setInteraction(this);
@@ -360,7 +286,10 @@ void QInteraction::removeLifeline(QLifeline *lifeline)
 
     QTUML_D(QInteraction);
     if (d->lifelines->contains(lifeline)) {
-        d->removeLifeline(lifeline);
+        d->lifelines->remove(lifeline);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(lifeline);
 
         // Adjust opposite property
         lifeline->setInteraction(0);

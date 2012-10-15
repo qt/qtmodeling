@@ -46,20 +46,14 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QReceptionPrivate::QReceptionPrivate() :
+QReceptionPrivate::QReceptionPrivate(QReception *q_umlptr) :
     signal(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QReceptionPrivate::~QReceptionPrivate()
 {
-}
-
-void QReceptionPrivate::setSignal(QSignal *signal)
-{
-    // This is a read-write association end
-
-    this->signal = signal;
 }
 
 /*!
@@ -73,7 +67,7 @@ void QReceptionPrivate::setSignal(QSignal *signal)
 QReception::QReception(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QReceptionPrivate;
+    d_umlptr = new QReceptionPrivate(this);
 }
 
 QReception::QReception(bool createPimpl, QObject *parent)
@@ -104,7 +98,7 @@ void QReception::setSignal(QSignal *signal)
 
     QTUML_D(QReception);
     if (d->signal != signal) {
-        d->setSignal(signal);
+        d->signal = signal;
     }
 }
 

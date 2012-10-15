@@ -41,9 +41,6 @@
 
 #include "qextend.h"
 #include "qextend_p.h"
-#include "qdirectedrelationship_p.h"
-#include "qnamedelement_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QConstraint>
 #include <QtUml/QUseCase>
@@ -51,71 +48,18 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QExtendPrivate::QExtendPrivate() :
+QExtendPrivate::QExtendPrivate(QExtend *q_umlptr) :
     extendedCase(0),
     extension(0),
     extensionLocations(new QList<QExtensionPoint *>),
     condition(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QExtendPrivate::~QExtendPrivate()
 {
     delete extensionLocations;
-}
-
-void QExtendPrivate::setExtendedCase(QUseCase *extendedCase)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeTarget(this->extendedCase);
-
-    this->extendedCase = extendedCase;
-
-    // Adjust subsetted property(ies)
-    addTarget(extendedCase);
-}
-
-void QExtendPrivate::setExtension(QUseCase *extension)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeSource(this->extension);
-
-    this->extension = extension;
-
-    // Adjust subsetted property(ies)
-    addSource(extension);
-    setNamespace_(extension);
-}
-
-void QExtendPrivate::addExtensionLocation(QExtensionPoint *extensionLocation)
-{
-    // This is a read-write association end
-
-    this->extensionLocations->append(extensionLocation);
-}
-
-void QExtendPrivate::removeExtensionLocation(QExtensionPoint *extensionLocation)
-{
-    // This is a read-write association end
-
-    this->extensionLocations->removeAll(extensionLocation);
-}
-
-void QExtendPrivate::setCondition(QConstraint *condition)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->condition);
-
-    this->condition = condition;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(condition);
 }
 
 /*!
@@ -129,7 +73,7 @@ void QExtendPrivate::setCondition(QConstraint *condition)
 QExtend::QExtend(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QExtendPrivate;
+    d_umlptr = new QExtendPrivate(this);
 }
 
 QExtend::QExtend(bool createPimpl, QObject *parent)
@@ -160,7 +104,13 @@ void QExtend::setExtendedCase(QUseCase *extendedCase)
 
     QTUML_D(QExtend);
     if (d->extendedCase != extendedCase) {
-        d->setExtendedCase(extendedCase);
+        // Adjust subsetted property(ies)
+        d->removeTarget(d->extendedCase);
+
+        d->extendedCase = extendedCase;
+
+        // Adjust subsetted property(ies)
+        d->addTarget(extendedCase);
     }
 }
 
@@ -181,7 +131,14 @@ void QExtend::setExtension(QUseCase *extension)
 
     QTUML_D(QExtend);
     if (d->extension != extension) {
-        d->setExtension(extension);
+        // Adjust subsetted property(ies)
+        d->removeSource(d->extension);
+
+        d->extension = extension;
+
+        // Adjust subsetted property(ies)
+        d->addSource(extension);
+        d->setNamespace_(extension);
 
         // Adjust opposite property
         extension->addExtend(this);
@@ -205,7 +162,7 @@ void QExtend::addExtensionLocation(QExtensionPoint *extensionLocation)
 
     QTUML_D(QExtend);
     if (!d->extensionLocations->contains(extensionLocation)) {
-        d->addExtensionLocation(extensionLocation);
+        d->extensionLocations->append(extensionLocation);
     }
 }
 
@@ -215,7 +172,7 @@ void QExtend::removeExtensionLocation(QExtensionPoint *extensionLocation)
 
     QTUML_D(QExtend);
     if (d->extensionLocations->contains(extensionLocation)) {
-        d->removeExtensionLocation(extensionLocation);
+        d->extensionLocations->removeAll(extensionLocation);
     }
 }
 
@@ -236,7 +193,13 @@ void QExtend::setCondition(QConstraint *condition)
 
     QTUML_D(QExtend);
     if (d->condition != condition) {
-        d->setCondition(condition);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->condition);
+
+        d->condition = condition;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(condition);
     }
 }
 

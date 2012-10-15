@@ -41,41 +41,21 @@
 
 #include "qstateinvariant.h"
 #include "qstateinvariant_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QLifeline>
 #include <QtUml/QConstraint>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QStateInvariantPrivate::QStateInvariantPrivate() :
+QStateInvariantPrivate::QStateInvariantPrivate(QStateInvariant *q_umlptr) :
     invariant(0),
     covered(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QStateInvariantPrivate::~QStateInvariantPrivate()
 {
-}
-
-void QStateInvariantPrivate::setInvariant(QConstraint *invariant)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->invariant);
-
-    this->invariant = invariant;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(invariant);
-}
-
-void QStateInvariantPrivate::setCovered(QLifeline *covered)
-{
-    // This is a read-write association end
-
-    this->covered = covered;
 }
 
 /*!
@@ -89,7 +69,7 @@ void QStateInvariantPrivate::setCovered(QLifeline *covered)
 QStateInvariant::QStateInvariant(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QStateInvariantPrivate;
+    d_umlptr = new QStateInvariantPrivate(this);
 }
 
 QStateInvariant::QStateInvariant(bool createPimpl, QObject *parent)
@@ -120,7 +100,13 @@ void QStateInvariant::setInvariant(QConstraint *invariant)
 
     QTUML_D(QStateInvariant);
     if (d->invariant != invariant) {
-        d->setInvariant(invariant);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->invariant);
+
+        d->invariant = invariant;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(invariant);
     }
 }
 
@@ -141,7 +127,7 @@ void QStateInvariant::setCovered(QLifeline *covered)
 
     QTUML_D(QStateInvariant);
     if (d->covered != covered) {
-        d->setCovered(covered);
+        d->covered = covered;
     }
 }
 

@@ -41,41 +41,21 @@
 
 #include "qstereotype.h"
 #include "qstereotype_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QImage>
 #include <QtUml/QProfile>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QStereotypePrivate::QStereotypePrivate() :
+QStereotypePrivate::QStereotypePrivate(QStereotype *q_umlptr) :
     icons(new QSet<QImage *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QStereotypePrivate::~QStereotypePrivate()
 {
     delete icons;
-}
-
-void QStereotypePrivate::addIcon(QImage *icon)
-{
-    // This is a read-write association end
-
-    this->icons->insert(icon);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(icon);
-}
-
-void QStereotypePrivate::removeIcon(QImage *icon)
-{
-    // This is a read-write association end
-
-    this->icons->remove(icon);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(icon);
 }
 
 /*!
@@ -89,7 +69,7 @@ void QStereotypePrivate::removeIcon(QImage *icon)
 QStereotype::QStereotype(QObject *parent)
     : QClass(false, parent)
 {
-    d_umlptr = new QStereotypePrivate;
+    d_umlptr = new QStereotypePrivate(this);
 }
 
 QStereotype::QStereotype(bool createPimpl, QObject *parent)
@@ -120,7 +100,10 @@ void QStereotype::addIcon(QImage *icon)
 
     QTUML_D(QStereotype);
     if (!d->icons->contains(icon)) {
-        d->addIcon(icon);
+        d->icons->insert(icon);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(icon);
     }
 }
 
@@ -130,7 +113,10 @@ void QStereotype::removeIcon(QImage *icon)
 
     QTUML_D(QStereotype);
     if (d->icons->contains(icon)) {
-        d->removeIcon(icon);
+        d->icons->remove(icon);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(icon);
     }
 }
 
@@ -143,7 +129,7 @@ QProfile *QStereotype::profile() const
 
     qWarning("QStereotype::profile: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QStereotype);
+    //QTUML_D(const QStereotype);
     //return <derived-return>;
 }
 

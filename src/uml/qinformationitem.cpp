@@ -45,28 +45,15 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInformationItemPrivate::QInformationItemPrivate() :
+QInformationItemPrivate::QInformationItemPrivate(QInformationItem *q_umlptr) :
     represented(new QSet<QClassifier *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QInformationItemPrivate::~QInformationItemPrivate()
 {
     delete represented;
-}
-
-void QInformationItemPrivate::addRepresented(QClassifier *represented)
-{
-    // This is a read-write association end
-
-    this->represented->insert(represented);
-}
-
-void QInformationItemPrivate::removeRepresented(QClassifier *represented)
-{
-    // This is a read-write association end
-
-    this->represented->remove(represented);
 }
 
 /*!
@@ -80,7 +67,7 @@ void QInformationItemPrivate::removeRepresented(QClassifier *represented)
 QInformationItem::QInformationItem(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QInformationItemPrivate;
+    d_umlptr = new QInformationItemPrivate(this);
 }
 
 QInformationItem::QInformationItem(bool createPimpl, QObject *parent)
@@ -111,7 +98,7 @@ void QInformationItem::addRepresented(QClassifier *represented)
 
     QTUML_D(QInformationItem);
     if (!d->represented->contains(represented)) {
-        d->addRepresented(represented);
+        d->represented->insert(represented);
     }
 }
 
@@ -121,7 +108,7 @@ void QInformationItem::removeRepresented(QClassifier *represented)
 
     QTUML_D(QInformationItem);
     if (d->represented->contains(represented)) {
-        d->removeRepresented(represented);
+        d->represented->remove(represented);
     }
 }
 

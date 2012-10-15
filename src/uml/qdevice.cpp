@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDevicePrivate::QDevicePrivate()
+QDevicePrivate::QDevicePrivate(QDevice *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QDevicePrivate::~QDevicePrivate()
@@ -64,7 +65,7 @@ QDevicePrivate::~QDevicePrivate()
 QDevice::QDevice(QObject *parent)
     : QNode(false, parent)
 {
-    d_umlptr = new QDevicePrivate;
+    d_umlptr = new QDevicePrivate(this);
 }
 
 QDevice::QDevice(bool createPimpl, QObject *parent)

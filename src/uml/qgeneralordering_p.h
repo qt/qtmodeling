@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qnamedelement_p.h"
 
 QT_BEGIN_HEADER
@@ -54,19 +53,16 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QOccurrenceSpecification;
+class QGeneralOrdering;
 
 class QGeneralOrderingPrivate : public QNamedElementPrivate
 {
 public:
-    explicit QGeneralOrderingPrivate();
+    explicit QGeneralOrderingPrivate(QGeneralOrdering *q_umlptr = 0);
     virtual ~QGeneralOrderingPrivate();
 
     QOccurrenceSpecification *before;
     QOccurrenceSpecification *after;
-
-    // Internal functions for association-ends
-    void setBefore(QOccurrenceSpecification *before);
-    void setAfter(QOccurrenceSpecification *after);
 };
 
 QT_END_NAMESPACE_QTUML

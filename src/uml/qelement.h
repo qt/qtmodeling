@@ -45,8 +45,10 @@
 
 // Qt includes
 #include <QtCore/QSet>
+#include <QtCore/QDebug>
 
 #define QTUML_D(Class) Class##Private * const d = dynamic_cast<Class##Private *>(d_umlptr);
+#define QTUML_Q(Class) Class * const q = dynamic_cast<Class *>(q_umlptr);
 
 QT_BEGIN_HEADER
 
@@ -75,6 +77,19 @@ public:
     // Operations
     const QSet<QElement *> *allOwnedElements() const;
     bool mustBeOwned() const;
+
+    // Classes which access read-only opposite properties should be friend
+    friend class QActivityEdgePrivate;
+    friend class QActivityGroupPrivate;
+    friend class QActivityNodePrivate;
+    friend class QClassifierPrivate;
+    friend class QClassPrivate;
+    friend class QConnectorEnd;
+    friend class QExtensionPrivate;
+    friend class QFeaturePrivate;
+    friend class QNamedElementPrivate;
+    friend class QNamespacePrivate;
+    friend class QTransition;
 
 protected:
     explicit QElement();

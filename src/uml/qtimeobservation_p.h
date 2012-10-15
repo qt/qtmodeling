@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qobservation_p.h"
 
 QT_BEGIN_HEADER
@@ -54,21 +53,16 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QNamedElement;
+class QTimeObservation;
 
 class QTimeObservationPrivate : public QObservationPrivate
 {
 public:
-    explicit QTimeObservationPrivate();
+    explicit QTimeObservationPrivate(QTimeObservation *q_umlptr = 0);
     virtual ~QTimeObservationPrivate();
 
     bool firstEvent;
     QNamedElement *event;
-
-    // Internal functions for attributes
-    void setFirstEvent(bool firstEvent);
-
-    // Internal functions for association-ends
-    void setEvent(QNamedElement *event);
 };
 
 QT_END_NAMESPACE_QTUML

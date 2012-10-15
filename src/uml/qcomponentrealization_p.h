@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qrealization_p.h"
 
 // Qt includes
@@ -58,20 +57,16 @@ QT_MODULE(QtUml)
 
 class QComponent;
 class QClassifier;
+class QComponentRealization;
 
 class QComponentRealizationPrivate : public QRealizationPrivate
 {
 public:
-    explicit QComponentRealizationPrivate();
+    explicit QComponentRealizationPrivate(QComponentRealization *q_umlptr = 0);
     virtual ~QComponentRealizationPrivate();
 
     QComponent *abstraction;
     QSet<QClassifier *> *realizingClassifiers;
-
-    // Internal functions for association-ends
-    void setAbstraction(QComponent *abstraction);
-    void addRealizingClassifier(QClassifier *realizingClassifier);
-    void removeRealizingClassifier(QClassifier *realizingClassifier);
 };
 
 QT_END_NAMESPACE_QTUML

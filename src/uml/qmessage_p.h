@@ -48,7 +48,6 @@
 #include <QtUml/QtUmlEnumerations>
 
 // Base class includes
-
 #include "qnamedelement_p.h"
 
 // Qt includes
@@ -64,11 +63,12 @@ class QMessageEnd;
 class QInteraction;
 class QValueSpecification;
 class QConnector;
+class QMessage;
 
 class QMessagePrivate : public QNamedElementPrivate
 {
 public:
-    explicit QMessagePrivate();
+    explicit QMessagePrivate(QMessage *q_umlptr = 0);
     virtual ~QMessagePrivate();
 
     QtUml::MessageSort messageSort;
@@ -78,18 +78,6 @@ public:
     QInteraction *interaction;
     QMessageEnd *sendEvent;
     QConnector *connector;
-
-    // Internal functions for attributes
-    void setMessageSort(QtUml::MessageSort messageSort);
-
-    // Internal functions for association-ends
-    void setSignature(QNamedElement *signature);
-    void addArgument(QValueSpecification *argument);
-    void removeArgument(QValueSpecification *argument);
-    void setReceiveEvent(QMessageEnd *receiveEvent);
-    void setInteraction(QInteraction *interaction);
-    void setSendEvent(QMessageEnd *sendEvent);
-    void setConnector(QConnector *connector);
 };
 
 QT_END_NAMESPACE_QTUML

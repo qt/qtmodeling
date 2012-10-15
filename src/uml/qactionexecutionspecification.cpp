@@ -46,20 +46,14 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QActionExecutionSpecificationPrivate::QActionExecutionSpecificationPrivate() :
+QActionExecutionSpecificationPrivate::QActionExecutionSpecificationPrivate(QActionExecutionSpecification *q_umlptr) :
     action(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QActionExecutionSpecificationPrivate::~QActionExecutionSpecificationPrivate()
 {
-}
-
-void QActionExecutionSpecificationPrivate::setAction(QAction *action)
-{
-    // This is a read-write association end
-
-    this->action = action;
 }
 
 /*!
@@ -73,7 +67,7 @@ void QActionExecutionSpecificationPrivate::setAction(QAction *action)
 QActionExecutionSpecification::QActionExecutionSpecification(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QActionExecutionSpecificationPrivate;
+    d_umlptr = new QActionExecutionSpecificationPrivate(this);
 }
 
 QActionExecutionSpecification::QActionExecutionSpecification(bool createPimpl, QObject *parent)
@@ -104,7 +98,7 @@ void QActionExecutionSpecification::setAction(QAction *action)
 
     QTUML_D(QActionExecutionSpecification);
     if (d->action != action) {
-        d->setAction(action);
+        d->action = action;
     }
 }
 

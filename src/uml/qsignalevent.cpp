@@ -46,20 +46,14 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QSignalEventPrivate::QSignalEventPrivate() :
+QSignalEventPrivate::QSignalEventPrivate(QSignalEvent *q_umlptr) :
     signal(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QSignalEventPrivate::~QSignalEventPrivate()
 {
-}
-
-void QSignalEventPrivate::setSignal(QSignal *signal)
-{
-    // This is a read-write association end
-
-    this->signal = signal;
 }
 
 /*!
@@ -73,7 +67,7 @@ void QSignalEventPrivate::setSignal(QSignal *signal)
 QSignalEvent::QSignalEvent(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QSignalEventPrivate;
+    d_umlptr = new QSignalEventPrivate(this);
 }
 
 QSignalEvent::QSignalEvent(bool createPimpl, QObject *parent)
@@ -104,7 +98,7 @@ void QSignalEvent::setSignal(QSignal *signal)
 
     QTUML_D(QSignalEvent);
     if (d->signal != signal) {
-        d->setSignal(signal);
+        d->signal = signal;
     }
 }
 

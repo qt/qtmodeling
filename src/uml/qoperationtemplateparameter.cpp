@@ -46,20 +46,14 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QOperationTemplateParameterPrivate::QOperationTemplateParameterPrivate() :
+QOperationTemplateParameterPrivate::QOperationTemplateParameterPrivate(QOperationTemplateParameter *q_umlptr) :
     parameteredElement(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QOperationTemplateParameterPrivate::~QOperationTemplateParameterPrivate()
 {
-}
-
-void QOperationTemplateParameterPrivate::setParameteredElement(QOperation *parameteredElement)
-{
-    // This is a read-write association end
-
-    this->parameteredElement = parameteredElement;
 }
 
 /*!
@@ -73,7 +67,7 @@ void QOperationTemplateParameterPrivate::setParameteredElement(QOperation *param
 QOperationTemplateParameter::QOperationTemplateParameter(QObject *parent)
     : QTemplateParameter(false, parent)
 {
-    d_umlptr = new QOperationTemplateParameterPrivate;
+    d_umlptr = new QOperationTemplateParameterPrivate(this);
 }
 
 QOperationTemplateParameter::QOperationTemplateParameter(bool createPimpl, QObject *parent)
@@ -104,7 +98,7 @@ void QOperationTemplateParameter::setParameteredElement(QOperation *parameteredE
 
     QTUML_D(QOperationTemplateParameter);
     if (d->parameteredElement != parameteredElement) {
-        d->setParameteredElement(parameteredElement);
+        d->parameteredElement = parameteredElement;
 
         // Adjust opposite property
         parameteredElement->setTemplateParameter(this);

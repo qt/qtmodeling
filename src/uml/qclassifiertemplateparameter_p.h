@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qtemplateparameter_p.h"
 
 // Qt includes
@@ -57,24 +56,17 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QClassifier;
+class QClassifierTemplateParameter;
 
 class QClassifierTemplateParameterPrivate : public QTemplateParameterPrivate
 {
 public:
-    explicit QClassifierTemplateParameterPrivate();
+    explicit QClassifierTemplateParameterPrivate(QClassifierTemplateParameter *q_umlptr = 0);
     virtual ~QClassifierTemplateParameterPrivate();
 
     bool allowSubstitutable;
     QClassifier *parameteredElement;
     QSet<QClassifier *> *constrainingClassifiers;
-
-    // Internal functions for attributes
-    void setAllowSubstitutable(bool allowSubstitutable);
-
-    // Internal functions for association-ends
-    void setParameteredElement(QClassifier *parameteredElement);
-    void addConstrainingClassifier(QClassifier *constrainingClassifier);
-    void removeConstrainingClassifier(QClassifier *constrainingClassifier);
 };
 
 QT_END_NAMESPACE_QTUML

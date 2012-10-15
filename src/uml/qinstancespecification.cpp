@@ -41,7 +41,6 @@
 
 #include "qinstancespecification.h"
 #include "qinstancespecification_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QClassifier>
 #include <QtUml/QSlot>
@@ -49,64 +48,18 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInstanceSpecificationPrivate::QInstanceSpecificationPrivate() :
+QInstanceSpecificationPrivate::QInstanceSpecificationPrivate(QInstanceSpecification *q_umlptr) :
     classifiers(new QSet<QClassifier *>),
     specification(0),
     slots_(new QSet<QSlot *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QInstanceSpecificationPrivate::~QInstanceSpecificationPrivate()
 {
     delete classifiers;
     delete slots_;
-}
-
-void QInstanceSpecificationPrivate::addClassifier(QClassifier *classifier)
-{
-    // This is a read-write association end
-
-    this->classifiers->insert(classifier);
-}
-
-void QInstanceSpecificationPrivate::removeClassifier(QClassifier *classifier)
-{
-    // This is a read-write association end
-
-    this->classifiers->remove(classifier);
-}
-
-void QInstanceSpecificationPrivate::setSpecification(QValueSpecification *specification)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->specification);
-
-    this->specification = specification;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(specification);
-}
-
-void QInstanceSpecificationPrivate::addSlot_(QSlot *slot_)
-{
-    // This is a read-write association end
-
-    this->slots_->insert(slot_);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(slot_);
-}
-
-void QInstanceSpecificationPrivate::removeSlot_(QSlot *slot_)
-{
-    // This is a read-write association end
-
-    this->slots_->remove(slot_);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(slot_);
 }
 
 /*!
@@ -120,7 +73,7 @@ void QInstanceSpecificationPrivate::removeSlot_(QSlot *slot_)
 QInstanceSpecification::QInstanceSpecification(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QInstanceSpecificationPrivate;
+    d_umlptr = new QInstanceSpecificationPrivate(this);
 }
 
 QInstanceSpecification::QInstanceSpecification(bool createPimpl, QObject *parent)
@@ -151,7 +104,7 @@ void QInstanceSpecification::addClassifier(QClassifier *classifier)
 
     QTUML_D(QInstanceSpecification);
     if (!d->classifiers->contains(classifier)) {
-        d->addClassifier(classifier);
+        d->classifiers->insert(classifier);
     }
 }
 
@@ -161,7 +114,7 @@ void QInstanceSpecification::removeClassifier(QClassifier *classifier)
 
     QTUML_D(QInstanceSpecification);
     if (d->classifiers->contains(classifier)) {
-        d->removeClassifier(classifier);
+        d->classifiers->remove(classifier);
     }
 }
 
@@ -182,7 +135,13 @@ void QInstanceSpecification::setSpecification(QValueSpecification *specification
 
     QTUML_D(QInstanceSpecification);
     if (d->specification != specification) {
-        d->setSpecification(specification);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->specification);
+
+        d->specification = specification;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(specification);
     }
 }
 
@@ -203,7 +162,10 @@ void QInstanceSpecification::addSlot_(QSlot *slot_)
 
     QTUML_D(QInstanceSpecification);
     if (!d->slots_->contains(slot_)) {
-        d->addSlot_(slot_);
+        d->slots_->insert(slot_);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(slot_);
 
         // Adjust opposite property
         slot_->setOwningInstance(this);
@@ -216,7 +178,10 @@ void QInstanceSpecification::removeSlot_(QSlot *slot_)
 
     QTUML_D(QInstanceSpecification);
     if (d->slots_->contains(slot_)) {
-        d->removeSlot_(slot_);
+        d->slots_->remove(slot_);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(slot_);
 
         // Adjust opposite property
         slot_->setOwningInstance(0);

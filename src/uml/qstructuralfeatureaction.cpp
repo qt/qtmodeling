@@ -41,7 +41,6 @@
 
 #include "qstructuralfeatureaction.h"
 #include "qstructuralfeatureaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 #include <QtUml/QStructuralFeature>
@@ -56,26 +55,6 @@ QStructuralFeatureActionPrivate::QStructuralFeatureActionPrivate() :
 
 QStructuralFeatureActionPrivate::~QStructuralFeatureActionPrivate()
 {
-}
-
-void QStructuralFeatureActionPrivate::setObject(QInputPin *object)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeInput(this->object);
-
-    this->object = object;
-
-    // Adjust subsetted property(ies)
-    addInput(object);
-}
-
-void QStructuralFeatureActionPrivate::setStructuralFeature(QStructuralFeature *structuralFeature)
-{
-    // This is a read-write association end
-
-    this->structuralFeature = structuralFeature;
 }
 
 /*!
@@ -111,7 +90,13 @@ void QStructuralFeatureAction::setObject(QInputPin *object)
 
     QTUML_D(QStructuralFeatureAction);
     if (d->object != object) {
-        d->setObject(object);
+        // Adjust subsetted property(ies)
+        d->removeInput(d->object);
+
+        d->object = object;
+
+        // Adjust subsetted property(ies)
+        d->addInput(object);
     }
 }
 
@@ -132,7 +117,7 @@ void QStructuralFeatureAction::setStructuralFeature(QStructuralFeature *structur
 
     QTUML_D(QStructuralFeatureAction);
     if (d->structuralFeature != structuralFeature) {
-        d->setStructuralFeature(structuralFeature);
+        d->structuralFeature = structuralFeature;
     }
 }
 

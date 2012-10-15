@@ -46,52 +46,18 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QExpansionRegionPrivate::QExpansionRegionPrivate() :
+QExpansionRegionPrivate::QExpansionRegionPrivate(QExpansionRegion *q_umlptr) :
     mode(QtUml::ExpansionIterative),
     inputElements(new QSet<QExpansionNode *>),
     outputElements(new QSet<QExpansionNode *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QExpansionRegionPrivate::~QExpansionRegionPrivate()
 {
     delete inputElements;
     delete outputElements;
-}
-
-void QExpansionRegionPrivate::setMode(QtUml::ExpansionKind mode)
-{
-    // This is a read-write attribute
-
-    this->mode = mode;
-}
-
-void QExpansionRegionPrivate::addInputElement(QExpansionNode *inputElement)
-{
-    // This is a read-write association end
-
-    this->inputElements->insert(inputElement);
-}
-
-void QExpansionRegionPrivate::removeInputElement(QExpansionNode *inputElement)
-{
-    // This is a read-write association end
-
-    this->inputElements->remove(inputElement);
-}
-
-void QExpansionRegionPrivate::addOutputElement(QExpansionNode *outputElement)
-{
-    // This is a read-write association end
-
-    this->outputElements->insert(outputElement);
-}
-
-void QExpansionRegionPrivate::removeOutputElement(QExpansionNode *outputElement)
-{
-    // This is a read-write association end
-
-    this->outputElements->remove(outputElement);
 }
 
 /*!
@@ -105,7 +71,7 @@ void QExpansionRegionPrivate::removeOutputElement(QExpansionNode *outputElement)
 QExpansionRegion::QExpansionRegion(QObject *parent)
     : QStructuredActivityNode(false, parent)
 {
-    d_umlptr = new QExpansionRegionPrivate;
+    d_umlptr = new QExpansionRegionPrivate(this);
 }
 
 QExpansionRegion::QExpansionRegion(bool createPimpl, QObject *parent)
@@ -136,7 +102,7 @@ void QExpansionRegion::setMode(QtUml::ExpansionKind mode)
 
     QTUML_D(QExpansionRegion);
     if (d->mode != mode) {
-        d->setMode(mode);
+        d->mode = mode;
     }
 }
 
@@ -157,7 +123,7 @@ void QExpansionRegion::addInputElement(QExpansionNode *inputElement)
 
     QTUML_D(QExpansionRegion);
     if (!d->inputElements->contains(inputElement)) {
-        d->addInputElement(inputElement);
+        d->inputElements->insert(inputElement);
 
         // Adjust opposite property
         inputElement->setRegionAsInput(this);
@@ -170,7 +136,7 @@ void QExpansionRegion::removeInputElement(QExpansionNode *inputElement)
 
     QTUML_D(QExpansionRegion);
     if (d->inputElements->contains(inputElement)) {
-        d->removeInputElement(inputElement);
+        d->inputElements->remove(inputElement);
 
         // Adjust opposite property
         inputElement->setRegionAsInput(0);
@@ -194,7 +160,7 @@ void QExpansionRegion::addOutputElement(QExpansionNode *outputElement)
 
     QTUML_D(QExpansionRegion);
     if (!d->outputElements->contains(outputElement)) {
-        d->addOutputElement(outputElement);
+        d->outputElements->insert(outputElement);
 
         // Adjust opposite property
         outputElement->setRegionAsOutput(this);
@@ -207,7 +173,7 @@ void QExpansionRegion::removeOutputElement(QExpansionNode *outputElement)
 
     QTUML_D(QExpansionRegion);
     if (d->outputElements->contains(outputElement)) {
-        d->removeOutputElement(outputElement);
+        d->outputElements->remove(outputElement);
 
         // Adjust opposite property
         outputElement->setRegionAsOutput(0);

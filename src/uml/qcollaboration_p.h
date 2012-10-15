@@ -44,9 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qstructuredclassifier_p.h"
-
 #include "qbehavioredclassifier_p.h"
 
 // Qt includes
@@ -59,18 +57,15 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QConnectableElement;
+class QCollaboration;
 
 class QCollaborationPrivate : public QStructuredClassifierPrivate, public QBehavioredClassifierPrivate
 {
 public:
-    explicit QCollaborationPrivate();
+    explicit QCollaborationPrivate(QCollaboration *q_umlptr = 0);
     virtual ~QCollaborationPrivate();
 
     QSet<QConnectableElement *> *collaborationRoles;
-
-    // Internal functions for association-ends
-    void addCollaborationRole(QConnectableElement *collaborationRole);
-    void removeCollaborationRole(QConnectableElement *collaborationRole);
 };
 
 QT_END_NAMESPACE_QTUML

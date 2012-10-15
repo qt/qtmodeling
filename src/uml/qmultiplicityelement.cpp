@@ -41,7 +41,6 @@
 
 #include "qmultiplicityelement.h"
 #include "qmultiplicityelement_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QValueSpecification>
 
@@ -57,46 +56,6 @@ QMultiplicityElementPrivate::QMultiplicityElementPrivate() :
 
 QMultiplicityElementPrivate::~QMultiplicityElementPrivate()
 {
-}
-
-void QMultiplicityElementPrivate::setUnique(bool isUnique)
-{
-    // This is a read-write attribute
-
-    this->isUnique = isUnique;
-}
-
-void QMultiplicityElementPrivate::setOrdered(bool isOrdered)
-{
-    // This is a read-write attribute
-
-    this->isOrdered = isOrdered;
-}
-
-void QMultiplicityElementPrivate::setUpperValue(QValueSpecification *upperValue)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->upperValue);
-
-    this->upperValue = upperValue;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(upperValue);
-}
-
-void QMultiplicityElementPrivate::setLowerValue(QValueSpecification *lowerValue)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->lowerValue);
-
-    this->lowerValue = lowerValue;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(lowerValue);
 }
 
 /*!
@@ -124,7 +83,7 @@ qint32 QMultiplicityElement::upper() const
 
     qWarning("QMultiplicityElement::upper: to be implemented (this is a derived attribute)");
 
-    QTUML_D(const QMultiplicityElement);
+    //QTUML_D(const QMultiplicityElement);
     //return <derived-return>;
 }
 
@@ -134,8 +93,8 @@ void QMultiplicityElement::setUpper(qint32 upper)
 
     qWarning("QMultiplicityElement::setUpper: to be implemented (this is a derived attribute)");
 
-    QTUML_D(QMultiplicityElement);
-    if (true /* <change-criteria> */) {
+    //QTUML_D(QMultiplicityElement);
+    if (false /* <derived-change-criteria> */) {
         // <derived-code>
     }
 }
@@ -157,7 +116,7 @@ void QMultiplicityElement::setUnique(bool isUnique)
 
     QTUML_D(QMultiplicityElement);
     if (d->isUnique != isUnique) {
-        d->setUnique(isUnique);
+        d->isUnique = isUnique;
     }
 }
 
@@ -178,7 +137,7 @@ void QMultiplicityElement::setOrdered(bool isOrdered)
 
     QTUML_D(QMultiplicityElement);
     if (d->isOrdered != isOrdered) {
-        d->setOrdered(isOrdered);
+        d->isOrdered = isOrdered;
     }
 }
 
@@ -191,7 +150,7 @@ qint32 QMultiplicityElement::lower() const
 
     qWarning("QMultiplicityElement::lower: to be implemented (this is a derived attribute)");
 
-    QTUML_D(const QMultiplicityElement);
+    //QTUML_D(const QMultiplicityElement);
     //return <derived-return>;
 }
 
@@ -201,8 +160,8 @@ void QMultiplicityElement::setLower(qint32 lower)
 
     qWarning("QMultiplicityElement::setLower: to be implemented (this is a derived attribute)");
 
-    QTUML_D(QMultiplicityElement);
-    if (true /* <change-criteria> */) {
+    //QTUML_D(QMultiplicityElement);
+    if (false /* <derived-change-criteria> */) {
         // <derived-code>
     }
 }
@@ -224,7 +183,13 @@ void QMultiplicityElement::setUpperValue(QValueSpecification *upperValue)
 
     QTUML_D(QMultiplicityElement);
     if (d->upperValue != upperValue) {
-        d->setUpperValue(upperValue);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->upperValue);
+
+        d->upperValue = upperValue;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(upperValue);
     }
 }
 
@@ -245,7 +210,13 @@ void QMultiplicityElement::setLowerValue(QValueSpecification *lowerValue)
 
     QTUML_D(QMultiplicityElement);
     if (d->lowerValue != lowerValue) {
-        d->setLowerValue(lowerValue);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->lowerValue);
+
+        d->lowerValue = lowerValue;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(lowerValue);
     }
 }
 

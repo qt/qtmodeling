@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qobjectnode_p.h"
 
 QT_BEGIN_HEADER
@@ -54,19 +53,16 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QExpansionRegion;
+class QExpansionNode;
 
 class QExpansionNodePrivate : public QObjectNodePrivate
 {
 public:
-    explicit QExpansionNodePrivate();
+    explicit QExpansionNodePrivate(QExpansionNode *q_umlptr = 0);
     virtual ~QExpansionNodePrivate();
 
     QExpansionRegion *regionAsOutput;
     QExpansionRegion *regionAsInput;
-
-    // Internal functions for association-ends
-    void setRegionAsOutput(QExpansionRegion *regionAsOutput);
-    void setRegionAsInput(QExpansionRegion *regionAsInput);
 };
 
 QT_END_NAMESPACE_QTUML

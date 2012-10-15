@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qclass_p.h"
 
 // Qt includes
@@ -57,16 +56,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QConstraint;
+class QBehavior;
 class QBehavioralFeature;
-class QParameterSet;
-class QBehavioredClassifier;
+class QConstraint;
 class QParameter;
+class QBehavioredClassifier;
+class QParameterSet;
 
 class QBehaviorPrivate : public QClassPrivate
 {
 public:
-    explicit QBehaviorPrivate();
     virtual ~QBehaviorPrivate();
 
     bool isReentrant;
@@ -77,21 +76,8 @@ public:
     QList<QParameter *> *ownedParameters;
     QSet<QParameterSet *> *ownedParameterSets;
 
-    // Internal functions for attributes
-    void setReentrant(bool isReentrant);
-
-    // Internal functions for association-ends
-    void setSpecification(QBehavioralFeature *specification);
-    void addPostcondition(QConstraint *postcondition);
-    void removePostcondition(QConstraint *postcondition);
-    void addPrecondition(QConstraint *precondition);
-    void removePrecondition(QConstraint *precondition);
-    void addRedefinedBehavior(QBehavior *redefinedBehavior);
-    void removeRedefinedBehavior(QBehavior *redefinedBehavior);
-    void addOwnedParameter(QParameter *ownedParameter);
-    void removeOwnedParameter(QParameter *ownedParameter);
-    void addOwnedParameterSet(QParameterSet *ownedParameterSet);
-    void removeOwnedParameterSet(QParameterSet *ownedParameterSet);
+protected:
+    explicit QBehaviorPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

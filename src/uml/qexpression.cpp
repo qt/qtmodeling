@@ -41,46 +41,19 @@
 
 #include "qexpression.h"
 #include "qexpression_p.h"
-#include "qelement_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QExpressionPrivate::QExpressionPrivate() :
+QExpressionPrivate::QExpressionPrivate(QExpression *q_umlptr) :
     operands(new QList<QValueSpecification *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QExpressionPrivate::~QExpressionPrivate()
 {
     delete operands;
-}
-
-void QExpressionPrivate::setSymbol(QString symbol)
-{
-    // This is a read-write attribute
-
-    this->symbol = symbol;
-}
-
-void QExpressionPrivate::addOperand(QValueSpecification *operand)
-{
-    // This is a read-write association end
-
-    this->operands->append(operand);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(operand);
-}
-
-void QExpressionPrivate::removeOperand(QValueSpecification *operand)
-{
-    // This is a read-write association end
-
-    this->operands->removeAll(operand);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(operand);
 }
 
 /*!
@@ -94,7 +67,7 @@ void QExpressionPrivate::removeOperand(QValueSpecification *operand)
 QExpression::QExpression(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QExpressionPrivate;
+    d_umlptr = new QExpressionPrivate(this);
 }
 
 QExpression::QExpression(bool createPimpl, QObject *parent)
@@ -125,7 +98,7 @@ void QExpression::setSymbol(QString symbol)
 
     QTUML_D(QExpression);
     if (d->symbol != symbol) {
-        d->setSymbol(symbol);
+        d->symbol = symbol;
     }
 }
 
@@ -146,7 +119,10 @@ void QExpression::addOperand(QValueSpecification *operand)
 
     QTUML_D(QExpression);
     if (!d->operands->contains(operand)) {
-        d->addOperand(operand);
+        d->operands->append(operand);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(operand);
     }
 }
 
@@ -156,7 +132,10 @@ void QExpression::removeOperand(QValueSpecification *operand)
 
     QTUML_D(QExpression);
     if (d->operands->contains(operand)) {
-        d->removeOperand(operand);
+        d->operands->removeAll(operand);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(operand);
     }
 }
 

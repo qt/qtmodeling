@@ -47,7 +47,6 @@
 #include <QtUml/QtUmlEnumerations>
 
 // Base class includes
-
 #include "qfeature_p.h"
 
 // Qt includes
@@ -60,31 +59,21 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QAssociation;
+class QConnector;
 class QBehavior;
 class QConnectorEnd;
-class QAssociation;
 
 class QConnectorPrivate : public QFeaturePrivate
 {
 public:
-    explicit QConnectorPrivate();
+    explicit QConnectorPrivate(QConnector *q_umlptr = 0);
     virtual ~QConnectorPrivate();
 
     QSet<QConnector *> *redefinedConnectors;
     QSet<QBehavior *> *contracts;
     QAssociation *type;
     QList<QConnectorEnd *> *ends;
-
-    // Internal functions for attributes
-
-    // Internal functions for association-ends
-    void addRedefinedConnector(QConnector *redefinedConnector);
-    void removeRedefinedConnector(QConnector *redefinedConnector);
-    void addContract(QBehavior *contract);
-    void removeContract(QBehavior *contract);
-    void setType(QAssociation *type);
-    void addEnd(QConnectorEnd *end);
-    void removeEnd(QConnectorEnd *end);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qnamedelement_p.h"
 
 // Qt includes
@@ -61,11 +60,12 @@ class QValueSpecification;
 class QInteraction;
 class QInteractionFragment;
 class QPartDecomposition;
+class QLifeline;
 
 class QLifelinePrivate : public QNamedElementPrivate
 {
 public:
-    explicit QLifelinePrivate();
+    explicit QLifelinePrivate(QLifeline *q_umlptr = 0);
     virtual ~QLifelinePrivate();
 
     QConnectableElement *represents;
@@ -73,14 +73,6 @@ public:
     QSet<QInteractionFragment *> *coveredBy;
     QInteraction *interaction;
     QValueSpecification *selector;
-
-    // Internal functions for association-ends
-    void setRepresents(QConnectableElement *represents);
-    void setDecomposedAs(QPartDecomposition *decomposedAs);
-    void addCoveredBy(QInteractionFragment *coveredBy);
-    void removeCoveredBy(QInteractionFragment *coveredBy);
-    void setInteraction(QInteraction *interaction);
-    void setSelector(QValueSpecification *selector);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qelement_p.h"
 
 QT_BEGIN_HEADER
@@ -56,23 +55,18 @@ QT_MODULE(QtUml)
 class QParameterableElement;
 class QTemplateParameter;
 class QTemplateBinding;
+class QTemplateParameterSubstitution;
 
 class QTemplateParameterSubstitutionPrivate : public QElementPrivate
 {
 public:
-    explicit QTemplateParameterSubstitutionPrivate();
+    explicit QTemplateParameterSubstitutionPrivate(QTemplateParameterSubstitution *q_umlptr = 0);
     virtual ~QTemplateParameterSubstitutionPrivate();
 
     QParameterableElement *ownedActual;
     QTemplateParameter *formal;
     QParameterableElement *actual;
     QTemplateBinding *templateBinding;
-
-    // Internal functions for association-ends
-    void setOwnedActual(QParameterableElement *ownedActual);
-    void setFormal(QTemplateParameter *formal);
-    void setActual(QParameterableElement *actual);
-    void setTemplateBinding(QTemplateBinding *templateBinding);
 };
 
 QT_END_NAMESPACE_QTUML

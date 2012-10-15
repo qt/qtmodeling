@@ -41,7 +41,6 @@
 
 #include "qaction.h"
 #include "qaction_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QOutputPin>
 #include <QtUml/QConstraint>
@@ -67,91 +66,52 @@ QActionPrivate::~QActionPrivate()
     delete outputs;
 }
 
-void QActionPrivate::setLocallyReentrant(bool isLocallyReentrant)
-{
-    // This is a read-write attribute
-
-    this->isLocallyReentrant = isLocallyReentrant;
-}
-
-void QActionPrivate::addLocalPostcondition(QConstraint *localPostcondition)
-{
-    // This is a read-write association end
-
-    this->localPostconditions->insert(localPostcondition);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(localPostcondition);
-}
-
-void QActionPrivate::removeLocalPostcondition(QConstraint *localPostcondition)
-{
-    // This is a read-write association end
-
-    this->localPostconditions->remove(localPostcondition);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(localPostcondition);
-}
-
-void QActionPrivate::addLocalPrecondition(QConstraint *localPrecondition)
-{
-    // This is a read-write association end
-
-    this->localPreconditions->insert(localPrecondition);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(localPrecondition);
-}
-
-void QActionPrivate::removeLocalPrecondition(QConstraint *localPrecondition)
-{
-    // This is a read-write association end
-
-    this->localPreconditions->remove(localPrecondition);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(localPrecondition);
-}
-
 void QActionPrivate::addInput(QInputPin *input)
 {
     // This is a read-only derived-union association end
 
-    this->inputs->append(input);
+    if (!this->inputs->contains(input)) {
+        this->inputs->append(input);
 
-    // Adjust subsetted property(ies)
-    addOwnedElement(input);
+        // Adjust subsetted property(ies)
+        addOwnedElement(input);
+    }
 }
 
 void QActionPrivate::removeInput(QInputPin *input)
 {
     // This is a read-only derived-union association end
 
-    this->inputs->removeAll(input);
+    if (this->inputs->contains(input)) {
+        this->inputs->removeAll(input);
 
-    // Adjust subsetted property(ies)
-    removeOwnedElement(input);
+        // Adjust subsetted property(ies)
+        removeOwnedElement(input);
+    }
 }
 
 void QActionPrivate::addOutput(QOutputPin *output)
 {
     // This is a read-only derived-union association end
 
-    this->outputs->append(output);
+    if (!this->outputs->contains(output)) {
+        this->outputs->append(output);
 
-    // Adjust subsetted property(ies)
-    addOwnedElement(output);
+        // Adjust subsetted property(ies)
+        addOwnedElement(output);
+    }
 }
 
 void QActionPrivate::removeOutput(QOutputPin *output)
 {
     // This is a read-only derived-union association end
 
-    this->outputs->removeAll(output);
+    if (this->outputs->contains(output)) {
+        this->outputs->removeAll(output);
 
-    // Adjust subsetted property(ies)
-    removeOwnedElement(output);
+        // Adjust subsetted property(ies)
+        removeOwnedElement(output);
+    }
 }
 
 /*!
@@ -187,7 +147,7 @@ void QAction::setLocallyReentrant(bool isLocallyReentrant)
 
     QTUML_D(QAction);
     if (d->isLocallyReentrant != isLocallyReentrant) {
-        d->setLocallyReentrant(isLocallyReentrant);
+        d->isLocallyReentrant = isLocallyReentrant;
     }
 }
 
@@ -200,7 +160,7 @@ QClassifier *QAction::context() const
 
     qWarning("QAction::context: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QAction);
+    //QTUML_D(const QAction);
     //return <derived-return>;
 }
 
@@ -221,7 +181,10 @@ void QAction::addLocalPostcondition(QConstraint *localPostcondition)
 
     QTUML_D(QAction);
     if (!d->localPostconditions->contains(localPostcondition)) {
-        d->addLocalPostcondition(localPostcondition);
+        d->localPostconditions->insert(localPostcondition);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(localPostcondition);
     }
 }
 
@@ -231,7 +194,10 @@ void QAction::removeLocalPostcondition(QConstraint *localPostcondition)
 
     QTUML_D(QAction);
     if (d->localPostconditions->contains(localPostcondition)) {
-        d->removeLocalPostcondition(localPostcondition);
+        d->localPostconditions->remove(localPostcondition);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(localPostcondition);
     }
 }
 
@@ -252,7 +218,10 @@ void QAction::addLocalPrecondition(QConstraint *localPrecondition)
 
     QTUML_D(QAction);
     if (!d->localPreconditions->contains(localPrecondition)) {
-        d->addLocalPrecondition(localPrecondition);
+        d->localPreconditions->insert(localPrecondition);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(localPrecondition);
     }
 }
 
@@ -262,7 +231,10 @@ void QAction::removeLocalPrecondition(QConstraint *localPrecondition)
 
     QTUML_D(QAction);
     if (d->localPreconditions->contains(localPrecondition)) {
-        d->removeLocalPrecondition(localPrecondition);
+        d->localPreconditions->remove(localPrecondition);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(localPrecondition);
     }
 }
 

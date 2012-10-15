@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qaction_p.h"
 
 // Qt includes
@@ -62,16 +61,13 @@ class QPort;
 class QInvocationActionPrivate : public QActionPrivate
 {
 public:
-    explicit QInvocationActionPrivate();
     virtual ~QInvocationActionPrivate();
 
     QList<QInputPin *> *arguments;
     QPort *onPort;
 
-    // Internal functions for association-ends
-    void addArgument(QInputPin *argument);
-    void removeArgument(QInputPin *argument);
-    void setOnPort(QPort *onPort);
+protected:
+    explicit QInvocationActionPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

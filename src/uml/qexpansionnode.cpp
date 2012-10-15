@@ -46,28 +46,15 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QExpansionNodePrivate::QExpansionNodePrivate() :
+QExpansionNodePrivate::QExpansionNodePrivate(QExpansionNode *q_umlptr) :
     regionAsOutput(0),
     regionAsInput(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QExpansionNodePrivate::~QExpansionNodePrivate()
 {
-}
-
-void QExpansionNodePrivate::setRegionAsOutput(QExpansionRegion *regionAsOutput)
-{
-    // This is a read-write association end
-
-    this->regionAsOutput = regionAsOutput;
-}
-
-void QExpansionNodePrivate::setRegionAsInput(QExpansionRegion *regionAsInput)
-{
-    // This is a read-write association end
-
-    this->regionAsInput = regionAsInput;
 }
 
 /*!
@@ -81,7 +68,7 @@ void QExpansionNodePrivate::setRegionAsInput(QExpansionRegion *regionAsInput)
 QExpansionNode::QExpansionNode(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QExpansionNodePrivate;
+    d_umlptr = new QExpansionNodePrivate(this);
 }
 
 QExpansionNode::QExpansionNode(bool createPimpl, QObject *parent)
@@ -112,7 +99,7 @@ void QExpansionNode::setRegionAsOutput(QExpansionRegion *regionAsOutput)
 
     QTUML_D(QExpansionNode);
     if (d->regionAsOutput != regionAsOutput) {
-        d->setRegionAsOutput(regionAsOutput);
+        d->regionAsOutput = regionAsOutput;
 
         // Adjust opposite property
         regionAsOutput->addOutputElement(this);
@@ -136,7 +123,7 @@ void QExpansionNode::setRegionAsInput(QExpansionRegion *regionAsInput)
 
     QTUML_D(QExpansionNode);
     if (d->regionAsInput != regionAsInput) {
-        d->setRegionAsInput(regionAsInput);
+        d->regionAsInput = regionAsInput;
 
         // Adjust opposite property
         regionAsInput->addInputElement(this);

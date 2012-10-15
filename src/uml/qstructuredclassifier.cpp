@@ -41,8 +41,6 @@
 
 #include "qstructuredclassifier.h"
 #include "qstructuredclassifier_p.h"
-#include "qnamespace_p.h"
-#include "qclassifier_p.h"
 
 #include <QtUml/QProperty>
 #include <QtUml/QConnector>
@@ -68,66 +66,24 @@ void QStructuredClassifierPrivate::addRole(QConnectableElement *role)
 {
     // This is a read-only derived-union association end
 
-    this->roles->insert(role);
+    if (!this->roles->contains(role)) {
+        this->roles->insert(role);
 
-    // Adjust subsetted property(ies)
-    addMember(role);
+        // Adjust subsetted property(ies)
+        addMember(role);
+    }
 }
 
 void QStructuredClassifierPrivate::removeRole(QConnectableElement *role)
 {
     // This is a read-only derived-union association end
 
-    this->roles->remove(role);
+    if (this->roles->contains(role)) {
+        this->roles->remove(role);
 
-    // Adjust subsetted property(ies)
-    removeMember(role);
-}
-
-void QStructuredClassifierPrivate::addOwnedAttribute(QProperty *ownedAttribute)
-{
-    // This is a read-write association end
-
-    this->ownedAttributes->append(ownedAttribute);
-
-    // Adjust subsetted property(ies)
-    addAttribute(ownedAttribute);
-    addOwnedMember(ownedAttribute);
-    addRole(ownedAttribute);
-}
-
-void QStructuredClassifierPrivate::removeOwnedAttribute(QProperty *ownedAttribute)
-{
-    // This is a read-write association end
-
-    this->ownedAttributes->removeAll(ownedAttribute);
-
-    // Adjust subsetted property(ies)
-    removeAttribute(ownedAttribute);
-    removeOwnedMember(ownedAttribute);
-    removeRole(ownedAttribute);
-}
-
-void QStructuredClassifierPrivate::addOwnedConnector(QConnector *ownedConnector)
-{
-    // This is a read-write association end
-
-    this->ownedConnectors->insert(ownedConnector);
-
-    // Adjust subsetted property(ies)
-    addFeature(ownedConnector);
-    addOwnedMember(ownedConnector);
-}
-
-void QStructuredClassifierPrivate::removeOwnedConnector(QConnector *ownedConnector)
-{
-    // This is a read-write association end
-
-    this->ownedConnectors->remove(ownedConnector);
-
-    // Adjust subsetted property(ies)
-    removeFeature(ownedConnector);
-    removeOwnedMember(ownedConnector);
+        // Adjust subsetted property(ies)
+        removeMember(role);
+    }
 }
 
 /*!
@@ -174,7 +130,12 @@ void QStructuredClassifier::addOwnedAttribute(QProperty *ownedAttribute)
 
     QTUML_D(QStructuredClassifier);
     if (!d->ownedAttributes->contains(ownedAttribute)) {
-        d->addOwnedAttribute(ownedAttribute);
+        d->ownedAttributes->append(ownedAttribute);
+
+        // Adjust subsetted property(ies)
+        d->addAttribute(ownedAttribute);
+        d->addOwnedMember(ownedAttribute);
+        d->addRole(ownedAttribute);
     }
 }
 
@@ -184,7 +145,12 @@ void QStructuredClassifier::removeOwnedAttribute(QProperty *ownedAttribute)
 
     QTUML_D(QStructuredClassifier);
     if (d->ownedAttributes->contains(ownedAttribute)) {
-        d->removeOwnedAttribute(ownedAttribute);
+        d->ownedAttributes->removeAll(ownedAttribute);
+
+        // Adjust subsetted property(ies)
+        d->removeAttribute(ownedAttribute);
+        d->removeOwnedMember(ownedAttribute);
+        d->removeRole(ownedAttribute);
     }
 }
 
@@ -197,7 +163,7 @@ const QSet<QProperty *> *QStructuredClassifier::parts() const
 
     qWarning("QStructuredClassifier::parts: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QStructuredClassifier);
+    //QTUML_D(const QStructuredClassifier);
     //return <derived-return>;
 }
 
@@ -218,7 +184,11 @@ void QStructuredClassifier::addOwnedConnector(QConnector *ownedConnector)
 
     QTUML_D(QStructuredClassifier);
     if (!d->ownedConnectors->contains(ownedConnector)) {
-        d->addOwnedConnector(ownedConnector);
+        d->ownedConnectors->insert(ownedConnector);
+
+        // Adjust subsetted property(ies)
+        d->addFeature(ownedConnector);
+        d->addOwnedMember(ownedConnector);
     }
 }
 
@@ -228,7 +198,11 @@ void QStructuredClassifier::removeOwnedConnector(QConnector *ownedConnector)
 
     QTUML_D(QStructuredClassifier);
     if (d->ownedConnectors->contains(ownedConnector)) {
-        d->removeOwnedConnector(ownedConnector);
+        d->ownedConnectors->remove(ownedConnector);
+
+        // Adjust subsetted property(ies)
+        d->removeFeature(ownedConnector);
+        d->removeOwnedMember(ownedConnector);
     }
 }
 

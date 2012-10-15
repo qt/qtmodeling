@@ -41,7 +41,6 @@
 
 #include "qreadlinkobjectendqualifieraction.h"
 #include "qreadlinkobjectendqualifieraction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 #include <QtUml/QProperty>
@@ -49,48 +48,16 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QReadLinkObjectEndQualifierActionPrivate::QReadLinkObjectEndQualifierActionPrivate() :
+QReadLinkObjectEndQualifierActionPrivate::QReadLinkObjectEndQualifierActionPrivate(QReadLinkObjectEndQualifierAction *q_umlptr) :
     result(0),
     object(0),
     qualifier(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QReadLinkObjectEndQualifierActionPrivate::~QReadLinkObjectEndQualifierActionPrivate()
 {
-}
-
-void QReadLinkObjectEndQualifierActionPrivate::setResult(QOutputPin *result)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOutput(this->result);
-
-    this->result = result;
-
-    // Adjust subsetted property(ies)
-    addOutput(result);
-}
-
-void QReadLinkObjectEndQualifierActionPrivate::setObject(QInputPin *object)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeInput(this->object);
-
-    this->object = object;
-
-    // Adjust subsetted property(ies)
-    addInput(object);
-}
-
-void QReadLinkObjectEndQualifierActionPrivate::setQualifier(QProperty *qualifier)
-{
-    // This is a read-write association end
-
-    this->qualifier = qualifier;
 }
 
 /*!
@@ -104,7 +71,7 @@ void QReadLinkObjectEndQualifierActionPrivate::setQualifier(QProperty *qualifier
 QReadLinkObjectEndQualifierAction::QReadLinkObjectEndQualifierAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QReadLinkObjectEndQualifierActionPrivate;
+    d_umlptr = new QReadLinkObjectEndQualifierActionPrivate(this);
 }
 
 QReadLinkObjectEndQualifierAction::QReadLinkObjectEndQualifierAction(bool createPimpl, QObject *parent)
@@ -135,7 +102,13 @@ void QReadLinkObjectEndQualifierAction::setResult(QOutputPin *result)
 
     QTUML_D(QReadLinkObjectEndQualifierAction);
     if (d->result != result) {
-        d->setResult(result);
+        // Adjust subsetted property(ies)
+        d->removeOutput(d->result);
+
+        d->result = result;
+
+        // Adjust subsetted property(ies)
+        d->addOutput(result);
     }
 }
 
@@ -156,7 +129,13 @@ void QReadLinkObjectEndQualifierAction::setObject(QInputPin *object)
 
     QTUML_D(QReadLinkObjectEndQualifierAction);
     if (d->object != object) {
-        d->setObject(object);
+        // Adjust subsetted property(ies)
+        d->removeInput(d->object);
+
+        d->object = object;
+
+        // Adjust subsetted property(ies)
+        d->addInput(object);
     }
 }
 
@@ -177,7 +156,7 @@ void QReadLinkObjectEndQualifierAction::setQualifier(QProperty *qualifier)
 
     QTUML_D(QReadLinkObjectEndQualifierAction);
     if (d->qualifier != qualifier) {
-        d->setQualifier(qualifier);
+        d->qualifier = qualifier;
     }
 }
 

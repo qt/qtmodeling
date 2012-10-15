@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qopaquebehavior_p.h"
 
 QT_BEGIN_HEADER
@@ -52,11 +51,12 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
+class QFunctionBehavior;
 
 class QFunctionBehaviorPrivate : public QOpaqueBehaviorPrivate
 {
 public:
-    explicit QFunctionBehaviorPrivate();
+    explicit QFunctionBehaviorPrivate(QFunctionBehavior *q_umlptr = 0);
     virtual ~QFunctionBehaviorPrivate();
 
 };

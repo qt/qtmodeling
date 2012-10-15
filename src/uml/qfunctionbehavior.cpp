@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QFunctionBehaviorPrivate::QFunctionBehaviorPrivate()
+QFunctionBehaviorPrivate::QFunctionBehaviorPrivate(QFunctionBehavior *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QFunctionBehaviorPrivate::~QFunctionBehaviorPrivate()
@@ -64,7 +65,7 @@ QFunctionBehaviorPrivate::~QFunctionBehaviorPrivate()
 QFunctionBehavior::QFunctionBehavior(QObject *parent)
     : QOpaqueBehavior(false, parent)
 {
-    d_umlptr = new QFunctionBehaviorPrivate;
+    d_umlptr = new QFunctionBehaviorPrivate(this);
 }
 
 QFunctionBehavior::QFunctionBehavior(bool createPimpl, QObject *parent)

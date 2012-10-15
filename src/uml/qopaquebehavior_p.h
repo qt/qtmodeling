@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qbehavior_p.h"
 
 // Qt includes
@@ -56,21 +55,16 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
+class QOpaqueBehavior;
 
 class QOpaqueBehaviorPrivate : public QBehaviorPrivate
 {
 public:
-    explicit QOpaqueBehaviorPrivate();
+    explicit QOpaqueBehaviorPrivate(QOpaqueBehavior *q_umlptr = 0);
     virtual ~QOpaqueBehaviorPrivate();
 
     QList<QString> *languages;
     QList<QString> *bodies;
-
-    // Internal functions for attributes
-    void addLanguage(QString language);
-    void removeLanguage(QString language);
-    void addBody(QString body);
-    void removeBody(QString body);
 };
 
 QT_END_NAMESPACE_QTUML

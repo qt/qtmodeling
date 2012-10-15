@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qnamedelement_p.h"
 
 QT_BEGIN_HEADER
@@ -58,13 +57,12 @@ class QMessage;
 class QMessageEndPrivate : public virtual QNamedElementPrivate
 {
 public:
-    explicit QMessageEndPrivate();
     virtual ~QMessageEndPrivate();
 
     QMessage *message;
 
-    // Internal functions for association-ends
-    void setMessage(QMessage *message);
+protected:
+    explicit QMessageEndPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

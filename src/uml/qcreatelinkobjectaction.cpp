@@ -41,32 +41,19 @@
 
 #include "qcreatelinkobjectaction.h"
 #include "qcreatelinkobjectaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCreateLinkObjectActionPrivate::QCreateLinkObjectActionPrivate() :
+QCreateLinkObjectActionPrivate::QCreateLinkObjectActionPrivate(QCreateLinkObjectAction *q_umlptr) :
     result(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QCreateLinkObjectActionPrivate::~QCreateLinkObjectActionPrivate()
 {
-}
-
-void QCreateLinkObjectActionPrivate::setResult(QOutputPin *result)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOutput(this->result);
-
-    this->result = result;
-
-    // Adjust subsetted property(ies)
-    addOutput(result);
 }
 
 /*!
@@ -80,7 +67,7 @@ void QCreateLinkObjectActionPrivate::setResult(QOutputPin *result)
 QCreateLinkObjectAction::QCreateLinkObjectAction(QObject *parent)
     : QCreateLinkAction(false, parent)
 {
-    d_umlptr = new QCreateLinkObjectActionPrivate;
+    d_umlptr = new QCreateLinkObjectActionPrivate(this);
 }
 
 QCreateLinkObjectAction::QCreateLinkObjectAction(bool createPimpl, QObject *parent)
@@ -111,7 +98,13 @@ void QCreateLinkObjectAction::setResult(QOutputPin *result)
 
     QTUML_D(QCreateLinkObjectAction);
     if (d->result != result) {
-        d->setResult(result);
+        // Adjust subsetted property(ies)
+        d->removeOutput(d->result);
+
+        d->result = result;
+
+        // Adjust subsetted property(ies)
+        d->addOutput(result);
     }
 }
 

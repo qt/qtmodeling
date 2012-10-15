@@ -41,29 +41,19 @@
 
 #include "qenumerationliteral.h"
 #include "qenumerationliteral_p.h"
-#include "qnamedelement_p.h"
 
 #include <QtUml/QEnumeration>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QEnumerationLiteralPrivate::QEnumerationLiteralPrivate() :
+QEnumerationLiteralPrivate::QEnumerationLiteralPrivate(QEnumerationLiteral *q_umlptr) :
     enumeration(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QEnumerationLiteralPrivate::~QEnumerationLiteralPrivate()
 {
-}
-
-void QEnumerationLiteralPrivate::setEnumeration(QEnumeration *enumeration)
-{
-    // This is a read-write association end
-
-    this->enumeration = enumeration;
-
-    // Adjust subsetted property(ies)
-    setNamespace_(enumeration);
 }
 
 /*!
@@ -77,7 +67,7 @@ void QEnumerationLiteralPrivate::setEnumeration(QEnumeration *enumeration)
 QEnumerationLiteral::QEnumerationLiteral(QObject *parent)
     : QInstanceSpecification(false, parent)
 {
-    d_umlptr = new QEnumerationLiteralPrivate;
+    d_umlptr = new QEnumerationLiteralPrivate(this);
 }
 
 QEnumerationLiteral::QEnumerationLiteral(bool createPimpl, QObject *parent)
@@ -100,7 +90,7 @@ QEnumeration *QEnumerationLiteral::classifier() const
 
     qWarning("QEnumerationLiteral::classifier: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QEnumerationLiteral);
+    //QTUML_D(const QEnumerationLiteral);
     //return <derived-return>;
 }
 
@@ -121,7 +111,10 @@ void QEnumerationLiteral::setEnumeration(QEnumeration *enumeration)
 
     QTUML_D(QEnumerationLiteral);
     if (d->enumeration != enumeration) {
-        d->setEnumeration(enumeration);
+        d->enumeration = enumeration;
+
+        // Adjust subsetted property(ies)
+        d->setNamespace_(enumeration);
 
         // Adjust opposite property
         enumeration->addOwnedLiteral(this);

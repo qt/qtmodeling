@@ -44,9 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qbehavior_p.h"
-
 #include "qinteractionfragment_p.h"
 
 // Qt includes
@@ -63,11 +61,12 @@ class QMessage;
 class QLifeline;
 class QAction;
 class QGate;
+class QInteraction;
 
 class QInteractionPrivate : public QBehaviorPrivate, public QInteractionFragmentPrivate
 {
 public:
-    explicit QInteractionPrivate();
+    explicit QInteractionPrivate(QInteraction *q_umlptr = 0);
     virtual ~QInteractionPrivate();
 
     QSet<QAction *> *actions;
@@ -75,18 +74,6 @@ public:
     QSet<QGate *> *formalGates;
     QList<QInteractionFragment *> *fragments;
     QSet<QLifeline *> *lifelines;
-
-    // Internal functions for association-ends
-    void addAction(QAction *action);
-    void removeAction(QAction *action);
-    void addMessage(QMessage *message);
-    void removeMessage(QMessage *message);
-    void addFormalGate(QGate *formalGate);
-    void removeFormalGate(QGate *formalGate);
-    void addFragment(QInteractionFragment *fragment);
-    void removeFragment(QInteractionFragment *fragment);
-    void addLifeline(QLifeline *lifeline);
-    void removeLifeline(QLifeline *lifeline);
 };
 
 QT_END_NAMESPACE_QTUML

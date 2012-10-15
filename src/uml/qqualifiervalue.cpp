@@ -47,28 +47,15 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QQualifierValuePrivate::QQualifierValuePrivate() :
+QQualifierValuePrivate::QQualifierValuePrivate(QQualifierValue *q_umlptr) :
     value(0),
     qualifier(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QQualifierValuePrivate::~QQualifierValuePrivate()
 {
-}
-
-void QQualifierValuePrivate::setValue(QInputPin *value)
-{
-    // This is a read-write association end
-
-    this->value = value;
-}
-
-void QQualifierValuePrivate::setQualifier(QProperty *qualifier)
-{
-    // This is a read-write association end
-
-    this->qualifier = qualifier;
 }
 
 /*!
@@ -82,7 +69,7 @@ void QQualifierValuePrivate::setQualifier(QProperty *qualifier)
 QQualifierValue::QQualifierValue(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QQualifierValuePrivate;
+    d_umlptr = new QQualifierValuePrivate(this);
 }
 
 QQualifierValue::QQualifierValue(bool createPimpl, QObject *parent)
@@ -113,7 +100,7 @@ void QQualifierValue::setValue(QInputPin *value)
 
     QTUML_D(QQualifierValue);
     if (d->value != value) {
-        d->setValue(value);
+        d->value = value;
     }
 }
 
@@ -134,7 +121,7 @@ void QQualifierValue::setQualifier(QProperty *qualifier)
 
     QTUML_D(QQualifierValue);
     if (d->qualifier != qualifier) {
-        d->setQualifier(qualifier);
+        d->qualifier = qualifier;
     }
 }
 

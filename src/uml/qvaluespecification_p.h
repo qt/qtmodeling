@@ -44,9 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qtypedelement_p.h"
-
 #include "qpackageableelement_p.h"
 
 // Qt includes
@@ -63,9 +61,11 @@ class QParameterableElement;
 class QValueSpecificationPrivate : public QTypedElementPrivate, public QPackageableElementPrivate
 {
 public:
-    explicit QValueSpecificationPrivate();
     virtual ~QValueSpecificationPrivate();
 
+
+protected:
+    explicit QValueSpecificationPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

@@ -41,11 +41,10 @@
 
 #include "qactivitynode.h"
 #include "qactivitynode_p.h"
-#include "qredefinableelement_p.h"
-#include "qelement_p.h"
+#include "qactivitygroup_p.h"
 
-#include <QtUml/QStructuredActivityNode>
 #include <QtUml/QActivityEdge>
+#include <QtUml/QStructuredActivityNode>
 #include <QtUml/QActivityPartition>
 #include <QtUml/QActivityGroup>
 #include <QtUml/QActivity>
@@ -75,130 +74,30 @@ QActivityNodePrivate::~QActivityNodePrivate()
     delete outgoings;
 }
 
-void QActivityNodePrivate::addRedefinedNode(QActivityNode *redefinedNode)
-{
-    // This is a read-write association end
-
-    this->redefinedNodes->insert(redefinedNode);
-
-    // Adjust subsetted property(ies)
-    addRedefinedElement(redefinedNode);
-}
-
-void QActivityNodePrivate::removeRedefinedNode(QActivityNode *redefinedNode)
-{
-    // This is a read-write association end
-
-    this->redefinedNodes->remove(redefinedNode);
-
-    // Adjust subsetted property(ies)
-    removeRedefinedElement(redefinedNode);
-}
-
-void QActivityNodePrivate::addIncoming(QActivityEdge *incoming)
-{
-    // This is a read-write association end
-
-    this->incomings->insert(incoming);
-}
-
-void QActivityNodePrivate::removeIncoming(QActivityEdge *incoming)
-{
-    // This is a read-write association end
-
-    this->incomings->remove(incoming);
-}
-
-void QActivityNodePrivate::setActivity(QActivity *activity)
-{
-    // This is a read-write association end
-
-    this->activity = activity;
-
-    // Adjust subsetted property(ies)
-    setOwner(activity);
-}
-
 void QActivityNodePrivate::addInGroup(QActivityGroup *inGroup)
 {
     // This is a read-only derived-union association end
 
-    this->inGroup->insert(inGroup);
+    if (!this->inGroup->contains(inGroup)) {
+        this->inGroup->insert(inGroup);
+
+        // Adjust opposite property
+        QTUML_Q(QActivityNode);
+        (dynamic_cast<QActivityGroupPrivate *>(inGroup->d_umlptr))->addContainedNode(q);
+    }
 }
 
 void QActivityNodePrivate::removeInGroup(QActivityGroup *inGroup)
 {
     // This is a read-only derived-union association end
 
-    this->inGroup->remove(inGroup);
-}
+    if (this->inGroup->contains(inGroup)) {
+        this->inGroup->remove(inGroup);
 
-void QActivityNodePrivate::setInStructuredNode(QStructuredActivityNode *inStructuredNode)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeInGroup(this->inStructuredNode);
-
-    this->inStructuredNode = inStructuredNode;
-
-    // Adjust subsetted property(ies)
-    addInGroup(inStructuredNode);
-    setOwner(inStructuredNode);
-}
-
-void QActivityNodePrivate::addInPartition(QActivityPartition *inPartition)
-{
-    // This is a read-write association end
-
-    this->inPartition->insert(inPartition);
-
-    // Adjust subsetted property(ies)
-    addInGroup(inPartition);
-}
-
-void QActivityNodePrivate::removeInPartition(QActivityPartition *inPartition)
-{
-    // This is a read-write association end
-
-    this->inPartition->remove(inPartition);
-
-    // Adjust subsetted property(ies)
-    removeInGroup(inPartition);
-}
-
-void QActivityNodePrivate::addInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion)
-{
-    // This is a read-write association end
-
-    this->inInterruptibleRegion->insert(inInterruptibleRegion);
-
-    // Adjust subsetted property(ies)
-    addInGroup(inInterruptibleRegion);
-}
-
-void QActivityNodePrivate::removeInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion)
-{
-    // This is a read-write association end
-
-    this->inInterruptibleRegion->remove(inInterruptibleRegion);
-
-    // Adjust subsetted property(ies)
-    removeInGroup(inInterruptibleRegion);
-}
-
-void QActivityNodePrivate::addOutgoing(QActivityEdge *outgoing)
-{
-    // This is a read-write association end
-
-    this->outgoings->insert(outgoing);
-}
-
-void QActivityNodePrivate::removeOutgoing(QActivityEdge *outgoing)
-{
-    // This is a read-write association end
-
-    this->outgoings->remove(outgoing);
+        // Adjust opposite property
+        QTUML_Q(QActivityNode);
+        (dynamic_cast<QActivityGroupPrivate *>(inGroup->d_umlptr))->removeContainedNode(q);
+    }
 }
 
 /*!
@@ -234,7 +133,10 @@ void QActivityNode::addRedefinedNode(QActivityNode *redefinedNode)
 
     QTUML_D(QActivityNode);
     if (!d->redefinedNodes->contains(redefinedNode)) {
-        d->addRedefinedNode(redefinedNode);
+        d->redefinedNodes->insert(redefinedNode);
+
+        // Adjust subsetted property(ies)
+        d->addRedefinedElement(redefinedNode);
     }
 }
 
@@ -244,7 +146,10 @@ void QActivityNode::removeRedefinedNode(QActivityNode *redefinedNode)
 
     QTUML_D(QActivityNode);
     if (d->redefinedNodes->contains(redefinedNode)) {
-        d->removeRedefinedNode(redefinedNode);
+        d->redefinedNodes->remove(redefinedNode);
+
+        // Adjust subsetted property(ies)
+        d->removeRedefinedElement(redefinedNode);
     }
 }
 
@@ -265,7 +170,7 @@ void QActivityNode::addIncoming(QActivityEdge *incoming)
 
     QTUML_D(QActivityNode);
     if (!d->incomings->contains(incoming)) {
-        d->addIncoming(incoming);
+        d->incomings->insert(incoming);
 
         // Adjust opposite property
         incoming->setTarget(this);
@@ -278,7 +183,7 @@ void QActivityNode::removeIncoming(QActivityEdge *incoming)
 
     QTUML_D(QActivityNode);
     if (d->incomings->contains(incoming)) {
-        d->removeIncoming(incoming);
+        d->incomings->remove(incoming);
 
         // Adjust opposite property
         incoming->setTarget(0);
@@ -302,7 +207,10 @@ void QActivityNode::setActivity(QActivity *activity)
 
     QTUML_D(QActivityNode);
     if (d->activity != activity) {
-        d->setActivity(activity);
+        d->activity = activity;
+
+        // Adjust subsetted property(ies)
+        d->setOwner(activity);
 
         // Adjust opposite property
         activity->addNode(this);
@@ -337,7 +245,14 @@ void QActivityNode::setInStructuredNode(QStructuredActivityNode *inStructuredNod
 
     QTUML_D(QActivityNode);
     if (d->inStructuredNode != inStructuredNode) {
-        d->setInStructuredNode(inStructuredNode);
+        // Adjust subsetted property(ies)
+        d->removeInGroup(d->inStructuredNode);
+
+        d->inStructuredNode = inStructuredNode;
+
+        // Adjust subsetted property(ies)
+        d->addInGroup(inStructuredNode);
+        d->setOwner(inStructuredNode);
 
         // Adjust opposite property
         inStructuredNode->addNode(this);
@@ -361,7 +276,10 @@ void QActivityNode::addInPartition(QActivityPartition *inPartition)
 
     QTUML_D(QActivityNode);
     if (!d->inPartition->contains(inPartition)) {
-        d->addInPartition(inPartition);
+        d->inPartition->insert(inPartition);
+
+        // Adjust subsetted property(ies)
+        d->addInGroup(inPartition);
 
         // Adjust opposite property
         inPartition->addNode(this);
@@ -374,7 +292,10 @@ void QActivityNode::removeInPartition(QActivityPartition *inPartition)
 
     QTUML_D(QActivityNode);
     if (d->inPartition->contains(inPartition)) {
-        d->removeInPartition(inPartition);
+        d->inPartition->remove(inPartition);
+
+        // Adjust subsetted property(ies)
+        d->removeInGroup(inPartition);
 
         // Adjust opposite property
         inPartition->removeNode(this);
@@ -398,7 +319,10 @@ void QActivityNode::addInInterruptibleRegion(QInterruptibleActivityRegion *inInt
 
     QTUML_D(QActivityNode);
     if (!d->inInterruptibleRegion->contains(inInterruptibleRegion)) {
-        d->addInInterruptibleRegion(inInterruptibleRegion);
+        d->inInterruptibleRegion->insert(inInterruptibleRegion);
+
+        // Adjust subsetted property(ies)
+        d->addInGroup(inInterruptibleRegion);
 
         // Adjust opposite property
         inInterruptibleRegion->addNode(this);
@@ -411,7 +335,10 @@ void QActivityNode::removeInInterruptibleRegion(QInterruptibleActivityRegion *in
 
     QTUML_D(QActivityNode);
     if (d->inInterruptibleRegion->contains(inInterruptibleRegion)) {
-        d->removeInInterruptibleRegion(inInterruptibleRegion);
+        d->inInterruptibleRegion->remove(inInterruptibleRegion);
+
+        // Adjust subsetted property(ies)
+        d->removeInGroup(inInterruptibleRegion);
 
         // Adjust opposite property
         inInterruptibleRegion->removeNode(this);
@@ -435,7 +362,7 @@ void QActivityNode::addOutgoing(QActivityEdge *outgoing)
 
     QTUML_D(QActivityNode);
     if (!d->outgoings->contains(outgoing)) {
-        d->addOutgoing(outgoing);
+        d->outgoings->insert(outgoing);
 
         // Adjust opposite property
         outgoing->setSource(this);
@@ -448,7 +375,7 @@ void QActivityNode::removeOutgoing(QActivityEdge *outgoing)
 
     QTUML_D(QActivityNode);
     if (d->outgoings->contains(outgoing)) {
-        d->removeOutgoing(outgoing);
+        d->outgoings->remove(outgoing);
 
         // Adjust opposite property
         outgoing->setSource(0);

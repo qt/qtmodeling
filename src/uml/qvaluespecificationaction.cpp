@@ -41,48 +41,21 @@
 
 #include "qvaluespecificationaction.h"
 #include "qvaluespecificationaction_p.h"
-#include "qelement_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QOutputPin>
 #include <QtUml/QValueSpecification>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QValueSpecificationActionPrivate::QValueSpecificationActionPrivate() :
+QValueSpecificationActionPrivate::QValueSpecificationActionPrivate(QValueSpecificationAction *q_umlptr) :
     value(0),
     result(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QValueSpecificationActionPrivate::~QValueSpecificationActionPrivate()
 {
-}
-
-void QValueSpecificationActionPrivate::setValue(QValueSpecification *value)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->value);
-
-    this->value = value;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(value);
-}
-
-void QValueSpecificationActionPrivate::setResult(QOutputPin *result)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOutput(this->result);
-
-    this->result = result;
-
-    // Adjust subsetted property(ies)
-    addOutput(result);
 }
 
 /*!
@@ -96,7 +69,7 @@ void QValueSpecificationActionPrivate::setResult(QOutputPin *result)
 QValueSpecificationAction::QValueSpecificationAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QValueSpecificationActionPrivate;
+    d_umlptr = new QValueSpecificationActionPrivate(this);
 }
 
 QValueSpecificationAction::QValueSpecificationAction(bool createPimpl, QObject *parent)
@@ -127,7 +100,13 @@ void QValueSpecificationAction::setValue(QValueSpecification *value)
 
     QTUML_D(QValueSpecificationAction);
     if (d->value != value) {
-        d->setValue(value);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->value);
+
+        d->value = value;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(value);
     }
 }
 
@@ -148,7 +127,13 @@ void QValueSpecificationAction::setResult(QOutputPin *result)
 
     QTUML_D(QValueSpecificationAction);
     if (d->result != result) {
-        d->setResult(result);
+        // Adjust subsetted property(ies)
+        d->removeOutput(d->result);
+
+        d->result = result;
+
+        // Adjust subsetted property(ies)
+        d->addOutput(result);
     }
 }
 

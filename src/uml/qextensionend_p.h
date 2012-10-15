@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qproperty_p.h"
 
 QT_BEGIN_HEADER
@@ -54,19 +53,15 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QStereotype;
+class QExtensionEnd;
 
 class QExtensionEndPrivate : public QPropertyPrivate
 {
 public:
-    explicit QExtensionEndPrivate();
+    explicit QExtensionEndPrivate(QExtensionEnd *q_umlptr = 0);
     virtual ~QExtensionEndPrivate();
 
     QStereotype *type;
-
-    // Internal functions for attributes
-
-    // Internal functions for association-ends
-    void setType(QStereotype *type);
 };
 
 QT_END_NAMESPACE_QTUML

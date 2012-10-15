@@ -41,7 +41,6 @@
 
 #include "qlinkenddata.h"
 #include "qlinkenddata_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QProperty>
 #include <QtUml/QQualifierValue>
@@ -49,50 +48,17 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QLinkEndDataPrivate::QLinkEndDataPrivate() :
+QLinkEndDataPrivate::QLinkEndDataPrivate(QLinkEndData *q_umlptr) :
     value(0),
     end(0),
     qualifiers(new QSet<QQualifierValue *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QLinkEndDataPrivate::~QLinkEndDataPrivate()
 {
     delete qualifiers;
-}
-
-void QLinkEndDataPrivate::setValue(QInputPin *value)
-{
-    // This is a read-write association end
-
-    this->value = value;
-}
-
-void QLinkEndDataPrivate::setEnd(QProperty *end)
-{
-    // This is a read-write association end
-
-    this->end = end;
-}
-
-void QLinkEndDataPrivate::addQualifier(QQualifierValue *qualifier)
-{
-    // This is a read-write association end
-
-    this->qualifiers->insert(qualifier);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(qualifier);
-}
-
-void QLinkEndDataPrivate::removeQualifier(QQualifierValue *qualifier)
-{
-    // This is a read-write association end
-
-    this->qualifiers->remove(qualifier);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(qualifier);
 }
 
 /*!
@@ -106,7 +72,7 @@ void QLinkEndDataPrivate::removeQualifier(QQualifierValue *qualifier)
 QLinkEndData::QLinkEndData(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QLinkEndDataPrivate;
+    d_umlptr = new QLinkEndDataPrivate(this);
 }
 
 QLinkEndData::QLinkEndData(bool createPimpl, QObject *parent)
@@ -137,7 +103,7 @@ void QLinkEndData::setValue(QInputPin *value)
 
     QTUML_D(QLinkEndData);
     if (d->value != value) {
-        d->setValue(value);
+        d->value = value;
     }
 }
 
@@ -158,7 +124,7 @@ void QLinkEndData::setEnd(QProperty *end)
 
     QTUML_D(QLinkEndData);
     if (d->end != end) {
-        d->setEnd(end);
+        d->end = end;
     }
 }
 
@@ -179,7 +145,10 @@ void QLinkEndData::addQualifier(QQualifierValue *qualifier)
 
     QTUML_D(QLinkEndData);
     if (!d->qualifiers->contains(qualifier)) {
-        d->addQualifier(qualifier);
+        d->qualifiers->insert(qualifier);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(qualifier);
     }
 }
 
@@ -189,7 +158,10 @@ void QLinkEndData::removeQualifier(QQualifierValue *qualifier)
 
     QTUML_D(QLinkEndData);
     if (d->qualifiers->contains(qualifier)) {
-        d->removeQualifier(qualifier);
+        d->qualifiers->remove(qualifier);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(qualifier);
     }
 }
 

@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qlinkenddata_p.h"
 
 QT_BEGIN_HEADER
@@ -54,21 +53,16 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QInputPin;
+class QLinkEndDestructionData;
 
 class QLinkEndDestructionDataPrivate : public QLinkEndDataPrivate
 {
 public:
-    explicit QLinkEndDestructionDataPrivate();
+    explicit QLinkEndDestructionDataPrivate(QLinkEndDestructionData *q_umlptr = 0);
     virtual ~QLinkEndDestructionDataPrivate();
 
     bool isDestroyDuplicates;
     QInputPin *destroyAt;
-
-    // Internal functions for attributes
-    void setDestroyDuplicates(bool isDestroyDuplicates);
-
-    // Internal functions for association-ends
-    void setDestroyAt(QInputPin *destroyAt);
 };
 
 QT_END_NAMESPACE_QTUML

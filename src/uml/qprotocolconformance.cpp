@@ -41,48 +41,20 @@
 
 #include "qprotocolconformance.h"
 #include "qprotocolconformance_p.h"
-#include "qelement_p.h"
-#include "qdirectedrelationship_p.h"
 
 #include <QtUml/QProtocolStateMachine>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QProtocolConformancePrivate::QProtocolConformancePrivate() :
+QProtocolConformancePrivate::QProtocolConformancePrivate(QProtocolConformance *q_umlptr) :
     specificMachine(0),
     generalMachine(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QProtocolConformancePrivate::~QProtocolConformancePrivate()
 {
-}
-
-void QProtocolConformancePrivate::setSpecificMachine(QProtocolStateMachine *specificMachine)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeSource(this->specificMachine);
-
-    this->specificMachine = specificMachine;
-
-    // Adjust subsetted property(ies)
-    setOwner(specificMachine);
-    addSource(specificMachine);
-}
-
-void QProtocolConformancePrivate::setGeneralMachine(QProtocolStateMachine *generalMachine)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeTarget(this->generalMachine);
-
-    this->generalMachine = generalMachine;
-
-    // Adjust subsetted property(ies)
-    addTarget(generalMachine);
 }
 
 /*!
@@ -96,7 +68,7 @@ void QProtocolConformancePrivate::setGeneralMachine(QProtocolStateMachine *gener
 QProtocolConformance::QProtocolConformance(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QProtocolConformancePrivate;
+    d_umlptr = new QProtocolConformancePrivate(this);
 }
 
 QProtocolConformance::QProtocolConformance(bool createPimpl, QObject *parent)
@@ -127,7 +99,14 @@ void QProtocolConformance::setSpecificMachine(QProtocolStateMachine *specificMac
 
     QTUML_D(QProtocolConformance);
     if (d->specificMachine != specificMachine) {
-        d->setSpecificMachine(specificMachine);
+        // Adjust subsetted property(ies)
+        d->removeSource(d->specificMachine);
+
+        d->specificMachine = specificMachine;
+
+        // Adjust subsetted property(ies)
+        d->setOwner(specificMachine);
+        d->addSource(specificMachine);
 
         // Adjust opposite property
         specificMachine->addConformance(this);
@@ -151,7 +130,13 @@ void QProtocolConformance::setGeneralMachine(QProtocolStateMachine *generalMachi
 
     QTUML_D(QProtocolConformance);
     if (d->generalMachine != generalMachine) {
-        d->setGeneralMachine(generalMachine);
+        // Adjust subsetted property(ies)
+        d->removeTarget(d->generalMachine);
+
+        d->generalMachine = generalMachine;
+
+        // Adjust subsetted property(ies)
+        d->addTarget(generalMachine);
     }
 }
 

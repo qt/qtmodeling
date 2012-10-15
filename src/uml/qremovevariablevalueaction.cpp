@@ -41,40 +41,20 @@
 
 #include "qremovevariablevalueaction.h"
 #include "qremovevariablevalueaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QRemoveVariableValueActionPrivate::QRemoveVariableValueActionPrivate() :
+QRemoveVariableValueActionPrivate::QRemoveVariableValueActionPrivate(QRemoveVariableValueAction *q_umlptr) :
     isRemoveDuplicates(false),
     removeAt(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QRemoveVariableValueActionPrivate::~QRemoveVariableValueActionPrivate()
 {
-}
-
-void QRemoveVariableValueActionPrivate::setRemoveDuplicates(bool isRemoveDuplicates)
-{
-    // This is a read-write attribute
-
-    this->isRemoveDuplicates = isRemoveDuplicates;
-}
-
-void QRemoveVariableValueActionPrivate::setRemoveAt(QInputPin *removeAt)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeInput(this->removeAt);
-
-    this->removeAt = removeAt;
-
-    // Adjust subsetted property(ies)
-    addInput(removeAt);
 }
 
 /*!
@@ -88,7 +68,7 @@ void QRemoveVariableValueActionPrivate::setRemoveAt(QInputPin *removeAt)
 QRemoveVariableValueAction::QRemoveVariableValueAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QRemoveVariableValueActionPrivate;
+    d_umlptr = new QRemoveVariableValueActionPrivate(this);
 }
 
 QRemoveVariableValueAction::QRemoveVariableValueAction(bool createPimpl, QObject *parent)
@@ -119,7 +99,7 @@ void QRemoveVariableValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
 
     QTUML_D(QRemoveVariableValueAction);
     if (d->isRemoveDuplicates != isRemoveDuplicates) {
-        d->setRemoveDuplicates(isRemoveDuplicates);
+        d->isRemoveDuplicates = isRemoveDuplicates;
     }
 }
 
@@ -140,7 +120,13 @@ void QRemoveVariableValueAction::setRemoveAt(QInputPin *removeAt)
 
     QTUML_D(QRemoveVariableValueAction);
     if (d->removeAt != removeAt) {
-        d->setRemoveAt(removeAt);
+        // Adjust subsetted property(ies)
+        d->removeInput(d->removeAt);
+
+        d->removeAt = removeAt;
+
+        // Adjust subsetted property(ies)
+        d->addInput(removeAt);
     }
 }
 

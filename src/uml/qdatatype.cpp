@@ -41,8 +41,6 @@
 
 #include "qdatatype.h"
 #include "qdatatype_p.h"
-#include "qclassifier_p.h"
-#include "qnamespace_p.h"
 
 #include <QtUml/QProperty>
 #include <QtUml/QOperation>
@@ -50,60 +48,17 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDataTypePrivate::QDataTypePrivate() :
+QDataTypePrivate::QDataTypePrivate(QDataType *q_umlptr) :
     ownedOperations(new QList<QOperation *>),
     ownedAttributes(new QList<QProperty *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QDataTypePrivate::~QDataTypePrivate()
 {
     delete ownedOperations;
     delete ownedAttributes;
-}
-
-void QDataTypePrivate::addOwnedOperation(QOperation *ownedOperation)
-{
-    // This is a read-write association end
-
-    this->ownedOperations->append(ownedOperation);
-
-    // Adjust subsetted property(ies)
-    addFeature(ownedOperation);
-    addOwnedMember(ownedOperation);
-}
-
-void QDataTypePrivate::removeOwnedOperation(QOperation *ownedOperation)
-{
-    // This is a read-write association end
-
-    this->ownedOperations->removeAll(ownedOperation);
-
-    // Adjust subsetted property(ies)
-    removeFeature(ownedOperation);
-    removeOwnedMember(ownedOperation);
-}
-
-void QDataTypePrivate::addOwnedAttribute(QProperty *ownedAttribute)
-{
-    // This is a read-write association end
-
-    this->ownedAttributes->append(ownedAttribute);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(ownedAttribute);
-    addAttribute(ownedAttribute);
-}
-
-void QDataTypePrivate::removeOwnedAttribute(QProperty *ownedAttribute)
-{
-    // This is a read-write association end
-
-    this->ownedAttributes->removeAll(ownedAttribute);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(ownedAttribute);
-    removeAttribute(ownedAttribute);
 }
 
 /*!
@@ -117,7 +72,7 @@ void QDataTypePrivate::removeOwnedAttribute(QProperty *ownedAttribute)
 QDataType::QDataType(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QDataTypePrivate;
+    d_umlptr = new QDataTypePrivate(this);
 }
 
 QDataType::QDataType(bool createPimpl, QObject *parent)
@@ -148,7 +103,11 @@ void QDataType::addOwnedOperation(QOperation *ownedOperation)
 
     QTUML_D(QDataType);
     if (!d->ownedOperations->contains(ownedOperation)) {
-        d->addOwnedOperation(ownedOperation);
+        d->ownedOperations->append(ownedOperation);
+
+        // Adjust subsetted property(ies)
+        d->addFeature(ownedOperation);
+        d->addOwnedMember(ownedOperation);
 
         // Adjust opposite property
         ownedOperation->setDatatype(this);
@@ -161,7 +120,11 @@ void QDataType::removeOwnedOperation(QOperation *ownedOperation)
 
     QTUML_D(QDataType);
     if (d->ownedOperations->contains(ownedOperation)) {
-        d->removeOwnedOperation(ownedOperation);
+        d->ownedOperations->removeAll(ownedOperation);
+
+        // Adjust subsetted property(ies)
+        d->removeFeature(ownedOperation);
+        d->removeOwnedMember(ownedOperation);
 
         // Adjust opposite property
         ownedOperation->setDatatype(0);
@@ -185,7 +148,11 @@ void QDataType::addOwnedAttribute(QProperty *ownedAttribute)
 
     QTUML_D(QDataType);
     if (!d->ownedAttributes->contains(ownedAttribute)) {
-        d->addOwnedAttribute(ownedAttribute);
+        d->ownedAttributes->append(ownedAttribute);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(ownedAttribute);
+        d->addAttribute(ownedAttribute);
 
         // Adjust opposite property
         ownedAttribute->setDatatype(this);
@@ -198,7 +165,11 @@ void QDataType::removeOwnedAttribute(QProperty *ownedAttribute)
 
     QTUML_D(QDataType);
     if (d->ownedAttributes->contains(ownedAttribute)) {
-        d->removeOwnedAttribute(ownedAttribute);
+        d->ownedAttributes->removeAll(ownedAttribute);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(ownedAttribute);
+        d->removeAttribute(ownedAttribute);
 
         // Adjust opposite property
         ownedAttribute->setDatatype(0);

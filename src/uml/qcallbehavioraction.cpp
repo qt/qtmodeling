@@ -46,20 +46,14 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCallBehaviorActionPrivate::QCallBehaviorActionPrivate() :
+QCallBehaviorActionPrivate::QCallBehaviorActionPrivate(QCallBehaviorAction *q_umlptr) :
     behavior(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QCallBehaviorActionPrivate::~QCallBehaviorActionPrivate()
 {
-}
-
-void QCallBehaviorActionPrivate::setBehavior(QBehavior *behavior)
-{
-    // This is a read-write association end
-
-    this->behavior = behavior;
 }
 
 /*!
@@ -73,7 +67,7 @@ void QCallBehaviorActionPrivate::setBehavior(QBehavior *behavior)
 QCallBehaviorAction::QCallBehaviorAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QCallBehaviorActionPrivate;
+    d_umlptr = new QCallBehaviorActionPrivate(this);
 }
 
 QCallBehaviorAction::QCallBehaviorAction(bool createPimpl, QObject *parent)
@@ -104,7 +98,7 @@ void QCallBehaviorAction::setBehavior(QBehavior *behavior)
 
     QTUML_D(QCallBehaviorAction);
     if (d->behavior != behavior) {
-        d->setBehavior(behavior);
+        d->behavior = behavior;
     }
 }
 

@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QOutputPinPrivate::QOutputPinPrivate()
+QOutputPinPrivate::QOutputPinPrivate(QOutputPin *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QOutputPinPrivate::~QOutputPinPrivate()
@@ -64,7 +65,7 @@ QOutputPinPrivate::~QOutputPinPrivate()
 QOutputPin::QOutputPin(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QOutputPinPrivate;
+    d_umlptr = new QOutputPinPrivate(this);
 }
 
 QOutputPin::QOutputPin(bool createPimpl, QObject *parent)

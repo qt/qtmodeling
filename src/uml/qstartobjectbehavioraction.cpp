@@ -41,32 +41,19 @@
 
 #include "qstartobjectbehavioraction.h"
 #include "qstartobjectbehavioraction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QStartObjectBehaviorActionPrivate::QStartObjectBehaviorActionPrivate() :
+QStartObjectBehaviorActionPrivate::QStartObjectBehaviorActionPrivate(QStartObjectBehaviorAction *q_umlptr) :
     object(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QStartObjectBehaviorActionPrivate::~QStartObjectBehaviorActionPrivate()
 {
-}
-
-void QStartObjectBehaviorActionPrivate::setObject(QInputPin *object)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeInput(this->object);
-
-    this->object = object;
-
-    // Adjust subsetted property(ies)
-    addInput(object);
 }
 
 /*!
@@ -80,7 +67,7 @@ void QStartObjectBehaviorActionPrivate::setObject(QInputPin *object)
 QStartObjectBehaviorAction::QStartObjectBehaviorAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QStartObjectBehaviorActionPrivate;
+    d_umlptr = new QStartObjectBehaviorActionPrivate(this);
 }
 
 QStartObjectBehaviorAction::QStartObjectBehaviorAction(bool createPimpl, QObject *parent)
@@ -111,7 +98,13 @@ void QStartObjectBehaviorAction::setObject(QInputPin *object)
 
     QTUML_D(QStartObjectBehaviorAction);
     if (d->object != object) {
-        d->setObject(object);
+        // Adjust subsetted property(ies)
+        d->removeInput(d->object);
+
+        d->object = object;
+
+        // Adjust subsetted property(ies)
+        d->addInput(object);
     }
 }
 

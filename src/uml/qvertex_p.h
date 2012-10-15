@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qnamedelement_p.h"
 
 // Qt includes
@@ -63,13 +62,18 @@ class QStateMachine;
 class QVertexPrivate : public virtual QNamedElementPrivate
 {
 public:
-    explicit QVertexPrivate();
     virtual ~QVertexPrivate();
 
     QRegion *container;
 
-    // Internal functions for association-ends
-    void setContainer(QRegion *container);
+    // Internal functions for read-only subsetted association ends
+    void addIncoming(QTransition *incoming);
+    void removeIncoming(QTransition *incoming);
+    void addOutgoing(QTransition *outgoing);
+    void removeOutgoing(QTransition *outgoing);
+
+protected:
+    explicit QVertexPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

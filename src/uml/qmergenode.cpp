@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QMergeNodePrivate::QMergeNodePrivate()
+QMergeNodePrivate::QMergeNodePrivate(QMergeNode *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QMergeNodePrivate::~QMergeNodePrivate()
@@ -64,7 +65,7 @@ QMergeNodePrivate::~QMergeNodePrivate()
 QMergeNode::QMergeNode(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QMergeNodePrivate;
+    d_umlptr = new QMergeNodePrivate(this);
 }
 
 QMergeNode::QMergeNode(bool createPimpl, QObject *parent)

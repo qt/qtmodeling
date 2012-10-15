@@ -41,6 +41,7 @@
 
 #include "qextension.h"
 #include "qextension_p.h"
+#include "qclass_p.h"
 
 #include <QtUml/QClass>
 #include <QtUml/QExtensionEnd>
@@ -48,9 +49,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QExtensionPrivate::QExtensionPrivate() :
+QExtensionPrivate::QExtensionPrivate(QExtension *q_umlptr) :
     ownedEnd(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QExtensionPrivate::~QExtensionPrivate()
@@ -58,11 +60,19 @@ QExtensionPrivate::~QExtensionPrivate()
     delete ownedEnd;
 }
 
-void QExtensionPrivate::setOwnedEnd(QExtensionEnd *ownedEnd)
+void QExtensionPrivate::setMetaclass(QClass *metaclass)
 {
-    // This is a read-write association end
+    // This is a read-only derived association end
 
-    this->ownedEnd = ownedEnd;
+    qWarning("QExtension::setMetaclass: to be implemented (this is a derived associationend)");
+
+    if (false /* <derived-change-criteria> */) {
+        // <derived-code>
+
+        // Adjust opposite property
+        QTUML_Q(QExtension);
+        (dynamic_cast<QClassPrivate *>(metaclass->d_umlptr))->addExtension(q);
+    }
 }
 
 /*!
@@ -76,7 +86,7 @@ void QExtensionPrivate::setOwnedEnd(QExtensionEnd *ownedEnd)
 QExtension::QExtension(QObject *parent)
     : QAssociation(false, parent)
 {
-    d_umlptr = new QExtensionPrivate;
+    d_umlptr = new QExtensionPrivate(this);
 }
 
 QExtension::QExtension(bool createPimpl, QObject *parent)
@@ -99,7 +109,7 @@ bool QExtension::isRequired() const
 
     qWarning("QExtension::isRequired: to be implemented (this is a derived attribute)");
 
-    QTUML_D(const QExtension);
+    //QTUML_D(const QExtension);
     //return <derived-return>;
 }
 
@@ -112,7 +122,7 @@ QClass *QExtension::metaclass() const
 
     qWarning("QExtension::metaclass: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QExtension);
+    //QTUML_D(const QExtension);
     //return <derived-return>;
 }
 
@@ -133,7 +143,7 @@ void QExtension::setOwnedEnd(QExtensionEnd *ownedEnd)
 
     QTUML_D(QExtension);
     if (d->ownedEnd != ownedEnd) {
-        d->setOwnedEnd(ownedEnd);
+        d->ownedEnd = ownedEnd;
     }
 }
 

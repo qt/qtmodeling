@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qvertex_p.h"
 
 // Qt includes
@@ -58,23 +57,17 @@ QT_MODULE(QtUml)
 
 class QPseudostate;
 class QState;
+class QConnectionPointReference;
 
 class QConnectionPointReferencePrivate : public QVertexPrivate
 {
 public:
-    explicit QConnectionPointReferencePrivate();
+    explicit QConnectionPointReferencePrivate(QConnectionPointReference *q_umlptr = 0);
     virtual ~QConnectionPointReferencePrivate();
 
     QSet<QPseudostate *> *exits;
     QState *state;
     QSet<QPseudostate *> *entries;
-
-    // Internal functions for association-ends
-    void addExit(QPseudostate *exit);
-    void removeExit(QPseudostate *exit);
-    void setState(QState *state);
-    void addEntry(QPseudostate *entry);
-    void removeEntry(QPseudostate *entry);
 };
 
 QT_END_NAMESPACE_QTUML

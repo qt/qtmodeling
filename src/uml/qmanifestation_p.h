@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qabstraction_p.h"
 
 QT_BEGIN_HEADER
@@ -54,17 +53,15 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QPackageableElement;
+class QManifestation;
 
 class QManifestationPrivate : public QAbstractionPrivate
 {
 public:
-    explicit QManifestationPrivate();
+    explicit QManifestationPrivate(QManifestation *q_umlptr = 0);
     virtual ~QManifestationPrivate();
 
     QPackageableElement *utilizedElement;
-
-    // Internal functions for association-ends
-    void setUtilizedElement(QPackageableElement *utilizedElement);
 };
 
 QT_END_NAMESPACE_QTUML

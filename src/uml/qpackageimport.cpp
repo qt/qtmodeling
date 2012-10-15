@@ -41,57 +41,22 @@
 
 #include "qpackageimport.h"
 #include "qpackageimport_p.h"
-#include "qelement_p.h"
-#include "qdirectedrelationship_p.h"
 
 #include <QtUml/QPackage>
 #include <QtUml/QNamespace>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QPackageImportPrivate::QPackageImportPrivate() :
+QPackageImportPrivate::QPackageImportPrivate(QPackageImport *q_umlptr) :
     visibility(QtUml::VisibilityPublic),
     importingNamespace(0),
     importedPackage(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QPackageImportPrivate::~QPackageImportPrivate()
 {
-}
-
-void QPackageImportPrivate::setVisibility(QtUml::VisibilityKind visibility)
-{
-    // This is a read-write attribute
-
-    this->visibility = visibility;
-}
-
-void QPackageImportPrivate::setImportingNamespace(QNamespace *importingNamespace)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeSource(this->importingNamespace);
-
-    this->importingNamespace = importingNamespace;
-
-    // Adjust subsetted property(ies)
-    setOwner(importingNamespace);
-    addSource(importingNamespace);
-}
-
-void QPackageImportPrivate::setImportedPackage(QPackage *importedPackage)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeTarget(this->importedPackage);
-
-    this->importedPackage = importedPackage;
-
-    // Adjust subsetted property(ies)
-    addTarget(importedPackage);
 }
 
 /*!
@@ -105,7 +70,7 @@ void QPackageImportPrivate::setImportedPackage(QPackage *importedPackage)
 QPackageImport::QPackageImport(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QPackageImportPrivate;
+    d_umlptr = new QPackageImportPrivate(this);
 }
 
 QPackageImport::QPackageImport(bool createPimpl, QObject *parent)
@@ -136,7 +101,7 @@ void QPackageImport::setVisibility(QtUml::VisibilityKind visibility)
 
     QTUML_D(QPackageImport);
     if (d->visibility != visibility) {
-        d->setVisibility(visibility);
+        d->visibility = visibility;
     }
 }
 
@@ -157,7 +122,14 @@ void QPackageImport::setImportingNamespace(QNamespace *importingNamespace)
 
     QTUML_D(QPackageImport);
     if (d->importingNamespace != importingNamespace) {
-        d->setImportingNamespace(importingNamespace);
+        // Adjust subsetted property(ies)
+        d->removeSource(d->importingNamespace);
+
+        d->importingNamespace = importingNamespace;
+
+        // Adjust subsetted property(ies)
+        d->setOwner(importingNamespace);
+        d->addSource(importingNamespace);
 
         // Adjust opposite property
         importingNamespace->addPackageImport(this);
@@ -181,7 +153,13 @@ void QPackageImport::setImportedPackage(QPackage *importedPackage)
 
     QTUML_D(QPackageImport);
     if (d->importedPackage != importedPackage) {
-        d->setImportedPackage(importedPackage);
+        // Adjust subsetted property(ies)
+        d->removeTarget(d->importedPackage);
+
+        d->importedPackage = importedPackage;
+
+        // Adjust subsetted property(ies)
+        d->addTarget(importedPackage);
     }
 }
 

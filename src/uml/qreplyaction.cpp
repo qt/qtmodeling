@@ -41,63 +41,23 @@
 
 #include "qreplyaction.h"
 #include "qreplyaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QTrigger>
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QReplyActionPrivate::QReplyActionPrivate() :
+QReplyActionPrivate::QReplyActionPrivate(QReplyAction *q_umlptr) :
     replyToCall(0),
     returnInformation(0),
     replyValues(new QSet<QInputPin *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QReplyActionPrivate::~QReplyActionPrivate()
 {
     delete replyValues;
-}
-
-void QReplyActionPrivate::setReplyToCall(QTrigger *replyToCall)
-{
-    // This is a read-write association end
-
-    this->replyToCall = replyToCall;
-}
-
-void QReplyActionPrivate::setReturnInformation(QInputPin *returnInformation)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeInput(this->returnInformation);
-
-    this->returnInformation = returnInformation;
-
-    // Adjust subsetted property(ies)
-    addInput(returnInformation);
-}
-
-void QReplyActionPrivate::addReplyValue(QInputPin *replyValue)
-{
-    // This is a read-write association end
-
-    this->replyValues->insert(replyValue);
-
-    // Adjust subsetted property(ies)
-    addInput(replyValue);
-}
-
-void QReplyActionPrivate::removeReplyValue(QInputPin *replyValue)
-{
-    // This is a read-write association end
-
-    this->replyValues->remove(replyValue);
-
-    // Adjust subsetted property(ies)
-    removeInput(replyValue);
 }
 
 /*!
@@ -111,7 +71,7 @@ void QReplyActionPrivate::removeReplyValue(QInputPin *replyValue)
 QReplyAction::QReplyAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QReplyActionPrivate;
+    d_umlptr = new QReplyActionPrivate(this);
 }
 
 QReplyAction::QReplyAction(bool createPimpl, QObject *parent)
@@ -142,7 +102,7 @@ void QReplyAction::setReplyToCall(QTrigger *replyToCall)
 
     QTUML_D(QReplyAction);
     if (d->replyToCall != replyToCall) {
-        d->setReplyToCall(replyToCall);
+        d->replyToCall = replyToCall;
     }
 }
 
@@ -163,7 +123,13 @@ void QReplyAction::setReturnInformation(QInputPin *returnInformation)
 
     QTUML_D(QReplyAction);
     if (d->returnInformation != returnInformation) {
-        d->setReturnInformation(returnInformation);
+        // Adjust subsetted property(ies)
+        d->removeInput(d->returnInformation);
+
+        d->returnInformation = returnInformation;
+
+        // Adjust subsetted property(ies)
+        d->addInput(returnInformation);
     }
 }
 
@@ -184,7 +150,10 @@ void QReplyAction::addReplyValue(QInputPin *replyValue)
 
     QTUML_D(QReplyAction);
     if (!d->replyValues->contains(replyValue)) {
-        d->addReplyValue(replyValue);
+        d->replyValues->insert(replyValue);
+
+        // Adjust subsetted property(ies)
+        d->addInput(replyValue);
     }
 }
 
@@ -194,7 +163,10 @@ void QReplyAction::removeReplyValue(QInputPin *replyValue)
 
     QTUML_D(QReplyAction);
     if (d->replyValues->contains(replyValue)) {
-        d->removeReplyValue(replyValue);
+        d->replyValues->remove(replyValue);
+
+        // Adjust subsetted property(ies)
+        d->removeInput(replyValue);
     }
 }
 

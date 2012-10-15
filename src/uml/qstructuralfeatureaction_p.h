@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qaction_p.h"
 
 QT_BEGIN_HEADER
@@ -59,15 +58,13 @@ class QStructuralFeature;
 class QStructuralFeatureActionPrivate : public QActionPrivate
 {
 public:
-    explicit QStructuralFeatureActionPrivate();
     virtual ~QStructuralFeatureActionPrivate();
 
     QInputPin *object;
     QStructuralFeature *structuralFeature;
 
-    // Internal functions for association-ends
-    void setObject(QInputPin *object);
-    void setStructuralFeature(QStructuralFeature *structuralFeature);
+protected:
+    explicit QStructuralFeatureActionPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qliteralspecification_p.h"
 
 // Qt includes
@@ -55,17 +54,15 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
+class QLiteralString;
 
 class QLiteralStringPrivate : public QLiteralSpecificationPrivate
 {
 public:
-    explicit QLiteralStringPrivate();
+    explicit QLiteralStringPrivate(QLiteralString *q_umlptr = 0);
     virtual ~QLiteralStringPrivate();
 
     QString value;
-
-    // Internal functions for attributes
-    void setValue(QString value);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -44,9 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qoccurrencespecification_p.h"
-
 #include "qmessageend_p.h"
 
 QT_BEGIN_HEADER
@@ -54,11 +52,12 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
+class QMessageOccurrenceSpecification;
 
 class QMessageOccurrenceSpecificationPrivate : public QOccurrenceSpecificationPrivate, public QMessageEndPrivate
 {
 public:
-    explicit QMessageOccurrenceSpecificationPrivate();
+    explicit QMessageOccurrenceSpecificationPrivate(QMessageOccurrenceSpecification *q_umlptr = 0);
     virtual ~QMessageOccurrenceSpecificationPrivate();
 
 };
