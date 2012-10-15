@@ -41,7 +41,6 @@
 
 #include "qinteractionuse.h"
 #include "qinteractionuse_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QProperty>
 #include <QtUml/QInteraction>
@@ -50,86 +49,20 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInteractionUsePrivate::QInteractionUsePrivate() :
+QInteractionUsePrivate::QInteractionUsePrivate(QInteractionUse *q_umlptr) :
     actualGates(new QSet<QGate *>),
     returnValue(0),
     refersTo(0),
     arguments(new QList<QValueSpecification *>),
     returnValueRecipient(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QInteractionUsePrivate::~QInteractionUsePrivate()
 {
     delete actualGates;
     delete arguments;
-}
-
-void QInteractionUsePrivate::addActualGate(QGate *actualGate)
-{
-    // This is a read-write association end
-
-    this->actualGates->insert(actualGate);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(actualGate);
-}
-
-void QInteractionUsePrivate::removeActualGate(QGate *actualGate)
-{
-    // This is a read-write association end
-
-    this->actualGates->remove(actualGate);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(actualGate);
-}
-
-void QInteractionUsePrivate::setReturnValue(QValueSpecification *returnValue)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->returnValue);
-
-    this->returnValue = returnValue;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(returnValue);
-}
-
-void QInteractionUsePrivate::setRefersTo(QInteraction *refersTo)
-{
-    // This is a read-write association end
-
-    this->refersTo = refersTo;
-}
-
-void QInteractionUsePrivate::addArgument(QValueSpecification *argument)
-{
-    // This is a read-write association end
-
-    this->arguments->append(argument);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(argument);
-}
-
-void QInteractionUsePrivate::removeArgument(QValueSpecification *argument)
-{
-    // This is a read-write association end
-
-    this->arguments->removeAll(argument);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(argument);
-}
-
-void QInteractionUsePrivate::setReturnValueRecipient(QProperty *returnValueRecipient)
-{
-    // This is a read-write association end
-
-    this->returnValueRecipient = returnValueRecipient;
 }
 
 /*!
@@ -143,7 +76,7 @@ void QInteractionUsePrivate::setReturnValueRecipient(QProperty *returnValueRecip
 QInteractionUse::QInteractionUse(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QInteractionUsePrivate;
+    d_umlptr = new QInteractionUsePrivate(this);
 }
 
 QInteractionUse::QInteractionUse(bool createPimpl, QObject *parent)
@@ -174,7 +107,10 @@ void QInteractionUse::addActualGate(QGate *actualGate)
 
     QTUML_D(QInteractionUse);
     if (!d->actualGates->contains(actualGate)) {
-        d->addActualGate(actualGate);
+        d->actualGates->insert(actualGate);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(actualGate);
     }
 }
 
@@ -184,7 +120,10 @@ void QInteractionUse::removeActualGate(QGate *actualGate)
 
     QTUML_D(QInteractionUse);
     if (d->actualGates->contains(actualGate)) {
-        d->removeActualGate(actualGate);
+        d->actualGates->remove(actualGate);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(actualGate);
     }
 }
 
@@ -205,7 +144,13 @@ void QInteractionUse::setReturnValue(QValueSpecification *returnValue)
 
     QTUML_D(QInteractionUse);
     if (d->returnValue != returnValue) {
-        d->setReturnValue(returnValue);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->returnValue);
+
+        d->returnValue = returnValue;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(returnValue);
     }
 }
 
@@ -226,7 +171,7 @@ void QInteractionUse::setRefersTo(QInteraction *refersTo)
 
     QTUML_D(QInteractionUse);
     if (d->refersTo != refersTo) {
-        d->setRefersTo(refersTo);
+        d->refersTo = refersTo;
     }
 }
 
@@ -247,7 +192,10 @@ void QInteractionUse::addArgument(QValueSpecification *argument)
 
     QTUML_D(QInteractionUse);
     if (!d->arguments->contains(argument)) {
-        d->addArgument(argument);
+        d->arguments->append(argument);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(argument);
     }
 }
 
@@ -257,7 +205,10 @@ void QInteractionUse::removeArgument(QValueSpecification *argument)
 
     QTUML_D(QInteractionUse);
     if (d->arguments->contains(argument)) {
-        d->removeArgument(argument);
+        d->arguments->removeAll(argument);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(argument);
     }
 }
 
@@ -278,7 +229,7 @@ void QInteractionUse::setReturnValueRecipient(QProperty *returnValueRecipient)
 
     QTUML_D(QInteractionUse);
     if (d->returnValueRecipient != returnValueRecipient) {
-        d->setReturnValueRecipient(returnValueRecipient);
+        d->returnValueRecipient = returnValueRecipient;
     }
 }
 

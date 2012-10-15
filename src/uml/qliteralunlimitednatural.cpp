@@ -45,20 +45,14 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QLiteralUnlimitedNaturalPrivate::QLiteralUnlimitedNaturalPrivate() :
+QLiteralUnlimitedNaturalPrivate::QLiteralUnlimitedNaturalPrivate(QLiteralUnlimitedNatural *q_umlptr) :
     value(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QLiteralUnlimitedNaturalPrivate::~QLiteralUnlimitedNaturalPrivate()
 {
-}
-
-void QLiteralUnlimitedNaturalPrivate::setValue(qint32 value)
-{
-    // This is a read-write attribute
-
-    this->value = value;
 }
 
 /*!
@@ -72,7 +66,7 @@ void QLiteralUnlimitedNaturalPrivate::setValue(qint32 value)
 QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QLiteralUnlimitedNaturalPrivate;
+    d_umlptr = new QLiteralUnlimitedNaturalPrivate(this);
 }
 
 QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(bool createPimpl, QObject *parent)
@@ -103,7 +97,7 @@ void QLiteralUnlimitedNatural::setValue(qint32 value)
 
     QTUML_D(QLiteralUnlimitedNatural);
     if (d->value != value) {
-        d->setValue(value);
+        d->value = value;
     }
 }
 

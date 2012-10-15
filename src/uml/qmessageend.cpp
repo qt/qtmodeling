@@ -55,13 +55,6 @@ QMessageEndPrivate::~QMessageEndPrivate()
 {
 }
 
-void QMessageEndPrivate::setMessage(QMessage *message)
-{
-    // This is a read-write association end
-
-    this->message = message;
-}
-
 /*!
     \class QMessageEnd
 
@@ -95,7 +88,7 @@ void QMessageEnd::setMessage(QMessage *message)
 
     QTUML_D(QMessageEnd);
     if (d->message != message) {
-        d->setMessage(message);
+        d->message = message;
     }
 }
 

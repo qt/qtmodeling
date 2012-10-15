@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QControlFlowPrivate::QControlFlowPrivate()
+QControlFlowPrivate::QControlFlowPrivate(QControlFlow *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QControlFlowPrivate::~QControlFlowPrivate()
@@ -64,7 +65,7 @@ QControlFlowPrivate::~QControlFlowPrivate()
 QControlFlow::QControlFlow(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QControlFlowPrivate;
+    d_umlptr = new QControlFlowPrivate(this);
 }
 
 QControlFlow::QControlFlow(bool createPimpl, QObject *parent)

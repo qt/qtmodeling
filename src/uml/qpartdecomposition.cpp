@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QPartDecompositionPrivate::QPartDecompositionPrivate()
+QPartDecompositionPrivate::QPartDecompositionPrivate(QPartDecomposition *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QPartDecompositionPrivate::~QPartDecompositionPrivate()
@@ -64,7 +65,7 @@ QPartDecompositionPrivate::~QPartDecompositionPrivate()
 QPartDecomposition::QPartDecomposition(QObject *parent)
     : QInteractionUse(false, parent)
 {
-    d_umlptr = new QPartDecompositionPrivate;
+    d_umlptr = new QPartDecompositionPrivate(this);
 }
 
 QPartDecomposition::QPartDecomposition(bool createPimpl, QObject *parent)

@@ -41,46 +41,20 @@
 
 #include "qinteractionconstraint.h"
 #include "qinteractionconstraint_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QValueSpecification>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInteractionConstraintPrivate::QInteractionConstraintPrivate() :
+QInteractionConstraintPrivate::QInteractionConstraintPrivate(QInteractionConstraint *q_umlptr) :
     maxint(0),
     minint(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QInteractionConstraintPrivate::~QInteractionConstraintPrivate()
 {
-}
-
-void QInteractionConstraintPrivate::setMaxint(QValueSpecification *maxint)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->maxint);
-
-    this->maxint = maxint;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(maxint);
-}
-
-void QInteractionConstraintPrivate::setMinint(QValueSpecification *minint)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->minint);
-
-    this->minint = minint;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(minint);
 }
 
 /*!
@@ -94,7 +68,7 @@ void QInteractionConstraintPrivate::setMinint(QValueSpecification *minint)
 QInteractionConstraint::QInteractionConstraint(QObject *parent)
     : QConstraint(false, parent)
 {
-    d_umlptr = new QInteractionConstraintPrivate;
+    d_umlptr = new QInteractionConstraintPrivate(this);
 }
 
 QInteractionConstraint::QInteractionConstraint(bool createPimpl, QObject *parent)
@@ -125,7 +99,13 @@ void QInteractionConstraint::setMaxint(QValueSpecification *maxint)
 
     QTUML_D(QInteractionConstraint);
     if (d->maxint != maxint) {
-        d->setMaxint(maxint);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->maxint);
+
+        d->maxint = maxint;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(maxint);
     }
 }
 
@@ -146,7 +126,13 @@ void QInteractionConstraint::setMinint(QValueSpecification *minint)
 
     QTUML_D(QInteractionConstraint);
     if (d->minint != minint) {
-        d->setMinint(minint);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->minint);
+
+        d->minint = minint;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(minint);
     }
 }
 

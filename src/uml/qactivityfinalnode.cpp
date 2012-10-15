@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QActivityFinalNodePrivate::QActivityFinalNodePrivate()
+QActivityFinalNodePrivate::QActivityFinalNodePrivate(QActivityFinalNode *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QActivityFinalNodePrivate::~QActivityFinalNodePrivate()
@@ -64,7 +65,7 @@ QActivityFinalNodePrivate::~QActivityFinalNodePrivate()
 QActivityFinalNode::QActivityFinalNode(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QActivityFinalNodePrivate;
+    d_umlptr = new QActivityFinalNodePrivate(this);
 }
 
 QActivityFinalNode::QActivityFinalNode(bool createPimpl, QObject *parent)

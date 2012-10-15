@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QLiteralNullPrivate::QLiteralNullPrivate()
+QLiteralNullPrivate::QLiteralNullPrivate(QLiteralNull *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QLiteralNullPrivate::~QLiteralNullPrivate()
@@ -64,7 +65,7 @@ QLiteralNullPrivate::~QLiteralNullPrivate()
 QLiteralNull::QLiteralNull(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QLiteralNullPrivate;
+    d_umlptr = new QLiteralNullPrivate(this);
 }
 
 QLiteralNull::QLiteralNull(bool createPimpl, QObject *parent)

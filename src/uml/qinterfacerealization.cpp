@@ -41,49 +41,21 @@
 
 #include "qinterfacerealization.h"
 #include "qinterfacerealization_p.h"
-#include "qelement_p.h"
-#include "qdependency_p.h"
 
 #include <QtUml/QInterface>
 #include <QtUml/QBehavioredClassifier>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInterfaceRealizationPrivate::QInterfaceRealizationPrivate() :
+QInterfaceRealizationPrivate::QInterfaceRealizationPrivate(QInterfaceRealization *q_umlptr) :
     implementingClassifier(0),
     contract(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QInterfaceRealizationPrivate::~QInterfaceRealizationPrivate()
 {
-}
-
-void QInterfaceRealizationPrivate::setImplementingClassifier(QBehavioredClassifier *implementingClassifier)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeClient(this->implementingClassifier);
-
-    this->implementingClassifier = implementingClassifier;
-
-    // Adjust subsetted property(ies)
-    setOwner(implementingClassifier);
-    addClient(implementingClassifier);
-}
-
-void QInterfaceRealizationPrivate::setContract(QInterface *contract)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeSupplier(this->contract);
-
-    this->contract = contract;
-
-    // Adjust subsetted property(ies)
-    addSupplier(contract);
 }
 
 /*!
@@ -97,7 +69,7 @@ void QInterfaceRealizationPrivate::setContract(QInterface *contract)
 QInterfaceRealization::QInterfaceRealization(QObject *parent)
     : QRealization(false, parent)
 {
-    d_umlptr = new QInterfaceRealizationPrivate;
+    d_umlptr = new QInterfaceRealizationPrivate(this);
 }
 
 QInterfaceRealization::QInterfaceRealization(bool createPimpl, QObject *parent)
@@ -128,7 +100,14 @@ void QInterfaceRealization::setImplementingClassifier(QBehavioredClassifier *imp
 
     QTUML_D(QInterfaceRealization);
     if (d->implementingClassifier != implementingClassifier) {
-        d->setImplementingClassifier(implementingClassifier);
+        // Adjust subsetted property(ies)
+        removeClient(d->implementingClassifier);
+
+        d->implementingClassifier = implementingClassifier;
+
+        // Adjust subsetted property(ies)
+        d->setOwner(implementingClassifier);
+        addClient(implementingClassifier);
 
         // Adjust opposite property
         implementingClassifier->addInterfaceRealization(this);
@@ -152,7 +131,13 @@ void QInterfaceRealization::setContract(QInterface *contract)
 
     QTUML_D(QInterfaceRealization);
     if (d->contract != contract) {
-        d->setContract(contract);
+        // Adjust subsetted property(ies)
+        removeSupplier(d->contract);
+
+        d->contract = contract;
+
+        // Adjust subsetted property(ies)
+        addSupplier(contract);
     }
 }
 

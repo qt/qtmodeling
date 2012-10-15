@@ -41,7 +41,6 @@
 
 #include "qvertex.h"
 #include "qvertex_p.h"
-#include "qnamedelement_p.h"
 
 #include <QtUml/QRegion>
 #include <QtUml/QTransition>
@@ -58,14 +57,64 @@ QVertexPrivate::~QVertexPrivate()
 {
 }
 
-void QVertexPrivate::setContainer(QRegion *container)
+void QVertexPrivate::addIncoming(QTransition *incoming)
 {
-    // This is a read-write association end
+    // This is a read-only derived association end
 
-    this->container = container;
+    qWarning("QVertex::addIncoming: to be implemented (this is a derived associationend)");
 
-    // Adjust subsetted property(ies)
-    setNamespace_(container);
+    if (false /* <derivedinclusion-criteria> */) {
+        // <derived-code>
+
+        // Adjust opposite property
+        QTUML_Q(QVertex);
+        incoming->setTarget(q);
+    }
+}
+
+void QVertexPrivate::removeIncoming(QTransition *incoming)
+{
+    // This is a read-only derived association end
+
+    qWarning("QVertex::removeIncoming: to be implemented (this is a derived associationend)");
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+
+        // Adjust opposite property
+        QTUML_Q(QVertex);
+        incoming->setTarget(0);
+    }
+}
+
+void QVertexPrivate::addOutgoing(QTransition *outgoing)
+{
+    // This is a read-only derived association end
+
+    qWarning("QVertex::addOutgoing: to be implemented (this is a derived associationend)");
+
+    if (false /* <derivedinclusion-criteria> */) {
+        // <derived-code>
+
+        // Adjust opposite property
+        QTUML_Q(QVertex);
+        outgoing->setSource(q);
+    }
+}
+
+void QVertexPrivate::removeOutgoing(QTransition *outgoing)
+{
+    // This is a read-only derived association end
+
+    qWarning("QVertex::removeOutgoing: to be implemented (this is a derived associationend)");
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+
+        // Adjust opposite property
+        QTUML_Q(QVertex);
+        outgoing->setSource(0);
+    }
 }
 
 /*!
@@ -93,7 +142,7 @@ const QSet<QTransition *> *QVertex::incomings() const
 
     qWarning("QVertex::incomings: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QVertex);
+    //QTUML_D(const QVertex);
     //return <derived-return>;
 }
 
@@ -114,7 +163,10 @@ void QVertex::setContainer(QRegion *container)
 
     QTUML_D(QVertex);
     if (d->container != container) {
-        d->setContainer(container);
+        d->container = container;
+
+        // Adjust subsetted property(ies)
+        d->setNamespace_(container);
 
         // Adjust opposite property
         container->addSubvertex(this);
@@ -130,7 +182,7 @@ const QSet<QTransition *> *QVertex::outgoings() const
 
     qWarning("QVertex::outgoings: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QVertex);
+    //QTUML_D(const QVertex);
     //return <derived-return>;
 }
 

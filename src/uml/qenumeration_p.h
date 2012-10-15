@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qdatatype_p.h"
 
 // Qt includes
@@ -57,18 +56,15 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QEnumerationLiteral;
+class QEnumeration;
 
 class QEnumerationPrivate : public QDataTypePrivate
 {
 public:
-    explicit QEnumerationPrivate();
+    explicit QEnumerationPrivate(QEnumeration *q_umlptr = 0);
     virtual ~QEnumerationPrivate();
 
     QList<QEnumerationLiteral *> *ownedLiterals;
-
-    // Internal functions for association-ends
-    void addOwnedLiteral(QEnumerationLiteral *ownedLiteral);
-    void removeOwnedLiteral(QEnumerationLiteral *ownedLiteral);
 };
 
 QT_END_NAMESPACE_QTUML

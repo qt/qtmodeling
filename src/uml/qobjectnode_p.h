@@ -47,9 +47,7 @@
 #include <QtUml/QtUmlEnumerations>
 
 // Base class includes
-
 #include "qactivitynode_p.h"
-
 #include "qtypedelement_p.h"
 
 // Qt includes
@@ -68,7 +66,6 @@ class QValueSpecification;
 class QObjectNodePrivate : public QActivityNodePrivate, public QTypedElementPrivate
 {
 public:
-    explicit QObjectNodePrivate();
     virtual ~QObjectNodePrivate();
 
     bool isControlType;
@@ -77,15 +74,8 @@ public:
     QBehavior *selection;
     QSet<QState *> *inState;
 
-    // Internal functions for attributes
-    void setControlType(bool isControlType);
-    void setOrdering(QtUml::ObjectNodeOrderingKind ordering);
-
-    // Internal functions for association-ends
-    void setUpperBound(QValueSpecification *upperBound);
-    void setSelection(QBehavior *selection);
-    void addInState(QState *inState);
-    void removeInState(QState *inState);
+protected:
+    explicit QObjectNodePrivate();
 };
 
 QT_END_NAMESPACE_QTUML

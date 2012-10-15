@@ -41,7 +41,6 @@
 
 #include "qinvocationaction.h"
 #include "qinvocationaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 #include <QtUml/QPort>
@@ -57,33 +56,6 @@ QInvocationActionPrivate::QInvocationActionPrivate() :
 QInvocationActionPrivate::~QInvocationActionPrivate()
 {
     delete arguments;
-}
-
-void QInvocationActionPrivate::addArgument(QInputPin *argument)
-{
-    // This is a read-write association end
-
-    this->arguments->append(argument);
-
-    // Adjust subsetted property(ies)
-    addInput(argument);
-}
-
-void QInvocationActionPrivate::removeArgument(QInputPin *argument)
-{
-    // This is a read-write association end
-
-    this->arguments->removeAll(argument);
-
-    // Adjust subsetted property(ies)
-    removeInput(argument);
-}
-
-void QInvocationActionPrivate::setOnPort(QPort *onPort)
-{
-    // This is a read-write association end
-
-    this->onPort = onPort;
 }
 
 /*!
@@ -119,7 +91,10 @@ void QInvocationAction::addArgument(QInputPin *argument)
 
     QTUML_D(QInvocationAction);
     if (!d->arguments->contains(argument)) {
-        d->addArgument(argument);
+        d->arguments->append(argument);
+
+        // Adjust subsetted property(ies)
+        d->addInput(argument);
     }
 }
 
@@ -129,7 +104,10 @@ void QInvocationAction::removeArgument(QInputPin *argument)
 
     QTUML_D(QInvocationAction);
     if (d->arguments->contains(argument)) {
-        d->removeArgument(argument);
+        d->arguments->removeAll(argument);
+
+        // Adjust subsetted property(ies)
+        d->removeInput(argument);
     }
 }
 
@@ -150,7 +128,7 @@ void QInvocationAction::setOnPort(QPort *onPort)
 
     QTUML_D(QInvocationAction);
     if (d->onPort != onPort) {
-        d->setOnPort(onPort);
+        d->onPort = onPort;
     }
 }
 

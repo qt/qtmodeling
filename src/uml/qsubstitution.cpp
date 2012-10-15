@@ -41,48 +41,20 @@
 
 #include "qsubstitution.h"
 #include "qsubstitution_p.h"
-#include "qdependency_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QClassifier>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QSubstitutionPrivate::QSubstitutionPrivate() :
+QSubstitutionPrivate::QSubstitutionPrivate(QSubstitution *q_umlptr) :
     contract(0),
     substitutingClassifier(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QSubstitutionPrivate::~QSubstitutionPrivate()
 {
-}
-
-void QSubstitutionPrivate::setContract(QClassifier *contract)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeSupplier(this->contract);
-
-    this->contract = contract;
-
-    // Adjust subsetted property(ies)
-    addSupplier(contract);
-}
-
-void QSubstitutionPrivate::setSubstitutingClassifier(QClassifier *substitutingClassifier)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeClient(this->substitutingClassifier);
-
-    this->substitutingClassifier = substitutingClassifier;
-
-    // Adjust subsetted property(ies)
-    setOwner(substitutingClassifier);
-    addClient(substitutingClassifier);
 }
 
 /*!
@@ -96,7 +68,7 @@ void QSubstitutionPrivate::setSubstitutingClassifier(QClassifier *substitutingCl
 QSubstitution::QSubstitution(QObject *parent)
     : QRealization(false, parent)
 {
-    d_umlptr = new QSubstitutionPrivate;
+    d_umlptr = new QSubstitutionPrivate(this);
 }
 
 QSubstitution::QSubstitution(bool createPimpl, QObject *parent)
@@ -127,7 +99,13 @@ void QSubstitution::setContract(QClassifier *contract)
 
     QTUML_D(QSubstitution);
     if (d->contract != contract) {
-        d->setContract(contract);
+        // Adjust subsetted property(ies)
+        removeSupplier(d->contract);
+
+        d->contract = contract;
+
+        // Adjust subsetted property(ies)
+        addSupplier(contract);
     }
 }
 
@@ -148,7 +126,14 @@ void QSubstitution::setSubstitutingClassifier(QClassifier *substitutingClassifie
 
     QTUML_D(QSubstitution);
     if (d->substitutingClassifier != substitutingClassifier) {
-        d->setSubstitutingClassifier(substitutingClassifier);
+        // Adjust subsetted property(ies)
+        removeClient(d->substitutingClassifier);
+
+        d->substitutingClassifier = substitutingClassifier;
+
+        // Adjust subsetted property(ies)
+        d->setOwner(substitutingClassifier);
+        addClient(substitutingClassifier);
 
         // Adjust opposite property
         substitutingClassifier->addSubstitution(this);

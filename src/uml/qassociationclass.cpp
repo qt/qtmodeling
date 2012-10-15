@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QAssociationClassPrivate::QAssociationClassPrivate()
+QAssociationClassPrivate::QAssociationClassPrivate(QAssociationClass *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QAssociationClassPrivate::~QAssociationClassPrivate()
@@ -64,7 +65,7 @@ QAssociationClassPrivate::~QAssociationClassPrivate()
 QAssociationClass::QAssociationClass(QObject *parent)
     : (false, parent)
 {
-    d_umlptr = new QAssociationClassPrivate;
+    d_umlptr = new QAssociationClassPrivate(this);
 }
 
 QAssociationClass::QAssociationClass(bool createPimpl, QObject *parent)

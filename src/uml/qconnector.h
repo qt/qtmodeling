@@ -60,9 +60,9 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QAssociation;
 class QBehavior;
 class QConnectorEnd;
-class QAssociation;
 
 class Q_UML_EXPORT QConnector : public QObject, public QFeature
 {

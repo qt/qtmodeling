@@ -45,44 +45,17 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QOpaqueBehaviorPrivate::QOpaqueBehaviorPrivate() :
+QOpaqueBehaviorPrivate::QOpaqueBehaviorPrivate(QOpaqueBehavior *q_umlptr) :
     languages(new QList<QString>),
     bodies(new QList<QString>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QOpaqueBehaviorPrivate::~QOpaqueBehaviorPrivate()
 {
     delete languages;
     delete bodies;
-}
-
-void QOpaqueBehaviorPrivate::addLanguage(QString language)
-{
-    // This is a read-write attribute
-
-    this->languages->append(language);
-}
-
-void QOpaqueBehaviorPrivate::removeLanguage(QString language)
-{
-    // This is a read-write attribute
-
-    this->languages->removeAll(language);
-}
-
-void QOpaqueBehaviorPrivate::addBody(QString body)
-{
-    // This is a read-write attribute
-
-    this->bodies->append(body);
-}
-
-void QOpaqueBehaviorPrivate::removeBody(QString body)
-{
-    // This is a read-write attribute
-
-    this->bodies->removeAll(body);
 }
 
 /*!
@@ -96,7 +69,7 @@ void QOpaqueBehaviorPrivate::removeBody(QString body)
 QOpaqueBehavior::QOpaqueBehavior(QObject *parent)
     : QBehavior(false, parent)
 {
-    d_umlptr = new QOpaqueBehaviorPrivate;
+    d_umlptr = new QOpaqueBehaviorPrivate(this);
 }
 
 QOpaqueBehavior::QOpaqueBehavior(bool createPimpl, QObject *parent)
@@ -127,7 +100,7 @@ void QOpaqueBehavior::addLanguage(QString language)
 
     QTUML_D(QOpaqueBehavior);
     if (!d->languages->contains(language)) {
-        d->addLanguage(language);
+        d->languages->append(language);
     }
 }
 
@@ -137,7 +110,7 @@ void QOpaqueBehavior::removeLanguage(QString language)
 
     QTUML_D(QOpaqueBehavior);
     if (d->languages->contains(language)) {
-        d->removeLanguage(language);
+        d->languages->removeAll(language);
     }
 }
 
@@ -158,7 +131,7 @@ void QOpaqueBehavior::addBody(QString body)
 
     QTUML_D(QOpaqueBehavior);
     if (!d->bodies->contains(body)) {
-        d->addBody(body);
+        d->bodies->append(body);
     }
 }
 
@@ -168,7 +141,7 @@ void QOpaqueBehavior::removeBody(QString body)
 
     QTUML_D(QOpaqueBehavior);
     if (d->bodies->contains(body)) {
-        d->removeBody(body);
+        d->bodies->removeAll(body);
     }
 }
 

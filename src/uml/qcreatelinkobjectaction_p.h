@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qcreatelinkaction_p.h"
 
 QT_BEGIN_HEADER
@@ -54,17 +53,15 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QOutputPin;
+class QCreateLinkObjectAction;
 
 class QCreateLinkObjectActionPrivate : public QCreateLinkActionPrivate
 {
 public:
-    explicit QCreateLinkObjectActionPrivate();
+    explicit QCreateLinkObjectActionPrivate(QCreateLinkObjectAction *q_umlptr = 0);
     virtual ~QCreateLinkObjectActionPrivate();
 
     QOutputPin *result;
-
-    // Internal functions for association-ends
-    void setResult(QOutputPin *result);
 };
 
 QT_END_NAMESPACE_QTUML

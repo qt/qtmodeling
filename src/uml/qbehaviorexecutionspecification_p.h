@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qexecutionspecification_p.h"
 
 QT_BEGIN_HEADER
@@ -54,17 +53,15 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QBehavior;
+class QBehaviorExecutionSpecification;
 
 class QBehaviorExecutionSpecificationPrivate : public QExecutionSpecificationPrivate
 {
 public:
-    explicit QBehaviorExecutionSpecificationPrivate();
+    explicit QBehaviorExecutionSpecificationPrivate(QBehaviorExecutionSpecification *q_umlptr = 0);
     virtual ~QBehaviorExecutionSpecificationPrivate();
 
     QBehavior *behavior;
-
-    // Internal functions for association-ends
-    void setBehavior(QBehavior *behavior);
 };
 
 QT_END_NAMESPACE_QTUML

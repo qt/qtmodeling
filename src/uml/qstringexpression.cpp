@@ -41,50 +41,20 @@
 
 #include "qstringexpression.h"
 #include "qstringexpression_p.h"
-#include "qelement_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QStringExpressionPrivate::QStringExpressionPrivate() :
+QStringExpressionPrivate::QStringExpressionPrivate(QStringExpression *q_umlptr) :
     owningExpression(0),
     subExpressions(new QSet<QStringExpression *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QStringExpressionPrivate::~QStringExpressionPrivate()
 {
     delete subExpressions;
-}
-
-void QStringExpressionPrivate::setOwningExpression(QStringExpression *owningExpression)
-{
-    // This is a read-write association end
-
-    this->owningExpression = owningExpression;
-
-    // Adjust subsetted property(ies)
-    setOwner(owningExpression);
-}
-
-void QStringExpressionPrivate::addSubExpression(QStringExpression *subExpression)
-{
-    // This is a read-write association end
-
-    this->subExpressions->insert(subExpression);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(subExpression);
-}
-
-void QStringExpressionPrivate::removeSubExpression(QStringExpression *subExpression)
-{
-    // This is a read-write association end
-
-    this->subExpressions->remove(subExpression);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(subExpression);
 }
 
 /*!
@@ -98,7 +68,7 @@ void QStringExpressionPrivate::removeSubExpression(QStringExpression *subExpress
 QStringExpression::QStringExpression(QObject *parent)
     : QExpression(false, parent)
 {
-    d_umlptr = new QStringExpressionPrivate;
+    d_umlptr = new QStringExpressionPrivate(this);
 }
 
 QStringExpression::QStringExpression(bool createPimpl, QObject *parent)
@@ -129,7 +99,10 @@ void QStringExpression::setOwningExpression(QStringExpression *owningExpression)
 
     QTUML_D(QStringExpression);
     if (d->owningExpression != owningExpression) {
-        d->setOwningExpression(owningExpression);
+        d->owningExpression = owningExpression;
+
+        // Adjust subsetted property(ies)
+        d->setOwner(owningExpression);
 
         // Adjust opposite property
         owningExpression->addSubExpression(this);
@@ -153,7 +126,10 @@ void QStringExpression::addSubExpression(QStringExpression *subExpression)
 
     QTUML_D(QStringExpression);
     if (!d->subExpressions->contains(subExpression)) {
-        d->addSubExpression(subExpression);
+        d->subExpressions->insert(subExpression);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(subExpression);
 
         // Adjust opposite property
         subExpression->setOwningExpression(this);
@@ -166,7 +142,10 @@ void QStringExpression::removeSubExpression(QStringExpression *subExpression)
 
     QTUML_D(QStringExpression);
     if (d->subExpressions->contains(subExpression)) {
-        d->removeSubExpression(subExpression);
+        d->subExpressions->remove(subExpression);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(subExpression);
 
         // Adjust opposite property
         subExpression->setOwningExpression(0);

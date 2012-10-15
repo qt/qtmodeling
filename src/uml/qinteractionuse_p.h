@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qinteractionfragment_p.h"
 
 // Qt includes
@@ -61,11 +60,12 @@ class QProperty;
 class QInteraction;
 class QGate;
 class QValueSpecification;
+class QInteractionUse;
 
 class QInteractionUsePrivate : public QInteractionFragmentPrivate
 {
 public:
-    explicit QInteractionUsePrivate();
+    explicit QInteractionUsePrivate(QInteractionUse *q_umlptr = 0);
     virtual ~QInteractionUsePrivate();
 
     QSet<QGate *> *actualGates;
@@ -73,15 +73,6 @@ public:
     QInteraction *refersTo;
     QList<QValueSpecification *> *arguments;
     QProperty *returnValueRecipient;
-
-    // Internal functions for association-ends
-    void addActualGate(QGate *actualGate);
-    void removeActualGate(QGate *actualGate);
-    void setReturnValue(QValueSpecification *returnValue);
-    void setRefersTo(QInteraction *refersTo);
-    void addArgument(QValueSpecification *argument);
-    void removeArgument(QValueSpecification *argument);
-    void setReturnValueRecipient(QProperty *returnValueRecipient);
 };
 
 QT_END_NAMESPACE_QTUML

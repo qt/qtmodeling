@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDataStoreNodePrivate::QDataStoreNodePrivate()
+QDataStoreNodePrivate::QDataStoreNodePrivate(QDataStoreNode *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QDataStoreNodePrivate::~QDataStoreNodePrivate()
@@ -64,7 +65,7 @@ QDataStoreNodePrivate::~QDataStoreNodePrivate()
 QDataStoreNode::QDataStoreNode(QObject *parent)
     : QCentralBufferNode(false, parent)
 {
-    d_umlptr = new QDataStoreNodePrivate;
+    d_umlptr = new QDataStoreNodePrivate(this);
 }
 
 QDataStoreNode::QDataStoreNode(bool createPimpl, QObject *parent)

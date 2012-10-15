@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qelement_p.h"
 
 // Qt includes
@@ -59,14 +58,16 @@ QT_MODULE(QtUml)
 class QRelationshipPrivate : public virtual QElementPrivate
 {
 public:
-    explicit QRelationshipPrivate();
     virtual ~QRelationshipPrivate();
 
     QSet<QElement *> *relatedElements;
 
-    // Internal functions for association-ends
+    // Internal functions for read-only subsetted association ends
     void addRelatedElement(QElement *relatedElement);
     void removeRelatedElement(QElement *relatedElement);
+
+protected:
+    explicit QRelationshipPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

@@ -41,7 +41,6 @@
 
 #include "qencapsulatedclassifier.h"
 #include "qencapsulatedclassifier_p.h"
-#include "qstructuredclassifier_p.h"
 
 #include <QtUml/QPort>
 
@@ -80,7 +79,7 @@ const QSet<QPort *> *QEncapsulatedClassifier::ownedPorts() const
 
     qWarning("QEncapsulatedClassifier::ownedPorts: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QEncapsulatedClassifier);
+    //QTUML_D(const QEncapsulatedClassifier);
     //return <derived-return>;
 }
 

@@ -41,56 +41,22 @@
 
 #include "qredefinabletemplatesignature.h"
 #include "qredefinabletemplatesignature_p.h"
-#include "qtemplatesignature_p.h"
-#include "qredefinableelement_p.h"
 
 #include <QtUml/QClassifier>
 #include <QtUml/QTemplateParameter>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QRedefinableTemplateSignaturePrivate::QRedefinableTemplateSignaturePrivate() :
+QRedefinableTemplateSignaturePrivate::QRedefinableTemplateSignaturePrivate(QRedefinableTemplateSignature *q_umlptr) :
     classifier(0),
     extendedSignatures(new QSet<QRedefinableTemplateSignature *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QRedefinableTemplateSignaturePrivate::~QRedefinableTemplateSignaturePrivate()
 {
     delete extendedSignatures;
-}
-
-void QRedefinableTemplateSignaturePrivate::setClassifier(QClassifier *classifier)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeRedefinitionContext(this->classifier);
-
-    this->classifier = classifier;
-
-    // Adjust subsetted property(ies)
-    addRedefinitionContext(classifier);
-}
-
-void QRedefinableTemplateSignaturePrivate::addExtendedSignature(QRedefinableTemplateSignature *extendedSignature)
-{
-    // This is a read-write association end
-
-    this->extendedSignatures->insert(extendedSignature);
-
-    // Adjust subsetted property(ies)
-    addRedefinedElement(extendedSignature);
-}
-
-void QRedefinableTemplateSignaturePrivate::removeExtendedSignature(QRedefinableTemplateSignature *extendedSignature)
-{
-    // This is a read-write association end
-
-    this->extendedSignatures->remove(extendedSignature);
-
-    // Adjust subsetted property(ies)
-    removeRedefinedElement(extendedSignature);
 }
 
 /*!
@@ -104,7 +70,7 @@ void QRedefinableTemplateSignaturePrivate::removeExtendedSignature(QRedefinableT
 QRedefinableTemplateSignature::QRedefinableTemplateSignature(QObject *parent)
     : QTemplateSignature(false, parent)
 {
-    d_umlptr = new QRedefinableTemplateSignaturePrivate;
+    d_umlptr = new QRedefinableTemplateSignaturePrivate(this);
 }
 
 QRedefinableTemplateSignature::QRedefinableTemplateSignature(bool createPimpl, QObject *parent)
@@ -127,7 +93,7 @@ const QSet<QTemplateParameter *> *QRedefinableTemplateSignature::inheritedParame
 
     qWarning("QRedefinableTemplateSignature::inheritedParameters: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QRedefinableTemplateSignature);
+    //QTUML_D(const QRedefinableTemplateSignature);
     //return <derived-return>;
 }
 
@@ -148,7 +114,13 @@ void QRedefinableTemplateSignature::setClassifier(QClassifier *classifier)
 
     QTUML_D(QRedefinableTemplateSignature);
     if (d->classifier != classifier) {
-        d->setClassifier(classifier);
+        // Adjust subsetted property(ies)
+        d->removeRedefinitionContext(d->classifier);
+
+        d->classifier = classifier;
+
+        // Adjust subsetted property(ies)
+        d->addRedefinitionContext(classifier);
 
         // Adjust opposite property
         classifier->setOwnedTemplateSignature(this);
@@ -172,7 +144,10 @@ void QRedefinableTemplateSignature::addExtendedSignature(QRedefinableTemplateSig
 
     QTUML_D(QRedefinableTemplateSignature);
     if (!d->extendedSignatures->contains(extendedSignature)) {
-        d->addExtendedSignature(extendedSignature);
+        d->extendedSignatures->insert(extendedSignature);
+
+        // Adjust subsetted property(ies)
+        d->addRedefinedElement(extendedSignature);
     }
 }
 
@@ -182,7 +157,10 @@ void QRedefinableTemplateSignature::removeExtendedSignature(QRedefinableTemplate
 
     QTUML_D(QRedefinableTemplateSignature);
     if (d->extendedSignatures->contains(extendedSignature)) {
-        d->removeExtendedSignature(extendedSignature);
+        d->extendedSignatures->remove(extendedSignature);
+
+        // Adjust subsetted property(ies)
+        d->removeRedefinedElement(extendedSignature);
     }
 }
 

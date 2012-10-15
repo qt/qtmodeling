@@ -44,9 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qclass_p.h"
-
 #include "qdeploymenttarget_p.h"
 
 // Qt includes
@@ -58,17 +56,15 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QNode;
+
 class QNodePrivate : public QClassPrivate, public QDeploymentTargetPrivate
 {
 public:
-    explicit QNodePrivate();
+    explicit QNodePrivate(QNode *q_umlptr = 0);
     virtual ~QNodePrivate();
 
     QSet<QNode *> *nestedNodes;
-
-    // Internal functions for association-ends
-    void addNestedNode(QNode *nestedNode);
-    void removeNestedNode(QNode *nestedNode);
 };
 
 QT_END_NAMESPACE_QTUML

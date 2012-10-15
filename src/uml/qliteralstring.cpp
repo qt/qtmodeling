@@ -45,19 +45,13 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QLiteralStringPrivate::QLiteralStringPrivate()
+QLiteralStringPrivate::QLiteralStringPrivate(QLiteralString *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QLiteralStringPrivate::~QLiteralStringPrivate()
 {
-}
-
-void QLiteralStringPrivate::setValue(QString value)
-{
-    // This is a read-write attribute
-
-    this->value = value;
 }
 
 /*!
@@ -71,7 +65,7 @@ void QLiteralStringPrivate::setValue(QString value)
 QLiteralString::QLiteralString(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QLiteralStringPrivate;
+    d_umlptr = new QLiteralStringPrivate(this);
 }
 
 QLiteralString::QLiteralString(bool createPimpl, QObject *parent)
@@ -102,7 +96,7 @@ void QLiteralString::setValue(QString value)
 
     QTUML_D(QLiteralString);
     if (d->value != value) {
-        d->setValue(value);
+        d->value = value;
     }
 }
 

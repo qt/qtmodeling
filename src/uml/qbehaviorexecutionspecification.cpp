@@ -46,20 +46,14 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QBehaviorExecutionSpecificationPrivate::QBehaviorExecutionSpecificationPrivate() :
+QBehaviorExecutionSpecificationPrivate::QBehaviorExecutionSpecificationPrivate(QBehaviorExecutionSpecification *q_umlptr) :
     behavior(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QBehaviorExecutionSpecificationPrivate::~QBehaviorExecutionSpecificationPrivate()
 {
-}
-
-void QBehaviorExecutionSpecificationPrivate::setBehavior(QBehavior *behavior)
-{
-    // This is a read-write association end
-
-    this->behavior = behavior;
 }
 
 /*!
@@ -73,7 +67,7 @@ void QBehaviorExecutionSpecificationPrivate::setBehavior(QBehavior *behavior)
 QBehaviorExecutionSpecification::QBehaviorExecutionSpecification(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QBehaviorExecutionSpecificationPrivate;
+    d_umlptr = new QBehaviorExecutionSpecificationPrivate(this);
 }
 
 QBehaviorExecutionSpecification::QBehaviorExecutionSpecification(bool createPimpl, QObject *parent)
@@ -104,7 +98,7 @@ void QBehaviorExecutionSpecification::setBehavior(QBehavior *behavior)
 
     QTUML_D(QBehaviorExecutionSpecification);
     if (d->behavior != behavior) {
-        d->setBehavior(behavior);
+        d->behavior = behavior;
     }
 }
 

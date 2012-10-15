@@ -47,7 +47,7 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QClausePrivate::QClausePrivate() :
+QClausePrivate::QClausePrivate(QClause *q_umlptr) :
     successorClauses(new QSet<QClause *>),
     decider(0),
     predecessorClauses(new QSet<QClause *>),
@@ -55,6 +55,7 @@ QClausePrivate::QClausePrivate() :
     bodies(new QSet<QExecutableNode *>),
     tests(new QSet<QExecutableNode *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QClausePrivate::~QClausePrivate()
@@ -64,83 +65,6 @@ QClausePrivate::~QClausePrivate()
     delete bodyOutputs;
     delete bodies;
     delete tests;
-}
-
-void QClausePrivate::addSuccessorClause(QClause *successorClause)
-{
-    // This is a read-write association end
-
-    this->successorClauses->insert(successorClause);
-}
-
-void QClausePrivate::removeSuccessorClause(QClause *successorClause)
-{
-    // This is a read-write association end
-
-    this->successorClauses->remove(successorClause);
-}
-
-void QClausePrivate::setDecider(QOutputPin *decider)
-{
-    // This is a read-write association end
-
-    this->decider = decider;
-}
-
-void QClausePrivate::addPredecessorClause(QClause *predecessorClause)
-{
-    // This is a read-write association end
-
-    this->predecessorClauses->insert(predecessorClause);
-}
-
-void QClausePrivate::removePredecessorClause(QClause *predecessorClause)
-{
-    // This is a read-write association end
-
-    this->predecessorClauses->remove(predecessorClause);
-}
-
-void QClausePrivate::addBodyOutput(QOutputPin *bodyOutput)
-{
-    // This is a read-write association end
-
-    this->bodyOutputs->append(bodyOutput);
-}
-
-void QClausePrivate::removeBodyOutput(QOutputPin *bodyOutput)
-{
-    // This is a read-write association end
-
-    this->bodyOutputs->removeAll(bodyOutput);
-}
-
-void QClausePrivate::addBody(QExecutableNode *body)
-{
-    // This is a read-write association end
-
-    this->bodies->insert(body);
-}
-
-void QClausePrivate::removeBody(QExecutableNode *body)
-{
-    // This is a read-write association end
-
-    this->bodies->remove(body);
-}
-
-void QClausePrivate::addTest(QExecutableNode *test)
-{
-    // This is a read-write association end
-
-    this->tests->insert(test);
-}
-
-void QClausePrivate::removeTest(QExecutableNode *test)
-{
-    // This is a read-write association end
-
-    this->tests->remove(test);
 }
 
 /*!
@@ -154,7 +78,7 @@ void QClausePrivate::removeTest(QExecutableNode *test)
 QClause::QClause(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QClausePrivate;
+    d_umlptr = new QClausePrivate(this);
 }
 
 QClause::QClause(bool createPimpl, QObject *parent)
@@ -185,7 +109,7 @@ void QClause::addSuccessorClause(QClause *successorClause)
 
     QTUML_D(QClause);
     if (!d->successorClauses->contains(successorClause)) {
-        d->addSuccessorClause(successorClause);
+        d->successorClauses->insert(successorClause);
 
         // Adjust opposite property
         successorClause->addPredecessorClause(this);
@@ -198,7 +122,7 @@ void QClause::removeSuccessorClause(QClause *successorClause)
 
     QTUML_D(QClause);
     if (d->successorClauses->contains(successorClause)) {
-        d->removeSuccessorClause(successorClause);
+        d->successorClauses->remove(successorClause);
 
         // Adjust opposite property
         successorClause->removePredecessorClause(this);
@@ -222,7 +146,7 @@ void QClause::setDecider(QOutputPin *decider)
 
     QTUML_D(QClause);
     if (d->decider != decider) {
-        d->setDecider(decider);
+        d->decider = decider;
     }
 }
 
@@ -243,7 +167,7 @@ void QClause::addPredecessorClause(QClause *predecessorClause)
 
     QTUML_D(QClause);
     if (!d->predecessorClauses->contains(predecessorClause)) {
-        d->addPredecessorClause(predecessorClause);
+        d->predecessorClauses->insert(predecessorClause);
 
         // Adjust opposite property
         predecessorClause->addSuccessorClause(this);
@@ -256,7 +180,7 @@ void QClause::removePredecessorClause(QClause *predecessorClause)
 
     QTUML_D(QClause);
     if (d->predecessorClauses->contains(predecessorClause)) {
-        d->removePredecessorClause(predecessorClause);
+        d->predecessorClauses->remove(predecessorClause);
 
         // Adjust opposite property
         predecessorClause->removeSuccessorClause(this);
@@ -280,7 +204,7 @@ void QClause::addBodyOutput(QOutputPin *bodyOutput)
 
     QTUML_D(QClause);
     if (!d->bodyOutputs->contains(bodyOutput)) {
-        d->addBodyOutput(bodyOutput);
+        d->bodyOutputs->append(bodyOutput);
     }
 }
 
@@ -290,7 +214,7 @@ void QClause::removeBodyOutput(QOutputPin *bodyOutput)
 
     QTUML_D(QClause);
     if (d->bodyOutputs->contains(bodyOutput)) {
-        d->removeBodyOutput(bodyOutput);
+        d->bodyOutputs->removeAll(bodyOutput);
     }
 }
 
@@ -311,7 +235,7 @@ void QClause::addBody(QExecutableNode *body)
 
     QTUML_D(QClause);
     if (!d->bodies->contains(body)) {
-        d->addBody(body);
+        d->bodies->insert(body);
     }
 }
 
@@ -321,7 +245,7 @@ void QClause::removeBody(QExecutableNode *body)
 
     QTUML_D(QClause);
     if (d->bodies->contains(body)) {
-        d->removeBody(body);
+        d->bodies->remove(body);
     }
 }
 
@@ -342,7 +266,7 @@ void QClause::addTest(QExecutableNode *test)
 
     QTUML_D(QClause);
     if (!d->tests->contains(test)) {
-        d->addTest(test);
+        d->tests->insert(test);
     }
 }
 
@@ -352,7 +276,7 @@ void QClause::removeTest(QExecutableNode *test)
 
     QTUML_D(QClause);
     if (d->tests->contains(test)) {
-        d->removeTest(test);
+        d->tests->remove(test);
     }
 }
 

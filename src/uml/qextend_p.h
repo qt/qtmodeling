@@ -44,9 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qdirectedrelationship_p.h"
-
 #include "qnamedelement_p.h"
 
 // Qt includes
@@ -61,24 +59,18 @@ QT_MODULE(QtUml)
 class QConstraint;
 class QUseCase;
 class QExtensionPoint;
+class QExtend;
 
 class QExtendPrivate : public QDirectedRelationshipPrivate, public QNamedElementPrivate
 {
 public:
-    explicit QExtendPrivate();
+    explicit QExtendPrivate(QExtend *q_umlptr = 0);
     virtual ~QExtendPrivate();
 
     QUseCase *extendedCase;
     QUseCase *extension;
     QList<QExtensionPoint *> *extensionLocations;
     QConstraint *condition;
-
-    // Internal functions for association-ends
-    void setExtendedCase(QUseCase *extendedCase);
-    void setExtension(QUseCase *extension);
-    void addExtensionLocation(QExtensionPoint *extensionLocation);
-    void removeExtensionLocation(QExtensionPoint *extensionLocation);
-    void setCondition(QConstraint *condition);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -41,7 +41,6 @@
 
 #include "qstatemachine.h"
 #include "qstatemachine_p.h"
-#include "qnamespace_p.h"
 
 #include <QtUml/QNamespace>
 #include <QtUml/QRedefinableElement>
@@ -51,12 +50,13 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QStateMachinePrivate::QStateMachinePrivate() :
+QStateMachinePrivate::QStateMachinePrivate(QStateMachine *q_umlptr) :
     extendedStateMachines(new QSet<QStateMachine *>),
     connectionPoints(new QSet<QPseudostate *>),
     submachineStates(new QSet<QState *>),
     regions(new QSet<QRegion *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QStateMachinePrivate::~QStateMachinePrivate()
@@ -65,74 +65,6 @@ QStateMachinePrivate::~QStateMachinePrivate()
     delete connectionPoints;
     delete submachineStates;
     delete regions;
-}
-
-void QStateMachinePrivate::addExtendedStateMachine(QStateMachine *extendedStateMachine)
-{
-    // This is a read-write association end
-
-    this->extendedStateMachines->insert(extendedStateMachine);
-}
-
-void QStateMachinePrivate::removeExtendedStateMachine(QStateMachine *extendedStateMachine)
-{
-    // This is a read-write association end
-
-    this->extendedStateMachines->remove(extendedStateMachine);
-}
-
-void QStateMachinePrivate::addConnectionPoint(QPseudostate *connectionPoint)
-{
-    // This is a read-write association end
-
-    this->connectionPoints->insert(connectionPoint);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(connectionPoint);
-}
-
-void QStateMachinePrivate::removeConnectionPoint(QPseudostate *connectionPoint)
-{
-    // This is a read-write association end
-
-    this->connectionPoints->remove(connectionPoint);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(connectionPoint);
-}
-
-void QStateMachinePrivate::addSubmachineState(QState *submachineState)
-{
-    // This is a read-write association end
-
-    this->submachineStates->insert(submachineState);
-}
-
-void QStateMachinePrivate::removeSubmachineState(QState *submachineState)
-{
-    // This is a read-write association end
-
-    this->submachineStates->remove(submachineState);
-}
-
-void QStateMachinePrivate::addRegion(QRegion *region)
-{
-    // This is a read-write association end
-
-    this->regions->insert(region);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(region);
-}
-
-void QStateMachinePrivate::removeRegion(QRegion *region)
-{
-    // This is a read-write association end
-
-    this->regions->remove(region);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(region);
 }
 
 /*!
@@ -146,7 +78,7 @@ void QStateMachinePrivate::removeRegion(QRegion *region)
 QStateMachine::QStateMachine(QObject *parent)
     : QBehavior(false, parent)
 {
-    d_umlptr = new QStateMachinePrivate;
+    d_umlptr = new QStateMachinePrivate(this);
 }
 
 QStateMachine::QStateMachine(bool createPimpl, QObject *parent)
@@ -177,7 +109,7 @@ void QStateMachine::addExtendedStateMachine(QStateMachine *extendedStateMachine)
 
     QTUML_D(QStateMachine);
     if (!d->extendedStateMachines->contains(extendedStateMachine)) {
-        d->addExtendedStateMachine(extendedStateMachine);
+        d->extendedStateMachines->insert(extendedStateMachine);
     }
 }
 
@@ -187,7 +119,7 @@ void QStateMachine::removeExtendedStateMachine(QStateMachine *extendedStateMachi
 
     QTUML_D(QStateMachine);
     if (d->extendedStateMachines->contains(extendedStateMachine)) {
-        d->removeExtendedStateMachine(extendedStateMachine);
+        d->extendedStateMachines->remove(extendedStateMachine);
     }
 }
 
@@ -208,7 +140,10 @@ void QStateMachine::addConnectionPoint(QPseudostate *connectionPoint)
 
     QTUML_D(QStateMachine);
     if (!d->connectionPoints->contains(connectionPoint)) {
-        d->addConnectionPoint(connectionPoint);
+        d->connectionPoints->insert(connectionPoint);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(connectionPoint);
 
         // Adjust opposite property
         connectionPoint->setStateMachine(this);
@@ -221,7 +156,10 @@ void QStateMachine::removeConnectionPoint(QPseudostate *connectionPoint)
 
     QTUML_D(QStateMachine);
     if (d->connectionPoints->contains(connectionPoint)) {
-        d->removeConnectionPoint(connectionPoint);
+        d->connectionPoints->remove(connectionPoint);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(connectionPoint);
 
         // Adjust opposite property
         connectionPoint->setStateMachine(0);
@@ -245,7 +183,7 @@ void QStateMachine::addSubmachineState(QState *submachineState)
 
     QTUML_D(QStateMachine);
     if (!d->submachineStates->contains(submachineState)) {
-        d->addSubmachineState(submachineState);
+        d->submachineStates->insert(submachineState);
 
         // Adjust opposite property
         submachineState->setSubmachine(this);
@@ -258,7 +196,7 @@ void QStateMachine::removeSubmachineState(QState *submachineState)
 
     QTUML_D(QStateMachine);
     if (d->submachineStates->contains(submachineState)) {
-        d->removeSubmachineState(submachineState);
+        d->submachineStates->remove(submachineState);
 
         // Adjust opposite property
         submachineState->setSubmachine(0);
@@ -282,7 +220,10 @@ void QStateMachine::addRegion(QRegion *region)
 
     QTUML_D(QStateMachine);
     if (!d->regions->contains(region)) {
-        d->addRegion(region);
+        d->regions->insert(region);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(region);
 
         // Adjust opposite property
         region->setStateMachine(this);
@@ -295,7 +236,10 @@ void QStateMachine::removeRegion(QRegion *region)
 
     QTUML_D(QStateMachine);
     if (d->regions->contains(region)) {
-        d->removeRegion(region);
+        d->regions->remove(region);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(region);
 
         // Adjust opposite property
         region->setStateMachine(0);

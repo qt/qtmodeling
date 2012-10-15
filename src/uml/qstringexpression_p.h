@@ -44,9 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qexpression_p.h"
-
 #include "qtemplateableelement_p.h"
 
 // Qt includes
@@ -59,19 +57,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QStringExpression;
+
 class QStringExpressionPrivate : public QExpressionPrivate, public QTemplateableElementPrivate
 {
 public:
-    explicit QStringExpressionPrivate();
+    explicit QStringExpressionPrivate(QStringExpression *q_umlptr = 0);
     virtual ~QStringExpressionPrivate();
 
     QStringExpression *owningExpression;
     QSet<QStringExpression *> *subExpressions;
-
-    // Internal functions for association-ends
-    void setOwningExpression(QStringExpression *owningExpression);
-    void addSubExpression(QStringExpression *subExpression);
-    void removeSubExpression(QStringExpression *subExpression);
 };
 
 QT_END_NAMESPACE_QTUML

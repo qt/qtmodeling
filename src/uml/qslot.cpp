@@ -41,7 +41,6 @@
 
 #include "qslot.h"
 #include "qslot_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QStructuralFeature>
 #include <QtUml/QInstanceSpecification>
@@ -49,53 +48,17 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QSlotPrivate::QSlotPrivate() :
+QSlotPrivate::QSlotPrivate(QSlot *q_umlptr) :
     values(new QList<QValueSpecification *>),
     definingFeature(0),
     owningInstance(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QSlotPrivate::~QSlotPrivate()
 {
     delete values;
-}
-
-void QSlotPrivate::addValue(QValueSpecification *value)
-{
-    // This is a read-write association end
-
-    this->values->append(value);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(value);
-}
-
-void QSlotPrivate::removeValue(QValueSpecification *value)
-{
-    // This is a read-write association end
-
-    this->values->removeAll(value);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(value);
-}
-
-void QSlotPrivate::setDefiningFeature(QStructuralFeature *definingFeature)
-{
-    // This is a read-write association end
-
-    this->definingFeature = definingFeature;
-}
-
-void QSlotPrivate::setOwningInstance(QInstanceSpecification *owningInstance)
-{
-    // This is a read-write association end
-
-    this->owningInstance = owningInstance;
-
-    // Adjust subsetted property(ies)
-    setOwner(owningInstance);
 }
 
 /*!
@@ -109,7 +72,7 @@ void QSlotPrivate::setOwningInstance(QInstanceSpecification *owningInstance)
 QSlot::QSlot(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QSlotPrivate;
+    d_umlptr = new QSlotPrivate(this);
 }
 
 QSlot::QSlot(bool createPimpl, QObject *parent)
@@ -140,7 +103,10 @@ void QSlot::addValue(QValueSpecification *value)
 
     QTUML_D(QSlot);
     if (!d->values->contains(value)) {
-        d->addValue(value);
+        d->values->append(value);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(value);
     }
 }
 
@@ -150,7 +116,10 @@ void QSlot::removeValue(QValueSpecification *value)
 
     QTUML_D(QSlot);
     if (d->values->contains(value)) {
-        d->removeValue(value);
+        d->values->removeAll(value);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(value);
     }
 }
 
@@ -171,7 +140,7 @@ void QSlot::setDefiningFeature(QStructuralFeature *definingFeature)
 
     QTUML_D(QSlot);
     if (d->definingFeature != definingFeature) {
-        d->setDefiningFeature(definingFeature);
+        d->definingFeature = definingFeature;
     }
 }
 
@@ -192,7 +161,10 @@ void QSlot::setOwningInstance(QInstanceSpecification *owningInstance)
 
     QTUML_D(QSlot);
     if (d->owningInstance != owningInstance) {
-        d->setOwningInstance(owningInstance);
+        d->owningInstance = owningInstance;
+
+        // Adjust subsetted property(ies)
+        d->setOwner(owningInstance);
 
         // Adjust opposite property
         owningInstance->addSlot_(this);

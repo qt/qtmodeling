@@ -47,52 +47,18 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QOpaqueExpressionPrivate::QOpaqueExpressionPrivate() :
+QOpaqueExpressionPrivate::QOpaqueExpressionPrivate(QOpaqueExpression *q_umlptr) :
     bodies(new QList<QString>),
     languages(new QList<QString>),
     behavior(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QOpaqueExpressionPrivate::~QOpaqueExpressionPrivate()
 {
     delete bodies;
     delete languages;
-}
-
-void QOpaqueExpressionPrivate::addBody(QString body)
-{
-    // This is a read-write attribute
-
-    this->bodies->append(body);
-}
-
-void QOpaqueExpressionPrivate::removeBody(QString body)
-{
-    // This is a read-write attribute
-
-    this->bodies->removeAll(body);
-}
-
-void QOpaqueExpressionPrivate::addLanguage(QString language)
-{
-    // This is a read-write attribute
-
-    this->languages->append(language);
-}
-
-void QOpaqueExpressionPrivate::removeLanguage(QString language)
-{
-    // This is a read-write attribute
-
-    this->languages->removeAll(language);
-}
-
-void QOpaqueExpressionPrivate::setBehavior(QBehavior *behavior)
-{
-    // This is a read-write association end
-
-    this->behavior = behavior;
 }
 
 /*!
@@ -106,7 +72,7 @@ void QOpaqueExpressionPrivate::setBehavior(QBehavior *behavior)
 QOpaqueExpression::QOpaqueExpression(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QOpaqueExpressionPrivate;
+    d_umlptr = new QOpaqueExpressionPrivate(this);
 }
 
 QOpaqueExpression::QOpaqueExpression(bool createPimpl, QObject *parent)
@@ -137,7 +103,7 @@ void QOpaqueExpression::addBody(QString body)
 
     QTUML_D(QOpaqueExpression);
     if (!d->bodies->contains(body)) {
-        d->addBody(body);
+        d->bodies->append(body);
     }
 }
 
@@ -147,7 +113,7 @@ void QOpaqueExpression::removeBody(QString body)
 
     QTUML_D(QOpaqueExpression);
     if (d->bodies->contains(body)) {
-        d->removeBody(body);
+        d->bodies->removeAll(body);
     }
 }
 
@@ -168,7 +134,7 @@ void QOpaqueExpression::addLanguage(QString language)
 
     QTUML_D(QOpaqueExpression);
     if (!d->languages->contains(language)) {
-        d->addLanguage(language);
+        d->languages->append(language);
     }
 }
 
@@ -178,7 +144,7 @@ void QOpaqueExpression::removeLanguage(QString language)
 
     QTUML_D(QOpaqueExpression);
     if (d->languages->contains(language)) {
-        d->removeLanguage(language);
+        d->languages->removeAll(language);
     }
 }
 
@@ -199,7 +165,7 @@ void QOpaqueExpression::setBehavior(QBehavior *behavior)
 
     QTUML_D(QOpaqueExpression);
     if (d->behavior != behavior) {
-        d->setBehavior(behavior);
+        d->behavior = behavior;
     }
 }
 
@@ -212,7 +178,7 @@ QParameter *QOpaqueExpression::result() const
 
     qWarning("QOpaqueExpression::result: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QOpaqueExpression);
+    //QTUML_D(const QOpaqueExpression);
     //return <derived-return>;
 }
 

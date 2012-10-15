@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qinstancespecification_p.h"
 
 QT_BEGIN_HEADER
@@ -54,17 +53,15 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QEnumeration;
+class QEnumerationLiteral;
 
 class QEnumerationLiteralPrivate : public QInstanceSpecificationPrivate
 {
 public:
-    explicit QEnumerationLiteralPrivate();
+    explicit QEnumerationLiteralPrivate(QEnumerationLiteral *q_umlptr = 0);
     virtual ~QEnumerationLiteralPrivate();
 
     QEnumeration *enumeration;
-
-    // Internal functions for association-ends
-    void setEnumeration(QEnumeration *enumeration);
 };
 
 QT_END_NAMESPACE_QTUML

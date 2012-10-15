@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qlinkaction_p.h"
 
 QT_BEGIN_HEADER
@@ -56,9 +55,11 @@ QT_MODULE(QtUml)
 class QWriteLinkActionPrivate : public QLinkActionPrivate
 {
 public:
-    explicit QWriteLinkActionPrivate();
     virtual ~QWriteLinkActionPrivate();
 
+
+protected:
+    explicit QWriteLinkActionPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

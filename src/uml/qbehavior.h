@@ -56,11 +56,11 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QConstraint;
 class QBehavioralFeature;
-class QParameterSet;
-class QBehavioredClassifier;
+class QConstraint;
 class QParameter;
+class QBehavioredClassifier;
+class QParameterSet;
 
 class Q_UML_EXPORT QBehavior : public QClass
 {

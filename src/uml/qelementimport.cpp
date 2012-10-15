@@ -41,64 +41,22 @@
 
 #include "qelementimport.h"
 #include "qelementimport_p.h"
-#include "qdirectedrelationship_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QPackageableElement>
 #include <QtUml/QNamespace>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QElementImportPrivate::QElementImportPrivate() :
+QElementImportPrivate::QElementImportPrivate(QElementImport *q_umlptr) :
     visibility(QtUml::VisibilityPublic),
     importedElement(0),
     importingNamespace(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QElementImportPrivate::~QElementImportPrivate()
 {
-}
-
-void QElementImportPrivate::setAlias(QString alias)
-{
-    // This is a read-write attribute
-
-    this->alias = alias;
-}
-
-void QElementImportPrivate::setVisibility(QtUml::VisibilityKind visibility)
-{
-    // This is a read-write attribute
-
-    this->visibility = visibility;
-}
-
-void QElementImportPrivate::setImportedElement(QPackageableElement *importedElement)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeTarget(this->importedElement);
-
-    this->importedElement = importedElement;
-
-    // Adjust subsetted property(ies)
-    addTarget(importedElement);
-}
-
-void QElementImportPrivate::setImportingNamespace(QNamespace *importingNamespace)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeSource(this->importingNamespace);
-
-    this->importingNamespace = importingNamespace;
-
-    // Adjust subsetted property(ies)
-    setOwner(importingNamespace);
-    addSource(importingNamespace);
 }
 
 /*!
@@ -112,7 +70,7 @@ void QElementImportPrivate::setImportingNamespace(QNamespace *importingNamespace
 QElementImport::QElementImport(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QElementImportPrivate;
+    d_umlptr = new QElementImportPrivate(this);
 }
 
 QElementImport::QElementImport(bool createPimpl, QObject *parent)
@@ -143,7 +101,7 @@ void QElementImport::setAlias(QString alias)
 
     QTUML_D(QElementImport);
     if (d->alias != alias) {
-        d->setAlias(alias);
+        d->alias = alias;
     }
 }
 
@@ -164,7 +122,7 @@ void QElementImport::setVisibility(QtUml::VisibilityKind visibility)
 
     QTUML_D(QElementImport);
     if (d->visibility != visibility) {
-        d->setVisibility(visibility);
+        d->visibility = visibility;
     }
 }
 
@@ -185,7 +143,13 @@ void QElementImport::setImportedElement(QPackageableElement *importedElement)
 
     QTUML_D(QElementImport);
     if (d->importedElement != importedElement) {
-        d->setImportedElement(importedElement);
+        // Adjust subsetted property(ies)
+        d->removeTarget(d->importedElement);
+
+        d->importedElement = importedElement;
+
+        // Adjust subsetted property(ies)
+        d->addTarget(importedElement);
     }
 }
 
@@ -206,7 +170,14 @@ void QElementImport::setImportingNamespace(QNamespace *importingNamespace)
 
     QTUML_D(QElementImport);
     if (d->importingNamespace != importingNamespace) {
-        d->setImportingNamespace(importingNamespace);
+        // Adjust subsetted property(ies)
+        d->removeSource(d->importingNamespace);
+
+        d->importingNamespace = importingNamespace;
+
+        // Adjust subsetted property(ies)
+        d->setOwner(importingNamespace);
+        d->addSource(importingNamespace);
 
         // Adjust opposite property
         importingNamespace->addElementImport(this);

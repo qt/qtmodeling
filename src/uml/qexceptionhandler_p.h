@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qelement_p.h"
 
 // Qt includes
@@ -59,24 +58,18 @@ QT_MODULE(QtUml)
 class QObjectNode;
 class QClassifier;
 class QExecutableNode;
+class QExceptionHandler;
 
 class QExceptionHandlerPrivate : public QElementPrivate
 {
 public:
-    explicit QExceptionHandlerPrivate();
+    explicit QExceptionHandlerPrivate(QExceptionHandler *q_umlptr = 0);
     virtual ~QExceptionHandlerPrivate();
 
     QExecutableNode *handlerBody;
     QSet<QClassifier *> *exceptionTypes;
     QExecutableNode *protectedNode;
     QObjectNode *exceptionInput;
-
-    // Internal functions for association-ends
-    void setHandlerBody(QExecutableNode *handlerBody);
-    void addExceptionType(QClassifier *exceptionType);
-    void removeExceptionType(QClassifier *exceptionType);
-    void setProtectedNode(QExecutableNode *protectedNode);
-    void setExceptionInput(QObjectNode *exceptionInput);
 };
 
 QT_END_NAMESPACE_QTUML

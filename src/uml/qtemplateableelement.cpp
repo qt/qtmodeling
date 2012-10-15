@@ -41,7 +41,6 @@
 
 #include "qtemplateableelement.h"
 #include "qtemplateableelement_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QTemplateSignature>
 #include <QtUml/QTemplateBinding>
@@ -58,39 +57,6 @@ QTemplateableElementPrivate::QTemplateableElementPrivate() :
 QTemplateableElementPrivate::~QTemplateableElementPrivate()
 {
     delete templateBindings;
-}
-
-void QTemplateableElementPrivate::setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->ownedTemplateSignature);
-
-    this->ownedTemplateSignature = ownedTemplateSignature;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(ownedTemplateSignature);
-}
-
-void QTemplateableElementPrivate::addTemplateBinding(QTemplateBinding *templateBinding)
-{
-    // This is a read-write association end
-
-    this->templateBindings->insert(templateBinding);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(templateBinding);
-}
-
-void QTemplateableElementPrivate::removeTemplateBinding(QTemplateBinding *templateBinding)
-{
-    // This is a read-write association end
-
-    this->templateBindings->remove(templateBinding);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(templateBinding);
 }
 
 /*!
@@ -126,7 +92,13 @@ void QTemplateableElement::setOwnedTemplateSignature(QTemplateSignature *ownedTe
 
     QTUML_D(QTemplateableElement);
     if (d->ownedTemplateSignature != ownedTemplateSignature) {
-        d->setOwnedTemplateSignature(ownedTemplateSignature);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->ownedTemplateSignature);
+
+        d->ownedTemplateSignature = ownedTemplateSignature;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(ownedTemplateSignature);
 
         // Adjust opposite property
         ownedTemplateSignature->setTemplate_(this);
@@ -150,7 +122,10 @@ void QTemplateableElement::addTemplateBinding(QTemplateBinding *templateBinding)
 
     QTUML_D(QTemplateableElement);
     if (!d->templateBindings->contains(templateBinding)) {
-        d->addTemplateBinding(templateBinding);
+        d->templateBindings->insert(templateBinding);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(templateBinding);
 
         // Adjust opposite property
         templateBinding->setBoundElement(this);
@@ -163,7 +138,10 @@ void QTemplateableElement::removeTemplateBinding(QTemplateBinding *templateBindi
 
     QTUML_D(QTemplateableElement);
     if (d->templateBindings->contains(templateBinding)) {
-        d->removeTemplateBinding(templateBinding);
+        d->templateBindings->remove(templateBinding);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(templateBinding);
 
         // Adjust opposite property
         templateBinding->setBoundElement(0);

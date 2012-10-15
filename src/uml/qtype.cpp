@@ -41,7 +41,6 @@
 
 #include "qtype.h"
 #include "qtype_p.h"
-#include "qnamedelement_p.h"
 
 #include <QtUml/QPackage>
 
@@ -54,16 +53,6 @@ QTypePrivate::QTypePrivate() :
 
 QTypePrivate::~QTypePrivate()
 {
-}
-
-void QTypePrivate::setPackage(QPackage *package)
-{
-    // This is a read-write association end
-
-    this->package = package;
-
-    // Adjust subsetted property(ies)
-    setNamespace_(package);
 }
 
 /*!
@@ -99,7 +88,13 @@ void QType::setPackage(QPackage *package)
 
     QTUML_D(QType);
     if (d->package != package) {
-        d->setPackage(package);
+        d->package = package;
+
+        // Adjust subsetted property(ies)
+        d->setNamespace_(package);
+
+        // Adjust opposite property
+        package->addOwnedType(this);
     }
 }
 

@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qactivitynode_p.h"
 
 // Qt includes
@@ -61,14 +60,12 @@ class QExceptionHandler;
 class QExecutableNodePrivate : public QActivityNodePrivate
 {
 public:
-    explicit QExecutableNodePrivate();
     virtual ~QExecutableNodePrivate();
 
     QSet<QExceptionHandler *> *handlers;
 
-    // Internal functions for association-ends
-    void addHandler(QExceptionHandler *handler);
-    void removeHandler(QExceptionHandler *handler);
+protected:
+    explicit QExecutableNodePrivate();
 };
 
 QT_END_NAMESPACE_QTUML

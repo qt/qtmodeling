@@ -41,48 +41,21 @@
 
 #include "qtimeexpression.h"
 #include "qtimeexpression_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QObservation>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QTimeExpressionPrivate::QTimeExpressionPrivate() :
+QTimeExpressionPrivate::QTimeExpressionPrivate(QTimeExpression *q_umlptr) :
     observations(new QSet<QObservation *>),
     expr(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QTimeExpressionPrivate::~QTimeExpressionPrivate()
 {
     delete observations;
-}
-
-void QTimeExpressionPrivate::addObservation(QObservation *observation)
-{
-    // This is a read-write association end
-
-    this->observations->insert(observation);
-}
-
-void QTimeExpressionPrivate::removeObservation(QObservation *observation)
-{
-    // This is a read-write association end
-
-    this->observations->remove(observation);
-}
-
-void QTimeExpressionPrivate::setExpr(QValueSpecification *expr)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->expr);
-
-    this->expr = expr;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(expr);
 }
 
 /*!
@@ -96,7 +69,7 @@ void QTimeExpressionPrivate::setExpr(QValueSpecification *expr)
 QTimeExpression::QTimeExpression(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QTimeExpressionPrivate;
+    d_umlptr = new QTimeExpressionPrivate(this);
 }
 
 QTimeExpression::QTimeExpression(bool createPimpl, QObject *parent)
@@ -127,7 +100,7 @@ void QTimeExpression::addObservation(QObservation *observation)
 
     QTUML_D(QTimeExpression);
     if (!d->observations->contains(observation)) {
-        d->addObservation(observation);
+        d->observations->insert(observation);
     }
 }
 
@@ -137,7 +110,7 @@ void QTimeExpression::removeObservation(QObservation *observation)
 
     QTUML_D(QTimeExpression);
     if (d->observations->contains(observation)) {
-        d->removeObservation(observation);
+        d->observations->remove(observation);
     }
 }
 
@@ -158,7 +131,13 @@ void QTimeExpression::setExpr(QValueSpecification *expr)
 
     QTUML_D(QTimeExpression);
     if (d->expr != expr) {
-        d->setExpr(expr);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->expr);
+
+        d->expr = expr;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(expr);
     }
 }
 

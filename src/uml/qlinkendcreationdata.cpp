@@ -46,28 +46,15 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QLinkEndCreationDataPrivate::QLinkEndCreationDataPrivate() :
+QLinkEndCreationDataPrivate::QLinkEndCreationDataPrivate(QLinkEndCreationData *q_umlptr) :
     isReplaceAll(false),
     insertAt(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QLinkEndCreationDataPrivate::~QLinkEndCreationDataPrivate()
 {
-}
-
-void QLinkEndCreationDataPrivate::setReplaceAll(bool isReplaceAll)
-{
-    // This is a read-write attribute
-
-    this->isReplaceAll = isReplaceAll;
-}
-
-void QLinkEndCreationDataPrivate::setInsertAt(QInputPin *insertAt)
-{
-    // This is a read-write association end
-
-    this->insertAt = insertAt;
 }
 
 /*!
@@ -81,7 +68,7 @@ void QLinkEndCreationDataPrivate::setInsertAt(QInputPin *insertAt)
 QLinkEndCreationData::QLinkEndCreationData(QObject *parent)
     : QLinkEndData(false, parent)
 {
-    d_umlptr = new QLinkEndCreationDataPrivate;
+    d_umlptr = new QLinkEndCreationDataPrivate(this);
 }
 
 QLinkEndCreationData::QLinkEndCreationData(bool createPimpl, QObject *parent)
@@ -112,7 +99,7 @@ void QLinkEndCreationData::setReplaceAll(bool isReplaceAll)
 
     QTUML_D(QLinkEndCreationData);
     if (d->isReplaceAll != isReplaceAll) {
-        d->setReplaceAll(isReplaceAll);
+        d->isReplaceAll = isReplaceAll;
     }
 }
 
@@ -133,7 +120,7 @@ void QLinkEndCreationData::setInsertAt(QInputPin *insertAt)
 
     QTUML_D(QLinkEndCreationData);
     if (d->insertAt != insertAt) {
-        d->setInsertAt(insertAt);
+        d->insertAt = insertAt;
     }
 }
 

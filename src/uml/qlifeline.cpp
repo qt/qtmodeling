@@ -41,8 +41,6 @@
 
 #include "qlifeline.h"
 #include "qlifeline_p.h"
-#include "qnamedelement_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QConnectableElement>
 #include <QtUml/QValueSpecification>
@@ -52,69 +50,19 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QLifelinePrivate::QLifelinePrivate() :
+QLifelinePrivate::QLifelinePrivate(QLifeline *q_umlptr) :
     represents(0),
     decomposedAs(0),
     coveredBy(new QSet<QInteractionFragment *>),
     interaction(0),
     selector(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QLifelinePrivate::~QLifelinePrivate()
 {
     delete coveredBy;
-}
-
-void QLifelinePrivate::setRepresents(QConnectableElement *represents)
-{
-    // This is a read-write association end
-
-    this->represents = represents;
-}
-
-void QLifelinePrivate::setDecomposedAs(QPartDecomposition *decomposedAs)
-{
-    // This is a read-write association end
-
-    this->decomposedAs = decomposedAs;
-}
-
-void QLifelinePrivate::addCoveredBy(QInteractionFragment *coveredBy)
-{
-    // This is a read-write association end
-
-    this->coveredBy->insert(coveredBy);
-}
-
-void QLifelinePrivate::removeCoveredBy(QInteractionFragment *coveredBy)
-{
-    // This is a read-write association end
-
-    this->coveredBy->remove(coveredBy);
-}
-
-void QLifelinePrivate::setInteraction(QInteraction *interaction)
-{
-    // This is a read-write association end
-
-    this->interaction = interaction;
-
-    // Adjust subsetted property(ies)
-    setNamespace_(interaction);
-}
-
-void QLifelinePrivate::setSelector(QValueSpecification *selector)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->selector);
-
-    this->selector = selector;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(selector);
 }
 
 /*!
@@ -128,7 +76,7 @@ void QLifelinePrivate::setSelector(QValueSpecification *selector)
 QLifeline::QLifeline(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QLifelinePrivate;
+    d_umlptr = new QLifelinePrivate(this);
 }
 
 QLifeline::QLifeline(bool createPimpl, QObject *parent)
@@ -159,7 +107,7 @@ void QLifeline::setRepresents(QConnectableElement *represents)
 
     QTUML_D(QLifeline);
     if (d->represents != represents) {
-        d->setRepresents(represents);
+        d->represents = represents;
     }
 }
 
@@ -180,7 +128,7 @@ void QLifeline::setDecomposedAs(QPartDecomposition *decomposedAs)
 
     QTUML_D(QLifeline);
     if (d->decomposedAs != decomposedAs) {
-        d->setDecomposedAs(decomposedAs);
+        d->decomposedAs = decomposedAs;
     }
 }
 
@@ -201,7 +149,7 @@ void QLifeline::addCoveredBy(QInteractionFragment *coveredBy)
 
     QTUML_D(QLifeline);
     if (!d->coveredBy->contains(coveredBy)) {
-        d->addCoveredBy(coveredBy);
+        d->coveredBy->insert(coveredBy);
 
         // Adjust opposite property
         coveredBy->addCovered(this);
@@ -214,7 +162,7 @@ void QLifeline::removeCoveredBy(QInteractionFragment *coveredBy)
 
     QTUML_D(QLifeline);
     if (d->coveredBy->contains(coveredBy)) {
-        d->removeCoveredBy(coveredBy);
+        d->coveredBy->remove(coveredBy);
 
         // Adjust opposite property
         coveredBy->removeCovered(this);
@@ -238,7 +186,10 @@ void QLifeline::setInteraction(QInteraction *interaction)
 
     QTUML_D(QLifeline);
     if (d->interaction != interaction) {
-        d->setInteraction(interaction);
+        d->interaction = interaction;
+
+        // Adjust subsetted property(ies)
+        d->setNamespace_(interaction);
 
         // Adjust opposite property
         interaction->addLifeline(this);
@@ -262,7 +213,13 @@ void QLifeline::setSelector(QValueSpecification *selector)
 
     QTUML_D(QLifeline);
     if (d->selector != selector) {
-        d->setSelector(selector);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->selector);
+
+        d->selector = selector;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(selector);
     }
 }
 

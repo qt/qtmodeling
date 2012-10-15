@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qaction_p.h"
 
 QT_BEGIN_HEADER
@@ -55,19 +54,16 @@ QT_MODULE(QtUml)
 
 class QClassifier;
 class QOutputPin;
+class QCreateObjectAction;
 
 class QCreateObjectActionPrivate : public QActionPrivate
 {
 public:
-    explicit QCreateObjectActionPrivate();
+    explicit QCreateObjectActionPrivate(QCreateObjectAction *q_umlptr = 0);
     virtual ~QCreateObjectActionPrivate();
 
     QClassifier *classifier;
     QOutputPin *result;
-
-    // Internal functions for association-ends
-    void setClassifier(QClassifier *classifier);
-    void setResult(QOutputPin *result);
 };
 
 QT_END_NAMESPACE_QTUML

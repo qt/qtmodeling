@@ -44,9 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qclassifier_p.h"
-
 #include "qrelationship_p.h"
 
 // Qt includes
@@ -61,28 +59,18 @@ QT_MODULE(QtUml)
 
 class QType;
 class QProperty;
+class QAssociation;
 
 class QAssociationPrivate : public QClassifierPrivate, public QRelationshipPrivate
 {
 public:
-    explicit QAssociationPrivate();
+    explicit QAssociationPrivate(QAssociation *q_umlptr = 0);
     virtual ~QAssociationPrivate();
 
     bool isDerived;
     QSet<QProperty *> *navigableOwnedEnds;
     QList<QProperty *> *ownedEnds;
     QList<QProperty *> *memberEnds;
-
-    // Internal functions for attributes
-    void setDerived(bool isDerived);
-
-    // Internal functions for association-ends
-    void addNavigableOwnedEnd(QProperty *navigableOwnedEnd);
-    void removeNavigableOwnedEnd(QProperty *navigableOwnedEnd);
-    void addOwnedEnd(QProperty *ownedEnd);
-    void removeOwnedEnd(QProperty *ownedEnd);
-    void addMemberEnd(QProperty *memberEnd);
-    void removeMemberEnd(QProperty *memberEnd);
 };
 
 QT_END_NAMESPACE_QTUML

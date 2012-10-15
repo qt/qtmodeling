@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qbehavior_p.h"
 
 // Qt includes
@@ -59,29 +58,20 @@ QT_MODULE(QtUml)
 class QNamespace;
 class QRedefinableElement;
 class QState;
+class QStateMachine;
 class QPseudostate;
 class QRegion;
 
 class QStateMachinePrivate : public QBehaviorPrivate
 {
 public:
-    explicit QStateMachinePrivate();
+    explicit QStateMachinePrivate(QStateMachine *q_umlptr = 0);
     virtual ~QStateMachinePrivate();
 
     QSet<QStateMachine *> *extendedStateMachines;
     QSet<QPseudostate *> *connectionPoints;
     QSet<QState *> *submachineStates;
     QSet<QRegion *> *regions;
-
-    // Internal functions for association-ends
-    void addExtendedStateMachine(QStateMachine *extendedStateMachine);
-    void removeExtendedStateMachine(QStateMachine *extendedStateMachine);
-    void addConnectionPoint(QPseudostate *connectionPoint);
-    void removeConnectionPoint(QPseudostate *connectionPoint);
-    void addSubmachineState(QState *submachineState);
-    void removeSubmachineState(QState *submachineState);
-    void addRegion(QRegion *region);
-    void removeRegion(QRegion *region);
 };
 
 QT_END_NAMESPACE_QTUML

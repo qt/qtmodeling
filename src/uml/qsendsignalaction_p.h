@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qinvocationaction_p.h"
 
 QT_BEGIN_HEADER
@@ -55,19 +54,16 @@ QT_MODULE(QtUml)
 
 class QSignal;
 class QInputPin;
+class QSendSignalAction;
 
 class QSendSignalActionPrivate : public QInvocationActionPrivate
 {
 public:
-    explicit QSendSignalActionPrivate();
+    explicit QSendSignalActionPrivate(QSendSignalAction *q_umlptr = 0);
     virtual ~QSendSignalActionPrivate();
 
     QInputPin *target;
     QSignal *signal;
-
-    // Internal functions for association-ends
-    void setTarget(QInputPin *target);
-    void setSignal(QSignal *signal);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -41,8 +41,6 @@
 
 #include "qdeployment.h"
 #include "qdeployment_p.h"
-#include "qelement_p.h"
-#include "qdependency_p.h"
 
 #include <QtUml/QDeploymentSpecification>
 #include <QtUml/QDeployedArtifact>
@@ -50,71 +48,18 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDeploymentPrivate::QDeploymentPrivate() :
+QDeploymentPrivate::QDeploymentPrivate(QDeployment *q_umlptr) :
     location(0),
     configurations(new QSet<QDeploymentSpecification *>),
     deployedArtifacts(new QSet<QDeployedArtifact *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QDeploymentPrivate::~QDeploymentPrivate()
 {
     delete configurations;
     delete deployedArtifacts;
-}
-
-void QDeploymentPrivate::setLocation(QDeploymentTarget *location)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeClient(this->location);
-
-    this->location = location;
-
-    // Adjust subsetted property(ies)
-    setOwner(location);
-    addClient(location);
-}
-
-void QDeploymentPrivate::addConfiguration(QDeploymentSpecification *configuration)
-{
-    // This is a read-write association end
-
-    this->configurations->insert(configuration);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(configuration);
-}
-
-void QDeploymentPrivate::removeConfiguration(QDeploymentSpecification *configuration)
-{
-    // This is a read-write association end
-
-    this->configurations->remove(configuration);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(configuration);
-}
-
-void QDeploymentPrivate::addDeployedArtifact(QDeployedArtifact *deployedArtifact)
-{
-    // This is a read-write association end
-
-    this->deployedArtifacts->insert(deployedArtifact);
-
-    // Adjust subsetted property(ies)
-    addSupplier(deployedArtifact);
-}
-
-void QDeploymentPrivate::removeDeployedArtifact(QDeployedArtifact *deployedArtifact)
-{
-    // This is a read-write association end
-
-    this->deployedArtifacts->remove(deployedArtifact);
-
-    // Adjust subsetted property(ies)
-    removeSupplier(deployedArtifact);
 }
 
 /*!
@@ -128,7 +73,7 @@ void QDeploymentPrivate::removeDeployedArtifact(QDeployedArtifact *deployedArtif
 QDeployment::QDeployment(QObject *parent)
     : QDependency(false, parent)
 {
-    d_umlptr = new QDeploymentPrivate;
+    d_umlptr = new QDeploymentPrivate(this);
 }
 
 QDeployment::QDeployment(bool createPimpl, QObject *parent)
@@ -159,7 +104,14 @@ void QDeployment::setLocation(QDeploymentTarget *location)
 
     QTUML_D(QDeployment);
     if (d->location != location) {
-        d->setLocation(location);
+        // Adjust subsetted property(ies)
+        removeClient(d->location);
+
+        d->location = location;
+
+        // Adjust subsetted property(ies)
+        d->setOwner(location);
+        addClient(location);
 
         // Adjust opposite property
         location->addDeployment(this);
@@ -183,7 +135,10 @@ void QDeployment::addConfiguration(QDeploymentSpecification *configuration)
 
     QTUML_D(QDeployment);
     if (!d->configurations->contains(configuration)) {
-        d->addConfiguration(configuration);
+        d->configurations->insert(configuration);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(configuration);
 
         // Adjust opposite property
         configuration->setDeployment(this);
@@ -196,7 +151,10 @@ void QDeployment::removeConfiguration(QDeploymentSpecification *configuration)
 
     QTUML_D(QDeployment);
     if (d->configurations->contains(configuration)) {
-        d->removeConfiguration(configuration);
+        d->configurations->remove(configuration);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(configuration);
 
         // Adjust opposite property
         configuration->setDeployment(0);
@@ -220,7 +178,10 @@ void QDeployment::addDeployedArtifact(QDeployedArtifact *deployedArtifact)
 
     QTUML_D(QDeployment);
     if (!d->deployedArtifacts->contains(deployedArtifact)) {
-        d->addDeployedArtifact(deployedArtifact);
+        d->deployedArtifacts->insert(deployedArtifact);
+
+        // Adjust subsetted property(ies)
+        addSupplier(deployedArtifact);
     }
 }
 
@@ -230,7 +191,10 @@ void QDeployment::removeDeployedArtifact(QDeployedArtifact *deployedArtifact)
 
     QTUML_D(QDeployment);
     if (d->deployedArtifacts->contains(deployedArtifact)) {
-        d->removeDeployedArtifact(deployedArtifact);
+        d->deployedArtifacts->remove(deployedArtifact);
+
+        // Adjust subsetted property(ies)
+        removeSupplier(deployedArtifact);
     }
 }
 

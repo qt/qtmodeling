@@ -45,35 +45,15 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCommentPrivate::QCommentPrivate() :
+QCommentPrivate::QCommentPrivate(QComment *q_umlptr) :
     annotatedElements(new QSet<QElement *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QCommentPrivate::~QCommentPrivate()
 {
     delete annotatedElements;
-}
-
-void QCommentPrivate::setBody(QString body)
-{
-    // This is a read-write attribute
-
-    this->body = body;
-}
-
-void QCommentPrivate::addAnnotatedElement(QElement *annotatedElement)
-{
-    // This is a read-write association end
-
-    this->annotatedElements->insert(annotatedElement);
-}
-
-void QCommentPrivate::removeAnnotatedElement(QElement *annotatedElement)
-{
-    // This is a read-write association end
-
-    this->annotatedElements->remove(annotatedElement);
 }
 
 /*!
@@ -87,7 +67,7 @@ void QCommentPrivate::removeAnnotatedElement(QElement *annotatedElement)
 QComment::QComment(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QCommentPrivate;
+    d_umlptr = new QCommentPrivate(this);
 }
 
 QComment::QComment(bool createPimpl, QObject *parent)
@@ -118,7 +98,7 @@ void QComment::setBody(QString body)
 
     QTUML_D(QComment);
     if (d->body != body) {
-        d->setBody(body);
+        d->body = body;
     }
 }
 
@@ -139,7 +119,7 @@ void QComment::addAnnotatedElement(QElement *annotatedElement)
 
     QTUML_D(QComment);
     if (!d->annotatedElements->contains(annotatedElement)) {
-        d->addAnnotatedElement(annotatedElement);
+        d->annotatedElements->insert(annotatedElement);
     }
 }
 
@@ -149,7 +129,7 @@ void QComment::removeAnnotatedElement(QElement *annotatedElement)
 
     QTUML_D(QComment);
     if (d->annotatedElements->contains(annotatedElement)) {
-        d->removeAnnotatedElement(annotatedElement);
+        d->annotatedElements->remove(annotatedElement);
     }
 }
 

@@ -64,9 +64,9 @@ class QTrigger;
 class QVertex;
 class QStateMachine;
 class QClassifier;
-class QBehavior;
 class QRegion;
 class QConstraint;
+class QBehavior;
 
 class Q_UML_EXPORT QTransition : public QObject, public QRedefinableElement, public QNamespace
 {

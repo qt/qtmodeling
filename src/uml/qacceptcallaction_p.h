@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qaccepteventaction_p.h"
 
 QT_BEGIN_HEADER
@@ -54,17 +53,15 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QOutputPin;
+class QAcceptCallAction;
 
 class QAcceptCallActionPrivate : public QAcceptEventActionPrivate
 {
 public:
-    explicit QAcceptCallActionPrivate();
+    explicit QAcceptCallActionPrivate(QAcceptCallAction *q_umlptr = 0);
     virtual ~QAcceptCallActionPrivate();
 
     QOutputPin *returnInformation;
-
-    // Internal functions for association-ends
-    void setReturnInformation(QOutputPin *returnInformation);
 };
 
 QT_END_NAMESPACE_QTUML

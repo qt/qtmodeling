@@ -47,9 +47,7 @@
 #include <QtUml/QtUmlEnumerations>
 
 // Base class includes
-
 #include "qredefinableelement_p.h"
-
 #include "qnamespace_p.h"
 
 // Qt includes
@@ -65,14 +63,15 @@ class QTrigger;
 class QVertex;
 class QStateMachine;
 class QClassifier;
-class QBehavior;
+class QTransition;
 class QRegion;
 class QConstraint;
+class QBehavior;
 
 class QTransitionPrivate : public QRedefinableElementPrivate, public QNamespacePrivate
 {
 public:
-    explicit QTransitionPrivate();
+    explicit QTransitionPrivate(QTransition *q_umlptr = 0);
     virtual ~QTransitionPrivate();
 
     QtUml::TransitionKind kind;
@@ -83,19 +82,6 @@ public:
     QTransition *redefinedTransition;
     QVertex *source;
     QSet<QTrigger *> *triggers;
-
-    // Internal functions for attributes
-    void setKind(QtUml::TransitionKind kind);
-
-    // Internal functions for association-ends
-    void setGuard(QConstraint *guard);
-    void setTarget(QVertex *target);
-    void setEffect(QBehavior *effect);
-    void setContainer(QRegion *container);
-    void setRedefinedTransition(QTransition *redefinedTransition);
-    void setSource(QVertex *source);
-    void addTrigger(QTrigger *trigger);
-    void removeTrigger(QTrigger *trigger);
 };
 
 QT_END_NAMESPACE_QTUML

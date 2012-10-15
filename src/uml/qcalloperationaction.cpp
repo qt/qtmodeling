@@ -41,41 +41,21 @@
 
 #include "qcalloperationaction.h"
 #include "qcalloperationaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QOperation>
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCallOperationActionPrivate::QCallOperationActionPrivate() :
+QCallOperationActionPrivate::QCallOperationActionPrivate(QCallOperationAction *q_umlptr) :
     operation(0),
     target(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QCallOperationActionPrivate::~QCallOperationActionPrivate()
 {
-}
-
-void QCallOperationActionPrivate::setOperation(QOperation *operation)
-{
-    // This is a read-write association end
-
-    this->operation = operation;
-}
-
-void QCallOperationActionPrivate::setTarget(QInputPin *target)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeInput(this->target);
-
-    this->target = target;
-
-    // Adjust subsetted property(ies)
-    addInput(target);
 }
 
 /*!
@@ -89,7 +69,7 @@ void QCallOperationActionPrivate::setTarget(QInputPin *target)
 QCallOperationAction::QCallOperationAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QCallOperationActionPrivate;
+    d_umlptr = new QCallOperationActionPrivate(this);
 }
 
 QCallOperationAction::QCallOperationAction(bool createPimpl, QObject *parent)
@@ -120,7 +100,7 @@ void QCallOperationAction::setOperation(QOperation *operation)
 
     QTUML_D(QCallOperationAction);
     if (d->operation != operation) {
-        d->setOperation(operation);
+        d->operation = operation;
     }
 }
 
@@ -141,7 +121,13 @@ void QCallOperationAction::setTarget(QInputPin *target)
 
     QTUML_D(QCallOperationAction);
     if (d->target != target) {
-        d->setTarget(target);
+        // Adjust subsetted property(ies)
+        d->removeInput(d->target);
+
+        d->target = target;
+
+        // Adjust subsetted property(ies)
+        d->addInput(target);
     }
 }
 

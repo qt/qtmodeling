@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qbehavior_p.h"
 
 // Qt includes
@@ -62,11 +61,12 @@ class QActivityPartition;
 class QActivityGroup;
 class QActivityEdge;
 class QActivityNode;
+class QActivity;
 
 class QActivityPrivate : public QBehaviorPrivate
 {
 public:
-    explicit QActivityPrivate();
+    explicit QActivityPrivate(QActivity *q_umlptr = 0);
     virtual ~QActivityPrivate();
 
     bool isReadOnly;
@@ -77,24 +77,6 @@ public:
     QSet<QStructuredActivityNode *> *structuredNodes;
     QSet<QActivityGroup *> *groups;
     QSet<QActivityEdge *> *edges;
-
-    // Internal functions for attributes
-    void setReadOnly(bool isReadOnly);
-    void setSingleExecution(bool isSingleExecution);
-
-    // Internal functions for association-ends
-    void addPartition(QActivityPartition *partition);
-    void removePartition(QActivityPartition *partition);
-    void addNode(QActivityNode *node);
-    void removeNode(QActivityNode *node);
-    void addVariable(QVariable *variable);
-    void removeVariable(QVariable *variable);
-    void addStructuredNode(QStructuredActivityNode *structuredNode);
-    void removeStructuredNode(QStructuredActivityNode *structuredNode);
-    void addGroup(QActivityGroup *group);
-    void removeGroup(QActivityGroup *group);
-    void addEdge(QActivityEdge *edge);
-    void removeEdge(QActivityEdge *edge);
 };
 
 QT_END_NAMESPACE_QTUML

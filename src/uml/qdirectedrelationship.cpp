@@ -41,7 +41,6 @@
 
 #include "qdirectedrelationship.h"
 #include "qdirectedrelationship_p.h"
-#include "qrelationship_p.h"
 
 #include <QtUml/QElement>
 
@@ -63,40 +62,48 @@ void QDirectedRelationshipPrivate::addSource(QElement *source)
 {
     // This is a read-only derived-union association end
 
-    this->sources->insert(source);
+    if (!this->sources->contains(source)) {
+        this->sources->insert(source);
 
-    // Adjust subsetted property(ies)
-    addRelatedElement(source);
+        // Adjust subsetted property(ies)
+        addRelatedElement(source);
+    }
 }
 
 void QDirectedRelationshipPrivate::removeSource(QElement *source)
 {
     // This is a read-only derived-union association end
 
-    this->sources->remove(source);
+    if (this->sources->contains(source)) {
+        this->sources->remove(source);
 
-    // Adjust subsetted property(ies)
-    removeRelatedElement(source);
+        // Adjust subsetted property(ies)
+        removeRelatedElement(source);
+    }
 }
 
 void QDirectedRelationshipPrivate::addTarget(QElement *target)
 {
     // This is a read-only derived-union association end
 
-    this->targets->insert(target);
+    if (!this->targets->contains(target)) {
+        this->targets->insert(target);
 
-    // Adjust subsetted property(ies)
-    addRelatedElement(target);
+        // Adjust subsetted property(ies)
+        addRelatedElement(target);
+    }
 }
 
 void QDirectedRelationshipPrivate::removeTarget(QElement *target)
 {
     // This is a read-only derived-union association end
 
-    this->targets->remove(target);
+    if (this->targets->contains(target)) {
+        this->targets->remove(target);
 
-    // Adjust subsetted property(ies)
-    removeRelatedElement(target);
+        // Adjust subsetted property(ies)
+        removeRelatedElement(target);
+    }
 }
 
 /*!

@@ -59,39 +59,40 @@ QRedefinableElementPrivate::~QRedefinableElementPrivate()
     delete redefinitionContexts;
 }
 
-void QRedefinableElementPrivate::setLeaf(bool isLeaf)
-{
-    // This is a read-write attribute
-
-    this->isLeaf = isLeaf;
-}
-
 void QRedefinableElementPrivate::addRedefinedElement(QRedefinableElement *redefinedElement)
 {
     // This is a read-only derived-union association end
 
-    this->redefinedElements->insert(redefinedElement);
+    if (!this->redefinedElements->contains(redefinedElement)) {
+        this->redefinedElements->insert(redefinedElement);
+    }
 }
 
 void QRedefinableElementPrivate::removeRedefinedElement(QRedefinableElement *redefinedElement)
 {
     // This is a read-only derived-union association end
 
-    this->redefinedElements->remove(redefinedElement);
+    if (this->redefinedElements->contains(redefinedElement)) {
+        this->redefinedElements->remove(redefinedElement);
+    }
 }
 
 void QRedefinableElementPrivate::addRedefinitionContext(QClassifier *redefinitionContext)
 {
     // This is a read-only derived-union association end
 
-    this->redefinitionContexts->insert(redefinitionContext);
+    if (!this->redefinitionContexts->contains(redefinitionContext)) {
+        this->redefinitionContexts->insert(redefinitionContext);
+    }
 }
 
 void QRedefinableElementPrivate::removeRedefinitionContext(QClassifier *redefinitionContext)
 {
     // This is a read-only derived-union association end
 
-    this->redefinitionContexts->remove(redefinitionContext);
+    if (this->redefinitionContexts->contains(redefinitionContext)) {
+        this->redefinitionContexts->remove(redefinitionContext);
+    }
 }
 
 /*!
@@ -127,7 +128,7 @@ void QRedefinableElement::setLeaf(bool isLeaf)
 
     QTUML_D(QRedefinableElement);
     if (d->isLeaf != isLeaf) {
-        d->setLeaf(isLeaf);
+        d->isLeaf = isLeaf;
     }
 }
 

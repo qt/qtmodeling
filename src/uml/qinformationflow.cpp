@@ -41,7 +41,6 @@
 
 #include "qinformationflow.h"
 #include "qinformationflow_p.h"
-#include "qdirectedrelationship_p.h"
 
 #include <QtUml/QConnector>
 #include <QtUml/QMessage>
@@ -52,7 +51,7 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInformationFlowPrivate::QInformationFlowPrivate() :
+QInformationFlowPrivate::QInformationFlowPrivate(QInformationFlow *q_umlptr) :
     informationTargets(new QSet<QNamedElement *>),
     realizingConnectors(new QSet<QConnector *>),
     conveyed(new QSet<QClassifier *>),
@@ -61,6 +60,7 @@ QInformationFlowPrivate::QInformationFlowPrivate() :
     realizingActivityEdges(new QSet<QActivityEdge *>),
     realizations(new QSet<QRelationship *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QInformationFlowPrivate::~QInformationFlowPrivate()
@@ -74,116 +74,6 @@ QInformationFlowPrivate::~QInformationFlowPrivate()
     delete realizations;
 }
 
-void QInformationFlowPrivate::addInformationTarget(QNamedElement *informationTarget)
-{
-    // This is a read-write association end
-
-    this->informationTargets->insert(informationTarget);
-
-    // Adjust subsetted property(ies)
-    addTarget(informationTarget);
-}
-
-void QInformationFlowPrivate::removeInformationTarget(QNamedElement *informationTarget)
-{
-    // This is a read-write association end
-
-    this->informationTargets->remove(informationTarget);
-
-    // Adjust subsetted property(ies)
-    removeTarget(informationTarget);
-}
-
-void QInformationFlowPrivate::addRealizingConnector(QConnector *realizingConnector)
-{
-    // This is a read-write association end
-
-    this->realizingConnectors->insert(realizingConnector);
-}
-
-void QInformationFlowPrivate::removeRealizingConnector(QConnector *realizingConnector)
-{
-    // This is a read-write association end
-
-    this->realizingConnectors->remove(realizingConnector);
-}
-
-void QInformationFlowPrivate::addConveyed(QClassifier *conveyed)
-{
-    // This is a read-write association end
-
-    this->conveyed->insert(conveyed);
-}
-
-void QInformationFlowPrivate::removeConveyed(QClassifier *conveyed)
-{
-    // This is a read-write association end
-
-    this->conveyed->remove(conveyed);
-}
-
-void QInformationFlowPrivate::addInformationSource(QNamedElement *informationSource)
-{
-    // This is a read-write association end
-
-    this->informationSources->insert(informationSource);
-
-    // Adjust subsetted property(ies)
-    addSource(informationSource);
-}
-
-void QInformationFlowPrivate::removeInformationSource(QNamedElement *informationSource)
-{
-    // This is a read-write association end
-
-    this->informationSources->remove(informationSource);
-
-    // Adjust subsetted property(ies)
-    removeSource(informationSource);
-}
-
-void QInformationFlowPrivate::addRealizingMessage(QMessage *realizingMessage)
-{
-    // This is a read-write association end
-
-    this->realizingMessages->insert(realizingMessage);
-}
-
-void QInformationFlowPrivate::removeRealizingMessage(QMessage *realizingMessage)
-{
-    // This is a read-write association end
-
-    this->realizingMessages->remove(realizingMessage);
-}
-
-void QInformationFlowPrivate::addRealizingActivityEdge(QActivityEdge *realizingActivityEdge)
-{
-    // This is a read-write association end
-
-    this->realizingActivityEdges->insert(realizingActivityEdge);
-}
-
-void QInformationFlowPrivate::removeRealizingActivityEdge(QActivityEdge *realizingActivityEdge)
-{
-    // This is a read-write association end
-
-    this->realizingActivityEdges->remove(realizingActivityEdge);
-}
-
-void QInformationFlowPrivate::addRealization(QRelationship *realization)
-{
-    // This is a read-write association end
-
-    this->realizations->insert(realization);
-}
-
-void QInformationFlowPrivate::removeRealization(QRelationship *realization)
-{
-    // This is a read-write association end
-
-    this->realizations->remove(realization);
-}
-
 /*!
     \class QInformationFlow
 
@@ -195,7 +85,7 @@ void QInformationFlowPrivate::removeRealization(QRelationship *realization)
 QInformationFlow::QInformationFlow(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QInformationFlowPrivate;
+    d_umlptr = new QInformationFlowPrivate(this);
 }
 
 QInformationFlow::QInformationFlow(bool createPimpl, QObject *parent)
@@ -226,7 +116,10 @@ void QInformationFlow::addInformationTarget(QNamedElement *informationTarget)
 
     QTUML_D(QInformationFlow);
     if (!d->informationTargets->contains(informationTarget)) {
-        d->addInformationTarget(informationTarget);
+        d->informationTargets->insert(informationTarget);
+
+        // Adjust subsetted property(ies)
+        d->addTarget(informationTarget);
     }
 }
 
@@ -236,7 +129,10 @@ void QInformationFlow::removeInformationTarget(QNamedElement *informationTarget)
 
     QTUML_D(QInformationFlow);
     if (d->informationTargets->contains(informationTarget)) {
-        d->removeInformationTarget(informationTarget);
+        d->informationTargets->remove(informationTarget);
+
+        // Adjust subsetted property(ies)
+        d->removeTarget(informationTarget);
     }
 }
 
@@ -257,7 +153,7 @@ void QInformationFlow::addRealizingConnector(QConnector *realizingConnector)
 
     QTUML_D(QInformationFlow);
     if (!d->realizingConnectors->contains(realizingConnector)) {
-        d->addRealizingConnector(realizingConnector);
+        d->realizingConnectors->insert(realizingConnector);
     }
 }
 
@@ -267,7 +163,7 @@ void QInformationFlow::removeRealizingConnector(QConnector *realizingConnector)
 
     QTUML_D(QInformationFlow);
     if (d->realizingConnectors->contains(realizingConnector)) {
-        d->removeRealizingConnector(realizingConnector);
+        d->realizingConnectors->remove(realizingConnector);
     }
 }
 
@@ -288,7 +184,7 @@ void QInformationFlow::addConveyed(QClassifier *conveyed)
 
     QTUML_D(QInformationFlow);
     if (!d->conveyed->contains(conveyed)) {
-        d->addConveyed(conveyed);
+        d->conveyed->insert(conveyed);
     }
 }
 
@@ -298,7 +194,7 @@ void QInformationFlow::removeConveyed(QClassifier *conveyed)
 
     QTUML_D(QInformationFlow);
     if (d->conveyed->contains(conveyed)) {
-        d->removeConveyed(conveyed);
+        d->conveyed->remove(conveyed);
     }
 }
 
@@ -319,7 +215,10 @@ void QInformationFlow::addInformationSource(QNamedElement *informationSource)
 
     QTUML_D(QInformationFlow);
     if (!d->informationSources->contains(informationSource)) {
-        d->addInformationSource(informationSource);
+        d->informationSources->insert(informationSource);
+
+        // Adjust subsetted property(ies)
+        d->addSource(informationSource);
     }
 }
 
@@ -329,7 +228,10 @@ void QInformationFlow::removeInformationSource(QNamedElement *informationSource)
 
     QTUML_D(QInformationFlow);
     if (d->informationSources->contains(informationSource)) {
-        d->removeInformationSource(informationSource);
+        d->informationSources->remove(informationSource);
+
+        // Adjust subsetted property(ies)
+        d->removeSource(informationSource);
     }
 }
 
@@ -350,7 +252,7 @@ void QInformationFlow::addRealizingMessage(QMessage *realizingMessage)
 
     QTUML_D(QInformationFlow);
     if (!d->realizingMessages->contains(realizingMessage)) {
-        d->addRealizingMessage(realizingMessage);
+        d->realizingMessages->insert(realizingMessage);
     }
 }
 
@@ -360,7 +262,7 @@ void QInformationFlow::removeRealizingMessage(QMessage *realizingMessage)
 
     QTUML_D(QInformationFlow);
     if (d->realizingMessages->contains(realizingMessage)) {
-        d->removeRealizingMessage(realizingMessage);
+        d->realizingMessages->remove(realizingMessage);
     }
 }
 
@@ -381,7 +283,7 @@ void QInformationFlow::addRealizingActivityEdge(QActivityEdge *realizingActivity
 
     QTUML_D(QInformationFlow);
     if (!d->realizingActivityEdges->contains(realizingActivityEdge)) {
-        d->addRealizingActivityEdge(realizingActivityEdge);
+        d->realizingActivityEdges->insert(realizingActivityEdge);
     }
 }
 
@@ -391,7 +293,7 @@ void QInformationFlow::removeRealizingActivityEdge(QActivityEdge *realizingActiv
 
     QTUML_D(QInformationFlow);
     if (d->realizingActivityEdges->contains(realizingActivityEdge)) {
-        d->removeRealizingActivityEdge(realizingActivityEdge);
+        d->realizingActivityEdges->remove(realizingActivityEdge);
     }
 }
 
@@ -412,7 +314,7 @@ void QInformationFlow::addRealization(QRelationship *realization)
 
     QTUML_D(QInformationFlow);
     if (!d->realizations->contains(realization)) {
-        d->addRealization(realization);
+        d->realizations->insert(realization);
     }
 }
 
@@ -422,7 +324,7 @@ void QInformationFlow::removeRealization(QRelationship *realization)
 
     QTUML_D(QInformationFlow);
     if (d->realizations->contains(realization)) {
-        d->removeRealization(realization);
+        d->realizations->remove(realization);
     }
 }
 

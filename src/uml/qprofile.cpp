@@ -41,63 +41,23 @@
 
 #include "qprofile.h"
 #include "qprofile_p.h"
-#include "qnamespace_p.h"
 
 #include <QtUml/QElementImport>
 #include <QtUml/QPackageImport>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QProfilePrivate::QProfilePrivate() :
+QProfilePrivate::QProfilePrivate(QProfile *q_umlptr) :
     metamodelReferences(new QSet<QPackageImport *>),
     metaclassReferences(new QSet<QElementImport *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QProfilePrivate::~QProfilePrivate()
 {
     delete metamodelReferences;
     delete metaclassReferences;
-}
-
-void QProfilePrivate::addMetamodelReference(QPackageImport *metamodelReference)
-{
-    // This is a read-write association end
-
-    this->metamodelReferences->insert(metamodelReference);
-
-    // Adjust subsetted property(ies)
-    addPackageImport(metamodelReference);
-}
-
-void QProfilePrivate::removeMetamodelReference(QPackageImport *metamodelReference)
-{
-    // This is a read-write association end
-
-    this->metamodelReferences->remove(metamodelReference);
-
-    // Adjust subsetted property(ies)
-    removePackageImport(metamodelReference);
-}
-
-void QProfilePrivate::addMetaclassReference(QElementImport *metaclassReference)
-{
-    // This is a read-write association end
-
-    this->metaclassReferences->insert(metaclassReference);
-
-    // Adjust subsetted property(ies)
-    addElementImport(metaclassReference);
-}
-
-void QProfilePrivate::removeMetaclassReference(QElementImport *metaclassReference)
-{
-    // This is a read-write association end
-
-    this->metaclassReferences->remove(metaclassReference);
-
-    // Adjust subsetted property(ies)
-    removeElementImport(metaclassReference);
 }
 
 /*!
@@ -111,7 +71,7 @@ void QProfilePrivate::removeMetaclassReference(QElementImport *metaclassReferenc
 QProfile::QProfile(QObject *parent)
     : QPackage(false, parent)
 {
-    d_umlptr = new QProfilePrivate;
+    d_umlptr = new QProfilePrivate(this);
 }
 
 QProfile::QProfile(bool createPimpl, QObject *parent)
@@ -142,7 +102,10 @@ void QProfile::addMetamodelReference(QPackageImport *metamodelReference)
 
     QTUML_D(QProfile);
     if (!d->metamodelReferences->contains(metamodelReference)) {
-        d->addMetamodelReference(metamodelReference);
+        d->metamodelReferences->insert(metamodelReference);
+
+        // Adjust subsetted property(ies)
+        addPackageImport(metamodelReference);
     }
 }
 
@@ -152,7 +115,10 @@ void QProfile::removeMetamodelReference(QPackageImport *metamodelReference)
 
     QTUML_D(QProfile);
     if (d->metamodelReferences->contains(metamodelReference)) {
-        d->removeMetamodelReference(metamodelReference);
+        d->metamodelReferences->remove(metamodelReference);
+
+        // Adjust subsetted property(ies)
+        removePackageImport(metamodelReference);
     }
 }
 
@@ -173,7 +139,10 @@ void QProfile::addMetaclassReference(QElementImport *metaclassReference)
 
     QTUML_D(QProfile);
     if (!d->metaclassReferences->contains(metaclassReference)) {
-        d->addMetaclassReference(metaclassReference);
+        d->metaclassReferences->insert(metaclassReference);
+
+        // Adjust subsetted property(ies)
+        addElementImport(metaclassReference);
     }
 }
 
@@ -183,7 +152,10 @@ void QProfile::removeMetaclassReference(QElementImport *metaclassReference)
 
     QTUML_D(QProfile);
     if (d->metaclassReferences->contains(metaclassReference)) {
-        d->removeMetaclassReference(metaclassReference);
+        d->metaclassReferences->remove(metaclassReference);
+
+        // Adjust subsetted property(ies)
+        removeElementImport(metaclassReference);
     }
 }
 

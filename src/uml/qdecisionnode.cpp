@@ -47,28 +47,15 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDecisionNodePrivate::QDecisionNodePrivate() :
+QDecisionNodePrivate::QDecisionNodePrivate(QDecisionNode *q_umlptr) :
     decisionInputFlow(0),
     decisionInput(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QDecisionNodePrivate::~QDecisionNodePrivate()
 {
-}
-
-void QDecisionNodePrivate::setDecisionInputFlow(QObjectFlow *decisionInputFlow)
-{
-    // This is a read-write association end
-
-    this->decisionInputFlow = decisionInputFlow;
-}
-
-void QDecisionNodePrivate::setDecisionInput(QBehavior *decisionInput)
-{
-    // This is a read-write association end
-
-    this->decisionInput = decisionInput;
 }
 
 /*!
@@ -82,7 +69,7 @@ void QDecisionNodePrivate::setDecisionInput(QBehavior *decisionInput)
 QDecisionNode::QDecisionNode(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QDecisionNodePrivate;
+    d_umlptr = new QDecisionNodePrivate(this);
 }
 
 QDecisionNode::QDecisionNode(bool createPimpl, QObject *parent)
@@ -113,7 +100,7 @@ void QDecisionNode::setDecisionInputFlow(QObjectFlow *decisionInputFlow)
 
     QTUML_D(QDecisionNode);
     if (d->decisionInputFlow != decisionInputFlow) {
-        d->setDecisionInputFlow(decisionInputFlow);
+        d->decisionInputFlow = decisionInputFlow;
     }
 }
 
@@ -134,7 +121,7 @@ void QDecisionNode::setDecisionInput(QBehavior *decisionInput)
 
     QTUML_D(QDecisionNode);
     if (d->decisionInput != decisionInput) {
-        d->setDecisionInput(decisionInput);
+        d->decisionInput = decisionInput;
     }
 }
 

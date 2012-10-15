@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qclass_p.h"
 
 // Qt includes
@@ -60,25 +59,17 @@ class QClassifier;
 class QComponentRealization;
 class QPackageableElement;
 class QInterface;
+class QComponent;
 
 class QComponentPrivate : public QClassPrivate
 {
 public:
-    explicit QComponentPrivate();
+    explicit QComponentPrivate(QComponent *q_umlptr = 0);
     virtual ~QComponentPrivate();
 
     bool isIndirectlyInstantiated;
     QSet<QComponentRealization *> *realizations;
     QSet<QPackageableElement *> *packagedElements;
-
-    // Internal functions for attributes
-    void setIndirectlyInstantiated(bool isIndirectlyInstantiated);
-
-    // Internal functions for association-ends
-    void addRealization(QComponentRealization *realization);
-    void removeRealization(QComponentRealization *realization);
-    void addPackagedElement(QPackageableElement *packagedElement);
-    void removePackagedElement(QPackageableElement *packagedElement);
 };
 
 QT_END_NAMESPACE_QTUML

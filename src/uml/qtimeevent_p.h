@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qevent_p.h"
 
 QT_BEGIN_HEADER
@@ -54,21 +53,16 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QTimeExpression;
+class QTimeEvent;
 
 class QTimeEventPrivate : public QEventPrivate
 {
 public:
-    explicit QTimeEventPrivate();
+    explicit QTimeEventPrivate(QTimeEvent *q_umlptr = 0);
     virtual ~QTimeEventPrivate();
 
     bool isRelative;
     QTimeExpression *when;
-
-    // Internal functions for attributes
-    void setRelative(bool isRelative);
-
-    // Internal functions for association-ends
-    void setWhen(QTimeExpression *when);
 };
 
 QT_END_NAMESPACE_QTUML

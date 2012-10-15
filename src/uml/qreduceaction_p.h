@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qaction_p.h"
 
 QT_BEGIN_HEADER
@@ -56,25 +55,18 @@ QT_MODULE(QtUml)
 class QInputPin;
 class QBehavior;
 class QOutputPin;
+class QReduceAction;
 
 class QReduceActionPrivate : public QActionPrivate
 {
 public:
-    explicit QReduceActionPrivate();
+    explicit QReduceActionPrivate(QReduceAction *q_umlptr = 0);
     virtual ~QReduceActionPrivate();
 
     bool isOrdered;
     QOutputPin *result;
     QInputPin *collection;
     QBehavior *reducer;
-
-    // Internal functions for attributes
-    void setOrdered(bool isOrdered);
-
-    // Internal functions for association-ends
-    void setResult(QOutputPin *result);
-    void setCollection(QInputPin *collection);
-    void setReducer(QBehavior *reducer);
 };
 
 QT_END_NAMESPACE_QTUML

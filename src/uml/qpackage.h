@@ -60,11 +60,11 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QProfile;
-class QNamedElement;
 class QProfileApplication;
-class QType;
-class QStereotype;
+class QNamedElement;
 class QPackageMerge;
+class QStereotype;
+class QType;
 
 class Q_UML_EXPORT QPackage : public QObject, public QNamespace, public QPackageableElement, public QTemplateableElement
 {

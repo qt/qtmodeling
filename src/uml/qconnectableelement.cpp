@@ -56,11 +56,34 @@ QConnectableElementPrivate::~QConnectableElementPrivate()
 {
 }
 
-void QConnectableElementPrivate::setTemplateParameter(QConnectableElementTemplateParameter *templateParameter)
+void QConnectableElementPrivate::addEnd(QConnectorEnd *end)
 {
-    // This is a read-write association end
+    // This is a read-only derived association end
 
-    this->templateParameter = templateParameter;
+    qWarning("QConnectableElement::addEnd: to be implemented (this is a derived associationend)");
+
+    if (false /* <derivedinclusion-criteria> */) {
+        // <derived-code>
+
+        // Adjust opposite property
+        QTUML_Q(QConnectableElement);
+        end->setRole(q);
+    }
+}
+
+void QConnectableElementPrivate::removeEnd(QConnectorEnd *end)
+{
+    // This is a read-only derived association end
+
+    qWarning("QConnectableElement::removeEnd: to be implemented (this is a derived associationend)");
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+
+        // Adjust opposite property
+        QTUML_Q(QConnectableElement);
+        end->setRole(0);
+    }
 }
 
 /*!
@@ -88,7 +111,7 @@ const QList<QConnectorEnd *> *QConnectableElement::ends() const
 
     qWarning("QConnectableElement::ends: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QConnectableElement);
+    //QTUML_D(const QConnectableElement);
     //return <derived-return>;
 }
 
@@ -109,7 +132,7 @@ void QConnectableElement::setTemplateParameter(QConnectableElementTemplateParame
 
     QTUML_D(QConnectableElement);
     if (d->templateParameter != templateParameter) {
-        d->setTemplateParameter(templateParameter);
+        d->templateParameter = templateParameter;
 
         // Adjust opposite property
         templateParameter->setParameteredElement(this);

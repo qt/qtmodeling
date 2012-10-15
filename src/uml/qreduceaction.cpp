@@ -41,7 +41,6 @@
 
 #include "qreduceaction.h"
 #include "qreduceaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 #include <QtUml/QBehavior>
@@ -49,56 +48,17 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QReduceActionPrivate::QReduceActionPrivate() :
+QReduceActionPrivate::QReduceActionPrivate(QReduceAction *q_umlptr) :
     isOrdered(false),
     result(0),
     collection(0),
     reducer(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QReduceActionPrivate::~QReduceActionPrivate()
 {
-}
-
-void QReduceActionPrivate::setOrdered(bool isOrdered)
-{
-    // This is a read-write attribute
-
-    this->isOrdered = isOrdered;
-}
-
-void QReduceActionPrivate::setResult(QOutputPin *result)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOutput(this->result);
-
-    this->result = result;
-
-    // Adjust subsetted property(ies)
-    addOutput(result);
-}
-
-void QReduceActionPrivate::setCollection(QInputPin *collection)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeInput(this->collection);
-
-    this->collection = collection;
-
-    // Adjust subsetted property(ies)
-    addInput(collection);
-}
-
-void QReduceActionPrivate::setReducer(QBehavior *reducer)
-{
-    // This is a read-write association end
-
-    this->reducer = reducer;
 }
 
 /*!
@@ -112,7 +72,7 @@ void QReduceActionPrivate::setReducer(QBehavior *reducer)
 QReduceAction::QReduceAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QReduceActionPrivate;
+    d_umlptr = new QReduceActionPrivate(this);
 }
 
 QReduceAction::QReduceAction(bool createPimpl, QObject *parent)
@@ -143,7 +103,7 @@ void QReduceAction::setOrdered(bool isOrdered)
 
     QTUML_D(QReduceAction);
     if (d->isOrdered != isOrdered) {
-        d->setOrdered(isOrdered);
+        d->isOrdered = isOrdered;
     }
 }
 
@@ -164,7 +124,13 @@ void QReduceAction::setResult(QOutputPin *result)
 
     QTUML_D(QReduceAction);
     if (d->result != result) {
-        d->setResult(result);
+        // Adjust subsetted property(ies)
+        d->removeOutput(d->result);
+
+        d->result = result;
+
+        // Adjust subsetted property(ies)
+        d->addOutput(result);
     }
 }
 
@@ -185,7 +151,13 @@ void QReduceAction::setCollection(QInputPin *collection)
 
     QTUML_D(QReduceAction);
     if (d->collection != collection) {
-        d->setCollection(collection);
+        // Adjust subsetted property(ies)
+        d->removeInput(d->collection);
+
+        d->collection = collection;
+
+        // Adjust subsetted property(ies)
+        d->addInput(collection);
     }
 }
 
@@ -206,7 +178,7 @@ void QReduceAction::setReducer(QBehavior *reducer)
 
     QTUML_D(QReduceAction);
     if (d->reducer != reducer) {
-        d->setReducer(reducer);
+        d->reducer = reducer;
     }
 }
 

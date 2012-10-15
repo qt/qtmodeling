@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qevent_p.h"
 
 QT_BEGIN_HEADER
@@ -56,9 +55,11 @@ QT_MODULE(QtUml)
 class QMessageEventPrivate : public QEventPrivate
 {
 public:
-    explicit QMessageEventPrivate();
     virtual ~QMessageEventPrivate();
 
+
+protected:
+    explicit QMessageEventPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

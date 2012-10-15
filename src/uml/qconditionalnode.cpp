@@ -41,19 +41,19 @@
 
 #include "qconditionalnode.h"
 #include "qconditionalnode_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QClause>
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QConditionalNodePrivate::QConditionalNodePrivate() :
+QConditionalNodePrivate::QConditionalNodePrivate(QConditionalNode *q_umlptr) :
     isAssured(false),
     isDeterminate(false),
     clauses(new QSet<QClause *>),
     results(new QList<QOutputPin *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QConditionalNodePrivate::~QConditionalNodePrivate()
@@ -62,54 +62,6 @@ QConditionalNodePrivate::~QConditionalNodePrivate()
     foreach (QOutputPin *outputpin, *results)
         delete outputpin;
     delete results;
-}
-
-void QConditionalNodePrivate::setAssured(bool isAssured)
-{
-    // This is a read-write attribute
-
-    this->isAssured = isAssured;
-}
-
-void QConditionalNodePrivate::setDeterminate(bool isDeterminate)
-{
-    // This is a read-write attribute
-
-    this->isDeterminate = isDeterminate;
-}
-
-void QConditionalNodePrivate::addClause(QClause *clause)
-{
-    // This is a read-write association end
-
-    this->clauses->insert(clause);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(clause);
-}
-
-void QConditionalNodePrivate::removeClause(QClause *clause)
-{
-    // This is a read-write association end
-
-    this->clauses->remove(clause);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(clause);
-}
-
-void QConditionalNodePrivate::addResult(QOutputPin *result)
-{
-    // This is a read-write association end
-
-    this->results->append(result);
-}
-
-void QConditionalNodePrivate::removeResult(QOutputPin *result)
-{
-    // This is a read-write association end
-
-    this->results->removeAll(result);
 }
 
 /*!
@@ -123,7 +75,7 @@ void QConditionalNodePrivate::removeResult(QOutputPin *result)
 QConditionalNode::QConditionalNode(QObject *parent)
     : QStructuredActivityNode(false, parent)
 {
-    d_umlptr = new QConditionalNodePrivate;
+    d_umlptr = new QConditionalNodePrivate(this);
 }
 
 QConditionalNode::QConditionalNode(bool createPimpl, QObject *parent)
@@ -154,7 +106,7 @@ void QConditionalNode::setAssured(bool isAssured)
 
     QTUML_D(QConditionalNode);
     if (d->isAssured != isAssured) {
-        d->setAssured(isAssured);
+        d->isAssured = isAssured;
     }
 }
 
@@ -175,7 +127,7 @@ void QConditionalNode::setDeterminate(bool isDeterminate)
 
     QTUML_D(QConditionalNode);
     if (d->isDeterminate != isDeterminate) {
-        d->setDeterminate(isDeterminate);
+        d->isDeterminate = isDeterminate;
     }
 }
 
@@ -196,7 +148,10 @@ void QConditionalNode::addClause(QClause *clause)
 
     QTUML_D(QConditionalNode);
     if (!d->clauses->contains(clause)) {
-        d->addClause(clause);
+        d->clauses->insert(clause);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(clause);
     }
 }
 
@@ -206,7 +161,10 @@ void QConditionalNode::removeClause(QClause *clause)
 
     QTUML_D(QConditionalNode);
     if (d->clauses->contains(clause)) {
-        d->removeClause(clause);
+        d->clauses->remove(clause);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(clause);
     }
 }
 
@@ -227,7 +185,7 @@ void QConditionalNode::addResult(QOutputPin *result)
 
     QTUML_D(QConditionalNode);
     if (!d->results->contains(result)) {
-        d->addResult(result);
+        d->results->append(result);
     }
 }
 
@@ -237,7 +195,7 @@ void QConditionalNode::removeResult(QOutputPin *result)
 
     QTUML_D(QConditionalNode);
     if (d->results->contains(result)) {
-        d->removeResult(result);
+        d->results->removeAll(result);
     }
 }
 

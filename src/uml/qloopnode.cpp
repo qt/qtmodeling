@@ -48,7 +48,7 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QLoopNodePrivate::QLoopNodePrivate() :
+QLoopNodePrivate::QLoopNodePrivate(QLoopNode *q_umlptr) :
     isTestedFirst(false),
     loopVariableInputs(new QList<QInputPin *>),
     decider(0),
@@ -59,6 +59,7 @@ QLoopNodePrivate::QLoopNodePrivate() :
     bodyParts(new QSet<QExecutableNode *>),
     tests(new QSet<QExecutableNode *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QLoopNodePrivate::~QLoopNodePrivate()
@@ -76,118 +77,6 @@ QLoopNodePrivate::~QLoopNodePrivate()
     delete tests;
 }
 
-void QLoopNodePrivate::setTestedFirst(bool isTestedFirst)
-{
-    // This is a read-write attribute
-
-    this->isTestedFirst = isTestedFirst;
-}
-
-void QLoopNodePrivate::addLoopVariableInput(QInputPin *loopVariableInput)
-{
-    // This is a read-write association end
-
-    this->loopVariableInputs->append(loopVariableInput);
-}
-
-void QLoopNodePrivate::removeLoopVariableInput(QInputPin *loopVariableInput)
-{
-    // This is a read-write association end
-
-    this->loopVariableInputs->removeAll(loopVariableInput);
-}
-
-void QLoopNodePrivate::setDecider(QOutputPin *decider)
-{
-    // This is a read-write association end
-
-    this->decider = decider;
-}
-
-void QLoopNodePrivate::addBodyOutput(QOutputPin *bodyOutput)
-{
-    // This is a read-write association end
-
-    this->bodyOutputs->append(bodyOutput);
-}
-
-void QLoopNodePrivate::removeBodyOutput(QOutputPin *bodyOutput)
-{
-    // This is a read-write association end
-
-    this->bodyOutputs->removeAll(bodyOutput);
-}
-
-void QLoopNodePrivate::addLoopVariable(QOutputPin *loopVariable)
-{
-    // This is a read-write association end
-
-    this->loopVariables->append(loopVariable);
-}
-
-void QLoopNodePrivate::removeLoopVariable(QOutputPin *loopVariable)
-{
-    // This is a read-write association end
-
-    this->loopVariables->removeAll(loopVariable);
-}
-
-void QLoopNodePrivate::addResult(QOutputPin *result)
-{
-    // This is a read-write association end
-
-    this->results->append(result);
-}
-
-void QLoopNodePrivate::removeResult(QOutputPin *result)
-{
-    // This is a read-write association end
-
-    this->results->removeAll(result);
-}
-
-void QLoopNodePrivate::addSetupPart(QExecutableNode *setupPart)
-{
-    // This is a read-write association end
-
-    this->setupParts->insert(setupPart);
-}
-
-void QLoopNodePrivate::removeSetupPart(QExecutableNode *setupPart)
-{
-    // This is a read-write association end
-
-    this->setupParts->remove(setupPart);
-}
-
-void QLoopNodePrivate::addBodyPart(QExecutableNode *bodyPart)
-{
-    // This is a read-write association end
-
-    this->bodyParts->insert(bodyPart);
-}
-
-void QLoopNodePrivate::removeBodyPart(QExecutableNode *bodyPart)
-{
-    // This is a read-write association end
-
-    this->bodyParts->remove(bodyPart);
-}
-
-void QLoopNodePrivate::addTest(QExecutableNode *test)
-{
-    // This is a read-write association end
-
-    this->tests->insert(test);
-}
-
-void QLoopNodePrivate::removeTest(QExecutableNode *test)
-{
-    // This is a read-write association end
-
-    this->tests->remove(test);
-}
-
 /*!
     \class QLoopNode
 
@@ -199,7 +88,7 @@ void QLoopNodePrivate::removeTest(QExecutableNode *test)
 QLoopNode::QLoopNode(QObject *parent)
     : QStructuredActivityNode(false, parent)
 {
-    d_umlptr = new QLoopNodePrivate;
+    d_umlptr = new QLoopNodePrivate(this);
 }
 
 QLoopNode::QLoopNode(bool createPimpl, QObject *parent)
@@ -230,7 +119,7 @@ void QLoopNode::setTestedFirst(bool isTestedFirst)
 
     QTUML_D(QLoopNode);
     if (d->isTestedFirst != isTestedFirst) {
-        d->setTestedFirst(isTestedFirst);
+        d->isTestedFirst = isTestedFirst;
     }
 }
 
@@ -251,7 +140,7 @@ void QLoopNode::addLoopVariableInput(QInputPin *loopVariableInput)
 
     QTUML_D(QLoopNode);
     if (!d->loopVariableInputs->contains(loopVariableInput)) {
-        d->addLoopVariableInput(loopVariableInput);
+        d->loopVariableInputs->append(loopVariableInput);
     }
 }
 
@@ -261,7 +150,7 @@ void QLoopNode::removeLoopVariableInput(QInputPin *loopVariableInput)
 
     QTUML_D(QLoopNode);
     if (d->loopVariableInputs->contains(loopVariableInput)) {
-        d->removeLoopVariableInput(loopVariableInput);
+        d->loopVariableInputs->removeAll(loopVariableInput);
     }
 }
 
@@ -282,7 +171,7 @@ void QLoopNode::setDecider(QOutputPin *decider)
 
     QTUML_D(QLoopNode);
     if (d->decider != decider) {
-        d->setDecider(decider);
+        d->decider = decider;
     }
 }
 
@@ -303,7 +192,7 @@ void QLoopNode::addBodyOutput(QOutputPin *bodyOutput)
 
     QTUML_D(QLoopNode);
     if (!d->bodyOutputs->contains(bodyOutput)) {
-        d->addBodyOutput(bodyOutput);
+        d->bodyOutputs->append(bodyOutput);
     }
 }
 
@@ -313,7 +202,7 @@ void QLoopNode::removeBodyOutput(QOutputPin *bodyOutput)
 
     QTUML_D(QLoopNode);
     if (d->bodyOutputs->contains(bodyOutput)) {
-        d->removeBodyOutput(bodyOutput);
+        d->bodyOutputs->removeAll(bodyOutput);
     }
 }
 
@@ -334,7 +223,7 @@ void QLoopNode::addLoopVariable(QOutputPin *loopVariable)
 
     QTUML_D(QLoopNode);
     if (!d->loopVariables->contains(loopVariable)) {
-        d->addLoopVariable(loopVariable);
+        d->loopVariables->append(loopVariable);
     }
 }
 
@@ -344,7 +233,7 @@ void QLoopNode::removeLoopVariable(QOutputPin *loopVariable)
 
     QTUML_D(QLoopNode);
     if (d->loopVariables->contains(loopVariable)) {
-        d->removeLoopVariable(loopVariable);
+        d->loopVariables->removeAll(loopVariable);
     }
 }
 
@@ -365,7 +254,7 @@ void QLoopNode::addResult(QOutputPin *result)
 
     QTUML_D(QLoopNode);
     if (!d->results->contains(result)) {
-        d->addResult(result);
+        d->results->append(result);
     }
 }
 
@@ -375,7 +264,7 @@ void QLoopNode::removeResult(QOutputPin *result)
 
     QTUML_D(QLoopNode);
     if (d->results->contains(result)) {
-        d->removeResult(result);
+        d->results->removeAll(result);
     }
 }
 
@@ -396,7 +285,7 @@ void QLoopNode::addSetupPart(QExecutableNode *setupPart)
 
     QTUML_D(QLoopNode);
     if (!d->setupParts->contains(setupPart)) {
-        d->addSetupPart(setupPart);
+        d->setupParts->insert(setupPart);
     }
 }
 
@@ -406,7 +295,7 @@ void QLoopNode::removeSetupPart(QExecutableNode *setupPart)
 
     QTUML_D(QLoopNode);
     if (d->setupParts->contains(setupPart)) {
-        d->removeSetupPart(setupPart);
+        d->setupParts->remove(setupPart);
     }
 }
 
@@ -427,7 +316,7 @@ void QLoopNode::addBodyPart(QExecutableNode *bodyPart)
 
     QTUML_D(QLoopNode);
     if (!d->bodyParts->contains(bodyPart)) {
-        d->addBodyPart(bodyPart);
+        d->bodyParts->insert(bodyPart);
     }
 }
 
@@ -437,7 +326,7 @@ void QLoopNode::removeBodyPart(QExecutableNode *bodyPart)
 
     QTUML_D(QLoopNode);
     if (d->bodyParts->contains(bodyPart)) {
-        d->removeBodyPart(bodyPart);
+        d->bodyParts->remove(bodyPart);
     }
 }
 
@@ -458,7 +347,7 @@ void QLoopNode::addTest(QExecutableNode *test)
 
     QTUML_D(QLoopNode);
     if (!d->tests->contains(test)) {
-        d->addTest(test);
+        d->tests->insert(test);
     }
 }
 
@@ -468,7 +357,7 @@ void QLoopNode::removeTest(QExecutableNode *test)
 
     QTUML_D(QLoopNode);
     if (d->tests->contains(test)) {
-        d->removeTest(test);
+        d->tests->remove(test);
     }
 }
 

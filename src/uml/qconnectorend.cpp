@@ -41,34 +41,22 @@
 
 #include "qconnectorend.h"
 #include "qconnectorend_p.h"
+#include "qconnectableelement_p.h"
 
 #include <QtUml/QProperty>
 #include <QtUml/QConnectableElement>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QConnectorEndPrivate::QConnectorEndPrivate() :
+QConnectorEndPrivate::QConnectorEndPrivate(QConnectorEnd *q_umlptr) :
     role(0),
     partWithPort(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QConnectorEndPrivate::~QConnectorEndPrivate()
 {
-}
-
-void QConnectorEndPrivate::setRole(QConnectableElement *role)
-{
-    // This is a read-write association end
-
-    this->role = role;
-}
-
-void QConnectorEndPrivate::setPartWithPort(QProperty *partWithPort)
-{
-    // This is a read-write association end
-
-    this->partWithPort = partWithPort;
 }
 
 /*!
@@ -82,7 +70,7 @@ void QConnectorEndPrivate::setPartWithPort(QProperty *partWithPort)
 QConnectorEnd::QConnectorEnd(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QConnectorEndPrivate;
+    d_umlptr = new QConnectorEndPrivate(this);
 }
 
 QConnectorEnd::QConnectorEnd(bool createPimpl, QObject *parent)
@@ -113,7 +101,10 @@ void QConnectorEnd::setRole(QConnectableElement *role)
 
     QTUML_D(QConnectorEnd);
     if (d->role != role) {
-        d->setRole(role);
+        d->role = role;
+
+        // Adjust opposite property
+        (dynamic_cast<QConnectableElementPrivate *>(role->d_umlptr))->addEnd(this);
     }
 }
 
@@ -134,7 +125,7 @@ void QConnectorEnd::setPartWithPort(QProperty *partWithPort)
 
     QTUML_D(QConnectorEnd);
     if (d->partWithPort != partWithPort) {
-        d->setPartWithPort(partWithPort);
+        d->partWithPort = partWithPort;
     }
 }
 
@@ -147,7 +138,7 @@ QProperty *QConnectorEnd::definingEnd() const
 
     qWarning("QConnectorEnd::definingEnd: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QConnectorEnd);
+    //QTUML_D(const QConnectorEnd);
     //return <derived-return>;
 }
 

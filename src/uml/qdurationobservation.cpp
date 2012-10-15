@@ -46,44 +46,17 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDurationObservationPrivate::QDurationObservationPrivate() :
+QDurationObservationPrivate::QDurationObservationPrivate(QDurationObservation *q_umlptr) :
     firstEvents(new QSet<bool>),
     events(new QSet<QNamedElement *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QDurationObservationPrivate::~QDurationObservationPrivate()
 {
     delete firstEvents;
     delete events;
-}
-
-void QDurationObservationPrivate::addFirstEvent(bool firstEvent)
-{
-    // This is a read-write attribute
-
-    this->firstEvents->insert(firstEvent);
-}
-
-void QDurationObservationPrivate::removeFirstEvent(bool firstEvent)
-{
-    // This is a read-write attribute
-
-    this->firstEvents->remove(firstEvent);
-}
-
-void QDurationObservationPrivate::addEvent(QNamedElement *event)
-{
-    // This is a read-write association end
-
-    this->events->insert(event);
-}
-
-void QDurationObservationPrivate::removeEvent(QNamedElement *event)
-{
-    // This is a read-write association end
-
-    this->events->remove(event);
 }
 
 /*!
@@ -97,7 +70,7 @@ void QDurationObservationPrivate::removeEvent(QNamedElement *event)
 QDurationObservation::QDurationObservation(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QDurationObservationPrivate;
+    d_umlptr = new QDurationObservationPrivate(this);
 }
 
 QDurationObservation::QDurationObservation(bool createPimpl, QObject *parent)
@@ -128,7 +101,7 @@ void QDurationObservation::addFirstEvent(bool firstEvent)
 
     QTUML_D(QDurationObservation);
     if (!d->firstEvents->contains(firstEvent)) {
-        d->addFirstEvent(firstEvent);
+        d->firstEvents->insert(firstEvent);
     }
 }
 
@@ -138,7 +111,7 @@ void QDurationObservation::removeFirstEvent(bool firstEvent)
 
     QTUML_D(QDurationObservation);
     if (d->firstEvents->contains(firstEvent)) {
-        d->removeFirstEvent(firstEvent);
+        d->firstEvents->remove(firstEvent);
     }
 }
 
@@ -159,7 +132,7 @@ void QDurationObservation::addEvent(QNamedElement *event)
 
     QTUML_D(QDurationObservation);
     if (!d->events->contains(event)) {
-        d->addEvent(event);
+        d->events->insert(event);
     }
 }
 
@@ -169,7 +142,7 @@ void QDurationObservation::removeEvent(QNamedElement *event)
 
     QTUML_D(QDurationObservation);
     if (d->events->contains(event)) {
-        d->removeEvent(event);
+        d->events->remove(event);
     }
 }
 

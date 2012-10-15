@@ -41,32 +41,19 @@
 
 #include "qvaluepin.h"
 #include "qvaluepin_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QValueSpecification>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QValuePinPrivate::QValuePinPrivate() :
+QValuePinPrivate::QValuePinPrivate(QValuePin *q_umlptr) :
     value(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QValuePinPrivate::~QValuePinPrivate()
 {
-}
-
-void QValuePinPrivate::setValue(QValueSpecification *value)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->value);
-
-    this->value = value;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(value);
 }
 
 /*!
@@ -80,7 +67,7 @@ void QValuePinPrivate::setValue(QValueSpecification *value)
 QValuePin::QValuePin(QObject *parent)
     : QInputPin(false, parent)
 {
-    d_umlptr = new QValuePinPrivate;
+    d_umlptr = new QValuePinPrivate(this);
 }
 
 QValuePin::QValuePin(bool createPimpl, QObject *parent)
@@ -111,7 +98,13 @@ void QValuePin::setValue(QValueSpecification *value)
 
     QTUML_D(QValuePin);
     if (d->value != value) {
-        d->setValue(value);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->value);
+
+        d->value = value;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(value);
     }
 }
 

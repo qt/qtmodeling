@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qrealization_p.h"
 
 QT_BEGIN_HEADER
@@ -55,19 +54,16 @@ QT_MODULE(QtUml)
 
 class QInterface;
 class QBehavioredClassifier;
+class QInterfaceRealization;
 
 class QInterfaceRealizationPrivate : public QRealizationPrivate
 {
 public:
-    explicit QInterfaceRealizationPrivate();
+    explicit QInterfaceRealizationPrivate(QInterfaceRealization *q_umlptr = 0);
     virtual ~QInterfaceRealizationPrivate();
 
     QBehavioredClassifier *implementingClassifier;
     QInterface *contract;
-
-    // Internal functions for association-ends
-    void setImplementingClassifier(QBehavioredClassifier *implementingClassifier);
-    void setContract(QInterface *contract);
 };
 
 QT_END_NAMESPACE_QTUML

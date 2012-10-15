@@ -59,9 +59,9 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QOperationTemplateParameter;
-class QType;
 class QRedefinableElement;
+class QType;
+class QOperationTemplateParameter;
 class QParameter;
 class QInterface;
 class QConstraint;

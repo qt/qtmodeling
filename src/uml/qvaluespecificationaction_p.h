@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qaction_p.h"
 
 QT_BEGIN_HEADER
@@ -55,19 +54,16 @@ QT_MODULE(QtUml)
 
 class QOutputPin;
 class QValueSpecification;
+class QValueSpecificationAction;
 
 class QValueSpecificationActionPrivate : public QActionPrivate
 {
 public:
-    explicit QValueSpecificationActionPrivate();
+    explicit QValueSpecificationActionPrivate(QValueSpecificationAction *q_umlptr = 0);
     virtual ~QValueSpecificationActionPrivate();
 
     QValueSpecification *value;
     QOutputPin *result;
-
-    // Internal functions for association-ends
-    void setValue(QValueSpecification *value);
-    void setResult(QOutputPin *result);
 };
 
 QT_END_NAMESPACE_QTUML

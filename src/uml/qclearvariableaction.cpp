@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QClearVariableActionPrivate::QClearVariableActionPrivate()
+QClearVariableActionPrivate::QClearVariableActionPrivate(QClearVariableAction *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QClearVariableActionPrivate::~QClearVariableActionPrivate()
@@ -64,7 +65,7 @@ QClearVariableActionPrivate::~QClearVariableActionPrivate()
 QClearVariableAction::QClearVariableAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QClearVariableActionPrivate;
+    d_umlptr = new QClearVariableActionPrivate(this);
 }
 
 QClearVariableAction::QClearVariableAction(bool createPimpl, QObject *parent)

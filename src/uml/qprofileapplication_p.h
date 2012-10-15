@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qdirectedrelationship_p.h"
 
 QT_BEGIN_HEADER
@@ -55,23 +54,17 @@ QT_MODULE(QtUml)
 
 class QProfile;
 class QPackage;
+class QProfileApplication;
 
 class QProfileApplicationPrivate : public QDirectedRelationshipPrivate
 {
 public:
-    explicit QProfileApplicationPrivate();
+    explicit QProfileApplicationPrivate(QProfileApplication *q_umlptr = 0);
     virtual ~QProfileApplicationPrivate();
 
     bool isStrict;
     QPackage *applyingPackage;
     QProfile *appliedProfile;
-
-    // Internal functions for attributes
-    void setStrict(bool isStrict);
-
-    // Internal functions for association-ends
-    void setApplyingPackage(QPackage *applyingPackage);
-    void setAppliedProfile(QProfile *appliedProfile);
 };
 
 QT_END_NAMESPACE_QTUML

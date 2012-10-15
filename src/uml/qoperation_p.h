@@ -44,11 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qtemplateableelement_p.h"
-
 #include "qbehavioralfeature_p.h"
-
 #include "qparameterableelement_p.h"
 
 // Qt includes
@@ -61,9 +58,10 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QOperationTemplateParameter;
-class QType;
 class QRedefinableElement;
+class QType;
+class QOperationTemplateParameter;
+class QOperation;
 class QParameter;
 class QInterface;
 class QConstraint;
@@ -73,7 +71,7 @@ class QClass;
 class QOperationPrivate : public QTemplateableElementPrivate, public QBehavioralFeaturePrivate, public QParameterableElementPrivate
 {
 public:
-    explicit QOperationPrivate();
+    explicit QOperationPrivate(QOperation *q_umlptr = 0);
     virtual ~QOperationPrivate();
 
     bool isQuery;
@@ -87,26 +85,6 @@ public:
     QSet<QConstraint *> *preconditions;
     QClass *class_;
     QSet<QType *> *raisedExceptions;
-
-    // Internal functions for attributes
-    void setQuery(bool isQuery);
-
-    // Internal functions for association-ends
-    void addOwnedParameter(QParameter *ownedParameter);
-    void removeOwnedParameter(QParameter *ownedParameter);
-    void setBodyCondition(QConstraint *bodyCondition);
-    void addRedefinedOperation(QOperation *redefinedOperation);
-    void removeRedefinedOperation(QOperation *redefinedOperation);
-    void addPostcondition(QConstraint *postcondition);
-    void removePostcondition(QConstraint *postcondition);
-    void setDatatype(QDataType *datatype);
-    void setTemplateParameter(QOperationTemplateParameter *templateParameter);
-    void setInterface(QInterface *interface);
-    void addPrecondition(QConstraint *precondition);
-    void removePrecondition(QConstraint *precondition);
-    void setClass_(QClass *class_);
-    void addRaisedException(QType *raisedException);
-    void removeRaisedException(QType *raisedException);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qpackage_p.h"
 
 // Qt includes
@@ -58,21 +57,16 @@ QT_MODULE(QtUml)
 
 class QElementImport;
 class QPackageImport;
+class QProfile;
 
 class QProfilePrivate : public QPackagePrivate
 {
 public:
-    explicit QProfilePrivate();
+    explicit QProfilePrivate(QProfile *q_umlptr = 0);
     virtual ~QProfilePrivate();
 
     QSet<QPackageImport *> *metamodelReferences;
     QSet<QElementImport *> *metaclassReferences;
-
-    // Internal functions for association-ends
-    void addMetamodelReference(QPackageImport *metamodelReference);
-    void removeMetamodelReference(QPackageImport *metamodelReference);
-    void addMetaclassReference(QElementImport *metaclassReference);
-    void removeMetaclassReference(QElementImport *metaclassReference);
 };
 
 QT_END_NAMESPACE_QTUML

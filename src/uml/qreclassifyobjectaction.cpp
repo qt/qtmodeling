@@ -41,73 +41,25 @@
 
 #include "qreclassifyobjectaction.h"
 #include "qreclassifyobjectaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QClassifier>
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QReclassifyObjectActionPrivate::QReclassifyObjectActionPrivate() :
+QReclassifyObjectActionPrivate::QReclassifyObjectActionPrivate(QReclassifyObjectAction *q_umlptr) :
     isReplaceAll(false),
     oldClassifiers(new QSet<QClassifier *>),
     object(0),
     newClassifiers(new QSet<QClassifier *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QReclassifyObjectActionPrivate::~QReclassifyObjectActionPrivate()
 {
     delete oldClassifiers;
     delete newClassifiers;
-}
-
-void QReclassifyObjectActionPrivate::setReplaceAll(bool isReplaceAll)
-{
-    // This is a read-write attribute
-
-    this->isReplaceAll = isReplaceAll;
-}
-
-void QReclassifyObjectActionPrivate::addOldClassifier(QClassifier *oldClassifier)
-{
-    // This is a read-write association end
-
-    this->oldClassifiers->insert(oldClassifier);
-}
-
-void QReclassifyObjectActionPrivate::removeOldClassifier(QClassifier *oldClassifier)
-{
-    // This is a read-write association end
-
-    this->oldClassifiers->remove(oldClassifier);
-}
-
-void QReclassifyObjectActionPrivate::setObject(QInputPin *object)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeInput(this->object);
-
-    this->object = object;
-
-    // Adjust subsetted property(ies)
-    addInput(object);
-}
-
-void QReclassifyObjectActionPrivate::addNewClassifier(QClassifier *newClassifier)
-{
-    // This is a read-write association end
-
-    this->newClassifiers->insert(newClassifier);
-}
-
-void QReclassifyObjectActionPrivate::removeNewClassifier(QClassifier *newClassifier)
-{
-    // This is a read-write association end
-
-    this->newClassifiers->remove(newClassifier);
 }
 
 /*!
@@ -121,7 +73,7 @@ void QReclassifyObjectActionPrivate::removeNewClassifier(QClassifier *newClassif
 QReclassifyObjectAction::QReclassifyObjectAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QReclassifyObjectActionPrivate;
+    d_umlptr = new QReclassifyObjectActionPrivate(this);
 }
 
 QReclassifyObjectAction::QReclassifyObjectAction(bool createPimpl, QObject *parent)
@@ -152,7 +104,7 @@ void QReclassifyObjectAction::setReplaceAll(bool isReplaceAll)
 
     QTUML_D(QReclassifyObjectAction);
     if (d->isReplaceAll != isReplaceAll) {
-        d->setReplaceAll(isReplaceAll);
+        d->isReplaceAll = isReplaceAll;
     }
 }
 
@@ -173,7 +125,7 @@ void QReclassifyObjectAction::addOldClassifier(QClassifier *oldClassifier)
 
     QTUML_D(QReclassifyObjectAction);
     if (!d->oldClassifiers->contains(oldClassifier)) {
-        d->addOldClassifier(oldClassifier);
+        d->oldClassifiers->insert(oldClassifier);
     }
 }
 
@@ -183,7 +135,7 @@ void QReclassifyObjectAction::removeOldClassifier(QClassifier *oldClassifier)
 
     QTUML_D(QReclassifyObjectAction);
     if (d->oldClassifiers->contains(oldClassifier)) {
-        d->removeOldClassifier(oldClassifier);
+        d->oldClassifiers->remove(oldClassifier);
     }
 }
 
@@ -204,7 +156,13 @@ void QReclassifyObjectAction::setObject(QInputPin *object)
 
     QTUML_D(QReclassifyObjectAction);
     if (d->object != object) {
-        d->setObject(object);
+        // Adjust subsetted property(ies)
+        d->removeInput(d->object);
+
+        d->object = object;
+
+        // Adjust subsetted property(ies)
+        d->addInput(object);
     }
 }
 
@@ -225,7 +183,7 @@ void QReclassifyObjectAction::addNewClassifier(QClassifier *newClassifier)
 
     QTUML_D(QReclassifyObjectAction);
     if (!d->newClassifiers->contains(newClassifier)) {
-        d->addNewClassifier(newClassifier);
+        d->newClassifiers->insert(newClassifier);
     }
 }
 
@@ -235,7 +193,7 @@ void QReclassifyObjectAction::removeNewClassifier(QClassifier *newClassifier)
 
     QTUML_D(QReclassifyObjectAction);
     if (d->newClassifiers->contains(newClassifier)) {
-        d->removeNewClassifier(newClassifier);
+        d->newClassifiers->remove(newClassifier);
     }
 }
 

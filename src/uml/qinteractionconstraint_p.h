@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qconstraint_p.h"
 
 QT_BEGIN_HEADER
@@ -54,19 +53,16 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QValueSpecification;
+class QInteractionConstraint;
 
 class QInteractionConstraintPrivate : public QConstraintPrivate
 {
 public:
-    explicit QInteractionConstraintPrivate();
+    explicit QInteractionConstraintPrivate(QInteractionConstraint *q_umlptr = 0);
     virtual ~QInteractionConstraintPrivate();
 
     QValueSpecification *maxint;
     QValueSpecification *minint;
-
-    // Internal functions for association-ends
-    void setMaxint(QValueSpecification *maxint);
-    void setMinint(QValueSpecification *minint);
 };
 
 QT_END_NAMESPACE_QTUML

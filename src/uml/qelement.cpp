@@ -65,41 +65,42 @@ void QElementPrivate::addOwnedElement(QElement *ownedElement)
 {
     // This is a read-only derived-union association end
 
-    this->ownedElements->insert(ownedElement);
+    if (!this->ownedElements->contains(ownedElement)) {
+        qDebug() << "QElementPrivate::addOwnedElement" << ownedElement;
+        this->ownedElements->insert(ownedElement);
+
+        // Adjust opposite property
+        QTUML_Q(QElement);
+        setOwner(q);
+    }
 }
 
 void QElementPrivate::removeOwnedElement(QElement *ownedElement)
 {
     // This is a read-only derived-union association end
 
-    this->ownedElements->remove(ownedElement);
+    if (this->ownedElements->contains(ownedElement)) {
+        this->ownedElements->remove(ownedElement);
+
+        // Adjust opposite property
+        QTUML_Q(QElement);
+        setOwner(0);
+    }
 }
 
 void QElementPrivate::setOwner(QElement *owner)
 {
     // This is a read-only derived-union association end
 
-    this->owner = owner;
-}
+    qDebug() << "QElementPrivate::setOwner" << this->owner << "!=" << owner << "?";
+    if (this->owner != owner) {
+        qDebug() << "QElementPrivate::setOwner" << owner;
+        this->owner = owner;
 
-void QElementPrivate::addOwnedComment(QComment *ownedComment)
-{
-    // This is a read-write association end
-
-    this->ownedComments->insert(ownedComment);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(ownedComment);
-}
-
-void QElementPrivate::removeOwnedComment(QComment *ownedComment)
-{
-    // This is a read-write association end
-
-    this->ownedComments->remove(ownedComment);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(ownedComment);
+        // Adjust opposite property
+        QTUML_Q(QElement);
+        addOwnedElement(q);
+    }
 }
 
 /*!
@@ -158,7 +159,10 @@ void QElement::addOwnedComment(QComment *ownedComment)
 
     QTUML_D(QElement);
     if (!d->ownedComments->contains(ownedComment)) {
-        d->addOwnedComment(ownedComment);
+        d->ownedComments->insert(ownedComment);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(ownedComment);
     }
 }
 
@@ -168,7 +172,10 @@ void QElement::removeOwnedComment(QComment *ownedComment)
 
     QTUML_D(QElement);
     if (d->ownedComments->contains(ownedComment)) {
-        d->removeOwnedComment(ownedComment);
+        d->ownedComments->remove(ownedComment);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(ownedComment);
     }
 }
 

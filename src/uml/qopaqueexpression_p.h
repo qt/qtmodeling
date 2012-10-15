@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qvaluespecification_p.h"
 
 // Qt includes
@@ -59,25 +58,17 @@ QT_MODULE(QtUml)
 
 class QBehavior;
 class QParameter;
+class QOpaqueExpression;
 
 class QOpaqueExpressionPrivate : public QValueSpecificationPrivate
 {
 public:
-    explicit QOpaqueExpressionPrivate();
+    explicit QOpaqueExpressionPrivate(QOpaqueExpression *q_umlptr = 0);
     virtual ~QOpaqueExpressionPrivate();
 
     QList<QString> *bodies;
     QList<QString> *languages;
     QBehavior *behavior;
-
-    // Internal functions for attributes
-    void addBody(QString body);
-    void removeBody(QString body);
-    void addLanguage(QString language);
-    void removeLanguage(QString language);
-
-    // Internal functions for association-ends
-    void setBehavior(QBehavior *behavior);
 };
 
 QT_END_NAMESPACE_QTUML

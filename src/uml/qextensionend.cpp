@@ -46,20 +46,14 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QExtensionEndPrivate::QExtensionEndPrivate() :
+QExtensionEndPrivate::QExtensionEndPrivate(QExtensionEnd *q_umlptr) :
     type(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QExtensionEndPrivate::~QExtensionEndPrivate()
 {
-}
-
-void QExtensionEndPrivate::setType(QStereotype *type)
-{
-    // This is a read-write association end
-
-    this->type = type;
 }
 
 /*!
@@ -73,7 +67,7 @@ void QExtensionEndPrivate::setType(QStereotype *type)
 QExtensionEnd::QExtensionEnd(QObject *parent)
     : QProperty(false, parent)
 {
-    d_umlptr = new QExtensionEndPrivate;
+    d_umlptr = new QExtensionEndPrivate(this);
 }
 
 QExtensionEnd::QExtensionEnd(bool createPimpl, QObject *parent)
@@ -96,7 +90,7 @@ qint32 QExtensionEnd::lower() const
 
     qWarning("QExtensionEnd::lower: to be implemented (this is a derived attribute)");
 
-    QTUML_D(const QExtensionEnd);
+    //QTUML_D(const QExtensionEnd);
     //return <derived-return>;
 }
 
@@ -106,8 +100,8 @@ void QExtensionEnd::setLower(qint32 lower)
 
     qWarning("QExtensionEnd::setLower: to be implemented (this is a derived attribute)");
 
-    QTUML_D(QExtensionEnd);
-    if (true /* <change-criteria> */) {
+    //QTUML_D(QExtensionEnd);
+    if (false /* <derived-change-criteria> */) {
         // <derived-code>
     }
 }
@@ -129,7 +123,7 @@ void QExtensionEnd::setType(QStereotype *type)
 
     QTUML_D(QExtensionEnd);
     if (d->type != type) {
-        d->setType(type);
+        d->type = type;
     }
 }
 

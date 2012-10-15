@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qstructuredclassifier_p.h"
 
 // Qt includes
@@ -61,11 +60,11 @@ class QPort;
 class QEncapsulatedClassifierPrivate : public QStructuredClassifierPrivate
 {
 public:
-    explicit QEncapsulatedClassifierPrivate();
     virtual ~QEncapsulatedClassifierPrivate();
 
 
-    // Internal functions for association-ends
+protected:
+    explicit QEncapsulatedClassifierPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

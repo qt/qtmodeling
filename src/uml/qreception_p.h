@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qbehavioralfeature_p.h"
 
 QT_BEGIN_HEADER
@@ -54,17 +53,15 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QSignal;
+class QReception;
 
 class QReceptionPrivate : public QBehavioralFeaturePrivate
 {
 public:
-    explicit QReceptionPrivate();
+    explicit QReceptionPrivate(QReception *q_umlptr = 0);
     virtual ~QReceptionPrivate();
 
     QSignal *signal;
-
-    // Internal functions for association-ends
-    void setSignal(QSignal *signal);
 };
 
 QT_END_NAMESPACE_QTUML

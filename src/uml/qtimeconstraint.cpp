@@ -46,29 +46,16 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QTimeConstraintPrivate::QTimeConstraintPrivate() :
+QTimeConstraintPrivate::QTimeConstraintPrivate(QTimeConstraint *q_umlptr) :
     firstEvent(true),
     specification(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QTimeConstraintPrivate::~QTimeConstraintPrivate()
 {
     delete specification;
-}
-
-void QTimeConstraintPrivate::setFirstEvent(bool firstEvent)
-{
-    // This is a read-write attribute
-
-    this->firstEvent = firstEvent;
-}
-
-void QTimeConstraintPrivate::setSpecification(QTimeInterval *specification)
-{
-    // This is a read-write association end
-
-    this->specification = specification;
 }
 
 /*!
@@ -82,7 +69,7 @@ void QTimeConstraintPrivate::setSpecification(QTimeInterval *specification)
 QTimeConstraint::QTimeConstraint(QObject *parent)
     : QIntervalConstraint(false, parent)
 {
-    d_umlptr = new QTimeConstraintPrivate;
+    d_umlptr = new QTimeConstraintPrivate(this);
 }
 
 QTimeConstraint::QTimeConstraint(bool createPimpl, QObject *parent)
@@ -113,7 +100,7 @@ void QTimeConstraint::setFirstEvent(bool firstEvent)
 
     QTUML_D(QTimeConstraint);
     if (d->firstEvent != firstEvent) {
-        d->setFirstEvent(firstEvent);
+        d->firstEvent = firstEvent;
     }
 }
 
@@ -134,7 +121,7 @@ void QTimeConstraint::setSpecification(QTimeInterval *specification)
 
     QTUML_D(QTimeConstraint);
     if (d->specification != specification) {
-        d->setSpecification(specification);
+        d->specification = specification;
     }
 }
 

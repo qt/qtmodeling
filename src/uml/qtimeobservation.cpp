@@ -46,28 +46,15 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QTimeObservationPrivate::QTimeObservationPrivate() :
+QTimeObservationPrivate::QTimeObservationPrivate(QTimeObservation *q_umlptr) :
     firstEvent(true),
     event(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QTimeObservationPrivate::~QTimeObservationPrivate()
 {
-}
-
-void QTimeObservationPrivate::setFirstEvent(bool firstEvent)
-{
-    // This is a read-write attribute
-
-    this->firstEvent = firstEvent;
-}
-
-void QTimeObservationPrivate::setEvent(QNamedElement *event)
-{
-    // This is a read-write association end
-
-    this->event = event;
 }
 
 /*!
@@ -81,7 +68,7 @@ void QTimeObservationPrivate::setEvent(QNamedElement *event)
 QTimeObservation::QTimeObservation(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QTimeObservationPrivate;
+    d_umlptr = new QTimeObservationPrivate(this);
 }
 
 QTimeObservation::QTimeObservation(bool createPimpl, QObject *parent)
@@ -112,7 +99,7 @@ void QTimeObservation::setFirstEvent(bool firstEvent)
 
     QTUML_D(QTimeObservation);
     if (d->firstEvent != firstEvent) {
-        d->setFirstEvent(firstEvent);
+        d->firstEvent = firstEvent;
     }
 }
 
@@ -133,7 +120,7 @@ void QTimeObservation::setEvent(QNamedElement *event)
 
     QTUML_D(QTimeObservation);
     if (d->event != event) {
-        d->setEvent(event);
+        d->event = event;
     }
 }
 

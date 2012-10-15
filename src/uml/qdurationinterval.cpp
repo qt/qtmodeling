@@ -46,28 +46,15 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDurationIntervalPrivate::QDurationIntervalPrivate() :
+QDurationIntervalPrivate::QDurationIntervalPrivate(QDurationInterval *q_umlptr) :
     max(0),
     min(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QDurationIntervalPrivate::~QDurationIntervalPrivate()
 {
-}
-
-void QDurationIntervalPrivate::setMax(QDuration *max)
-{
-    // This is a read-write association end
-
-    this->max = max;
-}
-
-void QDurationIntervalPrivate::setMin(QDuration *min)
-{
-    // This is a read-write association end
-
-    this->min = min;
 }
 
 /*!
@@ -81,7 +68,7 @@ void QDurationIntervalPrivate::setMin(QDuration *min)
 QDurationInterval::QDurationInterval(QObject *parent)
     : QInterval(false, parent)
 {
-    d_umlptr = new QDurationIntervalPrivate;
+    d_umlptr = new QDurationIntervalPrivate(this);
 }
 
 QDurationInterval::QDurationInterval(bool createPimpl, QObject *parent)
@@ -112,7 +99,7 @@ void QDurationInterval::setMax(QDuration *max)
 
     QTUML_D(QDurationInterval);
     if (d->max != max) {
-        d->setMax(max);
+        d->max = max;
     }
 }
 
@@ -133,7 +120,7 @@ void QDurationInterval::setMin(QDuration *min)
 
     QTUML_D(QDurationInterval);
     if (d->min != min) {
-        d->setMin(min);
+        d->min = min;
     }
 }
 

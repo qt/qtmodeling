@@ -54,13 +54,6 @@ QStructuralFeaturePrivate::~QStructuralFeaturePrivate()
 {
 }
 
-void QStructuralFeaturePrivate::setReadOnly(bool isReadOnly)
-{
-    // This is a read-write attribute
-
-    this->isReadOnly = isReadOnly;
-}
-
 /*!
     \class QStructuralFeature
 
@@ -94,7 +87,7 @@ void QStructuralFeature::setReadOnly(bool isReadOnly)
 
     QTUML_D(QStructuralFeature);
     if (d->isReadOnly != isReadOnly) {
-        d->setReadOnly(isReadOnly);
+        d->isReadOnly = isReadOnly;
     }
 }
 

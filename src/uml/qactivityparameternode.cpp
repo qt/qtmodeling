@@ -46,20 +46,14 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QActivityParameterNodePrivate::QActivityParameterNodePrivate() :
+QActivityParameterNodePrivate::QActivityParameterNodePrivate(QActivityParameterNode *q_umlptr) :
     parameter(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QActivityParameterNodePrivate::~QActivityParameterNodePrivate()
 {
-}
-
-void QActivityParameterNodePrivate::setParameter(QParameter *parameter)
-{
-    // This is a read-write association end
-
-    this->parameter = parameter;
 }
 
 /*!
@@ -73,7 +67,7 @@ void QActivityParameterNodePrivate::setParameter(QParameter *parameter)
 QActivityParameterNode::QActivityParameterNode(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QActivityParameterNodePrivate;
+    d_umlptr = new QActivityParameterNodePrivate(this);
 }
 
 QActivityParameterNode::QActivityParameterNode(bool createPimpl, QObject *parent)
@@ -104,7 +98,7 @@ void QActivityParameterNode::setParameter(QParameter *parameter)
 
     QTUML_D(QActivityParameterNode);
     if (d->parameter != parameter) {
-        d->setParameter(parameter);
+        d->parameter = parameter;
     }
 }
 

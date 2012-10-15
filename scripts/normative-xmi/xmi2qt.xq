@@ -227,6 +227,10 @@ declare function qtxmi:allSubsettedProperties($packagedElements as node()*) as x
     else ()
 };
 
+declare function qtxmi:subsettedBy($property as node()) as xs:string {
+    string-join(doc($xmiFile)//ownedAttribute[contains(@subsettedProperty, $property/@xmi:id)]/@xmi:id, " ")
+};
+
 <qtxmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:qtxmi="http://www.qt-project.org">
 {
 for $namespace in distinct-values((doc($xmiFile)//packagedElement[@xmi:type="uml:Package"] | doc($xmiFile)//uml:Package)/@xmi:id)
@@ -296,7 +300,6 @@ return
         let $forwardNamespace := tokenize(qtxmi:namespaceFromTypeString($id), "::")
         let $forwardNamespace := string-join(remove($forwardNamespace, count($forwardNamespace)), "::")
         where qtxmi:elementFromTypeString($id)/@xmi:type = "uml:Class"
-              and tokenize($id, "#")[last()] != $class/@xmi:id
               and empty(distinct-values($id[.=$superClasses]))
         order by $forwardNamespace
         return
@@ -314,7 +317,7 @@ return
         let $defaultValue := qtxmi:defaultValue($attribute, $namespace)
         where $attribute[not(@association)]
         return
-        <attribute isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}" isReadOnly="{$isReadOnly}" subsettedProperty="{string-join(qtxmi:allSubsettedProperties($attribute), " ")}" redefinedProperty="{$attribute/@redefinedProperty}" id="{$attribute/@xmi:id}" defaultValue="{$defaultValue}" aggregation="{if (not($attribute/@aggregation)) then "none" else $attribute/@aggregation}">
+        <attribute isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}" isReadOnly="{$isReadOnly}" subsettedProperty="{string-join(qtxmi:allSubsettedProperties($attribute), " ")}" redefinedProperty="{$attribute/@redefinedProperty}" id="{$attribute/@xmi:id}" defaultValue="{$defaultValue}" aggregation="{if (not($attribute/@aggregation)) then "none" else $attribute/@aggregation}" subsettedBy="{qtxmi:subsettedBy($attribute)}">
         <accessor return="{$unqualifiedType}" name="{qtxmi:modifiedFunctionName($attribute)}" constness=" const"/>
         {
         if (not($attribute/upperValue/@value) or $attribute/upperValue/@value = "1") then
@@ -356,7 +359,7 @@ return
         let $defaultValue := qtxmi:defaultValue($attribute, $namespace)
         where $attribute[@association]
         return
-        <associationend isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}" isReadOnly="{$isReadOnly}" subsettedProperty="{string-join(qtxmi:allSubsettedProperties($attribute), " ")}" redefinedProperty="{$attribute/@redefinedProperty}" id="{$attribute/@xmi:id}" defaultValue="{$defaultValue}" aggregation="{if (not($attribute/@aggregation)) then "none" else $attribute/@aggregation}" oppositeEnd="{qtxmi:oppositeEnd($attribute)}">
+        <associationend isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}" isReadOnly="{$isReadOnly}" subsettedProperty="{string-join(qtxmi:allSubsettedProperties($attribute), " ")}" redefinedProperty="{$attribute/@redefinedProperty}" id="{$attribute/@xmi:id}" defaultValue="{$defaultValue}" aggregation="{if (not($attribute/@aggregation)) then "none" else $attribute/@aggregation}" oppositeEnd="{qtxmi:oppositeEnd($attribute)}" subsettedBy="{qtxmi:subsettedBy($attribute)}">
         <accessor return="{$unqualifiedType}" name="{qtxmi:modifiedFunctionName($attribute)}" constness=" const"/>
         {
         if (not($attribute/upperValue/@value) or $attribute/upperValue/@value = "1") then

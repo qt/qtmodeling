@@ -46,37 +46,17 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDurationConstraintPrivate::QDurationConstraintPrivate() :
+QDurationConstraintPrivate::QDurationConstraintPrivate(QDurationConstraint *q_umlptr) :
     firstEvents(new QSet<bool>),
     specification(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QDurationConstraintPrivate::~QDurationConstraintPrivate()
 {
     delete firstEvents;
     delete specification;
-}
-
-void QDurationConstraintPrivate::addFirstEvent(bool firstEvent)
-{
-    // This is a read-write attribute
-
-    this->firstEvents->insert(firstEvent);
-}
-
-void QDurationConstraintPrivate::removeFirstEvent(bool firstEvent)
-{
-    // This is a read-write attribute
-
-    this->firstEvents->remove(firstEvent);
-}
-
-void QDurationConstraintPrivate::setSpecification(QDurationInterval *specification)
-{
-    // This is a read-write association end
-
-    this->specification = specification;
 }
 
 /*!
@@ -90,7 +70,7 @@ void QDurationConstraintPrivate::setSpecification(QDurationInterval *specificati
 QDurationConstraint::QDurationConstraint(QObject *parent)
     : QIntervalConstraint(false, parent)
 {
-    d_umlptr = new QDurationConstraintPrivate;
+    d_umlptr = new QDurationConstraintPrivate(this);
 }
 
 QDurationConstraint::QDurationConstraint(bool createPimpl, QObject *parent)
@@ -121,7 +101,7 @@ void QDurationConstraint::addFirstEvent(bool firstEvent)
 
     QTUML_D(QDurationConstraint);
     if (!d->firstEvents->contains(firstEvent)) {
-        d->addFirstEvent(firstEvent);
+        d->firstEvents->insert(firstEvent);
     }
 }
 
@@ -131,7 +111,7 @@ void QDurationConstraint::removeFirstEvent(bool firstEvent)
 
     QTUML_D(QDurationConstraint);
     if (d->firstEvents->contains(firstEvent)) {
-        d->removeFirstEvent(firstEvent);
+        d->firstEvents->remove(firstEvent);
     }
 }
 
@@ -152,7 +132,7 @@ void QDurationConstraint::setSpecification(QDurationInterval *specification)
 
     QTUML_D(QDurationConstraint);
     if (d->specification != specification) {
-        d->setSpecification(specification);
+        d->specification = specification;
     }
 }
 

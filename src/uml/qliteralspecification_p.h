@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qvaluespecification_p.h"
 
 QT_BEGIN_HEADER
@@ -56,9 +55,11 @@ QT_MODULE(QtUml)
 class QLiteralSpecificationPrivate : public QValueSpecificationPrivate
 {
 public:
-    explicit QLiteralSpecificationPrivate();
     virtual ~QLiteralSpecificationPrivate();
 
+
+protected:
+    explicit QLiteralSpecificationPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

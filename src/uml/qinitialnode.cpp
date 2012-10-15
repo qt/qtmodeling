@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInitialNodePrivate::QInitialNodePrivate()
+QInitialNodePrivate::QInitialNodePrivate(QInitialNode *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QInitialNodePrivate::~QInitialNodePrivate()
@@ -64,7 +65,7 @@ QInitialNodePrivate::~QInitialNodePrivate()
 QInitialNode::QInitialNode(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QInitialNodePrivate;
+    d_umlptr = new QInitialNodePrivate(this);
 }
 
 QInitialNode::QInitialNode(bool createPimpl, QObject *parent)

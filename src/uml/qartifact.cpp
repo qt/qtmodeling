@@ -41,23 +41,20 @@
 
 #include "qartifact.h"
 #include "qartifact_p.h"
-#include "qclassifier_p.h"
-#include "qnamespace_p.h"
-#include "qelement_p.h"
-#include "qnamedelement_p.h"
 
-#include <QtUml/QManifestation>
-#include <QtUml/QProperty>
 #include <QtUml/QOperation>
+#include <QtUml/QProperty>
+#include <QtUml/QManifestation>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QArtifactPrivate::QArtifactPrivate() :
+QArtifactPrivate::QArtifactPrivate(QArtifact *q_umlptr) :
     ownedOperations(new QList<QOperation *>),
     ownedAttributes(new QList<QProperty *>),
     manifestations(new QSet<QManifestation *>),
     nestedArtifacts(new QSet<QArtifact *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QArtifactPrivate::~QArtifactPrivate()
@@ -66,99 +63,6 @@ QArtifactPrivate::~QArtifactPrivate()
     delete ownedAttributes;
     delete manifestations;
     delete nestedArtifacts;
-}
-
-void QArtifactPrivate::setFileName(QString fileName)
-{
-    // This is a read-write attribute
-
-    this->fileName = fileName;
-}
-
-void QArtifactPrivate::addOwnedOperation(QOperation *ownedOperation)
-{
-    // This is a read-write association end
-
-    this->ownedOperations->append(ownedOperation);
-
-    // Adjust subsetted property(ies)
-    addFeature(ownedOperation);
-    addOwnedMember(ownedOperation);
-}
-
-void QArtifactPrivate::removeOwnedOperation(QOperation *ownedOperation)
-{
-    // This is a read-write association end
-
-    this->ownedOperations->removeAll(ownedOperation);
-
-    // Adjust subsetted property(ies)
-    removeFeature(ownedOperation);
-    removeOwnedMember(ownedOperation);
-}
-
-void QArtifactPrivate::addOwnedAttribute(QProperty *ownedAttribute)
-{
-    // This is a read-write association end
-
-    this->ownedAttributes->append(ownedAttribute);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(ownedAttribute);
-    addAttribute(ownedAttribute);
-}
-
-void QArtifactPrivate::removeOwnedAttribute(QProperty *ownedAttribute)
-{
-    // This is a read-write association end
-
-    this->ownedAttributes->removeAll(ownedAttribute);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(ownedAttribute);
-    removeAttribute(ownedAttribute);
-}
-
-void QArtifactPrivate::addManifestation(QManifestation *manifestation)
-{
-    // This is a read-write association end
-
-    this->manifestations->insert(manifestation);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(manifestation);
-    addClientDependency(manifestation);
-}
-
-void QArtifactPrivate::removeManifestation(QManifestation *manifestation)
-{
-    // This is a read-write association end
-
-    this->manifestations->remove(manifestation);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(manifestation);
-    removeClientDependency(manifestation);
-}
-
-void QArtifactPrivate::addNestedArtifact(QArtifact *nestedArtifact)
-{
-    // This is a read-write association end
-
-    this->nestedArtifacts->insert(nestedArtifact);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(nestedArtifact);
-}
-
-void QArtifactPrivate::removeNestedArtifact(QArtifact *nestedArtifact)
-{
-    // This is a read-write association end
-
-    this->nestedArtifacts->remove(nestedArtifact);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(nestedArtifact);
 }
 
 /*!
@@ -172,7 +76,7 @@ void QArtifactPrivate::removeNestedArtifact(QArtifact *nestedArtifact)
 QArtifact::QArtifact(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QArtifactPrivate;
+    d_umlptr = new QArtifactPrivate(this);
 }
 
 QArtifact::QArtifact(bool createPimpl, QObject *parent)
@@ -203,7 +107,7 @@ void QArtifact::setFileName(QString fileName)
 
     QTUML_D(QArtifact);
     if (d->fileName != fileName) {
-        d->setFileName(fileName);
+        d->fileName = fileName;
     }
 }
 
@@ -224,7 +128,11 @@ void QArtifact::addOwnedOperation(QOperation *ownedOperation)
 
     QTUML_D(QArtifact);
     if (!d->ownedOperations->contains(ownedOperation)) {
-        d->addOwnedOperation(ownedOperation);
+        d->ownedOperations->append(ownedOperation);
+
+        // Adjust subsetted property(ies)
+        d->addFeature(ownedOperation);
+        d->addOwnedMember(ownedOperation);
     }
 }
 
@@ -234,7 +142,11 @@ void QArtifact::removeOwnedOperation(QOperation *ownedOperation)
 
     QTUML_D(QArtifact);
     if (d->ownedOperations->contains(ownedOperation)) {
-        d->removeOwnedOperation(ownedOperation);
+        d->ownedOperations->removeAll(ownedOperation);
+
+        // Adjust subsetted property(ies)
+        d->removeFeature(ownedOperation);
+        d->removeOwnedMember(ownedOperation);
     }
 }
 
@@ -255,7 +167,11 @@ void QArtifact::addOwnedAttribute(QProperty *ownedAttribute)
 
     QTUML_D(QArtifact);
     if (!d->ownedAttributes->contains(ownedAttribute)) {
-        d->addOwnedAttribute(ownedAttribute);
+        d->ownedAttributes->append(ownedAttribute);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(ownedAttribute);
+        d->addAttribute(ownedAttribute);
     }
 }
 
@@ -265,7 +181,11 @@ void QArtifact::removeOwnedAttribute(QProperty *ownedAttribute)
 
     QTUML_D(QArtifact);
     if (d->ownedAttributes->contains(ownedAttribute)) {
-        d->removeOwnedAttribute(ownedAttribute);
+        d->ownedAttributes->removeAll(ownedAttribute);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(ownedAttribute);
+        d->removeAttribute(ownedAttribute);
     }
 }
 
@@ -286,7 +206,11 @@ void QArtifact::addManifestation(QManifestation *manifestation)
 
     QTUML_D(QArtifact);
     if (!d->manifestations->contains(manifestation)) {
-        d->addManifestation(manifestation);
+        d->manifestations->insert(manifestation);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(manifestation);
+        addClientDependency(manifestation);
     }
 }
 
@@ -296,7 +220,11 @@ void QArtifact::removeManifestation(QManifestation *manifestation)
 
     QTUML_D(QArtifact);
     if (d->manifestations->contains(manifestation)) {
-        d->removeManifestation(manifestation);
+        d->manifestations->remove(manifestation);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(manifestation);
+        removeClientDependency(manifestation);
     }
 }
 
@@ -317,7 +245,10 @@ void QArtifact::addNestedArtifact(QArtifact *nestedArtifact)
 
     QTUML_D(QArtifact);
     if (!d->nestedArtifacts->contains(nestedArtifact)) {
-        d->addNestedArtifact(nestedArtifact);
+        d->nestedArtifacts->insert(nestedArtifact);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(nestedArtifact);
     }
 }
 
@@ -327,7 +258,10 @@ void QArtifact::removeNestedArtifact(QArtifact *nestedArtifact)
 
     QTUML_D(QArtifact);
     if (d->nestedArtifacts->contains(nestedArtifact)) {
-        d->removeNestedArtifact(nestedArtifact);
+        d->nestedArtifacts->remove(nestedArtifact);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(nestedArtifact);
     }
 }
 

@@ -41,7 +41,6 @@
 
 #include "qexceptionhandler.h"
 #include "qexceptionhandler_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QObjectNode>
 #include <QtUml/QClassifier>
@@ -49,55 +48,18 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QExceptionHandlerPrivate::QExceptionHandlerPrivate() :
+QExceptionHandlerPrivate::QExceptionHandlerPrivate(QExceptionHandler *q_umlptr) :
     handlerBody(0),
     exceptionTypes(new QSet<QClassifier *>),
     protectedNode(0),
     exceptionInput(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QExceptionHandlerPrivate::~QExceptionHandlerPrivate()
 {
     delete exceptionTypes;
-}
-
-void QExceptionHandlerPrivate::setHandlerBody(QExecutableNode *handlerBody)
-{
-    // This is a read-write association end
-
-    this->handlerBody = handlerBody;
-}
-
-void QExceptionHandlerPrivate::addExceptionType(QClassifier *exceptionType)
-{
-    // This is a read-write association end
-
-    this->exceptionTypes->insert(exceptionType);
-}
-
-void QExceptionHandlerPrivate::removeExceptionType(QClassifier *exceptionType)
-{
-    // This is a read-write association end
-
-    this->exceptionTypes->remove(exceptionType);
-}
-
-void QExceptionHandlerPrivate::setProtectedNode(QExecutableNode *protectedNode)
-{
-    // This is a read-write association end
-
-    this->protectedNode = protectedNode;
-
-    // Adjust subsetted property(ies)
-    setOwner(protectedNode);
-}
-
-void QExceptionHandlerPrivate::setExceptionInput(QObjectNode *exceptionInput)
-{
-    // This is a read-write association end
-
-    this->exceptionInput = exceptionInput;
 }
 
 /*!
@@ -111,7 +73,7 @@ void QExceptionHandlerPrivate::setExceptionInput(QObjectNode *exceptionInput)
 QExceptionHandler::QExceptionHandler(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QExceptionHandlerPrivate;
+    d_umlptr = new QExceptionHandlerPrivate(this);
 }
 
 QExceptionHandler::QExceptionHandler(bool createPimpl, QObject *parent)
@@ -142,7 +104,7 @@ void QExceptionHandler::setHandlerBody(QExecutableNode *handlerBody)
 
     QTUML_D(QExceptionHandler);
     if (d->handlerBody != handlerBody) {
-        d->setHandlerBody(handlerBody);
+        d->handlerBody = handlerBody;
     }
 }
 
@@ -163,7 +125,7 @@ void QExceptionHandler::addExceptionType(QClassifier *exceptionType)
 
     QTUML_D(QExceptionHandler);
     if (!d->exceptionTypes->contains(exceptionType)) {
-        d->addExceptionType(exceptionType);
+        d->exceptionTypes->insert(exceptionType);
     }
 }
 
@@ -173,7 +135,7 @@ void QExceptionHandler::removeExceptionType(QClassifier *exceptionType)
 
     QTUML_D(QExceptionHandler);
     if (d->exceptionTypes->contains(exceptionType)) {
-        d->removeExceptionType(exceptionType);
+        d->exceptionTypes->remove(exceptionType);
     }
 }
 
@@ -194,7 +156,10 @@ void QExceptionHandler::setProtectedNode(QExecutableNode *protectedNode)
 
     QTUML_D(QExceptionHandler);
     if (d->protectedNode != protectedNode) {
-        d->setProtectedNode(protectedNode);
+        d->protectedNode = protectedNode;
+
+        // Adjust subsetted property(ies)
+        d->setOwner(protectedNode);
 
         // Adjust opposite property
         protectedNode->addHandler(this);
@@ -218,7 +183,7 @@ void QExceptionHandler::setExceptionInput(QObjectNode *exceptionInput)
 
     QTUML_D(QExceptionHandler);
     if (d->exceptionInput != exceptionInput) {
-        d->setExceptionInput(exceptionInput);
+        d->exceptionInput = exceptionInput;
     }
 }
 

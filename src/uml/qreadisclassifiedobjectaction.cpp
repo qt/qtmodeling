@@ -41,7 +41,6 @@
 
 #include "qreadisclassifiedobjectaction.h"
 #include "qreadisclassifiedobjectaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QClassifier>
 #include <QtUml/QInputPin>
@@ -49,56 +48,17 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QReadIsClassifiedObjectActionPrivate::QReadIsClassifiedObjectActionPrivate() :
+QReadIsClassifiedObjectActionPrivate::QReadIsClassifiedObjectActionPrivate(QReadIsClassifiedObjectAction *q_umlptr) :
     isDirect(false),
     result(0),
     object(0),
     classifier(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QReadIsClassifiedObjectActionPrivate::~QReadIsClassifiedObjectActionPrivate()
 {
-}
-
-void QReadIsClassifiedObjectActionPrivate::setDirect(bool isDirect)
-{
-    // This is a read-write attribute
-
-    this->isDirect = isDirect;
-}
-
-void QReadIsClassifiedObjectActionPrivate::setResult(QOutputPin *result)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOutput(this->result);
-
-    this->result = result;
-
-    // Adjust subsetted property(ies)
-    addOutput(result);
-}
-
-void QReadIsClassifiedObjectActionPrivate::setObject(QInputPin *object)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeInput(this->object);
-
-    this->object = object;
-
-    // Adjust subsetted property(ies)
-    addInput(object);
-}
-
-void QReadIsClassifiedObjectActionPrivate::setClassifier(QClassifier *classifier)
-{
-    // This is a read-write association end
-
-    this->classifier = classifier;
 }
 
 /*!
@@ -112,7 +72,7 @@ void QReadIsClassifiedObjectActionPrivate::setClassifier(QClassifier *classifier
 QReadIsClassifiedObjectAction::QReadIsClassifiedObjectAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QReadIsClassifiedObjectActionPrivate;
+    d_umlptr = new QReadIsClassifiedObjectActionPrivate(this);
 }
 
 QReadIsClassifiedObjectAction::QReadIsClassifiedObjectAction(bool createPimpl, QObject *parent)
@@ -143,7 +103,7 @@ void QReadIsClassifiedObjectAction::setDirect(bool isDirect)
 
     QTUML_D(QReadIsClassifiedObjectAction);
     if (d->isDirect != isDirect) {
-        d->setDirect(isDirect);
+        d->isDirect = isDirect;
     }
 }
 
@@ -164,7 +124,13 @@ void QReadIsClassifiedObjectAction::setResult(QOutputPin *result)
 
     QTUML_D(QReadIsClassifiedObjectAction);
     if (d->result != result) {
-        d->setResult(result);
+        // Adjust subsetted property(ies)
+        d->removeOutput(d->result);
+
+        d->result = result;
+
+        // Adjust subsetted property(ies)
+        d->addOutput(result);
     }
 }
 
@@ -185,7 +151,13 @@ void QReadIsClassifiedObjectAction::setObject(QInputPin *object)
 
     QTUML_D(QReadIsClassifiedObjectAction);
     if (d->object != object) {
-        d->setObject(object);
+        // Adjust subsetted property(ies)
+        d->removeInput(d->object);
+
+        d->object = object;
+
+        // Adjust subsetted property(ies)
+        d->addInput(object);
     }
 }
 
@@ -206,7 +178,7 @@ void QReadIsClassifiedObjectAction::setClassifier(QClassifier *classifier)
 
     QTUML_D(QReadIsClassifiedObjectAction);
     if (d->classifier != classifier) {
-        d->setClassifier(classifier);
+        d->classifier = classifier;
     }
 }
 

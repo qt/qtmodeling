@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qclass_p.h"
 
 // Qt includes
@@ -58,18 +57,15 @@ QT_MODULE(QtUml)
 
 class QImage;
 class QProfile;
+class QStereotype;
 
 class QStereotypePrivate : public QClassPrivate
 {
 public:
-    explicit QStereotypePrivate();
+    explicit QStereotypePrivate(QStereotype *q_umlptr = 0);
     virtual ~QStereotypePrivate();
 
     QSet<QImage *> *icons;
-
-    // Internal functions for association-ends
-    void addIcon(QImage *icon);
-    void removeIcon(QImage *icon);
 };
 
 QT_END_NAMESPACE_QTUML

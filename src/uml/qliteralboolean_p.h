@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qliteralspecification_p.h"
 
 QT_BEGIN_HEADER
@@ -52,17 +51,15 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
+class QLiteralBoolean;
 
 class QLiteralBooleanPrivate : public QLiteralSpecificationPrivate
 {
 public:
-    explicit QLiteralBooleanPrivate();
+    explicit QLiteralBooleanPrivate(QLiteralBoolean *q_umlptr = 0);
     virtual ~QLiteralBooleanPrivate();
 
     bool value;
-
-    // Internal functions for attributes
-    void setValue(bool value);
 };
 
 QT_END_NAMESPACE_QTUML

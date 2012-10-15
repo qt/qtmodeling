@@ -56,12 +56,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QInterruptibleActivityRegion;
-class QStructuredActivityNode;
 class QActivityNode;
+class QStructuredActivityNode;
 class QActivityPartition;
-class QValueSpecification;
 class QActivity;
 class QActivityGroup;
+class QValueSpecification;
 
 class Q_UML_EXPORT QActivityEdge : public QRedefinableElement
 {

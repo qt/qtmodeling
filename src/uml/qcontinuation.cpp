@@ -45,20 +45,14 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QContinuationPrivate::QContinuationPrivate() :
+QContinuationPrivate::QContinuationPrivate(QContinuation *q_umlptr) :
     setting(true)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QContinuationPrivate::~QContinuationPrivate()
 {
-}
-
-void QContinuationPrivate::setSetting(bool setting)
-{
-    // This is a read-write attribute
-
-    this->setting = setting;
 }
 
 /*!
@@ -72,7 +66,7 @@ void QContinuationPrivate::setSetting(bool setting)
 QContinuation::QContinuation(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QContinuationPrivate;
+    d_umlptr = new QContinuationPrivate(this);
 }
 
 QContinuation::QContinuation(bool createPimpl, QObject *parent)
@@ -103,7 +97,7 @@ void QContinuation::setSetting(bool setting)
 
     QTUML_D(QContinuation);
     if (d->setting != setting) {
-        d->setSetting(setting);
+        d->setting = setting;
     }
 }
 

@@ -41,19 +41,19 @@
 
 #include "qopaqueaction.h"
 #include "qopaqueaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QOpaqueActionPrivate::QOpaqueActionPrivate() :
+QOpaqueActionPrivate::QOpaqueActionPrivate(QOpaqueAction *q_umlptr) :
     bodies(new QList<QString>),
     languages(new QList<QString>),
     inputValues(new QSet<QInputPin *>),
     outputValues(new QSet<QOutputPin *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QOpaqueActionPrivate::~QOpaqueActionPrivate()
@@ -62,74 +62,6 @@ QOpaqueActionPrivate::~QOpaqueActionPrivate()
     delete languages;
     delete inputValues;
     delete outputValues;
-}
-
-void QOpaqueActionPrivate::addBody(QString body)
-{
-    // This is a read-write attribute
-
-    this->bodies->append(body);
-}
-
-void QOpaqueActionPrivate::removeBody(QString body)
-{
-    // This is a read-write attribute
-
-    this->bodies->removeAll(body);
-}
-
-void QOpaqueActionPrivate::addLanguage(QString language)
-{
-    // This is a read-write attribute
-
-    this->languages->append(language);
-}
-
-void QOpaqueActionPrivate::removeLanguage(QString language)
-{
-    // This is a read-write attribute
-
-    this->languages->removeAll(language);
-}
-
-void QOpaqueActionPrivate::addInputValue(QInputPin *inputValue)
-{
-    // This is a read-write association end
-
-    this->inputValues->insert(inputValue);
-
-    // Adjust subsetted property(ies)
-    addInput(inputValue);
-}
-
-void QOpaqueActionPrivate::removeInputValue(QInputPin *inputValue)
-{
-    // This is a read-write association end
-
-    this->inputValues->remove(inputValue);
-
-    // Adjust subsetted property(ies)
-    removeInput(inputValue);
-}
-
-void QOpaqueActionPrivate::addOutputValue(QOutputPin *outputValue)
-{
-    // This is a read-write association end
-
-    this->outputValues->insert(outputValue);
-
-    // Adjust subsetted property(ies)
-    addOutput(outputValue);
-}
-
-void QOpaqueActionPrivate::removeOutputValue(QOutputPin *outputValue)
-{
-    // This is a read-write association end
-
-    this->outputValues->remove(outputValue);
-
-    // Adjust subsetted property(ies)
-    removeOutput(outputValue);
 }
 
 /*!
@@ -143,7 +75,7 @@ void QOpaqueActionPrivate::removeOutputValue(QOutputPin *outputValue)
 QOpaqueAction::QOpaqueAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QOpaqueActionPrivate;
+    d_umlptr = new QOpaqueActionPrivate(this);
 }
 
 QOpaqueAction::QOpaqueAction(bool createPimpl, QObject *parent)
@@ -174,7 +106,7 @@ void QOpaqueAction::addBody(QString body)
 
     QTUML_D(QOpaqueAction);
     if (!d->bodies->contains(body)) {
-        d->addBody(body);
+        d->bodies->append(body);
     }
 }
 
@@ -184,7 +116,7 @@ void QOpaqueAction::removeBody(QString body)
 
     QTUML_D(QOpaqueAction);
     if (d->bodies->contains(body)) {
-        d->removeBody(body);
+        d->bodies->removeAll(body);
     }
 }
 
@@ -205,7 +137,7 @@ void QOpaqueAction::addLanguage(QString language)
 
     QTUML_D(QOpaqueAction);
     if (!d->languages->contains(language)) {
-        d->addLanguage(language);
+        d->languages->append(language);
     }
 }
 
@@ -215,7 +147,7 @@ void QOpaqueAction::removeLanguage(QString language)
 
     QTUML_D(QOpaqueAction);
     if (d->languages->contains(language)) {
-        d->removeLanguage(language);
+        d->languages->removeAll(language);
     }
 }
 
@@ -236,7 +168,10 @@ void QOpaqueAction::addInputValue(QInputPin *inputValue)
 
     QTUML_D(QOpaqueAction);
     if (!d->inputValues->contains(inputValue)) {
-        d->addInputValue(inputValue);
+        d->inputValues->insert(inputValue);
+
+        // Adjust subsetted property(ies)
+        d->addInput(inputValue);
     }
 }
 
@@ -246,7 +181,10 @@ void QOpaqueAction::removeInputValue(QInputPin *inputValue)
 
     QTUML_D(QOpaqueAction);
     if (d->inputValues->contains(inputValue)) {
-        d->removeInputValue(inputValue);
+        d->inputValues->remove(inputValue);
+
+        // Adjust subsetted property(ies)
+        d->removeInput(inputValue);
     }
 }
 
@@ -267,7 +205,10 @@ void QOpaqueAction::addOutputValue(QOutputPin *outputValue)
 
     QTUML_D(QOpaqueAction);
     if (!d->outputValues->contains(outputValue)) {
-        d->addOutputValue(outputValue);
+        d->outputValues->insert(outputValue);
+
+        // Adjust subsetted property(ies)
+        d->addOutput(outputValue);
     }
 }
 
@@ -277,7 +218,10 @@ void QOpaqueAction::removeOutputValue(QOutputPin *outputValue)
 
     QTUML_D(QOpaqueAction);
     if (d->outputValues->contains(outputValue)) {
-        d->removeOutputValue(outputValue);
+        d->outputValues->remove(outputValue);
+
+        // Adjust subsetted property(ies)
+        d->removeOutput(outputValue);
     }
 }
 

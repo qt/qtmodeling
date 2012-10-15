@@ -45,33 +45,13 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QImagePrivate::QImagePrivate()
+QImagePrivate::QImagePrivate(QImage *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QImagePrivate::~QImagePrivate()
 {
-}
-
-void QImagePrivate::setFormat(QString format)
-{
-    // This is a read-write attribute
-
-    this->format = format;
-}
-
-void QImagePrivate::setLocation(QString location)
-{
-    // This is a read-write attribute
-
-    this->location = location;
-}
-
-void QImagePrivate::setContent(QString content)
-{
-    // This is a read-write attribute
-
-    this->content = content;
 }
 
 /*!
@@ -85,7 +65,7 @@ void QImagePrivate::setContent(QString content)
 QImage::QImage(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QImagePrivate;
+    d_umlptr = new QImagePrivate(this);
 }
 
 QImage::QImage(bool createPimpl, QObject *parent)
@@ -116,7 +96,7 @@ void QImage::setFormat(QString format)
 
     QTUML_D(QImage);
     if (d->format != format) {
-        d->setFormat(format);
+        d->format = format;
     }
 }
 
@@ -137,7 +117,7 @@ void QImage::setLocation(QString location)
 
     QTUML_D(QImage);
     if (d->location != location) {
-        d->setLocation(location);
+        d->location = location;
     }
 }
 
@@ -158,7 +138,7 @@ void QImage::setContent(QString content)
 
     QTUML_D(QImage);
     if (d->content != content) {
-        d->setContent(content);
+        d->content = content;
     }
 }
 

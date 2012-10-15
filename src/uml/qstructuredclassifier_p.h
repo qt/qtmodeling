@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qclassifier_p.h"
 
 // Qt includes
@@ -64,20 +63,18 @@ class QConnectableElement;
 class QStructuredClassifierPrivate : public virtual QClassifierPrivate
 {
 public:
-    explicit QStructuredClassifierPrivate();
     virtual ~QStructuredClassifierPrivate();
 
     QSet<QConnectableElement *> *roles;
     QList<QProperty *> *ownedAttributes;
     QSet<QConnector *> *ownedConnectors;
 
-    // Internal functions for association-ends
+    // Internal functions for read-only subsetted association ends
     void addRole(QConnectableElement *role);
     void removeRole(QConnectableElement *role);
-    void addOwnedAttribute(QProperty *ownedAttribute);
-    void removeOwnedAttribute(QProperty *ownedAttribute);
-    void addOwnedConnector(QConnector *ownedConnector);
-    void removeOwnedConnector(QConnector *ownedConnector);
+
+protected:
+    explicit QStructuredClassifierPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

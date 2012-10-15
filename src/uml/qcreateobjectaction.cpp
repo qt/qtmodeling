@@ -41,41 +41,21 @@
 
 #include "qcreateobjectaction.h"
 #include "qcreateobjectaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QClassifier>
 #include <QtUml/QOutputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCreateObjectActionPrivate::QCreateObjectActionPrivate() :
+QCreateObjectActionPrivate::QCreateObjectActionPrivate(QCreateObjectAction *q_umlptr) :
     classifier(0),
     result(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QCreateObjectActionPrivate::~QCreateObjectActionPrivate()
 {
-}
-
-void QCreateObjectActionPrivate::setClassifier(QClassifier *classifier)
-{
-    // This is a read-write association end
-
-    this->classifier = classifier;
-}
-
-void QCreateObjectActionPrivate::setResult(QOutputPin *result)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOutput(this->result);
-
-    this->result = result;
-
-    // Adjust subsetted property(ies)
-    addOutput(result);
 }
 
 /*!
@@ -89,7 +69,7 @@ void QCreateObjectActionPrivate::setResult(QOutputPin *result)
 QCreateObjectAction::QCreateObjectAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QCreateObjectActionPrivate;
+    d_umlptr = new QCreateObjectActionPrivate(this);
 }
 
 QCreateObjectAction::QCreateObjectAction(bool createPimpl, QObject *parent)
@@ -120,7 +100,7 @@ void QCreateObjectAction::setClassifier(QClassifier *classifier)
 
     QTUML_D(QCreateObjectAction);
     if (d->classifier != classifier) {
-        d->setClassifier(classifier);
+        d->classifier = classifier;
     }
 }
 
@@ -141,7 +121,13 @@ void QCreateObjectAction::setResult(QOutputPin *result)
 
     QTUML_D(QCreateObjectAction);
     if (d->result != result) {
-        d->setResult(result);
+        // Adjust subsetted property(ies)
+        d->removeOutput(d->result);
+
+        d->result = result;
+
+        // Adjust subsetted property(ies)
+        d->addOutput(result);
     }
 }
 

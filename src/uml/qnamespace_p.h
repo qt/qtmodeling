@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qnamedelement_p.h"
 
 // Qt includes
@@ -65,7 +64,6 @@ class QPackageableElement;
 class QNamespacePrivate : public virtual QNamedElementPrivate
 {
 public:
-    explicit QNamespacePrivate();
     virtual ~QNamespacePrivate();
 
     QSet<QPackageImport *> *packageImports;
@@ -74,17 +72,14 @@ public:
     QSet<QConstraint *> *ownedRules;
     QSet<QNamedElement *> *ownedMembers;
 
-    // Internal functions for association-ends
-    void addPackageImport(QPackageImport *packageImport);
-    void removePackageImport(QPackageImport *packageImport);
+    // Internal functions for read-only subsetted association ends
     void addMember(QNamedElement *member);
     void removeMember(QNamedElement *member);
-    void addElementImport(QElementImport *elementImport);
-    void removeElementImport(QElementImport *elementImport);
-    void addOwnedRule(QConstraint *ownedRule);
-    void removeOwnedRule(QConstraint *ownedRule);
     void addOwnedMember(QNamedElement *ownedMember);
     void removeOwnedMember(QNamedElement *ownedMember);
+
+protected:
+    explicit QNamespacePrivate();
 };
 
 QT_END_NAMESPACE_QTUML

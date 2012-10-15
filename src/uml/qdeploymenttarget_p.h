@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qnamedelement_p.h"
 
 // Qt includes
@@ -62,14 +61,12 @@ class QDeployment;
 class QDeploymentTargetPrivate : public virtual QNamedElementPrivate
 {
 public:
-    explicit QDeploymentTargetPrivate();
     virtual ~QDeploymentTargetPrivate();
 
     QSet<QDeployment *> *deployments;
 
-    // Internal functions for association-ends
-    void addDeployment(QDeployment *deployment);
-    void removeDeployment(QDeployment *deployment);
+protected:
+    explicit QDeploymentTargetPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

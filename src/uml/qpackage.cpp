@@ -41,25 +41,23 @@
 
 #include "qpackage.h"
 #include "qpackage_p.h"
-#include "qnamespace_p.h"
-#include "qnamedelement_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QProfile>
-#include <QtUml/QNamedElement>
 #include <QtUml/QProfileApplication>
-#include <QtUml/QType>
-#include <QtUml/QStereotype>
+#include <QtUml/QNamedElement>
 #include <QtUml/QPackageMerge>
+#include <QtUml/QStereotype>
+#include <QtUml/QType>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QPackagePrivate::QPackagePrivate() :
+QPackagePrivate::QPackagePrivate(QPackage *q_umlptr) :
     packagedElements(new QSet<QPackageableElement *>),
     nestingPackage(0),
     profileApplications(new QSet<QProfileApplication *>),
     packageMerges(new QSet<QPackageMerge *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QPackagePrivate::~QPackagePrivate()
@@ -67,97 +65,6 @@ QPackagePrivate::~QPackagePrivate()
     delete packagedElements;
     delete profileApplications;
     delete packageMerges;
-}
-
-void QPackagePrivate::setURI(QString URI)
-{
-    // This is a read-write attribute
-
-    this->URI = URI;
-}
-
-void QPackagePrivate::addPackagedElement(QPackageableElement *packagedElement)
-{
-    // This is a read-write association end
-
-    this->packagedElements->insert(packagedElement);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(packagedElement);
-}
-
-void QPackagePrivate::removePackagedElement(QPackageableElement *packagedElement)
-{
-    // This is a read-write association end
-
-    this->packagedElements->remove(packagedElement);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(packagedElement);
-}
-
-void QPackagePrivate::setNestingPackage(QPackage *nestingPackage)
-{
-    // This is a read-write association end
-
-    this->nestingPackage = nestingPackage;
-
-    // Adjust subsetted property(ies)
-    setNamespace_(nestingPackage);
-}
-
-void QPackagePrivate::addProfileApplication(QProfileApplication *profileApplication)
-{
-    // This is a read-write association end
-
-    this->profileApplications->insert(profileApplication);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(profileApplication);
-
-    // Adjust indirectly subsetted property(ies)
-    // This is because ownedStereotypes is derived (not derivedUnion) and subsets packagedElements
-    foreach (QProfileApplication *profileApplication, *this->profileApplications)
-        foreach (QPackageableElement *packageableElement, *profileApplication->appliedProfile()->packagedElements())
-            if (QStereotype *stereotype = dynamic_cast<QStereotype *>(packageableElement))
-                addPackagedElement(stereotype);
-}
-
-void QPackagePrivate::removeProfileApplication(QProfileApplication *profileApplication)
-{
-    // This is a read-write association end
-
-    this->profileApplications->remove(profileApplication);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(profileApplication);
-
-    // Adjust indirectly subsetted property(ies)
-    // This is because ownedStereotypes is derived (not derivedUnion) and subsets packagedElements
-    foreach (QProfileApplication *profileApplication, *this->profileApplications)
-        foreach (QPackageableElement *packageableElement, *profileApplication->appliedProfile()->packagedElements())
-            if (QStereotype *stereotype = dynamic_cast<QStereotype *>(packageableElement))
-                removePackagedElement(stereotype);
-}
-
-void QPackagePrivate::addPackageMerge(QPackageMerge *packageMerge)
-{
-    // This is a read-write association end
-
-    this->packageMerges->insert(packageMerge);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(packageMerge);
-}
-
-void QPackagePrivate::removePackageMerge(QPackageMerge *packageMerge)
-{
-    // This is a read-write association end
-
-    this->packageMerges->remove(packageMerge);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(packageMerge);
 }
 
 /*!
@@ -171,7 +78,7 @@ void QPackagePrivate::removePackageMerge(QPackageMerge *packageMerge)
 QPackage::QPackage(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QPackagePrivate;
+    d_umlptr = new QPackagePrivate(this);
 }
 
 QPackage::QPackage(bool createPimpl, QObject *parent)
@@ -202,7 +109,7 @@ void QPackage::setURI(QString URI)
 
     QTUML_D(QPackage);
     if (d->URI != URI) {
-        d->setURI(URI);
+        d->URI = URI;
     }
 }
 
@@ -228,7 +135,8 @@ void QPackage::addOwnedType(QType *ownedType)
 
     QTUML_D(QPackage);
     if (!d->packagedElements->contains(ownedType)) {
-        d->addPackagedElement(ownedType);
+        // Adjust subsetted property(ies)
+        addPackagedElement(ownedType);
 
         // Adjust opposite property
         ownedType->setPackage(this);
@@ -241,7 +149,8 @@ void QPackage::removeOwnedType(QType *ownedType)
 
     QTUML_D(QPackage);
     if (d->packagedElements->contains(ownedType)) {
-        d->removePackagedElement(ownedType);
+        // Adjust subsetted property(ies)
+        removePackagedElement(ownedType);
 
         // Adjust opposite property
         ownedType->setPackage(0);
@@ -265,7 +174,11 @@ void QPackage::addPackagedElement(QPackageableElement *packagedElement)
 
     QTUML_D(QPackage);
     if (!d->packagedElements->contains(packagedElement)) {
-        d->addPackagedElement(packagedElement);
+        qDebug() << "QPackage::addPackagedElement";
+        d->packagedElements->insert(packagedElement);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(packagedElement);
     }
 }
 
@@ -275,7 +188,10 @@ void QPackage::removePackagedElement(QPackageableElement *packagedElement)
 
     QTUML_D(QPackage);
     if (d->packagedElements->contains(packagedElement)) {
-        d->removePackagedElement(packagedElement);
+        d->packagedElements->remove(packagedElement);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(packagedElement);
     }
 }
 
@@ -296,7 +212,13 @@ void QPackage::setNestingPackage(QPackage *nestingPackage)
 
     QTUML_D(QPackage);
     if (d->nestingPackage != nestingPackage) {
-        d->setNestingPackage(nestingPackage);
+        d->nestingPackage = nestingPackage;
+
+        // Adjust subsetted property(ies)
+        d->setNamespace_(nestingPackage);
+
+        // Adjust opposite property
+        nestingPackage->addNestedPackage(this);
     }
 }
 
@@ -317,7 +239,10 @@ void QPackage::addProfileApplication(QProfileApplication *profileApplication)
 
     QTUML_D(QPackage);
     if (!d->profileApplications->contains(profileApplication)) {
-        d->addProfileApplication(profileApplication);
+        d->profileApplications->insert(profileApplication);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(profileApplication);
 
         // Adjust opposite property
         profileApplication->setApplyingPackage(this);
@@ -330,7 +255,10 @@ void QPackage::removeProfileApplication(QProfileApplication *profileApplication)
 
     QTUML_D(QPackage);
     if (d->profileApplications->contains(profileApplication)) {
-        d->removeProfileApplication(profileApplication);
+        d->profileApplications->remove(profileApplication);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(profileApplication);
 
         // Adjust opposite property
         profileApplication->setApplyingPackage(0);
@@ -370,7 +298,10 @@ void QPackage::addPackageMerge(QPackageMerge *packageMerge)
 
     QTUML_D(QPackage);
     if (!d->packageMerges->contains(packageMerge)) {
-        d->addPackageMerge(packageMerge);
+        d->packageMerges->insert(packageMerge);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(packageMerge);
 
         // Adjust opposite property
         packageMerge->setReceivingPackage(this);
@@ -383,7 +314,10 @@ void QPackage::removePackageMerge(QPackageMerge *packageMerge)
 
     QTUML_D(QPackage);
     if (d->packageMerges->contains(packageMerge)) {
-        d->removePackageMerge(packageMerge);
+        d->packageMerges->remove(packageMerge);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(packageMerge);
 
         // Adjust opposite property
         packageMerge->setReceivingPackage(0);
@@ -412,7 +346,9 @@ void QPackage::addNestedPackage(QPackage *nestedPackage)
 
     QTUML_D(QPackage);
     if (!d->packagedElements->contains(nestedPackage)) {
-        d->addPackagedElement(nestedPackage);
+        qDebug() << "QPackage::addNestedPackage";
+        // Adjust subsetted property(ies)
+        addPackagedElement(nestedPackage);
 
         // Adjust opposite property
         nestedPackage->setNestingPackage(this);
@@ -425,7 +361,8 @@ void QPackage::removeNestedPackage(QPackage *nestedPackage)
 
     QTUML_D(QPackage);
     if (d->packagedElements->contains(nestedPackage)) {
-        d->removePackagedElement(nestedPackage);
+        // Adjust subsetted property(ies)
+        removePackagedElement(nestedPackage);
 
         // Adjust opposite property
         nestedPackage->setNestingPackage(0);

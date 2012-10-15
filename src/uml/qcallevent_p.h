@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qmessageevent_p.h"
 
 QT_BEGIN_HEADER
@@ -54,17 +53,15 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QOperation;
+class QCallEvent;
 
 class QCallEventPrivate : public QMessageEventPrivate
 {
 public:
-    explicit QCallEventPrivate();
+    explicit QCallEventPrivate(QCallEvent *q_umlptr = 0);
     virtual ~QCallEventPrivate();
 
     QOperation *operation;
-
-    // Internal functions for association-ends
-    void setOperation(QOperation *operation);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -47,52 +47,18 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QOccurrenceSpecificationPrivate::QOccurrenceSpecificationPrivate() :
+QOccurrenceSpecificationPrivate::QOccurrenceSpecificationPrivate(QOccurrenceSpecification *q_umlptr) :
     covered(0),
     toAfter(new QSet<QGeneralOrdering *>),
     toBefore(new QSet<QGeneralOrdering *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QOccurrenceSpecificationPrivate::~QOccurrenceSpecificationPrivate()
 {
     delete toAfter;
     delete toBefore;
-}
-
-void QOccurrenceSpecificationPrivate::setCovered(QLifeline *covered)
-{
-    // This is a read-write association end
-
-    this->covered = covered;
-}
-
-void QOccurrenceSpecificationPrivate::addToAfter(QGeneralOrdering *toAfter)
-{
-    // This is a read-write association end
-
-    this->toAfter->insert(toAfter);
-}
-
-void QOccurrenceSpecificationPrivate::removeToAfter(QGeneralOrdering *toAfter)
-{
-    // This is a read-write association end
-
-    this->toAfter->remove(toAfter);
-}
-
-void QOccurrenceSpecificationPrivate::addToBefore(QGeneralOrdering *toBefore)
-{
-    // This is a read-write association end
-
-    this->toBefore->insert(toBefore);
-}
-
-void QOccurrenceSpecificationPrivate::removeToBefore(QGeneralOrdering *toBefore)
-{
-    // This is a read-write association end
-
-    this->toBefore->remove(toBefore);
 }
 
 /*!
@@ -106,7 +72,7 @@ void QOccurrenceSpecificationPrivate::removeToBefore(QGeneralOrdering *toBefore)
 QOccurrenceSpecification::QOccurrenceSpecification(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QOccurrenceSpecificationPrivate;
+    d_umlptr = new QOccurrenceSpecificationPrivate(this);
 }
 
 QOccurrenceSpecification::QOccurrenceSpecification(bool createPimpl, QObject *parent)
@@ -137,7 +103,7 @@ void QOccurrenceSpecification::setCovered(QLifeline *covered)
 
     QTUML_D(QOccurrenceSpecification);
     if (d->covered != covered) {
-        d->setCovered(covered);
+        d->covered = covered;
     }
 }
 
@@ -158,7 +124,7 @@ void QOccurrenceSpecification::addToAfter(QGeneralOrdering *toAfter)
 
     QTUML_D(QOccurrenceSpecification);
     if (!d->toAfter->contains(toAfter)) {
-        d->addToAfter(toAfter);
+        d->toAfter->insert(toAfter);
 
         // Adjust opposite property
         toAfter->setBefore(this);
@@ -171,7 +137,7 @@ void QOccurrenceSpecification::removeToAfter(QGeneralOrdering *toAfter)
 
     QTUML_D(QOccurrenceSpecification);
     if (d->toAfter->contains(toAfter)) {
-        d->removeToAfter(toAfter);
+        d->toAfter->remove(toAfter);
 
         // Adjust opposite property
         toAfter->setBefore(0);
@@ -195,7 +161,7 @@ void QOccurrenceSpecification::addToBefore(QGeneralOrdering *toBefore)
 
     QTUML_D(QOccurrenceSpecification);
     if (!d->toBefore->contains(toBefore)) {
-        d->addToBefore(toBefore);
+        d->toBefore->insert(toBefore);
 
         // Adjust opposite property
         toBefore->setAfter(this);
@@ -208,7 +174,7 @@ void QOccurrenceSpecification::removeToBefore(QGeneralOrdering *toBefore)
 
     QTUML_D(QOccurrenceSpecification);
     if (d->toBefore->contains(toBefore)) {
-        d->removeToBefore(toBefore);
+        d->toBefore->remove(toBefore);
 
         // Adjust opposite property
         toBefore->setAfter(0);

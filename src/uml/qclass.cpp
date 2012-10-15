@@ -41,8 +41,7 @@
 
 #include "qclass.h"
 #include "qclass_p.h"
-#include "qnamespace_p.h"
-#include "qclassifier_p.h"
+#include "qextension_p.h"
 
 #include <QtUml/QReception>
 #include <QtUml/QNamedElement>
@@ -53,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QClassPrivate::QClassPrivate() :
+QClassPrivate::QClassPrivate(QClass *q_umlptr) :
     isAbstract(false),
     isActive(false),
     nestedClassifiers(new QList<QClassifier *>),
@@ -61,6 +60,7 @@ QClassPrivate::QClassPrivate() :
     ownedOperations(new QList<QOperation *>),
     ownedAttributes(new QList<QProperty *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QClassPrivate::~QClassPrivate()
@@ -71,104 +71,34 @@ QClassPrivate::~QClassPrivate()
     delete ownedAttributes;
 }
 
-void QClassPrivate::setAbstract(bool isAbstract)
+void QClassPrivate::addExtension(QExtension *extension)
 {
-    // This is a read-write attribute
+    // This is a read-only derived association end
 
-    this->isAbstract = isAbstract;
+    qWarning("QClass::addExtension: to be implemented (this is a derived associationend)");
+
+    if (false /* <derivedinclusion-criteria> */) {
+        // <derived-code>
+
+        // Adjust opposite property
+        QTUML_Q(QClass);
+        (dynamic_cast<QExtensionPrivate *>(extension->d_umlptr))->setMetaclass(q);
+    }
 }
 
-void QClassPrivate::setActive(bool isActive)
+void QClassPrivate::removeExtension(QExtension *extension)
 {
-    // This is a read-write attribute
+    // This is a read-only derived association end
 
-    this->isActive = isActive;
-}
+    qWarning("QClass::removeExtension: to be implemented (this is a derived associationend)");
 
-void QClassPrivate::addNestedClassifier(QClassifier *nestedClassifier)
-{
-    // This is a read-write association end
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
 
-    this->nestedClassifiers->append(nestedClassifier);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(nestedClassifier);
-}
-
-void QClassPrivate::removeNestedClassifier(QClassifier *nestedClassifier)
-{
-    // This is a read-write association end
-
-    this->nestedClassifiers->removeAll(nestedClassifier);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(nestedClassifier);
-}
-
-void QClassPrivate::addOwnedReception(QReception *ownedReception)
-{
-    // This is a read-write association end
-
-    this->ownedReceptions->insert(ownedReception);
-
-    // Adjust subsetted property(ies)
-    addFeature(ownedReception);
-    addOwnedMember(ownedReception);
-}
-
-void QClassPrivate::removeOwnedReception(QReception *ownedReception)
-{
-    // This is a read-write association end
-
-    this->ownedReceptions->remove(ownedReception);
-
-    // Adjust subsetted property(ies)
-    removeFeature(ownedReception);
-    removeOwnedMember(ownedReception);
-}
-
-void QClassPrivate::addOwnedOperation(QOperation *ownedOperation)
-{
-    // This is a read-write association end
-
-    this->ownedOperations->append(ownedOperation);
-
-    // Adjust subsetted property(ies)
-    addFeature(ownedOperation);
-    addOwnedMember(ownedOperation);
-}
-
-void QClassPrivate::removeOwnedOperation(QOperation *ownedOperation)
-{
-    // This is a read-write association end
-
-    this->ownedOperations->removeAll(ownedOperation);
-
-    // Adjust subsetted property(ies)
-    removeFeature(ownedOperation);
-    removeOwnedMember(ownedOperation);
-}
-
-void QClassPrivate::addOwnedAttribute(QProperty *ownedAttribute)
-{
-    // This is a read-write association end
-
-    this->ownedAttributes->append(ownedAttribute);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(ownedAttribute);
-    addAttribute(ownedAttribute);
-}
-
-void QClassPrivate::removeOwnedAttribute(QProperty *ownedAttribute)
-{
-    // This is a read-write association end
-
-    this->ownedAttributes->removeAll(ownedAttribute);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(ownedAttribute);
-    removeAttribute(ownedAttribute);
+        // Adjust opposite property
+        QTUML_Q(QClass);
+        (dynamic_cast<QExtensionPrivate *>(extension->d_umlptr))->setMetaclass(0);
+    }
 }
 
 /*!
@@ -182,7 +112,7 @@ void QClassPrivate::removeOwnedAttribute(QProperty *ownedAttribute)
 QClass::QClass(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QClassPrivate;
+    d_umlptr = new QClassPrivate(this);
 }
 
 QClass::QClass(bool createPimpl, QObject *parent)
@@ -213,7 +143,7 @@ void QClass::setAbstract(bool isAbstract)
 
     QTUML_D(QClass);
     if (d->isAbstract != isAbstract) {
-        d->setAbstract(isAbstract);
+        d->isAbstract = isAbstract;
     }
 }
 
@@ -234,7 +164,7 @@ void QClass::setActive(bool isActive)
 
     QTUML_D(QClass);
     if (d->isActive != isActive) {
-        d->setActive(isActive);
+        d->isActive = isActive;
     }
 }
 
@@ -255,7 +185,10 @@ void QClass::addNestedClassifier(QClassifier *nestedClassifier)
 
     QTUML_D(QClass);
     if (!d->nestedClassifiers->contains(nestedClassifier)) {
-        d->addNestedClassifier(nestedClassifier);
+        d->nestedClassifiers->append(nestedClassifier);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(nestedClassifier);
     }
 }
 
@@ -265,7 +198,10 @@ void QClass::removeNestedClassifier(QClassifier *nestedClassifier)
 
     QTUML_D(QClass);
     if (d->nestedClassifiers->contains(nestedClassifier)) {
-        d->removeNestedClassifier(nestedClassifier);
+        d->nestedClassifiers->removeAll(nestedClassifier);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(nestedClassifier);
     }
 }
 
@@ -286,7 +222,11 @@ void QClass::addOwnedReception(QReception *ownedReception)
 
     QTUML_D(QClass);
     if (!d->ownedReceptions->contains(ownedReception)) {
-        d->addOwnedReception(ownedReception);
+        d->ownedReceptions->insert(ownedReception);
+
+        // Adjust subsetted property(ies)
+        d->addFeature(ownedReception);
+        d->addOwnedMember(ownedReception);
     }
 }
 
@@ -296,7 +236,11 @@ void QClass::removeOwnedReception(QReception *ownedReception)
 
     QTUML_D(QClass);
     if (d->ownedReceptions->contains(ownedReception)) {
-        d->removeOwnedReception(ownedReception);
+        d->ownedReceptions->remove(ownedReception);
+
+        // Adjust subsetted property(ies)
+        d->removeFeature(ownedReception);
+        d->removeOwnedMember(ownedReception);
     }
 }
 
@@ -309,7 +253,7 @@ const QSet<QExtension *> *QClass::extensions() const
 
     qWarning("QClass::extensions: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QClass);
+    //QTUML_D(const QClass);
     //return <derived-return>;
 }
 
@@ -330,7 +274,11 @@ void QClass::addOwnedOperation(QOperation *ownedOperation)
 
     QTUML_D(QClass);
     if (!d->ownedOperations->contains(ownedOperation)) {
-        d->addOwnedOperation(ownedOperation);
+        d->ownedOperations->append(ownedOperation);
+
+        // Adjust subsetted property(ies)
+        d->addFeature(ownedOperation);
+        d->addOwnedMember(ownedOperation);
 
         // Adjust opposite property
         ownedOperation->setClass_(this);
@@ -343,7 +291,11 @@ void QClass::removeOwnedOperation(QOperation *ownedOperation)
 
     QTUML_D(QClass);
     if (d->ownedOperations->contains(ownedOperation)) {
-        d->removeOwnedOperation(ownedOperation);
+        d->ownedOperations->removeAll(ownedOperation);
+
+        // Adjust subsetted property(ies)
+        d->removeFeature(ownedOperation);
+        d->removeOwnedMember(ownedOperation);
 
         // Adjust opposite property
         ownedOperation->setClass_(0);
@@ -367,7 +319,11 @@ void QClass::addOwnedAttribute(QProperty *ownedAttribute)
 
     QTUML_D(QClass);
     if (!d->ownedAttributes->contains(ownedAttribute)) {
-        d->addOwnedAttribute(ownedAttribute);
+        d->ownedAttributes->append(ownedAttribute);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(ownedAttribute);
+        d->addAttribute(ownedAttribute);
 
         // Adjust opposite property
         ownedAttribute->setClass_(this);
@@ -380,7 +336,11 @@ void QClass::removeOwnedAttribute(QProperty *ownedAttribute)
 
     QTUML_D(QClass);
     if (d->ownedAttributes->contains(ownedAttribute)) {
-        d->removeOwnedAttribute(ownedAttribute);
+        d->ownedAttributes->removeAll(ownedAttribute);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(ownedAttribute);
+        d->removeAttribute(ownedAttribute);
 
         // Adjust opposite property
         ownedAttribute->setClass_(0);
@@ -396,7 +356,7 @@ const QSet<QClass *> *QClass::superClasses() const
 
     qWarning("QClass::superClasses: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QClass);
+    //QTUML_D(const QClass);
     //return <derived-return>;
 }
 
@@ -406,8 +366,8 @@ void QClass::addSuperClass(QClass *superClass)
 
     qWarning("QClass::addSuperClass: to be implemented (this is a derived associationend)");
 
-    QTUML_D(QClass);
-    if (true /* <derived-inclusion-criteria> */) {
+    //QTUML_D(QClass);
+    if (false /* <derived-inclusion-criteria> */) {
         // <derived-code>
     }
 }
@@ -418,8 +378,8 @@ void QClass::removeSuperClass(QClass *superClass)
 
     qWarning("QClass::removeSuperClass: to be implemented (this is a derived associationend)");
 
-    QTUML_D(QClass);
-    if (true /* <derived-exclusion-criteria> */) {
+    //QTUML_D(QClass);
+    if (false /* <derived-exclusion-criteria> */) {
         // <derived-code>
     }
 }

@@ -59,14 +59,18 @@ void QRelationshipPrivate::addRelatedElement(QElement *relatedElement)
 {
     // This is a read-only derived-union association end
 
-    this->relatedElements->insert(relatedElement);
+    if (!this->relatedElements->contains(relatedElement)) {
+        this->relatedElements->insert(relatedElement);
+    }
 }
 
 void QRelationshipPrivate::removeRelatedElement(QElement *relatedElement)
 {
     // This is a read-only derived-union association end
 
-    this->relatedElements->remove(relatedElement);
+    if (this->relatedElements->contains(relatedElement)) {
+        this->relatedElements->remove(relatedElement);
+    }
 }
 
 /*!

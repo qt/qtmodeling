@@ -41,32 +41,19 @@
 
 #include "qchangeevent.h"
 #include "qchangeevent_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QValueSpecification>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QChangeEventPrivate::QChangeEventPrivate() :
+QChangeEventPrivate::QChangeEventPrivate(QChangeEvent *q_umlptr) :
     changeExpression(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QChangeEventPrivate::~QChangeEventPrivate()
 {
-}
-
-void QChangeEventPrivate::setChangeExpression(QValueSpecification *changeExpression)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->changeExpression);
-
-    this->changeExpression = changeExpression;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(changeExpression);
 }
 
 /*!
@@ -80,7 +67,7 @@ void QChangeEventPrivate::setChangeExpression(QValueSpecification *changeExpress
 QChangeEvent::QChangeEvent(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QChangeEventPrivate;
+    d_umlptr = new QChangeEventPrivate(this);
 }
 
 QChangeEvent::QChangeEvent(bool createPimpl, QObject *parent)
@@ -111,7 +98,13 @@ void QChangeEvent::setChangeExpression(QValueSpecification *changeExpression)
 
     QTUML_D(QChangeEvent);
     if (d->changeExpression != changeExpression) {
-        d->setChangeExpression(changeExpression);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->changeExpression);
+
+        d->changeExpression = changeExpression;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(changeExpression);
     }
 }
 

@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qvaluespecification_p.h"
 
 // Qt includes
@@ -57,20 +56,16 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QObservation;
+class QDuration;
 
 class QDurationPrivate : public QValueSpecificationPrivate
 {
 public:
-    explicit QDurationPrivate();
+    explicit QDurationPrivate(QDuration *q_umlptr = 0);
     virtual ~QDurationPrivate();
 
     QValueSpecification *expr;
     QSet<QObservation *> *observations;
-
-    // Internal functions for association-ends
-    void setExpr(QValueSpecification *expr);
-    void addObservation(QObservation *observation);
-    void removeObservation(QObservation *observation);
 };
 
 QT_END_NAMESPACE_QTUML

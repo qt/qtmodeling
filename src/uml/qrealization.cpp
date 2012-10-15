@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QRealizationPrivate::QRealizationPrivate()
+QRealizationPrivate::QRealizationPrivate(QRealization *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QRealizationPrivate::~QRealizationPrivate()
@@ -64,7 +65,7 @@ QRealizationPrivate::~QRealizationPrivate()
 QRealization::QRealization(QObject *parent)
     : QAbstraction(false, parent)
 {
-    d_umlptr = new QRealizationPrivate;
+    d_umlptr = new QRealizationPrivate(this);
 }
 
 QRealization::QRealization(bool createPimpl, QObject *parent)

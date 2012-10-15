@@ -41,40 +41,20 @@
 
 #include "qenumeration.h"
 #include "qenumeration_p.h"
-#include "qnamespace_p.h"
 
 #include <QtUml/QEnumerationLiteral>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QEnumerationPrivate::QEnumerationPrivate() :
+QEnumerationPrivate::QEnumerationPrivate(QEnumeration *q_umlptr) :
     ownedLiterals(new QList<QEnumerationLiteral *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QEnumerationPrivate::~QEnumerationPrivate()
 {
     delete ownedLiterals;
-}
-
-void QEnumerationPrivate::addOwnedLiteral(QEnumerationLiteral *ownedLiteral)
-{
-    // This is a read-write association end
-
-    this->ownedLiterals->append(ownedLiteral);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(ownedLiteral);
-}
-
-void QEnumerationPrivate::removeOwnedLiteral(QEnumerationLiteral *ownedLiteral)
-{
-    // This is a read-write association end
-
-    this->ownedLiterals->removeAll(ownedLiteral);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(ownedLiteral);
 }
 
 /*!
@@ -88,7 +68,7 @@ void QEnumerationPrivate::removeOwnedLiteral(QEnumerationLiteral *ownedLiteral)
 QEnumeration::QEnumeration(QObject *parent)
     : QDataType(false, parent)
 {
-    d_umlptr = new QEnumerationPrivate;
+    d_umlptr = new QEnumerationPrivate(this);
 }
 
 QEnumeration::QEnumeration(bool createPimpl, QObject *parent)
@@ -119,7 +99,10 @@ void QEnumeration::addOwnedLiteral(QEnumerationLiteral *ownedLiteral)
 
     QTUML_D(QEnumeration);
     if (!d->ownedLiterals->contains(ownedLiteral)) {
-        d->addOwnedLiteral(ownedLiteral);
+        d->ownedLiterals->append(ownedLiteral);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(ownedLiteral);
 
         // Adjust opposite property
         ownedLiteral->setEnumeration(this);
@@ -132,7 +115,10 @@ void QEnumeration::removeOwnedLiteral(QEnumerationLiteral *ownedLiteral)
 
     QTUML_D(QEnumeration);
     if (d->ownedLiterals->contains(ownedLiteral)) {
-        d->removeOwnedLiteral(ownedLiteral);
+        d->ownedLiterals->removeAll(ownedLiteral);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(ownedLiteral);
 
         // Adjust opposite property
         ownedLiteral->setEnumeration(0);

@@ -46,20 +46,14 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QExecutionOccurrenceSpecificationPrivate::QExecutionOccurrenceSpecificationPrivate() :
+QExecutionOccurrenceSpecificationPrivate::QExecutionOccurrenceSpecificationPrivate(QExecutionOccurrenceSpecification *q_umlptr) :
     execution(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QExecutionOccurrenceSpecificationPrivate::~QExecutionOccurrenceSpecificationPrivate()
 {
-}
-
-void QExecutionOccurrenceSpecificationPrivate::setExecution(QExecutionSpecification *execution)
-{
-    // This is a read-write association end
-
-    this->execution = execution;
 }
 
 /*!
@@ -73,7 +67,7 @@ void QExecutionOccurrenceSpecificationPrivate::setExecution(QExecutionSpecificat
 QExecutionOccurrenceSpecification::QExecutionOccurrenceSpecification(QObject *parent)
     : QOccurrenceSpecification(false, parent)
 {
-    d_umlptr = new QExecutionOccurrenceSpecificationPrivate;
+    d_umlptr = new QExecutionOccurrenceSpecificationPrivate(this);
 }
 
 QExecutionOccurrenceSpecification::QExecutionOccurrenceSpecification(bool createPimpl, QObject *parent)
@@ -104,7 +98,7 @@ void QExecutionOccurrenceSpecification::setExecution(QExecutionSpecification *ex
 
     QTUML_D(QExecutionOccurrenceSpecification);
     if (d->execution != execution) {
-        d->setExecution(execution);
+        d->execution = execution;
     }
 }
 

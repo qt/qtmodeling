@@ -53,8 +53,8 @@
 [%- IF class.item('superclass') %]
 
 // Base class includes
-[%- FOREACH superclass IN class.superclass %]
-[%- IF superclass.include != 'QtCore/QObject' %]
+[%- FOREACH superclass IN class.superclass -%]
+[%- IF superclass.include != 'QtCore/QObject' -%]
 
 #include "${superclass.include.split('/').last.lower}_p.h"
 [%- END -%]
@@ -96,6 +96,7 @@ QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
 QT_MODULE([% namespace.split('/').0 %])
 
 [%- found = 'false' -%]
+[%- foundPublic = 'false' -%]
 [%- FOREACH forwarddecl IN class.forwarddecl -%]
 [%- IF forwarddecl.namespace == namespace.replace('/', '::') -%]
 [%- IF found == 'false' %]
@@ -104,29 +105,42 @@ QT_MODULE([% namespace.split('/').0 %])
 [%- END -%]
 class ${forwarddecl.content};
 
+[%- IF forwarddecl.content == class.name -%]
+[%- foundPublic = 'true' -%]
 [%- END -%]
+[%- END -%]
+[%- END -%]
+[% IF class.isAbstract == 'false' and foundPublic == 'false' -%]
+class ${class.name};
+
 [%- END %]
 class ${class.name}Private[%- IF class.superclass -%] : [% END -%][% FOREACH superclass = class.superclass %][% IF superclass.include != 'QtCore/QObject' %]public ${superclass.name.split('/').last}Private[% IF !loop.last %], [% END %][% END %][% END %]
 {
 public:
-    explicit ${class.name}Private();
+    [%- IF class.isAbstract == 'false' %]
+    explicit ${class.name}Private(${class.name} *q_umlptr = 0);
+    [%- END %]
     virtual ~${class.name}Private();
 
 [%- FOREACH attribute IN class.attribute.values %]
-[%- IF (attribute.isDerived == "false" or attribute.isDerivedUnion == "true") %]
+[%- IF (attribute.isDerived == 'false' or attribute.isDerivedUnion == 'true') %]
     ${attribute.accessor.0.return.remove('^const ')}${attribute.accessor.0.name};
 [%- END -%]
 [%- END -%]
 [%- FOREACH associationend IN class.associationend.values %]
-[%- IF (associationend.isDerived == "false" or associationend.isDerivedUnion == "true") %]
+[%- IF (associationend.isDerived == 'false' or associationend.isDerivedUnion == 'true') %]
     ${associationend.accessor.0.return.remove('^const ')}${associationend.accessor.0.name};
 [%- END -%]
 [%- END -%]
-[%- IF class.item('attribute') %]
-
-    // Internal functions for attributes
+[%- IF class.item('attribute') -%]
+[%- found = 'false' -%]
 [%- FOREACH attribute IN class.attribute.values -%]
-[%- IF (attribute.isDerived == "false" or attribute.isDerivedUnion == "true") -%]
+[%- IF attribute.isReadOnly == 'true' and attribute.subsettedBy != '' -%]
+[%- IF found == 'false' -%]
+[%- found = 'true' %]
+
+    // Internal functions for read-only subsetted attributes
+[%- END -%]
 [%- FOREACH accessor IN attribute.accessor -%]
 [%- NEXT IF loop.first %]
     ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END
@@ -136,10 +150,14 @@ public:
 [%- END -%]
 [%- END %]
 [%- IF class.item('associationend') %]
-
-    // Internal functions for association-ends
+[%- found = 'false' -%]
 [%- FOREACH associationend IN class.associationend.values -%]
-[%- IF (associationend.isDerived == "false" or associationend.isDerivedUnion == "true") -%]
+[%- IF associationend.isReadOnly == 'true' and (associationend.subsettedBy != '' or associationend.oppositeEnd != '') -%]
+[%- IF found == 'false' -%]
+[%- found = 'true' %]
+
+    // Internal functions for read-only subsetted association ends
+[%- END -%]
 [%- FOREACH accessor IN associationend.accessor -%]
 [%- NEXT IF loop.first %]
     ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END
@@ -147,6 +165,16 @@ public:
 [%- END -%]
 [%- END -%]
 [%- END -%]
+[%- END %]
+[%- IF class.isAbstract == 'true' %]
+
+protected:
+    explicit ${class.name}Private();
+[%- END %]
+[%- IF not(class.superclass) %]
+
+protected:
+    ${class.name} *q_umlptr;
 [%- END %]
 };
 

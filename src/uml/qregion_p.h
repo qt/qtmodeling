@@ -44,9 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qredefinableelement_p.h"
-
 #include "qnamespace_p.h"
 
 // Qt includes
@@ -62,12 +60,13 @@ class QVertex;
 class QTransition;
 class QStateMachine;
 class QClassifier;
+class QRegion;
 class QState;
 
 class QRegionPrivate : public QRedefinableElementPrivate, public QNamespacePrivate
 {
 public:
-    explicit QRegionPrivate();
+    explicit QRegionPrivate(QRegion *q_umlptr = 0);
     virtual ~QRegionPrivate();
 
     QRegion *extendedRegion;
@@ -75,15 +74,6 @@ public:
     QStateMachine *stateMachine;
     QState *state;
     QSet<QVertex *> *subvertices;
-
-    // Internal functions for association-ends
-    void setExtendedRegion(QRegion *extendedRegion);
-    void addTransition(QTransition *transition);
-    void removeTransition(QTransition *transition);
-    void setStateMachine(QStateMachine *stateMachine);
-    void setState(QState *state);
-    void addSubvertex(QVertex *subvertex);
-    void removeSubvertex(QVertex *subvertex);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -41,8 +41,6 @@
 
 #include "qcomponent.h"
 #include "qcomponent_p.h"
-#include "qelement_p.h"
-#include "qnamespace_p.h"
 
 #include <QtUml/QClassifier>
 #include <QtUml/QComponentRealization>
@@ -51,64 +49,18 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QComponentPrivate::QComponentPrivate() :
+QComponentPrivate::QComponentPrivate(QComponent *q_umlptr) :
     isIndirectlyInstantiated(true),
     realizations(new QSet<QComponentRealization *>),
     packagedElements(new QSet<QPackageableElement *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QComponentPrivate::~QComponentPrivate()
 {
     delete realizations;
     delete packagedElements;
-}
-
-void QComponentPrivate::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
-{
-    // This is a read-write attribute
-
-    this->isIndirectlyInstantiated = isIndirectlyInstantiated;
-}
-
-void QComponentPrivate::addRealization(QComponentRealization *realization)
-{
-    // This is a read-write association end
-
-    this->realizations->insert(realization);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(realization);
-}
-
-void QComponentPrivate::removeRealization(QComponentRealization *realization)
-{
-    // This is a read-write association end
-
-    this->realizations->remove(realization);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(realization);
-}
-
-void QComponentPrivate::addPackagedElement(QPackageableElement *packagedElement)
-{
-    // This is a read-write association end
-
-    this->packagedElements->insert(packagedElement);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(packagedElement);
-}
-
-void QComponentPrivate::removePackagedElement(QPackageableElement *packagedElement)
-{
-    // This is a read-write association end
-
-    this->packagedElements->remove(packagedElement);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(packagedElement);
 }
 
 /*!
@@ -122,7 +74,7 @@ void QComponentPrivate::removePackagedElement(QPackageableElement *packagedEleme
 QComponent::QComponent(QObject *parent)
     : QClass(false, parent)
 {
-    d_umlptr = new QComponentPrivate;
+    d_umlptr = new QComponentPrivate(this);
 }
 
 QComponent::QComponent(bool createPimpl, QObject *parent)
@@ -153,7 +105,7 @@ void QComponent::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
 
     QTUML_D(QComponent);
     if (d->isIndirectlyInstantiated != isIndirectlyInstantiated) {
-        d->setIndirectlyInstantiated(isIndirectlyInstantiated);
+        d->isIndirectlyInstantiated = isIndirectlyInstantiated;
     }
 }
 
@@ -174,7 +126,10 @@ void QComponent::addRealization(QComponentRealization *realization)
 
     QTUML_D(QComponent);
     if (!d->realizations->contains(realization)) {
-        d->addRealization(realization);
+        d->realizations->insert(realization);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(realization);
 
         // Adjust opposite property
         realization->setAbstraction(this);
@@ -187,7 +142,10 @@ void QComponent::removeRealization(QComponentRealization *realization)
 
     QTUML_D(QComponent);
     if (d->realizations->contains(realization)) {
-        d->removeRealization(realization);
+        d->realizations->remove(realization);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(realization);
 
         // Adjust opposite property
         realization->setAbstraction(0);
@@ -203,7 +161,7 @@ const QSet<QInterface *> *QComponent::required() const
 
     qWarning("QComponent::required: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QComponent);
+    //QTUML_D(const QComponent);
     //return <derived-return>;
 }
 
@@ -216,7 +174,7 @@ const QSet<QInterface *> *QComponent::provided() const
 
     qWarning("QComponent::provided: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QComponent);
+    //QTUML_D(const QComponent);
     //return <derived-return>;
 }
 
@@ -237,7 +195,10 @@ void QComponent::addPackagedElement(QPackageableElement *packagedElement)
 
     QTUML_D(QComponent);
     if (!d->packagedElements->contains(packagedElement)) {
-        d->addPackagedElement(packagedElement);
+        d->packagedElements->insert(packagedElement);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(packagedElement);
     }
 }
 
@@ -247,7 +208,10 @@ void QComponent::removePackagedElement(QPackageableElement *packagedElement)
 
     QTUML_D(QComponent);
     if (d->packagedElements->contains(packagedElement)) {
-        d->removePackagedElement(packagedElement);
+        d->packagedElements->remove(packagedElement);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(packagedElement);
     }
 }
 

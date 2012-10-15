@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qcontrolnode_p.h"
 
 QT_BEGIN_HEADER
@@ -55,19 +54,16 @@ QT_MODULE(QtUml)
 
 class QBehavior;
 class QObjectFlow;
+class QDecisionNode;
 
 class QDecisionNodePrivate : public QControlNodePrivate
 {
 public:
-    explicit QDecisionNodePrivate();
+    explicit QDecisionNodePrivate(QDecisionNode *q_umlptr = 0);
     virtual ~QDecisionNodePrivate();
 
     QObjectFlow *decisionInputFlow;
     QBehavior *decisionInput;
-
-    // Internal functions for association-ends
-    void setDecisionInputFlow(QObjectFlow *decisionInputFlow);
-    void setDecisionInput(QBehavior *decisionInput);
 };
 
 QT_END_NAMESPACE_QTUML

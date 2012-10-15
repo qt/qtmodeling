@@ -41,41 +41,21 @@
 
 #include "qclearassociationaction.h"
 #include "qclearassociationaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QAssociation>
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QClearAssociationActionPrivate::QClearAssociationActionPrivate() :
+QClearAssociationActionPrivate::QClearAssociationActionPrivate(QClearAssociationAction *q_umlptr) :
     object(0),
     association(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QClearAssociationActionPrivate::~QClearAssociationActionPrivate()
 {
-}
-
-void QClearAssociationActionPrivate::setObject(QInputPin *object)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeInput(this->object);
-
-    this->object = object;
-
-    // Adjust subsetted property(ies)
-    addInput(object);
-}
-
-void QClearAssociationActionPrivate::setAssociation(QAssociation *association)
-{
-    // This is a read-write association end
-
-    this->association = association;
 }
 
 /*!
@@ -89,7 +69,7 @@ void QClearAssociationActionPrivate::setAssociation(QAssociation *association)
 QClearAssociationAction::QClearAssociationAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QClearAssociationActionPrivate;
+    d_umlptr = new QClearAssociationActionPrivate(this);
 }
 
 QClearAssociationAction::QClearAssociationAction(bool createPimpl, QObject *parent)
@@ -120,7 +100,13 @@ void QClearAssociationAction::setObject(QInputPin *object)
 
     QTUML_D(QClearAssociationAction);
     if (d->object != object) {
-        d->setObject(object);
+        // Adjust subsetted property(ies)
+        d->removeInput(d->object);
+
+        d->object = object;
+
+        // Adjust subsetted property(ies)
+        d->addInput(object);
     }
 }
 
@@ -141,7 +127,7 @@ void QClearAssociationAction::setAssociation(QAssociation *association)
 
     QTUML_D(QClearAssociationAction);
     if (d->association != association) {
-        d->setAssociation(association);
+        d->association = association;
     }
 }
 

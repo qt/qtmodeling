@@ -41,7 +41,6 @@
 
 #include "qwritevariableaction.h"
 #include "qwritevariableaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 
@@ -54,19 +53,6 @@ QWriteVariableActionPrivate::QWriteVariableActionPrivate() :
 
 QWriteVariableActionPrivate::~QWriteVariableActionPrivate()
 {
-}
-
-void QWriteVariableActionPrivate::setValue(QInputPin *value)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeInput(this->value);
-
-    this->value = value;
-
-    // Adjust subsetted property(ies)
-    addInput(value);
 }
 
 /*!
@@ -102,7 +88,13 @@ void QWriteVariableAction::setValue(QInputPin *value)
 
     QTUML_D(QWriteVariableAction);
     if (d->value != value) {
-        d->setValue(value);
+        // Adjust subsetted property(ies)
+        d->removeInput(d->value);
+
+        d->value = value;
+
+        // Adjust subsetted property(ies)
+        d->addInput(value);
     }
 }
 

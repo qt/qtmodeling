@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QPrimitiveTypePrivate::QPrimitiveTypePrivate()
+QPrimitiveTypePrivate::QPrimitiveTypePrivate(QPrimitiveType *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QPrimitiveTypePrivate::~QPrimitiveTypePrivate()
@@ -64,7 +65,7 @@ QPrimitiveTypePrivate::~QPrimitiveTypePrivate()
 QPrimitiveType::QPrimitiveType(QObject *parent)
     : QDataType(false, parent)
 {
-    d_umlptr = new QPrimitiveTypePrivate;
+    d_umlptr = new QPrimitiveTypePrivate(this);
 }
 
 QPrimitiveType::QPrimitiveType(bool createPimpl, QObject *parent)

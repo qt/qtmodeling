@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qcombinedfragment_p.h"
 
 // Qt includes
@@ -57,18 +56,15 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QNamedElement;
+class QConsiderIgnoreFragment;
 
 class QConsiderIgnoreFragmentPrivate : public QCombinedFragmentPrivate
 {
 public:
-    explicit QConsiderIgnoreFragmentPrivate();
+    explicit QConsiderIgnoreFragmentPrivate(QConsiderIgnoreFragment *q_umlptr = 0);
     virtual ~QConsiderIgnoreFragmentPrivate();
 
     QSet<QNamedElement *> *messages;
-
-    // Internal functions for association-ends
-    void addMessage(QNamedElement *message);
-    void removeMessage(QNamedElement *message);
 };
 
 QT_END_NAMESPACE_QTUML

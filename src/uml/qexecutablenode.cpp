@@ -41,7 +41,6 @@
 
 #include "qexecutablenode.h"
 #include "qexecutablenode_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QExceptionHandler>
 
@@ -55,26 +54,6 @@ QExecutableNodePrivate::QExecutableNodePrivate() :
 QExecutableNodePrivate::~QExecutableNodePrivate()
 {
     delete handlers;
-}
-
-void QExecutableNodePrivate::addHandler(QExceptionHandler *handler)
-{
-    // This is a read-write association end
-
-    this->handlers->insert(handler);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(handler);
-}
-
-void QExecutableNodePrivate::removeHandler(QExceptionHandler *handler)
-{
-    // This is a read-write association end
-
-    this->handlers->remove(handler);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(handler);
 }
 
 /*!
@@ -110,7 +89,10 @@ void QExecutableNode::addHandler(QExceptionHandler *handler)
 
     QTUML_D(QExecutableNode);
     if (!d->handlers->contains(handler)) {
-        d->addHandler(handler);
+        d->handlers->insert(handler);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(handler);
 
         // Adjust opposite property
         handler->setProtectedNode(this);
@@ -123,7 +105,10 @@ void QExecutableNode::removeHandler(QExceptionHandler *handler)
 
     QTUML_D(QExecutableNode);
     if (d->handlers->contains(handler)) {
-        d->removeHandler(handler);
+        d->handlers->remove(handler);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(handler);
 
         // Adjust opposite property
         handler->setProtectedNode(0);

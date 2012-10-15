@@ -41,39 +41,19 @@
 
 #include "qnode.h"
 #include "qnode_p.h"
-#include "qnamespace_p.h"
 
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QNodePrivate::QNodePrivate() :
+QNodePrivate::QNodePrivate(QNode *q_umlptr) :
     nestedNodes(new QSet<QNode *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QNodePrivate::~QNodePrivate()
 {
     delete nestedNodes;
-}
-
-void QNodePrivate::addNestedNode(QNode *nestedNode)
-{
-    // This is a read-write association end
-
-    this->nestedNodes->insert(nestedNode);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(nestedNode);
-}
-
-void QNodePrivate::removeNestedNode(QNode *nestedNode)
-{
-    // This is a read-write association end
-
-    this->nestedNodes->remove(nestedNode);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(nestedNode);
 }
 
 /*!
@@ -87,7 +67,7 @@ void QNodePrivate::removeNestedNode(QNode *nestedNode)
 QNode::QNode(QObject *parent)
     : QClass(false, parent)
 {
-    d_umlptr = new QNodePrivate;
+    d_umlptr = new QNodePrivate(this);
 }
 
 QNode::QNode(bool createPimpl, QObject *parent)
@@ -118,7 +98,10 @@ void QNode::addNestedNode(QNode *nestedNode)
 
     QTUML_D(QNode);
     if (!d->nestedNodes->contains(nestedNode)) {
-        d->addNestedNode(nestedNode);
+        d->nestedNodes->insert(nestedNode);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(nestedNode);
     }
 }
 
@@ -128,7 +111,10 @@ void QNode::removeNestedNode(QNode *nestedNode)
 
     QTUML_D(QNode);
     if (d->nestedNodes->contains(nestedNode)) {
-        d->removeNestedNode(nestedNode);
+        d->nestedNodes->remove(nestedNode);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(nestedNode);
     }
 }
 

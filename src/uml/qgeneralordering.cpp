@@ -46,28 +46,15 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QGeneralOrderingPrivate::QGeneralOrderingPrivate() :
+QGeneralOrderingPrivate::QGeneralOrderingPrivate(QGeneralOrdering *q_umlptr) :
     before(0),
     after(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QGeneralOrderingPrivate::~QGeneralOrderingPrivate()
 {
-}
-
-void QGeneralOrderingPrivate::setBefore(QOccurrenceSpecification *before)
-{
-    // This is a read-write association end
-
-    this->before = before;
-}
-
-void QGeneralOrderingPrivate::setAfter(QOccurrenceSpecification *after)
-{
-    // This is a read-write association end
-
-    this->after = after;
 }
 
 /*!
@@ -81,7 +68,7 @@ void QGeneralOrderingPrivate::setAfter(QOccurrenceSpecification *after)
 QGeneralOrdering::QGeneralOrdering(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QGeneralOrderingPrivate;
+    d_umlptr = new QGeneralOrderingPrivate(this);
 }
 
 QGeneralOrdering::QGeneralOrdering(bool createPimpl, QObject *parent)
@@ -112,7 +99,7 @@ void QGeneralOrdering::setBefore(QOccurrenceSpecification *before)
 
     QTUML_D(QGeneralOrdering);
     if (d->before != before) {
-        d->setBefore(before);
+        d->before = before;
 
         // Adjust opposite property
         before->addToAfter(this);
@@ -136,7 +123,7 @@ void QGeneralOrdering::setAfter(QOccurrenceSpecification *after)
 
     QTUML_D(QGeneralOrdering);
     if (d->after != after) {
-        d->setAfter(after);
+        d->after = after;
 
         // Adjust opposite property
         after->addToBefore(this);

@@ -41,15 +41,14 @@
 
 #include "qactivitypartition.h"
 #include "qactivitypartition_p.h"
-#include "qactivitygroup_p.h"
 
+#include <QtUml/QElement>
 #include <QtUml/QActivityEdge>
 #include <QtUml/QActivityNode>
-#include <QtUml/QElement>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QActivityPartitionPrivate::QActivityPartitionPrivate() :
+QActivityPartitionPrivate::QActivityPartitionPrivate(QActivityPartition *q_umlptr) :
     isDimension(false),
     isExternal(false),
     represents(0),
@@ -58,6 +57,7 @@ QActivityPartitionPrivate::QActivityPartitionPrivate() :
     nodes(new QSet<QActivityNode *>),
     edges(new QSet<QActivityEdge *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QActivityPartitionPrivate::~QActivityPartitionPrivate()
@@ -65,97 +65,6 @@ QActivityPartitionPrivate::~QActivityPartitionPrivate()
     delete subpartitions;
     delete nodes;
     delete edges;
-}
-
-void QActivityPartitionPrivate::setDimension(bool isDimension)
-{
-    // This is a read-write attribute
-
-    this->isDimension = isDimension;
-}
-
-void QActivityPartitionPrivate::setExternal(bool isExternal)
-{
-    // This is a read-write attribute
-
-    this->isExternal = isExternal;
-}
-
-void QActivityPartitionPrivate::setRepresents(QElement *represents)
-{
-    // This is a read-write association end
-
-    this->represents = represents;
-}
-
-void QActivityPartitionPrivate::addSubpartition(QActivityPartition *subpartition)
-{
-    // This is a read-write association end
-
-    this->subpartitions->insert(subpartition);
-
-    // Adjust subsetted property(ies)
-    addSubgroup(subpartition);
-}
-
-void QActivityPartitionPrivate::removeSubpartition(QActivityPartition *subpartition)
-{
-    // This is a read-write association end
-
-    this->subpartitions->remove(subpartition);
-
-    // Adjust subsetted property(ies)
-    removeSubgroup(subpartition);
-}
-
-void QActivityPartitionPrivate::setSuperPartition(QActivityPartition *superPartition)
-{
-    // This is a read-write association end
-
-    this->superPartition = superPartition;
-
-    // Adjust subsetted property(ies)
-    setSuperGroup(superPartition);
-}
-
-void QActivityPartitionPrivate::addNode(QActivityNode *node)
-{
-    // This is a read-write association end
-
-    this->nodes->insert(node);
-
-    // Adjust subsetted property(ies)
-    addContainedNode(node);
-}
-
-void QActivityPartitionPrivate::removeNode(QActivityNode *node)
-{
-    // This is a read-write association end
-
-    this->nodes->remove(node);
-
-    // Adjust subsetted property(ies)
-    removeContainedNode(node);
-}
-
-void QActivityPartitionPrivate::addEdge(QActivityEdge *edge)
-{
-    // This is a read-write association end
-
-    this->edges->insert(edge);
-
-    // Adjust subsetted property(ies)
-    addContainedEdge(edge);
-}
-
-void QActivityPartitionPrivate::removeEdge(QActivityEdge *edge)
-{
-    // This is a read-write association end
-
-    this->edges->remove(edge);
-
-    // Adjust subsetted property(ies)
-    removeContainedEdge(edge);
 }
 
 /*!
@@ -169,7 +78,7 @@ void QActivityPartitionPrivate::removeEdge(QActivityEdge *edge)
 QActivityPartition::QActivityPartition(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QActivityPartitionPrivate;
+    d_umlptr = new QActivityPartitionPrivate(this);
 }
 
 QActivityPartition::QActivityPartition(bool createPimpl, QObject *parent)
@@ -200,7 +109,7 @@ void QActivityPartition::setDimension(bool isDimension)
 
     QTUML_D(QActivityPartition);
     if (d->isDimension != isDimension) {
-        d->setDimension(isDimension);
+        d->isDimension = isDimension;
     }
 }
 
@@ -221,7 +130,7 @@ void QActivityPartition::setExternal(bool isExternal)
 
     QTUML_D(QActivityPartition);
     if (d->isExternal != isExternal) {
-        d->setExternal(isExternal);
+        d->isExternal = isExternal;
     }
 }
 
@@ -242,7 +151,7 @@ void QActivityPartition::setRepresents(QElement *represents)
 
     QTUML_D(QActivityPartition);
     if (d->represents != represents) {
-        d->setRepresents(represents);
+        d->represents = represents;
     }
 }
 
@@ -263,7 +172,10 @@ void QActivityPartition::addSubpartition(QActivityPartition *subpartition)
 
     QTUML_D(QActivityPartition);
     if (!d->subpartitions->contains(subpartition)) {
-        d->addSubpartition(subpartition);
+        d->subpartitions->insert(subpartition);
+
+        // Adjust subsetted property(ies)
+        d->addSubgroup(subpartition);
 
         // Adjust opposite property
         subpartition->setSuperPartition(this);
@@ -276,7 +188,10 @@ void QActivityPartition::removeSubpartition(QActivityPartition *subpartition)
 
     QTUML_D(QActivityPartition);
     if (d->subpartitions->contains(subpartition)) {
-        d->removeSubpartition(subpartition);
+        d->subpartitions->remove(subpartition);
+
+        // Adjust subsetted property(ies)
+        d->removeSubgroup(subpartition);
 
         // Adjust opposite property
         subpartition->setSuperPartition(0);
@@ -300,7 +215,10 @@ void QActivityPartition::setSuperPartition(QActivityPartition *superPartition)
 
     QTUML_D(QActivityPartition);
     if (d->superPartition != superPartition) {
-        d->setSuperPartition(superPartition);
+        d->superPartition = superPartition;
+
+        // Adjust subsetted property(ies)
+        d->setSuperGroup(superPartition);
 
         // Adjust opposite property
         superPartition->addSubpartition(this);
@@ -324,7 +242,10 @@ void QActivityPartition::addNode(QActivityNode *node)
 
     QTUML_D(QActivityPartition);
     if (!d->nodes->contains(node)) {
-        d->addNode(node);
+        d->nodes->insert(node);
+
+        // Adjust subsetted property(ies)
+        d->addContainedNode(node);
 
         // Adjust opposite property
         node->addInPartition(this);
@@ -337,7 +258,10 @@ void QActivityPartition::removeNode(QActivityNode *node)
 
     QTUML_D(QActivityPartition);
     if (d->nodes->contains(node)) {
-        d->removeNode(node);
+        d->nodes->remove(node);
+
+        // Adjust subsetted property(ies)
+        d->removeContainedNode(node);
 
         // Adjust opposite property
         node->removeInPartition(this);
@@ -361,7 +285,10 @@ void QActivityPartition::addEdge(QActivityEdge *edge)
 
     QTUML_D(QActivityPartition);
     if (!d->edges->contains(edge)) {
-        d->addEdge(edge);
+        d->edges->insert(edge);
+
+        // Adjust subsetted property(ies)
+        d->addContainedEdge(edge);
 
         // Adjust opposite property
         edge->addInPartition(this);
@@ -374,7 +301,10 @@ void QActivityPartition::removeEdge(QActivityEdge *edge)
 
     QTUML_D(QActivityPartition);
     if (d->edges->contains(edge)) {
-        d->removeEdge(edge);
+        d->edges->remove(edge);
+
+        // Adjust subsetted property(ies)
+        d->removeContainedEdge(edge);
 
         // Adjust opposite property
         edge->removeInPartition(this);

@@ -41,9 +41,6 @@
 
 #include "qregion.h"
 #include "qregion_p.h"
-#include "qredefinableelement_p.h"
-#include "qnamespace_p.h"
-#include "qnamedelement_p.h"
 
 #include <QtUml/QVertex>
 #include <QtUml/QTransition>
@@ -53,92 +50,20 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QRegionPrivate::QRegionPrivate() :
+QRegionPrivate::QRegionPrivate(QRegion *q_umlptr) :
     extendedRegion(0),
     transitions(new QSet<QTransition *>),
     stateMachine(0),
     state(0),
     subvertices(new QSet<QVertex *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QRegionPrivate::~QRegionPrivate()
 {
     delete transitions;
     delete subvertices;
-}
-
-void QRegionPrivate::setExtendedRegion(QRegion *extendedRegion)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeRedefinedElement(this->extendedRegion);
-
-    this->extendedRegion = extendedRegion;
-
-    // Adjust subsetted property(ies)
-    addRedefinedElement(extendedRegion);
-}
-
-void QRegionPrivate::addTransition(QTransition *transition)
-{
-    // This is a read-write association end
-
-    this->transitions->insert(transition);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(transition);
-}
-
-void QRegionPrivate::removeTransition(QTransition *transition)
-{
-    // This is a read-write association end
-
-    this->transitions->remove(transition);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(transition);
-}
-
-void QRegionPrivate::setStateMachine(QStateMachine *stateMachine)
-{
-    // This is a read-write association end
-
-    this->stateMachine = stateMachine;
-
-    // Adjust subsetted property(ies)
-    setNamespace_(stateMachine);
-}
-
-void QRegionPrivate::setState(QState *state)
-{
-    // This is a read-write association end
-
-    this->state = state;
-
-    // Adjust subsetted property(ies)
-    setNamespace_(state);
-}
-
-void QRegionPrivate::addSubvertex(QVertex *subvertex)
-{
-    // This is a read-write association end
-
-    this->subvertices->insert(subvertex);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(subvertex);
-}
-
-void QRegionPrivate::removeSubvertex(QVertex *subvertex)
-{
-    // This is a read-write association end
-
-    this->subvertices->remove(subvertex);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(subvertex);
 }
 
 /*!
@@ -152,7 +77,7 @@ void QRegionPrivate::removeSubvertex(QVertex *subvertex)
 QRegion::QRegion(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QRegionPrivate;
+    d_umlptr = new QRegionPrivate(this);
 }
 
 QRegion::QRegion(bool createPimpl, QObject *parent)
@@ -183,7 +108,13 @@ void QRegion::setExtendedRegion(QRegion *extendedRegion)
 
     QTUML_D(QRegion);
     if (d->extendedRegion != extendedRegion) {
-        d->setExtendedRegion(extendedRegion);
+        // Adjust subsetted property(ies)
+        d->removeRedefinedElement(d->extendedRegion);
+
+        d->extendedRegion = extendedRegion;
+
+        // Adjust subsetted property(ies)
+        d->addRedefinedElement(extendedRegion);
     }
 }
 
@@ -204,7 +135,10 @@ void QRegion::addTransition(QTransition *transition)
 
     QTUML_D(QRegion);
     if (!d->transitions->contains(transition)) {
-        d->addTransition(transition);
+        d->transitions->insert(transition);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(transition);
 
         // Adjust opposite property
         transition->setContainer(this);
@@ -217,7 +151,10 @@ void QRegion::removeTransition(QTransition *transition)
 
     QTUML_D(QRegion);
     if (d->transitions->contains(transition)) {
-        d->removeTransition(transition);
+        d->transitions->remove(transition);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(transition);
 
         // Adjust opposite property
         transition->setContainer(0);
@@ -241,7 +178,10 @@ void QRegion::setStateMachine(QStateMachine *stateMachine)
 
     QTUML_D(QRegion);
     if (d->stateMachine != stateMachine) {
-        d->setStateMachine(stateMachine);
+        d->stateMachine = stateMachine;
+
+        // Adjust subsetted property(ies)
+        d->setNamespace_(stateMachine);
 
         // Adjust opposite property
         stateMachine->addRegion(this);
@@ -265,7 +205,10 @@ void QRegion::setState(QState *state)
 
     QTUML_D(QRegion);
     if (d->state != state) {
-        d->setState(state);
+        d->state = state;
+
+        // Adjust subsetted property(ies)
+        d->setNamespace_(state);
 
         // Adjust opposite property
         state->addRegion(this);
@@ -281,7 +224,7 @@ QClassifier *QRegion::redefinitionContext() const
 
     qWarning("QRegion::redefinitionContext: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QRegion);
+    //QTUML_D(const QRegion);
     //return <derived-return>;
 }
 
@@ -302,7 +245,10 @@ void QRegion::addSubvertex(QVertex *subvertex)
 
     QTUML_D(QRegion);
     if (!d->subvertices->contains(subvertex)) {
-        d->addSubvertex(subvertex);
+        d->subvertices->insert(subvertex);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(subvertex);
 
         // Adjust opposite property
         subvertex->setContainer(this);
@@ -315,7 +261,10 @@ void QRegion::removeSubvertex(QVertex *subvertex)
 
     QTUML_D(QRegion);
     if (d->subvertices->contains(subvertex)) {
-        d->removeSubvertex(subvertex);
+        d->subvertices->remove(subvertex);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(subvertex);
 
         // Adjust opposite property
         subvertex->setContainer(0);

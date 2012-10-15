@@ -41,76 +41,24 @@
 
 #include "qtemplateparameter.h"
 #include "qtemplateparameter_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QParameterableElement>
 #include <QtUml/QTemplateSignature>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QTemplateParameterPrivate::QTemplateParameterPrivate() :
+QTemplateParameterPrivate::QTemplateParameterPrivate(QTemplateParameter *q_umlptr) :
     default_(0),
     parameteredElement(0),
     ownedParameteredElement(0),
     ownedDefault(0),
     signature(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QTemplateParameterPrivate::~QTemplateParameterPrivate()
 {
-}
-
-void QTemplateParameterPrivate::setDefault_(QParameterableElement *default_)
-{
-    // This is a read-write association end
-
-    this->default_ = default_;
-}
-
-void QTemplateParameterPrivate::setParameteredElement(QParameterableElement *parameteredElement)
-{
-    // This is a read-write association end
-
-    this->parameteredElement = parameteredElement;
-}
-
-void QTemplateParameterPrivate::setOwnedParameteredElement(QParameterableElement *ownedParameteredElement)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->ownedParameteredElement);
-
-    this->ownedParameteredElement = ownedParameteredElement;
-
-    // Adjust subsetted property(ies)
-    setParameteredElement(ownedParameteredElement);
-    addOwnedElement(ownedParameteredElement);
-}
-
-void QTemplateParameterPrivate::setOwnedDefault(QParameterableElement *ownedDefault)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->ownedDefault);
-
-    this->ownedDefault = ownedDefault;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(ownedDefault);
-    setDefault_(ownedDefault);
-}
-
-void QTemplateParameterPrivate::setSignature(QTemplateSignature *signature)
-{
-    // This is a read-write association end
-
-    this->signature = signature;
-
-    // Adjust subsetted property(ies)
-    setOwner(signature);
 }
 
 /*!
@@ -124,7 +72,7 @@ void QTemplateParameterPrivate::setSignature(QTemplateSignature *signature)
 QTemplateParameter::QTemplateParameter(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QTemplateParameterPrivate;
+    d_umlptr = new QTemplateParameterPrivate(this);
 }
 
 QTemplateParameter::QTemplateParameter(bool createPimpl, QObject *parent)
@@ -155,7 +103,7 @@ void QTemplateParameter::setDefault_(QParameterableElement *default_)
 
     QTUML_D(QTemplateParameter);
     if (d->default_ != default_) {
-        d->setDefault_(default_);
+        d->default_ = default_;
     }
 }
 
@@ -176,7 +124,7 @@ void QTemplateParameter::setParameteredElement(QParameterableElement *parametere
 
     QTUML_D(QTemplateParameter);
     if (d->parameteredElement != parameteredElement) {
-        d->setParameteredElement(parameteredElement);
+        d->parameteredElement = parameteredElement;
 
         // Adjust opposite property
         parameteredElement->setTemplateParameter(this);
@@ -200,7 +148,14 @@ void QTemplateParameter::setOwnedParameteredElement(QParameterableElement *owned
 
     QTUML_D(QTemplateParameter);
     if (d->ownedParameteredElement != ownedParameteredElement) {
-        d->setOwnedParameteredElement(ownedParameteredElement);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->ownedParameteredElement);
+
+        d->ownedParameteredElement = ownedParameteredElement;
+
+        // Adjust subsetted property(ies)
+        setParameteredElement(ownedParameteredElement);
+        d->addOwnedElement(ownedParameteredElement);
 
         // Adjust opposite property
         ownedParameteredElement->setOwningTemplateParameter(this);
@@ -224,7 +179,14 @@ void QTemplateParameter::setOwnedDefault(QParameterableElement *ownedDefault)
 
     QTUML_D(QTemplateParameter);
     if (d->ownedDefault != ownedDefault) {
-        d->setOwnedDefault(ownedDefault);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->ownedDefault);
+
+        d->ownedDefault = ownedDefault;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(ownedDefault);
+        setDefault_(ownedDefault);
     }
 }
 
@@ -245,7 +207,10 @@ void QTemplateParameter::setSignature(QTemplateSignature *signature)
 
     QTUML_D(QTemplateParameter);
     if (d->signature != signature) {
-        d->setSignature(signature);
+        d->signature = signature;
+
+        // Adjust subsetted property(ies)
+        d->setOwner(signature);
 
         // Adjust opposite property
         signature->addOwnedParameter(this);

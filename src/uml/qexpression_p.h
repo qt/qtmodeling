@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qvaluespecification_p.h"
 
 // Qt includes
@@ -56,22 +55,16 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
+class QExpression;
 
 class QExpressionPrivate : public QValueSpecificationPrivate
 {
 public:
-    explicit QExpressionPrivate();
+    explicit QExpressionPrivate(QExpression *q_umlptr = 0);
     virtual ~QExpressionPrivate();
 
     QString symbol;
     QList<QValueSpecification *> *operands;
-
-    // Internal functions for attributes
-    void setSymbol(QString symbol);
-
-    // Internal functions for association-ends
-    void addOperand(QValueSpecification *operand);
-    void removeOperand(QValueSpecification *operand);
 };
 
 QT_END_NAMESPACE_QTUML

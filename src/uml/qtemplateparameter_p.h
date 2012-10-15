@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qelement_p.h"
 
 QT_BEGIN_HEADER
@@ -55,11 +54,12 @@ QT_MODULE(QtUml)
 
 class QParameterableElement;
 class QTemplateSignature;
+class QTemplateParameter;
 
 class QTemplateParameterPrivate : public QElementPrivate
 {
 public:
-    explicit QTemplateParameterPrivate();
+    explicit QTemplateParameterPrivate(QTemplateParameter *q_umlptr = 0);
     virtual ~QTemplateParameterPrivate();
 
     QParameterableElement *default_;
@@ -67,13 +67,6 @@ public:
     QParameterableElement *ownedParameteredElement;
     QParameterableElement *ownedDefault;
     QTemplateSignature *signature;
-
-    // Internal functions for association-ends
-    void setDefault_(QParameterableElement *default_);
-    void setParameteredElement(QParameterableElement *parameteredElement);
-    void setOwnedParameteredElement(QParameterableElement *ownedParameteredElement);
-    void setOwnedDefault(QParameterableElement *ownedDefault);
-    void setSignature(QTemplateSignature *signature);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -47,11 +47,8 @@
 #include <QtUml/QtUmlEnumerations>
 
 // Base class includes
-
 #include "qstructuralfeature_p.h"
-
 #include "qconnectableelement_p.h"
-
 #include "qdeploymenttarget_p.h"
 
 // Qt includes
@@ -65,19 +62,20 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QRedefinableElement;
-class QParameterableElement;
 class QType;
 class QInterface;
+class QRedefinableElement;
+class QParameterableElement;
 class QValueSpecification;
-class QAssociation;
 class QDataType;
+class QAssociation;
 class QClass;
+class QProperty;
 
 class QPropertyPrivate : public QStructuralFeaturePrivate, public QConnectableElementPrivate, public QDeploymentTargetPrivate
 {
 public:
-    explicit QPropertyPrivate();
+    explicit QPropertyPrivate(QProperty *q_umlptr = 0);
     virtual ~QPropertyPrivate();
 
     bool isDerived;
@@ -95,28 +93,6 @@ public:
     QSet<QProperty *> *redefinedProperties;
     QAssociation *association;
     QInterface *interface;
-
-    // Internal functions for attributes
-    void setDerived(bool isDerived);
-    void setReadOnly(bool isReadOnly);
-    void setID(bool isID);
-    void setDerivedUnion(bool isDerivedUnion);
-    void setAggregation(QtUml::AggregationKind aggregation);
-
-    // Internal functions for association-ends
-    void addSubsettedProperty(QProperty *subsettedProperty);
-    void removeSubsettedProperty(QProperty *subsettedProperty);
-    void setOwningAssociation(QAssociation *owningAssociation);
-    void addQualifier(QProperty *qualifier);
-    void removeQualifier(QProperty *qualifier);
-    void setDefaultValue(QValueSpecification *defaultValue);
-    void setClass_(QClass *class_);
-    void setAssociationEnd(QProperty *associationEnd);
-    void setDatatype(QDataType *datatype);
-    void addRedefinedProperty(QProperty *redefinedProperty);
-    void removeRedefinedProperty(QProperty *redefinedProperty);
-    void setAssociation(QAssociation *association);
-    void setInterface(QInterface *interface);
 };
 
 QT_END_NAMESPACE_QTUML

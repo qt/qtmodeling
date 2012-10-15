@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qdependency_p.h"
 
 QT_BEGIN_HEADER
@@ -54,17 +53,15 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QOpaqueExpression;
+class QAbstraction;
 
 class QAbstractionPrivate : public QDependencyPrivate
 {
 public:
-    explicit QAbstractionPrivate();
+    explicit QAbstractionPrivate(QAbstraction *q_umlptr = 0);
     virtual ~QAbstractionPrivate();
 
     QOpaqueExpression *mapping;
-
-    // Internal functions for association-ends
-    void setMapping(QOpaqueExpression *mapping);
 };
 
 QT_END_NAMESPACE_QTUML

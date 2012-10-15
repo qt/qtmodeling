@@ -41,40 +41,20 @@
 
 #include "qjoinnode.h"
 #include "qjoinnode_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QValueSpecification>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QJoinNodePrivate::QJoinNodePrivate() :
+QJoinNodePrivate::QJoinNodePrivate(QJoinNode *q_umlptr) :
     isCombineDuplicate(true),
     joinSpec(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QJoinNodePrivate::~QJoinNodePrivate()
 {
-}
-
-void QJoinNodePrivate::setCombineDuplicate(bool isCombineDuplicate)
-{
-    // This is a read-write attribute
-
-    this->isCombineDuplicate = isCombineDuplicate;
-}
-
-void QJoinNodePrivate::setJoinSpec(QValueSpecification *joinSpec)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->joinSpec);
-
-    this->joinSpec = joinSpec;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(joinSpec);
 }
 
 /*!
@@ -88,7 +68,7 @@ void QJoinNodePrivate::setJoinSpec(QValueSpecification *joinSpec)
 QJoinNode::QJoinNode(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QJoinNodePrivate;
+    d_umlptr = new QJoinNodePrivate(this);
 }
 
 QJoinNode::QJoinNode(bool createPimpl, QObject *parent)
@@ -119,7 +99,7 @@ void QJoinNode::setCombineDuplicate(bool isCombineDuplicate)
 
     QTUML_D(QJoinNode);
     if (d->isCombineDuplicate != isCombineDuplicate) {
-        d->setCombineDuplicate(isCombineDuplicate);
+        d->isCombineDuplicate = isCombineDuplicate;
     }
 }
 
@@ -140,7 +120,13 @@ void QJoinNode::setJoinSpec(QValueSpecification *joinSpec)
 
     QTUML_D(QJoinNode);
     if (d->joinSpec != joinSpec) {
-        d->setJoinSpec(joinSpec);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->joinSpec);
+
+        d->joinSpec = joinSpec;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(joinSpec);
     }
 }
 

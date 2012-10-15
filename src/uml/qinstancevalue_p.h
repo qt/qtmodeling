@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qvaluespecification_p.h"
 
 QT_BEGIN_HEADER
@@ -54,17 +53,15 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QInstanceSpecification;
+class QInstanceValue;
 
 class QInstanceValuePrivate : public QValueSpecificationPrivate
 {
 public:
-    explicit QInstanceValuePrivate();
+    explicit QInstanceValuePrivate(QInstanceValue *q_umlptr = 0);
     virtual ~QInstanceValuePrivate();
 
     QInstanceSpecification *instance;
-
-    // Internal functions for association-ends
-    void setInstance(QInstanceSpecification *instance);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qelement_p.h"
 
 // Qt includes
@@ -56,22 +55,16 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
+class QComment;
 
 class QCommentPrivate : public QElementPrivate
 {
 public:
-    explicit QCommentPrivate();
+    explicit QCommentPrivate(QComment *q_umlptr = 0);
     virtual ~QCommentPrivate();
 
     QString body;
     QSet<QElement *> *annotatedElements;
-
-    // Internal functions for attributes
-    void setBody(QString body);
-
-    // Internal functions for association-ends
-    void addAnnotatedElement(QElement *annotatedElement);
-    void removeAnnotatedElement(QElement *annotatedElement);
 };
 
 QT_END_NAMESPACE_QTUML

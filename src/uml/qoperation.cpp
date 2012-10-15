@@ -41,14 +41,10 @@
 
 #include "qoperation.h"
 #include "qoperation_p.h"
-#include "qnamespace_p.h"
-#include "qredefinableelement_p.h"
-#include "qfeature_p.h"
-#include "qnamedelement_p.h"
 
-#include <QtUml/QOperationTemplateParameter>
-#include <QtUml/QType>
 #include <QtUml/QRedefinableElement>
+#include <QtUml/QType>
+#include <QtUml/QOperationTemplateParameter>
 #include <QtUml/QParameter>
 #include <QtUml/QInterface>
 #include <QtUml/QConstraint>
@@ -57,7 +53,7 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QOperationPrivate::QOperationPrivate() :
+QOperationPrivate::QOperationPrivate(QOperation *q_umlptr) :
     isQuery(false),
     ownedParameters(new QList<QParameter *>),
     bodyCondition(0),
@@ -70,6 +66,7 @@ QOperationPrivate::QOperationPrivate() :
     class_(0),
     raisedExceptions(new QSet<QType *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QOperationPrivate::~QOperationPrivate()
@@ -83,169 +80,6 @@ QOperationPrivate::~QOperationPrivate()
     delete raisedExceptions;
 }
 
-void QOperationPrivate::setQuery(bool isQuery)
-{
-    // This is a read-write attribute
-
-    this->isQuery = isQuery;
-}
-
-void QOperationPrivate::addOwnedParameter(QParameter *ownedParameter)
-{
-    // This is a read-write association end
-
-    this->ownedParameters->append(ownedParameter);
-}
-
-void QOperationPrivate::removeOwnedParameter(QParameter *ownedParameter)
-{
-    // This is a read-write association end
-
-    this->ownedParameters->removeAll(ownedParameter);
-}
-
-void QOperationPrivate::setBodyCondition(QConstraint *bodyCondition)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedRule(this->bodyCondition);
-
-    this->bodyCondition = bodyCondition;
-
-    // Adjust subsetted property(ies)
-    addOwnedRule(bodyCondition);
-}
-
-void QOperationPrivate::addRedefinedOperation(QOperation *redefinedOperation)
-{
-    // This is a read-write association end
-
-    this->redefinedOperations->insert(redefinedOperation);
-
-    // Adjust subsetted property(ies)
-    addRedefinedElement(redefinedOperation);
-}
-
-void QOperationPrivate::removeRedefinedOperation(QOperation *redefinedOperation)
-{
-    // This is a read-write association end
-
-    this->redefinedOperations->remove(redefinedOperation);
-
-    // Adjust subsetted property(ies)
-    removeRedefinedElement(redefinedOperation);
-}
-
-void QOperationPrivate::addPostcondition(QConstraint *postcondition)
-{
-    // This is a read-write association end
-
-    this->postconditions->insert(postcondition);
-
-    // Adjust subsetted property(ies)
-    addOwnedRule(postcondition);
-}
-
-void QOperationPrivate::removePostcondition(QConstraint *postcondition)
-{
-    // This is a read-write association end
-
-    this->postconditions->remove(postcondition);
-
-    // Adjust subsetted property(ies)
-    removeOwnedRule(postcondition);
-}
-
-void QOperationPrivate::setDatatype(QDataType *datatype)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeFeaturingClassifier(this->datatype);
-    removeRedefinitionContext(this->datatype);
-
-    this->datatype = datatype;
-
-    // Adjust subsetted property(ies)
-    addFeaturingClassifier(datatype);
-    addRedefinitionContext(datatype);
-    setNamespace_(datatype);
-}
-
-void QOperationPrivate::setTemplateParameter(QOperationTemplateParameter *templateParameter)
-{
-    // This is a read-write association end
-
-    this->templateParameter = templateParameter;
-}
-
-void QOperationPrivate::setInterface(QInterface *interface)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeFeaturingClassifier(this->interface);
-    removeRedefinitionContext(this->interface);
-
-    this->interface = interface;
-
-    // Adjust subsetted property(ies)
-    addFeaturingClassifier(interface);
-    addRedefinitionContext(interface);
-    setNamespace_(interface);
-}
-
-void QOperationPrivate::addPrecondition(QConstraint *precondition)
-{
-    // This is a read-write association end
-
-    this->preconditions->insert(precondition);
-
-    // Adjust subsetted property(ies)
-    addOwnedRule(precondition);
-}
-
-void QOperationPrivate::removePrecondition(QConstraint *precondition)
-{
-    // This is a read-write association end
-
-    this->preconditions->remove(precondition);
-
-    // Adjust subsetted property(ies)
-    removeOwnedRule(precondition);
-}
-
-void QOperationPrivate::setClass_(QClass *class_)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeFeaturingClassifier(this->class_);
-    removeRedefinitionContext(this->class_);
-
-    this->class_ = class_;
-
-    // Adjust subsetted property(ies)
-    addFeaturingClassifier(class_);
-    addRedefinitionContext(class_);
-    setNamespace_(class_);
-}
-
-void QOperationPrivate::addRaisedException(QType *raisedException)
-{
-    // This is a read-write association end
-
-    this->raisedExceptions->insert(raisedException);
-}
-
-void QOperationPrivate::removeRaisedException(QType *raisedException)
-{
-    // This is a read-write association end
-
-    this->raisedExceptions->remove(raisedException);
-}
-
 /*!
     \class QOperation
 
@@ -257,7 +91,7 @@ void QOperationPrivate::removeRaisedException(QType *raisedException)
 QOperation::QOperation(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QOperationPrivate;
+    d_umlptr = new QOperationPrivate(this);
 }
 
 QOperation::QOperation(bool createPimpl, QObject *parent)
@@ -280,7 +114,7 @@ qint32 QOperation::lower() const
 
     qWarning("QOperation::lower: to be implemented (this is a derived attribute)");
 
-    QTUML_D(const QOperation);
+    //QTUML_D(const QOperation);
     //return <derived-return>;
 }
 
@@ -301,7 +135,7 @@ void QOperation::setQuery(bool isQuery)
 
     QTUML_D(QOperation);
     if (d->isQuery != isQuery) {
-        d->setQuery(isQuery);
+        d->isQuery = isQuery;
     }
 }
 
@@ -314,7 +148,7 @@ bool QOperation::isUnique() const
 
     qWarning("QOperation::isUnique: to be implemented (this is a derived attribute)");
 
-    QTUML_D(const QOperation);
+    //QTUML_D(const QOperation);
     //return <derived-return>;
 }
 
@@ -327,7 +161,7 @@ qint32 QOperation::upper() const
 
     qWarning("QOperation::upper: to be implemented (this is a derived attribute)");
 
-    QTUML_D(const QOperation);
+    //QTUML_D(const QOperation);
     //return <derived-return>;
 }
 
@@ -340,7 +174,7 @@ bool QOperation::isOrdered() const
 
     qWarning("QOperation::isOrdered: to be implemented (this is a derived attribute)");
 
-    QTUML_D(const QOperation);
+    //QTUML_D(const QOperation);
     //return <derived-return>;
 }
 
@@ -361,7 +195,7 @@ void QOperation::addOwnedParameter(QParameter *ownedParameter)
 
     QTUML_D(QOperation);
     if (!d->ownedParameters->contains(ownedParameter)) {
-        d->addOwnedParameter(ownedParameter);
+        d->ownedParameters->append(ownedParameter);
 
         // Adjust opposite property
         ownedParameter->setOperation(this);
@@ -374,7 +208,7 @@ void QOperation::removeOwnedParameter(QParameter *ownedParameter)
 
     QTUML_D(QOperation);
     if (d->ownedParameters->contains(ownedParameter)) {
-        d->removeOwnedParameter(ownedParameter);
+        d->ownedParameters->removeAll(ownedParameter);
 
         // Adjust opposite property
         ownedParameter->setOperation(0);
@@ -398,7 +232,13 @@ void QOperation::setBodyCondition(QConstraint *bodyCondition)
 
     QTUML_D(QOperation);
     if (d->bodyCondition != bodyCondition) {
-        d->setBodyCondition(bodyCondition);
+        // Adjust subsetted property(ies)
+        removeOwnedRule(d->bodyCondition);
+
+        d->bodyCondition = bodyCondition;
+
+        // Adjust subsetted property(ies)
+        addOwnedRule(bodyCondition);
     }
 }
 
@@ -419,7 +259,10 @@ void QOperation::addRedefinedOperation(QOperation *redefinedOperation)
 
     QTUML_D(QOperation);
     if (!d->redefinedOperations->contains(redefinedOperation)) {
-        d->addRedefinedOperation(redefinedOperation);
+        d->redefinedOperations->insert(redefinedOperation);
+
+        // Adjust subsetted property(ies)
+        d->addRedefinedElement(redefinedOperation);
     }
 }
 
@@ -429,7 +272,10 @@ void QOperation::removeRedefinedOperation(QOperation *redefinedOperation)
 
     QTUML_D(QOperation);
     if (d->redefinedOperations->contains(redefinedOperation)) {
-        d->removeRedefinedOperation(redefinedOperation);
+        d->redefinedOperations->remove(redefinedOperation);
+
+        // Adjust subsetted property(ies)
+        d->removeRedefinedElement(redefinedOperation);
     }
 }
 
@@ -450,7 +296,10 @@ void QOperation::addPostcondition(QConstraint *postcondition)
 
     QTUML_D(QOperation);
     if (!d->postconditions->contains(postcondition)) {
-        d->addPostcondition(postcondition);
+        d->postconditions->insert(postcondition);
+
+        // Adjust subsetted property(ies)
+        addOwnedRule(postcondition);
     }
 }
 
@@ -460,7 +309,10 @@ void QOperation::removePostcondition(QConstraint *postcondition)
 
     QTUML_D(QOperation);
     if (d->postconditions->contains(postcondition)) {
-        d->removePostcondition(postcondition);
+        d->postconditions->remove(postcondition);
+
+        // Adjust subsetted property(ies)
+        removeOwnedRule(postcondition);
     }
 }
 
@@ -481,7 +333,16 @@ void QOperation::setDatatype(QDataType *datatype)
 
     QTUML_D(QOperation);
     if (d->datatype != datatype) {
-        d->setDatatype(datatype);
+        // Adjust subsetted property(ies)
+        d->removeFeaturingClassifier(d->datatype);
+        d->removeRedefinitionContext(d->datatype);
+
+        d->datatype = datatype;
+
+        // Adjust subsetted property(ies)
+        d->addFeaturingClassifier(datatype);
+        d->addRedefinitionContext(datatype);
+        d->setNamespace_(datatype);
 
         // Adjust opposite property
         datatype->addOwnedOperation(this);
@@ -505,7 +366,7 @@ void QOperation::setTemplateParameter(QOperationTemplateParameter *templateParam
 
     QTUML_D(QOperation);
     if (d->templateParameter != templateParameter) {
-        d->setTemplateParameter(templateParameter);
+        d->templateParameter = templateParameter;
 
         // Adjust opposite property
         templateParameter->setParameteredElement(this);
@@ -529,7 +390,16 @@ void QOperation::setInterface(QInterface *interface)
 
     QTUML_D(QOperation);
     if (d->interface != interface) {
-        d->setInterface(interface);
+        // Adjust subsetted property(ies)
+        d->removeFeaturingClassifier(d->interface);
+        d->removeRedefinitionContext(d->interface);
+
+        d->interface = interface;
+
+        // Adjust subsetted property(ies)
+        d->addFeaturingClassifier(interface);
+        d->addRedefinitionContext(interface);
+        d->setNamespace_(interface);
 
         // Adjust opposite property
         interface->addOwnedOperation(this);
@@ -545,7 +415,7 @@ QType *QOperation::type() const
 
     qWarning("QOperation::type: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QOperation);
+    //QTUML_D(const QOperation);
     //return <derived-return>;
 }
 
@@ -566,7 +436,10 @@ void QOperation::addPrecondition(QConstraint *precondition)
 
     QTUML_D(QOperation);
     if (!d->preconditions->contains(precondition)) {
-        d->addPrecondition(precondition);
+        d->preconditions->insert(precondition);
+
+        // Adjust subsetted property(ies)
+        addOwnedRule(precondition);
     }
 }
 
@@ -576,7 +449,10 @@ void QOperation::removePrecondition(QConstraint *precondition)
 
     QTUML_D(QOperation);
     if (d->preconditions->contains(precondition)) {
-        d->removePrecondition(precondition);
+        d->preconditions->remove(precondition);
+
+        // Adjust subsetted property(ies)
+        removeOwnedRule(precondition);
     }
 }
 
@@ -597,7 +473,16 @@ void QOperation::setClass_(QClass *class_)
 
     QTUML_D(QOperation);
     if (d->class_ != class_) {
-        d->setClass_(class_);
+        // Adjust subsetted property(ies)
+        d->removeFeaturingClassifier(d->class_);
+        d->removeRedefinitionContext(d->class_);
+
+        d->class_ = class_;
+
+        // Adjust subsetted property(ies)
+        d->addFeaturingClassifier(class_);
+        d->addRedefinitionContext(class_);
+        d->setNamespace_(class_);
 
         // Adjust opposite property
         class_->addOwnedOperation(this);
@@ -621,7 +506,7 @@ void QOperation::addRaisedException(QType *raisedException)
 
     QTUML_D(QOperation);
     if (!d->raisedExceptions->contains(raisedException)) {
-        d->addRaisedException(raisedException);
+        d->raisedExceptions->insert(raisedException);
     }
 }
 
@@ -631,7 +516,7 @@ void QOperation::removeRaisedException(QType *raisedException)
 
     QTUML_D(QOperation);
     if (d->raisedExceptions->contains(raisedException)) {
-        d->removeRaisedException(raisedException);
+        d->raisedExceptions->remove(raisedException);
     }
 }
 

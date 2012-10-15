@@ -47,7 +47,6 @@
 #include <QtUml/QtUmlEnumerations>
 
 // Base class includes
-
 #include "qinteractionfragment_p.h"
 
 // Qt includes
@@ -62,25 +61,17 @@ QT_MODULE(QtUml)
 
 class QGate;
 class QInteractionOperand;
+class QCombinedFragment;
 
 class QCombinedFragmentPrivate : public QInteractionFragmentPrivate
 {
 public:
-    explicit QCombinedFragmentPrivate();
+    explicit QCombinedFragmentPrivate(QCombinedFragment *q_umlptr = 0);
     virtual ~QCombinedFragmentPrivate();
 
     QtUml::InteractionOperatorKind interactionOperator;
     QSet<QGate *> *cfragmentGates;
     QList<QInteractionOperand *> *operands;
-
-    // Internal functions for attributes
-    void setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator);
-
-    // Internal functions for association-ends
-    void addCfragmentGate(QGate *cfragmentGate);
-    void removeCfragmentGate(QGate *cfragmentGate);
-    void addOperand(QInteractionOperand *operand);
-    void removeOperand(QInteractionOperand *operand);
 };
 
 QT_END_NAMESPACE_QTUML

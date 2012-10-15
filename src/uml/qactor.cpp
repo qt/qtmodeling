@@ -45,8 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QActorPrivate::QActorPrivate()
+QActorPrivate::QActorPrivate(QActor *q_umlptr)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QActorPrivate::~QActorPrivate()
@@ -64,7 +65,7 @@ QActorPrivate::~QActorPrivate()
 QActor::QActor(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QActorPrivate;
+    d_umlptr = new QActorPrivate(this);
 }
 
 QActor::QActor(bool createPimpl, QObject *parent)

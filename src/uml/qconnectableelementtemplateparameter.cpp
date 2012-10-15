@@ -46,20 +46,14 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QConnectableElementTemplateParameterPrivate::QConnectableElementTemplateParameterPrivate() :
+QConnectableElementTemplateParameterPrivate::QConnectableElementTemplateParameterPrivate(QConnectableElementTemplateParameter *q_umlptr) :
     parameteredElement(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QConnectableElementTemplateParameterPrivate::~QConnectableElementTemplateParameterPrivate()
 {
-}
-
-void QConnectableElementTemplateParameterPrivate::setParameteredElement(QConnectableElement *parameteredElement)
-{
-    // This is a read-write association end
-
-    this->parameteredElement = parameteredElement;
 }
 
 /*!
@@ -73,7 +67,7 @@ void QConnectableElementTemplateParameterPrivate::setParameteredElement(QConnect
 QConnectableElementTemplateParameter::QConnectableElementTemplateParameter(QObject *parent)
     : QTemplateParameter(false, parent)
 {
-    d_umlptr = new QConnectableElementTemplateParameterPrivate;
+    d_umlptr = new QConnectableElementTemplateParameterPrivate(this);
 }
 
 QConnectableElementTemplateParameter::QConnectableElementTemplateParameter(bool createPimpl, QObject *parent)
@@ -104,7 +98,7 @@ void QConnectableElementTemplateParameter::setParameteredElement(QConnectableEle
 
     QTUML_D(QConnectableElementTemplateParameter);
     if (d->parameteredElement != parameteredElement) {
-        d->setParameteredElement(parameteredElement);
+        d->parameteredElement = parameteredElement;
 
         // Adjust opposite property
         parameteredElement->setTemplateParameter(this);

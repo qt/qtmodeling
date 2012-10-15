@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qrelationship_p.h"
 
 // Qt includes
@@ -61,17 +60,19 @@ class QElement;
 class QDirectedRelationshipPrivate : public QRelationshipPrivate
 {
 public:
-    explicit QDirectedRelationshipPrivate();
     virtual ~QDirectedRelationshipPrivate();
 
     QSet<QElement *> *sources;
     QSet<QElement *> *targets;
 
-    // Internal functions for association-ends
+    // Internal functions for read-only subsetted association ends
     void addSource(QElement *source);
     void removeSource(QElement *source);
     void addTarget(QElement *target);
     void removeTarget(QElement *target);
+
+protected:
+    explicit QDirectedRelationshipPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

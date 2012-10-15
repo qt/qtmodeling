@@ -41,20 +41,17 @@
 
 #include "qclassifier.h"
 #include "qclassifier_p.h"
-#include "qnamespace_p.h"
-#include "qredefinableelement_p.h"
-#include "qelement_p.h"
-#include "qnamedelement_p.h"
+#include "qfeature_p.h"
 
+#include <QtUml/QRedefinableTemplateSignature>
 #include <QtUml/QClassifierTemplateParameter>
 #include <QtUml/QUseCase>
 #include <QtUml/QSubstitution>
 #include <QtUml/QGeneralizationSet>
-#include <QtUml/QRedefinableTemplateSignature>
-#include <QtUml/QProperty>
 #include <QtUml/QNamedElement>
-#include <QtUml/QCollaborationUse>
+#include <QtUml/QProperty>
 #include <QtUml/QGeneralization>
+#include <QtUml/QCollaborationUse>
 #include <QtUml/QFeature>
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -91,215 +88,60 @@ QClassifierPrivate::~QClassifierPrivate()
     delete substitutions;
 }
 
-void QClassifierPrivate::setAbstract(bool isAbstract)
-{
-    // This is a read-write attribute
-
-    this->isAbstract = isAbstract;
-}
-
-void QClassifierPrivate::setFinalSpecialization(bool isFinalSpecialization)
-{
-    // This is a read-write attribute
-
-    this->isFinalSpecialization = isFinalSpecialization;
-}
-
-void QClassifierPrivate::addOwnedUseCase(QUseCase *ownedUseCase)
-{
-    // This is a read-write association end
-
-    this->ownedUseCases->insert(ownedUseCase);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(ownedUseCase);
-}
-
-void QClassifierPrivate::removeOwnedUseCase(QUseCase *ownedUseCase)
-{
-    // This is a read-write association end
-
-    this->ownedUseCases->remove(ownedUseCase);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(ownedUseCase);
-}
-
-void QClassifierPrivate::addPowertypeExtent(QGeneralizationSet *powertypeExtent)
-{
-    // This is a read-write association end
-
-    this->powertypeExtents->insert(powertypeExtent);
-}
-
-void QClassifierPrivate::removePowertypeExtent(QGeneralizationSet *powertypeExtent)
-{
-    // This is a read-write association end
-
-    this->powertypeExtents->remove(powertypeExtent);
-}
-
-void QClassifierPrivate::addUseCase(QUseCase *useCase)
-{
-    // This is a read-write association end
-
-    this->useCases->insert(useCase);
-}
-
-void QClassifierPrivate::removeUseCase(QUseCase *useCase)
-{
-    // This is a read-write association end
-
-    this->useCases->remove(useCase);
-}
-
-void QClassifierPrivate::setTemplateParameter(QClassifierTemplateParameter *templateParameter)
-{
-    // This is a read-write association end
-
-    this->templateParameter = templateParameter;
-}
-
-void QClassifierPrivate::addRedefinedClassifier(QClassifier *redefinedClassifier)
-{
-    // This is a read-write association end
-
-    this->redefinedClassifiers->insert(redefinedClassifier);
-
-    // Adjust subsetted property(ies)
-    addRedefinedElement(redefinedClassifier);
-}
-
-void QClassifierPrivate::removeRedefinedClassifier(QClassifier *redefinedClassifier)
-{
-    // This is a read-write association end
-
-    this->redefinedClassifiers->remove(redefinedClassifier);
-
-    // Adjust subsetted property(ies)
-    removeRedefinedElement(redefinedClassifier);
-}
-
-void QClassifierPrivate::setOwnedTemplateSignature(QRedefinableTemplateSignature *ownedTemplateSignature)
-{
-    // This is a read-write association end
-
-    this->ownedTemplateSignature = ownedTemplateSignature;
-}
-
-void QClassifierPrivate::addCollaborationUse(QCollaborationUse *collaborationUse)
-{
-    // This is a read-write association end
-
-    this->collaborationUses->insert(collaborationUse);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(collaborationUse);
-}
-
-void QClassifierPrivate::removeCollaborationUse(QCollaborationUse *collaborationUse)
-{
-    // This is a read-write association end
-
-    this->collaborationUses->remove(collaborationUse);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(collaborationUse);
-}
-
 void QClassifierPrivate::addAttribute(QProperty *attribute)
 {
     // This is a read-only derived-union association end
 
-    this->attributes->insert(attribute);
+    if (!this->attributes->contains(attribute)) {
+        this->attributes->insert(attribute);
 
-    // Adjust subsetted property(ies)
-    addFeature(attribute);
+        // Adjust subsetted property(ies)
+        addFeature(attribute);
+    }
 }
 
 void QClassifierPrivate::removeAttribute(QProperty *attribute)
 {
     // This is a read-only derived-union association end
 
-    this->attributes->remove(attribute);
+    if (this->attributes->contains(attribute)) {
+        this->attributes->remove(attribute);
 
-    // Adjust subsetted property(ies)
-    removeFeature(attribute);
+        // Adjust subsetted property(ies)
+        removeFeature(attribute);
+    }
 }
 
 void QClassifierPrivate::addFeature(QFeature *feature)
 {
     // This is a read-only derived-union association end
 
-    this->features->insert(feature);
+    if (!this->features->contains(feature)) {
+        this->features->insert(feature);
 
-    // Adjust subsetted property(ies)
-    addMember(feature);
+        // Adjust subsetted property(ies)
+        addMember(feature);
+
+        // Adjust opposite property
+        QTUML_Q(QClassifier);
+        (dynamic_cast<QFeaturePrivate *>(feature->d_umlptr))->addFeaturingClassifier(q);
+    }
 }
 
 void QClassifierPrivate::removeFeature(QFeature *feature)
 {
     // This is a read-only derived-union association end
 
-    this->features->remove(feature);
+    if (this->features->contains(feature)) {
+        this->features->remove(feature);
 
-    // Adjust subsetted property(ies)
-    removeMember(feature);
-}
+        // Adjust subsetted property(ies)
+        removeMember(feature);
 
-void QClassifierPrivate::setRepresentation(QCollaborationUse *representation)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeCollaborationUse(this->representation);
-
-    this->representation = representation;
-
-    // Adjust subsetted property(ies)
-    addCollaborationUse(representation);
-}
-
-void QClassifierPrivate::addGeneralization(QGeneralization *generalization)
-{
-    // This is a read-write association end
-
-    this->generalizations->insert(generalization);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(generalization);
-}
-
-void QClassifierPrivate::removeGeneralization(QGeneralization *generalization)
-{
-    // This is a read-write association end
-
-    this->generalizations->remove(generalization);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(generalization);
-}
-
-void QClassifierPrivate::addSubstitution(QSubstitution *substitution)
-{
-    // This is a read-write association end
-
-    this->substitutions->insert(substitution);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(substitution);
-    addClientDependency(substitution);
-}
-
-void QClassifierPrivate::removeSubstitution(QSubstitution *substitution)
-{
-    // This is a read-write association end
-
-    this->substitutions->remove(substitution);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(substitution);
-    removeClientDependency(substitution);
+        // Adjust opposite property
+        QTUML_Q(QClassifier);
+        (dynamic_cast<QFeaturePrivate *>(feature->d_umlptr))->removeFeaturingClassifier(q);
+    }
 }
 
 /*!
@@ -335,7 +177,7 @@ void QClassifier::setAbstract(bool isAbstract)
 
     QTUML_D(QClassifier);
     if (d->isAbstract != isAbstract) {
-        d->setAbstract(isAbstract);
+        d->isAbstract = isAbstract;
     }
 }
 
@@ -356,7 +198,7 @@ void QClassifier::setFinalSpecialization(bool isFinalSpecialization)
 
     QTUML_D(QClassifier);
     if (d->isFinalSpecialization != isFinalSpecialization) {
-        d->setFinalSpecialization(isFinalSpecialization);
+        d->isFinalSpecialization = isFinalSpecialization;
     }
 }
 
@@ -377,7 +219,10 @@ void QClassifier::addOwnedUseCase(QUseCase *ownedUseCase)
 
     QTUML_D(QClassifier);
     if (!d->ownedUseCases->contains(ownedUseCase)) {
-        d->addOwnedUseCase(ownedUseCase);
+        d->ownedUseCases->insert(ownedUseCase);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(ownedUseCase);
     }
 }
 
@@ -387,7 +232,10 @@ void QClassifier::removeOwnedUseCase(QUseCase *ownedUseCase)
 
     QTUML_D(QClassifier);
     if (d->ownedUseCases->contains(ownedUseCase)) {
-        d->removeOwnedUseCase(ownedUseCase);
+        d->ownedUseCases->remove(ownedUseCase);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(ownedUseCase);
     }
 }
 
@@ -408,7 +256,7 @@ void QClassifier::addPowertypeExtent(QGeneralizationSet *powertypeExtent)
 
     QTUML_D(QClassifier);
     if (!d->powertypeExtents->contains(powertypeExtent)) {
-        d->addPowertypeExtent(powertypeExtent);
+        d->powertypeExtents->insert(powertypeExtent);
 
         // Adjust opposite property
         powertypeExtent->setPowertype(this);
@@ -421,7 +269,7 @@ void QClassifier::removePowertypeExtent(QGeneralizationSet *powertypeExtent)
 
     QTUML_D(QClassifier);
     if (d->powertypeExtents->contains(powertypeExtent)) {
-        d->removePowertypeExtent(powertypeExtent);
+        d->powertypeExtents->remove(powertypeExtent);
 
         // Adjust opposite property
         powertypeExtent->setPowertype(0);
@@ -445,7 +293,7 @@ void QClassifier::addUseCase(QUseCase *useCase)
 
     QTUML_D(QClassifier);
     if (!d->useCases->contains(useCase)) {
-        d->addUseCase(useCase);
+        d->useCases->insert(useCase);
 
         // Adjust opposite property
         useCase->addSubject(this);
@@ -458,7 +306,7 @@ void QClassifier::removeUseCase(QUseCase *useCase)
 
     QTUML_D(QClassifier);
     if (d->useCases->contains(useCase)) {
-        d->removeUseCase(useCase);
+        d->useCases->remove(useCase);
 
         // Adjust opposite property
         useCase->removeSubject(this);
@@ -482,7 +330,7 @@ void QClassifier::setTemplateParameter(QClassifierTemplateParameter *templatePar
 
     QTUML_D(QClassifier);
     if (d->templateParameter != templateParameter) {
-        d->setTemplateParameter(templateParameter);
+        d->templateParameter = templateParameter;
 
         // Adjust opposite property
         templateParameter->setParameteredElement(this);
@@ -506,7 +354,10 @@ void QClassifier::addRedefinedClassifier(QClassifier *redefinedClassifier)
 
     QTUML_D(QClassifier);
     if (!d->redefinedClassifiers->contains(redefinedClassifier)) {
-        d->addRedefinedClassifier(redefinedClassifier);
+        d->redefinedClassifiers->insert(redefinedClassifier);
+
+        // Adjust subsetted property(ies)
+        d->addRedefinedElement(redefinedClassifier);
     }
 }
 
@@ -516,7 +367,10 @@ void QClassifier::removeRedefinedClassifier(QClassifier *redefinedClassifier)
 
     QTUML_D(QClassifier);
     if (d->redefinedClassifiers->contains(redefinedClassifier)) {
-        d->removeRedefinedClassifier(redefinedClassifier);
+        d->redefinedClassifiers->remove(redefinedClassifier);
+
+        // Adjust subsetted property(ies)
+        d->removeRedefinedElement(redefinedClassifier);
     }
 }
 
@@ -537,7 +391,7 @@ void QClassifier::setOwnedTemplateSignature(QRedefinableTemplateSignature *owned
 
     QTUML_D(QClassifier);
     if (d->ownedTemplateSignature != ownedTemplateSignature) {
-        d->setOwnedTemplateSignature(ownedTemplateSignature);
+        d->ownedTemplateSignature = ownedTemplateSignature;
 
         // Adjust opposite property
         ownedTemplateSignature->setClassifier(this);
@@ -561,7 +415,10 @@ void QClassifier::addCollaborationUse(QCollaborationUse *collaborationUse)
 
     QTUML_D(QClassifier);
     if (!d->collaborationUses->contains(collaborationUse)) {
-        d->addCollaborationUse(collaborationUse);
+        d->collaborationUses->insert(collaborationUse);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(collaborationUse);
     }
 }
 
@@ -571,7 +428,10 @@ void QClassifier::removeCollaborationUse(QCollaborationUse *collaborationUse)
 
     QTUML_D(QClassifier);
     if (d->collaborationUses->contains(collaborationUse)) {
-        d->removeCollaborationUse(collaborationUse);
+        d->collaborationUses->remove(collaborationUse);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(collaborationUse);
     }
 }
 
@@ -606,7 +466,7 @@ const QSet<QClassifier *> *QClassifier::generals() const
 
     qWarning("QClassifier::generals: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QClassifier);
+    //QTUML_D(const QClassifier);
     //return <derived-return>;
 }
 
@@ -616,8 +476,8 @@ void QClassifier::addGeneral(QClassifier *general)
 
     qWarning("QClassifier::addGeneral: to be implemented (this is a derived associationend)");
 
-    QTUML_D(QClassifier);
-    if (true /* <derived-inclusion-criteria> */) {
+    //QTUML_D(QClassifier);
+    if (false /* <derived-inclusion-criteria> */) {
         // <derived-code>
     }
 }
@@ -628,8 +488,8 @@ void QClassifier::removeGeneral(QClassifier *general)
 
     qWarning("QClassifier::removeGeneral: to be implemented (this is a derived associationend)");
 
-    QTUML_D(QClassifier);
-    if (true /* <derived-exclusion-criteria> */) {
+    //QTUML_D(QClassifier);
+    if (false /* <derived-exclusion-criteria> */) {
         // <derived-code>
     }
 }
@@ -651,7 +511,13 @@ void QClassifier::setRepresentation(QCollaborationUse *representation)
 
     QTUML_D(QClassifier);
     if (d->representation != representation) {
-        d->setRepresentation(representation);
+        // Adjust subsetted property(ies)
+        removeCollaborationUse(d->representation);
+
+        d->representation = representation;
+
+        // Adjust subsetted property(ies)
+        addCollaborationUse(representation);
     }
 }
 
@@ -672,7 +538,10 @@ void QClassifier::addGeneralization(QGeneralization *generalization)
 
     QTUML_D(QClassifier);
     if (!d->generalizations->contains(generalization)) {
-        d->addGeneralization(generalization);
+        d->generalizations->insert(generalization);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(generalization);
 
         // Adjust opposite property
         generalization->setSpecific(this);
@@ -685,7 +554,10 @@ void QClassifier::removeGeneralization(QGeneralization *generalization)
 
     QTUML_D(QClassifier);
     if (d->generalizations->contains(generalization)) {
-        d->removeGeneralization(generalization);
+        d->generalizations->remove(generalization);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(generalization);
 
         // Adjust opposite property
         generalization->setSpecific(0);
@@ -701,7 +573,7 @@ const QSet<QNamedElement *> *QClassifier::inheritedMembers() const
 
     qWarning("QClassifier::inheritedMembers: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QClassifier);
+    //QTUML_D(const QClassifier);
     //return <derived-return>;
 }
 
@@ -722,7 +594,11 @@ void QClassifier::addSubstitution(QSubstitution *substitution)
 
     QTUML_D(QClassifier);
     if (!d->substitutions->contains(substitution)) {
-        d->addSubstitution(substitution);
+        d->substitutions->insert(substitution);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(substitution);
+        addClientDependency(substitution);
 
         // Adjust opposite property
         substitution->setSubstitutingClassifier(this);
@@ -735,7 +611,11 @@ void QClassifier::removeSubstitution(QSubstitution *substitution)
 
     QTUML_D(QClassifier);
     if (d->substitutions->contains(substitution)) {
-        d->removeSubstitution(substitution);
+        d->substitutions->remove(substitution);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(substitution);
+        removeClientDependency(substitution);
 
         // Adjust opposite property
         substitution->setSubstitutingClassifier(0);

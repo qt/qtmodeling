@@ -47,9 +47,7 @@
 #include <QtUml/QtUmlEnumerations>
 
 // Base class includes
-
 #include "qnamespace_p.h"
-
 #include "qfeature_p.h"
 
 // Qt includes
@@ -71,7 +69,6 @@ class QParameter;
 class QBehavioralFeaturePrivate : public QNamespacePrivate, public QFeaturePrivate
 {
 public:
-    explicit QBehavioralFeaturePrivate();
     virtual ~QBehavioralFeaturePrivate();
 
     QtUml::CallConcurrencyKind concurrency;
@@ -81,19 +78,8 @@ public:
     QSet<QParameterSet *> *ownedParameterSets;
     QSet<QBehavior *> *methods;
 
-    // Internal functions for attributes
-    void setConcurrency(QtUml::CallConcurrencyKind concurrency);
-    void setAbstract(bool isAbstract);
-
-    // Internal functions for association-ends
-    void addRaisedException(QType *raisedException);
-    void removeRaisedException(QType *raisedException);
-    void addOwnedParameter(QParameter *ownedParameter);
-    void removeOwnedParameter(QParameter *ownedParameter);
-    void addOwnedParameterSet(QParameterSet *ownedParameterSet);
-    void removeOwnedParameterSet(QParameterSet *ownedParameterSet);
-    void addMethod(QBehavior *method);
-    void removeMethod(QBehavior *method);
+protected:
+    explicit QBehavioralFeaturePrivate();
 };
 
 QT_END_NAMESPACE_QTUML

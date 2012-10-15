@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qelement_p.h"
 
 // Qt includes
@@ -59,11 +58,12 @@ QT_MODULE(QtUml)
 
 class QExecutableNode;
 class QOutputPin;
+class QClause;
 
 class QClausePrivate : public QElementPrivate
 {
 public:
-    explicit QClausePrivate();
+    explicit QClausePrivate(QClause *q_umlptr = 0);
     virtual ~QClausePrivate();
 
     QSet<QClause *> *successorClauses;
@@ -72,19 +72,6 @@ public:
     QList<QOutputPin *> *bodyOutputs;
     QSet<QExecutableNode *> *bodies;
     QSet<QExecutableNode *> *tests;
-
-    // Internal functions for association-ends
-    void addSuccessorClause(QClause *successorClause);
-    void removeSuccessorClause(QClause *successorClause);
-    void setDecider(QOutputPin *decider);
-    void addPredecessorClause(QClause *predecessorClause);
-    void removePredecessorClause(QClause *predecessorClause);
-    void addBodyOutput(QOutputPin *bodyOutput);
-    void removeBodyOutput(QOutputPin *bodyOutput);
-    void addBody(QExecutableNode *body);
-    void removeBody(QExecutableNode *body);
-    void addTest(QExecutableNode *test);
-    void removeTest(QExecutableNode *test);
 };
 
 QT_END_NAMESPACE_QTUML

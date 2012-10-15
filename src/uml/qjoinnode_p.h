@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qcontrolnode_p.h"
 
 QT_BEGIN_HEADER
@@ -54,21 +53,16 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QValueSpecification;
+class QJoinNode;
 
 class QJoinNodePrivate : public QControlNodePrivate
 {
 public:
-    explicit QJoinNodePrivate();
+    explicit QJoinNodePrivate(QJoinNode *q_umlptr = 0);
     virtual ~QJoinNodePrivate();
 
     bool isCombineDuplicate;
     QValueSpecification *joinSpec;
-
-    // Internal functions for attributes
-    void setCombineDuplicate(bool isCombineDuplicate);
-
-    // Internal functions for association-ends
-    void setJoinSpec(QValueSpecification *joinSpec);
 };
 
 QT_END_NAMESPACE_QTUML

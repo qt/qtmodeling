@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qaction_p.h"
 
 // Qt includes
@@ -58,27 +57,18 @@ QT_MODULE(QtUml)
 
 class QClassifier;
 class QInputPin;
+class QReclassifyObjectAction;
 
 class QReclassifyObjectActionPrivate : public QActionPrivate
 {
 public:
-    explicit QReclassifyObjectActionPrivate();
+    explicit QReclassifyObjectActionPrivate(QReclassifyObjectAction *q_umlptr = 0);
     virtual ~QReclassifyObjectActionPrivate();
 
     bool isReplaceAll;
     QSet<QClassifier *> *oldClassifiers;
     QInputPin *object;
     QSet<QClassifier *> *newClassifiers;
-
-    // Internal functions for attributes
-    void setReplaceAll(bool isReplaceAll);
-
-    // Internal functions for association-ends
-    void addOldClassifier(QClassifier *oldClassifier);
-    void removeOldClassifier(QClassifier *oldClassifier);
-    void setObject(QInputPin *object);
-    void addNewClassifier(QClassifier *newClassifier);
-    void removeNewClassifier(QClassifier *newClassifier);
 };
 
 QT_END_NAMESPACE_QTUML

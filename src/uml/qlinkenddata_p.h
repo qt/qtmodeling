@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qelement_p.h"
 
 // Qt includes
@@ -59,22 +58,17 @@ QT_MODULE(QtUml)
 class QProperty;
 class QQualifierValue;
 class QInputPin;
+class QLinkEndData;
 
 class QLinkEndDataPrivate : public QElementPrivate
 {
 public:
-    explicit QLinkEndDataPrivate();
+    explicit QLinkEndDataPrivate(QLinkEndData *q_umlptr = 0);
     virtual ~QLinkEndDataPrivate();
 
     QInputPin *value;
     QProperty *end;
     QSet<QQualifierValue *> *qualifiers;
-
-    // Internal functions for association-ends
-    void setValue(QInputPin *value);
-    void setEnd(QProperty *end);
-    void addQualifier(QQualifierValue *qualifier);
-    void removeQualifier(QQualifierValue *qualifier);
 };
 
 QT_END_NAMESPACE_QTUML

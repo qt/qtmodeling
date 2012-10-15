@@ -41,40 +41,20 @@
 
 #include "qaddstructuralfeaturevalueaction.h"
 #include "qaddstructuralfeaturevalueaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QAddStructuralFeatureValueActionPrivate::QAddStructuralFeatureValueActionPrivate() :
+QAddStructuralFeatureValueActionPrivate::QAddStructuralFeatureValueActionPrivate(QAddStructuralFeatureValueAction *q_umlptr) :
     isReplaceAll(false),
     insertAt(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QAddStructuralFeatureValueActionPrivate::~QAddStructuralFeatureValueActionPrivate()
 {
-}
-
-void QAddStructuralFeatureValueActionPrivate::setReplaceAll(bool isReplaceAll)
-{
-    // This is a read-write attribute
-
-    this->isReplaceAll = isReplaceAll;
-}
-
-void QAddStructuralFeatureValueActionPrivate::setInsertAt(QInputPin *insertAt)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeInput(this->insertAt);
-
-    this->insertAt = insertAt;
-
-    // Adjust subsetted property(ies)
-    addInput(insertAt);
 }
 
 /*!
@@ -88,7 +68,7 @@ void QAddStructuralFeatureValueActionPrivate::setInsertAt(QInputPin *insertAt)
 QAddStructuralFeatureValueAction::QAddStructuralFeatureValueAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QAddStructuralFeatureValueActionPrivate;
+    d_umlptr = new QAddStructuralFeatureValueActionPrivate(this);
 }
 
 QAddStructuralFeatureValueAction::QAddStructuralFeatureValueAction(bool createPimpl, QObject *parent)
@@ -119,7 +99,7 @@ void QAddStructuralFeatureValueAction::setReplaceAll(bool isReplaceAll)
 
     QTUML_D(QAddStructuralFeatureValueAction);
     if (d->isReplaceAll != isReplaceAll) {
-        d->setReplaceAll(isReplaceAll);
+        d->isReplaceAll = isReplaceAll;
     }
 }
 
@@ -140,7 +120,13 @@ void QAddStructuralFeatureValueAction::setInsertAt(QInputPin *insertAt)
 
     QTUML_D(QAddStructuralFeatureValueAction);
     if (d->insertAt != insertAt) {
-        d->setInsertAt(insertAt);
+        // Adjust subsetted property(ies)
+        d->removeInput(d->insertAt);
+
+        d->insertAt = insertAt;
+
+        // Adjust subsetted property(ies)
+        d->addInput(insertAt);
     }
 }
 

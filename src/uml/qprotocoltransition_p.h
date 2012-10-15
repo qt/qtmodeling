@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qtransition_p.h"
 
 // Qt includes
@@ -58,19 +57,16 @@ QT_MODULE(QtUml)
 
 class QConstraint;
 class QOperation;
+class QProtocolTransition;
 
 class QProtocolTransitionPrivate : public QTransitionPrivate
 {
 public:
-    explicit QProtocolTransitionPrivate();
+    explicit QProtocolTransitionPrivate(QProtocolTransition *q_umlptr = 0);
     virtual ~QProtocolTransitionPrivate();
 
     QConstraint *postCondition;
     QConstraint *preCondition;
-
-    // Internal functions for association-ends
-    void setPostCondition(QConstraint *postCondition);
-    void setPreCondition(QConstraint *preCondition);
 };
 
 QT_END_NAMESPACE_QTUML

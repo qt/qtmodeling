@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qnamedelement_p.h"
 
 QT_BEGIN_HEADER
@@ -58,13 +57,12 @@ class QType;
 class QTypedElementPrivate : public virtual QNamedElementPrivate
 {
 public:
-    explicit QTypedElementPrivate();
     virtual ~QTypedElementPrivate();
 
     QType *type;
 
-    // Internal functions for association-ends
-    void setType(QType *type);
+protected:
+    explicit QTypedElementPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

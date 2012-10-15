@@ -46,21 +46,15 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QIntervalConstraintPrivate::QIntervalConstraintPrivate() :
+QIntervalConstraintPrivate::QIntervalConstraintPrivate(QIntervalConstraint *q_umlptr) :
     specification(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QIntervalConstraintPrivate::~QIntervalConstraintPrivate()
 {
     delete specification;
-}
-
-void QIntervalConstraintPrivate::setSpecification(QInterval *specification)
-{
-    // This is a read-write association end
-
-    this->specification = specification;
 }
 
 /*!
@@ -74,7 +68,7 @@ void QIntervalConstraintPrivate::setSpecification(QInterval *specification)
 QIntervalConstraint::QIntervalConstraint(QObject *parent)
     : QConstraint(false, parent)
 {
-    d_umlptr = new QIntervalConstraintPrivate;
+    d_umlptr = new QIntervalConstraintPrivate(this);
 }
 
 QIntervalConstraint::QIntervalConstraint(bool createPimpl, QObject *parent)
@@ -105,7 +99,7 @@ void QIntervalConstraint::setSpecification(QInterval *specification)
 
     QTUML_D(QIntervalConstraint);
     if (d->specification != specification) {
-        d->setSpecification(specification);
+        d->specification = specification;
     }
 }
 

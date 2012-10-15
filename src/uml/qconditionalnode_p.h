@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qstructuredactivitynode_p.h"
 
 // Qt includes
@@ -59,27 +58,18 @@ QT_MODULE(QtUml)
 
 class QClause;
 class QOutputPin;
+class QConditionalNode;
 
 class QConditionalNodePrivate : public QStructuredActivityNodePrivate
 {
 public:
-    explicit QConditionalNodePrivate();
+    explicit QConditionalNodePrivate(QConditionalNode *q_umlptr = 0);
     virtual ~QConditionalNodePrivate();
 
     bool isAssured;
     bool isDeterminate;
     QSet<QClause *> *clauses;
     QList<QOutputPin *> *results;
-
-    // Internal functions for attributes
-    void setAssured(bool isAssured);
-    void setDeterminate(bool isDeterminate);
-
-    // Internal functions for association-ends
-    void addClause(QClause *clause);
-    void removeClause(QClause *clause);
-    void addResult(QOutputPin *result);
-    void removeResult(QOutputPin *result);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -41,48 +41,21 @@
 
 #include "qdestroyobjectaction.h"
 #include "qdestroyobjectaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDestroyObjectActionPrivate::QDestroyObjectActionPrivate() :
+QDestroyObjectActionPrivate::QDestroyObjectActionPrivate(QDestroyObjectAction *q_umlptr) :
     isDestroyLinks(false),
     isDestroyOwnedObjects(false),
     target(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QDestroyObjectActionPrivate::~QDestroyObjectActionPrivate()
 {
-}
-
-void QDestroyObjectActionPrivate::setDestroyLinks(bool isDestroyLinks)
-{
-    // This is a read-write attribute
-
-    this->isDestroyLinks = isDestroyLinks;
-}
-
-void QDestroyObjectActionPrivate::setDestroyOwnedObjects(bool isDestroyOwnedObjects)
-{
-    // This is a read-write attribute
-
-    this->isDestroyOwnedObjects = isDestroyOwnedObjects;
-}
-
-void QDestroyObjectActionPrivate::setTarget(QInputPin *target)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeInput(this->target);
-
-    this->target = target;
-
-    // Adjust subsetted property(ies)
-    addInput(target);
 }
 
 /*!
@@ -96,7 +69,7 @@ void QDestroyObjectActionPrivate::setTarget(QInputPin *target)
 QDestroyObjectAction::QDestroyObjectAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QDestroyObjectActionPrivate;
+    d_umlptr = new QDestroyObjectActionPrivate(this);
 }
 
 QDestroyObjectAction::QDestroyObjectAction(bool createPimpl, QObject *parent)
@@ -127,7 +100,7 @@ void QDestroyObjectAction::setDestroyLinks(bool isDestroyLinks)
 
     QTUML_D(QDestroyObjectAction);
     if (d->isDestroyLinks != isDestroyLinks) {
-        d->setDestroyLinks(isDestroyLinks);
+        d->isDestroyLinks = isDestroyLinks;
     }
 }
 
@@ -148,7 +121,7 @@ void QDestroyObjectAction::setDestroyOwnedObjects(bool isDestroyOwnedObjects)
 
     QTUML_D(QDestroyObjectAction);
     if (d->isDestroyOwnedObjects != isDestroyOwnedObjects) {
-        d->setDestroyOwnedObjects(isDestroyOwnedObjects);
+        d->isDestroyOwnedObjects = isDestroyOwnedObjects;
     }
 }
 
@@ -169,7 +142,13 @@ void QDestroyObjectAction::setTarget(QInputPin *target)
 
     QTUML_D(QDestroyObjectAction);
     if (d->target != target) {
-        d->setTarget(target);
+        // Adjust subsetted property(ies)
+        d->removeInput(d->target);
+
+        d->target = target;
+
+        // Adjust subsetted property(ies)
+        d->addInput(target);
     }
 }
 

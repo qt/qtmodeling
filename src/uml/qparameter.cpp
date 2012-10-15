@@ -41,8 +41,6 @@
 
 #include "qparameter.h"
 #include "qparameter_p.h"
-#include "qnamedelement_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QValueSpecification>
 #include <QtUml/QOperation>
@@ -50,7 +48,7 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QParameterPrivate::QParameterPrivate() :
+QParameterPrivate::QParameterPrivate(QParameter *q_umlptr) :
     isException(false),
     direction(QtUml::ParameterDirectionIn),
     isStream(false),
@@ -58,76 +56,12 @@ QParameterPrivate::QParameterPrivate() :
     defaultValue(0),
     parameterSets(new QSet<QParameterSet *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QParameterPrivate::~QParameterPrivate()
 {
     delete parameterSets;
-}
-
-void QParameterPrivate::setException(bool isException)
-{
-    // This is a read-write attribute
-
-    this->isException = isException;
-}
-
-void QParameterPrivate::setDirection(QtUml::ParameterDirectionKind direction)
-{
-    // This is a read-write attribute
-
-    this->direction = direction;
-}
-
-void QParameterPrivate::setStream(bool isStream)
-{
-    // This is a read-write attribute
-
-    this->isStream = isStream;
-}
-
-void QParameterPrivate::setEffect(QtUml::ParameterEffectKind effect)
-{
-    // This is a read-write attribute
-
-    this->effect = effect;
-}
-
-void QParameterPrivate::setOperation(QOperation *operation)
-{
-    // This is a read-write association end
-
-    this->operation = operation;
-
-    // Adjust subsetted property(ies)
-    setNamespace_(operation);
-}
-
-void QParameterPrivate::setDefaultValue(QValueSpecification *defaultValue)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->defaultValue);
-
-    this->defaultValue = defaultValue;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(defaultValue);
-}
-
-void QParameterPrivate::addParameterSet(QParameterSet *parameterSet)
-{
-    // This is a read-write association end
-
-    this->parameterSets->insert(parameterSet);
-}
-
-void QParameterPrivate::removeParameterSet(QParameterSet *parameterSet)
-{
-    // This is a read-write association end
-
-    this->parameterSets->remove(parameterSet);
 }
 
 /*!
@@ -141,7 +75,7 @@ void QParameterPrivate::removeParameterSet(QParameterSet *parameterSet)
 QParameter::QParameter(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QParameterPrivate;
+    d_umlptr = new QParameterPrivate(this);
 }
 
 QParameter::QParameter(bool createPimpl, QObject *parent)
@@ -172,7 +106,7 @@ void QParameter::setException(bool isException)
 
     QTUML_D(QParameter);
     if (d->isException != isException) {
-        d->setException(isException);
+        d->isException = isException;
     }
 }
 
@@ -185,7 +119,7 @@ QString QParameter::default_() const
 
     qWarning("QParameter::default_: to be implemented (this is a derived attribute)");
 
-    QTUML_D(const QParameter);
+    //QTUML_D(const QParameter);
     //return <derived-return>;
 }
 
@@ -195,8 +129,8 @@ void QParameter::setDefault_(QString default_)
 
     qWarning("QParameter::setDefault_: to be implemented (this is a derived attribute)");
 
-    QTUML_D(QParameter);
-    if (true /* <change-criteria> */) {
+    //QTUML_D(QParameter);
+    if (false /* <derived-change-criteria> */) {
         // <derived-code>
     }
 }
@@ -218,7 +152,7 @@ void QParameter::setDirection(QtUml::ParameterDirectionKind direction)
 
     QTUML_D(QParameter);
     if (d->direction != direction) {
-        d->setDirection(direction);
+        d->direction = direction;
     }
 }
 
@@ -239,7 +173,7 @@ void QParameter::setStream(bool isStream)
 
     QTUML_D(QParameter);
     if (d->isStream != isStream) {
-        d->setStream(isStream);
+        d->isStream = isStream;
     }
 }
 
@@ -260,7 +194,7 @@ void QParameter::setEffect(QtUml::ParameterEffectKind effect)
 
     QTUML_D(QParameter);
     if (d->effect != effect) {
-        d->setEffect(effect);
+        d->effect = effect;
     }
 }
 
@@ -281,7 +215,10 @@ void QParameter::setOperation(QOperation *operation)
 
     QTUML_D(QParameter);
     if (d->operation != operation) {
-        d->setOperation(operation);
+        d->operation = operation;
+
+        // Adjust subsetted property(ies)
+        d->setNamespace_(operation);
 
         // Adjust opposite property
         operation->addOwnedParameter(this);
@@ -305,7 +242,13 @@ void QParameter::setDefaultValue(QValueSpecification *defaultValue)
 
     QTUML_D(QParameter);
     if (d->defaultValue != defaultValue) {
-        d->setDefaultValue(defaultValue);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->defaultValue);
+
+        d->defaultValue = defaultValue;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(defaultValue);
     }
 }
 
@@ -326,7 +269,7 @@ void QParameter::addParameterSet(QParameterSet *parameterSet)
 
     QTUML_D(QParameter);
     if (!d->parameterSets->contains(parameterSet)) {
-        d->addParameterSet(parameterSet);
+        d->parameterSets->insert(parameterSet);
 
         // Adjust opposite property
         parameterSet->addParameter(this);
@@ -339,7 +282,7 @@ void QParameter::removeParameterSet(QParameterSet *parameterSet)
 
     QTUML_D(QParameter);
     if (d->parameterSets->contains(parameterSet)) {
-        d->removeParameterSet(parameterSet);
+        d->parameterSets->remove(parameterSet);
 
         // Adjust opposite property
         parameterSet->removeParameter(this);

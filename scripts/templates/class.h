@@ -128,6 +128,7 @@
 [%- IF not(class.superclass) %]
 
 #define QTUML_D(Class) Class##Private * const d = dynamic_cast<Class##Private *>(d_umlptr);
+#define QTUML_Q(Class) Class * const q = dynamic_cast<Class *>(q_umlptr);
 [%- END -%]
 
 
@@ -161,14 +162,14 @@ class ${class.name}Private;
 [% END %]
 [%- found = 'false' -%]
 [%- FOREACH forwarddecl IN class.forwarddecl -%]
-[%- IF forwarddecl.namespace == namespace.replace('/', '::') -%]
+[%- IF forwarddecl.namespace == namespace.replace('/', '::') and forwarddecl.content != class.name -%]
 [%- IF found == 'false' %]
 
 [%- found = 'true' -%]
 [%- END -%]
 class ${forwarddecl.content};
 
-[%- END -%]
+[%- END %]
 [%- END -%]
 
 class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name}[%- IF class.superclass -%] : [% END -%][% FOREACH superclass = class.superclass %]public ${superclass.name.split('/').last}[% IF !loop.last %], [% END %][% END %]
@@ -212,6 +213,30 @@ public:
     ${operation.return}${operation.name}([%- FOREACH parameter IN operation.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${operation.constness};
     [%- END %]
     [%- END %]
+[%- IF not(class.superclass) -%]
+[%- friendClasses = [] -%]
+[%- FOREACH friendClass IN classes.values -%]
+[%- FOREACH associationend IN friendClass.associationend.values -%]
+[%- IF classes.item(associationend.oppositeEnd.split('-').0.replace('^', 'Q')).associationend.item(associationend.oppositeEnd).isReadOnly == 'true' -%]
+[%- IF associationend.isReadOnly == 'true' -%]
+[%- modifiedFriendClass = friendClass.name.replace('$', 'Private') -%]
+[%- ELSE -%]
+[%- modifiedFriendClass = friendClass.name -%]
+[%- END -%]
+[%- IF friendClass.name != class.name -%]
+[%- friendClasses.push(modifiedFriendClass) -%]
+[%- END -%]
+[%- END -%]
+[%- END -%]
+[%- END -%]
+[%- END -%]
+[%- FOREACH friendClass IN friendClasses.unique.sort -%]
+    [%- IF loop.first %]
+
+    // Classes which access read-only opposite properties should be friend
+    [%- END %]
+    friend class ${friendClass};
+[%- END %]
 [%- IF class.isAbstract == 'true' %]
 
 protected:

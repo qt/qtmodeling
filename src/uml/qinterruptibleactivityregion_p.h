@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qactivitygroup_p.h"
 
 // Qt includes
@@ -58,21 +57,16 @@ QT_MODULE(QtUml)
 
 class QActivityEdge;
 class QActivityNode;
+class QInterruptibleActivityRegion;
 
 class QInterruptibleActivityRegionPrivate : public QActivityGroupPrivate
 {
 public:
-    explicit QInterruptibleActivityRegionPrivate();
+    explicit QInterruptibleActivityRegionPrivate(QInterruptibleActivityRegion *q_umlptr = 0);
     virtual ~QInterruptibleActivityRegionPrivate();
 
     QSet<QActivityEdge *> *interruptingEdges;
     QSet<QActivityNode *> *nodes;
-
-    // Internal functions for association-ends
-    void addInterruptingEdge(QActivityEdge *interruptingEdge);
-    void removeInterruptingEdge(QActivityEdge *interruptingEdge);
-    void addNode(QActivityNode *node);
-    void removeNode(QActivityNode *node);
 };
 
 QT_END_NAMESPACE_QTUML

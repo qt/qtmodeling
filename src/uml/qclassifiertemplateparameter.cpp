@@ -46,44 +46,17 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QClassifierTemplateParameterPrivate::QClassifierTemplateParameterPrivate() :
+QClassifierTemplateParameterPrivate::QClassifierTemplateParameterPrivate(QClassifierTemplateParameter *q_umlptr) :
     allowSubstitutable(true),
     parameteredElement(0),
     constrainingClassifiers(new QSet<QClassifier *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QClassifierTemplateParameterPrivate::~QClassifierTemplateParameterPrivate()
 {
     delete constrainingClassifiers;
-}
-
-void QClassifierTemplateParameterPrivate::setAllowSubstitutable(bool allowSubstitutable)
-{
-    // This is a read-write attribute
-
-    this->allowSubstitutable = allowSubstitutable;
-}
-
-void QClassifierTemplateParameterPrivate::setParameteredElement(QClassifier *parameteredElement)
-{
-    // This is a read-write association end
-
-    this->parameteredElement = parameteredElement;
-}
-
-void QClassifierTemplateParameterPrivate::addConstrainingClassifier(QClassifier *constrainingClassifier)
-{
-    // This is a read-write association end
-
-    this->constrainingClassifiers->insert(constrainingClassifier);
-}
-
-void QClassifierTemplateParameterPrivate::removeConstrainingClassifier(QClassifier *constrainingClassifier)
-{
-    // This is a read-write association end
-
-    this->constrainingClassifiers->remove(constrainingClassifier);
 }
 
 /*!
@@ -97,7 +70,7 @@ void QClassifierTemplateParameterPrivate::removeConstrainingClassifier(QClassifi
 QClassifierTemplateParameter::QClassifierTemplateParameter(QObject *parent)
     : QTemplateParameter(false, parent)
 {
-    d_umlptr = new QClassifierTemplateParameterPrivate;
+    d_umlptr = new QClassifierTemplateParameterPrivate(this);
 }
 
 QClassifierTemplateParameter::QClassifierTemplateParameter(bool createPimpl, QObject *parent)
@@ -128,7 +101,7 @@ void QClassifierTemplateParameter::setAllowSubstitutable(bool allowSubstitutable
 
     QTUML_D(QClassifierTemplateParameter);
     if (d->allowSubstitutable != allowSubstitutable) {
-        d->setAllowSubstitutable(allowSubstitutable);
+        d->allowSubstitutable = allowSubstitutable;
     }
 }
 
@@ -149,7 +122,7 @@ void QClassifierTemplateParameter::setParameteredElement(QClassifier *parametere
 
     QTUML_D(QClassifierTemplateParameter);
     if (d->parameteredElement != parameteredElement) {
-        d->setParameteredElement(parameteredElement);
+        d->parameteredElement = parameteredElement;
 
         // Adjust opposite property
         parameteredElement->setTemplateParameter(this);
@@ -173,7 +146,7 @@ void QClassifierTemplateParameter::addConstrainingClassifier(QClassifier *constr
 
     QTUML_D(QClassifierTemplateParameter);
     if (!d->constrainingClassifiers->contains(constrainingClassifier)) {
-        d->addConstrainingClassifier(constrainingClassifier);
+        d->constrainingClassifiers->insert(constrainingClassifier);
     }
 }
 
@@ -183,7 +156,7 @@ void QClassifierTemplateParameter::removeConstrainingClassifier(QClassifier *con
 
     QTUML_D(QClassifierTemplateParameter);
     if (d->constrainingClassifiers->contains(constrainingClassifier)) {
-        d->removeConstrainingClassifier(constrainingClassifier);
+        d->constrainingClassifiers->remove(constrainingClassifier);
     }
 }
 

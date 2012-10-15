@@ -41,62 +41,22 @@
 
 #include "qdependency.h"
 #include "qdependency_p.h"
-#include "qdirectedrelationship_p.h"
 
 #include <QtUml/QNamedElement>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDependencyPrivate::QDependencyPrivate() :
+QDependencyPrivate::QDependencyPrivate(QDependency *q_umlptr) :
     clients(new QSet<QNamedElement *>),
     suppliers(new QSet<QNamedElement *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QDependencyPrivate::~QDependencyPrivate()
 {
     delete clients;
     delete suppliers;
-}
-
-void QDependencyPrivate::addClient(QNamedElement *client)
-{
-    // This is a read-write association end
-
-    this->clients->insert(client);
-
-    // Adjust subsetted property(ies)
-    addSource(client);
-}
-
-void QDependencyPrivate::removeClient(QNamedElement *client)
-{
-    // This is a read-write association end
-
-    this->clients->remove(client);
-
-    // Adjust subsetted property(ies)
-    removeSource(client);
-}
-
-void QDependencyPrivate::addSupplier(QNamedElement *supplier)
-{
-    // This is a read-write association end
-
-    this->suppliers->insert(supplier);
-
-    // Adjust subsetted property(ies)
-    addTarget(supplier);
-}
-
-void QDependencyPrivate::removeSupplier(QNamedElement *supplier)
-{
-    // This is a read-write association end
-
-    this->suppliers->remove(supplier);
-
-    // Adjust subsetted property(ies)
-    removeTarget(supplier);
 }
 
 /*!
@@ -110,7 +70,7 @@ void QDependencyPrivate::removeSupplier(QNamedElement *supplier)
 QDependency::QDependency(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QDependencyPrivate;
+    d_umlptr = new QDependencyPrivate(this);
 }
 
 QDependency::QDependency(bool createPimpl, QObject *parent)
@@ -141,7 +101,10 @@ void QDependency::addClient(QNamedElement *client)
 
     QTUML_D(QDependency);
     if (!d->clients->contains(client)) {
-        d->addClient(client);
+        d->clients->insert(client);
+
+        // Adjust subsetted property(ies)
+        d->addSource(client);
 
         // Adjust opposite property
         client->addClientDependency(this);
@@ -154,7 +117,10 @@ void QDependency::removeClient(QNamedElement *client)
 
     QTUML_D(QDependency);
     if (d->clients->contains(client)) {
-        d->removeClient(client);
+        d->clients->remove(client);
+
+        // Adjust subsetted property(ies)
+        d->removeSource(client);
 
         // Adjust opposite property
         client->removeClientDependency(this);
@@ -178,7 +144,10 @@ void QDependency::addSupplier(QNamedElement *supplier)
 
     QTUML_D(QDependency);
     if (!d->suppliers->contains(supplier)) {
-        d->addSupplier(supplier);
+        d->suppliers->insert(supplier);
+
+        // Adjust subsetted property(ies)
+        d->addTarget(supplier);
     }
 }
 
@@ -188,7 +157,10 @@ void QDependency::removeSupplier(QNamedElement *supplier)
 
     QTUML_D(QDependency);
     if (d->suppliers->contains(supplier)) {
-        d->removeSupplier(supplier);
+        d->suppliers->remove(supplier);
+
+        // Adjust subsetted property(ies)
+        d->removeTarget(supplier);
     }
 }
 

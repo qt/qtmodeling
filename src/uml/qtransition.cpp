@@ -41,22 +41,19 @@
 
 #include "qtransition.h"
 #include "qtransition_p.h"
-#include "qnamespace_p.h"
-#include "qelement_p.h"
-#include "qnamedelement_p.h"
-#include "qredefinableelement_p.h"
+#include "qvertex_p.h"
 
 #include <QtUml/QTrigger>
 #include <QtUml/QVertex>
 #include <QtUml/QStateMachine>
 #include <QtUml/QClassifier>
-#include <QtUml/QBehavior>
 #include <QtUml/QRegion>
 #include <QtUml/QConstraint>
+#include <QtUml/QBehavior>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QTransitionPrivate::QTransitionPrivate() :
+QTransitionPrivate::QTransitionPrivate(QTransition *q_umlptr) :
     kind(QtUml::TransitionExternal),
     guard(0),
     target(0),
@@ -66,101 +63,12 @@ QTransitionPrivate::QTransitionPrivate() :
     source(0),
     triggers(new QSet<QTrigger *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QTransitionPrivate::~QTransitionPrivate()
 {
     delete triggers;
-}
-
-void QTransitionPrivate::setKind(QtUml::TransitionKind kind)
-{
-    // This is a read-write attribute
-
-    this->kind = kind;
-}
-
-void QTransitionPrivate::setGuard(QConstraint *guard)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedRule(this->guard);
-
-    this->guard = guard;
-
-    // Adjust subsetted property(ies)
-    addOwnedRule(guard);
-}
-
-void QTransitionPrivate::setTarget(QVertex *target)
-{
-    // This is a read-write association end
-
-    this->target = target;
-}
-
-void QTransitionPrivate::setEffect(QBehavior *effect)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(this->effect);
-
-    this->effect = effect;
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(effect);
-}
-
-void QTransitionPrivate::setContainer(QRegion *container)
-{
-    // This is a read-write association end
-
-    this->container = container;
-
-    // Adjust subsetted property(ies)
-    setNamespace_(container);
-}
-
-void QTransitionPrivate::setRedefinedTransition(QTransition *redefinedTransition)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeRedefinedElement(this->redefinedTransition);
-
-    this->redefinedTransition = redefinedTransition;
-
-    // Adjust subsetted property(ies)
-    addRedefinedElement(redefinedTransition);
-}
-
-void QTransitionPrivate::setSource(QVertex *source)
-{
-    // This is a read-write association end
-
-    this->source = source;
-}
-
-void QTransitionPrivate::addTrigger(QTrigger *trigger)
-{
-    // This is a read-write association end
-
-    this->triggers->insert(trigger);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(trigger);
-}
-
-void QTransitionPrivate::removeTrigger(QTrigger *trigger)
-{
-    // This is a read-write association end
-
-    this->triggers->remove(trigger);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(trigger);
 }
 
 /*!
@@ -174,7 +82,7 @@ void QTransitionPrivate::removeTrigger(QTrigger *trigger)
 QTransition::QTransition(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QTransitionPrivate;
+    d_umlptr = new QTransitionPrivate(this);
 }
 
 QTransition::QTransition(bool createPimpl, QObject *parent)
@@ -205,7 +113,7 @@ void QTransition::setKind(QtUml::TransitionKind kind)
 
     QTUML_D(QTransition);
     if (d->kind != kind) {
-        d->setKind(kind);
+        d->kind = kind;
     }
 }
 
@@ -226,7 +134,13 @@ void QTransition::setGuard(QConstraint *guard)
 
     QTUML_D(QTransition);
     if (d->guard != guard) {
-        d->setGuard(guard);
+        // Adjust subsetted property(ies)
+        removeOwnedRule(d->guard);
+
+        d->guard = guard;
+
+        // Adjust subsetted property(ies)
+        addOwnedRule(guard);
     }
 }
 
@@ -247,7 +161,10 @@ void QTransition::setTarget(QVertex *target)
 
     QTUML_D(QTransition);
     if (d->target != target) {
-        d->setTarget(target);
+        d->target = target;
+
+        // Adjust opposite property
+        (dynamic_cast<QVertexPrivate *>(target->d_umlptr))->addIncoming(this);
     }
 }
 
@@ -268,7 +185,13 @@ void QTransition::setEffect(QBehavior *effect)
 
     QTUML_D(QTransition);
     if (d->effect != effect) {
-        d->setEffect(effect);
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(d->effect);
+
+        d->effect = effect;
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(effect);
     }
 }
 
@@ -289,7 +212,10 @@ void QTransition::setContainer(QRegion *container)
 
     QTUML_D(QTransition);
     if (d->container != container) {
-        d->setContainer(container);
+        d->container = container;
+
+        // Adjust subsetted property(ies)
+        d->setNamespace_(container);
 
         // Adjust opposite property
         container->addTransition(this);
@@ -305,7 +231,7 @@ QClassifier *QTransition::redefinitionContext() const
 
     qWarning("QTransition::redefinitionContext: to be implemented (this is a derived associationend)");
 
-    QTUML_D(const QTransition);
+    //QTUML_D(const QTransition);
     //return <derived-return>;
 }
 
@@ -326,7 +252,13 @@ void QTransition::setRedefinedTransition(QTransition *redefinedTransition)
 
     QTUML_D(QTransition);
     if (d->redefinedTransition != redefinedTransition) {
-        d->setRedefinedTransition(redefinedTransition);
+        // Adjust subsetted property(ies)
+        d->removeRedefinedElement(d->redefinedTransition);
+
+        d->redefinedTransition = redefinedTransition;
+
+        // Adjust subsetted property(ies)
+        d->addRedefinedElement(redefinedTransition);
     }
 }
 
@@ -347,7 +279,10 @@ void QTransition::setSource(QVertex *source)
 
     QTUML_D(QTransition);
     if (d->source != source) {
-        d->setSource(source);
+        d->source = source;
+
+        // Adjust opposite property
+        (dynamic_cast<QVertexPrivate *>(source->d_umlptr))->addOutgoing(this);
     }
 }
 
@@ -368,7 +303,10 @@ void QTransition::addTrigger(QTrigger *trigger)
 
     QTUML_D(QTransition);
     if (!d->triggers->contains(trigger)) {
-        d->addTrigger(trigger);
+        d->triggers->insert(trigger);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(trigger);
     }
 }
 
@@ -378,7 +316,10 @@ void QTransition::removeTrigger(QTrigger *trigger)
 
     QTUML_D(QTransition);
     if (d->triggers->contains(trigger)) {
-        d->removeTrigger(trigger);
+        d->triggers->remove(trigger);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(trigger);
     }
 }
 

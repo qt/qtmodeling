@@ -41,7 +41,6 @@
 
 #include "qparameterableelement.h"
 #include "qparameterableelement_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QTemplateParameter>
 
@@ -55,24 +54,6 @@ QParameterableElementPrivate::QParameterableElementPrivate() :
 
 QParameterableElementPrivate::~QParameterableElementPrivate()
 {
-}
-
-void QParameterableElementPrivate::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
-{
-    // This is a read-write association end
-
-    this->owningTemplateParameter = owningTemplateParameter;
-
-    // Adjust subsetted property(ies)
-    setTemplateParameter(owningTemplateParameter);
-    setOwner(owningTemplateParameter);
-}
-
-void QParameterableElementPrivate::setTemplateParameter(QTemplateParameter *templateParameter)
-{
-    // This is a read-write association end
-
-    this->templateParameter = templateParameter;
 }
 
 /*!
@@ -108,7 +89,11 @@ void QParameterableElement::setOwningTemplateParameter(QTemplateParameter *ownin
 
     QTUML_D(QParameterableElement);
     if (d->owningTemplateParameter != owningTemplateParameter) {
-        d->setOwningTemplateParameter(owningTemplateParameter);
+        d->owningTemplateParameter = owningTemplateParameter;
+
+        // Adjust subsetted property(ies)
+        setTemplateParameter(owningTemplateParameter);
+        d->setOwner(owningTemplateParameter);
 
         // Adjust opposite property
         owningTemplateParameter->setOwnedParameteredElement(this);
@@ -132,7 +117,7 @@ void QParameterableElement::setTemplateParameter(QTemplateParameter *templatePar
 
     QTUML_D(QParameterableElement);
     if (d->templateParameter != templateParameter) {
-        d->setTemplateParameter(templateParameter);
+        d->templateParameter = templateParameter;
 
         // Adjust opposite property
         templateParameter->setParameteredElement(this);

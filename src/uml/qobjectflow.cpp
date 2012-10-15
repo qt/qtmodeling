@@ -46,44 +46,17 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QObjectFlowPrivate::QObjectFlowPrivate() :
+QObjectFlowPrivate::QObjectFlowPrivate(QObjectFlow *q_umlptr) :
     isMultireceive(false),
     isMulticast(false),
     selection(0),
     transformation(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QObjectFlowPrivate::~QObjectFlowPrivate()
 {
-}
-
-void QObjectFlowPrivate::setMultireceive(bool isMultireceive)
-{
-    // This is a read-write attribute
-
-    this->isMultireceive = isMultireceive;
-}
-
-void QObjectFlowPrivate::setMulticast(bool isMulticast)
-{
-    // This is a read-write attribute
-
-    this->isMulticast = isMulticast;
-}
-
-void QObjectFlowPrivate::setSelection(QBehavior *selection)
-{
-    // This is a read-write association end
-
-    this->selection = selection;
-}
-
-void QObjectFlowPrivate::setTransformation(QBehavior *transformation)
-{
-    // This is a read-write association end
-
-    this->transformation = transformation;
 }
 
 /*!
@@ -97,7 +70,7 @@ void QObjectFlowPrivate::setTransformation(QBehavior *transformation)
 QObjectFlow::QObjectFlow(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QObjectFlowPrivate;
+    d_umlptr = new QObjectFlowPrivate(this);
 }
 
 QObjectFlow::QObjectFlow(bool createPimpl, QObject *parent)
@@ -128,7 +101,7 @@ void QObjectFlow::setMultireceive(bool isMultireceive)
 
     QTUML_D(QObjectFlow);
     if (d->isMultireceive != isMultireceive) {
-        d->setMultireceive(isMultireceive);
+        d->isMultireceive = isMultireceive;
     }
 }
 
@@ -149,7 +122,7 @@ void QObjectFlow::setMulticast(bool isMulticast)
 
     QTUML_D(QObjectFlow);
     if (d->isMulticast != isMulticast) {
-        d->setMulticast(isMulticast);
+        d->isMulticast = isMulticast;
     }
 }
 
@@ -170,7 +143,7 @@ void QObjectFlow::setSelection(QBehavior *selection)
 
     QTUML_D(QObjectFlow);
     if (d->selection != selection) {
-        d->setSelection(selection);
+        d->selection = selection;
     }
 }
 
@@ -191,7 +164,7 @@ void QObjectFlow::setTransformation(QBehavior *transformation)
 
     QTUML_D(QObjectFlow);
     if (d->transformation != transformation) {
-        d->setTransformation(transformation);
+        d->transformation = transformation;
     }
 }
 

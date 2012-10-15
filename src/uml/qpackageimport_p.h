@@ -47,7 +47,6 @@
 #include <QtUml/QtUmlEnumerations>
 
 // Base class includes
-
 #include "qdirectedrelationship_p.h"
 
 QT_BEGIN_HEADER
@@ -58,23 +57,17 @@ QT_MODULE(QtUml)
 
 class QPackage;
 class QNamespace;
+class QPackageImport;
 
 class QPackageImportPrivate : public QDirectedRelationshipPrivate
 {
 public:
-    explicit QPackageImportPrivate();
+    explicit QPackageImportPrivate(QPackageImport *q_umlptr = 0);
     virtual ~QPackageImportPrivate();
 
     QtUml::VisibilityKind visibility;
     QNamespace *importingNamespace;
     QPackage *importedPackage;
-
-    // Internal functions for attributes
-    void setVisibility(QtUml::VisibilityKind visibility);
-
-    // Internal functions for association-ends
-    void setImportingNamespace(QNamespace *importingNamespace);
-    void setImportedPackage(QPackage *importedPackage);
 };
 
 QT_END_NAMESPACE_QTUML

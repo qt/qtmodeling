@@ -46,20 +46,14 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QBroadcastSignalActionPrivate::QBroadcastSignalActionPrivate() :
+QBroadcastSignalActionPrivate::QBroadcastSignalActionPrivate(QBroadcastSignalAction *q_umlptr) :
     signal(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QBroadcastSignalActionPrivate::~QBroadcastSignalActionPrivate()
 {
-}
-
-void QBroadcastSignalActionPrivate::setSignal(QSignal *signal)
-{
-    // This is a read-write association end
-
-    this->signal = signal;
 }
 
 /*!
@@ -73,7 +67,7 @@ void QBroadcastSignalActionPrivate::setSignal(QSignal *signal)
 QBroadcastSignalAction::QBroadcastSignalAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QBroadcastSignalActionPrivate;
+    d_umlptr = new QBroadcastSignalActionPrivate(this);
 }
 
 QBroadcastSignalAction::QBroadcastSignalAction(bool createPimpl, QObject *parent)
@@ -104,7 +98,7 @@ void QBroadcastSignalAction::setSignal(QSignal *signal)
 
     QTUML_D(QBroadcastSignalAction);
     if (d->signal != signal) {
-        d->setSignal(signal);
+        d->signal = signal;
     }
 }
 

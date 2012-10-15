@@ -41,8 +41,6 @@
 
 #include "qlinkaction.h"
 #include "qlinkaction_p.h"
-#include "qaction_p.h"
-#include "qelement_p.h"
 
 #include <QtUml/QLinkEndData>
 #include <QtUml/QInputPin>
@@ -60,46 +58,6 @@ QLinkActionPrivate::~QLinkActionPrivate()
 {
     delete inputValues;
     delete endData;
-}
-
-void QLinkActionPrivate::addInputValue(QInputPin *inputValue)
-{
-    // This is a read-write association end
-
-    this->inputValues->insert(inputValue);
-
-    // Adjust subsetted property(ies)
-    addInput(inputValue);
-}
-
-void QLinkActionPrivate::removeInputValue(QInputPin *inputValue)
-{
-    // This is a read-write association end
-
-    this->inputValues->remove(inputValue);
-
-    // Adjust subsetted property(ies)
-    removeInput(inputValue);
-}
-
-void QLinkActionPrivate::addEndData(QLinkEndData *endData)
-{
-    // This is a read-write association end
-
-    this->endData->insert(endData);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(endData);
-}
-
-void QLinkActionPrivate::removeEndData(QLinkEndData *endData)
-{
-    // This is a read-write association end
-
-    this->endData->remove(endData);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(endData);
 }
 
 /*!
@@ -135,7 +93,10 @@ void QLinkAction::addInputValue(QInputPin *inputValue)
 
     QTUML_D(QLinkAction);
     if (!d->inputValues->contains(inputValue)) {
-        d->addInputValue(inputValue);
+        d->inputValues->insert(inputValue);
+
+        // Adjust subsetted property(ies)
+        d->addInput(inputValue);
     }
 }
 
@@ -145,7 +106,10 @@ void QLinkAction::removeInputValue(QInputPin *inputValue)
 
     QTUML_D(QLinkAction);
     if (d->inputValues->contains(inputValue)) {
-        d->removeInputValue(inputValue);
+        d->inputValues->remove(inputValue);
+
+        // Adjust subsetted property(ies)
+        d->removeInput(inputValue);
     }
 }
 
@@ -166,7 +130,10 @@ void QLinkAction::addEndData(QLinkEndData *endData)
 
     QTUML_D(QLinkAction);
     if (!d->endData->contains(endData)) {
-        d->addEndData(endData);
+        d->endData->insert(endData);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(endData);
     }
 }
 
@@ -176,7 +143,10 @@ void QLinkAction::removeEndData(QLinkEndData *endData)
 
     QTUML_D(QLinkAction);
     if (d->endData->contains(endData)) {
-        d->removeEndData(endData);
+        d->endData->remove(endData);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(endData);
     }
 }
 

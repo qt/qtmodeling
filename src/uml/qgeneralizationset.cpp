@@ -47,52 +47,18 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QGeneralizationSetPrivate::QGeneralizationSetPrivate() :
+QGeneralizationSetPrivate::QGeneralizationSetPrivate(QGeneralizationSet *q_umlptr) :
     isCovering(false),
     isDisjoint(false),
     powertype(0),
     generalizations(new QSet<QGeneralization *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QGeneralizationSetPrivate::~QGeneralizationSetPrivate()
 {
     delete generalizations;
-}
-
-void QGeneralizationSetPrivate::setCovering(bool isCovering)
-{
-    // This is a read-write attribute
-
-    this->isCovering = isCovering;
-}
-
-void QGeneralizationSetPrivate::setDisjoint(bool isDisjoint)
-{
-    // This is a read-write attribute
-
-    this->isDisjoint = isDisjoint;
-}
-
-void QGeneralizationSetPrivate::setPowertype(QClassifier *powertype)
-{
-    // This is a read-write association end
-
-    this->powertype = powertype;
-}
-
-void QGeneralizationSetPrivate::addGeneralization(QGeneralization *generalization)
-{
-    // This is a read-write association end
-
-    this->generalizations->insert(generalization);
-}
-
-void QGeneralizationSetPrivate::removeGeneralization(QGeneralization *generalization)
-{
-    // This is a read-write association end
-
-    this->generalizations->remove(generalization);
 }
 
 /*!
@@ -106,7 +72,7 @@ void QGeneralizationSetPrivate::removeGeneralization(QGeneralization *generaliza
 QGeneralizationSet::QGeneralizationSet(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QGeneralizationSetPrivate;
+    d_umlptr = new QGeneralizationSetPrivate(this);
 }
 
 QGeneralizationSet::QGeneralizationSet(bool createPimpl, QObject *parent)
@@ -137,7 +103,7 @@ void QGeneralizationSet::setCovering(bool isCovering)
 
     QTUML_D(QGeneralizationSet);
     if (d->isCovering != isCovering) {
-        d->setCovering(isCovering);
+        d->isCovering = isCovering;
     }
 }
 
@@ -158,7 +124,7 @@ void QGeneralizationSet::setDisjoint(bool isDisjoint)
 
     QTUML_D(QGeneralizationSet);
     if (d->isDisjoint != isDisjoint) {
-        d->setDisjoint(isDisjoint);
+        d->isDisjoint = isDisjoint;
     }
 }
 
@@ -179,7 +145,7 @@ void QGeneralizationSet::setPowertype(QClassifier *powertype)
 
     QTUML_D(QGeneralizationSet);
     if (d->powertype != powertype) {
-        d->setPowertype(powertype);
+        d->powertype = powertype;
 
         // Adjust opposite property
         powertype->addPowertypeExtent(this);
@@ -203,7 +169,7 @@ void QGeneralizationSet::addGeneralization(QGeneralization *generalization)
 
     QTUML_D(QGeneralizationSet);
     if (!d->generalizations->contains(generalization)) {
-        d->addGeneralization(generalization);
+        d->generalizations->insert(generalization);
 
         // Adjust opposite property
         generalization->addGeneralizationSet(this);
@@ -216,7 +182,7 @@ void QGeneralizationSet::removeGeneralization(QGeneralization *generalization)
 
     QTUML_D(QGeneralizationSet);
     if (d->generalizations->contains(generalization)) {
-        d->removeGeneralization(generalization);
+        d->generalizations->remove(generalization);
 
         // Adjust opposite property
         generalization->removeGeneralizationSet(this);

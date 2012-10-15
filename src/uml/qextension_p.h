@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qassociation_p.h"
 
 QT_BEGIN_HEADER
@@ -56,19 +55,18 @@ QT_MODULE(QtUml)
 class QClass;
 class QExtensionEnd;
 class QProperty;
+class QExtension;
 
 class QExtensionPrivate : public QAssociationPrivate
 {
 public:
-    explicit QExtensionPrivate();
+    explicit QExtensionPrivate(QExtension *q_umlptr = 0);
     virtual ~QExtensionPrivate();
 
     QExtensionEnd *ownedEnd;
 
-    // Internal functions for attributes
-
-    // Internal functions for association-ends
-    void setOwnedEnd(QExtensionEnd *ownedEnd);
+    // Internal functions for read-only subsetted association ends
+    void setMetaclass(QClass *metaclass);
 };
 
 QT_END_NAMESPACE_QTUML

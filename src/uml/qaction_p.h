@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qexecutablenode_p.h"
 
 // Qt includes
@@ -65,7 +64,6 @@ class QInputPin;
 class QActionPrivate : public QExecutableNodePrivate
 {
 public:
-    explicit QActionPrivate();
     virtual ~QActionPrivate();
 
     bool isLocallyReentrant;
@@ -74,18 +72,14 @@ public:
     QList<QInputPin *> *inputs;
     QList<QOutputPin *> *outputs;
 
-    // Internal functions for attributes
-    void setLocallyReentrant(bool isLocallyReentrant);
-
-    // Internal functions for association-ends
-    void addLocalPostcondition(QConstraint *localPostcondition);
-    void removeLocalPostcondition(QConstraint *localPostcondition);
-    void addLocalPrecondition(QConstraint *localPrecondition);
-    void removeLocalPrecondition(QConstraint *localPrecondition);
+    // Internal functions for read-only subsetted association ends
     void addInput(QInputPin *input);
     void removeInput(QInputPin *input);
     void addOutput(QOutputPin *output);
     void removeOutput(QOutputPin *output);
+
+protected:
+    explicit QActionPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

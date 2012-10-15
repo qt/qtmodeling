@@ -47,36 +47,16 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QTriggerPrivate::QTriggerPrivate() :
+QTriggerPrivate::QTriggerPrivate(QTrigger *q_umlptr) :
     ports(new QSet<QPort *>),
     event(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QTriggerPrivate::~QTriggerPrivate()
 {
     delete ports;
-}
-
-void QTriggerPrivate::addPort(QPort *port)
-{
-    // This is a read-write association end
-
-    this->ports->insert(port);
-}
-
-void QTriggerPrivate::removePort(QPort *port)
-{
-    // This is a read-write association end
-
-    this->ports->remove(port);
-}
-
-void QTriggerPrivate::setEvent(QEvent *event)
-{
-    // This is a read-write association end
-
-    this->event = event;
 }
 
 /*!
@@ -90,7 +70,7 @@ void QTriggerPrivate::setEvent(QEvent *event)
 QTrigger::QTrigger(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QTriggerPrivate;
+    d_umlptr = new QTriggerPrivate(this);
 }
 
 QTrigger::QTrigger(bool createPimpl, QObject *parent)
@@ -121,7 +101,7 @@ void QTrigger::addPort(QPort *port)
 
     QTUML_D(QTrigger);
     if (!d->ports->contains(port)) {
-        d->addPort(port);
+        d->ports->insert(port);
     }
 }
 
@@ -131,7 +111,7 @@ void QTrigger::removePort(QPort *port)
 
     QTUML_D(QTrigger);
     if (d->ports->contains(port)) {
-        d->removePort(port);
+        d->ports->remove(port);
     }
 }
 
@@ -152,7 +132,7 @@ void QTrigger::setEvent(QEvent *event)
 
     QTUML_D(QTrigger);
     if (d->event != event) {
-        d->setEvent(event);
+        d->event = event;
     }
 }
 

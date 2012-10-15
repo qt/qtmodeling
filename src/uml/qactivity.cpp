@@ -41,8 +41,6 @@
 
 #include "qactivity.h"
 #include "qactivity_p.h"
-#include "qelement_p.h"
-#include "qnamespace_p.h"
 
 #include <QtUml/QStructuredActivityNode>
 #include <QtUml/QVariable>
@@ -53,7 +51,7 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QActivityPrivate::QActivityPrivate() :
+QActivityPrivate::QActivityPrivate(QActivity *q_umlptr) :
     isReadOnly(false),
     isSingleExecution(false),
     partitions(new QSet<QActivityPartition *>),
@@ -63,6 +61,7 @@ QActivityPrivate::QActivityPrivate() :
     groups(new QSet<QActivityGroup *>),
     edges(new QSet<QActivityEdge *>)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QActivityPrivate::~QActivityPrivate()
@@ -73,142 +72,6 @@ QActivityPrivate::~QActivityPrivate()
     delete structuredNodes;
     delete groups;
     delete edges;
-}
-
-void QActivityPrivate::setReadOnly(bool isReadOnly)
-{
-    // This is a read-write attribute
-
-    this->isReadOnly = isReadOnly;
-}
-
-void QActivityPrivate::setSingleExecution(bool isSingleExecution)
-{
-    // This is a read-write attribute
-
-    this->isSingleExecution = isSingleExecution;
-}
-
-void QActivityPrivate::addPartition(QActivityPartition *partition)
-{
-    // This is a read-write association end
-
-    this->partitions->insert(partition);
-
-    // Adjust subsetted property(ies)
-    addGroup(partition);
-}
-
-void QActivityPrivate::removePartition(QActivityPartition *partition)
-{
-    // This is a read-write association end
-
-    this->partitions->remove(partition);
-
-    // Adjust subsetted property(ies)
-    removeGroup(partition);
-}
-
-void QActivityPrivate::addNode(QActivityNode *node)
-{
-    // This is a read-write association end
-
-    this->nodes->insert(node);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(node);
-}
-
-void QActivityPrivate::removeNode(QActivityNode *node)
-{
-    // This is a read-write association end
-
-    this->nodes->remove(node);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(node);
-}
-
-void QActivityPrivate::addVariable(QVariable *variable)
-{
-    // This is a read-write association end
-
-    this->variables->insert(variable);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(variable);
-}
-
-void QActivityPrivate::removeVariable(QVariable *variable)
-{
-    // This is a read-write association end
-
-    this->variables->remove(variable);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(variable);
-}
-
-void QActivityPrivate::addStructuredNode(QStructuredActivityNode *structuredNode)
-{
-    // This is a read-write association end
-
-    this->structuredNodes->insert(structuredNode);
-
-    // Adjust subsetted property(ies)
-    addGroup(structuredNode);
-    addNode(structuredNode);
-}
-
-void QActivityPrivate::removeStructuredNode(QStructuredActivityNode *structuredNode)
-{
-    // This is a read-write association end
-
-    this->structuredNodes->remove(structuredNode);
-
-    // Adjust subsetted property(ies)
-    removeGroup(structuredNode);
-    removeNode(structuredNode);
-}
-
-void QActivityPrivate::addGroup(QActivityGroup *group)
-{
-    // This is a read-write association end
-
-    this->groups->insert(group);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(group);
-}
-
-void QActivityPrivate::removeGroup(QActivityGroup *group)
-{
-    // This is a read-write association end
-
-    this->groups->remove(group);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(group);
-}
-
-void QActivityPrivate::addEdge(QActivityEdge *edge)
-{
-    // This is a read-write association end
-
-    this->edges->insert(edge);
-
-    // Adjust subsetted property(ies)
-    addOwnedElement(edge);
-}
-
-void QActivityPrivate::removeEdge(QActivityEdge *edge)
-{
-    // This is a read-write association end
-
-    this->edges->remove(edge);
-
-    // Adjust subsetted property(ies)
-    removeOwnedElement(edge);
 }
 
 /*!
@@ -222,7 +85,7 @@ void QActivityPrivate::removeEdge(QActivityEdge *edge)
 QActivity::QActivity(QObject *parent)
     : QBehavior(false, parent)
 {
-    d_umlptr = new QActivityPrivate;
+    d_umlptr = new QActivityPrivate(this);
 }
 
 QActivity::QActivity(bool createPimpl, QObject *parent)
@@ -253,7 +116,7 @@ void QActivity::setReadOnly(bool isReadOnly)
 
     QTUML_D(QActivity);
     if (d->isReadOnly != isReadOnly) {
-        d->setReadOnly(isReadOnly);
+        d->isReadOnly = isReadOnly;
     }
 }
 
@@ -274,7 +137,7 @@ void QActivity::setSingleExecution(bool isSingleExecution)
 
     QTUML_D(QActivity);
     if (d->isSingleExecution != isSingleExecution) {
-        d->setSingleExecution(isSingleExecution);
+        d->isSingleExecution = isSingleExecution;
     }
 }
 
@@ -295,7 +158,10 @@ void QActivity::addPartition(QActivityPartition *partition)
 
     QTUML_D(QActivity);
     if (!d->partitions->contains(partition)) {
-        d->addPartition(partition);
+        d->partitions->insert(partition);
+
+        // Adjust subsetted property(ies)
+        addGroup(partition);
     }
 }
 
@@ -305,7 +171,10 @@ void QActivity::removePartition(QActivityPartition *partition)
 
     QTUML_D(QActivity);
     if (d->partitions->contains(partition)) {
-        d->removePartition(partition);
+        d->partitions->remove(partition);
+
+        // Adjust subsetted property(ies)
+        removeGroup(partition);
     }
 }
 
@@ -326,7 +195,10 @@ void QActivity::addNode(QActivityNode *node)
 
     QTUML_D(QActivity);
     if (!d->nodes->contains(node)) {
-        d->addNode(node);
+        d->nodes->insert(node);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(node);
 
         // Adjust opposite property
         node->setActivity(this);
@@ -339,7 +211,10 @@ void QActivity::removeNode(QActivityNode *node)
 
     QTUML_D(QActivity);
     if (d->nodes->contains(node)) {
-        d->removeNode(node);
+        d->nodes->remove(node);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(node);
 
         // Adjust opposite property
         node->setActivity(0);
@@ -363,7 +238,10 @@ void QActivity::addVariable(QVariable *variable)
 
     QTUML_D(QActivity);
     if (!d->variables->contains(variable)) {
-        d->addVariable(variable);
+        d->variables->insert(variable);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(variable);
 
         // Adjust opposite property
         variable->setActivityScope(this);
@@ -376,7 +254,10 @@ void QActivity::removeVariable(QVariable *variable)
 
     QTUML_D(QActivity);
     if (d->variables->contains(variable)) {
-        d->removeVariable(variable);
+        d->variables->remove(variable);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(variable);
 
         // Adjust opposite property
         variable->setActivityScope(0);
@@ -400,7 +281,11 @@ void QActivity::addStructuredNode(QStructuredActivityNode *structuredNode)
 
     QTUML_D(QActivity);
     if (!d->structuredNodes->contains(structuredNode)) {
-        d->addStructuredNode(structuredNode);
+        d->structuredNodes->insert(structuredNode);
+
+        // Adjust subsetted property(ies)
+        addGroup(structuredNode);
+        addNode(structuredNode);
 
         // Adjust opposite property
         structuredNode->setActivity(this);
@@ -413,7 +298,11 @@ void QActivity::removeStructuredNode(QStructuredActivityNode *structuredNode)
 
     QTUML_D(QActivity);
     if (d->structuredNodes->contains(structuredNode)) {
-        d->removeStructuredNode(structuredNode);
+        d->structuredNodes->remove(structuredNode);
+
+        // Adjust subsetted property(ies)
+        removeGroup(structuredNode);
+        removeNode(structuredNode);
 
         // Adjust opposite property
         structuredNode->setActivity(0);
@@ -437,7 +326,10 @@ void QActivity::addGroup(QActivityGroup *group)
 
     QTUML_D(QActivity);
     if (!d->groups->contains(group)) {
-        d->addGroup(group);
+        d->groups->insert(group);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(group);
 
         // Adjust opposite property
         group->setInActivity(this);
@@ -450,7 +342,10 @@ void QActivity::removeGroup(QActivityGroup *group)
 
     QTUML_D(QActivity);
     if (d->groups->contains(group)) {
-        d->removeGroup(group);
+        d->groups->remove(group);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(group);
 
         // Adjust opposite property
         group->setInActivity(0);
@@ -474,7 +369,10 @@ void QActivity::addEdge(QActivityEdge *edge)
 
     QTUML_D(QActivity);
     if (!d->edges->contains(edge)) {
-        d->addEdge(edge);
+        d->edges->insert(edge);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedElement(edge);
 
         // Adjust opposite property
         edge->setActivity(this);
@@ -487,7 +385,10 @@ void QActivity::removeEdge(QActivityEdge *edge)
 
     QTUML_D(QActivity);
     if (d->edges->contains(edge)) {
-        d->removeEdge(edge);
+        d->edges->remove(edge);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedElement(edge);
 
         // Adjust opposite property
         edge->setActivity(0);

@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qliteralspecification_p.h"
 
 QT_BEGIN_HEADER
@@ -52,17 +51,15 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
+class QLiteralUnlimitedNatural;
 
 class QLiteralUnlimitedNaturalPrivate : public QLiteralSpecificationPrivate
 {
 public:
-    explicit QLiteralUnlimitedNaturalPrivate();
+    explicit QLiteralUnlimitedNaturalPrivate(QLiteralUnlimitedNatural *q_umlptr = 0);
     virtual ~QLiteralUnlimitedNaturalPrivate();
 
     qint32 value;
-
-    // Internal functions for attributes
-    void setValue(qint32 value);
 };
 
 QT_END_NAMESPACE_QTUML

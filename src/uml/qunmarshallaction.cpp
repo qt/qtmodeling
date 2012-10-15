@@ -41,7 +41,6 @@
 
 #include "qunmarshallaction.h"
 #include "qunmarshallaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 #include <QtUml/QOutputPin>
@@ -49,56 +48,17 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QUnmarshallActionPrivate::QUnmarshallActionPrivate() :
+QUnmarshallActionPrivate::QUnmarshallActionPrivate(QUnmarshallAction *q_umlptr) :
     object(0),
     results(new QSet<QOutputPin *>),
     unmarshallType(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QUnmarshallActionPrivate::~QUnmarshallActionPrivate()
 {
     delete results;
-}
-
-void QUnmarshallActionPrivate::setObject(QInputPin *object)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeInput(this->object);
-
-    this->object = object;
-
-    // Adjust subsetted property(ies)
-    addInput(object);
-}
-
-void QUnmarshallActionPrivate::addResult(QOutputPin *result)
-{
-    // This is a read-write association end
-
-    this->results->insert(result);
-
-    // Adjust subsetted property(ies)
-    addOutput(result);
-}
-
-void QUnmarshallActionPrivate::removeResult(QOutputPin *result)
-{
-    // This is a read-write association end
-
-    this->results->remove(result);
-
-    // Adjust subsetted property(ies)
-    removeOutput(result);
-}
-
-void QUnmarshallActionPrivate::setUnmarshallType(QClassifier *unmarshallType)
-{
-    // This is a read-write association end
-
-    this->unmarshallType = unmarshallType;
 }
 
 /*!
@@ -112,7 +72,7 @@ void QUnmarshallActionPrivate::setUnmarshallType(QClassifier *unmarshallType)
 QUnmarshallAction::QUnmarshallAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QUnmarshallActionPrivate;
+    d_umlptr = new QUnmarshallActionPrivate(this);
 }
 
 QUnmarshallAction::QUnmarshallAction(bool createPimpl, QObject *parent)
@@ -143,7 +103,13 @@ void QUnmarshallAction::setObject(QInputPin *object)
 
     QTUML_D(QUnmarshallAction);
     if (d->object != object) {
-        d->setObject(object);
+        // Adjust subsetted property(ies)
+        d->removeInput(d->object);
+
+        d->object = object;
+
+        // Adjust subsetted property(ies)
+        d->addInput(object);
     }
 }
 
@@ -164,7 +130,10 @@ void QUnmarshallAction::addResult(QOutputPin *result)
 
     QTUML_D(QUnmarshallAction);
     if (!d->results->contains(result)) {
-        d->addResult(result);
+        d->results->insert(result);
+
+        // Adjust subsetted property(ies)
+        d->addOutput(result);
     }
 }
 
@@ -174,7 +143,10 @@ void QUnmarshallAction::removeResult(QOutputPin *result)
 
     QTUML_D(QUnmarshallAction);
     if (d->results->contains(result)) {
-        d->removeResult(result);
+        d->results->remove(result);
+
+        // Adjust subsetted property(ies)
+        d->removeOutput(result);
     }
 }
 
@@ -195,7 +167,7 @@ void QUnmarshallAction::setUnmarshallType(QClassifier *unmarshallType)
 
     QTUML_D(QUnmarshallAction);
     if (d->unmarshallType != unmarshallType) {
-        d->setUnmarshallType(unmarshallType);
+        d->unmarshallType = unmarshallType;
     }
 }
 

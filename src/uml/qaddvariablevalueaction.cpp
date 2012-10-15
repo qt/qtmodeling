@@ -41,40 +41,20 @@
 
 #include "qaddvariablevalueaction.h"
 #include "qaddvariablevalueaction_p.h"
-#include "qaction_p.h"
 
 #include <QtUml/QInputPin>
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QAddVariableValueActionPrivate::QAddVariableValueActionPrivate() :
+QAddVariableValueActionPrivate::QAddVariableValueActionPrivate(QAddVariableValueAction *q_umlptr) :
     isReplaceAll(false),
     insertAt(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QAddVariableValueActionPrivate::~QAddVariableValueActionPrivate()
 {
-}
-
-void QAddVariableValueActionPrivate::setReplaceAll(bool isReplaceAll)
-{
-    // This is a read-write attribute
-
-    this->isReplaceAll = isReplaceAll;
-}
-
-void QAddVariableValueActionPrivate::setInsertAt(QInputPin *insertAt)
-{
-    // This is a read-write association end
-
-    // Adjust subsetted property(ies)
-    removeInput(this->insertAt);
-
-    this->insertAt = insertAt;
-
-    // Adjust subsetted property(ies)
-    addInput(insertAt);
 }
 
 /*!
@@ -88,7 +68,7 @@ void QAddVariableValueActionPrivate::setInsertAt(QInputPin *insertAt)
 QAddVariableValueAction::QAddVariableValueAction(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QAddVariableValueActionPrivate;
+    d_umlptr = new QAddVariableValueActionPrivate(this);
 }
 
 QAddVariableValueAction::QAddVariableValueAction(bool createPimpl, QObject *parent)
@@ -119,7 +99,7 @@ void QAddVariableValueAction::setReplaceAll(bool isReplaceAll)
 
     QTUML_D(QAddVariableValueAction);
     if (d->isReplaceAll != isReplaceAll) {
-        d->setReplaceAll(isReplaceAll);
+        d->isReplaceAll = isReplaceAll;
     }
 }
 
@@ -140,7 +120,13 @@ void QAddVariableValueAction::setInsertAt(QInputPin *insertAt)
 
     QTUML_D(QAddVariableValueAction);
     if (d->insertAt != insertAt) {
-        d->setInsertAt(insertAt);
+        // Adjust subsetted property(ies)
+        d->removeInput(d->insertAt);
+
+        d->insertAt = insertAt;
+
+        // Adjust subsetted property(ies)
+        d->addInput(insertAt);
     }
 }
 

@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qinvocationaction_p.h"
 
 // Qt includes
@@ -61,18 +60,13 @@ class QOutputPin;
 class QCallActionPrivate : public QInvocationActionPrivate
 {
 public:
-    explicit QCallActionPrivate();
     virtual ~QCallActionPrivate();
 
     bool isSynchronous;
     QList<QOutputPin *> *results;
 
-    // Internal functions for attributes
-    void setSynchronous(bool isSynchronous);
-
-    // Internal functions for association-ends
-    void addResult(QOutputPin *result);
-    void removeResult(QOutputPin *result);
+protected:
+    explicit QCallActionPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

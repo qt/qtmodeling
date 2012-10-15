@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-
 #include "qintervalconstraint_p.h"
 
 // Qt includes
@@ -57,22 +56,16 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 
 class QDurationInterval;
+class QDurationConstraint;
 
 class QDurationConstraintPrivate : public QIntervalConstraintPrivate
 {
 public:
-    explicit QDurationConstraintPrivate();
+    explicit QDurationConstraintPrivate(QDurationConstraint *q_umlptr = 0);
     virtual ~QDurationConstraintPrivate();
 
     QSet<bool> *firstEvents;
     QDurationInterval *specification;
-
-    // Internal functions for attributes
-    void addFirstEvent(bool firstEvent);
-    void removeFirstEvent(bool firstEvent);
-
-    // Internal functions for association-ends
-    void setSpecification(QDurationInterval *specification);
 };
 
 QT_END_NAMESPACE_QTUML

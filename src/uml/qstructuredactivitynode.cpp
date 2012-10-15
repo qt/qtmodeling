@@ -41,10 +41,6 @@
 
 #include "qstructuredactivitynode.h"
 #include "qstructuredactivitynode_p.h"
-#include "qaction_p.h"
-#include "qactivitygroup_p.h"
-#include "qelement_p.h"
-#include "qnamespace_p.h"
 
 #include <QtUml/QOutputPin>
 #include <QtUml/QVariable>
@@ -55,7 +51,7 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QStructuredActivityNodePrivate::QStructuredActivityNodePrivate() :
+QStructuredActivityNodePrivate::QStructuredActivityNodePrivate(QStructuredActivityNode *q_umlptr) :
     mustIsolate(false),
     structuredNodeInputs(new QSet<QInputPin *>),
     nodes(new QSet<QActivityNode *>),
@@ -64,6 +60,7 @@ QStructuredActivityNodePrivate::QStructuredActivityNodePrivate() :
     variables(new QSet<QVariable *>),
     activity(0)
 {
+    this->q_umlptr = q_umlptr;
 }
 
 QStructuredActivityNodePrivate::~QStructuredActivityNodePrivate()
@@ -73,124 +70,6 @@ QStructuredActivityNodePrivate::~QStructuredActivityNodePrivate()
     delete structuredNodeOutputs;
     delete edges;
     delete variables;
-}
-
-void QStructuredActivityNodePrivate::setMustIsolate(bool mustIsolate)
-{
-    // This is a read-write attribute
-
-    this->mustIsolate = mustIsolate;
-}
-
-void QStructuredActivityNodePrivate::addStructuredNodeInput(QInputPin *structuredNodeInput)
-{
-    // This is a read-write association end
-
-    this->structuredNodeInputs->insert(structuredNodeInput);
-
-    // Adjust subsetted property(ies)
-    addInput(structuredNodeInput);
-}
-
-void QStructuredActivityNodePrivate::removeStructuredNodeInput(QInputPin *structuredNodeInput)
-{
-    // This is a read-write association end
-
-    this->structuredNodeInputs->remove(structuredNodeInput);
-
-    // Adjust subsetted property(ies)
-    removeInput(structuredNodeInput);
-}
-
-void QStructuredActivityNodePrivate::addNode(QActivityNode *node)
-{
-    // This is a read-write association end
-
-    this->nodes->insert(node);
-
-    // Adjust subsetted property(ies)
-    addContainedNode(node);
-    addOwnedElement(node);
-}
-
-void QStructuredActivityNodePrivate::removeNode(QActivityNode *node)
-{
-    // This is a read-write association end
-
-    this->nodes->remove(node);
-
-    // Adjust subsetted property(ies)
-    removeContainedNode(node);
-    removeOwnedElement(node);
-}
-
-void QStructuredActivityNodePrivate::addStructuredNodeOutput(QOutputPin *structuredNodeOutput)
-{
-    // This is a read-write association end
-
-    this->structuredNodeOutputs->insert(structuredNodeOutput);
-
-    // Adjust subsetted property(ies)
-    addOutput(structuredNodeOutput);
-}
-
-void QStructuredActivityNodePrivate::removeStructuredNodeOutput(QOutputPin *structuredNodeOutput)
-{
-    // This is a read-write association end
-
-    this->structuredNodeOutputs->remove(structuredNodeOutput);
-
-    // Adjust subsetted property(ies)
-    removeOutput(structuredNodeOutput);
-}
-
-void QStructuredActivityNodePrivate::addEdge(QActivityEdge *edge)
-{
-    // This is a read-write association end
-
-    this->edges->insert(edge);
-
-    // Adjust subsetted property(ies)
-    addContainedEdge(edge);
-    addOwnedElement(edge);
-}
-
-void QStructuredActivityNodePrivate::removeEdge(QActivityEdge *edge)
-{
-    // This is a read-write association end
-
-    this->edges->remove(edge);
-
-    // Adjust subsetted property(ies)
-    removeContainedEdge(edge);
-    removeOwnedElement(edge);
-}
-
-void QStructuredActivityNodePrivate::addVariable(QVariable *variable)
-{
-    // This is a read-write association end
-
-    this->variables->insert(variable);
-
-    // Adjust subsetted property(ies)
-    addOwnedMember(variable);
-}
-
-void QStructuredActivityNodePrivate::removeVariable(QVariable *variable)
-{
-    // This is a read-write association end
-
-    this->variables->remove(variable);
-
-    // Adjust subsetted property(ies)
-    removeOwnedMember(variable);
-}
-
-void QStructuredActivityNodePrivate::setActivity(QActivity *activity)
-{
-    // This is a read-write association end
-
-    this->activity = activity;
 }
 
 /*!
@@ -204,7 +83,7 @@ void QStructuredActivityNodePrivate::setActivity(QActivity *activity)
 QStructuredActivityNode::QStructuredActivityNode(QObject *parent)
     : QObject(parent)
 {
-    d_umlptr = new QStructuredActivityNodePrivate;
+    d_umlptr = new QStructuredActivityNodePrivate(this);
 }
 
 QStructuredActivityNode::QStructuredActivityNode(bool createPimpl, QObject *parent)
@@ -235,7 +114,7 @@ void QStructuredActivityNode::setMustIsolate(bool mustIsolate)
 
     QTUML_D(QStructuredActivityNode);
     if (d->mustIsolate != mustIsolate) {
-        d->setMustIsolate(mustIsolate);
+        d->mustIsolate = mustIsolate;
     }
 }
 
@@ -253,7 +132,10 @@ void QStructuredActivityNode::addStructuredNodeInput(QInputPin *structuredNodeIn
 
     QTUML_D(QStructuredActivityNode);
     if (!d->structuredNodeInputs->contains(structuredNodeInput)) {
-        d->addStructuredNodeInput(structuredNodeInput);
+        d->structuredNodeInputs->insert(structuredNodeInput);
+
+        // Adjust subsetted property(ies)
+        d->addInput(structuredNodeInput);
     }
 }
 
@@ -263,7 +145,10 @@ void QStructuredActivityNode::removeStructuredNodeInput(QInputPin *structuredNod
 
     QTUML_D(QStructuredActivityNode);
     if (d->structuredNodeInputs->contains(structuredNodeInput)) {
-        d->removeStructuredNodeInput(structuredNodeInput);
+        d->structuredNodeInputs->remove(structuredNodeInput);
+
+        // Adjust subsetted property(ies)
+        d->removeInput(structuredNodeInput);
     }
 }
 
@@ -284,7 +169,11 @@ void QStructuredActivityNode::addNode(QActivityNode *node)
 
     QTUML_D(QStructuredActivityNode);
     if (!d->nodes->contains(node)) {
-        d->addNode(node);
+        d->nodes->insert(node);
+
+        // Adjust subsetted property(ies)
+        d->addContainedNode(node);
+        d->addOwnedElement(node);
 
         // Adjust opposite property
         node->setInStructuredNode(this);
@@ -297,7 +186,11 @@ void QStructuredActivityNode::removeNode(QActivityNode *node)
 
     QTUML_D(QStructuredActivityNode);
     if (d->nodes->contains(node)) {
-        d->removeNode(node);
+        d->nodes->remove(node);
+
+        // Adjust subsetted property(ies)
+        d->removeContainedNode(node);
+        d->removeOwnedElement(node);
 
         // Adjust opposite property
         node->setInStructuredNode(0);
@@ -318,7 +211,10 @@ void QStructuredActivityNode::addStructuredNodeOutput(QOutputPin *structuredNode
 
     QTUML_D(QStructuredActivityNode);
     if (!d->structuredNodeOutputs->contains(structuredNodeOutput)) {
-        d->addStructuredNodeOutput(structuredNodeOutput);
+        d->structuredNodeOutputs->insert(structuredNodeOutput);
+
+        // Adjust subsetted property(ies)
+        d->addOutput(structuredNodeOutput);
     }
 }
 
@@ -328,7 +224,10 @@ void QStructuredActivityNode::removeStructuredNodeOutput(QOutputPin *structuredN
 
     QTUML_D(QStructuredActivityNode);
     if (d->structuredNodeOutputs->contains(structuredNodeOutput)) {
-        d->removeStructuredNodeOutput(structuredNodeOutput);
+        d->structuredNodeOutputs->remove(structuredNodeOutput);
+
+        // Adjust subsetted property(ies)
+        d->removeOutput(structuredNodeOutput);
     }
 }
 
@@ -349,7 +248,11 @@ void QStructuredActivityNode::addEdge(QActivityEdge *edge)
 
     QTUML_D(QStructuredActivityNode);
     if (!d->edges->contains(edge)) {
-        d->addEdge(edge);
+        d->edges->insert(edge);
+
+        // Adjust subsetted property(ies)
+        d->addContainedEdge(edge);
+        d->addOwnedElement(edge);
 
         // Adjust opposite property
         edge->setInStructuredNode(this);
@@ -362,7 +265,11 @@ void QStructuredActivityNode::removeEdge(QActivityEdge *edge)
 
     QTUML_D(QStructuredActivityNode);
     if (d->edges->contains(edge)) {
-        d->removeEdge(edge);
+        d->edges->remove(edge);
+
+        // Adjust subsetted property(ies)
+        d->removeContainedEdge(edge);
+        d->removeOwnedElement(edge);
 
         // Adjust opposite property
         edge->setInStructuredNode(0);
@@ -386,7 +293,10 @@ void QStructuredActivityNode::addVariable(QVariable *variable)
 
     QTUML_D(QStructuredActivityNode);
     if (!d->variables->contains(variable)) {
-        d->addVariable(variable);
+        d->variables->insert(variable);
+
+        // Adjust subsetted property(ies)
+        d->addOwnedMember(variable);
 
         // Adjust opposite property
         variable->setScope(this);
@@ -399,7 +309,10 @@ void QStructuredActivityNode::removeVariable(QVariable *variable)
 
     QTUML_D(QStructuredActivityNode);
     if (d->variables->contains(variable)) {
-        d->removeVariable(variable);
+        d->variables->remove(variable);
+
+        // Adjust subsetted property(ies)
+        d->removeOwnedMember(variable);
 
         // Adjust opposite property
         variable->setScope(0);
@@ -423,7 +336,7 @@ void QStructuredActivityNode::setActivity(QActivity *activity)
 
     QTUML_D(QStructuredActivityNode);
     if (d->activity != activity) {
-        d->setActivity(activity);
+        d->activity = activity;
 
         // Adjust opposite property
         activity->addStructuredNode(this);

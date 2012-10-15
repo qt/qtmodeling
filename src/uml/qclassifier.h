@@ -58,15 +58,15 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QRedefinableTemplateSignature;
 class QClassifierTemplateParameter;
 class QUseCase;
 class QSubstitution;
 class QGeneralizationSet;
-class QRedefinableTemplateSignature;
-class QProperty;
 class QNamedElement;
-class QCollaborationUse;
+class QProperty;
 class QGeneralization;
+class QCollaborationUse;
 class QFeature;
 
 class Q_UML_EXPORT QClassifier : public QNamespace, public QType, public QRedefinableElement, public QTemplateableElement
