@@ -104,7 +104,9 @@ void QAbstraction::setMapping(QOpaqueExpression *mapping)
         d->mapping = mapping;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(mapping);
+        if (mapping) {
+            d->addOwnedElement(mapping);
+        }
     }
 }
 

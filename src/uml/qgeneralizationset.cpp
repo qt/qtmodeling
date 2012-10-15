@@ -145,10 +145,15 @@ void QGeneralizationSet::setPowertype(QClassifier *powertype)
 
     QTUML_D(QGeneralizationSet);
     if (d->powertype != powertype) {
+        // Adjust opposite property
+        if (d->powertype)
+            d->powertype->removePowertypeExtent(this);
+
         d->powertype = powertype;
 
         // Adjust opposite property
-        powertype->addPowertypeExtent(this);
+        if (powertype)
+            powertype->addPowertypeExtent(this);
     }
 }
 
@@ -185,7 +190,8 @@ void QGeneralizationSet::removeGeneralization(QGeneralization *generalization)
         d->generalizations->remove(generalization);
 
         // Adjust opposite property
-        generalization->removeGeneralizationSet(this);
+        if (generalization)
+            generalization->removeGeneralizationSet(this);
     }
 }
 

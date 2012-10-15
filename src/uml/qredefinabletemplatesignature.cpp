@@ -114,13 +114,17 @@ void QRedefinableTemplateSignature::setClassifier(QClassifier *classifier)
 
     QTUML_D(QRedefinableTemplateSignature);
     if (d->classifier != classifier) {
+        // Adjust opposite property
+
         // Adjust subsetted property(ies)
         d->removeRedefinitionContext(d->classifier);
 
         d->classifier = classifier;
 
         // Adjust subsetted property(ies)
-        d->addRedefinitionContext(classifier);
+        if (classifier) {
+            d->addRedefinitionContext(classifier);
+        }
 
         // Adjust opposite property
         classifier->setOwnedTemplateSignature(this);

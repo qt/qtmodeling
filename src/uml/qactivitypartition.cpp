@@ -215,13 +215,18 @@ void QActivityPartition::setSuperPartition(QActivityPartition *superPartition)
 
     QTUML_D(QActivityPartition);
     if (d->superPartition != superPartition) {
+        // Adjust opposite property
+        if (d->superPartition)
+            d->superPartition->removeSubpartition(this);
+
         d->superPartition = superPartition;
 
         // Adjust subsetted property(ies)
         d->setSuperGroup(superPartition);
 
         // Adjust opposite property
-        superPartition->addSubpartition(this);
+        if (superPartition)
+            superPartition->addSubpartition(this);
     }
 }
 
@@ -264,7 +269,8 @@ void QActivityPartition::removeNode(QActivityNode *node)
         d->removeContainedNode(node);
 
         // Adjust opposite property
-        node->removeInPartition(this);
+        if (node)
+            node->removeInPartition(this);
     }
 }
 
@@ -307,7 +313,8 @@ void QActivityPartition::removeEdge(QActivityEdge *edge)
         d->removeContainedEdge(edge);
 
         // Adjust opposite property
-        edge->removeInPartition(this);
+        if (edge)
+            edge->removeInPartition(this);
     }
 }
 

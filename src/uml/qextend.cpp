@@ -110,7 +110,9 @@ void QExtend::setExtendedCase(QUseCase *extendedCase)
         d->extendedCase = extendedCase;
 
         // Adjust subsetted property(ies)
-        d->addTarget(extendedCase);
+        if (extendedCase) {
+            d->addTarget(extendedCase);
+        }
     }
 }
 
@@ -131,17 +133,24 @@ void QExtend::setExtension(QUseCase *extension)
 
     QTUML_D(QExtend);
     if (d->extension != extension) {
+        // Adjust opposite property
+        if (d->extension)
+            d->extension->removeExtend(this);
+
         // Adjust subsetted property(ies)
         d->removeSource(d->extension);
 
         d->extension = extension;
 
         // Adjust subsetted property(ies)
-        d->addSource(extension);
+        if (extension) {
+            d->addSource(extension);
+        }
         d->setNamespace_(extension);
 
         // Adjust opposite property
-        extension->addExtend(this);
+        if (extension)
+            extension->addExtend(this);
     }
 }
 
@@ -199,7 +208,9 @@ void QExtend::setCondition(QConstraint *condition)
         d->condition = condition;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(condition);
+        if (condition) {
+            d->addOwnedElement(condition);
+        }
     }
 }
 

@@ -104,7 +104,9 @@ void QAcceptCallAction::setReturnInformation(QOutputPin *returnInformation)
         d->returnInformation = returnInformation;
 
         // Adjust subsetted property(ies)
-        d->addOutput(returnInformation);
+        if (returnInformation) {
+            d->addOutput(returnInformation);
+        }
     }
 }
 

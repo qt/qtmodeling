@@ -122,6 +122,10 @@ void QProfileApplication::setApplyingPackage(QPackage *applyingPackage)
 
     QTUML_D(QProfileApplication);
     if (d->applyingPackage != applyingPackage) {
+        // Adjust opposite property
+        if (d->applyingPackage)
+            d->applyingPackage->removeProfileApplication(this);
+
         // Adjust subsetted property(ies)
         d->removeSource(d->applyingPackage);
 
@@ -129,10 +133,13 @@ void QProfileApplication::setApplyingPackage(QPackage *applyingPackage)
 
         // Adjust subsetted property(ies)
         d->setOwner(applyingPackage);
-        d->addSource(applyingPackage);
+        if (applyingPackage) {
+            d->addSource(applyingPackage);
+        }
 
         // Adjust opposite property
-        applyingPackage->addProfileApplication(this);
+        if (applyingPackage)
+            applyingPackage->addProfileApplication(this);
     }
 }
 
@@ -159,7 +166,9 @@ void QProfileApplication::setAppliedProfile(QProfile *appliedProfile)
         d->appliedProfile = appliedProfile;
 
         // Adjust subsetted property(ies)
-        d->addTarget(appliedProfile);
+        if (appliedProfile) {
+            d->addTarget(appliedProfile);
+        }
     }
 }
 

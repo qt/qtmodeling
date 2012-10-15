@@ -98,6 +98,8 @@ void QConnectableElementTemplateParameter::setParameteredElement(QConnectableEle
 
     QTUML_D(QConnectableElementTemplateParameter);
     if (d->parameteredElement != parameteredElement) {
+        // Adjust opposite property
+
         d->parameteredElement = parameteredElement;
 
         // Adjust opposite property

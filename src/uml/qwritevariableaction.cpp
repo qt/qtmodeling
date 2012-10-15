@@ -94,7 +94,9 @@ void QWriteVariableAction::setValue(QInputPin *value)
         d->value = value;
 
         // Adjust subsetted property(ies)
-        d->addInput(value);
+        if (value) {
+            d->addInput(value);
+        }
     }
 }
 

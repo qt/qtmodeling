@@ -163,13 +163,18 @@ void QVertex::setContainer(QRegion *container)
 
     QTUML_D(QVertex);
     if (d->container != container) {
+        // Adjust opposite property
+        if (d->container)
+            d->container->removeSubvertex(this);
+
         d->container = container;
 
         // Adjust subsetted property(ies)
         d->setNamespace_(container);
 
         // Adjust opposite property
-        container->addSubvertex(this);
+        if (container)
+            container->addSubvertex(this);
     }
 }
 

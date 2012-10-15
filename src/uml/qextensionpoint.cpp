@@ -98,13 +98,18 @@ void QExtensionPoint::setUseCase(QUseCase *useCase)
 
     QTUML_D(QExtensionPoint);
     if (d->useCase != useCase) {
+        // Adjust opposite property
+        if (d->useCase)
+            d->useCase->removeExtensionPoint(this);
+
         d->useCase = useCase;
 
         // Adjust subsetted property(ies)
         d->setNamespace_(useCase);
 
         // Adjust opposite property
-        useCase->addExtensionPoint(this);
+        if (useCase)
+            useCase->addExtensionPoint(this);
     }
 }
 

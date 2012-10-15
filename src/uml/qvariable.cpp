@@ -101,13 +101,18 @@ void QVariable::setScope(QStructuredActivityNode *scope)
 
     QTUML_D(QVariable);
     if (d->scope != scope) {
+        // Adjust opposite property
+        if (d->scope)
+            d->scope->removeVariable(this);
+
         d->scope = scope;
 
         // Adjust subsetted property(ies)
         d->setNamespace_(scope);
 
         // Adjust opposite property
-        scope->addVariable(this);
+        if (scope)
+            scope->addVariable(this);
     }
 }
 
@@ -128,13 +133,18 @@ void QVariable::setActivityScope(QActivity *activityScope)
 
     QTUML_D(QVariable);
     if (d->activityScope != activityScope) {
+        // Adjust opposite property
+        if (d->activityScope)
+            d->activityScope->removeVariable(this);
+
         d->activityScope = activityScope;
 
         // Adjust subsetted property(ies)
         d->setNamespace_(activityScope);
 
         // Adjust opposite property
-        activityScope->addVariable(this);
+        if (activityScope)
+            activityScope->addVariable(this);
     }
 }
 

@@ -123,7 +123,8 @@ void QDependency::removeClient(QNamedElement *client)
         d->removeSource(client);
 
         // Adjust opposite property
-        client->removeClientDependency(this);
+        if (client)
+            client->removeClientDependency(this);
     }
 }
 

@@ -308,6 +308,10 @@ void QProperty::setOwningAssociation(QAssociation *owningAssociation)
 
     QTUML_D(QProperty);
     if (d->owningAssociation != owningAssociation) {
+        // Adjust opposite property
+        if (d->owningAssociation)
+            d->owningAssociation->removeOwnedEnd(this);
+
         // Adjust subsetted property(ies)
         d->removeFeaturingClassifier(d->owningAssociation);
         d->removeRedefinitionContext(d->owningAssociation);
@@ -315,13 +319,18 @@ void QProperty::setOwningAssociation(QAssociation *owningAssociation)
         d->owningAssociation = owningAssociation;
 
         // Adjust subsetted property(ies)
-        d->addFeaturingClassifier(owningAssociation);
-        d->addRedefinitionContext(owningAssociation);
+        if (owningAssociation) {
+            d->addFeaturingClassifier(owningAssociation);
+        }
+        if (owningAssociation) {
+            d->addRedefinitionContext(owningAssociation);
+        }
         d->setNamespace_(owningAssociation);
         setAssociation(owningAssociation);
 
         // Adjust opposite property
-        owningAssociation->addOwnedEnd(this);
+        if (owningAssociation)
+            owningAssociation->addOwnedEnd(this);
     }
 }
 
@@ -391,7 +400,9 @@ void QProperty::setDefaultValue(QValueSpecification *defaultValue)
         d->defaultValue = defaultValue;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(defaultValue);
+        if (defaultValue) {
+            d->addOwnedElement(defaultValue);
+        }
     }
 }
 
@@ -412,6 +423,10 @@ void QProperty::setClass_(QClass *class_)
 
     QTUML_D(QProperty);
     if (d->class_ != class_) {
+        // Adjust opposite property
+        if (d->class_)
+            d->class_->removeOwnedAttribute(this);
+
         // Adjust subsetted property(ies)
         d->removeFeaturingClassifier(d->class_);
         d->removeRedefinitionContext(d->class_);
@@ -420,11 +435,16 @@ void QProperty::setClass_(QClass *class_)
 
         // Adjust subsetted property(ies)
         d->setNamespace_(class_);
-        d->addFeaturingClassifier(class_);
-        d->addRedefinitionContext(class_);
+        if (class_) {
+            d->addFeaturingClassifier(class_);
+        }
+        if (class_) {
+            d->addRedefinitionContext(class_);
+        }
 
         // Adjust opposite property
-        class_->addOwnedAttribute(this);
+        if (class_)
+            class_->addOwnedAttribute(this);
     }
 }
 
@@ -470,13 +490,18 @@ void QProperty::setAssociationEnd(QProperty *associationEnd)
 
     QTUML_D(QProperty);
     if (d->associationEnd != associationEnd) {
+        // Adjust opposite property
+        if (d->associationEnd)
+            d->associationEnd->removeQualifier(this);
+
         d->associationEnd = associationEnd;
 
         // Adjust subsetted property(ies)
         d->setOwner(associationEnd);
 
         // Adjust opposite property
-        associationEnd->addQualifier(this);
+        if (associationEnd)
+            associationEnd->addQualifier(this);
     }
 }
 
@@ -497,6 +522,10 @@ void QProperty::setDatatype(QDataType *datatype)
 
     QTUML_D(QProperty);
     if (d->datatype != datatype) {
+        // Adjust opposite property
+        if (d->datatype)
+            d->datatype->removeOwnedAttribute(this);
+
         // Adjust subsetted property(ies)
         d->removeFeaturingClassifier(d->datatype);
         d->removeRedefinitionContext(d->datatype);
@@ -505,11 +534,16 @@ void QProperty::setDatatype(QDataType *datatype)
 
         // Adjust subsetted property(ies)
         d->setNamespace_(datatype);
-        d->addFeaturingClassifier(datatype);
-        d->addRedefinitionContext(datatype);
+        if (datatype) {
+            d->addFeaturingClassifier(datatype);
+        }
+        if (datatype) {
+            d->addRedefinitionContext(datatype);
+        }
 
         // Adjust opposite property
-        datatype->addOwnedAttribute(this);
+        if (datatype)
+            datatype->addOwnedAttribute(this);
     }
 }
 
@@ -567,10 +601,15 @@ void QProperty::setAssociation(QAssociation *association)
 
     QTUML_D(QProperty);
     if (d->association != association) {
+        // Adjust opposite property
+        if (d->association)
+            d->association->removeMemberEnd(this);
+
         d->association = association;
 
         // Adjust opposite property
-        association->addMemberEnd(this);
+        if (association)
+            association->addMemberEnd(this);
     }
 }
 
@@ -591,6 +630,10 @@ void QProperty::setInterface(QInterface *interface)
 
     QTUML_D(QProperty);
     if (d->interface != interface) {
+        // Adjust opposite property
+        if (d->interface)
+            d->interface->removeOwnedAttribute(this);
+
         // Adjust subsetted property(ies)
         d->removeFeaturingClassifier(d->interface);
         d->removeRedefinitionContext(d->interface);
@@ -599,11 +642,16 @@ void QProperty::setInterface(QInterface *interface)
 
         // Adjust subsetted property(ies)
         d->setNamespace_(interface);
-        d->addFeaturingClassifier(interface);
-        d->addRedefinitionContext(interface);
+        if (interface) {
+            d->addFeaturingClassifier(interface);
+        }
+        if (interface) {
+            d->addRedefinitionContext(interface);
+        }
 
         // Adjust opposite property
-        interface->addOwnedAttribute(this);
+        if (interface)
+            interface->addOwnedAttribute(this);
     }
 }
 

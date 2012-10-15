@@ -96,7 +96,9 @@ void QStructuralFeatureAction::setObject(QInputPin *object)
         d->object = object;
 
         // Adjust subsetted property(ies)
-        d->addInput(object);
+        if (object) {
+            d->addInput(object);
+        }
     }
 }
 

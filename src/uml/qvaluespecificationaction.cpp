@@ -106,7 +106,9 @@ void QValueSpecificationAction::setValue(QValueSpecification *value)
         d->value = value;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(value);
+        if (value) {
+            d->addOwnedElement(value);
+        }
     }
 }
 
@@ -133,7 +135,9 @@ void QValueSpecificationAction::setResult(QOutputPin *result)
         d->result = result;
 
         // Adjust subsetted property(ies)
-        d->addOutput(result);
+        if (result) {
+            d->addOutput(result);
+        }
     }
 }
 

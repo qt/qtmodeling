@@ -114,7 +114,9 @@ void QRegion::setExtendedRegion(QRegion *extendedRegion)
         d->extendedRegion = extendedRegion;
 
         // Adjust subsetted property(ies)
-        d->addRedefinedElement(extendedRegion);
+        if (extendedRegion) {
+            d->addRedefinedElement(extendedRegion);
+        }
     }
 }
 
@@ -178,13 +180,18 @@ void QRegion::setStateMachine(QStateMachine *stateMachine)
 
     QTUML_D(QRegion);
     if (d->stateMachine != stateMachine) {
+        // Adjust opposite property
+        if (d->stateMachine)
+            d->stateMachine->removeRegion(this);
+
         d->stateMachine = stateMachine;
 
         // Adjust subsetted property(ies)
         d->setNamespace_(stateMachine);
 
         // Adjust opposite property
-        stateMachine->addRegion(this);
+        if (stateMachine)
+            stateMachine->addRegion(this);
     }
 }
 
@@ -205,13 +212,18 @@ void QRegion::setState(QState *state)
 
     QTUML_D(QRegion);
     if (d->state != state) {
+        // Adjust opposite property
+        if (d->state)
+            d->state->removeRegion(this);
+
         d->state = state;
 
         // Adjust subsetted property(ies)
         d->setNamespace_(state);
 
         // Adjust opposite property
-        state->addRegion(this);
+        if (state)
+            state->addRegion(this);
     }
 }
 

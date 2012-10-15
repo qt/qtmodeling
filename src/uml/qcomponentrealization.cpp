@@ -101,17 +101,24 @@ void QComponentRealization::setAbstraction(QComponent *abstraction)
 
     QTUML_D(QComponentRealization);
     if (d->abstraction != abstraction) {
+        // Adjust opposite property
+        if (d->abstraction)
+            d->abstraction->removeRealization(this);
+
         // Adjust subsetted property(ies)
         removeSupplier(d->abstraction);
 
         d->abstraction = abstraction;
 
         // Adjust subsetted property(ies)
-        addSupplier(abstraction);
+        if (abstraction) {
+            addSupplier(abstraction);
+        }
         d->setOwner(abstraction);
 
         // Adjust opposite property
-        abstraction->addRealization(this);
+        if (abstraction)
+            abstraction->addRealization(this);
     }
 }
 

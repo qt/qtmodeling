@@ -88,7 +88,8 @@ void QActivityGroupPrivate::removeContainedNode(QActivityNode *containedNode)
 
         // Adjust opposite property
         QTUML_Q(QActivityGroup);
-        (dynamic_cast<QActivityNodePrivate *>(containedNode->d_umlptr))->removeInGroup(q);
+        if (containedNode)
+            (dynamic_cast<QActivityNodePrivate *>(containedNode->d_umlptr))->removeInGroup(q);
     }
 }
 
@@ -146,7 +147,8 @@ void QActivityGroupPrivate::removeContainedEdge(QActivityEdge *containedEdge)
 
         // Adjust opposite property
         QTUML_Q(QActivityGroup);
-        (dynamic_cast<QActivityEdgePrivate *>(containedEdge->d_umlptr))->removeInGroup(q);
+        if (containedEdge)
+            (dynamic_cast<QActivityEdgePrivate *>(containedEdge->d_umlptr))->removeInGroup(q);
     }
 }
 
@@ -155,14 +157,19 @@ void QActivityGroupPrivate::setSuperGroup(QActivityGroup *superGroup)
     // This is a read-only derived-union association end
 
     if (this->superGroup != superGroup) {
+        QTUML_Q(QActivityGroup)
+        // Adjust opposite property
+        if (this->superGroup)
+            (dynamic_cast<QActivityGroupPrivate *>(this->superGroup->d_umlptr))->removeSubgroup(q);
+
         this->superGroup = superGroup;
 
         // Adjust subsetted property(ies)
         setOwner(superGroup);
 
         // Adjust opposite property
-        QTUML_Q(QActivityGroup);
-        (dynamic_cast<QActivityGroupPrivate *>(superGroup->d_umlptr))->addSubgroup(q);
+        if (superGroup)
+            (dynamic_cast<QActivityGroupPrivate *>(superGroup->d_umlptr))->addSubgroup(q);
     }
 }
 
@@ -199,13 +206,18 @@ void QActivityGroup::setInActivity(QActivity *inActivity)
 
     QTUML_D(QActivityGroup);
     if (d->inActivity != inActivity) {
+        // Adjust opposite property
+        if (d->inActivity)
+            d->inActivity->removeGroup(this);
+
         d->inActivity = inActivity;
 
         // Adjust subsetted property(ies)
         d->setOwner(inActivity);
 
         // Adjust opposite property
-        inActivity->addGroup(this);
+        if (inActivity)
+            inActivity->addGroup(this);
     }
 }
 

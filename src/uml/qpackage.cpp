@@ -211,13 +211,18 @@ void QPackage::setNestingPackage(QPackage *nestingPackage)
 
     QTUML_D(QPackage);
     if (d->nestingPackage != nestingPackage) {
+        // Adjust opposite property
+        if (d->nestingPackage)
+            d->nestingPackage->removeNestedPackage(this);
+
         d->nestingPackage = nestingPackage;
 
         // Adjust subsetted property(ies)
         d->setNamespace_(nestingPackage);
 
         // Adjust opposite property
-        nestingPackage->addNestedPackage(this);
+        if (nestingPackage)
+            nestingPackage->addNestedPackage(this);
     }
 }
 

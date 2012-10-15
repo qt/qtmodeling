@@ -126,7 +126,9 @@ void QAddStructuralFeatureValueAction::setInsertAt(QInputPin *insertAt)
         d->insertAt = insertAt;
 
         // Adjust subsetted property(ies)
-        d->addInput(insertAt);
+        if (insertAt) {
+            d->addInput(insertAt);
+        }
     }
 }
 

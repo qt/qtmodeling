@@ -14,14 +14,20 @@
         // Adjust subsetted property(ies)
             [%- found = 'true' -%]
             [%- END %]
+        [%- IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]
+        if (${accessor.parameter.0.name}) {
+        [%- END %]
             [%- IF property.isReadOnly == subsettedPropertyItem.isReadOnly %]
-        ${subsettedPropertyItem.accessor.1.name}(${accessor.parameter.0.name});
+        [% IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]    [% END %]${subsettedPropertyItem.accessor.1.name}(${accessor.parameter.0.name});
             [%- ELSIF property.isReadOnly == 'false' and subsettedPropertyItem.isReadOnly == 'true' %]
-        d->${subsettedPropertyItem.accessor.1.name}(${accessor.parameter.0.name});
+        [% IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]    [% END %]d->${subsettedPropertyItem.accessor.1.name}(${accessor.parameter.0.name});
             [%- ELSE %]
-        QTUML_Q(${class.name});
-        q->${subsettedPropertyItem.accessor.1.name}(${accessor.parameter.0.name});
+        [% IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]    [% END %]QTUML_Q(${class.name});
+        [% IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]    [% END %]q->${subsettedPropertyItem.accessor.1.name}(${accessor.parameter.0.name});
             [%- END %]
+        [%- IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]
+        }
+        [%- END %]
         [%- ELSE -%][%- IF operation == 2 and subsettedPropertyItem.accessor.2 -%]
             [%- IF found == 'false' -%]
             [%- IF singlevalued == 'false' %]
@@ -48,33 +54,43 @@
     [%- END -%]
     [%- END -%]
 [%- END -%]
-[%- MACRO HANDLEOPPOSITEEND(property, accessor, operation) BLOCK -%]
+[%- MACRO HANDLEOPPOSITEEND(property, accessor, operation, singlevalued) BLOCK -%]
 [%- IF property.oppositeEnd != '' -%]
 [%- opposite = classes.item(property.oppositeEnd.split('-').0.replace('^', 'Q')).associationend.item(property.oppositeEnd) %]
+        [%- IF singlevalued == 'false' or operation == 1 %]
 
+        [%- END %]
         // Adjust opposite property
-        [%- IF property.isReadOnly == 'true' %]
+        [%- IF property.isReadOnly == 'true' and singlevalued == 'false' %]
         QTUML_Q(${class.name});
         [%- END %]
-    [%- IF operation == 1 %]
-        [%- IF opposite.isReadOnly == 'false' %]
-        ${accessor.parameter.0.name}->${opposite.accessor.1.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
-        [%- ELSE %]
-        (dynamic_cast<${accessor.parameter.0.type.replace(' \*$', '').replace('$', 'Private *')}>(${accessor.parameter.0.name}->d_umlptr))->${opposite.accessor.1.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
+    [%- IF operation == 1 -%]
+        [%- IF property.accessor.size == 2 and opposite.accessor.size > 2 %]
+        if (${accessor.parameter.0.name})
         [%- END %]
+        [%- IF opposite.isReadOnly == 'false' %]
+        [% IF property.accessor.size == 2 and opposite.accessor.size > 2 %]    [% END %]${accessor.parameter.0.name}->${opposite.accessor.1.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
+        [%- ELSE %]
+        [% IF property.accessor.size == 2 and opposite.accessor.size > 2 %]    [% END %](dynamic_cast<${accessor.parameter.0.type.replace(' \*$', '').replace('$', 'Private *')}>(${accessor.parameter.0.name}->d_umlptr))->${opposite.accessor.1.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
+        [%- END -%]
     [%- ELSE -%][%- IF operation == 2 and opposite.accessor.size > 2 %]
         [%- IF opposite.isReadOnly == 'false' %]
-        ${accessor.parameter.0.name}->${opposite.accessor.2.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
+        if ([% IF singlevalued == 'true' %][% IF property.isReadOnly == 'true' %]this[% ELSE %]d[% END %]->[% END %]${accessor.parameter.0.name})
+            [% IF singlevalued == 'true' %][% IF property.isReadOnly == 'true' %]this[% ELSE %]d[% END %]->[% END %]${accessor.parameter.0.name}->${opposite.accessor.2.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
         [%- ELSE %]
-        (dynamic_cast<${accessor.parameter.0.type.replace(' \*$', '').replace('$', 'Private *')}>(${accessor.parameter.0.name}->d_umlptr))->${opposite.accessor.2.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
+        if ([% IF singlevalued == 'true' %][% IF property.isReadOnly == 'true' %]this[% ELSE %]d[% END %]->[% END %]${accessor.parameter.0.name})
+            (dynamic_cast<${accessor.parameter.0.type.replace(' \*$', '').replace('$', 'Private *')}>([% IF singlevalued == 'true' %][% IF property.isReadOnly == 'true' %]this[% ELSE %]d[% END %]->[% END %]${accessor.parameter.0.name}->d_umlptr))->${opposite.accessor.2.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
         [%- END %]
-    [%- ELSE %]
+    [%- ELSIF singlevalued == 'false' %]
         [%- IF opposite.isReadOnly == 'false' %]
         ${accessor.parameter.0.name}->${opposite.accessor.1.name}(0);
         [%- ELSE %]
         (dynamic_cast<${accessor.parameter.0.type.replace(' \*$', '').replace('$', 'Private *')}>(${accessor.parameter.0.name}->d_umlptr))->${opposite.accessor.1.name}(0);
         [%- END %]
     [%- END -%][%- END -%]
+    [%- IF operation == 2 and singlevalued == 'true' %]
+
+    [%- END -%]
 [%- END -%]
 [%- END -%]
 /****************************************************************************
@@ -310,21 +326,27 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
     if ([% IF loop.count == 2 %]![% END %]this->${associationend.accessor.0.name}->contains(${accessor.parameter.0.name})) {
     [%- ELSE %]
     if (this->${associationend.accessor.0.name} != ${accessor.parameter.0.name}) {
+    [%- END -%]
+    [%- IF accessor.name.search('^set') -%]
+    [%- IF associationend.oppositeEnd != '' %]
+        QTUML_Q(${class.name})
     [%- END %]
-    [%- IF accessor.name.search('^set') %]
+    [%- HANDLEOPPOSITEEND(associationend, accessor, 2, 'true') %]
     [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'true') %]
         this->${accessor.parameter.0.name} = ${accessor.parameter.0.name};
     [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'true') -%]
+    [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'true') %]
     [%- END -%]
     [%- IF accessor.name.search('^add') %]
         this->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %](${accessor.parameter.0.name});
     [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'false') -%]
+    [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'false') -%]
     [%- END -%]
     [%- IF accessor.name.search('^remove') %]
         this->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %](${accessor.parameter.0.name});
     [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'false') -%]
-    [%- END -%]
-    [%- HANDLEOPPOSITEEND(associationend, accessor, loop.count - 1) %]
+    [%- HANDLEOPPOSITEEND(associationend, accessor, 2, 'false') -%]
+    [%- END %]
     }
 [%- ELSE %]
     qWarning("${class.name}::${accessor.name}: to be implemented (this is a derived associationend)");
@@ -335,19 +357,25 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
     if (false /* <derived-change-criteria> */) {
     [%- END %]
     [%- IF accessor.name.search('^set') %]
+    [%- IF associationend.oppositeEnd != '' %]
+        QTUML_Q(${class.name})
+    [%- END %]
+    [%- HANDLEOPPOSITEEND(associationend, accessor, 2, 'true') %]
     [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'true') %]
         // <derived-code>
     [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'true') -%]
+    [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'true') %]
     [%- END -%]
     [%- IF accessor.name.search('^add') %]
         // <derived-code>
     [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'false') -%]
+    [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'false') -%]
     [%- END -%]
     [%- IF accessor.name.search('^remove') %]
         // <derived-code>
     [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'false') -%]
-    [%- END -%]
-    [%- HANDLEOPPOSITEEND(associationend, accessor, loop.count - 1) %]
+    [%- HANDLEOPPOSITEEND(associationend, accessor, 2, 'false') -%]
+    [%- END %]
     }
 [%- END %]
 }
@@ -498,17 +526,21 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
         d->${accessor.name}(${accessor.parameter.0.name});
         [%- ELSE -%]
             [%- IF accessor.name.search('^set') %]
+            [%- HANDLEOPPOSITEEND(associationend, accessor, 2, 'true') %]
             [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'true') %]
         d->${accessor.parameter.0.name} = ${accessor.parameter.0.name};
             [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'true') -%]
+            [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'true') %]
             [%- END -%]
             [%- IF accessor.name.search('^add') %]
         d->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %](${accessor.parameter.0.name});
             [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'false') -%]
+            [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'false') -%]
             [%- END -%]
             [%- IF accessor.name.search('^remove') %]
         d->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %](${accessor.parameter.0.name});
             [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'false') -%]
+            [%- HANDLEOPPOSITEEND(associationend, accessor, 2, 'false') -%]
             [%- END -%]
         [%- END %]
     [%- END %]
@@ -529,23 +561,26 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
         // <derived-code>
         [%- ELSE -%]
             [%- IF accessor.name.search('^set') %]
+            [%- HANDLEOPPOSITEEND(associationend, accessor, 2, 'true') %]
             [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'true') %]
         // <derived-code>
             [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'true') -%]
+            [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'true') %]
             [%- END -%]
             [%- IF accessor.name.search('^add') %]
         // <derived-code>
             [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'false') -%]
+            [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'false') -%]
             [%- END -%]
             [%- IF accessor.name.search('^remove') %]
         // <derived-code>
             [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'false') -%]
+            [%- HANDLEOPPOSITEEND(associationend, accessor, 2, 'false') -%]
             [%- END -%]
         [%- END %]
     [%- END %]
 [%- END %]
     [%- IF !loop.first %]
-    [%- HANDLEOPPOSITEEND(associationend, accessor, loop.count - 1) %]
     }
     [%- END %]
 }

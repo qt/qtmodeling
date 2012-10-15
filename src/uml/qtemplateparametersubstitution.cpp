@@ -109,7 +109,9 @@ void QTemplateParameterSubstitution::setOwnedActual(QParameterableElement *owned
         d->ownedActual = ownedActual;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(ownedActual);
+        if (ownedActual) {
+            d->addOwnedElement(ownedActual);
+        }
         setActual(ownedActual);
     }
 }
@@ -173,13 +175,18 @@ void QTemplateParameterSubstitution::setTemplateBinding(QTemplateBinding *templa
 
     QTUML_D(QTemplateParameterSubstitution);
     if (d->templateBinding != templateBinding) {
+        // Adjust opposite property
+        if (d->templateBinding)
+            d->templateBinding->removeParameterSubstitution(this);
+
         d->templateBinding = templateBinding;
 
         // Adjust subsetted property(ies)
         d->setOwner(templateBinding);
 
         // Adjust opposite property
-        templateBinding->addParameterSubstitution(this);
+        if (templateBinding)
+            templateBinding->addParameterSubstitution(this);
     }
 }
 

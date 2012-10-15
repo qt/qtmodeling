@@ -118,7 +118,8 @@ void QParameterSet::removeParameter(QParameter *parameter)
         d->parameters->remove(parameter);
 
         // Adjust opposite property
-        parameter->removeParameterSet(this);
+        if (parameter)
+            parameter->removeParameterSet(this);
     }
 }
 

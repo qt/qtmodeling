@@ -141,7 +141,9 @@ void QInstanceSpecification::setSpecification(QValueSpecification *specification
         d->specification = specification;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(specification);
+        if (specification) {
+            d->addOwnedElement(specification);
+        }
     }
 }
 

@@ -104,7 +104,9 @@ void QManifestation::setUtilizedElement(QPackageableElement *utilizedElement)
         d->utilizedElement = utilizedElement;
 
         // Adjust subsetted property(ies)
-        addSupplier(utilizedElement);
+        if (utilizedElement) {
+            addSupplier(utilizedElement);
+        }
     }
 }
 

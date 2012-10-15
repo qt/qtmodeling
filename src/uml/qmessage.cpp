@@ -221,13 +221,18 @@ void QMessage::setInteraction(QInteraction *interaction)
 
     QTUML_D(QMessage);
     if (d->interaction != interaction) {
+        // Adjust opposite property
+        if (d->interaction)
+            d->interaction->removeMessage(this);
+
         d->interaction = interaction;
 
         // Adjust subsetted property(ies)
         d->setNamespace_(interaction);
 
         // Adjust opposite property
-        interaction->addMessage(this);
+        if (interaction)
+            interaction->addMessage(this);
     }
 }
 

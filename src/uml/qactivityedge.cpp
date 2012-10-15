@@ -96,7 +96,8 @@ void QActivityEdgePrivate::removeInGroup(QActivityGroup *inGroup)
 
         // Adjust opposite property
         QTUML_Q(QActivityEdge);
-        (dynamic_cast<QActivityGroupPrivate *>(inGroup->d_umlptr))->removeContainedEdge(q);
+        if (inGroup)
+            (dynamic_cast<QActivityGroupPrivate *>(inGroup->d_umlptr))->removeContainedEdge(q);
     }
 }
 
@@ -133,10 +134,15 @@ void QActivityEdge::setSource(QActivityNode *source)
 
     QTUML_D(QActivityEdge);
     if (d->source != source) {
+        // Adjust opposite property
+        if (d->source)
+            d->source->removeOutgoing(this);
+
         d->source = source;
 
         // Adjust opposite property
-        source->addOutgoing(this);
+        if (source)
+            source->addOutgoing(this);
     }
 }
 
@@ -211,7 +217,9 @@ void QActivityEdge::setGuard(QValueSpecification *guard)
         d->guard = guard;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(guard);
+        if (guard) {
+            d->addOwnedElement(guard);
+        }
     }
 }
 
@@ -254,7 +262,8 @@ void QActivityEdge::removeInPartition(QActivityPartition *inPartition)
         d->removeInGroup(inPartition);
 
         // Adjust opposite property
-        inPartition->removeEdge(this);
+        if (inPartition)
+            inPartition->removeEdge(this);
     }
 }
 
@@ -275,13 +284,18 @@ void QActivityEdge::setActivity(QActivity *activity)
 
     QTUML_D(QActivityEdge);
     if (d->activity != activity) {
+        // Adjust opposite property
+        if (d->activity)
+            d->activity->removeEdge(this);
+
         d->activity = activity;
 
         // Adjust subsetted property(ies)
         d->setOwner(activity);
 
         // Adjust opposite property
-        activity->addEdge(this);
+        if (activity)
+            activity->addEdge(this);
     }
 }
 
@@ -302,10 +316,15 @@ void QActivityEdge::setInterrupts(QInterruptibleActivityRegion *interrupts)
 
     QTUML_D(QActivityEdge);
     if (d->interrupts != interrupts) {
+        // Adjust opposite property
+        if (d->interrupts)
+            d->interrupts->removeInterruptingEdge(this);
+
         d->interrupts = interrupts;
 
         // Adjust opposite property
-        interrupts->addInterruptingEdge(this);
+        if (interrupts)
+            interrupts->addInterruptingEdge(this);
     }
 }
 
@@ -332,7 +351,9 @@ void QActivityEdge::setWeight(QValueSpecification *weight)
         d->weight = weight;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(weight);
+        if (weight) {
+            d->addOwnedElement(weight);
+        }
     }
 }
 
@@ -353,17 +374,24 @@ void QActivityEdge::setInStructuredNode(QStructuredActivityNode *inStructuredNod
 
     QTUML_D(QActivityEdge);
     if (d->inStructuredNode != inStructuredNode) {
+        // Adjust opposite property
+        if (d->inStructuredNode)
+            d->inStructuredNode->removeEdge(this);
+
         // Adjust subsetted property(ies)
         d->removeInGroup(d->inStructuredNode);
 
         d->inStructuredNode = inStructuredNode;
 
         // Adjust subsetted property(ies)
-        d->addInGroup(inStructuredNode);
+        if (inStructuredNode) {
+            d->addInGroup(inStructuredNode);
+        }
         d->setOwner(inStructuredNode);
 
         // Adjust opposite property
-        inStructuredNode->addEdge(this);
+        if (inStructuredNode)
+            inStructuredNode->addEdge(this);
     }
 }
 
@@ -384,10 +412,15 @@ void QActivityEdge::setTarget(QActivityNode *target)
 
     QTUML_D(QActivityEdge);
     if (d->target != target) {
+        // Adjust opposite property
+        if (d->target)
+            d->target->removeIncoming(this);
+
         d->target = target;
 
         // Adjust opposite property
-        target->addIncoming(this);
+        if (target)
+            target->addIncoming(this);
     }
 }
 

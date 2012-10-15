@@ -104,7 +104,9 @@ void QReadStructuralFeatureAction::setResult(QOutputPin *result)
         d->result = result;
 
         // Adjust subsetted property(ies)
-        d->addOutput(result);
+        if (result) {
+            d->addOutput(result);
+        }
     }
 }
 

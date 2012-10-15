@@ -99,17 +99,24 @@ void QInclude::setIncludingCase(QUseCase *includingCase)
 
     QTUML_D(QInclude);
     if (d->includingCase != includingCase) {
+        // Adjust opposite property
+        if (d->includingCase)
+            d->includingCase->removeInclude(this);
+
         // Adjust subsetted property(ies)
         d->removeSource(d->includingCase);
 
         d->includingCase = includingCase;
 
         // Adjust subsetted property(ies)
-        d->addSource(includingCase);
+        if (includingCase) {
+            d->addSource(includingCase);
+        }
         d->setNamespace_(includingCase);
 
         // Adjust opposite property
-        includingCase->addInclude(this);
+        if (includingCase)
+            includingCase->addInclude(this);
     }
 }
 
@@ -136,7 +143,9 @@ void QInclude::setAddition(QUseCase *addition)
         d->addition = addition;
 
         // Adjust subsetted property(ies)
-        d->addTarget(addition);
+        if (addition) {
+            d->addTarget(addition);
+        }
     }
 }
 

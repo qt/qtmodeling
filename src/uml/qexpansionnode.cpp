@@ -99,10 +99,15 @@ void QExpansionNode::setRegionAsOutput(QExpansionRegion *regionAsOutput)
 
     QTUML_D(QExpansionNode);
     if (d->regionAsOutput != regionAsOutput) {
+        // Adjust opposite property
+        if (d->regionAsOutput)
+            d->regionAsOutput->removeOutputElement(this);
+
         d->regionAsOutput = regionAsOutput;
 
         // Adjust opposite property
-        regionAsOutput->addOutputElement(this);
+        if (regionAsOutput)
+            regionAsOutput->addOutputElement(this);
     }
 }
 
@@ -123,10 +128,15 @@ void QExpansionNode::setRegionAsInput(QExpansionRegion *regionAsInput)
 
     QTUML_D(QExpansionNode);
     if (d->regionAsInput != regionAsInput) {
+        // Adjust opposite property
+        if (d->regionAsInput)
+            d->regionAsInput->removeInputElement(this);
+
         d->regionAsInput = regionAsInput;
 
         // Adjust opposite property
-        regionAsInput->addInputElement(this);
+        if (regionAsInput)
+            regionAsInput->addInputElement(this);
     }
 }
 

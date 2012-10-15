@@ -149,7 +149,9 @@ void QElementImport::setImportedElement(QPackageableElement *importedElement)
         d->importedElement = importedElement;
 
         // Adjust subsetted property(ies)
-        d->addTarget(importedElement);
+        if (importedElement) {
+            d->addTarget(importedElement);
+        }
     }
 }
 
@@ -170,6 +172,10 @@ void QElementImport::setImportingNamespace(QNamespace *importingNamespace)
 
     QTUML_D(QElementImport);
     if (d->importingNamespace != importingNamespace) {
+        // Adjust opposite property
+        if (d->importingNamespace)
+            d->importingNamespace->removeElementImport(this);
+
         // Adjust subsetted property(ies)
         d->removeSource(d->importingNamespace);
 
@@ -177,10 +183,13 @@ void QElementImport::setImportingNamespace(QNamespace *importingNamespace)
 
         // Adjust subsetted property(ies)
         d->setOwner(importingNamespace);
-        d->addSource(importingNamespace);
+        if (importingNamespace) {
+            d->addSource(importingNamespace);
+        }
 
         // Adjust opposite property
-        importingNamespace->addElementImport(this);
+        if (importingNamespace)
+            importingNamespace->addElementImport(this);
     }
 }
 

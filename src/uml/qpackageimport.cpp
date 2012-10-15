@@ -122,6 +122,10 @@ void QPackageImport::setImportingNamespace(QNamespace *importingNamespace)
 
     QTUML_D(QPackageImport);
     if (d->importingNamespace != importingNamespace) {
+        // Adjust opposite property
+        if (d->importingNamespace)
+            d->importingNamespace->removePackageImport(this);
+
         // Adjust subsetted property(ies)
         d->removeSource(d->importingNamespace);
 
@@ -129,10 +133,13 @@ void QPackageImport::setImportingNamespace(QNamespace *importingNamespace)
 
         // Adjust subsetted property(ies)
         d->setOwner(importingNamespace);
-        d->addSource(importingNamespace);
+        if (importingNamespace) {
+            d->addSource(importingNamespace);
+        }
 
         // Adjust opposite property
-        importingNamespace->addPackageImport(this);
+        if (importingNamespace)
+            importingNamespace->addPackageImport(this);
     }
 }
 
@@ -159,7 +166,9 @@ void QPackageImport::setImportedPackage(QPackage *importedPackage)
         d->importedPackage = importedPackage;
 
         // Adjust subsetted property(ies)
-        d->addTarget(importedPackage);
+        if (importedPackage) {
+            d->addTarget(importedPackage);
+        }
     }
 }
 

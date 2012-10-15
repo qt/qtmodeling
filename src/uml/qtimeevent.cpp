@@ -126,7 +126,9 @@ void QTimeEvent::setWhen(QTimeExpression *when)
         d->when = when;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(when);
+        if (when) {
+            d->addOwnedElement(when);
+        }
     }
 }
 

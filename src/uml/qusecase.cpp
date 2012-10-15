@@ -210,7 +210,8 @@ void QUseCase::removeSubject(QClassifier *subject)
         d->subjects->remove(subject);
 
         // Adjust opposite property
-        subject->removeUseCase(this);
+        if (subject)
+            subject->removeUseCase(this);
     }
 }
 

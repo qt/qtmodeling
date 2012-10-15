@@ -67,14 +67,19 @@ void QNamedElementPrivate::setNamespace_(QNamespace *namespace_)
     // This is a read-only derived-union association end
 
     if (this->namespace_ != namespace_) {
+        QTUML_Q(QNamedElement)
+        // Adjust opposite property
+        if (this->namespace_)
+            (dynamic_cast<QNamespacePrivate *>(this->namespace_->d_umlptr))->removeOwnedMember(q);
+
         this->namespace_ = namespace_;
 
         // Adjust subsetted property(ies)
         setOwner(namespace_);
 
         // Adjust opposite property
-        QTUML_Q(QNamedElement);
-        (dynamic_cast<QNamespacePrivate *>(namespace_->d_umlptr))->addOwnedMember(q);
+        if (namespace_)
+            (dynamic_cast<QNamespacePrivate *>(namespace_->d_umlptr))->addOwnedMember(q);
     }
 }
 
@@ -179,7 +184,9 @@ void QNamedElement::setNameExpression(QStringExpression *nameExpression)
         d->nameExpression = nameExpression;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(nameExpression);
+        if (nameExpression) {
+            d->addOwnedElement(nameExpression);
+        }
     }
 }
 
@@ -227,7 +234,8 @@ void QNamedElement::removeClientDependency(QDependency *clientDependency)
         d->clientDependencies->remove(clientDependency);
 
         // Adjust opposite property
-        clientDependency->removeClient(this);
+        if (clientDependency)
+            clientDependency->removeClient(this);
     }
 }
 

@@ -336,10 +336,15 @@ void QStructuredActivityNode::setActivity(QActivity *activity)
 
     QTUML_D(QStructuredActivityNode);
     if (d->activity != activity) {
+        // Adjust opposite property
+        if (d->activity)
+            d->activity->removeStructuredNode(this);
+
         d->activity = activity;
 
         // Adjust opposite property
-        activity->addStructuredNode(this);
+        if (activity)
+            activity->addStructuredNode(this);
     }
 }
 

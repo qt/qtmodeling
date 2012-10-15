@@ -126,7 +126,9 @@ void QJoinNode::setJoinSpec(QValueSpecification *joinSpec)
         d->joinSpec = joinSpec;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(joinSpec);
+        if (joinSpec) {
+            d->addOwnedElement(joinSpec);
+        }
     }
 }
 

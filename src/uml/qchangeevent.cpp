@@ -104,7 +104,9 @@ void QChangeEvent::setChangeExpression(QValueSpecification *changeExpression)
         d->changeExpression = changeExpression;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(changeExpression);
+        if (changeExpression) {
+            d->addOwnedElement(changeExpression);
+        }
     }
 }
 

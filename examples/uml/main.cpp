@@ -54,11 +54,26 @@ int main ()
     qDebug() << "model->ownedRules()->size():" << model->ownedRules()->size();
     qDebug() << "model->packagedElements()->size():" << model->packagedElements()->size();
 
-/*
+    qDebug() << "package->qualifiedName():" << package->qualifiedName();
+    qDebug() << "class_->qualifiedName():" << class_->qualifiedName();
+    qDebug() << "enumeration->qualifiedName():" << enumeration->qualifiedName();
+    qDebug() << "primitiveType->qualifiedName():" << primitiveType->qualifiedName();
+    qDebug() << "directionIn->qualifiedName():" << directionIn->qualifiedName();
+
     model->removeNestedPackage(package);
+    qDebug() << "REMOVED";
+
+    qDebug() << "model->ownedElements()->size():" << model->ownedElements()->size();
+    qDebug() << "model->members()->size():" << model->members()->size();
     qDebug() << "model->ownedMembers()->size():" << model->ownedMembers()->size();
+    qDebug() << "model->ownedRules()->size():" << model->ownedRules()->size();
     qDebug() << "model->packagedElements()->size():" << model->packagedElements()->size();
-*/
+
+    qDebug() << "package->qualifiedName():" << package->qualifiedName();
+    qDebug() << "class_->qualifiedName():" << class_->qualifiedName();
+    qDebug() << "enumeration->qualifiedName():" << enumeration->qualifiedName();
+    qDebug() << "primitiveType->qualifiedName():" << primitiveType->qualifiedName();
+    qDebug() << "directionIn->qualifiedName():" << directionIn->qualifiedName();
 
     QScopedPointer<QPackageList> nestedPackages (model->nestedPackages());
     qDebug() << "model->nestedPackages()->size():" << nestedPackages->size();
@@ -68,12 +83,6 @@ int main ()
 
     QScopedPointer<QTypeList> ownedTypes (model->ownedTypes());
     qDebug() << "model->ownedTypes()->size():" << ownedTypes->size();
-
-    qDebug() << "package->qualifiedName():" << package->qualifiedName();
-    qDebug() << "class_->qualifiedName():" << class_->qualifiedName();
-    qDebug() << "enumeration->qualifiedName():" << enumeration->qualifiedName();
-    qDebug() << "primitiveType->qualifiedName():" << primitiveType->qualifiedName();
-    qDebug() << "directionIn->qualifiedName():" << directionIn->qualifiedName();
 
     checkProperties(model);
 

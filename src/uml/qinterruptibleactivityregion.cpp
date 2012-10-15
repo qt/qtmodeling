@@ -161,7 +161,8 @@ void QInterruptibleActivityRegion::removeNode(QActivityNode *node)
         d->removeContainedNode(node);
 
         // Adjust opposite property
-        node->removeInInterruptibleRegion(this);
+        if (node)
+            node->removeInInterruptibleRegion(this);
     }
 }
 

@@ -100,6 +100,10 @@ void QInterfaceRealization::setImplementingClassifier(QBehavioredClassifier *imp
 
     QTUML_D(QInterfaceRealization);
     if (d->implementingClassifier != implementingClassifier) {
+        // Adjust opposite property
+        if (d->implementingClassifier)
+            d->implementingClassifier->removeInterfaceRealization(this);
+
         // Adjust subsetted property(ies)
         removeClient(d->implementingClassifier);
 
@@ -107,10 +111,13 @@ void QInterfaceRealization::setImplementingClassifier(QBehavioredClassifier *imp
 
         // Adjust subsetted property(ies)
         d->setOwner(implementingClassifier);
-        addClient(implementingClassifier);
+        if (implementingClassifier) {
+            addClient(implementingClassifier);
+        }
 
         // Adjust opposite property
-        implementingClassifier->addInterfaceRealization(this);
+        if (implementingClassifier)
+            implementingClassifier->addInterfaceRealization(this);
     }
 }
 
@@ -137,7 +144,9 @@ void QInterfaceRealization::setContract(QInterface *contract)
         d->contract = contract;
 
         // Adjust subsetted property(ies)
-        addSupplier(contract);
+        if (contract) {
+            addSupplier(contract);
+        }
     }
 }
 

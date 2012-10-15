@@ -150,7 +150,9 @@ void QInteractionUse::setReturnValue(QValueSpecification *returnValue)
         d->returnValue = returnValue;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(returnValue);
+        if (returnValue) {
+            d->addOwnedElement(returnValue);
+        }
     }
 }
 

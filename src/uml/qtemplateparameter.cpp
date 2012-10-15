@@ -124,6 +124,8 @@ void QTemplateParameter::setParameteredElement(QParameterableElement *parametere
 
     QTUML_D(QTemplateParameter);
     if (d->parameteredElement != parameteredElement) {
+        // Adjust opposite property
+
         d->parameteredElement = parameteredElement;
 
         // Adjust opposite property
@@ -148,6 +150,8 @@ void QTemplateParameter::setOwnedParameteredElement(QParameterableElement *owned
 
     QTUML_D(QTemplateParameter);
     if (d->ownedParameteredElement != ownedParameteredElement) {
+        // Adjust opposite property
+
         // Adjust subsetted property(ies)
         d->removeOwnedElement(d->ownedParameteredElement);
 
@@ -155,7 +159,9 @@ void QTemplateParameter::setOwnedParameteredElement(QParameterableElement *owned
 
         // Adjust subsetted property(ies)
         setParameteredElement(ownedParameteredElement);
-        d->addOwnedElement(ownedParameteredElement);
+        if (ownedParameteredElement) {
+            d->addOwnedElement(ownedParameteredElement);
+        }
 
         // Adjust opposite property
         ownedParameteredElement->setOwningTemplateParameter(this);
@@ -185,7 +191,9 @@ void QTemplateParameter::setOwnedDefault(QParameterableElement *ownedDefault)
         d->ownedDefault = ownedDefault;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(ownedDefault);
+        if (ownedDefault) {
+            d->addOwnedElement(ownedDefault);
+        }
         setDefault_(ownedDefault);
     }
 }
@@ -207,13 +215,18 @@ void QTemplateParameter::setSignature(QTemplateSignature *signature)
 
     QTUML_D(QTemplateParameter);
     if (d->signature != signature) {
+        // Adjust opposite property
+        if (d->signature)
+            d->signature->removeOwnedParameter(this);
+
         d->signature = signature;
 
         // Adjust subsetted property(ies)
         d->setOwner(signature);
 
         // Adjust opposite property
-        signature->addOwnedParameter(this);
+        if (signature)
+            signature->addOwnedParameter(this);
     }
 }
 

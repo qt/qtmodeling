@@ -67,11 +67,16 @@ void QExtensionPrivate::setMetaclass(QClass *metaclass)
     qWarning("QExtension::setMetaclass: to be implemented (this is a derived associationend)");
 
     if (false /* <derived-change-criteria> */) {
+        QTUML_Q(QExtension)
+        // Adjust opposite property
+        // if (this->metaclass)
+        //     (dynamic_cast<QClassPrivate *>(this->metaclass->d_umlptr))->removeExtension(q);
+
         // <derived-code>
 
         // Adjust opposite property
-        QTUML_Q(QExtension);
-        (dynamic_cast<QClassPrivate *>(metaclass->d_umlptr))->addExtension(q);
+        if (metaclass)
+            (dynamic_cast<QClassPrivate *>(metaclass->d_umlptr))->addExtension(q);
     }
 }
 

@@ -96,7 +96,8 @@ void QActivityNodePrivate::removeInGroup(QActivityGroup *inGroup)
 
         // Adjust opposite property
         QTUML_Q(QActivityNode);
-        (dynamic_cast<QActivityGroupPrivate *>(inGroup->d_umlptr))->removeContainedNode(q);
+        if (inGroup)
+            (dynamic_cast<QActivityGroupPrivate *>(inGroup->d_umlptr))->removeContainedNode(q);
     }
 }
 
@@ -207,13 +208,18 @@ void QActivityNode::setActivity(QActivity *activity)
 
     QTUML_D(QActivityNode);
     if (d->activity != activity) {
+        // Adjust opposite property
+        if (d->activity)
+            d->activity->removeNode(this);
+
         d->activity = activity;
 
         // Adjust subsetted property(ies)
         d->setOwner(activity);
 
         // Adjust opposite property
-        activity->addNode(this);
+        if (activity)
+            activity->addNode(this);
     }
 }
 
@@ -245,17 +251,24 @@ void QActivityNode::setInStructuredNode(QStructuredActivityNode *inStructuredNod
 
     QTUML_D(QActivityNode);
     if (d->inStructuredNode != inStructuredNode) {
+        // Adjust opposite property
+        if (d->inStructuredNode)
+            d->inStructuredNode->removeNode(this);
+
         // Adjust subsetted property(ies)
         d->removeInGroup(d->inStructuredNode);
 
         d->inStructuredNode = inStructuredNode;
 
         // Adjust subsetted property(ies)
-        d->addInGroup(inStructuredNode);
+        if (inStructuredNode) {
+            d->addInGroup(inStructuredNode);
+        }
         d->setOwner(inStructuredNode);
 
         // Adjust opposite property
-        inStructuredNode->addNode(this);
+        if (inStructuredNode)
+            inStructuredNode->addNode(this);
     }
 }
 
@@ -298,7 +311,8 @@ void QActivityNode::removeInPartition(QActivityPartition *inPartition)
         d->removeInGroup(inPartition);
 
         // Adjust opposite property
-        inPartition->removeNode(this);
+        if (inPartition)
+            inPartition->removeNode(this);
     }
 }
 
@@ -341,7 +355,8 @@ void QActivityNode::removeInInterruptibleRegion(QInterruptibleActivityRegion *in
         d->removeInGroup(inInterruptibleRegion);
 
         // Adjust opposite property
-        inInterruptibleRegion->removeNode(this);
+        if (inInterruptibleRegion)
+            inInterruptibleRegion->removeNode(this);
     }
 }
 

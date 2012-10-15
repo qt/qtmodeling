@@ -132,6 +132,8 @@ void QConnectableElement::setTemplateParameter(QConnectableElementTemplateParame
 
     QTUML_D(QConnectableElement);
     if (d->templateParameter != templateParameter) {
+        // Adjust opposite property
+
         d->templateParameter = templateParameter;
 
         // Adjust opposite property

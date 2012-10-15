@@ -122,6 +122,8 @@ void QClassifierTemplateParameter::setParameteredElement(QClassifier *parametere
 
     QTUML_D(QClassifierTemplateParameter);
     if (d->parameteredElement != parameteredElement) {
+        // Adjust opposite property
+
         d->parameteredElement = parameteredElement;
 
         // Adjust opposite property

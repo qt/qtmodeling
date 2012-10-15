@@ -215,13 +215,18 @@ void QParameter::setOperation(QOperation *operation)
 
     QTUML_D(QParameter);
     if (d->operation != operation) {
+        // Adjust opposite property
+        if (d->operation)
+            d->operation->removeOwnedParameter(this);
+
         d->operation = operation;
 
         // Adjust subsetted property(ies)
         d->setNamespace_(operation);
 
         // Adjust opposite property
-        operation->addOwnedParameter(this);
+        if (operation)
+            operation->addOwnedParameter(this);
     }
 }
 
@@ -248,7 +253,9 @@ void QParameter::setDefaultValue(QValueSpecification *defaultValue)
         d->defaultValue = defaultValue;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(defaultValue);
+        if (defaultValue) {
+            d->addOwnedElement(defaultValue);
+        }
     }
 }
 
@@ -285,7 +292,8 @@ void QParameter::removeParameterSet(QParameterSet *parameterSet)
         d->parameterSets->remove(parameterSet);
 
         // Adjust opposite property
-        parameterSet->removeParameter(this);
+        if (parameterSet)
+            parameterSet->removeParameter(this);
     }
 }
 

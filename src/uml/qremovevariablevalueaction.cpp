@@ -126,7 +126,9 @@ void QRemoveVariableValueAction::setRemoveAt(QInputPin *removeAt)
         d->removeAt = removeAt;
 
         // Adjust subsetted property(ies)
-        d->addInput(removeAt);
+        if (removeAt) {
+            d->addInput(removeAt);
+        }
     }
 }
 

@@ -129,7 +129,9 @@ void QReplyAction::setReturnInformation(QInputPin *returnInformation)
         d->returnInformation = returnInformation;
 
         // Adjust subsetted property(ies)
-        d->addInput(returnInformation);
+        if (returnInformation) {
+            d->addInput(returnInformation);
+        }
     }
 }
 

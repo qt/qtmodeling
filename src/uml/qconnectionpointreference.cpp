@@ -134,13 +134,18 @@ void QConnectionPointReference::setState(QState *state)
 
     QTUML_D(QConnectionPointReference);
     if (d->state != state) {
+        // Adjust opposite property
+        if (d->state)
+            d->state->removeConnection(this);
+
         d->state = state;
 
         // Adjust subsetted property(ies)
         d->setNamespace_(state);
 
         // Adjust opposite property
-        state->addConnection(this);
+        if (state)
+            state->addConnection(this);
     }
 }
 

@@ -104,7 +104,9 @@ void QActionInputPin::setFromAction(QAction *fromAction)
         d->fromAction = fromAction;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(fromAction);
+        if (fromAction) {
+            d->addOwnedElement(fromAction);
+        }
     }
 }
 

@@ -104,7 +104,9 @@ void QRaiseExceptionAction::setException(QInputPin *exception)
         d->exception = exception;
 
         // Adjust subsetted property(ies)
-        d->addInput(exception);
+        if (exception) {
+            d->addInput(exception);
+        }
     }
 }
 

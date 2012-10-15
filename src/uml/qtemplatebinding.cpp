@@ -109,7 +109,9 @@ void QTemplateBinding::setSignature(QTemplateSignature *signature)
         d->signature = signature;
 
         // Adjust subsetted property(ies)
-        d->addTarget(signature);
+        if (signature) {
+            d->addTarget(signature);
+        }
     }
 }
 
@@ -130,6 +132,10 @@ void QTemplateBinding::setBoundElement(QTemplateableElement *boundElement)
 
     QTUML_D(QTemplateBinding);
     if (d->boundElement != boundElement) {
+        // Adjust opposite property
+        if (d->boundElement)
+            d->boundElement->removeTemplateBinding(this);
+
         // Adjust subsetted property(ies)
         d->removeSource(d->boundElement);
 
@@ -137,10 +143,13 @@ void QTemplateBinding::setBoundElement(QTemplateableElement *boundElement)
 
         // Adjust subsetted property(ies)
         d->setOwner(boundElement);
-        d->addSource(boundElement);
+        if (boundElement) {
+            d->addSource(boundElement);
+        }
 
         // Adjust opposite property
-        boundElement->addTemplateBinding(this);
+        if (boundElement)
+            boundElement->addTemplateBinding(this);
     }
 }
 

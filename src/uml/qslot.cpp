@@ -161,13 +161,18 @@ void QSlot::setOwningInstance(QInstanceSpecification *owningInstance)
 
     QTUML_D(QSlot);
     if (d->owningInstance != owningInstance) {
+        // Adjust opposite property
+        if (d->owningInstance)
+            d->owningInstance->removeSlot_(this);
+
         d->owningInstance = owningInstance;
 
         // Adjust subsetted property(ies)
         d->setOwner(owningInstance);
 
         // Adjust opposite property
-        owningInstance->addSlot_(this);
+        if (owningInstance)
+            owningInstance->addSlot_(this);
     }
 }
 

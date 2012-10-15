@@ -149,7 +149,9 @@ void QInteractionOperand::setGuard(QInteractionConstraint *guard)
         d->guard = guard;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(guard);
+        if (guard) {
+            d->addOwnedElement(guard);
+        }
     }
 }
 
