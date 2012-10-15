@@ -67,7 +67,6 @@ void QNamedElementPrivate::setNamespace_(QNamespace *namespace_)
     // This is a read-only derived-union association end
 
     if (this->namespace_ != namespace_) {
-        qDebug() << "QNamedElementPrivate::setNamespace_";
         this->namespace_ = namespace_;
 
         // Adjust subsetted property(ies)

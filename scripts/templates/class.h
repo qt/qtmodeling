@@ -223,7 +223,7 @@ public:
 [%- ELSE -%]
 [%- modifiedFriendClass = friendClass.name -%]
 [%- END -%]
-[%- IF friendClass.name != class.name -%]
+[%- IF modifiedFriendClass.name != class.name -%]
 [%- friendClasses.push(modifiedFriendClass) -%]
 [%- END -%]
 [%- END -%]

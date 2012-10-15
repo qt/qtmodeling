@@ -104,7 +104,7 @@ void QActivityGroupPrivate::addSubgroup(QActivityGroup *subgroup)
 
         // Adjust opposite property
         QTUML_Q(QActivityGroup);
-        setSuperGroup(q);
+        (dynamic_cast<QActivityGroupPrivate *>(subgroup->d_umlptr))->setSuperGroup(q);
     }
 }
 
@@ -120,7 +120,7 @@ void QActivityGroupPrivate::removeSubgroup(QActivityGroup *subgroup)
 
         // Adjust opposite property
         QTUML_Q(QActivityGroup);
-        setSuperGroup(0);
+        (dynamic_cast<QActivityGroupPrivate *>(subgroup->d_umlptr))->setSuperGroup(0);
     }
 }
 
@@ -162,7 +162,7 @@ void QActivityGroupPrivate::setSuperGroup(QActivityGroup *superGroup)
 
         // Adjust opposite property
         QTUML_Q(QActivityGroup);
-        addSubgroup(q);
+        (dynamic_cast<QActivityGroupPrivate *>(superGroup->d_umlptr))->addSubgroup(q);
     }
 }
 

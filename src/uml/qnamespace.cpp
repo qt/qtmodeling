@@ -74,7 +74,6 @@ void QNamespacePrivate::addMember(QNamedElement *member)
     // This is a read-only derived-union association end
 
     if (!this->members->contains(member)) {
-        qDebug() << "QNamespacePrivate::addMember";
         this->members->insert(member);
     }
 }
@@ -93,7 +92,6 @@ void QNamespacePrivate::addOwnedMember(QNamedElement *ownedMember)
     // This is a read-only derived-union association end
 
     if (!this->ownedMembers->contains(ownedMember)) {
-        qDebug() << "QNamespacePrivate::addOwnedMember";
         this->ownedMembers->insert(ownedMember);
 
         // Adjust subsetted property(ies)

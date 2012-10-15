@@ -45,7 +45,6 @@
 
 // Qt includes
 #include <QtCore/QSet>
-#include <QtCore/QDebug>
 
 #define QTUML_D(Class) Class##Private * const d = dynamic_cast<Class##Private *>(d_umlptr);
 #define QTUML_Q(Class) Class * const q = dynamic_cast<Class *>(q_umlptr);
@@ -85,6 +84,7 @@ public:
     friend class QClassifierPrivate;
     friend class QClassPrivate;
     friend class QConnectorEnd;
+    friend class QElementPrivate;
     friend class QExtensionPrivate;
     friend class QFeaturePrivate;
     friend class QNamedElementPrivate;

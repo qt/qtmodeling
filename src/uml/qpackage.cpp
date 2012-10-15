@@ -174,7 +174,6 @@ void QPackage::addPackagedElement(QPackageableElement *packagedElement)
 
     QTUML_D(QPackage);
     if (!d->packagedElements->contains(packagedElement)) {
-        qDebug() << "QPackage::addPackagedElement";
         d->packagedElements->insert(packagedElement);
 
         // Adjust subsetted property(ies)
@@ -346,7 +345,6 @@ void QPackage::addNestedPackage(QPackage *nestedPackage)
 
     QTUML_D(QPackage);
     if (!d->packagedElements->contains(nestedPackage)) {
-        qDebug() << "QPackage::addNestedPackage";
         // Adjust subsetted property(ies)
         addPackagedElement(nestedPackage);
 
