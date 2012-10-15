@@ -89,6 +89,8 @@ void QParameterableElement::setOwningTemplateParameter(QTemplateParameter *ownin
 
     QTUML_D(QParameterableElement);
     if (d->owningTemplateParameter != owningTemplateParameter) {
+        // Adjust opposite property
+
         d->owningTemplateParameter = owningTemplateParameter;
 
         // Adjust subsetted property(ies)
@@ -117,6 +119,8 @@ void QParameterableElement::setTemplateParameter(QTemplateParameter *templatePar
 
     QTUML_D(QParameterableElement);
     if (d->templateParameter != templateParameter) {
+        // Adjust opposite property
+
         d->templateParameter = templateParameter;
 
         // Adjust opposite property

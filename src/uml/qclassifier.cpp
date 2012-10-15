@@ -140,7 +140,8 @@ void QClassifierPrivate::removeFeature(QFeature *feature)
 
         // Adjust opposite property
         QTUML_Q(QClassifier);
-        (dynamic_cast<QFeaturePrivate *>(feature->d_umlptr))->removeFeaturingClassifier(q);
+        if (feature)
+            (dynamic_cast<QFeaturePrivate *>(feature->d_umlptr))->removeFeaturingClassifier(q);
     }
 }
 
@@ -309,7 +310,8 @@ void QClassifier::removeUseCase(QUseCase *useCase)
         d->useCases->remove(useCase);
 
         // Adjust opposite property
-        useCase->removeSubject(this);
+        if (useCase)
+            useCase->removeSubject(this);
     }
 }
 
@@ -330,6 +332,8 @@ void QClassifier::setTemplateParameter(QClassifierTemplateParameter *templatePar
 
     QTUML_D(QClassifier);
     if (d->templateParameter != templateParameter) {
+        // Adjust opposite property
+
         d->templateParameter = templateParameter;
 
         // Adjust opposite property
@@ -391,6 +395,8 @@ void QClassifier::setOwnedTemplateSignature(QRedefinableTemplateSignature *owned
 
     QTUML_D(QClassifier);
     if (d->ownedTemplateSignature != ownedTemplateSignature) {
+        // Adjust opposite property
+
         d->ownedTemplateSignature = ownedTemplateSignature;
 
         // Adjust opposite property
@@ -517,7 +523,9 @@ void QClassifier::setRepresentation(QCollaborationUse *representation)
         d->representation = representation;
 
         // Adjust subsetted property(ies)
-        addCollaborationUse(representation);
+        if (representation) {
+            addCollaborationUse(representation);
+        }
     }
 }
 

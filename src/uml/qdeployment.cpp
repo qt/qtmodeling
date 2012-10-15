@@ -104,6 +104,10 @@ void QDeployment::setLocation(QDeploymentTarget *location)
 
     QTUML_D(QDeployment);
     if (d->location != location) {
+        // Adjust opposite property
+        if (d->location)
+            d->location->removeDeployment(this);
+
         // Adjust subsetted property(ies)
         removeClient(d->location);
 
@@ -111,10 +115,13 @@ void QDeployment::setLocation(QDeploymentTarget *location)
 
         // Adjust subsetted property(ies)
         d->setOwner(location);
-        addClient(location);
+        if (location) {
+            addClient(location);
+        }
 
         // Adjust opposite property
-        location->addDeployment(this);
+        if (location)
+            location->addDeployment(this);
     }
 }
 

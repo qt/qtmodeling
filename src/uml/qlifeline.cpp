@@ -165,7 +165,8 @@ void QLifeline::removeCoveredBy(QInteractionFragment *coveredBy)
         d->coveredBy->remove(coveredBy);
 
         // Adjust opposite property
-        coveredBy->removeCovered(this);
+        if (coveredBy)
+            coveredBy->removeCovered(this);
     }
 }
 
@@ -186,13 +187,18 @@ void QLifeline::setInteraction(QInteraction *interaction)
 
     QTUML_D(QLifeline);
     if (d->interaction != interaction) {
+        // Adjust opposite property
+        if (d->interaction)
+            d->interaction->removeLifeline(this);
+
         d->interaction = interaction;
 
         // Adjust subsetted property(ies)
         d->setNamespace_(interaction);
 
         // Adjust opposite property
-        interaction->addLifeline(this);
+        if (interaction)
+            interaction->addLifeline(this);
     }
 }
 
@@ -219,7 +225,9 @@ void QLifeline::setSelector(QValueSpecification *selector)
         d->selector = selector;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(selector);
+        if (selector) {
+            d->addOwnedElement(selector);
+        }
     }
 }
 

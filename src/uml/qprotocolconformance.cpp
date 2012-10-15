@@ -99,6 +99,10 @@ void QProtocolConformance::setSpecificMachine(QProtocolStateMachine *specificMac
 
     QTUML_D(QProtocolConformance);
     if (d->specificMachine != specificMachine) {
+        // Adjust opposite property
+        if (d->specificMachine)
+            d->specificMachine->removeConformance(this);
+
         // Adjust subsetted property(ies)
         d->removeSource(d->specificMachine);
 
@@ -106,10 +110,13 @@ void QProtocolConformance::setSpecificMachine(QProtocolStateMachine *specificMac
 
         // Adjust subsetted property(ies)
         d->setOwner(specificMachine);
-        d->addSource(specificMachine);
+        if (specificMachine) {
+            d->addSource(specificMachine);
+        }
 
         // Adjust opposite property
-        specificMachine->addConformance(this);
+        if (specificMachine)
+            specificMachine->addConformance(this);
     }
 }
 
@@ -136,7 +143,9 @@ void QProtocolConformance::setGeneralMachine(QProtocolStateMachine *generalMachi
         d->generalMachine = generalMachine;
 
         // Adjust subsetted property(ies)
-        d->addTarget(generalMachine);
+        if (generalMachine) {
+            d->addTarget(generalMachine);
+        }
     }
 }
 

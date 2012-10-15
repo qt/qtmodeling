@@ -133,13 +133,18 @@ void QInteractionFragment::setEnclosingInteraction(QInteraction *enclosingIntera
 
     QTUML_D(QInteractionFragment);
     if (d->enclosingInteraction != enclosingInteraction) {
+        // Adjust opposite property
+        if (d->enclosingInteraction)
+            d->enclosingInteraction->removeFragment(this);
+
         d->enclosingInteraction = enclosingInteraction;
 
         // Adjust subsetted property(ies)
         d->setNamespace_(enclosingInteraction);
 
         // Adjust opposite property
-        enclosingInteraction->addFragment(this);
+        if (enclosingInteraction)
+            enclosingInteraction->addFragment(this);
     }
 }
 
@@ -176,7 +181,8 @@ void QInteractionFragment::removeCovered(QLifeline *covered)
         d->covered->remove(covered);
 
         // Adjust opposite property
-        covered->removeCoveredBy(this);
+        if (covered)
+            covered->removeCoveredBy(this);
     }
 }
 
@@ -197,13 +203,18 @@ void QInteractionFragment::setEnclosingOperand(QInteractionOperand *enclosingOpe
 
     QTUML_D(QInteractionFragment);
     if (d->enclosingOperand != enclosingOperand) {
+        // Adjust opposite property
+        if (d->enclosingOperand)
+            d->enclosingOperand->removeFragment(this);
+
         d->enclosingOperand = enclosingOperand;
 
         // Adjust subsetted property(ies)
         d->setNamespace_(enclosingOperand);
 
         // Adjust opposite property
-        enclosingOperand->addFragment(this);
+        if (enclosingOperand)
+            enclosingOperand->addFragment(this);
     }
 }
 

@@ -238,7 +238,9 @@ void QOperation::setBodyCondition(QConstraint *bodyCondition)
         d->bodyCondition = bodyCondition;
 
         // Adjust subsetted property(ies)
-        addOwnedRule(bodyCondition);
+        if (bodyCondition) {
+            addOwnedRule(bodyCondition);
+        }
     }
 }
 
@@ -333,6 +335,10 @@ void QOperation::setDatatype(QDataType *datatype)
 
     QTUML_D(QOperation);
     if (d->datatype != datatype) {
+        // Adjust opposite property
+        if (d->datatype)
+            d->datatype->removeOwnedOperation(this);
+
         // Adjust subsetted property(ies)
         d->removeFeaturingClassifier(d->datatype);
         d->removeRedefinitionContext(d->datatype);
@@ -340,12 +346,17 @@ void QOperation::setDatatype(QDataType *datatype)
         d->datatype = datatype;
 
         // Adjust subsetted property(ies)
-        d->addFeaturingClassifier(datatype);
-        d->addRedefinitionContext(datatype);
+        if (datatype) {
+            d->addFeaturingClassifier(datatype);
+        }
+        if (datatype) {
+            d->addRedefinitionContext(datatype);
+        }
         d->setNamespace_(datatype);
 
         // Adjust opposite property
-        datatype->addOwnedOperation(this);
+        if (datatype)
+            datatype->addOwnedOperation(this);
     }
 }
 
@@ -366,6 +377,8 @@ void QOperation::setTemplateParameter(QOperationTemplateParameter *templateParam
 
     QTUML_D(QOperation);
     if (d->templateParameter != templateParameter) {
+        // Adjust opposite property
+
         d->templateParameter = templateParameter;
 
         // Adjust opposite property
@@ -390,6 +403,10 @@ void QOperation::setInterface(QInterface *interface)
 
     QTUML_D(QOperation);
     if (d->interface != interface) {
+        // Adjust opposite property
+        if (d->interface)
+            d->interface->removeOwnedOperation(this);
+
         // Adjust subsetted property(ies)
         d->removeFeaturingClassifier(d->interface);
         d->removeRedefinitionContext(d->interface);
@@ -397,12 +414,17 @@ void QOperation::setInterface(QInterface *interface)
         d->interface = interface;
 
         // Adjust subsetted property(ies)
-        d->addFeaturingClassifier(interface);
-        d->addRedefinitionContext(interface);
+        if (interface) {
+            d->addFeaturingClassifier(interface);
+        }
+        if (interface) {
+            d->addRedefinitionContext(interface);
+        }
         d->setNamespace_(interface);
 
         // Adjust opposite property
-        interface->addOwnedOperation(this);
+        if (interface)
+            interface->addOwnedOperation(this);
     }
 }
 
@@ -473,6 +495,10 @@ void QOperation::setClass_(QClass *class_)
 
     QTUML_D(QOperation);
     if (d->class_ != class_) {
+        // Adjust opposite property
+        if (d->class_)
+            d->class_->removeOwnedOperation(this);
+
         // Adjust subsetted property(ies)
         d->removeFeaturingClassifier(d->class_);
         d->removeRedefinitionContext(d->class_);
@@ -480,12 +506,17 @@ void QOperation::setClass_(QClass *class_)
         d->class_ = class_;
 
         // Adjust subsetted property(ies)
-        d->addFeaturingClassifier(class_);
-        d->addRedefinitionContext(class_);
+        if (class_) {
+            d->addFeaturingClassifier(class_);
+        }
+        if (class_) {
+            d->addRedefinitionContext(class_);
+        }
         d->setNamespace_(class_);
 
         // Adjust opposite property
-        class_->addOwnedOperation(this);
+        if (class_)
+            class_->addOwnedOperation(this);
     }
 }
 

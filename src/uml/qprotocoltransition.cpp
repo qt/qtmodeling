@@ -106,7 +106,9 @@ void QProtocolTransition::setPostCondition(QConstraint *postCondition)
         d->postCondition = postCondition;
 
         // Adjust subsetted property(ies)
-        addOwnedRule(postCondition);
+        if (postCondition) {
+            addOwnedRule(postCondition);
+        }
     }
 }
 

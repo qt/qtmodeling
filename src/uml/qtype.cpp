@@ -88,13 +88,18 @@ void QType::setPackage(QPackage *package)
 
     QTUML_D(QType);
     if (d->package != package) {
+        // Adjust opposite property
+        if (d->package)
+            d->package->removeOwnedType(this);
+
         d->package = package;
 
         // Adjust subsetted property(ies)
         d->setNamespace_(package);
 
         // Adjust opposite property
-        package->addOwnedType(this);
+        if (package)
+            package->addOwnedType(this);
     }
 }
 

@@ -181,7 +181,9 @@ void QBehavioredClassifier::setClassifierBehavior(QBehavior *classifierBehavior)
         d->classifierBehavior = classifierBehavior;
 
         // Adjust subsetted property(ies)
-        addOwnedBehavior(classifierBehavior);
+        if (classifierBehavior) {
+            addOwnedBehavior(classifierBehavior);
+        }
     }
 }
 

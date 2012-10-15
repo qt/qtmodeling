@@ -106,7 +106,9 @@ void QStateInvariant::setInvariant(QConstraint *invariant)
         d->invariant = invariant;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(invariant);
+        if (invariant) {
+            d->addOwnedElement(invariant);
+        }
     }
 }
 

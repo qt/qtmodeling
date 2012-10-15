@@ -92,13 +92,17 @@ void QTemplateableElement::setOwnedTemplateSignature(QTemplateSignature *ownedTe
 
     QTUML_D(QTemplateableElement);
     if (d->ownedTemplateSignature != ownedTemplateSignature) {
+        // Adjust opposite property
+
         // Adjust subsetted property(ies)
         d->removeOwnedElement(d->ownedTemplateSignature);
 
         d->ownedTemplateSignature = ownedTemplateSignature;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(ownedTemplateSignature);
+        if (ownedTemplateSignature) {
+            d->addOwnedElement(ownedTemplateSignature);
+        }
 
         // Adjust opposite property
         ownedTemplateSignature->setTemplate_(this);

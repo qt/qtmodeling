@@ -143,7 +143,9 @@ void QObjectNode::setUpperBound(QValueSpecification *upperBound)
         d->upperBound = upperBound;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(upperBound);
+        if (upperBound) {
+            d->addOwnedElement(upperBound);
+        }
     }
 }
 

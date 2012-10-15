@@ -98,6 +98,8 @@ void QOperationTemplateParameter::setParameteredElement(QOperation *parameteredE
 
     QTUML_D(QOperationTemplateParameter);
     if (d->parameteredElement != parameteredElement) {
+        // Adjust opposite property
+
         d->parameteredElement = parameteredElement;
 
         // Adjust opposite property

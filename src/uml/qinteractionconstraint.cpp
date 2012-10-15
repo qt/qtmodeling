@@ -105,7 +105,9 @@ void QInteractionConstraint::setMaxint(QValueSpecification *maxint)
         d->maxint = maxint;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(maxint);
+        if (maxint) {
+            d->addOwnedElement(maxint);
+        }
     }
 }
 
@@ -132,7 +134,9 @@ void QInteractionConstraint::setMinint(QValueSpecification *minint)
         d->minint = minint;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(minint);
+        if (minint) {
+            d->addOwnedElement(minint);
+        }
     }
 }
 

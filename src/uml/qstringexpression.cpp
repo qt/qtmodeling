@@ -99,13 +99,18 @@ void QStringExpression::setOwningExpression(QStringExpression *owningExpression)
 
     QTUML_D(QStringExpression);
     if (d->owningExpression != owningExpression) {
+        // Adjust opposite property
+        if (d->owningExpression)
+            d->owningExpression->removeSubExpression(this);
+
         d->owningExpression = owningExpression;
 
         // Adjust subsetted property(ies)
         d->setOwner(owningExpression);
 
         // Adjust opposite property
-        owningExpression->addSubExpression(this);
+        if (owningExpression)
+            owningExpression->addSubExpression(this);
     }
 }
 

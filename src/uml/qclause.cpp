@@ -125,7 +125,8 @@ void QClause::removeSuccessorClause(QClause *successorClause)
         d->successorClauses->remove(successorClause);
 
         // Adjust opposite property
-        successorClause->removePredecessorClause(this);
+        if (successorClause)
+            successorClause->removePredecessorClause(this);
     }
 }
 
@@ -183,7 +184,8 @@ void QClause::removePredecessorClause(QClause *predecessorClause)
         d->predecessorClauses->remove(predecessorClause);
 
         // Adjust opposite property
-        predecessorClause->removeSuccessorClause(this);
+        if (predecessorClause)
+            predecessorClause->removeSuccessorClause(this);
     }
 }
 

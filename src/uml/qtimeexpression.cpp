@@ -137,7 +137,9 @@ void QTimeExpression::setExpr(QValueSpecification *expr)
         d->expr = expr;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(expr);
+        if (expr) {
+            d->addOwnedElement(expr);
+        }
     }
 }
 

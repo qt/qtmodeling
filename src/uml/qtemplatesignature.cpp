@@ -134,6 +134,8 @@ void QTemplateSignature::setTemplate_(QTemplateableElement *template_)
 
     QTUML_D(QTemplateSignature);
     if (d->template_ != template_) {
+        // Adjust opposite property
+
         d->template_ = template_;
 
         // Adjust subsetted property(ies)

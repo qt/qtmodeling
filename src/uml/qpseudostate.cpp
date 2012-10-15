@@ -122,13 +122,18 @@ void QPseudostate::setState(QState *state)
 
     QTUML_D(QPseudostate);
     if (d->state != state) {
+        // Adjust opposite property
+        if (d->state)
+            d->state->removeConnectionPoint(this);
+
         d->state = state;
 
         // Adjust subsetted property(ies)
         d->setNamespace_(state);
 
         // Adjust opposite property
-        state->addConnectionPoint(this);
+        if (state)
+            state->addConnectionPoint(this);
     }
 }
 
@@ -149,13 +154,18 @@ void QPseudostate::setStateMachine(QStateMachine *stateMachine)
 
     QTUML_D(QPseudostate);
     if (d->stateMachine != stateMachine) {
+        // Adjust opposite property
+        if (d->stateMachine)
+            d->stateMachine->removeConnectionPoint(this);
+
         d->stateMachine = stateMachine;
 
         // Adjust subsetted property(ies)
         d->setNamespace_(stateMachine);
 
         // Adjust opposite property
-        stateMachine->addConnectionPoint(this);
+        if (stateMachine)
+            stateMachine->addConnectionPoint(this);
     }
 }
 

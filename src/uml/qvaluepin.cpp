@@ -104,7 +104,9 @@ void QValuePin::setValue(QValueSpecification *value)
         d->value = value;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(value);
+        if (value) {
+            d->addOwnedElement(value);
+        }
     }
 }
 

@@ -156,13 +156,18 @@ void QExceptionHandler::setProtectedNode(QExecutableNode *protectedNode)
 
     QTUML_D(QExceptionHandler);
     if (d->protectedNode != protectedNode) {
+        // Adjust opposite property
+        if (d->protectedNode)
+            d->protectedNode->removeHandler(this);
+
         d->protectedNode = protectedNode;
 
         // Adjust subsetted property(ies)
         d->setOwner(protectedNode);
 
         // Adjust opposite property
-        protectedNode->addHandler(this);
+        if (protectedNode)
+            protectedNode->addHandler(this);
     }
 }
 

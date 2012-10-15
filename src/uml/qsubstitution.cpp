@@ -105,7 +105,9 @@ void QSubstitution::setContract(QClassifier *contract)
         d->contract = contract;
 
         // Adjust subsetted property(ies)
-        addSupplier(contract);
+        if (contract) {
+            addSupplier(contract);
+        }
     }
 }
 
@@ -126,6 +128,10 @@ void QSubstitution::setSubstitutingClassifier(QClassifier *substitutingClassifie
 
     QTUML_D(QSubstitution);
     if (d->substitutingClassifier != substitutingClassifier) {
+        // Adjust opposite property
+        if (d->substitutingClassifier)
+            d->substitutingClassifier->removeSubstitution(this);
+
         // Adjust subsetted property(ies)
         removeClient(d->substitutingClassifier);
 
@@ -133,10 +139,13 @@ void QSubstitution::setSubstitutingClassifier(QClassifier *substitutingClassifie
 
         // Adjust subsetted property(ies)
         d->setOwner(substitutingClassifier);
-        addClient(substitutingClassifier);
+        if (substitutingClassifier) {
+            addClient(substitutingClassifier);
+        }
 
         // Adjust opposite property
-        substitutingClassifier->addSubstitution(this);
+        if (substitutingClassifier)
+            substitutingClassifier->addSubstitution(this);
     }
 }
 

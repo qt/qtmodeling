@@ -92,11 +92,16 @@ void QElementPrivate::setOwner(QElement *owner)
     // This is a read-only derived-union association end
 
     if (this->owner != owner) {
+        QTUML_Q(QElement)
+        // Adjust opposite property
+        if (this->owner)
+            (dynamic_cast<QElementPrivate *>(this->owner->d_umlptr))->removeOwnedElement(q);
+
         this->owner = owner;
 
         // Adjust opposite property
-        QTUML_Q(QElement);
-        (dynamic_cast<QElementPrivate *>(owner->d_umlptr))->addOwnedElement(q);
+        if (owner)
+            (dynamic_cast<QElementPrivate *>(owner->d_umlptr))->addOwnedElement(q);
     }
 }
 

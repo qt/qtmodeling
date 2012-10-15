@@ -219,7 +219,9 @@ void QState::setExit(QBehavior *exit)
         d->exit = exit;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(exit);
+        if (exit) {
+            d->addOwnedElement(exit);
+        }
     }
 }
 
@@ -302,7 +304,9 @@ void QState::setRedefinedState(QState *redefinedState)
         d->redefinedState = redefinedState;
 
         // Adjust subsetted property(ies)
-        d->addRedefinedElement(redefinedState);
+        if (redefinedState) {
+            d->addRedefinedElement(redefinedState);
+        }
     }
 }
 
@@ -409,7 +413,9 @@ void QState::setEntry(QBehavior *entry)
         d->entry = entry;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(entry);
+        if (entry) {
+            d->addOwnedElement(entry);
+        }
     }
 }
 
@@ -436,7 +442,9 @@ void QState::setDoActivity(QBehavior *doActivity)
         d->doActivity = doActivity;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(doActivity);
+        if (doActivity) {
+            d->addOwnedElement(doActivity);
+        }
     }
 }
 
@@ -457,10 +465,15 @@ void QState::setSubmachine(QStateMachine *submachine)
 
     QTUML_D(QState);
     if (d->submachine != submachine) {
+        // Adjust opposite property
+        if (d->submachine)
+            d->submachine->removeSubmachineState(this);
+
         d->submachine = submachine;
 
         // Adjust opposite property
-        submachine->addSubmachineState(this);
+        if (submachine)
+            submachine->addSubmachineState(this);
     }
 }
 
@@ -487,7 +500,9 @@ void QState::setStateInvariant(QConstraint *stateInvariant)
         d->stateInvariant = stateInvariant;
 
         // Adjust subsetted property(ies)
-        addOwnedRule(stateInvariant);
+        if (stateInvariant) {
+            addOwnedRule(stateInvariant);
+        }
     }
 }
 

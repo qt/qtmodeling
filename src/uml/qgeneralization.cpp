@@ -124,6 +124,10 @@ void QGeneralization::setSpecific(QClassifier *specific)
 
     QTUML_D(QGeneralization);
     if (d->specific != specific) {
+        // Adjust opposite property
+        if (d->specific)
+            d->specific->removeGeneralization(this);
+
         // Adjust subsetted property(ies)
         d->removeSource(d->specific);
 
@@ -131,10 +135,13 @@ void QGeneralization::setSpecific(QClassifier *specific)
 
         // Adjust subsetted property(ies)
         d->setOwner(specific);
-        d->addSource(specific);
+        if (specific) {
+            d->addSource(specific);
+        }
 
         // Adjust opposite property
-        specific->addGeneralization(this);
+        if (specific)
+            specific->addGeneralization(this);
     }
 }
 
@@ -171,7 +178,8 @@ void QGeneralization::removeGeneralizationSet(QGeneralizationSet *generalization
         d->generalizationSets->remove(generalizationSet);
 
         // Adjust opposite property
-        generalizationSet->removeGeneralization(this);
+        if (generalizationSet)
+            generalizationSet->removeGeneralization(this);
     }
 }
 
@@ -198,7 +206,9 @@ void QGeneralization::setGeneral(QClassifier *general)
         d->general = general;
 
         // Adjust subsetted property(ies)
-        d->addTarget(general);
+        if (general) {
+            d->addTarget(general);
+        }
     }
 }
 

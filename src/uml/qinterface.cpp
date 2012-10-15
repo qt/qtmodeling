@@ -117,7 +117,9 @@ void QInterface::setProtocol(QProtocolStateMachine *protocol)
         d->protocol = protocol;
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(protocol);
+        if (protocol) {
+            d->addOwnedMember(protocol);
+        }
     }
 }
 

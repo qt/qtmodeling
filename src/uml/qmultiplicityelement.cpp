@@ -189,7 +189,9 @@ void QMultiplicityElement::setUpperValue(QValueSpecification *upperValue)
         d->upperValue = upperValue;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(upperValue);
+        if (upperValue) {
+            d->addOwnedElement(upperValue);
+        }
     }
 }
 
@@ -216,7 +218,9 @@ void QMultiplicityElement::setLowerValue(QValueSpecification *lowerValue)
         d->lowerValue = lowerValue;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(lowerValue);
+        if (lowerValue) {
+            d->addOwnedElement(lowerValue);
+        }
     }
 }
 

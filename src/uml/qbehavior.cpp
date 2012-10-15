@@ -125,10 +125,15 @@ void QBehavior::setSpecification(QBehavioralFeature *specification)
 
     QTUML_D(QBehavior);
     if (d->specification != specification) {
+        // Adjust opposite property
+        if (d->specification)
+            d->specification->removeMethod(this);
+
         d->specification = specification;
 
         // Adjust opposite property
-        specification->addMethod(this);
+        if (specification)
+            specification->addMethod(this);
     }
 }
 

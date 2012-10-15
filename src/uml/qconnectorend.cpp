@@ -101,10 +101,15 @@ void QConnectorEnd::setRole(QConnectableElement *role)
 
     QTUML_D(QConnectorEnd);
     if (d->role != role) {
+        // Adjust opposite property
+        if (d->role)
+            (dynamic_cast<QConnectableElementPrivate *>(d->role->d_umlptr))->removeEnd(this);
+
         d->role = role;
 
         // Adjust opposite property
-        (dynamic_cast<QConnectableElementPrivate *>(role->d_umlptr))->addEnd(this);
+        if (role)
+            (dynamic_cast<QConnectableElementPrivate *>(role->d_umlptr))->addEnd(this);
     }
 }
 

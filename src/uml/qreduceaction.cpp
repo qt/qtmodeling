@@ -130,7 +130,9 @@ void QReduceAction::setResult(QOutputPin *result)
         d->result = result;
 
         // Adjust subsetted property(ies)
-        d->addOutput(result);
+        if (result) {
+            d->addOutput(result);
+        }
     }
 }
 
@@ -157,7 +159,9 @@ void QReduceAction::setCollection(QInputPin *collection)
         d->collection = collection;
 
         // Adjust subsetted property(ies)
-        d->addInput(collection);
+        if (collection) {
+            d->addInput(collection);
+        }
     }
 }
 

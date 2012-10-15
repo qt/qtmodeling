@@ -127,7 +127,9 @@ void QCallOperationAction::setTarget(QInputPin *target)
         d->target = target;
 
         // Adjust subsetted property(ies)
-        d->addInput(target);
+        if (target) {
+            d->addInput(target);
+        }
     }
 }
 

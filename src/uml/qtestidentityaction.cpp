@@ -107,7 +107,9 @@ void QTestIdentityAction::setSecond(QInputPin *second)
         d->second = second;
 
         // Adjust subsetted property(ies)
-        d->addInput(second);
+        if (second) {
+            d->addInput(second);
+        }
     }
 }
 
@@ -134,7 +136,9 @@ void QTestIdentityAction::setResult(QOutputPin *result)
         d->result = result;
 
         // Adjust subsetted property(ies)
-        d->addOutput(result);
+        if (result) {
+            d->addOutput(result);
+        }
     }
 }
 
@@ -161,7 +165,9 @@ void QTestIdentityAction::setFirst(QInputPin *first)
         d->first = first;
 
         // Adjust subsetted property(ies)
-        d->addInput(first);
+        if (first) {
+            d->addInput(first);
+        }
     }
 }
 

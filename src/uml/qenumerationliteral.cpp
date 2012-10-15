@@ -111,13 +111,18 @@ void QEnumerationLiteral::setEnumeration(QEnumeration *enumeration)
 
     QTUML_D(QEnumerationLiteral);
     if (d->enumeration != enumeration) {
+        // Adjust opposite property
+        if (d->enumeration)
+            d->enumeration->removeOwnedLiteral(this);
+
         d->enumeration = enumeration;
 
         // Adjust subsetted property(ies)
         d->setNamespace_(enumeration);
 
         // Adjust opposite property
-        enumeration->addOwnedLiteral(this);
+        if (enumeration)
+            enumeration->addOwnedLiteral(this);
     }
 }
 

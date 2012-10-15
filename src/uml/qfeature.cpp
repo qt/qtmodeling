@@ -80,7 +80,8 @@ void QFeaturePrivate::removeFeaturingClassifier(QClassifier *featuringClassifier
 
         // Adjust opposite property
         QTUML_Q(QFeature);
-        (dynamic_cast<QClassifierPrivate *>(featuringClassifier->d_umlptr))->removeFeature(q);
+        if (featuringClassifier)
+            (dynamic_cast<QClassifierPrivate *>(featuringClassifier->d_umlptr))->removeFeature(q);
     }
 }
 

@@ -99,10 +99,15 @@ void QGeneralOrdering::setBefore(QOccurrenceSpecification *before)
 
     QTUML_D(QGeneralOrdering);
     if (d->before != before) {
+        // Adjust opposite property
+        if (d->before)
+            d->before->removeToAfter(this);
+
         d->before = before;
 
         // Adjust opposite property
-        before->addToAfter(this);
+        if (before)
+            before->addToAfter(this);
     }
 }
 
@@ -123,10 +128,15 @@ void QGeneralOrdering::setAfter(QOccurrenceSpecification *after)
 
     QTUML_D(QGeneralOrdering);
     if (d->after != after) {
+        // Adjust opposite property
+        if (d->after)
+            d->after->removeToBefore(this);
+
         d->after = after;
 
         // Adjust opposite property
-        after->addToBefore(this);
+        if (after)
+            after->addToBefore(this);
     }
 }
 

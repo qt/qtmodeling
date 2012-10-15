@@ -140,7 +140,9 @@ void QTransition::setGuard(QConstraint *guard)
         d->guard = guard;
 
         // Adjust subsetted property(ies)
-        addOwnedRule(guard);
+        if (guard) {
+            addOwnedRule(guard);
+        }
     }
 }
 
@@ -161,10 +163,15 @@ void QTransition::setTarget(QVertex *target)
 
     QTUML_D(QTransition);
     if (d->target != target) {
+        // Adjust opposite property
+        if (d->target)
+            (dynamic_cast<QVertexPrivate *>(d->target->d_umlptr))->removeIncoming(this);
+
         d->target = target;
 
         // Adjust opposite property
-        (dynamic_cast<QVertexPrivate *>(target->d_umlptr))->addIncoming(this);
+        if (target)
+            (dynamic_cast<QVertexPrivate *>(target->d_umlptr))->addIncoming(this);
     }
 }
 
@@ -191,7 +198,9 @@ void QTransition::setEffect(QBehavior *effect)
         d->effect = effect;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(effect);
+        if (effect) {
+            d->addOwnedElement(effect);
+        }
     }
 }
 
@@ -212,13 +221,18 @@ void QTransition::setContainer(QRegion *container)
 
     QTUML_D(QTransition);
     if (d->container != container) {
+        // Adjust opposite property
+        if (d->container)
+            d->container->removeTransition(this);
+
         d->container = container;
 
         // Adjust subsetted property(ies)
         d->setNamespace_(container);
 
         // Adjust opposite property
-        container->addTransition(this);
+        if (container)
+            container->addTransition(this);
     }
 }
 
@@ -258,7 +272,9 @@ void QTransition::setRedefinedTransition(QTransition *redefinedTransition)
         d->redefinedTransition = redefinedTransition;
 
         // Adjust subsetted property(ies)
-        d->addRedefinedElement(redefinedTransition);
+        if (redefinedTransition) {
+            d->addRedefinedElement(redefinedTransition);
+        }
     }
 }
 
@@ -279,10 +295,15 @@ void QTransition::setSource(QVertex *source)
 
     QTUML_D(QTransition);
     if (d->source != source) {
+        // Adjust opposite property
+        if (d->source)
+            (dynamic_cast<QVertexPrivate *>(d->source->d_umlptr))->removeOutgoing(this);
+
         d->source = source;
 
         // Adjust opposite property
-        (dynamic_cast<QVertexPrivate *>(source->d_umlptr))->addOutgoing(this);
+        if (source)
+            (dynamic_cast<QVertexPrivate *>(source->d_umlptr))->addOutgoing(this);
     }
 }
 

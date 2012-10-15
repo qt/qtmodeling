@@ -105,7 +105,9 @@ void QPackageMerge::setMergedPackage(QPackage *mergedPackage)
         d->mergedPackage = mergedPackage;
 
         // Adjust subsetted property(ies)
-        d->addTarget(mergedPackage);
+        if (mergedPackage) {
+            d->addTarget(mergedPackage);
+        }
     }
 }
 
@@ -126,6 +128,10 @@ void QPackageMerge::setReceivingPackage(QPackage *receivingPackage)
 
     QTUML_D(QPackageMerge);
     if (d->receivingPackage != receivingPackage) {
+        // Adjust opposite property
+        if (d->receivingPackage)
+            d->receivingPackage->removePackageMerge(this);
+
         // Adjust subsetted property(ies)
         d->removeSource(d->receivingPackage);
 
@@ -133,10 +139,13 @@ void QPackageMerge::setReceivingPackage(QPackage *receivingPackage)
 
         // Adjust subsetted property(ies)
         d->setOwner(receivingPackage);
-        d->addSource(receivingPackage);
+        if (receivingPackage) {
+            d->addSource(receivingPackage);
+        }
 
         // Adjust opposite property
-        receivingPackage->addPackageMerge(this);
+        if (receivingPackage)
+            receivingPackage->addPackageMerge(this);
     }
 }
 

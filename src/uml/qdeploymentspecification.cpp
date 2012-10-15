@@ -140,13 +140,18 @@ void QDeploymentSpecification::setDeployment(QDeployment *deployment)
 
     QTUML_D(QDeploymentSpecification);
     if (d->deployment != deployment) {
+        // Adjust opposite property
+        if (d->deployment)
+            d->deployment->removeConfiguration(this);
+
         d->deployment = deployment;
 
         // Adjust subsetted property(ies)
         d->setOwner(deployment);
 
         // Adjust opposite property
-        deployment->addConfiguration(this);
+        if (deployment)
+            deployment->addConfiguration(this);
     }
 }
 

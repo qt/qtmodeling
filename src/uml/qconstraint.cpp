@@ -103,13 +103,18 @@ void QConstraint::setContext(QNamespace *context)
 
     QTUML_D(QConstraint);
     if (d->context != context) {
+        // Adjust opposite property
+        if (d->context)
+            d->context->removeOwnedRule(this);
+
         d->context = context;
 
         // Adjust subsetted property(ies)
         d->setNamespace_(context);
 
         // Adjust opposite property
-        context->addOwnedRule(this);
+        if (context)
+            context->addOwnedRule(this);
     }
 }
 
@@ -136,7 +141,9 @@ void QConstraint::setSpecification(QValueSpecification *specification)
         d->specification = specification;
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(specification);
+        if (specification) {
+            d->addOwnedElement(specification);
+        }
     }
 }
 
