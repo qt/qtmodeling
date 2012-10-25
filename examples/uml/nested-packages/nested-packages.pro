@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = uml
+TARGET = nested-packages
 DEPENDPATH += .
 INCLUDEPATH += .
 
