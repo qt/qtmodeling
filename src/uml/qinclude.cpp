@@ -104,15 +104,15 @@ void QInclude::setIncludingCase(QUseCase *includingCase)
             d->includingCase->removeInclude(this);
 
         // Adjust subsetted property(ies)
-        d->removeSource(d->includingCase);
+        d->QDirectedRelationshipPrivate::removeSource(dynamic_cast<QElement *>(d->includingCase));
 
         d->includingCase = includingCase;
 
         // Adjust subsetted property(ies)
         if (includingCase) {
-            d->addSource(includingCase);
+            d->QDirectedRelationshipPrivate::addSource(dynamic_cast<QElement *>(includingCase));
         }
-        d->setNamespace_(includingCase);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(includingCase));
 
         // Adjust opposite property
         if (includingCase)
@@ -138,13 +138,13 @@ void QInclude::setAddition(QUseCase *addition)
     QTUML_D(QInclude);
     if (d->addition != addition) {
         // Adjust subsetted property(ies)
-        d->removeTarget(d->addition);
+        d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(d->addition));
 
         d->addition = addition;
 
         // Adjust subsetted property(ies)
         if (addition) {
-            d->addTarget(addition);
+            d->QDirectedRelationshipPrivate::addTarget(dynamic_cast<QElement *>(addition));
         }
     }
 }

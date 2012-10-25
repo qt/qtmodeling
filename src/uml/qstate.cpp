@@ -173,7 +173,7 @@ void QState::addRegion(QRegion *region)
         d->regions->insert(region);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(region);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(region));
 
         // Adjust opposite property
         region->setState(this);
@@ -189,7 +189,7 @@ void QState::removeRegion(QRegion *region)
         d->regions->remove(region);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(region);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(region));
 
         // Adjust opposite property
         region->setState(0);
@@ -214,13 +214,13 @@ void QState::setExit(QBehavior *exit)
     QTUML_D(QState);
     if (d->exit != exit) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->exit);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->exit));
 
         d->exit = exit;
 
         // Adjust subsetted property(ies)
         if (exit) {
-            d->addOwnedElement(exit);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(exit));
         }
     }
 }
@@ -245,7 +245,7 @@ void QState::addConnection(QConnectionPointReference *connection)
         d->connections->insert(connection);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(connection);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(connection));
 
         // Adjust opposite property
         connection->setState(this);
@@ -261,7 +261,7 @@ void QState::removeConnection(QConnectionPointReference *connection)
         d->connections->remove(connection);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(connection);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(connection));
 
         // Adjust opposite property
         connection->setState(0);
@@ -299,13 +299,13 @@ void QState::setRedefinedState(QState *redefinedState)
     QTUML_D(QState);
     if (d->redefinedState != redefinedState) {
         // Adjust subsetted property(ies)
-        d->removeRedefinedElement(d->redefinedState);
+        d->QRedefinableElementPrivate::removeRedefinedElement(dynamic_cast<QRedefinableElement *>(d->redefinedState));
 
         d->redefinedState = redefinedState;
 
         // Adjust subsetted property(ies)
         if (redefinedState) {
-            d->addRedefinedElement(redefinedState);
+            d->QRedefinableElementPrivate::addRedefinedElement(dynamic_cast<QRedefinableElement *>(redefinedState));
         }
     }
 }
@@ -330,7 +330,7 @@ void QState::addDeferrableTrigger(QTrigger *deferrableTrigger)
         d->deferrableTriggers->insert(deferrableTrigger);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(deferrableTrigger);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(deferrableTrigger));
     }
 }
 
@@ -343,7 +343,7 @@ void QState::removeDeferrableTrigger(QTrigger *deferrableTrigger)
         d->deferrableTriggers->remove(deferrableTrigger);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(deferrableTrigger);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(deferrableTrigger));
     }
 }
 
@@ -367,7 +367,7 @@ void QState::addConnectionPoint(QPseudostate *connectionPoint)
         d->connectionPoints->insert(connectionPoint);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(connectionPoint);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(connectionPoint));
 
         // Adjust opposite property
         connectionPoint->setState(this);
@@ -383,7 +383,7 @@ void QState::removeConnectionPoint(QPseudostate *connectionPoint)
         d->connectionPoints->remove(connectionPoint);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(connectionPoint);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(connectionPoint));
 
         // Adjust opposite property
         connectionPoint->setState(0);
@@ -408,13 +408,13 @@ void QState::setEntry(QBehavior *entry)
     QTUML_D(QState);
     if (d->entry != entry) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->entry);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->entry));
 
         d->entry = entry;
 
         // Adjust subsetted property(ies)
         if (entry) {
-            d->addOwnedElement(entry);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(entry));
         }
     }
 }
@@ -437,13 +437,13 @@ void QState::setDoActivity(QBehavior *doActivity)
     QTUML_D(QState);
     if (d->doActivity != doActivity) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->doActivity);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->doActivity));
 
         d->doActivity = doActivity;
 
         // Adjust subsetted property(ies)
         if (doActivity) {
-            d->addOwnedElement(doActivity);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(doActivity));
         }
     }
 }
@@ -495,13 +495,13 @@ void QState::setStateInvariant(QConstraint *stateInvariant)
     QTUML_D(QState);
     if (d->stateInvariant != stateInvariant) {
         // Adjust subsetted property(ies)
-        removeOwnedRule(d->stateInvariant);
+        QNamespace::removeOwnedRule(dynamic_cast<QConstraint *>(d->stateInvariant));
 
         d->stateInvariant = stateInvariant;
 
         // Adjust subsetted property(ies)
         if (stateInvariant) {
-            addOwnedRule(stateInvariant);
+            QNamespace::addOwnedRule(dynamic_cast<QConstraint *>(stateInvariant));
         }
     }
 }

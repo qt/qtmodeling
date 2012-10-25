@@ -121,13 +121,13 @@ void QRemoveVariableValueAction::setRemoveAt(QInputPin *removeAt)
     QTUML_D(QRemoveVariableValueAction);
     if (d->removeAt != removeAt) {
         // Adjust subsetted property(ies)
-        d->removeInput(d->removeAt);
+        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->removeAt));
 
         d->removeAt = removeAt;
 
         // Adjust subsetted property(ies)
         if (removeAt) {
-            d->addInput(removeAt);
+            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(removeAt));
         }
     }
 }

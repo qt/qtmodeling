@@ -74,7 +74,7 @@ void QActionPrivate::addInput(QInputPin *input)
         this->inputs->append(input);
 
         // Adjust subsetted property(ies)
-        addOwnedElement(input);
+        QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(input));
     }
 }
 
@@ -86,7 +86,7 @@ void QActionPrivate::removeInput(QInputPin *input)
         this->inputs->removeAll(input);
 
         // Adjust subsetted property(ies)
-        removeOwnedElement(input);
+        QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(input));
     }
 }
 
@@ -98,7 +98,7 @@ void QActionPrivate::addOutput(QOutputPin *output)
         this->outputs->append(output);
 
         // Adjust subsetted property(ies)
-        addOwnedElement(output);
+        QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(output));
     }
 }
 
@@ -110,7 +110,7 @@ void QActionPrivate::removeOutput(QOutputPin *output)
         this->outputs->removeAll(output);
 
         // Adjust subsetted property(ies)
-        removeOwnedElement(output);
+        QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(output));
     }
 }
 
@@ -184,7 +184,7 @@ void QAction::addLocalPostcondition(QConstraint *localPostcondition)
         d->localPostconditions->insert(localPostcondition);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(localPostcondition);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(localPostcondition));
     }
 }
 
@@ -197,7 +197,7 @@ void QAction::removeLocalPostcondition(QConstraint *localPostcondition)
         d->localPostconditions->remove(localPostcondition);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(localPostcondition);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(localPostcondition));
     }
 }
 
@@ -221,7 +221,7 @@ void QAction::addLocalPrecondition(QConstraint *localPrecondition)
         d->localPreconditions->insert(localPrecondition);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(localPrecondition);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(localPrecondition));
     }
 }
 
@@ -234,7 +234,7 @@ void QAction::removeLocalPrecondition(QConstraint *localPrecondition)
         d->localPreconditions->remove(localPrecondition);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(localPrecondition);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(localPrecondition));
     }
 }
 

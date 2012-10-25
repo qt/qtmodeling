@@ -101,7 +101,7 @@ void QActivityGroupPrivate::addSubgroup(QActivityGroup *subgroup)
         this->subgroups->insert(subgroup);
 
         // Adjust subsetted property(ies)
-        addOwnedElement(subgroup);
+        QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(subgroup));
 
         // Adjust opposite property
         QTUML_Q(QActivityGroup);
@@ -117,7 +117,7 @@ void QActivityGroupPrivate::removeSubgroup(QActivityGroup *subgroup)
         this->subgroups->remove(subgroup);
 
         // Adjust subsetted property(ies)
-        removeOwnedElement(subgroup);
+        QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(subgroup));
 
         // Adjust opposite property
         QTUML_Q(QActivityGroup);
@@ -165,7 +165,7 @@ void QActivityGroupPrivate::setSuperGroup(QActivityGroup *superGroup)
         this->superGroup = superGroup;
 
         // Adjust subsetted property(ies)
-        setOwner(superGroup);
+        QElementPrivate::setOwner(dynamic_cast<QElement *>(superGroup));
 
         // Adjust opposite property
         if (superGroup)
@@ -213,7 +213,7 @@ void QActivityGroup::setInActivity(QActivity *inActivity)
         d->inActivity = inActivity;
 
         // Adjust subsetted property(ies)
-        d->setOwner(inActivity);
+        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(inActivity));
 
         // Adjust opposite property
         if (inActivity)

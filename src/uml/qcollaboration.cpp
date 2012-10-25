@@ -102,7 +102,7 @@ void QCollaboration::addCollaborationRole(QConnectableElement *collaborationRole
         d->collaborationRoles->insert(collaborationRole);
 
         // Adjust subsetted property(ies)
-        d->addRole(collaborationRole);
+        d->QStructuredClassifierPrivate::addRole(dynamic_cast<QConnectableElement *>(collaborationRole));
     }
 }
 
@@ -115,7 +115,7 @@ void QCollaboration::removeCollaborationRole(QConnectableElement *collaborationR
         d->collaborationRoles->remove(collaborationRole);
 
         // Adjust subsetted property(ies)
-        d->removeRole(collaborationRole);
+        d->QStructuredClassifierPrivate::removeRole(dynamic_cast<QConnectableElement *>(collaborationRole));
     }
 }
 

@@ -101,7 +101,7 @@ void QNode::addNestedNode(QNode *nestedNode)
         d->nestedNodes->insert(nestedNode);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(nestedNode);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(nestedNode));
     }
 }
 
@@ -114,7 +114,7 @@ void QNode::removeNestedNode(QNode *nestedNode)
         d->nestedNodes->remove(nestedNode);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(nestedNode);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(nestedNode));
     }
 }
 

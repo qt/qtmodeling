@@ -99,13 +99,13 @@ void QActionInputPin::setFromAction(QAction *fromAction)
     QTUML_D(QActionInputPin);
     if (d->fromAction != fromAction) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->fromAction);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->fromAction));
 
         d->fromAction = fromAction;
 
         // Adjust subsetted property(ies)
         if (fromAction) {
-            d->addOwnedElement(fromAction);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(fromAction));
         }
     }
 }

@@ -121,13 +121,13 @@ void QAddVariableValueAction::setInsertAt(QInputPin *insertAt)
     QTUML_D(QAddVariableValueAction);
     if (d->insertAt != insertAt) {
         // Adjust subsetted property(ies)
-        d->removeInput(d->insertAt);
+        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->insertAt));
 
         d->insertAt = insertAt;
 
         // Adjust subsetted property(ies)
         if (insertAt) {
-            d->addInput(insertAt);
+            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(insertAt));
         }
     }
 }

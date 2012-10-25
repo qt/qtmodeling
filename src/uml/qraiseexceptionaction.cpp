@@ -99,13 +99,13 @@ void QRaiseExceptionAction::setException(QInputPin *exception)
     QTUML_D(QRaiseExceptionAction);
     if (d->exception != exception) {
         // Adjust subsetted property(ies)
-        d->removeInput(d->exception);
+        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->exception));
 
         d->exception = exception;
 
         // Adjust subsetted property(ies)
         if (exception) {
-            d->addInput(exception);
+            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(exception));
         }
     }
 }

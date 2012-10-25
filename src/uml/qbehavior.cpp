@@ -157,7 +157,7 @@ void QBehavior::addPostcondition(QConstraint *postcondition)
         d->postconditions->insert(postcondition);
 
         // Adjust subsetted property(ies)
-        addOwnedRule(postcondition);
+        QNamespace::addOwnedRule(dynamic_cast<QConstraint *>(postcondition));
     }
 }
 
@@ -170,7 +170,7 @@ void QBehavior::removePostcondition(QConstraint *postcondition)
         d->postconditions->remove(postcondition);
 
         // Adjust subsetted property(ies)
-        removeOwnedRule(postcondition);
+        QNamespace::removeOwnedRule(dynamic_cast<QConstraint *>(postcondition));
     }
 }
 
@@ -194,7 +194,7 @@ void QBehavior::addPrecondition(QConstraint *precondition)
         d->preconditions->insert(precondition);
 
         // Adjust subsetted property(ies)
-        addOwnedRule(precondition);
+        QNamespace::addOwnedRule(dynamic_cast<QConstraint *>(precondition));
     }
 }
 
@@ -207,7 +207,7 @@ void QBehavior::removePrecondition(QConstraint *precondition)
         d->preconditions->remove(precondition);
 
         // Adjust subsetted property(ies)
-        removeOwnedRule(precondition);
+        QNamespace::removeOwnedRule(dynamic_cast<QConstraint *>(precondition));
     }
 }
 
@@ -231,7 +231,7 @@ void QBehavior::addRedefinedBehavior(QBehavior *redefinedBehavior)
         d->redefinedBehaviors->insert(redefinedBehavior);
 
         // Adjust subsetted property(ies)
-        addRedefinedClassifier(redefinedBehavior);
+        QClassifier::addRedefinedClassifier(dynamic_cast<QClassifier *>(redefinedBehavior));
     }
 }
 
@@ -244,7 +244,7 @@ void QBehavior::removeRedefinedBehavior(QBehavior *redefinedBehavior)
         d->redefinedBehaviors->remove(redefinedBehavior);
 
         // Adjust subsetted property(ies)
-        removeRedefinedClassifier(redefinedBehavior);
+        QClassifier::removeRedefinedClassifier(dynamic_cast<QClassifier *>(redefinedBehavior));
     }
 }
 
@@ -268,7 +268,7 @@ void QBehavior::addOwnedParameter(QParameter *ownedParameter)
         d->ownedParameters->append(ownedParameter);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(ownedParameter);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(ownedParameter));
     }
 }
 
@@ -281,7 +281,7 @@ void QBehavior::removeOwnedParameter(QParameter *ownedParameter)
         d->ownedParameters->removeAll(ownedParameter);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(ownedParameter);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(ownedParameter));
     }
 }
 
@@ -305,7 +305,7 @@ void QBehavior::addOwnedParameterSet(QParameterSet *ownedParameterSet)
         d->ownedParameterSets->insert(ownedParameterSet);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(ownedParameterSet);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(ownedParameterSet));
     }
 }
 
@@ -318,7 +318,7 @@ void QBehavior::removeOwnedParameterSet(QParameterSet *ownedParameterSet)
         d->ownedParameterSets->remove(ownedParameterSet);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(ownedParameterSet);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(ownedParameterSet));
     }
 }
 
@@ -333,6 +333,18 @@ QBehavioredClassifier *QBehavior::context() const
 
     //QTUML_D(const QBehavior);
     //return <derived-return>;
+}
+
+// Overriden methods for subsetted properties
+
+void QBehavior::addRedefinedClassifier(QBehavior *redefinedBehavior)
+{
+    addRedefinedBehavior(redefinedBehavior);
+}
+
+void QBehavior::removeRedefinedClassifier(QBehavior *redefinedBehavior)
+{
+    removeRedefinedBehavior(redefinedBehavior);
 }
 
 QT_END_NAMESPACE_QTUML

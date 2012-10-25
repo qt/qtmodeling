@@ -99,13 +99,13 @@ void QChangeEvent::setChangeExpression(QValueSpecification *changeExpression)
     QTUML_D(QChangeEvent);
     if (d->changeExpression != changeExpression) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->changeExpression);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->changeExpression));
 
         d->changeExpression = changeExpression;
 
         // Adjust subsetted property(ies)
         if (changeExpression) {
-            d->addOwnedElement(changeExpression);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(changeExpression));
         }
     }
 }

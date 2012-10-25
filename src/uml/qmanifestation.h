@@ -71,6 +71,10 @@ public:
     QPackageableElement *utilizedElement() const;
     void setUtilizedElement(QPackageableElement *utilizedElement);
 
+    // Overriden methods for subsetted properties
+    void addSupplier(QPackageableElement *utilizedElement);
+    void removeSupplier(QPackageableElement *utilizedElement);
+
 protected:
     explicit QManifestation(bool createPimpl, QObject *parent = 0);
 };

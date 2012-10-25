@@ -99,13 +99,13 @@ void QReadSelfAction::setResult(QOutputPin *result)
     QTUML_D(QReadSelfAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        d->removeOutput(d->result);
+        d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            d->addOutput(result);
+            d->QActionPrivate::addOutput(dynamic_cast<QOutputPin *>(result));
         }
     }
 }

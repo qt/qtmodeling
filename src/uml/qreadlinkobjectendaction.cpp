@@ -124,13 +124,13 @@ void QReadLinkObjectEndAction::setObject(QInputPin *object)
     QTUML_D(QReadLinkObjectEndAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
-        d->removeInput(d->object);
+        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->object));
 
         d->object = object;
 
         // Adjust subsetted property(ies)
         if (object) {
-            d->addInput(object);
+            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(object));
         }
     }
 }
@@ -153,13 +153,13 @@ void QReadLinkObjectEndAction::setResult(QOutputPin *result)
     QTUML_D(QReadLinkObjectEndAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        d->removeOutput(d->result);
+        d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            d->addOutput(result);
+            d->QActionPrivate::addOutput(dynamic_cast<QOutputPin *>(result));
         }
     }
 }

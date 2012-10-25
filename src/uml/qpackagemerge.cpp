@@ -100,13 +100,13 @@ void QPackageMerge::setMergedPackage(QPackage *mergedPackage)
     QTUML_D(QPackageMerge);
     if (d->mergedPackage != mergedPackage) {
         // Adjust subsetted property(ies)
-        d->removeTarget(d->mergedPackage);
+        d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(d->mergedPackage));
 
         d->mergedPackage = mergedPackage;
 
         // Adjust subsetted property(ies)
         if (mergedPackage) {
-            d->addTarget(mergedPackage);
+            d->QDirectedRelationshipPrivate::addTarget(dynamic_cast<QElement *>(mergedPackage));
         }
     }
 }
@@ -133,14 +133,14 @@ void QPackageMerge::setReceivingPackage(QPackage *receivingPackage)
             d->receivingPackage->removePackageMerge(this);
 
         // Adjust subsetted property(ies)
-        d->removeSource(d->receivingPackage);
+        d->QDirectedRelationshipPrivate::removeSource(dynamic_cast<QElement *>(d->receivingPackage));
 
         d->receivingPackage = receivingPackage;
 
         // Adjust subsetted property(ies)
-        d->setOwner(receivingPackage);
+        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(receivingPackage));
         if (receivingPackage) {
-            d->addSource(receivingPackage);
+            d->QDirectedRelationshipPrivate::addSource(dynamic_cast<QElement *>(receivingPackage));
         }
 
         // Adjust opposite property

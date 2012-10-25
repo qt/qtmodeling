@@ -118,6 +118,14 @@ public:
     void addEdge(QActivityEdge *edge);
     void removeEdge(QActivityEdge *edge);
 
+    // Overriden methods for subsetted properties
+    void addGroup(QActivityPartition *partition);
+    void removeGroup(QActivityPartition *partition);
+    void addGroup(QStructuredActivityNode *structuredNode);
+    void removeGroup(QStructuredActivityNode *structuredNode);
+    void addNode(QStructuredActivityNode *structuredNode);
+    void removeNode(QStructuredActivityNode *structuredNode);
+
 protected:
     explicit QActivity(bool createPimpl, QObject *parent = 0);
 };

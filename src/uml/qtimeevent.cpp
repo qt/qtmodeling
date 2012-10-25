@@ -121,13 +121,13 @@ void QTimeEvent::setWhen(QTimeExpression *when)
     QTUML_D(QTimeEvent);
     if (d->when != when) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->when);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->when));
 
         d->when = when;
 
         // Adjust subsetted property(ies)
         if (when) {
-            d->addOwnedElement(when);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(when));
         }
     }
 }

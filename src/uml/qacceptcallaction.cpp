@@ -99,13 +99,13 @@ void QAcceptCallAction::setReturnInformation(QOutputPin *returnInformation)
     QTUML_D(QAcceptCallAction);
     if (d->returnInformation != returnInformation) {
         // Adjust subsetted property(ies)
-        d->removeOutput(d->returnInformation);
+        d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->returnInformation));
 
         d->returnInformation = returnInformation;
 
         // Adjust subsetted property(ies)
         if (returnInformation) {
-            d->addOutput(returnInformation);
+            d->QActionPrivate::addOutput(dynamic_cast<QOutputPin *>(returnInformation));
         }
     }
 }

@@ -170,7 +170,7 @@ void QVertex::setContainer(QRegion *container)
         d->container = container;
 
         // Adjust subsetted property(ies)
-        d->setNamespace_(container);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(container));
 
         // Adjust opposite property
         if (container)

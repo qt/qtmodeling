@@ -122,7 +122,7 @@ void QExpression::addOperand(QValueSpecification *operand)
         d->operands->append(operand);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(operand);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(operand));
     }
 }
 
@@ -135,7 +135,7 @@ void QExpression::removeOperand(QValueSpecification *operand)
         d->operands->removeAll(operand);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(operand);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(operand));
     }
 }
 

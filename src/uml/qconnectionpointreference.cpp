@@ -141,7 +141,7 @@ void QConnectionPointReference::setState(QState *state)
         d->state = state;
 
         // Adjust subsetted property(ies)
-        d->setNamespace_(state);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(state));
 
         // Adjust opposite property
         if (state)

@@ -148,6 +148,12 @@ public:
     bool mustBeOwned() const;
     const QSet<QPackageableElement *> *visibleMembers() const;
 
+    // Overriden methods for subsetted properties
+    void addPackagedElement(QType *ownedType);
+    void removePackagedElement(QType *ownedType);
+    void addPackagedElement(QPackage *nestedPackage);
+    void removePackagedElement(QPackage *nestedPackage);
+
 protected:
     explicit QPackage(bool createPimpl, QObject *parent = 0);
 };

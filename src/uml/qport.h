@@ -94,6 +94,10 @@ public:
     void addRedefinedPort(QPort *redefinedPort);
     void removeRedefinedPort(QPort *redefinedPort);
 
+    // Overriden methods for subsetted properties
+    void addRedefinedProperty(QPort *redefinedPort);
+    void removeRedefinedProperty(QPort *redefinedPort);
+
 protected:
     explicit QPort(bool createPimpl, QObject *parent = 0);
 };

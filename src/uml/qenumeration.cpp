@@ -102,7 +102,7 @@ void QEnumeration::addOwnedLiteral(QEnumerationLiteral *ownedLiteral)
         d->ownedLiterals->append(ownedLiteral);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(ownedLiteral);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(ownedLiteral));
 
         // Adjust opposite property
         ownedLiteral->setEnumeration(this);
@@ -118,7 +118,7 @@ void QEnumeration::removeOwnedLiteral(QEnumerationLiteral *ownedLiteral)
         d->ownedLiterals->removeAll(ownedLiteral);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(ownedLiteral);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(ownedLiteral));
 
         // Adjust opposite property
         ownedLiteral->setEnumeration(0);

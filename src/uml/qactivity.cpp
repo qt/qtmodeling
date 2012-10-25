@@ -161,7 +161,7 @@ void QActivity::addPartition(QActivityPartition *partition)
         d->partitions->insert(partition);
 
         // Adjust subsetted property(ies)
-        addGroup(partition);
+        QActivity::addGroup(dynamic_cast<QActivityGroup *>(partition));
     }
 }
 
@@ -174,7 +174,7 @@ void QActivity::removePartition(QActivityPartition *partition)
         d->partitions->remove(partition);
 
         // Adjust subsetted property(ies)
-        removeGroup(partition);
+        QActivity::removeGroup(dynamic_cast<QActivityGroup *>(partition));
     }
 }
 
@@ -198,7 +198,7 @@ void QActivity::addNode(QActivityNode *node)
         d->nodes->insert(node);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(node);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(node));
 
         // Adjust opposite property
         node->setActivity(this);
@@ -214,7 +214,7 @@ void QActivity::removeNode(QActivityNode *node)
         d->nodes->remove(node);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(node);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(node));
 
         // Adjust opposite property
         node->setActivity(0);
@@ -241,7 +241,7 @@ void QActivity::addVariable(QVariable *variable)
         d->variables->insert(variable);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(variable);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(variable));
 
         // Adjust opposite property
         variable->setActivityScope(this);
@@ -257,7 +257,7 @@ void QActivity::removeVariable(QVariable *variable)
         d->variables->remove(variable);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(variable);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(variable));
 
         // Adjust opposite property
         variable->setActivityScope(0);
@@ -284,8 +284,8 @@ void QActivity::addStructuredNode(QStructuredActivityNode *structuredNode)
         d->structuredNodes->insert(structuredNode);
 
         // Adjust subsetted property(ies)
-        addGroup(structuredNode);
-        addNode(structuredNode);
+        QActivity::addGroup(dynamic_cast<QActivityGroup *>(structuredNode));
+        QActivity::addNode(dynamic_cast<QActivityNode *>(structuredNode));
 
         // Adjust opposite property
         structuredNode->setActivity(this);
@@ -301,8 +301,8 @@ void QActivity::removeStructuredNode(QStructuredActivityNode *structuredNode)
         d->structuredNodes->remove(structuredNode);
 
         // Adjust subsetted property(ies)
-        removeGroup(structuredNode);
-        removeNode(structuredNode);
+        QActivity::removeGroup(dynamic_cast<QActivityGroup *>(structuredNode));
+        QActivity::removeNode(dynamic_cast<QActivityNode *>(structuredNode));
 
         // Adjust opposite property
         structuredNode->setActivity(0);
@@ -329,7 +329,7 @@ void QActivity::addGroup(QActivityGroup *group)
         d->groups->insert(group);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(group);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(group));
 
         // Adjust opposite property
         group->setInActivity(this);
@@ -345,7 +345,7 @@ void QActivity::removeGroup(QActivityGroup *group)
         d->groups->remove(group);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(group);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(group));
 
         // Adjust opposite property
         group->setInActivity(0);
@@ -372,7 +372,7 @@ void QActivity::addEdge(QActivityEdge *edge)
         d->edges->insert(edge);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(edge);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(edge));
 
         // Adjust opposite property
         edge->setActivity(this);
@@ -388,11 +388,43 @@ void QActivity::removeEdge(QActivityEdge *edge)
         d->edges->remove(edge);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(edge);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(edge));
 
         // Adjust opposite property
         edge->setActivity(0);
     }
+}
+
+// Overriden methods for subsetted properties
+
+void QActivity::addGroup(QActivityPartition *partition)
+{
+    addPartition(partition);
+}
+
+void QActivity::removeGroup(QActivityPartition *partition)
+{
+    removePartition(partition);
+}
+
+void QActivity::addGroup(QStructuredActivityNode *structuredNode)
+{
+    addStructuredNode(structuredNode);
+}
+
+void QActivity::removeGroup(QStructuredActivityNode *structuredNode)
+{
+    removeStructuredNode(structuredNode);
+}
+
+void QActivity::addNode(QStructuredActivityNode *structuredNode)
+{
+    addStructuredNode(structuredNode);
+}
+
+void QActivity::removeNode(QStructuredActivityNode *structuredNode)
+{
+    removeStructuredNode(structuredNode);
 }
 
 #include "moc_qactivity.cpp"

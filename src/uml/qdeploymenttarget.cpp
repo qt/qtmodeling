@@ -106,8 +106,8 @@ void QDeploymentTarget::addDeployment(QDeployment *deployment)
         d->deployments->insert(deployment);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(deployment);
-        addClientDependency(deployment);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(deployment));
+        QNamedElement::addClientDependency(dynamic_cast<QDependency *>(deployment));
 
         // Adjust opposite property
         deployment->setLocation(this);
@@ -123,12 +123,24 @@ void QDeploymentTarget::removeDeployment(QDeployment *deployment)
         d->deployments->remove(deployment);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(deployment);
-        removeClientDependency(deployment);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(deployment));
+        QNamedElement::removeClientDependency(dynamic_cast<QDependency *>(deployment));
 
         // Adjust opposite property
         deployment->setLocation(0);
     }
+}
+
+// Overriden methods for subsetted properties
+
+void QDeploymentTarget::addClientDependency(QDeployment *deployment)
+{
+    addDeployment(deployment);
+}
+
+void QDeploymentTarget::removeClientDependency(QDeployment *deployment)
+{
+    removeDeployment(deployment);
 }
 
 QT_END_NAMESPACE_QTUML

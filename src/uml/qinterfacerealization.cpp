@@ -105,14 +105,14 @@ void QInterfaceRealization::setImplementingClassifier(QBehavioredClassifier *imp
             d->implementingClassifier->removeInterfaceRealization(this);
 
         // Adjust subsetted property(ies)
-        removeClient(d->implementingClassifier);
+        QDependency::removeClient(dynamic_cast<QNamedElement *>(d->implementingClassifier));
 
         d->implementingClassifier = implementingClassifier;
 
         // Adjust subsetted property(ies)
-        d->setOwner(implementingClassifier);
+        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(implementingClassifier));
         if (implementingClassifier) {
-            addClient(implementingClassifier);
+            QDependency::addClient(dynamic_cast<QNamedElement *>(implementingClassifier));
         }
 
         // Adjust opposite property
@@ -139,15 +139,37 @@ void QInterfaceRealization::setContract(QInterface *contract)
     QTUML_D(QInterfaceRealization);
     if (d->contract != contract) {
         // Adjust subsetted property(ies)
-        removeSupplier(d->contract);
+        QDependency::removeSupplier(dynamic_cast<QNamedElement *>(d->contract));
 
         d->contract = contract;
 
         // Adjust subsetted property(ies)
         if (contract) {
-            addSupplier(contract);
+            QDependency::addSupplier(dynamic_cast<QNamedElement *>(contract));
         }
     }
+}
+
+// Overriden methods for subsetted properties
+
+void QInterfaceRealization::addClient(QBehavioredClassifier *implementingClassifier)
+{
+    setImplementingClassifier(implementingClassifier);
+}
+
+void QInterfaceRealization::removeClient(QBehavioredClassifier *implementingClassifier)
+{
+    setImplementingClassifier(0);
+}
+
+void QInterfaceRealization::addSupplier(QInterface *contract)
+{
+    setContract(contract);
+}
+
+void QInterfaceRealization::removeSupplier(QInterface *contract)
+{
+    setContract(0);
 }
 
 #include "moc_qinterfacerealization.cpp"

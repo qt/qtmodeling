@@ -102,7 +102,7 @@ void QProtocolStateMachine::addConformance(QProtocolConformance *conformance)
         d->conformance->insert(conformance);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(conformance);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(conformance));
 
         // Adjust opposite property
         conformance->setSpecificMachine(this);
@@ -118,7 +118,7 @@ void QProtocolStateMachine::removeConformance(QProtocolConformance *conformance)
         d->conformance->remove(conformance);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(conformance);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(conformance));
 
         // Adjust opposite property
         conformance->setSpecificMachine(0);

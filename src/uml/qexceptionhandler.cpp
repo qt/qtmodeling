@@ -163,7 +163,7 @@ void QExceptionHandler::setProtectedNode(QExecutableNode *protectedNode)
         d->protectedNode = protectedNode;
 
         // Adjust subsetted property(ies)
-        d->setOwner(protectedNode);
+        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(protectedNode));
 
         // Adjust opposite property
         if (protectedNode)

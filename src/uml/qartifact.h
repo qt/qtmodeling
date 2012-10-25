@@ -153,6 +153,10 @@ public:
     void addNestedArtifact(QArtifact *nestedArtifact);
     void removeNestedArtifact(QArtifact *nestedArtifact);
 
+    // Overriden methods for subsetted properties
+    void addClientDependency(QManifestation *manifestation);
+    void removeClientDependency(QManifestation *manifestation);
+
 protected:
     explicit QArtifact(bool createPimpl, QObject *parent = 0);
 };

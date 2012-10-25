@@ -131,8 +131,8 @@ void QArtifact::addOwnedOperation(QOperation *ownedOperation)
         d->ownedOperations->append(ownedOperation);
 
         // Adjust subsetted property(ies)
-        d->addFeature(ownedOperation);
-        d->addOwnedMember(ownedOperation);
+        d->QClassifierPrivate::addFeature(dynamic_cast<QFeature *>(ownedOperation));
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(ownedOperation));
     }
 }
 
@@ -145,8 +145,8 @@ void QArtifact::removeOwnedOperation(QOperation *ownedOperation)
         d->ownedOperations->removeAll(ownedOperation);
 
         // Adjust subsetted property(ies)
-        d->removeFeature(ownedOperation);
-        d->removeOwnedMember(ownedOperation);
+        d->QClassifierPrivate::removeFeature(dynamic_cast<QFeature *>(ownedOperation));
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(ownedOperation));
     }
 }
 
@@ -170,8 +170,8 @@ void QArtifact::addOwnedAttribute(QProperty *ownedAttribute)
         d->ownedAttributes->append(ownedAttribute);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(ownedAttribute);
-        d->addAttribute(ownedAttribute);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(ownedAttribute));
+        d->QClassifierPrivate::addAttribute(dynamic_cast<QProperty *>(ownedAttribute));
     }
 }
 
@@ -184,8 +184,8 @@ void QArtifact::removeOwnedAttribute(QProperty *ownedAttribute)
         d->ownedAttributes->removeAll(ownedAttribute);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(ownedAttribute);
-        d->removeAttribute(ownedAttribute);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(ownedAttribute));
+        d->QClassifierPrivate::removeAttribute(dynamic_cast<QProperty *>(ownedAttribute));
     }
 }
 
@@ -209,8 +209,8 @@ void QArtifact::addManifestation(QManifestation *manifestation)
         d->manifestations->insert(manifestation);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(manifestation);
-        addClientDependency(manifestation);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(manifestation));
+        QNamedElement::addClientDependency(dynamic_cast<QDependency *>(manifestation));
     }
 }
 
@@ -223,8 +223,8 @@ void QArtifact::removeManifestation(QManifestation *manifestation)
         d->manifestations->remove(manifestation);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(manifestation);
-        removeClientDependency(manifestation);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(manifestation));
+        QNamedElement::removeClientDependency(dynamic_cast<QDependency *>(manifestation));
     }
 }
 
@@ -248,7 +248,7 @@ void QArtifact::addNestedArtifact(QArtifact *nestedArtifact)
         d->nestedArtifacts->insert(nestedArtifact);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(nestedArtifact);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(nestedArtifact));
     }
 }
 
@@ -261,8 +261,20 @@ void QArtifact::removeNestedArtifact(QArtifact *nestedArtifact)
         d->nestedArtifacts->remove(nestedArtifact);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(nestedArtifact);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(nestedArtifact));
     }
+}
+
+// Overriden methods for subsetted properties
+
+void QArtifact::addClientDependency(QManifestation *manifestation)
+{
+    addManifestation(manifestation);
+}
+
+void QArtifact::removeClientDependency(QManifestation *manifestation)
+{
+    removeManifestation(manifestation);
 }
 
 #include "moc_qartifact.cpp"

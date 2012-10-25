@@ -71,6 +71,10 @@ public:
     void addDeployment(QDeployment *deployment);
     void removeDeployment(QDeployment *deployment);
 
+    // Overriden methods for subsetted properties
+    void addClientDependency(QDeployment *deployment);
+    void removeClientDependency(QDeployment *deployment);
+
 protected:
     explicit QDeploymentTarget();
 };

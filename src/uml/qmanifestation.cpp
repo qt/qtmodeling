@@ -99,15 +99,27 @@ void QManifestation::setUtilizedElement(QPackageableElement *utilizedElement)
     QTUML_D(QManifestation);
     if (d->utilizedElement != utilizedElement) {
         // Adjust subsetted property(ies)
-        removeSupplier(d->utilizedElement);
+        QDependency::removeSupplier(dynamic_cast<QNamedElement *>(d->utilizedElement));
 
         d->utilizedElement = utilizedElement;
 
         // Adjust subsetted property(ies)
         if (utilizedElement) {
-            addSupplier(utilizedElement);
+            QDependency::addSupplier(dynamic_cast<QNamedElement *>(utilizedElement));
         }
     }
+}
+
+// Overriden methods for subsetted properties
+
+void QManifestation::addSupplier(QPackageableElement *utilizedElement)
+{
+    setUtilizedElement(utilizedElement);
+}
+
+void QManifestation::removeSupplier(QPackageableElement *utilizedElement)
+{
+    setUtilizedElement(0);
 }
 
 #include "moc_qmanifestation.cpp"

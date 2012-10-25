@@ -79,6 +79,12 @@ public:
     void addRealizingClassifier(QClassifier *realizingClassifier);
     void removeRealizingClassifier(QClassifier *realizingClassifier);
 
+    // Overriden methods for subsetted properties
+    void addSupplier(QComponent *abstraction);
+    void removeSupplier(QComponent *abstraction);
+    void addClient(QClassifier *realizingClassifier);
+    void removeClient(QClassifier *realizingClassifier);
+
 protected:
     explicit QComponentRealization(bool createPimpl, QObject *parent = 0);
 };

@@ -95,8 +95,8 @@ void QNamespacePrivate::addOwnedMember(QNamedElement *ownedMember)
         this->ownedMembers->insert(ownedMember);
 
         // Adjust subsetted property(ies)
-        addMember(ownedMember);
-        addOwnedElement(ownedMember);
+        QNamespacePrivate::addMember(dynamic_cast<QNamedElement *>(ownedMember));
+        QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(ownedMember));
 
         // Adjust opposite property
         QTUML_Q(QNamespace);
@@ -112,8 +112,8 @@ void QNamespacePrivate::removeOwnedMember(QNamedElement *ownedMember)
         this->ownedMembers->remove(ownedMember);
 
         // Adjust subsetted property(ies)
-        removeMember(ownedMember);
-        removeOwnedElement(ownedMember);
+        QNamespacePrivate::removeMember(dynamic_cast<QNamedElement *>(ownedMember));
+        QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(ownedMember));
 
         // Adjust opposite property
         QTUML_Q(QNamespace);
@@ -157,7 +157,7 @@ void QNamespace::addPackageImport(QPackageImport *packageImport)
         d->packageImports->insert(packageImport);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(packageImport);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(packageImport));
 
         // Adjust opposite property
         packageImport->setImportingNamespace(this);
@@ -178,7 +178,7 @@ void QNamespace::removePackageImport(QPackageImport *packageImport)
         d->packageImports->remove(packageImport);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(packageImport);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(packageImport));
 
         // Adjust opposite property
         packageImport->setImportingNamespace(0);
@@ -237,7 +237,7 @@ void QNamespace::addElementImport(QElementImport *elementImport)
         d->elementImports->insert(elementImport);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(elementImport);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(elementImport));
 
         // Adjust opposite property
         elementImport->setImportingNamespace(this);
@@ -253,7 +253,7 @@ void QNamespace::removeElementImport(QElementImport *elementImport)
         d->elementImports->remove(elementImport);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(elementImport);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(elementImport));
 
         // Adjust opposite property
         elementImport->setImportingNamespace(0);
@@ -280,7 +280,7 @@ void QNamespace::addOwnedRule(QConstraint *ownedRule)
         d->ownedRules->insert(ownedRule);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(ownedRule);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(ownedRule));
 
         // Adjust opposite property
         ownedRule->setContext(this);
@@ -296,7 +296,7 @@ void QNamespace::removeOwnedRule(QConstraint *ownedRule)
         d->ownedRules->remove(ownedRule);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(ownedRule);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(ownedRule));
 
         // Adjust opposite property
         ownedRule->setContext(0);

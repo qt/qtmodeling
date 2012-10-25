@@ -143,7 +143,7 @@ void QStateMachine::addConnectionPoint(QPseudostate *connectionPoint)
         d->connectionPoints->insert(connectionPoint);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(connectionPoint);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(connectionPoint));
 
         // Adjust opposite property
         connectionPoint->setStateMachine(this);
@@ -159,7 +159,7 @@ void QStateMachine::removeConnectionPoint(QPseudostate *connectionPoint)
         d->connectionPoints->remove(connectionPoint);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(connectionPoint);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(connectionPoint));
 
         // Adjust opposite property
         connectionPoint->setStateMachine(0);
@@ -223,7 +223,7 @@ void QStateMachine::addRegion(QRegion *region)
         d->regions->insert(region);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(region);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(region));
 
         // Adjust opposite property
         region->setStateMachine(this);
@@ -239,7 +239,7 @@ void QStateMachine::removeRegion(QRegion *region)
         d->regions->remove(region);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(region);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(region));
 
         // Adjust opposite property
         region->setStateMachine(0);

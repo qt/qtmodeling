@@ -171,7 +171,7 @@ void QOpaqueAction::addInputValue(QInputPin *inputValue)
         d->inputValues->insert(inputValue);
 
         // Adjust subsetted property(ies)
-        d->addInput(inputValue);
+        d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(inputValue));
     }
 }
 
@@ -184,7 +184,7 @@ void QOpaqueAction::removeInputValue(QInputPin *inputValue)
         d->inputValues->remove(inputValue);
 
         // Adjust subsetted property(ies)
-        d->removeInput(inputValue);
+        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(inputValue));
     }
 }
 
@@ -208,7 +208,7 @@ void QOpaqueAction::addOutputValue(QOutputPin *outputValue)
         d->outputValues->insert(outputValue);
 
         // Adjust subsetted property(ies)
-        d->addOutput(outputValue);
+        d->QActionPrivate::addOutput(dynamic_cast<QOutputPin *>(outputValue));
     }
 }
 
@@ -221,7 +221,7 @@ void QOpaqueAction::removeOutputValue(QOutputPin *outputValue)
         d->outputValues->remove(outputValue);
 
         // Adjust subsetted property(ies)
-        d->removeOutput(outputValue);
+        d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(outputValue));
     }
 }
 

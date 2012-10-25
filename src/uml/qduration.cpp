@@ -101,13 +101,13 @@ void QDuration::setExpr(QValueSpecification *expr)
     QTUML_D(QDuration);
     if (d->expr != expr) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->expr);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->expr));
 
         d->expr = expr;
 
         // Adjust subsetted property(ies)
         if (expr) {
-            d->addOwnedElement(expr);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(expr));
         }
     }
 }

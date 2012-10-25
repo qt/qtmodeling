@@ -128,6 +128,10 @@ public:
     bool maySpecializeType(const QClassifier *c) const;
     const QSet<QClassifier *> *parents() const;
 
+    // Overriden methods for subsetted properties
+    void addClientDependency(QSubstitution *substitution);
+    void removeClientDependency(QSubstitution *substitution);
+
 protected:
     explicit QClassifier();
 };

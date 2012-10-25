@@ -119,7 +119,7 @@ void QInformationFlow::addInformationTarget(QNamedElement *informationTarget)
         d->informationTargets->insert(informationTarget);
 
         // Adjust subsetted property(ies)
-        d->addTarget(informationTarget);
+        d->QDirectedRelationshipPrivate::addTarget(dynamic_cast<QElement *>(informationTarget));
     }
 }
 
@@ -132,7 +132,7 @@ void QInformationFlow::removeInformationTarget(QNamedElement *informationTarget)
         d->informationTargets->remove(informationTarget);
 
         // Adjust subsetted property(ies)
-        d->removeTarget(informationTarget);
+        d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(informationTarget));
     }
 }
 
@@ -218,7 +218,7 @@ void QInformationFlow::addInformationSource(QNamedElement *informationSource)
         d->informationSources->insert(informationSource);
 
         // Adjust subsetted property(ies)
-        d->addSource(informationSource);
+        d->QDirectedRelationshipPrivate::addSource(dynamic_cast<QElement *>(informationSource));
     }
 }
 
@@ -231,7 +231,7 @@ void QInformationFlow::removeInformationSource(QNamedElement *informationSource)
         d->informationSources->remove(informationSource);
 
         // Adjust subsetted property(ies)
-        d->removeSource(informationSource);
+        d->QDirectedRelationshipPrivate::removeSource(dynamic_cast<QElement *>(informationSource));
     }
 }
 

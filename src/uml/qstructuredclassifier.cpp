@@ -70,7 +70,7 @@ void QStructuredClassifierPrivate::addRole(QConnectableElement *role)
         this->roles->insert(role);
 
         // Adjust subsetted property(ies)
-        addMember(role);
+        QNamespacePrivate::addMember(dynamic_cast<QNamedElement *>(role));
     }
 }
 
@@ -82,7 +82,7 @@ void QStructuredClassifierPrivate::removeRole(QConnectableElement *role)
         this->roles->remove(role);
 
         // Adjust subsetted property(ies)
-        removeMember(role);
+        QNamespacePrivate::removeMember(dynamic_cast<QNamedElement *>(role));
     }
 }
 
@@ -133,9 +133,9 @@ void QStructuredClassifier::addOwnedAttribute(QProperty *ownedAttribute)
         d->ownedAttributes->append(ownedAttribute);
 
         // Adjust subsetted property(ies)
-        d->addAttribute(ownedAttribute);
-        d->addOwnedMember(ownedAttribute);
-        d->addRole(ownedAttribute);
+        d->QClassifierPrivate::addAttribute(dynamic_cast<QProperty *>(ownedAttribute));
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(ownedAttribute));
+        d->QStructuredClassifierPrivate::addRole(dynamic_cast<QConnectableElement *>(ownedAttribute));
     }
 }
 
@@ -148,9 +148,9 @@ void QStructuredClassifier::removeOwnedAttribute(QProperty *ownedAttribute)
         d->ownedAttributes->removeAll(ownedAttribute);
 
         // Adjust subsetted property(ies)
-        d->removeAttribute(ownedAttribute);
-        d->removeOwnedMember(ownedAttribute);
-        d->removeRole(ownedAttribute);
+        d->QClassifierPrivate::removeAttribute(dynamic_cast<QProperty *>(ownedAttribute));
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(ownedAttribute));
+        d->QStructuredClassifierPrivate::removeRole(dynamic_cast<QConnectableElement *>(ownedAttribute));
     }
 }
 
@@ -187,8 +187,8 @@ void QStructuredClassifier::addOwnedConnector(QConnector *ownedConnector)
         d->ownedConnectors->insert(ownedConnector);
 
         // Adjust subsetted property(ies)
-        d->addFeature(ownedConnector);
-        d->addOwnedMember(ownedConnector);
+        d->QClassifierPrivate::addFeature(dynamic_cast<QFeature *>(ownedConnector));
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(ownedConnector));
     }
 }
 
@@ -201,8 +201,8 @@ void QStructuredClassifier::removeOwnedConnector(QConnector *ownedConnector)
         d->ownedConnectors->remove(ownedConnector);
 
         // Adjust subsetted property(ies)
-        d->removeFeature(ownedConnector);
-        d->removeOwnedMember(ownedConnector);
+        d->QClassifierPrivate::removeFeature(dynamic_cast<QFeature *>(ownedConnector));
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(ownedConnector));
     }
 }
 

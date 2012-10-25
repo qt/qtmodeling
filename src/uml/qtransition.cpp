@@ -135,13 +135,13 @@ void QTransition::setGuard(QConstraint *guard)
     QTUML_D(QTransition);
     if (d->guard != guard) {
         // Adjust subsetted property(ies)
-        removeOwnedRule(d->guard);
+        QNamespace::removeOwnedRule(dynamic_cast<QConstraint *>(d->guard));
 
         d->guard = guard;
 
         // Adjust subsetted property(ies)
         if (guard) {
-            addOwnedRule(guard);
+            QNamespace::addOwnedRule(dynamic_cast<QConstraint *>(guard));
         }
     }
 }
@@ -193,13 +193,13 @@ void QTransition::setEffect(QBehavior *effect)
     QTUML_D(QTransition);
     if (d->effect != effect) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->effect);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->effect));
 
         d->effect = effect;
 
         // Adjust subsetted property(ies)
         if (effect) {
-            d->addOwnedElement(effect);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(effect));
         }
     }
 }
@@ -228,7 +228,7 @@ void QTransition::setContainer(QRegion *container)
         d->container = container;
 
         // Adjust subsetted property(ies)
-        d->setNamespace_(container);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(container));
 
         // Adjust opposite property
         if (container)
@@ -267,13 +267,13 @@ void QTransition::setRedefinedTransition(QTransition *redefinedTransition)
     QTUML_D(QTransition);
     if (d->redefinedTransition != redefinedTransition) {
         // Adjust subsetted property(ies)
-        d->removeRedefinedElement(d->redefinedTransition);
+        d->QRedefinableElementPrivate::removeRedefinedElement(dynamic_cast<QRedefinableElement *>(d->redefinedTransition));
 
         d->redefinedTransition = redefinedTransition;
 
         // Adjust subsetted property(ies)
         if (redefinedTransition) {
-            d->addRedefinedElement(redefinedTransition);
+            d->QRedefinableElementPrivate::addRedefinedElement(dynamic_cast<QRedefinableElement *>(redefinedTransition));
         }
     }
 }
@@ -327,7 +327,7 @@ void QTransition::addTrigger(QTrigger *trigger)
         d->triggers->insert(trigger);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(trigger);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(trigger));
     }
 }
 
@@ -340,7 +340,7 @@ void QTransition::removeTrigger(QTrigger *trigger)
         d->triggers->remove(trigger);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(trigger);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(trigger));
     }
 }
 

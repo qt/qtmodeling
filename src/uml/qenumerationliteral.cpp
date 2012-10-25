@@ -118,7 +118,7 @@ void QEnumerationLiteral::setEnumeration(QEnumeration *enumeration)
         d->enumeration = enumeration;
 
         // Adjust subsetted property(ies)
-        d->setNamespace_(enumeration);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(enumeration));
 
         // Adjust opposite property
         if (enumeration)

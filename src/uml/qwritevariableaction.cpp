@@ -89,13 +89,13 @@ void QWriteVariableAction::setValue(QInputPin *value)
     QTUML_D(QWriteVariableAction);
     if (d->value != value) {
         // Adjust subsetted property(ies)
-        d->removeInput(d->value);
+        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->value));
 
         d->value = value;
 
         // Adjust subsetted property(ies)
         if (value) {
-            d->addInput(value);
+            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(value));
         }
     }
 }

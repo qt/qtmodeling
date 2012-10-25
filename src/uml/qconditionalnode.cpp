@@ -151,7 +151,7 @@ void QConditionalNode::addClause(QClause *clause)
         d->clauses->insert(clause);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(clause);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(clause));
     }
 }
 
@@ -164,7 +164,7 @@ void QConditionalNode::removeClause(QClause *clause)
         d->clauses->remove(clause);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(clause);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(clause));
     }
 }
 

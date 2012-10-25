@@ -217,7 +217,7 @@ void QPort::addRedefinedPort(QPort *redefinedPort)
         d->redefinedPorts->insert(redefinedPort);
 
         // Adjust subsetted property(ies)
-        addRedefinedProperty(redefinedPort);
+        QProperty::addRedefinedProperty(dynamic_cast<QProperty *>(redefinedPort));
     }
 }
 
@@ -230,8 +230,20 @@ void QPort::removeRedefinedPort(QPort *redefinedPort)
         d->redefinedPorts->remove(redefinedPort);
 
         // Adjust subsetted property(ies)
-        removeRedefinedProperty(redefinedPort);
+        QProperty::removeRedefinedProperty(dynamic_cast<QProperty *>(redefinedPort));
     }
+}
+
+// Overriden methods for subsetted properties
+
+void QPort::addRedefinedProperty(QPort *redefinedPort)
+{
+    addRedefinedPort(redefinedPort);
+}
+
+void QPort::removeRedefinedProperty(QPort *redefinedPort)
+{
+    removeRedefinedPort(redefinedPort);
 }
 
 #include "moc_qport.cpp"

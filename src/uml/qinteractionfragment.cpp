@@ -99,7 +99,7 @@ void QInteractionFragment::addGeneralOrdering(QGeneralOrdering *generalOrdering)
         d->generalOrderings->insert(generalOrdering);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(generalOrdering);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(generalOrdering));
     }
 }
 
@@ -112,7 +112,7 @@ void QInteractionFragment::removeGeneralOrdering(QGeneralOrdering *generalOrderi
         d->generalOrderings->remove(generalOrdering);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(generalOrdering);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(generalOrdering));
     }
 }
 
@@ -140,7 +140,7 @@ void QInteractionFragment::setEnclosingInteraction(QInteraction *enclosingIntera
         d->enclosingInteraction = enclosingInteraction;
 
         // Adjust subsetted property(ies)
-        d->setNamespace_(enclosingInteraction);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(enclosingInteraction));
 
         // Adjust opposite property
         if (enclosingInteraction)
@@ -210,7 +210,7 @@ void QInteractionFragment::setEnclosingOperand(QInteractionOperand *enclosingOpe
         d->enclosingOperand = enclosingOperand;
 
         // Adjust subsetted property(ies)
-        d->setNamespace_(enclosingOperand);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(enclosingOperand));
 
         // Adjust opposite property
         if (enclosingOperand)

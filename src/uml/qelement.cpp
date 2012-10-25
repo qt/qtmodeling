@@ -164,7 +164,7 @@ void QElement::addOwnedComment(QComment *ownedComment)
         d->ownedComments->insert(ownedComment);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(ownedComment);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(ownedComment));
     }
 }
 
@@ -177,7 +177,7 @@ void QElement::removeOwnedComment(QComment *ownedComment)
         d->ownedComments->remove(ownedComment);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(ownedComment);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(ownedComment));
     }
 }
 

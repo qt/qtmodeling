@@ -122,7 +122,7 @@ void QConnector::addRedefinedConnector(QConnector *redefinedConnector)
         d->redefinedConnectors->insert(redefinedConnector);
 
         // Adjust subsetted property(ies)
-        d->addRedefinedElement(redefinedConnector);
+        d->QRedefinableElementPrivate::addRedefinedElement(dynamic_cast<QRedefinableElement *>(redefinedConnector));
     }
 }
 
@@ -135,7 +135,7 @@ void QConnector::removeRedefinedConnector(QConnector *redefinedConnector)
         d->redefinedConnectors->remove(redefinedConnector);
 
         // Adjust subsetted property(ies)
-        d->removeRedefinedElement(redefinedConnector);
+        d->QRedefinableElementPrivate::removeRedefinedElement(dynamic_cast<QRedefinableElement *>(redefinedConnector));
     }
 }
 
@@ -211,7 +211,7 @@ void QConnector::addEnd(QConnectorEnd *end)
         d->ends->append(end);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(end);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(end));
     }
 }
 
@@ -224,7 +224,7 @@ void QConnector::removeEnd(QConnectorEnd *end)
         d->ends->removeAll(end);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(end);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(end));
     }
 }
 

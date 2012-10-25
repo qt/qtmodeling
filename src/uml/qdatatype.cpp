@@ -106,8 +106,8 @@ void QDataType::addOwnedOperation(QOperation *ownedOperation)
         d->ownedOperations->append(ownedOperation);
 
         // Adjust subsetted property(ies)
-        d->addFeature(ownedOperation);
-        d->addOwnedMember(ownedOperation);
+        d->QClassifierPrivate::addFeature(dynamic_cast<QFeature *>(ownedOperation));
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(ownedOperation));
 
         // Adjust opposite property
         ownedOperation->setDatatype(this);
@@ -123,8 +123,8 @@ void QDataType::removeOwnedOperation(QOperation *ownedOperation)
         d->ownedOperations->removeAll(ownedOperation);
 
         // Adjust subsetted property(ies)
-        d->removeFeature(ownedOperation);
-        d->removeOwnedMember(ownedOperation);
+        d->QClassifierPrivate::removeFeature(dynamic_cast<QFeature *>(ownedOperation));
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(ownedOperation));
 
         // Adjust opposite property
         ownedOperation->setDatatype(0);
@@ -151,8 +151,8 @@ void QDataType::addOwnedAttribute(QProperty *ownedAttribute)
         d->ownedAttributes->append(ownedAttribute);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(ownedAttribute);
-        d->addAttribute(ownedAttribute);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(ownedAttribute));
+        d->QClassifierPrivate::addAttribute(dynamic_cast<QProperty *>(ownedAttribute));
 
         // Adjust opposite property
         ownedAttribute->setDatatype(this);
@@ -168,8 +168,8 @@ void QDataType::removeOwnedAttribute(QProperty *ownedAttribute)
         d->ownedAttributes->removeAll(ownedAttribute);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(ownedAttribute);
-        d->removeAttribute(ownedAttribute);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(ownedAttribute));
+        d->QClassifierPrivate::removeAttribute(dynamic_cast<QProperty *>(ownedAttribute));
 
         // Adjust opposite property
         ownedAttribute->setDatatype(0);

@@ -75,7 +75,7 @@ void QNamedElementPrivate::setNamespace_(QNamespace *namespace_)
         this->namespace_ = namespace_;
 
         // Adjust subsetted property(ies)
-        setOwner(namespace_);
+        QElementPrivate::setOwner(dynamic_cast<QElement *>(namespace_));
 
         // Adjust opposite property
         if (namespace_)
@@ -179,13 +179,13 @@ void QNamedElement::setNameExpression(QStringExpression *nameExpression)
     QTUML_D(QNamedElement);
     if (d->nameExpression != nameExpression) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->nameExpression);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->nameExpression));
 
         d->nameExpression = nameExpression;
 
         // Adjust subsetted property(ies)
         if (nameExpression) {
-            d->addOwnedElement(nameExpression);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(nameExpression));
         }
     }
 }

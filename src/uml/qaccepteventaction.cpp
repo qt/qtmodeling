@@ -127,7 +127,7 @@ void QAcceptEventAction::addTrigger(QTrigger *trigger)
         d->triggers->insert(trigger);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(trigger);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(trigger));
     }
 }
 
@@ -140,7 +140,7 @@ void QAcceptEventAction::removeTrigger(QTrigger *trigger)
         d->triggers->remove(trigger);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(trigger);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(trigger));
     }
 }
 
@@ -164,7 +164,7 @@ void QAcceptEventAction::addResult(QOutputPin *result)
         d->results->insert(result);
 
         // Adjust subsetted property(ies)
-        d->addOutput(result);
+        d->QActionPrivate::addOutput(dynamic_cast<QOutputPin *>(result));
     }
 }
 
@@ -177,7 +177,7 @@ void QAcceptEventAction::removeResult(QOutputPin *result)
         d->results->remove(result);
 
         // Adjust subsetted property(ies)
-        d->removeOutput(result);
+        d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(result));
     }
 }
 

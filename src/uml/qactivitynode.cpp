@@ -137,7 +137,7 @@ void QActivityNode::addRedefinedNode(QActivityNode *redefinedNode)
         d->redefinedNodes->insert(redefinedNode);
 
         // Adjust subsetted property(ies)
-        d->addRedefinedElement(redefinedNode);
+        d->QRedefinableElementPrivate::addRedefinedElement(dynamic_cast<QRedefinableElement *>(redefinedNode));
     }
 }
 
@@ -150,7 +150,7 @@ void QActivityNode::removeRedefinedNode(QActivityNode *redefinedNode)
         d->redefinedNodes->remove(redefinedNode);
 
         // Adjust subsetted property(ies)
-        d->removeRedefinedElement(redefinedNode);
+        d->QRedefinableElementPrivate::removeRedefinedElement(dynamic_cast<QRedefinableElement *>(redefinedNode));
     }
 }
 
@@ -215,7 +215,7 @@ void QActivityNode::setActivity(QActivity *activity)
         d->activity = activity;
 
         // Adjust subsetted property(ies)
-        d->setOwner(activity);
+        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(activity));
 
         // Adjust opposite property
         if (activity)
@@ -256,15 +256,15 @@ void QActivityNode::setInStructuredNode(QStructuredActivityNode *inStructuredNod
             d->inStructuredNode->removeNode(this);
 
         // Adjust subsetted property(ies)
-        d->removeInGroup(d->inStructuredNode);
+        d->QActivityNodePrivate::removeInGroup(dynamic_cast<QActivityGroup *>(d->inStructuredNode));
 
         d->inStructuredNode = inStructuredNode;
 
         // Adjust subsetted property(ies)
         if (inStructuredNode) {
-            d->addInGroup(inStructuredNode);
+            d->QActivityNodePrivate::addInGroup(dynamic_cast<QActivityGroup *>(inStructuredNode));
         }
-        d->setOwner(inStructuredNode);
+        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(inStructuredNode));
 
         // Adjust opposite property
         if (inStructuredNode)
@@ -292,7 +292,7 @@ void QActivityNode::addInPartition(QActivityPartition *inPartition)
         d->inPartition->insert(inPartition);
 
         // Adjust subsetted property(ies)
-        d->addInGroup(inPartition);
+        d->QActivityNodePrivate::addInGroup(dynamic_cast<QActivityGroup *>(inPartition));
 
         // Adjust opposite property
         inPartition->addNode(this);
@@ -308,7 +308,7 @@ void QActivityNode::removeInPartition(QActivityPartition *inPartition)
         d->inPartition->remove(inPartition);
 
         // Adjust subsetted property(ies)
-        d->removeInGroup(inPartition);
+        d->QActivityNodePrivate::removeInGroup(dynamic_cast<QActivityGroup *>(inPartition));
 
         // Adjust opposite property
         if (inPartition)
@@ -336,7 +336,7 @@ void QActivityNode::addInInterruptibleRegion(QInterruptibleActivityRegion *inInt
         d->inInterruptibleRegion->insert(inInterruptibleRegion);
 
         // Adjust subsetted property(ies)
-        d->addInGroup(inInterruptibleRegion);
+        d->QActivityNodePrivate::addInGroup(dynamic_cast<QActivityGroup *>(inInterruptibleRegion));
 
         // Adjust opposite property
         inInterruptibleRegion->addNode(this);
@@ -352,7 +352,7 @@ void QActivityNode::removeInInterruptibleRegion(QInterruptibleActivityRegion *in
         d->inInterruptibleRegion->remove(inInterruptibleRegion);
 
         // Adjust subsetted property(ies)
-        d->removeInGroup(inInterruptibleRegion);
+        d->QActivityNodePrivate::removeInGroup(dynamic_cast<QActivityGroup *>(inInterruptibleRegion));
 
         // Adjust opposite property
         if (inInterruptibleRegion)

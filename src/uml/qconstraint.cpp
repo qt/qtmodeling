@@ -110,7 +110,7 @@ void QConstraint::setContext(QNamespace *context)
         d->context = context;
 
         // Adjust subsetted property(ies)
-        d->setNamespace_(context);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(context));
 
         // Adjust opposite property
         if (context)
@@ -136,13 +136,13 @@ void QConstraint::setSpecification(QValueSpecification *specification)
     QTUML_D(QConstraint);
     if (d->specification != specification) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->specification);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->specification));
 
         d->specification = specification;
 
         // Adjust subsetted property(ies)
         if (specification) {
-            d->addOwnedElement(specification);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(specification));
         }
     }
 }

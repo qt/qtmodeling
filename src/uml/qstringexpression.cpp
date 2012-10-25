@@ -106,7 +106,7 @@ void QStringExpression::setOwningExpression(QStringExpression *owningExpression)
         d->owningExpression = owningExpression;
 
         // Adjust subsetted property(ies)
-        d->setOwner(owningExpression);
+        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(owningExpression));
 
         // Adjust opposite property
         if (owningExpression)
@@ -134,7 +134,7 @@ void QStringExpression::addSubExpression(QStringExpression *subExpression)
         d->subExpressions->insert(subExpression);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(subExpression);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(subExpression));
 
         // Adjust opposite property
         subExpression->setOwningExpression(this);
@@ -150,7 +150,7 @@ void QStringExpression::removeSubExpression(QStringExpression *subExpression)
         d->subExpressions->remove(subExpression);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(subExpression);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(subExpression));
 
         // Adjust opposite property
         subExpression->setOwningExpression(0);

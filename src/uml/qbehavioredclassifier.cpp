@@ -96,7 +96,7 @@ void QBehavioredClassifier::addOwnedBehavior(QBehavior *ownedBehavior)
         d->ownedBehaviors->insert(ownedBehavior);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(ownedBehavior);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(ownedBehavior));
     }
 }
 
@@ -109,7 +109,7 @@ void QBehavioredClassifier::removeOwnedBehavior(QBehavior *ownedBehavior)
         d->ownedBehaviors->remove(ownedBehavior);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(ownedBehavior);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(ownedBehavior));
     }
 }
 
@@ -133,8 +133,8 @@ void QBehavioredClassifier::addInterfaceRealization(QInterfaceRealization *inter
         d->interfaceRealizations->insert(interfaceRealization);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(interfaceRealization);
-        addClientDependency(interfaceRealization);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(interfaceRealization));
+        QNamedElement::addClientDependency(dynamic_cast<QDependency *>(interfaceRealization));
 
         // Adjust opposite property
         interfaceRealization->setImplementingClassifier(this);
@@ -150,8 +150,8 @@ void QBehavioredClassifier::removeInterfaceRealization(QInterfaceRealization *in
         d->interfaceRealizations->remove(interfaceRealization);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(interfaceRealization);
-        removeClientDependency(interfaceRealization);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(interfaceRealization));
+        QNamedElement::removeClientDependency(dynamic_cast<QDependency *>(interfaceRealization));
 
         // Adjust opposite property
         interfaceRealization->setImplementingClassifier(0);
@@ -176,15 +176,27 @@ void QBehavioredClassifier::setClassifierBehavior(QBehavior *classifierBehavior)
     QTUML_D(QBehavioredClassifier);
     if (d->classifierBehavior != classifierBehavior) {
         // Adjust subsetted property(ies)
-        removeOwnedBehavior(d->classifierBehavior);
+        QBehavioredClassifier::removeOwnedBehavior(dynamic_cast<QBehavior *>(d->classifierBehavior));
 
         d->classifierBehavior = classifierBehavior;
 
         // Adjust subsetted property(ies)
         if (classifierBehavior) {
-            addOwnedBehavior(classifierBehavior);
+            QBehavioredClassifier::addOwnedBehavior(dynamic_cast<QBehavior *>(classifierBehavior));
         }
     }
+}
+
+// Overriden methods for subsetted properties
+
+void QBehavioredClassifier::addClientDependency(QInterfaceRealization *interfaceRealization)
+{
+    addInterfaceRealization(interfaceRealization);
+}
+
+void QBehavioredClassifier::removeClientDependency(QInterfaceRealization *interfaceRealization)
+{
+    removeInterfaceRealization(interfaceRealization);
 }
 
 QT_END_NAMESPACE_QTUML
