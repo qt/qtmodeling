@@ -99,13 +99,13 @@ void QAbstraction::setMapping(QOpaqueExpression *mapping)
     QTUML_D(QAbstraction);
     if (d->mapping != mapping) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->mapping);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->mapping));
 
         d->mapping = mapping;
 
         // Adjust subsetted property(ies)
         if (mapping) {
-            d->addOwnedElement(mapping);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(mapping));
         }
     }
 }

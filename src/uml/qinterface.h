@@ -154,6 +154,10 @@ public:
     void addOwnedAttribute(QProperty *ownedAttribute);
     void removeOwnedAttribute(QProperty *ownedAttribute);
 
+    // Overriden methods for subsetted properties
+    void addRedefinedClassifier(QInterface *redefinedInterface);
+    void removeRedefinedClassifier(QInterface *redefinedInterface);
+
 protected:
     explicit QInterface(bool createPimpl, QObject *parent = 0);
 };

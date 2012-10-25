@@ -129,7 +129,7 @@ void QPseudostate::setState(QState *state)
         d->state = state;
 
         // Adjust subsetted property(ies)
-        d->setNamespace_(state);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(state));
 
         // Adjust opposite property
         if (state)
@@ -161,7 +161,7 @@ void QPseudostate::setStateMachine(QStateMachine *stateMachine)
         d->stateMachine = stateMachine;
 
         // Adjust subsetted property(ies)
-        d->setNamespace_(stateMachine);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(stateMachine));
 
         // Adjust opposite property
         if (stateMachine)

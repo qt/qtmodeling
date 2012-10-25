@@ -84,6 +84,12 @@ public:
     void addDeployedArtifact(QDeployedArtifact *deployedArtifact);
     void removeDeployedArtifact(QDeployedArtifact *deployedArtifact);
 
+    // Overriden methods for subsetted properties
+    void addClient(QDeploymentTarget *location);
+    void removeClient(QDeploymentTarget *location);
+    void addSupplier(QDeployedArtifact *deployedArtifact);
+    void removeSupplier(QDeployedArtifact *deployedArtifact);
+
 protected:
     explicit QDeployment(bool createPimpl, QObject *parent = 0);
 };

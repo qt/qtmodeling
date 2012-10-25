@@ -121,13 +121,13 @@ void QJoinNode::setJoinSpec(QValueSpecification *joinSpec)
     QTUML_D(QJoinNode);
     if (d->joinSpec != joinSpec) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->joinSpec);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->joinSpec));
 
         d->joinSpec = joinSpec;
 
         // Adjust subsetted property(ies)
         if (joinSpec) {
-            d->addOwnedElement(joinSpec);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(joinSpec));
         }
     }
 }

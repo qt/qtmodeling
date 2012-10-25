@@ -95,7 +95,7 @@ void QType::setPackage(QPackage *package)
         d->package = package;
 
         // Adjust subsetted property(ies)
-        d->setNamespace_(package);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(package));
 
         // Adjust opposite property
         if (package)

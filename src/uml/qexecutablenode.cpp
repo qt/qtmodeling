@@ -92,7 +92,7 @@ void QExecutableNode::addHandler(QExceptionHandler *handler)
         d->handlers->insert(handler);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(handler);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(handler));
 
         // Adjust opposite property
         handler->setProtectedNode(this);
@@ -108,7 +108,7 @@ void QExecutableNode::removeHandler(QExceptionHandler *handler)
         d->handlers->remove(handler);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(handler);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(handler));
 
         // Adjust opposite property
         handler->setProtectedNode(0);

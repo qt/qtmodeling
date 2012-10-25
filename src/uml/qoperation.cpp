@@ -233,13 +233,13 @@ void QOperation::setBodyCondition(QConstraint *bodyCondition)
     QTUML_D(QOperation);
     if (d->bodyCondition != bodyCondition) {
         // Adjust subsetted property(ies)
-        removeOwnedRule(d->bodyCondition);
+        QNamespace::removeOwnedRule(dynamic_cast<QConstraint *>(d->bodyCondition));
 
         d->bodyCondition = bodyCondition;
 
         // Adjust subsetted property(ies)
         if (bodyCondition) {
-            addOwnedRule(bodyCondition);
+            QNamespace::addOwnedRule(dynamic_cast<QConstraint *>(bodyCondition));
         }
     }
 }
@@ -264,7 +264,7 @@ void QOperation::addRedefinedOperation(QOperation *redefinedOperation)
         d->redefinedOperations->insert(redefinedOperation);
 
         // Adjust subsetted property(ies)
-        d->addRedefinedElement(redefinedOperation);
+        d->QRedefinableElementPrivate::addRedefinedElement(dynamic_cast<QRedefinableElement *>(redefinedOperation));
     }
 }
 
@@ -277,7 +277,7 @@ void QOperation::removeRedefinedOperation(QOperation *redefinedOperation)
         d->redefinedOperations->remove(redefinedOperation);
 
         // Adjust subsetted property(ies)
-        d->removeRedefinedElement(redefinedOperation);
+        d->QRedefinableElementPrivate::removeRedefinedElement(dynamic_cast<QRedefinableElement *>(redefinedOperation));
     }
 }
 
@@ -301,7 +301,7 @@ void QOperation::addPostcondition(QConstraint *postcondition)
         d->postconditions->insert(postcondition);
 
         // Adjust subsetted property(ies)
-        addOwnedRule(postcondition);
+        QNamespace::addOwnedRule(dynamic_cast<QConstraint *>(postcondition));
     }
 }
 
@@ -314,7 +314,7 @@ void QOperation::removePostcondition(QConstraint *postcondition)
         d->postconditions->remove(postcondition);
 
         // Adjust subsetted property(ies)
-        removeOwnedRule(postcondition);
+        QNamespace::removeOwnedRule(dynamic_cast<QConstraint *>(postcondition));
     }
 }
 
@@ -340,19 +340,19 @@ void QOperation::setDatatype(QDataType *datatype)
             d->datatype->removeOwnedOperation(this);
 
         // Adjust subsetted property(ies)
-        d->removeFeaturingClassifier(d->datatype);
-        d->removeRedefinitionContext(d->datatype);
+        d->QFeaturePrivate::removeFeaturingClassifier(dynamic_cast<QClassifier *>(d->datatype));
+        d->QRedefinableElementPrivate::removeRedefinitionContext(dynamic_cast<QClassifier *>(d->datatype));
 
         d->datatype = datatype;
 
         // Adjust subsetted property(ies)
         if (datatype) {
-            d->addFeaturingClassifier(datatype);
+            d->QFeaturePrivate::addFeaturingClassifier(dynamic_cast<QClassifier *>(datatype));
         }
         if (datatype) {
-            d->addRedefinitionContext(datatype);
+            d->QRedefinableElementPrivate::addRedefinitionContext(dynamic_cast<QClassifier *>(datatype));
         }
-        d->setNamespace_(datatype);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(datatype));
 
         // Adjust opposite property
         if (datatype)
@@ -408,19 +408,19 @@ void QOperation::setInterface(QInterface *interface)
             d->interface->removeOwnedOperation(this);
 
         // Adjust subsetted property(ies)
-        d->removeFeaturingClassifier(d->interface);
-        d->removeRedefinitionContext(d->interface);
+        d->QFeaturePrivate::removeFeaturingClassifier(dynamic_cast<QClassifier *>(d->interface));
+        d->QRedefinableElementPrivate::removeRedefinitionContext(dynamic_cast<QClassifier *>(d->interface));
 
         d->interface = interface;
 
         // Adjust subsetted property(ies)
         if (interface) {
-            d->addFeaturingClassifier(interface);
+            d->QFeaturePrivate::addFeaturingClassifier(dynamic_cast<QClassifier *>(interface));
         }
         if (interface) {
-            d->addRedefinitionContext(interface);
+            d->QRedefinableElementPrivate::addRedefinitionContext(dynamic_cast<QClassifier *>(interface));
         }
-        d->setNamespace_(interface);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(interface));
 
         // Adjust opposite property
         if (interface)
@@ -461,7 +461,7 @@ void QOperation::addPrecondition(QConstraint *precondition)
         d->preconditions->insert(precondition);
 
         // Adjust subsetted property(ies)
-        addOwnedRule(precondition);
+        QNamespace::addOwnedRule(dynamic_cast<QConstraint *>(precondition));
     }
 }
 
@@ -474,7 +474,7 @@ void QOperation::removePrecondition(QConstraint *precondition)
         d->preconditions->remove(precondition);
 
         // Adjust subsetted property(ies)
-        removeOwnedRule(precondition);
+        QNamespace::removeOwnedRule(dynamic_cast<QConstraint *>(precondition));
     }
 }
 
@@ -500,19 +500,19 @@ void QOperation::setClass_(QClass *class_)
             d->class_->removeOwnedOperation(this);
 
         // Adjust subsetted property(ies)
-        d->removeFeaturingClassifier(d->class_);
-        d->removeRedefinitionContext(d->class_);
+        d->QFeaturePrivate::removeFeaturingClassifier(dynamic_cast<QClassifier *>(d->class_));
+        d->QRedefinableElementPrivate::removeRedefinitionContext(dynamic_cast<QClassifier *>(d->class_));
 
         d->class_ = class_;
 
         // Adjust subsetted property(ies)
         if (class_) {
-            d->addFeaturingClassifier(class_);
+            d->QFeaturePrivate::addFeaturingClassifier(dynamic_cast<QClassifier *>(class_));
         }
         if (class_) {
-            d->addRedefinitionContext(class_);
+            d->QRedefinableElementPrivate::addRedefinitionContext(dynamic_cast<QClassifier *>(class_));
         }
-        d->setNamespace_(class_);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(class_));
 
         // Adjust opposite property
         if (class_)

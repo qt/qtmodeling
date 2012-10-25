@@ -18,12 +18,12 @@
         if (${accessor.parameter.0.name}) {
         [%- END %]
             [%- IF property.isReadOnly == subsettedPropertyItem.isReadOnly %]
-        [% IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]    [% END %]${subsettedPropertyItem.accessor.1.name}(${accessor.parameter.0.name});
+        [% IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]    [% END %]${subsettedClass}[% IF subsettedPropertyItem.isReadOnly == 'true' %]Private[% END %]::${subsettedPropertyItem.accessor.1.name}(dynamic_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>(${accessor.parameter.0.name}));
             [%- ELSIF property.isReadOnly == 'false' and subsettedPropertyItem.isReadOnly == 'true' %]
-        [% IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]    [% END %]d->${subsettedPropertyItem.accessor.1.name}(${accessor.parameter.0.name});
+        [% IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]    [% END %]d->${subsettedClass}Private::${subsettedPropertyItem.accessor.1.name}(dynamic_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>(${accessor.parameter.0.name}));
             [%- ELSE %]
         [% IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]    [% END %]QTUML_Q(${class.name});
-        [% IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]    [% END %]q->${subsettedPropertyItem.accessor.1.name}(${accessor.parameter.0.name});
+        [% IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]    [% END %]q->${subsettedClass}::${subsettedPropertyItem.accessor.1.name}(dynamic_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>(${accessor.parameter.0.name}));
             [%- END %]
         [%- IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]
         }
@@ -37,14 +37,14 @@
             [%- found = 'true' -%]
             [%- END %]
             [%- IF property.isReadOnly == 'true' and subsettedPropertyItem.isReadOnly == 'true' %]
-        ${subsettedPropertyItem.accessor.2.name}([% IF singlevalued == 'true' %]this->[% END %]${accessor.parameter.0.name});
+        ${subsettedClass}Private::${subsettedPropertyItem.accessor.2.name}(dynamic_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>([% IF singlevalued == 'true' %]this->[% END %]${accessor.parameter.0.name}));
             [%- ELSIF property.isReadOnly == 'false' and subsettedPropertyItem.isReadOnly == 'false' %]
-        ${subsettedPropertyItem.accessor.2.name}([% IF singlevalued == 'true' %]d->[% END %]${accessor.parameter.0.name});
+        ${subsettedClass}::${subsettedPropertyItem.accessor.2.name}(dynamic_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>([% IF singlevalued == 'true' %]d->[% END %]${accessor.parameter.0.name}));
             [%- ELSIF property.isReadOnly == 'false' and subsettedPropertyItem.isReadOnly == 'true' %]
-        d->${subsettedPropertyItem.accessor.2.name}([% IF singlevalued == 'true' %]d->[% END %]${accessor.parameter.0.name});
+        d->${subsettedClass}Private::${subsettedPropertyItem.accessor.2.name}(dynamic_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>([% IF singlevalued == 'true' %]d->[% END %]${accessor.parameter.0.name}));
             [%- ELSE %]
         QTUML_Q(${class.name});
-        q->${subsettedPropertyItem.accessor.2.name}([% IF singlevalued == 'true' %]this->[% END %]${accessor.parameter.0.name});
+        q->${subsettedClass}::${subsettedPropertyItem.accessor.2.name}(dynamic_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>([% IF singlevalued == 'true' %]this->[% END %]${accessor.parameter.0.name}));
             [%- END %]
         [%- END -%]
         [%- END -%]
@@ -599,6 +599,75 @@ ${operation.return}${class.name}::${operation.name}([%- FOREACH parameter IN ope
     qWarning("${class.name}::${operation.name}: operation to be implemented");
 }
 [% END -%]
+[%- found = 'false' -%]
+[%- IF class.item('attribute') %]
+[%- FOREACH attribute IN class.attribute.values -%]
+[%- IF attribute.isReadOnly == 'false' -%]
+[%- FOREACH subsettedProperty IN attribute.subsettedProperty.split(' ') %]
+[%- IF classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).attribute.item(subsettedProperty) -%]
+    [%- property = classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).attribute.item(subsettedProperty) -%]
+[%- ELSE -%]
+    [%- property = classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).associationend.item(subsettedProperty) -%]
+[%- END -%]
+[%- IF property.isReadOnly == 'false' && attribute.accessor.1.parameter.0.type != property.accessor.1.parameter.0.type -%]
+[%- IF found == 'false' -%]
+[%- found = 'true' %]
+// Overriden methods for subsetted properties
+
+[%- END -%]
+[%- FOREACH accessor IN property.accessor -%]
+[%- NEXT IF loop.first %]
+${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN attribute.accessor.1.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
+{
+[%- IF loop.count == 2 %]
+    ${parameter.accessor.1.name}(${attribute.accessor.1.parameter.0.name});
+[%- ELSE %]
+    ${parameter.accessor.2.name}(${attribute.accessor.1.parameter.0.name});
+[%- END %]
+}
+
+[%- END -%]
+[%- END -%]
+[%- END -%]
+[%- END -%]
+[%- END -%]
+[%- END %]
+[%- IF class.item('associationend') %]
+[%- FOREACH associationend IN class.associationend.values -%]
+[%- IF associationend.isReadOnly == 'false' -%]
+[%- FOREACH subsettedProperty IN associationend.subsettedProperty.split(' ') %]
+[%- IF classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).attribute.item(subsettedProperty) -%]
+    [%- property = classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).attribute.item(subsettedProperty) -%]
+[%- ELSE -%]
+    [%- property = classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).associationend.item(subsettedProperty) -%]
+    [%- END -%]
+[%- IF property.isReadOnly == 'false' && associationend.accessor.1.parameter.0.type != property.accessor.1.parameter.0.type -%]
+[%- IF found == 'false' -%]
+[%- found = 'true' %]
+// Overriden methods for subsetted properties
+
+[%- END -%]
+[%- FOREACH accessor IN property.accessor -%]
+[%- NEXT IF loop.first %]
+${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN associationend.accessor.1.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
+{
+[%- IF loop.count == 2 %]
+    ${associationend.accessor.1.name}(${associationend.accessor.1.parameter.0.name});
+[%- ELSE -%]
+    [%- IF associationend.accessor.2 %]
+    ${associationend.accessor.2.name}(${associationend.accessor.1.parameter.0.name});
+    [%- ELSE %]
+    ${associationend.accessor.1.name}(0);
+    [%- END -%]
+[%- END %]
+}
+
+[%- END -%]
+[%- END -%]
+[%- END -%]
+[%- END -%]
+[%- END -%]
+[%- END %]
 [%- IF class.isAbstract == 'false' %]
 #include "moc_${class.name.lower}.cpp"
 [% END %]

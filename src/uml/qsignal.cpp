@@ -102,8 +102,8 @@ void QSignal::addOwnedAttribute(QProperty *ownedAttribute)
         d->ownedAttributes->append(ownedAttribute);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(ownedAttribute);
-        d->addAttribute(ownedAttribute);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(ownedAttribute));
+        d->QClassifierPrivate::addAttribute(dynamic_cast<QProperty *>(ownedAttribute));
     }
 }
 
@@ -116,8 +116,8 @@ void QSignal::removeOwnedAttribute(QProperty *ownedAttribute)
         d->ownedAttributes->removeAll(ownedAttribute);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(ownedAttribute);
-        d->removeAttribute(ownedAttribute);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(ownedAttribute));
+        d->QClassifierPrivate::removeAttribute(dynamic_cast<QProperty *>(ownedAttribute));
     }
 }
 

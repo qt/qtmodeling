@@ -75,6 +75,10 @@ public:
     QBehavior *classifierBehavior() const;
     void setClassifierBehavior(QBehavior *classifierBehavior);
 
+    // Overriden methods for subsetted properties
+    void addClientDependency(QInterfaceRealization *interfaceRealization);
+    void removeClientDependency(QInterfaceRealization *interfaceRealization);
+
 protected:
     explicit QBehavioredClassifier();
 };

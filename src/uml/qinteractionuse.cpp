@@ -110,7 +110,7 @@ void QInteractionUse::addActualGate(QGate *actualGate)
         d->actualGates->insert(actualGate);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(actualGate);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(actualGate));
     }
 }
 
@@ -123,7 +123,7 @@ void QInteractionUse::removeActualGate(QGate *actualGate)
         d->actualGates->remove(actualGate);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(actualGate);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(actualGate));
     }
 }
 
@@ -145,13 +145,13 @@ void QInteractionUse::setReturnValue(QValueSpecification *returnValue)
     QTUML_D(QInteractionUse);
     if (d->returnValue != returnValue) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->returnValue);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->returnValue));
 
         d->returnValue = returnValue;
 
         // Adjust subsetted property(ies)
         if (returnValue) {
-            d->addOwnedElement(returnValue);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(returnValue));
         }
     }
 }
@@ -197,7 +197,7 @@ void QInteractionUse::addArgument(QValueSpecification *argument)
         d->arguments->append(argument);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(argument);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(argument));
     }
 }
 
@@ -210,7 +210,7 @@ void QInteractionUse::removeArgument(QValueSpecification *argument)
         d->arguments->removeAll(argument);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(argument);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(argument));
     }
 }
 

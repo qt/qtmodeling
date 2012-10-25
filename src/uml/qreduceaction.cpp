@@ -125,13 +125,13 @@ void QReduceAction::setResult(QOutputPin *result)
     QTUML_D(QReduceAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        d->removeOutput(d->result);
+        d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            d->addOutput(result);
+            d->QActionPrivate::addOutput(dynamic_cast<QOutputPin *>(result));
         }
     }
 }
@@ -154,13 +154,13 @@ void QReduceAction::setCollection(QInputPin *collection)
     QTUML_D(QReduceAction);
     if (d->collection != collection) {
         // Adjust subsetted property(ies)
-        d->removeInput(d->collection);
+        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->collection));
 
         d->collection = collection;
 
         // Adjust subsetted property(ies)
         if (collection) {
-            d->addInput(collection);
+            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(collection));
         }
     }
 }

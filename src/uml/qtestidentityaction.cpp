@@ -102,13 +102,13 @@ void QTestIdentityAction::setSecond(QInputPin *second)
     QTUML_D(QTestIdentityAction);
     if (d->second != second) {
         // Adjust subsetted property(ies)
-        d->removeInput(d->second);
+        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->second));
 
         d->second = second;
 
         // Adjust subsetted property(ies)
         if (second) {
-            d->addInput(second);
+            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(second));
         }
     }
 }
@@ -131,13 +131,13 @@ void QTestIdentityAction::setResult(QOutputPin *result)
     QTUML_D(QTestIdentityAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        d->removeOutput(d->result);
+        d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            d->addOutput(result);
+            d->QActionPrivate::addOutput(dynamic_cast<QOutputPin *>(result));
         }
     }
 }
@@ -160,13 +160,13 @@ void QTestIdentityAction::setFirst(QInputPin *first)
     QTUML_D(QTestIdentityAction);
     if (d->first != first) {
         // Adjust subsetted property(ies)
-        d->removeInput(d->first);
+        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->first));
 
         d->first = first;
 
         // Adjust subsetted property(ies)
         if (first) {
-            d->addInput(first);
+            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(first));
         }
     }
 }

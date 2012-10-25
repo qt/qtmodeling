@@ -138,13 +138,13 @@ void QObjectNode::setUpperBound(QValueSpecification *upperBound)
     QTUML_D(QObjectNode);
     if (d->upperBound != upperBound) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->upperBound);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->upperBound));
 
         d->upperBound = upperBound;
 
         // Adjust subsetted property(ies)
         if (upperBound) {
-            d->addOwnedElement(upperBound);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(upperBound));
         }
     }
 }

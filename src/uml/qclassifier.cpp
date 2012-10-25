@@ -96,7 +96,7 @@ void QClassifierPrivate::addAttribute(QProperty *attribute)
         this->attributes->insert(attribute);
 
         // Adjust subsetted property(ies)
-        addFeature(attribute);
+        QClassifierPrivate::addFeature(dynamic_cast<QFeature *>(attribute));
     }
 }
 
@@ -108,7 +108,7 @@ void QClassifierPrivate::removeAttribute(QProperty *attribute)
         this->attributes->remove(attribute);
 
         // Adjust subsetted property(ies)
-        removeFeature(attribute);
+        QClassifierPrivate::removeFeature(dynamic_cast<QFeature *>(attribute));
     }
 }
 
@@ -120,7 +120,7 @@ void QClassifierPrivate::addFeature(QFeature *feature)
         this->features->insert(feature);
 
         // Adjust subsetted property(ies)
-        addMember(feature);
+        QNamespacePrivate::addMember(dynamic_cast<QNamedElement *>(feature));
 
         // Adjust opposite property
         QTUML_Q(QClassifier);
@@ -136,7 +136,7 @@ void QClassifierPrivate::removeFeature(QFeature *feature)
         this->features->remove(feature);
 
         // Adjust subsetted property(ies)
-        removeMember(feature);
+        QNamespacePrivate::removeMember(dynamic_cast<QNamedElement *>(feature));
 
         // Adjust opposite property
         QTUML_Q(QClassifier);
@@ -223,7 +223,7 @@ void QClassifier::addOwnedUseCase(QUseCase *ownedUseCase)
         d->ownedUseCases->insert(ownedUseCase);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(ownedUseCase);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(ownedUseCase));
     }
 }
 
@@ -236,7 +236,7 @@ void QClassifier::removeOwnedUseCase(QUseCase *ownedUseCase)
         d->ownedUseCases->remove(ownedUseCase);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(ownedUseCase);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(ownedUseCase));
     }
 }
 
@@ -361,7 +361,7 @@ void QClassifier::addRedefinedClassifier(QClassifier *redefinedClassifier)
         d->redefinedClassifiers->insert(redefinedClassifier);
 
         // Adjust subsetted property(ies)
-        d->addRedefinedElement(redefinedClassifier);
+        d->QRedefinableElementPrivate::addRedefinedElement(dynamic_cast<QRedefinableElement *>(redefinedClassifier));
     }
 }
 
@@ -374,7 +374,7 @@ void QClassifier::removeRedefinedClassifier(QClassifier *redefinedClassifier)
         d->redefinedClassifiers->remove(redefinedClassifier);
 
         // Adjust subsetted property(ies)
-        d->removeRedefinedElement(redefinedClassifier);
+        d->QRedefinableElementPrivate::removeRedefinedElement(dynamic_cast<QRedefinableElement *>(redefinedClassifier));
     }
 }
 
@@ -424,7 +424,7 @@ void QClassifier::addCollaborationUse(QCollaborationUse *collaborationUse)
         d->collaborationUses->insert(collaborationUse);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(collaborationUse);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(collaborationUse));
     }
 }
 
@@ -437,7 +437,7 @@ void QClassifier::removeCollaborationUse(QCollaborationUse *collaborationUse)
         d->collaborationUses->remove(collaborationUse);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(collaborationUse);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(collaborationUse));
     }
 }
 
@@ -518,13 +518,13 @@ void QClassifier::setRepresentation(QCollaborationUse *representation)
     QTUML_D(QClassifier);
     if (d->representation != representation) {
         // Adjust subsetted property(ies)
-        removeCollaborationUse(d->representation);
+        QClassifier::removeCollaborationUse(dynamic_cast<QCollaborationUse *>(d->representation));
 
         d->representation = representation;
 
         // Adjust subsetted property(ies)
         if (representation) {
-            addCollaborationUse(representation);
+            QClassifier::addCollaborationUse(dynamic_cast<QCollaborationUse *>(representation));
         }
     }
 }
@@ -549,7 +549,7 @@ void QClassifier::addGeneralization(QGeneralization *generalization)
         d->generalizations->insert(generalization);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(generalization);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(generalization));
 
         // Adjust opposite property
         generalization->setSpecific(this);
@@ -565,7 +565,7 @@ void QClassifier::removeGeneralization(QGeneralization *generalization)
         d->generalizations->remove(generalization);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(generalization);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(generalization));
 
         // Adjust opposite property
         generalization->setSpecific(0);
@@ -605,8 +605,8 @@ void QClassifier::addSubstitution(QSubstitution *substitution)
         d->substitutions->insert(substitution);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(substitution);
-        addClientDependency(substitution);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(substitution));
+        QNamedElement::addClientDependency(dynamic_cast<QDependency *>(substitution));
 
         // Adjust opposite property
         substitution->setSubstitutingClassifier(this);
@@ -622,8 +622,8 @@ void QClassifier::removeSubstitution(QSubstitution *substitution)
         d->substitutions->remove(substitution);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(substitution);
-        removeClientDependency(substitution);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(substitution));
+        QNamedElement::removeClientDependency(dynamic_cast<QDependency *>(substitution));
 
         // Adjust opposite property
         substitution->setSubstitutingClassifier(0);
@@ -700,6 +700,18 @@ bool QClassifier::maySpecializeType(const QClassifier *c) const
 const QSet<QClassifier *> *QClassifier::parents() const
 {
     qWarning("QClassifier::parents: operation to be implemented");
+}
+
+// Overriden methods for subsetted properties
+
+void QClassifier::addClientDependency(QSubstitution *substitution)
+{
+    addSubstitution(substitution);
+}
+
+void QClassifier::removeClientDependency(QSubstitution *substitution)
+{
+    removeSubstitution(substitution);
 }
 
 QT_END_NAMESPACE_QTUML

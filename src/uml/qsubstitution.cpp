@@ -100,13 +100,13 @@ void QSubstitution::setContract(QClassifier *contract)
     QTUML_D(QSubstitution);
     if (d->contract != contract) {
         // Adjust subsetted property(ies)
-        removeSupplier(d->contract);
+        QDependency::removeSupplier(dynamic_cast<QNamedElement *>(d->contract));
 
         d->contract = contract;
 
         // Adjust subsetted property(ies)
         if (contract) {
-            addSupplier(contract);
+            QDependency::addSupplier(dynamic_cast<QNamedElement *>(contract));
         }
     }
 }
@@ -133,20 +133,42 @@ void QSubstitution::setSubstitutingClassifier(QClassifier *substitutingClassifie
             d->substitutingClassifier->removeSubstitution(this);
 
         // Adjust subsetted property(ies)
-        removeClient(d->substitutingClassifier);
+        QDependency::removeClient(dynamic_cast<QNamedElement *>(d->substitutingClassifier));
 
         d->substitutingClassifier = substitutingClassifier;
 
         // Adjust subsetted property(ies)
-        d->setOwner(substitutingClassifier);
+        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(substitutingClassifier));
         if (substitutingClassifier) {
-            addClient(substitutingClassifier);
+            QDependency::addClient(dynamic_cast<QNamedElement *>(substitutingClassifier));
         }
 
         // Adjust opposite property
         if (substitutingClassifier)
             substitutingClassifier->addSubstitution(this);
     }
+}
+
+// Overriden methods for subsetted properties
+
+void QSubstitution::addSupplier(QClassifier *contract)
+{
+    setContract(contract);
+}
+
+void QSubstitution::removeSupplier(QClassifier *contract)
+{
+    setContract(0);
+}
+
+void QSubstitution::addClient(QClassifier *substitutingClassifier)
+{
+    setSubstitutingClassifier(substitutingClassifier);
+}
+
+void QSubstitution::removeClient(QClassifier *substitutingClassifier)
+{
+    setSubstitutingClassifier(0);
 }
 
 #include "moc_qsubstitution.cpp"

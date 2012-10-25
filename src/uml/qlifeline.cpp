@@ -194,7 +194,7 @@ void QLifeline::setInteraction(QInteraction *interaction)
         d->interaction = interaction;
 
         // Adjust subsetted property(ies)
-        d->setNamespace_(interaction);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(interaction));
 
         // Adjust opposite property
         if (interaction)
@@ -220,13 +220,13 @@ void QLifeline::setSelector(QValueSpecification *selector)
     QTUML_D(QLifeline);
     if (d->selector != selector) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->selector);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->selector));
 
         d->selector = selector;
 
         // Adjust subsetted property(ies)
         if (selector) {
-            d->addOwnedElement(selector);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(selector));
         }
     }
 }

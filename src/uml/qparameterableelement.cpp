@@ -94,8 +94,8 @@ void QParameterableElement::setOwningTemplateParameter(QTemplateParameter *ownin
         d->owningTemplateParameter = owningTemplateParameter;
 
         // Adjust subsetted property(ies)
-        setTemplateParameter(owningTemplateParameter);
-        d->setOwner(owningTemplateParameter);
+        QParameterableElement::setTemplateParameter(dynamic_cast<QTemplateParameter *>(owningTemplateParameter));
+        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(owningTemplateParameter));
 
         // Adjust opposite property
         owningTemplateParameter->setOwnedParameteredElement(this);

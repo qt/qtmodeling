@@ -99,13 +99,13 @@ void QValuePin::setValue(QValueSpecification *value)
     QTUML_D(QValuePin);
     if (d->value != value) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->value);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->value));
 
         d->value = value;
 
         // Adjust subsetted property(ies)
         if (value) {
-            d->addOwnedElement(value);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(value));
         }
     }
 }

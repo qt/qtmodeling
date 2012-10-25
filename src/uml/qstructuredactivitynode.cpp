@@ -135,7 +135,7 @@ void QStructuredActivityNode::addStructuredNodeInput(QInputPin *structuredNodeIn
         d->structuredNodeInputs->insert(structuredNodeInput);
 
         // Adjust subsetted property(ies)
-        d->addInput(structuredNodeInput);
+        d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(structuredNodeInput));
     }
 }
 
@@ -148,7 +148,7 @@ void QStructuredActivityNode::removeStructuredNodeInput(QInputPin *structuredNod
         d->structuredNodeInputs->remove(structuredNodeInput);
 
         // Adjust subsetted property(ies)
-        d->removeInput(structuredNodeInput);
+        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(structuredNodeInput));
     }
 }
 
@@ -172,8 +172,8 @@ void QStructuredActivityNode::addNode(QActivityNode *node)
         d->nodes->insert(node);
 
         // Adjust subsetted property(ies)
-        d->addContainedNode(node);
-        d->addOwnedElement(node);
+        d->QActivityGroupPrivate::addContainedNode(dynamic_cast<QActivityNode *>(node));
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(node));
 
         // Adjust opposite property
         node->setInStructuredNode(this);
@@ -189,8 +189,8 @@ void QStructuredActivityNode::removeNode(QActivityNode *node)
         d->nodes->remove(node);
 
         // Adjust subsetted property(ies)
-        d->removeContainedNode(node);
-        d->removeOwnedElement(node);
+        d->QActivityGroupPrivate::removeContainedNode(dynamic_cast<QActivityNode *>(node));
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(node));
 
         // Adjust opposite property
         node->setInStructuredNode(0);
@@ -214,7 +214,7 @@ void QStructuredActivityNode::addStructuredNodeOutput(QOutputPin *structuredNode
         d->structuredNodeOutputs->insert(structuredNodeOutput);
 
         // Adjust subsetted property(ies)
-        d->addOutput(structuredNodeOutput);
+        d->QActionPrivate::addOutput(dynamic_cast<QOutputPin *>(structuredNodeOutput));
     }
 }
 
@@ -227,7 +227,7 @@ void QStructuredActivityNode::removeStructuredNodeOutput(QOutputPin *structuredN
         d->structuredNodeOutputs->remove(structuredNodeOutput);
 
         // Adjust subsetted property(ies)
-        d->removeOutput(structuredNodeOutput);
+        d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(structuredNodeOutput));
     }
 }
 
@@ -251,8 +251,8 @@ void QStructuredActivityNode::addEdge(QActivityEdge *edge)
         d->edges->insert(edge);
 
         // Adjust subsetted property(ies)
-        d->addContainedEdge(edge);
-        d->addOwnedElement(edge);
+        d->QActivityGroupPrivate::addContainedEdge(dynamic_cast<QActivityEdge *>(edge));
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(edge));
 
         // Adjust opposite property
         edge->setInStructuredNode(this);
@@ -268,8 +268,8 @@ void QStructuredActivityNode::removeEdge(QActivityEdge *edge)
         d->edges->remove(edge);
 
         // Adjust subsetted property(ies)
-        d->removeContainedEdge(edge);
-        d->removeOwnedElement(edge);
+        d->QActivityGroupPrivate::removeContainedEdge(dynamic_cast<QActivityEdge *>(edge));
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(edge));
 
         // Adjust opposite property
         edge->setInStructuredNode(0);
@@ -296,7 +296,7 @@ void QStructuredActivityNode::addVariable(QVariable *variable)
         d->variables->insert(variable);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(variable);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(variable));
 
         // Adjust opposite property
         variable->setScope(this);
@@ -312,7 +312,7 @@ void QStructuredActivityNode::removeVariable(QVariable *variable)
         d->variables->remove(variable);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(variable);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(variable));
 
         // Adjust opposite property
         variable->setScope(0);

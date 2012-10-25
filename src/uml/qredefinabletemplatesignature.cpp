@@ -117,13 +117,13 @@ void QRedefinableTemplateSignature::setClassifier(QClassifier *classifier)
         // Adjust opposite property
 
         // Adjust subsetted property(ies)
-        d->removeRedefinitionContext(d->classifier);
+        d->QRedefinableElementPrivate::removeRedefinitionContext(dynamic_cast<QClassifier *>(d->classifier));
 
         d->classifier = classifier;
 
         // Adjust subsetted property(ies)
         if (classifier) {
-            d->addRedefinitionContext(classifier);
+            d->QRedefinableElementPrivate::addRedefinitionContext(dynamic_cast<QClassifier *>(classifier));
         }
 
         // Adjust opposite property
@@ -151,7 +151,7 @@ void QRedefinableTemplateSignature::addExtendedSignature(QRedefinableTemplateSig
         d->extendedSignatures->insert(extendedSignature);
 
         // Adjust subsetted property(ies)
-        d->addRedefinedElement(extendedSignature);
+        d->QRedefinableElementPrivate::addRedefinedElement(dynamic_cast<QRedefinableElement *>(extendedSignature));
     }
 }
 
@@ -164,7 +164,7 @@ void QRedefinableTemplateSignature::removeExtendedSignature(QRedefinableTemplate
         d->extendedSignatures->remove(extendedSignature);
 
         // Adjust subsetted property(ies)
-        d->removeRedefinedElement(extendedSignature);
+        d->QRedefinableElementPrivate::removeRedefinedElement(dynamic_cast<QRedefinableElement *>(extendedSignature));
     }
 }
 

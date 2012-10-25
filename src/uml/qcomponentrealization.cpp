@@ -106,15 +106,15 @@ void QComponentRealization::setAbstraction(QComponent *abstraction)
             d->abstraction->removeRealization(this);
 
         // Adjust subsetted property(ies)
-        removeSupplier(d->abstraction);
+        QDependency::removeSupplier(dynamic_cast<QNamedElement *>(d->abstraction));
 
         d->abstraction = abstraction;
 
         // Adjust subsetted property(ies)
         if (abstraction) {
-            addSupplier(abstraction);
+            QDependency::addSupplier(dynamic_cast<QNamedElement *>(abstraction));
         }
-        d->setOwner(abstraction);
+        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(abstraction));
 
         // Adjust opposite property
         if (abstraction)
@@ -142,7 +142,7 @@ void QComponentRealization::addRealizingClassifier(QClassifier *realizingClassif
         d->realizingClassifiers->insert(realizingClassifier);
 
         // Adjust subsetted property(ies)
-        addClient(realizingClassifier);
+        QDependency::addClient(dynamic_cast<QNamedElement *>(realizingClassifier));
     }
 }
 
@@ -155,8 +155,30 @@ void QComponentRealization::removeRealizingClassifier(QClassifier *realizingClas
         d->realizingClassifiers->remove(realizingClassifier);
 
         // Adjust subsetted property(ies)
-        removeClient(realizingClassifier);
+        QDependency::removeClient(dynamic_cast<QNamedElement *>(realizingClassifier));
     }
+}
+
+// Overriden methods for subsetted properties
+
+void QComponentRealization::addSupplier(QComponent *abstraction)
+{
+    setAbstraction(abstraction);
+}
+
+void QComponentRealization::removeSupplier(QComponent *abstraction)
+{
+    setAbstraction(0);
+}
+
+void QComponentRealization::addClient(QClassifier *realizingClassifier)
+{
+    addRealizingClassifier(realizingClassifier);
+}
+
+void QComponentRealization::removeClient(QClassifier *realizingClassifier)
+{
+    removeRealizingClassifier(realizingClassifier);
 }
 
 #include "moc_qcomponentrealization.cpp"

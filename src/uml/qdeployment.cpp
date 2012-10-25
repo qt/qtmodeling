@@ -109,14 +109,14 @@ void QDeployment::setLocation(QDeploymentTarget *location)
             d->location->removeDeployment(this);
 
         // Adjust subsetted property(ies)
-        removeClient(d->location);
+        QDependency::removeClient(dynamic_cast<QNamedElement *>(d->location));
 
         d->location = location;
 
         // Adjust subsetted property(ies)
-        d->setOwner(location);
+        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(location));
         if (location) {
-            addClient(location);
+            QDependency::addClient(dynamic_cast<QNamedElement *>(location));
         }
 
         // Adjust opposite property
@@ -145,7 +145,7 @@ void QDeployment::addConfiguration(QDeploymentSpecification *configuration)
         d->configurations->insert(configuration);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(configuration);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(configuration));
 
         // Adjust opposite property
         configuration->setDeployment(this);
@@ -161,7 +161,7 @@ void QDeployment::removeConfiguration(QDeploymentSpecification *configuration)
         d->configurations->remove(configuration);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(configuration);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(configuration));
 
         // Adjust opposite property
         configuration->setDeployment(0);
@@ -188,7 +188,7 @@ void QDeployment::addDeployedArtifact(QDeployedArtifact *deployedArtifact)
         d->deployedArtifacts->insert(deployedArtifact);
 
         // Adjust subsetted property(ies)
-        addSupplier(deployedArtifact);
+        QDependency::addSupplier(dynamic_cast<QNamedElement *>(deployedArtifact));
     }
 }
 
@@ -201,8 +201,30 @@ void QDeployment::removeDeployedArtifact(QDeployedArtifact *deployedArtifact)
         d->deployedArtifacts->remove(deployedArtifact);
 
         // Adjust subsetted property(ies)
-        removeSupplier(deployedArtifact);
+        QDependency::removeSupplier(dynamic_cast<QNamedElement *>(deployedArtifact));
     }
+}
+
+// Overriden methods for subsetted properties
+
+void QDeployment::addClient(QDeploymentTarget *location)
+{
+    setLocation(location);
+}
+
+void QDeployment::removeClient(QDeploymentTarget *location)
+{
+    setLocation(0);
+}
+
+void QDeployment::addSupplier(QDeployedArtifact *deployedArtifact)
+{
+    addDeployedArtifact(deployedArtifact);
+}
+
+void QDeployment::removeSupplier(QDeployedArtifact *deployedArtifact)
+{
+    removeDeployedArtifact(deployedArtifact);
 }
 
 #include "moc_qdeployment.cpp"

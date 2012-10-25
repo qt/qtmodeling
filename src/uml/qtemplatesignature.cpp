@@ -139,7 +139,7 @@ void QTemplateSignature::setTemplate_(QTemplateableElement *template_)
         d->template_ = template_;
 
         // Adjust subsetted property(ies)
-        d->setOwner(template_);
+        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(template_));
 
         // Adjust opposite property
         template_->setOwnedTemplateSignature(this);
@@ -166,8 +166,8 @@ void QTemplateSignature::addOwnedParameter(QTemplateParameter *ownedParameter)
         d->ownedParameters->append(ownedParameter);
 
         // Adjust subsetted property(ies)
-        addParameter(ownedParameter);
-        d->addOwnedElement(ownedParameter);
+        QTemplateSignature::addParameter(dynamic_cast<QTemplateParameter *>(ownedParameter));
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(ownedParameter));
 
         // Adjust opposite property
         ownedParameter->setSignature(this);
@@ -183,8 +183,8 @@ void QTemplateSignature::removeOwnedParameter(QTemplateParameter *ownedParameter
         d->ownedParameters->removeAll(ownedParameter);
 
         // Adjust subsetted property(ies)
-        removeParameter(ownedParameter);
-        d->removeOwnedElement(ownedParameter);
+        QTemplateSignature::removeParameter(dynamic_cast<QTemplateParameter *>(ownedParameter));
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(ownedParameter));
 
         // Adjust opposite property
         ownedParameter->setSignature(0);

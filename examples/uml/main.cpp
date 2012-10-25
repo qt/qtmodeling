@@ -4,6 +4,8 @@
 #include <QtUml/QEnumeration>
 #include <QtUml/QEnumerationLiteral>
 #include <QtUml/QClass>
+#include <QtUml/QComponent>
+#include <QtUml/QComponentRealization>
 
 #include <QtCore/QDebug>
 #include <QtCore/QScopedPointer>
@@ -45,7 +47,8 @@ int main ()
 
     model->addOwnedType(primitiveType);
     package->addOwnedType(enumeration);
-    model->addNestedPackage(package);
+    //model->addNestedPackage(package);
+    model->addPackagedElement(package);
     package->addOwnedType(class_);
 
     qDebug() << "model->ownedElements()->size():" << model->ownedElements()->size();
@@ -53,14 +56,17 @@ int main ()
     qDebug() << "model->ownedMembers()->size():" << model->ownedMembers()->size();
     qDebug() << "model->ownedRules()->size():" << model->ownedRules()->size();
     qDebug() << "model->packagedElements()->size():" << model->packagedElements()->size();
-
+    qDebug();
     qDebug() << "package->qualifiedName():" << package->qualifiedName();
+    qDebug() << "package->nestingPackage() ?" << ((package->nestingPackage() == 0) ? "Nao":"Sim");
     qDebug() << "class_->qualifiedName():" << class_->qualifiedName();
     qDebug() << "enumeration->qualifiedName():" << enumeration->qualifiedName();
     qDebug() << "primitiveType->qualifiedName():" << primitiveType->qualifiedName();
     qDebug() << "directionIn->qualifiedName():" << directionIn->qualifiedName();
 
-    model->removeNestedPackage(package);
+    //model->removeNestedPackage(package);
+    model->removePackagedElement(package);
+    model->addPackagedElement(package);
     qDebug() << "REMOVED";
 
     qDebug() << "model->ownedElements()->size():" << model->ownedElements()->size();
@@ -68,8 +74,9 @@ int main ()
     qDebug() << "model->ownedMembers()->size():" << model->ownedMembers()->size();
     qDebug() << "model->ownedRules()->size():" << model->ownedRules()->size();
     qDebug() << "model->packagedElements()->size():" << model->packagedElements()->size();
-
+    qDebug();
     qDebug() << "package->qualifiedName():" << package->qualifiedName();
+    qDebug() << "package->nestingPackage() ?" << ((package->nestingPackage() == 0) ? "Nao":"Sim");
     qDebug() << "class_->qualifiedName():" << class_->qualifiedName();
     qDebug() << "enumeration->qualifiedName():" << enumeration->qualifiedName();
     qDebug() << "primitiveType->qualifiedName():" << primitiveType->qualifiedName();
@@ -84,7 +91,26 @@ int main ()
     QScopedPointer<QTypeList> ownedTypes (model->ownedTypes());
     qDebug() << "model->ownedTypes()->size():" << ownedTypes->size();
 
-    checkProperties(model);
+    //checkProperties(model);
+
+    QtUml::QComponent *c1 = new QtUml::QComponent;
+    QtUml::QComponent *c2 = new QtUml::QComponent;
+    QtUml::QComponentRealization *cr = new QtUml::QComponentRealization;
+    cr->setAbstraction(c1);
+    qDebug();
+    qDebug() << "cr->suppliers()->size():" << cr->suppliers()->size();
+    qDebug() << "c1->realizations()->size():" << c1->realizations()->size();
+    qDebug() << "c2->realizations()->size():" << c2->realizations()->size();
+    cr->setAbstraction(c2);
+    qDebug();
+    qDebug() << "cr->suppliers()->size():" << cr->suppliers()->size();
+    qDebug() << "c1->realizations()->size():" << c1->realizations()->size();
+    qDebug() << "c2->realizations()->size():" << c2->realizations()->size();
+    cr->setAbstraction(0);
+    qDebug();
+    qDebug() << "cr->suppliers()->size():" << cr->suppliers()->size();
+    qDebug() << "c1->realizations()->size():" << c1->realizations()->size();
+    qDebug() << "c2->realizations()->size():" << c2->realizations()->size();
 
     delete model; // That will delete all owned elements
 

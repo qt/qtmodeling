@@ -113,7 +113,7 @@ void QInteraction::addAction(QAction *action)
         d->actions->insert(action);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(action);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(action));
     }
 }
 
@@ -126,7 +126,7 @@ void QInteraction::removeAction(QAction *action)
         d->actions->remove(action);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(action);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(action));
     }
 }
 
@@ -150,7 +150,7 @@ void QInteraction::addMessage(QMessage *message)
         d->messages->insert(message);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(message);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(message));
 
         // Adjust opposite property
         message->setInteraction(this);
@@ -166,7 +166,7 @@ void QInteraction::removeMessage(QMessage *message)
         d->messages->remove(message);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(message);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(message));
 
         // Adjust opposite property
         message->setInteraction(0);
@@ -193,7 +193,7 @@ void QInteraction::addFormalGate(QGate *formalGate)
         d->formalGates->insert(formalGate);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(formalGate);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(formalGate));
     }
 }
 
@@ -206,7 +206,7 @@ void QInteraction::removeFormalGate(QGate *formalGate)
         d->formalGates->remove(formalGate);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(formalGate);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(formalGate));
     }
 }
 
@@ -230,7 +230,7 @@ void QInteraction::addFragment(QInteractionFragment *fragment)
         d->fragments->append(fragment);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(fragment);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(fragment));
 
         // Adjust opposite property
         fragment->setEnclosingInteraction(this);
@@ -246,7 +246,7 @@ void QInteraction::removeFragment(QInteractionFragment *fragment)
         d->fragments->removeAll(fragment);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(fragment);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(fragment));
 
         // Adjust opposite property
         fragment->setEnclosingInteraction(0);
@@ -273,7 +273,7 @@ void QInteraction::addLifeline(QLifeline *lifeline)
         d->lifelines->insert(lifeline);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(lifeline);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(lifeline));
 
         // Adjust opposite property
         lifeline->setInteraction(this);
@@ -289,7 +289,7 @@ void QInteraction::removeLifeline(QLifeline *lifeline)
         d->lifelines->remove(lifeline);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(lifeline);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(lifeline));
 
         // Adjust opposite property
         lifeline->setInteraction(0);

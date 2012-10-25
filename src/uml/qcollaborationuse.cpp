@@ -125,7 +125,7 @@ void QCollaborationUse::addRoleBinding(QDependency *roleBinding)
         d->roleBindings->insert(roleBinding);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(roleBinding);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(roleBinding));
     }
 }
 
@@ -138,7 +138,7 @@ void QCollaborationUse::removeRoleBinding(QDependency *roleBinding)
         d->roleBindings->remove(roleBinding);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(roleBinding);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(roleBinding));
     }
 }
 

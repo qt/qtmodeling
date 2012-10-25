@@ -109,13 +109,13 @@ void QRegion::setExtendedRegion(QRegion *extendedRegion)
     QTUML_D(QRegion);
     if (d->extendedRegion != extendedRegion) {
         // Adjust subsetted property(ies)
-        d->removeRedefinedElement(d->extendedRegion);
+        d->QRedefinableElementPrivate::removeRedefinedElement(dynamic_cast<QRedefinableElement *>(d->extendedRegion));
 
         d->extendedRegion = extendedRegion;
 
         // Adjust subsetted property(ies)
         if (extendedRegion) {
-            d->addRedefinedElement(extendedRegion);
+            d->QRedefinableElementPrivate::addRedefinedElement(dynamic_cast<QRedefinableElement *>(extendedRegion));
         }
     }
 }
@@ -140,7 +140,7 @@ void QRegion::addTransition(QTransition *transition)
         d->transitions->insert(transition);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(transition);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(transition));
 
         // Adjust opposite property
         transition->setContainer(this);
@@ -156,7 +156,7 @@ void QRegion::removeTransition(QTransition *transition)
         d->transitions->remove(transition);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(transition);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(transition));
 
         // Adjust opposite property
         transition->setContainer(0);
@@ -187,7 +187,7 @@ void QRegion::setStateMachine(QStateMachine *stateMachine)
         d->stateMachine = stateMachine;
 
         // Adjust subsetted property(ies)
-        d->setNamespace_(stateMachine);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(stateMachine));
 
         // Adjust opposite property
         if (stateMachine)
@@ -219,7 +219,7 @@ void QRegion::setState(QState *state)
         d->state = state;
 
         // Adjust subsetted property(ies)
-        d->setNamespace_(state);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(state));
 
         // Adjust opposite property
         if (state)
@@ -260,7 +260,7 @@ void QRegion::addSubvertex(QVertex *subvertex)
         d->subvertices->insert(subvertex);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(subvertex);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(subvertex));
 
         // Adjust opposite property
         subvertex->setContainer(this);
@@ -276,7 +276,7 @@ void QRegion::removeSubvertex(QVertex *subvertex)
         d->subvertices->remove(subvertex);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(subvertex);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(subvertex));
 
         // Adjust opposite property
         subvertex->setContainer(0);

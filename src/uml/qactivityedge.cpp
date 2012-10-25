@@ -166,7 +166,7 @@ void QActivityEdge::addRedefinedEdge(QActivityEdge *redefinedEdge)
         d->redefinedEdges->insert(redefinedEdge);
 
         // Adjust subsetted property(ies)
-        d->addRedefinedElement(redefinedEdge);
+        d->QRedefinableElementPrivate::addRedefinedElement(dynamic_cast<QRedefinableElement *>(redefinedEdge));
     }
 }
 
@@ -179,7 +179,7 @@ void QActivityEdge::removeRedefinedEdge(QActivityEdge *redefinedEdge)
         d->redefinedEdges->remove(redefinedEdge);
 
         // Adjust subsetted property(ies)
-        d->removeRedefinedElement(redefinedEdge);
+        d->QRedefinableElementPrivate::removeRedefinedElement(dynamic_cast<QRedefinableElement *>(redefinedEdge));
     }
 }
 
@@ -212,13 +212,13 @@ void QActivityEdge::setGuard(QValueSpecification *guard)
     QTUML_D(QActivityEdge);
     if (d->guard != guard) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->guard);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->guard));
 
         d->guard = guard;
 
         // Adjust subsetted property(ies)
         if (guard) {
-            d->addOwnedElement(guard);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(guard));
         }
     }
 }
@@ -243,7 +243,7 @@ void QActivityEdge::addInPartition(QActivityPartition *inPartition)
         d->inPartition->insert(inPartition);
 
         // Adjust subsetted property(ies)
-        d->addInGroup(inPartition);
+        d->QActivityEdgePrivate::addInGroup(dynamic_cast<QActivityGroup *>(inPartition));
 
         // Adjust opposite property
         inPartition->addEdge(this);
@@ -259,7 +259,7 @@ void QActivityEdge::removeInPartition(QActivityPartition *inPartition)
         d->inPartition->remove(inPartition);
 
         // Adjust subsetted property(ies)
-        d->removeInGroup(inPartition);
+        d->QActivityEdgePrivate::removeInGroup(dynamic_cast<QActivityGroup *>(inPartition));
 
         // Adjust opposite property
         if (inPartition)
@@ -291,7 +291,7 @@ void QActivityEdge::setActivity(QActivity *activity)
         d->activity = activity;
 
         // Adjust subsetted property(ies)
-        d->setOwner(activity);
+        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(activity));
 
         // Adjust opposite property
         if (activity)
@@ -346,13 +346,13 @@ void QActivityEdge::setWeight(QValueSpecification *weight)
     QTUML_D(QActivityEdge);
     if (d->weight != weight) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->weight);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->weight));
 
         d->weight = weight;
 
         // Adjust subsetted property(ies)
         if (weight) {
-            d->addOwnedElement(weight);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(weight));
         }
     }
 }
@@ -379,15 +379,15 @@ void QActivityEdge::setInStructuredNode(QStructuredActivityNode *inStructuredNod
             d->inStructuredNode->removeEdge(this);
 
         // Adjust subsetted property(ies)
-        d->removeInGroup(d->inStructuredNode);
+        d->QActivityEdgePrivate::removeInGroup(dynamic_cast<QActivityGroup *>(d->inStructuredNode));
 
         d->inStructuredNode = inStructuredNode;
 
         // Adjust subsetted property(ies)
         if (inStructuredNode) {
-            d->addInGroup(inStructuredNode);
+            d->QActivityEdgePrivate::addInGroup(dynamic_cast<QActivityGroup *>(inStructuredNode));
         }
-        d->setOwner(inStructuredNode);
+        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(inStructuredNode));
 
         // Adjust opposite property
         if (inStructuredNode)

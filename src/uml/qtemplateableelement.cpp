@@ -95,13 +95,13 @@ void QTemplateableElement::setOwnedTemplateSignature(QTemplateSignature *ownedTe
         // Adjust opposite property
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->ownedTemplateSignature);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->ownedTemplateSignature));
 
         d->ownedTemplateSignature = ownedTemplateSignature;
 
         // Adjust subsetted property(ies)
         if (ownedTemplateSignature) {
-            d->addOwnedElement(ownedTemplateSignature);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(ownedTemplateSignature));
         }
 
         // Adjust opposite property
@@ -129,7 +129,7 @@ void QTemplateableElement::addTemplateBinding(QTemplateBinding *templateBinding)
         d->templateBindings->insert(templateBinding);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(templateBinding);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(templateBinding));
 
         // Adjust opposite property
         templateBinding->setBoundElement(this);
@@ -145,7 +145,7 @@ void QTemplateableElement::removeTemplateBinding(QTemplateBinding *templateBindi
         d->templateBindings->remove(templateBinding);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(templateBinding);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(templateBinding));
 
         // Adjust opposite property
         templateBinding->setBoundElement(0);

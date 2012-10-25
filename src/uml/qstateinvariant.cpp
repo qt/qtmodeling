@@ -101,13 +101,13 @@ void QStateInvariant::setInvariant(QConstraint *invariant)
     QTUML_D(QStateInvariant);
     if (d->invariant != invariant) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->invariant);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->invariant));
 
         d->invariant = invariant;
 
         // Adjust subsetted property(ies)
         if (invariant) {
-            d->addOwnedElement(invariant);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(invariant));
         }
     }
 }

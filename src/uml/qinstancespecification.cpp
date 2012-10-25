@@ -136,13 +136,13 @@ void QInstanceSpecification::setSpecification(QValueSpecification *specification
     QTUML_D(QInstanceSpecification);
     if (d->specification != specification) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->specification);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->specification));
 
         d->specification = specification;
 
         // Adjust subsetted property(ies)
         if (specification) {
-            d->addOwnedElement(specification);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(specification));
         }
     }
 }
@@ -167,7 +167,7 @@ void QInstanceSpecification::addSlot_(QSlot *slot_)
         d->slots_->insert(slot_);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(slot_);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(slot_));
 
         // Adjust opposite property
         slot_->setOwningInstance(this);
@@ -183,7 +183,7 @@ void QInstanceSpecification::removeSlot_(QSlot *slot_)
         d->slots_->remove(slot_);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(slot_);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(slot_));
 
         // Adjust opposite property
         slot_->setOwningInstance(0);

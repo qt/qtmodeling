@@ -74,6 +74,12 @@ public:
     QClassifier *substitutingClassifier() const;
     void setSubstitutingClassifier(QClassifier *substitutingClassifier);
 
+    // Overriden methods for subsetted properties
+    void addSupplier(QClassifier *contract);
+    void removeSupplier(QClassifier *contract);
+    void addClient(QClassifier *substitutingClassifier);
+    void removeClient(QClassifier *substitutingClassifier);
+
 protected:
     explicit QSubstitution(bool createPimpl, QObject *parent = 0);
 };

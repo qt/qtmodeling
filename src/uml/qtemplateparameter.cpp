@@ -153,14 +153,14 @@ void QTemplateParameter::setOwnedParameteredElement(QParameterableElement *owned
         // Adjust opposite property
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->ownedParameteredElement);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->ownedParameteredElement));
 
         d->ownedParameteredElement = ownedParameteredElement;
 
         // Adjust subsetted property(ies)
-        setParameteredElement(ownedParameteredElement);
+        QTemplateParameter::setParameteredElement(dynamic_cast<QParameterableElement *>(ownedParameteredElement));
         if (ownedParameteredElement) {
-            d->addOwnedElement(ownedParameteredElement);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(ownedParameteredElement));
         }
 
         // Adjust opposite property
@@ -186,15 +186,15 @@ void QTemplateParameter::setOwnedDefault(QParameterableElement *ownedDefault)
     QTUML_D(QTemplateParameter);
     if (d->ownedDefault != ownedDefault) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->ownedDefault);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->ownedDefault));
 
         d->ownedDefault = ownedDefault;
 
         // Adjust subsetted property(ies)
         if (ownedDefault) {
-            d->addOwnedElement(ownedDefault);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(ownedDefault));
         }
-        setDefault_(ownedDefault);
+        QTemplateParameter::setDefault_(dynamic_cast<QParameterableElement *>(ownedDefault));
     }
 }
 
@@ -222,7 +222,7 @@ void QTemplateParameter::setSignature(QTemplateSignature *signature)
         d->signature = signature;
 
         // Adjust subsetted property(ies)
-        d->setOwner(signature);
+        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(signature));
 
         // Adjust opposite property
         if (signature)

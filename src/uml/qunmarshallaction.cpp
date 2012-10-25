@@ -104,13 +104,13 @@ void QUnmarshallAction::setObject(QInputPin *object)
     QTUML_D(QUnmarshallAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
-        d->removeInput(d->object);
+        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->object));
 
         d->object = object;
 
         // Adjust subsetted property(ies)
         if (object) {
-            d->addInput(object);
+            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(object));
         }
     }
 }
@@ -135,7 +135,7 @@ void QUnmarshallAction::addResult(QOutputPin *result)
         d->results->insert(result);
 
         // Adjust subsetted property(ies)
-        d->addOutput(result);
+        d->QActionPrivate::addOutput(dynamic_cast<QOutputPin *>(result));
     }
 }
 
@@ -148,7 +148,7 @@ void QUnmarshallAction::removeResult(QOutputPin *result)
         d->results->remove(result);
 
         // Adjust subsetted property(ies)
-        d->removeOutput(result);
+        d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(result));
     }
 }
 

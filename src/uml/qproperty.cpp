@@ -313,20 +313,20 @@ void QProperty::setOwningAssociation(QAssociation *owningAssociation)
             d->owningAssociation->removeOwnedEnd(this);
 
         // Adjust subsetted property(ies)
-        d->removeFeaturingClassifier(d->owningAssociation);
-        d->removeRedefinitionContext(d->owningAssociation);
+        d->QFeaturePrivate::removeFeaturingClassifier(dynamic_cast<QClassifier *>(d->owningAssociation));
+        d->QRedefinableElementPrivate::removeRedefinitionContext(dynamic_cast<QClassifier *>(d->owningAssociation));
 
         d->owningAssociation = owningAssociation;
 
         // Adjust subsetted property(ies)
         if (owningAssociation) {
-            d->addFeaturingClassifier(owningAssociation);
+            d->QFeaturePrivate::addFeaturingClassifier(dynamic_cast<QClassifier *>(owningAssociation));
         }
         if (owningAssociation) {
-            d->addRedefinitionContext(owningAssociation);
+            d->QRedefinableElementPrivate::addRedefinitionContext(dynamic_cast<QClassifier *>(owningAssociation));
         }
-        d->setNamespace_(owningAssociation);
-        setAssociation(owningAssociation);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(owningAssociation));
+        QProperty::setAssociation(dynamic_cast<QAssociation *>(owningAssociation));
 
         // Adjust opposite property
         if (owningAssociation)
@@ -354,7 +354,7 @@ void QProperty::addQualifier(QProperty *qualifier)
         d->qualifiers->append(qualifier);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(qualifier);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(qualifier));
 
         // Adjust opposite property
         qualifier->setAssociationEnd(this);
@@ -370,7 +370,7 @@ void QProperty::removeQualifier(QProperty *qualifier)
         d->qualifiers->removeAll(qualifier);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(qualifier);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(qualifier));
 
         // Adjust opposite property
         qualifier->setAssociationEnd(0);
@@ -395,13 +395,13 @@ void QProperty::setDefaultValue(QValueSpecification *defaultValue)
     QTUML_D(QProperty);
     if (d->defaultValue != defaultValue) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->defaultValue);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->defaultValue));
 
         d->defaultValue = defaultValue;
 
         // Adjust subsetted property(ies)
         if (defaultValue) {
-            d->addOwnedElement(defaultValue);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(defaultValue));
         }
     }
 }
@@ -428,18 +428,18 @@ void QProperty::setClass_(QClass *class_)
             d->class_->removeOwnedAttribute(this);
 
         // Adjust subsetted property(ies)
-        d->removeFeaturingClassifier(d->class_);
-        d->removeRedefinitionContext(d->class_);
+        d->QFeaturePrivate::removeFeaturingClassifier(dynamic_cast<QClassifier *>(d->class_));
+        d->QRedefinableElementPrivate::removeRedefinitionContext(dynamic_cast<QClassifier *>(d->class_));
 
         d->class_ = class_;
 
         // Adjust subsetted property(ies)
-        d->setNamespace_(class_);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(class_));
         if (class_) {
-            d->addFeaturingClassifier(class_);
+            d->QFeaturePrivate::addFeaturingClassifier(dynamic_cast<QClassifier *>(class_));
         }
         if (class_) {
-            d->addRedefinitionContext(class_);
+            d->QRedefinableElementPrivate::addRedefinitionContext(dynamic_cast<QClassifier *>(class_));
         }
 
         // Adjust opposite property
@@ -497,7 +497,7 @@ void QProperty::setAssociationEnd(QProperty *associationEnd)
         d->associationEnd = associationEnd;
 
         // Adjust subsetted property(ies)
-        d->setOwner(associationEnd);
+        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(associationEnd));
 
         // Adjust opposite property
         if (associationEnd)
@@ -527,18 +527,18 @@ void QProperty::setDatatype(QDataType *datatype)
             d->datatype->removeOwnedAttribute(this);
 
         // Adjust subsetted property(ies)
-        d->removeFeaturingClassifier(d->datatype);
-        d->removeRedefinitionContext(d->datatype);
+        d->QFeaturePrivate::removeFeaturingClassifier(dynamic_cast<QClassifier *>(d->datatype));
+        d->QRedefinableElementPrivate::removeRedefinitionContext(dynamic_cast<QClassifier *>(d->datatype));
 
         d->datatype = datatype;
 
         // Adjust subsetted property(ies)
-        d->setNamespace_(datatype);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(datatype));
         if (datatype) {
-            d->addFeaturingClassifier(datatype);
+            d->QFeaturePrivate::addFeaturingClassifier(dynamic_cast<QClassifier *>(datatype));
         }
         if (datatype) {
-            d->addRedefinitionContext(datatype);
+            d->QRedefinableElementPrivate::addRedefinitionContext(dynamic_cast<QClassifier *>(datatype));
         }
 
         // Adjust opposite property
@@ -567,7 +567,7 @@ void QProperty::addRedefinedProperty(QProperty *redefinedProperty)
         d->redefinedProperties->insert(redefinedProperty);
 
         // Adjust subsetted property(ies)
-        d->addRedefinedElement(redefinedProperty);
+        d->QRedefinableElementPrivate::addRedefinedElement(dynamic_cast<QRedefinableElement *>(redefinedProperty));
     }
 }
 
@@ -580,7 +580,7 @@ void QProperty::removeRedefinedProperty(QProperty *redefinedProperty)
         d->redefinedProperties->remove(redefinedProperty);
 
         // Adjust subsetted property(ies)
-        d->removeRedefinedElement(redefinedProperty);
+        d->QRedefinableElementPrivate::removeRedefinedElement(dynamic_cast<QRedefinableElement *>(redefinedProperty));
     }
 }
 
@@ -635,18 +635,18 @@ void QProperty::setInterface(QInterface *interface)
             d->interface->removeOwnedAttribute(this);
 
         // Adjust subsetted property(ies)
-        d->removeFeaturingClassifier(d->interface);
-        d->removeRedefinitionContext(d->interface);
+        d->QFeaturePrivate::removeFeaturingClassifier(dynamic_cast<QClassifier *>(d->interface));
+        d->QRedefinableElementPrivate::removeRedefinitionContext(dynamic_cast<QClassifier *>(d->interface));
 
         d->interface = interface;
 
         // Adjust subsetted property(ies)
-        d->setNamespace_(interface);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(interface));
         if (interface) {
-            d->addFeaturingClassifier(interface);
+            d->QFeaturePrivate::addFeaturingClassifier(dynamic_cast<QClassifier *>(interface));
         }
         if (interface) {
-            d->addRedefinitionContext(interface);
+            d->QRedefinableElementPrivate::addRedefinitionContext(dynamic_cast<QClassifier *>(interface));
         }
 
         // Adjust opposite property

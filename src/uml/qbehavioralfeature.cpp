@@ -177,7 +177,7 @@ void QBehavioralFeature::addOwnedParameter(QParameter *ownedParameter)
         d->ownedParameters->append(ownedParameter);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(ownedParameter);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(ownedParameter));
     }
 }
 
@@ -190,7 +190,7 @@ void QBehavioralFeature::removeOwnedParameter(QParameter *ownedParameter)
         d->ownedParameters->removeAll(ownedParameter);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(ownedParameter);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(ownedParameter));
     }
 }
 
@@ -214,7 +214,7 @@ void QBehavioralFeature::addOwnedParameterSet(QParameterSet *ownedParameterSet)
         d->ownedParameterSets->insert(ownedParameterSet);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(ownedParameterSet);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(ownedParameterSet));
     }
 }
 
@@ -227,7 +227,7 @@ void QBehavioralFeature::removeOwnedParameterSet(QParameterSet *ownedParameterSe
         d->ownedParameterSets->remove(ownedParameterSet);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(ownedParameterSet);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(ownedParameterSet));
     }
 }
 

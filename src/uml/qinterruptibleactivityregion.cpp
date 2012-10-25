@@ -142,7 +142,7 @@ void QInterruptibleActivityRegion::addNode(QActivityNode *node)
         d->nodes->insert(node);
 
         // Adjust subsetted property(ies)
-        d->addContainedNode(node);
+        d->QActivityGroupPrivate::addContainedNode(dynamic_cast<QActivityNode *>(node));
 
         // Adjust opposite property
         node->addInInterruptibleRegion(this);
@@ -158,7 +158,7 @@ void QInterruptibleActivityRegion::removeNode(QActivityNode *node)
         d->nodes->remove(node);
 
         // Adjust subsetted property(ies)
-        d->removeContainedNode(node);
+        d->QActivityGroupPrivate::removeContainedNode(dynamic_cast<QActivityNode *>(node));
 
         // Adjust opposite property
         if (node)

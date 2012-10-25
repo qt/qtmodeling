@@ -129,14 +129,14 @@ void QGeneralization::setSpecific(QClassifier *specific)
             d->specific->removeGeneralization(this);
 
         // Adjust subsetted property(ies)
-        d->removeSource(d->specific);
+        d->QDirectedRelationshipPrivate::removeSource(dynamic_cast<QElement *>(d->specific));
 
         d->specific = specific;
 
         // Adjust subsetted property(ies)
-        d->setOwner(specific);
+        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(specific));
         if (specific) {
-            d->addSource(specific);
+            d->QDirectedRelationshipPrivate::addSource(dynamic_cast<QElement *>(specific));
         }
 
         // Adjust opposite property
@@ -201,13 +201,13 @@ void QGeneralization::setGeneral(QClassifier *general)
     QTUML_D(QGeneralization);
     if (d->general != general) {
         // Adjust subsetted property(ies)
-        d->removeTarget(d->general);
+        d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(d->general));
 
         d->general = general;
 
         // Adjust subsetted property(ies)
         if (general) {
-            d->addTarget(general);
+            d->QDirectedRelationshipPrivate::addTarget(dynamic_cast<QElement *>(general));
         }
     }
 }

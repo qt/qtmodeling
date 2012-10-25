@@ -135,8 +135,10 @@ void QPackage::addOwnedType(QType *ownedType)
 
     QTUML_D(QPackage);
     if (!d->packagedElements->contains(ownedType)) {
+        // <derived-code>
+
         // Adjust subsetted property(ies)
-        addPackagedElement(ownedType);
+        QPackage::addPackagedElement(dynamic_cast<QPackageableElement *>(ownedType));
 
         // Adjust opposite property
         ownedType->setPackage(this);
@@ -149,8 +151,10 @@ void QPackage::removeOwnedType(QType *ownedType)
 
     QTUML_D(QPackage);
     if (d->packagedElements->contains(ownedType)) {
+        // <derived-code>
+
         // Adjust subsetted property(ies)
-        removePackagedElement(ownedType);
+        QPackage::removePackagedElement(dynamic_cast<QPackageableElement *>(ownedType));
 
         // Adjust opposite property
         ownedType->setPackage(0);
@@ -177,7 +181,7 @@ void QPackage::addPackagedElement(QPackageableElement *packagedElement)
         d->packagedElements->insert(packagedElement);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(packagedElement);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(packagedElement));
     }
 }
 
@@ -190,7 +194,7 @@ void QPackage::removePackagedElement(QPackageableElement *packagedElement)
         d->packagedElements->remove(packagedElement);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(packagedElement);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(packagedElement));
     }
 }
 
@@ -218,7 +222,7 @@ void QPackage::setNestingPackage(QPackage *nestingPackage)
         d->nestingPackage = nestingPackage;
 
         // Adjust subsetted property(ies)
-        d->setNamespace_(nestingPackage);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(nestingPackage));
 
         // Adjust opposite property
         if (nestingPackage)
@@ -246,7 +250,7 @@ void QPackage::addProfileApplication(QProfileApplication *profileApplication)
         d->profileApplications->insert(profileApplication);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(profileApplication);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(profileApplication));
 
         // Adjust opposite property
         profileApplication->setApplyingPackage(this);
@@ -262,7 +266,7 @@ void QPackage::removeProfileApplication(QProfileApplication *profileApplication)
         d->profileApplications->remove(profileApplication);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(profileApplication);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(profileApplication));
 
         // Adjust opposite property
         profileApplication->setApplyingPackage(0);
@@ -305,7 +309,7 @@ void QPackage::addPackageMerge(QPackageMerge *packageMerge)
         d->packageMerges->insert(packageMerge);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(packageMerge);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(packageMerge));
 
         // Adjust opposite property
         packageMerge->setReceivingPackage(this);
@@ -321,7 +325,7 @@ void QPackage::removePackageMerge(QPackageMerge *packageMerge)
         d->packageMerges->remove(packageMerge);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(packageMerge);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(packageMerge));
 
         // Adjust opposite property
         packageMerge->setReceivingPackage(0);
@@ -351,7 +355,7 @@ void QPackage::addNestedPackage(QPackage *nestedPackage)
     QTUML_D(QPackage);
     if (!d->packagedElements->contains(nestedPackage)) {
         // Adjust subsetted property(ies)
-        addPackagedElement(nestedPackage);
+        QPackage::addPackagedElement(dynamic_cast<QPackageableElement *>(nestedPackage));
 
         // Adjust opposite property
         nestedPackage->setNestingPackage(this);
@@ -365,7 +369,7 @@ void QPackage::removeNestedPackage(QPackage *nestedPackage)
     QTUML_D(QPackage);
     if (d->packagedElements->contains(nestedPackage)) {
         // Adjust subsetted property(ies)
-        removePackagedElement(nestedPackage);
+        QPackage::removePackagedElement(dynamic_cast<QPackageableElement *>(nestedPackage));
 
         // Adjust opposite property
         nestedPackage->setNestingPackage(0);
@@ -410,6 +414,28 @@ bool QPackage::mustBeOwned() const
 const QSet<QPackageableElement *> *QPackage::visibleMembers() const
 {
     qWarning("QPackage::visibleMembers: operation to be implemented");
+}
+
+// Overriden methods for subsetted properties
+
+void QPackage::addPackagedElement(QType *ownedType)
+{
+    addOwnedType(ownedType);
+}
+
+void QPackage::removePackagedElement(QType *ownedType)
+{
+    removeOwnedType(ownedType);
+}
+
+void QPackage::addPackagedElement(QPackage *nestedPackage)
+{
+    addNestedPackage(nestedPackage);
+}
+
+void QPackage::removePackagedElement(QPackage *nestedPackage)
+{
+    removeNestedPackage(nestedPackage);
 }
 
 #include "moc_qpackage.cpp"

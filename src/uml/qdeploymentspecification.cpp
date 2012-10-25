@@ -147,7 +147,7 @@ void QDeploymentSpecification::setDeployment(QDeployment *deployment)
         d->deployment = deployment;
 
         // Adjust subsetted property(ies)
-        d->setOwner(deployment);
+        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(deployment));
 
         // Adjust opposite property
         if (deployment)

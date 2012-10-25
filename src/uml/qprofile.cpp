@@ -105,7 +105,7 @@ void QProfile::addMetamodelReference(QPackageImport *metamodelReference)
         d->metamodelReferences->insert(metamodelReference);
 
         // Adjust subsetted property(ies)
-        addPackageImport(metamodelReference);
+        QNamespace::addPackageImport(dynamic_cast<QPackageImport *>(metamodelReference));
     }
 }
 
@@ -118,7 +118,7 @@ void QProfile::removeMetamodelReference(QPackageImport *metamodelReference)
         d->metamodelReferences->remove(metamodelReference);
 
         // Adjust subsetted property(ies)
-        removePackageImport(metamodelReference);
+        QNamespace::removePackageImport(dynamic_cast<QPackageImport *>(metamodelReference));
     }
 }
 
@@ -142,7 +142,7 @@ void QProfile::addMetaclassReference(QElementImport *metaclassReference)
         d->metaclassReferences->insert(metaclassReference);
 
         // Adjust subsetted property(ies)
-        addElementImport(metaclassReference);
+        QNamespace::addElementImport(dynamic_cast<QElementImport *>(metaclassReference));
     }
 }
 
@@ -155,7 +155,7 @@ void QProfile::removeMetaclassReference(QElementImport *metaclassReference)
         d->metaclassReferences->remove(metaclassReference);
 
         // Adjust subsetted property(ies)
-        removeElementImport(metaclassReference);
+        QNamespace::removeElementImport(dynamic_cast<QElementImport *>(metaclassReference));
     }
 }
 

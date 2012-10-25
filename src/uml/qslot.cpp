@@ -106,7 +106,7 @@ void QSlot::addValue(QValueSpecification *value)
         d->values->append(value);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(value);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(value));
     }
 }
 
@@ -119,7 +119,7 @@ void QSlot::removeValue(QValueSpecification *value)
         d->values->removeAll(value);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(value);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(value));
     }
 }
 
@@ -168,7 +168,7 @@ void QSlot::setOwningInstance(QInstanceSpecification *owningInstance)
         d->owningInstance = owningInstance;
 
         // Adjust subsetted property(ies)
-        d->setOwner(owningInstance);
+        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(owningInstance));
 
         // Adjust opposite property
         if (owningInstance)

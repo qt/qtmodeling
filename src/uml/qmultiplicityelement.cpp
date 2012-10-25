@@ -184,13 +184,13 @@ void QMultiplicityElement::setUpperValue(QValueSpecification *upperValue)
     QTUML_D(QMultiplicityElement);
     if (d->upperValue != upperValue) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->upperValue);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->upperValue));
 
         d->upperValue = upperValue;
 
         // Adjust subsetted property(ies)
         if (upperValue) {
-            d->addOwnedElement(upperValue);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(upperValue));
         }
     }
 }
@@ -213,13 +213,13 @@ void QMultiplicityElement::setLowerValue(QValueSpecification *lowerValue)
     QTUML_D(QMultiplicityElement);
     if (d->lowerValue != lowerValue) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->lowerValue);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->lowerValue));
 
         d->lowerValue = lowerValue;
 
         // Adjust subsetted property(ies)
         if (lowerValue) {
-            d->addOwnedElement(lowerValue);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(lowerValue));
         }
     }
 }

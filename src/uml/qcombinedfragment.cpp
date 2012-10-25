@@ -127,7 +127,7 @@ void QCombinedFragment::addCfragmentGate(QGate *cfragmentGate)
         d->cfragmentGates->insert(cfragmentGate);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(cfragmentGate);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(cfragmentGate));
     }
 }
 
@@ -140,7 +140,7 @@ void QCombinedFragment::removeCfragmentGate(QGate *cfragmentGate)
         d->cfragmentGates->remove(cfragmentGate);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(cfragmentGate);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(cfragmentGate));
     }
 }
 
@@ -164,7 +164,7 @@ void QCombinedFragment::addOperand(QInteractionOperand *operand)
         d->operands->append(operand);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(operand);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(operand));
     }
 }
 
@@ -177,7 +177,7 @@ void QCombinedFragment::removeOperand(QInteractionOperand *operand)
         d->operands->removeAll(operand);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(operand);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(operand));
     }
 }
 

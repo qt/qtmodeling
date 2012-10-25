@@ -114,7 +114,7 @@ void QCallAction::addResult(QOutputPin *result)
         d->results->append(result);
 
         // Adjust subsetted property(ies)
-        d->addOutput(result);
+        d->QActionPrivate::addOutput(dynamic_cast<QOutputPin *>(result));
     }
 }
 
@@ -127,7 +127,7 @@ void QCallAction::removeResult(QOutputPin *result)
         d->results->removeAll(result);
 
         // Adjust subsetted property(ies)
-        d->removeOutput(result);
+        d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(result));
     }
 }
 

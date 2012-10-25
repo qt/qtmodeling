@@ -103,7 +103,7 @@ void QInteractionOperand::addFragment(QInteractionFragment *fragment)
         d->fragments->append(fragment);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(fragment);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(fragment));
 
         // Adjust opposite property
         fragment->setEnclosingOperand(this);
@@ -119,7 +119,7 @@ void QInteractionOperand::removeFragment(QInteractionFragment *fragment)
         d->fragments->removeAll(fragment);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(fragment);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(fragment));
 
         // Adjust opposite property
         fragment->setEnclosingOperand(0);
@@ -144,13 +144,13 @@ void QInteractionOperand::setGuard(QInteractionConstraint *guard)
     QTUML_D(QInteractionOperand);
     if (d->guard != guard) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->guard);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->guard));
 
         d->guard = guard;
 
         // Adjust subsetted property(ies)
         if (guard) {
-            d->addOwnedElement(guard);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(guard));
         }
     }
 }

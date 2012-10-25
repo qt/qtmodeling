@@ -144,13 +144,13 @@ void QElementImport::setImportedElement(QPackageableElement *importedElement)
     QTUML_D(QElementImport);
     if (d->importedElement != importedElement) {
         // Adjust subsetted property(ies)
-        d->removeTarget(d->importedElement);
+        d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(d->importedElement));
 
         d->importedElement = importedElement;
 
         // Adjust subsetted property(ies)
         if (importedElement) {
-            d->addTarget(importedElement);
+            d->QDirectedRelationshipPrivate::addTarget(dynamic_cast<QElement *>(importedElement));
         }
     }
 }
@@ -177,14 +177,14 @@ void QElementImport::setImportingNamespace(QNamespace *importingNamespace)
             d->importingNamespace->removeElementImport(this);
 
         // Adjust subsetted property(ies)
-        d->removeSource(d->importingNamespace);
+        d->QDirectedRelationshipPrivate::removeSource(dynamic_cast<QElement *>(d->importingNamespace));
 
         d->importingNamespace = importingNamespace;
 
         // Adjust subsetted property(ies)
-        d->setOwner(importingNamespace);
+        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(importingNamespace));
         if (importingNamespace) {
-            d->addSource(importingNamespace);
+            d->QDirectedRelationshipPrivate::addSource(dynamic_cast<QElement *>(importingNamespace));
         }
 
         // Adjust opposite property

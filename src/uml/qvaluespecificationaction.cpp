@@ -101,13 +101,13 @@ void QValueSpecificationAction::setValue(QValueSpecification *value)
     QTUML_D(QValueSpecificationAction);
     if (d->value != value) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->value);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->value));
 
         d->value = value;
 
         // Adjust subsetted property(ies)
         if (value) {
-            d->addOwnedElement(value);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(value));
         }
     }
 }
@@ -130,13 +130,13 @@ void QValueSpecificationAction::setResult(QOutputPin *result)
     QTUML_D(QValueSpecificationAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        d->removeOutput(d->result);
+        d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            d->addOutput(result);
+            d->QActionPrivate::addOutput(dynamic_cast<QOutputPin *>(result));
         }
     }
 }

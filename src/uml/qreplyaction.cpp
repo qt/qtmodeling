@@ -124,13 +124,13 @@ void QReplyAction::setReturnInformation(QInputPin *returnInformation)
     QTUML_D(QReplyAction);
     if (d->returnInformation != returnInformation) {
         // Adjust subsetted property(ies)
-        d->removeInput(d->returnInformation);
+        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->returnInformation));
 
         d->returnInformation = returnInformation;
 
         // Adjust subsetted property(ies)
         if (returnInformation) {
-            d->addInput(returnInformation);
+            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(returnInformation));
         }
     }
 }
@@ -155,7 +155,7 @@ void QReplyAction::addReplyValue(QInputPin *replyValue)
         d->replyValues->insert(replyValue);
 
         // Adjust subsetted property(ies)
-        d->addInput(replyValue);
+        d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(replyValue));
     }
 }
 
@@ -168,7 +168,7 @@ void QReplyAction::removeReplyValue(QInputPin *replyValue)
         d->replyValues->remove(replyValue);
 
         // Adjust subsetted property(ies)
-        d->removeInput(replyValue);
+        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(replyValue));
     }
 }
 

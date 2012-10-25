@@ -143,13 +143,13 @@ void QDestroyObjectAction::setTarget(QInputPin *target)
     QTUML_D(QDestroyObjectAction);
     if (d->target != target) {
         // Adjust subsetted property(ies)
-        d->removeInput(d->target);
+        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->target));
 
         d->target = target;
 
         // Adjust subsetted property(ies)
         if (target) {
-            d->addInput(target);
+            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(target));
         }
     }
 }

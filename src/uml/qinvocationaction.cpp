@@ -94,7 +94,7 @@ void QInvocationAction::addArgument(QInputPin *argument)
         d->arguments->append(argument);
 
         // Adjust subsetted property(ies)
-        d->addInput(argument);
+        d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(argument));
     }
 }
 
@@ -107,7 +107,7 @@ void QInvocationAction::removeArgument(QInputPin *argument)
         d->arguments->removeAll(argument);
 
         // Adjust subsetted property(ies)
-        d->removeInput(argument);
+        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(argument));
     }
 }
 

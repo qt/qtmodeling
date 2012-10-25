@@ -105,13 +105,13 @@ void QExtend::setExtendedCase(QUseCase *extendedCase)
     QTUML_D(QExtend);
     if (d->extendedCase != extendedCase) {
         // Adjust subsetted property(ies)
-        d->removeTarget(d->extendedCase);
+        d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(d->extendedCase));
 
         d->extendedCase = extendedCase;
 
         // Adjust subsetted property(ies)
         if (extendedCase) {
-            d->addTarget(extendedCase);
+            d->QDirectedRelationshipPrivate::addTarget(dynamic_cast<QElement *>(extendedCase));
         }
     }
 }
@@ -138,15 +138,15 @@ void QExtend::setExtension(QUseCase *extension)
             d->extension->removeExtend(this);
 
         // Adjust subsetted property(ies)
-        d->removeSource(d->extension);
+        d->QDirectedRelationshipPrivate::removeSource(dynamic_cast<QElement *>(d->extension));
 
         d->extension = extension;
 
         // Adjust subsetted property(ies)
         if (extension) {
-            d->addSource(extension);
+            d->QDirectedRelationshipPrivate::addSource(dynamic_cast<QElement *>(extension));
         }
-        d->setNamespace_(extension);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(extension));
 
         // Adjust opposite property
         if (extension)
@@ -203,13 +203,13 @@ void QExtend::setCondition(QConstraint *condition)
     QTUML_D(QExtend);
     if (d->condition != condition) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->condition);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->condition));
 
         d->condition = condition;
 
         // Adjust subsetted property(ies)
         if (condition) {
-            d->addOwnedElement(condition);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(condition));
         }
     }
 }

@@ -75,6 +75,12 @@ public:
     QInterface *contract() const;
     void setContract(QInterface *contract);
 
+    // Overriden methods for subsetted properties
+    void addClient(QBehavioredClassifier *implementingClassifier);
+    void removeClient(QBehavioredClassifier *implementingClassifier);
+    void addSupplier(QInterface *contract);
+    void removeSupplier(QInterface *contract);
+
 protected:
     explicit QInterfaceRealization(bool createPimpl, QObject *parent = 0);
 };

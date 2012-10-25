@@ -222,7 +222,7 @@ void QParameter::setOperation(QOperation *operation)
         d->operation = operation;
 
         // Adjust subsetted property(ies)
-        d->setNamespace_(operation);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(operation));
 
         // Adjust opposite property
         if (operation)
@@ -248,13 +248,13 @@ void QParameter::setDefaultValue(QValueSpecification *defaultValue)
     QTUML_D(QParameter);
     if (d->defaultValue != defaultValue) {
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(d->defaultValue);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->defaultValue));
 
         d->defaultValue = defaultValue;
 
         // Adjust subsetted property(ies)
         if (defaultValue) {
-            d->addOwnedElement(defaultValue);
+            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(defaultValue));
         }
     }
 }

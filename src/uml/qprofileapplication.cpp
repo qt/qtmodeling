@@ -127,14 +127,14 @@ void QProfileApplication::setApplyingPackage(QPackage *applyingPackage)
             d->applyingPackage->removeProfileApplication(this);
 
         // Adjust subsetted property(ies)
-        d->removeSource(d->applyingPackage);
+        d->QDirectedRelationshipPrivate::removeSource(dynamic_cast<QElement *>(d->applyingPackage));
 
         d->applyingPackage = applyingPackage;
 
         // Adjust subsetted property(ies)
-        d->setOwner(applyingPackage);
+        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(applyingPackage));
         if (applyingPackage) {
-            d->addSource(applyingPackage);
+            d->QDirectedRelationshipPrivate::addSource(dynamic_cast<QElement *>(applyingPackage));
         }
 
         // Adjust opposite property
@@ -161,13 +161,13 @@ void QProfileApplication::setAppliedProfile(QProfile *appliedProfile)
     QTUML_D(QProfileApplication);
     if (d->appliedProfile != appliedProfile) {
         // Adjust subsetted property(ies)
-        d->removeTarget(d->appliedProfile);
+        d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(d->appliedProfile));
 
         d->appliedProfile = appliedProfile;
 
         // Adjust subsetted property(ies)
         if (appliedProfile) {
-            d->addTarget(appliedProfile);
+            d->QDirectedRelationshipPrivate::addTarget(dynamic_cast<QElement *>(appliedProfile));
         }
     }
 }

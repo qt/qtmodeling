@@ -93,6 +93,10 @@ public:
     void removeOwnedParameterSet(QParameterSet *ownedParameterSet);
     QBehavioredClassifier *context() const;
 
+    // Overriden methods for subsetted properties
+    void addRedefinedClassifier(QBehavior *redefinedBehavior);
+    void removeRedefinedClassifier(QBehavior *redefinedBehavior);
+
 protected:
     explicit QBehavior(bool createPimpl, QObject *parent = 0);
 };

@@ -105,7 +105,7 @@ void QExtensionPoint::setUseCase(QUseCase *useCase)
         d->useCase = useCase;
 
         // Adjust subsetted property(ies)
-        d->setNamespace_(useCase);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(useCase));
 
         // Adjust opposite property
         if (useCase)

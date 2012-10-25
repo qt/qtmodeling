@@ -104,14 +104,14 @@ void QProtocolConformance::setSpecificMachine(QProtocolStateMachine *specificMac
             d->specificMachine->removeConformance(this);
 
         // Adjust subsetted property(ies)
-        d->removeSource(d->specificMachine);
+        d->QDirectedRelationshipPrivate::removeSource(dynamic_cast<QElement *>(d->specificMachine));
 
         d->specificMachine = specificMachine;
 
         // Adjust subsetted property(ies)
-        d->setOwner(specificMachine);
+        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(specificMachine));
         if (specificMachine) {
-            d->addSource(specificMachine);
+            d->QDirectedRelationshipPrivate::addSource(dynamic_cast<QElement *>(specificMachine));
         }
 
         // Adjust opposite property
@@ -138,13 +138,13 @@ void QProtocolConformance::setGeneralMachine(QProtocolStateMachine *generalMachi
     QTUML_D(QProtocolConformance);
     if (d->generalMachine != generalMachine) {
         // Adjust subsetted property(ies)
-        d->removeTarget(d->generalMachine);
+        d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(d->generalMachine));
 
         d->generalMachine = generalMachine;
 
         // Adjust subsetted property(ies)
         if (generalMachine) {
-            d->addTarget(generalMachine);
+            d->QDirectedRelationshipPrivate::addTarget(dynamic_cast<QElement *>(generalMachine));
         }
     }
 }

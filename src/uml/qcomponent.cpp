@@ -129,7 +129,7 @@ void QComponent::addRealization(QComponentRealization *realization)
         d->realizations->insert(realization);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(realization);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(realization));
 
         // Adjust opposite property
         realization->setAbstraction(this);
@@ -145,7 +145,7 @@ void QComponent::removeRealization(QComponentRealization *realization)
         d->realizations->remove(realization);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(realization);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(realization));
 
         // Adjust opposite property
         realization->setAbstraction(0);
@@ -198,7 +198,7 @@ void QComponent::addPackagedElement(QPackageableElement *packagedElement)
         d->packagedElements->insert(packagedElement);
 
         // Adjust subsetted property(ies)
-        d->addOwnedMember(packagedElement);
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(packagedElement));
     }
 }
 
@@ -211,7 +211,7 @@ void QComponent::removePackagedElement(QPackageableElement *packagedElement)
         d->packagedElements->remove(packagedElement);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedMember(packagedElement);
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(packagedElement));
     }
 }
 

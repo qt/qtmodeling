@@ -103,7 +103,7 @@ void QStereotype::addIcon(QImage *icon)
         d->icons->insert(icon);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(icon);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(icon));
     }
 }
 
@@ -116,7 +116,7 @@ void QStereotype::removeIcon(QImage *icon)
         d->icons->remove(icon);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(icon);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(icon));
     }
 }
 

@@ -142,7 +142,7 @@ void QAssociation::addNavigableOwnedEnd(QProperty *navigableOwnedEnd)
         d->navigableOwnedEnds->insert(navigableOwnedEnd);
 
         // Adjust subsetted property(ies)
-        addOwnedEnd(navigableOwnedEnd);
+        QAssociation::addOwnedEnd(dynamic_cast<QProperty *>(navigableOwnedEnd));
     }
 }
 
@@ -155,7 +155,7 @@ void QAssociation::removeNavigableOwnedEnd(QProperty *navigableOwnedEnd)
         d->navigableOwnedEnds->remove(navigableOwnedEnd);
 
         // Adjust subsetted property(ies)
-        removeOwnedEnd(navigableOwnedEnd);
+        QAssociation::removeOwnedEnd(dynamic_cast<QProperty *>(navigableOwnedEnd));
     }
 }
 
@@ -179,9 +179,9 @@ void QAssociation::addOwnedEnd(QProperty *ownedEnd)
         d->ownedEnds->append(ownedEnd);
 
         // Adjust subsetted property(ies)
-        addMemberEnd(ownedEnd);
-        d->addFeature(ownedEnd);
-        d->addOwnedMember(ownedEnd);
+        QAssociation::addMemberEnd(dynamic_cast<QProperty *>(ownedEnd));
+        d->QClassifierPrivate::addFeature(dynamic_cast<QFeature *>(ownedEnd));
+        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(ownedEnd));
 
         // Adjust opposite property
         ownedEnd->setOwningAssociation(this);
@@ -197,9 +197,9 @@ void QAssociation::removeOwnedEnd(QProperty *ownedEnd)
         d->ownedEnds->removeAll(ownedEnd);
 
         // Adjust subsetted property(ies)
-        removeMemberEnd(ownedEnd);
-        d->removeFeature(ownedEnd);
-        d->removeOwnedMember(ownedEnd);
+        QAssociation::removeMemberEnd(dynamic_cast<QProperty *>(ownedEnd));
+        d->QClassifierPrivate::removeFeature(dynamic_cast<QFeature *>(ownedEnd));
+        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(ownedEnd));
 
         // Adjust opposite property
         ownedEnd->setOwningAssociation(0);
@@ -226,7 +226,7 @@ void QAssociation::addMemberEnd(QProperty *memberEnd)
         d->memberEnds->append(memberEnd);
 
         // Adjust subsetted property(ies)
-        d->addMember(memberEnd);
+        d->QNamespacePrivate::addMember(dynamic_cast<QNamedElement *>(memberEnd));
 
         // Adjust opposite property
         memberEnd->setAssociation(this);
@@ -242,7 +242,7 @@ void QAssociation::removeMemberEnd(QProperty *memberEnd)
         d->memberEnds->removeAll(memberEnd);
 
         // Adjust subsetted property(ies)
-        d->removeMember(memberEnd);
+        d->QNamespacePrivate::removeMember(dynamic_cast<QNamedElement *>(memberEnd));
 
         // Adjust opposite property
         memberEnd->setAssociation(0);

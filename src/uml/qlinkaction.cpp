@@ -96,7 +96,7 @@ void QLinkAction::addInputValue(QInputPin *inputValue)
         d->inputValues->insert(inputValue);
 
         // Adjust subsetted property(ies)
-        d->addInput(inputValue);
+        d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(inputValue));
     }
 }
 
@@ -109,7 +109,7 @@ void QLinkAction::removeInputValue(QInputPin *inputValue)
         d->inputValues->remove(inputValue);
 
         // Adjust subsetted property(ies)
-        d->removeInput(inputValue);
+        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(inputValue));
     }
 }
 
@@ -133,7 +133,7 @@ void QLinkAction::addEndData(QLinkEndData *endData)
         d->endData->insert(endData);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(endData);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(endData));
     }
 }
 
@@ -146,7 +146,7 @@ void QLinkAction::removeEndData(QLinkEndData *endData)
         d->endData->remove(endData);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(endData);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(endData));
     }
 }
 

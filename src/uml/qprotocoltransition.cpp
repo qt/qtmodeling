@@ -101,13 +101,13 @@ void QProtocolTransition::setPostCondition(QConstraint *postCondition)
     QTUML_D(QProtocolTransition);
     if (d->postCondition != postCondition) {
         // Adjust subsetted property(ies)
-        removeOwnedRule(d->postCondition);
+        QNamespace::removeOwnedRule(dynamic_cast<QConstraint *>(d->postCondition));
 
         d->postCondition = postCondition;
 
         // Adjust subsetted property(ies)
         if (postCondition) {
-            addOwnedRule(postCondition);
+            QNamespace::addOwnedRule(dynamic_cast<QConstraint *>(postCondition));
         }
     }
 }
@@ -145,7 +145,7 @@ void QProtocolTransition::setPreCondition(QConstraint *preCondition)
         d->preCondition = preCondition;
 
         // Adjust subsetted property(ies)
-        setGuard(preCondition);
+        QTransition::setGuard(dynamic_cast<QConstraint *>(preCondition));
     }
 }
 

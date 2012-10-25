@@ -143,7 +143,7 @@ void QParameterSet::addCondition(QConstraint *condition)
         d->conditions->insert(condition);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(condition);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(condition));
     }
 }
 
@@ -156,7 +156,7 @@ void QParameterSet::removeCondition(QConstraint *condition)
         d->conditions->remove(condition);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(condition);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(condition));
     }
 }
 

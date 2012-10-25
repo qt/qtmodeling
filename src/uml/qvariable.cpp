@@ -108,7 +108,7 @@ void QVariable::setScope(QStructuredActivityNode *scope)
         d->scope = scope;
 
         // Adjust subsetted property(ies)
-        d->setNamespace_(scope);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(scope));
 
         // Adjust opposite property
         if (scope)
@@ -140,7 +140,7 @@ void QVariable::setActivityScope(QActivity *activityScope)
         d->activityScope = activityScope;
 
         // Adjust subsetted property(ies)
-        d->setNamespace_(activityScope);
+        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(activityScope));
 
         // Adjust opposite property
         if (activityScope)

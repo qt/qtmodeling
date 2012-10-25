@@ -148,7 +148,7 @@ void QLinkEndData::addQualifier(QQualifierValue *qualifier)
         d->qualifiers->insert(qualifier);
 
         // Adjust subsetted property(ies)
-        d->addOwnedElement(qualifier);
+        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(qualifier));
     }
 }
 
@@ -161,7 +161,7 @@ void QLinkEndData::removeQualifier(QQualifierValue *qualifier)
         d->qualifiers->remove(qualifier);
 
         // Adjust subsetted property(ies)
-        d->removeOwnedElement(qualifier);
+        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(qualifier));
     }
 }
 

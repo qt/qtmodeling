@@ -104,7 +104,7 @@ void QDependency::addClient(QNamedElement *client)
         d->clients->insert(client);
 
         // Adjust subsetted property(ies)
-        d->addSource(client);
+        d->QDirectedRelationshipPrivate::addSource(dynamic_cast<QElement *>(client));
 
         // Adjust opposite property
         client->addClientDependency(this);
@@ -120,7 +120,7 @@ void QDependency::removeClient(QNamedElement *client)
         d->clients->remove(client);
 
         // Adjust subsetted property(ies)
-        d->removeSource(client);
+        d->QDirectedRelationshipPrivate::removeSource(dynamic_cast<QElement *>(client));
 
         // Adjust opposite property
         if (client)
@@ -148,7 +148,7 @@ void QDependency::addSupplier(QNamedElement *supplier)
         d->suppliers->insert(supplier);
 
         // Adjust subsetted property(ies)
-        d->addTarget(supplier);
+        d->QDirectedRelationshipPrivate::addTarget(dynamic_cast<QElement *>(supplier));
     }
 }
 
@@ -161,7 +161,7 @@ void QDependency::removeSupplier(QNamedElement *supplier)
         d->suppliers->remove(supplier);
 
         // Adjust subsetted property(ies)
-        d->removeTarget(supplier);
+        d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(supplier));
     }
 }
 
