@@ -215,6 +215,8 @@ const QSet<QPackageableElement *> *QNamespace::importedMembers() const
         importedMembers_->insert(elementImport->importedElement());
     foreach (QPackageImport *packageImport, *d->packageImports)
         importedMembers_->unite(*packageImport->importedPackage()->packagedElements());
+
+    return importedMembers_;
 }
 
 /*!
@@ -241,6 +243,10 @@ void QNamespace::addElementImport(QElementImport *elementImport)
 
         // Adjust opposite property
         elementImport->setImportingNamespace(this);
+
+        // Adjust indirectly subsetted property(ies)
+        // This is because importedMembers is derived (not derivedUnion) and subsets member
+        d->addMember(elementImport->importedElement());
     }
 }
 
@@ -257,6 +263,10 @@ void QNamespace::removeElementImport(QElementImport *elementImport)
 
         // Adjust opposite property
         elementImport->setImportingNamespace(0);
+
+        // Adjust indirectly subsetted property(ies)
+        // This is because importedMembers is derived (not derivedUnion) and subsets member
+        d->removeMember(elementImport->importedElement());
     }
 }
 
