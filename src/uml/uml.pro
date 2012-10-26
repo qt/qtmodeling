@@ -6,4 +6,4 @@ load(qt_module)
 
 include(uml.pri)
 
-HEADERS += $$PUBLIC_HEADERS
+HEADERS += $$PUBLIC_HEADERS $$PRIVATE_HEADERS
