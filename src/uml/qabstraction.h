@@ -52,7 +52,10 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QOpaqueExpression;
+
+class QAbstractionPrivate;
 
 class Q_UML_EXPORT QAbstraction : public QDependency
 {
@@ -62,6 +65,7 @@ class Q_UML_EXPORT QAbstraction : public QDependency
     Q_PROPERTY(QOpaqueExpression * mapping READ mapping WRITE setMapping)
 
     Q_DISABLE_COPY(QAbstraction)
+    Q_DECLARE_PRIVATE(QAbstraction)
 
 public:
     explicit QAbstraction(QObject *parent = 0);
@@ -72,12 +76,13 @@ public:
     void setMapping(QOpaqueExpression *mapping);
 
 protected:
-    explicit QAbstraction(bool createPimpl, QObject *parent = 0);
+    explicit QAbstraction(QAbstractionPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QAbstraction) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QAbstraction) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QAbstraction) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QAbstraction) *> *)
 
 QT_END_HEADER

@@ -48,12 +48,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInstanceSpecificationPrivate::QInstanceSpecificationPrivate(QInstanceSpecification *q_umlptr) :
+QInstanceSpecificationPrivate::QInstanceSpecificationPrivate() :
     classifiers(new QSet<QClassifier *>),
     specification(0),
     slots_(new QSet<QSlot *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QInstanceSpecificationPrivate::~QInstanceSpecificationPrivate()
@@ -70,17 +69,20 @@ QInstanceSpecificationPrivate::~QInstanceSpecificationPrivate()
     \brief An instance specification has the capability of being a deployment target in a deployment relationship, in the case that it is an instance of a node. It is also has the capability of being a deployed artifact, if it is an instance of an artifact.An instance specification is a model element that represents an instance in a modeled system.
  */
 
-QInstanceSpecification::QInstanceSpecification(QObject *parent)
-    : QObject(parent)
+QInstanceSpecification::QInstanceSpecification(QObject *parent) :
+    QObject(*new QInstanceSpecificationPrivate, parent),
+    _wrappedDeployedArtifact(new QDeployedArtifact(this)),
+    _wrappedPackageableElement(new QPackageableElement(this)),
+    _wrappedDeploymentTarget(new QDeploymentTarget(this))
 {
-    d_umlptr = new QInstanceSpecificationPrivate(this);
 }
 
-QInstanceSpecification::QInstanceSpecification(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QInstanceSpecification::QInstanceSpecification(QInstanceSpecificationPrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedDeployedArtifact(new QDeployedArtifact(this)),
+    _wrappedPackageableElement(new QPackageableElement(this)),
+    _wrappedDeploymentTarget(new QDeploymentTarget(this))
 {
-    if (createPimpl)
-        d_umlptr = new QInstanceSpecificationPrivate;
 }
 
 QInstanceSpecification::~QInstanceSpecification()
@@ -94,7 +96,7 @@ const QSet<QClassifier *> *QInstanceSpecification::classifiers() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInstanceSpecification);
+    Q_D(const QInstanceSpecification);
     return d->classifiers;
 }
 
@@ -102,7 +104,7 @@ void QInstanceSpecification::addClassifier(QClassifier *classifier)
 {
     // This is a read-write association end
 
-    QTUML_D(QInstanceSpecification);
+    Q_D(QInstanceSpecification);
     if (!d->classifiers->contains(classifier)) {
         d->classifiers->insert(classifier);
     }
@@ -112,7 +114,7 @@ void QInstanceSpecification::removeClassifier(QClassifier *classifier)
 {
     // This is a read-write association end
 
-    QTUML_D(QInstanceSpecification);
+    Q_D(QInstanceSpecification);
     if (d->classifiers->contains(classifier)) {
         d->classifiers->remove(classifier);
     }
@@ -125,7 +127,7 @@ QValueSpecification *QInstanceSpecification::specification() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInstanceSpecification);
+    Q_D(const QInstanceSpecification);
     return d->specification;
 }
 
@@ -133,7 +135,7 @@ void QInstanceSpecification::setSpecification(QValueSpecification *specification
 {
     // This is a read-write association end
 
-    QTUML_D(QInstanceSpecification);
+    Q_D(QInstanceSpecification);
     if (d->specification != specification) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->specification));
@@ -154,7 +156,7 @@ const QSet<QSlot *> *QInstanceSpecification::slots_() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInstanceSpecification);
+    Q_D(const QInstanceSpecification);
     return d->slots_;
 }
 
@@ -162,7 +164,7 @@ void QInstanceSpecification::addSlot_(QSlot *slot_)
 {
     // This is a read-write association end
 
-    QTUML_D(QInstanceSpecification);
+    Q_D(QInstanceSpecification);
     if (!d->slots_->contains(slot_)) {
         d->slots_->insert(slot_);
 
@@ -178,7 +180,7 @@ void QInstanceSpecification::removeSlot_(QSlot *slot_)
 {
     // This is a read-write association end
 
-    QTUML_D(QInstanceSpecification);
+    Q_D(QInstanceSpecification);
     if (d->slots_->contains(slot_)) {
         d->slots_->remove(slot_);
 

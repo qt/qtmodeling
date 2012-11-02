@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qabstraction_p.h"
+#include "private/qabstraction_p.h"
+#include "qmanifestation.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QPackageableElement;
 class QManifestation;
 
-class QManifestationPrivate : public QAbstractionPrivate
+class Q_UML_EXPORT QManifestationPrivate : public QAbstractionPrivate
 {
+    Q_DECLARE_PUBLIC(QManifestation)
+
 public:
-    explicit QManifestationPrivate(QManifestation *q_umlptr = 0);
+    explicit QManifestationPrivate();
     virtual ~QManifestationPrivate();
 
     QPackageableElement *utilizedElement;

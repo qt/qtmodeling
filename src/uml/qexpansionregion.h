@@ -43,11 +43,11 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// QtUml includes
-#include <QtUml/QtUmlEnumerations>
-
 // Base class includes
 #include <QtUml/QStructuredActivityNode>
+
+// QtUml includes
+#include <QtUml/QtUmlEnumerations>
 
 // Qt includes
 #include <QtCore/QSet>
@@ -58,7 +58,10 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QExpansionNode;
+
+class QExpansionRegionPrivate;
 
 class Q_UML_EXPORT QExpansionRegion : public QStructuredActivityNode
 {
@@ -70,6 +73,7 @@ class Q_UML_EXPORT QExpansionRegion : public QStructuredActivityNode
     Q_PROPERTY(const QSet<QExpansionNode *> * outputElements READ outputElements)
 
     Q_DISABLE_COPY(QExpansionRegion)
+    Q_DECLARE_PRIVATE(QExpansionRegion)
 
 public:
     explicit QExpansionRegion(QObject *parent = 0);
@@ -88,12 +92,13 @@ public:
     void removeOutputElement(QExpansionNode *outputElement);
 
 protected:
-    explicit QExpansionRegion(bool createPimpl, QObject *parent = 0);
+    explicit QExpansionRegion(QExpansionRegionPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *> *)
 
 QT_END_HEADER

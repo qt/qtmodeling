@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qnamedelement_p.h"
+#include "private/qnamedelement_p.h"
+#include "qgeneralordering.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QOccurrenceSpecification;
 class QGeneralOrdering;
 
-class QGeneralOrderingPrivate : public QNamedElementPrivate
+class Q_UML_EXPORT QGeneralOrderingPrivate : public QNamedElementPrivate
 {
+    Q_DECLARE_PUBLIC(QGeneralOrdering)
+
 public:
-    explicit QGeneralOrderingPrivate(QGeneralOrdering *q_umlptr = 0);
+    explicit QGeneralOrderingPrivate();
     virtual ~QGeneralOrderingPrivate();
 
     QOccurrenceSpecification *before;

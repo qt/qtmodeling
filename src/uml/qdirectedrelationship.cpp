@@ -114,7 +114,13 @@ void QDirectedRelationshipPrivate::removeTarget(QElement *target)
     \brief A directed relationship represents a relationship between a collection of source model elements and a collection of target model elements.
  */
 
-QDirectedRelationship::QDirectedRelationship()
+QDirectedRelationship::QDirectedRelationship(QObject *parent) :
+    QRelationship(*new QDirectedRelationshipPrivate, parent)
+{
+}
+
+QDirectedRelationship::QDirectedRelationship(QDirectedRelationshipPrivate &dd, QObject *parent) :
+    QRelationship(dd, parent)
 {
 }
 
@@ -129,7 +135,7 @@ const QSet<QElement *> *QDirectedRelationship::sources() const
 {
     // This is a read-only derived-union association end
 
-    QTUML_D(const QDirectedRelationship);
+    Q_D(const QDirectedRelationship);
     return d->sources;
 }
 
@@ -140,7 +146,7 @@ const QSet<QElement *> *QDirectedRelationship::targets() const
 {
     // This is a read-only derived-union association end
 
-    QTUML_D(const QDirectedRelationship);
+    Q_D(const QDirectedRelationship);
     return d->targets;
 }
 

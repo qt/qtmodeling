@@ -56,25 +56,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QOpaqueBehaviorPrivate;
+
 class Q_UML_EXPORT QOpaqueBehavior : public QBehavior
 {
     Q_OBJECT
-
-    // From QBehavior
-    Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant)
-    Q_PROPERTY(QBehavioralFeature * specification READ specification WRITE setSpecification)
-    Q_PROPERTY(const QSet<QConstraint *> * postconditions READ postconditions)
-    Q_PROPERTY(const QSet<QConstraint *> * preconditions READ preconditions)
-    Q_PROPERTY(const QSet<QBehavior *> * redefinedBehaviors READ redefinedBehaviors)
-    Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
-    Q_PROPERTY(const QSet<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
-    Q_PROPERTY(QBehavioredClassifier * context READ context)
 
     // From QOpaqueBehavior
     Q_PROPERTY(const QList<QString> * languages READ languages)
     Q_PROPERTY(const QList<QString> * bodies READ bodies)
 
     Q_DISABLE_COPY(QOpaqueBehavior)
+    Q_DECLARE_PRIVATE(QOpaqueBehavior)
 
 public:
     explicit QOpaqueBehavior(QObject *parent = 0);
@@ -89,12 +82,13 @@ public:
     void removeBody(QString body);
 
 protected:
-    explicit QOpaqueBehavior(bool createPimpl, QObject *parent = 0);
+    explicit QOpaqueBehavior(QOpaqueBehaviorPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QOpaqueBehavior) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QOpaqueBehavior) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QOpaqueBehavior) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QOpaqueBehavior) *> *)
 
 QT_END_HEADER

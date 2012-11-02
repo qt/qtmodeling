@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qcontrolnode_p.h"
+#include "private/qcontrolnode_p.h"
+#include "qdecisionnode.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,14 +54,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QBehavior;
 class QObjectFlow;
 class QDecisionNode;
 
-class QDecisionNodePrivate : public QControlNodePrivate
+class Q_UML_EXPORT QDecisionNodePrivate : public QControlNodePrivate
 {
+    Q_DECLARE_PUBLIC(QDecisionNode)
+
 public:
-    explicit QDecisionNodePrivate(QDecisionNode *q_umlptr = 0);
+    explicit QDecisionNodePrivate();
     virtual ~QDecisionNodePrivate();
 
     QObjectFlow *decisionInputFlow;

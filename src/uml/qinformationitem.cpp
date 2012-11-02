@@ -45,10 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInformationItemPrivate::QInformationItemPrivate(QInformationItem *q_umlptr) :
+QInformationItemPrivate::QInformationItemPrivate() :
     represented(new QSet<QClassifier *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QInformationItemPrivate::~QInformationItemPrivate()
@@ -64,17 +63,14 @@ QInformationItemPrivate::~QInformationItemPrivate()
     \brief An information item is an abstraction of all kinds of information that can be exchanged between objects. It is a kind of classifier intended for representing information in a very abstract way, one which cannot be instantiated.
  */
 
-QInformationItem::QInformationItem(QObject *parent)
-    : QObject(parent)
+QInformationItem::QInformationItem(QObject *parent) :
+    QClassifier(*new QInformationItemPrivate, parent)
 {
-    d_umlptr = new QInformationItemPrivate(this);
 }
 
-QInformationItem::QInformationItem(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QInformationItem::QInformationItem(QInformationItemPrivate &dd, QObject *parent) :
+    QClassifier(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QInformationItemPrivate;
 }
 
 QInformationItem::~QInformationItem()
@@ -88,7 +84,7 @@ const QSet<QClassifier *> *QInformationItem::represented() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInformationItem);
+    Q_D(const QInformationItem);
     return d->represented;
 }
 
@@ -96,7 +92,7 @@ void QInformationItem::addRepresented(QClassifier *represented)
 {
     // This is a read-write association end
 
-    QTUML_D(QInformationItem);
+    Q_D(QInformationItem);
     if (!d->represented->contains(represented)) {
         d->represented->insert(represented);
     }
@@ -106,7 +102,7 @@ void QInformationItem::removeRepresented(QClassifier *represented)
 {
     // This is a read-write association end
 
-    QTUML_D(QInformationItem);
+    Q_D(QInformationItem);
     if (d->represented->contains(represented)) {
         d->represented->remove(represented);
     }

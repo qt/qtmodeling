@@ -44,8 +44,11 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qdeployedartifact_p.h"
-#include "qclassifier_p.h"
+#include "private/qobject_p.h"
+
+#include "private/qdeployedartifact_p.h"
+#include "private/qclassifier_p.h"
+#include "qartifact.h"
 
 // Qt includes
 #include <QtCore/QString>
@@ -58,15 +61,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QOperation;
 class QProperty;
 class QManifestation;
 class QArtifact;
 
-class QArtifactPrivate : public QDeployedArtifactPrivate, public QClassifierPrivate
+class Q_UML_EXPORT QArtifactPrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QArtifact)
+
 public:
-    explicit QArtifactPrivate(QArtifact *q_umlptr = 0);
+    explicit QArtifactPrivate();
     virtual ~QArtifactPrivate();
 
     QString fileName;
@@ -74,6 +80,10 @@ public:
     QList<QProperty *> *ownedAttributes;
     QSet<QManifestation *> *manifestations;
     QSet<QArtifact *> *nestedArtifacts;
+
+private:
+    QDeployedArtifactPrivate *_wrappedDeployedArtifactPrivate;
+    QClassifierPrivate *_wrappedClassifierPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

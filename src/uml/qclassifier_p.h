@@ -44,10 +44,13 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qnamespace_p.h"
-#include "qtype_p.h"
-#include "qredefinableelement_p.h"
-#include "qtemplateableelement_p.h"
+#include "private/qobject_p.h"
+
+#include "private/qnamespace_p.h"
+#include "private/qtype_p.h"
+#include "private/qredefinableelement_p.h"
+#include "private/qtemplateableelement_p.h"
+#include "qclassifier.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -58,6 +61,7 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QRedefinableTemplateSignature;
 class QClassifierTemplateParameter;
 class QUseCase;
@@ -70,9 +74,12 @@ class QCollaborationUse;
 class QClassifier;
 class QFeature;
 
-class QClassifierPrivate : public QNamespacePrivate, public QTypePrivate, public QRedefinableElementPrivate, public QTemplateableElementPrivate
+class Q_UML_EXPORT QClassifierPrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QClassifier)
+
 public:
+    explicit QClassifierPrivate();
     virtual ~QClassifierPrivate();
 
     bool isAbstract;
@@ -96,8 +103,11 @@ public:
     void addFeature(QFeature *feature);
     void removeFeature(QFeature *feature);
 
-protected:
-    explicit QClassifierPrivate();
+private:
+    QNamespacePrivate *_wrappedNamespacePrivate;
+    QTypePrivate *_wrappedTypePrivate;
+    QRedefinableElementPrivate *_wrappedRedefinableElementPrivate;
+    QTemplateableElementPrivate *_wrappedTemplateableElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

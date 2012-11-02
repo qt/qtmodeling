@@ -52,7 +52,10 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QConnectableElement;
+
+class QConnectableElementTemplateParameterPrivate;
 
 class Q_UML_EXPORT QConnectableElementTemplateParameter : public QTemplateParameter
 {
@@ -62,6 +65,7 @@ class Q_UML_EXPORT QConnectableElementTemplateParameter : public QTemplateParame
     Q_PROPERTY(QConnectableElement * parameteredElement READ parameteredElement WRITE setParameteredElement)
 
     Q_DISABLE_COPY(QConnectableElementTemplateParameter)
+    Q_DECLARE_PRIVATE(QConnectableElementTemplateParameter)
 
 public:
     explicit QConnectableElementTemplateParameter(QObject *parent = 0);
@@ -72,12 +76,13 @@ public:
     void setParameteredElement(QConnectableElement *parameteredElement);
 
 protected:
-    explicit QConnectableElementTemplateParameter(bool createPimpl, QObject *parent = 0);
+    explicit QConnectableElementTemplateParameter(QConnectableElementTemplateParameterPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *> *)
 
 QT_END_HEADER

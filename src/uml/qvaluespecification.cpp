@@ -62,7 +62,17 @@ QValueSpecificationPrivate::~QValueSpecificationPrivate()
     \brief ValueSpecification specializes ParameterableElement to specify that a value specification can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.A value specification is the specification of a (possibly empty) set of instances, including both objects and data values.
  */
 
-QValueSpecification::QValueSpecification()
+QValueSpecification::QValueSpecification(QObject *parent) :
+    QObject(*new QValueSpecificationPrivate, parent),
+    _wrappedTypedElement(new QTypedElement(this)),
+    _wrappedPackageableElement(new QPackageableElement(this))
+{
+}
+
+QValueSpecification::QValueSpecification(QValueSpecificationPrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedTypedElement(new QTypedElement(this)),
+    _wrappedPackageableElement(new QPackageableElement(this))
 {
 }
 

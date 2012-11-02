@@ -55,15 +55,26 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QLinkEndData;
 class QInputPin;
 class QAssociation;
 
+class QLinkActionPrivate;
+
 class Q_UML_EXPORT QLinkAction : public QAction
 {
+    Q_OBJECT
+
+    // From QLinkAction
+    Q_PROPERTY(const QSet<QInputPin *> * inputValues READ inputValues)
+    Q_PROPERTY(const QSet<QLinkEndData *> * endData READ endData)
+
     Q_DISABLE_COPY(QLinkAction)
+    Q_DECLARE_PRIVATE(QLinkAction)
 
 public:
+    explicit QLinkAction(QObject *parent = 0);
     virtual ~QLinkAction();
 
     // Association-ends
@@ -78,10 +89,14 @@ public:
     QAssociation *association() const;
 
 protected:
-    explicit QLinkAction();
+    explicit QLinkAction(QLinkActionPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QLinkAction) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkAction) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QLinkAction) *> *)
 
 QT_END_HEADER
 

@@ -46,12 +46,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QExpansionRegionPrivate::QExpansionRegionPrivate(QExpansionRegion *q_umlptr) :
+QExpansionRegionPrivate::QExpansionRegionPrivate() :
     mode(QtUml::ExpansionIterative),
     inputElements(new QSet<QExpansionNode *>),
     outputElements(new QSet<QExpansionNode *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QExpansionRegionPrivate::~QExpansionRegionPrivate()
@@ -68,17 +67,14 @@ QExpansionRegionPrivate::~QExpansionRegionPrivate()
     \brief An expansion region is a structured activity region that executes multiple times corresponding to elements of an input collection.
  */
 
-QExpansionRegion::QExpansionRegion(QObject *parent)
-    : QStructuredActivityNode(false, parent)
+QExpansionRegion::QExpansionRegion(QObject *parent) :
+    QStructuredActivityNode(*new QExpansionRegionPrivate, parent)
 {
-    d_umlptr = new QExpansionRegionPrivate(this);
 }
 
-QExpansionRegion::QExpansionRegion(bool createPimpl, QObject *parent)
-    : QStructuredActivityNode(createPimpl, parent)
+QExpansionRegion::QExpansionRegion(QExpansionRegionPrivate &dd, QObject *parent) :
+    QStructuredActivityNode(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QExpansionRegionPrivate;
 }
 
 QExpansionRegion::~QExpansionRegion()
@@ -92,7 +88,7 @@ QtUml::ExpansionKind QExpansionRegion::mode() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QExpansionRegion);
+    Q_D(const QExpansionRegion);
     return d->mode;
 }
 
@@ -100,7 +96,7 @@ void QExpansionRegion::setMode(QtUml::ExpansionKind mode)
 {
     // This is a read-write attribute
 
-    QTUML_D(QExpansionRegion);
+    Q_D(QExpansionRegion);
     if (d->mode != mode) {
         d->mode = mode;
     }
@@ -113,7 +109,7 @@ const QSet<QExpansionNode *> *QExpansionRegion::inputElements() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QExpansionRegion);
+    Q_D(const QExpansionRegion);
     return d->inputElements;
 }
 
@@ -121,7 +117,7 @@ void QExpansionRegion::addInputElement(QExpansionNode *inputElement)
 {
     // This is a read-write association end
 
-    QTUML_D(QExpansionRegion);
+    Q_D(QExpansionRegion);
     if (!d->inputElements->contains(inputElement)) {
         d->inputElements->insert(inputElement);
 
@@ -134,7 +130,7 @@ void QExpansionRegion::removeInputElement(QExpansionNode *inputElement)
 {
     // This is a read-write association end
 
-    QTUML_D(QExpansionRegion);
+    Q_D(QExpansionRegion);
     if (d->inputElements->contains(inputElement)) {
         d->inputElements->remove(inputElement);
 
@@ -150,7 +146,7 @@ const QSet<QExpansionNode *> *QExpansionRegion::outputElements() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QExpansionRegion);
+    Q_D(const QExpansionRegion);
     return d->outputElements;
 }
 
@@ -158,7 +154,7 @@ void QExpansionRegion::addOutputElement(QExpansionNode *outputElement)
 {
     // This is a read-write association end
 
-    QTUML_D(QExpansionRegion);
+    Q_D(QExpansionRegion);
     if (!d->outputElements->contains(outputElement)) {
         d->outputElements->insert(outputElement);
 
@@ -171,7 +167,7 @@ void QExpansionRegion::removeOutputElement(QExpansionNode *outputElement)
 {
     // This is a read-write association end
 
-    QTUML_D(QExpansionRegion);
+    Q_D(QExpansionRegion);
     if (d->outputElements->contains(outputElement)) {
         d->outputElements->remove(outputElement);
 

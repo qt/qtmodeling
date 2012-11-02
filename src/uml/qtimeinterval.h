@@ -52,7 +52,10 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QTimeExpression;
+
+class QTimeIntervalPrivate;
 
 class Q_UML_EXPORT QTimeInterval : public QInterval
 {
@@ -63,6 +66,7 @@ class Q_UML_EXPORT QTimeInterval : public QInterval
     Q_PROPERTY(QTimeExpression * min READ min WRITE setMin)
 
     Q_DISABLE_COPY(QTimeInterval)
+    Q_DECLARE_PRIVATE(QTimeInterval)
 
 public:
     explicit QTimeInterval(QObject *parent = 0);
@@ -75,12 +79,13 @@ public:
     void setMin(QTimeExpression *min);
 
 protected:
-    explicit QTimeInterval(bool createPimpl, QObject *parent = 0);
+    explicit QTimeInterval(QTimeIntervalPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QTimeInterval) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QTimeInterval) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QTimeInterval) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QTimeInterval) *> *)
 
 QT_END_HEADER

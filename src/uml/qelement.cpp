@@ -69,8 +69,8 @@ void QElementPrivate::addOwnedElement(QElement *ownedElement)
         this->ownedElements->insert(ownedElement);
 
         // Adjust opposite property
-        QTUML_Q(QElement);
-        (dynamic_cast<QElementPrivate *>(ownedElement->d_umlptr))->setOwner(q);
+        Q_Q(QElement);
+        (dynamic_cast<QElementPrivate *>(ownedElement->d_ptr))->setOwner(q);
     }
 }
 
@@ -82,8 +82,8 @@ void QElementPrivate::removeOwnedElement(QElement *ownedElement)
         this->ownedElements->remove(ownedElement);
 
         // Adjust opposite property
-        QTUML_Q(QElement);
-        (dynamic_cast<QElementPrivate *>(ownedElement->d_umlptr))->setOwner(0);
+        Q_Q(QElement);
+        (dynamic_cast<QElementPrivate *>(ownedElement->d_ptr))->setOwner(0);
     }
 }
 
@@ -92,16 +92,16 @@ void QElementPrivate::setOwner(QElement *owner)
     // This is a read-only derived-union association end
 
     if (this->owner != owner) {
-        QTUML_Q(QElement)
+        Q_Q(QElement)
         // Adjust opposite property
         if (this->owner)
-            (dynamic_cast<QElementPrivate *>(this->owner->d_umlptr))->removeOwnedElement(q);
+            (dynamic_cast<QElementPrivate *>(this->owner->d_ptr))->removeOwnedElement(q);
 
         this->owner = owner;
 
         // Adjust opposite property
         if (owner)
-            (dynamic_cast<QElementPrivate *>(owner->d_umlptr))->addOwnedElement(q);
+            (dynamic_cast<QElementPrivate *>(owner->d_ptr))->addOwnedElement(q);
     }
 }
 
@@ -113,13 +113,19 @@ void QElementPrivate::setOwner(QElement *owner)
     \brief An element is a constituent of a model. As such, it has the capability of owning other elements.
  */
 
-QElement::QElement()
+QElement::QElement(QObject *parent) :
+    QObject(*new QElementPrivate, parent)
+{
+}
+
+QElement::QElement(QElementPrivate &dd, QObject *parent) :
+    QObject(dd, parent)
 {
 }
 
 QElement::~QElement()
 {
-    delete d_umlptr;
+    delete d_ptr;
 }
 
 /*!
@@ -129,7 +135,7 @@ const QSet<QElement *> *QElement::ownedElements() const
 {
     // This is a read-only derived-union association end
 
-    QTUML_D(const QElement);
+    Q_D(const QElement);
     return d->ownedElements;
 }
 
@@ -140,7 +146,7 @@ QElement *QElement::owner() const
 {
     // This is a read-only derived-union association end
 
-    QTUML_D(const QElement);
+    Q_D(const QElement);
     return d->owner;
 }
 
@@ -151,7 +157,7 @@ const QSet<QComment *> *QElement::ownedComments() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QElement);
+    Q_D(const QElement);
     return d->ownedComments;
 }
 
@@ -159,7 +165,7 @@ void QElement::addOwnedComment(QComment *ownedComment)
 {
     // This is a read-write association end
 
-    QTUML_D(QElement);
+    Q_D(QElement);
     if (!d->ownedComments->contains(ownedComment)) {
         d->ownedComments->insert(ownedComment);
 
@@ -172,7 +178,7 @@ void QElement::removeOwnedComment(QComment *ownedComment)
 {
     // This is a read-write association end
 
-    QTUML_D(QElement);
+    Q_D(QElement);
     if (d->ownedComments->contains(ownedComment)) {
         d->ownedComments->remove(ownedComment);
 
@@ -183,13 +189,10 @@ void QElement::removeOwnedComment(QComment *ownedComment)
 
 /*!
     The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
-    It is the caller's responsibility to delete the returned set.
  */
 const QSet<QElement *> *QElement::allOwnedElements() const
 {
-    QSet<QElement *> *allOwnedElements_ = new QSet<QElement *>;
-    allOwnedElements(allOwnedElements_);
-    return allOwnedElements_;
+    qWarning("QElement::allOwnedElements: operation to be implemented");
 }
 
 /*!
@@ -197,15 +200,7 @@ const QSet<QElement *> *QElement::allOwnedElements() const
  */
 bool QElement::mustBeOwned() const
 {
-    return true;
-}
-
-void QElement::allOwnedElements(QSet<QElement *> *allOwnedElements_) const
-{
-    QTUML_D(const QElement);
-    allOwnedElements_->unite(*d->ownedElements);
-    foreach (QElement *element, *d->ownedElements)
-        element->allOwnedElements(allOwnedElements_);
+    qWarning("QElement::mustBeOwned: operation to be implemented");
 }
 
 QT_END_NAMESPACE_QTUML

@@ -47,11 +47,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInterfaceRealizationPrivate::QInterfaceRealizationPrivate(QInterfaceRealization *q_umlptr) :
+QInterfaceRealizationPrivate::QInterfaceRealizationPrivate() :
     implementingClassifier(0),
     contract(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QInterfaceRealizationPrivate::~QInterfaceRealizationPrivate()
@@ -66,17 +65,14 @@ QInterfaceRealizationPrivate::~QInterfaceRealizationPrivate()
     \brief An interface realization is a specialized realization relationship between a classifier and an interface. This relationship signifies that the realizing classifier conforms to the contract specified by the interface.
  */
 
-QInterfaceRealization::QInterfaceRealization(QObject *parent)
-    : QRealization(false, parent)
+QInterfaceRealization::QInterfaceRealization(QObject *parent) :
+    QRealization(*new QInterfaceRealizationPrivate, parent)
 {
-    d_umlptr = new QInterfaceRealizationPrivate(this);
 }
 
-QInterfaceRealization::QInterfaceRealization(bool createPimpl, QObject *parent)
-    : QRealization(createPimpl, parent)
+QInterfaceRealization::QInterfaceRealization(QInterfaceRealizationPrivate &dd, QObject *parent) :
+    QRealization(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QInterfaceRealizationPrivate;
 }
 
 QInterfaceRealization::~QInterfaceRealization()
@@ -90,7 +86,7 @@ QBehavioredClassifier *QInterfaceRealization::implementingClassifier() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInterfaceRealization);
+    Q_D(const QInterfaceRealization);
     return d->implementingClassifier;
 }
 
@@ -98,7 +94,7 @@ void QInterfaceRealization::setImplementingClassifier(QBehavioredClassifier *imp
 {
     // This is a read-write association end
 
-    QTUML_D(QInterfaceRealization);
+    Q_D(QInterfaceRealization);
     if (d->implementingClassifier != implementingClassifier) {
         // Adjust opposite property
         if (d->implementingClassifier)
@@ -128,7 +124,7 @@ QInterface *QInterfaceRealization::contract() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInterfaceRealization);
+    Q_D(const QInterfaceRealization);
     return d->contract;
 }
 
@@ -136,7 +132,7 @@ void QInterfaceRealization::setContract(QInterface *contract)
 {
     // This is a read-write association end
 
-    QTUML_D(QInterfaceRealization);
+    Q_D(QInterfaceRealization);
     if (d->contract != contract) {
         // Adjust subsetted property(ies)
         QDependency::removeSupplier(dynamic_cast<QNamedElement *>(d->contract));

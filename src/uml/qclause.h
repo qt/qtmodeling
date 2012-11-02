@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QElement>
 
 // Qt includes
@@ -57,17 +56,15 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QExecutableNode;
 class QOutputPin;
 
-class Q_UML_EXPORT QClause : public QObject, public QElement
+class QClausePrivate;
+
+class Q_UML_EXPORT QClause : public QElement
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QClause
     Q_PROPERTY(const QSet<QClause *> * successorClauses READ successorClauses)
@@ -78,6 +75,7 @@ class Q_UML_EXPORT QClause : public QObject, public QElement
     Q_PROPERTY(const QSet<QExecutableNode *> * tests READ tests)
 
     Q_DISABLE_COPY(QClause)
+    Q_DECLARE_PRIVATE(QClause)
 
 public:
     explicit QClause(QObject *parent = 0);
@@ -103,12 +101,13 @@ public:
     void removeTest(QExecutableNode *test);
 
 protected:
-    explicit QClause(bool createPimpl, QObject *parent = 0);
+    explicit QClause(QClausePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QClause) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QClause) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QClause) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QClause) *> *)
 
 QT_END_HEADER

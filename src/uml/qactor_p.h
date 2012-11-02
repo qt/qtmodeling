@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qbehavioredclassifier_p.h"
+#include "private/qbehavioredclassifier_p.h"
+#include "qactor.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,10 +55,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QActor;
 
-class QActorPrivate : public QBehavioredClassifierPrivate
+class Q_UML_EXPORT QActorPrivate : public QBehavioredClassifierPrivate
 {
+    Q_DECLARE_PUBLIC(QActor)
+
 public:
-    explicit QActorPrivate(QActor *q_umlptr = 0);
+    explicit QActorPrivate();
     virtual ~QActorPrivate();
 
 };

@@ -43,13 +43,11 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// QtUml includes
-#include <QtUml/QtUmlEnumerations>
-
 // Base class includes
 #include <QtCore/QObject>
-#include <QtUml/QRedefinableElement>
-#include <QtUml/QNamespace>
+
+// QtUml includes
+#include <QtUml/QtUmlEnumerations>
 
 // Qt includes
 #include <QtCore/QSet>
@@ -60,6 +58,11 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for aggregated 'base classes'
+class QRedefinableElement;
+class QNamespace;
+
+// Forward decls for function parameters
 class QTrigger;
 class QVertex;
 class QStateMachine;
@@ -68,34 +71,11 @@ class QRegion;
 class QConstraint;
 class QBehavior;
 
-class Q_UML_EXPORT QTransition : public QObject, public QRedefinableElement, public QNamespace
+class QTransitionPrivate;
+
+class Q_UML_EXPORT QTransition : public QObject
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From QRedefinableElement
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
-
-    // From QNamespace
-    Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
-    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
-    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
-    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
-    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
-    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
 
     // From QTransition
     Q_PROPERTY(QtUml::TransitionKind kind READ kind WRITE setKind)
@@ -108,7 +88,33 @@ class Q_UML_EXPORT QTransition : public QObject, public QRedefinableElement, pub
     Q_PROPERTY(QVertex * source READ source WRITE setSource)
     Q_PROPERTY(const QSet<QTrigger *> * triggers READ triggers)
 
+    // From aggregated QElement
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+
+    // From aggregated QNamedElement
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+
+    // From aggregated QRedefinableElement
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
+    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
+
+    // From aggregated QNamespace
+    Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
+    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
+    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
+    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
+    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
+    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
+
     Q_DISABLE_COPY(QTransition)
+    Q_DECLARE_PRIVATE(QTransition)
 
 public:
     explicit QTransition(QObject *parent = 0);
@@ -141,12 +147,17 @@ public:
     bool isConsistentWith(const QRedefinableElement *redefinee) const;
 
 protected:
-    explicit QTransition(bool createPimpl, QObject *parent = 0);
+    explicit QTransition(QTransitionPrivate &dd, QObject *parent = 0);
+
+private:
+    QRedefinableElement *_wrappedRedefinableElement;
+    QNamespace *_wrappedNamespace;
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QTransition) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QTransition) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QTransition) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QTransition) *> *)
 
 QT_END_HEADER

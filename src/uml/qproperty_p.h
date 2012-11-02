@@ -43,13 +43,17 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+#include "private/qobject_p.h"
+
+#include "private/qstructuralfeature_p.h"
+#include "private/qconnectableelement_p.h"
+#include "private/qdeploymenttarget_p.h"
+#include "qproperty.h"
+
+
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
-
-// Base class includes
-#include "qstructuralfeature_p.h"
-#include "qconnectableelement_p.h"
-#include "qdeploymenttarget_p.h"
 
 // Qt includes
 #include <QtCore/QString>
@@ -62,6 +66,7 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QType;
 class QInterface;
 class QRedefinableElement;
@@ -72,10 +77,12 @@ class QAssociation;
 class QClass;
 class QProperty;
 
-class QPropertyPrivate : public QStructuralFeaturePrivate, public QConnectableElementPrivate, public QDeploymentTargetPrivate
+class Q_UML_EXPORT QPropertyPrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QProperty)
+
 public:
-    explicit QPropertyPrivate(QProperty *q_umlptr = 0);
+    explicit QPropertyPrivate();
     virtual ~QPropertyPrivate();
 
     bool isDerived;
@@ -93,6 +100,11 @@ public:
     QSet<QProperty *> *redefinedProperties;
     QAssociation *association;
     QInterface *interface;
+
+private:
+    QStructuralFeaturePrivate *_wrappedStructuralFeaturePrivate;
+    QConnectableElementPrivate *_wrappedConnectableElementPrivate;
+    QDeploymentTargetPrivate *_wrappedDeploymentTargetPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

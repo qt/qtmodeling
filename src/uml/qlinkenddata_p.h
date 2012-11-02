@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qelement_p.h"
+#include "private/qelement_p.h"
+#include "qlinkenddata.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,15 +56,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QProperty;
 class QQualifierValue;
 class QInputPin;
 class QLinkEndData;
 
-class QLinkEndDataPrivate : public QElementPrivate
+class Q_UML_EXPORT QLinkEndDataPrivate : public QElementPrivate
 {
+    Q_DECLARE_PUBLIC(QLinkEndData)
+
 public:
-    explicit QLinkEndDataPrivate(QLinkEndData *q_umlptr = 0);
+    explicit QLinkEndDataPrivate();
     virtual ~QLinkEndDataPrivate();
 
     QInputPin *value;

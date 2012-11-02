@@ -46,12 +46,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDestroyObjectActionPrivate::QDestroyObjectActionPrivate(QDestroyObjectAction *q_umlptr) :
+QDestroyObjectActionPrivate::QDestroyObjectActionPrivate() :
     isDestroyLinks(false),
     isDestroyOwnedObjects(false),
     target(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QDestroyObjectActionPrivate::~QDestroyObjectActionPrivate()
@@ -66,17 +65,14 @@ QDestroyObjectActionPrivate::~QDestroyObjectActionPrivate()
     \brief A destroy object action is an action that destroys objects.
  */
 
-QDestroyObjectAction::QDestroyObjectAction(QObject *parent)
-    : QObject(parent)
+QDestroyObjectAction::QDestroyObjectAction(QObject *parent) :
+    QAction(*new QDestroyObjectActionPrivate, parent)
 {
-    d_umlptr = new QDestroyObjectActionPrivate(this);
 }
 
-QDestroyObjectAction::QDestroyObjectAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QDestroyObjectAction::QDestroyObjectAction(QDestroyObjectActionPrivate &dd, QObject *parent) :
+    QAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QDestroyObjectActionPrivate;
 }
 
 QDestroyObjectAction::~QDestroyObjectAction()
@@ -90,7 +86,7 @@ bool QDestroyObjectAction::isDestroyLinks() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QDestroyObjectAction);
+    Q_D(const QDestroyObjectAction);
     return d->isDestroyLinks;
 }
 
@@ -98,7 +94,7 @@ void QDestroyObjectAction::setDestroyLinks(bool isDestroyLinks)
 {
     // This is a read-write attribute
 
-    QTUML_D(QDestroyObjectAction);
+    Q_D(QDestroyObjectAction);
     if (d->isDestroyLinks != isDestroyLinks) {
         d->isDestroyLinks = isDestroyLinks;
     }
@@ -111,7 +107,7 @@ bool QDestroyObjectAction::isDestroyOwnedObjects() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QDestroyObjectAction);
+    Q_D(const QDestroyObjectAction);
     return d->isDestroyOwnedObjects;
 }
 
@@ -119,7 +115,7 @@ void QDestroyObjectAction::setDestroyOwnedObjects(bool isDestroyOwnedObjects)
 {
     // This is a read-write attribute
 
-    QTUML_D(QDestroyObjectAction);
+    Q_D(QDestroyObjectAction);
     if (d->isDestroyOwnedObjects != isDestroyOwnedObjects) {
         d->isDestroyOwnedObjects = isDestroyOwnedObjects;
     }
@@ -132,7 +128,7 @@ QInputPin *QDestroyObjectAction::target() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QDestroyObjectAction);
+    Q_D(const QDestroyObjectAction);
     return d->target;
 }
 
@@ -140,7 +136,7 @@ void QDestroyObjectAction::setTarget(QInputPin *target)
 {
     // This is a read-write association end
 
-    QTUML_D(QDestroyObjectAction);
+    Q_D(QDestroyObjectAction);
     if (d->target != target) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->target));

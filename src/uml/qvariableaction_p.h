@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qaction_p.h"
+#include "private/qaction_p.h"
+#include "qvariableaction.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,17 +54,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QVariable;
 
-class QVariableActionPrivate : public QActionPrivate
+class Q_UML_EXPORT QVariableActionPrivate : public QActionPrivate
 {
+    Q_DECLARE_PUBLIC(QVariableAction)
+
 public:
+    explicit QVariableActionPrivate();
     virtual ~QVariableActionPrivate();
 
     QVariable *variable;
-
-protected:
-    explicit QVariableActionPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

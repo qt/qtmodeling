@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qconstraint_p.h"
+#include "private/qconstraint_p.h"
+#include "qintervalconstraint.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInterval;
 class QIntervalConstraint;
 
-class QIntervalConstraintPrivate : public QConstraintPrivate
+class Q_UML_EXPORT QIntervalConstraintPrivate : public QConstraintPrivate
 {
+    Q_DECLARE_PUBLIC(QIntervalConstraint)
+
 public:
-    explicit QIntervalConstraintPrivate(QIntervalConstraint *q_umlptr = 0);
+    explicit QIntervalConstraintPrivate();
     virtual ~QIntervalConstraintPrivate();
 
     QInterval *specification;

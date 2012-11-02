@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qaction_p.h"
+#include "private/qaction_p.h"
+#include "qreplyaction.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,14 +56,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QTrigger;
 class QInputPin;
 class QReplyAction;
 
-class QReplyActionPrivate : public QActionPrivate
+class Q_UML_EXPORT QReplyActionPrivate : public QActionPrivate
 {
+    Q_DECLARE_PUBLIC(QReplyAction)
+
 public:
-    explicit QReplyActionPrivate(QReplyAction *q_umlptr = 0);
+    explicit QReplyActionPrivate();
     virtual ~QReplyActionPrivate();
 
     QTrigger *replyToCall;

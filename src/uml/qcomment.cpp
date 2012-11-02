@@ -45,10 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCommentPrivate::QCommentPrivate(QComment *q_umlptr) :
+QCommentPrivate::QCommentPrivate() :
     annotatedElements(new QSet<QElement *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QCommentPrivate::~QCommentPrivate()
@@ -64,17 +63,14 @@ QCommentPrivate::~QCommentPrivate()
     \brief A comment is a textual annotation that can be attached to a set of elements.
  */
 
-QComment::QComment(QObject *parent)
-    : QObject(parent)
+QComment::QComment(QObject *parent) :
+    QElement(*new QCommentPrivate, parent)
 {
-    d_umlptr = new QCommentPrivate(this);
 }
 
-QComment::QComment(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QComment::QComment(QCommentPrivate &dd, QObject *parent) :
+    QElement(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QCommentPrivate;
 }
 
 QComment::~QComment()
@@ -88,7 +84,7 @@ QString QComment::body() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QComment);
+    Q_D(const QComment);
     return d->body;
 }
 
@@ -96,7 +92,7 @@ void QComment::setBody(QString body)
 {
     // This is a read-write attribute
 
-    QTUML_D(QComment);
+    Q_D(QComment);
     if (d->body != body) {
         d->body = body;
     }
@@ -109,7 +105,7 @@ const QSet<QElement *> *QComment::annotatedElements() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QComment);
+    Q_D(const QComment);
     return d->annotatedElements;
 }
 
@@ -117,7 +113,7 @@ void QComment::addAnnotatedElement(QElement *annotatedElement)
 {
     // This is a read-write association end
 
-    QTUML_D(QComment);
+    Q_D(QComment);
     if (!d->annotatedElements->contains(annotatedElement)) {
         d->annotatedElements->insert(annotatedElement);
     }
@@ -127,7 +123,7 @@ void QComment::removeAnnotatedElement(QElement *annotatedElement)
 {
     // This is a read-write association end
 
-    QTUML_D(QComment);
+    Q_D(QComment);
     if (d->annotatedElements->contains(annotatedElement)) {
         d->annotatedElements->remove(annotatedElement);
     }

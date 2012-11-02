@@ -55,10 +55,13 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QClassifier;
 class QComponentRealization;
 class QPackageableElement;
 class QInterface;
+
+class QComponentPrivate;
 
 class Q_UML_EXPORT QComponent : public QClass
 {
@@ -72,6 +75,7 @@ class Q_UML_EXPORT QComponent : public QClass
     Q_PROPERTY(const QSet<QPackageableElement *> * packagedElements READ packagedElements)
 
     Q_DISABLE_COPY(QComponent)
+    Q_DECLARE_PRIVATE(QComponent)
 
 public:
     explicit QComponent(QObject *parent = 0);
@@ -96,12 +100,13 @@ public:
     const QSet<QInterface *> *usedInterfaces(const QClassifier *classifier) const;
 
 protected:
-    explicit QComponent(bool createPimpl, QObject *parent = 0);
+    explicit QComponent(QComponentPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QComponent) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QComponent) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QComponent) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QComponent) *> *)
 
 QT_END_HEADER

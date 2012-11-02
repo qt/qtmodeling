@@ -47,11 +47,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QComponentRealizationPrivate::QComponentRealizationPrivate(QComponentRealization *q_umlptr) :
+QComponentRealizationPrivate::QComponentRealizationPrivate() :
     abstraction(0),
     realizingClassifiers(new QSet<QClassifier *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QComponentRealizationPrivate::~QComponentRealizationPrivate()
@@ -67,17 +66,14 @@ QComponentRealizationPrivate::~QComponentRealizationPrivate()
     \brief The realization concept is specialized to (optionally) define the classifiers that realize the contract offered by a component in terms of its provided and required interfaces. The component forms an abstraction from these various classifiers.
  */
 
-QComponentRealization::QComponentRealization(QObject *parent)
-    : QRealization(false, parent)
+QComponentRealization::QComponentRealization(QObject *parent) :
+    QRealization(*new QComponentRealizationPrivate, parent)
 {
-    d_umlptr = new QComponentRealizationPrivate(this);
 }
 
-QComponentRealization::QComponentRealization(bool createPimpl, QObject *parent)
-    : QRealization(createPimpl, parent)
+QComponentRealization::QComponentRealization(QComponentRealizationPrivate &dd, QObject *parent) :
+    QRealization(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QComponentRealizationPrivate;
 }
 
 QComponentRealization::~QComponentRealization()
@@ -91,7 +87,7 @@ QComponent *QComponentRealization::abstraction() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QComponentRealization);
+    Q_D(const QComponentRealization);
     return d->abstraction;
 }
 
@@ -99,7 +95,7 @@ void QComponentRealization::setAbstraction(QComponent *abstraction)
 {
     // This is a read-write association end
 
-    QTUML_D(QComponentRealization);
+    Q_D(QComponentRealization);
     if (d->abstraction != abstraction) {
         // Adjust opposite property
         if (d->abstraction)
@@ -129,7 +125,7 @@ const QSet<QClassifier *> *QComponentRealization::realizingClassifiers() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QComponentRealization);
+    Q_D(const QComponentRealization);
     return d->realizingClassifiers;
 }
 
@@ -137,7 +133,7 @@ void QComponentRealization::addRealizingClassifier(QClassifier *realizingClassif
 {
     // This is a read-write association end
 
-    QTUML_D(QComponentRealization);
+    Q_D(QComponentRealization);
     if (!d->realizingClassifiers->contains(realizingClassifier)) {
         d->realizingClassifiers->insert(realizingClassifier);
 
@@ -150,7 +146,7 @@ void QComponentRealization::removeRealizingClassifier(QClassifier *realizingClas
 {
     // This is a read-write association end
 
-    QTUML_D(QComponentRealization);
+    Q_D(QComponentRealization);
     if (d->realizingClassifiers->contains(realizingClassifier)) {
         d->realizingClassifiers->remove(realizingClassifier);
 

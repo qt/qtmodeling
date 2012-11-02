@@ -43,12 +43,11 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+#include <QtUml/QInteractionFragment>
+
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
-
-// Base class includes
-#include <QtCore/QObject>
-#include <QtUml/QInteractionFragment>
 
 // Qt includes
 #include <QtCore/QList>
@@ -60,31 +59,15 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QGate;
 class QInteractionOperand;
 
-class Q_UML_EXPORT QCombinedFragment : public QObject, public QInteractionFragment
+class QCombinedFragmentPrivate;
+
+class Q_UML_EXPORT QCombinedFragment : public QInteractionFragment
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From QInteractionFragment
-    Q_PROPERTY(const QSet<QGeneralOrdering *> * generalOrderings READ generalOrderings)
-    Q_PROPERTY(QInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
-    Q_PROPERTY(const QSet<QLifeline *> * covered READ covered)
-    Q_PROPERTY(QInteractionOperand * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
 
     // From QCombinedFragment
     Q_PROPERTY(QtUml::InteractionOperatorKind interactionOperator READ interactionOperator WRITE setInteractionOperator)
@@ -92,6 +75,7 @@ class Q_UML_EXPORT QCombinedFragment : public QObject, public QInteractionFragme
     Q_PROPERTY(const QList<QInteractionOperand *> * operands READ operands)
 
     Q_DISABLE_COPY(QCombinedFragment)
+    Q_DECLARE_PRIVATE(QCombinedFragment)
 
 public:
     explicit QCombinedFragment(QObject *parent = 0);
@@ -110,12 +94,13 @@ public:
     void removeOperand(QInteractionOperand *operand);
 
 protected:
-    explicit QCombinedFragment(bool createPimpl, QObject *parent = 0);
+    explicit QCombinedFragment(QCombinedFragmentPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QCombinedFragment) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QCombinedFragment) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QCombinedFragment) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QCombinedFragment) *> *)
 
 QT_END_HEADER

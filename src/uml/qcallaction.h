@@ -55,13 +55,24 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QOutputPin;
+
+class QCallActionPrivate;
 
 class Q_UML_EXPORT QCallAction : public QInvocationAction
 {
+    Q_OBJECT
+
+    // From QCallAction
+    Q_PROPERTY(bool isSynchronous READ isSynchronous WRITE setSynchronous)
+    Q_PROPERTY(const QList<QOutputPin *> * results READ results)
+
     Q_DISABLE_COPY(QCallAction)
+    Q_DECLARE_PRIVATE(QCallAction)
 
 public:
+    explicit QCallAction(QObject *parent = 0);
     virtual ~QCallAction();
 
     // Attributes
@@ -74,10 +85,14 @@ public:
     void removeResult(QOutputPin *result);
 
 protected:
-    explicit QCallAction();
+    explicit QCallAction(QCallActionPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QCallAction) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QCallAction) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QCallAction) *> *)
 
 QT_END_HEADER
 

@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QSignalPrivate::QSignalPrivate(QSignal *q_umlptr) :
+QSignalPrivate::QSignalPrivate() :
     ownedAttributes(new QList<QProperty *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QSignalPrivate::~QSignalPrivate()
@@ -65,17 +64,14 @@ QSignalPrivate::~QSignalPrivate()
     \brief A signal is a specification of send request instances communicated between objects. The receiving object handles the received request instances as specified by its receptions. The data carried by a send request (which was passed to it by the send invocation occurrence that caused that request) are represented as attributes of the signal. A signal is defined independently of the classifiers handling the signal occurrence.
  */
 
-QSignal::QSignal(QObject *parent)
-    : QObject(parent)
+QSignal::QSignal(QObject *parent) :
+    QClassifier(*new QSignalPrivate, parent)
 {
-    d_umlptr = new QSignalPrivate(this);
 }
 
-QSignal::QSignal(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QSignal::QSignal(QSignalPrivate &dd, QObject *parent) :
+    QClassifier(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QSignalPrivate;
 }
 
 QSignal::~QSignal()
@@ -89,7 +85,7 @@ const QList<QProperty *> *QSignal::ownedAttributes() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QSignal);
+    Q_D(const QSignal);
     return d->ownedAttributes;
 }
 
@@ -97,12 +93,12 @@ void QSignal::addOwnedAttribute(QProperty *ownedAttribute)
 {
     // This is a read-write association end
 
-    QTUML_D(QSignal);
+    Q_D(QSignal);
     if (!d->ownedAttributes->contains(ownedAttribute)) {
         d->ownedAttributes->append(ownedAttribute);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(ownedAttribute));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(dynamic_cast<QNamedElement *>(ownedAttribute));
         d->QClassifierPrivate::addAttribute(dynamic_cast<QProperty *>(ownedAttribute));
     }
 }
@@ -111,7 +107,7 @@ void QSignal::removeOwnedAttribute(QProperty *ownedAttribute)
 {
     // This is a read-write association end
 
-    QTUML_D(QSignal);
+    Q_D(QSignal);
     if (d->ownedAttributes->contains(ownedAttribute)) {
         d->ownedAttributes->removeAll(ownedAttribute);
 

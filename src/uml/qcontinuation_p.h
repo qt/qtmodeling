@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qinteractionfragment_p.h"
+#include "private/qinteractionfragment_p.h"
+#include "qcontinuation.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,10 +55,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QContinuation;
 
-class QContinuationPrivate : public QInteractionFragmentPrivate
+class Q_UML_EXPORT QContinuationPrivate : public QInteractionFragmentPrivate
 {
+    Q_DECLARE_PUBLIC(QContinuation)
+
 public:
-    explicit QContinuationPrivate(QContinuation *q_umlptr = 0);
+    explicit QContinuationPrivate();
     virtual ~QContinuationPrivate();
 
     bool setting;

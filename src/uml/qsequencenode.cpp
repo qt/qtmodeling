@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QSequenceNodePrivate::QSequenceNodePrivate(QSequenceNode *q_umlptr) :
+QSequenceNodePrivate::QSequenceNodePrivate() :
     executableNodes(new QList<QExecutableNode *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QSequenceNodePrivate::~QSequenceNodePrivate()
@@ -67,17 +66,14 @@ QSequenceNodePrivate::~QSequenceNodePrivate()
     \brief A sequence node is a structured activity node that executes its actions in order.
  */
 
-QSequenceNode::QSequenceNode(QObject *parent)
-    : QStructuredActivityNode(false, parent)
+QSequenceNode::QSequenceNode(QObject *parent) :
+    QStructuredActivityNode(*new QSequenceNodePrivate, parent)
 {
-    d_umlptr = new QSequenceNodePrivate(this);
 }
 
-QSequenceNode::QSequenceNode(bool createPimpl, QObject *parent)
-    : QStructuredActivityNode(createPimpl, parent)
+QSequenceNode::QSequenceNode(QSequenceNodePrivate &dd, QObject *parent) :
+    QStructuredActivityNode(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QSequenceNodePrivate;
 }
 
 QSequenceNode::~QSequenceNode()
@@ -91,7 +87,7 @@ const QList<QExecutableNode *> *QSequenceNode::executableNodes() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QSequenceNode);
+    Q_D(const QSequenceNode);
     return d->executableNodes;
 }
 
@@ -99,7 +95,7 @@ void QSequenceNode::addExecutableNode(QExecutableNode *executableNode)
 {
     // This is a read-write association end
 
-    QTUML_D(QSequenceNode);
+    Q_D(QSequenceNode);
     if (!d->executableNodes->contains(executableNode)) {
         d->executableNodes->append(executableNode);
     }
@@ -109,7 +105,7 @@ void QSequenceNode::removeExecutableNode(QExecutableNode *executableNode)
 {
     // This is a read-write association end
 
-    QTUML_D(QSequenceNode);
+    Q_D(QSequenceNode);
     if (d->executableNodes->contains(executableNode)) {
         d->executableNodes->removeAll(executableNode);
     }

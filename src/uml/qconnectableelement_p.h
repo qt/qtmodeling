@@ -44,8 +44,11 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qtypedelement_p.h"
-#include "qparameterableelement_p.h"
+#include "private/qobject_p.h"
+
+#include "private/qtypedelement_p.h"
+#include "private/qparameterableelement_p.h"
+#include "qconnectableelement.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -56,12 +59,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QConnectorEnd;
 class QConnectableElementTemplateParameter;
 
-class QConnectableElementPrivate : public virtual QTypedElementPrivate, public QParameterableElementPrivate
+class Q_UML_EXPORT QConnectableElementPrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QConnectableElement)
+
 public:
+    explicit QConnectableElementPrivate();
     virtual ~QConnectableElementPrivate();
 
     QConnectableElementTemplateParameter *templateParameter;
@@ -70,8 +77,9 @@ public:
     void addEnd(QConnectorEnd *end);
     void removeEnd(QConnectorEnd *end);
 
-protected:
-    explicit QConnectableElementPrivate();
+private:
+    QTypedElementPrivate *_wrappedTypedElementPrivate;
+    QParameterableElementPrivate *_wrappedParameterableElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

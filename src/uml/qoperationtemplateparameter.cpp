@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QOperationTemplateParameterPrivate::QOperationTemplateParameterPrivate(QOperationTemplateParameter *q_umlptr) :
+QOperationTemplateParameterPrivate::QOperationTemplateParameterPrivate() :
     parameteredElement(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QOperationTemplateParameterPrivate::~QOperationTemplateParameterPrivate()
@@ -64,17 +63,14 @@ QOperationTemplateParameterPrivate::~QOperationTemplateParameterPrivate()
     \brief An operation template parameter exposes an operation as a formal parameter for a template.
  */
 
-QOperationTemplateParameter::QOperationTemplateParameter(QObject *parent)
-    : QTemplateParameter(false, parent)
+QOperationTemplateParameter::QOperationTemplateParameter(QObject *parent) :
+    QTemplateParameter(*new QOperationTemplateParameterPrivate, parent)
 {
-    d_umlptr = new QOperationTemplateParameterPrivate(this);
 }
 
-QOperationTemplateParameter::QOperationTemplateParameter(bool createPimpl, QObject *parent)
-    : QTemplateParameter(createPimpl, parent)
+QOperationTemplateParameter::QOperationTemplateParameter(QOperationTemplateParameterPrivate &dd, QObject *parent) :
+    QTemplateParameter(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QOperationTemplateParameterPrivate;
 }
 
 QOperationTemplateParameter::~QOperationTemplateParameter()
@@ -88,7 +84,7 @@ QOperation *QOperationTemplateParameter::parameteredElement() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QOperationTemplateParameter);
+    Q_D(const QOperationTemplateParameter);
     return d->parameteredElement;
 }
 
@@ -96,7 +92,7 @@ void QOperationTemplateParameter::setParameteredElement(QOperation *parameteredE
 {
     // This is a read-write association end
 
-    QTUML_D(QOperationTemplateParameter);
+    Q_D(QOperationTemplateParameter);
     if (d->parameteredElement != parameteredElement) {
         // Adjust opposite property
 

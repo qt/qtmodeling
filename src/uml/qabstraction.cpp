@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QAbstractionPrivate::QAbstractionPrivate(QAbstraction *q_umlptr) :
+QAbstractionPrivate::QAbstractionPrivate() :
     mapping(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QAbstractionPrivate::~QAbstractionPrivate()
@@ -64,17 +63,14 @@ QAbstractionPrivate::~QAbstractionPrivate()
     \brief An abstraction is a relationship that relates two elements or sets of elements that represent the same concept at different levels of abstraction or from different viewpoints.
  */
 
-QAbstraction::QAbstraction(QObject *parent)
-    : QDependency(false, parent)
+QAbstraction::QAbstraction(QObject *parent) :
+    QDependency(*new QAbstractionPrivate, parent)
 {
-    d_umlptr = new QAbstractionPrivate(this);
 }
 
-QAbstraction::QAbstraction(bool createPimpl, QObject *parent)
-    : QDependency(createPimpl, parent)
+QAbstraction::QAbstraction(QAbstractionPrivate &dd, QObject *parent) :
+    QDependency(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QAbstractionPrivate;
 }
 
 QAbstraction::~QAbstraction()
@@ -88,7 +84,7 @@ QOpaqueExpression *QAbstraction::mapping() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QAbstraction);
+    Q_D(const QAbstraction);
     return d->mapping;
 }
 
@@ -96,7 +92,7 @@ void QAbstraction::setMapping(QOpaqueExpression *mapping)
 {
     // This is a read-write association end
 
-    QTUML_D(QAbstraction);
+    Q_D(QAbstraction);
     if (d->mapping != mapping) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->mapping));

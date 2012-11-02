@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qaction_p.h"
+#include "private/qaction_p.h"
+#include "qunmarshallaction.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,15 +56,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInputPin;
 class QOutputPin;
 class QClassifier;
 class QUnmarshallAction;
 
-class QUnmarshallActionPrivate : public QActionPrivate
+class Q_UML_EXPORT QUnmarshallActionPrivate : public QActionPrivate
 {
+    Q_DECLARE_PUBLIC(QUnmarshallAction)
+
 public:
-    explicit QUnmarshallActionPrivate(QUnmarshallAction *q_umlptr = 0);
+    explicit QUnmarshallActionPrivate();
     virtual ~QUnmarshallActionPrivate();
 
     QInputPin *object;

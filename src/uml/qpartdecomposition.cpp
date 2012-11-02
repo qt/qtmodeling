@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QPartDecompositionPrivate::QPartDecompositionPrivate(QPartDecomposition *q_umlptr)
+QPartDecompositionPrivate::QPartDecompositionPrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QPartDecompositionPrivate::~QPartDecompositionPrivate()
@@ -62,17 +61,14 @@ QPartDecompositionPrivate::~QPartDecompositionPrivate()
     \brief A part decomposition is a description of the internal interactions of one lifeline relative to an interaction.
  */
 
-QPartDecomposition::QPartDecomposition(QObject *parent)
-    : QInteractionUse(false, parent)
+QPartDecomposition::QPartDecomposition(QObject *parent) :
+    QInteractionUse(*new QPartDecompositionPrivate, parent)
 {
-    d_umlptr = new QPartDecompositionPrivate(this);
 }
 
-QPartDecomposition::QPartDecomposition(bool createPimpl, QObject *parent)
-    : QInteractionUse(createPimpl, parent)
+QPartDecomposition::QPartDecomposition(QPartDecompositionPrivate &dd, QObject *parent) :
+    QInteractionUse(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QPartDecompositionPrivate;
 }
 
 QPartDecomposition::~QPartDecomposition()

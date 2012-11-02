@@ -19,21 +19,33 @@
         [%- FOREACH superclass IN class.superclass %]
             [%- PARENTSOF(classes.item(superclass.include.split('/').last), parents, redefinedProperties) -%]
         [%- END %]
-        [%- parents.push(class) -%]
+        [%- contains = 'false' -%]
+        [%- FOREACH parentClass IN parents -%]
+            [%- IF parentClass.name == class.name -%]
+                [%- contains = 'true' -%]
+            [%- END -%]
+        [%- END -%]
+        [%- IF contains == 'false' -%]
+            [%- parents.push(class) -%]
+        [%- END -%]
         [%- REDEFINEDPROPERTIES(class, redefinedProperties) -%]
     [%- END %]
 [%- END -%]
-[%- MACRO GENERATEPROPERTIES(class) BLOCK -%]
+[%- MACRO GENERATEPROPERTIES(class, recursive) BLOCK -%]
     [%- parents = [] -%]
     [%- redefinedProperties = [] -%]
+    [%- IF recursive == 'true' -%]
     [%- FOREACH superclass IN class.superclass %]
         [%- PARENTSOF(classes.item(superclass.include.split('/').last), parents, redefinedProperties) -%]
+    [%- END -%]
     [%- END %]
+    [%- IF recursive == 'false' -%]
     [%- parents.push(class) -%]
+    [%- END -%]
     [%- REDEFINEDPROPERTIES(class, redefinedProperties) -%]
     [%- FOREACH parent IN parents.unique -%]
     [%- IF parent.attribute.values or parent.associationend.values %]
-    // From ${parent.name}
+    // From [% IF recursive == 'true' %]aggregated [% END %]${parent.name}
         [%- FOREACH attribute IN parent.attribute.values -%]
         [%- IF redefinedProperties.grep(attribute.id).size == 0 -%]
             [%- IF attribute.isReadOnly == 'true' or attribute.accessor.size == 3 %]
@@ -100,6 +112,13 @@
 #define ${namespace.replace('/', '_').upper}_${class.name.upper}_H
 
 #include <[% namespace.split('/').0 %]/[% namespace.split('/').0 %]Global>
+
+// Base class includes
+[%- IF !class.superclass || class.superclass.size > 1 %]
+#include <QtCore/QObject>
+[%- ELSIF class.superclass.size == 1 %]
+#include <${class.superclass.0.include}>
+[%- END -%]
 [%- IF class.item('qtumlinclude') %]
 
 // [% namespace.split('/').0 %] includes
@@ -107,15 +126,7 @@
 
 #include <${include}>
 [%- END -%]
-[%- END -%]
-[%- IF class.item('superclass') %]
-
-// Base class includes
-[%- FOREACH superclass IN class.superclass -%]
-
-#include <${superclass.include}>
-[%- END -%]
-[%- END -%]
+[%- END %]
 [%- IF class.item('qtinclude') %]
 
 // Qt includes
@@ -123,14 +134,7 @@
 
 #include <${include}>
 [%- END -%]
-[%- END -%]
-
-[%- IF not(class.superclass) %]
-
-#define QTUML_D(Class) Class##Private * const d = dynamic_cast<Class##Private *>(d_umlptr);
-#define QTUML_Q(Class) Class * const q = dynamic_cast<Class *>(q_umlptr);
-[%- END -%]
-
+[%- END %]
 
 QT_BEGIN_HEADER
 [%- currentNamespace = '' -%]
@@ -157,34 +161,46 @@ QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
 
 QT_MODULE([% namespace.split('/').0 %])
 
-[%- IF not(class.superclass) %]
-class ${class.name}Private;
-[% END %]
+[%- IF class.superclass && class.superclass.size > 1 -%]
+[%- FOREACH superclass IN class.superclass -%]
+[%- IF loop.first %]
+// Forward decls for aggregated 'base classes'
+[% END -%]
+class ${superclass.include.split('/').last};
+
+[%- END %]
+[%- END -%]
+
 [%- found = 'false' -%]
 [%- FOREACH forwarddecl IN class.forwarddecl -%]
 [%- IF forwarddecl.namespace == namespace.replace('/', '::') and forwarddecl.content != class.name -%]
-[%- IF found == 'false' %]
+[%- IF found == 'false' -%]
 
-[%- found = 'true' -%]
+// Forward decls for function parameters
+[% found = 'true' -%]
 [%- END -%]
 class ${forwarddecl.content};
 
 [%- END %]
 [%- END -%]
 
-class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name}[%- IF class.superclass -%] : [% END -%][% FOREACH superclass = class.superclass %]public ${superclass.name.split('/').last}[% IF !loop.last %], [% END %][% END %]
+class ${class.name}Private;
+
+class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name} : [% IF class.superclass.size == 1 %]public ${class.superclass.0.name.split('/').last}[% ELSE %]public QObject[% END %]
 {
-[%- IF class.isAbstract == 'false' %]
+[%- IF class.attribute || class.associationend %]
     Q_OBJECT
 
-    [%- GENERATEPROPERTIES(class) -%]
+    [%- GENERATEPROPERTIES(class, 'false') -%]
 [% END %]
+[%- IF class.superclass and class.superclass.size > 1 -%]
+    [%- GENERATEPROPERTIES(class, 'true') -%]
+[%- END %]
     Q_DISABLE_COPY(${class.name})
+    Q_DECLARE_PRIVATE(${class.name})
 
 public:
-    [%- IF class.isAbstract == 'false' %]
     explicit ${class.name}(QObject *parent = 0);
-    [%- END%]
     virtual ~${class.name}();
     [%- IF class.item('attribute') %]
 
@@ -272,7 +288,7 @@ public:
 [%- ELSE -%]
 [%- modifiedFriendClass = friendClass.name -%]
 [%- END -%]
-[%- IF modifiedFriendClass.name != class.name -%]
+[%- IF friendClass.name != class.name -%]
 [%- friendClasses.push(modifiedFriendClass) -%]
 [%- END -%]
 [%- END -%]
@@ -286,28 +302,23 @@ public:
     [%- END %]
     friend class ${friendClass};
 [%- END %]
-[%- IF class.isAbstract == 'true' %]
 
 protected:
-    explicit ${class.name}();
-[%- ELSE %]
+    explicit ${class.name}(${class.name}Private &dd, QObject *parent = 0);
+[%- IF class.superclass and class.superclass.size > 1 %]
 
-protected:
-    explicit ${class.name}(bool createPimpl, QObject *parent = 0);
-[%- END %]
-[%- IF not(class.superclass) %]
-
-protected:
-    ${class.name}Private *d_umlptr;
+private:
+    [%- FOREACH parentClass IN class.superclass %]
+    ${parentClass.name} *_wrapped${parentClass.name.replace('^Q', '')};
+    [%- END %]
 [%- END %]
 };
 
 QT_END_NAMESPACE_${namespace.replace('/', '_').upper}
-[%- IF class.isAbstract == 'false' %]
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *> *)
-[%- END %]
 
 QT_END_HEADER
 

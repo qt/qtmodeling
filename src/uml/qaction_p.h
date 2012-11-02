@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qexecutablenode_p.h"
+#include "private/qexecutablenode_p.h"
+#include "qaction.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -56,14 +57,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QOutputPin;
 class QConstraint;
 class QClassifier;
 class QInputPin;
 
-class QActionPrivate : public QExecutableNodePrivate
+class Q_UML_EXPORT QActionPrivate : public QExecutableNodePrivate
 {
+    Q_DECLARE_PUBLIC(QAction)
+
 public:
+    explicit QActionPrivate();
     virtual ~QActionPrivate();
 
     bool isLocallyReentrant;
@@ -77,9 +82,6 @@ public:
     void removeInput(QInputPin *input);
     void addOutput(QOutputPin *output);
     void removeOutput(QOutputPin *output);
-
-protected:
-    explicit QActionPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

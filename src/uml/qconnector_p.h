@@ -43,11 +43,13 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+#include "private/qfeature_p.h"
+#include "qconnector.h"
+
+
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
-
-// Base class includes
-#include "qfeature_p.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -59,15 +61,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QAssociation;
 class QConnector;
 class QBehavior;
 class QConnectorEnd;
 
-class QConnectorPrivate : public QFeaturePrivate
+class Q_UML_EXPORT QConnectorPrivate : public QFeaturePrivate
 {
+    Q_DECLARE_PUBLIC(QConnector)
+
 public:
-    explicit QConnectorPrivate(QConnector *q_umlptr = 0);
+    explicit QConnectorPrivate();
     virtual ~QConnectorPrivate();
 
     QSet<QConnector *> *redefinedConnectors;

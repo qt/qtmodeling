@@ -49,13 +49,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QUseCasePrivate::QUseCasePrivate(QUseCase *q_umlptr) :
+QUseCasePrivate::QUseCasePrivate() :
     extensionPoints(new QSet<QExtensionPoint *>),
     includes(new QSet<QInclude *>),
     subjects(new QSet<QClassifier *>),
     extends(new QSet<QExtend *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QUseCasePrivate::~QUseCasePrivate()
@@ -74,17 +73,14 @@ QUseCasePrivate::~QUseCasePrivate()
     \brief A use case is the specification of a set of actions performed by a system, which yields an observable result that is, typically, of value for one or more actors or other stakeholders of the system.
  */
 
-QUseCase::QUseCase(QObject *parent)
-    : QObject(parent)
+QUseCase::QUseCase(QObject *parent) :
+    QBehavioredClassifier(*new QUseCasePrivate, parent)
 {
-    d_umlptr = new QUseCasePrivate(this);
 }
 
-QUseCase::QUseCase(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QUseCase::QUseCase(QUseCasePrivate &dd, QObject *parent) :
+    QBehavioredClassifier(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QUseCasePrivate;
 }
 
 QUseCase::~QUseCase()
@@ -98,7 +94,7 @@ const QSet<QExtensionPoint *> *QUseCase::extensionPoints() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QUseCase);
+    Q_D(const QUseCase);
     return d->extensionPoints;
 }
 
@@ -106,7 +102,7 @@ void QUseCase::addExtensionPoint(QExtensionPoint *extensionPoint)
 {
     // This is a read-write association end
 
-    QTUML_D(QUseCase);
+    Q_D(QUseCase);
     if (!d->extensionPoints->contains(extensionPoint)) {
         d->extensionPoints->insert(extensionPoint);
 
@@ -122,7 +118,7 @@ void QUseCase::removeExtensionPoint(QExtensionPoint *extensionPoint)
 {
     // This is a read-write association end
 
-    QTUML_D(QUseCase);
+    Q_D(QUseCase);
     if (d->extensionPoints->contains(extensionPoint)) {
         d->extensionPoints->remove(extensionPoint);
 
@@ -141,7 +137,7 @@ const QSet<QInclude *> *QUseCase::includes() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QUseCase);
+    Q_D(const QUseCase);
     return d->includes;
 }
 
@@ -149,7 +145,7 @@ void QUseCase::addInclude(QInclude *include)
 {
     // This is a read-write association end
 
-    QTUML_D(QUseCase);
+    Q_D(QUseCase);
     if (!d->includes->contains(include)) {
         d->includes->insert(include);
 
@@ -165,7 +161,7 @@ void QUseCase::removeInclude(QInclude *include)
 {
     // This is a read-write association end
 
-    QTUML_D(QUseCase);
+    Q_D(QUseCase);
     if (d->includes->contains(include)) {
         d->includes->remove(include);
 
@@ -184,7 +180,7 @@ const QSet<QClassifier *> *QUseCase::subjects() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QUseCase);
+    Q_D(const QUseCase);
     return d->subjects;
 }
 
@@ -192,7 +188,7 @@ void QUseCase::addSubject(QClassifier *subject)
 {
     // This is a read-write association end
 
-    QTUML_D(QUseCase);
+    Q_D(QUseCase);
     if (!d->subjects->contains(subject)) {
         d->subjects->insert(subject);
 
@@ -205,7 +201,7 @@ void QUseCase::removeSubject(QClassifier *subject)
 {
     // This is a read-write association end
 
-    QTUML_D(QUseCase);
+    Q_D(QUseCase);
     if (d->subjects->contains(subject)) {
         d->subjects->remove(subject);
 
@@ -222,7 +218,7 @@ const QSet<QExtend *> *QUseCase::extends() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QUseCase);
+    Q_D(const QUseCase);
     return d->extends;
 }
 
@@ -230,7 +226,7 @@ void QUseCase::addExtend(QExtend *extend)
 {
     // This is a read-write association end
 
-    QTUML_D(QUseCase);
+    Q_D(QUseCase);
     if (!d->extends->contains(extend)) {
         d->extends->insert(extend);
 
@@ -246,7 +242,7 @@ void QUseCase::removeExtend(QExtend *extend)
 {
     // This is a read-write association end
 
-    QTUML_D(QUseCase);
+    Q_D(QUseCase);
     if (d->extends->contains(extend)) {
         d->extends->remove(extend);
 

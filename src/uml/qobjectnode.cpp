@@ -70,7 +70,17 @@ QObjectNodePrivate::~QObjectNodePrivate()
     \brief An object node is an abstract activity node that is part of defining object flow in an activity.Object nodes have support for token selection, limitation on the number of tokens, specifying the state required for tokens, and carrying control values.
  */
 
-QObjectNode::QObjectNode()
+QObjectNode::QObjectNode(QObject *parent) :
+    QObject(*new QObjectNodePrivate, parent),
+    _wrappedActivityNode(new QActivityNode(this)),
+    _wrappedTypedElement(new QTypedElement(this))
+{
+}
+
+QObjectNode::QObjectNode(QObjectNodePrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedActivityNode(new QActivityNode(this)),
+    _wrappedTypedElement(new QTypedElement(this))
 {
 }
 
@@ -85,7 +95,7 @@ bool QObjectNode::isControlType() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QObjectNode);
+    Q_D(const QObjectNode);
     return d->isControlType;
 }
 
@@ -93,7 +103,7 @@ void QObjectNode::setControlType(bool isControlType)
 {
     // This is a read-write attribute
 
-    QTUML_D(QObjectNode);
+    Q_D(QObjectNode);
     if (d->isControlType != isControlType) {
         d->isControlType = isControlType;
     }
@@ -106,7 +116,7 @@ QtUml::ObjectNodeOrderingKind QObjectNode::ordering() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QObjectNode);
+    Q_D(const QObjectNode);
     return d->ordering;
 }
 
@@ -114,7 +124,7 @@ void QObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
     // This is a read-write attribute
 
-    QTUML_D(QObjectNode);
+    Q_D(QObjectNode);
     if (d->ordering != ordering) {
         d->ordering = ordering;
     }
@@ -127,7 +137,7 @@ QValueSpecification *QObjectNode::upperBound() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QObjectNode);
+    Q_D(const QObjectNode);
     return d->upperBound;
 }
 
@@ -135,7 +145,7 @@ void QObjectNode::setUpperBound(QValueSpecification *upperBound)
 {
     // This is a read-write association end
 
-    QTUML_D(QObjectNode);
+    Q_D(QObjectNode);
     if (d->upperBound != upperBound) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->upperBound));
@@ -156,7 +166,7 @@ QBehavior *QObjectNode::selection() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QObjectNode);
+    Q_D(const QObjectNode);
     return d->selection;
 }
 
@@ -164,7 +174,7 @@ void QObjectNode::setSelection(QBehavior *selection)
 {
     // This is a read-write association end
 
-    QTUML_D(QObjectNode);
+    Q_D(QObjectNode);
     if (d->selection != selection) {
         d->selection = selection;
     }
@@ -177,7 +187,7 @@ const QSet<QState *> *QObjectNode::inState() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QObjectNode);
+    Q_D(const QObjectNode);
     return d->inState;
 }
 
@@ -185,7 +195,7 @@ void QObjectNode::addInState(QState *inState)
 {
     // This is a read-write association end
 
-    QTUML_D(QObjectNode);
+    Q_D(QObjectNode);
     if (!d->inState->contains(inState)) {
         d->inState->insert(inState);
     }
@@ -195,7 +205,7 @@ void QObjectNode::removeInState(QState *inState)
 {
     // This is a read-write association end
 
-    QTUML_D(QObjectNode);
+    Q_D(QObjectNode);
     if (d->inState->contains(inState)) {
         d->inState->remove(inState);
     }

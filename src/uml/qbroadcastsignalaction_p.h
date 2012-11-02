@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qinvocationaction_p.h"
+#include "private/qinvocationaction_p.h"
+#include "qbroadcastsignalaction.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QSignal;
 class QBroadcastSignalAction;
 
-class QBroadcastSignalActionPrivate : public QInvocationActionPrivate
+class Q_UML_EXPORT QBroadcastSignalActionPrivate : public QInvocationActionPrivate
 {
+    Q_DECLARE_PUBLIC(QBroadcastSignalAction)
+
 public:
-    explicit QBroadcastSignalActionPrivate(QBroadcastSignalAction *q_umlptr = 0);
+    explicit QBroadcastSignalActionPrivate();
     virtual ~QBroadcastSignalActionPrivate();
 
     QSignal *signal;

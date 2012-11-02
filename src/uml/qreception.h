@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QBehavioralFeature>
 
 QT_BEGIN_HEADER
@@ -53,54 +52,20 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QSignal;
 
-class Q_UML_EXPORT QReception : public QObject, public QBehavioralFeature
+class QReceptionPrivate;
+
+class Q_UML_EXPORT QReception : public QBehavioralFeature
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From QNamespace
-    Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
-    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
-    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
-    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
-    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
-    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
-
-    // From QRedefinableElement
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
-    Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
-
-    // From QFeature
-    Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic)
-    Q_PROPERTY(const QSet<QClassifier *> * featuringClassifiers READ featuringClassifiers)
-
-    // From QBehavioralFeature
-    Q_PROPERTY(QtUml::CallConcurrencyKind concurrency READ concurrency WRITE setConcurrency)
-    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract)
-    Q_PROPERTY(const QSet<QType *> * raisedExceptions READ raisedExceptions)
-    Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
-    Q_PROPERTY(const QSet<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
-    Q_PROPERTY(const QSet<QBehavior *> * methods READ methods)
 
     // From QReception
     Q_PROPERTY(QSignal * signal READ signal WRITE setSignal)
 
     Q_DISABLE_COPY(QReception)
+    Q_DECLARE_PRIVATE(QReception)
 
 public:
     explicit QReception(QObject *parent = 0);
@@ -111,12 +76,13 @@ public:
     void setSignal(QSignal *signal);
 
 protected:
-    explicit QReception(bool createPimpl, QObject *parent = 0);
+    explicit QReception(QReceptionPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QReception) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QReception) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QReception) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QReception) *> *)
 
 QT_END_HEADER

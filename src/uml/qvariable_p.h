@@ -44,8 +44,12 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qmultiplicityelement_p.h"
-#include "qconnectableelement_p.h"
+#include "private/qobject_p.h"
+
+#include "private/qmultiplicityelement_p.h"
+#include "private/qconnectableelement_p.h"
+#include "qvariable.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,19 +57,26 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QActivity;
 class QStructuredActivityNode;
 class QAction;
 class QVariable;
 
-class QVariablePrivate : public QMultiplicityElementPrivate, public QConnectableElementPrivate
+class Q_UML_EXPORT QVariablePrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QVariable)
+
 public:
-    explicit QVariablePrivate(QVariable *q_umlptr = 0);
+    explicit QVariablePrivate();
     virtual ~QVariablePrivate();
 
     QStructuredActivityNode *scope;
     QActivity *activityScope;
+
+private:
+    QMultiplicityElementPrivate *_wrappedMultiplicityElementPrivate;
+    QConnectableElementPrivate *_wrappedConnectableElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

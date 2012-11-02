@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDurationPrivate::QDurationPrivate(QDuration *q_umlptr) :
+QDurationPrivate::QDurationPrivate() :
     expr(0),
     observations(new QSet<QObservation *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QDurationPrivate::~QDurationPrivate()
@@ -66,17 +65,14 @@ QDurationPrivate::~QDurationPrivate()
     \brief Duration defines a value specification that specifies the temporal distance between two time instants.
  */
 
-QDuration::QDuration(QObject *parent)
-    : QObject(parent)
+QDuration::QDuration(QObject *parent) :
+    QValueSpecification(*new QDurationPrivate, parent)
 {
-    d_umlptr = new QDurationPrivate(this);
 }
 
-QDuration::QDuration(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QDuration::QDuration(QDurationPrivate &dd, QObject *parent) :
+    QValueSpecification(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QDurationPrivate;
 }
 
 QDuration::~QDuration()
@@ -90,7 +86,7 @@ QValueSpecification *QDuration::expr() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QDuration);
+    Q_D(const QDuration);
     return d->expr;
 }
 
@@ -98,7 +94,7 @@ void QDuration::setExpr(QValueSpecification *expr)
 {
     // This is a read-write association end
 
-    QTUML_D(QDuration);
+    Q_D(QDuration);
     if (d->expr != expr) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->expr));
@@ -119,7 +115,7 @@ const QSet<QObservation *> *QDuration::observations() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QDuration);
+    Q_D(const QDuration);
     return d->observations;
 }
 
@@ -127,7 +123,7 @@ void QDuration::addObservation(QObservation *observation)
 {
     // This is a read-write association end
 
-    QTUML_D(QDuration);
+    Q_D(QDuration);
     if (!d->observations->contains(observation)) {
         d->observations->insert(observation);
     }
@@ -137,7 +133,7 @@ void QDuration::removeObservation(QObservation *observation)
 {
     // This is a read-write association end
 
-    QTUML_D(QDuration);
+    Q_D(QDuration);
     if (d->observations->contains(observation)) {
         d->observations->remove(observation);
     }

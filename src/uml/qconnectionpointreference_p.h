@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qvertex_p.h"
+#include "private/qvertex_p.h"
+#include "qconnectionpointreference.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,14 +56,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QPseudostate;
 class QState;
 class QConnectionPointReference;
 
-class QConnectionPointReferencePrivate : public QVertexPrivate
+class Q_UML_EXPORT QConnectionPointReferencePrivate : public QVertexPrivate
 {
+    Q_DECLARE_PUBLIC(QConnectionPointReference)
+
 public:
-    explicit QConnectionPointReferencePrivate(QConnectionPointReference *q_umlptr = 0);
+    explicit QConnectionPointReferencePrivate();
     virtual ~QConnectionPointReferencePrivate();
 
     QSet<QPseudostate *> *exits;

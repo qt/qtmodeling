@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QReadStructuralFeatureActionPrivate::QReadStructuralFeatureActionPrivate(QReadStructuralFeatureAction *q_umlptr) :
+QReadStructuralFeatureActionPrivate::QReadStructuralFeatureActionPrivate() :
     result(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QReadStructuralFeatureActionPrivate::~QReadStructuralFeatureActionPrivate()
@@ -64,17 +63,14 @@ QReadStructuralFeatureActionPrivate::~QReadStructuralFeatureActionPrivate()
     \brief A read structural feature action is a structural feature action that retrieves the values of a structural feature.
  */
 
-QReadStructuralFeatureAction::QReadStructuralFeatureAction(QObject *parent)
-    : QObject(parent)
+QReadStructuralFeatureAction::QReadStructuralFeatureAction(QObject *parent) :
+    QStructuralFeatureAction(*new QReadStructuralFeatureActionPrivate, parent)
 {
-    d_umlptr = new QReadStructuralFeatureActionPrivate(this);
 }
 
-QReadStructuralFeatureAction::QReadStructuralFeatureAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QReadStructuralFeatureAction::QReadStructuralFeatureAction(QReadStructuralFeatureActionPrivate &dd, QObject *parent) :
+    QStructuralFeatureAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QReadStructuralFeatureActionPrivate;
 }
 
 QReadStructuralFeatureAction::~QReadStructuralFeatureAction()
@@ -88,7 +84,7 @@ QOutputPin *QReadStructuralFeatureAction::result() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QReadStructuralFeatureAction);
+    Q_D(const QReadStructuralFeatureAction);
     return d->result;
 }
 
@@ -96,7 +92,7 @@ void QReadStructuralFeatureAction::setResult(QOutputPin *result)
 {
     // This is a read-write association end
 
-    QTUML_D(QReadStructuralFeatureAction);
+    Q_D(QReadStructuralFeatureAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->result));

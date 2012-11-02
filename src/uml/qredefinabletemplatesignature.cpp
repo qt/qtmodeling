@@ -47,11 +47,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QRedefinableTemplateSignaturePrivate::QRedefinableTemplateSignaturePrivate(QRedefinableTemplateSignature *q_umlptr) :
+QRedefinableTemplateSignaturePrivate::QRedefinableTemplateSignaturePrivate() :
     classifier(0),
     extendedSignatures(new QSet<QRedefinableTemplateSignature *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QRedefinableTemplateSignaturePrivate::~QRedefinableTemplateSignaturePrivate()
@@ -67,17 +66,18 @@ QRedefinableTemplateSignaturePrivate::~QRedefinableTemplateSignaturePrivate()
     \brief A redefinable template signature supports the addition of formal template parameters in a specialization of a template classifier.
  */
 
-QRedefinableTemplateSignature::QRedefinableTemplateSignature(QObject *parent)
-    : QTemplateSignature(false, parent)
+QRedefinableTemplateSignature::QRedefinableTemplateSignature(QObject *parent) :
+    QObject(*new QRedefinableTemplateSignaturePrivate, parent),
+    _wrappedTemplateSignature(new QTemplateSignature(this)),
+    _wrappedRedefinableElement(new QRedefinableElement(this))
 {
-    d_umlptr = new QRedefinableTemplateSignaturePrivate(this);
 }
 
-QRedefinableTemplateSignature::QRedefinableTemplateSignature(bool createPimpl, QObject *parent)
-    : QTemplateSignature(createPimpl, parent)
+QRedefinableTemplateSignature::QRedefinableTemplateSignature(QRedefinableTemplateSignaturePrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedTemplateSignature(new QTemplateSignature(this)),
+    _wrappedRedefinableElement(new QRedefinableElement(this))
 {
-    if (createPimpl)
-        d_umlptr = new QRedefinableTemplateSignaturePrivate;
 }
 
 QRedefinableTemplateSignature::~QRedefinableTemplateSignature()
@@ -93,7 +93,7 @@ const QSet<QTemplateParameter *> *QRedefinableTemplateSignature::inheritedParame
 
     qWarning("QRedefinableTemplateSignature::inheritedParameters: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(const QRedefinableTemplateSignature);
+    //Q_D(const QRedefinableTemplateSignature);
     //return <derived-return>;
 }
 
@@ -104,7 +104,7 @@ QClassifier *QRedefinableTemplateSignature::classifier() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QRedefinableTemplateSignature);
+    Q_D(const QRedefinableTemplateSignature);
     return d->classifier;
 }
 
@@ -112,7 +112,7 @@ void QRedefinableTemplateSignature::setClassifier(QClassifier *classifier)
 {
     // This is a read-write association end
 
-    QTUML_D(QRedefinableTemplateSignature);
+    Q_D(QRedefinableTemplateSignature);
     if (d->classifier != classifier) {
         // Adjust opposite property
 
@@ -138,7 +138,7 @@ const QSet<QRedefinableTemplateSignature *> *QRedefinableTemplateSignature::exte
 {
     // This is a read-write association end
 
-    QTUML_D(const QRedefinableTemplateSignature);
+    Q_D(const QRedefinableTemplateSignature);
     return d->extendedSignatures;
 }
 
@@ -146,7 +146,7 @@ void QRedefinableTemplateSignature::addExtendedSignature(QRedefinableTemplateSig
 {
     // This is a read-write association end
 
-    QTUML_D(QRedefinableTemplateSignature);
+    Q_D(QRedefinableTemplateSignature);
     if (!d->extendedSignatures->contains(extendedSignature)) {
         d->extendedSignatures->insert(extendedSignature);
 
@@ -159,7 +159,7 @@ void QRedefinableTemplateSignature::removeExtendedSignature(QRedefinableTemplate
 {
     // This is a read-write association end
 
-    QTUML_D(QRedefinableTemplateSignature);
+    Q_D(QRedefinableTemplateSignature);
     if (d->extendedSignatures->contains(extendedSignature)) {
         d->extendedSignatures->remove(extendedSignature);
 

@@ -43,12 +43,16 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+#include "private/qobject_p.h"
+
+#include "private/qactivitynode_p.h"
+#include "private/qtypedelement_p.h"
+#include "qobjectnode.h"
+
+
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
-
-// Base class includes
-#include "qactivitynode_p.h"
-#include "qtypedelement_p.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -59,13 +63,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QState;
 class QBehavior;
 class QValueSpecification;
 
-class QObjectNodePrivate : public QActivityNodePrivate, public QTypedElementPrivate
+class Q_UML_EXPORT QObjectNodePrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QObjectNode)
+
 public:
+    explicit QObjectNodePrivate();
     virtual ~QObjectNodePrivate();
 
     bool isControlType;
@@ -74,8 +82,9 @@ public:
     QBehavior *selection;
     QSet<QState *> *inState;
 
-protected:
-    explicit QObjectNodePrivate();
+private:
+    QActivityNodePrivate *_wrappedActivityNodePrivate;
+    QTypedElementPrivate *_wrappedTypedElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

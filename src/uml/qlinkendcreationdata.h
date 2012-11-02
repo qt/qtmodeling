@@ -52,7 +52,10 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInputPin;
+
+class QLinkEndCreationDataPrivate;
 
 class Q_UML_EXPORT QLinkEndCreationData : public QLinkEndData
 {
@@ -63,6 +66,7 @@ class Q_UML_EXPORT QLinkEndCreationData : public QLinkEndData
     Q_PROPERTY(QInputPin * insertAt READ insertAt WRITE setInsertAt)
 
     Q_DISABLE_COPY(QLinkEndCreationData)
+    Q_DECLARE_PRIVATE(QLinkEndCreationData)
 
 public:
     explicit QLinkEndCreationData(QObject *parent = 0);
@@ -77,12 +81,13 @@ public:
     void setInsertAt(QInputPin *insertAt);
 
 protected:
-    explicit QLinkEndCreationData(bool createPimpl, QObject *parent = 0);
+    explicit QLinkEndCreationData(QLinkEndCreationDataPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QLinkEndCreationData) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QLinkEndCreationData) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkEndCreationData) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QLinkEndCreationData) *> *)
 
 QT_END_HEADER

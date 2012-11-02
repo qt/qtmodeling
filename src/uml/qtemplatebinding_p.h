@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qdirectedrelationship_p.h"
+#include "private/qdirectedrelationship_p.h"
+#include "qtemplatebinding.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,15 +56,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QTemplateableElement;
 class QTemplateParameterSubstitution;
 class QTemplateSignature;
 class QTemplateBinding;
 
-class QTemplateBindingPrivate : public QDirectedRelationshipPrivate
+class Q_UML_EXPORT QTemplateBindingPrivate : public QDirectedRelationshipPrivate
 {
+    Q_DECLARE_PUBLIC(QTemplateBinding)
+
 public:
-    explicit QTemplateBindingPrivate(QTemplateBinding *q_umlptr = 0);
+    explicit QTemplateBindingPrivate();
     virtual ~QTemplateBindingPrivate();
 
     QTemplateSignature *signature;

@@ -47,11 +47,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QReadExtentActionPrivate::QReadExtentActionPrivate(QReadExtentAction *q_umlptr) :
+QReadExtentActionPrivate::QReadExtentActionPrivate() :
     classifier(0),
     result(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QReadExtentActionPrivate::~QReadExtentActionPrivate()
@@ -66,17 +65,14 @@ QReadExtentActionPrivate::~QReadExtentActionPrivate()
     \brief A read extent action is an action that retrieves the current instances of a classifier.
  */
 
-QReadExtentAction::QReadExtentAction(QObject *parent)
-    : QObject(parent)
+QReadExtentAction::QReadExtentAction(QObject *parent) :
+    QAction(*new QReadExtentActionPrivate, parent)
 {
-    d_umlptr = new QReadExtentActionPrivate(this);
 }
 
-QReadExtentAction::QReadExtentAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QReadExtentAction::QReadExtentAction(QReadExtentActionPrivate &dd, QObject *parent) :
+    QAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QReadExtentActionPrivate;
 }
 
 QReadExtentAction::~QReadExtentAction()
@@ -90,7 +86,7 @@ QClassifier *QReadExtentAction::classifier() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QReadExtentAction);
+    Q_D(const QReadExtentAction);
     return d->classifier;
 }
 
@@ -98,7 +94,7 @@ void QReadExtentAction::setClassifier(QClassifier *classifier)
 {
     // This is a read-write association end
 
-    QTUML_D(QReadExtentAction);
+    Q_D(QReadExtentAction);
     if (d->classifier != classifier) {
         d->classifier = classifier;
     }
@@ -111,7 +107,7 @@ QOutputPin *QReadExtentAction::result() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QReadExtentAction);
+    Q_D(const QReadExtentAction);
     return d->result;
 }
 
@@ -119,7 +115,7 @@ void QReadExtentAction::setResult(QOutputPin *result)
 {
     // This is a read-write association end
 
-    QTUML_D(QReadExtentAction);
+    Q_D(QReadExtentAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->result));

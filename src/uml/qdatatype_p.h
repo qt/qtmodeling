@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qclassifier_p.h"
+#include "private/qclassifier_p.h"
+#include "qdatatype.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -56,15 +57,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QProperty;
 class QOperation;
 class QNamedElement;
 class QDataType;
 
-class QDataTypePrivate : public QClassifierPrivate
+class Q_UML_EXPORT QDataTypePrivate : public QClassifierPrivate
 {
+    Q_DECLARE_PUBLIC(QDataType)
+
 public:
-    explicit QDataTypePrivate(QDataType *q_umlptr = 0);
+    explicit QDataTypePrivate();
     virtual ~QDataTypePrivate();
 
     QList<QOperation *> *ownedOperations;

@@ -66,7 +66,13 @@ QInvocationActionPrivate::~QInvocationActionPrivate()
     \brief InvocationAction is an abstract class for the various actions that invoke behavior.In addition to targeting an object, invocation actions can also invoke behavioral features on ports from where the invocation requests are routed onwards on links deriving from attached connectors. Invocation actions may also be sent to a target via a given port, either on the sending object or on another object.
  */
 
-QInvocationAction::QInvocationAction()
+QInvocationAction::QInvocationAction(QObject *parent) :
+    QAction(*new QInvocationActionPrivate, parent)
+{
+}
+
+QInvocationAction::QInvocationAction(QInvocationActionPrivate &dd, QObject *parent) :
+    QAction(dd, parent)
 {
 }
 
@@ -81,7 +87,7 @@ const QList<QInputPin *> *QInvocationAction::arguments() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInvocationAction);
+    Q_D(const QInvocationAction);
     return d->arguments;
 }
 
@@ -89,7 +95,7 @@ void QInvocationAction::addArgument(QInputPin *argument)
 {
     // This is a read-write association end
 
-    QTUML_D(QInvocationAction);
+    Q_D(QInvocationAction);
     if (!d->arguments->contains(argument)) {
         d->arguments->append(argument);
 
@@ -102,7 +108,7 @@ void QInvocationAction::removeArgument(QInputPin *argument)
 {
     // This is a read-write association end
 
-    QTUML_D(QInvocationAction);
+    Q_D(QInvocationAction);
     if (d->arguments->contains(argument)) {
         d->arguments->removeAll(argument);
 
@@ -118,7 +124,7 @@ QPort *QInvocationAction::onPort() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInvocationAction);
+    Q_D(const QInvocationAction);
     return d->onPort;
 }
 
@@ -126,7 +132,7 @@ void QInvocationAction::setOnPort(QPort *onPort)
 {
     // This is a read-write association end
 
-    QTUML_D(QInvocationAction);
+    Q_D(QInvocationAction);
     if (d->onPort != onPort) {
         d->onPort = onPort;
     }

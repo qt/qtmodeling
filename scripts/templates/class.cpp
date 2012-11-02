@@ -22,7 +22,7 @@
             [%- ELSIF property.isReadOnly == 'false' and subsettedPropertyItem.isReadOnly == 'true' %]
         [% IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]    [% END %]d->${subsettedClass}Private::${subsettedPropertyItem.accessor.1.name}(dynamic_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>(${accessor.parameter.0.name}));
             [%- ELSE %]
-        [% IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]    [% END %]QTUML_Q(${class.name});
+        [% IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]    [% END %]Q_Q(${class.name});
         [% IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]    [% END %]q->${subsettedClass}::${subsettedPropertyItem.accessor.1.name}(dynamic_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>(${accessor.parameter.0.name}));
             [%- END %]
         [%- IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]
@@ -43,7 +43,7 @@
             [%- ELSIF property.isReadOnly == 'false' and subsettedPropertyItem.isReadOnly == 'true' %]
         d->${subsettedClass}Private::${subsettedPropertyItem.accessor.2.name}(dynamic_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>([% IF singlevalued == 'true' %]d->[% END %]${accessor.parameter.0.name}));
             [%- ELSE %]
-        QTUML_Q(${class.name});
+        Q_Q(${class.name});
         q->${subsettedClass}::${subsettedPropertyItem.accessor.2.name}(dynamic_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>([% IF singlevalued == 'true' %]this->[% END %]${accessor.parameter.0.name}));
             [%- END %]
         [%- END -%]
@@ -62,7 +62,7 @@
         [%- END %]
         // Adjust opposite property
         [%- IF property.isReadOnly == 'true' and singlevalued == 'false' %]
-        QTUML_Q(${class.name});
+        Q_Q(${class.name});
         [%- END %]
     [%- IF operation == 1 -%]
         [%- IF property.accessor.size == 2 and opposite.accessor.size > 2 %]
@@ -71,7 +71,7 @@
         [%- IF opposite.isReadOnly == 'false' %]
         [% IF property.accessor.size == 2 and opposite.accessor.size > 2 %]    [% END %]${accessor.parameter.0.name}->${opposite.accessor.1.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
         [%- ELSE %]
-        [% IF property.accessor.size == 2 and opposite.accessor.size > 2 %]    [% END %](dynamic_cast<${accessor.parameter.0.type.replace(' \*$', '').replace('$', 'Private *')}>(${accessor.parameter.0.name}->d_umlptr))->${opposite.accessor.1.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
+        [% IF property.accessor.size == 2 and opposite.accessor.size > 2 %]    [% END %](dynamic_cast<${accessor.parameter.0.type.replace(' \*$', '').replace('$', 'Private *')}>(${accessor.parameter.0.name}->d_ptr))->${opposite.accessor.1.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
         [%- END -%]
     [%- ELSE -%][%- IF operation == 2 and opposite.accessor.size > 2 %]
         [%- IF opposite.isReadOnly == 'false' %]
@@ -79,13 +79,13 @@
             [% IF singlevalued == 'true' %][% IF property.isReadOnly == 'true' %]this[% ELSE %]d[% END %]->[% END %]${accessor.parameter.0.name}->${opposite.accessor.2.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
         [%- ELSE %]
         if ([% IF singlevalued == 'true' %][% IF property.isReadOnly == 'true' %]this[% ELSE %]d[% END %]->[% END %]${accessor.parameter.0.name})
-            (dynamic_cast<${accessor.parameter.0.type.replace(' \*$', '').replace('$', 'Private *')}>([% IF singlevalued == 'true' %][% IF property.isReadOnly == 'true' %]this[% ELSE %]d[% END %]->[% END %]${accessor.parameter.0.name}->d_umlptr))->${opposite.accessor.2.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
+            (dynamic_cast<${accessor.parameter.0.type.replace(' \*$', '').replace('$', 'Private *')}>([% IF singlevalued == 'true' %][% IF property.isReadOnly == 'true' %]this[% ELSE %]d[% END %]->[% END %]${accessor.parameter.0.name}->d_ptr))->${opposite.accessor.2.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
         [%- END %]
     [%- ELSIF singlevalued == 'false' %]
         [%- IF opposite.isReadOnly == 'false' %]
         ${accessor.parameter.0.name}->${opposite.accessor.1.name}(0);
         [%- ELSE %]
-        (dynamic_cast<${accessor.parameter.0.type.replace(' \*$', '').replace('$', 'Private *')}>(${accessor.parameter.0.name}->d_umlptr))->${opposite.accessor.1.name}(0);
+        (dynamic_cast<${accessor.parameter.0.type.replace(' \*$', '').replace('$', 'Private *')}>(${accessor.parameter.0.name}->d_ptr))->${opposite.accessor.1.name}(0);
         [%- END %]
     [%- END -%][%- END -%]
     [%- IF operation == 2 and singlevalued == 'true' %]
@@ -157,7 +157,7 @@
 
 QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
 
-${class.name}Private::${class.name}Private([%- IF class.isAbstract == 'false' -%]${class.name} *q_umlptr[%- END -%])
+${class.name}Private::${class.name}Private()
 [%- found = 'false' -%]
 [%- FOREACH attribute IN class.attribute.values %]
 [%- IF attribute.isDerived == 'false' or attribute.isDerivedUnion == 'true' -%]
@@ -226,9 +226,6 @@ ${class.name}Private::${class.name}Private([%- IF class.isAbstract == 'false' -%
 [%- END -%]
 [%- END %]
 {
-    [%- IF class.isAbstract == 'false' %]
-    this->q_umlptr = q_umlptr;
-    [%- END %]
 }
 
 ${class.name}Private::~${class.name}Private()
@@ -329,7 +326,7 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
     [%- END -%]
     [%- IF accessor.name.search('^set') -%]
     [%- IF associationend.oppositeEnd != '' %]
-        QTUML_Q(${class.name})
+        Q_Q(${class.name})
     [%- END %]
     [%- HANDLEOPPOSITEEND(associationend, accessor, 2, 'true') %]
     [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'true') %]
@@ -358,7 +355,7 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
     [%- END %]
     [%- IF accessor.name.search('^set') %]
     [%- IF associationend.oppositeEnd != '' %]
-        QTUML_Q(${class.name})
+        Q_Q(${class.name})
     [%- END %]
     [%- HANDLEOPPOSITEEND(associationend, accessor, 2, 'true') %]
     [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'true') %]
@@ -393,31 +390,32 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
  */
 [%- END %]
 
-${class.name}::${class.name}([%- IF class.isAbstract == 'false' -%]QObject *parent[%- END -%])
-[%- IF class.isAbstract == 'false' %]
-[% GET '    : ' -%]
-[% IF class.superobject -%]${class.superobject.split('/').last}(false, parent)[%- ELSE -%]QObject(parent)[%- END -%]
+${class.name}::${class.name}(QObject *parent) :
+[% IF class.superclass.size == 1-%]    ${class.superclass.0.name}[%- ELSE -%]    QObject[% END %](*new ${class.name}Private, parent)
+[%- IF class.superclass and class.superclass.size > 1 -%]
+[%- FOREACH parentClass IN class.superclass -%]
+,
+    _wrapped${parentClass.name.replace('^Q', '')}(new ${parentClass.name}(this))
+[%- END -%]
 [%- END %]
 {
-[%- IF class.isAbstract == 'false' %]
-    d_umlptr = new ${class.name}Private(this);
-[%- END %]
 }
-[%- IF class.isAbstract == 'false' %]
 
-${class.name}::${class.name}(bool createPimpl, QObject *parent)
-[% GET '    : ' -%]
-[% IF class.superobject -%]${class.superobject.split('/').last}(createPimpl, parent)[%- ELSE -%]QObject(parent)[%- END %]
-{
-    if (createPimpl)
-        d_umlptr = new ${class.name}Private;
-}
+${class.name}::${class.name}(${class.name}Private &dd, QObject *parent) :
+[% IF class.superclass.size == 1-%]    ${class.superclass.0.name}(dd, parent)[%- ELSE -%]    QObject(dd, parent)[%- END -%]
+[%- IF class.superclass and class.superclass.size > 1 -%]
+[%- FOREACH parentClass IN class.superclass -%]
+,
+    _wrapped${parentClass.name.replace('^Q', '')}(new ${parentClass.name}(this))
+[%- END -%]
 [%- END %]
+{
+}
 
 ${class.name}::~${class.name}()
 {
 [%- IF not(class.superclass) %]
-    delete d_umlptr;
+    delete d_ptr;
 [%- END %]
 }
 
@@ -434,10 +432,10 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
 
 [%- IF attribute.isDerived == 'false' or attribute.isDerivedUnion == 'true' %]
     [%- IF loop.first %]
-    QTUML_D(const ${class.name});
+    Q_D(const ${class.name});
     return d->${accessor.name};
     [%- ELSE %]
-    QTUML_D(${class.name});
+    Q_D(${class.name});
     [%- IF attribute.accessor.0.return.search('<') %]
     if ([% IF loop.count == 2 %]![% END %]d->${attribute.accessor.0.name}->contains(${accessor.parameter.0.name})) {
     [%- ELSE %]
@@ -466,10 +464,10 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
     qWarning("${class.name}::${accessor.name}: to be implemented (this is a derived attribute)");
 
     [%- IF loop.first %]
-    //QTUML_D(const ${class.name});
+    //Q_D(const ${class.name});
     //return <derived-return>;
     [%- ELSE %]
-    //QTUML_D(${class.name});
+    //Q_D(${class.name});
     [%- IF attribute.accessor.0.return.search('<') %]
     if (false /* <derived-[% IF loop.count == 2 %]inclusion[% ELSE %]exclusion[% END %]-criteria> */) {
     [%- ELSE %]
@@ -513,10 +511,10 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
 
 [%- IF associationend.isDerived == 'false' or associationend.isDerivedUnion == 'true' %]
     [%- IF loop.first %]
-    QTUML_D(const ${class.name});
+    Q_D(const ${class.name});
     return d->${accessor.name};
     [%- ELSE %]
-    QTUML_D(${class.name});
+    Q_D(${class.name});
     [%- IF associationend.accessor.0.return.search('<') %]
     if ([% IF loop.count == 2 %]![% END %]d->${associationend.accessor.0.name}->contains(${accessor.parameter.0.name})) {
     [%- ELSE %]
@@ -548,10 +546,10 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
     qWarning("${class.name}::${accessor.name}: to be implemented (this is a derived associationend)");
 
     [%- IF loop.first %]
-    //QTUML_D(const ${class.name});
+    //Q_D(const ${class.name});
     //return <derived-return>;
     [%- ELSE %]
-    //QTUML_D(${class.name});
+    //Q_D(${class.name});
     [%- IF associationend.accessor.0.return.search('<') %]
     if (false /* <derived-[% IF loop.count == 2 %]inclusion[% ELSE %]exclusion[% END %]-criteria> */) {
     [%- ELSE %]

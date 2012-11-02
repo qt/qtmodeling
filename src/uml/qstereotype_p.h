@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qclass_p.h"
+#include "private/qclass_p.h"
+#include "qstereotype.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,14 +56,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QImage;
 class QProfile;
 class QStereotype;
 
-class QStereotypePrivate : public QClassPrivate
+class Q_UML_EXPORT QStereotypePrivate : public QClassPrivate
 {
+    Q_DECLARE_PUBLIC(QStereotype)
+
 public:
-    explicit QStereotypePrivate(QStereotype *q_umlptr = 0);
+    explicit QStereotypePrivate();
     virtual ~QStereotypePrivate();
 
     QSet<QImage *> *icons;

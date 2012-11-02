@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDurationObservationPrivate::QDurationObservationPrivate(QDurationObservation *q_umlptr) :
+QDurationObservationPrivate::QDurationObservationPrivate() :
     firstEvents(new QSet<bool>),
     events(new QSet<QNamedElement *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QDurationObservationPrivate::~QDurationObservationPrivate()
@@ -67,17 +66,14 @@ QDurationObservationPrivate::~QDurationObservationPrivate()
     \brief A duration observation is a reference to a duration during an execution. It points out the element(s) in the model to observe and whether the observations are when this model element is entered or when it is exited.
  */
 
-QDurationObservation::QDurationObservation(QObject *parent)
-    : QObject(parent)
+QDurationObservation::QDurationObservation(QObject *parent) :
+    QObservation(*new QDurationObservationPrivate, parent)
 {
-    d_umlptr = new QDurationObservationPrivate(this);
 }
 
-QDurationObservation::QDurationObservation(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QDurationObservation::QDurationObservation(QDurationObservationPrivate &dd, QObject *parent) :
+    QObservation(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QDurationObservationPrivate;
 }
 
 QDurationObservation::~QDurationObservation()
@@ -91,7 +87,7 @@ const QSet<bool> *QDurationObservation::firstEvents() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QDurationObservation);
+    Q_D(const QDurationObservation);
     return d->firstEvents;
 }
 
@@ -99,7 +95,7 @@ void QDurationObservation::addFirstEvent(bool firstEvent)
 {
     // This is a read-write attribute
 
-    QTUML_D(QDurationObservation);
+    Q_D(QDurationObservation);
     if (!d->firstEvents->contains(firstEvent)) {
         d->firstEvents->insert(firstEvent);
     }
@@ -109,7 +105,7 @@ void QDurationObservation::removeFirstEvent(bool firstEvent)
 {
     // This is a read-write attribute
 
-    QTUML_D(QDurationObservation);
+    Q_D(QDurationObservation);
     if (d->firstEvents->contains(firstEvent)) {
         d->firstEvents->remove(firstEvent);
     }
@@ -122,7 +118,7 @@ const QSet<QNamedElement *> *QDurationObservation::events() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QDurationObservation);
+    Q_D(const QDurationObservation);
     return d->events;
 }
 
@@ -130,7 +126,7 @@ void QDurationObservation::addEvent(QNamedElement *event)
 {
     // This is a read-write association end
 
-    QTUML_D(QDurationObservation);
+    Q_D(QDurationObservation);
     if (!d->events->contains(event)) {
         d->events->insert(event);
     }
@@ -140,7 +136,7 @@ void QDurationObservation::removeEvent(QNamedElement *event)
 {
     // This is a read-write association end
 
-    QTUML_D(QDurationObservation);
+    Q_D(QDurationObservation);
     if (d->events->contains(event)) {
         d->events->remove(event);
     }

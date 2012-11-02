@@ -47,14 +47,13 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QPortPrivate::QPortPrivate(QPort *q_umlptr) :
+QPortPrivate::QPortPrivate() :
     isConjugated(false),
     isBehavior(false),
     isService(true),
     protocol(0),
     redefinedPorts(new QSet<QPort *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QPortPrivate::~QPortPrivate()
@@ -70,17 +69,14 @@ QPortPrivate::~QPortPrivate()
     \brief A port has an associated protocol state machine.A port is a property of a classifier that specifies a distinct interaction point between that classifier and its environment or between the (behavior of the) classifier and its internal parts. Ports are connected to properties of the classifier by connectors through which requests can be made to invoke the behavioral features of a classifier. A Port may specify the services a classifier provides (offers) to its environment as well as the services that a classifier expects (requires) of its environment.
  */
 
-QPort::QPort(QObject *parent)
-    : QProperty(false, parent)
+QPort::QPort(QObject *parent) :
+    QProperty(*new QPortPrivate, parent)
 {
-    d_umlptr = new QPortPrivate(this);
 }
 
-QPort::QPort(bool createPimpl, QObject *parent)
-    : QProperty(createPimpl, parent)
+QPort::QPort(QPortPrivate &dd, QObject *parent) :
+    QProperty(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QPortPrivate;
 }
 
 QPort::~QPort()
@@ -94,7 +90,7 @@ bool QPort::isConjugated() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QPort);
+    Q_D(const QPort);
     return d->isConjugated;
 }
 
@@ -102,7 +98,7 @@ void QPort::setConjugated(bool isConjugated)
 {
     // This is a read-write attribute
 
-    QTUML_D(QPort);
+    Q_D(QPort);
     if (d->isConjugated != isConjugated) {
         d->isConjugated = isConjugated;
     }
@@ -115,7 +111,7 @@ bool QPort::isBehavior() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QPort);
+    Q_D(const QPort);
     return d->isBehavior;
 }
 
@@ -123,7 +119,7 @@ void QPort::setBehavior(bool isBehavior)
 {
     // This is a read-write attribute
 
-    QTUML_D(QPort);
+    Q_D(QPort);
     if (d->isBehavior != isBehavior) {
         d->isBehavior = isBehavior;
     }
@@ -136,7 +132,7 @@ bool QPort::isService() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QPort);
+    Q_D(const QPort);
     return d->isService;
 }
 
@@ -144,7 +140,7 @@ void QPort::setService(bool isService)
 {
     // This is a read-write attribute
 
-    QTUML_D(QPort);
+    Q_D(QPort);
     if (d->isService != isService) {
         d->isService = isService;
     }
@@ -157,7 +153,7 @@ QProtocolStateMachine *QPort::protocol() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QPort);
+    Q_D(const QPort);
     return d->protocol;
 }
 
@@ -165,7 +161,7 @@ void QPort::setProtocol(QProtocolStateMachine *protocol)
 {
     // This is a read-write association end
 
-    QTUML_D(QPort);
+    Q_D(QPort);
     if (d->protocol != protocol) {
         d->protocol = protocol;
     }
@@ -180,7 +176,7 @@ const QSet<QInterface *> *QPort::required() const
 
     qWarning("QPort::required: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(const QPort);
+    //Q_D(const QPort);
     //return <derived-return>;
 }
 
@@ -193,7 +189,7 @@ const QSet<QInterface *> *QPort::provided() const
 
     qWarning("QPort::provided: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(const QPort);
+    //Q_D(const QPort);
     //return <derived-return>;
 }
 
@@ -204,7 +200,7 @@ const QSet<QPort *> *QPort::redefinedPorts() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QPort);
+    Q_D(const QPort);
     return d->redefinedPorts;
 }
 
@@ -212,7 +208,7 @@ void QPort::addRedefinedPort(QPort *redefinedPort)
 {
     // This is a read-write association end
 
-    QTUML_D(QPort);
+    Q_D(QPort);
     if (!d->redefinedPorts->contains(redefinedPort)) {
         d->redefinedPorts->insert(redefinedPort);
 
@@ -225,7 +221,7 @@ void QPort::removeRedefinedPort(QPort *redefinedPort)
 {
     // This is a read-write association end
 
-    QTUML_D(QPort);
+    Q_D(QPort);
     if (d->redefinedPorts->contains(redefinedPort)) {
         d->redefinedPorts->remove(redefinedPort);
 

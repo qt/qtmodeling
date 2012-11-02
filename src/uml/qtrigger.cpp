@@ -47,11 +47,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QTriggerPrivate::QTriggerPrivate(QTrigger *q_umlptr) :
+QTriggerPrivate::QTriggerPrivate() :
     ports(new QSet<QPort *>),
     event(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QTriggerPrivate::~QTriggerPrivate()
@@ -67,17 +66,14 @@ QTriggerPrivate::~QTriggerPrivate()
     \brief A trigger specification may be qualified by the port on which the event occurred.A trigger relates an event to a behavior that may affect an instance of the classifier.
  */
 
-QTrigger::QTrigger(QObject *parent)
-    : QObject(parent)
+QTrigger::QTrigger(QObject *parent) :
+    QNamedElement(*new QTriggerPrivate, parent)
 {
-    d_umlptr = new QTriggerPrivate(this);
 }
 
-QTrigger::QTrigger(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QTrigger::QTrigger(QTriggerPrivate &dd, QObject *parent) :
+    QNamedElement(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QTriggerPrivate;
 }
 
 QTrigger::~QTrigger()
@@ -91,7 +87,7 @@ const QSet<QPort *> *QTrigger::ports() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTrigger);
+    Q_D(const QTrigger);
     return d->ports;
 }
 
@@ -99,7 +95,7 @@ void QTrigger::addPort(QPort *port)
 {
     // This is a read-write association end
 
-    QTUML_D(QTrigger);
+    Q_D(QTrigger);
     if (!d->ports->contains(port)) {
         d->ports->insert(port);
     }
@@ -109,7 +105,7 @@ void QTrigger::removePort(QPort *port)
 {
     // This is a read-write association end
 
-    QTUML_D(QTrigger);
+    Q_D(QTrigger);
     if (d->ports->contains(port)) {
         d->ports->remove(port);
     }
@@ -122,7 +118,7 @@ QEvent *QTrigger::event() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTrigger);
+    Q_D(const QTrigger);
     return d->event;
 }
 
@@ -130,7 +126,7 @@ void QTrigger::setEvent(QEvent *event)
 {
     // This is a read-write association end
 
-    QTUML_D(QTrigger);
+    Q_D(QTrigger);
     if (d->event != event) {
         d->event = event;
     }

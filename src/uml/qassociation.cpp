@@ -47,13 +47,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QAssociationPrivate::QAssociationPrivate(QAssociation *q_umlptr) :
+QAssociationPrivate::QAssociationPrivate() :
     isDerived(false),
     navigableOwnedEnds(new QSet<QProperty *>),
     ownedEnds(new QList<QProperty *>),
     memberEnds(new QList<QProperty *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QAssociationPrivate::~QAssociationPrivate()
@@ -71,17 +70,18 @@ QAssociationPrivate::~QAssociationPrivate()
     \brief An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link.A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link. A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.
  */
 
-QAssociation::QAssociation(QObject *parent)
-    : QObject(parent)
+QAssociation::QAssociation(QObject *parent) :
+    QObject(*new QAssociationPrivate, parent),
+    _wrappedClassifier(new QClassifier(this)),
+    _wrappedRelationship(new QRelationship(this))
 {
-    d_umlptr = new QAssociationPrivate(this);
 }
 
-QAssociation::QAssociation(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QAssociation::QAssociation(QAssociationPrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedClassifier(new QClassifier(this)),
+    _wrappedRelationship(new QRelationship(this))
 {
-    if (createPimpl)
-        d_umlptr = new QAssociationPrivate;
 }
 
 QAssociation::~QAssociation()
@@ -95,7 +95,7 @@ bool QAssociation::isDerived() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QAssociation);
+    Q_D(const QAssociation);
     return d->isDerived;
 }
 
@@ -103,7 +103,7 @@ void QAssociation::setDerived(bool isDerived)
 {
     // This is a read-write attribute
 
-    QTUML_D(QAssociation);
+    Q_D(QAssociation);
     if (d->isDerived != isDerived) {
         d->isDerived = isDerived;
     }
@@ -118,7 +118,7 @@ const QList<QType *> *QAssociation::endTypes() const
 
     qWarning("QAssociation::endTypes: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(const QAssociation);
+    //Q_D(const QAssociation);
     //return <derived-return>;
 }
 
@@ -129,7 +129,7 @@ const QSet<QProperty *> *QAssociation::navigableOwnedEnds() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QAssociation);
+    Q_D(const QAssociation);
     return d->navigableOwnedEnds;
 }
 
@@ -137,7 +137,7 @@ void QAssociation::addNavigableOwnedEnd(QProperty *navigableOwnedEnd)
 {
     // This is a read-write association end
 
-    QTUML_D(QAssociation);
+    Q_D(QAssociation);
     if (!d->navigableOwnedEnds->contains(navigableOwnedEnd)) {
         d->navigableOwnedEnds->insert(navigableOwnedEnd);
 
@@ -150,7 +150,7 @@ void QAssociation::removeNavigableOwnedEnd(QProperty *navigableOwnedEnd)
 {
     // This is a read-write association end
 
-    QTUML_D(QAssociation);
+    Q_D(QAssociation);
     if (d->navigableOwnedEnds->contains(navigableOwnedEnd)) {
         d->navigableOwnedEnds->remove(navigableOwnedEnd);
 
@@ -166,7 +166,7 @@ const QList<QProperty *> *QAssociation::ownedEnds() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QAssociation);
+    Q_D(const QAssociation);
     return d->ownedEnds;
 }
 
@@ -174,7 +174,7 @@ void QAssociation::addOwnedEnd(QProperty *ownedEnd)
 {
     // This is a read-write association end
 
-    QTUML_D(QAssociation);
+    Q_D(QAssociation);
     if (!d->ownedEnds->contains(ownedEnd)) {
         d->ownedEnds->append(ownedEnd);
 
@@ -192,7 +192,7 @@ void QAssociation::removeOwnedEnd(QProperty *ownedEnd)
 {
     // This is a read-write association end
 
-    QTUML_D(QAssociation);
+    Q_D(QAssociation);
     if (d->ownedEnds->contains(ownedEnd)) {
         d->ownedEnds->removeAll(ownedEnd);
 
@@ -213,7 +213,7 @@ const QList<QProperty *> *QAssociation::memberEnds() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QAssociation);
+    Q_D(const QAssociation);
     return d->memberEnds;
 }
 
@@ -221,7 +221,7 @@ void QAssociation::addMemberEnd(QProperty *memberEnd)
 {
     // This is a read-write association end
 
-    QTUML_D(QAssociation);
+    Q_D(QAssociation);
     if (!d->memberEnds->contains(memberEnd)) {
         d->memberEnds->append(memberEnd);
 
@@ -237,7 +237,7 @@ void QAssociation::removeMemberEnd(QProperty *memberEnd)
 {
     // This is a read-write association end
 
-    QTUML_D(QAssociation);
+    Q_D(QAssociation);
     if (d->memberEnds->contains(memberEnd)) {
         d->memberEnds->removeAll(memberEnd);
 

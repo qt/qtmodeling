@@ -55,13 +55,23 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QExceptionHandler;
+
+class QExecutableNodePrivate;
 
 class Q_UML_EXPORT QExecutableNode : public QActivityNode
 {
+    Q_OBJECT
+
+    // From QExecutableNode
+    Q_PROPERTY(const QSet<QExceptionHandler *> * handlers READ handlers)
+
     Q_DISABLE_COPY(QExecutableNode)
+    Q_DECLARE_PRIVATE(QExecutableNode)
 
 public:
+    explicit QExecutableNode(QObject *parent = 0);
     virtual ~QExecutableNode();
 
     // Association-ends
@@ -70,10 +80,14 @@ public:
     void removeHandler(QExceptionHandler *handler);
 
 protected:
-    explicit QExecutableNode();
+    explicit QExecutableNode(QExecutableNodePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *)
 
 QT_END_HEADER
 

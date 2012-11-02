@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qredefinableelement_p.h"
+#include "private/qredefinableelement_p.h"
+#include "qactivitynode.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QActivityEdge;
 class QStructuredActivityNode;
 class QActivityNode;
@@ -63,9 +65,12 @@ class QActivityGroup;
 class QActivity;
 class QInterruptibleActivityRegion;
 
-class QActivityNodePrivate : public QRedefinableElementPrivate
+class Q_UML_EXPORT QActivityNodePrivate : public QRedefinableElementPrivate
 {
+    Q_DECLARE_PUBLIC(QActivityNode)
+
 public:
+    explicit QActivityNodePrivate();
     virtual ~QActivityNodePrivate();
 
     QSet<QActivityNode *> *redefinedNodes;
@@ -80,9 +85,6 @@ public:
     // Internal functions for read-only subsetted association ends
     void addInGroup(QActivityGroup *inGroup);
     void removeInGroup(QActivityGroup *inGroup);
-
-protected:
-    explicit QActivityNodePrivate();
 };
 
 QT_END_NAMESPACE_QTUML

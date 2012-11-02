@@ -53,7 +53,7 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QTransitionPrivate::QTransitionPrivate(QTransition *q_umlptr) :
+QTransitionPrivate::QTransitionPrivate() :
     kind(QtUml::TransitionExternal),
     guard(0),
     target(0),
@@ -63,7 +63,6 @@ QTransitionPrivate::QTransitionPrivate(QTransition *q_umlptr) :
     source(0),
     triggers(new QSet<QTrigger *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QTransitionPrivate::~QTransitionPrivate()
@@ -79,17 +78,18 @@ QTransitionPrivate::~QTransitionPrivate()
     \brief A transition is a directed relationship between a source vertex and a target vertex. It may be part of a compound transition, which takes the state machine from one state configuration to another, representing the complete response of the state machine to an occurrence of an event of a particular type.
  */
 
-QTransition::QTransition(QObject *parent)
-    : QObject(parent)
+QTransition::QTransition(QObject *parent) :
+    QObject(*new QTransitionPrivate, parent),
+    _wrappedRedefinableElement(new QRedefinableElement(this)),
+    _wrappedNamespace(new QNamespace(this))
 {
-    d_umlptr = new QTransitionPrivate(this);
 }
 
-QTransition::QTransition(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QTransition::QTransition(QTransitionPrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedRedefinableElement(new QRedefinableElement(this)),
+    _wrappedNamespace(new QNamespace(this))
 {
-    if (createPimpl)
-        d_umlptr = new QTransitionPrivate;
 }
 
 QTransition::~QTransition()
@@ -103,7 +103,7 @@ QtUml::TransitionKind QTransition::kind() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QTransition);
+    Q_D(const QTransition);
     return d->kind;
 }
 
@@ -111,7 +111,7 @@ void QTransition::setKind(QtUml::TransitionKind kind)
 {
     // This is a read-write attribute
 
-    QTUML_D(QTransition);
+    Q_D(QTransition);
     if (d->kind != kind) {
         d->kind = kind;
     }
@@ -124,7 +124,7 @@ QConstraint *QTransition::guard() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTransition);
+    Q_D(const QTransition);
     return d->guard;
 }
 
@@ -132,7 +132,7 @@ void QTransition::setGuard(QConstraint *guard)
 {
     // This is a read-write association end
 
-    QTUML_D(QTransition);
+    Q_D(QTransition);
     if (d->guard != guard) {
         // Adjust subsetted property(ies)
         QNamespace::removeOwnedRule(dynamic_cast<QConstraint *>(d->guard));
@@ -153,7 +153,7 @@ QVertex *QTransition::target() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTransition);
+    Q_D(const QTransition);
     return d->target;
 }
 
@@ -161,17 +161,17 @@ void QTransition::setTarget(QVertex *target)
 {
     // This is a read-write association end
 
-    QTUML_D(QTransition);
+    Q_D(QTransition);
     if (d->target != target) {
         // Adjust opposite property
         if (d->target)
-            (dynamic_cast<QVertexPrivate *>(d->target->d_umlptr))->removeIncoming(this);
+            (dynamic_cast<QVertexPrivate *>(d->target->d_ptr))->removeIncoming(this);
 
         d->target = target;
 
         // Adjust opposite property
         if (target)
-            (dynamic_cast<QVertexPrivate *>(target->d_umlptr))->addIncoming(this);
+            (dynamic_cast<QVertexPrivate *>(target->d_ptr))->addIncoming(this);
     }
 }
 
@@ -182,7 +182,7 @@ QBehavior *QTransition::effect() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTransition);
+    Q_D(const QTransition);
     return d->effect;
 }
 
@@ -190,7 +190,7 @@ void QTransition::setEffect(QBehavior *effect)
 {
     // This is a read-write association end
 
-    QTUML_D(QTransition);
+    Q_D(QTransition);
     if (d->effect != effect) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->effect));
@@ -211,7 +211,7 @@ QRegion *QTransition::container() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTransition);
+    Q_D(const QTransition);
     return d->container;
 }
 
@@ -219,7 +219,7 @@ void QTransition::setContainer(QRegion *container)
 {
     // This is a read-write association end
 
-    QTUML_D(QTransition);
+    Q_D(QTransition);
     if (d->container != container) {
         // Adjust opposite property
         if (d->container)
@@ -245,7 +245,7 @@ QClassifier *QTransition::redefinitionContext() const
 
     qWarning("QTransition::redefinitionContext: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(const QTransition);
+    //Q_D(const QTransition);
     //return <derived-return>;
 }
 
@@ -256,7 +256,7 @@ QTransition *QTransition::redefinedTransition() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTransition);
+    Q_D(const QTransition);
     return d->redefinedTransition;
 }
 
@@ -264,7 +264,7 @@ void QTransition::setRedefinedTransition(QTransition *redefinedTransition)
 {
     // This is a read-write association end
 
-    QTUML_D(QTransition);
+    Q_D(QTransition);
     if (d->redefinedTransition != redefinedTransition) {
         // Adjust subsetted property(ies)
         d->QRedefinableElementPrivate::removeRedefinedElement(dynamic_cast<QRedefinableElement *>(d->redefinedTransition));
@@ -285,7 +285,7 @@ QVertex *QTransition::source() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTransition);
+    Q_D(const QTransition);
     return d->source;
 }
 
@@ -293,17 +293,17 @@ void QTransition::setSource(QVertex *source)
 {
     // This is a read-write association end
 
-    QTUML_D(QTransition);
+    Q_D(QTransition);
     if (d->source != source) {
         // Adjust opposite property
         if (d->source)
-            (dynamic_cast<QVertexPrivate *>(d->source->d_umlptr))->removeOutgoing(this);
+            (dynamic_cast<QVertexPrivate *>(d->source->d_ptr))->removeOutgoing(this);
 
         d->source = source;
 
         // Adjust opposite property
         if (source)
-            (dynamic_cast<QVertexPrivate *>(source->d_umlptr))->addOutgoing(this);
+            (dynamic_cast<QVertexPrivate *>(source->d_ptr))->addOutgoing(this);
     }
 }
 
@@ -314,7 +314,7 @@ const QSet<QTrigger *> *QTransition::triggers() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTransition);
+    Q_D(const QTransition);
     return d->triggers;
 }
 
@@ -322,7 +322,7 @@ void QTransition::addTrigger(QTrigger *trigger)
 {
     // This is a read-write association end
 
-    QTUML_D(QTransition);
+    Q_D(QTransition);
     if (!d->triggers->contains(trigger)) {
         d->triggers->insert(trigger);
 
@@ -335,7 +335,7 @@ void QTransition::removeTrigger(QTrigger *trigger)
 {
     // This is a read-write association end
 
-    QTUML_D(QTransition);
+    Q_D(QTransition);
     if (d->triggers->contains(trigger)) {
         d->triggers->remove(trigger);
 

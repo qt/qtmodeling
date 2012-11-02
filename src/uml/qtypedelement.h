@@ -52,13 +52,23 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QType;
 
-class Q_UML_EXPORT QTypedElement : public virtual QNamedElement
+class QTypedElementPrivate;
+
+class Q_UML_EXPORT QTypedElement : public QNamedElement
 {
+    Q_OBJECT
+
+    // From QTypedElement
+    Q_PROPERTY(QType * type READ type WRITE setType)
+
     Q_DISABLE_COPY(QTypedElement)
+    Q_DECLARE_PRIVATE(QTypedElement)
 
 public:
+    explicit QTypedElement(QObject *parent = 0);
     virtual ~QTypedElement();
 
     // Association-ends
@@ -66,10 +76,14 @@ public:
     void setType(QType *type);
 
 protected:
-    explicit QTypedElement();
+    explicit QTypedElement(QTypedElementPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QTypedElement) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QTypedElement) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QTypedElement) *> *)
 
 QT_END_HEADER
 

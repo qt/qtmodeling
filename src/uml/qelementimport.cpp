@@ -47,12 +47,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QElementImportPrivate::QElementImportPrivate(QElementImport *q_umlptr) :
+QElementImportPrivate::QElementImportPrivate() :
     visibility(QtUml::VisibilityPublic),
     importedElement(0),
     importingNamespace(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QElementImportPrivate::~QElementImportPrivate()
@@ -67,17 +66,14 @@ QElementImportPrivate::~QElementImportPrivate()
     \brief An element import identifies an element in another package, and allows the element to be referenced using its name without a qualifier.
  */
 
-QElementImport::QElementImport(QObject *parent)
-    : QObject(parent)
+QElementImport::QElementImport(QObject *parent) :
+    QDirectedRelationship(*new QElementImportPrivate, parent)
 {
-    d_umlptr = new QElementImportPrivate(this);
 }
 
-QElementImport::QElementImport(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QElementImport::QElementImport(QElementImportPrivate &dd, QObject *parent) :
+    QDirectedRelationship(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QElementImportPrivate;
 }
 
 QElementImport::~QElementImport()
@@ -91,7 +87,7 @@ QString QElementImport::alias() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QElementImport);
+    Q_D(const QElementImport);
     return d->alias;
 }
 
@@ -99,7 +95,7 @@ void QElementImport::setAlias(QString alias)
 {
     // This is a read-write attribute
 
-    QTUML_D(QElementImport);
+    Q_D(QElementImport);
     if (d->alias != alias) {
         d->alias = alias;
     }
@@ -112,7 +108,7 @@ QtUml::VisibilityKind QElementImport::visibility() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QElementImport);
+    Q_D(const QElementImport);
     return d->visibility;
 }
 
@@ -120,7 +116,7 @@ void QElementImport::setVisibility(QtUml::VisibilityKind visibility)
 {
     // This is a read-write attribute
 
-    QTUML_D(QElementImport);
+    Q_D(QElementImport);
     if (d->visibility != visibility) {
         d->visibility = visibility;
     }
@@ -133,7 +129,7 @@ QPackageableElement *QElementImport::importedElement() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QElementImport);
+    Q_D(const QElementImport);
     return d->importedElement;
 }
 
@@ -141,7 +137,7 @@ void QElementImport::setImportedElement(QPackageableElement *importedElement)
 {
     // This is a read-write association end
 
-    QTUML_D(QElementImport);
+    Q_D(QElementImport);
     if (d->importedElement != importedElement) {
         // Adjust subsetted property(ies)
         d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(d->importedElement));
@@ -162,7 +158,7 @@ QNamespace *QElementImport::importingNamespace() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QElementImport);
+    Q_D(const QElementImport);
     return d->importingNamespace;
 }
 
@@ -170,7 +166,7 @@ void QElementImport::setImportingNamespace(QNamespace *importingNamespace)
 {
     // This is a read-write association end
 
-    QTUML_D(QElementImport);
+    Q_D(QElementImport);
     if (d->importingNamespace != importingNamespace) {
         // Adjust opposite property
         if (d->importingNamespace)

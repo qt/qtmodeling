@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QSignalEventPrivate::QSignalEventPrivate(QSignalEvent *q_umlptr) :
+QSignalEventPrivate::QSignalEventPrivate() :
     signal(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QSignalEventPrivate::~QSignalEventPrivate()
@@ -64,17 +63,14 @@ QSignalEventPrivate::~QSignalEventPrivate()
     \brief A signal event represents the receipt of an asynchronous signal instance. A signal event may, for example, cause a state machine to trigger a transition.
  */
 
-QSignalEvent::QSignalEvent(QObject *parent)
-    : QObject(parent)
+QSignalEvent::QSignalEvent(QObject *parent) :
+    QMessageEvent(*new QSignalEventPrivate, parent)
 {
-    d_umlptr = new QSignalEventPrivate(this);
 }
 
-QSignalEvent::QSignalEvent(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QSignalEvent::QSignalEvent(QSignalEventPrivate &dd, QObject *parent) :
+    QMessageEvent(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QSignalEventPrivate;
 }
 
 QSignalEvent::~QSignalEvent()
@@ -88,7 +84,7 @@ QSignal *QSignalEvent::signal() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QSignalEvent);
+    Q_D(const QSignalEvent);
     return d->signal;
 }
 
@@ -96,7 +92,7 @@ void QSignalEvent::setSignal(QSignal *signal)
 {
     // This is a read-write association end
 
-    QTUML_D(QSignalEvent);
+    Q_D(QSignalEvent);
     if (d->signal != signal) {
         d->signal = signal;
     }

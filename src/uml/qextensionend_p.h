@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qproperty_p.h"
+#include "private/qproperty_p.h"
+#include "qextensionend.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QStereotype;
 class QExtensionEnd;
 
-class QExtensionEndPrivate : public QPropertyPrivate
+class Q_UML_EXPORT QExtensionEndPrivate : public QPropertyPrivate
 {
+    Q_DECLARE_PUBLIC(QExtensionEnd)
+
 public:
-    explicit QExtensionEndPrivate(QExtensionEnd *q_umlptr = 0);
+    explicit QExtensionEndPrivate();
     virtual ~QExtensionEndPrivate();
 
     QStereotype *type;

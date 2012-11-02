@@ -52,18 +52,26 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QDeployedArtifact : public virtual QNamedElement
+class QDeployedArtifactPrivate;
+
+class Q_UML_EXPORT QDeployedArtifact : public QNamedElement
 {
     Q_DISABLE_COPY(QDeployedArtifact)
+    Q_DECLARE_PRIVATE(QDeployedArtifact)
 
 public:
+    explicit QDeployedArtifact(QObject *parent = 0);
     virtual ~QDeployedArtifact();
 
 protected:
-    explicit QDeployedArtifact();
+    explicit QDeployedArtifact(QDeployedArtifactPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QDeployedArtifact) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QDeployedArtifact) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QDeployedArtifact) *> *)
 
 QT_END_HEADER
 

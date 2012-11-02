@@ -52,13 +52,23 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInputPin;
+
+class QWriteVariableActionPrivate;
 
 class Q_UML_EXPORT QWriteVariableAction : public QVariableAction
 {
+    Q_OBJECT
+
+    // From QWriteVariableAction
+    Q_PROPERTY(QInputPin * value READ value WRITE setValue)
+
     Q_DISABLE_COPY(QWriteVariableAction)
+    Q_DECLARE_PRIVATE(QWriteVariableAction)
 
 public:
+    explicit QWriteVariableAction(QObject *parent = 0);
     virtual ~QWriteVariableAction();
 
     // Association-ends
@@ -66,10 +76,14 @@ public:
     void setValue(QInputPin *value);
 
 protected:
-    explicit QWriteVariableAction();
+    explicit QWriteVariableAction(QWriteVariableActionPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QWriteVariableAction) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QWriteVariableAction) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QWriteVariableAction) *> *)
 
 QT_END_HEADER
 

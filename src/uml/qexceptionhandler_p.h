@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qelement_p.h"
+#include "private/qelement_p.h"
+#include "qexceptionhandler.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,15 +56,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QObjectNode;
 class QClassifier;
 class QExecutableNode;
 class QExceptionHandler;
 
-class QExceptionHandlerPrivate : public QElementPrivate
+class Q_UML_EXPORT QExceptionHandlerPrivate : public QElementPrivate
 {
+    Q_DECLARE_PUBLIC(QExceptionHandler)
+
 public:
-    explicit QExceptionHandlerPrivate(QExceptionHandler *q_umlptr = 0);
+    explicit QExceptionHandlerPrivate();
     virtual ~QExceptionHandlerPrivate();
 
     QExecutableNode *handlerBody;

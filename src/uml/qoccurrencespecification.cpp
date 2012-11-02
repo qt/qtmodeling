@@ -47,12 +47,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QOccurrenceSpecificationPrivate::QOccurrenceSpecificationPrivate(QOccurrenceSpecification *q_umlptr) :
+QOccurrenceSpecificationPrivate::QOccurrenceSpecificationPrivate() :
     covered(0),
     toAfter(new QSet<QGeneralOrdering *>),
     toBefore(new QSet<QGeneralOrdering *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QOccurrenceSpecificationPrivate::~QOccurrenceSpecificationPrivate()
@@ -69,17 +68,14 @@ QOccurrenceSpecificationPrivate::~QOccurrenceSpecificationPrivate()
     \brief An occurrence specification is the basic semantic unit of interactions. The sequences of occurrences specified by them are the meanings of interactions.
  */
 
-QOccurrenceSpecification::QOccurrenceSpecification(QObject *parent)
-    : QObject(parent)
+QOccurrenceSpecification::QOccurrenceSpecification(QObject *parent) :
+    QInteractionFragment(*new QOccurrenceSpecificationPrivate, parent)
 {
-    d_umlptr = new QOccurrenceSpecificationPrivate(this);
 }
 
-QOccurrenceSpecification::QOccurrenceSpecification(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QOccurrenceSpecification::QOccurrenceSpecification(QOccurrenceSpecificationPrivate &dd, QObject *parent) :
+    QInteractionFragment(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QOccurrenceSpecificationPrivate;
 }
 
 QOccurrenceSpecification::~QOccurrenceSpecification()
@@ -93,7 +89,7 @@ QLifeline *QOccurrenceSpecification::covered() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QOccurrenceSpecification);
+    Q_D(const QOccurrenceSpecification);
     return d->covered;
 }
 
@@ -101,7 +97,7 @@ void QOccurrenceSpecification::setCovered(QLifeline *covered)
 {
     // This is a read-write association end
 
-    QTUML_D(QOccurrenceSpecification);
+    Q_D(QOccurrenceSpecification);
     if (d->covered != covered) {
         d->covered = covered;
     }
@@ -114,7 +110,7 @@ const QSet<QGeneralOrdering *> *QOccurrenceSpecification::toAfter() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QOccurrenceSpecification);
+    Q_D(const QOccurrenceSpecification);
     return d->toAfter;
 }
 
@@ -122,7 +118,7 @@ void QOccurrenceSpecification::addToAfter(QGeneralOrdering *toAfter)
 {
     // This is a read-write association end
 
-    QTUML_D(QOccurrenceSpecification);
+    Q_D(QOccurrenceSpecification);
     if (!d->toAfter->contains(toAfter)) {
         d->toAfter->insert(toAfter);
 
@@ -135,7 +131,7 @@ void QOccurrenceSpecification::removeToAfter(QGeneralOrdering *toAfter)
 {
     // This is a read-write association end
 
-    QTUML_D(QOccurrenceSpecification);
+    Q_D(QOccurrenceSpecification);
     if (d->toAfter->contains(toAfter)) {
         d->toAfter->remove(toAfter);
 
@@ -151,7 +147,7 @@ const QSet<QGeneralOrdering *> *QOccurrenceSpecification::toBefore() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QOccurrenceSpecification);
+    Q_D(const QOccurrenceSpecification);
     return d->toBefore;
 }
 
@@ -159,7 +155,7 @@ void QOccurrenceSpecification::addToBefore(QGeneralOrdering *toBefore)
 {
     // This is a read-write association end
 
-    QTUML_D(QOccurrenceSpecification);
+    Q_D(QOccurrenceSpecification);
     if (!d->toBefore->contains(toBefore)) {
         d->toBefore->insert(toBefore);
 
@@ -172,7 +168,7 @@ void QOccurrenceSpecification::removeToBefore(QGeneralOrdering *toBefore)
 {
     // This is a read-write association end
 
-    QTUML_D(QOccurrenceSpecification);
+    Q_D(QOccurrenceSpecification);
     if (d->toBefore->contains(toBefore)) {
         d->toBefore->remove(toBefore);
 

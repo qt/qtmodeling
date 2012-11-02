@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qclassifier_p.h"
+#include "private/qclassifier_p.h"
+#include "qbehavioredclassifier.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,20 +56,21 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QBehavior;
 class QInterfaceRealization;
 
-class QBehavioredClassifierPrivate : public virtual QClassifierPrivate
+class Q_UML_EXPORT QBehavioredClassifierPrivate : public QClassifierPrivate
 {
+    Q_DECLARE_PUBLIC(QBehavioredClassifier)
+
 public:
+    explicit QBehavioredClassifierPrivate();
     virtual ~QBehavioredClassifierPrivate();
 
     QSet<QBehavior *> *ownedBehaviors;
     QSet<QInterfaceRealization *> *interfaceRealizations;
     QBehavior *classifierBehavior;
-
-protected:
-    explicit QBehavioredClassifierPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

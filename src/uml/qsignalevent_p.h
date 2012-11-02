@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qmessageevent_p.h"
+#include "private/qmessageevent_p.h"
+#include "qsignalevent.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QSignal;
 class QSignalEvent;
 
-class QSignalEventPrivate : public QMessageEventPrivate
+class Q_UML_EXPORT QSignalEventPrivate : public QMessageEventPrivate
 {
+    Q_DECLARE_PUBLIC(QSignalEvent)
+
 public:
-    explicit QSignalEventPrivate(QSignalEvent *q_umlptr = 0);
+    explicit QSignalEventPrivate();
     virtual ~QSignalEventPrivate();
 
     QSignal *signal;

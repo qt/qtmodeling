@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QReadLinkActionPrivate::QReadLinkActionPrivate(QReadLinkAction *q_umlptr) :
+QReadLinkActionPrivate::QReadLinkActionPrivate() :
     result(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QReadLinkActionPrivate::~QReadLinkActionPrivate()
@@ -64,17 +63,14 @@ QReadLinkActionPrivate::~QReadLinkActionPrivate()
     \brief A read link action is a link action that navigates across associations to retrieve objects on one end.
  */
 
-QReadLinkAction::QReadLinkAction(QObject *parent)
-    : QObject(parent)
+QReadLinkAction::QReadLinkAction(QObject *parent) :
+    QLinkAction(*new QReadLinkActionPrivate, parent)
 {
-    d_umlptr = new QReadLinkActionPrivate(this);
 }
 
-QReadLinkAction::QReadLinkAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QReadLinkAction::QReadLinkAction(QReadLinkActionPrivate &dd, QObject *parent) :
+    QLinkAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QReadLinkActionPrivate;
 }
 
 QReadLinkAction::~QReadLinkAction()
@@ -88,7 +84,7 @@ QOutputPin *QReadLinkAction::result() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QReadLinkAction);
+    Q_D(const QReadLinkAction);
     return d->result;
 }
 
@@ -96,7 +92,7 @@ void QReadLinkAction::setResult(QOutputPin *result)
 {
     // This is a read-write association end
 
-    QTUML_D(QReadLinkAction);
+    Q_D(QReadLinkAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->result));

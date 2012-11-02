@@ -55,6 +55,7 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QStructuredActivityNode;
 class QVariable;
 class QActivityPartition;
@@ -62,19 +63,11 @@ class QActivityGroup;
 class QActivityEdge;
 class QActivityNode;
 
+class QActivityPrivate;
+
 class Q_UML_EXPORT QActivity : public QBehavior
 {
     Q_OBJECT
-
-    // From QBehavior
-    Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant)
-    Q_PROPERTY(QBehavioralFeature * specification READ specification WRITE setSpecification)
-    Q_PROPERTY(const QSet<QConstraint *> * postconditions READ postconditions)
-    Q_PROPERTY(const QSet<QConstraint *> * preconditions READ preconditions)
-    Q_PROPERTY(const QSet<QBehavior *> * redefinedBehaviors READ redefinedBehaviors)
-    Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
-    Q_PROPERTY(const QSet<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
-    Q_PROPERTY(QBehavioredClassifier * context READ context)
 
     // From QActivity
     Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly)
@@ -87,6 +80,7 @@ class Q_UML_EXPORT QActivity : public QBehavior
     Q_PROPERTY(const QSet<QActivityEdge *> * edges READ edges)
 
     Q_DISABLE_COPY(QActivity)
+    Q_DECLARE_PRIVATE(QActivity)
 
 public:
     explicit QActivity(QObject *parent = 0);
@@ -127,12 +121,13 @@ public:
     void removeNode(QStructuredActivityNode *structuredNode);
 
 protected:
-    explicit QActivity(bool createPimpl, QObject *parent = 0);
+    explicit QActivity(QActivityPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QActivity) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QActivity) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *)
 
 QT_END_HEADER

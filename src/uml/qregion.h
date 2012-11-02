@@ -45,8 +45,6 @@
 
 // Base class includes
 #include <QtCore/QObject>
-#include <QtUml/QRedefinableElement>
-#include <QtUml/QNamespace>
 
 // Qt includes
 #include <QtCore/QSet>
@@ -57,40 +55,22 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for aggregated 'base classes'
+class QRedefinableElement;
+class QNamespace;
+
+// Forward decls for function parameters
 class QVertex;
 class QTransition;
 class QStateMachine;
 class QClassifier;
 class QState;
 
-class Q_UML_EXPORT QRegion : public QObject, public QRedefinableElement, public QNamespace
+class QRegionPrivate;
+
+class Q_UML_EXPORT QRegion : public QObject
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From QRedefinableElement
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
-
-    // From QNamespace
-    Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
-    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
-    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
-    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
-    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
-    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
 
     // From QRegion
     Q_PROPERTY(QRegion * extendedRegion READ extendedRegion WRITE setExtendedRegion)
@@ -100,7 +80,33 @@ class Q_UML_EXPORT QRegion : public QObject, public QRedefinableElement, public 
     Q_PROPERTY(QClassifier * redefinitionContext READ redefinitionContext)
     Q_PROPERTY(const QSet<QVertex *> * subvertices READ subvertices)
 
+    // From aggregated QElement
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+
+    // From aggregated QNamedElement
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+
+    // From aggregated QRedefinableElement
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
+    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
+
+    // From aggregated QNamespace
+    Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
+    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
+    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
+    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
+    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
+    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
+
     Q_DISABLE_COPY(QRegion)
+    Q_DECLARE_PRIVATE(QRegion)
 
 public:
     explicit QRegion(QObject *parent = 0);
@@ -128,12 +134,17 @@ public:
     bool isRedefinitionContextValid(const QRegion *redefined) const;
 
 protected:
-    explicit QRegion(bool createPimpl, QObject *parent = 0);
+    explicit QRegion(QRegionPrivate &dd, QObject *parent = 0);
+
+private:
+    QRedefinableElement *_wrappedRedefinableElement;
+    QNamespace *_wrappedNamespace;
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QRegion) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QRegion) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QRegion) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QRegion) *> *)
 
 QT_END_HEADER

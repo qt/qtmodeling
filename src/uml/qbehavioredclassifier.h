@@ -55,14 +55,26 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QBehavior;
 class QInterfaceRealization;
 
-class Q_UML_EXPORT QBehavioredClassifier : public virtual QClassifier
+class QBehavioredClassifierPrivate;
+
+class Q_UML_EXPORT QBehavioredClassifier : public QClassifier
 {
+    Q_OBJECT
+
+    // From QBehavioredClassifier
+    Q_PROPERTY(const QSet<QBehavior *> * ownedBehaviors READ ownedBehaviors)
+    Q_PROPERTY(const QSet<QInterfaceRealization *> * interfaceRealizations READ interfaceRealizations)
+    Q_PROPERTY(QBehavior * classifierBehavior READ classifierBehavior WRITE setClassifierBehavior)
+
     Q_DISABLE_COPY(QBehavioredClassifier)
+    Q_DECLARE_PRIVATE(QBehavioredClassifier)
 
 public:
+    explicit QBehavioredClassifier(QObject *parent = 0);
     virtual ~QBehavioredClassifier();
 
     // Association-ends
@@ -80,10 +92,14 @@ public:
     void removeClientDependency(QInterfaceRealization *interfaceRealization);
 
 protected:
-    explicit QBehavioredClassifier();
+    explicit QBehavioredClassifier(QBehavioredClassifierPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *> *)
 
 QT_END_HEADER
 

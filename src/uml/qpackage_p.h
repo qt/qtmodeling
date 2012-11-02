@@ -44,9 +44,12 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qnamespace_p.h"
-#include "qpackageableelement_p.h"
-#include "qtemplateableelement_p.h"
+#include "private/qobject_p.h"
+
+#include "private/qnamespace_p.h"
+#include "private/qpackageableelement_p.h"
+#include "private/qtemplateableelement_p.h"
+#include "qpackage.h"
 
 // Qt includes
 #include <QtCore/QString>
@@ -58,6 +61,7 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QProfile;
 class QProfileApplication;
 class QNamedElement;
@@ -66,10 +70,12 @@ class QStereotype;
 class QPackage;
 class QType;
 
-class QPackagePrivate : public QNamespacePrivate, public QPackageableElementPrivate, public QTemplateableElementPrivate
+class Q_UML_EXPORT QPackagePrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QPackage)
+
 public:
-    explicit QPackagePrivate(QPackage *q_umlptr = 0);
+    explicit QPackagePrivate();
     virtual ~QPackagePrivate();
 
     QString URI;
@@ -77,6 +83,11 @@ public:
     QPackage *nestingPackage;
     QSet<QProfileApplication *> *profileApplications;
     QSet<QPackageMerge *> *packageMerges;
+
+private:
+    QNamespacePrivate *_wrappedNamespacePrivate;
+    QPackageableElementPrivate *_wrappedPackageableElementPrivate;
+    QTemplateableElementPrivate *_wrappedTemplateableElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

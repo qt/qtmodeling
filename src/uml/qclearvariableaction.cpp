@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QClearVariableActionPrivate::QClearVariableActionPrivate(QClearVariableAction *q_umlptr)
+QClearVariableActionPrivate::QClearVariableActionPrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QClearVariableActionPrivate::~QClearVariableActionPrivate()
@@ -62,17 +61,14 @@ QClearVariableActionPrivate::~QClearVariableActionPrivate()
     \brief A clear variable action is a variable action that removes all values of a variable.
  */
 
-QClearVariableAction::QClearVariableAction(QObject *parent)
-    : QObject(parent)
+QClearVariableAction::QClearVariableAction(QObject *parent) :
+    QVariableAction(*new QClearVariableActionPrivate, parent)
 {
-    d_umlptr = new QClearVariableActionPrivate(this);
 }
 
-QClearVariableAction::QClearVariableAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QClearVariableAction::QClearVariableAction(QClearVariableActionPrivate &dd, QObject *parent) :
+    QVariableAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QClearVariableActionPrivate;
 }
 
 QClearVariableAction::~QClearVariableAction()

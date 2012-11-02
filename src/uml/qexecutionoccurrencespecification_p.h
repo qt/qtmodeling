@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qoccurrencespecification_p.h"
+#include "private/qoccurrencespecification_p.h"
+#include "qexecutionoccurrencespecification.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QExecutionSpecification;
 class QExecutionOccurrenceSpecification;
 
-class QExecutionOccurrenceSpecificationPrivate : public QOccurrenceSpecificationPrivate
+class Q_UML_EXPORT QExecutionOccurrenceSpecificationPrivate : public QOccurrenceSpecificationPrivate
 {
+    Q_DECLARE_PUBLIC(QExecutionOccurrenceSpecification)
+
 public:
-    explicit QExecutionOccurrenceSpecificationPrivate(QExecutionOccurrenceSpecification *q_umlptr = 0);
+    explicit QExecutionOccurrenceSpecificationPrivate();
     virtual ~QExecutionOccurrenceSpecificationPrivate();
 
     QExecutionSpecification *execution;

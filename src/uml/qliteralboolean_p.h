@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qliteralspecification_p.h"
+#include "private/qliteralspecification_p.h"
+#include "qliteralboolean.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,10 +55,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QLiteralBoolean;
 
-class QLiteralBooleanPrivate : public QLiteralSpecificationPrivate
+class Q_UML_EXPORT QLiteralBooleanPrivate : public QLiteralSpecificationPrivate
 {
+    Q_DECLARE_PUBLIC(QLiteralBoolean)
+
 public:
-    explicit QLiteralBooleanPrivate(QLiteralBoolean *q_umlptr = 0);
+    explicit QLiteralBooleanPrivate();
     virtual ~QLiteralBooleanPrivate();
 
     bool value;

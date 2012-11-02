@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qdirectedrelationship_p.h"
+#include "private/qdirectedrelationship_p.h"
+#include "qprofileapplication.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,14 +54,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QProfile;
 class QPackage;
 class QProfileApplication;
 
-class QProfileApplicationPrivate : public QDirectedRelationshipPrivate
+class Q_UML_EXPORT QProfileApplicationPrivate : public QDirectedRelationshipPrivate
 {
+    Q_DECLARE_PUBLIC(QProfileApplication)
+
 public:
-    explicit QProfileApplicationPrivate(QProfileApplication *q_umlptr = 0);
+    explicit QProfileApplicationPrivate();
     virtual ~QProfileApplicationPrivate();
 
     bool isStrict;

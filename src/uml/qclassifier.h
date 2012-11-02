@@ -44,10 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtUml/QNamespace>
-#include <QtUml/QType>
-#include <QtUml/QRedefinableElement>
-#include <QtUml/QTemplateableElement>
+#include <QtCore/QObject>
 
 // Qt includes
 #include <QtCore/QSet>
@@ -58,6 +55,13 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for aggregated 'base classes'
+class QNamespace;
+class QType;
+class QRedefinableElement;
+class QTemplateableElement;
+
+// Forward decls for function parameters
 class QRedefinableTemplateSignature;
 class QClassifierTemplateParameter;
 class QUseCase;
@@ -69,11 +73,72 @@ class QGeneralization;
 class QCollaborationUse;
 class QFeature;
 
-class Q_UML_EXPORT QClassifier : public QNamespace, public QType, public QRedefinableElement, public QTemplateableElement
+class QClassifierPrivate;
+
+class Q_UML_EXPORT QClassifier : public QObject
 {
+    Q_OBJECT
+
+    // From QClassifier
+    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract)
+    Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization)
+    Q_PROPERTY(const QSet<QUseCase *> * ownedUseCases READ ownedUseCases)
+    Q_PROPERTY(const QSet<QGeneralizationSet *> * powertypeExtents READ powertypeExtents)
+    Q_PROPERTY(const QSet<QUseCase *> * useCases READ useCases)
+    Q_PROPERTY(QClassifierTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
+    Q_PROPERTY(const QSet<QClassifier *> * redefinedClassifiers READ redefinedClassifiers)
+    Q_PROPERTY(QRedefinableTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
+    Q_PROPERTY(const QSet<QCollaborationUse *> * collaborationUses READ collaborationUses)
+    Q_PROPERTY(const QSet<QProperty *> * attributes READ attributes)
+    Q_PROPERTY(const QSet<QFeature *> * features READ features)
+    Q_PROPERTY(const QSet<QClassifier *> * generals READ generals)
+    Q_PROPERTY(QCollaborationUse * representation READ representation WRITE setRepresentation)
+    Q_PROPERTY(const QSet<QGeneralization *> * generalizations READ generalizations)
+    Q_PROPERTY(const QSet<QNamedElement *> * inheritedMembers READ inheritedMembers)
+    Q_PROPERTY(const QSet<QSubstitution *> * substitutions READ substitutions)
+
+    // From aggregated QElement
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+
+    // From aggregated QNamedElement
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+
+    // From aggregated QNamespace
+    Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
+    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
+    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
+    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
+    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
+    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
+
+    // From aggregated QParameterableElement
+    Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
+
+    // From aggregated QPackageableElement
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+
+    // From aggregated QType
+    Q_PROPERTY(QPackage * package READ package WRITE setPackage)
+
+    // From aggregated QRedefinableElement
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
+    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
+    Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
+
+    // From aggregated QTemplateableElement
+    Q_PROPERTY(const QSet<QTemplateBinding *> * templateBindings READ templateBindings)
+
     Q_DISABLE_COPY(QClassifier)
+    Q_DECLARE_PRIVATE(QClassifier)
 
 public:
+    explicit QClassifier(QObject *parent = 0);
     virtual ~QClassifier();
 
     // Attributes
@@ -133,10 +198,20 @@ public:
     void removeClientDependency(QSubstitution *substitution);
 
 protected:
-    explicit QClassifier();
+    explicit QClassifier(QClassifierPrivate &dd, QObject *parent = 0);
+
+private:
+    QNamespace *_wrappedNamespace;
+    QType *_wrappedType;
+    QRedefinableElement *_wrappedRedefinableElement;
+    QTemplateableElement *_wrappedTemplateableElement;
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QClassifier) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *)
 
 QT_END_HEADER
 

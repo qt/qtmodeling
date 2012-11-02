@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCallEventPrivate::QCallEventPrivate(QCallEvent *q_umlptr) :
+QCallEventPrivate::QCallEventPrivate() :
     operation(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QCallEventPrivate::~QCallEventPrivate()
@@ -64,17 +63,14 @@ QCallEventPrivate::~QCallEventPrivate()
     \brief A call event models the receipt by an object of a message invoking a call of an operation.
  */
 
-QCallEvent::QCallEvent(QObject *parent)
-    : QObject(parent)
+QCallEvent::QCallEvent(QObject *parent) :
+    QMessageEvent(*new QCallEventPrivate, parent)
 {
-    d_umlptr = new QCallEventPrivate(this);
 }
 
-QCallEvent::QCallEvent(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QCallEvent::QCallEvent(QCallEventPrivate &dd, QObject *parent) :
+    QMessageEvent(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QCallEventPrivate;
 }
 
 QCallEvent::~QCallEvent()
@@ -88,7 +84,7 @@ QOperation *QCallEvent::operation() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QCallEvent);
+    Q_D(const QCallEvent);
     return d->operation;
 }
 
@@ -96,7 +92,7 @@ void QCallEvent::setOperation(QOperation *operation)
 {
     // This is a read-write association end
 
-    QTUML_D(QCallEvent);
+    Q_D(QCallEvent);
     if (d->operation != operation) {
         d->operation = operation;
     }

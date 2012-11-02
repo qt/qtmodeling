@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qnamedelement_p.h"
+#include "private/qnamedelement_p.h"
+#include "qnamespace.h"
 
 // Qt includes
 #include <QtCore/QString>
@@ -56,14 +57,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QPackageImport;
 class QConstraint;
 class QElementImport;
 class QPackageableElement;
 
-class QNamespacePrivate : public virtual QNamedElementPrivate
+class Q_UML_EXPORT QNamespacePrivate : public QNamedElementPrivate
 {
+    Q_DECLARE_PUBLIC(QNamespace)
+
 public:
+    explicit QNamespacePrivate();
     virtual ~QNamespacePrivate();
 
     QSet<QPackageImport *> *packageImports;
@@ -77,9 +82,6 @@ public:
     void removeMember(QNamedElement *member);
     void addOwnedMember(QNamedElement *ownedMember);
     void removeOwnedMember(QNamedElement *ownedMember);
-
-protected:
-    explicit QNamespacePrivate();
 };
 
 QT_END_NAMESPACE_QTUML

@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qinteractionuse_p.h"
+#include "private/qinteractionuse_p.h"
+#include "qpartdecomposition.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,10 +55,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QPartDecomposition;
 
-class QPartDecompositionPrivate : public QInteractionUsePrivate
+class Q_UML_EXPORT QPartDecompositionPrivate : public QInteractionUsePrivate
 {
+    Q_DECLARE_PUBLIC(QPartDecomposition)
+
 public:
-    explicit QPartDecompositionPrivate(QPartDecomposition *q_umlptr = 0);
+    explicit QPartDecompositionPrivate();
     virtual ~QPartDecompositionPrivate();
 
 };

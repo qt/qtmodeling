@@ -45,11 +45,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QIntervalPrivate::QIntervalPrivate(QInterval *q_umlptr) :
+QIntervalPrivate::QIntervalPrivate() :
     min(0),
     max(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QIntervalPrivate::~QIntervalPrivate()
@@ -64,17 +63,14 @@ QIntervalPrivate::~QIntervalPrivate()
     \brief An interval defines the range between two value specifications.
  */
 
-QInterval::QInterval(QObject *parent)
-    : QObject(parent)
+QInterval::QInterval(QObject *parent) :
+    QValueSpecification(*new QIntervalPrivate, parent)
 {
-    d_umlptr = new QIntervalPrivate(this);
 }
 
-QInterval::QInterval(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QInterval::QInterval(QIntervalPrivate &dd, QObject *parent) :
+    QValueSpecification(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QIntervalPrivate;
 }
 
 QInterval::~QInterval()
@@ -88,7 +84,7 @@ QValueSpecification *QInterval::min() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInterval);
+    Q_D(const QInterval);
     return d->min;
 }
 
@@ -96,7 +92,7 @@ void QInterval::setMin(QValueSpecification *min)
 {
     // This is a read-write association end
 
-    QTUML_D(QInterval);
+    Q_D(QInterval);
     if (d->min != min) {
         d->min = min;
     }
@@ -109,7 +105,7 @@ QValueSpecification *QInterval::max() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInterval);
+    Q_D(const QInterval);
     return d->max;
 }
 
@@ -117,7 +113,7 @@ void QInterval::setMax(QValueSpecification *max)
 {
     // This is a read-write association end
 
-    QTUML_D(QInterval);
+    Q_D(QInterval);
     if (d->max != max) {
         d->max = max;
     }

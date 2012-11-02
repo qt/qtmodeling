@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDestroyLinkActionPrivate::QDestroyLinkActionPrivate(QDestroyLinkAction *q_umlptr) :
+QDestroyLinkActionPrivate::QDestroyLinkActionPrivate() :
     endData(new QSet<QLinkEndDestructionData *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QDestroyLinkActionPrivate::~QDestroyLinkActionPrivate()
@@ -67,17 +66,14 @@ QDestroyLinkActionPrivate::~QDestroyLinkActionPrivate()
     \brief A destroy link action is a write link action that destroys links and link objects.
  */
 
-QDestroyLinkAction::QDestroyLinkAction(QObject *parent)
-    : QObject(parent)
+QDestroyLinkAction::QDestroyLinkAction(QObject *parent) :
+    QWriteLinkAction(*new QDestroyLinkActionPrivate, parent)
 {
-    d_umlptr = new QDestroyLinkActionPrivate(this);
 }
 
-QDestroyLinkAction::QDestroyLinkAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QDestroyLinkAction::QDestroyLinkAction(QDestroyLinkActionPrivate &dd, QObject *parent) :
+    QWriteLinkAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QDestroyLinkActionPrivate;
 }
 
 QDestroyLinkAction::~QDestroyLinkAction()
@@ -91,7 +87,7 @@ const QSet<QLinkEndDestructionData *> *QDestroyLinkAction::endData() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QDestroyLinkAction);
+    Q_D(const QDestroyLinkAction);
     return d->endData;
 }
 
@@ -99,7 +95,7 @@ void QDestroyLinkAction::addEndData(QLinkEndDestructionData *endData)
 {
     // This is a read-write association end
 
-    QTUML_D(QDestroyLinkAction);
+    Q_D(QDestroyLinkAction);
     if (!d->endData->contains(endData)) {
         d->endData->insert(endData);
     }
@@ -109,7 +105,7 @@ void QDestroyLinkAction::removeEndData(QLinkEndDestructionData *endData)
 {
     // This is a read-write association end
 
-    QTUML_D(QDestroyLinkAction);
+    Q_D(QDestroyLinkAction);
     if (d->endData->contains(endData)) {
         d->endData->remove(endData);
     }

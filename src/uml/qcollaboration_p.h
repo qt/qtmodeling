@@ -44,8 +44,11 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qstructuredclassifier_p.h"
-#include "qbehavioredclassifier_p.h"
+#include "private/qobject_p.h"
+
+#include "private/qstructuredclassifier_p.h"
+#include "private/qbehavioredclassifier_p.h"
+#include "qcollaboration.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -56,16 +59,23 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QConnectableElement;
 class QCollaboration;
 
-class QCollaborationPrivate : public QStructuredClassifierPrivate, public QBehavioredClassifierPrivate
+class Q_UML_EXPORT QCollaborationPrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QCollaboration)
+
 public:
-    explicit QCollaborationPrivate(QCollaboration *q_umlptr = 0);
+    explicit QCollaborationPrivate();
     virtual ~QCollaborationPrivate();
 
     QSet<QConnectableElement *> *collaborationRoles;
+
+private:
+    QStructuredClassifierPrivate *_wrappedStructuredClassifierPrivate;
+    QBehavioredClassifierPrivate *_wrappedBehavioredClassifierPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qinvocationaction_p.h"
+#include "private/qinvocationaction_p.h"
+#include "qcallaction.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -55,18 +56,19 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QOutputPin;
 
-class QCallActionPrivate : public QInvocationActionPrivate
+class Q_UML_EXPORT QCallActionPrivate : public QInvocationActionPrivate
 {
+    Q_DECLARE_PUBLIC(QCallAction)
+
 public:
+    explicit QCallActionPrivate();
     virtual ~QCallActionPrivate();
 
     bool isSynchronous;
     QList<QOutputPin *> *results;
-
-protected:
-    explicit QCallActionPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

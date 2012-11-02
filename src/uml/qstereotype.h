@@ -55,8 +55,11 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QImage;
 class QProfile;
+
+class QStereotypePrivate;
 
 class Q_UML_EXPORT QStereotype : public QClass
 {
@@ -67,6 +70,7 @@ class Q_UML_EXPORT QStereotype : public QClass
     Q_PROPERTY(QProfile * profile READ profile)
 
     Q_DISABLE_COPY(QStereotype)
+    Q_DECLARE_PRIVATE(QStereotype)
 
 public:
     explicit QStereotype(QObject *parent = 0);
@@ -82,12 +86,13 @@ public:
     QProfile *containingProfile() const;
 
 protected:
-    explicit QStereotype(bool createPimpl, QObject *parent = 0);
+    explicit QStereotype(QStereotypePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QStereotype) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *> *)
 
 QT_END_HEADER

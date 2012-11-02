@@ -52,23 +52,25 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QPartDecompositionPrivate;
+
 class Q_UML_EXPORT QPartDecomposition : public QInteractionUse
 {
-    Q_OBJECT
-
     Q_DISABLE_COPY(QPartDecomposition)
+    Q_DECLARE_PRIVATE(QPartDecomposition)
 
 public:
     explicit QPartDecomposition(QObject *parent = 0);
     virtual ~QPartDecomposition();
 
 protected:
-    explicit QPartDecomposition(bool createPimpl, QObject *parent = 0);
+    explicit QPartDecomposition(QPartDecompositionPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *> *)
 
 QT_END_HEADER

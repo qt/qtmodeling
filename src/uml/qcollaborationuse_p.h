@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qnamedelement_p.h"
+#include "private/qnamedelement_p.h"
+#include "qcollaborationuse.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,14 +56,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QDependency;
 class QCollaboration;
 class QCollaborationUse;
 
-class QCollaborationUsePrivate : public QNamedElementPrivate
+class Q_UML_EXPORT QCollaborationUsePrivate : public QNamedElementPrivate
 {
+    Q_DECLARE_PUBLIC(QCollaborationUse)
+
 public:
-    explicit QCollaborationUsePrivate(QCollaborationUse *q_umlptr = 0);
+    explicit QCollaborationUsePrivate();
     virtual ~QCollaborationUsePrivate();
 
     QCollaboration *type;

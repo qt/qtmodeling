@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QElement>
 
 QT_BEGIN_HEADER
@@ -53,17 +52,15 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QParameterableElement;
 class QTemplateSignature;
 
-class Q_UML_EXPORT QTemplateParameter : public QObject, public QElement
+class QTemplateParameterPrivate;
+
+class Q_UML_EXPORT QTemplateParameter : public QElement
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QTemplateParameter
     Q_PROPERTY(QParameterableElement * default_ READ default_ WRITE setDefault_)
@@ -73,6 +70,7 @@ class Q_UML_EXPORT QTemplateParameter : public QObject, public QElement
     Q_PROPERTY(QTemplateSignature * signature READ signature WRITE setSignature)
 
     Q_DISABLE_COPY(QTemplateParameter)
+    Q_DECLARE_PRIVATE(QTemplateParameter)
 
 public:
     explicit QTemplateParameter(QObject *parent = 0);
@@ -91,12 +89,13 @@ public:
     void setSignature(QTemplateSignature *signature);
 
 protected:
-    explicit QTemplateParameter(bool createPimpl, QObject *parent = 0);
+    explicit QTemplateParameter(QTemplateParameterPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *> *)
 
 QT_END_HEADER

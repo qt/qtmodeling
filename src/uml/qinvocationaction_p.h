@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qaction_p.h"
+#include "private/qaction_p.h"
+#include "qinvocationaction.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -55,19 +56,20 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInputPin;
 class QPort;
 
-class QInvocationActionPrivate : public QActionPrivate
+class Q_UML_EXPORT QInvocationActionPrivate : public QActionPrivate
 {
+    Q_DECLARE_PUBLIC(QInvocationAction)
+
 public:
+    explicit QInvocationActionPrivate();
     virtual ~QInvocationActionPrivate();
 
     QList<QInputPin *> *arguments;
     QPort *onPort;
-
-protected:
-    explicit QInvocationActionPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

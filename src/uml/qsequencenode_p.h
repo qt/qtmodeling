@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qstructuredactivitynode_p.h"
+#include "private/qstructuredactivitynode_p.h"
+#include "qsequencenode.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -55,13 +56,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QExecutableNode;
 class QSequenceNode;
 
-class QSequenceNodePrivate : public QStructuredActivityNodePrivate
+class Q_UML_EXPORT QSequenceNodePrivate : public QStructuredActivityNodePrivate
 {
+    Q_DECLARE_PUBLIC(QSequenceNode)
+
 public:
-    explicit QSequenceNodePrivate(QSequenceNode *q_umlptr = 0);
+    explicit QSequenceNodePrivate();
     virtual ~QSequenceNodePrivate();
 
     QList<QExecutableNode *> *executableNodes;

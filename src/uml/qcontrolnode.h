@@ -52,18 +52,26 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QControlNodePrivate;
+
 class Q_UML_EXPORT QControlNode : public QActivityNode
 {
     Q_DISABLE_COPY(QControlNode)
+    Q_DECLARE_PRIVATE(QControlNode)
 
 public:
+    explicit QControlNode(QObject *parent = 0);
     virtual ~QControlNode();
 
 protected:
-    explicit QControlNode();
+    explicit QControlNode(QControlNodePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QControlNode) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QControlNode) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QControlNode) *> *)
 
 QT_END_HEADER
 

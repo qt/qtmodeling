@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QManifestationPrivate::QManifestationPrivate(QManifestation *q_umlptr) :
+QManifestationPrivate::QManifestationPrivate() :
     utilizedElement(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QManifestationPrivate::~QManifestationPrivate()
@@ -64,17 +63,14 @@ QManifestationPrivate::~QManifestationPrivate()
     \brief A manifestation is the concrete physical rendering of one or more model elements by an artifact.
  */
 
-QManifestation::QManifestation(QObject *parent)
-    : QAbstraction(false, parent)
+QManifestation::QManifestation(QObject *parent) :
+    QAbstraction(*new QManifestationPrivate, parent)
 {
-    d_umlptr = new QManifestationPrivate(this);
 }
 
-QManifestation::QManifestation(bool createPimpl, QObject *parent)
-    : QAbstraction(createPimpl, parent)
+QManifestation::QManifestation(QManifestationPrivate &dd, QObject *parent) :
+    QAbstraction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QManifestationPrivate;
 }
 
 QManifestation::~QManifestation()
@@ -88,7 +84,7 @@ QPackageableElement *QManifestation::utilizedElement() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QManifestation);
+    Q_D(const QManifestation);
     return d->utilizedElement;
 }
 
@@ -96,7 +92,7 @@ void QManifestation::setUtilizedElement(QPackageableElement *utilizedElement)
 {
     // This is a read-write association end
 
-    QTUML_D(QManifestation);
+    Q_D(QManifestation);
     if (d->utilizedElement != utilizedElement) {
         // Adjust subsetted property(ies)
         QDependency::removeSupplier(dynamic_cast<QNamedElement *>(d->utilizedElement));

@@ -154,7 +154,7 @@ PUBLIC_HEADERS += \
     qdestroyobjectaction.h \
     qwritelinkaction.h \
     qmodel.h \
-#    qassociationclass.h \
+    qassociationclass.h \
     qinterfacerealization.h \
     qoperation.h \
     qwritevariableaction.h \
@@ -398,7 +398,7 @@ PRIVATE_HEADERS += \
     qdestroyobjectaction_p.h \
     qwritelinkaction_p.h \
     qmodel_p.h \
-#    qassociationclass_p.h \
+    qassociationclass_p.h \
     qinterfacerealization_p.h \
     qoperation_p.h \
     qwritevariableaction_p.h \
@@ -643,7 +643,7 @@ SOURCES += \
     qdestroyobjectaction.cpp \
     qwritelinkaction.cpp \
     qmodel.cpp \
-#    qassociationclass.cpp \
+    qassociationclass.cpp \
     qinterfacerealization.cpp \
     qoperation.cpp \
     qwritevariableaction.cpp \

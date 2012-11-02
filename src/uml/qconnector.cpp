@@ -48,13 +48,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QConnectorPrivate::QConnectorPrivate(QConnector *q_umlptr) :
+QConnectorPrivate::QConnectorPrivate() :
     redefinedConnectors(new QSet<QConnector *>),
     contracts(new QSet<QBehavior *>),
     type(0),
     ends(new QList<QConnectorEnd *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QConnectorPrivate::~QConnectorPrivate()
@@ -72,17 +71,14 @@ QConnectorPrivate::~QConnectorPrivate()
     \brief A delegation connector is a connector that links the external contract of a component (as specified by its ports) to the realization of that behavior. It represents the forwarding of events (operation requests and events): a signal that arrives at a port that has a delegation connector to one or more parts or ports on parts will be passed on to those targets for handling. An assembly connector is a connector between two or more parts or ports on parts that defines that one or more parts provide the services that other parts use.Specifies a link that enables communication between two or more instances. This link may be an instance of an association, or it may represent the possibility of the instances being able to communicate because their identities are known by virtue of being passed in as parameters, held in variables or slots, or because the communicating instances are the same instance. The link may be realized by something as simple as a pointer or by something as complex as a network connection. In contrast to associations, which specify links between any instance of the associated classifiers, connectors specify links between instances playing the connected parts only.
  */
 
-QConnector::QConnector(QObject *parent)
-    : QObject(parent)
+QConnector::QConnector(QObject *parent) :
+    QFeature(*new QConnectorPrivate, parent)
 {
-    d_umlptr = new QConnectorPrivate(this);
 }
 
-QConnector::QConnector(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QConnector::QConnector(QConnectorPrivate &dd, QObject *parent) :
+    QFeature(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QConnectorPrivate;
 }
 
 QConnector::~QConnector()
@@ -98,7 +94,7 @@ QtUml::ConnectorKind QConnector::kind() const
 
     qWarning("QConnector::kind: to be implemented (this is a derived attribute)");
 
-    //QTUML_D(const QConnector);
+    //Q_D(const QConnector);
     //return <derived-return>;
 }
 
@@ -109,7 +105,7 @@ const QSet<QConnector *> *QConnector::redefinedConnectors() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QConnector);
+    Q_D(const QConnector);
     return d->redefinedConnectors;
 }
 
@@ -117,7 +113,7 @@ void QConnector::addRedefinedConnector(QConnector *redefinedConnector)
 {
     // This is a read-write association end
 
-    QTUML_D(QConnector);
+    Q_D(QConnector);
     if (!d->redefinedConnectors->contains(redefinedConnector)) {
         d->redefinedConnectors->insert(redefinedConnector);
 
@@ -130,7 +126,7 @@ void QConnector::removeRedefinedConnector(QConnector *redefinedConnector)
 {
     // This is a read-write association end
 
-    QTUML_D(QConnector);
+    Q_D(QConnector);
     if (d->redefinedConnectors->contains(redefinedConnector)) {
         d->redefinedConnectors->remove(redefinedConnector);
 
@@ -146,7 +142,7 @@ const QSet<QBehavior *> *QConnector::contracts() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QConnector);
+    Q_D(const QConnector);
     return d->contracts;
 }
 
@@ -154,7 +150,7 @@ void QConnector::addContract(QBehavior *contract)
 {
     // This is a read-write association end
 
-    QTUML_D(QConnector);
+    Q_D(QConnector);
     if (!d->contracts->contains(contract)) {
         d->contracts->insert(contract);
     }
@@ -164,7 +160,7 @@ void QConnector::removeContract(QBehavior *contract)
 {
     // This is a read-write association end
 
-    QTUML_D(QConnector);
+    Q_D(QConnector);
     if (d->contracts->contains(contract)) {
         d->contracts->remove(contract);
     }
@@ -177,7 +173,7 @@ QAssociation *QConnector::type() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QConnector);
+    Q_D(const QConnector);
     return d->type;
 }
 
@@ -185,7 +181,7 @@ void QConnector::setType(QAssociation *type)
 {
     // This is a read-write association end
 
-    QTUML_D(QConnector);
+    Q_D(QConnector);
     if (d->type != type) {
         d->type = type;
     }
@@ -198,7 +194,7 @@ const QList<QConnectorEnd *> *QConnector::ends() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QConnector);
+    Q_D(const QConnector);
     return d->ends;
 }
 
@@ -206,7 +202,7 @@ void QConnector::addEnd(QConnectorEnd *end)
 {
     // This is a read-write association end
 
-    QTUML_D(QConnector);
+    Q_D(QConnector);
     if (!d->ends->contains(end)) {
         d->ends->append(end);
 
@@ -219,7 +215,7 @@ void QConnector::removeEnd(QConnectorEnd *end)
 {
     // This is a read-write association end
 
-    QTUML_D(QConnector);
+    Q_D(QConnector);
     if (d->ends->contains(end)) {
         d->ends->removeAll(end);
 

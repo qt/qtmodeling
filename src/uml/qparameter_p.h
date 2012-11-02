@@ -43,13 +43,17 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+#include "private/qobject_p.h"
+
+#include "private/qmultiplicityelement_p.h"
+#include "private/qconnectableelement_p.h"
+#include "qparameter.h"
+
+
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
 #include <QtUml/QtUmlEnumerations>
-
-// Base class includes
-#include "qmultiplicityelement_p.h"
-#include "qconnectableelement_p.h"
 
 // Qt includes
 #include <QtCore/QString>
@@ -61,15 +65,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QValueSpecification;
 class QOperation;
 class QParameterSet;
 class QParameter;
 
-class QParameterPrivate : public QMultiplicityElementPrivate, public QConnectableElementPrivate
+class Q_UML_EXPORT QParameterPrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QParameter)
+
 public:
-    explicit QParameterPrivate(QParameter *q_umlptr = 0);
+    explicit QParameterPrivate();
     virtual ~QParameterPrivate();
 
     bool isException;
@@ -79,6 +86,10 @@ public:
     QOperation *operation;
     QValueSpecification *defaultValue;
     QSet<QParameterSet *> *parameterSets;
+
+private:
+    QMultiplicityElementPrivate *_wrappedMultiplicityElementPrivate;
+    QConnectableElementPrivate *_wrappedConnectableElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

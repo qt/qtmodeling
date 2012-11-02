@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QActionInputPinPrivate::QActionInputPinPrivate(QActionInputPin *q_umlptr) :
+QActionInputPinPrivate::QActionInputPinPrivate() :
     fromAction(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QActionInputPinPrivate::~QActionInputPinPrivate()
@@ -64,17 +63,14 @@ QActionInputPinPrivate::~QActionInputPinPrivate()
     \brief An action input pin is a kind of pin that executes an action to determine the values to input to another.
  */
 
-QActionInputPin::QActionInputPin(QObject *parent)
-    : QInputPin(false, parent)
+QActionInputPin::QActionInputPin(QObject *parent) :
+    QInputPin(*new QActionInputPinPrivate, parent)
 {
-    d_umlptr = new QActionInputPinPrivate(this);
 }
 
-QActionInputPin::QActionInputPin(bool createPimpl, QObject *parent)
-    : QInputPin(createPimpl, parent)
+QActionInputPin::QActionInputPin(QActionInputPinPrivate &dd, QObject *parent) :
+    QInputPin(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QActionInputPinPrivate;
 }
 
 QActionInputPin::~QActionInputPin()
@@ -88,7 +84,7 @@ QAction *QActionInputPin::fromAction() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QActionInputPin);
+    Q_D(const QActionInputPin);
     return d->fromAction;
 }
 
@@ -96,7 +92,7 @@ void QActionInputPin::setFromAction(QAction *fromAction)
 {
     // This is a read-write association end
 
-    QTUML_D(QActionInputPin);
+    Q_D(QActionInputPin);
     if (d->fromAction != fromAction) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->fromAction));

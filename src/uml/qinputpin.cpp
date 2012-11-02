@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInputPinPrivate::QInputPinPrivate(QInputPin *q_umlptr)
+QInputPinPrivate::QInputPinPrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QInputPinPrivate::~QInputPinPrivate()
@@ -62,17 +61,14 @@ QInputPinPrivate::~QInputPinPrivate()
     \brief An input pin is a pin that holds input values to be consumed by an action.
  */
 
-QInputPin::QInputPin(QObject *parent)
-    : QObject(parent)
+QInputPin::QInputPin(QObject *parent) :
+    QPin(*new QInputPinPrivate, parent)
 {
-    d_umlptr = new QInputPinPrivate(this);
 }
 
-QInputPin::QInputPin(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QInputPin::QInputPin(QInputPinPrivate &dd, QObject *parent) :
+    QPin(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QInputPinPrivate;
 }
 
 QInputPin::~QInputPin()

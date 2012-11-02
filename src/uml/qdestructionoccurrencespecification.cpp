@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDestructionOccurrenceSpecificationPrivate::QDestructionOccurrenceSpecificationPrivate(QDestructionOccurrenceSpecification *q_umlptr)
+QDestructionOccurrenceSpecificationPrivate::QDestructionOccurrenceSpecificationPrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QDestructionOccurrenceSpecificationPrivate::~QDestructionOccurrenceSpecificationPrivate()
@@ -62,17 +61,14 @@ QDestructionOccurrenceSpecificationPrivate::~QDestructionOccurrenceSpecification
     \brief A destruction event models the destruction of an object.
  */
 
-QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(QObject *parent)
-    : QMessageOccurrenceSpecification(false, parent)
+QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(QObject *parent) :
+    QMessageOccurrenceSpecification(*new QDestructionOccurrenceSpecificationPrivate, parent)
 {
-    d_umlptr = new QDestructionOccurrenceSpecificationPrivate(this);
 }
 
-QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(bool createPimpl, QObject *parent)
-    : QMessageOccurrenceSpecification(createPimpl, parent)
+QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(QDestructionOccurrenceSpecificationPrivate &dd, QObject *parent) :
+    QMessageOccurrenceSpecification(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QDestructionOccurrenceSpecificationPrivate;
 }
 
 QDestructionOccurrenceSpecification::~QDestructionOccurrenceSpecification()

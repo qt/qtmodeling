@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qbehavioralfeature_p.h"
+#include "private/qbehavioralfeature_p.h"
+#include "qreception.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QSignal;
 class QReception;
 
-class QReceptionPrivate : public QBehavioralFeaturePrivate
+class Q_UML_EXPORT QReceptionPrivate : public QBehavioralFeaturePrivate
 {
+    Q_DECLARE_PUBLIC(QReception)
+
 public:
-    explicit QReceptionPrivate(QReception *q_umlptr = 0);
+    explicit QReceptionPrivate();
     virtual ~QReceptionPrivate();
 
     QSignal *signal;

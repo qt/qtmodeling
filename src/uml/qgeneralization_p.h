@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qdirectedrelationship_p.h"
+#include "private/qdirectedrelationship_p.h"
+#include "qgeneralization.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,14 +56,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QClassifier;
 class QGeneralizationSet;
 class QGeneralization;
 
-class QGeneralizationPrivate : public QDirectedRelationshipPrivate
+class Q_UML_EXPORT QGeneralizationPrivate : public QDirectedRelationshipPrivate
 {
+    Q_DECLARE_PUBLIC(QGeneralization)
+
 public:
-    explicit QGeneralizationPrivate(QGeneralization *q_umlptr = 0);
+    explicit QGeneralizationPrivate();
     virtual ~QGeneralizationPrivate();
 
     bool isSubstitutable;

@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCommunicationPathPrivate::QCommunicationPathPrivate(QCommunicationPath *q_umlptr)
+QCommunicationPathPrivate::QCommunicationPathPrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QCommunicationPathPrivate::~QCommunicationPathPrivate()
@@ -62,17 +61,14 @@ QCommunicationPathPrivate::~QCommunicationPathPrivate()
     \brief A communication path is an association between two deployment targets, through which they are able to exchange signals and messages.
  */
 
-QCommunicationPath::QCommunicationPath(QObject *parent)
-    : QAssociation(false, parent)
+QCommunicationPath::QCommunicationPath(QObject *parent) :
+    QAssociation(*new QCommunicationPathPrivate, parent)
 {
-    d_umlptr = new QCommunicationPathPrivate(this);
 }
 
-QCommunicationPath::QCommunicationPath(bool createPimpl, QObject *parent)
-    : QAssociation(createPimpl, parent)
+QCommunicationPath::QCommunicationPath(QCommunicationPathPrivate &dd, QObject *parent) :
+    QAssociation(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QCommunicationPathPrivate;
 }
 
 QCommunicationPath::~QCommunicationPath()

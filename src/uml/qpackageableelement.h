@@ -43,12 +43,11 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+#include <QtCore/QObject>
+
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
-
-// Base class includes
-#include <QtUml/QParameterableElement>
-#include <QtUml/QNamedElement>
 
 QT_BEGIN_HEADER
 
@@ -56,11 +55,40 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QPackageableElement : public QParameterableElement, public virtual QNamedElement
+// Forward decls for aggregated 'base classes'
+class QParameterableElement;
+class QNamedElement;
+
+class QPackageableElementPrivate;
+
+class Q_UML_EXPORT QPackageableElement : public QObject
 {
+    Q_OBJECT
+
+    // From QPackageableElement
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+
+    // From aggregated QElement
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+
+    // From aggregated QParameterableElement
+    Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
+    Q_PROPERTY(QTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
+
+    // From aggregated QNamedElement
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+
     Q_DISABLE_COPY(QPackageableElement)
+    Q_DECLARE_PRIVATE(QPackageableElement)
 
 public:
+    explicit QPackageableElement(QObject *parent = 0);
     virtual ~QPackageableElement();
 
     // Attributes
@@ -68,10 +96,18 @@ public:
     void setVisibility(QtUml::VisibilityKind visibility);
 
 protected:
-    explicit QPackageableElement();
+    explicit QPackageableElement(QPackageableElementPrivate &dd, QObject *parent = 0);
+
+private:
+    QParameterableElement *_wrappedParameterableElement;
+    QNamedElement *_wrappedNamedElement;
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *)
 
 QT_END_HEADER
 

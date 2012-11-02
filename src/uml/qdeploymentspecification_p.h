@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qartifact_p.h"
+#include "private/qartifact_p.h"
+#include "qdeploymentspecification.h"
 
 // Qt includes
 #include <QtCore/QString>
@@ -55,13 +56,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QDeployment;
 class QDeploymentSpecification;
 
-class QDeploymentSpecificationPrivate : public QArtifactPrivate
+class Q_UML_EXPORT QDeploymentSpecificationPrivate : public QArtifactPrivate
 {
+    Q_DECLARE_PUBLIC(QDeploymentSpecification)
+
 public:
-    explicit QDeploymentSpecificationPrivate(QDeploymentSpecification *q_umlptr = 0);
+    explicit QDeploymentSpecificationPrivate();
     virtual ~QDeploymentSpecificationPrivate();
 
     QString deploymentLocation;

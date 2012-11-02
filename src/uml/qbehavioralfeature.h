@@ -43,12 +43,11 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+#include <QtCore/QObject>
+
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
-
-// Base class includes
-#include <QtUml/QNamespace>
-#include <QtUml/QFeature>
 
 // Qt includes
 #include <QtCore/QList>
@@ -60,17 +59,66 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for aggregated 'base classes'
+class QNamespace;
+class QFeature;
+
+// Forward decls for function parameters
 class QType;
 class QNamedElement;
 class QParameterSet;
 class QBehavior;
 class QParameter;
 
-class Q_UML_EXPORT QBehavioralFeature : public QNamespace, public QFeature
+class QBehavioralFeaturePrivate;
+
+class Q_UML_EXPORT QBehavioralFeature : public QObject
 {
+    Q_OBJECT
+
+    // From QBehavioralFeature
+    Q_PROPERTY(QtUml::CallConcurrencyKind concurrency READ concurrency WRITE setConcurrency)
+    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract)
+    Q_PROPERTY(const QSet<QType *> * raisedExceptions READ raisedExceptions)
+    Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
+    Q_PROPERTY(const QSet<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
+    Q_PROPERTY(const QSet<QBehavior *> * methods READ methods)
+
+    // From aggregated QElement
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+
+    // From aggregated QNamedElement
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+
+    // From aggregated QNamespace
+    Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
+    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
+    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
+    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
+    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
+    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
+
+    // From aggregated QRedefinableElement
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
+    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
+    Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
+
+    // From aggregated QFeature
+    Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic)
+    Q_PROPERTY(const QSet<QClassifier *> * featuringClassifiers READ featuringClassifiers)
+
     Q_DISABLE_COPY(QBehavioralFeature)
+    Q_DECLARE_PRIVATE(QBehavioralFeature)
 
 public:
+    explicit QBehavioralFeature(QObject *parent = 0);
     virtual ~QBehavioralFeature();
 
     // Attributes
@@ -97,10 +145,18 @@ public:
     bool isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const;
 
 protected:
-    explicit QBehavioralFeature();
+    explicit QBehavioralFeature(QBehavioralFeaturePrivate &dd, QObject *parent = 0);
+
+private:
+    QNamespace *_wrappedNamespace;
+    QFeature *_wrappedFeature;
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QBehavioralFeature) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavioralFeature) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QBehavioralFeature) *> *)
 
 QT_END_HEADER
 

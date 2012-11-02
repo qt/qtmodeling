@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QProtocolConformancePrivate::QProtocolConformancePrivate(QProtocolConformance *q_umlptr) :
+QProtocolConformancePrivate::QProtocolConformancePrivate() :
     specificMachine(0),
     generalMachine(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QProtocolConformancePrivate::~QProtocolConformancePrivate()
@@ -65,17 +64,14 @@ QProtocolConformancePrivate::~QProtocolConformancePrivate()
     \brief Protocol state machines can be redefined into more specific protocol state machines, or into behavioral state machines. Protocol conformance declares that the specific protocol state machine specifies a protocol that conforms to the general state machine one, or that the specific behavioral state machine abide by the protocol of the general protocol state machine.
  */
 
-QProtocolConformance::QProtocolConformance(QObject *parent)
-    : QObject(parent)
+QProtocolConformance::QProtocolConformance(QObject *parent) :
+    QDirectedRelationship(*new QProtocolConformancePrivate, parent)
 {
-    d_umlptr = new QProtocolConformancePrivate(this);
 }
 
-QProtocolConformance::QProtocolConformance(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QProtocolConformance::QProtocolConformance(QProtocolConformancePrivate &dd, QObject *parent) :
+    QDirectedRelationship(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QProtocolConformancePrivate;
 }
 
 QProtocolConformance::~QProtocolConformance()
@@ -89,7 +85,7 @@ QProtocolStateMachine *QProtocolConformance::specificMachine() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QProtocolConformance);
+    Q_D(const QProtocolConformance);
     return d->specificMachine;
 }
 
@@ -97,7 +93,7 @@ void QProtocolConformance::setSpecificMachine(QProtocolStateMachine *specificMac
 {
     // This is a read-write association end
 
-    QTUML_D(QProtocolConformance);
+    Q_D(QProtocolConformance);
     if (d->specificMachine != specificMachine) {
         // Adjust opposite property
         if (d->specificMachine)
@@ -127,7 +123,7 @@ QProtocolStateMachine *QProtocolConformance::generalMachine() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QProtocolConformance);
+    Q_D(const QProtocolConformance);
     return d->generalMachine;
 }
 
@@ -135,7 +131,7 @@ void QProtocolConformance::setGeneralMachine(QProtocolStateMachine *generalMachi
 {
     // This is a read-write association end
 
-    QTUML_D(QProtocolConformance);
+    Q_D(QProtocolConformance);
     if (d->generalMachine != generalMachine) {
         // Adjust subsetted property(ies)
         d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(d->generalMachine));

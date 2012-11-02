@@ -65,7 +65,13 @@ QDeploymentTargetPrivate::~QDeploymentTargetPrivate()
     \brief A deployment target is the location for a deployed artifact.
  */
 
-QDeploymentTarget::QDeploymentTarget()
+QDeploymentTarget::QDeploymentTarget(QObject *parent) :
+    QNamedElement(*new QDeploymentTargetPrivate, parent)
+{
+}
+
+QDeploymentTarget::QDeploymentTarget(QDeploymentTargetPrivate &dd, QObject *parent) :
+    QNamedElement(dd, parent)
 {
 }
 
@@ -82,7 +88,7 @@ const QSet<QPackageableElement *> *QDeploymentTarget::deployedElements() const
 
     qWarning("QDeploymentTarget::deployedElements: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(const QDeploymentTarget);
+    //Q_D(const QDeploymentTarget);
     //return <derived-return>;
 }
 
@@ -93,7 +99,7 @@ const QSet<QDeployment *> *QDeploymentTarget::deployments() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QDeploymentTarget);
+    Q_D(const QDeploymentTarget);
     return d->deployments;
 }
 
@@ -101,7 +107,7 @@ void QDeploymentTarget::addDeployment(QDeployment *deployment)
 {
     // This is a read-write association end
 
-    QTUML_D(QDeploymentTarget);
+    Q_D(QDeploymentTarget);
     if (!d->deployments->contains(deployment)) {
         d->deployments->insert(deployment);
 
@@ -118,7 +124,7 @@ void QDeploymentTarget::removeDeployment(QDeployment *deployment)
 {
     // This is a read-write association end
 
-    QTUML_D(QDeploymentTarget);
+    Q_D(QDeploymentTarget);
     if (d->deployments->contains(deployment)) {
         d->deployments->remove(deployment);
 

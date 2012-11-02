@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QSubstitutionPrivate::QSubstitutionPrivate(QSubstitution *q_umlptr) :
+QSubstitutionPrivate::QSubstitutionPrivate() :
     contract(0),
     substitutingClassifier(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QSubstitutionPrivate::~QSubstitutionPrivate()
@@ -65,17 +64,14 @@ QSubstitutionPrivate::~QSubstitutionPrivate()
     \brief A substitution is a relationship between two classifiers signifies that the substituting classifier complies with the contract specified by the contract classifier. This implies that instances of the substituting classifier are runtime substitutable where instances of the contract classifier are expected.
  */
 
-QSubstitution::QSubstitution(QObject *parent)
-    : QRealization(false, parent)
+QSubstitution::QSubstitution(QObject *parent) :
+    QRealization(*new QSubstitutionPrivate, parent)
 {
-    d_umlptr = new QSubstitutionPrivate(this);
 }
 
-QSubstitution::QSubstitution(bool createPimpl, QObject *parent)
-    : QRealization(createPimpl, parent)
+QSubstitution::QSubstitution(QSubstitutionPrivate &dd, QObject *parent) :
+    QRealization(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QSubstitutionPrivate;
 }
 
 QSubstitution::~QSubstitution()
@@ -89,7 +85,7 @@ QClassifier *QSubstitution::contract() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QSubstitution);
+    Q_D(const QSubstitution);
     return d->contract;
 }
 
@@ -97,7 +93,7 @@ void QSubstitution::setContract(QClassifier *contract)
 {
     // This is a read-write association end
 
-    QTUML_D(QSubstitution);
+    Q_D(QSubstitution);
     if (d->contract != contract) {
         // Adjust subsetted property(ies)
         QDependency::removeSupplier(dynamic_cast<QNamedElement *>(d->contract));
@@ -118,7 +114,7 @@ QClassifier *QSubstitution::substitutingClassifier() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QSubstitution);
+    Q_D(const QSubstitution);
     return d->substitutingClassifier;
 }
 
@@ -126,7 +122,7 @@ void QSubstitution::setSubstitutingClassifier(QClassifier *substitutingClassifie
 {
     // This is a read-write association end
 
-    QTUML_D(QSubstitution);
+    Q_D(QSubstitution);
     if (d->substitutingClassifier != substitutingClassifier) {
         // Adjust opposite property
         if (d->substitutingClassifier)

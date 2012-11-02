@@ -52,23 +52,25 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QFinalStatePrivate;
+
 class Q_UML_EXPORT QFinalState : public QState
 {
-    Q_OBJECT
-
     Q_DISABLE_COPY(QFinalState)
+    Q_DECLARE_PRIVATE(QFinalState)
 
 public:
     explicit QFinalState(QObject *parent = 0);
     virtual ~QFinalState();
 
 protected:
-    explicit QFinalState(bool createPimpl, QObject *parent = 0);
+    explicit QFinalState(QFinalStatePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QFinalState) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QFinalState) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QFinalState) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QFinalState) *> *)
 
 QT_END_HEADER

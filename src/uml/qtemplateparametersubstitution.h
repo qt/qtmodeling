@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QElement>
 
 QT_BEGIN_HEADER
@@ -53,18 +52,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QParameterableElement;
 class QTemplateParameter;
 class QTemplateBinding;
 
-class Q_UML_EXPORT QTemplateParameterSubstitution : public QObject, public QElement
+class QTemplateParameterSubstitutionPrivate;
+
+class Q_UML_EXPORT QTemplateParameterSubstitution : public QElement
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QTemplateParameterSubstitution
     Q_PROPERTY(QParameterableElement * ownedActual READ ownedActual WRITE setOwnedActual)
@@ -73,6 +70,7 @@ class Q_UML_EXPORT QTemplateParameterSubstitution : public QObject, public QElem
     Q_PROPERTY(QTemplateBinding * templateBinding READ templateBinding WRITE setTemplateBinding)
 
     Q_DISABLE_COPY(QTemplateParameterSubstitution)
+    Q_DECLARE_PRIVATE(QTemplateParameterSubstitution)
 
 public:
     explicit QTemplateParameterSubstitution(QObject *parent = 0);
@@ -89,12 +87,13 @@ public:
     void setTemplateBinding(QTemplateBinding *templateBinding);
 
 protected:
-    explicit QTemplateParameterSubstitution(bool createPimpl, QObject *parent = 0);
+    explicit QTemplateParameterSubstitution(QTemplateParameterSubstitutionPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameterSubstitution) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QTemplateParameterSubstitution) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameterSubstitution) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameterSubstitution) *> *)
 
 QT_END_HEADER

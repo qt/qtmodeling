@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QReceptionPrivate::QReceptionPrivate(QReception *q_umlptr) :
+QReceptionPrivate::QReceptionPrivate() :
     signal(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QReceptionPrivate::~QReceptionPrivate()
@@ -64,17 +63,14 @@ QReceptionPrivate::~QReceptionPrivate()
     \brief A reception is a declaration stating that a classifier is prepared to react to the receipt of a signal. A reception designates a signal and specifies the expected behavioral response. The details of handling a signal are specified by the behavior associated with the reception or the classifier itself.
  */
 
-QReception::QReception(QObject *parent)
-    : QObject(parent)
+QReception::QReception(QObject *parent) :
+    QBehavioralFeature(*new QReceptionPrivate, parent)
 {
-    d_umlptr = new QReceptionPrivate(this);
 }
 
-QReception::QReception(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QReception::QReception(QReceptionPrivate &dd, QObject *parent) :
+    QBehavioralFeature(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QReceptionPrivate;
 }
 
 QReception::~QReception()
@@ -88,7 +84,7 @@ QSignal *QReception::signal() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QReception);
+    Q_D(const QReception);
     return d->signal;
 }
 
@@ -96,7 +92,7 @@ void QReception::setSignal(QSignal *signal)
 {
     // This is a read-write association end
 
-    QTUML_D(QReception);
+    Q_D(QReception);
     if (d->signal != signal) {
         d->signal = signal;
     }

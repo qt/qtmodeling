@@ -45,8 +45,6 @@
 
 // Base class includes
 #include <QtCore/QObject>
-#include <QtUml/QDirectedRelationship>
-#include <QtUml/QNamedElement>
 
 // Qt includes
 #include <QtCore/QList>
@@ -57,33 +55,20 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for aggregated 'base classes'
+class QDirectedRelationship;
+class QNamedElement;
+
+// Forward decls for function parameters
 class QConstraint;
 class QUseCase;
 class QExtensionPoint;
 
-class Q_UML_EXPORT QExtend : public QObject, public QDirectedRelationship, public QNamedElement
+class QExtendPrivate;
+
+class Q_UML_EXPORT QExtend : public QObject
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QRelationship
-    Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
-
-    // From QDirectedRelationship
-    Q_PROPERTY(const QSet<QElement *> * sources READ sources)
-    Q_PROPERTY(const QSet<QElement *> * targets READ targets)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QExtend
     Q_PROPERTY(QUseCase * extendedCase READ extendedCase WRITE setExtendedCase)
@@ -91,7 +76,28 @@ class Q_UML_EXPORT QExtend : public QObject, public QDirectedRelationship, publi
     Q_PROPERTY(const QList<QExtensionPoint *> * extensionLocations READ extensionLocations)
     Q_PROPERTY(QConstraint * condition READ condition WRITE setCondition)
 
+    // From aggregated QElement
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+
+    // From aggregated QRelationship
+    Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
+
+    // From aggregated QDirectedRelationship
+    Q_PROPERTY(const QSet<QElement *> * sources READ sources)
+    Q_PROPERTY(const QSet<QElement *> * targets READ targets)
+
+    // From aggregated QNamedElement
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+
     Q_DISABLE_COPY(QExtend)
+    Q_DECLARE_PRIVATE(QExtend)
 
 public:
     explicit QExtend(QObject *parent = 0);
@@ -109,12 +115,17 @@ public:
     void setCondition(QConstraint *condition);
 
 protected:
-    explicit QExtend(bool createPimpl, QObject *parent = 0);
+    explicit QExtend(QExtendPrivate &dd, QObject *parent = 0);
+
+private:
+    QDirectedRelationship *_wrappedDirectedRelationship;
+    QNamedElement *_wrappedNamedElement;
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QExtend) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QExtend) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QExtend) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QExtend) *> *)
 
 QT_END_HEADER

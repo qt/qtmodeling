@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qevent_p.h"
+#include "private/qevent_p.h"
+#include "qtimeevent.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QTimeExpression;
 class QTimeEvent;
 
-class QTimeEventPrivate : public QEventPrivate
+class Q_UML_EXPORT QTimeEventPrivate : public QEventPrivate
 {
+    Q_DECLARE_PUBLIC(QTimeEvent)
+
 public:
-    explicit QTimeEventPrivate(QTimeEvent *q_umlptr = 0);
+    explicit QTimeEventPrivate();
     virtual ~QTimeEventPrivate();
 
     bool isRelative;

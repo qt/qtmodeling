@@ -51,13 +51,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QPackagePrivate::QPackagePrivate(QPackage *q_umlptr) :
+QPackagePrivate::QPackagePrivate() :
     packagedElements(new QSet<QPackageableElement *>),
     nestingPackage(0),
     profileApplications(new QSet<QProfileApplication *>),
     packageMerges(new QSet<QPackageMerge *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QPackagePrivate::~QPackagePrivate()
@@ -75,17 +74,20 @@ QPackagePrivate::~QPackagePrivate()
     \brief A package can have one or more profile applications to indicate which profiles have been applied. Because a profile is a package, it is possible to apply a profile not only to packages, but also to profiles.Package specializes TemplateableElement and PackageableElement specializes ParameterableElement to specify that a package can be used as a template and a PackageableElement as a template parameter.A package is used to group elements, and provides a namespace for the grouped elements.
  */
 
-QPackage::QPackage(QObject *parent)
-    : QObject(parent)
+QPackage::QPackage(QObject *parent) :
+    QObject(*new QPackagePrivate, parent),
+    _wrappedNamespace(new QNamespace(this)),
+    _wrappedPackageableElement(new QPackageableElement(this)),
+    _wrappedTemplateableElement(new QTemplateableElement(this))
 {
-    d_umlptr = new QPackagePrivate(this);
 }
 
-QPackage::QPackage(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QPackage::QPackage(QPackagePrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedNamespace(new QNamespace(this)),
+    _wrappedPackageableElement(new QPackageableElement(this)),
+    _wrappedTemplateableElement(new QTemplateableElement(this))
 {
-    if (createPimpl)
-        d_umlptr = new QPackagePrivate;
 }
 
 QPackage::~QPackage()
@@ -99,7 +101,7 @@ QString QPackage::URI() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QPackage);
+    Q_D(const QPackage);
     return d->URI;
 }
 
@@ -107,7 +109,7 @@ void QPackage::setURI(QString URI)
 {
     // This is a read-write attribute
 
-    QTUML_D(QPackage);
+    Q_D(QPackage);
     if (d->URI != URI) {
         d->URI = URI;
     }
@@ -115,26 +117,25 @@ void QPackage::setURI(QString URI)
 
 /*!
     References the packaged elements that are Types.
-    It is the caller's responsibility to delete the returned set.
  */
 const QSet<QType *> *QPackage::ownedTypes() const
 {
     // This is a read-write derived association end
 
-    QTUML_D(const QPackage);
-    QSet<QType *> *ownedTypes_ = new QSet<QType *>;
-    foreach (QPackageableElement *packageableElement, *d->packagedElements)
-        if (QType *type = dynamic_cast<QType *>(packageableElement))
-            ownedTypes_->insert(type);
-    return ownedTypes_;
+    qWarning("QPackage::ownedTypes: to be implemented (this is a derived associationend)");
+
+    //Q_D(const QPackage);
+    //return <derived-return>;
 }
 
 void QPackage::addOwnedType(QType *ownedType)
 {
     // This is a read-write derived association end
 
-    QTUML_D(QPackage);
-    if (!d->packagedElements->contains(ownedType)) {
+    qWarning("QPackage::addOwnedType: to be implemented (this is a derived associationend)");
+
+    //Q_D(QPackage);
+    if (false /* <derived-inclusion-criteria> */) {
         // <derived-code>
 
         // Adjust subsetted property(ies)
@@ -149,8 +150,10 @@ void QPackage::removeOwnedType(QType *ownedType)
 {
     // This is a read-write derived association end
 
-    QTUML_D(QPackage);
-    if (d->packagedElements->contains(ownedType)) {
+    qWarning("QPackage::removeOwnedType: to be implemented (this is a derived associationend)");
+
+    //Q_D(QPackage);
+    if (false /* <derived-exclusion-criteria> */) {
         // <derived-code>
 
         // Adjust subsetted property(ies)
@@ -168,7 +171,7 @@ const QSet<QPackageableElement *> *QPackage::packagedElements() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QPackage);
+    Q_D(const QPackage);
     return d->packagedElements;
 }
 
@@ -176,7 +179,7 @@ void QPackage::addPackagedElement(QPackageableElement *packagedElement)
 {
     // This is a read-write association end
 
-    QTUML_D(QPackage);
+    Q_D(QPackage);
     if (!d->packagedElements->contains(packagedElement)) {
         d->packagedElements->insert(packagedElement);
 
@@ -189,7 +192,7 @@ void QPackage::removePackagedElement(QPackageableElement *packagedElement)
 {
     // This is a read-write association end
 
-    QTUML_D(QPackage);
+    Q_D(QPackage);
     if (d->packagedElements->contains(packagedElement)) {
         d->packagedElements->remove(packagedElement);
 
@@ -205,7 +208,7 @@ QPackage *QPackage::nestingPackage() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QPackage);
+    Q_D(const QPackage);
     return d->nestingPackage;
 }
 
@@ -213,7 +216,7 @@ void QPackage::setNestingPackage(QPackage *nestingPackage)
 {
     // This is a read-write association end
 
-    QTUML_D(QPackage);
+    Q_D(QPackage);
     if (d->nestingPackage != nestingPackage) {
         // Adjust opposite property
         if (d->nestingPackage)
@@ -237,7 +240,7 @@ const QSet<QProfileApplication *> *QPackage::profileApplications() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QPackage);
+    Q_D(const QPackage);
     return d->profileApplications;
 }
 
@@ -245,7 +248,7 @@ void QPackage::addProfileApplication(QProfileApplication *profileApplication)
 {
     // This is a read-write association end
 
-    QTUML_D(QPackage);
+    Q_D(QPackage);
     if (!d->profileApplications->contains(profileApplication)) {
         d->profileApplications->insert(profileApplication);
 
@@ -261,7 +264,7 @@ void QPackage::removeProfileApplication(QProfileApplication *profileApplication)
 {
     // This is a read-write association end
 
-    QTUML_D(QPackage);
+    Q_D(QPackage);
     if (d->profileApplications->contains(profileApplication)) {
         d->profileApplications->remove(profileApplication);
 
@@ -275,18 +278,15 @@ void QPackage::removeProfileApplication(QProfileApplication *profileApplication)
 
 /*!
     References the Stereotypes that are owned by the Package
-    It is the caller's responsibility to delete the returned set.
  */
 const QSet<QStereotype *> *QPackage::ownedStereotypes() const
 {
     // This is a read-only derived association end
 
-    QTUML_D(const QPackage);
-    QSet<QStereotype *> *ownedStereotypes_ = new QSet<QStereotype *>;
-    foreach (QPackageableElement *packageableElement, *d->packagedElements)
-        if (QStereotype *stereotype = dynamic_cast<QStereotype *>(packageableElement))
-            ownedStereotypes_->insert(stereotype);
-    return ownedStereotypes_;
+    qWarning("QPackage::ownedStereotypes: to be implemented (this is a derived associationend)");
+
+    //Q_D(const QPackage);
+    //return <derived-return>;
 }
 
 /*!
@@ -296,7 +296,7 @@ const QSet<QPackageMerge *> *QPackage::packageMerges() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QPackage);
+    Q_D(const QPackage);
     return d->packageMerges;
 }
 
@@ -304,7 +304,7 @@ void QPackage::addPackageMerge(QPackageMerge *packageMerge)
 {
     // This is a read-write association end
 
-    QTUML_D(QPackage);
+    Q_D(QPackage);
     if (!d->packageMerges->contains(packageMerge)) {
         d->packageMerges->insert(packageMerge);
 
@@ -320,7 +320,7 @@ void QPackage::removePackageMerge(QPackageMerge *packageMerge)
 {
     // This is a read-write association end
 
-    QTUML_D(QPackage);
+    Q_D(QPackage);
     if (d->packageMerges->contains(packageMerge)) {
         d->packageMerges->remove(packageMerge);
 
@@ -334,26 +334,27 @@ void QPackage::removePackageMerge(QPackageMerge *packageMerge)
 
 /*!
     References the packaged elements that are Packages.
-    It is the caller's responsibility to delete the returned set.
  */
 const QSet<QPackage *> *QPackage::nestedPackages() const
 {
     // This is a read-write derived association end
 
-    QTUML_D(const QPackage);
-    QSet<QPackage *> *nestedPackages_ = new QSet<QPackage *>;
-    foreach (QPackageableElement *packageableElement, *d->packagedElements)
-        if (QPackage *package = dynamic_cast<QPackage *>(packageableElement))
-            nestedPackages_->insert(package);
-    return nestedPackages_;
+    qWarning("QPackage::nestedPackages: to be implemented (this is a derived associationend)");
+
+    //Q_D(const QPackage);
+    //return <derived-return>;
 }
 
 void QPackage::addNestedPackage(QPackage *nestedPackage)
 {
     // This is a read-write derived association end
 
-    QTUML_D(QPackage);
-    if (!d->packagedElements->contains(nestedPackage)) {
+    qWarning("QPackage::addNestedPackage: to be implemented (this is a derived associationend)");
+
+    //Q_D(QPackage);
+    if (false /* <derived-inclusion-criteria> */) {
+        // <derived-code>
+
         // Adjust subsetted property(ies)
         QPackage::addPackagedElement(dynamic_cast<QPackageableElement *>(nestedPackage));
 
@@ -366,8 +367,12 @@ void QPackage::removeNestedPackage(QPackage *nestedPackage)
 {
     // This is a read-write derived association end
 
-    QTUML_D(QPackage);
-    if (d->packagedElements->contains(nestedPackage)) {
+    qWarning("QPackage::removeNestedPackage: to be implemented (this is a derived associationend)");
+
+    //Q_D(QPackage);
+    if (false /* <derived-exclusion-criteria> */) {
+        // <derived-code>
+
         // Adjust subsetted property(ies)
         QPackage::removePackagedElement(dynamic_cast<QPackageableElement *>(nestedPackage));
 

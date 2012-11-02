@@ -43,12 +43,17 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+#include "private/qobject_p.h"
+
+#include "private/qparameterableelement_p.h"
+#include "private/qnamedelement_p.h"
+#include "qpackageableelement.h"
+
+
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
 
-// Base class includes
-#include "qparameterableelement_p.h"
-#include "qnamedelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -56,15 +61,19 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QPackageableElementPrivate : public QParameterableElementPrivate, public virtual QNamedElementPrivate
+class Q_UML_EXPORT QPackageableElementPrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QPackageableElement)
+
 public:
+    explicit QPackageableElementPrivate();
     virtual ~QPackageableElementPrivate();
 
     QtUml::VisibilityKind visibility;
 
-protected:
-    explicit QPackageableElementPrivate();
+private:
+    QParameterableElementPrivate *_wrappedParameterableElementPrivate;
+    QNamedElementPrivate *_wrappedNamedElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

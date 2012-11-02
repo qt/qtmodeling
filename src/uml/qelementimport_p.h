@@ -43,11 +43,13 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+#include "private/qdirectedrelationship_p.h"
+#include "qelementimport.h"
+
+
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
-
-// Base class includes
-#include "qdirectedrelationship_p.h"
 
 // Qt includes
 #include <QtCore/QString>
@@ -58,14 +60,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QPackageableElement;
 class QNamespace;
 class QElementImport;
 
-class QElementImportPrivate : public QDirectedRelationshipPrivate
+class Q_UML_EXPORT QElementImportPrivate : public QDirectedRelationshipPrivate
 {
+    Q_DECLARE_PUBLIC(QElementImport)
+
 public:
-    explicit QElementImportPrivate(QElementImport *q_umlptr = 0);
+    explicit QElementImportPrivate();
     virtual ~QElementImportPrivate();
 
     QString alias;

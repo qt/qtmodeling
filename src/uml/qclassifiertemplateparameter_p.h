@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qtemplateparameter_p.h"
+#include "private/qtemplateparameter_p.h"
+#include "qclassifiertemplateparameter.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,13 +56,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QClassifier;
 class QClassifierTemplateParameter;
 
-class QClassifierTemplateParameterPrivate : public QTemplateParameterPrivate
+class Q_UML_EXPORT QClassifierTemplateParameterPrivate : public QTemplateParameterPrivate
 {
+    Q_DECLARE_PUBLIC(QClassifierTemplateParameter)
+
 public:
-    explicit QClassifierTemplateParameterPrivate(QClassifierTemplateParameter *q_umlptr = 0);
+    explicit QClassifierTemplateParameterPrivate();
     virtual ~QClassifierTemplateParameterPrivate();
 
     bool allowSubstitutable;

@@ -52,23 +52,25 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QExecutionEnvironmentPrivate;
+
 class Q_UML_EXPORT QExecutionEnvironment : public QNode
 {
-    Q_OBJECT
-
     Q_DISABLE_COPY(QExecutionEnvironment)
+    Q_DECLARE_PRIVATE(QExecutionEnvironment)
 
 public:
     explicit QExecutionEnvironment(QObject *parent = 0);
     virtual ~QExecutionEnvironment();
 
 protected:
-    explicit QExecutionEnvironment(bool createPimpl, QObject *parent = 0);
+    explicit QExecutionEnvironment(QExecutionEnvironmentPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QExecutionEnvironment) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QExecutionEnvironment) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutionEnvironment) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QExecutionEnvironment) *> *)
 
 QT_END_HEADER

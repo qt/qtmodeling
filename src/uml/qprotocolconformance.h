@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QDirectedRelationship>
 
 QT_BEGIN_HEADER
@@ -53,29 +52,21 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QProtocolStateMachine;
 
-class Q_UML_EXPORT QProtocolConformance : public QObject, public QDirectedRelationship
+class QProtocolConformancePrivate;
+
+class Q_UML_EXPORT QProtocolConformance : public QDirectedRelationship
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QRelationship
-    Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
-
-    // From QDirectedRelationship
-    Q_PROPERTY(const QSet<QElement *> * sources READ sources)
-    Q_PROPERTY(const QSet<QElement *> * targets READ targets)
 
     // From QProtocolConformance
     Q_PROPERTY(QProtocolStateMachine * specificMachine READ specificMachine WRITE setSpecificMachine)
     Q_PROPERTY(QProtocolStateMachine * generalMachine READ generalMachine WRITE setGeneralMachine)
 
     Q_DISABLE_COPY(QProtocolConformance)
+    Q_DECLARE_PRIVATE(QProtocolConformance)
 
 public:
     explicit QProtocolConformance(QObject *parent = 0);
@@ -88,12 +79,13 @@ public:
     void setGeneralMachine(QProtocolStateMachine *generalMachine);
 
 protected:
-    explicit QProtocolConformance(bool createPimpl, QObject *parent = 0);
+    explicit QProtocolConformance(QProtocolConformancePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *> *)
 
 QT_END_HEADER

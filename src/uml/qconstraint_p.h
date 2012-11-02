@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qpackageableelement_p.h"
+#include "private/qpackageableelement_p.h"
+#include "qconstraint.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -55,15 +56,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QElement;
 class QNamespace;
 class QValueSpecification;
 class QConstraint;
 
-class QConstraintPrivate : public QPackageableElementPrivate
+class Q_UML_EXPORT QConstraintPrivate : public QPackageableElementPrivate
 {
+    Q_DECLARE_PUBLIC(QConstraint)
+
 public:
-    explicit QConstraintPrivate(QConstraint *q_umlptr = 0);
+    explicit QConstraintPrivate();
     virtual ~QConstraintPrivate();
 
     QNamespace *context;

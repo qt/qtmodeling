@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qstate_p.h"
+#include "private/qstate_p.h"
+#include "qfinalstate.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,10 +55,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QFinalState;
 
-class QFinalStatePrivate : public QStatePrivate
+class Q_UML_EXPORT QFinalStatePrivate : public QStatePrivate
 {
+    Q_DECLARE_PUBLIC(QFinalState)
+
 public:
-    explicit QFinalStatePrivate(QFinalState *q_umlptr = 0);
+    explicit QFinalStatePrivate();
     virtual ~QFinalStatePrivate();
 
 };

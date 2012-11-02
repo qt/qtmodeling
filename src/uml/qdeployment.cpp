@@ -48,12 +48,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDeploymentPrivate::QDeploymentPrivate(QDeployment *q_umlptr) :
+QDeploymentPrivate::QDeploymentPrivate() :
     location(0),
     configurations(new QSet<QDeploymentSpecification *>),
     deployedArtifacts(new QSet<QDeployedArtifact *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QDeploymentPrivate::~QDeploymentPrivate()
@@ -70,17 +69,14 @@ QDeploymentPrivate::~QDeploymentPrivate()
     \brief A deployment is the allocation of an artifact or artifact instance to a deployment target.A component deployment is the deployment of one or more artifacts or artifact instances to a deployment target, optionally parameterized by a deployment specification. Examples are executables and configuration files.
  */
 
-QDeployment::QDeployment(QObject *parent)
-    : QDependency(false, parent)
+QDeployment::QDeployment(QObject *parent) :
+    QDependency(*new QDeploymentPrivate, parent)
 {
-    d_umlptr = new QDeploymentPrivate(this);
 }
 
-QDeployment::QDeployment(bool createPimpl, QObject *parent)
-    : QDependency(createPimpl, parent)
+QDeployment::QDeployment(QDeploymentPrivate &dd, QObject *parent) :
+    QDependency(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QDeploymentPrivate;
 }
 
 QDeployment::~QDeployment()
@@ -94,7 +90,7 @@ QDeploymentTarget *QDeployment::location() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QDeployment);
+    Q_D(const QDeployment);
     return d->location;
 }
 
@@ -102,7 +98,7 @@ void QDeployment::setLocation(QDeploymentTarget *location)
 {
     // This is a read-write association end
 
-    QTUML_D(QDeployment);
+    Q_D(QDeployment);
     if (d->location != location) {
         // Adjust opposite property
         if (d->location)
@@ -132,7 +128,7 @@ const QSet<QDeploymentSpecification *> *QDeployment::configurations() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QDeployment);
+    Q_D(const QDeployment);
     return d->configurations;
 }
 
@@ -140,7 +136,7 @@ void QDeployment::addConfiguration(QDeploymentSpecification *configuration)
 {
     // This is a read-write association end
 
-    QTUML_D(QDeployment);
+    Q_D(QDeployment);
     if (!d->configurations->contains(configuration)) {
         d->configurations->insert(configuration);
 
@@ -156,7 +152,7 @@ void QDeployment::removeConfiguration(QDeploymentSpecification *configuration)
 {
     // This is a read-write association end
 
-    QTUML_D(QDeployment);
+    Q_D(QDeployment);
     if (d->configurations->contains(configuration)) {
         d->configurations->remove(configuration);
 
@@ -175,7 +171,7 @@ const QSet<QDeployedArtifact *> *QDeployment::deployedArtifacts() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QDeployment);
+    Q_D(const QDeployment);
     return d->deployedArtifacts;
 }
 
@@ -183,7 +179,7 @@ void QDeployment::addDeployedArtifact(QDeployedArtifact *deployedArtifact)
 {
     // This is a read-write association end
 
-    QTUML_D(QDeployment);
+    Q_D(QDeployment);
     if (!d->deployedArtifacts->contains(deployedArtifact)) {
         d->deployedArtifacts->insert(deployedArtifact);
 
@@ -196,7 +192,7 @@ void QDeployment::removeDeployedArtifact(QDeployedArtifact *deployedArtifact)
 {
     // This is a read-write association end
 
-    QTUML_D(QDeployment);
+    Q_D(QDeployment);
     if (d->deployedArtifacts->contains(deployedArtifact)) {
         d->deployedArtifacts->remove(deployedArtifact);
 

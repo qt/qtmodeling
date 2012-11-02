@@ -50,14 +50,13 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QRegionPrivate::QRegionPrivate(QRegion *q_umlptr) :
+QRegionPrivate::QRegionPrivate() :
     extendedRegion(0),
     transitions(new QSet<QTransition *>),
     stateMachine(0),
     state(0),
     subvertices(new QSet<QVertex *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QRegionPrivate::~QRegionPrivate()
@@ -74,17 +73,18 @@ QRegionPrivate::~QRegionPrivate()
     \brief A region is an orthogonal part of either a composite state or a state machine. It contains states and transitions.
  */
 
-QRegion::QRegion(QObject *parent)
-    : QObject(parent)
+QRegion::QRegion(QObject *parent) :
+    QObject(*new QRegionPrivate, parent),
+    _wrappedRedefinableElement(new QRedefinableElement(this)),
+    _wrappedNamespace(new QNamespace(this))
 {
-    d_umlptr = new QRegionPrivate(this);
 }
 
-QRegion::QRegion(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QRegion::QRegion(QRegionPrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedRedefinableElement(new QRedefinableElement(this)),
+    _wrappedNamespace(new QNamespace(this))
 {
-    if (createPimpl)
-        d_umlptr = new QRegionPrivate;
 }
 
 QRegion::~QRegion()
@@ -98,7 +98,7 @@ QRegion *QRegion::extendedRegion() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QRegion);
+    Q_D(const QRegion);
     return d->extendedRegion;
 }
 
@@ -106,7 +106,7 @@ void QRegion::setExtendedRegion(QRegion *extendedRegion)
 {
     // This is a read-write association end
 
-    QTUML_D(QRegion);
+    Q_D(QRegion);
     if (d->extendedRegion != extendedRegion) {
         // Adjust subsetted property(ies)
         d->QRedefinableElementPrivate::removeRedefinedElement(dynamic_cast<QRedefinableElement *>(d->extendedRegion));
@@ -127,7 +127,7 @@ const QSet<QTransition *> *QRegion::transitions() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QRegion);
+    Q_D(const QRegion);
     return d->transitions;
 }
 
@@ -135,7 +135,7 @@ void QRegion::addTransition(QTransition *transition)
 {
     // This is a read-write association end
 
-    QTUML_D(QRegion);
+    Q_D(QRegion);
     if (!d->transitions->contains(transition)) {
         d->transitions->insert(transition);
 
@@ -151,7 +151,7 @@ void QRegion::removeTransition(QTransition *transition)
 {
     // This is a read-write association end
 
-    QTUML_D(QRegion);
+    Q_D(QRegion);
     if (d->transitions->contains(transition)) {
         d->transitions->remove(transition);
 
@@ -170,7 +170,7 @@ QStateMachine *QRegion::stateMachine() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QRegion);
+    Q_D(const QRegion);
     return d->stateMachine;
 }
 
@@ -178,7 +178,7 @@ void QRegion::setStateMachine(QStateMachine *stateMachine)
 {
     // This is a read-write association end
 
-    QTUML_D(QRegion);
+    Q_D(QRegion);
     if (d->stateMachine != stateMachine) {
         // Adjust opposite property
         if (d->stateMachine)
@@ -202,7 +202,7 @@ QState *QRegion::state() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QRegion);
+    Q_D(const QRegion);
     return d->state;
 }
 
@@ -210,7 +210,7 @@ void QRegion::setState(QState *state)
 {
     // This is a read-write association end
 
-    QTUML_D(QRegion);
+    Q_D(QRegion);
     if (d->state != state) {
         // Adjust opposite property
         if (d->state)
@@ -236,7 +236,7 @@ QClassifier *QRegion::redefinitionContext() const
 
     qWarning("QRegion::redefinitionContext: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(const QRegion);
+    //Q_D(const QRegion);
     //return <derived-return>;
 }
 
@@ -247,7 +247,7 @@ const QSet<QVertex *> *QRegion::subvertices() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QRegion);
+    Q_D(const QRegion);
     return d->subvertices;
 }
 
@@ -255,7 +255,7 @@ void QRegion::addSubvertex(QVertex *subvertex)
 {
     // This is a read-write association end
 
-    QTUML_D(QRegion);
+    Q_D(QRegion);
     if (!d->subvertices->contains(subvertex)) {
         d->subvertices->insert(subvertex);
 
@@ -271,7 +271,7 @@ void QRegion::removeSubvertex(QVertex *subvertex)
 {
     // This is a read-write association end
 
-    QTUML_D(QRegion);
+    Q_D(QRegion);
     if (d->subvertices->contains(subvertex)) {
         d->subvertices->remove(subvertex);
 

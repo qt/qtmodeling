@@ -43,12 +43,11 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+#include <QtUml/QFeature>
+
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
-
-// Base class includes
-#include <QtCore/QObject>
-#include <QtUml/QFeature>
 
 // Qt includes
 #include <QtCore/QList>
@@ -60,35 +59,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QAssociation;
 class QBehavior;
 class QConnectorEnd;
 
-class Q_UML_EXPORT QConnector : public QObject, public QFeature
+class QConnectorPrivate;
+
+class Q_UML_EXPORT QConnector : public QFeature
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From QRedefinableElement
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
-    Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
-
-    // From QFeature
-    Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic)
-    Q_PROPERTY(const QSet<QClassifier *> * featuringClassifiers READ featuringClassifiers)
 
     // From QConnector
     Q_PROPERTY(QtUml::ConnectorKind kind READ kind)
@@ -98,6 +78,7 @@ class Q_UML_EXPORT QConnector : public QObject, public QFeature
     Q_PROPERTY(const QList<QConnectorEnd *> * ends READ ends)
 
     Q_DISABLE_COPY(QConnector)
+    Q_DECLARE_PRIVATE(QConnector)
 
 public:
     explicit QConnector(QObject *parent = 0);
@@ -120,12 +101,13 @@ public:
     void removeEnd(QConnectorEnd *end);
 
 protected:
-    explicit QConnector(bool createPimpl, QObject *parent = 0);
+    explicit QConnector(QConnectorPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QConnector) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QConnector) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QConnector) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QConnector) *> *)
 
 QT_END_HEADER

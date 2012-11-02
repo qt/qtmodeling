@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qbehavioredclassifier_p.h"
+#include "private/qbehavioredclassifier_p.h"
+#include "qusecase.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,16 +56,19 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QClassifier;
 class QUseCase;
 class QInclude;
 class QExtend;
 class QExtensionPoint;
 
-class QUseCasePrivate : public QBehavioredClassifierPrivate
+class Q_UML_EXPORT QUseCasePrivate : public QBehavioredClassifierPrivate
 {
+    Q_DECLARE_PUBLIC(QUseCase)
+
 public:
-    explicit QUseCasePrivate(QUseCase *q_umlptr = 0);
+    explicit QUseCasePrivate();
     virtual ~QUseCasePrivate();
 
     QSet<QExtensionPoint *> *extensionPoints;

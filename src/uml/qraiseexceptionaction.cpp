@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QRaiseExceptionActionPrivate::QRaiseExceptionActionPrivate(QRaiseExceptionAction *q_umlptr) :
+QRaiseExceptionActionPrivate::QRaiseExceptionActionPrivate() :
     exception(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QRaiseExceptionActionPrivate::~QRaiseExceptionActionPrivate()
@@ -64,17 +63,14 @@ QRaiseExceptionActionPrivate::~QRaiseExceptionActionPrivate()
     \brief A raise exception action is an action that causes an exception to occur. The input value becomes the exception object.
  */
 
-QRaiseExceptionAction::QRaiseExceptionAction(QObject *parent)
-    : QObject(parent)
+QRaiseExceptionAction::QRaiseExceptionAction(QObject *parent) :
+    QAction(*new QRaiseExceptionActionPrivate, parent)
 {
-    d_umlptr = new QRaiseExceptionActionPrivate(this);
 }
 
-QRaiseExceptionAction::QRaiseExceptionAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QRaiseExceptionAction::QRaiseExceptionAction(QRaiseExceptionActionPrivate &dd, QObject *parent) :
+    QAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QRaiseExceptionActionPrivate;
 }
 
 QRaiseExceptionAction::~QRaiseExceptionAction()
@@ -88,7 +84,7 @@ QInputPin *QRaiseExceptionAction::exception() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QRaiseExceptionAction);
+    Q_D(const QRaiseExceptionAction);
     return d->exception;
 }
 
@@ -96,7 +92,7 @@ void QRaiseExceptionAction::setException(QInputPin *exception)
 {
     // This is a read-write association end
 
-    QTUML_D(QRaiseExceptionAction);
+    Q_D(QRaiseExceptionAction);
     if (d->exception != exception) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->exception));

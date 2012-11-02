@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QMergeNodePrivate::QMergeNodePrivate(QMergeNode *q_umlptr)
+QMergeNodePrivate::QMergeNodePrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QMergeNodePrivate::~QMergeNodePrivate()
@@ -62,17 +61,14 @@ QMergeNodePrivate::~QMergeNodePrivate()
     \brief A merge node is a control node that brings together multiple alternate flows. It is not used to synchronize concurrent flows but to accept one among several alternate flows.
  */
 
-QMergeNode::QMergeNode(QObject *parent)
-    : QObject(parent)
+QMergeNode::QMergeNode(QObject *parent) :
+    QControlNode(*new QMergeNodePrivate, parent)
 {
-    d_umlptr = new QMergeNodePrivate(this);
 }
 
-QMergeNode::QMergeNode(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QMergeNode::QMergeNode(QMergeNodePrivate &dd, QObject *parent) :
+    QControlNode(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QMergeNodePrivate;
 }
 
 QMergeNode::~QMergeNode()

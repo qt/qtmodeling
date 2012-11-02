@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QChangeEventPrivate::QChangeEventPrivate(QChangeEvent *q_umlptr) :
+QChangeEventPrivate::QChangeEventPrivate() :
     changeExpression(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QChangeEventPrivate::~QChangeEventPrivate()
@@ -64,17 +63,14 @@ QChangeEventPrivate::~QChangeEventPrivate()
     \brief A change event models a change in the system configuration that makes a condition true.
  */
 
-QChangeEvent::QChangeEvent(QObject *parent)
-    : QObject(parent)
+QChangeEvent::QChangeEvent(QObject *parent) :
+    QEvent(*new QChangeEventPrivate, parent)
 {
-    d_umlptr = new QChangeEventPrivate(this);
 }
 
-QChangeEvent::QChangeEvent(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QChangeEvent::QChangeEvent(QChangeEventPrivate &dd, QObject *parent) :
+    QEvent(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QChangeEventPrivate;
 }
 
 QChangeEvent::~QChangeEvent()
@@ -88,7 +84,7 @@ QValueSpecification *QChangeEvent::changeExpression() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QChangeEvent);
+    Q_D(const QChangeEvent);
     return d->changeExpression;
 }
 
@@ -96,7 +92,7 @@ void QChangeEvent::setChangeExpression(QValueSpecification *changeExpression)
 {
     // This is a read-write association end
 
-    QTUML_D(QChangeEvent);
+    Q_D(QChangeEvent);
     if (d->changeExpression != changeExpression) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->changeExpression));

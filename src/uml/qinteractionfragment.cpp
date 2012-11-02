@@ -71,7 +71,13 @@ QInteractionFragmentPrivate::~QInteractionFragmentPrivate()
     \brief InteractionFragment is an abstract notion of the most general interaction unit. An interaction fragment is a piece of an interaction. Each interaction fragment is conceptually like an interaction by itself.
  */
 
-QInteractionFragment::QInteractionFragment()
+QInteractionFragment::QInteractionFragment(QObject *parent) :
+    QNamedElement(*new QInteractionFragmentPrivate, parent)
+{
+}
+
+QInteractionFragment::QInteractionFragment(QInteractionFragmentPrivate &dd, QObject *parent) :
+    QNamedElement(dd, parent)
 {
 }
 
@@ -86,7 +92,7 @@ const QSet<QGeneralOrdering *> *QInteractionFragment::generalOrderings() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInteractionFragment);
+    Q_D(const QInteractionFragment);
     return d->generalOrderings;
 }
 
@@ -94,7 +100,7 @@ void QInteractionFragment::addGeneralOrdering(QGeneralOrdering *generalOrdering)
 {
     // This is a read-write association end
 
-    QTUML_D(QInteractionFragment);
+    Q_D(QInteractionFragment);
     if (!d->generalOrderings->contains(generalOrdering)) {
         d->generalOrderings->insert(generalOrdering);
 
@@ -107,7 +113,7 @@ void QInteractionFragment::removeGeneralOrdering(QGeneralOrdering *generalOrderi
 {
     // This is a read-write association end
 
-    QTUML_D(QInteractionFragment);
+    Q_D(QInteractionFragment);
     if (d->generalOrderings->contains(generalOrdering)) {
         d->generalOrderings->remove(generalOrdering);
 
@@ -123,7 +129,7 @@ QInteraction *QInteractionFragment::enclosingInteraction() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInteractionFragment);
+    Q_D(const QInteractionFragment);
     return d->enclosingInteraction;
 }
 
@@ -131,7 +137,7 @@ void QInteractionFragment::setEnclosingInteraction(QInteraction *enclosingIntera
 {
     // This is a read-write association end
 
-    QTUML_D(QInteractionFragment);
+    Q_D(QInteractionFragment);
     if (d->enclosingInteraction != enclosingInteraction) {
         // Adjust opposite property
         if (d->enclosingInteraction)
@@ -155,7 +161,7 @@ const QSet<QLifeline *> *QInteractionFragment::covered() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInteractionFragment);
+    Q_D(const QInteractionFragment);
     return d->covered;
 }
 
@@ -163,7 +169,7 @@ void QInteractionFragment::addCovered(QLifeline *covered)
 {
     // This is a read-write association end
 
-    QTUML_D(QInteractionFragment);
+    Q_D(QInteractionFragment);
     if (!d->covered->contains(covered)) {
         d->covered->insert(covered);
 
@@ -176,7 +182,7 @@ void QInteractionFragment::removeCovered(QLifeline *covered)
 {
     // This is a read-write association end
 
-    QTUML_D(QInteractionFragment);
+    Q_D(QInteractionFragment);
     if (d->covered->contains(covered)) {
         d->covered->remove(covered);
 
@@ -193,7 +199,7 @@ QInteractionOperand *QInteractionFragment::enclosingOperand() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInteractionFragment);
+    Q_D(const QInteractionFragment);
     return d->enclosingOperand;
 }
 
@@ -201,7 +207,7 @@ void QInteractionFragment::setEnclosingOperand(QInteractionOperand *enclosingOpe
 {
     // This is a read-write association end
 
-    QTUML_D(QInteractionFragment);
+    Q_D(QInteractionFragment);
     if (d->enclosingOperand != enclosingOperand) {
         // Adjust opposite property
         if (d->enclosingOperand)

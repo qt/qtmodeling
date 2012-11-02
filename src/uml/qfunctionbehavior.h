@@ -52,23 +52,25 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QFunctionBehaviorPrivate;
+
 class Q_UML_EXPORT QFunctionBehavior : public QOpaqueBehavior
 {
-    Q_OBJECT
-
     Q_DISABLE_COPY(QFunctionBehavior)
+    Q_DECLARE_PRIVATE(QFunctionBehavior)
 
 public:
     explicit QFunctionBehavior(QObject *parent = 0);
     virtual ~QFunctionBehavior();
 
 protected:
-    explicit QFunctionBehavior(bool createPimpl, QObject *parent = 0);
+    explicit QFunctionBehavior(QFunctionBehaviorPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QFunctionBehavior) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QFunctionBehavior) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QFunctionBehavior) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QFunctionBehavior) *> *)
 
 QT_END_HEADER

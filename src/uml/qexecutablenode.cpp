@@ -64,7 +64,13 @@ QExecutableNodePrivate::~QExecutableNodePrivate()
     \brief An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.
  */
 
-QExecutableNode::QExecutableNode()
+QExecutableNode::QExecutableNode(QObject *parent) :
+    QActivityNode(*new QExecutableNodePrivate, parent)
+{
+}
+
+QExecutableNode::QExecutableNode(QExecutableNodePrivate &dd, QObject *parent) :
+    QActivityNode(dd, parent)
 {
 }
 
@@ -79,7 +85,7 @@ const QSet<QExceptionHandler *> *QExecutableNode::handlers() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QExecutableNode);
+    Q_D(const QExecutableNode);
     return d->handlers;
 }
 
@@ -87,7 +93,7 @@ void QExecutableNode::addHandler(QExceptionHandler *handler)
 {
     // This is a read-write association end
 
-    QTUML_D(QExecutableNode);
+    Q_D(QExecutableNode);
     if (!d->handlers->contains(handler)) {
         d->handlers->insert(handler);
 
@@ -103,7 +109,7 @@ void QExecutableNode::removeHandler(QExceptionHandler *handler)
 {
     // This is a read-write association end
 
-    QTUML_D(QExecutableNode);
+    Q_D(QExecutableNode);
     if (d->handlers->contains(handler)) {
         d->handlers->remove(handler);
 

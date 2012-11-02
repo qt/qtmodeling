@@ -52,18 +52,26 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QObservationPrivate;
+
 class Q_UML_EXPORT QObservation : public QPackageableElement
 {
     Q_DISABLE_COPY(QObservation)
+    Q_DECLARE_PRIVATE(QObservation)
 
 public:
+    explicit QObservation(QObject *parent = 0);
     virtual ~QObservation();
 
 protected:
-    explicit QObservation();
+    explicit QObservation(QObservationPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QObservation) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QObservation) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QObservation) *> *)
 
 QT_END_HEADER
 

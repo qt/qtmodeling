@@ -47,11 +47,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QValueSpecificationActionPrivate::QValueSpecificationActionPrivate(QValueSpecificationAction *q_umlptr) :
+QValueSpecificationActionPrivate::QValueSpecificationActionPrivate() :
     value(0),
     result(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QValueSpecificationActionPrivate::~QValueSpecificationActionPrivate()
@@ -66,17 +65,14 @@ QValueSpecificationActionPrivate::~QValueSpecificationActionPrivate()
     \brief A value specification action is an action that evaluates a value specification.
  */
 
-QValueSpecificationAction::QValueSpecificationAction(QObject *parent)
-    : QObject(parent)
+QValueSpecificationAction::QValueSpecificationAction(QObject *parent) :
+    QAction(*new QValueSpecificationActionPrivate, parent)
 {
-    d_umlptr = new QValueSpecificationActionPrivate(this);
 }
 
-QValueSpecificationAction::QValueSpecificationAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QValueSpecificationAction::QValueSpecificationAction(QValueSpecificationActionPrivate &dd, QObject *parent) :
+    QAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QValueSpecificationActionPrivate;
 }
 
 QValueSpecificationAction::~QValueSpecificationAction()
@@ -90,7 +86,7 @@ QValueSpecification *QValueSpecificationAction::value() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QValueSpecificationAction);
+    Q_D(const QValueSpecificationAction);
     return d->value;
 }
 
@@ -98,7 +94,7 @@ void QValueSpecificationAction::setValue(QValueSpecification *value)
 {
     // This is a read-write association end
 
-    QTUML_D(QValueSpecificationAction);
+    Q_D(QValueSpecificationAction);
     if (d->value != value) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->value));
@@ -119,7 +115,7 @@ QOutputPin *QValueSpecificationAction::result() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QValueSpecificationAction);
+    Q_D(const QValueSpecificationAction);
     return d->result;
 }
 
@@ -127,7 +123,7 @@ void QValueSpecificationAction::setResult(QOutputPin *result)
 {
     // This is a read-write association end
 
-    QTUML_D(QValueSpecificationAction);
+    Q_D(QValueSpecificationAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->result));

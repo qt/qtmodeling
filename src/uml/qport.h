@@ -55,8 +55,11 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QProtocolStateMachine;
 class QInterface;
+
+class QPortPrivate;
 
 class Q_UML_EXPORT QPort : public QProperty
 {
@@ -72,6 +75,7 @@ class Q_UML_EXPORT QPort : public QProperty
     Q_PROPERTY(const QSet<QPort *> * redefinedPorts READ redefinedPorts)
 
     Q_DISABLE_COPY(QPort)
+    Q_DECLARE_PRIVATE(QPort)
 
 public:
     explicit QPort(QObject *parent = 0);
@@ -99,12 +103,13 @@ public:
     void removeRedefinedProperty(QPort *redefinedPort);
 
 protected:
-    explicit QPort(bool createPimpl, QObject *parent = 0);
+    explicit QPort(QPortPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QPort) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QPort) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *)
 
 QT_END_HEADER

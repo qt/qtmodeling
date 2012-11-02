@@ -45,11 +45,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QStringExpressionPrivate::QStringExpressionPrivate(QStringExpression *q_umlptr) :
+QStringExpressionPrivate::QStringExpressionPrivate() :
     owningExpression(0),
     subExpressions(new QSet<QStringExpression *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QStringExpressionPrivate::~QStringExpressionPrivate()
@@ -65,17 +64,18 @@ QStringExpressionPrivate::~QStringExpressionPrivate()
     \brief An expression that specifies a string value that is derived by concatenating a set of sub string expressions, some of which might be template parameters.
  */
 
-QStringExpression::QStringExpression(QObject *parent)
-    : QExpression(false, parent)
+QStringExpression::QStringExpression(QObject *parent) :
+    QObject(*new QStringExpressionPrivate, parent),
+    _wrappedExpression(new QExpression(this)),
+    _wrappedTemplateableElement(new QTemplateableElement(this))
 {
-    d_umlptr = new QStringExpressionPrivate(this);
 }
 
-QStringExpression::QStringExpression(bool createPimpl, QObject *parent)
-    : QExpression(createPimpl, parent)
+QStringExpression::QStringExpression(QStringExpressionPrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedExpression(new QExpression(this)),
+    _wrappedTemplateableElement(new QTemplateableElement(this))
 {
-    if (createPimpl)
-        d_umlptr = new QStringExpressionPrivate;
 }
 
 QStringExpression::~QStringExpression()
@@ -89,7 +89,7 @@ QStringExpression *QStringExpression::owningExpression() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QStringExpression);
+    Q_D(const QStringExpression);
     return d->owningExpression;
 }
 
@@ -97,7 +97,7 @@ void QStringExpression::setOwningExpression(QStringExpression *owningExpression)
 {
     // This is a read-write association end
 
-    QTUML_D(QStringExpression);
+    Q_D(QStringExpression);
     if (d->owningExpression != owningExpression) {
         // Adjust opposite property
         if (d->owningExpression)
@@ -121,7 +121,7 @@ const QSet<QStringExpression *> *QStringExpression::subExpressions() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QStringExpression);
+    Q_D(const QStringExpression);
     return d->subExpressions;
 }
 
@@ -129,7 +129,7 @@ void QStringExpression::addSubExpression(QStringExpression *subExpression)
 {
     // This is a read-write association end
 
-    QTUML_D(QStringExpression);
+    Q_D(QStringExpression);
     if (!d->subExpressions->contains(subExpression)) {
         d->subExpressions->insert(subExpression);
 
@@ -145,7 +145,7 @@ void QStringExpression::removeSubExpression(QStringExpression *subExpression)
 {
     // This is a read-write association end
 
-    QTUML_D(QStringExpression);
+    Q_D(QStringExpression);
     if (d->subExpressions->contains(subExpression)) {
         d->subExpressions->remove(subExpression);
 

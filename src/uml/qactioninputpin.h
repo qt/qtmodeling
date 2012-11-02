@@ -52,7 +52,10 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QAction;
+
+class QActionInputPinPrivate;
 
 class Q_UML_EXPORT QActionInputPin : public QInputPin
 {
@@ -62,6 +65,7 @@ class Q_UML_EXPORT QActionInputPin : public QInputPin
     Q_PROPERTY(QAction * fromAction READ fromAction WRITE setFromAction)
 
     Q_DISABLE_COPY(QActionInputPin)
+    Q_DECLARE_PRIVATE(QActionInputPin)
 
 public:
     explicit QActionInputPin(QObject *parent = 0);
@@ -72,12 +76,13 @@ public:
     void setFromAction(QAction *fromAction);
 
 protected:
-    explicit QActionInputPin(bool createPimpl, QObject *parent = 0);
+    explicit QActionInputPin(QActionInputPinPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QActionInputPin) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QActionInputPin) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QActionInputPin) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QActionInputPin) *> *)
 
 QT_END_HEADER

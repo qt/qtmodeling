@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qaction_p.h"
+#include "private/qaction_p.h"
+#include "qlinkaction.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,20 +56,21 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QLinkEndData;
 class QInputPin;
 class QAssociation;
 
-class QLinkActionPrivate : public QActionPrivate
+class Q_UML_EXPORT QLinkActionPrivate : public QActionPrivate
 {
+    Q_DECLARE_PUBLIC(QLinkAction)
+
 public:
+    explicit QLinkActionPrivate();
     virtual ~QLinkActionPrivate();
 
     QSet<QInputPin *> *inputValues;
     QSet<QLinkEndData *> *endData;
-
-protected:
-    explicit QLinkActionPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

@@ -55,24 +55,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QNamespace;
 class QRedefinableElement;
 class QState;
 class QPseudostate;
 class QRegion;
 
+class QStateMachinePrivate;
+
 class Q_UML_EXPORT QStateMachine : public QBehavior
 {
     Q_OBJECT
-
-    // From QBehavior
-    Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant)
-    Q_PROPERTY(QBehavioralFeature * specification READ specification WRITE setSpecification)
-    Q_PROPERTY(const QSet<QConstraint *> * postconditions READ postconditions)
-    Q_PROPERTY(const QSet<QConstraint *> * preconditions READ preconditions)
-    Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
-    Q_PROPERTY(const QSet<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
-    Q_PROPERTY(QBehavioredClassifier * context READ context)
 
     // From QStateMachine
     Q_PROPERTY(const QSet<QStateMachine *> * extendedStateMachines READ extendedStateMachines)
@@ -81,6 +75,7 @@ class Q_UML_EXPORT QStateMachine : public QBehavior
     Q_PROPERTY(const QSet<QRegion *> * regions READ regions)
 
     Q_DISABLE_COPY(QStateMachine)
+    Q_DECLARE_PRIVATE(QStateMachine)
 
 public:
     explicit QStateMachine(QObject *parent = 0);
@@ -107,12 +102,13 @@ public:
     bool isRedefinitionContextValid(const QStateMachine *redefined) const;
 
 protected:
-    explicit QStateMachine(bool createPimpl, QObject *parent = 0);
+    explicit QStateMachine(QStateMachinePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *)
 
 QT_END_HEADER

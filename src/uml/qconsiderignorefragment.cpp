@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QConsiderIgnoreFragmentPrivate::QConsiderIgnoreFragmentPrivate(QConsiderIgnoreFragment *q_umlptr) :
+QConsiderIgnoreFragmentPrivate::QConsiderIgnoreFragmentPrivate() :
     messages(new QSet<QNamedElement *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QConsiderIgnoreFragmentPrivate::~QConsiderIgnoreFragmentPrivate()
@@ -65,17 +64,14 @@ QConsiderIgnoreFragmentPrivate::~QConsiderIgnoreFragmentPrivate()
     \brief A consider ignore fragment is a kind of combined fragment that is used for the consider and ignore cases, which require lists of pertinent messages to be specified.
  */
 
-QConsiderIgnoreFragment::QConsiderIgnoreFragment(QObject *parent)
-    : QCombinedFragment(false, parent)
+QConsiderIgnoreFragment::QConsiderIgnoreFragment(QObject *parent) :
+    QCombinedFragment(*new QConsiderIgnoreFragmentPrivate, parent)
 {
-    d_umlptr = new QConsiderIgnoreFragmentPrivate(this);
 }
 
-QConsiderIgnoreFragment::QConsiderIgnoreFragment(bool createPimpl, QObject *parent)
-    : QCombinedFragment(createPimpl, parent)
+QConsiderIgnoreFragment::QConsiderIgnoreFragment(QConsiderIgnoreFragmentPrivate &dd, QObject *parent) :
+    QCombinedFragment(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QConsiderIgnoreFragmentPrivate;
 }
 
 QConsiderIgnoreFragment::~QConsiderIgnoreFragment()
@@ -89,7 +85,7 @@ const QSet<QNamedElement *> *QConsiderIgnoreFragment::messages() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QConsiderIgnoreFragment);
+    Q_D(const QConsiderIgnoreFragment);
     return d->messages;
 }
 
@@ -97,7 +93,7 @@ void QConsiderIgnoreFragment::addMessage(QNamedElement *message)
 {
     // This is a read-write association end
 
-    QTUML_D(QConsiderIgnoreFragment);
+    Q_D(QConsiderIgnoreFragment);
     if (!d->messages->contains(message)) {
         d->messages->insert(message);
     }
@@ -107,7 +103,7 @@ void QConsiderIgnoreFragment::removeMessage(QNamedElement *message)
 {
     // This is a read-write association end
 
-    QTUML_D(QConsiderIgnoreFragment);
+    Q_D(QConsiderIgnoreFragment);
     if (d->messages->contains(message)) {
         d->messages->remove(message);
     }

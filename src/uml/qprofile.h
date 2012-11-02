@@ -55,8 +55,11 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QElementImport;
 class QPackageImport;
+
+class QProfilePrivate;
 
 class Q_UML_EXPORT QProfile : public QPackage
 {
@@ -67,6 +70,7 @@ class Q_UML_EXPORT QProfile : public QPackage
     Q_PROPERTY(const QSet<QElementImport *> * metaclassReferences READ metaclassReferences)
 
     Q_DISABLE_COPY(QProfile)
+    Q_DECLARE_PRIVATE(QProfile)
 
 public:
     explicit QProfile(QObject *parent = 0);
@@ -81,12 +85,13 @@ public:
     void removeMetaclassReference(QElementImport *metaclassReference);
 
 protected:
-    explicit QProfile(bool createPimpl, QObject *parent = 0);
+    explicit QProfile(QProfilePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QProfile) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QProfile) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *)
 
 QT_END_HEADER

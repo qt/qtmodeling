@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDataStoreNodePrivate::QDataStoreNodePrivate(QDataStoreNode *q_umlptr)
+QDataStoreNodePrivate::QDataStoreNodePrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QDataStoreNodePrivate::~QDataStoreNodePrivate()
@@ -62,17 +61,14 @@ QDataStoreNodePrivate::~QDataStoreNodePrivate()
     \brief A data store node is a central buffer node for non-transient information.
  */
 
-QDataStoreNode::QDataStoreNode(QObject *parent)
-    : QCentralBufferNode(false, parent)
+QDataStoreNode::QDataStoreNode(QObject *parent) :
+    QCentralBufferNode(*new QDataStoreNodePrivate, parent)
 {
-    d_umlptr = new QDataStoreNodePrivate(this);
 }
 
-QDataStoreNode::QDataStoreNode(bool createPimpl, QObject *parent)
-    : QCentralBufferNode(createPimpl, parent)
+QDataStoreNode::QDataStoreNode(QDataStoreNodePrivate &dd, QObject *parent) :
+    QCentralBufferNode(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QDataStoreNodePrivate;
 }
 
 QDataStoreNode::~QDataStoreNode()

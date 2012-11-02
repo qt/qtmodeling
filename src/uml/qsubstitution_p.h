@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qrealization_p.h"
+#include "private/qrealization_p.h"
+#include "qsubstitution.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QClassifier;
 class QSubstitution;
 
-class QSubstitutionPrivate : public QRealizationPrivate
+class Q_UML_EXPORT QSubstitutionPrivate : public QRealizationPrivate
 {
+    Q_DECLARE_PUBLIC(QSubstitution)
+
 public:
-    explicit QSubstitutionPrivate(QSubstitution *q_umlptr = 0);
+    explicit QSubstitutionPrivate();
     virtual ~QSubstitutionPrivate();
 
     QClassifier *contract;

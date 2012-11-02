@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qinteractionfragment_p.h"
+#include "private/qinteractionfragment_p.h"
+#include "qexecutionspecification.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,18 +54,19 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QOccurrenceSpecification;
 
-class QExecutionSpecificationPrivate : public QInteractionFragmentPrivate
+class Q_UML_EXPORT QExecutionSpecificationPrivate : public QInteractionFragmentPrivate
 {
+    Q_DECLARE_PUBLIC(QExecutionSpecification)
+
 public:
+    explicit QExecutionSpecificationPrivate();
     virtual ~QExecutionSpecificationPrivate();
 
     QOccurrenceSpecification *start;
     QOccurrenceSpecification *finish;
-
-protected:
-    explicit QExecutionSpecificationPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

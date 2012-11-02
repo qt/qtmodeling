@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qinteractionfragment_p.h"
+#include "private/qinteractionfragment_p.h"
+#include "qstateinvariant.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,14 +54,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QLifeline;
 class QConstraint;
 class QStateInvariant;
 
-class QStateInvariantPrivate : public QInteractionFragmentPrivate
+class Q_UML_EXPORT QStateInvariantPrivate : public QInteractionFragmentPrivate
 {
+    Q_DECLARE_PUBLIC(QStateInvariant)
+
 public:
-    explicit QStateInvariantPrivate(QStateInvariant *q_umlptr = 0);
+    explicit QStateInvariantPrivate();
     virtual ~QStateInvariantPrivate();
 
     QConstraint *invariant;

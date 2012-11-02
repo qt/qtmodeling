@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QDirectedRelationship>
 
 QT_BEGIN_HEADER
@@ -53,29 +52,21 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QPackage;
 
-class Q_UML_EXPORT QPackageMerge : public QObject, public QDirectedRelationship
+class QPackageMergePrivate;
+
+class Q_UML_EXPORT QPackageMerge : public QDirectedRelationship
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QRelationship
-    Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
-
-    // From QDirectedRelationship
-    Q_PROPERTY(const QSet<QElement *> * sources READ sources)
-    Q_PROPERTY(const QSet<QElement *> * targets READ targets)
 
     // From QPackageMerge
     Q_PROPERTY(QPackage * mergedPackage READ mergedPackage WRITE setMergedPackage)
     Q_PROPERTY(QPackage * receivingPackage READ receivingPackage WRITE setReceivingPackage)
 
     Q_DISABLE_COPY(QPackageMerge)
+    Q_DECLARE_PRIVATE(QPackageMerge)
 
 public:
     explicit QPackageMerge(QObject *parent = 0);
@@ -88,12 +79,13 @@ public:
     void setReceivingPackage(QPackage *receivingPackage);
 
 protected:
-    explicit QPackageMerge(bool createPimpl, QObject *parent = 0);
+    explicit QPackageMerge(QPackageMergePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QPackageMerge) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QPackageMerge) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QPackageMerge) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QPackageMerge) *> *)
 
 QT_END_HEADER

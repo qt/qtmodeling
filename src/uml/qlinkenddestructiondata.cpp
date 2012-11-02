@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QLinkEndDestructionDataPrivate::QLinkEndDestructionDataPrivate(QLinkEndDestructionData *q_umlptr) :
+QLinkEndDestructionDataPrivate::QLinkEndDestructionDataPrivate() :
     isDestroyDuplicates(false),
     destroyAt(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QLinkEndDestructionDataPrivate::~QLinkEndDestructionDataPrivate()
@@ -65,17 +64,14 @@ QLinkEndDestructionDataPrivate::~QLinkEndDestructionDataPrivate()
     \brief A link end destruction data is not an action. It is an element that identifies links. It identifies one end of a link to be destroyed by destroy link action.
  */
 
-QLinkEndDestructionData::QLinkEndDestructionData(QObject *parent)
-    : QLinkEndData(false, parent)
+QLinkEndDestructionData::QLinkEndDestructionData(QObject *parent) :
+    QLinkEndData(*new QLinkEndDestructionDataPrivate, parent)
 {
-    d_umlptr = new QLinkEndDestructionDataPrivate(this);
 }
 
-QLinkEndDestructionData::QLinkEndDestructionData(bool createPimpl, QObject *parent)
-    : QLinkEndData(createPimpl, parent)
+QLinkEndDestructionData::QLinkEndDestructionData(QLinkEndDestructionDataPrivate &dd, QObject *parent) :
+    QLinkEndData(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QLinkEndDestructionDataPrivate;
 }
 
 QLinkEndDestructionData::~QLinkEndDestructionData()
@@ -89,7 +85,7 @@ bool QLinkEndDestructionData::isDestroyDuplicates() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QLinkEndDestructionData);
+    Q_D(const QLinkEndDestructionData);
     return d->isDestroyDuplicates;
 }
 
@@ -97,7 +93,7 @@ void QLinkEndDestructionData::setDestroyDuplicates(bool isDestroyDuplicates)
 {
     // This is a read-write attribute
 
-    QTUML_D(QLinkEndDestructionData);
+    Q_D(QLinkEndDestructionData);
     if (d->isDestroyDuplicates != isDestroyDuplicates) {
         d->isDestroyDuplicates = isDestroyDuplicates;
     }
@@ -110,7 +106,7 @@ QInputPin *QLinkEndDestructionData::destroyAt() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QLinkEndDestructionData);
+    Q_D(const QLinkEndDestructionData);
     return d->destroyAt;
 }
 
@@ -118,7 +114,7 @@ void QLinkEndDestructionData::setDestroyAt(QInputPin *destroyAt)
 {
     // This is a read-write association end
 
-    QTUML_D(QLinkEndDestructionData);
+    Q_D(QLinkEndDestructionData);
     if (d->destroyAt != destroyAt) {
         d->destroyAt = destroyAt;
     }

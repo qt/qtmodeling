@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QUsagePrivate::QUsagePrivate(QUsage *q_umlptr)
+QUsagePrivate::QUsagePrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QUsagePrivate::~QUsagePrivate()
@@ -62,17 +61,14 @@ QUsagePrivate::~QUsagePrivate()
     \brief A usage is a relationship in which one element requires another element (or set of elements) for its full implementation or operation. A usage is a dependency in which the client requires the presence of the supplier.
  */
 
-QUsage::QUsage(QObject *parent)
-    : QDependency(false, parent)
+QUsage::QUsage(QObject *parent) :
+    QDependency(*new QUsagePrivate, parent)
 {
-    d_umlptr = new QUsagePrivate(this);
 }
 
-QUsage::QUsage(bool createPimpl, QObject *parent)
-    : QDependency(createPimpl, parent)
+QUsage::QUsage(QUsagePrivate &dd, QObject *parent) :
+    QDependency(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QUsagePrivate;
 }
 
 QUsage::~QUsage()

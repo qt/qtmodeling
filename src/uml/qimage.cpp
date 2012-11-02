@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QImagePrivate::QImagePrivate(QImage *q_umlptr)
+QImagePrivate::QImagePrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QImagePrivate::~QImagePrivate()
@@ -62,17 +61,14 @@ QImagePrivate::~QImagePrivate()
     \brief Physical definition of a graphical image.
  */
 
-QImage::QImage(QObject *parent)
-    : QObject(parent)
+QImage::QImage(QObject *parent) :
+    QElement(*new QImagePrivate, parent)
 {
-    d_umlptr = new QImagePrivate(this);
 }
 
-QImage::QImage(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QImage::QImage(QImagePrivate &dd, QObject *parent) :
+    QElement(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QImagePrivate;
 }
 
 QImage::~QImage()
@@ -86,7 +82,7 @@ QString QImage::format() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QImage);
+    Q_D(const QImage);
     return d->format;
 }
 
@@ -94,7 +90,7 @@ void QImage::setFormat(QString format)
 {
     // This is a read-write attribute
 
-    QTUML_D(QImage);
+    Q_D(QImage);
     if (d->format != format) {
         d->format = format;
     }
@@ -107,7 +103,7 @@ QString QImage::location() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QImage);
+    Q_D(const QImage);
     return d->location;
 }
 
@@ -115,7 +111,7 @@ void QImage::setLocation(QString location)
 {
     // This is a read-write attribute
 
-    QTUML_D(QImage);
+    Q_D(QImage);
     if (d->location != location) {
         d->location = location;
     }
@@ -128,7 +124,7 @@ QString QImage::content() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QImage);
+    Q_D(const QImage);
     return d->content;
 }
 
@@ -136,7 +132,7 @@ void QImage::setContent(QString content)
 {
     // This is a read-write attribute
 
-    QTUML_D(QImage);
+    Q_D(QImage);
     if (d->content != content) {
         d->content = content;
     }

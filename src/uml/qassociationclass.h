@@ -44,8 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtUml/QClass>
-#include <QtUml/QAssociation>
+#include <QtCore/QObject>
 
 QT_BEGIN_HEADER
 
@@ -53,23 +52,33 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QAssociationClass : public QClass, public QAssociation
-{
-    Q_OBJECT
+// Forward decls for aggregated 'base classes'
+class QClass;
+class QAssociation;
 
+class QAssociationClassPrivate;
+
+class Q_UML_EXPORT QAssociationClass : public QObject
+{
     Q_DISABLE_COPY(QAssociationClass)
+    Q_DECLARE_PRIVATE(QAssociationClass)
 
 public:
     explicit QAssociationClass(QObject *parent = 0);
     virtual ~QAssociationClass();
 
 protected:
-    explicit QAssociationClass(bool createPimpl, QObject *parent = 0);
+    explicit QAssociationClass(QAssociationClassPrivate &dd, QObject *parent = 0);
+
+private:
+    QClass *_wrappedClass;
+    QAssociation *_wrappedAssociation;
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QAssociationClass) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QAssociationClass) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QAssociationClass) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QAssociationClass) *> *)
 
 QT_END_HEADER

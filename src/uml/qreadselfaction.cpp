@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QReadSelfActionPrivate::QReadSelfActionPrivate(QReadSelfAction *q_umlptr) :
+QReadSelfActionPrivate::QReadSelfActionPrivate() :
     result(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QReadSelfActionPrivate::~QReadSelfActionPrivate()
@@ -64,17 +63,14 @@ QReadSelfActionPrivate::~QReadSelfActionPrivate()
     \brief A read self action is an action that retrieves the host object of an action.
  */
 
-QReadSelfAction::QReadSelfAction(QObject *parent)
-    : QObject(parent)
+QReadSelfAction::QReadSelfAction(QObject *parent) :
+    QAction(*new QReadSelfActionPrivate, parent)
 {
-    d_umlptr = new QReadSelfActionPrivate(this);
 }
 
-QReadSelfAction::QReadSelfAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QReadSelfAction::QReadSelfAction(QReadSelfActionPrivate &dd, QObject *parent) :
+    QAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QReadSelfActionPrivate;
 }
 
 QReadSelfAction::~QReadSelfAction()
@@ -88,7 +84,7 @@ QOutputPin *QReadSelfAction::result() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QReadSelfAction);
+    Q_D(const QReadSelfAction);
     return d->result;
 }
 
@@ -96,7 +92,7 @@ void QReadSelfAction::setResult(QOutputPin *result)
 {
     // This is a read-write association end
 
-    QTUML_D(QReadSelfAction);
+    Q_D(QReadSelfAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->result));

@@ -63,7 +63,13 @@ QWriteVariableActionPrivate::~QWriteVariableActionPrivate()
     \brief WriteVariableAction is an abstract class for variable actions that change variable values.
  */
 
-QWriteVariableAction::QWriteVariableAction()
+QWriteVariableAction::QWriteVariableAction(QObject *parent) :
+    QVariableAction(*new QWriteVariableActionPrivate, parent)
+{
+}
+
+QWriteVariableAction::QWriteVariableAction(QWriteVariableActionPrivate &dd, QObject *parent) :
+    QVariableAction(dd, parent)
 {
 }
 
@@ -78,7 +84,7 @@ QInputPin *QWriteVariableAction::value() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QWriteVariableAction);
+    Q_D(const QWriteVariableAction);
     return d->value;
 }
 
@@ -86,7 +92,7 @@ void QWriteVariableAction::setValue(QInputPin *value)
 {
     // This is a read-write association end
 
-    QTUML_D(QWriteVariableAction);
+    Q_D(QWriteVariableAction);
     if (d->value != value) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->value));

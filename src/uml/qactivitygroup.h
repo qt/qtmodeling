@@ -55,15 +55,29 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QActivity;
 class QActivityEdge;
 class QActivityNode;
 
-class Q_UML_EXPORT QActivityGroup : public virtual QNamedElement
+class QActivityGroupPrivate;
+
+class Q_UML_EXPORT QActivityGroup : public QNamedElement
 {
+    Q_OBJECT
+
+    // From QActivityGroup
+    Q_PROPERTY(QActivity * inActivity READ inActivity WRITE setInActivity)
+    Q_PROPERTY(const QSet<QActivityNode *> * containedNodes READ containedNodes)
+    Q_PROPERTY(const QSet<QActivityGroup *> * subgroups READ subgroups)
+    Q_PROPERTY(const QSet<QActivityEdge *> * containedEdges READ containedEdges)
+    Q_PROPERTY(QActivityGroup * superGroup READ superGroup)
+
     Q_DISABLE_COPY(QActivityGroup)
+    Q_DECLARE_PRIVATE(QActivityGroup)
 
 public:
+    explicit QActivityGroup(QObject *parent = 0);
     virtual ~QActivityGroup();
 
     // Association-ends
@@ -75,10 +89,14 @@ public:
     QActivityGroup *superGroup() const;
 
 protected:
-    explicit QActivityGroup();
+    explicit QActivityGroup(QActivityGroupPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QActivityGroup) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityGroup) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QActivityGroup) *> *)
 
 QT_END_HEADER
 

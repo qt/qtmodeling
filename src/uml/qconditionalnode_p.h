@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qstructuredactivitynode_p.h"
+#include "private/qstructuredactivitynode_p.h"
+#include "qconditionalnode.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -56,14 +57,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QClause;
 class QOutputPin;
 class QConditionalNode;
 
-class QConditionalNodePrivate : public QStructuredActivityNodePrivate
+class Q_UML_EXPORT QConditionalNodePrivate : public QStructuredActivityNodePrivate
 {
+    Q_DECLARE_PUBLIC(QConditionalNode)
+
 public:
-    explicit QConditionalNodePrivate(QConditionalNode *q_umlptr = 0);
+    explicit QConditionalNodePrivate();
     virtual ~QConditionalNodePrivate();
 
     bool isAssured;

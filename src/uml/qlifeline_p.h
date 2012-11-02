@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qnamedelement_p.h"
+#include "private/qnamedelement_p.h"
+#include "qlifeline.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QConnectableElement;
 class QValueSpecification;
 class QInteraction;
@@ -62,10 +64,12 @@ class QInteractionFragment;
 class QPartDecomposition;
 class QLifeline;
 
-class QLifelinePrivate : public QNamedElementPrivate
+class Q_UML_EXPORT QLifelinePrivate : public QNamedElementPrivate
 {
+    Q_DECLARE_PUBLIC(QLifeline)
+
 public:
-    explicit QLifelinePrivate(QLifeline *q_umlptr = 0);
+    explicit QLifelinePrivate();
     virtual ~QLifelinePrivate();
 
     QConnectableElement *represents;

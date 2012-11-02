@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QAddVariableValueActionPrivate::QAddVariableValueActionPrivate(QAddVariableValueAction *q_umlptr) :
+QAddVariableValueActionPrivate::QAddVariableValueActionPrivate() :
     isReplaceAll(false),
     insertAt(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QAddVariableValueActionPrivate::~QAddVariableValueActionPrivate()
@@ -65,17 +64,14 @@ QAddVariableValueActionPrivate::~QAddVariableValueActionPrivate()
     \brief An add variable value action is a write variable action for adding values to a variable.
  */
 
-QAddVariableValueAction::QAddVariableValueAction(QObject *parent)
-    : QObject(parent)
+QAddVariableValueAction::QAddVariableValueAction(QObject *parent) :
+    QWriteVariableAction(*new QAddVariableValueActionPrivate, parent)
 {
-    d_umlptr = new QAddVariableValueActionPrivate(this);
 }
 
-QAddVariableValueAction::QAddVariableValueAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QAddVariableValueAction::QAddVariableValueAction(QAddVariableValueActionPrivate &dd, QObject *parent) :
+    QWriteVariableAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QAddVariableValueActionPrivate;
 }
 
 QAddVariableValueAction::~QAddVariableValueAction()
@@ -89,7 +85,7 @@ bool QAddVariableValueAction::isReplaceAll() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QAddVariableValueAction);
+    Q_D(const QAddVariableValueAction);
     return d->isReplaceAll;
 }
 
@@ -97,7 +93,7 @@ void QAddVariableValueAction::setReplaceAll(bool isReplaceAll)
 {
     // This is a read-write attribute
 
-    QTUML_D(QAddVariableValueAction);
+    Q_D(QAddVariableValueAction);
     if (d->isReplaceAll != isReplaceAll) {
         d->isReplaceAll = isReplaceAll;
     }
@@ -110,7 +106,7 @@ QInputPin *QAddVariableValueAction::insertAt() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QAddVariableValueAction);
+    Q_D(const QAddVariableValueAction);
     return d->insertAt;
 }
 
@@ -118,7 +114,7 @@ void QAddVariableValueAction::setInsertAt(QInputPin *insertAt)
 {
     // This is a read-write association end
 
-    QTUML_D(QAddVariableValueAction);
+    Q_D(QAddVariableValueAction);
     if (d->insertAt != insertAt) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->insertAt));

@@ -43,14 +43,11 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// QtUml includes
-#include <QtUml/QtUmlEnumerations>
-
 // Base class includes
 #include <QtCore/QObject>
-#include <QtUml/QStructuralFeature>
-#include <QtUml/QConnectableElement>
-#include <QtUml/QDeploymentTarget>
+
+// QtUml includes
+#include <QtUml/QtUmlEnumerations>
 
 // Qt includes
 #include <QtCore/QString>
@@ -63,6 +60,12 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for aggregated 'base classes'
+class QStructuralFeature;
+class QConnectableElement;
+class QDeploymentTarget;
+
+// Forward decls for function parameters
 class QType;
 class QInterface;
 class QRedefinableElement;
@@ -72,55 +75,11 @@ class QDataType;
 class QAssociation;
 class QClass;
 
-class Q_UML_EXPORT QProperty : public QObject, public QStructuralFeature, public QConnectableElement, public QDeploymentTarget
+class QPropertyPrivate;
+
+class Q_UML_EXPORT QProperty : public QObject
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From QTypedElement
-    Q_PROPERTY(QType * type READ type WRITE setType)
-
-    // From QMultiplicityElement
-    Q_PROPERTY(qint32 upper READ upper WRITE setUpper)
-    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
-    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
-    Q_PROPERTY(qint32 lower READ lower WRITE setLower)
-    Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
-    Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
-
-    // From QRedefinableElement
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
-    Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
-
-    // From QFeature
-    Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic)
-    Q_PROPERTY(const QSet<QClassifier *> * featuringClassifiers READ featuringClassifiers)
-
-    // From QStructuralFeature
-
-    // From QParameterableElement
-    Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
-
-    // From QConnectableElement
-    Q_PROPERTY(const QList<QConnectorEnd *> * ends READ ends)
-    Q_PROPERTY(QConnectableElementTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
-
-    // From QDeploymentTarget
-    Q_PROPERTY(const QSet<QPackageableElement *> * deployedElements READ deployedElements)
-    Q_PROPERTY(const QSet<QDeployment *> * deployments READ deployments)
 
     // From QProperty
     Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived)
@@ -142,7 +101,54 @@ class Q_UML_EXPORT QProperty : public QObject, public QStructuralFeature, public
     Q_PROPERTY(QAssociation * association READ association WRITE setAssociation)
     Q_PROPERTY(QInterface * interface READ interface WRITE setInterface)
 
+    // From aggregated QElement
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+
+    // From aggregated QNamedElement
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+
+    // From aggregated QTypedElement
+    Q_PROPERTY(QType * type READ type WRITE setType)
+
+    // From aggregated QMultiplicityElement
+    Q_PROPERTY(qint32 upper READ upper WRITE setUpper)
+    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
+    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
+    Q_PROPERTY(qint32 lower READ lower WRITE setLower)
+    Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
+    Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
+
+    // From aggregated QRedefinableElement
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
+    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
+    Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
+
+    // From aggregated QFeature
+    Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic)
+    Q_PROPERTY(const QSet<QClassifier *> * featuringClassifiers READ featuringClassifiers)
+
+    // From aggregated QStructuralFeature
+
+    // From aggregated QParameterableElement
+    Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
+
+    // From aggregated QConnectableElement
+    Q_PROPERTY(const QList<QConnectorEnd *> * ends READ ends)
+    Q_PROPERTY(QConnectableElementTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
+
+    // From aggregated QDeploymentTarget
+    Q_PROPERTY(const QSet<QPackageableElement *> * deployedElements READ deployedElements)
+    Q_PROPERTY(const QSet<QDeployment *> * deployments READ deployments)
+
     Q_DISABLE_COPY(QProperty)
+    Q_DECLARE_PRIVATE(QProperty)
 
 public:
     explicit QProperty(QObject *parent = 0);
@@ -199,12 +205,18 @@ public:
     const QSet<QType *> *subsettingContext() const;
 
 protected:
-    explicit QProperty(bool createPimpl, QObject *parent = 0);
+    explicit QProperty(QPropertyPrivate &dd, QObject *parent = 0);
+
+private:
+    QStructuralFeature *_wrappedStructuralFeature;
+    QConnectableElement *_wrappedConnectableElement;
+    QDeploymentTarget *_wrappedDeploymentTarget;
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QProperty) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *)
 
 QT_END_HEADER

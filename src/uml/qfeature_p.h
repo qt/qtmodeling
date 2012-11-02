@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qredefinableelement_p.h"
+#include "private/qredefinableelement_p.h"
+#include "qfeature.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,11 +56,15 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QClassifier;
 
-class QFeaturePrivate : public QRedefinableElementPrivate
+class Q_UML_EXPORT QFeaturePrivate : public QRedefinableElementPrivate
 {
+    Q_DECLARE_PUBLIC(QFeature)
+
 public:
+    explicit QFeaturePrivate();
     virtual ~QFeaturePrivate();
 
     bool isStatic;
@@ -68,9 +73,6 @@ public:
     // Internal functions for read-only subsetted association ends
     void addFeaturingClassifier(QClassifier *featuringClassifier);
     void removeFeaturingClassifier(QClassifier *featuringClassifier);
-
-protected:
-    explicit QFeaturePrivate();
 };
 
 QT_END_NAMESPACE_QTUML

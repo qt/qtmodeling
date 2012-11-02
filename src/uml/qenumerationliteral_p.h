@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qinstancespecification_p.h"
+#include "private/qinstancespecification_p.h"
+#include "qenumerationliteral.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QEnumeration;
 class QEnumerationLiteral;
 
-class QEnumerationLiteralPrivate : public QInstanceSpecificationPrivate
+class Q_UML_EXPORT QEnumerationLiteralPrivate : public QInstanceSpecificationPrivate
 {
+    Q_DECLARE_PUBLIC(QEnumerationLiteral)
+
 public:
-    explicit QEnumerationLiteralPrivate(QEnumerationLiteral *q_umlptr = 0);
+    explicit QEnumerationLiteralPrivate();
     virtual ~QEnumerationLiteralPrivate();
 
     QEnumeration *enumeration;

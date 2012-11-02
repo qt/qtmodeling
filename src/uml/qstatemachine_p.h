@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qbehavior_p.h"
+#include "private/qbehavior_p.h"
+#include "qstatemachine.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QNamespace;
 class QRedefinableElement;
 class QState;
@@ -62,10 +64,12 @@ class QStateMachine;
 class QPseudostate;
 class QRegion;
 
-class QStateMachinePrivate : public QBehaviorPrivate
+class Q_UML_EXPORT QStateMachinePrivate : public QBehaviorPrivate
 {
+    Q_DECLARE_PUBLIC(QStateMachine)
+
 public:
-    explicit QStateMachinePrivate(QStateMachine *q_umlptr = 0);
+    explicit QStateMachinePrivate();
     virtual ~QStateMachinePrivate();
 
     QSet<QStateMachine *> *extendedStateMachines;

@@ -47,11 +47,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QStateInvariantPrivate::QStateInvariantPrivate(QStateInvariant *q_umlptr) :
+QStateInvariantPrivate::QStateInvariantPrivate() :
     invariant(0),
     covered(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QStateInvariantPrivate::~QStateInvariantPrivate()
@@ -66,17 +65,14 @@ QStateInvariantPrivate::~QStateInvariantPrivate()
     \brief A state invariant is a runtime constraint on the participants of the interaction. It may be used to specify a variety of different kinds of constraints, such as values of attributes or variables, internal or external states, and so on. A state invariant is an interaction fragment and it is placed on a lifeline.
  */
 
-QStateInvariant::QStateInvariant(QObject *parent)
-    : QObject(parent)
+QStateInvariant::QStateInvariant(QObject *parent) :
+    QInteractionFragment(*new QStateInvariantPrivate, parent)
 {
-    d_umlptr = new QStateInvariantPrivate(this);
 }
 
-QStateInvariant::QStateInvariant(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QStateInvariant::QStateInvariant(QStateInvariantPrivate &dd, QObject *parent) :
+    QInteractionFragment(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QStateInvariantPrivate;
 }
 
 QStateInvariant::~QStateInvariant()
@@ -90,7 +86,7 @@ QConstraint *QStateInvariant::invariant() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QStateInvariant);
+    Q_D(const QStateInvariant);
     return d->invariant;
 }
 
@@ -98,7 +94,7 @@ void QStateInvariant::setInvariant(QConstraint *invariant)
 {
     // This is a read-write association end
 
-    QTUML_D(QStateInvariant);
+    Q_D(QStateInvariant);
     if (d->invariant != invariant) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->invariant));
@@ -119,7 +115,7 @@ QLifeline *QStateInvariant::covered() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QStateInvariant);
+    Q_D(const QStateInvariant);
     return d->covered;
 }
 
@@ -127,7 +123,7 @@ void QStateInvariant::setCovered(QLifeline *covered)
 {
     // This is a read-write association end
 
-    QTUML_D(QStateInvariant);
+    Q_D(QStateInvariant);
     if (d->covered != covered) {
         d->covered = covered;
     }

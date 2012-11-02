@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QStartClassifierBehaviorActionPrivate::QStartClassifierBehaviorActionPrivate(QStartClassifierBehaviorAction *q_umlptr) :
+QStartClassifierBehaviorActionPrivate::QStartClassifierBehaviorActionPrivate() :
     object(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QStartClassifierBehaviorActionPrivate::~QStartClassifierBehaviorActionPrivate()
@@ -64,17 +63,14 @@ QStartClassifierBehaviorActionPrivate::~QStartClassifierBehaviorActionPrivate()
     \brief A start classifier behavior action is an action that starts the classifier behavior of the input.
  */
 
-QStartClassifierBehaviorAction::QStartClassifierBehaviorAction(QObject *parent)
-    : QObject(parent)
+QStartClassifierBehaviorAction::QStartClassifierBehaviorAction(QObject *parent) :
+    QAction(*new QStartClassifierBehaviorActionPrivate, parent)
 {
-    d_umlptr = new QStartClassifierBehaviorActionPrivate(this);
 }
 
-QStartClassifierBehaviorAction::QStartClassifierBehaviorAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QStartClassifierBehaviorAction::QStartClassifierBehaviorAction(QStartClassifierBehaviorActionPrivate &dd, QObject *parent) :
+    QAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QStartClassifierBehaviorActionPrivate;
 }
 
 QStartClassifierBehaviorAction::~QStartClassifierBehaviorAction()
@@ -88,7 +84,7 @@ QInputPin *QStartClassifierBehaviorAction::object() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QStartClassifierBehaviorAction);
+    Q_D(const QStartClassifierBehaviorAction);
     return d->object;
 }
 
@@ -96,7 +92,7 @@ void QStartClassifierBehaviorAction::setObject(QInputPin *object)
 {
     // This is a read-write association end
 
-    QTUML_D(QStartClassifierBehaviorAction);
+    Q_D(QStartClassifierBehaviorAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->object));

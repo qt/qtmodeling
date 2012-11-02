@@ -44,8 +44,11 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qinteractionfragment_p.h"
-#include "qnamespace_p.h"
+#include "private/qobject_p.h"
+
+#include "private/qinteractionfragment_p.h"
+#include "private/qnamespace_p.h"
+#include "qinteractionoperand.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -56,17 +59,24 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInteractionConstraint;
 class QInteractionOperand;
 
-class QInteractionOperandPrivate : public QInteractionFragmentPrivate, public QNamespacePrivate
+class Q_UML_EXPORT QInteractionOperandPrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QInteractionOperand)
+
 public:
-    explicit QInteractionOperandPrivate(QInteractionOperand *q_umlptr = 0);
+    explicit QInteractionOperandPrivate();
     virtual ~QInteractionOperandPrivate();
 
     QList<QInteractionFragment *> *fragments;
     QInteractionConstraint *guard;
+
+private:
+    QInteractionFragmentPrivate *_wrappedInteractionFragmentPrivate;
+    QNamespacePrivate *_wrappedNamespacePrivate;
 };
 
 QT_END_NAMESPACE_QTUML

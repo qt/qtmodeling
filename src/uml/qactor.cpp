@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QActorPrivate::QActorPrivate(QActor *q_umlptr)
+QActorPrivate::QActorPrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QActorPrivate::~QActorPrivate()
@@ -62,17 +61,14 @@ QActorPrivate::~QActorPrivate()
     \brief An actor specifies a role played by a user or any other system that interacts with the subject.
  */
 
-QActor::QActor(QObject *parent)
-    : QObject(parent)
+QActor::QActor(QObject *parent) :
+    QBehavioredClassifier(*new QActorPrivate, parent)
 {
-    d_umlptr = new QActorPrivate(this);
 }
 
-QActor::QActor(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QActor::QActor(QActorPrivate &dd, QObject *parent) :
+    QBehavioredClassifier(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QActorPrivate;
 }
 
 QActor::~QActor()

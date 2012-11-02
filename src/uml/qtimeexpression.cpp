@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QTimeExpressionPrivate::QTimeExpressionPrivate(QTimeExpression *q_umlptr) :
+QTimeExpressionPrivate::QTimeExpressionPrivate() :
     observations(new QSet<QObservation *>),
     expr(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QTimeExpressionPrivate::~QTimeExpressionPrivate()
@@ -66,17 +65,14 @@ QTimeExpressionPrivate::~QTimeExpressionPrivate()
     \brief A time expression defines a value specification that represents a time value.
  */
 
-QTimeExpression::QTimeExpression(QObject *parent)
-    : QObject(parent)
+QTimeExpression::QTimeExpression(QObject *parent) :
+    QValueSpecification(*new QTimeExpressionPrivate, parent)
 {
-    d_umlptr = new QTimeExpressionPrivate(this);
 }
 
-QTimeExpression::QTimeExpression(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QTimeExpression::QTimeExpression(QTimeExpressionPrivate &dd, QObject *parent) :
+    QValueSpecification(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QTimeExpressionPrivate;
 }
 
 QTimeExpression::~QTimeExpression()
@@ -90,7 +86,7 @@ const QSet<QObservation *> *QTimeExpression::observations() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTimeExpression);
+    Q_D(const QTimeExpression);
     return d->observations;
 }
 
@@ -98,7 +94,7 @@ void QTimeExpression::addObservation(QObservation *observation)
 {
     // This is a read-write association end
 
-    QTUML_D(QTimeExpression);
+    Q_D(QTimeExpression);
     if (!d->observations->contains(observation)) {
         d->observations->insert(observation);
     }
@@ -108,7 +104,7 @@ void QTimeExpression::removeObservation(QObservation *observation)
 {
     // This is a read-write association end
 
-    QTUML_D(QTimeExpression);
+    Q_D(QTimeExpression);
     if (d->observations->contains(observation)) {
         d->observations->remove(observation);
     }
@@ -121,7 +117,7 @@ QValueSpecification *QTimeExpression::expr() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTimeExpression);
+    Q_D(const QTimeExpression);
     return d->expr;
 }
 
@@ -129,7 +125,7 @@ void QTimeExpression::setExpr(QValueSpecification *expr)
 {
     // This is a read-write association end
 
-    QTUML_D(QTimeExpression);
+    Q_D(QTimeExpression);
     if (d->expr != expr) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->expr));

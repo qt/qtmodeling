@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qcontrolnode_p.h"
+#include "private/qcontrolnode_p.h"
+#include "qmergenode.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,10 +55,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QMergeNode;
 
-class QMergeNodePrivate : public QControlNodePrivate
+class Q_UML_EXPORT QMergeNodePrivate : public QControlNodePrivate
 {
+    Q_DECLARE_PUBLIC(QMergeNode)
+
 public:
-    explicit QMergeNodePrivate(QMergeNode *q_umlptr = 0);
+    explicit QMergeNodePrivate();
     virtual ~QMergeNodePrivate();
 
 };

@@ -55,14 +55,25 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QPackageableElement;
 class QDeployment;
 
-class Q_UML_EXPORT QDeploymentTarget : public virtual QNamedElement
+class QDeploymentTargetPrivate;
+
+class Q_UML_EXPORT QDeploymentTarget : public QNamedElement
 {
+    Q_OBJECT
+
+    // From QDeploymentTarget
+    Q_PROPERTY(const QSet<QPackageableElement *> * deployedElements READ deployedElements)
+    Q_PROPERTY(const QSet<QDeployment *> * deployments READ deployments)
+
     Q_DISABLE_COPY(QDeploymentTarget)
+    Q_DECLARE_PRIVATE(QDeploymentTarget)
 
 public:
+    explicit QDeploymentTarget(QObject *parent = 0);
     virtual ~QDeploymentTarget();
 
     // Association-ends
@@ -76,10 +87,14 @@ public:
     void removeClientDependency(QDeployment *deployment);
 
 protected:
-    explicit QDeploymentTarget();
+    explicit QDeploymentTarget(QDeploymentTargetPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QDeploymentTarget) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QDeploymentTarget) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QDeploymentTarget) *> *)
 
 QT_END_HEADER
 

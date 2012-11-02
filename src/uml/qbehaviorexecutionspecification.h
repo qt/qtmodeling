@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QExecutionSpecification>
 
 QT_BEGIN_HEADER
@@ -53,39 +52,20 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QBehavior;
 
-class Q_UML_EXPORT QBehaviorExecutionSpecification : public QObject, public QExecutionSpecification
+class QBehaviorExecutionSpecificationPrivate;
+
+class Q_UML_EXPORT QBehaviorExecutionSpecification : public QExecutionSpecification
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From QInteractionFragment
-    Q_PROPERTY(const QSet<QGeneralOrdering *> * generalOrderings READ generalOrderings)
-    Q_PROPERTY(QInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
-    Q_PROPERTY(const QSet<QLifeline *> * covered READ covered)
-    Q_PROPERTY(QInteractionOperand * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
-
-    // From QExecutionSpecification
-    Q_PROPERTY(QOccurrenceSpecification * start READ start WRITE setStart)
-    Q_PROPERTY(QOccurrenceSpecification * finish READ finish WRITE setFinish)
 
     // From QBehaviorExecutionSpecification
     Q_PROPERTY(QBehavior * behavior READ behavior WRITE setBehavior)
 
     Q_DISABLE_COPY(QBehaviorExecutionSpecification)
+    Q_DECLARE_PRIVATE(QBehaviorExecutionSpecification)
 
 public:
     explicit QBehaviorExecutionSpecification(QObject *parent = 0);
@@ -96,12 +76,13 @@ public:
     void setBehavior(QBehavior *behavior);
 
 protected:
-    explicit QBehaviorExecutionSpecification(bool createPimpl, QObject *parent = 0);
+    explicit QBehaviorExecutionSpecification(QBehaviorExecutionSpecificationPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QBehaviorExecutionSpecification) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QBehaviorExecutionSpecification) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QBehaviorExecutionSpecification) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QBehaviorExecutionSpecification) *> *)
 
 QT_END_HEADER

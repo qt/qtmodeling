@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QAssociationClassPrivate::QAssociationClassPrivate(QAssociationClass *q_umlptr)
+QAssociationClassPrivate::QAssociationClassPrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QAssociationClassPrivate::~QAssociationClassPrivate()
@@ -62,17 +61,18 @@ QAssociationClassPrivate::~QAssociationClassPrivate()
     \brief A model element that has both association and class properties. An AssociationClass can be seen as an association that also has class properties, or as a class that also has association properties. It not only connects a set of classifiers but also defines a set of features that belong to the relationship itself and not to any of the classifiers.
  */
 
-QAssociationClass::QAssociationClass(QObject *parent)
-    : (false, parent)
+QAssociationClass::QAssociationClass(QObject *parent) :
+    QObject(*new QAssociationClassPrivate, parent),
+    _wrappedClass(new QClass(this)),
+    _wrappedAssociation(new QAssociation(this))
 {
-    d_umlptr = new QAssociationClassPrivate(this);
 }
 
-QAssociationClass::QAssociationClass(bool createPimpl, QObject *parent)
-    : (createPimpl, parent)
+QAssociationClass::QAssociationClass(QAssociationClassPrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedClass(new QClass(this)),
+    _wrappedAssociation(new QAssociation(this))
 {
-    if (createPimpl)
-        d_umlptr = new QAssociationClassPrivate;
 }
 
 QAssociationClass::~QAssociationClass()

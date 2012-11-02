@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qnamedelement_p.h"
+#include "private/qnamedelement_p.h"
+#include "qtrigger.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,14 +56,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QEvent;
 class QPort;
 class QTrigger;
 
-class QTriggerPrivate : public QNamedElementPrivate
+class Q_UML_EXPORT QTriggerPrivate : public QNamedElementPrivate
 {
+    Q_DECLARE_PUBLIC(QTrigger)
+
 public:
-    explicit QTriggerPrivate(QTrigger *q_umlptr = 0);
+    explicit QTriggerPrivate();
     virtual ~QTriggerPrivate();
 
     QSet<QPort *> *ports;

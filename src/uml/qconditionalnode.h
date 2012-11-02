@@ -56,8 +56,11 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QClause;
 class QOutputPin;
+
+class QConditionalNodePrivate;
 
 class Q_UML_EXPORT QConditionalNode : public QStructuredActivityNode
 {
@@ -70,6 +73,7 @@ class Q_UML_EXPORT QConditionalNode : public QStructuredActivityNode
     Q_PROPERTY(const QList<QOutputPin *> * results READ results)
 
     Q_DISABLE_COPY(QConditionalNode)
+    Q_DECLARE_PRIVATE(QConditionalNode)
 
 public:
     explicit QConditionalNode(QObject *parent = 0);
@@ -90,12 +94,13 @@ public:
     void removeResult(QOutputPin *result);
 
 protected:
-    explicit QConditionalNode(bool createPimpl, QObject *parent = 0);
+    explicit QConditionalNode(QConditionalNodePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QConditionalNode) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QConditionalNode) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QConditionalNode) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QConditionalNode) *> *)
 
 QT_END_HEADER

@@ -61,7 +61,13 @@ QLiteralSpecificationPrivate::~QLiteralSpecificationPrivate()
     \brief A literal specification identifies a literal constant being modeled.
  */
 
-QLiteralSpecification::QLiteralSpecification()
+QLiteralSpecification::QLiteralSpecification(QObject *parent) :
+    QValueSpecification(*new QLiteralSpecificationPrivate, parent)
+{
+}
+
+QLiteralSpecification::QLiteralSpecification(QLiteralSpecificationPrivate &dd, QObject *parent) :
+    QValueSpecification(dd, parent)
 {
 }
 

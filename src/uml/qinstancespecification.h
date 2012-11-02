@@ -45,9 +45,6 @@
 
 // Base class includes
 #include <QtCore/QObject>
-#include <QtUml/QDeployedArtifact>
-#include <QtUml/QPackageableElement>
-#include <QtUml/QDeploymentTarget>
 
 // Qt includes
 #include <QtCore/QSet>
@@ -58,43 +55,52 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for aggregated 'base classes'
+class QDeployedArtifact;
+class QPackageableElement;
+class QDeploymentTarget;
+
+// Forward decls for function parameters
 class QClassifier;
 class QSlot;
 class QValueSpecification;
 
-class Q_UML_EXPORT QInstanceSpecification : public QObject, public QDeployedArtifact, public QPackageableElement, public QDeploymentTarget
+class QInstanceSpecificationPrivate;
+
+class Q_UML_EXPORT QInstanceSpecification : public QObject
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From QParameterableElement
-    Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
-    Q_PROPERTY(QTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
-
-    // From QPackageableElement
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-
-    // From QDeploymentTarget
-    Q_PROPERTY(const QSet<QPackageableElement *> * deployedElements READ deployedElements)
-    Q_PROPERTY(const QSet<QDeployment *> * deployments READ deployments)
 
     // From QInstanceSpecification
     Q_PROPERTY(const QSet<QClassifier *> * classifiers READ classifiers)
     Q_PROPERTY(QValueSpecification * specification READ specification WRITE setSpecification)
     Q_PROPERTY(const QSet<QSlot *> * slots_ READ slots_)
 
+    // From aggregated QElement
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+
+    // From aggregated QNamedElement
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+
+    // From aggregated QParameterableElement
+    Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
+    Q_PROPERTY(QTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
+
+    // From aggregated QPackageableElement
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+
+    // From aggregated QDeploymentTarget
+    Q_PROPERTY(const QSet<QPackageableElement *> * deployedElements READ deployedElements)
+    Q_PROPERTY(const QSet<QDeployment *> * deployments READ deployments)
+
     Q_DISABLE_COPY(QInstanceSpecification)
+    Q_DECLARE_PRIVATE(QInstanceSpecification)
 
 public:
     explicit QInstanceSpecification(QObject *parent = 0);
@@ -111,12 +117,18 @@ public:
     void removeSlot_(QSlot *slot_);
 
 protected:
-    explicit QInstanceSpecification(bool createPimpl, QObject *parent = 0);
+    explicit QInstanceSpecification(QInstanceSpecificationPrivate &dd, QObject *parent = 0);
+
+private:
+    QDeployedArtifact *_wrappedDeployedArtifact;
+    QPackageableElement *_wrappedPackageableElement;
+    QDeploymentTarget *_wrappedDeploymentTarget;
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QInstanceSpecification) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QInstanceSpecification) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QInstanceSpecification) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QInstanceSpecification) *> *)
 
 QT_END_HEADER

@@ -52,23 +52,25 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QDevicePrivate;
+
 class Q_UML_EXPORT QDevice : public QNode
 {
-    Q_OBJECT
-
     Q_DISABLE_COPY(QDevice)
+    Q_DECLARE_PRIVATE(QDevice)
 
 public:
     explicit QDevice(QObject *parent = 0);
     virtual ~QDevice();
 
 protected:
-    explicit QDevice(bool createPimpl, QObject *parent = 0);
+    explicit QDevice(QDevicePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QDevice) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QDevice) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QDevice) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QDevice) *> *)
 
 QT_END_HEADER

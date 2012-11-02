@@ -44,8 +44,11 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qexpression_p.h"
-#include "qtemplateableelement_p.h"
+#include "private/qobject_p.h"
+
+#include "private/qexpression_p.h"
+#include "private/qtemplateableelement_p.h"
+#include "qstringexpression.h"
 
 // Qt includes
 #include <QtCore/QString>
@@ -57,16 +60,23 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QStringExpression;
 
-class QStringExpressionPrivate : public QExpressionPrivate, public QTemplateableElementPrivate
+class Q_UML_EXPORT QStringExpressionPrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QStringExpression)
+
 public:
-    explicit QStringExpressionPrivate(QStringExpression *q_umlptr = 0);
+    explicit QStringExpressionPrivate();
     virtual ~QStringExpressionPrivate();
 
     QStringExpression *owningExpression;
     QSet<QStringExpression *> *subExpressions;
+
+private:
+    QExpressionPrivate *_wrappedExpressionPrivate;
+    QTemplateableElementPrivate *_wrappedTemplateableElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

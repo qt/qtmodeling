@@ -43,12 +43,16 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+#include "private/qobject_p.h"
+
+#include "private/qnamespace_p.h"
+#include "private/qfeature_p.h"
+#include "qbehavioralfeature.h"
+
+
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
-
-// Base class includes
-#include "qnamespace_p.h"
-#include "qfeature_p.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -60,15 +64,19 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QType;
 class QNamedElement;
 class QParameterSet;
 class QBehavior;
 class QParameter;
 
-class QBehavioralFeaturePrivate : public QNamespacePrivate, public QFeaturePrivate
+class Q_UML_EXPORT QBehavioralFeaturePrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QBehavioralFeature)
+
 public:
+    explicit QBehavioralFeaturePrivate();
     virtual ~QBehavioralFeaturePrivate();
 
     QtUml::CallConcurrencyKind concurrency;
@@ -78,8 +86,9 @@ public:
     QSet<QParameterSet *> *ownedParameterSets;
     QSet<QBehavior *> *methods;
 
-protected:
-    explicit QBehavioralFeaturePrivate();
+private:
+    QNamespacePrivate *_wrappedNamespacePrivate;
+    QFeaturePrivate *_wrappedFeaturePrivate;
 };
 
 QT_END_NAMESPACE_QTUML

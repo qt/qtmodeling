@@ -67,10 +67,10 @@ void QNamedElementPrivate::setNamespace_(QNamespace *namespace_)
     // This is a read-only derived-union association end
 
     if (this->namespace_ != namespace_) {
-        QTUML_Q(QNamedElement)
+        Q_Q(QNamedElement)
         // Adjust opposite property
         if (this->namespace_)
-            (dynamic_cast<QNamespacePrivate *>(this->namespace_->d_umlptr))->removeOwnedMember(q);
+            (dynamic_cast<QNamespacePrivate *>(this->namespace_->d_ptr))->removeOwnedMember(q);
 
         this->namespace_ = namespace_;
 
@@ -79,7 +79,7 @@ void QNamedElementPrivate::setNamespace_(QNamespace *namespace_)
 
         // Adjust opposite property
         if (namespace_)
-            (dynamic_cast<QNamespacePrivate *>(namespace_->d_umlptr))->addOwnedMember(q);
+            (dynamic_cast<QNamespacePrivate *>(namespace_->d_ptr))->addOwnedMember(q);
     }
 }
 
@@ -91,7 +91,13 @@ void QNamedElementPrivate::setNamespace_(QNamespace *namespace_)
     \brief A named element supports using a string expression to specify its name. This allows names of model elements to involve template parameters. The actual name is evaluated from the string expression only when it is sensible to do so (e.g., when a template is bound).A named element is an element in a model that may have a name.
  */
 
-QNamedElement::QNamedElement()
+QNamedElement::QNamedElement(QObject *parent) :
+    QElement(*new QNamedElementPrivate, parent)
+{
+}
+
+QNamedElement::QNamedElement(QNamedElementPrivate &dd, QObject *parent) :
+    QElement(dd, parent)
 {
 }
 
@@ -106,7 +112,7 @@ QString QNamedElement::name() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QNamedElement);
+    Q_D(const QNamedElement);
     return d->name;
 }
 
@@ -114,7 +120,7 @@ void QNamedElement::setName(QString name)
 {
     // This is a read-write attribute
 
-    QTUML_D(QNamedElement);
+    Q_D(QNamedElement);
     if (d->name != name) {
         d->name = name;
     }
@@ -127,7 +133,7 @@ QtUml::VisibilityKind QNamedElement::visibility() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QNamedElement);
+    Q_D(const QNamedElement);
     return d->visibility;
 }
 
@@ -135,7 +141,7 @@ void QNamedElement::setVisibility(QtUml::VisibilityKind visibility)
 {
     // This is a read-write attribute
 
-    QTUML_D(QNamedElement);
+    Q_D(QNamedElement);
     if (d->visibility != visibility) {
         d->visibility = visibility;
     }
@@ -148,17 +154,10 @@ QString QNamedElement::qualifiedName() const
 {
     // This is a read-only derived attribute
 
-    QTUML_D(const QNamedElement);
-    if (d->name.isEmpty()) return QString();
-    QString qualifiedName_(d->name);
-    QScopedPointer< const QList<QNamespace *> > allNamespaces_(allNamespaces());
-    QString separator_ = separator();
-    foreach (QNamespace *namespace_, *allNamespaces_) {
-        if (namespace_->name().isEmpty())
-            return QString();
-        qualifiedName_.prepend(separator_).prepend(namespace_->name());
-    }
-    return qualifiedName_;
+    qWarning("QNamedElement::qualifiedName: to be implemented (this is a derived attribute)");
+
+    //Q_D(const QNamedElement);
+    //return <derived-return>;
 }
 
 /*!
@@ -168,7 +167,7 @@ QStringExpression *QNamedElement::nameExpression() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QNamedElement);
+    Q_D(const QNamedElement);
     return d->nameExpression;
 }
 
@@ -176,7 +175,7 @@ void QNamedElement::setNameExpression(QStringExpression *nameExpression)
 {
     // This is a read-write association end
 
-    QTUML_D(QNamedElement);
+    Q_D(QNamedElement);
     if (d->nameExpression != nameExpression) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->nameExpression));
@@ -197,7 +196,7 @@ QNamespace *QNamedElement::namespace_() const
 {
     // This is a read-only derived-union association end
 
-    QTUML_D(const QNamedElement);
+    Q_D(const QNamedElement);
     return d->namespace_;
 }
 
@@ -208,7 +207,7 @@ const QSet<QDependency *> *QNamedElement::clientDependencies() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QNamedElement);
+    Q_D(const QNamedElement);
     return d->clientDependencies;
 }
 
@@ -216,7 +215,7 @@ void QNamedElement::addClientDependency(QDependency *clientDependency)
 {
     // This is a read-write association end
 
-    QTUML_D(QNamedElement);
+    Q_D(QNamedElement);
     if (!d->clientDependencies->contains(clientDependency)) {
         d->clientDependencies->insert(clientDependency);
 
@@ -229,7 +228,7 @@ void QNamedElement::removeClientDependency(QDependency *clientDependency)
 {
     // This is a read-write association end
 
-    QTUML_D(QNamedElement);
+    Q_D(QNamedElement);
     if (d->clientDependencies->contains(clientDependency)) {
         d->clientDependencies->remove(clientDependency);
 
@@ -241,23 +240,10 @@ void QNamedElement::removeClientDependency(QDependency *clientDependency)
 
 /*!
     The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
-    It is the caller's responsibility to delete the returned list.
  */
 const QList<QNamespace *> *QNamedElement::allNamespaces() const
 {
-    QTUML_D(const QNamedElement);
-    if (!d->namespace_) {
-        return new QList<QNamespace *>;
-    }
-    else {
-        QList<QNamespace *> *allNamespaces_ = new QList<QNamespace *>;
-        QNamespace *namespace_ = this->namespace_();
-        while (namespace_) {
-            allNamespaces_->append(namespace_);
-            namespace_ = namespace_->namespace_();
-        }
-        return allNamespaces_;
-    }
+    qWarning("QNamedElement::allNamespaces: operation to be implemented");
 }
 
 /*!
@@ -281,7 +267,7 @@ bool QNamedElement::isDistinguishableFrom(const QNamedElement *n, const QNamespa
  */
 QString QNamedElement::separator() const
 {
-    return "::";
+    qWarning("QNamedElement::separator: operation to be implemented");
 }
 
 QT_END_NAMESPACE_QTUML

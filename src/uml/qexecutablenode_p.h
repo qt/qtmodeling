@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qactivitynode_p.h"
+#include "private/qactivitynode_p.h"
+#include "qexecutablenode.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,17 +56,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QExceptionHandler;
 
-class QExecutableNodePrivate : public QActivityNodePrivate
+class Q_UML_EXPORT QExecutableNodePrivate : public QActivityNodePrivate
 {
+    Q_DECLARE_PUBLIC(QExecutableNode)
+
 public:
+    explicit QExecutableNodePrivate();
     virtual ~QExecutableNodePrivate();
 
     QSet<QExceptionHandler *> *handlers;
-
-protected:
-    explicit QExecutableNodePrivate();
 };
 
 QT_END_NAMESPACE_QTUML

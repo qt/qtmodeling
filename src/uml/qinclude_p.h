@@ -44,8 +44,12 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qdirectedrelationship_p.h"
-#include "qnamedelement_p.h"
+#include "private/qobject_p.h"
+
+#include "private/qdirectedrelationship_p.h"
+#include "private/qnamedelement_p.h"
+#include "qinclude.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,17 +57,24 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QUseCase;
 class QInclude;
 
-class QIncludePrivate : public QDirectedRelationshipPrivate, public QNamedElementPrivate
+class Q_UML_EXPORT QIncludePrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QInclude)
+
 public:
-    explicit QIncludePrivate(QInclude *q_umlptr = 0);
+    explicit QIncludePrivate();
     virtual ~QIncludePrivate();
 
     QUseCase *includingCase;
     QUseCase *addition;
+
+private:
+    QDirectedRelationshipPrivate *_wrappedDirectedRelationshipPrivate;
+    QNamedElementPrivate *_wrappedNamedElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

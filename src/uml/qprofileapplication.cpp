@@ -47,12 +47,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QProfileApplicationPrivate::QProfileApplicationPrivate(QProfileApplication *q_umlptr) :
+QProfileApplicationPrivate::QProfileApplicationPrivate() :
     isStrict(false),
     applyingPackage(0),
     appliedProfile(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QProfileApplicationPrivate::~QProfileApplicationPrivate()
@@ -67,17 +66,14 @@ QProfileApplicationPrivate::~QProfileApplicationPrivate()
     \brief A profile application is used to show which profiles have been applied to a package.
  */
 
-QProfileApplication::QProfileApplication(QObject *parent)
-    : QObject(parent)
+QProfileApplication::QProfileApplication(QObject *parent) :
+    QDirectedRelationship(*new QProfileApplicationPrivate, parent)
 {
-    d_umlptr = new QProfileApplicationPrivate(this);
 }
 
-QProfileApplication::QProfileApplication(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QProfileApplication::QProfileApplication(QProfileApplicationPrivate &dd, QObject *parent) :
+    QDirectedRelationship(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QProfileApplicationPrivate;
 }
 
 QProfileApplication::~QProfileApplication()
@@ -91,7 +87,7 @@ bool QProfileApplication::isStrict() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QProfileApplication);
+    Q_D(const QProfileApplication);
     return d->isStrict;
 }
 
@@ -99,7 +95,7 @@ void QProfileApplication::setStrict(bool isStrict)
 {
     // This is a read-write attribute
 
-    QTUML_D(QProfileApplication);
+    Q_D(QProfileApplication);
     if (d->isStrict != isStrict) {
         d->isStrict = isStrict;
     }
@@ -112,7 +108,7 @@ QPackage *QProfileApplication::applyingPackage() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QProfileApplication);
+    Q_D(const QProfileApplication);
     return d->applyingPackage;
 }
 
@@ -120,7 +116,7 @@ void QProfileApplication::setApplyingPackage(QPackage *applyingPackage)
 {
     // This is a read-write association end
 
-    QTUML_D(QProfileApplication);
+    Q_D(QProfileApplication);
     if (d->applyingPackage != applyingPackage) {
         // Adjust opposite property
         if (d->applyingPackage)
@@ -150,7 +146,7 @@ QProfile *QProfileApplication::appliedProfile() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QProfileApplication);
+    Q_D(const QProfileApplication);
     return d->appliedProfile;
 }
 
@@ -158,7 +154,7 @@ void QProfileApplication::setAppliedProfile(QProfile *appliedProfile)
 {
     // This is a read-write association end
 
-    QTUML_D(QProfileApplication);
+    Q_D(QProfileApplication);
     if (d->appliedProfile != appliedProfile) {
         // Adjust subsetted property(ies)
         d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(d->appliedProfile));

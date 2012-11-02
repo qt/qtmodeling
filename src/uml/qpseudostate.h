@@ -43,12 +43,11 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+#include <QtUml/QVertex>
+
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
-
-// Base class includes
-#include <QtCore/QObject>
-#include <QtUml/QVertex>
 
 QT_BEGIN_HEADER
 
@@ -56,30 +55,15 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QState;
 class QStateMachine;
 
-class Q_UML_EXPORT QPseudostate : public QObject, public QVertex
+class QPseudostatePrivate;
+
+class Q_UML_EXPORT QPseudostate : public QVertex
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From QVertex
-    Q_PROPERTY(const QSet<QTransition *> * incomings READ incomings)
-    Q_PROPERTY(QRegion * container READ container WRITE setContainer)
-    Q_PROPERTY(const QSet<QTransition *> * outgoings READ outgoings)
 
     // From QPseudostate
     Q_PROPERTY(QtUml::PseudostateKind kind READ kind WRITE setKind)
@@ -87,6 +71,7 @@ class Q_UML_EXPORT QPseudostate : public QObject, public QVertex
     Q_PROPERTY(QStateMachine * stateMachine READ stateMachine WRITE setStateMachine)
 
     Q_DISABLE_COPY(QPseudostate)
+    Q_DECLARE_PRIVATE(QPseudostate)
 
 public:
     explicit QPseudostate(QObject *parent = 0);
@@ -103,12 +88,13 @@ public:
     void setStateMachine(QStateMachine *stateMachine);
 
 protected:
-    explicit QPseudostate(bool createPimpl, QObject *parent = 0);
+    explicit QPseudostate(QPseudostatePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *> *)
 
 QT_END_HEADER

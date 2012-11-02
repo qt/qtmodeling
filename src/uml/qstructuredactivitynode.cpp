@@ -51,7 +51,7 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QStructuredActivityNodePrivate::QStructuredActivityNodePrivate(QStructuredActivityNode *q_umlptr) :
+QStructuredActivityNodePrivate::QStructuredActivityNodePrivate() :
     mustIsolate(false),
     structuredNodeInputs(new QSet<QInputPin *>),
     nodes(new QSet<QActivityNode *>),
@@ -60,7 +60,6 @@ QStructuredActivityNodePrivate::QStructuredActivityNodePrivate(QStructuredActivi
     variables(new QSet<QVariable *>),
     activity(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QStructuredActivityNodePrivate::~QStructuredActivityNodePrivate()
@@ -80,17 +79,20 @@ QStructuredActivityNodePrivate::~QStructuredActivityNodePrivate()
     \brief A structured activity node is an executable activity node that may have an expansion into subordinate nodes as an activity group. The subordinate nodes must belong to only one structured activity node, although they may be nested.Because of the concurrent nature of the execution of actions within and across activities, it can be difficult to guarantee the consistent access and modification of object memory. In order to avoid race conditions or other concurrency-related problems, it is sometimes necessary to isolate the effects of a group of actions from the effects of actions outside the group. This may be indicated by setting the mustIsolate attribute to true on a structured activity node. If a structured activity node is "isolated," then any object used by an action within the node cannot be accessed by any action outside the node until the structured activity node as a whole completes. Any concurrent actions that would result in accessing such objects are required to have their execution deferred until the completion of the node.
  */
 
-QStructuredActivityNode::QStructuredActivityNode(QObject *parent)
-    : QObject(parent)
+QStructuredActivityNode::QStructuredActivityNode(QObject *parent) :
+    QObject(*new QStructuredActivityNodePrivate, parent),
+    _wrappedAction(new QAction(this)),
+    _wrappedNamespace(new QNamespace(this)),
+    _wrappedActivityGroup(new QActivityGroup(this))
 {
-    d_umlptr = new QStructuredActivityNodePrivate(this);
 }
 
-QStructuredActivityNode::QStructuredActivityNode(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QStructuredActivityNode::QStructuredActivityNode(QStructuredActivityNodePrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedAction(new QAction(this)),
+    _wrappedNamespace(new QNamespace(this)),
+    _wrappedActivityGroup(new QActivityGroup(this))
 {
-    if (createPimpl)
-        d_umlptr = new QStructuredActivityNodePrivate;
 }
 
 QStructuredActivityNode::~QStructuredActivityNode()
@@ -104,7 +106,7 @@ bool QStructuredActivityNode::mustIsolate() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QStructuredActivityNode);
+    Q_D(const QStructuredActivityNode);
     return d->mustIsolate;
 }
 
@@ -112,7 +114,7 @@ void QStructuredActivityNode::setMustIsolate(bool mustIsolate)
 {
     // This is a read-write attribute
 
-    QTUML_D(QStructuredActivityNode);
+    Q_D(QStructuredActivityNode);
     if (d->mustIsolate != mustIsolate) {
         d->mustIsolate = mustIsolate;
     }
@@ -122,7 +124,7 @@ const QSet<QInputPin *> *QStructuredActivityNode::structuredNodeInputs() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QStructuredActivityNode);
+    Q_D(const QStructuredActivityNode);
     return d->structuredNodeInputs;
 }
 
@@ -130,7 +132,7 @@ void QStructuredActivityNode::addStructuredNodeInput(QInputPin *structuredNodeIn
 {
     // This is a read-write association end
 
-    QTUML_D(QStructuredActivityNode);
+    Q_D(QStructuredActivityNode);
     if (!d->structuredNodeInputs->contains(structuredNodeInput)) {
         d->structuredNodeInputs->insert(structuredNodeInput);
 
@@ -143,7 +145,7 @@ void QStructuredActivityNode::removeStructuredNodeInput(QInputPin *structuredNod
 {
     // This is a read-write association end
 
-    QTUML_D(QStructuredActivityNode);
+    Q_D(QStructuredActivityNode);
     if (d->structuredNodeInputs->contains(structuredNodeInput)) {
         d->structuredNodeInputs->remove(structuredNodeInput);
 
@@ -159,7 +161,7 @@ const QSet<QActivityNode *> *QStructuredActivityNode::nodes() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QStructuredActivityNode);
+    Q_D(const QStructuredActivityNode);
     return d->nodes;
 }
 
@@ -167,7 +169,7 @@ void QStructuredActivityNode::addNode(QActivityNode *node)
 {
     // This is a read-write association end
 
-    QTUML_D(QStructuredActivityNode);
+    Q_D(QStructuredActivityNode);
     if (!d->nodes->contains(node)) {
         d->nodes->insert(node);
 
@@ -184,7 +186,7 @@ void QStructuredActivityNode::removeNode(QActivityNode *node)
 {
     // This is a read-write association end
 
-    QTUML_D(QStructuredActivityNode);
+    Q_D(QStructuredActivityNode);
     if (d->nodes->contains(node)) {
         d->nodes->remove(node);
 
@@ -201,7 +203,7 @@ const QSet<QOutputPin *> *QStructuredActivityNode::structuredNodeOutputs() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QStructuredActivityNode);
+    Q_D(const QStructuredActivityNode);
     return d->structuredNodeOutputs;
 }
 
@@ -209,7 +211,7 @@ void QStructuredActivityNode::addStructuredNodeOutput(QOutputPin *structuredNode
 {
     // This is a read-write association end
 
-    QTUML_D(QStructuredActivityNode);
+    Q_D(QStructuredActivityNode);
     if (!d->structuredNodeOutputs->contains(structuredNodeOutput)) {
         d->structuredNodeOutputs->insert(structuredNodeOutput);
 
@@ -222,7 +224,7 @@ void QStructuredActivityNode::removeStructuredNodeOutput(QOutputPin *structuredN
 {
     // This is a read-write association end
 
-    QTUML_D(QStructuredActivityNode);
+    Q_D(QStructuredActivityNode);
     if (d->structuredNodeOutputs->contains(structuredNodeOutput)) {
         d->structuredNodeOutputs->remove(structuredNodeOutput);
 
@@ -238,7 +240,7 @@ const QSet<QActivityEdge *> *QStructuredActivityNode::edges() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QStructuredActivityNode);
+    Q_D(const QStructuredActivityNode);
     return d->edges;
 }
 
@@ -246,7 +248,7 @@ void QStructuredActivityNode::addEdge(QActivityEdge *edge)
 {
     // This is a read-write association end
 
-    QTUML_D(QStructuredActivityNode);
+    Q_D(QStructuredActivityNode);
     if (!d->edges->contains(edge)) {
         d->edges->insert(edge);
 
@@ -263,7 +265,7 @@ void QStructuredActivityNode::removeEdge(QActivityEdge *edge)
 {
     // This is a read-write association end
 
-    QTUML_D(QStructuredActivityNode);
+    Q_D(QStructuredActivityNode);
     if (d->edges->contains(edge)) {
         d->edges->remove(edge);
 
@@ -283,7 +285,7 @@ const QSet<QVariable *> *QStructuredActivityNode::variables() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QStructuredActivityNode);
+    Q_D(const QStructuredActivityNode);
     return d->variables;
 }
 
@@ -291,7 +293,7 @@ void QStructuredActivityNode::addVariable(QVariable *variable)
 {
     // This is a read-write association end
 
-    QTUML_D(QStructuredActivityNode);
+    Q_D(QStructuredActivityNode);
     if (!d->variables->contains(variable)) {
         d->variables->insert(variable);
 
@@ -307,7 +309,7 @@ void QStructuredActivityNode::removeVariable(QVariable *variable)
 {
     // This is a read-write association end
 
-    QTUML_D(QStructuredActivityNode);
+    Q_D(QStructuredActivityNode);
     if (d->variables->contains(variable)) {
         d->variables->remove(variable);
 
@@ -326,7 +328,7 @@ QActivity *QStructuredActivityNode::activity() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QStructuredActivityNode);
+    Q_D(const QStructuredActivityNode);
     return d->activity;
 }
 
@@ -334,7 +336,7 @@ void QStructuredActivityNode::setActivity(QActivity *activity)
 {
     // This is a read-write association end
 
-    QTUML_D(QStructuredActivityNode);
+    Q_D(QStructuredActivityNode);
     if (d->activity != activity) {
         // Adjust opposite property
         if (d->activity)

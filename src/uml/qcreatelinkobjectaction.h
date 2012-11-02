@@ -52,7 +52,10 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QOutputPin;
+
+class QCreateLinkObjectActionPrivate;
 
 class Q_UML_EXPORT QCreateLinkObjectAction : public QCreateLinkAction
 {
@@ -62,6 +65,7 @@ class Q_UML_EXPORT QCreateLinkObjectAction : public QCreateLinkAction
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
     Q_DISABLE_COPY(QCreateLinkObjectAction)
+    Q_DECLARE_PRIVATE(QCreateLinkObjectAction)
 
 public:
     explicit QCreateLinkObjectAction(QObject *parent = 0);
@@ -72,12 +76,13 @@ public:
     void setResult(QOutputPin *result);
 
 protected:
-    explicit QCreateLinkObjectAction(bool createPimpl, QObject *parent = 0);
+    explicit QCreateLinkObjectAction(QCreateLinkObjectActionPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QCreateLinkObjectAction) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QCreateLinkObjectAction) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QCreateLinkObjectAction) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QCreateLinkObjectAction) *> *)
 
 QT_END_HEADER

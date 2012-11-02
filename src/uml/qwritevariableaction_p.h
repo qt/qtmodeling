@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qvariableaction_p.h"
+#include "private/qvariableaction_p.h"
+#include "qwritevariableaction.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,17 +54,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInputPin;
 
-class QWriteVariableActionPrivate : public QVariableActionPrivate
+class Q_UML_EXPORT QWriteVariableActionPrivate : public QVariableActionPrivate
 {
+    Q_DECLARE_PUBLIC(QWriteVariableAction)
+
 public:
+    explicit QWriteVariableActionPrivate();
     virtual ~QWriteVariableActionPrivate();
 
     QInputPin *value;
-
-protected:
-    explicit QWriteVariableActionPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

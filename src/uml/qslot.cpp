@@ -48,12 +48,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QSlotPrivate::QSlotPrivate(QSlot *q_umlptr) :
+QSlotPrivate::QSlotPrivate() :
     values(new QList<QValueSpecification *>),
     definingFeature(0),
     owningInstance(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QSlotPrivate::~QSlotPrivate()
@@ -69,17 +68,14 @@ QSlotPrivate::~QSlotPrivate()
     \brief A slot specifies that an entity modeled by an instance specification has a value or values for a specific structural feature.
  */
 
-QSlot::QSlot(QObject *parent)
-    : QObject(parent)
+QSlot::QSlot(QObject *parent) :
+    QElement(*new QSlotPrivate, parent)
 {
-    d_umlptr = new QSlotPrivate(this);
 }
 
-QSlot::QSlot(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QSlot::QSlot(QSlotPrivate &dd, QObject *parent) :
+    QElement(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QSlotPrivate;
 }
 
 QSlot::~QSlot()
@@ -93,7 +89,7 @@ const QList<QValueSpecification *> *QSlot::values() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QSlot);
+    Q_D(const QSlot);
     return d->values;
 }
 
@@ -101,7 +97,7 @@ void QSlot::addValue(QValueSpecification *value)
 {
     // This is a read-write association end
 
-    QTUML_D(QSlot);
+    Q_D(QSlot);
     if (!d->values->contains(value)) {
         d->values->append(value);
 
@@ -114,7 +110,7 @@ void QSlot::removeValue(QValueSpecification *value)
 {
     // This is a read-write association end
 
-    QTUML_D(QSlot);
+    Q_D(QSlot);
     if (d->values->contains(value)) {
         d->values->removeAll(value);
 
@@ -130,7 +126,7 @@ QStructuralFeature *QSlot::definingFeature() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QSlot);
+    Q_D(const QSlot);
     return d->definingFeature;
 }
 
@@ -138,7 +134,7 @@ void QSlot::setDefiningFeature(QStructuralFeature *definingFeature)
 {
     // This is a read-write association end
 
-    QTUML_D(QSlot);
+    Q_D(QSlot);
     if (d->definingFeature != definingFeature) {
         d->definingFeature = definingFeature;
     }
@@ -151,7 +147,7 @@ QInstanceSpecification *QSlot::owningInstance() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QSlot);
+    Q_D(const QSlot);
     return d->owningInstance;
 }
 
@@ -159,7 +155,7 @@ void QSlot::setOwningInstance(QInstanceSpecification *owningInstance)
 {
     // This is a read-write association end
 
-    QTUML_D(QSlot);
+    Q_D(QSlot);
     if (d->owningInstance != owningInstance) {
         // Adjust opposite property
         if (d->owningInstance)

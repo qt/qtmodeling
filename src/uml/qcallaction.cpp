@@ -65,7 +65,13 @@ QCallActionPrivate::~QCallActionPrivate()
     \brief CallAction is an abstract class for actions that invoke behavior and receive return values.
  */
 
-QCallAction::QCallAction()
+QCallAction::QCallAction(QObject *parent) :
+    QInvocationAction(*new QCallActionPrivate, parent)
+{
+}
+
+QCallAction::QCallAction(QCallActionPrivate &dd, QObject *parent) :
+    QInvocationAction(dd, parent)
 {
 }
 
@@ -80,7 +86,7 @@ bool QCallAction::isSynchronous() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QCallAction);
+    Q_D(const QCallAction);
     return d->isSynchronous;
 }
 
@@ -88,7 +94,7 @@ void QCallAction::setSynchronous(bool isSynchronous)
 {
     // This is a read-write attribute
 
-    QTUML_D(QCallAction);
+    Q_D(QCallAction);
     if (d->isSynchronous != isSynchronous) {
         d->isSynchronous = isSynchronous;
     }
@@ -101,7 +107,7 @@ const QList<QOutputPin *> *QCallAction::results() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QCallAction);
+    Q_D(const QCallAction);
     return d->results;
 }
 
@@ -109,7 +115,7 @@ void QCallAction::addResult(QOutputPin *result)
 {
     // This is a read-write association end
 
-    QTUML_D(QCallAction);
+    Q_D(QCallAction);
     if (!d->results->contains(result)) {
         d->results->append(result);
 
@@ -122,7 +128,7 @@ void QCallAction::removeResult(QOutputPin *result)
 {
     // This is a read-write association end
 
-    QTUML_D(QCallAction);
+    Q_D(QCallAction);
     if (d->results->contains(result)) {
         d->results->removeAll(result);
 

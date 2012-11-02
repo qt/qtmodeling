@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QElement>
 
 // Qt includes
@@ -57,20 +56,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QComment : public QObject, public QElement
+class QCommentPrivate;
+
+class Q_UML_EXPORT QComment : public QElement
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QComment
     Q_PROPERTY(QString body READ body WRITE setBody)
     Q_PROPERTY(const QSet<QElement *> * annotatedElements READ annotatedElements)
 
     Q_DISABLE_COPY(QComment)
+    Q_DECLARE_PRIVATE(QComment)
 
 public:
     explicit QComment(QObject *parent = 0);
@@ -86,12 +83,13 @@ public:
     void removeAnnotatedElement(QElement *annotatedElement);
 
 protected:
-    explicit QComment(bool createPimpl, QObject *parent = 0);
+    explicit QComment(QCommentPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QComment) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QComment) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QComment) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QComment) *> *)
 
 QT_END_HEADER

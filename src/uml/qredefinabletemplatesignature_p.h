@@ -44,8 +44,11 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qtemplatesignature_p.h"
-#include "qredefinableelement_p.h"
+#include "private/qobject_p.h"
+
+#include "private/qtemplatesignature_p.h"
+#include "private/qredefinableelement_p.h"
+#include "qredefinabletemplatesignature.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -56,18 +59,25 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QClassifier;
 class QRedefinableTemplateSignature;
 class QTemplateParameter;
 
-class QRedefinableTemplateSignaturePrivate : public QTemplateSignaturePrivate, public QRedefinableElementPrivate
+class Q_UML_EXPORT QRedefinableTemplateSignaturePrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QRedefinableTemplateSignature)
+
 public:
-    explicit QRedefinableTemplateSignaturePrivate(QRedefinableTemplateSignature *q_umlptr = 0);
+    explicit QRedefinableTemplateSignaturePrivate();
     virtual ~QRedefinableTemplateSignaturePrivate();
 
     QClassifier *classifier;
     QSet<QRedefinableTemplateSignature *> *extendedSignatures;
+
+private:
+    QTemplateSignaturePrivate *_wrappedTemplateSignaturePrivate;
+    QRedefinableElementPrivate *_wrappedRedefinableElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

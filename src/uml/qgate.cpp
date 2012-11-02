@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QGatePrivate::QGatePrivate(QGate *q_umlptr)
+QGatePrivate::QGatePrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QGatePrivate::~QGatePrivate()
@@ -62,17 +61,14 @@ QGatePrivate::~QGatePrivate()
     \brief A gate is a connection point for relating a message outside an interaction fragment with a message inside the interaction fragment.
  */
 
-QGate::QGate(QObject *parent)
-    : QObject(parent)
+QGate::QGate(QObject *parent) :
+    QMessageEnd(*new QGatePrivate, parent)
 {
-    d_umlptr = new QGatePrivate(this);
 }
 
-QGate::QGate(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QGate::QGate(QGatePrivate &dd, QObject *parent) :
+    QMessageEnd(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QGatePrivate;
 }
 
 QGate::~QGate()

@@ -55,13 +55,24 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QClassifier;
+
+class QFeaturePrivate;
 
 class Q_UML_EXPORT QFeature : public QRedefinableElement
 {
+    Q_OBJECT
+
+    // From QFeature
+    Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic)
+    Q_PROPERTY(const QSet<QClassifier *> * featuringClassifiers READ featuringClassifiers)
+
     Q_DISABLE_COPY(QFeature)
+    Q_DECLARE_PRIVATE(QFeature)
 
 public:
+    explicit QFeature(QObject *parent = 0);
     virtual ~QFeature();
 
     // Attributes
@@ -72,10 +83,14 @@ public:
     const QSet<QClassifier *> *featuringClassifiers() const;
 
 protected:
-    explicit QFeature();
+    explicit QFeature(QFeaturePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QFeature) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QFeature) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QFeature) *> *)
 
 QT_END_HEADER
 

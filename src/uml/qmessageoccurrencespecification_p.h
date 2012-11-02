@@ -44,8 +44,12 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qoccurrencespecification_p.h"
-#include "qmessageend_p.h"
+#include "private/qobject_p.h"
+
+#include "private/qoccurrencespecification_p.h"
+#include "private/qmessageend_p.h"
+#include "qmessageoccurrencespecification.h"
+
 
 QT_BEGIN_HEADER
 
@@ -54,12 +58,18 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QMessageOccurrenceSpecification;
 
-class QMessageOccurrenceSpecificationPrivate : public QOccurrenceSpecificationPrivate, public QMessageEndPrivate
+class Q_UML_EXPORT QMessageOccurrenceSpecificationPrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QMessageOccurrenceSpecification)
+
 public:
-    explicit QMessageOccurrenceSpecificationPrivate(QMessageOccurrenceSpecification *q_umlptr = 0);
+    explicit QMessageOccurrenceSpecificationPrivate();
     virtual ~QMessageOccurrenceSpecificationPrivate();
 
+
+private:
+    QOccurrenceSpecificationPrivate *_wrappedOccurrenceSpecificationPrivate;
+    QMessageEndPrivate *_wrappedMessageEndPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

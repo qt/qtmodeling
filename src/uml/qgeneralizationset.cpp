@@ -47,13 +47,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QGeneralizationSetPrivate::QGeneralizationSetPrivate(QGeneralizationSet *q_umlptr) :
+QGeneralizationSetPrivate::QGeneralizationSetPrivate() :
     isCovering(false),
     isDisjoint(false),
     powertype(0),
     generalizations(new QSet<QGeneralization *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QGeneralizationSetPrivate::~QGeneralizationSetPrivate()
@@ -69,17 +68,14 @@ QGeneralizationSetPrivate::~QGeneralizationSetPrivate()
     \brief A generalization set is a packageable element whose instances define collections of subsets of generalization relationships.
  */
 
-QGeneralizationSet::QGeneralizationSet(QObject *parent)
-    : QObject(parent)
+QGeneralizationSet::QGeneralizationSet(QObject *parent) :
+    QPackageableElement(*new QGeneralizationSetPrivate, parent)
 {
-    d_umlptr = new QGeneralizationSetPrivate(this);
 }
 
-QGeneralizationSet::QGeneralizationSet(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QGeneralizationSet::QGeneralizationSet(QGeneralizationSetPrivate &dd, QObject *parent) :
+    QPackageableElement(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QGeneralizationSetPrivate;
 }
 
 QGeneralizationSet::~QGeneralizationSet()
@@ -93,7 +89,7 @@ bool QGeneralizationSet::isCovering() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QGeneralizationSet);
+    Q_D(const QGeneralizationSet);
     return d->isCovering;
 }
 
@@ -101,7 +97,7 @@ void QGeneralizationSet::setCovering(bool isCovering)
 {
     // This is a read-write attribute
 
-    QTUML_D(QGeneralizationSet);
+    Q_D(QGeneralizationSet);
     if (d->isCovering != isCovering) {
         d->isCovering = isCovering;
     }
@@ -114,7 +110,7 @@ bool QGeneralizationSet::isDisjoint() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QGeneralizationSet);
+    Q_D(const QGeneralizationSet);
     return d->isDisjoint;
 }
 
@@ -122,7 +118,7 @@ void QGeneralizationSet::setDisjoint(bool isDisjoint)
 {
     // This is a read-write attribute
 
-    QTUML_D(QGeneralizationSet);
+    Q_D(QGeneralizationSet);
     if (d->isDisjoint != isDisjoint) {
         d->isDisjoint = isDisjoint;
     }
@@ -135,7 +131,7 @@ QClassifier *QGeneralizationSet::powertype() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QGeneralizationSet);
+    Q_D(const QGeneralizationSet);
     return d->powertype;
 }
 
@@ -143,7 +139,7 @@ void QGeneralizationSet::setPowertype(QClassifier *powertype)
 {
     // This is a read-write association end
 
-    QTUML_D(QGeneralizationSet);
+    Q_D(QGeneralizationSet);
     if (d->powertype != powertype) {
         // Adjust opposite property
         if (d->powertype)
@@ -164,7 +160,7 @@ const QSet<QGeneralization *> *QGeneralizationSet::generalizations() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QGeneralizationSet);
+    Q_D(const QGeneralizationSet);
     return d->generalizations;
 }
 
@@ -172,7 +168,7 @@ void QGeneralizationSet::addGeneralization(QGeneralization *generalization)
 {
     // This is a read-write association end
 
-    QTUML_D(QGeneralizationSet);
+    Q_D(QGeneralizationSet);
     if (!d->generalizations->contains(generalization)) {
         d->generalizations->insert(generalization);
 
@@ -185,7 +181,7 @@ void QGeneralizationSet::removeGeneralization(QGeneralization *generalization)
 {
     // This is a read-write association end
 
-    QTUML_D(QGeneralizationSet);
+    Q_D(QGeneralizationSet);
     if (d->generalizations->contains(generalization)) {
         d->generalizations->remove(generalization);
 

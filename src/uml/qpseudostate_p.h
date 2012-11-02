@@ -43,11 +43,14 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+#include "private/qvertex_p.h"
+#include "qpseudostate.h"
+
+
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
 
-// Base class includes
-#include "qvertex_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,14 +58,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QState;
 class QStateMachine;
 class QPseudostate;
 
-class QPseudostatePrivate : public QVertexPrivate
+class Q_UML_EXPORT QPseudostatePrivate : public QVertexPrivate
 {
+    Q_DECLARE_PUBLIC(QPseudostate)
+
 public:
-    explicit QPseudostatePrivate(QPseudostate *q_umlptr = 0);
+    explicit QPseudostatePrivate();
     virtual ~QPseudostatePrivate();
 
     QtUml::PseudostateKind kind;

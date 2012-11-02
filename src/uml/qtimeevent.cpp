@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QTimeEventPrivate::QTimeEventPrivate(QTimeEvent *q_umlptr) :
+QTimeEventPrivate::QTimeEventPrivate() :
     isRelative(false),
     when(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QTimeEventPrivate::~QTimeEventPrivate()
@@ -65,17 +64,14 @@ QTimeEventPrivate::~QTimeEventPrivate()
     \brief A time event can be defined relative to entering the current state of the executing state machine.A time event specifies a point in time. At the specified time, the event occurs.
  */
 
-QTimeEvent::QTimeEvent(QObject *parent)
-    : QObject(parent)
+QTimeEvent::QTimeEvent(QObject *parent) :
+    QEvent(*new QTimeEventPrivate, parent)
 {
-    d_umlptr = new QTimeEventPrivate(this);
 }
 
-QTimeEvent::QTimeEvent(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QTimeEvent::QTimeEvent(QTimeEventPrivate &dd, QObject *parent) :
+    QEvent(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QTimeEventPrivate;
 }
 
 QTimeEvent::~QTimeEvent()
@@ -89,7 +85,7 @@ bool QTimeEvent::isRelative() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QTimeEvent);
+    Q_D(const QTimeEvent);
     return d->isRelative;
 }
 
@@ -97,7 +93,7 @@ void QTimeEvent::setRelative(bool isRelative)
 {
     // This is a read-write attribute
 
-    QTUML_D(QTimeEvent);
+    Q_D(QTimeEvent);
     if (d->isRelative != isRelative) {
         d->isRelative = isRelative;
     }
@@ -110,7 +106,7 @@ QTimeExpression *QTimeEvent::when() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTimeEvent);
+    Q_D(const QTimeEvent);
     return d->when;
 }
 
@@ -118,7 +114,7 @@ void QTimeEvent::setWhen(QTimeExpression *when)
 {
     // This is a read-write association end
 
-    QTUML_D(QTimeEvent);
+    Q_D(QTimeEvent);
     if (d->when != when) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->when));

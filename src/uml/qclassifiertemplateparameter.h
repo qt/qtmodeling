@@ -55,7 +55,10 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QClassifier;
+
+class QClassifierTemplateParameterPrivate;
 
 class Q_UML_EXPORT QClassifierTemplateParameter : public QTemplateParameter
 {
@@ -67,6 +70,7 @@ class Q_UML_EXPORT QClassifierTemplateParameter : public QTemplateParameter
     Q_PROPERTY(const QSet<QClassifier *> * constrainingClassifiers READ constrainingClassifiers)
 
     Q_DISABLE_COPY(QClassifierTemplateParameter)
+    Q_DECLARE_PRIVATE(QClassifierTemplateParameter)
 
 public:
     explicit QClassifierTemplateParameter(QObject *parent = 0);
@@ -84,12 +88,13 @@ public:
     void removeConstrainingClassifier(QClassifier *constrainingClassifier);
 
 protected:
-    explicit QClassifierTemplateParameter(bool createPimpl, QObject *parent = 0);
+    explicit QClassifierTemplateParameter(QClassifierTemplateParameterPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QClassifierTemplateParameter) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QClassifierTemplateParameter) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifierTemplateParameter) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QClassifierTemplateParameter) *> *)
 
 QT_END_HEADER

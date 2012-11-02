@@ -44,9 +44,12 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qaction_p.h"
-#include "qnamespace_p.h"
-#include "qactivitygroup_p.h"
+#include "private/qobject_p.h"
+
+#include "private/qaction_p.h"
+#include "private/qnamespace_p.h"
+#include "private/qactivitygroup_p.h"
+#include "qstructuredactivitynode.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -57,6 +60,7 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QOutputPin;
 class QVariable;
 class QInputPin;
@@ -65,10 +69,12 @@ class QActivity;
 class QActivityNode;
 class QStructuredActivityNode;
 
-class QStructuredActivityNodePrivate : public QActionPrivate, public QNamespacePrivate, public QActivityGroupPrivate
+class Q_UML_EXPORT QStructuredActivityNodePrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QStructuredActivityNode)
+
 public:
-    explicit QStructuredActivityNodePrivate(QStructuredActivityNode *q_umlptr = 0);
+    explicit QStructuredActivityNodePrivate();
     virtual ~QStructuredActivityNodePrivate();
 
     bool mustIsolate;
@@ -78,6 +84,11 @@ public:
     QSet<QActivityEdge *> *edges;
     QSet<QVariable *> *variables;
     QActivity *activity;
+
+private:
+    QActionPrivate *_wrappedActionPrivate;
+    QNamespacePrivate *_wrappedNamespacePrivate;
+    QActivityGroupPrivate *_wrappedActivityGroupPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QRealizationPrivate::QRealizationPrivate(QRealization *q_umlptr)
+QRealizationPrivate::QRealizationPrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QRealizationPrivate::~QRealizationPrivate()
@@ -62,17 +61,14 @@ QRealizationPrivate::~QRealizationPrivate()
     \brief Realization is a specialized abstraction relationship between two sets of model elements, one representing a specification (the supplier) and the other represents an implementation of the latter (the client). Realization can be used to model stepwise refinement, optimizations, transformations, templates, model synthesis, framework composition, etc.
  */
 
-QRealization::QRealization(QObject *parent)
-    : QAbstraction(false, parent)
+QRealization::QRealization(QObject *parent) :
+    QAbstraction(*new QRealizationPrivate, parent)
 {
-    d_umlptr = new QRealizationPrivate(this);
 }
 
-QRealization::QRealization(bool createPimpl, QObject *parent)
-    : QAbstraction(createPimpl, parent)
+QRealization::QRealization(QRealizationPrivate &dd, QObject *parent) :
+    QAbstraction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QRealizationPrivate;
 }
 
 QRealization::~QRealization()

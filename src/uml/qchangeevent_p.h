@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qevent_p.h"
+#include "private/qevent_p.h"
+#include "qchangeevent.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QValueSpecification;
 class QChangeEvent;
 
-class QChangeEventPrivate : public QEventPrivate
+class Q_UML_EXPORT QChangeEventPrivate : public QEventPrivate
 {
+    Q_DECLARE_PUBLIC(QChangeEvent)
+
 public:
-    explicit QChangeEventPrivate(QChangeEvent *q_umlptr = 0);
+    explicit QChangeEventPrivate();
     virtual ~QChangeEventPrivate();
 
     QValueSpecification *changeExpression;

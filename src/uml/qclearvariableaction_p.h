@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qvariableaction_p.h"
+#include "private/qvariableaction_p.h"
+#include "qclearvariableaction.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,10 +55,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QClearVariableAction;
 
-class QClearVariableActionPrivate : public QVariableActionPrivate
+class Q_UML_EXPORT QClearVariableActionPrivate : public QVariableActionPrivate
 {
+    Q_DECLARE_PUBLIC(QClearVariableAction)
+
 public:
-    explicit QClearVariableActionPrivate(QClearVariableAction *q_umlptr = 0);
+    explicit QClearVariableActionPrivate();
     virtual ~QClearVariableActionPrivate();
 
 };

@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qvariableaction_p.h"
+#include "private/qvariableaction_p.h"
+#include "qreadvariableaction.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QOutputPin;
 class QReadVariableAction;
 
-class QReadVariableActionPrivate : public QVariableActionPrivate
+class Q_UML_EXPORT QReadVariableActionPrivate : public QVariableActionPrivate
 {
+    Q_DECLARE_PUBLIC(QReadVariableAction)
+
 public:
-    explicit QReadVariableActionPrivate(QReadVariableAction *q_umlptr = 0);
+    explicit QReadVariableActionPrivate();
     virtual ~QReadVariableActionPrivate();
 
     QOutputPin *result;

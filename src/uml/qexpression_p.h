@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qvaluespecification_p.h"
+#include "private/qvaluespecification_p.h"
+#include "qexpression.h"
 
 // Qt includes
 #include <QtCore/QString>
@@ -57,10 +58,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QExpression;
 
-class QExpressionPrivate : public QValueSpecificationPrivate
+class Q_UML_EXPORT QExpressionPrivate : public QValueSpecificationPrivate
 {
+    Q_DECLARE_PUBLIC(QExpression)
+
 public:
-    explicit QExpressionPrivate(QExpression *q_umlptr = 0);
+    explicit QExpressionPrivate();
     virtual ~QExpressionPrivate();
 
     QString symbol;

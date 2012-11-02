@@ -44,8 +44,11 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qclassifier_p.h"
-#include "qrelationship_p.h"
+#include "private/qobject_p.h"
+
+#include "private/qclassifier_p.h"
+#include "private/qrelationship_p.h"
+#include "qassociation.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -57,20 +60,27 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QType;
 class QProperty;
 class QAssociation;
 
-class QAssociationPrivate : public QClassifierPrivate, public QRelationshipPrivate
+class Q_UML_EXPORT QAssociationPrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QAssociation)
+
 public:
-    explicit QAssociationPrivate(QAssociation *q_umlptr = 0);
+    explicit QAssociationPrivate();
     virtual ~QAssociationPrivate();
 
     bool isDerived;
     QSet<QProperty *> *navigableOwnedEnds;
     QList<QProperty *> *ownedEnds;
     QList<QProperty *> *memberEnds;
+
+private:
+    QClassifierPrivate *_wrappedClassifierPrivate;
+    QRelationshipPrivate *_wrappedRelationshipPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

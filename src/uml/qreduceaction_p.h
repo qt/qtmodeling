@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qaction_p.h"
+#include "private/qaction_p.h"
+#include "qreduceaction.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,15 +54,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInputPin;
 class QBehavior;
 class QOutputPin;
 class QReduceAction;
 
-class QReduceActionPrivate : public QActionPrivate
+class Q_UML_EXPORT QReduceActionPrivate : public QActionPrivate
 {
+    Q_DECLARE_PUBLIC(QReduceAction)
+
 public:
-    explicit QReduceActionPrivate(QReduceAction *q_umlptr = 0);
+    explicit QReduceActionPrivate();
     virtual ~QReduceActionPrivate();
 
     bool isOrdered;

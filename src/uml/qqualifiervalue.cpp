@@ -47,11 +47,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QQualifierValuePrivate::QQualifierValuePrivate(QQualifierValue *q_umlptr) :
+QQualifierValuePrivate::QQualifierValuePrivate() :
     value(0),
     qualifier(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QQualifierValuePrivate::~QQualifierValuePrivate()
@@ -66,17 +65,14 @@ QQualifierValuePrivate::~QQualifierValuePrivate()
     \brief A qualifier value is not an action. It is an element that identifies links. It gives a single qualifier within a link end data specification.
  */
 
-QQualifierValue::QQualifierValue(QObject *parent)
-    : QObject(parent)
+QQualifierValue::QQualifierValue(QObject *parent) :
+    QElement(*new QQualifierValuePrivate, parent)
 {
-    d_umlptr = new QQualifierValuePrivate(this);
 }
 
-QQualifierValue::QQualifierValue(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QQualifierValue::QQualifierValue(QQualifierValuePrivate &dd, QObject *parent) :
+    QElement(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QQualifierValuePrivate;
 }
 
 QQualifierValue::~QQualifierValue()
@@ -90,7 +86,7 @@ QInputPin *QQualifierValue::value() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QQualifierValue);
+    Q_D(const QQualifierValue);
     return d->value;
 }
 
@@ -98,7 +94,7 @@ void QQualifierValue::setValue(QInputPin *value)
 {
     // This is a read-write association end
 
-    QTUML_D(QQualifierValue);
+    Q_D(QQualifierValue);
     if (d->value != value) {
         d->value = value;
     }
@@ -111,7 +107,7 @@ QProperty *QQualifierValue::qualifier() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QQualifierValue);
+    Q_D(const QQualifierValue);
     return d->qualifier;
 }
 
@@ -119,7 +115,7 @@ void QQualifierValue::setQualifier(QProperty *qualifier)
 {
     // This is a read-write association end
 
-    QTUML_D(QQualifierValue);
+    Q_D(QQualifierValue);
     if (d->qualifier != qualifier) {
         d->qualifier = qualifier;
     }

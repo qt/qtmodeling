@@ -47,13 +47,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QConditionalNodePrivate::QConditionalNodePrivate(QConditionalNode *q_umlptr) :
+QConditionalNodePrivate::QConditionalNodePrivate() :
     isAssured(false),
     isDeterminate(false),
     clauses(new QSet<QClause *>),
     results(new QList<QOutputPin *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QConditionalNodePrivate::~QConditionalNodePrivate()
@@ -72,17 +71,14 @@ QConditionalNodePrivate::~QConditionalNodePrivate()
     \brief A conditional node is a structured activity node that represents an exclusive choice among some number of alternatives.
  */
 
-QConditionalNode::QConditionalNode(QObject *parent)
-    : QStructuredActivityNode(false, parent)
+QConditionalNode::QConditionalNode(QObject *parent) :
+    QStructuredActivityNode(*new QConditionalNodePrivate, parent)
 {
-    d_umlptr = new QConditionalNodePrivate(this);
 }
 
-QConditionalNode::QConditionalNode(bool createPimpl, QObject *parent)
-    : QStructuredActivityNode(createPimpl, parent)
+QConditionalNode::QConditionalNode(QConditionalNodePrivate &dd, QObject *parent) :
+    QStructuredActivityNode(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QConditionalNodePrivate;
 }
 
 QConditionalNode::~QConditionalNode()
@@ -96,7 +92,7 @@ bool QConditionalNode::isAssured() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QConditionalNode);
+    Q_D(const QConditionalNode);
     return d->isAssured;
 }
 
@@ -104,7 +100,7 @@ void QConditionalNode::setAssured(bool isAssured)
 {
     // This is a read-write attribute
 
-    QTUML_D(QConditionalNode);
+    Q_D(QConditionalNode);
     if (d->isAssured != isAssured) {
         d->isAssured = isAssured;
     }
@@ -117,7 +113,7 @@ bool QConditionalNode::isDeterminate() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QConditionalNode);
+    Q_D(const QConditionalNode);
     return d->isDeterminate;
 }
 
@@ -125,7 +121,7 @@ void QConditionalNode::setDeterminate(bool isDeterminate)
 {
     // This is a read-write attribute
 
-    QTUML_D(QConditionalNode);
+    Q_D(QConditionalNode);
     if (d->isDeterminate != isDeterminate) {
         d->isDeterminate = isDeterminate;
     }
@@ -138,7 +134,7 @@ const QSet<QClause *> *QConditionalNode::clauses() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QConditionalNode);
+    Q_D(const QConditionalNode);
     return d->clauses;
 }
 
@@ -146,7 +142,7 @@ void QConditionalNode::addClause(QClause *clause)
 {
     // This is a read-write association end
 
-    QTUML_D(QConditionalNode);
+    Q_D(QConditionalNode);
     if (!d->clauses->contains(clause)) {
         d->clauses->insert(clause);
 
@@ -159,7 +155,7 @@ void QConditionalNode::removeClause(QClause *clause)
 {
     // This is a read-write association end
 
-    QTUML_D(QConditionalNode);
+    Q_D(QConditionalNode);
     if (d->clauses->contains(clause)) {
         d->clauses->remove(clause);
 
@@ -175,7 +171,7 @@ const QList<QOutputPin *> *QConditionalNode::results() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QConditionalNode);
+    Q_D(const QConditionalNode);
     return d->results;
 }
 
@@ -183,7 +179,7 @@ void QConditionalNode::addResult(QOutputPin *result)
 {
     // This is a read-write association end
 
-    QTUML_D(QConditionalNode);
+    Q_D(QConditionalNode);
     if (!d->results->contains(result)) {
         d->results->append(result);
     }
@@ -193,7 +189,7 @@ void QConditionalNode::removeResult(QOutputPin *result)
 {
     // This is a read-write association end
 
-    QTUML_D(QConditionalNode);
+    Q_D(QConditionalNode);
     if (d->results->contains(result)) {
         d->results->removeAll(result);
     }

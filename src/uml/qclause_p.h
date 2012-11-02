@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qelement_p.h"
+#include "private/qelement_p.h"
+#include "qclause.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -56,14 +57,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QExecutableNode;
 class QOutputPin;
 class QClause;
 
-class QClausePrivate : public QElementPrivate
+class Q_UML_EXPORT QClausePrivate : public QElementPrivate
 {
+    Q_DECLARE_PUBLIC(QClause)
+
 public:
-    explicit QClausePrivate(QClause *q_umlptr = 0);
+    explicit QClausePrivate();
     virtual ~QClausePrivate();
 
     QSet<QClause *> *successorClauses;

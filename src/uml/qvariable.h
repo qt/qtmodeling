@@ -45,8 +45,6 @@
 
 // Base class includes
 #include <QtCore/QObject>
-#include <QtUml/QMultiplicityElement>
-#include <QtUml/QConnectableElement>
 
 QT_BEGIN_HEADER
 
@@ -54,20 +52,31 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for aggregated 'base classes'
+class QMultiplicityElement;
+class QConnectableElement;
+
+// Forward decls for function parameters
 class QActivity;
 class QStructuredActivityNode;
 class QAction;
 
-class Q_UML_EXPORT QVariable : public QObject, public QMultiplicityElement, public QConnectableElement
+class QVariablePrivate;
+
+class Q_UML_EXPORT QVariable : public QObject
 {
     Q_OBJECT
 
-    // From QElement
+    // From QVariable
+    Q_PROPERTY(QStructuredActivityNode * scope READ scope WRITE setScope)
+    Q_PROPERTY(QActivity * activityScope READ activityScope WRITE setActivityScope)
+
+    // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
     Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
-    // From QMultiplicityElement
+    // From aggregated QMultiplicityElement
     Q_PROPERTY(qint32 upper READ upper WRITE setUpper)
     Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
     Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
@@ -75,7 +84,7 @@ class Q_UML_EXPORT QVariable : public QObject, public QMultiplicityElement, publ
     Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
     Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
 
-    // From QNamedElement
+    // From aggregated QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
@@ -83,21 +92,18 @@ class Q_UML_EXPORT QVariable : public QObject, public QMultiplicityElement, publ
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
     Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
-    // From QTypedElement
+    // From aggregated QTypedElement
     Q_PROPERTY(QType * type READ type WRITE setType)
 
-    // From QParameterableElement
+    // From aggregated QParameterableElement
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
 
-    // From QConnectableElement
+    // From aggregated QConnectableElement
     Q_PROPERTY(const QList<QConnectorEnd *> * ends READ ends)
     Q_PROPERTY(QConnectableElementTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
 
-    // From QVariable
-    Q_PROPERTY(QStructuredActivityNode * scope READ scope WRITE setScope)
-    Q_PROPERTY(QActivity * activityScope READ activityScope WRITE setActivityScope)
-
     Q_DISABLE_COPY(QVariable)
+    Q_DECLARE_PRIVATE(QVariable)
 
 public:
     explicit QVariable(QObject *parent = 0);
@@ -113,12 +119,17 @@ public:
     bool isAccessibleBy(const QAction *a) const;
 
 protected:
-    explicit QVariable(bool createPimpl, QObject *parent = 0);
+    explicit QVariable(QVariablePrivate &dd, QObject *parent = 0);
+
+private:
+    QMultiplicityElement *_wrappedMultiplicityElement;
+    QConnectableElement *_wrappedConnectableElement;
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QVariable) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QVariable) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QVariable) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QVariable) *> *)
 
 QT_END_HEADER

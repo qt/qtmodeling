@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qclassifier_p.h"
+#include "private/qclassifier_p.h"
+#include "qinformationitem.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -56,10 +57,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QInformationItem;
 
-class QInformationItemPrivate : public QClassifierPrivate
+class Q_UML_EXPORT QInformationItemPrivate : public QClassifierPrivate
 {
+    Q_DECLARE_PUBLIC(QInformationItem)
+
 public:
-    explicit QInformationItemPrivate(QInformationItem *q_umlptr = 0);
+    explicit QInformationItemPrivate();
     virtual ~QInformationItemPrivate();
 
     QSet<QClassifier *> *represented;

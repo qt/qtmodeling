@@ -47,11 +47,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QProfilePrivate::QProfilePrivate(QProfile *q_umlptr) :
+QProfilePrivate::QProfilePrivate() :
     metamodelReferences(new QSet<QPackageImport *>),
     metaclassReferences(new QSet<QElementImport *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QProfilePrivate::~QProfilePrivate()
@@ -68,17 +67,14 @@ QProfilePrivate::~QProfilePrivate()
     \brief A profile defines limited extensions to a reference metamodel with the purpose of adapting the metamodel to a specific platform or domain.
  */
 
-QProfile::QProfile(QObject *parent)
-    : QPackage(false, parent)
+QProfile::QProfile(QObject *parent) :
+    QPackage(*new QProfilePrivate, parent)
 {
-    d_umlptr = new QProfilePrivate(this);
 }
 
-QProfile::QProfile(bool createPimpl, QObject *parent)
-    : QPackage(createPimpl, parent)
+QProfile::QProfile(QProfilePrivate &dd, QObject *parent) :
+    QPackage(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QProfilePrivate;
 }
 
 QProfile::~QProfile()
@@ -92,7 +88,7 @@ const QSet<QPackageImport *> *QProfile::metamodelReferences() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QProfile);
+    Q_D(const QProfile);
     return d->metamodelReferences;
 }
 
@@ -100,7 +96,7 @@ void QProfile::addMetamodelReference(QPackageImport *metamodelReference)
 {
     // This is a read-write association end
 
-    QTUML_D(QProfile);
+    Q_D(QProfile);
     if (!d->metamodelReferences->contains(metamodelReference)) {
         d->metamodelReferences->insert(metamodelReference);
 
@@ -113,7 +109,7 @@ void QProfile::removeMetamodelReference(QPackageImport *metamodelReference)
 {
     // This is a read-write association end
 
-    QTUML_D(QProfile);
+    Q_D(QProfile);
     if (d->metamodelReferences->contains(metamodelReference)) {
         d->metamodelReferences->remove(metamodelReference);
 
@@ -129,7 +125,7 @@ const QSet<QElementImport *> *QProfile::metaclassReferences() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QProfile);
+    Q_D(const QProfile);
     return d->metaclassReferences;
 }
 
@@ -137,7 +133,7 @@ void QProfile::addMetaclassReference(QElementImport *metaclassReference)
 {
     // This is a read-write association end
 
-    QTUML_D(QProfile);
+    Q_D(QProfile);
     if (!d->metaclassReferences->contains(metaclassReference)) {
         d->metaclassReferences->insert(metaclassReference);
 
@@ -150,7 +146,7 @@ void QProfile::removeMetaclassReference(QElementImport *metaclassReference)
 {
     // This is a read-write association end
 
-    QTUML_D(QProfile);
+    Q_D(QProfile);
     if (d->metaclassReferences->contains(metaclassReference)) {
         d->metaclassReferences->remove(metaclassReference);
 

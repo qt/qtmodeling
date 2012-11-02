@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDeploymentSpecificationPrivate::QDeploymentSpecificationPrivate(QDeploymentSpecification *q_umlptr) :
+QDeploymentSpecificationPrivate::QDeploymentSpecificationPrivate() :
     deployment(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QDeploymentSpecificationPrivate::~QDeploymentSpecificationPrivate()
@@ -64,17 +63,14 @@ QDeploymentSpecificationPrivate::~QDeploymentSpecificationPrivate()
     \brief A deployment specification specifies a set of properties that determine execution parameters of a component artifact that is deployed on a node. A deployment specification can be aimed at a specific type of container. An artifact that reifies or implements deployment specification properties is a deployment descriptor.
  */
 
-QDeploymentSpecification::QDeploymentSpecification(QObject *parent)
-    : QArtifact(false, parent)
+QDeploymentSpecification::QDeploymentSpecification(QObject *parent) :
+    QArtifact(*new QDeploymentSpecificationPrivate, parent)
 {
-    d_umlptr = new QDeploymentSpecificationPrivate(this);
 }
 
-QDeploymentSpecification::QDeploymentSpecification(bool createPimpl, QObject *parent)
-    : QArtifact(createPimpl, parent)
+QDeploymentSpecification::QDeploymentSpecification(QDeploymentSpecificationPrivate &dd, QObject *parent) :
+    QArtifact(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QDeploymentSpecificationPrivate;
 }
 
 QDeploymentSpecification::~QDeploymentSpecification()
@@ -88,7 +84,7 @@ QString QDeploymentSpecification::deploymentLocation() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QDeploymentSpecification);
+    Q_D(const QDeploymentSpecification);
     return d->deploymentLocation;
 }
 
@@ -96,7 +92,7 @@ void QDeploymentSpecification::setDeploymentLocation(QString deploymentLocation)
 {
     // This is a read-write attribute
 
-    QTUML_D(QDeploymentSpecification);
+    Q_D(QDeploymentSpecification);
     if (d->deploymentLocation != deploymentLocation) {
         d->deploymentLocation = deploymentLocation;
     }
@@ -109,7 +105,7 @@ QString QDeploymentSpecification::executionLocation() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QDeploymentSpecification);
+    Q_D(const QDeploymentSpecification);
     return d->executionLocation;
 }
 
@@ -117,7 +113,7 @@ void QDeploymentSpecification::setExecutionLocation(QString executionLocation)
 {
     // This is a read-write attribute
 
-    QTUML_D(QDeploymentSpecification);
+    Q_D(QDeploymentSpecification);
     if (d->executionLocation != executionLocation) {
         d->executionLocation = executionLocation;
     }
@@ -130,7 +126,7 @@ QDeployment *QDeploymentSpecification::deployment() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QDeploymentSpecification);
+    Q_D(const QDeploymentSpecification);
     return d->deployment;
 }
 
@@ -138,7 +134,7 @@ void QDeploymentSpecification::setDeployment(QDeployment *deployment)
 {
     // This is a read-write association end
 
-    QTUML_D(QDeploymentSpecification);
+    Q_D(QDeploymentSpecification);
     if (d->deployment != deployment) {
         // Adjust opposite property
         if (d->deployment)

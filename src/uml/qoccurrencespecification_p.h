@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qinteractionfragment_p.h"
+#include "private/qinteractionfragment_p.h"
+#include "qoccurrencespecification.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,14 +56,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QLifeline;
 class QGeneralOrdering;
 class QOccurrenceSpecification;
 
-class QOccurrenceSpecificationPrivate : public QInteractionFragmentPrivate
+class Q_UML_EXPORT QOccurrenceSpecificationPrivate : public QInteractionFragmentPrivate
 {
+    Q_DECLARE_PUBLIC(QOccurrenceSpecification)
+
 public:
-    explicit QOccurrenceSpecificationPrivate(QOccurrenceSpecification *q_umlptr = 0);
+    explicit QOccurrenceSpecificationPrivate();
     virtual ~QOccurrenceSpecificationPrivate();
 
     QLifeline *covered;

@@ -45,8 +45,6 @@
 
 // Base class includes
 #include <QtCore/QObject>
-#include <QtUml/QStructuredClassifier>
-#include <QtUml/QBehavioredClassifier>
 
 // Qt includes
 #include <QtCore/QSet>
@@ -57,25 +55,35 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for aggregated 'base classes'
+class QStructuredClassifier;
+class QBehavioredClassifier;
+
+// Forward decls for function parameters
 class QConnectableElement;
 
-class Q_UML_EXPORT QCollaboration : public QObject, public QStructuredClassifier, public QBehavioredClassifier
+class QCollaborationPrivate;
+
+class Q_UML_EXPORT QCollaboration : public QObject
 {
     Q_OBJECT
 
-    // From QElement
+    // From QCollaboration
+    Q_PROPERTY(const QSet<QConnectableElement *> * collaborationRoles READ collaborationRoles)
+
+    // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
     Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
-    // From QNamedElement
+    // From aggregated QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
     Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
-    // From QNamespace
+    // From aggregated QNamespace
     Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
     Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
     Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
@@ -83,24 +91,24 @@ class Q_UML_EXPORT QCollaboration : public QObject, public QStructuredClassifier
     Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
     Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
 
-    // From QParameterableElement
+    // From aggregated QParameterableElement
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
 
-    // From QPackageableElement
+    // From aggregated QPackageableElement
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
-    // From QType
+    // From aggregated QType
     Q_PROPERTY(QPackage * package READ package WRITE setPackage)
 
-    // From QRedefinableElement
+    // From aggregated QRedefinableElement
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
     Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
     Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
 
-    // From QTemplateableElement
+    // From aggregated QTemplateableElement
     Q_PROPERTY(const QSet<QTemplateBinding *> * templateBindings READ templateBindings)
 
-    // From QClassifier
+    // From aggregated QClassifier
     Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract)
     Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization)
     Q_PROPERTY(const QSet<QUseCase *> * ownedUseCases READ ownedUseCases)
@@ -118,21 +126,19 @@ class Q_UML_EXPORT QCollaboration : public QObject, public QStructuredClassifier
     Q_PROPERTY(const QSet<QNamedElement *> * inheritedMembers READ inheritedMembers)
     Q_PROPERTY(const QSet<QSubstitution *> * substitutions READ substitutions)
 
-    // From QStructuredClassifier
+    // From aggregated QStructuredClassifier
     Q_PROPERTY(const QSet<QConnectableElement *> * roles READ roles)
     Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
     Q_PROPERTY(const QSet<QProperty *> * parts READ parts)
     Q_PROPERTY(const QSet<QConnector *> * ownedConnectors READ ownedConnectors)
 
-    // From QBehavioredClassifier
+    // From aggregated QBehavioredClassifier
     Q_PROPERTY(const QSet<QBehavior *> * ownedBehaviors READ ownedBehaviors)
     Q_PROPERTY(const QSet<QInterfaceRealization *> * interfaceRealizations READ interfaceRealizations)
     Q_PROPERTY(QBehavior * classifierBehavior READ classifierBehavior WRITE setClassifierBehavior)
 
-    // From QCollaboration
-    Q_PROPERTY(const QSet<QConnectableElement *> * collaborationRoles READ collaborationRoles)
-
     Q_DISABLE_COPY(QCollaboration)
+    Q_DECLARE_PRIVATE(QCollaboration)
 
 public:
     explicit QCollaboration(QObject *parent = 0);
@@ -144,12 +150,17 @@ public:
     void removeCollaborationRole(QConnectableElement *collaborationRole);
 
 protected:
-    explicit QCollaboration(bool createPimpl, QObject *parent = 0);
+    explicit QCollaboration(QCollaborationPrivate &dd, QObject *parent = 0);
+
+private:
+    QStructuredClassifier *_wrappedStructuredClassifier;
+    QBehavioredClassifier *_wrappedBehavioredClassifier;
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *> *)
 
 QT_END_HEADER

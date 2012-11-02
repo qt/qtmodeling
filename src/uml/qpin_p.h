@@ -44,8 +44,12 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qmultiplicityelement_p.h"
-#include "qobjectnode_p.h"
+#include "private/qobject_p.h"
+
+#include "private/qmultiplicityelement_p.h"
+#include "private/qobjectnode_p.h"
+#include "qpin.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,15 +57,19 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QPinPrivate : public QMultiplicityElementPrivate, public QObjectNodePrivate
+class Q_UML_EXPORT QPinPrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QPin)
+
 public:
+    explicit QPinPrivate();
     virtual ~QPinPrivate();
 
     bool isControl;
 
-protected:
-    explicit QPinPrivate();
+private:
+    QMultiplicityElementPrivate *_wrappedMultiplicityElementPrivate;
+    QObjectNodePrivate *_wrappedObjectNodePrivate;
 };
 
 QT_END_NAMESPACE_QTUML

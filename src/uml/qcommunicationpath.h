@@ -52,23 +52,25 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QCommunicationPathPrivate;
+
 class Q_UML_EXPORT QCommunicationPath : public QAssociation
 {
-    Q_OBJECT
-
     Q_DISABLE_COPY(QCommunicationPath)
+    Q_DECLARE_PRIVATE(QCommunicationPath)
 
 public:
     explicit QCommunicationPath(QObject *parent = 0);
     virtual ~QCommunicationPath();
 
 protected:
-    explicit QCommunicationPath(bool createPimpl, QObject *parent = 0);
+    explicit QCommunicationPath(QCommunicationPathPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QCommunicationPath) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QCommunicationPath) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QCommunicationPath) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QCommunicationPath) *> *)
 
 QT_END_HEADER

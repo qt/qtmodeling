@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qelement_p.h"
+#include "private/qelement_p.h"
+#include "qimage.h"
 
 // Qt includes
 #include <QtCore/QString>
@@ -56,10 +57,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QImage;
 
-class QImagePrivate : public QElementPrivate
+class Q_UML_EXPORT QImagePrivate : public QElementPrivate
 {
+    Q_DECLARE_PUBLIC(QImage)
+
 public:
-    explicit QImagePrivate(QImage *q_umlptr = 0);
+    explicit QImagePrivate();
     virtual ~QImagePrivate();
 
     QString format;

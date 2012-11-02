@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qaction_p.h"
+#include "private/qaction_p.h"
+#include "qraiseexceptionaction.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInputPin;
 class QRaiseExceptionAction;
 
-class QRaiseExceptionActionPrivate : public QActionPrivate
+class Q_UML_EXPORT QRaiseExceptionActionPrivate : public QActionPrivate
 {
+    Q_DECLARE_PUBLIC(QRaiseExceptionAction)
+
 public:
-    explicit QRaiseExceptionActionPrivate(QRaiseExceptionAction *q_umlptr = 0);
+    explicit QRaiseExceptionActionPrivate();
     virtual ~QRaiseExceptionActionPrivate();
 
     QInputPin *exception;

@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qliteralspecification_p.h"
+#include "private/qliteralspecification_p.h"
+#include "qliteralinteger.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,10 +55,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QLiteralInteger;
 
-class QLiteralIntegerPrivate : public QLiteralSpecificationPrivate
+class Q_UML_EXPORT QLiteralIntegerPrivate : public QLiteralSpecificationPrivate
 {
+    Q_DECLARE_PUBLIC(QLiteralInteger)
+
 public:
-    explicit QLiteralIntegerPrivate(QLiteralInteger *q_umlptr = 0);
+    explicit QLiteralIntegerPrivate();
     virtual ~QLiteralIntegerPrivate();
 
     qint32 value;

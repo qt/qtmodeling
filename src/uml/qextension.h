@@ -52,9 +52,12 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QClass;
 class QExtensionEnd;
 class QProperty;
+
+class QExtensionPrivate;
 
 class Q_UML_EXPORT QExtension : public QAssociation
 {
@@ -66,6 +69,7 @@ class Q_UML_EXPORT QExtension : public QAssociation
     Q_PROPERTY(QExtensionEnd * ownedEnd READ ownedEnd WRITE setOwnedEnd)
 
     Q_DISABLE_COPY(QExtension)
+    Q_DECLARE_PRIVATE(QExtension)
 
 public:
     explicit QExtension(QObject *parent = 0);
@@ -83,12 +87,13 @@ public:
     QProperty *metaclassEnd() const;
 
 protected:
-    explicit QExtension(bool createPimpl, QObject *parent = 0);
+    explicit QExtension(QExtensionPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QExtension) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QExtension) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QExtension) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QExtension) *> *)
 
 QT_END_HEADER

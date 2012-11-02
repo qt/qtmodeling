@@ -43,12 +43,11 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+#include <QtUml/QDirectedRelationship>
+
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
-
-// Base class includes
-#include <QtCore/QObject>
-#include <QtUml/QDirectedRelationship>
 
 QT_BEGIN_HEADER
 
@@ -56,24 +55,15 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QPackage;
 class QNamespace;
 
-class Q_UML_EXPORT QPackageImport : public QObject, public QDirectedRelationship
+class QPackageImportPrivate;
+
+class Q_UML_EXPORT QPackageImport : public QDirectedRelationship
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QRelationship
-    Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
-
-    // From QDirectedRelationship
-    Q_PROPERTY(const QSet<QElement *> * sources READ sources)
-    Q_PROPERTY(const QSet<QElement *> * targets READ targets)
 
     // From QPackageImport
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
@@ -81,6 +71,7 @@ class Q_UML_EXPORT QPackageImport : public QObject, public QDirectedRelationship
     Q_PROPERTY(QPackage * importedPackage READ importedPackage WRITE setImportedPackage)
 
     Q_DISABLE_COPY(QPackageImport)
+    Q_DECLARE_PRIVATE(QPackageImport)
 
 public:
     explicit QPackageImport(QObject *parent = 0);
@@ -97,12 +88,13 @@ public:
     void setImportedPackage(QPackage *importedPackage);
 
 protected:
-    explicit QPackageImport(bool createPimpl, QObject *parent = 0);
+    explicit QPackageImport(QPackageImportPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QPackageImport) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QPackageImport) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QPackageImport) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QPackageImport) *> *)
 
 QT_END_HEADER

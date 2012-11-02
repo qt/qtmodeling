@@ -66,7 +66,13 @@ QMultiplicityElementPrivate::~QMultiplicityElementPrivate()
     \brief A multiplicity is a definition of an inclusive interval of non-negative integers beginning with a lower bound and ending with a (possibly infinite) upper bound. A multiplicity element embeds this information to specify the allowable cardinalities for an instantiation of this element.
  */
 
-QMultiplicityElement::QMultiplicityElement()
+QMultiplicityElement::QMultiplicityElement(QObject *parent) :
+    QElement(*new QMultiplicityElementPrivate, parent)
+{
+}
+
+QMultiplicityElement::QMultiplicityElement(QMultiplicityElementPrivate &dd, QObject *parent) :
+    QElement(dd, parent)
 {
 }
 
@@ -83,7 +89,7 @@ qint32 QMultiplicityElement::upper() const
 
     qWarning("QMultiplicityElement::upper: to be implemented (this is a derived attribute)");
 
-    //QTUML_D(const QMultiplicityElement);
+    //Q_D(const QMultiplicityElement);
     //return <derived-return>;
 }
 
@@ -93,7 +99,7 @@ void QMultiplicityElement::setUpper(qint32 upper)
 
     qWarning("QMultiplicityElement::setUpper: to be implemented (this is a derived attribute)");
 
-    //QTUML_D(QMultiplicityElement);
+    //Q_D(QMultiplicityElement);
     if (false /* <derived-change-criteria> */) {
         // <derived-code>
     }
@@ -106,7 +112,7 @@ bool QMultiplicityElement::isUnique() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QMultiplicityElement);
+    Q_D(const QMultiplicityElement);
     return d->isUnique;
 }
 
@@ -114,7 +120,7 @@ void QMultiplicityElement::setUnique(bool isUnique)
 {
     // This is a read-write attribute
 
-    QTUML_D(QMultiplicityElement);
+    Q_D(QMultiplicityElement);
     if (d->isUnique != isUnique) {
         d->isUnique = isUnique;
     }
@@ -127,7 +133,7 @@ bool QMultiplicityElement::isOrdered() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QMultiplicityElement);
+    Q_D(const QMultiplicityElement);
     return d->isOrdered;
 }
 
@@ -135,7 +141,7 @@ void QMultiplicityElement::setOrdered(bool isOrdered)
 {
     // This is a read-write attribute
 
-    QTUML_D(QMultiplicityElement);
+    Q_D(QMultiplicityElement);
     if (d->isOrdered != isOrdered) {
         d->isOrdered = isOrdered;
     }
@@ -150,7 +156,7 @@ qint32 QMultiplicityElement::lower() const
 
     qWarning("QMultiplicityElement::lower: to be implemented (this is a derived attribute)");
 
-    //QTUML_D(const QMultiplicityElement);
+    //Q_D(const QMultiplicityElement);
     //return <derived-return>;
 }
 
@@ -160,7 +166,7 @@ void QMultiplicityElement::setLower(qint32 lower)
 
     qWarning("QMultiplicityElement::setLower: to be implemented (this is a derived attribute)");
 
-    //QTUML_D(QMultiplicityElement);
+    //Q_D(QMultiplicityElement);
     if (false /* <derived-change-criteria> */) {
         // <derived-code>
     }
@@ -173,7 +179,7 @@ QValueSpecification *QMultiplicityElement::upperValue() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QMultiplicityElement);
+    Q_D(const QMultiplicityElement);
     return d->upperValue;
 }
 
@@ -181,7 +187,7 @@ void QMultiplicityElement::setUpperValue(QValueSpecification *upperValue)
 {
     // This is a read-write association end
 
-    QTUML_D(QMultiplicityElement);
+    Q_D(QMultiplicityElement);
     if (d->upperValue != upperValue) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->upperValue));
@@ -202,7 +208,7 @@ QValueSpecification *QMultiplicityElement::lowerValue() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QMultiplicityElement);
+    Q_D(const QMultiplicityElement);
     return d->lowerValue;
 }
 
@@ -210,7 +216,7 @@ void QMultiplicityElement::setLowerValue(QValueSpecification *lowerValue)
 {
     // This is a read-write association end
 
-    QTUML_D(QMultiplicityElement);
+    Q_D(QMultiplicityElement);
     if (d->lowerValue != lowerValue) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->lowerValue));
@@ -275,10 +281,10 @@ qint32 QMultiplicityElement::lowerBound() const
 /*!
     The query upperBound() returns the upper bound of the multiplicity for a bounded multiplicity as an unlimited natural.
  */
-//qint32 QMultiplicityElement::upperBound() const
-//{
-//    qWarning("QMultiplicityElement::upperBound: operation to be implemented");
-//}
+qint32 QMultiplicityElement::upperBound() const
+{
+    qWarning("QMultiplicityElement::upperBound: operation to be implemented");
+}
 
 QT_END_NAMESPACE_QTUML
 

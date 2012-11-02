@@ -64,7 +64,13 @@ QParameterableElementPrivate::~QParameterableElementPrivate()
     \brief A parameterable element is an element that can be exposed as a formal template parameter for a template, or specified as an actual parameter in a binding of a template.
  */
 
-QParameterableElement::QParameterableElement()
+QParameterableElement::QParameterableElement(QObject *parent) :
+    QElement(*new QParameterableElementPrivate, parent)
+{
+}
+
+QParameterableElement::QParameterableElement(QParameterableElementPrivate &dd, QObject *parent) :
+    QElement(dd, parent)
 {
 }
 
@@ -79,7 +85,7 @@ QTemplateParameter *QParameterableElement::owningTemplateParameter() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QParameterableElement);
+    Q_D(const QParameterableElement);
     return d->owningTemplateParameter;
 }
 
@@ -87,7 +93,7 @@ void QParameterableElement::setOwningTemplateParameter(QTemplateParameter *ownin
 {
     // This is a read-write association end
 
-    QTUML_D(QParameterableElement);
+    Q_D(QParameterableElement);
     if (d->owningTemplateParameter != owningTemplateParameter) {
         // Adjust opposite property
 
@@ -109,7 +115,7 @@ QTemplateParameter *QParameterableElement::templateParameter() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QParameterableElement);
+    Q_D(const QParameterableElement);
     return d->templateParameter;
 }
 
@@ -117,7 +123,7 @@ void QParameterableElement::setTemplateParameter(QTemplateParameter *templatePar
 {
     // This is a read-write association end
 
-    QTUML_D(QParameterableElement);
+    Q_D(QParameterableElement);
     if (d->templateParameter != templateParameter) {
         // Adjust opposite property
 

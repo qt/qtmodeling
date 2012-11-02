@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qaction_p.h"
+#include "private/qaction_p.h"
+#include "qclearassociationaction.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,14 +54,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QAssociation;
 class QInputPin;
 class QClearAssociationAction;
 
-class QClearAssociationActionPrivate : public QActionPrivate
+class Q_UML_EXPORT QClearAssociationActionPrivate : public QActionPrivate
 {
+    Q_DECLARE_PUBLIC(QClearAssociationAction)
+
 public:
-    explicit QClearAssociationActionPrivate(QClearAssociationAction *q_umlptr = 0);
+    explicit QClearAssociationActionPrivate();
     virtual ~QClearAssociationActionPrivate();
 
     QInputPin *object;

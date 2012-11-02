@@ -52,23 +52,25 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QRealizationPrivate;
+
 class Q_UML_EXPORT QRealization : public QAbstraction
 {
-    Q_OBJECT
-
     Q_DISABLE_COPY(QRealization)
+    Q_DECLARE_PRIVATE(QRealization)
 
 public:
     explicit QRealization(QObject *parent = 0);
     virtual ~QRealization();
 
 protected:
-    explicit QRealization(bool createPimpl, QObject *parent = 0);
+    explicit QRealization(QRealizationPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QRealization) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QRealization) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QRealization) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QRealization) *> *)
 
 QT_END_HEADER

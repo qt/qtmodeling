@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qnamedelement_p.h"
+#include "private/qnamedelement_p.h"
+#include "qinteractionfragment.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,23 +56,24 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QGeneralOrdering;
 class QInteractionOperand;
 class QLifeline;
 class QInteraction;
 
-class QInteractionFragmentPrivate : public virtual QNamedElementPrivate
+class Q_UML_EXPORT QInteractionFragmentPrivate : public QNamedElementPrivate
 {
+    Q_DECLARE_PUBLIC(QInteractionFragment)
+
 public:
+    explicit QInteractionFragmentPrivate();
     virtual ~QInteractionFragmentPrivate();
 
     QSet<QGeneralOrdering *> *generalOrderings;
     QInteraction *enclosingInteraction;
     QSet<QLifeline *> *covered;
     QInteractionOperand *enclosingOperand;
-
-protected:
-    explicit QInteractionFragmentPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

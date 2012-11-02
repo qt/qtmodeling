@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qobservation_p.h"
+#include "private/qobservation_p.h"
+#include "qdurationobservation.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,13 +56,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QNamedElement;
 class QDurationObservation;
 
-class QDurationObservationPrivate : public QObservationPrivate
+class Q_UML_EXPORT QDurationObservationPrivate : public QObservationPrivate
 {
+    Q_DECLARE_PUBLIC(QDurationObservation)
+
 public:
-    explicit QDurationObservationPrivate(QDurationObservation *q_umlptr = 0);
+    explicit QDurationObservationPrivate();
     virtual ~QDurationObservationPrivate();
 
     QSet<bool> *firstEvents;

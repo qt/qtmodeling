@@ -43,13 +43,12 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+#include <QtUml/QNamedElement>
+
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
 #include <QtUml/QtUmlEnumerations>
-
-// Base class includes
-#include <QtCore/QObject>
-#include <QtUml/QNamedElement>
 
 // Qt includes
 #include <QtCore/QList>
@@ -60,27 +59,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QMessageEnd;
 class QInteraction;
 class QValueSpecification;
 class QConnector;
 
-class Q_UML_EXPORT QMessage : public QObject, public QNamedElement
+class QMessagePrivate;
+
+class Q_UML_EXPORT QMessage : public QNamedElement
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QMessage
     Q_PROPERTY(QtUml::MessageSort messageSort READ messageSort WRITE setMessageSort)
@@ -93,6 +82,7 @@ class Q_UML_EXPORT QMessage : public QObject, public QNamedElement
     Q_PROPERTY(QConnector * connector READ connector WRITE setConnector)
 
     Q_DISABLE_COPY(QMessage)
+    Q_DECLARE_PRIVATE(QMessage)
 
 public:
     explicit QMessage(QObject *parent = 0);
@@ -119,12 +109,13 @@ public:
     void setConnector(QConnector *connector);
 
 protected:
-    explicit QMessage(bool createPimpl, QObject *parent = 0);
+    explicit QMessage(QMessagePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QMessage) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QMessage) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QMessage) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QMessage) *> *)
 
 QT_END_HEADER

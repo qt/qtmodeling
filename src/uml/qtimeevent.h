@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QEvent>
 
 QT_BEGIN_HEADER
@@ -53,36 +52,21 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QTimeExpression;
 
-class Q_UML_EXPORT QTimeEvent : public QObject, public QEvent
+class QTimeEventPrivate;
+
+class Q_UML_EXPORT QTimeEvent : public QEvent
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QParameterableElement
-    Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
-    Q_PROPERTY(QTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From QPackageableElement
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // From QTimeEvent
     Q_PROPERTY(bool isRelative READ isRelative WRITE setRelative)
     Q_PROPERTY(QTimeExpression * when READ when WRITE setWhen)
 
     Q_DISABLE_COPY(QTimeEvent)
+    Q_DECLARE_PRIVATE(QTimeEvent)
 
 public:
     explicit QTimeEvent(QObject *parent = 0);
@@ -97,12 +81,13 @@ public:
     void setWhen(QTimeExpression *when);
 
 protected:
-    explicit QTimeEvent(bool createPimpl, QObject *parent = 0);
+    explicit QTimeEvent(QTimeEventPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QTimeEvent) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QTimeEvent) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QTimeEvent) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QTimeEvent) *> *)
 
 QT_END_HEADER

@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInitialNodePrivate::QInitialNodePrivate(QInitialNode *q_umlptr)
+QInitialNodePrivate::QInitialNodePrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QInitialNodePrivate::~QInitialNodePrivate()
@@ -62,17 +61,14 @@ QInitialNodePrivate::~QInitialNodePrivate()
     \brief An initial node is a control node at which flow starts when the activity is invoked.
  */
 
-QInitialNode::QInitialNode(QObject *parent)
-    : QObject(parent)
+QInitialNode::QInitialNode(QObject *parent) :
+    QControlNode(*new QInitialNodePrivate, parent)
 {
-    d_umlptr = new QInitialNodePrivate(this);
 }
 
-QInitialNode::QInitialNode(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QInitialNode::QInitialNode(QInitialNodePrivate &dd, QObject *parent) :
+    QControlNode(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QInitialNodePrivate;
 }
 
 QInitialNode::~QInitialNode()

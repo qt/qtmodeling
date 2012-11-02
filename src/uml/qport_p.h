@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qproperty_p.h"
+#include "private/qproperty_p.h"
+#include "qport.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,14 +56,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QProtocolStateMachine;
 class QInterface;
 class QPort;
 
-class QPortPrivate : public QPropertyPrivate
+class Q_UML_EXPORT QPortPrivate : public QPropertyPrivate
 {
+    Q_DECLARE_PUBLIC(QPort)
+
 public:
-    explicit QPortPrivate(QPort *q_umlptr = 0);
+    explicit QPortPrivate();
     virtual ~QPortPrivate();
 
     bool isConjugated;

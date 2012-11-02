@@ -45,8 +45,6 @@
 
 // Base class includes
 #include <QtCore/QObject>
-#include <QtUml/QPackageableElement>
-#include <QtUml/QDirectedRelationship>
 
 // Qt includes
 #include <QtCore/QSet>
@@ -57,43 +55,51 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for aggregated 'base classes'
+class QPackageableElement;
+class QDirectedRelationship;
+
+// Forward decls for function parameters
 class QNamedElement;
 
-class Q_UML_EXPORT QDependency : public QObject, public QPackageableElement, public QDirectedRelationship
+class QDependencyPrivate;
+
+class Q_UML_EXPORT QDependency : public QObject
 {
     Q_OBJECT
 
-    // From QElement
+    // From QDependency
+    Q_PROPERTY(const QSet<QNamedElement *> * clients READ clients)
+    Q_PROPERTY(const QSet<QNamedElement *> * suppliers READ suppliers)
+
+    // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
     Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
-    // From QParameterableElement
+    // From aggregated QParameterableElement
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
     Q_PROPERTY(QTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
 
-    // From QNamedElement
+    // From aggregated QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
     Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
-    // From QPackageableElement
+    // From aggregated QPackageableElement
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
-    // From QRelationship
+    // From aggregated QRelationship
     Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
 
-    // From QDirectedRelationship
+    // From aggregated QDirectedRelationship
     Q_PROPERTY(const QSet<QElement *> * sources READ sources)
     Q_PROPERTY(const QSet<QElement *> * targets READ targets)
 
-    // From QDependency
-    Q_PROPERTY(const QSet<QNamedElement *> * clients READ clients)
-    Q_PROPERTY(const QSet<QNamedElement *> * suppliers READ suppliers)
-
     Q_DISABLE_COPY(QDependency)
+    Q_DECLARE_PRIVATE(QDependency)
 
 public:
     explicit QDependency(QObject *parent = 0);
@@ -108,12 +114,17 @@ public:
     void removeSupplier(QNamedElement *supplier);
 
 protected:
-    explicit QDependency(bool createPimpl, QObject *parent = 0);
+    explicit QDependency(QDependencyPrivate &dd, QObject *parent = 0);
+
+private:
+    QPackageableElement *_wrappedPackageableElement;
+    QDirectedRelationship *_wrappedDirectedRelationship;
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QDependency) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QDependency) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QDependency) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QDependency) *> *)
 
 QT_END_HEADER

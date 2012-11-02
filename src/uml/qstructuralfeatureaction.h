@@ -52,14 +52,25 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInputPin;
 class QStructuralFeature;
 
+class QStructuralFeatureActionPrivate;
+
 class Q_UML_EXPORT QStructuralFeatureAction : public QAction
 {
+    Q_OBJECT
+
+    // From QStructuralFeatureAction
+    Q_PROPERTY(QInputPin * object READ object WRITE setObject)
+    Q_PROPERTY(QStructuralFeature * structuralFeature READ structuralFeature WRITE setStructuralFeature)
+
     Q_DISABLE_COPY(QStructuralFeatureAction)
+    Q_DECLARE_PRIVATE(QStructuralFeatureAction)
 
 public:
+    explicit QStructuralFeatureAction(QObject *parent = 0);
     virtual ~QStructuralFeatureAction();
 
     // Association-ends
@@ -69,10 +80,14 @@ public:
     void setStructuralFeature(QStructuralFeature *structuralFeature);
 
 protected:
-    explicit QStructuralFeatureAction();
+    explicit QStructuralFeatureAction(QStructuralFeatureActionPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QStructuralFeatureAction) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QStructuralFeatureAction) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QStructuralFeatureAction) *> *)
 
 QT_END_HEADER
 

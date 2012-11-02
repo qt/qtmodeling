@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qactivityedge_p.h"
+#include "private/qactivityedge_p.h"
+#include "qobjectflow.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QBehavior;
 class QObjectFlow;
 
-class QObjectFlowPrivate : public QActivityEdgePrivate
+class Q_UML_EXPORT QObjectFlowPrivate : public QActivityEdgePrivate
 {
+    Q_DECLARE_PUBLIC(QObjectFlow)
+
 public:
-    explicit QObjectFlowPrivate(QObjectFlow *q_umlptr = 0);
+    explicit QObjectFlowPrivate();
     virtual ~QObjectFlowPrivate();
 
     bool isMultireceive;

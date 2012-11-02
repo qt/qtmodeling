@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDependencyPrivate::QDependencyPrivate(QDependency *q_umlptr) :
+QDependencyPrivate::QDependencyPrivate() :
     clients(new QSet<QNamedElement *>),
     suppliers(new QSet<QNamedElement *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QDependencyPrivate::~QDependencyPrivate()
@@ -67,17 +66,18 @@ QDependencyPrivate::~QDependencyPrivate()
     \brief A dependency is a relationship that signifies that a single or a set of model elements requires other model elements for their specification or implementation. This means that the complete semantics of the depending elements is either semantically or structurally dependent on the definition of the supplier element(s).
  */
 
-QDependency::QDependency(QObject *parent)
-    : QObject(parent)
+QDependency::QDependency(QObject *parent) :
+    QObject(*new QDependencyPrivate, parent),
+    _wrappedPackageableElement(new QPackageableElement(this)),
+    _wrappedDirectedRelationship(new QDirectedRelationship(this))
 {
-    d_umlptr = new QDependencyPrivate(this);
 }
 
-QDependency::QDependency(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QDependency::QDependency(QDependencyPrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedPackageableElement(new QPackageableElement(this)),
+    _wrappedDirectedRelationship(new QDirectedRelationship(this))
 {
-    if (createPimpl)
-        d_umlptr = new QDependencyPrivate;
 }
 
 QDependency::~QDependency()
@@ -91,7 +91,7 @@ const QSet<QNamedElement *> *QDependency::clients() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QDependency);
+    Q_D(const QDependency);
     return d->clients;
 }
 
@@ -99,7 +99,7 @@ void QDependency::addClient(QNamedElement *client)
 {
     // This is a read-write association end
 
-    QTUML_D(QDependency);
+    Q_D(QDependency);
     if (!d->clients->contains(client)) {
         d->clients->insert(client);
 
@@ -115,7 +115,7 @@ void QDependency::removeClient(QNamedElement *client)
 {
     // This is a read-write association end
 
-    QTUML_D(QDependency);
+    Q_D(QDependency);
     if (d->clients->contains(client)) {
         d->clients->remove(client);
 
@@ -135,7 +135,7 @@ const QSet<QNamedElement *> *QDependency::suppliers() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QDependency);
+    Q_D(const QDependency);
     return d->suppliers;
 }
 
@@ -143,7 +143,7 @@ void QDependency::addSupplier(QNamedElement *supplier)
 {
     // This is a read-write association end
 
-    QTUML_D(QDependency);
+    Q_D(QDependency);
     if (!d->suppliers->contains(supplier)) {
         d->suppliers->insert(supplier);
 
@@ -156,7 +156,7 @@ void QDependency::removeSupplier(QNamedElement *supplier)
 {
     // This is a read-write association end
 
-    QTUML_D(QDependency);
+    Q_D(QDependency);
     if (d->suppliers->contains(supplier)) {
         d->suppliers->remove(supplier);
 

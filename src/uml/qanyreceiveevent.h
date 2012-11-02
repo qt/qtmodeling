@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QMessageEvent>
 
 QT_BEGIN_HEADER
@@ -53,42 +52,25 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QAnyReceiveEvent : public QObject, public QMessageEvent
+class QAnyReceiveEventPrivate;
+
+class Q_UML_EXPORT QAnyReceiveEvent : public QMessageEvent
 {
-    Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QParameterableElement
-    Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
-    Q_PROPERTY(QTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From QPackageableElement
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-
     Q_DISABLE_COPY(QAnyReceiveEvent)
+    Q_DECLARE_PRIVATE(QAnyReceiveEvent)
 
 public:
     explicit QAnyReceiveEvent(QObject *parent = 0);
     virtual ~QAnyReceiveEvent();
 
 protected:
-    explicit QAnyReceiveEvent(bool createPimpl, QObject *parent = 0);
+    explicit QAnyReceiveEvent(QAnyReceiveEventPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QAnyReceiveEvent) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QAnyReceiveEvent) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QAnyReceiveEvent) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QAnyReceiveEvent) *> *)
 
 QT_END_HEADER

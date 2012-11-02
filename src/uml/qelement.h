@@ -43,11 +43,11 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+#include <QtCore/QObject>
+
 // Qt includes
 #include <QtCore/QSet>
-
-#define QTUML_D(Class) Class##Private * const d = dynamic_cast<Class##Private *>(d_umlptr);
-#define QTUML_Q(Class) Class * const q = dynamic_cast<Class *>(q_umlptr);
 
 QT_BEGIN_HEADER
 
@@ -55,15 +55,25 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QElementPrivate;
-
+// Forward decls for function parameters
 class QComment;
 
-class Q_UML_EXPORT QElement
+class QElementPrivate;
+
+class Q_UML_EXPORT QElement : public QObject
 {
+    Q_OBJECT
+
+    // From QElement
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+
     Q_DISABLE_COPY(QElement)
+    Q_DECLARE_PRIVATE(QElement)
 
 public:
+    explicit QElement(QObject *parent = 0);
     virtual ~QElement();
 
     // Association-ends
@@ -84,7 +94,6 @@ public:
     friend class QClassifierPrivate;
     friend class QClassPrivate;
     friend class QConnectorEnd;
-    friend class QElementPrivate;
     friend class QExtensionPrivate;
     friend class QFeaturePrivate;
     friend class QNamedElementPrivate;
@@ -92,16 +101,14 @@ public:
     friend class QTransition;
 
 protected:
-    explicit QElement();
-
-protected:
-    QElementPrivate *d_umlptr;
-
-private:
-    void allOwnedElements(QSet<QElement *> *allOwnedElements_) const;
+    explicit QElement(QElementPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QElement) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *)
 
 QT_END_HEADER
 

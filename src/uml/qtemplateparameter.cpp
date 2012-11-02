@@ -47,14 +47,13 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QTemplateParameterPrivate::QTemplateParameterPrivate(QTemplateParameter *q_umlptr) :
+QTemplateParameterPrivate::QTemplateParameterPrivate() :
     default_(0),
     parameteredElement(0),
     ownedParameteredElement(0),
     ownedDefault(0),
     signature(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QTemplateParameterPrivate::~QTemplateParameterPrivate()
@@ -69,17 +68,14 @@ QTemplateParameterPrivate::~QTemplateParameterPrivate()
     \brief A template parameter exposes a parameterable element as a formal template parameter of a template.
  */
 
-QTemplateParameter::QTemplateParameter(QObject *parent)
-    : QObject(parent)
+QTemplateParameter::QTemplateParameter(QObject *parent) :
+    QElement(*new QTemplateParameterPrivate, parent)
 {
-    d_umlptr = new QTemplateParameterPrivate(this);
 }
 
-QTemplateParameter::QTemplateParameter(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QTemplateParameter::QTemplateParameter(QTemplateParameterPrivate &dd, QObject *parent) :
+    QElement(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QTemplateParameterPrivate;
 }
 
 QTemplateParameter::~QTemplateParameter()
@@ -93,7 +89,7 @@ QParameterableElement *QTemplateParameter::default_() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTemplateParameter);
+    Q_D(const QTemplateParameter);
     return d->default_;
 }
 
@@ -101,7 +97,7 @@ void QTemplateParameter::setDefault_(QParameterableElement *default_)
 {
     // This is a read-write association end
 
-    QTUML_D(QTemplateParameter);
+    Q_D(QTemplateParameter);
     if (d->default_ != default_) {
         d->default_ = default_;
     }
@@ -114,7 +110,7 @@ QParameterableElement *QTemplateParameter::parameteredElement() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTemplateParameter);
+    Q_D(const QTemplateParameter);
     return d->parameteredElement;
 }
 
@@ -122,7 +118,7 @@ void QTemplateParameter::setParameteredElement(QParameterableElement *parametere
 {
     // This is a read-write association end
 
-    QTUML_D(QTemplateParameter);
+    Q_D(QTemplateParameter);
     if (d->parameteredElement != parameteredElement) {
         // Adjust opposite property
 
@@ -140,7 +136,7 @@ QParameterableElement *QTemplateParameter::ownedParameteredElement() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTemplateParameter);
+    Q_D(const QTemplateParameter);
     return d->ownedParameteredElement;
 }
 
@@ -148,7 +144,7 @@ void QTemplateParameter::setOwnedParameteredElement(QParameterableElement *owned
 {
     // This is a read-write association end
 
-    QTUML_D(QTemplateParameter);
+    Q_D(QTemplateParameter);
     if (d->ownedParameteredElement != ownedParameteredElement) {
         // Adjust opposite property
 
@@ -175,7 +171,7 @@ QParameterableElement *QTemplateParameter::ownedDefault() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTemplateParameter);
+    Q_D(const QTemplateParameter);
     return d->ownedDefault;
 }
 
@@ -183,7 +179,7 @@ void QTemplateParameter::setOwnedDefault(QParameterableElement *ownedDefault)
 {
     // This is a read-write association end
 
-    QTUML_D(QTemplateParameter);
+    Q_D(QTemplateParameter);
     if (d->ownedDefault != ownedDefault) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->ownedDefault));
@@ -205,7 +201,7 @@ QTemplateSignature *QTemplateParameter::signature() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTemplateParameter);
+    Q_D(const QTemplateParameter);
     return d->signature;
 }
 
@@ -213,7 +209,7 @@ void QTemplateParameter::setSignature(QTemplateSignature *signature)
 {
     // This is a read-write association end
 
-    QTUML_D(QTemplateParameter);
+    Q_D(QTemplateParameter);
     if (d->signature != signature) {
         // Adjust opposite property
         if (d->signature)

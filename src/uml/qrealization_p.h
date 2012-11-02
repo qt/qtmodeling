@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qabstraction_p.h"
+#include "private/qabstraction_p.h"
+#include "qrealization.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,10 +55,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QRealization;
 
-class QRealizationPrivate : public QAbstractionPrivate
+class Q_UML_EXPORT QRealizationPrivate : public QAbstractionPrivate
 {
+    Q_DECLARE_PUBLIC(QRealization)
+
 public:
-    explicit QRealizationPrivate(QRealization *q_umlptr = 0);
+    explicit QRealizationPrivate();
     virtual ~QRealizationPrivate();
 
 };

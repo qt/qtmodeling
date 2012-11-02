@@ -45,8 +45,6 @@
 
 // Base class includes
 #include <QtCore/QObject>
-#include <QtUml/QDirectedRelationship>
-#include <QtUml/QNamedElement>
 
 QT_BEGIN_HEADER
 
@@ -54,25 +52,36 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for aggregated 'base classes'
+class QDirectedRelationship;
+class QNamedElement;
+
+// Forward decls for function parameters
 class QUseCase;
 
-class Q_UML_EXPORT QInclude : public QObject, public QDirectedRelationship, public QNamedElement
+class QIncludePrivate;
+
+class Q_UML_EXPORT QInclude : public QObject
 {
     Q_OBJECT
 
-    // From QElement
+    // From QInclude
+    Q_PROPERTY(QUseCase * includingCase READ includingCase WRITE setIncludingCase)
+    Q_PROPERTY(QUseCase * addition READ addition WRITE setAddition)
+
+    // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
     Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
-    // From QRelationship
+    // From aggregated QRelationship
     Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
 
-    // From QDirectedRelationship
+    // From aggregated QDirectedRelationship
     Q_PROPERTY(const QSet<QElement *> * sources READ sources)
     Q_PROPERTY(const QSet<QElement *> * targets READ targets)
 
-    // From QNamedElement
+    // From aggregated QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
@@ -80,11 +89,8 @@ class Q_UML_EXPORT QInclude : public QObject, public QDirectedRelationship, publ
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
     Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
-    // From QInclude
-    Q_PROPERTY(QUseCase * includingCase READ includingCase WRITE setIncludingCase)
-    Q_PROPERTY(QUseCase * addition READ addition WRITE setAddition)
-
     Q_DISABLE_COPY(QInclude)
+    Q_DECLARE_PRIVATE(QInclude)
 
 public:
     explicit QInclude(QObject *parent = 0);
@@ -97,12 +103,17 @@ public:
     void setAddition(QUseCase *addition);
 
 protected:
-    explicit QInclude(bool createPimpl, QObject *parent = 0);
+    explicit QInclude(QIncludePrivate &dd, QObject *parent = 0);
+
+private:
+    QDirectedRelationship *_wrappedDirectedRelationship;
+    QNamedElement *_wrappedNamedElement;
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QInclude) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QInclude) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QInclude) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QInclude) *> *)
 
 QT_END_HEADER

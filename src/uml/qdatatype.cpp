@@ -48,11 +48,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDataTypePrivate::QDataTypePrivate(QDataType *q_umlptr) :
+QDataTypePrivate::QDataTypePrivate() :
     ownedOperations(new QList<QOperation *>),
     ownedAttributes(new QList<QProperty *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QDataTypePrivate::~QDataTypePrivate()
@@ -69,17 +68,14 @@ QDataTypePrivate::~QDataTypePrivate()
     \brief A data type is a type whose instances are identified only by their value. A data type may contain attributes to support the modeling of structured data types.
  */
 
-QDataType::QDataType(QObject *parent)
-    : QObject(parent)
+QDataType::QDataType(QObject *parent) :
+    QClassifier(*new QDataTypePrivate, parent)
 {
-    d_umlptr = new QDataTypePrivate(this);
 }
 
-QDataType::QDataType(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QDataType::QDataType(QDataTypePrivate &dd, QObject *parent) :
+    QClassifier(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QDataTypePrivate;
 }
 
 QDataType::~QDataType()
@@ -93,7 +89,7 @@ const QList<QOperation *> *QDataType::ownedOperations() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QDataType);
+    Q_D(const QDataType);
     return d->ownedOperations;
 }
 
@@ -101,7 +97,7 @@ void QDataType::addOwnedOperation(QOperation *ownedOperation)
 {
     // This is a read-write association end
 
-    QTUML_D(QDataType);
+    Q_D(QDataType);
     if (!d->ownedOperations->contains(ownedOperation)) {
         d->ownedOperations->append(ownedOperation);
 
@@ -118,7 +114,7 @@ void QDataType::removeOwnedOperation(QOperation *ownedOperation)
 {
     // This is a read-write association end
 
-    QTUML_D(QDataType);
+    Q_D(QDataType);
     if (d->ownedOperations->contains(ownedOperation)) {
         d->ownedOperations->removeAll(ownedOperation);
 
@@ -138,7 +134,7 @@ const QList<QProperty *> *QDataType::ownedAttributes() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QDataType);
+    Q_D(const QDataType);
     return d->ownedAttributes;
 }
 
@@ -146,7 +142,7 @@ void QDataType::addOwnedAttribute(QProperty *ownedAttribute)
 {
     // This is a read-write association end
 
-    QTUML_D(QDataType);
+    Q_D(QDataType);
     if (!d->ownedAttributes->contains(ownedAttribute)) {
         d->ownedAttributes->append(ownedAttribute);
 
@@ -163,7 +159,7 @@ void QDataType::removeOwnedAttribute(QProperty *ownedAttribute)
 {
     // This is a read-write association end
 
-    QTUML_D(QDataType);
+    Q_D(QDataType);
     if (d->ownedAttributes->contains(ownedAttribute)) {
         d->ownedAttributes->removeAll(ownedAttribute);
 

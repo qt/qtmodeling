@@ -61,7 +61,13 @@ QMessageEventPrivate::~QMessageEventPrivate()
     \brief A message event specifies the receipt by an object of either a call or a signal.
  */
 
-QMessageEvent::QMessageEvent()
+QMessageEvent::QMessageEvent(QObject *parent) :
+    QEvent(*new QMessageEventPrivate, parent)
+{
+}
+
+QMessageEvent::QMessageEvent(QMessageEventPrivate &dd, QObject *parent) :
+    QEvent(dd, parent)
 {
 }
 

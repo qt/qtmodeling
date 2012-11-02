@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QBehaviorExecutionSpecificationPrivate::QBehaviorExecutionSpecificationPrivate(QBehaviorExecutionSpecification *q_umlptr) :
+QBehaviorExecutionSpecificationPrivate::QBehaviorExecutionSpecificationPrivate() :
     behavior(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QBehaviorExecutionSpecificationPrivate::~QBehaviorExecutionSpecificationPrivate()
@@ -64,17 +63,14 @@ QBehaviorExecutionSpecificationPrivate::~QBehaviorExecutionSpecificationPrivate(
     \brief A behavior execution specification is a kind of execution specification representing the execution of a behavior.
  */
 
-QBehaviorExecutionSpecification::QBehaviorExecutionSpecification(QObject *parent)
-    : QObject(parent)
+QBehaviorExecutionSpecification::QBehaviorExecutionSpecification(QObject *parent) :
+    QExecutionSpecification(*new QBehaviorExecutionSpecificationPrivate, parent)
 {
-    d_umlptr = new QBehaviorExecutionSpecificationPrivate(this);
 }
 
-QBehaviorExecutionSpecification::QBehaviorExecutionSpecification(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QBehaviorExecutionSpecification::QBehaviorExecutionSpecification(QBehaviorExecutionSpecificationPrivate &dd, QObject *parent) :
+    QExecutionSpecification(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QBehaviorExecutionSpecificationPrivate;
 }
 
 QBehaviorExecutionSpecification::~QBehaviorExecutionSpecification()
@@ -88,7 +84,7 @@ QBehavior *QBehaviorExecutionSpecification::behavior() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QBehaviorExecutionSpecification);
+    Q_D(const QBehaviorExecutionSpecification);
     return d->behavior;
 }
 
@@ -96,7 +92,7 @@ void QBehaviorExecutionSpecification::setBehavior(QBehavior *behavior)
 {
     // This is a read-write association end
 
-    QTUML_D(QBehaviorExecutionSpecification);
+    Q_D(QBehaviorExecutionSpecification);
     if (d->behavior != behavior) {
         d->behavior = behavior;
     }

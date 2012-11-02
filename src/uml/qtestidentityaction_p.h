@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qaction_p.h"
+#include "private/qaction_p.h"
+#include "qtestidentityaction.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,14 +54,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInputPin;
 class QOutputPin;
 class QTestIdentityAction;
 
-class QTestIdentityActionPrivate : public QActionPrivate
+class Q_UML_EXPORT QTestIdentityActionPrivate : public QActionPrivate
 {
+    Q_DECLARE_PUBLIC(QTestIdentityAction)
+
 public:
-    explicit QTestIdentityActionPrivate(QTestIdentityAction *q_umlptr = 0);
+    explicit QTestIdentityActionPrivate();
     virtual ~QTestIdentityActionPrivate();
 
     QInputPin *second;

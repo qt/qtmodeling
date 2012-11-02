@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qmessageend_p.h"
+#include "private/qmessageend_p.h"
+#include "qgate.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,10 +55,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QGate;
 
-class QGatePrivate : public QMessageEndPrivate
+class Q_UML_EXPORT QGatePrivate : public QMessageEndPrivate
 {
+    Q_DECLARE_PUBLIC(QGate)
+
 public:
-    explicit QGatePrivate(QGate *q_umlptr = 0);
+    explicit QGatePrivate();
     virtual ~QGatePrivate();
 
 };

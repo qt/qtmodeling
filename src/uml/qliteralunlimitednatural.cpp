@@ -45,10 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QLiteralUnlimitedNaturalPrivate::QLiteralUnlimitedNaturalPrivate(QLiteralUnlimitedNatural *q_umlptr) :
+QLiteralUnlimitedNaturalPrivate::QLiteralUnlimitedNaturalPrivate() :
     value(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QLiteralUnlimitedNaturalPrivate::~QLiteralUnlimitedNaturalPrivate()
@@ -63,17 +62,14 @@ QLiteralUnlimitedNaturalPrivate::~QLiteralUnlimitedNaturalPrivate()
     \brief A literal unlimited natural is a specification of an unlimited natural number.
  */
 
-QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QObject *parent)
-    : QObject(parent)
+QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QObject *parent) :
+    QLiteralSpecification(*new QLiteralUnlimitedNaturalPrivate, parent)
 {
-    d_umlptr = new QLiteralUnlimitedNaturalPrivate(this);
 }
 
-QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QLiteralUnlimitedNaturalPrivate &dd, QObject *parent) :
+    QLiteralSpecification(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QLiteralUnlimitedNaturalPrivate;
 }
 
 QLiteralUnlimitedNatural::~QLiteralUnlimitedNatural()
@@ -87,7 +83,7 @@ qint32 QLiteralUnlimitedNatural::value() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QLiteralUnlimitedNatural);
+    Q_D(const QLiteralUnlimitedNatural);
     return d->value;
 }
 
@@ -95,7 +91,7 @@ void QLiteralUnlimitedNatural::setValue(qint32 value)
 {
     // This is a read-write attribute
 
-    QTUML_D(QLiteralUnlimitedNatural);
+    Q_D(QLiteralUnlimitedNatural);
     if (d->value != value) {
         d->value = value;
     }

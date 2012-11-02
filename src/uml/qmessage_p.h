@@ -43,12 +43,14 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+#include "private/qnamedelement_p.h"
+#include "qmessage.h"
+
+
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
 #include <QtUml/QtUmlEnumerations>
-
-// Base class includes
-#include "qnamedelement_p.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -59,16 +61,19 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QMessageEnd;
 class QInteraction;
 class QValueSpecification;
 class QConnector;
 class QMessage;
 
-class QMessagePrivate : public QNamedElementPrivate
+class Q_UML_EXPORT QMessagePrivate : public QNamedElementPrivate
 {
+    Q_DECLARE_PUBLIC(QMessage)
+
 public:
-    explicit QMessagePrivate(QMessage *q_umlptr = 0);
+    explicit QMessagePrivate();
     virtual ~QMessagePrivate();
 
     QtUml::MessageSort messageSort;

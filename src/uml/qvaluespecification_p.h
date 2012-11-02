@@ -44,8 +44,11 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qtypedelement_p.h"
-#include "qpackageableelement_p.h"
+#include "private/qobject_p.h"
+
+#include "private/qtypedelement_p.h"
+#include "private/qpackageableelement_p.h"
+#include "qvaluespecification.h"
 
 // Qt includes
 #include <QtCore/QString>
@@ -56,16 +59,21 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QParameterableElement;
 
-class QValueSpecificationPrivate : public QTypedElementPrivate, public QPackageableElementPrivate
+class Q_UML_EXPORT QValueSpecificationPrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QValueSpecification)
+
 public:
+    explicit QValueSpecificationPrivate();
     virtual ~QValueSpecificationPrivate();
 
 
-protected:
-    explicit QValueSpecificationPrivate();
+private:
+    QTypedElementPrivate *_wrappedTypedElementPrivate;
+    QPackageableElementPrivate *_wrappedPackageableElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

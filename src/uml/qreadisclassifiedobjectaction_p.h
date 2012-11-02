@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qaction_p.h"
+#include "private/qaction_p.h"
+#include "qreadisclassifiedobjectaction.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,15 +54,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QClassifier;
 class QInputPin;
 class QOutputPin;
 class QReadIsClassifiedObjectAction;
 
-class QReadIsClassifiedObjectActionPrivate : public QActionPrivate
+class Q_UML_EXPORT QReadIsClassifiedObjectActionPrivate : public QActionPrivate
 {
+    Q_DECLARE_PUBLIC(QReadIsClassifiedObjectAction)
+
 public:
-    explicit QReadIsClassifiedObjectActionPrivate(QReadIsClassifiedObjectAction *q_umlptr = 0);
+    explicit QReadIsClassifiedObjectActionPrivate();
     virtual ~QReadIsClassifiedObjectActionPrivate();
 
     bool isDirect;

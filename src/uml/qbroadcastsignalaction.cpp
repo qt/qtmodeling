@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QBroadcastSignalActionPrivate::QBroadcastSignalActionPrivate(QBroadcastSignalAction *q_umlptr) :
+QBroadcastSignalActionPrivate::QBroadcastSignalActionPrivate() :
     signal(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QBroadcastSignalActionPrivate::~QBroadcastSignalActionPrivate()
@@ -64,17 +63,14 @@ QBroadcastSignalActionPrivate::~QBroadcastSignalActionPrivate()
     \brief A broadcast signal action is an action that transmits a signal instance to all the potential target objects in the system, which may cause the firing of a state machine transitions or the execution of associated activities of a target object. The argument values are available to the execution of associated behaviors. The requestor continues execution immediately after the signals are sent out. It does not wait for receipt. Any reply messages are ignored and are not transmitted to the requestor.
  */
 
-QBroadcastSignalAction::QBroadcastSignalAction(QObject *parent)
-    : QObject(parent)
+QBroadcastSignalAction::QBroadcastSignalAction(QObject *parent) :
+    QInvocationAction(*new QBroadcastSignalActionPrivate, parent)
 {
-    d_umlptr = new QBroadcastSignalActionPrivate(this);
 }
 
-QBroadcastSignalAction::QBroadcastSignalAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QBroadcastSignalAction::QBroadcastSignalAction(QBroadcastSignalActionPrivate &dd, QObject *parent) :
+    QInvocationAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QBroadcastSignalActionPrivate;
 }
 
 QBroadcastSignalAction::~QBroadcastSignalAction()
@@ -88,7 +84,7 @@ QSignal *QBroadcastSignalAction::signal() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QBroadcastSignalAction);
+    Q_D(const QBroadcastSignalAction);
     return d->signal;
 }
 
@@ -96,7 +92,7 @@ void QBroadcastSignalAction::setSignal(QSignal *signal)
 {
     // This is a read-write association end
 
-    QTUML_D(QBroadcastSignalAction);
+    Q_D(QBroadcastSignalAction);
     if (d->signal != signal) {
         d->signal = signal;
     }

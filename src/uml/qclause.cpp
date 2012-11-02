@@ -47,7 +47,7 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QClausePrivate::QClausePrivate(QClause *q_umlptr) :
+QClausePrivate::QClausePrivate() :
     successorClauses(new QSet<QClause *>),
     decider(0),
     predecessorClauses(new QSet<QClause *>),
@@ -55,7 +55,6 @@ QClausePrivate::QClausePrivate(QClause *q_umlptr) :
     bodies(new QSet<QExecutableNode *>),
     tests(new QSet<QExecutableNode *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QClausePrivate::~QClausePrivate()
@@ -75,17 +74,14 @@ QClausePrivate::~QClausePrivate()
     \brief A clause is an element that represents a single branch of a conditional construct, including a test and a body section. The body section is executed only if (but not necessarily if) the test section evaluates true.
  */
 
-QClause::QClause(QObject *parent)
-    : QObject(parent)
+QClause::QClause(QObject *parent) :
+    QElement(*new QClausePrivate, parent)
 {
-    d_umlptr = new QClausePrivate(this);
 }
 
-QClause::QClause(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QClause::QClause(QClausePrivate &dd, QObject *parent) :
+    QElement(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QClausePrivate;
 }
 
 QClause::~QClause()
@@ -99,7 +95,7 @@ const QSet<QClause *> *QClause::successorClauses() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QClause);
+    Q_D(const QClause);
     return d->successorClauses;
 }
 
@@ -107,7 +103,7 @@ void QClause::addSuccessorClause(QClause *successorClause)
 {
     // This is a read-write association end
 
-    QTUML_D(QClause);
+    Q_D(QClause);
     if (!d->successorClauses->contains(successorClause)) {
         d->successorClauses->insert(successorClause);
 
@@ -120,7 +116,7 @@ void QClause::removeSuccessorClause(QClause *successorClause)
 {
     // This is a read-write association end
 
-    QTUML_D(QClause);
+    Q_D(QClause);
     if (d->successorClauses->contains(successorClause)) {
         d->successorClauses->remove(successorClause);
 
@@ -137,7 +133,7 @@ QOutputPin *QClause::decider() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QClause);
+    Q_D(const QClause);
     return d->decider;
 }
 
@@ -145,7 +141,7 @@ void QClause::setDecider(QOutputPin *decider)
 {
     // This is a read-write association end
 
-    QTUML_D(QClause);
+    Q_D(QClause);
     if (d->decider != decider) {
         d->decider = decider;
     }
@@ -158,7 +154,7 @@ const QSet<QClause *> *QClause::predecessorClauses() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QClause);
+    Q_D(const QClause);
     return d->predecessorClauses;
 }
 
@@ -166,7 +162,7 @@ void QClause::addPredecessorClause(QClause *predecessorClause)
 {
     // This is a read-write association end
 
-    QTUML_D(QClause);
+    Q_D(QClause);
     if (!d->predecessorClauses->contains(predecessorClause)) {
         d->predecessorClauses->insert(predecessorClause);
 
@@ -179,7 +175,7 @@ void QClause::removePredecessorClause(QClause *predecessorClause)
 {
     // This is a read-write association end
 
-    QTUML_D(QClause);
+    Q_D(QClause);
     if (d->predecessorClauses->contains(predecessorClause)) {
         d->predecessorClauses->remove(predecessorClause);
 
@@ -196,7 +192,7 @@ const QList<QOutputPin *> *QClause::bodyOutputs() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QClause);
+    Q_D(const QClause);
     return d->bodyOutputs;
 }
 
@@ -204,7 +200,7 @@ void QClause::addBodyOutput(QOutputPin *bodyOutput)
 {
     // This is a read-write association end
 
-    QTUML_D(QClause);
+    Q_D(QClause);
     if (!d->bodyOutputs->contains(bodyOutput)) {
         d->bodyOutputs->append(bodyOutput);
     }
@@ -214,7 +210,7 @@ void QClause::removeBodyOutput(QOutputPin *bodyOutput)
 {
     // This is a read-write association end
 
-    QTUML_D(QClause);
+    Q_D(QClause);
     if (d->bodyOutputs->contains(bodyOutput)) {
         d->bodyOutputs->removeAll(bodyOutput);
     }
@@ -227,7 +223,7 @@ const QSet<QExecutableNode *> *QClause::bodies() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QClause);
+    Q_D(const QClause);
     return d->bodies;
 }
 
@@ -235,7 +231,7 @@ void QClause::addBody(QExecutableNode *body)
 {
     // This is a read-write association end
 
-    QTUML_D(QClause);
+    Q_D(QClause);
     if (!d->bodies->contains(body)) {
         d->bodies->insert(body);
     }
@@ -245,7 +241,7 @@ void QClause::removeBody(QExecutableNode *body)
 {
     // This is a read-write association end
 
-    QTUML_D(QClause);
+    Q_D(QClause);
     if (d->bodies->contains(body)) {
         d->bodies->remove(body);
     }
@@ -258,7 +254,7 @@ const QSet<QExecutableNode *> *QClause::tests() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QClause);
+    Q_D(const QClause);
     return d->tests;
 }
 
@@ -266,7 +262,7 @@ void QClause::addTest(QExecutableNode *test)
 {
     // This is a read-write association end
 
-    QTUML_D(QClause);
+    Q_D(QClause);
     if (!d->tests->contains(test)) {
         d->tests->insert(test);
     }
@@ -276,7 +272,7 @@ void QClause::removeTest(QExecutableNode *test)
 {
     // This is a read-write association end
 
-    QTUML_D(QClause);
+    Q_D(QClause);
     if (d->tests->contains(test)) {
         d->tests->remove(test);
     }

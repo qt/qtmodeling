@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qaction_p.h"
+#include "private/qaction_p.h"
+#include "qstartclassifierbehavioraction.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInputPin;
 class QStartClassifierBehaviorAction;
 
-class QStartClassifierBehaviorActionPrivate : public QActionPrivate
+class Q_UML_EXPORT QStartClassifierBehaviorActionPrivate : public QActionPrivate
 {
+    Q_DECLARE_PUBLIC(QStartClassifierBehaviorAction)
+
 public:
-    explicit QStartClassifierBehaviorActionPrivate(QStartClassifierBehaviorAction *q_umlptr = 0);
+    explicit QStartClassifierBehaviorActionPrivate();
     virtual ~QStartClassifierBehaviorActionPrivate();
 
     QInputPin *object;

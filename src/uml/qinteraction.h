@@ -44,8 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtUml/QBehavior>
-#include <QtUml/QInteractionFragment>
+#include <QtCore/QObject>
 
 // Qt includes
 #include <QtCore/QList>
@@ -57,16 +56,30 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for aggregated 'base classes'
+class QBehavior;
+class QInteractionFragment;
+
+// Forward decls for function parameters
 class QMessage;
 class QLifeline;
 class QAction;
 class QGate;
 
-class Q_UML_EXPORT QInteraction : public QBehavior, public QInteractionFragment
+class QInteractionPrivate;
+
+class Q_UML_EXPORT QInteraction : public QObject
 {
     Q_OBJECT
 
-    // From QBehavior
+    // From QInteraction
+    Q_PROPERTY(const QSet<QAction *> * actions READ actions)
+    Q_PROPERTY(const QSet<QMessage *> * messages READ messages)
+    Q_PROPERTY(const QSet<QGate *> * formalGates READ formalGates)
+    Q_PROPERTY(const QList<QInteractionFragment *> * fragments READ fragments)
+    Q_PROPERTY(const QSet<QLifeline *> * lifelines READ lifelines)
+
+    // From aggregated QBehavior
     Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant)
     Q_PROPERTY(QBehavioralFeature * specification READ specification WRITE setSpecification)
     Q_PROPERTY(const QSet<QConstraint *> * postconditions READ postconditions)
@@ -76,12 +89,12 @@ class Q_UML_EXPORT QInteraction : public QBehavior, public QInteractionFragment
     Q_PROPERTY(const QSet<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
     Q_PROPERTY(QBehavioredClassifier * context READ context)
 
-    // From QElement
+    // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
     Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
-    // From QNamedElement
+    // From aggregated QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
@@ -89,20 +102,14 @@ class Q_UML_EXPORT QInteraction : public QBehavior, public QInteractionFragment
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
     Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
-    // From QInteractionFragment
+    // From aggregated QInteractionFragment
     Q_PROPERTY(const QSet<QGeneralOrdering *> * generalOrderings READ generalOrderings)
     Q_PROPERTY(QInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
     Q_PROPERTY(const QSet<QLifeline *> * covered READ covered)
     Q_PROPERTY(QInteractionOperand * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
 
-    // From QInteraction
-    Q_PROPERTY(const QSet<QAction *> * actions READ actions)
-    Q_PROPERTY(const QSet<QMessage *> * messages READ messages)
-    Q_PROPERTY(const QSet<QGate *> * formalGates READ formalGates)
-    Q_PROPERTY(const QList<QInteractionFragment *> * fragments READ fragments)
-    Q_PROPERTY(const QSet<QLifeline *> * lifelines READ lifelines)
-
     Q_DISABLE_COPY(QInteraction)
+    Q_DECLARE_PRIVATE(QInteraction)
 
 public:
     explicit QInteraction(QObject *parent = 0);
@@ -126,12 +133,17 @@ public:
     void removeLifeline(QLifeline *lifeline);
 
 protected:
-    explicit QInteraction(bool createPimpl, QObject *parent = 0);
+    explicit QInteraction(QInteractionPrivate &dd, QObject *parent = 0);
+
+private:
+    QBehavior *_wrappedBehavior;
+    QInteractionFragment *_wrappedInteractionFragment;
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QInteraction) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *)
 
 QT_END_HEADER

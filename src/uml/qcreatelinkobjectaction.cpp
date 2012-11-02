@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCreateLinkObjectActionPrivate::QCreateLinkObjectActionPrivate(QCreateLinkObjectAction *q_umlptr) :
+QCreateLinkObjectActionPrivate::QCreateLinkObjectActionPrivate() :
     result(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QCreateLinkObjectActionPrivate::~QCreateLinkObjectActionPrivate()
@@ -64,17 +63,14 @@ QCreateLinkObjectActionPrivate::~QCreateLinkObjectActionPrivate()
     \brief A create link object action creates a link object.
  */
 
-QCreateLinkObjectAction::QCreateLinkObjectAction(QObject *parent)
-    : QCreateLinkAction(false, parent)
+QCreateLinkObjectAction::QCreateLinkObjectAction(QObject *parent) :
+    QCreateLinkAction(*new QCreateLinkObjectActionPrivate, parent)
 {
-    d_umlptr = new QCreateLinkObjectActionPrivate(this);
 }
 
-QCreateLinkObjectAction::QCreateLinkObjectAction(bool createPimpl, QObject *parent)
-    : QCreateLinkAction(createPimpl, parent)
+QCreateLinkObjectAction::QCreateLinkObjectAction(QCreateLinkObjectActionPrivate &dd, QObject *parent) :
+    QCreateLinkAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QCreateLinkObjectActionPrivate;
 }
 
 QCreateLinkObjectAction::~QCreateLinkObjectAction()
@@ -88,7 +84,7 @@ QOutputPin *QCreateLinkObjectAction::result() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QCreateLinkObjectAction);
+    Q_D(const QCreateLinkObjectAction);
     return d->result;
 }
 
@@ -96,7 +92,7 @@ void QCreateLinkObjectAction::setResult(QOutputPin *result)
 {
     // This is a read-write association end
 
-    QTUML_D(QCreateLinkObjectAction);
+    Q_D(QCreateLinkObjectAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->result));

@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QAnyReceiveEventPrivate::QAnyReceiveEventPrivate(QAnyReceiveEvent *q_umlptr)
+QAnyReceiveEventPrivate::QAnyReceiveEventPrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QAnyReceiveEventPrivate::~QAnyReceiveEventPrivate()
@@ -62,17 +61,14 @@ QAnyReceiveEventPrivate::~QAnyReceiveEventPrivate()
     \brief A trigger for an AnyReceiveEvent is triggered by the receipt of any message that is not explicitly handled by any related trigger.
  */
 
-QAnyReceiveEvent::QAnyReceiveEvent(QObject *parent)
-    : QObject(parent)
+QAnyReceiveEvent::QAnyReceiveEvent(QObject *parent) :
+    QMessageEvent(*new QAnyReceiveEventPrivate, parent)
 {
-    d_umlptr = new QAnyReceiveEventPrivate(this);
 }
 
-QAnyReceiveEvent::QAnyReceiveEvent(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QAnyReceiveEvent::QAnyReceiveEvent(QAnyReceiveEventPrivate &dd, QObject *parent) :
+    QMessageEvent(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QAnyReceiveEventPrivate;
 }
 
 QAnyReceiveEvent::~QAnyReceiveEvent()

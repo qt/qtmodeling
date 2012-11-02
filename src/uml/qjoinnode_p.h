@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qcontrolnode_p.h"
+#include "private/qcontrolnode_p.h"
+#include "qjoinnode.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QValueSpecification;
 class QJoinNode;
 
-class QJoinNodePrivate : public QControlNodePrivate
+class Q_UML_EXPORT QJoinNodePrivate : public QControlNodePrivate
 {
+    Q_DECLARE_PUBLIC(QJoinNode)
+
 public:
-    explicit QJoinNodePrivate(QJoinNode *q_umlptr = 0);
+    explicit QJoinNodePrivate();
     virtual ~QJoinNodePrivate();
 
     bool isCombineDuplicate;
