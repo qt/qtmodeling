@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QModelPrivate::QModelPrivate(QModel *q_umlptr)
+QModelPrivate::QModelPrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QModelPrivate::~QModelPrivate()
@@ -62,17 +61,14 @@ QModelPrivate::~QModelPrivate()
     \brief A model captures a view of a physical system. It is an abstraction of the physical system, with a certain purpose. This purpose determines what is to be included in the model and what is irrelevant. Thus the model completely describes those aspects of the physical system that are relevant to the purpose of the model, at the appropriate level of detail.
  */
 
-QModel::QModel(QObject *parent)
-    : QPackage(false, parent)
+QModel::QModel(QObject *parent) :
+    QPackage(*new QModelPrivate, parent)
 {
-    d_umlptr = new QModelPrivate(this);
 }
 
-QModel::QModel(bool createPimpl, QObject *parent)
-    : QPackage(createPimpl, parent)
+QModel::QModel(QModelPrivate &dd, QObject *parent) :
+    QPackage(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QModelPrivate;
 }
 
 QModel::~QModel()
@@ -86,7 +82,7 @@ QString QModel::viewpoint() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QModel);
+    Q_D(const QModel);
     return d->viewpoint;
 }
 
@@ -94,7 +90,7 @@ void QModel::setViewpoint(QString viewpoint)
 {
     // This is a read-write attribute
 
-    QTUML_D(QModel);
+    Q_D(QModel);
     if (d->viewpoint != viewpoint) {
         d->viewpoint = viewpoint;
     }

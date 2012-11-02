@@ -52,7 +52,10 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QValueSpecification;
+
+class QValuePinPrivate;
 
 class Q_UML_EXPORT QValuePin : public QInputPin
 {
@@ -62,6 +65,7 @@ class Q_UML_EXPORT QValuePin : public QInputPin
     Q_PROPERTY(QValueSpecification * value READ value WRITE setValue)
 
     Q_DISABLE_COPY(QValuePin)
+    Q_DECLARE_PRIVATE(QValuePin)
 
 public:
     explicit QValuePin(QObject *parent = 0);
@@ -72,12 +76,13 @@ public:
     void setValue(QValueSpecification *value);
 
 protected:
-    explicit QValuePin(bool createPimpl, QObject *parent = 0);
+    explicit QValuePin(QValuePinPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QValuePin) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QValuePin) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QValuePin) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QValuePin) *> *)
 
 QT_END_HEADER

@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QInteractionFragment>
 
 // Qt includes
@@ -56,30 +55,15 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QLifeline;
 class QGeneralOrdering;
 
-class Q_UML_EXPORT QOccurrenceSpecification : public QObject, public QInteractionFragment
+class QOccurrenceSpecificationPrivate;
+
+class Q_UML_EXPORT QOccurrenceSpecification : public QInteractionFragment
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From QInteractionFragment
-    Q_PROPERTY(const QSet<QGeneralOrdering *> * generalOrderings READ generalOrderings)
-    Q_PROPERTY(QInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
-    Q_PROPERTY(QInteractionOperand * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
 
     // From QOccurrenceSpecification
     Q_PROPERTY(QLifeline * covered READ covered WRITE setCovered)
@@ -87,6 +71,7 @@ class Q_UML_EXPORT QOccurrenceSpecification : public QObject, public QInteractio
     Q_PROPERTY(const QSet<QGeneralOrdering *> * toBefore READ toBefore)
 
     Q_DISABLE_COPY(QOccurrenceSpecification)
+    Q_DECLARE_PRIVATE(QOccurrenceSpecification)
 
 public:
     explicit QOccurrenceSpecification(QObject *parent = 0);
@@ -103,12 +88,13 @@ public:
     void removeToBefore(QGeneralOrdering *toBefore);
 
 protected:
-    explicit QOccurrenceSpecification(bool createPimpl, QObject *parent = 0);
+    explicit QOccurrenceSpecification(QOccurrenceSpecificationPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *> *)
 
 QT_END_HEADER

@@ -63,7 +63,13 @@ QTypePrivate::~QTypePrivate()
     \brief A type is a named element that is used as the type for a typed element. A type can be contained in a package.A type constrains the values represented by a typed element.
  */
 
-QType::QType()
+QType::QType(QObject *parent) :
+    QPackageableElement(*new QTypePrivate, parent)
+{
+}
+
+QType::QType(QTypePrivate &dd, QObject *parent) :
+    QPackageableElement(dd, parent)
 {
 }
 
@@ -78,7 +84,7 @@ QPackage *QType::package() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QType);
+    Q_D(const QType);
     return d->package;
 }
 
@@ -86,7 +92,7 @@ void QType::setPackage(QPackage *package)
 {
     // This is a read-write association end
 
-    QTUML_D(QType);
+    Q_D(QType);
     if (d->package != package) {
         // Adjust opposite property
         if (d->package)

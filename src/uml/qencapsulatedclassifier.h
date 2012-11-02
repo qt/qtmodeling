@@ -55,23 +55,37 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QPort;
+
+class QEncapsulatedClassifierPrivate;
 
 class Q_UML_EXPORT QEncapsulatedClassifier : public QStructuredClassifier
 {
+    Q_OBJECT
+
+    // From QEncapsulatedClassifier
+    Q_PROPERTY(const QSet<QPort *> * ownedPorts READ ownedPorts)
+
     Q_DISABLE_COPY(QEncapsulatedClassifier)
+    Q_DECLARE_PRIVATE(QEncapsulatedClassifier)
 
 public:
+    explicit QEncapsulatedClassifier(QObject *parent = 0);
     virtual ~QEncapsulatedClassifier();
 
     // Association-ends
     const QSet<QPort *> *ownedPorts() const;
 
 protected:
-    explicit QEncapsulatedClassifier();
+    explicit QEncapsulatedClassifier(QEncapsulatedClassifierPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QEncapsulatedClassifier) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QEncapsulatedClassifier) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QEncapsulatedClassifier) *> *)
 
 QT_END_HEADER
 

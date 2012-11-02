@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qclassifier_p.h"
+#include "private/qclassifier_p.h"
+#include "qsignal.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -55,13 +56,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QProperty;
 class QSignal;
 
-class QSignalPrivate : public QClassifierPrivate
+class Q_UML_EXPORT QSignalPrivate : public QClassifierPrivate
 {
+    Q_DECLARE_PUBLIC(QSignal)
+
 public:
-    explicit QSignalPrivate(QSignal *q_umlptr = 0);
+    explicit QSignalPrivate();
     virtual ~QSignalPrivate();
 
     QList<QProperty *> *ownedAttributes;

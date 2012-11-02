@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCentralBufferNodePrivate::QCentralBufferNodePrivate(QCentralBufferNode *q_umlptr)
+QCentralBufferNodePrivate::QCentralBufferNodePrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QCentralBufferNodePrivate::~QCentralBufferNodePrivate()
@@ -62,17 +61,14 @@ QCentralBufferNodePrivate::~QCentralBufferNodePrivate()
     \brief A central buffer node is an object node for managing flows from multiple sources and destinations.
  */
 
-QCentralBufferNode::QCentralBufferNode(QObject *parent)
-    : QObject(parent)
+QCentralBufferNode::QCentralBufferNode(QObject *parent) :
+    QObjectNode(*new QCentralBufferNodePrivate, parent)
 {
-    d_umlptr = new QCentralBufferNodePrivate(this);
 }
 
-QCentralBufferNode::QCentralBufferNode(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QCentralBufferNode::QCentralBufferNode(QCentralBufferNodePrivate &dd, QObject *parent) :
+    QObjectNode(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QCentralBufferNodePrivate;
 }
 
 QCentralBufferNode::~QCentralBufferNode()

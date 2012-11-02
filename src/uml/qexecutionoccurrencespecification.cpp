@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QExecutionOccurrenceSpecificationPrivate::QExecutionOccurrenceSpecificationPrivate(QExecutionOccurrenceSpecification *q_umlptr) :
+QExecutionOccurrenceSpecificationPrivate::QExecutionOccurrenceSpecificationPrivate() :
     execution(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QExecutionOccurrenceSpecificationPrivate::~QExecutionOccurrenceSpecificationPrivate()
@@ -64,17 +63,14 @@ QExecutionOccurrenceSpecificationPrivate::~QExecutionOccurrenceSpecificationPriv
     \brief An execution occurrence specification represents moments in time at which actions or behaviors start or finish.
  */
 
-QExecutionOccurrenceSpecification::QExecutionOccurrenceSpecification(QObject *parent)
-    : QOccurrenceSpecification(false, parent)
+QExecutionOccurrenceSpecification::QExecutionOccurrenceSpecification(QObject *parent) :
+    QOccurrenceSpecification(*new QExecutionOccurrenceSpecificationPrivate, parent)
 {
-    d_umlptr = new QExecutionOccurrenceSpecificationPrivate(this);
 }
 
-QExecutionOccurrenceSpecification::QExecutionOccurrenceSpecification(bool createPimpl, QObject *parent)
-    : QOccurrenceSpecification(createPimpl, parent)
+QExecutionOccurrenceSpecification::QExecutionOccurrenceSpecification(QExecutionOccurrenceSpecificationPrivate &dd, QObject *parent) :
+    QOccurrenceSpecification(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QExecutionOccurrenceSpecificationPrivate;
 }
 
 QExecutionOccurrenceSpecification::~QExecutionOccurrenceSpecification()
@@ -88,7 +84,7 @@ QExecutionSpecification *QExecutionOccurrenceSpecification::execution() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QExecutionOccurrenceSpecification);
+    Q_D(const QExecutionOccurrenceSpecification);
     return d->execution;
 }
 
@@ -96,7 +92,7 @@ void QExecutionOccurrenceSpecification::setExecution(QExecutionSpecification *ex
 {
     // This is a read-write association end
 
-    QTUML_D(QExecutionOccurrenceSpecification);
+    Q_D(QExecutionOccurrenceSpecification);
     if (d->execution != execution) {
         d->execution = execution;
     }

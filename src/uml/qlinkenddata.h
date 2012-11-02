@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QElement>
 
 // Qt includes
@@ -56,18 +55,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QProperty;
 class QQualifierValue;
 class QInputPin;
 
-class Q_UML_EXPORT QLinkEndData : public QObject, public QElement
+class QLinkEndDataPrivate;
+
+class Q_UML_EXPORT QLinkEndData : public QElement
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QLinkEndData
     Q_PROPERTY(QInputPin * value READ value WRITE setValue)
@@ -75,6 +72,7 @@ class Q_UML_EXPORT QLinkEndData : public QObject, public QElement
     Q_PROPERTY(const QSet<QQualifierValue *> * qualifiers READ qualifiers)
 
     Q_DISABLE_COPY(QLinkEndData)
+    Q_DECLARE_PRIVATE(QLinkEndData)
 
 public:
     explicit QLinkEndData(QObject *parent = 0);
@@ -90,12 +88,13 @@ public:
     void removeQualifier(QQualifierValue *qualifier);
 
 protected:
-    explicit QLinkEndData(bool createPimpl, QObject *parent = 0);
+    explicit QLinkEndData(QLinkEndDataPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *> *)
 
 QT_END_HEADER

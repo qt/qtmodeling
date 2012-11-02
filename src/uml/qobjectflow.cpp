@@ -46,13 +46,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QObjectFlowPrivate::QObjectFlowPrivate(QObjectFlow *q_umlptr) :
+QObjectFlowPrivate::QObjectFlowPrivate() :
     isMultireceive(false),
     isMulticast(false),
     selection(0),
     transformation(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QObjectFlowPrivate::~QObjectFlowPrivate()
@@ -67,17 +66,14 @@ QObjectFlowPrivate::~QObjectFlowPrivate()
     \brief An object flow is an activity edge that can have objects or data passing along it.Object flows have support for multicast/receive, token selection from object nodes, and transformation of tokens.
  */
 
-QObjectFlow::QObjectFlow(QObject *parent)
-    : QObject(parent)
+QObjectFlow::QObjectFlow(QObject *parent) :
+    QActivityEdge(*new QObjectFlowPrivate, parent)
 {
-    d_umlptr = new QObjectFlowPrivate(this);
 }
 
-QObjectFlow::QObjectFlow(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QObjectFlow::QObjectFlow(QObjectFlowPrivate &dd, QObject *parent) :
+    QActivityEdge(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QObjectFlowPrivate;
 }
 
 QObjectFlow::~QObjectFlow()
@@ -91,7 +87,7 @@ bool QObjectFlow::isMultireceive() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QObjectFlow);
+    Q_D(const QObjectFlow);
     return d->isMultireceive;
 }
 
@@ -99,7 +95,7 @@ void QObjectFlow::setMultireceive(bool isMultireceive)
 {
     // This is a read-write attribute
 
-    QTUML_D(QObjectFlow);
+    Q_D(QObjectFlow);
     if (d->isMultireceive != isMultireceive) {
         d->isMultireceive = isMultireceive;
     }
@@ -112,7 +108,7 @@ bool QObjectFlow::isMulticast() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QObjectFlow);
+    Q_D(const QObjectFlow);
     return d->isMulticast;
 }
 
@@ -120,7 +116,7 @@ void QObjectFlow::setMulticast(bool isMulticast)
 {
     // This is a read-write attribute
 
-    QTUML_D(QObjectFlow);
+    Q_D(QObjectFlow);
     if (d->isMulticast != isMulticast) {
         d->isMulticast = isMulticast;
     }
@@ -133,7 +129,7 @@ QBehavior *QObjectFlow::selection() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QObjectFlow);
+    Q_D(const QObjectFlow);
     return d->selection;
 }
 
@@ -141,7 +137,7 @@ void QObjectFlow::setSelection(QBehavior *selection)
 {
     // This is a read-write association end
 
-    QTUML_D(QObjectFlow);
+    Q_D(QObjectFlow);
     if (d->selection != selection) {
         d->selection = selection;
     }
@@ -154,7 +150,7 @@ QBehavior *QObjectFlow::transformation() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QObjectFlow);
+    Q_D(const QObjectFlow);
     return d->transformation;
 }
 
@@ -162,7 +158,7 @@ void QObjectFlow::setTransformation(QBehavior *transformation)
 {
     // This is a read-write association end
 
-    QTUML_D(QObjectFlow);
+    Q_D(QObjectFlow);
     if (d->transformation != transformation) {
         d->transformation = transformation;
     }

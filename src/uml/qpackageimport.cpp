@@ -47,12 +47,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QPackageImportPrivate::QPackageImportPrivate(QPackageImport *q_umlptr) :
+QPackageImportPrivate::QPackageImportPrivate() :
     visibility(QtUml::VisibilityPublic),
     importingNamespace(0),
     importedPackage(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QPackageImportPrivate::~QPackageImportPrivate()
@@ -67,17 +66,14 @@ QPackageImportPrivate::~QPackageImportPrivate()
     \brief A package import is a relationship that allows the use of unqualified names to refer to package members from other namespaces.
  */
 
-QPackageImport::QPackageImport(QObject *parent)
-    : QObject(parent)
+QPackageImport::QPackageImport(QObject *parent) :
+    QDirectedRelationship(*new QPackageImportPrivate, parent)
 {
-    d_umlptr = new QPackageImportPrivate(this);
 }
 
-QPackageImport::QPackageImport(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QPackageImport::QPackageImport(QPackageImportPrivate &dd, QObject *parent) :
+    QDirectedRelationship(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QPackageImportPrivate;
 }
 
 QPackageImport::~QPackageImport()
@@ -91,7 +87,7 @@ QtUml::VisibilityKind QPackageImport::visibility() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QPackageImport);
+    Q_D(const QPackageImport);
     return d->visibility;
 }
 
@@ -99,7 +95,7 @@ void QPackageImport::setVisibility(QtUml::VisibilityKind visibility)
 {
     // This is a read-write attribute
 
-    QTUML_D(QPackageImport);
+    Q_D(QPackageImport);
     if (d->visibility != visibility) {
         d->visibility = visibility;
     }
@@ -112,7 +108,7 @@ QNamespace *QPackageImport::importingNamespace() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QPackageImport);
+    Q_D(const QPackageImport);
     return d->importingNamespace;
 }
 
@@ -120,7 +116,7 @@ void QPackageImport::setImportingNamespace(QNamespace *importingNamespace)
 {
     // This is a read-write association end
 
-    QTUML_D(QPackageImport);
+    Q_D(QPackageImport);
     if (d->importingNamespace != importingNamespace) {
         // Adjust opposite property
         if (d->importingNamespace)
@@ -150,7 +146,7 @@ QPackage *QPackageImport::importedPackage() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QPackageImport);
+    Q_D(const QPackageImport);
     return d->importedPackage;
 }
 
@@ -158,7 +154,7 @@ void QPackageImport::setImportedPackage(QPackage *importedPackage)
 {
     // This is a read-write association end
 
-    QTUML_D(QPackageImport);
+    Q_D(QPackageImport);
     if (d->importedPackage != importedPackage) {
         // Adjust subsetted property(ies)
         d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(d->importedPackage));

@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qnode_p.h"
+#include "private/qnode_p.h"
+#include "qexecutionenvironment.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,10 +55,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QExecutionEnvironment;
 
-class QExecutionEnvironmentPrivate : public QNodePrivate
+class Q_UML_EXPORT QExecutionEnvironmentPrivate : public QNodePrivate
 {
+    Q_DECLARE_PUBLIC(QExecutionEnvironment)
+
 public:
-    explicit QExecutionEnvironmentPrivate(QExecutionEnvironment *q_umlptr = 0);
+    explicit QExecutionEnvironmentPrivate();
     virtual ~QExecutionEnvironmentPrivate();
 
 };

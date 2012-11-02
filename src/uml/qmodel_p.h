@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qpackage_p.h"
+#include "private/qpackage_p.h"
+#include "qmodel.h"
 
 // Qt includes
 #include <QtCore/QString>
@@ -56,10 +57,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QModel;
 
-class QModelPrivate : public QPackagePrivate
+class Q_UML_EXPORT QModelPrivate : public QPackagePrivate
 {
+    Q_DECLARE_PUBLIC(QModel)
+
 public:
-    explicit QModelPrivate(QModel *q_umlptr = 0);
+    explicit QModelPrivate();
     virtual ~QModelPrivate();
 
     QString viewpoint;

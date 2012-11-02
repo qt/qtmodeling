@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QExtensionEndPrivate::QExtensionEndPrivate(QExtensionEnd *q_umlptr) :
+QExtensionEndPrivate::QExtensionEndPrivate() :
     type(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QExtensionEndPrivate::~QExtensionEndPrivate()
@@ -64,17 +63,14 @@ QExtensionEndPrivate::~QExtensionEndPrivate()
     \brief An extension end is used to tie an extension to a stereotype when extending a metaclass.The default multiplicity of an extension end is 0..1.
  */
 
-QExtensionEnd::QExtensionEnd(QObject *parent)
-    : QProperty(false, parent)
+QExtensionEnd::QExtensionEnd(QObject *parent) :
+    QProperty(*new QExtensionEndPrivate, parent)
 {
-    d_umlptr = new QExtensionEndPrivate(this);
 }
 
-QExtensionEnd::QExtensionEnd(bool createPimpl, QObject *parent)
-    : QProperty(createPimpl, parent)
+QExtensionEnd::QExtensionEnd(QExtensionEndPrivate &dd, QObject *parent) :
+    QProperty(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QExtensionEndPrivate;
 }
 
 QExtensionEnd::~QExtensionEnd()
@@ -90,7 +86,7 @@ qint32 QExtensionEnd::lower() const
 
     qWarning("QExtensionEnd::lower: to be implemented (this is a derived attribute)");
 
-    //QTUML_D(const QExtensionEnd);
+    //Q_D(const QExtensionEnd);
     //return <derived-return>;
 }
 
@@ -100,7 +96,7 @@ void QExtensionEnd::setLower(qint32 lower)
 
     qWarning("QExtensionEnd::setLower: to be implemented (this is a derived attribute)");
 
-    //QTUML_D(QExtensionEnd);
+    //Q_D(QExtensionEnd);
     if (false /* <derived-change-criteria> */) {
         // <derived-code>
     }
@@ -113,7 +109,7 @@ QStereotype *QExtensionEnd::type() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QExtensionEnd);
+    Q_D(const QExtensionEnd);
     return d->type;
 }
 
@@ -121,7 +117,7 @@ void QExtensionEnd::setType(QStereotype *type)
 {
     // This is a read-write association end
 
-    QTUML_D(QExtensionEnd);
+    Q_D(QExtensionEnd);
     if (d->type != type) {
         d->type = type;
     }

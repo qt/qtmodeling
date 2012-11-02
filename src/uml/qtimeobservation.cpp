@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QTimeObservationPrivate::QTimeObservationPrivate(QTimeObservation *q_umlptr) :
+QTimeObservationPrivate::QTimeObservationPrivate() :
     firstEvent(true),
     event(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QTimeObservationPrivate::~QTimeObservationPrivate()
@@ -65,17 +64,14 @@ QTimeObservationPrivate::~QTimeObservationPrivate()
     \brief A time observation is a reference to a time instant during an execution. It points out the element in the model to observe and whether the observation is when this model element is entered or when it is exited.
  */
 
-QTimeObservation::QTimeObservation(QObject *parent)
-    : QObject(parent)
+QTimeObservation::QTimeObservation(QObject *parent) :
+    QObservation(*new QTimeObservationPrivate, parent)
 {
-    d_umlptr = new QTimeObservationPrivate(this);
 }
 
-QTimeObservation::QTimeObservation(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QTimeObservation::QTimeObservation(QTimeObservationPrivate &dd, QObject *parent) :
+    QObservation(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QTimeObservationPrivate;
 }
 
 QTimeObservation::~QTimeObservation()
@@ -89,7 +85,7 @@ bool QTimeObservation::firstEvent() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QTimeObservation);
+    Q_D(const QTimeObservation);
     return d->firstEvent;
 }
 
@@ -97,7 +93,7 @@ void QTimeObservation::setFirstEvent(bool firstEvent)
 {
     // This is a read-write attribute
 
-    QTUML_D(QTimeObservation);
+    Q_D(QTimeObservation);
     if (d->firstEvent != firstEvent) {
         d->firstEvent = firstEvent;
     }
@@ -110,7 +106,7 @@ QNamedElement *QTimeObservation::event() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTimeObservation);
+    Q_D(const QTimeObservation);
     return d->event;
 }
 
@@ -118,7 +114,7 @@ void QTimeObservation::setEvent(QNamedElement *event)
 {
     // This is a read-write association end
 
-    QTUML_D(QTimeObservation);
+    Q_D(QTimeObservation);
     if (d->event != event) {
         d->event = event;
     }

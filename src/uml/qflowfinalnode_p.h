@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qfinalnode_p.h"
+#include "private/qfinalnode_p.h"
+#include "qflowfinalnode.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,10 +55,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QFlowFinalNode;
 
-class QFlowFinalNodePrivate : public QFinalNodePrivate
+class Q_UML_EXPORT QFlowFinalNodePrivate : public QFinalNodePrivate
 {
+    Q_DECLARE_PUBLIC(QFlowFinalNode)
+
 public:
-    explicit QFlowFinalNodePrivate(QFlowFinalNode *q_umlptr = 0);
+    explicit QFlowFinalNodePrivate();
     virtual ~QFlowFinalNodePrivate();
 
 };

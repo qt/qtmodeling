@@ -52,18 +52,26 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QWriteLinkActionPrivate;
+
 class Q_UML_EXPORT QWriteLinkAction : public QLinkAction
 {
     Q_DISABLE_COPY(QWriteLinkAction)
+    Q_DECLARE_PRIVATE(QWriteLinkAction)
 
 public:
+    explicit QWriteLinkAction(QObject *parent = 0);
     virtual ~QWriteLinkAction();
 
 protected:
-    explicit QWriteLinkAction();
+    explicit QWriteLinkAction(QWriteLinkActionPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QWriteLinkAction) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QWriteLinkAction) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QWriteLinkAction) *> *)
 
 QT_END_HEADER
 

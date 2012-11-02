@@ -55,14 +55,25 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInputPin;
 class QPort;
 
+class QInvocationActionPrivate;
+
 class Q_UML_EXPORT QInvocationAction : public QAction
 {
+    Q_OBJECT
+
+    // From QInvocationAction
+    Q_PROPERTY(const QList<QInputPin *> * arguments READ arguments)
+    Q_PROPERTY(QPort * onPort READ onPort WRITE setOnPort)
+
     Q_DISABLE_COPY(QInvocationAction)
+    Q_DECLARE_PRIVATE(QInvocationAction)
 
 public:
+    explicit QInvocationAction(QObject *parent = 0);
     virtual ~QInvocationAction();
 
     // Association-ends
@@ -73,10 +84,14 @@ public:
     void setOnPort(QPort *onPort);
 
 protected:
-    explicit QInvocationAction();
+    explicit QInvocationAction(QInvocationActionPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QInvocationAction) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QInvocationAction) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QInvocationAction) *> *)
 
 QT_END_HEADER
 

@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qmessageevent_p.h"
+#include "private/qmessageevent_p.h"
+#include "qcallevent.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QOperation;
 class QCallEvent;
 
-class QCallEventPrivate : public QMessageEventPrivate
+class Q_UML_EXPORT QCallEventPrivate : public QMessageEventPrivate
 {
+    Q_DECLARE_PUBLIC(QCallEvent)
+
 public:
-    explicit QCallEventPrivate(QCallEvent *q_umlptr = 0);
+    explicit QCallEventPrivate();
     virtual ~QCallEventPrivate();
 
     QOperation *operation;

@@ -47,12 +47,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QReplyActionPrivate::QReplyActionPrivate(QReplyAction *q_umlptr) :
+QReplyActionPrivate::QReplyActionPrivate() :
     replyToCall(0),
     returnInformation(0),
     replyValues(new QSet<QInputPin *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QReplyActionPrivate::~QReplyActionPrivate()
@@ -68,17 +67,14 @@ QReplyActionPrivate::~QReplyActionPrivate()
     \brief A reply action is an action that accepts a set of return values and a value containing return information produced by a previous accept call action. The reply action returns the values to the caller of the previous call, completing execution of the call.
  */
 
-QReplyAction::QReplyAction(QObject *parent)
-    : QObject(parent)
+QReplyAction::QReplyAction(QObject *parent) :
+    QAction(*new QReplyActionPrivate, parent)
 {
-    d_umlptr = new QReplyActionPrivate(this);
 }
 
-QReplyAction::QReplyAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QReplyAction::QReplyAction(QReplyActionPrivate &dd, QObject *parent) :
+    QAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QReplyActionPrivate;
 }
 
 QReplyAction::~QReplyAction()
@@ -92,7 +88,7 @@ QTrigger *QReplyAction::replyToCall() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QReplyAction);
+    Q_D(const QReplyAction);
     return d->replyToCall;
 }
 
@@ -100,7 +96,7 @@ void QReplyAction::setReplyToCall(QTrigger *replyToCall)
 {
     // This is a read-write association end
 
-    QTUML_D(QReplyAction);
+    Q_D(QReplyAction);
     if (d->replyToCall != replyToCall) {
         d->replyToCall = replyToCall;
     }
@@ -113,7 +109,7 @@ QInputPin *QReplyAction::returnInformation() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QReplyAction);
+    Q_D(const QReplyAction);
     return d->returnInformation;
 }
 
@@ -121,7 +117,7 @@ void QReplyAction::setReturnInformation(QInputPin *returnInformation)
 {
     // This is a read-write association end
 
-    QTUML_D(QReplyAction);
+    Q_D(QReplyAction);
     if (d->returnInformation != returnInformation) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->returnInformation));
@@ -142,7 +138,7 @@ const QSet<QInputPin *> *QReplyAction::replyValues() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QReplyAction);
+    Q_D(const QReplyAction);
     return d->replyValues;
 }
 
@@ -150,7 +146,7 @@ void QReplyAction::addReplyValue(QInputPin *replyValue)
 {
     // This is a read-write association end
 
-    QTUML_D(QReplyAction);
+    Q_D(QReplyAction);
     if (!d->replyValues->contains(replyValue)) {
         d->replyValues->insert(replyValue);
 
@@ -163,7 +159,7 @@ void QReplyAction::removeReplyValue(QInputPin *replyValue)
 {
     // This is a read-write association end
 
-    QTUML_D(QReplyAction);
+    Q_D(QReplyAction);
     if (d->replyValues->contains(replyValue)) {
         d->replyValues->remove(replyValue);
 

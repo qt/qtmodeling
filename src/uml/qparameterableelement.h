@@ -52,13 +52,24 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QTemplateParameter;
 
-class Q_UML_EXPORT QParameterableElement : public virtual QElement
+class QParameterableElementPrivate;
+
+class Q_UML_EXPORT QParameterableElement : public QElement
 {
+    Q_OBJECT
+
+    // From QParameterableElement
+    Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
+    Q_PROPERTY(QTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
+
     Q_DISABLE_COPY(QParameterableElement)
+    Q_DECLARE_PRIVATE(QParameterableElement)
 
 public:
+    explicit QParameterableElement(QObject *parent = 0);
     virtual ~QParameterableElement();
 
     // Association-ends
@@ -72,10 +83,14 @@ public:
     bool isTemplateParameter() const;
 
 protected:
-    explicit QParameterableElement();
+    explicit QParameterableElement(QParameterableElementPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *)
 
 QT_END_HEADER
 

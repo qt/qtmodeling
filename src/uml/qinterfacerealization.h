@@ -52,8 +52,11 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInterface;
 class QBehavioredClassifier;
+
+class QInterfaceRealizationPrivate;
 
 class Q_UML_EXPORT QInterfaceRealization : public QRealization
 {
@@ -64,6 +67,7 @@ class Q_UML_EXPORT QInterfaceRealization : public QRealization
     Q_PROPERTY(QInterface * contract READ contract WRITE setContract)
 
     Q_DISABLE_COPY(QInterfaceRealization)
+    Q_DECLARE_PRIVATE(QInterfaceRealization)
 
 public:
     explicit QInterfaceRealization(QObject *parent = 0);
@@ -82,12 +86,13 @@ public:
     void removeSupplier(QInterface *contract);
 
 protected:
-    explicit QInterfaceRealization(bool createPimpl, QObject *parent = 0);
+    explicit QInterfaceRealization(QInterfaceRealizationPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QInterfaceRealization) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QInterfaceRealization) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QInterfaceRealization) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QInterfaceRealization) *> *)
 
 QT_END_HEADER

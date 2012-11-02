@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qdatatype_p.h"
+#include "private/qdatatype_p.h"
+#include "qenumeration.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -55,13 +56,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QEnumerationLiteral;
 class QEnumeration;
 
-class QEnumerationPrivate : public QDataTypePrivate
+class Q_UML_EXPORT QEnumerationPrivate : public QDataTypePrivate
 {
+    Q_DECLARE_PUBLIC(QEnumeration)
+
 public:
-    explicit QEnumerationPrivate(QEnumeration *q_umlptr = 0);
+    explicit QEnumerationPrivate();
     virtual ~QEnumerationPrivate();
 
     QList<QEnumerationLiteral *> *ownedLiterals;

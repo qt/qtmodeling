@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QReadVariableActionPrivate::QReadVariableActionPrivate(QReadVariableAction *q_umlptr) :
+QReadVariableActionPrivate::QReadVariableActionPrivate() :
     result(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QReadVariableActionPrivate::~QReadVariableActionPrivate()
@@ -64,17 +63,14 @@ QReadVariableActionPrivate::~QReadVariableActionPrivate()
     \brief A read variable action is a variable action that retrieves the values of a variable.
  */
 
-QReadVariableAction::QReadVariableAction(QObject *parent)
-    : QObject(parent)
+QReadVariableAction::QReadVariableAction(QObject *parent) :
+    QVariableAction(*new QReadVariableActionPrivate, parent)
 {
-    d_umlptr = new QReadVariableActionPrivate(this);
 }
 
-QReadVariableAction::QReadVariableAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QReadVariableAction::QReadVariableAction(QReadVariableActionPrivate &dd, QObject *parent) :
+    QVariableAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QReadVariableActionPrivate;
 }
 
 QReadVariableAction::~QReadVariableAction()
@@ -88,7 +84,7 @@ QOutputPin *QReadVariableAction::result() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QReadVariableAction);
+    Q_D(const QReadVariableAction);
     return d->result;
 }
 
@@ -96,7 +92,7 @@ void QReadVariableAction::setResult(QOutputPin *result)
 {
     // This is a read-write association end
 
-    QTUML_D(QReadVariableAction);
+    Q_D(QReadVariableAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->result));

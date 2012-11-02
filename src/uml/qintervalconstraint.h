@@ -52,7 +52,10 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInterval;
+
+class QIntervalConstraintPrivate;
 
 class Q_UML_EXPORT QIntervalConstraint : public QConstraint
 {
@@ -62,6 +65,7 @@ class Q_UML_EXPORT QIntervalConstraint : public QConstraint
     Q_PROPERTY(QInterval * specification READ specification WRITE setSpecification)
 
     Q_DISABLE_COPY(QIntervalConstraint)
+    Q_DECLARE_PRIVATE(QIntervalConstraint)
 
 public:
     explicit QIntervalConstraint(QObject *parent = 0);
@@ -72,12 +76,13 @@ public:
     void setSpecification(QInterval *specification);
 
 protected:
-    explicit QIntervalConstraint(bool createPimpl, QObject *parent = 0);
+    explicit QIntervalConstraint(QIntervalConstraintPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QIntervalConstraint) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QIntervalConstraint) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QIntervalConstraint) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QIntervalConstraint) *> *)
 
 QT_END_HEADER

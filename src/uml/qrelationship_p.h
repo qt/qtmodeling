@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qelement_p.h"
+#include "private/qelement_p.h"
+#include "qrelationship.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,9 +56,12 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QRelationshipPrivate : public virtual QElementPrivate
+class Q_UML_EXPORT QRelationshipPrivate : public QElementPrivate
 {
+    Q_DECLARE_PUBLIC(QRelationship)
+
 public:
+    explicit QRelationshipPrivate();
     virtual ~QRelationshipPrivate();
 
     QSet<QElement *> *relatedElements;
@@ -65,9 +69,6 @@ public:
     // Internal functions for read-only subsetted association ends
     void addRelatedElement(QElement *relatedElement);
     void removeRelatedElement(QElement *relatedElement);
-
-protected:
-    explicit QRelationshipPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

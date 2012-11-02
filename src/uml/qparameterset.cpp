@@ -47,11 +47,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QParameterSetPrivate::QParameterSetPrivate(QParameterSet *q_umlptr) :
+QParameterSetPrivate::QParameterSetPrivate() :
     parameters(new QSet<QParameter *>),
     conditions(new QSet<QConstraint *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QParameterSetPrivate::~QParameterSetPrivate()
@@ -68,17 +67,14 @@ QParameterSetPrivate::~QParameterSetPrivate()
     \brief A parameter set is an element that provides alternative sets of inputs or outputs that a behavior may use.
  */
 
-QParameterSet::QParameterSet(QObject *parent)
-    : QObject(parent)
+QParameterSet::QParameterSet(QObject *parent) :
+    QNamedElement(*new QParameterSetPrivate, parent)
 {
-    d_umlptr = new QParameterSetPrivate(this);
 }
 
-QParameterSet::QParameterSet(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QParameterSet::QParameterSet(QParameterSetPrivate &dd, QObject *parent) :
+    QNamedElement(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QParameterSetPrivate;
 }
 
 QParameterSet::~QParameterSet()
@@ -92,7 +88,7 @@ const QSet<QParameter *> *QParameterSet::parameters() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QParameterSet);
+    Q_D(const QParameterSet);
     return d->parameters;
 }
 
@@ -100,7 +96,7 @@ void QParameterSet::addParameter(QParameter *parameter)
 {
     // This is a read-write association end
 
-    QTUML_D(QParameterSet);
+    Q_D(QParameterSet);
     if (!d->parameters->contains(parameter)) {
         d->parameters->insert(parameter);
 
@@ -113,7 +109,7 @@ void QParameterSet::removeParameter(QParameter *parameter)
 {
     // This is a read-write association end
 
-    QTUML_D(QParameterSet);
+    Q_D(QParameterSet);
     if (d->parameters->contains(parameter)) {
         d->parameters->remove(parameter);
 
@@ -130,7 +126,7 @@ const QSet<QConstraint *> *QParameterSet::conditions() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QParameterSet);
+    Q_D(const QParameterSet);
     return d->conditions;
 }
 
@@ -138,7 +134,7 @@ void QParameterSet::addCondition(QConstraint *condition)
 {
     // This is a read-write association end
 
-    QTUML_D(QParameterSet);
+    Q_D(QParameterSet);
     if (!d->conditions->contains(condition)) {
         d->conditions->insert(condition);
 
@@ -151,7 +147,7 @@ void QParameterSet::removeCondition(QConstraint *condition)
 {
     // This is a read-write association end
 
-    QTUML_D(QParameterSet);
+    Q_D(QParameterSet);
     if (d->conditions->contains(condition)) {
         d->conditions->remove(condition);
 

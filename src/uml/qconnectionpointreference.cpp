@@ -47,12 +47,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QConnectionPointReferencePrivate::QConnectionPointReferencePrivate(QConnectionPointReference *q_umlptr) :
+QConnectionPointReferencePrivate::QConnectionPointReferencePrivate() :
     exits(new QSet<QPseudostate *>),
     state(0),
     entries(new QSet<QPseudostate *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QConnectionPointReferencePrivate::~QConnectionPointReferencePrivate()
@@ -69,17 +68,14 @@ QConnectionPointReferencePrivate::~QConnectionPointReferencePrivate()
     \brief A connection point reference represents a usage (as part of a submachine state) of an entry/exit point defined in the statemachine reference by the submachine state.
  */
 
-QConnectionPointReference::QConnectionPointReference(QObject *parent)
-    : QObject(parent)
+QConnectionPointReference::QConnectionPointReference(QObject *parent) :
+    QVertex(*new QConnectionPointReferencePrivate, parent)
 {
-    d_umlptr = new QConnectionPointReferencePrivate(this);
 }
 
-QConnectionPointReference::QConnectionPointReference(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QConnectionPointReference::QConnectionPointReference(QConnectionPointReferencePrivate &dd, QObject *parent) :
+    QVertex(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QConnectionPointReferencePrivate;
 }
 
 QConnectionPointReference::~QConnectionPointReference()
@@ -93,7 +89,7 @@ const QSet<QPseudostate *> *QConnectionPointReference::exits() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QConnectionPointReference);
+    Q_D(const QConnectionPointReference);
     return d->exits;
 }
 
@@ -101,7 +97,7 @@ void QConnectionPointReference::addExit(QPseudostate *exit)
 {
     // This is a read-write association end
 
-    QTUML_D(QConnectionPointReference);
+    Q_D(QConnectionPointReference);
     if (!d->exits->contains(exit)) {
         d->exits->insert(exit);
     }
@@ -111,7 +107,7 @@ void QConnectionPointReference::removeExit(QPseudostate *exit)
 {
     // This is a read-write association end
 
-    QTUML_D(QConnectionPointReference);
+    Q_D(QConnectionPointReference);
     if (d->exits->contains(exit)) {
         d->exits->remove(exit);
     }
@@ -124,7 +120,7 @@ QState *QConnectionPointReference::state() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QConnectionPointReference);
+    Q_D(const QConnectionPointReference);
     return d->state;
 }
 
@@ -132,7 +128,7 @@ void QConnectionPointReference::setState(QState *state)
 {
     // This is a read-write association end
 
-    QTUML_D(QConnectionPointReference);
+    Q_D(QConnectionPointReference);
     if (d->state != state) {
         // Adjust opposite property
         if (d->state)
@@ -156,7 +152,7 @@ const QSet<QPseudostate *> *QConnectionPointReference::entries() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QConnectionPointReference);
+    Q_D(const QConnectionPointReference);
     return d->entries;
 }
 
@@ -164,7 +160,7 @@ void QConnectionPointReference::addEntry(QPseudostate *entry)
 {
     // This is a read-write association end
 
-    QTUML_D(QConnectionPointReference);
+    Q_D(QConnectionPointReference);
     if (!d->entries->contains(entry)) {
         d->entries->insert(entry);
     }
@@ -174,7 +170,7 @@ void QConnectionPointReference::removeEntry(QPseudostate *entry)
 {
     // This is a read-write association end
 
-    QTUML_D(QConnectionPointReference);
+    Q_D(QConnectionPointReference);
     if (d->entries->contains(entry)) {
         d->entries->remove(entry);
     }

@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qmessageoccurrencespecification_p.h"
+#include "private/qmessageoccurrencespecification_p.h"
+#include "qdestructionoccurrencespecification.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,10 +55,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QDestructionOccurrenceSpecification;
 
-class QDestructionOccurrenceSpecificationPrivate : public QMessageOccurrenceSpecificationPrivate
+class Q_UML_EXPORT QDestructionOccurrenceSpecificationPrivate : public QMessageOccurrenceSpecificationPrivate
 {
+    Q_DECLARE_PUBLIC(QDestructionOccurrenceSpecification)
+
 public:
-    explicit QDestructionOccurrenceSpecificationPrivate(QDestructionOccurrenceSpecification *q_umlptr = 0);
+    explicit QDestructionOccurrenceSpecificationPrivate();
     virtual ~QDestructionOccurrenceSpecificationPrivate();
 
 };

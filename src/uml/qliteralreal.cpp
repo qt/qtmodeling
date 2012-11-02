@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QLiteralRealPrivate::QLiteralRealPrivate(QLiteralReal *q_umlptr)
+QLiteralRealPrivate::QLiteralRealPrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QLiteralRealPrivate::~QLiteralRealPrivate()
@@ -62,17 +61,14 @@ QLiteralRealPrivate::~QLiteralRealPrivate()
     \brief A literal real is a specification of a real value.
  */
 
-QLiteralReal::QLiteralReal(QObject *parent)
-    : QObject(parent)
+QLiteralReal::QLiteralReal(QObject *parent) :
+    QLiteralSpecification(*new QLiteralRealPrivate, parent)
 {
-    d_umlptr = new QLiteralRealPrivate(this);
 }
 
-QLiteralReal::QLiteralReal(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QLiteralReal::QLiteralReal(QLiteralRealPrivate &dd, QObject *parent) :
+    QLiteralSpecification(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QLiteralRealPrivate;
 }
 
 QLiteralReal::~QLiteralReal()
@@ -83,7 +79,7 @@ qreal QLiteralReal::value() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QLiteralReal);
+    Q_D(const QLiteralReal);
     return d->value;
 }
 
@@ -91,7 +87,7 @@ void QLiteralReal::setValue(qreal value)
 {
     // This is a read-write attribute
 
-    QTUML_D(QLiteralReal);
+    Q_D(QLiteralReal);
     if (d->value != value) {
         d->value = value;
     }

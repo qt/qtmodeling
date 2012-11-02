@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QTimeIntervalPrivate::QTimeIntervalPrivate(QTimeInterval *q_umlptr) :
+QTimeIntervalPrivate::QTimeIntervalPrivate() :
     max(0),
     min(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QTimeIntervalPrivate::~QTimeIntervalPrivate()
@@ -65,17 +64,14 @@ QTimeIntervalPrivate::~QTimeIntervalPrivate()
     \brief A time interval defines the range between two time expressions.
  */
 
-QTimeInterval::QTimeInterval(QObject *parent)
-    : QInterval(false, parent)
+QTimeInterval::QTimeInterval(QObject *parent) :
+    QInterval(*new QTimeIntervalPrivate, parent)
 {
-    d_umlptr = new QTimeIntervalPrivate(this);
 }
 
-QTimeInterval::QTimeInterval(bool createPimpl, QObject *parent)
-    : QInterval(createPimpl, parent)
+QTimeInterval::QTimeInterval(QTimeIntervalPrivate &dd, QObject *parent) :
+    QInterval(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QTimeIntervalPrivate;
 }
 
 QTimeInterval::~QTimeInterval()
@@ -89,7 +85,7 @@ QTimeExpression *QTimeInterval::max() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTimeInterval);
+    Q_D(const QTimeInterval);
     return d->max;
 }
 
@@ -97,7 +93,7 @@ void QTimeInterval::setMax(QTimeExpression *max)
 {
     // This is a read-write association end
 
-    QTUML_D(QTimeInterval);
+    Q_D(QTimeInterval);
     if (d->max != max) {
         d->max = max;
     }
@@ -110,7 +106,7 @@ QTimeExpression *QTimeInterval::min() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTimeInterval);
+    Q_D(const QTimeInterval);
     return d->min;
 }
 
@@ -118,7 +114,7 @@ void QTimeInterval::setMin(QTimeExpression *min)
 {
     // This is a read-write association end
 
-    QTUML_D(QTimeInterval);
+    Q_D(QTimeInterval);
     if (d->min != min) {
         d->min = min;
     }

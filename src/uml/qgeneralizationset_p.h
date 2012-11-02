@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qpackageableelement_p.h"
+#include "private/qpackageableelement_p.h"
+#include "qgeneralizationset.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,14 +56,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QGeneralization;
 class QClassifier;
 class QGeneralizationSet;
 
-class QGeneralizationSetPrivate : public QPackageableElementPrivate
+class Q_UML_EXPORT QGeneralizationSetPrivate : public QPackageableElementPrivate
 {
+    Q_DECLARE_PUBLIC(QGeneralizationSet)
+
 public:
-    explicit QGeneralizationSetPrivate(QGeneralizationSet *q_umlptr = 0);
+    explicit QGeneralizationSetPrivate();
     virtual ~QGeneralizationSetPrivate();
 
     bool isCovering;

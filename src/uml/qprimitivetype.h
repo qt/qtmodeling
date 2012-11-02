@@ -52,23 +52,25 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QPrimitiveTypePrivate;
+
 class Q_UML_EXPORT QPrimitiveType : public QDataType
 {
-    Q_OBJECT
-
     Q_DISABLE_COPY(QPrimitiveType)
+    Q_DECLARE_PRIVATE(QPrimitiveType)
 
 public:
     explicit QPrimitiveType(QObject *parent = 0);
     virtual ~QPrimitiveType();
 
 protected:
-    explicit QPrimitiveType(bool createPimpl, QObject *parent = 0);
+    explicit QPrimitiveType(QPrimitiveTypePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QPrimitiveType) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QPrimitiveType) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QPrimitiveType) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QPrimitiveType) *> *)
 
 QT_END_HEADER

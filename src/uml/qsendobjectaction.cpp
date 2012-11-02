@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QSendObjectActionPrivate::QSendObjectActionPrivate(QSendObjectAction *q_umlptr) :
+QSendObjectActionPrivate::QSendObjectActionPrivate() :
     request(0),
     target(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QSendObjectActionPrivate::~QSendObjectActionPrivate()
@@ -66,17 +65,14 @@ QSendObjectActionPrivate::~QSendObjectActionPrivate()
     \brief A send object action is an action that transmits an object to the target object, where it may invoke behavior such as the firing of state machine transitions or the execution of an activity. The value of the object is available to the execution of invoked behaviors. The requestor continues execution immediately. Any reply message is ignored and is not transmitted to the requestor.
  */
 
-QSendObjectAction::QSendObjectAction(QObject *parent)
-    : QObject(parent)
+QSendObjectAction::QSendObjectAction(QObject *parent) :
+    QInvocationAction(*new QSendObjectActionPrivate, parent)
 {
-    d_umlptr = new QSendObjectActionPrivate(this);
 }
 
-QSendObjectAction::QSendObjectAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QSendObjectAction::QSendObjectAction(QSendObjectActionPrivate &dd, QObject *parent) :
+    QInvocationAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QSendObjectActionPrivate;
 }
 
 QSendObjectAction::~QSendObjectAction()
@@ -90,7 +86,7 @@ QInputPin *QSendObjectAction::request() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QSendObjectAction);
+    Q_D(const QSendObjectAction);
     return d->request;
 }
 
@@ -98,7 +94,7 @@ void QSendObjectAction::setRequest(QInputPin *request)
 {
     // This is a read-write association end
 
-    QTUML_D(QSendObjectAction);
+    Q_D(QSendObjectAction);
     if (d->request != request) {
         d->request = request;
     }
@@ -111,7 +107,7 @@ QInputPin *QSendObjectAction::target() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QSendObjectAction);
+    Q_D(const QSendObjectAction);
     return d->target;
 }
 
@@ -119,7 +115,7 @@ void QSendObjectAction::setTarget(QInputPin *target)
 {
     // This is a read-write association end
 
-    QTUML_D(QSendObjectAction);
+    Q_D(QSendObjectAction);
     if (d->target != target) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->target));

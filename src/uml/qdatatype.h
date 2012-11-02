@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QClassifier>
 
 // Qt includes
@@ -57,74 +56,23 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QProperty;
 class QOperation;
 class QNamedElement;
 
-class Q_UML_EXPORT QDataType : public QObject, public QClassifier
+class QDataTypePrivate;
+
+class Q_UML_EXPORT QDataType : public QClassifier
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From QNamespace
-    Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
-    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
-    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
-    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
-    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
-    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
-
-    // From QParameterableElement
-    Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
-
-    // From QPackageableElement
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-
-    // From QType
-    Q_PROPERTY(QPackage * package READ package WRITE setPackage)
-
-    // From QRedefinableElement
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
-    Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
-
-    // From QTemplateableElement
-    Q_PROPERTY(const QSet<QTemplateBinding *> * templateBindings READ templateBindings)
-
-    // From QClassifier
-    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract)
-    Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization)
-    Q_PROPERTY(const QSet<QUseCase *> * ownedUseCases READ ownedUseCases)
-    Q_PROPERTY(const QSet<QGeneralizationSet *> * powertypeExtents READ powertypeExtents)
-    Q_PROPERTY(const QSet<QUseCase *> * useCases READ useCases)
-    Q_PROPERTY(QClassifierTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
-    Q_PROPERTY(const QSet<QClassifier *> * redefinedClassifiers READ redefinedClassifiers)
-    Q_PROPERTY(QRedefinableTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
-    Q_PROPERTY(const QSet<QCollaborationUse *> * collaborationUses READ collaborationUses)
-    Q_PROPERTY(const QSet<QProperty *> * attributes READ attributes)
-    Q_PROPERTY(const QSet<QFeature *> * features READ features)
-    Q_PROPERTY(const QSet<QClassifier *> * generals READ generals)
-    Q_PROPERTY(QCollaborationUse * representation READ representation WRITE setRepresentation)
-    Q_PROPERTY(const QSet<QGeneralization *> * generalizations READ generalizations)
-    Q_PROPERTY(const QSet<QNamedElement *> * inheritedMembers READ inheritedMembers)
-    Q_PROPERTY(const QSet<QSubstitution *> * substitutions READ substitutions)
 
     // From QDataType
     Q_PROPERTY(const QList<QOperation *> * ownedOperations READ ownedOperations)
     Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
 
     Q_DISABLE_COPY(QDataType)
+    Q_DECLARE_PRIVATE(QDataType)
 
 public:
     explicit QDataType(QObject *parent = 0);
@@ -142,12 +90,13 @@ public:
     const QSet<QNamedElement *> *inherit(const QSet<QNamedElement *> *inhs) const;
 
 protected:
-    explicit QDataType(bool createPimpl, QObject *parent = 0);
+    explicit QDataType(QDataTypePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QDataType) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QDataType) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QDataType) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QDataType) *> *)
 
 QT_END_HEADER

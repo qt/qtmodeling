@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInteractionConstraintPrivate::QInteractionConstraintPrivate(QInteractionConstraint *q_umlptr) :
+QInteractionConstraintPrivate::QInteractionConstraintPrivate() :
     maxint(0),
     minint(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QInteractionConstraintPrivate::~QInteractionConstraintPrivate()
@@ -65,17 +64,14 @@ QInteractionConstraintPrivate::~QInteractionConstraintPrivate()
     \brief An interaction constraint is a Boolean expression that guards an operand in a combined fragment.
  */
 
-QInteractionConstraint::QInteractionConstraint(QObject *parent)
-    : QConstraint(false, parent)
+QInteractionConstraint::QInteractionConstraint(QObject *parent) :
+    QConstraint(*new QInteractionConstraintPrivate, parent)
 {
-    d_umlptr = new QInteractionConstraintPrivate(this);
 }
 
-QInteractionConstraint::QInteractionConstraint(bool createPimpl, QObject *parent)
-    : QConstraint(createPimpl, parent)
+QInteractionConstraint::QInteractionConstraint(QInteractionConstraintPrivate &dd, QObject *parent) :
+    QConstraint(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QInteractionConstraintPrivate;
 }
 
 QInteractionConstraint::~QInteractionConstraint()
@@ -89,7 +85,7 @@ QValueSpecification *QInteractionConstraint::maxint() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInteractionConstraint);
+    Q_D(const QInteractionConstraint);
     return d->maxint;
 }
 
@@ -97,7 +93,7 @@ void QInteractionConstraint::setMaxint(QValueSpecification *maxint)
 {
     // This is a read-write association end
 
-    QTUML_D(QInteractionConstraint);
+    Q_D(QInteractionConstraint);
     if (d->maxint != maxint) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->maxint));
@@ -118,7 +114,7 @@ QValueSpecification *QInteractionConstraint::minint() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInteractionConstraint);
+    Q_D(const QInteractionConstraint);
     return d->minint;
 }
 
@@ -126,7 +122,7 @@ void QInteractionConstraint::setMinint(QValueSpecification *minint)
 {
     // This is a read-write association end
 
-    QTUML_D(QInteractionConstraint);
+    Q_D(QInteractionConstraint);
     if (d->minint != minint) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->minint));

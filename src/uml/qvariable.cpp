@@ -48,11 +48,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QVariablePrivate::QVariablePrivate(QVariable *q_umlptr) :
+QVariablePrivate::QVariablePrivate() :
     scope(0),
     activityScope(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QVariablePrivate::~QVariablePrivate()
@@ -67,17 +66,18 @@ QVariablePrivate::~QVariablePrivate()
     \brief A variable is considered a connectable element.Variables are elements for passing data between actions indirectly. A local variable stores values shared by the actions within a structured activity group but not accessible outside it. The output of an action may be written to a variable and read for the input to a subsequent action, which is effectively an indirect data flow path. Because there is no predefined relationship between actions that read and write variables, these actions must be sequenced by control flows to prevent race conditions that may occur between actions that read or write the same variable.
  */
 
-QVariable::QVariable(QObject *parent)
-    : QObject(parent)
+QVariable::QVariable(QObject *parent) :
+    QObject(*new QVariablePrivate, parent),
+    _wrappedMultiplicityElement(new QMultiplicityElement(this)),
+    _wrappedConnectableElement(new QConnectableElement(this))
 {
-    d_umlptr = new QVariablePrivate(this);
 }
 
-QVariable::QVariable(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QVariable::QVariable(QVariablePrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedMultiplicityElement(new QMultiplicityElement(this)),
+    _wrappedConnectableElement(new QConnectableElement(this))
 {
-    if (createPimpl)
-        d_umlptr = new QVariablePrivate;
 }
 
 QVariable::~QVariable()
@@ -91,7 +91,7 @@ QStructuredActivityNode *QVariable::scope() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QVariable);
+    Q_D(const QVariable);
     return d->scope;
 }
 
@@ -99,7 +99,7 @@ void QVariable::setScope(QStructuredActivityNode *scope)
 {
     // This is a read-write association end
 
-    QTUML_D(QVariable);
+    Q_D(QVariable);
     if (d->scope != scope) {
         // Adjust opposite property
         if (d->scope)
@@ -123,7 +123,7 @@ QActivity *QVariable::activityScope() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QVariable);
+    Q_D(const QVariable);
     return d->activityScope;
 }
 
@@ -131,7 +131,7 @@ void QVariable::setActivityScope(QActivity *activityScope)
 {
     // This is a read-write association end
 
-    QTUML_D(QVariable);
+    Q_D(QVariable);
     if (d->activityScope != activityScope) {
         // Adjust opposite property
         if (d->activityScope)

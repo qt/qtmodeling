@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qnamedelement_p.h"
+#include "private/qnamedelement_p.h"
+#include "qmessageend.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,17 +54,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QMessage;
 
-class QMessageEndPrivate : public virtual QNamedElementPrivate
+class Q_UML_EXPORT QMessageEndPrivate : public QNamedElementPrivate
 {
+    Q_DECLARE_PUBLIC(QMessageEnd)
+
 public:
+    explicit QMessageEndPrivate();
     virtual ~QMessageEndPrivate();
 
     QMessage *message;
-
-protected:
-    explicit QMessageEndPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

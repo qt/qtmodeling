@@ -47,13 +47,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QGeneralizationPrivate::QGeneralizationPrivate(QGeneralization *q_umlptr) :
+QGeneralizationPrivate::QGeneralizationPrivate() :
     isSubstitutable(true),
     specific(0),
     generalizationSets(new QSet<QGeneralizationSet *>),
     general(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QGeneralizationPrivate::~QGeneralizationPrivate()
@@ -69,17 +68,14 @@ QGeneralizationPrivate::~QGeneralizationPrivate()
     \brief A generalization is a taxonomic relationship between a more general classifier and a more specific classifier. Each instance of the specific classifier is also an indirect instance of the general classifier. Thus, the specific classifier inherits the features of the more general classifier.A generalization relates a specific classifier to a more general classifier, and is owned by the specific classifier.
  */
 
-QGeneralization::QGeneralization(QObject *parent)
-    : QObject(parent)
+QGeneralization::QGeneralization(QObject *parent) :
+    QDirectedRelationship(*new QGeneralizationPrivate, parent)
 {
-    d_umlptr = new QGeneralizationPrivate(this);
 }
 
-QGeneralization::QGeneralization(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QGeneralization::QGeneralization(QGeneralizationPrivate &dd, QObject *parent) :
+    QDirectedRelationship(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QGeneralizationPrivate;
 }
 
 QGeneralization::~QGeneralization()
@@ -93,7 +89,7 @@ bool QGeneralization::isSubstitutable() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QGeneralization);
+    Q_D(const QGeneralization);
     return d->isSubstitutable;
 }
 
@@ -101,7 +97,7 @@ void QGeneralization::setSubstitutable(bool isSubstitutable)
 {
     // This is a read-write attribute
 
-    QTUML_D(QGeneralization);
+    Q_D(QGeneralization);
     if (d->isSubstitutable != isSubstitutable) {
         d->isSubstitutable = isSubstitutable;
     }
@@ -114,7 +110,7 @@ QClassifier *QGeneralization::specific() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QGeneralization);
+    Q_D(const QGeneralization);
     return d->specific;
 }
 
@@ -122,7 +118,7 @@ void QGeneralization::setSpecific(QClassifier *specific)
 {
     // This is a read-write association end
 
-    QTUML_D(QGeneralization);
+    Q_D(QGeneralization);
     if (d->specific != specific) {
         // Adjust opposite property
         if (d->specific)
@@ -152,7 +148,7 @@ const QSet<QGeneralizationSet *> *QGeneralization::generalizationSets() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QGeneralization);
+    Q_D(const QGeneralization);
     return d->generalizationSets;
 }
 
@@ -160,7 +156,7 @@ void QGeneralization::addGeneralizationSet(QGeneralizationSet *generalizationSet
 {
     // This is a read-write association end
 
-    QTUML_D(QGeneralization);
+    Q_D(QGeneralization);
     if (!d->generalizationSets->contains(generalizationSet)) {
         d->generalizationSets->insert(generalizationSet);
 
@@ -173,7 +169,7 @@ void QGeneralization::removeGeneralizationSet(QGeneralizationSet *generalization
 {
     // This is a read-write association end
 
-    QTUML_D(QGeneralization);
+    Q_D(QGeneralization);
     if (d->generalizationSets->contains(generalizationSet)) {
         d->generalizationSets->remove(generalizationSet);
 
@@ -190,7 +186,7 @@ QClassifier *QGeneralization::general() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QGeneralization);
+    Q_D(const QGeneralization);
     return d->general;
 }
 
@@ -198,7 +194,7 @@ void QGeneralization::setGeneral(QClassifier *general)
 {
     // This is a read-write association end
 
-    QTUML_D(QGeneralization);
+    Q_D(QGeneralization);
     if (d->general != general) {
         // Adjust subsetted property(ies)
         d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(d->general));

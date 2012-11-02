@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QFinalStatePrivate::QFinalStatePrivate(QFinalState *q_umlptr)
+QFinalStatePrivate::QFinalStatePrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QFinalStatePrivate::~QFinalStatePrivate()
@@ -62,17 +61,14 @@ QFinalStatePrivate::~QFinalStatePrivate()
     \brief A special kind of state signifying that the enclosing region is completed. If the enclosing region is directly contained in a state machine and all other regions in the state machine also are completed, then it means that the entire state machine is completed.
  */
 
-QFinalState::QFinalState(QObject *parent)
-    : QState(false, parent)
+QFinalState::QFinalState(QObject *parent) :
+    QState(*new QFinalStatePrivate, parent)
 {
-    d_umlptr = new QFinalStatePrivate(this);
 }
 
-QFinalState::QFinalState(bool createPimpl, QObject *parent)
-    : QState(createPimpl, parent)
+QFinalState::QFinalState(QFinalStatePrivate &dd, QObject *parent) :
+    QState(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QFinalStatePrivate;
 }
 
 QFinalState::~QFinalState()

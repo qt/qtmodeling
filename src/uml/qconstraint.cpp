@@ -48,12 +48,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QConstraintPrivate::QConstraintPrivate(QConstraint *q_umlptr) :
+QConstraintPrivate::QConstraintPrivate() :
     context(0),
     specification(0),
     constrainedElements(new QList<QElement *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QConstraintPrivate::~QConstraintPrivate()
@@ -69,17 +68,14 @@ QConstraintPrivate::~QConstraintPrivate()
     \brief A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the purpose of declaring some of the semantics of an element.
  */
 
-QConstraint::QConstraint(QObject *parent)
-    : QObject(parent)
+QConstraint::QConstraint(QObject *parent) :
+    QPackageableElement(*new QConstraintPrivate, parent)
 {
-    d_umlptr = new QConstraintPrivate(this);
 }
 
-QConstraint::QConstraint(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QConstraint::QConstraint(QConstraintPrivate &dd, QObject *parent) :
+    QPackageableElement(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QConstraintPrivate;
 }
 
 QConstraint::~QConstraint()
@@ -93,7 +89,7 @@ QNamespace *QConstraint::context() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QConstraint);
+    Q_D(const QConstraint);
     return d->context;
 }
 
@@ -101,7 +97,7 @@ void QConstraint::setContext(QNamespace *context)
 {
     // This is a read-write association end
 
-    QTUML_D(QConstraint);
+    Q_D(QConstraint);
     if (d->context != context) {
         // Adjust opposite property
         if (d->context)
@@ -125,7 +121,7 @@ QValueSpecification *QConstraint::specification() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QConstraint);
+    Q_D(const QConstraint);
     return d->specification;
 }
 
@@ -133,7 +129,7 @@ void QConstraint::setSpecification(QValueSpecification *specification)
 {
     // This is a read-write association end
 
-    QTUML_D(QConstraint);
+    Q_D(QConstraint);
     if (d->specification != specification) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->specification));
@@ -154,7 +150,7 @@ const QList<QElement *> *QConstraint::constrainedElements() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QConstraint);
+    Q_D(const QConstraint);
     return d->constrainedElements;
 }
 
@@ -162,7 +158,7 @@ void QConstraint::addConstrainedElement(QElement *constrainedElement)
 {
     // This is a read-write association end
 
-    QTUML_D(QConstraint);
+    Q_D(QConstraint);
     if (!d->constrainedElements->contains(constrainedElement)) {
         d->constrainedElements->append(constrainedElement);
     }
@@ -172,7 +168,7 @@ void QConstraint::removeConstrainedElement(QElement *constrainedElement)
 {
     // This is a read-write association end
 
-    QTUML_D(QConstraint);
+    Q_D(QConstraint);
     if (d->constrainedElements->contains(constrainedElement)) {
         d->constrainedElements->removeAll(constrainedElement);
     }

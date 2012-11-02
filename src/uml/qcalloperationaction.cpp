@@ -47,11 +47,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCallOperationActionPrivate::QCallOperationActionPrivate(QCallOperationAction *q_umlptr) :
+QCallOperationActionPrivate::QCallOperationActionPrivate() :
     operation(0),
     target(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QCallOperationActionPrivate::~QCallOperationActionPrivate()
@@ -66,17 +65,14 @@ QCallOperationActionPrivate::~QCallOperationActionPrivate()
     \brief A call operation action is an action that transmits an operation call request to the target object, where it may cause the invocation of associated behavior. The argument values of the action are available to the execution of the invoked behavior. If the action is marked synchronous, the execution of the call operation action waits until the execution of the invoked behavior completes and a reply transmission is returned to the caller; otherwise execution of the action is complete when the invocation of the operation is established and the execution of the invoked operation proceeds concurrently with the execution of the calling behavior. Any values returned as part of the reply transmission are put on the result output pins of the call operation action. Upon receipt of the reply transmission, execution of the call operation action is complete.
  */
 
-QCallOperationAction::QCallOperationAction(QObject *parent)
-    : QObject(parent)
+QCallOperationAction::QCallOperationAction(QObject *parent) :
+    QCallAction(*new QCallOperationActionPrivate, parent)
 {
-    d_umlptr = new QCallOperationActionPrivate(this);
 }
 
-QCallOperationAction::QCallOperationAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QCallOperationAction::QCallOperationAction(QCallOperationActionPrivate &dd, QObject *parent) :
+    QCallAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QCallOperationActionPrivate;
 }
 
 QCallOperationAction::~QCallOperationAction()
@@ -90,7 +86,7 @@ QOperation *QCallOperationAction::operation() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QCallOperationAction);
+    Q_D(const QCallOperationAction);
     return d->operation;
 }
 
@@ -98,7 +94,7 @@ void QCallOperationAction::setOperation(QOperation *operation)
 {
     // This is a read-write association end
 
-    QTUML_D(QCallOperationAction);
+    Q_D(QCallOperationAction);
     if (d->operation != operation) {
         d->operation = operation;
     }
@@ -111,7 +107,7 @@ QInputPin *QCallOperationAction::target() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QCallOperationAction);
+    Q_D(const QCallOperationAction);
     return d->target;
 }
 
@@ -119,7 +115,7 @@ void QCallOperationAction::setTarget(QInputPin *target)
 {
     // This is a read-write association end
 
-    QTUML_D(QCallOperationAction);
+    Q_D(QCallOperationAction);
     if (d->target != target) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->target));

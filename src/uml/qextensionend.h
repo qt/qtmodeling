@@ -52,7 +52,10 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QStereotype;
+
+class QExtensionEndPrivate;
 
 class Q_UML_EXPORT QExtensionEnd : public QProperty
 {
@@ -63,6 +66,7 @@ class Q_UML_EXPORT QExtensionEnd : public QProperty
     Q_PROPERTY(QStereotype * type READ type WRITE setType)
 
     Q_DISABLE_COPY(QExtensionEnd)
+    Q_DECLARE_PRIVATE(QExtensionEnd)
 
 public:
     explicit QExtensionEnd(QObject *parent = 0);
@@ -80,12 +84,13 @@ public:
     qint32 lowerBound() const;
 
 protected:
-    explicit QExtensionEnd(bool createPimpl, QObject *parent = 0);
+    explicit QExtensionEnd(QExtensionEndPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QExtensionEnd) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QExtensionEnd) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QExtensionEnd) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QExtensionEnd) *> *)
 
 QT_END_HEADER

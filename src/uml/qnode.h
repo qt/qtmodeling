@@ -44,8 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtUml/QClass>
-#include <QtUml/QDeploymentTarget>
+#include <QtCore/QObject>
 
 // Qt includes
 #include <QtCore/QSet>
@@ -56,16 +55,25 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QNode : public QClass, public QDeploymentTarget
+// Forward decls for aggregated 'base classes'
+class QClass;
+class QDeploymentTarget;
+
+class QNodePrivate;
+
+class Q_UML_EXPORT QNode : public QObject
 {
     Q_OBJECT
 
-    // From QElement
+    // From QNode
+    Q_PROPERTY(const QSet<QNode *> * nestedNodes READ nestedNodes)
+
+    // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
     Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
-    // From QNamedElement
+    // From aggregated QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
@@ -73,14 +81,12 @@ class Q_UML_EXPORT QNode : public QClass, public QDeploymentTarget
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
     Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
-    // From QDeploymentTarget
+    // From aggregated QDeploymentTarget
     Q_PROPERTY(const QSet<QPackageableElement *> * deployedElements READ deployedElements)
     Q_PROPERTY(const QSet<QDeployment *> * deployments READ deployments)
 
-    // From QNode
-    Q_PROPERTY(const QSet<QNode *> * nestedNodes READ nestedNodes)
-
     Q_DISABLE_COPY(QNode)
+    Q_DECLARE_PRIVATE(QNode)
 
 public:
     explicit QNode(QObject *parent = 0);
@@ -92,12 +98,17 @@ public:
     void removeNestedNode(QNode *nestedNode);
 
 protected:
-    explicit QNode(bool createPimpl, QObject *parent = 0);
+    explicit QNode(QNodePrivate &dd, QObject *parent = 0);
+
+private:
+    QClass *_wrappedClass;
+    QDeploymentTarget *_wrappedDeploymentTarget;
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QNode) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QNode) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QNode) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QNode) *> *)
 
 QT_END_HEADER

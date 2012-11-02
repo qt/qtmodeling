@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QIntervalConstraintPrivate::QIntervalConstraintPrivate(QIntervalConstraint *q_umlptr) :
+QIntervalConstraintPrivate::QIntervalConstraintPrivate() :
     specification(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QIntervalConstraintPrivate::~QIntervalConstraintPrivate()
@@ -65,17 +64,14 @@ QIntervalConstraintPrivate::~QIntervalConstraintPrivate()
     \brief An interval constraint is a constraint that refers to an interval.
  */
 
-QIntervalConstraint::QIntervalConstraint(QObject *parent)
-    : QConstraint(false, parent)
+QIntervalConstraint::QIntervalConstraint(QObject *parent) :
+    QConstraint(*new QIntervalConstraintPrivate, parent)
 {
-    d_umlptr = new QIntervalConstraintPrivate(this);
 }
 
-QIntervalConstraint::QIntervalConstraint(bool createPimpl, QObject *parent)
-    : QConstraint(createPimpl, parent)
+QIntervalConstraint::QIntervalConstraint(QIntervalConstraintPrivate &dd, QObject *parent) :
+    QConstraint(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QIntervalConstraintPrivate;
 }
 
 QIntervalConstraint::~QIntervalConstraint()
@@ -89,7 +85,7 @@ QInterval *QIntervalConstraint::specification() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QIntervalConstraint);
+    Q_D(const QIntervalConstraint);
     return d->specification;
 }
 
@@ -97,7 +93,7 @@ void QIntervalConstraint::setSpecification(QInterval *specification)
 {
     // This is a read-write association end
 
-    QTUML_D(QIntervalConstraint);
+    Q_D(QIntervalConstraint);
     if (d->specification != specification) {
         d->specification = specification;
     }

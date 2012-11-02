@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInstanceValuePrivate::QInstanceValuePrivate(QInstanceValue *q_umlptr) :
+QInstanceValuePrivate::QInstanceValuePrivate() :
     instance(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QInstanceValuePrivate::~QInstanceValuePrivate()
@@ -64,17 +63,14 @@ QInstanceValuePrivate::~QInstanceValuePrivate()
     \brief An instance value is a value specification that identifies an instance.
  */
 
-QInstanceValue::QInstanceValue(QObject *parent)
-    : QObject(parent)
+QInstanceValue::QInstanceValue(QObject *parent) :
+    QValueSpecification(*new QInstanceValuePrivate, parent)
 {
-    d_umlptr = new QInstanceValuePrivate(this);
 }
 
-QInstanceValue::QInstanceValue(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QInstanceValue::QInstanceValue(QInstanceValuePrivate &dd, QObject *parent) :
+    QValueSpecification(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QInstanceValuePrivate;
 }
 
 QInstanceValue::~QInstanceValue()
@@ -88,7 +84,7 @@ QInstanceSpecification *QInstanceValue::instance() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInstanceValue);
+    Q_D(const QInstanceValue);
     return d->instance;
 }
 
@@ -96,7 +92,7 @@ void QInstanceValue::setInstance(QInstanceSpecification *instance)
 {
     // This is a read-write association end
 
-    QTUML_D(QInstanceValue);
+    Q_D(QInstanceValue);
     if (d->instance != instance) {
         d->instance = instance;
     }

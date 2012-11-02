@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QActivityFinalNodePrivate::QActivityFinalNodePrivate(QActivityFinalNode *q_umlptr)
+QActivityFinalNodePrivate::QActivityFinalNodePrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QActivityFinalNodePrivate::~QActivityFinalNodePrivate()
@@ -62,17 +61,14 @@ QActivityFinalNodePrivate::~QActivityFinalNodePrivate()
     \brief An activity final node is a final node that stops all flows in an activity.
  */
 
-QActivityFinalNode::QActivityFinalNode(QObject *parent)
-    : QObject(parent)
+QActivityFinalNode::QActivityFinalNode(QObject *parent) :
+    QFinalNode(*new QActivityFinalNodePrivate, parent)
 {
-    d_umlptr = new QActivityFinalNodePrivate(this);
 }
 
-QActivityFinalNode::QActivityFinalNode(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QActivityFinalNode::QActivityFinalNode(QActivityFinalNodePrivate &dd, QObject *parent) :
+    QFinalNode(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QActivityFinalNodePrivate;
 }
 
 QActivityFinalNode::~QActivityFinalNode()

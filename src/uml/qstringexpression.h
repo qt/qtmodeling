@@ -44,8 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtUml/QExpression>
-#include <QtUml/QTemplateableElement>
+#include <QtCore/QObject>
 
 // Qt includes
 #include <QtCore/QString>
@@ -57,24 +56,31 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QStringExpression : public QExpression, public QTemplateableElement
+// Forward decls for aggregated 'base classes'
+class QExpression;
+class QTemplateableElement;
+
+class QStringExpressionPrivate;
+
+class Q_UML_EXPORT QStringExpression : public QObject
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QTemplateableElement
-    Q_PROPERTY(QTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
-    Q_PROPERTY(const QSet<QTemplateBinding *> * templateBindings READ templateBindings)
 
     // From QStringExpression
     Q_PROPERTY(QStringExpression * owningExpression READ owningExpression WRITE setOwningExpression)
     Q_PROPERTY(const QSet<QStringExpression *> * subExpressions READ subExpressions)
 
+    // From aggregated QElement
+    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+
+    // From aggregated QTemplateableElement
+    Q_PROPERTY(QTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
+    Q_PROPERTY(const QSet<QTemplateBinding *> * templateBindings READ templateBindings)
+
     Q_DISABLE_COPY(QStringExpression)
+    Q_DECLARE_PRIVATE(QStringExpression)
 
 public:
     explicit QStringExpression(QObject *parent = 0);
@@ -91,12 +97,17 @@ public:
     QString stringValue() const;
 
 protected:
-    explicit QStringExpression(bool createPimpl, QObject *parent = 0);
+    explicit QStringExpression(QStringExpressionPrivate &dd, QObject *parent = 0);
+
+private:
+    QExpression *_wrappedExpression;
+    QTemplateableElement *_wrappedTemplateableElement;
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *> *)
 
 QT_END_HEADER

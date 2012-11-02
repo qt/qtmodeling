@@ -56,16 +56,31 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QOutputPin;
 class QConstraint;
 class QClassifier;
 class QInputPin;
 
+class QActionPrivate;
+
 class Q_UML_EXPORT QAction : public QExecutableNode
 {
+    Q_OBJECT
+
+    // From QAction
+    Q_PROPERTY(bool isLocallyReentrant READ isLocallyReentrant WRITE setLocallyReentrant)
+    Q_PROPERTY(QClassifier * context READ context)
+    Q_PROPERTY(const QSet<QConstraint *> * localPostconditions READ localPostconditions)
+    Q_PROPERTY(const QSet<QConstraint *> * localPreconditions READ localPreconditions)
+    Q_PROPERTY(const QList<QInputPin *> * inputs READ inputs)
+    Q_PROPERTY(const QList<QOutputPin *> * outputs READ outputs)
+
     Q_DISABLE_COPY(QAction)
+    Q_DECLARE_PRIVATE(QAction)
 
 public:
+    explicit QAction(QObject *parent = 0);
     virtual ~QAction();
 
     // Attributes
@@ -84,10 +99,14 @@ public:
     const QList<QOutputPin *> *outputs() const;
 
 protected:
-    explicit QAction();
+    explicit QAction(QActionPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QAction) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *)
 
 QT_END_HEADER
 

@@ -49,12 +49,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QComponentPrivate::QComponentPrivate(QComponent *q_umlptr) :
+QComponentPrivate::QComponentPrivate() :
     isIndirectlyInstantiated(true),
     realizations(new QSet<QComponentRealization *>),
     packagedElements(new QSet<QPackageableElement *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QComponentPrivate::~QComponentPrivate()
@@ -71,17 +70,14 @@ QComponentPrivate::~QComponentPrivate()
     \brief In the namespace of a component, all model elements that are involved in or related to its definition are either owned or imported explicitly. This may include, for example, use cases and dependencies (e.g. mappings), packages, components, and artifacts.A component represents a modular part of a system that encapsulates its contents and whose manifestation is replaceable within its environment.
  */
 
-QComponent::QComponent(QObject *parent)
-    : QClass(false, parent)
+QComponent::QComponent(QObject *parent) :
+    QClass(*new QComponentPrivate, parent)
 {
-    d_umlptr = new QComponentPrivate(this);
 }
 
-QComponent::QComponent(bool createPimpl, QObject *parent)
-    : QClass(createPimpl, parent)
+QComponent::QComponent(QComponentPrivate &dd, QObject *parent) :
+    QClass(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QComponentPrivate;
 }
 
 QComponent::~QComponent()
@@ -95,7 +91,7 @@ bool QComponent::isIndirectlyInstantiated() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QComponent);
+    Q_D(const QComponent);
     return d->isIndirectlyInstantiated;
 }
 
@@ -103,7 +99,7 @@ void QComponent::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
 {
     // This is a read-write attribute
 
-    QTUML_D(QComponent);
+    Q_D(QComponent);
     if (d->isIndirectlyInstantiated != isIndirectlyInstantiated) {
         d->isIndirectlyInstantiated = isIndirectlyInstantiated;
     }
@@ -116,7 +112,7 @@ const QSet<QComponentRealization *> *QComponent::realizations() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QComponent);
+    Q_D(const QComponent);
     return d->realizations;
 }
 
@@ -124,7 +120,7 @@ void QComponent::addRealization(QComponentRealization *realization)
 {
     // This is a read-write association end
 
-    QTUML_D(QComponent);
+    Q_D(QComponent);
     if (!d->realizations->contains(realization)) {
         d->realizations->insert(realization);
 
@@ -140,7 +136,7 @@ void QComponent::removeRealization(QComponentRealization *realization)
 {
     // This is a read-write association end
 
-    QTUML_D(QComponent);
+    Q_D(QComponent);
     if (d->realizations->contains(realization)) {
         d->realizations->remove(realization);
 
@@ -161,7 +157,7 @@ const QSet<QInterface *> *QComponent::required() const
 
     qWarning("QComponent::required: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(const QComponent);
+    //Q_D(const QComponent);
     //return <derived-return>;
 }
 
@@ -174,7 +170,7 @@ const QSet<QInterface *> *QComponent::provided() const
 
     qWarning("QComponent::provided: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(const QComponent);
+    //Q_D(const QComponent);
     //return <derived-return>;
 }
 
@@ -185,7 +181,7 @@ const QSet<QPackageableElement *> *QComponent::packagedElements() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QComponent);
+    Q_D(const QComponent);
     return d->packagedElements;
 }
 
@@ -193,7 +189,7 @@ void QComponent::addPackagedElement(QPackageableElement *packagedElement)
 {
     // This is a read-write association end
 
-    QTUML_D(QComponent);
+    Q_D(QComponent);
     if (!d->packagedElements->contains(packagedElement)) {
         d->packagedElements->insert(packagedElement);
 
@@ -206,7 +202,7 @@ void QComponent::removePackagedElement(QPackageableElement *packagedElement)
 {
     // This is a read-write association end
 
-    QTUML_D(QComponent);
+    Q_D(QComponent);
     if (d->packagedElements->contains(packagedElement)) {
         d->packagedElements->remove(packagedElement);
 

@@ -50,13 +50,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QStateMachinePrivate::QStateMachinePrivate(QStateMachine *q_umlptr) :
+QStateMachinePrivate::QStateMachinePrivate() :
     extendedStateMachines(new QSet<QStateMachine *>),
     connectionPoints(new QSet<QPseudostate *>),
     submachineStates(new QSet<QState *>),
     regions(new QSet<QRegion *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QStateMachinePrivate::~QStateMachinePrivate()
@@ -75,17 +74,14 @@ QStateMachinePrivate::~QStateMachinePrivate()
     \brief State machines can be used to express the behavior of part of a system. Behavior is modeled as a traversal of a graph of state nodes interconnected by one or more joined transition arcs that are triggered by the dispatching of series of (event) occurrences. During this traversal, the state machine executes a series of activities associated with various elements of the state machine.
  */
 
-QStateMachine::QStateMachine(QObject *parent)
-    : QBehavior(false, parent)
+QStateMachine::QStateMachine(QObject *parent) :
+    QBehavior(*new QStateMachinePrivate, parent)
 {
-    d_umlptr = new QStateMachinePrivate(this);
 }
 
-QStateMachine::QStateMachine(bool createPimpl, QObject *parent)
-    : QBehavior(createPimpl, parent)
+QStateMachine::QStateMachine(QStateMachinePrivate &dd, QObject *parent) :
+    QBehavior(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QStateMachinePrivate;
 }
 
 QStateMachine::~QStateMachine()
@@ -99,7 +95,7 @@ const QSet<QStateMachine *> *QStateMachine::extendedStateMachines() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QStateMachine);
+    Q_D(const QStateMachine);
     return d->extendedStateMachines;
 }
 
@@ -107,7 +103,7 @@ void QStateMachine::addExtendedStateMachine(QStateMachine *extendedStateMachine)
 {
     // This is a read-write association end
 
-    QTUML_D(QStateMachine);
+    Q_D(QStateMachine);
     if (!d->extendedStateMachines->contains(extendedStateMachine)) {
         d->extendedStateMachines->insert(extendedStateMachine);
     }
@@ -117,7 +113,7 @@ void QStateMachine::removeExtendedStateMachine(QStateMachine *extendedStateMachi
 {
     // This is a read-write association end
 
-    QTUML_D(QStateMachine);
+    Q_D(QStateMachine);
     if (d->extendedStateMachines->contains(extendedStateMachine)) {
         d->extendedStateMachines->remove(extendedStateMachine);
     }
@@ -130,7 +126,7 @@ const QSet<QPseudostate *> *QStateMachine::connectionPoints() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QStateMachine);
+    Q_D(const QStateMachine);
     return d->connectionPoints;
 }
 
@@ -138,7 +134,7 @@ void QStateMachine::addConnectionPoint(QPseudostate *connectionPoint)
 {
     // This is a read-write association end
 
-    QTUML_D(QStateMachine);
+    Q_D(QStateMachine);
     if (!d->connectionPoints->contains(connectionPoint)) {
         d->connectionPoints->insert(connectionPoint);
 
@@ -154,7 +150,7 @@ void QStateMachine::removeConnectionPoint(QPseudostate *connectionPoint)
 {
     // This is a read-write association end
 
-    QTUML_D(QStateMachine);
+    Q_D(QStateMachine);
     if (d->connectionPoints->contains(connectionPoint)) {
         d->connectionPoints->remove(connectionPoint);
 
@@ -173,7 +169,7 @@ const QSet<QState *> *QStateMachine::submachineStates() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QStateMachine);
+    Q_D(const QStateMachine);
     return d->submachineStates;
 }
 
@@ -181,7 +177,7 @@ void QStateMachine::addSubmachineState(QState *submachineState)
 {
     // This is a read-write association end
 
-    QTUML_D(QStateMachine);
+    Q_D(QStateMachine);
     if (!d->submachineStates->contains(submachineState)) {
         d->submachineStates->insert(submachineState);
 
@@ -194,7 +190,7 @@ void QStateMachine::removeSubmachineState(QState *submachineState)
 {
     // This is a read-write association end
 
-    QTUML_D(QStateMachine);
+    Q_D(QStateMachine);
     if (d->submachineStates->contains(submachineState)) {
         d->submachineStates->remove(submachineState);
 
@@ -210,7 +206,7 @@ const QSet<QRegion *> *QStateMachine::regions() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QStateMachine);
+    Q_D(const QStateMachine);
     return d->regions;
 }
 
@@ -218,7 +214,7 @@ void QStateMachine::addRegion(QRegion *region)
 {
     // This is a read-write association end
 
-    QTUML_D(QStateMachine);
+    Q_D(QStateMachine);
     if (!d->regions->contains(region)) {
         d->regions->insert(region);
 
@@ -234,7 +230,7 @@ void QStateMachine::removeRegion(QRegion *region)
 {
     // This is a read-write association end
 
-    QTUML_D(QStateMachine);
+    Q_D(QStateMachine);
     if (d->regions->contains(region)) {
         d->regions->remove(region);
 

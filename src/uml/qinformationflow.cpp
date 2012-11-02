@@ -51,7 +51,7 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInformationFlowPrivate::QInformationFlowPrivate(QInformationFlow *q_umlptr) :
+QInformationFlowPrivate::QInformationFlowPrivate() :
     informationTargets(new QSet<QNamedElement *>),
     realizingConnectors(new QSet<QConnector *>),
     conveyed(new QSet<QClassifier *>),
@@ -60,7 +60,6 @@ QInformationFlowPrivate::QInformationFlowPrivate(QInformationFlow *q_umlptr) :
     realizingActivityEdges(new QSet<QActivityEdge *>),
     realizations(new QSet<QRelationship *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QInformationFlowPrivate::~QInformationFlowPrivate()
@@ -82,17 +81,18 @@ QInformationFlowPrivate::~QInformationFlowPrivate()
     \brief An information flow specifies that one or more information items circulates from its sources to its targets. Information flows require some kind of information channel for transmitting information items from the source to the destination. An information channel is represented in various ways depending on the nature of its sources and targets. It may be represented by connectors, links, associations, or even dependencies. For example, if the source and destination are parts in some composite structure such as a collaboration, then the information channel is likely to be represented by a connector between them. Or, if the source and target are objects (which are a kind of instance specification), they may be represented by a link that joins the two, and so on.
  */
 
-QInformationFlow::QInformationFlow(QObject *parent)
-    : QObject(parent)
+QInformationFlow::QInformationFlow(QObject *parent) :
+    QObject(*new QInformationFlowPrivate, parent),
+    _wrappedDirectedRelationship(new QDirectedRelationship(this)),
+    _wrappedPackageableElement(new QPackageableElement(this))
 {
-    d_umlptr = new QInformationFlowPrivate(this);
 }
 
-QInformationFlow::QInformationFlow(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QInformationFlow::QInformationFlow(QInformationFlowPrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedDirectedRelationship(new QDirectedRelationship(this)),
+    _wrappedPackageableElement(new QPackageableElement(this))
 {
-    if (createPimpl)
-        d_umlptr = new QInformationFlowPrivate;
 }
 
 QInformationFlow::~QInformationFlow()
@@ -106,7 +106,7 @@ const QSet<QNamedElement *> *QInformationFlow::informationTargets() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInformationFlow);
+    Q_D(const QInformationFlow);
     return d->informationTargets;
 }
 
@@ -114,7 +114,7 @@ void QInformationFlow::addInformationTarget(QNamedElement *informationTarget)
 {
     // This is a read-write association end
 
-    QTUML_D(QInformationFlow);
+    Q_D(QInformationFlow);
     if (!d->informationTargets->contains(informationTarget)) {
         d->informationTargets->insert(informationTarget);
 
@@ -127,7 +127,7 @@ void QInformationFlow::removeInformationTarget(QNamedElement *informationTarget)
 {
     // This is a read-write association end
 
-    QTUML_D(QInformationFlow);
+    Q_D(QInformationFlow);
     if (d->informationTargets->contains(informationTarget)) {
         d->informationTargets->remove(informationTarget);
 
@@ -143,7 +143,7 @@ const QSet<QConnector *> *QInformationFlow::realizingConnectors() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInformationFlow);
+    Q_D(const QInformationFlow);
     return d->realizingConnectors;
 }
 
@@ -151,7 +151,7 @@ void QInformationFlow::addRealizingConnector(QConnector *realizingConnector)
 {
     // This is a read-write association end
 
-    QTUML_D(QInformationFlow);
+    Q_D(QInformationFlow);
     if (!d->realizingConnectors->contains(realizingConnector)) {
         d->realizingConnectors->insert(realizingConnector);
     }
@@ -161,7 +161,7 @@ void QInformationFlow::removeRealizingConnector(QConnector *realizingConnector)
 {
     // This is a read-write association end
 
-    QTUML_D(QInformationFlow);
+    Q_D(QInformationFlow);
     if (d->realizingConnectors->contains(realizingConnector)) {
         d->realizingConnectors->remove(realizingConnector);
     }
@@ -174,7 +174,7 @@ const QSet<QClassifier *> *QInformationFlow::conveyed() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInformationFlow);
+    Q_D(const QInformationFlow);
     return d->conveyed;
 }
 
@@ -182,7 +182,7 @@ void QInformationFlow::addConveyed(QClassifier *conveyed)
 {
     // This is a read-write association end
 
-    QTUML_D(QInformationFlow);
+    Q_D(QInformationFlow);
     if (!d->conveyed->contains(conveyed)) {
         d->conveyed->insert(conveyed);
     }
@@ -192,7 +192,7 @@ void QInformationFlow::removeConveyed(QClassifier *conveyed)
 {
     // This is a read-write association end
 
-    QTUML_D(QInformationFlow);
+    Q_D(QInformationFlow);
     if (d->conveyed->contains(conveyed)) {
         d->conveyed->remove(conveyed);
     }
@@ -205,7 +205,7 @@ const QSet<QNamedElement *> *QInformationFlow::informationSources() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInformationFlow);
+    Q_D(const QInformationFlow);
     return d->informationSources;
 }
 
@@ -213,7 +213,7 @@ void QInformationFlow::addInformationSource(QNamedElement *informationSource)
 {
     // This is a read-write association end
 
-    QTUML_D(QInformationFlow);
+    Q_D(QInformationFlow);
     if (!d->informationSources->contains(informationSource)) {
         d->informationSources->insert(informationSource);
 
@@ -226,7 +226,7 @@ void QInformationFlow::removeInformationSource(QNamedElement *informationSource)
 {
     // This is a read-write association end
 
-    QTUML_D(QInformationFlow);
+    Q_D(QInformationFlow);
     if (d->informationSources->contains(informationSource)) {
         d->informationSources->remove(informationSource);
 
@@ -242,7 +242,7 @@ const QSet<QMessage *> *QInformationFlow::realizingMessages() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInformationFlow);
+    Q_D(const QInformationFlow);
     return d->realizingMessages;
 }
 
@@ -250,7 +250,7 @@ void QInformationFlow::addRealizingMessage(QMessage *realizingMessage)
 {
     // This is a read-write association end
 
-    QTUML_D(QInformationFlow);
+    Q_D(QInformationFlow);
     if (!d->realizingMessages->contains(realizingMessage)) {
         d->realizingMessages->insert(realizingMessage);
     }
@@ -260,7 +260,7 @@ void QInformationFlow::removeRealizingMessage(QMessage *realizingMessage)
 {
     // This is a read-write association end
 
-    QTUML_D(QInformationFlow);
+    Q_D(QInformationFlow);
     if (d->realizingMessages->contains(realizingMessage)) {
         d->realizingMessages->remove(realizingMessage);
     }
@@ -273,7 +273,7 @@ const QSet<QActivityEdge *> *QInformationFlow::realizingActivityEdges() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInformationFlow);
+    Q_D(const QInformationFlow);
     return d->realizingActivityEdges;
 }
 
@@ -281,7 +281,7 @@ void QInformationFlow::addRealizingActivityEdge(QActivityEdge *realizingActivity
 {
     // This is a read-write association end
 
-    QTUML_D(QInformationFlow);
+    Q_D(QInformationFlow);
     if (!d->realizingActivityEdges->contains(realizingActivityEdge)) {
         d->realizingActivityEdges->insert(realizingActivityEdge);
     }
@@ -291,7 +291,7 @@ void QInformationFlow::removeRealizingActivityEdge(QActivityEdge *realizingActiv
 {
     // This is a read-write association end
 
-    QTUML_D(QInformationFlow);
+    Q_D(QInformationFlow);
     if (d->realizingActivityEdges->contains(realizingActivityEdge)) {
         d->realizingActivityEdges->remove(realizingActivityEdge);
     }
@@ -304,7 +304,7 @@ const QSet<QRelationship *> *QInformationFlow::realizations() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInformationFlow);
+    Q_D(const QInformationFlow);
     return d->realizations;
 }
 
@@ -312,7 +312,7 @@ void QInformationFlow::addRealization(QRelationship *realization)
 {
     // This is a read-write association end
 
-    QTUML_D(QInformationFlow);
+    Q_D(QInformationFlow);
     if (!d->realizations->contains(realization)) {
         d->realizations->insert(realization);
     }
@@ -322,7 +322,7 @@ void QInformationFlow::removeRealization(QRelationship *realization)
 {
     // This is a read-write association end
 
-    QTUML_D(QInformationFlow);
+    Q_D(QInformationFlow);
     if (d->realizations->contains(realization)) {
         d->realizations->remove(realization);
     }

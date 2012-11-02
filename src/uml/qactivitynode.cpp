@@ -82,8 +82,8 @@ void QActivityNodePrivate::addInGroup(QActivityGroup *inGroup)
         this->inGroup->insert(inGroup);
 
         // Adjust opposite property
-        QTUML_Q(QActivityNode);
-        (dynamic_cast<QActivityGroupPrivate *>(inGroup->d_umlptr))->addContainedNode(q);
+        Q_Q(QActivityNode);
+        (dynamic_cast<QActivityGroupPrivate *>(inGroup->d_ptr))->addContainedNode(q);
     }
 }
 
@@ -95,9 +95,9 @@ void QActivityNodePrivate::removeInGroup(QActivityGroup *inGroup)
         this->inGroup->remove(inGroup);
 
         // Adjust opposite property
-        QTUML_Q(QActivityNode);
+        Q_Q(QActivityNode);
         if (inGroup)
-            (dynamic_cast<QActivityGroupPrivate *>(inGroup->d_umlptr))->removeContainedNode(q);
+            (dynamic_cast<QActivityGroupPrivate *>(inGroup->d_ptr))->removeContainedNode(q);
     }
 }
 
@@ -109,7 +109,13 @@ void QActivityNodePrivate::removeInGroup(QActivityGroup *inGroup)
     \brief ActivityNode is an abstract class for points in the flow of an activity connected by edges.
  */
 
-QActivityNode::QActivityNode()
+QActivityNode::QActivityNode(QObject *parent) :
+    QRedefinableElement(*new QActivityNodePrivate, parent)
+{
+}
+
+QActivityNode::QActivityNode(QActivityNodePrivate &dd, QObject *parent) :
+    QRedefinableElement(dd, parent)
 {
 }
 
@@ -124,7 +130,7 @@ const QSet<QActivityNode *> *QActivityNode::redefinedNodes() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QActivityNode);
+    Q_D(const QActivityNode);
     return d->redefinedNodes;
 }
 
@@ -132,7 +138,7 @@ void QActivityNode::addRedefinedNode(QActivityNode *redefinedNode)
 {
     // This is a read-write association end
 
-    QTUML_D(QActivityNode);
+    Q_D(QActivityNode);
     if (!d->redefinedNodes->contains(redefinedNode)) {
         d->redefinedNodes->insert(redefinedNode);
 
@@ -145,7 +151,7 @@ void QActivityNode::removeRedefinedNode(QActivityNode *redefinedNode)
 {
     // This is a read-write association end
 
-    QTUML_D(QActivityNode);
+    Q_D(QActivityNode);
     if (d->redefinedNodes->contains(redefinedNode)) {
         d->redefinedNodes->remove(redefinedNode);
 
@@ -161,7 +167,7 @@ const QSet<QActivityEdge *> *QActivityNode::incomings() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QActivityNode);
+    Q_D(const QActivityNode);
     return d->incomings;
 }
 
@@ -169,7 +175,7 @@ void QActivityNode::addIncoming(QActivityEdge *incoming)
 {
     // This is a read-write association end
 
-    QTUML_D(QActivityNode);
+    Q_D(QActivityNode);
     if (!d->incomings->contains(incoming)) {
         d->incomings->insert(incoming);
 
@@ -182,7 +188,7 @@ void QActivityNode::removeIncoming(QActivityEdge *incoming)
 {
     // This is a read-write association end
 
-    QTUML_D(QActivityNode);
+    Q_D(QActivityNode);
     if (d->incomings->contains(incoming)) {
         d->incomings->remove(incoming);
 
@@ -198,7 +204,7 @@ QActivity *QActivityNode::activity() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QActivityNode);
+    Q_D(const QActivityNode);
     return d->activity;
 }
 
@@ -206,7 +212,7 @@ void QActivityNode::setActivity(QActivity *activity)
 {
     // This is a read-write association end
 
-    QTUML_D(QActivityNode);
+    Q_D(QActivityNode);
     if (d->activity != activity) {
         // Adjust opposite property
         if (d->activity)
@@ -230,7 +236,7 @@ const QSet<QActivityGroup *> *QActivityNode::inGroup() const
 {
     // This is a read-only derived-union association end
 
-    QTUML_D(const QActivityNode);
+    Q_D(const QActivityNode);
     return d->inGroup;
 }
 
@@ -241,7 +247,7 @@ QStructuredActivityNode *QActivityNode::inStructuredNode() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QActivityNode);
+    Q_D(const QActivityNode);
     return d->inStructuredNode;
 }
 
@@ -249,7 +255,7 @@ void QActivityNode::setInStructuredNode(QStructuredActivityNode *inStructuredNod
 {
     // This is a read-write association end
 
-    QTUML_D(QActivityNode);
+    Q_D(QActivityNode);
     if (d->inStructuredNode != inStructuredNode) {
         // Adjust opposite property
         if (d->inStructuredNode)
@@ -279,7 +285,7 @@ const QSet<QActivityPartition *> *QActivityNode::inPartition() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QActivityNode);
+    Q_D(const QActivityNode);
     return d->inPartition;
 }
 
@@ -287,7 +293,7 @@ void QActivityNode::addInPartition(QActivityPartition *inPartition)
 {
     // This is a read-write association end
 
-    QTUML_D(QActivityNode);
+    Q_D(QActivityNode);
     if (!d->inPartition->contains(inPartition)) {
         d->inPartition->insert(inPartition);
 
@@ -303,7 +309,7 @@ void QActivityNode::removeInPartition(QActivityPartition *inPartition)
 {
     // This is a read-write association end
 
-    QTUML_D(QActivityNode);
+    Q_D(QActivityNode);
     if (d->inPartition->contains(inPartition)) {
         d->inPartition->remove(inPartition);
 
@@ -323,7 +329,7 @@ const QSet<QInterruptibleActivityRegion *> *QActivityNode::inInterruptibleRegion
 {
     // This is a read-write association end
 
-    QTUML_D(const QActivityNode);
+    Q_D(const QActivityNode);
     return d->inInterruptibleRegion;
 }
 
@@ -331,7 +337,7 @@ void QActivityNode::addInInterruptibleRegion(QInterruptibleActivityRegion *inInt
 {
     // This is a read-write association end
 
-    QTUML_D(QActivityNode);
+    Q_D(QActivityNode);
     if (!d->inInterruptibleRegion->contains(inInterruptibleRegion)) {
         d->inInterruptibleRegion->insert(inInterruptibleRegion);
 
@@ -347,7 +353,7 @@ void QActivityNode::removeInInterruptibleRegion(QInterruptibleActivityRegion *in
 {
     // This is a read-write association end
 
-    QTUML_D(QActivityNode);
+    Q_D(QActivityNode);
     if (d->inInterruptibleRegion->contains(inInterruptibleRegion)) {
         d->inInterruptibleRegion->remove(inInterruptibleRegion);
 
@@ -367,7 +373,7 @@ const QSet<QActivityEdge *> *QActivityNode::outgoings() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QActivityNode);
+    Q_D(const QActivityNode);
     return d->outgoings;
 }
 
@@ -375,7 +381,7 @@ void QActivityNode::addOutgoing(QActivityEdge *outgoing)
 {
     // This is a read-write association end
 
-    QTUML_D(QActivityNode);
+    Q_D(QActivityNode);
     if (!d->outgoings->contains(outgoing)) {
         d->outgoings->insert(outgoing);
 
@@ -388,7 +394,7 @@ void QActivityNode::removeOutgoing(QActivityEdge *outgoing)
 {
     // This is a read-write association end
 
-    QTUML_D(QActivityNode);
+    Q_D(QActivityNode);
     if (d->outgoings->contains(outgoing)) {
         d->outgoings->remove(outgoing);
 

@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QGeneralOrderingPrivate::QGeneralOrderingPrivate(QGeneralOrdering *q_umlptr) :
+QGeneralOrderingPrivate::QGeneralOrderingPrivate() :
     before(0),
     after(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QGeneralOrderingPrivate::~QGeneralOrderingPrivate()
@@ -65,17 +64,14 @@ QGeneralOrderingPrivate::~QGeneralOrderingPrivate()
     \brief A general ordering represents a binary relation between two occurrence specifications, to describe that one occurrence specification must occur before the other in a valid trace. This mechanism provides the ability to define partial orders of occurrence cpecifications that may otherwise not have a specified order.
  */
 
-QGeneralOrdering::QGeneralOrdering(QObject *parent)
-    : QObject(parent)
+QGeneralOrdering::QGeneralOrdering(QObject *parent) :
+    QNamedElement(*new QGeneralOrderingPrivate, parent)
 {
-    d_umlptr = new QGeneralOrderingPrivate(this);
 }
 
-QGeneralOrdering::QGeneralOrdering(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QGeneralOrdering::QGeneralOrdering(QGeneralOrderingPrivate &dd, QObject *parent) :
+    QNamedElement(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QGeneralOrderingPrivate;
 }
 
 QGeneralOrdering::~QGeneralOrdering()
@@ -89,7 +85,7 @@ QOccurrenceSpecification *QGeneralOrdering::before() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QGeneralOrdering);
+    Q_D(const QGeneralOrdering);
     return d->before;
 }
 
@@ -97,7 +93,7 @@ void QGeneralOrdering::setBefore(QOccurrenceSpecification *before)
 {
     // This is a read-write association end
 
-    QTUML_D(QGeneralOrdering);
+    Q_D(QGeneralOrdering);
     if (d->before != before) {
         // Adjust opposite property
         if (d->before)
@@ -118,7 +114,7 @@ QOccurrenceSpecification *QGeneralOrdering::after() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QGeneralOrdering);
+    Q_D(const QGeneralOrdering);
     return d->after;
 }
 
@@ -126,7 +122,7 @@ void QGeneralOrdering::setAfter(QOccurrenceSpecification *after)
 {
     // This is a read-write association end
 
-    QTUML_D(QGeneralOrdering);
+    Q_D(QGeneralOrdering);
     if (d->after != after) {
         // Adjust opposite property
         if (d->after)

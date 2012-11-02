@@ -64,7 +64,13 @@ QExecutionSpecificationPrivate::~QExecutionSpecificationPrivate()
     \brief An execution specification is a specification of the execution of a unit of behavior or action within the lifeline. The duration of an execution specification is represented by two cccurrence specifications, the start occurrence specification and the finish occurrence specification.
  */
 
-QExecutionSpecification::QExecutionSpecification()
+QExecutionSpecification::QExecutionSpecification(QObject *parent) :
+    QInteractionFragment(*new QExecutionSpecificationPrivate, parent)
+{
+}
+
+QExecutionSpecification::QExecutionSpecification(QExecutionSpecificationPrivate &dd, QObject *parent) :
+    QInteractionFragment(dd, parent)
 {
 }
 
@@ -79,7 +85,7 @@ QOccurrenceSpecification *QExecutionSpecification::start() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QExecutionSpecification);
+    Q_D(const QExecutionSpecification);
     return d->start;
 }
 
@@ -87,7 +93,7 @@ void QExecutionSpecification::setStart(QOccurrenceSpecification *start)
 {
     // This is a read-write association end
 
-    QTUML_D(QExecutionSpecification);
+    Q_D(QExecutionSpecification);
     if (d->start != start) {
         d->start = start;
     }
@@ -100,7 +106,7 @@ QOccurrenceSpecification *QExecutionSpecification::finish() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QExecutionSpecification);
+    Q_D(const QExecutionSpecification);
     return d->finish;
 }
 
@@ -108,7 +114,7 @@ void QExecutionSpecification::setFinish(QOccurrenceSpecification *finish)
 {
     // This is a read-write association end
 
-    QTUML_D(QExecutionSpecification);
+    Q_D(QExecutionSpecification);
     if (d->finish != finish) {
         d->finish = finish;
     }

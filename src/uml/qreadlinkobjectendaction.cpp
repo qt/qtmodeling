@@ -48,12 +48,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QReadLinkObjectEndActionPrivate::QReadLinkObjectEndActionPrivate(QReadLinkObjectEndAction *q_umlptr) :
+QReadLinkObjectEndActionPrivate::QReadLinkObjectEndActionPrivate() :
     end(0),
     object(0),
     result(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QReadLinkObjectEndActionPrivate::~QReadLinkObjectEndActionPrivate()
@@ -68,17 +67,14 @@ QReadLinkObjectEndActionPrivate::~QReadLinkObjectEndActionPrivate()
     \brief A read link object end action is an action that retrieves an end object from a link object.
  */
 
-QReadLinkObjectEndAction::QReadLinkObjectEndAction(QObject *parent)
-    : QObject(parent)
+QReadLinkObjectEndAction::QReadLinkObjectEndAction(QObject *parent) :
+    QAction(*new QReadLinkObjectEndActionPrivate, parent)
 {
-    d_umlptr = new QReadLinkObjectEndActionPrivate(this);
 }
 
-QReadLinkObjectEndAction::QReadLinkObjectEndAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QReadLinkObjectEndAction::QReadLinkObjectEndAction(QReadLinkObjectEndActionPrivate &dd, QObject *parent) :
+    QAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QReadLinkObjectEndActionPrivate;
 }
 
 QReadLinkObjectEndAction::~QReadLinkObjectEndAction()
@@ -92,7 +88,7 @@ QProperty *QReadLinkObjectEndAction::end() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QReadLinkObjectEndAction);
+    Q_D(const QReadLinkObjectEndAction);
     return d->end;
 }
 
@@ -100,7 +96,7 @@ void QReadLinkObjectEndAction::setEnd(QProperty *end)
 {
     // This is a read-write association end
 
-    QTUML_D(QReadLinkObjectEndAction);
+    Q_D(QReadLinkObjectEndAction);
     if (d->end != end) {
         d->end = end;
     }
@@ -113,7 +109,7 @@ QInputPin *QReadLinkObjectEndAction::object() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QReadLinkObjectEndAction);
+    Q_D(const QReadLinkObjectEndAction);
     return d->object;
 }
 
@@ -121,7 +117,7 @@ void QReadLinkObjectEndAction::setObject(QInputPin *object)
 {
     // This is a read-write association end
 
-    QTUML_D(QReadLinkObjectEndAction);
+    Q_D(QReadLinkObjectEndAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->object));
@@ -142,7 +138,7 @@ QOutputPin *QReadLinkObjectEndAction::result() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QReadLinkObjectEndAction);
+    Q_D(const QReadLinkObjectEndAction);
     return d->result;
 }
 
@@ -150,7 +146,7 @@ void QReadLinkObjectEndAction::setResult(QOutputPin *result)
 {
     // This is a read-write association end
 
-    QTUML_D(QReadLinkObjectEndAction);
+    Q_D(QReadLinkObjectEndAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->result));

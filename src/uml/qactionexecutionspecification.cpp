@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QActionExecutionSpecificationPrivate::QActionExecutionSpecificationPrivate(QActionExecutionSpecification *q_umlptr) :
+QActionExecutionSpecificationPrivate::QActionExecutionSpecificationPrivate() :
     action(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QActionExecutionSpecificationPrivate::~QActionExecutionSpecificationPrivate()
@@ -64,17 +63,14 @@ QActionExecutionSpecificationPrivate::~QActionExecutionSpecificationPrivate()
     \brief An action execution specification is a kind of execution specification representing the execution of an action.
  */
 
-QActionExecutionSpecification::QActionExecutionSpecification(QObject *parent)
-    : QObject(parent)
+QActionExecutionSpecification::QActionExecutionSpecification(QObject *parent) :
+    QExecutionSpecification(*new QActionExecutionSpecificationPrivate, parent)
 {
-    d_umlptr = new QActionExecutionSpecificationPrivate(this);
 }
 
-QActionExecutionSpecification::QActionExecutionSpecification(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QActionExecutionSpecification::QActionExecutionSpecification(QActionExecutionSpecificationPrivate &dd, QObject *parent) :
+    QExecutionSpecification(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QActionExecutionSpecificationPrivate;
 }
 
 QActionExecutionSpecification::~QActionExecutionSpecification()
@@ -88,7 +84,7 @@ QAction *QActionExecutionSpecification::action() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QActionExecutionSpecification);
+    Q_D(const QActionExecutionSpecification);
     return d->action;
 }
 
@@ -96,7 +92,7 @@ void QActionExecutionSpecification::setAction(QAction *action)
 {
     // This is a read-write association end
 
-    QTUML_D(QActionExecutionSpecification);
+    Q_D(QActionExecutionSpecification);
     if (d->action != action) {
         d->action = action;
     }

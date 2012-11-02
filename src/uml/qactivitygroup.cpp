@@ -74,8 +74,8 @@ void QActivityGroupPrivate::addContainedNode(QActivityNode *containedNode)
         this->containedNodes->insert(containedNode);
 
         // Adjust opposite property
-        QTUML_Q(QActivityGroup);
-        (dynamic_cast<QActivityNodePrivate *>(containedNode->d_umlptr))->addInGroup(q);
+        Q_Q(QActivityGroup);
+        (dynamic_cast<QActivityNodePrivate *>(containedNode->d_ptr))->addInGroup(q);
     }
 }
 
@@ -87,9 +87,9 @@ void QActivityGroupPrivate::removeContainedNode(QActivityNode *containedNode)
         this->containedNodes->remove(containedNode);
 
         // Adjust opposite property
-        QTUML_Q(QActivityGroup);
+        Q_Q(QActivityGroup);
         if (containedNode)
-            (dynamic_cast<QActivityNodePrivate *>(containedNode->d_umlptr))->removeInGroup(q);
+            (dynamic_cast<QActivityNodePrivate *>(containedNode->d_ptr))->removeInGroup(q);
     }
 }
 
@@ -104,8 +104,8 @@ void QActivityGroupPrivate::addSubgroup(QActivityGroup *subgroup)
         QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(subgroup));
 
         // Adjust opposite property
-        QTUML_Q(QActivityGroup);
-        (dynamic_cast<QActivityGroupPrivate *>(subgroup->d_umlptr))->setSuperGroup(q);
+        Q_Q(QActivityGroup);
+        (dynamic_cast<QActivityGroupPrivate *>(subgroup->d_ptr))->setSuperGroup(q);
     }
 }
 
@@ -120,8 +120,8 @@ void QActivityGroupPrivate::removeSubgroup(QActivityGroup *subgroup)
         QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(subgroup));
 
         // Adjust opposite property
-        QTUML_Q(QActivityGroup);
-        (dynamic_cast<QActivityGroupPrivate *>(subgroup->d_umlptr))->setSuperGroup(0);
+        Q_Q(QActivityGroup);
+        (dynamic_cast<QActivityGroupPrivate *>(subgroup->d_ptr))->setSuperGroup(0);
     }
 }
 
@@ -133,8 +133,8 @@ void QActivityGroupPrivate::addContainedEdge(QActivityEdge *containedEdge)
         this->containedEdges->insert(containedEdge);
 
         // Adjust opposite property
-        QTUML_Q(QActivityGroup);
-        (dynamic_cast<QActivityEdgePrivate *>(containedEdge->d_umlptr))->addInGroup(q);
+        Q_Q(QActivityGroup);
+        (dynamic_cast<QActivityEdgePrivate *>(containedEdge->d_ptr))->addInGroup(q);
     }
 }
 
@@ -146,9 +146,9 @@ void QActivityGroupPrivate::removeContainedEdge(QActivityEdge *containedEdge)
         this->containedEdges->remove(containedEdge);
 
         // Adjust opposite property
-        QTUML_Q(QActivityGroup);
+        Q_Q(QActivityGroup);
         if (containedEdge)
-            (dynamic_cast<QActivityEdgePrivate *>(containedEdge->d_umlptr))->removeInGroup(q);
+            (dynamic_cast<QActivityEdgePrivate *>(containedEdge->d_ptr))->removeInGroup(q);
     }
 }
 
@@ -157,10 +157,10 @@ void QActivityGroupPrivate::setSuperGroup(QActivityGroup *superGroup)
     // This is a read-only derived-union association end
 
     if (this->superGroup != superGroup) {
-        QTUML_Q(QActivityGroup)
+        Q_Q(QActivityGroup)
         // Adjust opposite property
         if (this->superGroup)
-            (dynamic_cast<QActivityGroupPrivate *>(this->superGroup->d_umlptr))->removeSubgroup(q);
+            (dynamic_cast<QActivityGroupPrivate *>(this->superGroup->d_ptr))->removeSubgroup(q);
 
         this->superGroup = superGroup;
 
@@ -169,7 +169,7 @@ void QActivityGroupPrivate::setSuperGroup(QActivityGroup *superGroup)
 
         // Adjust opposite property
         if (superGroup)
-            (dynamic_cast<QActivityGroupPrivate *>(superGroup->d_umlptr))->addSubgroup(q);
+            (dynamic_cast<QActivityGroupPrivate *>(superGroup->d_ptr))->addSubgroup(q);
     }
 }
 
@@ -181,7 +181,13 @@ void QActivityGroupPrivate::setSuperGroup(QActivityGroup *superGroup)
     \brief ActivityGroup is an abstract class for defining sets of nodes and edges in an activity.
  */
 
-QActivityGroup::QActivityGroup()
+QActivityGroup::QActivityGroup(QObject *parent) :
+    QNamedElement(*new QActivityGroupPrivate, parent)
+{
+}
+
+QActivityGroup::QActivityGroup(QActivityGroupPrivate &dd, QObject *parent) :
+    QNamedElement(dd, parent)
 {
 }
 
@@ -196,7 +202,7 @@ QActivity *QActivityGroup::inActivity() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QActivityGroup);
+    Q_D(const QActivityGroup);
     return d->inActivity;
 }
 
@@ -204,7 +210,7 @@ void QActivityGroup::setInActivity(QActivity *inActivity)
 {
     // This is a read-write association end
 
-    QTUML_D(QActivityGroup);
+    Q_D(QActivityGroup);
     if (d->inActivity != inActivity) {
         // Adjust opposite property
         if (d->inActivity)
@@ -228,7 +234,7 @@ const QSet<QActivityNode *> *QActivityGroup::containedNodes() const
 {
     // This is a read-only derived-union association end
 
-    QTUML_D(const QActivityGroup);
+    Q_D(const QActivityGroup);
     return d->containedNodes;
 }
 
@@ -239,7 +245,7 @@ const QSet<QActivityGroup *> *QActivityGroup::subgroups() const
 {
     // This is a read-only derived-union association end
 
-    QTUML_D(const QActivityGroup);
+    Q_D(const QActivityGroup);
     return d->subgroups;
 }
 
@@ -250,7 +256,7 @@ const QSet<QActivityEdge *> *QActivityGroup::containedEdges() const
 {
     // This is a read-only derived-union association end
 
-    QTUML_D(const QActivityGroup);
+    Q_D(const QActivityGroup);
     return d->containedEdges;
 }
 
@@ -261,7 +267,7 @@ QActivityGroup *QActivityGroup::superGroup() const
 {
     // This is a read-only derived-union association end
 
-    QTUML_D(const QActivityGroup);
+    Q_D(const QActivityGroup);
     return d->superGroup;
 }
 

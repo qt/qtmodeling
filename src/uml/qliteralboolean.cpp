@@ -45,10 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QLiteralBooleanPrivate::QLiteralBooleanPrivate(QLiteralBoolean *q_umlptr) :
+QLiteralBooleanPrivate::QLiteralBooleanPrivate() :
     value(false)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QLiteralBooleanPrivate::~QLiteralBooleanPrivate()
@@ -63,17 +62,14 @@ QLiteralBooleanPrivate::~QLiteralBooleanPrivate()
     \brief A literal Boolean is a specification of a Boolean value.
  */
 
-QLiteralBoolean::QLiteralBoolean(QObject *parent)
-    : QObject(parent)
+QLiteralBoolean::QLiteralBoolean(QObject *parent) :
+    QLiteralSpecification(*new QLiteralBooleanPrivate, parent)
 {
-    d_umlptr = new QLiteralBooleanPrivate(this);
 }
 
-QLiteralBoolean::QLiteralBoolean(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QLiteralBoolean::QLiteralBoolean(QLiteralBooleanPrivate &dd, QObject *parent) :
+    QLiteralSpecification(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QLiteralBooleanPrivate;
 }
 
 QLiteralBoolean::~QLiteralBoolean()
@@ -87,7 +83,7 @@ bool QLiteralBoolean::value() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QLiteralBoolean);
+    Q_D(const QLiteralBoolean);
     return d->value;
 }
 
@@ -95,7 +91,7 @@ void QLiteralBoolean::setValue(bool value)
 {
     // This is a read-write attribute
 
-    QTUML_D(QLiteralBoolean);
+    Q_D(QLiteralBoolean);
     if (d->value != value) {
         d->value = value;
     }

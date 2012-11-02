@@ -47,11 +47,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QSendSignalActionPrivate::QSendSignalActionPrivate(QSendSignalAction *q_umlptr) :
+QSendSignalActionPrivate::QSendSignalActionPrivate() :
     target(0),
     signal(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QSendSignalActionPrivate::~QSendSignalActionPrivate()
@@ -66,17 +65,14 @@ QSendSignalActionPrivate::~QSendSignalActionPrivate()
     \brief A send signal action is an action that creates a signal instance from its inputs, and transmits it to the target object, where it may cause the firing of a state machine transition or the execution of an activity. The argument values are available to the execution of associated behaviors. The requestor continues execution immediately. Any reply message is ignored and is not transmitted to the requestor. If the input is already a signal instance, use a send object action.
  */
 
-QSendSignalAction::QSendSignalAction(QObject *parent)
-    : QObject(parent)
+QSendSignalAction::QSendSignalAction(QObject *parent) :
+    QInvocationAction(*new QSendSignalActionPrivate, parent)
 {
-    d_umlptr = new QSendSignalActionPrivate(this);
 }
 
-QSendSignalAction::QSendSignalAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QSendSignalAction::QSendSignalAction(QSendSignalActionPrivate &dd, QObject *parent) :
+    QInvocationAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QSendSignalActionPrivate;
 }
 
 QSendSignalAction::~QSendSignalAction()
@@ -90,7 +86,7 @@ QInputPin *QSendSignalAction::target() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QSendSignalAction);
+    Q_D(const QSendSignalAction);
     return d->target;
 }
 
@@ -98,7 +94,7 @@ void QSendSignalAction::setTarget(QInputPin *target)
 {
     // This is a read-write association end
 
-    QTUML_D(QSendSignalAction);
+    Q_D(QSendSignalAction);
     if (d->target != target) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->target));
@@ -119,7 +115,7 @@ QSignal *QSendSignalAction::signal() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QSendSignalAction);
+    Q_D(const QSendSignalAction);
     return d->signal;
 }
 
@@ -127,7 +123,7 @@ void QSendSignalAction::setSignal(QSignal *signal)
 {
     // This is a read-write association end
 
-    QTUML_D(QSendSignalAction);
+    Q_D(QSendSignalAction);
     if (d->signal != signal) {
         d->signal = signal;
     }

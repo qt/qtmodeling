@@ -56,9 +56,12 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QOutputPin;
 class QExecutableNode;
 class QInputPin;
+
+class QLoopNodePrivate;
 
 class Q_UML_EXPORT QLoopNode : public QStructuredActivityNode
 {
@@ -76,6 +79,7 @@ class Q_UML_EXPORT QLoopNode : public QStructuredActivityNode
     Q_PROPERTY(const QSet<QExecutableNode *> * tests READ tests)
 
     Q_DISABLE_COPY(QLoopNode)
+    Q_DECLARE_PRIVATE(QLoopNode)
 
 public:
     explicit QLoopNode(QObject *parent = 0);
@@ -111,12 +115,13 @@ public:
     void removeTest(QExecutableNode *test);
 
 protected:
-    explicit QLoopNode(bool createPimpl, QObject *parent = 0);
+    explicit QLoopNode(QLoopNodePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QLoopNode) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QLoopNode) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QLoopNode) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QLoopNode) *> *)
 
 QT_END_HEADER

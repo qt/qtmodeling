@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QElement>
 
 // Qt includes
@@ -56,18 +55,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QStructuralFeature;
 class QInstanceSpecification;
 class QValueSpecification;
 
-class Q_UML_EXPORT QSlot : public QObject, public QElement
+class QSlotPrivate;
+
+class Q_UML_EXPORT QSlot : public QElement
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QSlot
     Q_PROPERTY(const QList<QValueSpecification *> * values READ values)
@@ -75,6 +72,7 @@ class Q_UML_EXPORT QSlot : public QObject, public QElement
     Q_PROPERTY(QInstanceSpecification * owningInstance READ owningInstance WRITE setOwningInstance)
 
     Q_DISABLE_COPY(QSlot)
+    Q_DECLARE_PRIVATE(QSlot)
 
 public:
     explicit QSlot(QObject *parent = 0);
@@ -90,12 +88,13 @@ public:
     void setOwningInstance(QInstanceSpecification *owningInstance);
 
 protected:
-    explicit QSlot(bool createPimpl, QObject *parent = 0);
+    explicit QSlot(QSlotPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QSlot) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QSlot) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QSlot) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QSlot) *> *)
 
 QT_END_HEADER

@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QObservation>
 
 // Qt includes
@@ -56,36 +55,21 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QNamedElement;
 
-class Q_UML_EXPORT QDurationObservation : public QObject, public QObservation
+class QDurationObservationPrivate;
+
+class Q_UML_EXPORT QDurationObservation : public QObservation
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QParameterableElement
-    Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
-    Q_PROPERTY(QTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From QPackageableElement
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // From QDurationObservation
     Q_PROPERTY(const QSet<bool> * firstEvents READ firstEvents)
     Q_PROPERTY(const QSet<QNamedElement *> * events READ events)
 
     Q_DISABLE_COPY(QDurationObservation)
+    Q_DECLARE_PRIVATE(QDurationObservation)
 
 public:
     explicit QDurationObservation(QObject *parent = 0);
@@ -102,12 +86,13 @@ public:
     void removeEvent(QNamedElement *event);
 
 protected:
-    explicit QDurationObservation(bool createPimpl, QObject *parent = 0);
+    explicit QDurationObservation(QDurationObservationPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QDurationObservation) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QDurationObservation) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QDurationObservation) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QDurationObservation) *> *)
 
 QT_END_HEADER

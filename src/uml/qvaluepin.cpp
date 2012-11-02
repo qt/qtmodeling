@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QValuePinPrivate::QValuePinPrivate(QValuePin *q_umlptr) :
+QValuePinPrivate::QValuePinPrivate() :
     value(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QValuePinPrivate::~QValuePinPrivate()
@@ -64,17 +63,14 @@ QValuePinPrivate::~QValuePinPrivate()
     \brief A value pin is an input pin that provides a value by evaluating a value specification.
  */
 
-QValuePin::QValuePin(QObject *parent)
-    : QInputPin(false, parent)
+QValuePin::QValuePin(QObject *parent) :
+    QInputPin(*new QValuePinPrivate, parent)
 {
-    d_umlptr = new QValuePinPrivate(this);
 }
 
-QValuePin::QValuePin(bool createPimpl, QObject *parent)
-    : QInputPin(createPimpl, parent)
+QValuePin::QValuePin(QValuePinPrivate &dd, QObject *parent) :
+    QInputPin(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QValuePinPrivate;
 }
 
 QValuePin::~QValuePin()
@@ -88,7 +84,7 @@ QValueSpecification *QValuePin::value() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QValuePin);
+    Q_D(const QValuePin);
     return d->value;
 }
 
@@ -96,7 +92,7 @@ void QValuePin::setValue(QValueSpecification *value)
 {
     // This is a read-write association end
 
-    QTUML_D(QValuePin);
+    Q_D(QValuePin);
     if (d->value != value) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->value));

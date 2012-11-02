@@ -52,18 +52,26 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QFinalNodePrivate;
+
 class Q_UML_EXPORT QFinalNode : public QControlNode
 {
     Q_DISABLE_COPY(QFinalNode)
+    Q_DECLARE_PRIVATE(QFinalNode)
 
 public:
+    explicit QFinalNode(QObject *parent = 0);
     virtual ~QFinalNode();
 
 protected:
-    explicit QFinalNode();
+    explicit QFinalNode(QFinalNodePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QFinalNode) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QFinalNode) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QFinalNode) *> *)
 
 QT_END_HEADER
 

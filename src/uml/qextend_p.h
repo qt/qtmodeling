@@ -44,8 +44,11 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qdirectedrelationship_p.h"
-#include "qnamedelement_p.h"
+#include "private/qobject_p.h"
+
+#include "private/qdirectedrelationship_p.h"
+#include "private/qnamedelement_p.h"
+#include "qextend.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -56,21 +59,28 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QConstraint;
 class QUseCase;
 class QExtensionPoint;
 class QExtend;
 
-class QExtendPrivate : public QDirectedRelationshipPrivate, public QNamedElementPrivate
+class Q_UML_EXPORT QExtendPrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QExtend)
+
 public:
-    explicit QExtendPrivate(QExtend *q_umlptr = 0);
+    explicit QExtendPrivate();
     virtual ~QExtendPrivate();
 
     QUseCase *extendedCase;
     QUseCase *extension;
     QList<QExtensionPoint *> *extensionLocations;
     QConstraint *condition;
+
+private:
+    QDirectedRelationshipPrivate *_wrappedDirectedRelationshipPrivate;
+    QNamedElementPrivate *_wrappedNamedElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

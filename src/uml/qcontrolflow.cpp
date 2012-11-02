@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QControlFlowPrivate::QControlFlowPrivate(QControlFlow *q_umlptr)
+QControlFlowPrivate::QControlFlowPrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QControlFlowPrivate::~QControlFlowPrivate()
@@ -62,17 +61,14 @@ QControlFlowPrivate::~QControlFlowPrivate()
     \brief A control flow is an edge that starts an activity node after the previous one is finished.
  */
 
-QControlFlow::QControlFlow(QObject *parent)
-    : QObject(parent)
+QControlFlow::QControlFlow(QObject *parent) :
+    QActivityEdge(*new QControlFlowPrivate, parent)
 {
-    d_umlptr = new QControlFlowPrivate(this);
 }
 
-QControlFlow::QControlFlow(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QControlFlow::QControlFlow(QControlFlowPrivate &dd, QObject *parent) :
+    QActivityEdge(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QControlFlowPrivate;
 }
 
 QControlFlow::~QControlFlow()

@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QLiteralSpecification>
 
 // Qt includes
@@ -56,36 +55,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QLiteralString : public QObject, public QLiteralSpecification
+class QLiteralStringPrivate;
+
+class Q_UML_EXPORT QLiteralString : public QLiteralSpecification
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From QTypedElement
-    Q_PROPERTY(QType * type READ type WRITE setType)
-
-    // From QParameterableElement
-    Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
-    Q_PROPERTY(QTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
-
-    // From QPackageableElement
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // From QLiteralString
     Q_PROPERTY(QString value READ value WRITE setValue)
 
     Q_DISABLE_COPY(QLiteralString)
+    Q_DECLARE_PRIVATE(QLiteralString)
 
 public:
     explicit QLiteralString(QObject *parent = 0);
@@ -100,12 +80,13 @@ public:
     QString stringValue() const;
 
 protected:
-    explicit QLiteralString(bool createPimpl, QObject *parent = 0);
+    explicit QLiteralString(QLiteralStringPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QLiteralString) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QLiteralString) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QLiteralString) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QLiteralString) *> *)
 
 QT_END_HEADER

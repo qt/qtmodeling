@@ -55,7 +55,10 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QNamedElement;
+
+class QConsiderIgnoreFragmentPrivate;
 
 class Q_UML_EXPORT QConsiderIgnoreFragment : public QCombinedFragment
 {
@@ -65,6 +68,7 @@ class Q_UML_EXPORT QConsiderIgnoreFragment : public QCombinedFragment
     Q_PROPERTY(const QSet<QNamedElement *> * messages READ messages)
 
     Q_DISABLE_COPY(QConsiderIgnoreFragment)
+    Q_DECLARE_PRIVATE(QConsiderIgnoreFragment)
 
 public:
     explicit QConsiderIgnoreFragment(QObject *parent = 0);
@@ -76,12 +80,13 @@ public:
     void removeMessage(QNamedElement *message);
 
 protected:
-    explicit QConsiderIgnoreFragment(bool createPimpl, QObject *parent = 0);
+    explicit QConsiderIgnoreFragment(QConsiderIgnoreFragmentPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QConsiderIgnoreFragment) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QConsiderIgnoreFragment) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QConsiderIgnoreFragment) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QConsiderIgnoreFragment) *> *)
 
 QT_END_HEADER

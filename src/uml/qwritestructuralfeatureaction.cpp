@@ -65,7 +65,13 @@ QWriteStructuralFeatureActionPrivate::~QWriteStructuralFeatureActionPrivate()
     \brief WriteStructuralFeatureAction is an abstract class for structural feature actions that change structural feature values.
  */
 
-QWriteStructuralFeatureAction::QWriteStructuralFeatureAction()
+QWriteStructuralFeatureAction::QWriteStructuralFeatureAction(QObject *parent) :
+    QStructuralFeatureAction(*new QWriteStructuralFeatureActionPrivate, parent)
+{
+}
+
+QWriteStructuralFeatureAction::QWriteStructuralFeatureAction(QWriteStructuralFeatureActionPrivate &dd, QObject *parent) :
+    QStructuralFeatureAction(dd, parent)
 {
 }
 
@@ -80,7 +86,7 @@ QOutputPin *QWriteStructuralFeatureAction::result() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QWriteStructuralFeatureAction);
+    Q_D(const QWriteStructuralFeatureAction);
     return d->result;
 }
 
@@ -88,7 +94,7 @@ void QWriteStructuralFeatureAction::setResult(QOutputPin *result)
 {
     // This is a read-write association end
 
-    QTUML_D(QWriteStructuralFeatureAction);
+    Q_D(QWriteStructuralFeatureAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->result));
@@ -109,7 +115,7 @@ QInputPin *QWriteStructuralFeatureAction::value() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QWriteStructuralFeatureAction);
+    Q_D(const QWriteStructuralFeatureAction);
     return d->value;
 }
 
@@ -117,7 +123,7 @@ void QWriteStructuralFeatureAction::setValue(QInputPin *value)
 {
     // This is a read-write association end
 
-    QTUML_D(QWriteStructuralFeatureAction);
+    Q_D(QWriteStructuralFeatureAction);
     if (d->value != value) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->value));

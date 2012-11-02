@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qcallaction_p.h"
+#include "private/qcallaction_p.h"
+#include "qstartobjectbehavioraction.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInputPin;
 class QStartObjectBehaviorAction;
 
-class QStartObjectBehaviorActionPrivate : public QCallActionPrivate
+class Q_UML_EXPORT QStartObjectBehaviorActionPrivate : public QCallActionPrivate
 {
+    Q_DECLARE_PUBLIC(QStartObjectBehaviorAction)
+
 public:
-    explicit QStartObjectBehaviorActionPrivate(QStartObjectBehaviorAction *q_umlptr = 0);
+    explicit QStartObjectBehaviorActionPrivate();
     virtual ~QStartObjectBehaviorActionPrivate();
 
     QInputPin *object;

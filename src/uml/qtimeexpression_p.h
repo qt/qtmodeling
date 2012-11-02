@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qvaluespecification_p.h"
+#include "private/qvaluespecification_p.h"
+#include "qtimeexpression.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,13 +56,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QObservation;
 class QTimeExpression;
 
-class QTimeExpressionPrivate : public QValueSpecificationPrivate
+class Q_UML_EXPORT QTimeExpressionPrivate : public QValueSpecificationPrivate
 {
+    Q_DECLARE_PUBLIC(QTimeExpression)
+
 public:
-    explicit QTimeExpressionPrivate(QTimeExpression *q_umlptr = 0);
+    explicit QTimeExpressionPrivate();
     virtual ~QTimeExpressionPrivate();
 
     QSet<QObservation *> *observations;

@@ -55,13 +55,25 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QClassifier;
 
-class Q_UML_EXPORT QRedefinableElement : public virtual QNamedElement
+class QRedefinableElementPrivate;
+
+class Q_UML_EXPORT QRedefinableElement : public QNamedElement
 {
+    Q_OBJECT
+
+    // From QRedefinableElement
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
+    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
+    Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
+
     Q_DISABLE_COPY(QRedefinableElement)
+    Q_DECLARE_PRIVATE(QRedefinableElement)
 
 public:
+    explicit QRedefinableElement(QObject *parent = 0);
     virtual ~QRedefinableElement();
 
     // Attributes
@@ -77,10 +89,14 @@ public:
     bool isRedefinitionContextValid(const QRedefinableElement *redefined) const;
 
 protected:
-    explicit QRedefinableElement();
+    explicit QRedefinableElement(QRedefinableElementPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *> *)
 
 QT_END_HEADER
 

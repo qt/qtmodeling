@@ -43,6 +43,11 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+#include "private/qobject_p.h"
+
+#include "qelement.h"
+
 // Qt includes
 #include <QtCore/QSet>
 
@@ -52,12 +57,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QComment;
 class QElement;
 
-class QElementPrivate
+class Q_UML_EXPORT QElementPrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QElement)
+
 public:
+    explicit QElementPrivate();
     virtual ~QElementPrivate();
 
     QSet<QElement *> *ownedElements;
@@ -68,12 +77,6 @@ public:
     void addOwnedElement(QElement *ownedElement);
     void removeOwnedElement(QElement *ownedElement);
     void setOwner(QElement *owner);
-
-protected:
-    explicit QElementPrivate();
-
-protected:
-    QElement *q_umlptr;
 };
 
 QT_END_NAMESPACE_QTUML

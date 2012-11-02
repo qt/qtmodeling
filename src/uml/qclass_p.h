@@ -44,8 +44,11 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qencapsulatedclassifier_p.h"
-#include "qbehavioredclassifier_p.h"
+#include "private/qobject_p.h"
+
+#include "private/qencapsulatedclassifier_p.h"
+#include "private/qbehavioredclassifier_p.h"
+#include "qclass.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -57,6 +60,7 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QClass;
 class QReception;
 class QNamedElement;
@@ -65,10 +69,12 @@ class QClassifier;
 class QExtension;
 class QProperty;
 
-class QClassPrivate : public QEncapsulatedClassifierPrivate, public QBehavioredClassifierPrivate
+class Q_UML_EXPORT QClassPrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QClass)
+
 public:
-    explicit QClassPrivate(QClass *q_umlptr = 0);
+    explicit QClassPrivate();
     virtual ~QClassPrivate();
 
     bool isAbstract;
@@ -81,6 +87,10 @@ public:
     // Internal functions for read-only subsetted association ends
     void addExtension(QExtension *extension);
     void removeExtension(QExtension *extension);
+
+private:
+    QEncapsulatedClassifierPrivate *_wrappedEncapsulatedClassifierPrivate;
+    QBehavioredClassifierPrivate *_wrappedBehavioredClassifierPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

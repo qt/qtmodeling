@@ -66,8 +66,8 @@ void QFeaturePrivate::addFeaturingClassifier(QClassifier *featuringClassifier)
         this->featuringClassifiers->insert(featuringClassifier);
 
         // Adjust opposite property
-        QTUML_Q(QFeature);
-        (dynamic_cast<QClassifierPrivate *>(featuringClassifier->d_umlptr))->addFeature(q);
+        Q_Q(QFeature);
+        (dynamic_cast<QClassifierPrivate *>(featuringClassifier->d_ptr))->addFeature(q);
     }
 }
 
@@ -79,9 +79,9 @@ void QFeaturePrivate::removeFeaturingClassifier(QClassifier *featuringClassifier
         this->featuringClassifiers->remove(featuringClassifier);
 
         // Adjust opposite property
-        QTUML_Q(QFeature);
+        Q_Q(QFeature);
         if (featuringClassifier)
-            (dynamic_cast<QClassifierPrivate *>(featuringClassifier->d_umlptr))->removeFeature(q);
+            (dynamic_cast<QClassifierPrivate *>(featuringClassifier->d_ptr))->removeFeature(q);
     }
 }
 
@@ -93,7 +93,13 @@ void QFeaturePrivate::removeFeaturingClassifier(QClassifier *featuringClassifier
     \brief A feature declares a behavioral or structural characteristic of instances of classifiers.
  */
 
-QFeature::QFeature()
+QFeature::QFeature(QObject *parent) :
+    QRedefinableElement(*new QFeaturePrivate, parent)
+{
+}
+
+QFeature::QFeature(QFeaturePrivate &dd, QObject *parent) :
+    QRedefinableElement(dd, parent)
 {
 }
 
@@ -108,7 +114,7 @@ bool QFeature::isStatic() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QFeature);
+    Q_D(const QFeature);
     return d->isStatic;
 }
 
@@ -116,7 +122,7 @@ void QFeature::setStatic(bool isStatic)
 {
     // This is a read-write attribute
 
-    QTUML_D(QFeature);
+    Q_D(QFeature);
     if (d->isStatic != isStatic) {
         d->isStatic = isStatic;
     }
@@ -129,7 +135,7 @@ const QSet<QClassifier *> *QFeature::featuringClassifiers() const
 {
     // This is a read-only derived-union association end
 
-    QTUML_D(const QFeature);
+    Q_D(const QFeature);
     return d->featuringClassifiers;
 }
 

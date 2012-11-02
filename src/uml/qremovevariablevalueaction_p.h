@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qwritevariableaction_p.h"
+#include "private/qwritevariableaction_p.h"
+#include "qremovevariablevalueaction.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInputPin;
 class QRemoveVariableValueAction;
 
-class QRemoveVariableValueActionPrivate : public QWriteVariableActionPrivate
+class Q_UML_EXPORT QRemoveVariableValueActionPrivate : public QWriteVariableActionPrivate
 {
+    Q_DECLARE_PUBLIC(QRemoveVariableValueAction)
+
 public:
-    explicit QRemoveVariableValueActionPrivate(QRemoveVariableValueAction *q_umlptr = 0);
+    explicit QRemoveVariableValueActionPrivate();
     virtual ~QRemoveVariableValueActionPrivate();
 
     bool isRemoveDuplicates;

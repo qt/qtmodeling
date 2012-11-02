@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QMessageEnd>
 
 QT_BEGIN_HEADER
@@ -53,39 +52,25 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QGate : public QObject, public QMessageEnd
+class QGatePrivate;
+
+class Q_UML_EXPORT QGate : public QMessageEnd
 {
-    Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From QMessageEnd
-    Q_PROPERTY(QMessage * message READ message WRITE setMessage)
-
     Q_DISABLE_COPY(QGate)
+    Q_DECLARE_PRIVATE(QGate)
 
 public:
     explicit QGate(QObject *parent = 0);
     virtual ~QGate();
 
 protected:
-    explicit QGate(bool createPimpl, QObject *parent = 0);
+    explicit QGate(QGatePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QGate) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QGate) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *)
 
 QT_END_HEADER

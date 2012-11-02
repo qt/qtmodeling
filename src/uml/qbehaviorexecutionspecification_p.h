@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qexecutionspecification_p.h"
+#include "private/qexecutionspecification_p.h"
+#include "qbehaviorexecutionspecification.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QBehavior;
 class QBehaviorExecutionSpecification;
 
-class QBehaviorExecutionSpecificationPrivate : public QExecutionSpecificationPrivate
+class Q_UML_EXPORT QBehaviorExecutionSpecificationPrivate : public QExecutionSpecificationPrivate
 {
+    Q_DECLARE_PUBLIC(QBehaviorExecutionSpecification)
+
 public:
-    explicit QBehaviorExecutionSpecificationPrivate(QBehaviorExecutionSpecification *q_umlptr = 0);
+    explicit QBehaviorExecutionSpecificationPrivate();
     virtual ~QBehaviorExecutionSpecificationPrivate();
 
     QBehavior *behavior;

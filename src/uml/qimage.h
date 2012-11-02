@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QElement>
 
 // Qt includes
@@ -56,14 +55,11 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QImage : public QObject, public QElement
+class QImagePrivate;
+
+class Q_UML_EXPORT QImage : public QElement
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QImage
     Q_PROPERTY(QString format READ format WRITE setFormat)
@@ -71,6 +67,7 @@ class Q_UML_EXPORT QImage : public QObject, public QElement
     Q_PROPERTY(QString content READ content WRITE setContent)
 
     Q_DISABLE_COPY(QImage)
+    Q_DECLARE_PRIVATE(QImage)
 
 public:
     explicit QImage(QObject *parent = 0);
@@ -85,12 +82,13 @@ public:
     void setContent(QString content);
 
 protected:
-    explicit QImage(bool createPimpl, QObject *parent = 0);
+    explicit QImage(QImagePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QImage) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QImage) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QImage) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QImage) *> *)
 
 QT_END_HEADER

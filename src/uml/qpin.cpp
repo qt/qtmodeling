@@ -62,7 +62,17 @@ QPinPrivate::~QPinPrivate()
     \brief A pin is a typed element and multiplicity element that provides values to actions and accept result values from them.A pin is an object node for inputs and outputs to actions.
  */
 
-QPin::QPin()
+QPin::QPin(QObject *parent) :
+    QObject(*new QPinPrivate, parent),
+    _wrappedMultiplicityElement(new QMultiplicityElement(this)),
+    _wrappedObjectNode(new QObjectNode(this))
+{
+}
+
+QPin::QPin(QPinPrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedMultiplicityElement(new QMultiplicityElement(this)),
+    _wrappedObjectNode(new QObjectNode(this))
 {
 }
 
@@ -77,7 +87,7 @@ bool QPin::isControl() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QPin);
+    Q_D(const QPin);
     return d->isControl;
 }
 
@@ -85,7 +95,7 @@ void QPin::setControl(bool isControl)
 {
     // This is a read-write attribute
 
-    QTUML_D(QPin);
+    Q_D(QPin);
     if (d->isControl != isControl) {
         d->isControl = isControl;
     }

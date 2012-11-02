@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qrelationship_p.h"
+#include "private/qrelationship_p.h"
+#include "qdirectedrelationship.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,11 +56,15 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QElement;
 
-class QDirectedRelationshipPrivate : public QRelationshipPrivate
+class Q_UML_EXPORT QDirectedRelationshipPrivate : public QRelationshipPrivate
 {
+    Q_DECLARE_PUBLIC(QDirectedRelationship)
+
 public:
+    explicit QDirectedRelationshipPrivate();
     virtual ~QDirectedRelationshipPrivate();
 
     QSet<QElement *> *sources;
@@ -70,9 +75,6 @@ public:
     void removeSource(QElement *source);
     void addTarget(QElement *target);
     void removeTarget(QElement *target);
-
-protected:
-    explicit QDirectedRelationshipPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

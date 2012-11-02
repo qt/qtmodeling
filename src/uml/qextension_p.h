@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qassociation_p.h"
+#include "private/qassociation_p.h"
+#include "qextension.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,15 +54,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QClass;
 class QExtensionEnd;
 class QProperty;
 class QExtension;
 
-class QExtensionPrivate : public QAssociationPrivate
+class Q_UML_EXPORT QExtensionPrivate : public QAssociationPrivate
 {
+    Q_DECLARE_PUBLIC(QExtension)
+
 public:
-    explicit QExtensionPrivate(QExtension *q_umlptr = 0);
+    explicit QExtensionPrivate();
     virtual ~QExtensionPrivate();
 
     QExtensionEnd *ownedEnd;

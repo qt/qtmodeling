@@ -255,16 +255,6 @@ return
         <qtumlinclude>{replace(qtxmi:mappedBaseNamespace($xmiFile), "::", "")}/{tokenize($namespace, "::")[1]}Enumerations</qtumlinclude>
         }
         {
-        for $superobject in (qtxmi:elementFromTypeString($superClasses)[not(@isAbstract) or @isAbstract = "false"]/@xmi:id)
-        return
-        <superobject>{qtxmi:typeFromNamespacedTypeString($superobject, $namespace)}</superobject>
-        }
-        {
-        if (count(qtxmi:elementFromTypeString($superClasses)[@isAbstract = "true"]) = count($superClasses) and $isAbstract = "false") then
-        <superclass include="QtCore/QObject" name="QObject"/>
-        else ""
-        }
-        {
         for $superClass in $superClasses
         return
         <superclass include="{tokenize(qtxmi:namespaceFromTypeString($superClass), "::")[1]}/{concat("Q", qtxmi:unqualifiedTypeFromTypeString($superClass))}" name="{qtxmi:typeFromNamespacedTypeString($superClass, $namespace)}"/>

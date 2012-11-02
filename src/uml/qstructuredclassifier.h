@@ -56,15 +56,28 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QProperty;
 class QConnector;
 class QConnectableElement;
 
-class Q_UML_EXPORT QStructuredClassifier : public virtual QClassifier
+class QStructuredClassifierPrivate;
+
+class Q_UML_EXPORT QStructuredClassifier : public QClassifier
 {
+    Q_OBJECT
+
+    // From QStructuredClassifier
+    Q_PROPERTY(const QSet<QConnectableElement *> * roles READ roles)
+    Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
+    Q_PROPERTY(const QSet<QProperty *> * parts READ parts)
+    Q_PROPERTY(const QSet<QConnector *> * ownedConnectors READ ownedConnectors)
+
     Q_DISABLE_COPY(QStructuredClassifier)
+    Q_DECLARE_PRIVATE(QStructuredClassifier)
 
 public:
+    explicit QStructuredClassifier(QObject *parent = 0);
     virtual ~QStructuredClassifier();
 
     // Association-ends
@@ -78,10 +91,14 @@ public:
     void removeOwnedConnector(QConnector *ownedConnector);
 
 protected:
-    explicit QStructuredClassifier();
+    explicit QStructuredClassifier(QStructuredClassifierPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QStructuredClassifier) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QStructuredClassifier) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QStructuredClassifier) *> *)
 
 QT_END_HEADER
 

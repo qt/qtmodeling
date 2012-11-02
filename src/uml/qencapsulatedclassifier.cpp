@@ -62,7 +62,13 @@ QEncapsulatedClassifierPrivate::~QEncapsulatedClassifierPrivate()
     \brief A classifier has the ability to own ports as specific and type checked interaction points.
  */
 
-QEncapsulatedClassifier::QEncapsulatedClassifier()
+QEncapsulatedClassifier::QEncapsulatedClassifier(QObject *parent) :
+    QStructuredClassifier(*new QEncapsulatedClassifierPrivate, parent)
+{
+}
+
+QEncapsulatedClassifier::QEncapsulatedClassifier(QEncapsulatedClassifierPrivate &dd, QObject *parent) :
+    QStructuredClassifier(dd, parent)
 {
 }
 
@@ -79,7 +85,7 @@ const QSet<QPort *> *QEncapsulatedClassifier::ownedPorts() const
 
     qWarning("QEncapsulatedClassifier::ownedPorts: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(const QEncapsulatedClassifier);
+    //Q_D(const QEncapsulatedClassifier);
     //return <derived-return>;
 }
 

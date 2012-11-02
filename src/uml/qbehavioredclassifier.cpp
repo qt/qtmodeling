@@ -68,7 +68,13 @@ QBehavioredClassifierPrivate::~QBehavioredClassifierPrivate()
     \brief A behaviored classifier may have an interface realization.A classifier can have behavior specifications defined in its namespace. One of these may specify the behavior of the classifier itself.
  */
 
-QBehavioredClassifier::QBehavioredClassifier()
+QBehavioredClassifier::QBehavioredClassifier(QObject *parent) :
+    QClassifier(*new QBehavioredClassifierPrivate, parent)
+{
+}
+
+QBehavioredClassifier::QBehavioredClassifier(QBehavioredClassifierPrivate &dd, QObject *parent) :
+    QClassifier(dd, parent)
 {
 }
 
@@ -83,7 +89,7 @@ const QSet<QBehavior *> *QBehavioredClassifier::ownedBehaviors() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QBehavioredClassifier);
+    Q_D(const QBehavioredClassifier);
     return d->ownedBehaviors;
 }
 
@@ -91,7 +97,7 @@ void QBehavioredClassifier::addOwnedBehavior(QBehavior *ownedBehavior)
 {
     // This is a read-write association end
 
-    QTUML_D(QBehavioredClassifier);
+    Q_D(QBehavioredClassifier);
     if (!d->ownedBehaviors->contains(ownedBehavior)) {
         d->ownedBehaviors->insert(ownedBehavior);
 
@@ -104,7 +110,7 @@ void QBehavioredClassifier::removeOwnedBehavior(QBehavior *ownedBehavior)
 {
     // This is a read-write association end
 
-    QTUML_D(QBehavioredClassifier);
+    Q_D(QBehavioredClassifier);
     if (d->ownedBehaviors->contains(ownedBehavior)) {
         d->ownedBehaviors->remove(ownedBehavior);
 
@@ -120,7 +126,7 @@ const QSet<QInterfaceRealization *> *QBehavioredClassifier::interfaceRealization
 {
     // This is a read-write association end
 
-    QTUML_D(const QBehavioredClassifier);
+    Q_D(const QBehavioredClassifier);
     return d->interfaceRealizations;
 }
 
@@ -128,7 +134,7 @@ void QBehavioredClassifier::addInterfaceRealization(QInterfaceRealization *inter
 {
     // This is a read-write association end
 
-    QTUML_D(QBehavioredClassifier);
+    Q_D(QBehavioredClassifier);
     if (!d->interfaceRealizations->contains(interfaceRealization)) {
         d->interfaceRealizations->insert(interfaceRealization);
 
@@ -145,7 +151,7 @@ void QBehavioredClassifier::removeInterfaceRealization(QInterfaceRealization *in
 {
     // This is a read-write association end
 
-    QTUML_D(QBehavioredClassifier);
+    Q_D(QBehavioredClassifier);
     if (d->interfaceRealizations->contains(interfaceRealization)) {
         d->interfaceRealizations->remove(interfaceRealization);
 
@@ -165,7 +171,7 @@ QBehavior *QBehavioredClassifier::classifierBehavior() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QBehavioredClassifier);
+    Q_D(const QBehavioredClassifier);
     return d->classifierBehavior;
 }
 
@@ -173,7 +179,7 @@ void QBehavioredClassifier::setClassifierBehavior(QBehavior *classifierBehavior)
 {
     // This is a read-write association end
 
-    QTUML_D(QBehavioredClassifier);
+    Q_D(QBehavioredClassifier);
     if (d->classifierBehavior != classifierBehavior) {
         // Adjust subsetted property(ies)
         QBehavioredClassifier::removeOwnedBehavior(dynamic_cast<QBehavior *>(d->classifierBehavior));

@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCreateLinkActionPrivate::QCreateLinkActionPrivate(QCreateLinkAction *q_umlptr) :
+QCreateLinkActionPrivate::QCreateLinkActionPrivate() :
     endData(new QSet<QLinkEndCreationData *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QCreateLinkActionPrivate::~QCreateLinkActionPrivate()
@@ -67,17 +66,14 @@ QCreateLinkActionPrivate::~QCreateLinkActionPrivate()
     \brief A create link action is a write link action for creating links.
  */
 
-QCreateLinkAction::QCreateLinkAction(QObject *parent)
-    : QObject(parent)
+QCreateLinkAction::QCreateLinkAction(QObject *parent) :
+    QWriteLinkAction(*new QCreateLinkActionPrivate, parent)
 {
-    d_umlptr = new QCreateLinkActionPrivate(this);
 }
 
-QCreateLinkAction::QCreateLinkAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QCreateLinkAction::QCreateLinkAction(QCreateLinkActionPrivate &dd, QObject *parent) :
+    QWriteLinkAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QCreateLinkActionPrivate;
 }
 
 QCreateLinkAction::~QCreateLinkAction()
@@ -91,7 +87,7 @@ const QSet<QLinkEndCreationData *> *QCreateLinkAction::endData() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QCreateLinkAction);
+    Q_D(const QCreateLinkAction);
     return d->endData;
 }
 
@@ -99,7 +95,7 @@ void QCreateLinkAction::addEndData(QLinkEndCreationData *endData)
 {
     // This is a read-write association end
 
-    QTUML_D(QCreateLinkAction);
+    Q_D(QCreateLinkAction);
     if (!d->endData->contains(endData)) {
         d->endData->insert(endData);
     }
@@ -109,7 +105,7 @@ void QCreateLinkAction::removeEndData(QLinkEndCreationData *endData)
 {
     // This is a read-write association end
 
-    QTUML_D(QCreateLinkAction);
+    Q_D(QCreateLinkAction);
     if (d->endData->contains(endData)) {
         d->endData->remove(endData);
     }

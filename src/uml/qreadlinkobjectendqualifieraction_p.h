@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qaction_p.h"
+#include "private/qaction_p.h"
+#include "qreadlinkobjectendqualifieraction.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,15 +54,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInputPin;
 class QProperty;
 class QOutputPin;
 class QReadLinkObjectEndQualifierAction;
 
-class QReadLinkObjectEndQualifierActionPrivate : public QActionPrivate
+class Q_UML_EXPORT QReadLinkObjectEndQualifierActionPrivate : public QActionPrivate
 {
+    Q_DECLARE_PUBLIC(QReadLinkObjectEndQualifierAction)
+
 public:
-    explicit QReadLinkObjectEndQualifierActionPrivate(QReadLinkObjectEndQualifierAction *q_umlptr = 0);
+    explicit QReadLinkObjectEndQualifierActionPrivate();
     virtual ~QReadLinkObjectEndQualifierActionPrivate();
 
     QOutputPin *result;

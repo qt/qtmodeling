@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QLiteralStringPrivate::QLiteralStringPrivate(QLiteralString *q_umlptr)
+QLiteralStringPrivate::QLiteralStringPrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QLiteralStringPrivate::~QLiteralStringPrivate()
@@ -62,17 +61,14 @@ QLiteralStringPrivate::~QLiteralStringPrivate()
     \brief A literal string is a specification of a string value.
  */
 
-QLiteralString::QLiteralString(QObject *parent)
-    : QObject(parent)
+QLiteralString::QLiteralString(QObject *parent) :
+    QLiteralSpecification(*new QLiteralStringPrivate, parent)
 {
-    d_umlptr = new QLiteralStringPrivate(this);
 }
 
-QLiteralString::QLiteralString(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QLiteralString::QLiteralString(QLiteralStringPrivate &dd, QObject *parent) :
+    QLiteralSpecification(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QLiteralStringPrivate;
 }
 
 QLiteralString::~QLiteralString()
@@ -86,7 +82,7 @@ QString QLiteralString::value() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QLiteralString);
+    Q_D(const QLiteralString);
     return d->value;
 }
 
@@ -94,7 +90,7 @@ void QLiteralString::setValue(QString value)
 {
     // This is a read-write attribute
 
-    QTUML_D(QLiteralString);
+    Q_D(QLiteralString);
     if (d->value != value) {
         d->value = value;
     }

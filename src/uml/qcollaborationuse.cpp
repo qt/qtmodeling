@@ -47,11 +47,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCollaborationUsePrivate::QCollaborationUsePrivate(QCollaborationUse *q_umlptr) :
+QCollaborationUsePrivate::QCollaborationUsePrivate() :
     type(0),
     roleBindings(new QSet<QDependency *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QCollaborationUsePrivate::~QCollaborationUsePrivate()
@@ -67,17 +66,14 @@ QCollaborationUsePrivate::~QCollaborationUsePrivate()
     \brief A collaboration use represents one particular use of a collaboration to explain the relationships between the properties of a classifier. A collaboration use shows how the pattern described by a collaboration is applied in a given context, by binding specific entities from that context to the roles of the collaboration. Depending on the context, these entities could be structural features of a classifier, instance specifications, or even roles in some containing collaboration. There may be multiple occurrences of a given collaboration within a classifier, each involving a different set of roles and connectors. A given role or connector may be involved in multiple occurrences of the same or different collaborations. Associated dependencies map features of the collaboration type to features in the classifier. These dependencies indicate which role in the classifier plays which role in the collaboration.
  */
 
-QCollaborationUse::QCollaborationUse(QObject *parent)
-    : QObject(parent)
+QCollaborationUse::QCollaborationUse(QObject *parent) :
+    QNamedElement(*new QCollaborationUsePrivate, parent)
 {
-    d_umlptr = new QCollaborationUsePrivate(this);
 }
 
-QCollaborationUse::QCollaborationUse(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QCollaborationUse::QCollaborationUse(QCollaborationUsePrivate &dd, QObject *parent) :
+    QNamedElement(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QCollaborationUsePrivate;
 }
 
 QCollaborationUse::~QCollaborationUse()
@@ -91,7 +87,7 @@ QCollaboration *QCollaborationUse::type() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QCollaborationUse);
+    Q_D(const QCollaborationUse);
     return d->type;
 }
 
@@ -99,7 +95,7 @@ void QCollaborationUse::setType(QCollaboration *type)
 {
     // This is a read-write association end
 
-    QTUML_D(QCollaborationUse);
+    Q_D(QCollaborationUse);
     if (d->type != type) {
         d->type = type;
     }
@@ -112,7 +108,7 @@ const QSet<QDependency *> *QCollaborationUse::roleBindings() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QCollaborationUse);
+    Q_D(const QCollaborationUse);
     return d->roleBindings;
 }
 
@@ -120,7 +116,7 @@ void QCollaborationUse::addRoleBinding(QDependency *roleBinding)
 {
     // This is a read-write association end
 
-    QTUML_D(QCollaborationUse);
+    Q_D(QCollaborationUse);
     if (!d->roleBindings->contains(roleBinding)) {
         d->roleBindings->insert(roleBinding);
 
@@ -133,7 +129,7 @@ void QCollaborationUse::removeRoleBinding(QDependency *roleBinding)
 {
     // This is a read-write association end
 
-    QTUML_D(QCollaborationUse);
+    Q_D(QCollaborationUse);
     if (d->roleBindings->contains(roleBinding)) {
         d->roleBindings->remove(roleBinding);
 

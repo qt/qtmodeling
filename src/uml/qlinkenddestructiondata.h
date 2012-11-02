@@ -52,7 +52,10 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInputPin;
+
+class QLinkEndDestructionDataPrivate;
 
 class Q_UML_EXPORT QLinkEndDestructionData : public QLinkEndData
 {
@@ -63,6 +66,7 @@ class Q_UML_EXPORT QLinkEndDestructionData : public QLinkEndData
     Q_PROPERTY(QInputPin * destroyAt READ destroyAt WRITE setDestroyAt)
 
     Q_DISABLE_COPY(QLinkEndDestructionData)
+    Q_DECLARE_PRIVATE(QLinkEndDestructionData)
 
 public:
     explicit QLinkEndDestructionData(QObject *parent = 0);
@@ -77,12 +81,13 @@ public:
     void setDestroyAt(QInputPin *destroyAt);
 
 protected:
-    explicit QLinkEndDestructionData(bool createPimpl, QObject *parent = 0);
+    explicit QLinkEndDestructionData(QLinkEndDestructionDataPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QLinkEndDestructionData) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QLinkEndDestructionData) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkEndDestructionData) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QLinkEndDestructionData) *> *)
 
 QT_END_HEADER

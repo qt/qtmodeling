@@ -53,7 +53,7 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QStatePrivate::QStatePrivate(QState *q_umlptr) :
+QStatePrivate::QStatePrivate() :
     regions(new QSet<QRegion *>),
     exit(0),
     connections(new QSet<QConnectionPointReference *>),
@@ -65,7 +65,6 @@ QStatePrivate::QStatePrivate(QState *q_umlptr) :
     submachine(0),
     stateInvariant(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QStatePrivate::~QStatePrivate()
@@ -84,17 +83,20 @@ QStatePrivate::~QStatePrivate()
     \brief A state models a situation during which some (usually implicit) invariant condition holds.The states of protocol state machines are exposed to the users of their context classifiers. A protocol state represents an exposed stable situation of its context classifier: when an instance of the classifier is not processing any operation, users of this instance can always know its state configuration.
  */
 
-QState::QState(QObject *parent)
-    : QObject(parent)
+QState::QState(QObject *parent) :
+    QObject(*new QStatePrivate, parent),
+    _wrappedNamespace(new QNamespace(this)),
+    _wrappedRedefinableElement(new QRedefinableElement(this)),
+    _wrappedVertex(new QVertex(this))
 {
-    d_umlptr = new QStatePrivate(this);
 }
 
-QState::QState(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QState::QState(QStatePrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedNamespace(new QNamespace(this)),
+    _wrappedRedefinableElement(new QRedefinableElement(this)),
+    _wrappedVertex(new QVertex(this))
 {
-    if (createPimpl)
-        d_umlptr = new QStatePrivate;
 }
 
 QState::~QState()
@@ -110,7 +112,7 @@ bool QState::isSimple() const
 
     qWarning("QState::isSimple: to be implemented (this is a derived attribute)");
 
-    //QTUML_D(const QState);
+    //Q_D(const QState);
     //return <derived-return>;
 }
 
@@ -123,7 +125,7 @@ bool QState::isComposite() const
 
     qWarning("QState::isComposite: to be implemented (this is a derived attribute)");
 
-    //QTUML_D(const QState);
+    //Q_D(const QState);
     //return <derived-return>;
 }
 
@@ -136,7 +138,7 @@ bool QState::isOrthogonal() const
 
     qWarning("QState::isOrthogonal: to be implemented (this is a derived attribute)");
 
-    //QTUML_D(const QState);
+    //Q_D(const QState);
     //return <derived-return>;
 }
 
@@ -149,7 +151,7 @@ bool QState::isSubmachineState() const
 
     qWarning("QState::isSubmachineState: to be implemented (this is a derived attribute)");
 
-    //QTUML_D(const QState);
+    //Q_D(const QState);
     //return <derived-return>;
 }
 
@@ -160,7 +162,7 @@ const QSet<QRegion *> *QState::regions() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QState);
+    Q_D(const QState);
     return d->regions;
 }
 
@@ -168,7 +170,7 @@ void QState::addRegion(QRegion *region)
 {
     // This is a read-write association end
 
-    QTUML_D(QState);
+    Q_D(QState);
     if (!d->regions->contains(region)) {
         d->regions->insert(region);
 
@@ -184,7 +186,7 @@ void QState::removeRegion(QRegion *region)
 {
     // This is a read-write association end
 
-    QTUML_D(QState);
+    Q_D(QState);
     if (d->regions->contains(region)) {
         d->regions->remove(region);
 
@@ -203,7 +205,7 @@ QBehavior *QState::exit() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QState);
+    Q_D(const QState);
     return d->exit;
 }
 
@@ -211,7 +213,7 @@ void QState::setExit(QBehavior *exit)
 {
     // This is a read-write association end
 
-    QTUML_D(QState);
+    Q_D(QState);
     if (d->exit != exit) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->exit));
@@ -232,7 +234,7 @@ const QSet<QConnectionPointReference *> *QState::connections() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QState);
+    Q_D(const QState);
     return d->connections;
 }
 
@@ -240,7 +242,7 @@ void QState::addConnection(QConnectionPointReference *connection)
 {
     // This is a read-write association end
 
-    QTUML_D(QState);
+    Q_D(QState);
     if (!d->connections->contains(connection)) {
         d->connections->insert(connection);
 
@@ -256,7 +258,7 @@ void QState::removeConnection(QConnectionPointReference *connection)
 {
     // This is a read-write association end
 
-    QTUML_D(QState);
+    Q_D(QState);
     if (d->connections->contains(connection)) {
         d->connections->remove(connection);
 
@@ -277,7 +279,7 @@ QClassifier *QState::redefinitionContext() const
 
     qWarning("QState::redefinitionContext: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(const QState);
+    //Q_D(const QState);
     //return <derived-return>;
 }
 
@@ -288,7 +290,7 @@ QState *QState::redefinedState() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QState);
+    Q_D(const QState);
     return d->redefinedState;
 }
 
@@ -296,7 +298,7 @@ void QState::setRedefinedState(QState *redefinedState)
 {
     // This is a read-write association end
 
-    QTUML_D(QState);
+    Q_D(QState);
     if (d->redefinedState != redefinedState) {
         // Adjust subsetted property(ies)
         d->QRedefinableElementPrivate::removeRedefinedElement(dynamic_cast<QRedefinableElement *>(d->redefinedState));
@@ -317,7 +319,7 @@ const QSet<QTrigger *> *QState::deferrableTriggers() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QState);
+    Q_D(const QState);
     return d->deferrableTriggers;
 }
 
@@ -325,7 +327,7 @@ void QState::addDeferrableTrigger(QTrigger *deferrableTrigger)
 {
     // This is a read-write association end
 
-    QTUML_D(QState);
+    Q_D(QState);
     if (!d->deferrableTriggers->contains(deferrableTrigger)) {
         d->deferrableTriggers->insert(deferrableTrigger);
 
@@ -338,7 +340,7 @@ void QState::removeDeferrableTrigger(QTrigger *deferrableTrigger)
 {
     // This is a read-write association end
 
-    QTUML_D(QState);
+    Q_D(QState);
     if (d->deferrableTriggers->contains(deferrableTrigger)) {
         d->deferrableTriggers->remove(deferrableTrigger);
 
@@ -354,7 +356,7 @@ const QSet<QPseudostate *> *QState::connectionPoints() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QState);
+    Q_D(const QState);
     return d->connectionPoints;
 }
 
@@ -362,7 +364,7 @@ void QState::addConnectionPoint(QPseudostate *connectionPoint)
 {
     // This is a read-write association end
 
-    QTUML_D(QState);
+    Q_D(QState);
     if (!d->connectionPoints->contains(connectionPoint)) {
         d->connectionPoints->insert(connectionPoint);
 
@@ -378,7 +380,7 @@ void QState::removeConnectionPoint(QPseudostate *connectionPoint)
 {
     // This is a read-write association end
 
-    QTUML_D(QState);
+    Q_D(QState);
     if (d->connectionPoints->contains(connectionPoint)) {
         d->connectionPoints->remove(connectionPoint);
 
@@ -397,7 +399,7 @@ QBehavior *QState::entry() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QState);
+    Q_D(const QState);
     return d->entry;
 }
 
@@ -405,7 +407,7 @@ void QState::setEntry(QBehavior *entry)
 {
     // This is a read-write association end
 
-    QTUML_D(QState);
+    Q_D(QState);
     if (d->entry != entry) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->entry));
@@ -426,7 +428,7 @@ QBehavior *QState::doActivity() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QState);
+    Q_D(const QState);
     return d->doActivity;
 }
 
@@ -434,7 +436,7 @@ void QState::setDoActivity(QBehavior *doActivity)
 {
     // This is a read-write association end
 
-    QTUML_D(QState);
+    Q_D(QState);
     if (d->doActivity != doActivity) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->doActivity));
@@ -455,7 +457,7 @@ QStateMachine *QState::submachine() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QState);
+    Q_D(const QState);
     return d->submachine;
 }
 
@@ -463,7 +465,7 @@ void QState::setSubmachine(QStateMachine *submachine)
 {
     // This is a read-write association end
 
-    QTUML_D(QState);
+    Q_D(QState);
     if (d->submachine != submachine) {
         // Adjust opposite property
         if (d->submachine)
@@ -484,7 +486,7 @@ QConstraint *QState::stateInvariant() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QState);
+    Q_D(const QState);
     return d->stateInvariant;
 }
 
@@ -492,7 +494,7 @@ void QState::setStateInvariant(QConstraint *stateInvariant)
 {
     // This is a read-write association end
 
-    QTUML_D(QState);
+    Q_D(QState);
     if (d->stateInvariant != stateInvariant) {
         // Adjust subsetted property(ies)
         QNamespace::removeOwnedRule(dynamic_cast<QConstraint *>(d->stateInvariant));

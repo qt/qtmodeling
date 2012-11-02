@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QDirectedRelationship>
 
 QT_BEGIN_HEADER
@@ -53,24 +52,15 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QProfile;
 class QPackage;
 
-class Q_UML_EXPORT QProfileApplication : public QObject, public QDirectedRelationship
+class QProfileApplicationPrivate;
+
+class Q_UML_EXPORT QProfileApplication : public QDirectedRelationship
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QRelationship
-    Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
-
-    // From QDirectedRelationship
-    Q_PROPERTY(const QSet<QElement *> * sources READ sources)
-    Q_PROPERTY(const QSet<QElement *> * targets READ targets)
 
     // From QProfileApplication
     Q_PROPERTY(bool isStrict READ isStrict WRITE setStrict)
@@ -78,6 +68,7 @@ class Q_UML_EXPORT QProfileApplication : public QObject, public QDirectedRelatio
     Q_PROPERTY(QProfile * appliedProfile READ appliedProfile WRITE setAppliedProfile)
 
     Q_DISABLE_COPY(QProfileApplication)
+    Q_DECLARE_PRIVATE(QProfileApplication)
 
 public:
     explicit QProfileApplication(QObject *parent = 0);
@@ -94,12 +85,13 @@ public:
     void setAppliedProfile(QProfile *appliedProfile);
 
 protected:
-    explicit QProfileApplication(bool createPimpl, QObject *parent = 0);
+    explicit QProfileApplication(QProfileApplicationPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QProfileApplication) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QProfileApplication) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QProfileApplication) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QProfileApplication) *> *)
 
 QT_END_HEADER

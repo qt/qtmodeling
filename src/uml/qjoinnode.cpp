@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QJoinNodePrivate::QJoinNodePrivate(QJoinNode *q_umlptr) :
+QJoinNodePrivate::QJoinNodePrivate() :
     isCombineDuplicate(true),
     joinSpec(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QJoinNodePrivate::~QJoinNodePrivate()
@@ -65,17 +64,14 @@ QJoinNodePrivate::~QJoinNodePrivate()
     \brief A join node is a control node that synchronizes multiple flows.Join nodes have a Boolean value specification using the names of the incoming edges to specify the conditions under which the join will emit a token.
  */
 
-QJoinNode::QJoinNode(QObject *parent)
-    : QObject(parent)
+QJoinNode::QJoinNode(QObject *parent) :
+    QControlNode(*new QJoinNodePrivate, parent)
 {
-    d_umlptr = new QJoinNodePrivate(this);
 }
 
-QJoinNode::QJoinNode(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QJoinNode::QJoinNode(QJoinNodePrivate &dd, QObject *parent) :
+    QControlNode(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QJoinNodePrivate;
 }
 
 QJoinNode::~QJoinNode()
@@ -89,7 +85,7 @@ bool QJoinNode::isCombineDuplicate() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QJoinNode);
+    Q_D(const QJoinNode);
     return d->isCombineDuplicate;
 }
 
@@ -97,7 +93,7 @@ void QJoinNode::setCombineDuplicate(bool isCombineDuplicate)
 {
     // This is a read-write attribute
 
-    QTUML_D(QJoinNode);
+    Q_D(QJoinNode);
     if (d->isCombineDuplicate != isCombineDuplicate) {
         d->isCombineDuplicate = isCombineDuplicate;
     }
@@ -110,7 +106,7 @@ QValueSpecification *QJoinNode::joinSpec() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QJoinNode);
+    Q_D(const QJoinNode);
     return d->joinSpec;
 }
 
@@ -118,7 +114,7 @@ void QJoinNode::setJoinSpec(QValueSpecification *joinSpec)
 {
     // This is a read-write association end
 
-    QTUML_D(QJoinNode);
+    Q_D(QJoinNode);
     if (d->joinSpec != joinSpec) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->joinSpec));

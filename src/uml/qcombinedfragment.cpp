@@ -47,12 +47,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCombinedFragmentPrivate::QCombinedFragmentPrivate(QCombinedFragment *q_umlptr) :
+QCombinedFragmentPrivate::QCombinedFragmentPrivate() :
     interactionOperator(QtUml::InteractionOperatorSeq),
     cfragmentGates(new QSet<QGate *>),
     operands(new QList<QInteractionOperand *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QCombinedFragmentPrivate::~QCombinedFragmentPrivate()
@@ -69,17 +68,14 @@ QCombinedFragmentPrivate::~QCombinedFragmentPrivate()
     \brief A combined fragment defines an expression of interaction fragments. A combined fragment is defined by an interaction operator and corresponding interaction operands. Through the use of combined fragments the user will be able to describe a number of traces in a compact and concise manner.
  */
 
-QCombinedFragment::QCombinedFragment(QObject *parent)
-    : QObject(parent)
+QCombinedFragment::QCombinedFragment(QObject *parent) :
+    QInteractionFragment(*new QCombinedFragmentPrivate, parent)
 {
-    d_umlptr = new QCombinedFragmentPrivate(this);
 }
 
-QCombinedFragment::QCombinedFragment(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QCombinedFragment::QCombinedFragment(QCombinedFragmentPrivate &dd, QObject *parent) :
+    QInteractionFragment(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QCombinedFragmentPrivate;
 }
 
 QCombinedFragment::~QCombinedFragment()
@@ -93,7 +89,7 @@ QtUml::InteractionOperatorKind QCombinedFragment::interactionOperator() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QCombinedFragment);
+    Q_D(const QCombinedFragment);
     return d->interactionOperator;
 }
 
@@ -101,7 +97,7 @@ void QCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind in
 {
     // This is a read-write attribute
 
-    QTUML_D(QCombinedFragment);
+    Q_D(QCombinedFragment);
     if (d->interactionOperator != interactionOperator) {
         d->interactionOperator = interactionOperator;
     }
@@ -114,7 +110,7 @@ const QSet<QGate *> *QCombinedFragment::cfragmentGates() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QCombinedFragment);
+    Q_D(const QCombinedFragment);
     return d->cfragmentGates;
 }
 
@@ -122,7 +118,7 @@ void QCombinedFragment::addCfragmentGate(QGate *cfragmentGate)
 {
     // This is a read-write association end
 
-    QTUML_D(QCombinedFragment);
+    Q_D(QCombinedFragment);
     if (!d->cfragmentGates->contains(cfragmentGate)) {
         d->cfragmentGates->insert(cfragmentGate);
 
@@ -135,7 +131,7 @@ void QCombinedFragment::removeCfragmentGate(QGate *cfragmentGate)
 {
     // This is a read-write association end
 
-    QTUML_D(QCombinedFragment);
+    Q_D(QCombinedFragment);
     if (d->cfragmentGates->contains(cfragmentGate)) {
         d->cfragmentGates->remove(cfragmentGate);
 
@@ -151,7 +147,7 @@ const QList<QInteractionOperand *> *QCombinedFragment::operands() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QCombinedFragment);
+    Q_D(const QCombinedFragment);
     return d->operands;
 }
 
@@ -159,7 +155,7 @@ void QCombinedFragment::addOperand(QInteractionOperand *operand)
 {
     // This is a read-write association end
 
-    QTUML_D(QCombinedFragment);
+    Q_D(QCombinedFragment);
     if (!d->operands->contains(operand)) {
         d->operands->append(operand);
 
@@ -172,7 +168,7 @@ void QCombinedFragment::removeOperand(QInteractionOperand *operand)
 {
     // This is a read-write association end
 
-    QTUML_D(QCombinedFragment);
+    Q_D(QCombinedFragment);
     if (d->operands->contains(operand)) {
         d->operands->removeAll(operand);
 

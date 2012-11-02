@@ -49,10 +49,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QExtensionPrivate::QExtensionPrivate(QExtension *q_umlptr) :
+QExtensionPrivate::QExtensionPrivate() :
     ownedEnd(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QExtensionPrivate::~QExtensionPrivate()
@@ -67,16 +66,16 @@ void QExtensionPrivate::setMetaclass(QClass *metaclass)
     qWarning("QExtension::setMetaclass: to be implemented (this is a derived associationend)");
 
     if (false /* <derived-change-criteria> */) {
-        QTUML_Q(QExtension)
+        Q_Q(QExtension)
         // Adjust opposite property
-        // if (this->metaclass)
-        //     (dynamic_cast<QClassPrivate *>(this->metaclass->d_umlptr))->removeExtension(q);
+        if (this->metaclass)
+            (dynamic_cast<QClassPrivate *>(this->metaclass->d_ptr))->removeExtension(q);
 
         // <derived-code>
 
         // Adjust opposite property
         if (metaclass)
-            (dynamic_cast<QClassPrivate *>(metaclass->d_umlptr))->addExtension(q);
+            (dynamic_cast<QClassPrivate *>(metaclass->d_ptr))->addExtension(q);
     }
 }
 
@@ -88,17 +87,14 @@ void QExtensionPrivate::setMetaclass(QClass *metaclass)
     \brief An extension is used to indicate that the properties of a metaclass are extended through a stereotype, and gives the ability to flexibly add (and later remove) stereotypes to classes.
  */
 
-QExtension::QExtension(QObject *parent)
-    : QAssociation(false, parent)
+QExtension::QExtension(QObject *parent) :
+    QAssociation(*new QExtensionPrivate, parent)
 {
-    d_umlptr = new QExtensionPrivate(this);
 }
 
-QExtension::QExtension(bool createPimpl, QObject *parent)
-    : QAssociation(createPimpl, parent)
+QExtension::QExtension(QExtensionPrivate &dd, QObject *parent) :
+    QAssociation(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QExtensionPrivate;
 }
 
 QExtension::~QExtension()
@@ -114,7 +110,7 @@ bool QExtension::isRequired() const
 
     qWarning("QExtension::isRequired: to be implemented (this is a derived attribute)");
 
-    //QTUML_D(const QExtension);
+    //Q_D(const QExtension);
     //return <derived-return>;
 }
 
@@ -127,7 +123,7 @@ QClass *QExtension::metaclass() const
 
     qWarning("QExtension::metaclass: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(const QExtension);
+    //Q_D(const QExtension);
     //return <derived-return>;
 }
 
@@ -138,7 +134,7 @@ QExtensionEnd *QExtension::ownedEnd() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QExtension);
+    Q_D(const QExtension);
     return d->ownedEnd;
 }
 
@@ -146,7 +142,7 @@ void QExtension::setOwnedEnd(QExtensionEnd *ownedEnd)
 {
     // This is a read-write association end
 
-    QTUML_D(QExtension);
+    Q_D(QExtension);
     if (d->ownedEnd != ownedEnd) {
         d->ownedEnd = ownedEnd;
     }

@@ -52,7 +52,10 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QOutputPin;
+
+class QAcceptCallActionPrivate;
 
 class Q_UML_EXPORT QAcceptCallAction : public QAcceptEventAction
 {
@@ -62,6 +65,7 @@ class Q_UML_EXPORT QAcceptCallAction : public QAcceptEventAction
     Q_PROPERTY(QOutputPin * returnInformation READ returnInformation WRITE setReturnInformation)
 
     Q_DISABLE_COPY(QAcceptCallAction)
+    Q_DECLARE_PRIVATE(QAcceptCallAction)
 
 public:
     explicit QAcceptCallAction(QObject *parent = 0);
@@ -72,12 +76,13 @@ public:
     void setReturnInformation(QOutputPin *returnInformation);
 
 protected:
-    explicit QAcceptCallAction(bool createPimpl, QObject *parent = 0);
+    explicit QAcceptCallAction(QAcceptCallActionPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QAcceptCallAction) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QAcceptCallAction) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QAcceptCallAction) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QAcceptCallAction) *> *)
 
 QT_END_HEADER

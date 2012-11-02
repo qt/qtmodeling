@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCollaborationPrivate::QCollaborationPrivate(QCollaboration *q_umlptr) :
+QCollaborationPrivate::QCollaborationPrivate() :
     collaborationRoles(new QSet<QConnectableElement *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QCollaborationPrivate::~QCollaborationPrivate()
@@ -65,17 +64,18 @@ QCollaborationPrivate::~QCollaborationPrivate()
     \brief A collaboration use represents the application of the pattern described by a collaboration to a specific situation involving specific classes or instances playing the roles of the collaboration.
  */
 
-QCollaboration::QCollaboration(QObject *parent)
-    : QObject(parent)
+QCollaboration::QCollaboration(QObject *parent) :
+    QObject(*new QCollaborationPrivate, parent),
+    _wrappedStructuredClassifier(new QStructuredClassifier(this)),
+    _wrappedBehavioredClassifier(new QBehavioredClassifier(this))
 {
-    d_umlptr = new QCollaborationPrivate(this);
 }
 
-QCollaboration::QCollaboration(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QCollaboration::QCollaboration(QCollaborationPrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedStructuredClassifier(new QStructuredClassifier(this)),
+    _wrappedBehavioredClassifier(new QBehavioredClassifier(this))
 {
-    if (createPimpl)
-        d_umlptr = new QCollaborationPrivate;
 }
 
 QCollaboration::~QCollaboration()
@@ -89,7 +89,7 @@ const QSet<QConnectableElement *> *QCollaboration::collaborationRoles() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QCollaboration);
+    Q_D(const QCollaboration);
     return d->collaborationRoles;
 }
 
@@ -97,7 +97,7 @@ void QCollaboration::addCollaborationRole(QConnectableElement *collaborationRole
 {
     // This is a read-write association end
 
-    QTUML_D(QCollaboration);
+    Q_D(QCollaboration);
     if (!d->collaborationRoles->contains(collaborationRole)) {
         d->collaborationRoles->insert(collaborationRole);
 
@@ -110,7 +110,7 @@ void QCollaboration::removeCollaborationRole(QConnectableElement *collaborationR
 {
     // This is a read-write association end
 
-    QTUML_D(QCollaboration);
+    Q_D(QCollaboration);
     if (d->collaborationRoles->contains(collaborationRole)) {
         d->collaborationRoles->remove(collaborationRole);
 

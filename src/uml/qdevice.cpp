@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDevicePrivate::QDevicePrivate(QDevice *q_umlptr)
+QDevicePrivate::QDevicePrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QDevicePrivate::~QDevicePrivate()
@@ -62,17 +61,14 @@ QDevicePrivate::~QDevicePrivate()
     \brief A device is a physical computational resource with processing capability upon which artifacts may be deployed for execution. Devices may be complex (i.e., they may consist of other devices).
  */
 
-QDevice::QDevice(QObject *parent)
-    : QNode(false, parent)
+QDevice::QDevice(QObject *parent) :
+    QNode(*new QDevicePrivate, parent)
 {
-    d_umlptr = new QDevicePrivate(this);
 }
 
-QDevice::QDevice(bool createPimpl, QObject *parent)
-    : QNode(createPimpl, parent)
+QDevice::QDevice(QDevicePrivate &dd, QObject *parent) :
+    QNode(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QDevicePrivate;
 }
 
 QDevice::~QDevice()

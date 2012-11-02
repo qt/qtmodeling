@@ -48,13 +48,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QExceptionHandlerPrivate::QExceptionHandlerPrivate(QExceptionHandler *q_umlptr) :
+QExceptionHandlerPrivate::QExceptionHandlerPrivate() :
     handlerBody(0),
     exceptionTypes(new QSet<QClassifier *>),
     protectedNode(0),
     exceptionInput(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QExceptionHandlerPrivate::~QExceptionHandlerPrivate()
@@ -70,17 +69,14 @@ QExceptionHandlerPrivate::~QExceptionHandlerPrivate()
     \brief An exception handler is an element that specifies a body to execute in case the specified exception occurs during the execution of the protected node.
  */
 
-QExceptionHandler::QExceptionHandler(QObject *parent)
-    : QObject(parent)
+QExceptionHandler::QExceptionHandler(QObject *parent) :
+    QElement(*new QExceptionHandlerPrivate, parent)
 {
-    d_umlptr = new QExceptionHandlerPrivate(this);
 }
 
-QExceptionHandler::QExceptionHandler(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QExceptionHandler::QExceptionHandler(QExceptionHandlerPrivate &dd, QObject *parent) :
+    QElement(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QExceptionHandlerPrivate;
 }
 
 QExceptionHandler::~QExceptionHandler()
@@ -94,7 +90,7 @@ QExecutableNode *QExceptionHandler::handlerBody() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QExceptionHandler);
+    Q_D(const QExceptionHandler);
     return d->handlerBody;
 }
 
@@ -102,7 +98,7 @@ void QExceptionHandler::setHandlerBody(QExecutableNode *handlerBody)
 {
     // This is a read-write association end
 
-    QTUML_D(QExceptionHandler);
+    Q_D(QExceptionHandler);
     if (d->handlerBody != handlerBody) {
         d->handlerBody = handlerBody;
     }
@@ -115,7 +111,7 @@ const QSet<QClassifier *> *QExceptionHandler::exceptionTypes() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QExceptionHandler);
+    Q_D(const QExceptionHandler);
     return d->exceptionTypes;
 }
 
@@ -123,7 +119,7 @@ void QExceptionHandler::addExceptionType(QClassifier *exceptionType)
 {
     // This is a read-write association end
 
-    QTUML_D(QExceptionHandler);
+    Q_D(QExceptionHandler);
     if (!d->exceptionTypes->contains(exceptionType)) {
         d->exceptionTypes->insert(exceptionType);
     }
@@ -133,7 +129,7 @@ void QExceptionHandler::removeExceptionType(QClassifier *exceptionType)
 {
     // This is a read-write association end
 
-    QTUML_D(QExceptionHandler);
+    Q_D(QExceptionHandler);
     if (d->exceptionTypes->contains(exceptionType)) {
         d->exceptionTypes->remove(exceptionType);
     }
@@ -146,7 +142,7 @@ QExecutableNode *QExceptionHandler::protectedNode() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QExceptionHandler);
+    Q_D(const QExceptionHandler);
     return d->protectedNode;
 }
 
@@ -154,7 +150,7 @@ void QExceptionHandler::setProtectedNode(QExecutableNode *protectedNode)
 {
     // This is a read-write association end
 
-    QTUML_D(QExceptionHandler);
+    Q_D(QExceptionHandler);
     if (d->protectedNode != protectedNode) {
         // Adjust opposite property
         if (d->protectedNode)
@@ -178,7 +174,7 @@ QObjectNode *QExceptionHandler::exceptionInput() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QExceptionHandler);
+    Q_D(const QExceptionHandler);
     return d->exceptionInput;
 }
 
@@ -186,7 +182,7 @@ void QExceptionHandler::setExceptionInput(QObjectNode *exceptionInput)
 {
     // This is a read-write association end
 
-    QTUML_D(QExceptionHandler);
+    Q_D(QExceptionHandler);
     if (d->exceptionInput != exceptionInput) {
         d->exceptionInput = exceptionInput;
     }

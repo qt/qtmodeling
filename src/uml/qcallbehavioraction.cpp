@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCallBehaviorActionPrivate::QCallBehaviorActionPrivate(QCallBehaviorAction *q_umlptr) :
+QCallBehaviorActionPrivate::QCallBehaviorActionPrivate() :
     behavior(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QCallBehaviorActionPrivate::~QCallBehaviorActionPrivate()
@@ -64,17 +63,14 @@ QCallBehaviorActionPrivate::~QCallBehaviorActionPrivate()
     \brief A call behavior action is a call action that invokes a behavior directly rather than invoking a behavioral feature that, in turn, results in the invocation of that behavior. The argument values of the action are available to the execution of the invoked behavior. For synchronous calls the execution of the call behavior action waits until the execution of the invoked behavior completes and a result is returned on its output pin. The action completes immediately without a result, if the call is asynchronous. In particular, the invoked behavior may be an activity.
  */
 
-QCallBehaviorAction::QCallBehaviorAction(QObject *parent)
-    : QObject(parent)
+QCallBehaviorAction::QCallBehaviorAction(QObject *parent) :
+    QCallAction(*new QCallBehaviorActionPrivate, parent)
 {
-    d_umlptr = new QCallBehaviorActionPrivate(this);
 }
 
-QCallBehaviorAction::QCallBehaviorAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QCallBehaviorAction::QCallBehaviorAction(QCallBehaviorActionPrivate &dd, QObject *parent) :
+    QCallAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QCallBehaviorActionPrivate;
 }
 
 QCallBehaviorAction::~QCallBehaviorAction()
@@ -88,7 +84,7 @@ QBehavior *QCallBehaviorAction::behavior() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QCallBehaviorAction);
+    Q_D(const QCallBehaviorAction);
     return d->behavior;
 }
 
@@ -96,7 +92,7 @@ void QCallBehaviorAction::setBehavior(QBehavior *behavior)
 {
     // This is a read-write association end
 
-    QTUML_D(QCallBehaviorAction);
+    Q_D(QCallBehaviorAction);
     if (d->behavior != behavior) {
         d->behavior = behavior;
     }

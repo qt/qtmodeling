@@ -55,8 +55,11 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QComponent;
 class QClassifier;
+
+class QComponentRealizationPrivate;
 
 class Q_UML_EXPORT QComponentRealization : public QRealization
 {
@@ -67,6 +70,7 @@ class Q_UML_EXPORT QComponentRealization : public QRealization
     Q_PROPERTY(const QSet<QClassifier *> * realizingClassifiers READ realizingClassifiers)
 
     Q_DISABLE_COPY(QComponentRealization)
+    Q_DECLARE_PRIVATE(QComponentRealization)
 
 public:
     explicit QComponentRealization(QObject *parent = 0);
@@ -86,12 +90,13 @@ public:
     void removeClient(QClassifier *realizingClassifier);
 
 protected:
-    explicit QComponentRealization(bool createPimpl, QObject *parent = 0);
+    explicit QComponentRealization(QComponentRealizationPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QComponentRealization) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QComponentRealization) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QComponentRealization) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QComponentRealization) *> *)
 
 QT_END_HEADER

@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDurationIntervalPrivate::QDurationIntervalPrivate(QDurationInterval *q_umlptr) :
+QDurationIntervalPrivate::QDurationIntervalPrivate() :
     max(0),
     min(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QDurationIntervalPrivate::~QDurationIntervalPrivate()
@@ -65,17 +64,14 @@ QDurationIntervalPrivate::~QDurationIntervalPrivate()
     \brief A duration interval defines the range between two durations.
  */
 
-QDurationInterval::QDurationInterval(QObject *parent)
-    : QInterval(false, parent)
+QDurationInterval::QDurationInterval(QObject *parent) :
+    QInterval(*new QDurationIntervalPrivate, parent)
 {
-    d_umlptr = new QDurationIntervalPrivate(this);
 }
 
-QDurationInterval::QDurationInterval(bool createPimpl, QObject *parent)
-    : QInterval(createPimpl, parent)
+QDurationInterval::QDurationInterval(QDurationIntervalPrivate &dd, QObject *parent) :
+    QInterval(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QDurationIntervalPrivate;
 }
 
 QDurationInterval::~QDurationInterval()
@@ -89,7 +85,7 @@ QDuration *QDurationInterval::max() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QDurationInterval);
+    Q_D(const QDurationInterval);
     return d->max;
 }
 
@@ -97,7 +93,7 @@ void QDurationInterval::setMax(QDuration *max)
 {
     // This is a read-write association end
 
-    QTUML_D(QDurationInterval);
+    Q_D(QDurationInterval);
     if (d->max != max) {
         d->max = max;
     }
@@ -110,7 +106,7 @@ QDuration *QDurationInterval::min() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QDurationInterval);
+    Q_D(const QDurationInterval);
     return d->min;
 }
 
@@ -118,7 +114,7 @@ void QDurationInterval::setMin(QDuration *min)
 {
     // This is a read-write association end
 
-    QTUML_D(QDurationInterval);
+    Q_D(QDurationInterval);
     if (d->min != min) {
         d->min = min;
     }

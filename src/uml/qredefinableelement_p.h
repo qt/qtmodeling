@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qnamedelement_p.h"
+#include "private/qnamedelement_p.h"
+#include "qredefinableelement.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,12 +56,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QRedefinableElement;
 class QClassifier;
 
-class QRedefinableElementPrivate : public virtual QNamedElementPrivate
+class Q_UML_EXPORT QRedefinableElementPrivate : public QNamedElementPrivate
 {
+    Q_DECLARE_PUBLIC(QRedefinableElement)
+
 public:
+    explicit QRedefinableElementPrivate();
     virtual ~QRedefinableElementPrivate();
 
     bool isLeaf;
@@ -72,9 +77,6 @@ public:
     void removeRedefinedElement(QRedefinableElement *redefinedElement);
     void addRedefinitionContext(QClassifier *redefinitionContext);
     void removeRedefinitionContext(QClassifier *redefinitionContext);
-
-protected:
-    explicit QRedefinableElementPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

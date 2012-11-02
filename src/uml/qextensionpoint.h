@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QRedefinableElement>
 
 QT_BEGIN_HEADER
@@ -53,34 +52,20 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QUseCase;
 
-class Q_UML_EXPORT QExtensionPoint : public QObject, public QRedefinableElement
+class QExtensionPointPrivate;
+
+class Q_UML_EXPORT QExtensionPoint : public QRedefinableElement
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From QRedefinableElement
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
-    Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
 
     // From QExtensionPoint
     Q_PROPERTY(QUseCase * useCase READ useCase WRITE setUseCase)
 
     Q_DISABLE_COPY(QExtensionPoint)
+    Q_DECLARE_PRIVATE(QExtensionPoint)
 
 public:
     explicit QExtensionPoint(QObject *parent = 0);
@@ -91,12 +76,13 @@ public:
     void setUseCase(QUseCase *useCase);
 
 protected:
-    explicit QExtensionPoint(bool createPimpl, QObject *parent = 0);
+    explicit QExtensionPoint(QExtensionPointPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *> *)
 
 QT_END_HEADER

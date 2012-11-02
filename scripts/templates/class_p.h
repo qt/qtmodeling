@@ -42,33 +42,33 @@
 #define ${namespace.replace('/', '_').upper}_${class.name.upper}_P_H
 
 #include <[% namespace.split('/').0 %]/[% namespace.split('/').0 %]Global>
+
+// Base class includes
+[%- IF !class.superclass || class.superclass.size > 1 %]
+#include "private/qobject_p.h"
+
+[%- END -%]
+[%- FOREACH superclass IN class.superclass %]
+#include "private/${superclass.include.split('/').last.lower}_p.h"
+[%- END -%]
+
+#include "${class.name.lower}.h"
+
 [%- IF class.item('qtumlinclude') %]
 
 // [% namespace.split('/').0 %] includes
-[%- FOREACH include IN class.qtumlinclude -%]
-
+[% FOREACH include IN class.qtumlinclude -%]
 #include <${include}>
-[%- END -%]
-[%- END -%]
-[%- IF class.item('superclass') %]
 
-// Base class includes
-[%- FOREACH superclass IN class.superclass -%]
-[%- IF superclass.include != 'QtCore/QObject' -%]
-
-#include "${superclass.include.split('/').last.lower}_p.h"
-[%- END -%]
 [%- END -%]
 [%- END -%]
 [%- IF class.item('qtinclude') %]
-
 // Qt includes
 [%- FOREACH include IN class.qtinclude -%]
 
 #include <${include}>
 [%- END -%]
-[%- END -%]
-
+[%- END %]
 
 QT_BEGIN_HEADER
 [%- currentNamespace = '' -%]
@@ -99,9 +99,10 @@ QT_MODULE([% namespace.split('/').0 %])
 [%- foundPublic = 'false' -%]
 [%- FOREACH forwarddecl IN class.forwarddecl -%]
 [%- IF forwarddecl.namespace == namespace.replace('/', '::') -%]
-[%- IF found == 'false' %]
+[%- IF found == 'false' -%]
 
-[%- found = 'true' -%]
+// Forward decls for function parameters
+[% found = 'true' -%]
 [%- END -%]
 class ${forwarddecl.content};
 
@@ -114,12 +115,12 @@ class ${forwarddecl.content};
 class ${class.name};
 
 [%- END %]
-class ${class.name}Private[%- IF class.superclass -%] : [% END -%][% FOREACH superclass = class.superclass %][% IF superclass.include != 'QtCore/QObject' %]public ${superclass.name.split('/').last}Private[% IF !loop.last %], [% END %][% END %][% END %]
+class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name}Private : [% IF class.superclass.size == 1 %]public ${class.superclass.0.name.split('/').last}Private[% ELSE %]public QObjectPrivate[% END %]
 {
+    Q_DECLARE_PUBLIC(${class.name})
+
 public:
-    [%- IF class.isAbstract == 'false' %]
-    explicit ${class.name}Private(${class.name} *q_umlptr = 0);
-    [%- END %]
+    explicit ${class.name}Private();
     virtual ~${class.name}Private();
 
 [%- FOREACH attribute IN class.attribute.values %]
@@ -166,15 +167,12 @@ public:
 [%- END -%]
 [%- END -%]
 [%- END %]
-[%- IF class.isAbstract == 'true' %]
+[%- IF class.superclass and class.superclass.size > 1 %]
 
-protected:
-    explicit ${class.name}Private();
-[%- END %]
-[%- IF not(class.superclass) %]
-
-protected:
-    ${class.name} *q_umlptr;
+private:
+    [%- FOREACH parentClass IN class.superclass %]
+    ${parentClass.name}Private *_wrapped${parentClass.name.replace('^Q', '')}Private;
+    [%- END %]
 [%- END %]
 };
 

@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qclassifier_p.h"
+#include "private/qclassifier_p.h"
+#include "qstructuredclassifier.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -56,13 +57,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QProperty;
 class QConnector;
 class QConnectableElement;
 
-class QStructuredClassifierPrivate : public virtual QClassifierPrivate
+class Q_UML_EXPORT QStructuredClassifierPrivate : public QClassifierPrivate
 {
+    Q_DECLARE_PUBLIC(QStructuredClassifier)
+
 public:
+    explicit QStructuredClassifierPrivate();
     virtual ~QStructuredClassifierPrivate();
 
     QSet<QConnectableElement *> *roles;
@@ -72,9 +77,6 @@ public:
     // Internal functions for read-only subsetted association ends
     void addRole(QConnectableElement *role);
     void removeRole(QConnectableElement *role);
-
-protected:
-    explicit QStructuredClassifierPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

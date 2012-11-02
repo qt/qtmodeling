@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QProtocolStateMachinePrivate::QProtocolStateMachinePrivate(QProtocolStateMachine *q_umlptr) :
+QProtocolStateMachinePrivate::QProtocolStateMachinePrivate() :
     conformance(new QSet<QProtocolConformance *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QProtocolStateMachinePrivate::~QProtocolStateMachinePrivate()
@@ -65,17 +64,14 @@ QProtocolStateMachinePrivate::~QProtocolStateMachinePrivate()
     \brief A protocol state machine is always defined in the context of a classifier. It specifies which operations of the classifier can be called in which state and under which condition, thus specifying the allowed call sequences on the classifier's operations. A protocol state machine presents the possible and permitted transitions on the instances of its context classifier, together with the operations which carry the transitions. In this manner, an instance lifecycle can be created for a classifier, by specifying the order in which the operations can be activated and the states through which an instance progresses during its existence.
  */
 
-QProtocolStateMachine::QProtocolStateMachine(QObject *parent)
-    : QStateMachine(false, parent)
+QProtocolStateMachine::QProtocolStateMachine(QObject *parent) :
+    QStateMachine(*new QProtocolStateMachinePrivate, parent)
 {
-    d_umlptr = new QProtocolStateMachinePrivate(this);
 }
 
-QProtocolStateMachine::QProtocolStateMachine(bool createPimpl, QObject *parent)
-    : QStateMachine(createPimpl, parent)
+QProtocolStateMachine::QProtocolStateMachine(QProtocolStateMachinePrivate &dd, QObject *parent) :
+    QStateMachine(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QProtocolStateMachinePrivate;
 }
 
 QProtocolStateMachine::~QProtocolStateMachine()
@@ -89,7 +85,7 @@ const QSet<QProtocolConformance *> *QProtocolStateMachine::conformance() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QProtocolStateMachine);
+    Q_D(const QProtocolStateMachine);
     return d->conformance;
 }
 
@@ -97,7 +93,7 @@ void QProtocolStateMachine::addConformance(QProtocolConformance *conformance)
 {
     // This is a read-write association end
 
-    QTUML_D(QProtocolStateMachine);
+    Q_D(QProtocolStateMachine);
     if (!d->conformance->contains(conformance)) {
         d->conformance->insert(conformance);
 
@@ -113,7 +109,7 @@ void QProtocolStateMachine::removeConformance(QProtocolConformance *conformance)
 {
     // This is a read-write association end
 
-    QTUML_D(QProtocolStateMachine);
+    Q_D(QProtocolStateMachine);
     if (d->conformance->contains(conformance)) {
         d->conformance->remove(conformance);
 

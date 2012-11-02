@@ -62,7 +62,17 @@ QPackageableElementPrivate::~QPackageableElementPrivate()
     \brief Packageable elements are able to serve as a template parameter.A packageable element indicates a named element that may be owned directly by a package.
  */
 
-QPackageableElement::QPackageableElement()
+QPackageableElement::QPackageableElement(QObject *parent) :
+    QObject(*new QPackageableElementPrivate, parent),
+    _wrappedParameterableElement(new QParameterableElement(this)),
+    _wrappedNamedElement(new QNamedElement(this))
+{
+}
+
+QPackageableElement::QPackageableElement(QPackageableElementPrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedParameterableElement(new QParameterableElement(this)),
+    _wrappedNamedElement(new QNamedElement(this))
 {
 }
 
@@ -77,7 +87,7 @@ QtUml::VisibilityKind QPackageableElement::visibility() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QPackageableElement);
+    Q_D(const QPackageableElement);
     return d->visibility;
 }
 
@@ -85,7 +95,7 @@ void QPackageableElement::setVisibility(QtUml::VisibilityKind visibility)
 {
     // This is a read-write attribute
 
-    QTUML_D(QPackageableElement);
+    Q_D(QPackageableElement);
     if (d->visibility != visibility) {
         d->visibility = visibility;
     }

@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QAcceptCallActionPrivate::QAcceptCallActionPrivate(QAcceptCallAction *q_umlptr) :
+QAcceptCallActionPrivate::QAcceptCallActionPrivate() :
     returnInformation(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QAcceptCallActionPrivate::~QAcceptCallActionPrivate()
@@ -64,17 +63,14 @@ QAcceptCallActionPrivate::~QAcceptCallActionPrivate()
     \brief An accept call action is an accept event action representing the receipt of a synchronous call request. In addition to the normal operation parameters, the action produces an output that is needed later to supply the information to the reply action necessary to return control to the caller. This action is for synchronous calls. If it is used to handle an asynchronous call, execution of the subsequent reply action will complete immediately with no effects.
  */
 
-QAcceptCallAction::QAcceptCallAction(QObject *parent)
-    : QAcceptEventAction(false, parent)
+QAcceptCallAction::QAcceptCallAction(QObject *parent) :
+    QAcceptEventAction(*new QAcceptCallActionPrivate, parent)
 {
-    d_umlptr = new QAcceptCallActionPrivate(this);
 }
 
-QAcceptCallAction::QAcceptCallAction(bool createPimpl, QObject *parent)
-    : QAcceptEventAction(createPimpl, parent)
+QAcceptCallAction::QAcceptCallAction(QAcceptCallActionPrivate &dd, QObject *parent) :
+    QAcceptEventAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QAcceptCallActionPrivate;
 }
 
 QAcceptCallAction::~QAcceptCallAction()
@@ -88,7 +84,7 @@ QOutputPin *QAcceptCallAction::returnInformation() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QAcceptCallAction);
+    Q_D(const QAcceptCallAction);
     return d->returnInformation;
 }
 
@@ -96,7 +92,7 @@ void QAcceptCallAction::setReturnInformation(QOutputPin *returnInformation)
 {
     // This is a read-write association end
 
-    QTUML_D(QAcceptCallAction);
+    Q_D(QAcceptCallAction);
     if (d->returnInformation != returnInformation) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->returnInformation));

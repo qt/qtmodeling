@@ -56,17 +56,34 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QBehavioralFeature;
 class QConstraint;
 class QParameter;
 class QBehavioredClassifier;
 class QParameterSet;
 
+class QBehaviorPrivate;
+
 class Q_UML_EXPORT QBehavior : public QClass
 {
+    Q_OBJECT
+
+    // From QBehavior
+    Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant)
+    Q_PROPERTY(QBehavioralFeature * specification READ specification WRITE setSpecification)
+    Q_PROPERTY(const QSet<QConstraint *> * postconditions READ postconditions)
+    Q_PROPERTY(const QSet<QConstraint *> * preconditions READ preconditions)
+    Q_PROPERTY(const QSet<QBehavior *> * redefinedBehaviors READ redefinedBehaviors)
+    Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
+    Q_PROPERTY(const QSet<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
+    Q_PROPERTY(QBehavioredClassifier * context READ context)
+
     Q_DISABLE_COPY(QBehavior)
+    Q_DECLARE_PRIVATE(QBehavior)
 
 public:
+    explicit QBehavior(QObject *parent = 0);
     virtual ~QBehavior();
 
     // Attributes
@@ -98,10 +115,14 @@ public:
     void removeRedefinedClassifier(QBehavior *redefinedBehavior);
 
 protected:
-    explicit QBehavior(bool createPimpl, QObject *parent = 0);
+    explicit QBehavior(QBehaviorPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QBehavior) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *)
 
 QT_END_HEADER
 

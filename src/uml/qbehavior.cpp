@@ -78,8 +78,13 @@ QBehaviorPrivate::~QBehaviorPrivate()
     \brief Behavior is a specification of how its context classifier changes state over time. This specification may be either a definition of possible behavior execution or emergent behavior, or a selective illustration of an interesting subset of possible executions. The latter form is typically used for capturing examples, such as a trace of a particular execution.A behavior owns zero or more parameter sets.
  */
 
-QBehavior::QBehavior(bool createPimpl, QObject *parent)
-    : QClass(createPimpl, parent)
+QBehavior::QBehavior(QObject *parent) :
+    QClass(*new QBehaviorPrivate, parent)
+{
+}
+
+QBehavior::QBehavior(QBehaviorPrivate &dd, QObject *parent) :
+    QClass(dd, parent)
 {
 }
 
@@ -94,7 +99,7 @@ bool QBehavior::isReentrant() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QBehavior);
+    Q_D(const QBehavior);
     return d->isReentrant;
 }
 
@@ -102,7 +107,7 @@ void QBehavior::setReentrant(bool isReentrant)
 {
     // This is a read-write attribute
 
-    QTUML_D(QBehavior);
+    Q_D(QBehavior);
     if (d->isReentrant != isReentrant) {
         d->isReentrant = isReentrant;
     }
@@ -115,7 +120,7 @@ QBehavioralFeature *QBehavior::specification() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QBehavior);
+    Q_D(const QBehavior);
     return d->specification;
 }
 
@@ -123,7 +128,7 @@ void QBehavior::setSpecification(QBehavioralFeature *specification)
 {
     // This is a read-write association end
 
-    QTUML_D(QBehavior);
+    Q_D(QBehavior);
     if (d->specification != specification) {
         // Adjust opposite property
         if (d->specification)
@@ -144,7 +149,7 @@ const QSet<QConstraint *> *QBehavior::postconditions() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QBehavior);
+    Q_D(const QBehavior);
     return d->postconditions;
 }
 
@@ -152,7 +157,7 @@ void QBehavior::addPostcondition(QConstraint *postcondition)
 {
     // This is a read-write association end
 
-    QTUML_D(QBehavior);
+    Q_D(QBehavior);
     if (!d->postconditions->contains(postcondition)) {
         d->postconditions->insert(postcondition);
 
@@ -165,7 +170,7 @@ void QBehavior::removePostcondition(QConstraint *postcondition)
 {
     // This is a read-write association end
 
-    QTUML_D(QBehavior);
+    Q_D(QBehavior);
     if (d->postconditions->contains(postcondition)) {
         d->postconditions->remove(postcondition);
 
@@ -181,7 +186,7 @@ const QSet<QConstraint *> *QBehavior::preconditions() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QBehavior);
+    Q_D(const QBehavior);
     return d->preconditions;
 }
 
@@ -189,7 +194,7 @@ void QBehavior::addPrecondition(QConstraint *precondition)
 {
     // This is a read-write association end
 
-    QTUML_D(QBehavior);
+    Q_D(QBehavior);
     if (!d->preconditions->contains(precondition)) {
         d->preconditions->insert(precondition);
 
@@ -202,7 +207,7 @@ void QBehavior::removePrecondition(QConstraint *precondition)
 {
     // This is a read-write association end
 
-    QTUML_D(QBehavior);
+    Q_D(QBehavior);
     if (d->preconditions->contains(precondition)) {
         d->preconditions->remove(precondition);
 
@@ -218,7 +223,7 @@ const QSet<QBehavior *> *QBehavior::redefinedBehaviors() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QBehavior);
+    Q_D(const QBehavior);
     return d->redefinedBehaviors;
 }
 
@@ -226,7 +231,7 @@ void QBehavior::addRedefinedBehavior(QBehavior *redefinedBehavior)
 {
     // This is a read-write association end
 
-    QTUML_D(QBehavior);
+    Q_D(QBehavior);
     if (!d->redefinedBehaviors->contains(redefinedBehavior)) {
         d->redefinedBehaviors->insert(redefinedBehavior);
 
@@ -239,7 +244,7 @@ void QBehavior::removeRedefinedBehavior(QBehavior *redefinedBehavior)
 {
     // This is a read-write association end
 
-    QTUML_D(QBehavior);
+    Q_D(QBehavior);
     if (d->redefinedBehaviors->contains(redefinedBehavior)) {
         d->redefinedBehaviors->remove(redefinedBehavior);
 
@@ -255,7 +260,7 @@ const QList<QParameter *> *QBehavior::ownedParameters() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QBehavior);
+    Q_D(const QBehavior);
     return d->ownedParameters;
 }
 
@@ -263,7 +268,7 @@ void QBehavior::addOwnedParameter(QParameter *ownedParameter)
 {
     // This is a read-write association end
 
-    QTUML_D(QBehavior);
+    Q_D(QBehavior);
     if (!d->ownedParameters->contains(ownedParameter)) {
         d->ownedParameters->append(ownedParameter);
 
@@ -276,7 +281,7 @@ void QBehavior::removeOwnedParameter(QParameter *ownedParameter)
 {
     // This is a read-write association end
 
-    QTUML_D(QBehavior);
+    Q_D(QBehavior);
     if (d->ownedParameters->contains(ownedParameter)) {
         d->ownedParameters->removeAll(ownedParameter);
 
@@ -292,7 +297,7 @@ const QSet<QParameterSet *> *QBehavior::ownedParameterSets() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QBehavior);
+    Q_D(const QBehavior);
     return d->ownedParameterSets;
 }
 
@@ -300,7 +305,7 @@ void QBehavior::addOwnedParameterSet(QParameterSet *ownedParameterSet)
 {
     // This is a read-write association end
 
-    QTUML_D(QBehavior);
+    Q_D(QBehavior);
     if (!d->ownedParameterSets->contains(ownedParameterSet)) {
         d->ownedParameterSets->insert(ownedParameterSet);
 
@@ -313,7 +318,7 @@ void QBehavior::removeOwnedParameterSet(QParameterSet *ownedParameterSet)
 {
     // This is a read-write association end
 
-    QTUML_D(QBehavior);
+    Q_D(QBehavior);
     if (d->ownedParameterSets->contains(ownedParameterSet)) {
         d->ownedParameterSets->remove(ownedParameterSet);
 
@@ -331,7 +336,7 @@ QBehavioredClassifier *QBehavior::context() const
 
     qWarning("QBehavior::context: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(const QBehavior);
+    //Q_D(const QBehavior);
     //return <derived-return>;
 }
 

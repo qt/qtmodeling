@@ -44,9 +44,12 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qdeployedartifact_p.h"
-#include "qpackageableelement_p.h"
-#include "qdeploymenttarget_p.h"
+#include "private/qobject_p.h"
+
+#include "private/qdeployedartifact_p.h"
+#include "private/qpackageableelement_p.h"
+#include "private/qdeploymenttarget_p.h"
+#include "qinstancespecification.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -57,20 +60,28 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QClassifier;
 class QSlot;
 class QValueSpecification;
 class QInstanceSpecification;
 
-class QInstanceSpecificationPrivate : public QDeployedArtifactPrivate, public QPackageableElementPrivate, public QDeploymentTargetPrivate
+class Q_UML_EXPORT QInstanceSpecificationPrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QInstanceSpecification)
+
 public:
-    explicit QInstanceSpecificationPrivate(QInstanceSpecification *q_umlptr = 0);
+    explicit QInstanceSpecificationPrivate();
     virtual ~QInstanceSpecificationPrivate();
 
     QSet<QClassifier *> *classifiers;
     QValueSpecification *specification;
     QSet<QSlot *> *slots_;
+
+private:
+    QDeployedArtifactPrivate *_wrappedDeployedArtifactPrivate;
+    QPackageableElementPrivate *_wrappedPackageableElementPrivate;
+    QDeploymentTargetPrivate *_wrappedDeploymentTargetPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

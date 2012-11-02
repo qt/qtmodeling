@@ -43,12 +43,16 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+#include "private/qobject_p.h"
+
+#include "private/qredefinableelement_p.h"
+#include "private/qnamespace_p.h"
+#include "qtransition.h"
+
+
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
-
-// Base class includes
-#include "qredefinableelement_p.h"
-#include "qnamespace_p.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -59,6 +63,7 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QTrigger;
 class QVertex;
 class QStateMachine;
@@ -68,10 +73,12 @@ class QRegion;
 class QConstraint;
 class QBehavior;
 
-class QTransitionPrivate : public QRedefinableElementPrivate, public QNamespacePrivate
+class Q_UML_EXPORT QTransitionPrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QTransition)
+
 public:
-    explicit QTransitionPrivate(QTransition *q_umlptr = 0);
+    explicit QTransitionPrivate();
     virtual ~QTransitionPrivate();
 
     QtUml::TransitionKind kind;
@@ -82,6 +89,10 @@ public:
     QTransition *redefinedTransition;
     QVertex *source;
     QSet<QTrigger *> *triggers;
+
+private:
+    QRedefinableElementPrivate *_wrappedRedefinableElementPrivate;
+    QNamespacePrivate *_wrappedNamespacePrivate;
 };
 
 QT_END_NAMESPACE_QTUML

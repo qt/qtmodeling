@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QPackageMergePrivate::QPackageMergePrivate(QPackageMerge *q_umlptr) :
+QPackageMergePrivate::QPackageMergePrivate() :
     mergedPackage(0),
     receivingPackage(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QPackageMergePrivate::~QPackageMergePrivate()
@@ -65,17 +64,14 @@ QPackageMergePrivate::~QPackageMergePrivate()
     \brief A package merge defines how the contents of one package are extended by the contents of another package.
  */
 
-QPackageMerge::QPackageMerge(QObject *parent)
-    : QObject(parent)
+QPackageMerge::QPackageMerge(QObject *parent) :
+    QDirectedRelationship(*new QPackageMergePrivate, parent)
 {
-    d_umlptr = new QPackageMergePrivate(this);
 }
 
-QPackageMerge::QPackageMerge(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QPackageMerge::QPackageMerge(QPackageMergePrivate &dd, QObject *parent) :
+    QDirectedRelationship(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QPackageMergePrivate;
 }
 
 QPackageMerge::~QPackageMerge()
@@ -89,7 +85,7 @@ QPackage *QPackageMerge::mergedPackage() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QPackageMerge);
+    Q_D(const QPackageMerge);
     return d->mergedPackage;
 }
 
@@ -97,7 +93,7 @@ void QPackageMerge::setMergedPackage(QPackage *mergedPackage)
 {
     // This is a read-write association end
 
-    QTUML_D(QPackageMerge);
+    Q_D(QPackageMerge);
     if (d->mergedPackage != mergedPackage) {
         // Adjust subsetted property(ies)
         d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(d->mergedPackage));
@@ -118,7 +114,7 @@ QPackage *QPackageMerge::receivingPackage() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QPackageMerge);
+    Q_D(const QPackageMerge);
     return d->receivingPackage;
 }
 
@@ -126,7 +122,7 @@ void QPackageMerge::setReceivingPackage(QPackage *receivingPackage)
 {
     // This is a read-write association end
 
-    QTUML_D(QPackageMerge);
+    Q_D(QPackageMerge);
     if (d->receivingPackage != receivingPackage) {
         // Adjust opposite property
         if (d->receivingPackage)

@@ -52,18 +52,26 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QLiteralSpecificationPrivate;
+
 class Q_UML_EXPORT QLiteralSpecification : public QValueSpecification
 {
     Q_DISABLE_COPY(QLiteralSpecification)
+    Q_DECLARE_PRIVATE(QLiteralSpecification)
 
 public:
+    explicit QLiteralSpecification(QObject *parent = 0);
     virtual ~QLiteralSpecification();
 
 protected:
-    explicit QLiteralSpecification();
+    explicit QLiteralSpecification(QLiteralSpecificationPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QLiteralSpecification) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QLiteralSpecification) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QLiteralSpecification) *> *)
 
 QT_END_HEADER
 

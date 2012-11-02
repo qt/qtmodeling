@@ -55,21 +55,34 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QRelationship : public virtual QElement
+class QRelationshipPrivate;
+
+class Q_UML_EXPORT QRelationship : public QElement
 {
+    Q_OBJECT
+
+    // From QRelationship
+    Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
+
     Q_DISABLE_COPY(QRelationship)
+    Q_DECLARE_PRIVATE(QRelationship)
 
 public:
+    explicit QRelationship(QObject *parent = 0);
     virtual ~QRelationship();
 
     // Association-ends
     const QSet<QElement *> *relatedElements() const;
 
 protected:
-    explicit QRelationship();
+    explicit QRelationship(QRelationshipPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QRelationship) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QRelationship) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QRelationship) *> *)
 
 QT_END_HEADER
 

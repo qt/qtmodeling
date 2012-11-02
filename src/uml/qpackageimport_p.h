@@ -43,11 +43,14 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+#include "private/qdirectedrelationship_p.h"
+#include "qpackageimport.h"
+
+
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
 
-// Base class includes
-#include "qdirectedrelationship_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,14 +58,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QPackage;
 class QNamespace;
 class QPackageImport;
 
-class QPackageImportPrivate : public QDirectedRelationshipPrivate
+class Q_UML_EXPORT QPackageImportPrivate : public QDirectedRelationshipPrivate
 {
+    Q_DECLARE_PUBLIC(QPackageImport)
+
 public:
-    explicit QPackageImportPrivate(QPackageImport *q_umlptr = 0);
+    explicit QPackageImportPrivate();
     virtual ~QPackageImportPrivate();
 
     QtUml::VisibilityKind visibility;

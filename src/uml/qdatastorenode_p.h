@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qcentralbuffernode_p.h"
+#include "private/qcentralbuffernode_p.h"
+#include "qdatastorenode.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,10 +55,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QDataStoreNode;
 
-class QDataStoreNodePrivate : public QCentralBufferNodePrivate
+class Q_UML_EXPORT QDataStoreNodePrivate : public QCentralBufferNodePrivate
 {
+    Q_DECLARE_PUBLIC(QDataStoreNode)
+
 public:
-    explicit QDataStoreNodePrivate(QDataStoreNode *q_umlptr = 0);
+    explicit QDataStoreNodePrivate();
     virtual ~QDataStoreNodePrivate();
 
 };

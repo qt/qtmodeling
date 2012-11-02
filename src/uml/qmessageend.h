@@ -52,13 +52,23 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QMessage;
 
-class Q_UML_EXPORT QMessageEnd : public virtual QNamedElement
+class QMessageEndPrivate;
+
+class Q_UML_EXPORT QMessageEnd : public QNamedElement
 {
+    Q_OBJECT
+
+    // From QMessageEnd
+    Q_PROPERTY(QMessage * message READ message WRITE setMessage)
+
     Q_DISABLE_COPY(QMessageEnd)
+    Q_DECLARE_PRIVATE(QMessageEnd)
 
 public:
+    explicit QMessageEnd(QObject *parent = 0);
     virtual ~QMessageEnd();
 
     // Association-ends
@@ -66,10 +76,14 @@ public:
     void setMessage(QMessage *message);
 
 protected:
-    explicit QMessageEnd();
+    explicit QMessageEnd(QMessageEndPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QMessageEnd) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QMessageEnd) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QMessageEnd) *> *)
 
 QT_END_HEADER
 

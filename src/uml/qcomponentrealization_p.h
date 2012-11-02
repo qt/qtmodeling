@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qrealization_p.h"
+#include "private/qrealization_p.h"
+#include "qcomponentrealization.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,14 +56,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QComponent;
 class QClassifier;
 class QComponentRealization;
 
-class QComponentRealizationPrivate : public QRealizationPrivate
+class Q_UML_EXPORT QComponentRealizationPrivate : public QRealizationPrivate
 {
+    Q_DECLARE_PUBLIC(QComponentRealization)
+
 public:
-    explicit QComponentRealizationPrivate(QComponentRealization *q_umlptr = 0);
+    explicit QComponentRealizationPrivate();
     virtual ~QComponentRealizationPrivate();
 
     QComponent *abstraction;

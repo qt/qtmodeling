@@ -47,12 +47,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QAcceptEventActionPrivate::QAcceptEventActionPrivate(QAcceptEventAction *q_umlptr) :
+QAcceptEventActionPrivate::QAcceptEventActionPrivate() :
     isUnmarshall(false),
     triggers(new QSet<QTrigger *>),
     results(new QSet<QOutputPin *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QAcceptEventActionPrivate::~QAcceptEventActionPrivate()
@@ -69,17 +68,14 @@ QAcceptEventActionPrivate::~QAcceptEventActionPrivate()
     \brief A accept event action is an action that waits for the occurrence of an event meeting specified conditions.
  */
 
-QAcceptEventAction::QAcceptEventAction(QObject *parent)
-    : QObject(parent)
+QAcceptEventAction::QAcceptEventAction(QObject *parent) :
+    QAction(*new QAcceptEventActionPrivate, parent)
 {
-    d_umlptr = new QAcceptEventActionPrivate(this);
 }
 
-QAcceptEventAction::QAcceptEventAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QAcceptEventAction::QAcceptEventAction(QAcceptEventActionPrivate &dd, QObject *parent) :
+    QAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QAcceptEventActionPrivate;
 }
 
 QAcceptEventAction::~QAcceptEventAction()
@@ -93,7 +89,7 @@ bool QAcceptEventAction::isUnmarshall() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QAcceptEventAction);
+    Q_D(const QAcceptEventAction);
     return d->isUnmarshall;
 }
 
@@ -101,7 +97,7 @@ void QAcceptEventAction::setUnmarshall(bool isUnmarshall)
 {
     // This is a read-write attribute
 
-    QTUML_D(QAcceptEventAction);
+    Q_D(QAcceptEventAction);
     if (d->isUnmarshall != isUnmarshall) {
         d->isUnmarshall = isUnmarshall;
     }
@@ -114,7 +110,7 @@ const QSet<QTrigger *> *QAcceptEventAction::triggers() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QAcceptEventAction);
+    Q_D(const QAcceptEventAction);
     return d->triggers;
 }
 
@@ -122,7 +118,7 @@ void QAcceptEventAction::addTrigger(QTrigger *trigger)
 {
     // This is a read-write association end
 
-    QTUML_D(QAcceptEventAction);
+    Q_D(QAcceptEventAction);
     if (!d->triggers->contains(trigger)) {
         d->triggers->insert(trigger);
 
@@ -135,7 +131,7 @@ void QAcceptEventAction::removeTrigger(QTrigger *trigger)
 {
     // This is a read-write association end
 
-    QTUML_D(QAcceptEventAction);
+    Q_D(QAcceptEventAction);
     if (d->triggers->contains(trigger)) {
         d->triggers->remove(trigger);
 
@@ -151,7 +147,7 @@ const QSet<QOutputPin *> *QAcceptEventAction::results() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QAcceptEventAction);
+    Q_D(const QAcceptEventAction);
     return d->results;
 }
 
@@ -159,7 +155,7 @@ void QAcceptEventAction::addResult(QOutputPin *result)
 {
     // This is a read-write association end
 
-    QTUML_D(QAcceptEventAction);
+    Q_D(QAcceptEventAction);
     if (!d->results->contains(result)) {
         d->results->insert(result);
 
@@ -172,7 +168,7 @@ void QAcceptEventAction::removeResult(QOutputPin *result)
 {
     // This is a read-write association end
 
-    QTUML_D(QAcceptEventAction);
+    Q_D(QAcceptEventAction);
     if (d->results->contains(result)) {
         d->results->remove(result);
 

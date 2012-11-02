@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QLiteralNullPrivate::QLiteralNullPrivate(QLiteralNull *q_umlptr)
+QLiteralNullPrivate::QLiteralNullPrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QLiteralNullPrivate::~QLiteralNullPrivate()
@@ -62,17 +61,14 @@ QLiteralNullPrivate::~QLiteralNullPrivate()
     \brief A literal null specifies the lack of a value.
  */
 
-QLiteralNull::QLiteralNull(QObject *parent)
-    : QObject(parent)
+QLiteralNull::QLiteralNull(QObject *parent) :
+    QLiteralSpecification(*new QLiteralNullPrivate, parent)
 {
-    d_umlptr = new QLiteralNullPrivate(this);
 }
 
-QLiteralNull::QLiteralNull(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QLiteralNull::QLiteralNull(QLiteralNullPrivate &dd, QObject *parent) :
+    QLiteralSpecification(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QLiteralNullPrivate;
 }
 
 QLiteralNull::~QLiteralNull()

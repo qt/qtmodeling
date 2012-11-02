@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qdependency_p.h"
+#include "private/qdependency_p.h"
+#include "qusage.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,10 +55,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QUsage;
 
-class QUsagePrivate : public QDependencyPrivate
+class Q_UML_EXPORT QUsagePrivate : public QDependencyPrivate
 {
+    Q_DECLARE_PUBLIC(QUsage)
+
 public:
-    explicit QUsagePrivate(QUsage *q_umlptr = 0);
+    explicit QUsagePrivate();
     virtual ~QUsagePrivate();
 
 };

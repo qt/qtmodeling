@@ -63,7 +63,13 @@ QTypedElementPrivate::~QTypedElementPrivate()
     \brief A typed element is a kind of named element that represents an element with a type.A typed element has a type.
  */
 
-QTypedElement::QTypedElement()
+QTypedElement::QTypedElement(QObject *parent) :
+    QNamedElement(*new QTypedElementPrivate, parent)
+{
+}
+
+QTypedElement::QTypedElement(QTypedElementPrivate &dd, QObject *parent) :
+    QNamedElement(dd, parent)
 {
 }
 
@@ -78,7 +84,7 @@ QType *QTypedElement::type() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTypedElement);
+    Q_D(const QTypedElement);
     return d->type;
 }
 
@@ -86,7 +92,7 @@ void QTypedElement::setType(QType *type)
 {
     // This is a read-write association end
 
-    QTUML_D(QTypedElement);
+    Q_D(QTypedElement);
     if (d->type != type) {
         d->type = type;
     }

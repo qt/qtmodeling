@@ -55,7 +55,10 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QProtocolConformance;
+
+class QProtocolStateMachinePrivate;
 
 class Q_UML_EXPORT QProtocolStateMachine : public QStateMachine
 {
@@ -65,6 +68,7 @@ class Q_UML_EXPORT QProtocolStateMachine : public QStateMachine
     Q_PROPERTY(const QSet<QProtocolConformance *> * conformance READ conformance)
 
     Q_DISABLE_COPY(QProtocolStateMachine)
+    Q_DECLARE_PRIVATE(QProtocolStateMachine)
 
 public:
     explicit QProtocolStateMachine(QObject *parent = 0);
@@ -76,12 +80,13 @@ public:
     void removeConformance(QProtocolConformance *conformance);
 
 protected:
-    explicit QProtocolStateMachine(bool createPimpl, QObject *parent = 0);
+    explicit QProtocolStateMachine(QProtocolStateMachinePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *)
 
 QT_END_HEADER

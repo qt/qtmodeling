@@ -47,12 +47,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QTestIdentityActionPrivate::QTestIdentityActionPrivate(QTestIdentityAction *q_umlptr) :
+QTestIdentityActionPrivate::QTestIdentityActionPrivate() :
     second(0),
     result(0),
     first(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QTestIdentityActionPrivate::~QTestIdentityActionPrivate()
@@ -67,17 +66,14 @@ QTestIdentityActionPrivate::~QTestIdentityActionPrivate()
     \brief A test identity action is an action that tests if two values are identical objects.
  */
 
-QTestIdentityAction::QTestIdentityAction(QObject *parent)
-    : QObject(parent)
+QTestIdentityAction::QTestIdentityAction(QObject *parent) :
+    QAction(*new QTestIdentityActionPrivate, parent)
 {
-    d_umlptr = new QTestIdentityActionPrivate(this);
 }
 
-QTestIdentityAction::QTestIdentityAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QTestIdentityAction::QTestIdentityAction(QTestIdentityActionPrivate &dd, QObject *parent) :
+    QAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QTestIdentityActionPrivate;
 }
 
 QTestIdentityAction::~QTestIdentityAction()
@@ -91,7 +87,7 @@ QInputPin *QTestIdentityAction::second() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTestIdentityAction);
+    Q_D(const QTestIdentityAction);
     return d->second;
 }
 
@@ -99,7 +95,7 @@ void QTestIdentityAction::setSecond(QInputPin *second)
 {
     // This is a read-write association end
 
-    QTUML_D(QTestIdentityAction);
+    Q_D(QTestIdentityAction);
     if (d->second != second) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->second));
@@ -120,7 +116,7 @@ QOutputPin *QTestIdentityAction::result() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTestIdentityAction);
+    Q_D(const QTestIdentityAction);
     return d->result;
 }
 
@@ -128,7 +124,7 @@ void QTestIdentityAction::setResult(QOutputPin *result)
 {
     // This is a read-write association end
 
-    QTUML_D(QTestIdentityAction);
+    Q_D(QTestIdentityAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->result));
@@ -149,7 +145,7 @@ QInputPin *QTestIdentityAction::first() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTestIdentityAction);
+    Q_D(const QTestIdentityAction);
     return d->first;
 }
 
@@ -157,7 +153,7 @@ void QTestIdentityAction::setFirst(QInputPin *first)
 {
     // This is a read-write association end
 
-    QTUML_D(QTestIdentityAction);
+    Q_D(QTestIdentityAction);
     if (d->first != first) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->first));

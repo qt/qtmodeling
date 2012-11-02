@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QFlowFinalNodePrivate::QFlowFinalNodePrivate(QFlowFinalNode *q_umlptr)
+QFlowFinalNodePrivate::QFlowFinalNodePrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QFlowFinalNodePrivate::~QFlowFinalNodePrivate()
@@ -62,17 +61,14 @@ QFlowFinalNodePrivate::~QFlowFinalNodePrivate()
     \brief A flow final node is a final node that terminates a flow.
  */
 
-QFlowFinalNode::QFlowFinalNode(QObject *parent)
-    : QObject(parent)
+QFlowFinalNode::QFlowFinalNode(QObject *parent) :
+    QFinalNode(*new QFlowFinalNodePrivate, parent)
 {
-    d_umlptr = new QFlowFinalNodePrivate(this);
 }
 
-QFlowFinalNode::QFlowFinalNode(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QFlowFinalNode::QFlowFinalNode(QFlowFinalNodePrivate &dd, QObject *parent) :
+    QFinalNode(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QFlowFinalNodePrivate;
 }
 
 QFlowFinalNode::~QFlowFinalNode()

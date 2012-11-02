@@ -51,7 +51,7 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QActivityPrivate::QActivityPrivate(QActivity *q_umlptr) :
+QActivityPrivate::QActivityPrivate() :
     isReadOnly(false),
     isSingleExecution(false),
     partitions(new QSet<QActivityPartition *>),
@@ -61,7 +61,6 @@ QActivityPrivate::QActivityPrivate(QActivity *q_umlptr) :
     groups(new QSet<QActivityGroup *>),
     edges(new QSet<QActivityEdge *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QActivityPrivate::~QActivityPrivate()
@@ -82,17 +81,14 @@ QActivityPrivate::~QActivityPrivate()
     \brief An activity is the specification of parameterized behavior as the coordinated sequencing of subordinate units whose individual elements are actions.
  */
 
-QActivity::QActivity(QObject *parent)
-    : QBehavior(false, parent)
+QActivity::QActivity(QObject *parent) :
+    QBehavior(*new QActivityPrivate, parent)
 {
-    d_umlptr = new QActivityPrivate(this);
 }
 
-QActivity::QActivity(bool createPimpl, QObject *parent)
-    : QBehavior(createPimpl, parent)
+QActivity::QActivity(QActivityPrivate &dd, QObject *parent) :
+    QBehavior(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QActivityPrivate;
 }
 
 QActivity::~QActivity()
@@ -106,7 +102,7 @@ bool QActivity::isReadOnly() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QActivity);
+    Q_D(const QActivity);
     return d->isReadOnly;
 }
 
@@ -114,7 +110,7 @@ void QActivity::setReadOnly(bool isReadOnly)
 {
     // This is a read-write attribute
 
-    QTUML_D(QActivity);
+    Q_D(QActivity);
     if (d->isReadOnly != isReadOnly) {
         d->isReadOnly = isReadOnly;
     }
@@ -127,7 +123,7 @@ bool QActivity::isSingleExecution() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QActivity);
+    Q_D(const QActivity);
     return d->isSingleExecution;
 }
 
@@ -135,7 +131,7 @@ void QActivity::setSingleExecution(bool isSingleExecution)
 {
     // This is a read-write attribute
 
-    QTUML_D(QActivity);
+    Q_D(QActivity);
     if (d->isSingleExecution != isSingleExecution) {
         d->isSingleExecution = isSingleExecution;
     }
@@ -148,7 +144,7 @@ const QSet<QActivityPartition *> *QActivity::partitions() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QActivity);
+    Q_D(const QActivity);
     return d->partitions;
 }
 
@@ -156,7 +152,7 @@ void QActivity::addPartition(QActivityPartition *partition)
 {
     // This is a read-write association end
 
-    QTUML_D(QActivity);
+    Q_D(QActivity);
     if (!d->partitions->contains(partition)) {
         d->partitions->insert(partition);
 
@@ -169,7 +165,7 @@ void QActivity::removePartition(QActivityPartition *partition)
 {
     // This is a read-write association end
 
-    QTUML_D(QActivity);
+    Q_D(QActivity);
     if (d->partitions->contains(partition)) {
         d->partitions->remove(partition);
 
@@ -185,7 +181,7 @@ const QSet<QActivityNode *> *QActivity::nodes() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QActivity);
+    Q_D(const QActivity);
     return d->nodes;
 }
 
@@ -193,7 +189,7 @@ void QActivity::addNode(QActivityNode *node)
 {
     // This is a read-write association end
 
-    QTUML_D(QActivity);
+    Q_D(QActivity);
     if (!d->nodes->contains(node)) {
         d->nodes->insert(node);
 
@@ -209,7 +205,7 @@ void QActivity::removeNode(QActivityNode *node)
 {
     // This is a read-write association end
 
-    QTUML_D(QActivity);
+    Q_D(QActivity);
     if (d->nodes->contains(node)) {
         d->nodes->remove(node);
 
@@ -228,7 +224,7 @@ const QSet<QVariable *> *QActivity::variables() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QActivity);
+    Q_D(const QActivity);
     return d->variables;
 }
 
@@ -236,7 +232,7 @@ void QActivity::addVariable(QVariable *variable)
 {
     // This is a read-write association end
 
-    QTUML_D(QActivity);
+    Q_D(QActivity);
     if (!d->variables->contains(variable)) {
         d->variables->insert(variable);
 
@@ -252,7 +248,7 @@ void QActivity::removeVariable(QVariable *variable)
 {
     // This is a read-write association end
 
-    QTUML_D(QActivity);
+    Q_D(QActivity);
     if (d->variables->contains(variable)) {
         d->variables->remove(variable);
 
@@ -271,7 +267,7 @@ const QSet<QStructuredActivityNode *> *QActivity::structuredNodes() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QActivity);
+    Q_D(const QActivity);
     return d->structuredNodes;
 }
 
@@ -279,7 +275,7 @@ void QActivity::addStructuredNode(QStructuredActivityNode *structuredNode)
 {
     // This is a read-write association end
 
-    QTUML_D(QActivity);
+    Q_D(QActivity);
     if (!d->structuredNodes->contains(structuredNode)) {
         d->structuredNodes->insert(structuredNode);
 
@@ -296,7 +292,7 @@ void QActivity::removeStructuredNode(QStructuredActivityNode *structuredNode)
 {
     // This is a read-write association end
 
-    QTUML_D(QActivity);
+    Q_D(QActivity);
     if (d->structuredNodes->contains(structuredNode)) {
         d->structuredNodes->remove(structuredNode);
 
@@ -316,7 +312,7 @@ const QSet<QActivityGroup *> *QActivity::groups() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QActivity);
+    Q_D(const QActivity);
     return d->groups;
 }
 
@@ -324,7 +320,7 @@ void QActivity::addGroup(QActivityGroup *group)
 {
     // This is a read-write association end
 
-    QTUML_D(QActivity);
+    Q_D(QActivity);
     if (!d->groups->contains(group)) {
         d->groups->insert(group);
 
@@ -340,7 +336,7 @@ void QActivity::removeGroup(QActivityGroup *group)
 {
     // This is a read-write association end
 
-    QTUML_D(QActivity);
+    Q_D(QActivity);
     if (d->groups->contains(group)) {
         d->groups->remove(group);
 
@@ -359,7 +355,7 @@ const QSet<QActivityEdge *> *QActivity::edges() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QActivity);
+    Q_D(const QActivity);
     return d->edges;
 }
 
@@ -367,7 +363,7 @@ void QActivity::addEdge(QActivityEdge *edge)
 {
     // This is a read-write association end
 
-    QTUML_D(QActivity);
+    Q_D(QActivity);
     if (!d->edges->contains(edge)) {
         d->edges->insert(edge);
 
@@ -383,7 +379,7 @@ void QActivity::removeEdge(QActivityEdge *edge)
 {
     // This is a read-write association end
 
-    QTUML_D(QActivity);
+    Q_D(QActivity);
     if (d->edges->contains(edge)) {
         d->edges->remove(edge);
 

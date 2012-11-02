@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QClearStructuralFeatureActionPrivate::QClearStructuralFeatureActionPrivate(QClearStructuralFeatureAction *q_umlptr) :
+QClearStructuralFeatureActionPrivate::QClearStructuralFeatureActionPrivate() :
     result(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QClearStructuralFeatureActionPrivate::~QClearStructuralFeatureActionPrivate()
@@ -64,17 +63,14 @@ QClearStructuralFeatureActionPrivate::~QClearStructuralFeatureActionPrivate()
     \brief A clear structural feature action is a structural feature action that removes all values of a structural feature.
  */
 
-QClearStructuralFeatureAction::QClearStructuralFeatureAction(QObject *parent)
-    : QObject(parent)
+QClearStructuralFeatureAction::QClearStructuralFeatureAction(QObject *parent) :
+    QStructuralFeatureAction(*new QClearStructuralFeatureActionPrivate, parent)
 {
-    d_umlptr = new QClearStructuralFeatureActionPrivate(this);
 }
 
-QClearStructuralFeatureAction::QClearStructuralFeatureAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QClearStructuralFeatureAction::QClearStructuralFeatureAction(QClearStructuralFeatureActionPrivate &dd, QObject *parent) :
+    QStructuralFeatureAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QClearStructuralFeatureActionPrivate;
 }
 
 QClearStructuralFeatureAction::~QClearStructuralFeatureAction()
@@ -88,7 +84,7 @@ QOutputPin *QClearStructuralFeatureAction::result() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QClearStructuralFeatureAction);
+    Q_D(const QClearStructuralFeatureAction);
     return d->result;
 }
 
@@ -96,7 +92,7 @@ void QClearStructuralFeatureAction::setResult(QOutputPin *result)
 {
     // This is a read-write association end
 
-    QTUML_D(QClearStructuralFeatureAction);
+    Q_D(QClearStructuralFeatureAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->result));

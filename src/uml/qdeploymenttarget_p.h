@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qnamedelement_p.h"
+#include "private/qnamedelement_p.h"
+#include "qdeploymenttarget.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,18 +56,19 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QPackageableElement;
 class QDeployment;
 
-class QDeploymentTargetPrivate : public virtual QNamedElementPrivate
+class Q_UML_EXPORT QDeploymentTargetPrivate : public QNamedElementPrivate
 {
+    Q_DECLARE_PUBLIC(QDeploymentTarget)
+
 public:
+    explicit QDeploymentTargetPrivate();
     virtual ~QDeploymentTargetPrivate();
 
     QSet<QDeployment *> *deployments;
-
-protected:
-    explicit QDeploymentTargetPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

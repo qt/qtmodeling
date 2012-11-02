@@ -52,13 +52,28 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QValueSpecification;
 
-class Q_UML_EXPORT QMultiplicityElement : public virtual QElement
+class QMultiplicityElementPrivate;
+
+class Q_UML_EXPORT QMultiplicityElement : public QElement
 {
+    Q_OBJECT
+
+    // From QMultiplicityElement
+    Q_PROPERTY(qint32 upper READ upper WRITE setUpper)
+    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
+    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
+    Q_PROPERTY(qint32 lower READ lower WRITE setLower)
+    Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
+    Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
+
     Q_DISABLE_COPY(QMultiplicityElement)
+    Q_DECLARE_PRIVATE(QMultiplicityElement)
 
 public:
+    explicit QMultiplicityElement(QObject *parent = 0);
     virtual ~QMultiplicityElement();
 
     // Attributes
@@ -84,13 +99,17 @@ public:
     bool is(qint32 lowerbound, qint32 upperbound) const;
     bool isMultivalued() const;
     qint32 lowerBound() const;
-    //qint32 upperBound() const;
+    qint32 upperBound() const;
 
 protected:
-    explicit QMultiplicityElement();
+    explicit QMultiplicityElement(QMultiplicityElementPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QMultiplicityElement) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QMultiplicityElement) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QMultiplicityElement) *> *)
 
 QT_END_HEADER
 

@@ -66,7 +66,7 @@ void QConnectableElementPrivate::addEnd(QConnectorEnd *end)
         // <derived-code>
 
         // Adjust opposite property
-        QTUML_Q(QConnectableElement);
+        Q_Q(QConnectableElement);
         end->setRole(q);
     }
 }
@@ -81,7 +81,7 @@ void QConnectableElementPrivate::removeEnd(QConnectorEnd *end)
         // <derived-code>
 
         // Adjust opposite property
-        QTUML_Q(QConnectableElement);
+        Q_Q(QConnectableElement);
         end->setRole(0);
     }
 }
@@ -94,7 +94,17 @@ void QConnectableElementPrivate::removeEnd(QConnectorEnd *end)
     \brief ConnectableElement is an abstract metaclass representing a set of instances that play roles of a classifier. Connectable elements may be joined by attached connectors and specify configurations of linked instances to be created within an instance of the containing classifier.A connectable element may be exposed as a connectable element template parameter.
  */
 
-QConnectableElement::QConnectableElement()
+QConnectableElement::QConnectableElement(QObject *parent) :
+    QObject(*new QConnectableElementPrivate, parent),
+    _wrappedTypedElement(new QTypedElement(this)),
+    _wrappedParameterableElement(new QParameterableElement(this))
+{
+}
+
+QConnectableElement::QConnectableElement(QConnectableElementPrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedTypedElement(new QTypedElement(this)),
+    _wrappedParameterableElement(new QParameterableElement(this))
 {
 }
 
@@ -111,7 +121,7 @@ const QList<QConnectorEnd *> *QConnectableElement::ends() const
 
     qWarning("QConnectableElement::ends: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(const QConnectableElement);
+    //Q_D(const QConnectableElement);
     //return <derived-return>;
 }
 
@@ -122,7 +132,7 @@ QConnectableElementTemplateParameter *QConnectableElement::templateParameter() c
 {
     // This is a read-write association end
 
-    QTUML_D(const QConnectableElement);
+    Q_D(const QConnectableElement);
     return d->templateParameter;
 }
 
@@ -130,7 +140,7 @@ void QConnectableElement::setTemplateParameter(QConnectableElementTemplateParame
 {
     // This is a read-write association end
 
-    QTUML_D(QConnectableElement);
+    Q_D(QConnectableElement);
     if (d->templateParameter != templateParameter) {
         // Adjust opposite property
 

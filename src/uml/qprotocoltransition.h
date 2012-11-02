@@ -55,8 +55,11 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QConstraint;
 class QOperation;
+
+class QProtocolTransitionPrivate;
 
 class Q_UML_EXPORT QProtocolTransition : public QTransition
 {
@@ -68,6 +71,7 @@ class Q_UML_EXPORT QProtocolTransition : public QTransition
     Q_PROPERTY(QConstraint * preCondition READ preCondition WRITE setPreCondition)
 
     Q_DISABLE_COPY(QProtocolTransition)
+    Q_DECLARE_PRIVATE(QProtocolTransition)
 
 public:
     explicit QProtocolTransition(QObject *parent = 0);
@@ -81,12 +85,13 @@ public:
     void setPreCondition(QConstraint *preCondition);
 
 protected:
-    explicit QProtocolTransition(bool createPimpl, QObject *parent = 0);
+    explicit QProtocolTransition(QProtocolTransitionPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolTransition) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QProtocolTransition) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolTransition) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolTransition) *> *)
 
 QT_END_HEADER

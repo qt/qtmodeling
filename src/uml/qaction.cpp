@@ -122,7 +122,13 @@ void QActionPrivate::removeOutput(QOutputPin *output)
     \brief An action has pre- and post-conditions.An action represents a single step within an activity, that is, one that is not further decomposed within the activity.An action is a named element that is the fundamental unit of executable functionality. The execution of an action represents some transformation or processing in the modeled system, be it a computer system or otherwise.
  */
 
-QAction::QAction()
+QAction::QAction(QObject *parent) :
+    QExecutableNode(*new QActionPrivate, parent)
+{
+}
+
+QAction::QAction(QActionPrivate &dd, QObject *parent) :
+    QExecutableNode(dd, parent)
 {
 }
 
@@ -137,7 +143,7 @@ bool QAction::isLocallyReentrant() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QAction);
+    Q_D(const QAction);
     return d->isLocallyReentrant;
 }
 
@@ -145,7 +151,7 @@ void QAction::setLocallyReentrant(bool isLocallyReentrant)
 {
     // This is a read-write attribute
 
-    QTUML_D(QAction);
+    Q_D(QAction);
     if (d->isLocallyReentrant != isLocallyReentrant) {
         d->isLocallyReentrant = isLocallyReentrant;
     }
@@ -160,7 +166,7 @@ QClassifier *QAction::context() const
 
     qWarning("QAction::context: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(const QAction);
+    //Q_D(const QAction);
     //return <derived-return>;
 }
 
@@ -171,7 +177,7 @@ const QSet<QConstraint *> *QAction::localPostconditions() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QAction);
+    Q_D(const QAction);
     return d->localPostconditions;
 }
 
@@ -179,7 +185,7 @@ void QAction::addLocalPostcondition(QConstraint *localPostcondition)
 {
     // This is a read-write association end
 
-    QTUML_D(QAction);
+    Q_D(QAction);
     if (!d->localPostconditions->contains(localPostcondition)) {
         d->localPostconditions->insert(localPostcondition);
 
@@ -192,7 +198,7 @@ void QAction::removeLocalPostcondition(QConstraint *localPostcondition)
 {
     // This is a read-write association end
 
-    QTUML_D(QAction);
+    Q_D(QAction);
     if (d->localPostconditions->contains(localPostcondition)) {
         d->localPostconditions->remove(localPostcondition);
 
@@ -208,7 +214,7 @@ const QSet<QConstraint *> *QAction::localPreconditions() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QAction);
+    Q_D(const QAction);
     return d->localPreconditions;
 }
 
@@ -216,7 +222,7 @@ void QAction::addLocalPrecondition(QConstraint *localPrecondition)
 {
     // This is a read-write association end
 
-    QTUML_D(QAction);
+    Q_D(QAction);
     if (!d->localPreconditions->contains(localPrecondition)) {
         d->localPreconditions->insert(localPrecondition);
 
@@ -229,7 +235,7 @@ void QAction::removeLocalPrecondition(QConstraint *localPrecondition)
 {
     // This is a read-write association end
 
-    QTUML_D(QAction);
+    Q_D(QAction);
     if (d->localPreconditions->contains(localPrecondition)) {
         d->localPreconditions->remove(localPrecondition);
 
@@ -245,7 +251,7 @@ const QList<QInputPin *> *QAction::inputs() const
 {
     // This is a read-only derived-union association end
 
-    QTUML_D(const QAction);
+    Q_D(const QAction);
     return d->inputs;
 }
 
@@ -256,7 +262,7 @@ const QList<QOutputPin *> *QAction::outputs() const
 {
     // This is a read-only derived-union association end
 
-    QTUML_D(const QAction);
+    Q_D(const QAction);
     return d->outputs;
 }
 

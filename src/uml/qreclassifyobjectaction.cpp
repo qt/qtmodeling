@@ -47,13 +47,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QReclassifyObjectActionPrivate::QReclassifyObjectActionPrivate(QReclassifyObjectAction *q_umlptr) :
+QReclassifyObjectActionPrivate::QReclassifyObjectActionPrivate() :
     isReplaceAll(false),
     oldClassifiers(new QSet<QClassifier *>),
     object(0),
     newClassifiers(new QSet<QClassifier *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QReclassifyObjectActionPrivate::~QReclassifyObjectActionPrivate()
@@ -70,17 +69,14 @@ QReclassifyObjectActionPrivate::~QReclassifyObjectActionPrivate()
     \brief A reclassify object action is an action that changes which classifiers classify an object.
  */
 
-QReclassifyObjectAction::QReclassifyObjectAction(QObject *parent)
-    : QObject(parent)
+QReclassifyObjectAction::QReclassifyObjectAction(QObject *parent) :
+    QAction(*new QReclassifyObjectActionPrivate, parent)
 {
-    d_umlptr = new QReclassifyObjectActionPrivate(this);
 }
 
-QReclassifyObjectAction::QReclassifyObjectAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QReclassifyObjectAction::QReclassifyObjectAction(QReclassifyObjectActionPrivate &dd, QObject *parent) :
+    QAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QReclassifyObjectActionPrivate;
 }
 
 QReclassifyObjectAction::~QReclassifyObjectAction()
@@ -94,7 +90,7 @@ bool QReclassifyObjectAction::isReplaceAll() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QReclassifyObjectAction);
+    Q_D(const QReclassifyObjectAction);
     return d->isReplaceAll;
 }
 
@@ -102,7 +98,7 @@ void QReclassifyObjectAction::setReplaceAll(bool isReplaceAll)
 {
     // This is a read-write attribute
 
-    QTUML_D(QReclassifyObjectAction);
+    Q_D(QReclassifyObjectAction);
     if (d->isReplaceAll != isReplaceAll) {
         d->isReplaceAll = isReplaceAll;
     }
@@ -115,7 +111,7 @@ const QSet<QClassifier *> *QReclassifyObjectAction::oldClassifiers() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QReclassifyObjectAction);
+    Q_D(const QReclassifyObjectAction);
     return d->oldClassifiers;
 }
 
@@ -123,7 +119,7 @@ void QReclassifyObjectAction::addOldClassifier(QClassifier *oldClassifier)
 {
     // This is a read-write association end
 
-    QTUML_D(QReclassifyObjectAction);
+    Q_D(QReclassifyObjectAction);
     if (!d->oldClassifiers->contains(oldClassifier)) {
         d->oldClassifiers->insert(oldClassifier);
     }
@@ -133,7 +129,7 @@ void QReclassifyObjectAction::removeOldClassifier(QClassifier *oldClassifier)
 {
     // This is a read-write association end
 
-    QTUML_D(QReclassifyObjectAction);
+    Q_D(QReclassifyObjectAction);
     if (d->oldClassifiers->contains(oldClassifier)) {
         d->oldClassifiers->remove(oldClassifier);
     }
@@ -146,7 +142,7 @@ QInputPin *QReclassifyObjectAction::object() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QReclassifyObjectAction);
+    Q_D(const QReclassifyObjectAction);
     return d->object;
 }
 
@@ -154,7 +150,7 @@ void QReclassifyObjectAction::setObject(QInputPin *object)
 {
     // This is a read-write association end
 
-    QTUML_D(QReclassifyObjectAction);
+    Q_D(QReclassifyObjectAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->object));
@@ -175,7 +171,7 @@ const QSet<QClassifier *> *QReclassifyObjectAction::newClassifiers() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QReclassifyObjectAction);
+    Q_D(const QReclassifyObjectAction);
     return d->newClassifiers;
 }
 
@@ -183,7 +179,7 @@ void QReclassifyObjectAction::addNewClassifier(QClassifier *newClassifier)
 {
     // This is a read-write association end
 
-    QTUML_D(QReclassifyObjectAction);
+    Q_D(QReclassifyObjectAction);
     if (!d->newClassifiers->contains(newClassifier)) {
         d->newClassifiers->insert(newClassifier);
     }
@@ -193,7 +189,7 @@ void QReclassifyObjectAction::removeNewClassifier(QClassifier *newClassifier)
 {
     // This is a read-write association end
 
-    QTUML_D(QReclassifyObjectAction);
+    Q_D(QReclassifyObjectAction);
     if (d->newClassifiers->contains(newClassifier)) {
         d->newClassifiers->remove(newClassifier);
     }

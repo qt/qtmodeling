@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QNamedElement>
 
 // Qt includes
@@ -56,31 +55,22 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QConstraint;
 class QParameter;
 
-class Q_UML_EXPORT QParameterSet : public QObject, public QNamedElement
+class QParameterSetPrivate;
+
+class Q_UML_EXPORT QParameterSet : public QNamedElement
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
     // From QParameterSet
     Q_PROPERTY(const QSet<QParameter *> * parameters READ parameters)
     Q_PROPERTY(const QSet<QConstraint *> * conditions READ conditions)
 
     Q_DISABLE_COPY(QParameterSet)
+    Q_DECLARE_PRIVATE(QParameterSet)
 
 public:
     explicit QParameterSet(QObject *parent = 0);
@@ -95,12 +85,13 @@ public:
     void removeCondition(QConstraint *condition);
 
 protected:
-    explicit QParameterSet(bool createPimpl, QObject *parent = 0);
+    explicit QParameterSet(QParameterSetPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *)
 
 QT_END_HEADER

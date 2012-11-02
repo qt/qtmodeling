@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QConnectableElementTemplateParameterPrivate::QConnectableElementTemplateParameterPrivate(QConnectableElementTemplateParameter *q_umlptr) :
+QConnectableElementTemplateParameterPrivate::QConnectableElementTemplateParameterPrivate() :
     parameteredElement(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QConnectableElementTemplateParameterPrivate::~QConnectableElementTemplateParameterPrivate()
@@ -64,17 +63,14 @@ QConnectableElementTemplateParameterPrivate::~QConnectableElementTemplateParamet
     \brief A connectable element template parameter exposes a connectable element as a formal parameter for a template.
  */
 
-QConnectableElementTemplateParameter::QConnectableElementTemplateParameter(QObject *parent)
-    : QTemplateParameter(false, parent)
+QConnectableElementTemplateParameter::QConnectableElementTemplateParameter(QObject *parent) :
+    QTemplateParameter(*new QConnectableElementTemplateParameterPrivate, parent)
 {
-    d_umlptr = new QConnectableElementTemplateParameterPrivate(this);
 }
 
-QConnectableElementTemplateParameter::QConnectableElementTemplateParameter(bool createPimpl, QObject *parent)
-    : QTemplateParameter(createPimpl, parent)
+QConnectableElementTemplateParameter::QConnectableElementTemplateParameter(QConnectableElementTemplateParameterPrivate &dd, QObject *parent) :
+    QTemplateParameter(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QConnectableElementTemplateParameterPrivate;
 }
 
 QConnectableElementTemplateParameter::~QConnectableElementTemplateParameter()
@@ -88,7 +84,7 @@ QConnectableElement *QConnectableElementTemplateParameter::parameteredElement() 
 {
     // This is a read-write association end
 
-    QTUML_D(const QConnectableElementTemplateParameter);
+    Q_D(const QConnectableElementTemplateParameter);
     return d->parameteredElement;
 }
 
@@ -96,7 +92,7 @@ void QConnectableElementTemplateParameter::setParameteredElement(QConnectableEle
 {
     // This is a read-write association end
 
-    QTUML_D(QConnectableElementTemplateParameter);
+    Q_D(QConnectableElementTemplateParameter);
     if (d->parameteredElement != parameteredElement) {
         // Adjust opposite property
 

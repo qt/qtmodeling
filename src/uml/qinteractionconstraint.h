@@ -52,7 +52,10 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QValueSpecification;
+
+class QInteractionConstraintPrivate;
 
 class Q_UML_EXPORT QInteractionConstraint : public QConstraint
 {
@@ -63,6 +66,7 @@ class Q_UML_EXPORT QInteractionConstraint : public QConstraint
     Q_PROPERTY(QValueSpecification * minint READ minint WRITE setMinint)
 
     Q_DISABLE_COPY(QInteractionConstraint)
+    Q_DECLARE_PRIVATE(QInteractionConstraint)
 
 public:
     explicit QInteractionConstraint(QObject *parent = 0);
@@ -75,12 +79,13 @@ public:
     void setMinint(QValueSpecification *minint);
 
 protected:
-    explicit QInteractionConstraint(bool createPimpl, QObject *parent = 0);
+    explicit QInteractionConstraint(QInteractionConstraintPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *> *)
 
 QT_END_HEADER

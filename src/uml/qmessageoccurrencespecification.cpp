@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QMessageOccurrenceSpecificationPrivate::QMessageOccurrenceSpecificationPrivate(QMessageOccurrenceSpecification *q_umlptr)
+QMessageOccurrenceSpecificationPrivate::QMessageOccurrenceSpecificationPrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QMessageOccurrenceSpecificationPrivate::~QMessageOccurrenceSpecificationPrivate()
@@ -62,17 +61,18 @@ QMessageOccurrenceSpecificationPrivate::~QMessageOccurrenceSpecificationPrivate(
     \brief A message occurrence specification pecifies the occurrence of message events, such as sending and receiving of signals or invoking or receiving of operation calls. A message occurrence specification is a kind of message end. Messages are generated either by synchronous operation calls or asynchronous signal sends. They are received by the execution of corresponding accept event actions.
  */
 
-QMessageOccurrenceSpecification::QMessageOccurrenceSpecification(QObject *parent)
-    : QOccurrenceSpecification(false, parent)
+QMessageOccurrenceSpecification::QMessageOccurrenceSpecification(QObject *parent) :
+    QObject(*new QMessageOccurrenceSpecificationPrivate, parent),
+    _wrappedOccurrenceSpecification(new QOccurrenceSpecification(this)),
+    _wrappedMessageEnd(new QMessageEnd(this))
 {
-    d_umlptr = new QMessageOccurrenceSpecificationPrivate(this);
 }
 
-QMessageOccurrenceSpecification::QMessageOccurrenceSpecification(bool createPimpl, QObject *parent)
-    : QOccurrenceSpecification(createPimpl, parent)
+QMessageOccurrenceSpecification::QMessageOccurrenceSpecification(QMessageOccurrenceSpecificationPrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedOccurrenceSpecification(new QOccurrenceSpecification(this)),
+    _wrappedMessageEnd(new QMessageEnd(this))
 {
-    if (createPimpl)
-        d_umlptr = new QMessageOccurrenceSpecificationPrivate;
 }
 
 QMessageOccurrenceSpecification::~QMessageOccurrenceSpecification()

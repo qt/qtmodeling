@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QActivityGroup>
 
 // Qt includes
@@ -56,38 +55,22 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QActivityEdge;
 class QActivityNode;
 
-class Q_UML_EXPORT QInterruptibleActivityRegion : public QObject, public QActivityGroup
+class QInterruptibleActivityRegionPrivate;
+
+class Q_UML_EXPORT QInterruptibleActivityRegion : public QActivityGroup
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From QActivityGroup
-    Q_PROPERTY(QActivity * inActivity READ inActivity WRITE setInActivity)
-    Q_PROPERTY(const QSet<QActivityNode *> * containedNodes READ containedNodes)
-    Q_PROPERTY(const QSet<QActivityGroup *> * subgroups READ subgroups)
-    Q_PROPERTY(const QSet<QActivityEdge *> * containedEdges READ containedEdges)
-    Q_PROPERTY(QActivityGroup * superGroup READ superGroup)
 
     // From QInterruptibleActivityRegion
     Q_PROPERTY(const QSet<QActivityEdge *> * interruptingEdges READ interruptingEdges)
     Q_PROPERTY(const QSet<QActivityNode *> * nodes READ nodes)
 
     Q_DISABLE_COPY(QInterruptibleActivityRegion)
+    Q_DECLARE_PRIVATE(QInterruptibleActivityRegion)
 
 public:
     explicit QInterruptibleActivityRegion(QObject *parent = 0);
@@ -102,12 +85,13 @@ public:
     void removeNode(QActivityNode *node);
 
 protected:
-    explicit QInterruptibleActivityRegion(bool createPimpl, QObject *parent = 0);
+    explicit QInterruptibleActivityRegion(QInterruptibleActivityRegionPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QInterruptibleActivityRegion) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QInterruptibleActivityRegion) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QInterruptibleActivityRegion) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QInterruptibleActivityRegion) *> *)
 
 QT_END_HEADER

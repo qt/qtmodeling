@@ -48,13 +48,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QExtendPrivate::QExtendPrivate(QExtend *q_umlptr) :
+QExtendPrivate::QExtendPrivate() :
     extendedCase(0),
     extension(0),
     extensionLocations(new QList<QExtensionPoint *>),
     condition(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QExtendPrivate::~QExtendPrivate()
@@ -70,17 +69,18 @@ QExtendPrivate::~QExtendPrivate()
     \brief A relationship from an extending use case to an extended use case that specifies how and when the behavior defined in the extending use case can be inserted into the behavior defined in the extended use case.
  */
 
-QExtend::QExtend(QObject *parent)
-    : QObject(parent)
+QExtend::QExtend(QObject *parent) :
+    QObject(*new QExtendPrivate, parent),
+    _wrappedDirectedRelationship(new QDirectedRelationship(this)),
+    _wrappedNamedElement(new QNamedElement(this))
 {
-    d_umlptr = new QExtendPrivate(this);
 }
 
-QExtend::QExtend(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QExtend::QExtend(QExtendPrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedDirectedRelationship(new QDirectedRelationship(this)),
+    _wrappedNamedElement(new QNamedElement(this))
 {
-    if (createPimpl)
-        d_umlptr = new QExtendPrivate;
 }
 
 QExtend::~QExtend()
@@ -94,7 +94,7 @@ QUseCase *QExtend::extendedCase() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QExtend);
+    Q_D(const QExtend);
     return d->extendedCase;
 }
 
@@ -102,7 +102,7 @@ void QExtend::setExtendedCase(QUseCase *extendedCase)
 {
     // This is a read-write association end
 
-    QTUML_D(QExtend);
+    Q_D(QExtend);
     if (d->extendedCase != extendedCase) {
         // Adjust subsetted property(ies)
         d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(d->extendedCase));
@@ -123,7 +123,7 @@ QUseCase *QExtend::extension() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QExtend);
+    Q_D(const QExtend);
     return d->extension;
 }
 
@@ -131,7 +131,7 @@ void QExtend::setExtension(QUseCase *extension)
 {
     // This is a read-write association end
 
-    QTUML_D(QExtend);
+    Q_D(QExtend);
     if (d->extension != extension) {
         // Adjust opposite property
         if (d->extension)
@@ -161,7 +161,7 @@ const QList<QExtensionPoint *> *QExtend::extensionLocations() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QExtend);
+    Q_D(const QExtend);
     return d->extensionLocations;
 }
 
@@ -169,7 +169,7 @@ void QExtend::addExtensionLocation(QExtensionPoint *extensionLocation)
 {
     // This is a read-write association end
 
-    QTUML_D(QExtend);
+    Q_D(QExtend);
     if (!d->extensionLocations->contains(extensionLocation)) {
         d->extensionLocations->append(extensionLocation);
     }
@@ -179,7 +179,7 @@ void QExtend::removeExtensionLocation(QExtensionPoint *extensionLocation)
 {
     // This is a read-write association end
 
-    QTUML_D(QExtend);
+    Q_D(QExtend);
     if (d->extensionLocations->contains(extensionLocation)) {
         d->extensionLocations->removeAll(extensionLocation);
     }
@@ -192,7 +192,7 @@ QConstraint *QExtend::condition() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QExtend);
+    Q_D(const QExtend);
     return d->condition;
 }
 
@@ -200,7 +200,7 @@ void QExtend::setCondition(QConstraint *condition)
 {
     // This is a read-write association end
 
-    QTUML_D(QExtend);
+    Q_D(QExtend);
     if (d->condition != condition) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->condition));

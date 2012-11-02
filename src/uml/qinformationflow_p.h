@@ -44,8 +44,11 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qdirectedrelationship_p.h"
-#include "qpackageableelement_p.h"
+#include "private/qobject_p.h"
+
+#include "private/qdirectedrelationship_p.h"
+#include "private/qpackageableelement_p.h"
+#include "qinformationflow.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -56,6 +59,7 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QConnector;
 class QMessage;
 class QActivityEdge;
@@ -64,10 +68,12 @@ class QClassifier;
 class QRelationship;
 class QInformationFlow;
 
-class QInformationFlowPrivate : public QDirectedRelationshipPrivate, public QPackageableElementPrivate
+class Q_UML_EXPORT QInformationFlowPrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QInformationFlow)
+
 public:
-    explicit QInformationFlowPrivate(QInformationFlow *q_umlptr = 0);
+    explicit QInformationFlowPrivate();
     virtual ~QInformationFlowPrivate();
 
     QSet<QNamedElement *> *informationTargets;
@@ -77,6 +83,10 @@ public:
     QSet<QMessage *> *realizingMessages;
     QSet<QActivityEdge *> *realizingActivityEdges;
     QSet<QRelationship *> *realizations;
+
+private:
+    QDirectedRelationshipPrivate *_wrappedDirectedRelationshipPrivate;
+    QPackageableElementPrivate *_wrappedPackageableElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

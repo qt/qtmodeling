@@ -47,11 +47,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QProtocolTransitionPrivate::QProtocolTransitionPrivate(QProtocolTransition *q_umlptr) :
+QProtocolTransitionPrivate::QProtocolTransitionPrivate() :
     postCondition(0),
     preCondition(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QProtocolTransitionPrivate::~QProtocolTransitionPrivate()
@@ -66,17 +65,14 @@ QProtocolTransitionPrivate::~QProtocolTransitionPrivate()
     \brief A protocol transition specifies a legal transition for an operation. Transitions of protocol state machines have the following information: a pre condition (guard), on trigger, and a post condition. Every protocol transition is associated to zero or one operation (referred BehavioralFeature) that belongs to the context classifier of the protocol state machine.
  */
 
-QProtocolTransition::QProtocolTransition(QObject *parent)
-    : QTransition(false, parent)
+QProtocolTransition::QProtocolTransition(QObject *parent) :
+    QTransition(*new QProtocolTransitionPrivate, parent)
 {
-    d_umlptr = new QProtocolTransitionPrivate(this);
 }
 
-QProtocolTransition::QProtocolTransition(bool createPimpl, QObject *parent)
-    : QTransition(createPimpl, parent)
+QProtocolTransition::QProtocolTransition(QProtocolTransitionPrivate &dd, QObject *parent) :
+    QTransition(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QProtocolTransitionPrivate;
 }
 
 QProtocolTransition::~QProtocolTransition()
@@ -90,7 +86,7 @@ QConstraint *QProtocolTransition::postCondition() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QProtocolTransition);
+    Q_D(const QProtocolTransition);
     return d->postCondition;
 }
 
@@ -98,7 +94,7 @@ void QProtocolTransition::setPostCondition(QConstraint *postCondition)
 {
     // This is a read-write association end
 
-    QTUML_D(QProtocolTransition);
+    Q_D(QProtocolTransition);
     if (d->postCondition != postCondition) {
         // Adjust subsetted property(ies)
         QNamespace::removeOwnedRule(dynamic_cast<QConstraint *>(d->postCondition));
@@ -121,7 +117,7 @@ const QSet<QOperation *> *QProtocolTransition::referred() const
 
     qWarning("QProtocolTransition::referred: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(const QProtocolTransition);
+    //Q_D(const QProtocolTransition);
     //return <derived-return>;
 }
 
@@ -132,7 +128,7 @@ QConstraint *QProtocolTransition::preCondition() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QProtocolTransition);
+    Q_D(const QProtocolTransition);
     return d->preCondition;
 }
 
@@ -140,7 +136,7 @@ void QProtocolTransition::setPreCondition(QConstraint *preCondition)
 {
     // This is a read-write association end
 
-    QTUML_D(QProtocolTransition);
+    Q_D(QProtocolTransition);
     if (d->preCondition != preCondition) {
         d->preCondition = preCondition;
 

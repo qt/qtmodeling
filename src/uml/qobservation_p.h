@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qpackageableelement_p.h"
+#include "private/qpackageableelement_p.h"
+#include "qobservation.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,14 +54,14 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QObservationPrivate : public QPackageableElementPrivate
+class Q_UML_EXPORT QObservationPrivate : public QPackageableElementPrivate
 {
+    Q_DECLARE_PUBLIC(QObservation)
+
 public:
+    explicit QObservationPrivate();
     virtual ~QObservationPrivate();
 
-
-protected:
-    explicit QObservationPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qactivitygroup_p.h"
+#include "private/qactivitygroup_p.h"
+#include "qactivitypartition.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,15 +56,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QActivityPartition;
 class QElement;
 class QActivityEdge;
 class QActivityNode;
 
-class QActivityPartitionPrivate : public QActivityGroupPrivate
+class Q_UML_EXPORT QActivityPartitionPrivate : public QActivityGroupPrivate
 {
+    Q_DECLARE_PUBLIC(QActivityPartition)
+
 public:
-    explicit QActivityPartitionPrivate(QActivityPartition *q_umlptr = 0);
+    explicit QActivityPartitionPrivate();
     virtual ~QActivityPartitionPrivate();
 
     bool isDimension;

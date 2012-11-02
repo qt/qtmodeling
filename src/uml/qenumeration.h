@@ -55,7 +55,10 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QEnumerationLiteral;
+
+class QEnumerationPrivate;
 
 class Q_UML_EXPORT QEnumeration : public QDataType
 {
@@ -65,6 +68,7 @@ class Q_UML_EXPORT QEnumeration : public QDataType
     Q_PROPERTY(const QList<QEnumerationLiteral *> * ownedLiterals READ ownedLiterals)
 
     Q_DISABLE_COPY(QEnumeration)
+    Q_DECLARE_PRIVATE(QEnumeration)
 
 public:
     explicit QEnumeration(QObject *parent = 0);
@@ -76,12 +80,13 @@ public:
     void removeOwnedLiteral(QEnumerationLiteral *ownedLiteral);
 
 protected:
-    explicit QEnumeration(bool createPimpl, QObject *parent = 0);
+    explicit QEnumeration(QEnumerationPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QEnumeration) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QEnumeration) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QEnumeration) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QEnumeration) *> *)
 
 QT_END_HEADER

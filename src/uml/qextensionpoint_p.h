@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qredefinableelement_p.h"
+#include "private/qredefinableelement_p.h"
+#include "qextensionpoint.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QUseCase;
 class QExtensionPoint;
 
-class QExtensionPointPrivate : public QRedefinableElementPrivate
+class Q_UML_EXPORT QExtensionPointPrivate : public QRedefinableElementPrivate
 {
+    Q_DECLARE_PUBLIC(QExtensionPoint)
+
 public:
-    explicit QExtensionPointPrivate(QExtensionPoint *q_umlptr = 0);
+    explicit QExtensionPointPrivate();
     virtual ~QExtensionPointPrivate();
 
     QUseCase *useCase;

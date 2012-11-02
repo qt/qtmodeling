@@ -55,13 +55,24 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QElement;
+
+class QDirectedRelationshipPrivate;
 
 class Q_UML_EXPORT QDirectedRelationship : public QRelationship
 {
+    Q_OBJECT
+
+    // From QDirectedRelationship
+    Q_PROPERTY(const QSet<QElement *> * sources READ sources)
+    Q_PROPERTY(const QSet<QElement *> * targets READ targets)
+
     Q_DISABLE_COPY(QDirectedRelationship)
+    Q_DECLARE_PRIVATE(QDirectedRelationship)
 
 public:
+    explicit QDirectedRelationship(QObject *parent = 0);
     virtual ~QDirectedRelationship();
 
     // Association-ends
@@ -69,10 +80,14 @@ public:
     const QSet<QElement *> *targets() const;
 
 protected:
-    explicit QDirectedRelationship();
+    explicit QDirectedRelationship(QDirectedRelationshipPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QDirectedRelationship) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QDirectedRelationship) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QDirectedRelationship) *> *)
 
 QT_END_HEADER
 

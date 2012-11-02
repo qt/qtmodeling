@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qrealization_p.h"
+#include "private/qrealization_p.h"
+#include "qinterfacerealization.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,14 +54,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInterface;
 class QBehavioredClassifier;
 class QInterfaceRealization;
 
-class QInterfaceRealizationPrivate : public QRealizationPrivate
+class Q_UML_EXPORT QInterfaceRealizationPrivate : public QRealizationPrivate
 {
+    Q_DECLARE_PUBLIC(QInterfaceRealization)
+
 public:
-    explicit QInterfaceRealizationPrivate(QInterfaceRealization *q_umlptr = 0);
+    explicit QInterfaceRealizationPrivate();
     virtual ~QInterfaceRealizationPrivate();
 
     QBehavioredClassifier *implementingClassifier;

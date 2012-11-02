@@ -52,23 +52,25 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QUsagePrivate;
+
 class Q_UML_EXPORT QUsage : public QDependency
 {
-    Q_OBJECT
-
     Q_DISABLE_COPY(QUsage)
+    Q_DECLARE_PRIVATE(QUsage)
 
 public:
     explicit QUsage(QObject *parent = 0);
     virtual ~QUsage();
 
 protected:
-    explicit QUsage(bool createPimpl, QObject *parent = 0);
+    explicit QUsage(QUsagePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QUsage) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QUsage) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QUsage) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QUsage) *> *)
 
 QT_END_HEADER

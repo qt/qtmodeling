@@ -43,11 +43,13 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+#include "private/qelement_p.h"
+#include "qnamedelement.h"
+
+
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
-
-// Base class includes
-#include "qelement_p.h"
 
 // Qt includes
 #include <QtCore/QString>
@@ -60,15 +62,19 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QPackage;
 class QNamedElement;
 class QNamespace;
 class QDependency;
 class QStringExpression;
 
-class QNamedElementPrivate : public virtual QElementPrivate
+class Q_UML_EXPORT QNamedElementPrivate : public QElementPrivate
 {
+    Q_DECLARE_PUBLIC(QNamedElement)
+
 public:
+    explicit QNamedElementPrivate();
     virtual ~QNamedElementPrivate();
 
     QString name;
@@ -79,9 +85,6 @@ public:
 
     // Internal functions for read-only subsetted association ends
     void setNamespace_(QNamespace *namespace_);
-
-protected:
-    explicit QNamedElementPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qelement_p.h"
+#include "private/qelement_p.h"
+#include "qtemplateableelement.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,20 +56,21 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QTemplateSignature;
 class QTemplateBinding;
 class QParameterableElement;
 
-class QTemplateableElementPrivate : public virtual QElementPrivate
+class Q_UML_EXPORT QTemplateableElementPrivate : public QElementPrivate
 {
+    Q_DECLARE_PUBLIC(QTemplateableElement)
+
 public:
+    explicit QTemplateableElementPrivate();
     virtual ~QTemplateableElementPrivate();
 
     QTemplateSignature *ownedTemplateSignature;
     QSet<QTemplateBinding *> *templateBindings;
-
-protected:
-    explicit QTemplateableElementPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

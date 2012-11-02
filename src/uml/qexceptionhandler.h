@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QElement>
 
 // Qt includes
@@ -56,18 +55,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QObjectNode;
 class QClassifier;
 class QExecutableNode;
 
-class Q_UML_EXPORT QExceptionHandler : public QObject, public QElement
+class QExceptionHandlerPrivate;
+
+class Q_UML_EXPORT QExceptionHandler : public QElement
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
     // From QExceptionHandler
     Q_PROPERTY(QExecutableNode * handlerBody READ handlerBody WRITE setHandlerBody)
@@ -76,6 +73,7 @@ class Q_UML_EXPORT QExceptionHandler : public QObject, public QElement
     Q_PROPERTY(QObjectNode * exceptionInput READ exceptionInput WRITE setExceptionInput)
 
     Q_DISABLE_COPY(QExceptionHandler)
+    Q_DECLARE_PRIVATE(QExceptionHandler)
 
 public:
     explicit QExceptionHandler(QObject *parent = 0);
@@ -93,12 +91,13 @@ public:
     void setExceptionInput(QObjectNode *exceptionInput);
 
 protected:
-    explicit QExceptionHandler(bool createPimpl, QObject *parent = 0);
+    explicit QExceptionHandler(QExceptionHandlerPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *> *)
 
 QT_END_HEADER

@@ -67,7 +67,7 @@ void QVertexPrivate::addIncoming(QTransition *incoming)
         // <derived-code>
 
         // Adjust opposite property
-        QTUML_Q(QVertex);
+        Q_Q(QVertex);
         incoming->setTarget(q);
     }
 }
@@ -82,7 +82,7 @@ void QVertexPrivate::removeIncoming(QTransition *incoming)
         // <derived-code>
 
         // Adjust opposite property
-        QTUML_Q(QVertex);
+        Q_Q(QVertex);
         incoming->setTarget(0);
     }
 }
@@ -97,7 +97,7 @@ void QVertexPrivate::addOutgoing(QTransition *outgoing)
         // <derived-code>
 
         // Adjust opposite property
-        QTUML_Q(QVertex);
+        Q_Q(QVertex);
         outgoing->setSource(q);
     }
 }
@@ -112,7 +112,7 @@ void QVertexPrivate::removeOutgoing(QTransition *outgoing)
         // <derived-code>
 
         // Adjust opposite property
-        QTUML_Q(QVertex);
+        Q_Q(QVertex);
         outgoing->setSource(0);
     }
 }
@@ -125,7 +125,13 @@ void QVertexPrivate::removeOutgoing(QTransition *outgoing)
     \brief A vertex is an abstraction of a node in a state machine graph. In general, it can be the source or destination of any number of transitions.
  */
 
-QVertex::QVertex()
+QVertex::QVertex(QObject *parent) :
+    QNamedElement(*new QVertexPrivate, parent)
+{
+}
+
+QVertex::QVertex(QVertexPrivate &dd, QObject *parent) :
+    QNamedElement(dd, parent)
 {
 }
 
@@ -142,7 +148,7 @@ const QSet<QTransition *> *QVertex::incomings() const
 
     qWarning("QVertex::incomings: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(const QVertex);
+    //Q_D(const QVertex);
     //return <derived-return>;
 }
 
@@ -153,7 +159,7 @@ QRegion *QVertex::container() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QVertex);
+    Q_D(const QVertex);
     return d->container;
 }
 
@@ -161,7 +167,7 @@ void QVertex::setContainer(QRegion *container)
 {
     // This is a read-write association end
 
-    QTUML_D(QVertex);
+    Q_D(QVertex);
     if (d->container != container) {
         // Adjust opposite property
         if (d->container)
@@ -187,7 +193,7 @@ const QSet<QTransition *> *QVertex::outgoings() const
 
     qWarning("QVertex::outgoings: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(const QVertex);
+    //Q_D(const QVertex);
     //return <derived-return>;
 }
 

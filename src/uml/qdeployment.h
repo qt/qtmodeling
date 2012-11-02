@@ -55,9 +55,12 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QDeploymentSpecification;
 class QDeployedArtifact;
 class QDeploymentTarget;
+
+class QDeploymentPrivate;
 
 class Q_UML_EXPORT QDeployment : public QDependency
 {
@@ -69,6 +72,7 @@ class Q_UML_EXPORT QDeployment : public QDependency
     Q_PROPERTY(const QSet<QDeployedArtifact *> * deployedArtifacts READ deployedArtifacts)
 
     Q_DISABLE_COPY(QDeployment)
+    Q_DECLARE_PRIVATE(QDeployment)
 
 public:
     explicit QDeployment(QObject *parent = 0);
@@ -91,12 +95,13 @@ public:
     void removeSupplier(QDeployedArtifact *deployedArtifact);
 
 protected:
-    explicit QDeployment(bool createPimpl, QObject *parent = 0);
+    explicit QDeployment(QDeploymentPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QDeployment) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QDeployment) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QDeployment) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QDeployment) *> *)
 
 QT_END_HEADER

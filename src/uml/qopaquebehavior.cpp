@@ -45,11 +45,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QOpaqueBehaviorPrivate::QOpaqueBehaviorPrivate(QOpaqueBehavior *q_umlptr) :
+QOpaqueBehaviorPrivate::QOpaqueBehaviorPrivate() :
     languages(new QList<QString>),
     bodies(new QList<QString>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QOpaqueBehaviorPrivate::~QOpaqueBehaviorPrivate()
@@ -66,17 +65,14 @@ QOpaqueBehaviorPrivate::~QOpaqueBehaviorPrivate()
     \brief An behavior with implementation-specific semantics.
  */
 
-QOpaqueBehavior::QOpaqueBehavior(QObject *parent)
-    : QBehavior(false, parent)
+QOpaqueBehavior::QOpaqueBehavior(QObject *parent) :
+    QBehavior(*new QOpaqueBehaviorPrivate, parent)
 {
-    d_umlptr = new QOpaqueBehaviorPrivate(this);
 }
 
-QOpaqueBehavior::QOpaqueBehavior(bool createPimpl, QObject *parent)
-    : QBehavior(createPimpl, parent)
+QOpaqueBehavior::QOpaqueBehavior(QOpaqueBehaviorPrivate &dd, QObject *parent) :
+    QBehavior(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QOpaqueBehaviorPrivate;
 }
 
 QOpaqueBehavior::~QOpaqueBehavior()
@@ -90,7 +86,7 @@ const QList<QString> *QOpaqueBehavior::languages() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QOpaqueBehavior);
+    Q_D(const QOpaqueBehavior);
     return d->languages;
 }
 
@@ -98,7 +94,7 @@ void QOpaqueBehavior::addLanguage(QString language)
 {
     // This is a read-write attribute
 
-    QTUML_D(QOpaqueBehavior);
+    Q_D(QOpaqueBehavior);
     if (!d->languages->contains(language)) {
         d->languages->append(language);
     }
@@ -108,7 +104,7 @@ void QOpaqueBehavior::removeLanguage(QString language)
 {
     // This is a read-write attribute
 
-    QTUML_D(QOpaqueBehavior);
+    Q_D(QOpaqueBehavior);
     if (d->languages->contains(language)) {
         d->languages->removeAll(language);
     }
@@ -121,7 +117,7 @@ const QList<QString> *QOpaqueBehavior::bodies() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QOpaqueBehavior);
+    Q_D(const QOpaqueBehavior);
     return d->bodies;
 }
 
@@ -129,7 +125,7 @@ void QOpaqueBehavior::addBody(QString body)
 {
     // This is a read-write attribute
 
-    QTUML_D(QOpaqueBehavior);
+    Q_D(QOpaqueBehavior);
     if (!d->bodies->contains(body)) {
         d->bodies->append(body);
     }
@@ -139,7 +135,7 @@ void QOpaqueBehavior::removeBody(QString body)
 {
     // This is a read-write attribute
 
-    QTUML_D(QOpaqueBehavior);
+    Q_D(QOpaqueBehavior);
     if (d->bodies->contains(body)) {
         d->bodies->removeAll(body);
     }

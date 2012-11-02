@@ -63,7 +63,13 @@ QVariableActionPrivate::~QVariableActionPrivate()
     \brief VariableAction is an abstract class for actions that operate on a statically specified variable.
  */
 
-QVariableAction::QVariableAction()
+QVariableAction::QVariableAction(QObject *parent) :
+    QAction(*new QVariableActionPrivate, parent)
+{
+}
+
+QVariableAction::QVariableAction(QVariableActionPrivate &dd, QObject *parent) :
+    QAction(dd, parent)
 {
 }
 
@@ -78,7 +84,7 @@ QVariable *QVariableAction::variable() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QVariableAction);
+    Q_D(const QVariableAction);
     return d->variable;
 }
 
@@ -86,7 +92,7 @@ void QVariableAction::setVariable(QVariable *variable)
 {
     // This is a read-write association end
 
-    QTUML_D(QVariableAction);
+    Q_D(QVariableAction);
     if (d->variable != variable) {
         d->variable = variable;
     }

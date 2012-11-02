@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qstructuredclassifier_p.h"
+#include "private/qstructuredclassifier_p.h"
+#include "qencapsulatedclassifier.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,16 +56,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QPort;
 
-class QEncapsulatedClassifierPrivate : public QStructuredClassifierPrivate
+class Q_UML_EXPORT QEncapsulatedClassifierPrivate : public QStructuredClassifierPrivate
 {
+    Q_DECLARE_PUBLIC(QEncapsulatedClassifier)
+
 public:
+    explicit QEncapsulatedClassifierPrivate();
     virtual ~QEncapsulatedClassifierPrivate();
 
-
-protected:
-    explicit QEncapsulatedClassifierPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

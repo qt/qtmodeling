@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qpin_p.h"
+#include "private/qpin_p.h"
+#include "qinputpin.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,10 +55,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QInputPin;
 
-class QInputPinPrivate : public QPinPrivate
+class Q_UML_EXPORT QInputPinPrivate : public QPinPrivate
 {
+    Q_DECLARE_PUBLIC(QInputPin)
+
 public:
-    explicit QInputPinPrivate(QInputPin *q_umlptr = 0);
+    explicit QInputPinPrivate();
     virtual ~QInputPinPrivate();
 
 };

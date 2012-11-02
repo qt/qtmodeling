@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qaction_p.h"
+#include "private/qaction_p.h"
+#include "qreclassifyobjectaction.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,14 +56,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QClassifier;
 class QInputPin;
 class QReclassifyObjectAction;
 
-class QReclassifyObjectActionPrivate : public QActionPrivate
+class Q_UML_EXPORT QReclassifyObjectActionPrivate : public QActionPrivate
 {
+    Q_DECLARE_PUBLIC(QReclassifyObjectAction)
+
 public:
-    explicit QReclassifyObjectActionPrivate(QReclassifyObjectAction *q_umlptr = 0);
+    explicit QReclassifyObjectActionPrivate();
     virtual ~QReclassifyObjectActionPrivate();
 
     bool isReplaceAll;

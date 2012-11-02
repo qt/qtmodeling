@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QExecutionEnvironmentPrivate::QExecutionEnvironmentPrivate(QExecutionEnvironment *q_umlptr)
+QExecutionEnvironmentPrivate::QExecutionEnvironmentPrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QExecutionEnvironmentPrivate::~QExecutionEnvironmentPrivate()
@@ -62,17 +61,14 @@ QExecutionEnvironmentPrivate::~QExecutionEnvironmentPrivate()
     \brief An execution environment is a node that offers an execution environment for specific types of components that are deployed on it in the form of executable artifacts.
  */
 
-QExecutionEnvironment::QExecutionEnvironment(QObject *parent)
-    : QNode(false, parent)
+QExecutionEnvironment::QExecutionEnvironment(QObject *parent) :
+    QNode(*new QExecutionEnvironmentPrivate, parent)
 {
-    d_umlptr = new QExecutionEnvironmentPrivate(this);
 }
 
-QExecutionEnvironment::QExecutionEnvironment(bool createPimpl, QObject *parent)
-    : QNode(createPimpl, parent)
+QExecutionEnvironment::QExecutionEnvironment(QExecutionEnvironmentPrivate &dd, QObject *parent) :
+    QNode(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QExecutionEnvironmentPrivate;
 }
 
 QExecutionEnvironment::~QExecutionEnvironment()

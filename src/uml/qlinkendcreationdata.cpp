@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QLinkEndCreationDataPrivate::QLinkEndCreationDataPrivate(QLinkEndCreationData *q_umlptr) :
+QLinkEndCreationDataPrivate::QLinkEndCreationDataPrivate() :
     isReplaceAll(false),
     insertAt(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QLinkEndCreationDataPrivate::~QLinkEndCreationDataPrivate()
@@ -65,17 +64,14 @@ QLinkEndCreationDataPrivate::~QLinkEndCreationDataPrivate()
     \brief A link end creation data is not an action. It is an element that identifies links. It identifies one end of a link to be created by a create link action.
  */
 
-QLinkEndCreationData::QLinkEndCreationData(QObject *parent)
-    : QLinkEndData(false, parent)
+QLinkEndCreationData::QLinkEndCreationData(QObject *parent) :
+    QLinkEndData(*new QLinkEndCreationDataPrivate, parent)
 {
-    d_umlptr = new QLinkEndCreationDataPrivate(this);
 }
 
-QLinkEndCreationData::QLinkEndCreationData(bool createPimpl, QObject *parent)
-    : QLinkEndData(createPimpl, parent)
+QLinkEndCreationData::QLinkEndCreationData(QLinkEndCreationDataPrivate &dd, QObject *parent) :
+    QLinkEndData(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QLinkEndCreationDataPrivate;
 }
 
 QLinkEndCreationData::~QLinkEndCreationData()
@@ -89,7 +85,7 @@ bool QLinkEndCreationData::isReplaceAll() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QLinkEndCreationData);
+    Q_D(const QLinkEndCreationData);
     return d->isReplaceAll;
 }
 
@@ -97,7 +93,7 @@ void QLinkEndCreationData::setReplaceAll(bool isReplaceAll)
 {
     // This is a read-write attribute
 
-    QTUML_D(QLinkEndCreationData);
+    Q_D(QLinkEndCreationData);
     if (d->isReplaceAll != isReplaceAll) {
         d->isReplaceAll = isReplaceAll;
     }
@@ -110,7 +106,7 @@ QInputPin *QLinkEndCreationData::insertAt() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QLinkEndCreationData);
+    Q_D(const QLinkEndCreationData);
     return d->insertAt;
 }
 
@@ -118,7 +114,7 @@ void QLinkEndCreationData::setInsertAt(QInputPin *insertAt)
 {
     // This is a read-write association end
 
-    QTUML_D(QLinkEndCreationData);
+    Q_D(QLinkEndCreationData);
     if (d->insertAt != insertAt) {
         d->insertAt = insertAt;
     }

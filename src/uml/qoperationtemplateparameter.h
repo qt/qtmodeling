@@ -52,7 +52,10 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QOperation;
+
+class QOperationTemplateParameterPrivate;
 
 class Q_UML_EXPORT QOperationTemplateParameter : public QTemplateParameter
 {
@@ -62,6 +65,7 @@ class Q_UML_EXPORT QOperationTemplateParameter : public QTemplateParameter
     Q_PROPERTY(QOperation * parameteredElement READ parameteredElement WRITE setParameteredElement)
 
     Q_DISABLE_COPY(QOperationTemplateParameter)
+    Q_DECLARE_PRIVATE(QOperationTemplateParameter)
 
 public:
     explicit QOperationTemplateParameter(QObject *parent = 0);
@@ -72,12 +76,13 @@ public:
     void setParameteredElement(QOperation *parameteredElement);
 
 protected:
-    explicit QOperationTemplateParameter(bool createPimpl, QObject *parent = 0);
+    explicit QOperationTemplateParameter(QOperationTemplateParameterPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QOperationTemplateParameter) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QOperationTemplateParameter) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QOperationTemplateParameter) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QOperationTemplateParameter) *> *)
 
 QT_END_HEADER

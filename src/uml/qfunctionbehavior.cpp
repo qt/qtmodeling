@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QFunctionBehaviorPrivate::QFunctionBehaviorPrivate(QFunctionBehavior *q_umlptr)
+QFunctionBehaviorPrivate::QFunctionBehaviorPrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QFunctionBehaviorPrivate::~QFunctionBehaviorPrivate()
@@ -62,17 +61,14 @@ QFunctionBehaviorPrivate::~QFunctionBehaviorPrivate()
     \brief A function behavior is an opaque behavior that does not access or modify any objects or other external data.
  */
 
-QFunctionBehavior::QFunctionBehavior(QObject *parent)
-    : QOpaqueBehavior(false, parent)
+QFunctionBehavior::QFunctionBehavior(QObject *parent) :
+    QOpaqueBehavior(*new QFunctionBehaviorPrivate, parent)
 {
-    d_umlptr = new QFunctionBehaviorPrivate(this);
 }
 
-QFunctionBehavior::QFunctionBehavior(bool createPimpl, QObject *parent)
-    : QOpaqueBehavior(createPimpl, parent)
+QFunctionBehavior::QFunctionBehavior(QFunctionBehaviorPrivate &dd, QObject *parent) :
+    QOpaqueBehavior(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QFunctionBehaviorPrivate;
 }
 
 QFunctionBehavior::~QFunctionBehavior()

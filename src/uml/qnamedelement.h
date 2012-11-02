@@ -43,11 +43,11 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// QtUml includes
-#include <QtUml/QtUmlEnumerations>
-
 // Base class includes
 #include <QtUml/QElement>
+
+// QtUml includes
+#include <QtUml/QtUmlEnumerations>
 
 // Qt includes
 #include <QtCore/QString>
@@ -60,16 +60,31 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QPackage;
 class QNamespace;
 class QDependency;
 class QStringExpression;
 
-class Q_UML_EXPORT QNamedElement : public virtual QElement
+class QNamedElementPrivate;
+
+class Q_UML_EXPORT QNamedElement : public QElement
 {
+    Q_OBJECT
+
+    // From QNamedElement
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+
     Q_DISABLE_COPY(QNamedElement)
+    Q_DECLARE_PRIVATE(QNamedElement)
 
 public:
+    explicit QNamedElement(QObject *parent = 0);
     virtual ~QNamedElement();
 
     // Attributes
@@ -94,10 +109,14 @@ public:
     QString separator() const;
 
 protected:
-    explicit QNamedElement();
+    explicit QNamedElement(QNamedElementPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *)
 
 QT_END_HEADER
 

@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QRemoveVariableValueActionPrivate::QRemoveVariableValueActionPrivate(QRemoveVariableValueAction *q_umlptr) :
+QRemoveVariableValueActionPrivate::QRemoveVariableValueActionPrivate() :
     isRemoveDuplicates(false),
     removeAt(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QRemoveVariableValueActionPrivate::~QRemoveVariableValueActionPrivate()
@@ -65,17 +64,14 @@ QRemoveVariableValueActionPrivate::~QRemoveVariableValueActionPrivate()
     \brief A remove variable value action is a write variable action that removes values from variables.
  */
 
-QRemoveVariableValueAction::QRemoveVariableValueAction(QObject *parent)
-    : QObject(parent)
+QRemoveVariableValueAction::QRemoveVariableValueAction(QObject *parent) :
+    QWriteVariableAction(*new QRemoveVariableValueActionPrivate, parent)
 {
-    d_umlptr = new QRemoveVariableValueActionPrivate(this);
 }
 
-QRemoveVariableValueAction::QRemoveVariableValueAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QRemoveVariableValueAction::QRemoveVariableValueAction(QRemoveVariableValueActionPrivate &dd, QObject *parent) :
+    QWriteVariableAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QRemoveVariableValueActionPrivate;
 }
 
 QRemoveVariableValueAction::~QRemoveVariableValueAction()
@@ -89,7 +85,7 @@ bool QRemoveVariableValueAction::isRemoveDuplicates() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QRemoveVariableValueAction);
+    Q_D(const QRemoveVariableValueAction);
     return d->isRemoveDuplicates;
 }
 
@@ -97,7 +93,7 @@ void QRemoveVariableValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
 {
     // This is a read-write attribute
 
-    QTUML_D(QRemoveVariableValueAction);
+    Q_D(QRemoveVariableValueAction);
     if (d->isRemoveDuplicates != isRemoveDuplicates) {
         d->isRemoveDuplicates = isRemoveDuplicates;
     }
@@ -110,7 +106,7 @@ QInputPin *QRemoveVariableValueAction::removeAt() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QRemoveVariableValueAction);
+    Q_D(const QRemoveVariableValueAction);
     return d->removeAt;
 }
 
@@ -118,7 +114,7 @@ void QRemoveVariableValueAction::setRemoveAt(QInputPin *removeAt)
 {
     // This is a read-write association end
 
-    QTUML_D(QRemoveVariableValueAction);
+    Q_D(QRemoveVariableValueAction);
     if (d->removeAt != removeAt) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->removeAt));

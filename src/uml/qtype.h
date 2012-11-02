@@ -52,13 +52,23 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QPackage;
+
+class QTypePrivate;
 
 class Q_UML_EXPORT QType : public QPackageableElement
 {
+    Q_OBJECT
+
+    // From QType
+    Q_PROPERTY(QPackage * package READ package WRITE setPackage)
+
     Q_DISABLE_COPY(QType)
+    Q_DECLARE_PRIVATE(QType)
 
 public:
+    explicit QType(QObject *parent = 0);
     virtual ~QType();
 
     // Association-ends
@@ -69,10 +79,14 @@ public:
     bool conformsTo(const QType *other) const;
 
 protected:
-    explicit QType();
+    explicit QType(QTypePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QType) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QType) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QType) *> *)
 
 QT_END_HEADER
 

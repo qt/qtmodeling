@@ -68,7 +68,13 @@ QLinkActionPrivate::~QLinkActionPrivate()
     \brief LinkAction is an abstract class for all link actions that identify their links by the objects at the ends of the links and by the qualifiers at ends of the links.
  */
 
-QLinkAction::QLinkAction()
+QLinkAction::QLinkAction(QObject *parent) :
+    QAction(*new QLinkActionPrivate, parent)
+{
+}
+
+QLinkAction::QLinkAction(QLinkActionPrivate &dd, QObject *parent) :
+    QAction(dd, parent)
 {
 }
 
@@ -83,7 +89,7 @@ const QSet<QInputPin *> *QLinkAction::inputValues() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QLinkAction);
+    Q_D(const QLinkAction);
     return d->inputValues;
 }
 
@@ -91,7 +97,7 @@ void QLinkAction::addInputValue(QInputPin *inputValue)
 {
     // This is a read-write association end
 
-    QTUML_D(QLinkAction);
+    Q_D(QLinkAction);
     if (!d->inputValues->contains(inputValue)) {
         d->inputValues->insert(inputValue);
 
@@ -104,7 +110,7 @@ void QLinkAction::removeInputValue(QInputPin *inputValue)
 {
     // This is a read-write association end
 
-    QTUML_D(QLinkAction);
+    Q_D(QLinkAction);
     if (d->inputValues->contains(inputValue)) {
         d->inputValues->remove(inputValue);
 
@@ -120,7 +126,7 @@ const QSet<QLinkEndData *> *QLinkAction::endData() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QLinkAction);
+    Q_D(const QLinkAction);
     return d->endData;
 }
 
@@ -128,7 +134,7 @@ void QLinkAction::addEndData(QLinkEndData *endData)
 {
     // This is a read-write association end
 
-    QTUML_D(QLinkAction);
+    Q_D(QLinkAction);
     if (!d->endData->contains(endData)) {
         d->endData->insert(endData);
 
@@ -141,7 +147,7 @@ void QLinkAction::removeEndData(QLinkEndData *endData)
 {
     // This is a read-write association end
 
-    QTUML_D(QLinkAction);
+    Q_D(QLinkAction);
     if (d->endData->contains(endData)) {
         d->endData->remove(endData);
 

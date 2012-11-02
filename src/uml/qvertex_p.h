@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qnamedelement_p.h"
+#include "private/qnamedelement_p.h"
+#include "qvertex.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,13 +56,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QRegion;
 class QTransition;
 class QStateMachine;
 
-class QVertexPrivate : public virtual QNamedElementPrivate
+class Q_UML_EXPORT QVertexPrivate : public QNamedElementPrivate
 {
+    Q_DECLARE_PUBLIC(QVertex)
+
 public:
+    explicit QVertexPrivate();
     virtual ~QVertexPrivate();
 
     QRegion *container;
@@ -71,9 +76,6 @@ public:
     void removeIncoming(QTransition *incoming);
     void addOutgoing(QTransition *outgoing);
     void removeOutgoing(QTransition *outgoing);
-
-protected:
-    explicit QVertexPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

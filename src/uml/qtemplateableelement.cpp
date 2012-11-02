@@ -67,7 +67,13 @@ QTemplateableElementPrivate::~QTemplateableElementPrivate()
     \brief A templateable element is an element that can optionally be defined as a template and bound to other templates.
  */
 
-QTemplateableElement::QTemplateableElement()
+QTemplateableElement::QTemplateableElement(QObject *parent) :
+    QElement(*new QTemplateableElementPrivate, parent)
+{
+}
+
+QTemplateableElement::QTemplateableElement(QTemplateableElementPrivate &dd, QObject *parent) :
+    QElement(dd, parent)
 {
 }
 
@@ -82,7 +88,7 @@ QTemplateSignature *QTemplateableElement::ownedTemplateSignature() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTemplateableElement);
+    Q_D(const QTemplateableElement);
     return d->ownedTemplateSignature;
 }
 
@@ -90,7 +96,7 @@ void QTemplateableElement::setOwnedTemplateSignature(QTemplateSignature *ownedTe
 {
     // This is a read-write association end
 
-    QTUML_D(QTemplateableElement);
+    Q_D(QTemplateableElement);
     if (d->ownedTemplateSignature != ownedTemplateSignature) {
         // Adjust opposite property
 
@@ -116,7 +122,7 @@ const QSet<QTemplateBinding *> *QTemplateableElement::templateBindings() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTemplateableElement);
+    Q_D(const QTemplateableElement);
     return d->templateBindings;
 }
 
@@ -124,7 +130,7 @@ void QTemplateableElement::addTemplateBinding(QTemplateBinding *templateBinding)
 {
     // This is a read-write association end
 
-    QTUML_D(QTemplateableElement);
+    Q_D(QTemplateableElement);
     if (!d->templateBindings->contains(templateBinding)) {
         d->templateBindings->insert(templateBinding);
 
@@ -140,7 +146,7 @@ void QTemplateableElement::removeTemplateBinding(QTemplateBinding *templateBindi
 {
     // This is a read-write association end
 
-    QTUML_D(QTemplateableElement);
+    Q_D(QTemplateableElement);
     if (d->templateBindings->contains(templateBinding)) {
         d->templateBindings->remove(templateBinding);
 

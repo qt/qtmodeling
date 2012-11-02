@@ -47,11 +47,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QClearAssociationActionPrivate::QClearAssociationActionPrivate(QClearAssociationAction *q_umlptr) :
+QClearAssociationActionPrivate::QClearAssociationActionPrivate() :
     object(0),
     association(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QClearAssociationActionPrivate::~QClearAssociationActionPrivate()
@@ -66,17 +65,14 @@ QClearAssociationActionPrivate::~QClearAssociationActionPrivate()
     \brief A clear association action is an action that destroys all links of an association in which a particular object participates.
  */
 
-QClearAssociationAction::QClearAssociationAction(QObject *parent)
-    : QObject(parent)
+QClearAssociationAction::QClearAssociationAction(QObject *parent) :
+    QAction(*new QClearAssociationActionPrivate, parent)
 {
-    d_umlptr = new QClearAssociationActionPrivate(this);
 }
 
-QClearAssociationAction::QClearAssociationAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QClearAssociationAction::QClearAssociationAction(QClearAssociationActionPrivate &dd, QObject *parent) :
+    QAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QClearAssociationActionPrivate;
 }
 
 QClearAssociationAction::~QClearAssociationAction()
@@ -90,7 +86,7 @@ QInputPin *QClearAssociationAction::object() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QClearAssociationAction);
+    Q_D(const QClearAssociationAction);
     return d->object;
 }
 
@@ -98,7 +94,7 @@ void QClearAssociationAction::setObject(QInputPin *object)
 {
     // This is a read-write association end
 
-    QTUML_D(QClearAssociationAction);
+    Q_D(QClearAssociationAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->object));
@@ -119,7 +115,7 @@ QAssociation *QClearAssociationAction::association() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QClearAssociationAction);
+    Q_D(const QClearAssociationAction);
     return d->association;
 }
 
@@ -127,7 +123,7 @@ void QClearAssociationAction::setAssociation(QAssociation *association)
 {
     // This is a read-write association end
 
-    QTUML_D(QClearAssociationAction);
+    Q_D(QClearAssociationAction);
     if (d->association != association) {
         d->association = association;
     }

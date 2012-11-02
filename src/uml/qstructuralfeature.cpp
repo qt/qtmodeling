@@ -62,7 +62,19 @@ QStructuralFeaturePrivate::~QStructuralFeaturePrivate()
     \brief A structural feature is a typed feature of a classifier that specifies the structure of instances of the classifier.By specializing multiplicity element, it supports a multiplicity that specifies valid cardinalities for the collection of values associated with an instantiation of the structural feature.
  */
 
-QStructuralFeature::QStructuralFeature()
+QStructuralFeature::QStructuralFeature(QObject *parent) :
+    QObject(*new QStructuralFeaturePrivate, parent),
+    _wrappedTypedElement(new QTypedElement(this)),
+    _wrappedMultiplicityElement(new QMultiplicityElement(this)),
+    _wrappedFeature(new QFeature(this))
+{
+}
+
+QStructuralFeature::QStructuralFeature(QStructuralFeaturePrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedTypedElement(new QTypedElement(this)),
+    _wrappedMultiplicityElement(new QMultiplicityElement(this)),
+    _wrappedFeature(new QFeature(this))
 {
 }
 
@@ -77,7 +89,7 @@ bool QStructuralFeature::isReadOnly() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QStructuralFeature);
+    Q_D(const QStructuralFeature);
     return d->isReadOnly;
 }
 
@@ -85,7 +97,7 @@ void QStructuralFeature::setReadOnly(bool isReadOnly)
 {
     // This is a read-write attribute
 
-    QTUML_D(QStructuralFeature);
+    Q_D(QStructuralFeature);
     if (d->isReadOnly != isReadOnly) {
         d->isReadOnly = isReadOnly;
     }

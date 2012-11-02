@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QInteractionFragment>
 
 // Qt includes
@@ -57,33 +56,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QProperty;
 class QInteraction;
 class QGate;
 class QValueSpecification;
 
-class Q_UML_EXPORT QInteractionUse : public QObject, public QInteractionFragment
+class QInteractionUsePrivate;
+
+class Q_UML_EXPORT QInteractionUse : public QInteractionFragment
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From QInteractionFragment
-    Q_PROPERTY(const QSet<QGeneralOrdering *> * generalOrderings READ generalOrderings)
-    Q_PROPERTY(QInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
-    Q_PROPERTY(const QSet<QLifeline *> * covered READ covered)
-    Q_PROPERTY(QInteractionOperand * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
 
     // From QInteractionUse
     Q_PROPERTY(const QSet<QGate *> * actualGates READ actualGates)
@@ -93,6 +76,7 @@ class Q_UML_EXPORT QInteractionUse : public QObject, public QInteractionFragment
     Q_PROPERTY(QProperty * returnValueRecipient READ returnValueRecipient WRITE setReturnValueRecipient)
 
     Q_DISABLE_COPY(QInteractionUse)
+    Q_DECLARE_PRIVATE(QInteractionUse)
 
 public:
     explicit QInteractionUse(QObject *parent = 0);
@@ -113,12 +97,13 @@ public:
     void setReturnValueRecipient(QProperty *returnValueRecipient);
 
 protected:
-    explicit QInteractionUse(bool createPimpl, QObject *parent = 0);
+    explicit QInteractionUse(QInteractionUsePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionUse) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QInteractionUse) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionUse) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionUse) *> *)
 
 QT_END_HEADER

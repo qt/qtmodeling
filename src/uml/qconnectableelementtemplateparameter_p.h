@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qtemplateparameter_p.h"
+#include "private/qtemplateparameter_p.h"
+#include "qconnectableelementtemplateparameter.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QConnectableElement;
 class QConnectableElementTemplateParameter;
 
-class QConnectableElementTemplateParameterPrivate : public QTemplateParameterPrivate
+class Q_UML_EXPORT QConnectableElementTemplateParameterPrivate : public QTemplateParameterPrivate
 {
+    Q_DECLARE_PUBLIC(QConnectableElementTemplateParameter)
+
 public:
-    explicit QConnectableElementTemplateParameterPrivate(QConnectableElementTemplateParameter *q_umlptr = 0);
+    explicit QConnectableElementTemplateParameterPrivate();
     virtual ~QConnectableElementTemplateParameterPrivate();
 
     QConnectableElement *parameteredElement;

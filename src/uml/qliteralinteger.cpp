@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QLiteralIntegerPrivate::QLiteralIntegerPrivate(QLiteralInteger *q_umlptr)
+QLiteralIntegerPrivate::QLiteralIntegerPrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QLiteralIntegerPrivate::~QLiteralIntegerPrivate()
@@ -62,17 +61,14 @@ QLiteralIntegerPrivate::~QLiteralIntegerPrivate()
     \brief A literal integer is a specification of an integer value.
  */
 
-QLiteralInteger::QLiteralInteger(QObject *parent)
-    : QObject(parent)
+QLiteralInteger::QLiteralInteger(QObject *parent) :
+    QLiteralSpecification(*new QLiteralIntegerPrivate, parent)
 {
-    d_umlptr = new QLiteralIntegerPrivate(this);
 }
 
-QLiteralInteger::QLiteralInteger(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QLiteralInteger::QLiteralInteger(QLiteralIntegerPrivate &dd, QObject *parent) :
+    QLiteralSpecification(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QLiteralIntegerPrivate;
 }
 
 QLiteralInteger::~QLiteralInteger()
@@ -86,7 +82,7 @@ qint32 QLiteralInteger::value() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QLiteralInteger);
+    Q_D(const QLiteralInteger);
     return d->value;
 }
 
@@ -94,7 +90,7 @@ void QLiteralInteger::setValue(qint32 value)
 {
     // This is a read-write attribute
 
-    QTUML_D(QLiteralInteger);
+    Q_D(QLiteralInteger);
     if (d->value != value) {
         d->value = value;
     }

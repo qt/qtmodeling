@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QAddStructuralFeatureValueActionPrivate::QAddStructuralFeatureValueActionPrivate(QAddStructuralFeatureValueAction *q_umlptr) :
+QAddStructuralFeatureValueActionPrivate::QAddStructuralFeatureValueActionPrivate() :
     isReplaceAll(false),
     insertAt(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QAddStructuralFeatureValueActionPrivate::~QAddStructuralFeatureValueActionPrivate()
@@ -65,17 +64,14 @@ QAddStructuralFeatureValueActionPrivate::~QAddStructuralFeatureValueActionPrivat
     \brief An add structural feature value action is a write structural feature action for adding values to a structural feature.
  */
 
-QAddStructuralFeatureValueAction::QAddStructuralFeatureValueAction(QObject *parent)
-    : QObject(parent)
+QAddStructuralFeatureValueAction::QAddStructuralFeatureValueAction(QObject *parent) :
+    QWriteStructuralFeatureAction(*new QAddStructuralFeatureValueActionPrivate, parent)
 {
-    d_umlptr = new QAddStructuralFeatureValueActionPrivate(this);
 }
 
-QAddStructuralFeatureValueAction::QAddStructuralFeatureValueAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QAddStructuralFeatureValueAction::QAddStructuralFeatureValueAction(QAddStructuralFeatureValueActionPrivate &dd, QObject *parent) :
+    QWriteStructuralFeatureAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QAddStructuralFeatureValueActionPrivate;
 }
 
 QAddStructuralFeatureValueAction::~QAddStructuralFeatureValueAction()
@@ -89,7 +85,7 @@ bool QAddStructuralFeatureValueAction::isReplaceAll() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QAddStructuralFeatureValueAction);
+    Q_D(const QAddStructuralFeatureValueAction);
     return d->isReplaceAll;
 }
 
@@ -97,7 +93,7 @@ void QAddStructuralFeatureValueAction::setReplaceAll(bool isReplaceAll)
 {
     // This is a read-write attribute
 
-    QTUML_D(QAddStructuralFeatureValueAction);
+    Q_D(QAddStructuralFeatureValueAction);
     if (d->isReplaceAll != isReplaceAll) {
         d->isReplaceAll = isReplaceAll;
     }
@@ -110,7 +106,7 @@ QInputPin *QAddStructuralFeatureValueAction::insertAt() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QAddStructuralFeatureValueAction);
+    Q_D(const QAddStructuralFeatureValueAction);
     return d->insertAt;
 }
 
@@ -118,7 +114,7 @@ void QAddStructuralFeatureValueAction::setInsertAt(QInputPin *insertAt)
 {
     // This is a read-write association end
 
-    QTUML_D(QAddStructuralFeatureValueAction);
+    Q_D(QAddStructuralFeatureValueAction);
     if (d->insertAt != insertAt) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->insertAt));

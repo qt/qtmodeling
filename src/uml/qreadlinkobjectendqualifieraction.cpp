@@ -48,12 +48,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QReadLinkObjectEndQualifierActionPrivate::QReadLinkObjectEndQualifierActionPrivate(QReadLinkObjectEndQualifierAction *q_umlptr) :
+QReadLinkObjectEndQualifierActionPrivate::QReadLinkObjectEndQualifierActionPrivate() :
     result(0),
     object(0),
     qualifier(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QReadLinkObjectEndQualifierActionPrivate::~QReadLinkObjectEndQualifierActionPrivate()
@@ -68,17 +67,14 @@ QReadLinkObjectEndQualifierActionPrivate::~QReadLinkObjectEndQualifierActionPriv
     \brief A read link object end qualifier action is an action that retrieves a qualifier end value from a link object.
  */
 
-QReadLinkObjectEndQualifierAction::QReadLinkObjectEndQualifierAction(QObject *parent)
-    : QObject(parent)
+QReadLinkObjectEndQualifierAction::QReadLinkObjectEndQualifierAction(QObject *parent) :
+    QAction(*new QReadLinkObjectEndQualifierActionPrivate, parent)
 {
-    d_umlptr = new QReadLinkObjectEndQualifierActionPrivate(this);
 }
 
-QReadLinkObjectEndQualifierAction::QReadLinkObjectEndQualifierAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QReadLinkObjectEndQualifierAction::QReadLinkObjectEndQualifierAction(QReadLinkObjectEndQualifierActionPrivate &dd, QObject *parent) :
+    QAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QReadLinkObjectEndQualifierActionPrivate;
 }
 
 QReadLinkObjectEndQualifierAction::~QReadLinkObjectEndQualifierAction()
@@ -92,7 +88,7 @@ QOutputPin *QReadLinkObjectEndQualifierAction::result() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QReadLinkObjectEndQualifierAction);
+    Q_D(const QReadLinkObjectEndQualifierAction);
     return d->result;
 }
 
@@ -100,7 +96,7 @@ void QReadLinkObjectEndQualifierAction::setResult(QOutputPin *result)
 {
     // This is a read-write association end
 
-    QTUML_D(QReadLinkObjectEndQualifierAction);
+    Q_D(QReadLinkObjectEndQualifierAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->result));
@@ -121,7 +117,7 @@ QInputPin *QReadLinkObjectEndQualifierAction::object() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QReadLinkObjectEndQualifierAction);
+    Q_D(const QReadLinkObjectEndQualifierAction);
     return d->object;
 }
 
@@ -129,7 +125,7 @@ void QReadLinkObjectEndQualifierAction::setObject(QInputPin *object)
 {
     // This is a read-write association end
 
-    QTUML_D(QReadLinkObjectEndQualifierAction);
+    Q_D(QReadLinkObjectEndQualifierAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->object));
@@ -150,7 +146,7 @@ QProperty *QReadLinkObjectEndQualifierAction::qualifier() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QReadLinkObjectEndQualifierAction);
+    Q_D(const QReadLinkObjectEndQualifierAction);
     return d->qualifier;
 }
 
@@ -158,7 +154,7 @@ void QReadLinkObjectEndQualifierAction::setQualifier(QProperty *qualifier)
 {
     // This is a read-write association end
 
-    QTUML_D(QReadLinkObjectEndQualifierAction);
+    Q_D(QReadLinkObjectEndQualifierAction);
     if (d->qualifier != qualifier) {
         d->qualifier = qualifier;
     }

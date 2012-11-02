@@ -81,7 +81,13 @@ void QRelationshipPrivate::removeRelatedElement(QElement *relatedElement)
     \brief Relationship is an abstract concept that specifies some kind of relationship between elements.
  */
 
-QRelationship::QRelationship()
+QRelationship::QRelationship(QObject *parent) :
+    QElement(*new QRelationshipPrivate, parent)
+{
+}
+
+QRelationship::QRelationship(QRelationshipPrivate &dd, QObject *parent) :
+    QElement(dd, parent)
 {
 }
 
@@ -96,7 +102,7 @@ const QSet<QElement *> *QRelationship::relatedElements() const
 {
     // This is a read-only derived-union association end
 
-    QTUML_D(const QRelationship);
+    Q_D(const QRelationship);
     return d->relatedElements;
 }
 

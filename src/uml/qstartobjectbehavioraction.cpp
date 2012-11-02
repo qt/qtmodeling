@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QStartObjectBehaviorActionPrivate::QStartObjectBehaviorActionPrivate(QStartObjectBehaviorAction *q_umlptr) :
+QStartObjectBehaviorActionPrivate::QStartObjectBehaviorActionPrivate() :
     object(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QStartObjectBehaviorActionPrivate::~QStartObjectBehaviorActionPrivate()
@@ -64,17 +63,14 @@ QStartObjectBehaviorActionPrivate::~QStartObjectBehaviorActionPrivate()
     \brief StartObjectBehaviorAction is an action that starts the execution either of a directly instantiated behavior or of the classifier behavior of an object. Argument values may be supplied for the input parameters of the behavior. If the behavior is invoked synchronously, then output values may be obtained for output parameters.
  */
 
-QStartObjectBehaviorAction::QStartObjectBehaviorAction(QObject *parent)
-    : QObject(parent)
+QStartObjectBehaviorAction::QStartObjectBehaviorAction(QObject *parent) :
+    QCallAction(*new QStartObjectBehaviorActionPrivate, parent)
 {
-    d_umlptr = new QStartObjectBehaviorActionPrivate(this);
 }
 
-QStartObjectBehaviorAction::QStartObjectBehaviorAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QStartObjectBehaviorAction::QStartObjectBehaviorAction(QStartObjectBehaviorActionPrivate &dd, QObject *parent) :
+    QCallAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QStartObjectBehaviorActionPrivate;
 }
 
 QStartObjectBehaviorAction::~QStartObjectBehaviorAction()
@@ -88,7 +84,7 @@ QInputPin *QStartObjectBehaviorAction::object() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QStartObjectBehaviorAction);
+    Q_D(const QStartObjectBehaviorAction);
     return d->object;
 }
 
@@ -96,7 +92,7 @@ void QStartObjectBehaviorAction::setObject(QInputPin *object)
 {
     // This is a read-write association end
 
-    QTUML_D(QStartObjectBehaviorAction);
+    Q_D(QStartObjectBehaviorAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->object));

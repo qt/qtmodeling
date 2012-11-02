@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QLiteralSpecification>
 
 QT_BEGIN_HEADER
@@ -53,36 +52,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QLiteralUnlimitedNatural : public QObject, public QLiteralSpecification
+class QLiteralUnlimitedNaturalPrivate;
+
+class Q_UML_EXPORT QLiteralUnlimitedNatural : public QLiteralSpecification
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From QTypedElement
-    Q_PROPERTY(QType * type READ type WRITE setType)
-
-    // From QParameterableElement
-    Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
-    Q_PROPERTY(QTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
-
-    // From QPackageableElement
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // From QLiteralUnlimitedNatural
     Q_PROPERTY(qint32 value READ value WRITE setValue)
 
     Q_DISABLE_COPY(QLiteralUnlimitedNatural)
+    Q_DECLARE_PRIVATE(QLiteralUnlimitedNatural)
 
 public:
     explicit QLiteralUnlimitedNatural(QObject *parent = 0);
@@ -97,12 +77,13 @@ public:
     qint32 unlimitedValue() const;
 
 protected:
-    explicit QLiteralUnlimitedNatural(bool createPimpl, QObject *parent = 0);
+    explicit QLiteralUnlimitedNatural(QLiteralUnlimitedNaturalPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QLiteralUnlimitedNatural) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QLiteralUnlimitedNatural) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QLiteralUnlimitedNatural) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QLiteralUnlimitedNatural) *> *)
 
 QT_END_HEADER

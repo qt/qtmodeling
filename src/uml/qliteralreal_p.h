@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qliteralspecification_p.h"
+#include "private/qliteralspecification_p.h"
+#include "qliteralreal.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,10 +55,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QLiteralReal;
 
-class QLiteralRealPrivate : public QLiteralSpecificationPrivate
+class Q_UML_EXPORT QLiteralRealPrivate : public QLiteralSpecificationPrivate
 {
+    Q_DECLARE_PUBLIC(QLiteralReal)
+
 public:
-    explicit QLiteralRealPrivate(QLiteralReal *q_umlptr = 0);
+    explicit QLiteralRealPrivate();
     virtual ~QLiteralRealPrivate();
 
     qreal value;

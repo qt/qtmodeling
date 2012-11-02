@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QInvocationAction>
 
 QT_BEGIN_HEADER
@@ -53,59 +52,21 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInputPin;
 
-class Q_UML_EXPORT QSendObjectAction : public QObject, public QInvocationAction
+class QSendObjectActionPrivate;
+
+class Q_UML_EXPORT QSendObjectAction : public QInvocationAction
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From QRedefinableElement
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
-    Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
-
-    // From QActivityNode
-    Q_PROPERTY(const QSet<QActivityNode *> * redefinedNodes READ redefinedNodes)
-    Q_PROPERTY(const QSet<QActivityEdge *> * incomings READ incomings)
-    Q_PROPERTY(QActivity * activity READ activity WRITE setActivity)
-    Q_PROPERTY(const QSet<QActivityGroup *> * inGroup READ inGroup)
-    Q_PROPERTY(QStructuredActivityNode * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
-    Q_PROPERTY(const QSet<QActivityPartition *> * inPartition READ inPartition)
-    Q_PROPERTY(const QSet<QInterruptibleActivityRegion *> * inInterruptibleRegion READ inInterruptibleRegion)
-    Q_PROPERTY(const QSet<QActivityEdge *> * outgoings READ outgoings)
-
-    // From QExecutableNode
-    Q_PROPERTY(const QSet<QExceptionHandler *> * handlers READ handlers)
-
-    // From QAction
-    Q_PROPERTY(bool isLocallyReentrant READ isLocallyReentrant WRITE setLocallyReentrant)
-    Q_PROPERTY(QClassifier * context READ context)
-    Q_PROPERTY(const QSet<QConstraint *> * localPostconditions READ localPostconditions)
-    Q_PROPERTY(const QSet<QConstraint *> * localPreconditions READ localPreconditions)
-    Q_PROPERTY(const QList<QInputPin *> * inputs READ inputs)
-    Q_PROPERTY(const QList<QOutputPin *> * outputs READ outputs)
-
-    // From QInvocationAction
-    Q_PROPERTY(QPort * onPort READ onPort WRITE setOnPort)
 
     // From QSendObjectAction
     Q_PROPERTY(QInputPin * request READ request WRITE setRequest)
     Q_PROPERTY(QInputPin * target READ target WRITE setTarget)
 
     Q_DISABLE_COPY(QSendObjectAction)
+    Q_DECLARE_PRIVATE(QSendObjectAction)
 
 public:
     explicit QSendObjectAction(QObject *parent = 0);
@@ -118,12 +79,13 @@ public:
     void setTarget(QInputPin *target);
 
 protected:
-    explicit QSendObjectAction(bool createPimpl, QObject *parent = 0);
+    explicit QSendObjectAction(QSendObjectActionPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QSendObjectAction) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QSendObjectAction) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QSendObjectAction) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QSendObjectAction) *> *)
 
 QT_END_HEADER

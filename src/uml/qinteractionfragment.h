@@ -55,16 +55,29 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QGeneralOrdering;
 class QInteractionOperand;
 class QLifeline;
 class QInteraction;
 
-class Q_UML_EXPORT QInteractionFragment : public virtual QNamedElement
+class QInteractionFragmentPrivate;
+
+class Q_UML_EXPORT QInteractionFragment : public QNamedElement
 {
+    Q_OBJECT
+
+    // From QInteractionFragment
+    Q_PROPERTY(const QSet<QGeneralOrdering *> * generalOrderings READ generalOrderings)
+    Q_PROPERTY(QInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
+    Q_PROPERTY(const QSet<QLifeline *> * covered READ covered)
+    Q_PROPERTY(QInteractionOperand * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
+
     Q_DISABLE_COPY(QInteractionFragment)
+    Q_DECLARE_PRIVATE(QInteractionFragment)
 
 public:
+    explicit QInteractionFragment(QObject *parent = 0);
     virtual ~QInteractionFragment();
 
     // Association-ends
@@ -80,10 +93,14 @@ public:
     void setEnclosingOperand(QInteractionOperand *enclosingOperand);
 
 protected:
-    explicit QInteractionFragment();
+    explicit QInteractionFragment(QInteractionFragmentPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QInteractionFragment) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionFragment) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionFragment) *> *)
 
 QT_END_HEADER
 

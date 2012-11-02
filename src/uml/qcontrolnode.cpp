@@ -61,7 +61,13 @@ QControlNodePrivate::~QControlNodePrivate()
     \brief A control node is an abstract activity node that coordinates flows in an activity.
  */
 
-QControlNode::QControlNode()
+QControlNode::QControlNode(QObject *parent) :
+    QActivityNode(*new QControlNodePrivate, parent)
+{
+}
+
+QControlNode::QControlNode(QControlNodePrivate &dd, QObject *parent) :
+    QActivityNode(dd, parent)
 {
 }
 

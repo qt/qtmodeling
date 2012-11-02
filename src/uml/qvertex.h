@@ -55,15 +55,27 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QRegion;
 class QTransition;
 class QStateMachine;
 
-class Q_UML_EXPORT QVertex : public virtual QNamedElement
+class QVertexPrivate;
+
+class Q_UML_EXPORT QVertex : public QNamedElement
 {
+    Q_OBJECT
+
+    // From QVertex
+    Q_PROPERTY(const QSet<QTransition *> * incomings READ incomings)
+    Q_PROPERTY(QRegion * container READ container WRITE setContainer)
+    Q_PROPERTY(const QSet<QTransition *> * outgoings READ outgoings)
+
     Q_DISABLE_COPY(QVertex)
+    Q_DECLARE_PRIVATE(QVertex)
 
 public:
+    explicit QVertex(QObject *parent = 0);
     virtual ~QVertex();
 
     // Association-ends
@@ -76,10 +88,14 @@ public:
     QStateMachine *containingStateMachine() const;
 
 protected:
-    explicit QVertex();
+    explicit QVertex(QVertexPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QVertex) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QVertex) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QVertex) *> *)
 
 QT_END_HEADER
 

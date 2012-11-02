@@ -49,7 +49,7 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInterfacePrivate::QInterfacePrivate(QInterface *q_umlptr) :
+QInterfacePrivate::QInterfacePrivate() :
     protocol(0),
     redefinedInterfaces(new QSet<QInterface *>),
     ownedReceptions(new QSet<QReception *>),
@@ -57,7 +57,6 @@ QInterfacePrivate::QInterfacePrivate(QInterface *q_umlptr) :
     nestedClassifiers(new QList<QClassifier *>),
     ownedAttributes(new QList<QProperty *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QInterfacePrivate::~QInterfacePrivate()
@@ -77,17 +76,14 @@ QInterfacePrivate::~QInterfacePrivate()
     \brief Since an interface specifies conformance characteristics, it does not own detailed behavior specifications. Instead, interfaces may own a protocol state machine that specifies event sequences and pre/post conditions for the operations and receptions described by the interface.Interfaces may include receptions (in addition to operations).An interface is a kind of classifier that represents a declaration of a set of coherent public features and obligations. An interface specifies a contract; any instance of a classifier that realizes the interface must fulfill that contract. The obligations that may be associated with an interface are in the form of various kinds of constraints (such as pre- and post-conditions) or protocol specifications, which may impose ordering restrictions on interactions through the interface.
  */
 
-QInterface::QInterface(QObject *parent)
-    : QObject(parent)
+QInterface::QInterface(QObject *parent) :
+    QClassifier(*new QInterfacePrivate, parent)
 {
-    d_umlptr = new QInterfacePrivate(this);
 }
 
-QInterface::QInterface(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QInterface::QInterface(QInterfacePrivate &dd, QObject *parent) :
+    QClassifier(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QInterfacePrivate;
 }
 
 QInterface::~QInterface()
@@ -101,7 +97,7 @@ QProtocolStateMachine *QInterface::protocol() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInterface);
+    Q_D(const QInterface);
     return d->protocol;
 }
 
@@ -109,7 +105,7 @@ void QInterface::setProtocol(QProtocolStateMachine *protocol)
 {
     // This is a read-write association end
 
-    QTUML_D(QInterface);
+    Q_D(QInterface);
     if (d->protocol != protocol) {
         // Adjust subsetted property(ies)
         d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(d->protocol));
@@ -130,7 +126,7 @@ const QSet<QInterface *> *QInterface::redefinedInterfaces() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInterface);
+    Q_D(const QInterface);
     return d->redefinedInterfaces;
 }
 
@@ -138,7 +134,7 @@ void QInterface::addRedefinedInterface(QInterface *redefinedInterface)
 {
     // This is a read-write association end
 
-    QTUML_D(QInterface);
+    Q_D(QInterface);
     if (!d->redefinedInterfaces->contains(redefinedInterface)) {
         d->redefinedInterfaces->insert(redefinedInterface);
 
@@ -151,7 +147,7 @@ void QInterface::removeRedefinedInterface(QInterface *redefinedInterface)
 {
     // This is a read-write association end
 
-    QTUML_D(QInterface);
+    Q_D(QInterface);
     if (d->redefinedInterfaces->contains(redefinedInterface)) {
         d->redefinedInterfaces->remove(redefinedInterface);
 
@@ -167,7 +163,7 @@ const QSet<QReception *> *QInterface::ownedReceptions() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInterface);
+    Q_D(const QInterface);
     return d->ownedReceptions;
 }
 
@@ -175,7 +171,7 @@ void QInterface::addOwnedReception(QReception *ownedReception)
 {
     // This is a read-write association end
 
-    QTUML_D(QInterface);
+    Q_D(QInterface);
     if (!d->ownedReceptions->contains(ownedReception)) {
         d->ownedReceptions->insert(ownedReception);
 
@@ -189,7 +185,7 @@ void QInterface::removeOwnedReception(QReception *ownedReception)
 {
     // This is a read-write association end
 
-    QTUML_D(QInterface);
+    Q_D(QInterface);
     if (d->ownedReceptions->contains(ownedReception)) {
         d->ownedReceptions->remove(ownedReception);
 
@@ -206,7 +202,7 @@ const QList<QOperation *> *QInterface::ownedOperations() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInterface);
+    Q_D(const QInterface);
     return d->ownedOperations;
 }
 
@@ -214,7 +210,7 @@ void QInterface::addOwnedOperation(QOperation *ownedOperation)
 {
     // This is a read-write association end
 
-    QTUML_D(QInterface);
+    Q_D(QInterface);
     if (!d->ownedOperations->contains(ownedOperation)) {
         d->ownedOperations->append(ownedOperation);
 
@@ -231,7 +227,7 @@ void QInterface::removeOwnedOperation(QOperation *ownedOperation)
 {
     // This is a read-write association end
 
-    QTUML_D(QInterface);
+    Q_D(QInterface);
     if (d->ownedOperations->contains(ownedOperation)) {
         d->ownedOperations->removeAll(ownedOperation);
 
@@ -251,7 +247,7 @@ const QList<QClassifier *> *QInterface::nestedClassifiers() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInterface);
+    Q_D(const QInterface);
     return d->nestedClassifiers;
 }
 
@@ -259,7 +255,7 @@ void QInterface::addNestedClassifier(QClassifier *nestedClassifier)
 {
     // This is a read-write association end
 
-    QTUML_D(QInterface);
+    Q_D(QInterface);
     if (!d->nestedClassifiers->contains(nestedClassifier)) {
         d->nestedClassifiers->append(nestedClassifier);
 
@@ -272,7 +268,7 @@ void QInterface::removeNestedClassifier(QClassifier *nestedClassifier)
 {
     // This is a read-write association end
 
-    QTUML_D(QInterface);
+    Q_D(QInterface);
     if (d->nestedClassifiers->contains(nestedClassifier)) {
         d->nestedClassifiers->removeAll(nestedClassifier);
 
@@ -288,7 +284,7 @@ const QList<QProperty *> *QInterface::ownedAttributes() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInterface);
+    Q_D(const QInterface);
     return d->ownedAttributes;
 }
 
@@ -296,7 +292,7 @@ void QInterface::addOwnedAttribute(QProperty *ownedAttribute)
 {
     // This is a read-write association end
 
-    QTUML_D(QInterface);
+    Q_D(QInterface);
     if (!d->ownedAttributes->contains(ownedAttribute)) {
         d->ownedAttributes->append(ownedAttribute);
 
@@ -313,7 +309,7 @@ void QInterface::removeOwnedAttribute(QProperty *ownedAttribute)
 {
     // This is a read-write association end
 
-    QTUML_D(QInterface);
+    Q_D(QInterface);
     if (d->ownedAttributes->contains(ownedAttribute)) {
         d->ownedAttributes->removeAll(ownedAttribute);
 

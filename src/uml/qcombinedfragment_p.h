@@ -43,11 +43,13 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+#include "private/qinteractionfragment_p.h"
+#include "qcombinedfragment.h"
+
+
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
-
-// Base class includes
-#include "qinteractionfragment_p.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -59,14 +61,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QGate;
 class QInteractionOperand;
 class QCombinedFragment;
 
-class QCombinedFragmentPrivate : public QInteractionFragmentPrivate
+class Q_UML_EXPORT QCombinedFragmentPrivate : public QInteractionFragmentPrivate
 {
+    Q_DECLARE_PUBLIC(QCombinedFragment)
+
 public:
-    explicit QCombinedFragmentPrivate(QCombinedFragment *q_umlptr = 0);
+    explicit QCombinedFragmentPrivate();
     virtual ~QCombinedFragmentPrivate();
 
     QtUml::InteractionOperatorKind interactionOperator;

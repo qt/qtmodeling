@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QTimeConstraintPrivate::QTimeConstraintPrivate(QTimeConstraint *q_umlptr) :
+QTimeConstraintPrivate::QTimeConstraintPrivate() :
     firstEvent(true),
     specification(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QTimeConstraintPrivate::~QTimeConstraintPrivate()
@@ -66,17 +65,14 @@ QTimeConstraintPrivate::~QTimeConstraintPrivate()
     \brief A time constraint is a constraint that refers to a time interval.
  */
 
-QTimeConstraint::QTimeConstraint(QObject *parent)
-    : QIntervalConstraint(false, parent)
+QTimeConstraint::QTimeConstraint(QObject *parent) :
+    QIntervalConstraint(*new QTimeConstraintPrivate, parent)
 {
-    d_umlptr = new QTimeConstraintPrivate(this);
 }
 
-QTimeConstraint::QTimeConstraint(bool createPimpl, QObject *parent)
-    : QIntervalConstraint(createPimpl, parent)
+QTimeConstraint::QTimeConstraint(QTimeConstraintPrivate &dd, QObject *parent) :
+    QIntervalConstraint(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QTimeConstraintPrivate;
 }
 
 QTimeConstraint::~QTimeConstraint()
@@ -90,7 +86,7 @@ bool QTimeConstraint::firstEvent() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QTimeConstraint);
+    Q_D(const QTimeConstraint);
     return d->firstEvent;
 }
 
@@ -98,7 +94,7 @@ void QTimeConstraint::setFirstEvent(bool firstEvent)
 {
     // This is a read-write attribute
 
-    QTUML_D(QTimeConstraint);
+    Q_D(QTimeConstraint);
     if (d->firstEvent != firstEvent) {
         d->firstEvent = firstEvent;
     }
@@ -111,7 +107,7 @@ QTimeInterval *QTimeConstraint::specification() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTimeConstraint);
+    Q_D(const QTimeConstraint);
     return d->specification;
 }
 
@@ -119,7 +115,7 @@ void QTimeConstraint::setSpecification(QTimeInterval *specification)
 {
     // This is a read-write association end
 
-    QTUML_D(QTimeConstraint);
+    Q_D(QTimeConstraint);
     if (d->specification != specification) {
         d->specification = specification;
     }

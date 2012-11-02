@@ -47,12 +47,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QPseudostatePrivate::QPseudostatePrivate(QPseudostate *q_umlptr) :
+QPseudostatePrivate::QPseudostatePrivate() :
     kind(QtUml::PseudostateInitial),
     state(0),
     stateMachine(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QPseudostatePrivate::~QPseudostatePrivate()
@@ -67,17 +66,14 @@ QPseudostatePrivate::~QPseudostatePrivate()
     \brief A pseudostate is an abstraction that encompasses different types of transient vertices in the state machine graph.
  */
 
-QPseudostate::QPseudostate(QObject *parent)
-    : QObject(parent)
+QPseudostate::QPseudostate(QObject *parent) :
+    QVertex(*new QPseudostatePrivate, parent)
 {
-    d_umlptr = new QPseudostatePrivate(this);
 }
 
-QPseudostate::QPseudostate(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QPseudostate::QPseudostate(QPseudostatePrivate &dd, QObject *parent) :
+    QVertex(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QPseudostatePrivate;
 }
 
 QPseudostate::~QPseudostate()
@@ -91,7 +87,7 @@ QtUml::PseudostateKind QPseudostate::kind() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QPseudostate);
+    Q_D(const QPseudostate);
     return d->kind;
 }
 
@@ -99,7 +95,7 @@ void QPseudostate::setKind(QtUml::PseudostateKind kind)
 {
     // This is a read-write attribute
 
-    QTUML_D(QPseudostate);
+    Q_D(QPseudostate);
     if (d->kind != kind) {
         d->kind = kind;
     }
@@ -112,7 +108,7 @@ QState *QPseudostate::state() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QPseudostate);
+    Q_D(const QPseudostate);
     return d->state;
 }
 
@@ -120,7 +116,7 @@ void QPseudostate::setState(QState *state)
 {
     // This is a read-write association end
 
-    QTUML_D(QPseudostate);
+    Q_D(QPseudostate);
     if (d->state != state) {
         // Adjust opposite property
         if (d->state)
@@ -144,7 +140,7 @@ QStateMachine *QPseudostate::stateMachine() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QPseudostate);
+    Q_D(const QPseudostate);
     return d->stateMachine;
 }
 
@@ -152,7 +148,7 @@ void QPseudostate::setStateMachine(QStateMachine *stateMachine)
 {
     // This is a read-write association end
 
-    QTUML_D(QPseudostate);
+    Q_D(QPseudostate);
     if (d->stateMachine != stateMachine) {
         // Adjust opposite property
         if (d->stateMachine)

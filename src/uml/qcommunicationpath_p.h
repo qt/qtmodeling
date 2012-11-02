@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qassociation_p.h"
+#include "private/qassociation_p.h"
+#include "qcommunicationpath.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,10 +55,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QCommunicationPath;
 
-class QCommunicationPathPrivate : public QAssociationPrivate
+class Q_UML_EXPORT QCommunicationPathPrivate : public QAssociationPrivate
 {
+    Q_DECLARE_PUBLIC(QCommunicationPath)
+
 public:
-    explicit QCommunicationPathPrivate(QCommunicationPath *q_umlptr = 0);
+    explicit QCommunicationPathPrivate();
     virtual ~QCommunicationPathPrivate();
 
 };

@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qelement_p.h"
+#include "private/qelement_p.h"
+#include "qmultiplicityelement.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,21 +54,22 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QValueSpecification;
 class QMultiplicityElement;
 
-class QMultiplicityElementPrivate : public virtual QElementPrivate
+class Q_UML_EXPORT QMultiplicityElementPrivate : public QElementPrivate
 {
+    Q_DECLARE_PUBLIC(QMultiplicityElement)
+
 public:
+    explicit QMultiplicityElementPrivate();
     virtual ~QMultiplicityElementPrivate();
 
     bool isUnique;
     bool isOrdered;
     QValueSpecification *upperValue;
     QValueSpecification *lowerValue;
-
-protected:
-    explicit QMultiplicityElementPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

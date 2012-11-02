@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qnode_p.h"
+#include "private/qnode_p.h"
+#include "qdevice.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,10 +55,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QDevice;
 
-class QDevicePrivate : public QNodePrivate
+class Q_UML_EXPORT QDevicePrivate : public QNodePrivate
 {
+    Q_DECLARE_PUBLIC(QDevice)
+
 public:
-    explicit QDevicePrivate(QDevice *q_umlptr = 0);
+    explicit QDevicePrivate();
     virtual ~QDevicePrivate();
 
 };

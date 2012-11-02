@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qbehavior_p.h"
+#include "private/qbehavior_p.h"
+#include "qactivity.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QStructuredActivityNode;
 class QVariable;
 class QActivityPartition;
@@ -63,10 +65,12 @@ class QActivityEdge;
 class QActivityNode;
 class QActivity;
 
-class QActivityPrivate : public QBehaviorPrivate
+class Q_UML_EXPORT QActivityPrivate : public QBehaviorPrivate
 {
+    Q_DECLARE_PUBLIC(QActivity)
+
 public:
-    explicit QActivityPrivate(QActivity *q_umlptr = 0);
+    explicit QActivityPrivate();
     virtual ~QActivityPrivate();
 
     bool isReadOnly;

@@ -50,14 +50,13 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QLifelinePrivate::QLifelinePrivate(QLifeline *q_umlptr) :
+QLifelinePrivate::QLifelinePrivate() :
     represents(0),
     decomposedAs(0),
     coveredBy(new QSet<QInteractionFragment *>),
     interaction(0),
     selector(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QLifelinePrivate::~QLifelinePrivate()
@@ -73,17 +72,14 @@ QLifelinePrivate::~QLifelinePrivate()
     \brief A lifeline represents an individual participant in the interaction. While parts and structural features may have multiplicity greater than 1, lifelines represent only one interacting entity.
  */
 
-QLifeline::QLifeline(QObject *parent)
-    : QObject(parent)
+QLifeline::QLifeline(QObject *parent) :
+    QNamedElement(*new QLifelinePrivate, parent)
 {
-    d_umlptr = new QLifelinePrivate(this);
 }
 
-QLifeline::QLifeline(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QLifeline::QLifeline(QLifelinePrivate &dd, QObject *parent) :
+    QNamedElement(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QLifelinePrivate;
 }
 
 QLifeline::~QLifeline()
@@ -97,7 +93,7 @@ QConnectableElement *QLifeline::represents() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QLifeline);
+    Q_D(const QLifeline);
     return d->represents;
 }
 
@@ -105,7 +101,7 @@ void QLifeline::setRepresents(QConnectableElement *represents)
 {
     // This is a read-write association end
 
-    QTUML_D(QLifeline);
+    Q_D(QLifeline);
     if (d->represents != represents) {
         d->represents = represents;
     }
@@ -118,7 +114,7 @@ QPartDecomposition *QLifeline::decomposedAs() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QLifeline);
+    Q_D(const QLifeline);
     return d->decomposedAs;
 }
 
@@ -126,7 +122,7 @@ void QLifeline::setDecomposedAs(QPartDecomposition *decomposedAs)
 {
     // This is a read-write association end
 
-    QTUML_D(QLifeline);
+    Q_D(QLifeline);
     if (d->decomposedAs != decomposedAs) {
         d->decomposedAs = decomposedAs;
     }
@@ -139,7 +135,7 @@ const QSet<QInteractionFragment *> *QLifeline::coveredBy() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QLifeline);
+    Q_D(const QLifeline);
     return d->coveredBy;
 }
 
@@ -147,7 +143,7 @@ void QLifeline::addCoveredBy(QInteractionFragment *coveredBy)
 {
     // This is a read-write association end
 
-    QTUML_D(QLifeline);
+    Q_D(QLifeline);
     if (!d->coveredBy->contains(coveredBy)) {
         d->coveredBy->insert(coveredBy);
 
@@ -160,7 +156,7 @@ void QLifeline::removeCoveredBy(QInteractionFragment *coveredBy)
 {
     // This is a read-write association end
 
-    QTUML_D(QLifeline);
+    Q_D(QLifeline);
     if (d->coveredBy->contains(coveredBy)) {
         d->coveredBy->remove(coveredBy);
 
@@ -177,7 +173,7 @@ QInteraction *QLifeline::interaction() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QLifeline);
+    Q_D(const QLifeline);
     return d->interaction;
 }
 
@@ -185,7 +181,7 @@ void QLifeline::setInteraction(QInteraction *interaction)
 {
     // This is a read-write association end
 
-    QTUML_D(QLifeline);
+    Q_D(QLifeline);
     if (d->interaction != interaction) {
         // Adjust opposite property
         if (d->interaction)
@@ -209,7 +205,7 @@ QValueSpecification *QLifeline::selector() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QLifeline);
+    Q_D(const QLifeline);
     return d->selector;
 }
 
@@ -217,7 +213,7 @@ void QLifeline::setSelector(QValueSpecification *selector)
 {
     // This is a read-write association end
 
-    QTUML_D(QLifeline);
+    Q_D(QLifeline);
     if (d->selector != selector) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->selector));

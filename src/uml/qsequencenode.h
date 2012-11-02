@@ -55,7 +55,10 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QExecutableNode;
+
+class QSequenceNodePrivate;
 
 class Q_UML_EXPORT QSequenceNode : public QStructuredActivityNode
 {
@@ -65,6 +68,7 @@ class Q_UML_EXPORT QSequenceNode : public QStructuredActivityNode
     Q_PROPERTY(const QList<QExecutableNode *> * executableNodes READ executableNodes)
 
     Q_DISABLE_COPY(QSequenceNode)
+    Q_DECLARE_PRIVATE(QSequenceNode)
 
 public:
     explicit QSequenceNode(QObject *parent = 0);
@@ -76,12 +80,13 @@ public:
     void removeExecutableNode(QExecutableNode *executableNode);
 
 protected:
-    explicit QSequenceNode(bool createPimpl, QObject *parent = 0);
+    explicit QSequenceNode(QSequenceNodePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QSequenceNode) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QSequenceNode) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QSequenceNode) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QSequenceNode) *> *)
 
 QT_END_HEADER

@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QExtensionPointPrivate::QExtensionPointPrivate(QExtensionPoint *q_umlptr) :
+QExtensionPointPrivate::QExtensionPointPrivate() :
     useCase(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QExtensionPointPrivate::~QExtensionPointPrivate()
@@ -64,17 +63,14 @@ QExtensionPointPrivate::~QExtensionPointPrivate()
     \brief An extension point identifies a point in the behavior of a use case where that behavior can be extended by the behavior of some other (extending) use case, as specified by an extend relationship.
  */
 
-QExtensionPoint::QExtensionPoint(QObject *parent)
-    : QObject(parent)
+QExtensionPoint::QExtensionPoint(QObject *parent) :
+    QRedefinableElement(*new QExtensionPointPrivate, parent)
 {
-    d_umlptr = new QExtensionPointPrivate(this);
 }
 
-QExtensionPoint::QExtensionPoint(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QExtensionPoint::QExtensionPoint(QExtensionPointPrivate &dd, QObject *parent) :
+    QRedefinableElement(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QExtensionPointPrivate;
 }
 
 QExtensionPoint::~QExtensionPoint()
@@ -88,7 +84,7 @@ QUseCase *QExtensionPoint::useCase() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QExtensionPoint);
+    Q_D(const QExtensionPoint);
     return d->useCase;
 }
 
@@ -96,7 +92,7 @@ void QExtensionPoint::setUseCase(QUseCase *useCase)
 {
     // This is a read-write association end
 
-    QTUML_D(QExtensionPoint);
+    Q_D(QExtensionPoint);
     if (d->useCase != useCase) {
         // Adjust opposite property
         if (d->useCase)

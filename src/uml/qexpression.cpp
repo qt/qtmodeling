@@ -45,10 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QExpressionPrivate::QExpressionPrivate(QExpression *q_umlptr) :
+QExpressionPrivate::QExpressionPrivate() :
     operands(new QList<QValueSpecification *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QExpressionPrivate::~QExpressionPrivate()
@@ -64,17 +63,14 @@ QExpressionPrivate::~QExpressionPrivate()
     \brief An expression is a structured tree of symbols that denotes a (possibly empty) set of values when evaluated in a context.An expression represents a node in an expression tree, which may be non-terminal or terminal. It defines a symbol, and has a possibly empty sequence of operands which are value specifications.
  */
 
-QExpression::QExpression(QObject *parent)
-    : QObject(parent)
+QExpression::QExpression(QObject *parent) :
+    QValueSpecification(*new QExpressionPrivate, parent)
 {
-    d_umlptr = new QExpressionPrivate(this);
 }
 
-QExpression::QExpression(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QExpression::QExpression(QExpressionPrivate &dd, QObject *parent) :
+    QValueSpecification(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QExpressionPrivate;
 }
 
 QExpression::~QExpression()
@@ -88,7 +84,7 @@ QString QExpression::symbol() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QExpression);
+    Q_D(const QExpression);
     return d->symbol;
 }
 
@@ -96,7 +92,7 @@ void QExpression::setSymbol(QString symbol)
 {
     // This is a read-write attribute
 
-    QTUML_D(QExpression);
+    Q_D(QExpression);
     if (d->symbol != symbol) {
         d->symbol = symbol;
     }
@@ -109,7 +105,7 @@ const QList<QValueSpecification *> *QExpression::operands() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QExpression);
+    Q_D(const QExpression);
     return d->operands;
 }
 
@@ -117,7 +113,7 @@ void QExpression::addOperand(QValueSpecification *operand)
 {
     // This is a read-write association end
 
-    QTUML_D(QExpression);
+    Q_D(QExpression);
     if (!d->operands->contains(operand)) {
         d->operands->append(operand);
 
@@ -130,7 +126,7 @@ void QExpression::removeOperand(QValueSpecification *operand)
 {
     // This is a read-write association end
 
-    QTUML_D(QExpression);
+    Q_D(QExpression);
     if (d->operands->contains(operand)) {
         d->operands->removeAll(operand);
 

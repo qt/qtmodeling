@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qdependency_p.h"
+#include "private/qdependency_p.h"
+#include "qabstraction.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QOpaqueExpression;
 class QAbstraction;
 
-class QAbstractionPrivate : public QDependencyPrivate
+class Q_UML_EXPORT QAbstractionPrivate : public QDependencyPrivate
 {
+    Q_DECLARE_PUBLIC(QAbstraction)
+
 public:
-    explicit QAbstractionPrivate(QAbstraction *q_umlptr = 0);
+    explicit QAbstractionPrivate();
     virtual ~QAbstractionPrivate();
 
     QOpaqueExpression *mapping;

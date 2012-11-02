@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qcreatelinkaction_p.h"
+#include "private/qcreatelinkaction_p.h"
+#include "qcreatelinkobjectaction.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QOutputPin;
 class QCreateLinkObjectAction;
 
-class QCreateLinkObjectActionPrivate : public QCreateLinkActionPrivate
+class Q_UML_EXPORT QCreateLinkObjectActionPrivate : public QCreateLinkActionPrivate
 {
+    Q_DECLARE_PUBLIC(QCreateLinkObjectAction)
+
 public:
-    explicit QCreateLinkObjectActionPrivate(QCreateLinkObjectAction *q_umlptr = 0);
+    explicit QCreateLinkObjectActionPrivate();
     virtual ~QCreateLinkObjectActionPrivate();
 
     QOutputPin *result;

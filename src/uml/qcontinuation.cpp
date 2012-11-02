@@ -45,10 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QContinuationPrivate::QContinuationPrivate(QContinuation *q_umlptr) :
+QContinuationPrivate::QContinuationPrivate() :
     setting(true)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QContinuationPrivate::~QContinuationPrivate()
@@ -63,17 +62,14 @@ QContinuationPrivate::~QContinuationPrivate()
     \brief A continuation is a syntactic way to define continuations of different branches of an alternative combined fragment. Continuations is intuitively similar to labels representing intermediate points in a flow of control.
  */
 
-QContinuation::QContinuation(QObject *parent)
-    : QObject(parent)
+QContinuation::QContinuation(QObject *parent) :
+    QInteractionFragment(*new QContinuationPrivate, parent)
 {
-    d_umlptr = new QContinuationPrivate(this);
 }
 
-QContinuation::QContinuation(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QContinuation::QContinuation(QContinuationPrivate &dd, QObject *parent) :
+    QInteractionFragment(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QContinuationPrivate;
 }
 
 QContinuation::~QContinuation()
@@ -87,7 +83,7 @@ bool QContinuation::setting() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QContinuation);
+    Q_D(const QContinuation);
     return d->setting;
 }
 
@@ -95,7 +91,7 @@ void QContinuation::setSetting(bool setting)
 {
     // This is a read-write attribute
 
-    QTUML_D(QContinuation);
+    Q_D(QContinuation);
     if (d->setting != setting) {
         d->setting = setting;
     }

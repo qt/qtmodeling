@@ -44,9 +44,12 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qtemplateableelement_p.h"
-#include "qbehavioralfeature_p.h"
-#include "qparameterableelement_p.h"
+#include "private/qobject_p.h"
+
+#include "private/qtemplateableelement_p.h"
+#include "private/qbehavioralfeature_p.h"
+#include "private/qparameterableelement_p.h"
+#include "qoperation.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -58,6 +61,7 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QRedefinableElement;
 class QType;
 class QOperationTemplateParameter;
@@ -68,10 +72,12 @@ class QConstraint;
 class QDataType;
 class QClass;
 
-class QOperationPrivate : public QTemplateableElementPrivate, public QBehavioralFeaturePrivate, public QParameterableElementPrivate
+class Q_UML_EXPORT QOperationPrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QOperation)
+
 public:
-    explicit QOperationPrivate(QOperation *q_umlptr = 0);
+    explicit QOperationPrivate();
     virtual ~QOperationPrivate();
 
     bool isQuery;
@@ -85,6 +91,11 @@ public:
     QSet<QConstraint *> *preconditions;
     QClass *class_;
     QSet<QType *> *raisedExceptions;
+
+private:
+    QTemplateableElementPrivate *_wrappedTemplateableElementPrivate;
+    QBehavioralFeaturePrivate *_wrappedBehavioralFeaturePrivate;
+    QParameterableElementPrivate *_wrappedParameterableElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

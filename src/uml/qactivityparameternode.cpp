@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QActivityParameterNodePrivate::QActivityParameterNodePrivate(QActivityParameterNode *q_umlptr) :
+QActivityParameterNodePrivate::QActivityParameterNodePrivate() :
     parameter(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QActivityParameterNodePrivate::~QActivityParameterNodePrivate()
@@ -64,17 +63,14 @@ QActivityParameterNodePrivate::~QActivityParameterNodePrivate()
     \brief An activity parameter node is an object node for inputs and outputs to activities.
  */
 
-QActivityParameterNode::QActivityParameterNode(QObject *parent)
-    : QObject(parent)
+QActivityParameterNode::QActivityParameterNode(QObject *parent) :
+    QObjectNode(*new QActivityParameterNodePrivate, parent)
 {
-    d_umlptr = new QActivityParameterNodePrivate(this);
 }
 
-QActivityParameterNode::QActivityParameterNode(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QActivityParameterNode::QActivityParameterNode(QActivityParameterNodePrivate &dd, QObject *parent) :
+    QObjectNode(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QActivityParameterNodePrivate;
 }
 
 QActivityParameterNode::~QActivityParameterNode()
@@ -88,7 +84,7 @@ QParameter *QActivityParameterNode::parameter() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QActivityParameterNode);
+    Q_D(const QActivityParameterNode);
     return d->parameter;
 }
 
@@ -96,7 +92,7 @@ void QActivityParameterNode::setParameter(QParameter *parameter)
 {
     // This is a read-write association end
 
-    QTUML_D(QActivityParameterNode);
+    Q_D(QActivityParameterNode);
     if (d->parameter != parameter) {
         d->parameter = parameter;
     }

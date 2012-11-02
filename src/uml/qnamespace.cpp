@@ -47,7 +47,6 @@
 #include <QtUml/QConstraint>
 #include <QtUml/QElementImport>
 #include <QtUml/QPackageableElement>
-#include <QtUml/QPackage>
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -99,8 +98,8 @@ void QNamespacePrivate::addOwnedMember(QNamedElement *ownedMember)
         QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(ownedMember));
 
         // Adjust opposite property
-        QTUML_Q(QNamespace);
-        (dynamic_cast<QNamedElementPrivate *>(ownedMember->d_umlptr))->setNamespace_(q);
+        Q_Q(QNamespace);
+        (dynamic_cast<QNamedElementPrivate *>(ownedMember->d_ptr))->setNamespace_(q);
     }
 }
 
@@ -116,8 +115,8 @@ void QNamespacePrivate::removeOwnedMember(QNamedElement *ownedMember)
         QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(ownedMember));
 
         // Adjust opposite property
-        QTUML_Q(QNamespace);
-        (dynamic_cast<QNamedElementPrivate *>(ownedMember->d_umlptr))->setNamespace_(0);
+        Q_Q(QNamespace);
+        (dynamic_cast<QNamedElementPrivate *>(ownedMember->d_ptr))->setNamespace_(0);
     }
 }
 
@@ -129,7 +128,13 @@ void QNamespacePrivate::removeOwnedMember(QNamedElement *ownedMember)
     \brief A namespace is an element in a model that contains a set of named elements that can be identified by name.
  */
 
-QNamespace::QNamespace()
+QNamespace::QNamespace(QObject *parent) :
+    QNamedElement(*new QNamespacePrivate, parent)
+{
+}
+
+QNamespace::QNamespace(QNamespacePrivate &dd, QObject *parent) :
+    QNamedElement(dd, parent)
 {
 }
 
@@ -144,7 +149,7 @@ const QSet<QPackageImport *> *QNamespace::packageImports() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QNamespace);
+    Q_D(const QNamespace);
     return d->packageImports;
 }
 
@@ -152,7 +157,7 @@ void QNamespace::addPackageImport(QPackageImport *packageImport)
 {
     // This is a read-write association end
 
-    QTUML_D(QNamespace);
+    Q_D(QNamespace);
     if (!d->packageImports->contains(packageImport)) {
         d->packageImports->insert(packageImport);
 
@@ -161,11 +166,6 @@ void QNamespace::addPackageImport(QPackageImport *packageImport)
 
         // Adjust opposite property
         packageImport->setImportingNamespace(this);
-
-        // Adjust indirectly subsetted property(ies)
-        // This is because importedMembers is derived (not derivedUnion) and subsets member
-        foreach (QPackageableElement *packageableElement, *packageImport->importedPackage()->packagedElements())
-            d->addMember(packageableElement);
     }
 }
 
@@ -173,7 +173,7 @@ void QNamespace::removePackageImport(QPackageImport *packageImport)
 {
     // This is a read-write association end
 
-    QTUML_D(QNamespace);
+    Q_D(QNamespace);
     if (d->packageImports->contains(packageImport)) {
         d->packageImports->remove(packageImport);
 
@@ -182,11 +182,6 @@ void QNamespace::removePackageImport(QPackageImport *packageImport)
 
         // Adjust opposite property
         packageImport->setImportingNamespace(0);
-
-        // Adjust indirectly subsetted property(ies)
-        // This is because importedMembers is derived (not derivedUnion) and subsets member
-        foreach (QPackageableElement *packageableElement, *packageImport->importedPackage()->packagedElements())
-            d->removeMember(packageableElement);
     }
 }
 
@@ -197,26 +192,21 @@ const QSet<QNamedElement *> *QNamespace::members() const
 {
     // This is a read-only derived-union association end
 
-    QTUML_D(const QNamespace);
+    Q_D(const QNamespace);
     return d->members;
 }
 
 /*!
     References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
-    It is the caller's responsibility to delete the returned set.
  */
 const QSet<QPackageableElement *> *QNamespace::importedMembers() const
 {
     // This is a read-only derived association end
 
-    QTUML_D(const QNamespace);
-    QSet<QPackageableElement *> * importedMembers_ = new QSet<QPackageableElement *>;
-    foreach (QElementImport *elementImport, *d->elementImports)
-        importedMembers_->insert(elementImport->importedElement());
-    foreach (QPackageImport *packageImport, *d->packageImports)
-        importedMembers_->unite(*packageImport->importedPackage()->packagedElements());
+    qWarning("QNamespace::importedMembers: to be implemented (this is a derived associationend)");
 
-    return importedMembers_;
+    //Q_D(const QNamespace);
+    //return <derived-return>;
 }
 
 /*!
@@ -226,7 +216,7 @@ const QSet<QElementImport *> *QNamespace::elementImports() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QNamespace);
+    Q_D(const QNamespace);
     return d->elementImports;
 }
 
@@ -234,7 +224,7 @@ void QNamespace::addElementImport(QElementImport *elementImport)
 {
     // This is a read-write association end
 
-    QTUML_D(QNamespace);
+    Q_D(QNamespace);
     if (!d->elementImports->contains(elementImport)) {
         d->elementImports->insert(elementImport);
 
@@ -243,10 +233,6 @@ void QNamespace::addElementImport(QElementImport *elementImport)
 
         // Adjust opposite property
         elementImport->setImportingNamespace(this);
-
-        // Adjust indirectly subsetted property(ies)
-        // This is because importedMembers is derived (not derivedUnion) and subsets member
-        d->addMember(elementImport->importedElement());
     }
 }
 
@@ -254,7 +240,7 @@ void QNamespace::removeElementImport(QElementImport *elementImport)
 {
     // This is a read-write association end
 
-    QTUML_D(QNamespace);
+    Q_D(QNamespace);
     if (d->elementImports->contains(elementImport)) {
         d->elementImports->remove(elementImport);
 
@@ -263,10 +249,6 @@ void QNamespace::removeElementImport(QElementImport *elementImport)
 
         // Adjust opposite property
         elementImport->setImportingNamespace(0);
-
-        // Adjust indirectly subsetted property(ies)
-        // This is because importedMembers is derived (not derivedUnion) and subsets member
-        d->removeMember(elementImport->importedElement());
     }
 }
 
@@ -277,7 +259,7 @@ const QSet<QConstraint *> *QNamespace::ownedRules() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QNamespace);
+    Q_D(const QNamespace);
     return d->ownedRules;
 }
 
@@ -285,7 +267,7 @@ void QNamespace::addOwnedRule(QConstraint *ownedRule)
 {
     // This is a read-write association end
 
-    QTUML_D(QNamespace);
+    Q_D(QNamespace);
     if (!d->ownedRules->contains(ownedRule)) {
         d->ownedRules->insert(ownedRule);
 
@@ -301,7 +283,7 @@ void QNamespace::removeOwnedRule(QConstraint *ownedRule)
 {
     // This is a read-write association end
 
-    QTUML_D(QNamespace);
+    Q_D(QNamespace);
     if (d->ownedRules->contains(ownedRule)) {
         d->ownedRules->remove(ownedRule);
 
@@ -320,7 +302,7 @@ const QSet<QNamedElement *> *QNamespace::ownedMembers() const
 {
     // This is a read-only derived-union association end
 
-    QTUML_D(const QNamespace);
+    Q_D(const QNamespace);
     return d->ownedMembers;
 }
 

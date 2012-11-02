@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QPrimitiveTypePrivate::QPrimitiveTypePrivate(QPrimitiveType *q_umlptr)
+QPrimitiveTypePrivate::QPrimitiveTypePrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QPrimitiveTypePrivate::~QPrimitiveTypePrivate()
@@ -62,17 +61,14 @@ QPrimitiveTypePrivate::~QPrimitiveTypePrivate()
     \brief A primitive type defines a predefined data type, without any relevant substructure (i.e., it has no parts in the context of UML). A primitive datatype may have an algebra and operations defined outside of UML, for example, mathematically.
  */
 
-QPrimitiveType::QPrimitiveType(QObject *parent)
-    : QDataType(false, parent)
+QPrimitiveType::QPrimitiveType(QObject *parent) :
+    QDataType(*new QPrimitiveTypePrivate, parent)
 {
-    d_umlptr = new QPrimitiveTypePrivate(this);
 }
 
-QPrimitiveType::QPrimitiveType(bool createPimpl, QObject *parent)
-    : QDataType(createPimpl, parent)
+QPrimitiveType::QPrimitiveType(QPrimitiveTypePrivate &dd, QObject *parent) :
+    QDataType(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QPrimitiveTypePrivate;
 }
 
 QPrimitiveType::~QPrimitiveType()

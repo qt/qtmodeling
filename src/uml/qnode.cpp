@@ -45,10 +45,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QNodePrivate::QNodePrivate(QNode *q_umlptr) :
+QNodePrivate::QNodePrivate() :
     nestedNodes(new QSet<QNode *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QNodePrivate::~QNodePrivate()
@@ -64,17 +63,18 @@ QNodePrivate::~QNodePrivate()
     \brief A node is computational resource upon which artifacts may be deployed for execution. Nodes can be interconnected through communication paths to define network structures.
  */
 
-QNode::QNode(QObject *parent)
-    : QClass(false, parent)
+QNode::QNode(QObject *parent) :
+    QObject(*new QNodePrivate, parent),
+    _wrappedClass(new QClass(this)),
+    _wrappedDeploymentTarget(new QDeploymentTarget(this))
 {
-    d_umlptr = new QNodePrivate(this);
 }
 
-QNode::QNode(bool createPimpl, QObject *parent)
-    : QClass(createPimpl, parent)
+QNode::QNode(QNodePrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedClass(new QClass(this)),
+    _wrappedDeploymentTarget(new QDeploymentTarget(this))
 {
-    if (createPimpl)
-        d_umlptr = new QNodePrivate;
 }
 
 QNode::~QNode()
@@ -88,7 +88,7 @@ const QSet<QNode *> *QNode::nestedNodes() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QNode);
+    Q_D(const QNode);
     return d->nestedNodes;
 }
 
@@ -96,7 +96,7 @@ void QNode::addNestedNode(QNode *nestedNode)
 {
     // This is a read-write association end
 
-    QTUML_D(QNode);
+    Q_D(QNode);
     if (!d->nestedNodes->contains(nestedNode)) {
         d->nestedNodes->insert(nestedNode);
 
@@ -109,7 +109,7 @@ void QNode::removeNestedNode(QNode *nestedNode)
 {
     // This is a read-write association end
 
-    QTUML_D(QNode);
+    Q_D(QNode);
     if (d->nestedNodes->contains(nestedNode)) {
         d->nestedNodes->remove(nestedNode);
 

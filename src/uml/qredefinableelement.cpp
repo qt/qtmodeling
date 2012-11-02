@@ -103,7 +103,13 @@ void QRedefinableElementPrivate::removeRedefinitionContext(QClassifier *redefini
     \brief A redefinable element is an element that, when defined in the context of a classifier, can be redefined more specifically or differently in the context of another classifier that specializes (directly or indirectly) the context classifier.
  */
 
-QRedefinableElement::QRedefinableElement()
+QRedefinableElement::QRedefinableElement(QObject *parent) :
+    QNamedElement(*new QRedefinableElementPrivate, parent)
+{
+}
+
+QRedefinableElement::QRedefinableElement(QRedefinableElementPrivate &dd, QObject *parent) :
+    QNamedElement(dd, parent)
 {
 }
 
@@ -118,7 +124,7 @@ bool QRedefinableElement::isLeaf() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QRedefinableElement);
+    Q_D(const QRedefinableElement);
     return d->isLeaf;
 }
 
@@ -126,7 +132,7 @@ void QRedefinableElement::setLeaf(bool isLeaf)
 {
     // This is a read-write attribute
 
-    QTUML_D(QRedefinableElement);
+    Q_D(QRedefinableElement);
     if (d->isLeaf != isLeaf) {
         d->isLeaf = isLeaf;
     }
@@ -139,7 +145,7 @@ const QSet<QRedefinableElement *> *QRedefinableElement::redefinedElements() cons
 {
     // This is a read-only derived-union association end
 
-    QTUML_D(const QRedefinableElement);
+    Q_D(const QRedefinableElement);
     return d->redefinedElements;
 }
 
@@ -150,7 +156,7 @@ const QSet<QClassifier *> *QRedefinableElement::redefinitionContexts() const
 {
     // This is a read-only derived-union association end
 
-    QTUML_D(const QRedefinableElement);
+    Q_D(const QRedefinableElement);
     return d->redefinitionContexts;
 }
 

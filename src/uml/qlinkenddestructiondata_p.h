@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qlinkenddata_p.h"
+#include "private/qlinkenddata_p.h"
+#include "qlinkenddestructiondata.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInputPin;
 class QLinkEndDestructionData;
 
-class QLinkEndDestructionDataPrivate : public QLinkEndDataPrivate
+class Q_UML_EXPORT QLinkEndDestructionDataPrivate : public QLinkEndDataPrivate
 {
+    Q_DECLARE_PUBLIC(QLinkEndDestructionData)
+
 public:
-    explicit QLinkEndDestructionDataPrivate(QLinkEndDestructionData *q_umlptr = 0);
+    explicit QLinkEndDestructionDataPrivate();
     virtual ~QLinkEndDestructionDataPrivate();
 
     bool isDestroyDuplicates;

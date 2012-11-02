@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QDirectedRelationship>
 
 // Qt includes
@@ -56,25 +55,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QTemplateableElement;
 class QTemplateParameterSubstitution;
 class QTemplateSignature;
 
-class Q_UML_EXPORT QTemplateBinding : public QObject, public QDirectedRelationship
+class QTemplateBindingPrivate;
+
+class Q_UML_EXPORT QTemplateBinding : public QDirectedRelationship
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QRelationship
-    Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
-
-    // From QDirectedRelationship
-    Q_PROPERTY(const QSet<QElement *> * sources READ sources)
-    Q_PROPERTY(const QSet<QElement *> * targets READ targets)
 
     // From QTemplateBinding
     Q_PROPERTY(QTemplateSignature * signature READ signature WRITE setSignature)
@@ -82,6 +72,7 @@ class Q_UML_EXPORT QTemplateBinding : public QObject, public QDirectedRelationsh
     Q_PROPERTY(const QSet<QTemplateParameterSubstitution *> * parameterSubstitutions READ parameterSubstitutions)
 
     Q_DISABLE_COPY(QTemplateBinding)
+    Q_DECLARE_PRIVATE(QTemplateBinding)
 
 public:
     explicit QTemplateBinding(QObject *parent = 0);
@@ -97,12 +88,13 @@ public:
     void removeParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution);
 
 protected:
-    explicit QTemplateBinding(bool createPimpl, QObject *parent = 0);
+    explicit QTemplateBinding(QTemplateBindingPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateBinding) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QTemplateBinding) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateBinding) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateBinding) *> *)
 
 QT_END_HEADER

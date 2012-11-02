@@ -63,7 +63,13 @@ QMessageEndPrivate::~QMessageEndPrivate()
     \brief MessageEnd is an abstract specialization of NamedElement that represents what can occur at the end of a message.
  */
 
-QMessageEnd::QMessageEnd()
+QMessageEnd::QMessageEnd(QObject *parent) :
+    QNamedElement(*new QMessageEndPrivate, parent)
+{
+}
+
+QMessageEnd::QMessageEnd(QMessageEndPrivate &dd, QObject *parent) :
+    QNamedElement(dd, parent)
 {
 }
 
@@ -78,7 +84,7 @@ QMessage *QMessageEnd::message() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QMessageEnd);
+    Q_D(const QMessageEnd);
     return d->message;
 }
 
@@ -86,7 +92,7 @@ void QMessageEnd::setMessage(QMessage *message)
 {
     // This is a read-write association end
 
-    QTUML_D(QMessageEnd);
+    Q_D(QMessageEnd);
     if (d->message != message) {
         d->message = message;
     }

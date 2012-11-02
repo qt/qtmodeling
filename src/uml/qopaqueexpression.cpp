@@ -47,12 +47,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QOpaqueExpressionPrivate::QOpaqueExpressionPrivate(QOpaqueExpression *q_umlptr) :
+QOpaqueExpressionPrivate::QOpaqueExpressionPrivate() :
     bodies(new QList<QString>),
     languages(new QList<QString>),
     behavior(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QOpaqueExpressionPrivate::~QOpaqueExpressionPrivate()
@@ -69,17 +68,14 @@ QOpaqueExpressionPrivate::~QOpaqueExpressionPrivate()
     \brief An opaque expression is an uninterpreted textual statement that denotes a (possibly empty) set of values when evaluated in a context.Provides a mechanism for precisely defining the behavior of an opaque expression. An opaque expression is defined by a behavior restricted to return one result.
  */
 
-QOpaqueExpression::QOpaqueExpression(QObject *parent)
-    : QObject(parent)
+QOpaqueExpression::QOpaqueExpression(QObject *parent) :
+    QValueSpecification(*new QOpaqueExpressionPrivate, parent)
 {
-    d_umlptr = new QOpaqueExpressionPrivate(this);
 }
 
-QOpaqueExpression::QOpaqueExpression(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QOpaqueExpression::QOpaqueExpression(QOpaqueExpressionPrivate &dd, QObject *parent) :
+    QValueSpecification(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QOpaqueExpressionPrivate;
 }
 
 QOpaqueExpression::~QOpaqueExpression()
@@ -93,7 +89,7 @@ const QList<QString> *QOpaqueExpression::bodies() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QOpaqueExpression);
+    Q_D(const QOpaqueExpression);
     return d->bodies;
 }
 
@@ -101,7 +97,7 @@ void QOpaqueExpression::addBody(QString body)
 {
     // This is a read-write attribute
 
-    QTUML_D(QOpaqueExpression);
+    Q_D(QOpaqueExpression);
     if (!d->bodies->contains(body)) {
         d->bodies->append(body);
     }
@@ -111,7 +107,7 @@ void QOpaqueExpression::removeBody(QString body)
 {
     // This is a read-write attribute
 
-    QTUML_D(QOpaqueExpression);
+    Q_D(QOpaqueExpression);
     if (d->bodies->contains(body)) {
         d->bodies->removeAll(body);
     }
@@ -124,7 +120,7 @@ const QList<QString> *QOpaqueExpression::languages() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QOpaqueExpression);
+    Q_D(const QOpaqueExpression);
     return d->languages;
 }
 
@@ -132,7 +128,7 @@ void QOpaqueExpression::addLanguage(QString language)
 {
     // This is a read-write attribute
 
-    QTUML_D(QOpaqueExpression);
+    Q_D(QOpaqueExpression);
     if (!d->languages->contains(language)) {
         d->languages->append(language);
     }
@@ -142,7 +138,7 @@ void QOpaqueExpression::removeLanguage(QString language)
 {
     // This is a read-write attribute
 
-    QTUML_D(QOpaqueExpression);
+    Q_D(QOpaqueExpression);
     if (d->languages->contains(language)) {
         d->languages->removeAll(language);
     }
@@ -155,7 +151,7 @@ QBehavior *QOpaqueExpression::behavior() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QOpaqueExpression);
+    Q_D(const QOpaqueExpression);
     return d->behavior;
 }
 
@@ -163,7 +159,7 @@ void QOpaqueExpression::setBehavior(QBehavior *behavior)
 {
     // This is a read-write association end
 
-    QTUML_D(QOpaqueExpression);
+    Q_D(QOpaqueExpression);
     if (d->behavior != behavior) {
         d->behavior = behavior;
     }
@@ -178,7 +174,7 @@ QParameter *QOpaqueExpression::result() const
 
     qWarning("QOpaqueExpression::result: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(const QOpaqueExpression);
+    //Q_D(const QOpaqueExpression);
     //return <derived-return>;
 }
 

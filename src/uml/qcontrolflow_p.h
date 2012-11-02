@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qactivityedge_p.h"
+#include "private/qactivityedge_p.h"
+#include "qcontrolflow.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,10 +55,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QControlFlow;
 
-class QControlFlowPrivate : public QActivityEdgePrivate
+class Q_UML_EXPORT QControlFlowPrivate : public QActivityEdgePrivate
 {
+    Q_DECLARE_PUBLIC(QControlFlow)
+
 public:
-    explicit QControlFlowPrivate(QControlFlow *q_umlptr = 0);
+    explicit QControlFlowPrivate();
     virtual ~QControlFlowPrivate();
 
 };

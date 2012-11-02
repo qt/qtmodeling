@@ -61,7 +61,13 @@ QEventPrivate::~QEventPrivate()
     \brief An event is the specification of some occurrence that may potentially trigger effects by an object.
  */
 
-QEvent::QEvent()
+QEvent::QEvent(QObject *parent) :
+    QPackageableElement(*new QEventPrivate, parent)
+{
+}
+
+QEvent::QEvent(QEventPrivate &dd, QObject *parent) :
+    QPackageableElement(dd, parent)
 {
 }
 

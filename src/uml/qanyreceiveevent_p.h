@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qmessageevent_p.h"
+#include "private/qmessageevent_p.h"
+#include "qanyreceiveevent.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,10 +55,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QAnyReceiveEvent;
 
-class QAnyReceiveEventPrivate : public QMessageEventPrivate
+class Q_UML_EXPORT QAnyReceiveEventPrivate : public QMessageEventPrivate
 {
+    Q_DECLARE_PUBLIC(QAnyReceiveEvent)
+
 public:
-    explicit QAnyReceiveEventPrivate(QAnyReceiveEvent *q_umlptr = 0);
+    explicit QAnyReceiveEventPrivate();
     virtual ~QAnyReceiveEventPrivate();
 
 };

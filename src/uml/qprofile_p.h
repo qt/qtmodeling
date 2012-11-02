@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qpackage_p.h"
+#include "private/qpackage_p.h"
+#include "qprofile.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,14 +56,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QElementImport;
 class QPackageImport;
 class QProfile;
 
-class QProfilePrivate : public QPackagePrivate
+class Q_UML_EXPORT QProfilePrivate : public QPackagePrivate
 {
+    Q_DECLARE_PUBLIC(QProfile)
+
 public:
-    explicit QProfilePrivate(QProfile *q_umlptr = 0);
+    explicit QProfilePrivate();
     virtual ~QProfilePrivate();
 
     QSet<QPackageImport *> *metamodelReferences;

@@ -123,8 +123,8 @@ void QClassifierPrivate::addFeature(QFeature *feature)
         QNamespacePrivate::addMember(dynamic_cast<QNamedElement *>(feature));
 
         // Adjust opposite property
-        QTUML_Q(QClassifier);
-        (dynamic_cast<QFeaturePrivate *>(feature->d_umlptr))->addFeaturingClassifier(q);
+        Q_Q(QClassifier);
+        (dynamic_cast<QFeaturePrivate *>(feature->d_ptr))->addFeaturingClassifier(q);
     }
 }
 
@@ -139,9 +139,9 @@ void QClassifierPrivate::removeFeature(QFeature *feature)
         QNamespacePrivate::removeMember(dynamic_cast<QNamedElement *>(feature));
 
         // Adjust opposite property
-        QTUML_Q(QClassifier);
+        Q_Q(QClassifier);
         if (feature)
-            (dynamic_cast<QFeaturePrivate *>(feature->d_umlptr))->removeFeaturingClassifier(q);
+            (dynamic_cast<QFeaturePrivate *>(feature->d_ptr))->removeFeaturingClassifier(q);
     }
 }
 
@@ -153,7 +153,21 @@ void QClassifierPrivate::removeFeature(QFeature *feature)
     \brief A classifier is a classification of instances - it describes a set of instances that have features in common. A classifier can specify a generalization hierarchy by referencing its general classifiers.A classifier has the capability to own use cases. Although the owning classifier typically represents the subject to which the owned use cases apply, this is not necessarily the case. In principle, the same use case can be applied to multiple subjects, as identified by the subject association role of a use case.Classifier is defined to be a kind of templateable element so that a classifier can be parameterized. It is also defined to be a kind of parameterable element so that a classifier can be a formal template parameter.A classifier has the capability to own collaboration uses. These collaboration uses link a collaboration with the classifier to give a description of the workings of the classifier.
  */
 
-QClassifier::QClassifier()
+QClassifier::QClassifier(QObject *parent) :
+    QObject(*new QClassifierPrivate, parent),
+    _wrappedNamespace(new QNamespace(this)),
+    _wrappedType(new QType(this)),
+    _wrappedRedefinableElement(new QRedefinableElement(this)),
+    _wrappedTemplateableElement(new QTemplateableElement(this))
+{
+}
+
+QClassifier::QClassifier(QClassifierPrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedNamespace(new QNamespace(this)),
+    _wrappedType(new QType(this)),
+    _wrappedRedefinableElement(new QRedefinableElement(this)),
+    _wrappedTemplateableElement(new QTemplateableElement(this))
 {
 }
 
@@ -168,7 +182,7 @@ bool QClassifier::isAbstract() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QClassifier);
+    Q_D(const QClassifier);
     return d->isAbstract;
 }
 
@@ -176,7 +190,7 @@ void QClassifier::setAbstract(bool isAbstract)
 {
     // This is a read-write attribute
 
-    QTUML_D(QClassifier);
+    Q_D(QClassifier);
     if (d->isAbstract != isAbstract) {
         d->isAbstract = isAbstract;
     }
@@ -189,7 +203,7 @@ bool QClassifier::isFinalSpecialization() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QClassifier);
+    Q_D(const QClassifier);
     return d->isFinalSpecialization;
 }
 
@@ -197,7 +211,7 @@ void QClassifier::setFinalSpecialization(bool isFinalSpecialization)
 {
     // This is a read-write attribute
 
-    QTUML_D(QClassifier);
+    Q_D(QClassifier);
     if (d->isFinalSpecialization != isFinalSpecialization) {
         d->isFinalSpecialization = isFinalSpecialization;
     }
@@ -210,7 +224,7 @@ const QSet<QUseCase *> *QClassifier::ownedUseCases() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QClassifier);
+    Q_D(const QClassifier);
     return d->ownedUseCases;
 }
 
@@ -218,7 +232,7 @@ void QClassifier::addOwnedUseCase(QUseCase *ownedUseCase)
 {
     // This is a read-write association end
 
-    QTUML_D(QClassifier);
+    Q_D(QClassifier);
     if (!d->ownedUseCases->contains(ownedUseCase)) {
         d->ownedUseCases->insert(ownedUseCase);
 
@@ -231,7 +245,7 @@ void QClassifier::removeOwnedUseCase(QUseCase *ownedUseCase)
 {
     // This is a read-write association end
 
-    QTUML_D(QClassifier);
+    Q_D(QClassifier);
     if (d->ownedUseCases->contains(ownedUseCase)) {
         d->ownedUseCases->remove(ownedUseCase);
 
@@ -247,7 +261,7 @@ const QSet<QGeneralizationSet *> *QClassifier::powertypeExtents() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QClassifier);
+    Q_D(const QClassifier);
     return d->powertypeExtents;
 }
 
@@ -255,7 +269,7 @@ void QClassifier::addPowertypeExtent(QGeneralizationSet *powertypeExtent)
 {
     // This is a read-write association end
 
-    QTUML_D(QClassifier);
+    Q_D(QClassifier);
     if (!d->powertypeExtents->contains(powertypeExtent)) {
         d->powertypeExtents->insert(powertypeExtent);
 
@@ -268,7 +282,7 @@ void QClassifier::removePowertypeExtent(QGeneralizationSet *powertypeExtent)
 {
     // This is a read-write association end
 
-    QTUML_D(QClassifier);
+    Q_D(QClassifier);
     if (d->powertypeExtents->contains(powertypeExtent)) {
         d->powertypeExtents->remove(powertypeExtent);
 
@@ -284,7 +298,7 @@ const QSet<QUseCase *> *QClassifier::useCases() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QClassifier);
+    Q_D(const QClassifier);
     return d->useCases;
 }
 
@@ -292,7 +306,7 @@ void QClassifier::addUseCase(QUseCase *useCase)
 {
     // This is a read-write association end
 
-    QTUML_D(QClassifier);
+    Q_D(QClassifier);
     if (!d->useCases->contains(useCase)) {
         d->useCases->insert(useCase);
 
@@ -305,7 +319,7 @@ void QClassifier::removeUseCase(QUseCase *useCase)
 {
     // This is a read-write association end
 
-    QTUML_D(QClassifier);
+    Q_D(QClassifier);
     if (d->useCases->contains(useCase)) {
         d->useCases->remove(useCase);
 
@@ -322,7 +336,7 @@ QClassifierTemplateParameter *QClassifier::templateParameter() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QClassifier);
+    Q_D(const QClassifier);
     return d->templateParameter;
 }
 
@@ -330,7 +344,7 @@ void QClassifier::setTemplateParameter(QClassifierTemplateParameter *templatePar
 {
     // This is a read-write association end
 
-    QTUML_D(QClassifier);
+    Q_D(QClassifier);
     if (d->templateParameter != templateParameter) {
         // Adjust opposite property
 
@@ -348,7 +362,7 @@ const QSet<QClassifier *> *QClassifier::redefinedClassifiers() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QClassifier);
+    Q_D(const QClassifier);
     return d->redefinedClassifiers;
 }
 
@@ -356,7 +370,7 @@ void QClassifier::addRedefinedClassifier(QClassifier *redefinedClassifier)
 {
     // This is a read-write association end
 
-    QTUML_D(QClassifier);
+    Q_D(QClassifier);
     if (!d->redefinedClassifiers->contains(redefinedClassifier)) {
         d->redefinedClassifiers->insert(redefinedClassifier);
 
@@ -369,7 +383,7 @@ void QClassifier::removeRedefinedClassifier(QClassifier *redefinedClassifier)
 {
     // This is a read-write association end
 
-    QTUML_D(QClassifier);
+    Q_D(QClassifier);
     if (d->redefinedClassifiers->contains(redefinedClassifier)) {
         d->redefinedClassifiers->remove(redefinedClassifier);
 
@@ -385,7 +399,7 @@ QRedefinableTemplateSignature *QClassifier::ownedTemplateSignature() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QClassifier);
+    Q_D(const QClassifier);
     return d->ownedTemplateSignature;
 }
 
@@ -393,7 +407,7 @@ void QClassifier::setOwnedTemplateSignature(QRedefinableTemplateSignature *owned
 {
     // This is a read-write association end
 
-    QTUML_D(QClassifier);
+    Q_D(QClassifier);
     if (d->ownedTemplateSignature != ownedTemplateSignature) {
         // Adjust opposite property
 
@@ -411,7 +425,7 @@ const QSet<QCollaborationUse *> *QClassifier::collaborationUses() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QClassifier);
+    Q_D(const QClassifier);
     return d->collaborationUses;
 }
 
@@ -419,7 +433,7 @@ void QClassifier::addCollaborationUse(QCollaborationUse *collaborationUse)
 {
     // This is a read-write association end
 
-    QTUML_D(QClassifier);
+    Q_D(QClassifier);
     if (!d->collaborationUses->contains(collaborationUse)) {
         d->collaborationUses->insert(collaborationUse);
 
@@ -432,7 +446,7 @@ void QClassifier::removeCollaborationUse(QCollaborationUse *collaborationUse)
 {
     // This is a read-write association end
 
-    QTUML_D(QClassifier);
+    Q_D(QClassifier);
     if (d->collaborationUses->contains(collaborationUse)) {
         d->collaborationUses->remove(collaborationUse);
 
@@ -448,7 +462,7 @@ const QSet<QProperty *> *QClassifier::attributes() const
 {
     // This is a read-only derived-union association end
 
-    QTUML_D(const QClassifier);
+    Q_D(const QClassifier);
     return d->attributes;
 }
 
@@ -459,7 +473,7 @@ const QSet<QFeature *> *QClassifier::features() const
 {
     // This is a read-only derived-union association end
 
-    QTUML_D(const QClassifier);
+    Q_D(const QClassifier);
     return d->features;
 }
 
@@ -472,7 +486,7 @@ const QSet<QClassifier *> *QClassifier::generals() const
 
     qWarning("QClassifier::generals: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(const QClassifier);
+    //Q_D(const QClassifier);
     //return <derived-return>;
 }
 
@@ -482,7 +496,7 @@ void QClassifier::addGeneral(QClassifier *general)
 
     qWarning("QClassifier::addGeneral: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(QClassifier);
+    //Q_D(QClassifier);
     if (false /* <derived-inclusion-criteria> */) {
         // <derived-code>
     }
@@ -494,7 +508,7 @@ void QClassifier::removeGeneral(QClassifier *general)
 
     qWarning("QClassifier::removeGeneral: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(QClassifier);
+    //Q_D(QClassifier);
     if (false /* <derived-exclusion-criteria> */) {
         // <derived-code>
     }
@@ -507,7 +521,7 @@ QCollaborationUse *QClassifier::representation() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QClassifier);
+    Q_D(const QClassifier);
     return d->representation;
 }
 
@@ -515,7 +529,7 @@ void QClassifier::setRepresentation(QCollaborationUse *representation)
 {
     // This is a read-write association end
 
-    QTUML_D(QClassifier);
+    Q_D(QClassifier);
     if (d->representation != representation) {
         // Adjust subsetted property(ies)
         QClassifier::removeCollaborationUse(dynamic_cast<QCollaborationUse *>(d->representation));
@@ -536,7 +550,7 @@ const QSet<QGeneralization *> *QClassifier::generalizations() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QClassifier);
+    Q_D(const QClassifier);
     return d->generalizations;
 }
 
@@ -544,7 +558,7 @@ void QClassifier::addGeneralization(QGeneralization *generalization)
 {
     // This is a read-write association end
 
-    QTUML_D(QClassifier);
+    Q_D(QClassifier);
     if (!d->generalizations->contains(generalization)) {
         d->generalizations->insert(generalization);
 
@@ -560,7 +574,7 @@ void QClassifier::removeGeneralization(QGeneralization *generalization)
 {
     // This is a read-write association end
 
-    QTUML_D(QClassifier);
+    Q_D(QClassifier);
     if (d->generalizations->contains(generalization)) {
         d->generalizations->remove(generalization);
 
@@ -581,7 +595,7 @@ const QSet<QNamedElement *> *QClassifier::inheritedMembers() const
 
     qWarning("QClassifier::inheritedMembers: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(const QClassifier);
+    //Q_D(const QClassifier);
     //return <derived-return>;
 }
 
@@ -592,7 +606,7 @@ const QSet<QSubstitution *> *QClassifier::substitutions() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QClassifier);
+    Q_D(const QClassifier);
     return d->substitutions;
 }
 
@@ -600,7 +614,7 @@ void QClassifier::addSubstitution(QSubstitution *substitution)
 {
     // This is a read-write association end
 
-    QTUML_D(QClassifier);
+    Q_D(QClassifier);
     if (!d->substitutions->contains(substitution)) {
         d->substitutions->insert(substitution);
 
@@ -617,7 +631,7 @@ void QClassifier::removeSubstitution(QSubstitution *substitution)
 {
     // This is a read-write association end
 
-    QTUML_D(QClassifier);
+    Q_D(QClassifier);
     if (d->substitutions->contains(substitution)) {
         d->substitutions->remove(substitution);
 

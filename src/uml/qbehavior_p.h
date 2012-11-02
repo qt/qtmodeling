@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qclass_p.h"
+#include "private/qclass_p.h"
+#include "qbehavior.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -56,6 +57,7 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QBehavior;
 class QBehavioralFeature;
 class QConstraint;
@@ -63,9 +65,12 @@ class QParameter;
 class QBehavioredClassifier;
 class QParameterSet;
 
-class QBehaviorPrivate : public QClassPrivate
+class Q_UML_EXPORT QBehaviorPrivate : public QClassPrivate
 {
+    Q_DECLARE_PUBLIC(QBehavior)
+
 public:
+    explicit QBehaviorPrivate();
     virtual ~QBehaviorPrivate();
 
     bool isReentrant;
@@ -75,9 +80,6 @@ public:
     QSet<QBehavior *> *redefinedBehaviors;
     QList<QParameter *> *ownedParameters;
     QSet<QParameterSet *> *ownedParameterSets;
-
-protected:
-    explicit QBehaviorPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qwritelinkaction_p.h"
+#include "private/qwritelinkaction_p.h"
+#include "qdestroylinkaction.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,13 +56,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QLinkEndDestructionData;
 class QDestroyLinkAction;
 
-class QDestroyLinkActionPrivate : public QWriteLinkActionPrivate
+class Q_UML_EXPORT QDestroyLinkActionPrivate : public QWriteLinkActionPrivate
 {
+    Q_DECLARE_PUBLIC(QDestroyLinkAction)
+
 public:
-    explicit QDestroyLinkActionPrivate(QDestroyLinkAction *q_umlptr = 0);
+    explicit QDestroyLinkActionPrivate();
     virtual ~QDestroyLinkActionPrivate();
 
     QSet<QLinkEndDestructionData *> *endData;

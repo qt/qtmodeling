@@ -47,11 +47,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDecisionNodePrivate::QDecisionNodePrivate(QDecisionNode *q_umlptr) :
+QDecisionNodePrivate::QDecisionNodePrivate() :
     decisionInputFlow(0),
     decisionInput(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QDecisionNodePrivate::~QDecisionNodePrivate()
@@ -66,17 +65,14 @@ QDecisionNodePrivate::~QDecisionNodePrivate()
     \brief A decision node is a control node that chooses between outgoing flows.
  */
 
-QDecisionNode::QDecisionNode(QObject *parent)
-    : QObject(parent)
+QDecisionNode::QDecisionNode(QObject *parent) :
+    QControlNode(*new QDecisionNodePrivate, parent)
 {
-    d_umlptr = new QDecisionNodePrivate(this);
 }
 
-QDecisionNode::QDecisionNode(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QDecisionNode::QDecisionNode(QDecisionNodePrivate &dd, QObject *parent) :
+    QControlNode(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QDecisionNodePrivate;
 }
 
 QDecisionNode::~QDecisionNode()
@@ -90,7 +86,7 @@ QObjectFlow *QDecisionNode::decisionInputFlow() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QDecisionNode);
+    Q_D(const QDecisionNode);
     return d->decisionInputFlow;
 }
 
@@ -98,7 +94,7 @@ void QDecisionNode::setDecisionInputFlow(QObjectFlow *decisionInputFlow)
 {
     // This is a read-write association end
 
-    QTUML_D(QDecisionNode);
+    Q_D(QDecisionNode);
     if (d->decisionInputFlow != decisionInputFlow) {
         d->decisionInputFlow = decisionInputFlow;
     }
@@ -111,7 +107,7 @@ QBehavior *QDecisionNode::decisionInput() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QDecisionNode);
+    Q_D(const QDecisionNode);
     return d->decisionInput;
 }
 
@@ -119,7 +115,7 @@ void QDecisionNode::setDecisionInput(QBehavior *decisionInput)
 {
     // This is a read-write association end
 
-    QTUML_D(QDecisionNode);
+    Q_D(QDecisionNode);
     if (d->decisionInput != decisionInput) {
         d->decisionInput = decisionInput;
     }

@@ -56,16 +56,31 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QPackageImport;
 class QConstraint;
 class QElementImport;
 class QPackageableElement;
 
-class Q_UML_EXPORT QNamespace : public virtual QNamedElement
+class QNamespacePrivate;
+
+class Q_UML_EXPORT QNamespace : public QNamedElement
 {
+    Q_OBJECT
+
+    // From QNamespace
+    Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
+    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
+    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
+    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
+    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
+    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
+
     Q_DISABLE_COPY(QNamespace)
+    Q_DECLARE_PRIVATE(QNamespace)
 
 public:
+    explicit QNamespace(QObject *parent = 0);
     virtual ~QNamespace();
 
     // Association-ends
@@ -89,10 +104,14 @@ public:
     bool membersAreDistinguishable() const;
 
 protected:
-    explicit QNamespace();
+    explicit QNamespace(QNamespacePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QNamespace) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QNamespace) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QNamespace) *> *)
 
 QT_END_HEADER
 

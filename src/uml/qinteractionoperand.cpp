@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInteractionOperandPrivate::QInteractionOperandPrivate(QInteractionOperand *q_umlptr) :
+QInteractionOperandPrivate::QInteractionOperandPrivate() :
     fragments(new QList<QInteractionFragment *>),
     guard(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QInteractionOperandPrivate::~QInteractionOperandPrivate()
@@ -66,17 +65,18 @@ QInteractionOperandPrivate::~QInteractionOperandPrivate()
     \brief An interaction operand is contained in a combined fragment. An interaction operand represents one operand of the expression given by the enclosing combined fragment.
  */
 
-QInteractionOperand::QInteractionOperand(QObject *parent)
-    : QObject(parent)
+QInteractionOperand::QInteractionOperand(QObject *parent) :
+    QObject(*new QInteractionOperandPrivate, parent),
+    _wrappedInteractionFragment(new QInteractionFragment(this)),
+    _wrappedNamespace(new QNamespace(this))
 {
-    d_umlptr = new QInteractionOperandPrivate(this);
 }
 
-QInteractionOperand::QInteractionOperand(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QInteractionOperand::QInteractionOperand(QInteractionOperandPrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedInteractionFragment(new QInteractionFragment(this)),
+    _wrappedNamespace(new QNamespace(this))
 {
-    if (createPimpl)
-        d_umlptr = new QInteractionOperandPrivate;
 }
 
 QInteractionOperand::~QInteractionOperand()
@@ -90,7 +90,7 @@ const QList<QInteractionFragment *> *QInteractionOperand::fragments() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInteractionOperand);
+    Q_D(const QInteractionOperand);
     return d->fragments;
 }
 
@@ -98,7 +98,7 @@ void QInteractionOperand::addFragment(QInteractionFragment *fragment)
 {
     // This is a read-write association end
 
-    QTUML_D(QInteractionOperand);
+    Q_D(QInteractionOperand);
     if (!d->fragments->contains(fragment)) {
         d->fragments->append(fragment);
 
@@ -114,7 +114,7 @@ void QInteractionOperand::removeFragment(QInteractionFragment *fragment)
 {
     // This is a read-write association end
 
-    QTUML_D(QInteractionOperand);
+    Q_D(QInteractionOperand);
     if (d->fragments->contains(fragment)) {
         d->fragments->removeAll(fragment);
 
@@ -133,7 +133,7 @@ QInteractionConstraint *QInteractionOperand::guard() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInteractionOperand);
+    Q_D(const QInteractionOperand);
     return d->guard;
 }
 
@@ -141,7 +141,7 @@ void QInteractionOperand::setGuard(QInteractionConstraint *guard)
 {
     // This is a read-write association end
 
-    QTUML_D(QInteractionOperand);
+    Q_D(QInteractionOperand);
     if (d->guard != guard) {
         // Adjust subsetted property(ies)
         d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->guard));

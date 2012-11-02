@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qaction_p.h"
+#include "private/qaction_p.h"
+#include "qdestroyobjectaction.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInputPin;
 class QDestroyObjectAction;
 
-class QDestroyObjectActionPrivate : public QActionPrivate
+class Q_UML_EXPORT QDestroyObjectActionPrivate : public QActionPrivate
 {
+    Q_DECLARE_PUBLIC(QDestroyObjectAction)
+
 public:
-    explicit QDestroyObjectActionPrivate(QDestroyObjectAction *q_umlptr = 0);
+    explicit QDestroyObjectActionPrivate();
     virtual ~QDestroyObjectActionPrivate();
 
     bool isDestroyLinks;

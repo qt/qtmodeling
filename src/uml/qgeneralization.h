@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QDirectedRelationship>
 
 // Qt includes
@@ -56,24 +55,15 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QClassifier;
 class QGeneralizationSet;
 
-class Q_UML_EXPORT QGeneralization : public QObject, public QDirectedRelationship
+class QGeneralizationPrivate;
+
+class Q_UML_EXPORT QGeneralization : public QDirectedRelationship
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QRelationship
-    Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
-
-    // From QDirectedRelationship
-    Q_PROPERTY(const QSet<QElement *> * sources READ sources)
-    Q_PROPERTY(const QSet<QElement *> * targets READ targets)
 
     // From QGeneralization
     Q_PROPERTY(bool isSubstitutable READ isSubstitutable WRITE setSubstitutable)
@@ -82,6 +72,7 @@ class Q_UML_EXPORT QGeneralization : public QObject, public QDirectedRelationshi
     Q_PROPERTY(QClassifier * general READ general WRITE setGeneral)
 
     Q_DISABLE_COPY(QGeneralization)
+    Q_DECLARE_PRIVATE(QGeneralization)
 
 public:
     explicit QGeneralization(QObject *parent = 0);
@@ -101,12 +92,13 @@ public:
     void setGeneral(QClassifier *general);
 
 protected:
-    explicit QGeneralization(bool createPimpl, QObject *parent = 0);
+    explicit QGeneralization(QGeneralizationPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *> *)
 
 QT_END_HEADER

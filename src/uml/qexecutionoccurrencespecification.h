@@ -52,7 +52,10 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QExecutionSpecification;
+
+class QExecutionOccurrenceSpecificationPrivate;
 
 class Q_UML_EXPORT QExecutionOccurrenceSpecification : public QOccurrenceSpecification
 {
@@ -62,6 +65,7 @@ class Q_UML_EXPORT QExecutionOccurrenceSpecification : public QOccurrenceSpecifi
     Q_PROPERTY(QExecutionSpecification * execution READ execution WRITE setExecution)
 
     Q_DISABLE_COPY(QExecutionOccurrenceSpecification)
+    Q_DECLARE_PRIVATE(QExecutionOccurrenceSpecification)
 
 public:
     explicit QExecutionOccurrenceSpecification(QObject *parent = 0);
@@ -72,12 +76,13 @@ public:
     void setExecution(QExecutionSpecification *execution);
 
 protected:
-    explicit QExecutionOccurrenceSpecification(bool createPimpl, QObject *parent = 0);
+    explicit QExecutionOccurrenceSpecification(QExecutionOccurrenceSpecificationPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QExecutionOccurrenceSpecification) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QExecutionOccurrenceSpecification) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutionOccurrenceSpecification) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QExecutionOccurrenceSpecification) *> *)
 
 QT_END_HEADER

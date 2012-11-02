@@ -47,12 +47,11 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QTemplateSignaturePrivate::QTemplateSignaturePrivate(QTemplateSignature *q_umlptr) :
+QTemplateSignaturePrivate::QTemplateSignaturePrivate() :
     parameters(new QList<QTemplateParameter *>),
     template_(0),
     ownedParameters(new QList<QTemplateParameter *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QTemplateSignaturePrivate::~QTemplateSignaturePrivate()
@@ -69,17 +68,14 @@ QTemplateSignaturePrivate::~QTemplateSignaturePrivate()
     \brief A template signature bundles the set of formal template parameters for a templated element.
  */
 
-QTemplateSignature::QTemplateSignature(QObject *parent)
-    : QObject(parent)
+QTemplateSignature::QTemplateSignature(QObject *parent) :
+    QElement(*new QTemplateSignaturePrivate, parent)
 {
-    d_umlptr = new QTemplateSignaturePrivate(this);
 }
 
-QTemplateSignature::QTemplateSignature(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QTemplateSignature::QTemplateSignature(QTemplateSignaturePrivate &dd, QObject *parent) :
+    QElement(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QTemplateSignaturePrivate;
 }
 
 QTemplateSignature::~QTemplateSignature()
@@ -93,7 +89,7 @@ const QList<QTemplateParameter *> *QTemplateSignature::parameters() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTemplateSignature);
+    Q_D(const QTemplateSignature);
     return d->parameters;
 }
 
@@ -101,7 +97,7 @@ void QTemplateSignature::addParameter(QTemplateParameter *parameter)
 {
     // This is a read-write association end
 
-    QTUML_D(QTemplateSignature);
+    Q_D(QTemplateSignature);
     if (!d->parameters->contains(parameter)) {
         d->parameters->append(parameter);
     }
@@ -111,7 +107,7 @@ void QTemplateSignature::removeParameter(QTemplateParameter *parameter)
 {
     // This is a read-write association end
 
-    QTUML_D(QTemplateSignature);
+    Q_D(QTemplateSignature);
     if (d->parameters->contains(parameter)) {
         d->parameters->removeAll(parameter);
     }
@@ -124,7 +120,7 @@ QTemplateableElement *QTemplateSignature::template_() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTemplateSignature);
+    Q_D(const QTemplateSignature);
     return d->template_;
 }
 
@@ -132,7 +128,7 @@ void QTemplateSignature::setTemplate_(QTemplateableElement *template_)
 {
     // This is a read-write association end
 
-    QTUML_D(QTemplateSignature);
+    Q_D(QTemplateSignature);
     if (d->template_ != template_) {
         // Adjust opposite property
 
@@ -153,7 +149,7 @@ const QList<QTemplateParameter *> *QTemplateSignature::ownedParameters() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QTemplateSignature);
+    Q_D(const QTemplateSignature);
     return d->ownedParameters;
 }
 
@@ -161,7 +157,7 @@ void QTemplateSignature::addOwnedParameter(QTemplateParameter *ownedParameter)
 {
     // This is a read-write association end
 
-    QTUML_D(QTemplateSignature);
+    Q_D(QTemplateSignature);
     if (!d->ownedParameters->contains(ownedParameter)) {
         d->ownedParameters->append(ownedParameter);
 
@@ -178,7 +174,7 @@ void QTemplateSignature::removeOwnedParameter(QTemplateParameter *ownedParameter
 {
     // This is a read-write association end
 
-    QTUML_D(QTemplateSignature);
+    Q_D(QTemplateSignature);
     if (d->ownedParameters->contains(ownedParameter)) {
         d->ownedParameters->removeAll(ownedParameter);
 

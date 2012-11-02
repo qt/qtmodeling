@@ -52,13 +52,24 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QOccurrenceSpecification;
+
+class QExecutionSpecificationPrivate;
 
 class Q_UML_EXPORT QExecutionSpecification : public QInteractionFragment
 {
+    Q_OBJECT
+
+    // From QExecutionSpecification
+    Q_PROPERTY(QOccurrenceSpecification * start READ start WRITE setStart)
+    Q_PROPERTY(QOccurrenceSpecification * finish READ finish WRITE setFinish)
+
     Q_DISABLE_COPY(QExecutionSpecification)
+    Q_DECLARE_PRIVATE(QExecutionSpecification)
 
 public:
+    explicit QExecutionSpecification(QObject *parent = 0);
     virtual ~QExecutionSpecification();
 
     // Association-ends
@@ -68,10 +79,14 @@ public:
     void setFinish(QOccurrenceSpecification *finish);
 
 protected:
-    explicit QExecutionSpecification();
+    explicit QExecutionSpecification(QExecutionSpecificationPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QExecutionSpecification) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutionSpecification) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QExecutionSpecification) *> *)
 
 QT_END_HEADER
 

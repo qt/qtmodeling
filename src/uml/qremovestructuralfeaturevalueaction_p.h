@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qwritestructuralfeatureaction_p.h"
+#include "private/qwritestructuralfeatureaction_p.h"
+#include "qremovestructuralfeaturevalueaction.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInputPin;
 class QRemoveStructuralFeatureValueAction;
 
-class QRemoveStructuralFeatureValueActionPrivate : public QWriteStructuralFeatureActionPrivate
+class Q_UML_EXPORT QRemoveStructuralFeatureValueActionPrivate : public QWriteStructuralFeatureActionPrivate
 {
+    Q_DECLARE_PUBLIC(QRemoveStructuralFeatureValueAction)
+
 public:
-    explicit QRemoveStructuralFeatureValueActionPrivate(QRemoveStructuralFeatureValueAction *q_umlptr = 0);
+    explicit QRemoveStructuralFeatureValueActionPrivate();
     virtual ~QRemoveStructuralFeatureValueActionPrivate();
 
     bool isRemoveDuplicates;

@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDurationConstraintPrivate::QDurationConstraintPrivate(QDurationConstraint *q_umlptr) :
+QDurationConstraintPrivate::QDurationConstraintPrivate() :
     firstEvents(new QSet<bool>),
     specification(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QDurationConstraintPrivate::~QDurationConstraintPrivate()
@@ -67,17 +66,14 @@ QDurationConstraintPrivate::~QDurationConstraintPrivate()
     \brief A duration constraint is a constraint that refers to a duration interval.
  */
 
-QDurationConstraint::QDurationConstraint(QObject *parent)
-    : QIntervalConstraint(false, parent)
+QDurationConstraint::QDurationConstraint(QObject *parent) :
+    QIntervalConstraint(*new QDurationConstraintPrivate, parent)
 {
-    d_umlptr = new QDurationConstraintPrivate(this);
 }
 
-QDurationConstraint::QDurationConstraint(bool createPimpl, QObject *parent)
-    : QIntervalConstraint(createPimpl, parent)
+QDurationConstraint::QDurationConstraint(QDurationConstraintPrivate &dd, QObject *parent) :
+    QIntervalConstraint(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QDurationConstraintPrivate;
 }
 
 QDurationConstraint::~QDurationConstraint()
@@ -91,7 +87,7 @@ const QSet<bool> *QDurationConstraint::firstEvents() const
 {
     // This is a read-write attribute
 
-    QTUML_D(const QDurationConstraint);
+    Q_D(const QDurationConstraint);
     return d->firstEvents;
 }
 
@@ -99,7 +95,7 @@ void QDurationConstraint::addFirstEvent(bool firstEvent)
 {
     // This is a read-write attribute
 
-    QTUML_D(QDurationConstraint);
+    Q_D(QDurationConstraint);
     if (!d->firstEvents->contains(firstEvent)) {
         d->firstEvents->insert(firstEvent);
     }
@@ -109,7 +105,7 @@ void QDurationConstraint::removeFirstEvent(bool firstEvent)
 {
     // This is a read-write attribute
 
-    QTUML_D(QDurationConstraint);
+    Q_D(QDurationConstraint);
     if (d->firstEvents->contains(firstEvent)) {
         d->firstEvents->remove(firstEvent);
     }
@@ -122,7 +118,7 @@ QDurationInterval *QDurationConstraint::specification() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QDurationConstraint);
+    Q_D(const QDurationConstraint);
     return d->specification;
 }
 
@@ -130,7 +126,7 @@ void QDurationConstraint::setSpecification(QDurationInterval *specification)
 {
     // This is a read-write association end
 
-    QTUML_D(QDurationConstraint);
+    Q_D(QDurationConstraint);
     if (d->specification != specification) {
         d->specification = specification;
     }

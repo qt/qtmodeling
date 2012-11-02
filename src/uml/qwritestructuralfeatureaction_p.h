@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qstructuralfeatureaction_p.h"
+#include "private/qstructuralfeatureaction_p.h"
+#include "qwritestructuralfeatureaction.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,19 +54,20 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QOutputPin;
 class QInputPin;
 
-class QWriteStructuralFeatureActionPrivate : public QStructuralFeatureActionPrivate
+class Q_UML_EXPORT QWriteStructuralFeatureActionPrivate : public QStructuralFeatureActionPrivate
 {
+    Q_DECLARE_PUBLIC(QWriteStructuralFeatureAction)
+
 public:
+    explicit QWriteStructuralFeatureActionPrivate();
     virtual ~QWriteStructuralFeatureActionPrivate();
 
     QOutputPin *result;
     QInputPin *value;
-
-protected:
-    explicit QWriteStructuralFeatureActionPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

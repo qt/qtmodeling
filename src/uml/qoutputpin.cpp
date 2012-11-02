@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QOutputPinPrivate::QOutputPinPrivate(QOutputPin *q_umlptr)
+QOutputPinPrivate::QOutputPinPrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QOutputPinPrivate::~QOutputPinPrivate()
@@ -62,17 +61,14 @@ QOutputPinPrivate::~QOutputPinPrivate()
     \brief An output pin is a pin that holds output values produced by an action.
  */
 
-QOutputPin::QOutputPin(QObject *parent)
-    : QObject(parent)
+QOutputPin::QOutputPin(QObject *parent) :
+    QPin(*new QOutputPinPrivate, parent)
 {
-    d_umlptr = new QOutputPinPrivate(this);
 }
 
-QOutputPin::QOutputPin(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QOutputPin::QOutputPin(QOutputPinPrivate &dd, QObject *parent) :
+    QPin(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QOutputPinPrivate;
 }
 
 QOutputPin::~QOutputPin()

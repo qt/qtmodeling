@@ -46,10 +46,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QEnumerationLiteralPrivate::QEnumerationLiteralPrivate(QEnumerationLiteral *q_umlptr) :
+QEnumerationLiteralPrivate::QEnumerationLiteralPrivate() :
     enumeration(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QEnumerationLiteralPrivate::~QEnumerationLiteralPrivate()
@@ -64,17 +63,14 @@ QEnumerationLiteralPrivate::~QEnumerationLiteralPrivate()
     \brief An enumeration literal is a user-defined data value for an enumeration.
  */
 
-QEnumerationLiteral::QEnumerationLiteral(QObject *parent)
-    : QInstanceSpecification(false, parent)
+QEnumerationLiteral::QEnumerationLiteral(QObject *parent) :
+    QInstanceSpecification(*new QEnumerationLiteralPrivate, parent)
 {
-    d_umlptr = new QEnumerationLiteralPrivate(this);
 }
 
-QEnumerationLiteral::QEnumerationLiteral(bool createPimpl, QObject *parent)
-    : QInstanceSpecification(createPimpl, parent)
+QEnumerationLiteral::QEnumerationLiteral(QEnumerationLiteralPrivate &dd, QObject *parent) :
+    QInstanceSpecification(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QEnumerationLiteralPrivate;
 }
 
 QEnumerationLiteral::~QEnumerationLiteral()
@@ -90,7 +86,7 @@ QEnumeration *QEnumerationLiteral::classifier() const
 
     qWarning("QEnumerationLiteral::classifier: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(const QEnumerationLiteral);
+    //Q_D(const QEnumerationLiteral);
     //return <derived-return>;
 }
 
@@ -101,7 +97,7 @@ QEnumeration *QEnumerationLiteral::enumeration() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QEnumerationLiteral);
+    Q_D(const QEnumerationLiteral);
     return d->enumeration;
 }
 
@@ -109,7 +105,7 @@ void QEnumerationLiteral::setEnumeration(QEnumeration *enumeration)
 {
     // This is a read-write association end
 
-    QTUML_D(QEnumerationLiteral);
+    Q_D(QEnumerationLiteral);
     if (d->enumeration != enumeration) {
         // Adjust opposite property
         if (d->enumeration)

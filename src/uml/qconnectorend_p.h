@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qmultiplicityelement_p.h"
+#include "private/qmultiplicityelement_p.h"
+#include "qconnectorend.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,14 +54,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QProperty;
 class QConnectableElement;
 class QConnectorEnd;
 
-class QConnectorEndPrivate : public QMultiplicityElementPrivate
+class Q_UML_EXPORT QConnectorEndPrivate : public QMultiplicityElementPrivate
 {
+    Q_DECLARE_PUBLIC(QConnectorEnd)
+
 public:
-    explicit QConnectorEndPrivate(QConnectorEnd *q_umlptr = 0);
+    explicit QConnectorEndPrivate();
     virtual ~QConnectorEndPrivate();
 
     QConnectableElement *role;

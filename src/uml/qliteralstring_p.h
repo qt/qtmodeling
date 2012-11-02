@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qliteralspecification_p.h"
+#include "private/qliteralspecification_p.h"
+#include "qliteralstring.h"
 
 // Qt includes
 #include <QtCore/QString>
@@ -56,10 +57,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QLiteralString;
 
-class QLiteralStringPrivate : public QLiteralSpecificationPrivate
+class Q_UML_EXPORT QLiteralStringPrivate : public QLiteralSpecificationPrivate
 {
+    Q_DECLARE_PUBLIC(QLiteralString)
+
 public:
-    explicit QLiteralStringPrivate(QLiteralString *q_umlptr = 0);
+    explicit QLiteralStringPrivate();
     virtual ~QLiteralStringPrivate();
 
     QString value;

@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qelement_p.h"
+#include "private/qelement_p.h"
+#include "qslot.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -55,15 +56,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QStructuralFeature;
 class QInstanceSpecification;
 class QValueSpecification;
 class QSlot;
 
-class QSlotPrivate : public QElementPrivate
+class Q_UML_EXPORT QSlotPrivate : public QElementPrivate
 {
+    Q_DECLARE_PUBLIC(QSlot)
+
 public:
-    explicit QSlotPrivate(QSlot *q_umlptr = 0);
+    explicit QSlotPrivate();
     virtual ~QSlotPrivate();
 
     QList<QValueSpecification *> *values;

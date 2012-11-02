@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qnamedelement_p.h"
+#include "private/qnamedelement_p.h"
+#include "qactivitygroup.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,14 +56,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QActivityGroup;
 class QActivity;
 class QActivityEdge;
 class QActivityNode;
 
-class QActivityGroupPrivate : public virtual QNamedElementPrivate
+class Q_UML_EXPORT QActivityGroupPrivate : public QNamedElementPrivate
 {
+    Q_DECLARE_PUBLIC(QActivityGroup)
+
 public:
+    explicit QActivityGroupPrivate();
     virtual ~QActivityGroupPrivate();
 
     QActivity *inActivity;
@@ -79,9 +84,6 @@ public:
     void addContainedEdge(QActivityEdge *containedEdge);
     void removeContainedEdge(QActivityEdge *containedEdge);
     void setSuperGroup(QActivityGroup *superGroup);
-
-protected:
-    explicit QActivityGroupPrivate();
 };
 
 QT_END_NAMESPACE_QTUML

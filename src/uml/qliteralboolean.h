@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QLiteralSpecification>
 
 QT_BEGIN_HEADER
@@ -53,36 +52,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QLiteralBoolean : public QObject, public QLiteralSpecification
+class QLiteralBooleanPrivate;
+
+class Q_UML_EXPORT QLiteralBoolean : public QLiteralSpecification
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From QTypedElement
-    Q_PROPERTY(QType * type READ type WRITE setType)
-
-    // From QParameterableElement
-    Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
-    Q_PROPERTY(QTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
-
-    // From QPackageableElement
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // From QLiteralBoolean
     Q_PROPERTY(bool value READ value WRITE setValue)
 
     Q_DISABLE_COPY(QLiteralBoolean)
+    Q_DECLARE_PRIVATE(QLiteralBoolean)
 
 public:
     explicit QLiteralBoolean(QObject *parent = 0);
@@ -97,12 +77,13 @@ public:
     bool isComputable() const;
 
 protected:
-    explicit QLiteralBoolean(bool createPimpl, QObject *parent = 0);
+    explicit QLiteralBoolean(QLiteralBooleanPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QLiteralBoolean) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QLiteralBoolean) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QLiteralBoolean) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QLiteralBoolean) *> *)
 
 QT_END_HEADER

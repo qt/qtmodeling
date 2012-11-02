@@ -42,6 +42,7 @@
 #define QTUMLGLOBAL_H
 
 #include <QtCore/qglobal.h>
+#include <QtCore/QObject>
 
 QT_BEGIN_HEADER
 
@@ -79,6 +80,19 @@ QT_BEGIN_HEADER
 #define QT_PREPEND_NAMESPACE_QTUML(name) ::QT_NAMESPACE_QTUML::name
 
 #endif /* defined(Q_MOC_RUN) */
+
+template <class T>
+inline T qtuml_object_cast(QObject *base)
+{
+    if (dynamic_cast<T>(base))
+        return dynamic_cast<T>(base);
+    foreach (QObject *subObject, base->children()) {
+        T returnValue = qtuml_object_cast<T>(subObject);
+        if (returnValue != T())
+            return returnValue;
+    }
+    return dynamic_cast<T>(base); // not found
+}
 
 QT_END_HEADER
 

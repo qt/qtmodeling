@@ -52,23 +52,25 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QDestructionOccurrenceSpecificationPrivate;
+
 class Q_UML_EXPORT QDestructionOccurrenceSpecification : public QMessageOccurrenceSpecification
 {
-    Q_OBJECT
-
     Q_DISABLE_COPY(QDestructionOccurrenceSpecification)
+    Q_DECLARE_PRIVATE(QDestructionOccurrenceSpecification)
 
 public:
     explicit QDestructionOccurrenceSpecification(QObject *parent = 0);
     virtual ~QDestructionOccurrenceSpecification();
 
 protected:
-    explicit QDestructionOccurrenceSpecification(bool createPimpl, QObject *parent = 0);
+    explicit QDestructionOccurrenceSpecification(QDestructionOccurrenceSpecificationPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QDestructionOccurrenceSpecification) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QDestructionOccurrenceSpecification) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QDestructionOccurrenceSpecification) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QDestructionOccurrenceSpecification) *> *)
 
 QT_END_HEADER

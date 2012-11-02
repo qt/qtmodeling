@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QIncludePrivate::QIncludePrivate(QInclude *q_umlptr) :
+QIncludePrivate::QIncludePrivate() :
     includingCase(0),
     addition(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QIncludePrivate::~QIncludePrivate()
@@ -65,17 +64,18 @@ QIncludePrivate::~QIncludePrivate()
     \brief An include relationship defines that a use case contains the behavior defined in another use case.
  */
 
-QInclude::QInclude(QObject *parent)
-    : QObject(parent)
+QInclude::QInclude(QObject *parent) :
+    QObject(*new QIncludePrivate, parent),
+    _wrappedDirectedRelationship(new QDirectedRelationship(this)),
+    _wrappedNamedElement(new QNamedElement(this))
 {
-    d_umlptr = new QIncludePrivate(this);
 }
 
-QInclude::QInclude(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QInclude::QInclude(QIncludePrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedDirectedRelationship(new QDirectedRelationship(this)),
+    _wrappedNamedElement(new QNamedElement(this))
 {
-    if (createPimpl)
-        d_umlptr = new QIncludePrivate;
 }
 
 QInclude::~QInclude()
@@ -89,7 +89,7 @@ QUseCase *QInclude::includingCase() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInclude);
+    Q_D(const QInclude);
     return d->includingCase;
 }
 
@@ -97,7 +97,7 @@ void QInclude::setIncludingCase(QUseCase *includingCase)
 {
     // This is a read-write association end
 
-    QTUML_D(QInclude);
+    Q_D(QInclude);
     if (d->includingCase != includingCase) {
         // Adjust opposite property
         if (d->includingCase)
@@ -127,7 +127,7 @@ QUseCase *QInclude::addition() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInclude);
+    Q_D(const QInclude);
     return d->addition;
 }
 
@@ -135,7 +135,7 @@ void QInclude::setAddition(QUseCase *addition)
 {
     // This is a read-write association end
 
-    QTUML_D(QInclude);
+    Q_D(QInclude);
     if (d->addition != addition) {
         // Adjust subsetted property(ies)
         d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(d->addition));

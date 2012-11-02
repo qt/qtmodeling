@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qdirectedrelationship_p.h"
+#include "private/qdirectedrelationship_p.h"
+#include "qprotocolconformance.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,13 +54,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QProtocolStateMachine;
 class QProtocolConformance;
 
-class QProtocolConformancePrivate : public QDirectedRelationshipPrivate
+class Q_UML_EXPORT QProtocolConformancePrivate : public QDirectedRelationshipPrivate
 {
+    Q_DECLARE_PUBLIC(QProtocolConformance)
+
 public:
-    explicit QProtocolConformancePrivate(QProtocolConformance *q_umlptr = 0);
+    explicit QProtocolConformancePrivate();
     virtual ~QProtocolConformancePrivate();
 
     QProtocolStateMachine *specificMachine;

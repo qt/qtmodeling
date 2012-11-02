@@ -47,10 +47,9 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QStereotypePrivate::QStereotypePrivate(QStereotype *q_umlptr) :
+QStereotypePrivate::QStereotypePrivate() :
     icons(new QSet<QImage *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QStereotypePrivate::~QStereotypePrivate()
@@ -66,17 +65,14 @@ QStereotypePrivate::~QStereotypePrivate()
     \brief A stereotype defines how an existing metaclass may be extended, and enables the use of platform or domain specific terminology or notation in place of, or in addition to, the ones used for the extended metaclass.
  */
 
-QStereotype::QStereotype(QObject *parent)
-    : QClass(false, parent)
+QStereotype::QStereotype(QObject *parent) :
+    QClass(*new QStereotypePrivate, parent)
 {
-    d_umlptr = new QStereotypePrivate(this);
 }
 
-QStereotype::QStereotype(bool createPimpl, QObject *parent)
-    : QClass(createPimpl, parent)
+QStereotype::QStereotype(QStereotypePrivate &dd, QObject *parent) :
+    QClass(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QStereotypePrivate;
 }
 
 QStereotype::~QStereotype()
@@ -90,7 +86,7 @@ const QSet<QImage *> *QStereotype::icons() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QStereotype);
+    Q_D(const QStereotype);
     return d->icons;
 }
 
@@ -98,7 +94,7 @@ void QStereotype::addIcon(QImage *icon)
 {
     // This is a read-write association end
 
-    QTUML_D(QStereotype);
+    Q_D(QStereotype);
     if (!d->icons->contains(icon)) {
         d->icons->insert(icon);
 
@@ -111,7 +107,7 @@ void QStereotype::removeIcon(QImage *icon)
 {
     // This is a read-write association end
 
-    QTUML_D(QStereotype);
+    Q_D(QStereotype);
     if (d->icons->contains(icon)) {
         d->icons->remove(icon);
 
@@ -129,7 +125,7 @@ QProfile *QStereotype::profile() const
 
     qWarning("QStereotype::profile: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(const QStereotype);
+    //Q_D(const QStereotype);
     //return <derived-return>;
 }
 

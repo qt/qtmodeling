@@ -48,11 +48,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QConnectorEndPrivate::QConnectorEndPrivate(QConnectorEnd *q_umlptr) :
+QConnectorEndPrivate::QConnectorEndPrivate() :
     role(0),
     partWithPort(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QConnectorEndPrivate::~QConnectorEndPrivate()
@@ -67,17 +66,14 @@ QConnectorEndPrivate::~QConnectorEndPrivate()
     \brief A connector end is an endpoint of a connector, which attaches the connector to a connectable element. Each connector end is part of one connector.
  */
 
-QConnectorEnd::QConnectorEnd(QObject *parent)
-    : QObject(parent)
+QConnectorEnd::QConnectorEnd(QObject *parent) :
+    QMultiplicityElement(*new QConnectorEndPrivate, parent)
 {
-    d_umlptr = new QConnectorEndPrivate(this);
 }
 
-QConnectorEnd::QConnectorEnd(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QConnectorEnd::QConnectorEnd(QConnectorEndPrivate &dd, QObject *parent) :
+    QMultiplicityElement(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QConnectorEndPrivate;
 }
 
 QConnectorEnd::~QConnectorEnd()
@@ -91,7 +87,7 @@ QConnectableElement *QConnectorEnd::role() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QConnectorEnd);
+    Q_D(const QConnectorEnd);
     return d->role;
 }
 
@@ -99,17 +95,17 @@ void QConnectorEnd::setRole(QConnectableElement *role)
 {
     // This is a read-write association end
 
-    QTUML_D(QConnectorEnd);
+    Q_D(QConnectorEnd);
     if (d->role != role) {
         // Adjust opposite property
         if (d->role)
-            (dynamic_cast<QConnectableElementPrivate *>(d->role->d_umlptr))->removeEnd(this);
+            (dynamic_cast<QConnectableElementPrivate *>(d->role->d_ptr))->removeEnd(this);
 
         d->role = role;
 
         // Adjust opposite property
         if (role)
-            (dynamic_cast<QConnectableElementPrivate *>(role->d_umlptr))->addEnd(this);
+            (dynamic_cast<QConnectableElementPrivate *>(role->d_ptr))->addEnd(this);
     }
 }
 
@@ -120,7 +116,7 @@ QProperty *QConnectorEnd::partWithPort() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QConnectorEnd);
+    Q_D(const QConnectorEnd);
     return d->partWithPort;
 }
 
@@ -128,7 +124,7 @@ void QConnectorEnd::setPartWithPort(QProperty *partWithPort)
 {
     // This is a read-write association end
 
-    QTUML_D(QConnectorEnd);
+    Q_D(QConnectorEnd);
     if (d->partWithPort != partWithPort) {
         d->partWithPort = partWithPort;
     }
@@ -143,7 +139,7 @@ QProperty *QConnectorEnd::definingEnd() const
 
     qWarning("QConnectorEnd::definingEnd: to be implemented (this is a derived associationend)");
 
-    //QTUML_D(const QConnectorEnd);
+    //Q_D(const QConnectorEnd);
     //return <derived-return>;
 }
 

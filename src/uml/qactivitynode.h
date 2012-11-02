@@ -55,6 +55,7 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QActivityEdge;
 class QStructuredActivityNode;
 class QActivityPartition;
@@ -62,11 +63,27 @@ class QActivityGroup;
 class QActivity;
 class QInterruptibleActivityRegion;
 
+class QActivityNodePrivate;
+
 class Q_UML_EXPORT QActivityNode : public QRedefinableElement
 {
+    Q_OBJECT
+
+    // From QActivityNode
+    Q_PROPERTY(const QSet<QActivityNode *> * redefinedNodes READ redefinedNodes)
+    Q_PROPERTY(const QSet<QActivityEdge *> * incomings READ incomings)
+    Q_PROPERTY(QActivity * activity READ activity WRITE setActivity)
+    Q_PROPERTY(const QSet<QActivityGroup *> * inGroup READ inGroup)
+    Q_PROPERTY(QStructuredActivityNode * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
+    Q_PROPERTY(const QSet<QActivityPartition *> * inPartition READ inPartition)
+    Q_PROPERTY(const QSet<QInterruptibleActivityRegion *> * inInterruptibleRegion READ inInterruptibleRegion)
+    Q_PROPERTY(const QSet<QActivityEdge *> * outgoings READ outgoings)
+
     Q_DISABLE_COPY(QActivityNode)
+    Q_DECLARE_PRIVATE(QActivityNode)
 
 public:
+    explicit QActivityNode(QObject *parent = 0);
     virtual ~QActivityNode();
 
     // Association-ends
@@ -92,10 +109,14 @@ public:
     void removeOutgoing(QActivityEdge *outgoing);
 
 protected:
-    explicit QActivityNode();
+    explicit QActivityNode(QActivityNodePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *)
 
 QT_END_HEADER
 

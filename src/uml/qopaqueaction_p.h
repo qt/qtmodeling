@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qaction_p.h"
+#include "private/qaction_p.h"
+#include "qopaqueaction.h"
 
 // Qt includes
 #include <QtCore/QString>
@@ -57,14 +58,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QInputPin;
 class QOutputPin;
 class QOpaqueAction;
 
-class QOpaqueActionPrivate : public QActionPrivate
+class Q_UML_EXPORT QOpaqueActionPrivate : public QActionPrivate
 {
+    Q_DECLARE_PUBLIC(QOpaqueAction)
+
 public:
-    explicit QOpaqueActionPrivate(QOpaqueAction *q_umlptr = 0);
+    explicit QOpaqueActionPrivate();
     virtual ~QOpaqueActionPrivate();
 
     QList<QString> *bodies;

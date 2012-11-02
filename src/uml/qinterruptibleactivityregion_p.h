@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qactivitygroup_p.h"
+#include "private/qactivitygroup_p.h"
+#include "qinterruptibleactivityregion.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,14 +56,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QActivityEdge;
 class QActivityNode;
 class QInterruptibleActivityRegion;
 
-class QInterruptibleActivityRegionPrivate : public QActivityGroupPrivate
+class Q_UML_EXPORT QInterruptibleActivityRegionPrivate : public QActivityGroupPrivate
 {
+    Q_DECLARE_PUBLIC(QInterruptibleActivityRegion)
+
 public:
-    explicit QInterruptibleActivityRegionPrivate(QInterruptibleActivityRegion *q_umlptr = 0);
+    explicit QInterruptibleActivityRegionPrivate();
     virtual ~QInterruptibleActivityRegionPrivate();
 
     QSet<QActivityEdge *> *interruptingEdges;

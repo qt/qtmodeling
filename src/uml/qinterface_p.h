@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qclassifier_p.h"
+#include "private/qclassifier_p.h"
+#include "qinterface.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -56,16 +57,19 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QProtocolStateMachine;
 class QInterface;
 class QReception;
 class QProperty;
 class QOperation;
 
-class QInterfacePrivate : public QClassifierPrivate
+class Q_UML_EXPORT QInterfacePrivate : public QClassifierPrivate
 {
+    Q_DECLARE_PUBLIC(QInterface)
+
 public:
-    explicit QInterfacePrivate(QInterface *q_umlptr = 0);
+    explicit QInterfacePrivate();
     virtual ~QInterfacePrivate();
 
     QProtocolStateMachine *protocol;

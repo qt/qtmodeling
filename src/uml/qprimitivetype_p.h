@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qdatatype_p.h"
+#include "private/qdatatype_p.h"
+#include "qprimitivetype.h"
+
 
 QT_BEGIN_HEADER
 
@@ -53,10 +55,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QPrimitiveType;
 
-class QPrimitiveTypePrivate : public QDataTypePrivate
+class Q_UML_EXPORT QPrimitiveTypePrivate : public QDataTypePrivate
 {
+    Q_DECLARE_PUBLIC(QPrimitiveType)
+
 public:
-    explicit QPrimitiveTypePrivate(QPrimitiveType *q_umlptr = 0);
+    explicit QPrimitiveTypePrivate();
     virtual ~QPrimitiveTypePrivate();
 
 };

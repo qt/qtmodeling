@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qactivitynode_p.h"
+#include "private/qactivitynode_p.h"
+#include "qcontrolnode.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,14 +54,14 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class QControlNodePrivate : public QActivityNodePrivate
+class Q_UML_EXPORT QControlNodePrivate : public QActivityNodePrivate
 {
+    Q_DECLARE_PUBLIC(QControlNode)
+
 public:
+    explicit QControlNodePrivate();
     virtual ~QControlNodePrivate();
 
-
-protected:
-    explicit QControlNodePrivate();
 };
 
 QT_END_NAMESPACE_QTUML

@@ -43,11 +43,13 @@
 
 #include <QtUml/QtUmlGlobal>
 
+// Base class includes
+#include "private/qstructuredactivitynode_p.h"
+#include "qexpansionregion.h"
+
+
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
-
-// Base class includes
-#include "qstructuredactivitynode_p.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -58,13 +60,16 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QExpansionNode;
 class QExpansionRegion;
 
-class QExpansionRegionPrivate : public QStructuredActivityNodePrivate
+class Q_UML_EXPORT QExpansionRegionPrivate : public QStructuredActivityNodePrivate
 {
+    Q_DECLARE_PUBLIC(QExpansionRegion)
+
 public:
-    explicit QExpansionRegionPrivate(QExpansionRegion *q_umlptr = 0);
+    explicit QExpansionRegionPrivate();
     virtual ~QExpansionRegionPrivate();
 
     QtUml::ExpansionKind mode;

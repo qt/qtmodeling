@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qelement_p.h"
+#include "private/qelement_p.h"
+#include "qqualifiervalue.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,14 +54,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QProperty;
 class QInputPin;
 class QQualifierValue;
 
-class QQualifierValuePrivate : public QElementPrivate
+class Q_UML_EXPORT QQualifierValuePrivate : public QElementPrivate
 {
+    Q_DECLARE_PUBLIC(QQualifierValue)
+
 public:
-    explicit QQualifierValuePrivate(QQualifierValue *q_umlptr = 0);
+    explicit QQualifierValuePrivate();
     virtual ~QQualifierValuePrivate();
 
     QInputPin *value;

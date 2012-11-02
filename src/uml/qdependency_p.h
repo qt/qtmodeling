@@ -44,8 +44,11 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qpackageableelement_p.h"
-#include "qdirectedrelationship_p.h"
+#include "private/qobject_p.h"
+
+#include "private/qpackageableelement_p.h"
+#include "private/qdirectedrelationship_p.h"
+#include "qdependency.h"
 
 // Qt includes
 #include <QtCore/QSet>
@@ -56,17 +59,24 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QNamedElement;
 class QDependency;
 
-class QDependencyPrivate : public QPackageableElementPrivate, public QDirectedRelationshipPrivate
+class Q_UML_EXPORT QDependencyPrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QDependency)
+
 public:
-    explicit QDependencyPrivate(QDependency *q_umlptr = 0);
+    explicit QDependencyPrivate();
     virtual ~QDependencyPrivate();
 
     QSet<QNamedElement *> *clients;
     QSet<QNamedElement *> *suppliers;
+
+private:
+    QPackageableElementPrivate *_wrappedPackageableElementPrivate;
+    QDirectedRelationshipPrivate *_wrappedDirectedRelationshipPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -45,8 +45,6 @@
 
 // Base class includes
 #include <QtCore/QObject>
-#include <QtUml/QEncapsulatedClassifier>
-#include <QtUml/QBehavioredClassifier>
 
 // Qt includes
 #include <QtCore/QList>
@@ -58,6 +56,11 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for aggregated 'base classes'
+class QEncapsulatedClassifier;
+class QBehavioredClassifier;
+
+// Forward decls for function parameters
 class QReception;
 class QNamedElement;
 class QOperation;
@@ -65,23 +68,35 @@ class QClassifier;
 class QExtension;
 class QProperty;
 
-class Q_UML_EXPORT QClass : public QObject, public QEncapsulatedClassifier, public QBehavioredClassifier
+class QClassPrivate;
+
+class Q_UML_EXPORT QClass : public QObject
 {
     Q_OBJECT
 
-    // From QElement
+    // From QClass
+    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract)
+    Q_PROPERTY(bool isActive READ isActive WRITE setActive)
+    Q_PROPERTY(const QList<QClassifier *> * nestedClassifiers READ nestedClassifiers)
+    Q_PROPERTY(const QSet<QReception *> * ownedReceptions READ ownedReceptions)
+    Q_PROPERTY(const QSet<QExtension *> * extensions READ extensions)
+    Q_PROPERTY(const QList<QOperation *> * ownedOperations READ ownedOperations)
+    Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
+    Q_PROPERTY(const QSet<QClass *> * superClasses READ superClasses)
+
+    // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
     Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
-    // From QNamedElement
+    // From aggregated QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
     Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
-    // From QNamespace
+    // From aggregated QNamespace
     Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
     Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
     Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
@@ -89,24 +104,24 @@ class Q_UML_EXPORT QClass : public QObject, public QEncapsulatedClassifier, publ
     Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
     Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
 
-    // From QParameterableElement
+    // From aggregated QParameterableElement
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
 
-    // From QPackageableElement
+    // From aggregated QPackageableElement
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
-    // From QType
+    // From aggregated QType
     Q_PROPERTY(QPackage * package READ package WRITE setPackage)
 
-    // From QRedefinableElement
+    // From aggregated QRedefinableElement
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
     Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
     Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
 
-    // From QTemplateableElement
+    // From aggregated QTemplateableElement
     Q_PROPERTY(const QSet<QTemplateBinding *> * templateBindings READ templateBindings)
 
-    // From QClassifier
+    // From aggregated QClassifier
     Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization)
     Q_PROPERTY(const QSet<QUseCase *> * ownedUseCases READ ownedUseCases)
     Q_PROPERTY(const QSet<QGeneralizationSet *> * powertypeExtents READ powertypeExtents)
@@ -122,30 +137,21 @@ class Q_UML_EXPORT QClass : public QObject, public QEncapsulatedClassifier, publ
     Q_PROPERTY(const QSet<QNamedElement *> * inheritedMembers READ inheritedMembers)
     Q_PROPERTY(const QSet<QSubstitution *> * substitutions READ substitutions)
 
-    // From QStructuredClassifier
+    // From aggregated QStructuredClassifier
     Q_PROPERTY(const QSet<QConnectableElement *> * roles READ roles)
     Q_PROPERTY(const QSet<QProperty *> * parts READ parts)
     Q_PROPERTY(const QSet<QConnector *> * ownedConnectors READ ownedConnectors)
 
-    // From QEncapsulatedClassifier
+    // From aggregated QEncapsulatedClassifier
     Q_PROPERTY(const QSet<QPort *> * ownedPorts READ ownedPorts)
 
-    // From QBehavioredClassifier
+    // From aggregated QBehavioredClassifier
     Q_PROPERTY(const QSet<QBehavior *> * ownedBehaviors READ ownedBehaviors)
     Q_PROPERTY(const QSet<QInterfaceRealization *> * interfaceRealizations READ interfaceRealizations)
     Q_PROPERTY(QBehavior * classifierBehavior READ classifierBehavior WRITE setClassifierBehavior)
 
-    // From QClass
-    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract)
-    Q_PROPERTY(bool isActive READ isActive WRITE setActive)
-    Q_PROPERTY(const QList<QClassifier *> * nestedClassifiers READ nestedClassifiers)
-    Q_PROPERTY(const QSet<QReception *> * ownedReceptions READ ownedReceptions)
-    Q_PROPERTY(const QSet<QExtension *> * extensions READ extensions)
-    Q_PROPERTY(const QList<QOperation *> * ownedOperations READ ownedOperations)
-    Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
-    Q_PROPERTY(const QSet<QClass *> * superClasses READ superClasses)
-
     Q_DISABLE_COPY(QClass)
+    Q_DECLARE_PRIVATE(QClass)
 
 public:
     explicit QClass(QObject *parent = 0);
@@ -179,12 +185,17 @@ public:
     const QSet<QNamedElement *> *inherit(const QSet<QNamedElement *> *inhs) const;
 
 protected:
-    explicit QClass(bool createPimpl, QObject *parent = 0);
+    explicit QClass(QClassPrivate &dd, QObject *parent = 0);
+
+private:
+    QEncapsulatedClassifier *_wrappedEncapsulatedClassifier;
+    QBehavioredClassifier *_wrappedBehavioredClassifier;
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QClass) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QClass) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QClass) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QClass) *> *)
 
 QT_END_HEADER

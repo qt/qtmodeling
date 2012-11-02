@@ -61,7 +61,13 @@ QObservationPrivate::~QObservationPrivate()
     \brief Observation is a superclass of TimeObservation and DurationObservation in order for TimeExpression and Duration to refer to either in a simple way.
  */
 
-QObservation::QObservation()
+QObservation::QObservation(QObject *parent) :
+    QPackageableElement(*new QObservationPrivate, parent)
+{
+}
+
+QObservation::QObservation(QObservationPrivate &dd, QObject *parent) :
+    QPackageableElement(dd, parent)
 {
 }
 

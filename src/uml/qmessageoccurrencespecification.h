@@ -44,8 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtUml/QOccurrenceSpecification>
-#include <QtUml/QMessageEnd>
+#include <QtCore/QObject>
 
 QT_BEGIN_HEADER
 
@@ -53,16 +52,20 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QMessageOccurrenceSpecification : public QOccurrenceSpecification, public QMessageEnd
-{
-    Q_OBJECT
+// Forward decls for aggregated 'base classes'
+class QOccurrenceSpecification;
+class QMessageEnd;
 
-    // From QElement
+class QMessageOccurrenceSpecificationPrivate;
+
+class Q_UML_EXPORT QMessageOccurrenceSpecification : public QObject
+{
+    // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
     Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
 
-    // From QNamedElement
+    // From aggregated QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(QString qualifiedName READ qualifiedName)
@@ -70,22 +73,28 @@ class Q_UML_EXPORT QMessageOccurrenceSpecification : public QOccurrenceSpecifica
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
     Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
-    // From QMessageEnd
+    // From aggregated QMessageEnd
     Q_PROPERTY(QMessage * message READ message WRITE setMessage)
 
     Q_DISABLE_COPY(QMessageOccurrenceSpecification)
+    Q_DECLARE_PRIVATE(QMessageOccurrenceSpecification)
 
 public:
     explicit QMessageOccurrenceSpecification(QObject *parent = 0);
     virtual ~QMessageOccurrenceSpecification();
 
 protected:
-    explicit QMessageOccurrenceSpecification(bool createPimpl, QObject *parent = 0);
+    explicit QMessageOccurrenceSpecification(QMessageOccurrenceSpecificationPrivate &dd, QObject *parent = 0);
+
+private:
+    QOccurrenceSpecification *_wrappedOccurrenceSpecification;
+    QMessageEnd *_wrappedMessageEnd;
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QMessageOccurrenceSpecification) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QMessageOccurrenceSpecification) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QMessageOccurrenceSpecification) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QMessageOccurrenceSpecification) *> *)
 
 QT_END_HEADER

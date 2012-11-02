@@ -49,14 +49,13 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInteractionPrivate::QInteractionPrivate(QInteraction *q_umlptr) :
+QInteractionPrivate::QInteractionPrivate() :
     actions(new QSet<QAction *>),
     messages(new QSet<QMessage *>),
     formalGates(new QSet<QGate *>),
     fragments(new QList<QInteractionFragment *>),
     lifelines(new QSet<QLifeline *>)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QInteractionPrivate::~QInteractionPrivate()
@@ -76,17 +75,18 @@ QInteractionPrivate::~QInteractionPrivate()
     \brief An interaction is a unit of behavior that focuses on the observable exchange of information between connectable elements.
  */
 
-QInteraction::QInteraction(QObject *parent)
-    : QBehavior(false, parent)
+QInteraction::QInteraction(QObject *parent) :
+    QObject(*new QInteractionPrivate, parent),
+    _wrappedBehavior(new QBehavior(this)),
+    _wrappedInteractionFragment(new QInteractionFragment(this))
 {
-    d_umlptr = new QInteractionPrivate(this);
 }
 
-QInteraction::QInteraction(bool createPimpl, QObject *parent)
-    : QBehavior(createPimpl, parent)
+QInteraction::QInteraction(QInteractionPrivate &dd, QObject *parent) :
+    QObject(dd, parent),
+    _wrappedBehavior(new QBehavior(this)),
+    _wrappedInteractionFragment(new QInteractionFragment(this))
 {
-    if (createPimpl)
-        d_umlptr = new QInteractionPrivate;
 }
 
 QInteraction::~QInteraction()
@@ -100,7 +100,7 @@ const QSet<QAction *> *QInteraction::actions() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInteraction);
+    Q_D(const QInteraction);
     return d->actions;
 }
 
@@ -108,7 +108,7 @@ void QInteraction::addAction(QAction *action)
 {
     // This is a read-write association end
 
-    QTUML_D(QInteraction);
+    Q_D(QInteraction);
     if (!d->actions->contains(action)) {
         d->actions->insert(action);
 
@@ -121,7 +121,7 @@ void QInteraction::removeAction(QAction *action)
 {
     // This is a read-write association end
 
-    QTUML_D(QInteraction);
+    Q_D(QInteraction);
     if (d->actions->contains(action)) {
         d->actions->remove(action);
 
@@ -137,7 +137,7 @@ const QSet<QMessage *> *QInteraction::messages() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInteraction);
+    Q_D(const QInteraction);
     return d->messages;
 }
 
@@ -145,7 +145,7 @@ void QInteraction::addMessage(QMessage *message)
 {
     // This is a read-write association end
 
-    QTUML_D(QInteraction);
+    Q_D(QInteraction);
     if (!d->messages->contains(message)) {
         d->messages->insert(message);
 
@@ -161,7 +161,7 @@ void QInteraction::removeMessage(QMessage *message)
 {
     // This is a read-write association end
 
-    QTUML_D(QInteraction);
+    Q_D(QInteraction);
     if (d->messages->contains(message)) {
         d->messages->remove(message);
 
@@ -180,7 +180,7 @@ const QSet<QGate *> *QInteraction::formalGates() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInteraction);
+    Q_D(const QInteraction);
     return d->formalGates;
 }
 
@@ -188,7 +188,7 @@ void QInteraction::addFormalGate(QGate *formalGate)
 {
     // This is a read-write association end
 
-    QTUML_D(QInteraction);
+    Q_D(QInteraction);
     if (!d->formalGates->contains(formalGate)) {
         d->formalGates->insert(formalGate);
 
@@ -201,7 +201,7 @@ void QInteraction::removeFormalGate(QGate *formalGate)
 {
     // This is a read-write association end
 
-    QTUML_D(QInteraction);
+    Q_D(QInteraction);
     if (d->formalGates->contains(formalGate)) {
         d->formalGates->remove(formalGate);
 
@@ -217,7 +217,7 @@ const QList<QInteractionFragment *> *QInteraction::fragments() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInteraction);
+    Q_D(const QInteraction);
     return d->fragments;
 }
 
@@ -225,7 +225,7 @@ void QInteraction::addFragment(QInteractionFragment *fragment)
 {
     // This is a read-write association end
 
-    QTUML_D(QInteraction);
+    Q_D(QInteraction);
     if (!d->fragments->contains(fragment)) {
         d->fragments->append(fragment);
 
@@ -241,7 +241,7 @@ void QInteraction::removeFragment(QInteractionFragment *fragment)
 {
     // This is a read-write association end
 
-    QTUML_D(QInteraction);
+    Q_D(QInteraction);
     if (d->fragments->contains(fragment)) {
         d->fragments->removeAll(fragment);
 
@@ -260,7 +260,7 @@ const QSet<QLifeline *> *QInteraction::lifelines() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QInteraction);
+    Q_D(const QInteraction);
     return d->lifelines;
 }
 
@@ -268,7 +268,7 @@ void QInteraction::addLifeline(QLifeline *lifeline)
 {
     // This is a read-write association end
 
-    QTUML_D(QInteraction);
+    Q_D(QInteraction);
     if (!d->lifelines->contains(lifeline)) {
         d->lifelines->insert(lifeline);
 
@@ -284,7 +284,7 @@ void QInteraction::removeLifeline(QLifeline *lifeline)
 {
     // This is a read-write association end
 
-    QTUML_D(QInteraction);
+    Q_D(QInteraction);
     if (d->lifelines->contains(lifeline)) {
         d->lifelines->remove(lifeline);
 

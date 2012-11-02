@@ -52,23 +52,25 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QDataStoreNodePrivate;
+
 class Q_UML_EXPORT QDataStoreNode : public QCentralBufferNode
 {
-    Q_OBJECT
-
     Q_DISABLE_COPY(QDataStoreNode)
+    Q_DECLARE_PRIVATE(QDataStoreNode)
 
 public:
     explicit QDataStoreNode(QObject *parent = 0);
     virtual ~QDataStoreNode();
 
 protected:
-    explicit QDataStoreNode(bool createPimpl, QObject *parent = 0);
+    explicit QDataStoreNode(QDataStoreNodePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QDataStoreNode) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QDataStoreNode) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QDataStoreNode) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QDataStoreNode) *> *)
 
 QT_END_HEADER

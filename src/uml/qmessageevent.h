@@ -52,18 +52,26 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+class QMessageEventPrivate;
+
 class Q_UML_EXPORT QMessageEvent : public QEvent
 {
     Q_DISABLE_COPY(QMessageEvent)
+    Q_DECLARE_PRIVATE(QMessageEvent)
 
 public:
+    explicit QMessageEvent(QObject *parent = 0);
     virtual ~QMessageEvent();
 
 protected:
-    explicit QMessageEvent();
+    explicit QMessageEvent(QMessageEventPrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QMessageEvent) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QMessageEvent) *> *)
+Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QMessageEvent) *> *)
 
 QT_END_HEADER
 

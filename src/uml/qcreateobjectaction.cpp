@@ -47,11 +47,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCreateObjectActionPrivate::QCreateObjectActionPrivate(QCreateObjectAction *q_umlptr) :
+QCreateObjectActionPrivate::QCreateObjectActionPrivate() :
     classifier(0),
     result(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QCreateObjectActionPrivate::~QCreateObjectActionPrivate()
@@ -66,17 +65,14 @@ QCreateObjectActionPrivate::~QCreateObjectActionPrivate()
     \brief A create object action is an action that creates an object that conforms to a statically specified classifier and puts it on an output pin at runtime.
  */
 
-QCreateObjectAction::QCreateObjectAction(QObject *parent)
-    : QObject(parent)
+QCreateObjectAction::QCreateObjectAction(QObject *parent) :
+    QAction(*new QCreateObjectActionPrivate, parent)
 {
-    d_umlptr = new QCreateObjectActionPrivate(this);
 }
 
-QCreateObjectAction::QCreateObjectAction(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QCreateObjectAction::QCreateObjectAction(QCreateObjectActionPrivate &dd, QObject *parent) :
+    QAction(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QCreateObjectActionPrivate;
 }
 
 QCreateObjectAction::~QCreateObjectAction()
@@ -90,7 +86,7 @@ QClassifier *QCreateObjectAction::classifier() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QCreateObjectAction);
+    Q_D(const QCreateObjectAction);
     return d->classifier;
 }
 
@@ -98,7 +94,7 @@ void QCreateObjectAction::setClassifier(QClassifier *classifier)
 {
     // This is a read-write association end
 
-    QTUML_D(QCreateObjectAction);
+    Q_D(QCreateObjectAction);
     if (d->classifier != classifier) {
         d->classifier = classifier;
     }
@@ -111,7 +107,7 @@ QOutputPin *QCreateObjectAction::result() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QCreateObjectAction);
+    Q_D(const QCreateObjectAction);
     return d->result;
 }
 
@@ -119,7 +115,7 @@ void QCreateObjectAction::setResult(QOutputPin *result)
 {
     // This is a read-write association end
 
-    QTUML_D(QCreateObjectAction);
+    Q_D(QCreateObjectAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
         d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->result));

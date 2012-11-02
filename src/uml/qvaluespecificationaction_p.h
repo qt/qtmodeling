@@ -44,7 +44,9 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qaction_p.h"
+#include "private/qaction_p.h"
+#include "qvaluespecificationaction.h"
+
 
 QT_BEGIN_HEADER
 
@@ -52,14 +54,17 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QOutputPin;
 class QValueSpecification;
 class QValueSpecificationAction;
 
-class QValueSpecificationActionPrivate : public QActionPrivate
+class Q_UML_EXPORT QValueSpecificationActionPrivate : public QActionPrivate
 {
+    Q_DECLARE_PUBLIC(QValueSpecificationAction)
+
 public:
-    explicit QValueSpecificationActionPrivate(QValueSpecificationAction *q_umlptr = 0);
+    explicit QValueSpecificationActionPrivate();
     virtual ~QValueSpecificationActionPrivate();
 
     QValueSpecification *value;

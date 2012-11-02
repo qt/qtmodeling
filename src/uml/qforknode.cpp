@@ -45,9 +45,8 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QForkNodePrivate::QForkNodePrivate(QForkNode *q_umlptr)
+QForkNodePrivate::QForkNodePrivate()
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QForkNodePrivate::~QForkNodePrivate()
@@ -62,17 +61,14 @@ QForkNodePrivate::~QForkNodePrivate()
     \brief A fork node is a control node that splits a flow into multiple concurrent flows.
  */
 
-QForkNode::QForkNode(QObject *parent)
-    : QObject(parent)
+QForkNode::QForkNode(QObject *parent) :
+    QControlNode(*new QForkNodePrivate, parent)
 {
-    d_umlptr = new QForkNodePrivate(this);
 }
 
-QForkNode::QForkNode(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QForkNode::QForkNode(QForkNodePrivate &dd, QObject *parent) :
+    QControlNode(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QForkNodePrivate;
 }
 
 QForkNode::~QForkNode()

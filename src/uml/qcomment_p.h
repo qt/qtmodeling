@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qelement_p.h"
+#include "private/qelement_p.h"
+#include "qcomment.h"
 
 // Qt includes
 #include <QtCore/QString>
@@ -57,10 +58,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QComment;
 
-class QCommentPrivate : public QElementPrivate
+class Q_UML_EXPORT QCommentPrivate : public QElementPrivate
 {
+    Q_DECLARE_PUBLIC(QComment)
+
 public:
-    explicit QCommentPrivate(QComment *q_umlptr = 0);
+    explicit QCommentPrivate();
     virtual ~QCommentPrivate();
 
     QString body;

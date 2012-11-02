@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include "qstructuredactivitynode_p.h"
+#include "private/qstructuredactivitynode_p.h"
+#include "qloopnode.h"
 
 // Qt includes
 #include <QtCore/QList>
@@ -56,15 +57,18 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QOutputPin;
 class QExecutableNode;
 class QInputPin;
 class QLoopNode;
 
-class QLoopNodePrivate : public QStructuredActivityNodePrivate
+class Q_UML_EXPORT QLoopNodePrivate : public QStructuredActivityNodePrivate
 {
+    Q_DECLARE_PUBLIC(QLoopNode)
+
 public:
-    explicit QLoopNodePrivate(QLoopNode *q_umlptr = 0);
+    explicit QLoopNodePrivate();
     virtual ~QLoopNodePrivate();
 
     bool isTestedFirst;

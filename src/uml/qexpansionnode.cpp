@@ -46,11 +46,10 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QExpansionNodePrivate::QExpansionNodePrivate(QExpansionNode *q_umlptr) :
+QExpansionNodePrivate::QExpansionNodePrivate() :
     regionAsOutput(0),
     regionAsInput(0)
 {
-    this->q_umlptr = q_umlptr;
 }
 
 QExpansionNodePrivate::~QExpansionNodePrivate()
@@ -65,17 +64,14 @@ QExpansionNodePrivate::~QExpansionNodePrivate()
     \brief An expansion node is an object node used to indicate a flow across the boundary of an expansion region. A flow into a region contains a collection that is broken into its individual elements inside the region, which is executed once per element. A flow out of a region combines individual elements into a collection for use outside the region.
  */
 
-QExpansionNode::QExpansionNode(QObject *parent)
-    : QObject(parent)
+QExpansionNode::QExpansionNode(QObject *parent) :
+    QObjectNode(*new QExpansionNodePrivate, parent)
 {
-    d_umlptr = new QExpansionNodePrivate(this);
 }
 
-QExpansionNode::QExpansionNode(bool createPimpl, QObject *parent)
-    : QObject(parent)
+QExpansionNode::QExpansionNode(QExpansionNodePrivate &dd, QObject *parent) :
+    QObjectNode(dd, parent)
 {
-    if (createPimpl)
-        d_umlptr = new QExpansionNodePrivate;
 }
 
 QExpansionNode::~QExpansionNode()
@@ -89,7 +85,7 @@ QExpansionRegion *QExpansionNode::regionAsOutput() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QExpansionNode);
+    Q_D(const QExpansionNode);
     return d->regionAsOutput;
 }
 
@@ -97,7 +93,7 @@ void QExpansionNode::setRegionAsOutput(QExpansionRegion *regionAsOutput)
 {
     // This is a read-write association end
 
-    QTUML_D(QExpansionNode);
+    Q_D(QExpansionNode);
     if (d->regionAsOutput != regionAsOutput) {
         // Adjust opposite property
         if (d->regionAsOutput)
@@ -118,7 +114,7 @@ QExpansionRegion *QExpansionNode::regionAsInput() const
 {
     // This is a read-write association end
 
-    QTUML_D(const QExpansionNode);
+    Q_D(const QExpansionNode);
     return d->regionAsInput;
 }
 
@@ -126,7 +122,7 @@ void QExpansionNode::setRegionAsInput(QExpansionRegion *regionAsInput)
 {
     // This is a read-write association end
 
-    QTUML_D(QExpansionNode);
+    Q_D(QExpansionNode);
     if (d->regionAsInput != regionAsInput) {
         // Adjust opposite property
         if (d->regionAsInput)

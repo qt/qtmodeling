@@ -44,7 +44,6 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
 #include <QtUml/QVertex>
 
 // Qt includes
@@ -56,30 +55,15 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
+// Forward decls for function parameters
 class QPseudostate;
 class QState;
 
-class Q_UML_EXPORT QConnectionPointReference : public QObject, public QVertex
+class QConnectionPointReferencePrivate;
+
+class Q_UML_EXPORT QConnectionPointReference : public QVertex
 {
     Q_OBJECT
-
-    // From QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From QVertex
-    Q_PROPERTY(const QSet<QTransition *> * incomings READ incomings)
-    Q_PROPERTY(QRegion * container READ container WRITE setContainer)
-    Q_PROPERTY(const QSet<QTransition *> * outgoings READ outgoings)
 
     // From QConnectionPointReference
     Q_PROPERTY(const QSet<QPseudostate *> * exits READ exits)
@@ -87,6 +71,7 @@ class Q_UML_EXPORT QConnectionPointReference : public QObject, public QVertex
     Q_PROPERTY(const QSet<QPseudostate *> * entries READ entries)
 
     Q_DISABLE_COPY(QConnectionPointReference)
+    Q_DECLARE_PRIVATE(QConnectionPointReference)
 
 public:
     explicit QConnectionPointReference(QObject *parent = 0);
@@ -103,12 +88,13 @@ public:
     void removeEntry(QPseudostate *entry);
 
 protected:
-    explicit QConnectionPointReference(bool createPimpl, QObject *parent = 0);
+    explicit QConnectionPointReference(QConnectionPointReferencePrivate &dd, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML
 
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QConnectionPointReference) *>)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QConnectionPointReference) *)
+Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectionPointReference) *> *)
 Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QConnectionPointReference) *> *)
 
 QT_END_HEADER
