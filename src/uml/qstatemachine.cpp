@@ -77,11 +77,17 @@ QStateMachinePrivate::~QStateMachinePrivate()
 QStateMachine::QStateMachine(QObject *parent) :
     QBehavior(*new QStateMachinePrivate, parent)
 {
+    qRegisterMetaType<QStateMachine *>("QStateMachine *");
+    qRegisterMetaType<const QSet<QStateMachine *> *>("const QSet<QStateMachine *> *");
+    qRegisterMetaType<const QList<QStateMachine *> *>("const QList<QStateMachine *> *");
 }
 
 QStateMachine::QStateMachine(QStateMachinePrivate &dd, QObject *parent) :
     QBehavior(dd, parent)
 {
+    qRegisterMetaType<QStateMachine *>("QStateMachine *");
+    qRegisterMetaType<const QSet<QStateMachine *> *>("const QSet<QStateMachine *> *");
+    qRegisterMetaType<const QList<QStateMachine *> *>("const QList<QStateMachine *> *");
 }
 
 QStateMachine::~QStateMachine()

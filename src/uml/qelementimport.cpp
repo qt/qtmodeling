@@ -69,11 +69,17 @@ QElementImportPrivate::~QElementImportPrivate()
 QElementImport::QElementImport(QObject *parent) :
     QDirectedRelationship(*new QElementImportPrivate, parent)
 {
+    qRegisterMetaType<QElementImport *>("QElementImport *");
+    qRegisterMetaType<const QSet<QElementImport *> *>("const QSet<QElementImport *> *");
+    qRegisterMetaType<const QList<QElementImport *> *>("const QList<QElementImport *> *");
 }
 
 QElementImport::QElementImport(QElementImportPrivate &dd, QObject *parent) :
     QDirectedRelationship(dd, parent)
 {
+    qRegisterMetaType<QElementImport *>("QElementImport *");
+    qRegisterMetaType<const QSet<QElementImport *> *>("const QSet<QElementImport *> *");
+    qRegisterMetaType<const QList<QElementImport *> *>("const QList<QElementImport *> *");
 }
 
 QElementImport::~QElementImport()

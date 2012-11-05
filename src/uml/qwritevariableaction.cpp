@@ -66,11 +66,17 @@ QWriteVariableActionPrivate::~QWriteVariableActionPrivate()
 QWriteVariableAction::QWriteVariableAction(QObject *parent) :
     QVariableAction(*new QWriteVariableActionPrivate, parent)
 {
+    qRegisterMetaType<QWriteVariableAction *>("QWriteVariableAction *");
+    qRegisterMetaType<const QSet<QWriteVariableAction *> *>("const QSet<QWriteVariableAction *> *");
+    qRegisterMetaType<const QList<QWriteVariableAction *> *>("const QList<QWriteVariableAction *> *");
 }
 
 QWriteVariableAction::QWriteVariableAction(QWriteVariableActionPrivate &dd, QObject *parent) :
     QVariableAction(dd, parent)
 {
+    qRegisterMetaType<QWriteVariableAction *>("QWriteVariableAction *");
+    qRegisterMetaType<const QSet<QWriteVariableAction *> *>("const QSet<QWriteVariableAction *> *");
+    qRegisterMetaType<const QList<QWriteVariableAction *> *>("const QList<QWriteVariableAction *> *");
 }
 
 QWriteVariableAction::~QWriteVariableAction()

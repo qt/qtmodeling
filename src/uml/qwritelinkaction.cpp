@@ -63,11 +63,17 @@ QWriteLinkActionPrivate::~QWriteLinkActionPrivate()
 QWriteLinkAction::QWriteLinkAction(QObject *parent) :
     QLinkAction(*new QWriteLinkActionPrivate, parent)
 {
+    qRegisterMetaType<QWriteLinkAction *>("QWriteLinkAction *");
+    qRegisterMetaType<const QSet<QWriteLinkAction *> *>("const QSet<QWriteLinkAction *> *");
+    qRegisterMetaType<const QList<QWriteLinkAction *> *>("const QList<QWriteLinkAction *> *");
 }
 
 QWriteLinkAction::QWriteLinkAction(QWriteLinkActionPrivate &dd, QObject *parent) :
     QLinkAction(dd, parent)
 {
+    qRegisterMetaType<QWriteLinkAction *>("QWriteLinkAction *");
+    qRegisterMetaType<const QSet<QWriteLinkAction *> *>("const QSet<QWriteLinkAction *> *");
+    qRegisterMetaType<const QList<QWriteLinkAction *> *>("const QList<QWriteLinkAction *> *");
 }
 
 QWriteLinkAction::~QWriteLinkAction()

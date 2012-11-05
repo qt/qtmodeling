@@ -69,11 +69,17 @@ QMultiplicityElementPrivate::~QMultiplicityElementPrivate()
 QMultiplicityElement::QMultiplicityElement(QObject *parent) :
     QElement(*new QMultiplicityElementPrivate, parent)
 {
+    qRegisterMetaType<QMultiplicityElement *>("QMultiplicityElement *");
+    qRegisterMetaType<const QSet<QMultiplicityElement *> *>("const QSet<QMultiplicityElement *> *");
+    qRegisterMetaType<const QList<QMultiplicityElement *> *>("const QList<QMultiplicityElement *> *");
 }
 
 QMultiplicityElement::QMultiplicityElement(QMultiplicityElementPrivate &dd, QObject *parent) :
     QElement(dd, parent)
 {
+    qRegisterMetaType<QMultiplicityElement *>("QMultiplicityElement *");
+    qRegisterMetaType<const QSet<QMultiplicityElement *> *>("const QSet<QMultiplicityElement *> *");
+    qRegisterMetaType<const QList<QMultiplicityElement *> *>("const QList<QMultiplicityElement *> *");
 }
 
 QMultiplicityElement::~QMultiplicityElement()

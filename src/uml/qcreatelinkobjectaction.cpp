@@ -66,11 +66,17 @@ QCreateLinkObjectActionPrivate::~QCreateLinkObjectActionPrivate()
 QCreateLinkObjectAction::QCreateLinkObjectAction(QObject *parent) :
     QCreateLinkAction(*new QCreateLinkObjectActionPrivate, parent)
 {
+    qRegisterMetaType<QCreateLinkObjectAction *>("QCreateLinkObjectAction *");
+    qRegisterMetaType<const QSet<QCreateLinkObjectAction *> *>("const QSet<QCreateLinkObjectAction *> *");
+    qRegisterMetaType<const QList<QCreateLinkObjectAction *> *>("const QList<QCreateLinkObjectAction *> *");
 }
 
 QCreateLinkObjectAction::QCreateLinkObjectAction(QCreateLinkObjectActionPrivate &dd, QObject *parent) :
     QCreateLinkAction(dd, parent)
 {
+    qRegisterMetaType<QCreateLinkObjectAction *>("QCreateLinkObjectAction *");
+    qRegisterMetaType<const QSet<QCreateLinkObjectAction *> *>("const QSet<QCreateLinkObjectAction *> *");
+    qRegisterMetaType<const QList<QCreateLinkObjectAction *> *>("const QList<QCreateLinkObjectAction *> *");
 }
 
 QCreateLinkObjectAction::~QCreateLinkObjectAction()

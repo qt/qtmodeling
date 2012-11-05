@@ -63,11 +63,17 @@ QInputPinPrivate::~QInputPinPrivate()
 QInputPin::QInputPin(QObject *parent) :
     QPin(*new QInputPinPrivate, parent)
 {
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
+    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
 }
 
 QInputPin::QInputPin(QInputPinPrivate &dd, QObject *parent) :
     QPin(dd, parent)
 {
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
+    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
 }
 
 QInputPin::~QInputPin()

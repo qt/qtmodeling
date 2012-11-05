@@ -72,11 +72,17 @@ QPortPrivate::~QPortPrivate()
 QPort::QPort(QObject *parent) :
     QProperty(*new QPortPrivate, parent)
 {
+    qRegisterMetaType<QPort *>("QPort *");
+    qRegisterMetaType<const QSet<QPort *> *>("const QSet<QPort *> *");
+    qRegisterMetaType<const QList<QPort *> *>("const QList<QPort *> *");
 }
 
 QPort::QPort(QPortPrivate &dd, QObject *parent) :
     QProperty(dd, parent)
 {
+    qRegisterMetaType<QPort *>("QPort *");
+    qRegisterMetaType<const QSet<QPort *> *>("const QSet<QPort *> *");
+    qRegisterMetaType<const QList<QPort *> *>("const QList<QPort *> *");
 }
 
 QPort::~QPort()

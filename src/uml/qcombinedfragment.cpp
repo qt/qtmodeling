@@ -71,11 +71,17 @@ QCombinedFragmentPrivate::~QCombinedFragmentPrivate()
 QCombinedFragment::QCombinedFragment(QObject *parent) :
     QInteractionFragment(*new QCombinedFragmentPrivate, parent)
 {
+    qRegisterMetaType<QCombinedFragment *>("QCombinedFragment *");
+    qRegisterMetaType<const QSet<QCombinedFragment *> *>("const QSet<QCombinedFragment *> *");
+    qRegisterMetaType<const QList<QCombinedFragment *> *>("const QList<QCombinedFragment *> *");
 }
 
 QCombinedFragment::QCombinedFragment(QCombinedFragmentPrivate &dd, QObject *parent) :
     QInteractionFragment(dd, parent)
 {
+    qRegisterMetaType<QCombinedFragment *>("QCombinedFragment *");
+    qRegisterMetaType<const QSet<QCombinedFragment *> *>("const QSet<QCombinedFragment *> *");
+    qRegisterMetaType<const QList<QCombinedFragment *> *>("const QList<QCombinedFragment *> *");
 }
 
 QCombinedFragment::~QCombinedFragment()

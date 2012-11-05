@@ -63,11 +63,17 @@ QFunctionBehaviorPrivate::~QFunctionBehaviorPrivate()
 QFunctionBehavior::QFunctionBehavior(QObject *parent) :
     QOpaqueBehavior(*new QFunctionBehaviorPrivate, parent)
 {
+    qRegisterMetaType<QFunctionBehavior *>("QFunctionBehavior *");
+    qRegisterMetaType<const QSet<QFunctionBehavior *> *>("const QSet<QFunctionBehavior *> *");
+    qRegisterMetaType<const QList<QFunctionBehavior *> *>("const QList<QFunctionBehavior *> *");
 }
 
 QFunctionBehavior::QFunctionBehavior(QFunctionBehaviorPrivate &dd, QObject *parent) :
     QOpaqueBehavior(dd, parent)
 {
+    qRegisterMetaType<QFunctionBehavior *>("QFunctionBehavior *");
+    qRegisterMetaType<const QSet<QFunctionBehavior *> *>("const QSet<QFunctionBehavior *> *");
+    qRegisterMetaType<const QList<QFunctionBehavior *> *>("const QList<QFunctionBehavior *> *");
 }
 
 QFunctionBehavior::~QFunctionBehavior()

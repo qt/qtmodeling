@@ -67,11 +67,17 @@ QEnumerationPrivate::~QEnumerationPrivate()
 QEnumeration::QEnumeration(QObject *parent) :
     QDataType(*new QEnumerationPrivate, parent)
 {
+    qRegisterMetaType<QEnumeration *>("QEnumeration *");
+    qRegisterMetaType<const QSet<QEnumeration *> *>("const QSet<QEnumeration *> *");
+    qRegisterMetaType<const QList<QEnumeration *> *>("const QList<QEnumeration *> *");
 }
 
 QEnumeration::QEnumeration(QEnumerationPrivate &dd, QObject *parent) :
     QDataType(dd, parent)
 {
+    qRegisterMetaType<QEnumeration *>("QEnumeration *");
+    qRegisterMetaType<const QSet<QEnumeration *> *>("const QSet<QEnumeration *> *");
+    qRegisterMetaType<const QList<QEnumeration *> *>("const QList<QEnumeration *> *");
 }
 
 QEnumeration::~QEnumeration()

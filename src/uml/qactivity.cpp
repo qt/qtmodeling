@@ -84,11 +84,17 @@ QActivityPrivate::~QActivityPrivate()
 QActivity::QActivity(QObject *parent) :
     QBehavior(*new QActivityPrivate, parent)
 {
+    qRegisterMetaType<QActivity *>("QActivity *");
+    qRegisterMetaType<const QSet<QActivity *> *>("const QSet<QActivity *> *");
+    qRegisterMetaType<const QList<QActivity *> *>("const QList<QActivity *> *");
 }
 
 QActivity::QActivity(QActivityPrivate &dd, QObject *parent) :
     QBehavior(dd, parent)
 {
+    qRegisterMetaType<QActivity *>("QActivity *");
+    qRegisterMetaType<const QSet<QActivity *> *>("const QSet<QActivity *> *");
+    qRegisterMetaType<const QList<QActivity *> *>("const QList<QActivity *> *");
 }
 
 QActivity::~QActivity()

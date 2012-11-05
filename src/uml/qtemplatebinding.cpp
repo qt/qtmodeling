@@ -71,11 +71,17 @@ QTemplateBindingPrivate::~QTemplateBindingPrivate()
 QTemplateBinding::QTemplateBinding(QObject *parent) :
     QDirectedRelationship(*new QTemplateBindingPrivate, parent)
 {
+    qRegisterMetaType<QTemplateBinding *>("QTemplateBinding *");
+    qRegisterMetaType<const QSet<QTemplateBinding *> *>("const QSet<QTemplateBinding *> *");
+    qRegisterMetaType<const QList<QTemplateBinding *> *>("const QList<QTemplateBinding *> *");
 }
 
 QTemplateBinding::QTemplateBinding(QTemplateBindingPrivate &dd, QObject *parent) :
     QDirectedRelationship(dd, parent)
 {
+    qRegisterMetaType<QTemplateBinding *>("QTemplateBinding *");
+    qRegisterMetaType<const QSet<QTemplateBinding *> *>("const QSet<QTemplateBinding *> *");
+    qRegisterMetaType<const QList<QTemplateBinding *> *>("const QList<QTemplateBinding *> *");
 }
 
 QTemplateBinding::~QTemplateBinding()

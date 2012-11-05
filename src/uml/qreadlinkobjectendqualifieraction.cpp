@@ -70,11 +70,17 @@ QReadLinkObjectEndQualifierActionPrivate::~QReadLinkObjectEndQualifierActionPriv
 QReadLinkObjectEndQualifierAction::QReadLinkObjectEndQualifierAction(QObject *parent) :
     QAction(*new QReadLinkObjectEndQualifierActionPrivate, parent)
 {
+    qRegisterMetaType<QReadLinkObjectEndQualifierAction *>("QReadLinkObjectEndQualifierAction *");
+    qRegisterMetaType<const QSet<QReadLinkObjectEndQualifierAction *> *>("const QSet<QReadLinkObjectEndQualifierAction *> *");
+    qRegisterMetaType<const QList<QReadLinkObjectEndQualifierAction *> *>("const QList<QReadLinkObjectEndQualifierAction *> *");
 }
 
 QReadLinkObjectEndQualifierAction::QReadLinkObjectEndQualifierAction(QReadLinkObjectEndQualifierActionPrivate &dd, QObject *parent) :
     QAction(dd, parent)
 {
+    qRegisterMetaType<QReadLinkObjectEndQualifierAction *>("QReadLinkObjectEndQualifierAction *");
+    qRegisterMetaType<const QSet<QReadLinkObjectEndQualifierAction *> *>("const QSet<QReadLinkObjectEndQualifierAction *> *");
+    qRegisterMetaType<const QList<QReadLinkObjectEndQualifierAction *> *>("const QList<QReadLinkObjectEndQualifierAction *> *");
 }
 
 QReadLinkObjectEndQualifierAction::~QReadLinkObjectEndQualifierAction()

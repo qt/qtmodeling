@@ -67,11 +67,17 @@ QProtocolConformancePrivate::~QProtocolConformancePrivate()
 QProtocolConformance::QProtocolConformance(QObject *parent) :
     QDirectedRelationship(*new QProtocolConformancePrivate, parent)
 {
+    qRegisterMetaType<QProtocolConformance *>("QProtocolConformance *");
+    qRegisterMetaType<const QSet<QProtocolConformance *> *>("const QSet<QProtocolConformance *> *");
+    qRegisterMetaType<const QList<QProtocolConformance *> *>("const QList<QProtocolConformance *> *");
 }
 
 QProtocolConformance::QProtocolConformance(QProtocolConformancePrivate &dd, QObject *parent) :
     QDirectedRelationship(dd, parent)
 {
+    qRegisterMetaType<QProtocolConformance *>("QProtocolConformance *");
+    qRegisterMetaType<const QSet<QProtocolConformance *> *>("const QSet<QProtocolConformance *> *");
+    qRegisterMetaType<const QList<QProtocolConformance *> *>("const QList<QProtocolConformance *> *");
 }
 
 QProtocolConformance::~QProtocolConformance()

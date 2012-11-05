@@ -66,11 +66,17 @@ QManifestationPrivate::~QManifestationPrivate()
 QManifestation::QManifestation(QObject *parent) :
     QAbstraction(*new QManifestationPrivate, parent)
 {
+    qRegisterMetaType<QManifestation *>("QManifestation *");
+    qRegisterMetaType<const QSet<QManifestation *> *>("const QSet<QManifestation *> *");
+    qRegisterMetaType<const QList<QManifestation *> *>("const QList<QManifestation *> *");
 }
 
 QManifestation::QManifestation(QManifestationPrivate &dd, QObject *parent) :
     QAbstraction(dd, parent)
 {
+    qRegisterMetaType<QManifestation *>("QManifestation *");
+    qRegisterMetaType<const QSet<QManifestation *> *>("const QSet<QManifestation *> *");
+    qRegisterMetaType<const QList<QManifestation *> *>("const QList<QManifestation *> *");
 }
 
 QManifestation::~QManifestation()

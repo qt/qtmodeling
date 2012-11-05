@@ -185,11 +185,17 @@ void QActivityGroupPrivate::setSuperGroup(QActivityGroup *superGroup)
 QActivityGroup::QActivityGroup(QObject *parent) :
     QNamedElement(*new QActivityGroupPrivate, parent)
 {
+    qRegisterMetaType<QActivityGroup *>("QActivityGroup *");
+    qRegisterMetaType<const QSet<QActivityGroup *> *>("const QSet<QActivityGroup *> *");
+    qRegisterMetaType<const QList<QActivityGroup *> *>("const QList<QActivityGroup *> *");
 }
 
 QActivityGroup::QActivityGroup(QActivityGroupPrivate &dd, QObject *parent) :
     QNamedElement(dd, parent)
 {
+    qRegisterMetaType<QActivityGroup *>("QActivityGroup *");
+    qRegisterMetaType<const QSet<QActivityGroup *> *>("const QSet<QActivityGroup *> *");
+    qRegisterMetaType<const QList<QActivityGroup *> *>("const QList<QActivityGroup *> *");
 }
 
 QActivityGroup::~QActivityGroup()

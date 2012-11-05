@@ -68,11 +68,17 @@ QStereotypePrivate::~QStereotypePrivate()
 QStereotype::QStereotype(QObject *parent) :
     QClass(*new QStereotypePrivate, parent)
 {
+    qRegisterMetaType<QStereotype *>("QStereotype *");
+    qRegisterMetaType<const QSet<QStereotype *> *>("const QSet<QStereotype *> *");
+    qRegisterMetaType<const QList<QStereotype *> *>("const QList<QStereotype *> *");
 }
 
 QStereotype::QStereotype(QStereotypePrivate &dd, QObject *parent) :
     QClass(dd, parent)
 {
+    qRegisterMetaType<QStereotype *>("QStereotype *");
+    qRegisterMetaType<const QSet<QStereotype *> *>("const QSet<QStereotype *> *");
+    qRegisterMetaType<const QList<QStereotype *> *>("const QList<QStereotype *> *");
 }
 
 QStereotype::~QStereotype()

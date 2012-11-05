@@ -71,6 +71,9 @@ QDependency::QDependency(QObject *parent) :
     _wrappedPackageableElement(new QPackageableElement(this)),
     _wrappedDirectedRelationship(new QDirectedRelationship(this))
 {
+    qRegisterMetaType<QDependency *>("QDependency *");
+    qRegisterMetaType<const QSet<QDependency *> *>("const QSet<QDependency *> *");
+    qRegisterMetaType<const QList<QDependency *> *>("const QList<QDependency *> *");
 }
 
 QDependency::QDependency(QDependencyPrivate &dd, QObject *parent) :
@@ -78,6 +81,9 @@ QDependency::QDependency(QDependencyPrivate &dd, QObject *parent) :
     _wrappedPackageableElement(new QPackageableElement(this)),
     _wrappedDirectedRelationship(new QDirectedRelationship(this))
 {
+    qRegisterMetaType<QDependency *>("QDependency *");
+    qRegisterMetaType<const QSet<QDependency *> *>("const QSet<QDependency *> *");
+    qRegisterMetaType<const QList<QDependency *> *>("const QList<QDependency *> *");
 }
 
 QDependency::~QDependency()

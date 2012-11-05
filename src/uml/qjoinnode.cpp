@@ -67,11 +67,17 @@ QJoinNodePrivate::~QJoinNodePrivate()
 QJoinNode::QJoinNode(QObject *parent) :
     QControlNode(*new QJoinNodePrivate, parent)
 {
+    qRegisterMetaType<QJoinNode *>("QJoinNode *");
+    qRegisterMetaType<const QSet<QJoinNode *> *>("const QSet<QJoinNode *> *");
+    qRegisterMetaType<const QList<QJoinNode *> *>("const QList<QJoinNode *> *");
 }
 
 QJoinNode::QJoinNode(QJoinNodePrivate &dd, QObject *parent) :
     QControlNode(dd, parent)
 {
+    qRegisterMetaType<QJoinNode *>("QJoinNode *");
+    qRegisterMetaType<const QSet<QJoinNode *> *>("const QSet<QJoinNode *> *");
+    qRegisterMetaType<const QList<QJoinNode *> *>("const QList<QJoinNode *> *");
 }
 
 QJoinNode::~QJoinNode()

@@ -69,6 +69,9 @@ QInclude::QInclude(QObject *parent) :
     _wrappedDirectedRelationship(new QDirectedRelationship(this)),
     _wrappedNamedElement(new QNamedElement(this))
 {
+    qRegisterMetaType<QInclude *>("QInclude *");
+    qRegisterMetaType<const QSet<QInclude *> *>("const QSet<QInclude *> *");
+    qRegisterMetaType<const QList<QInclude *> *>("const QList<QInclude *> *");
 }
 
 QInclude::QInclude(QIncludePrivate &dd, QObject *parent) :
@@ -76,6 +79,9 @@ QInclude::QInclude(QIncludePrivate &dd, QObject *parent) :
     _wrappedDirectedRelationship(new QDirectedRelationship(this)),
     _wrappedNamedElement(new QNamedElement(this))
 {
+    qRegisterMetaType<QInclude *>("QInclude *");
+    qRegisterMetaType<const QSet<QInclude *> *>("const QSet<QInclude *> *");
+    qRegisterMetaType<const QList<QInclude *> *>("const QList<QInclude *> *");
 }
 
 QInclude::~QInclude()

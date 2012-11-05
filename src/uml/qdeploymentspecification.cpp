@@ -66,11 +66,17 @@ QDeploymentSpecificationPrivate::~QDeploymentSpecificationPrivate()
 QDeploymentSpecification::QDeploymentSpecification(QObject *parent) :
     QArtifact(*new QDeploymentSpecificationPrivate, parent)
 {
+    qRegisterMetaType<QDeploymentSpecification *>("QDeploymentSpecification *");
+    qRegisterMetaType<const QSet<QDeploymentSpecification *> *>("const QSet<QDeploymentSpecification *> *");
+    qRegisterMetaType<const QList<QDeploymentSpecification *> *>("const QList<QDeploymentSpecification *> *");
 }
 
 QDeploymentSpecification::QDeploymentSpecification(QDeploymentSpecificationPrivate &dd, QObject *parent) :
     QArtifact(dd, parent)
 {
+    qRegisterMetaType<QDeploymentSpecification *>("QDeploymentSpecification *");
+    qRegisterMetaType<const QSet<QDeploymentSpecification *> *>("const QSet<QDeploymentSpecification *> *");
+    qRegisterMetaType<const QList<QDeploymentSpecification *> *>("const QList<QDeploymentSpecification *> *");
 }
 
 QDeploymentSpecification::~QDeploymentSpecification()

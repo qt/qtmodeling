@@ -63,11 +63,17 @@ QControlNodePrivate::~QControlNodePrivate()
 QControlNode::QControlNode(QObject *parent) :
     QActivityNode(*new QControlNodePrivate, parent)
 {
+    qRegisterMetaType<QControlNode *>("QControlNode *");
+    qRegisterMetaType<const QSet<QControlNode *> *>("const QSet<QControlNode *> *");
+    qRegisterMetaType<const QList<QControlNode *> *>("const QList<QControlNode *> *");
 }
 
 QControlNode::QControlNode(QControlNodePrivate &dd, QObject *parent) :
     QActivityNode(dd, parent)
 {
+    qRegisterMetaType<QControlNode *>("QControlNode *");
+    qRegisterMetaType<const QSet<QControlNode *> *>("const QSet<QControlNode *> *");
+    qRegisterMetaType<const QList<QControlNode *> *>("const QList<QControlNode *> *");
 }
 
 QControlNode::~QControlNode()

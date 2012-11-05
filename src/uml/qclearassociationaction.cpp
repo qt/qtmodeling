@@ -68,11 +68,17 @@ QClearAssociationActionPrivate::~QClearAssociationActionPrivate()
 QClearAssociationAction::QClearAssociationAction(QObject *parent) :
     QAction(*new QClearAssociationActionPrivate, parent)
 {
+    qRegisterMetaType<QClearAssociationAction *>("QClearAssociationAction *");
+    qRegisterMetaType<const QSet<QClearAssociationAction *> *>("const QSet<QClearAssociationAction *> *");
+    qRegisterMetaType<const QList<QClearAssociationAction *> *>("const QList<QClearAssociationAction *> *");
 }
 
 QClearAssociationAction::QClearAssociationAction(QClearAssociationActionPrivate &dd, QObject *parent) :
     QAction(dd, parent)
 {
+    qRegisterMetaType<QClearAssociationAction *>("QClearAssociationAction *");
+    qRegisterMetaType<const QSet<QClearAssociationAction *> *>("const QSet<QClearAssociationAction *> *");
+    qRegisterMetaType<const QList<QClearAssociationAction *> *>("const QList<QClearAssociationAction *> *");
 }
 
 QClearAssociationAction::~QClearAssociationAction()

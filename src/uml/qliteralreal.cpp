@@ -63,11 +63,17 @@ QLiteralRealPrivate::~QLiteralRealPrivate()
 QLiteralReal::QLiteralReal(QObject *parent) :
     QLiteralSpecification(*new QLiteralRealPrivate, parent)
 {
+    qRegisterMetaType<QLiteralReal *>("QLiteralReal *");
+    qRegisterMetaType<const QSet<QLiteralReal *> *>("const QSet<QLiteralReal *> *");
+    qRegisterMetaType<const QList<QLiteralReal *> *>("const QList<QLiteralReal *> *");
 }
 
 QLiteralReal::QLiteralReal(QLiteralRealPrivate &dd, QObject *parent) :
     QLiteralSpecification(dd, parent)
 {
+    qRegisterMetaType<QLiteralReal *>("QLiteralReal *");
+    qRegisterMetaType<const QSet<QLiteralReal *> *>("const QSet<QLiteralReal *> *");
+    qRegisterMetaType<const QList<QLiteralReal *> *>("const QList<QLiteralReal *> *");
 }
 
 QLiteralReal::~QLiteralReal()

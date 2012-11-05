@@ -71,11 +71,17 @@ QReadIsClassifiedObjectActionPrivate::~QReadIsClassifiedObjectActionPrivate()
 QReadIsClassifiedObjectAction::QReadIsClassifiedObjectAction(QObject *parent) :
     QAction(*new QReadIsClassifiedObjectActionPrivate, parent)
 {
+    qRegisterMetaType<QReadIsClassifiedObjectAction *>("QReadIsClassifiedObjectAction *");
+    qRegisterMetaType<const QSet<QReadIsClassifiedObjectAction *> *>("const QSet<QReadIsClassifiedObjectAction *> *");
+    qRegisterMetaType<const QList<QReadIsClassifiedObjectAction *> *>("const QList<QReadIsClassifiedObjectAction *> *");
 }
 
 QReadIsClassifiedObjectAction::QReadIsClassifiedObjectAction(QReadIsClassifiedObjectActionPrivate &dd, QObject *parent) :
     QAction(dd, parent)
 {
+    qRegisterMetaType<QReadIsClassifiedObjectAction *>("QReadIsClassifiedObjectAction *");
+    qRegisterMetaType<const QSet<QReadIsClassifiedObjectAction *> *>("const QSet<QReadIsClassifiedObjectAction *> *");
+    qRegisterMetaType<const QList<QReadIsClassifiedObjectAction *> *>("const QList<QReadIsClassifiedObjectAction *> *");
 }
 
 QReadIsClassifiedObjectAction::~QReadIsClassifiedObjectAction()

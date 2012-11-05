@@ -76,11 +76,17 @@ QUseCasePrivate::~QUseCasePrivate()
 QUseCase::QUseCase(QObject *parent) :
     QBehavioredClassifier(*new QUseCasePrivate, parent)
 {
+    qRegisterMetaType<QUseCase *>("QUseCase *");
+    qRegisterMetaType<const QSet<QUseCase *> *>("const QSet<QUseCase *> *");
+    qRegisterMetaType<const QList<QUseCase *> *>("const QList<QUseCase *> *");
 }
 
 QUseCase::QUseCase(QUseCasePrivate &dd, QObject *parent) :
     QBehavioredClassifier(dd, parent)
 {
+    qRegisterMetaType<QUseCase *>("QUseCase *");
+    qRegisterMetaType<const QSet<QUseCase *> *>("const QSet<QUseCase *> *");
+    qRegisterMetaType<const QList<QUseCase *> *>("const QList<QUseCase *> *");
 }
 
 QUseCase::~QUseCase()

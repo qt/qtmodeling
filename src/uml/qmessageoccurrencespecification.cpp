@@ -65,6 +65,9 @@ QMessageOccurrenceSpecification::QMessageOccurrenceSpecification(QObject *parent
     _wrappedOccurrenceSpecification(new QOccurrenceSpecification(this)),
     _wrappedMessageEnd(new QMessageEnd(this))
 {
+    qRegisterMetaType<QMessageOccurrenceSpecification *>("QMessageOccurrenceSpecification *");
+    qRegisterMetaType<const QSet<QMessageOccurrenceSpecification *> *>("const QSet<QMessageOccurrenceSpecification *> *");
+    qRegisterMetaType<const QList<QMessageOccurrenceSpecification *> *>("const QList<QMessageOccurrenceSpecification *> *");
 }
 
 QMessageOccurrenceSpecification::QMessageOccurrenceSpecification(QMessageOccurrenceSpecificationPrivate &dd, QObject *parent) :
@@ -72,6 +75,9 @@ QMessageOccurrenceSpecification::QMessageOccurrenceSpecification(QMessageOccurre
     _wrappedOccurrenceSpecification(new QOccurrenceSpecification(this)),
     _wrappedMessageEnd(new QMessageEnd(this))
 {
+    qRegisterMetaType<QMessageOccurrenceSpecification *>("QMessageOccurrenceSpecification *");
+    qRegisterMetaType<const QSet<QMessageOccurrenceSpecification *> *>("const QSet<QMessageOccurrenceSpecification *> *");
+    qRegisterMetaType<const QList<QMessageOccurrenceSpecification *> *>("const QList<QMessageOccurrenceSpecification *> *");
 }
 
 QMessageOccurrenceSpecification::~QMessageOccurrenceSpecification()

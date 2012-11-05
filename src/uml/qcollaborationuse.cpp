@@ -69,11 +69,17 @@ QCollaborationUsePrivate::~QCollaborationUsePrivate()
 QCollaborationUse::QCollaborationUse(QObject *parent) :
     QNamedElement(*new QCollaborationUsePrivate, parent)
 {
+    qRegisterMetaType<QCollaborationUse *>("QCollaborationUse *");
+    qRegisterMetaType<const QSet<QCollaborationUse *> *>("const QSet<QCollaborationUse *> *");
+    qRegisterMetaType<const QList<QCollaborationUse *> *>("const QList<QCollaborationUse *> *");
 }
 
 QCollaborationUse::QCollaborationUse(QCollaborationUsePrivate &dd, QObject *parent) :
     QNamedElement(dd, parent)
 {
+    qRegisterMetaType<QCollaborationUse *>("QCollaborationUse *");
+    qRegisterMetaType<const QSet<QCollaborationUse *> *>("const QSet<QCollaborationUse *> *");
+    qRegisterMetaType<const QList<QCollaborationUse *> *>("const QList<QCollaborationUse *> *");
 }
 
 QCollaborationUse::~QCollaborationUse()

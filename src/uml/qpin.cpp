@@ -66,6 +66,9 @@ QPin::QPin(QObject *parent) :
     _wrappedMultiplicityElement(new QMultiplicityElement(this)),
     _wrappedObjectNode(new QObjectNode(this))
 {
+    qRegisterMetaType<QPin *>("QPin *");
+    qRegisterMetaType<const QSet<QPin *> *>("const QSet<QPin *> *");
+    qRegisterMetaType<const QList<QPin *> *>("const QList<QPin *> *");
 }
 
 QPin::QPin(QPinPrivate &dd, QObject *parent) :
@@ -73,6 +76,9 @@ QPin::QPin(QPinPrivate &dd, QObject *parent) :
     _wrappedMultiplicityElement(new QMultiplicityElement(this)),
     _wrappedObjectNode(new QObjectNode(this))
 {
+    qRegisterMetaType<QPin *>("QPin *");
+    qRegisterMetaType<const QSet<QPin *> *>("const QSet<QPin *> *");
+    qRegisterMetaType<const QList<QPin *> *>("const QList<QPin *> *");
 }
 
 QPin::~QPin()

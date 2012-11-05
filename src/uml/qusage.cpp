@@ -63,11 +63,17 @@ QUsagePrivate::~QUsagePrivate()
 QUsage::QUsage(QObject *parent) :
     QDependency(*new QUsagePrivate, parent)
 {
+    qRegisterMetaType<QUsage *>("QUsage *");
+    qRegisterMetaType<const QSet<QUsage *> *>("const QSet<QUsage *> *");
+    qRegisterMetaType<const QList<QUsage *> *>("const QList<QUsage *> *");
 }
 
 QUsage::QUsage(QUsagePrivate &dd, QObject *parent) :
     QDependency(dd, parent)
 {
+    qRegisterMetaType<QUsage *>("QUsage *");
+    qRegisterMetaType<const QSet<QUsage *> *>("const QSet<QUsage *> *");
+    qRegisterMetaType<const QList<QUsage *> *>("const QList<QUsage *> *");
 }
 
 QUsage::~QUsage()

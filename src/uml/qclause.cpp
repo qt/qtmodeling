@@ -77,11 +77,17 @@ QClausePrivate::~QClausePrivate()
 QClause::QClause(QObject *parent) :
     QElement(*new QClausePrivate, parent)
 {
+    qRegisterMetaType<QClause *>("QClause *");
+    qRegisterMetaType<const QSet<QClause *> *>("const QSet<QClause *> *");
+    qRegisterMetaType<const QList<QClause *> *>("const QList<QClause *> *");
 }
 
 QClause::QClause(QClausePrivate &dd, QObject *parent) :
     QElement(dd, parent)
 {
+    qRegisterMetaType<QClause *>("QClause *");
+    qRegisterMetaType<const QSet<QClause *> *>("const QSet<QClause *> *");
+    qRegisterMetaType<const QList<QClause *> *>("const QList<QClause *> *");
 }
 
 QClause::~QClause()

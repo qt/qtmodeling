@@ -71,11 +71,17 @@ QUnmarshallActionPrivate::~QUnmarshallActionPrivate()
 QUnmarshallAction::QUnmarshallAction(QObject *parent) :
     QAction(*new QUnmarshallActionPrivate, parent)
 {
+    qRegisterMetaType<QUnmarshallAction *>("QUnmarshallAction *");
+    qRegisterMetaType<const QSet<QUnmarshallAction *> *>("const QSet<QUnmarshallAction *> *");
+    qRegisterMetaType<const QList<QUnmarshallAction *> *>("const QList<QUnmarshallAction *> *");
 }
 
 QUnmarshallAction::QUnmarshallAction(QUnmarshallActionPrivate &dd, QObject *parent) :
     QAction(dd, parent)
 {
+    qRegisterMetaType<QUnmarshallAction *>("QUnmarshallAction *");
+    qRegisterMetaType<const QSet<QUnmarshallAction *> *>("const QSet<QUnmarshallAction *> *");
+    qRegisterMetaType<const QList<QUnmarshallAction *> *>("const QList<QUnmarshallAction *> *");
 }
 
 QUnmarshallAction::~QUnmarshallAction()

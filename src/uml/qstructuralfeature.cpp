@@ -67,6 +67,9 @@ QStructuralFeature::QStructuralFeature(QObject *parent) :
     _wrappedMultiplicityElement(new QMultiplicityElement(this)),
     _wrappedFeature(new QFeature(this))
 {
+    qRegisterMetaType<QStructuralFeature *>("QStructuralFeature *");
+    qRegisterMetaType<const QSet<QStructuralFeature *> *>("const QSet<QStructuralFeature *> *");
+    qRegisterMetaType<const QList<QStructuralFeature *> *>("const QList<QStructuralFeature *> *");
 }
 
 QStructuralFeature::QStructuralFeature(QStructuralFeaturePrivate &dd, QObject *parent) :
@@ -75,6 +78,9 @@ QStructuralFeature::QStructuralFeature(QStructuralFeaturePrivate &dd, QObject *p
     _wrappedMultiplicityElement(new QMultiplicityElement(this)),
     _wrappedFeature(new QFeature(this))
 {
+    qRegisterMetaType<QStructuralFeature *>("QStructuralFeature *");
+    qRegisterMetaType<const QSet<QStructuralFeature *> *>("const QSet<QStructuralFeature *> *");
+    qRegisterMetaType<const QList<QStructuralFeature *> *>("const QList<QStructuralFeature *> *");
 }
 
 QStructuralFeature::~QStructuralFeature()

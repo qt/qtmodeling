@@ -68,11 +68,17 @@ QStateInvariantPrivate::~QStateInvariantPrivate()
 QStateInvariant::QStateInvariant(QObject *parent) :
     QInteractionFragment(*new QStateInvariantPrivate, parent)
 {
+    qRegisterMetaType<QStateInvariant *>("QStateInvariant *");
+    qRegisterMetaType<const QSet<QStateInvariant *> *>("const QSet<QStateInvariant *> *");
+    qRegisterMetaType<const QList<QStateInvariant *> *>("const QList<QStateInvariant *> *");
 }
 
 QStateInvariant::QStateInvariant(QStateInvariantPrivate &dd, QObject *parent) :
     QInteractionFragment(dd, parent)
 {
+    qRegisterMetaType<QStateInvariant *>("QStateInvariant *");
+    qRegisterMetaType<const QSet<QStateInvariant *> *>("const QSet<QStateInvariant *> *");
+    qRegisterMetaType<const QList<QStateInvariant *> *>("const QList<QStateInvariant *> *");
 }
 
 QStateInvariant::~QStateInvariant()

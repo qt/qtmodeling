@@ -66,11 +66,17 @@ QChangeEventPrivate::~QChangeEventPrivate()
 QChangeEvent::QChangeEvent(QObject *parent) :
     QEvent(*new QChangeEventPrivate, parent)
 {
+    qRegisterMetaType<QChangeEvent *>("QChangeEvent *");
+    qRegisterMetaType<const QSet<QChangeEvent *> *>("const QSet<QChangeEvent *> *");
+    qRegisterMetaType<const QList<QChangeEvent *> *>("const QList<QChangeEvent *> *");
 }
 
 QChangeEvent::QChangeEvent(QChangeEventPrivate &dd, QObject *parent) :
     QEvent(dd, parent)
 {
+    qRegisterMetaType<QChangeEvent *>("QChangeEvent *");
+    qRegisterMetaType<const QSet<QChangeEvent *> *>("const QSet<QChangeEvent *> *");
+    qRegisterMetaType<const QList<QChangeEvent *> *>("const QList<QChangeEvent *> *");
 }
 
 QChangeEvent::~QChangeEvent()

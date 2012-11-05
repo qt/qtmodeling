@@ -69,11 +69,17 @@ QPseudostatePrivate::~QPseudostatePrivate()
 QPseudostate::QPseudostate(QObject *parent) :
     QVertex(*new QPseudostatePrivate, parent)
 {
+    qRegisterMetaType<QPseudostate *>("QPseudostate *");
+    qRegisterMetaType<const QSet<QPseudostate *> *>("const QSet<QPseudostate *> *");
+    qRegisterMetaType<const QList<QPseudostate *> *>("const QList<QPseudostate *> *");
 }
 
 QPseudostate::QPseudostate(QPseudostatePrivate &dd, QObject *parent) :
     QVertex(dd, parent)
 {
+    qRegisterMetaType<QPseudostate *>("QPseudostate *");
+    qRegisterMetaType<const QSet<QPseudostate *> *>("const QSet<QPseudostate *> *");
+    qRegisterMetaType<const QList<QPseudostate *> *>("const QList<QPseudostate *> *");
 }
 
 QPseudostate::~QPseudostate()

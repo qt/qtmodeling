@@ -63,11 +63,17 @@ QModelPrivate::~QModelPrivate()
 QModel::QModel(QObject *parent) :
     QPackage(*new QModelPrivate, parent)
 {
+    qRegisterMetaType<QModel *>("QModel *");
+    qRegisterMetaType<const QSet<QModel *> *>("const QSet<QModel *> *");
+    qRegisterMetaType<const QList<QModel *> *>("const QList<QModel *> *");
 }
 
 QModel::QModel(QModelPrivate &dd, QObject *parent) :
     QPackage(dd, parent)
 {
+    qRegisterMetaType<QModel *>("QModel *");
+    qRegisterMetaType<const QSet<QModel *> *>("const QSet<QModel *> *");
+    qRegisterMetaType<const QList<QModel *> *>("const QList<QModel *> *");
 }
 
 QModel::~QModel()

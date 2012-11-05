@@ -66,11 +66,17 @@ QClearStructuralFeatureActionPrivate::~QClearStructuralFeatureActionPrivate()
 QClearStructuralFeatureAction::QClearStructuralFeatureAction(QObject *parent) :
     QStructuralFeatureAction(*new QClearStructuralFeatureActionPrivate, parent)
 {
+    qRegisterMetaType<QClearStructuralFeatureAction *>("QClearStructuralFeatureAction *");
+    qRegisterMetaType<const QSet<QClearStructuralFeatureAction *> *>("const QSet<QClearStructuralFeatureAction *> *");
+    qRegisterMetaType<const QList<QClearStructuralFeatureAction *> *>("const QList<QClearStructuralFeatureAction *> *");
 }
 
 QClearStructuralFeatureAction::QClearStructuralFeatureAction(QClearStructuralFeatureActionPrivate &dd, QObject *parent) :
     QStructuralFeatureAction(dd, parent)
 {
+    qRegisterMetaType<QClearStructuralFeatureAction *>("QClearStructuralFeatureAction *");
+    qRegisterMetaType<const QSet<QClearStructuralFeatureAction *> *>("const QSet<QClearStructuralFeatureAction *> *");
+    qRegisterMetaType<const QList<QClearStructuralFeatureAction *> *>("const QList<QClearStructuralFeatureAction *> *");
 }
 
 QClearStructuralFeatureAction::~QClearStructuralFeatureAction()

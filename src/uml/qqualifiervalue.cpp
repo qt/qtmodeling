@@ -68,11 +68,17 @@ QQualifierValuePrivate::~QQualifierValuePrivate()
 QQualifierValue::QQualifierValue(QObject *parent) :
     QElement(*new QQualifierValuePrivate, parent)
 {
+    qRegisterMetaType<QQualifierValue *>("QQualifierValue *");
+    qRegisterMetaType<const QSet<QQualifierValue *> *>("const QSet<QQualifierValue *> *");
+    qRegisterMetaType<const QList<QQualifierValue *> *>("const QList<QQualifierValue *> *");
 }
 
 QQualifierValue::QQualifierValue(QQualifierValuePrivate &dd, QObject *parent) :
     QElement(dd, parent)
 {
+    qRegisterMetaType<QQualifierValue *>("QQualifierValue *");
+    qRegisterMetaType<const QSet<QQualifierValue *> *>("const QSet<QQualifierValue *> *");
+    qRegisterMetaType<const QList<QQualifierValue *> *>("const QList<QQualifierValue *> *");
 }
 
 QQualifierValue::~QQualifierValue()

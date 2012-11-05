@@ -70,11 +70,17 @@ QTemplateableElementPrivate::~QTemplateableElementPrivate()
 QTemplateableElement::QTemplateableElement(QObject *parent) :
     QElement(*new QTemplateableElementPrivate, parent)
 {
+    qRegisterMetaType<QTemplateableElement *>("QTemplateableElement *");
+    qRegisterMetaType<const QSet<QTemplateableElement *> *>("const QSet<QTemplateableElement *> *");
+    qRegisterMetaType<const QList<QTemplateableElement *> *>("const QList<QTemplateableElement *> *");
 }
 
 QTemplateableElement::QTemplateableElement(QTemplateableElementPrivate &dd, QObject *parent) :
     QElement(dd, parent)
 {
+    qRegisterMetaType<QTemplateableElement *>("QTemplateableElement *");
+    qRegisterMetaType<const QSet<QTemplateableElement *> *>("const QSet<QTemplateableElement *> *");
+    qRegisterMetaType<const QList<QTemplateableElement *> *>("const QList<QTemplateableElement *> *");
 }
 
 QTemplateableElement::~QTemplateableElement()

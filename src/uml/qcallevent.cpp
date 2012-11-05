@@ -66,11 +66,17 @@ QCallEventPrivate::~QCallEventPrivate()
 QCallEvent::QCallEvent(QObject *parent) :
     QMessageEvent(*new QCallEventPrivate, parent)
 {
+    qRegisterMetaType<QCallEvent *>("QCallEvent *");
+    qRegisterMetaType<const QSet<QCallEvent *> *>("const QSet<QCallEvent *> *");
+    qRegisterMetaType<const QList<QCallEvent *> *>("const QList<QCallEvent *> *");
 }
 
 QCallEvent::QCallEvent(QCallEventPrivate &dd, QObject *parent) :
     QMessageEvent(dd, parent)
 {
+    qRegisterMetaType<QCallEvent *>("QCallEvent *");
+    qRegisterMetaType<const QSet<QCallEvent *> *>("const QSet<QCallEvent *> *");
+    qRegisterMetaType<const QList<QCallEvent *> *>("const QList<QCallEvent *> *");
 }
 
 QCallEvent::~QCallEvent()

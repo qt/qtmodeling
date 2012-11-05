@@ -133,11 +133,17 @@ void QNamespacePrivate::removeOwnedMember(QNamedElement *ownedMember)
 QNamespace::QNamespace(QObject *parent) :
     QNamedElement(*new QNamespacePrivate, parent)
 {
+    qRegisterMetaType<QNamespace *>("QNamespace *");
+    qRegisterMetaType<const QSet<QNamespace *> *>("const QSet<QNamespace *> *");
+    qRegisterMetaType<const QList<QNamespace *> *>("const QList<QNamespace *> *");
 }
 
 QNamespace::QNamespace(QNamespacePrivate &dd, QObject *parent) :
     QNamedElement(dd, parent)
 {
+    qRegisterMetaType<QNamespace *>("QNamespace *");
+    qRegisterMetaType<const QSet<QNamespace *> *>("const QSet<QNamespace *> *");
+    qRegisterMetaType<const QList<QNamespace *> *>("const QList<QNamespace *> *");
 }
 
 QNamespace::~QNamespace()

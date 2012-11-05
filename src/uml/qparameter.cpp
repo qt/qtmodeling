@@ -76,6 +76,9 @@ QParameter::QParameter(QObject *parent) :
     _wrappedMultiplicityElement(new QMultiplicityElement(this)),
     _wrappedConnectableElement(new QConnectableElement(this))
 {
+    qRegisterMetaType<QParameter *>("QParameter *");
+    qRegisterMetaType<const QSet<QParameter *> *>("const QSet<QParameter *> *");
+    qRegisterMetaType<const QList<QParameter *> *>("const QList<QParameter *> *");
 }
 
 QParameter::QParameter(QParameterPrivate &dd, QObject *parent) :
@@ -83,6 +86,9 @@ QParameter::QParameter(QParameterPrivate &dd, QObject *parent) :
     _wrappedMultiplicityElement(new QMultiplicityElement(this)),
     _wrappedConnectableElement(new QConnectableElement(this))
 {
+    qRegisterMetaType<QParameter *>("QParameter *");
+    qRegisterMetaType<const QSet<QParameter *> *>("const QSet<QParameter *> *");
+    qRegisterMetaType<const QList<QParameter *> *>("const QList<QParameter *> *");
 }
 
 QParameter::~QParameter()

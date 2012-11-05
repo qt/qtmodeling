@@ -77,11 +77,17 @@ QActivityPartitionPrivate::~QActivityPartitionPrivate()
 QActivityPartition::QActivityPartition(QObject *parent) :
     QActivityGroup(*new QActivityPartitionPrivate, parent)
 {
+    qRegisterMetaType<QActivityPartition *>("QActivityPartition *");
+    qRegisterMetaType<const QSet<QActivityPartition *> *>("const QSet<QActivityPartition *> *");
+    qRegisterMetaType<const QList<QActivityPartition *> *>("const QList<QActivityPartition *> *");
 }
 
 QActivityPartition::QActivityPartition(QActivityPartitionPrivate &dd, QObject *parent) :
     QActivityGroup(dd, parent)
 {
+    qRegisterMetaType<QActivityPartition *>("QActivityPartition *");
+    qRegisterMetaType<const QSet<QActivityPartition *> *>("const QSet<QActivityPartition *> *");
+    qRegisterMetaType<const QList<QActivityPartition *> *>("const QList<QActivityPartition *> *");
 }
 
 QActivityPartition::~QActivityPartition()

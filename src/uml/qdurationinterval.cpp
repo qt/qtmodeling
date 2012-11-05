@@ -67,11 +67,17 @@ QDurationIntervalPrivate::~QDurationIntervalPrivate()
 QDurationInterval::QDurationInterval(QObject *parent) :
     QInterval(*new QDurationIntervalPrivate, parent)
 {
+    qRegisterMetaType<QDurationInterval *>("QDurationInterval *");
+    qRegisterMetaType<const QSet<QDurationInterval *> *>("const QSet<QDurationInterval *> *");
+    qRegisterMetaType<const QList<QDurationInterval *> *>("const QList<QDurationInterval *> *");
 }
 
 QDurationInterval::QDurationInterval(QDurationIntervalPrivate &dd, QObject *parent) :
     QInterval(dd, parent)
 {
+    qRegisterMetaType<QDurationInterval *>("QDurationInterval *");
+    qRegisterMetaType<const QSet<QDurationInterval *> *>("const QSet<QDurationInterval *> *");
+    qRegisterMetaType<const QList<QDurationInterval *> *>("const QList<QDurationInterval *> *");
 }
 
 QDurationInterval::~QDurationInterval()

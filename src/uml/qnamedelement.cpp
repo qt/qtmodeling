@@ -95,11 +95,17 @@ void QNamedElementPrivate::setNamespace_(QNamespace *namespace_)
 QNamedElement::QNamedElement(QObject *parent) :
     QElement(*new QNamedElementPrivate, parent)
 {
+    qRegisterMetaType<QNamedElement *>("QNamedElement *");
+    qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
+    qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
 }
 
 QNamedElement::QNamedElement(QNamedElementPrivate &dd, QObject *parent) :
     QElement(dd, parent)
 {
+    qRegisterMetaType<QNamedElement *>("QNamedElement *");
+    qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
+    qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
 }
 
 QNamedElement::~QNamedElement()

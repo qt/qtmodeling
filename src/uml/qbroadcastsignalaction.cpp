@@ -66,11 +66,17 @@ QBroadcastSignalActionPrivate::~QBroadcastSignalActionPrivate()
 QBroadcastSignalAction::QBroadcastSignalAction(QObject *parent) :
     QInvocationAction(*new QBroadcastSignalActionPrivate, parent)
 {
+    qRegisterMetaType<QBroadcastSignalAction *>("QBroadcastSignalAction *");
+    qRegisterMetaType<const QSet<QBroadcastSignalAction *> *>("const QSet<QBroadcastSignalAction *> *");
+    qRegisterMetaType<const QList<QBroadcastSignalAction *> *>("const QList<QBroadcastSignalAction *> *");
 }
 
 QBroadcastSignalAction::QBroadcastSignalAction(QBroadcastSignalActionPrivate &dd, QObject *parent) :
     QInvocationAction(dd, parent)
 {
+    qRegisterMetaType<QBroadcastSignalAction *>("QBroadcastSignalAction *");
+    qRegisterMetaType<const QSet<QBroadcastSignalAction *> *>("const QSet<QBroadcastSignalAction *> *");
+    qRegisterMetaType<const QList<QBroadcastSignalAction *> *>("const QList<QBroadcastSignalAction *> *");
 }
 
 QBroadcastSignalAction::~QBroadcastSignalAction()

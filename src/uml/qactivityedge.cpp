@@ -113,11 +113,17 @@ void QActivityEdgePrivate::removeInGroup(QActivityGroup *inGroup)
 QActivityEdge::QActivityEdge(QObject *parent) :
     QRedefinableElement(*new QActivityEdgePrivate, parent)
 {
+    qRegisterMetaType<QActivityEdge *>("QActivityEdge *");
+    qRegisterMetaType<const QSet<QActivityEdge *> *>("const QSet<QActivityEdge *> *");
+    qRegisterMetaType<const QList<QActivityEdge *> *>("const QList<QActivityEdge *> *");
 }
 
 QActivityEdge::QActivityEdge(QActivityEdgePrivate &dd, QObject *parent) :
     QRedefinableElement(dd, parent)
 {
+    qRegisterMetaType<QActivityEdge *>("QActivityEdge *");
+    qRegisterMetaType<const QSet<QActivityEdge *> *>("const QSet<QActivityEdge *> *");
+    qRegisterMetaType<const QList<QActivityEdge *> *>("const QList<QActivityEdge *> *");
 }
 
 QActivityEdge::~QActivityEdge()

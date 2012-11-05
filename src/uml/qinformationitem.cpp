@@ -65,11 +65,17 @@ QInformationItemPrivate::~QInformationItemPrivate()
 QInformationItem::QInformationItem(QObject *parent) :
     QClassifier(*new QInformationItemPrivate, parent)
 {
+    qRegisterMetaType<QInformationItem *>("QInformationItem *");
+    qRegisterMetaType<const QSet<QInformationItem *> *>("const QSet<QInformationItem *> *");
+    qRegisterMetaType<const QList<QInformationItem *> *>("const QList<QInformationItem *> *");
 }
 
 QInformationItem::QInformationItem(QInformationItemPrivate &dd, QObject *parent) :
     QClassifier(dd, parent)
 {
+    qRegisterMetaType<QInformationItem *>("QInformationItem *");
+    qRegisterMetaType<const QSet<QInformationItem *> *>("const QSet<QInformationItem *> *");
+    qRegisterMetaType<const QList<QInformationItem *> *>("const QList<QInformationItem *> *");
 }
 
 QInformationItem::~QInformationItem()

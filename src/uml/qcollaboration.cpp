@@ -69,6 +69,9 @@ QCollaboration::QCollaboration(QObject *parent) :
     _wrappedStructuredClassifier(new QStructuredClassifier(this)),
     _wrappedBehavioredClassifier(new QBehavioredClassifier(this))
 {
+    qRegisterMetaType<QCollaboration *>("QCollaboration *");
+    qRegisterMetaType<const QSet<QCollaboration *> *>("const QSet<QCollaboration *> *");
+    qRegisterMetaType<const QList<QCollaboration *> *>("const QList<QCollaboration *> *");
 }
 
 QCollaboration::QCollaboration(QCollaborationPrivate &dd, QObject *parent) :
@@ -76,6 +79,9 @@ QCollaboration::QCollaboration(QCollaborationPrivate &dd, QObject *parent) :
     _wrappedStructuredClassifier(new QStructuredClassifier(this)),
     _wrappedBehavioredClassifier(new QBehavioredClassifier(this))
 {
+    qRegisterMetaType<QCollaboration *>("QCollaboration *");
+    qRegisterMetaType<const QSet<QCollaboration *> *>("const QSet<QCollaboration *> *");
+    qRegisterMetaType<const QList<QCollaboration *> *>("const QList<QCollaboration *> *");
 }
 
 QCollaboration::~QCollaboration()

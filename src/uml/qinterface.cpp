@@ -79,11 +79,17 @@ QInterfacePrivate::~QInterfacePrivate()
 QInterface::QInterface(QObject *parent) :
     QClassifier(*new QInterfacePrivate, parent)
 {
+    qRegisterMetaType<QInterface *>("QInterface *");
+    qRegisterMetaType<const QSet<QInterface *> *>("const QSet<QInterface *> *");
+    qRegisterMetaType<const QList<QInterface *> *>("const QList<QInterface *> *");
 }
 
 QInterface::QInterface(QInterfacePrivate &dd, QObject *parent) :
     QClassifier(dd, parent)
 {
+    qRegisterMetaType<QInterface *>("QInterface *");
+    qRegisterMetaType<const QSet<QInterface *> *>("const QSet<QInterface *> *");
+    qRegisterMetaType<const QList<QInterface *> *>("const QList<QInterface *> *");
 }
 
 QInterface::~QInterface()

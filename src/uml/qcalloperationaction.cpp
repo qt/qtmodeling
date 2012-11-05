@@ -68,11 +68,17 @@ QCallOperationActionPrivate::~QCallOperationActionPrivate()
 QCallOperationAction::QCallOperationAction(QObject *parent) :
     QCallAction(*new QCallOperationActionPrivate, parent)
 {
+    qRegisterMetaType<QCallOperationAction *>("QCallOperationAction *");
+    qRegisterMetaType<const QSet<QCallOperationAction *> *>("const QSet<QCallOperationAction *> *");
+    qRegisterMetaType<const QList<QCallOperationAction *> *>("const QList<QCallOperationAction *> *");
 }
 
 QCallOperationAction::QCallOperationAction(QCallOperationActionPrivate &dd, QObject *parent) :
     QCallAction(dd, parent)
 {
+    qRegisterMetaType<QCallOperationAction *>("QCallOperationAction *");
+    qRegisterMetaType<const QSet<QCallOperationAction *> *>("const QSet<QCallOperationAction *> *");
+    qRegisterMetaType<const QList<QCallOperationAction *> *>("const QList<QCallOperationAction *> *");
 }
 
 QCallOperationAction::~QCallOperationAction()

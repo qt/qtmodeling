@@ -66,11 +66,17 @@ QOperationTemplateParameterPrivate::~QOperationTemplateParameterPrivate()
 QOperationTemplateParameter::QOperationTemplateParameter(QObject *parent) :
     QTemplateParameter(*new QOperationTemplateParameterPrivate, parent)
 {
+    qRegisterMetaType<QOperationTemplateParameter *>("QOperationTemplateParameter *");
+    qRegisterMetaType<const QSet<QOperationTemplateParameter *> *>("const QSet<QOperationTemplateParameter *> *");
+    qRegisterMetaType<const QList<QOperationTemplateParameter *> *>("const QList<QOperationTemplateParameter *> *");
 }
 
 QOperationTemplateParameter::QOperationTemplateParameter(QOperationTemplateParameterPrivate &dd, QObject *parent) :
     QTemplateParameter(dd, parent)
 {
+    qRegisterMetaType<QOperationTemplateParameter *>("QOperationTemplateParameter *");
+    qRegisterMetaType<const QSet<QOperationTemplateParameter *> *>("const QSet<QOperationTemplateParameter *> *");
+    qRegisterMetaType<const QList<QOperationTemplateParameter *> *>("const QList<QOperationTemplateParameter *> *");
 }
 
 QOperationTemplateParameter::~QOperationTemplateParameter()

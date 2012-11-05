@@ -89,6 +89,9 @@ QState::QState(QObject *parent) :
     _wrappedRedefinableElement(new QRedefinableElement(this)),
     _wrappedVertex(new QVertex(this))
 {
+    qRegisterMetaType<QState *>("QState *");
+    qRegisterMetaType<const QSet<QState *> *>("const QSet<QState *> *");
+    qRegisterMetaType<const QList<QState *> *>("const QList<QState *> *");
 }
 
 QState::QState(QStatePrivate &dd, QObject *parent) :
@@ -97,6 +100,9 @@ QState::QState(QStatePrivate &dd, QObject *parent) :
     _wrappedRedefinableElement(new QRedefinableElement(this)),
     _wrappedVertex(new QVertex(this))
 {
+    qRegisterMetaType<QState *>("QState *");
+    qRegisterMetaType<const QSet<QState *> *>("const QSet<QState *> *");
+    qRegisterMetaType<const QList<QState *> *>("const QList<QState *> *");
 }
 
 QState::~QState()

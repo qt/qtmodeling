@@ -73,11 +73,17 @@ QDestroyLinkActionPrivate::~QDestroyLinkActionPrivate()
 QDestroyLinkAction::QDestroyLinkAction(QObject *parent) :
     QWriteLinkAction(*new QDestroyLinkActionPrivate, parent)
 {
+    qRegisterMetaType<QDestroyLinkAction *>("QDestroyLinkAction *");
+    qRegisterMetaType<const QSet<QDestroyLinkAction *> *>("const QSet<QDestroyLinkAction *> *");
+    qRegisterMetaType<const QList<QDestroyLinkAction *> *>("const QList<QDestroyLinkAction *> *");
 }
 
 QDestroyLinkAction::QDestroyLinkAction(QDestroyLinkActionPrivate &dd, QObject *parent) :
     QWriteLinkAction(dd, parent)
 {
+    qRegisterMetaType<QDestroyLinkAction *>("QDestroyLinkAction *");
+    qRegisterMetaType<const QSet<QDestroyLinkAction *> *>("const QSet<QDestroyLinkAction *> *");
+    qRegisterMetaType<const QList<QDestroyLinkAction *> *>("const QList<QDestroyLinkAction *> *");
 }
 
 QDestroyLinkAction::~QDestroyLinkAction()

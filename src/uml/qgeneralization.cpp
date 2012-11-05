@@ -71,11 +71,17 @@ QGeneralizationPrivate::~QGeneralizationPrivate()
 QGeneralization::QGeneralization(QObject *parent) :
     QDirectedRelationship(*new QGeneralizationPrivate, parent)
 {
+    qRegisterMetaType<QGeneralization *>("QGeneralization *");
+    qRegisterMetaType<const QSet<QGeneralization *> *>("const QSet<QGeneralization *> *");
+    qRegisterMetaType<const QList<QGeneralization *> *>("const QList<QGeneralization *> *");
 }
 
 QGeneralization::QGeneralization(QGeneralizationPrivate &dd, QObject *parent) :
     QDirectedRelationship(dd, parent)
 {
+    qRegisterMetaType<QGeneralization *>("QGeneralization *");
+    qRegisterMetaType<const QSet<QGeneralization *> *>("const QSet<QGeneralization *> *");
+    qRegisterMetaType<const QList<QGeneralization *> *>("const QList<QGeneralization *> *");
 }
 
 QGeneralization::~QGeneralization()

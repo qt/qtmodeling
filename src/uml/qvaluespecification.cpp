@@ -67,6 +67,9 @@ QValueSpecification::QValueSpecification(QObject *parent) :
     _wrappedTypedElement(new QTypedElement(this)),
     _wrappedPackageableElement(new QPackageableElement(this))
 {
+    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
+    qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
+    qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
 }
 
 QValueSpecification::QValueSpecification(QValueSpecificationPrivate &dd, QObject *parent) :
@@ -74,6 +77,9 @@ QValueSpecification::QValueSpecification(QValueSpecificationPrivate &dd, QObject
     _wrappedTypedElement(new QTypedElement(this)),
     _wrappedPackageableElement(new QPackageableElement(this))
 {
+    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
+    qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
+    qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
 }
 
 QValueSpecification::~QValueSpecification()

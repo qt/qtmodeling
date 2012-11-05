@@ -66,11 +66,17 @@ QVariableActionPrivate::~QVariableActionPrivate()
 QVariableAction::QVariableAction(QObject *parent) :
     QAction(*new QVariableActionPrivate, parent)
 {
+    qRegisterMetaType<QVariableAction *>("QVariableAction *");
+    qRegisterMetaType<const QSet<QVariableAction *> *>("const QSet<QVariableAction *> *");
+    qRegisterMetaType<const QList<QVariableAction *> *>("const QList<QVariableAction *> *");
 }
 
 QVariableAction::QVariableAction(QVariableActionPrivate &dd, QObject *parent) :
     QAction(dd, parent)
 {
+    qRegisterMetaType<QVariableAction *>("QVariableAction *");
+    qRegisterMetaType<const QSet<QVariableAction *> *>("const QSet<QVariableAction *> *");
+    qRegisterMetaType<const QList<QVariableAction *> *>("const QList<QVariableAction *> *");
 }
 
 QVariableAction::~QVariableAction()

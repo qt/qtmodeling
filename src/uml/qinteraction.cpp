@@ -80,6 +80,9 @@ QInteraction::QInteraction(QObject *parent) :
     _wrappedBehavior(new QBehavior(this)),
     _wrappedInteractionFragment(new QInteractionFragment(this))
 {
+    qRegisterMetaType<QInteraction *>("QInteraction *");
+    qRegisterMetaType<const QSet<QInteraction *> *>("const QSet<QInteraction *> *");
+    qRegisterMetaType<const QList<QInteraction *> *>("const QList<QInteraction *> *");
 }
 
 QInteraction::QInteraction(QInteractionPrivate &dd, QObject *parent) :
@@ -87,6 +90,9 @@ QInteraction::QInteraction(QInteractionPrivate &dd, QObject *parent) :
     _wrappedBehavior(new QBehavior(this)),
     _wrappedInteractionFragment(new QInteractionFragment(this))
 {
+    qRegisterMetaType<QInteraction *>("QInteraction *");
+    qRegisterMetaType<const QSet<QInteraction *> *>("const QSet<QInteraction *> *");
+    qRegisterMetaType<const QList<QInteraction *> *>("const QList<QInteraction *> *");
 }
 
 QInteraction::~QInteraction()

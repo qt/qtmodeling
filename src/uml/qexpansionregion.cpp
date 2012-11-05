@@ -70,11 +70,17 @@ QExpansionRegionPrivate::~QExpansionRegionPrivate()
 QExpansionRegion::QExpansionRegion(QObject *parent) :
     QStructuredActivityNode(*new QExpansionRegionPrivate, parent)
 {
+    qRegisterMetaType<QExpansionRegion *>("QExpansionRegion *");
+    qRegisterMetaType<const QSet<QExpansionRegion *> *>("const QSet<QExpansionRegion *> *");
+    qRegisterMetaType<const QList<QExpansionRegion *> *>("const QList<QExpansionRegion *> *");
 }
 
 QExpansionRegion::QExpansionRegion(QExpansionRegionPrivate &dd, QObject *parent) :
     QStructuredActivityNode(dd, parent)
 {
+    qRegisterMetaType<QExpansionRegion *>("QExpansionRegion *");
+    qRegisterMetaType<const QSet<QExpansionRegion *> *>("const QSet<QExpansionRegion *> *");
+    qRegisterMetaType<const QList<QExpansionRegion *> *>("const QList<QExpansionRegion *> *");
 }
 
 QExpansionRegion::~QExpansionRegion()

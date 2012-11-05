@@ -342,8 +342,8 @@ private:
 QT_END_NAMESPACE_${namespace.replace('/', '_').upper}
 
 Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *)
-Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *> *)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *> *)
+Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *> *)
+Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *> *)
 
 QT_END_HEADER
 

@@ -67,11 +67,17 @@ QSubstitutionPrivate::~QSubstitutionPrivate()
 QSubstitution::QSubstitution(QObject *parent) :
     QRealization(*new QSubstitutionPrivate, parent)
 {
+    qRegisterMetaType<QSubstitution *>("QSubstitution *");
+    qRegisterMetaType<const QSet<QSubstitution *> *>("const QSet<QSubstitution *> *");
+    qRegisterMetaType<const QList<QSubstitution *> *>("const QList<QSubstitution *> *");
 }
 
 QSubstitution::QSubstitution(QSubstitutionPrivate &dd, QObject *parent) :
     QRealization(dd, parent)
 {
+    qRegisterMetaType<QSubstitution *>("QSubstitution *");
+    qRegisterMetaType<const QSet<QSubstitution *> *>("const QSet<QSubstitution *> *");
+    qRegisterMetaType<const QList<QSubstitution *> *>("const QList<QSubstitution *> *");
 }
 
 QSubstitution::~QSubstitution()

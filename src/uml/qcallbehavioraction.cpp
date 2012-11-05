@@ -66,11 +66,17 @@ QCallBehaviorActionPrivate::~QCallBehaviorActionPrivate()
 QCallBehaviorAction::QCallBehaviorAction(QObject *parent) :
     QCallAction(*new QCallBehaviorActionPrivate, parent)
 {
+    qRegisterMetaType<QCallBehaviorAction *>("QCallBehaviorAction *");
+    qRegisterMetaType<const QSet<QCallBehaviorAction *> *>("const QSet<QCallBehaviorAction *> *");
+    qRegisterMetaType<const QList<QCallBehaviorAction *> *>("const QList<QCallBehaviorAction *> *");
 }
 
 QCallBehaviorAction::QCallBehaviorAction(QCallBehaviorActionPrivate &dd, QObject *parent) :
     QCallAction(dd, parent)
 {
+    qRegisterMetaType<QCallBehaviorAction *>("QCallBehaviorAction *");
+    qRegisterMetaType<const QSet<QCallBehaviorAction *> *>("const QSet<QCallBehaviorAction *> *");
+    qRegisterMetaType<const QList<QCallBehaviorAction *> *>("const QList<QCallBehaviorAction *> *");
 }
 
 QCallBehaviorAction::~QCallBehaviorAction()

@@ -63,11 +63,17 @@ QPrimitiveTypePrivate::~QPrimitiveTypePrivate()
 QPrimitiveType::QPrimitiveType(QObject *parent) :
     QDataType(*new QPrimitiveTypePrivate, parent)
 {
+    qRegisterMetaType<QPrimitiveType *>("QPrimitiveType *");
+    qRegisterMetaType<const QSet<QPrimitiveType *> *>("const QSet<QPrimitiveType *> *");
+    qRegisterMetaType<const QList<QPrimitiveType *> *>("const QList<QPrimitiveType *> *");
 }
 
 QPrimitiveType::QPrimitiveType(QPrimitiveTypePrivate &dd, QObject *parent) :
     QDataType(dd, parent)
 {
+    qRegisterMetaType<QPrimitiveType *>("QPrimitiveType *");
+    qRegisterMetaType<const QSet<QPrimitiveType *> *>("const QSet<QPrimitiveType *> *");
+    qRegisterMetaType<const QList<QPrimitiveType *> *>("const QList<QPrimitiveType *> *");
 }
 
 QPrimitiveType::~QPrimitiveType()

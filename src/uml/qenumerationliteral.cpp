@@ -66,11 +66,17 @@ QEnumerationLiteralPrivate::~QEnumerationLiteralPrivate()
 QEnumerationLiteral::QEnumerationLiteral(QObject *parent) :
     QInstanceSpecification(*new QEnumerationLiteralPrivate, parent)
 {
+    qRegisterMetaType<QEnumerationLiteral *>("QEnumerationLiteral *");
+    qRegisterMetaType<const QSet<QEnumerationLiteral *> *>("const QSet<QEnumerationLiteral *> *");
+    qRegisterMetaType<const QList<QEnumerationLiteral *> *>("const QList<QEnumerationLiteral *> *");
 }
 
 QEnumerationLiteral::QEnumerationLiteral(QEnumerationLiteralPrivate &dd, QObject *parent) :
     QInstanceSpecification(dd, parent)
 {
+    qRegisterMetaType<QEnumerationLiteral *>("QEnumerationLiteral *");
+    qRegisterMetaType<const QSet<QEnumerationLiteral *> *>("const QSet<QEnumerationLiteral *> *");
+    qRegisterMetaType<const QList<QEnumerationLiteral *> *>("const QList<QEnumerationLiteral *> *");
 }
 
 QEnumerationLiteral::~QEnumerationLiteral()

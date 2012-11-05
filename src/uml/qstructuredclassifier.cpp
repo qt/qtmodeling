@@ -97,11 +97,17 @@ void QStructuredClassifierPrivate::removeRole(QConnectableElement *role)
 QStructuredClassifier::QStructuredClassifier(QObject *parent) :
     QClassifier(*new QStructuredClassifierPrivate, parent)
 {
+    qRegisterMetaType<QStructuredClassifier *>("QStructuredClassifier *");
+    qRegisterMetaType<const QSet<QStructuredClassifier *> *>("const QSet<QStructuredClassifier *> *");
+    qRegisterMetaType<const QList<QStructuredClassifier *> *>("const QList<QStructuredClassifier *> *");
 }
 
 QStructuredClassifier::QStructuredClassifier(QStructuredClassifierPrivate &dd, QObject *parent) :
     QClassifier(dd, parent)
 {
+    qRegisterMetaType<QStructuredClassifier *>("QStructuredClassifier *");
+    qRegisterMetaType<const QSet<QStructuredClassifier *> *>("const QSet<QStructuredClassifier *> *");
+    qRegisterMetaType<const QList<QStructuredClassifier *> *>("const QList<QStructuredClassifier *> *");
 }
 
 QStructuredClassifier::~QStructuredClassifier()

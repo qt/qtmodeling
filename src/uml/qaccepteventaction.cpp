@@ -71,11 +71,17 @@ QAcceptEventActionPrivate::~QAcceptEventActionPrivate()
 QAcceptEventAction::QAcceptEventAction(QObject *parent) :
     QAction(*new QAcceptEventActionPrivate, parent)
 {
+    qRegisterMetaType<QAcceptEventAction *>("QAcceptEventAction *");
+    qRegisterMetaType<const QSet<QAcceptEventAction *> *>("const QSet<QAcceptEventAction *> *");
+    qRegisterMetaType<const QList<QAcceptEventAction *> *>("const QList<QAcceptEventAction *> *");
 }
 
 QAcceptEventAction::QAcceptEventAction(QAcceptEventActionPrivate &dd, QObject *parent) :
     QAction(dd, parent)
 {
+    qRegisterMetaType<QAcceptEventAction *>("QAcceptEventAction *");
+    qRegisterMetaType<const QSet<QAcceptEventAction *> *>("const QSet<QAcceptEventAction *> *");
+    qRegisterMetaType<const QList<QAcceptEventAction *> *>("const QList<QAcceptEventAction *> *");
 }
 
 QAcceptEventAction::~QAcceptEventAction()

@@ -78,6 +78,9 @@ QRegion::QRegion(QObject *parent) :
     _wrappedRedefinableElement(new QRedefinableElement(this)),
     _wrappedNamespace(new QNamespace(this))
 {
+    qRegisterMetaType<QRegion *>("QRegion *");
+    qRegisterMetaType<const QSet<QRegion *> *>("const QSet<QRegion *> *");
+    qRegisterMetaType<const QList<QRegion *> *>("const QList<QRegion *> *");
 }
 
 QRegion::QRegion(QRegionPrivate &dd, QObject *parent) :
@@ -85,6 +88,9 @@ QRegion::QRegion(QRegionPrivate &dd, QObject *parent) :
     _wrappedRedefinableElement(new QRedefinableElement(this)),
     _wrappedNamespace(new QNamespace(this))
 {
+    qRegisterMetaType<QRegion *>("QRegion *");
+    qRegisterMetaType<const QSet<QRegion *> *>("const QSet<QRegion *> *");
+    qRegisterMetaType<const QList<QRegion *> *>("const QList<QRegion *> *");
 }
 
 QRegion::~QRegion()

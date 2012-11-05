@@ -654,6 +654,9 @@ ${class.name}::${class.name}(QObject *parent) :
 [%- END -%]
 [%- END %]
 {
+    qRegisterMetaType<${class.name} *>("${class.name} *");
+    qRegisterMetaType<const QSet<${class.name} *> *>("const QSet<${class.name} *> *");
+    qRegisterMetaType<const QList<${class.name} *> *>("const QList<${class.name} *> *");
 }
 
 ${class.name}::${class.name}(${class.name}Private &dd, QObject *parent) :
@@ -665,6 +668,9 @@ ${class.name}::${class.name}(${class.name}Private &dd, QObject *parent) :
 [%- END -%]
 [%- END %]
 {
+    qRegisterMetaType<${class.name} *>("${class.name} *");
+    qRegisterMetaType<const QSet<${class.name} *> *>("const QSet<${class.name} *> *");
+    qRegisterMetaType<const QList<${class.name} *> *>("const QList<${class.name} *> *");
 }
 
 ${class.name}::~${class.name}()

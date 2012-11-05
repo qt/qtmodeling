@@ -66,11 +66,17 @@ QReadVariableActionPrivate::~QReadVariableActionPrivate()
 QReadVariableAction::QReadVariableAction(QObject *parent) :
     QVariableAction(*new QReadVariableActionPrivate, parent)
 {
+    qRegisterMetaType<QReadVariableAction *>("QReadVariableAction *");
+    qRegisterMetaType<const QSet<QReadVariableAction *> *>("const QSet<QReadVariableAction *> *");
+    qRegisterMetaType<const QList<QReadVariableAction *> *>("const QList<QReadVariableAction *> *");
 }
 
 QReadVariableAction::QReadVariableAction(QReadVariableActionPrivate &dd, QObject *parent) :
     QVariableAction(dd, parent)
 {
+    qRegisterMetaType<QReadVariableAction *>("QReadVariableAction *");
+    qRegisterMetaType<const QSet<QReadVariableAction *> *>("const QSet<QReadVariableAction *> *");
+    qRegisterMetaType<const QList<QReadVariableAction *> *>("const QList<QReadVariableAction *> *");
 }
 
 QReadVariableAction::~QReadVariableAction()

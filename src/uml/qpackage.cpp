@@ -80,6 +80,9 @@ QPackage::QPackage(QObject *parent) :
     _wrappedPackageableElement(new QPackageableElement(this)),
     _wrappedTemplateableElement(new QTemplateableElement(this))
 {
+    qRegisterMetaType<QPackage *>("QPackage *");
+    qRegisterMetaType<const QSet<QPackage *> *>("const QSet<QPackage *> *");
+    qRegisterMetaType<const QList<QPackage *> *>("const QList<QPackage *> *");
 }
 
 QPackage::QPackage(QPackagePrivate &dd, QObject *parent) :
@@ -88,6 +91,9 @@ QPackage::QPackage(QPackagePrivate &dd, QObject *parent) :
     _wrappedPackageableElement(new QPackageableElement(this)),
     _wrappedTemplateableElement(new QTemplateableElement(this))
 {
+    qRegisterMetaType<QPackage *>("QPackage *");
+    qRegisterMetaType<const QSet<QPackage *> *>("const QSet<QPackage *> *");
+    qRegisterMetaType<const QList<QPackage *> *>("const QList<QPackage *> *");
 }
 
 QPackage::~QPackage()

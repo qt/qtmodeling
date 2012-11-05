@@ -63,11 +63,17 @@ QImagePrivate::~QImagePrivate()
 QImage::QImage(QObject *parent) :
     QElement(*new QImagePrivate, parent)
 {
+    qRegisterMetaType<QImage *>("QImage *");
+    qRegisterMetaType<const QSet<QImage *> *>("const QSet<QImage *> *");
+    qRegisterMetaType<const QList<QImage *> *>("const QList<QImage *> *");
 }
 
 QImage::QImage(QImagePrivate &dd, QObject *parent) :
     QElement(dd, parent)
 {
+    qRegisterMetaType<QImage *>("QImage *");
+    qRegisterMetaType<const QSet<QImage *> *>("const QSet<QImage *> *");
+    qRegisterMetaType<const QList<QImage *> *>("const QList<QImage *> *");
 }
 
 QImage::~QImage()

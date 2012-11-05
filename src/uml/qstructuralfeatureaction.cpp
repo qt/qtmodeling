@@ -68,11 +68,17 @@ QStructuralFeatureActionPrivate::~QStructuralFeatureActionPrivate()
 QStructuralFeatureAction::QStructuralFeatureAction(QObject *parent) :
     QAction(*new QStructuralFeatureActionPrivate, parent)
 {
+    qRegisterMetaType<QStructuralFeatureAction *>("QStructuralFeatureAction *");
+    qRegisterMetaType<const QSet<QStructuralFeatureAction *> *>("const QSet<QStructuralFeatureAction *> *");
+    qRegisterMetaType<const QList<QStructuralFeatureAction *> *>("const QList<QStructuralFeatureAction *> *");
 }
 
 QStructuralFeatureAction::QStructuralFeatureAction(QStructuralFeatureActionPrivate &dd, QObject *parent) :
     QAction(dd, parent)
 {
+    qRegisterMetaType<QStructuralFeatureAction *>("QStructuralFeatureAction *");
+    qRegisterMetaType<const QSet<QStructuralFeatureAction *> *>("const QSet<QStructuralFeatureAction *> *");
+    qRegisterMetaType<const QList<QStructuralFeatureAction *> *>("const QList<QStructuralFeatureAction *> *");
 }
 
 QStructuralFeatureAction::~QStructuralFeatureAction()

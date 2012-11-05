@@ -71,6 +71,9 @@ QRedefinableTemplateSignature::QRedefinableTemplateSignature(QObject *parent) :
     _wrappedTemplateSignature(new QTemplateSignature(this)),
     _wrappedRedefinableElement(new QRedefinableElement(this))
 {
+    qRegisterMetaType<QRedefinableTemplateSignature *>("QRedefinableTemplateSignature *");
+    qRegisterMetaType<const QSet<QRedefinableTemplateSignature *> *>("const QSet<QRedefinableTemplateSignature *> *");
+    qRegisterMetaType<const QList<QRedefinableTemplateSignature *> *>("const QList<QRedefinableTemplateSignature *> *");
 }
 
 QRedefinableTemplateSignature::QRedefinableTemplateSignature(QRedefinableTemplateSignaturePrivate &dd, QObject *parent) :
@@ -78,6 +81,9 @@ QRedefinableTemplateSignature::QRedefinableTemplateSignature(QRedefinableTemplat
     _wrappedTemplateSignature(new QTemplateSignature(this)),
     _wrappedRedefinableElement(new QRedefinableElement(this))
 {
+    qRegisterMetaType<QRedefinableTemplateSignature *>("QRedefinableTemplateSignature *");
+    qRegisterMetaType<const QSet<QRedefinableTemplateSignature *> *>("const QSet<QRedefinableTemplateSignature *> *");
+    qRegisterMetaType<const QList<QRedefinableTemplateSignature *> *>("const QList<QRedefinableTemplateSignature *> *");
 }
 
 QRedefinableTemplateSignature::~QRedefinableTemplateSignature()

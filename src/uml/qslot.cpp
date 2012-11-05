@@ -71,11 +71,17 @@ QSlotPrivate::~QSlotPrivate()
 QSlot::QSlot(QObject *parent) :
     QElement(*new QSlotPrivate, parent)
 {
+    qRegisterMetaType<QSlot *>("QSlot *");
+    qRegisterMetaType<const QSet<QSlot *> *>("const QSet<QSlot *> *");
+    qRegisterMetaType<const QList<QSlot *> *>("const QList<QSlot *> *");
 }
 
 QSlot::QSlot(QSlotPrivate &dd, QObject *parent) :
     QElement(dd, parent)
 {
+    qRegisterMetaType<QSlot *>("QSlot *");
+    qRegisterMetaType<const QSet<QSlot *> *>("const QSet<QSlot *> *");
+    qRegisterMetaType<const QList<QSlot *> *>("const QList<QSlot *> *");
 }
 
 QSlot::~QSlot()

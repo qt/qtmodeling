@@ -66,6 +66,9 @@ QPackageableElement::QPackageableElement(QObject *parent) :
     _wrappedParameterableElement(new QParameterableElement(this)),
     _wrappedNamedElement(new QNamedElement(this))
 {
+    qRegisterMetaType<QPackageableElement *>("QPackageableElement *");
+    qRegisterMetaType<const QSet<QPackageableElement *> *>("const QSet<QPackageableElement *> *");
+    qRegisterMetaType<const QList<QPackageableElement *> *>("const QList<QPackageableElement *> *");
 }
 
 QPackageableElement::QPackageableElement(QPackageableElementPrivate &dd, QObject *parent) :
@@ -73,6 +76,9 @@ QPackageableElement::QPackageableElement(QPackageableElementPrivate &dd, QObject
     _wrappedParameterableElement(new QParameterableElement(this)),
     _wrappedNamedElement(new QNamedElement(this))
 {
+    qRegisterMetaType<QPackageableElement *>("QPackageableElement *");
+    qRegisterMetaType<const QSet<QPackageableElement *> *>("const QSet<QPackageableElement *> *");
+    qRegisterMetaType<const QList<QPackageableElement *> *>("const QList<QPackageableElement *> *");
 }
 
 QPackageableElement::~QPackageableElement()

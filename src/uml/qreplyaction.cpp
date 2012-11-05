@@ -70,11 +70,17 @@ QReplyActionPrivate::~QReplyActionPrivate()
 QReplyAction::QReplyAction(QObject *parent) :
     QAction(*new QReplyActionPrivate, parent)
 {
+    qRegisterMetaType<QReplyAction *>("QReplyAction *");
+    qRegisterMetaType<const QSet<QReplyAction *> *>("const QSet<QReplyAction *> *");
+    qRegisterMetaType<const QList<QReplyAction *> *>("const QList<QReplyAction *> *");
 }
 
 QReplyAction::QReplyAction(QReplyActionPrivate &dd, QObject *parent) :
     QAction(dd, parent)
 {
+    qRegisterMetaType<QReplyAction *>("QReplyAction *");
+    qRegisterMetaType<const QSet<QReplyAction *> *>("const QSet<QReplyAction *> *");
+    qRegisterMetaType<const QList<QReplyAction *> *>("const QList<QReplyAction *> *");
 }
 
 QReplyAction::~QReplyAction()

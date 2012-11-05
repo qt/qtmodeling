@@ -72,11 +72,17 @@ QReclassifyObjectActionPrivate::~QReclassifyObjectActionPrivate()
 QReclassifyObjectAction::QReclassifyObjectAction(QObject *parent) :
     QAction(*new QReclassifyObjectActionPrivate, parent)
 {
+    qRegisterMetaType<QReclassifyObjectAction *>("QReclassifyObjectAction *");
+    qRegisterMetaType<const QSet<QReclassifyObjectAction *> *>("const QSet<QReclassifyObjectAction *> *");
+    qRegisterMetaType<const QList<QReclassifyObjectAction *> *>("const QList<QReclassifyObjectAction *> *");
 }
 
 QReclassifyObjectAction::QReclassifyObjectAction(QReclassifyObjectActionPrivate &dd, QObject *parent) :
     QAction(dd, parent)
 {
+    qRegisterMetaType<QReclassifyObjectAction *>("QReclassifyObjectAction *");
+    qRegisterMetaType<const QSet<QReclassifyObjectAction *> *>("const QSet<QReclassifyObjectAction *> *");
+    qRegisterMetaType<const QList<QReclassifyObjectAction *> *>("const QList<QReclassifyObjectAction *> *");
 }
 
 QReclassifyObjectAction::~QReclassifyObjectAction()

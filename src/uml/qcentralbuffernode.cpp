@@ -63,11 +63,17 @@ QCentralBufferNodePrivate::~QCentralBufferNodePrivate()
 QCentralBufferNode::QCentralBufferNode(QObject *parent) :
     QObjectNode(*new QCentralBufferNodePrivate, parent)
 {
+    qRegisterMetaType<QCentralBufferNode *>("QCentralBufferNode *");
+    qRegisterMetaType<const QSet<QCentralBufferNode *> *>("const QSet<QCentralBufferNode *> *");
+    qRegisterMetaType<const QList<QCentralBufferNode *> *>("const QList<QCentralBufferNode *> *");
 }
 
 QCentralBufferNode::QCentralBufferNode(QCentralBufferNodePrivate &dd, QObject *parent) :
     QObjectNode(dd, parent)
 {
+    qRegisterMetaType<QCentralBufferNode *>("QCentralBufferNode *");
+    qRegisterMetaType<const QSet<QCentralBufferNode *> *>("const QSet<QCentralBufferNode *> *");
+    qRegisterMetaType<const QList<QCentralBufferNode *> *>("const QList<QCentralBufferNode *> *");
 }
 
 QCentralBufferNode::~QCentralBufferNode()

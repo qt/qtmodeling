@@ -43,6 +43,8 @@
 
 #include <QtCore/qglobal.h>
 #include <QtCore/QObject>
+#include <QtCore/QSet>
+#include <QtCore/QList>
 
 QT_BEGIN_HEADER
 

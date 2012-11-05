@@ -66,11 +66,17 @@ QAbstractionPrivate::~QAbstractionPrivate()
 QAbstraction::QAbstraction(QObject *parent) :
     QDependency(*new QAbstractionPrivate, parent)
 {
+    qRegisterMetaType<QAbstraction *>("QAbstraction *");
+    qRegisterMetaType<const QSet<QAbstraction *> *>("const QSet<QAbstraction *> *");
+    qRegisterMetaType<const QList<QAbstraction *> *>("const QList<QAbstraction *> *");
 }
 
 QAbstraction::QAbstraction(QAbstractionPrivate &dd, QObject *parent) :
     QDependency(dd, parent)
 {
+    qRegisterMetaType<QAbstraction *>("QAbstraction *");
+    qRegisterMetaType<const QSet<QAbstraction *> *>("const QSet<QAbstraction *> *");
+    qRegisterMetaType<const QList<QAbstraction *> *>("const QList<QAbstraction *> *");
 }
 
 QAbstraction::~QAbstraction()

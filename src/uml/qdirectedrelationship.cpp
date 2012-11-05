@@ -117,11 +117,17 @@ void QDirectedRelationshipPrivate::removeTarget(QElement *target)
 QDirectedRelationship::QDirectedRelationship(QObject *parent) :
     QRelationship(*new QDirectedRelationshipPrivate, parent)
 {
+    qRegisterMetaType<QDirectedRelationship *>("QDirectedRelationship *");
+    qRegisterMetaType<const QSet<QDirectedRelationship *> *>("const QSet<QDirectedRelationship *> *");
+    qRegisterMetaType<const QList<QDirectedRelationship *> *>("const QList<QDirectedRelationship *> *");
 }
 
 QDirectedRelationship::QDirectedRelationship(QDirectedRelationshipPrivate &dd, QObject *parent) :
     QRelationship(dd, parent)
 {
+    qRegisterMetaType<QDirectedRelationship *>("QDirectedRelationship *");
+    qRegisterMetaType<const QSet<QDirectedRelationship *> *>("const QSet<QDirectedRelationship *> *");
+    qRegisterMetaType<const QList<QDirectedRelationship *> *>("const QList<QDirectedRelationship *> *");
 }
 
 QDirectedRelationship::~QDirectedRelationship()

@@ -65,11 +65,17 @@ QExpressionPrivate::~QExpressionPrivate()
 QExpression::QExpression(QObject *parent) :
     QValueSpecification(*new QExpressionPrivate, parent)
 {
+    qRegisterMetaType<QExpression *>("QExpression *");
+    qRegisterMetaType<const QSet<QExpression *> *>("const QSet<QExpression *> *");
+    qRegisterMetaType<const QList<QExpression *> *>("const QList<QExpression *> *");
 }
 
 QExpression::QExpression(QExpressionPrivate &dd, QObject *parent) :
     QValueSpecification(dd, parent)
 {
+    qRegisterMetaType<QExpression *>("QExpression *");
+    qRegisterMetaType<const QSet<QExpression *> *>("const QSet<QExpression *> *");
+    qRegisterMetaType<const QList<QExpression *> *>("const QList<QExpression *> *");
 }
 
 QExpression::~QExpression()

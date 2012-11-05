@@ -71,11 +71,17 @@ QBehavioredClassifierPrivate::~QBehavioredClassifierPrivate()
 QBehavioredClassifier::QBehavioredClassifier(QObject *parent) :
     QClassifier(*new QBehavioredClassifierPrivate, parent)
 {
+    qRegisterMetaType<QBehavioredClassifier *>("QBehavioredClassifier *");
+    qRegisterMetaType<const QSet<QBehavioredClassifier *> *>("const QSet<QBehavioredClassifier *> *");
+    qRegisterMetaType<const QList<QBehavioredClassifier *> *>("const QList<QBehavioredClassifier *> *");
 }
 
 QBehavioredClassifier::QBehavioredClassifier(QBehavioredClassifierPrivate &dd, QObject *parent) :
     QClassifier(dd, parent)
 {
+    qRegisterMetaType<QBehavioredClassifier *>("QBehavioredClassifier *");
+    qRegisterMetaType<const QSet<QBehavioredClassifier *> *>("const QSet<QBehavioredClassifier *> *");
+    qRegisterMetaType<const QList<QBehavioredClassifier *> *>("const QList<QBehavioredClassifier *> *");
 }
 
 QBehavioredClassifier::~QBehavioredClassifier()

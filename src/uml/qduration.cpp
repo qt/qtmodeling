@@ -68,11 +68,17 @@ QDurationPrivate::~QDurationPrivate()
 QDuration::QDuration(QObject *parent) :
     QValueSpecification(*new QDurationPrivate, parent)
 {
+    qRegisterMetaType<QDuration *>("QDuration *");
+    qRegisterMetaType<const QSet<QDuration *> *>("const QSet<QDuration *> *");
+    qRegisterMetaType<const QList<QDuration *> *>("const QList<QDuration *> *");
 }
 
 QDuration::QDuration(QDurationPrivate &dd, QObject *parent) :
     QValueSpecification(dd, parent)
 {
+    qRegisterMetaType<QDuration *>("QDuration *");
+    qRegisterMetaType<const QSet<QDuration *> *>("const QSet<QDuration *> *");
+    qRegisterMetaType<const QList<QDuration *> *>("const QList<QDuration *> *");
 }
 
 QDuration::~QDuration()

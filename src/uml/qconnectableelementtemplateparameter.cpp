@@ -66,11 +66,17 @@ QConnectableElementTemplateParameterPrivate::~QConnectableElementTemplateParamet
 QConnectableElementTemplateParameter::QConnectableElementTemplateParameter(QObject *parent) :
     QTemplateParameter(*new QConnectableElementTemplateParameterPrivate, parent)
 {
+    qRegisterMetaType<QConnectableElementTemplateParameter *>("QConnectableElementTemplateParameter *");
+    qRegisterMetaType<const QSet<QConnectableElementTemplateParameter *> *>("const QSet<QConnectableElementTemplateParameter *> *");
+    qRegisterMetaType<const QList<QConnectableElementTemplateParameter *> *>("const QList<QConnectableElementTemplateParameter *> *");
 }
 
 QConnectableElementTemplateParameter::QConnectableElementTemplateParameter(QConnectableElementTemplateParameterPrivate &dd, QObject *parent) :
     QTemplateParameter(dd, parent)
 {
+    qRegisterMetaType<QConnectableElementTemplateParameter *>("QConnectableElementTemplateParameter *");
+    qRegisterMetaType<const QSet<QConnectableElementTemplateParameter *> *>("const QSet<QConnectableElementTemplateParameter *> *");
+    qRegisterMetaType<const QList<QConnectableElementTemplateParameter *> *>("const QList<QConnectableElementTemplateParameter *> *");
 }
 
 QConnectableElementTemplateParameter::~QConnectableElementTemplateParameter()

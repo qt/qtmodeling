@@ -69,11 +69,17 @@ QTriggerPrivate::~QTriggerPrivate()
 QTrigger::QTrigger(QObject *parent) :
     QNamedElement(*new QTriggerPrivate, parent)
 {
+    qRegisterMetaType<QTrigger *>("QTrigger *");
+    qRegisterMetaType<const QSet<QTrigger *> *>("const QSet<QTrigger *> *");
+    qRegisterMetaType<const QList<QTrigger *> *>("const QList<QTrigger *> *");
 }
 
 QTrigger::QTrigger(QTriggerPrivate &dd, QObject *parent) :
     QNamedElement(dd, parent)
 {
+    qRegisterMetaType<QTrigger *>("QTrigger *");
+    qRegisterMetaType<const QSet<QTrigger *> *>("const QSet<QTrigger *> *");
+    qRegisterMetaType<const QList<QTrigger *> *>("const QList<QTrigger *> *");
 }
 
 QTrigger::~QTrigger()

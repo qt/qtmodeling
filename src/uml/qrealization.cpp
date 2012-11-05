@@ -63,11 +63,17 @@ QRealizationPrivate::~QRealizationPrivate()
 QRealization::QRealization(QObject *parent) :
     QAbstraction(*new QRealizationPrivate, parent)
 {
+    qRegisterMetaType<QRealization *>("QRealization *");
+    qRegisterMetaType<const QSet<QRealization *> *>("const QSet<QRealization *> *");
+    qRegisterMetaType<const QList<QRealization *> *>("const QList<QRealization *> *");
 }
 
 QRealization::QRealization(QRealizationPrivate &dd, QObject *parent) :
     QAbstraction(dd, parent)
 {
+    qRegisterMetaType<QRealization *>("QRealization *");
+    qRegisterMetaType<const QSet<QRealization *> *>("const QSet<QRealization *> *");
+    qRegisterMetaType<const QList<QRealization *> *>("const QList<QRealization *> *");
 }
 
 QRealization::~QRealization()

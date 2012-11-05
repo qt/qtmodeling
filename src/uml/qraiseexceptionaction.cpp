@@ -66,11 +66,17 @@ QRaiseExceptionActionPrivate::~QRaiseExceptionActionPrivate()
 QRaiseExceptionAction::QRaiseExceptionAction(QObject *parent) :
     QAction(*new QRaiseExceptionActionPrivate, parent)
 {
+    qRegisterMetaType<QRaiseExceptionAction *>("QRaiseExceptionAction *");
+    qRegisterMetaType<const QSet<QRaiseExceptionAction *> *>("const QSet<QRaiseExceptionAction *> *");
+    qRegisterMetaType<const QList<QRaiseExceptionAction *> *>("const QList<QRaiseExceptionAction *> *");
 }
 
 QRaiseExceptionAction::QRaiseExceptionAction(QRaiseExceptionActionPrivate &dd, QObject *parent) :
     QAction(dd, parent)
 {
+    qRegisterMetaType<QRaiseExceptionAction *>("QRaiseExceptionAction *");
+    qRegisterMetaType<const QSet<QRaiseExceptionAction *> *>("const QSet<QRaiseExceptionAction *> *");
+    qRegisterMetaType<const QList<QRaiseExceptionAction *> *>("const QList<QRaiseExceptionAction *> *");
 }
 
 QRaiseExceptionAction::~QRaiseExceptionAction()

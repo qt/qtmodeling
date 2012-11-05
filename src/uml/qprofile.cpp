@@ -70,11 +70,17 @@ QProfilePrivate::~QProfilePrivate()
 QProfile::QProfile(QObject *parent) :
     QPackage(*new QProfilePrivate, parent)
 {
+    qRegisterMetaType<QProfile *>("QProfile *");
+    qRegisterMetaType<const QSet<QProfile *> *>("const QSet<QProfile *> *");
+    qRegisterMetaType<const QList<QProfile *> *>("const QList<QProfile *> *");
 }
 
 QProfile::QProfile(QProfilePrivate &dd, QObject *parent) :
     QPackage(dd, parent)
 {
+    qRegisterMetaType<QProfile *>("QProfile *");
+    qRegisterMetaType<const QSet<QProfile *> *>("const QSet<QProfile *> *");
+    qRegisterMetaType<const QList<QProfile *> *>("const QList<QProfile *> *");
 }
 
 QProfile::~QProfile()

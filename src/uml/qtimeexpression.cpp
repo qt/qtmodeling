@@ -68,11 +68,17 @@ QTimeExpressionPrivate::~QTimeExpressionPrivate()
 QTimeExpression::QTimeExpression(QObject *parent) :
     QValueSpecification(*new QTimeExpressionPrivate, parent)
 {
+    qRegisterMetaType<QTimeExpression *>("QTimeExpression *");
+    qRegisterMetaType<const QSet<QTimeExpression *> *>("const QSet<QTimeExpression *> *");
+    qRegisterMetaType<const QList<QTimeExpression *> *>("const QList<QTimeExpression *> *");
 }
 
 QTimeExpression::QTimeExpression(QTimeExpressionPrivate &dd, QObject *parent) :
     QValueSpecification(dd, parent)
 {
+    qRegisterMetaType<QTimeExpression *>("QTimeExpression *");
+    qRegisterMetaType<const QSet<QTimeExpression *> *>("const QSet<QTimeExpression *> *");
+    qRegisterMetaType<const QList<QTimeExpression *> *>("const QList<QTimeExpression *> *");
 }
 
 QTimeExpression::~QTimeExpression()

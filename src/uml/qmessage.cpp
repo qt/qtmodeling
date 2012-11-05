@@ -76,11 +76,17 @@ QMessagePrivate::~QMessagePrivate()
 QMessage::QMessage(QObject *parent) :
     QNamedElement(*new QMessagePrivate, parent)
 {
+    qRegisterMetaType<QMessage *>("QMessage *");
+    qRegisterMetaType<const QSet<QMessage *> *>("const QSet<QMessage *> *");
+    qRegisterMetaType<const QList<QMessage *> *>("const QList<QMessage *> *");
 }
 
 QMessage::QMessage(QMessagePrivate &dd, QObject *parent) :
     QNamedElement(dd, parent)
 {
+    qRegisterMetaType<QMessage *>("QMessage *");
+    qRegisterMetaType<const QSet<QMessage *> *>("const QSet<QMessage *> *");
+    qRegisterMetaType<const QList<QMessage *> *>("const QList<QMessage *> *");
 }
 
 QMessage::~QMessage()

@@ -69,11 +69,17 @@ QInvocationActionPrivate::~QInvocationActionPrivate()
 QInvocationAction::QInvocationAction(QObject *parent) :
     QAction(*new QInvocationActionPrivate, parent)
 {
+    qRegisterMetaType<QInvocationAction *>("QInvocationAction *");
+    qRegisterMetaType<const QSet<QInvocationAction *> *>("const QSet<QInvocationAction *> *");
+    qRegisterMetaType<const QList<QInvocationAction *> *>("const QList<QInvocationAction *> *");
 }
 
 QInvocationAction::QInvocationAction(QInvocationActionPrivate &dd, QObject *parent) :
     QAction(dd, parent)
 {
+    qRegisterMetaType<QInvocationAction *>("QInvocationAction *");
+    qRegisterMetaType<const QSet<QInvocationAction *> *>("const QSet<QInvocationAction *> *");
+    qRegisterMetaType<const QList<QInvocationAction *> *>("const QList<QInvocationAction *> *");
 }
 
 QInvocationAction::~QInvocationAction()

@@ -75,11 +75,17 @@ QInteractionUsePrivate::~QInteractionUsePrivate()
 QInteractionUse::QInteractionUse(QObject *parent) :
     QInteractionFragment(*new QInteractionUsePrivate, parent)
 {
+    qRegisterMetaType<QInteractionUse *>("QInteractionUse *");
+    qRegisterMetaType<const QSet<QInteractionUse *> *>("const QSet<QInteractionUse *> *");
+    qRegisterMetaType<const QList<QInteractionUse *> *>("const QList<QInteractionUse *> *");
 }
 
 QInteractionUse::QInteractionUse(QInteractionUsePrivate &dd, QObject *parent) :
     QInteractionFragment(dd, parent)
 {
+    qRegisterMetaType<QInteractionUse *>("QInteractionUse *");
+    qRegisterMetaType<const QSet<QInteractionUse *> *>("const QSet<QInteractionUse *> *");
+    qRegisterMetaType<const QList<QInteractionUse *> *>("const QList<QInteractionUse *> *");
 }
 
 QInteractionUse::~QInteractionUse()

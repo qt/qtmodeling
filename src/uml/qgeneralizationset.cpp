@@ -71,11 +71,17 @@ QGeneralizationSetPrivate::~QGeneralizationSetPrivate()
 QGeneralizationSet::QGeneralizationSet(QObject *parent) :
     QPackageableElement(*new QGeneralizationSetPrivate, parent)
 {
+    qRegisterMetaType<QGeneralizationSet *>("QGeneralizationSet *");
+    qRegisterMetaType<const QSet<QGeneralizationSet *> *>("const QSet<QGeneralizationSet *> *");
+    qRegisterMetaType<const QList<QGeneralizationSet *> *>("const QList<QGeneralizationSet *> *");
 }
 
 QGeneralizationSet::QGeneralizationSet(QGeneralizationSetPrivate &dd, QObject *parent) :
     QPackageableElement(dd, parent)
 {
+    qRegisterMetaType<QGeneralizationSet *>("QGeneralizationSet *");
+    qRegisterMetaType<const QSet<QGeneralizationSet *> *>("const QSet<QGeneralizationSet *> *");
+    qRegisterMetaType<const QList<QGeneralizationSet *> *>("const QList<QGeneralizationSet *> *");
 }
 
 QGeneralizationSet::~QGeneralizationSet()

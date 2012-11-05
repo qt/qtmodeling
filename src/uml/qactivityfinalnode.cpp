@@ -63,11 +63,17 @@ QActivityFinalNodePrivate::~QActivityFinalNodePrivate()
 QActivityFinalNode::QActivityFinalNode(QObject *parent) :
     QFinalNode(*new QActivityFinalNodePrivate, parent)
 {
+    qRegisterMetaType<QActivityFinalNode *>("QActivityFinalNode *");
+    qRegisterMetaType<const QSet<QActivityFinalNode *> *>("const QSet<QActivityFinalNode *> *");
+    qRegisterMetaType<const QList<QActivityFinalNode *> *>("const QList<QActivityFinalNode *> *");
 }
 
 QActivityFinalNode::QActivityFinalNode(QActivityFinalNodePrivate &dd, QObject *parent) :
     QFinalNode(dd, parent)
 {
+    qRegisterMetaType<QActivityFinalNode *>("QActivityFinalNode *");
+    qRegisterMetaType<const QSet<QActivityFinalNode *> *>("const QSet<QActivityFinalNode *> *");
+    qRegisterMetaType<const QList<QActivityFinalNode *> *>("const QList<QActivityFinalNode *> *");
 }
 
 QActivityFinalNode::~QActivityFinalNode()

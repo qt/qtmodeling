@@ -66,11 +66,17 @@ QStartClassifierBehaviorActionPrivate::~QStartClassifierBehaviorActionPrivate()
 QStartClassifierBehaviorAction::QStartClassifierBehaviorAction(QObject *parent) :
     QAction(*new QStartClassifierBehaviorActionPrivate, parent)
 {
+    qRegisterMetaType<QStartClassifierBehaviorAction *>("QStartClassifierBehaviorAction *");
+    qRegisterMetaType<const QSet<QStartClassifierBehaviorAction *> *>("const QSet<QStartClassifierBehaviorAction *> *");
+    qRegisterMetaType<const QList<QStartClassifierBehaviorAction *> *>("const QList<QStartClassifierBehaviorAction *> *");
 }
 
 QStartClassifierBehaviorAction::QStartClassifierBehaviorAction(QStartClassifierBehaviorActionPrivate &dd, QObject *parent) :
     QAction(dd, parent)
 {
+    qRegisterMetaType<QStartClassifierBehaviorAction *>("QStartClassifierBehaviorAction *");
+    qRegisterMetaType<const QSet<QStartClassifierBehaviorAction *> *>("const QSet<QStartClassifierBehaviorAction *> *");
+    qRegisterMetaType<const QList<QStartClassifierBehaviorAction *> *>("const QList<QStartClassifierBehaviorAction *> *");
 }
 
 QStartClassifierBehaviorAction::~QStartClassifierBehaviorAction()

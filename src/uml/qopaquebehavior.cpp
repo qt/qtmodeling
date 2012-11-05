@@ -67,11 +67,17 @@ QOpaqueBehaviorPrivate::~QOpaqueBehaviorPrivate()
 QOpaqueBehavior::QOpaqueBehavior(QObject *parent) :
     QBehavior(*new QOpaqueBehaviorPrivate, parent)
 {
+    qRegisterMetaType<QOpaqueBehavior *>("QOpaqueBehavior *");
+    qRegisterMetaType<const QSet<QOpaqueBehavior *> *>("const QSet<QOpaqueBehavior *> *");
+    qRegisterMetaType<const QList<QOpaqueBehavior *> *>("const QList<QOpaqueBehavior *> *");
 }
 
 QOpaqueBehavior::QOpaqueBehavior(QOpaqueBehaviorPrivate &dd, QObject *parent) :
     QBehavior(dd, parent)
 {
+    qRegisterMetaType<QOpaqueBehavior *>("QOpaqueBehavior *");
+    qRegisterMetaType<const QSet<QOpaqueBehavior *> *>("const QSet<QOpaqueBehavior *> *");
+    qRegisterMetaType<const QList<QOpaqueBehavior *> *>("const QList<QOpaqueBehavior *> *");
 }
 
 QOpaqueBehavior::~QOpaqueBehavior()

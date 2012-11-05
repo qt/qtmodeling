@@ -63,11 +63,17 @@ QActorPrivate::~QActorPrivate()
 QActor::QActor(QObject *parent) :
     QBehavioredClassifier(*new QActorPrivate, parent)
 {
+    qRegisterMetaType<QActor *>("QActor *");
+    qRegisterMetaType<const QSet<QActor *> *>("const QSet<QActor *> *");
+    qRegisterMetaType<const QList<QActor *> *>("const QList<QActor *> *");
 }
 
 QActor::QActor(QActorPrivate &dd, QObject *parent) :
     QBehavioredClassifier(dd, parent)
 {
+    qRegisterMetaType<QActor *>("QActor *");
+    qRegisterMetaType<const QSet<QActor *> *>("const QSet<QActor *> *");
+    qRegisterMetaType<const QList<QActor *> *>("const QList<QActor *> *");
 }
 
 QActor::~QActor()

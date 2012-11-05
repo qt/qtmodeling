@@ -71,6 +71,9 @@ QVariable::QVariable(QObject *parent) :
     _wrappedMultiplicityElement(new QMultiplicityElement(this)),
     _wrappedConnectableElement(new QConnectableElement(this))
 {
+    qRegisterMetaType<QVariable *>("QVariable *");
+    qRegisterMetaType<const QSet<QVariable *> *>("const QSet<QVariable *> *");
+    qRegisterMetaType<const QList<QVariable *> *>("const QList<QVariable *> *");
 }
 
 QVariable::QVariable(QVariablePrivate &dd, QObject *parent) :
@@ -78,6 +81,9 @@ QVariable::QVariable(QVariablePrivate &dd, QObject *parent) :
     _wrappedMultiplicityElement(new QMultiplicityElement(this)),
     _wrappedConnectableElement(new QConnectableElement(this))
 {
+    qRegisterMetaType<QVariable *>("QVariable *");
+    qRegisterMetaType<const QSet<QVariable *> *>("const QSet<QVariable *> *");
+    qRegisterMetaType<const QList<QVariable *> *>("const QList<QVariable *> *");
 }
 
 QVariable::~QVariable()

@@ -81,11 +81,17 @@ QBehaviorPrivate::~QBehaviorPrivate()
 QBehavior::QBehavior(QObject *parent) :
     QClass(*new QBehaviorPrivate, parent)
 {
+    qRegisterMetaType<QBehavior *>("QBehavior *");
+    qRegisterMetaType<const QSet<QBehavior *> *>("const QSet<QBehavior *> *");
+    qRegisterMetaType<const QList<QBehavior *> *>("const QList<QBehavior *> *");
 }
 
 QBehavior::QBehavior(QBehaviorPrivate &dd, QObject *parent) :
     QClass(dd, parent)
 {
+    qRegisterMetaType<QBehavior *>("QBehavior *");
+    qRegisterMetaType<const QSet<QBehavior *> *>("const QSet<QBehavior *> *");
+    qRegisterMetaType<const QList<QBehavior *> *>("const QList<QBehavior *> *");
 }
 
 QBehavior::~QBehavior()

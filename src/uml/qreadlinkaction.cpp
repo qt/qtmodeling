@@ -66,11 +66,17 @@ QReadLinkActionPrivate::~QReadLinkActionPrivate()
 QReadLinkAction::QReadLinkAction(QObject *parent) :
     QLinkAction(*new QReadLinkActionPrivate, parent)
 {
+    qRegisterMetaType<QReadLinkAction *>("QReadLinkAction *");
+    qRegisterMetaType<const QSet<QReadLinkAction *> *>("const QSet<QReadLinkAction *> *");
+    qRegisterMetaType<const QList<QReadLinkAction *> *>("const QList<QReadLinkAction *> *");
 }
 
 QReadLinkAction::QReadLinkAction(QReadLinkActionPrivate &dd, QObject *parent) :
     QLinkAction(dd, parent)
 {
+    qRegisterMetaType<QReadLinkAction *>("QReadLinkAction *");
+    qRegisterMetaType<const QSet<QReadLinkAction *> *>("const QSet<QReadLinkAction *> *");
+    qRegisterMetaType<const QList<QReadLinkAction *> *>("const QList<QReadLinkAction *> *");
 }
 
 QReadLinkAction::~QReadLinkAction()

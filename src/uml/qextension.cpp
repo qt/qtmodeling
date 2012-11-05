@@ -91,11 +91,17 @@ void QExtensionPrivate::setMetaclass(QClass *metaclass)
 QExtension::QExtension(QObject *parent) :
     QAssociation(*new QExtensionPrivate, parent)
 {
+    qRegisterMetaType<QExtension *>("QExtension *");
+    qRegisterMetaType<const QSet<QExtension *> *>("const QSet<QExtension *> *");
+    qRegisterMetaType<const QList<QExtension *> *>("const QList<QExtension *> *");
 }
 
 QExtension::QExtension(QExtensionPrivate &dd, QObject *parent) :
     QAssociation(dd, parent)
 {
+    qRegisterMetaType<QExtension *>("QExtension *");
+    qRegisterMetaType<const QSet<QExtension *> *>("const QSet<QExtension *> *");
+    qRegisterMetaType<const QList<QExtension *> *>("const QList<QExtension *> *");
 }
 
 QExtension::~QExtension()

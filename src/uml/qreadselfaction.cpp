@@ -66,11 +66,17 @@ QReadSelfActionPrivate::~QReadSelfActionPrivate()
 QReadSelfAction::QReadSelfAction(QObject *parent) :
     QAction(*new QReadSelfActionPrivate, parent)
 {
+    qRegisterMetaType<QReadSelfAction *>("QReadSelfAction *");
+    qRegisterMetaType<const QSet<QReadSelfAction *> *>("const QSet<QReadSelfAction *> *");
+    qRegisterMetaType<const QList<QReadSelfAction *> *>("const QList<QReadSelfAction *> *");
 }
 
 QReadSelfAction::QReadSelfAction(QReadSelfActionPrivate &dd, QObject *parent) :
     QAction(dd, parent)
 {
+    qRegisterMetaType<QReadSelfAction *>("QReadSelfAction *");
+    qRegisterMetaType<const QSet<QReadSelfAction *> *>("const QSet<QReadSelfAction *> *");
+    qRegisterMetaType<const QList<QReadSelfAction *> *>("const QList<QReadSelfAction *> *");
 }
 
 QReadSelfAction::~QReadSelfAction()

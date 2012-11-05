@@ -68,6 +68,9 @@ QStringExpression::QStringExpression(QObject *parent) :
     _wrappedExpression(new QExpression(this)),
     _wrappedTemplateableElement(new QTemplateableElement(this))
 {
+    qRegisterMetaType<QStringExpression *>("QStringExpression *");
+    qRegisterMetaType<const QSet<QStringExpression *> *>("const QSet<QStringExpression *> *");
+    qRegisterMetaType<const QList<QStringExpression *> *>("const QList<QStringExpression *> *");
 }
 
 QStringExpression::QStringExpression(QStringExpressionPrivate &dd, QObject *parent) :
@@ -75,6 +78,9 @@ QStringExpression::QStringExpression(QStringExpressionPrivate &dd, QObject *pare
     _wrappedExpression(new QExpression(this)),
     _wrappedTemplateableElement(new QTemplateableElement(this))
 {
+    qRegisterMetaType<QStringExpression *>("QStringExpression *");
+    qRegisterMetaType<const QSet<QStringExpression *> *>("const QSet<QStringExpression *> *");
+    qRegisterMetaType<const QList<QStringExpression *> *>("const QList<QStringExpression *> *");
 }
 
 QStringExpression::~QStringExpression()

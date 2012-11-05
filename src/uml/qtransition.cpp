@@ -84,6 +84,9 @@ QTransition::QTransition(QObject *parent) :
     _wrappedRedefinableElement(new QRedefinableElement(this)),
     _wrappedNamespace(new QNamespace(this))
 {
+    qRegisterMetaType<QTransition *>("QTransition *");
+    qRegisterMetaType<const QSet<QTransition *> *>("const QSet<QTransition *> *");
+    qRegisterMetaType<const QList<QTransition *> *>("const QList<QTransition *> *");
 }
 
 QTransition::QTransition(QTransitionPrivate &dd, QObject *parent) :
@@ -91,6 +94,9 @@ QTransition::QTransition(QTransitionPrivate &dd, QObject *parent) :
     _wrappedRedefinableElement(new QRedefinableElement(this)),
     _wrappedNamespace(new QNamespace(this))
 {
+    qRegisterMetaType<QTransition *>("QTransition *");
+    qRegisterMetaType<const QSet<QTransition *> *>("const QSet<QTransition *> *");
+    qRegisterMetaType<const QList<QTransition *> *>("const QList<QTransition *> *");
 }
 
 QTransition::~QTransition()

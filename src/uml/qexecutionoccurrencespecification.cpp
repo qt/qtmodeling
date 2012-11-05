@@ -66,11 +66,17 @@ QExecutionOccurrenceSpecificationPrivate::~QExecutionOccurrenceSpecificationPriv
 QExecutionOccurrenceSpecification::QExecutionOccurrenceSpecification(QObject *parent) :
     QOccurrenceSpecification(*new QExecutionOccurrenceSpecificationPrivate, parent)
 {
+    qRegisterMetaType<QExecutionOccurrenceSpecification *>("QExecutionOccurrenceSpecification *");
+    qRegisterMetaType<const QSet<QExecutionOccurrenceSpecification *> *>("const QSet<QExecutionOccurrenceSpecification *> *");
+    qRegisterMetaType<const QList<QExecutionOccurrenceSpecification *> *>("const QList<QExecutionOccurrenceSpecification *> *");
 }
 
 QExecutionOccurrenceSpecification::QExecutionOccurrenceSpecification(QExecutionOccurrenceSpecificationPrivate &dd, QObject *parent) :
     QOccurrenceSpecification(dd, parent)
 {
+    qRegisterMetaType<QExecutionOccurrenceSpecification *>("QExecutionOccurrenceSpecification *");
+    qRegisterMetaType<const QSet<QExecutionOccurrenceSpecification *> *>("const QSet<QExecutionOccurrenceSpecification *> *");
+    qRegisterMetaType<const QList<QExecutionOccurrenceSpecification *> *>("const QList<QExecutionOccurrenceSpecification *> *");
 }
 
 QExecutionOccurrenceSpecification::~QExecutionOccurrenceSpecification()

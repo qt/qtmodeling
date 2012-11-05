@@ -81,6 +81,9 @@ QBehavioralFeature::QBehavioralFeature(QObject *parent) :
     _wrappedNamespace(new QNamespace(this)),
     _wrappedFeature(new QFeature(this))
 {
+    qRegisterMetaType<QBehavioralFeature *>("QBehavioralFeature *");
+    qRegisterMetaType<const QSet<QBehavioralFeature *> *>("const QSet<QBehavioralFeature *> *");
+    qRegisterMetaType<const QList<QBehavioralFeature *> *>("const QList<QBehavioralFeature *> *");
 }
 
 QBehavioralFeature::QBehavioralFeature(QBehavioralFeaturePrivate &dd, QObject *parent) :
@@ -88,6 +91,9 @@ QBehavioralFeature::QBehavioralFeature(QBehavioralFeaturePrivate &dd, QObject *p
     _wrappedNamespace(new QNamespace(this)),
     _wrappedFeature(new QFeature(this))
 {
+    qRegisterMetaType<QBehavioralFeature *>("QBehavioralFeature *");
+    qRegisterMetaType<const QSet<QBehavioralFeature *> *>("const QSet<QBehavioralFeature *> *");
+    qRegisterMetaType<const QList<QBehavioralFeature *> *>("const QList<QBehavioralFeature *> *");
 }
 
 QBehavioralFeature::~QBehavioralFeature()

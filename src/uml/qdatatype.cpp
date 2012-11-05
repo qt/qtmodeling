@@ -71,11 +71,17 @@ QDataTypePrivate::~QDataTypePrivate()
 QDataType::QDataType(QObject *parent) :
     QClassifier(*new QDataTypePrivate, parent)
 {
+    qRegisterMetaType<QDataType *>("QDataType *");
+    qRegisterMetaType<const QSet<QDataType *> *>("const QSet<QDataType *> *");
+    qRegisterMetaType<const QList<QDataType *> *>("const QList<QDataType *> *");
 }
 
 QDataType::QDataType(QDataTypePrivate &dd, QObject *parent) :
     QClassifier(dd, parent)
 {
+    qRegisterMetaType<QDataType *>("QDataType *");
+    qRegisterMetaType<const QSet<QDataType *> *>("const QSet<QDataType *> *");
+    qRegisterMetaType<const QList<QDataType *> *>("const QList<QDataType *> *");
 }
 
 QDataType::~QDataType()

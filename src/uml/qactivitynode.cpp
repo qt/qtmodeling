@@ -113,11 +113,17 @@ void QActivityNodePrivate::removeInGroup(QActivityGroup *inGroup)
 QActivityNode::QActivityNode(QObject *parent) :
     QRedefinableElement(*new QActivityNodePrivate, parent)
 {
+    qRegisterMetaType<QActivityNode *>("QActivityNode *");
+    qRegisterMetaType<const QSet<QActivityNode *> *>("const QSet<QActivityNode *> *");
+    qRegisterMetaType<const QList<QActivityNode *> *>("const QList<QActivityNode *> *");
 }
 
 QActivityNode::QActivityNode(QActivityNodePrivate &dd, QObject *parent) :
     QRedefinableElement(dd, parent)
 {
+    qRegisterMetaType<QActivityNode *>("QActivityNode *");
+    qRegisterMetaType<const QSet<QActivityNode *> *>("const QSet<QActivityNode *> *");
+    qRegisterMetaType<const QList<QActivityNode *> *>("const QList<QActivityNode *> *");
 }
 
 QActivityNode::~QActivityNode()

@@ -71,11 +71,17 @@ QReduceActionPrivate::~QReduceActionPrivate()
 QReduceAction::QReduceAction(QObject *parent) :
     QAction(*new QReduceActionPrivate, parent)
 {
+    qRegisterMetaType<QReduceAction *>("QReduceAction *");
+    qRegisterMetaType<const QSet<QReduceAction *> *>("const QSet<QReduceAction *> *");
+    qRegisterMetaType<const QList<QReduceAction *> *>("const QList<QReduceAction *> *");
 }
 
 QReduceAction::QReduceAction(QReduceActionPrivate &dd, QObject *parent) :
     QAction(dd, parent)
 {
+    qRegisterMetaType<QReduceAction *>("QReduceAction *");
+    qRegisterMetaType<const QSet<QReduceAction *> *>("const QSet<QReduceAction *> *");
+    qRegisterMetaType<const QList<QReduceAction *> *>("const QList<QReduceAction *> *");
 }
 
 QReduceAction::~QReduceAction()

@@ -67,11 +67,17 @@ QConsiderIgnoreFragmentPrivate::~QConsiderIgnoreFragmentPrivate()
 QConsiderIgnoreFragment::QConsiderIgnoreFragment(QObject *parent) :
     QCombinedFragment(*new QConsiderIgnoreFragmentPrivate, parent)
 {
+    qRegisterMetaType<QConsiderIgnoreFragment *>("QConsiderIgnoreFragment *");
+    qRegisterMetaType<const QSet<QConsiderIgnoreFragment *> *>("const QSet<QConsiderIgnoreFragment *> *");
+    qRegisterMetaType<const QList<QConsiderIgnoreFragment *> *>("const QList<QConsiderIgnoreFragment *> *");
 }
 
 QConsiderIgnoreFragment::QConsiderIgnoreFragment(QConsiderIgnoreFragmentPrivate &dd, QObject *parent) :
     QCombinedFragment(dd, parent)
 {
+    qRegisterMetaType<QConsiderIgnoreFragment *>("QConsiderIgnoreFragment *");
+    qRegisterMetaType<const QSet<QConsiderIgnoreFragment *> *>("const QSet<QConsiderIgnoreFragment *> *");
+    qRegisterMetaType<const QList<QConsiderIgnoreFragment *> *>("const QList<QConsiderIgnoreFragment *> *");
 }
 
 QConsiderIgnoreFragment::~QConsiderIgnoreFragment()

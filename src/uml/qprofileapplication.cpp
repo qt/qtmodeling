@@ -69,11 +69,17 @@ QProfileApplicationPrivate::~QProfileApplicationPrivate()
 QProfileApplication::QProfileApplication(QObject *parent) :
     QDirectedRelationship(*new QProfileApplicationPrivate, parent)
 {
+    qRegisterMetaType<QProfileApplication *>("QProfileApplication *");
+    qRegisterMetaType<const QSet<QProfileApplication *> *>("const QSet<QProfileApplication *> *");
+    qRegisterMetaType<const QList<QProfileApplication *> *>("const QList<QProfileApplication *> *");
 }
 
 QProfileApplication::QProfileApplication(QProfileApplicationPrivate &dd, QObject *parent) :
     QDirectedRelationship(dd, parent)
 {
+    qRegisterMetaType<QProfileApplication *>("QProfileApplication *");
+    qRegisterMetaType<const QSet<QProfileApplication *> *>("const QSet<QProfileApplication *> *");
+    qRegisterMetaType<const QList<QProfileApplication *> *>("const QList<QProfileApplication *> *");
 }
 
 QProfileApplication::~QProfileApplication()

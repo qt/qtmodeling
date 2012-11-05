@@ -63,11 +63,17 @@ QInitialNodePrivate::~QInitialNodePrivate()
 QInitialNode::QInitialNode(QObject *parent) :
     QControlNode(*new QInitialNodePrivate, parent)
 {
+    qRegisterMetaType<QInitialNode *>("QInitialNode *");
+    qRegisterMetaType<const QSet<QInitialNode *> *>("const QSet<QInitialNode *> *");
+    qRegisterMetaType<const QList<QInitialNode *> *>("const QList<QInitialNode *> *");
 }
 
 QInitialNode::QInitialNode(QInitialNodePrivate &dd, QObject *parent) :
     QControlNode(dd, parent)
 {
+    qRegisterMetaType<QInitialNode *>("QInitialNode *");
+    qRegisterMetaType<const QSet<QInitialNode *> *>("const QSet<QInitialNode *> *");
+    qRegisterMetaType<const QList<QInitialNode *> *>("const QList<QInitialNode *> *");
 }
 
 QInitialNode::~QInitialNode()
