@@ -79,6 +79,10 @@ QSendSignalAction::~QSendSignalAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QSendSignalAction
+// ---------------------------------------------------------------
+
 /*!
     The target object to which the signal is sent.
  */
@@ -97,13 +101,13 @@ void QSendSignalAction::setTarget(QInputPin *target)
     Q_D(QSendSignalAction);
     if (d->target != target) {
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->target));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->target));
 
         d->target = target;
 
         // Adjust subsetted property(ies)
         if (target) {
-            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(target));
+            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(target));
         }
     }
 }

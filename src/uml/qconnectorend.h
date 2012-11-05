@@ -74,7 +74,7 @@ public:
     explicit QConnectorEnd(QObject *parent = 0);
     virtual ~QConnectorEnd();
 
-    // Association-ends
+    // Association ends from QConnectorEnd
     QConnectableElement *role() const;
     void setRole(QConnectableElement *role);
     QProperty *partWithPort() const;

@@ -41,12 +41,12 @@
 #ifndef QTUML_QLITERALBOOLEAN_P_H
 #define QTUML_QLITERALBOOLEAN_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qliteralspecification_p.h"
-#include "qliteralboolean.h"
 
+#include "QtUml/QLiteralBoolean"
 
 QT_BEGIN_HEADER
 

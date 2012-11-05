@@ -45,6 +45,8 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtUml/QParameterableElement>
+#include <QtUml/QNamedElement>
 
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
@@ -55,18 +57,11 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-// Forward decls for aggregated 'base classes'
-class QParameterableElement;
-class QNamedElement;
-
 class QPackageableElementPrivate;
 
 class Q_UML_EXPORT QPackageableElement : public QObject
 {
     Q_OBJECT
-
-    // From QPackageableElement
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
@@ -84,6 +79,9 @@ class Q_UML_EXPORT QPackageableElement : public QObject
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
     Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
+    // From QPackageableElement
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+
     Q_DISABLE_COPY(QPackageableElement)
     Q_DECLARE_PRIVATE(QPackageableElement)
 
@@ -91,7 +89,33 @@ public:
     explicit QPackageableElement(QObject *parent = 0);
     virtual ~QPackageableElement();
 
-    // Attributes
+    // Association ends from aggregated QElement
+    const QSet<QElement *> *ownedElements() const;
+    QElement *owner() const;
+    const QSet<QComment *> *ownedComments() const;
+    void addOwnedComment(QComment *ownedComment);
+    void removeOwnedComment(QComment *ownedComment);
+
+    // Association ends from aggregated QParameterableElement
+    QTemplateParameter *owningTemplateParameter() const;
+    void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
+    QTemplateParameter *templateParameter() const;
+    void setTemplateParameter(QTemplateParameter *templateParameter);
+
+    // Attributes from aggregated QNamedElement
+    QString name() const;
+    void setName(QString name);
+    QString qualifiedName() const;
+
+    // Association ends from aggregated QNamedElement
+    QStringExpression *nameExpression() const;
+    void setNameExpression(QStringExpression *nameExpression);
+    QNamespace *namespace_() const;
+    const QSet<QDependency *> *clientDependencies() const;
+    void addClientDependency(QDependency *clientDependency);
+    void removeClientDependency(QDependency *clientDependency);
+
+    // Attributes from QPackageableElement
     QtUml::VisibilityKind visibility() const;
     void setVisibility(QtUml::VisibilityKind visibility);
 

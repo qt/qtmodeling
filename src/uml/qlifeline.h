@@ -82,7 +82,7 @@ public:
     explicit QLifeline(QObject *parent = 0);
     virtual ~QLifeline();
 
-    // Association-ends
+    // Association ends from QLifeline
     QConnectableElement *represents() const;
     void setRepresents(QConnectableElement *represents);
     QPartDecomposition *decomposedAs() const;

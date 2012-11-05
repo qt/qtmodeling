@@ -45,6 +45,8 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtUml/QBehavior>
+#include <QtUml/QInteractionFragment>
 
 // Qt includes
 #include <QtCore/QList>
@@ -55,10 +57,6 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
-
-// Forward decls for aggregated 'base classes'
-class QBehavior;
-class QInteractionFragment;
 
 // Forward decls for function parameters
 class QMessage;
@@ -71,13 +69,6 @@ class QInteractionPrivate;
 class Q_UML_EXPORT QInteraction : public QObject
 {
     Q_OBJECT
-
-    // From QInteraction
-    Q_PROPERTY(const QSet<QAction *> * actions READ actions)
-    Q_PROPERTY(const QSet<QMessage *> * messages READ messages)
-    Q_PROPERTY(const QSet<QGate *> * formalGates READ formalGates)
-    Q_PROPERTY(const QList<QInteractionFragment *> * fragments READ fragments)
-    Q_PROPERTY(const QSet<QLifeline *> * lifelines READ lifelines)
 
     // From aggregated QBehavior
     Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant)
@@ -108,6 +99,13 @@ class Q_UML_EXPORT QInteraction : public QObject
     Q_PROPERTY(const QSet<QLifeline *> * covered READ covered)
     Q_PROPERTY(QInteractionOperand * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
 
+    // From QInteraction
+    Q_PROPERTY(const QSet<QAction *> * actions READ actions)
+    Q_PROPERTY(const QSet<QMessage *> * messages READ messages)
+    Q_PROPERTY(const QSet<QGate *> * formalGates READ formalGates)
+    Q_PROPERTY(const QList<QInteractionFragment *> * fragments READ fragments)
+    Q_PROPERTY(const QSet<QLifeline *> * lifelines READ lifelines)
+
     Q_DISABLE_COPY(QInteraction)
     Q_DECLARE_PRIVATE(QInteraction)
 
@@ -115,7 +113,65 @@ public:
     explicit QInteraction(QObject *parent = 0);
     virtual ~QInteraction();
 
-    // Association-ends
+    // Attributes from aggregated QBehavior
+    bool isReentrant() const;
+    void setReentrant(bool isReentrant);
+
+    // Association ends from aggregated QBehavior
+    QBehavioralFeature *specification() const;
+    void setSpecification(QBehavioralFeature *specification);
+    const QSet<QConstraint *> *postconditions() const;
+    void addPostcondition(QConstraint *postcondition);
+    void removePostcondition(QConstraint *postcondition);
+    const QSet<QConstraint *> *preconditions() const;
+    void addPrecondition(QConstraint *precondition);
+    void removePrecondition(QConstraint *precondition);
+    const QSet<QBehavior *> *redefinedBehaviors() const;
+    void addRedefinedBehavior(QBehavior *redefinedBehavior);
+    void removeRedefinedBehavior(QBehavior *redefinedBehavior);
+    const QList<QParameter *> *ownedParameters() const;
+    void addOwnedParameter(QParameter *ownedParameter);
+    void removeOwnedParameter(QParameter *ownedParameter);
+    const QSet<QParameterSet *> *ownedParameterSets() const;
+    void addOwnedParameterSet(QParameterSet *ownedParameterSet);
+    void removeOwnedParameterSet(QParameterSet *ownedParameterSet);
+    QBehavioredClassifier *context() const;
+
+    // Association ends from aggregated QElement
+    const QSet<QElement *> *ownedElements() const;
+    QElement *owner() const;
+    const QSet<QComment *> *ownedComments() const;
+    void addOwnedComment(QComment *ownedComment);
+    void removeOwnedComment(QComment *ownedComment);
+
+    // Attributes from aggregated QNamedElement
+    QString name() const;
+    void setName(QString name);
+    QtUml::VisibilityKind visibility() const;
+    void setVisibility(QtUml::VisibilityKind visibility);
+    QString qualifiedName() const;
+
+    // Association ends from aggregated QNamedElement
+    QStringExpression *nameExpression() const;
+    void setNameExpression(QStringExpression *nameExpression);
+    QNamespace *namespace_() const;
+    const QSet<QDependency *> *clientDependencies() const;
+    void addClientDependency(QDependency *clientDependency);
+    void removeClientDependency(QDependency *clientDependency);
+
+    // Association ends from aggregated QInteractionFragment
+    const QSet<QGeneralOrdering *> *generalOrderings() const;
+    void addGeneralOrdering(QGeneralOrdering *generalOrdering);
+    void removeGeneralOrdering(QGeneralOrdering *generalOrdering);
+    QInteraction *enclosingInteraction() const;
+    void setEnclosingInteraction(QInteraction *enclosingInteraction);
+    const QSet<QLifeline *> *covered() const;
+    void addCovered(QLifeline *covered);
+    void removeCovered(QLifeline *covered);
+    QInteractionOperand *enclosingOperand() const;
+    void setEnclosingOperand(QInteractionOperand *enclosingOperand);
+
+    // Association ends from QInteraction
     const QSet<QAction *> *actions() const;
     void addAction(QAction *action);
     void removeAction(QAction *action);

@@ -41,19 +41,19 @@
 #ifndef QTUML_QCLASSIFIER_P_H
 #define QTUML_QCLASSIFIER_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qnamespace_p.h"
 #include "private/qtype_p.h"
 #include "private/qredefinableelement_p.h"
 #include "private/qtemplateableelement_p.h"
-#include "qclassifier.h"
+
+#include "QtUml/QClassifier"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -102,12 +102,6 @@ public:
     void removeAttribute(QProperty *attribute);
     void addFeature(QFeature *feature);
     void removeFeature(QFeature *feature);
-
-private:
-    QNamespacePrivate *_wrappedNamespacePrivate;
-    QTypePrivate *_wrappedTypePrivate;
-    QRedefinableElementPrivate *_wrappedRedefinableElementPrivate;
-    QTemplateableElementPrivate *_wrappedTemplateableElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

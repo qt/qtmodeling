@@ -71,7 +71,7 @@ public:
     explicit QCallBehaviorAction(QObject *parent = 0);
     virtual ~QCallBehaviorAction();
 
-    // Association-ends
+    // Association ends from QCallBehaviorAction
     QBehavior *behavior() const;
     void setBehavior(QBehavior *behavior);
 

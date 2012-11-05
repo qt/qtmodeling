@@ -42,7 +42,6 @@
 #include "qanyreceiveevent.h"
 #include "qanyreceiveevent_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QAnyReceiveEventPrivate::QAnyReceiveEventPrivate()

@@ -42,7 +42,6 @@
 #include "qmodel.h"
 #include "qmodel_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QModelPrivate::QModelPrivate()
@@ -74,6 +73,10 @@ QModel::QModel(QModelPrivate &dd, QObject *parent) :
 QModel::~QModel()
 {
 }
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QModel
+// ---------------------------------------------------------------
 
 /*!
     The name of the viewpoint that is expressed by a model (This name may refer to a profile definition).

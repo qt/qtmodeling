@@ -41,14 +41,15 @@
 #ifndef QTUML_QCOMPONENT_P_H
 #define QTUML_QCOMPONENT_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qclass_p.h"
-#include "qcomponent.h"
+
+#include "QtUml/QComponent"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

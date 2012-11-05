@@ -42,7 +42,6 @@
 #include "qinformationitem.h"
 #include "qinformationitem_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QInformationItemPrivate::QInformationItemPrivate() :
@@ -76,6 +75,10 @@ QInformationItem::QInformationItem(QInformationItemPrivate &dd, QObject *parent)
 QInformationItem::~QInformationItem()
 {
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QInformationItem
+// ---------------------------------------------------------------
 
 /*!
     Determines the classifiers that will specify the structure and nature of the information. An information item represents all its represented classifiers.

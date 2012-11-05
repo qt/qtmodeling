@@ -41,32 +41,33 @@
 #ifndef ${namespace.replace('/', '_').upper}_${class.name.upper}_P_H
 #define ${namespace.replace('/', '_').upper}_${class.name.upper}_P_H
 
-#include <[% namespace.split('/').0 %]/[% namespace.split('/').0 %]Global>
+#include "private/[% namespace.split('/').0.lower %]global_p.h"
 
 // Base class includes
-[%- IF !class.superclass || class.superclass.size > 1 %]
+[%- IF !class.superclass || class.superclass.size > 1 -%]
+
 #include "private/qobject_p.h"
-
 [%- END -%]
-[%- FOREACH superclass IN class.superclass %]
-#include "private/${superclass.include.split('/').last.lower}_p.h"
-[%- END -%]
+[%- FOREACH superclass IN class.superclass -%]
 
-#include "${class.name.lower}.h"
+#include "private/${superclass.name.lower}_p.h"
+[%- END %]
 
+#include "${namespace}/${class.name}"
 [%- IF class.item('qtumlinclude') %]
 
 // [% namespace.split('/').0 %] includes
-[% FOREACH include IN class.qtumlinclude -%]
-#include <${include}>
+[%- FOREACH include IN class.qtumlinclude -%]
 
+#include "${include}"
 [%- END -%]
 [%- END -%]
 [%- IF class.item('qtinclude') %]
+
 // Qt includes
 [%- FOREACH include IN class.qtinclude -%]
 
-#include <${include}>
+#include "${include}"
 [%- END -%]
 [%- END %]
 
@@ -166,13 +167,6 @@ public:
 [%- END -%]
 [%- END -%]
 [%- END -%]
-[%- END %]
-[%- IF class.superclass and class.superclass.size > 1 %]
-
-private:
-    [%- FOREACH parentClass IN class.superclass %]
-    ${parentClass.name}Private *_wrapped${parentClass.name.replace('^Q', '')}Private;
-    [%- END %]
 [%- END %]
 };
 

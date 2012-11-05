@@ -80,7 +80,7 @@ public:
     explicit QUseCase(QObject *parent = 0);
     virtual ~QUseCase();
 
-    // Association-ends
+    // Association ends from QUseCase
     const QSet<QExtensionPoint *> *extensionPoints() const;
     void addExtensionPoint(QExtensionPoint *extensionPoint);
     void removeExtensionPoint(QExtensionPoint *extensionPoint);

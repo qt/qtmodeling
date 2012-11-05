@@ -74,7 +74,7 @@ public:
     explicit QSequenceNode(QObject *parent = 0);
     virtual ~QSequenceNode();
 
-    // Association-ends
+    // Association ends from QSequenceNode
     const QList<QExecutableNode *> *executableNodes() const;
     void addExecutableNode(QExecutableNode *executableNode);
     void removeExecutableNode(QExecutableNode *executableNode);

@@ -41,12 +41,12 @@
 #ifndef QTUML_QFINALSTATE_P_H
 #define QTUML_QFINALSTATE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qstate_p.h"
-#include "qfinalstate.h"
 
+#include "QtUml/QFinalState"
 
 QT_BEGIN_HEADER
 

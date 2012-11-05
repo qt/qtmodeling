@@ -78,6 +78,10 @@ QExecutionSpecification::~QExecutionSpecification()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QExecutionSpecification
+// ---------------------------------------------------------------
+
 /*!
     References the OccurrenceSpecification that designates the start of the Action or Behavior
  */
@@ -119,6 +123,8 @@ void QExecutionSpecification::setFinish(QOccurrenceSpecification *finish)
         d->finish = finish;
     }
 }
+
+#include "moc_qexecutionspecification.cpp"
 
 QT_END_NAMESPACE_QTUML
 

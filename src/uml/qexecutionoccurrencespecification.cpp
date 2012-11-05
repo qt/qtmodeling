@@ -77,6 +77,10 @@ QExecutionOccurrenceSpecification::~QExecutionOccurrenceSpecification()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QExecutionOccurrenceSpecification
+// ---------------------------------------------------------------
+
 /*!
     References the execution specification describing the execution that is started or finished at this execution event.
  */

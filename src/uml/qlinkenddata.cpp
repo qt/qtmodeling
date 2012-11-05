@@ -82,6 +82,10 @@ QLinkEndData::~QLinkEndData()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QLinkEndData
+// ---------------------------------------------------------------
+
 /*!
     Input pin that provides the specified object for the given end. This pin is omitted if the link-end data specifies an 'open' end for reading.
  */
@@ -144,7 +148,7 @@ void QLinkEndData::addQualifier(QQualifierValue *qualifier)
         d->qualifiers->insert(qualifier);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(qualifier));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(qualifier));
     }
 }
 
@@ -157,7 +161,7 @@ void QLinkEndData::removeQualifier(QQualifierValue *qualifier)
         d->qualifiers->remove(qualifier);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(qualifier));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(qualifier));
     }
 }
 

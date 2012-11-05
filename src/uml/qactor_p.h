@@ -41,12 +41,12 @@
 #ifndef QTUML_QACTOR_P_H
 #define QTUML_QACTOR_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qbehavioredclassifier_p.h"
-#include "qactor.h"
 
+#include "QtUml/QActor"
 
 QT_BEGIN_HEADER
 

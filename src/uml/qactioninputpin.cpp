@@ -77,6 +77,10 @@ QActionInputPin::~QActionInputPin()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QActionInputPin
+// ---------------------------------------------------------------
+
 /*!
     The action used to provide values.
  */
@@ -95,13 +99,13 @@ void QActionInputPin::setFromAction(QAction *fromAction)
     Q_D(QActionInputPin);
     if (d->fromAction != fromAction) {
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->fromAction));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->fromAction));
 
         d->fromAction = fromAction;
 
         // Adjust subsetted property(ies)
         if (fromAction) {
-            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(fromAction));
+            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(fromAction));
         }
     }
 }

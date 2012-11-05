@@ -71,7 +71,7 @@ public:
     explicit QModel(QObject *parent = 0);
     virtual ~QModel();
 
-    // Attributes
+    // Attributes from QModel
     QString viewpoint() const;
     void setViewpoint(QString viewpoint);
 

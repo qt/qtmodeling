@@ -77,6 +77,10 @@ QValuePin::~QValuePin()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QValuePin
+// ---------------------------------------------------------------
+
 /*!
     Value that the pin will provide.
  */
@@ -95,13 +99,13 @@ void QValuePin::setValue(QValueSpecification *value)
     Q_D(QValuePin);
     if (d->value != value) {
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->value));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->value));
 
         d->value = value;
 
         // Adjust subsetted property(ies)
         if (value) {
-            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(value));
+            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(value));
         }
     }
 }

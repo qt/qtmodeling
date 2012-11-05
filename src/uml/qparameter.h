@@ -45,6 +45,8 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtUml/QMultiplicityElement>
+#include <QtUml/QConnectableElement>
 
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
@@ -60,10 +62,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-// Forward decls for aggregated 'base classes'
-class QMultiplicityElement;
-class QConnectableElement;
-
 // Forward decls for function parameters
 class QValueSpecification;
 class QOperation;
@@ -74,16 +72,6 @@ class QParameterPrivate;
 class Q_UML_EXPORT QParameter : public QObject
 {
     Q_OBJECT
-
-    // From QParameter
-    Q_PROPERTY(bool isException READ isException WRITE setException)
-    Q_PROPERTY(QString default_ READ default_ WRITE setDefault_)
-    Q_PROPERTY(QtUml::ParameterDirectionKind direction READ direction WRITE setDirection)
-    Q_PROPERTY(bool isStream READ isStream WRITE setStream)
-    Q_PROPERTY(QtUml::ParameterEffectKind effect READ effect WRITE setEffect)
-    Q_PROPERTY(QOperation * operation READ operation WRITE setOperation)
-    Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
-    Q_PROPERTY(const QSet<QParameterSet *> * parameterSets READ parameterSets)
 
     // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
@@ -116,6 +104,16 @@ class Q_UML_EXPORT QParameter : public QObject
     Q_PROPERTY(const QList<QConnectorEnd *> * ends READ ends)
     Q_PROPERTY(QConnectableElementTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
 
+    // From QParameter
+    Q_PROPERTY(bool isException READ isException WRITE setException)
+    Q_PROPERTY(QString default_ READ default_ WRITE setDefault_)
+    Q_PROPERTY(QtUml::ParameterDirectionKind direction READ direction WRITE setDirection)
+    Q_PROPERTY(bool isStream READ isStream WRITE setStream)
+    Q_PROPERTY(QtUml::ParameterEffectKind effect READ effect WRITE setEffect)
+    Q_PROPERTY(QOperation * operation READ operation WRITE setOperation)
+    Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
+    Q_PROPERTY(const QSet<QParameterSet *> * parameterSets READ parameterSets)
+
     Q_DISABLE_COPY(QParameter)
     Q_DECLARE_PRIVATE(QParameter)
 
@@ -123,7 +121,58 @@ public:
     explicit QParameter(QObject *parent = 0);
     virtual ~QParameter();
 
-    // Attributes
+    // Association ends from aggregated QElement
+    const QSet<QElement *> *ownedElements() const;
+    QElement *owner() const;
+    const QSet<QComment *> *ownedComments() const;
+    void addOwnedComment(QComment *ownedComment);
+    void removeOwnedComment(QComment *ownedComment);
+
+    // Attributes from aggregated QMultiplicityElement
+    qint32 upper() const;
+    void setUpper(qint32 upper);
+    bool isUnique() const;
+    void setUnique(bool isUnique);
+    bool isOrdered() const;
+    void setOrdered(bool isOrdered);
+    qint32 lower() const;
+    void setLower(qint32 lower);
+
+    // Association ends from aggregated QMultiplicityElement
+    QValueSpecification *upperValue() const;
+    void setUpperValue(QValueSpecification *upperValue);
+    QValueSpecification *lowerValue() const;
+    void setLowerValue(QValueSpecification *lowerValue);
+
+    // Attributes from aggregated QNamedElement
+    QString name() const;
+    void setName(QString name);
+    QtUml::VisibilityKind visibility() const;
+    void setVisibility(QtUml::VisibilityKind visibility);
+    QString qualifiedName() const;
+
+    // Association ends from aggregated QNamedElement
+    QStringExpression *nameExpression() const;
+    void setNameExpression(QStringExpression *nameExpression);
+    QNamespace *namespace_() const;
+    const QSet<QDependency *> *clientDependencies() const;
+    void addClientDependency(QDependency *clientDependency);
+    void removeClientDependency(QDependency *clientDependency);
+
+    // Association ends from aggregated QTypedElement
+    QType *type() const;
+    void setType(QType *type);
+
+    // Association ends from aggregated QParameterableElement
+    QTemplateParameter *owningTemplateParameter() const;
+    void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
+
+    // Association ends from aggregated QConnectableElement
+    const QList<QConnectorEnd *> *ends() const;
+    QConnectableElementTemplateParameter *templateParameter() const;
+    void setTemplateParameter(QConnectableElementTemplateParameter *templateParameter);
+
+    // Attributes from QParameter
     bool isException() const;
     void setException(bool isException);
     QString default_() const;
@@ -135,7 +184,7 @@ public:
     QtUml::ParameterEffectKind effect() const;
     void setEffect(QtUml::ParameterEffectKind effect);
 
-    // Association-ends
+    // Association ends from QParameter
     QOperation *operation() const;
     void setOperation(QOperation *operation);
     QValueSpecification *defaultValue() const;

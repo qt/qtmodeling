@@ -41,14 +41,15 @@
 #ifndef QTUML_QGENERALIZATIONSET_P_H
 #define QTUML_QGENERALIZATIONSET_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qpackageableelement_p.h"
-#include "qgeneralizationset.h"
+
+#include "QtUml/QGeneralizationSet"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

@@ -41,14 +41,15 @@
 #ifndef QTUML_QCONNECTIONPOINTREFERENCE_P_H
 #define QTUML_QCONNECTIONPOINTREFERENCE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qvertex_p.h"
-#include "qconnectionpointreference.h"
+
+#include "QtUml/QConnectionPointReference"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

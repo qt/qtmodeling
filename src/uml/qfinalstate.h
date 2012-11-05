@@ -56,6 +56,8 @@ class QFinalStatePrivate;
 
 class Q_UML_EXPORT QFinalState : public QState
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QFinalState)
     Q_DECLARE_PRIVATE(QFinalState)
 

@@ -77,6 +77,10 @@ QTypedElement::~QTypedElement()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QTypedElement
+// ---------------------------------------------------------------
+
 /*!
     This information is derived from the return result for this Operation.The type of the TypedElement.
  */
@@ -97,6 +101,8 @@ void QTypedElement::setType(QType *type)
         d->type = type;
     }
 }
+
+#include "moc_qtypedelement.cpp"
 
 QT_END_NAMESPACE_QTUML
 

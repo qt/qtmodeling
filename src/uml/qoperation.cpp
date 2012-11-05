@@ -70,8 +70,12 @@ QOperationPrivate::QOperationPrivate() :
 
 QOperationPrivate::~QOperationPrivate()
 {
-    foreach (QParameter *parameter, *ownedParameters)
-        delete parameter;
+    foreach (QParameter *parameter, *ownedParameters) {
+        QObject *object = parameter;
+        while (object->parent())
+            object = object->parent();
+        delete object;
+    }
     delete ownedParameters;
     delete redefinedOperations;
     delete postconditions;
@@ -106,6 +110,399 @@ QOperation::QOperation(QOperationPrivate &dd, QObject *parent) :
 QOperation::~QOperation()
 {
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QElement
+// ---------------------------------------------------------------
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QElement *> *QOperation::ownedElements() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+}
+
+/*!
+    The Element that owns this element.
+ */
+QElement *QOperation::owner() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->owner();
+}
+
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QComment *> *QOperation::ownedComments() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+}
+
+void QOperation::addOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+}
+
+void QOperation::removeOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QTemplateableElement
+// ---------------------------------------------------------------
+
+/*!
+    The optional template signature specifying the formal template parameters.
+ */
+QTemplateSignature *QOperation::ownedTemplateSignature() const
+{
+    return (qtuml_object_cast<const QTemplateableElement *>(this))->ownedTemplateSignature();
+}
+
+void QOperation::setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature)
+{
+    (qtuml_object_cast<QTemplateableElement *>(this))->setOwnedTemplateSignature(ownedTemplateSignature);
+}
+
+/*!
+    The optional bindings from this element to templates.
+ */
+const QSet<QTemplateBinding *> *QOperation::templateBindings() const
+{
+    return (qtuml_object_cast<const QTemplateableElement *>(this))->templateBindings();
+}
+
+void QOperation::addTemplateBinding(QTemplateBinding *templateBinding)
+{
+    (qtuml_object_cast<QTemplateableElement *>(this))->addTemplateBinding(templateBinding);
+}
+
+void QOperation::removeTemplateBinding(QTemplateBinding *templateBinding)
+{
+    (qtuml_object_cast<QTemplateableElement *>(this))->removeTemplateBinding(templateBinding);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The name of the NamedElement.
+ */
+QString QOperation::name() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+}
+
+void QOperation::setName(QString name)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+}
+
+/*!
+    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
+ */
+QtUml::VisibilityKind QOperation::visibility() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->visibility();
+}
+
+void QOperation::setVisibility(QtUml::VisibilityKind visibility)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setVisibility(visibility);
+}
+
+/*!
+    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
+ */
+QString QOperation::qualifiedName() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The string expression used to define the name of this named element.
+ */
+QStringExpression *QOperation::nameExpression() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+}
+
+void QOperation::setNameExpression(QStringExpression *nameExpression)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+}
+
+/*!
+    Specifies the namespace that owns the NamedElement.
+ */
+QNamespace *QOperation::namespace_() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+}
+
+/*!
+    Indicates the dependencies that reference the client.
+ */
+const QSet<QDependency *> *QOperation::clientDependencies() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+}
+
+void QOperation::addClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+}
+
+void QOperation::removeClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QNamespace
+// ---------------------------------------------------------------
+
+/*!
+    References the PackageImports owned by the Namespace.
+ */
+const QSet<QPackageImport *> *QOperation::packageImports() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->packageImports();
+}
+
+void QOperation::addPackageImport(QPackageImport *packageImport)
+{
+    (qtuml_object_cast<QNamespace *>(this))->addPackageImport(packageImport);
+}
+
+void QOperation::removePackageImport(QPackageImport *packageImport)
+{
+    (qtuml_object_cast<QNamespace *>(this))->removePackageImport(packageImport);
+}
+
+/*!
+    A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
+ */
+const QSet<QNamedElement *> *QOperation::members() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->members();
+}
+
+/*!
+    References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
+ */
+const QSet<QPackageableElement *> *QOperation::importedMembers() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->importedMembers();
+}
+
+/*!
+    References the ElementImports owned by the Namespace.
+ */
+const QSet<QElementImport *> *QOperation::elementImports() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->elementImports();
+}
+
+void QOperation::addElementImport(QElementImport *elementImport)
+{
+    (qtuml_object_cast<QNamespace *>(this))->addElementImport(elementImport);
+}
+
+void QOperation::removeElementImport(QElementImport *elementImport)
+{
+    (qtuml_object_cast<QNamespace *>(this))->removeElementImport(elementImport);
+}
+
+/*!
+    Specifies a set of Constraints owned by this Namespace.
+ */
+const QSet<QConstraint *> *QOperation::ownedRules() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->ownedRules();
+}
+
+void QOperation::addOwnedRule(QConstraint *ownedRule)
+{
+    (qtuml_object_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
+}
+
+void QOperation::removeOwnedRule(QConstraint *ownedRule)
+{
+    (qtuml_object_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
+}
+
+/*!
+    A collection of NamedElements owned by the Namespace.
+ */
+const QSet<QNamedElement *> *QOperation::ownedMembers() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->ownedMembers();
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QRedefinableElement
+// ---------------------------------------------------------------
+
+/*!
+    Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false.
+ */
+bool QOperation::isLeaf() const
+{
+    return (qtuml_object_cast<const QRedefinableElement *>(this))->isLeaf();
+}
+
+void QOperation::setLeaf(bool isLeaf)
+{
+    (qtuml_object_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QRedefinableElement
+// ---------------------------------------------------------------
+
+/*!
+    The redefinable element that is being redefined by this element.
+ */
+const QSet<QRedefinableElement *> *QOperation::redefinedElements() const
+{
+    return (qtuml_object_cast<const QRedefinableElement *>(this))->redefinedElements();
+}
+
+/*!
+    References the contexts that this element may be redefined from.
+ */
+const QSet<QClassifier *> *QOperation::redefinitionContexts() const
+{
+    return (qtuml_object_cast<const QRedefinableElement *>(this))->redefinitionContexts();
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QFeature
+// ---------------------------------------------------------------
+
+/*!
+    Specifies whether this feature characterizes individual instances classified by the classifier (false) or the classifier itself (true).
+ */
+bool QOperation::isStatic() const
+{
+    return (qtuml_object_cast<const QFeature *>(this))->isStatic();
+}
+
+void QOperation::setStatic(bool isStatic)
+{
+    (qtuml_object_cast<QFeature *>(this))->setStatic(isStatic);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QFeature
+// ---------------------------------------------------------------
+
+/*!
+    The Classifiers that have this Feature as a feature.
+ */
+const QSet<QClassifier *> *QOperation::featuringClassifiers() const
+{
+    return (qtuml_object_cast<const QFeature *>(this))->featuringClassifiers();
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QBehavioralFeature
+// ---------------------------------------------------------------
+
+/*!
+    Specifies the semantics of concurrent calls to the same passive instance (i.e., an instance originating from a class with isActive being false). Active instances control access to their own behavioral features.
+ */
+QtUml::CallConcurrencyKind QOperation::concurrency() const
+{
+    return (qtuml_object_cast<const QBehavioralFeature *>(this))->concurrency();
+}
+
+void QOperation::setConcurrency(QtUml::CallConcurrencyKind concurrency)
+{
+    (qtuml_object_cast<QBehavioralFeature *>(this))->setConcurrency(concurrency);
+}
+
+/*!
+    If true, then the behavioral feature does not have an implementation, and one must be supplied by a more specific element. If false, the behavioral feature must have an implementation in the classifier or one must be inherited from a more general element.
+ */
+bool QOperation::isAbstract() const
+{
+    return (qtuml_object_cast<const QBehavioralFeature *>(this))->isAbstract();
+}
+
+void QOperation::setAbstract(bool isAbstract)
+{
+    (qtuml_object_cast<QBehavioralFeature *>(this))->setAbstract(isAbstract);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QBehavioralFeature
+// ---------------------------------------------------------------
+
+/*!
+    The ParameterSets owned by this BehavioralFeature.
+ */
+const QSet<QParameterSet *> *QOperation::ownedParameterSets() const
+{
+    return (qtuml_object_cast<const QBehavioralFeature *>(this))->ownedParameterSets();
+}
+
+void QOperation::addOwnedParameterSet(QParameterSet *ownedParameterSet)
+{
+    (qtuml_object_cast<QBehavioralFeature *>(this))->addOwnedParameterSet(ownedParameterSet);
+}
+
+void QOperation::removeOwnedParameterSet(QParameterSet *ownedParameterSet)
+{
+    (qtuml_object_cast<QBehavioralFeature *>(this))->removeOwnedParameterSet(ownedParameterSet);
+}
+
+/*!
+    A behavioral description that implements the behavioral feature. There may be at most one behavior for a particular pairing of a classifier (as owner of the behavior) and a behavioral feature (as specification of the behavior).
+ */
+const QSet<QBehavior *> *QOperation::methods() const
+{
+    return (qtuml_object_cast<const QBehavioralFeature *>(this))->methods();
+}
+
+void QOperation::addMethod(QBehavior *method)
+{
+    (qtuml_object_cast<QBehavioralFeature *>(this))->addMethod(method);
+}
+
+void QOperation::removeMethod(QBehavior *method)
+{
+    (qtuml_object_cast<QBehavioralFeature *>(this))->removeMethod(method);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QParameterableElement
+// ---------------------------------------------------------------
+
+/*!
+    The formal template parameter that owns this element.
+ */
+QTemplateParameter *QOperation::owningTemplateParameter() const
+{
+    return (qtuml_object_cast<const QParameterableElement *>(this))->owningTemplateParameter();
+}
+
+void QOperation::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
+{
+    (qtuml_object_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QOperation
+// ---------------------------------------------------------------
 
 /*!
     This information is derived from the return result for this Operation.Specifies the lower multiplicity of the return parameter, if present.
@@ -180,6 +577,10 @@ bool QOperation::isOrdered() const
     //return <derived-return>;
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QOperation
+// ---------------------------------------------------------------
+
 /*!
     Specifies the ordered set of formal parameters of this BehavioralFeature.Specifies the parameters owned by this Operation.
  */
@@ -235,13 +636,13 @@ void QOperation::setBodyCondition(QConstraint *bodyCondition)
     Q_D(QOperation);
     if (d->bodyCondition != bodyCondition) {
         // Adjust subsetted property(ies)
-        QNamespace::removeOwnedRule(dynamic_cast<QConstraint *>(d->bodyCondition));
+        (qtuml_object_cast<QNamespace *>(this))->removeOwnedRule(qtuml_object_cast<QConstraint *>(d->bodyCondition));
 
         d->bodyCondition = bodyCondition;
 
         // Adjust subsetted property(ies)
         if (bodyCondition) {
-            QNamespace::addOwnedRule(dynamic_cast<QConstraint *>(bodyCondition));
+            (qtuml_object_cast<QNamespace *>(this))->addOwnedRule(qtuml_object_cast<QConstraint *>(bodyCondition));
         }
     }
 }
@@ -266,7 +667,7 @@ void QOperation::addRedefinedOperation(QOperation *redefinedOperation)
         d->redefinedOperations->insert(redefinedOperation);
 
         // Adjust subsetted property(ies)
-        d->QRedefinableElementPrivate::addRedefinedElement(dynamic_cast<QRedefinableElement *>(redefinedOperation));
+        (qtuml_object_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qtuml_object_cast<QRedefinableElement *>(redefinedOperation));
     }
 }
 
@@ -279,7 +680,7 @@ void QOperation::removeRedefinedOperation(QOperation *redefinedOperation)
         d->redefinedOperations->remove(redefinedOperation);
 
         // Adjust subsetted property(ies)
-        d->QRedefinableElementPrivate::removeRedefinedElement(dynamic_cast<QRedefinableElement *>(redefinedOperation));
+        (qtuml_object_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qtuml_object_cast<QRedefinableElement *>(redefinedOperation));
     }
 }
 
@@ -303,7 +704,7 @@ void QOperation::addPostcondition(QConstraint *postcondition)
         d->postconditions->insert(postcondition);
 
         // Adjust subsetted property(ies)
-        QNamespace::addOwnedRule(dynamic_cast<QConstraint *>(postcondition));
+        (qtuml_object_cast<QNamespace *>(this))->addOwnedRule(qtuml_object_cast<QConstraint *>(postcondition));
     }
 }
 
@@ -316,7 +717,7 @@ void QOperation::removePostcondition(QConstraint *postcondition)
         d->postconditions->remove(postcondition);
 
         // Adjust subsetted property(ies)
-        QNamespace::removeOwnedRule(dynamic_cast<QConstraint *>(postcondition));
+        (qtuml_object_cast<QNamespace *>(this))->removeOwnedRule(qtuml_object_cast<QConstraint *>(postcondition));
     }
 }
 
@@ -342,19 +743,19 @@ void QOperation::setDatatype(QDataType *datatype)
             d->datatype->removeOwnedOperation(this);
 
         // Adjust subsetted property(ies)
-        d->QFeaturePrivate::removeFeaturingClassifier(dynamic_cast<QClassifier *>(d->datatype));
-        d->QRedefinableElementPrivate::removeRedefinitionContext(dynamic_cast<QClassifier *>(d->datatype));
+        (qtuml_object_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qtuml_object_cast<QClassifier *>(d->datatype));
+        (qtuml_object_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qtuml_object_cast<QClassifier *>(d->datatype));
 
         d->datatype = datatype;
 
         // Adjust subsetted property(ies)
         if (datatype) {
-            d->QFeaturePrivate::addFeaturingClassifier(dynamic_cast<QClassifier *>(datatype));
+            (qtuml_object_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qtuml_object_cast<QClassifier *>(datatype));
         }
         if (datatype) {
-            d->QRedefinableElementPrivate::addRedefinitionContext(dynamic_cast<QClassifier *>(datatype));
+            (qtuml_object_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qtuml_object_cast<QClassifier *>(datatype));
         }
-        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(datatype));
+        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(datatype));
 
         // Adjust opposite property
         if (datatype)
@@ -410,19 +811,19 @@ void QOperation::setInterface(QInterface *interface)
             d->interface->removeOwnedOperation(this);
 
         // Adjust subsetted property(ies)
-        d->QFeaturePrivate::removeFeaturingClassifier(dynamic_cast<QClassifier *>(d->interface));
-        d->QRedefinableElementPrivate::removeRedefinitionContext(dynamic_cast<QClassifier *>(d->interface));
+        (qtuml_object_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qtuml_object_cast<QClassifier *>(d->interface));
+        (qtuml_object_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qtuml_object_cast<QClassifier *>(d->interface));
 
         d->interface = interface;
 
         // Adjust subsetted property(ies)
         if (interface) {
-            d->QFeaturePrivate::addFeaturingClassifier(dynamic_cast<QClassifier *>(interface));
+            (qtuml_object_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qtuml_object_cast<QClassifier *>(interface));
         }
         if (interface) {
-            d->QRedefinableElementPrivate::addRedefinitionContext(dynamic_cast<QClassifier *>(interface));
+            (qtuml_object_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qtuml_object_cast<QClassifier *>(interface));
         }
-        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(interface));
+        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(interface));
 
         // Adjust opposite property
         if (interface)
@@ -463,7 +864,7 @@ void QOperation::addPrecondition(QConstraint *precondition)
         d->preconditions->insert(precondition);
 
         // Adjust subsetted property(ies)
-        QNamespace::addOwnedRule(dynamic_cast<QConstraint *>(precondition));
+        (qtuml_object_cast<QNamespace *>(this))->addOwnedRule(qtuml_object_cast<QConstraint *>(precondition));
     }
 }
 
@@ -476,7 +877,7 @@ void QOperation::removePrecondition(QConstraint *precondition)
         d->preconditions->remove(precondition);
 
         // Adjust subsetted property(ies)
-        QNamespace::removeOwnedRule(dynamic_cast<QConstraint *>(precondition));
+        (qtuml_object_cast<QNamespace *>(this))->removeOwnedRule(qtuml_object_cast<QConstraint *>(precondition));
     }
 }
 
@@ -502,19 +903,19 @@ void QOperation::setClass_(QClass *class_)
             d->class_->removeOwnedOperation(this);
 
         // Adjust subsetted property(ies)
-        d->QFeaturePrivate::removeFeaturingClassifier(dynamic_cast<QClassifier *>(d->class_));
-        d->QRedefinableElementPrivate::removeRedefinitionContext(dynamic_cast<QClassifier *>(d->class_));
+        (qtuml_object_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qtuml_object_cast<QClassifier *>(d->class_));
+        (qtuml_object_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qtuml_object_cast<QClassifier *>(d->class_));
 
         d->class_ = class_;
 
         // Adjust subsetted property(ies)
         if (class_) {
-            d->QFeaturePrivate::addFeaturingClassifier(dynamic_cast<QClassifier *>(class_));
+            (qtuml_object_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qtuml_object_cast<QClassifier *>(class_));
         }
         if (class_) {
-            d->QRedefinableElementPrivate::addRedefinitionContext(dynamic_cast<QClassifier *>(class_));
+            (qtuml_object_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qtuml_object_cast<QClassifier *>(class_));
         }
-        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(class_));
+        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(class_));
 
         // Adjust opposite property
         if (class_)

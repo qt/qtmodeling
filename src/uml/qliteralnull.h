@@ -56,6 +56,8 @@ class QLiteralNullPrivate;
 
 class Q_UML_EXPORT QLiteralNull : public QLiteralSpecification
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QLiteralNull)
     Q_DECLARE_PRIVATE(QLiteralNull)
 

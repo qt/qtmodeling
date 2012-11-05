@@ -73,11 +73,11 @@ public:
     explicit QExpression(QObject *parent = 0);
     virtual ~QExpression();
 
-    // Attributes
+    // Attributes from QExpression
     QString symbol() const;
     void setSymbol(QString symbol);
 
-    // Association-ends
+    // Association ends from QExpression
     const QList<QValueSpecification *> *operands() const;
     void addOperand(QValueSpecification *operand);
     void removeOperand(QValueSpecification *operand);

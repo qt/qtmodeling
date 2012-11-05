@@ -68,7 +68,7 @@ public:
     explicit QContinuation(QObject *parent = 0);
     virtual ~QContinuation();
 
-    // Attributes
+    // Attributes from QContinuation
     bool setting() const;
     void setSetting(bool setting);
 

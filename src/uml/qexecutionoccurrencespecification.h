@@ -71,7 +71,7 @@ public:
     explicit QExecutionOccurrenceSpecification(QObject *parent = 0);
     virtual ~QExecutionOccurrenceSpecification();
 
-    // Association-ends
+    // Association ends from QExecutionOccurrenceSpecification
     QExecutionSpecification *execution() const;
     void setExecution(QExecutionSpecification *execution);
 

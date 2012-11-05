@@ -72,7 +72,7 @@ public:
     explicit QInteractionConstraint(QObject *parent = 0);
     virtual ~QInteractionConstraint();
 
-    // Association-ends
+    // Association ends from QInteractionConstraint
     QValueSpecification *maxint() const;
     void setMaxint(QValueSpecification *maxint);
     QValueSpecification *minint() const;

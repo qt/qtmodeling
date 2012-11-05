@@ -74,7 +74,7 @@ public:
     explicit QConsiderIgnoreFragment(QObject *parent = 0);
     virtual ~QConsiderIgnoreFragment();
 
-    // Association-ends
+    // Association ends from QConsiderIgnoreFragment
     const QSet<QNamedElement *> *messages() const;
     void addMessage(QNamedElement *message);
     void removeMessage(QNamedElement *message);

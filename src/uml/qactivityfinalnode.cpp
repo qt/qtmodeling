@@ -42,7 +42,6 @@
 #include "qactivityfinalnode.h"
 #include "qactivityfinalnode_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QActivityFinalNodePrivate::QActivityFinalNodePrivate()

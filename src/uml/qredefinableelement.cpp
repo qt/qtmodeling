@@ -117,6 +117,10 @@ QRedefinableElement::~QRedefinableElement()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QRedefinableElement
+// ---------------------------------------------------------------
+
 /*!
     Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false.
  */
@@ -137,6 +141,10 @@ void QRedefinableElement::setLeaf(bool isLeaf)
         d->isLeaf = isLeaf;
     }
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QRedefinableElement
+// ---------------------------------------------------------------
 
 /*!
     The redefinable element that is being redefined by this element.
@@ -175,6 +183,8 @@ bool QRedefinableElement::isRedefinitionContextValid(const QRedefinableElement *
 {
     qWarning("QRedefinableElement::isRedefinitionContextValid: operation to be implemented");
 }
+
+#include "moc_qredefinableelement.cpp"
 
 QT_END_NAMESPACE_QTUML
 

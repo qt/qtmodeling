@@ -42,7 +42,6 @@
 #include "qinterval.h"
 #include "qinterval_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QIntervalPrivate::QIntervalPrivate() :
@@ -76,6 +75,10 @@ QInterval::QInterval(QIntervalPrivate &dd, QObject *parent) :
 QInterval::~QInterval()
 {
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QInterval
+// ---------------------------------------------------------------
 
 /*!
     Refers to the ValueSpecification denoting the minimum value of the range.

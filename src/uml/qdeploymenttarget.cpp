@@ -79,6 +79,10 @@ QDeploymentTarget::~QDeploymentTarget()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QDeploymentTarget
+// ---------------------------------------------------------------
+
 /*!
     The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget.
  */
@@ -112,8 +116,8 @@ void QDeploymentTarget::addDeployment(QDeployment *deployment)
         d->deployments->insert(deployment);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(deployment));
-        QNamedElement::addClientDependency(dynamic_cast<QDependency *>(deployment));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(deployment));
+        (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(qtuml_object_cast<QDependency *>(deployment));
 
         // Adjust opposite property
         deployment->setLocation(this);
@@ -129,8 +133,8 @@ void QDeploymentTarget::removeDeployment(QDeployment *deployment)
         d->deployments->remove(deployment);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(deployment));
-        QNamedElement::removeClientDependency(dynamic_cast<QDependency *>(deployment));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(deployment));
+        (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(qtuml_object_cast<QDependency *>(deployment));
 
         // Adjust opposite property
         deployment->setLocation(0);
@@ -148,6 +152,8 @@ void QDeploymentTarget::removeClientDependency(QDeployment *deployment)
 {
     removeDeployment(deployment);
 }
+
+#include "moc_qdeploymenttarget.cpp"
 
 QT_END_NAMESPACE_QTUML
 

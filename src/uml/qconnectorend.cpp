@@ -41,6 +41,7 @@
 
 #include "qconnectorend.h"
 #include "qconnectorend_p.h"
+
 #include "qconnectableelement_p.h"
 
 #include <QtUml/QProperty>
@@ -80,6 +81,10 @@ QConnectorEnd::~QConnectorEnd()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QConnectorEnd
+// ---------------------------------------------------------------
+
 /*!
     The connectable element attached at this connector end. When an instance of the containing classifier is created, a link may (depending on the multiplicities) be created to an instance of the classifier that types this connectable element.
  */
@@ -99,13 +104,13 @@ void QConnectorEnd::setRole(QConnectableElement *role)
     if (d->role != role) {
         // Adjust opposite property
         if (d->role)
-            (dynamic_cast<QConnectableElementPrivate *>(d->role->d_ptr))->removeEnd(this);
+            (qtuml_object_cast<QConnectableElementPrivate *>(d->role->d_func()))->removeEnd(this);
 
         d->role = role;
 
         // Adjust opposite property
         if (role)
-            (dynamic_cast<QConnectableElementPrivate *>(role->d_ptr))->addEnd(this);
+            (qtuml_object_cast<QConnectableElementPrivate *>(role->d_func()))->addEnd(this);
     }
 }
 

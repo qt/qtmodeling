@@ -41,14 +41,15 @@
 #ifndef QTUML_QRECLASSIFYOBJECTACTION_P_H
 #define QTUML_QRECLASSIFYOBJECTACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qaction_p.h"
-#include "qreclassifyobjectaction.h"
+
+#include "QtUml/QReclassifyObjectAction"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

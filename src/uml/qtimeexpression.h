@@ -75,7 +75,7 @@ public:
     explicit QTimeExpression(QObject *parent = 0);
     virtual ~QTimeExpression();
 
-    // Association-ends
+    // Association ends from QTimeExpression
     const QSet<QObservation *> *observations() const;
     void addObservation(QObservation *observation);
     void removeObservation(QObservation *observation);

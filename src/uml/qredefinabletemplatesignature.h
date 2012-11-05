@@ -45,6 +45,8 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtUml/QTemplateSignature>
+#include <QtUml/QRedefinableElement>
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,10 +57,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-// Forward decls for aggregated 'base classes'
-class QTemplateSignature;
-class QRedefinableElement;
-
 // Forward decls for function parameters
 class QClassifier;
 class QTemplateParameter;
@@ -68,11 +66,6 @@ class QRedefinableTemplateSignaturePrivate;
 class Q_UML_EXPORT QRedefinableTemplateSignature : public QObject
 {
     Q_OBJECT
-
-    // From QRedefinableTemplateSignature
-    Q_PROPERTY(const QSet<QTemplateParameter *> * inheritedParameters READ inheritedParameters)
-    Q_PROPERTY(QClassifier * classifier READ classifier WRITE setClassifier)
-    Q_PROPERTY(const QSet<QRedefinableTemplateSignature *> * extendedSignatures READ extendedSignatures)
 
     // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
@@ -92,6 +85,11 @@ class Q_UML_EXPORT QRedefinableTemplateSignature : public QObject
     Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
     Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
 
+    // From QRedefinableTemplateSignature
+    Q_PROPERTY(const QSet<QTemplateParameter *> * inheritedParameters READ inheritedParameters)
+    Q_PROPERTY(QClassifier * classifier READ classifier WRITE setClassifier)
+    Q_PROPERTY(const QSet<QRedefinableTemplateSignature *> * extendedSignatures READ extendedSignatures)
+
     Q_DISABLE_COPY(QRedefinableTemplateSignature)
     Q_DECLARE_PRIVATE(QRedefinableTemplateSignature)
 
@@ -99,7 +97,37 @@ public:
     explicit QRedefinableTemplateSignature(QObject *parent = 0);
     virtual ~QRedefinableTemplateSignature();
 
-    // Association-ends
+    // Association ends from aggregated QElement
+    const QSet<QElement *> *ownedElements() const;
+    QElement *owner() const;
+    const QSet<QComment *> *ownedComments() const;
+    void addOwnedComment(QComment *ownedComment);
+    void removeOwnedComment(QComment *ownedComment);
+
+    // Attributes from aggregated QNamedElement
+    QString name() const;
+    void setName(QString name);
+    QtUml::VisibilityKind visibility() const;
+    void setVisibility(QtUml::VisibilityKind visibility);
+    QString qualifiedName() const;
+
+    // Association ends from aggregated QNamedElement
+    QStringExpression *nameExpression() const;
+    void setNameExpression(QStringExpression *nameExpression);
+    QNamespace *namespace_() const;
+    const QSet<QDependency *> *clientDependencies() const;
+    void addClientDependency(QDependency *clientDependency);
+    void removeClientDependency(QDependency *clientDependency);
+
+    // Attributes from aggregated QRedefinableElement
+    bool isLeaf() const;
+    void setLeaf(bool isLeaf);
+
+    // Association ends from aggregated QRedefinableElement
+    const QSet<QRedefinableElement *> *redefinedElements() const;
+    const QSet<QClassifier *> *redefinitionContexts() const;
+
+    // Association ends from QRedefinableTemplateSignature
     const QSet<QTemplateParameter *> *inheritedParameters() const;
     QClassifier *classifier() const;
     void setClassifier(QClassifier *classifier);

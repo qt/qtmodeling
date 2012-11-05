@@ -68,7 +68,7 @@ public:
     explicit QLiteralInteger(QObject *parent = 0);
     virtual ~QLiteralInteger();
 
-    // Attributes
+    // Attributes from QLiteralInteger
     qint32 value() const;
     void setValue(qint32 value);
 

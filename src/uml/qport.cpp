@@ -83,6 +83,10 @@ QPort::~QPort()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QPort
+// ---------------------------------------------------------------
+
 /*!
     Specifies the way that the provided and required interfaces are derived from the Port’s Type. The default value is false.
  */
@@ -145,6 +149,10 @@ void QPort::setService(bool isService)
         d->isService = isService;
     }
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QPort
+// ---------------------------------------------------------------
 
 /*!
     References an optional protocol state machine which describes valid interactions at this interaction point.
@@ -213,7 +221,7 @@ void QPort::addRedefinedPort(QPort *redefinedPort)
         d->redefinedPorts->insert(redefinedPort);
 
         // Adjust subsetted property(ies)
-        QProperty::addRedefinedProperty(dynamic_cast<QProperty *>(redefinedPort));
+        (qtuml_object_cast<QProperty *>(this))->addRedefinedProperty(qtuml_object_cast<QProperty *>(redefinedPort));
     }
 }
 
@@ -226,7 +234,7 @@ void QPort::removeRedefinedPort(QPort *redefinedPort)
         d->redefinedPorts->remove(redefinedPort);
 
         // Adjust subsetted property(ies)
-        QProperty::removeRedefinedProperty(dynamic_cast<QProperty *>(redefinedPort));
+        (qtuml_object_cast<QProperty *>(this))->removeRedefinedProperty(qtuml_object_cast<QProperty *>(redefinedPort));
     }
 }
 

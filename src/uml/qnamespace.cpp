@@ -41,12 +41,14 @@
 
 #include "qnamespace.h"
 #include "qnamespace_p.h"
+
 #include "qnamedelement_p.h"
 
 #include <QtUml/QPackageImport>
 #include <QtUml/QConstraint>
 #include <QtUml/QElementImport>
 #include <QtUml/QPackageableElement>
+#include <QtUml/QPackage>
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -94,12 +96,12 @@ void QNamespacePrivate::addOwnedMember(QNamedElement *ownedMember)
         this->ownedMembers->insert(ownedMember);
 
         // Adjust subsetted property(ies)
-        QNamespacePrivate::addMember(dynamic_cast<QNamedElement *>(ownedMember));
-        QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(ownedMember));
+        (qtuml_object_cast<QNamespacePrivate *>(this))->addMember(qtuml_object_cast<QNamedElement *>(ownedMember));
+        (qtuml_object_cast<QElementPrivate *>(this))->addOwnedElement(qtuml_object_cast<QElement *>(ownedMember));
 
         // Adjust opposite property
         Q_Q(QNamespace);
-        (dynamic_cast<QNamedElementPrivate *>(ownedMember->d_ptr))->setNamespace_(q);
+        (qtuml_object_cast<QNamedElementPrivate *>(ownedMember->d_func()))->setNamespace_(q);
     }
 }
 
@@ -111,12 +113,12 @@ void QNamespacePrivate::removeOwnedMember(QNamedElement *ownedMember)
         this->ownedMembers->remove(ownedMember);
 
         // Adjust subsetted property(ies)
-        QNamespacePrivate::removeMember(dynamic_cast<QNamedElement *>(ownedMember));
-        QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(ownedMember));
+        (qtuml_object_cast<QNamespacePrivate *>(this))->removeMember(qtuml_object_cast<QNamedElement *>(ownedMember));
+        (qtuml_object_cast<QElementPrivate *>(this))->removeOwnedElement(qtuml_object_cast<QElement *>(ownedMember));
 
         // Adjust opposite property
         Q_Q(QNamespace);
-        (dynamic_cast<QNamedElementPrivate *>(ownedMember->d_ptr))->setNamespace_(0);
+        (qtuml_object_cast<QNamedElementPrivate *>(ownedMember->d_func()))->setNamespace_(0);
     }
 }
 
@@ -142,6 +144,10 @@ QNamespace::~QNamespace()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QNamespace
+// ---------------------------------------------------------------
+
 /*!
     References the PackageImports owned by the Namespace.
  */
@@ -162,10 +168,15 @@ void QNamespace::addPackageImport(QPackageImport *packageImport)
         d->packageImports->insert(packageImport);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(packageImport));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(packageImport));
 
         // Adjust opposite property
         packageImport->setImportingNamespace(this);
+
+        // Adjust indirectly subsetted property(ies)
+        // This is because importedMembers is derived (not derivedUnion) and subsets member
+        foreach (QPackageableElement *packageableElement, *packageImport->importedPackage()->packagedElements())
+            d->addMember(qtuml_object_cast<QNamedElement *>(packageableElement));
     }
 }
 
@@ -178,10 +189,15 @@ void QNamespace::removePackageImport(QPackageImport *packageImport)
         d->packageImports->remove(packageImport);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(packageImport));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(packageImport));
 
         // Adjust opposite property
         packageImport->setImportingNamespace(0);
+
+        // Adjust indirectly subsetted property(ies)
+        // This is because importedMembers is derived (not derivedUnion) and subsets member
+        foreach (QPackageableElement *packageableElement, *packageImport->importedPackage()->packagedElements())
+            d->removeMember(qtuml_object_cast<QNamedElement *>(packageableElement));
     }
 }
 
@@ -198,15 +214,20 @@ const QSet<QNamedElement *> *QNamespace::members() const
 
 /*!
     References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
+    It is the caller's responsibility to delete the returned set.
  */
 const QSet<QPackageableElement *> *QNamespace::importedMembers() const
 {
     // This is a read-only derived association end
 
-    qWarning("QNamespace::importedMembers: to be implemented (this is a derived associationend)");
+    Q_D(const QNamespace);
+    QSet<QPackageableElement *> * importedMembers_ = new QSet<QPackageableElement *>;
+    foreach (QElementImport *elementImport, *d->elementImports)
+        importedMembers_->insert(elementImport->importedElement());
+    foreach (QPackageImport *packageImport, *d->packageImports)
+        importedMembers_->unite(*packageImport->importedPackage()->packagedElements());
 
-    //Q_D(const QNamespace);
-    //return <derived-return>;
+    return importedMembers_;
 }
 
 /*!
@@ -229,10 +250,14 @@ void QNamespace::addElementImport(QElementImport *elementImport)
         d->elementImports->insert(elementImport);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(elementImport));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(elementImport));
 
         // Adjust opposite property
         elementImport->setImportingNamespace(this);
+
+        // Adjust indirectly subsetted property(ies)
+        // This is because importedMembers is derived (not derivedUnion) and subsets member
+        d->addMember(qtuml_object_cast<QNamedElement *>(elementImport->importedElement()));
     }
 }
 
@@ -245,10 +270,14 @@ void QNamespace::removeElementImport(QElementImport *elementImport)
         d->elementImports->remove(elementImport);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(elementImport));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(elementImport));
 
         // Adjust opposite property
         elementImport->setImportingNamespace(0);
+
+        // Adjust indirectly subsetted property(ies)
+        // This is because importedMembers is derived (not derivedUnion) and subsets member
+        d->removeMember(qtuml_object_cast<QNamedElement *>(elementImport->importedElement()));
     }
 }
 
@@ -272,7 +301,7 @@ void QNamespace::addOwnedRule(QConstraint *ownedRule)
         d->ownedRules->insert(ownedRule);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(ownedRule));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(ownedRule));
 
         // Adjust opposite property
         ownedRule->setContext(this);
@@ -288,7 +317,7 @@ void QNamespace::removeOwnedRule(QConstraint *ownedRule)
         d->ownedRules->remove(ownedRule);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(ownedRule));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(ownedRule));
 
         // Adjust opposite property
         ownedRule->setContext(0);
@@ -337,6 +366,8 @@ bool QNamespace::membersAreDistinguishable() const
 {
     qWarning("QNamespace::membersAreDistinguishable: operation to be implemented");
 }
+
+#include "moc_qnamespace.cpp"
 
 QT_END_NAMESPACE_QTUML
 

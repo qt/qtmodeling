@@ -91,6 +91,240 @@ QRegion::~QRegion()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QElement
+// ---------------------------------------------------------------
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QElement *> *QRegion::ownedElements() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+}
+
+/*!
+    The Element that owns this element.
+ */
+QElement *QRegion::owner() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->owner();
+}
+
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QComment *> *QRegion::ownedComments() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+}
+
+void QRegion::addOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+}
+
+void QRegion::removeOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The name of the NamedElement.
+ */
+QString QRegion::name() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+}
+
+void QRegion::setName(QString name)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+}
+
+/*!
+    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
+ */
+QtUml::VisibilityKind QRegion::visibility() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->visibility();
+}
+
+void QRegion::setVisibility(QtUml::VisibilityKind visibility)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setVisibility(visibility);
+}
+
+/*!
+    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
+ */
+QString QRegion::qualifiedName() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The string expression used to define the name of this named element.
+ */
+QStringExpression *QRegion::nameExpression() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+}
+
+void QRegion::setNameExpression(QStringExpression *nameExpression)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+}
+
+/*!
+    Specifies the namespace that owns the NamedElement.
+ */
+QNamespace *QRegion::namespace_() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+}
+
+/*!
+    Indicates the dependencies that reference the client.
+ */
+const QSet<QDependency *> *QRegion::clientDependencies() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+}
+
+void QRegion::addClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+}
+
+void QRegion::removeClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QRedefinableElement
+// ---------------------------------------------------------------
+
+/*!
+    Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false.
+ */
+bool QRegion::isLeaf() const
+{
+    return (qtuml_object_cast<const QRedefinableElement *>(this))->isLeaf();
+}
+
+void QRegion::setLeaf(bool isLeaf)
+{
+    (qtuml_object_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QRedefinableElement
+// ---------------------------------------------------------------
+
+/*!
+    The redefinable element that is being redefined by this element.
+ */
+const QSet<QRedefinableElement *> *QRegion::redefinedElements() const
+{
+    return (qtuml_object_cast<const QRedefinableElement *>(this))->redefinedElements();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QNamespace
+// ---------------------------------------------------------------
+
+/*!
+    References the PackageImports owned by the Namespace.
+ */
+const QSet<QPackageImport *> *QRegion::packageImports() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->packageImports();
+}
+
+void QRegion::addPackageImport(QPackageImport *packageImport)
+{
+    (qtuml_object_cast<QNamespace *>(this))->addPackageImport(packageImport);
+}
+
+void QRegion::removePackageImport(QPackageImport *packageImport)
+{
+    (qtuml_object_cast<QNamespace *>(this))->removePackageImport(packageImport);
+}
+
+/*!
+    A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
+ */
+const QSet<QNamedElement *> *QRegion::members() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->members();
+}
+
+/*!
+    References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
+ */
+const QSet<QPackageableElement *> *QRegion::importedMembers() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->importedMembers();
+}
+
+/*!
+    References the ElementImports owned by the Namespace.
+ */
+const QSet<QElementImport *> *QRegion::elementImports() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->elementImports();
+}
+
+void QRegion::addElementImport(QElementImport *elementImport)
+{
+    (qtuml_object_cast<QNamespace *>(this))->addElementImport(elementImport);
+}
+
+void QRegion::removeElementImport(QElementImport *elementImport)
+{
+    (qtuml_object_cast<QNamespace *>(this))->removeElementImport(elementImport);
+}
+
+/*!
+    Specifies a set of Constraints owned by this Namespace.
+ */
+const QSet<QConstraint *> *QRegion::ownedRules() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->ownedRules();
+}
+
+void QRegion::addOwnedRule(QConstraint *ownedRule)
+{
+    (qtuml_object_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
+}
+
+void QRegion::removeOwnedRule(QConstraint *ownedRule)
+{
+    (qtuml_object_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
+}
+
+/*!
+    A collection of NamedElements owned by the Namespace.
+ */
+const QSet<QNamedElement *> *QRegion::ownedMembers() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->ownedMembers();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QRegion
+// ---------------------------------------------------------------
+
 /*!
     The region of which this region is an extension.
  */
@@ -109,13 +343,13 @@ void QRegion::setExtendedRegion(QRegion *extendedRegion)
     Q_D(QRegion);
     if (d->extendedRegion != extendedRegion) {
         // Adjust subsetted property(ies)
-        d->QRedefinableElementPrivate::removeRedefinedElement(dynamic_cast<QRedefinableElement *>(d->extendedRegion));
+        (qtuml_object_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qtuml_object_cast<QRedefinableElement *>(d->extendedRegion));
 
         d->extendedRegion = extendedRegion;
 
         // Adjust subsetted property(ies)
         if (extendedRegion) {
-            d->QRedefinableElementPrivate::addRedefinedElement(dynamic_cast<QRedefinableElement *>(extendedRegion));
+            (qtuml_object_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qtuml_object_cast<QRedefinableElement *>(extendedRegion));
         }
     }
 }
@@ -140,7 +374,7 @@ void QRegion::addTransition(QTransition *transition)
         d->transitions->insert(transition);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(transition));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(transition));
 
         // Adjust opposite property
         transition->setContainer(this);
@@ -156,7 +390,7 @@ void QRegion::removeTransition(QTransition *transition)
         d->transitions->remove(transition);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(transition));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(transition));
 
         // Adjust opposite property
         transition->setContainer(0);
@@ -187,7 +421,7 @@ void QRegion::setStateMachine(QStateMachine *stateMachine)
         d->stateMachine = stateMachine;
 
         // Adjust subsetted property(ies)
-        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(stateMachine));
+        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(stateMachine));
 
         // Adjust opposite property
         if (stateMachine)
@@ -219,7 +453,7 @@ void QRegion::setState(QState *state)
         d->state = state;
 
         // Adjust subsetted property(ies)
-        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(state));
+        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(state));
 
         // Adjust opposite property
         if (state)
@@ -260,7 +494,7 @@ void QRegion::addSubvertex(QVertex *subvertex)
         d->subvertices->insert(subvertex);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(subvertex));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(subvertex));
 
         // Adjust opposite property
         subvertex->setContainer(this);
@@ -276,7 +510,7 @@ void QRegion::removeSubvertex(QVertex *subvertex)
         d->subvertices->remove(subvertex);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(subvertex));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(subvertex));
 
         // Adjust opposite property
         subvertex->setContainer(0);

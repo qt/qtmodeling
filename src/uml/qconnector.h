@@ -84,10 +84,10 @@ public:
     explicit QConnector(QObject *parent = 0);
     virtual ~QConnector();
 
-    // Attributes
+    // Attributes from QConnector
     QtUml::ConnectorKind kind() const;
 
-    // Association-ends
+    // Association ends from QConnector
     const QSet<QConnector *> *redefinedConnectors() const;
     void addRedefinedConnector(QConnector *redefinedConnector);
     void removeRedefinedConnector(QConnector *redefinedConnector);

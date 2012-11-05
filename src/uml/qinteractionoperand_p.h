@@ -41,17 +41,17 @@
 #ifndef QTUML_QINTERACTIONOPERAND_P_H
 #define QTUML_QINTERACTIONOPERAND_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qinteractionfragment_p.h"
 #include "private/qnamespace_p.h"
-#include "qinteractionoperand.h"
+
+#include "QtUml/QInteractionOperand"
 
 // Qt includes
-#include <QtCore/QList>
+#include "QtCore/QList"
 
 QT_BEGIN_HEADER
 
@@ -73,10 +73,6 @@ public:
 
     QList<QInteractionFragment *> *fragments;
     QInteractionConstraint *guard;
-
-private:
-    QInteractionFragmentPrivate *_wrappedInteractionFragmentPrivate;
-    QNamespacePrivate *_wrappedNamespacePrivate;
 };
 
 QT_END_NAMESPACE_QTUML

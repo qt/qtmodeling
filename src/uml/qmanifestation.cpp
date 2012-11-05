@@ -77,6 +77,10 @@ QManifestation::~QManifestation()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QManifestation
+// ---------------------------------------------------------------
+
 /*!
     The model element that is utilized in the manifestation in an Artifact.
  */
@@ -95,13 +99,13 @@ void QManifestation::setUtilizedElement(QPackageableElement *utilizedElement)
     Q_D(QManifestation);
     if (d->utilizedElement != utilizedElement) {
         // Adjust subsetted property(ies)
-        QDependency::removeSupplier(dynamic_cast<QNamedElement *>(d->utilizedElement));
+        (qtuml_object_cast<QDependency *>(this))->removeSupplier(qtuml_object_cast<QNamedElement *>(d->utilizedElement));
 
         d->utilizedElement = utilizedElement;
 
         // Adjust subsetted property(ies)
         if (utilizedElement) {
-            QDependency::addSupplier(dynamic_cast<QNamedElement *>(utilizedElement));
+            (qtuml_object_cast<QDependency *>(this))->addSupplier(qtuml_object_cast<QNamedElement *>(utilizedElement));
         }
     }
 }

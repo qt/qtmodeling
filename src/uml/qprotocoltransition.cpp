@@ -79,6 +79,10 @@ QProtocolTransition::~QProtocolTransition()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QProtocolTransition
+// ---------------------------------------------------------------
+
 /*!
     Specifies the post condition of the transition which is the condition that should be obtained once the transition is triggered. This post condition is part of the post condition of the operation connected to the transition.
  */
@@ -97,13 +101,13 @@ void QProtocolTransition::setPostCondition(QConstraint *postCondition)
     Q_D(QProtocolTransition);
     if (d->postCondition != postCondition) {
         // Adjust subsetted property(ies)
-        QNamespace::removeOwnedRule(dynamic_cast<QConstraint *>(d->postCondition));
+        (qtuml_object_cast<QNamespace *>(this))->removeOwnedRule(qtuml_object_cast<QConstraint *>(d->postCondition));
 
         d->postCondition = postCondition;
 
         // Adjust subsetted property(ies)
         if (postCondition) {
-            QNamespace::addOwnedRule(dynamic_cast<QConstraint *>(postCondition));
+            (qtuml_object_cast<QNamespace *>(this))->addOwnedRule(qtuml_object_cast<QConstraint *>(postCondition));
         }
     }
 }
@@ -141,7 +145,7 @@ void QProtocolTransition::setPreCondition(QConstraint *preCondition)
         d->preCondition = preCondition;
 
         // Adjust subsetted property(ies)
-        QTransition::setGuard(dynamic_cast<QConstraint *>(preCondition));
+        (qtuml_object_cast<QTransition *>(this))->setGuard(qtuml_object_cast<QConstraint *>(preCondition));
     }
 }
 

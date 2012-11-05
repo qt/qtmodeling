@@ -82,6 +82,10 @@ QOpaqueExpression::~QOpaqueExpression()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QOpaqueExpression
+// ---------------------------------------------------------------
+
 /*!
     The text of the expression, possibly in multiple languages.
  */
@@ -143,6 +147,10 @@ void QOpaqueExpression::removeLanguage(QString language)
         d->languages->removeAll(language);
     }
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QOpaqueExpression
+// ---------------------------------------------------------------
 
 /*!
     Specifies the behavior of the opaque expression.

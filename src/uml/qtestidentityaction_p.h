@@ -41,12 +41,12 @@
 #ifndef QTUML_QTESTIDENTITYACTION_P_H
 #define QTUML_QTESTIDENTITYACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qaction_p.h"
-#include "qtestidentityaction.h"
 
+#include "QtUml/QTestIdentityAction"
 
 QT_BEGIN_HEADER
 

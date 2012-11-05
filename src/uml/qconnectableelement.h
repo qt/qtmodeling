@@ -45,6 +45,8 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtUml/QTypedElement>
+#include <QtUml/QParameterableElement>
 
 // Qt includes
 #include <QtCore/QList>
@@ -55,10 +57,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-// Forward decls for aggregated 'base classes'
-class QTypedElement;
-class QParameterableElement;
-
 // Forward decls for function parameters
 class QConnectorEnd;
 class QConnectableElementTemplateParameter;
@@ -68,10 +66,6 @@ class QConnectableElementPrivate;
 class Q_UML_EXPORT QConnectableElement : public QObject
 {
     Q_OBJECT
-
-    // From QConnectableElement
-    Q_PROPERTY(const QList<QConnectorEnd *> * ends READ ends)
-    Q_PROPERTY(QConnectableElementTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
 
     // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
@@ -92,6 +86,10 @@ class Q_UML_EXPORT QConnectableElement : public QObject
     // From aggregated QParameterableElement
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
 
+    // From QConnectableElement
+    Q_PROPERTY(const QList<QConnectorEnd *> * ends READ ends)
+    Q_PROPERTY(QConnectableElementTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
+
     Q_DISABLE_COPY(QConnectableElement)
     Q_DECLARE_PRIVATE(QConnectableElement)
 
@@ -99,10 +97,43 @@ public:
     explicit QConnectableElement(QObject *parent = 0);
     virtual ~QConnectableElement();
 
-    // Association-ends
+    // Association ends from aggregated QElement
+    const QSet<QElement *> *ownedElements() const;
+    QElement *owner() const;
+    const QSet<QComment *> *ownedComments() const;
+    void addOwnedComment(QComment *ownedComment);
+    void removeOwnedComment(QComment *ownedComment);
+
+    // Attributes from aggregated QNamedElement
+    QString name() const;
+    void setName(QString name);
+    QtUml::VisibilityKind visibility() const;
+    void setVisibility(QtUml::VisibilityKind visibility);
+    QString qualifiedName() const;
+
+    // Association ends from aggregated QNamedElement
+    QStringExpression *nameExpression() const;
+    void setNameExpression(QStringExpression *nameExpression);
+    QNamespace *namespace_() const;
+    const QSet<QDependency *> *clientDependencies() const;
+    void addClientDependency(QDependency *clientDependency);
+    void removeClientDependency(QDependency *clientDependency);
+
+    // Association ends from aggregated QTypedElement
+    QType *type() const;
+    void setType(QType *type);
+
+    // Association ends from aggregated QParameterableElement
+    QTemplateParameter *owningTemplateParameter() const;
+    void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
+
+    // Association ends from QConnectableElement
     const QList<QConnectorEnd *> *ends() const;
     QConnectableElementTemplateParameter *templateParameter() const;
     void setTemplateParameter(QConnectableElementTemplateParameter *templateParameter);
+
+    // Classes which access read-only opposite properties should be friend
+    friend class QConnectorEnd;
 
 protected:
     explicit QConnectableElement(QConnectableElementPrivate &dd, QObject *parent = 0);

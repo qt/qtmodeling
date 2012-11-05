@@ -80,6 +80,10 @@ QProfileApplication::~QProfileApplication()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QProfileApplication
+// ---------------------------------------------------------------
+
 /*!
     Specifies that the Profile filtering rules for the metaclasses of the referenced metamodel shall be strictly applied.
  */
@@ -100,6 +104,10 @@ void QProfileApplication::setStrict(bool isStrict)
         d->isStrict = isStrict;
     }
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QProfileApplication
+// ---------------------------------------------------------------
 
 /*!
     The package that owns the profile application.
@@ -123,14 +131,14 @@ void QProfileApplication::setApplyingPackage(QPackage *applyingPackage)
             d->applyingPackage->removeProfileApplication(this);
 
         // Adjust subsetted property(ies)
-        d->QDirectedRelationshipPrivate::removeSource(dynamic_cast<QElement *>(d->applyingPackage));
+        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qtuml_object_cast<QElement *>(d->applyingPackage));
 
         d->applyingPackage = applyingPackage;
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(applyingPackage));
+        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(applyingPackage));
         if (applyingPackage) {
-            d->QDirectedRelationshipPrivate::addSource(dynamic_cast<QElement *>(applyingPackage));
+            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addSource(qtuml_object_cast<QElement *>(applyingPackage));
         }
 
         // Adjust opposite property
@@ -157,13 +165,13 @@ void QProfileApplication::setAppliedProfile(QProfile *appliedProfile)
     Q_D(QProfileApplication);
     if (d->appliedProfile != appliedProfile) {
         // Adjust subsetted property(ies)
-        d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(d->appliedProfile));
+        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qtuml_object_cast<QElement *>(d->appliedProfile));
 
         d->appliedProfile = appliedProfile;
 
         // Adjust subsetted property(ies)
         if (appliedProfile) {
-            d->QDirectedRelationshipPrivate::addTarget(dynamic_cast<QElement *>(appliedProfile));
+            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qtuml_object_cast<QElement *>(appliedProfile));
         }
     }
 }

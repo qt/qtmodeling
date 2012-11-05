@@ -78,13 +78,13 @@ public:
     explicit QGeneralizationSet(QObject *parent = 0);
     virtual ~QGeneralizationSet();
 
-    // Attributes
+    // Attributes from QGeneralizationSet
     bool isCovering() const;
     void setCovering(bool isCovering);
     bool isDisjoint() const;
     void setDisjoint(bool isDisjoint);
 
-    // Association-ends
+    // Association ends from QGeneralizationSet
     QClassifier *powertype() const;
     void setPowertype(QClassifier *powertype);
     const QSet<QGeneralization *> *generalizations() const;

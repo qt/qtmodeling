@@ -80,6 +80,10 @@ QTestIdentityAction::~QTestIdentityAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QTestIdentityAction
+// ---------------------------------------------------------------
+
 /*!
     Gives the pin on which an object is placed.
  */
@@ -98,13 +102,13 @@ void QTestIdentityAction::setSecond(QInputPin *second)
     Q_D(QTestIdentityAction);
     if (d->second != second) {
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->second));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->second));
 
         d->second = second;
 
         // Adjust subsetted property(ies)
         if (second) {
-            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(second));
+            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(second));
         }
     }
 }
@@ -127,13 +131,13 @@ void QTestIdentityAction::setResult(QOutputPin *result)
     Q_D(QTestIdentityAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->result));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            d->QActionPrivate::addOutput(dynamic_cast<QOutputPin *>(result));
+            (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(result));
         }
     }
 }
@@ -156,13 +160,13 @@ void QTestIdentityAction::setFirst(QInputPin *first)
     Q_D(QTestIdentityAction);
     if (d->first != first) {
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->first));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->first));
 
         d->first = first;
 
         // Adjust subsetted property(ies)
         if (first) {
-            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(first));
+            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(first));
         }
     }
 }

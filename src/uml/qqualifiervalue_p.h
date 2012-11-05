@@ -41,12 +41,12 @@
 #ifndef QTUML_QQUALIFIERVALUE_P_H
 #define QTUML_QQUALIFIERVALUE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qelement_p.h"
-#include "qqualifiervalue.h"
 
+#include "QtUml/QQualifierValue"
 
 QT_BEGIN_HEADER
 

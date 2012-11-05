@@ -77,11 +77,11 @@ public:
     explicit QPseudostate(QObject *parent = 0);
     virtual ~QPseudostate();
 
-    // Attributes
+    // Attributes from QPseudostate
     QtUml::PseudostateKind kind() const;
     void setKind(QtUml::PseudostateKind kind);
 
-    // Association-ends
+    // Association ends from QPseudostate
     QState *state() const;
     void setState(QState *state);
     QStateMachine *stateMachine() const;

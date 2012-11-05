@@ -41,12 +41,12 @@
 #ifndef QTUML_QREDUCEACTION_P_H
 #define QTUML_QREDUCEACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qaction_p.h"
-#include "qreduceaction.h"
 
+#include "QtUml/QReduceAction"
 
 QT_BEGIN_HEADER
 

@@ -56,6 +56,8 @@ class QCommunicationPathPrivate;
 
 class Q_UML_EXPORT QCommunicationPath : public QAssociation
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QCommunicationPath)
     Q_DECLARE_PRIVATE(QCommunicationPath)
 

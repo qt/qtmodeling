@@ -88,6 +88,561 @@ QAssociation::~QAssociation()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QElement
+// ---------------------------------------------------------------
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QElement *> *QAssociation::ownedElements() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+}
+
+/*!
+    The Element that owns this element.
+ */
+QElement *QAssociation::owner() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->owner();
+}
+
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QComment *> *QAssociation::ownedComments() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+}
+
+void QAssociation::addOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+}
+
+void QAssociation::removeOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The name of the NamedElement.
+ */
+QString QAssociation::name() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+}
+
+void QAssociation::setName(QString name)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+}
+
+/*!
+    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
+ */
+QString QAssociation::qualifiedName() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The string expression used to define the name of this named element.
+ */
+QStringExpression *QAssociation::nameExpression() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+}
+
+void QAssociation::setNameExpression(QStringExpression *nameExpression)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+}
+
+/*!
+    Specifies the namespace that owns the NamedElement.
+ */
+QNamespace *QAssociation::namespace_() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+}
+
+/*!
+    Indicates the dependencies that reference the client.
+ */
+const QSet<QDependency *> *QAssociation::clientDependencies() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+}
+
+void QAssociation::addClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+}
+
+void QAssociation::removeClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QNamespace
+// ---------------------------------------------------------------
+
+/*!
+    References the PackageImports owned by the Namespace.
+ */
+const QSet<QPackageImport *> *QAssociation::packageImports() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->packageImports();
+}
+
+void QAssociation::addPackageImport(QPackageImport *packageImport)
+{
+    (qtuml_object_cast<QNamespace *>(this))->addPackageImport(packageImport);
+}
+
+void QAssociation::removePackageImport(QPackageImport *packageImport)
+{
+    (qtuml_object_cast<QNamespace *>(this))->removePackageImport(packageImport);
+}
+
+/*!
+    A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
+ */
+const QSet<QNamedElement *> *QAssociation::members() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->members();
+}
+
+/*!
+    References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
+ */
+const QSet<QPackageableElement *> *QAssociation::importedMembers() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->importedMembers();
+}
+
+/*!
+    References the ElementImports owned by the Namespace.
+ */
+const QSet<QElementImport *> *QAssociation::elementImports() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->elementImports();
+}
+
+void QAssociation::addElementImport(QElementImport *elementImport)
+{
+    (qtuml_object_cast<QNamespace *>(this))->addElementImport(elementImport);
+}
+
+void QAssociation::removeElementImport(QElementImport *elementImport)
+{
+    (qtuml_object_cast<QNamespace *>(this))->removeElementImport(elementImport);
+}
+
+/*!
+    Specifies a set of Constraints owned by this Namespace.
+ */
+const QSet<QConstraint *> *QAssociation::ownedRules() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->ownedRules();
+}
+
+void QAssociation::addOwnedRule(QConstraint *ownedRule)
+{
+    (qtuml_object_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
+}
+
+void QAssociation::removeOwnedRule(QConstraint *ownedRule)
+{
+    (qtuml_object_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
+}
+
+/*!
+    A collection of NamedElements owned by the Namespace.
+ */
+const QSet<QNamedElement *> *QAssociation::ownedMembers() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->ownedMembers();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QParameterableElement
+// ---------------------------------------------------------------
+
+/*!
+    The formal template parameter that owns this element.
+ */
+QTemplateParameter *QAssociation::owningTemplateParameter() const
+{
+    return (qtuml_object_cast<const QParameterableElement *>(this))->owningTemplateParameter();
+}
+
+void QAssociation::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
+{
+    (qtuml_object_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QPackageableElement
+// ---------------------------------------------------------------
+
+/*!
+    Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
+ */
+QtUml::VisibilityKind QAssociation::visibility() const
+{
+    return (qtuml_object_cast<const QPackageableElement *>(this))->visibility();
+}
+
+void QAssociation::setVisibility(QtUml::VisibilityKind visibility)
+{
+    (qtuml_object_cast<QPackageableElement *>(this))->setVisibility(visibility);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QType
+// ---------------------------------------------------------------
+
+/*!
+    Specifies the owning package of this classifier, if any.
+ */
+QPackage *QAssociation::package() const
+{
+    return (qtuml_object_cast<const QType *>(this))->package();
+}
+
+void QAssociation::setPackage(QPackage *package)
+{
+    (qtuml_object_cast<QType *>(this))->setPackage(package);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QRedefinableElement
+// ---------------------------------------------------------------
+
+/*!
+    Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false.
+ */
+bool QAssociation::isLeaf() const
+{
+    return (qtuml_object_cast<const QRedefinableElement *>(this))->isLeaf();
+}
+
+void QAssociation::setLeaf(bool isLeaf)
+{
+    (qtuml_object_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QRedefinableElement
+// ---------------------------------------------------------------
+
+/*!
+    The redefinable element that is being redefined by this element.
+ */
+const QSet<QRedefinableElement *> *QAssociation::redefinedElements() const
+{
+    return (qtuml_object_cast<const QRedefinableElement *>(this))->redefinedElements();
+}
+
+/*!
+    References the contexts that this element may be redefined from.
+ */
+const QSet<QClassifier *> *QAssociation::redefinitionContexts() const
+{
+    return (qtuml_object_cast<const QRedefinableElement *>(this))->redefinitionContexts();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QTemplateableElement
+// ---------------------------------------------------------------
+
+/*!
+    The optional bindings from this element to templates.
+ */
+const QSet<QTemplateBinding *> *QAssociation::templateBindings() const
+{
+    return (qtuml_object_cast<const QTemplateableElement *>(this))->templateBindings();
+}
+
+void QAssociation::addTemplateBinding(QTemplateBinding *templateBinding)
+{
+    (qtuml_object_cast<QTemplateableElement *>(this))->addTemplateBinding(templateBinding);
+}
+
+void QAssociation::removeTemplateBinding(QTemplateBinding *templateBinding)
+{
+    (qtuml_object_cast<QTemplateableElement *>(this))->removeTemplateBinding(templateBinding);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QClassifier
+// ---------------------------------------------------------------
+
+/*!
+    If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.
+ */
+bool QAssociation::isAbstract() const
+{
+    return (qtuml_object_cast<const QClassifier *>(this))->isAbstract();
+}
+
+void QAssociation::setAbstract(bool isAbstract)
+{
+    (qtuml_object_cast<QClassifier *>(this))->setAbstract(isAbstract);
+}
+
+/*!
+    If true, the Classifier cannot be specialized by generalization. Note that this property is preserved through package merge operations; that is, the capability to specialize a Classifier (i.e., isFinalSpecialization =false) must be preserved in the resulting Classifier of a package merge operation where a Classifier with isFinalSpecialization =false is merged with a matching Classifier with isFinalSpecialization =true: the resulting Classifier will have isFinalSpecialization =false.
+ */
+bool QAssociation::isFinalSpecialization() const
+{
+    return (qtuml_object_cast<const QClassifier *>(this))->isFinalSpecialization();
+}
+
+void QAssociation::setFinalSpecialization(bool isFinalSpecialization)
+{
+    (qtuml_object_cast<QClassifier *>(this))->setFinalSpecialization(isFinalSpecialization);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QClassifier
+// ---------------------------------------------------------------
+
+/*!
+    References the use cases owned by this classifier.
+ */
+const QSet<QUseCase *> *QAssociation::ownedUseCases() const
+{
+    return (qtuml_object_cast<const QClassifier *>(this))->ownedUseCases();
+}
+
+void QAssociation::addOwnedUseCase(QUseCase *ownedUseCase)
+{
+    (qtuml_object_cast<QClassifier *>(this))->addOwnedUseCase(ownedUseCase);
+}
+
+void QAssociation::removeOwnedUseCase(QUseCase *ownedUseCase)
+{
+    (qtuml_object_cast<QClassifier *>(this))->removeOwnedUseCase(ownedUseCase);
+}
+
+/*!
+    Designates the GeneralizationSet of which the associated Classifier is a power type.
+ */
+const QSet<QGeneralizationSet *> *QAssociation::powertypeExtents() const
+{
+    return (qtuml_object_cast<const QClassifier *>(this))->powertypeExtents();
+}
+
+void QAssociation::addPowertypeExtent(QGeneralizationSet *powertypeExtent)
+{
+    (qtuml_object_cast<QClassifier *>(this))->addPowertypeExtent(powertypeExtent);
+}
+
+void QAssociation::removePowertypeExtent(QGeneralizationSet *powertypeExtent)
+{
+    (qtuml_object_cast<QClassifier *>(this))->removePowertypeExtent(powertypeExtent);
+}
+
+/*!
+    The set of use cases for which this Classifier is the subject.
+ */
+const QSet<QUseCase *> *QAssociation::useCases() const
+{
+    return (qtuml_object_cast<const QClassifier *>(this))->useCases();
+}
+
+void QAssociation::addUseCase(QUseCase *useCase)
+{
+    (qtuml_object_cast<QClassifier *>(this))->addUseCase(useCase);
+}
+
+void QAssociation::removeUseCase(QUseCase *useCase)
+{
+    (qtuml_object_cast<QClassifier *>(this))->removeUseCase(useCase);
+}
+
+/*!
+    The template parameter that exposes this element as a formal parameter.
+ */
+QClassifierTemplateParameter *QAssociation::templateParameter() const
+{
+    return (qtuml_object_cast<const QClassifier *>(this))->templateParameter();
+}
+
+void QAssociation::setTemplateParameter(QClassifierTemplateParameter *templateParameter)
+{
+    (qtuml_object_cast<QClassifier *>(this))->setTemplateParameter(templateParameter);
+}
+
+/*!
+    References the Classifiers that are redefined by this Classifier.
+ */
+const QSet<QClassifier *> *QAssociation::redefinedClassifiers() const
+{
+    return (qtuml_object_cast<const QClassifier *>(this))->redefinedClassifiers();
+}
+
+void QAssociation::addRedefinedClassifier(QClassifier *redefinedClassifier)
+{
+    (qtuml_object_cast<QClassifier *>(this))->addRedefinedClassifier(redefinedClassifier);
+}
+
+void QAssociation::removeRedefinedClassifier(QClassifier *redefinedClassifier)
+{
+    (qtuml_object_cast<QClassifier *>(this))->removeRedefinedClassifier(redefinedClassifier);
+}
+
+/*!
+    The optional template signature specifying the formal template parameters.
+ */
+QRedefinableTemplateSignature *QAssociation::ownedTemplateSignature() const
+{
+    return (qtuml_object_cast<const QClassifier *>(this))->ownedTemplateSignature();
+}
+
+void QAssociation::setOwnedTemplateSignature(QRedefinableTemplateSignature *ownedTemplateSignature)
+{
+    (qtuml_object_cast<QClassifier *>(this))->setOwnedTemplateSignature(ownedTemplateSignature);
+}
+
+/*!
+    References the collaboration uses owned by the classifier.
+ */
+const QSet<QCollaborationUse *> *QAssociation::collaborationUses() const
+{
+    return (qtuml_object_cast<const QClassifier *>(this))->collaborationUses();
+}
+
+void QAssociation::addCollaborationUse(QCollaborationUse *collaborationUse)
+{
+    (qtuml_object_cast<QClassifier *>(this))->addCollaborationUse(collaborationUse);
+}
+
+void QAssociation::removeCollaborationUse(QCollaborationUse *collaborationUse)
+{
+    (qtuml_object_cast<QClassifier *>(this))->removeCollaborationUse(collaborationUse);
+}
+
+/*!
+    Refers to all of the Properties that are direct (i.e. not inherited or imported) attributes of the classifier.
+ */
+const QSet<QProperty *> *QAssociation::attributes() const
+{
+    return (qtuml_object_cast<const QClassifier *>(this))->attributes();
+}
+
+/*!
+    Specifies each feature defined in the classifier.Note that there may be members of the Classifier that are of the type Feature but are not included in this association, e.g. inherited features.
+ */
+const QSet<QFeature *> *QAssociation::features() const
+{
+    return (qtuml_object_cast<const QClassifier *>(this))->features();
+}
+
+/*!
+    Specifies the general Classifiers for this Classifier.References the general classifier in the Generalization relationship.
+ */
+const QSet<QClassifier *> *QAssociation::generals() const
+{
+    return (qtuml_object_cast<const QClassifier *>(this))->generals();
+}
+
+void QAssociation::addGeneral(QClassifier *general)
+{
+    (qtuml_object_cast<QClassifier *>(this))->addGeneral(general);
+}
+
+void QAssociation::removeGeneral(QClassifier *general)
+{
+    (qtuml_object_cast<QClassifier *>(this))->removeGeneral(general);
+}
+
+/*!
+    References a collaboration use which indicates the collaboration that represents this classifier.
+ */
+QCollaborationUse *QAssociation::representation() const
+{
+    return (qtuml_object_cast<const QClassifier *>(this))->representation();
+}
+
+void QAssociation::setRepresentation(QCollaborationUse *representation)
+{
+    (qtuml_object_cast<QClassifier *>(this))->setRepresentation(representation);
+}
+
+/*!
+    Specifies the Generalization relationships for this Classifier. These Generalizations navigaten to more general classifiers in the generalization hierarchy.
+ */
+const QSet<QGeneralization *> *QAssociation::generalizations() const
+{
+    return (qtuml_object_cast<const QClassifier *>(this))->generalizations();
+}
+
+void QAssociation::addGeneralization(QGeneralization *generalization)
+{
+    (qtuml_object_cast<QClassifier *>(this))->addGeneralization(generalization);
+}
+
+void QAssociation::removeGeneralization(QGeneralization *generalization)
+{
+    (qtuml_object_cast<QClassifier *>(this))->removeGeneralization(generalization);
+}
+
+/*!
+    Specifies all elements inherited by this classifier from the general classifiers.
+ */
+const QSet<QNamedElement *> *QAssociation::inheritedMembers() const
+{
+    return (qtuml_object_cast<const QClassifier *>(this))->inheritedMembers();
+}
+
+/*!
+    References the substitutions that are owned by this Classifier.
+ */
+const QSet<QSubstitution *> *QAssociation::substitutions() const
+{
+    return (qtuml_object_cast<const QClassifier *>(this))->substitutions();
+}
+
+void QAssociation::addSubstitution(QSubstitution *substitution)
+{
+    (qtuml_object_cast<QClassifier *>(this))->addSubstitution(substitution);
+}
+
+void QAssociation::removeSubstitution(QSubstitution *substitution)
+{
+    (qtuml_object_cast<QClassifier *>(this))->removeSubstitution(substitution);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QRelationship
+// ---------------------------------------------------------------
+
+/*!
+    Specifies the elements related by the Relationship.
+ */
+const QSet<QElement *> *QAssociation::relatedElements() const
+{
+    return (qtuml_object_cast<const QRelationship *>(this))->relatedElements();
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QAssociation
+// ---------------------------------------------------------------
+
 /*!
     Specifies whether the association is derived from other model elements such as other associations or constraints.
  */
@@ -108,6 +663,10 @@ void QAssociation::setDerived(bool isDerived)
         d->isDerived = isDerived;
     }
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QAssociation
+// ---------------------------------------------------------------
 
 /*!
     References the classifiers that are used as types of the ends of the association.
@@ -142,7 +701,7 @@ void QAssociation::addNavigableOwnedEnd(QProperty *navigableOwnedEnd)
         d->navigableOwnedEnds->insert(navigableOwnedEnd);
 
         // Adjust subsetted property(ies)
-        QAssociation::addOwnedEnd(dynamic_cast<QProperty *>(navigableOwnedEnd));
+        (qtuml_object_cast<QAssociation *>(this))->addOwnedEnd(qtuml_object_cast<QProperty *>(navigableOwnedEnd));
     }
 }
 
@@ -155,7 +714,7 @@ void QAssociation::removeNavigableOwnedEnd(QProperty *navigableOwnedEnd)
         d->navigableOwnedEnds->remove(navigableOwnedEnd);
 
         // Adjust subsetted property(ies)
-        QAssociation::removeOwnedEnd(dynamic_cast<QProperty *>(navigableOwnedEnd));
+        (qtuml_object_cast<QAssociation *>(this))->removeOwnedEnd(qtuml_object_cast<QProperty *>(navigableOwnedEnd));
     }
 }
 
@@ -179,9 +738,9 @@ void QAssociation::addOwnedEnd(QProperty *ownedEnd)
         d->ownedEnds->append(ownedEnd);
 
         // Adjust subsetted property(ies)
-        QAssociation::addMemberEnd(dynamic_cast<QProperty *>(ownedEnd));
-        d->QClassifierPrivate::addFeature(dynamic_cast<QFeature *>(ownedEnd));
-        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(ownedEnd));
+        (qtuml_object_cast<QAssociation *>(this))->addMemberEnd(qtuml_object_cast<QProperty *>(ownedEnd));
+        (qtuml_object_cast<QClassifierPrivate *>(d))->addFeature(qtuml_object_cast<QFeature *>(ownedEnd));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(ownedEnd));
 
         // Adjust opposite property
         ownedEnd->setOwningAssociation(this);
@@ -197,9 +756,9 @@ void QAssociation::removeOwnedEnd(QProperty *ownedEnd)
         d->ownedEnds->removeAll(ownedEnd);
 
         // Adjust subsetted property(ies)
-        QAssociation::removeMemberEnd(dynamic_cast<QProperty *>(ownedEnd));
-        d->QClassifierPrivate::removeFeature(dynamic_cast<QFeature *>(ownedEnd));
-        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(ownedEnd));
+        (qtuml_object_cast<QAssociation *>(this))->removeMemberEnd(qtuml_object_cast<QProperty *>(ownedEnd));
+        (qtuml_object_cast<QClassifierPrivate *>(d))->removeFeature(qtuml_object_cast<QFeature *>(ownedEnd));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(ownedEnd));
 
         // Adjust opposite property
         ownedEnd->setOwningAssociation(0);
@@ -226,7 +785,7 @@ void QAssociation::addMemberEnd(QProperty *memberEnd)
         d->memberEnds->append(memberEnd);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::addMember(dynamic_cast<QNamedElement *>(memberEnd));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addMember(qtuml_object_cast<QNamedElement *>(memberEnd));
 
         // Adjust opposite property
         memberEnd->setAssociation(this);
@@ -242,7 +801,7 @@ void QAssociation::removeMemberEnd(QProperty *memberEnd)
         d->memberEnds->removeAll(memberEnd);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::removeMember(dynamic_cast<QNamedElement *>(memberEnd));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->removeMember(qtuml_object_cast<QNamedElement *>(memberEnd));
 
         // Adjust opposite property
         memberEnd->setAssociation(0);

@@ -73,7 +73,7 @@ public:
     explicit QSendSignalAction(QObject *parent = 0);
     virtual ~QSendSignalAction();
 
-    // Association-ends
+    // Association ends from QSendSignalAction
     QInputPin *target() const;
     void setTarget(QInputPin *target);
     QSignal *signal() const;

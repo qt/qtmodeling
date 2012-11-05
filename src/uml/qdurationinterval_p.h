@@ -41,12 +41,12 @@
 #ifndef QTUML_QDURATIONINTERVAL_P_H
 #define QTUML_QDURATIONINTERVAL_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qinterval_p.h"
-#include "qdurationinterval.h"
 
+#include "QtUml/QDurationInterval"
 
 QT_BEGIN_HEADER
 

@@ -45,6 +45,8 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtUml/QDirectedRelationship>
+#include <QtUml/QPackageableElement>
 
 // Qt includes
 #include <QtCore/QSet>
@@ -54,10 +56,6 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
-
-// Forward decls for aggregated 'base classes'
-class QDirectedRelationship;
-class QPackageableElement;
 
 // Forward decls for function parameters
 class QConnector;
@@ -72,15 +70,6 @@ class QInformationFlowPrivate;
 class Q_UML_EXPORT QInformationFlow : public QObject
 {
     Q_OBJECT
-
-    // From QInformationFlow
-    Q_PROPERTY(const QSet<QNamedElement *> * informationTargets READ informationTargets)
-    Q_PROPERTY(const QSet<QConnector *> * realizingConnectors READ realizingConnectors)
-    Q_PROPERTY(const QSet<QClassifier *> * conveyed READ conveyed)
-    Q_PROPERTY(const QSet<QNamedElement *> * informationSources READ informationSources)
-    Q_PROPERTY(const QSet<QMessage *> * realizingMessages READ realizingMessages)
-    Q_PROPERTY(const QSet<QActivityEdge *> * realizingActivityEdges READ realizingActivityEdges)
-    Q_PROPERTY(const QSet<QRelationship *> * realizations READ realizations)
 
     // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
@@ -108,6 +97,15 @@ class Q_UML_EXPORT QInformationFlow : public QObject
     // From aggregated QPackageableElement
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
+    // From QInformationFlow
+    Q_PROPERTY(const QSet<QNamedElement *> * informationTargets READ informationTargets)
+    Q_PROPERTY(const QSet<QConnector *> * realizingConnectors READ realizingConnectors)
+    Q_PROPERTY(const QSet<QClassifier *> * conveyed READ conveyed)
+    Q_PROPERTY(const QSet<QNamedElement *> * informationSources READ informationSources)
+    Q_PROPERTY(const QSet<QMessage *> * realizingMessages READ realizingMessages)
+    Q_PROPERTY(const QSet<QActivityEdge *> * realizingActivityEdges READ realizingActivityEdges)
+    Q_PROPERTY(const QSet<QRelationship *> * realizations READ realizations)
+
     Q_DISABLE_COPY(QInformationFlow)
     Q_DECLARE_PRIVATE(QInformationFlow)
 
@@ -115,7 +113,44 @@ public:
     explicit QInformationFlow(QObject *parent = 0);
     virtual ~QInformationFlow();
 
-    // Association-ends
+    // Association ends from aggregated QElement
+    const QSet<QElement *> *ownedElements() const;
+    QElement *owner() const;
+    const QSet<QComment *> *ownedComments() const;
+    void addOwnedComment(QComment *ownedComment);
+    void removeOwnedComment(QComment *ownedComment);
+
+    // Association ends from aggregated QRelationship
+    const QSet<QElement *> *relatedElements() const;
+
+    // Association ends from aggregated QDirectedRelationship
+    const QSet<QElement *> *sources() const;
+    const QSet<QElement *> *targets() const;
+
+    // Association ends from aggregated QParameterableElement
+    QTemplateParameter *owningTemplateParameter() const;
+    void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
+    QTemplateParameter *templateParameter() const;
+    void setTemplateParameter(QTemplateParameter *templateParameter);
+
+    // Attributes from aggregated QNamedElement
+    QString name() const;
+    void setName(QString name);
+    QString qualifiedName() const;
+
+    // Association ends from aggregated QNamedElement
+    QStringExpression *nameExpression() const;
+    void setNameExpression(QStringExpression *nameExpression);
+    QNamespace *namespace_() const;
+    const QSet<QDependency *> *clientDependencies() const;
+    void addClientDependency(QDependency *clientDependency);
+    void removeClientDependency(QDependency *clientDependency);
+
+    // Attributes from aggregated QPackageableElement
+    QtUml::VisibilityKind visibility() const;
+    void setVisibility(QtUml::VisibilityKind visibility);
+
+    // Association ends from QInformationFlow
     const QSet<QNamedElement *> *informationTargets() const;
     void addInformationTarget(QNamedElement *informationTarget);
     void removeInformationTarget(QNamedElement *informationTarget);

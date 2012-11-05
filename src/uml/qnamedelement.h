@@ -87,14 +87,14 @@ public:
     explicit QNamedElement(QObject *parent = 0);
     virtual ~QNamedElement();
 
-    // Attributes
+    // Attributes from QNamedElement
     QString name() const;
     void setName(QString name);
     QtUml::VisibilityKind visibility() const;
     void setVisibility(QtUml::VisibilityKind visibility);
     QString qualifiedName() const;
 
-    // Association-ends
+    // Association ends from QNamedElement
     QStringExpression *nameExpression() const;
     void setNameExpression(QStringExpression *nameExpression);
     QNamespace *namespace_() const;
@@ -107,6 +107,9 @@ public:
     const QSet<QPackage *> *allOwningPackages() const;
     bool isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const;
     QString separator() const;
+
+    // Classes which access read-only opposite properties should be friend
+    friend class QNamespacePrivate;
 
 protected:
     explicit QNamedElement(QNamedElementPrivate &dd, QObject *parent = 0);

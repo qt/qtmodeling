@@ -42,7 +42,6 @@
 #include "qfinalnode.h"
 #include "qfinalnode_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QFinalNodePrivate::QFinalNodePrivate()
@@ -74,6 +73,8 @@ QFinalNode::QFinalNode(QFinalNodePrivate &dd, QObject *parent) :
 QFinalNode::~QFinalNode()
 {
 }
+
+#include "moc_qfinalnode.cpp"
 
 QT_END_NAMESPACE_QTUML
 

@@ -76,7 +76,7 @@ public:
     explicit QMultiplicityElement(QObject *parent = 0);
     virtual ~QMultiplicityElement();
 
-    // Attributes
+    // Attributes from QMultiplicityElement
     qint32 upper() const;
     void setUpper(qint32 upper);
     bool isUnique() const;
@@ -86,7 +86,7 @@ public:
     qint32 lower() const;
     void setLower(qint32 lower);
 
-    // Association-ends
+    // Association ends from QMultiplicityElement
     QValueSpecification *upperValue() const;
     void setUpperValue(QValueSpecification *upperValue);
     QValueSpecification *lowerValue() const;

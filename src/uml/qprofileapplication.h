@@ -74,11 +74,11 @@ public:
     explicit QProfileApplication(QObject *parent = 0);
     virtual ~QProfileApplication();
 
-    // Attributes
+    // Attributes from QProfileApplication
     bool isStrict() const;
     void setStrict(bool isStrict);
 
-    // Association-ends
+    // Association ends from QProfileApplication
     QPackage *applyingPackage() const;
     void setApplyingPackage(QPackage *applyingPackage);
     QProfile *appliedProfile() const;

@@ -81,6 +81,10 @@ QTemplateableElement::~QTemplateableElement()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QTemplateableElement
+// ---------------------------------------------------------------
+
 /*!
     The optional template signature specifying the formal template parameters.
  */
@@ -101,13 +105,13 @@ void QTemplateableElement::setOwnedTemplateSignature(QTemplateSignature *ownedTe
         // Adjust opposite property
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->ownedTemplateSignature));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->ownedTemplateSignature));
 
         d->ownedTemplateSignature = ownedTemplateSignature;
 
         // Adjust subsetted property(ies)
         if (ownedTemplateSignature) {
-            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(ownedTemplateSignature));
+            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(ownedTemplateSignature));
         }
 
         // Adjust opposite property
@@ -135,7 +139,7 @@ void QTemplateableElement::addTemplateBinding(QTemplateBinding *templateBinding)
         d->templateBindings->insert(templateBinding);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(templateBinding));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(templateBinding));
 
         // Adjust opposite property
         templateBinding->setBoundElement(this);
@@ -151,7 +155,7 @@ void QTemplateableElement::removeTemplateBinding(QTemplateBinding *templateBindi
         d->templateBindings->remove(templateBinding);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(templateBinding));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(templateBinding));
 
         // Adjust opposite property
         templateBinding->setBoundElement(0);
@@ -173,6 +177,8 @@ const QSet<QParameterableElement *> *QTemplateableElement::parameterableElements
 {
     qWarning("QTemplateableElement::parameterableElements: operation to be implemented");
 }
+
+#include "moc_qtemplateableelement.cpp"
 
 QT_END_NAMESPACE_QTUML
 

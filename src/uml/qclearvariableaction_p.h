@@ -41,12 +41,12 @@
 #ifndef QTUML_QCLEARVARIABLEACTION_P_H
 #define QTUML_QCLEARVARIABLEACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qvariableaction_p.h"
-#include "qclearvariableaction.h"
 
+#include "QtUml/QClearVariableAction"
 
 QT_BEGIN_HEADER
 

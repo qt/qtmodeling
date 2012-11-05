@@ -41,12 +41,12 @@
 #ifndef QTUML_QFLOWFINALNODE_P_H
 #define QTUML_QFLOWFINALNODE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qfinalnode_p.h"
-#include "qflowfinalnode.h"
 
+#include "QtUml/QFlowFinalNode"
 
 QT_BEGIN_HEADER
 

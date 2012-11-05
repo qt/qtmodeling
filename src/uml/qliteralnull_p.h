@@ -41,12 +41,12 @@
 #ifndef QTUML_QLITERALNULL_P_H
 #define QTUML_QLITERALNULL_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qliteralspecification_p.h"
-#include "qliteralnull.h"
 
+#include "QtUml/QLiteralNull"
 
 QT_BEGIN_HEADER
 

@@ -41,6 +41,7 @@
 
 #include "qextension.h"
 #include "qextension_p.h"
+
 #include "qclass_p.h"
 
 #include <QtUml/QClass>
@@ -66,16 +67,16 @@ void QExtensionPrivate::setMetaclass(QClass *metaclass)
     qWarning("QExtension::setMetaclass: to be implemented (this is a derived associationend)");
 
     if (false /* <derived-change-criteria> */) {
-        Q_Q(QExtension)
+        Q_Q(QExtension);
         // Adjust opposite property
-        if (this->metaclass)
-            (dynamic_cast<QClassPrivate *>(this->metaclass->d_ptr))->removeExtension(q);
+        // if (this->metaclass)
+        //     (qtuml_object_cast<QClassPrivate *>(this->metaclass->d_func()))->removeExtension(q);
 
         // <derived-code>
 
         // Adjust opposite property
         if (metaclass)
-            (dynamic_cast<QClassPrivate *>(metaclass->d_ptr))->addExtension(q);
+            (qtuml_object_cast<QClassPrivate *>(metaclass->d_func()))->addExtension(q);
     }
 }
 
@@ -101,6 +102,10 @@ QExtension::~QExtension()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QExtension
+// ---------------------------------------------------------------
+
 /*!
     Indicates whether an instance of the extending stereotype must be created when an instance of the extended class is created. The attribute value is derived from the value of the lower property of the ExtensionEnd referenced by Extension::ownedEnd; a lower value of 1 means that isRequired is true, but otherwise it is false. Since the default value of ExtensionEnd::lower is 0, the default value of isRequired is false.
  */
@@ -113,6 +118,10 @@ bool QExtension::isRequired() const
     //Q_D(const QExtension);
     //return <derived-return>;
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QExtension
+// ---------------------------------------------------------------
 
 /*!
     References the Class that is extended through an Extension. The property is derived from the type of the memberEnd that is not the ownedEnd.

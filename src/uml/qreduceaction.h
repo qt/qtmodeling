@@ -76,11 +76,11 @@ public:
     explicit QReduceAction(QObject *parent = 0);
     virtual ~QReduceAction();
 
-    // Attributes
+    // Attributes from QReduceAction
     bool isOrdered() const;
     void setOrdered(bool isOrdered);
 
-    // Association-ends
+    // Association ends from QReduceAction
     QOutputPin *result() const;
     void setResult(QOutputPin *result);
     QInputPin *collection() const;

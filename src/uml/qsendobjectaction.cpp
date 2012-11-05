@@ -79,6 +79,10 @@ QSendObjectAction::~QSendObjectAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QSendObjectAction
+// ---------------------------------------------------------------
+
 /*!
     The request object, which is transmitted to the target object. The object may be copied in transmission, so identity might not be preserved.
  */
@@ -118,13 +122,13 @@ void QSendObjectAction::setTarget(QInputPin *target)
     Q_D(QSendObjectAction);
     if (d->target != target) {
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->target));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->target));
 
         d->target = target;
 
         // Adjust subsetted property(ies)
         if (target) {
-            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(target));
+            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(target));
         }
     }
 }

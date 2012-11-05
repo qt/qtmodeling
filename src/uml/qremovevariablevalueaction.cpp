@@ -78,6 +78,10 @@ QRemoveVariableValueAction::~QRemoveVariableValueAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QRemoveVariableValueAction
+// ---------------------------------------------------------------
+
 /*!
     Specifies whether to remove duplicates of the value in nonunique variables.
  */
@@ -99,6 +103,10 @@ void QRemoveVariableValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
     }
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QRemoveVariableValueAction
+// ---------------------------------------------------------------
+
 /*!
     Specifies the position of an existing value to remove in ordered nonunique variables. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.
  */
@@ -117,13 +125,13 @@ void QRemoveVariableValueAction::setRemoveAt(QInputPin *removeAt)
     Q_D(QRemoveVariableValueAction);
     if (d->removeAt != removeAt) {
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->removeAt));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->removeAt));
 
         d->removeAt = removeAt;
 
         // Adjust subsetted property(ies)
         if (removeAt) {
-            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(removeAt));
+            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(removeAt));
         }
     }
 }

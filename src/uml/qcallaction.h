@@ -75,11 +75,11 @@ public:
     explicit QCallAction(QObject *parent = 0);
     virtual ~QCallAction();
 
-    // Attributes
+    // Attributes from QCallAction
     bool isSynchronous() const;
     void setSynchronous(bool isSynchronous);
 
-    // Association-ends
+    // Association ends from QCallAction
     const QList<QOutputPin *> *results() const;
     void addResult(QOutputPin *result);
     void removeResult(QOutputPin *result);

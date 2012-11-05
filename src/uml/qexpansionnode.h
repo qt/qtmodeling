@@ -72,7 +72,7 @@ public:
     explicit QExpansionNode(QObject *parent = 0);
     virtual ~QExpansionNode();
 
-    // Association-ends
+    // Association ends from QExpansionNode
     QExpansionRegion *regionAsOutput() const;
     void setRegionAsOutput(QExpansionRegion *regionAsOutput);
     QExpansionRegion *regionAsInput() const;

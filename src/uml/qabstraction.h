@@ -71,7 +71,7 @@ public:
     explicit QAbstraction(QObject *parent = 0);
     virtual ~QAbstraction();
 
-    // Association-ends
+    // Association ends from QAbstraction
     QOpaqueExpression *mapping() const;
     void setMapping(QOpaqueExpression *mapping);
 

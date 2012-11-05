@@ -72,7 +72,7 @@ public:
     explicit QExecutionSpecification(QObject *parent = 0);
     virtual ~QExecutionSpecification();
 
-    // Association-ends
+    // Association ends from QExecutionSpecification
     QOccurrenceSpecification *start() const;
     void setStart(QOccurrenceSpecification *start);
     QOccurrenceSpecification *finish() const;

@@ -77,6 +77,10 @@ QExtensionPoint::~QExtensionPoint()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QExtensionPoint
+// ---------------------------------------------------------------
+
 /*!
     References the use case that owns this extension point.
  */
@@ -101,7 +105,7 @@ void QExtensionPoint::setUseCase(QUseCase *useCase)
         d->useCase = useCase;
 
         // Adjust subsetted property(ies)
-        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(useCase));
+        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(useCase));
 
         // Adjust opposite property
         if (useCase)

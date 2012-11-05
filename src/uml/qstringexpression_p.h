@@ -41,18 +41,18 @@
 #ifndef QTUML_QSTRINGEXPRESSION_P_H
 #define QTUML_QSTRINGEXPRESSION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qexpression_p.h"
 #include "private/qtemplateableelement_p.h"
-#include "qstringexpression.h"
+
+#include "QtUml/QStringExpression"
 
 // Qt includes
-#include <QtCore/QString>
-#include <QtCore/QSet>
+#include "QtCore/QString"
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -73,10 +73,6 @@ public:
 
     QStringExpression *owningExpression;
     QSet<QStringExpression *> *subExpressions;
-
-private:
-    QExpressionPrivate *_wrappedExpressionPrivate;
-    QTemplateableElementPrivate *_wrappedTemplateableElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

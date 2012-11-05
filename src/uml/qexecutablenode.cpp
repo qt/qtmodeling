@@ -78,6 +78,10 @@ QExecutableNode::~QExecutableNode()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QExecutableNode
+// ---------------------------------------------------------------
+
 /*!
     A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.
  */
@@ -98,7 +102,7 @@ void QExecutableNode::addHandler(QExceptionHandler *handler)
         d->handlers->insert(handler);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(handler));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(handler));
 
         // Adjust opposite property
         handler->setProtectedNode(this);
@@ -114,12 +118,14 @@ void QExecutableNode::removeHandler(QExceptionHandler *handler)
         d->handlers->remove(handler);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(handler));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(handler));
 
         // Adjust opposite property
         handler->setProtectedNode(0);
     }
 }
+
+#include "moc_qexecutablenode.cpp"
 
 QT_END_NAMESPACE_QTUML
 

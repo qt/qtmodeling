@@ -78,6 +78,10 @@ QAddVariableValueAction::~QAddVariableValueAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QAddVariableValueAction
+// ---------------------------------------------------------------
+
 /*!
     Specifies whether existing values of the variable should be removed before adding the new value.
  */
@@ -99,6 +103,10 @@ void QAddVariableValueAction::setReplaceAll(bool isReplaceAll)
     }
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QAddVariableValueAction
+// ---------------------------------------------------------------
+
 /*!
     Gives the position at which to insert a new value or move an existing value in ordered variables. The types is UnlimitedINatural, but the value cannot be zero. This pin is omitted for unordered variables.
  */
@@ -117,13 +125,13 @@ void QAddVariableValueAction::setInsertAt(QInputPin *insertAt)
     Q_D(QAddVariableValueAction);
     if (d->insertAt != insertAt) {
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->insertAt));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->insertAt));
 
         d->insertAt = insertAt;
 
         // Adjust subsetted property(ies)
         if (insertAt) {
-            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(insertAt));
+            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(insertAt));
         }
     }
 }

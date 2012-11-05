@@ -82,6 +82,10 @@ QCombinedFragment::~QCombinedFragment()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QCombinedFragment
+// ---------------------------------------------------------------
+
 /*!
     Specifies the operation which defines the semantics of this combination of InteractionFragments.
  */
@@ -103,6 +107,10 @@ void QCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind in
     }
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QCombinedFragment
+// ---------------------------------------------------------------
+
 /*!
     Specifies the gates that form the interface between this CombinedFragment and its surroundings
  */
@@ -123,7 +131,7 @@ void QCombinedFragment::addCfragmentGate(QGate *cfragmentGate)
         d->cfragmentGates->insert(cfragmentGate);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(cfragmentGate));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(cfragmentGate));
     }
 }
 
@@ -136,7 +144,7 @@ void QCombinedFragment::removeCfragmentGate(QGate *cfragmentGate)
         d->cfragmentGates->remove(cfragmentGate);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(cfragmentGate));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(cfragmentGate));
     }
 }
 
@@ -160,7 +168,7 @@ void QCombinedFragment::addOperand(QInteractionOperand *operand)
         d->operands->append(operand);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(operand));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(operand));
     }
 }
 
@@ -173,7 +181,7 @@ void QCombinedFragment::removeOperand(QInteractionOperand *operand)
         d->operands->removeAll(operand);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(operand));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(operand));
     }
 }
 

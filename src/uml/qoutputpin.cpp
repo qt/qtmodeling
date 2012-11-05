@@ -42,7 +42,6 @@
 #include "qoutputpin.h"
 #include "qoutputpin_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QOutputPinPrivate::QOutputPinPrivate()

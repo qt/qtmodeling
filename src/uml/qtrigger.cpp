@@ -80,6 +80,10 @@ QTrigger::~QTrigger()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QTrigger
+// ---------------------------------------------------------------
+
 /*!
     A optional port of the receiver object on which the behavioral feature is invoked.
  */

@@ -78,6 +78,10 @@ QSignal::~QSignal()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QSignal
+// ---------------------------------------------------------------
+
 /*!
     The attributes owned by the signal.
  */
@@ -98,8 +102,8 @@ void QSignal::addOwnedAttribute(QProperty *ownedAttribute)
         d->ownedAttributes->append(ownedAttribute);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(dynamic_cast<QNamedElement *>(ownedAttribute));
-        d->QClassifierPrivate::addAttribute(dynamic_cast<QProperty *>(ownedAttribute));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(ownedAttribute));
+        (qtuml_object_cast<QClassifierPrivate *>(d))->addAttribute(qtuml_object_cast<QProperty *>(ownedAttribute));
     }
 }
 
@@ -112,8 +116,8 @@ void QSignal::removeOwnedAttribute(QProperty *ownedAttribute)
         d->ownedAttributes->removeAll(ownedAttribute);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(ownedAttribute));
-        d->QClassifierPrivate::removeAttribute(dynamic_cast<QProperty *>(ownedAttribute));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(ownedAttribute));
+        (qtuml_object_cast<QClassifierPrivate *>(d))->removeAttribute(qtuml_object_cast<QProperty *>(ownedAttribute));
     }
 }
 

@@ -71,7 +71,7 @@ public:
     explicit QReadSelfAction(QObject *parent = 0);
     virtual ~QReadSelfAction();
 
-    // Association-ends
+    // Association ends from QReadSelfAction
     QOutputPin *result() const;
     void setResult(QOutputPin *result);
 

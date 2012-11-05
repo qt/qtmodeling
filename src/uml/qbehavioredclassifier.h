@@ -77,7 +77,7 @@ public:
     explicit QBehavioredClassifier(QObject *parent = 0);
     virtual ~QBehavioredClassifier();
 
-    // Association-ends
+    // Association ends from QBehavioredClassifier
     const QSet<QBehavior *> *ownedBehaviors() const;
     void addOwnedBehavior(QBehavior *ownedBehavior);
     void removeOwnedBehavior(QBehavior *ownedBehavior);

@@ -42,7 +42,6 @@
 #include "qnode.h"
 #include "qnode_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QNodePrivate::QNodePrivate() :
@@ -81,6 +80,159 @@ QNode::~QNode()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QElement
+// ---------------------------------------------------------------
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QElement *> *QNode::ownedElements() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+}
+
+/*!
+    The Element that owns this element.
+ */
+QElement *QNode::owner() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->owner();
+}
+
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QComment *> *QNode::ownedComments() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+}
+
+void QNode::addOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+}
+
+void QNode::removeOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The name of the NamedElement.
+ */
+QString QNode::name() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+}
+
+void QNode::setName(QString name)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+}
+
+/*!
+    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
+ */
+QtUml::VisibilityKind QNode::visibility() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->visibility();
+}
+
+void QNode::setVisibility(QtUml::VisibilityKind visibility)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setVisibility(visibility);
+}
+
+/*!
+    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
+ */
+QString QNode::qualifiedName() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The string expression used to define the name of this named element.
+ */
+QStringExpression *QNode::nameExpression() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+}
+
+void QNode::setNameExpression(QStringExpression *nameExpression)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+}
+
+/*!
+    Specifies the namespace that owns the NamedElement.
+ */
+QNamespace *QNode::namespace_() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+}
+
+/*!
+    Indicates the dependencies that reference the client.
+ */
+const QSet<QDependency *> *QNode::clientDependencies() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+}
+
+void QNode::addClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+}
+
+void QNode::removeClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QDeploymentTarget
+// ---------------------------------------------------------------
+
+/*!
+    The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget.
+ */
+const QSet<QPackageableElement *> *QNode::deployedElements() const
+{
+    return (qtuml_object_cast<const QDeploymentTarget *>(this))->deployedElements();
+}
+
+/*!
+    The set of Deployments for a DeploymentTarget.
+ */
+const QSet<QDeployment *> *QNode::deployments() const
+{
+    return (qtuml_object_cast<const QDeploymentTarget *>(this))->deployments();
+}
+
+void QNode::addDeployment(QDeployment *deployment)
+{
+    (qtuml_object_cast<QDeploymentTarget *>(this))->addDeployment(deployment);
+}
+
+void QNode::removeDeployment(QDeployment *deployment)
+{
+    (qtuml_object_cast<QDeploymentTarget *>(this))->removeDeployment(deployment);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QNode
+// ---------------------------------------------------------------
+
 /*!
     The Nodes that are defined (nested) within the Node.
  */
@@ -101,7 +253,7 @@ void QNode::addNestedNode(QNode *nestedNode)
         d->nestedNodes->insert(nestedNode);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(nestedNode));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(nestedNode));
     }
 }
 
@@ -114,7 +266,7 @@ void QNode::removeNestedNode(QNode *nestedNode)
         d->nestedNodes->remove(nestedNode);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(nestedNode));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(nestedNode));
     }
 }
 

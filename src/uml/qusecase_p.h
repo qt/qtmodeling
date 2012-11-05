@@ -41,14 +41,15 @@
 #ifndef QTUML_QUSECASE_P_H
 #define QTUML_QUSECASE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qbehavioredclassifier_p.h"
-#include "qusecase.h"
+
+#include "QtUml/QUseCase"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

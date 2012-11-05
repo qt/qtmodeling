@@ -76,11 +76,11 @@ public:
     explicit QReadIsClassifiedObjectAction(QObject *parent = 0);
     virtual ~QReadIsClassifiedObjectAction();
 
-    // Attributes
+    // Attributes from QReadIsClassifiedObjectAction
     bool isDirect() const;
     void setDirect(bool isDirect);
 
-    // Association-ends
+    // Association ends from QReadIsClassifiedObjectAction
     QOutputPin *result() const;
     void setResult(QOutputPin *result);
     QInputPin *object() const;

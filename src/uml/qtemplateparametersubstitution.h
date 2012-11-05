@@ -76,7 +76,7 @@ public:
     explicit QTemplateParameterSubstitution(QObject *parent = 0);
     virtual ~QTemplateParameterSubstitution();
 
-    // Association-ends
+    // Association ends from QTemplateParameterSubstitution
     QParameterableElement *ownedActual() const;
     void setOwnedActual(QParameterableElement *ownedActual);
     QTemplateParameter *formal() const;

@@ -53,8 +53,12 @@ QCreateLinkActionPrivate::QCreateLinkActionPrivate() :
 
 QCreateLinkActionPrivate::~QCreateLinkActionPrivate()
 {
-    foreach (QLinkEndCreationData *linkendcreationdata, *endData)
-        delete linkendcreationdata;
+    foreach (QLinkEndCreationData *linkendcreationdata, *endData) {
+        QObject *object = linkendcreationdata;
+        while (object->parent())
+            object = object->parent();
+        delete object;
+    }
     delete endData;
 }
 
@@ -79,6 +83,10 @@ QCreateLinkAction::QCreateLinkAction(QCreateLinkActionPrivate &dd, QObject *pare
 QCreateLinkAction::~QCreateLinkAction()
 {
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QCreateLinkAction
+// ---------------------------------------------------------------
 
 /*!
     Specifies ends of association and inputs.

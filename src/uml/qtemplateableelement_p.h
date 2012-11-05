@@ -41,14 +41,15 @@
 #ifndef QTUML_QTEMPLATEABLEELEMENT_P_H
 #define QTUML_QTEMPLATEABLEELEMENT_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qelement_p.h"
-#include "qtemplateableelement.h"
+
+#include "QtUml/QTemplateableElement"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

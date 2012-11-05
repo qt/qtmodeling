@@ -41,12 +41,12 @@
 #ifndef QTUML_QLITERALREAL_P_H
 #define QTUML_QLITERALREAL_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qliteralspecification_p.h"
-#include "qliteralreal.h"
 
+#include "QtUml/QLiteralReal"
 
 QT_BEGIN_HEADER
 

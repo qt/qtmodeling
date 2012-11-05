@@ -42,7 +42,6 @@
 #include "qliteralreal.h"
 #include "qliteralreal_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QLiteralRealPrivate::QLiteralRealPrivate()
@@ -74,6 +73,10 @@ QLiteralReal::QLiteralReal(QLiteralRealPrivate &dd, QObject *parent) :
 QLiteralReal::~QLiteralReal()
 {
 }
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QLiteralReal
+// ---------------------------------------------------------------
 
 qreal QLiteralReal::value() const
 {

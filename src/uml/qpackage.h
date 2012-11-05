@@ -45,6 +45,9 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtUml/QNamespace>
+#include <QtUml/QPackageableElement>
+#include <QtUml/QTemplateableElement>
 
 // Qt includes
 #include <QtCore/QString>
@@ -55,11 +58,6 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
-
-// Forward decls for aggregated 'base classes'
-class QNamespace;
-class QPackageableElement;
-class QTemplateableElement;
 
 // Forward decls for function parameters
 class QProfile;
@@ -74,16 +72,6 @@ class QPackagePrivate;
 class Q_UML_EXPORT QPackage : public QObject
 {
     Q_OBJECT
-
-    // From QPackage
-    Q_PROPERTY(QString URI READ URI WRITE setURI)
-    Q_PROPERTY(const QSet<QType *> * ownedTypes READ ownedTypes)
-    Q_PROPERTY(const QSet<QPackageableElement *> * packagedElements READ packagedElements)
-    Q_PROPERTY(QPackage * nestingPackage READ nestingPackage WRITE setNestingPackage)
-    Q_PROPERTY(const QSet<QProfileApplication *> * profileApplications READ profileApplications)
-    Q_PROPERTY(const QSet<QStereotype *> * ownedStereotypes READ ownedStereotypes)
-    Q_PROPERTY(const QSet<QPackageMerge *> * packageMerges READ packageMerges)
-    Q_PROPERTY(const QSet<QPackage *> * nestedPackages READ nestedPackages)
 
     // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
@@ -116,6 +104,16 @@ class Q_UML_EXPORT QPackage : public QObject
     Q_PROPERTY(QTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
     Q_PROPERTY(const QSet<QTemplateBinding *> * templateBindings READ templateBindings)
 
+    // From QPackage
+    Q_PROPERTY(QString URI READ URI WRITE setURI)
+    Q_PROPERTY(const QSet<QType *> * ownedTypes READ ownedTypes)
+    Q_PROPERTY(const QSet<QPackageableElement *> * packagedElements READ packagedElements)
+    Q_PROPERTY(QPackage * nestingPackage READ nestingPackage WRITE setNestingPackage)
+    Q_PROPERTY(const QSet<QProfileApplication *> * profileApplications READ profileApplications)
+    Q_PROPERTY(const QSet<QStereotype *> * ownedStereotypes READ ownedStereotypes)
+    Q_PROPERTY(const QSet<QPackageMerge *> * packageMerges READ packageMerges)
+    Q_PROPERTY(const QSet<QPackage *> * nestedPackages READ nestedPackages)
+
     Q_DISABLE_COPY(QPackage)
     Q_DECLARE_PRIVATE(QPackage)
 
@@ -123,11 +121,62 @@ public:
     explicit QPackage(QObject *parent = 0);
     virtual ~QPackage();
 
-    // Attributes
+    // Association ends from aggregated QElement
+    const QSet<QElement *> *ownedElements() const;
+    QElement *owner() const;
+    const QSet<QComment *> *ownedComments() const;
+    void addOwnedComment(QComment *ownedComment);
+    void removeOwnedComment(QComment *ownedComment);
+
+    // Attributes from aggregated QNamedElement
+    QString name() const;
+    void setName(QString name);
+    QString qualifiedName() const;
+
+    // Association ends from aggregated QNamedElement
+    QStringExpression *nameExpression() const;
+    void setNameExpression(QStringExpression *nameExpression);
+    QNamespace *namespace_() const;
+    const QSet<QDependency *> *clientDependencies() const;
+    void addClientDependency(QDependency *clientDependency);
+    void removeClientDependency(QDependency *clientDependency);
+
+    // Association ends from aggregated QNamespace
+    const QSet<QPackageImport *> *packageImports() const;
+    void addPackageImport(QPackageImport *packageImport);
+    void removePackageImport(QPackageImport *packageImport);
+    const QSet<QNamedElement *> *members() const;
+    const QSet<QPackageableElement *> *importedMembers() const;
+    const QSet<QElementImport *> *elementImports() const;
+    void addElementImport(QElementImport *elementImport);
+    void removeElementImport(QElementImport *elementImport);
+    const QSet<QConstraint *> *ownedRules() const;
+    void addOwnedRule(QConstraint *ownedRule);
+    void removeOwnedRule(QConstraint *ownedRule);
+    const QSet<QNamedElement *> *ownedMembers() const;
+
+    // Association ends from aggregated QParameterableElement
+    QTemplateParameter *owningTemplateParameter() const;
+    void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
+    QTemplateParameter *templateParameter() const;
+    void setTemplateParameter(QTemplateParameter *templateParameter);
+
+    // Attributes from aggregated QPackageableElement
+    QtUml::VisibilityKind visibility() const;
+    void setVisibility(QtUml::VisibilityKind visibility);
+
+    // Association ends from aggregated QTemplateableElement
+    QTemplateSignature *ownedTemplateSignature() const;
+    void setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature);
+    const QSet<QTemplateBinding *> *templateBindings() const;
+    void addTemplateBinding(QTemplateBinding *templateBinding);
+    void removeTemplateBinding(QTemplateBinding *templateBinding);
+
+    // Attributes from QPackage
     QString URI() const;
     void setURI(QString URI);
 
-    // Association-ends
+    // Association ends from QPackage
     const QSet<QType *> *ownedTypes() const;
     void addOwnedType(QType *ownedType);
     void removeOwnedType(QType *ownedType);

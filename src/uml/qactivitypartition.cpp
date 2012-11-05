@@ -88,6 +88,10 @@ QActivityPartition::~QActivityPartition()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QActivityPartition
+// ---------------------------------------------------------------
+
 /*!
     Tells whether the partition groups other partitions along a dimension.
  */
@@ -130,6 +134,10 @@ void QActivityPartition::setExternal(bool isExternal)
     }
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QActivityPartition
+// ---------------------------------------------------------------
+
 /*!
     An element constraining behaviors invoked by nodes in the partition.
  */
@@ -171,7 +179,7 @@ void QActivityPartition::addSubpartition(QActivityPartition *subpartition)
         d->subpartitions->insert(subpartition);
 
         // Adjust subsetted property(ies)
-        d->QActivityGroupPrivate::addSubgroup(dynamic_cast<QActivityGroup *>(subpartition));
+        (qtuml_object_cast<QActivityGroupPrivate *>(d))->addSubgroup(qtuml_object_cast<QActivityGroup *>(subpartition));
 
         // Adjust opposite property
         subpartition->setSuperPartition(this);
@@ -187,7 +195,7 @@ void QActivityPartition::removeSubpartition(QActivityPartition *subpartition)
         d->subpartitions->remove(subpartition);
 
         // Adjust subsetted property(ies)
-        d->QActivityGroupPrivate::removeSubgroup(dynamic_cast<QActivityGroup *>(subpartition));
+        (qtuml_object_cast<QActivityGroupPrivate *>(d))->removeSubgroup(qtuml_object_cast<QActivityGroup *>(subpartition));
 
         // Adjust opposite property
         subpartition->setSuperPartition(0);
@@ -218,7 +226,7 @@ void QActivityPartition::setSuperPartition(QActivityPartition *superPartition)
         d->superPartition = superPartition;
 
         // Adjust subsetted property(ies)
-        d->QActivityGroupPrivate::setSuperGroup(dynamic_cast<QActivityGroup *>(superPartition));
+        (qtuml_object_cast<QActivityGroupPrivate *>(d))->setSuperGroup(qtuml_object_cast<QActivityGroup *>(superPartition));
 
         // Adjust opposite property
         if (superPartition)
@@ -246,7 +254,7 @@ void QActivityPartition::addNode(QActivityNode *node)
         d->nodes->insert(node);
 
         // Adjust subsetted property(ies)
-        d->QActivityGroupPrivate::addContainedNode(dynamic_cast<QActivityNode *>(node));
+        (qtuml_object_cast<QActivityGroupPrivate *>(d))->addContainedNode(qtuml_object_cast<QActivityNode *>(node));
 
         // Adjust opposite property
         node->addInPartition(this);
@@ -262,7 +270,7 @@ void QActivityPartition::removeNode(QActivityNode *node)
         d->nodes->remove(node);
 
         // Adjust subsetted property(ies)
-        d->QActivityGroupPrivate::removeContainedNode(dynamic_cast<QActivityNode *>(node));
+        (qtuml_object_cast<QActivityGroupPrivate *>(d))->removeContainedNode(qtuml_object_cast<QActivityNode *>(node));
 
         // Adjust opposite property
         if (node)
@@ -290,7 +298,7 @@ void QActivityPartition::addEdge(QActivityEdge *edge)
         d->edges->insert(edge);
 
         // Adjust subsetted property(ies)
-        d->QActivityGroupPrivate::addContainedEdge(dynamic_cast<QActivityEdge *>(edge));
+        (qtuml_object_cast<QActivityGroupPrivate *>(d))->addContainedEdge(qtuml_object_cast<QActivityEdge *>(edge));
 
         // Adjust opposite property
         edge->addInPartition(this);
@@ -306,7 +314,7 @@ void QActivityPartition::removeEdge(QActivityEdge *edge)
         d->edges->remove(edge);
 
         // Adjust subsetted property(ies)
-        d->QActivityGroupPrivate::removeContainedEdge(dynamic_cast<QActivityEdge *>(edge));
+        (qtuml_object_cast<QActivityGroupPrivate *>(d))->removeContainedEdge(qtuml_object_cast<QActivityEdge *>(edge));
 
         // Adjust opposite property
         if (edge)

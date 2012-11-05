@@ -41,12 +41,12 @@
 #ifndef QTUML_QCOMMUNICATIONPATH_P_H
 #define QTUML_QCOMMUNICATIONPATH_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qassociation_p.h"
-#include "qcommunicationpath.h"
 
+#include "QtUml/QCommunicationPath"
 
 QT_BEGIN_HEADER
 

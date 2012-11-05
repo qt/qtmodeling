@@ -74,7 +74,7 @@ public:
     explicit QDestroyLinkAction(QObject *parent = 0);
     virtual ~QDestroyLinkAction();
 
-    // Association-ends
+    // Association ends from QDestroyLinkAction
     const QSet<QLinkEndDestructionData *> *endData() const;
     void addEndData(QLinkEndDestructionData *endData);
     void removeEndData(QLinkEndDestructionData *endData);

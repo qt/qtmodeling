@@ -82,6 +82,10 @@ QOccurrenceSpecification::~QOccurrenceSpecification()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QOccurrenceSpecification
+// ---------------------------------------------------------------
+
 /*!
     References the Lifeline on which the OccurrenceSpecification appears.
  */

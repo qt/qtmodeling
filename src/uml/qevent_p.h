@@ -41,12 +41,12 @@
 #ifndef QTUML_QEVENT_P_H
 #define QTUML_QEVENT_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qpackageableelement_p.h"
-#include "qevent.h"
 
+#include "QtUml/QEvent"
 
 QT_BEGIN_HEADER
 

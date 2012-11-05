@@ -72,11 +72,11 @@ public:
     explicit QExtensionEnd(QObject *parent = 0);
     virtual ~QExtensionEnd();
 
-    // Attributes
+    // Attributes from QExtensionEnd
     qint32 lower() const;
     void setLower(qint32 lower);
 
-    // Association-ends
+    // Association ends from QExtensionEnd
     QStereotype *type() const;
     void setType(QStereotype *type);
 

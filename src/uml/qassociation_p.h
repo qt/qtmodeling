@@ -41,18 +41,18 @@
 #ifndef QTUML_QASSOCIATION_P_H
 #define QTUML_QASSOCIATION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qclassifier_p.h"
 #include "private/qrelationship_p.h"
-#include "qassociation.h"
+
+#include "QtUml/QAssociation"
 
 // Qt includes
-#include <QtCore/QList>
-#include <QtCore/QSet>
+#include "QtCore/QList"
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -77,10 +77,6 @@ public:
     QSet<QProperty *> *navigableOwnedEnds;
     QList<QProperty *> *ownedEnds;
     QList<QProperty *> *memberEnds;
-
-private:
-    QClassifierPrivate *_wrappedClassifierPrivate;
-    QRelationshipPrivate *_wrappedRelationshipPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

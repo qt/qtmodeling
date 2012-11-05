@@ -41,12 +41,12 @@
 #ifndef QTUML_QVALUESPECIFICATIONACTION_P_H
 #define QTUML_QVALUESPECIFICATIONACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qaction_p.h"
-#include "qvaluespecificationaction.h"
 
+#include "QtUml/QValueSpecificationAction"
 
 QT_BEGIN_HEADER
 

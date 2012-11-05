@@ -78,6 +78,10 @@ QParameterableElement::~QParameterableElement()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QParameterableElement
+// ---------------------------------------------------------------
+
 /*!
     The formal template parameter that owns this element.
  */
@@ -100,8 +104,8 @@ void QParameterableElement::setOwningTemplateParameter(QTemplateParameter *ownin
         d->owningTemplateParameter = owningTemplateParameter;
 
         // Adjust subsetted property(ies)
-        QParameterableElement::setTemplateParameter(dynamic_cast<QTemplateParameter *>(owningTemplateParameter));
-        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(owningTemplateParameter));
+        (qtuml_object_cast<QParameterableElement *>(this))->setTemplateParameter(qtuml_object_cast<QTemplateParameter *>(owningTemplateParameter));
+        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(owningTemplateParameter));
 
         // Adjust opposite property
         owningTemplateParameter->setOwnedParameteredElement(this);
@@ -149,6 +153,8 @@ bool QParameterableElement::isTemplateParameter() const
 {
     qWarning("QParameterableElement::isTemplateParameter: operation to be implemented");
 }
+
+#include "moc_qparameterableelement.cpp"
 
 QT_END_NAMESPACE_QTUML
 

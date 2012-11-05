@@ -82,6 +82,10 @@ QTemplateSignature::~QTemplateSignature()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QTemplateSignature
+// ---------------------------------------------------------------
+
 /*!
     The ordered set of all formal template parameters for this template signature.
  */
@@ -135,7 +139,7 @@ void QTemplateSignature::setTemplate_(QTemplateableElement *template_)
         d->template_ = template_;
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(template_));
+        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(template_));
 
         // Adjust opposite property
         template_->setOwnedTemplateSignature(this);
@@ -162,8 +166,8 @@ void QTemplateSignature::addOwnedParameter(QTemplateParameter *ownedParameter)
         d->ownedParameters->append(ownedParameter);
 
         // Adjust subsetted property(ies)
-        QTemplateSignature::addParameter(dynamic_cast<QTemplateParameter *>(ownedParameter));
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(ownedParameter));
+        (qtuml_object_cast<QTemplateSignature *>(this))->addParameter(qtuml_object_cast<QTemplateParameter *>(ownedParameter));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(ownedParameter));
 
         // Adjust opposite property
         ownedParameter->setSignature(this);
@@ -179,8 +183,8 @@ void QTemplateSignature::removeOwnedParameter(QTemplateParameter *ownedParameter
         d->ownedParameters->removeAll(ownedParameter);
 
         // Adjust subsetted property(ies)
-        QTemplateSignature::removeParameter(dynamic_cast<QTemplateParameter *>(ownedParameter));
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(ownedParameter));
+        (qtuml_object_cast<QTemplateSignature *>(this))->removeParameter(qtuml_object_cast<QTemplateParameter *>(ownedParameter));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(ownedParameter));
 
         // Adjust opposite property
         ownedParameter->setSignature(0);

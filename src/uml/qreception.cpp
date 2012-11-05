@@ -77,6 +77,10 @@ QReception::~QReception()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QReception
+// ---------------------------------------------------------------
+
 /*!
     The signal that this reception handles.
  */

@@ -42,7 +42,6 @@
 #include "qevent.h"
 #include "qevent_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QEventPrivate::QEventPrivate()
@@ -74,6 +73,8 @@ QEvent::QEvent(QEventPrivate &dd, QObject *parent) :
 QEvent::~QEvent()
 {
 }
+
+#include "moc_qevent.cpp"
 
 QT_END_NAMESPACE_QTUML
 

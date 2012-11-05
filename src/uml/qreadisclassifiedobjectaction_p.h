@@ -41,12 +41,12 @@
 #ifndef QTUML_QREADISCLASSIFIEDOBJECTACTION_P_H
 #define QTUML_QREADISCLASSIFIEDOBJECTACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qaction_p.h"
-#include "qreadisclassifiedobjectaction.h"
 
+#include "QtUml/QReadIsClassifiedObjectAction"
 
 QT_BEGIN_HEADER
 

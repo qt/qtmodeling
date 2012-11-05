@@ -55,8 +55,12 @@ QElementPrivate::QElementPrivate() :
 
 QElementPrivate::~QElementPrivate()
 {
-    foreach (QElement *element, *ownedElements)
-        delete element;
+    foreach (QElement *element, *ownedElements) {
+        QObject *object = element;
+        while (object->parent())
+            object = object->parent();
+        delete object;
+    }
     delete ownedElements;
     delete ownedComments;
 }
@@ -70,7 +74,7 @@ void QElementPrivate::addOwnedElement(QElement *ownedElement)
 
         // Adjust opposite property
         Q_Q(QElement);
-        (dynamic_cast<QElementPrivate *>(ownedElement->d_ptr))->setOwner(q);
+        (qtuml_object_cast<QElementPrivate *>(ownedElement->d_func()))->setOwner(q);
     }
 }
 
@@ -83,7 +87,7 @@ void QElementPrivate::removeOwnedElement(QElement *ownedElement)
 
         // Adjust opposite property
         Q_Q(QElement);
-        (dynamic_cast<QElementPrivate *>(ownedElement->d_ptr))->setOwner(0);
+        (qtuml_object_cast<QElementPrivate *>(ownedElement->d_func()))->setOwner(0);
     }
 }
 
@@ -92,16 +96,16 @@ void QElementPrivate::setOwner(QElement *owner)
     // This is a read-only derived-union association end
 
     if (this->owner != owner) {
-        Q_Q(QElement)
+        Q_Q(QElement);
         // Adjust opposite property
         if (this->owner)
-            (dynamic_cast<QElementPrivate *>(this->owner->d_ptr))->removeOwnedElement(q);
+            (qtuml_object_cast<QElementPrivate *>(this->owner->d_func()))->removeOwnedElement(q);
 
         this->owner = owner;
 
         // Adjust opposite property
         if (owner)
-            (dynamic_cast<QElementPrivate *>(owner->d_ptr))->addOwnedElement(q);
+            (qtuml_object_cast<QElementPrivate *>(owner->d_func()))->addOwnedElement(q);
     }
 }
 
@@ -125,8 +129,11 @@ QElement::QElement(QElementPrivate &dd, QObject *parent) :
 
 QElement::~QElement()
 {
-    delete d_ptr;
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QElement
+// ---------------------------------------------------------------
 
 /*!
     The Elements owned by this element.
@@ -170,7 +177,7 @@ void QElement::addOwnedComment(QComment *ownedComment)
         d->ownedComments->insert(ownedComment);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(ownedComment));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(ownedComment));
     }
 }
 
@@ -183,16 +190,19 @@ void QElement::removeOwnedComment(QComment *ownedComment)
         d->ownedComments->remove(ownedComment);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(ownedComment));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(ownedComment));
     }
 }
 
 /*!
     The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
+    It is the caller's responsibility to delete the returned set.
  */
 const QSet<QElement *> *QElement::allOwnedElements() const
 {
-    qWarning("QElement::allOwnedElements: operation to be implemented");
+    QSet<QElement *> *allOwnedElements_ = new QSet<QElement *>;
+    allOwnedElements(allOwnedElements_);
+    return allOwnedElements_;
 }
 
 /*!
@@ -200,8 +210,18 @@ const QSet<QElement *> *QElement::allOwnedElements() const
  */
 bool QElement::mustBeOwned() const
 {
-    qWarning("QElement::mustBeOwned: operation to be implemented");
+    return true;
 }
+
+void QElement::allOwnedElements(QSet<QElement *> *allOwnedElements_) const
+{
+    Q_D(const QElement);
+    allOwnedElements_->unite(*d->ownedElements);
+    foreach (QElement *element, *d->ownedElements)
+        element->allOwnedElements(allOwnedElements_);
+}
+
+#include "moc_qelement.cpp"
 
 QT_END_NAMESPACE_QTUML
 

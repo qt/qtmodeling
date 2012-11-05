@@ -41,14 +41,15 @@
 #ifndef QTUML_QINFORMATIONITEM_P_H
 #define QTUML_QINFORMATIONITEM_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qclassifier_p.h"
-#include "qinformationitem.h"
+
+#include "QtUml/QInformationItem"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

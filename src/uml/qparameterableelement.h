@@ -72,7 +72,7 @@ public:
     explicit QParameterableElement(QObject *parent = 0);
     virtual ~QParameterableElement();
 
-    // Association-ends
+    // Association ends from QParameterableElement
     QTemplateParameter *owningTemplateParameter() const;
     void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
     QTemplateParameter *templateParameter() const;

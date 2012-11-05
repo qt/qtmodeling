@@ -79,6 +79,10 @@ QDuration::~QDuration()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QDuration
+// ---------------------------------------------------------------
+
 /*!
     The value of the Duration.
  */
@@ -97,13 +101,13 @@ void QDuration::setExpr(QValueSpecification *expr)
     Q_D(QDuration);
     if (d->expr != expr) {
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->expr));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->expr));
 
         d->expr = expr;
 
         // Adjust subsetted property(ies)
         if (expr) {
-            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(expr));
+            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(expr));
         }
     }
 }

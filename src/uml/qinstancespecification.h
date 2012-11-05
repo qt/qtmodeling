@@ -45,6 +45,9 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtUml/QDeployedArtifact>
+#include <QtUml/QPackageableElement>
+#include <QtUml/QDeploymentTarget>
 
 // Qt includes
 #include <QtCore/QSet>
@@ -54,11 +57,6 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
-
-// Forward decls for aggregated 'base classes'
-class QDeployedArtifact;
-class QPackageableElement;
-class QDeploymentTarget;
 
 // Forward decls for function parameters
 class QClassifier;
@@ -70,11 +68,6 @@ class QInstanceSpecificationPrivate;
 class Q_UML_EXPORT QInstanceSpecification : public QObject
 {
     Q_OBJECT
-
-    // From QInstanceSpecification
-    Q_PROPERTY(const QSet<QClassifier *> * classifiers READ classifiers)
-    Q_PROPERTY(QValueSpecification * specification READ specification WRITE setSpecification)
-    Q_PROPERTY(const QSet<QSlot *> * slots_ READ slots_)
 
     // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
@@ -99,6 +92,11 @@ class Q_UML_EXPORT QInstanceSpecification : public QObject
     Q_PROPERTY(const QSet<QPackageableElement *> * deployedElements READ deployedElements)
     Q_PROPERTY(const QSet<QDeployment *> * deployments READ deployments)
 
+    // From QInstanceSpecification
+    Q_PROPERTY(const QSet<QClassifier *> * classifiers READ classifiers)
+    Q_PROPERTY(QValueSpecification * specification READ specification WRITE setSpecification)
+    Q_PROPERTY(const QSet<QSlot *> * slots_ READ slots_)
+
     Q_DISABLE_COPY(QInstanceSpecification)
     Q_DECLARE_PRIVATE(QInstanceSpecification)
 
@@ -106,7 +104,43 @@ public:
     explicit QInstanceSpecification(QObject *parent = 0);
     virtual ~QInstanceSpecification();
 
-    // Association-ends
+    // Association ends from aggregated QElement
+    const QSet<QElement *> *ownedElements() const;
+    QElement *owner() const;
+    const QSet<QComment *> *ownedComments() const;
+    void addOwnedComment(QComment *ownedComment);
+    void removeOwnedComment(QComment *ownedComment);
+
+    // Attributes from aggregated QNamedElement
+    QString name() const;
+    void setName(QString name);
+    QString qualifiedName() const;
+
+    // Association ends from aggregated QNamedElement
+    QStringExpression *nameExpression() const;
+    void setNameExpression(QStringExpression *nameExpression);
+    QNamespace *namespace_() const;
+    const QSet<QDependency *> *clientDependencies() const;
+    void addClientDependency(QDependency *clientDependency);
+    void removeClientDependency(QDependency *clientDependency);
+
+    // Association ends from aggregated QParameterableElement
+    QTemplateParameter *owningTemplateParameter() const;
+    void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
+    QTemplateParameter *templateParameter() const;
+    void setTemplateParameter(QTemplateParameter *templateParameter);
+
+    // Attributes from aggregated QPackageableElement
+    QtUml::VisibilityKind visibility() const;
+    void setVisibility(QtUml::VisibilityKind visibility);
+
+    // Association ends from aggregated QDeploymentTarget
+    const QSet<QPackageableElement *> *deployedElements() const;
+    const QSet<QDeployment *> *deployments() const;
+    void addDeployment(QDeployment *deployment);
+    void removeDeployment(QDeployment *deployment);
+
+    // Association ends from QInstanceSpecification
     const QSet<QClassifier *> *classifiers() const;
     void addClassifier(QClassifier *classifier);
     void removeClassifier(QClassifier *classifier);

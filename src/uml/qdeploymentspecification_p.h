@@ -41,14 +41,15 @@
 #ifndef QTUML_QDEPLOYMENTSPECIFICATION_P_H
 #define QTUML_QDEPLOYMENTSPECIFICATION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qartifact_p.h"
-#include "qdeploymentspecification.h"
+
+#include "QtUml/QDeploymentSpecification"
 
 // Qt includes
-#include <QtCore/QString>
+#include "QtCore/QString"
 
 QT_BEGIN_HEADER
 

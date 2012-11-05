@@ -72,11 +72,11 @@ public:
     explicit QTimeConstraint(QObject *parent = 0);
     virtual ~QTimeConstraint();
 
-    // Attributes
+    // Attributes from QTimeConstraint
     bool firstEvent() const;
     void setFirstEvent(bool firstEvent);
 
-    // Association-ends
+    // Association ends from QTimeConstraint
     QTimeInterval *specification() const;
     void setSpecification(QTimeInterval *specification);
 

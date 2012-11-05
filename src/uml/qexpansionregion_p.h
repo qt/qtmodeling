@@ -41,18 +41,18 @@
 #ifndef QTUML_QEXPANSIONREGION_P_H
 #define QTUML_QEXPANSIONREGION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qstructuredactivitynode_p.h"
-#include "qexpansionregion.h"
 
+#include "QtUml/QExpansionRegion"
 
 // QtUml includes
-#include <QtUml/QtUmlEnumerations>
+#include "QtUml/QtUmlEnumerations"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

@@ -83,6 +83,10 @@ QDeployment::~QDeployment()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QDeployment
+// ---------------------------------------------------------------
+
 /*!
     The DeployedTarget which is the target of a Deployment.
  */
@@ -105,14 +109,14 @@ void QDeployment::setLocation(QDeploymentTarget *location)
             d->location->removeDeployment(this);
 
         // Adjust subsetted property(ies)
-        QDependency::removeClient(dynamic_cast<QNamedElement *>(d->location));
+        (qtuml_object_cast<QDependency *>(this))->removeClient(qtuml_object_cast<QNamedElement *>(d->location));
 
         d->location = location;
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(location));
+        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(location));
         if (location) {
-            QDependency::addClient(dynamic_cast<QNamedElement *>(location));
+            (qtuml_object_cast<QDependency *>(this))->addClient(qtuml_object_cast<QNamedElement *>(location));
         }
 
         // Adjust opposite property
@@ -141,7 +145,7 @@ void QDeployment::addConfiguration(QDeploymentSpecification *configuration)
         d->configurations->insert(configuration);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(configuration));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(configuration));
 
         // Adjust opposite property
         configuration->setDeployment(this);
@@ -157,7 +161,7 @@ void QDeployment::removeConfiguration(QDeploymentSpecification *configuration)
         d->configurations->remove(configuration);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(configuration));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(configuration));
 
         // Adjust opposite property
         configuration->setDeployment(0);
@@ -184,7 +188,7 @@ void QDeployment::addDeployedArtifact(QDeployedArtifact *deployedArtifact)
         d->deployedArtifacts->insert(deployedArtifact);
 
         // Adjust subsetted property(ies)
-        QDependency::addSupplier(dynamic_cast<QNamedElement *>(deployedArtifact));
+        (qtuml_object_cast<QDependency *>(this))->addSupplier(qtuml_object_cast<QNamedElement *>(deployedArtifact));
     }
 }
 
@@ -197,7 +201,7 @@ void QDeployment::removeDeployedArtifact(QDeployedArtifact *deployedArtifact)
         d->deployedArtifacts->remove(deployedArtifact);
 
         // Adjust subsetted property(ies)
-        QDependency::removeSupplier(dynamic_cast<QNamedElement *>(deployedArtifact));
+        (qtuml_object_cast<QDependency *>(this))->removeSupplier(qtuml_object_cast<QNamedElement *>(deployedArtifact));
     }
 }
 

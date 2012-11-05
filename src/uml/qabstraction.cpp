@@ -77,6 +77,10 @@ QAbstraction::~QAbstraction()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QAbstraction
+// ---------------------------------------------------------------
+
 /*!
     An composition of an Expression that states the abstraction relationship between the supplier and the client. In some cases, such as Derivation, it is usually formal and unidirectional; in other cases, such as Trace, it is usually informal and bidirectional. The mapping expression is optional and may be omitted if the precise relationship between the elements is not specified.
  */
@@ -95,13 +99,13 @@ void QAbstraction::setMapping(QOpaqueExpression *mapping)
     Q_D(QAbstraction);
     if (d->mapping != mapping) {
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->mapping));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->mapping));
 
         d->mapping = mapping;
 
         // Adjust subsetted property(ies)
         if (mapping) {
-            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(mapping));
+            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(mapping));
         }
     }
 }

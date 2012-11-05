@@ -41,12 +41,12 @@
 #ifndef QTUML_QMULTIPLICITYELEMENT_P_H
 #define QTUML_QMULTIPLICITYELEMENT_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qelement_p.h"
-#include "qmultiplicityelement.h"
 
+#include "QtUml/QMultiplicityElement"
 
 QT_BEGIN_HEADER
 

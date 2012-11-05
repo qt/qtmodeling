@@ -72,7 +72,7 @@ public:
     explicit QSendObjectAction(QObject *parent = 0);
     virtual ~QSendObjectAction();
 
-    // Association-ends
+    // Association ends from QSendObjectAction
     QInputPin *request() const;
     void setRequest(QInputPin *request);
     QInputPin *target() const;

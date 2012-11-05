@@ -41,12 +41,12 @@
 #ifndef QTUML_QPROTOCOLCONFORMANCE_P_H
 #define QTUML_QPROTOCOLCONFORMANCE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qdirectedrelationship_p.h"
-#include "qprotocolconformance.h"
 
+#include "QtUml/QProtocolConformance"
 
 QT_BEGIN_HEADER
 

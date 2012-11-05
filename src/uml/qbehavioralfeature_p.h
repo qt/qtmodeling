@@ -41,22 +41,21 @@
 #ifndef QTUML_QBEHAVIORALFEATURE_P_H
 #define QTUML_QBEHAVIORALFEATURE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qnamespace_p.h"
 #include "private/qfeature_p.h"
-#include "qbehavioralfeature.h"
 
+#include "QtUml/QBehavioralFeature"
 
 // QtUml includes
-#include <QtUml/QtUmlEnumerations>
+#include "QtUml/QtUmlEnumerations"
 
 // Qt includes
-#include <QtCore/QList>
-#include <QtCore/QSet>
+#include "QtCore/QList"
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -85,10 +84,6 @@ public:
     QList<QParameter *> *ownedParameters;
     QSet<QParameterSet *> *ownedParameterSets;
     QSet<QBehavior *> *methods;
-
-private:
-    QNamespacePrivate *_wrappedNamespacePrivate;
-    QFeaturePrivate *_wrappedFeaturePrivate;
 };
 
 QT_END_NAMESPACE_QTUML

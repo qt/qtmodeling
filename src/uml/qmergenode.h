@@ -56,6 +56,8 @@ class QMergeNodePrivate;
 
 class Q_UML_EXPORT QMergeNode : public QControlNode
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QMergeNode)
     Q_DECLARE_PRIVATE(QMergeNode)
 

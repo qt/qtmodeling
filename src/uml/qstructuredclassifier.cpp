@@ -70,7 +70,7 @@ void QStructuredClassifierPrivate::addRole(QConnectableElement *role)
         this->roles->insert(role);
 
         // Adjust subsetted property(ies)
-        QNamespacePrivate::addMember(dynamic_cast<QNamedElement *>(role));
+        (qtuml_object_cast<QNamespacePrivate *>(this))->addMember(qtuml_object_cast<QNamedElement *>(role));
     }
 }
 
@@ -82,7 +82,7 @@ void QStructuredClassifierPrivate::removeRole(QConnectableElement *role)
         this->roles->remove(role);
 
         // Adjust subsetted property(ies)
-        QNamespacePrivate::removeMember(dynamic_cast<QNamedElement *>(role));
+        (qtuml_object_cast<QNamespacePrivate *>(this))->removeMember(qtuml_object_cast<QNamedElement *>(role));
     }
 }
 
@@ -107,6 +107,10 @@ QStructuredClassifier::QStructuredClassifier(QStructuredClassifierPrivate &dd, Q
 QStructuredClassifier::~QStructuredClassifier()
 {
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QStructuredClassifier
+// ---------------------------------------------------------------
 
 /*!
     References the roles that instances may play in this classifier.
@@ -139,9 +143,9 @@ void QStructuredClassifier::addOwnedAttribute(QProperty *ownedAttribute)
         d->ownedAttributes->append(ownedAttribute);
 
         // Adjust subsetted property(ies)
-        d->QClassifierPrivate::addAttribute(dynamic_cast<QProperty *>(ownedAttribute));
-        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(ownedAttribute));
-        d->QStructuredClassifierPrivate::addRole(dynamic_cast<QConnectableElement *>(ownedAttribute));
+        (qtuml_object_cast<QClassifierPrivate *>(d))->addAttribute(qtuml_object_cast<QProperty *>(ownedAttribute));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(ownedAttribute));
+        (qtuml_object_cast<QStructuredClassifierPrivate *>(d))->addRole(qtuml_object_cast<QConnectableElement *>(ownedAttribute));
     }
 }
 
@@ -154,9 +158,9 @@ void QStructuredClassifier::removeOwnedAttribute(QProperty *ownedAttribute)
         d->ownedAttributes->removeAll(ownedAttribute);
 
         // Adjust subsetted property(ies)
-        d->QClassifierPrivate::removeAttribute(dynamic_cast<QProperty *>(ownedAttribute));
-        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(ownedAttribute));
-        d->QStructuredClassifierPrivate::removeRole(dynamic_cast<QConnectableElement *>(ownedAttribute));
+        (qtuml_object_cast<QClassifierPrivate *>(d))->removeAttribute(qtuml_object_cast<QProperty *>(ownedAttribute));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(ownedAttribute));
+        (qtuml_object_cast<QStructuredClassifierPrivate *>(d))->removeRole(qtuml_object_cast<QConnectableElement *>(ownedAttribute));
     }
 }
 
@@ -193,8 +197,8 @@ void QStructuredClassifier::addOwnedConnector(QConnector *ownedConnector)
         d->ownedConnectors->insert(ownedConnector);
 
         // Adjust subsetted property(ies)
-        d->QClassifierPrivate::addFeature(dynamic_cast<QFeature *>(ownedConnector));
-        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(ownedConnector));
+        (qtuml_object_cast<QClassifierPrivate *>(d))->addFeature(qtuml_object_cast<QFeature *>(ownedConnector));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(ownedConnector));
     }
 }
 
@@ -207,10 +211,12 @@ void QStructuredClassifier::removeOwnedConnector(QConnector *ownedConnector)
         d->ownedConnectors->remove(ownedConnector);
 
         // Adjust subsetted property(ies)
-        d->QClassifierPrivate::removeFeature(dynamic_cast<QFeature *>(ownedConnector));
-        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(ownedConnector));
+        (qtuml_object_cast<QClassifierPrivate *>(d))->removeFeature(qtuml_object_cast<QFeature *>(ownedConnector));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(ownedConnector));
     }
 }
+
+#include "moc_qstructuredclassifier.cpp"
 
 QT_END_NAMESPACE_QTUML
 

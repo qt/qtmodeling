@@ -76,7 +76,7 @@ public:
     explicit QProfile(QObject *parent = 0);
     virtual ~QProfile();
 
-    // Association-ends
+    // Association ends from QProfile
     const QSet<QPackageImport *> *metamodelReferences() const;
     void addMetamodelReference(QPackageImport *metamodelReference);
     void removeMetamodelReference(QPackageImport *metamodelReference);

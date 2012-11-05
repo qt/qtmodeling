@@ -88,6 +88,10 @@ QStateMachine::~QStateMachine()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QStateMachine
+// ---------------------------------------------------------------
+
 /*!
     The state machines of which this is an extension.
  */
@@ -139,7 +143,7 @@ void QStateMachine::addConnectionPoint(QPseudostate *connectionPoint)
         d->connectionPoints->insert(connectionPoint);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(connectionPoint));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(connectionPoint));
 
         // Adjust opposite property
         connectionPoint->setStateMachine(this);
@@ -155,7 +159,7 @@ void QStateMachine::removeConnectionPoint(QPseudostate *connectionPoint)
         d->connectionPoints->remove(connectionPoint);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(connectionPoint));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(connectionPoint));
 
         // Adjust opposite property
         connectionPoint->setStateMachine(0);
@@ -219,7 +223,7 @@ void QStateMachine::addRegion(QRegion *region)
         d->regions->insert(region);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(region));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(region));
 
         // Adjust opposite property
         region->setStateMachine(this);
@@ -235,7 +239,7 @@ void QStateMachine::removeRegion(QRegion *region)
         d->regions->remove(region);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(region));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(region));
 
         // Adjust opposite property
         region->setStateMachine(0);

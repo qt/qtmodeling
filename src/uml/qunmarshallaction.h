@@ -78,7 +78,7 @@ public:
     explicit QUnmarshallAction(QObject *parent = 0);
     virtual ~QUnmarshallAction();
 
-    // Association-ends
+    // Association ends from QUnmarshallAction
     QInputPin *object() const;
     void setObject(QInputPin *object);
     const QSet<QOutputPin *> *results() const;

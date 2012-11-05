@@ -41,14 +41,15 @@
 #ifndef QTUML_QINVOCATIONACTION_P_H
 #define QTUML_QINVOCATIONACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qaction_p.h"
-#include "qinvocationaction.h"
+
+#include "QtUml/QInvocationAction"
 
 // Qt includes
-#include <QtCore/QList>
+#include "QtCore/QList"
 
 QT_BEGIN_HEADER
 

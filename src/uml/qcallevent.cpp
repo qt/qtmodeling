@@ -77,6 +77,10 @@ QCallEvent::~QCallEvent()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QCallEvent
+// ---------------------------------------------------------------
+
 /*!
     Designates the operation whose invocation raised the call event.
  */

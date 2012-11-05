@@ -45,6 +45,8 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtUml/QInteractionFragment>
+#include <QtUml/QNamespace>
 
 // Qt includes
 #include <QtCore/QList>
@@ -55,10 +57,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-// Forward decls for aggregated 'base classes'
-class QInteractionFragment;
-class QNamespace;
-
 // Forward decls for function parameters
 class QInteractionConstraint;
 
@@ -67,10 +65,6 @@ class QInteractionOperandPrivate;
 class Q_UML_EXPORT QInteractionOperand : public QObject
 {
     Q_OBJECT
-
-    // From QInteractionOperand
-    Q_PROPERTY(const QList<QInteractionFragment *> * fragments READ fragments)
-    Q_PROPERTY(QInteractionConstraint * guard READ guard WRITE setGuard)
 
     // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
@@ -99,6 +93,10 @@ class Q_UML_EXPORT QInteractionOperand : public QObject
     Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
     Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
 
+    // From QInteractionOperand
+    Q_PROPERTY(const QList<QInteractionFragment *> * fragments READ fragments)
+    Q_PROPERTY(QInteractionConstraint * guard READ guard WRITE setGuard)
+
     Q_DISABLE_COPY(QInteractionOperand)
     Q_DECLARE_PRIVATE(QInteractionOperand)
 
@@ -106,7 +104,55 @@ public:
     explicit QInteractionOperand(QObject *parent = 0);
     virtual ~QInteractionOperand();
 
-    // Association-ends
+    // Association ends from aggregated QElement
+    const QSet<QElement *> *ownedElements() const;
+    QElement *owner() const;
+    const QSet<QComment *> *ownedComments() const;
+    void addOwnedComment(QComment *ownedComment);
+    void removeOwnedComment(QComment *ownedComment);
+
+    // Attributes from aggregated QNamedElement
+    QString name() const;
+    void setName(QString name);
+    QtUml::VisibilityKind visibility() const;
+    void setVisibility(QtUml::VisibilityKind visibility);
+    QString qualifiedName() const;
+
+    // Association ends from aggregated QNamedElement
+    QStringExpression *nameExpression() const;
+    void setNameExpression(QStringExpression *nameExpression);
+    QNamespace *namespace_() const;
+    const QSet<QDependency *> *clientDependencies() const;
+    void addClientDependency(QDependency *clientDependency);
+    void removeClientDependency(QDependency *clientDependency);
+
+    // Association ends from aggregated QInteractionFragment
+    const QSet<QGeneralOrdering *> *generalOrderings() const;
+    void addGeneralOrdering(QGeneralOrdering *generalOrdering);
+    void removeGeneralOrdering(QGeneralOrdering *generalOrdering);
+    QInteraction *enclosingInteraction() const;
+    void setEnclosingInteraction(QInteraction *enclosingInteraction);
+    const QSet<QLifeline *> *covered() const;
+    void addCovered(QLifeline *covered);
+    void removeCovered(QLifeline *covered);
+    QInteractionOperand *enclosingOperand() const;
+    void setEnclosingOperand(QInteractionOperand *enclosingOperand);
+
+    // Association ends from aggregated QNamespace
+    const QSet<QPackageImport *> *packageImports() const;
+    void addPackageImport(QPackageImport *packageImport);
+    void removePackageImport(QPackageImport *packageImport);
+    const QSet<QNamedElement *> *members() const;
+    const QSet<QPackageableElement *> *importedMembers() const;
+    const QSet<QElementImport *> *elementImports() const;
+    void addElementImport(QElementImport *elementImport);
+    void removeElementImport(QElementImport *elementImport);
+    const QSet<QConstraint *> *ownedRules() const;
+    void addOwnedRule(QConstraint *ownedRule);
+    void removeOwnedRule(QConstraint *ownedRule);
+    const QSet<QNamedElement *> *ownedMembers() const;
+
+    // Association ends from QInteractionOperand
     const QList<QInteractionFragment *> *fragments() const;
     void addFragment(QInteractionFragment *fragment);
     void removeFragment(QInteractionFragment *fragment);

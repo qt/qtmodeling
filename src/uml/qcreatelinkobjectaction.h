@@ -71,7 +71,7 @@ public:
     explicit QCreateLinkObjectAction(QObject *parent = 0);
     virtual ~QCreateLinkObjectAction();
 
-    // Association-ends
+    // Association ends from QCreateLinkObjectAction
     QOutputPin *result() const;
     void setResult(QOutputPin *result);
 

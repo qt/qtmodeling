@@ -86,6 +86,10 @@ QLifeline::~QLifeline()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QLifeline
+// ---------------------------------------------------------------
+
 /*!
     References the ConnectableElement within the classifier that contains the enclosing interaction.
  */
@@ -190,7 +194,7 @@ void QLifeline::setInteraction(QInteraction *interaction)
         d->interaction = interaction;
 
         // Adjust subsetted property(ies)
-        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(interaction));
+        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(interaction));
 
         // Adjust opposite property
         if (interaction)
@@ -216,13 +220,13 @@ void QLifeline::setSelector(QValueSpecification *selector)
     Q_D(QLifeline);
     if (d->selector != selector) {
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->selector));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->selector));
 
         d->selector = selector;
 
         // Adjust subsetted property(ies)
         if (selector) {
-            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(selector));
+            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(selector));
         }
     }
 }

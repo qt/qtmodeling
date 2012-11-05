@@ -82,6 +82,10 @@ QReduceAction::~QReduceAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QReduceAction
+// ---------------------------------------------------------------
+
 /*!
     Tells whether the order of the input collection should determine the order in which the behavior is applied to its elements.
  */
@@ -103,6 +107,10 @@ void QReduceAction::setOrdered(bool isOrdered)
     }
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QReduceAction
+// ---------------------------------------------------------------
+
 /*!
     Gives the output pin on which the result is put.
  */
@@ -121,13 +129,13 @@ void QReduceAction::setResult(QOutputPin *result)
     Q_D(QReduceAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->result));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            d->QActionPrivate::addOutput(dynamic_cast<QOutputPin *>(result));
+            (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(result));
         }
     }
 }
@@ -150,13 +158,13 @@ void QReduceAction::setCollection(QInputPin *collection)
     Q_D(QReduceAction);
     if (d->collection != collection) {
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->collection));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->collection));
 
         d->collection = collection;
 
         // Adjust subsetted property(ies)
         if (collection) {
-            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(collection));
+            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(collection));
         }
     }
 }

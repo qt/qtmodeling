@@ -42,7 +42,6 @@
 #include "qliteralunlimitednatural.h"
 #include "qliteralunlimitednatural_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QLiteralUnlimitedNaturalPrivate::QLiteralUnlimitedNaturalPrivate() :
@@ -75,6 +74,10 @@ QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QLiteralUnlimitedNaturalPriva
 QLiteralUnlimitedNatural::~QLiteralUnlimitedNatural()
 {
 }
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QLiteralUnlimitedNatural
+// ---------------------------------------------------------------
 
 /*!
     The specified UnlimitedNatural value.

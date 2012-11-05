@@ -42,7 +42,6 @@
 #include "qpackageableelement.h"
 #include "qpackageableelement_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QPackageableElementPrivate::QPackageableElementPrivate() :
@@ -80,6 +79,146 @@ QPackageableElement::~QPackageableElement()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QElement
+// ---------------------------------------------------------------
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QElement *> *QPackageableElement::ownedElements() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+}
+
+/*!
+    The Element that owns this element.
+ */
+QElement *QPackageableElement::owner() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->owner();
+}
+
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QComment *> *QPackageableElement::ownedComments() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+}
+
+void QPackageableElement::addOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+}
+
+void QPackageableElement::removeOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QParameterableElement
+// ---------------------------------------------------------------
+
+/*!
+    The formal template parameter that owns this element.
+ */
+QTemplateParameter *QPackageableElement::owningTemplateParameter() const
+{
+    return (qtuml_object_cast<const QParameterableElement *>(this))->owningTemplateParameter();
+}
+
+void QPackageableElement::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
+{
+    (qtuml_object_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
+}
+
+/*!
+    The template parameter that exposes this element as a formal parameter.
+ */
+QTemplateParameter *QPackageableElement::templateParameter() const
+{
+    return (qtuml_object_cast<const QParameterableElement *>(this))->templateParameter();
+}
+
+void QPackageableElement::setTemplateParameter(QTemplateParameter *templateParameter)
+{
+    (qtuml_object_cast<QParameterableElement *>(this))->setTemplateParameter(templateParameter);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The name of the NamedElement.
+ */
+QString QPackageableElement::name() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+}
+
+void QPackageableElement::setName(QString name)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+}
+
+/*!
+    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
+ */
+QString QPackageableElement::qualifiedName() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The string expression used to define the name of this named element.
+ */
+QStringExpression *QPackageableElement::nameExpression() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+}
+
+void QPackageableElement::setNameExpression(QStringExpression *nameExpression)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+}
+
+/*!
+    Specifies the namespace that owns the NamedElement.
+ */
+QNamespace *QPackageableElement::namespace_() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+}
+
+/*!
+    Indicates the dependencies that reference the client.
+ */
+const QSet<QDependency *> *QPackageableElement::clientDependencies() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+}
+
+void QPackageableElement::addClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+}
+
+void QPackageableElement::removeClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QPackageableElement
+// ---------------------------------------------------------------
+
 /*!
     Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
  */
@@ -100,6 +239,8 @@ void QPackageableElement::setVisibility(QtUml::VisibilityKind visibility)
         d->visibility = visibility;
     }
 }
+
+#include "moc_qpackageableelement.cpp"
 
 QT_END_NAMESPACE_QTUML
 

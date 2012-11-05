@@ -41,14 +41,15 @@
 #ifndef QTUML_QINTERRUPTIBLEACTIVITYREGION_P_H
 #define QTUML_QINTERRUPTIBLEACTIVITYREGION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qactivitygroup_p.h"
-#include "qinterruptibleactivityregion.h"
+
+#include "QtUml/QInterruptibleActivityRegion"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

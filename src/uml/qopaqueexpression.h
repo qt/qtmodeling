@@ -79,7 +79,7 @@ public:
     explicit QOpaqueExpression(QObject *parent = 0);
     virtual ~QOpaqueExpression();
 
-    // Attributes
+    // Attributes from QOpaqueExpression
     const QList<QString> *bodies() const;
     void addBody(QString body);
     void removeBody(QString body);
@@ -87,7 +87,7 @@ public:
     void addLanguage(QString language);
     void removeLanguage(QString language);
 
-    // Association-ends
+    // Association ends from QOpaqueExpression
     QBehavior *behavior() const;
     void setBehavior(QBehavior *behavior);
     QParameter *result() const;

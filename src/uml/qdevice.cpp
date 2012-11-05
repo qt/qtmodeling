@@ -42,7 +42,6 @@
 #include "qdevice.h"
 #include "qdevice_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QDevicePrivate::QDevicePrivate()

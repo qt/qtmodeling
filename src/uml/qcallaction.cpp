@@ -79,6 +79,10 @@ QCallAction::~QCallAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QCallAction
+// ---------------------------------------------------------------
+
 /*!
     If true, the call is synchronous and the caller waits for completion of the invoked behavior. If false, the call is asynchronous and the caller proceeds immediately and does not expect a return values.
  */
@@ -100,6 +104,10 @@ void QCallAction::setSynchronous(bool isSynchronous)
     }
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QCallAction
+// ---------------------------------------------------------------
+
 /*!
     A list of output pins where the results of performing the invocation are placed.
  */
@@ -120,7 +128,7 @@ void QCallAction::addResult(QOutputPin *result)
         d->results->append(result);
 
         // Adjust subsetted property(ies)
-        d->QActionPrivate::addOutput(dynamic_cast<QOutputPin *>(result));
+        (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(result));
     }
 }
 
@@ -133,9 +141,11 @@ void QCallAction::removeResult(QOutputPin *result)
         d->results->removeAll(result);
 
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(result));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(result));
     }
 }
+
+#include "moc_qcallaction.cpp"
 
 QT_END_NAMESPACE_QTUML
 

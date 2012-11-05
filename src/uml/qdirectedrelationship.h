@@ -75,7 +75,7 @@ public:
     explicit QDirectedRelationship(QObject *parent = 0);
     virtual ~QDirectedRelationship();
 
-    // Association-ends
+    // Association ends from QDirectedRelationship
     const QSet<QElement *> *sources() const;
     const QSet<QElement *> *targets() const;
 

@@ -81,6 +81,10 @@ QReadLinkObjectEndAction::~QReadLinkObjectEndAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QReadLinkObjectEndAction
+// ---------------------------------------------------------------
+
 /*!
     Link end to be read.
  */
@@ -120,13 +124,13 @@ void QReadLinkObjectEndAction::setObject(QInputPin *object)
     Q_D(QReadLinkObjectEndAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->object));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->object));
 
         d->object = object;
 
         // Adjust subsetted property(ies)
         if (object) {
-            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(object));
+            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(object));
         }
     }
 }
@@ -149,13 +153,13 @@ void QReadLinkObjectEndAction::setResult(QOutputPin *result)
     Q_D(QReadLinkObjectEndAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->result));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            d->QActionPrivate::addOutput(dynamic_cast<QOutputPin *>(result));
+            (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(result));
         }
     }
 }

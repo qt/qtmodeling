@@ -82,6 +82,10 @@ QLinkAction::~QLinkAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QLinkAction
+// ---------------------------------------------------------------
+
 /*!
     Pins taking end objects and qualifier values as input.
  */
@@ -102,7 +106,7 @@ void QLinkAction::addInputValue(QInputPin *inputValue)
         d->inputValues->insert(inputValue);
 
         // Adjust subsetted property(ies)
-        d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(inputValue));
+        (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(inputValue));
     }
 }
 
@@ -115,7 +119,7 @@ void QLinkAction::removeInputValue(QInputPin *inputValue)
         d->inputValues->remove(inputValue);
 
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(inputValue));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(inputValue));
     }
 }
 
@@ -139,7 +143,7 @@ void QLinkAction::addEndData(QLinkEndData *endData)
         d->endData->insert(endData);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(endData));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(endData));
     }
 }
 
@@ -152,7 +156,7 @@ void QLinkAction::removeEndData(QLinkEndData *endData)
         d->endData->remove(endData);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(endData));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(endData));
     }
 }
 
@@ -163,6 +167,8 @@ QAssociation *QLinkAction::association() const
 {
     qWarning("QLinkAction::association: operation to be implemented");
 }
+
+#include "moc_qlinkaction.cpp"
 
 QT_END_NAMESPACE_QTUML
 

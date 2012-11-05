@@ -71,7 +71,7 @@ public:
     explicit QTypedElement(QObject *parent = 0);
     virtual ~QTypedElement();
 
-    // Association-ends
+    // Association ends from QTypedElement
     QType *type() const;
     void setType(QType *type);
 

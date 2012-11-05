@@ -77,6 +77,10 @@ QSignalEvent::~QSignalEvent()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QSignalEvent
+// ---------------------------------------------------------------
+
 /*!
     The specific signal that is associated with this event.
  */

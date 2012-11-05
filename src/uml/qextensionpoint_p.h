@@ -41,12 +41,12 @@
 #ifndef QTUML_QEXTENSIONPOINT_P_H
 #define QTUML_QEXTENSIONPOINT_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qredefinableelement_p.h"
-#include "qextensionpoint.h"
 
+#include "QtUml/QExtensionPoint"
 
 QT_BEGIN_HEADER
 

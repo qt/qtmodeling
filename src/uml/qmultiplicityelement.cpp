@@ -80,6 +80,10 @@ QMultiplicityElement::~QMultiplicityElement()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QMultiplicityElement
+// ---------------------------------------------------------------
+
 /*!
     Specifies the upper bound of the multiplicity interval.
  */
@@ -172,6 +176,10 @@ void QMultiplicityElement::setLower(qint32 lower)
     }
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QMultiplicityElement
+// ---------------------------------------------------------------
+
 /*!
     The specification of the upper bound for this multiplicity.
  */
@@ -190,13 +198,13 @@ void QMultiplicityElement::setUpperValue(QValueSpecification *upperValue)
     Q_D(QMultiplicityElement);
     if (d->upperValue != upperValue) {
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->upperValue));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->upperValue));
 
         d->upperValue = upperValue;
 
         // Adjust subsetted property(ies)
         if (upperValue) {
-            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(upperValue));
+            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(upperValue));
         }
     }
 }
@@ -219,13 +227,13 @@ void QMultiplicityElement::setLowerValue(QValueSpecification *lowerValue)
     Q_D(QMultiplicityElement);
     if (d->lowerValue != lowerValue) {
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->lowerValue));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->lowerValue));
 
         d->lowerValue = lowerValue;
 
         // Adjust subsetted property(ies)
         if (lowerValue) {
-            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(lowerValue));
+            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(lowerValue));
         }
     }
 }
@@ -285,6 +293,8 @@ qint32 QMultiplicityElement::upperBound() const
 {
     qWarning("QMultiplicityElement::upperBound: operation to be implemented");
 }
+
+#include "moc_qmultiplicityelement.cpp"
 
 QT_END_NAMESPACE_QTUML
 

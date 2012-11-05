@@ -41,12 +41,12 @@
 #ifndef QTUML_QPRIMITIVETYPE_P_H
 #define QTUML_QPRIMITIVETYPE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qdatatype_p.h"
-#include "qprimitivetype.h"
 
+#include "QtUml/QPrimitiveType"
 
 QT_BEGIN_HEADER
 

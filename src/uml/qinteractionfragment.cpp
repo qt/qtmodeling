@@ -85,6 +85,10 @@ QInteractionFragment::~QInteractionFragment()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QInteractionFragment
+// ---------------------------------------------------------------
+
 /*!
     The general ordering relationships contained in this fragment.
  */
@@ -105,7 +109,7 @@ void QInteractionFragment::addGeneralOrdering(QGeneralOrdering *generalOrdering)
         d->generalOrderings->insert(generalOrdering);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(generalOrdering));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(generalOrdering));
     }
 }
 
@@ -118,7 +122,7 @@ void QInteractionFragment::removeGeneralOrdering(QGeneralOrdering *generalOrderi
         d->generalOrderings->remove(generalOrdering);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(generalOrdering));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(generalOrdering));
     }
 }
 
@@ -146,7 +150,7 @@ void QInteractionFragment::setEnclosingInteraction(QInteraction *enclosingIntera
         d->enclosingInteraction = enclosingInteraction;
 
         // Adjust subsetted property(ies)
-        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(enclosingInteraction));
+        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(enclosingInteraction));
 
         // Adjust opposite property
         if (enclosingInteraction)
@@ -216,13 +220,15 @@ void QInteractionFragment::setEnclosingOperand(QInteractionOperand *enclosingOpe
         d->enclosingOperand = enclosingOperand;
 
         // Adjust subsetted property(ies)
-        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(enclosingOperand));
+        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(enclosingOperand));
 
         // Adjust opposite property
         if (enclosingOperand)
             enclosingOperand->addFragment(this);
     }
 }
+
+#include "moc_qinteractionfragment.cpp"
 
 QT_END_NAMESPACE_QTUML
 

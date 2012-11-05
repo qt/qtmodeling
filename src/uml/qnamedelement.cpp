@@ -41,6 +41,7 @@
 
 #include "qnamedelement.h"
 #include "qnamedelement_p.h"
+
 #include "qnamespace_p.h"
 
 #include <QtUml/QPackage>
@@ -67,19 +68,19 @@ void QNamedElementPrivate::setNamespace_(QNamespace *namespace_)
     // This is a read-only derived-union association end
 
     if (this->namespace_ != namespace_) {
-        Q_Q(QNamedElement)
+        Q_Q(QNamedElement);
         // Adjust opposite property
         if (this->namespace_)
-            (dynamic_cast<QNamespacePrivate *>(this->namespace_->d_ptr))->removeOwnedMember(q);
+            (qtuml_object_cast<QNamespacePrivate *>(this->namespace_->d_func()))->removeOwnedMember(q);
 
         this->namespace_ = namespace_;
 
         // Adjust subsetted property(ies)
-        QElementPrivate::setOwner(dynamic_cast<QElement *>(namespace_));
+        (qtuml_object_cast<QElementPrivate *>(this))->setOwner(qtuml_object_cast<QElement *>(namespace_));
 
         // Adjust opposite property
         if (namespace_)
-            (dynamic_cast<QNamespacePrivate *>(namespace_->d_ptr))->addOwnedMember(q);
+            (qtuml_object_cast<QNamespacePrivate *>(namespace_->d_func()))->addOwnedMember(q);
     }
 }
 
@@ -104,6 +105,10 @@ QNamedElement::QNamedElement(QNamedElementPrivate &dd, QObject *parent) :
 QNamedElement::~QNamedElement()
 {
 }
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QNamedElement
+// ---------------------------------------------------------------
 
 /*!
     The name of the NamedElement.
@@ -154,11 +159,22 @@ QString QNamedElement::qualifiedName() const
 {
     // This is a read-only derived attribute
 
-    qWarning("QNamedElement::qualifiedName: to be implemented (this is a derived attribute)");
-
-    //Q_D(const QNamedElement);
-    //return <derived-return>;
+    Q_D(const QNamedElement);
+    if (d->name.isEmpty()) return QString();
+    QString qualifiedName_(d->name);
+    QScopedPointer< const QList<QNamespace *> > allNamespaces_(allNamespaces());
+    QString separator_ = separator();
+    foreach (QNamespace *namespace_, *allNamespaces_) {
+        if (namespace_->name().isEmpty())
+            return QString();
+        qualifiedName_.prepend(separator_).prepend(namespace_->name());
+    }
+    return qualifiedName_;
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QNamedElement
+// ---------------------------------------------------------------
 
 /*!
     The string expression used to define the name of this named element.
@@ -178,13 +194,13 @@ void QNamedElement::setNameExpression(QStringExpression *nameExpression)
     Q_D(QNamedElement);
     if (d->nameExpression != nameExpression) {
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->nameExpression));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->nameExpression));
 
         d->nameExpression = nameExpression;
 
         // Adjust subsetted property(ies)
         if (nameExpression) {
-            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(nameExpression));
+            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(nameExpression));
         }
     }
 }
@@ -240,10 +256,23 @@ void QNamedElement::removeClientDependency(QDependency *clientDependency)
 
 /*!
     The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
+    It is the caller's responsibility to delete the returned list.
  */
 const QList<QNamespace *> *QNamedElement::allNamespaces() const
 {
-    qWarning("QNamedElement::allNamespaces: operation to be implemented");
+    Q_D(const QNamedElement);
+    if (!d->namespace_) {
+        return new QList<QNamespace *>;
+    }
+    else {
+        QList<QNamespace *> *allNamespaces_ = new QList<QNamespace *>;
+        QNamespace *namespace_ = this->namespace_();
+        while (namespace_) {
+            allNamespaces_->append(namespace_);
+            namespace_ = namespace_->namespace_();
+        }
+        return allNamespaces_;
+    }
 }
 
 /*!
@@ -267,8 +296,10 @@ bool QNamedElement::isDistinguishableFrom(const QNamedElement *n, const QNamespa
  */
 QString QNamedElement::separator() const
 {
-    qWarning("QNamedElement::separator: operation to be implemented");
+    return "::";
 }
+
+#include "moc_qnamedelement.cpp"
 
 QT_END_NAMESPACE_QTUML
 

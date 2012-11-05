@@ -79,6 +79,10 @@ QInterfaceRealization::~QInterfaceRealization()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QInterfaceRealization
+// ---------------------------------------------------------------
+
 /*!
     References the BehavioredClassifier that owns this Interfacerealization (i.e., the classifier that realizes the Interface to which it points).
  */
@@ -101,14 +105,14 @@ void QInterfaceRealization::setImplementingClassifier(QBehavioredClassifier *imp
             d->implementingClassifier->removeInterfaceRealization(this);
 
         // Adjust subsetted property(ies)
-        QDependency::removeClient(dynamic_cast<QNamedElement *>(d->implementingClassifier));
+        (qtuml_object_cast<QDependency *>(this))->removeClient(qtuml_object_cast<QNamedElement *>(d->implementingClassifier));
 
         d->implementingClassifier = implementingClassifier;
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(implementingClassifier));
+        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(implementingClassifier));
         if (implementingClassifier) {
-            QDependency::addClient(dynamic_cast<QNamedElement *>(implementingClassifier));
+            (qtuml_object_cast<QDependency *>(this))->addClient(qtuml_object_cast<QNamedElement *>(implementingClassifier));
         }
 
         // Adjust opposite property
@@ -135,13 +139,13 @@ void QInterfaceRealization::setContract(QInterface *contract)
     Q_D(QInterfaceRealization);
     if (d->contract != contract) {
         // Adjust subsetted property(ies)
-        QDependency::removeSupplier(dynamic_cast<QNamedElement *>(d->contract));
+        (qtuml_object_cast<QDependency *>(this))->removeSupplier(qtuml_object_cast<QNamedElement *>(d->contract));
 
         d->contract = contract;
 
         // Adjust subsetted property(ies)
         if (contract) {
-            QDependency::addSupplier(dynamic_cast<QNamedElement *>(contract));
+            (qtuml_object_cast<QDependency *>(this))->addSupplier(qtuml_object_cast<QNamedElement *>(contract));
         }
     }
 }

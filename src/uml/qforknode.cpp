@@ -42,7 +42,6 @@
 #include "qforknode.h"
 #include "qforknode_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QForkNodePrivate::QForkNodePrivate()

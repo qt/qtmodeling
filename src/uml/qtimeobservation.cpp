@@ -78,6 +78,10 @@ QTimeObservation::~QTimeObservation()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QTimeObservation
+// ---------------------------------------------------------------
+
 /*!
     The value of firstEvent is related to event. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters event. If firstEvent is false, then the corresponding observation event is the time instant the execution exits event.
  */
@@ -98,6 +102,10 @@ void QTimeObservation::setFirstEvent(bool firstEvent)
         d->firstEvent = firstEvent;
     }
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QTimeObservation
+// ---------------------------------------------------------------
 
 /*!
     The observation is determined by the entering or exiting of the event element during execution.

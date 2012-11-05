@@ -41,17 +41,17 @@
 #ifndef QTUML_QREDEFINABLETEMPLATESIGNATURE_P_H
 #define QTUML_QREDEFINABLETEMPLATESIGNATURE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qtemplatesignature_p.h"
 #include "private/qredefinableelement_p.h"
-#include "qredefinabletemplatesignature.h"
+
+#include "QtUml/QRedefinableTemplateSignature"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -74,10 +74,6 @@ public:
 
     QClassifier *classifier;
     QSet<QRedefinableTemplateSignature *> *extendedSignatures;
-
-private:
-    QTemplateSignaturePrivate *_wrappedTemplateSignaturePrivate;
-    QRedefinableElementPrivate *_wrappedRedefinableElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

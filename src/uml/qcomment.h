@@ -73,11 +73,11 @@ public:
     explicit QComment(QObject *parent = 0);
     virtual ~QComment();
 
-    // Attributes
+    // Attributes from QComment
     QString body() const;
     void setBody(QString body);
 
-    // Association-ends
+    // Association ends from QComment
     const QSet<QElement *> *annotatedElements() const;
     void addAnnotatedElement(QElement *annotatedElement);
     void removeAnnotatedElement(QElement *annotatedElement);

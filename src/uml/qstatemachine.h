@@ -81,7 +81,7 @@ public:
     explicit QStateMachine(QObject *parent = 0);
     virtual ~QStateMachine();
 
-    // Association-ends
+    // Association ends from QStateMachine
     const QSet<QStateMachine *> *extendedStateMachines() const;
     void addExtendedStateMachine(QStateMachine *extendedStateMachine);
     void removeExtendedStateMachine(QStateMachine *extendedStateMachine);

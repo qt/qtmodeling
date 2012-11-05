@@ -81,13 +81,13 @@ public:
     explicit QElementImport(QObject *parent = 0);
     virtual ~QElementImport();
 
-    // Attributes
+    // Attributes from QElementImport
     QString alias() const;
     void setAlias(QString alias);
     QtUml::VisibilityKind visibility() const;
     void setVisibility(QtUml::VisibilityKind visibility);
 
-    // Association-ends
+    // Association ends from QElementImport
     QPackageableElement *importedElement() const;
     void setImportedElement(QPackageableElement *importedElement);
     QNamespace *importingNamespace() const;

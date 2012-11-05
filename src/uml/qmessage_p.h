@@ -41,19 +41,19 @@
 #ifndef QTUML_QMESSAGE_P_H
 #define QTUML_QMESSAGE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qnamedelement_p.h"
-#include "qmessage.h"
 
+#include "QtUml/QMessage"
 
 // QtUml includes
-#include <QtUml/QtUmlEnumerations>
-#include <QtUml/QtUmlEnumerations>
+#include "QtUml/QtUmlEnumerations"
+#include "QtUml/QtUmlEnumerations"
 
 // Qt includes
-#include <QtCore/QList>
+#include "QtCore/QList"
 
 QT_BEGIN_HEADER
 

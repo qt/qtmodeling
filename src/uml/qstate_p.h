@@ -41,18 +41,18 @@
 #ifndef QTUML_QSTATE_P_H
 #define QTUML_QSTATE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qnamespace_p.h"
 #include "private/qredefinableelement_p.h"
 #include "private/qvertex_p.h"
-#include "qstate.h"
+
+#include "QtUml/QState"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -89,11 +89,6 @@ public:
     QBehavior *doActivity;
     QStateMachine *submachine;
     QConstraint *stateInvariant;
-
-private:
-    QNamespacePrivate *_wrappedNamespacePrivate;
-    QRedefinableElementPrivate *_wrappedRedefinableElementPrivate;
-    QVertexPrivate *_wrappedVertexPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

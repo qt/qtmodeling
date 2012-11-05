@@ -41,12 +41,12 @@
 #ifndef QTUML_QFORKNODE_P_H
 #define QTUML_QFORKNODE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qcontrolnode_p.h"
-#include "qforknode.h"
 
+#include "QtUml/QForkNode"
 
 QT_BEGIN_HEADER
 

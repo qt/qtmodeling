@@ -41,15 +41,16 @@
 #ifndef QTUML_QSTRUCTUREDCLASSIFIER_P_H
 #define QTUML_QSTRUCTUREDCLASSIFIER_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qclassifier_p.h"
-#include "qstructuredclassifier.h"
+
+#include "QtUml/QStructuredClassifier"
 
 // Qt includes
-#include <QtCore/QList>
-#include <QtCore/QSet>
+#include "QtCore/QList"
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

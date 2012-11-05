@@ -42,7 +42,6 @@
 #include "qcomment.h"
 #include "qcomment_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QCommentPrivate::QCommentPrivate() :
@@ -77,6 +76,10 @@ QComment::~QComment()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QComment
+// ---------------------------------------------------------------
+
 /*!
     Specifies a string that is the comment.
  */
@@ -97,6 +100,10 @@ void QComment::setBody(QString body)
         d->body = body;
     }
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QComment
+// ---------------------------------------------------------------
 
 /*!
     References the Element(s) being commented.

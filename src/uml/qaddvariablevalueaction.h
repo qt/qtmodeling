@@ -72,11 +72,11 @@ public:
     explicit QAddVariableValueAction(QObject *parent = 0);
     virtual ~QAddVariableValueAction();
 
-    // Attributes
+    // Attributes from QAddVariableValueAction
     bool isReplaceAll() const;
     void setReplaceAll(bool isReplaceAll);
 
-    // Association-ends
+    // Association ends from QAddVariableValueAction
     QInputPin *insertAt() const;
     void setInsertAt(QInputPin *insertAt);
 

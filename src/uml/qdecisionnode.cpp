@@ -79,6 +79,10 @@ QDecisionNode::~QDecisionNode()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QDecisionNode
+// ---------------------------------------------------------------
+
 /*!
     An additional edge incoming to the decision node that provides a decision input value.
  */

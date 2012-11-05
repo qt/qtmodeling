@@ -75,12 +75,12 @@ public:
     explicit QDurationConstraint(QObject *parent = 0);
     virtual ~QDurationConstraint();
 
-    // Attributes
+    // Attributes from QDurationConstraint
     const QSet<bool> *firstEvents() const;
     void addFirstEvent(bool firstEvent);
     void removeFirstEvent(bool firstEvent);
 
-    // Association-ends
+    // Association ends from QDurationConstraint
     QDurationInterval *specification() const;
     void setSpecification(QDurationInterval *specification);
 

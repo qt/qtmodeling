@@ -11,9 +11,11 @@
 #include <QtCore/QScopedPointer>
 #include <QtCore/QMetaProperty>
 
-typedef const QSet<QtUml::QPackage *> QPackageList;
-typedef const QSet<QtUml::QStereotype *> QStereotypeList;
-typedef const QSet<QtUml::QType *> QTypeList;
+using namespace QtUml;
+
+typedef const QSet<QPackage *> QPackageList;
+typedef const QSet<QStereotype *> QStereotypeList;
+typedef const QSet<QType *> QTypeList;
 
 void checkProperties(QObject *object)
 {
@@ -26,30 +28,30 @@ void checkProperties(QObject *object)
 
 int main ()
 {
-    QtUml::QModel *model= new QtUml::QModel;
+    QUmlPointer<QModel> model = new QModel;
     model->setName("MyModel");
 
-    QtUml::QPackage *package = new QtUml::QPackage;
+    QUmlPointer<QPackage> package = new QPackage;
     package->setName("Package1");
 
-    QtUml::QPrimitiveType *primitiveType = new QtUml::QPrimitiveType;
+    QUmlPointer<QPrimitiveType> primitiveType = new QPrimitiveType;
     primitiveType->setName("String");
 
-    QtUml::QEnumeration *enumeration = new QtUml::QEnumeration;
+    QUmlPointer<QEnumeration> enumeration = new QEnumeration;
     enumeration->setName("DirectionKind");
-    QtUml::QEnumerationLiteral *directionIn = new QtUml::QEnumerationLiteral;
+    QUmlPointer<QEnumerationLiteral> directionIn = new QEnumerationLiteral;
     directionIn->setName("DirectionIn");
     enumeration->addOwnedLiteral(directionIn);
 
-    QtUml::QClass *class_ = new QtUml::QClass;
+    QUmlPointer<QClass> class_ = new QClass;
     class_->setName("Student");
     class_->setAbstract(false);
 
-    model->addOwnedType(primitiveType);
     package->addOwnedType(enumeration);
-    //model->addNestedPackage(package);
-    model->addPackagedElement(package);
     package->addOwnedType(class_);
+
+    model->addNestedPackage(package);
+    model->addOwnedType(primitiveType);
 
     qDebug() << "model->ownedElements()->size():" << model->ownedElements()->size();
     qDebug() << "model->members()->size():" << model->members()->size();
@@ -64,9 +66,9 @@ int main ()
     qDebug() << "primitiveType->qualifiedName():" << primitiveType->qualifiedName();
     qDebug() << "directionIn->qualifiedName():" << directionIn->qualifiedName();
 
-    //model->removeNestedPackage(package);
-    model->removePackagedElement(package);
-    model->addPackagedElement(package);
+    model->removeNestedPackage(package);
+    //model->addNestedPackage(package);
+    //model->addPackagedElement(package);
     qDebug() << "REMOVED";
 
     qDebug() << "model->ownedElements()->size():" << model->ownedElements()->size();
@@ -91,11 +93,11 @@ int main ()
     QScopedPointer<QTypeList> ownedTypes (model->ownedTypes());
     qDebug() << "model->ownedTypes()->size():" << ownedTypes->size();
 
-    //checkProperties(model);
+    checkProperties(model);
 
-    QtUml::QComponent *c1 = new QtUml::QComponent;
-    QtUml::QComponent *c2 = new QtUml::QComponent;
-    QtUml::QComponentRealization *cr = new QtUml::QComponentRealization;
+    QUmlPointer<QComponent> c1 = new QComponent;
+    QUmlPointer<QComponent> c2 = new QComponent;
+    QUmlPointer<QComponentRealization> cr = new QComponentRealization;
     cr->setAbstraction(c1);
     qDebug();
     qDebug() << "cr->suppliers()->size():" << cr->suppliers()->size();
@@ -111,8 +113,12 @@ int main ()
     qDebug() << "cr->suppliers()->size():" << cr->suppliers()->size();
     qDebug() << "c1->realizations()->size():" << c1->realizations()->size();
     qDebug() << "c2->realizations()->size():" << c2->realizations()->size();
+    cr->setAbstraction(c1);
+    package->addOwnedType(c1);
+    package->addOwnedType(c2);
 
-    delete model; // That will delete all owned elements
+    delete model.data();
+    delete package.data();
 
     // All containers created by nestedPackages(), ownedStereotypes(), and ownedTypes()
     // are destroyed by QScopedPointer

@@ -41,12 +41,12 @@
 #ifndef QTUML_QBROADCASTSIGNALACTION_P_H
 #define QTUML_QBROADCASTSIGNALACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qinvocationaction_p.h"
-#include "qbroadcastsignalaction.h"
 
+#include "QtUml/QBroadcastSignalAction"
 
 QT_BEGIN_HEADER
 

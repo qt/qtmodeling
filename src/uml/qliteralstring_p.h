@@ -41,14 +41,15 @@
 #ifndef QTUML_QLITERALSTRING_P_H
 #define QTUML_QLITERALSTRING_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qliteralspecification_p.h"
-#include "qliteralstring.h"
+
+#include "QtUml/QLiteralString"
 
 // Qt includes
-#include <QtCore/QString>
+#include "QtCore/QString"
 
 QT_BEGIN_HEADER
 

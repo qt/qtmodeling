@@ -56,6 +56,8 @@ class QPrimitiveTypePrivate;
 
 class Q_UML_EXPORT QPrimitiveType : public QDataType
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QPrimitiveType)
     Q_DECLARE_PRIVATE(QPrimitiveType)
 

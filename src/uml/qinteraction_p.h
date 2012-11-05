@@ -41,18 +41,18 @@
 #ifndef QTUML_QINTERACTION_P_H
 #define QTUML_QINTERACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qbehavior_p.h"
 #include "private/qinteractionfragment_p.h"
-#include "qinteraction.h"
+
+#include "QtUml/QInteraction"
 
 // Qt includes
-#include <QtCore/QList>
-#include <QtCore/QSet>
+#include "QtCore/QList"
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -80,10 +80,6 @@ public:
     QSet<QGate *> *formalGates;
     QList<QInteractionFragment *> *fragments;
     QSet<QLifeline *> *lifelines;
-
-private:
-    QBehaviorPrivate *_wrappedBehaviorPrivate;
-    QInteractionFragmentPrivate *_wrappedInteractionFragmentPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

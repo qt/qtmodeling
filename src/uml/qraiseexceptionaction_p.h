@@ -41,12 +41,12 @@
 #ifndef QTUML_QRAISEEXCEPTIONACTION_P_H
 #define QTUML_QRAISEEXCEPTIONACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qaction_p.h"
-#include "qraiseexceptionaction.h"
 
+#include "QtUml/QRaiseExceptionAction"
 
 QT_BEGIN_HEADER
 

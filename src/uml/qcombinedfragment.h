@@ -81,11 +81,11 @@ public:
     explicit QCombinedFragment(QObject *parent = 0);
     virtual ~QCombinedFragment();
 
-    // Attributes
+    // Attributes from QCombinedFragment
     QtUml::InteractionOperatorKind interactionOperator() const;
     void setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator);
 
-    // Association-ends
+    // Association ends from QCombinedFragment
     const QSet<QGate *> *cfragmentGates() const;
     void addCfragmentGate(QGate *cfragmentGate);
     void removeCfragmentGate(QGate *cfragmentGate);

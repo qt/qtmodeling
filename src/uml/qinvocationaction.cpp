@@ -80,6 +80,10 @@ QInvocationAction::~QInvocationAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QInvocationAction
+// ---------------------------------------------------------------
+
 /*!
     Specification of the ordered set of argument values that appears during execution.
  */
@@ -100,7 +104,7 @@ void QInvocationAction::addArgument(QInputPin *argument)
         d->arguments->append(argument);
 
         // Adjust subsetted property(ies)
-        d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(argument));
+        (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(argument));
     }
 }
 
@@ -113,7 +117,7 @@ void QInvocationAction::removeArgument(QInputPin *argument)
         d->arguments->removeAll(argument);
 
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(argument));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(argument));
     }
 }
 
@@ -137,6 +141,8 @@ void QInvocationAction::setOnPort(QPort *onPort)
         d->onPort = onPort;
     }
 }
+
+#include "moc_qinvocationaction.cpp"
 
 QT_END_NAMESPACE_QTUML
 

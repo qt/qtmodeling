@@ -41,12 +41,12 @@
 #ifndef QTUML_QCENTRALBUFFERNODE_P_H
 #define QTUML_QCENTRALBUFFERNODE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobjectnode_p.h"
-#include "qcentralbuffernode.h"
 
+#include "QtUml/QCentralBufferNode"
 
 QT_BEGIN_HEADER
 

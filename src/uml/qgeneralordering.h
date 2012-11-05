@@ -72,7 +72,7 @@ public:
     explicit QGeneralOrdering(QObject *parent = 0);
     virtual ~QGeneralOrdering();
 
-    // Association-ends
+    // Association ends from QGeneralOrdering
     QOccurrenceSpecification *before() const;
     void setBefore(QOccurrenceSpecification *before);
     QOccurrenceSpecification *after() const;

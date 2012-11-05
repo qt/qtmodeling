@@ -72,11 +72,11 @@ public:
     explicit QAddStructuralFeatureValueAction(QObject *parent = 0);
     virtual ~QAddStructuralFeatureValueAction();
 
-    // Attributes
+    // Attributes from QAddStructuralFeatureValueAction
     bool isReplaceAll() const;
     void setReplaceAll(bool isReplaceAll);
 
-    // Association-ends
+    // Association ends from QAddStructuralFeatureValueAction
     QInputPin *insertAt() const;
     void setInsertAt(QInputPin *insertAt);
 

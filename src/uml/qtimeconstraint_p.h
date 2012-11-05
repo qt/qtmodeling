@@ -41,12 +41,12 @@
 #ifndef QTUML_QTIMECONSTRAINT_P_H
 #define QTUML_QTIMECONSTRAINT_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qintervalconstraint_p.h"
-#include "qtimeconstraint.h"
 
+#include "QtUml/QTimeConstraint"
 
 QT_BEGIN_HEADER
 

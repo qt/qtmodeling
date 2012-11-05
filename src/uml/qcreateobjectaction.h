@@ -73,7 +73,7 @@ public:
     explicit QCreateObjectAction(QObject *parent = 0);
     virtual ~QCreateObjectAction();
 
-    // Association-ends
+    // Association ends from QCreateObjectAction
     QClassifier *classifier() const;
     void setClassifier(QClassifier *classifier);
     QOutputPin *result() const;

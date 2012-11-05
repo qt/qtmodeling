@@ -80,7 +80,7 @@ public:
     explicit QStructuredClassifier(QObject *parent = 0);
     virtual ~QStructuredClassifier();
 
-    // Association-ends
+    // Association ends from QStructuredClassifier
     const QSet<QConnectableElement *> *roles() const;
     const QList<QProperty *> *ownedAttributes() const;
     void addOwnedAttribute(QProperty *ownedAttribute);

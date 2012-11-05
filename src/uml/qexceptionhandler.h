@@ -79,7 +79,7 @@ public:
     explicit QExceptionHandler(QObject *parent = 0);
     virtual ~QExceptionHandler();
 
-    // Association-ends
+    // Association ends from QExceptionHandler
     QExecutableNode *handlerBody() const;
     void setHandlerBody(QExecutableNode *handlerBody);
     const QSet<QClassifier *> *exceptionTypes() const;

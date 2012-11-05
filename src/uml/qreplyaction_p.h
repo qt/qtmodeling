@@ -41,14 +41,15 @@
 #ifndef QTUML_QREPLYACTION_P_H
 #define QTUML_QREPLYACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qaction_p.h"
-#include "qreplyaction.h"
+
+#include "QtUml/QReplyAction"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

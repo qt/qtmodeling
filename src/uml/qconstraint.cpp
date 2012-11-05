@@ -82,6 +82,10 @@ QConstraint::~QConstraint()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QConstraint
+// ---------------------------------------------------------------
+
 /*!
     Specifies the namespace that owns the NamedElement.
  */
@@ -106,7 +110,7 @@ void QConstraint::setContext(QNamespace *context)
         d->context = context;
 
         // Adjust subsetted property(ies)
-        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(context));
+        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(context));
 
         // Adjust opposite property
         if (context)
@@ -132,13 +136,13 @@ void QConstraint::setSpecification(QValueSpecification *specification)
     Q_D(QConstraint);
     if (d->specification != specification) {
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->specification));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->specification));
 
         d->specification = specification;
 
         // Adjust subsetted property(ies)
         if (specification) {
-            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(specification));
+            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(specification));
         }
     }
 }

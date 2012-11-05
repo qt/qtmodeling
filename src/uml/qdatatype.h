@@ -78,7 +78,7 @@ public:
     explicit QDataType(QObject *parent = 0);
     virtual ~QDataType();
 
-    // Association-ends
+    // Association ends from QDataType
     const QList<QOperation *> *ownedOperations() const;
     void addOwnedOperation(QOperation *ownedOperation);
     void removeOwnedOperation(QOperation *ownedOperation);

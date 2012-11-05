@@ -77,6 +77,10 @@ QInstanceValue::~QInstanceValue()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QInstanceValue
+// ---------------------------------------------------------------
+
 /*!
     The instance that is the specified value.
  */

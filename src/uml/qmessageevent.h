@@ -56,6 +56,8 @@ class QMessageEventPrivate;
 
 class Q_UML_EXPORT QMessageEvent : public QEvent
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QMessageEvent)
     Q_DECLARE_PRIVATE(QMessageEvent)
 

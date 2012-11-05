@@ -71,7 +71,7 @@ public:
     explicit QBroadcastSignalAction(QObject *parent = 0);
     virtual ~QBroadcastSignalAction();
 
-    // Association-ends
+    // Association ends from QBroadcastSignalAction
     QSignal *signal() const;
     void setSignal(QSignal *signal);
 

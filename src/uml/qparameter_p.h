@@ -41,23 +41,22 @@
 #ifndef QTUML_QPARAMETER_P_H
 #define QTUML_QPARAMETER_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qmultiplicityelement_p.h"
 #include "private/qconnectableelement_p.h"
-#include "qparameter.h"
 
+#include "QtUml/QParameter"
 
 // QtUml includes
-#include <QtUml/QtUmlEnumerations>
-#include <QtUml/QtUmlEnumerations>
+#include "QtUml/QtUmlEnumerations"
+#include "QtUml/QtUmlEnumerations"
 
 // Qt includes
-#include <QtCore/QString>
-#include <QtCore/QSet>
+#include "QtCore/QString"
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -86,10 +85,6 @@ public:
     QOperation *operation;
     QValueSpecification *defaultValue;
     QSet<QParameterSet *> *parameterSets;
-
-private:
-    QMultiplicityElementPrivate *_wrappedMultiplicityElementPrivate;
-    QConnectableElementPrivate *_wrappedConnectableElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

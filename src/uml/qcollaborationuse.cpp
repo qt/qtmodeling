@@ -80,6 +80,10 @@ QCollaborationUse::~QCollaborationUse()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QCollaborationUse
+// ---------------------------------------------------------------
+
 /*!
     The collaboration which is used in this occurrence. The collaboration defines the cooperation between its roles which are mapped to properties of the classifier owning the collaboration use.
  */
@@ -121,7 +125,7 @@ void QCollaborationUse::addRoleBinding(QDependency *roleBinding)
         d->roleBindings->insert(roleBinding);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(roleBinding));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(roleBinding));
     }
 }
 
@@ -134,7 +138,7 @@ void QCollaborationUse::removeRoleBinding(QDependency *roleBinding)
         d->roleBindings->remove(roleBinding);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(roleBinding));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(roleBinding));
     }
 }
 

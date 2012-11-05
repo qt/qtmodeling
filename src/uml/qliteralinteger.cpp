@@ -42,7 +42,6 @@
 #include "qliteralinteger.h"
 #include "qliteralinteger_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QLiteralIntegerPrivate::QLiteralIntegerPrivate()
@@ -74,6 +73,10 @@ QLiteralInteger::QLiteralInteger(QLiteralIntegerPrivate &dd, QObject *parent) :
 QLiteralInteger::~QLiteralInteger()
 {
 }
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QLiteralInteger
+// ---------------------------------------------------------------
 
 /*!
     The specified Integer value.

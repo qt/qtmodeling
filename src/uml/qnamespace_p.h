@@ -41,15 +41,16 @@
 #ifndef QTUML_QNAMESPACE_P_H
 #define QTUML_QNAMESPACE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qnamedelement_p.h"
-#include "qnamespace.h"
+
+#include "QtUml/QNamespace"
 
 // Qt includes
-#include <QtCore/QString>
-#include <QtCore/QSet>
+#include "QtCore/QString"
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

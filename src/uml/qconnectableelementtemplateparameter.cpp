@@ -77,6 +77,10 @@ QConnectableElementTemplateParameter::~QConnectableElementTemplateParameter()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QConnectableElementTemplateParameter
+// ---------------------------------------------------------------
+
 /*!
     The ConnectableElement for this template parameter.
  */

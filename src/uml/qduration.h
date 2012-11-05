@@ -75,7 +75,7 @@ public:
     explicit QDuration(QObject *parent = 0);
     virtual ~QDuration();
 
-    // Association-ends
+    // Association ends from QDuration
     QValueSpecification *expr() const;
     void setExpr(QValueSpecification *expr);
     const QSet<QObservation *> *observations() const;
