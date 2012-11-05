@@ -72,11 +72,11 @@ public:
     explicit QRemoveVariableValueAction(QObject *parent = 0);
     virtual ~QRemoveVariableValueAction();
 
-    // Attributes
+    // Attributes from QRemoveVariableValueAction
     bool isRemoveDuplicates() const;
     void setRemoveDuplicates(bool isRemoveDuplicates);
 
-    // Association-ends
+    // Association ends from QRemoveVariableValueAction
     QInputPin *removeAt() const;
     void setRemoveAt(QInputPin *removeAt);
 

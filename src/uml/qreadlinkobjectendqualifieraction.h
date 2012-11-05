@@ -75,7 +75,7 @@ public:
     explicit QReadLinkObjectEndQualifierAction(QObject *parent = 0);
     virtual ~QReadLinkObjectEndQualifierAction();
 
-    // Association-ends
+    // Association ends from QReadLinkObjectEndQualifierAction
     QOutputPin *result() const;
     void setResult(QOutputPin *result);
     QInputPin *object() const;

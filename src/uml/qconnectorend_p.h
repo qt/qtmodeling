@@ -41,12 +41,12 @@
 #ifndef QTUML_QCONNECTOREND_P_H
 #define QTUML_QCONNECTOREND_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qmultiplicityelement_p.h"
-#include "qconnectorend.h"
 
+#include "QtUml/QConnectorEnd"
 
 QT_BEGIN_HEADER
 

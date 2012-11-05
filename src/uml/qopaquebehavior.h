@@ -73,7 +73,7 @@ public:
     explicit QOpaqueBehavior(QObject *parent = 0);
     virtual ~QOpaqueBehavior();
 
-    // Attributes
+    // Attributes from QOpaqueBehavior
     const QList<QString> *languages() const;
     void addLanguage(QString language);
     void removeLanguage(QString language);

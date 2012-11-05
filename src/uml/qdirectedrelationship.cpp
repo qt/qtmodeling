@@ -66,7 +66,7 @@ void QDirectedRelationshipPrivate::addSource(QElement *source)
         this->sources->insert(source);
 
         // Adjust subsetted property(ies)
-        QRelationshipPrivate::addRelatedElement(dynamic_cast<QElement *>(source));
+        (qtuml_object_cast<QRelationshipPrivate *>(this))->addRelatedElement(qtuml_object_cast<QElement *>(source));
     }
 }
 
@@ -78,7 +78,7 @@ void QDirectedRelationshipPrivate::removeSource(QElement *source)
         this->sources->remove(source);
 
         // Adjust subsetted property(ies)
-        QRelationshipPrivate::removeRelatedElement(dynamic_cast<QElement *>(source));
+        (qtuml_object_cast<QRelationshipPrivate *>(this))->removeRelatedElement(qtuml_object_cast<QElement *>(source));
     }
 }
 
@@ -90,7 +90,7 @@ void QDirectedRelationshipPrivate::addTarget(QElement *target)
         this->targets->insert(target);
 
         // Adjust subsetted property(ies)
-        QRelationshipPrivate::addRelatedElement(dynamic_cast<QElement *>(target));
+        (qtuml_object_cast<QRelationshipPrivate *>(this))->addRelatedElement(qtuml_object_cast<QElement *>(target));
     }
 }
 
@@ -102,7 +102,7 @@ void QDirectedRelationshipPrivate::removeTarget(QElement *target)
         this->targets->remove(target);
 
         // Adjust subsetted property(ies)
-        QRelationshipPrivate::removeRelatedElement(dynamic_cast<QElement *>(target));
+        (qtuml_object_cast<QRelationshipPrivate *>(this))->removeRelatedElement(qtuml_object_cast<QElement *>(target));
     }
 }
 
@@ -128,6 +128,10 @@ QDirectedRelationship::~QDirectedRelationship()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QDirectedRelationship
+// ---------------------------------------------------------------
+
 /*!
     Specifies the sources of the DirectedRelationship.
  */
@@ -149,6 +153,8 @@ const QSet<QElement *> *QDirectedRelationship::targets() const
     Q_D(const QDirectedRelationship);
     return d->targets;
 }
+
+#include "moc_qdirectedrelationship.cpp"
 
 QT_END_NAMESPACE_QTUML
 

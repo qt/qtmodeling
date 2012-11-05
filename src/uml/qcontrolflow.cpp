@@ -42,7 +42,6 @@
 #include "qcontrolflow.h"
 #include "qcontrolflow_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QControlFlowPrivate::QControlFlowPrivate()

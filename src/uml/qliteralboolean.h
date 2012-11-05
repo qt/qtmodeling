@@ -68,7 +68,7 @@ public:
     explicit QLiteralBoolean(QObject *parent = 0);
     virtual ~QLiteralBoolean();
 
-    // Attributes
+    // Attributes from QLiteralBoolean
     bool value() const;
     void setValue(bool value);
 

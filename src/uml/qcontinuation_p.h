@@ -41,12 +41,12 @@
 #ifndef QTUML_QCONTINUATION_P_H
 #define QTUML_QCONTINUATION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qinteractionfragment_p.h"
-#include "qcontinuation.h"
 
+#include "QtUml/QContinuation"
 
 QT_BEGIN_HEADER
 

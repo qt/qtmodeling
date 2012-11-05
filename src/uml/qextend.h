@@ -45,6 +45,8 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtUml/QDirectedRelationship>
+#include <QtUml/QNamedElement>
 
 // Qt includes
 #include <QtCore/QList>
@@ -54,10 +56,6 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
-
-// Forward decls for aggregated 'base classes'
-class QDirectedRelationship;
-class QNamedElement;
 
 // Forward decls for function parameters
 class QConstraint;
@@ -69,12 +67,6 @@ class QExtendPrivate;
 class Q_UML_EXPORT QExtend : public QObject
 {
     Q_OBJECT
-
-    // From QExtend
-    Q_PROPERTY(QUseCase * extendedCase READ extendedCase WRITE setExtendedCase)
-    Q_PROPERTY(QUseCase * extension READ extension WRITE setExtension)
-    Q_PROPERTY(const QList<QExtensionPoint *> * extensionLocations READ extensionLocations)
-    Q_PROPERTY(QConstraint * condition READ condition WRITE setCondition)
 
     // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
@@ -96,6 +88,12 @@ class Q_UML_EXPORT QExtend : public QObject
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
     Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
 
+    // From QExtend
+    Q_PROPERTY(QUseCase * extendedCase READ extendedCase WRITE setExtendedCase)
+    Q_PROPERTY(QUseCase * extension READ extension WRITE setExtension)
+    Q_PROPERTY(const QList<QExtensionPoint *> * extensionLocations READ extensionLocations)
+    Q_PROPERTY(QConstraint * condition READ condition WRITE setCondition)
+
     Q_DISABLE_COPY(QExtend)
     Q_DECLARE_PRIVATE(QExtend)
 
@@ -103,7 +101,36 @@ public:
     explicit QExtend(QObject *parent = 0);
     virtual ~QExtend();
 
-    // Association-ends
+    // Association ends from aggregated QElement
+    const QSet<QElement *> *ownedElements() const;
+    QElement *owner() const;
+    const QSet<QComment *> *ownedComments() const;
+    void addOwnedComment(QComment *ownedComment);
+    void removeOwnedComment(QComment *ownedComment);
+
+    // Association ends from aggregated QRelationship
+    const QSet<QElement *> *relatedElements() const;
+
+    // Association ends from aggregated QDirectedRelationship
+    const QSet<QElement *> *sources() const;
+    const QSet<QElement *> *targets() const;
+
+    // Attributes from aggregated QNamedElement
+    QString name() const;
+    void setName(QString name);
+    QtUml::VisibilityKind visibility() const;
+    void setVisibility(QtUml::VisibilityKind visibility);
+    QString qualifiedName() const;
+
+    // Association ends from aggregated QNamedElement
+    QStringExpression *nameExpression() const;
+    void setNameExpression(QStringExpression *nameExpression);
+    QNamespace *namespace_() const;
+    const QSet<QDependency *> *clientDependencies() const;
+    void addClientDependency(QDependency *clientDependency);
+    void removeClientDependency(QDependency *clientDependency);
+
+    // Association ends from QExtend
     QUseCase *extendedCase() const;
     void setExtendedCase(QUseCase *extendedCase);
     QUseCase *extension() const;

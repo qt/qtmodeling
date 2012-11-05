@@ -56,6 +56,8 @@ class QAnyReceiveEventPrivate;
 
 class Q_UML_EXPORT QAnyReceiveEvent : public QMessageEvent
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QAnyReceiveEvent)
     Q_DECLARE_PRIVATE(QAnyReceiveEvent)
 

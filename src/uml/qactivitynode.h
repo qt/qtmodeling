@@ -86,7 +86,7 @@ public:
     explicit QActivityNode(QObject *parent = 0);
     virtual ~QActivityNode();
 
-    // Association-ends
+    // Association ends from QActivityNode
     const QSet<QActivityNode *> *redefinedNodes() const;
     void addRedefinedNode(QActivityNode *redefinedNode);
     void removeRedefinedNode(QActivityNode *redefinedNode);
@@ -107,6 +107,9 @@ public:
     const QSet<QActivityEdge *> *outgoings() const;
     void addOutgoing(QActivityEdge *outgoing);
     void removeOutgoing(QActivityEdge *outgoing);
+
+    // Classes which access read-only opposite properties should be friend
+    friend class QActivityGroupPrivate;
 
 protected:
     explicit QActivityNode(QActivityNodePrivate &dd, QObject *parent = 0);

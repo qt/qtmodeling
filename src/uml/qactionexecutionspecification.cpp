@@ -77,6 +77,10 @@ QActionExecutionSpecification::~QActionExecutionSpecification()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QActionExecutionSpecification
+// ---------------------------------------------------------------
+
 /*!
     Action whose execution is occurring.
  */

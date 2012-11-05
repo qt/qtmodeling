@@ -41,12 +41,12 @@
 #ifndef QTUML_QOPERATIONTEMPLATEPARAMETER_P_H
 #define QTUML_QOPERATIONTEMPLATEPARAMETER_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qtemplateparameter_p.h"
-#include "qoperationtemplateparameter.h"
 
+#include "QtUml/QOperationTemplateParameter"
 
 QT_BEGIN_HEADER
 

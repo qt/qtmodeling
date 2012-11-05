@@ -79,6 +79,10 @@ QStereotype::~QStereotype()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QStereotype
+// ---------------------------------------------------------------
+
 /*!
     Stereotype can change the graphical appearance of the extended model element by using attached icons. When this association is not null, it references the location of the icon content to be displayed within diagrams presenting the extended model elements.
  */
@@ -99,7 +103,7 @@ void QStereotype::addIcon(QImage *icon)
         d->icons->insert(icon);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(icon));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(icon));
     }
 }
 
@@ -112,7 +116,7 @@ void QStereotype::removeIcon(QImage *icon)
         d->icons->remove(icon);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(icon));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(icon));
     }
 }
 

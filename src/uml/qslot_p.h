@@ -41,14 +41,15 @@
 #ifndef QTUML_QSLOT_P_H
 #define QTUML_QSLOT_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qelement_p.h"
-#include "qslot.h"
+
+#include "QtUml/QSlot"
 
 // Qt includes
-#include <QtCore/QList>
+#include "QtCore/QList"
 
 QT_BEGIN_HEADER
 

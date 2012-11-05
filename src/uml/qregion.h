@@ -45,6 +45,8 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtUml/QRedefinableElement>
+#include <QtUml/QNamespace>
 
 // Qt includes
 #include <QtCore/QSet>
@@ -54,10 +56,6 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
-
-// Forward decls for aggregated 'base classes'
-class QRedefinableElement;
-class QNamespace;
 
 // Forward decls for function parameters
 class QVertex;
@@ -71,14 +69,6 @@ class QRegionPrivate;
 class Q_UML_EXPORT QRegion : public QObject
 {
     Q_OBJECT
-
-    // From QRegion
-    Q_PROPERTY(QRegion * extendedRegion READ extendedRegion WRITE setExtendedRegion)
-    Q_PROPERTY(const QSet<QTransition *> * transitions READ transitions)
-    Q_PROPERTY(QStateMachine * stateMachine READ stateMachine WRITE setStateMachine)
-    Q_PROPERTY(QState * state READ state WRITE setState)
-    Q_PROPERTY(QClassifier * redefinitionContext READ redefinitionContext)
-    Q_PROPERTY(const QSet<QVertex *> * subvertices READ subvertices)
 
     // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
@@ -105,6 +95,14 @@ class Q_UML_EXPORT QRegion : public QObject
     Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
     Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
 
+    // From QRegion
+    Q_PROPERTY(QRegion * extendedRegion READ extendedRegion WRITE setExtendedRegion)
+    Q_PROPERTY(const QSet<QTransition *> * transitions READ transitions)
+    Q_PROPERTY(QStateMachine * stateMachine READ stateMachine WRITE setStateMachine)
+    Q_PROPERTY(QState * state READ state WRITE setState)
+    Q_PROPERTY(QClassifier * redefinitionContext READ redefinitionContext)
+    Q_PROPERTY(const QSet<QVertex *> * subvertices READ subvertices)
+
     Q_DISABLE_COPY(QRegion)
     Q_DECLARE_PRIVATE(QRegion)
 
@@ -112,7 +110,50 @@ public:
     explicit QRegion(QObject *parent = 0);
     virtual ~QRegion();
 
-    // Association-ends
+    // Association ends from aggregated QElement
+    const QSet<QElement *> *ownedElements() const;
+    QElement *owner() const;
+    const QSet<QComment *> *ownedComments() const;
+    void addOwnedComment(QComment *ownedComment);
+    void removeOwnedComment(QComment *ownedComment);
+
+    // Attributes from aggregated QNamedElement
+    QString name() const;
+    void setName(QString name);
+    QtUml::VisibilityKind visibility() const;
+    void setVisibility(QtUml::VisibilityKind visibility);
+    QString qualifiedName() const;
+
+    // Association ends from aggregated QNamedElement
+    QStringExpression *nameExpression() const;
+    void setNameExpression(QStringExpression *nameExpression);
+    QNamespace *namespace_() const;
+    const QSet<QDependency *> *clientDependencies() const;
+    void addClientDependency(QDependency *clientDependency);
+    void removeClientDependency(QDependency *clientDependency);
+
+    // Attributes from aggregated QRedefinableElement
+    bool isLeaf() const;
+    void setLeaf(bool isLeaf);
+
+    // Association ends from aggregated QRedefinableElement
+    const QSet<QRedefinableElement *> *redefinedElements() const;
+
+    // Association ends from aggregated QNamespace
+    const QSet<QPackageImport *> *packageImports() const;
+    void addPackageImport(QPackageImport *packageImport);
+    void removePackageImport(QPackageImport *packageImport);
+    const QSet<QNamedElement *> *members() const;
+    const QSet<QPackageableElement *> *importedMembers() const;
+    const QSet<QElementImport *> *elementImports() const;
+    void addElementImport(QElementImport *elementImport);
+    void removeElementImport(QElementImport *elementImport);
+    const QSet<QConstraint *> *ownedRules() const;
+    void addOwnedRule(QConstraint *ownedRule);
+    void removeOwnedRule(QConstraint *ownedRule);
+    const QSet<QNamedElement *> *ownedMembers() const;
+
+    // Association ends from QRegion
     QRegion *extendedRegion() const;
     void setExtendedRegion(QRegion *extendedRegion);
     const QSet<QTransition *> *transitions() const;

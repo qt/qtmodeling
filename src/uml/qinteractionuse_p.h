@@ -41,15 +41,16 @@
 #ifndef QTUML_QINTERACTIONUSE_P_H
 #define QTUML_QINTERACTIONUSE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qinteractionfragment_p.h"
-#include "qinteractionuse.h"
+
+#include "QtUml/QInteractionUse"
 
 // Qt includes
-#include <QtCore/QList>
-#include <QtCore/QSet>
+#include "QtCore/QList"
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

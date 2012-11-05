@@ -78,6 +78,10 @@ QGeneralOrdering::~QGeneralOrdering()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QGeneralOrdering
+// ---------------------------------------------------------------
+
 /*!
     The OccurrenceSpecification referenced comes before the OccurrenceSpecification referenced by after.
  */

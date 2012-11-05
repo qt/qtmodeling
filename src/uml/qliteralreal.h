@@ -68,7 +68,7 @@ public:
     explicit QLiteralReal(QObject *parent = 0);
     virtual ~QLiteralReal();
 
-    // Attributes
+    // Attributes from QLiteralReal
     qreal value() const;
     void setValue(qreal value);
 

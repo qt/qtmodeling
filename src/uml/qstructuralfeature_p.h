@@ -41,16 +41,15 @@
 #ifndef QTUML_QSTRUCTURALFEATURE_P_H
 #define QTUML_QSTRUCTURALFEATURE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qtypedelement_p.h"
 #include "private/qmultiplicityelement_p.h"
 #include "private/qfeature_p.h"
-#include "qstructuralfeature.h"
 
+#include "QtUml/QStructuralFeature"
 
 QT_BEGIN_HEADER
 
@@ -67,11 +66,6 @@ public:
     virtual ~QStructuralFeaturePrivate();
 
     bool isReadOnly;
-
-private:
-    QTypedElementPrivate *_wrappedTypedElementPrivate;
-    QMultiplicityElementPrivate *_wrappedMultiplicityElementPrivate;
-    QFeaturePrivate *_wrappedFeaturePrivate;
 };
 
 QT_END_NAMESPACE_QTUML

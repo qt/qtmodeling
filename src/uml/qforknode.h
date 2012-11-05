@@ -56,6 +56,8 @@ class QForkNodePrivate;
 
 class Q_UML_EXPORT QForkNode : public QControlNode
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QForkNode)
     Q_DECLARE_PRIVATE(QForkNode)
 

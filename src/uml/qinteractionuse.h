@@ -82,7 +82,7 @@ public:
     explicit QInteractionUse(QObject *parent = 0);
     virtual ~QInteractionUse();
 
-    // Association-ends
+    // Association ends from QInteractionUse
     const QSet<QGate *> *actualGates() const;
     void addActualGate(QGate *actualGate);
     void removeActualGate(QGate *actualGate);

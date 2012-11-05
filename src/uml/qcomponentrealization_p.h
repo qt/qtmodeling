@@ -41,14 +41,15 @@
 #ifndef QTUML_QCOMPONENTREALIZATION_P_H
 #define QTUML_QCOMPONENTREALIZATION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qrealization_p.h"
-#include "qcomponentrealization.h"
+
+#include "QtUml/QComponentRealization"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

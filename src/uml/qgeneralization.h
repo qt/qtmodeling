@@ -78,11 +78,11 @@ public:
     explicit QGeneralization(QObject *parent = 0);
     virtual ~QGeneralization();
 
-    // Attributes
+    // Attributes from QGeneralization
     bool isSubstitutable() const;
     void setSubstitutable(bool isSubstitutable);
 
-    // Association-ends
+    // Association ends from QGeneralization
     QClassifier *specific() const;
     void setSpecific(QClassifier *specific);
     const QSet<QGeneralizationSet *> *generalizationSets() const;

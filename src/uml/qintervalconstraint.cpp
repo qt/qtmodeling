@@ -78,6 +78,10 @@ QIntervalConstraint::~QIntervalConstraint()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QIntervalConstraint
+// ---------------------------------------------------------------
+
 /*!
     A condition that must be true when evaluated in order for the constraint to be satisfied.
  */

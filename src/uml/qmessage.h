@@ -88,12 +88,12 @@ public:
     explicit QMessage(QObject *parent = 0);
     virtual ~QMessage();
 
-    // Attributes
+    // Attributes from QMessage
     QtUml::MessageSort messageSort() const;
     void setMessageSort(QtUml::MessageSort messageSort);
     QtUml::MessageKind messageKind() const;
 
-    // Association-ends
+    // Association ends from QMessage
     QNamedElement *signature() const;
     void setSignature(QNamedElement *signature);
     const QList<QValueSpecification *> *arguments() const;

@@ -56,6 +56,8 @@ class QFunctionBehaviorPrivate;
 
 class Q_UML_EXPORT QFunctionBehavior : public QOpaqueBehavior
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QFunctionBehavior)
     Q_DECLARE_PRIVATE(QFunctionBehavior)
 

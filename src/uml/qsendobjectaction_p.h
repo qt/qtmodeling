@@ -41,12 +41,12 @@
 #ifndef QTUML_QSENDOBJECTACTION_P_H
 #define QTUML_QSENDOBJECTACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qinvocationaction_p.h"
-#include "qsendobjectaction.h"
 
+#include "QtUml/QSendObjectAction"
 
 QT_BEGIN_HEADER
 

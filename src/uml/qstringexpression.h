@@ -45,6 +45,8 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtUml/QExpression>
+#include <QtUml/QTemplateableElement>
 
 // Qt includes
 #include <QtCore/QString>
@@ -56,19 +58,11 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-// Forward decls for aggregated 'base classes'
-class QExpression;
-class QTemplateableElement;
-
 class QStringExpressionPrivate;
 
 class Q_UML_EXPORT QStringExpression : public QObject
 {
     Q_OBJECT
-
-    // From QStringExpression
-    Q_PROPERTY(QStringExpression * owningExpression READ owningExpression WRITE setOwningExpression)
-    Q_PROPERTY(const QSet<QStringExpression *> * subExpressions READ subExpressions)
 
     // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
@@ -79,6 +73,10 @@ class Q_UML_EXPORT QStringExpression : public QObject
     Q_PROPERTY(QTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
     Q_PROPERTY(const QSet<QTemplateBinding *> * templateBindings READ templateBindings)
 
+    // From QStringExpression
+    Q_PROPERTY(QStringExpression * owningExpression READ owningExpression WRITE setOwningExpression)
+    Q_PROPERTY(const QSet<QStringExpression *> * subExpressions READ subExpressions)
+
     Q_DISABLE_COPY(QStringExpression)
     Q_DECLARE_PRIVATE(QStringExpression)
 
@@ -86,7 +84,21 @@ public:
     explicit QStringExpression(QObject *parent = 0);
     virtual ~QStringExpression();
 
-    // Association-ends
+    // Association ends from aggregated QElement
+    const QSet<QElement *> *ownedElements() const;
+    QElement *owner() const;
+    const QSet<QComment *> *ownedComments() const;
+    void addOwnedComment(QComment *ownedComment);
+    void removeOwnedComment(QComment *ownedComment);
+
+    // Association ends from aggregated QTemplateableElement
+    QTemplateSignature *ownedTemplateSignature() const;
+    void setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature);
+    const QSet<QTemplateBinding *> *templateBindings() const;
+    void addTemplateBinding(QTemplateBinding *templateBinding);
+    void removeTemplateBinding(QTemplateBinding *templateBinding);
+
+    // Association ends from QStringExpression
     QStringExpression *owningExpression() const;
     void setOwningExpression(QStringExpression *owningExpression);
     const QSet<QStringExpression *> *subExpressions() const;

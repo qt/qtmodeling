@@ -41,14 +41,15 @@
 #ifndef QTUML_QENUMERATION_P_H
 #define QTUML_QENUMERATION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qdatatype_p.h"
-#include "qenumeration.h"
+
+#include "QtUml/QEnumeration"
 
 // Qt includes
-#include <QtCore/QList>
+#include "QtCore/QList"
 
 QT_BEGIN_HEADER
 

@@ -41,14 +41,15 @@
 #ifndef QTUML_QBEHAVIOREDCLASSIFIER_P_H
 #define QTUML_QBEHAVIOREDCLASSIFIER_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qclassifier_p.h"
-#include "qbehavioredclassifier.h"
+
+#include "QtUml/QBehavioredClassifier"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

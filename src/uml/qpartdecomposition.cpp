@@ -42,7 +42,6 @@
 #include "qpartdecomposition.h"
 #include "qpartdecomposition_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QPartDecompositionPrivate::QPartDecompositionPrivate()

@@ -71,7 +71,7 @@ public:
     explicit QConnectableElementTemplateParameter(QObject *parent = 0);
     virtual ~QConnectableElementTemplateParameter();
 
-    // Association-ends
+    // Association ends from QConnectableElementTemplateParameter
     QConnectableElement *parameteredElement() const;
     void setParameteredElement(QConnectableElement *parameteredElement);
 

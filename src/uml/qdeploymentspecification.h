@@ -76,13 +76,13 @@ public:
     explicit QDeploymentSpecification(QObject *parent = 0);
     virtual ~QDeploymentSpecification();
 
-    // Attributes
+    // Attributes from QDeploymentSpecification
     QString deploymentLocation() const;
     void setDeploymentLocation(QString deploymentLocation);
     QString executionLocation() const;
     void setExecutionLocation(QString executionLocation);
 
-    // Association-ends
+    // Association ends from QDeploymentSpecification
     QDeployment *deployment() const;
     void setDeployment(QDeployment *deployment);
 

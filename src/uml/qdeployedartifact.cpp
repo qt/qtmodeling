@@ -42,7 +42,6 @@
 #include "qdeployedartifact.h"
 #include "qdeployedartifact_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QDeployedArtifactPrivate::QDeployedArtifactPrivate()
@@ -74,6 +73,8 @@ QDeployedArtifact::QDeployedArtifact(QDeployedArtifactPrivate &dd, QObject *pare
 QDeployedArtifact::~QDeployedArtifact()
 {
 }
+
+#include "moc_qdeployedartifact.cpp"
 
 QT_END_NAMESPACE_QTUML
 

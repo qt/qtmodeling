@@ -56,6 +56,8 @@ class QExecutionEnvironmentPrivate;
 
 class Q_UML_EXPORT QExecutionEnvironment : public QNode
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QExecutionEnvironment)
     Q_DECLARE_PRIVATE(QExecutionEnvironment)
 

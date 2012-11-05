@@ -53,8 +53,12 @@ QDestroyLinkActionPrivate::QDestroyLinkActionPrivate() :
 
 QDestroyLinkActionPrivate::~QDestroyLinkActionPrivate()
 {
-    foreach (QLinkEndDestructionData *linkenddestructiondata, *endData)
-        delete linkenddestructiondata;
+    foreach (QLinkEndDestructionData *linkenddestructiondata, *endData) {
+        QObject *object = linkenddestructiondata;
+        while (object->parent())
+            object = object->parent();
+        delete object;
+    }
     delete endData;
 }
 
@@ -79,6 +83,10 @@ QDestroyLinkAction::QDestroyLinkAction(QDestroyLinkActionPrivate &dd, QObject *p
 QDestroyLinkAction::~QDestroyLinkAction()
 {
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QDestroyLinkAction
+// ---------------------------------------------------------------
 
 /*!
     Specifies ends of association and inputs.

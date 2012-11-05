@@ -42,7 +42,6 @@
 #include "qclearvariableaction.h"
 #include "qclearvariableaction_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QClearVariableActionPrivate::QClearVariableActionPrivate()

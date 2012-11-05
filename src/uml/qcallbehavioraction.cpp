@@ -77,6 +77,10 @@ QCallBehaviorAction::~QCallBehaviorAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QCallBehaviorAction
+// ---------------------------------------------------------------
+
 /*!
     The invoked behavior. It must be capable of accepting and returning control.
  */

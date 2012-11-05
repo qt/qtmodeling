@@ -71,7 +71,7 @@ public:
     explicit QManifestation(QObject *parent = 0);
     virtual ~QManifestation();
 
-    // Association-ends
+    // Association ends from QManifestation
     QPackageableElement *utilizedElement() const;
     void setUtilizedElement(QPackageableElement *utilizedElement);
 

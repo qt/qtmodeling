@@ -73,7 +73,7 @@ public:
     explicit QStructuralFeatureAction(QObject *parent = 0);
     virtual ~QStructuralFeatureAction();
 
-    // Association-ends
+    // Association ends from QStructuralFeatureAction
     QInputPin *object() const;
     void setObject(QInputPin *object);
     QStructuralFeature *structuralFeature() const;

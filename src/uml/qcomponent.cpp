@@ -84,6 +84,10 @@ QComponent::~QComponent()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QComponent
+// ---------------------------------------------------------------
+
 /*!
     isIndirectlyInstantiated : Boolean {default = true} The kind of instantiation that applies to a Component. If false, the component is instantiated as an addressable object. If true, the Component is defined at design-time, but at run-time (or execution-time) an object specified by the Component does not exist, that is, the component is instantiated indirectly, through the instantiation of its realizing classifiers or parts. Several standard stereotypes use this meta attribute (e.g., «specification», «focus», «subsystem»).
  */
@@ -105,6 +109,10 @@ void QComponent::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
     }
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QComponent
+// ---------------------------------------------------------------
+
 /*!
     The set of Realizations owned by the Component. Realizations reference the Classifiers of which the Component is an abstraction; i.e., that realize its behavior.
  */
@@ -125,7 +133,7 @@ void QComponent::addRealization(QComponentRealization *realization)
         d->realizations->insert(realization);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(realization));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(realization));
 
         // Adjust opposite property
         realization->setAbstraction(this);
@@ -141,7 +149,7 @@ void QComponent::removeRealization(QComponentRealization *realization)
         d->realizations->remove(realization);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(realization));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(realization));
 
         // Adjust opposite property
         realization->setAbstraction(0);
@@ -194,7 +202,7 @@ void QComponent::addPackagedElement(QPackageableElement *packagedElement)
         d->packagedElements->insert(packagedElement);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(packagedElement));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(packagedElement));
     }
 }
 
@@ -207,7 +215,7 @@ void QComponent::removePackagedElement(QPackageableElement *packagedElement)
         d->packagedElements->remove(packagedElement);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(packagedElement));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(packagedElement));
     }
 }
 

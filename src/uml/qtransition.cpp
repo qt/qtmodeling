@@ -41,6 +41,7 @@
 
 #include "qtransition.h"
 #include "qtransition_p.h"
+
 #include "qvertex_p.h"
 
 #include <QtUml/QTrigger>
@@ -96,6 +97,240 @@ QTransition::~QTransition()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QElement
+// ---------------------------------------------------------------
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QElement *> *QTransition::ownedElements() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+}
+
+/*!
+    The Element that owns this element.
+ */
+QElement *QTransition::owner() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->owner();
+}
+
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QComment *> *QTransition::ownedComments() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+}
+
+void QTransition::addOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+}
+
+void QTransition::removeOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The name of the NamedElement.
+ */
+QString QTransition::name() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+}
+
+void QTransition::setName(QString name)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+}
+
+/*!
+    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
+ */
+QtUml::VisibilityKind QTransition::visibility() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->visibility();
+}
+
+void QTransition::setVisibility(QtUml::VisibilityKind visibility)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setVisibility(visibility);
+}
+
+/*!
+    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
+ */
+QString QTransition::qualifiedName() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The string expression used to define the name of this named element.
+ */
+QStringExpression *QTransition::nameExpression() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+}
+
+void QTransition::setNameExpression(QStringExpression *nameExpression)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+}
+
+/*!
+    Specifies the namespace that owns the NamedElement.
+ */
+QNamespace *QTransition::namespace_() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+}
+
+/*!
+    Indicates the dependencies that reference the client.
+ */
+const QSet<QDependency *> *QTransition::clientDependencies() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+}
+
+void QTransition::addClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+}
+
+void QTransition::removeClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QRedefinableElement
+// ---------------------------------------------------------------
+
+/*!
+    Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false.
+ */
+bool QTransition::isLeaf() const
+{
+    return (qtuml_object_cast<const QRedefinableElement *>(this))->isLeaf();
+}
+
+void QTransition::setLeaf(bool isLeaf)
+{
+    (qtuml_object_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QRedefinableElement
+// ---------------------------------------------------------------
+
+/*!
+    The redefinable element that is being redefined by this element.
+ */
+const QSet<QRedefinableElement *> *QTransition::redefinedElements() const
+{
+    return (qtuml_object_cast<const QRedefinableElement *>(this))->redefinedElements();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QNamespace
+// ---------------------------------------------------------------
+
+/*!
+    References the PackageImports owned by the Namespace.
+ */
+const QSet<QPackageImport *> *QTransition::packageImports() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->packageImports();
+}
+
+void QTransition::addPackageImport(QPackageImport *packageImport)
+{
+    (qtuml_object_cast<QNamespace *>(this))->addPackageImport(packageImport);
+}
+
+void QTransition::removePackageImport(QPackageImport *packageImport)
+{
+    (qtuml_object_cast<QNamespace *>(this))->removePackageImport(packageImport);
+}
+
+/*!
+    A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
+ */
+const QSet<QNamedElement *> *QTransition::members() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->members();
+}
+
+/*!
+    References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
+ */
+const QSet<QPackageableElement *> *QTransition::importedMembers() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->importedMembers();
+}
+
+/*!
+    References the ElementImports owned by the Namespace.
+ */
+const QSet<QElementImport *> *QTransition::elementImports() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->elementImports();
+}
+
+void QTransition::addElementImport(QElementImport *elementImport)
+{
+    (qtuml_object_cast<QNamespace *>(this))->addElementImport(elementImport);
+}
+
+void QTransition::removeElementImport(QElementImport *elementImport)
+{
+    (qtuml_object_cast<QNamespace *>(this))->removeElementImport(elementImport);
+}
+
+/*!
+    Specifies a set of Constraints owned by this Namespace.
+ */
+const QSet<QConstraint *> *QTransition::ownedRules() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->ownedRules();
+}
+
+void QTransition::addOwnedRule(QConstraint *ownedRule)
+{
+    (qtuml_object_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
+}
+
+void QTransition::removeOwnedRule(QConstraint *ownedRule)
+{
+    (qtuml_object_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
+}
+
+/*!
+    A collection of NamedElements owned by the Namespace.
+ */
+const QSet<QNamedElement *> *QTransition::ownedMembers() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->ownedMembers();
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QTransition
+// ---------------------------------------------------------------
+
 /*!
     Indicates the precise type of the transition.
  */
@@ -117,6 +352,10 @@ void QTransition::setKind(QtUml::TransitionKind kind)
     }
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QTransition
+// ---------------------------------------------------------------
+
 /*!
     A guard is a constraint that provides a fine-grained control over the firing of the transition. The guard is evaluated when an event occurrence is dispatched by the state machine. If the guard is true at that time, the transition may be enabled, otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with side effects are ill formed.
  */
@@ -135,13 +374,13 @@ void QTransition::setGuard(QConstraint *guard)
     Q_D(QTransition);
     if (d->guard != guard) {
         // Adjust subsetted property(ies)
-        QNamespace::removeOwnedRule(dynamic_cast<QConstraint *>(d->guard));
+        (qtuml_object_cast<QNamespace *>(this))->removeOwnedRule(qtuml_object_cast<QConstraint *>(d->guard));
 
         d->guard = guard;
 
         // Adjust subsetted property(ies)
         if (guard) {
-            QNamespace::addOwnedRule(dynamic_cast<QConstraint *>(guard));
+            (qtuml_object_cast<QNamespace *>(this))->addOwnedRule(qtuml_object_cast<QConstraint *>(guard));
         }
     }
 }
@@ -165,13 +404,13 @@ void QTransition::setTarget(QVertex *target)
     if (d->target != target) {
         // Adjust opposite property
         if (d->target)
-            (dynamic_cast<QVertexPrivate *>(d->target->d_ptr))->removeIncoming(this);
+            (qtuml_object_cast<QVertexPrivate *>(d->target->d_func()))->removeIncoming(this);
 
         d->target = target;
 
         // Adjust opposite property
         if (target)
-            (dynamic_cast<QVertexPrivate *>(target->d_ptr))->addIncoming(this);
+            (qtuml_object_cast<QVertexPrivate *>(target->d_func()))->addIncoming(this);
     }
 }
 
@@ -193,13 +432,13 @@ void QTransition::setEffect(QBehavior *effect)
     Q_D(QTransition);
     if (d->effect != effect) {
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->effect));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->effect));
 
         d->effect = effect;
 
         // Adjust subsetted property(ies)
         if (effect) {
-            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(effect));
+            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(effect));
         }
     }
 }
@@ -228,7 +467,7 @@ void QTransition::setContainer(QRegion *container)
         d->container = container;
 
         // Adjust subsetted property(ies)
-        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(container));
+        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(container));
 
         // Adjust opposite property
         if (container)
@@ -267,13 +506,13 @@ void QTransition::setRedefinedTransition(QTransition *redefinedTransition)
     Q_D(QTransition);
     if (d->redefinedTransition != redefinedTransition) {
         // Adjust subsetted property(ies)
-        d->QRedefinableElementPrivate::removeRedefinedElement(dynamic_cast<QRedefinableElement *>(d->redefinedTransition));
+        (qtuml_object_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qtuml_object_cast<QRedefinableElement *>(d->redefinedTransition));
 
         d->redefinedTransition = redefinedTransition;
 
         // Adjust subsetted property(ies)
         if (redefinedTransition) {
-            d->QRedefinableElementPrivate::addRedefinedElement(dynamic_cast<QRedefinableElement *>(redefinedTransition));
+            (qtuml_object_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qtuml_object_cast<QRedefinableElement *>(redefinedTransition));
         }
     }
 }
@@ -297,13 +536,13 @@ void QTransition::setSource(QVertex *source)
     if (d->source != source) {
         // Adjust opposite property
         if (d->source)
-            (dynamic_cast<QVertexPrivate *>(d->source->d_ptr))->removeOutgoing(this);
+            (qtuml_object_cast<QVertexPrivate *>(d->source->d_func()))->removeOutgoing(this);
 
         d->source = source;
 
         // Adjust opposite property
         if (source)
-            (dynamic_cast<QVertexPrivate *>(source->d_ptr))->addOutgoing(this);
+            (qtuml_object_cast<QVertexPrivate *>(source->d_func()))->addOutgoing(this);
     }
 }
 
@@ -327,7 +566,7 @@ void QTransition::addTrigger(QTrigger *trigger)
         d->triggers->insert(trigger);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(trigger));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(trigger));
     }
 }
 
@@ -340,7 +579,7 @@ void QTransition::removeTrigger(QTrigger *trigger)
         d->triggers->remove(trigger);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(trigger));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(trigger));
     }
 }
 

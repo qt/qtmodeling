@@ -82,6 +82,161 @@ QInclude::~QInclude()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QElement
+// ---------------------------------------------------------------
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QElement *> *QInclude::ownedElements() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+}
+
+/*!
+    The Element that owns this element.
+ */
+QElement *QInclude::owner() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->owner();
+}
+
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QComment *> *QInclude::ownedComments() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+}
+
+void QInclude::addOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+}
+
+void QInclude::removeOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QRelationship
+// ---------------------------------------------------------------
+
+/*!
+    Specifies the elements related by the Relationship.
+ */
+const QSet<QElement *> *QInclude::relatedElements() const
+{
+    return (qtuml_object_cast<const QRelationship *>(this))->relatedElements();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QDirectedRelationship
+// ---------------------------------------------------------------
+
+/*!
+    Specifies the sources of the DirectedRelationship.
+ */
+const QSet<QElement *> *QInclude::sources() const
+{
+    return (qtuml_object_cast<const QDirectedRelationship *>(this))->sources();
+}
+
+/*!
+    Specifies the targets of the DirectedRelationship.
+ */
+const QSet<QElement *> *QInclude::targets() const
+{
+    return (qtuml_object_cast<const QDirectedRelationship *>(this))->targets();
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The name of the NamedElement.
+ */
+QString QInclude::name() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+}
+
+void QInclude::setName(QString name)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+}
+
+/*!
+    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
+ */
+QtUml::VisibilityKind QInclude::visibility() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->visibility();
+}
+
+void QInclude::setVisibility(QtUml::VisibilityKind visibility)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setVisibility(visibility);
+}
+
+/*!
+    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
+ */
+QString QInclude::qualifiedName() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The string expression used to define the name of this named element.
+ */
+QStringExpression *QInclude::nameExpression() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+}
+
+void QInclude::setNameExpression(QStringExpression *nameExpression)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+}
+
+/*!
+    Specifies the namespace that owns the NamedElement.
+ */
+QNamespace *QInclude::namespace_() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+}
+
+/*!
+    Indicates the dependencies that reference the client.
+ */
+const QSet<QDependency *> *QInclude::clientDependencies() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+}
+
+void QInclude::addClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+}
+
+void QInclude::removeClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QInclude
+// ---------------------------------------------------------------
+
 /*!
     References the use case which will include the addition and owns the include relationship.
  */
@@ -104,15 +259,15 @@ void QInclude::setIncludingCase(QUseCase *includingCase)
             d->includingCase->removeInclude(this);
 
         // Adjust subsetted property(ies)
-        d->QDirectedRelationshipPrivate::removeSource(dynamic_cast<QElement *>(d->includingCase));
+        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qtuml_object_cast<QElement *>(d->includingCase));
 
         d->includingCase = includingCase;
 
         // Adjust subsetted property(ies)
         if (includingCase) {
-            d->QDirectedRelationshipPrivate::addSource(dynamic_cast<QElement *>(includingCase));
+            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addSource(qtuml_object_cast<QElement *>(includingCase));
         }
-        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(includingCase));
+        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(includingCase));
 
         // Adjust opposite property
         if (includingCase)
@@ -138,13 +293,13 @@ void QInclude::setAddition(QUseCase *addition)
     Q_D(QInclude);
     if (d->addition != addition) {
         // Adjust subsetted property(ies)
-        d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(d->addition));
+        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qtuml_object_cast<QElement *>(d->addition));
 
         d->addition = addition;
 
         // Adjust subsetted property(ies)
         if (addition) {
-            d->QDirectedRelationshipPrivate::addTarget(dynamic_cast<QElement *>(addition));
+            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qtuml_object_cast<QElement *>(addition));
         }
     }
 }

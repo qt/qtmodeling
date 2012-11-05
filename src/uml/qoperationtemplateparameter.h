@@ -71,7 +71,7 @@ public:
     explicit QOperationTemplateParameter(QObject *parent = 0);
     virtual ~QOperationTemplateParameter();
 
-    // Association-ends
+    // Association ends from QOperationTemplateParameter
     QOperation *parameteredElement() const;
     void setParameteredElement(QOperation *parameteredElement);
 

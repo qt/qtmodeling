@@ -42,7 +42,6 @@
 #include "qcentralbuffernode.h"
 #include "qcentralbuffernode_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QCentralBufferNodePrivate::QCentralBufferNodePrivate()

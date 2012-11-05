@@ -82,6 +82,10 @@ QTemplateParameter::~QTemplateParameter()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QTemplateParameter
+// ---------------------------------------------------------------
+
 /*!
     The element that is the default for this formal template parameter.
  */
@@ -149,14 +153,14 @@ void QTemplateParameter::setOwnedParameteredElement(QParameterableElement *owned
         // Adjust opposite property
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->ownedParameteredElement));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->ownedParameteredElement));
 
         d->ownedParameteredElement = ownedParameteredElement;
 
         // Adjust subsetted property(ies)
-        QTemplateParameter::setParameteredElement(dynamic_cast<QParameterableElement *>(ownedParameteredElement));
+        (qtuml_object_cast<QTemplateParameter *>(this))->setParameteredElement(qtuml_object_cast<QParameterableElement *>(ownedParameteredElement));
         if (ownedParameteredElement) {
-            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(ownedParameteredElement));
+            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(ownedParameteredElement));
         }
 
         // Adjust opposite property
@@ -182,15 +186,15 @@ void QTemplateParameter::setOwnedDefault(QParameterableElement *ownedDefault)
     Q_D(QTemplateParameter);
     if (d->ownedDefault != ownedDefault) {
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->ownedDefault));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->ownedDefault));
 
         d->ownedDefault = ownedDefault;
 
         // Adjust subsetted property(ies)
         if (ownedDefault) {
-            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(ownedDefault));
+            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(ownedDefault));
         }
-        QTemplateParameter::setDefault_(dynamic_cast<QParameterableElement *>(ownedDefault));
+        (qtuml_object_cast<QTemplateParameter *>(this))->setDefault_(qtuml_object_cast<QParameterableElement *>(ownedDefault));
     }
 }
 
@@ -218,7 +222,7 @@ void QTemplateParameter::setSignature(QTemplateSignature *signature)
         d->signature = signature;
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(signature));
+        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(signature));
 
         // Adjust opposite property
         if (signature)

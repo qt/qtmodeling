@@ -82,6 +82,10 @@ QSlot::~QSlot()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QSlot
+// ---------------------------------------------------------------
+
 /*!
     The value or values corresponding to the defining feature for the owning instance specification.
  */
@@ -102,7 +106,7 @@ void QSlot::addValue(QValueSpecification *value)
         d->values->append(value);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(value));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(value));
     }
 }
 
@@ -115,7 +119,7 @@ void QSlot::removeValue(QValueSpecification *value)
         d->values->removeAll(value);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(value));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(value));
     }
 }
 
@@ -164,7 +168,7 @@ void QSlot::setOwningInstance(QInstanceSpecification *owningInstance)
         d->owningInstance = owningInstance;
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(owningInstance));
+        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(owningInstance));
 
         // Adjust opposite property
         if (owningInstance)

@@ -76,7 +76,7 @@ public:
     explicit QComponentRealization(QObject *parent = 0);
     virtual ~QComponentRealization();
 
-    // Association-ends
+    // Association ends from QComponentRealization
     QComponent *abstraction() const;
     void setAbstraction(QComponent *abstraction);
     const QSet<QClassifier *> *realizingClassifiers() const;

@@ -68,7 +68,7 @@ public:
     explicit QLiteralUnlimitedNatural(QObject *parent = 0);
     virtual ~QLiteralUnlimitedNatural();
 
-    // Attributes
+    // Attributes from QLiteralUnlimitedNatural
     qint32 value() const;
     void setValue(qint32 value);
 

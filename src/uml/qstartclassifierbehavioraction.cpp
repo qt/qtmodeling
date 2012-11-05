@@ -77,6 +77,10 @@ QStartClassifierBehaviorAction::~QStartClassifierBehaviorAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QStartClassifierBehaviorAction
+// ---------------------------------------------------------------
+
 /*!
     Holds the object on which to start the owned behavior.
  */
@@ -95,13 +99,13 @@ void QStartClassifierBehaviorAction::setObject(QInputPin *object)
     Q_D(QStartClassifierBehaviorAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->object));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->object));
 
         d->object = object;
 
         // Adjust subsetted property(ies)
         if (object) {
-            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(object));
+            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(object));
         }
     }
 }

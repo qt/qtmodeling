@@ -78,6 +78,10 @@ QConsiderIgnoreFragment::~QConsiderIgnoreFragment()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QConsiderIgnoreFragment
+// ---------------------------------------------------------------
+
 /*!
     The set of messages that apply to this fragment
  */

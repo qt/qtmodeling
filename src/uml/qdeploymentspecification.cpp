@@ -77,6 +77,10 @@ QDeploymentSpecification::~QDeploymentSpecification()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QDeploymentSpecification
+// ---------------------------------------------------------------
+
 /*!
     The location where an Artifact is deployed onto a Node. This is typically a 'directory' or 'memory address'.
  */
@@ -119,6 +123,10 @@ void QDeploymentSpecification::setExecutionLocation(QString executionLocation)
     }
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QDeploymentSpecification
+// ---------------------------------------------------------------
+
 /*!
     The deployment with which the DeploymentSpecification is associated.
  */
@@ -143,7 +151,7 @@ void QDeploymentSpecification::setDeployment(QDeployment *deployment)
         d->deployment = deployment;
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(deployment));
+        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(deployment));
 
         // Adjust opposite property
         if (deployment)

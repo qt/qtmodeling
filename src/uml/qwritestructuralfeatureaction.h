@@ -73,7 +73,7 @@ public:
     explicit QWriteStructuralFeatureAction(QObject *parent = 0);
     virtual ~QWriteStructuralFeatureAction();
 
-    // Association-ends
+    // Association ends from QWriteStructuralFeatureAction
     QOutputPin *result() const;
     void setResult(QOutputPin *result);
     QInputPin *value() const;

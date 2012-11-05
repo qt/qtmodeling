@@ -79,6 +79,10 @@ QDestroyObjectAction::~QDestroyObjectAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QDestroyObjectAction
+// ---------------------------------------------------------------
+
 /*!
     Specifies whether links in which the object participates are destroyed along with the object.
  */
@@ -121,6 +125,10 @@ void QDestroyObjectAction::setDestroyOwnedObjects(bool isDestroyOwnedObjects)
     }
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QDestroyObjectAction
+// ---------------------------------------------------------------
+
 /*!
     The input pin providing the object to be destroyed.
  */
@@ -139,13 +147,13 @@ void QDestroyObjectAction::setTarget(QInputPin *target)
     Q_D(QDestroyObjectAction);
     if (d->target != target) {
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->target));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->target));
 
         d->target = target;
 
         // Adjust subsetted property(ies)
         if (target) {
-            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(target));
+            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(target));
         }
     }
 }

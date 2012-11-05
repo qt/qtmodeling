@@ -71,7 +71,7 @@ public:
     explicit QStartObjectBehaviorAction(QObject *parent = 0);
     virtual ~QStartObjectBehaviorAction();
 
-    // Association-ends
+    // Association ends from QStartObjectBehaviorAction
     QInputPin *object() const;
     void setObject(QInputPin *object);
 

@@ -71,7 +71,7 @@ public:
     explicit QActivityParameterNode(QObject *parent = 0);
     virtual ~QActivityParameterNode();
 
-    // Association-ends
+    // Association ends from QActivityParameterNode
     QParameter *parameter() const;
     void setParameter(QParameter *parameter);
 

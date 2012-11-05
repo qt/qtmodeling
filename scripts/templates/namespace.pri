@@ -1,7 +1,8 @@
 PUBLIC_HEADERS +=
     [%- IF namespace.item('enumeration') -%][% ' \\' %]
     ${namespace.path}/${namespace.path.split('/').0.lower}enumerations.h
-    [%- END -%]
+    [%- END %]
+    ${namespace.path}/qumlpointer.h
 [%- FOREACH class IN namespace.class.values -%][% ' \\' %]
     ${namespace.path}/${class.name.lower}.h
 [%- END %]

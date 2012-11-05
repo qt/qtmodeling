@@ -89,6 +89,193 @@ QInstanceSpecification::~QInstanceSpecification()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QElement
+// ---------------------------------------------------------------
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QElement *> *QInstanceSpecification::ownedElements() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+}
+
+/*!
+    The Element that owns this element.
+ */
+QElement *QInstanceSpecification::owner() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->owner();
+}
+
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QComment *> *QInstanceSpecification::ownedComments() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+}
+
+void QInstanceSpecification::addOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+}
+
+void QInstanceSpecification::removeOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The name of the NamedElement.
+ */
+QString QInstanceSpecification::name() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+}
+
+void QInstanceSpecification::setName(QString name)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+}
+
+/*!
+    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
+ */
+QString QInstanceSpecification::qualifiedName() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The string expression used to define the name of this named element.
+ */
+QStringExpression *QInstanceSpecification::nameExpression() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+}
+
+void QInstanceSpecification::setNameExpression(QStringExpression *nameExpression)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+}
+
+/*!
+    Specifies the namespace that owns the NamedElement.
+ */
+QNamespace *QInstanceSpecification::namespace_() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+}
+
+/*!
+    Indicates the dependencies that reference the client.
+ */
+const QSet<QDependency *> *QInstanceSpecification::clientDependencies() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+}
+
+void QInstanceSpecification::addClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+}
+
+void QInstanceSpecification::removeClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QParameterableElement
+// ---------------------------------------------------------------
+
+/*!
+    The formal template parameter that owns this element.
+ */
+QTemplateParameter *QInstanceSpecification::owningTemplateParameter() const
+{
+    return (qtuml_object_cast<const QParameterableElement *>(this))->owningTemplateParameter();
+}
+
+void QInstanceSpecification::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
+{
+    (qtuml_object_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
+}
+
+/*!
+    The template parameter that exposes this element as a formal parameter.
+ */
+QTemplateParameter *QInstanceSpecification::templateParameter() const
+{
+    return (qtuml_object_cast<const QParameterableElement *>(this))->templateParameter();
+}
+
+void QInstanceSpecification::setTemplateParameter(QTemplateParameter *templateParameter)
+{
+    (qtuml_object_cast<QParameterableElement *>(this))->setTemplateParameter(templateParameter);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QPackageableElement
+// ---------------------------------------------------------------
+
+/*!
+    Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
+ */
+QtUml::VisibilityKind QInstanceSpecification::visibility() const
+{
+    return (qtuml_object_cast<const QPackageableElement *>(this))->visibility();
+}
+
+void QInstanceSpecification::setVisibility(QtUml::VisibilityKind visibility)
+{
+    (qtuml_object_cast<QPackageableElement *>(this))->setVisibility(visibility);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QDeploymentTarget
+// ---------------------------------------------------------------
+
+/*!
+    The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget.
+ */
+const QSet<QPackageableElement *> *QInstanceSpecification::deployedElements() const
+{
+    return (qtuml_object_cast<const QDeploymentTarget *>(this))->deployedElements();
+}
+
+/*!
+    The set of Deployments for a DeploymentTarget.
+ */
+const QSet<QDeployment *> *QInstanceSpecification::deployments() const
+{
+    return (qtuml_object_cast<const QDeploymentTarget *>(this))->deployments();
+}
+
+void QInstanceSpecification::addDeployment(QDeployment *deployment)
+{
+    (qtuml_object_cast<QDeploymentTarget *>(this))->addDeployment(deployment);
+}
+
+void QInstanceSpecification::removeDeployment(QDeployment *deployment)
+{
+    (qtuml_object_cast<QDeploymentTarget *>(this))->removeDeployment(deployment);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QInstanceSpecification
+// ---------------------------------------------------------------
+
 /*!
     The classifier or classifiers of the represented instance. If multiple classifiers are specified, the instance is classified by all of them.
  */
@@ -138,13 +325,13 @@ void QInstanceSpecification::setSpecification(QValueSpecification *specification
     Q_D(QInstanceSpecification);
     if (d->specification != specification) {
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->specification));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->specification));
 
         d->specification = specification;
 
         // Adjust subsetted property(ies)
         if (specification) {
-            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(specification));
+            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(specification));
         }
     }
 }
@@ -169,7 +356,7 @@ void QInstanceSpecification::addSlot_(QSlot *slot_)
         d->slots_->insert(slot_);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(slot_));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(slot_));
 
         // Adjust opposite property
         slot_->setOwningInstance(this);
@@ -185,7 +372,7 @@ void QInstanceSpecification::removeSlot_(QSlot *slot_)
         d->slots_->remove(slot_);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(slot_));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(slot_));
 
         // Adjust opposite property
         slot_->setOwningInstance(0);

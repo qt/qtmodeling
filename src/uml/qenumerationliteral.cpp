@@ -77,6 +77,10 @@ QEnumerationLiteral::~QEnumerationLiteral()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QEnumerationLiteral
+// ---------------------------------------------------------------
+
 /*!
     The classifier of this EnumerationLiteral derived to be equal to its enumeration.
  */
@@ -114,7 +118,7 @@ void QEnumerationLiteral::setEnumeration(QEnumeration *enumeration)
         d->enumeration = enumeration;
 
         // Adjust subsetted property(ies)
-        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(enumeration));
+        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(enumeration));
 
         // Adjust opposite property
         if (enumeration)

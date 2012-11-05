@@ -76,7 +76,7 @@ public:
     explicit QParameterSet(QObject *parent = 0);
     virtual ~QParameterSet();
 
-    // Association-ends
+    // Association ends from QParameterSet
     const QSet<QParameter *> *parameters() const;
     void addParameter(QParameter *parameter);
     void removeParameter(QParameter *parameter);

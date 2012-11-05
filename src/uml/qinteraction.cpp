@@ -93,6 +93,327 @@ QInteraction::~QInteraction()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QBehavior
+// ---------------------------------------------------------------
+
+/*!
+    Tells whether the behavior can be invoked while it is still executing from a previous invocation.
+ */
+bool QInteraction::isReentrant() const
+{
+    return (qtuml_object_cast<const QBehavior *>(this))->isReentrant();
+}
+
+void QInteraction::setReentrant(bool isReentrant)
+{
+    (qtuml_object_cast<QBehavior *>(this))->setReentrant(isReentrant);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QBehavior
+// ---------------------------------------------------------------
+
+/*!
+    Designates a behavioral feature that the behavior implements. The behavioral feature must be owned by the classifier that owns the behavior or be inherited by it. The parameters of the behavioral feature and the implementing behavior must match. A behavior does not need to have a specification, in which case it either is the classifer behavior of a BehavioredClassifier or it can only be invoked by another behavior of the classifier.
+ */
+QBehavioralFeature *QInteraction::specification() const
+{
+    return (qtuml_object_cast<const QBehavior *>(this))->specification();
+}
+
+void QInteraction::setSpecification(QBehavioralFeature *specification)
+{
+    (qtuml_object_cast<QBehavior *>(this))->setSpecification(specification);
+}
+
+/*!
+    An optional set of Constraints specifying what is fulfilled after the execution of the behavior is completed, if its precondition was fulfilled before its invocation.
+ */
+const QSet<QConstraint *> *QInteraction::postconditions() const
+{
+    return (qtuml_object_cast<const QBehavior *>(this))->postconditions();
+}
+
+void QInteraction::addPostcondition(QConstraint *postcondition)
+{
+    (qtuml_object_cast<QBehavior *>(this))->addPostcondition(postcondition);
+}
+
+void QInteraction::removePostcondition(QConstraint *postcondition)
+{
+    (qtuml_object_cast<QBehavior *>(this))->removePostcondition(postcondition);
+}
+
+/*!
+    An optional set of Constraints specifying what must be fulfilled when the behavior is invoked.
+ */
+const QSet<QConstraint *> *QInteraction::preconditions() const
+{
+    return (qtuml_object_cast<const QBehavior *>(this))->preconditions();
+}
+
+void QInteraction::addPrecondition(QConstraint *precondition)
+{
+    (qtuml_object_cast<QBehavior *>(this))->addPrecondition(precondition);
+}
+
+void QInteraction::removePrecondition(QConstraint *precondition)
+{
+    (qtuml_object_cast<QBehavior *>(this))->removePrecondition(precondition);
+}
+
+/*!
+    References a behavior that this behavior redefines. A subtype of Behavior may redefine any other subtype of Behavior. If the behavior implements a behavioral feature, it replaces the redefined behavior. If the behavior is a classifier behavior, it extends the redefined behavior.
+ */
+const QSet<QBehavior *> *QInteraction::redefinedBehaviors() const
+{
+    return (qtuml_object_cast<const QBehavior *>(this))->redefinedBehaviors();
+}
+
+void QInteraction::addRedefinedBehavior(QBehavior *redefinedBehavior)
+{
+    (qtuml_object_cast<QBehavior *>(this))->addRedefinedBehavior(redefinedBehavior);
+}
+
+void QInteraction::removeRedefinedBehavior(QBehavior *redefinedBehavior)
+{
+    (qtuml_object_cast<QBehavior *>(this))->removeRedefinedBehavior(redefinedBehavior);
+}
+
+/*!
+    References a list of parameters to the behavior which describes the order and type of arguments that can be given when the behavior is invoked and of the values which will be returned when the behavior completes its execution.
+ */
+const QList<QParameter *> *QInteraction::ownedParameters() const
+{
+    return (qtuml_object_cast<const QBehavior *>(this))->ownedParameters();
+}
+
+void QInteraction::addOwnedParameter(QParameter *ownedParameter)
+{
+    (qtuml_object_cast<QBehavior *>(this))->addOwnedParameter(ownedParameter);
+}
+
+void QInteraction::removeOwnedParameter(QParameter *ownedParameter)
+{
+    (qtuml_object_cast<QBehavior *>(this))->removeOwnedParameter(ownedParameter);
+}
+
+/*!
+    The ParameterSets owned by this Behavior.
+ */
+const QSet<QParameterSet *> *QInteraction::ownedParameterSets() const
+{
+    return (qtuml_object_cast<const QBehavior *>(this))->ownedParameterSets();
+}
+
+void QInteraction::addOwnedParameterSet(QParameterSet *ownedParameterSet)
+{
+    (qtuml_object_cast<QBehavior *>(this))->addOwnedParameterSet(ownedParameterSet);
+}
+
+void QInteraction::removeOwnedParameterSet(QParameterSet *ownedParameterSet)
+{
+    (qtuml_object_cast<QBehavior *>(this))->removeOwnedParameterSet(ownedParameterSet);
+}
+
+/*!
+    The classifier that is the context for the execution of the behavior. If the behavior is owned by a BehavioredClassifier, that classifier is the context. Otherwise, the context is the first BehavioredClassifier reached by following the chain of owner relationships. For example, following this algorithm, the context of an entry action in a state machine is the classifier that owns the state machine. The features of the context classifier as well as the elements visible to the context classifier are visible to the behavior.
+ */
+QBehavioredClassifier *QInteraction::context() const
+{
+    return (qtuml_object_cast<const QBehavior *>(this))->context();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QElement
+// ---------------------------------------------------------------
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QElement *> *QInteraction::ownedElements() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+}
+
+/*!
+    The Element that owns this element.
+ */
+QElement *QInteraction::owner() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->owner();
+}
+
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QComment *> *QInteraction::ownedComments() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+}
+
+void QInteraction::addOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+}
+
+void QInteraction::removeOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The name of the NamedElement.
+ */
+QString QInteraction::name() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+}
+
+void QInteraction::setName(QString name)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+}
+
+/*!
+    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
+ */
+QtUml::VisibilityKind QInteraction::visibility() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->visibility();
+}
+
+void QInteraction::setVisibility(QtUml::VisibilityKind visibility)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setVisibility(visibility);
+}
+
+/*!
+    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
+ */
+QString QInteraction::qualifiedName() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The string expression used to define the name of this named element.
+ */
+QStringExpression *QInteraction::nameExpression() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+}
+
+void QInteraction::setNameExpression(QStringExpression *nameExpression)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+}
+
+/*!
+    Specifies the namespace that owns the NamedElement.
+ */
+QNamespace *QInteraction::namespace_() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+}
+
+/*!
+    Indicates the dependencies that reference the client.
+ */
+const QSet<QDependency *> *QInteraction::clientDependencies() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+}
+
+void QInteraction::addClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+}
+
+void QInteraction::removeClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QInteractionFragment
+// ---------------------------------------------------------------
+
+/*!
+    The general ordering relationships contained in this fragment.
+ */
+const QSet<QGeneralOrdering *> *QInteraction::generalOrderings() const
+{
+    return (qtuml_object_cast<const QInteractionFragment *>(this))->generalOrderings();
+}
+
+void QInteraction::addGeneralOrdering(QGeneralOrdering *generalOrdering)
+{
+    (qtuml_object_cast<QInteractionFragment *>(this))->addGeneralOrdering(generalOrdering);
+}
+
+void QInteraction::removeGeneralOrdering(QGeneralOrdering *generalOrdering)
+{
+    (qtuml_object_cast<QInteractionFragment *>(this))->removeGeneralOrdering(generalOrdering);
+}
+
+/*!
+    The Interaction enclosing this InteractionFragment.
+ */
+QInteraction *QInteraction::enclosingInteraction() const
+{
+    return (qtuml_object_cast<const QInteractionFragment *>(this))->enclosingInteraction();
+}
+
+void QInteraction::setEnclosingInteraction(QInteraction *enclosingInteraction)
+{
+    (qtuml_object_cast<QInteractionFragment *>(this))->setEnclosingInteraction(enclosingInteraction);
+}
+
+/*!
+    References the Lifelines that the InteractionFragment involves.
+ */
+const QSet<QLifeline *> *QInteraction::covered() const
+{
+    return (qtuml_object_cast<const QInteractionFragment *>(this))->covered();
+}
+
+void QInteraction::addCovered(QLifeline *covered)
+{
+    (qtuml_object_cast<QInteractionFragment *>(this))->addCovered(covered);
+}
+
+void QInteraction::removeCovered(QLifeline *covered)
+{
+    (qtuml_object_cast<QInteractionFragment *>(this))->removeCovered(covered);
+}
+
+/*!
+    The operand enclosing this InteractionFragment (they may nest recursively)
+ */
+QInteractionOperand *QInteraction::enclosingOperand() const
+{
+    return (qtuml_object_cast<const QInteractionFragment *>(this))->enclosingOperand();
+}
+
+void QInteraction::setEnclosingOperand(QInteractionOperand *enclosingOperand)
+{
+    (qtuml_object_cast<QInteractionFragment *>(this))->setEnclosingOperand(enclosingOperand);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QInteraction
+// ---------------------------------------------------------------
+
 /*!
     Actions owned by the Interaction.
  */
@@ -113,7 +434,7 @@ void QInteraction::addAction(QAction *action)
         d->actions->insert(action);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(action));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(action));
     }
 }
 
@@ -126,7 +447,7 @@ void QInteraction::removeAction(QAction *action)
         d->actions->remove(action);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(action));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(action));
     }
 }
 
@@ -150,7 +471,7 @@ void QInteraction::addMessage(QMessage *message)
         d->messages->insert(message);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(message));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(message));
 
         // Adjust opposite property
         message->setInteraction(this);
@@ -166,7 +487,7 @@ void QInteraction::removeMessage(QMessage *message)
         d->messages->remove(message);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(message));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(message));
 
         // Adjust opposite property
         message->setInteraction(0);
@@ -193,7 +514,7 @@ void QInteraction::addFormalGate(QGate *formalGate)
         d->formalGates->insert(formalGate);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(formalGate));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(formalGate));
     }
 }
 
@@ -206,7 +527,7 @@ void QInteraction::removeFormalGate(QGate *formalGate)
         d->formalGates->remove(formalGate);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(formalGate));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(formalGate));
     }
 }
 
@@ -230,7 +551,7 @@ void QInteraction::addFragment(QInteractionFragment *fragment)
         d->fragments->append(fragment);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(fragment));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(fragment));
 
         // Adjust opposite property
         fragment->setEnclosingInteraction(this);
@@ -246,7 +567,7 @@ void QInteraction::removeFragment(QInteractionFragment *fragment)
         d->fragments->removeAll(fragment);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(fragment));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(fragment));
 
         // Adjust opposite property
         fragment->setEnclosingInteraction(0);
@@ -273,7 +594,7 @@ void QInteraction::addLifeline(QLifeline *lifeline)
         d->lifelines->insert(lifeline);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(lifeline));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(lifeline));
 
         // Adjust opposite property
         lifeline->setInteraction(this);
@@ -289,7 +610,7 @@ void QInteraction::removeLifeline(QLifeline *lifeline)
         d->lifelines->remove(lifeline);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(lifeline));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(lifeline));
 
         // Adjust opposite property
         lifeline->setInteraction(0);

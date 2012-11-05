@@ -82,6 +82,10 @@ QConnectionPointReference::~QConnectionPointReference()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QConnectionPointReference
+// ---------------------------------------------------------------
+
 /*!
     The exitPoints kind pseudo states corresponding to this connection point.
  */
@@ -137,7 +141,7 @@ void QConnectionPointReference::setState(QState *state)
         d->state = state;
 
         // Adjust subsetted property(ies)
-        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(state));
+        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(state));
 
         // Adjust opposite property
         if (state)

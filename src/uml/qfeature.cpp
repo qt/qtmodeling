@@ -41,6 +41,7 @@
 
 #include "qfeature.h"
 #include "qfeature_p.h"
+
 #include "qclassifier_p.h"
 
 #include <QtUml/QClassifier>
@@ -67,7 +68,7 @@ void QFeaturePrivate::addFeaturingClassifier(QClassifier *featuringClassifier)
 
         // Adjust opposite property
         Q_Q(QFeature);
-        (dynamic_cast<QClassifierPrivate *>(featuringClassifier->d_ptr))->addFeature(q);
+        (qtuml_object_cast<QClassifierPrivate *>(featuringClassifier->d_func()))->addFeature(q);
     }
 }
 
@@ -81,7 +82,7 @@ void QFeaturePrivate::removeFeaturingClassifier(QClassifier *featuringClassifier
         // Adjust opposite property
         Q_Q(QFeature);
         if (featuringClassifier)
-            (dynamic_cast<QClassifierPrivate *>(featuringClassifier->d_ptr))->removeFeature(q);
+            (qtuml_object_cast<QClassifierPrivate *>(featuringClassifier->d_func()))->removeFeature(q);
     }
 }
 
@@ -107,6 +108,10 @@ QFeature::~QFeature()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QFeature
+// ---------------------------------------------------------------
+
 /*!
     Specifies whether this feature characterizes individual instances classified by the classifier (false) or the classifier itself (true).
  */
@@ -128,6 +133,10 @@ void QFeature::setStatic(bool isStatic)
     }
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QFeature
+// ---------------------------------------------------------------
+
 /*!
     The Classifiers that have this Feature as a feature.
  */
@@ -138,6 +147,8 @@ const QSet<QClassifier *> *QFeature::featuringClassifiers() const
     Q_D(const QFeature);
     return d->featuringClassifiers;
 }
+
+#include "moc_qfeature.cpp"
 
 QT_END_NAMESPACE_QTUML
 

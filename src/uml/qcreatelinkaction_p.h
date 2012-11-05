@@ -41,14 +41,15 @@
 #ifndef QTUML_QCREATELINKACTION_P_H
 #define QTUML_QCREATELINKACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qwritelinkaction_p.h"
-#include "qcreatelinkaction.h"
+
+#include "QtUml/QCreateLinkAction"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

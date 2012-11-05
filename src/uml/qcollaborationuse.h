@@ -76,7 +76,7 @@ public:
     explicit QCollaborationUse(QObject *parent = 0);
     virtual ~QCollaborationUse();
 
-    // Association-ends
+    // Association ends from QCollaborationUse
     QCollaboration *type() const;
     void setType(QCollaboration *type);
     const QSet<QDependency *> *roleBindings() const;

@@ -72,7 +72,7 @@ public:
     explicit QProtocolConformance(QObject *parent = 0);
     virtual ~QProtocolConformance();
 
-    // Association-ends
+    // Association ends from QProtocolConformance
     QProtocolStateMachine *specificMachine() const;
     void setSpecificMachine(QProtocolStateMachine *specificMachine);
     QProtocolStateMachine *generalMachine() const;

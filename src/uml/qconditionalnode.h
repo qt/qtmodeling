@@ -79,13 +79,13 @@ public:
     explicit QConditionalNode(QObject *parent = 0);
     virtual ~QConditionalNode();
 
-    // Attributes
+    // Attributes from QConditionalNode
     bool isAssured() const;
     void setAssured(bool isAssured);
     bool isDeterminate() const;
     void setDeterminate(bool isDeterminate);
 
-    // Association-ends
+    // Association ends from QConditionalNode
     const QSet<QClause *> *clauses() const;
     void addClause(QClause *clause);
     void removeClause(QClause *clause);

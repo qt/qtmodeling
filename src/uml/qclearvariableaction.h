@@ -56,6 +56,8 @@ class QClearVariableActionPrivate;
 
 class Q_UML_EXPORT QClearVariableAction : public QVariableAction
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QClearVariableAction)
     Q_DECLARE_PRIVATE(QClearVariableAction)
 

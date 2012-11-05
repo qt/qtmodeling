@@ -42,7 +42,6 @@
 #include "qassociationclass.h"
 #include "qassociationclass_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QAssociationClassPrivate::QAssociationClassPrivate()

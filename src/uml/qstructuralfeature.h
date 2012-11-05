@@ -45,6 +45,9 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtUml/QTypedElement>
+#include <QtUml/QMultiplicityElement>
+#include <QtUml/QFeature>
 
 QT_BEGIN_HEADER
 
@@ -52,19 +55,11 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-// Forward decls for aggregated 'base classes'
-class QTypedElement;
-class QMultiplicityElement;
-class QFeature;
-
 class QStructuralFeaturePrivate;
 
 class Q_UML_EXPORT QStructuralFeature : public QObject
 {
     Q_OBJECT
-
-    // From QStructuralFeature
-    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly)
 
     // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
@@ -99,6 +94,9 @@ class Q_UML_EXPORT QStructuralFeature : public QObject
     Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic)
     Q_PROPERTY(const QSet<QClassifier *> * featuringClassifiers READ featuringClassifiers)
 
+    // From QStructuralFeature
+    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly)
+
     Q_DISABLE_COPY(QStructuralFeature)
     Q_DECLARE_PRIVATE(QStructuralFeature)
 
@@ -106,7 +104,64 @@ public:
     explicit QStructuralFeature(QObject *parent = 0);
     virtual ~QStructuralFeature();
 
-    // Attributes
+    // Association ends from aggregated QElement
+    const QSet<QElement *> *ownedElements() const;
+    QElement *owner() const;
+    const QSet<QComment *> *ownedComments() const;
+    void addOwnedComment(QComment *ownedComment);
+    void removeOwnedComment(QComment *ownedComment);
+
+    // Attributes from aggregated QNamedElement
+    QString name() const;
+    void setName(QString name);
+    QtUml::VisibilityKind visibility() const;
+    void setVisibility(QtUml::VisibilityKind visibility);
+    QString qualifiedName() const;
+
+    // Association ends from aggregated QNamedElement
+    QStringExpression *nameExpression() const;
+    void setNameExpression(QStringExpression *nameExpression);
+    QNamespace *namespace_() const;
+    const QSet<QDependency *> *clientDependencies() const;
+    void addClientDependency(QDependency *clientDependency);
+    void removeClientDependency(QDependency *clientDependency);
+
+    // Association ends from aggregated QTypedElement
+    QType *type() const;
+    void setType(QType *type);
+
+    // Attributes from aggregated QMultiplicityElement
+    qint32 upper() const;
+    void setUpper(qint32 upper);
+    bool isUnique() const;
+    void setUnique(bool isUnique);
+    bool isOrdered() const;
+    void setOrdered(bool isOrdered);
+    qint32 lower() const;
+    void setLower(qint32 lower);
+
+    // Association ends from aggregated QMultiplicityElement
+    QValueSpecification *upperValue() const;
+    void setUpperValue(QValueSpecification *upperValue);
+    QValueSpecification *lowerValue() const;
+    void setLowerValue(QValueSpecification *lowerValue);
+
+    // Attributes from aggregated QRedefinableElement
+    bool isLeaf() const;
+    void setLeaf(bool isLeaf);
+
+    // Association ends from aggregated QRedefinableElement
+    const QSet<QRedefinableElement *> *redefinedElements() const;
+    const QSet<QClassifier *> *redefinitionContexts() const;
+
+    // Attributes from aggregated QFeature
+    bool isStatic() const;
+    void setStatic(bool isStatic);
+
+    // Association ends from aggregated QFeature
+    const QSet<QClassifier *> *featuringClassifiers() const;
+
+    // Attributes from QStructuralFeature
     bool isReadOnly() const;
     void setReadOnly(bool isReadOnly);
 

@@ -41,15 +41,16 @@
 #ifndef QTUML_QEXPRESSION_P_H
 #define QTUML_QEXPRESSION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qvaluespecification_p.h"
-#include "qexpression.h"
+
+#include "QtUml/QExpression"
 
 // Qt includes
-#include <QtCore/QString>
-#include <QtCore/QList>
+#include "QtCore/QString"
+#include "QtCore/QList"
 
 QT_BEGIN_HEADER
 

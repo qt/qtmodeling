@@ -72,7 +72,7 @@ public:
     explicit QDurationInterval(QObject *parent = 0);
     virtual ~QDurationInterval();
 
-    // Association-ends
+    // Association ends from QDurationInterval
     QDuration *max() const;
     void setMax(QDuration *max);
     QDuration *min() const;

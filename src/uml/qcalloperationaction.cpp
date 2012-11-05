@@ -79,6 +79,10 @@ QCallOperationAction::~QCallOperationAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QCallOperationAction
+// ---------------------------------------------------------------
+
 /*!
     The operation to be invoked by the action execution.
  */
@@ -118,13 +122,13 @@ void QCallOperationAction::setTarget(QInputPin *target)
     Q_D(QCallOperationAction);
     if (d->target != target) {
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->target));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->target));
 
         d->target = target;
 
         // Adjust subsetted property(ies)
         if (target) {
-            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(target));
+            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(target));
         }
     }
 }

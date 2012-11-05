@@ -73,7 +73,7 @@ public:
     explicit QDecisionNode(QObject *parent = 0);
     virtual ~QDecisionNode();
 
-    // Association-ends
+    // Association ends from QDecisionNode
     QObjectFlow *decisionInputFlow() const;
     void setDecisionInputFlow(QObjectFlow *decisionInputFlow);
     QBehavior *decisionInput() const;

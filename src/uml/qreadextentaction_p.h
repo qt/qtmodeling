@@ -41,12 +41,12 @@
 #ifndef QTUML_QREADEXTENTACTION_P_H
 #define QTUML_QREADEXTENTACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qaction_p.h"
-#include "qreadextentaction.h"
 
+#include "QtUml/QReadExtentAction"
 
 QT_BEGIN_HEADER
 

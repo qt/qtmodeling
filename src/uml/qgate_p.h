@@ -41,12 +41,12 @@
 #ifndef QTUML_QGATE_P_H
 #define QTUML_QGATE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qmessageend_p.h"
-#include "qgate.h"
 
+#include "QtUml/QGate"
 
 QT_BEGIN_HEADER
 

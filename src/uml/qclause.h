@@ -81,7 +81,7 @@ public:
     explicit QClause(QObject *parent = 0);
     virtual ~QClause();
 
-    // Association-ends
+    // Association ends from QClause
     const QSet<QClause *> *successorClauses() const;
     void addSuccessorClause(QClause *successorClause);
     void removeSuccessorClause(QClause *successorClause);

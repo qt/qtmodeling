@@ -42,7 +42,6 @@
 #include "qexecutionenvironment.h"
 #include "qexecutionenvironment_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QExecutionEnvironmentPrivate::QExecutionEnvironmentPrivate()

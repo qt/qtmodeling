@@ -74,7 +74,7 @@ public:
     explicit QCreateLinkAction(QObject *parent = 0);
     virtual ~QCreateLinkAction();
 
-    // Association-ends
+    // Association ends from QCreateLinkAction
     const QSet<QLinkEndCreationData *> *endData() const;
     void addEndData(QLinkEndCreationData *endData);
     void removeEndData(QLinkEndCreationData *endData);

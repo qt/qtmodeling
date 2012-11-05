@@ -87,6 +87,161 @@ QExtend::~QExtend()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QElement
+// ---------------------------------------------------------------
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QElement *> *QExtend::ownedElements() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+}
+
+/*!
+    The Element that owns this element.
+ */
+QElement *QExtend::owner() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->owner();
+}
+
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QComment *> *QExtend::ownedComments() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+}
+
+void QExtend::addOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+}
+
+void QExtend::removeOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QRelationship
+// ---------------------------------------------------------------
+
+/*!
+    Specifies the elements related by the Relationship.
+ */
+const QSet<QElement *> *QExtend::relatedElements() const
+{
+    return (qtuml_object_cast<const QRelationship *>(this))->relatedElements();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QDirectedRelationship
+// ---------------------------------------------------------------
+
+/*!
+    Specifies the sources of the DirectedRelationship.
+ */
+const QSet<QElement *> *QExtend::sources() const
+{
+    return (qtuml_object_cast<const QDirectedRelationship *>(this))->sources();
+}
+
+/*!
+    Specifies the targets of the DirectedRelationship.
+ */
+const QSet<QElement *> *QExtend::targets() const
+{
+    return (qtuml_object_cast<const QDirectedRelationship *>(this))->targets();
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The name of the NamedElement.
+ */
+QString QExtend::name() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+}
+
+void QExtend::setName(QString name)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+}
+
+/*!
+    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
+ */
+QtUml::VisibilityKind QExtend::visibility() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->visibility();
+}
+
+void QExtend::setVisibility(QtUml::VisibilityKind visibility)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setVisibility(visibility);
+}
+
+/*!
+    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
+ */
+QString QExtend::qualifiedName() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The string expression used to define the name of this named element.
+ */
+QStringExpression *QExtend::nameExpression() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+}
+
+void QExtend::setNameExpression(QStringExpression *nameExpression)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+}
+
+/*!
+    Specifies the namespace that owns the NamedElement.
+ */
+QNamespace *QExtend::namespace_() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+}
+
+/*!
+    Indicates the dependencies that reference the client.
+ */
+const QSet<QDependency *> *QExtend::clientDependencies() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+}
+
+void QExtend::addClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+}
+
+void QExtend::removeClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QExtend
+// ---------------------------------------------------------------
+
 /*!
     References the use case that is being extended.
  */
@@ -105,13 +260,13 @@ void QExtend::setExtendedCase(QUseCase *extendedCase)
     Q_D(QExtend);
     if (d->extendedCase != extendedCase) {
         // Adjust subsetted property(ies)
-        d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(d->extendedCase));
+        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qtuml_object_cast<QElement *>(d->extendedCase));
 
         d->extendedCase = extendedCase;
 
         // Adjust subsetted property(ies)
         if (extendedCase) {
-            d->QDirectedRelationshipPrivate::addTarget(dynamic_cast<QElement *>(extendedCase));
+            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qtuml_object_cast<QElement *>(extendedCase));
         }
     }
 }
@@ -138,15 +293,15 @@ void QExtend::setExtension(QUseCase *extension)
             d->extension->removeExtend(this);
 
         // Adjust subsetted property(ies)
-        d->QDirectedRelationshipPrivate::removeSource(dynamic_cast<QElement *>(d->extension));
+        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qtuml_object_cast<QElement *>(d->extension));
 
         d->extension = extension;
 
         // Adjust subsetted property(ies)
         if (extension) {
-            d->QDirectedRelationshipPrivate::addSource(dynamic_cast<QElement *>(extension));
+            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addSource(qtuml_object_cast<QElement *>(extension));
         }
-        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(extension));
+        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(extension));
 
         // Adjust opposite property
         if (extension)
@@ -203,13 +358,13 @@ void QExtend::setCondition(QConstraint *condition)
     Q_D(QExtend);
     if (d->condition != condition) {
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->condition));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->condition));
 
         d->condition = condition;
 
         // Adjust subsetted property(ies)
         if (condition) {
-            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(condition));
+            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(condition));
         }
     }
 }

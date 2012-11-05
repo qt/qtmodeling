@@ -45,6 +45,9 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtUml/QAction>
+#include <QtUml/QNamespace>
+#include <QtUml/QActivityGroup>
 
 // Qt includes
 #include <QtCore/QSet>
@@ -54,11 +57,6 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
-
-// Forward decls for aggregated 'base classes'
-class QAction;
-class QNamespace;
-class QActivityGroup;
 
 // Forward decls for function parameters
 class QOutputPin;
@@ -73,15 +71,6 @@ class QStructuredActivityNodePrivate;
 class Q_UML_EXPORT QStructuredActivityNode : public QObject
 {
     Q_OBJECT
-
-    // From QStructuredActivityNode
-    Q_PROPERTY(bool mustIsolate READ mustIsolate WRITE setMustIsolate)
-    Q_PROPERTY(const QSet<QInputPin *> * structuredNodeInputs READ structuredNodeInputs)
-    Q_PROPERTY(const QSet<QActivityNode *> * nodes READ nodes)
-    Q_PROPERTY(const QSet<QOutputPin *> * structuredNodeOutputs READ structuredNodeOutputs)
-    Q_PROPERTY(const QSet<QActivityEdge *> * edges READ edges)
-    Q_PROPERTY(const QSet<QVariable *> * variables READ variables)
-    Q_PROPERTY(QActivity * activity READ activity WRITE setActivity)
 
     // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
@@ -135,6 +124,15 @@ class Q_UML_EXPORT QStructuredActivityNode : public QObject
     Q_PROPERTY(const QSet<QActivityEdge *> * containedEdges READ containedEdges)
     Q_PROPERTY(QActivityGroup * superGroup READ superGroup)
 
+    // From QStructuredActivityNode
+    Q_PROPERTY(bool mustIsolate READ mustIsolate WRITE setMustIsolate)
+    Q_PROPERTY(const QSet<QInputPin *> * structuredNodeInputs READ structuredNodeInputs)
+    Q_PROPERTY(const QSet<QActivityNode *> * nodes READ nodes)
+    Q_PROPERTY(const QSet<QOutputPin *> * structuredNodeOutputs READ structuredNodeOutputs)
+    Q_PROPERTY(const QSet<QActivityEdge *> * edges READ edges)
+    Q_PROPERTY(const QSet<QVariable *> * variables READ variables)
+    Q_PROPERTY(QActivity * activity READ activity WRITE setActivity)
+
     Q_DISABLE_COPY(QStructuredActivityNode)
     Q_DECLARE_PRIVATE(QStructuredActivityNode)
 
@@ -142,11 +140,101 @@ public:
     explicit QStructuredActivityNode(QObject *parent = 0);
     virtual ~QStructuredActivityNode();
 
-    // Attributes
+    // Association ends from aggregated QElement
+    const QSet<QElement *> *ownedElements() const;
+    QElement *owner() const;
+    const QSet<QComment *> *ownedComments() const;
+    void addOwnedComment(QComment *ownedComment);
+    void removeOwnedComment(QComment *ownedComment);
+
+    // Attributes from aggregated QNamedElement
+    QString name() const;
+    void setName(QString name);
+    QtUml::VisibilityKind visibility() const;
+    void setVisibility(QtUml::VisibilityKind visibility);
+    QString qualifiedName() const;
+
+    // Association ends from aggregated QNamedElement
+    QStringExpression *nameExpression() const;
+    void setNameExpression(QStringExpression *nameExpression);
+    QNamespace *namespace_() const;
+    const QSet<QDependency *> *clientDependencies() const;
+    void addClientDependency(QDependency *clientDependency);
+    void removeClientDependency(QDependency *clientDependency);
+
+    // Attributes from aggregated QRedefinableElement
+    bool isLeaf() const;
+    void setLeaf(bool isLeaf);
+
+    // Association ends from aggregated QRedefinableElement
+    const QSet<QRedefinableElement *> *redefinedElements() const;
+    const QSet<QClassifier *> *redefinitionContexts() const;
+
+    // Association ends from aggregated QActivityNode
+    const QSet<QActivityNode *> *redefinedNodes() const;
+    void addRedefinedNode(QActivityNode *redefinedNode);
+    void removeRedefinedNode(QActivityNode *redefinedNode);
+    const QSet<QActivityEdge *> *incomings() const;
+    void addIncoming(QActivityEdge *incoming);
+    void removeIncoming(QActivityEdge *incoming);
+    const QSet<QActivityGroup *> *inGroup() const;
+    QStructuredActivityNode *inStructuredNode() const;
+    void setInStructuredNode(QStructuredActivityNode *inStructuredNode);
+    const QSet<QActivityPartition *> *inPartition() const;
+    void addInPartition(QActivityPartition *inPartition);
+    void removeInPartition(QActivityPartition *inPartition);
+    const QSet<QInterruptibleActivityRegion *> *inInterruptibleRegion() const;
+    void addInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion);
+    void removeInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion);
+    const QSet<QActivityEdge *> *outgoings() const;
+    void addOutgoing(QActivityEdge *outgoing);
+    void removeOutgoing(QActivityEdge *outgoing);
+
+    // Association ends from aggregated QExecutableNode
+    const QSet<QExceptionHandler *> *handlers() const;
+    void addHandler(QExceptionHandler *handler);
+    void removeHandler(QExceptionHandler *handler);
+
+    // Attributes from aggregated QAction
+    bool isLocallyReentrant() const;
+    void setLocallyReentrant(bool isLocallyReentrant);
+
+    // Association ends from aggregated QAction
+    QClassifier *context() const;
+    const QSet<QConstraint *> *localPostconditions() const;
+    void addLocalPostcondition(QConstraint *localPostcondition);
+    void removeLocalPostcondition(QConstraint *localPostcondition);
+    const QSet<QConstraint *> *localPreconditions() const;
+    void addLocalPrecondition(QConstraint *localPrecondition);
+    void removeLocalPrecondition(QConstraint *localPrecondition);
+    const QList<QInputPin *> *inputs() const;
+    const QList<QOutputPin *> *outputs() const;
+
+    // Association ends from aggregated QNamespace
+    const QSet<QPackageImport *> *packageImports() const;
+    void addPackageImport(QPackageImport *packageImport);
+    void removePackageImport(QPackageImport *packageImport);
+    const QSet<QNamedElement *> *members() const;
+    const QSet<QPackageableElement *> *importedMembers() const;
+    const QSet<QElementImport *> *elementImports() const;
+    void addElementImport(QElementImport *elementImport);
+    void removeElementImport(QElementImport *elementImport);
+    const QSet<QConstraint *> *ownedRules() const;
+    void addOwnedRule(QConstraint *ownedRule);
+    void removeOwnedRule(QConstraint *ownedRule);
+    const QSet<QNamedElement *> *ownedMembers() const;
+
+    // Association ends from aggregated QActivityGroup
+    const QSet<QActivityNode *> *containedNodes() const;
+    const QSet<QActivityGroup *> *subgroups() const;
+    const QSet<QActivityEdge *> *containedEdges() const;
+    QActivityGroup *superGroup() const;
+
+    // Attributes from QStructuredActivityNode
     bool mustIsolate() const;
     void setMustIsolate(bool mustIsolate);
 
-    // Association-ends
+    // Association ends from QStructuredActivityNode
     const QSet<QInputPin *> *structuredNodeInputs() const;
     void addStructuredNodeInput(QInputPin *structuredNodeInput);
     void removeStructuredNodeInput(QInputPin *structuredNodeInput);

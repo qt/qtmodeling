@@ -78,6 +78,10 @@ QLinkEndDestructionData::~QLinkEndDestructionData()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QLinkEndDestructionData
+// ---------------------------------------------------------------
+
 /*!
     Specifies whether to destroy duplicates of the value in nonunique association ends.
  */
@@ -98,6 +102,10 @@ void QLinkEndDestructionData::setDestroyDuplicates(bool isDestroyDuplicates)
         d->isDestroyDuplicates = isDestroyDuplicates;
     }
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QLinkEndDestructionData
+// ---------------------------------------------------------------
 
 /*!
     Specifies the position of an existing link to be destroyed in ordered nonunique association ends. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.

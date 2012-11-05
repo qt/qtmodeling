@@ -41,19 +41,19 @@
 #ifndef QTUML_QOPERATION_P_H
 #define QTUML_QOPERATION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qtemplateableelement_p.h"
 #include "private/qbehavioralfeature_p.h"
 #include "private/qparameterableelement_p.h"
-#include "qoperation.h"
+
+#include "QtUml/QOperation"
 
 // Qt includes
-#include <QtCore/QList>
-#include <QtCore/QSet>
+#include "QtCore/QList"
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -91,11 +91,6 @@ public:
     QSet<QConstraint *> *preconditions;
     QClass *class_;
     QSet<QType *> *raisedExceptions;
-
-private:
-    QTemplateableElementPrivate *_wrappedTemplateableElementPrivate;
-    QBehavioralFeaturePrivate *_wrappedBehavioralFeaturePrivate;
-    QParameterableElementPrivate *_wrappedParameterableElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

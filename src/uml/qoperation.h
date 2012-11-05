@@ -45,6 +45,9 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtUml/QTemplateableElement>
+#include <QtUml/QBehavioralFeature>
+#include <QtUml/QParameterableElement>
 
 // Qt includes
 #include <QtCore/QList>
@@ -55,11 +58,6 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
-
-// Forward decls for aggregated 'base classes'
-class QTemplateableElement;
-class QBehavioralFeature;
-class QParameterableElement;
 
 // Forward decls for function parameters
 class QRedefinableElement;
@@ -76,24 +74,6 @@ class QOperationPrivate;
 class Q_UML_EXPORT QOperation : public QObject
 {
     Q_OBJECT
-
-    // From QOperation
-    Q_PROPERTY(qint32 lower READ lower)
-    Q_PROPERTY(bool isQuery READ isQuery WRITE setQuery)
-    Q_PROPERTY(bool isUnique READ isUnique)
-    Q_PROPERTY(qint32 upper READ upper)
-    Q_PROPERTY(bool isOrdered READ isOrdered)
-    Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
-    Q_PROPERTY(QConstraint * bodyCondition READ bodyCondition WRITE setBodyCondition)
-    Q_PROPERTY(const QSet<QOperation *> * redefinedOperations READ redefinedOperations)
-    Q_PROPERTY(const QSet<QConstraint *> * postconditions READ postconditions)
-    Q_PROPERTY(QDataType * datatype READ datatype WRITE setDatatype)
-    Q_PROPERTY(QOperationTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
-    Q_PROPERTY(QInterface * interface READ interface WRITE setInterface)
-    Q_PROPERTY(QType * type READ type)
-    Q_PROPERTY(const QSet<QConstraint *> * preconditions READ preconditions)
-    Q_PROPERTY(QClass * class_ READ class_ WRITE setClass_)
-    Q_PROPERTY(const QSet<QType *> * raisedExceptions READ raisedExceptions)
 
     // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
@@ -138,6 +118,24 @@ class Q_UML_EXPORT QOperation : public QObject
     // From aggregated QParameterableElement
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
 
+    // From QOperation
+    Q_PROPERTY(qint32 lower READ lower)
+    Q_PROPERTY(bool isQuery READ isQuery WRITE setQuery)
+    Q_PROPERTY(bool isUnique READ isUnique)
+    Q_PROPERTY(qint32 upper READ upper)
+    Q_PROPERTY(bool isOrdered READ isOrdered)
+    Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
+    Q_PROPERTY(QConstraint * bodyCondition READ bodyCondition WRITE setBodyCondition)
+    Q_PROPERTY(const QSet<QOperation *> * redefinedOperations READ redefinedOperations)
+    Q_PROPERTY(const QSet<QConstraint *> * postconditions READ postconditions)
+    Q_PROPERTY(QDataType * datatype READ datatype WRITE setDatatype)
+    Q_PROPERTY(QOperationTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
+    Q_PROPERTY(QInterface * interface READ interface WRITE setInterface)
+    Q_PROPERTY(QType * type READ type)
+    Q_PROPERTY(const QSet<QConstraint *> * preconditions READ preconditions)
+    Q_PROPERTY(QClass * class_ READ class_ WRITE setClass_)
+    Q_PROPERTY(const QSet<QType *> * raisedExceptions READ raisedExceptions)
+
     Q_DISABLE_COPY(QOperation)
     Q_DECLARE_PRIVATE(QOperation)
 
@@ -145,7 +143,83 @@ public:
     explicit QOperation(QObject *parent = 0);
     virtual ~QOperation();
 
-    // Attributes
+    // Association ends from aggregated QElement
+    const QSet<QElement *> *ownedElements() const;
+    QElement *owner() const;
+    const QSet<QComment *> *ownedComments() const;
+    void addOwnedComment(QComment *ownedComment);
+    void removeOwnedComment(QComment *ownedComment);
+
+    // Association ends from aggregated QTemplateableElement
+    QTemplateSignature *ownedTemplateSignature() const;
+    void setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature);
+    const QSet<QTemplateBinding *> *templateBindings() const;
+    void addTemplateBinding(QTemplateBinding *templateBinding);
+    void removeTemplateBinding(QTemplateBinding *templateBinding);
+
+    // Attributes from aggregated QNamedElement
+    QString name() const;
+    void setName(QString name);
+    QtUml::VisibilityKind visibility() const;
+    void setVisibility(QtUml::VisibilityKind visibility);
+    QString qualifiedName() const;
+
+    // Association ends from aggregated QNamedElement
+    QStringExpression *nameExpression() const;
+    void setNameExpression(QStringExpression *nameExpression);
+    QNamespace *namespace_() const;
+    const QSet<QDependency *> *clientDependencies() const;
+    void addClientDependency(QDependency *clientDependency);
+    void removeClientDependency(QDependency *clientDependency);
+
+    // Association ends from aggregated QNamespace
+    const QSet<QPackageImport *> *packageImports() const;
+    void addPackageImport(QPackageImport *packageImport);
+    void removePackageImport(QPackageImport *packageImport);
+    const QSet<QNamedElement *> *members() const;
+    const QSet<QPackageableElement *> *importedMembers() const;
+    const QSet<QElementImport *> *elementImports() const;
+    void addElementImport(QElementImport *elementImport);
+    void removeElementImport(QElementImport *elementImport);
+    const QSet<QConstraint *> *ownedRules() const;
+    void addOwnedRule(QConstraint *ownedRule);
+    void removeOwnedRule(QConstraint *ownedRule);
+    const QSet<QNamedElement *> *ownedMembers() const;
+
+    // Attributes from aggregated QRedefinableElement
+    bool isLeaf() const;
+    void setLeaf(bool isLeaf);
+
+    // Association ends from aggregated QRedefinableElement
+    const QSet<QRedefinableElement *> *redefinedElements() const;
+    const QSet<QClassifier *> *redefinitionContexts() const;
+
+    // Attributes from aggregated QFeature
+    bool isStatic() const;
+    void setStatic(bool isStatic);
+
+    // Association ends from aggregated QFeature
+    const QSet<QClassifier *> *featuringClassifiers() const;
+
+    // Attributes from aggregated QBehavioralFeature
+    QtUml::CallConcurrencyKind concurrency() const;
+    void setConcurrency(QtUml::CallConcurrencyKind concurrency);
+    bool isAbstract() const;
+    void setAbstract(bool isAbstract);
+
+    // Association ends from aggregated QBehavioralFeature
+    const QSet<QParameterSet *> *ownedParameterSets() const;
+    void addOwnedParameterSet(QParameterSet *ownedParameterSet);
+    void removeOwnedParameterSet(QParameterSet *ownedParameterSet);
+    const QSet<QBehavior *> *methods() const;
+    void addMethod(QBehavior *method);
+    void removeMethod(QBehavior *method);
+
+    // Association ends from aggregated QParameterableElement
+    QTemplateParameter *owningTemplateParameter() const;
+    void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
+
+    // Attributes from QOperation
     qint32 lower() const;
     bool isQuery() const;
     void setQuery(bool isQuery);
@@ -153,7 +227,7 @@ public:
     qint32 upper() const;
     bool isOrdered() const;
 
-    // Association-ends
+    // Association ends from QOperation
     const QList<QParameter *> *ownedParameters() const;
     void addOwnedParameter(QParameter *ownedParameter);
     void removeOwnedParameter(QParameter *ownedParameter);

@@ -85,6 +85,10 @@ QOpaqueAction::~QOpaqueAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QOpaqueAction
+// ---------------------------------------------------------------
+
 /*!
     Specifies the action in one or more languages.
  */
@@ -147,6 +151,10 @@ void QOpaqueAction::removeLanguage(QString language)
     }
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QOpaqueAction
+// ---------------------------------------------------------------
+
 /*!
     Provides input to the action.
  */
@@ -167,7 +175,7 @@ void QOpaqueAction::addInputValue(QInputPin *inputValue)
         d->inputValues->insert(inputValue);
 
         // Adjust subsetted property(ies)
-        d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(inputValue));
+        (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(inputValue));
     }
 }
 
@@ -180,7 +188,7 @@ void QOpaqueAction::removeInputValue(QInputPin *inputValue)
         d->inputValues->remove(inputValue);
 
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(inputValue));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(inputValue));
     }
 }
 
@@ -204,7 +212,7 @@ void QOpaqueAction::addOutputValue(QOutputPin *outputValue)
         d->outputValues->insert(outputValue);
 
         // Adjust subsetted property(ies)
-        d->QActionPrivate::addOutput(dynamic_cast<QOutputPin *>(outputValue));
+        (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(outputValue));
     }
 }
 
@@ -217,7 +225,7 @@ void QOpaqueAction::removeOutputValue(QOutputPin *outputValue)
         d->outputValues->remove(outputValue);
 
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(outputValue));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(outputValue));
     }
 }
 

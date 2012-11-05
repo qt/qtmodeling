@@ -41,14 +41,15 @@
 #ifndef QTUML_QACTIVITYPARTITION_P_H
 #define QTUML_QACTIVITYPARTITION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qactivitygroup_p.h"
-#include "qactivitypartition.h"
+
+#include "QtUml/QActivityPartition"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

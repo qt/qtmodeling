@@ -41,24 +41,23 @@
 #ifndef QTUML_QPROPERTY_P_H
 #define QTUML_QPROPERTY_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qstructuralfeature_p.h"
 #include "private/qconnectableelement_p.h"
 #include "private/qdeploymenttarget_p.h"
-#include "qproperty.h"
 
+#include "QtUml/QProperty"
 
 // QtUml includes
-#include <QtUml/QtUmlEnumerations>
+#include "QtUml/QtUmlEnumerations"
 
 // Qt includes
-#include <QtCore/QString>
-#include <QtCore/QList>
-#include <QtCore/QSet>
+#include "QtCore/QString"
+#include "QtCore/QList"
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -100,11 +99,6 @@ public:
     QSet<QProperty *> *redefinedProperties;
     QAssociation *association;
     QInterface *interface;
-
-private:
-    QStructuralFeaturePrivate *_wrappedStructuralFeaturePrivate;
-    QConnectableElementPrivate *_wrappedConnectableElementPrivate;
-    QDeploymentTargetPrivate *_wrappedDeploymentTargetPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

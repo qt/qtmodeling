@@ -41,19 +41,19 @@
 #ifndef QTUML_QCOMBINEDFRAGMENT_P_H
 #define QTUML_QCOMBINEDFRAGMENT_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qinteractionfragment_p.h"
-#include "qcombinedfragment.h"
 
+#include "QtUml/QCombinedFragment"
 
 // QtUml includes
-#include <QtUml/QtUmlEnumerations>
+#include "QtUml/QtUmlEnumerations"
 
 // Qt includes
-#include <QtCore/QList>
-#include <QtCore/QSet>
+#include "QtCore/QList"
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

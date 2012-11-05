@@ -41,15 +41,15 @@
 #ifndef QTUML_QELEMENT_P_H
 #define QTUML_QELEMENT_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
 
-#include "qelement.h"
+#include "QtUml/QElement"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

@@ -72,11 +72,11 @@ public:
     explicit QTimeObservation(QObject *parent = 0);
     virtual ~QTimeObservation();
 
-    // Attributes
+    // Attributes from QTimeObservation
     bool firstEvent() const;
     void setFirstEvent(bool firstEvent);
 
-    // Association-ends
+    // Association ends from QTimeObservation
     QNamedElement *event() const;
     void setEvent(QNamedElement *event);
 

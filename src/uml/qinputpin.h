@@ -56,6 +56,8 @@ class QInputPinPrivate;
 
 class Q_UML_EXPORT QInputPin : public QPin
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QInputPin)
     Q_DECLARE_PRIVATE(QInputPin)
 

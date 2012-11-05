@@ -41,12 +41,12 @@
 #ifndef QTUML_QSENDSIGNALACTION_P_H
 #define QTUML_QSENDSIGNALACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qinvocationaction_p.h"
-#include "qsendsignalaction.h"
 
+#include "QtUml/QSendSignalAction"
 
 QT_BEGIN_HEADER
 

@@ -41,12 +41,12 @@
 #ifndef QTUML_QPACKAGEMERGE_P_H
 #define QTUML_QPACKAGEMERGE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qdirectedrelationship_p.h"
-#include "qpackagemerge.h"
 
+#include "QtUml/QPackageMerge"
 
 QT_BEGIN_HEADER
 

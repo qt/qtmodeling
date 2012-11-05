@@ -41,12 +41,12 @@
 #ifndef QTUML_QTIMEOBSERVATION_P_H
 #define QTUML_QTIMEOBSERVATION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobservation_p.h"
-#include "qtimeobservation.h"
 
+#include "QtUml/QTimeObservation"
 
 QT_BEGIN_HEADER
 

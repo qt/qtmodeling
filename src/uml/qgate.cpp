@@ -42,7 +42,6 @@
 #include "qgate.h"
 #include "qgate_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QGatePrivate::QGatePrivate()

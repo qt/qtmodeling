@@ -79,6 +79,10 @@ QWriteStructuralFeatureAction::~QWriteStructuralFeatureAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QWriteStructuralFeatureAction
+// ---------------------------------------------------------------
+
 /*!
     Gives the output pin on which the result is put.
  */
@@ -97,13 +101,13 @@ void QWriteStructuralFeatureAction::setResult(QOutputPin *result)
     Q_D(QWriteStructuralFeatureAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->result));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            d->QActionPrivate::addOutput(dynamic_cast<QOutputPin *>(result));
+            (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(result));
         }
     }
 }
@@ -126,16 +130,18 @@ void QWriteStructuralFeatureAction::setValue(QInputPin *value)
     Q_D(QWriteStructuralFeatureAction);
     if (d->value != value) {
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->value));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->value));
 
         d->value = value;
 
         // Adjust subsetted property(ies)
         if (value) {
-            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(value));
+            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(value));
         }
     }
 }
+
+#include "moc_qwritestructuralfeatureaction.cpp"
 
 QT_END_NAMESPACE_QTUML
 

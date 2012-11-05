@@ -61,6 +61,10 @@ if ($tt->process('enumerations.cpp', {
     enumerations => $enumerations
 }) ne 1) { print $tt->error(); }
 
+open STDOUT, '>', $options{o}."/".$namespace->{path}."/qumlpointer.h";
+if ($tt->process('qumlpointer.h', {
+}) ne 1) { print $tt->error(); }
+
 my $priName = lc($namespace->{path} =~ s/\//-/gr);
 open STDOUT, '>', $options{o}."/".$namespace->{path}."/".$priName.".pri";
 if ($tt->process('namespace.pri', {

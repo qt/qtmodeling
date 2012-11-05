@@ -79,11 +79,11 @@ public:
     explicit QExpansionRegion(QObject *parent = 0);
     virtual ~QExpansionRegion();
 
-    // Attributes
+    // Attributes from QExpansionRegion
     QtUml::ExpansionKind mode() const;
     void setMode(QtUml::ExpansionKind mode);
 
-    // Association-ends
+    // Association ends from QExpansionRegion
     const QSet<QExpansionNode *> *inputElements() const;
     void addInputElement(QExpansionNode *inputElement);
     void removeInputElement(QExpansionNode *inputElement);

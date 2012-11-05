@@ -41,14 +41,15 @@
 #ifndef QTUML_QDURATIONOBSERVATION_P_H
 #define QTUML_QDURATIONOBSERVATION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobservation_p.h"
-#include "qdurationobservation.h"
+
+#include "QtUml/QDurationObservation"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

@@ -1,5 +1,6 @@
 PUBLIC_HEADERS += \
     qtumlenumerations.h \
+    qumlpointer.h \
     qacceptcallaction.h \
     qcreateobjectaction.h \
     qsignal.h \
@@ -244,6 +245,7 @@ PUBLIC_HEADERS += \
     qextension.h
 
 PRIVATE_HEADERS += \
+    qtumlglobal_p.h \
     qacceptcallaction_p.h \
     qcreateobjectaction_p.h \
     qsignal_p.h \

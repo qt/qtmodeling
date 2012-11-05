@@ -41,19 +41,19 @@
 #ifndef QTUML_QCONNECTOR_P_H
 #define QTUML_QCONNECTOR_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qfeature_p.h"
-#include "qconnector.h"
 
+#include "QtUml/QConnector"
 
 // QtUml includes
-#include <QtUml/QtUmlEnumerations>
+#include "QtUml/QtUmlEnumerations"
 
 // Qt includes
-#include <QtCore/QList>
-#include <QtCore/QSet>
+#include "QtCore/QList"
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

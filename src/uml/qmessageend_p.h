@@ -41,12 +41,12 @@
 #ifndef QTUML_QMESSAGEEND_P_H
 #define QTUML_QMESSAGEEND_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qnamedelement_p.h"
-#include "qmessageend.h"
 
+#include "QtUml/QMessageEnd"
 
 QT_BEGIN_HEADER
 

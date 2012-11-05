@@ -41,12 +41,12 @@
 #ifndef QTUML_QEXTENSION_P_H
 #define QTUML_QEXTENSION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qassociation_p.h"
-#include "qextension.h"
 
+#include "QtUml/QExtension"
 
 QT_BEGIN_HEADER
 

@@ -45,6 +45,8 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtUml/QClass>
+#include <QtUml/QDeploymentTarget>
 
 // Qt includes
 #include <QtCore/QSet>
@@ -55,18 +57,11 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-// Forward decls for aggregated 'base classes'
-class QClass;
-class QDeploymentTarget;
-
 class QNodePrivate;
 
 class Q_UML_EXPORT QNode : public QObject
 {
     Q_OBJECT
-
-    // From QNode
-    Q_PROPERTY(const QSet<QNode *> * nestedNodes READ nestedNodes)
 
     // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
@@ -85,6 +80,9 @@ class Q_UML_EXPORT QNode : public QObject
     Q_PROPERTY(const QSet<QPackageableElement *> * deployedElements READ deployedElements)
     Q_PROPERTY(const QSet<QDeployment *> * deployments READ deployments)
 
+    // From QNode
+    Q_PROPERTY(const QSet<QNode *> * nestedNodes READ nestedNodes)
+
     Q_DISABLE_COPY(QNode)
     Q_DECLARE_PRIVATE(QNode)
 
@@ -92,7 +90,35 @@ public:
     explicit QNode(QObject *parent = 0);
     virtual ~QNode();
 
-    // Association-ends
+    // Association ends from aggregated QElement
+    const QSet<QElement *> *ownedElements() const;
+    QElement *owner() const;
+    const QSet<QComment *> *ownedComments() const;
+    void addOwnedComment(QComment *ownedComment);
+    void removeOwnedComment(QComment *ownedComment);
+
+    // Attributes from aggregated QNamedElement
+    QString name() const;
+    void setName(QString name);
+    QtUml::VisibilityKind visibility() const;
+    void setVisibility(QtUml::VisibilityKind visibility);
+    QString qualifiedName() const;
+
+    // Association ends from aggregated QNamedElement
+    QStringExpression *nameExpression() const;
+    void setNameExpression(QStringExpression *nameExpression);
+    QNamespace *namespace_() const;
+    const QSet<QDependency *> *clientDependencies() const;
+    void addClientDependency(QDependency *clientDependency);
+    void removeClientDependency(QDependency *clientDependency);
+
+    // Association ends from aggregated QDeploymentTarget
+    const QSet<QPackageableElement *> *deployedElements() const;
+    const QSet<QDeployment *> *deployments() const;
+    void addDeployment(QDeployment *deployment);
+    void removeDeployment(QDeployment *deployment);
+
+    // Association ends from QNode
     const QSet<QNode *> *nestedNodes() const;
     void addNestedNode(QNode *nestedNode);
     void removeNestedNode(QNode *nestedNode);

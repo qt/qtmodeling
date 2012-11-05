@@ -71,7 +71,7 @@ public:
     explicit QReadStructuralFeatureAction(QObject *parent = 0);
     virtual ~QReadStructuralFeatureAction();
 
-    // Association-ends
+    // Association ends from QReadStructuralFeatureAction
     QOutputPin *result() const;
     void setResult(QOutputPin *result);
 

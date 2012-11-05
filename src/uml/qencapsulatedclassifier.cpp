@@ -76,6 +76,10 @@ QEncapsulatedClassifier::~QEncapsulatedClassifier()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QEncapsulatedClassifier
+// ---------------------------------------------------------------
+
 /*!
     References a set of ports that an encapsulated classifier owns.
  */
@@ -88,6 +92,8 @@ const QSet<QPort *> *QEncapsulatedClassifier::ownedPorts() const
     //Q_D(const QEncapsulatedClassifier);
     //return <derived-return>;
 }
+
+#include "moc_qencapsulatedclassifier.cpp"
 
 QT_END_NAMESPACE_QTUML
 

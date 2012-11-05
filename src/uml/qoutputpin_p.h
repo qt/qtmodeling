@@ -41,12 +41,12 @@
 #ifndef QTUML_QOUTPUTPIN_P_H
 #define QTUML_QOUTPUTPIN_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qpin_p.h"
-#include "qoutputpin.h"
 
+#include "QtUml/QOutputPin"
 
 QT_BEGIN_HEADER
 

@@ -42,7 +42,6 @@
 #include "qdatastorenode.h"
 #include "qdatastorenode_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QDataStoreNodePrivate::QDataStoreNodePrivate()

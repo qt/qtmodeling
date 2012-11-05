@@ -44,10 +44,15 @@
     [%- END -%]
     [%- REDEFINEDPROPERTIES(class, redefinedProperties) -%]
     [%- FOREACH parent IN parents.unique -%]
-    [%- IF parent.attribute.values or parent.associationend.values %]
-    // From [% IF recursive == 'true' %]aggregated [% END %]${parent.name}
+    [%- IF parent.attribute.values or parent.associationend.values -%]
+        [%- found = 'false' -%]
         [%- FOREACH attribute IN parent.attribute.values -%]
         [%- IF redefinedProperties.grep(attribute.id).size == 0 -%]
+            [%- IF found == 'false' %]
+
+    // From [% IF recursive == 'true' %]aggregated [% END %]${parent.name}
+            [%- found = 'true' -%]
+            [%- END -%]
             [%- IF attribute.isReadOnly == 'true' or attribute.accessor.size == 3 %]
     Q_PROPERTY(${attribute.accessor.0.return}[%- IF attribute.accessor.0.return.substr(attribute.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${attribute.accessor.0.name} READ ${attribute.accessor.0.name})
             [%- ELSE %]
@@ -57,14 +62,63 @@
         [%- END -%]
         [%- FOREACH associationend IN parent.associationend.values -%]
         [%- IF redefinedProperties.grep(associationend.id).size == 0 -%]
+            [%- IF found == 'false' %]
+
+    // From [% IF recursive == 'true' %]aggregated [% END %]${parent.name}
+            [%- found = 'true' -%]
+            [%- END -%]
             [%- IF associationend.isReadOnly == 'true' or associationend.accessor.size == 3 %]
     Q_PROPERTY(${associationend.accessor.0.return}[%- IF associationend.accessor.0.return.substr(associationend.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${associationend.accessor.0.name} READ ${associationend.accessor.0.name})
             [%- ELSE %]
     Q_PROPERTY(${associationend.accessor.0.return}[%- IF associationend.accessor.0.return.substr(associationend.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${associationend.accessor.0.name} READ ${associationend.accessor.0.name} WRITE ${associationend.accessor.1.name})
             [%- END -%]
+        [%- END -%]
         [%- END %]
-        [%- END %]
+    [%- END -%]
+    [%- END -%]
+[%- END -%]
+[%- MACRO GENERATEFUNCTIONS(class, recursive) BLOCK -%]
+    [%- parents = [] -%]
+    [%- redefinedProperties = [] -%]
+    [%- IF recursive == 'true' -%]
+    [%- FOREACH superclass IN class.superclass %]
+        [%- PARENTSOF(classes.item(superclass.include.split('/').last), parents, redefinedProperties) -%]
+    [%- END -%]
+    [%- END %]
+    [%- IF recursive == 'false' -%]
+    [%- parents.push(class) -%]
+    [%- END -%]
+    [%- REDEFINEDPROPERTIES(class, redefinedProperties) -%]
+    [%- FOREACH parent IN parents.unique -%]
+    [%- IF parent.attribute.values or parent.associationend.values -%]
+        [%- found = 'false' -%]
+        [%- FOREACH attribute IN parent.attribute.values -%]
+        [%- IF redefinedProperties.grep(attribute.id).size == 0 -%]
+            [%- IF found == 'false' %]
 
+    // Attributes from [% IF recursive == 'true' %]aggregated [% END %]${parent.name}
+            [%- found = 'true' -%]
+            [%- END -%]
+            [%- FOREACH accessor IN attribute.accessor %]
+    ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
+            [%- LAST IF attribute.isReadOnly == 'true' -%]
+            [%- END -%]
+        [%- END -%]
+        [%- END -%]
+        [%- found = 'false' -%]
+        [%- FOREACH associationend IN parent.associationend.values -%]
+        [%- IF redefinedProperties.grep(associationend.id).size == 0 -%]
+            [%- IF found == 'false' %]
+
+    // Association ends from [% IF recursive == 'true' %]aggregated [% END %]${parent.name}
+            [%- found = 'true' -%]
+            [%- END -%]
+            [%- FOREACH accessor IN associationend.accessor %]
+    ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
+            [%- LAST IF associationend.isReadOnly == 'true' -%]
+            [%- END -%]
+        [%- END -%]
+        [%- END %]
     [%- END -%]
     [%- END -%]
 [%- END -%]
@@ -116,9 +170,10 @@
 // Base class includes
 [%- IF !class.superclass || class.superclass.size > 1 %]
 #include <QtCore/QObject>
-[%- ELSIF class.superclass.size == 1 %]
-#include <${class.superclass.0.include}>
 [%- END -%]
+[%- FOREACH superClass IN class.superclass %]
+#include <${superClass.include}>
+[%- END %]
 [%- IF class.item('qtumlinclude') %]
 
 // [% namespace.split('/').0 %] includes
@@ -161,16 +216,6 @@ QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
 
 QT_MODULE([% namespace.split('/').0 %])
 
-[%- IF class.superclass && class.superclass.size > 1 -%]
-[%- FOREACH superclass IN class.superclass -%]
-[%- IF loop.first %]
-// Forward decls for aggregated 'base classes'
-[% END -%]
-class ${superclass.include.split('/').last};
-
-[%- END %]
-[%- END -%]
-
 [%- found = 'false' -%]
 [%- FOREACH forwarddecl IN class.forwarddecl -%]
 [%- IF forwarddecl.namespace == namespace.replace('/', '::') and forwarddecl.content != class.name -%]
@@ -188,40 +233,22 @@ class ${class.name}Private;
 
 class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name} : [% IF class.superclass.size == 1 %]public ${class.superclass.0.name.split('/').last}[% ELSE %]public QObject[% END %]
 {
-[%- IF class.attribute || class.associationend %]
     Q_OBJECT
-
-    [%- GENERATEPROPERTIES(class, 'false') -%]
-[% END %]
 [%- IF class.superclass and class.superclass.size > 1 -%]
     [%- GENERATEPROPERTIES(class, 'true') -%]
-[%- END %]
+[%- END -%]
+    [%- GENERATEPROPERTIES(class, 'false') %]
+
     Q_DISABLE_COPY(${class.name})
     Q_DECLARE_PRIVATE(${class.name})
 
 public:
     explicit ${class.name}(QObject *parent = 0);
     virtual ~${class.name}();
-    [%- IF class.item('attribute') %]
-
-    // Attributes
-    [%- FOREACH attribute IN class.attribute.values -%]
-    [%- FOREACH accessor IN attribute.accessor %]
-    ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
-    [%- LAST IF attribute.isReadOnly == 'true' -%]
-    [%- END -%]
-    [%- END -%]
-    [%- END %]
-    [%- IF class.item('associationend') %]
-
-    // Association-ends
-    [%- FOREACH associationend IN class.associationend.values -%]
-    [%- FOREACH accessor IN associationend.accessor %]
-    ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
-    [%- LAST IF associationend.isReadOnly == 'true' -%]
-    [%- END -%]
-    [%- END -%]
-    [%- END %]
+[%- IF class.superclass and class.superclass.size > 1 -%]
+    [%- GENERATEFUNCTIONS(class, 'true') -%]
+[%- END -%]
+    [%- GENERATEFUNCTIONS(class, 'false') %]
     [%- IF class.item('operation') %]
 
     // Operations
@@ -278,11 +305,10 @@ public:
     [%- END -%]
     [%- END -%]
     [%- END %]
-[%- IF not(class.superclass) -%]
 [%- friendClasses = [] -%]
 [%- FOREACH friendClass IN classes.values -%]
 [%- FOREACH associationend IN friendClass.associationend.values -%]
-[%- IF classes.item(associationend.oppositeEnd.split('-').0.replace('^', 'Q')).associationend.item(associationend.oppositeEnd).isReadOnly == 'true' -%]
+[%- IF classes.item(associationend.oppositeEnd.split('-').0.replace('^', 'Q')).name == class.name && class.associationend.item(associationend.oppositeEnd).isReadOnly == 'true' -%]
 [%- IF associationend.isReadOnly == 'true' -%]
 [%- modifiedFriendClass = friendClass.name.replace('$', 'Private') -%]
 [%- ELSE -%]
@@ -290,7 +316,6 @@ public:
 [%- END -%]
 [%- IF friendClass.name != class.name -%]
 [%- friendClasses.push(modifiedFriendClass) -%]
-[%- END -%]
 [%- END -%]
 [%- END -%]
 [%- END -%]

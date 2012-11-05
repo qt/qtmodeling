@@ -80,6 +80,10 @@ QComponentRealization::~QComponentRealization()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QComponentRealization
+// ---------------------------------------------------------------
+
 /*!
     The Component that owns this ComponentRealization and which is implemented by its realizing classifiers.
  */
@@ -102,15 +106,15 @@ void QComponentRealization::setAbstraction(QComponent *abstraction)
             d->abstraction->removeRealization(this);
 
         // Adjust subsetted property(ies)
-        QDependency::removeSupplier(dynamic_cast<QNamedElement *>(d->abstraction));
+        (qtuml_object_cast<QDependency *>(this))->removeSupplier(qtuml_object_cast<QNamedElement *>(d->abstraction));
 
         d->abstraction = abstraction;
 
         // Adjust subsetted property(ies)
         if (abstraction) {
-            QDependency::addSupplier(dynamic_cast<QNamedElement *>(abstraction));
+            (qtuml_object_cast<QDependency *>(this))->addSupplier(qtuml_object_cast<QNamedElement *>(abstraction));
         }
-        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(abstraction));
+        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(abstraction));
 
         // Adjust opposite property
         if (abstraction)
@@ -138,7 +142,7 @@ void QComponentRealization::addRealizingClassifier(QClassifier *realizingClassif
         d->realizingClassifiers->insert(realizingClassifier);
 
         // Adjust subsetted property(ies)
-        QDependency::addClient(dynamic_cast<QNamedElement *>(realizingClassifier));
+        (qtuml_object_cast<QDependency *>(this))->addClient(qtuml_object_cast<QNamedElement *>(realizingClassifier));
     }
 }
 
@@ -151,7 +155,7 @@ void QComponentRealization::removeRealizingClassifier(QClassifier *realizingClas
         d->realizingClassifiers->remove(realizingClassifier);
 
         // Adjust subsetted property(ies)
-        QDependency::removeClient(dynamic_cast<QNamedElement *>(realizingClassifier));
+        (qtuml_object_cast<QDependency *>(this))->removeClient(qtuml_object_cast<QNamedElement *>(realizingClassifier));
     }
 }
 

@@ -72,7 +72,7 @@ public:
     explicit QSubstitution(QObject *parent = 0);
     virtual ~QSubstitution();
 
-    // Association-ends
+    // Association ends from QSubstitution
     QClassifier *contract() const;
     void setContract(QClassifier *contract);
     QClassifier *substitutingClassifier() const;

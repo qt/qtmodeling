@@ -41,14 +41,15 @@
 #ifndef QTUML_QLINKACTION_P_H
 #define QTUML_QLINKACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qaction_p.h"
-#include "qlinkaction.h"
+
+#include "QtUml/QLinkAction"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

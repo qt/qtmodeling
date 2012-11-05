@@ -41,15 +41,14 @@
 #ifndef QTUML_QVARIABLE_P_H
 #define QTUML_QVARIABLE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qmultiplicityelement_p.h"
 #include "private/qconnectableelement_p.h"
-#include "qvariable.h"
 
+#include "QtUml/QVariable"
 
 QT_BEGIN_HEADER
 
@@ -73,10 +72,6 @@ public:
 
     QStructuredActivityNode *scope;
     QActivity *activityScope;
-
-private:
-    QMultiplicityElementPrivate *_wrappedMultiplicityElementPrivate;
-    QConnectableElementPrivate *_wrappedConnectableElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

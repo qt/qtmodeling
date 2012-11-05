@@ -73,7 +73,7 @@ public:
     explicit QStateInvariant(QObject *parent = 0);
     virtual ~QStateInvariant();
 
-    // Association-ends
+    // Association ends from QStateInvariant
     QConstraint *invariant() const;
     void setInvariant(QConstraint *invariant);
     QLifeline *covered() const;

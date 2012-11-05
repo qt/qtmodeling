@@ -112,6 +112,163 @@ QConnectableElement::~QConnectableElement()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QElement
+// ---------------------------------------------------------------
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QElement *> *QConnectableElement::ownedElements() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+}
+
+/*!
+    The Element that owns this element.
+ */
+QElement *QConnectableElement::owner() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->owner();
+}
+
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QComment *> *QConnectableElement::ownedComments() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+}
+
+void QConnectableElement::addOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+}
+
+void QConnectableElement::removeOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The name of the NamedElement.
+ */
+QString QConnectableElement::name() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+}
+
+void QConnectableElement::setName(QString name)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+}
+
+/*!
+    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
+ */
+QtUml::VisibilityKind QConnectableElement::visibility() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->visibility();
+}
+
+void QConnectableElement::setVisibility(QtUml::VisibilityKind visibility)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setVisibility(visibility);
+}
+
+/*!
+    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
+ */
+QString QConnectableElement::qualifiedName() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The string expression used to define the name of this named element.
+ */
+QStringExpression *QConnectableElement::nameExpression() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+}
+
+void QConnectableElement::setNameExpression(QStringExpression *nameExpression)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+}
+
+/*!
+    Specifies the namespace that owns the NamedElement.
+ */
+QNamespace *QConnectableElement::namespace_() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+}
+
+/*!
+    Indicates the dependencies that reference the client.
+ */
+const QSet<QDependency *> *QConnectableElement::clientDependencies() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+}
+
+void QConnectableElement::addClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+}
+
+void QConnectableElement::removeClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QTypedElement
+// ---------------------------------------------------------------
+
+/*!
+    This information is derived from the return result for this Operation.The type of the TypedElement.
+ */
+QType *QConnectableElement::type() const
+{
+    return (qtuml_object_cast<const QTypedElement *>(this))->type();
+}
+
+void QConnectableElement::setType(QType *type)
+{
+    (qtuml_object_cast<QTypedElement *>(this))->setType(type);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QParameterableElement
+// ---------------------------------------------------------------
+
+/*!
+    The formal template parameter that owns this element.
+ */
+QTemplateParameter *QConnectableElement::owningTemplateParameter() const
+{
+    return (qtuml_object_cast<const QParameterableElement *>(this))->owningTemplateParameter();
+}
+
+void QConnectableElement::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
+{
+    (qtuml_object_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QConnectableElement
+// ---------------------------------------------------------------
+
 /*!
     Denotes a set of connector ends that attaches to this connectable element.
  */
@@ -150,6 +307,8 @@ void QConnectableElement::setTemplateParameter(QConnectableElementTemplateParame
         templateParameter->setParameteredElement(this);
     }
 }
+
+#include "moc_qconnectableelement.cpp"
 
 QT_END_NAMESPACE_QTUML
 

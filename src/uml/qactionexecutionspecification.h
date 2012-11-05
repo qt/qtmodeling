@@ -71,7 +71,7 @@ public:
     explicit QActionExecutionSpecification(QObject *parent = 0);
     virtual ~QActionExecutionSpecification();
 
-    // Association-ends
+    // Association ends from QActionExecutionSpecification
     QAction *action() const;
     void setAction(QAction *action);
 

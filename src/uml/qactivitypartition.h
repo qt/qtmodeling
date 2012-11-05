@@ -82,13 +82,13 @@ public:
     explicit QActivityPartition(QObject *parent = 0);
     virtual ~QActivityPartition();
 
-    // Attributes
+    // Attributes from QActivityPartition
     bool isDimension() const;
     void setDimension(bool isDimension);
     bool isExternal() const;
     void setExternal(bool isExternal);
 
-    // Association-ends
+    // Association ends from QActivityPartition
     QElement *represents() const;
     void setRepresents(QElement *represents);
     const QSet<QActivityPartition *> *subpartitions() const;

@@ -77,7 +77,7 @@ public:
     explicit QReplyAction(QObject *parent = 0);
     virtual ~QReplyAction();
 
-    // Association-ends
+    // Association ends from QReplyAction
     QTrigger *replyToCall() const;
     void setReplyToCall(QTrigger *replyToCall);
     QInputPin *returnInformation() const;

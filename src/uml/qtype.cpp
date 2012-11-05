@@ -77,6 +77,10 @@ QType::~QType()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QType
+// ---------------------------------------------------------------
+
 /*!
     Specifies the owning package of this classifier, if any.
  */
@@ -101,7 +105,7 @@ void QType::setPackage(QPackage *package)
         d->package = package;
 
         // Adjust subsetted property(ies)
-        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(package));
+        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(package));
 
         // Adjust opposite property
         if (package)
@@ -116,6 +120,8 @@ bool QType::conformsTo(const QType *other) const
 {
     qWarning("QType::conformsTo: operation to be implemented");
 }
+
+#include "moc_qtype.cpp"
 
 QT_END_NAMESPACE_QTUML
 

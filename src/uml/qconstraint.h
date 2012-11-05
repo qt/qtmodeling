@@ -78,7 +78,7 @@ public:
     explicit QConstraint(QObject *parent = 0);
     virtual ~QConstraint();
 
-    // Association-ends
+    // Association ends from QConstraint
     QNamespace *context() const;
     void setContext(QNamespace *context);
     QValueSpecification *specification() const;

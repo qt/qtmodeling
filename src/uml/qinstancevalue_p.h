@@ -41,12 +41,12 @@
 #ifndef QTUML_QINSTANCEVALUE_P_H
 #define QTUML_QINSTANCEVALUE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qvaluespecification_p.h"
-#include "qinstancevalue.h"
 
+#include "QtUml/QInstanceValue"
 
 QT_BEGIN_HEADER
 

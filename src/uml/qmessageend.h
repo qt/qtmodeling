@@ -71,7 +71,7 @@ public:
     explicit QMessageEnd(QObject *parent = 0);
     virtual ~QMessageEnd();
 
-    // Association-ends
+    // Association ends from QMessageEnd
     QMessage *message() const;
     void setMessage(QMessage *message);
 

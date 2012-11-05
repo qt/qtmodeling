@@ -41,14 +41,15 @@
 #ifndef QTUML_QENCAPSULATEDCLASSIFIER_P_H
 #define QTUML_QENCAPSULATEDCLASSIFIER_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qstructuredclassifier_p.h"
-#include "qencapsulatedclassifier.h"
+
+#include "QtUml/QEncapsulatedClassifier"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

@@ -41,18 +41,18 @@
 #ifndef QTUML_QSTRUCTUREDACTIVITYNODE_P_H
 #define QTUML_QSTRUCTUREDACTIVITYNODE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qaction_p.h"
 #include "private/qnamespace_p.h"
 #include "private/qactivitygroup_p.h"
-#include "qstructuredactivitynode.h"
+
+#include "QtUml/QStructuredActivityNode"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -84,11 +84,6 @@ public:
     QSet<QActivityEdge *> *edges;
     QSet<QVariable *> *variables;
     QActivity *activity;
-
-private:
-    QActionPrivate *_wrappedActionPrivate;
-    QNamespacePrivate *_wrappedNamespacePrivate;
-    QActivityGroupPrivate *_wrappedActivityGroupPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

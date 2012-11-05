@@ -73,7 +73,7 @@ public:
     explicit QClearAssociationAction(QObject *parent = 0);
     virtual ~QClearAssociationAction();
 
-    // Association-ends
+    // Association ends from QClearAssociationAction
     QInputPin *object() const;
     void setObject(QInputPin *object);
     QAssociation *association() const;

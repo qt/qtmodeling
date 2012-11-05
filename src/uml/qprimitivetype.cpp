@@ -42,7 +42,6 @@
 #include "qprimitivetype.h"
 #include "qprimitivetype_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QPrimitiveTypePrivate::QPrimitiveTypePrivate()

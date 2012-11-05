@@ -53,8 +53,12 @@ QSequenceNodePrivate::QSequenceNodePrivate() :
 
 QSequenceNodePrivate::~QSequenceNodePrivate()
 {
-    foreach (QExecutableNode *executablenode, *executableNodes)
-        delete executablenode;
+    foreach (QExecutableNode *executablenode, *executableNodes) {
+        QObject *object = executablenode;
+        while (object->parent())
+            object = object->parent();
+        delete object;
+    }
     delete executableNodes;
 }
 
@@ -79,6 +83,10 @@ QSequenceNode::QSequenceNode(QSequenceNodePrivate &dd, QObject *parent) :
 QSequenceNode::~QSequenceNode()
 {
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QSequenceNode
+// ---------------------------------------------------------------
 
 /*!
     An ordered set of executable nodes.

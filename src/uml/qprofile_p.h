@@ -41,14 +41,15 @@
 #ifndef QTUML_QPROFILE_P_H
 #define QTUML_QPROFILE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qpackage_p.h"
-#include "qprofile.h"
+
+#include "QtUml/QProfile"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

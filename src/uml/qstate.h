@@ -45,6 +45,9 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtUml/QNamespace>
+#include <QtUml/QRedefinableElement>
+#include <QtUml/QVertex>
 
 // Qt includes
 #include <QtCore/QSet>
@@ -54,11 +57,6 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
-
-// Forward decls for aggregated 'base classes'
-class QNamespace;
-class QRedefinableElement;
-class QVertex;
 
 // Forward decls for function parameters
 class QStateMachine;
@@ -75,23 +73,6 @@ class QStatePrivate;
 class Q_UML_EXPORT QState : public QObject
 {
     Q_OBJECT
-
-    // From QState
-    Q_PROPERTY(bool isSimple READ isSimple)
-    Q_PROPERTY(bool isComposite READ isComposite)
-    Q_PROPERTY(bool isOrthogonal READ isOrthogonal)
-    Q_PROPERTY(bool isSubmachineState READ isSubmachineState)
-    Q_PROPERTY(const QSet<QRegion *> * regions READ regions)
-    Q_PROPERTY(QBehavior * exit READ exit WRITE setExit)
-    Q_PROPERTY(const QSet<QConnectionPointReference *> * connections READ connections)
-    Q_PROPERTY(QClassifier * redefinitionContext READ redefinitionContext)
-    Q_PROPERTY(QState * redefinedState READ redefinedState WRITE setRedefinedState)
-    Q_PROPERTY(const QSet<QTrigger *> * deferrableTriggers READ deferrableTriggers)
-    Q_PROPERTY(const QSet<QPseudostate *> * connectionPoints READ connectionPoints)
-    Q_PROPERTY(QBehavior * entry READ entry WRITE setEntry)
-    Q_PROPERTY(QBehavior * doActivity READ doActivity WRITE setDoActivity)
-    Q_PROPERTY(QStateMachine * submachine READ submachine WRITE setSubmachine)
-    Q_PROPERTY(QConstraint * stateInvariant READ stateInvariant WRITE setStateInvariant)
 
     // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
@@ -123,6 +104,23 @@ class Q_UML_EXPORT QState : public QObject
     Q_PROPERTY(QRegion * container READ container WRITE setContainer)
     Q_PROPERTY(const QSet<QTransition *> * outgoings READ outgoings)
 
+    // From QState
+    Q_PROPERTY(bool isSimple READ isSimple)
+    Q_PROPERTY(bool isComposite READ isComposite)
+    Q_PROPERTY(bool isOrthogonal READ isOrthogonal)
+    Q_PROPERTY(bool isSubmachineState READ isSubmachineState)
+    Q_PROPERTY(const QSet<QRegion *> * regions READ regions)
+    Q_PROPERTY(QBehavior * exit READ exit WRITE setExit)
+    Q_PROPERTY(const QSet<QConnectionPointReference *> * connections READ connections)
+    Q_PROPERTY(QClassifier * redefinitionContext READ redefinitionContext)
+    Q_PROPERTY(QState * redefinedState READ redefinedState WRITE setRedefinedState)
+    Q_PROPERTY(const QSet<QTrigger *> * deferrableTriggers READ deferrableTriggers)
+    Q_PROPERTY(const QSet<QPseudostate *> * connectionPoints READ connectionPoints)
+    Q_PROPERTY(QBehavior * entry READ entry WRITE setEntry)
+    Q_PROPERTY(QBehavior * doActivity READ doActivity WRITE setDoActivity)
+    Q_PROPERTY(QStateMachine * submachine READ submachine WRITE setSubmachine)
+    Q_PROPERTY(QConstraint * stateInvariant READ stateInvariant WRITE setStateInvariant)
+
     Q_DISABLE_COPY(QState)
     Q_DECLARE_PRIVATE(QState)
 
@@ -130,13 +128,62 @@ public:
     explicit QState(QObject *parent = 0);
     virtual ~QState();
 
-    // Attributes
+    // Association ends from aggregated QElement
+    const QSet<QElement *> *ownedElements() const;
+    QElement *owner() const;
+    const QSet<QComment *> *ownedComments() const;
+    void addOwnedComment(QComment *ownedComment);
+    void removeOwnedComment(QComment *ownedComment);
+
+    // Attributes from aggregated QNamedElement
+    QString name() const;
+    void setName(QString name);
+    QtUml::VisibilityKind visibility() const;
+    void setVisibility(QtUml::VisibilityKind visibility);
+    QString qualifiedName() const;
+
+    // Association ends from aggregated QNamedElement
+    QStringExpression *nameExpression() const;
+    void setNameExpression(QStringExpression *nameExpression);
+    QNamespace *namespace_() const;
+    const QSet<QDependency *> *clientDependencies() const;
+    void addClientDependency(QDependency *clientDependency);
+    void removeClientDependency(QDependency *clientDependency);
+
+    // Association ends from aggregated QNamespace
+    const QSet<QPackageImport *> *packageImports() const;
+    void addPackageImport(QPackageImport *packageImport);
+    void removePackageImport(QPackageImport *packageImport);
+    const QSet<QNamedElement *> *members() const;
+    const QSet<QPackageableElement *> *importedMembers() const;
+    const QSet<QElementImport *> *elementImports() const;
+    void addElementImport(QElementImport *elementImport);
+    void removeElementImport(QElementImport *elementImport);
+    const QSet<QConstraint *> *ownedRules() const;
+    void addOwnedRule(QConstraint *ownedRule);
+    void removeOwnedRule(QConstraint *ownedRule);
+    const QSet<QNamedElement *> *ownedMembers() const;
+
+    // Attributes from aggregated QRedefinableElement
+    bool isLeaf() const;
+    void setLeaf(bool isLeaf);
+
+    // Association ends from aggregated QRedefinableElement
+    const QSet<QRedefinableElement *> *redefinedElements() const;
+
+    // Association ends from aggregated QVertex
+    const QSet<QTransition *> *incomings() const;
+    QRegion *container() const;
+    void setContainer(QRegion *container);
+    const QSet<QTransition *> *outgoings() const;
+
+    // Attributes from QState
     bool isSimple() const;
     bool isComposite() const;
     bool isOrthogonal() const;
     bool isSubmachineState() const;
 
-    // Association-ends
+    // Association ends from QState
     const QSet<QRegion *> *regions() const;
     void addRegion(QRegion *region);
     void removeRegion(QRegion *region);

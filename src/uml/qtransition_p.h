@@ -41,21 +41,20 @@
 #ifndef QTUML_QTRANSITION_P_H
 #define QTUML_QTRANSITION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qredefinableelement_p.h"
 #include "private/qnamespace_p.h"
-#include "qtransition.h"
 
+#include "QtUml/QTransition"
 
 // QtUml includes
-#include <QtUml/QtUmlEnumerations>
+#include "QtUml/QtUmlEnumerations"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -89,10 +88,6 @@ public:
     QTransition *redefinedTransition;
     QVertex *source;
     QSet<QTrigger *> *triggers;
-
-private:
-    QRedefinableElementPrivate *_wrappedRedefinableElementPrivate;
-    QNamespacePrivate *_wrappedNamespacePrivate;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -76,7 +76,7 @@ public:
     explicit QStereotype(QObject *parent = 0);
     virtual ~QStereotype();
 
-    // Association-ends
+    // Association ends from QStereotype
     const QSet<QImage *> *icons() const;
     void addIcon(QImage *icon);
     void removeIcon(QImage *icon);

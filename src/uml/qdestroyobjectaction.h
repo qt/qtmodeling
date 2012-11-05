@@ -73,13 +73,13 @@ public:
     explicit QDestroyObjectAction(QObject *parent = 0);
     virtual ~QDestroyObjectAction();
 
-    // Attributes
+    // Attributes from QDestroyObjectAction
     bool isDestroyLinks() const;
     void setDestroyLinks(bool isDestroyLinks);
     bool isDestroyOwnedObjects() const;
     void setDestroyOwnedObjects(bool isDestroyOwnedObjects);
 
-    // Association-ends
+    // Association ends from QDestroyObjectAction
     QInputPin *target() const;
     void setTarget(QInputPin *target);
 

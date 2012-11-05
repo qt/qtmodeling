@@ -83,7 +83,7 @@ public:
     explicit QInterface(QObject *parent = 0);
     virtual ~QInterface();
 
-    // Association-ends
+    // Association ends from QInterface
     QProtocolStateMachine *protocol() const;
     void setProtocol(QProtocolStateMachine *protocol);
     const QSet<QInterface *> *redefinedInterfaces() const;

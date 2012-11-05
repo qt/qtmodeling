@@ -72,7 +72,7 @@ public:
     explicit QTimeInterval(QObject *parent = 0);
     virtual ~QTimeInterval();
 
-    // Association-ends
+    // Association ends from QTimeInterval
     QTimeExpression *max() const;
     void setMax(QTimeExpression *max);
     QTimeExpression *min() const;

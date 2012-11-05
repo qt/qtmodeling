@@ -75,12 +75,12 @@ public:
     explicit QDurationObservation(QObject *parent = 0);
     virtual ~QDurationObservation();
 
-    // Attributes
+    // Attributes from QDurationObservation
     const QSet<bool> *firstEvents() const;
     void addFirstEvent(bool firstEvent);
     void removeFirstEvent(bool firstEvent);
 
-    // Association-ends
+    // Association ends from QDurationObservation
     const QSet<QNamedElement *> *events() const;
     void addEvent(QNamedElement *event);
     void removeEvent(QNamedElement *event);

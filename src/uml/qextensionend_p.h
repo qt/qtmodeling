@@ -41,12 +41,12 @@
 #ifndef QTUML_QEXTENSIONEND_P_H
 #define QTUML_QEXTENSIONEND_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qproperty_p.h"
-#include "qextensionend.h"
 
+#include "QtUml/QExtensionEnd"
 
 QT_BEGIN_HEADER
 

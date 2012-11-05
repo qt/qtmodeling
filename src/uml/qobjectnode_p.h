@@ -41,21 +41,20 @@
 #ifndef QTUML_QOBJECTNODE_P_H
 #define QTUML_QOBJECTNODE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qactivitynode_p.h"
 #include "private/qtypedelement_p.h"
-#include "qobjectnode.h"
 
+#include "QtUml/QObjectNode"
 
 // QtUml includes
-#include <QtUml/QtUmlEnumerations>
+#include "QtUml/QtUmlEnumerations"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -81,10 +80,6 @@ public:
     QValueSpecification *upperBound;
     QBehavior *selection;
     QSet<QState *> *inState;
-
-private:
-    QActivityNodePrivate *_wrappedActivityNodePrivate;
-    QTypedElementPrivate *_wrappedTypedElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

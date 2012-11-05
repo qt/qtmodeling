@@ -78,6 +78,10 @@ QTimeEvent::~QTimeEvent()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QTimeEvent
+// ---------------------------------------------------------------
+
 /*!
     Specifies whether it is relative or absolute time.
  */
@@ -99,6 +103,10 @@ void QTimeEvent::setRelative(bool isRelative)
     }
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QTimeEvent
+// ---------------------------------------------------------------
+
 /*!
     Specifies the corresponding time deadline.
  */
@@ -117,13 +125,13 @@ void QTimeEvent::setWhen(QTimeExpression *when)
     Q_D(QTimeEvent);
     if (d->when != when) {
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->when));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->when));
 
         d->when = when;
 
         // Adjust subsetted property(ies)
         if (when) {
-            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(when));
+            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(when));
         }
     }
 }

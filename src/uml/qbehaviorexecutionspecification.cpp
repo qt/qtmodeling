@@ -77,6 +77,10 @@ QBehaviorExecutionSpecification::~QBehaviorExecutionSpecification()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QBehaviorExecutionSpecification
+// ---------------------------------------------------------------
+
 /*!
     Behavior whose execution is occurring.
  */

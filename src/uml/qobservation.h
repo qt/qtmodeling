@@ -56,6 +56,8 @@ class QObservationPrivate;
 
 class Q_UML_EXPORT QObservation : public QPackageableElement
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QObservation)
     Q_DECLARE_PRIVATE(QObservation)
 

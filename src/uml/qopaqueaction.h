@@ -80,7 +80,7 @@ public:
     explicit QOpaqueAction(QObject *parent = 0);
     virtual ~QOpaqueAction();
 
-    // Attributes
+    // Attributes from QOpaqueAction
     const QList<QString> *bodies() const;
     void addBody(QString body);
     void removeBody(QString body);
@@ -88,7 +88,7 @@ public:
     void addLanguage(QString language);
     void removeLanguage(QString language);
 
-    // Association-ends
+    // Association ends from QOpaqueAction
     const QSet<QInputPin *> *inputValues() const;
     void addInputValue(QInputPin *inputValue);
     void removeInputValue(QInputPin *inputValue);

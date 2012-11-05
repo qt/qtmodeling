@@ -71,7 +71,7 @@ public:
     explicit QInstanceValue(QObject *parent = 0);
     virtual ~QInstanceValue();
 
-    // Association-ends
+    // Association ends from QInstanceValue
     QInstanceSpecification *instance() const;
     void setInstance(QInstanceSpecification *instance);
 

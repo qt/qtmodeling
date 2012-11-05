@@ -42,7 +42,6 @@
 #include "qliteralstring.h"
 #include "qliteralstring_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QLiteralStringPrivate::QLiteralStringPrivate()
@@ -74,6 +73,10 @@ QLiteralString::QLiteralString(QLiteralStringPrivate &dd, QObject *parent) :
 QLiteralString::~QLiteralString()
 {
 }
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QLiteralString
+// ---------------------------------------------------------------
 
 /*!
     The specified String value.

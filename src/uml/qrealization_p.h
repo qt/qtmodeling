@@ -41,12 +41,12 @@
 #ifndef QTUML_QREALIZATION_P_H
 #define QTUML_QREALIZATION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qabstraction_p.h"
-#include "qrealization.h"
 
+#include "QtUml/QRealization"
 
 QT_BEGIN_HEADER
 

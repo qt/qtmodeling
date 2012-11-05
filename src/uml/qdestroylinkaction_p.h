@@ -41,14 +41,15 @@
 #ifndef QTUML_QDESTROYLINKACTION_P_H
 #define QTUML_QDESTROYLINKACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qwritelinkaction_p.h"
-#include "qdestroylinkaction.h"
+
+#include "QtUml/QDestroyLinkAction"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

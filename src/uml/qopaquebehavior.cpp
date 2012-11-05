@@ -42,7 +42,6 @@
 #include "qopaquebehavior.h"
 #include "qopaquebehavior_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QOpaqueBehaviorPrivate::QOpaqueBehaviorPrivate() :
@@ -78,6 +77,10 @@ QOpaqueBehavior::QOpaqueBehavior(QOpaqueBehaviorPrivate &dd, QObject *parent) :
 QOpaqueBehavior::~QOpaqueBehavior()
 {
 }
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QOpaqueBehavior
+// ---------------------------------------------------------------
 
 /*!
     Languages the body strings use in the same order as the body strings.

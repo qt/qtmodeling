@@ -41,12 +41,12 @@
 #ifndef QTUML_QREADSTRUCTURALFEATUREACTION_P_H
 #define QTUML_QREADSTRUCTURALFEATUREACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qstructuralfeatureaction_p.h"
-#include "qreadstructuralfeatureaction.h"
 
+#include "QtUml/QReadStructuralFeatureAction"
 
 QT_BEGIN_HEADER
 

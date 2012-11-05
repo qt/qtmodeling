@@ -73,7 +73,7 @@ public:
     explicit QInterfaceRealization(QObject *parent = 0);
     virtual ~QInterfaceRealization();
 
-    // Association-ends
+    // Association ends from QInterfaceRealization
     QBehavioredClassifier *implementingClassifier() const;
     void setImplementingClassifier(QBehavioredClassifier *implementingClassifier);
     QInterface *contract() const;

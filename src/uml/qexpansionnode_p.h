@@ -41,12 +41,12 @@
 #ifndef QTUML_QEXPANSIONNODE_P_H
 #define QTUML_QEXPANSIONNODE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobjectnode_p.h"
-#include "qexpansionnode.h"
 
+#include "QtUml/QExpansionNode"
 
 QT_BEGIN_HEADER
 

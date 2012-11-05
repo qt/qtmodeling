@@ -71,7 +71,7 @@ public:
     explicit QLiteralString(QObject *parent = 0);
     virtual ~QLiteralString();
 
-    // Attributes
+    // Attributes from QLiteralString
     QString value() const;
     void setValue(QString value);
 

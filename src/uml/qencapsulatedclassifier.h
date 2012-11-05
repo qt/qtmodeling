@@ -74,7 +74,7 @@ public:
     explicit QEncapsulatedClassifier(QObject *parent = 0);
     virtual ~QEncapsulatedClassifier();
 
-    // Association-ends
+    // Association ends from QEncapsulatedClassifier
     const QSet<QPort *> *ownedPorts() const;
 
 protected:

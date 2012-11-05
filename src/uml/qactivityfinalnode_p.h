@@ -41,12 +41,12 @@
 #ifndef QTUML_QACTIVITYFINALNODE_P_H
 #define QTUML_QACTIVITYFINALNODE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qfinalnode_p.h"
-#include "qactivityfinalnode.h"
 
+#include "QtUml/QActivityFinalNode"
 
 QT_BEGIN_HEADER
 

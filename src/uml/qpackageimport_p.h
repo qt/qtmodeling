@@ -41,16 +41,15 @@
 #ifndef QTUML_QPACKAGEIMPORT_P_H
 #define QTUML_QPACKAGEIMPORT_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qdirectedrelationship_p.h"
-#include "qpackageimport.h"
 
+#include "QtUml/QPackageImport"
 
 // QtUml includes
-#include <QtUml/QtUmlEnumerations>
-
+#include "QtUml/QtUmlEnumerations"
 
 QT_BEGIN_HEADER
 

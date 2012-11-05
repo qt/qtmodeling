@@ -74,13 +74,13 @@ public:
     explicit QObjectFlow(QObject *parent = 0);
     virtual ~QObjectFlow();
 
-    // Attributes
+    // Attributes from QObjectFlow
     bool isMultireceive() const;
     void setMultireceive(bool isMultireceive);
     bool isMulticast() const;
     void setMulticast(bool isMulticast);
 
-    // Association-ends
+    // Association ends from QObjectFlow
     QBehavior *selection() const;
     void setSelection(QBehavior *selection);
     QBehavior *transformation() const;

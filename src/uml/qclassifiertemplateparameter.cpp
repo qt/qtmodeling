@@ -80,6 +80,10 @@ QClassifierTemplateParameter::~QClassifierTemplateParameter()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QClassifierTemplateParameter
+// ---------------------------------------------------------------
+
 /*!
     Constrains the required relationship between an actual parameter and the parameteredElement for this formal parameter.
  */
@@ -100,6 +104,10 @@ void QClassifierTemplateParameter::setAllowSubstitutable(bool allowSubstitutable
         d->allowSubstitutable = allowSubstitutable;
     }
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QClassifierTemplateParameter
+// ---------------------------------------------------------------
 
 /*!
     The parameterable classifier for this template parameter.

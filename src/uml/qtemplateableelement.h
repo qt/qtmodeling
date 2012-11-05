@@ -77,7 +77,7 @@ public:
     explicit QTemplateableElement(QObject *parent = 0);
     virtual ~QTemplateableElement();
 
-    // Association-ends
+    // Association ends from QTemplateableElement
     QTemplateSignature *ownedTemplateSignature() const;
     void setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature);
     const QSet<QTemplateBinding *> *templateBindings() const;

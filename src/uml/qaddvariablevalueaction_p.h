@@ -41,12 +41,12 @@
 #ifndef QTUML_QADDVARIABLEVALUEACTION_P_H
 #define QTUML_QADDVARIABLEVALUEACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qwritevariableaction_p.h"
-#include "qaddvariablevalueaction.h"
 
+#include "QtUml/QAddVariableValueAction"
 
 QT_BEGIN_HEADER
 

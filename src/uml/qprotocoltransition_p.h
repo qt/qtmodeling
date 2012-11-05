@@ -41,14 +41,15 @@
 #ifndef QTUML_QPROTOCOLTRANSITION_P_H
 #define QTUML_QPROTOCOLTRANSITION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qtransition_p.h"
-#include "qprotocoltransition.h"
+
+#include "QtUml/QProtocolTransition"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

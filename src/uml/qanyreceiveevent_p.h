@@ -41,12 +41,12 @@
 #ifndef QTUML_QANYRECEIVEEVENT_P_H
 #define QTUML_QANYRECEIVEEVENT_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qmessageevent_p.h"
-#include "qanyreceiveevent.h"
 
+#include "QtUml/QAnyReceiveEvent"
 
 QT_BEGIN_HEADER
 

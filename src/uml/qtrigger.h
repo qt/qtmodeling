@@ -76,7 +76,7 @@ public:
     explicit QTrigger(QObject *parent = 0);
     virtual ~QTrigger();
 
-    // Association-ends
+    // Association ends from QTrigger
     const QSet<QPort *> *ports() const;
     void addPort(QPort *port);
     void removePort(QPort *port);

@@ -42,7 +42,6 @@
 #include "qcontrolnode.h"
 #include "qcontrolnode_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QControlNodePrivate::QControlNodePrivate()
@@ -74,6 +73,8 @@ QControlNode::QControlNode(QControlNodePrivate &dd, QObject *parent) :
 QControlNode::~QControlNode()
 {
 }
+
+#include "moc_qcontrolnode.cpp"
 
 QT_END_NAMESPACE_QTUML
 

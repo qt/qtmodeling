@@ -81,6 +81,10 @@ QProfile::~QProfile()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QProfile
+// ---------------------------------------------------------------
+
 /*!
     References a package containing (directly or indirectly) metaclasses that may be extended.
  */
@@ -101,7 +105,7 @@ void QProfile::addMetamodelReference(QPackageImport *metamodelReference)
         d->metamodelReferences->insert(metamodelReference);
 
         // Adjust subsetted property(ies)
-        QNamespace::addPackageImport(dynamic_cast<QPackageImport *>(metamodelReference));
+        (qtuml_object_cast<QNamespace *>(this))->addPackageImport(qtuml_object_cast<QPackageImport *>(metamodelReference));
     }
 }
 
@@ -114,7 +118,7 @@ void QProfile::removeMetamodelReference(QPackageImport *metamodelReference)
         d->metamodelReferences->remove(metamodelReference);
 
         // Adjust subsetted property(ies)
-        QNamespace::removePackageImport(dynamic_cast<QPackageImport *>(metamodelReference));
+        (qtuml_object_cast<QNamespace *>(this))->removePackageImport(qtuml_object_cast<QPackageImport *>(metamodelReference));
     }
 }
 
@@ -138,7 +142,7 @@ void QProfile::addMetaclassReference(QElementImport *metaclassReference)
         d->metaclassReferences->insert(metaclassReference);
 
         // Adjust subsetted property(ies)
-        QNamespace::addElementImport(dynamic_cast<QElementImport *>(metaclassReference));
+        (qtuml_object_cast<QNamespace *>(this))->addElementImport(qtuml_object_cast<QElementImport *>(metaclassReference));
     }
 }
 
@@ -151,7 +155,7 @@ void QProfile::removeMetaclassReference(QElementImport *metaclassReference)
         d->metaclassReferences->remove(metaclassReference);
 
         // Adjust subsetted property(ies)
-        QNamespace::removeElementImport(dynamic_cast<QElementImport *>(metaclassReference));
+        (qtuml_object_cast<QNamespace *>(this))->removeElementImport(qtuml_object_cast<QElementImport *>(metaclassReference));
     }
 }
 

@@ -83,11 +83,11 @@ public:
     explicit QAction(QObject *parent = 0);
     virtual ~QAction();
 
-    // Attributes
+    // Attributes from QAction
     bool isLocallyReentrant() const;
     void setLocallyReentrant(bool isLocallyReentrant);
 
-    // Association-ends
+    // Association ends from QAction
     QClassifier *context() const;
     const QSet<QConstraint *> *localPostconditions() const;
     void addLocalPostcondition(QConstraint *localPostcondition);

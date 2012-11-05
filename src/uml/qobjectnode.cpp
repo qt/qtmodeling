@@ -88,6 +88,311 @@ QObjectNode::~QObjectNode()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QElement
+// ---------------------------------------------------------------
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QElement *> *QObjectNode::ownedElements() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+}
+
+/*!
+    The Element that owns this element.
+ */
+QElement *QObjectNode::owner() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->owner();
+}
+
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QComment *> *QObjectNode::ownedComments() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+}
+
+void QObjectNode::addOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+}
+
+void QObjectNode::removeOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The name of the NamedElement.
+ */
+QString QObjectNode::name() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+}
+
+void QObjectNode::setName(QString name)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+}
+
+/*!
+    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
+ */
+QtUml::VisibilityKind QObjectNode::visibility() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->visibility();
+}
+
+void QObjectNode::setVisibility(QtUml::VisibilityKind visibility)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setVisibility(visibility);
+}
+
+/*!
+    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
+ */
+QString QObjectNode::qualifiedName() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The string expression used to define the name of this named element.
+ */
+QStringExpression *QObjectNode::nameExpression() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+}
+
+void QObjectNode::setNameExpression(QStringExpression *nameExpression)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+}
+
+/*!
+    Specifies the namespace that owns the NamedElement.
+ */
+QNamespace *QObjectNode::namespace_() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+}
+
+/*!
+    Indicates the dependencies that reference the client.
+ */
+const QSet<QDependency *> *QObjectNode::clientDependencies() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+}
+
+void QObjectNode::addClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+}
+
+void QObjectNode::removeClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QRedefinableElement
+// ---------------------------------------------------------------
+
+/*!
+    Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false.
+ */
+bool QObjectNode::isLeaf() const
+{
+    return (qtuml_object_cast<const QRedefinableElement *>(this))->isLeaf();
+}
+
+void QObjectNode::setLeaf(bool isLeaf)
+{
+    (qtuml_object_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QRedefinableElement
+// ---------------------------------------------------------------
+
+/*!
+    The redefinable element that is being redefined by this element.
+ */
+const QSet<QRedefinableElement *> *QObjectNode::redefinedElements() const
+{
+    return (qtuml_object_cast<const QRedefinableElement *>(this))->redefinedElements();
+}
+
+/*!
+    References the contexts that this element may be redefined from.
+ */
+const QSet<QClassifier *> *QObjectNode::redefinitionContexts() const
+{
+    return (qtuml_object_cast<const QRedefinableElement *>(this))->redefinitionContexts();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QActivityNode
+// ---------------------------------------------------------------
+
+/*!
+    Inherited nodes replaced by this node in a specialization of the activity.
+ */
+const QSet<QActivityNode *> *QObjectNode::redefinedNodes() const
+{
+    return (qtuml_object_cast<const QActivityNode *>(this))->redefinedNodes();
+}
+
+void QObjectNode::addRedefinedNode(QActivityNode *redefinedNode)
+{
+    (qtuml_object_cast<QActivityNode *>(this))->addRedefinedNode(redefinedNode);
+}
+
+void QObjectNode::removeRedefinedNode(QActivityNode *redefinedNode)
+{
+    (qtuml_object_cast<QActivityNode *>(this))->removeRedefinedNode(redefinedNode);
+}
+
+/*!
+    Edges that have the node as target.
+ */
+const QSet<QActivityEdge *> *QObjectNode::incomings() const
+{
+    return (qtuml_object_cast<const QActivityNode *>(this))->incomings();
+}
+
+void QObjectNode::addIncoming(QActivityEdge *incoming)
+{
+    (qtuml_object_cast<QActivityNode *>(this))->addIncoming(incoming);
+}
+
+void QObjectNode::removeIncoming(QActivityEdge *incoming)
+{
+    (qtuml_object_cast<QActivityNode *>(this))->removeIncoming(incoming);
+}
+
+/*!
+    Activity containing the node.
+ */
+QActivity *QObjectNode::activity() const
+{
+    return (qtuml_object_cast<const QActivityNode *>(this))->activity();
+}
+
+void QObjectNode::setActivity(QActivity *activity)
+{
+    (qtuml_object_cast<QActivityNode *>(this))->setActivity(activity);
+}
+
+/*!
+    Groups containing the node.
+ */
+const QSet<QActivityGroup *> *QObjectNode::inGroup() const
+{
+    return (qtuml_object_cast<const QActivityNode *>(this))->inGroup();
+}
+
+/*!
+    Structured activity node containing the node.
+ */
+QStructuredActivityNode *QObjectNode::inStructuredNode() const
+{
+    return (qtuml_object_cast<const QActivityNode *>(this))->inStructuredNode();
+}
+
+void QObjectNode::setInStructuredNode(QStructuredActivityNode *inStructuredNode)
+{
+    (qtuml_object_cast<QActivityNode *>(this))->setInStructuredNode(inStructuredNode);
+}
+
+/*!
+    Partitions containing the node.
+ */
+const QSet<QActivityPartition *> *QObjectNode::inPartition() const
+{
+    return (qtuml_object_cast<const QActivityNode *>(this))->inPartition();
+}
+
+void QObjectNode::addInPartition(QActivityPartition *inPartition)
+{
+    (qtuml_object_cast<QActivityNode *>(this))->addInPartition(inPartition);
+}
+
+void QObjectNode::removeInPartition(QActivityPartition *inPartition)
+{
+    (qtuml_object_cast<QActivityNode *>(this))->removeInPartition(inPartition);
+}
+
+/*!
+    Interruptible regions containing the node.
+ */
+const QSet<QInterruptibleActivityRegion *> *QObjectNode::inInterruptibleRegion() const
+{
+    return (qtuml_object_cast<const QActivityNode *>(this))->inInterruptibleRegion();
+}
+
+void QObjectNode::addInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion)
+{
+    (qtuml_object_cast<QActivityNode *>(this))->addInInterruptibleRegion(inInterruptibleRegion);
+}
+
+void QObjectNode::removeInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion)
+{
+    (qtuml_object_cast<QActivityNode *>(this))->removeInInterruptibleRegion(inInterruptibleRegion);
+}
+
+/*!
+    Edges that have the node as source.
+ */
+const QSet<QActivityEdge *> *QObjectNode::outgoings() const
+{
+    return (qtuml_object_cast<const QActivityNode *>(this))->outgoings();
+}
+
+void QObjectNode::addOutgoing(QActivityEdge *outgoing)
+{
+    (qtuml_object_cast<QActivityNode *>(this))->addOutgoing(outgoing);
+}
+
+void QObjectNode::removeOutgoing(QActivityEdge *outgoing)
+{
+    (qtuml_object_cast<QActivityNode *>(this))->removeOutgoing(outgoing);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QTypedElement
+// ---------------------------------------------------------------
+
+/*!
+    This information is derived from the return result for this Operation.The type of the TypedElement.
+ */
+QType *QObjectNode::type() const
+{
+    return (qtuml_object_cast<const QTypedElement *>(this))->type();
+}
+
+void QObjectNode::setType(QType *type)
+{
+    (qtuml_object_cast<QTypedElement *>(this))->setType(type);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QObjectNode
+// ---------------------------------------------------------------
+
 /*!
     Tells whether the type of the object node is to be treated as control.
  */
@@ -130,6 +435,10 @@ void QObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
     }
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QObjectNode
+// ---------------------------------------------------------------
+
 /*!
     The maximum number of tokens allowed in the node. Objects cannot flow into the node if the upper bound is reached.
  */
@@ -148,13 +457,13 @@ void QObjectNode::setUpperBound(QValueSpecification *upperBound)
     Q_D(QObjectNode);
     if (d->upperBound != upperBound) {
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->upperBound));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->upperBound));
 
         d->upperBound = upperBound;
 
         // Adjust subsetted property(ies)
         if (upperBound) {
-            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(upperBound));
+            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(upperBound));
         }
     }
 }
@@ -210,6 +519,8 @@ void QObjectNode::removeInState(QState *inState)
         d->inState->remove(inState);
     }
 }
+
+#include "moc_qobjectnode.cpp"
 
 QT_END_NAMESPACE_QTUML
 

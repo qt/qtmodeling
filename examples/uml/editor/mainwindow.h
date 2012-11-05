@@ -8,6 +8,7 @@ class MainWindow;
 }
 
 class QTreeWidgetItem;
+class QTableWidgetItem;
 
 class MainWindow : public QMainWindow
 {
@@ -19,6 +20,7 @@ public:
 
 private Q_SLOTS:
     void on_trvModel_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
+    void itemChanged(QTableWidgetItem * item);
 
 private:
     Ui::MainWindow *ui;

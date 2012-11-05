@@ -41,12 +41,12 @@
 #ifndef QTUML_QCONTROLFLOW_P_H
 #define QTUML_QCONTROLFLOW_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qactivityedge_p.h"
-#include "qcontrolflow.h"
 
+#include "QtUml/QControlFlow"
 
 QT_BEGIN_HEADER
 

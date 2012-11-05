@@ -56,6 +56,8 @@ class QControlNodePrivate;
 
 class Q_UML_EXPORT QControlNode : public QActivityNode
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QControlNode)
     Q_DECLARE_PRIVATE(QControlNode)
 

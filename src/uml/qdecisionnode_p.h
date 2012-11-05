@@ -41,12 +41,12 @@
 #ifndef QTUML_QDECISIONNODE_P_H
 #define QTUML_QDECISIONNODE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qcontrolnode_p.h"
-#include "qdecisionnode.h"
 
+#include "QtUml/QDecisionNode"
 
 QT_BEGIN_HEADER
 

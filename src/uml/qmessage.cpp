@@ -87,6 +87,10 @@ QMessage::~QMessage()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QMessage
+// ---------------------------------------------------------------
+
 /*!
     The sort of communication reflected by the Message
  */
@@ -120,6 +124,10 @@ QtUml::MessageKind QMessage::messageKind() const
     //Q_D(const QMessage);
     //return <derived-return>;
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QMessage
+// ---------------------------------------------------------------
 
 /*!
     The signature of the Message is the specification of its content. It refers either an Operation or a Signal.
@@ -162,7 +170,7 @@ void QMessage::addArgument(QValueSpecification *argument)
         d->arguments->append(argument);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(argument));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(argument));
     }
 }
 
@@ -175,7 +183,7 @@ void QMessage::removeArgument(QValueSpecification *argument)
         d->arguments->removeAll(argument);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(argument));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(argument));
     }
 }
 
@@ -224,7 +232,7 @@ void QMessage::setInteraction(QInteraction *interaction)
         d->interaction = interaction;
 
         // Adjust subsetted property(ies)
-        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(interaction));
+        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(interaction));
 
         // Adjust opposite property
         if (interaction)

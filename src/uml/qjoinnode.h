@@ -72,11 +72,11 @@ public:
     explicit QJoinNode(QObject *parent = 0);
     virtual ~QJoinNode();
 
-    // Attributes
+    // Attributes from QJoinNode
     bool isCombineDuplicate() const;
     void setCombineDuplicate(bool isCombineDuplicate);
 
-    // Association-ends
+    // Association ends from QJoinNode
     QValueSpecification *joinSpec() const;
     void setJoinSpec(QValueSpecification *joinSpec);
 

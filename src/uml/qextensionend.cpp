@@ -77,6 +77,10 @@ QExtensionEnd::~QExtensionEnd()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QExtensionEnd
+// ---------------------------------------------------------------
+
 /*!
     This redefinition changes the default multiplicity of association ends, since model elements are usually extended by 0 or 1 instance of the extension stereotype.
  */
@@ -101,6 +105,10 @@ void QExtensionEnd::setLower(qint32 lower)
         // <derived-code>
     }
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QExtensionEnd
+// ---------------------------------------------------------------
 
 /*!
     References the type of the ExtensionEnd. Note that this association restricts the possible types of an ExtensionEnd to only be Stereotypes.
