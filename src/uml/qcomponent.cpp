@@ -73,11 +73,17 @@ QComponentPrivate::~QComponentPrivate()
 QComponent::QComponent(QObject *parent) :
     QClass(*new QComponentPrivate, parent)
 {
+    qRegisterMetaType<QComponent *>("QComponent *");
+    qRegisterMetaType<const QSet<QComponent *> *>("const QSet<QComponent *> *");
+    qRegisterMetaType<const QList<QComponent *> *>("const QList<QComponent *> *");
 }
 
 QComponent::QComponent(QComponentPrivate &dd, QObject *parent) :
     QClass(dd, parent)
 {
+    qRegisterMetaType<QComponent *>("QComponent *");
+    qRegisterMetaType<const QSet<QComponent *> *>("const QSet<QComponent *> *");
+    qRegisterMetaType<const QList<QComponent *> *>("const QList<QComponent *> *");
 }
 
 QComponent::~QComponent()

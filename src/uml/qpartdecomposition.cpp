@@ -63,11 +63,17 @@ QPartDecompositionPrivate::~QPartDecompositionPrivate()
 QPartDecomposition::QPartDecomposition(QObject *parent) :
     QInteractionUse(*new QPartDecompositionPrivate, parent)
 {
+    qRegisterMetaType<QPartDecomposition *>("QPartDecomposition *");
+    qRegisterMetaType<const QSet<QPartDecomposition *> *>("const QSet<QPartDecomposition *> *");
+    qRegisterMetaType<const QList<QPartDecomposition *> *>("const QList<QPartDecomposition *> *");
 }
 
 QPartDecomposition::QPartDecomposition(QPartDecompositionPrivate &dd, QObject *parent) :
     QInteractionUse(dd, parent)
 {
+    qRegisterMetaType<QPartDecomposition *>("QPartDecomposition *");
+    qRegisterMetaType<const QSet<QPartDecomposition *> *>("const QSet<QPartDecomposition *> *");
+    qRegisterMetaType<const QList<QPartDecomposition *> *>("const QList<QPartDecomposition *> *");
 }
 
 QPartDecomposition::~QPartDecomposition()

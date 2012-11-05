@@ -66,11 +66,17 @@ QInstanceValuePrivate::~QInstanceValuePrivate()
 QInstanceValue::QInstanceValue(QObject *parent) :
     QValueSpecification(*new QInstanceValuePrivate, parent)
 {
+    qRegisterMetaType<QInstanceValue *>("QInstanceValue *");
+    qRegisterMetaType<const QSet<QInstanceValue *> *>("const QSet<QInstanceValue *> *");
+    qRegisterMetaType<const QList<QInstanceValue *> *>("const QList<QInstanceValue *> *");
 }
 
 QInstanceValue::QInstanceValue(QInstanceValuePrivate &dd, QObject *parent) :
     QValueSpecification(dd, parent)
 {
+    qRegisterMetaType<QInstanceValue *>("QInstanceValue *");
+    qRegisterMetaType<const QSet<QInstanceValue *> *>("const QSet<QInstanceValue *> *");
+    qRegisterMetaType<const QList<QInstanceValue *> *>("const QList<QInstanceValue *> *");
 }
 
 QInstanceValue::~QInstanceValue()

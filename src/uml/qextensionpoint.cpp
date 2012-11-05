@@ -66,11 +66,17 @@ QExtensionPointPrivate::~QExtensionPointPrivate()
 QExtensionPoint::QExtensionPoint(QObject *parent) :
     QRedefinableElement(*new QExtensionPointPrivate, parent)
 {
+    qRegisterMetaType<QExtensionPoint *>("QExtensionPoint *");
+    qRegisterMetaType<const QSet<QExtensionPoint *> *>("const QSet<QExtensionPoint *> *");
+    qRegisterMetaType<const QList<QExtensionPoint *> *>("const QList<QExtensionPoint *> *");
 }
 
 QExtensionPoint::QExtensionPoint(QExtensionPointPrivate &dd, QObject *parent) :
     QRedefinableElement(dd, parent)
 {
+    qRegisterMetaType<QExtensionPoint *>("QExtensionPoint *");
+    qRegisterMetaType<const QSet<QExtensionPoint *> *>("const QSet<QExtensionPoint *> *");
+    qRegisterMetaType<const QList<QExtensionPoint *> *>("const QList<QExtensionPoint *> *");
 }
 
 QExtensionPoint::~QExtensionPoint()

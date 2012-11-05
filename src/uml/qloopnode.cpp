@@ -95,11 +95,17 @@ QLoopNodePrivate::~QLoopNodePrivate()
 QLoopNode::QLoopNode(QObject *parent) :
     QStructuredActivityNode(*new QLoopNodePrivate, parent)
 {
+    qRegisterMetaType<QLoopNode *>("QLoopNode *");
+    qRegisterMetaType<const QSet<QLoopNode *> *>("const QSet<QLoopNode *> *");
+    qRegisterMetaType<const QList<QLoopNode *> *>("const QList<QLoopNode *> *");
 }
 
 QLoopNode::QLoopNode(QLoopNodePrivate &dd, QObject *parent) :
     QStructuredActivityNode(dd, parent)
 {
+    qRegisterMetaType<QLoopNode *>("QLoopNode *");
+    qRegisterMetaType<const QSet<QLoopNode *> *>("const QSet<QLoopNode *> *");
+    qRegisterMetaType<const QList<QLoopNode *> *>("const QList<QLoopNode *> *");
 }
 
 QLoopNode::~QLoopNode()

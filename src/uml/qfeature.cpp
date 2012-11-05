@@ -97,11 +97,17 @@ void QFeaturePrivate::removeFeaturingClassifier(QClassifier *featuringClassifier
 QFeature::QFeature(QObject *parent) :
     QRedefinableElement(*new QFeaturePrivate, parent)
 {
+    qRegisterMetaType<QFeature *>("QFeature *");
+    qRegisterMetaType<const QSet<QFeature *> *>("const QSet<QFeature *> *");
+    qRegisterMetaType<const QList<QFeature *> *>("const QList<QFeature *> *");
 }
 
 QFeature::QFeature(QFeaturePrivate &dd, QObject *parent) :
     QRedefinableElement(dd, parent)
 {
+    qRegisterMetaType<QFeature *>("QFeature *");
+    qRegisterMetaType<const QSet<QFeature *> *>("const QSet<QFeature *> *");
+    qRegisterMetaType<const QList<QFeature *> *>("const QList<QFeature *> *");
 }
 
 QFeature::~QFeature()

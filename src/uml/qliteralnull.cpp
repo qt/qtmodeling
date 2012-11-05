@@ -63,11 +63,17 @@ QLiteralNullPrivate::~QLiteralNullPrivate()
 QLiteralNull::QLiteralNull(QObject *parent) :
     QLiteralSpecification(*new QLiteralNullPrivate, parent)
 {
+    qRegisterMetaType<QLiteralNull *>("QLiteralNull *");
+    qRegisterMetaType<const QSet<QLiteralNull *> *>("const QSet<QLiteralNull *> *");
+    qRegisterMetaType<const QList<QLiteralNull *> *>("const QList<QLiteralNull *> *");
 }
 
 QLiteralNull::QLiteralNull(QLiteralNullPrivate &dd, QObject *parent) :
     QLiteralSpecification(dd, parent)
 {
+    qRegisterMetaType<QLiteralNull *>("QLiteralNull *");
+    qRegisterMetaType<const QSet<QLiteralNull *> *>("const QSet<QLiteralNull *> *");
+    qRegisterMetaType<const QList<QLiteralNull *> *>("const QList<QLiteralNull *> *");
 }
 
 QLiteralNull::~QLiteralNull()

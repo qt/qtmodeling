@@ -63,11 +63,17 @@ QDataStoreNodePrivate::~QDataStoreNodePrivate()
 QDataStoreNode::QDataStoreNode(QObject *parent) :
     QCentralBufferNode(*new QDataStoreNodePrivate, parent)
 {
+    qRegisterMetaType<QDataStoreNode *>("QDataStoreNode *");
+    qRegisterMetaType<const QSet<QDataStoreNode *> *>("const QSet<QDataStoreNode *> *");
+    qRegisterMetaType<const QList<QDataStoreNode *> *>("const QList<QDataStoreNode *> *");
 }
 
 QDataStoreNode::QDataStoreNode(QDataStoreNodePrivate &dd, QObject *parent) :
     QCentralBufferNode(dd, parent)
 {
+    qRegisterMetaType<QDataStoreNode *>("QDataStoreNode *");
+    qRegisterMetaType<const QSet<QDataStoreNode *> *>("const QSet<QDataStoreNode *> *");
+    qRegisterMetaType<const QList<QDataStoreNode *> *>("const QList<QDataStoreNode *> *");
 }
 
 QDataStoreNode::~QDataStoreNode()

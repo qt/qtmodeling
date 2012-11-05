@@ -77,6 +77,9 @@ QArtifact::QArtifact(QObject *parent) :
     _wrappedDeployedArtifact(new QDeployedArtifact(this)),
     _wrappedClassifier(new QClassifier(this))
 {
+    qRegisterMetaType<QArtifact *>("QArtifact *");
+    qRegisterMetaType<const QSet<QArtifact *> *>("const QSet<QArtifact *> *");
+    qRegisterMetaType<const QList<QArtifact *> *>("const QList<QArtifact *> *");
 }
 
 QArtifact::QArtifact(QArtifactPrivate &dd, QObject *parent) :
@@ -84,6 +87,9 @@ QArtifact::QArtifact(QArtifactPrivate &dd, QObject *parent) :
     _wrappedDeployedArtifact(new QDeployedArtifact(this)),
     _wrappedClassifier(new QClassifier(this))
 {
+    qRegisterMetaType<QArtifact *>("QArtifact *");
+    qRegisterMetaType<const QSet<QArtifact *> *>("const QSet<QArtifact *> *");
+    qRegisterMetaType<const QList<QArtifact *> *>("const QList<QArtifact *> *");
 }
 
 QArtifact::~QArtifact()

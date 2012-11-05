@@ -68,11 +68,17 @@ QInterfaceRealizationPrivate::~QInterfaceRealizationPrivate()
 QInterfaceRealization::QInterfaceRealization(QObject *parent) :
     QRealization(*new QInterfaceRealizationPrivate, parent)
 {
+    qRegisterMetaType<QInterfaceRealization *>("QInterfaceRealization *");
+    qRegisterMetaType<const QSet<QInterfaceRealization *> *>("const QSet<QInterfaceRealization *> *");
+    qRegisterMetaType<const QList<QInterfaceRealization *> *>("const QList<QInterfaceRealization *> *");
 }
 
 QInterfaceRealization::QInterfaceRealization(QInterfaceRealizationPrivate &dd, QObject *parent) :
     QRealization(dd, parent)
 {
+    qRegisterMetaType<QInterfaceRealization *>("QInterfaceRealization *");
+    qRegisterMetaType<const QSet<QInterfaceRealization *> *>("const QSet<QInterfaceRealization *> *");
+    qRegisterMetaType<const QList<QInterfaceRealization *> *>("const QList<QInterfaceRealization *> *");
 }
 
 QInterfaceRealization::~QInterfaceRealization()

@@ -99,6 +99,9 @@ QConnectableElement::QConnectableElement(QObject *parent) :
     _wrappedTypedElement(new QTypedElement(this)),
     _wrappedParameterableElement(new QParameterableElement(this))
 {
+    qRegisterMetaType<QConnectableElement *>("QConnectableElement *");
+    qRegisterMetaType<const QSet<QConnectableElement *> *>("const QSet<QConnectableElement *> *");
+    qRegisterMetaType<const QList<QConnectableElement *> *>("const QList<QConnectableElement *> *");
 }
 
 QConnectableElement::QConnectableElement(QConnectableElementPrivate &dd, QObject *parent) :
@@ -106,6 +109,9 @@ QConnectableElement::QConnectableElement(QConnectableElementPrivate &dd, QObject
     _wrappedTypedElement(new QTypedElement(this)),
     _wrappedParameterableElement(new QParameterableElement(this))
 {
+    qRegisterMetaType<QConnectableElement *>("QConnectableElement *");
+    qRegisterMetaType<const QSet<QConnectableElement *> *>("const QSet<QConnectableElement *> *");
+    qRegisterMetaType<const QList<QConnectableElement *> *>("const QList<QConnectableElement *> *");
 }
 
 QConnectableElement::~QConnectableElement()

@@ -66,11 +66,17 @@ QActivityParameterNodePrivate::~QActivityParameterNodePrivate()
 QActivityParameterNode::QActivityParameterNode(QObject *parent) :
     QObjectNode(*new QActivityParameterNodePrivate, parent)
 {
+    qRegisterMetaType<QActivityParameterNode *>("QActivityParameterNode *");
+    qRegisterMetaType<const QSet<QActivityParameterNode *> *>("const QSet<QActivityParameterNode *> *");
+    qRegisterMetaType<const QList<QActivityParameterNode *> *>("const QList<QActivityParameterNode *> *");
 }
 
 QActivityParameterNode::QActivityParameterNode(QActivityParameterNodePrivate &dd, QObject *parent) :
     QObjectNode(dd, parent)
 {
+    qRegisterMetaType<QActivityParameterNode *>("QActivityParameterNode *");
+    qRegisterMetaType<const QSet<QActivityParameterNode *> *>("const QSet<QActivityParameterNode *> *");
+    qRegisterMetaType<const QList<QActivityParameterNode *> *>("const QList<QActivityParameterNode *> *");
 }
 
 QActivityParameterNode::~QActivityParameterNode()

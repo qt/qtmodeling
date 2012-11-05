@@ -66,11 +66,17 @@ QBehaviorExecutionSpecificationPrivate::~QBehaviorExecutionSpecificationPrivate(
 QBehaviorExecutionSpecification::QBehaviorExecutionSpecification(QObject *parent) :
     QExecutionSpecification(*new QBehaviorExecutionSpecificationPrivate, parent)
 {
+    qRegisterMetaType<QBehaviorExecutionSpecification *>("QBehaviorExecutionSpecification *");
+    qRegisterMetaType<const QSet<QBehaviorExecutionSpecification *> *>("const QSet<QBehaviorExecutionSpecification *> *");
+    qRegisterMetaType<const QList<QBehaviorExecutionSpecification *> *>("const QList<QBehaviorExecutionSpecification *> *");
 }
 
 QBehaviorExecutionSpecification::QBehaviorExecutionSpecification(QBehaviorExecutionSpecificationPrivate &dd, QObject *parent) :
     QExecutionSpecification(dd, parent)
 {
+    qRegisterMetaType<QBehaviorExecutionSpecification *>("QBehaviorExecutionSpecification *");
+    qRegisterMetaType<const QSet<QBehaviorExecutionSpecification *> *>("const QSet<QBehaviorExecutionSpecification *> *");
+    qRegisterMetaType<const QList<QBehaviorExecutionSpecification *> *>("const QList<QBehaviorExecutionSpecification *> *");
 }
 
 QBehaviorExecutionSpecification::~QBehaviorExecutionSpecification()

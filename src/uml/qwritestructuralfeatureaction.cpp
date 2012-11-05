@@ -68,11 +68,17 @@ QWriteStructuralFeatureActionPrivate::~QWriteStructuralFeatureActionPrivate()
 QWriteStructuralFeatureAction::QWriteStructuralFeatureAction(QObject *parent) :
     QStructuralFeatureAction(*new QWriteStructuralFeatureActionPrivate, parent)
 {
+    qRegisterMetaType<QWriteStructuralFeatureAction *>("QWriteStructuralFeatureAction *");
+    qRegisterMetaType<const QSet<QWriteStructuralFeatureAction *> *>("const QSet<QWriteStructuralFeatureAction *> *");
+    qRegisterMetaType<const QList<QWriteStructuralFeatureAction *> *>("const QList<QWriteStructuralFeatureAction *> *");
 }
 
 QWriteStructuralFeatureAction::QWriteStructuralFeatureAction(QWriteStructuralFeatureActionPrivate &dd, QObject *parent) :
     QStructuralFeatureAction(dd, parent)
 {
+    qRegisterMetaType<QWriteStructuralFeatureAction *>("QWriteStructuralFeatureAction *");
+    qRegisterMetaType<const QSet<QWriteStructuralFeatureAction *> *>("const QSet<QWriteStructuralFeatureAction *> *");
+    qRegisterMetaType<const QList<QWriteStructuralFeatureAction *> *>("const QList<QWriteStructuralFeatureAction *> *");
 }
 
 QWriteStructuralFeatureAction::~QWriteStructuralFeatureAction()

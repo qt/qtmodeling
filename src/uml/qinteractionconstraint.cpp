@@ -67,11 +67,17 @@ QInteractionConstraintPrivate::~QInteractionConstraintPrivate()
 QInteractionConstraint::QInteractionConstraint(QObject *parent) :
     QConstraint(*new QInteractionConstraintPrivate, parent)
 {
+    qRegisterMetaType<QInteractionConstraint *>("QInteractionConstraint *");
+    qRegisterMetaType<const QSet<QInteractionConstraint *> *>("const QSet<QInteractionConstraint *> *");
+    qRegisterMetaType<const QList<QInteractionConstraint *> *>("const QList<QInteractionConstraint *> *");
 }
 
 QInteractionConstraint::QInteractionConstraint(QInteractionConstraintPrivate &dd, QObject *parent) :
     QConstraint(dd, parent)
 {
+    qRegisterMetaType<QInteractionConstraint *>("QInteractionConstraint *");
+    qRegisterMetaType<const QSet<QInteractionConstraint *> *>("const QSet<QInteractionConstraint *> *");
+    qRegisterMetaType<const QList<QInteractionConstraint *> *>("const QList<QInteractionConstraint *> *");
 }
 
 QInteractionConstraint::~QInteractionConstraint()

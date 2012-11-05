@@ -64,11 +64,17 @@ QContinuationPrivate::~QContinuationPrivate()
 QContinuation::QContinuation(QObject *parent) :
     QInteractionFragment(*new QContinuationPrivate, parent)
 {
+    qRegisterMetaType<QContinuation *>("QContinuation *");
+    qRegisterMetaType<const QSet<QContinuation *> *>("const QSet<QContinuation *> *");
+    qRegisterMetaType<const QList<QContinuation *> *>("const QList<QContinuation *> *");
 }
 
 QContinuation::QContinuation(QContinuationPrivate &dd, QObject *parent) :
     QInteractionFragment(dd, parent)
 {
+    qRegisterMetaType<QContinuation *>("QContinuation *");
+    qRegisterMetaType<const QSet<QContinuation *> *>("const QSet<QContinuation *> *");
+    qRegisterMetaType<const QList<QContinuation *> *>("const QList<QContinuation *> *");
 }
 
 QContinuation::~QContinuation()

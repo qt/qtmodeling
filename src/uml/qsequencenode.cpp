@@ -73,11 +73,17 @@ QSequenceNodePrivate::~QSequenceNodePrivate()
 QSequenceNode::QSequenceNode(QObject *parent) :
     QStructuredActivityNode(*new QSequenceNodePrivate, parent)
 {
+    qRegisterMetaType<QSequenceNode *>("QSequenceNode *");
+    qRegisterMetaType<const QSet<QSequenceNode *> *>("const QSet<QSequenceNode *> *");
+    qRegisterMetaType<const QList<QSequenceNode *> *>("const QList<QSequenceNode *> *");
 }
 
 QSequenceNode::QSequenceNode(QSequenceNodePrivate &dd, QObject *parent) :
     QStructuredActivityNode(dd, parent)
 {
+    qRegisterMetaType<QSequenceNode *>("QSequenceNode *");
+    qRegisterMetaType<const QSet<QSequenceNode *> *>("const QSet<QSequenceNode *> *");
+    qRegisterMetaType<const QList<QSequenceNode *> *>("const QList<QSequenceNode *> *");
 }
 
 QSequenceNode::~QSequenceNode()

@@ -68,11 +68,17 @@ QSendSignalActionPrivate::~QSendSignalActionPrivate()
 QSendSignalAction::QSendSignalAction(QObject *parent) :
     QInvocationAction(*new QSendSignalActionPrivate, parent)
 {
+    qRegisterMetaType<QSendSignalAction *>("QSendSignalAction *");
+    qRegisterMetaType<const QSet<QSendSignalAction *> *>("const QSet<QSendSignalAction *> *");
+    qRegisterMetaType<const QList<QSendSignalAction *> *>("const QList<QSendSignalAction *> *");
 }
 
 QSendSignalAction::QSendSignalAction(QSendSignalActionPrivate &dd, QObject *parent) :
     QInvocationAction(dd, parent)
 {
+    qRegisterMetaType<QSendSignalAction *>("QSendSignalAction *");
+    qRegisterMetaType<const QSet<QSendSignalAction *> *>("const QSet<QSendSignalAction *> *");
+    qRegisterMetaType<const QList<QSendSignalAction *> *>("const QList<QSendSignalAction *> *");
 }
 
 QSendSignalAction::~QSendSignalAction()

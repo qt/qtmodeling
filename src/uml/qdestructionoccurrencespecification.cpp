@@ -63,11 +63,17 @@ QDestructionOccurrenceSpecificationPrivate::~QDestructionOccurrenceSpecification
 QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(QObject *parent) :
     QMessageOccurrenceSpecification(*new QDestructionOccurrenceSpecificationPrivate, parent)
 {
+    qRegisterMetaType<QDestructionOccurrenceSpecification *>("QDestructionOccurrenceSpecification *");
+    qRegisterMetaType<const QSet<QDestructionOccurrenceSpecification *> *>("const QSet<QDestructionOccurrenceSpecification *> *");
+    qRegisterMetaType<const QList<QDestructionOccurrenceSpecification *> *>("const QList<QDestructionOccurrenceSpecification *> *");
 }
 
 QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(QDestructionOccurrenceSpecificationPrivate &dd, QObject *parent) :
     QMessageOccurrenceSpecification(dd, parent)
 {
+    qRegisterMetaType<QDestructionOccurrenceSpecification *>("QDestructionOccurrenceSpecification *");
+    qRegisterMetaType<const QSet<QDestructionOccurrenceSpecification *> *>("const QSet<QDestructionOccurrenceSpecification *> *");
+    qRegisterMetaType<const QList<QDestructionOccurrenceSpecification *> *>("const QList<QDestructionOccurrenceSpecification *> *");
 }
 
 QDestructionOccurrenceSpecification::~QDestructionOccurrenceSpecification()

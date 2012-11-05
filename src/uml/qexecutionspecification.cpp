@@ -67,11 +67,17 @@ QExecutionSpecificationPrivate::~QExecutionSpecificationPrivate()
 QExecutionSpecification::QExecutionSpecification(QObject *parent) :
     QInteractionFragment(*new QExecutionSpecificationPrivate, parent)
 {
+    qRegisterMetaType<QExecutionSpecification *>("QExecutionSpecification *");
+    qRegisterMetaType<const QSet<QExecutionSpecification *> *>("const QSet<QExecutionSpecification *> *");
+    qRegisterMetaType<const QList<QExecutionSpecification *> *>("const QList<QExecutionSpecification *> *");
 }
 
 QExecutionSpecification::QExecutionSpecification(QExecutionSpecificationPrivate &dd, QObject *parent) :
     QInteractionFragment(dd, parent)
 {
+    qRegisterMetaType<QExecutionSpecification *>("QExecutionSpecification *");
+    qRegisterMetaType<const QSet<QExecutionSpecification *> *>("const QSet<QExecutionSpecification *> *");
+    qRegisterMetaType<const QList<QExecutionSpecification *> *>("const QList<QExecutionSpecification *> *");
 }
 
 QExecutionSpecification::~QExecutionSpecification()

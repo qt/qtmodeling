@@ -114,6 +114,9 @@ QClass::QClass(QObject *parent) :
     _wrappedEncapsulatedClassifier(new QEncapsulatedClassifier(this)),
     _wrappedBehavioredClassifier(new QBehavioredClassifier(this))
 {
+    qRegisterMetaType<QClass *>("QClass *");
+    qRegisterMetaType<const QSet<QClass *> *>("const QSet<QClass *> *");
+    qRegisterMetaType<const QList<QClass *> *>("const QList<QClass *> *");
 }
 
 QClass::QClass(QClassPrivate &dd, QObject *parent) :
@@ -121,6 +124,9 @@ QClass::QClass(QClassPrivate &dd, QObject *parent) :
     _wrappedEncapsulatedClassifier(new QEncapsulatedClassifier(this)),
     _wrappedBehavioredClassifier(new QBehavioredClassifier(this))
 {
+    qRegisterMetaType<QClass *>("QClass *");
+    qRegisterMetaType<const QSet<QClass *> *>("const QSet<QClass *> *");
+    qRegisterMetaType<const QList<QClass *> *>("const QList<QClass *> *");
 }
 
 QClass::~QClass()

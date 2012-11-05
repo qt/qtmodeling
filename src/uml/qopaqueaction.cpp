@@ -74,11 +74,17 @@ QOpaqueActionPrivate::~QOpaqueActionPrivate()
 QOpaqueAction::QOpaqueAction(QObject *parent) :
     QAction(*new QOpaqueActionPrivate, parent)
 {
+    qRegisterMetaType<QOpaqueAction *>("QOpaqueAction *");
+    qRegisterMetaType<const QSet<QOpaqueAction *> *>("const QSet<QOpaqueAction *> *");
+    qRegisterMetaType<const QList<QOpaqueAction *> *>("const QList<QOpaqueAction *> *");
 }
 
 QOpaqueAction::QOpaqueAction(QOpaqueActionPrivate &dd, QObject *parent) :
     QAction(dd, parent)
 {
+    qRegisterMetaType<QOpaqueAction *>("QOpaqueAction *");
+    qRegisterMetaType<const QSet<QOpaqueAction *> *>("const QSet<QOpaqueAction *> *");
+    qRegisterMetaType<const QList<QOpaqueAction *> *>("const QList<QOpaqueAction *> *");
 }
 
 QOpaqueAction::~QOpaqueAction()

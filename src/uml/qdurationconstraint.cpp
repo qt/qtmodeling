@@ -69,11 +69,17 @@ QDurationConstraintPrivate::~QDurationConstraintPrivate()
 QDurationConstraint::QDurationConstraint(QObject *parent) :
     QIntervalConstraint(*new QDurationConstraintPrivate, parent)
 {
+    qRegisterMetaType<QDurationConstraint *>("QDurationConstraint *");
+    qRegisterMetaType<const QSet<QDurationConstraint *> *>("const QSet<QDurationConstraint *> *");
+    qRegisterMetaType<const QList<QDurationConstraint *> *>("const QList<QDurationConstraint *> *");
 }
 
 QDurationConstraint::QDurationConstraint(QDurationConstraintPrivate &dd, QObject *parent) :
     QIntervalConstraint(dd, parent)
 {
+    qRegisterMetaType<QDurationConstraint *>("QDurationConstraint *");
+    qRegisterMetaType<const QSet<QDurationConstraint *> *>("const QSet<QDurationConstraint *> *");
+    qRegisterMetaType<const QList<QDurationConstraint *> *>("const QList<QDurationConstraint *> *");
 }
 
 QDurationConstraint::~QDurationConstraint()

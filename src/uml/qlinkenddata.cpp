@@ -71,11 +71,17 @@ QLinkEndDataPrivate::~QLinkEndDataPrivate()
 QLinkEndData::QLinkEndData(QObject *parent) :
     QElement(*new QLinkEndDataPrivate, parent)
 {
+    qRegisterMetaType<QLinkEndData *>("QLinkEndData *");
+    qRegisterMetaType<const QSet<QLinkEndData *> *>("const QSet<QLinkEndData *> *");
+    qRegisterMetaType<const QList<QLinkEndData *> *>("const QList<QLinkEndData *> *");
 }
 
 QLinkEndData::QLinkEndData(QLinkEndDataPrivate &dd, QObject *parent) :
     QElement(dd, parent)
 {
+    qRegisterMetaType<QLinkEndData *>("QLinkEndData *");
+    qRegisterMetaType<const QSet<QLinkEndData *> *>("const QSet<QLinkEndData *> *");
+    qRegisterMetaType<const QList<QLinkEndData *> *>("const QList<QLinkEndData *> *");
 }
 
 QLinkEndData::~QLinkEndData()

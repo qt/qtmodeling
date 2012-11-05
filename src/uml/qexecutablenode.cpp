@@ -67,11 +67,17 @@ QExecutableNodePrivate::~QExecutableNodePrivate()
 QExecutableNode::QExecutableNode(QObject *parent) :
     QActivityNode(*new QExecutableNodePrivate, parent)
 {
+    qRegisterMetaType<QExecutableNode *>("QExecutableNode *");
+    qRegisterMetaType<const QSet<QExecutableNode *> *>("const QSet<QExecutableNode *> *");
+    qRegisterMetaType<const QList<QExecutableNode *> *>("const QList<QExecutableNode *> *");
 }
 
 QExecutableNode::QExecutableNode(QExecutableNodePrivate &dd, QObject *parent) :
     QActivityNode(dd, parent)
 {
+    qRegisterMetaType<QExecutableNode *>("QExecutableNode *");
+    qRegisterMetaType<const QSet<QExecutableNode *> *>("const QSet<QExecutableNode *> *");
+    qRegisterMetaType<const QList<QExecutableNode *> *>("const QList<QExecutableNode *> *");
 }
 
 QExecutableNode::~QExecutableNode()

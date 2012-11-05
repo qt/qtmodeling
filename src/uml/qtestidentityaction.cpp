@@ -69,11 +69,17 @@ QTestIdentityActionPrivate::~QTestIdentityActionPrivate()
 QTestIdentityAction::QTestIdentityAction(QObject *parent) :
     QAction(*new QTestIdentityActionPrivate, parent)
 {
+    qRegisterMetaType<QTestIdentityAction *>("QTestIdentityAction *");
+    qRegisterMetaType<const QSet<QTestIdentityAction *> *>("const QSet<QTestIdentityAction *> *");
+    qRegisterMetaType<const QList<QTestIdentityAction *> *>("const QList<QTestIdentityAction *> *");
 }
 
 QTestIdentityAction::QTestIdentityAction(QTestIdentityActionPrivate &dd, QObject *parent) :
     QAction(dd, parent)
 {
+    qRegisterMetaType<QTestIdentityAction *>("QTestIdentityAction *");
+    qRegisterMetaType<const QSet<QTestIdentityAction *> *>("const QSet<QTestIdentityAction *> *");
+    qRegisterMetaType<const QList<QTestIdentityAction *> *>("const QList<QTestIdentityAction *> *");
 }
 
 QTestIdentityAction::~QTestIdentityAction()

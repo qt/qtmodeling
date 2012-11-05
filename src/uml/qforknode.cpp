@@ -63,11 +63,17 @@ QForkNodePrivate::~QForkNodePrivate()
 QForkNode::QForkNode(QObject *parent) :
     QControlNode(*new QForkNodePrivate, parent)
 {
+    qRegisterMetaType<QForkNode *>("QForkNode *");
+    qRegisterMetaType<const QSet<QForkNode *> *>("const QSet<QForkNode *> *");
+    qRegisterMetaType<const QList<QForkNode *> *>("const QList<QForkNode *> *");
 }
 
 QForkNode::QForkNode(QForkNodePrivate &dd, QObject *parent) :
     QControlNode(dd, parent)
 {
+    qRegisterMetaType<QForkNode *>("QForkNode *");
+    qRegisterMetaType<const QSet<QForkNode *> *>("const QSet<QForkNode *> *");
+    qRegisterMetaType<const QList<QForkNode *> *>("const QList<QForkNode *> *");
 }
 
 QForkNode::~QForkNode()

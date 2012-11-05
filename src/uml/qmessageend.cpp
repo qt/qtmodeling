@@ -66,11 +66,17 @@ QMessageEndPrivate::~QMessageEndPrivate()
 QMessageEnd::QMessageEnd(QObject *parent) :
     QNamedElement(*new QMessageEndPrivate, parent)
 {
+    qRegisterMetaType<QMessageEnd *>("QMessageEnd *");
+    qRegisterMetaType<const QSet<QMessageEnd *> *>("const QSet<QMessageEnd *> *");
+    qRegisterMetaType<const QList<QMessageEnd *> *>("const QList<QMessageEnd *> *");
 }
 
 QMessageEnd::QMessageEnd(QMessageEndPrivate &dd, QObject *parent) :
     QNamedElement(dd, parent)
 {
+    qRegisterMetaType<QMessageEnd *>("QMessageEnd *");
+    qRegisterMetaType<const QSet<QMessageEnd *> *>("const QSet<QMessageEnd *> *");
+    qRegisterMetaType<const QList<QMessageEnd *> *>("const QList<QMessageEnd *> *");
 }
 
 QMessageEnd::~QMessageEnd()

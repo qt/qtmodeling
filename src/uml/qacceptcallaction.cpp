@@ -66,11 +66,17 @@ QAcceptCallActionPrivate::~QAcceptCallActionPrivate()
 QAcceptCallAction::QAcceptCallAction(QObject *parent) :
     QAcceptEventAction(*new QAcceptCallActionPrivate, parent)
 {
+    qRegisterMetaType<QAcceptCallAction *>("QAcceptCallAction *");
+    qRegisterMetaType<const QSet<QAcceptCallAction *> *>("const QSet<QAcceptCallAction *> *");
+    qRegisterMetaType<const QList<QAcceptCallAction *> *>("const QList<QAcceptCallAction *> *");
 }
 
 QAcceptCallAction::QAcceptCallAction(QAcceptCallActionPrivate &dd, QObject *parent) :
     QAcceptEventAction(dd, parent)
 {
+    qRegisterMetaType<QAcceptCallAction *>("QAcceptCallAction *");
+    qRegisterMetaType<const QSet<QAcceptCallAction *> *>("const QSet<QAcceptCallAction *> *");
+    qRegisterMetaType<const QList<QAcceptCallAction *> *>("const QList<QAcceptCallAction *> *");
 }
 
 QAcceptCallAction::~QAcceptCallAction()

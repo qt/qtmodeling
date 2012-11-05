@@ -67,11 +67,17 @@ QProtocolStateMachinePrivate::~QProtocolStateMachinePrivate()
 QProtocolStateMachine::QProtocolStateMachine(QObject *parent) :
     QStateMachine(*new QProtocolStateMachinePrivate, parent)
 {
+    qRegisterMetaType<QProtocolStateMachine *>("QProtocolStateMachine *");
+    qRegisterMetaType<const QSet<QProtocolStateMachine *> *>("const QSet<QProtocolStateMachine *> *");
+    qRegisterMetaType<const QList<QProtocolStateMachine *> *>("const QList<QProtocolStateMachine *> *");
 }
 
 QProtocolStateMachine::QProtocolStateMachine(QProtocolStateMachinePrivate &dd, QObject *parent) :
     QStateMachine(dd, parent)
 {
+    qRegisterMetaType<QProtocolStateMachine *>("QProtocolStateMachine *");
+    qRegisterMetaType<const QSet<QProtocolStateMachine *> *>("const QSet<QProtocolStateMachine *> *");
+    qRegisterMetaType<const QList<QProtocolStateMachine *> *>("const QList<QProtocolStateMachine *> *");
 }
 
 QProtocolStateMachine::~QProtocolStateMachine()

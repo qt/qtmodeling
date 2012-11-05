@@ -66,11 +66,17 @@ QReceptionPrivate::~QReceptionPrivate()
 QReception::QReception(QObject *parent) :
     QBehavioralFeature(*new QReceptionPrivate, parent)
 {
+    qRegisterMetaType<QReception *>("QReception *");
+    qRegisterMetaType<const QSet<QReception *> *>("const QSet<QReception *> *");
+    qRegisterMetaType<const QList<QReception *> *>("const QList<QReception *> *");
 }
 
 QReception::QReception(QReceptionPrivate &dd, QObject *parent) :
     QBehavioralFeature(dd, parent)
 {
+    qRegisterMetaType<QReception *>("QReception *");
+    qRegisterMetaType<const QSet<QReception *> *>("const QSet<QReception *> *");
+    qRegisterMetaType<const QList<QReception *> *>("const QList<QReception *> *");
 }
 
 QReception::~QReception()

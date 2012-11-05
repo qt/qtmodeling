@@ -70,11 +70,17 @@ QParameterSetPrivate::~QParameterSetPrivate()
 QParameterSet::QParameterSet(QObject *parent) :
     QNamedElement(*new QParameterSetPrivate, parent)
 {
+    qRegisterMetaType<QParameterSet *>("QParameterSet *");
+    qRegisterMetaType<const QSet<QParameterSet *> *>("const QSet<QParameterSet *> *");
+    qRegisterMetaType<const QList<QParameterSet *> *>("const QList<QParameterSet *> *");
 }
 
 QParameterSet::QParameterSet(QParameterSetPrivate &dd, QObject *parent) :
     QNamedElement(dd, parent)
 {
+    qRegisterMetaType<QParameterSet *>("QParameterSet *");
+    qRegisterMetaType<const QSet<QParameterSet *> *>("const QSet<QParameterSet *> *");
+    qRegisterMetaType<const QList<QParameterSet *> *>("const QList<QParameterSet *> *");
 }
 
 QParameterSet::~QParameterSet()

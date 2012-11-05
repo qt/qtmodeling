@@ -71,11 +71,17 @@ QConnectionPointReferencePrivate::~QConnectionPointReferencePrivate()
 QConnectionPointReference::QConnectionPointReference(QObject *parent) :
     QVertex(*new QConnectionPointReferencePrivate, parent)
 {
+    qRegisterMetaType<QConnectionPointReference *>("QConnectionPointReference *");
+    qRegisterMetaType<const QSet<QConnectionPointReference *> *>("const QSet<QConnectionPointReference *> *");
+    qRegisterMetaType<const QList<QConnectionPointReference *> *>("const QList<QConnectionPointReference *> *");
 }
 
 QConnectionPointReference::QConnectionPointReference(QConnectionPointReferencePrivate &dd, QObject *parent) :
     QVertex(dd, parent)
 {
+    qRegisterMetaType<QConnectionPointReference *>("QConnectionPointReference *");
+    qRegisterMetaType<const QSet<QConnectionPointReference *> *>("const QSet<QConnectionPointReference *> *");
+    qRegisterMetaType<const QList<QConnectionPointReference *> *>("const QList<QConnectionPointReference *> *");
 }
 
 QConnectionPointReference::~QConnectionPointReference()

@@ -63,11 +63,17 @@ QFlowFinalNodePrivate::~QFlowFinalNodePrivate()
 QFlowFinalNode::QFlowFinalNode(QObject *parent) :
     QFinalNode(*new QFlowFinalNodePrivate, parent)
 {
+    qRegisterMetaType<QFlowFinalNode *>("QFlowFinalNode *");
+    qRegisterMetaType<const QSet<QFlowFinalNode *> *>("const QSet<QFlowFinalNode *> *");
+    qRegisterMetaType<const QList<QFlowFinalNode *> *>("const QList<QFlowFinalNode *> *");
 }
 
 QFlowFinalNode::QFlowFinalNode(QFlowFinalNodePrivate &dd, QObject *parent) :
     QFinalNode(dd, parent)
 {
+    qRegisterMetaType<QFlowFinalNode *>("QFlowFinalNode *");
+    qRegisterMetaType<const QSet<QFlowFinalNode *> *>("const QSet<QFlowFinalNode *> *");
+    qRegisterMetaType<const QList<QFlowFinalNode *> *>("const QList<QFlowFinalNode *> *");
 }
 
 QFlowFinalNode::~QFlowFinalNode()

@@ -67,11 +67,17 @@ QGeneralOrderingPrivate::~QGeneralOrderingPrivate()
 QGeneralOrdering::QGeneralOrdering(QObject *parent) :
     QNamedElement(*new QGeneralOrderingPrivate, parent)
 {
+    qRegisterMetaType<QGeneralOrdering *>("QGeneralOrdering *");
+    qRegisterMetaType<const QSet<QGeneralOrdering *> *>("const QSet<QGeneralOrdering *> *");
+    qRegisterMetaType<const QList<QGeneralOrdering *> *>("const QList<QGeneralOrdering *> *");
 }
 
 QGeneralOrdering::QGeneralOrdering(QGeneralOrderingPrivate &dd, QObject *parent) :
     QNamedElement(dd, parent)
 {
+    qRegisterMetaType<QGeneralOrdering *>("QGeneralOrdering *");
+    qRegisterMetaType<const QSet<QGeneralOrdering *> *>("const QSet<QGeneralOrdering *> *");
+    qRegisterMetaType<const QList<QGeneralOrdering *> *>("const QList<QGeneralOrdering *> *");
 }
 
 QGeneralOrdering::~QGeneralOrdering()

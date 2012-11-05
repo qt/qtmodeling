@@ -66,11 +66,17 @@ QStartObjectBehaviorActionPrivate::~QStartObjectBehaviorActionPrivate()
 QStartObjectBehaviorAction::QStartObjectBehaviorAction(QObject *parent) :
     QCallAction(*new QStartObjectBehaviorActionPrivate, parent)
 {
+    qRegisterMetaType<QStartObjectBehaviorAction *>("QStartObjectBehaviorAction *");
+    qRegisterMetaType<const QSet<QStartObjectBehaviorAction *> *>("const QSet<QStartObjectBehaviorAction *> *");
+    qRegisterMetaType<const QList<QStartObjectBehaviorAction *> *>("const QList<QStartObjectBehaviorAction *> *");
 }
 
 QStartObjectBehaviorAction::QStartObjectBehaviorAction(QStartObjectBehaviorActionPrivate &dd, QObject *parent) :
     QCallAction(dd, parent)
 {
+    qRegisterMetaType<QStartObjectBehaviorAction *>("QStartObjectBehaviorAction *");
+    qRegisterMetaType<const QSet<QStartObjectBehaviorAction *> *>("const QSet<QStartObjectBehaviorAction *> *");
+    qRegisterMetaType<const QList<QStartObjectBehaviorAction *> *>("const QList<QStartObjectBehaviorAction *> *");
 }
 
 QStartObjectBehaviorAction::~QStartObjectBehaviorAction()

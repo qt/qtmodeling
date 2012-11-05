@@ -67,11 +67,17 @@ QExpansionNodePrivate::~QExpansionNodePrivate()
 QExpansionNode::QExpansionNode(QObject *parent) :
     QObjectNode(*new QExpansionNodePrivate, parent)
 {
+    qRegisterMetaType<QExpansionNode *>("QExpansionNode *");
+    qRegisterMetaType<const QSet<QExpansionNode *> *>("const QSet<QExpansionNode *> *");
+    qRegisterMetaType<const QList<QExpansionNode *> *>("const QList<QExpansionNode *> *");
 }
 
 QExpansionNode::QExpansionNode(QExpansionNodePrivate &dd, QObject *parent) :
     QObjectNode(dd, parent)
 {
+    qRegisterMetaType<QExpansionNode *>("QExpansionNode *");
+    qRegisterMetaType<const QSet<QExpansionNode *> *>("const QSet<QExpansionNode *> *");
+    qRegisterMetaType<const QList<QExpansionNode *> *>("const QList<QExpansionNode *> *");
 }
 
 QExpansionNode::~QExpansionNode()

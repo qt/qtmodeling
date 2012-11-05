@@ -67,11 +67,17 @@ QRemoveStructuralFeatureValueActionPrivate::~QRemoveStructuralFeatureValueAction
 QRemoveStructuralFeatureValueAction::QRemoveStructuralFeatureValueAction(QObject *parent) :
     QWriteStructuralFeatureAction(*new QRemoveStructuralFeatureValueActionPrivate, parent)
 {
+    qRegisterMetaType<QRemoveStructuralFeatureValueAction *>("QRemoveStructuralFeatureValueAction *");
+    qRegisterMetaType<const QSet<QRemoveStructuralFeatureValueAction *> *>("const QSet<QRemoveStructuralFeatureValueAction *> *");
+    qRegisterMetaType<const QList<QRemoveStructuralFeatureValueAction *> *>("const QList<QRemoveStructuralFeatureValueAction *> *");
 }
 
 QRemoveStructuralFeatureValueAction::QRemoveStructuralFeatureValueAction(QRemoveStructuralFeatureValueActionPrivate &dd, QObject *parent) :
     QWriteStructuralFeatureAction(dd, parent)
 {
+    qRegisterMetaType<QRemoveStructuralFeatureValueAction *>("QRemoveStructuralFeatureValueAction *");
+    qRegisterMetaType<const QSet<QRemoveStructuralFeatureValueAction *> *>("const QSet<QRemoveStructuralFeatureValueAction *> *");
+    qRegisterMetaType<const QList<QRemoveStructuralFeatureValueAction *> *>("const QList<QRemoveStructuralFeatureValueAction *> *");
 }
 
 QRemoveStructuralFeatureValueAction::~QRemoveStructuralFeatureValueAction()

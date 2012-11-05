@@ -71,11 +71,17 @@ QTemplateSignaturePrivate::~QTemplateSignaturePrivate()
 QTemplateSignature::QTemplateSignature(QObject *parent) :
     QElement(*new QTemplateSignaturePrivate, parent)
 {
+    qRegisterMetaType<QTemplateSignature *>("QTemplateSignature *");
+    qRegisterMetaType<const QSet<QTemplateSignature *> *>("const QSet<QTemplateSignature *> *");
+    qRegisterMetaType<const QList<QTemplateSignature *> *>("const QList<QTemplateSignature *> *");
 }
 
 QTemplateSignature::QTemplateSignature(QTemplateSignaturePrivate &dd, QObject *parent) :
     QElement(dd, parent)
 {
+    qRegisterMetaType<QTemplateSignature *>("QTemplateSignature *");
+    qRegisterMetaType<const QSet<QTemplateSignature *> *>("const QSet<QTemplateSignature *> *");
+    qRegisterMetaType<const QList<QTemplateSignature *> *>("const QList<QTemplateSignature *> *");
 }
 
 QTemplateSignature::~QTemplateSignature()

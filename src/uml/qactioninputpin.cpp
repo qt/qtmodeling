@@ -66,11 +66,17 @@ QActionInputPinPrivate::~QActionInputPinPrivate()
 QActionInputPin::QActionInputPin(QObject *parent) :
     QInputPin(*new QActionInputPinPrivate, parent)
 {
+    qRegisterMetaType<QActionInputPin *>("QActionInputPin *");
+    qRegisterMetaType<const QSet<QActionInputPin *> *>("const QSet<QActionInputPin *> *");
+    qRegisterMetaType<const QList<QActionInputPin *> *>("const QList<QActionInputPin *> *");
 }
 
 QActionInputPin::QActionInputPin(QActionInputPinPrivate &dd, QObject *parent) :
     QInputPin(dd, parent)
 {
+    qRegisterMetaType<QActionInputPin *>("QActionInputPin *");
+    qRegisterMetaType<const QSet<QActionInputPin *> *>("const QSet<QActionInputPin *> *");
+    qRegisterMetaType<const QList<QActionInputPin *> *>("const QList<QActionInputPin *> *");
 }
 
 QActionInputPin::~QActionInputPin()

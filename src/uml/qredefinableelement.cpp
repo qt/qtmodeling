@@ -106,11 +106,17 @@ void QRedefinableElementPrivate::removeRedefinitionContext(QClassifier *redefini
 QRedefinableElement::QRedefinableElement(QObject *parent) :
     QNamedElement(*new QRedefinableElementPrivate, parent)
 {
+    qRegisterMetaType<QRedefinableElement *>("QRedefinableElement *");
+    qRegisterMetaType<const QSet<QRedefinableElement *> *>("const QSet<QRedefinableElement *> *");
+    qRegisterMetaType<const QList<QRedefinableElement *> *>("const QList<QRedefinableElement *> *");
 }
 
 QRedefinableElement::QRedefinableElement(QRedefinableElementPrivate &dd, QObject *parent) :
     QNamedElement(dd, parent)
 {
+    qRegisterMetaType<QRedefinableElement *>("QRedefinableElement *");
+    qRegisterMetaType<const QSet<QRedefinableElement *> *>("const QSet<QRedefinableElement *> *");
+    qRegisterMetaType<const QList<QRedefinableElement *> *>("const QList<QRedefinableElement *> *");
 }
 
 QRedefinableElement::~QRedefinableElement()

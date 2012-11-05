@@ -71,11 +71,17 @@ QOpaqueExpressionPrivate::~QOpaqueExpressionPrivate()
 QOpaqueExpression::QOpaqueExpression(QObject *parent) :
     QValueSpecification(*new QOpaqueExpressionPrivate, parent)
 {
+    qRegisterMetaType<QOpaqueExpression *>("QOpaqueExpression *");
+    qRegisterMetaType<const QSet<QOpaqueExpression *> *>("const QSet<QOpaqueExpression *> *");
+    qRegisterMetaType<const QList<QOpaqueExpression *> *>("const QList<QOpaqueExpression *> *");
 }
 
 QOpaqueExpression::QOpaqueExpression(QOpaqueExpressionPrivate &dd, QObject *parent) :
     QValueSpecification(dd, parent)
 {
+    qRegisterMetaType<QOpaqueExpression *>("QOpaqueExpression *");
+    qRegisterMetaType<const QSet<QOpaqueExpression *> *>("const QSet<QOpaqueExpression *> *");
+    qRegisterMetaType<const QList<QOpaqueExpression *> *>("const QList<QOpaqueExpression *> *");
 }
 
 QOpaqueExpression::~QOpaqueExpression()

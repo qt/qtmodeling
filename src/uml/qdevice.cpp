@@ -63,11 +63,17 @@ QDevicePrivate::~QDevicePrivate()
 QDevice::QDevice(QObject *parent) :
     QNode(*new QDevicePrivate, parent)
 {
+    qRegisterMetaType<QDevice *>("QDevice *");
+    qRegisterMetaType<const QSet<QDevice *> *>("const QSet<QDevice *> *");
+    qRegisterMetaType<const QList<QDevice *> *>("const QList<QDevice *> *");
 }
 
 QDevice::QDevice(QDevicePrivate &dd, QObject *parent) :
     QNode(dd, parent)
 {
+    qRegisterMetaType<QDevice *>("QDevice *");
+    qRegisterMetaType<const QSet<QDevice *> *>("const QSet<QDevice *> *");
+    qRegisterMetaType<const QList<QDevice *> *>("const QList<QDevice *> *");
 }
 
 QDevice::~QDevice()

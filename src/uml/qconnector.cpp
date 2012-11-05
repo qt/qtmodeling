@@ -74,11 +74,17 @@ QConnectorPrivate::~QConnectorPrivate()
 QConnector::QConnector(QObject *parent) :
     QFeature(*new QConnectorPrivate, parent)
 {
+    qRegisterMetaType<QConnector *>("QConnector *");
+    qRegisterMetaType<const QSet<QConnector *> *>("const QSet<QConnector *> *");
+    qRegisterMetaType<const QList<QConnector *> *>("const QList<QConnector *> *");
 }
 
 QConnector::QConnector(QConnectorPrivate &dd, QObject *parent) :
     QFeature(dd, parent)
 {
+    qRegisterMetaType<QConnector *>("QConnector *");
+    qRegisterMetaType<const QSet<QConnector *> *>("const QSet<QConnector *> *");
+    qRegisterMetaType<const QList<QConnector *> *>("const QList<QConnector *> *");
 }
 
 QConnector::~QConnector()

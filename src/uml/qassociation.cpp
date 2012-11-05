@@ -75,6 +75,9 @@ QAssociation::QAssociation(QObject *parent) :
     _wrappedClassifier(new QClassifier(this)),
     _wrappedRelationship(new QRelationship(this))
 {
+    qRegisterMetaType<QAssociation *>("QAssociation *");
+    qRegisterMetaType<const QSet<QAssociation *> *>("const QSet<QAssociation *> *");
+    qRegisterMetaType<const QList<QAssociation *> *>("const QList<QAssociation *> *");
 }
 
 QAssociation::QAssociation(QAssociationPrivate &dd, QObject *parent) :
@@ -82,6 +85,9 @@ QAssociation::QAssociation(QAssociationPrivate &dd, QObject *parent) :
     _wrappedClassifier(new QClassifier(this)),
     _wrappedRelationship(new QRelationship(this))
 {
+    qRegisterMetaType<QAssociation *>("QAssociation *");
+    qRegisterMetaType<const QSet<QAssociation *> *>("const QSet<QAssociation *> *");
+    qRegisterMetaType<const QList<QAssociation *> *>("const QList<QAssociation *> *");
 }
 
 QAssociation::~QAssociation()

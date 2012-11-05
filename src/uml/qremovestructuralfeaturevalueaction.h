@@ -87,8 +87,8 @@ protected:
 QT_END_NAMESPACE_QTUML
 
 Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QRemoveStructuralFeatureValueAction) *)
-Q_DECLARE_METATYPE(QSet<QT_PREPEND_NAMESPACE_QTUML(QRemoveStructuralFeatureValueAction) *> *)
-Q_DECLARE_METATYPE(QList<QT_PREPEND_NAMESPACE_QTUML(QRemoveStructuralFeatureValueAction) *> *)
+Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QRemoveStructuralFeatureValueAction) *> *)
+Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QRemoveStructuralFeatureValueAction) *> *)
 
 QT_END_HEADER
 

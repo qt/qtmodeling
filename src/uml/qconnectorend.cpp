@@ -70,11 +70,17 @@ QConnectorEndPrivate::~QConnectorEndPrivate()
 QConnectorEnd::QConnectorEnd(QObject *parent) :
     QMultiplicityElement(*new QConnectorEndPrivate, parent)
 {
+    qRegisterMetaType<QConnectorEnd *>("QConnectorEnd *");
+    qRegisterMetaType<const QSet<QConnectorEnd *> *>("const QSet<QConnectorEnd *> *");
+    qRegisterMetaType<const QList<QConnectorEnd *> *>("const QList<QConnectorEnd *> *");
 }
 
 QConnectorEnd::QConnectorEnd(QConnectorEndPrivate &dd, QObject *parent) :
     QMultiplicityElement(dd, parent)
 {
+    qRegisterMetaType<QConnectorEnd *>("QConnectorEnd *");
+    qRegisterMetaType<const QSet<QConnectorEnd *> *>("const QSet<QConnectorEnd *> *");
+    qRegisterMetaType<const QList<QConnectorEnd *> *>("const QList<QConnectorEnd *> *");
 }
 
 QConnectorEnd::~QConnectorEnd()

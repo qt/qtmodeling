@@ -68,11 +68,17 @@ QDestroyObjectActionPrivate::~QDestroyObjectActionPrivate()
 QDestroyObjectAction::QDestroyObjectAction(QObject *parent) :
     QAction(*new QDestroyObjectActionPrivate, parent)
 {
+    qRegisterMetaType<QDestroyObjectAction *>("QDestroyObjectAction *");
+    qRegisterMetaType<const QSet<QDestroyObjectAction *> *>("const QSet<QDestroyObjectAction *> *");
+    qRegisterMetaType<const QList<QDestroyObjectAction *> *>("const QList<QDestroyObjectAction *> *");
 }
 
 QDestroyObjectAction::QDestroyObjectAction(QDestroyObjectActionPrivate &dd, QObject *parent) :
     QAction(dd, parent)
 {
+    qRegisterMetaType<QDestroyObjectAction *>("QDestroyObjectAction *");
+    qRegisterMetaType<const QSet<QDestroyObjectAction *> *>("const QSet<QDestroyObjectAction *> *");
+    qRegisterMetaType<const QList<QDestroyObjectAction *> *>("const QList<QDestroyObjectAction *> *");
 }
 
 QDestroyObjectAction::~QDestroyObjectAction()

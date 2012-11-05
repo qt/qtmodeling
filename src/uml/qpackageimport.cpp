@@ -69,11 +69,17 @@ QPackageImportPrivate::~QPackageImportPrivate()
 QPackageImport::QPackageImport(QObject *parent) :
     QDirectedRelationship(*new QPackageImportPrivate, parent)
 {
+    qRegisterMetaType<QPackageImport *>("QPackageImport *");
+    qRegisterMetaType<const QSet<QPackageImport *> *>("const QSet<QPackageImport *> *");
+    qRegisterMetaType<const QList<QPackageImport *> *>("const QList<QPackageImport *> *");
 }
 
 QPackageImport::QPackageImport(QPackageImportPrivate &dd, QObject *parent) :
     QDirectedRelationship(dd, parent)
 {
+    qRegisterMetaType<QPackageImport *>("QPackageImport *");
+    qRegisterMetaType<const QSet<QPackageImport *> *>("const QSet<QPackageImport *> *");
+    qRegisterMetaType<const QList<QPackageImport *> *>("const QList<QPackageImport *> *");
 }
 
 QPackageImport::~QPackageImport()

@@ -66,11 +66,17 @@ QTypedElementPrivate::~QTypedElementPrivate()
 QTypedElement::QTypedElement(QObject *parent) :
     QNamedElement(*new QTypedElementPrivate, parent)
 {
+    qRegisterMetaType<QTypedElement *>("QTypedElement *");
+    qRegisterMetaType<const QSet<QTypedElement *> *>("const QSet<QTypedElement *> *");
+    qRegisterMetaType<const QList<QTypedElement *> *>("const QList<QTypedElement *> *");
 }
 
 QTypedElement::QTypedElement(QTypedElementPrivate &dd, QObject *parent) :
     QNamedElement(dd, parent)
 {
+    qRegisterMetaType<QTypedElement *>("QTypedElement *");
+    qRegisterMetaType<const QSet<QTypedElement *> *>("const QSet<QTypedElement *> *");
+    qRegisterMetaType<const QList<QTypedElement *> *>("const QList<QTypedElement *> *");
 }
 
 QTypedElement::~QTypedElement()

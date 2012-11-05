@@ -64,11 +64,17 @@ QLiteralBooleanPrivate::~QLiteralBooleanPrivate()
 QLiteralBoolean::QLiteralBoolean(QObject *parent) :
     QLiteralSpecification(*new QLiteralBooleanPrivate, parent)
 {
+    qRegisterMetaType<QLiteralBoolean *>("QLiteralBoolean *");
+    qRegisterMetaType<const QSet<QLiteralBoolean *> *>("const QSet<QLiteralBoolean *> *");
+    qRegisterMetaType<const QList<QLiteralBoolean *> *>("const QList<QLiteralBoolean *> *");
 }
 
 QLiteralBoolean::QLiteralBoolean(QLiteralBooleanPrivate &dd, QObject *parent) :
     QLiteralSpecification(dd, parent)
 {
+    qRegisterMetaType<QLiteralBoolean *>("QLiteralBoolean *");
+    qRegisterMetaType<const QSet<QLiteralBoolean *> *>("const QSet<QLiteralBoolean *> *");
+    qRegisterMetaType<const QList<QLiteralBoolean *> *>("const QList<QLiteralBoolean *> *");
 }
 
 QLiteralBoolean::~QLiteralBoolean()

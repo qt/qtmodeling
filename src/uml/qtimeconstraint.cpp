@@ -68,11 +68,17 @@ QTimeConstraintPrivate::~QTimeConstraintPrivate()
 QTimeConstraint::QTimeConstraint(QObject *parent) :
     QIntervalConstraint(*new QTimeConstraintPrivate, parent)
 {
+    qRegisterMetaType<QTimeConstraint *>("QTimeConstraint *");
+    qRegisterMetaType<const QSet<QTimeConstraint *> *>("const QSet<QTimeConstraint *> *");
+    qRegisterMetaType<const QList<QTimeConstraint *> *>("const QList<QTimeConstraint *> *");
 }
 
 QTimeConstraint::QTimeConstraint(QTimeConstraintPrivate &dd, QObject *parent) :
     QIntervalConstraint(dd, parent)
 {
+    qRegisterMetaType<QTimeConstraint *>("QTimeConstraint *");
+    qRegisterMetaType<const QSet<QTimeConstraint *> *>("const QSet<QTimeConstraint *> *");
+    qRegisterMetaType<const QList<QTimeConstraint *> *>("const QList<QTimeConstraint *> *");
 }
 
 QTimeConstraint::~QTimeConstraint()

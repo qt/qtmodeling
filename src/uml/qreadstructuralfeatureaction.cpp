@@ -66,11 +66,17 @@ QReadStructuralFeatureActionPrivate::~QReadStructuralFeatureActionPrivate()
 QReadStructuralFeatureAction::QReadStructuralFeatureAction(QObject *parent) :
     QStructuralFeatureAction(*new QReadStructuralFeatureActionPrivate, parent)
 {
+    qRegisterMetaType<QReadStructuralFeatureAction *>("QReadStructuralFeatureAction *");
+    qRegisterMetaType<const QSet<QReadStructuralFeatureAction *> *>("const QSet<QReadStructuralFeatureAction *> *");
+    qRegisterMetaType<const QList<QReadStructuralFeatureAction *> *>("const QList<QReadStructuralFeatureAction *> *");
 }
 
 QReadStructuralFeatureAction::QReadStructuralFeatureAction(QReadStructuralFeatureActionPrivate &dd, QObject *parent) :
     QStructuralFeatureAction(dd, parent)
 {
+    qRegisterMetaType<QReadStructuralFeatureAction *>("QReadStructuralFeatureAction *");
+    qRegisterMetaType<const QSet<QReadStructuralFeatureAction *> *>("const QSet<QReadStructuralFeatureAction *> *");
+    qRegisterMetaType<const QList<QReadStructuralFeatureAction *> *>("const QList<QReadStructuralFeatureAction *> *");
 }
 
 QReadStructuralFeatureAction::~QReadStructuralFeatureAction()

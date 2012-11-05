@@ -67,6 +67,9 @@ QNode::QNode(QObject *parent) :
     _wrappedClass(new QClass(this)),
     _wrappedDeploymentTarget(new QDeploymentTarget(this))
 {
+    qRegisterMetaType<QNode *>("QNode *");
+    qRegisterMetaType<const QSet<QNode *> *>("const QSet<QNode *> *");
+    qRegisterMetaType<const QList<QNode *> *>("const QList<QNode *> *");
 }
 
 QNode::QNode(QNodePrivate &dd, QObject *parent) :
@@ -74,6 +77,9 @@ QNode::QNode(QNodePrivate &dd, QObject *parent) :
     _wrappedClass(new QClass(this)),
     _wrappedDeploymentTarget(new QDeploymentTarget(this))
 {
+    qRegisterMetaType<QNode *>("QNode *");
+    qRegisterMetaType<const QSet<QNode *> *>("const QSet<QNode *> *");
+    qRegisterMetaType<const QList<QNode *> *>("const QList<QNode *> *");
 }
 
 QNode::~QNode()

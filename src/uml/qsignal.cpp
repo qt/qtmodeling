@@ -67,11 +67,17 @@ QSignalPrivate::~QSignalPrivate()
 QSignal::QSignal(QObject *parent) :
     QClassifier(*new QSignalPrivate, parent)
 {
+    qRegisterMetaType<QSignal *>("QSignal *");
+    qRegisterMetaType<const QSet<QSignal *> *>("const QSet<QSignal *> *");
+    qRegisterMetaType<const QList<QSignal *> *>("const QList<QSignal *> *");
 }
 
 QSignal::QSignal(QSignalPrivate &dd, QObject *parent) :
     QClassifier(dd, parent)
 {
+    qRegisterMetaType<QSignal *>("QSignal *");
+    qRegisterMetaType<const QSet<QSignal *> *>("const QSet<QSignal *> *");
+    qRegisterMetaType<const QList<QSignal *> *>("const QList<QSignal *> *");
 }
 
 QSignal::~QSignal()

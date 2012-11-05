@@ -85,6 +85,9 @@ QStructuredActivityNode::QStructuredActivityNode(QObject *parent) :
     _wrappedNamespace(new QNamespace(this)),
     _wrappedActivityGroup(new QActivityGroup(this))
 {
+    qRegisterMetaType<QStructuredActivityNode *>("QStructuredActivityNode *");
+    qRegisterMetaType<const QSet<QStructuredActivityNode *> *>("const QSet<QStructuredActivityNode *> *");
+    qRegisterMetaType<const QList<QStructuredActivityNode *> *>("const QList<QStructuredActivityNode *> *");
 }
 
 QStructuredActivityNode::QStructuredActivityNode(QStructuredActivityNodePrivate &dd, QObject *parent) :
@@ -93,6 +96,9 @@ QStructuredActivityNode::QStructuredActivityNode(QStructuredActivityNodePrivate 
     _wrappedNamespace(new QNamespace(this)),
     _wrappedActivityGroup(new QActivityGroup(this))
 {
+    qRegisterMetaType<QStructuredActivityNode *>("QStructuredActivityNode *");
+    qRegisterMetaType<const QSet<QStructuredActivityNode *> *>("const QSet<QStructuredActivityNode *> *");
+    qRegisterMetaType<const QList<QStructuredActivityNode *> *>("const QList<QStructuredActivityNode *> *");
 }
 
 QStructuredActivityNode::~QStructuredActivityNode()

@@ -68,11 +68,17 @@ QCreateObjectActionPrivate::~QCreateObjectActionPrivate()
 QCreateObjectAction::QCreateObjectAction(QObject *parent) :
     QAction(*new QCreateObjectActionPrivate, parent)
 {
+    qRegisterMetaType<QCreateObjectAction *>("QCreateObjectAction *");
+    qRegisterMetaType<const QSet<QCreateObjectAction *> *>("const QSet<QCreateObjectAction *> *");
+    qRegisterMetaType<const QList<QCreateObjectAction *> *>("const QList<QCreateObjectAction *> *");
 }
 
 QCreateObjectAction::QCreateObjectAction(QCreateObjectActionPrivate &dd, QObject *parent) :
     QAction(dd, parent)
 {
+    qRegisterMetaType<QCreateObjectAction *>("QCreateObjectAction *");
+    qRegisterMetaType<const QSet<QCreateObjectAction *> *>("const QSet<QCreateObjectAction *> *");
+    qRegisterMetaType<const QList<QCreateObjectAction *> *>("const QList<QCreateObjectAction *> *");
 }
 
 QCreateObjectAction::~QCreateObjectAction()

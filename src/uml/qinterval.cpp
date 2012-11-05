@@ -65,11 +65,17 @@ QIntervalPrivate::~QIntervalPrivate()
 QInterval::QInterval(QObject *parent) :
     QValueSpecification(*new QIntervalPrivate, parent)
 {
+    qRegisterMetaType<QInterval *>("QInterval *");
+    qRegisterMetaType<const QSet<QInterval *> *>("const QSet<QInterval *> *");
+    qRegisterMetaType<const QList<QInterval *> *>("const QList<QInterval *> *");
 }
 
 QInterval::QInterval(QIntervalPrivate &dd, QObject *parent) :
     QValueSpecification(dd, parent)
 {
+    qRegisterMetaType<QInterval *>("QInterval *");
+    qRegisterMetaType<const QSet<QInterval *> *>("const QSet<QInterval *> *");
+    qRegisterMetaType<const QList<QInterval *> *>("const QList<QInterval *> *");
 }
 
 QInterval::~QInterval()

@@ -71,11 +71,17 @@ QTemplateParameterPrivate::~QTemplateParameterPrivate()
 QTemplateParameter::QTemplateParameter(QObject *parent) :
     QElement(*new QTemplateParameterPrivate, parent)
 {
+    qRegisterMetaType<QTemplateParameter *>("QTemplateParameter *");
+    qRegisterMetaType<const QSet<QTemplateParameter *> *>("const QSet<QTemplateParameter *> *");
+    qRegisterMetaType<const QList<QTemplateParameter *> *>("const QList<QTemplateParameter *> *");
 }
 
 QTemplateParameter::QTemplateParameter(QTemplateParameterPrivate &dd, QObject *parent) :
     QElement(dd, parent)
 {
+    qRegisterMetaType<QTemplateParameter *>("QTemplateParameter *");
+    qRegisterMetaType<const QSet<QTemplateParameter *> *>("const QSet<QTemplateParameter *> *");
+    qRegisterMetaType<const QList<QTemplateParameter *> *>("const QList<QTemplateParameter *> *");
 }
 
 QTemplateParameter::~QTemplateParameter()

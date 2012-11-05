@@ -75,6 +75,9 @@ QObjectNode::QObjectNode(QObject *parent) :
     _wrappedActivityNode(new QActivityNode(this)),
     _wrappedTypedElement(new QTypedElement(this))
 {
+    qRegisterMetaType<QObjectNode *>("QObjectNode *");
+    qRegisterMetaType<const QSet<QObjectNode *> *>("const QSet<QObjectNode *> *");
+    qRegisterMetaType<const QList<QObjectNode *> *>("const QList<QObjectNode *> *");
 }
 
 QObjectNode::QObjectNode(QObjectNodePrivate &dd, QObject *parent) :
@@ -82,6 +85,9 @@ QObjectNode::QObjectNode(QObjectNodePrivate &dd, QObject *parent) :
     _wrappedActivityNode(new QActivityNode(this)),
     _wrappedTypedElement(new QTypedElement(this))
 {
+    qRegisterMetaType<QObjectNode *>("QObjectNode *");
+    qRegisterMetaType<const QSet<QObjectNode *> *>("const QSet<QObjectNode *> *");
+    qRegisterMetaType<const QList<QObjectNode *> *>("const QList<QObjectNode *> *");
 }
 
 QObjectNode::~QObjectNode()

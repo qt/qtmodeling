@@ -65,6 +65,9 @@ QAssociationClass::QAssociationClass(QObject *parent) :
     _wrappedClass(new QClass(this)),
     _wrappedAssociation(new QAssociation(this))
 {
+    qRegisterMetaType<QAssociationClass *>("QAssociationClass *");
+    qRegisterMetaType<const QSet<QAssociationClass *> *>("const QSet<QAssociationClass *> *");
+    qRegisterMetaType<const QList<QAssociationClass *> *>("const QList<QAssociationClass *> *");
 }
 
 QAssociationClass::QAssociationClass(QAssociationClassPrivate &dd, QObject *parent) :
@@ -72,6 +75,9 @@ QAssociationClass::QAssociationClass(QAssociationClassPrivate &dd, QObject *pare
     _wrappedClass(new QClass(this)),
     _wrappedAssociation(new QAssociation(this))
 {
+    qRegisterMetaType<QAssociationClass *>("QAssociationClass *");
+    qRegisterMetaType<const QSet<QAssociationClass *> *>("const QSet<QAssociationClass *> *");
+    qRegisterMetaType<const QList<QAssociationClass *> *>("const QList<QAssociationClass *> *");
 }
 
 QAssociationClass::~QAssociationClass()

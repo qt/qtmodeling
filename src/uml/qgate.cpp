@@ -63,11 +63,17 @@ QGatePrivate::~QGatePrivate()
 QGate::QGate(QObject *parent) :
     QMessageEnd(*new QGatePrivate, parent)
 {
+    qRegisterMetaType<QGate *>("QGate *");
+    qRegisterMetaType<const QSet<QGate *> *>("const QSet<QGate *> *");
+    qRegisterMetaType<const QList<QGate *> *>("const QList<QGate *> *");
 }
 
 QGate::QGate(QGatePrivate &dd, QObject *parent) :
     QMessageEnd(dd, parent)
 {
+    qRegisterMetaType<QGate *>("QGate *");
+    qRegisterMetaType<const QSet<QGate *> *>("const QSet<QGate *> *");
+    qRegisterMetaType<const QList<QGate *> *>("const QList<QGate *> *");
 }
 
 QGate::~QGate()

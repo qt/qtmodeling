@@ -75,6 +75,9 @@ QInstanceSpecification::QInstanceSpecification(QObject *parent) :
     _wrappedPackageableElement(new QPackageableElement(this)),
     _wrappedDeploymentTarget(new QDeploymentTarget(this))
 {
+    qRegisterMetaType<QInstanceSpecification *>("QInstanceSpecification *");
+    qRegisterMetaType<const QSet<QInstanceSpecification *> *>("const QSet<QInstanceSpecification *> *");
+    qRegisterMetaType<const QList<QInstanceSpecification *> *>("const QList<QInstanceSpecification *> *");
 }
 
 QInstanceSpecification::QInstanceSpecification(QInstanceSpecificationPrivate &dd, QObject *parent) :
@@ -83,6 +86,9 @@ QInstanceSpecification::QInstanceSpecification(QInstanceSpecificationPrivate &dd
     _wrappedPackageableElement(new QPackageableElement(this)),
     _wrappedDeploymentTarget(new QDeploymentTarget(this))
 {
+    qRegisterMetaType<QInstanceSpecification *>("QInstanceSpecification *");
+    qRegisterMetaType<const QSet<QInstanceSpecification *> *>("const QSet<QInstanceSpecification *> *");
+    qRegisterMetaType<const QList<QInstanceSpecification *> *>("const QList<QInstanceSpecification *> *");
 }
 
 QInstanceSpecification::~QInstanceSpecification()

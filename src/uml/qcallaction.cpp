@@ -68,11 +68,17 @@ QCallActionPrivate::~QCallActionPrivate()
 QCallAction::QCallAction(QObject *parent) :
     QInvocationAction(*new QCallActionPrivate, parent)
 {
+    qRegisterMetaType<QCallAction *>("QCallAction *");
+    qRegisterMetaType<const QSet<QCallAction *> *>("const QSet<QCallAction *> *");
+    qRegisterMetaType<const QList<QCallAction *> *>("const QList<QCallAction *> *");
 }
 
 QCallAction::QCallAction(QCallActionPrivate &dd, QObject *parent) :
     QInvocationAction(dd, parent)
 {
+    qRegisterMetaType<QCallAction *>("QCallAction *");
+    qRegisterMetaType<const QSet<QCallAction *> *>("const QSet<QCallAction *> *");
+    qRegisterMetaType<const QList<QCallAction *> *>("const QList<QCallAction *> *");
 }
 
 QCallAction::~QCallAction()

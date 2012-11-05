@@ -68,11 +68,17 @@ QDecisionNodePrivate::~QDecisionNodePrivate()
 QDecisionNode::QDecisionNode(QObject *parent) :
     QControlNode(*new QDecisionNodePrivate, parent)
 {
+    qRegisterMetaType<QDecisionNode *>("QDecisionNode *");
+    qRegisterMetaType<const QSet<QDecisionNode *> *>("const QSet<QDecisionNode *> *");
+    qRegisterMetaType<const QList<QDecisionNode *> *>("const QList<QDecisionNode *> *");
 }
 
 QDecisionNode::QDecisionNode(QDecisionNodePrivate &dd, QObject *parent) :
     QControlNode(dd, parent)
 {
+    qRegisterMetaType<QDecisionNode *>("QDecisionNode *");
+    qRegisterMetaType<const QSet<QDecisionNode *> *>("const QSet<QDecisionNode *> *");
+    qRegisterMetaType<const QList<QDecisionNode *> *>("const QList<QDecisionNode *> *");
 }
 
 QDecisionNode::~QDecisionNode()

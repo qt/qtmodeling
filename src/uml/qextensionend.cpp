@@ -66,11 +66,17 @@ QExtensionEndPrivate::~QExtensionEndPrivate()
 QExtensionEnd::QExtensionEnd(QObject *parent) :
     QProperty(*new QExtensionEndPrivate, parent)
 {
+    qRegisterMetaType<QExtensionEnd *>("QExtensionEnd *");
+    qRegisterMetaType<const QSet<QExtensionEnd *> *>("const QSet<QExtensionEnd *> *");
+    qRegisterMetaType<const QList<QExtensionEnd *> *>("const QList<QExtensionEnd *> *");
 }
 
 QExtensionEnd::QExtensionEnd(QExtensionEndPrivate &dd, QObject *parent) :
     QProperty(dd, parent)
 {
+    qRegisterMetaType<QExtensionEnd *>("QExtensionEnd *");
+    qRegisterMetaType<const QSet<QExtensionEnd *> *>("const QSet<QExtensionEnd *> *");
+    qRegisterMetaType<const QList<QExtensionEnd *> *>("const QList<QExtensionEnd *> *");
 }
 
 QExtensionEnd::~QExtensionEnd()

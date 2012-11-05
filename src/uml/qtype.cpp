@@ -66,11 +66,17 @@ QTypePrivate::~QTypePrivate()
 QType::QType(QObject *parent) :
     QPackageableElement(*new QTypePrivate, parent)
 {
+    qRegisterMetaType<QType *>("QType *");
+    qRegisterMetaType<const QSet<QType *> *>("const QSet<QType *> *");
+    qRegisterMetaType<const QList<QType *> *>("const QList<QType *> *");
 }
 
 QType::QType(QTypePrivate &dd, QObject *parent) :
     QPackageableElement(dd, parent)
 {
+    qRegisterMetaType<QType *>("QType *");
+    qRegisterMetaType<const QSet<QType *> *>("const QSet<QType *> *");
+    qRegisterMetaType<const QList<QType *> *>("const QList<QType *> *");
 }
 
 QType::~QType()

@@ -72,11 +72,17 @@ QDeploymentPrivate::~QDeploymentPrivate()
 QDeployment::QDeployment(QObject *parent) :
     QDependency(*new QDeploymentPrivate, parent)
 {
+    qRegisterMetaType<QDeployment *>("QDeployment *");
+    qRegisterMetaType<const QSet<QDeployment *> *>("const QSet<QDeployment *> *");
+    qRegisterMetaType<const QList<QDeployment *> *>("const QList<QDeployment *> *");
 }
 
 QDeployment::QDeployment(QDeploymentPrivate &dd, QObject *parent) :
     QDependency(dd, parent)
 {
+    qRegisterMetaType<QDeployment *>("QDeployment *");
+    qRegisterMetaType<const QSet<QDeployment *> *>("const QSet<QDeployment *> *");
+    qRegisterMetaType<const QList<QDeployment *> *>("const QList<QDeployment *> *");
 }
 
 QDeployment::~QDeployment()

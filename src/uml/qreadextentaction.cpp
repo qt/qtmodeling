@@ -68,11 +68,17 @@ QReadExtentActionPrivate::~QReadExtentActionPrivate()
 QReadExtentAction::QReadExtentAction(QObject *parent) :
     QAction(*new QReadExtentActionPrivate, parent)
 {
+    qRegisterMetaType<QReadExtentAction *>("QReadExtentAction *");
+    qRegisterMetaType<const QSet<QReadExtentAction *> *>("const QSet<QReadExtentAction *> *");
+    qRegisterMetaType<const QList<QReadExtentAction *> *>("const QList<QReadExtentAction *> *");
 }
 
 QReadExtentAction::QReadExtentAction(QReadExtentActionPrivate &dd, QObject *parent) :
     QAction(dd, parent)
 {
+    qRegisterMetaType<QReadExtentAction *>("QReadExtentAction *");
+    qRegisterMetaType<const QSet<QReadExtentAction *> *>("const QSet<QReadExtentAction *> *");
+    qRegisterMetaType<const QList<QReadExtentAction *> *>("const QList<QReadExtentAction *> *");
 }
 
 QReadExtentAction::~QReadExtentAction()

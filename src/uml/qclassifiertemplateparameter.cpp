@@ -69,11 +69,17 @@ QClassifierTemplateParameterPrivate::~QClassifierTemplateParameterPrivate()
 QClassifierTemplateParameter::QClassifierTemplateParameter(QObject *parent) :
     QTemplateParameter(*new QClassifierTemplateParameterPrivate, parent)
 {
+    qRegisterMetaType<QClassifierTemplateParameter *>("QClassifierTemplateParameter *");
+    qRegisterMetaType<const QSet<QClassifierTemplateParameter *> *>("const QSet<QClassifierTemplateParameter *> *");
+    qRegisterMetaType<const QList<QClassifierTemplateParameter *> *>("const QList<QClassifierTemplateParameter *> *");
 }
 
 QClassifierTemplateParameter::QClassifierTemplateParameter(QClassifierTemplateParameterPrivate &dd, QObject *parent) :
     QTemplateParameter(dd, parent)
 {
+    qRegisterMetaType<QClassifierTemplateParameter *>("QClassifierTemplateParameter *");
+    qRegisterMetaType<const QSet<QClassifierTemplateParameter *> *>("const QSet<QClassifierTemplateParameter *> *");
+    qRegisterMetaType<const QList<QClassifierTemplateParameter *> *>("const QList<QClassifierTemplateParameter *> *");
 }
 
 QClassifierTemplateParameter::~QClassifierTemplateParameter()

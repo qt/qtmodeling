@@ -72,11 +72,17 @@ QExceptionHandlerPrivate::~QExceptionHandlerPrivate()
 QExceptionHandler::QExceptionHandler(QObject *parent) :
     QElement(*new QExceptionHandlerPrivate, parent)
 {
+    qRegisterMetaType<QExceptionHandler *>("QExceptionHandler *");
+    qRegisterMetaType<const QSet<QExceptionHandler *> *>("const QSet<QExceptionHandler *> *");
+    qRegisterMetaType<const QList<QExceptionHandler *> *>("const QList<QExceptionHandler *> *");
 }
 
 QExceptionHandler::QExceptionHandler(QExceptionHandlerPrivate &dd, QObject *parent) :
     QElement(dd, parent)
 {
+    qRegisterMetaType<QExceptionHandler *>("QExceptionHandler *");
+    qRegisterMetaType<const QSet<QExceptionHandler *> *>("const QSet<QExceptionHandler *> *");
+    qRegisterMetaType<const QList<QExceptionHandler *> *>("const QList<QExceptionHandler *> *");
 }
 
 QExceptionHandler::~QExceptionHandler()

@@ -67,11 +67,17 @@ QRemoveVariableValueActionPrivate::~QRemoveVariableValueActionPrivate()
 QRemoveVariableValueAction::QRemoveVariableValueAction(QObject *parent) :
     QWriteVariableAction(*new QRemoveVariableValueActionPrivate, parent)
 {
+    qRegisterMetaType<QRemoveVariableValueAction *>("QRemoveVariableValueAction *");
+    qRegisterMetaType<const QSet<QRemoveVariableValueAction *> *>("const QSet<QRemoveVariableValueAction *> *");
+    qRegisterMetaType<const QList<QRemoveVariableValueAction *> *>("const QList<QRemoveVariableValueAction *> *");
 }
 
 QRemoveVariableValueAction::QRemoveVariableValueAction(QRemoveVariableValueActionPrivate &dd, QObject *parent) :
     QWriteVariableAction(dd, parent)
 {
+    qRegisterMetaType<QRemoveVariableValueAction *>("QRemoveVariableValueAction *");
+    qRegisterMetaType<const QSet<QRemoveVariableValueAction *> *>("const QSet<QRemoveVariableValueAction *> *");
+    qRegisterMetaType<const QList<QRemoveVariableValueAction *> *>("const QList<QRemoveVariableValueAction *> *");
 }
 
 QRemoveVariableValueAction::~QRemoveVariableValueAction()

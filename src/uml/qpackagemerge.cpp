@@ -67,11 +67,17 @@ QPackageMergePrivate::~QPackageMergePrivate()
 QPackageMerge::QPackageMerge(QObject *parent) :
     QDirectedRelationship(*new QPackageMergePrivate, parent)
 {
+    qRegisterMetaType<QPackageMerge *>("QPackageMerge *");
+    qRegisterMetaType<const QSet<QPackageMerge *> *>("const QSet<QPackageMerge *> *");
+    qRegisterMetaType<const QList<QPackageMerge *> *>("const QList<QPackageMerge *> *");
 }
 
 QPackageMerge::QPackageMerge(QPackageMergePrivate &dd, QObject *parent) :
     QDirectedRelationship(dd, parent)
 {
+    qRegisterMetaType<QPackageMerge *>("QPackageMerge *");
+    qRegisterMetaType<const QSet<QPackageMerge *> *>("const QSet<QPackageMerge *> *");
+    qRegisterMetaType<const QList<QPackageMerge *> *>("const QList<QPackageMerge *> *");
 }
 
 QPackageMerge::~QPackageMerge()

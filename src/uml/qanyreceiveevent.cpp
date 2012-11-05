@@ -63,11 +63,17 @@ QAnyReceiveEventPrivate::~QAnyReceiveEventPrivate()
 QAnyReceiveEvent::QAnyReceiveEvent(QObject *parent) :
     QMessageEvent(*new QAnyReceiveEventPrivate, parent)
 {
+    qRegisterMetaType<QAnyReceiveEvent *>("QAnyReceiveEvent *");
+    qRegisterMetaType<const QSet<QAnyReceiveEvent *> *>("const QSet<QAnyReceiveEvent *> *");
+    qRegisterMetaType<const QList<QAnyReceiveEvent *> *>("const QList<QAnyReceiveEvent *> *");
 }
 
 QAnyReceiveEvent::QAnyReceiveEvent(QAnyReceiveEventPrivate &dd, QObject *parent) :
     QMessageEvent(dd, parent)
 {
+    qRegisterMetaType<QAnyReceiveEvent *>("QAnyReceiveEvent *");
+    qRegisterMetaType<const QSet<QAnyReceiveEvent *> *>("const QSet<QAnyReceiveEvent *> *");
+    qRegisterMetaType<const QList<QAnyReceiveEvent *> *>("const QList<QAnyReceiveEvent *> *");
 }
 
 QAnyReceiveEvent::~QAnyReceiveEvent()

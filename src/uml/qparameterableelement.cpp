@@ -67,11 +67,17 @@ QParameterableElementPrivate::~QParameterableElementPrivate()
 QParameterableElement::QParameterableElement(QObject *parent) :
     QElement(*new QParameterableElementPrivate, parent)
 {
+    qRegisterMetaType<QParameterableElement *>("QParameterableElement *");
+    qRegisterMetaType<const QSet<QParameterableElement *> *>("const QSet<QParameterableElement *> *");
+    qRegisterMetaType<const QList<QParameterableElement *> *>("const QList<QParameterableElement *> *");
 }
 
 QParameterableElement::QParameterableElement(QParameterableElementPrivate &dd, QObject *parent) :
     QElement(dd, parent)
 {
+    qRegisterMetaType<QParameterableElement *>("QParameterableElement *");
+    qRegisterMetaType<const QSet<QParameterableElement *> *>("const QSet<QParameterableElement *> *");
+    qRegisterMetaType<const QList<QParameterableElement *> *>("const QList<QParameterableElement *> *");
 }
 
 QParameterableElement::~QParameterableElement()

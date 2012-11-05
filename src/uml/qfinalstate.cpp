@@ -63,11 +63,17 @@ QFinalStatePrivate::~QFinalStatePrivate()
 QFinalState::QFinalState(QObject *parent) :
     QState(*new QFinalStatePrivate, parent)
 {
+    qRegisterMetaType<QFinalState *>("QFinalState *");
+    qRegisterMetaType<const QSet<QFinalState *> *>("const QSet<QFinalState *> *");
+    qRegisterMetaType<const QList<QFinalState *> *>("const QList<QFinalState *> *");
 }
 
 QFinalState::QFinalState(QFinalStatePrivate &dd, QObject *parent) :
     QState(dd, parent)
 {
+    qRegisterMetaType<QFinalState *>("QFinalState *");
+    qRegisterMetaType<const QSet<QFinalState *> *>("const QSet<QFinalState *> *");
+    qRegisterMetaType<const QList<QFinalState *> *>("const QList<QFinalState *> *");
 }
 
 QFinalState::~QFinalState()

@@ -64,11 +64,17 @@ QLiteralUnlimitedNaturalPrivate::~QLiteralUnlimitedNaturalPrivate()
 QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QObject *parent) :
     QLiteralSpecification(*new QLiteralUnlimitedNaturalPrivate, parent)
 {
+    qRegisterMetaType<QLiteralUnlimitedNatural *>("QLiteralUnlimitedNatural *");
+    qRegisterMetaType<const QSet<QLiteralUnlimitedNatural *> *>("const QSet<QLiteralUnlimitedNatural *> *");
+    qRegisterMetaType<const QList<QLiteralUnlimitedNatural *> *>("const QList<QLiteralUnlimitedNatural *> *");
 }
 
 QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QLiteralUnlimitedNaturalPrivate &dd, QObject *parent) :
     QLiteralSpecification(dd, parent)
 {
+    qRegisterMetaType<QLiteralUnlimitedNatural *>("QLiteralUnlimitedNatural *");
+    qRegisterMetaType<const QSet<QLiteralUnlimitedNatural *> *>("const QSet<QLiteralUnlimitedNatural *> *");
+    qRegisterMetaType<const QList<QLiteralUnlimitedNatural *> *>("const QList<QLiteralUnlimitedNatural *> *");
 }
 
 QLiteralUnlimitedNatural::~QLiteralUnlimitedNatural()

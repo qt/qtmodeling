@@ -125,11 +125,17 @@ void QActionPrivate::removeOutput(QOutputPin *output)
 QAction::QAction(QObject *parent) :
     QExecutableNode(*new QActionPrivate, parent)
 {
+    qRegisterMetaType<QAction *>("QAction *");
+    qRegisterMetaType<const QSet<QAction *> *>("const QSet<QAction *> *");
+    qRegisterMetaType<const QList<QAction *> *>("const QList<QAction *> *");
 }
 
 QAction::QAction(QActionPrivate &dd, QObject *parent) :
     QExecutableNode(dd, parent)
 {
+    qRegisterMetaType<QAction *>("QAction *");
+    qRegisterMetaType<const QSet<QAction *> *>("const QSet<QAction *> *");
+    qRegisterMetaType<const QList<QAction *> *>("const QList<QAction *> *");
 }
 
 QAction::~QAction()

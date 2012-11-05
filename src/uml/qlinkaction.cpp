@@ -71,11 +71,17 @@ QLinkActionPrivate::~QLinkActionPrivate()
 QLinkAction::QLinkAction(QObject *parent) :
     QAction(*new QLinkActionPrivate, parent)
 {
+    qRegisterMetaType<QLinkAction *>("QLinkAction *");
+    qRegisterMetaType<const QSet<QLinkAction *> *>("const QSet<QLinkAction *> *");
+    qRegisterMetaType<const QList<QLinkAction *> *>("const QList<QLinkAction *> *");
 }
 
 QLinkAction::QLinkAction(QLinkActionPrivate &dd, QObject *parent) :
     QAction(dd, parent)
 {
+    qRegisterMetaType<QLinkAction *>("QLinkAction *");
+    qRegisterMetaType<const QSet<QLinkAction *> *>("const QSet<QLinkAction *> *");
+    qRegisterMetaType<const QList<QLinkAction *> *>("const QList<QLinkAction *> *");
 }
 
 QLinkAction::~QLinkAction()

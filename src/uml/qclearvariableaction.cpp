@@ -63,11 +63,17 @@ QClearVariableActionPrivate::~QClearVariableActionPrivate()
 QClearVariableAction::QClearVariableAction(QObject *parent) :
     QVariableAction(*new QClearVariableActionPrivate, parent)
 {
+    qRegisterMetaType<QClearVariableAction *>("QClearVariableAction *");
+    qRegisterMetaType<const QSet<QClearVariableAction *> *>("const QSet<QClearVariableAction *> *");
+    qRegisterMetaType<const QList<QClearVariableAction *> *>("const QList<QClearVariableAction *> *");
 }
 
 QClearVariableAction::QClearVariableAction(QClearVariableActionPrivate &dd, QObject *parent) :
     QVariableAction(dd, parent)
 {
+    qRegisterMetaType<QClearVariableAction *>("QClearVariableAction *");
+    qRegisterMetaType<const QSet<QClearVariableAction *> *>("const QSet<QClearVariableAction *> *");
+    qRegisterMetaType<const QList<QClearVariableAction *> *>("const QList<QClearVariableAction *> *");
 }
 
 QClearVariableAction::~QClearVariableAction()

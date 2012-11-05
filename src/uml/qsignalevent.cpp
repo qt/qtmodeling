@@ -66,11 +66,17 @@ QSignalEventPrivate::~QSignalEventPrivate()
 QSignalEvent::QSignalEvent(QObject *parent) :
     QMessageEvent(*new QSignalEventPrivate, parent)
 {
+    qRegisterMetaType<QSignalEvent *>("QSignalEvent *");
+    qRegisterMetaType<const QSet<QSignalEvent *> *>("const QSet<QSignalEvent *> *");
+    qRegisterMetaType<const QList<QSignalEvent *> *>("const QList<QSignalEvent *> *");
 }
 
 QSignalEvent::QSignalEvent(QSignalEventPrivate &dd, QObject *parent) :
     QMessageEvent(dd, parent)
 {
+    qRegisterMetaType<QSignalEvent *>("QSignalEvent *");
+    qRegisterMetaType<const QSet<QSignalEvent *> *>("const QSet<QSignalEvent *> *");
+    qRegisterMetaType<const QList<QSignalEvent *> *>("const QList<QSignalEvent *> *");
 }
 
 QSignalEvent::~QSignalEvent()

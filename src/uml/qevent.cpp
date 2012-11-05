@@ -63,11 +63,17 @@ QEventPrivate::~QEventPrivate()
 QEvent::QEvent(QObject *parent) :
     QPackageableElement(*new QEventPrivate, parent)
 {
+    qRegisterMetaType<QEvent *>("QEvent *");
+    qRegisterMetaType<const QSet<QEvent *> *>("const QSet<QEvent *> *");
+    qRegisterMetaType<const QList<QEvent *> *>("const QList<QEvent *> *");
 }
 
 QEvent::QEvent(QEventPrivate &dd, QObject *parent) :
     QPackageableElement(dd, parent)
 {
+    qRegisterMetaType<QEvent *>("QEvent *");
+    qRegisterMetaType<const QSet<QEvent *> *>("const QSet<QEvent *> *");
+    qRegisterMetaType<const QList<QEvent *> *>("const QList<QEvent *> *");
 }
 
 QEvent::~QEvent()

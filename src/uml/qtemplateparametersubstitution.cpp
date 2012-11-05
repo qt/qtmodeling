@@ -71,11 +71,17 @@ QTemplateParameterSubstitutionPrivate::~QTemplateParameterSubstitutionPrivate()
 QTemplateParameterSubstitution::QTemplateParameterSubstitution(QObject *parent) :
     QElement(*new QTemplateParameterSubstitutionPrivate, parent)
 {
+    qRegisterMetaType<QTemplateParameterSubstitution *>("QTemplateParameterSubstitution *");
+    qRegisterMetaType<const QSet<QTemplateParameterSubstitution *> *>("const QSet<QTemplateParameterSubstitution *> *");
+    qRegisterMetaType<const QList<QTemplateParameterSubstitution *> *>("const QList<QTemplateParameterSubstitution *> *");
 }
 
 QTemplateParameterSubstitution::QTemplateParameterSubstitution(QTemplateParameterSubstitutionPrivate &dd, QObject *parent) :
     QElement(dd, parent)
 {
+    qRegisterMetaType<QTemplateParameterSubstitution *>("QTemplateParameterSubstitution *");
+    qRegisterMetaType<const QSet<QTemplateParameterSubstitution *> *>("const QSet<QTemplateParameterSubstitution *> *");
+    qRegisterMetaType<const QList<QTemplateParameterSubstitution *> *>("const QList<QTemplateParameterSubstitution *> *");
 }
 
 QTemplateParameterSubstitution::~QTemplateParameterSubstitution()

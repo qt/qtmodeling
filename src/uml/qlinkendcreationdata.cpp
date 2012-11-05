@@ -67,11 +67,17 @@ QLinkEndCreationDataPrivate::~QLinkEndCreationDataPrivate()
 QLinkEndCreationData::QLinkEndCreationData(QObject *parent) :
     QLinkEndData(*new QLinkEndCreationDataPrivate, parent)
 {
+    qRegisterMetaType<QLinkEndCreationData *>("QLinkEndCreationData *");
+    qRegisterMetaType<const QSet<QLinkEndCreationData *> *>("const QSet<QLinkEndCreationData *> *");
+    qRegisterMetaType<const QList<QLinkEndCreationData *> *>("const QList<QLinkEndCreationData *> *");
 }
 
 QLinkEndCreationData::QLinkEndCreationData(QLinkEndCreationDataPrivate &dd, QObject *parent) :
     QLinkEndData(dd, parent)
 {
+    qRegisterMetaType<QLinkEndCreationData *>("QLinkEndCreationData *");
+    qRegisterMetaType<const QSet<QLinkEndCreationData *> *>("const QSet<QLinkEndCreationData *> *");
+    qRegisterMetaType<const QList<QLinkEndCreationData *> *>("const QList<QLinkEndCreationData *> *");
 }
 
 QLinkEndCreationData::~QLinkEndCreationData()

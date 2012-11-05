@@ -128,11 +128,17 @@ void QVertexPrivate::removeOutgoing(QTransition *outgoing)
 QVertex::QVertex(QObject *parent) :
     QNamedElement(*new QVertexPrivate, parent)
 {
+    qRegisterMetaType<QVertex *>("QVertex *");
+    qRegisterMetaType<const QSet<QVertex *> *>("const QSet<QVertex *> *");
+    qRegisterMetaType<const QList<QVertex *> *>("const QList<QVertex *> *");
 }
 
 QVertex::QVertex(QVertexPrivate &dd, QObject *parent) :
     QNamedElement(dd, parent)
 {
+    qRegisterMetaType<QVertex *>("QVertex *");
+    qRegisterMetaType<const QSet<QVertex *> *>("const QSet<QVertex *> *");
+    qRegisterMetaType<const QList<QVertex *> *>("const QList<QVertex *> *");
 }
 
 QVertex::~QVertex()

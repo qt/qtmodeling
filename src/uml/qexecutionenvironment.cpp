@@ -63,11 +63,17 @@ QExecutionEnvironmentPrivate::~QExecutionEnvironmentPrivate()
 QExecutionEnvironment::QExecutionEnvironment(QObject *parent) :
     QNode(*new QExecutionEnvironmentPrivate, parent)
 {
+    qRegisterMetaType<QExecutionEnvironment *>("QExecutionEnvironment *");
+    qRegisterMetaType<const QSet<QExecutionEnvironment *> *>("const QSet<QExecutionEnvironment *> *");
+    qRegisterMetaType<const QList<QExecutionEnvironment *> *>("const QList<QExecutionEnvironment *> *");
 }
 
 QExecutionEnvironment::QExecutionEnvironment(QExecutionEnvironmentPrivate &dd, QObject *parent) :
     QNode(dd, parent)
 {
+    qRegisterMetaType<QExecutionEnvironment *>("QExecutionEnvironment *");
+    qRegisterMetaType<const QSet<QExecutionEnvironment *> *>("const QSet<QExecutionEnvironment *> *");
+    qRegisterMetaType<const QList<QExecutionEnvironment *> *>("const QList<QExecutionEnvironment *> *");
 }
 
 QExecutionEnvironment::~QExecutionEnvironment()

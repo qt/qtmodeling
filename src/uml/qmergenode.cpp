@@ -63,11 +63,17 @@ QMergeNodePrivate::~QMergeNodePrivate()
 QMergeNode::QMergeNode(QObject *parent) :
     QControlNode(*new QMergeNodePrivate, parent)
 {
+    qRegisterMetaType<QMergeNode *>("QMergeNode *");
+    qRegisterMetaType<const QSet<QMergeNode *> *>("const QSet<QMergeNode *> *");
+    qRegisterMetaType<const QList<QMergeNode *> *>("const QList<QMergeNode *> *");
 }
 
 QMergeNode::QMergeNode(QMergeNodePrivate &dd, QObject *parent) :
     QControlNode(dd, parent)
 {
+    qRegisterMetaType<QMergeNode *>("QMergeNode *");
+    qRegisterMetaType<const QSet<QMergeNode *> *>("const QSet<QMergeNode *> *");
+    qRegisterMetaType<const QList<QMergeNode *> *>("const QList<QMergeNode *> *");
 }
 
 QMergeNode::~QMergeNode()

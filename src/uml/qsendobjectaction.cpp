@@ -68,11 +68,17 @@ QSendObjectActionPrivate::~QSendObjectActionPrivate()
 QSendObjectAction::QSendObjectAction(QObject *parent) :
     QInvocationAction(*new QSendObjectActionPrivate, parent)
 {
+    qRegisterMetaType<QSendObjectAction *>("QSendObjectAction *");
+    qRegisterMetaType<const QSet<QSendObjectAction *> *>("const QSet<QSendObjectAction *> *");
+    qRegisterMetaType<const QList<QSendObjectAction *> *>("const QList<QSendObjectAction *> *");
 }
 
 QSendObjectAction::QSendObjectAction(QSendObjectActionPrivate &dd, QObject *parent) :
     QInvocationAction(dd, parent)
 {
+    qRegisterMetaType<QSendObjectAction *>("QSendObjectAction *");
+    qRegisterMetaType<const QSet<QSendObjectAction *> *>("const QSet<QSendObjectAction *> *");
+    qRegisterMetaType<const QList<QSendObjectAction *> *>("const QList<QSendObjectAction *> *");
 }
 
 QSendObjectAction::~QSendObjectAction()

@@ -71,11 +71,17 @@ QOccurrenceSpecificationPrivate::~QOccurrenceSpecificationPrivate()
 QOccurrenceSpecification::QOccurrenceSpecification(QObject *parent) :
     QInteractionFragment(*new QOccurrenceSpecificationPrivate, parent)
 {
+    qRegisterMetaType<QOccurrenceSpecification *>("QOccurrenceSpecification *");
+    qRegisterMetaType<const QSet<QOccurrenceSpecification *> *>("const QSet<QOccurrenceSpecification *> *");
+    qRegisterMetaType<const QList<QOccurrenceSpecification *> *>("const QList<QOccurrenceSpecification *> *");
 }
 
 QOccurrenceSpecification::QOccurrenceSpecification(QOccurrenceSpecificationPrivate &dd, QObject *parent) :
     QInteractionFragment(dd, parent)
 {
+    qRegisterMetaType<QOccurrenceSpecification *>("QOccurrenceSpecification *");
+    qRegisterMetaType<const QSet<QOccurrenceSpecification *> *>("const QSet<QOccurrenceSpecification *> *");
+    qRegisterMetaType<const QList<QOccurrenceSpecification *> *>("const QList<QOccurrenceSpecification *> *");
 }
 
 QOccurrenceSpecification::~QOccurrenceSpecification()

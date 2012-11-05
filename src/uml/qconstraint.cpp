@@ -71,11 +71,17 @@ QConstraintPrivate::~QConstraintPrivate()
 QConstraint::QConstraint(QObject *parent) :
     QPackageableElement(*new QConstraintPrivate, parent)
 {
+    qRegisterMetaType<QConstraint *>("QConstraint *");
+    qRegisterMetaType<const QSet<QConstraint *> *>("const QSet<QConstraint *> *");
+    qRegisterMetaType<const QList<QConstraint *> *>("const QList<QConstraint *> *");
 }
 
 QConstraint::QConstraint(QConstraintPrivate &dd, QObject *parent) :
     QPackageableElement(dd, parent)
 {
+    qRegisterMetaType<QConstraint *>("QConstraint *");
+    qRegisterMetaType<const QSet<QConstraint *> *>("const QSet<QConstraint *> *");
+    qRegisterMetaType<const QList<QConstraint *> *>("const QList<QConstraint *> *");
 }
 
 QConstraint::~QConstraint()

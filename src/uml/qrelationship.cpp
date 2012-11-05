@@ -83,11 +83,17 @@ void QRelationshipPrivate::removeRelatedElement(QElement *relatedElement)
 QRelationship::QRelationship(QObject *parent) :
     QElement(*new QRelationshipPrivate, parent)
 {
+    qRegisterMetaType<QRelationship *>("QRelationship *");
+    qRegisterMetaType<const QSet<QRelationship *> *>("const QSet<QRelationship *> *");
+    qRegisterMetaType<const QList<QRelationship *> *>("const QList<QRelationship *> *");
 }
 
 QRelationship::QRelationship(QRelationshipPrivate &dd, QObject *parent) :
     QElement(dd, parent)
 {
+    qRegisterMetaType<QRelationship *>("QRelationship *");
+    qRegisterMetaType<const QSet<QRelationship *> *>("const QSet<QRelationship *> *");
+    qRegisterMetaType<const QList<QRelationship *> *>("const QList<QRelationship *> *");
 }
 
 QRelationship::~QRelationship()

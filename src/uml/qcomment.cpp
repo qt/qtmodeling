@@ -65,11 +65,17 @@ QCommentPrivate::~QCommentPrivate()
 QComment::QComment(QObject *parent) :
     QElement(*new QCommentPrivate, parent)
 {
+    qRegisterMetaType<QComment *>("QComment *");
+    qRegisterMetaType<const QSet<QComment *> *>("const QSet<QComment *> *");
+    qRegisterMetaType<const QList<QComment *> *>("const QList<QComment *> *");
 }
 
 QComment::QComment(QCommentPrivate &dd, QObject *parent) :
     QElement(dd, parent)
 {
+    qRegisterMetaType<QComment *>("QComment *");
+    qRegisterMetaType<const QSet<QComment *> *>("const QSet<QComment *> *");
+    qRegisterMetaType<const QList<QComment *> *>("const QList<QComment *> *");
 }
 
 QComment::~QComment()

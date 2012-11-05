@@ -63,11 +63,17 @@ QLiteralSpecificationPrivate::~QLiteralSpecificationPrivate()
 QLiteralSpecification::QLiteralSpecification(QObject *parent) :
     QValueSpecification(*new QLiteralSpecificationPrivate, parent)
 {
+    qRegisterMetaType<QLiteralSpecification *>("QLiteralSpecification *");
+    qRegisterMetaType<const QSet<QLiteralSpecification *> *>("const QSet<QLiteralSpecification *> *");
+    qRegisterMetaType<const QList<QLiteralSpecification *> *>("const QList<QLiteralSpecification *> *");
 }
 
 QLiteralSpecification::QLiteralSpecification(QLiteralSpecificationPrivate &dd, QObject *parent) :
     QValueSpecification(dd, parent)
 {
+    qRegisterMetaType<QLiteralSpecification *>("QLiteralSpecification *");
+    qRegisterMetaType<const QSet<QLiteralSpecification *> *>("const QSet<QLiteralSpecification *> *");
+    qRegisterMetaType<const QList<QLiteralSpecification *> *>("const QList<QLiteralSpecification *> *");
 }
 
 QLiteralSpecification::~QLiteralSpecification()

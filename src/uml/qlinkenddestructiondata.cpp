@@ -67,11 +67,17 @@ QLinkEndDestructionDataPrivate::~QLinkEndDestructionDataPrivate()
 QLinkEndDestructionData::QLinkEndDestructionData(QObject *parent) :
     QLinkEndData(*new QLinkEndDestructionDataPrivate, parent)
 {
+    qRegisterMetaType<QLinkEndDestructionData *>("QLinkEndDestructionData *");
+    qRegisterMetaType<const QSet<QLinkEndDestructionData *> *>("const QSet<QLinkEndDestructionData *> *");
+    qRegisterMetaType<const QList<QLinkEndDestructionData *> *>("const QList<QLinkEndDestructionData *> *");
 }
 
 QLinkEndDestructionData::QLinkEndDestructionData(QLinkEndDestructionDataPrivate &dd, QObject *parent) :
     QLinkEndData(dd, parent)
 {
+    qRegisterMetaType<QLinkEndDestructionData *>("QLinkEndDestructionData *");
+    qRegisterMetaType<const QSet<QLinkEndDestructionData *> *>("const QSet<QLinkEndDestructionData *> *");
+    qRegisterMetaType<const QList<QLinkEndDestructionData *> *>("const QList<QLinkEndDestructionData *> *");
 }
 
 QLinkEndDestructionData::~QLinkEndDestructionData()

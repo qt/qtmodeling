@@ -68,11 +68,17 @@ QValueSpecificationActionPrivate::~QValueSpecificationActionPrivate()
 QValueSpecificationAction::QValueSpecificationAction(QObject *parent) :
     QAction(*new QValueSpecificationActionPrivate, parent)
 {
+    qRegisterMetaType<QValueSpecificationAction *>("QValueSpecificationAction *");
+    qRegisterMetaType<const QSet<QValueSpecificationAction *> *>("const QSet<QValueSpecificationAction *> *");
+    qRegisterMetaType<const QList<QValueSpecificationAction *> *>("const QList<QValueSpecificationAction *> *");
 }
 
 QValueSpecificationAction::QValueSpecificationAction(QValueSpecificationActionPrivate &dd, QObject *parent) :
     QAction(dd, parent)
 {
+    qRegisterMetaType<QValueSpecificationAction *>("QValueSpecificationAction *");
+    qRegisterMetaType<const QSet<QValueSpecificationAction *> *>("const QSet<QValueSpecificationAction *> *");
+    qRegisterMetaType<const QList<QValueSpecificationAction *> *>("const QList<QValueSpecificationAction *> *");
 }
 
 QValueSpecificationAction::~QValueSpecificationAction()

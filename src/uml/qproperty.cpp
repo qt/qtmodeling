@@ -93,6 +93,9 @@ QProperty::QProperty(QObject *parent) :
     _wrappedConnectableElement(new QConnectableElement(this)),
     _wrappedDeploymentTarget(new QDeploymentTarget(this))
 {
+    qRegisterMetaType<QProperty *>("QProperty *");
+    qRegisterMetaType<const QSet<QProperty *> *>("const QSet<QProperty *> *");
+    qRegisterMetaType<const QList<QProperty *> *>("const QList<QProperty *> *");
 }
 
 QProperty::QProperty(QPropertyPrivate &dd, QObject *parent) :
@@ -101,6 +104,9 @@ QProperty::QProperty(QPropertyPrivate &dd, QObject *parent) :
     _wrappedConnectableElement(new QConnectableElement(this)),
     _wrappedDeploymentTarget(new QDeploymentTarget(this))
 {
+    qRegisterMetaType<QProperty *>("QProperty *");
+    qRegisterMetaType<const QSet<QProperty *> *>("const QSet<QProperty *> *");
+    qRegisterMetaType<const QList<QProperty *> *>("const QList<QProperty *> *");
 }
 
 QProperty::~QProperty()

@@ -69,11 +69,17 @@ QObjectFlowPrivate::~QObjectFlowPrivate()
 QObjectFlow::QObjectFlow(QObject *parent) :
     QActivityEdge(*new QObjectFlowPrivate, parent)
 {
+    qRegisterMetaType<QObjectFlow *>("QObjectFlow *");
+    qRegisterMetaType<const QSet<QObjectFlow *> *>("const QSet<QObjectFlow *> *");
+    qRegisterMetaType<const QList<QObjectFlow *> *>("const QList<QObjectFlow *> *");
 }
 
 QObjectFlow::QObjectFlow(QObjectFlowPrivate &dd, QObject *parent) :
     QActivityEdge(dd, parent)
 {
+    qRegisterMetaType<QObjectFlow *>("QObjectFlow *");
+    qRegisterMetaType<const QSet<QObjectFlow *> *>("const QSet<QObjectFlow *> *");
+    qRegisterMetaType<const QList<QObjectFlow *> *>("const QList<QObjectFlow *> *");
 }
 
 QObjectFlow::~QObjectFlow()

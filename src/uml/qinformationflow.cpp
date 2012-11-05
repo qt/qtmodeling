@@ -86,6 +86,9 @@ QInformationFlow::QInformationFlow(QObject *parent) :
     _wrappedDirectedRelationship(new QDirectedRelationship(this)),
     _wrappedPackageableElement(new QPackageableElement(this))
 {
+    qRegisterMetaType<QInformationFlow *>("QInformationFlow *");
+    qRegisterMetaType<const QSet<QInformationFlow *> *>("const QSet<QInformationFlow *> *");
+    qRegisterMetaType<const QList<QInformationFlow *> *>("const QList<QInformationFlow *> *");
 }
 
 QInformationFlow::QInformationFlow(QInformationFlowPrivate &dd, QObject *parent) :
@@ -93,6 +96,9 @@ QInformationFlow::QInformationFlow(QInformationFlowPrivate &dd, QObject *parent)
     _wrappedDirectedRelationship(new QDirectedRelationship(this)),
     _wrappedPackageableElement(new QPackageableElement(this))
 {
+    qRegisterMetaType<QInformationFlow *>("QInformationFlow *");
+    qRegisterMetaType<const QSet<QInformationFlow *> *>("const QSet<QInformationFlow *> *");
+    qRegisterMetaType<const QList<QInformationFlow *> *>("const QList<QInformationFlow *> *");
 }
 
 QInformationFlow::~QInformationFlow()

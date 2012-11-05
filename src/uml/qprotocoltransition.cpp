@@ -68,11 +68,17 @@ QProtocolTransitionPrivate::~QProtocolTransitionPrivate()
 QProtocolTransition::QProtocolTransition(QObject *parent) :
     QTransition(*new QProtocolTransitionPrivate, parent)
 {
+    qRegisterMetaType<QProtocolTransition *>("QProtocolTransition *");
+    qRegisterMetaType<const QSet<QProtocolTransition *> *>("const QSet<QProtocolTransition *> *");
+    qRegisterMetaType<const QList<QProtocolTransition *> *>("const QList<QProtocolTransition *> *");
 }
 
 QProtocolTransition::QProtocolTransition(QProtocolTransitionPrivate &dd, QObject *parent) :
     QTransition(dd, parent)
 {
+    qRegisterMetaType<QProtocolTransition *>("QProtocolTransition *");
+    qRegisterMetaType<const QSet<QProtocolTransition *> *>("const QSet<QProtocolTransition *> *");
+    qRegisterMetaType<const QList<QProtocolTransition *> *>("const QList<QProtocolTransition *> *");
 }
 
 QProtocolTransition::~QProtocolTransition()

@@ -65,11 +65,17 @@ QEncapsulatedClassifierPrivate::~QEncapsulatedClassifierPrivate()
 QEncapsulatedClassifier::QEncapsulatedClassifier(QObject *parent) :
     QStructuredClassifier(*new QEncapsulatedClassifierPrivate, parent)
 {
+    qRegisterMetaType<QEncapsulatedClassifier *>("QEncapsulatedClassifier *");
+    qRegisterMetaType<const QSet<QEncapsulatedClassifier *> *>("const QSet<QEncapsulatedClassifier *> *");
+    qRegisterMetaType<const QList<QEncapsulatedClassifier *> *>("const QList<QEncapsulatedClassifier *> *");
 }
 
 QEncapsulatedClassifier::QEncapsulatedClassifier(QEncapsulatedClassifierPrivate &dd, QObject *parent) :
     QStructuredClassifier(dd, parent)
 {
+    qRegisterMetaType<QEncapsulatedClassifier *>("QEncapsulatedClassifier *");
+    qRegisterMetaType<const QSet<QEncapsulatedClassifier *> *>("const QSet<QEncapsulatedClassifier *> *");
+    qRegisterMetaType<const QList<QEncapsulatedClassifier *> *>("const QList<QEncapsulatedClassifier *> *");
 }
 
 QEncapsulatedClassifier::~QEncapsulatedClassifier()

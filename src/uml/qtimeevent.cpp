@@ -67,11 +67,17 @@ QTimeEventPrivate::~QTimeEventPrivate()
 QTimeEvent::QTimeEvent(QObject *parent) :
     QEvent(*new QTimeEventPrivate, parent)
 {
+    qRegisterMetaType<QTimeEvent *>("QTimeEvent *");
+    qRegisterMetaType<const QSet<QTimeEvent *> *>("const QSet<QTimeEvent *> *");
+    qRegisterMetaType<const QList<QTimeEvent *> *>("const QList<QTimeEvent *> *");
 }
 
 QTimeEvent::QTimeEvent(QTimeEventPrivate &dd, QObject *parent) :
     QEvent(dd, parent)
 {
+    qRegisterMetaType<QTimeEvent *>("QTimeEvent *");
+    qRegisterMetaType<const QSet<QTimeEvent *> *>("const QSet<QTimeEvent *> *");
+    qRegisterMetaType<const QList<QTimeEvent *> *>("const QList<QTimeEvent *> *");
 }
 
 QTimeEvent::~QTimeEvent()

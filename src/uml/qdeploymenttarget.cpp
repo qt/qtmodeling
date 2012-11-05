@@ -68,11 +68,17 @@ QDeploymentTargetPrivate::~QDeploymentTargetPrivate()
 QDeploymentTarget::QDeploymentTarget(QObject *parent) :
     QNamedElement(*new QDeploymentTargetPrivate, parent)
 {
+    qRegisterMetaType<QDeploymentTarget *>("QDeploymentTarget *");
+    qRegisterMetaType<const QSet<QDeploymentTarget *> *>("const QSet<QDeploymentTarget *> *");
+    qRegisterMetaType<const QList<QDeploymentTarget *> *>("const QList<QDeploymentTarget *> *");
 }
 
 QDeploymentTarget::QDeploymentTarget(QDeploymentTargetPrivate &dd, QObject *parent) :
     QNamedElement(dd, parent)
 {
+    qRegisterMetaType<QDeploymentTarget *>("QDeploymentTarget *");
+    qRegisterMetaType<const QSet<QDeploymentTarget *> *>("const QSet<QDeploymentTarget *> *");
+    qRegisterMetaType<const QList<QDeploymentTarget *> *>("const QList<QDeploymentTarget *> *");
 }
 
 QDeploymentTarget::~QDeploymentTarget()

@@ -161,6 +161,9 @@ QClassifier::QClassifier(QObject *parent) :
     _wrappedRedefinableElement(new QRedefinableElement(this)),
     _wrappedTemplateableElement(new QTemplateableElement(this))
 {
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
+    qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
 }
 
 QClassifier::QClassifier(QClassifierPrivate &dd, QObject *parent) :
@@ -170,6 +173,9 @@ QClassifier::QClassifier(QClassifierPrivate &dd, QObject *parent) :
     _wrappedRedefinableElement(new QRedefinableElement(this)),
     _wrappedTemplateableElement(new QTemplateableElement(this))
 {
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
+    qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
 }
 
 QClassifier::~QClassifier()

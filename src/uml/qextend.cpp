@@ -74,6 +74,9 @@ QExtend::QExtend(QObject *parent) :
     _wrappedDirectedRelationship(new QDirectedRelationship(this)),
     _wrappedNamedElement(new QNamedElement(this))
 {
+    qRegisterMetaType<QExtend *>("QExtend *");
+    qRegisterMetaType<const QSet<QExtend *> *>("const QSet<QExtend *> *");
+    qRegisterMetaType<const QList<QExtend *> *>("const QList<QExtend *> *");
 }
 
 QExtend::QExtend(QExtendPrivate &dd, QObject *parent) :
@@ -81,6 +84,9 @@ QExtend::QExtend(QExtendPrivate &dd, QObject *parent) :
     _wrappedDirectedRelationship(new QDirectedRelationship(this)),
     _wrappedNamedElement(new QNamedElement(this))
 {
+    qRegisterMetaType<QExtend *>("QExtend *");
+    qRegisterMetaType<const QSet<QExtend *> *>("const QSet<QExtend *> *");
+    qRegisterMetaType<const QList<QExtend *> *>("const QList<QExtend *> *");
 }
 
 QExtend::~QExtend()

@@ -120,11 +120,17 @@ void QElementPrivate::setOwner(QElement *owner)
 QElement::QElement(QObject *parent) :
     QObject(*new QElementPrivate, parent)
 {
+    qRegisterMetaType<QElement *>("QElement *");
+    qRegisterMetaType<const QSet<QElement *> *>("const QSet<QElement *> *");
+    qRegisterMetaType<const QList<QElement *> *>("const QList<QElement *> *");
 }
 
 QElement::QElement(QElementPrivate &dd, QObject *parent) :
     QObject(dd, parent)
 {
+    qRegisterMetaType<QElement *>("QElement *");
+    qRegisterMetaType<const QSet<QElement *> *>("const QSet<QElement *> *");
+    qRegisterMetaType<const QList<QElement *> *>("const QList<QElement *> *");
 }
 
 QElement::~QElement()

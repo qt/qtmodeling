@@ -70,11 +70,17 @@ QInterruptibleActivityRegionPrivate::~QInterruptibleActivityRegionPrivate()
 QInterruptibleActivityRegion::QInterruptibleActivityRegion(QObject *parent) :
     QActivityGroup(*new QInterruptibleActivityRegionPrivate, parent)
 {
+    qRegisterMetaType<QInterruptibleActivityRegion *>("QInterruptibleActivityRegion *");
+    qRegisterMetaType<const QSet<QInterruptibleActivityRegion *> *>("const QSet<QInterruptibleActivityRegion *> *");
+    qRegisterMetaType<const QList<QInterruptibleActivityRegion *> *>("const QList<QInterruptibleActivityRegion *> *");
 }
 
 QInterruptibleActivityRegion::QInterruptibleActivityRegion(QInterruptibleActivityRegionPrivate &dd, QObject *parent) :
     QActivityGroup(dd, parent)
 {
+    qRegisterMetaType<QInterruptibleActivityRegion *>("QInterruptibleActivityRegion *");
+    qRegisterMetaType<const QSet<QInterruptibleActivityRegion *> *>("const QSet<QInterruptibleActivityRegion *> *");
+    qRegisterMetaType<const QList<QInterruptibleActivityRegion *> *>("const QList<QInterruptibleActivityRegion *> *");
 }
 
 QInterruptibleActivityRegion::~QInterruptibleActivityRegion()

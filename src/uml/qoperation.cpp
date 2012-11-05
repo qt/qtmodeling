@@ -97,6 +97,9 @@ QOperation::QOperation(QObject *parent) :
     _wrappedBehavioralFeature(new QBehavioralFeature(this)),
     _wrappedParameterableElement(new QParameterableElement(this))
 {
+    qRegisterMetaType<QOperation *>("QOperation *");
+    qRegisterMetaType<const QSet<QOperation *> *>("const QSet<QOperation *> *");
+    qRegisterMetaType<const QList<QOperation *> *>("const QList<QOperation *> *");
 }
 
 QOperation::QOperation(QOperationPrivate &dd, QObject *parent) :
@@ -105,6 +108,9 @@ QOperation::QOperation(QOperationPrivate &dd, QObject *parent) :
     _wrappedBehavioralFeature(new QBehavioralFeature(this)),
     _wrappedParameterableElement(new QParameterableElement(this))
 {
+    qRegisterMetaType<QOperation *>("QOperation *");
+    qRegisterMetaType<const QSet<QOperation *> *>("const QSet<QOperation *> *");
+    qRegisterMetaType<const QList<QOperation *> *>("const QList<QOperation *> *");
 }
 
 QOperation::~QOperation()

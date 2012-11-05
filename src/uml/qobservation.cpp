@@ -63,11 +63,17 @@ QObservationPrivate::~QObservationPrivate()
 QObservation::QObservation(QObject *parent) :
     QPackageableElement(*new QObservationPrivate, parent)
 {
+    qRegisterMetaType<QObservation *>("QObservation *");
+    qRegisterMetaType<const QSet<QObservation *> *>("const QSet<QObservation *> *");
+    qRegisterMetaType<const QList<QObservation *> *>("const QList<QObservation *> *");
 }
 
 QObservation::QObservation(QObservationPrivate &dd, QObject *parent) :
     QPackageableElement(dd, parent)
 {
+    qRegisterMetaType<QObservation *>("QObservation *");
+    qRegisterMetaType<const QSet<QObservation *> *>("const QSet<QObservation *> *");
+    qRegisterMetaType<const QList<QObservation *> *>("const QList<QObservation *> *");
 }
 
 QObservation::~QObservation()

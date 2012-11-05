@@ -74,11 +74,17 @@ QInteractionFragmentPrivate::~QInteractionFragmentPrivate()
 QInteractionFragment::QInteractionFragment(QObject *parent) :
     QNamedElement(*new QInteractionFragmentPrivate, parent)
 {
+    qRegisterMetaType<QInteractionFragment *>("QInteractionFragment *");
+    qRegisterMetaType<const QSet<QInteractionFragment *> *>("const QSet<QInteractionFragment *> *");
+    qRegisterMetaType<const QList<QInteractionFragment *> *>("const QList<QInteractionFragment *> *");
 }
 
 QInteractionFragment::QInteractionFragment(QInteractionFragmentPrivate &dd, QObject *parent) :
     QNamedElement(dd, parent)
 {
+    qRegisterMetaType<QInteractionFragment *>("QInteractionFragment *");
+    qRegisterMetaType<const QSet<QInteractionFragment *> *>("const QSet<QInteractionFragment *> *");
+    qRegisterMetaType<const QList<QInteractionFragment *> *>("const QList<QInteractionFragment *> *");
 }
 
 QInteractionFragment::~QInteractionFragment()

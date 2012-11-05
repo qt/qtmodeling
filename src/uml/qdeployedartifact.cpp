@@ -63,11 +63,17 @@ QDeployedArtifactPrivate::~QDeployedArtifactPrivate()
 QDeployedArtifact::QDeployedArtifact(QObject *parent) :
     QNamedElement(*new QDeployedArtifactPrivate, parent)
 {
+    qRegisterMetaType<QDeployedArtifact *>("QDeployedArtifact *");
+    qRegisterMetaType<const QSet<QDeployedArtifact *> *>("const QSet<QDeployedArtifact *> *");
+    qRegisterMetaType<const QList<QDeployedArtifact *> *>("const QList<QDeployedArtifact *> *");
 }
 
 QDeployedArtifact::QDeployedArtifact(QDeployedArtifactPrivate &dd, QObject *parent) :
     QNamedElement(dd, parent)
 {
+    qRegisterMetaType<QDeployedArtifact *>("QDeployedArtifact *");
+    qRegisterMetaType<const QSet<QDeployedArtifact *> *>("const QSet<QDeployedArtifact *> *");
+    qRegisterMetaType<const QList<QDeployedArtifact *> *>("const QList<QDeployedArtifact *> *");
 }
 
 QDeployedArtifact::~QDeployedArtifact()

@@ -75,11 +75,17 @@ QLifelinePrivate::~QLifelinePrivate()
 QLifeline::QLifeline(QObject *parent) :
     QNamedElement(*new QLifelinePrivate, parent)
 {
+    qRegisterMetaType<QLifeline *>("QLifeline *");
+    qRegisterMetaType<const QSet<QLifeline *> *>("const QSet<QLifeline *> *");
+    qRegisterMetaType<const QList<QLifeline *> *>("const QList<QLifeline *> *");
 }
 
 QLifeline::QLifeline(QLifelinePrivate &dd, QObject *parent) :
     QNamedElement(dd, parent)
 {
+    qRegisterMetaType<QLifeline *>("QLifeline *");
+    qRegisterMetaType<const QSet<QLifeline *> *>("const QSet<QLifeline *> *");
+    qRegisterMetaType<const QList<QLifeline *> *>("const QList<QLifeline *> *");
 }
 
 QLifeline::~QLifeline()

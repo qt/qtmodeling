@@ -78,11 +78,17 @@ QConditionalNodePrivate::~QConditionalNodePrivate()
 QConditionalNode::QConditionalNode(QObject *parent) :
     QStructuredActivityNode(*new QConditionalNodePrivate, parent)
 {
+    qRegisterMetaType<QConditionalNode *>("QConditionalNode *");
+    qRegisterMetaType<const QSet<QConditionalNode *> *>("const QSet<QConditionalNode *> *");
+    qRegisterMetaType<const QList<QConditionalNode *> *>("const QList<QConditionalNode *> *");
 }
 
 QConditionalNode::QConditionalNode(QConditionalNodePrivate &dd, QObject *parent) :
     QStructuredActivityNode(dd, parent)
 {
+    qRegisterMetaType<QConditionalNode *>("QConditionalNode *");
+    qRegisterMetaType<const QSet<QConditionalNode *> *>("const QSet<QConditionalNode *> *");
+    qRegisterMetaType<const QList<QConditionalNode *> *>("const QList<QConditionalNode *> *");
 }
 
 QConditionalNode::~QConditionalNode()

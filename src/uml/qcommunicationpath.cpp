@@ -63,11 +63,17 @@ QCommunicationPathPrivate::~QCommunicationPathPrivate()
 QCommunicationPath::QCommunicationPath(QObject *parent) :
     QAssociation(*new QCommunicationPathPrivate, parent)
 {
+    qRegisterMetaType<QCommunicationPath *>("QCommunicationPath *");
+    qRegisterMetaType<const QSet<QCommunicationPath *> *>("const QSet<QCommunicationPath *> *");
+    qRegisterMetaType<const QList<QCommunicationPath *> *>("const QList<QCommunicationPath *> *");
 }
 
 QCommunicationPath::QCommunicationPath(QCommunicationPathPrivate &dd, QObject *parent) :
     QAssociation(dd, parent)
 {
+    qRegisterMetaType<QCommunicationPath *>("QCommunicationPath *");
+    qRegisterMetaType<const QSet<QCommunicationPath *> *>("const QSet<QCommunicationPath *> *");
+    qRegisterMetaType<const QList<QCommunicationPath *> *>("const QList<QCommunicationPath *> *");
 }
 
 QCommunicationPath::~QCommunicationPath()

@@ -67,11 +67,17 @@ QTimeObservationPrivate::~QTimeObservationPrivate()
 QTimeObservation::QTimeObservation(QObject *parent) :
     QObservation(*new QTimeObservationPrivate, parent)
 {
+    qRegisterMetaType<QTimeObservation *>("QTimeObservation *");
+    qRegisterMetaType<const QSet<QTimeObservation *> *>("const QSet<QTimeObservation *> *");
+    qRegisterMetaType<const QList<QTimeObservation *> *>("const QList<QTimeObservation *> *");
 }
 
 QTimeObservation::QTimeObservation(QTimeObservationPrivate &dd, QObject *parent) :
     QObservation(dd, parent)
 {
+    qRegisterMetaType<QTimeObservation *>("QTimeObservation *");
+    qRegisterMetaType<const QSet<QTimeObservation *> *>("const QSet<QTimeObservation *> *");
+    qRegisterMetaType<const QList<QTimeObservation *> *>("const QList<QTimeObservation *> *");
 }
 
 QTimeObservation::~QTimeObservation()
