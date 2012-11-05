@@ -258,8 +258,8 @@ public:
     void removeNestedArtifact(QArtifact *nestedArtifact);
 
     // Overriden methods for subsetted properties
-    void addClientDependency(QManifestation *manifestation);
-    void removeClientDependency(QManifestation *manifestation);
+    void addClientDependency(QUmlPointer<QManifestation> manifestation);
+    void removeClientDependency(QUmlPointer<QManifestation> manifestation);
 
 protected:
     explicit QArtifact(QArtifactPrivate &dd, QObject *parent = 0);

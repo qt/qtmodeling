@@ -53,6 +53,7 @@ int main ()
 
     // Add meta-class reference to profile
     profile->addMetaclassReference(elementImport);
+    profile->addOwnedType(booleanPrimitiveType);
 
     // Show profile's data
     qDebug() << "Profile members:";
@@ -85,5 +86,7 @@ int main ()
     stereotype->addOwnedAttribute(stereotypeProperty);
 
     delete profile.data(); // That will delete all owned elements
+    delete umlModel.data(); // That will delete all owned elements
+    delete extension.data(); // That will delete all owned elements
 }
 

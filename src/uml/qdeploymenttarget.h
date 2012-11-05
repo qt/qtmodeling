@@ -83,8 +83,8 @@ public:
     void removeDeployment(QDeployment *deployment);
 
     // Overriden methods for subsetted properties
-    void addClientDependency(QDeployment *deployment);
-    void removeClientDependency(QDeployment *deployment);
+    void addClientDependency(QUmlPointer<QDeployment> deployment);
+    void removeClientDependency(QUmlPointer<QDeployment> deployment);
 
 protected:
     explicit QDeploymentTarget(QDeploymentTargetPrivate &dd, QObject *parent = 0);

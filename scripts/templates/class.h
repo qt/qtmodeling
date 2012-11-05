@@ -274,7 +274,7 @@ public:
     [%- END -%]
     [%- FOREACH accessor IN property.accessor -%]
     [%- NEXT IF loop.first %]
-    ${accessor.return}${accessor.name}([%- FOREACH parameter IN attribute.accessor.1.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
+    ${accessor.return}${accessor.name}([%- FOREACH parameter IN attribute.accessor.1.parameter -%]QUmlPointer<${parameter.type.remove(' \*$')}> ${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
     [%- END -%]
     [%- END -%]
     [%- END -%]
@@ -298,7 +298,7 @@ public:
     [%- END -%]
     [%- FOREACH accessor IN property.accessor -%]
     [%- NEXT IF loop.first %]
-    ${accessor.return}${accessor.name}([%- FOREACH parameter IN associationend.accessor.1.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
+    ${accessor.return}${accessor.name}([%- FOREACH parameter IN associationend.accessor.1.parameter -%]QUmlPointer<${parameter.type.remove(' \*$')}> ${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
     [%- END -%]
     [%- END -%]
     [%- END -%]

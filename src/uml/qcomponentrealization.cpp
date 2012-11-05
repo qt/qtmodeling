@@ -161,22 +161,22 @@ void QComponentRealization::removeRealizingClassifier(QClassifier *realizingClas
 
 // Overriden methods for subsetted properties
 
-void QComponentRealization::addSupplier(QComponent *abstraction)
+void QComponentRealization::addSupplier(QUmlPointer<QComponent> abstraction)
 {
     setAbstraction(abstraction);
 }
 
-void QComponentRealization::removeSupplier(QComponent *abstraction)
+void QComponentRealization::removeSupplier(QUmlPointer<QComponent> abstraction)
 {
     setAbstraction(0);
 }
 
-void QComponentRealization::addClient(QClassifier *realizingClassifier)
+void QComponentRealization::addClient(QUmlPointer<QClassifier> realizingClassifier)
 {
     addRealizingClassifier(realizingClassifier);
 }
 
-void QComponentRealization::removeClient(QClassifier *realizingClassifier)
+void QComponentRealization::removeClient(QUmlPointer<QClassifier> realizingClassifier)
 {
     removeRealizingClassifier(realizingClassifier);
 }

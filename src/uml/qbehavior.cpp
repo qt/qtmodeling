@@ -350,12 +350,12 @@ QBehavioredClassifier *QBehavior::context() const
 
 // Overriden methods for subsetted properties
 
-void QBehavior::addRedefinedClassifier(QBehavior *redefinedBehavior)
+void QBehavior::addRedefinedClassifier(QUmlPointer<QBehavior> redefinedBehavior)
 {
     addRedefinedBehavior(redefinedBehavior);
 }
 
-void QBehavior::removeRedefinedClassifier(QBehavior *redefinedBehavior)
+void QBehavior::removeRedefinedClassifier(QUmlPointer<QBehavior> redefinedBehavior)
 {
     removeRedefinedBehavior(redefinedBehavior);
 }

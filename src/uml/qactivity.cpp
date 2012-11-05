@@ -401,32 +401,32 @@ void QActivity::removeEdge(QActivityEdge *edge)
 
 // Overriden methods for subsetted properties
 
-void QActivity::addGroup(QActivityPartition *partition)
+void QActivity::addGroup(QUmlPointer<QActivityPartition> partition)
 {
     addPartition(partition);
 }
 
-void QActivity::removeGroup(QActivityPartition *partition)
+void QActivity::removeGroup(QUmlPointer<QActivityPartition> partition)
 {
     removePartition(partition);
 }
 
-void QActivity::addGroup(QStructuredActivityNode *structuredNode)
+void QActivity::addGroup(QUmlPointer<QStructuredActivityNode> structuredNode)
 {
     addStructuredNode(structuredNode);
 }
 
-void QActivity::removeGroup(QStructuredActivityNode *structuredNode)
+void QActivity::removeGroup(QUmlPointer<QStructuredActivityNode> structuredNode)
 {
     removeStructuredNode(structuredNode);
 }
 
-void QActivity::addNode(QStructuredActivityNode *structuredNode)
+void QActivity::addNode(QUmlPointer<QStructuredActivityNode> structuredNode)
 {
     addStructuredNode(structuredNode);
 }
 
-void QActivity::removeNode(QStructuredActivityNode *structuredNode)
+void QActivity::removeNode(QUmlPointer<QStructuredActivityNode> structuredNode)
 {
     removeStructuredNode(structuredNode);
 }

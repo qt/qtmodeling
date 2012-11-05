@@ -152,22 +152,22 @@ void QInterfaceRealization::setContract(QInterface *contract)
 
 // Overriden methods for subsetted properties
 
-void QInterfaceRealization::addClient(QBehavioredClassifier *implementingClassifier)
+void QInterfaceRealization::addClient(QUmlPointer<QBehavioredClassifier> implementingClassifier)
 {
     setImplementingClassifier(implementingClassifier);
 }
 
-void QInterfaceRealization::removeClient(QBehavioredClassifier *implementingClassifier)
+void QInterfaceRealization::removeClient(QUmlPointer<QBehavioredClassifier> implementingClassifier)
 {
     setImplementingClassifier(0);
 }
 
-void QInterfaceRealization::addSupplier(QInterface *contract)
+void QInterfaceRealization::addSupplier(QUmlPointer<QInterface> contract)
 {
     setContract(contract);
 }
 
-void QInterfaceRealization::removeSupplier(QInterface *contract)
+void QInterfaceRealization::removeSupplier(QUmlPointer<QInterface> contract)
 {
     setContract(0);
 }

@@ -251,8 +251,8 @@ public:
     const QSet<QClassifier *> *parents() const;
 
     // Overriden methods for subsetted properties
-    void addClientDependency(QSubstitution *substitution);
-    void removeClientDependency(QSubstitution *substitution);
+    void addClientDependency(QUmlPointer<QSubstitution> substitution);
+    void removeClientDependency(QUmlPointer<QSubstitution> substitution);
 
     // Classes which access read-only opposite properties should be friend
     friend class QFeaturePrivate;

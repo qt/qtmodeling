@@ -1025,12 +1025,12 @@ const QSet<QClassifier *> *QClassifier::parents() const
 
 // Overriden methods for subsetted properties
 
-void QClassifier::addClientDependency(QSubstitution *substitution)
+void QClassifier::addClientDependency(QUmlPointer<QSubstitution> substitution)
 {
     addSubstitution(substitution);
 }
 
-void QClassifier::removeClientDependency(QSubstitution *substitution)
+void QClassifier::removeClientDependency(QUmlPointer<QSubstitution> substitution)
 {
     removeSubstitution(substitution);
 }

@@ -89,10 +89,10 @@ public:
     void removeDeployedArtifact(QDeployedArtifact *deployedArtifact);
 
     // Overriden methods for subsetted properties
-    void addClient(QDeploymentTarget *location);
-    void removeClient(QDeploymentTarget *location);
-    void addSupplier(QDeployedArtifact *deployedArtifact);
-    void removeSupplier(QDeployedArtifact *deployedArtifact);
+    void addClient(QUmlPointer<QDeploymentTarget> location);
+    void removeClient(QUmlPointer<QDeploymentTarget> location);
+    void addSupplier(QUmlPointer<QDeployedArtifact> deployedArtifact);
+    void removeSupplier(QUmlPointer<QDeployedArtifact> deployedArtifact);
 
 protected:
     explicit QDeployment(QDeploymentPrivate &dd, QObject *parent = 0);

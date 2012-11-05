@@ -143,12 +143,12 @@ void QDeploymentTarget::removeDeployment(QDeployment *deployment)
 
 // Overriden methods for subsetted properties
 
-void QDeploymentTarget::addClientDependency(QDeployment *deployment)
+void QDeploymentTarget::addClientDependency(QUmlPointer<QDeployment> deployment)
 {
     addDeployment(deployment);
 }
 
-void QDeploymentTarget::removeClientDependency(QDeployment *deployment)
+void QDeploymentTarget::removeClientDependency(QUmlPointer<QDeployment> deployment)
 {
     removeDeployment(deployment);
 }

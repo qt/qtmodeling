@@ -79,10 +79,10 @@ public:
     void setSubstitutingClassifier(QClassifier *substitutingClassifier);
 
     // Overriden methods for subsetted properties
-    void addSupplier(QClassifier *contract);
-    void removeSupplier(QClassifier *contract);
-    void addClient(QClassifier *substitutingClassifier);
-    void removeClient(QClassifier *substitutingClassifier);
+    void addSupplier(QUmlPointer<QClassifier> contract);
+    void removeSupplier(QUmlPointer<QClassifier> contract);
+    void addClient(QUmlPointer<QClassifier> substitutingClassifier);
+    void removeClient(QUmlPointer<QClassifier> substitutingClassifier);
 
 protected:
     explicit QSubstitution(QSubstitutionPrivate &dd, QObject *parent = 0);

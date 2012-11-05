@@ -111,8 +111,8 @@ public:
     QBehavioredClassifier *context() const;
 
     // Overriden methods for subsetted properties
-    void addRedefinedClassifier(QBehavior *redefinedBehavior);
-    void removeRedefinedClassifier(QBehavior *redefinedBehavior);
+    void addRedefinedClassifier(QUmlPointer<QBehavior> redefinedBehavior);
+    void removeRedefinedClassifier(QUmlPointer<QBehavior> redefinedBehavior);
 
 protected:
     explicit QBehavior(QBehaviorPrivate &dd, QObject *parent = 0);

@@ -199,12 +199,12 @@ void QBehavioredClassifier::setClassifierBehavior(QBehavior *classifierBehavior)
 
 // Overriden methods for subsetted properties
 
-void QBehavioredClassifier::addClientDependency(QInterfaceRealization *interfaceRealization)
+void QBehavioredClassifier::addClientDependency(QUmlPointer<QInterfaceRealization> interfaceRealization)
 {
     addInterfaceRealization(interfaceRealization);
 }
 
-void QBehavioredClassifier::removeClientDependency(QInterfaceRealization *interfaceRealization)
+void QBehavioredClassifier::removeClientDependency(QUmlPointer<QInterfaceRealization> interfaceRealization)
 {
     removeInterfaceRealization(interfaceRealization);
 }
