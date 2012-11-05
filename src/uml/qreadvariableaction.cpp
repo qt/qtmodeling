@@ -77,6 +77,10 @@ QReadVariableAction::~QReadVariableAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QReadVariableAction
+// ---------------------------------------------------------------
+
 /*!
     Gives the output pin on which the result is put.
  */
@@ -95,13 +99,13 @@ void QReadVariableAction::setResult(QOutputPin *result)
     Q_D(QReadVariableAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->result));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            d->QActionPrivate::addOutput(dynamic_cast<QOutputPin *>(result));
+            (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(result));
         }
     }
 }

@@ -89,7 +89,7 @@ public:
     explicit QActivityEdge(QObject *parent = 0);
     virtual ~QActivityEdge();
 
-    // Association-ends
+    // Association ends from QActivityEdge
     QActivityNode *source() const;
     void setSource(QActivityNode *source);
     const QSet<QActivityEdge *> *redefinedEdges() const;
@@ -111,6 +111,9 @@ public:
     void setInStructuredNode(QStructuredActivityNode *inStructuredNode);
     QActivityNode *target() const;
     void setTarget(QActivityNode *target);
+
+    // Classes which access read-only opposite properties should be friend
+    friend class QActivityGroupPrivate;
 
 protected:
     explicit QActivityEdge(QActivityEdgePrivate &dd, QObject *parent = 0);

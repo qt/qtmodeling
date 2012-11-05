@@ -94,6 +94,280 @@ QPackage::~QPackage()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QElement
+// ---------------------------------------------------------------
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QElement *> *QPackage::ownedElements() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+}
+
+/*!
+    The Element that owns this element.
+ */
+QElement *QPackage::owner() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->owner();
+}
+
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QComment *> *QPackage::ownedComments() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+}
+
+void QPackage::addOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+}
+
+void QPackage::removeOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The name of the NamedElement.
+ */
+QString QPackage::name() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+}
+
+void QPackage::setName(QString name)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+}
+
+/*!
+    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
+ */
+QString QPackage::qualifiedName() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The string expression used to define the name of this named element.
+ */
+QStringExpression *QPackage::nameExpression() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+}
+
+void QPackage::setNameExpression(QStringExpression *nameExpression)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+}
+
+/*!
+    Specifies the namespace that owns the NamedElement.
+ */
+QNamespace *QPackage::namespace_() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+}
+
+/*!
+    Indicates the dependencies that reference the client.
+ */
+const QSet<QDependency *> *QPackage::clientDependencies() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+}
+
+void QPackage::addClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+}
+
+void QPackage::removeClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QNamespace
+// ---------------------------------------------------------------
+
+/*!
+    References the PackageImports owned by the Namespace.
+ */
+const QSet<QPackageImport *> *QPackage::packageImports() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->packageImports();
+}
+
+void QPackage::addPackageImport(QPackageImport *packageImport)
+{
+    (qtuml_object_cast<QNamespace *>(this))->addPackageImport(packageImport);
+}
+
+void QPackage::removePackageImport(QPackageImport *packageImport)
+{
+    (qtuml_object_cast<QNamespace *>(this))->removePackageImport(packageImport);
+}
+
+/*!
+    A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
+ */
+const QSet<QNamedElement *> *QPackage::members() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->members();
+}
+
+/*!
+    References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
+ */
+const QSet<QPackageableElement *> *QPackage::importedMembers() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->importedMembers();
+}
+
+/*!
+    References the ElementImports owned by the Namespace.
+ */
+const QSet<QElementImport *> *QPackage::elementImports() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->elementImports();
+}
+
+void QPackage::addElementImport(QElementImport *elementImport)
+{
+    (qtuml_object_cast<QNamespace *>(this))->addElementImport(elementImport);
+}
+
+void QPackage::removeElementImport(QElementImport *elementImport)
+{
+    (qtuml_object_cast<QNamespace *>(this))->removeElementImport(elementImport);
+}
+
+/*!
+    Specifies a set of Constraints owned by this Namespace.
+ */
+const QSet<QConstraint *> *QPackage::ownedRules() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->ownedRules();
+}
+
+void QPackage::addOwnedRule(QConstraint *ownedRule)
+{
+    (qtuml_object_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
+}
+
+void QPackage::removeOwnedRule(QConstraint *ownedRule)
+{
+    (qtuml_object_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
+}
+
+/*!
+    A collection of NamedElements owned by the Namespace.
+ */
+const QSet<QNamedElement *> *QPackage::ownedMembers() const
+{
+    return (qtuml_object_cast<const QNamespace *>(this))->ownedMembers();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QParameterableElement
+// ---------------------------------------------------------------
+
+/*!
+    The formal template parameter that owns this element.
+ */
+QTemplateParameter *QPackage::owningTemplateParameter() const
+{
+    return (qtuml_object_cast<const QParameterableElement *>(this))->owningTemplateParameter();
+}
+
+void QPackage::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
+{
+    (qtuml_object_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
+}
+
+/*!
+    The template parameter that exposes this element as a formal parameter.
+ */
+QTemplateParameter *QPackage::templateParameter() const
+{
+    return (qtuml_object_cast<const QParameterableElement *>(this))->templateParameter();
+}
+
+void QPackage::setTemplateParameter(QTemplateParameter *templateParameter)
+{
+    (qtuml_object_cast<QParameterableElement *>(this))->setTemplateParameter(templateParameter);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QPackageableElement
+// ---------------------------------------------------------------
+
+/*!
+    Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
+ */
+QtUml::VisibilityKind QPackage::visibility() const
+{
+    return (qtuml_object_cast<const QPackageableElement *>(this))->visibility();
+}
+
+void QPackage::setVisibility(QtUml::VisibilityKind visibility)
+{
+    (qtuml_object_cast<QPackageableElement *>(this))->setVisibility(visibility);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QTemplateableElement
+// ---------------------------------------------------------------
+
+/*!
+    The optional template signature specifying the formal template parameters.
+ */
+QTemplateSignature *QPackage::ownedTemplateSignature() const
+{
+    return (qtuml_object_cast<const QTemplateableElement *>(this))->ownedTemplateSignature();
+}
+
+void QPackage::setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature)
+{
+    (qtuml_object_cast<QTemplateableElement *>(this))->setOwnedTemplateSignature(ownedTemplateSignature);
+}
+
+/*!
+    The optional bindings from this element to templates.
+ */
+const QSet<QTemplateBinding *> *QPackage::templateBindings() const
+{
+    return (qtuml_object_cast<const QTemplateableElement *>(this))->templateBindings();
+}
+
+void QPackage::addTemplateBinding(QTemplateBinding *templateBinding)
+{
+    (qtuml_object_cast<QTemplateableElement *>(this))->addTemplateBinding(templateBinding);
+}
+
+void QPackage::removeTemplateBinding(QTemplateBinding *templateBinding)
+{
+    (qtuml_object_cast<QTemplateableElement *>(this))->removeTemplateBinding(templateBinding);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QPackage
+// ---------------------------------------------------------------
+
 /*!
     Provides an identifier for the package that can be used for many purposes. A URI is the universally unique identification of the package following the IETF URI specification, RFC 2396 http://www.ietf.org/rfc/rfc2396.txt and it must comply with those syntax rules.
  */
@@ -115,31 +389,34 @@ void QPackage::setURI(QString URI)
     }
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QPackage
+// ---------------------------------------------------------------
+
 /*!
     References the packaged elements that are Types.
+    It is the caller's responsibility to delete the returned set.
  */
 const QSet<QType *> *QPackage::ownedTypes() const
 {
     // This is a read-write derived association end
 
-    qWarning("QPackage::ownedTypes: to be implemented (this is a derived associationend)");
-
-    //Q_D(const QPackage);
-    //return <derived-return>;
+    Q_D(const QPackage);
+    QSet<QType *> *ownedTypes_ = new QSet<QType *>;
+    foreach (QPackageableElement *packageableElement, *d->packagedElements)
+        if (QType *type = qtuml_object_cast<QType *>(packageableElement))
+            ownedTypes_->insert(type);
+    return ownedTypes_;
 }
 
 void QPackage::addOwnedType(QType *ownedType)
 {
     // This is a read-write derived association end
 
-    qWarning("QPackage::addOwnedType: to be implemented (this is a derived associationend)");
-
-    //Q_D(QPackage);
-    if (false /* <derived-inclusion-criteria> */) {
-        // <derived-code>
-
+    Q_D(QPackage);
+    if (!d->packagedElements->contains(ownedType)) {
         // Adjust subsetted property(ies)
-        QPackage::addPackagedElement(dynamic_cast<QPackageableElement *>(ownedType));
+        (qtuml_object_cast<QPackage *>(this))->addPackagedElement(qtuml_object_cast<QPackageableElement *>(ownedType));
 
         // Adjust opposite property
         ownedType->setPackage(this);
@@ -150,14 +427,10 @@ void QPackage::removeOwnedType(QType *ownedType)
 {
     // This is a read-write derived association end
 
-    qWarning("QPackage::removeOwnedType: to be implemented (this is a derived associationend)");
-
-    //Q_D(QPackage);
-    if (false /* <derived-exclusion-criteria> */) {
-        // <derived-code>
-
+    Q_D(QPackage);
+    if (d->packagedElements->contains(ownedType)) {
         // Adjust subsetted property(ies)
-        QPackage::removePackagedElement(dynamic_cast<QPackageableElement *>(ownedType));
+        (qtuml_object_cast<QPackage *>(this))->removePackagedElement(qtuml_object_cast<QPackageableElement *>(ownedType));
 
         // Adjust opposite property
         ownedType->setPackage(0);
@@ -184,7 +457,7 @@ void QPackage::addPackagedElement(QPackageableElement *packagedElement)
         d->packagedElements->insert(packagedElement);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(packagedElement));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(packagedElement));
     }
 }
 
@@ -197,7 +470,7 @@ void QPackage::removePackagedElement(QPackageableElement *packagedElement)
         d->packagedElements->remove(packagedElement);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(packagedElement));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(packagedElement));
     }
 }
 
@@ -225,7 +498,7 @@ void QPackage::setNestingPackage(QPackage *nestingPackage)
         d->nestingPackage = nestingPackage;
 
         // Adjust subsetted property(ies)
-        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(nestingPackage));
+        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(nestingPackage));
 
         // Adjust opposite property
         if (nestingPackage)
@@ -253,7 +526,7 @@ void QPackage::addProfileApplication(QProfileApplication *profileApplication)
         d->profileApplications->insert(profileApplication);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(profileApplication));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(profileApplication));
 
         // Adjust opposite property
         profileApplication->setApplyingPackage(this);
@@ -269,7 +542,7 @@ void QPackage::removeProfileApplication(QProfileApplication *profileApplication)
         d->profileApplications->remove(profileApplication);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(profileApplication));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(profileApplication));
 
         // Adjust opposite property
         profileApplication->setApplyingPackage(0);
@@ -278,15 +551,18 @@ void QPackage::removeProfileApplication(QProfileApplication *profileApplication)
 
 /*!
     References the Stereotypes that are owned by the Package
+    It is the caller's responsibility to delete the returned set.
  */
 const QSet<QStereotype *> *QPackage::ownedStereotypes() const
 {
     // This is a read-only derived association end
 
-    qWarning("QPackage::ownedStereotypes: to be implemented (this is a derived associationend)");
-
-    //Q_D(const QPackage);
-    //return <derived-return>;
+    Q_D(const QPackage);
+    QSet<QStereotype *> *ownedStereotypes_ = new QSet<QStereotype *>;
+    foreach (QPackageableElement *packageableElement, *d->packagedElements)
+        if (QStereotype *stereotype = qtuml_object_cast<QStereotype *>(packageableElement))
+            ownedStereotypes_->insert(stereotype);
+    return ownedStereotypes_;
 }
 
 /*!
@@ -309,7 +585,7 @@ void QPackage::addPackageMerge(QPackageMerge *packageMerge)
         d->packageMerges->insert(packageMerge);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(packageMerge));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(packageMerge));
 
         // Adjust opposite property
         packageMerge->setReceivingPackage(this);
@@ -325,7 +601,7 @@ void QPackage::removePackageMerge(QPackageMerge *packageMerge)
         d->packageMerges->remove(packageMerge);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(packageMerge));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(packageMerge));
 
         // Adjust opposite property
         packageMerge->setReceivingPackage(0);
@@ -334,29 +610,28 @@ void QPackage::removePackageMerge(QPackageMerge *packageMerge)
 
 /*!
     References the packaged elements that are Packages.
+    It is the caller's responsibility to delete the returned set.
  */
 const QSet<QPackage *> *QPackage::nestedPackages() const
 {
     // This is a read-write derived association end
 
-    qWarning("QPackage::nestedPackages: to be implemented (this is a derived associationend)");
-
-    //Q_D(const QPackage);
-    //return <derived-return>;
+    Q_D(const QPackage);
+    QSet<QPackage *> *nestedPackages_ = new QSet<QPackage *>;
+    foreach (QPackageableElement *packageableElement, *d->packagedElements)
+        if (QPackage *package = qtuml_object_cast<QPackage *>(packageableElement))
+            nestedPackages_->insert(package);
+    return nestedPackages_;
 }
 
 void QPackage::addNestedPackage(QPackage *nestedPackage)
 {
     // This is a read-write derived association end
 
-    qWarning("QPackage::addNestedPackage: to be implemented (this is a derived associationend)");
-
-    //Q_D(QPackage);
-    if (false /* <derived-inclusion-criteria> */) {
-        // <derived-code>
-
+    Q_D(QPackage);
+    if (!d->packagedElements->contains(qtuml_object_cast<QPackageableElement *>(nestedPackage))) {
         // Adjust subsetted property(ies)
-        QPackage::addPackagedElement(dynamic_cast<QPackageableElement *>(nestedPackage));
+        (qtuml_object_cast<QPackage *>(this))->addPackagedElement(qtuml_object_cast<QPackageableElement *>(nestedPackage));
 
         // Adjust opposite property
         nestedPackage->setNestingPackage(this);
@@ -367,14 +642,10 @@ void QPackage::removeNestedPackage(QPackage *nestedPackage)
 {
     // This is a read-write derived association end
 
-    qWarning("QPackage::removeNestedPackage: to be implemented (this is a derived associationend)");
-
-    //Q_D(QPackage);
-    if (false /* <derived-exclusion-criteria> */) {
-        // <derived-code>
-
+    Q_D(QPackage);
+    if (d->packagedElements->contains(qtuml_object_cast<QPackageableElement *>(nestedPackage))) {
         // Adjust subsetted property(ies)
-        QPackage::removePackagedElement(dynamic_cast<QPackageableElement *>(nestedPackage));
+        (qtuml_object_cast<QPackage *>(this))->removePackagedElement(qtuml_object_cast<QPackageableElement *>(nestedPackage));
 
         // Adjust opposite property
         nestedPackage->setNestingPackage(0);

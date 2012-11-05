@@ -86,13 +86,13 @@ public:
     explicit QActivity(QObject *parent = 0);
     virtual ~QActivity();
 
-    // Attributes
+    // Attributes from QActivity
     bool isReadOnly() const;
     void setReadOnly(bool isReadOnly);
     bool isSingleExecution() const;
     void setSingleExecution(bool isSingleExecution);
 
-    // Association-ends
+    // Association ends from QActivity
     const QSet<QActivityPartition *> *partitions() const;
     void addPartition(QActivityPartition *partition);
     void removePartition(QActivityPartition *partition);

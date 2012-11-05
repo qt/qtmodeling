@@ -71,7 +71,7 @@ public:
     explicit QReception(QObject *parent = 0);
     virtual ~QReception();
 
-    // Association-ends
+    // Association ends from QReception
     QSignal *signal() const;
     void setSignal(QSignal *signal);
 

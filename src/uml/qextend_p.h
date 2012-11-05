@@ -41,17 +41,17 @@
 #ifndef QTUML_QEXTEND_P_H
 #define QTUML_QEXTEND_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qdirectedrelationship_p.h"
 #include "private/qnamedelement_p.h"
-#include "qextend.h"
+
+#include "QtUml/QExtend"
 
 // Qt includes
-#include <QtCore/QList>
+#include "QtCore/QList"
 
 QT_BEGIN_HEADER
 
@@ -77,10 +77,6 @@ public:
     QUseCase *extension;
     QList<QExtensionPoint *> *extensionLocations;
     QConstraint *condition;
-
-private:
-    QDirectedRelationshipPrivate *_wrappedDirectedRelationshipPrivate;
-    QNamedElementPrivate *_wrappedNamedElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

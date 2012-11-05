@@ -71,7 +71,7 @@ public:
     explicit QAcceptCallAction(QObject *parent = 0);
     virtual ~QAcceptCallAction();
 
-    // Association-ends
+    // Association ends from QAcceptCallAction
     QOutputPin *returnInformation() const;
     void setReturnInformation(QOutputPin *returnInformation);
 

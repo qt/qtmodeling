@@ -63,13 +63,21 @@ QLoopNodePrivate::QLoopNodePrivate() :
 
 QLoopNodePrivate::~QLoopNodePrivate()
 {
-    foreach (QInputPin *inputpin, *loopVariableInputs)
-        delete inputpin;
+    foreach (QInputPin *inputpin, *loopVariableInputs) {
+        QObject *object = inputpin;
+        while (object->parent())
+            object = object->parent();
+        delete object;
+    }
     delete loopVariableInputs;
     delete bodyOutputs;
     delete loopVariables;
-    foreach (QOutputPin *outputpin, *results)
-        delete outputpin;
+    foreach (QOutputPin *outputpin, *results) {
+        QObject *object = outputpin;
+        while (object->parent())
+            object = object->parent();
+        delete object;
+    }
     delete results;
     delete setupParts;
     delete bodyParts;
@@ -98,6 +106,10 @@ QLoopNode::~QLoopNode()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QLoopNode
+// ---------------------------------------------------------------
+
 /*!
     If true, the test is performed before the first execution of the body. If false, the body is executed once before the test is performed.
  */
@@ -118,6 +130,10 @@ void QLoopNode::setTestedFirst(bool isTestedFirst)
         d->isTestedFirst = isTestedFirst;
     }
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QLoopNode
+// ---------------------------------------------------------------
 
 /*!
     A list of values that are moved into the loop variable pins before the first iteration of the loop.

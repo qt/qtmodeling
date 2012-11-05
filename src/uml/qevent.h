@@ -56,6 +56,8 @@ class QEventPrivate;
 
 class Q_UML_EXPORT QEvent : public QPackageableElement
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QEvent)
     Q_DECLARE_PRIVATE(QEvent)
 

@@ -41,14 +41,15 @@
 #ifndef QTUML_QDIRECTEDRELATIONSHIP_P_H
 #define QTUML_QDIRECTEDRELATIONSHIP_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qrelationship_p.h"
-#include "qdirectedrelationship.h"
+
+#include "QtUml/QDirectedRelationship"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

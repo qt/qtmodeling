@@ -79,6 +79,10 @@ QTimeExpression::~QTimeExpression()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QTimeExpression
+// ---------------------------------------------------------------
+
 /*!
     Refers to the time and duration observations that are involved in expr.
  */
@@ -128,13 +132,13 @@ void QTimeExpression::setExpr(QValueSpecification *expr)
     Q_D(QTimeExpression);
     if (d->expr != expr) {
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->expr));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->expr));
 
         d->expr = expr;
 
         // Adjust subsetted property(ies)
         if (expr) {
-            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(expr));
+            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(expr));
         }
     }
 }

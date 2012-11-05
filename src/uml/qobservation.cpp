@@ -42,7 +42,6 @@
 #include "qobservation.h"
 #include "qobservation_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QObservationPrivate::QObservationPrivate()
@@ -74,6 +73,8 @@ QObservation::QObservation(QObservationPrivate &dd, QObject *parent) :
 QObservation::~QObservation()
 {
 }
+
+#include "moc_qobservation.cpp"
 
 QT_END_NAMESPACE_QTUML
 

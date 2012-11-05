@@ -41,12 +41,12 @@
 #ifndef QTUML_QSTARTOBJECTBEHAVIORACTION_P_H
 #define QTUML_QSTARTOBJECTBEHAVIORACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qcallaction_p.h"
-#include "qstartobjectbehavioraction.h"
 
+#include "QtUml/QStartObjectBehaviorAction"
 
 QT_BEGIN_HEADER
 

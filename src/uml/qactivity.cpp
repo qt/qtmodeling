@@ -95,6 +95,10 @@ QActivity::~QActivity()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QActivity
+// ---------------------------------------------------------------
+
 /*!
     If true, this activity must not make any changes to variables outside the activity or to objects. (This is an assertion, not an executable property. It may be used by an execution engine to optimize model execution. If the assertion is violated by the action, then the model is ill-formed.) The default is false (an activity may make nonlocal changes).
  */
@@ -137,6 +141,10 @@ void QActivity::setSingleExecution(bool isSingleExecution)
     }
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QActivity
+// ---------------------------------------------------------------
+
 /*!
     Top-level partitions in the activity.
  */
@@ -157,7 +165,7 @@ void QActivity::addPartition(QActivityPartition *partition)
         d->partitions->insert(partition);
 
         // Adjust subsetted property(ies)
-        QActivity::addGroup(dynamic_cast<QActivityGroup *>(partition));
+        (qtuml_object_cast<QActivity *>(this))->addGroup(qtuml_object_cast<QActivityGroup *>(partition));
     }
 }
 
@@ -170,7 +178,7 @@ void QActivity::removePartition(QActivityPartition *partition)
         d->partitions->remove(partition);
 
         // Adjust subsetted property(ies)
-        QActivity::removeGroup(dynamic_cast<QActivityGroup *>(partition));
+        (qtuml_object_cast<QActivity *>(this))->removeGroup(qtuml_object_cast<QActivityGroup *>(partition));
     }
 }
 
@@ -194,7 +202,7 @@ void QActivity::addNode(QActivityNode *node)
         d->nodes->insert(node);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(node));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(node));
 
         // Adjust opposite property
         node->setActivity(this);
@@ -210,7 +218,7 @@ void QActivity::removeNode(QActivityNode *node)
         d->nodes->remove(node);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(node));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(node));
 
         // Adjust opposite property
         node->setActivity(0);
@@ -237,7 +245,7 @@ void QActivity::addVariable(QVariable *variable)
         d->variables->insert(variable);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(variable));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(variable));
 
         // Adjust opposite property
         variable->setActivityScope(this);
@@ -253,7 +261,7 @@ void QActivity::removeVariable(QVariable *variable)
         d->variables->remove(variable);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(variable));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(variable));
 
         // Adjust opposite property
         variable->setActivityScope(0);
@@ -280,8 +288,8 @@ void QActivity::addStructuredNode(QStructuredActivityNode *structuredNode)
         d->structuredNodes->insert(structuredNode);
 
         // Adjust subsetted property(ies)
-        QActivity::addGroup(dynamic_cast<QActivityGroup *>(structuredNode));
-        QActivity::addNode(dynamic_cast<QActivityNode *>(structuredNode));
+        (qtuml_object_cast<QActivity *>(this))->addGroup(qtuml_object_cast<QActivityGroup *>(structuredNode));
+        (qtuml_object_cast<QActivity *>(this))->addNode(qtuml_object_cast<QActivityNode *>(structuredNode));
 
         // Adjust opposite property
         structuredNode->setActivity(this);
@@ -297,8 +305,8 @@ void QActivity::removeStructuredNode(QStructuredActivityNode *structuredNode)
         d->structuredNodes->remove(structuredNode);
 
         // Adjust subsetted property(ies)
-        QActivity::removeGroup(dynamic_cast<QActivityGroup *>(structuredNode));
-        QActivity::removeNode(dynamic_cast<QActivityNode *>(structuredNode));
+        (qtuml_object_cast<QActivity *>(this))->removeGroup(qtuml_object_cast<QActivityGroup *>(structuredNode));
+        (qtuml_object_cast<QActivity *>(this))->removeNode(qtuml_object_cast<QActivityNode *>(structuredNode));
 
         // Adjust opposite property
         structuredNode->setActivity(0);
@@ -325,7 +333,7 @@ void QActivity::addGroup(QActivityGroup *group)
         d->groups->insert(group);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(group));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(group));
 
         // Adjust opposite property
         group->setInActivity(this);
@@ -341,7 +349,7 @@ void QActivity::removeGroup(QActivityGroup *group)
         d->groups->remove(group);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(group));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(group));
 
         // Adjust opposite property
         group->setInActivity(0);
@@ -368,7 +376,7 @@ void QActivity::addEdge(QActivityEdge *edge)
         d->edges->insert(edge);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(edge));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(edge));
 
         // Adjust opposite property
         edge->setActivity(this);
@@ -384,7 +392,7 @@ void QActivity::removeEdge(QActivityEdge *edge)
         d->edges->remove(edge);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(edge));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(edge));
 
         // Adjust opposite property
         edge->setActivity(0);

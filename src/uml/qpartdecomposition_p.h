@@ -41,12 +41,12 @@
 #ifndef QTUML_QPARTDECOMPOSITION_P_H
 #define QTUML_QPARTDECOMPOSITION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qinteractionuse_p.h"
-#include "qpartdecomposition.h"
 
+#include "QtUml/QPartDecomposition"
 
 QT_BEGIN_HEADER
 

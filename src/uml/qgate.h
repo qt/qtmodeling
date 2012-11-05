@@ -56,6 +56,8 @@ class QGatePrivate;
 
 class Q_UML_EXPORT QGate : public QMessageEnd
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QGate)
     Q_DECLARE_PRIVATE(QGate)
 

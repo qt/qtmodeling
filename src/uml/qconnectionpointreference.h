@@ -77,7 +77,7 @@ public:
     explicit QConnectionPointReference(QObject *parent = 0);
     virtual ~QConnectionPointReference();
 
-    // Association-ends
+    // Association ends from QConnectionPointReference
     const QSet<QPseudostate *> *exits() const;
     void addExit(QPseudostate *exit);
     void removeExit(QPseudostate *exit);

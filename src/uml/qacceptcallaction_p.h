@@ -41,12 +41,12 @@
 #ifndef QTUML_QACCEPTCALLACTION_P_H
 #define QTUML_QACCEPTCALLACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qaccepteventaction_p.h"
-#include "qacceptcallaction.h"
 
+#include "QtUml/QAcceptCallAction"
 
 QT_BEGIN_HEADER
 

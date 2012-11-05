@@ -71,7 +71,7 @@ public:
     explicit QExtensionPoint(QObject *parent = 0);
     virtual ~QExtensionPoint();
 
-    // Association-ends
+    // Association ends from QExtensionPoint
     QUseCase *useCase() const;
     void setUseCase(QUseCase *useCase);
 

@@ -78,6 +78,10 @@ QJoinNode::~QJoinNode()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QJoinNode
+// ---------------------------------------------------------------
+
 /*!
     Tells whether tokens having objects with the same identity are combined into one by the join.
  */
@@ -99,6 +103,10 @@ void QJoinNode::setCombineDuplicate(bool isCombineDuplicate)
     }
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QJoinNode
+// ---------------------------------------------------------------
+
 /*!
     A specification giving the conditions under which the join with emit a token. Default is "and".
  */
@@ -117,13 +125,13 @@ void QJoinNode::setJoinSpec(QValueSpecification *joinSpec)
     Q_D(QJoinNode);
     if (d->joinSpec != joinSpec) {
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->joinSpec));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->joinSpec));
 
         d->joinSpec = joinSpec;
 
         // Adjust subsetted property(ies)
         if (joinSpec) {
-            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(joinSpec));
+            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(joinSpec));
         }
     }
 }

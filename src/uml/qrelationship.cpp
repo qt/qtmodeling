@@ -42,7 +42,6 @@
 #include "qrelationship.h"
 #include "qrelationship_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QRelationshipPrivate::QRelationshipPrivate() :
@@ -95,6 +94,10 @@ QRelationship::~QRelationship()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QRelationship
+// ---------------------------------------------------------------
+
 /*!
     Specifies the elements related by the Relationship.
  */
@@ -105,6 +108,8 @@ const QSet<QElement *> *QRelationship::relatedElements() const
     Q_D(const QRelationship);
     return d->relatedElements;
 }
+
+#include "moc_qrelationship.cpp"
 
 QT_END_NAMESPACE_QTUML
 

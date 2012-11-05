@@ -71,7 +71,7 @@ public:
     explicit QSignalEvent(QObject *parent = 0);
     virtual ~QSignalEvent();
 
-    // Association-ends
+    // Association ends from QSignalEvent
     QSignal *signal() const;
     void setSignal(QSignal *signal);
 

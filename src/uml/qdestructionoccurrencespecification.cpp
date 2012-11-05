@@ -42,7 +42,6 @@
 #include "qdestructionoccurrencespecification.h"
 #include "qdestructionoccurrencespecification_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QDestructionOccurrenceSpecificationPrivate::QDestructionOccurrenceSpecificationPrivate()

@@ -41,17 +41,17 @@
 #ifndef QTUML_QCONNECTABLEELEMENT_P_H
 #define QTUML_QCONNECTABLEELEMENT_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qtypedelement_p.h"
 #include "private/qparameterableelement_p.h"
-#include "qconnectableelement.h"
+
+#include "QtUml/QConnectableElement"
 
 // Qt includes
-#include <QtCore/QList>
+#include "QtCore/QList"
 
 QT_BEGIN_HEADER
 
@@ -76,10 +76,6 @@ public:
     // Internal functions for read-only subsetted association ends
     void addEnd(QConnectorEnd *end);
     void removeEnd(QConnectorEnd *end);
-
-private:
-    QTypedElementPrivate *_wrappedTypedElementPrivate;
-    QParameterableElementPrivate *_wrappedParameterableElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

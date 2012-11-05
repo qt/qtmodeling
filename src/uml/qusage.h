@@ -56,6 +56,8 @@ class QUsagePrivate;
 
 class Q_UML_EXPORT QUsage : public QDependency
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QUsage)
     Q_DECLARE_PRIVATE(QUsage)
 

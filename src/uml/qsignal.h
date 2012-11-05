@@ -74,7 +74,7 @@ public:
     explicit QSignal(QObject *parent = 0);
     virtual ~QSignal();
 
-    // Association-ends
+    // Association ends from QSignal
     const QList<QProperty *> *ownedAttributes() const;
     void addOwnedAttribute(QProperty *ownedAttribute);
     void removeOwnedAttribute(QProperty *ownedAttribute);

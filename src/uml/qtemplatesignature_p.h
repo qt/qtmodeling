@@ -41,14 +41,15 @@
 #ifndef QTUML_QTEMPLATESIGNATURE_P_H
 #define QTUML_QTEMPLATESIGNATURE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qelement_p.h"
-#include "qtemplatesignature.h"
+
+#include "QtUml/QTemplateSignature"
 
 // Qt includes
-#include <QtCore/QList>
+#include "QtCore/QList"
 
 QT_BEGIN_HEADER
 

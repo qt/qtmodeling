@@ -78,7 +78,7 @@ public:
     explicit QVertex(QObject *parent = 0);
     virtual ~QVertex();
 
-    // Association-ends
+    // Association ends from QVertex
     const QSet<QTransition *> *incomings() const;
     QRegion *container() const;
     void setContainer(QRegion *container);
@@ -86,6 +86,9 @@ public:
 
     // Operations
     QStateMachine *containingStateMachine() const;
+
+    // Classes which access read-only opposite properties should be friend
+    friend class QTransition;
 
 protected:
     explicit QVertex(QVertexPrivate &dd, QObject *parent = 0);

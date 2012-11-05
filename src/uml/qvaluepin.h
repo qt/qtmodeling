@@ -71,7 +71,7 @@ public:
     explicit QValuePin(QObject *parent = 0);
     virtual ~QValuePin();
 
-    // Association-ends
+    // Association ends from QValuePin
     QValueSpecification *value() const;
     void setValue(QValueSpecification *value);
 

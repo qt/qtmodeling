@@ -41,14 +41,15 @@
 #ifndef QTUML_QFEATURE_P_H
 #define QTUML_QFEATURE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qredefinableelement_p.h"
-#include "qfeature.h"
+
+#include "QtUml/QFeature"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

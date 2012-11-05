@@ -80,6 +80,10 @@ QObjectFlow::~QObjectFlow()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QObjectFlow
+// ---------------------------------------------------------------
+
 /*!
     Tells whether the objects in the flow are gathered from respondents to multicasting.
  */
@@ -121,6 +125,10 @@ void QObjectFlow::setMulticast(bool isMulticast)
         d->isMulticast = isMulticast;
     }
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QObjectFlow
+// ---------------------------------------------------------------
 
 /*!
     Selects tokens from a source object node.

@@ -77,6 +77,10 @@ QRaiseExceptionAction::~QRaiseExceptionAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QRaiseExceptionAction
+// ---------------------------------------------------------------
+
 /*!
     An input pin whose value becomes an exception object.
  */
@@ -95,13 +99,13 @@ void QRaiseExceptionAction::setException(QInputPin *exception)
     Q_D(QRaiseExceptionAction);
     if (d->exception != exception) {
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->exception));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->exception));
 
         d->exception = exception;
 
         // Adjust subsetted property(ies)
         if (exception) {
-            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(exception));
+            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(exception));
         }
     }
 }

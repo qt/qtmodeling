@@ -41,20 +41,20 @@
 #ifndef QTUML_QNAMEDELEMENT_P_H
 #define QTUML_QNAMEDELEMENT_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qelement_p.h"
-#include "qnamedelement.h"
 
+#include "QtUml/QNamedElement"
 
 // QtUml includes
-#include <QtUml/QtUmlEnumerations>
+#include "QtUml/QtUmlEnumerations"
 
 // Qt includes
-#include <QtCore/QString>
-#include <QtCore/QList>
-#include <QtCore/QSet>
+#include "QtCore/QString"
+#include "QtCore/QList"
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

@@ -58,8 +58,12 @@ QConditionalNodePrivate::QConditionalNodePrivate() :
 QConditionalNodePrivate::~QConditionalNodePrivate()
 {
     delete clauses;
-    foreach (QOutputPin *outputpin, *results)
-        delete outputpin;
+    foreach (QOutputPin *outputpin, *results) {
+        QObject *object = outputpin;
+        while (object->parent())
+            object = object->parent();
+        delete object;
+    }
     delete results;
 }
 
@@ -84,6 +88,10 @@ QConditionalNode::QConditionalNode(QConditionalNodePrivate &dd, QObject *parent)
 QConditionalNode::~QConditionalNode()
 {
 }
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QConditionalNode
+// ---------------------------------------------------------------
 
 /*!
     If true, the modeler asserts that at least one test will succeed.
@@ -127,6 +135,10 @@ void QConditionalNode::setDeterminate(bool isDeterminate)
     }
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QConditionalNode
+// ---------------------------------------------------------------
+
 /*!
     Set of clauses composing the conditional.
  */
@@ -147,7 +159,7 @@ void QConditionalNode::addClause(QClause *clause)
         d->clauses->insert(clause);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(clause));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(clause));
     }
 }
 
@@ -160,7 +172,7 @@ void QConditionalNode::removeClause(QClause *clause)
         d->clauses->remove(clause);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(clause));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(clause));
     }
 }
 

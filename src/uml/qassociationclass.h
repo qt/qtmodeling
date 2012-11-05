@@ -45,6 +45,8 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtUml/QClass>
+#include <QtUml/QAssociation>
 
 QT_BEGIN_HEADER
 
@@ -52,14 +54,12 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-// Forward decls for aggregated 'base classes'
-class QClass;
-class QAssociation;
-
 class QAssociationClassPrivate;
 
 class Q_UML_EXPORT QAssociationClass : public QObject
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QAssociationClass)
     Q_DECLARE_PRIVATE(QAssociationClass)
 

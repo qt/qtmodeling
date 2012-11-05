@@ -82,17 +82,40 @@ QT_BEGIN_HEADER
 #endif /* defined(Q_MOC_RUN) */
 
 template <class T>
-inline T qtuml_object_cast(QObject *base)
+inline T qtuml_object_cast(QObject *base, bool restoreToParent = true)
 {
+    if (!base)
+        return T();
+    while (restoreToParent && base->parent())
+        base = base->parent();
     if (dynamic_cast<T>(base))
         return dynamic_cast<T>(base);
     foreach (QObject *subObject, base->children()) {
-        T returnValue = qtuml_object_cast<T>(subObject);
+        T returnValue = qtuml_object_cast<T>(subObject, false);
         if (returnValue != T())
             return returnValue;
     }
-    return dynamic_cast<T>(base); // not found
+    return T(); // not found
 }
+
+template <class T>
+inline T qtuml_object_cast(const QObject *base, bool restoreToParent = true)
+{
+    if (!base)
+        return T();
+    while (restoreToParent && base->parent())
+        base = base->parent();
+    if (dynamic_cast<T>(base))
+        return dynamic_cast<T>(base);
+    foreach (QObject *subObject, base->children()) {
+        T returnValue = qtuml_object_cast<T>(subObject, false);
+        if (returnValue != T())
+            return returnValue;
+    }
+    return T(); // not found
+}
+
+#include <QtUml/QUmlPointer>
 
 QT_END_HEADER
 

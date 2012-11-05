@@ -42,7 +42,6 @@
 #include "qliteralnull.h"
 #include "qliteralnull_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QLiteralNullPrivate::QLiteralNullPrivate()

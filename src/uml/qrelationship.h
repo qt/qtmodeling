@@ -71,7 +71,7 @@ public:
     explicit QRelationship(QObject *parent = 0);
     virtual ~QRelationship();
 
-    // Association-ends
+    // Association ends from QRelationship
     const QSet<QElement *> *relatedElements() const;
 
 protected:

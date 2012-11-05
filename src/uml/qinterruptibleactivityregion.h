@@ -76,7 +76,7 @@ public:
     explicit QInterruptibleActivityRegion(QObject *parent = 0);
     virtual ~QInterruptibleActivityRegion();
 
-    // Association-ends
+    // Association ends from QInterruptibleActivityRegion
     const QSet<QActivityEdge *> *interruptingEdges() const;
     void addInterruptingEdge(QActivityEdge *interruptingEdge);
     void removeInterruptingEdge(QActivityEdge *interruptingEdge);

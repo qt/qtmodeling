@@ -71,7 +71,7 @@ public:
     explicit QWriteVariableAction(QObject *parent = 0);
     virtual ~QWriteVariableAction();
 
-    // Association-ends
+    // Association ends from QWriteVariableAction
     QInputPin *value() const;
     void setValue(QInputPin *value);
 

@@ -75,12 +75,15 @@ public:
     explicit QFeature(QObject *parent = 0);
     virtual ~QFeature();
 
-    // Attributes
+    // Attributes from QFeature
     bool isStatic() const;
     void setStatic(bool isStatic);
 
-    // Association-ends
+    // Association ends from QFeature
     const QSet<QClassifier *> *featuringClassifiers() const;
+
+    // Classes which access read-only opposite properties should be friend
+    friend class QClassifierPrivate;
 
 protected:
     explicit QFeature(QFeaturePrivate &dd, QObject *parent = 0);

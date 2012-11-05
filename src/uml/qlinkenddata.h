@@ -78,7 +78,7 @@ public:
     explicit QLinkEndData(QObject *parent = 0);
     virtual ~QLinkEndData();
 
-    // Association-ends
+    // Association ends from QLinkEndData
     QInputPin *value() const;
     void setValue(QInputPin *value);
     QProperty *end() const;

@@ -78,7 +78,7 @@ public:
     explicit QSlot(QObject *parent = 0);
     virtual ~QSlot();
 
-    // Association-ends
+    // Association ends from QSlot
     const QList<QValueSpecification *> *values() const;
     void addValue(QValueSpecification *value);
     void removeValue(QValueSpecification *value);

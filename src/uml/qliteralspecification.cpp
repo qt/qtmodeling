@@ -42,7 +42,6 @@
 #include "qliteralspecification.h"
 #include "qliteralspecification_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QLiteralSpecificationPrivate::QLiteralSpecificationPrivate()
@@ -74,6 +73,8 @@ QLiteralSpecification::QLiteralSpecification(QLiteralSpecificationPrivate &dd, Q
 QLiteralSpecification::~QLiteralSpecification()
 {
 }
+
+#include "moc_qliteralspecification.cpp"
 
 QT_END_NAMESPACE_QTUML
 

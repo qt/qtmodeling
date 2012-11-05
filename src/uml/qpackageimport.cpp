@@ -80,6 +80,10 @@ QPackageImport::~QPackageImport()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QPackageImport
+// ---------------------------------------------------------------
+
 /*!
     Specifies the visibility of the imported PackageableElements within the importing Namespace, i.e., whether imported elements will in turn be visible to other packages that use that importingPackage as an importedPackage. If the PackageImport is public, the imported elements will be visible outside the package, while if it is private they will not.
  */
@@ -100,6 +104,10 @@ void QPackageImport::setVisibility(QtUml::VisibilityKind visibility)
         d->visibility = visibility;
     }
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QPackageImport
+// ---------------------------------------------------------------
 
 /*!
     Specifies the Namespace that imports the members from a Package.
@@ -123,14 +131,14 @@ void QPackageImport::setImportingNamespace(QNamespace *importingNamespace)
             d->importingNamespace->removePackageImport(this);
 
         // Adjust subsetted property(ies)
-        d->QDirectedRelationshipPrivate::removeSource(dynamic_cast<QElement *>(d->importingNamespace));
+        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qtuml_object_cast<QElement *>(d->importingNamespace));
 
         d->importingNamespace = importingNamespace;
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(importingNamespace));
+        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(importingNamespace));
         if (importingNamespace) {
-            d->QDirectedRelationshipPrivate::addSource(dynamic_cast<QElement *>(importingNamespace));
+            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addSource(qtuml_object_cast<QElement *>(importingNamespace));
         }
 
         // Adjust opposite property
@@ -157,13 +165,13 @@ void QPackageImport::setImportedPackage(QPackage *importedPackage)
     Q_D(QPackageImport);
     if (d->importedPackage != importedPackage) {
         // Adjust subsetted property(ies)
-        d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(d->importedPackage));
+        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qtuml_object_cast<QElement *>(d->importedPackage));
 
         d->importedPackage = importedPackage;
 
         // Adjust subsetted property(ies)
         if (importedPackage) {
-            d->QDirectedRelationshipPrivate::addTarget(dynamic_cast<QElement *>(importedPackage));
+            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qtuml_object_cast<QElement *>(importedPackage));
         }
     }
 }

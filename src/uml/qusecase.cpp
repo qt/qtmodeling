@@ -87,6 +87,10 @@ QUseCase::~QUseCase()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QUseCase
+// ---------------------------------------------------------------
+
 /*!
     References the ExtensionPoints owned by the use case.
  */
@@ -107,7 +111,7 @@ void QUseCase::addExtensionPoint(QExtensionPoint *extensionPoint)
         d->extensionPoints->insert(extensionPoint);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(extensionPoint));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(extensionPoint));
 
         // Adjust opposite property
         extensionPoint->setUseCase(this);
@@ -123,7 +127,7 @@ void QUseCase::removeExtensionPoint(QExtensionPoint *extensionPoint)
         d->extensionPoints->remove(extensionPoint);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(extensionPoint));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(extensionPoint));
 
         // Adjust opposite property
         extensionPoint->setUseCase(0);
@@ -150,7 +154,7 @@ void QUseCase::addInclude(QInclude *include)
         d->includes->insert(include);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(include));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(include));
 
         // Adjust opposite property
         include->setIncludingCase(this);
@@ -166,7 +170,7 @@ void QUseCase::removeInclude(QInclude *include)
         d->includes->remove(include);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(include));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(include));
 
         // Adjust opposite property
         include->setIncludingCase(0);
@@ -231,7 +235,7 @@ void QUseCase::addExtend(QExtend *extend)
         d->extends->insert(extend);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(extend));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(extend));
 
         // Adjust opposite property
         extend->setExtension(this);
@@ -247,7 +251,7 @@ void QUseCase::removeExtend(QExtend *extend)
         d->extends->remove(extend);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(extend));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(extend));
 
         // Adjust opposite property
         extend->setExtension(0);

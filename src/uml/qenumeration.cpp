@@ -78,6 +78,10 @@ QEnumeration::~QEnumeration()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QEnumeration
+// ---------------------------------------------------------------
+
 /*!
     The ordered set of literals for this Enumeration.
  */
@@ -98,7 +102,7 @@ void QEnumeration::addOwnedLiteral(QEnumerationLiteral *ownedLiteral)
         d->ownedLiterals->append(ownedLiteral);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(ownedLiteral));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(ownedLiteral));
 
         // Adjust opposite property
         ownedLiteral->setEnumeration(this);
@@ -114,7 +118,7 @@ void QEnumeration::removeOwnedLiteral(QEnumerationLiteral *ownedLiteral)
         d->ownedLiterals->removeAll(ownedLiteral);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(ownedLiteral));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(ownedLiteral));
 
         // Adjust opposite property
         ownedLiteral->setEnumeration(0);

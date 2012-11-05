@@ -74,7 +74,7 @@ public:
     explicit QTestIdentityAction(QObject *parent = 0);
     virtual ~QTestIdentityAction();
 
-    // Association-ends
+    // Association ends from QTestIdentityAction
     QInputPin *second() const;
     void setSecond(QInputPin *second);
     QOutputPin *result() const;

@@ -75,16 +75,19 @@ public:
     explicit QExtension(QObject *parent = 0);
     virtual ~QExtension();
 
-    // Attributes
+    // Attributes from QExtension
     bool isRequired() const;
 
-    // Association-ends
+    // Association ends from QExtension
     QClass *metaclass() const;
     QExtensionEnd *ownedEnd() const;
     void setOwnedEnd(QExtensionEnd *ownedEnd);
 
     // Operations
     QProperty *metaclassEnd() const;
+
+    // Classes which access read-only opposite properties should be friend
+    friend class QClassPrivate;
 
 protected:
     explicit QExtension(QExtensionPrivate &dd, QObject *parent = 0);

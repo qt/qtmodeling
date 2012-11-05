@@ -77,7 +77,7 @@ public:
     explicit QOccurrenceSpecification(QObject *parent = 0);
     virtual ~QOccurrenceSpecification();
 
-    // Association-ends
+    // Association ends from QOccurrenceSpecification
     QLifeline *covered() const;
     void setCovered(QLifeline *covered);
     const QSet<QGeneralOrdering *> *toAfter() const;

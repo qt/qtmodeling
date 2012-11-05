@@ -41,12 +41,12 @@
 #ifndef QTUML_QCONNECTABLEELEMENTTEMPLATEPARAMETER_P_H
 #define QTUML_QCONNECTABLEELEMENTTEMPLATEPARAMETER_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qtemplateparameter_p.h"
-#include "qconnectableelementtemplateparameter.h"
 
+#include "QtUml/QConnectableElementTemplateParameter"
 
 QT_BEGIN_HEADER
 

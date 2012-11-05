@@ -84,6 +84,166 @@ QRedefinableTemplateSignature::~QRedefinableTemplateSignature()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QElement
+// ---------------------------------------------------------------
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QElement *> *QRedefinableTemplateSignature::ownedElements() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+}
+
+/*!
+    The Element that owns this element.
+ */
+QElement *QRedefinableTemplateSignature::owner() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->owner();
+}
+
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QComment *> *QRedefinableTemplateSignature::ownedComments() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+}
+
+void QRedefinableTemplateSignature::addOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+}
+
+void QRedefinableTemplateSignature::removeOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The name of the NamedElement.
+ */
+QString QRedefinableTemplateSignature::name() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+}
+
+void QRedefinableTemplateSignature::setName(QString name)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+}
+
+/*!
+    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
+ */
+QtUml::VisibilityKind QRedefinableTemplateSignature::visibility() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->visibility();
+}
+
+void QRedefinableTemplateSignature::setVisibility(QtUml::VisibilityKind visibility)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setVisibility(visibility);
+}
+
+/*!
+    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
+ */
+QString QRedefinableTemplateSignature::qualifiedName() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The string expression used to define the name of this named element.
+ */
+QStringExpression *QRedefinableTemplateSignature::nameExpression() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+}
+
+void QRedefinableTemplateSignature::setNameExpression(QStringExpression *nameExpression)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+}
+
+/*!
+    Specifies the namespace that owns the NamedElement.
+ */
+QNamespace *QRedefinableTemplateSignature::namespace_() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+}
+
+/*!
+    Indicates the dependencies that reference the client.
+ */
+const QSet<QDependency *> *QRedefinableTemplateSignature::clientDependencies() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+}
+
+void QRedefinableTemplateSignature::addClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+}
+
+void QRedefinableTemplateSignature::removeClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QRedefinableElement
+// ---------------------------------------------------------------
+
+/*!
+    Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false.
+ */
+bool QRedefinableTemplateSignature::isLeaf() const
+{
+    return (qtuml_object_cast<const QRedefinableElement *>(this))->isLeaf();
+}
+
+void QRedefinableTemplateSignature::setLeaf(bool isLeaf)
+{
+    (qtuml_object_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QRedefinableElement
+// ---------------------------------------------------------------
+
+/*!
+    The redefinable element that is being redefined by this element.
+ */
+const QSet<QRedefinableElement *> *QRedefinableTemplateSignature::redefinedElements() const
+{
+    return (qtuml_object_cast<const QRedefinableElement *>(this))->redefinedElements();
+}
+
+/*!
+    References the contexts that this element may be redefined from.
+ */
+const QSet<QClassifier *> *QRedefinableTemplateSignature::redefinitionContexts() const
+{
+    return (qtuml_object_cast<const QRedefinableElement *>(this))->redefinitionContexts();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QRedefinableTemplateSignature
+// ---------------------------------------------------------------
+
 /*!
     The formal template parameters of the extendedSignature.
  */
@@ -117,13 +277,13 @@ void QRedefinableTemplateSignature::setClassifier(QClassifier *classifier)
         // Adjust opposite property
 
         // Adjust subsetted property(ies)
-        d->QRedefinableElementPrivate::removeRedefinitionContext(dynamic_cast<QClassifier *>(d->classifier));
+        (qtuml_object_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qtuml_object_cast<QClassifier *>(d->classifier));
 
         d->classifier = classifier;
 
         // Adjust subsetted property(ies)
         if (classifier) {
-            d->QRedefinableElementPrivate::addRedefinitionContext(dynamic_cast<QClassifier *>(classifier));
+            (qtuml_object_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qtuml_object_cast<QClassifier *>(classifier));
         }
 
         // Adjust opposite property
@@ -151,7 +311,7 @@ void QRedefinableTemplateSignature::addExtendedSignature(QRedefinableTemplateSig
         d->extendedSignatures->insert(extendedSignature);
 
         // Adjust subsetted property(ies)
-        d->QRedefinableElementPrivate::addRedefinedElement(dynamic_cast<QRedefinableElement *>(extendedSignature));
+        (qtuml_object_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qtuml_object_cast<QRedefinableElement *>(extendedSignature));
     }
 }
 
@@ -164,7 +324,7 @@ void QRedefinableTemplateSignature::removeExtendedSignature(QRedefinableTemplate
         d->extendedSignatures->remove(extendedSignature);
 
         // Adjust subsetted property(ies)
-        d->QRedefinableElementPrivate::removeRedefinedElement(dynamic_cast<QRedefinableElement *>(extendedSignature));
+        (qtuml_object_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qtuml_object_cast<QRedefinableElement *>(extendedSignature));
     }
 }
 

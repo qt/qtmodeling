@@ -41,12 +41,12 @@
 #ifndef QTUML_QCREATELINKOBJECTACTION_P_H
 #define QTUML_QCREATELINKOBJECTACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qcreatelinkaction_p.h"
-#include "qcreatelinkobjectaction.h"
 
+#include "QtUml/QCreateLinkObjectAction"
 
 QT_BEGIN_HEADER
 

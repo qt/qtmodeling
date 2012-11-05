@@ -78,6 +78,10 @@ QSubstitution::~QSubstitution()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QSubstitution
+// ---------------------------------------------------------------
+
 /*!
     The contract with which the substituting classifier complies.
  */
@@ -96,13 +100,13 @@ void QSubstitution::setContract(QClassifier *contract)
     Q_D(QSubstitution);
     if (d->contract != contract) {
         // Adjust subsetted property(ies)
-        QDependency::removeSupplier(dynamic_cast<QNamedElement *>(d->contract));
+        (qtuml_object_cast<QDependency *>(this))->removeSupplier(qtuml_object_cast<QNamedElement *>(d->contract));
 
         d->contract = contract;
 
         // Adjust subsetted property(ies)
         if (contract) {
-            QDependency::addSupplier(dynamic_cast<QNamedElement *>(contract));
+            (qtuml_object_cast<QDependency *>(this))->addSupplier(qtuml_object_cast<QNamedElement *>(contract));
         }
     }
 }
@@ -129,14 +133,14 @@ void QSubstitution::setSubstitutingClassifier(QClassifier *substitutingClassifie
             d->substitutingClassifier->removeSubstitution(this);
 
         // Adjust subsetted property(ies)
-        QDependency::removeClient(dynamic_cast<QNamedElement *>(d->substitutingClassifier));
+        (qtuml_object_cast<QDependency *>(this))->removeClient(qtuml_object_cast<QNamedElement *>(d->substitutingClassifier));
 
         d->substitutingClassifier = substitutingClassifier;
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(substitutingClassifier));
+        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(substitutingClassifier));
         if (substitutingClassifier) {
-            QDependency::addClient(dynamic_cast<QNamedElement *>(substitutingClassifier));
+            (qtuml_object_cast<QDependency *>(this))->addClient(qtuml_object_cast<QNamedElement *>(substitutingClassifier));
         }
 
         // Adjust opposite property

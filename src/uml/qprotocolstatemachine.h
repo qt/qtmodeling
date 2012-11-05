@@ -74,7 +74,7 @@ public:
     explicit QProtocolStateMachine(QObject *parent = 0);
     virtual ~QProtocolStateMachine();
 
-    // Association-ends
+    // Association ends from QProtocolStateMachine
     const QSet<QProtocolConformance *> *conformance() const;
     void addConformance(QProtocolConformance *conformance);
     void removeConformance(QProtocolConformance *conformance);

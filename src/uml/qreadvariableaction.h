@@ -71,7 +71,7 @@ public:
     explicit QReadVariableAction(QObject *parent = 0);
     virtual ~QReadVariableAction();
 
-    // Association-ends
+    // Association ends from QReadVariableAction
     QOutputPin *result() const;
     void setResult(QOutputPin *result);
 

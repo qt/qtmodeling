@@ -41,14 +41,15 @@
 #ifndef QTUML_QSTATEMACHINE_P_H
 #define QTUML_QSTATEMACHINE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qbehavior_p.h"
-#include "qstatemachine.h"
+
+#include "QtUml/QStateMachine"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

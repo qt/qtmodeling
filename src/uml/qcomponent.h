@@ -81,11 +81,11 @@ public:
     explicit QComponent(QObject *parent = 0);
     virtual ~QComponent();
 
-    // Attributes
+    // Attributes from QComponent
     bool isIndirectlyInstantiated() const;
     void setIndirectlyInstantiated(bool isIndirectlyInstantiated);
 
-    // Association-ends
+    // Association ends from QComponent
     const QSet<QComponentRealization *> *realizations() const;
     void addRealization(QComponentRealization *realization);
     void removeRealization(QComponentRealization *realization);

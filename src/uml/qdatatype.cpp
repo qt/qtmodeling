@@ -82,6 +82,10 @@ QDataType::~QDataType()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QDataType
+// ---------------------------------------------------------------
+
 /*!
     The Operations owned by the DataType.
  */
@@ -102,8 +106,8 @@ void QDataType::addOwnedOperation(QOperation *ownedOperation)
         d->ownedOperations->append(ownedOperation);
 
         // Adjust subsetted property(ies)
-        d->QClassifierPrivate::addFeature(dynamic_cast<QFeature *>(ownedOperation));
-        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(ownedOperation));
+        (qtuml_object_cast<QClassifierPrivate *>(d))->addFeature(qtuml_object_cast<QFeature *>(ownedOperation));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(ownedOperation));
 
         // Adjust opposite property
         ownedOperation->setDatatype(this);
@@ -119,8 +123,8 @@ void QDataType::removeOwnedOperation(QOperation *ownedOperation)
         d->ownedOperations->removeAll(ownedOperation);
 
         // Adjust subsetted property(ies)
-        d->QClassifierPrivate::removeFeature(dynamic_cast<QFeature *>(ownedOperation));
-        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(ownedOperation));
+        (qtuml_object_cast<QClassifierPrivate *>(d))->removeFeature(qtuml_object_cast<QFeature *>(ownedOperation));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(ownedOperation));
 
         // Adjust opposite property
         ownedOperation->setDatatype(0);
@@ -147,8 +151,8 @@ void QDataType::addOwnedAttribute(QProperty *ownedAttribute)
         d->ownedAttributes->append(ownedAttribute);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::addOwnedMember(dynamic_cast<QNamedElement *>(ownedAttribute));
-        d->QClassifierPrivate::addAttribute(dynamic_cast<QProperty *>(ownedAttribute));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(ownedAttribute));
+        (qtuml_object_cast<QClassifierPrivate *>(d))->addAttribute(qtuml_object_cast<QProperty *>(ownedAttribute));
 
         // Adjust opposite property
         ownedAttribute->setDatatype(this);
@@ -164,8 +168,8 @@ void QDataType::removeOwnedAttribute(QProperty *ownedAttribute)
         d->ownedAttributes->removeAll(ownedAttribute);
 
         // Adjust subsetted property(ies)
-        d->QNamespacePrivate::removeOwnedMember(dynamic_cast<QNamedElement *>(ownedAttribute));
-        d->QClassifierPrivate::removeAttribute(dynamic_cast<QProperty *>(ownedAttribute));
+        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(ownedAttribute));
+        (qtuml_object_cast<QClassifierPrivate *>(d))->removeAttribute(qtuml_object_cast<QProperty *>(ownedAttribute));
 
         // Adjust opposite property
         ownedAttribute->setDatatype(0);

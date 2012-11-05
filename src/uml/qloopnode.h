@@ -85,11 +85,11 @@ public:
     explicit QLoopNode(QObject *parent = 0);
     virtual ~QLoopNode();
 
-    // Attributes
+    // Attributes from QLoopNode
     bool isTestedFirst() const;
     void setTestedFirst(bool isTestedFirst);
 
-    // Association-ends
+    // Association ends from QLoopNode
     const QList<QInputPin *> *loopVariableInputs() const;
     void addLoopVariableInput(QInputPin *loopVariableInput);
     void removeLoopVariableInput(QInputPin *loopVariableInput);

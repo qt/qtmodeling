@@ -77,6 +77,10 @@ QActivityParameterNode::~QActivityParameterNode()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QActivityParameterNode
+// ---------------------------------------------------------------
+
 /*!
     The parameter the object node will be accepting or providing values for.
  */

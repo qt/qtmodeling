@@ -83,7 +83,7 @@ public:
     explicit QNamespace(QObject *parent = 0);
     virtual ~QNamespace();
 
-    // Association-ends
+    // Association ends from QNamespace
     const QSet<QPackageImport *> *packageImports() const;
     void addPackageImport(QPackageImport *packageImport);
     void removePackageImport(QPackageImport *packageImport);
@@ -102,6 +102,9 @@ public:
     const QSet<QString> *getNamesOfMember(const QNamedElement *element) const;
     const QSet<QPackageableElement *> *importMembers(const QSet<QPackageableElement *> *imps) const;
     bool membersAreDistinguishable() const;
+
+    // Classes which access read-only opposite properties should be friend
+    friend class QNamedElementPrivate;
 
 protected:
     explicit QNamespace(QNamespacePrivate &dd, QObject *parent = 0);

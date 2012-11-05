@@ -80,6 +80,10 @@ QElementImport::~QElementImport()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QElementImport
+// ---------------------------------------------------------------
+
 /*!
     Specifies the name that should be added to the namespace of the importing package in lieu of the name of the imported packagable element. The aliased name must not clash with any other member name in the importing package. By default, no alias is used.
  */
@@ -122,6 +126,10 @@ void QElementImport::setVisibility(QtUml::VisibilityKind visibility)
     }
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QElementImport
+// ---------------------------------------------------------------
+
 /*!
     Specifies the PackageableElement whose name is to be added to a Namespace.
  */
@@ -140,13 +148,13 @@ void QElementImport::setImportedElement(QPackageableElement *importedElement)
     Q_D(QElementImport);
     if (d->importedElement != importedElement) {
         // Adjust subsetted property(ies)
-        d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(d->importedElement));
+        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qtuml_object_cast<QElement *>(d->importedElement));
 
         d->importedElement = importedElement;
 
         // Adjust subsetted property(ies)
         if (importedElement) {
-            d->QDirectedRelationshipPrivate::addTarget(dynamic_cast<QElement *>(importedElement));
+            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qtuml_object_cast<QElement *>(importedElement));
         }
     }
 }
@@ -173,14 +181,14 @@ void QElementImport::setImportingNamespace(QNamespace *importingNamespace)
             d->importingNamespace->removeElementImport(this);
 
         // Adjust subsetted property(ies)
-        d->QDirectedRelationshipPrivate::removeSource(dynamic_cast<QElement *>(d->importingNamespace));
+        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qtuml_object_cast<QElement *>(d->importingNamespace));
 
         d->importingNamespace = importingNamespace;
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(importingNamespace));
+        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(importingNamespace));
         if (importingNamespace) {
-            d->QDirectedRelationshipPrivate::addSource(dynamic_cast<QElement *>(importingNamespace));
+            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addSource(qtuml_object_cast<QElement *>(importingNamespace));
         }
 
         // Adjust opposite property

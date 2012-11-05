@@ -72,7 +72,7 @@ public:
     explicit QEnumerationLiteral(QObject *parent = 0);
     virtual ~QEnumerationLiteral();
 
-    // Association-ends
+    // Association ends from QEnumerationLiteral
     QEnumeration *classifier() const;
     QEnumeration *enumeration() const;
     void setEnumeration(QEnumeration *enumeration);

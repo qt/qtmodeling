@@ -78,6 +78,10 @@ QDurationInterval::~QDurationInterval()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QDurationInterval
+// ---------------------------------------------------------------
+
 /*!
     Refers to the Duration denoting the maximum value of the range.
  */

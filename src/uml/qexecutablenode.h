@@ -74,7 +74,7 @@ public:
     explicit QExecutableNode(QObject *parent = 0);
     virtual ~QExecutableNode();
 
-    // Association-ends
+    // Association ends from QExecutableNode
     const QSet<QExceptionHandler *> *handlers() const;
     void addHandler(QExceptionHandler *handler);
     void removeHandler(QExceptionHandler *handler);

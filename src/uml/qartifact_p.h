@@ -41,19 +41,19 @@
 #ifndef QTUML_QARTIFACT_P_H
 #define QTUML_QARTIFACT_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qdeployedartifact_p.h"
 #include "private/qclassifier_p.h"
-#include "qartifact.h"
+
+#include "QtUml/QArtifact"
 
 // Qt includes
-#include <QtCore/QString>
-#include <QtCore/QList>
-#include <QtCore/QSet>
+#include "QtCore/QString"
+#include "QtCore/QList"
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -80,10 +80,6 @@ public:
     QList<QProperty *> *ownedAttributes;
     QSet<QManifestation *> *manifestations;
     QSet<QArtifact *> *nestedArtifacts;
-
-private:
-    QDeployedArtifactPrivate *_wrappedDeployedArtifactPrivate;
-    QClassifierPrivate *_wrappedClassifierPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

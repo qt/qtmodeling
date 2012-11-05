@@ -56,6 +56,8 @@ class QControlFlowPrivate;
 
 class Q_UML_EXPORT QControlFlow : public QActivityEdge
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QControlFlow)
     Q_DECLARE_PRIVATE(QControlFlow)
 

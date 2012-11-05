@@ -41,12 +41,12 @@
 #ifndef QTUML_QRECEPTION_P_H
 #define QTUML_QRECEPTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qbehavioralfeature_p.h"
-#include "qreception.h"
 
+#include "QtUml/QReception"
 
 QT_BEGIN_HEADER
 

@@ -56,6 +56,8 @@ class QInitialNodePrivate;
 
 class Q_UML_EXPORT QInitialNode : public QControlNode
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QInitialNode)
     Q_DECLARE_PRIVATE(QInitialNode)
 

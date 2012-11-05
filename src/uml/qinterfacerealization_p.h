@@ -41,12 +41,12 @@
 #ifndef QTUML_QINTERFACEREALIZATION_P_H
 #define QTUML_QINTERFACEREALIZATION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qrealization_p.h"
-#include "qinterfacerealization.h"
 
+#include "QtUml/QInterfaceRealization"
 
 QT_BEGIN_HEADER
 

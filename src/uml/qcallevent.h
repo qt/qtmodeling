@@ -71,7 +71,7 @@ public:
     explicit QCallEvent(QObject *parent = 0);
     virtual ~QCallEvent();
 
-    // Association-ends
+    // Association ends from QCallEvent
     QOperation *operation() const;
     void setOperation(QOperation *operation);
 

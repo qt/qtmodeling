@@ -77,6 +77,10 @@ QOperationTemplateParameter::~QOperationTemplateParameter()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QOperationTemplateParameter
+// ---------------------------------------------------------------
+
 /*!
     The operation for this template parameter.
  */

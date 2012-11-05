@@ -80,6 +80,10 @@ QPseudostate::~QPseudostate()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QPseudostate
+// ---------------------------------------------------------------
+
 /*!
     Determines the precise type of the Pseudostate and can be one of: entryPoint, exitPoint, initial, deepHistory, shallowHistory, join, fork, junction, terminate or choice.
  */
@@ -100,6 +104,10 @@ void QPseudostate::setKind(QtUml::PseudostateKind kind)
         d->kind = kind;
     }
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QPseudostate
+// ---------------------------------------------------------------
 
 /*!
     The State that owns this pseudostate and in which it appears.
@@ -125,7 +133,7 @@ void QPseudostate::setState(QState *state)
         d->state = state;
 
         // Adjust subsetted property(ies)
-        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(state));
+        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(state));
 
         // Adjust opposite property
         if (state)
@@ -157,7 +165,7 @@ void QPseudostate::setStateMachine(QStateMachine *stateMachine)
         d->stateMachine = stateMachine;
 
         // Adjust subsetted property(ies)
-        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(stateMachine));
+        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(stateMachine));
 
         // Adjust opposite property
         if (stateMachine)

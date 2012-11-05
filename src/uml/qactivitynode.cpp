@@ -41,6 +41,7 @@
 
 #include "qactivitynode.h"
 #include "qactivitynode_p.h"
+
 #include "qactivitygroup_p.h"
 
 #include <QtUml/QActivityEdge>
@@ -83,7 +84,7 @@ void QActivityNodePrivate::addInGroup(QActivityGroup *inGroup)
 
         // Adjust opposite property
         Q_Q(QActivityNode);
-        (dynamic_cast<QActivityGroupPrivate *>(inGroup->d_ptr))->addContainedNode(q);
+        (qtuml_object_cast<QActivityGroupPrivate *>(inGroup->d_func()))->addContainedNode(q);
     }
 }
 
@@ -97,7 +98,7 @@ void QActivityNodePrivate::removeInGroup(QActivityGroup *inGroup)
         // Adjust opposite property
         Q_Q(QActivityNode);
         if (inGroup)
-            (dynamic_cast<QActivityGroupPrivate *>(inGroup->d_ptr))->removeContainedNode(q);
+            (qtuml_object_cast<QActivityGroupPrivate *>(inGroup->d_func()))->removeContainedNode(q);
     }
 }
 
@@ -123,6 +124,10 @@ QActivityNode::~QActivityNode()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QActivityNode
+// ---------------------------------------------------------------
+
 /*!
     Inherited nodes replaced by this node in a specialization of the activity.
  */
@@ -143,7 +148,7 @@ void QActivityNode::addRedefinedNode(QActivityNode *redefinedNode)
         d->redefinedNodes->insert(redefinedNode);
 
         // Adjust subsetted property(ies)
-        d->QRedefinableElementPrivate::addRedefinedElement(dynamic_cast<QRedefinableElement *>(redefinedNode));
+        (qtuml_object_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qtuml_object_cast<QRedefinableElement *>(redefinedNode));
     }
 }
 
@@ -156,7 +161,7 @@ void QActivityNode::removeRedefinedNode(QActivityNode *redefinedNode)
         d->redefinedNodes->remove(redefinedNode);
 
         // Adjust subsetted property(ies)
-        d->QRedefinableElementPrivate::removeRedefinedElement(dynamic_cast<QRedefinableElement *>(redefinedNode));
+        (qtuml_object_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qtuml_object_cast<QRedefinableElement *>(redefinedNode));
     }
 }
 
@@ -221,7 +226,7 @@ void QActivityNode::setActivity(QActivity *activity)
         d->activity = activity;
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(activity));
+        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(activity));
 
         // Adjust opposite property
         if (activity)
@@ -262,15 +267,15 @@ void QActivityNode::setInStructuredNode(QStructuredActivityNode *inStructuredNod
             d->inStructuredNode->removeNode(this);
 
         // Adjust subsetted property(ies)
-        d->QActivityNodePrivate::removeInGroup(dynamic_cast<QActivityGroup *>(d->inStructuredNode));
+        (qtuml_object_cast<QActivityNodePrivate *>(d))->removeInGroup(qtuml_object_cast<QActivityGroup *>(d->inStructuredNode));
 
         d->inStructuredNode = inStructuredNode;
 
         // Adjust subsetted property(ies)
         if (inStructuredNode) {
-            d->QActivityNodePrivate::addInGroup(dynamic_cast<QActivityGroup *>(inStructuredNode));
+            (qtuml_object_cast<QActivityNodePrivate *>(d))->addInGroup(qtuml_object_cast<QActivityGroup *>(inStructuredNode));
         }
-        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(inStructuredNode));
+        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(inStructuredNode));
 
         // Adjust opposite property
         if (inStructuredNode)
@@ -298,7 +303,7 @@ void QActivityNode::addInPartition(QActivityPartition *inPartition)
         d->inPartition->insert(inPartition);
 
         // Adjust subsetted property(ies)
-        d->QActivityNodePrivate::addInGroup(dynamic_cast<QActivityGroup *>(inPartition));
+        (qtuml_object_cast<QActivityNodePrivate *>(d))->addInGroup(qtuml_object_cast<QActivityGroup *>(inPartition));
 
         // Adjust opposite property
         inPartition->addNode(this);
@@ -314,7 +319,7 @@ void QActivityNode::removeInPartition(QActivityPartition *inPartition)
         d->inPartition->remove(inPartition);
 
         // Adjust subsetted property(ies)
-        d->QActivityNodePrivate::removeInGroup(dynamic_cast<QActivityGroup *>(inPartition));
+        (qtuml_object_cast<QActivityNodePrivate *>(d))->removeInGroup(qtuml_object_cast<QActivityGroup *>(inPartition));
 
         // Adjust opposite property
         if (inPartition)
@@ -342,7 +347,7 @@ void QActivityNode::addInInterruptibleRegion(QInterruptibleActivityRegion *inInt
         d->inInterruptibleRegion->insert(inInterruptibleRegion);
 
         // Adjust subsetted property(ies)
-        d->QActivityNodePrivate::addInGroup(dynamic_cast<QActivityGroup *>(inInterruptibleRegion));
+        (qtuml_object_cast<QActivityNodePrivate *>(d))->addInGroup(qtuml_object_cast<QActivityGroup *>(inInterruptibleRegion));
 
         // Adjust opposite property
         inInterruptibleRegion->addNode(this);
@@ -358,7 +363,7 @@ void QActivityNode::removeInInterruptibleRegion(QInterruptibleActivityRegion *in
         d->inInterruptibleRegion->remove(inInterruptibleRegion);
 
         // Adjust subsetted property(ies)
-        d->QActivityNodePrivate::removeInGroup(dynamic_cast<QActivityGroup *>(inInterruptibleRegion));
+        (qtuml_object_cast<QActivityNodePrivate *>(d))->removeInGroup(qtuml_object_cast<QActivityGroup *>(inInterruptibleRegion));
 
         // Adjust opposite property
         if (inInterruptibleRegion)
@@ -402,6 +407,8 @@ void QActivityNode::removeOutgoing(QActivityEdge *outgoing)
         outgoing->setSource(0);
     }
 }
+
+#include "moc_qactivitynode.cpp"
 
 QT_END_NAMESPACE_QTUML
 

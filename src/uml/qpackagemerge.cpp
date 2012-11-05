@@ -78,6 +78,10 @@ QPackageMerge::~QPackageMerge()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QPackageMerge
+// ---------------------------------------------------------------
+
 /*!
     References the Package that is to be merged with the receiving package of the PackageMerge.
  */
@@ -96,13 +100,13 @@ void QPackageMerge::setMergedPackage(QPackage *mergedPackage)
     Q_D(QPackageMerge);
     if (d->mergedPackage != mergedPackage) {
         // Adjust subsetted property(ies)
-        d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(d->mergedPackage));
+        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qtuml_object_cast<QElement *>(d->mergedPackage));
 
         d->mergedPackage = mergedPackage;
 
         // Adjust subsetted property(ies)
         if (mergedPackage) {
-            d->QDirectedRelationshipPrivate::addTarget(dynamic_cast<QElement *>(mergedPackage));
+            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qtuml_object_cast<QElement *>(mergedPackage));
         }
     }
 }
@@ -129,14 +133,14 @@ void QPackageMerge::setReceivingPackage(QPackage *receivingPackage)
             d->receivingPackage->removePackageMerge(this);
 
         // Adjust subsetted property(ies)
-        d->QDirectedRelationshipPrivate::removeSource(dynamic_cast<QElement *>(d->receivingPackage));
+        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qtuml_object_cast<QElement *>(d->receivingPackage));
 
         d->receivingPackage = receivingPackage;
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(receivingPackage));
+        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(receivingPackage));
         if (receivingPackage) {
-            d->QDirectedRelationshipPrivate::addSource(dynamic_cast<QElement *>(receivingPackage));
+            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addSource(qtuml_object_cast<QElement *>(receivingPackage));
         }
 
         // Adjust opposite property

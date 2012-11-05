@@ -78,6 +78,10 @@ QAddStructuralFeatureValueAction::~QAddStructuralFeatureValueAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QAddStructuralFeatureValueAction
+// ---------------------------------------------------------------
+
 /*!
     Specifies whether existing values of the structural feature of the object should be removed before adding the new value.
  */
@@ -99,6 +103,10 @@ void QAddStructuralFeatureValueAction::setReplaceAll(bool isReplaceAll)
     }
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QAddStructuralFeatureValueAction
+// ---------------------------------------------------------------
+
 /*!
     Gives the position at which to insert a new value or move an existing value in ordered structural features. The type of the pin is UnlimitedNatural, but the value cannot be zero. This pin is omitted for unordered structural features.
  */
@@ -117,13 +125,13 @@ void QAddStructuralFeatureValueAction::setInsertAt(QInputPin *insertAt)
     Q_D(QAddStructuralFeatureValueAction);
     if (d->insertAt != insertAt) {
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->insertAt));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->insertAt));
 
         d->insertAt = insertAt;
 
         // Adjust subsetted property(ies)
         if (insertAt) {
-            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(insertAt));
+            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(insertAt));
         }
     }
 }

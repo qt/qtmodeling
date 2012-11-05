@@ -41,14 +41,15 @@
 #ifndef QTUML_QIMAGE_P_H
 #define QTUML_QIMAGE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qelement_p.h"
-#include "qimage.h"
+
+#include "QtUml/QImage"
 
 // Qt includes
-#include <QtCore/QString>
+#include "QtCore/QString"
 
 QT_BEGIN_HEADER
 

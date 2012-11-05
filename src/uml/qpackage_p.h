@@ -41,19 +41,19 @@
 #ifndef QTUML_QPACKAGE_P_H
 #define QTUML_QPACKAGE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qnamespace_p.h"
 #include "private/qpackageableelement_p.h"
 #include "private/qtemplateableelement_p.h"
-#include "qpackage.h"
+
+#include "QtUml/QPackage"
 
 // Qt includes
-#include <QtCore/QString>
-#include <QtCore/QSet>
+#include "QtCore/QString"
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -83,11 +83,6 @@ public:
     QPackage *nestingPackage;
     QSet<QProfileApplication *> *profileApplications;
     QSet<QPackageMerge *> *packageMerges;
-
-private:
-    QNamespacePrivate *_wrappedNamespacePrivate;
-    QPackageableElementPrivate *_wrappedPackageableElementPrivate;
-    QTemplateableElementPrivate *_wrappedTemplateableElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

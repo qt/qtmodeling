@@ -56,6 +56,8 @@ class QWriteLinkActionPrivate;
 
 class Q_UML_EXPORT QWriteLinkAction : public QLinkAction
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QWriteLinkAction)
     Q_DECLARE_PRIVATE(QWriteLinkAction)
 

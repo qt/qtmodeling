@@ -76,7 +76,7 @@ public:
     explicit QTemplateParameter(QObject *parent = 0);
     virtual ~QTemplateParameter();
 
-    // Association-ends
+    // Association ends from QTemplateParameter
     QParameterableElement *default_() const;
     void setDefault_(QParameterableElement *default_);
     QParameterableElement *parameteredElement() const;

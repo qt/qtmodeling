@@ -73,7 +73,7 @@ public:
     explicit QReadExtentAction(QObject *parent = 0);
     virtual ~QReadExtentAction();
 
-    // Association-ends
+    // Association ends from QReadExtentAction
     QClassifier *classifier() const;
     void setClassifier(QClassifier *classifier);
     QOutputPin *result() const;

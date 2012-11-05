@@ -42,7 +42,6 @@
 #include "qliteralboolean.h"
 #include "qliteralboolean_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QLiteralBooleanPrivate::QLiteralBooleanPrivate() :
@@ -75,6 +74,10 @@ QLiteralBoolean::QLiteralBoolean(QLiteralBooleanPrivate &dd, QObject *parent) :
 QLiteralBoolean::~QLiteralBoolean()
 {
 }
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QLiteralBoolean
+// ---------------------------------------------------------------
 
 /*!
     The specified Boolean value.

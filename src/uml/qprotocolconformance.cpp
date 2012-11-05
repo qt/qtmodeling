@@ -78,6 +78,10 @@ QProtocolConformance::~QProtocolConformance()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QProtocolConformance
+// ---------------------------------------------------------------
+
 /*!
     Specifies the state machine which conforms to the general state machine.
  */
@@ -100,14 +104,14 @@ void QProtocolConformance::setSpecificMachine(QProtocolStateMachine *specificMac
             d->specificMachine->removeConformance(this);
 
         // Adjust subsetted property(ies)
-        d->QDirectedRelationshipPrivate::removeSource(dynamic_cast<QElement *>(d->specificMachine));
+        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qtuml_object_cast<QElement *>(d->specificMachine));
 
         d->specificMachine = specificMachine;
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(specificMachine));
+        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(specificMachine));
         if (specificMachine) {
-            d->QDirectedRelationshipPrivate::addSource(dynamic_cast<QElement *>(specificMachine));
+            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addSource(qtuml_object_cast<QElement *>(specificMachine));
         }
 
         // Adjust opposite property
@@ -134,13 +138,13 @@ void QProtocolConformance::setGeneralMachine(QProtocolStateMachine *generalMachi
     Q_D(QProtocolConformance);
     if (d->generalMachine != generalMachine) {
         // Adjust subsetted property(ies)
-        d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(d->generalMachine));
+        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qtuml_object_cast<QElement *>(d->generalMachine));
 
         d->generalMachine = generalMachine;
 
         // Adjust subsetted property(ies)
         if (generalMachine) {
-            d->QDirectedRelationshipPrivate::addTarget(dynamic_cast<QElement *>(generalMachine));
+            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qtuml_object_cast<QElement *>(generalMachine));
         }
     }
 }

@@ -41,15 +41,14 @@
 #ifndef QTUML_QASSOCIATIONCLASS_P_H
 #define QTUML_QASSOCIATIONCLASS_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qclass_p.h"
 #include "private/qassociation_p.h"
-#include "qassociationclass.h"
 
+#include "QtUml/QAssociationClass"
 
 QT_BEGIN_HEADER
 
@@ -66,10 +65,6 @@ public:
     explicit QAssociationClassPrivate();
     virtual ~QAssociationClassPrivate();
 
-
-private:
-    QClassPrivate *_wrappedClassPrivate;
-    QAssociationPrivate *_wrappedAssociationPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

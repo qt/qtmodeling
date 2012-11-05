@@ -56,6 +56,8 @@ class QDevicePrivate;
 
 class Q_UML_EXPORT QDevice : public QNode
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QDevice)
     Q_DECLARE_PRIVATE(QDevice)
 

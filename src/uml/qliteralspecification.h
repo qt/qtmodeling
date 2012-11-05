@@ -56,6 +56,8 @@ class QLiteralSpecificationPrivate;
 
 class Q_UML_EXPORT QLiteralSpecification : public QValueSpecification
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QLiteralSpecification)
     Q_DECLARE_PRIVATE(QLiteralSpecification)
 

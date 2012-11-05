@@ -71,7 +71,7 @@ public:
     explicit QRaiseExceptionAction(QObject *parent = 0);
     virtual ~QRaiseExceptionAction();
 
-    // Association-ends
+    // Association ends from QRaiseExceptionAction
     QInputPin *exception() const;
     void setException(QInputPin *exception);
 

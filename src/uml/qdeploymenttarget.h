@@ -76,7 +76,7 @@ public:
     explicit QDeploymentTarget(QObject *parent = 0);
     virtual ~QDeploymentTarget();
 
-    // Association-ends
+    // Association ends from QDeploymentTarget
     const QSet<QPackageableElement *> *deployedElements() const;
     const QSet<QDeployment *> *deployments() const;
     void addDeployment(QDeployment *deployment);

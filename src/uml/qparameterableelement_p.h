@@ -41,12 +41,12 @@
 #ifndef QTUML_QPARAMETERABLEELEMENT_P_H
 #define QTUML_QPARAMETERABLEELEMENT_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qelement_p.h"
-#include "qparameterableelement.h"
 
+#include "QtUml/QParameterableElement"
 
 QT_BEGIN_HEADER
 

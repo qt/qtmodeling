@@ -76,7 +76,7 @@ public:
     explicit QElement(QObject *parent = 0);
     virtual ~QElement();
 
-    // Association-ends
+    // Association ends from QElement
     const QSet<QElement *> *ownedElements() const;
     QElement *owner() const;
     const QSet<QComment *> *ownedComments() const;
@@ -87,21 +87,11 @@ public:
     const QSet<QElement *> *allOwnedElements() const;
     bool mustBeOwned() const;
 
-    // Classes which access read-only opposite properties should be friend
-    friend class QActivityEdgePrivate;
-    friend class QActivityGroupPrivate;
-    friend class QActivityNodePrivate;
-    friend class QClassifierPrivate;
-    friend class QClassPrivate;
-    friend class QConnectorEnd;
-    friend class QExtensionPrivate;
-    friend class QFeaturePrivate;
-    friend class QNamedElementPrivate;
-    friend class QNamespacePrivate;
-    friend class QTransition;
-
 protected:
     explicit QElement(QElementPrivate &dd, QObject *parent = 0);
+
+private:
+    void allOwnedElements(QSet<QElement *> *allOwnedElements_) const;
 };
 
 QT_END_NAMESPACE_QTUML

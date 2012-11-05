@@ -41,15 +41,16 @@
 #ifndef QTUML_QCONDITIONALNODE_P_H
 #define QTUML_QCONDITIONALNODE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qstructuredactivitynode_p.h"
-#include "qconditionalnode.h"
+
+#include "QtUml/QConditionalNode"
 
 // Qt includes
-#include <QtCore/QList>
-#include <QtCore/QSet>
+#include "QtCore/QList"
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

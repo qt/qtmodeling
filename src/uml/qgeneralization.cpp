@@ -82,6 +82,10 @@ QGeneralization::~QGeneralization()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QGeneralization
+// ---------------------------------------------------------------
+
 /*!
     Indicates whether the specific classifier can be used wherever the general classifier can be used. If true, the execution traces of the specific classifier will be a superset of the execution traces of the general classifier.
  */
@@ -102,6 +106,10 @@ void QGeneralization::setSubstitutable(bool isSubstitutable)
         d->isSubstitutable = isSubstitutable;
     }
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QGeneralization
+// ---------------------------------------------------------------
 
 /*!
     References the specializing classifier in the Generalization relationship.
@@ -125,14 +133,14 @@ void QGeneralization::setSpecific(QClassifier *specific)
             d->specific->removeGeneralization(this);
 
         // Adjust subsetted property(ies)
-        d->QDirectedRelationshipPrivate::removeSource(dynamic_cast<QElement *>(d->specific));
+        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qtuml_object_cast<QElement *>(d->specific));
 
         d->specific = specific;
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(specific));
+        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(specific));
         if (specific) {
-            d->QDirectedRelationshipPrivate::addSource(dynamic_cast<QElement *>(specific));
+            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addSource(qtuml_object_cast<QElement *>(specific));
         }
 
         // Adjust opposite property
@@ -197,13 +205,13 @@ void QGeneralization::setGeneral(QClassifier *general)
     Q_D(QGeneralization);
     if (d->general != general) {
         // Adjust subsetted property(ies)
-        d->QDirectedRelationshipPrivate::removeTarget(dynamic_cast<QElement *>(d->general));
+        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qtuml_object_cast<QElement *>(d->general));
 
         d->general = general;
 
         // Adjust subsetted property(ies)
         if (general) {
-            d->QDirectedRelationshipPrivate::addTarget(dynamic_cast<QElement *>(general));
+            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qtuml_object_cast<QElement *>(general));
         }
     }
 }

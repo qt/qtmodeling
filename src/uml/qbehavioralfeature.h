@@ -45,6 +45,8 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtUml/QNamespace>
+#include <QtUml/QFeature>
 
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
@@ -59,10 +61,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-// Forward decls for aggregated 'base classes'
-class QNamespace;
-class QFeature;
-
 // Forward decls for function parameters
 class QType;
 class QNamedElement;
@@ -75,14 +73,6 @@ class QBehavioralFeaturePrivate;
 class Q_UML_EXPORT QBehavioralFeature : public QObject
 {
     Q_OBJECT
-
-    // From QBehavioralFeature
-    Q_PROPERTY(QtUml::CallConcurrencyKind concurrency READ concurrency WRITE setConcurrency)
-    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract)
-    Q_PROPERTY(const QSet<QType *> * raisedExceptions READ raisedExceptions)
-    Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
-    Q_PROPERTY(const QSet<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
-    Q_PROPERTY(const QSet<QBehavior *> * methods READ methods)
 
     // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
@@ -114,6 +104,14 @@ class Q_UML_EXPORT QBehavioralFeature : public QObject
     Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic)
     Q_PROPERTY(const QSet<QClassifier *> * featuringClassifiers READ featuringClassifiers)
 
+    // From QBehavioralFeature
+    Q_PROPERTY(QtUml::CallConcurrencyKind concurrency READ concurrency WRITE setConcurrency)
+    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract)
+    Q_PROPERTY(const QSet<QType *> * raisedExceptions READ raisedExceptions)
+    Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
+    Q_PROPERTY(const QSet<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
+    Q_PROPERTY(const QSet<QBehavior *> * methods READ methods)
+
     Q_DISABLE_COPY(QBehavioralFeature)
     Q_DECLARE_PRIVATE(QBehavioralFeature)
 
@@ -121,13 +119,64 @@ public:
     explicit QBehavioralFeature(QObject *parent = 0);
     virtual ~QBehavioralFeature();
 
-    // Attributes
+    // Association ends from aggregated QElement
+    const QSet<QElement *> *ownedElements() const;
+    QElement *owner() const;
+    const QSet<QComment *> *ownedComments() const;
+    void addOwnedComment(QComment *ownedComment);
+    void removeOwnedComment(QComment *ownedComment);
+
+    // Attributes from aggregated QNamedElement
+    QString name() const;
+    void setName(QString name);
+    QtUml::VisibilityKind visibility() const;
+    void setVisibility(QtUml::VisibilityKind visibility);
+    QString qualifiedName() const;
+
+    // Association ends from aggregated QNamedElement
+    QStringExpression *nameExpression() const;
+    void setNameExpression(QStringExpression *nameExpression);
+    QNamespace *namespace_() const;
+    const QSet<QDependency *> *clientDependencies() const;
+    void addClientDependency(QDependency *clientDependency);
+    void removeClientDependency(QDependency *clientDependency);
+
+    // Association ends from aggregated QNamespace
+    const QSet<QPackageImport *> *packageImports() const;
+    void addPackageImport(QPackageImport *packageImport);
+    void removePackageImport(QPackageImport *packageImport);
+    const QSet<QNamedElement *> *members() const;
+    const QSet<QPackageableElement *> *importedMembers() const;
+    const QSet<QElementImport *> *elementImports() const;
+    void addElementImport(QElementImport *elementImport);
+    void removeElementImport(QElementImport *elementImport);
+    const QSet<QConstraint *> *ownedRules() const;
+    void addOwnedRule(QConstraint *ownedRule);
+    void removeOwnedRule(QConstraint *ownedRule);
+    const QSet<QNamedElement *> *ownedMembers() const;
+
+    // Attributes from aggregated QRedefinableElement
+    bool isLeaf() const;
+    void setLeaf(bool isLeaf);
+
+    // Association ends from aggregated QRedefinableElement
+    const QSet<QRedefinableElement *> *redefinedElements() const;
+    const QSet<QClassifier *> *redefinitionContexts() const;
+
+    // Attributes from aggregated QFeature
+    bool isStatic() const;
+    void setStatic(bool isStatic);
+
+    // Association ends from aggregated QFeature
+    const QSet<QClassifier *> *featuringClassifiers() const;
+
+    // Attributes from QBehavioralFeature
     QtUml::CallConcurrencyKind concurrency() const;
     void setConcurrency(QtUml::CallConcurrencyKind concurrency);
     bool isAbstract() const;
     void setAbstract(bool isAbstract);
 
-    // Association-ends
+    // Association ends from QBehavioralFeature
     const QSet<QType *> *raisedExceptions() const;
     void addRaisedException(QType *raisedException);
     void removeRaisedException(QType *raisedException);

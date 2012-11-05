@@ -81,7 +81,7 @@ public:
     explicit QPort(QObject *parent = 0);
     virtual ~QPort();
 
-    // Attributes
+    // Attributes from QPort
     bool isConjugated() const;
     void setConjugated(bool isConjugated);
     bool isBehavior() const;
@@ -89,7 +89,7 @@ public:
     bool isService() const;
     void setService(bool isService);
 
-    // Association-ends
+    // Association ends from QPort
     QProtocolStateMachine *protocol() const;
     void setProtocol(QProtocolStateMachine *protocol);
     const QSet<QInterface *> *required() const;

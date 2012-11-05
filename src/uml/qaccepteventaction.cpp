@@ -82,6 +82,10 @@ QAcceptEventAction::~QAcceptEventAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QAcceptEventAction
+// ---------------------------------------------------------------
+
 /*!
     Indicates whether there is a single output pin for the event, or multiple output pins for attributes of the event.
  */
@@ -103,6 +107,10 @@ void QAcceptEventAction::setUnmarshall(bool isUnmarshall)
     }
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QAcceptEventAction
+// ---------------------------------------------------------------
+
 /*!
     The type of events accepted by the action, as specified by triggers. For triggers with signal events, a signal of the specified type or any subtype of the specified signal type is accepted.
  */
@@ -123,7 +131,7 @@ void QAcceptEventAction::addTrigger(QTrigger *trigger)
         d->triggers->insert(trigger);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(trigger));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(trigger));
     }
 }
 
@@ -136,7 +144,7 @@ void QAcceptEventAction::removeTrigger(QTrigger *trigger)
         d->triggers->remove(trigger);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(trigger));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(trigger));
     }
 }
 
@@ -160,7 +168,7 @@ void QAcceptEventAction::addResult(QOutputPin *result)
         d->results->insert(result);
 
         // Adjust subsetted property(ies)
-        d->QActionPrivate::addOutput(dynamic_cast<QOutputPin *>(result));
+        (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(result));
     }
 }
 
@@ -173,7 +181,7 @@ void QAcceptEventAction::removeResult(QOutputPin *result)
         d->results->remove(result);
 
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(result));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(result));
     }
 }
 

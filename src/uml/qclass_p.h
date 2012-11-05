@@ -41,18 +41,18 @@
 #ifndef QTUML_QCLASS_P_H
 #define QTUML_QCLASS_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qencapsulatedclassifier_p.h"
 #include "private/qbehavioredclassifier_p.h"
-#include "qclass.h"
+
+#include "QtUml/QClass"
 
 // Qt includes
-#include <QtCore/QList>
-#include <QtCore/QSet>
+#include "QtCore/QList"
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -87,10 +87,6 @@ public:
     // Internal functions for read-only subsetted association ends
     void addExtension(QExtension *extension);
     void removeExtension(QExtension *extension);
-
-private:
-    QEncapsulatedClassifierPrivate *_wrappedEncapsulatedClassifierPrivate;
-    QBehavioredClassifierPrivate *_wrappedBehavioredClassifierPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

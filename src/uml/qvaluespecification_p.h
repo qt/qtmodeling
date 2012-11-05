@@ -41,17 +41,17 @@
 #ifndef QTUML_QVALUESPECIFICATION_P_H
 #define QTUML_QVALUESPECIFICATION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qtypedelement_p.h"
 #include "private/qpackageableelement_p.h"
-#include "qvaluespecification.h"
+
+#include "QtUml/QValueSpecification"
 
 // Qt includes
-#include <QtCore/QString>
+#include "QtCore/QString"
 
 QT_BEGIN_HEADER
 
@@ -70,10 +70,6 @@ public:
     explicit QValueSpecificationPrivate();
     virtual ~QValueSpecificationPrivate();
 
-
-private:
-    QTypedElementPrivate *_wrappedTypedElementPrivate;
-    QPackageableElementPrivate *_wrappedPackageableElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

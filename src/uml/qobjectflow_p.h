@@ -41,12 +41,12 @@
 #ifndef QTUML_QOBJECTFLOW_P_H
 #define QTUML_QOBJECTFLOW_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qactivityedge_p.h"
-#include "qobjectflow.h"
 
+#include "QtUml/QObjectFlow"
 
 QT_BEGIN_HEADER
 

@@ -45,16 +45,14 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtUml/QMultiplicityElement>
+#include <QtUml/QConnectableElement>
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
-
-// Forward decls for aggregated 'base classes'
-class QMultiplicityElement;
-class QConnectableElement;
 
 // Forward decls for function parameters
 class QActivity;
@@ -66,10 +64,6 @@ class QVariablePrivate;
 class Q_UML_EXPORT QVariable : public QObject
 {
     Q_OBJECT
-
-    // From QVariable
-    Q_PROPERTY(QStructuredActivityNode * scope READ scope WRITE setScope)
-    Q_PROPERTY(QActivity * activityScope READ activityScope WRITE setActivityScope)
 
     // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
@@ -102,6 +96,10 @@ class Q_UML_EXPORT QVariable : public QObject
     Q_PROPERTY(const QList<QConnectorEnd *> * ends READ ends)
     Q_PROPERTY(QConnectableElementTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
 
+    // From QVariable
+    Q_PROPERTY(QStructuredActivityNode * scope READ scope WRITE setScope)
+    Q_PROPERTY(QActivity * activityScope READ activityScope WRITE setActivityScope)
+
     Q_DISABLE_COPY(QVariable)
     Q_DECLARE_PRIVATE(QVariable)
 
@@ -109,7 +107,58 @@ public:
     explicit QVariable(QObject *parent = 0);
     virtual ~QVariable();
 
-    // Association-ends
+    // Association ends from aggregated QElement
+    const QSet<QElement *> *ownedElements() const;
+    QElement *owner() const;
+    const QSet<QComment *> *ownedComments() const;
+    void addOwnedComment(QComment *ownedComment);
+    void removeOwnedComment(QComment *ownedComment);
+
+    // Attributes from aggregated QMultiplicityElement
+    qint32 upper() const;
+    void setUpper(qint32 upper);
+    bool isUnique() const;
+    void setUnique(bool isUnique);
+    bool isOrdered() const;
+    void setOrdered(bool isOrdered);
+    qint32 lower() const;
+    void setLower(qint32 lower);
+
+    // Association ends from aggregated QMultiplicityElement
+    QValueSpecification *upperValue() const;
+    void setUpperValue(QValueSpecification *upperValue);
+    QValueSpecification *lowerValue() const;
+    void setLowerValue(QValueSpecification *lowerValue);
+
+    // Attributes from aggregated QNamedElement
+    QString name() const;
+    void setName(QString name);
+    QtUml::VisibilityKind visibility() const;
+    void setVisibility(QtUml::VisibilityKind visibility);
+    QString qualifiedName() const;
+
+    // Association ends from aggregated QNamedElement
+    QStringExpression *nameExpression() const;
+    void setNameExpression(QStringExpression *nameExpression);
+    QNamespace *namespace_() const;
+    const QSet<QDependency *> *clientDependencies() const;
+    void addClientDependency(QDependency *clientDependency);
+    void removeClientDependency(QDependency *clientDependency);
+
+    // Association ends from aggregated QTypedElement
+    QType *type() const;
+    void setType(QType *type);
+
+    // Association ends from aggregated QParameterableElement
+    QTemplateParameter *owningTemplateParameter() const;
+    void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
+
+    // Association ends from aggregated QConnectableElement
+    const QList<QConnectorEnd *> *ends() const;
+    QConnectableElementTemplateParameter *templateParameter() const;
+    void setTemplateParameter(QConnectableElementTemplateParameter *templateParameter);
+
+    // Association ends from QVariable
     QStructuredActivityNode *scope() const;
     void setScope(QStructuredActivityNode *scope);
     QActivity *activityScope() const;

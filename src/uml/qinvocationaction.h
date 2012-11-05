@@ -76,7 +76,7 @@ public:
     explicit QInvocationAction(QObject *parent = 0);
     virtual ~QInvocationAction();
 
-    // Association-ends
+    // Association ends from QInvocationAction
     const QList<QInputPin *> *arguments() const;
     void addArgument(QInputPin *argument);
     void removeArgument(QInputPin *argument);

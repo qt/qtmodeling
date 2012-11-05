@@ -71,7 +71,7 @@ public:
     explicit QActionInputPin(QObject *parent = 0);
     virtual ~QActionInputPin();
 
-    // Association-ends
+    // Association ends from QActionInputPin
     QAction *fromAction() const;
     void setFromAction(QAction *fromAction);
 

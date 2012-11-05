@@ -72,11 +72,11 @@ public:
     explicit QRemoveStructuralFeatureValueAction(QObject *parent = 0);
     virtual ~QRemoveStructuralFeatureValueAction();
 
-    // Attributes
+    // Attributes from QRemoveStructuralFeatureValueAction
     bool isRemoveDuplicates() const;
     void setRemoveDuplicates(bool isRemoveDuplicates);
 
-    // Association-ends
+    // Association ends from QRemoveStructuralFeatureValueAction
     QInputPin *removeAt() const;
     void setRemoveAt(QInputPin *removeAt);
 

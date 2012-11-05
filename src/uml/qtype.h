@@ -71,7 +71,7 @@ public:
     explicit QType(QObject *parent = 0);
     virtual ~QType();
 
-    // Association-ends
+    // Association ends from QType
     QPackage *package() const;
     void setPackage(QPackage *package);
 

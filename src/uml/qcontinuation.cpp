@@ -42,7 +42,6 @@
 #include "qcontinuation.h"
 #include "qcontinuation_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QContinuationPrivate::QContinuationPrivate() :
@@ -75,6 +74,10 @@ QContinuation::QContinuation(QContinuationPrivate &dd, QObject *parent) :
 QContinuation::~QContinuation()
 {
 }
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QContinuation
+// ---------------------------------------------------------------
 
 /*!
     True: when the Continuation is at the end of the enclosing InteractionFragment and False when it is in the beginning.

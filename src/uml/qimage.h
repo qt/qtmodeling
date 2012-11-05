@@ -73,7 +73,7 @@ public:
     explicit QImage(QObject *parent = 0);
     virtual ~QImage();
 
-    // Attributes
+    // Attributes from QImage
     QString format() const;
     void setFormat(QString format);
     QString location() const;

@@ -77,6 +77,10 @@ QChangeEvent::~QChangeEvent()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QChangeEvent
+// ---------------------------------------------------------------
+
 /*!
     A Boolean-valued expression that will result in a change event whenever its value changes from false to true.
  */
@@ -95,13 +99,13 @@ void QChangeEvent::setChangeExpression(QValueSpecification *changeExpression)
     Q_D(QChangeEvent);
     if (d->changeExpression != changeExpression) {
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->changeExpression));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->changeExpression));
 
         d->changeExpression = changeExpression;
 
         // Adjust subsetted property(ies)
         if (changeExpression) {
-            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(changeExpression));
+            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(changeExpression));
         }
     }
 }

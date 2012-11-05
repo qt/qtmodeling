@@ -41,12 +41,12 @@
 #ifndef QTUML_QLITERALINTEGER_P_H
 #define QTUML_QLITERALINTEGER_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qliteralspecification_p.h"
-#include "qliteralinteger.h"
 
+#include "QtUml/QLiteralInteger"
 
 QT_BEGIN_HEADER
 

@@ -41,12 +41,12 @@
 #ifndef QTUML_QLITERALSPECIFICATION_P_H
 #define QTUML_QLITERALSPECIFICATION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qvaluespecification_p.h"
-#include "qliteralspecification.h"
 
+#include "QtUml/QLiteralSpecification"
 
 QT_BEGIN_HEADER
 

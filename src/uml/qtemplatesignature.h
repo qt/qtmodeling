@@ -77,7 +77,7 @@ public:
     explicit QTemplateSignature(QObject *parent = 0);
     virtual ~QTemplateSignature();
 
-    // Association-ends
+    // Association ends from QTemplateSignature
     const QList<QTemplateParameter *> *parameters() const;
     void addParameter(QTemplateParameter *parameter);
     void removeParameter(QTemplateParameter *parameter);

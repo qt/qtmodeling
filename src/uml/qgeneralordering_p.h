@@ -41,12 +41,12 @@
 #ifndef QTUML_QGENERALORDERING_P_H
 #define QTUML_QGENERALORDERING_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qnamedelement_p.h"
-#include "qgeneralordering.h"
 
+#include "QtUml/QGeneralOrdering"
 
 QT_BEGIN_HEADER
 

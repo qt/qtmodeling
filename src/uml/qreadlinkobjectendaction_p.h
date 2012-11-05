@@ -41,12 +41,12 @@
 #ifndef QTUML_QREADLINKOBJECTENDACTION_P_H
 #define QTUML_QREADLINKOBJECTENDACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qaction_p.h"
-#include "qreadlinkobjectendaction.h"
 
+#include "QtUml/QReadLinkObjectEndAction"
 
 QT_BEGIN_HEADER
 

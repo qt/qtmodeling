@@ -78,6 +78,10 @@ QProtocolStateMachine::~QProtocolStateMachine()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QProtocolStateMachine
+// ---------------------------------------------------------------
+
 /*!
     Conformance between protocol state machines.
  */
@@ -98,7 +102,7 @@ void QProtocolStateMachine::addConformance(QProtocolConformance *conformance)
         d->conformance->insert(conformance);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(conformance));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(conformance));
 
         // Adjust opposite property
         conformance->setSpecificMachine(this);
@@ -114,7 +118,7 @@ void QProtocolStateMachine::removeConformance(QProtocolConformance *conformance)
         d->conformance->remove(conformance);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(conformance));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(conformance));
 
         // Adjust opposite property
         conformance->setSpecificMachine(0);

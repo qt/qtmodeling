@@ -45,6 +45,8 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtUml/QOccurrenceSpecification>
+#include <QtUml/QMessageEnd>
 
 QT_BEGIN_HEADER
 
@@ -52,14 +54,12 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-// Forward decls for aggregated 'base classes'
-class QOccurrenceSpecification;
-class QMessageEnd;
-
 class QMessageOccurrenceSpecificationPrivate;
 
 class Q_UML_EXPORT QMessageOccurrenceSpecification : public QObject
 {
+    Q_OBJECT
+
     // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
@@ -82,6 +82,32 @@ class Q_UML_EXPORT QMessageOccurrenceSpecification : public QObject
 public:
     explicit QMessageOccurrenceSpecification(QObject *parent = 0);
     virtual ~QMessageOccurrenceSpecification();
+
+    // Association ends from aggregated QElement
+    const QSet<QElement *> *ownedElements() const;
+    QElement *owner() const;
+    const QSet<QComment *> *ownedComments() const;
+    void addOwnedComment(QComment *ownedComment);
+    void removeOwnedComment(QComment *ownedComment);
+
+    // Attributes from aggregated QNamedElement
+    QString name() const;
+    void setName(QString name);
+    QtUml::VisibilityKind visibility() const;
+    void setVisibility(QtUml::VisibilityKind visibility);
+    QString qualifiedName() const;
+
+    // Association ends from aggregated QNamedElement
+    QStringExpression *nameExpression() const;
+    void setNameExpression(QStringExpression *nameExpression);
+    QNamespace *namespace_() const;
+    const QSet<QDependency *> *clientDependencies() const;
+    void addClientDependency(QDependency *clientDependency);
+    void removeClientDependency(QDependency *clientDependency);
+
+    // Association ends from aggregated QMessageEnd
+    QMessage *message() const;
+    void setMessage(QMessage *message);
 
 protected:
     explicit QMessageOccurrenceSpecification(QMessageOccurrenceSpecificationPrivate &dd, QObject *parent = 0);

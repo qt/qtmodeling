@@ -73,7 +73,7 @@ public:
     explicit QCallOperationAction(QObject *parent = 0);
     virtual ~QCallOperationAction();
 
-    // Association-ends
+    // Association ends from QCallOperationAction
     QOperation *operation() const;
     void setOperation(QOperation *operation);
     QInputPin *target() const;

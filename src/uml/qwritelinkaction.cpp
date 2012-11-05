@@ -42,7 +42,6 @@
 #include "qwritelinkaction.h"
 #include "qwritelinkaction_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QWriteLinkActionPrivate::QWriteLinkActionPrivate()
@@ -74,6 +73,8 @@ QWriteLinkAction::QWriteLinkAction(QWriteLinkActionPrivate &dd, QObject *parent)
 QWriteLinkAction::~QWriteLinkAction()
 {
 }
+
+#include "moc_qwritelinkaction.cpp"
 
 QT_END_NAMESPACE_QTUML
 

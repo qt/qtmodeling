@@ -77,6 +77,10 @@ QAcceptCallAction::~QAcceptCallAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QAcceptCallAction
+// ---------------------------------------------------------------
+
 /*!
     Pin where a value is placed containing sufficient information to perform a subsequent reply and return control to the caller. The contents of this value are opaque. It can be passed and copied but it cannot be manipulated by the model.
  */
@@ -95,13 +99,13 @@ void QAcceptCallAction::setReturnInformation(QOutputPin *returnInformation)
     Q_D(QAcceptCallAction);
     if (d->returnInformation != returnInformation) {
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeOutput(dynamic_cast<QOutputPin *>(d->returnInformation));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(d->returnInformation));
 
         d->returnInformation = returnInformation;
 
         // Adjust subsetted property(ies)
         if (returnInformation) {
-            d->QActionPrivate::addOutput(dynamic_cast<QOutputPin *>(returnInformation));
+            (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(returnInformation));
         }
     }
 }

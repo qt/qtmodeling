@@ -76,11 +76,11 @@ public:
     explicit QClassifierTemplateParameter(QObject *parent = 0);
     virtual ~QClassifierTemplateParameter();
 
-    // Attributes
+    // Attributes from QClassifierTemplateParameter
     bool allowSubstitutable() const;
     void setAllowSubstitutable(bool allowSubstitutable);
 
-    // Association-ends
+    // Association ends from QClassifierTemplateParameter
     QClassifier *parameteredElement() const;
     void setParameteredElement(QClassifier *parameteredElement);
     const QSet<QClassifier *> *constrainingClassifiers() const;

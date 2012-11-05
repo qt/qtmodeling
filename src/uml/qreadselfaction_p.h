@@ -41,12 +41,12 @@
 #ifndef QTUML_QREADSELFACTION_P_H
 #define QTUML_QREADSELFACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qaction_p.h"
-#include "qreadselfaction.h"
 
+#include "QtUml/QReadSelfAction"
 
 QT_BEGIN_HEADER
 

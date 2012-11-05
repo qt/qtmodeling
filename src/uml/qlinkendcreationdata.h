@@ -72,11 +72,11 @@ public:
     explicit QLinkEndCreationData(QObject *parent = 0);
     virtual ~QLinkEndCreationData();
 
-    // Attributes
+    // Attributes from QLinkEndCreationData
     bool isReplaceAll() const;
     void setReplaceAll(bool isReplaceAll);
 
-    // Association-ends
+    // Association ends from QLinkEndCreationData
     QInputPin *insertAt() const;
     void setInsertAt(QInputPin *insertAt);
 

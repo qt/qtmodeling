@@ -71,7 +71,7 @@ public:
     explicit QInformationItem(QObject *parent = 0);
     virtual ~QInformationItem();
 
-    // Association-ends
+    // Association ends from QInformationItem
     const QSet<QClassifier *> *represented() const;
     void addRepresented(QClassifier *represented);
     void removeRepresented(QClassifier *represented);

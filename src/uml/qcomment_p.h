@@ -41,15 +41,16 @@
 #ifndef QTUML_QCOMMENT_P_H
 #define QTUML_QCOMMENT_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qelement_p.h"
-#include "qcomment.h"
+
+#include "QtUml/QComment"
 
 // Qt includes
-#include <QtCore/QString>
-#include <QtCore/QSet>
+#include "QtCore/QString"
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

@@ -76,11 +76,11 @@ public:
     explicit QRedefinableElement(QObject *parent = 0);
     virtual ~QRedefinableElement();
 
-    // Attributes
+    // Attributes from QRedefinableElement
     bool isLeaf() const;
     void setLeaf(bool isLeaf);
 
-    // Association-ends
+    // Association ends from QRedefinableElement
     const QSet<QRedefinableElement *> *redefinedElements() const;
     const QSet<QClassifier *> *redefinitionContexts() const;
 

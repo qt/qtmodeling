@@ -10,43 +10,45 @@
 
 #include <QtCore/QDebug>
 
-typedef const QSet<QtUml::QStereotype *> QStereotypeList;
-typedef const QSet<QtUml::QPackageableElement *> QPackageableElementList;
+using namespace QtUml;
+
+typedef const QSet<QStereotype *> QStereotypeList;
+typedef const QSet<QPackageableElement *> QPackageableElementList;
 
 int main ()
 {
     // Create a "dymmy" UML meta-model
-    QtUml::QModel *umlModel = new QtUml::QModel;
+    QUmlPointer<QModel> umlModel = new QModel;
     umlModel->setName("UML Meta-Model");
-    QtUml::QClass *class_ = new QtUml::QClass;
+    QUmlPointer<QClass> class_ = new QClass;
     class_->setName("Class");
     umlModel->addOwnedType(class_);
 
     // Create a profile
-    QtUml::QProfile *profile = new QtUml::QProfile;
+    QUmlPointer<QProfile> profile = new QProfile;
     profile->setName("MyProfile");
 
     // Add a stereotype to profile
-    QtUml::QStereotype *stereotype = new QtUml::QStereotype;
+    QUmlPointer<QStereotype> stereotype = new QStereotype;
     stereotype->setName("MyStereotype");
     profile->addPackagedElement(stereotype);
 
     // Show profile's owned stereotypes
     QScopedPointer<QStereotypeList> ownedStereotypes (profile->ownedStereotypes());
     qDebug() << "Owned stereotypes:";
-    foreach (QtUml::QStereotype *ownedStereotype, *ownedStereotypes)
+    foreach (QStereotype *ownedStereotype, *ownedStereotypes)
         qDebug() << "    " << ownedStereotype->name();
 
     // Adding attribute to stereotype
-    QtUml::QPrimitiveType *booleanPrimitiveType = new QtUml::QPrimitiveType;
+    QUmlPointer<QPrimitiveType> booleanPrimitiveType = new QPrimitiveType;
     booleanPrimitiveType->setName("boolean");
-    QtUml::QProperty *property = new QtUml::QProperty;
+    QUmlPointer<QProperty> property = new QProperty;
     property->setName("isTransient");
     property->setType(booleanPrimitiveType);
     stereotype->addOwnedAttribute(property);
 
     // Create UML meta-model element import
-    QtUml::QElementImport *elementImport = new QtUml::QElementImport;
+    QUmlPointer<QElementImport> elementImport = new QElementImport;
     elementImport->setImportedElement(umlModel->packagedElements()->toList().first());
 
     // Add meta-class reference to profile
@@ -54,25 +56,25 @@ int main ()
 
     // Show profile's data
     qDebug() << "Profile members:";
-    foreach (QtUml::QNamedElement *namedElement, *profile->members())
+    foreach (QNamedElement *namedElement, *profile->members())
         qDebug() << "    " << namedElement->name();
     qDebug() << "Profile owned members:";
-    foreach (QtUml::QNamedElement *namedElement, *profile->ownedMembers())
+    foreach (QNamedElement *namedElement, *profile->ownedMembers())
         qDebug() << "    " << namedElement->name();
     QScopedPointer<QPackageableElementList> importedMembers (profile->importedMembers());
     qDebug() << "Profile imported members:";
-    foreach (QtUml::QPackageableElement *importedMember, *importedMembers)
+    foreach (QPackageableElement *importedMember, *importedMembers)
         qDebug() << "    " << importedMember->name();
 
     // Create extension
-    QtUml::QExtension *extension = new QtUml::QExtension;
+    QUmlPointer<QExtension> extension = new QExtension;
     extension->setName("class_stereotype");
 
-    QtUml::QProperty *stereotypeProperty = new QtUml::QProperty;
+    QUmlPointer<QProperty> stereotypeProperty = new QProperty;
     stereotypeProperty->setName("base_class");
     stereotypeProperty->setType(class_);
 
-    QtUml::QExtensionEnd *extensionEnd = new QtUml::QExtensionEnd;
+    QUmlPointer<QExtensionEnd> extensionEnd = new QExtensionEnd;
     extensionEnd->setName("extension_stereotype");
     extensionEnd->setType(stereotype);
 
@@ -82,6 +84,6 @@ int main ()
 
     stereotype->addOwnedAttribute(stereotypeProperty);
 
-    delete profile; // That will delete all owned elements
+    delete profile.data(); // That will delete all owned elements
 }
 

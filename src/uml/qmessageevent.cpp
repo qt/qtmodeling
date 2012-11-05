@@ -42,7 +42,6 @@
 #include "qmessageevent.h"
 #include "qmessageevent_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QMessageEventPrivate::QMessageEventPrivate()
@@ -74,6 +73,8 @@ QMessageEvent::QMessageEvent(QMessageEventPrivate &dd, QObject *parent) :
 QMessageEvent::~QMessageEvent()
 {
 }
+
+#include "moc_qmessageevent.cpp"
 
 QT_END_NAMESPACE_QTUML
 

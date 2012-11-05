@@ -77,6 +77,10 @@ QMessageEnd::~QMessageEnd()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QMessageEnd
+// ---------------------------------------------------------------
+
 /*!
     References a Message.
  */
@@ -97,6 +101,8 @@ void QMessageEnd::setMessage(QMessage *message)
         d->message = message;
     }
 }
+
+#include "moc_qmessageend.cpp"
 
 QT_END_NAMESPACE_QTUML
 

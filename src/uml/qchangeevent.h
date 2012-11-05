@@ -71,7 +71,7 @@ public:
     explicit QChangeEvent(QObject *parent = 0);
     virtual ~QChangeEvent();
 
-    // Association-ends
+    // Association ends from QChangeEvent
     QValueSpecification *changeExpression() const;
     void setChangeExpression(QValueSpecification *changeExpression);
 

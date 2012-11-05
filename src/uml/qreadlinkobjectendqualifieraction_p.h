@@ -41,12 +41,12 @@
 #ifndef QTUML_QREADLINKOBJECTENDQUALIFIERACTION_P_H
 #define QTUML_QREADLINKOBJECTENDQUALIFIERACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qaction_p.h"
-#include "qreadlinkobjectendqualifieraction.h"
 
+#include "QtUml/QReadLinkObjectEndQualifierAction"
 
 QT_BEGIN_HEADER
 

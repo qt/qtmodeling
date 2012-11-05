@@ -45,6 +45,8 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtUml/QRedefinableElement>
+#include <QtUml/QNamespace>
 
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
@@ -57,10 +59,6 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
-
-// Forward decls for aggregated 'base classes'
-class QRedefinableElement;
-class QNamespace;
 
 // Forward decls for function parameters
 class QTrigger;
@@ -76,17 +74,6 @@ class QTransitionPrivate;
 class Q_UML_EXPORT QTransition : public QObject
 {
     Q_OBJECT
-
-    // From QTransition
-    Q_PROPERTY(QtUml::TransitionKind kind READ kind WRITE setKind)
-    Q_PROPERTY(QConstraint * guard READ guard WRITE setGuard)
-    Q_PROPERTY(QVertex * target READ target WRITE setTarget)
-    Q_PROPERTY(QBehavior * effect READ effect WRITE setEffect)
-    Q_PROPERTY(QRegion * container READ container WRITE setContainer)
-    Q_PROPERTY(QClassifier * redefinitionContext READ redefinitionContext)
-    Q_PROPERTY(QTransition * redefinedTransition READ redefinedTransition WRITE setRedefinedTransition)
-    Q_PROPERTY(QVertex * source READ source WRITE setSource)
-    Q_PROPERTY(const QSet<QTrigger *> * triggers READ triggers)
 
     // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
@@ -113,6 +100,17 @@ class Q_UML_EXPORT QTransition : public QObject
     Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
     Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
 
+    // From QTransition
+    Q_PROPERTY(QtUml::TransitionKind kind READ kind WRITE setKind)
+    Q_PROPERTY(QConstraint * guard READ guard WRITE setGuard)
+    Q_PROPERTY(QVertex * target READ target WRITE setTarget)
+    Q_PROPERTY(QBehavior * effect READ effect WRITE setEffect)
+    Q_PROPERTY(QRegion * container READ container WRITE setContainer)
+    Q_PROPERTY(QClassifier * redefinitionContext READ redefinitionContext)
+    Q_PROPERTY(QTransition * redefinedTransition READ redefinedTransition WRITE setRedefinedTransition)
+    Q_PROPERTY(QVertex * source READ source WRITE setSource)
+    Q_PROPERTY(const QSet<QTrigger *> * triggers READ triggers)
+
     Q_DISABLE_COPY(QTransition)
     Q_DECLARE_PRIVATE(QTransition)
 
@@ -120,11 +118,54 @@ public:
     explicit QTransition(QObject *parent = 0);
     virtual ~QTransition();
 
-    // Attributes
+    // Association ends from aggregated QElement
+    const QSet<QElement *> *ownedElements() const;
+    QElement *owner() const;
+    const QSet<QComment *> *ownedComments() const;
+    void addOwnedComment(QComment *ownedComment);
+    void removeOwnedComment(QComment *ownedComment);
+
+    // Attributes from aggregated QNamedElement
+    QString name() const;
+    void setName(QString name);
+    QtUml::VisibilityKind visibility() const;
+    void setVisibility(QtUml::VisibilityKind visibility);
+    QString qualifiedName() const;
+
+    // Association ends from aggregated QNamedElement
+    QStringExpression *nameExpression() const;
+    void setNameExpression(QStringExpression *nameExpression);
+    QNamespace *namespace_() const;
+    const QSet<QDependency *> *clientDependencies() const;
+    void addClientDependency(QDependency *clientDependency);
+    void removeClientDependency(QDependency *clientDependency);
+
+    // Attributes from aggregated QRedefinableElement
+    bool isLeaf() const;
+    void setLeaf(bool isLeaf);
+
+    // Association ends from aggregated QRedefinableElement
+    const QSet<QRedefinableElement *> *redefinedElements() const;
+
+    // Association ends from aggregated QNamespace
+    const QSet<QPackageImport *> *packageImports() const;
+    void addPackageImport(QPackageImport *packageImport);
+    void removePackageImport(QPackageImport *packageImport);
+    const QSet<QNamedElement *> *members() const;
+    const QSet<QPackageableElement *> *importedMembers() const;
+    const QSet<QElementImport *> *elementImports() const;
+    void addElementImport(QElementImport *elementImport);
+    void removeElementImport(QElementImport *elementImport);
+    const QSet<QConstraint *> *ownedRules() const;
+    void addOwnedRule(QConstraint *ownedRule);
+    void removeOwnedRule(QConstraint *ownedRule);
+    const QSet<QNamedElement *> *ownedMembers() const;
+
+    // Attributes from QTransition
     QtUml::TransitionKind kind() const;
     void setKind(QtUml::TransitionKind kind);
 
-    // Association-ends
+    // Association ends from QTransition
     QConstraint *guard() const;
     void setGuard(QConstraint *guard);
     QVertex *target() const;

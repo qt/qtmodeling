@@ -71,7 +71,7 @@ public:
     explicit QClearStructuralFeatureAction(QObject *parent = 0);
     virtual ~QClearStructuralFeatureAction();
 
-    // Association-ends
+    // Association ends from QClearStructuralFeatureAction
     QOutputPin *result() const;
     void setResult(QOutputPin *result);
 

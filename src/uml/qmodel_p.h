@@ -41,14 +41,15 @@
 #ifndef QTUML_QMODEL_P_H
 #define QTUML_QMODEL_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qpackage_p.h"
-#include "qmodel.h"
+
+#include "QtUml/QModel"
 
 // Qt includes
-#include <QtCore/QString>
+#include "QtCore/QString"
 
 QT_BEGIN_HEADER
 

@@ -41,12 +41,12 @@
 #ifndef QTUML_QLINKENDDESTRUCTIONDATA_P_H
 #define QTUML_QLINKENDDESTRUCTIONDATA_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qlinkenddata_p.h"
-#include "qlinkenddestructiondata.h"
 
+#include "QtUml/QLinkEndDestructionData"
 
 QT_BEGIN_HEADER
 

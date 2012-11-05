@@ -42,7 +42,6 @@
 #include "qinitialnode.h"
 #include "qinitialnode_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QInitialNodePrivate::QInitialNodePrivate()

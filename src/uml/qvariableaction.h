@@ -71,7 +71,7 @@ public:
     explicit QVariableAction(QObject *parent = 0);
     virtual ~QVariableAction();
 
-    // Association-ends
+    // Association ends from QVariableAction
     QVariable *variable() const;
     void setVariable(QVariable *variable);
 

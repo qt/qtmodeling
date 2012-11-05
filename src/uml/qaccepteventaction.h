@@ -77,11 +77,11 @@ public:
     explicit QAcceptEventAction(QObject *parent = 0);
     virtual ~QAcceptEventAction();
 
-    // Attributes
+    // Attributes from QAcceptEventAction
     bool isUnmarshall() const;
     void setUnmarshall(bool isUnmarshall);
 
-    // Association-ends
+    // Association ends from QAcceptEventAction
     const QSet<QTrigger *> *triggers() const;
     void addTrigger(QTrigger *trigger);
     void removeTrigger(QTrigger *trigger);

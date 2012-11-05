@@ -88,6 +88,10 @@ QClause::~QClause()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QClause
+// ---------------------------------------------------------------
+
 /*!
     A set of clauses which may not be tested unless the current clause tests false.
  */

@@ -73,7 +73,7 @@ public:
     explicit QValueSpecificationAction(QObject *parent = 0);
     virtual ~QValueSpecificationAction();
 
-    // Association-ends
+    // Association ends from QValueSpecificationAction
     QValueSpecification *value() const;
     void setValue(QValueSpecification *value);
     QOutputPin *result() const;

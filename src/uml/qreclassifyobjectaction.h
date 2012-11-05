@@ -78,11 +78,11 @@ public:
     explicit QReclassifyObjectAction(QObject *parent = 0);
     virtual ~QReclassifyObjectAction();
 
-    // Attributes
+    // Attributes from QReclassifyObjectAction
     bool isReplaceAll() const;
     void setReplaceAll(bool isReplaceAll);
 
-    // Association-ends
+    // Association ends from QReclassifyObjectAction
     const QSet<QClassifier *> *oldClassifiers() const;
     void addOldClassifier(QClassifier *oldClassifier);
     void removeOldClassifier(QClassifier *oldClassifier);

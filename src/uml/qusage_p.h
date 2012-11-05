@@ -41,12 +41,12 @@
 #ifndef QTUML_QUSAGE_P_H
 #define QTUML_QUSAGE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qdependency_p.h"
-#include "qusage.h"
 
+#include "QtUml/QUsage"
 
 QT_BEGIN_HEADER
 

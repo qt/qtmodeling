@@ -41,12 +41,12 @@
 #ifndef QTUML_QPROFILEAPPLICATION_P_H
 #define QTUML_QPROFILEAPPLICATION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qdirectedrelationship_p.h"
-#include "qprofileapplication.h"
 
+#include "QtUml/QProfileApplication"
 
 QT_BEGIN_HEADER
 

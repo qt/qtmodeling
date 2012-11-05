@@ -69,7 +69,7 @@ public:
     explicit QInterval(QObject *parent = 0);
     virtual ~QInterval();
 
-    // Association-ends
+    // Association ends from QInterval
     QValueSpecification *min() const;
     void setMin(QValueSpecification *min);
     QValueSpecification *max() const;

@@ -83,6 +83,10 @@ QExceptionHandler::~QExceptionHandler()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QExceptionHandler
+// ---------------------------------------------------------------
+
 /*!
     A node that is executed if the handler satisfies an uncaught exception.
  */
@@ -159,7 +163,7 @@ void QExceptionHandler::setProtectedNode(QExecutableNode *protectedNode)
         d->protectedNode = protectedNode;
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::setOwner(dynamic_cast<QElement *>(protectedNode));
+        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(protectedNode));
 
         // Adjust opposite property
         if (protectedNode)

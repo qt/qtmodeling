@@ -78,7 +78,7 @@ public:
     explicit QDeployment(QObject *parent = 0);
     virtual ~QDeployment();
 
-    // Association-ends
+    // Association ends from QDeployment
     QDeploymentTarget *location() const;
     void setLocation(QDeploymentTarget *location);
     const QSet<QDeploymentSpecification *> *configurations() const;

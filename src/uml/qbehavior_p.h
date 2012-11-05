@@ -41,15 +41,16 @@
 #ifndef QTUML_QBEHAVIOR_P_H
 #define QTUML_QBEHAVIOR_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qclass_p.h"
-#include "qbehavior.h"
+
+#include "QtUml/QBehavior"
 
 // Qt includes
-#include <QtCore/QList>
-#include <QtCore/QSet>
+#include "QtCore/QList"
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

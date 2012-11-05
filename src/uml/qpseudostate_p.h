@@ -41,16 +41,15 @@
 #ifndef QTUML_QPSEUDOSTATE_P_H
 #define QTUML_QPSEUDOSTATE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qvertex_p.h"
-#include "qpseudostate.h"
 
+#include "QtUml/QPseudostate"
 
 // QtUml includes
-#include <QtUml/QtUmlEnumerations>
-
+#include "QtUml/QtUmlEnumerations"
 
 QT_BEGIN_HEADER
 

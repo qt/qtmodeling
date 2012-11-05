@@ -79,6 +79,10 @@ QStateInvariant::~QStateInvariant()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QStateInvariant
+// ---------------------------------------------------------------
+
 /*!
     A Constraint that should hold at runtime for this StateInvariant
  */
@@ -97,13 +101,13 @@ void QStateInvariant::setInvariant(QConstraint *invariant)
     Q_D(QStateInvariant);
     if (d->invariant != invariant) {
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->invariant));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->invariant));
 
         d->invariant = invariant;
 
         // Adjust subsetted property(ies)
         if (invariant) {
-            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(invariant));
+            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(invariant));
         }
     }
 }

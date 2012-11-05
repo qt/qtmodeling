@@ -77,11 +77,11 @@ public:
     explicit QPackageImport(QObject *parent = 0);
     virtual ~QPackageImport();
 
-    // Attributes
+    // Attributes from QPackageImport
     QtUml::VisibilityKind visibility() const;
     void setVisibility(QtUml::VisibilityKind visibility);
 
-    // Association-ends
+    // Association ends from QPackageImport
     QNamespace *importingNamespace() const;
     void setImportingNamespace(QNamespace *importingNamespace);
     QPackage *importedPackage() const;

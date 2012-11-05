@@ -41,15 +41,14 @@
 #ifndef QTUML_QINCLUDE_P_H
 #define QTUML_QINCLUDE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qdirectedrelationship_p.h"
 #include "private/qnamedelement_p.h"
-#include "qinclude.h"
 
+#include "QtUml/QInclude"
 
 QT_BEGIN_HEADER
 
@@ -71,10 +70,6 @@ public:
 
     QUseCase *includingCase;
     QUseCase *addition;
-
-private:
-    QDirectedRelationshipPrivate *_wrappedDirectedRelationshipPrivate;
-    QNamedElementPrivate *_wrappedNamedElementPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

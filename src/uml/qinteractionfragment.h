@@ -80,7 +80,7 @@ public:
     explicit QInteractionFragment(QObject *parent = 0);
     virtual ~QInteractionFragment();
 
-    // Association-ends
+    // Association ends from QInteractionFragment
     const QSet<QGeneralOrdering *> *generalOrderings() const;
     void addGeneralOrdering(QGeneralOrdering *generalOrdering);
     void removeGeneralOrdering(QGeneralOrdering *generalOrdering);

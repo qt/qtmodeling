@@ -78,6 +78,10 @@ QExpansionNode::~QExpansionNode()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QExpansionNode
+// ---------------------------------------------------------------
+
 /*!
     The expansion region for which the node is an output.
  */

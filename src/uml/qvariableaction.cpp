@@ -77,6 +77,10 @@ QVariableAction::~QVariableAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QVariableAction
+// ---------------------------------------------------------------
+
 /*!
     Variable to be read.
  */
@@ -97,6 +101,8 @@ void QVariableAction::setVariable(QVariable *variable)
         d->variable = variable;
     }
 }
+
+#include "moc_qvariableaction.cpp"
 
 QT_END_NAMESPACE_QTUML
 

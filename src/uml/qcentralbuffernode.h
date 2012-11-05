@@ -56,6 +56,8 @@ class QCentralBufferNodePrivate;
 
 class Q_UML_EXPORT QCentralBufferNode : public QObjectNode
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QCentralBufferNode)
     Q_DECLARE_PRIVATE(QCentralBufferNode)
 

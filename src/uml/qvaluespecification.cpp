@@ -80,6 +80,176 @@ QValueSpecification::~QValueSpecification()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QElement
+// ---------------------------------------------------------------
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QElement *> *QValueSpecification::ownedElements() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+}
+
+/*!
+    The Element that owns this element.
+ */
+QElement *QValueSpecification::owner() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->owner();
+}
+
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QComment *> *QValueSpecification::ownedComments() const
+{
+    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+}
+
+void QValueSpecification::addOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+}
+
+void QValueSpecification::removeOwnedComment(QComment *ownedComment)
+{
+    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The name of the NamedElement.
+ */
+QString QValueSpecification::name() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+}
+
+void QValueSpecification::setName(QString name)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+}
+
+/*!
+    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
+ */
+QString QValueSpecification::qualifiedName() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QNamedElement
+// ---------------------------------------------------------------
+
+/*!
+    The string expression used to define the name of this named element.
+ */
+QStringExpression *QValueSpecification::nameExpression() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+}
+
+void QValueSpecification::setNameExpression(QStringExpression *nameExpression)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+}
+
+/*!
+    Specifies the namespace that owns the NamedElement.
+ */
+QNamespace *QValueSpecification::namespace_() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+}
+
+/*!
+    Indicates the dependencies that reference the client.
+ */
+const QSet<QDependency *> *QValueSpecification::clientDependencies() const
+{
+    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+}
+
+void QValueSpecification::addClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+}
+
+void QValueSpecification::removeClientDependency(QDependency *clientDependency)
+{
+    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QTypedElement
+// ---------------------------------------------------------------
+
+/*!
+    This information is derived from the return result for this Operation.The type of the TypedElement.
+ */
+QType *QValueSpecification::type() const
+{
+    return (qtuml_object_cast<const QTypedElement *>(this))->type();
+}
+
+void QValueSpecification::setType(QType *type)
+{
+    (qtuml_object_cast<QTypedElement *>(this))->setType(type);
+}
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM AGGREGATED QParameterableElement
+// ---------------------------------------------------------------
+
+/*!
+    The formal template parameter that owns this element.
+ */
+QTemplateParameter *QValueSpecification::owningTemplateParameter() const
+{
+    return (qtuml_object_cast<const QParameterableElement *>(this))->owningTemplateParameter();
+}
+
+void QValueSpecification::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
+{
+    (qtuml_object_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
+}
+
+/*!
+    The template parameter that exposes this element as a formal parameter.
+ */
+QTemplateParameter *QValueSpecification::templateParameter() const
+{
+    return (qtuml_object_cast<const QParameterableElement *>(this))->templateParameter();
+}
+
+void QValueSpecification::setTemplateParameter(QTemplateParameter *templateParameter)
+{
+    (qtuml_object_cast<QParameterableElement *>(this))->setTemplateParameter(templateParameter);
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM AGGREGATED QPackageableElement
+// ---------------------------------------------------------------
+
+/*!
+    Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
+ */
+QtUml::VisibilityKind QValueSpecification::visibility() const
+{
+    return (qtuml_object_cast<const QPackageableElement *>(this))->visibility();
+}
+
+void QValueSpecification::setVisibility(QtUml::VisibilityKind visibility)
+{
+    (qtuml_object_cast<QPackageableElement *>(this))->setVisibility(visibility);
+}
+
 /*!
     The query booleanValue() gives a single Boolean value when one can be computed.
  */
@@ -143,6 +313,8 @@ qint32 QValueSpecification::unlimitedValue() const
 {
     qWarning("QValueSpecification::unlimitedValue: operation to be implemented");
 }
+
+#include "moc_qvaluespecification.cpp"
 
 QT_END_NAMESPACE_QTUML
 

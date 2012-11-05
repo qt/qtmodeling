@@ -72,11 +72,11 @@ public:
     explicit QTimeEvent(QObject *parent = 0);
     virtual ~QTimeEvent();
 
-    // Attributes
+    // Attributes from QTimeEvent
     bool isRelative() const;
     void setRelative(bool isRelative);
 
-    // Association-ends
+    // Association ends from QTimeEvent
     QTimeExpression *when() const;
     void setWhen(QTimeExpression *when);
 

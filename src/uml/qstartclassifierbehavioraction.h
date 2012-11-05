@@ -71,7 +71,7 @@ public:
     explicit QStartClassifierBehaviorAction(QObject *parent = 0);
     virtual ~QStartClassifierBehaviorAction();
 
-    // Association-ends
+    // Association ends from QStartClassifierBehaviorAction
     QInputPin *object() const;
     void setObject(QInputPin *object);
 

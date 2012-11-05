@@ -41,12 +41,12 @@
 #ifndef QTUML_QINITIALNODE_P_H
 #define QTUML_QINITIALNODE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qcontrolnode_p.h"
-#include "qinitialnode.h"
 
+#include "QtUml/QInitialNode"
 
 QT_BEGIN_HEADER
 

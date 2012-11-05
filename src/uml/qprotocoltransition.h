@@ -77,7 +77,7 @@ public:
     explicit QProtocolTransition(QObject *parent = 0);
     virtual ~QProtocolTransition();
 
-    // Association-ends
+    // Association ends from QProtocolTransition
     QConstraint *postCondition() const;
     void setPostCondition(QConstraint *postCondition);
     const QSet<QOperation *> *referred() const;

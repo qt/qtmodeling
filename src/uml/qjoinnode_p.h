@@ -41,12 +41,12 @@
 #ifndef QTUML_QJOINNODE_P_H
 #define QTUML_QJOINNODE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qcontrolnode_p.h"
-#include "qjoinnode.h"
 
+#include "QtUml/QJoinNode"
 
 QT_BEGIN_HEADER
 

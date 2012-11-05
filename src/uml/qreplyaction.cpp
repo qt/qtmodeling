@@ -81,6 +81,10 @@ QReplyAction::~QReplyAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QReplyAction
+// ---------------------------------------------------------------
+
 /*!
     The trigger specifying the operation whose call is being replied to.
  */
@@ -120,13 +124,13 @@ void QReplyAction::setReturnInformation(QInputPin *returnInformation)
     Q_D(QReplyAction);
     if (d->returnInformation != returnInformation) {
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->returnInformation));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->returnInformation));
 
         d->returnInformation = returnInformation;
 
         // Adjust subsetted property(ies)
         if (returnInformation) {
-            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(returnInformation));
+            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(returnInformation));
         }
     }
 }
@@ -151,7 +155,7 @@ void QReplyAction::addReplyValue(QInputPin *replyValue)
         d->replyValues->insert(replyValue);
 
         // Adjust subsetted property(ies)
-        d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(replyValue));
+        (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(replyValue));
     }
 }
 
@@ -164,7 +168,7 @@ void QReplyAction::removeReplyValue(QInputPin *replyValue)
         d->replyValues->remove(replyValue);
 
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(replyValue));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(replyValue));
     }
 }
 

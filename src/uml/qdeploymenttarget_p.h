@@ -41,14 +41,15 @@
 #ifndef QTUML_QDEPLOYMENTTARGET_P_H
 #define QTUML_QDEPLOYMENTTARGET_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qnamedelement_p.h"
-#include "qdeploymenttarget.h"
+
+#include "QtUml/QDeploymentTarget"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 

@@ -74,7 +74,7 @@ public:
     explicit QEnumeration(QObject *parent = 0);
     virtual ~QEnumeration();
 
-    // Association-ends
+    // Association ends from QEnumeration
     const QList<QEnumerationLiteral *> *ownedLiterals() const;
     void addOwnedLiteral(QEnumerationLiteral *ownedLiteral);
     void removeOwnedLiteral(QEnumerationLiteral *ownedLiteral);

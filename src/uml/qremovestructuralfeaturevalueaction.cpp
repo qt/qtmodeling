@@ -78,6 +78,10 @@ QRemoveStructuralFeatureValueAction::~QRemoveStructuralFeatureValueAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QRemoveStructuralFeatureValueAction
+// ---------------------------------------------------------------
+
 /*!
     Specifies whether to remove duplicates of the value in nonunique structural features.
  */
@@ -99,6 +103,10 @@ void QRemoveStructuralFeatureValueAction::setRemoveDuplicates(bool isRemoveDupli
     }
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QRemoveStructuralFeatureValueAction
+// ---------------------------------------------------------------
+
 /*!
     Specifies the position of an existing value to remove in ordered nonunique structural features. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.
  */
@@ -117,13 +125,13 @@ void QRemoveStructuralFeatureValueAction::setRemoveAt(QInputPin *removeAt)
     Q_D(QRemoveStructuralFeatureValueAction);
     if (d->removeAt != removeAt) {
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->removeAt));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->removeAt));
 
         d->removeAt = removeAt;
 
         // Adjust subsetted property(ies)
         if (removeAt) {
-            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(removeAt));
+            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(removeAt));
         }
     }
 }

@@ -81,6 +81,10 @@ QParameterSet::~QParameterSet()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QParameterSet
+// ---------------------------------------------------------------
+
 /*!
     Parameters in the parameter set.
  */
@@ -139,7 +143,7 @@ void QParameterSet::addCondition(QConstraint *condition)
         d->conditions->insert(condition);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(condition));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(condition));
     }
 }
 
@@ -152,7 +156,7 @@ void QParameterSet::removeCondition(QConstraint *condition)
         d->conditions->remove(condition);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(condition));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(condition));
     }
 }
 

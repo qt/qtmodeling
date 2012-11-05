@@ -139,6 +139,10 @@ QVertex::~QVertex()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QVertex
+// ---------------------------------------------------------------
+
 /*!
     Specifies the transitions entering this vertex.
  */
@@ -176,7 +180,7 @@ void QVertex::setContainer(QRegion *container)
         d->container = container;
 
         // Adjust subsetted property(ies)
-        d->QNamedElementPrivate::setNamespace_(dynamic_cast<QNamespace *>(container));
+        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(container));
 
         // Adjust opposite property
         if (container)
@@ -204,6 +208,8 @@ QStateMachine *QVertex::containingStateMachine() const
 {
     qWarning("QVertex::containingStateMachine: operation to be implemented");
 }
+
+#include "moc_qvertex.cpp"
 
 QT_END_NAMESPACE_QTUML
 

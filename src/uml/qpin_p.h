@@ -41,15 +41,14 @@
 #ifndef QTUML_QPIN_P_H
 #define QTUML_QPIN_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qmultiplicityelement_p.h"
 #include "private/qobjectnode_p.h"
-#include "qpin.h"
 
+#include "QtUml/QPin"
 
 QT_BEGIN_HEADER
 
@@ -66,10 +65,6 @@ public:
     virtual ~QPinPrivate();
 
     bool isControl;
-
-private:
-    QMultiplicityElementPrivate *_wrappedMultiplicityElementPrivate;
-    QObjectNodePrivate *_wrappedObjectNodePrivate;
 };
 
 QT_END_NAMESPACE_QTUML

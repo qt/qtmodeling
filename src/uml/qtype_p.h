@@ -41,12 +41,12 @@
 #ifndef QTUML_QTYPE_P_H
 #define QTUML_QTYPE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qpackageableelement_p.h"
-#include "qtype.h"
 
+#include "QtUml/QType"
 
 QT_BEGIN_HEADER
 

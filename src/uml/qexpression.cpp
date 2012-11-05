@@ -42,7 +42,6 @@
 #include "qexpression.h"
 #include "qexpression_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QExpressionPrivate::QExpressionPrivate() :
@@ -77,6 +76,10 @@ QExpression::~QExpression()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QExpression
+// ---------------------------------------------------------------
+
 /*!
     The symbol associated with the node in the expression tree.
  */
@@ -98,6 +101,10 @@ void QExpression::setSymbol(QString symbol)
     }
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QExpression
+// ---------------------------------------------------------------
+
 /*!
     Specifies a sequence of operands.
  */
@@ -118,7 +125,7 @@ void QExpression::addOperand(QValueSpecification *operand)
         d->operands->append(operand);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(operand));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(operand));
     }
 }
 
@@ -131,7 +138,7 @@ void QExpression::removeOperand(QValueSpecification *operand)
         d->operands->removeAll(operand);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(operand));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(operand));
     }
 }
 

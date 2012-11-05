@@ -45,6 +45,8 @@
 
 // Base class includes
 #include <QtCore/QObject>
+#include <QtUml/QActivityNode>
+#include <QtUml/QTypedElement>
 
 // QtUml includes
 #include <QtUml/QtUmlEnumerations>
@@ -58,10 +60,6 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-// Forward decls for aggregated 'base classes'
-class QActivityNode;
-class QTypedElement;
-
 // Forward decls for function parameters
 class QState;
 class QBehavior;
@@ -72,13 +70,6 @@ class QObjectNodePrivate;
 class Q_UML_EXPORT QObjectNode : public QObject
 {
     Q_OBJECT
-
-    // From QObjectNode
-    Q_PROPERTY(bool isControlType READ isControlType WRITE setControlType)
-    Q_PROPERTY(QtUml::ObjectNodeOrderingKind ordering READ ordering WRITE setOrdering)
-    Q_PROPERTY(QValueSpecification * upperBound READ upperBound WRITE setUpperBound)
-    Q_PROPERTY(QBehavior * selection READ selection WRITE setSelection)
-    Q_PROPERTY(const QSet<QState *> * inState READ inState)
 
     // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
@@ -111,6 +102,13 @@ class Q_UML_EXPORT QObjectNode : public QObject
     // From aggregated QTypedElement
     Q_PROPERTY(QType * type READ type WRITE setType)
 
+    // From QObjectNode
+    Q_PROPERTY(bool isControlType READ isControlType WRITE setControlType)
+    Q_PROPERTY(QtUml::ObjectNodeOrderingKind ordering READ ordering WRITE setOrdering)
+    Q_PROPERTY(QValueSpecification * upperBound READ upperBound WRITE setUpperBound)
+    Q_PROPERTY(QBehavior * selection READ selection WRITE setSelection)
+    Q_PROPERTY(const QSet<QState *> * inState READ inState)
+
     Q_DISABLE_COPY(QObjectNode)
     Q_DECLARE_PRIVATE(QObjectNode)
 
@@ -118,13 +116,69 @@ public:
     explicit QObjectNode(QObject *parent = 0);
     virtual ~QObjectNode();
 
-    // Attributes
+    // Association ends from aggregated QElement
+    const QSet<QElement *> *ownedElements() const;
+    QElement *owner() const;
+    const QSet<QComment *> *ownedComments() const;
+    void addOwnedComment(QComment *ownedComment);
+    void removeOwnedComment(QComment *ownedComment);
+
+    // Attributes from aggregated QNamedElement
+    QString name() const;
+    void setName(QString name);
+    QtUml::VisibilityKind visibility() const;
+    void setVisibility(QtUml::VisibilityKind visibility);
+    QString qualifiedName() const;
+
+    // Association ends from aggregated QNamedElement
+    QStringExpression *nameExpression() const;
+    void setNameExpression(QStringExpression *nameExpression);
+    QNamespace *namespace_() const;
+    const QSet<QDependency *> *clientDependencies() const;
+    void addClientDependency(QDependency *clientDependency);
+    void removeClientDependency(QDependency *clientDependency);
+
+    // Attributes from aggregated QRedefinableElement
+    bool isLeaf() const;
+    void setLeaf(bool isLeaf);
+
+    // Association ends from aggregated QRedefinableElement
+    const QSet<QRedefinableElement *> *redefinedElements() const;
+    const QSet<QClassifier *> *redefinitionContexts() const;
+
+    // Association ends from aggregated QActivityNode
+    const QSet<QActivityNode *> *redefinedNodes() const;
+    void addRedefinedNode(QActivityNode *redefinedNode);
+    void removeRedefinedNode(QActivityNode *redefinedNode);
+    const QSet<QActivityEdge *> *incomings() const;
+    void addIncoming(QActivityEdge *incoming);
+    void removeIncoming(QActivityEdge *incoming);
+    QActivity *activity() const;
+    void setActivity(QActivity *activity);
+    const QSet<QActivityGroup *> *inGroup() const;
+    QStructuredActivityNode *inStructuredNode() const;
+    void setInStructuredNode(QStructuredActivityNode *inStructuredNode);
+    const QSet<QActivityPartition *> *inPartition() const;
+    void addInPartition(QActivityPartition *inPartition);
+    void removeInPartition(QActivityPartition *inPartition);
+    const QSet<QInterruptibleActivityRegion *> *inInterruptibleRegion() const;
+    void addInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion);
+    void removeInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion);
+    const QSet<QActivityEdge *> *outgoings() const;
+    void addOutgoing(QActivityEdge *outgoing);
+    void removeOutgoing(QActivityEdge *outgoing);
+
+    // Association ends from aggregated QTypedElement
+    QType *type() const;
+    void setType(QType *type);
+
+    // Attributes from QObjectNode
     bool isControlType() const;
     void setControlType(bool isControlType);
     QtUml::ObjectNodeOrderingKind ordering() const;
     void setOrdering(QtUml::ObjectNodeOrderingKind ordering);
 
-    // Association-ends
+    // Association ends from QObjectNode
     QValueSpecification *upperBound() const;
     void setUpperBound(QValueSpecification *upperBound);
     QBehavior *selection() const;

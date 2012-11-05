@@ -56,6 +56,8 @@ class QActorPrivate;
 
 class Q_UML_EXPORT QActor : public QBehavioredClassifier
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QActor)
     Q_DECLARE_PRIVATE(QActor)
 

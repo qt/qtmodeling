@@ -77,7 +77,7 @@ public:
     explicit QLinkAction(QObject *parent = 0);
     virtual ~QLinkAction();
 
-    // Association-ends
+    // Association ends from QLinkAction
     const QSet<QInputPin *> *inputValues() const;
     void addInputValue(QInputPin *inputValue);
     void removeInputValue(QInputPin *inputValue);

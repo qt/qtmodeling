@@ -80,13 +80,17 @@ public:
     explicit QActivityGroup(QObject *parent = 0);
     virtual ~QActivityGroup();
 
-    // Association-ends
+    // Association ends from QActivityGroup
     QActivity *inActivity() const;
     void setInActivity(QActivity *inActivity);
     const QSet<QActivityNode *> *containedNodes() const;
     const QSet<QActivityGroup *> *subgroups() const;
     const QSet<QActivityEdge *> *containedEdges() const;
     QActivityGroup *superGroup() const;
+
+    // Classes which access read-only opposite properties should be friend
+    friend class QActivityEdgePrivate;
+    friend class QActivityNodePrivate;
 
 protected:
     explicit QActivityGroup(QActivityGroupPrivate &dd, QObject *parent = 0);

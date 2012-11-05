@@ -79,6 +79,10 @@ QTimeConstraint::~QTimeConstraint()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QTimeConstraint
+// ---------------------------------------------------------------
+
 /*!
     The value of firstEvent is related to constrainedElement. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters constrainedElement. If firstEvent is false, then the corresponding observation event is the last time instant the execution is within constrainedElement.
  */
@@ -99,6 +103,10 @@ void QTimeConstraint::setFirstEvent(bool firstEvent)
         d->firstEvent = firstEvent;
     }
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QTimeConstraint
+// ---------------------------------------------------------------
 
 /*!
     A condition that must be true when evaluated in order for the constraint to be satisfied.

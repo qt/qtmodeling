@@ -42,7 +42,6 @@
 #include "qfinalstate.h"
 #include "qfinalstate_p.h"
 
-
 QT_BEGIN_NAMESPACE_QTUML
 
 QFinalStatePrivate::QFinalStatePrivate()

@@ -77,6 +77,10 @@ QBroadcastSignalAction::~QBroadcastSignalAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QBroadcastSignalAction
+// ---------------------------------------------------------------
+
 /*!
     The specification of signal object transmitted to the target objects.
  */

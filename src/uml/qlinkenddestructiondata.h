@@ -72,11 +72,11 @@ public:
     explicit QLinkEndDestructionData(QObject *parent = 0);
     virtual ~QLinkEndDestructionData();
 
-    // Attributes
+    // Attributes from QLinkEndDestructionData
     bool isDestroyDuplicates() const;
     void setDestroyDuplicates(bool isDestroyDuplicates);
 
-    // Association-ends
+    // Association ends from QLinkEndDestructionData
     QInputPin *destroyAt() const;
     void setDestroyAt(QInputPin *destroyAt);
 

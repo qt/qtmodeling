@@ -71,7 +71,7 @@ public:
     explicit QIntervalConstraint(QObject *parent = 0);
     virtual ~QIntervalConstraint();
 
-    // Association-ends
+    // Association ends from QIntervalConstraint
     QInterval *specification() const;
     void setSpecification(QInterval *specification);
 

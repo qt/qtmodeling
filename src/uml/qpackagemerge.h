@@ -72,7 +72,7 @@ public:
     explicit QPackageMerge(QObject *parent = 0);
     virtual ~QPackageMerge();
 
-    // Association-ends
+    // Association ends from QPackageMerge
     QPackage *mergedPackage() const;
     void setMergedPackage(QPackage *mergedPackage);
     QPackage *receivingPackage() const;

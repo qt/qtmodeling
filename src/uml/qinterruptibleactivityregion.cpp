@@ -81,6 +81,10 @@ QInterruptibleActivityRegion::~QInterruptibleActivityRegion()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QInterruptibleActivityRegion
+// ---------------------------------------------------------------
+
 /*!
     The edges leaving the region that will abort other tokens flowing in the region.
  */
@@ -138,7 +142,7 @@ void QInterruptibleActivityRegion::addNode(QActivityNode *node)
         d->nodes->insert(node);
 
         // Adjust subsetted property(ies)
-        d->QActivityGroupPrivate::addContainedNode(dynamic_cast<QActivityNode *>(node));
+        (qtuml_object_cast<QActivityGroupPrivate *>(d))->addContainedNode(qtuml_object_cast<QActivityNode *>(node));
 
         // Adjust opposite property
         node->addInInterruptibleRegion(this);
@@ -154,7 +158,7 @@ void QInterruptibleActivityRegion::removeNode(QActivityNode *node)
         d->nodes->remove(node);
 
         // Adjust subsetted property(ies)
-        d->QActivityGroupPrivate::removeContainedNode(dynamic_cast<QActivityNode *>(node));
+        (qtuml_object_cast<QActivityGroupPrivate *>(d))->removeContainedNode(qtuml_object_cast<QActivityNode *>(node));
 
         // Adjust opposite property
         if (node)

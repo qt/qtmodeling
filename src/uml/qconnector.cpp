@@ -85,6 +85,10 @@ QConnector::~QConnector()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QConnector
+// ---------------------------------------------------------------
+
 /*!
     Indicates the kind of connector. This is derived: a connector with one or more ends connected to a Port which is not on a Part and which is not a behavior port is a delegation; otherwise it is an assembly.
  */
@@ -97,6 +101,10 @@ QtUml::ConnectorKind QConnector::kind() const
     //Q_D(const QConnector);
     //return <derived-return>;
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QConnector
+// ---------------------------------------------------------------
 
 /*!
     A connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector. The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced.
@@ -118,7 +126,7 @@ void QConnector::addRedefinedConnector(QConnector *redefinedConnector)
         d->redefinedConnectors->insert(redefinedConnector);
 
         // Adjust subsetted property(ies)
-        d->QRedefinableElementPrivate::addRedefinedElement(dynamic_cast<QRedefinableElement *>(redefinedConnector));
+        (qtuml_object_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qtuml_object_cast<QRedefinableElement *>(redefinedConnector));
     }
 }
 
@@ -131,7 +139,7 @@ void QConnector::removeRedefinedConnector(QConnector *redefinedConnector)
         d->redefinedConnectors->remove(redefinedConnector);
 
         // Adjust subsetted property(ies)
-        d->QRedefinableElementPrivate::removeRedefinedElement(dynamic_cast<QRedefinableElement *>(redefinedConnector));
+        (qtuml_object_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qtuml_object_cast<QRedefinableElement *>(redefinedConnector));
     }
 }
 
@@ -207,7 +215,7 @@ void QConnector::addEnd(QConnectorEnd *end)
         d->ends->append(end);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(end));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(end));
     }
 }
 
@@ -220,7 +228,7 @@ void QConnector::removeEnd(QConnectorEnd *end)
         d->ends->removeAll(end);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(end));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(end));
     }
 }
 

@@ -41,12 +41,12 @@
 #ifndef QTUML_QDESTRUCTIONOCCURRENCESPECIFICATION_P_H
 #define QTUML_QDESTRUCTIONOCCURRENCESPECIFICATION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qmessageoccurrencespecification_p.h"
-#include "qdestructionoccurrencespecification.h"
 
+#include "QtUml/QDestructionOccurrenceSpecification"
 
 QT_BEGIN_HEADER
 

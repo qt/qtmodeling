@@ -41,12 +41,12 @@
 #ifndef QTUML_QCALLOPERATIONACTION_P_H
 #define QTUML_QCALLOPERATIONACTION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qcallaction_p.h"
-#include "qcalloperationaction.h"
 
+#include "QtUml/QCallOperationAction"
 
 QT_BEGIN_HEADER
 

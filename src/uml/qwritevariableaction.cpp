@@ -77,6 +77,10 @@ QWriteVariableAction::~QWriteVariableAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QWriteVariableAction
+// ---------------------------------------------------------------
+
 /*!
     Value to be added or removed from the variable.
  */
@@ -95,16 +99,18 @@ void QWriteVariableAction::setValue(QInputPin *value)
     Q_D(QWriteVariableAction);
     if (d->value != value) {
         // Adjust subsetted property(ies)
-        d->QActionPrivate::removeInput(dynamic_cast<QInputPin *>(d->value));
+        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->value));
 
         d->value = value;
 
         // Adjust subsetted property(ies)
         if (value) {
-            d->QActionPrivate::addInput(dynamic_cast<QInputPin *>(value));
+            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(value));
         }
     }
 }
+
+#include "moc_qwritevariableaction.cpp"
 
 QT_END_NAMESPACE_QTUML
 

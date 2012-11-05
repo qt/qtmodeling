@@ -41,17 +41,17 @@
 #ifndef QTUML_QNODE_P_H
 #define QTUML_QNODE_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qclass_p.h"
 #include "private/qdeploymenttarget_p.h"
-#include "qnode.h"
+
+#include "QtUml/QNode"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -71,10 +71,6 @@ public:
     virtual ~QNodePrivate();
 
     QSet<QNode *> *nestedNodes;
-
-private:
-    QClassPrivate *_wrappedClassPrivate;
-    QDeploymentTargetPrivate *_wrappedDeploymentTargetPrivate;
 };
 
 QT_END_NAMESPACE_QTUML

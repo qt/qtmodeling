@@ -81,6 +81,10 @@ QExpansionRegion::~QExpansionRegion()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QExpansionRegion
+// ---------------------------------------------------------------
+
 /*!
     The way in which the executions interact: parallel: all interactions are independent iterative: the interactions occur in order of the elements stream: a stream of values flows into a single execution
  */
@@ -101,6 +105,10 @@ void QExpansionRegion::setMode(QtUml::ExpansionKind mode)
         d->mode = mode;
     }
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QExpansionRegion
+// ---------------------------------------------------------------
 
 /*!
     An object node that holds a separate element of the input collection during each of the multiple executions of the region.

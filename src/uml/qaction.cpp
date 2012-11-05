@@ -74,7 +74,7 @@ void QActionPrivate::addInput(QInputPin *input)
         this->inputs->append(input);
 
         // Adjust subsetted property(ies)
-        QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(input));
+        (qtuml_object_cast<QElementPrivate *>(this))->addOwnedElement(qtuml_object_cast<QElement *>(input));
     }
 }
 
@@ -86,7 +86,7 @@ void QActionPrivate::removeInput(QInputPin *input)
         this->inputs->removeAll(input);
 
         // Adjust subsetted property(ies)
-        QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(input));
+        (qtuml_object_cast<QElementPrivate *>(this))->removeOwnedElement(qtuml_object_cast<QElement *>(input));
     }
 }
 
@@ -98,7 +98,7 @@ void QActionPrivate::addOutput(QOutputPin *output)
         this->outputs->append(output);
 
         // Adjust subsetted property(ies)
-        QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(output));
+        (qtuml_object_cast<QElementPrivate *>(this))->addOwnedElement(qtuml_object_cast<QElement *>(output));
     }
 }
 
@@ -110,7 +110,7 @@ void QActionPrivate::removeOutput(QOutputPin *output)
         this->outputs->removeAll(output);
 
         // Adjust subsetted property(ies)
-        QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(output));
+        (qtuml_object_cast<QElementPrivate *>(this))->removeOwnedElement(qtuml_object_cast<QElement *>(output));
     }
 }
 
@@ -136,6 +136,10 @@ QAction::~QAction()
 {
 }
 
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QAction
+// ---------------------------------------------------------------
+
 /*!
     If true, the action can begin a new, concurrent execution, even if there is already another execution of the action ongoing. If false, the action cannot begin a new execution until any previous execution has completed.
  */
@@ -156,6 +160,10 @@ void QAction::setLocallyReentrant(bool isLocallyReentrant)
         d->isLocallyReentrant = isLocallyReentrant;
     }
 }
+
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QAction
+// ---------------------------------------------------------------
 
 /*!
     The classifier that owns the behavior of which this action is a part.
@@ -190,7 +198,7 @@ void QAction::addLocalPostcondition(QConstraint *localPostcondition)
         d->localPostconditions->insert(localPostcondition);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(localPostcondition));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(localPostcondition));
     }
 }
 
@@ -203,7 +211,7 @@ void QAction::removeLocalPostcondition(QConstraint *localPostcondition)
         d->localPostconditions->remove(localPostcondition);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(localPostcondition));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(localPostcondition));
     }
 }
 
@@ -227,7 +235,7 @@ void QAction::addLocalPrecondition(QConstraint *localPrecondition)
         d->localPreconditions->insert(localPrecondition);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(localPrecondition));
+        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(localPrecondition));
     }
 }
 
@@ -240,7 +248,7 @@ void QAction::removeLocalPrecondition(QConstraint *localPrecondition)
         d->localPreconditions->remove(localPrecondition);
 
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(localPrecondition));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(localPrecondition));
     }
 }
 
@@ -265,6 +273,8 @@ const QList<QOutputPin *> *QAction::outputs() const
     Q_D(const QAction);
     return d->outputs;
 }
+
+#include "moc_qaction.cpp"
 
 QT_END_NAMESPACE_QTUML
 

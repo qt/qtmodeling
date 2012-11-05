@@ -78,7 +78,7 @@ public:
     explicit QTemplateBinding(QObject *parent = 0);
     virtual ~QTemplateBinding();
 
-    // Association-ends
+    // Association ends from QTemplateBinding
     QTemplateSignature *signature() const;
     void setSignature(QTemplateSignature *signature);
     QTemplateableElement *boundElement() const;

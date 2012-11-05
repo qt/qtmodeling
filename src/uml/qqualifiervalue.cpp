@@ -79,6 +79,10 @@ QQualifierValue::~QQualifierValue()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QQualifierValue
+// ---------------------------------------------------------------
+
 /*!
     Input pin from which the specified value for the qualifier is taken.
  */

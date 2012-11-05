@@ -41,17 +41,17 @@
 #ifndef QTUML_QREGION_P_H
 #define QTUML_QREGION_P_H
 
-#include <QtUml/QtUmlGlobal>
+#include "private/qtumlglobal_p.h"
 
 // Base class includes
 #include "private/qobject_p.h"
-
 #include "private/qredefinableelement_p.h"
 #include "private/qnamespace_p.h"
-#include "qregion.h"
+
+#include "QtUml/QRegion"
 
 // Qt includes
-#include <QtCore/QSet>
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -80,10 +80,6 @@ public:
     QStateMachine *stateMachine;
     QState *state;
     QSet<QVertex *> *subvertices;
-
-private:
-    QRedefinableElementPrivate *_wrappedRedefinableElementPrivate;
-    QNamespacePrivate *_wrappedNamespacePrivate;
 };
 
 QT_END_NAMESPACE_QTUML

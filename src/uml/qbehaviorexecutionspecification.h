@@ -71,7 +71,7 @@ public:
     explicit QBehaviorExecutionSpecification(QObject *parent = 0);
     virtual ~QBehaviorExecutionSpecification();
 
-    // Association-ends
+    // Association ends from QBehaviorExecutionSpecification
     QBehavior *behavior() const;
     void setBehavior(QBehavior *behavior);
 

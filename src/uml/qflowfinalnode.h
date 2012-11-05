@@ -56,6 +56,8 @@ class QFlowFinalNodePrivate;
 
 class Q_UML_EXPORT QFlowFinalNode : public QFinalNode
 {
+    Q_OBJECT
+
     Q_DISABLE_COPY(QFlowFinalNode)
     Q_DECLARE_PRIVATE(QFlowFinalNode)
 

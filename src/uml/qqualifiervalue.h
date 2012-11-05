@@ -73,7 +73,7 @@ public:
     explicit QQualifierValue(QObject *parent = 0);
     virtual ~QQualifierValue();
 
-    // Association-ends
+    // Association ends from QQualifierValue
     QInputPin *value() const;
     void setValue(QInputPin *value);
     QProperty *qualifier() const;

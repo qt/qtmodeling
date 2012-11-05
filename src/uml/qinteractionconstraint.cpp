@@ -78,6 +78,10 @@ QInteractionConstraint::~QInteractionConstraint()
 {
 }
 
+// ---------------------------------------------------------------
+// ASSOCIATION ENDS FROM QInteractionConstraint
+// ---------------------------------------------------------------
+
 /*!
     The maximum number of iterations of a loop
  */
@@ -96,13 +100,13 @@ void QInteractionConstraint::setMaxint(QValueSpecification *maxint)
     Q_D(QInteractionConstraint);
     if (d->maxint != maxint) {
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->maxint));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->maxint));
 
         d->maxint = maxint;
 
         // Adjust subsetted property(ies)
         if (maxint) {
-            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(maxint));
+            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(maxint));
         }
     }
 }
@@ -125,13 +129,13 @@ void QInteractionConstraint::setMinint(QValueSpecification *minint)
     Q_D(QInteractionConstraint);
     if (d->minint != minint) {
         // Adjust subsetted property(ies)
-        d->QElementPrivate::removeOwnedElement(dynamic_cast<QElement *>(d->minint));
+        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->minint));
 
         d->minint = minint;
 
         // Adjust subsetted property(ies)
         if (minint) {
-            d->QElementPrivate::addOwnedElement(dynamic_cast<QElement *>(minint));
+            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(minint));
         }
     }
 }

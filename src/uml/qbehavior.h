@@ -86,11 +86,11 @@ public:
     explicit QBehavior(QObject *parent = 0);
     virtual ~QBehavior();
 
-    // Attributes
+    // Attributes from QBehavior
     bool isReentrant() const;
     void setReentrant(bool isReentrant);
 
-    // Association-ends
+    // Association ends from QBehavior
     QBehavioralFeature *specification() const;
     void setSpecification(QBehavioralFeature *specification);
     const QSet<QConstraint *> *postconditions() const;
