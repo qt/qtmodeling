@@ -112,12 +112,12 @@ void QManifestation::setUtilizedElement(QPackageableElement *utilizedElement)
 
 // Overriden methods for subsetted properties
 
-void QManifestation::addSupplier(QPackageableElement *utilizedElement)
+void QManifestation::addSupplier(QUmlPointer<QPackageableElement> utilizedElement)
 {
     setUtilizedElement(utilizedElement);
 }
 
-void QManifestation::removeSupplier(QPackageableElement *utilizedElement)
+void QManifestation::removeSupplier(QUmlPointer<QPackageableElement> utilizedElement)
 {
     setUtilizedElement(0);
 }

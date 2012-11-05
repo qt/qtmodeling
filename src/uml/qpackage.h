@@ -204,10 +204,10 @@ public:
     const QSet<QPackageableElement *> *visibleMembers() const;
 
     // Overriden methods for subsetted properties
-    void addPackagedElement(QType *ownedType);
-    void removePackagedElement(QType *ownedType);
-    void addPackagedElement(QPackage *nestedPackage);
-    void removePackagedElement(QPackage *nestedPackage);
+    void addPackagedElement(QUmlPointer<QType> ownedType);
+    void removePackagedElement(QUmlPointer<QType> ownedType);
+    void addPackagedElement(QUmlPointer<QPackage> nestedPackage);
+    void removePackagedElement(QUmlPointer<QPackage> nestedPackage);
 
 protected:
     explicit QPackage(QPackagePrivate &dd, QObject *parent = 0);

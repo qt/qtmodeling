@@ -207,22 +207,22 @@ void QDeployment::removeDeployedArtifact(QDeployedArtifact *deployedArtifact)
 
 // Overriden methods for subsetted properties
 
-void QDeployment::addClient(QDeploymentTarget *location)
+void QDeployment::addClient(QUmlPointer<QDeploymentTarget> location)
 {
     setLocation(location);
 }
 
-void QDeployment::removeClient(QDeploymentTarget *location)
+void QDeployment::removeClient(QUmlPointer<QDeploymentTarget> location)
 {
     setLocation(0);
 }
 
-void QDeployment::addSupplier(QDeployedArtifact *deployedArtifact)
+void QDeployment::addSupplier(QUmlPointer<QDeployedArtifact> deployedArtifact)
 {
     addDeployedArtifact(deployedArtifact);
 }
 
-void QDeployment::removeSupplier(QDeployedArtifact *deployedArtifact)
+void QDeployment::removeSupplier(QUmlPointer<QDeployedArtifact> deployedArtifact)
 {
     removeDeployedArtifact(deployedArtifact);
 }

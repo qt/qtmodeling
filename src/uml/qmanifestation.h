@@ -76,8 +76,8 @@ public:
     void setUtilizedElement(QPackageableElement *utilizedElement);
 
     // Overriden methods for subsetted properties
-    void addSupplier(QPackageableElement *utilizedElement);
-    void removeSupplier(QPackageableElement *utilizedElement);
+    void addSupplier(QUmlPointer<QPackageableElement> utilizedElement);
+    void removeSupplier(QUmlPointer<QPackageableElement> utilizedElement);
 
 protected:
     explicit QManifestation(QManifestationPrivate &dd, QObject *parent = 0);

@@ -151,22 +151,22 @@ void QSubstitution::setSubstitutingClassifier(QClassifier *substitutingClassifie
 
 // Overriden methods for subsetted properties
 
-void QSubstitution::addSupplier(QClassifier *contract)
+void QSubstitution::addSupplier(QUmlPointer<QClassifier> contract)
 {
     setContract(contract);
 }
 
-void QSubstitution::removeSupplier(QClassifier *contract)
+void QSubstitution::removeSupplier(QUmlPointer<QClassifier> contract)
 {
     setContract(0);
 }
 
-void QSubstitution::addClient(QClassifier *substitutingClassifier)
+void QSubstitution::addClient(QUmlPointer<QClassifier> substitutingClassifier)
 {
     setSubstitutingClassifier(substitutingClassifier);
 }
 
-void QSubstitution::removeClient(QClassifier *substitutingClassifier)
+void QSubstitution::removeClient(QUmlPointer<QClassifier> substitutingClassifier)
 {
     setSubstitutingClassifier(0);
 }

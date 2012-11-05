@@ -240,12 +240,12 @@ void QPort::removeRedefinedPort(QPort *redefinedPort)
 
 // Overriden methods for subsetted properties
 
-void QPort::addRedefinedProperty(QPort *redefinedPort)
+void QPort::addRedefinedProperty(QUmlPointer<QPort> redefinedPort)
 {
     addRedefinedPort(redefinedPort);
 }
 
-void QPort::removeRedefinedProperty(QPort *redefinedPort)
+void QPort::removeRedefinedProperty(QUmlPointer<QPort> redefinedPort)
 {
     removeRedefinedPort(redefinedPort);
 }

@@ -704,7 +704,7 @@ ${operation.return}${class.name}::${operation.name}([%- FOREACH parameter IN ope
 [%- END -%]
 [%- FOREACH accessor IN property.accessor -%]
 [%- NEXT IF loop.first %]
-${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN attribute.accessor.1.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
+${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN attribute.accessor.1.parameter -%]QUmlPointer<${parameter.type.remove(' \*$')}> ${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
 {
 [%- IF loop.count == 2 %]
     ${parameter.accessor.1.name}(${attribute.accessor.1.parameter.0.name});
@@ -736,7 +736,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN attri
 [%- END -%]
 [%- FOREACH accessor IN property.accessor -%]
 [%- NEXT IF loop.first %]
-${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN associationend.accessor.1.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
+${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN associationend.accessor.1.parameter -%]QUmlPointer<${parameter.type.remove(' \*$')}> ${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness}
 {
 [%- IF loop.count == 2 %]
     ${associationend.accessor.1.name}(${associationend.accessor.1.parameter.0.name});

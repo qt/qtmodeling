@@ -814,12 +814,12 @@ void QArtifact::removeNestedArtifact(QArtifact *nestedArtifact)
 
 // Overriden methods for subsetted properties
 
-void QArtifact::addClientDependency(QManifestation *manifestation)
+void QArtifact::addClientDependency(QUmlPointer<QManifestation> manifestation)
 {
     addManifestation(manifestation);
 }
 
-void QArtifact::removeClientDependency(QManifestation *manifestation)
+void QArtifact::removeClientDependency(QUmlPointer<QManifestation> manifestation)
 {
     removeManifestation(manifestation);
 }

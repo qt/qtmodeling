@@ -88,8 +88,8 @@ public:
     void setClassifierBehavior(QBehavior *classifierBehavior);
 
     // Overriden methods for subsetted properties
-    void addClientDependency(QInterfaceRealization *interfaceRealization);
-    void removeClientDependency(QInterfaceRealization *interfaceRealization);
+    void addClientDependency(QUmlPointer<QInterfaceRealization> interfaceRealization);
+    void removeClientDependency(QUmlPointer<QInterfaceRealization> interfaceRealization);
 
 protected:
     explicit QBehavioredClassifier(QBehavioredClassifierPrivate &dd, QObject *parent = 0);

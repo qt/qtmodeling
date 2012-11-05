@@ -84,10 +84,10 @@ public:
     void removeRealizingClassifier(QClassifier *realizingClassifier);
 
     // Overriden methods for subsetted properties
-    void addSupplier(QComponent *abstraction);
-    void removeSupplier(QComponent *abstraction);
-    void addClient(QClassifier *realizingClassifier);
-    void removeClient(QClassifier *realizingClassifier);
+    void addSupplier(QUmlPointer<QComponent> abstraction);
+    void removeSupplier(QUmlPointer<QComponent> abstraction);
+    void addClient(QUmlPointer<QClassifier> realizingClassifier);
+    void removeClient(QUmlPointer<QClassifier> realizingClassifier);
 
 protected:
     explicit QComponentRealization(QComponentRealizationPrivate &dd, QObject *parent = 0);

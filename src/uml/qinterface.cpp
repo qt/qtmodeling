@@ -328,12 +328,12 @@ void QInterface::removeOwnedAttribute(QProperty *ownedAttribute)
 
 // Overriden methods for subsetted properties
 
-void QInterface::addRedefinedClassifier(QInterface *redefinedInterface)
+void QInterface::addRedefinedClassifier(QUmlPointer<QInterface> redefinedInterface)
 {
     addRedefinedInterface(redefinedInterface);
 }
 
-void QInterface::removeRedefinedClassifier(QInterface *redefinedInterface)
+void QInterface::removeRedefinedClassifier(QUmlPointer<QInterface> redefinedInterface)
 {
     removeRedefinedInterface(redefinedInterface);
 }
