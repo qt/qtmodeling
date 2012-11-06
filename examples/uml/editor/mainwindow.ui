@@ -43,7 +43,7 @@
    <widget class="QWidget" name="dockWidgetContents">
     <layout class="QGridLayout" name="gridLayout">
      <item row="0" column="0">
-      <widget class="QTreeWidget" name="trvModel">
+      <widget class="QTreeWidget" name="modelExplorer">
        <column>
         <property name="text">
          <string>Model</string>
@@ -64,7 +64,7 @@
    <widget class="QWidget" name="dockWidgetContents_2">
     <layout class="QGridLayout" name="gridLayout_2">
      <item row="0" column="0">
-      <widget class="QTableWidget" name="tblPropertyEditor"/>
+      <widget class="QTableWidget" name="propertyEditor"/>
      </item>
     </layout>
    </widget>

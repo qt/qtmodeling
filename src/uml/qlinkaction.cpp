@@ -172,6 +172,8 @@ void QLinkAction::removeEndData(QLinkEndData *endData)
 QAssociation *QLinkAction::association() const
 {
     qWarning("QLinkAction::association: operation to be implemented");
+
+    return 0; // change here to your derived return
 }
 
 #include "moc_qlinkaction.cpp"

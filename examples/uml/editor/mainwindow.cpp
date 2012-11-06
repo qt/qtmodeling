@@ -1,7 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include <QtUml/QPackage>
+#include <QtUml/QModel>
+#include <QtUml/QPrimitiveType>
+#include <QtUml/QEnumeration>
+#include <QtUml/QEnumerationLiteral>
+#include <QtUml/QClass>
 
 #include <QtCore/QDebug>
 #include <QtCore/QVariant>
@@ -18,42 +22,46 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QPalette palette = ui->tblPropertyEditor->palette();
+    QPalette palette = ui->propertyEditor->palette();
     palette.setColor(QPalette::Active, QPalette::Base, QColor(255, 242, 222));
     palette.setColor(QPalette::Inactive, QPalette::Base, QColor(255, 242, 222));
     palette.setColor(QPalette::Active, QPalette::AlternateBase, QColor(255, 255, 191));
     palette.setColor(QPalette::Inactive, QPalette::AlternateBase, QColor(255, 255, 191));
-    ui->tblPropertyEditor->setPalette(palette);
-    ui->tblPropertyEditor->setAlternatingRowColors(true);
-    ui->tblPropertyEditor->setColumnCount(2);
-    ui->tblPropertyEditor->verticalHeader()->hide();
-    ui->tblPropertyEditor->horizontalHeader()->setStretchLastSection(true);
-    ui->tblPropertyEditor->setSelectionMode(QAbstractItemView::SingleSelection);
-    ui->tblPropertyEditor->setSelectionBehavior(QAbstractItemView::SelectRows);
-    ui->tblPropertyEditor->setHorizontalHeaderLabels(QStringList() << "Property" << "Value");
+    ui->propertyEditor->setPalette(palette);
+    ui->propertyEditor->setAlternatingRowColors(true);
+    ui->propertyEditor->setColumnCount(2);
+    ui->propertyEditor->verticalHeader()->hide();
+    ui->propertyEditor->horizontalHeader()->setStretchLastSection(true);
+    ui->propertyEditor->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->propertyEditor->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->propertyEditor->setHorizontalHeaderLabels(QStringList() << "Property" << "Value");
 
-    QUmlPointer<QPackage> topLevelPackage = new QPackage;
-    topLevelPackage->setName("Root Package");
-    topLevelPackage->setObjectName("Root Package");
+    QUmlPointer<QModel> model = new QModel;
+    model->setName("MyModel");
 
-    QTreeWidgetItem *topLevelItem = new QTreeWidgetItem(QStringList() << topLevelPackage->name());
-    topLevelItem->setData(0, Qt::UserRole, qVariantFromValue(topLevelPackage.data()));
+    QUmlPointer<QPackage> package = new QPackage;
+    package->setName("Package1");
 
-    ui->trvModel->addTopLevelItem(topLevelItem);
+    QUmlPointer<QPrimitiveType> primitiveType = new QPrimitiveType;
+    primitiveType->setName("String");
 
-    QUmlPointer<QPackage> childPackage = new QPackage;
-    childPackage->setName("Child Package");
-    topLevelPackage->addNestedPackage(childPackage);
+    QUmlPointer<QEnumeration> enumeration = new QEnumeration;
+    enumeration->setName("DirectionKind");
+    QUmlPointer<QEnumerationLiteral> directionIn = new QEnumerationLiteral;
+    directionIn->setName("DirectionIn");
+    enumeration->addOwnedLiteral(directionIn);
 
-    QTreeWidgetItem *childItem = new QTreeWidgetItem(topLevelItem, QStringList() << childPackage->name());
-    childItem->setData(0, Qt::UserRole, qVariantFromValue(childPackage.data()));
+    QUmlPointer<QClass> class_ = new QClass;
+    class_->setName("Student");
+    class_->setAbstract(false);
 
-    QUmlPointer<QPackage> gchildPackage = new QPackage;
-    gchildPackage->setName("GChild Package");
-    childPackage->addNestedPackage(gchildPackage);
+    package->addOwnedType(enumeration);
+    package->addOwnedType(class_);
 
-    QTreeWidgetItem *gchildItem = new QTreeWidgetItem(childItem, QStringList() << gchildPackage->name());
-    gchildItem->setData(0, Qt::UserRole, qVariantFromValue(gchildPackage.data()));
+    model->addNestedPackage(package);
+    model->addOwnedType(primitiveType);
+
+    populateModelExplorer(model);
 }
 
 MainWindow::~MainWindow()
@@ -61,71 +69,85 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_trvModel_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous)
+void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous)
 {
     Q_UNUSED(previous)
 
-    disconnect(ui->tblPropertyEditor, SIGNAL(itemChanged(QTableWidgetItem*)), this, SLOT(itemChanged(QTableWidgetItem*)));
+    disconnect(ui->propertyEditor, SIGNAL(itemChanged(QTableWidgetItem*)), this, SLOT(itemChanged(QTableWidgetItem*)));
     QObject *element = current->data(0, Qt::UserRole).value<QObject *>();
-    ui->tblPropertyEditor->clearContents();
+    ui->propertyEditor->clearContents();
     int propertyCount = element->metaObject()->propertyCount();
-    ui->tblPropertyEditor->setRowCount(propertyCount);
+    ui->propertyEditor->setRowCount(propertyCount);
 
     for (int i = 0; i < propertyCount; ++i) {
         QMetaProperty property = element->metaObject()->property(i);
-        QTableWidgetItem *item = new QTableWidgetItem(QString(property.name()) + ((property.isWritable() == false) ? " (RO)":""));
+        QTableWidgetItem *item = new QTableWidgetItem(QString(property.name()).remove(QRegularExpression("_$")) + ((property.isWritable() == false) ? " (RO)":""));
         item->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
-        ui->tblPropertyEditor->setItem(i, 0, item);
+        ui->propertyEditor->setItem(i, 0, item);
         item = new QTableWidgetItem;
         if (property.isWritable() == false)
             item->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
         if (property.type() == QVariant::String)
             item->setText(property.read(element).toString());
         QString typeName = property.typeName();
-        if (typeName.endsWith('*') and !typeName.contains(QRegularExpression ("QSet|QList"))) {
-            if (QNamedElement *namedElement = qtuml_object_cast<QNamedElement *>(property.read(element).value<QObject *>())) {
-                item->setText(namedElement->name());
-            }
-        }
-        if (typeName.endsWith('*') and typeName.contains("QSet") && property.read(element).isValid()) {
+        if (typeName.endsWith('*') && !typeName.contains(QRegularExpression ("QSet|QList")) && property.read(element).value<QObject *>())
+            item->setText((property.read(element).value<QObject *>())->objectName());
+        if (typeName.endsWith('*') && typeName.contains("QSet") && property.read(element).isValid()) {
             if (QSet<QObject *> *elements = reinterpret_cast<QSet<QObject *> *>(*((QSet<QObject *> **) property.read(element).data()))) {
                 if (elements->size() > 0) {
                     QString str = "[";
                     foreach (QObject *object, *elements)
-                        if (QNamedElement *namedElement = qtuml_object_cast<QNamedElement *>(object))
-                        str.append(namedElement->name().append(", "));
+                        str.append((qtuml_object_cast<QObject *>(object))->objectName().append(", "));
                     str.chop(2);
                     str.append("]");
                     item->setText(str);
                 }
             }
         }
-        if (typeName.endsWith('*') and typeName.contains("QList") && property.read(element).isValid()) {
+        if (typeName.endsWith('*') && typeName.contains("QList") && property.read(element).isValid()) {
             if (QList<QObject *> *elements = reinterpret_cast<QList<QObject *> *>(*((QList<QObject *> **) property.read(element).data()))) {
                 if (elements->size() > 0) {
                     QString str = "[";
                     foreach (QObject *object, *elements)
-                        if (QNamedElement *namedElement = qtuml_object_cast<QNamedElement *>(object))
-                        str.append(namedElement->name().append(", "));
+                        str.append((qtuml_object_cast<QObject *>(object))->objectName().append(", "));
                     str.chop(2);
                     str.append("]");
                     item->setText(str);
                 }
             }
         }
-        ui->tblPropertyEditor->setItem(i, 1, item);
+        ui->propertyEditor->setItem(i, 1, item);
     }
-    ui->tblPropertyEditor->resizeColumnToContents(0);
-    ui->tblPropertyEditor->resizeRowsToContents();
-    connect(ui->tblPropertyEditor, SIGNAL(itemChanged(QTableWidgetItem*)), this, SLOT(itemChanged(QTableWidgetItem*)));
+    ui->propertyEditor->resizeColumnToContents(0);
+    ui->propertyEditor->resizeRowsToContents();
+    connect(ui->propertyEditor, SIGNAL(itemChanged(QTableWidgetItem*)), this, SLOT(itemChanged(QTableWidgetItem*)));
 }
 
 void MainWindow::itemChanged(QTableWidgetItem *item)
 {
     if (item->column() == 1) {
-        QObject *element = ui->trvModel->currentItem()->data(0, Qt::UserRole).value<QPackage *>();
+        QObject *element = ui->modelExplorer->currentItem()->data(0, Qt::UserRole).value<QObject *>();
         if (element->metaObject()->property(item->row()).type() == QVariant::String)
-            element->setProperty(ui->tblPropertyEditor->item(item->row(), 0)->text().toLatin1(), item->text());
-        on_trvModel_currentItemChanged(ui->trvModel->currentItem(), 0);
+            element->setProperty(ui->propertyEditor->item(item->row(), 0)->text().toLatin1(), item->text());
+        on_modelExplorer_currentItemChanged(ui->modelExplorer->currentItem(), 0);
     }
+}
+
+void MainWindow::populateModelExplorer(QNamedElement *namedElement, QTreeWidgetItem *parent)
+{
+    if (!namedElement)
+        return;
+
+    QTreeWidgetItem *item = new QTreeWidgetItem(parent, QStringList() << namedElement->name());
+    QObject *parentObject = namedElement;
+    while (parentObject->parent())
+        parentObject = parentObject->parent();
+    item->setData(0, Qt::UserRole, qVariantFromValue(parentObject));
+
+    if (!parent)
+        ui->modelExplorer->addTopLevelItem(item);
+
+    if (QNamespace *namespace_ = qtuml_object_cast<QNamespace *>(namedElement))
+        foreach (QNamedElement *childNamedElement, *namespace_->members())
+            populateModelExplorer(childNamedElement, item);
 }

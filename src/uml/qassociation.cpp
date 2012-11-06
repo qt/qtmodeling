@@ -683,8 +683,7 @@ const QList<QType *> *QAssociation::endTypes() const
 
     qWarning("QAssociation::endTypes: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QAssociation);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 /*!

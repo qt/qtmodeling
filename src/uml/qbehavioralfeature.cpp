@@ -565,6 +565,10 @@ void QBehavioralFeature::removeMethod(QBehavior *method)
 bool QBehavioralFeature::isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const
 {
     qWarning("QBehavioralFeature::isDistinguishableFrom: operation to be implemented");
+    Q_UNUSED(n);
+    Q_UNUSED(ns);
+
+    return bool(); // change here to your derived return
 }
 
 #include "moc_qbehavioralfeature.cpp"

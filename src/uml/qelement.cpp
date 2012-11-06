@@ -86,7 +86,6 @@ void QElementPrivate::removeOwnedElement(QElement *ownedElement)
         this->ownedElements->remove(ownedElement);
 
         // Adjust opposite property
-        Q_Q(QElement);
         (qtuml_object_cast<QElementPrivate *>(ownedElement->d_func()))->setOwner(0);
     }
 }

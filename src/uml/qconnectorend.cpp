@@ -150,8 +150,7 @@ QProperty *QConnectorEnd::definingEnd() const
 
     qWarning("QConnectorEnd::definingEnd: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QConnectorEnd);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 #include "moc_qconnectorend.cpp"

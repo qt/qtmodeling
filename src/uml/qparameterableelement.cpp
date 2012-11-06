@@ -150,6 +150,9 @@ void QParameterableElement::setTemplateParameter(QTemplateParameter *templatePar
 bool QParameterableElement::isCompatibleWith(const QParameterableElement *p) const
 {
     qWarning("QParameterableElement::isCompatibleWith: operation to be implemented");
+    Q_UNUSED(p);
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -158,6 +161,8 @@ bool QParameterableElement::isCompatibleWith(const QParameterableElement *p) con
 bool QParameterableElement::isTemplateParameter() const
 {
     qWarning("QParameterableElement::isTemplateParameter: operation to be implemented");
+
+    return bool(); // change here to your derived return
 }
 
 #include "moc_qparameterableelement.cpp"

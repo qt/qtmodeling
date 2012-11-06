@@ -190,8 +190,7 @@ const QSet<QInterface *> *QPort::required() const
 
     qWarning("QPort::required: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QPort);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -203,8 +202,7 @@ const QSet<QInterface *> *QPort::provided() const
 
     qWarning("QPort::provided: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QPort);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 /*!

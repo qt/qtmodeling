@@ -127,8 +127,7 @@ const QSet<QOperation *> *QProtocolTransition::referred() const
 
     qWarning("QProtocolTransition::referred: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QProtocolTransition);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 /*!

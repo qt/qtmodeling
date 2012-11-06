@@ -174,6 +174,8 @@ void QTemplateableElement::removeTemplateBinding(QTemplateBinding *templateBindi
 bool QTemplateableElement::isTemplate() const
 {
     qWarning("QTemplateableElement::isTemplate: operation to be implemented");
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -182,6 +184,8 @@ bool QTemplateableElement::isTemplate() const
 const QSet<QParameterableElement *> *QTemplateableElement::parameterableElements() const
 {
     qWarning("QTemplateableElement::parameterableElements: operation to be implemented");
+
+    return 0; // change here to your derived return
 }
 
 #include "moc_qtemplateableelement.cpp"

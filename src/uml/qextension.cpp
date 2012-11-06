@@ -65,6 +65,7 @@ void QExtensionPrivate::setMetaclass(QClass *metaclass)
     // This is a read-only derived association end
 
     qWarning("QExtension::setMetaclass: to be implemented (this is a derived associationend)");
+    Q_UNUSED(metaclass);
 
     if (false /* <derived-change-criteria> */) {
         Q_Q(QExtension);
@@ -121,8 +122,7 @@ bool QExtension::isRequired() const
 
     qWarning("QExtension::isRequired: to be implemented (this is a derived attribute)");
 
-    //Q_D(const QExtension);
-    //return <derived-return>;
+    return bool(); // change here to your derived return
 }
 
 // ---------------------------------------------------------------
@@ -138,8 +138,7 @@ QClass *QExtension::metaclass() const
 
     qWarning("QExtension::metaclass: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QExtension);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -169,6 +168,8 @@ void QExtension::setOwnedEnd(QExtensionEnd *ownedEnd)
 QProperty *QExtension::metaclassEnd() const
 {
     qWarning("QExtension::metaclassEnd: operation to be implemented");
+
+    return 0; // change here to your derived return
 }
 
 #include "moc_qextension.cpp"

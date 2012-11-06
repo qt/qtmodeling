@@ -86,6 +86,8 @@ QLiteralNull::~QLiteralNull()
 bool QLiteralNull::isComputable() const
 {
     qWarning("QLiteralNull::isComputable: operation to be implemented");
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -94,6 +96,8 @@ bool QLiteralNull::isComputable() const
 bool QLiteralNull::isNull() const
 {
     qWarning("QLiteralNull::isNull: operation to be implemented");
+
+    return bool(); // change here to your derived return
 }
 
 #include "moc_qliteralnull.cpp"

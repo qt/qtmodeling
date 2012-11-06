@@ -117,7 +117,6 @@ void QNamespacePrivate::removeOwnedMember(QNamedElement *ownedMember)
         (qtuml_object_cast<QElementPrivate *>(this))->removeOwnedElement(qtuml_object_cast<QElement *>(ownedMember));
 
         // Adjust opposite property
-        Q_Q(QNamespace);
         (qtuml_object_cast<QNamedElementPrivate *>(ownedMember->d_func()))->setNamespace_(0);
     }
 }
@@ -347,6 +346,9 @@ const QSet<QNamedElement *> *QNamespace::ownedMembers() const
 const QSet<QPackageableElement *> *QNamespace::excludeCollisions(const QSet<QPackageableElement *> *imps) const
 {
     qWarning("QNamespace::excludeCollisions: operation to be implemented");
+    Q_UNUSED(imps);
+
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -355,6 +357,9 @@ const QSet<QPackageableElement *> *QNamespace::excludeCollisions(const QSet<QPac
 const QSet<QString> *QNamespace::getNamesOfMember(const QNamedElement *element) const
 {
     qWarning("QNamespace::getNamesOfMember: operation to be implemented");
+    Q_UNUSED(element);
+
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -363,6 +368,9 @@ const QSet<QString> *QNamespace::getNamesOfMember(const QNamedElement *element) 
 const QSet<QPackageableElement *> *QNamespace::importMembers(const QSet<QPackageableElement *> *imps) const
 {
     qWarning("QNamespace::importMembers: operation to be implemented");
+    Q_UNUSED(imps);
+
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -371,6 +379,8 @@ const QSet<QPackageableElement *> *QNamespace::importMembers(const QSet<QPackage
 bool QNamespace::membersAreDistinguishable() const
 {
     qWarning("QNamespace::membersAreDistinguishable: operation to be implemented");
+
+    return bool(); // change here to your derived return
 }
 
 #include "moc_qnamespace.cpp"

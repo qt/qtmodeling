@@ -111,6 +111,8 @@ void QLiteralInteger::setValue(qint32 value)
 qint32 QLiteralInteger::integerValue() const
 {
     qWarning("QLiteralInteger::integerValue: operation to be implemented");
+
+    return qint32(); // change here to your derived return
 }
 
 /*!
@@ -119,6 +121,8 @@ qint32 QLiteralInteger::integerValue() const
 bool QLiteralInteger::isComputable() const
 {
     qWarning("QLiteralInteger::isComputable: operation to be implemented");
+
+    return bool(); // change here to your derived return
 }
 
 #include "moc_qliteralinteger.cpp"

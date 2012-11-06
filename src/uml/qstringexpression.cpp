@@ -245,6 +245,8 @@ void QStringExpression::removeSubExpression(QStringExpression *subExpression)
 QString QStringExpression::stringValue() const
 {
     qWarning("QStringExpression::stringValue: operation to be implemented");
+
+    return QString(); // change here to your derived return
 }
 
 #include "moc_qstringexpression.cpp"

@@ -350,8 +350,7 @@ QBehavioredClassifier *QBehavior::context() const
 
     qWarning("QBehavior::context: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QBehavior);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 // Overriden methods for subsetted properties

@@ -428,6 +428,9 @@ void QVariable::setActivityScope(QActivity *activityScope)
 bool QVariable::isAccessibleBy(const QAction *a) const
 {
     qWarning("QVariable::isAccessibleBy: operation to be implemented");
+    Q_UNUSED(a);
+
+    return bool(); // change here to your derived return
 }
 
 #include "moc_qvariable.cpp"

@@ -188,6 +188,9 @@ void QDataType::removeOwnedAttribute(QProperty *ownedAttribute)
 const QSet<QNamedElement *> *QDataType::inherit(const QSet<QNamedElement *> *inhs) const
 {
     qWarning("QDataType::inherit: operation to be implemented");
+    Q_UNUSED(inhs);
+
+    return 0; // change here to your derived return
 }
 
 #include "moc_qdatatype.cpp"

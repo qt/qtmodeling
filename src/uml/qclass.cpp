@@ -76,6 +76,7 @@ void QClassPrivate::addExtension(QExtension *extension)
     // This is a read-only derived association end
 
     qWarning("QClass::addExtension: to be implemented (this is a derived associationend)");
+    Q_UNUSED(extension);
 
     if (false /* <derivedinclusion-criteria> */) {
         // <derived-code>
@@ -91,12 +92,12 @@ void QClassPrivate::removeExtension(QExtension *extension)
     // This is a read-only derived association end
 
     qWarning("QClass::removeExtension: to be implemented (this is a derived associationend)");
+    Q_UNUSED(extension);
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
 
         // Adjust opposite property
-        Q_Q(QClass);
         (qtuml_object_cast<QExtensionPrivate *>(extension->d_func()))->setMetaclass(0);
     }
 }
@@ -879,8 +880,7 @@ const QSet<QExtension *> *QClass::extensions() const
 
     qWarning("QClass::extensions: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QClass);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -982,8 +982,7 @@ const QSet<QClass *> *QClass::superClasses() const
 
     qWarning("QClass::superClasses: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QClass);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 void QClass::addSuperClass(QClass *superClass)
@@ -991,10 +990,10 @@ void QClass::addSuperClass(QClass *superClass)
     // This is a read-write derived association end
 
     qWarning("QClass::addSuperClass: to be implemented (this is a derived associationend)");
+    Q_UNUSED(superClass);
 
-    //Q_D(QClass);
-    if (false /* <derived-inclusion-criteria> */) {
-        // <derived-code>
+    if (false) { // change to your derived inclusion criteria
+        // change to your derived code
     }
 }
 
@@ -1003,10 +1002,10 @@ void QClass::removeSuperClass(QClass *superClass)
     // This is a read-write derived association end
 
     qWarning("QClass::removeSuperClass: to be implemented (this is a derived associationend)");
+    Q_UNUSED(superClass);
 
-    //Q_D(QClass);
-    if (false /* <derived-exclusion-criteria> */) {
-        // <derived-code>
+    if (false) { // change to your derived exclusion criteria
+        // change to your derived code
     }
 }
 
@@ -1016,6 +1015,9 @@ void QClass::removeSuperClass(QClass *superClass)
 const QSet<QNamedElement *> *QClass::inherit(const QSet<QNamedElement *> *inhs) const
 {
     qWarning("QClass::inherit: operation to be implemented");
+    Q_UNUSED(inhs);
+
+    return 0; // change here to your derived return
 }
 
 #include "moc_qclass.cpp"

@@ -96,8 +96,7 @@ QEnumeration *QEnumerationLiteral::classifier() const
 
     qWarning("QEnumerationLiteral::classifier: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QEnumerationLiteral);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 /*!

@@ -507,8 +507,7 @@ QString QProperty::default_() const
 
     qWarning("QProperty::default_: to be implemented (this is a derived attribute)");
 
-    //Q_D(const QProperty);
-    //return <derived-return>;
+    return QString(); // change here to your derived return
 }
 
 void QProperty::setDefault_(QString default_)
@@ -516,10 +515,10 @@ void QProperty::setDefault_(QString default_)
     // This is a read-write derived attribute
 
     qWarning("QProperty::setDefault_: to be implemented (this is a derived attribute)");
+    Q_UNUSED(default_);
 
-    //Q_D(QProperty);
-    if (false /* <derived-change-criteria> */) {
-        // <derived-code>
+    if (false) { // change to your derived change criteria
+        // change to your derived code
     }
 }
 
@@ -532,8 +531,7 @@ bool QProperty::isComposite() const
 
     qWarning("QProperty::isComposite: to be implemented (this is a derived attribute)");
 
-    //Q_D(const QProperty);
-    //return <derived-return>;
+    return bool(); // change here to your derived return
 }
 
 void QProperty::setComposite(bool isComposite)
@@ -541,10 +539,10 @@ void QProperty::setComposite(bool isComposite)
     // This is a read-write derived attribute
 
     qWarning("QProperty::setComposite: to be implemented (this is a derived attribute)");
+    Q_UNUSED(isComposite);
 
-    //Q_D(QProperty);
-    if (false /* <derived-change-criteria> */) {
-        // <derived-code>
+    if (false) { // change to your derived change criteria
+        // change to your derived code
     }
 }
 
@@ -833,8 +831,7 @@ QProperty *QProperty::opposite() const
 
     qWarning("QProperty::opposite: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QProperty);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 void QProperty::setOpposite(QProperty *opposite)
@@ -842,10 +839,10 @@ void QProperty::setOpposite(QProperty *opposite)
     // This is a read-write derived association end
 
     qWarning("QProperty::setOpposite: to be implemented (this is a derived associationend)");
+    Q_UNUSED(opposite);
 
-    //Q_D(QProperty);
-    if (false /* <derived-change-criteria */) {
-        // <derived-code>
+    if (false) { // change to your derived change criteria
+        // change to your derived code
     }
 }
 
@@ -1037,6 +1034,9 @@ void QProperty::setInterface(QInterface *interface)
 bool QProperty::isAttribute(const QProperty *p) const
 {
     qWarning("QProperty::isAttribute: operation to be implemented");
+    Q_UNUSED(p);
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -1045,6 +1045,9 @@ bool QProperty::isAttribute(const QProperty *p) const
 bool QProperty::isCompatibleWith(const QParameterableElement *p) const
 {
     qWarning("QProperty::isCompatibleWith: operation to be implemented");
+    Q_UNUSED(p);
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -1053,6 +1056,9 @@ bool QProperty::isCompatibleWith(const QParameterableElement *p) const
 bool QProperty::isConsistentWith(const QRedefinableElement *redefinee) const
 {
     qWarning("QProperty::isConsistentWith: operation to be implemented");
+    Q_UNUSED(redefinee);
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -1061,6 +1067,8 @@ bool QProperty::isConsistentWith(const QRedefinableElement *redefinee) const
 bool QProperty::isNavigable() const
 {
     qWarning("QProperty::isNavigable: operation to be implemented");
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -1069,6 +1077,8 @@ bool QProperty::isNavigable() const
 const QSet<QType *> *QProperty::subsettingContext() const
 {
     qWarning("QProperty::subsettingContext: operation to be implemented");
+
+    return 0; // change here to your derived return
 }
 
 #include "moc_qproperty.cpp"

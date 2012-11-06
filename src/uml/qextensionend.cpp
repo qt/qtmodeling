@@ -96,8 +96,7 @@ qint32 QExtensionEnd::lower() const
 
     qWarning("QExtensionEnd::lower: to be implemented (this is a derived attribute)");
 
-    //Q_D(const QExtensionEnd);
-    //return <derived-return>;
+    return qint32(); // change here to your derived return
 }
 
 void QExtensionEnd::setLower(qint32 lower)
@@ -105,10 +104,10 @@ void QExtensionEnd::setLower(qint32 lower)
     // This is a read-write derived attribute
 
     qWarning("QExtensionEnd::setLower: to be implemented (this is a derived attribute)");
+    Q_UNUSED(lower);
 
-    //Q_D(QExtensionEnd);
-    if (false /* <derived-change-criteria> */) {
-        // <derived-code>
+    if (false) { // change to your derived change criteria
+        // change to your derived code
     }
 }
 
@@ -143,6 +142,8 @@ void QExtensionEnd::setType(QStereotype *type)
 qint32 QExtensionEnd::lowerBound() const
 {
     qWarning("QExtensionEnd::lowerBound: operation to be implemented");
+
+    return qint32(); // change here to your derived return
 }
 
 #include "moc_qextensionend.cpp"

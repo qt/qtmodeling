@@ -393,8 +393,7 @@ QString QParameter::default_() const
 
     qWarning("QParameter::default_: to be implemented (this is a derived attribute)");
 
-    //Q_D(const QParameter);
-    //return <derived-return>;
+    return QString(); // change here to your derived return
 }
 
 void QParameter::setDefault_(QString default_)
@@ -402,10 +401,10 @@ void QParameter::setDefault_(QString default_)
     // This is a read-write derived attribute
 
     qWarning("QParameter::setDefault_: to be implemented (this is a derived attribute)");
+    Q_UNUSED(default_);
 
-    //Q_D(QParameter);
-    if (false /* <derived-change-criteria> */) {
-        // <derived-code>
+    if (false) { // change to your derived change criteria
+        // change to your derived code
     }
 }
 

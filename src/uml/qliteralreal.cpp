@@ -108,6 +108,8 @@ void QLiteralReal::setValue(qreal value)
 bool QLiteralReal::isComputable() const
 {
     qWarning("QLiteralReal::isComputable: operation to be implemented");
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -116,6 +118,8 @@ bool QLiteralReal::isComputable() const
 qreal QLiteralReal::realValue() const
 {
     qWarning("QLiteralReal::realValue: operation to be implemented");
+
+    return qreal(); // change here to your derived return
 }
 
 #include "moc_qliteralreal.cpp"

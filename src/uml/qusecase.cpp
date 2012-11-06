@@ -270,6 +270,8 @@ void QUseCase::removeExtend(QExtend *extend)
 const QSet<QUseCase *> *QUseCase::allIncludedUseCases() const
 {
     qWarning("QUseCase::allIncludedUseCases: operation to be implemented");
+
+    return 0; // change here to your derived return
 }
 
 #include "moc_qusecase.cpp"

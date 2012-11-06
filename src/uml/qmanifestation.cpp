@@ -125,6 +125,7 @@ void QManifestation::addSupplier(QUmlPointer<QPackageableElement> utilizedElemen
 
 void QManifestation::removeSupplier(QUmlPointer<QPackageableElement> utilizedElement)
 {
+    Q_UNUSED(utilizedElement);
     setUtilizedElement(0);
 }
 

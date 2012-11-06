@@ -112,6 +112,8 @@ void QLiteralBoolean::setValue(bool value)
 bool QLiteralBoolean::booleanValue() const
 {
     qWarning("QLiteralBoolean::booleanValue: operation to be implemented");
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -120,6 +122,8 @@ bool QLiteralBoolean::booleanValue() const
 bool QLiteralBoolean::isComputable() const
 {
     qWarning("QLiteralBoolean::isComputable: operation to be implemented");
+
+    return bool(); // change here to your derived return
 }
 
 #include "moc_qliteralboolean.cpp"

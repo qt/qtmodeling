@@ -664,6 +664,8 @@ void QPackage::removeNestedPackage(QPackage *nestedPackage)
 const QSet<QStereotype *> *QPackage::allApplicableStereotypes() const
 {
     qWarning("QPackage::allApplicableStereotypes: operation to be implemented");
+
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -672,6 +674,8 @@ const QSet<QStereotype *> *QPackage::allApplicableStereotypes() const
 QProfile *QPackage::containingProfile() const
 {
     qWarning("QPackage::containingProfile: operation to be implemented");
+
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -680,6 +684,9 @@ QProfile *QPackage::containingProfile() const
 bool QPackage::makesVisible(const QNamedElement *el) const
 {
     qWarning("QPackage::makesVisible: operation to be implemented");
+    Q_UNUSED(el);
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -688,6 +695,8 @@ bool QPackage::makesVisible(const QNamedElement *el) const
 bool QPackage::mustBeOwned() const
 {
     qWarning("QPackage::mustBeOwned: operation to be implemented");
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -696,6 +705,8 @@ bool QPackage::mustBeOwned() const
 const QSet<QPackageableElement *> *QPackage::visibleMembers() const
 {
     qWarning("QPackage::visibleMembers: operation to be implemented");
+
+    return 0; // change here to your derived return
 }
 
 // Overriden methods for subsetted properties

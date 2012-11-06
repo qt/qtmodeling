@@ -121,7 +121,6 @@ void QActivityGroupPrivate::removeSubgroup(QActivityGroup *subgroup)
         (qtuml_object_cast<QElementPrivate *>(this))->removeOwnedElement(qtuml_object_cast<QElement *>(subgroup));
 
         // Adjust opposite property
-        Q_Q(QActivityGroup);
         (qtuml_object_cast<QActivityGroupPrivate *>(subgroup->d_func()))->setSuperGroup(0);
     }
 }
