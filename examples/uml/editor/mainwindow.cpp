@@ -12,7 +12,7 @@
 #include <QtCore/QRegularExpression>
 #include <QtCore/QMetaProperty>
 
-#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QComboBox>
 
 using namespace QtUml;
 
@@ -53,7 +53,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QUmlPointer<QClass> class_ = new QClass;
     class_->setName("Student");
-    class_->setAbstract(false);
+    class_->setAbstract(true);
+    class_->setVisibility(QtUml::QtUml::VisibilityPackage);
 
     package->addOwnedType(enumeration);
     package->addOwnedType(class_);
@@ -79,11 +80,41 @@ void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, Q
     int propertyCount = element->metaObject()->propertyCount();
     ui->propertyEditor->setRowCount(propertyCount);
 
+    const QMetaObject metaObject = QtUml::QtUml::staticMetaObject;
+    int enumeratorCount = metaObject.enumeratorCount();
+    QMap<QString, QMetaEnum> enums;
+    for (int i = 0; i < enumeratorCount; ++i) {
+        QMetaEnum metaEnum = metaObject.enumerator(i);
+        enums[QString(metaEnum.name())] = metaEnum;
+    }
+
     for (int i = 0; i < propertyCount; ++i) {
         QMetaProperty property = element->metaObject()->property(i);
         QTableWidgetItem *item = new QTableWidgetItem(QString(property.name()).remove(QRegularExpression("_$")) + ((property.isWritable() == false) ? " (RO)":""));
         item->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
         ui->propertyEditor->setItem(i, 0, item);
+        if (property.type() == QVariant::Bool) {
+            QComboBox *comboBox = new QComboBox;
+            comboBox->addItem("false", qVariantFromValue(QString(property.name())));
+            comboBox->addItem("true", qVariantFromValue(QString(property.name())));
+            comboBox->setCurrentIndex(property.read(element).toBool() ? 1:0);
+            connect(comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(currentIndexChanged(int)));
+            ui->propertyEditor->setCellWidget(i, 1, comboBox);
+            continue;
+        }
+        if (property.type() == QMetaType::Int) {
+            if (enums.contains(QString(property.typeName()).split("::").last())) {
+                QMetaEnum metaEnum = enums[QString(property.typeName()).split("::").last()];
+                QComboBox *comboBox = new QComboBox;
+                int keyCount = metaEnum.keyCount();
+                for (int j = 0; j < keyCount; ++j)
+                    comboBox->addItem(QString(metaEnum.key(j)).toLower().remove(QString(property.name())), qVariantFromValue(QString(property.name())));
+
+                comboBox->setCurrentIndex(property.read(element).toInt());
+                connect(comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(currentIndexChanged(int)));
+                ui->propertyEditor->setCellWidget(i, 1, comboBox);
+            }
+        }
         item = new QTableWidgetItem;
         if (property.isWritable() == false)
             item->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
@@ -130,6 +161,19 @@ void MainWindow::itemChanged(QTableWidgetItem *item)
         if (element->metaObject()->property(item->row()).type() == QVariant::String)
             element->setProperty(ui->propertyEditor->item(item->row(), 0)->text().toLatin1(), item->text());
         on_modelExplorer_currentItemChanged(ui->modelExplorer->currentItem(), 0);
+    }
+}
+
+void MainWindow::currentIndexChanged(int index)
+{
+    QComboBox *comboBox = qobject_cast<QComboBox *>(sender());
+    if (comboBox) {
+        QString propertyName = comboBox->itemData(index).toString();
+        QObject *element = ui->modelExplorer->currentItem()->data(0, Qt::UserRole).value<QObject *>();
+        if (element && comboBox->itemText(0) == "false")
+            element->setProperty(propertyName.toLatin1(), qVariantFromValue((index == 0) ? false:true));
+        else
+            element->setProperty(propertyName.toLatin1(), qVariantFromValue(index));
     }
 }
 
