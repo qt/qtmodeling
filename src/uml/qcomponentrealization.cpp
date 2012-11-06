@@ -174,6 +174,7 @@ void QComponentRealization::addSupplier(QUmlPointer<QComponent> abstraction)
 
 void QComponentRealization::removeSupplier(QUmlPointer<QComponent> abstraction)
 {
+    Q_UNUSED(abstraction);
     setAbstraction(0);
 }
 

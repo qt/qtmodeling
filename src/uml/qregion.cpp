@@ -476,8 +476,7 @@ QClassifier *QRegion::redefinitionContext() const
 
     qWarning("QRegion::redefinitionContext: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QRegion);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -529,6 +528,8 @@ void QRegion::removeSubvertex(QVertex *subvertex)
 bool QRegion::belongsToPSM() const
 {
     qWarning("QRegion::belongsToPSM: operation to be implemented");
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -537,6 +538,8 @@ bool QRegion::belongsToPSM() const
 QStateMachine *QRegion::containingStateMachine() const
 {
     qWarning("QRegion::containingStateMachine: operation to be implemented");
+
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -545,6 +548,9 @@ QStateMachine *QRegion::containingStateMachine() const
 bool QRegion::isConsistentWith(const QRedefinableElement *redefinee) const
 {
     qWarning("QRegion::isConsistentWith: operation to be implemented");
+    Q_UNUSED(redefinee);
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -553,6 +559,9 @@ bool QRegion::isConsistentWith(const QRedefinableElement *redefinee) const
 bool QRegion::isRedefinitionContextValid(const QRegion *redefined) const
 {
     qWarning("QRegion::isRedefinitionContextValid: operation to be implemented");
+    Q_UNUSED(redefined);
+
+    return bool(); // change here to your derived return
 }
 
 #include "moc_qregion.cpp"

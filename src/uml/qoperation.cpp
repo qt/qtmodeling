@@ -519,8 +519,7 @@ qint32 QOperation::lower() const
 
     qWarning("QOperation::lower: to be implemented (this is a derived attribute)");
 
-    //Q_D(const QOperation);
-    //return <derived-return>;
+    return qint32(); // change here to your derived return
 }
 
 /*!
@@ -553,8 +552,7 @@ bool QOperation::isUnique() const
 
     qWarning("QOperation::isUnique: to be implemented (this is a derived attribute)");
 
-    //Q_D(const QOperation);
-    //return <derived-return>;
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -566,8 +564,7 @@ qint32 QOperation::upper() const
 
     qWarning("QOperation::upper: to be implemented (this is a derived attribute)");
 
-    //Q_D(const QOperation);
-    //return <derived-return>;
+    return qint32(); // change here to your derived return
 }
 
 /*!
@@ -579,8 +576,7 @@ bool QOperation::isOrdered() const
 
     qWarning("QOperation::isOrdered: to be implemented (this is a derived attribute)");
 
-    //Q_D(const QOperation);
-    //return <derived-return>;
+    return bool(); // change here to your derived return
 }
 
 // ---------------------------------------------------------------
@@ -846,8 +842,7 @@ QType *QOperation::type() const
 
     qWarning("QOperation::type: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QOperation);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -966,6 +961,9 @@ void QOperation::removeRaisedException(QType *raisedException)
 bool QOperation::isConsistentWith(const QRedefinableElement *redefinee) const
 {
     qWarning("QOperation::isConsistentWith: operation to be implemented");
+    Q_UNUSED(redefinee);
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -974,6 +972,8 @@ bool QOperation::isConsistentWith(const QRedefinableElement *redefinee) const
 const QSet<QParameter *> *QOperation::returnResult() const
 {
     qWarning("QOperation::returnResult: operation to be implemented");
+
+    return 0; // change here to your derived return
 }
 
 #include "moc_qoperation.cpp"

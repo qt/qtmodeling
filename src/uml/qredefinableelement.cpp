@@ -180,6 +180,9 @@ const QSet<QClassifier *> *QRedefinableElement::redefinitionContexts() const
 bool QRedefinableElement::isConsistentWith(const QRedefinableElement *redefinee) const
 {
     qWarning("QRedefinableElement::isConsistentWith: operation to be implemented");
+    Q_UNUSED(redefinee);
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -188,6 +191,9 @@ bool QRedefinableElement::isConsistentWith(const QRedefinableElement *redefinee)
 bool QRedefinableElement::isRedefinitionContextValid(const QRedefinableElement *redefined) const
 {
     qWarning("QRedefinableElement::isRedefinitionContextValid: operation to be implemented");
+    Q_UNUSED(redefined);
+
+    return bool(); // change here to your derived return
 }
 
 #include "moc_qredefinableelement.cpp"

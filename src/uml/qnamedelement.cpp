@@ -134,6 +134,10 @@ void QNamedElement::setName(QString name)
     Q_D(QNamedElement);
     if (d->name != name) {
         d->name = name;
+        QObject *object = this;
+        while (object->parent())
+            object = object->parent();
+        object->setObjectName(name);
     }
 }
 
@@ -287,6 +291,8 @@ const QList<QNamespace *> *QNamedElement::allNamespaces() const
 const QSet<QPackage *> *QNamedElement::allOwningPackages() const
 {
     qWarning("QNamedElement::allOwningPackages: operation to be implemented");
+
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -295,6 +301,10 @@ const QSet<QPackage *> *QNamedElement::allOwningPackages() const
 bool QNamedElement::isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const
 {
     qWarning("QNamedElement::isDistinguishableFrom: operation to be implemented");
+    Q_UNUSED(n);
+    Q_UNUSED(ns);
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -302,7 +312,7 @@ bool QNamedElement::isDistinguishableFrom(const QNamedElement *n, const QNamespa
  */
 QString QNamedElement::separator() const
 {
-    return "::";
+    return QStringLiteral("::");
 }
 
 #include "moc_qnamedelement.cpp"

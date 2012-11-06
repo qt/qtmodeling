@@ -61,6 +61,7 @@ void QConnectableElementPrivate::addEnd(QConnectorEnd *end)
     // This is a read-only derived association end
 
     qWarning("QConnectableElement::addEnd: to be implemented (this is a derived associationend)");
+    Q_UNUSED(end);
 
     if (false /* <derivedinclusion-criteria> */) {
         // <derived-code>
@@ -76,12 +77,12 @@ void QConnectableElementPrivate::removeEnd(QConnectorEnd *end)
     // This is a read-only derived association end
 
     qWarning("QConnectableElement::removeEnd: to be implemented (this is a derived associationend)");
+    Q_UNUSED(end);
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
 
         // Adjust opposite property
-        Q_Q(QConnectableElement);
         end->setRole(0);
     }
 }
@@ -284,8 +285,7 @@ const QList<QConnectorEnd *> *QConnectableElement::ends() const
 
     qWarning("QConnectableElement::ends: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QConnectableElement);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 /*!

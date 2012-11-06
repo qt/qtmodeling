@@ -104,8 +104,7 @@ QtUml::ConnectorKind QConnector::kind() const
 
     qWarning("QConnector::kind: to be implemented (this is a derived attribute)");
 
-    //Q_D(const QConnector);
-    //return <derived-return>;
+    return QtUml::ConnectorKind(); // change here to your derived return
 }
 
 // ---------------------------------------------------------------

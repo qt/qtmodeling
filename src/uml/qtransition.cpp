@@ -490,8 +490,7 @@ QClassifier *QTransition::redefinitionContext() const
 
     qWarning("QTransition::redefinitionContext: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QTransition);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -595,6 +594,8 @@ void QTransition::removeTrigger(QTrigger *trigger)
 QStateMachine *QTransition::containingStateMachine() const
 {
     qWarning("QTransition::containingStateMachine: operation to be implemented");
+
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -603,6 +604,9 @@ QStateMachine *QTransition::containingStateMachine() const
 bool QTransition::isConsistentWith(const QRedefinableElement *redefinee) const
 {
     qWarning("QTransition::isConsistentWith: operation to be implemented");
+    Q_UNUSED(redefinee);
+
+    return bool(); // change here to your derived return
 }
 
 #include "moc_qtransition.cpp"

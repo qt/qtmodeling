@@ -164,6 +164,7 @@ void QSubstitution::addSupplier(QUmlPointer<QClassifier> contract)
 
 void QSubstitution::removeSupplier(QUmlPointer<QClassifier> contract)
 {
+    Q_UNUSED(contract);
     setContract(0);
 }
 
@@ -174,6 +175,7 @@ void QSubstitution::addClient(QUmlPointer<QClassifier> substitutingClassifier)
 
 void QSubstitution::removeClient(QUmlPointer<QClassifier> substitutingClassifier)
 {
+    Q_UNUSED(substitutingClassifier);
     setSubstitutingClassifier(0);
 }
 

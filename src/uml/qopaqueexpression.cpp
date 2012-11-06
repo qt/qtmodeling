@@ -188,8 +188,7 @@ QParameter *QOpaqueExpression::result() const
 
     qWarning("QOpaqueExpression::result: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QOpaqueExpression);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -198,6 +197,8 @@ QParameter *QOpaqueExpression::result() const
 bool QOpaqueExpression::isIntegral() const
 {
     qWarning("QOpaqueExpression::isIntegral: operation to be implemented");
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -206,6 +207,8 @@ bool QOpaqueExpression::isIntegral() const
 bool QOpaqueExpression::isNonNegative() const
 {
     qWarning("QOpaqueExpression::isNonNegative: operation to be implemented");
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -214,6 +217,8 @@ bool QOpaqueExpression::isNonNegative() const
 bool QOpaqueExpression::isPositive() const
 {
     qWarning("QOpaqueExpression::isPositive: operation to be implemented");
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -222,6 +227,8 @@ bool QOpaqueExpression::isPositive() const
 qint32 QOpaqueExpression::value() const
 {
     qWarning("QOpaqueExpression::value: operation to be implemented");
+
+    return qint32(); // change here to your derived return
 }
 
 #include "moc_qopaqueexpression.cpp"

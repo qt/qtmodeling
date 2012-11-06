@@ -62,6 +62,7 @@ void QVertexPrivate::addIncoming(QTransition *incoming)
     // This is a read-only derived association end
 
     qWarning("QVertex::addIncoming: to be implemented (this is a derived associationend)");
+    Q_UNUSED(incoming);
 
     if (false /* <derivedinclusion-criteria> */) {
         // <derived-code>
@@ -77,12 +78,12 @@ void QVertexPrivate::removeIncoming(QTransition *incoming)
     // This is a read-only derived association end
 
     qWarning("QVertex::removeIncoming: to be implemented (this is a derived associationend)");
+    Q_UNUSED(incoming);
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
 
         // Adjust opposite property
-        Q_Q(QVertex);
         incoming->setTarget(0);
     }
 }
@@ -92,6 +93,7 @@ void QVertexPrivate::addOutgoing(QTransition *outgoing)
     // This is a read-only derived association end
 
     qWarning("QVertex::addOutgoing: to be implemented (this is a derived associationend)");
+    Q_UNUSED(outgoing);
 
     if (false /* <derivedinclusion-criteria> */) {
         // <derived-code>
@@ -107,12 +109,12 @@ void QVertexPrivate::removeOutgoing(QTransition *outgoing)
     // This is a read-only derived association end
 
     qWarning("QVertex::removeOutgoing: to be implemented (this is a derived associationend)");
+    Q_UNUSED(outgoing);
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
 
         // Adjust opposite property
-        Q_Q(QVertex);
         outgoing->setSource(0);
     }
 }
@@ -158,8 +160,7 @@ const QSet<QTransition *> *QVertex::incomings() const
 
     qWarning("QVertex::incomings: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QVertex);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -203,8 +204,7 @@ const QSet<QTransition *> *QVertex::outgoings() const
 
     qWarning("QVertex::outgoings: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QVertex);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -213,6 +213,8 @@ const QSet<QTransition *> *QVertex::outgoings() const
 QStateMachine *QVertex::containingStateMachine() const
 {
     qWarning("QVertex::containingStateMachine: operation to be implemented");
+
+    return 0; // change here to your derived return
 }
 
 #include "moc_qvertex.cpp"

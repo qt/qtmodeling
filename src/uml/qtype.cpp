@@ -125,6 +125,9 @@ void QType::setPackage(QPackage *package)
 bool QType::conformsTo(const QType *other) const
 {
     qWarning("QType::conformsTo: operation to be implemented");
+    Q_UNUSED(other);
+
+    return bool(); // change here to your derived return
 }
 
 #include "moc_qtype.cpp"

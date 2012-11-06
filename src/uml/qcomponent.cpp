@@ -171,8 +171,7 @@ const QSet<QInterface *> *QComponent::required() const
 
     qWarning("QComponent::required: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QComponent);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -184,8 +183,7 @@ const QSet<QInterface *> *QComponent::provided() const
 
     qWarning("QComponent::provided: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QComponent);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -231,6 +229,9 @@ void QComponent::removePackagedElement(QPackageableElement *packagedElement)
 const QSet<QInterface *> *QComponent::realizedInterfaces(const QClassifier *classifier) const
 {
     qWarning("QComponent::realizedInterfaces: operation to be implemented");
+    Q_UNUSED(classifier);
+
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -239,6 +240,9 @@ const QSet<QInterface *> *QComponent::realizedInterfaces(const QClassifier *clas
 const QSet<QInterface *> *QComponent::usedInterfaces(const QClassifier *classifier) const
 {
     qWarning("QComponent::usedInterfaces: operation to be implemented");
+    Q_UNUSED(classifier);
+
+    return 0; // change here to your derived return
 }
 
 #include "moc_qcomponent.cpp"

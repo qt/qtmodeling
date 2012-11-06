@@ -180,8 +180,7 @@ QClassifier *QAction::context() const
 
     qWarning("QAction::context: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QAction);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 /*!

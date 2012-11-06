@@ -179,8 +179,7 @@ const QSet<QProperty *> *QStructuredClassifier::parts() const
 
     qWarning("QStructuredClassifier::parts: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QStructuredClassifier);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 /*!

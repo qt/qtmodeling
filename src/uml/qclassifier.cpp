@@ -799,8 +799,7 @@ const QSet<QClassifier *> *QClassifier::generals() const
 
     qWarning("QClassifier::generals: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QClassifier);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 void QClassifier::addGeneral(QClassifier *general)
@@ -808,10 +807,10 @@ void QClassifier::addGeneral(QClassifier *general)
     // This is a read-write derived association end
 
     qWarning("QClassifier::addGeneral: to be implemented (this is a derived associationend)");
+    Q_UNUSED(general);
 
-    //Q_D(QClassifier);
-    if (false /* <derived-inclusion-criteria> */) {
-        // <derived-code>
+    if (false) { // change to your derived inclusion criteria
+        // change to your derived code
     }
 }
 
@@ -820,10 +819,10 @@ void QClassifier::removeGeneral(QClassifier *general)
     // This is a read-write derived association end
 
     qWarning("QClassifier::removeGeneral: to be implemented (this is a derived associationend)");
+    Q_UNUSED(general);
 
-    //Q_D(QClassifier);
-    if (false /* <derived-exclusion-criteria> */) {
-        // <derived-code>
+    if (false) { // change to your derived exclusion criteria
+        // change to your derived code
     }
 }
 
@@ -908,8 +907,7 @@ const QSet<QNamedElement *> *QClassifier::inheritedMembers() const
 
     qWarning("QClassifier::inheritedMembers: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QClassifier);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -963,6 +961,8 @@ void QClassifier::removeSubstitution(QSubstitution *substitution)
 const QSet<QFeature *> *QClassifier::allFeatures() const
 {
     qWarning("QClassifier::allFeatures: operation to be implemented");
+
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -971,6 +971,8 @@ const QSet<QFeature *> *QClassifier::allFeatures() const
 const QSet<QClassifier *> *QClassifier::allParents() const
 {
     qWarning("QClassifier::allParents: operation to be implemented");
+
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -979,6 +981,9 @@ const QSet<QClassifier *> *QClassifier::allParents() const
 bool QClassifier::conformsTo(const QClassifier *other) const
 {
     qWarning("QClassifier::conformsTo: operation to be implemented");
+    Q_UNUSED(other);
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -987,6 +992,9 @@ bool QClassifier::conformsTo(const QClassifier *other) const
 bool QClassifier::hasVisibilityOf(const QNamedElement *n) const
 {
     qWarning("QClassifier::hasVisibilityOf: operation to be implemented");
+    Q_UNUSED(n);
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -995,6 +1003,9 @@ bool QClassifier::hasVisibilityOf(const QNamedElement *n) const
 const QSet<QNamedElement *> *QClassifier::inherit(const QSet<QNamedElement *> *inhs) const
 {
     qWarning("QClassifier::inherit: operation to be implemented");
+    Q_UNUSED(inhs);
+
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -1003,6 +1014,9 @@ const QSet<QNamedElement *> *QClassifier::inherit(const QSet<QNamedElement *> *i
 const QSet<QNamedElement *> *QClassifier::inheritableMembers(const QClassifier *c) const
 {
     qWarning("QClassifier::inheritableMembers: operation to be implemented");
+    Q_UNUSED(c);
+
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -1011,6 +1025,8 @@ const QSet<QNamedElement *> *QClassifier::inheritableMembers(const QClassifier *
 bool QClassifier::isTemplate() const
 {
     qWarning("QClassifier::isTemplate: operation to be implemented");
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -1019,6 +1035,9 @@ bool QClassifier::isTemplate() const
 bool QClassifier::maySpecializeType(const QClassifier *c) const
 {
     qWarning("QClassifier::maySpecializeType: operation to be implemented");
+    Q_UNUSED(c);
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -1027,6 +1046,8 @@ bool QClassifier::maySpecializeType(const QClassifier *c) const
 const QSet<QClassifier *> *QClassifier::parents() const
 {
     qWarning("QClassifier::parents: operation to be implemented");
+
+    return 0; // change here to your derived return
 }
 
 // Overriden methods for subsetted properties

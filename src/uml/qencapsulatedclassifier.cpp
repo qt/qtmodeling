@@ -95,8 +95,7 @@ const QSet<QPort *> *QEncapsulatedClassifier::ownedPorts() const
 
     qWarning("QEncapsulatedClassifier::ownedPorts: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QEncapsulatedClassifier);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 #include "moc_qencapsulatedclassifier.cpp"

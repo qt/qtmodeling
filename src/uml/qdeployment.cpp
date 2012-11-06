@@ -220,6 +220,7 @@ void QDeployment::addClient(QUmlPointer<QDeploymentTarget> location)
 
 void QDeployment::removeClient(QUmlPointer<QDeploymentTarget> location)
 {
+    Q_UNUSED(location);
     setLocation(0);
 }
 

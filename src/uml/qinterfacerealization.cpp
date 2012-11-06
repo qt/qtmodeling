@@ -165,6 +165,7 @@ void QInterfaceRealization::addClient(QUmlPointer<QBehavioredClassifier> impleme
 
 void QInterfaceRealization::removeClient(QUmlPointer<QBehavioredClassifier> implementingClassifier)
 {
+    Q_UNUSED(implementingClassifier);
     setImplementingClassifier(0);
 }
 
@@ -175,6 +176,7 @@ void QInterfaceRealization::addSupplier(QUmlPointer<QInterface> contract)
 
 void QInterfaceRealization::removeSupplier(QUmlPointer<QInterface> contract)
 {
+    Q_UNUSED(contract);
     setContract(0);
 }
 

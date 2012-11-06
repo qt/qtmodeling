@@ -209,6 +209,8 @@ void QElementImport::setImportingNamespace(QNamespace *importingNamespace)
 QString QElementImport::getName() const
 {
     qWarning("QElementImport::getName: operation to be implemented");
+
+    return QString(); // change here to your derived return
 }
 
 #include "moc_qelementimport.cpp"

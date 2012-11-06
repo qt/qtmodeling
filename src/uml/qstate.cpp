@@ -385,8 +385,7 @@ bool QState::isSimple() const
 
     qWarning("QState::isSimple: to be implemented (this is a derived attribute)");
 
-    //Q_D(const QState);
-    //return <derived-return>;
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -398,8 +397,7 @@ bool QState::isComposite() const
 
     qWarning("QState::isComposite: to be implemented (this is a derived attribute)");
 
-    //Q_D(const QState);
-    //return <derived-return>;
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -411,8 +409,7 @@ bool QState::isOrthogonal() const
 
     qWarning("QState::isOrthogonal: to be implemented (this is a derived attribute)");
 
-    //Q_D(const QState);
-    //return <derived-return>;
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -424,8 +421,7 @@ bool QState::isSubmachineState() const
 
     qWarning("QState::isSubmachineState: to be implemented (this is a derived attribute)");
 
-    //Q_D(const QState);
-    //return <derived-return>;
+    return bool(); // change here to your derived return
 }
 
 // ---------------------------------------------------------------
@@ -556,8 +552,7 @@ QClassifier *QState::redefinitionContext() const
 
     qWarning("QState::redefinitionContext: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QState);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -791,6 +786,8 @@ void QState::setStateInvariant(QConstraint *stateInvariant)
 QStateMachine *QState::containingStateMachine() const
 {
     qWarning("QState::containingStateMachine: operation to be implemented");
+
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -799,6 +796,9 @@ QStateMachine *QState::containingStateMachine() const
 bool QState::isConsistentWith(const QRedefinableElement *redefinee) const
 {
     qWarning("QState::isConsistentWith: operation to be implemented");
+    Q_UNUSED(redefinee);
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -807,6 +807,9 @@ bool QState::isConsistentWith(const QRedefinableElement *redefinee) const
 bool QState::isRedefinitionContextValid(const QState *redefined) const
 {
     qWarning("QState::isRedefinitionContextValid: operation to be implemented");
+    Q_UNUSED(redefined);
+
+    return bool(); // change here to your derived return
 }
 
 #include "moc_qstate.cpp"

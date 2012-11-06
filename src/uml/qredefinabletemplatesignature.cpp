@@ -259,8 +259,7 @@ const QSet<QTemplateParameter *> *QRedefinableTemplateSignature::inheritedParame
 
     qWarning("QRedefinableTemplateSignature::inheritedParameters: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QRedefinableTemplateSignature);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -340,6 +339,9 @@ void QRedefinableTemplateSignature::removeExtendedSignature(QRedefinableTemplate
 bool QRedefinableTemplateSignature::isConsistentWith(const QRedefinableElement *redefinee) const
 {
     qWarning("QRedefinableTemplateSignature::isConsistentWith: operation to be implemented");
+    Q_UNUSED(redefinee);
+
+    return bool(); // change here to your derived return
 }
 
 #include "moc_qredefinabletemplatesignature.cpp"

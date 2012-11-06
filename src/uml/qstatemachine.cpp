@@ -258,6 +258,10 @@ void QStateMachine::removeRegion(QRegion *region)
 QNamespace *QStateMachine::LCA(const QState *s1, const QState *s2) const
 {
     qWarning("QStateMachine::LCA: operation to be implemented");
+    Q_UNUSED(s1);
+    Q_UNUSED(s2);
+
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -266,6 +270,10 @@ QNamespace *QStateMachine::LCA(const QState *s1, const QState *s2) const
 bool QStateMachine::ancestor(const QState *s1, const QState *s2) const
 {
     qWarning("QStateMachine::ancestor: operation to be implemented");
+    Q_UNUSED(s1);
+    Q_UNUSED(s2);
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -274,6 +282,9 @@ bool QStateMachine::ancestor(const QState *s1, const QState *s2) const
 bool QStateMachine::isConsistentWith(const QRedefinableElement *redefinee) const
 {
     qWarning("QStateMachine::isConsistentWith: operation to be implemented");
+    Q_UNUSED(redefinee);
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -282,6 +293,9 @@ bool QStateMachine::isConsistentWith(const QRedefinableElement *redefinee) const
 bool QStateMachine::isRedefinitionContextValid(const QStateMachine *redefined) const
 {
     qWarning("QStateMachine::isRedefinitionContextValid: operation to be implemented");
+    Q_UNUSED(redefined);
+
+    return bool(); // change here to your derived return
 }
 
 #include "moc_qstatemachine.cpp"

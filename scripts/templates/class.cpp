@@ -77,7 +77,7 @@
 
         [%- END %]
         // Adjust opposite property
-        [%- IF property.isReadOnly == 'true' and singlevalued == 'false' %]
+        [%- IF property.isReadOnly == 'true' and singlevalued == 'false' and not(operation == 2 and opposite.accessor.size <= 2) %]
         Q_Q(${class.name});
         [%- END %]
     [%- IF operation == 1 -%]
@@ -192,31 +192,36 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
     [%- END -%]
 [%- ELSE %]
     qWarning("${class.name}::${accessor.name}: to be implemented (this is a derived attribute)");
+    [%- FOREACH parameter IN accessor.parameter %]
+    Q_UNUSED(${parameter.name});
+    [%- END %]
 
     [%- IF loop.first %]
-    //Q_D(const ${class.name});
-    //return <derived-return>;
+    [%- IF accessor.return.search('\*') %]
+    return 0; // change to your derived return
+    [%- ELSIF accessor.return != 'void ' %]
+    return ${accessor.return.remove(' $')}(); // change here to your derived return
+    [%- END -%]
     [%- ELSE %]
-    //Q_D(${class.name});
     [%- IF attribute.accessor.0.return.search('<') %]
-    if (false /* <derived-[% IF loop.count == 2 %]inclusion[% ELSE %]exclusion[% END %]-criteria> */) {
+    if (false) { // change to your derived [% IF loop.count == 2 %]inclusion[% ELSE %]exclusion[% END %] criteria
     [%- ELSE %]
-    if (false /* <derived-change-criteria> */) {
+    if (false) { // change to your derived change criteria
     [%- END %]
         [%- IF attribute.isReadOnly == 'true' %]
-        // <derived-code>
+        // change to your derived code
         [%- ELSE -%]
             [%- IF accessor.name.search('^set') %]
             [%- HANDLESUBSETTEDPROPERTY(attribute, 2, 'true') %]
-        // <derived-code>
+        // change to your derived code
             [%- HANDLESUBSETTEDPROPERTY(attribute, 1, 'true') -%]
             [%- END -%]
             [%- IF accessor.name.search('^add') %]
-        // <derived-code>
+        // change to your derived code
             [%- HANDLESUBSETTEDPROPERTY(attribute, 1, 'false') -%]
     [%- END -%]
             [%- IF accessor.name.search('^remove') %]
-        // <derived-code>
+        // change to your derived code
             [%- HANDLESUBSETTEDPROPERTY(attribute, 2, 'false') -%]
             [%- END -%]
         [%- END %]
@@ -287,34 +292,39 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
     [%- END %]
 [%- ELSE %]
     qWarning("${class.name}::${accessor.name}: to be implemented (this is a derived associationend)");
+    [%- FOREACH parameter IN accessor.parameter %]
+    Q_UNUSED(${parameter.name});
+    [%- END %]
 
     [%- IF loop.first %]
-    //Q_D(const ${class.name});
-    //return <derived-return>;
+    [%- IF accessor.return.search('\*') %]
+    return 0; // change here to your derived return
+    [%- ELSIF accessor.return != 'void ' %]
+    return ${accessor.return.remove(' $')}(); // change here to your derived return
+    [%- END -%]
     [%- ELSE %]
-    //Q_D(${class.name});
     [%- IF associationend.accessor.0.return.search('<') %]
-    if (false /* <derived-[% IF loop.count == 2 %]inclusion[% ELSE %]exclusion[% END %]-criteria> */) {
+    if (false) { // change to your derived [% IF loop.count == 2 %]inclusion[% ELSE %]exclusion[% END %] criteria
     [%- ELSE %]
-    if (false /* <derived-change-criteria */) {
+    if (false) { // change to your derived change criteria
     [%- END %]
         [%- IF associationend.isReadOnly == 'true' %]
-        // <derived-code>
+        // change to your derived code
         [%- ELSE -%]
             [%- IF accessor.name.search('^set') %]
             [%- HANDLEOPPOSITEEND(associationend, accessor, 2, 'true') %]
             [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'true') %]
-        // <derived-code>
+        // change to your derived code
             [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'true') -%]
             [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'true') %]
             [%- END -%]
             [%- IF accessor.name.search('^add') %]
-        // <derived-code>
+        // change to your derived code
             [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'false') -%]
             [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'false') -%]
             [%- END -%]
             [%- IF accessor.name.search('^remove') %]
-        // <derived-code>
+        // change to your derived code
             [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'false') -%]
             [%- HANDLEOPPOSITEEND(associationend, accessor, 2, 'false') -%]
             [%- END -%]
@@ -539,6 +549,9 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
     }
 [%- ELSE %]
     qWarning("${class.name}::${accessor.name}: to be implemented (this is a derived attribute)");
+    [%- FOREACH parameter IN accessor.parameter %]
+    Q_UNUSED(${parameter.name});
+    [%- END %]
 
     [%- IF attribute.accessor.0.return.search('<') %]
     if (false /* <derived-[% IF loop.count == 2 %]inclusion[% ELSE %]exclusion[% END %]-criteria> */) {
@@ -602,6 +615,9 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
     }
 [%- ELSE %]
     qWarning("${class.name}::${accessor.name}: to be implemented (this is a derived associationend)");
+    [%- FOREACH parameter IN accessor.parameter %]
+    Q_UNUSED(${parameter.name});
+    [%- END %]
 
     [%- IF associationend.accessor.0.return.search('<') %]
     if (false /* <derived[% IF loop.count == 2 %]inclusion[% ELSE %]exclusion[% END %]-criteria> */) {
@@ -690,6 +706,16 @@ ${class.name}::~${class.name}()
 ${operation.return}${class.name}::${operation.name}([%- FOREACH parameter IN operation.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${operation.constness}
 {
     qWarning("${class.name}::${operation.name}: operation to be implemented");
+    [%- FOREACH parameter IN operation.parameter %]
+    Q_UNUSED(${parameter.name});
+    [%- END %]
+    [%- IF operation.return.search('\*') %]
+
+    return 0; // change here to your derived return
+    [%- ELSIF operation.return != 'void ' %]
+
+    return ${operation.return.remove(' $')}(); // change here to your derived return
+    [%- END %]
 }
 [% END -%]
 [%- found = 'false' -%]
@@ -715,7 +741,14 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN attri
 [%- IF loop.count == 2 %]
     ${parameter.accessor.1.name}(${attribute.accessor.1.parameter.0.name});
 [%- ELSE %]
-    ${parameter.accessor.2.name}(${attribute.accessor.1.parameter.0.name});
+    [%- IF attribute.accessor.2 %]
+    ${attribute.accessor.2.name}(${attribute.accessor.1.parameter.0.name});
+    [%- ELSE %]
+    [%- FOREACH parameter IN attribute.accessor.1.parameter %]
+    Q_UNUSED(${parameter.name});
+    [%- END %]
+    ${attribute.accessor.1.name}(0);
+    [%- END -%]
 [%- END %]
 }
 
@@ -750,6 +783,9 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN assoc
     [%- IF associationend.accessor.2 %]
     ${associationend.accessor.2.name}(${associationend.accessor.1.parameter.0.name});
     [%- ELSE %]
+    [%- FOREACH parameter IN associationend.accessor.1.parameter %]
+    Q_UNUSED(${parameter.name});
+    [%- END %]
     ${associationend.accessor.1.name}(0);
     [%- END -%]
 [%- END %]

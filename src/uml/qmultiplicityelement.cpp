@@ -99,8 +99,7 @@ qint32 QMultiplicityElement::upper() const
 
     qWarning("QMultiplicityElement::upper: to be implemented (this is a derived attribute)");
 
-    //Q_D(const QMultiplicityElement);
-    //return <derived-return>;
+    return qint32(); // change here to your derived return
 }
 
 void QMultiplicityElement::setUpper(qint32 upper)
@@ -108,10 +107,10 @@ void QMultiplicityElement::setUpper(qint32 upper)
     // This is a read-write derived attribute
 
     qWarning("QMultiplicityElement::setUpper: to be implemented (this is a derived attribute)");
+    Q_UNUSED(upper);
 
-    //Q_D(QMultiplicityElement);
-    if (false /* <derived-change-criteria> */) {
-        // <derived-code>
+    if (false) { // change to your derived change criteria
+        // change to your derived code
     }
 }
 
@@ -166,8 +165,7 @@ qint32 QMultiplicityElement::lower() const
 
     qWarning("QMultiplicityElement::lower: to be implemented (this is a derived attribute)");
 
-    //Q_D(const QMultiplicityElement);
-    //return <derived-return>;
+    return qint32(); // change here to your derived return
 }
 
 void QMultiplicityElement::setLower(qint32 lower)
@@ -175,10 +173,10 @@ void QMultiplicityElement::setLower(qint32 lower)
     // This is a read-write derived attribute
 
     qWarning("QMultiplicityElement::setLower: to be implemented (this is a derived attribute)");
+    Q_UNUSED(lower);
 
-    //Q_D(QMultiplicityElement);
-    if (false /* <derived-change-criteria> */) {
-        // <derived-code>
+    if (false) { // change to your derived change criteria
+        // change to your derived code
     }
 }
 
@@ -250,6 +248,9 @@ void QMultiplicityElement::setLowerValue(QValueSpecification *lowerValue)
 bool QMultiplicityElement::compatibleWith(const QMultiplicityElement *other) const
 {
     qWarning("QMultiplicityElement::compatibleWith: operation to be implemented");
+    Q_UNUSED(other);
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -258,6 +259,9 @@ bool QMultiplicityElement::compatibleWith(const QMultiplicityElement *other) con
 bool QMultiplicityElement::includesCardinality(qint32 C) const
 {
     qWarning("QMultiplicityElement::includesCardinality: operation to be implemented");
+    Q_UNUSED(C);
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -266,6 +270,9 @@ bool QMultiplicityElement::includesCardinality(qint32 C) const
 bool QMultiplicityElement::includesMultiplicity(const QMultiplicityElement *M) const
 {
     qWarning("QMultiplicityElement::includesMultiplicity: operation to be implemented");
+    Q_UNUSED(M);
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -274,6 +281,10 @@ bool QMultiplicityElement::includesMultiplicity(const QMultiplicityElement *M) c
 bool QMultiplicityElement::is(qint32 lowerbound, qint32 upperbound) const
 {
     qWarning("QMultiplicityElement::is: operation to be implemented");
+    Q_UNUSED(lowerbound);
+    Q_UNUSED(upperbound);
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -282,6 +293,8 @@ bool QMultiplicityElement::is(qint32 lowerbound, qint32 upperbound) const
 bool QMultiplicityElement::isMultivalued() const
 {
     qWarning("QMultiplicityElement::isMultivalued: operation to be implemented");
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -290,6 +303,8 @@ bool QMultiplicityElement::isMultivalued() const
 qint32 QMultiplicityElement::lowerBound() const
 {
     qWarning("QMultiplicityElement::lowerBound: operation to be implemented");
+
+    return qint32(); // change here to your derived return
 }
 
 /*!
@@ -298,6 +313,8 @@ qint32 QMultiplicityElement::lowerBound() const
 qint32 QMultiplicityElement::upperBound() const
 {
     qWarning("QMultiplicityElement::upperBound: operation to be implemented");
+
+    return qint32(); // change here to your derived return
 }
 
 #include "moc_qmultiplicityelement.cpp"

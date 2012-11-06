@@ -127,8 +127,7 @@ QtUml::MessageKind QMessage::messageKind() const
 
     qWarning("QMessage::messageKind: to be implemented (this is a derived attribute)");
 
-    //Q_D(const QMessage);
-    //return <derived-return>;
+    return QtUml::MessageKind(); // change here to your derived return
 }
 
 // ---------------------------------------------------------------

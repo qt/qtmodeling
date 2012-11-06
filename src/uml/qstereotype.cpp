@@ -135,8 +135,7 @@ QProfile *QStereotype::profile() const
 
     qWarning("QStereotype::profile: to be implemented (this is a derived associationend)");
 
-    //Q_D(const QStereotype);
-    //return <derived-return>;
+    return 0; // change here to your derived return
 }
 
 /*!
@@ -145,6 +144,8 @@ QProfile *QStereotype::profile() const
 QProfile *QStereotype::containingProfile() const
 {
     qWarning("QStereotype::containingProfile: operation to be implemented");
+
+    return 0; // change here to your derived return
 }
 
 #include "moc_qstereotype.cpp"

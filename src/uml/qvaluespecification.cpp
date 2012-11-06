@@ -262,6 +262,8 @@ void QValueSpecification::setVisibility(QtUml::VisibilityKind visibility)
 bool QValueSpecification::booleanValue() const
 {
     qWarning("QValueSpecification::booleanValue: operation to be implemented");
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -270,6 +272,8 @@ bool QValueSpecification::booleanValue() const
 qint32 QValueSpecification::integerValue() const
 {
     qWarning("QValueSpecification::integerValue: operation to be implemented");
+
+    return qint32(); // change here to your derived return
 }
 
 /*!
@@ -278,6 +282,9 @@ qint32 QValueSpecification::integerValue() const
 bool QValueSpecification::isCompatibleWith(const QParameterableElement *p) const
 {
     qWarning("QValueSpecification::isCompatibleWith: operation to be implemented");
+    Q_UNUSED(p);
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -286,6 +293,8 @@ bool QValueSpecification::isCompatibleWith(const QParameterableElement *p) const
 bool QValueSpecification::isComputable() const
 {
     qWarning("QValueSpecification::isComputable: operation to be implemented");
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -294,6 +303,8 @@ bool QValueSpecification::isComputable() const
 bool QValueSpecification::isNull() const
 {
     qWarning("QValueSpecification::isNull: operation to be implemented");
+
+    return bool(); // change here to your derived return
 }
 
 /*!
@@ -302,6 +313,8 @@ bool QValueSpecification::isNull() const
 qreal QValueSpecification::realValue() const
 {
     qWarning("QValueSpecification::realValue: operation to be implemented");
+
+    return qreal(); // change here to your derived return
 }
 
 /*!
@@ -310,6 +323,8 @@ qreal QValueSpecification::realValue() const
 QString QValueSpecification::stringValue() const
 {
     qWarning("QValueSpecification::stringValue: operation to be implemented");
+
+    return QString(); // change here to your derived return
 }
 
 /*!
@@ -318,6 +333,8 @@ QString QValueSpecification::stringValue() const
 qint32 QValueSpecification::unlimitedValue() const
 {
     qWarning("QValueSpecification::unlimitedValue: operation to be implemented");
+
+    return qint32(); // change here to your derived return
 }
 
 #include "moc_qvaluespecification.cpp"
