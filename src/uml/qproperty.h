@@ -87,7 +87,7 @@ class Q_UML_EXPORT QProperty : public QObject
     // From aggregated QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
     Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
@@ -96,10 +96,10 @@ class Q_UML_EXPORT QProperty : public QObject
     Q_PROPERTY(QType * type READ type WRITE setType)
 
     // From aggregated QMultiplicityElement
-    Q_PROPERTY(qint32 upper READ upper WRITE setUpper)
+    Q_PROPERTY(qint32 upper READ upper WRITE setUpper STORED false)
     Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
     Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
-    Q_PROPERTY(qint32 lower READ lower WRITE setLower)
+    Q_PROPERTY(qint32 lower READ lower WRITE setLower STORED false)
     Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
     Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
 
@@ -116,17 +116,17 @@ class Q_UML_EXPORT QProperty : public QObject
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
 
     // From aggregated QConnectableElement
-    Q_PROPERTY(const QList<QConnectorEnd *> * ends READ ends)
+    Q_PROPERTY(const QList<QConnectorEnd *> * ends READ ends STORED false)
     Q_PROPERTY(QConnectableElementTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
 
     // From aggregated QDeploymentTarget
-    Q_PROPERTY(const QSet<QPackageableElement *> * deployedElements READ deployedElements)
+    Q_PROPERTY(const QSet<QPackageableElement *> * deployedElements READ deployedElements STORED false)
     Q_PROPERTY(const QSet<QDeployment *> * deployments READ deployments)
 
     // From QProperty
     Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived)
-    Q_PROPERTY(QString default_ READ default_ WRITE setDefault_)
-    Q_PROPERTY(bool isComposite READ isComposite WRITE setComposite)
+    Q_PROPERTY(QString default_ READ default_ WRITE setDefault_ STORED false)
+    Q_PROPERTY(bool isComposite READ isComposite WRITE setComposite STORED false)
     Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly)
     Q_PROPERTY(bool isID READ isID WRITE setID)
     Q_PROPERTY(bool isDerivedUnion READ isDerivedUnion WRITE setDerivedUnion)
@@ -136,7 +136,7 @@ class Q_UML_EXPORT QProperty : public QObject
     Q_PROPERTY(const QList<QProperty *> * qualifiers READ qualifiers)
     Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
     Q_PROPERTY(QClass * class_ READ class_ WRITE setClass_)
-    Q_PROPERTY(QProperty * opposite READ opposite WRITE setOpposite)
+    Q_PROPERTY(QProperty * opposite READ opposite WRITE setOpposite STORED false)
     Q_PROPERTY(QProperty * associationEnd READ associationEnd WRITE setAssociationEnd)
     Q_PROPERTY(QDataType * datatype READ datatype WRITE setDatatype)
     Q_PROPERTY(const QSet<QProperty *> * redefinedProperties READ redefinedProperties)

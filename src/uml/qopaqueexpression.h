@@ -70,7 +70,7 @@ class Q_UML_EXPORT QOpaqueExpression : public QValueSpecification
     Q_PROPERTY(const QList<QString> * bodies READ bodies)
     Q_PROPERTY(const QList<QString> * languages READ languages)
     Q_PROPERTY(QBehavior * behavior READ behavior WRITE setBehavior)
-    Q_PROPERTY(QParameter * result READ result)
+    Q_PROPERTY(QParameter * result READ result STORED false)
 
     Q_DISABLE_COPY(QOpaqueExpression)
     Q_DECLARE_PRIVATE(QOpaqueExpression)

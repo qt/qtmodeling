@@ -62,7 +62,7 @@ class Q_UML_EXPORT QEnumerationLiteral : public QInstanceSpecification
     Q_OBJECT
 
     // From QEnumerationLiteral
-    Q_PROPERTY(QEnumeration * classifier READ classifier)
+    Q_PROPERTY(QEnumeration * classifier READ classifier STORED false)
     Q_PROPERTY(QEnumeration * enumeration READ enumeration WRITE setEnumeration)
 
     Q_DISABLE_COPY(QEnumerationLiteral)

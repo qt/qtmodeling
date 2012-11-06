@@ -70,8 +70,8 @@ class Q_UML_EXPORT QPort : public QProperty
     Q_PROPERTY(bool isBehavior READ isBehavior WRITE setBehavior)
     Q_PROPERTY(bool isService READ isService WRITE setService)
     Q_PROPERTY(QProtocolStateMachine * protocol READ protocol WRITE setProtocol)
-    Q_PROPERTY(const QSet<QInterface *> * required READ required)
-    Q_PROPERTY(const QSet<QInterface *> * provided READ provided)
+    Q_PROPERTY(const QSet<QInterface *> * required READ required STORED false)
+    Q_PROPERTY(const QSet<QInterface *> * provided READ provided STORED false)
     Q_PROPERTY(const QSet<QPort *> * redefinedPorts READ redefinedPorts)
 
     Q_DISABLE_COPY(QPort)

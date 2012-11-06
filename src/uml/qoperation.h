@@ -87,7 +87,7 @@ class Q_UML_EXPORT QOperation : public QObject
     // From aggregated QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
     Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
@@ -95,7 +95,7 @@ class Q_UML_EXPORT QOperation : public QObject
     // From aggregated QNamespace
     Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
     Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
-    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
+    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers STORED false)
     Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
     Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
     Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
@@ -119,11 +119,11 @@ class Q_UML_EXPORT QOperation : public QObject
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
 
     // From QOperation
-    Q_PROPERTY(qint32 lower READ lower)
+    Q_PROPERTY(qint32 lower READ lower STORED false)
     Q_PROPERTY(bool isQuery READ isQuery WRITE setQuery)
-    Q_PROPERTY(bool isUnique READ isUnique)
-    Q_PROPERTY(qint32 upper READ upper)
-    Q_PROPERTY(bool isOrdered READ isOrdered)
+    Q_PROPERTY(bool isUnique READ isUnique STORED false)
+    Q_PROPERTY(qint32 upper READ upper STORED false)
+    Q_PROPERTY(bool isOrdered READ isOrdered STORED false)
     Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
     Q_PROPERTY(QConstraint * bodyCondition READ bodyCondition WRITE setBodyCondition)
     Q_PROPERTY(const QSet<QOperation *> * redefinedOperations READ redefinedOperations)
@@ -131,7 +131,7 @@ class Q_UML_EXPORT QOperation : public QObject
     Q_PROPERTY(QDataType * datatype READ datatype WRITE setDatatype)
     Q_PROPERTY(QOperationTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
     Q_PROPERTY(QInterface * interface READ interface WRITE setInterface)
-    Q_PROPERTY(QType * type READ type)
+    Q_PROPERTY(QType * type READ type STORED false)
     Q_PROPERTY(const QSet<QConstraint *> * preconditions READ preconditions)
     Q_PROPERTY(QClass * class_ READ class_ WRITE setClass_)
     Q_PROPERTY(const QSet<QType *> * raisedExceptions READ raisedExceptions)

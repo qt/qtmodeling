@@ -73,7 +73,7 @@ class Q_UML_EXPORT QMessage : public QNamedElement
 
     // From QMessage
     Q_PROPERTY(QtUml::MessageSort messageSort READ messageSort WRITE setMessageSort)
-    Q_PROPERTY(QtUml::MessageKind messageKind READ messageKind)
+    Q_PROPERTY(QtUml::MessageKind messageKind READ messageKind STORED false)
     Q_PROPERTY(QNamedElement * signature READ signature WRITE setSignature)
     Q_PROPERTY(const QList<QValueSpecification *> * arguments READ arguments)
     Q_PROPERTY(QMessageEnd * receiveEvent READ receiveEvent WRITE setReceiveEvent)

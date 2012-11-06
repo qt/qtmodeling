@@ -64,8 +64,8 @@ class Q_UML_EXPORT QExtension : public QAssociation
     Q_OBJECT
 
     // From QExtension
-    Q_PROPERTY(bool isRequired READ isRequired)
-    Q_PROPERTY(QClass * metaclass READ metaclass)
+    Q_PROPERTY(bool isRequired READ isRequired STORED false)
+    Q_PROPERTY(QClass * metaclass READ metaclass STORED false)
     Q_PROPERTY(QExtensionEnd * ownedEnd READ ownedEnd WRITE setOwnedEnd)
 
     Q_DISABLE_COPY(QExtension)

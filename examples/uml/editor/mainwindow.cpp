@@ -102,7 +102,7 @@ void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, Q
             ui->propertyEditor->setCellWidget(i, 1, comboBox);
             continue;
         }
-        if (property.type() == QMetaType::Int) {
+        if (property.isEnumType()) {
             if (enums.contains(QString(property.typeName()).split("::").last())) {
                 QMetaEnum metaEnum = enums[QString(property.typeName()).split("::").last()];
                 QComboBox *comboBox = new QComboBox;
@@ -121,8 +121,12 @@ void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, Q
         if (property.type() == QVariant::String)
             item->setText(property.read(element).toString());
         QString typeName = property.typeName();
-        if (typeName.endsWith('*') && !typeName.contains(QRegularExpression ("QSet|QList")) && property.read(element).value<QObject *>())
-            item->setText((property.read(element).value<QObject *>())->objectName());
+        if (typeName.endsWith('*') && !typeName.contains(QRegularExpression ("QSet|QList")) && property.read(element).value<QObject *>()) {
+            QObject *objectElement = property.read(element).value<QObject *>();
+            item->setText(objectElement->objectName());
+            if (!property.isStored())
+                delete objectElement;
+        }
         if (typeName.endsWith('*') && typeName.contains("QSet") && property.read(element).isValid()) {
             if (QSet<QObject *> *elements = reinterpret_cast<QSet<QObject *> *>(*((QSet<QObject *> **) property.read(element).data()))) {
                 if (elements->size() > 0) {
@@ -133,6 +137,8 @@ void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, Q
                     str.append("]");
                     item->setText(str);
                 }
+                if (!property.isStored())
+                    delete elements;
             }
         }
         if (typeName.endsWith('*') && typeName.contains("QList") && property.read(element).isValid()) {
@@ -145,6 +151,8 @@ void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, Q
                     str.append("]");
                     item->setText(str);
                 }
+                if (!property.isStored())
+                    delete elements;
             }
         }
         ui->propertyEditor->setItem(i, 1, item);
@@ -177,21 +185,21 @@ void MainWindow::currentIndexChanged(int index)
     }
 }
 
-void MainWindow::populateModelExplorer(QNamedElement *namedElement, QTreeWidgetItem *parent)
+void MainWindow::populateModelExplorer(QObject *element, QTreeWidgetItem *parent)
 {
-    if (!namedElement)
+    if (!element)
         return;
 
-    QTreeWidgetItem *item = new QTreeWidgetItem(parent, QStringList() << namedElement->name());
-    QObject *parentObject = namedElement;
+    QObject *parentObject = element;
     while (parentObject->parent())
         parentObject = parentObject->parent();
+    QTreeWidgetItem *item = new QTreeWidgetItem(parent, QStringList() << QString("%1 (%2)").arg(parentObject->objectName()).arg(parentObject->metaObject()->className()));
     item->setData(0, Qt::UserRole, qVariantFromValue(parentObject));
 
     if (!parent)
         ui->modelExplorer->addTopLevelItem(item);
 
-    if (QNamespace *namespace_ = qtuml_object_cast<QNamespace *>(namedElement))
+    if (QNamespace *namespace_ = qtuml_object_cast<QNamespace *>(element))
         foreach (QNamedElement *childNamedElement, *namespace_->members())
             populateModelExplorer(childNamedElement, item);
 }

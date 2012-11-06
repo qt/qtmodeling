@@ -65,7 +65,7 @@ class Q_UML_EXPORT QConnectorEnd : public QMultiplicityElement
     // From QConnectorEnd
     Q_PROPERTY(QConnectableElement * role READ role WRITE setRole)
     Q_PROPERTY(QProperty * partWithPort READ partWithPort WRITE setPartWithPort)
-    Q_PROPERTY(QProperty * definingEnd READ definingEnd)
+    Q_PROPERTY(QProperty * definingEnd READ definingEnd STORED false)
 
     Q_DISABLE_COPY(QConnectorEnd)
     Q_DECLARE_PRIVATE(QConnectorEnd)

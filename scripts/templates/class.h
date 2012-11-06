@@ -54,9 +54,9 @@
             [%- found = 'true' -%]
             [%- END -%]
             [%- IF attribute.isReadOnly == 'true' or attribute.accessor.size == 3 %]
-    Q_PROPERTY(${attribute.accessor.0.return}[%- IF attribute.accessor.0.return.substr(attribute.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${attribute.accessor.0.name} READ ${attribute.accessor.0.name})
+    Q_PROPERTY(${attribute.accessor.0.return}[%- IF attribute.accessor.0.return.substr(attribute.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${attribute.accessor.0.name} READ ${attribute.accessor.0.name}[% IF attribute.isDerived == 'true' and attribute.isDerivedUnion == 'false' %] STORED false[% END %])
             [%- ELSE %]
-    Q_PROPERTY(${attribute.accessor.0.return}[%- IF attribute.accessor.0.return.substr(attribute.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${attribute.accessor.0.name} READ ${attribute.accessor.0.name} WRITE ${attribute.accessor.1.name})
+    Q_PROPERTY(${attribute.accessor.0.return}[%- IF attribute.accessor.0.return.substr(attribute.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${attribute.accessor.0.name} READ ${attribute.accessor.0.name} WRITE ${attribute.accessor.1.name}[% IF attribute.isDerived == 'true' and attribute.isDerivedUnion == 'false' %] STORED false[% END %])
             [%- END -%]
         [%- END -%]
         [%- END -%]
@@ -68,9 +68,9 @@
             [%- found = 'true' -%]
             [%- END -%]
             [%- IF associationend.isReadOnly == 'true' or associationend.accessor.size == 3 %]
-    Q_PROPERTY(${associationend.accessor.0.return}[%- IF associationend.accessor.0.return.substr(associationend.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${associationend.accessor.0.name} READ ${associationend.accessor.0.name})
+    Q_PROPERTY(${associationend.accessor.0.return}[%- IF associationend.accessor.0.return.substr(associationend.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${associationend.accessor.0.name} READ ${associationend.accessor.0.name}[% IF associationend.isDerived == 'true' and associationend.isDerivedUnion == 'false' %] STORED false[% END %])
             [%- ELSE %]
-    Q_PROPERTY(${associationend.accessor.0.return}[%- IF associationend.accessor.0.return.substr(associationend.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${associationend.accessor.0.name} READ ${associationend.accessor.0.name} WRITE ${associationend.accessor.1.name})
+    Q_PROPERTY(${associationend.accessor.0.return}[%- IF associationend.accessor.0.return.substr(associationend.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${associationend.accessor.0.name} READ ${associationend.accessor.0.name} WRITE ${associationend.accessor.1.name}[% IF associationend.isDerived == 'true' and associationend.isDerivedUnion == 'false' %] STORED false[% END %])
             [%- END -%]
         [%- END -%]
         [%- END %]

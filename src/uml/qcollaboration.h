@@ -73,7 +73,7 @@ class Q_UML_EXPORT QCollaboration : public QObject
 
     // From aggregated QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
     Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
@@ -81,7 +81,7 @@ class Q_UML_EXPORT QCollaboration : public QObject
     // From aggregated QNamespace
     Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
     Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
-    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
+    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers STORED false)
     Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
     Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
     Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
@@ -115,16 +115,16 @@ class Q_UML_EXPORT QCollaboration : public QObject
     Q_PROPERTY(const QSet<QCollaborationUse *> * collaborationUses READ collaborationUses)
     Q_PROPERTY(const QSet<QProperty *> * attributes READ attributes)
     Q_PROPERTY(const QSet<QFeature *> * features READ features)
-    Q_PROPERTY(const QSet<QClassifier *> * generals READ generals)
+    Q_PROPERTY(const QSet<QClassifier *> * generals READ generals STORED false)
     Q_PROPERTY(QCollaborationUse * representation READ representation WRITE setRepresentation)
     Q_PROPERTY(const QSet<QGeneralization *> * generalizations READ generalizations)
-    Q_PROPERTY(const QSet<QNamedElement *> * inheritedMembers READ inheritedMembers)
+    Q_PROPERTY(const QSet<QNamedElement *> * inheritedMembers READ inheritedMembers STORED false)
     Q_PROPERTY(const QSet<QSubstitution *> * substitutions READ substitutions)
 
     // From aggregated QStructuredClassifier
     Q_PROPERTY(const QSet<QConnectableElement *> * roles READ roles)
     Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
-    Q_PROPERTY(const QSet<QProperty *> * parts READ parts)
+    Q_PROPERTY(const QSet<QProperty *> * parts READ parts STORED false)
     Q_PROPERTY(const QSet<QConnector *> * ownedConnectors READ ownedConnectors)
 
     // From aggregated QBehavioredClassifier

@@ -83,7 +83,7 @@ class Q_UML_EXPORT QTransition : public QObject
     // From aggregated QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
     Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
@@ -95,7 +95,7 @@ class Q_UML_EXPORT QTransition : public QObject
     // From aggregated QNamespace
     Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
     Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
-    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
+    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers STORED false)
     Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
     Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
     Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
@@ -106,7 +106,7 @@ class Q_UML_EXPORT QTransition : public QObject
     Q_PROPERTY(QVertex * target READ target WRITE setTarget)
     Q_PROPERTY(QBehavior * effect READ effect WRITE setEffect)
     Q_PROPERTY(QRegion * container READ container WRITE setContainer)
-    Q_PROPERTY(QClassifier * redefinitionContext READ redefinitionContext)
+    Q_PROPERTY(QClassifier * redefinitionContext READ redefinitionContext STORED false)
     Q_PROPERTY(QTransition * redefinedTransition READ redefinedTransition WRITE setRedefinedTransition)
     Q_PROPERTY(QVertex * source READ source WRITE setSource)
     Q_PROPERTY(const QSet<QTrigger *> * triggers READ triggers)

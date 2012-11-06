@@ -66,7 +66,7 @@ class Q_UML_EXPORT QDeploymentTarget : public QNamedElement
     Q_OBJECT
 
     // From QDeploymentTarget
-    Q_PROPERTY(const QSet<QPackageableElement *> * deployedElements READ deployedElements)
+    Q_PROPERTY(const QSet<QPackageableElement *> * deployedElements READ deployedElements STORED false)
     Q_PROPERTY(const QSet<QDeployment *> * deployments READ deployments)
 
     Q_DISABLE_COPY(QDeploymentTarget)
