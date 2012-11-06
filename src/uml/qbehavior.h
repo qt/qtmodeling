@@ -77,7 +77,7 @@ class Q_UML_EXPORT QBehavior : public QClass
     Q_PROPERTY(const QSet<QBehavior *> * redefinedBehaviors READ redefinedBehaviors)
     Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
     Q_PROPERTY(const QSet<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
-    Q_PROPERTY(QBehavioredClassifier * context READ context)
+    Q_PROPERTY(QBehavioredClassifier * context READ context STORED false)
 
     Q_DISABLE_COPY(QBehavior)
     Q_DECLARE_PRIVATE(QBehavior)

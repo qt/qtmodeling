@@ -78,7 +78,7 @@ class Q_UML_EXPORT QInteraction : public QObject
     Q_PROPERTY(const QSet<QBehavior *> * redefinedBehaviors READ redefinedBehaviors)
     Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
     Q_PROPERTY(const QSet<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
-    Q_PROPERTY(QBehavioredClassifier * context READ context)
+    Q_PROPERTY(QBehavioredClassifier * context READ context STORED false)
 
     // From aggregated QElement
     Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
@@ -88,7 +88,7 @@ class Q_UML_EXPORT QInteraction : public QObject
     // From aggregated QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
     Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)

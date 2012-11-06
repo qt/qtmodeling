@@ -75,7 +75,7 @@ class Q_UML_EXPORT QConnectableElement : public QObject
     // From aggregated QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
     Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
@@ -87,7 +87,7 @@ class Q_UML_EXPORT QConnectableElement : public QObject
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
 
     // From QConnectableElement
-    Q_PROPERTY(const QList<QConnectorEnd *> * ends READ ends)
+    Q_PROPERTY(const QList<QConnectorEnd *> * ends READ ends STORED false)
     Q_PROPERTY(QConnectableElementTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
 
     Q_DISABLE_COPY(QConnectableElement)

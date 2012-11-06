@@ -26,7 +26,7 @@ private Q_SLOTS:
     void on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
     void itemChanged(QTableWidgetItem * item);
     void currentIndexChanged(int index);
-    void populateModelExplorer(QtUml::QNamedElement *namedElement, QTreeWidgetItem *parent = 0);
+    void populateModelExplorer(QObject *element, QTreeWidgetItem *parent = 0);
 
 private:
     Ui::MainWindow *ui;

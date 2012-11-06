@@ -79,7 +79,7 @@ class Q_UML_EXPORT QClass : public QObject
 
     // From aggregated QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
     Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
@@ -87,7 +87,7 @@ class Q_UML_EXPORT QClass : public QObject
     // From aggregated QNamespace
     Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
     Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
-    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers)
+    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers STORED false)
     Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
     Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
     Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
@@ -122,16 +122,16 @@ class Q_UML_EXPORT QClass : public QObject
     Q_PROPERTY(const QSet<QFeature *> * features READ features)
     Q_PROPERTY(QCollaborationUse * representation READ representation WRITE setRepresentation)
     Q_PROPERTY(const QSet<QGeneralization *> * generalizations READ generalizations)
-    Q_PROPERTY(const QSet<QNamedElement *> * inheritedMembers READ inheritedMembers)
+    Q_PROPERTY(const QSet<QNamedElement *> * inheritedMembers READ inheritedMembers STORED false)
     Q_PROPERTY(const QSet<QSubstitution *> * substitutions READ substitutions)
 
     // From aggregated QStructuredClassifier
     Q_PROPERTY(const QSet<QConnectableElement *> * roles READ roles)
-    Q_PROPERTY(const QSet<QProperty *> * parts READ parts)
+    Q_PROPERTY(const QSet<QProperty *> * parts READ parts STORED false)
     Q_PROPERTY(const QSet<QConnector *> * ownedConnectors READ ownedConnectors)
 
     // From aggregated QEncapsulatedClassifier
-    Q_PROPERTY(const QSet<QPort *> * ownedPorts READ ownedPorts)
+    Q_PROPERTY(const QSet<QPort *> * ownedPorts READ ownedPorts STORED false)
 
     // From aggregated QBehavioredClassifier
     Q_PROPERTY(const QSet<QBehavior *> * ownedBehaviors READ ownedBehaviors)
@@ -143,10 +143,10 @@ class Q_UML_EXPORT QClass : public QObject
     Q_PROPERTY(bool isActive READ isActive WRITE setActive)
     Q_PROPERTY(const QList<QClassifier *> * nestedClassifiers READ nestedClassifiers)
     Q_PROPERTY(const QSet<QReception *> * ownedReceptions READ ownedReceptions)
-    Q_PROPERTY(const QSet<QExtension *> * extensions READ extensions)
+    Q_PROPERTY(const QSet<QExtension *> * extensions READ extensions STORED false)
     Q_PROPERTY(const QList<QOperation *> * ownedOperations READ ownedOperations)
     Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
-    Q_PROPERTY(const QSet<QClass *> * superClasses READ superClasses)
+    Q_PROPERTY(const QSet<QClass *> * superClasses READ superClasses STORED false)
 
     Q_DISABLE_COPY(QClass)
     Q_DECLARE_PRIVATE(QClass)

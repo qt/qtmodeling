@@ -71,7 +71,7 @@ class Q_UML_EXPORT QConnector : public QFeature
     Q_OBJECT
 
     // From QConnector
-    Q_PROPERTY(QtUml::ConnectorKind kind READ kind)
+    Q_PROPERTY(QtUml::ConnectorKind kind READ kind STORED false)
     Q_PROPERTY(const QSet<QConnector *> * redefinedConnectors READ redefinedConnectors)
     Q_PROPERTY(const QSet<QBehavior *> * contracts READ contracts)
     Q_PROPERTY(QAssociation * type READ type WRITE setType)
