@@ -12,7 +12,6 @@ namespace QtUml {
 }
 
 class QTreeWidgetItem;
-class QTableWidgetItem;
 
 class MainWindow : public QMainWindow
 {
@@ -24,12 +23,14 @@ public:
 
 private Q_SLOTS:
     void on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
-    void itemChanged(QTableWidgetItem * item);
+    void on_propertyEditor_itemChanged(QTreeWidgetItem *item, int column);
     void currentIndexChanged(int index);
     void populateModelExplorer(QObject *element, QTreeWidgetItem *parent = 0);
+    QTreeWidgetItem *parentItemForProperty(QString propertyGroup);
 
 private:
     Ui::MainWindow *ui;
+    QStringList _visitedParents;
 };
 
 #endif // MAINWINDOW_H
