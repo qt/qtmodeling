@@ -23,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     QPalette palette = ui->propertyEditor->palette();
+
     palette.setColor(QPalette::Active, QPalette::Base, QColor(255, 242, 222));
     palette.setColor(QPalette::Inactive, QPalette::Base, QColor(255, 242, 222));
     palette.setColor(QPalette::Active, QPalette::AlternateBase, QColor(255, 255, 191));
@@ -30,11 +31,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->propertyEditor->setPalette(palette);
     ui->propertyEditor->setAlternatingRowColors(true);
     ui->propertyEditor->setColumnCount(2);
-    ui->propertyEditor->verticalHeader()->hide();
-    ui->propertyEditor->horizontalHeader()->setStretchLastSection(true);
     ui->propertyEditor->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->propertyEditor->setSelectionBehavior(QAbstractItemView::SelectRows);
-    ui->propertyEditor->setHorizontalHeaderLabels(QStringList() << "Property" << "Value");
 
     QUmlPointer<QModel> model = new QModel;
     model->setName("MyModel");
@@ -63,6 +61,7 @@ MainWindow::MainWindow(QWidget *parent) :
     model->addOwnedType(primitiveType);
 
     populateModelExplorer(model);
+    ui->modelExplorer->setCurrentItem(ui->modelExplorer->topLevelItem(0));
 }
 
 MainWindow::~MainWindow()
@@ -74,15 +73,14 @@ void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, Q
 {
     Q_UNUSED(previous)
 
-    disconnect(ui->propertyEditor, SIGNAL(itemChanged(QTableWidgetItem*)), this, SLOT(itemChanged(QTableWidgetItem*)));
+    ui->propertyEditor->blockSignals(true);
     QObject *element = current->data(0, Qt::UserRole).value<QObject *>();
-    ui->propertyEditor->clearContents();
+    ui->propertyEditor->clear();
     int propertyCount = element->metaObject()->propertyCount();
-    ui->propertyEditor->setRowCount(propertyCount);
 
     const QMetaObject metaObject = QtUml::QtUml::staticMetaObject;
-    int enumeratorCount = metaObject.enumeratorCount();
     QMap<QString, QMetaEnum> enums;
+    int enumeratorCount = metaObject.enumeratorCount();
     for (int i = 0; i < enumeratorCount; ++i) {
         QMetaEnum metaEnum = metaObject.enumerator(i);
         enums[QString(metaEnum.name())] = metaEnum;
@@ -90,16 +88,41 @@ void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, Q
 
     for (int i = 0; i < propertyCount; ++i) {
         QMetaProperty property = element->metaObject()->property(i);
-        QTableWidgetItem *item = new QTableWidgetItem(QString(property.name()).remove(QRegularExpression("_$")) + ((property.isWritable() == false) ? " (RO)":""));
-        item->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
-        ui->propertyEditor->setItem(i, 0, item);
+        const QMetaObject *metaObject = 0;
+        foreach (QObject *child, element->children()) {
+            metaObject = child->metaObject();
+            while (metaObject && metaObject->indexOfProperty(property.name()) < metaObject->propertyOffset())
+                metaObject = metaObject->superClass();
+            if (metaObject)
+                break;
+        }
+        if (!metaObject) {
+            metaObject = element->metaObject();
+            while (metaObject && metaObject->indexOfProperty(property.name()) < metaObject->propertyOffset())
+                metaObject = metaObject->superClass();
+        }
+        if (!metaObject)
+            continue;
+        QTreeWidgetItem *parentItem = parentItemForProperty(metaObject->className());
+        if (!parentItem) {
+            parentItem = new QTreeWidgetItem(ui->propertyEditor, QStringList() << metaObject->className());
+            parentItem->setExpanded(true);
+            QFont font = parentItem->font(0);
+            font.setBold(true);
+            parentItem->setFont(0, font);
+        }
+        parentItem->setSizeHint(1, QSize(0, 19));
+        QTreeWidgetItem *item = new QTreeWidgetItem(parentItem);
+        item->setSizeHint(1, QSize(0, 19));
+        item->setText(0, QString(property.name()).remove(QRegularExpression("_$")) + ((property.isWritable() == false) ? " (RO)":""));
         if (property.type() == QVariant::Bool) {
             QComboBox *comboBox = new QComboBox;
             comboBox->addItem("false", qVariantFromValue(QString(property.name())));
             comboBox->addItem("true", qVariantFromValue(QString(property.name())));
             comboBox->setCurrentIndex(property.read(element).toBool() ? 1:0);
+            comboBox->setMaximumHeight(19);
             connect(comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(currentIndexChanged(int)));
-            ui->propertyEditor->setCellWidget(i, 1, comboBox);
+            ui->propertyEditor->setItemWidget(item, 1, comboBox);
             continue;
         }
         if (property.isEnumType()) {
@@ -109,21 +132,20 @@ void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, Q
                 int keyCount = metaEnum.keyCount();
                 for (int j = 0; j < keyCount; ++j)
                     comboBox->addItem(QString(metaEnum.key(j)).toLower().remove(QString(property.name())), qVariantFromValue(QString(property.name())));
-
                 comboBox->setCurrentIndex(property.read(element).toInt());
+                comboBox->setMaximumHeight(19);
                 connect(comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(currentIndexChanged(int)));
-                ui->propertyEditor->setCellWidget(i, 1, comboBox);
+                ui->propertyEditor->setItemWidget(item, 1, comboBox);
             }
         }
-        item = new QTableWidgetItem;
-        if (property.isWritable() == false)
-            item->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+        if (property.isWritable() == true)
+            item->setFlags(item->flags() | Qt::ItemIsEditable);
         if (property.type() == QVariant::String)
-            item->setText(property.read(element).toString());
+            item->setText(1, property.read(element).toString());
         QString typeName = property.typeName();
         if (typeName.endsWith('*') && !typeName.contains(QRegularExpression ("QSet|QList")) && property.read(element).value<QObject *>()) {
             QObject *objectElement = property.read(element).value<QObject *>();
-            item->setText(objectElement->objectName());
+            item->setText(1, objectElement->objectName());
             if (!property.isStored())
                 delete objectElement;
         }
@@ -135,7 +157,7 @@ void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, Q
                         str.append((qtuml_object_cast<QObject *>(object))->objectName().append(", "));
                     str.chop(2);
                     str.append("]");
-                    item->setText(str);
+                    item->setText(1, str);
                 }
                 if (!property.isStored())
                     delete elements;
@@ -149,25 +171,25 @@ void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, Q
                         str.append((qtuml_object_cast<QObject *>(object))->objectName().append(", "));
                     str.chop(2);
                     str.append("]");
-                    item->setText(str);
+                    item->setText(1, str);
                 }
                 if (!property.isStored())
                     delete elements;
             }
         }
-        ui->propertyEditor->setItem(i, 1, item);
     }
     ui->propertyEditor->resizeColumnToContents(0);
-    ui->propertyEditor->resizeRowsToContents();
-    connect(ui->propertyEditor, SIGNAL(itemChanged(QTableWidgetItem*)), this, SLOT(itemChanged(QTableWidgetItem*)));
+    ui->propertyEditor->resizeColumnToContents(1);
+    ui->propertyEditor->blockSignals(false);
 }
 
-void MainWindow::itemChanged(QTableWidgetItem *item)
+void MainWindow::on_propertyEditor_itemChanged(QTreeWidgetItem *item, int column)
 {
-    if (item->column() == 1) {
+    if (column == 1) {
         QObject *element = ui->modelExplorer->currentItem()->data(0, Qt::UserRole).value<QObject *>();
-        if (element->metaObject()->property(item->row()).type() == QVariant::String)
-            element->setProperty(ui->propertyEditor->item(item->row(), 0)->text().toLatin1(), item->text());
+        const QMetaObject *metaObject = element->metaObject();
+        if (metaObject->property(metaObject->indexOfProperty(item->text(0).toLatin1())).type() == QVariant::String)
+            element->setProperty(item->text(0).toLatin1(), item->text(1));
         on_modelExplorer_currentItemChanged(ui->modelExplorer->currentItem(), 0);
     }
 }
@@ -202,4 +224,14 @@ void MainWindow::populateModelExplorer(QObject *element, QTreeWidgetItem *parent
     if (QNamespace *namespace_ = qtuml_object_cast<QNamespace *>(element))
         foreach (QNamedElement *childNamedElement, *namespace_->members())
             populateModelExplorer(childNamedElement, item);
+}
+
+QTreeWidgetItem *MainWindow::parentItemForProperty(QString propertyGroup)
+{
+    int topLevelItemCount = ui->propertyEditor->topLevelItemCount();
+    QTreeWidgetItem *parentItem = 0;
+    for (int i = 0; i < topLevelItemCount; ++i)
+        if (ui->propertyEditor->topLevelItem(i)->text(0) == propertyGroup)
+            parentItem = ui->propertyEditor->topLevelItem(i);
+    return parentItem;
 }
