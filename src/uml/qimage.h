@@ -61,7 +61,6 @@ class Q_UML_EXPORT QImage : public QElement
 {
     Q_OBJECT
 
-    // From QImage
     Q_PROPERTY(QString format READ format WRITE setFormat)
     Q_PROPERTY(QString location READ location WRITE setLocation)
     Q_PROPERTY(QString content READ content WRITE setContent)

@@ -58,7 +58,6 @@ class Q_UML_EXPORT QLiteralReal : public QLiteralSpecification
 {
     Q_OBJECT
 
-    // From QLiteralReal
     Q_PROPERTY(qreal value READ value WRITE setValue)
 
     Q_DISABLE_COPY(QLiteralReal)

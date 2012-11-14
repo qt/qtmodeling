@@ -61,7 +61,6 @@ class Q_UML_EXPORT QObjectFlow : public QActivityEdge
 {
     Q_OBJECT
 
-    // From QObjectFlow
     Q_PROPERTY(bool isMultireceive READ isMultireceive WRITE setMultireceive)
     Q_PROPERTY(bool isMulticast READ isMulticast WRITE setMulticast)
     Q_PROPERTY(QBehavior * selection READ selection WRITE setSelection)

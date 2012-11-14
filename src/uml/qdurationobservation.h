@@ -64,7 +64,6 @@ class Q_UML_EXPORT QDurationObservation : public QObservation
 {
     Q_OBJECT
 
-    // From QDurationObservation
     Q_PROPERTY(const QSet<bool> * firstEvents READ firstEvents)
     Q_PROPERTY(const QSet<QNamedElement *> * events READ events)
 

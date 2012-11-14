@@ -61,7 +61,6 @@ class Q_UML_EXPORT QDurationInterval : public QInterval
 {
     Q_OBJECT
 
-    // From QDurationInterval
     Q_PROPERTY(QDuration * max READ max WRITE setMax)
     Q_PROPERTY(QDuration * min READ min WRITE setMin)
 

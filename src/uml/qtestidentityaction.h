@@ -62,7 +62,6 @@ class Q_UML_EXPORT QTestIdentityAction : public QAction
 {
     Q_OBJECT
 
-    // From QTestIdentityAction
     Q_PROPERTY(QInputPin * second READ second WRITE setSecond)
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
     Q_PROPERTY(QInputPin * first READ first WRITE setFirst)

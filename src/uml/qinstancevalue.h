@@ -61,7 +61,6 @@ class Q_UML_EXPORT QInstanceValue : public QValueSpecification
 {
     Q_OBJECT
 
-    // From QInstanceValue
     Q_PROPERTY(QInstanceSpecification * instance READ instance WRITE setInstance)
 
     Q_DISABLE_COPY(QInstanceValue)

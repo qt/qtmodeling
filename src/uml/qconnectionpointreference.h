@@ -65,7 +65,6 @@ class Q_UML_EXPORT QConnectionPointReference : public QVertex
 {
     Q_OBJECT
 
-    // From QConnectionPointReference
     Q_PROPERTY(const QSet<QPseudostate *> * exits READ exits)
     Q_PROPERTY(QState * state READ state WRITE setState)
     Q_PROPERTY(const QSet<QPseudostate *> * entries READ entries)

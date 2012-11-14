@@ -69,7 +69,6 @@ class Q_UML_EXPORT QBehavior : public QClass
 {
     Q_OBJECT
 
-    // From QBehavior
     Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant)
     Q_PROPERTY(QBehavioralFeature * specification READ specification WRITE setSpecification)
     Q_PROPERTY(const QSet<QConstraint *> * postconditions READ postconditions)

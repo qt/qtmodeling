@@ -61,7 +61,6 @@ class Q_UML_EXPORT QValuePin : public QInputPin
 {
     Q_OBJECT
 
-    // From QValuePin
     Q_PROPERTY(QValueSpecification * value READ value WRITE setValue)
 
     Q_DISABLE_COPY(QValuePin)

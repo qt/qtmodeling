@@ -66,7 +66,6 @@ class Q_UML_EXPORT QTemplateableElement : public QElement
 {
     Q_OBJECT
 
-    // From QTemplateableElement
     Q_PROPERTY(QTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
     Q_PROPERTY(const QSet<QTemplateBinding *> * templateBindings READ templateBindings)
 

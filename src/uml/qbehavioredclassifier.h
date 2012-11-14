@@ -65,7 +65,6 @@ class Q_UML_EXPORT QBehavioredClassifier : public QClassifier
 {
     Q_OBJECT
 
-    // From QBehavioredClassifier
     Q_PROPERTY(const QSet<QBehavior *> * ownedBehaviors READ ownedBehaviors)
     Q_PROPERTY(const QSet<QInterfaceRealization *> * interfaceRealizations READ interfaceRealizations)
     Q_PROPERTY(QBehavior * classifierBehavior READ classifierBehavior WRITE setClassifierBehavior)

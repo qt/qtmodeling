@@ -61,7 +61,6 @@ class Q_UML_EXPORT QActivityParameterNode : public QObjectNode
 {
     Q_OBJECT
 
-    // From QActivityParameterNode
     Q_PROPERTY(QParameter * parameter READ parameter WRITE setParameter)
 
     Q_DISABLE_COPY(QActivityParameterNode)

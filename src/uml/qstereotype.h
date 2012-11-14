@@ -65,7 +65,6 @@ class Q_UML_EXPORT QStereotype : public QClass
 {
     Q_OBJECT
 
-    // From QStereotype
     Q_PROPERTY(const QSet<QImage *> * icons READ icons)
     Q_PROPERTY(QProfile * profile READ profile STORED false)
 

@@ -64,7 +64,6 @@ class Q_UML_EXPORT QSequenceNode : public QStructuredActivityNode
 {
     Q_OBJECT
 
-    // From QSequenceNode
     Q_PROPERTY(const QList<QExecutableNode *> * executableNodes READ executableNodes)
 
     Q_DISABLE_COPY(QSequenceNode)

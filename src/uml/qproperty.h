@@ -79,51 +79,6 @@ class Q_UML_EXPORT QProperty : public QObject
 {
     Q_OBJECT
 
-    // From aggregated QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From aggregated QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From aggregated QTypedElement
-    Q_PROPERTY(QType * type READ type WRITE setType)
-
-    // From aggregated QMultiplicityElement
-    Q_PROPERTY(qint32 upper READ upper WRITE setUpper STORED false)
-    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
-    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
-    Q_PROPERTY(qint32 lower READ lower WRITE setLower STORED false)
-    Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
-    Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
-
-    // From aggregated QRedefinableElement
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
-    Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
-
-    // From aggregated QFeature
-    Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic)
-    Q_PROPERTY(const QSet<QClassifier *> * featuringClassifiers READ featuringClassifiers)
-
-    // From aggregated QParameterableElement
-    Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
-
-    // From aggregated QConnectableElement
-    Q_PROPERTY(const QList<QConnectorEnd *> * ends READ ends STORED false)
-    Q_PROPERTY(QConnectableElementTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
-
-    // From aggregated QDeploymentTarget
-    Q_PROPERTY(const QSet<QPackageableElement *> * deployedElements READ deployedElements STORED false)
-    Q_PROPERTY(const QSet<QDeployment *> * deployments READ deployments)
-
-    // From QProperty
     Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived)
     Q_PROPERTY(QString default_ READ default_ WRITE setDefault_ STORED false)
     Q_PROPERTY(bool isComposite READ isComposite WRITE setComposite STORED false)

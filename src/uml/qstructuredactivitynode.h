@@ -72,59 +72,6 @@ class Q_UML_EXPORT QStructuredActivityNode : public QObject
 {
     Q_OBJECT
 
-    // From aggregated QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From aggregated QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From aggregated QRedefinableElement
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
-    Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
-
-    // From aggregated QActivityNode
-    Q_PROPERTY(const QSet<QActivityNode *> * redefinedNodes READ redefinedNodes)
-    Q_PROPERTY(const QSet<QActivityEdge *> * incomings READ incomings)
-    Q_PROPERTY(const QSet<QActivityGroup *> * inGroup READ inGroup)
-    Q_PROPERTY(QStructuredActivityNode * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
-    Q_PROPERTY(const QSet<QActivityPartition *> * inPartition READ inPartition)
-    Q_PROPERTY(const QSet<QInterruptibleActivityRegion *> * inInterruptibleRegion READ inInterruptibleRegion)
-    Q_PROPERTY(const QSet<QActivityEdge *> * outgoings READ outgoings)
-
-    // From aggregated QExecutableNode
-    Q_PROPERTY(const QSet<QExceptionHandler *> * handlers READ handlers)
-
-    // From aggregated QAction
-    Q_PROPERTY(bool isLocallyReentrant READ isLocallyReentrant WRITE setLocallyReentrant)
-    Q_PROPERTY(QClassifier * context READ context STORED false)
-    Q_PROPERTY(const QSet<QConstraint *> * localPostconditions READ localPostconditions)
-    Q_PROPERTY(const QSet<QConstraint *> * localPreconditions READ localPreconditions)
-    Q_PROPERTY(const QList<QInputPin *> * inputs READ inputs)
-    Q_PROPERTY(const QList<QOutputPin *> * outputs READ outputs)
-
-    // From aggregated QNamespace
-    Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
-    Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
-    Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers STORED false)
-    Q_PROPERTY(const QSet<QElementImport *> * elementImports READ elementImports)
-    Q_PROPERTY(const QSet<QConstraint *> * ownedRules READ ownedRules)
-    Q_PROPERTY(const QSet<QNamedElement *> * ownedMembers READ ownedMembers)
-
-    // From aggregated QActivityGroup
-    Q_PROPERTY(const QSet<QActivityNode *> * containedNodes READ containedNodes)
-    Q_PROPERTY(const QSet<QActivityGroup *> * subgroups READ subgroups)
-    Q_PROPERTY(const QSet<QActivityEdge *> * containedEdges READ containedEdges)
-    Q_PROPERTY(QActivityGroup * superGroup READ superGroup)
-
-    // From QStructuredActivityNode
     Q_PROPERTY(bool mustIsolate READ mustIsolate WRITE setMustIsolate)
     Q_PROPERTY(const QSet<QInputPin *> * structuredNodeInputs READ structuredNodeInputs)
     Q_PROPERTY(const QSet<QActivityNode *> * nodes READ nodes)

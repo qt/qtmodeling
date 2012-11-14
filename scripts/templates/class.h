@@ -50,7 +50,9 @@
         [%- IF redefinedProperties.grep(attribute.id).size == 0 -%]
             [%- IF found == 'false' %]
 
-    // From [% IF recursive == 'true' %]aggregated [% END %]${parent.name}
+[%- IF recursive == 'true ' -%]
+    // From aggregated ${parent.name}
+[%- END -%]
             [%- found = 'true' -%]
             [%- END -%]
             [%- IF attribute.isReadOnly == 'true' or attribute.accessor.size == 3 %]
@@ -64,7 +66,9 @@
         [%- IF redefinedProperties.grep(associationend.id).size == 0 -%]
             [%- IF found == 'false' %]
 
-    // From [% IF recursive == 'true' %]aggregated [% END %]${parent.name}
+[%- IF recursive == 'true ' -%]
+    // From aggregated ${parent.name}
+[%- END -%]
             [%- found = 'true' -%]
             [%- END -%]
             [%- IF associationend.isReadOnly == 'true' or associationend.accessor.size == 3 %]
@@ -234,9 +238,6 @@ class ${class.name}Private;
 class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name} : [% IF class.superclass.size == 1 %]public ${class.superclass.0.name.split('/').last}[% ELSE %]public QObject[% END %]
 {
     Q_OBJECT
-[%- IF class.superclass and class.superclass.size > 1 -%]
-    [%- GENERATEPROPERTIES(class, 'true') -%]
-[%- END -%]
     [%- GENERATEPROPERTIES(class, 'false') %]
 
     Q_DISABLE_COPY(${class.name})

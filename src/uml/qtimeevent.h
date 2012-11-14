@@ -61,7 +61,6 @@ class Q_UML_EXPORT QTimeEvent : public QEvent
 {
     Q_OBJECT
 
-    // From QTimeEvent
     Q_PROPERTY(bool isRelative READ isRelative WRITE setRelative)
     Q_PROPERTY(QTimeExpression * when READ when WRITE setWhen)
 

@@ -61,7 +61,6 @@ class Q_UML_EXPORT QType : public QPackageableElement
 {
     Q_OBJECT
 
-    // From QType
     Q_PROPERTY(QPackage * package READ package WRITE setPackage)
 
     Q_DISABLE_COPY(QType)

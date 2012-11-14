@@ -61,7 +61,6 @@ class Q_UML_EXPORT QExpansionNode : public QObjectNode
 {
     Q_OBJECT
 
-    // From QExpansionNode
     Q_PROPERTY(QExpansionRegion * regionAsOutput READ regionAsOutput WRITE setRegionAsOutput)
     Q_PROPERTY(QExpansionRegion * regionAsInput READ regionAsInput WRITE setRegionAsInput)
 

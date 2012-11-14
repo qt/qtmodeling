@@ -69,30 +69,6 @@ class Q_UML_EXPORT QInstanceSpecification : public QObject
 {
     Q_OBJECT
 
-    // From aggregated QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From aggregated QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From aggregated QParameterableElement
-    Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
-    Q_PROPERTY(QTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
-
-    // From aggregated QPackageableElement
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-
-    // From aggregated QDeploymentTarget
-    Q_PROPERTY(const QSet<QPackageableElement *> * deployedElements READ deployedElements STORED false)
-    Q_PROPERTY(const QSet<QDeployment *> * deployments READ deployments)
-
-    // From QInstanceSpecification
     Q_PROPERTY(const QSet<QClassifier *> * classifiers READ classifiers)
     Q_PROPERTY(QValueSpecification * specification READ specification WRITE setSpecification)
     Q_PROPERTY(const QSet<QSlot *> * slots_ READ slots_)

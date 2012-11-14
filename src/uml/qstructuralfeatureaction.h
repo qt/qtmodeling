@@ -62,7 +62,6 @@ class Q_UML_EXPORT QStructuralFeatureAction : public QAction
 {
     Q_OBJECT
 
-    // From QStructuralFeatureAction
     Q_PROPERTY(QInputPin * object READ object WRITE setObject)
     Q_PROPERTY(QStructuralFeature * structuralFeature READ structuralFeature WRITE setStructuralFeature)
 

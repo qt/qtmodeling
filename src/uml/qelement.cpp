@@ -201,12 +201,13 @@ void QElement::removeOwnedComment(QComment *ownedComment)
 
 /*!
     The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
+    It is the caller's responsibility to delete the returned set.
  */
 const QSet<QElement *> *QElement::allOwnedElements() const
 {
-    qWarning("QElement::allOwnedElements: operation to be implemented");
-
-    return 0; // change here to your derived return
+    QSet<QElement *> *allOwnedElements_ = new QSet<QElement *>;
+    allOwnedElements(allOwnedElements_);
+    return allOwnedElements_;
 }
 
 /*!
@@ -214,9 +215,15 @@ const QSet<QElement *> *QElement::allOwnedElements() const
  */
 bool QElement::mustBeOwned() const
 {
-    qWarning("QElement::mustBeOwned: operation to be implemented");
+    return true;
+}
 
-    return bool(); // change here to your derived return
+void QElement::allOwnedElements(QSet<QElement *> *allOwnedElements_) const
+{
+    Q_D(const QElement);
+    allOwnedElements_->unite(*d->ownedElements);
+    foreach (QElement *element, *d->ownedElements)
+        element->allOwnedElements(allOwnedElements_);
 }
 
 #include "moc_qelement.cpp"

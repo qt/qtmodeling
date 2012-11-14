@@ -61,7 +61,6 @@ class Q_UML_EXPORT QGeneralOrdering : public QNamedElement
 {
     Q_OBJECT
 
-    // From QGeneralOrdering
     Q_PROPERTY(QOccurrenceSpecification * before READ before WRITE setBefore)
     Q_PROPERTY(QOccurrenceSpecification * after READ after WRITE setAfter)
 

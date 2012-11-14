@@ -66,7 +66,6 @@ class Q_UML_EXPORT QConditionalNode : public QStructuredActivityNode
 {
     Q_OBJECT
 
-    // From QConditionalNode
     Q_PROPERTY(bool isAssured READ isAssured WRITE setAssured)
     Q_PROPERTY(bool isDeterminate READ isDeterminate WRITE setDeterminate)
     Q_PROPERTY(const QSet<QClause *> * clauses READ clauses)

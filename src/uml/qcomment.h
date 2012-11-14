@@ -62,7 +62,6 @@ class Q_UML_EXPORT QComment : public QElement
 {
     Q_OBJECT
 
-    // From QComment
     Q_PROPERTY(QString body READ body WRITE setBody)
     Q_PROPERTY(const QSet<QElement *> * annotatedElements READ annotatedElements)
 

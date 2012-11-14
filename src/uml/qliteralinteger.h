@@ -58,7 +58,6 @@ class Q_UML_EXPORT QLiteralInteger : public QLiteralSpecification
 {
     Q_OBJECT
 
-    // From QLiteralInteger
     Q_PROPERTY(qint32 value READ value WRITE setValue)
 
     Q_DISABLE_COPY(QLiteralInteger)

@@ -62,7 +62,6 @@ class Q_UML_EXPORT QSendSignalAction : public QInvocationAction
 {
     Q_OBJECT
 
-    // From QSendSignalAction
     Q_PROPERTY(QInputPin * target READ target WRITE setTarget)
     Q_PROPERTY(QSignal * signal READ signal WRITE setSignal)
 

@@ -62,7 +62,6 @@ class Q_UML_EXPORT QQualifierValue : public QElement
 {
     Q_OBJECT
 
-    // From QQualifierValue
     Q_PROPERTY(QInputPin * value READ value WRITE setValue)
     Q_PROPERTY(QProperty * qualifier READ qualifier WRITE setQualifier)
 

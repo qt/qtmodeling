@@ -60,53 +60,6 @@ class Q_UML_EXPORT QPin : public QObject
 {
     Q_OBJECT
 
-    // From aggregated QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From aggregated QMultiplicityElement
-    Q_PROPERTY(qint32 upper READ upper WRITE setUpper STORED false)
-    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
-    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
-    Q_PROPERTY(qint32 lower READ lower WRITE setLower STORED false)
-    Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
-    Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
-
-    // From aggregated QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From aggregated QRedefinableElement
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
-    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
-    Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
-
-    // From aggregated QActivityNode
-    Q_PROPERTY(const QSet<QActivityNode *> * redefinedNodes READ redefinedNodes)
-    Q_PROPERTY(const QSet<QActivityEdge *> * incomings READ incomings)
-    Q_PROPERTY(QActivity * activity READ activity WRITE setActivity)
-    Q_PROPERTY(const QSet<QActivityGroup *> * inGroup READ inGroup)
-    Q_PROPERTY(QStructuredActivityNode * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
-    Q_PROPERTY(const QSet<QActivityPartition *> * inPartition READ inPartition)
-    Q_PROPERTY(const QSet<QInterruptibleActivityRegion *> * inInterruptibleRegion READ inInterruptibleRegion)
-    Q_PROPERTY(const QSet<QActivityEdge *> * outgoings READ outgoings)
-
-    // From aggregated QTypedElement
-    Q_PROPERTY(QType * type READ type WRITE setType)
-
-    // From aggregated QObjectNode
-    Q_PROPERTY(bool isControlType READ isControlType WRITE setControlType)
-    Q_PROPERTY(QtUml::ObjectNodeOrderingKind ordering READ ordering WRITE setOrdering)
-    Q_PROPERTY(QValueSpecification * upperBound READ upperBound WRITE setUpperBound)
-    Q_PROPERTY(QBehavior * selection READ selection WRITE setSelection)
-    Q_PROPERTY(const QSet<QState *> * inState READ inState)
-
-    // From QPin
     Q_PROPERTY(bool isControl READ isControl WRITE setControl)
 
     Q_DISABLE_COPY(QPin)

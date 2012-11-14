@@ -70,7 +70,6 @@ class Q_UML_EXPORT QActivityEdge : public QRedefinableElement
 {
     Q_OBJECT
 
-    // From QActivityEdge
     Q_PROPERTY(QActivityNode * source READ source WRITE setSource)
     Q_PROPERTY(const QSet<QActivityEdge *> * redefinedEdges READ redefinedEdges)
     Q_PROPERTY(const QSet<QActivityGroup *> * inGroup READ inGroup)

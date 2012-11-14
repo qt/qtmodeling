@@ -65,7 +65,6 @@ class Q_UML_EXPORT QInvocationAction : public QAction
 {
     Q_OBJECT
 
-    // From QInvocationAction
     Q_PROPERTY(const QList<QInputPin *> * arguments READ arguments)
     Q_PROPERTY(QPort * onPort READ onPort WRITE setOnPort)
 

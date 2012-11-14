@@ -64,7 +64,6 @@ class Q_UML_EXPORT QDeploymentSpecification : public QArtifact
 {
     Q_OBJECT
 
-    // From QDeploymentSpecification
     Q_PROPERTY(QString deploymentLocation READ deploymentLocation WRITE setDeploymentLocation)
     Q_PROPERTY(QString executionLocation READ executionLocation WRITE setExecutionLocation)
     Q_PROPERTY(QDeployment * deployment READ deployment WRITE setDeployment)

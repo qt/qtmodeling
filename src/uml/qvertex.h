@@ -66,7 +66,6 @@ class Q_UML_EXPORT QVertex : public QNamedElement
 {
     Q_OBJECT
 
-    // From QVertex
     Q_PROPERTY(const QSet<QTransition *> * incomings READ incomings STORED false)
     Q_PROPERTY(QRegion * container READ container WRITE setContainer)
     Q_PROPERTY(const QSet<QTransition *> * outgoings READ outgoings STORED false)

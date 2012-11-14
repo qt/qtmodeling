@@ -67,7 +67,6 @@ class Q_UML_EXPORT QStructuredClassifier : public QClassifier
 {
     Q_OBJECT
 
-    // From QStructuredClassifier
     Q_PROPERTY(const QSet<QConnectableElement *> * roles READ roles)
     Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
     Q_PROPERTY(const QSet<QProperty *> * parts READ parts STORED false)

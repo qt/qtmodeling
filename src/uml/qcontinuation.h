@@ -58,7 +58,6 @@ class Q_UML_EXPORT QContinuation : public QInteractionFragment
 {
     Q_OBJECT
 
-    // From QContinuation
     Q_PROPERTY(bool setting READ setting WRITE setSetting)
 
     Q_DISABLE_COPY(QContinuation)

@@ -65,7 +65,6 @@ class Q_UML_EXPORT QParameterSet : public QNamedElement
 {
     Q_OBJECT
 
-    // From QParameterSet
     Q_PROPERTY(const QSet<QParameter *> * parameters READ parameters)
     Q_PROPERTY(const QSet<QConstraint *> * conditions READ conditions)
 

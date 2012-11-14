@@ -64,7 +64,6 @@ class Q_UML_EXPORT QCreateLinkAction : public QWriteLinkAction
 {
     Q_OBJECT
 
-    // From QCreateLinkAction
     Q_PROPERTY(const QSet<QLinkEndCreationData *> * endData READ endData)
 
     Q_DISABLE_COPY(QCreateLinkAction)

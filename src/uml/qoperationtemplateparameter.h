@@ -61,7 +61,6 @@ class Q_UML_EXPORT QOperationTemplateParameter : public QTemplateParameter
 {
     Q_OBJECT
 
-    // From QOperationTemplateParameter
     Q_PROPERTY(QOperation * parameteredElement READ parameteredElement WRITE setParameteredElement)
 
     Q_DISABLE_COPY(QOperationTemplateParameter)

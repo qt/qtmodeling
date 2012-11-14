@@ -65,7 +65,6 @@ class Q_UML_EXPORT QPackageImport : public QDirectedRelationship
 {
     Q_OBJECT
 
-    // From QPackageImport
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(QNamespace * importingNamespace READ importingNamespace WRITE setImportingNamespace)
     Q_PROPERTY(QPackage * importedPackage READ importedPackage WRITE setImportedPackage)

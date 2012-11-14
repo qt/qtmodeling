@@ -61,7 +61,6 @@ class Q_UML_EXPORT QStartObjectBehaviorAction : public QCallAction
 {
     Q_OBJECT
 
-    // From QStartObjectBehaviorAction
     Q_PROPERTY(QInputPin * object READ object WRITE setObject)
 
     Q_DISABLE_COPY(QStartObjectBehaviorAction)

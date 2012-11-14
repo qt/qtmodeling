@@ -65,7 +65,6 @@ class Q_UML_EXPORT QInterruptibleActivityRegion : public QActivityGroup
 {
     Q_OBJECT
 
-    // From QInterruptibleActivityRegion
     Q_PROPERTY(const QSet<QActivityEdge *> * interruptingEdges READ interruptingEdges)
     Q_PROPERTY(const QSet<QActivityNode *> * nodes READ nodes)
 

@@ -61,7 +61,6 @@ class Q_UML_EXPORT QSubstitution : public QRealization
 {
     Q_OBJECT
 
-    // From QSubstitution
     Q_PROPERTY(QClassifier * contract READ contract WRITE setContract)
     Q_PROPERTY(QClassifier * substitutingClassifier READ substitutingClassifier WRITE setSubstitutingClassifier)
 

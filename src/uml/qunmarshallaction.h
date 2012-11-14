@@ -66,7 +66,6 @@ class Q_UML_EXPORT QUnmarshallAction : public QAction
 {
     Q_OBJECT
 
-    // From QUnmarshallAction
     Q_PROPERTY(QInputPin * object READ object WRITE setObject)
     Q_PROPERTY(const QSet<QOutputPin *> * results READ results)
     Q_PROPERTY(QClassifier * unmarshallType READ unmarshallType WRITE setUnmarshallType)

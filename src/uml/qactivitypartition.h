@@ -66,7 +66,6 @@ class Q_UML_EXPORT QActivityPartition : public QActivityGroup
 {
     Q_OBJECT
 
-    // From QActivityPartition
     Q_PROPERTY(bool isDimension READ isDimension WRITE setDimension)
     Q_PROPERTY(bool isExternal READ isExternal WRITE setExternal)
     Q_PROPERTY(QElement * represents READ represents WRITE setRepresents)

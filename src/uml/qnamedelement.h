@@ -72,7 +72,6 @@ class Q_UML_EXPORT QNamedElement : public QElement
 {
     Q_OBJECT
 
-    // From QNamedElement
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)

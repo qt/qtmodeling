@@ -61,7 +61,6 @@ class Q_UML_EXPORT QPackageMerge : public QDirectedRelationship
 {
     Q_OBJECT
 
-    // From QPackageMerge
     Q_PROPERTY(QPackage * mergedPackage READ mergedPackage WRITE setMergedPackage)
     Q_PROPERTY(QPackage * receivingPackage READ receivingPackage WRITE setReceivingPackage)
 

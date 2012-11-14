@@ -68,7 +68,6 @@ class Q_UML_EXPORT QInterface : public QClassifier
 {
     Q_OBJECT
 
-    // From QInterface
     Q_PROPERTY(QProtocolStateMachine * protocol READ protocol WRITE setProtocol)
     Q_PROPERTY(const QSet<QInterface *> * redefinedInterfaces READ redefinedInterfaces)
     Q_PROPERTY(const QSet<QReception *> * ownedReceptions READ ownedReceptions)

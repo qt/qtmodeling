@@ -62,7 +62,6 @@ class Q_UML_EXPORT QDecisionNode : public QControlNode
 {
     Q_OBJECT
 
-    // From QDecisionNode
     Q_PROPERTY(QObjectFlow * decisionInputFlow READ decisionInputFlow WRITE setDecisionInputFlow)
     Q_PROPERTY(QBehavior * decisionInput READ decisionInput WRITE setDecisionInput)
 

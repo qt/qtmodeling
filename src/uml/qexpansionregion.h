@@ -67,7 +67,6 @@ class Q_UML_EXPORT QExpansionRegion : public QStructuredActivityNode
 {
     Q_OBJECT
 
-    // From QExpansionRegion
     Q_PROPERTY(QtUml::ExpansionKind mode READ mode WRITE setMode)
     Q_PROPERTY(const QSet<QExpansionNode *> * inputElements READ inputElements)
     Q_PROPERTY(const QSet<QExpansionNode *> * outputElements READ outputElements)

@@ -68,7 +68,6 @@ class Q_UML_EXPORT QAction : public QExecutableNode
 {
     Q_OBJECT
 
-    // From QAction
     Q_PROPERTY(bool isLocallyReentrant READ isLocallyReentrant WRITE setLocallyReentrant)
     Q_PROPERTY(QClassifier * context READ context STORED false)
     Q_PROPERTY(const QSet<QConstraint *> * localPostconditions READ localPostconditions)

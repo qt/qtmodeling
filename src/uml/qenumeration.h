@@ -64,7 +64,6 @@ class Q_UML_EXPORT QEnumeration : public QDataType
 {
     Q_OBJECT
 
-    // From QEnumeration
     Q_PROPERTY(const QList<QEnumerationLiteral *> * ownedLiterals READ ownedLiterals)
 
     Q_DISABLE_COPY(QEnumeration)

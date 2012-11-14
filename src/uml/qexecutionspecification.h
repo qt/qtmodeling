@@ -61,7 +61,6 @@ class Q_UML_EXPORT QExecutionSpecification : public QInteractionFragment
 {
     Q_OBJECT
 
-    // From QExecutionSpecification
     Q_PROPERTY(QOccurrenceSpecification * start READ start WRITE setStart)
     Q_PROPERTY(QOccurrenceSpecification * finish READ finish WRITE setFinish)
 

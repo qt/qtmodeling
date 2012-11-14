@@ -61,7 +61,6 @@ class Q_UML_EXPORT QAddStructuralFeatureValueAction : public QWriteStructuralFea
 {
     Q_OBJECT
 
-    // From QAddStructuralFeatureValueAction
     Q_PROPERTY(bool isReplaceAll READ isReplaceAll WRITE setReplaceAll)
     Q_PROPERTY(QInputPin * insertAt READ insertAt WRITE setInsertAt)
 

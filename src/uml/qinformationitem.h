@@ -61,7 +61,6 @@ class Q_UML_EXPORT QInformationItem : public QClassifier
 {
     Q_OBJECT
 
-    // From QInformationItem
     Q_PROPERTY(const QSet<QClassifier *> * represented READ represented)
 
     Q_DISABLE_COPY(QInformationItem)

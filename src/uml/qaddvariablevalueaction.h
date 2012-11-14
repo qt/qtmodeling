@@ -61,7 +61,6 @@ class Q_UML_EXPORT QAddVariableValueAction : public QWriteVariableAction
 {
     Q_OBJECT
 
-    // From QAddVariableValueAction
     Q_PROPERTY(bool isReplaceAll READ isReplaceAll WRITE setReplaceAll)
     Q_PROPERTY(QInputPin * insertAt READ insertAt WRITE setInsertAt)
 

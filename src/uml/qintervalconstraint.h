@@ -61,7 +61,6 @@ class Q_UML_EXPORT QIntervalConstraint : public QConstraint
 {
     Q_OBJECT
 
-    // From QIntervalConstraint
     Q_PROPERTY(QInterval * specification READ specification WRITE setSpecification)
 
     Q_DISABLE_COPY(QIntervalConstraint)

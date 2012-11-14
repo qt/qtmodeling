@@ -61,7 +61,6 @@ class Q_UML_EXPORT QActionInputPin : public QInputPin
 {
     Q_OBJECT
 
-    // From QActionInputPin
     Q_PROPERTY(QAction * fromAction READ fromAction WRITE setFromAction)
 
     Q_DISABLE_COPY(QActionInputPin)

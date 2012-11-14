@@ -62,7 +62,6 @@ class Q_UML_EXPORT QClearAssociationAction : public QAction
 {
     Q_OBJECT
 
-    // From QClearAssociationAction
     Q_PROPERTY(QInputPin * object READ object WRITE setObject)
     Q_PROPERTY(QAssociation * association READ association WRITE setAssociation)
 

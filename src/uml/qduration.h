@@ -64,7 +64,6 @@ class Q_UML_EXPORT QDuration : public QValueSpecification
 {
     Q_OBJECT
 
-    // From QDuration
     Q_PROPERTY(QValueSpecification * expr READ expr WRITE setExpr)
     Q_PROPERTY(const QSet<QObservation *> * observations READ observations)
 

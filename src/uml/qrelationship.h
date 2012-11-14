@@ -61,7 +61,6 @@ class Q_UML_EXPORT QRelationship : public QElement
 {
     Q_OBJECT
 
-    // From QRelationship
     Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
 
     Q_DISABLE_COPY(QRelationship)

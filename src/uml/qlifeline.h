@@ -68,7 +68,6 @@ class Q_UML_EXPORT QLifeline : public QNamedElement
 {
     Q_OBJECT
 
-    // From QLifeline
     Q_PROPERTY(QConnectableElement * represents READ represents WRITE setRepresents)
     Q_PROPERTY(QPartDecomposition * decomposedAs READ decomposedAs WRITE setDecomposedAs)
     Q_PROPERTY(const QSet<QInteractionFragment *> * coveredBy READ coveredBy)

@@ -61,7 +61,6 @@ class Q_UML_EXPORT QMessageEnd : public QNamedElement
 {
     Q_OBJECT
 
-    // From QMessageEnd
     Q_PROPERTY(QMessage * message READ message WRITE setMessage)
 
     Q_DISABLE_COPY(QMessageEnd)

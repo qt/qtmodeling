@@ -61,7 +61,6 @@ class Q_UML_EXPORT QAcceptCallAction : public QAcceptEventAction
 {
     Q_OBJECT
 
-    // From QAcceptCallAction
     Q_PROPERTY(QOutputPin * returnInformation READ returnInformation WRITE setReturnInformation)
 
     Q_DISABLE_COPY(QAcceptCallAction)

@@ -62,7 +62,6 @@ class Q_UML_EXPORT QCallOperationAction : public QCallAction
 {
     Q_OBJECT
 
-    // From QCallOperationAction
     Q_PROPERTY(QOperation * operation READ operation WRITE setOperation)
     Q_PROPERTY(QInputPin * target READ target WRITE setTarget)
 

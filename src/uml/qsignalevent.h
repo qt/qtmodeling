@@ -61,7 +61,6 @@ class Q_UML_EXPORT QSignalEvent : public QMessageEvent
 {
     Q_OBJECT
 
-    // From QSignalEvent
     Q_PROPERTY(QSignal * signal READ signal WRITE setSignal)
 
     Q_DISABLE_COPY(QSignalEvent)

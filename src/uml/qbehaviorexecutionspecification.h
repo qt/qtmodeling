@@ -61,7 +61,6 @@ class Q_UML_EXPORT QBehaviorExecutionSpecification : public QExecutionSpecificat
 {
     Q_OBJECT
 
-    // From QBehaviorExecutionSpecification
     Q_PROPERTY(QBehavior * behavior READ behavior WRITE setBehavior)
 
     Q_DISABLE_COPY(QBehaviorExecutionSpecification)

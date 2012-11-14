@@ -66,7 +66,6 @@ class Q_UML_EXPORT QDeployment : public QDependency
 {
     Q_OBJECT
 
-    // From QDeployment
     Q_PROPERTY(QDeploymentTarget * location READ location WRITE setLocation)
     Q_PROPERTY(const QSet<QDeploymentSpecification *> * configurations READ configurations)
     Q_PROPERTY(const QSet<QDeployedArtifact *> * deployedArtifacts READ deployedArtifacts)

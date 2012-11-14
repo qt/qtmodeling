@@ -64,7 +64,6 @@ class Q_UML_EXPORT QEncapsulatedClassifier : public QStructuredClassifier
 {
     Q_OBJECT
 
-    // From QEncapsulatedClassifier
     Q_PROPERTY(const QSet<QPort *> * ownedPorts READ ownedPorts STORED false)
 
     Q_DISABLE_COPY(QEncapsulatedClassifier)

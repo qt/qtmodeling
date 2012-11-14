@@ -62,7 +62,6 @@ class Q_UML_EXPORT QTemplateParameter : public QElement
 {
     Q_OBJECT
 
-    // From QTemplateParameter
     Q_PROPERTY(QParameterableElement * default_ READ default_ WRITE setDefault_)
     Q_PROPERTY(QParameterableElement * parameteredElement READ parameteredElement WRITE setParameteredElement)
     Q_PROPERTY(QParameterableElement * ownedParameteredElement READ ownedParameteredElement WRITE setOwnedParameteredElement)

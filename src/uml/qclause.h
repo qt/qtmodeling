@@ -66,7 +66,6 @@ class Q_UML_EXPORT QClause : public QElement
 {
     Q_OBJECT
 
-    // From QClause
     Q_PROPERTY(const QSet<QClause *> * successorClauses READ successorClauses)
     Q_PROPERTY(QOutputPin * decider READ decider WRITE setDecider)
     Q_PROPERTY(const QSet<QClause *> * predecessorClauses READ predecessorClauses)

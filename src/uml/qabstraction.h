@@ -61,7 +61,6 @@ class Q_UML_EXPORT QAbstraction : public QDependency
 {
     Q_OBJECT
 
-    // From QAbstraction
     Q_PROPERTY(QOpaqueExpression * mapping READ mapping WRITE setMapping)
 
     Q_DISABLE_COPY(QAbstraction)

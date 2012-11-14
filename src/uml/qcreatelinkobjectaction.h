@@ -61,7 +61,6 @@ class Q_UML_EXPORT QCreateLinkObjectAction : public QCreateLinkAction
 {
     Q_OBJECT
 
-    // From QCreateLinkObjectAction
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
     Q_DISABLE_COPY(QCreateLinkObjectAction)

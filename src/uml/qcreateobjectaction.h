@@ -62,7 +62,6 @@ class Q_UML_EXPORT QCreateObjectAction : public QAction
 {
     Q_OBJECT
 
-    // From QCreateObjectAction
     Q_PROPERTY(QClassifier * classifier READ classifier WRITE setClassifier)
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
