@@ -64,7 +64,6 @@ class Q_UML_EXPORT QProtocolStateMachine : public QStateMachine
 {
     Q_OBJECT
 
-    // From QProtocolStateMachine
     Q_PROPERTY(const QSet<QProtocolConformance *> * conformance READ conformance)
 
     Q_DISABLE_COPY(QProtocolStateMachine)

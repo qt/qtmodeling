@@ -66,7 +66,6 @@ class Q_UML_EXPORT QLinkEndData : public QElement
 {
     Q_OBJECT
 
-    // From QLinkEndData
     Q_PROPERTY(QInputPin * value READ value WRITE setValue)
     Q_PROPERTY(QProperty * end READ end WRITE setEnd)
     Q_PROPERTY(const QSet<QQualifierValue *> * qualifiers READ qualifiers)

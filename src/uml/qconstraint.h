@@ -66,7 +66,6 @@ class Q_UML_EXPORT QConstraint : public QPackageableElement
 {
     Q_OBJECT
 
-    // From QConstraint
     Q_PROPERTY(QNamespace * context READ context WRITE setContext)
     Q_PROPERTY(QValueSpecification * specification READ specification WRITE setSpecification)
     Q_PROPERTY(const QList<QElement *> * constrainedElements READ constrainedElements)

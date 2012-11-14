@@ -61,7 +61,6 @@ class Q_UML_EXPORT QExtensionPoint : public QRedefinableElement
 {
     Q_OBJECT
 
-    // From QExtensionPoint
     Q_PROPERTY(QUseCase * useCase READ useCase WRITE setUseCase)
 
     Q_DISABLE_COPY(QExtensionPoint)

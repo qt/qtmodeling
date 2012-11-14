@@ -61,7 +61,6 @@ class Q_UML_EXPORT QExecutionOccurrenceSpecification : public QOccurrenceSpecifi
 {
     Q_OBJECT
 
-    // From QExecutionOccurrenceSpecification
     Q_PROPERTY(QExecutionSpecification * execution READ execution WRITE setExecution)
 
     Q_DISABLE_COPY(QExecutionOccurrenceSpecification)

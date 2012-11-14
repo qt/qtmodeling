@@ -65,7 +65,6 @@ class Q_UML_EXPORT QCollaborationUse : public QNamedElement
 {
     Q_OBJECT
 
-    // From QCollaborationUse
     Q_PROPERTY(QCollaboration * type READ type WRITE setType)
     Q_PROPERTY(const QSet<QDependency *> * roleBindings READ roleBindings)
 

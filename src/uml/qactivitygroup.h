@@ -66,7 +66,6 @@ class Q_UML_EXPORT QActivityGroup : public QNamedElement
 {
     Q_OBJECT
 
-    // From QActivityGroup
     Q_PROPERTY(QActivity * inActivity READ inActivity WRITE setInActivity)
     Q_PROPERTY(const QSet<QActivityNode *> * containedNodes READ containedNodes)
     Q_PROPERTY(const QSet<QActivityGroup *> * subgroups READ subgroups)

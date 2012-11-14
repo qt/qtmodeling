@@ -61,7 +61,6 @@ class Q_UML_EXPORT QParameterableElement : public QElement
 {
     Q_OBJECT
 
-    // From QParameterableElement
     Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
     Q_PROPERTY(QTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
 

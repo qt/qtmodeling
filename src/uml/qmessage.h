@@ -71,7 +71,6 @@ class Q_UML_EXPORT QMessage : public QNamedElement
 {
     Q_OBJECT
 
-    // From QMessage
     Q_PROPERTY(QtUml::MessageSort messageSort READ messageSort WRITE setMessageSort)
     Q_PROPERTY(QtUml::MessageKind messageKind READ messageKind STORED false)
     Q_PROPERTY(QNamedElement * signature READ signature WRITE setSignature)

@@ -61,7 +61,6 @@ class Q_UML_EXPORT QReadStructuralFeatureAction : public QStructuralFeatureActio
 {
     Q_OBJECT
 
-    // From QReadStructuralFeatureAction
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
     Q_DISABLE_COPY(QReadStructuralFeatureAction)

@@ -65,7 +65,6 @@ class Q_UML_EXPORT QProtocolTransition : public QTransition
 {
     Q_OBJECT
 
-    // From QProtocolTransition
     Q_PROPERTY(QConstraint * postCondition READ postCondition WRITE setPostCondition)
     Q_PROPERTY(const QSet<QOperation *> * referred READ referred STORED false)
     Q_PROPERTY(QConstraint * preCondition READ preCondition WRITE setPreCondition)

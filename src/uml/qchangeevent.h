@@ -61,7 +61,6 @@ class Q_UML_EXPORT QChangeEvent : public QEvent
 {
     Q_OBJECT
 
-    // From QChangeEvent
     Q_PROPERTY(QValueSpecification * changeExpression READ changeExpression WRITE setChangeExpression)
 
     Q_DISABLE_COPY(QChangeEvent)

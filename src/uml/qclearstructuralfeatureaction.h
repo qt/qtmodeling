@@ -61,7 +61,6 @@ class Q_UML_EXPORT QClearStructuralFeatureAction : public QStructuralFeatureActi
 {
     Q_OBJECT
 
-    // From QClearStructuralFeatureAction
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
     Q_DISABLE_COPY(QClearStructuralFeatureAction)

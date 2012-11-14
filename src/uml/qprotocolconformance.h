@@ -61,7 +61,6 @@ class Q_UML_EXPORT QProtocolConformance : public QDirectedRelationship
 {
     Q_OBJECT
 
-    // From QProtocolConformance
     Q_PROPERTY(QProtocolStateMachine * specificMachine READ specificMachine WRITE setSpecificMachine)
     Q_PROPERTY(QProtocolStateMachine * generalMachine READ generalMachine WRITE setGeneralMachine)
 

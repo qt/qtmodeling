@@ -61,7 +61,6 @@ class Q_UML_EXPORT QReadLinkAction : public QLinkAction
 {
     Q_OBJECT
 
-    // From QReadLinkAction
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
     Q_DISABLE_COPY(QReadLinkAction)

@@ -61,7 +61,6 @@ class Q_UML_EXPORT QLinkEndDestructionData : public QLinkEndData
 {
     Q_OBJECT
 
-    // From QLinkEndDestructionData
     Q_PROPERTY(bool isDestroyDuplicates READ isDestroyDuplicates WRITE setDestroyDuplicates)
     Q_PROPERTY(QInputPin * destroyAt READ destroyAt WRITE setDestroyAt)
 

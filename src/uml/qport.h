@@ -65,7 +65,6 @@ class Q_UML_EXPORT QPort : public QProperty
 {
     Q_OBJECT
 
-    // From QPort
     Q_PROPERTY(bool isConjugated READ isConjugated WRITE setConjugated)
     Q_PROPERTY(bool isBehavior READ isBehavior WRITE setBehavior)
     Q_PROPERTY(bool isService READ isService WRITE setService)

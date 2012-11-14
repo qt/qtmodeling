@@ -65,7 +65,6 @@ class Q_UML_EXPORT QOccurrenceSpecification : public QInteractionFragment
 {
     Q_OBJECT
 
-    // From QOccurrenceSpecification
     Q_PROPERTY(QLifeline * covered READ covered WRITE setCovered)
     Q_PROPERTY(const QSet<QGeneralOrdering *> * toAfter READ toAfter)
     Q_PROPERTY(const QSet<QGeneralOrdering *> * toBefore READ toBefore)

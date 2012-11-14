@@ -65,7 +65,6 @@ class Q_UML_EXPORT QPseudostate : public QVertex
 {
     Q_OBJECT
 
-    // From QPseudostate
     Q_PROPERTY(QtUml::PseudostateKind kind READ kind WRITE setKind)
     Q_PROPERTY(QState * state READ state WRITE setState)
     Q_PROPERTY(QStateMachine * stateMachine READ stateMachine WRITE setStateMachine)

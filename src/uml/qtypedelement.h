@@ -61,7 +61,6 @@ class Q_UML_EXPORT QTypedElement : public QNamedElement
 {
     Q_OBJECT
 
-    // From QTypedElement
     Q_PROPERTY(QType * type READ type WRITE setType)
 
     Q_DISABLE_COPY(QTypedElement)

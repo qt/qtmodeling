@@ -68,7 +68,6 @@ class Q_UML_EXPORT QStateMachine : public QBehavior
 {
     Q_OBJECT
 
-    // From QStateMachine
     Q_PROPERTY(const QSet<QStateMachine *> * extendedStateMachines READ extendedStateMachines)
     Q_PROPERTY(const QSet<QPseudostate *> * connectionPoints READ connectionPoints)
     Q_PROPERTY(const QSet<QState *> * submachineStates READ submachineStates)

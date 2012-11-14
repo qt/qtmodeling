@@ -58,7 +58,6 @@ class Q_UML_EXPORT QLiteralUnlimitedNatural : public QLiteralSpecification
 {
     Q_OBJECT
 
-    // From QLiteralUnlimitedNatural
     Q_PROPERTY(qint32 value READ value WRITE setValue)
 
     Q_DISABLE_COPY(QLiteralUnlimitedNatural)

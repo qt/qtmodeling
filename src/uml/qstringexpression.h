@@ -64,16 +64,6 @@ class Q_UML_EXPORT QStringExpression : public QObject
 {
     Q_OBJECT
 
-    // From aggregated QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From aggregated QTemplateableElement
-    Q_PROPERTY(QTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
-    Q_PROPERTY(const QSet<QTemplateBinding *> * templateBindings READ templateBindings)
-
-    // From QStringExpression
     Q_PROPERTY(QStringExpression * owningExpression READ owningExpression WRITE setOwningExpression)
     Q_PROPERTY(const QSet<QStringExpression *> * subExpressions READ subExpressions)
 

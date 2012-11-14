@@ -62,7 +62,6 @@ class Q_UML_EXPORT QOpaqueBehavior : public QBehavior
 {
     Q_OBJECT
 
-    // From QOpaqueBehavior
     Q_PROPERTY(const QList<QString> * languages READ languages)
     Q_PROPERTY(const QList<QString> * bodies READ bodies)
 

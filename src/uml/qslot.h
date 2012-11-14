@@ -66,7 +66,6 @@ class Q_UML_EXPORT QSlot : public QElement
 {
     Q_OBJECT
 
-    // From QSlot
     Q_PROPERTY(const QList<QValueSpecification *> * values READ values)
     Q_PROPERTY(QStructuralFeature * definingFeature READ definingFeature WRITE setDefiningFeature)
     Q_PROPERTY(QInstanceSpecification * owningInstance READ owningInstance WRITE setOwningInstance)

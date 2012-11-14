@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QtCore/QMap>
 #include <QtWidgets/QMainWindow>
 
 namespace Ui {
@@ -31,6 +32,10 @@ private Q_SLOTS:
 private:
     Ui::MainWindow *ui;
     QStringList _visitedParents;
+    QMap< QString, QPair<int, QTreeWidgetItem *> > _visitedProperties;
+
+    void handleObjectProperties(QObject *element, int level = 0);
+    void handleMetaObjectProperties(QObject *element, const QMetaObject *metaObject, int level = 0);
 };
 
 #endif // MAINWINDOW_H

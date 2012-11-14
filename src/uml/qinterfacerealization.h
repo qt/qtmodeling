@@ -62,7 +62,6 @@ class Q_UML_EXPORT QInterfaceRealization : public QRealization
 {
     Q_OBJECT
 
-    // From QInterfaceRealization
     Q_PROPERTY(QBehavioredClassifier * implementingClassifier READ implementingClassifier WRITE setImplementingClassifier)
     Q_PROPERTY(QInterface * contract READ contract WRITE setContract)
 

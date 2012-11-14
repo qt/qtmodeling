@@ -63,7 +63,6 @@ class Q_UML_EXPORT QReadIsClassifiedObjectAction : public QAction
 {
     Q_OBJECT
 
-    // From QReadIsClassifiedObjectAction
     Q_PROPERTY(bool isDirect READ isDirect WRITE setDirect)
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
     Q_PROPERTY(QInputPin * object READ object WRITE setObject)

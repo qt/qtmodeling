@@ -61,7 +61,6 @@ class Q_UML_EXPORT QCallBehaviorAction : public QCallAction
 {
     Q_OBJECT
 
-    // From QCallBehaviorAction
     Q_PROPERTY(QBehavior * behavior READ behavior WRITE setBehavior)
 
     Q_DISABLE_COPY(QCallBehaviorAction)

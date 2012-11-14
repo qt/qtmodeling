@@ -61,7 +61,6 @@ class Q_UML_EXPORT QRaiseExceptionAction : public QAction
 {
     Q_OBJECT
 
-    // From QRaiseExceptionAction
     Q_PROPERTY(QInputPin * exception READ exception WRITE setException)
 
     Q_DISABLE_COPY(QRaiseExceptionAction)

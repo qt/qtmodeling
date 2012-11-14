@@ -61,7 +61,6 @@ class Q_UML_EXPORT QSendObjectAction : public QInvocationAction
 {
     Q_OBJECT
 
-    // From QSendObjectAction
     Q_PROPERTY(QInputPin * request READ request WRITE setRequest)
     Q_PROPERTY(QInputPin * target READ target WRITE setTarget)
 

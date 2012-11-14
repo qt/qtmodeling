@@ -62,7 +62,6 @@ class Q_UML_EXPORT QValueSpecificationAction : public QAction
 {
     Q_OBJECT
 
-    // From QValueSpecificationAction
     Q_PROPERTY(QValueSpecification * value READ value WRITE setValue)
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 

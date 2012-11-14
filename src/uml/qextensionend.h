@@ -61,7 +61,6 @@ class Q_UML_EXPORT QExtensionEnd : public QProperty
 {
     Q_OBJECT
 
-    // From QExtensionEnd
     Q_PROPERTY(qint32 lower READ lower WRITE setLower STORED false)
     Q_PROPERTY(QStereotype * type READ type WRITE setType)
 

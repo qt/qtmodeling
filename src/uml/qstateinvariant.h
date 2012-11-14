@@ -62,7 +62,6 @@ class Q_UML_EXPORT QStateInvariant : public QInteractionFragment
 {
     Q_OBJECT
 
-    // From QStateInvariant
     Q_PROPERTY(QConstraint * invariant READ invariant WRITE setInvariant)
     Q_PROPERTY(QLifeline * covered READ covered WRITE setCovered)
 

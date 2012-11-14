@@ -65,7 +65,6 @@ class Q_UML_EXPORT QTemplateSignature : public QElement
 {
     Q_OBJECT
 
-    // From QTemplateSignature
     Q_PROPERTY(const QList<QTemplateParameter *> * parameters READ parameters)
     Q_PROPERTY(QTemplateableElement * template_ READ template_ WRITE setTemplate_)
     Q_PROPERTY(const QList<QTemplateParameter *> * ownedParameters READ ownedParameters)

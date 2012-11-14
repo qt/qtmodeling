@@ -64,7 +64,6 @@ class Q_UML_EXPORT QDestroyLinkAction : public QWriteLinkAction
 {
     Q_OBJECT
 
-    // From QDestroyLinkAction
     Q_PROPERTY(const QSet<QLinkEndDestructionData *> * endData READ endData)
 
     Q_DISABLE_COPY(QDestroyLinkAction)

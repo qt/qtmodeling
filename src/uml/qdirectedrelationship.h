@@ -64,7 +64,6 @@ class Q_UML_EXPORT QDirectedRelationship : public QRelationship
 {
     Q_OBJECT
 
-    // From QDirectedRelationship
     Q_PROPERTY(const QSet<QElement *> * sources READ sources)
     Q_PROPERTY(const QSet<QElement *> * targets READ targets)
 

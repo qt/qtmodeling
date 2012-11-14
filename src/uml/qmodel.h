@@ -61,7 +61,6 @@ class Q_UML_EXPORT QModel : public QPackage
 {
     Q_OBJECT
 
-    // From QModel
     Q_PROPERTY(QString viewpoint READ viewpoint WRITE setViewpoint)
 
     Q_DISABLE_COPY(QModel)

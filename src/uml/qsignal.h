@@ -64,7 +64,6 @@ class Q_UML_EXPORT QSignal : public QClassifier
 {
     Q_OBJECT
 
-    // From QSignal
     Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
 
     Q_DISABLE_COPY(QSignal)

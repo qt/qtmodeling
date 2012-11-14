@@ -68,7 +68,6 @@ class Q_UML_EXPORT QInteractionUse : public QInteractionFragment
 {
     Q_OBJECT
 
-    // From QInteractionUse
     Q_PROPERTY(const QSet<QGate *> * actualGates READ actualGates)
     Q_PROPERTY(QValueSpecification * returnValue READ returnValue WRITE setReturnValue)
     Q_PROPERTY(QInteraction * refersTo READ refersTo WRITE setRefersTo)

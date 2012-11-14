@@ -61,7 +61,6 @@ class Q_UML_EXPORT QReadSelfAction : public QAction
 {
     Q_OBJECT
 
-    // From QReadSelfAction
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
     Q_DISABLE_COPY(QReadSelfAction)

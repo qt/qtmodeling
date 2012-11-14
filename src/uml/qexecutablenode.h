@@ -64,7 +64,6 @@ class Q_UML_EXPORT QExecutableNode : public QActivityNode
 {
     Q_OBJECT
 
-    // From QExecutableNode
     Q_PROPERTY(const QSet<QExceptionHandler *> * handlers READ handlers)
 
     Q_DISABLE_COPY(QExecutableNode)

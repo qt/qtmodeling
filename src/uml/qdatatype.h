@@ -67,7 +67,6 @@ class Q_UML_EXPORT QDataType : public QClassifier
 {
     Q_OBJECT
 
-    // From QDataType
     Q_PROPERTY(const QList<QOperation *> * ownedOperations READ ownedOperations)
     Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
 

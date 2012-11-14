@@ -61,7 +61,6 @@ class Q_UML_EXPORT QConnectableElementTemplateParameter : public QTemplateParame
 {
     Q_OBJECT
 
-    // From QConnectableElementTemplateParameter
     Q_PROPERTY(QConnectableElement * parameteredElement READ parameteredElement WRITE setParameteredElement)
 
     Q_DISABLE_COPY(QConnectableElementTemplateParameter)

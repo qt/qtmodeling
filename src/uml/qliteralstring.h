@@ -61,7 +61,6 @@ class Q_UML_EXPORT QLiteralString : public QLiteralSpecification
 {
     Q_OBJECT
 
-    // From QLiteralString
     Q_PROPERTY(QString value READ value WRITE setValue)
 
     Q_DISABLE_COPY(QLiteralString)

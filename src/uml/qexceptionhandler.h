@@ -66,7 +66,6 @@ class Q_UML_EXPORT QExceptionHandler : public QElement
 {
     Q_OBJECT
 
-    // From QExceptionHandler
     Q_PROPERTY(QExecutableNode * handlerBody READ handlerBody WRITE setHandlerBody)
     Q_PROPERTY(const QSet<QClassifier *> * exceptionTypes READ exceptionTypes)
     Q_PROPERTY(QExecutableNode * protectedNode READ protectedNode WRITE setProtectedNode)

@@ -63,7 +63,6 @@ class Q_UML_EXPORT QTemplateParameterSubstitution : public QElement
 {
     Q_OBJECT
 
-    // From QTemplateParameterSubstitution
     Q_PROPERTY(QParameterableElement * ownedActual READ ownedActual WRITE setOwnedActual)
     Q_PROPERTY(QTemplateParameter * formal READ formal WRITE setFormal)
     Q_PROPERTY(QParameterableElement * actual READ actual WRITE setActual)

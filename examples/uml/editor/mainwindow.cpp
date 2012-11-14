@@ -69,40 +69,36 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous)
+void MainWindow::handleMetaObjectProperties(QObject *element, const QMetaObject *metaObject, int level)
 {
-    Q_UNUSED(previous)
+    if (metaObject->superClass() && !_visitedParents.contains(metaObject->superClass()->className()))
+        handleMetaObjectProperties(element, metaObject->superClass(), level+1);
 
-    ui->propertyEditor->blockSignals(true);
-    QObject *element = current->data(0, Qt::UserRole).value<QObject *>();
-    ui->propertyEditor->clear();
-    int propertyCount = element->metaObject()->propertyCount();
+    _visitedParents.append(metaObject->className());
 
-    const QMetaObject metaObject = QtUml::QtUml::staticMetaObject;
+    const QMetaObject enumMetaObject = QtUml::QtUml::staticMetaObject;
     QMap<QString, QMetaEnum> enums;
-    int enumeratorCount = metaObject.enumeratorCount();
+    int enumeratorCount = enumMetaObject.enumeratorCount();
     for (int i = 0; i < enumeratorCount; ++i) {
-        QMetaEnum metaEnum = metaObject.enumerator(i);
+        QMetaEnum metaEnum = enumMetaObject.enumerator(i);
         enums[QString(metaEnum.name())] = metaEnum;
     }
 
-    for (int i = 0; i < propertyCount; ++i) {
-        QMetaProperty property = element->metaObject()->property(i);
-        const QMetaObject *metaObject = 0;
-        foreach (QObject *child, element->children()) {
-            metaObject = child->metaObject();
-            while (metaObject && metaObject->indexOfProperty(property.name()) < metaObject->propertyOffset())
-                metaObject = metaObject->superClass();
-            if (metaObject)
-                break;
+    int propertyCount = metaObject->propertyCount();
+
+    for (int i = metaObject->propertyOffset(); i < propertyCount; ++i) {
+        QMetaProperty property = metaObject->property(i);
+
+        if (_visitedProperties.contains(property.name())) {
+            if (_visitedProperties[property.name()].first == level)
+                continue;
+
+            if (_visitedProperties[property.name()].first >= level) {
+                delete _visitedProperties[property.name()].second;
+                _visitedProperties.remove(property.name());
+            }
         }
-        if (!metaObject) {
-            metaObject = element->metaObject();
-            while (metaObject && metaObject->indexOfProperty(property.name()) < metaObject->propertyOffset())
-                metaObject = metaObject->superClass();
-        }
-        if (!metaObject)
-            continue;
+
         QTreeWidgetItem *parentItem = parentItemForProperty(metaObject->className());
         if (!parentItem) {
             parentItem = new QTreeWidgetItem(ui->propertyEditor, QStringList() << metaObject->className());
@@ -112,19 +108,12 @@ void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, Q
             parentItem->setFont(0, font);
         }
         parentItem->setSizeHint(1, QSize(0, 19));
+
         QTreeWidgetItem *item = new QTreeWidgetItem(parentItem);
         item->setSizeHint(1, QSize(0, 19));
         item->setText(0, QString(property.name()).remove(QRegularExpression("_$")) + ((property.isWritable() == false) ? " (RO)":""));
-        if (property.type() == QVariant::Bool) {
-            QComboBox *comboBox = new QComboBox;
-            comboBox->addItem("false", qVariantFromValue(QString(property.name())));
-            comboBox->addItem("true", qVariantFromValue(QString(property.name())));
-            comboBox->setCurrentIndex(property.read(element).toBool() ? 1:0);
-            comboBox->setMaximumHeight(19);
-            connect(comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(currentIndexChanged(int)));
-            ui->propertyEditor->setItemWidget(item, 1, comboBox);
-            continue;
-        }
+        _visitedProperties[property.name()] = QPair<int, QTreeWidgetItem *>(level, item);
+
         if (property.isEnumType()) {
             if (enums.contains(QString(property.typeName()).split("::").last())) {
                 QMetaEnum metaEnum = enums[QString(property.typeName()).split("::").last()];
@@ -138,10 +127,25 @@ void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, Q
                 ui->propertyEditor->setItemWidget(item, 1, comboBox);
             }
         }
-        if (property.isWritable() == true)
-            item->setFlags(item->flags() | Qt::ItemIsEditable);
-        if (property.type() == QVariant::String)
-            item->setText(1, property.read(element).toString());
+
+        if (property.type() == QVariant::Bool) {
+            QComboBox *comboBox = new QComboBox;
+            comboBox->addItem("false", qVariantFromValue(QString(property.name())));
+            comboBox->addItem("true", qVariantFromValue(QString(property.name())));
+            comboBox->setCurrentIndex(property.read(element).toBool() ? 1:0);
+            comboBox->setMaximumHeight(19);
+            connect(comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(currentIndexChanged(int)));
+            ui->propertyEditor->setItemWidget(item, 1, comboBox);
+            continue;
+        }
+
+        if (property.type() == QVariant::String) {
+            QObject *rootElement = element;
+            if (QString(property.name()) == "objectName")
+                rootElement = qtuml_object_cast<QObject *>(element);
+            item->setText(1, property.read(rootElement).toString());
+        }
+
         QString typeName = property.typeName();
         if (typeName.endsWith('*') && !typeName.contains(QRegularExpression ("QSet|QList")) && property.read(element).value<QObject *>()) {
             QObject *objectElement = property.read(element).value<QObject *>();
@@ -149,6 +153,7 @@ void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, Q
             if (!property.isStored())
                 delete objectElement;
         }
+
         if (typeName.endsWith('*') && typeName.contains("QSet") && property.read(element).isValid()) {
             if (QSet<QObject *> *elements = reinterpret_cast<QSet<QObject *> *>(*((QSet<QObject *> **) property.read(element).data()))) {
                 if (elements->size() > 0) {
@@ -163,6 +168,7 @@ void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, Q
                     delete elements;
             }
         }
+
         if (typeName.endsWith('*') && typeName.contains("QList") && property.read(element).isValid()) {
             if (QList<QObject *> *elements = reinterpret_cast<QList<QObject *> *>(*((QList<QObject *> **) property.read(element).data()))) {
                 if (elements->size() > 0) {
@@ -177,7 +183,32 @@ void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, Q
                     delete elements;
             }
         }
+
+        if (property.isWritable() == true)
+            item->setFlags(item->flags() | Qt::ItemIsEditable);
     }
+}
+
+void MainWindow::handleObjectProperties(QObject *element, int level)
+{
+    foreach (QObject *child, element->children())
+            handleObjectProperties(child, level+1);
+
+    handleMetaObjectProperties(element, element->metaObject(), level);
+}
+
+void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous)
+{
+    Q_UNUSED(previous)
+
+    ui->propertyEditor->blockSignals(true);
+    QObject *element = current->data(0, Qt::UserRole).value<QObject *>();
+    ui->propertyEditor->clear();
+
+    _visitedParents.clear();
+    _visitedProperties.clear();
+    handleObjectProperties(element);
+
     ui->propertyEditor->resizeColumnToContents(0);
     ui->propertyEditor->resizeColumnToContents(1);
     ui->propertyEditor->blockSignals(false);

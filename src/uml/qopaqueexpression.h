@@ -66,7 +66,6 @@ class Q_UML_EXPORT QOpaqueExpression : public QValueSpecification
 {
     Q_OBJECT
 
-    // From QOpaqueExpression
     Q_PROPERTY(const QList<QString> * bodies READ bodies)
     Q_PROPERTY(const QList<QString> * languages READ languages)
     Q_PROPERTY(QBehavior * behavior READ behavior WRITE setBehavior)

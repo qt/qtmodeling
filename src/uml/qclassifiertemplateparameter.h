@@ -64,7 +64,6 @@ class Q_UML_EXPORT QClassifierTemplateParameter : public QTemplateParameter
 {
     Q_OBJECT
 
-    // From QClassifierTemplateParameter
     Q_PROPERTY(bool allowSubstitutable READ allowSubstitutable WRITE setAllowSubstitutable)
     Q_PROPERTY(QClassifier * parameteredElement READ parameteredElement WRITE setParameteredElement)
     Q_PROPERTY(const QSet<QClassifier *> * constrainingClassifiers READ constrainingClassifiers)

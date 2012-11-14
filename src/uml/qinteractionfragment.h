@@ -67,7 +67,6 @@ class Q_UML_EXPORT QInteractionFragment : public QNamedElement
 {
     Q_OBJECT
 
-    // From QInteractionFragment
     Q_PROPERTY(const QSet<QGeneralOrdering *> * generalOrderings READ generalOrderings)
     Q_PROPERTY(QInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
     Q_PROPERTY(const QSet<QLifeline *> * covered READ covered)

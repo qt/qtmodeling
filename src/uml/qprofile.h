@@ -65,7 +65,6 @@ class Q_UML_EXPORT QProfile : public QPackage
 {
     Q_OBJECT
 
-    // From QProfile
     Q_PROPERTY(const QSet<QPackageImport *> * metamodelReferences READ metamodelReferences)
     Q_PROPERTY(const QSet<QElementImport *> * metaclassReferences READ metaclassReferences)
 

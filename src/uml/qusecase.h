@@ -67,7 +67,6 @@ class Q_UML_EXPORT QUseCase : public QBehavioredClassifier
 {
     Q_OBJECT
 
-    // From QUseCase
     Q_PROPERTY(const QSet<QExtensionPoint *> * extensionPoints READ extensionPoints)
     Q_PROPERTY(const QSet<QInclude *> * includes READ includes)
     Q_PROPERTY(const QSet<QClassifier *> * subjects READ subjects)

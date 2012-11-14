@@ -61,7 +61,6 @@ class Q_UML_EXPORT QTimeConstraint : public QIntervalConstraint
 {
     Q_OBJECT
 
-    // From QTimeConstraint
     Q_PROPERTY(bool firstEvent READ firstEvent WRITE setFirstEvent)
     Q_PROPERTY(QTimeInterval * specification READ specification WRITE setSpecification)
 

@@ -68,7 +68,6 @@ class Q_UML_EXPORT QNamespace : public QNamedElement
 {
     Q_OBJECT
 
-    // From QNamespace
     Q_PROPERTY(const QSet<QPackageImport *> * packageImports READ packageImports)
     Q_PROPERTY(const QSet<QNamedElement *> * members READ members)
     Q_PROPERTY(const QSet<QPackageableElement *> * importedMembers READ importedMembers STORED false)

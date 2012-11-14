@@ -61,7 +61,6 @@ class Q_UML_EXPORT QReception : public QBehavioralFeature
 {
     Q_OBJECT
 
-    // From QReception
     Q_PROPERTY(QSignal * signal READ signal WRITE setSignal)
 
     Q_DISABLE_COPY(QReception)

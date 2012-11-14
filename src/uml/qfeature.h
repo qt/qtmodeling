@@ -64,7 +64,6 @@ class Q_UML_EXPORT QFeature : public QRedefinableElement
 {
     Q_OBJECT
 
-    // From QFeature
     Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic)
     Q_PROPERTY(const QSet<QClassifier *> * featuringClassifiers READ featuringClassifiers)
 

@@ -67,7 +67,6 @@ class Q_UML_EXPORT QOpaqueAction : public QAction
 {
     Q_OBJECT
 
-    // From QOpaqueAction
     Q_PROPERTY(const QList<QString> * bodies READ bodies)
     Q_PROPERTY(const QList<QString> * languages READ languages)
     Q_PROPERTY(const QSet<QInputPin *> * inputValues READ inputValues)

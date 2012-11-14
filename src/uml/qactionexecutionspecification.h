@@ -61,7 +61,6 @@ class Q_UML_EXPORT QActionExecutionSpecification : public QExecutionSpecificatio
 {
     Q_OBJECT
 
-    // From QActionExecutionSpecification
     Q_PROPERTY(QAction * action READ action WRITE setAction)
 
     Q_DISABLE_COPY(QActionExecutionSpecification)

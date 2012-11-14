@@ -65,7 +65,6 @@ class Q_UML_EXPORT QTrigger : public QNamedElement
 {
     Q_OBJECT
 
-    // From QTrigger
     Q_PROPERTY(const QSet<QPort *> * ports READ ports)
     Q_PROPERTY(QEvent * event READ event WRITE setEvent)
 

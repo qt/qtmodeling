@@ -61,7 +61,6 @@ class Q_UML_EXPORT QTimeObservation : public QObservation
 {
     Q_OBJECT
 
-    // From QTimeObservation
     Q_PROPERTY(bool firstEvent READ firstEvent WRITE setFirstEvent)
     Q_PROPERTY(QNamedElement * event READ event WRITE setEvent)
 

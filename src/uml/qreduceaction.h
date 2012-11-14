@@ -63,7 +63,6 @@ class Q_UML_EXPORT QReduceAction : public QAction
 {
     Q_OBJECT
 
-    // From QReduceAction
     Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
     Q_PROPERTY(QInputPin * collection READ collection WRITE setCollection)

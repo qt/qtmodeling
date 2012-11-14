@@ -65,7 +65,6 @@ class Q_UML_EXPORT QComponentRealization : public QRealization
 {
     Q_OBJECT
 
-    // From QComponentRealization
     Q_PROPERTY(QComponent * abstraction READ abstraction WRITE setAbstraction)
     Q_PROPERTY(const QSet<QClassifier *> * realizingClassifiers READ realizingClassifiers)
 

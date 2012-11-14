@@ -63,7 +63,6 @@ class Q_UML_EXPORT QReadLinkObjectEndAction : public QAction
 {
     Q_OBJECT
 
-    // From QReadLinkObjectEndAction
     Q_PROPERTY(QProperty * end READ end WRITE setEnd)
     Q_PROPERTY(QInputPin * object READ object WRITE setObject)
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)

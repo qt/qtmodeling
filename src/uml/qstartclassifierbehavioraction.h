@@ -61,7 +61,6 @@ class Q_UML_EXPORT QStartClassifierBehaviorAction : public QAction
 {
     Q_OBJECT
 
-    // From QStartClassifierBehaviorAction
     Q_PROPERTY(QInputPin * object READ object WRITE setObject)
 
     Q_DISABLE_COPY(QStartClassifierBehaviorAction)

@@ -66,7 +66,6 @@ class Q_UML_EXPORT QTemplateBinding : public QDirectedRelationship
 {
     Q_OBJECT
 
-    // From QTemplateBinding
     Q_PROPERTY(QTemplateSignature * signature READ signature WRITE setSignature)
     Q_PROPERTY(QTemplateableElement * boundElement READ boundElement WRITE setBoundElement)
     Q_PROPERTY(const QSet<QTemplateParameterSubstitution *> * parameterSubstitutions READ parameterSubstitutions)

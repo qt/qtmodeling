@@ -61,7 +61,6 @@ class Q_UML_EXPORT QWriteVariableAction : public QVariableAction
 {
     Q_OBJECT
 
-    // From QWriteVariableAction
     Q_PROPERTY(QInputPin * value READ value WRITE setValue)
 
     Q_DISABLE_COPY(QWriteVariableAction)

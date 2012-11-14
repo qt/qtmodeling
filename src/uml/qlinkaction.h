@@ -66,7 +66,6 @@ class Q_UML_EXPORT QLinkAction : public QAction
 {
     Q_OBJECT
 
-    // From QLinkAction
     Q_PROPERTY(const QSet<QInputPin *> * inputValues READ inputValues)
     Q_PROPERTY(const QSet<QLinkEndData *> * endData READ endData)
 

@@ -61,7 +61,6 @@ class Q_UML_EXPORT QMultiplicityElement : public QElement
 {
     Q_OBJECT
 
-    // From QMultiplicityElement
     Q_PROPERTY(qint32 upper READ upper WRITE setUpper STORED false)
     Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
     Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)

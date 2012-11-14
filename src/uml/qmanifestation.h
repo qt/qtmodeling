@@ -61,7 +61,6 @@ class Q_UML_EXPORT QManifestation : public QAbstraction
 {
     Q_OBJECT
 
-    // From QManifestation
     Q_PROPERTY(QPackageableElement * utilizedElement READ utilizedElement WRITE setUtilizedElement)
 
     Q_DISABLE_COPY(QManifestation)

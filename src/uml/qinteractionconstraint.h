@@ -61,7 +61,6 @@ class Q_UML_EXPORT QInteractionConstraint : public QConstraint
 {
     Q_OBJECT
 
-    // From QInteractionConstraint
     Q_PROPERTY(QValueSpecification * maxint READ maxint WRITE setMaxint)
     Q_PROPERTY(QValueSpecification * minint READ minint WRITE setMinint)
 

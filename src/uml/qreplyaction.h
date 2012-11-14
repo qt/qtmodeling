@@ -65,7 +65,6 @@ class Q_UML_EXPORT QReplyAction : public QAction
 {
     Q_OBJECT
 
-    // From QReplyAction
     Q_PROPERTY(QTrigger * replyToCall READ replyToCall WRITE setReplyToCall)
     Q_PROPERTY(QInputPin * returnInformation READ returnInformation WRITE setReturnInformation)
     Q_PROPERTY(const QSet<QInputPin *> * replyValues READ replyValues)

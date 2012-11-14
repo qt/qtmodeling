@@ -61,7 +61,6 @@ class Q_UML_EXPORT QDestroyObjectAction : public QAction
 {
     Q_OBJECT
 
-    // From QDestroyObjectAction
     Q_PROPERTY(bool isDestroyLinks READ isDestroyLinks WRITE setDestroyLinks)
     Q_PROPERTY(bool isDestroyOwnedObjects READ isDestroyOwnedObjects WRITE setDestroyOwnedObjects)
     Q_PROPERTY(QInputPin * target READ target WRITE setTarget)

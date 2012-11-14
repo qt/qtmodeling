@@ -61,7 +61,6 @@ class Q_UML_EXPORT QLinkEndCreationData : public QLinkEndData
 {
     Q_OBJECT
 
-    // From QLinkEndCreationData
     Q_PROPERTY(bool isReplaceAll READ isReplaceAll WRITE setReplaceAll)
     Q_PROPERTY(QInputPin * insertAt READ insertAt WRITE setInsertAt)
 

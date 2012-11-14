@@ -61,7 +61,6 @@ class Q_UML_EXPORT QCallEvent : public QMessageEvent
 {
     Q_OBJECT
 
-    // From QCallEvent
     Q_PROPERTY(QOperation * operation READ operation WRITE setOperation)
 
     Q_DISABLE_COPY(QCallEvent)

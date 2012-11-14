@@ -61,7 +61,6 @@ class Q_UML_EXPORT QRemoveVariableValueAction : public QWriteVariableAction
 {
     Q_OBJECT
 
-    // From QRemoveVariableValueAction
     Q_PROPERTY(bool isRemoveDuplicates READ isRemoveDuplicates WRITE setRemoveDuplicates)
     Q_PROPERTY(QInputPin * removeAt READ removeAt WRITE setRemoveAt)
 

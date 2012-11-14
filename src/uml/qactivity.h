@@ -69,7 +69,6 @@ class Q_UML_EXPORT QActivity : public QBehavior
 {
     Q_OBJECT
 
-    // From QActivity
     Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly)
     Q_PROPERTY(bool isSingleExecution READ isSingleExecution WRITE setSingleExecution)
     Q_PROPERTY(const QSet<QActivityPartition *> * partitions READ partitions)

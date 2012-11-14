@@ -64,7 +64,6 @@ class Q_UML_EXPORT QRedefinableElement : public QNamedElement
 {
     Q_OBJECT
 
-    // From QRedefinableElement
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf)
     Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
     Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)

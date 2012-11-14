@@ -68,7 +68,6 @@ class Q_UML_EXPORT QElementImport : public QDirectedRelationship
 {
     Q_OBJECT
 
-    // From QElementImport
     Q_PROPERTY(QString alias READ alias WRITE setAlias)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(QPackageableElement * importedElement READ importedElement WRITE setImportedElement)

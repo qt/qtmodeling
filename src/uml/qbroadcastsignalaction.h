@@ -61,7 +61,6 @@ class Q_UML_EXPORT QBroadcastSignalAction : public QInvocationAction
 {
     Q_OBJECT
 
-    // From QBroadcastSignalAction
     Q_PROPERTY(QSignal * signal READ signal WRITE setSignal)
 
     Q_DISABLE_COPY(QBroadcastSignalAction)

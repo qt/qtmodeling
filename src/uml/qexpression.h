@@ -62,7 +62,6 @@ class Q_UML_EXPORT QExpression : public QValueSpecification
 {
     Q_OBJECT
 
-    // From QExpression
     Q_PROPERTY(QString symbol READ symbol WRITE setSymbol)
     Q_PROPERTY(const QList<QValueSpecification *> * operands READ operands)
 

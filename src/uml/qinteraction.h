@@ -70,36 +70,6 @@ class Q_UML_EXPORT QInteraction : public QObject
 {
     Q_OBJECT
 
-    // From aggregated QBehavior
-    Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant)
-    Q_PROPERTY(QBehavioralFeature * specification READ specification WRITE setSpecification)
-    Q_PROPERTY(const QSet<QConstraint *> * postconditions READ postconditions)
-    Q_PROPERTY(const QSet<QConstraint *> * preconditions READ preconditions)
-    Q_PROPERTY(const QSet<QBehavior *> * redefinedBehaviors READ redefinedBehaviors)
-    Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
-    Q_PROPERTY(const QSet<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
-    Q_PROPERTY(QBehavioredClassifier * context READ context STORED false)
-
-    // From aggregated QElement
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
-
-    // From aggregated QNamedElement
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
-
-    // From aggregated QInteractionFragment
-    Q_PROPERTY(const QSet<QGeneralOrdering *> * generalOrderings READ generalOrderings)
-    Q_PROPERTY(QInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
-    Q_PROPERTY(const QSet<QLifeline *> * covered READ covered)
-    Q_PROPERTY(QInteractionOperand * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
-
-    // From QInteraction
     Q_PROPERTY(const QSet<QAction *> * actions READ actions)
     Q_PROPERTY(const QSet<QMessage *> * messages READ messages)
     Q_PROPERTY(const QSet<QGate *> * formalGates READ formalGates)

@@ -69,7 +69,6 @@ class Q_UML_EXPORT QCombinedFragment : public QInteractionFragment
 {
     Q_OBJECT
 
-    // From QCombinedFragment
     Q_PROPERTY(QtUml::InteractionOperatorKind interactionOperator READ interactionOperator WRITE setInteractionOperator)
     Q_PROPERTY(const QSet<QGate *> * cfragmentGates READ cfragmentGates)
     Q_PROPERTY(const QList<QInteractionOperand *> * operands READ operands)

@@ -62,7 +62,6 @@ class Q_UML_EXPORT QReadExtentAction : public QAction
 {
     Q_OBJECT
 
-    // From QReadExtentAction
     Q_PROPERTY(QClassifier * classifier READ classifier WRITE setClassifier)
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
 
