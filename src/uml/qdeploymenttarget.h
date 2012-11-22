@@ -72,18 +72,18 @@ class Q_UML_EXPORT QDeploymentTarget : public QNamedElement
     Q_DECLARE_PRIVATE(QDeploymentTarget)
 
 public:
-    explicit QDeploymentTarget(QObject *parent = 0);
+    Q_INVOKABLE explicit QDeploymentTarget(QObject *parent = 0);
     virtual ~QDeploymentTarget();
 
     // Association ends from QDeploymentTarget
-    const QSet<QPackageableElement *> *deployedElements() const;
-    const QSet<QDeployment *> *deployments() const;
-    void addDeployment(QDeployment *deployment);
-    void removeDeployment(QDeployment *deployment);
+    Q_INVOKABLE const QSet<QPackageableElement *> *deployedElements() const;
+    Q_INVOKABLE const QSet<QDeployment *> *deployments() const;
+    Q_INVOKABLE void addDeployment(QDeployment *deployment);
+    Q_INVOKABLE void removeDeployment(QDeployment *deployment);
 
     // Overriden methods for subsetted properties
-    void addClientDependency(QUmlPointer<QDeployment> deployment);
-    void removeClientDependency(QUmlPointer<QDeployment> deployment);
+    Q_INVOKABLE void addClientDependency(QUmlPointer<QDeployment> deployment);
+    Q_INVOKABLE void removeClientDependency(QUmlPointer<QDeployment> deployment);
 
 protected:
     explicit QDeploymentTarget(QDeploymentTargetPrivate &dd, QObject *parent = 0);

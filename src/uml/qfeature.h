@@ -71,15 +71,15 @@ class Q_UML_EXPORT QFeature : public QRedefinableElement
     Q_DECLARE_PRIVATE(QFeature)
 
 public:
-    explicit QFeature(QObject *parent = 0);
+    Q_INVOKABLE explicit QFeature(QObject *parent = 0);
     virtual ~QFeature();
 
     // Attributes from QFeature
-    bool isStatic() const;
-    void setStatic(bool isStatic);
+    Q_INVOKABLE bool isStatic() const;
+    Q_INVOKABLE void setStatic(bool isStatic);
 
     // Association ends from QFeature
-    const QSet<QClassifier *> *featuringClassifiers() const;
+    Q_INVOKABLE const QSet<QClassifier *> *featuringClassifiers() const;
 
     // Classes which access read-only opposite properties should be friend
     friend class QClassifierPrivate;

@@ -70,13 +70,13 @@ class Q_UML_EXPORT QProtocolStateMachine : public QStateMachine
     Q_DECLARE_PRIVATE(QProtocolStateMachine)
 
 public:
-    explicit QProtocolStateMachine(QObject *parent = 0);
+    Q_INVOKABLE explicit QProtocolStateMachine(QObject *parent = 0);
     virtual ~QProtocolStateMachine();
 
     // Association ends from QProtocolStateMachine
-    const QSet<QProtocolConformance *> *conformance() const;
-    void addConformance(QProtocolConformance *conformance);
-    void removeConformance(QProtocolConformance *conformance);
+    Q_INVOKABLE const QSet<QProtocolConformance *> *conformance() const;
+    Q_INVOKABLE void addConformance(QProtocolConformance *conformance);
+    Q_INVOKABLE void removeConformance(QProtocolConformance *conformance);
 
 protected:
     explicit QProtocolStateMachine(QProtocolStateMachinePrivate &dd, QObject *parent = 0);

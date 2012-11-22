@@ -73,18 +73,18 @@ class Q_UML_EXPORT QOccurrenceSpecification : public QInteractionFragment
     Q_DECLARE_PRIVATE(QOccurrenceSpecification)
 
 public:
-    explicit QOccurrenceSpecification(QObject *parent = 0);
+    Q_INVOKABLE explicit QOccurrenceSpecification(QObject *parent = 0);
     virtual ~QOccurrenceSpecification();
 
     // Association ends from QOccurrenceSpecification
-    QLifeline *covered() const;
-    void setCovered(QLifeline *covered);
-    const QSet<QGeneralOrdering *> *toAfter() const;
-    void addToAfter(QGeneralOrdering *toAfter);
-    void removeToAfter(QGeneralOrdering *toAfter);
-    const QSet<QGeneralOrdering *> *toBefore() const;
-    void addToBefore(QGeneralOrdering *toBefore);
-    void removeToBefore(QGeneralOrdering *toBefore);
+    Q_INVOKABLE QLifeline *covered() const;
+    Q_INVOKABLE void setCovered(QLifeline *covered);
+    Q_INVOKABLE const QSet<QGeneralOrdering *> *toAfter() const;
+    Q_INVOKABLE void addToAfter(QGeneralOrdering *toAfter);
+    Q_INVOKABLE void removeToAfter(QGeneralOrdering *toAfter);
+    Q_INVOKABLE const QSet<QGeneralOrdering *> *toBefore() const;
+    Q_INVOKABLE void addToBefore(QGeneralOrdering *toBefore);
+    Q_INVOKABLE void removeToBefore(QGeneralOrdering *toBefore);
 
 protected:
     explicit QOccurrenceSpecification(QOccurrenceSpecificationPrivate &dd, QObject *parent = 0);

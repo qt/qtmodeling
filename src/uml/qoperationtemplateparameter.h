@@ -67,12 +67,12 @@ class Q_UML_EXPORT QOperationTemplateParameter : public QTemplateParameter
     Q_DECLARE_PRIVATE(QOperationTemplateParameter)
 
 public:
-    explicit QOperationTemplateParameter(QObject *parent = 0);
+    Q_INVOKABLE explicit QOperationTemplateParameter(QObject *parent = 0);
     virtual ~QOperationTemplateParameter();
 
     // Association ends from QOperationTemplateParameter
-    QOperation *parameteredElement() const;
-    void setParameteredElement(QOperation *parameteredElement);
+    Q_INVOKABLE QOperation *parameteredElement() const;
+    Q_INVOKABLE void setParameteredElement(QOperation *parameteredElement);
 
 protected:
     explicit QOperationTemplateParameter(QOperationTemplateParameterPrivate &dd, QObject *parent = 0);

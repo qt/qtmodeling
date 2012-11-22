@@ -79,28 +79,28 @@ class Q_UML_EXPORT QNamespace : public QNamedElement
     Q_DECLARE_PRIVATE(QNamespace)
 
 public:
-    explicit QNamespace(QObject *parent = 0);
+    Q_INVOKABLE explicit QNamespace(QObject *parent = 0);
     virtual ~QNamespace();
 
     // Association ends from QNamespace
-    const QSet<QPackageImport *> *packageImports() const;
-    void addPackageImport(QPackageImport *packageImport);
-    void removePackageImport(QPackageImport *packageImport);
-    const QSet<QNamedElement *> *members() const;
-    const QSet<QPackageableElement *> *importedMembers() const;
-    const QSet<QElementImport *> *elementImports() const;
-    void addElementImport(QElementImport *elementImport);
-    void removeElementImport(QElementImport *elementImport);
-    const QSet<QConstraint *> *ownedRules() const;
-    void addOwnedRule(QConstraint *ownedRule);
-    void removeOwnedRule(QConstraint *ownedRule);
-    const QSet<QNamedElement *> *ownedMembers() const;
+    Q_INVOKABLE const QSet<QPackageImport *> *packageImports() const;
+    Q_INVOKABLE void addPackageImport(QPackageImport *packageImport);
+    Q_INVOKABLE void removePackageImport(QPackageImport *packageImport);
+    Q_INVOKABLE const QSet<QNamedElement *> *members() const;
+    Q_INVOKABLE const QSet<QPackageableElement *> *importedMembers() const;
+    Q_INVOKABLE const QSet<QElementImport *> *elementImports() const;
+    Q_INVOKABLE void addElementImport(QElementImport *elementImport);
+    Q_INVOKABLE void removeElementImport(QElementImport *elementImport);
+    Q_INVOKABLE const QSet<QConstraint *> *ownedRules() const;
+    Q_INVOKABLE void addOwnedRule(QConstraint *ownedRule);
+    Q_INVOKABLE void removeOwnedRule(QConstraint *ownedRule);
+    Q_INVOKABLE const QSet<QNamedElement *> *ownedMembers() const;
 
     // Operations
-    const QSet<QPackageableElement *> *excludeCollisions(const QSet<QPackageableElement *> *imps) const;
-    const QSet<QString> *getNamesOfMember(const QNamedElement *element) const;
-    const QSet<QPackageableElement *> *importMembers(const QSet<QPackageableElement *> *imps) const;
-    bool membersAreDistinguishable() const;
+    Q_INVOKABLE const QSet<QPackageableElement *> *excludeCollisions(const QSet<QPackageableElement *> *imps) const;
+    Q_INVOKABLE const QSet<QString> *getNamesOfMember(const QNamedElement *element) const;
+    Q_INVOKABLE const QSet<QPackageableElement *> *importMembers(const QSet<QPackageableElement *> *imps) const;
+    Q_INVOKABLE bool membersAreDistinguishable() const;
 
     // Classes which access read-only opposite properties should be friend
     friend class QNamedElementPrivate;

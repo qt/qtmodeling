@@ -74,17 +74,17 @@ class Q_UML_EXPORT QUnmarshallAction : public QAction
     Q_DECLARE_PRIVATE(QUnmarshallAction)
 
 public:
-    explicit QUnmarshallAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QUnmarshallAction(QObject *parent = 0);
     virtual ~QUnmarshallAction();
 
     // Association ends from QUnmarshallAction
-    QInputPin *object() const;
-    void setObject(QInputPin *object);
-    const QSet<QOutputPin *> *results() const;
-    void addResult(QOutputPin *result);
-    void removeResult(QOutputPin *result);
-    QClassifier *unmarshallType() const;
-    void setUnmarshallType(QClassifier *unmarshallType);
+    Q_INVOKABLE QInputPin *object() const;
+    Q_INVOKABLE void setObject(QInputPin *object);
+    Q_INVOKABLE const QSet<QOutputPin *> *results() const;
+    Q_INVOKABLE void addResult(QOutputPin *result);
+    Q_INVOKABLE void removeResult(QOutputPin *result);
+    Q_INVOKABLE QClassifier *unmarshallType() const;
+    Q_INVOKABLE void setUnmarshallType(QClassifier *unmarshallType);
 
 protected:
     explicit QUnmarshallAction(QUnmarshallActionPrivate &dd, QObject *parent = 0);

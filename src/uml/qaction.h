@@ -79,23 +79,23 @@ class Q_UML_EXPORT QAction : public QExecutableNode
     Q_DECLARE_PRIVATE(QAction)
 
 public:
-    explicit QAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QAction(QObject *parent = 0);
     virtual ~QAction();
 
     // Attributes from QAction
-    bool isLocallyReentrant() const;
-    void setLocallyReentrant(bool isLocallyReentrant);
+    Q_INVOKABLE bool isLocallyReentrant() const;
+    Q_INVOKABLE void setLocallyReentrant(bool isLocallyReentrant);
 
     // Association ends from QAction
-    QClassifier *context() const;
-    const QSet<QConstraint *> *localPostconditions() const;
-    void addLocalPostcondition(QConstraint *localPostcondition);
-    void removeLocalPostcondition(QConstraint *localPostcondition);
-    const QSet<QConstraint *> *localPreconditions() const;
-    void addLocalPrecondition(QConstraint *localPrecondition);
-    void removeLocalPrecondition(QConstraint *localPrecondition);
-    const QList<QInputPin *> *inputs() const;
-    const QList<QOutputPin *> *outputs() const;
+    Q_INVOKABLE QClassifier *context() const;
+    Q_INVOKABLE const QSet<QConstraint *> *localPostconditions() const;
+    Q_INVOKABLE void addLocalPostcondition(QConstraint *localPostcondition);
+    Q_INVOKABLE void removeLocalPostcondition(QConstraint *localPostcondition);
+    Q_INVOKABLE const QSet<QConstraint *> *localPreconditions() const;
+    Q_INVOKABLE void addLocalPrecondition(QConstraint *localPrecondition);
+    Q_INVOKABLE void removeLocalPrecondition(QConstraint *localPrecondition);
+    Q_INVOKABLE const QList<QInputPin *> *inputs() const;
+    Q_INVOKABLE const QList<QOutputPin *> *outputs() const;
 
 protected:
     explicit QAction(QActionPrivate &dd, QObject *parent = 0);

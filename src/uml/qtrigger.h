@@ -72,15 +72,15 @@ class Q_UML_EXPORT QTrigger : public QNamedElement
     Q_DECLARE_PRIVATE(QTrigger)
 
 public:
-    explicit QTrigger(QObject *parent = 0);
+    Q_INVOKABLE explicit QTrigger(QObject *parent = 0);
     virtual ~QTrigger();
 
     // Association ends from QTrigger
-    const QSet<QPort *> *ports() const;
-    void addPort(QPort *port);
-    void removePort(QPort *port);
-    QEvent *event() const;
-    void setEvent(QEvent *event);
+    Q_INVOKABLE const QSet<QPort *> *ports() const;
+    Q_INVOKABLE void addPort(QPort *port);
+    Q_INVOKABLE void removePort(QPort *port);
+    Q_INVOKABLE QEvent *event() const;
+    Q_INVOKABLE void setEvent(QEvent *event);
 
 protected:
     explicit QTrigger(QTriggerPrivate &dd, QObject *parent = 0);

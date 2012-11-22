@@ -72,17 +72,17 @@ class Q_UML_EXPORT QStereotype : public QClass
     Q_DECLARE_PRIVATE(QStereotype)
 
 public:
-    explicit QStereotype(QObject *parent = 0);
+    Q_INVOKABLE explicit QStereotype(QObject *parent = 0);
     virtual ~QStereotype();
 
     // Association ends from QStereotype
-    const QSet<QImage *> *icons() const;
-    void addIcon(QImage *icon);
-    void removeIcon(QImage *icon);
-    QProfile *profile() const;
+    Q_INVOKABLE const QSet<QImage *> *icons() const;
+    Q_INVOKABLE void addIcon(QImage *icon);
+    Q_INVOKABLE void removeIcon(QImage *icon);
+    Q_INVOKABLE QProfile *profile() const;
 
     // Operations
-    QProfile *containingProfile() const;
+    Q_INVOKABLE QProfile *containingProfile() const;
 
 protected:
     explicit QStereotype(QStereotypePrivate &dd, QObject *parent = 0);

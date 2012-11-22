@@ -73,18 +73,18 @@ class Q_UML_EXPORT QConnectionPointReference : public QVertex
     Q_DECLARE_PRIVATE(QConnectionPointReference)
 
 public:
-    explicit QConnectionPointReference(QObject *parent = 0);
+    Q_INVOKABLE explicit QConnectionPointReference(QObject *parent = 0);
     virtual ~QConnectionPointReference();
 
     // Association ends from QConnectionPointReference
-    const QSet<QPseudostate *> *exits() const;
-    void addExit(QPseudostate *exit);
-    void removeExit(QPseudostate *exit);
-    QState *state() const;
-    void setState(QState *state);
-    const QSet<QPseudostate *> *entries() const;
-    void addEntry(QPseudostate *entry);
-    void removeEntry(QPseudostate *entry);
+    Q_INVOKABLE const QSet<QPseudostate *> *exits() const;
+    Q_INVOKABLE void addExit(QPseudostate *exit);
+    Q_INVOKABLE void removeExit(QPseudostate *exit);
+    Q_INVOKABLE QState *state() const;
+    Q_INVOKABLE void setState(QState *state);
+    Q_INVOKABLE const QSet<QPseudostate *> *entries() const;
+    Q_INVOKABLE void addEntry(QPseudostate *entry);
+    Q_INVOKABLE void removeEntry(QPseudostate *entry);
 
 protected:
     explicit QConnectionPointReference(QConnectionPointReferencePrivate &dd, QObject *parent = 0);

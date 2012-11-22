@@ -67,12 +67,12 @@ class Q_UML_EXPORT QActionExecutionSpecification : public QExecutionSpecificatio
     Q_DECLARE_PRIVATE(QActionExecutionSpecification)
 
 public:
-    explicit QActionExecutionSpecification(QObject *parent = 0);
+    Q_INVOKABLE explicit QActionExecutionSpecification(QObject *parent = 0);
     virtual ~QActionExecutionSpecification();
 
     // Association ends from QActionExecutionSpecification
-    QAction *action() const;
-    void setAction(QAction *action);
+    Q_INVOKABLE QAction *action() const;
+    Q_INVOKABLE void setAction(QAction *action);
 
 protected:
     explicit QActionExecutionSpecification(QActionExecutionSpecificationPrivate &dd, QObject *parent = 0);

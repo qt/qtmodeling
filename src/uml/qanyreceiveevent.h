@@ -62,7 +62,7 @@ class Q_UML_EXPORT QAnyReceiveEvent : public QMessageEvent
     Q_DECLARE_PRIVATE(QAnyReceiveEvent)
 
 public:
-    explicit QAnyReceiveEvent(QObject *parent = 0);
+    Q_INVOKABLE explicit QAnyReceiveEvent(QObject *parent = 0);
     virtual ~QAnyReceiveEvent();
 
 protected:

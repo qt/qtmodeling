@@ -73,17 +73,17 @@ class Q_UML_EXPORT QReplyAction : public QAction
     Q_DECLARE_PRIVATE(QReplyAction)
 
 public:
-    explicit QReplyAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QReplyAction(QObject *parent = 0);
     virtual ~QReplyAction();
 
     // Association ends from QReplyAction
-    QTrigger *replyToCall() const;
-    void setReplyToCall(QTrigger *replyToCall);
-    QInputPin *returnInformation() const;
-    void setReturnInformation(QInputPin *returnInformation);
-    const QSet<QInputPin *> *replyValues() const;
-    void addReplyValue(QInputPin *replyValue);
-    void removeReplyValue(QInputPin *replyValue);
+    Q_INVOKABLE QTrigger *replyToCall() const;
+    Q_INVOKABLE void setReplyToCall(QTrigger *replyToCall);
+    Q_INVOKABLE QInputPin *returnInformation() const;
+    Q_INVOKABLE void setReturnInformation(QInputPin *returnInformation);
+    Q_INVOKABLE const QSet<QInputPin *> *replyValues() const;
+    Q_INVOKABLE void addReplyValue(QInputPin *replyValue);
+    Q_INVOKABLE void removeReplyValue(QInputPin *replyValue);
 
 protected:
     explicit QReplyAction(QReplyActionPrivate &dd, QObject *parent = 0);

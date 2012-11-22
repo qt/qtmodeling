@@ -62,7 +62,7 @@ class Q_UML_EXPORT QDataStoreNode : public QCentralBufferNode
     Q_DECLARE_PRIVATE(QDataStoreNode)
 
 public:
-    explicit QDataStoreNode(QObject *parent = 0);
+    Q_INVOKABLE explicit QDataStoreNode(QObject *parent = 0);
     virtual ~QDataStoreNode();
 
 protected:

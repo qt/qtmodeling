@@ -83,29 +83,29 @@ class Q_UML_EXPORT QNamedElement : public QElement
     Q_DECLARE_PRIVATE(QNamedElement)
 
 public:
-    explicit QNamedElement(QObject *parent = 0);
+    Q_INVOKABLE explicit QNamedElement(QObject *parent = 0);
     virtual ~QNamedElement();
 
     // Attributes from QNamedElement
-    QString name() const;
-    void setName(QString name);
-    QtUml::VisibilityKind visibility() const;
-    void setVisibility(QtUml::VisibilityKind visibility);
-    QString qualifiedName() const;
+    Q_INVOKABLE QString name() const;
+    Q_INVOKABLE void setName(QString name);
+    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from QNamedElement
-    QStringExpression *nameExpression() const;
-    void setNameExpression(QStringExpression *nameExpression);
-    QNamespace *namespace_() const;
-    const QSet<QDependency *> *clientDependencies() const;
-    void addClientDependency(QDependency *clientDependency);
-    void removeClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE QStringExpression *nameExpression() const;
+    Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
+    Q_INVOKABLE QNamespace *namespace_() const;
+    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
     // Operations
-    const QList<QNamespace *> *allNamespaces() const;
-    const QSet<QPackage *> *allOwningPackages() const;
-    bool isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const;
-    QString separator() const;
+    Q_INVOKABLE const QList<QNamespace *> *allNamespaces() const;
+    Q_INVOKABLE const QSet<QPackage *> *allOwningPackages() const;
+    Q_INVOKABLE bool isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const;
+    Q_INVOKABLE QString separator() const;
 
     // Classes which access read-only opposite properties should be friend
     friend class QNamespacePrivate;

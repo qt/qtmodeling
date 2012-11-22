@@ -86,96 +86,96 @@ class Q_UML_EXPORT QPackage : public QObject
     Q_DECLARE_PRIVATE(QPackage)
 
 public:
-    explicit QPackage(QObject *parent = 0);
+    Q_INVOKABLE explicit QPackage(QObject *parent = 0);
     virtual ~QPackage();
 
     // Association ends from aggregated QElement
-    const QSet<QElement *> *ownedElements() const;
-    QElement *owner() const;
-    const QSet<QComment *> *ownedComments() const;
-    void addOwnedComment(QComment *ownedComment);
-    void removeOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE QElement *owner() const;
+    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
     // Attributes from aggregated QNamedElement
-    QString name() const;
-    void setName(QString name);
-    QString qualifiedName() const;
+    Q_INVOKABLE QString name() const;
+    Q_INVOKABLE void setName(QString name);
+    Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from aggregated QNamedElement
-    QStringExpression *nameExpression() const;
-    void setNameExpression(QStringExpression *nameExpression);
-    QNamespace *namespace_() const;
-    const QSet<QDependency *> *clientDependencies() const;
-    void addClientDependency(QDependency *clientDependency);
-    void removeClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE QStringExpression *nameExpression() const;
+    Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
+    Q_INVOKABLE QNamespace *namespace_() const;
+    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
     // Association ends from aggregated QNamespace
-    const QSet<QPackageImport *> *packageImports() const;
-    void addPackageImport(QPackageImport *packageImport);
-    void removePackageImport(QPackageImport *packageImport);
-    const QSet<QNamedElement *> *members() const;
-    const QSet<QPackageableElement *> *importedMembers() const;
-    const QSet<QElementImport *> *elementImports() const;
-    void addElementImport(QElementImport *elementImport);
-    void removeElementImport(QElementImport *elementImport);
-    const QSet<QConstraint *> *ownedRules() const;
-    void addOwnedRule(QConstraint *ownedRule);
-    void removeOwnedRule(QConstraint *ownedRule);
-    const QSet<QNamedElement *> *ownedMembers() const;
+    Q_INVOKABLE const QSet<QPackageImport *> *packageImports() const;
+    Q_INVOKABLE void addPackageImport(QPackageImport *packageImport);
+    Q_INVOKABLE void removePackageImport(QPackageImport *packageImport);
+    Q_INVOKABLE const QSet<QNamedElement *> *members() const;
+    Q_INVOKABLE const QSet<QPackageableElement *> *importedMembers() const;
+    Q_INVOKABLE const QSet<QElementImport *> *elementImports() const;
+    Q_INVOKABLE void addElementImport(QElementImport *elementImport);
+    Q_INVOKABLE void removeElementImport(QElementImport *elementImport);
+    Q_INVOKABLE const QSet<QConstraint *> *ownedRules() const;
+    Q_INVOKABLE void addOwnedRule(QConstraint *ownedRule);
+    Q_INVOKABLE void removeOwnedRule(QConstraint *ownedRule);
+    Q_INVOKABLE const QSet<QNamedElement *> *ownedMembers() const;
 
     // Association ends from aggregated QParameterableElement
-    QTemplateParameter *owningTemplateParameter() const;
-    void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
-    QTemplateParameter *templateParameter() const;
-    void setTemplateParameter(QTemplateParameter *templateParameter);
+    Q_INVOKABLE QTemplateParameter *owningTemplateParameter() const;
+    Q_INVOKABLE void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
+    Q_INVOKABLE QTemplateParameter *templateParameter() const;
+    Q_INVOKABLE void setTemplateParameter(QTemplateParameter *templateParameter);
 
     // Attributes from aggregated QPackageableElement
-    QtUml::VisibilityKind visibility() const;
-    void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
 
     // Association ends from aggregated QTemplateableElement
-    QTemplateSignature *ownedTemplateSignature() const;
-    void setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature);
-    const QSet<QTemplateBinding *> *templateBindings() const;
-    void addTemplateBinding(QTemplateBinding *templateBinding);
-    void removeTemplateBinding(QTemplateBinding *templateBinding);
+    Q_INVOKABLE QTemplateSignature *ownedTemplateSignature() const;
+    Q_INVOKABLE void setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature);
+    Q_INVOKABLE const QSet<QTemplateBinding *> *templateBindings() const;
+    Q_INVOKABLE void addTemplateBinding(QTemplateBinding *templateBinding);
+    Q_INVOKABLE void removeTemplateBinding(QTemplateBinding *templateBinding);
 
     // Attributes from QPackage
-    QString URI() const;
-    void setURI(QString URI);
+    Q_INVOKABLE QString URI() const;
+    Q_INVOKABLE void setURI(QString URI);
 
     // Association ends from QPackage
-    const QSet<QType *> *ownedTypes() const;
-    void addOwnedType(QType *ownedType);
-    void removeOwnedType(QType *ownedType);
-    const QSet<QPackageableElement *> *packagedElements() const;
-    void addPackagedElement(QPackageableElement *packagedElement);
-    void removePackagedElement(QPackageableElement *packagedElement);
-    QPackage *nestingPackage() const;
-    void setNestingPackage(QPackage *nestingPackage);
-    const QSet<QProfileApplication *> *profileApplications() const;
-    void addProfileApplication(QProfileApplication *profileApplication);
-    void removeProfileApplication(QProfileApplication *profileApplication);
-    const QSet<QStereotype *> *ownedStereotypes() const;
-    const QSet<QPackageMerge *> *packageMerges() const;
-    void addPackageMerge(QPackageMerge *packageMerge);
-    void removePackageMerge(QPackageMerge *packageMerge);
-    const QSet<QPackage *> *nestedPackages() const;
-    void addNestedPackage(QPackage *nestedPackage);
-    void removeNestedPackage(QPackage *nestedPackage);
+    Q_INVOKABLE const QSet<QType *> *ownedTypes() const;
+    Q_INVOKABLE void addOwnedType(QType *ownedType);
+    Q_INVOKABLE void removeOwnedType(QType *ownedType);
+    Q_INVOKABLE const QSet<QPackageableElement *> *packagedElements() const;
+    Q_INVOKABLE void addPackagedElement(QPackageableElement *packagedElement);
+    Q_INVOKABLE void removePackagedElement(QPackageableElement *packagedElement);
+    Q_INVOKABLE QPackage *nestingPackage() const;
+    Q_INVOKABLE void setNestingPackage(QPackage *nestingPackage);
+    Q_INVOKABLE const QSet<QProfileApplication *> *profileApplications() const;
+    Q_INVOKABLE void addProfileApplication(QProfileApplication *profileApplication);
+    Q_INVOKABLE void removeProfileApplication(QProfileApplication *profileApplication);
+    Q_INVOKABLE const QSet<QStereotype *> *ownedStereotypes() const;
+    Q_INVOKABLE const QSet<QPackageMerge *> *packageMerges() const;
+    Q_INVOKABLE void addPackageMerge(QPackageMerge *packageMerge);
+    Q_INVOKABLE void removePackageMerge(QPackageMerge *packageMerge);
+    Q_INVOKABLE const QSet<QPackage *> *nestedPackages() const;
+    Q_INVOKABLE void addNestedPackage(QPackage *nestedPackage);
+    Q_INVOKABLE void removeNestedPackage(QPackage *nestedPackage);
 
     // Operations
-    const QSet<QStereotype *> *allApplicableStereotypes() const;
-    QProfile *containingProfile() const;
-    bool makesVisible(const QNamedElement *el) const;
-    bool mustBeOwned() const;
-    const QSet<QPackageableElement *> *visibleMembers() const;
+    Q_INVOKABLE const QSet<QStereotype *> *allApplicableStereotypes() const;
+    Q_INVOKABLE QProfile *containingProfile() const;
+    Q_INVOKABLE bool makesVisible(const QNamedElement *el) const;
+    Q_INVOKABLE bool mustBeOwned() const;
+    Q_INVOKABLE const QSet<QPackageableElement *> *visibleMembers() const;
 
     // Overriden methods for subsetted properties
-    void addPackagedElement(QUmlPointer<QType> ownedType);
-    void removePackagedElement(QUmlPointer<QType> ownedType);
-    void addPackagedElement(QUmlPointer<QPackage> nestedPackage);
-    void removePackagedElement(QUmlPointer<QPackage> nestedPackage);
+    Q_INVOKABLE void addPackagedElement(QUmlPointer<QType> ownedType);
+    Q_INVOKABLE void removePackagedElement(QUmlPointer<QType> ownedType);
+    Q_INVOKABLE void addPackagedElement(QUmlPointer<QPackage> nestedPackage);
+    Q_INVOKABLE void removePackagedElement(QUmlPointer<QPackage> nestedPackage);
 
 protected:
     explicit QPackage(QPackagePrivate &dd, QObject *parent = 0);

@@ -72,20 +72,20 @@ class Q_UML_EXPORT QRedefinableElement : public QNamedElement
     Q_DECLARE_PRIVATE(QRedefinableElement)
 
 public:
-    explicit QRedefinableElement(QObject *parent = 0);
+    Q_INVOKABLE explicit QRedefinableElement(QObject *parent = 0);
     virtual ~QRedefinableElement();
 
     // Attributes from QRedefinableElement
-    bool isLeaf() const;
-    void setLeaf(bool isLeaf);
+    Q_INVOKABLE bool isLeaf() const;
+    Q_INVOKABLE void setLeaf(bool isLeaf);
 
     // Association ends from QRedefinableElement
-    const QSet<QRedefinableElement *> *redefinedElements() const;
-    const QSet<QClassifier *> *redefinitionContexts() const;
+    Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
+    Q_INVOKABLE const QSet<QClassifier *> *redefinitionContexts() const;
 
     // Operations
-    bool isConsistentWith(const QRedefinableElement *redefinee) const;
-    bool isRedefinitionContextValid(const QRedefinableElement *redefined) const;
+    Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
+    Q_INVOKABLE bool isRedefinitionContextValid(const QRedefinableElement *redefined) const;
 
 protected:
     explicit QRedefinableElement(QRedefinableElementPrivate &dd, QObject *parent = 0);

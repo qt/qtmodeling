@@ -68,14 +68,14 @@ class Q_UML_EXPORT QGeneralOrdering : public QNamedElement
     Q_DECLARE_PRIVATE(QGeneralOrdering)
 
 public:
-    explicit QGeneralOrdering(QObject *parent = 0);
+    Q_INVOKABLE explicit QGeneralOrdering(QObject *parent = 0);
     virtual ~QGeneralOrdering();
 
     // Association ends from QGeneralOrdering
-    QOccurrenceSpecification *before() const;
-    void setBefore(QOccurrenceSpecification *before);
-    QOccurrenceSpecification *after() const;
-    void setAfter(QOccurrenceSpecification *after);
+    Q_INVOKABLE QOccurrenceSpecification *before() const;
+    Q_INVOKABLE void setBefore(QOccurrenceSpecification *before);
+    Q_INVOKABLE QOccurrenceSpecification *after() const;
+    Q_INVOKABLE void setAfter(QOccurrenceSpecification *after);
 
 protected:
     explicit QGeneralOrdering(QGeneralOrderingPrivate &dd, QObject *parent = 0);

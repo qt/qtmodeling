@@ -67,12 +67,12 @@ class Q_UML_EXPORT QCallBehaviorAction : public QCallAction
     Q_DECLARE_PRIVATE(QCallBehaviorAction)
 
 public:
-    explicit QCallBehaviorAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QCallBehaviorAction(QObject *parent = 0);
     virtual ~QCallBehaviorAction();
 
     // Association ends from QCallBehaviorAction
-    QBehavior *behavior() const;
-    void setBehavior(QBehavior *behavior);
+    Q_INVOKABLE QBehavior *behavior() const;
+    Q_INVOKABLE void setBehavior(QBehavior *behavior);
 
 protected:
     explicit QCallBehaviorAction(QCallBehaviorActionPrivate &dd, QObject *parent = 0);

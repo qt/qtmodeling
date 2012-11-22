@@ -77,20 +77,20 @@ class Q_UML_EXPORT QCombinedFragment : public QInteractionFragment
     Q_DECLARE_PRIVATE(QCombinedFragment)
 
 public:
-    explicit QCombinedFragment(QObject *parent = 0);
+    Q_INVOKABLE explicit QCombinedFragment(QObject *parent = 0);
     virtual ~QCombinedFragment();
 
     // Attributes from QCombinedFragment
-    QtUml::InteractionOperatorKind interactionOperator() const;
-    void setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator);
+    Q_INVOKABLE QtUml::InteractionOperatorKind interactionOperator() const;
+    Q_INVOKABLE void setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator);
 
     // Association ends from QCombinedFragment
-    const QSet<QGate *> *cfragmentGates() const;
-    void addCfragmentGate(QGate *cfragmentGate);
-    void removeCfragmentGate(QGate *cfragmentGate);
-    const QList<QInteractionOperand *> *operands() const;
-    void addOperand(QInteractionOperand *operand);
-    void removeOperand(QInteractionOperand *operand);
+    Q_INVOKABLE const QSet<QGate *> *cfragmentGates() const;
+    Q_INVOKABLE void addCfragmentGate(QGate *cfragmentGate);
+    Q_INVOKABLE void removeCfragmentGate(QGate *cfragmentGate);
+    Q_INVOKABLE const QList<QInteractionOperand *> *operands() const;
+    Q_INVOKABLE void addOperand(QInteractionOperand *operand);
+    Q_INVOKABLE void removeOperand(QInteractionOperand *operand);
 
 protected:
     explicit QCombinedFragment(QCombinedFragmentPrivate &dd, QObject *parent = 0);

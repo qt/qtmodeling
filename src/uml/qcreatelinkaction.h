@@ -70,13 +70,13 @@ class Q_UML_EXPORT QCreateLinkAction : public QWriteLinkAction
     Q_DECLARE_PRIVATE(QCreateLinkAction)
 
 public:
-    explicit QCreateLinkAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QCreateLinkAction(QObject *parent = 0);
     virtual ~QCreateLinkAction();
 
     // Association ends from QCreateLinkAction
-    const QSet<QLinkEndCreationData *> *endData() const;
-    void addEndData(QLinkEndCreationData *endData);
-    void removeEndData(QLinkEndCreationData *endData);
+    Q_INVOKABLE const QSet<QLinkEndCreationData *> *endData() const;
+    Q_INVOKABLE void addEndData(QLinkEndCreationData *endData);
+    Q_INVOKABLE void removeEndData(QLinkEndCreationData *endData);
 
 protected:
     explicit QCreateLinkAction(QCreateLinkActionPrivate &dd, QObject *parent = 0);

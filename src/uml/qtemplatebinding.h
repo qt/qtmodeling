@@ -74,17 +74,17 @@ class Q_UML_EXPORT QTemplateBinding : public QDirectedRelationship
     Q_DECLARE_PRIVATE(QTemplateBinding)
 
 public:
-    explicit QTemplateBinding(QObject *parent = 0);
+    Q_INVOKABLE explicit QTemplateBinding(QObject *parent = 0);
     virtual ~QTemplateBinding();
 
     // Association ends from QTemplateBinding
-    QTemplateSignature *signature() const;
-    void setSignature(QTemplateSignature *signature);
-    QTemplateableElement *boundElement() const;
-    void setBoundElement(QTemplateableElement *boundElement);
-    const QSet<QTemplateParameterSubstitution *> *parameterSubstitutions() const;
-    void addParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution);
-    void removeParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution);
+    Q_INVOKABLE QTemplateSignature *signature() const;
+    Q_INVOKABLE void setSignature(QTemplateSignature *signature);
+    Q_INVOKABLE QTemplateableElement *boundElement() const;
+    Q_INVOKABLE void setBoundElement(QTemplateableElement *boundElement);
+    Q_INVOKABLE const QSet<QTemplateParameterSubstitution *> *parameterSubstitutions() const;
+    Q_INVOKABLE void addParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution);
+    Q_INVOKABLE void removeParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution);
 
 protected:
     explicit QTemplateBinding(QTemplateBindingPrivate &dd, QObject *parent = 0);

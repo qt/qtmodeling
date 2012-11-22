@@ -96,124 +96,124 @@ class Q_UML_EXPORT QOperation : public QObject
     Q_DECLARE_PRIVATE(QOperation)
 
 public:
-    explicit QOperation(QObject *parent = 0);
+    Q_INVOKABLE explicit QOperation(QObject *parent = 0);
     virtual ~QOperation();
 
     // Association ends from aggregated QElement
-    const QSet<QElement *> *ownedElements() const;
-    QElement *owner() const;
-    const QSet<QComment *> *ownedComments() const;
-    void addOwnedComment(QComment *ownedComment);
-    void removeOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE QElement *owner() const;
+    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
     // Association ends from aggregated QTemplateableElement
-    QTemplateSignature *ownedTemplateSignature() const;
-    void setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature);
-    const QSet<QTemplateBinding *> *templateBindings() const;
-    void addTemplateBinding(QTemplateBinding *templateBinding);
-    void removeTemplateBinding(QTemplateBinding *templateBinding);
+    Q_INVOKABLE QTemplateSignature *ownedTemplateSignature() const;
+    Q_INVOKABLE void setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature);
+    Q_INVOKABLE const QSet<QTemplateBinding *> *templateBindings() const;
+    Q_INVOKABLE void addTemplateBinding(QTemplateBinding *templateBinding);
+    Q_INVOKABLE void removeTemplateBinding(QTemplateBinding *templateBinding);
 
     // Attributes from aggregated QNamedElement
-    QString name() const;
-    void setName(QString name);
-    QtUml::VisibilityKind visibility() const;
-    void setVisibility(QtUml::VisibilityKind visibility);
-    QString qualifiedName() const;
+    Q_INVOKABLE QString name() const;
+    Q_INVOKABLE void setName(QString name);
+    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from aggregated QNamedElement
-    QStringExpression *nameExpression() const;
-    void setNameExpression(QStringExpression *nameExpression);
-    QNamespace *namespace_() const;
-    const QSet<QDependency *> *clientDependencies() const;
-    void addClientDependency(QDependency *clientDependency);
-    void removeClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE QStringExpression *nameExpression() const;
+    Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
+    Q_INVOKABLE QNamespace *namespace_() const;
+    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
     // Association ends from aggregated QNamespace
-    const QSet<QPackageImport *> *packageImports() const;
-    void addPackageImport(QPackageImport *packageImport);
-    void removePackageImport(QPackageImport *packageImport);
-    const QSet<QNamedElement *> *members() const;
-    const QSet<QPackageableElement *> *importedMembers() const;
-    const QSet<QElementImport *> *elementImports() const;
-    void addElementImport(QElementImport *elementImport);
-    void removeElementImport(QElementImport *elementImport);
-    const QSet<QConstraint *> *ownedRules() const;
-    void addOwnedRule(QConstraint *ownedRule);
-    void removeOwnedRule(QConstraint *ownedRule);
-    const QSet<QNamedElement *> *ownedMembers() const;
+    Q_INVOKABLE const QSet<QPackageImport *> *packageImports() const;
+    Q_INVOKABLE void addPackageImport(QPackageImport *packageImport);
+    Q_INVOKABLE void removePackageImport(QPackageImport *packageImport);
+    Q_INVOKABLE const QSet<QNamedElement *> *members() const;
+    Q_INVOKABLE const QSet<QPackageableElement *> *importedMembers() const;
+    Q_INVOKABLE const QSet<QElementImport *> *elementImports() const;
+    Q_INVOKABLE void addElementImport(QElementImport *elementImport);
+    Q_INVOKABLE void removeElementImport(QElementImport *elementImport);
+    Q_INVOKABLE const QSet<QConstraint *> *ownedRules() const;
+    Q_INVOKABLE void addOwnedRule(QConstraint *ownedRule);
+    Q_INVOKABLE void removeOwnedRule(QConstraint *ownedRule);
+    Q_INVOKABLE const QSet<QNamedElement *> *ownedMembers() const;
 
     // Attributes from aggregated QRedefinableElement
-    bool isLeaf() const;
-    void setLeaf(bool isLeaf);
+    Q_INVOKABLE bool isLeaf() const;
+    Q_INVOKABLE void setLeaf(bool isLeaf);
 
     // Association ends from aggregated QRedefinableElement
-    const QSet<QRedefinableElement *> *redefinedElements() const;
-    const QSet<QClassifier *> *redefinitionContexts() const;
+    Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
+    Q_INVOKABLE const QSet<QClassifier *> *redefinitionContexts() const;
 
     // Attributes from aggregated QFeature
-    bool isStatic() const;
-    void setStatic(bool isStatic);
+    Q_INVOKABLE bool isStatic() const;
+    Q_INVOKABLE void setStatic(bool isStatic);
 
     // Association ends from aggregated QFeature
-    const QSet<QClassifier *> *featuringClassifiers() const;
+    Q_INVOKABLE const QSet<QClassifier *> *featuringClassifiers() const;
 
     // Attributes from aggregated QBehavioralFeature
-    QtUml::CallConcurrencyKind concurrency() const;
-    void setConcurrency(QtUml::CallConcurrencyKind concurrency);
-    bool isAbstract() const;
-    void setAbstract(bool isAbstract);
+    Q_INVOKABLE QtUml::CallConcurrencyKind concurrency() const;
+    Q_INVOKABLE void setConcurrency(QtUml::CallConcurrencyKind concurrency);
+    Q_INVOKABLE bool isAbstract() const;
+    Q_INVOKABLE void setAbstract(bool isAbstract);
 
     // Association ends from aggregated QBehavioralFeature
-    const QSet<QParameterSet *> *ownedParameterSets() const;
-    void addOwnedParameterSet(QParameterSet *ownedParameterSet);
-    void removeOwnedParameterSet(QParameterSet *ownedParameterSet);
-    const QSet<QBehavior *> *methods() const;
-    void addMethod(QBehavior *method);
-    void removeMethod(QBehavior *method);
+    Q_INVOKABLE const QSet<QParameterSet *> *ownedParameterSets() const;
+    Q_INVOKABLE void addOwnedParameterSet(QParameterSet *ownedParameterSet);
+    Q_INVOKABLE void removeOwnedParameterSet(QParameterSet *ownedParameterSet);
+    Q_INVOKABLE const QSet<QBehavior *> *methods() const;
+    Q_INVOKABLE void addMethod(QBehavior *method);
+    Q_INVOKABLE void removeMethod(QBehavior *method);
 
     // Association ends from aggregated QParameterableElement
-    QTemplateParameter *owningTemplateParameter() const;
-    void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
+    Q_INVOKABLE QTemplateParameter *owningTemplateParameter() const;
+    Q_INVOKABLE void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
 
     // Attributes from QOperation
-    qint32 lower() const;
-    bool isQuery() const;
-    void setQuery(bool isQuery);
-    bool isUnique() const;
-    qint32 upper() const;
-    bool isOrdered() const;
+    Q_INVOKABLE qint32 lower() const;
+    Q_INVOKABLE bool isQuery() const;
+    Q_INVOKABLE void setQuery(bool isQuery);
+    Q_INVOKABLE bool isUnique() const;
+    Q_INVOKABLE qint32 upper() const;
+    Q_INVOKABLE bool isOrdered() const;
 
     // Association ends from QOperation
-    const QList<QParameter *> *ownedParameters() const;
-    void addOwnedParameter(QParameter *ownedParameter);
-    void removeOwnedParameter(QParameter *ownedParameter);
-    QConstraint *bodyCondition() const;
-    void setBodyCondition(QConstraint *bodyCondition);
-    const QSet<QOperation *> *redefinedOperations() const;
-    void addRedefinedOperation(QOperation *redefinedOperation);
-    void removeRedefinedOperation(QOperation *redefinedOperation);
-    const QSet<QConstraint *> *postconditions() const;
-    void addPostcondition(QConstraint *postcondition);
-    void removePostcondition(QConstraint *postcondition);
-    QDataType *datatype() const;
-    void setDatatype(QDataType *datatype);
-    QOperationTemplateParameter *templateParameter() const;
-    void setTemplateParameter(QOperationTemplateParameter *templateParameter);
-    QInterface *interface() const;
-    void setInterface(QInterface *interface);
-    QType *type() const;
-    const QSet<QConstraint *> *preconditions() const;
-    void addPrecondition(QConstraint *precondition);
-    void removePrecondition(QConstraint *precondition);
-    QClass *class_() const;
-    void setClass_(QClass *class_);
-    const QSet<QType *> *raisedExceptions() const;
-    void addRaisedException(QType *raisedException);
-    void removeRaisedException(QType *raisedException);
+    Q_INVOKABLE const QList<QParameter *> *ownedParameters() const;
+    Q_INVOKABLE void addOwnedParameter(QParameter *ownedParameter);
+    Q_INVOKABLE void removeOwnedParameter(QParameter *ownedParameter);
+    Q_INVOKABLE QConstraint *bodyCondition() const;
+    Q_INVOKABLE void setBodyCondition(QConstraint *bodyCondition);
+    Q_INVOKABLE const QSet<QOperation *> *redefinedOperations() const;
+    Q_INVOKABLE void addRedefinedOperation(QOperation *redefinedOperation);
+    Q_INVOKABLE void removeRedefinedOperation(QOperation *redefinedOperation);
+    Q_INVOKABLE const QSet<QConstraint *> *postconditions() const;
+    Q_INVOKABLE void addPostcondition(QConstraint *postcondition);
+    Q_INVOKABLE void removePostcondition(QConstraint *postcondition);
+    Q_INVOKABLE QDataType *datatype() const;
+    Q_INVOKABLE void setDatatype(QDataType *datatype);
+    Q_INVOKABLE QOperationTemplateParameter *templateParameter() const;
+    Q_INVOKABLE void setTemplateParameter(QOperationTemplateParameter *templateParameter);
+    Q_INVOKABLE QInterface *interface() const;
+    Q_INVOKABLE void setInterface(QInterface *interface);
+    Q_INVOKABLE QType *type() const;
+    Q_INVOKABLE const QSet<QConstraint *> *preconditions() const;
+    Q_INVOKABLE void addPrecondition(QConstraint *precondition);
+    Q_INVOKABLE void removePrecondition(QConstraint *precondition);
+    Q_INVOKABLE QClass *class_() const;
+    Q_INVOKABLE void setClass_(QClass *class_);
+    Q_INVOKABLE const QSet<QType *> *raisedExceptions() const;
+    Q_INVOKABLE void addRaisedException(QType *raisedException);
+    Q_INVOKABLE void removeRaisedException(QType *raisedException);
 
     // Operations
-    bool isConsistentWith(const QRedefinableElement *redefinee) const;
-    const QSet<QParameter *> *returnResult() const;
+    Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
+    Q_INVOKABLE const QSet<QParameter *> *returnResult() const;
 
 protected:
     explicit QOperation(QOperationPrivate &dd, QObject *parent = 0);

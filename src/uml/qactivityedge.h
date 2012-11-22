@@ -85,31 +85,31 @@ class Q_UML_EXPORT QActivityEdge : public QRedefinableElement
     Q_DECLARE_PRIVATE(QActivityEdge)
 
 public:
-    explicit QActivityEdge(QObject *parent = 0);
+    Q_INVOKABLE explicit QActivityEdge(QObject *parent = 0);
     virtual ~QActivityEdge();
 
     // Association ends from QActivityEdge
-    QActivityNode *source() const;
-    void setSource(QActivityNode *source);
-    const QSet<QActivityEdge *> *redefinedEdges() const;
-    void addRedefinedEdge(QActivityEdge *redefinedEdge);
-    void removeRedefinedEdge(QActivityEdge *redefinedEdge);
-    const QSet<QActivityGroup *> *inGroup() const;
-    QValueSpecification *guard() const;
-    void setGuard(QValueSpecification *guard);
-    const QSet<QActivityPartition *> *inPartition() const;
-    void addInPartition(QActivityPartition *inPartition);
-    void removeInPartition(QActivityPartition *inPartition);
-    QActivity *activity() const;
-    void setActivity(QActivity *activity);
-    QInterruptibleActivityRegion *interrupts() const;
-    void setInterrupts(QInterruptibleActivityRegion *interrupts);
-    QValueSpecification *weight() const;
-    void setWeight(QValueSpecification *weight);
-    QStructuredActivityNode *inStructuredNode() const;
-    void setInStructuredNode(QStructuredActivityNode *inStructuredNode);
-    QActivityNode *target() const;
-    void setTarget(QActivityNode *target);
+    Q_INVOKABLE QActivityNode *source() const;
+    Q_INVOKABLE void setSource(QActivityNode *source);
+    Q_INVOKABLE const QSet<QActivityEdge *> *redefinedEdges() const;
+    Q_INVOKABLE void addRedefinedEdge(QActivityEdge *redefinedEdge);
+    Q_INVOKABLE void removeRedefinedEdge(QActivityEdge *redefinedEdge);
+    Q_INVOKABLE const QSet<QActivityGroup *> *inGroup() const;
+    Q_INVOKABLE QValueSpecification *guard() const;
+    Q_INVOKABLE void setGuard(QValueSpecification *guard);
+    Q_INVOKABLE const QSet<QActivityPartition *> *inPartition() const;
+    Q_INVOKABLE void addInPartition(QActivityPartition *inPartition);
+    Q_INVOKABLE void removeInPartition(QActivityPartition *inPartition);
+    Q_INVOKABLE QActivity *activity() const;
+    Q_INVOKABLE void setActivity(QActivity *activity);
+    Q_INVOKABLE QInterruptibleActivityRegion *interrupts() const;
+    Q_INVOKABLE void setInterrupts(QInterruptibleActivityRegion *interrupts);
+    Q_INVOKABLE QValueSpecification *weight() const;
+    Q_INVOKABLE void setWeight(QValueSpecification *weight);
+    Q_INVOKABLE QStructuredActivityNode *inStructuredNode() const;
+    Q_INVOKABLE void setInStructuredNode(QStructuredActivityNode *inStructuredNode);
+    Q_INVOKABLE QActivityNode *target() const;
+    Q_INVOKABLE void setTarget(QActivityNode *target);
 
     // Classes which access read-only opposite properties should be friend
     friend class QActivityGroupPrivate;

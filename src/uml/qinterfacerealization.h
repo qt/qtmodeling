@@ -69,20 +69,20 @@ class Q_UML_EXPORT QInterfaceRealization : public QRealization
     Q_DECLARE_PRIVATE(QInterfaceRealization)
 
 public:
-    explicit QInterfaceRealization(QObject *parent = 0);
+    Q_INVOKABLE explicit QInterfaceRealization(QObject *parent = 0);
     virtual ~QInterfaceRealization();
 
     // Association ends from QInterfaceRealization
-    QBehavioredClassifier *implementingClassifier() const;
-    void setImplementingClassifier(QBehavioredClassifier *implementingClassifier);
-    QInterface *contract() const;
-    void setContract(QInterface *contract);
+    Q_INVOKABLE QBehavioredClassifier *implementingClassifier() const;
+    Q_INVOKABLE void setImplementingClassifier(QBehavioredClassifier *implementingClassifier);
+    Q_INVOKABLE QInterface *contract() const;
+    Q_INVOKABLE void setContract(QInterface *contract);
 
     // Overriden methods for subsetted properties
-    void addClient(QUmlPointer<QBehavioredClassifier> implementingClassifier);
-    void removeClient(QUmlPointer<QBehavioredClassifier> implementingClassifier);
-    void addSupplier(QUmlPointer<QInterface> contract);
-    void removeSupplier(QUmlPointer<QInterface> contract);
+    Q_INVOKABLE void addClient(QUmlPointer<QBehavioredClassifier> implementingClassifier);
+    Q_INVOKABLE void removeClient(QUmlPointer<QBehavioredClassifier> implementingClassifier);
+    Q_INVOKABLE void addSupplier(QUmlPointer<QInterface> contract);
+    Q_INVOKABLE void removeSupplier(QUmlPointer<QInterface> contract);
 
 protected:
     explicit QInterfaceRealization(QInterfaceRealizationPrivate &dd, QObject *parent = 0);

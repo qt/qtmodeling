@@ -67,12 +67,12 @@ class Q_UML_EXPORT QReadLinkAction : public QLinkAction
     Q_DECLARE_PRIVATE(QReadLinkAction)
 
 public:
-    explicit QReadLinkAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QReadLinkAction(QObject *parent = 0);
     virtual ~QReadLinkAction();
 
     // Association ends from QReadLinkAction
-    QOutputPin *result() const;
-    void setResult(QOutputPin *result);
+    Q_INVOKABLE QOutputPin *result() const;
+    Q_INVOKABLE void setResult(QOutputPin *result);
 
 protected:
     explicit QReadLinkAction(QReadLinkActionPrivate &dd, QObject *parent = 0);

@@ -67,12 +67,12 @@ class Q_UML_EXPORT QStartObjectBehaviorAction : public QCallAction
     Q_DECLARE_PRIVATE(QStartObjectBehaviorAction)
 
 public:
-    explicit QStartObjectBehaviorAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QStartObjectBehaviorAction(QObject *parent = 0);
     virtual ~QStartObjectBehaviorAction();
 
     // Association ends from QStartObjectBehaviorAction
-    QInputPin *object() const;
-    void setObject(QInputPin *object);
+    Q_INVOKABLE QInputPin *object() const;
+    Q_INVOKABLE void setObject(QInputPin *object);
 
 protected:
     explicit QStartObjectBehaviorAction(QStartObjectBehaviorActionPrivate &dd, QObject *parent = 0);

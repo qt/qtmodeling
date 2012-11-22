@@ -72,16 +72,16 @@ class Q_UML_EXPORT QInterruptibleActivityRegion : public QActivityGroup
     Q_DECLARE_PRIVATE(QInterruptibleActivityRegion)
 
 public:
-    explicit QInterruptibleActivityRegion(QObject *parent = 0);
+    Q_INVOKABLE explicit QInterruptibleActivityRegion(QObject *parent = 0);
     virtual ~QInterruptibleActivityRegion();
 
     // Association ends from QInterruptibleActivityRegion
-    const QSet<QActivityEdge *> *interruptingEdges() const;
-    void addInterruptingEdge(QActivityEdge *interruptingEdge);
-    void removeInterruptingEdge(QActivityEdge *interruptingEdge);
-    const QSet<QActivityNode *> *nodes() const;
-    void addNode(QActivityNode *node);
-    void removeNode(QActivityNode *node);
+    Q_INVOKABLE const QSet<QActivityEdge *> *interruptingEdges() const;
+    Q_INVOKABLE void addInterruptingEdge(QActivityEdge *interruptingEdge);
+    Q_INVOKABLE void removeInterruptingEdge(QActivityEdge *interruptingEdge);
+    Q_INVOKABLE const QSet<QActivityNode *> *nodes() const;
+    Q_INVOKABLE void addNode(QActivityNode *node);
+    Q_INVOKABLE void removeNode(QActivityNode *node);
 
 protected:
     explicit QInterruptibleActivityRegion(QInterruptibleActivityRegionPrivate &dd, QObject *parent = 0);

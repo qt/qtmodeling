@@ -69,14 +69,14 @@ class Q_UML_EXPORT QClearAssociationAction : public QAction
     Q_DECLARE_PRIVATE(QClearAssociationAction)
 
 public:
-    explicit QClearAssociationAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QClearAssociationAction(QObject *parent = 0);
     virtual ~QClearAssociationAction();
 
     // Association ends from QClearAssociationAction
-    QInputPin *object() const;
-    void setObject(QInputPin *object);
-    QAssociation *association() const;
-    void setAssociation(QAssociation *association);
+    Q_INVOKABLE QInputPin *object() const;
+    Q_INVOKABLE void setObject(QInputPin *object);
+    Q_INVOKABLE QAssociation *association() const;
+    Q_INVOKABLE void setAssociation(QAssociation *association);
 
 protected:
     explicit QClearAssociationAction(QClearAssociationActionPrivate &dd, QObject *parent = 0);

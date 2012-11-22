@@ -69,16 +69,16 @@ class Q_UML_EXPORT QImage : public QElement
     Q_DECLARE_PRIVATE(QImage)
 
 public:
-    explicit QImage(QObject *parent = 0);
+    Q_INVOKABLE explicit QImage(QObject *parent = 0);
     virtual ~QImage();
 
     // Attributes from QImage
-    QString format() const;
-    void setFormat(QString format);
-    QString location() const;
-    void setLocation(QString location);
-    QString content() const;
-    void setContent(QString content);
+    Q_INVOKABLE QString format() const;
+    Q_INVOKABLE void setFormat(QString format);
+    Q_INVOKABLE QString location() const;
+    Q_INVOKABLE void setLocation(QString location);
+    Q_INVOKABLE QString content() const;
+    Q_INVOKABLE void setContent(QString content);
 
 protected:
     explicit QImage(QImagePrivate &dd, QObject *parent = 0);

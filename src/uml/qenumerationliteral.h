@@ -68,13 +68,13 @@ class Q_UML_EXPORT QEnumerationLiteral : public QInstanceSpecification
     Q_DECLARE_PRIVATE(QEnumerationLiteral)
 
 public:
-    explicit QEnumerationLiteral(QObject *parent = 0);
+    Q_INVOKABLE explicit QEnumerationLiteral(QObject *parent = 0);
     virtual ~QEnumerationLiteral();
 
     // Association ends from QEnumerationLiteral
-    QEnumeration *classifier() const;
-    QEnumeration *enumeration() const;
-    void setEnumeration(QEnumeration *enumeration);
+    Q_INVOKABLE QEnumeration *classifier() const;
+    Q_INVOKABLE QEnumeration *enumeration() const;
+    Q_INVOKABLE void setEnumeration(QEnumeration *enumeration);
 
 protected:
     explicit QEnumerationLiteral(QEnumerationLiteralPrivate &dd, QObject *parent = 0);

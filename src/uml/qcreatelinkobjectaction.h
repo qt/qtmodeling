@@ -67,12 +67,12 @@ class Q_UML_EXPORT QCreateLinkObjectAction : public QCreateLinkAction
     Q_DECLARE_PRIVATE(QCreateLinkObjectAction)
 
 public:
-    explicit QCreateLinkObjectAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QCreateLinkObjectAction(QObject *parent = 0);
     virtual ~QCreateLinkObjectAction();
 
     // Association ends from QCreateLinkObjectAction
-    QOutputPin *result() const;
-    void setResult(QOutputPin *result);
+    Q_INVOKABLE QOutputPin *result() const;
+    Q_INVOKABLE void setResult(QOutputPin *result);
 
 protected:
     explicit QCreateLinkObjectAction(QCreateLinkObjectActionPrivate &dd, QObject *parent = 0);

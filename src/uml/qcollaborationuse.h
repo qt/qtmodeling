@@ -72,15 +72,15 @@ class Q_UML_EXPORT QCollaborationUse : public QNamedElement
     Q_DECLARE_PRIVATE(QCollaborationUse)
 
 public:
-    explicit QCollaborationUse(QObject *parent = 0);
+    Q_INVOKABLE explicit QCollaborationUse(QObject *parent = 0);
     virtual ~QCollaborationUse();
 
     // Association ends from QCollaborationUse
-    QCollaboration *type() const;
-    void setType(QCollaboration *type);
-    const QSet<QDependency *> *roleBindings() const;
-    void addRoleBinding(QDependency *roleBinding);
-    void removeRoleBinding(QDependency *roleBinding);
+    Q_INVOKABLE QCollaboration *type() const;
+    Q_INVOKABLE void setType(QCollaboration *type);
+    Q_INVOKABLE const QSet<QDependency *> *roleBindings() const;
+    Q_INVOKABLE void addRoleBinding(QDependency *roleBinding);
+    Q_INVOKABLE void removeRoleBinding(QDependency *roleBinding);
 
 protected:
     explicit QCollaborationUse(QCollaborationUsePrivate &dd, QObject *parent = 0);

@@ -68,16 +68,16 @@ class Q_UML_EXPORT QTimeObservation : public QObservation
     Q_DECLARE_PRIVATE(QTimeObservation)
 
 public:
-    explicit QTimeObservation(QObject *parent = 0);
+    Q_INVOKABLE explicit QTimeObservation(QObject *parent = 0);
     virtual ~QTimeObservation();
 
     // Attributes from QTimeObservation
-    bool firstEvent() const;
-    void setFirstEvent(bool firstEvent);
+    Q_INVOKABLE bool firstEvent() const;
+    Q_INVOKABLE void setFirstEvent(bool firstEvent);
 
     // Association ends from QTimeObservation
-    QNamedElement *event() const;
-    void setEvent(QNamedElement *event);
+    Q_INVOKABLE QNamedElement *event() const;
+    Q_INVOKABLE void setEvent(QNamedElement *event);
 
 protected:
     explicit QTimeObservation(QTimeObservationPrivate &dd, QObject *parent = 0);

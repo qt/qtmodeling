@@ -74,17 +74,17 @@ class Q_UML_EXPORT QLinkEndData : public QElement
     Q_DECLARE_PRIVATE(QLinkEndData)
 
 public:
-    explicit QLinkEndData(QObject *parent = 0);
+    Q_INVOKABLE explicit QLinkEndData(QObject *parent = 0);
     virtual ~QLinkEndData();
 
     // Association ends from QLinkEndData
-    QInputPin *value() const;
-    void setValue(QInputPin *value);
-    QProperty *end() const;
-    void setEnd(QProperty *end);
-    const QSet<QQualifierValue *> *qualifiers() const;
-    void addQualifier(QQualifierValue *qualifier);
-    void removeQualifier(QQualifierValue *qualifier);
+    Q_INVOKABLE QInputPin *value() const;
+    Q_INVOKABLE void setValue(QInputPin *value);
+    Q_INVOKABLE QProperty *end() const;
+    Q_INVOKABLE void setEnd(QProperty *end);
+    Q_INVOKABLE const QSet<QQualifierValue *> *qualifiers() const;
+    Q_INVOKABLE void addQualifier(QQualifierValue *qualifier);
+    Q_INVOKABLE void removeQualifier(QQualifierValue *qualifier);
 
 protected:
     explicit QLinkEndData(QLinkEndDataPrivate &dd, QObject *parent = 0);

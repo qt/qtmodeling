@@ -70,15 +70,15 @@ class Q_UML_EXPORT QConnectorEnd : public QMultiplicityElement
     Q_DECLARE_PRIVATE(QConnectorEnd)
 
 public:
-    explicit QConnectorEnd(QObject *parent = 0);
+    Q_INVOKABLE explicit QConnectorEnd(QObject *parent = 0);
     virtual ~QConnectorEnd();
 
     // Association ends from QConnectorEnd
-    QConnectableElement *role() const;
-    void setRole(QConnectableElement *role);
-    QProperty *partWithPort() const;
-    void setPartWithPort(QProperty *partWithPort);
-    QProperty *definingEnd() const;
+    Q_INVOKABLE QConnectableElement *role() const;
+    Q_INVOKABLE void setRole(QConnectableElement *role);
+    Q_INVOKABLE QProperty *partWithPort() const;
+    Q_INVOKABLE void setPartWithPort(QProperty *partWithPort);
+    Q_INVOKABLE QProperty *definingEnd() const;
 
 protected:
     explicit QConnectorEnd(QConnectorEndPrivate &dd, QObject *parent = 0);

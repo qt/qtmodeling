@@ -62,7 +62,7 @@ class Q_UML_EXPORT QClearVariableAction : public QVariableAction
     Q_DECLARE_PRIVATE(QClearVariableAction)
 
 public:
-    explicit QClearVariableAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QClearVariableAction(QObject *parent = 0);
     virtual ~QClearVariableAction();
 
 protected:

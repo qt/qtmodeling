@@ -72,68 +72,68 @@ class Q_UML_EXPORT QVariable : public QObject
     Q_DECLARE_PRIVATE(QVariable)
 
 public:
-    explicit QVariable(QObject *parent = 0);
+    Q_INVOKABLE explicit QVariable(QObject *parent = 0);
     virtual ~QVariable();
 
     // Association ends from aggregated QElement
-    const QSet<QElement *> *ownedElements() const;
-    QElement *owner() const;
-    const QSet<QComment *> *ownedComments() const;
-    void addOwnedComment(QComment *ownedComment);
-    void removeOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE QElement *owner() const;
+    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
     // Attributes from aggregated QMultiplicityElement
-    qint32 upper() const;
-    void setUpper(qint32 upper);
-    bool isUnique() const;
-    void setUnique(bool isUnique);
-    bool isOrdered() const;
-    void setOrdered(bool isOrdered);
-    qint32 lower() const;
-    void setLower(qint32 lower);
+    Q_INVOKABLE qint32 upper() const;
+    Q_INVOKABLE void setUpper(qint32 upper);
+    Q_INVOKABLE bool isUnique() const;
+    Q_INVOKABLE void setUnique(bool isUnique);
+    Q_INVOKABLE bool isOrdered() const;
+    Q_INVOKABLE void setOrdered(bool isOrdered);
+    Q_INVOKABLE qint32 lower() const;
+    Q_INVOKABLE void setLower(qint32 lower);
 
     // Association ends from aggregated QMultiplicityElement
-    QValueSpecification *upperValue() const;
-    void setUpperValue(QValueSpecification *upperValue);
-    QValueSpecification *lowerValue() const;
-    void setLowerValue(QValueSpecification *lowerValue);
+    Q_INVOKABLE QValueSpecification *upperValue() const;
+    Q_INVOKABLE void setUpperValue(QValueSpecification *upperValue);
+    Q_INVOKABLE QValueSpecification *lowerValue() const;
+    Q_INVOKABLE void setLowerValue(QValueSpecification *lowerValue);
 
     // Attributes from aggregated QNamedElement
-    QString name() const;
-    void setName(QString name);
-    QtUml::VisibilityKind visibility() const;
-    void setVisibility(QtUml::VisibilityKind visibility);
-    QString qualifiedName() const;
+    Q_INVOKABLE QString name() const;
+    Q_INVOKABLE void setName(QString name);
+    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from aggregated QNamedElement
-    QStringExpression *nameExpression() const;
-    void setNameExpression(QStringExpression *nameExpression);
-    QNamespace *namespace_() const;
-    const QSet<QDependency *> *clientDependencies() const;
-    void addClientDependency(QDependency *clientDependency);
-    void removeClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE QStringExpression *nameExpression() const;
+    Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
+    Q_INVOKABLE QNamespace *namespace_() const;
+    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
     // Association ends from aggregated QTypedElement
-    QType *type() const;
-    void setType(QType *type);
+    Q_INVOKABLE QType *type() const;
+    Q_INVOKABLE void setType(QType *type);
 
     // Association ends from aggregated QParameterableElement
-    QTemplateParameter *owningTemplateParameter() const;
-    void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
+    Q_INVOKABLE QTemplateParameter *owningTemplateParameter() const;
+    Q_INVOKABLE void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
 
     // Association ends from aggregated QConnectableElement
-    const QList<QConnectorEnd *> *ends() const;
-    QConnectableElementTemplateParameter *templateParameter() const;
-    void setTemplateParameter(QConnectableElementTemplateParameter *templateParameter);
+    Q_INVOKABLE const QList<QConnectorEnd *> *ends() const;
+    Q_INVOKABLE QConnectableElementTemplateParameter *templateParameter() const;
+    Q_INVOKABLE void setTemplateParameter(QConnectableElementTemplateParameter *templateParameter);
 
     // Association ends from QVariable
-    QStructuredActivityNode *scope() const;
-    void setScope(QStructuredActivityNode *scope);
-    QActivity *activityScope() const;
-    void setActivityScope(QActivity *activityScope);
+    Q_INVOKABLE QStructuredActivityNode *scope() const;
+    Q_INVOKABLE void setScope(QStructuredActivityNode *scope);
+    Q_INVOKABLE QActivity *activityScope() const;
+    Q_INVOKABLE void setActivityScope(QActivity *activityScope);
 
     // Operations
-    bool isAccessibleBy(const QAction *a) const;
+    Q_INVOKABLE bool isAccessibleBy(const QAction *a) const;
 
 protected:
     explicit QVariable(QVariablePrivate &dd, QObject *parent = 0);

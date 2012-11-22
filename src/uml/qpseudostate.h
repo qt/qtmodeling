@@ -73,18 +73,18 @@ class Q_UML_EXPORT QPseudostate : public QVertex
     Q_DECLARE_PRIVATE(QPseudostate)
 
 public:
-    explicit QPseudostate(QObject *parent = 0);
+    Q_INVOKABLE explicit QPseudostate(QObject *parent = 0);
     virtual ~QPseudostate();
 
     // Attributes from QPseudostate
-    QtUml::PseudostateKind kind() const;
-    void setKind(QtUml::PseudostateKind kind);
+    Q_INVOKABLE QtUml::PseudostateKind kind() const;
+    Q_INVOKABLE void setKind(QtUml::PseudostateKind kind);
 
     // Association ends from QPseudostate
-    QState *state() const;
-    void setState(QState *state);
-    QStateMachine *stateMachine() const;
-    void setStateMachine(QStateMachine *stateMachine);
+    Q_INVOKABLE QState *state() const;
+    Q_INVOKABLE void setState(QState *state);
+    Q_INVOKABLE QStateMachine *stateMachine() const;
+    Q_INVOKABLE void setStateMachine(QStateMachine *stateMachine);
 
 protected:
     explicit QPseudostate(QPseudostatePrivate &dd, QObject *parent = 0);

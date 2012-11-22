@@ -70,18 +70,18 @@ class Q_UML_EXPORT QProfileApplication : public QDirectedRelationship
     Q_DECLARE_PRIVATE(QProfileApplication)
 
 public:
-    explicit QProfileApplication(QObject *parent = 0);
+    Q_INVOKABLE explicit QProfileApplication(QObject *parent = 0);
     virtual ~QProfileApplication();
 
     // Attributes from QProfileApplication
-    bool isStrict() const;
-    void setStrict(bool isStrict);
+    Q_INVOKABLE bool isStrict() const;
+    Q_INVOKABLE void setStrict(bool isStrict);
 
     // Association ends from QProfileApplication
-    QPackage *applyingPackage() const;
-    void setApplyingPackage(QPackage *applyingPackage);
-    QProfile *appliedProfile() const;
-    void setAppliedProfile(QProfile *appliedProfile);
+    Q_INVOKABLE QPackage *applyingPackage() const;
+    Q_INVOKABLE void setApplyingPackage(QPackage *applyingPackage);
+    Q_INVOKABLE QProfile *appliedProfile() const;
+    Q_INVOKABLE void setAppliedProfile(QProfile *appliedProfile);
 
 protected:
     explicit QProfileApplication(QProfileApplicationPrivate &dd, QObject *parent = 0);

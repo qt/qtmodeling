@@ -70,16 +70,16 @@ class Q_UML_EXPORT QTestIdentityAction : public QAction
     Q_DECLARE_PRIVATE(QTestIdentityAction)
 
 public:
-    explicit QTestIdentityAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QTestIdentityAction(QObject *parent = 0);
     virtual ~QTestIdentityAction();
 
     // Association ends from QTestIdentityAction
-    QInputPin *second() const;
-    void setSecond(QInputPin *second);
-    QOutputPin *result() const;
-    void setResult(QOutputPin *result);
-    QInputPin *first() const;
-    void setFirst(QInputPin *first);
+    Q_INVOKABLE QInputPin *second() const;
+    Q_INVOKABLE void setSecond(QInputPin *second);
+    Q_INVOKABLE QOutputPin *result() const;
+    Q_INVOKABLE void setResult(QOutputPin *result);
+    Q_INVOKABLE QInputPin *first() const;
+    Q_INVOKABLE void setFirst(QInputPin *first);
 
 protected:
     explicit QTestIdentityAction(QTestIdentityActionPrivate &dd, QObject *parent = 0);

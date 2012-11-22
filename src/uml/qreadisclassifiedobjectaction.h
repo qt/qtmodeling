@@ -72,20 +72,20 @@ class Q_UML_EXPORT QReadIsClassifiedObjectAction : public QAction
     Q_DECLARE_PRIVATE(QReadIsClassifiedObjectAction)
 
 public:
-    explicit QReadIsClassifiedObjectAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QReadIsClassifiedObjectAction(QObject *parent = 0);
     virtual ~QReadIsClassifiedObjectAction();
 
     // Attributes from QReadIsClassifiedObjectAction
-    bool isDirect() const;
-    void setDirect(bool isDirect);
+    Q_INVOKABLE bool isDirect() const;
+    Q_INVOKABLE void setDirect(bool isDirect);
 
     // Association ends from QReadIsClassifiedObjectAction
-    QOutputPin *result() const;
-    void setResult(QOutputPin *result);
-    QInputPin *object() const;
-    void setObject(QInputPin *object);
-    QClassifier *classifier() const;
-    void setClassifier(QClassifier *classifier);
+    Q_INVOKABLE QOutputPin *result() const;
+    Q_INVOKABLE void setResult(QOutputPin *result);
+    Q_INVOKABLE QInputPin *object() const;
+    Q_INVOKABLE void setObject(QInputPin *object);
+    Q_INVOKABLE QClassifier *classifier() const;
+    Q_INVOKABLE void setClassifier(QClassifier *classifier);
 
 protected:
     explicit QReadIsClassifiedObjectAction(QReadIsClassifiedObjectActionPrivate &dd, QObject *parent = 0);

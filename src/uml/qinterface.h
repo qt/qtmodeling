@@ -79,31 +79,31 @@ class Q_UML_EXPORT QInterface : public QClassifier
     Q_DECLARE_PRIVATE(QInterface)
 
 public:
-    explicit QInterface(QObject *parent = 0);
+    Q_INVOKABLE explicit QInterface(QObject *parent = 0);
     virtual ~QInterface();
 
     // Association ends from QInterface
-    QProtocolStateMachine *protocol() const;
-    void setProtocol(QProtocolStateMachine *protocol);
-    const QSet<QInterface *> *redefinedInterfaces() const;
-    void addRedefinedInterface(QInterface *redefinedInterface);
-    void removeRedefinedInterface(QInterface *redefinedInterface);
-    const QSet<QReception *> *ownedReceptions() const;
-    void addOwnedReception(QReception *ownedReception);
-    void removeOwnedReception(QReception *ownedReception);
-    const QList<QOperation *> *ownedOperations() const;
-    void addOwnedOperation(QOperation *ownedOperation);
-    void removeOwnedOperation(QOperation *ownedOperation);
-    const QList<QClassifier *> *nestedClassifiers() const;
-    void addNestedClassifier(QClassifier *nestedClassifier);
-    void removeNestedClassifier(QClassifier *nestedClassifier);
-    const QList<QProperty *> *ownedAttributes() const;
-    void addOwnedAttribute(QProperty *ownedAttribute);
-    void removeOwnedAttribute(QProperty *ownedAttribute);
+    Q_INVOKABLE QProtocolStateMachine *protocol() const;
+    Q_INVOKABLE void setProtocol(QProtocolStateMachine *protocol);
+    Q_INVOKABLE const QSet<QInterface *> *redefinedInterfaces() const;
+    Q_INVOKABLE void addRedefinedInterface(QInterface *redefinedInterface);
+    Q_INVOKABLE void removeRedefinedInterface(QInterface *redefinedInterface);
+    Q_INVOKABLE const QSet<QReception *> *ownedReceptions() const;
+    Q_INVOKABLE void addOwnedReception(QReception *ownedReception);
+    Q_INVOKABLE void removeOwnedReception(QReception *ownedReception);
+    Q_INVOKABLE const QList<QOperation *> *ownedOperations() const;
+    Q_INVOKABLE void addOwnedOperation(QOperation *ownedOperation);
+    Q_INVOKABLE void removeOwnedOperation(QOperation *ownedOperation);
+    Q_INVOKABLE const QList<QClassifier *> *nestedClassifiers() const;
+    Q_INVOKABLE void addNestedClassifier(QClassifier *nestedClassifier);
+    Q_INVOKABLE void removeNestedClassifier(QClassifier *nestedClassifier);
+    Q_INVOKABLE const QList<QProperty *> *ownedAttributes() const;
+    Q_INVOKABLE void addOwnedAttribute(QProperty *ownedAttribute);
+    Q_INVOKABLE void removeOwnedAttribute(QProperty *ownedAttribute);
 
     // Overriden methods for subsetted properties
-    void addRedefinedClassifier(QUmlPointer<QInterface> redefinedInterface);
-    void removeRedefinedClassifier(QUmlPointer<QInterface> redefinedInterface);
+    Q_INVOKABLE void addRedefinedClassifier(QUmlPointer<QInterface> redefinedInterface);
+    Q_INVOKABLE void removeRedefinedClassifier(QUmlPointer<QInterface> redefinedInterface);
 
 protected:
     explicit QInterface(QInterfacePrivate &dd, QObject *parent = 0);

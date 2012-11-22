@@ -71,17 +71,17 @@ class Q_UML_EXPORT QDurationConstraint : public QIntervalConstraint
     Q_DECLARE_PRIVATE(QDurationConstraint)
 
 public:
-    explicit QDurationConstraint(QObject *parent = 0);
+    Q_INVOKABLE explicit QDurationConstraint(QObject *parent = 0);
     virtual ~QDurationConstraint();
 
     // Attributes from QDurationConstraint
-    const QSet<bool> *firstEvents() const;
-    void addFirstEvent(bool firstEvent);
-    void removeFirstEvent(bool firstEvent);
+    Q_INVOKABLE const QSet<bool> *firstEvents() const;
+    Q_INVOKABLE void addFirstEvent(bool firstEvent);
+    Q_INVOKABLE void removeFirstEvent(bool firstEvent);
 
     // Association ends from QDurationConstraint
-    QDurationInterval *specification() const;
-    void setSpecification(QDurationInterval *specification);
+    Q_INVOKABLE QDurationInterval *specification() const;
+    Q_INVOKABLE void setSpecification(QDurationInterval *specification);
 
 protected:
     explicit QDurationConstraint(QDurationConstraintPrivate &dd, QObject *parent = 0);

@@ -66,99 +66,99 @@ class Q_UML_EXPORT QPin : public QObject
     Q_DECLARE_PRIVATE(QPin)
 
 public:
-    explicit QPin(QObject *parent = 0);
+    Q_INVOKABLE explicit QPin(QObject *parent = 0);
     virtual ~QPin();
 
     // Association ends from aggregated QElement
-    const QSet<QElement *> *ownedElements() const;
-    QElement *owner() const;
-    const QSet<QComment *> *ownedComments() const;
-    void addOwnedComment(QComment *ownedComment);
-    void removeOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE QElement *owner() const;
+    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
     // Attributes from aggregated QMultiplicityElement
-    qint32 upper() const;
-    void setUpper(qint32 upper);
-    bool isUnique() const;
-    void setUnique(bool isUnique);
-    bool isOrdered() const;
-    void setOrdered(bool isOrdered);
-    qint32 lower() const;
-    void setLower(qint32 lower);
+    Q_INVOKABLE qint32 upper() const;
+    Q_INVOKABLE void setUpper(qint32 upper);
+    Q_INVOKABLE bool isUnique() const;
+    Q_INVOKABLE void setUnique(bool isUnique);
+    Q_INVOKABLE bool isOrdered() const;
+    Q_INVOKABLE void setOrdered(bool isOrdered);
+    Q_INVOKABLE qint32 lower() const;
+    Q_INVOKABLE void setLower(qint32 lower);
 
     // Association ends from aggregated QMultiplicityElement
-    QValueSpecification *upperValue() const;
-    void setUpperValue(QValueSpecification *upperValue);
-    QValueSpecification *lowerValue() const;
-    void setLowerValue(QValueSpecification *lowerValue);
+    Q_INVOKABLE QValueSpecification *upperValue() const;
+    Q_INVOKABLE void setUpperValue(QValueSpecification *upperValue);
+    Q_INVOKABLE QValueSpecification *lowerValue() const;
+    Q_INVOKABLE void setLowerValue(QValueSpecification *lowerValue);
 
     // Attributes from aggregated QNamedElement
-    QString name() const;
-    void setName(QString name);
-    QtUml::VisibilityKind visibility() const;
-    void setVisibility(QtUml::VisibilityKind visibility);
-    QString qualifiedName() const;
+    Q_INVOKABLE QString name() const;
+    Q_INVOKABLE void setName(QString name);
+    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from aggregated QNamedElement
-    QStringExpression *nameExpression() const;
-    void setNameExpression(QStringExpression *nameExpression);
-    QNamespace *namespace_() const;
-    const QSet<QDependency *> *clientDependencies() const;
-    void addClientDependency(QDependency *clientDependency);
-    void removeClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE QStringExpression *nameExpression() const;
+    Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
+    Q_INVOKABLE QNamespace *namespace_() const;
+    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
     // Attributes from aggregated QRedefinableElement
-    bool isLeaf() const;
-    void setLeaf(bool isLeaf);
+    Q_INVOKABLE bool isLeaf() const;
+    Q_INVOKABLE void setLeaf(bool isLeaf);
 
     // Association ends from aggregated QRedefinableElement
-    const QSet<QRedefinableElement *> *redefinedElements() const;
-    const QSet<QClassifier *> *redefinitionContexts() const;
+    Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
+    Q_INVOKABLE const QSet<QClassifier *> *redefinitionContexts() const;
 
     // Association ends from aggregated QActivityNode
-    const QSet<QActivityNode *> *redefinedNodes() const;
-    void addRedefinedNode(QActivityNode *redefinedNode);
-    void removeRedefinedNode(QActivityNode *redefinedNode);
-    const QSet<QActivityEdge *> *incomings() const;
-    void addIncoming(QActivityEdge *incoming);
-    void removeIncoming(QActivityEdge *incoming);
-    QActivity *activity() const;
-    void setActivity(QActivity *activity);
-    const QSet<QActivityGroup *> *inGroup() const;
-    QStructuredActivityNode *inStructuredNode() const;
-    void setInStructuredNode(QStructuredActivityNode *inStructuredNode);
-    const QSet<QActivityPartition *> *inPartition() const;
-    void addInPartition(QActivityPartition *inPartition);
-    void removeInPartition(QActivityPartition *inPartition);
-    const QSet<QInterruptibleActivityRegion *> *inInterruptibleRegion() const;
-    void addInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion);
-    void removeInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion);
-    const QSet<QActivityEdge *> *outgoings() const;
-    void addOutgoing(QActivityEdge *outgoing);
-    void removeOutgoing(QActivityEdge *outgoing);
+    Q_INVOKABLE const QSet<QActivityNode *> *redefinedNodes() const;
+    Q_INVOKABLE void addRedefinedNode(QActivityNode *redefinedNode);
+    Q_INVOKABLE void removeRedefinedNode(QActivityNode *redefinedNode);
+    Q_INVOKABLE const QSet<QActivityEdge *> *incomings() const;
+    Q_INVOKABLE void addIncoming(QActivityEdge *incoming);
+    Q_INVOKABLE void removeIncoming(QActivityEdge *incoming);
+    Q_INVOKABLE QActivity *activity() const;
+    Q_INVOKABLE void setActivity(QActivity *activity);
+    Q_INVOKABLE const QSet<QActivityGroup *> *inGroup() const;
+    Q_INVOKABLE QStructuredActivityNode *inStructuredNode() const;
+    Q_INVOKABLE void setInStructuredNode(QStructuredActivityNode *inStructuredNode);
+    Q_INVOKABLE const QSet<QActivityPartition *> *inPartition() const;
+    Q_INVOKABLE void addInPartition(QActivityPartition *inPartition);
+    Q_INVOKABLE void removeInPartition(QActivityPartition *inPartition);
+    Q_INVOKABLE const QSet<QInterruptibleActivityRegion *> *inInterruptibleRegion() const;
+    Q_INVOKABLE void addInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion);
+    Q_INVOKABLE void removeInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion);
+    Q_INVOKABLE const QSet<QActivityEdge *> *outgoings() const;
+    Q_INVOKABLE void addOutgoing(QActivityEdge *outgoing);
+    Q_INVOKABLE void removeOutgoing(QActivityEdge *outgoing);
 
     // Association ends from aggregated QTypedElement
-    QType *type() const;
-    void setType(QType *type);
+    Q_INVOKABLE QType *type() const;
+    Q_INVOKABLE void setType(QType *type);
 
     // Attributes from aggregated QObjectNode
-    bool isControlType() const;
-    void setControlType(bool isControlType);
-    QtUml::ObjectNodeOrderingKind ordering() const;
-    void setOrdering(QtUml::ObjectNodeOrderingKind ordering);
+    Q_INVOKABLE bool isControlType() const;
+    Q_INVOKABLE void setControlType(bool isControlType);
+    Q_INVOKABLE QtUml::ObjectNodeOrderingKind ordering() const;
+    Q_INVOKABLE void setOrdering(QtUml::ObjectNodeOrderingKind ordering);
 
     // Association ends from aggregated QObjectNode
-    QValueSpecification *upperBound() const;
-    void setUpperBound(QValueSpecification *upperBound);
-    QBehavior *selection() const;
-    void setSelection(QBehavior *selection);
-    const QSet<QState *> *inState() const;
-    void addInState(QState *inState);
-    void removeInState(QState *inState);
+    Q_INVOKABLE QValueSpecification *upperBound() const;
+    Q_INVOKABLE void setUpperBound(QValueSpecification *upperBound);
+    Q_INVOKABLE QBehavior *selection() const;
+    Q_INVOKABLE void setSelection(QBehavior *selection);
+    Q_INVOKABLE const QSet<QState *> *inState() const;
+    Q_INVOKABLE void addInState(QState *inState);
+    Q_INVOKABLE void removeInState(QState *inState);
 
     // Attributes from QPin
-    bool isControl() const;
-    void setControl(bool isControl);
+    Q_INVOKABLE bool isControl() const;
+    Q_INVOKABLE void setControl(bool isControl);
 
 protected:
     explicit QPin(QPinPrivate &dd, QObject *parent = 0);

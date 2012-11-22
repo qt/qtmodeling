@@ -72,16 +72,16 @@ class Q_UML_EXPORT QParameterSet : public QNamedElement
     Q_DECLARE_PRIVATE(QParameterSet)
 
 public:
-    explicit QParameterSet(QObject *parent = 0);
+    Q_INVOKABLE explicit QParameterSet(QObject *parent = 0);
     virtual ~QParameterSet();
 
     // Association ends from QParameterSet
-    const QSet<QParameter *> *parameters() const;
-    void addParameter(QParameter *parameter);
-    void removeParameter(QParameter *parameter);
-    const QSet<QConstraint *> *conditions() const;
-    void addCondition(QConstraint *condition);
-    void removeCondition(QConstraint *condition);
+    Q_INVOKABLE const QSet<QParameter *> *parameters() const;
+    Q_INVOKABLE void addParameter(QParameter *parameter);
+    Q_INVOKABLE void removeParameter(QParameter *parameter);
+    Q_INVOKABLE const QSet<QConstraint *> *conditions() const;
+    Q_INVOKABLE void addCondition(QConstraint *condition);
+    Q_INVOKABLE void removeCondition(QConstraint *condition);
 
 protected:
     explicit QParameterSet(QParameterSetPrivate &dd, QObject *parent = 0);

@@ -62,7 +62,7 @@ class Q_UML_EXPORT QForkNode : public QControlNode
     Q_DECLARE_PRIVATE(QForkNode)
 
 public:
-    explicit QForkNode(QObject *parent = 0);
+    Q_INVOKABLE explicit QForkNode(QObject *parent = 0);
     virtual ~QForkNode();
 
 protected:

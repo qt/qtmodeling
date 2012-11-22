@@ -77,48 +77,48 @@ class Q_UML_EXPORT QExtend : public QObject
     Q_DECLARE_PRIVATE(QExtend)
 
 public:
-    explicit QExtend(QObject *parent = 0);
+    Q_INVOKABLE explicit QExtend(QObject *parent = 0);
     virtual ~QExtend();
 
     // Association ends from aggregated QElement
-    const QSet<QElement *> *ownedElements() const;
-    QElement *owner() const;
-    const QSet<QComment *> *ownedComments() const;
-    void addOwnedComment(QComment *ownedComment);
-    void removeOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE QElement *owner() const;
+    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
     // Association ends from aggregated QRelationship
-    const QSet<QElement *> *relatedElements() const;
+    Q_INVOKABLE const QSet<QElement *> *relatedElements() const;
 
     // Association ends from aggregated QDirectedRelationship
-    const QSet<QElement *> *sources() const;
-    const QSet<QElement *> *targets() const;
+    Q_INVOKABLE const QSet<QElement *> *sources() const;
+    Q_INVOKABLE const QSet<QElement *> *targets() const;
 
     // Attributes from aggregated QNamedElement
-    QString name() const;
-    void setName(QString name);
-    QtUml::VisibilityKind visibility() const;
-    void setVisibility(QtUml::VisibilityKind visibility);
-    QString qualifiedName() const;
+    Q_INVOKABLE QString name() const;
+    Q_INVOKABLE void setName(QString name);
+    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from aggregated QNamedElement
-    QStringExpression *nameExpression() const;
-    void setNameExpression(QStringExpression *nameExpression);
-    QNamespace *namespace_() const;
-    const QSet<QDependency *> *clientDependencies() const;
-    void addClientDependency(QDependency *clientDependency);
-    void removeClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE QStringExpression *nameExpression() const;
+    Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
+    Q_INVOKABLE QNamespace *namespace_() const;
+    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
     // Association ends from QExtend
-    QUseCase *extendedCase() const;
-    void setExtendedCase(QUseCase *extendedCase);
-    QUseCase *extension() const;
-    void setExtension(QUseCase *extension);
-    const QList<QExtensionPoint *> *extensionLocations() const;
-    void addExtensionLocation(QExtensionPoint *extensionLocation);
-    void removeExtensionLocation(QExtensionPoint *extensionLocation);
-    QConstraint *condition() const;
-    void setCondition(QConstraint *condition);
+    Q_INVOKABLE QUseCase *extendedCase() const;
+    Q_INVOKABLE void setExtendedCase(QUseCase *extendedCase);
+    Q_INVOKABLE QUseCase *extension() const;
+    Q_INVOKABLE void setExtension(QUseCase *extension);
+    Q_INVOKABLE const QList<QExtensionPoint *> *extensionLocations() const;
+    Q_INVOKABLE void addExtensionLocation(QExtensionPoint *extensionLocation);
+    Q_INVOKABLE void removeExtensionLocation(QExtensionPoint *extensionLocation);
+    Q_INVOKABLE QConstraint *condition() const;
+    Q_INVOKABLE void setCondition(QConstraint *condition);
 
 protected:
     explicit QExtend(QExtendPrivate &dd, QObject *parent = 0);

@@ -67,12 +67,12 @@ class Q_UML_EXPORT QWriteVariableAction : public QVariableAction
     Q_DECLARE_PRIVATE(QWriteVariableAction)
 
 public:
-    explicit QWriteVariableAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QWriteVariableAction(QObject *parent = 0);
     virtual ~QWriteVariableAction();
 
     // Association ends from QWriteVariableAction
-    QInputPin *value() const;
-    void setValue(QInputPin *value);
+    Q_INVOKABLE QInputPin *value() const;
+    Q_INVOKABLE void setValue(QInputPin *value);
 
 protected:
     explicit QWriteVariableAction(QWriteVariableActionPrivate &dd, QObject *parent = 0);

@@ -71,16 +71,16 @@ class Q_UML_EXPORT QReadLinkObjectEndAction : public QAction
     Q_DECLARE_PRIVATE(QReadLinkObjectEndAction)
 
 public:
-    explicit QReadLinkObjectEndAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QReadLinkObjectEndAction(QObject *parent = 0);
     virtual ~QReadLinkObjectEndAction();
 
     // Association ends from QReadLinkObjectEndAction
-    QProperty *end() const;
-    void setEnd(QProperty *end);
-    QInputPin *object() const;
-    void setObject(QInputPin *object);
-    QOutputPin *result() const;
-    void setResult(QOutputPin *result);
+    Q_INVOKABLE QProperty *end() const;
+    Q_INVOKABLE void setEnd(QProperty *end);
+    Q_INVOKABLE QInputPin *object() const;
+    Q_INVOKABLE void setObject(QInputPin *object);
+    Q_INVOKABLE QOutputPin *result() const;
+    Q_INVOKABLE void setResult(QOutputPin *result);
 
 protected:
     explicit QReadLinkObjectEndAction(QReadLinkObjectEndActionPrivate &dd, QObject *parent = 0);

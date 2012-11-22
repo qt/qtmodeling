@@ -68,18 +68,18 @@ class Q_UML_EXPORT QParameterableElement : public QElement
     Q_DECLARE_PRIVATE(QParameterableElement)
 
 public:
-    explicit QParameterableElement(QObject *parent = 0);
+    Q_INVOKABLE explicit QParameterableElement(QObject *parent = 0);
     virtual ~QParameterableElement();
 
     // Association ends from QParameterableElement
-    QTemplateParameter *owningTemplateParameter() const;
-    void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
-    QTemplateParameter *templateParameter() const;
-    void setTemplateParameter(QTemplateParameter *templateParameter);
+    Q_INVOKABLE QTemplateParameter *owningTemplateParameter() const;
+    Q_INVOKABLE void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
+    Q_INVOKABLE QTemplateParameter *templateParameter() const;
+    Q_INVOKABLE void setTemplateParameter(QTemplateParameter *templateParameter);
 
     // Operations
-    bool isCompatibleWith(const QParameterableElement *p) const;
-    bool isTemplateParameter() const;
+    Q_INVOKABLE bool isCompatibleWith(const QParameterableElement *p) const;
+    Q_INVOKABLE bool isTemplateParameter() const;
 
 protected:
     explicit QParameterableElement(QParameterableElementPrivate &dd, QObject *parent = 0);

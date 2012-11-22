@@ -67,12 +67,12 @@ class Q_UML_EXPORT QCallEvent : public QMessageEvent
     Q_DECLARE_PRIVATE(QCallEvent)
 
 public:
-    explicit QCallEvent(QObject *parent = 0);
+    Q_INVOKABLE explicit QCallEvent(QObject *parent = 0);
     virtual ~QCallEvent();
 
     // Association ends from QCallEvent
-    QOperation *operation() const;
-    void setOperation(QOperation *operation);
+    Q_INVOKABLE QOperation *operation() const;
+    Q_INVOKABLE void setOperation(QOperation *operation);
 
 protected:
     explicit QCallEvent(QCallEventPrivate &dd, QObject *parent = 0);

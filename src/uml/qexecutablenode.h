@@ -70,13 +70,13 @@ class Q_UML_EXPORT QExecutableNode : public QActivityNode
     Q_DECLARE_PRIVATE(QExecutableNode)
 
 public:
-    explicit QExecutableNode(QObject *parent = 0);
+    Q_INVOKABLE explicit QExecutableNode(QObject *parent = 0);
     virtual ~QExecutableNode();
 
     // Association ends from QExecutableNode
-    const QSet<QExceptionHandler *> *handlers() const;
-    void addHandler(QExceptionHandler *handler);
-    void removeHandler(QExceptionHandler *handler);
+    Q_INVOKABLE const QSet<QExceptionHandler *> *handlers() const;
+    Q_INVOKABLE void addHandler(QExceptionHandler *handler);
+    Q_INVOKABLE void removeHandler(QExceptionHandler *handler);
 
 protected:
     explicit QExecutableNode(QExecutableNodePrivate &dd, QObject *parent = 0);

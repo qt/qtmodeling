@@ -75,19 +75,19 @@ class Q_UML_EXPORT QExceptionHandler : public QElement
     Q_DECLARE_PRIVATE(QExceptionHandler)
 
 public:
-    explicit QExceptionHandler(QObject *parent = 0);
+    Q_INVOKABLE explicit QExceptionHandler(QObject *parent = 0);
     virtual ~QExceptionHandler();
 
     // Association ends from QExceptionHandler
-    QExecutableNode *handlerBody() const;
-    void setHandlerBody(QExecutableNode *handlerBody);
-    const QSet<QClassifier *> *exceptionTypes() const;
-    void addExceptionType(QClassifier *exceptionType);
-    void removeExceptionType(QClassifier *exceptionType);
-    QExecutableNode *protectedNode() const;
-    void setProtectedNode(QExecutableNode *protectedNode);
-    QObjectNode *exceptionInput() const;
-    void setExceptionInput(QObjectNode *exceptionInput);
+    Q_INVOKABLE QExecutableNode *handlerBody() const;
+    Q_INVOKABLE void setHandlerBody(QExecutableNode *handlerBody);
+    Q_INVOKABLE const QSet<QClassifier *> *exceptionTypes() const;
+    Q_INVOKABLE void addExceptionType(QClassifier *exceptionType);
+    Q_INVOKABLE void removeExceptionType(QClassifier *exceptionType);
+    Q_INVOKABLE QExecutableNode *protectedNode() const;
+    Q_INVOKABLE void setProtectedNode(QExecutableNode *protectedNode);
+    Q_INVOKABLE QObjectNode *exceptionInput() const;
+    Q_INVOKABLE void setExceptionInput(QObjectNode *exceptionInput);
 
 protected:
     explicit QExceptionHandler(QExceptionHandlerPrivate &dd, QObject *parent = 0);

@@ -68,16 +68,16 @@ class Q_UML_EXPORT QJoinNode : public QControlNode
     Q_DECLARE_PRIVATE(QJoinNode)
 
 public:
-    explicit QJoinNode(QObject *parent = 0);
+    Q_INVOKABLE explicit QJoinNode(QObject *parent = 0);
     virtual ~QJoinNode();
 
     // Attributes from QJoinNode
-    bool isCombineDuplicate() const;
-    void setCombineDuplicate(bool isCombineDuplicate);
+    Q_INVOKABLE bool isCombineDuplicate() const;
+    Q_INVOKABLE void setCombineDuplicate(bool isCombineDuplicate);
 
     // Association ends from QJoinNode
-    QValueSpecification *joinSpec() const;
-    void setJoinSpec(QValueSpecification *joinSpec);
+    Q_INVOKABLE QValueSpecification *joinSpec() const;
+    Q_INVOKABLE void setJoinSpec(QValueSpecification *joinSpec);
 
 protected:
     explicit QJoinNode(QJoinNodePrivate &dd, QObject *parent = 0);

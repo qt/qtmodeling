@@ -72,18 +72,18 @@ class Q_UML_EXPORT QDeploymentSpecification : public QArtifact
     Q_DECLARE_PRIVATE(QDeploymentSpecification)
 
 public:
-    explicit QDeploymentSpecification(QObject *parent = 0);
+    Q_INVOKABLE explicit QDeploymentSpecification(QObject *parent = 0);
     virtual ~QDeploymentSpecification();
 
     // Attributes from QDeploymentSpecification
-    QString deploymentLocation() const;
-    void setDeploymentLocation(QString deploymentLocation);
-    QString executionLocation() const;
-    void setExecutionLocation(QString executionLocation);
+    Q_INVOKABLE QString deploymentLocation() const;
+    Q_INVOKABLE void setDeploymentLocation(QString deploymentLocation);
+    Q_INVOKABLE QString executionLocation() const;
+    Q_INVOKABLE void setExecutionLocation(QString executionLocation);
 
     // Association ends from QDeploymentSpecification
-    QDeployment *deployment() const;
-    void setDeployment(QDeployment *deployment);
+    Q_INVOKABLE QDeployment *deployment() const;
+    Q_INVOKABLE void setDeployment(QDeployment *deployment);
 
 protected:
     explicit QDeploymentSpecification(QDeploymentSpecificationPrivate &dd, QObject *parent = 0);

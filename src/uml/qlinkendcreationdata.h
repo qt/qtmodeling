@@ -68,16 +68,16 @@ class Q_UML_EXPORT QLinkEndCreationData : public QLinkEndData
     Q_DECLARE_PRIVATE(QLinkEndCreationData)
 
 public:
-    explicit QLinkEndCreationData(QObject *parent = 0);
+    Q_INVOKABLE explicit QLinkEndCreationData(QObject *parent = 0);
     virtual ~QLinkEndCreationData();
 
     // Attributes from QLinkEndCreationData
-    bool isReplaceAll() const;
-    void setReplaceAll(bool isReplaceAll);
+    Q_INVOKABLE bool isReplaceAll() const;
+    Q_INVOKABLE void setReplaceAll(bool isReplaceAll);
 
     // Association ends from QLinkEndCreationData
-    QInputPin *insertAt() const;
-    void setInsertAt(QInputPin *insertAt);
+    Q_INVOKABLE QInputPin *insertAt() const;
+    Q_INVOKABLE void setInsertAt(QInputPin *insertAt);
 
 protected:
     explicit QLinkEndCreationData(QLinkEndCreationDataPrivate &dd, QObject *parent = 0);

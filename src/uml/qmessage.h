@@ -84,28 +84,28 @@ class Q_UML_EXPORT QMessage : public QNamedElement
     Q_DECLARE_PRIVATE(QMessage)
 
 public:
-    explicit QMessage(QObject *parent = 0);
+    Q_INVOKABLE explicit QMessage(QObject *parent = 0);
     virtual ~QMessage();
 
     // Attributes from QMessage
-    QtUml::MessageSort messageSort() const;
-    void setMessageSort(QtUml::MessageSort messageSort);
-    QtUml::MessageKind messageKind() const;
+    Q_INVOKABLE QtUml::MessageSort messageSort() const;
+    Q_INVOKABLE void setMessageSort(QtUml::MessageSort messageSort);
+    Q_INVOKABLE QtUml::MessageKind messageKind() const;
 
     // Association ends from QMessage
-    QNamedElement *signature() const;
-    void setSignature(QNamedElement *signature);
-    const QList<QValueSpecification *> *arguments() const;
-    void addArgument(QValueSpecification *argument);
-    void removeArgument(QValueSpecification *argument);
-    QMessageEnd *receiveEvent() const;
-    void setReceiveEvent(QMessageEnd *receiveEvent);
-    QInteraction *interaction() const;
-    void setInteraction(QInteraction *interaction);
-    QMessageEnd *sendEvent() const;
-    void setSendEvent(QMessageEnd *sendEvent);
-    QConnector *connector() const;
-    void setConnector(QConnector *connector);
+    Q_INVOKABLE QNamedElement *signature() const;
+    Q_INVOKABLE void setSignature(QNamedElement *signature);
+    Q_INVOKABLE const QList<QValueSpecification *> *arguments() const;
+    Q_INVOKABLE void addArgument(QValueSpecification *argument);
+    Q_INVOKABLE void removeArgument(QValueSpecification *argument);
+    Q_INVOKABLE QMessageEnd *receiveEvent() const;
+    Q_INVOKABLE void setReceiveEvent(QMessageEnd *receiveEvent);
+    Q_INVOKABLE QInteraction *interaction() const;
+    Q_INVOKABLE void setInteraction(QInteraction *interaction);
+    Q_INVOKABLE QMessageEnd *sendEvent() const;
+    Q_INVOKABLE void setSendEvent(QMessageEnd *sendEvent);
+    Q_INVOKABLE QConnector *connector() const;
+    Q_INVOKABLE void setConnector(QConnector *connector);
 
 protected:
     explicit QMessage(QMessagePrivate &dd, QObject *parent = 0);

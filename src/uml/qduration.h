@@ -71,15 +71,15 @@ class Q_UML_EXPORT QDuration : public QValueSpecification
     Q_DECLARE_PRIVATE(QDuration)
 
 public:
-    explicit QDuration(QObject *parent = 0);
+    Q_INVOKABLE explicit QDuration(QObject *parent = 0);
     virtual ~QDuration();
 
     // Association ends from QDuration
-    QValueSpecification *expr() const;
-    void setExpr(QValueSpecification *expr);
-    const QSet<QObservation *> *observations() const;
-    void addObservation(QObservation *observation);
-    void removeObservation(QObservation *observation);
+    Q_INVOKABLE QValueSpecification *expr() const;
+    Q_INVOKABLE void setExpr(QValueSpecification *expr);
+    Q_INVOKABLE const QSet<QObservation *> *observations() const;
+    Q_INVOKABLE void addObservation(QObservation *observation);
+    Q_INVOKABLE void removeObservation(QObservation *observation);
 
 protected:
     explicit QDuration(QDurationPrivate &dd, QObject *parent = 0);

@@ -65,14 +65,14 @@ class Q_UML_EXPORT QInterval : public QValueSpecification
     Q_DECLARE_PRIVATE(QInterval)
 
 public:
-    explicit QInterval(QObject *parent = 0);
+    Q_INVOKABLE explicit QInterval(QObject *parent = 0);
     virtual ~QInterval();
 
     // Association ends from QInterval
-    QValueSpecification *min() const;
-    void setMin(QValueSpecification *min);
-    QValueSpecification *max() const;
-    void setMax(QValueSpecification *max);
+    Q_INVOKABLE QValueSpecification *min() const;
+    Q_INVOKABLE void setMin(QValueSpecification *min);
+    Q_INVOKABLE QValueSpecification *max() const;
+    Q_INVOKABLE void setMax(QValueSpecification *max);
 
 protected:
     explicit QInterval(QIntervalPrivate &dd, QObject *parent = 0);

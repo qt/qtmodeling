@@ -76,20 +76,20 @@ class Q_UML_EXPORT QInteractionFragment : public QNamedElement
     Q_DECLARE_PRIVATE(QInteractionFragment)
 
 public:
-    explicit QInteractionFragment(QObject *parent = 0);
+    Q_INVOKABLE explicit QInteractionFragment(QObject *parent = 0);
     virtual ~QInteractionFragment();
 
     // Association ends from QInteractionFragment
-    const QSet<QGeneralOrdering *> *generalOrderings() const;
-    void addGeneralOrdering(QGeneralOrdering *generalOrdering);
-    void removeGeneralOrdering(QGeneralOrdering *generalOrdering);
-    QInteraction *enclosingInteraction() const;
-    void setEnclosingInteraction(QInteraction *enclosingInteraction);
-    const QSet<QLifeline *> *covered() const;
-    void addCovered(QLifeline *covered);
-    void removeCovered(QLifeline *covered);
-    QInteractionOperand *enclosingOperand() const;
-    void setEnclosingOperand(QInteractionOperand *enclosingOperand);
+    Q_INVOKABLE const QSet<QGeneralOrdering *> *generalOrderings() const;
+    Q_INVOKABLE void addGeneralOrdering(QGeneralOrdering *generalOrdering);
+    Q_INVOKABLE void removeGeneralOrdering(QGeneralOrdering *generalOrdering);
+    Q_INVOKABLE QInteraction *enclosingInteraction() const;
+    Q_INVOKABLE void setEnclosingInteraction(QInteraction *enclosingInteraction);
+    Q_INVOKABLE const QSet<QLifeline *> *covered() const;
+    Q_INVOKABLE void addCovered(QLifeline *covered);
+    Q_INVOKABLE void removeCovered(QLifeline *covered);
+    Q_INVOKABLE QInteractionOperand *enclosingOperand() const;
+    Q_INVOKABLE void setEnclosingOperand(QInteractionOperand *enclosingOperand);
 
 protected:
     explicit QInteractionFragment(QInteractionFragmentPrivate &dd, QObject *parent = 0);

@@ -62,7 +62,7 @@ class Q_UML_EXPORT QActivityFinalNode : public QFinalNode
     Q_DECLARE_PRIVATE(QActivityFinalNode)
 
 public:
-    explicit QActivityFinalNode(QObject *parent = 0);
+    Q_INVOKABLE explicit QActivityFinalNode(QObject *parent = 0);
     virtual ~QActivityFinalNode();
 
 protected:

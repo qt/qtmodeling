@@ -62,7 +62,7 @@ class Q_UML_EXPORT QMessageEvent : public QEvent
     Q_DECLARE_PRIVATE(QMessageEvent)
 
 public:
-    explicit QMessageEvent(QObject *parent = 0);
+    Q_INVOKABLE explicit QMessageEvent(QObject *parent = 0);
     virtual ~QMessageEvent();
 
 protected:

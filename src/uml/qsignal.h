@@ -70,13 +70,13 @@ class Q_UML_EXPORT QSignal : public QClassifier
     Q_DECLARE_PRIVATE(QSignal)
 
 public:
-    explicit QSignal(QObject *parent = 0);
+    Q_INVOKABLE explicit QSignal(QObject *parent = 0);
     virtual ~QSignal();
 
     // Association ends from QSignal
-    const QList<QProperty *> *ownedAttributes() const;
-    void addOwnedAttribute(QProperty *ownedAttribute);
-    void removeOwnedAttribute(QProperty *ownedAttribute);
+    Q_INVOKABLE const QList<QProperty *> *ownedAttributes() const;
+    Q_INVOKABLE void addOwnedAttribute(QProperty *ownedAttribute);
+    Q_INVOKABLE void removeOwnedAttribute(QProperty *ownedAttribute);
 
 protected:
     explicit QSignal(QSignalPrivate &dd, QObject *parent = 0);

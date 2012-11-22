@@ -77,27 +77,27 @@ class Q_UML_EXPORT QClause : public QElement
     Q_DECLARE_PRIVATE(QClause)
 
 public:
-    explicit QClause(QObject *parent = 0);
+    Q_INVOKABLE explicit QClause(QObject *parent = 0);
     virtual ~QClause();
 
     // Association ends from QClause
-    const QSet<QClause *> *successorClauses() const;
-    void addSuccessorClause(QClause *successorClause);
-    void removeSuccessorClause(QClause *successorClause);
-    QOutputPin *decider() const;
-    void setDecider(QOutputPin *decider);
-    const QSet<QClause *> *predecessorClauses() const;
-    void addPredecessorClause(QClause *predecessorClause);
-    void removePredecessorClause(QClause *predecessorClause);
-    const QList<QOutputPin *> *bodyOutputs() const;
-    void addBodyOutput(QOutputPin *bodyOutput);
-    void removeBodyOutput(QOutputPin *bodyOutput);
-    const QSet<QExecutableNode *> *bodies() const;
-    void addBody(QExecutableNode *body);
-    void removeBody(QExecutableNode *body);
-    const QSet<QExecutableNode *> *tests() const;
-    void addTest(QExecutableNode *test);
-    void removeTest(QExecutableNode *test);
+    Q_INVOKABLE const QSet<QClause *> *successorClauses() const;
+    Q_INVOKABLE void addSuccessorClause(QClause *successorClause);
+    Q_INVOKABLE void removeSuccessorClause(QClause *successorClause);
+    Q_INVOKABLE QOutputPin *decider() const;
+    Q_INVOKABLE void setDecider(QOutputPin *decider);
+    Q_INVOKABLE const QSet<QClause *> *predecessorClauses() const;
+    Q_INVOKABLE void addPredecessorClause(QClause *predecessorClause);
+    Q_INVOKABLE void removePredecessorClause(QClause *predecessorClause);
+    Q_INVOKABLE const QList<QOutputPin *> *bodyOutputs() const;
+    Q_INVOKABLE void addBodyOutput(QOutputPin *bodyOutput);
+    Q_INVOKABLE void removeBodyOutput(QOutputPin *bodyOutput);
+    Q_INVOKABLE const QSet<QExecutableNode *> *bodies() const;
+    Q_INVOKABLE void addBody(QExecutableNode *body);
+    Q_INVOKABLE void removeBody(QExecutableNode *body);
+    Q_INVOKABLE const QSet<QExecutableNode *> *tests() const;
+    Q_INVOKABLE void addTest(QExecutableNode *test);
+    Q_INVOKABLE void removeTest(QExecutableNode *test);
 
 protected:
     explicit QClause(QClausePrivate &dd, QObject *parent = 0);

@@ -102,130 +102,130 @@ class Q_UML_EXPORT QProperty : public QObject
     Q_DECLARE_PRIVATE(QProperty)
 
 public:
-    explicit QProperty(QObject *parent = 0);
+    Q_INVOKABLE explicit QProperty(QObject *parent = 0);
     virtual ~QProperty();
 
     // Association ends from aggregated QElement
-    const QSet<QElement *> *ownedElements() const;
-    QElement *owner() const;
-    const QSet<QComment *> *ownedComments() const;
-    void addOwnedComment(QComment *ownedComment);
-    void removeOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE QElement *owner() const;
+    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
     // Attributes from aggregated QNamedElement
-    QString name() const;
-    void setName(QString name);
-    QtUml::VisibilityKind visibility() const;
-    void setVisibility(QtUml::VisibilityKind visibility);
-    QString qualifiedName() const;
+    Q_INVOKABLE QString name() const;
+    Q_INVOKABLE void setName(QString name);
+    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from aggregated QNamedElement
-    QStringExpression *nameExpression() const;
-    void setNameExpression(QStringExpression *nameExpression);
-    QNamespace *namespace_() const;
-    const QSet<QDependency *> *clientDependencies() const;
-    void addClientDependency(QDependency *clientDependency);
-    void removeClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE QStringExpression *nameExpression() const;
+    Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
+    Q_INVOKABLE QNamespace *namespace_() const;
+    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
     // Association ends from aggregated QTypedElement
-    QType *type() const;
-    void setType(QType *type);
+    Q_INVOKABLE QType *type() const;
+    Q_INVOKABLE void setType(QType *type);
 
     // Attributes from aggregated QMultiplicityElement
-    qint32 upper() const;
-    void setUpper(qint32 upper);
-    bool isUnique() const;
-    void setUnique(bool isUnique);
-    bool isOrdered() const;
-    void setOrdered(bool isOrdered);
-    qint32 lower() const;
-    void setLower(qint32 lower);
+    Q_INVOKABLE qint32 upper() const;
+    Q_INVOKABLE void setUpper(qint32 upper);
+    Q_INVOKABLE bool isUnique() const;
+    Q_INVOKABLE void setUnique(bool isUnique);
+    Q_INVOKABLE bool isOrdered() const;
+    Q_INVOKABLE void setOrdered(bool isOrdered);
+    Q_INVOKABLE qint32 lower() const;
+    Q_INVOKABLE void setLower(qint32 lower);
 
     // Association ends from aggregated QMultiplicityElement
-    QValueSpecification *upperValue() const;
-    void setUpperValue(QValueSpecification *upperValue);
-    QValueSpecification *lowerValue() const;
-    void setLowerValue(QValueSpecification *lowerValue);
+    Q_INVOKABLE QValueSpecification *upperValue() const;
+    Q_INVOKABLE void setUpperValue(QValueSpecification *upperValue);
+    Q_INVOKABLE QValueSpecification *lowerValue() const;
+    Q_INVOKABLE void setLowerValue(QValueSpecification *lowerValue);
 
     // Attributes from aggregated QRedefinableElement
-    bool isLeaf() const;
-    void setLeaf(bool isLeaf);
+    Q_INVOKABLE bool isLeaf() const;
+    Q_INVOKABLE void setLeaf(bool isLeaf);
 
     // Association ends from aggregated QRedefinableElement
-    const QSet<QRedefinableElement *> *redefinedElements() const;
-    const QSet<QClassifier *> *redefinitionContexts() const;
+    Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
+    Q_INVOKABLE const QSet<QClassifier *> *redefinitionContexts() const;
 
     // Attributes from aggregated QFeature
-    bool isStatic() const;
-    void setStatic(bool isStatic);
+    Q_INVOKABLE bool isStatic() const;
+    Q_INVOKABLE void setStatic(bool isStatic);
 
     // Association ends from aggregated QFeature
-    const QSet<QClassifier *> *featuringClassifiers() const;
+    Q_INVOKABLE const QSet<QClassifier *> *featuringClassifiers() const;
 
     // Association ends from aggregated QParameterableElement
-    QTemplateParameter *owningTemplateParameter() const;
-    void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
+    Q_INVOKABLE QTemplateParameter *owningTemplateParameter() const;
+    Q_INVOKABLE void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
 
     // Association ends from aggregated QConnectableElement
-    const QList<QConnectorEnd *> *ends() const;
-    QConnectableElementTemplateParameter *templateParameter() const;
-    void setTemplateParameter(QConnectableElementTemplateParameter *templateParameter);
+    Q_INVOKABLE const QList<QConnectorEnd *> *ends() const;
+    Q_INVOKABLE QConnectableElementTemplateParameter *templateParameter() const;
+    Q_INVOKABLE void setTemplateParameter(QConnectableElementTemplateParameter *templateParameter);
 
     // Association ends from aggregated QDeploymentTarget
-    const QSet<QPackageableElement *> *deployedElements() const;
-    const QSet<QDeployment *> *deployments() const;
-    void addDeployment(QDeployment *deployment);
-    void removeDeployment(QDeployment *deployment);
+    Q_INVOKABLE const QSet<QPackageableElement *> *deployedElements() const;
+    Q_INVOKABLE const QSet<QDeployment *> *deployments() const;
+    Q_INVOKABLE void addDeployment(QDeployment *deployment);
+    Q_INVOKABLE void removeDeployment(QDeployment *deployment);
 
     // Attributes from QProperty
-    bool isDerived() const;
-    void setDerived(bool isDerived);
-    QString default_() const;
-    void setDefault_(QString default_);
-    bool isComposite() const;
-    void setComposite(bool isComposite);
-    bool isReadOnly() const;
-    void setReadOnly(bool isReadOnly);
-    bool isID() const;
-    void setID(bool isID);
-    bool isDerivedUnion() const;
-    void setDerivedUnion(bool isDerivedUnion);
-    QtUml::AggregationKind aggregation() const;
-    void setAggregation(QtUml::AggregationKind aggregation);
+    Q_INVOKABLE bool isDerived() const;
+    Q_INVOKABLE void setDerived(bool isDerived);
+    Q_INVOKABLE QString default_() const;
+    Q_INVOKABLE void setDefault_(QString default_);
+    Q_INVOKABLE bool isComposite() const;
+    Q_INVOKABLE void setComposite(bool isComposite);
+    Q_INVOKABLE bool isReadOnly() const;
+    Q_INVOKABLE void setReadOnly(bool isReadOnly);
+    Q_INVOKABLE bool isID() const;
+    Q_INVOKABLE void setID(bool isID);
+    Q_INVOKABLE bool isDerivedUnion() const;
+    Q_INVOKABLE void setDerivedUnion(bool isDerivedUnion);
+    Q_INVOKABLE QtUml::AggregationKind aggregation() const;
+    Q_INVOKABLE void setAggregation(QtUml::AggregationKind aggregation);
 
     // Association ends from QProperty
-    const QSet<QProperty *> *subsettedProperties() const;
-    void addSubsettedProperty(QProperty *subsettedProperty);
-    void removeSubsettedProperty(QProperty *subsettedProperty);
-    QAssociation *owningAssociation() const;
-    void setOwningAssociation(QAssociation *owningAssociation);
-    const QList<QProperty *> *qualifiers() const;
-    void addQualifier(QProperty *qualifier);
-    void removeQualifier(QProperty *qualifier);
-    QValueSpecification *defaultValue() const;
-    void setDefaultValue(QValueSpecification *defaultValue);
-    QClass *class_() const;
-    void setClass_(QClass *class_);
-    QProperty *opposite() const;
-    void setOpposite(QProperty *opposite);
-    QProperty *associationEnd() const;
-    void setAssociationEnd(QProperty *associationEnd);
-    QDataType *datatype() const;
-    void setDatatype(QDataType *datatype);
-    const QSet<QProperty *> *redefinedProperties() const;
-    void addRedefinedProperty(QProperty *redefinedProperty);
-    void removeRedefinedProperty(QProperty *redefinedProperty);
-    QAssociation *association() const;
-    void setAssociation(QAssociation *association);
-    QInterface *interface() const;
-    void setInterface(QInterface *interface);
+    Q_INVOKABLE const QSet<QProperty *> *subsettedProperties() const;
+    Q_INVOKABLE void addSubsettedProperty(QProperty *subsettedProperty);
+    Q_INVOKABLE void removeSubsettedProperty(QProperty *subsettedProperty);
+    Q_INVOKABLE QAssociation *owningAssociation() const;
+    Q_INVOKABLE void setOwningAssociation(QAssociation *owningAssociation);
+    Q_INVOKABLE const QList<QProperty *> *qualifiers() const;
+    Q_INVOKABLE void addQualifier(QProperty *qualifier);
+    Q_INVOKABLE void removeQualifier(QProperty *qualifier);
+    Q_INVOKABLE QValueSpecification *defaultValue() const;
+    Q_INVOKABLE void setDefaultValue(QValueSpecification *defaultValue);
+    Q_INVOKABLE QClass *class_() const;
+    Q_INVOKABLE void setClass_(QClass *class_);
+    Q_INVOKABLE QProperty *opposite() const;
+    Q_INVOKABLE void setOpposite(QProperty *opposite);
+    Q_INVOKABLE QProperty *associationEnd() const;
+    Q_INVOKABLE void setAssociationEnd(QProperty *associationEnd);
+    Q_INVOKABLE QDataType *datatype() const;
+    Q_INVOKABLE void setDatatype(QDataType *datatype);
+    Q_INVOKABLE const QSet<QProperty *> *redefinedProperties() const;
+    Q_INVOKABLE void addRedefinedProperty(QProperty *redefinedProperty);
+    Q_INVOKABLE void removeRedefinedProperty(QProperty *redefinedProperty);
+    Q_INVOKABLE QAssociation *association() const;
+    Q_INVOKABLE void setAssociation(QAssociation *association);
+    Q_INVOKABLE QInterface *interface() const;
+    Q_INVOKABLE void setInterface(QInterface *interface);
 
     // Operations
-    bool isAttribute(const QProperty *p) const;
-    bool isCompatibleWith(const QParameterableElement *p) const;
-    bool isConsistentWith(const QRedefinableElement *redefinee) const;
-    bool isNavigable() const;
-    const QSet<QType *> *subsettingContext() const;
+    Q_INVOKABLE bool isAttribute(const QProperty *p) const;
+    Q_INVOKABLE bool isCompatibleWith(const QParameterableElement *p) const;
+    Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
+    Q_INVOKABLE bool isNavigable() const;
+    Q_INVOKABLE const QSet<QType *> *subsettingContext() const;
 
 protected:
     explicit QProperty(QPropertyPrivate &dd, QObject *parent = 0);

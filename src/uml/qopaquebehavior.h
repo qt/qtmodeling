@@ -69,16 +69,16 @@ class Q_UML_EXPORT QOpaqueBehavior : public QBehavior
     Q_DECLARE_PRIVATE(QOpaqueBehavior)
 
 public:
-    explicit QOpaqueBehavior(QObject *parent = 0);
+    Q_INVOKABLE explicit QOpaqueBehavior(QObject *parent = 0);
     virtual ~QOpaqueBehavior();
 
     // Attributes from QOpaqueBehavior
-    const QList<QString> *languages() const;
-    void addLanguage(QString language);
-    void removeLanguage(QString language);
-    const QList<QString> *bodies() const;
-    void addBody(QString body);
-    void removeBody(QString body);
+    Q_INVOKABLE const QList<QString> *languages() const;
+    Q_INVOKABLE void addLanguage(QString language);
+    Q_INVOKABLE void removeLanguage(QString language);
+    Q_INVOKABLE const QList<QString> *bodies() const;
+    Q_INVOKABLE void addBody(QString body);
+    Q_INVOKABLE void removeBody(QString body);
 
 protected:
     explicit QOpaqueBehavior(QOpaqueBehaviorPrivate &dd, QObject *parent = 0);

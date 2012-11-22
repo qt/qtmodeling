@@ -72,33 +72,33 @@ class Q_UML_EXPORT QMultiplicityElement : public QElement
     Q_DECLARE_PRIVATE(QMultiplicityElement)
 
 public:
-    explicit QMultiplicityElement(QObject *parent = 0);
+    Q_INVOKABLE explicit QMultiplicityElement(QObject *parent = 0);
     virtual ~QMultiplicityElement();
 
     // Attributes from QMultiplicityElement
-    qint32 upper() const;
-    void setUpper(qint32 upper);
-    bool isUnique() const;
-    void setUnique(bool isUnique);
-    bool isOrdered() const;
-    void setOrdered(bool isOrdered);
-    qint32 lower() const;
-    void setLower(qint32 lower);
+    Q_INVOKABLE qint32 upper() const;
+    Q_INVOKABLE void setUpper(qint32 upper);
+    Q_INVOKABLE bool isUnique() const;
+    Q_INVOKABLE void setUnique(bool isUnique);
+    Q_INVOKABLE bool isOrdered() const;
+    Q_INVOKABLE void setOrdered(bool isOrdered);
+    Q_INVOKABLE qint32 lower() const;
+    Q_INVOKABLE void setLower(qint32 lower);
 
     // Association ends from QMultiplicityElement
-    QValueSpecification *upperValue() const;
-    void setUpperValue(QValueSpecification *upperValue);
-    QValueSpecification *lowerValue() const;
-    void setLowerValue(QValueSpecification *lowerValue);
+    Q_INVOKABLE QValueSpecification *upperValue() const;
+    Q_INVOKABLE void setUpperValue(QValueSpecification *upperValue);
+    Q_INVOKABLE QValueSpecification *lowerValue() const;
+    Q_INVOKABLE void setLowerValue(QValueSpecification *lowerValue);
 
     // Operations
-    bool compatibleWith(const QMultiplicityElement *other) const;
-    bool includesCardinality(qint32 C) const;
-    bool includesMultiplicity(const QMultiplicityElement *M) const;
-    bool is(qint32 lowerbound, qint32 upperbound) const;
-    bool isMultivalued() const;
-    qint32 lowerBound() const;
-    qint32 upperBound() const;
+    Q_INVOKABLE bool compatibleWith(const QMultiplicityElement *other) const;
+    Q_INVOKABLE bool includesCardinality(qint32 C) const;
+    Q_INVOKABLE bool includesMultiplicity(const QMultiplicityElement *M) const;
+    Q_INVOKABLE bool is(qint32 lowerbound, qint32 upperbound) const;
+    Q_INVOKABLE bool isMultivalued() const;
+    Q_INVOKABLE qint32 lowerBound() const;
+    Q_INVOKABLE qint32 upperBound() const;
 
 protected:
     explicit QMultiplicityElement(QMultiplicityElementPrivate &dd, QObject *parent = 0);

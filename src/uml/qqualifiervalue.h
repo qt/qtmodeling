@@ -69,14 +69,14 @@ class Q_UML_EXPORT QQualifierValue : public QElement
     Q_DECLARE_PRIVATE(QQualifierValue)
 
 public:
-    explicit QQualifierValue(QObject *parent = 0);
+    Q_INVOKABLE explicit QQualifierValue(QObject *parent = 0);
     virtual ~QQualifierValue();
 
     // Association ends from QQualifierValue
-    QInputPin *value() const;
-    void setValue(QInputPin *value);
-    QProperty *qualifier() const;
-    void setQualifier(QProperty *qualifier);
+    Q_INVOKABLE QInputPin *value() const;
+    Q_INVOKABLE void setValue(QInputPin *value);
+    Q_INVOKABLE QProperty *qualifier() const;
+    Q_INVOKABLE void setQualifier(QProperty *qualifier);
 
 protected:
     explicit QQualifierValue(QQualifierValuePrivate &dd, QObject *parent = 0);

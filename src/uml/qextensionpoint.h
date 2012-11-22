@@ -67,12 +67,12 @@ class Q_UML_EXPORT QExtensionPoint : public QRedefinableElement
     Q_DECLARE_PRIVATE(QExtensionPoint)
 
 public:
-    explicit QExtensionPoint(QObject *parent = 0);
+    Q_INVOKABLE explicit QExtensionPoint(QObject *parent = 0);
     virtual ~QExtensionPoint();
 
     // Association ends from QExtensionPoint
-    QUseCase *useCase() const;
-    void setUseCase(QUseCase *useCase);
+    Q_INVOKABLE QUseCase *useCase() const;
+    Q_INVOKABLE void setUseCase(QUseCase *useCase);
 
 protected:
     explicit QExtensionPoint(QExtensionPointPrivate &dd, QObject *parent = 0);

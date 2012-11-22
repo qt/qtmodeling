@@ -68,14 +68,14 @@ class Q_UML_EXPORT QSendObjectAction : public QInvocationAction
     Q_DECLARE_PRIVATE(QSendObjectAction)
 
 public:
-    explicit QSendObjectAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QSendObjectAction(QObject *parent = 0);
     virtual ~QSendObjectAction();
 
     // Association ends from QSendObjectAction
-    QInputPin *request() const;
-    void setRequest(QInputPin *request);
-    QInputPin *target() const;
-    void setTarget(QInputPin *target);
+    Q_INVOKABLE QInputPin *request() const;
+    Q_INVOKABLE void setRequest(QInputPin *request);
+    Q_INVOKABLE QInputPin *target() const;
+    Q_INVOKABLE void setTarget(QInputPin *target);
 
 protected:
     explicit QSendObjectAction(QSendObjectActionPrivate &dd, QObject *parent = 0);

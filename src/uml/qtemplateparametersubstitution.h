@@ -72,18 +72,18 @@ class Q_UML_EXPORT QTemplateParameterSubstitution : public QElement
     Q_DECLARE_PRIVATE(QTemplateParameterSubstitution)
 
 public:
-    explicit QTemplateParameterSubstitution(QObject *parent = 0);
+    Q_INVOKABLE explicit QTemplateParameterSubstitution(QObject *parent = 0);
     virtual ~QTemplateParameterSubstitution();
 
     // Association ends from QTemplateParameterSubstitution
-    QParameterableElement *ownedActual() const;
-    void setOwnedActual(QParameterableElement *ownedActual);
-    QTemplateParameter *formal() const;
-    void setFormal(QTemplateParameter *formal);
-    QParameterableElement *actual() const;
-    void setActual(QParameterableElement *actual);
-    QTemplateBinding *templateBinding() const;
-    void setTemplateBinding(QTemplateBinding *templateBinding);
+    Q_INVOKABLE QParameterableElement *ownedActual() const;
+    Q_INVOKABLE void setOwnedActual(QParameterableElement *ownedActual);
+    Q_INVOKABLE QTemplateParameter *formal() const;
+    Q_INVOKABLE void setFormal(QTemplateParameter *formal);
+    Q_INVOKABLE QParameterableElement *actual() const;
+    Q_INVOKABLE void setActual(QParameterableElement *actual);
+    Q_INVOKABLE QTemplateBinding *templateBinding() const;
+    Q_INVOKABLE void setTemplateBinding(QTemplateBinding *templateBinding);
 
 protected:
     explicit QTemplateParameterSubstitution(QTemplateParameterSubstitutionPrivate &dd, QObject *parent = 0);

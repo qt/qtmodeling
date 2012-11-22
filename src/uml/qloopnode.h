@@ -81,37 +81,37 @@ class Q_UML_EXPORT QLoopNode : public QStructuredActivityNode
     Q_DECLARE_PRIVATE(QLoopNode)
 
 public:
-    explicit QLoopNode(QObject *parent = 0);
+    Q_INVOKABLE explicit QLoopNode(QObject *parent = 0);
     virtual ~QLoopNode();
 
     // Attributes from QLoopNode
-    bool isTestedFirst() const;
-    void setTestedFirst(bool isTestedFirst);
+    Q_INVOKABLE bool isTestedFirst() const;
+    Q_INVOKABLE void setTestedFirst(bool isTestedFirst);
 
     // Association ends from QLoopNode
-    const QList<QInputPin *> *loopVariableInputs() const;
-    void addLoopVariableInput(QInputPin *loopVariableInput);
-    void removeLoopVariableInput(QInputPin *loopVariableInput);
-    QOutputPin *decider() const;
-    void setDecider(QOutputPin *decider);
-    const QList<QOutputPin *> *bodyOutputs() const;
-    void addBodyOutput(QOutputPin *bodyOutput);
-    void removeBodyOutput(QOutputPin *bodyOutput);
-    const QList<QOutputPin *> *loopVariables() const;
-    void addLoopVariable(QOutputPin *loopVariable);
-    void removeLoopVariable(QOutputPin *loopVariable);
-    const QList<QOutputPin *> *results() const;
-    void addResult(QOutputPin *result);
-    void removeResult(QOutputPin *result);
-    const QSet<QExecutableNode *> *setupParts() const;
-    void addSetupPart(QExecutableNode *setupPart);
-    void removeSetupPart(QExecutableNode *setupPart);
-    const QSet<QExecutableNode *> *bodyParts() const;
-    void addBodyPart(QExecutableNode *bodyPart);
-    void removeBodyPart(QExecutableNode *bodyPart);
-    const QSet<QExecutableNode *> *tests() const;
-    void addTest(QExecutableNode *test);
-    void removeTest(QExecutableNode *test);
+    Q_INVOKABLE const QList<QInputPin *> *loopVariableInputs() const;
+    Q_INVOKABLE void addLoopVariableInput(QInputPin *loopVariableInput);
+    Q_INVOKABLE void removeLoopVariableInput(QInputPin *loopVariableInput);
+    Q_INVOKABLE QOutputPin *decider() const;
+    Q_INVOKABLE void setDecider(QOutputPin *decider);
+    Q_INVOKABLE const QList<QOutputPin *> *bodyOutputs() const;
+    Q_INVOKABLE void addBodyOutput(QOutputPin *bodyOutput);
+    Q_INVOKABLE void removeBodyOutput(QOutputPin *bodyOutput);
+    Q_INVOKABLE const QList<QOutputPin *> *loopVariables() const;
+    Q_INVOKABLE void addLoopVariable(QOutputPin *loopVariable);
+    Q_INVOKABLE void removeLoopVariable(QOutputPin *loopVariable);
+    Q_INVOKABLE const QList<QOutputPin *> *results() const;
+    Q_INVOKABLE void addResult(QOutputPin *result);
+    Q_INVOKABLE void removeResult(QOutputPin *result);
+    Q_INVOKABLE const QSet<QExecutableNode *> *setupParts() const;
+    Q_INVOKABLE void addSetupPart(QExecutableNode *setupPart);
+    Q_INVOKABLE void removeSetupPart(QExecutableNode *setupPart);
+    Q_INVOKABLE const QSet<QExecutableNode *> *bodyParts() const;
+    Q_INVOKABLE void addBodyPart(QExecutableNode *bodyPart);
+    Q_INVOKABLE void removeBodyPart(QExecutableNode *bodyPart);
+    Q_INVOKABLE const QSet<QExecutableNode *> *tests() const;
+    Q_INVOKABLE void addTest(QExecutableNode *test);
+    Q_INVOKABLE void removeTest(QExecutableNode *test);
 
 protected:
     explicit QLoopNode(QLoopNodePrivate &dd, QObject *parent = 0);

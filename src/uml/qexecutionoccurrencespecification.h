@@ -67,12 +67,12 @@ class Q_UML_EXPORT QExecutionOccurrenceSpecification : public QOccurrenceSpecifi
     Q_DECLARE_PRIVATE(QExecutionOccurrenceSpecification)
 
 public:
-    explicit QExecutionOccurrenceSpecification(QObject *parent = 0);
+    Q_INVOKABLE explicit QExecutionOccurrenceSpecification(QObject *parent = 0);
     virtual ~QExecutionOccurrenceSpecification();
 
     // Association ends from QExecutionOccurrenceSpecification
-    QExecutionSpecification *execution() const;
-    void setExecution(QExecutionSpecification *execution);
+    Q_INVOKABLE QExecutionSpecification *execution() const;
+    Q_INVOKABLE void setExecution(QExecutionSpecification *execution);
 
 protected:
     explicit QExecutionOccurrenceSpecification(QExecutionOccurrenceSpecificationPrivate &dd, QObject *parent = 0);

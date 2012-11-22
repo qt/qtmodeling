@@ -68,20 +68,20 @@ class Q_UML_EXPORT QSubstitution : public QRealization
     Q_DECLARE_PRIVATE(QSubstitution)
 
 public:
-    explicit QSubstitution(QObject *parent = 0);
+    Q_INVOKABLE explicit QSubstitution(QObject *parent = 0);
     virtual ~QSubstitution();
 
     // Association ends from QSubstitution
-    QClassifier *contract() const;
-    void setContract(QClassifier *contract);
-    QClassifier *substitutingClassifier() const;
-    void setSubstitutingClassifier(QClassifier *substitutingClassifier);
+    Q_INVOKABLE QClassifier *contract() const;
+    Q_INVOKABLE void setContract(QClassifier *contract);
+    Q_INVOKABLE QClassifier *substitutingClassifier() const;
+    Q_INVOKABLE void setSubstitutingClassifier(QClassifier *substitutingClassifier);
 
     // Overriden methods for subsetted properties
-    void addSupplier(QUmlPointer<QClassifier> contract);
-    void removeSupplier(QUmlPointer<QClassifier> contract);
-    void addClient(QUmlPointer<QClassifier> substitutingClassifier);
-    void removeClient(QUmlPointer<QClassifier> substitutingClassifier);
+    Q_INVOKABLE void addSupplier(QUmlPointer<QClassifier> contract);
+    Q_INVOKABLE void removeSupplier(QUmlPointer<QClassifier> contract);
+    Q_INVOKABLE void addClient(QUmlPointer<QClassifier> substitutingClassifier);
+    Q_INVOKABLE void removeClient(QUmlPointer<QClassifier> substitutingClassifier);
 
 protected:
     explicit QSubstitution(QSubstitutionPrivate &dd, QObject *parent = 0);

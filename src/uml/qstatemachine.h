@@ -77,28 +77,28 @@ class Q_UML_EXPORT QStateMachine : public QBehavior
     Q_DECLARE_PRIVATE(QStateMachine)
 
 public:
-    explicit QStateMachine(QObject *parent = 0);
+    Q_INVOKABLE explicit QStateMachine(QObject *parent = 0);
     virtual ~QStateMachine();
 
     // Association ends from QStateMachine
-    const QSet<QStateMachine *> *extendedStateMachines() const;
-    void addExtendedStateMachine(QStateMachine *extendedStateMachine);
-    void removeExtendedStateMachine(QStateMachine *extendedStateMachine);
-    const QSet<QPseudostate *> *connectionPoints() const;
-    void addConnectionPoint(QPseudostate *connectionPoint);
-    void removeConnectionPoint(QPseudostate *connectionPoint);
-    const QSet<QState *> *submachineStates() const;
-    void addSubmachineState(QState *submachineState);
-    void removeSubmachineState(QState *submachineState);
-    const QSet<QRegion *> *regions() const;
-    void addRegion(QRegion *region);
-    void removeRegion(QRegion *region);
+    Q_INVOKABLE const QSet<QStateMachine *> *extendedStateMachines() const;
+    Q_INVOKABLE void addExtendedStateMachine(QStateMachine *extendedStateMachine);
+    Q_INVOKABLE void removeExtendedStateMachine(QStateMachine *extendedStateMachine);
+    Q_INVOKABLE const QSet<QPseudostate *> *connectionPoints() const;
+    Q_INVOKABLE void addConnectionPoint(QPseudostate *connectionPoint);
+    Q_INVOKABLE void removeConnectionPoint(QPseudostate *connectionPoint);
+    Q_INVOKABLE const QSet<QState *> *submachineStates() const;
+    Q_INVOKABLE void addSubmachineState(QState *submachineState);
+    Q_INVOKABLE void removeSubmachineState(QState *submachineState);
+    Q_INVOKABLE const QSet<QRegion *> *regions() const;
+    Q_INVOKABLE void addRegion(QRegion *region);
+    Q_INVOKABLE void removeRegion(QRegion *region);
 
     // Operations
-    QNamespace *LCA(const QState *s1, const QState *s2) const;
-    bool ancestor(const QState *s1, const QState *s2) const;
-    bool isConsistentWith(const QRedefinableElement *redefinee) const;
-    bool isRedefinitionContextValid(const QStateMachine *redefined) const;
+    Q_INVOKABLE QNamespace *LCA(const QState *s1, const QState *s2) const;
+    Q_INVOKABLE bool ancestor(const QState *s1, const QState *s2) const;
+    Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
+    Q_INVOKABLE bool isRedefinitionContextValid(const QStateMachine *redefined) const;
 
 protected:
     explicit QStateMachine(QStateMachinePrivate &dd, QObject *parent = 0);

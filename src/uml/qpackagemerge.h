@@ -68,14 +68,14 @@ class Q_UML_EXPORT QPackageMerge : public QDirectedRelationship
     Q_DECLARE_PRIVATE(QPackageMerge)
 
 public:
-    explicit QPackageMerge(QObject *parent = 0);
+    Q_INVOKABLE explicit QPackageMerge(QObject *parent = 0);
     virtual ~QPackageMerge();
 
     // Association ends from QPackageMerge
-    QPackage *mergedPackage() const;
-    void setMergedPackage(QPackage *mergedPackage);
-    QPackage *receivingPackage() const;
-    void setReceivingPackage(QPackage *receivingPackage);
+    Q_INVOKABLE QPackage *mergedPackage() const;
+    Q_INVOKABLE void setMergedPackage(QPackage *mergedPackage);
+    Q_INVOKABLE QPackage *receivingPackage() const;
+    Q_INVOKABLE void setReceivingPackage(QPackage *receivingPackage);
 
 protected:
     explicit QPackageMerge(QPackageMergePrivate &dd, QObject *parent = 0);

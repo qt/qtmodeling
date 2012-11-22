@@ -67,12 +67,12 @@ class Q_UML_EXPORT QReception : public QBehavioralFeature
     Q_DECLARE_PRIVATE(QReception)
 
 public:
-    explicit QReception(QObject *parent = 0);
+    Q_INVOKABLE explicit QReception(QObject *parent = 0);
     virtual ~QReception();
 
     // Association ends from QReception
-    QSignal *signal() const;
-    void setSignal(QSignal *signal);
+    Q_INVOKABLE QSignal *signal() const;
+    Q_INVOKABLE void setSignal(QSignal *signal);
 
 protected:
     explicit QReception(QReceptionPrivate &dd, QObject *parent = 0);

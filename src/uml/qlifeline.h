@@ -78,21 +78,21 @@ class Q_UML_EXPORT QLifeline : public QNamedElement
     Q_DECLARE_PRIVATE(QLifeline)
 
 public:
-    explicit QLifeline(QObject *parent = 0);
+    Q_INVOKABLE explicit QLifeline(QObject *parent = 0);
     virtual ~QLifeline();
 
     // Association ends from QLifeline
-    QConnectableElement *represents() const;
-    void setRepresents(QConnectableElement *represents);
-    QPartDecomposition *decomposedAs() const;
-    void setDecomposedAs(QPartDecomposition *decomposedAs);
-    const QSet<QInteractionFragment *> *coveredBy() const;
-    void addCoveredBy(QInteractionFragment *coveredBy);
-    void removeCoveredBy(QInteractionFragment *coveredBy);
-    QInteraction *interaction() const;
-    void setInteraction(QInteraction *interaction);
-    QValueSpecification *selector() const;
-    void setSelector(QValueSpecification *selector);
+    Q_INVOKABLE QConnectableElement *represents() const;
+    Q_INVOKABLE void setRepresents(QConnectableElement *represents);
+    Q_INVOKABLE QPartDecomposition *decomposedAs() const;
+    Q_INVOKABLE void setDecomposedAs(QPartDecomposition *decomposedAs);
+    Q_INVOKABLE const QSet<QInteractionFragment *> *coveredBy() const;
+    Q_INVOKABLE void addCoveredBy(QInteractionFragment *coveredBy);
+    Q_INVOKABLE void removeCoveredBy(QInteractionFragment *coveredBy);
+    Q_INVOKABLE QInteraction *interaction() const;
+    Q_INVOKABLE void setInteraction(QInteraction *interaction);
+    Q_INVOKABLE QValueSpecification *selector() const;
+    Q_INVOKABLE void setSelector(QValueSpecification *selector);
 
 protected:
     explicit QLifeline(QLifelinePrivate &dd, QObject *parent = 0);

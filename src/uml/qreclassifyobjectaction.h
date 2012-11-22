@@ -74,22 +74,22 @@ class Q_UML_EXPORT QReclassifyObjectAction : public QAction
     Q_DECLARE_PRIVATE(QReclassifyObjectAction)
 
 public:
-    explicit QReclassifyObjectAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QReclassifyObjectAction(QObject *parent = 0);
     virtual ~QReclassifyObjectAction();
 
     // Attributes from QReclassifyObjectAction
-    bool isReplaceAll() const;
-    void setReplaceAll(bool isReplaceAll);
+    Q_INVOKABLE bool isReplaceAll() const;
+    Q_INVOKABLE void setReplaceAll(bool isReplaceAll);
 
     // Association ends from QReclassifyObjectAction
-    const QSet<QClassifier *> *oldClassifiers() const;
-    void addOldClassifier(QClassifier *oldClassifier);
-    void removeOldClassifier(QClassifier *oldClassifier);
-    QInputPin *object() const;
-    void setObject(QInputPin *object);
-    const QSet<QClassifier *> *newClassifiers() const;
-    void addNewClassifier(QClassifier *newClassifier);
-    void removeNewClassifier(QClassifier *newClassifier);
+    Q_INVOKABLE const QSet<QClassifier *> *oldClassifiers() const;
+    Q_INVOKABLE void addOldClassifier(QClassifier *oldClassifier);
+    Q_INVOKABLE void removeOldClassifier(QClassifier *oldClassifier);
+    Q_INVOKABLE QInputPin *object() const;
+    Q_INVOKABLE void setObject(QInputPin *object);
+    Q_INVOKABLE const QSet<QClassifier *> *newClassifiers() const;
+    Q_INVOKABLE void addNewClassifier(QClassifier *newClassifier);
+    Q_INVOKABLE void removeNewClassifier(QClassifier *newClassifier);
 
 protected:
     explicit QReclassifyObjectAction(QReclassifyObjectActionPrivate &dd, QObject *parent = 0);

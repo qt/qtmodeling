@@ -67,12 +67,12 @@ class Q_UML_EXPORT QAcceptCallAction : public QAcceptEventAction
     Q_DECLARE_PRIVATE(QAcceptCallAction)
 
 public:
-    explicit QAcceptCallAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QAcceptCallAction(QObject *parent = 0);
     virtual ~QAcceptCallAction();
 
     // Association ends from QAcceptCallAction
-    QOutputPin *returnInformation() const;
-    void setReturnInformation(QOutputPin *returnInformation);
+    Q_INVOKABLE QOutputPin *returnInformation() const;
+    Q_INVOKABLE void setReturnInformation(QOutputPin *returnInformation);
 
 protected:
     explicit QAcceptCallAction(QAcceptCallActionPrivate &dd, QObject *parent = 0);

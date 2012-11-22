@@ -69,14 +69,14 @@ class Q_UML_EXPORT QWriteStructuralFeatureAction : public QStructuralFeatureActi
     Q_DECLARE_PRIVATE(QWriteStructuralFeatureAction)
 
 public:
-    explicit QWriteStructuralFeatureAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QWriteStructuralFeatureAction(QObject *parent = 0);
     virtual ~QWriteStructuralFeatureAction();
 
     // Association ends from QWriteStructuralFeatureAction
-    QOutputPin *result() const;
-    void setResult(QOutputPin *result);
-    QInputPin *value() const;
-    void setValue(QInputPin *value);
+    Q_INVOKABLE QOutputPin *result() const;
+    Q_INVOKABLE void setResult(QOutputPin *result);
+    Q_INVOKABLE QInputPin *value() const;
+    Q_INVOKABLE void setValue(QInputPin *value);
 
 protected:
     explicit QWriteStructuralFeatureAction(QWriteStructuralFeatureActionPrivate &dd, QObject *parent = 0);

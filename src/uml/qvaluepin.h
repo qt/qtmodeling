@@ -67,12 +67,12 @@ class Q_UML_EXPORT QValuePin : public QInputPin
     Q_DECLARE_PRIVATE(QValuePin)
 
 public:
-    explicit QValuePin(QObject *parent = 0);
+    Q_INVOKABLE explicit QValuePin(QObject *parent = 0);
     virtual ~QValuePin();
 
     // Association ends from QValuePin
-    QValueSpecification *value() const;
-    void setValue(QValueSpecification *value);
+    Q_INVOKABLE QValueSpecification *value() const;
+    Q_INVOKABLE void setValue(QValueSpecification *value);
 
 protected:
     explicit QValuePin(QValuePinPrivate &dd, QObject *parent = 0);

@@ -77,54 +77,54 @@ class Q_UML_EXPORT QInstanceSpecification : public QObject
     Q_DECLARE_PRIVATE(QInstanceSpecification)
 
 public:
-    explicit QInstanceSpecification(QObject *parent = 0);
+    Q_INVOKABLE explicit QInstanceSpecification(QObject *parent = 0);
     virtual ~QInstanceSpecification();
 
     // Association ends from aggregated QElement
-    const QSet<QElement *> *ownedElements() const;
-    QElement *owner() const;
-    const QSet<QComment *> *ownedComments() const;
-    void addOwnedComment(QComment *ownedComment);
-    void removeOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE QElement *owner() const;
+    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
     // Attributes from aggregated QNamedElement
-    QString name() const;
-    void setName(QString name);
-    QString qualifiedName() const;
+    Q_INVOKABLE QString name() const;
+    Q_INVOKABLE void setName(QString name);
+    Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from aggregated QNamedElement
-    QStringExpression *nameExpression() const;
-    void setNameExpression(QStringExpression *nameExpression);
-    QNamespace *namespace_() const;
-    const QSet<QDependency *> *clientDependencies() const;
-    void addClientDependency(QDependency *clientDependency);
-    void removeClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE QStringExpression *nameExpression() const;
+    Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
+    Q_INVOKABLE QNamespace *namespace_() const;
+    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
     // Association ends from aggregated QParameterableElement
-    QTemplateParameter *owningTemplateParameter() const;
-    void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
-    QTemplateParameter *templateParameter() const;
-    void setTemplateParameter(QTemplateParameter *templateParameter);
+    Q_INVOKABLE QTemplateParameter *owningTemplateParameter() const;
+    Q_INVOKABLE void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
+    Q_INVOKABLE QTemplateParameter *templateParameter() const;
+    Q_INVOKABLE void setTemplateParameter(QTemplateParameter *templateParameter);
 
     // Attributes from aggregated QPackageableElement
-    QtUml::VisibilityKind visibility() const;
-    void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
 
     // Association ends from aggregated QDeploymentTarget
-    const QSet<QPackageableElement *> *deployedElements() const;
-    const QSet<QDeployment *> *deployments() const;
-    void addDeployment(QDeployment *deployment);
-    void removeDeployment(QDeployment *deployment);
+    Q_INVOKABLE const QSet<QPackageableElement *> *deployedElements() const;
+    Q_INVOKABLE const QSet<QDeployment *> *deployments() const;
+    Q_INVOKABLE void addDeployment(QDeployment *deployment);
+    Q_INVOKABLE void removeDeployment(QDeployment *deployment);
 
     // Association ends from QInstanceSpecification
-    const QSet<QClassifier *> *classifiers() const;
-    void addClassifier(QClassifier *classifier);
-    void removeClassifier(QClassifier *classifier);
-    QValueSpecification *specification() const;
-    void setSpecification(QValueSpecification *specification);
-    const QSet<QSlot *> *slots_() const;
-    void addSlot_(QSlot *slot_);
-    void removeSlot_(QSlot *slot_);
+    Q_INVOKABLE const QSet<QClassifier *> *classifiers() const;
+    Q_INVOKABLE void addClassifier(QClassifier *classifier);
+    Q_INVOKABLE void removeClassifier(QClassifier *classifier);
+    Q_INVOKABLE QValueSpecification *specification() const;
+    Q_INVOKABLE void setSpecification(QValueSpecification *specification);
+    Q_INVOKABLE const QSet<QSlot *> *slots_() const;
+    Q_INVOKABLE void addSlot_(QSlot *slot_);
+    Q_INVOKABLE void removeSlot_(QSlot *slot_);
 
 protected:
     explicit QInstanceSpecification(QInstanceSpecificationPrivate &dd, QObject *parent = 0);

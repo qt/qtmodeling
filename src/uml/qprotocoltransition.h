@@ -73,15 +73,15 @@ class Q_UML_EXPORT QProtocolTransition : public QTransition
     Q_DECLARE_PRIVATE(QProtocolTransition)
 
 public:
-    explicit QProtocolTransition(QObject *parent = 0);
+    Q_INVOKABLE explicit QProtocolTransition(QObject *parent = 0);
     virtual ~QProtocolTransition();
 
     // Association ends from QProtocolTransition
-    QConstraint *postCondition() const;
-    void setPostCondition(QConstraint *postCondition);
-    const QSet<QOperation *> *referred() const;
-    QConstraint *preCondition() const;
-    void setPreCondition(QConstraint *preCondition);
+    Q_INVOKABLE QConstraint *postCondition() const;
+    Q_INVOKABLE void setPostCondition(QConstraint *postCondition);
+    Q_INVOKABLE const QSet<QOperation *> *referred() const;
+    Q_INVOKABLE QConstraint *preCondition() const;
+    Q_INVOKABLE void setPreCondition(QConstraint *preCondition);
 
 protected:
     explicit QProtocolTransition(QProtocolTransitionPrivate &dd, QObject *parent = 0);

@@ -72,21 +72,21 @@ class Q_UML_EXPORT QComponentRealization : public QRealization
     Q_DECLARE_PRIVATE(QComponentRealization)
 
 public:
-    explicit QComponentRealization(QObject *parent = 0);
+    Q_INVOKABLE explicit QComponentRealization(QObject *parent = 0);
     virtual ~QComponentRealization();
 
     // Association ends from QComponentRealization
-    QComponent *abstraction() const;
-    void setAbstraction(QComponent *abstraction);
-    const QSet<QClassifier *> *realizingClassifiers() const;
-    void addRealizingClassifier(QClassifier *realizingClassifier);
-    void removeRealizingClassifier(QClassifier *realizingClassifier);
+    Q_INVOKABLE QComponent *abstraction() const;
+    Q_INVOKABLE void setAbstraction(QComponent *abstraction);
+    Q_INVOKABLE const QSet<QClassifier *> *realizingClassifiers() const;
+    Q_INVOKABLE void addRealizingClassifier(QClassifier *realizingClassifier);
+    Q_INVOKABLE void removeRealizingClassifier(QClassifier *realizingClassifier);
 
     // Overriden methods for subsetted properties
-    void addSupplier(QUmlPointer<QComponent> abstraction);
-    void removeSupplier(QUmlPointer<QComponent> abstraction);
-    void addClient(QUmlPointer<QClassifier> realizingClassifier);
-    void removeClient(QUmlPointer<QClassifier> realizingClassifier);
+    Q_INVOKABLE void addSupplier(QUmlPointer<QComponent> abstraction);
+    Q_INVOKABLE void removeSupplier(QUmlPointer<QComponent> abstraction);
+    Q_INVOKABLE void addClient(QUmlPointer<QClassifier> realizingClassifier);
+    Q_INVOKABLE void removeClient(QUmlPointer<QClassifier> realizingClassifier);
 
 protected:
     explicit QComponentRealization(QComponentRealizationPrivate &dd, QObject *parent = 0);

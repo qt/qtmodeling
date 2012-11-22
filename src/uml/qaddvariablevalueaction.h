@@ -68,16 +68,16 @@ class Q_UML_EXPORT QAddVariableValueAction : public QWriteVariableAction
     Q_DECLARE_PRIVATE(QAddVariableValueAction)
 
 public:
-    explicit QAddVariableValueAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QAddVariableValueAction(QObject *parent = 0);
     virtual ~QAddVariableValueAction();
 
     // Attributes from QAddVariableValueAction
-    bool isReplaceAll() const;
-    void setReplaceAll(bool isReplaceAll);
+    Q_INVOKABLE bool isReplaceAll() const;
+    Q_INVOKABLE void setReplaceAll(bool isReplaceAll);
 
     // Association ends from QAddVariableValueAction
-    QInputPin *insertAt() const;
-    void setInsertAt(QInputPin *insertAt);
+    Q_INVOKABLE QInputPin *insertAt() const;
+    Q_INVOKABLE void setInsertAt(QInputPin *insertAt);
 
 protected:
     explicit QAddVariableValueAction(QAddVariableValueActionPrivate &dd, QObject *parent = 0);

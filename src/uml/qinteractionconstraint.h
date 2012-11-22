@@ -68,14 +68,14 @@ class Q_UML_EXPORT QInteractionConstraint : public QConstraint
     Q_DECLARE_PRIVATE(QInteractionConstraint)
 
 public:
-    explicit QInteractionConstraint(QObject *parent = 0);
+    Q_INVOKABLE explicit QInteractionConstraint(QObject *parent = 0);
     virtual ~QInteractionConstraint();
 
     // Association ends from QInteractionConstraint
-    QValueSpecification *maxint() const;
-    void setMaxint(QValueSpecification *maxint);
-    QValueSpecification *minint() const;
-    void setMinint(QValueSpecification *minint);
+    Q_INVOKABLE QValueSpecification *maxint() const;
+    Q_INVOKABLE void setMaxint(QValueSpecification *maxint);
+    Q_INVOKABLE QValueSpecification *minint() const;
+    Q_INVOKABLE void setMinint(QValueSpecification *minint);
 
 protected:
     explicit QInteractionConstraint(QInteractionConstraintPrivate &dd, QObject *parent = 0);

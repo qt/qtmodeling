@@ -67,12 +67,12 @@ class Q_UML_EXPORT QTypedElement : public QNamedElement
     Q_DECLARE_PRIVATE(QTypedElement)
 
 public:
-    explicit QTypedElement(QObject *parent = 0);
+    Q_INVOKABLE explicit QTypedElement(QObject *parent = 0);
     virtual ~QTypedElement();
 
     // Association ends from QTypedElement
-    QType *type() const;
-    void setType(QType *type);
+    Q_INVOKABLE QType *type() const;
+    Q_INVOKABLE void setType(QType *type);
 
 protected:
     explicit QTypedElement(QTypedElementPrivate &dd, QObject *parent = 0);

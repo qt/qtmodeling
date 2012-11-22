@@ -62,7 +62,7 @@ class Q_UML_EXPORT QLiteralSpecification : public QValueSpecification
     Q_DECLARE_PRIVATE(QLiteralSpecification)
 
 public:
-    explicit QLiteralSpecification(QObject *parent = 0);
+    Q_INVOKABLE explicit QLiteralSpecification(QObject *parent = 0);
     virtual ~QLiteralSpecification();
 
 protected:

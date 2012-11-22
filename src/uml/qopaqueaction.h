@@ -76,24 +76,24 @@ class Q_UML_EXPORT QOpaqueAction : public QAction
     Q_DECLARE_PRIVATE(QOpaqueAction)
 
 public:
-    explicit QOpaqueAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QOpaqueAction(QObject *parent = 0);
     virtual ~QOpaqueAction();
 
     // Attributes from QOpaqueAction
-    const QList<QString> *bodies() const;
-    void addBody(QString body);
-    void removeBody(QString body);
-    const QList<QString> *languages() const;
-    void addLanguage(QString language);
-    void removeLanguage(QString language);
+    Q_INVOKABLE const QList<QString> *bodies() const;
+    Q_INVOKABLE void addBody(QString body);
+    Q_INVOKABLE void removeBody(QString body);
+    Q_INVOKABLE const QList<QString> *languages() const;
+    Q_INVOKABLE void addLanguage(QString language);
+    Q_INVOKABLE void removeLanguage(QString language);
 
     // Association ends from QOpaqueAction
-    const QSet<QInputPin *> *inputValues() const;
-    void addInputValue(QInputPin *inputValue);
-    void removeInputValue(QInputPin *inputValue);
-    const QSet<QOutputPin *> *outputValues() const;
-    void addOutputValue(QOutputPin *outputValue);
-    void removeOutputValue(QOutputPin *outputValue);
+    Q_INVOKABLE const QSet<QInputPin *> *inputValues() const;
+    Q_INVOKABLE void addInputValue(QInputPin *inputValue);
+    Q_INVOKABLE void removeInputValue(QInputPin *inputValue);
+    Q_INVOKABLE const QSet<QOutputPin *> *outputValues() const;
+    Q_INVOKABLE void addOutputValue(QOutputPin *outputValue);
+    Q_INVOKABLE void removeOutputValue(QOutputPin *outputValue);
 
 protected:
     explicit QOpaqueAction(QOpaqueActionPrivate &dd, QObject *parent = 0);

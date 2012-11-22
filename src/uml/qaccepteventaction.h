@@ -73,20 +73,20 @@ class Q_UML_EXPORT QAcceptEventAction : public QAction
     Q_DECLARE_PRIVATE(QAcceptEventAction)
 
 public:
-    explicit QAcceptEventAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QAcceptEventAction(QObject *parent = 0);
     virtual ~QAcceptEventAction();
 
     // Attributes from QAcceptEventAction
-    bool isUnmarshall() const;
-    void setUnmarshall(bool isUnmarshall);
+    Q_INVOKABLE bool isUnmarshall() const;
+    Q_INVOKABLE void setUnmarshall(bool isUnmarshall);
 
     // Association ends from QAcceptEventAction
-    const QSet<QTrigger *> *triggers() const;
-    void addTrigger(QTrigger *trigger);
-    void removeTrigger(QTrigger *trigger);
-    const QSet<QOutputPin *> *results() const;
-    void addResult(QOutputPin *result);
-    void removeResult(QOutputPin *result);
+    Q_INVOKABLE const QSet<QTrigger *> *triggers() const;
+    Q_INVOKABLE void addTrigger(QTrigger *trigger);
+    Q_INVOKABLE void removeTrigger(QTrigger *trigger);
+    Q_INVOKABLE const QSet<QOutputPin *> *results() const;
+    Q_INVOKABLE void addResult(QOutputPin *result);
+    Q_INVOKABLE void removeResult(QOutputPin *result);
 
 protected:
     explicit QAcceptEventAction(QAcceptEventActionPrivate &dd, QObject *parent = 0);

@@ -67,12 +67,12 @@ class Q_UML_EXPORT QBroadcastSignalAction : public QInvocationAction
     Q_DECLARE_PRIVATE(QBroadcastSignalAction)
 
 public:
-    explicit QBroadcastSignalAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QBroadcastSignalAction(QObject *parent = 0);
     virtual ~QBroadcastSignalAction();
 
     // Association ends from QBroadcastSignalAction
-    QSignal *signal() const;
-    void setSignal(QSignal *signal);
+    Q_INVOKABLE QSignal *signal() const;
+    Q_INVOKABLE void setSignal(QSignal *signal);
 
 protected:
     explicit QBroadcastSignalAction(QBroadcastSignalActionPrivate &dd, QObject *parent = 0);

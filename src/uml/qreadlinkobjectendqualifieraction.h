@@ -71,16 +71,16 @@ class Q_UML_EXPORT QReadLinkObjectEndQualifierAction : public QAction
     Q_DECLARE_PRIVATE(QReadLinkObjectEndQualifierAction)
 
 public:
-    explicit QReadLinkObjectEndQualifierAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QReadLinkObjectEndQualifierAction(QObject *parent = 0);
     virtual ~QReadLinkObjectEndQualifierAction();
 
     // Association ends from QReadLinkObjectEndQualifierAction
-    QOutputPin *result() const;
-    void setResult(QOutputPin *result);
-    QInputPin *object() const;
-    void setObject(QInputPin *object);
-    QProperty *qualifier() const;
-    void setQualifier(QProperty *qualifier);
+    Q_INVOKABLE QOutputPin *result() const;
+    Q_INVOKABLE void setResult(QOutputPin *result);
+    Q_INVOKABLE QInputPin *object() const;
+    Q_INVOKABLE void setObject(QInputPin *object);
+    Q_INVOKABLE QProperty *qualifier() const;
+    Q_INVOKABLE void setQualifier(QProperty *qualifier);
 
 protected:
     explicit QReadLinkObjectEndQualifierAction(QReadLinkObjectEndQualifierActionPrivate &dd, QObject *parent = 0);

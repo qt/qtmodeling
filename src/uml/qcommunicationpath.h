@@ -62,7 +62,7 @@ class Q_UML_EXPORT QCommunicationPath : public QAssociation
     Q_DECLARE_PRIVATE(QCommunicationPath)
 
 public:
-    explicit QCommunicationPath(QObject *parent = 0);
+    Q_INVOKABLE explicit QCommunicationPath(QObject *parent = 0);
     virtual ~QCommunicationPath();
 
 protected:

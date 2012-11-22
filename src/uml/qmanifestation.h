@@ -67,16 +67,16 @@ class Q_UML_EXPORT QManifestation : public QAbstraction
     Q_DECLARE_PRIVATE(QManifestation)
 
 public:
-    explicit QManifestation(QObject *parent = 0);
+    Q_INVOKABLE explicit QManifestation(QObject *parent = 0);
     virtual ~QManifestation();
 
     // Association ends from QManifestation
-    QPackageableElement *utilizedElement() const;
-    void setUtilizedElement(QPackageableElement *utilizedElement);
+    Q_INVOKABLE QPackageableElement *utilizedElement() const;
+    Q_INVOKABLE void setUtilizedElement(QPackageableElement *utilizedElement);
 
     // Overriden methods for subsetted properties
-    void addSupplier(QUmlPointer<QPackageableElement> utilizedElement);
-    void removeSupplier(QUmlPointer<QPackageableElement> utilizedElement);
+    Q_INVOKABLE void addSupplier(QUmlPointer<QPackageableElement> utilizedElement);
+    Q_INVOKABLE void removeSupplier(QUmlPointer<QPackageableElement> utilizedElement);
 
 protected:
     explicit QManifestation(QManifestationPrivate &dd, QObject *parent = 0);

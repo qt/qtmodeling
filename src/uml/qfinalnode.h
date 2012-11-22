@@ -62,7 +62,7 @@ class Q_UML_EXPORT QFinalNode : public QControlNode
     Q_DECLARE_PRIVATE(QFinalNode)
 
 public:
-    explicit QFinalNode(QObject *parent = 0);
+    Q_INVOKABLE explicit QFinalNode(QObject *parent = 0);
     virtual ~QFinalNode();
 
 protected:

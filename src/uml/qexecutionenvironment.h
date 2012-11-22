@@ -62,7 +62,7 @@ class Q_UML_EXPORT QExecutionEnvironment : public QNode
     Q_DECLARE_PRIVATE(QExecutionEnvironment)
 
 public:
-    explicit QExecutionEnvironment(QObject *parent = 0);
+    Q_INVOKABLE explicit QExecutionEnvironment(QObject *parent = 0);
     virtual ~QExecutionEnvironment();
 
 protected:

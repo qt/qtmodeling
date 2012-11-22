@@ -73,53 +73,53 @@ class Q_UML_EXPORT QDependency : public QObject
     Q_DECLARE_PRIVATE(QDependency)
 
 public:
-    explicit QDependency(QObject *parent = 0);
+    Q_INVOKABLE explicit QDependency(QObject *parent = 0);
     virtual ~QDependency();
 
     // Association ends from aggregated QElement
-    const QSet<QElement *> *ownedElements() const;
-    QElement *owner() const;
-    const QSet<QComment *> *ownedComments() const;
-    void addOwnedComment(QComment *ownedComment);
-    void removeOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE QElement *owner() const;
+    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
     // Association ends from aggregated QParameterableElement
-    QTemplateParameter *owningTemplateParameter() const;
-    void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
-    QTemplateParameter *templateParameter() const;
-    void setTemplateParameter(QTemplateParameter *templateParameter);
+    Q_INVOKABLE QTemplateParameter *owningTemplateParameter() const;
+    Q_INVOKABLE void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
+    Q_INVOKABLE QTemplateParameter *templateParameter() const;
+    Q_INVOKABLE void setTemplateParameter(QTemplateParameter *templateParameter);
 
     // Attributes from aggregated QNamedElement
-    QString name() const;
-    void setName(QString name);
-    QString qualifiedName() const;
+    Q_INVOKABLE QString name() const;
+    Q_INVOKABLE void setName(QString name);
+    Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from aggregated QNamedElement
-    QStringExpression *nameExpression() const;
-    void setNameExpression(QStringExpression *nameExpression);
-    QNamespace *namespace_() const;
-    const QSet<QDependency *> *clientDependencies() const;
-    void addClientDependency(QDependency *clientDependency);
-    void removeClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE QStringExpression *nameExpression() const;
+    Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
+    Q_INVOKABLE QNamespace *namespace_() const;
+    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
     // Attributes from aggregated QPackageableElement
-    QtUml::VisibilityKind visibility() const;
-    void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
 
     // Association ends from aggregated QRelationship
-    const QSet<QElement *> *relatedElements() const;
+    Q_INVOKABLE const QSet<QElement *> *relatedElements() const;
 
     // Association ends from aggregated QDirectedRelationship
-    const QSet<QElement *> *sources() const;
-    const QSet<QElement *> *targets() const;
+    Q_INVOKABLE const QSet<QElement *> *sources() const;
+    Q_INVOKABLE const QSet<QElement *> *targets() const;
 
     // Association ends from QDependency
-    const QSet<QNamedElement *> *clients() const;
-    void addClient(QNamedElement *client);
-    void removeClient(QNamedElement *client);
-    const QSet<QNamedElement *> *suppliers() const;
-    void addSupplier(QNamedElement *supplier);
-    void removeSupplier(QNamedElement *supplier);
+    Q_INVOKABLE const QSet<QNamedElement *> *clients() const;
+    Q_INVOKABLE void addClient(QNamedElement *client);
+    Q_INVOKABLE void removeClient(QNamedElement *client);
+    Q_INVOKABLE const QSet<QNamedElement *> *suppliers() const;
+    Q_INVOKABLE void addSupplier(QNamedElement *supplier);
+    Q_INVOKABLE void removeSupplier(QNamedElement *supplier);
 
 protected:
     explicit QDependency(QDependencyPrivate &dd, QObject *parent = 0);
