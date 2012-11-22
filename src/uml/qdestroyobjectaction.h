@@ -69,18 +69,18 @@ class Q_UML_EXPORT QDestroyObjectAction : public QAction
     Q_DECLARE_PRIVATE(QDestroyObjectAction)
 
 public:
-    explicit QDestroyObjectAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QDestroyObjectAction(QObject *parent = 0);
     virtual ~QDestroyObjectAction();
 
     // Attributes from QDestroyObjectAction
-    bool isDestroyLinks() const;
-    void setDestroyLinks(bool isDestroyLinks);
-    bool isDestroyOwnedObjects() const;
-    void setDestroyOwnedObjects(bool isDestroyOwnedObjects);
+    Q_INVOKABLE bool isDestroyLinks() const;
+    Q_INVOKABLE void setDestroyLinks(bool isDestroyLinks);
+    Q_INVOKABLE bool isDestroyOwnedObjects() const;
+    Q_INVOKABLE void setDestroyOwnedObjects(bool isDestroyOwnedObjects);
 
     // Association ends from QDestroyObjectAction
-    QInputPin *target() const;
-    void setTarget(QInputPin *target);
+    Q_INVOKABLE QInputPin *target() const;
+    Q_INVOKABLE void setTarget(QInputPin *target);
 
 protected:
     explicit QDestroyObjectAction(QDestroyObjectActionPrivate &dd, QObject *parent = 0);

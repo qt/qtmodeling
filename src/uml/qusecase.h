@@ -76,25 +76,25 @@ class Q_UML_EXPORT QUseCase : public QBehavioredClassifier
     Q_DECLARE_PRIVATE(QUseCase)
 
 public:
-    explicit QUseCase(QObject *parent = 0);
+    Q_INVOKABLE explicit QUseCase(QObject *parent = 0);
     virtual ~QUseCase();
 
     // Association ends from QUseCase
-    const QSet<QExtensionPoint *> *extensionPoints() const;
-    void addExtensionPoint(QExtensionPoint *extensionPoint);
-    void removeExtensionPoint(QExtensionPoint *extensionPoint);
-    const QSet<QInclude *> *includes() const;
-    void addInclude(QInclude *include);
-    void removeInclude(QInclude *include);
-    const QSet<QClassifier *> *subjects() const;
-    void addSubject(QClassifier *subject);
-    void removeSubject(QClassifier *subject);
-    const QSet<QExtend *> *extends() const;
-    void addExtend(QExtend *extend);
-    void removeExtend(QExtend *extend);
+    Q_INVOKABLE const QSet<QExtensionPoint *> *extensionPoints() const;
+    Q_INVOKABLE void addExtensionPoint(QExtensionPoint *extensionPoint);
+    Q_INVOKABLE void removeExtensionPoint(QExtensionPoint *extensionPoint);
+    Q_INVOKABLE const QSet<QInclude *> *includes() const;
+    Q_INVOKABLE void addInclude(QInclude *include);
+    Q_INVOKABLE void removeInclude(QInclude *include);
+    Q_INVOKABLE const QSet<QClassifier *> *subjects() const;
+    Q_INVOKABLE void addSubject(QClassifier *subject);
+    Q_INVOKABLE void removeSubject(QClassifier *subject);
+    Q_INVOKABLE const QSet<QExtend *> *extends() const;
+    Q_INVOKABLE void addExtend(QExtend *extend);
+    Q_INVOKABLE void removeExtend(QExtend *extend);
 
     // Operations
-    const QSet<QUseCase *> *allIncludedUseCases() const;
+    Q_INVOKABLE const QSet<QUseCase *> *allIncludedUseCases() const;
 
 protected:
     explicit QUseCase(QUseCasePrivate &dd, QObject *parent = 0);

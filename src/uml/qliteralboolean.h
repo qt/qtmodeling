@@ -64,16 +64,16 @@ class Q_UML_EXPORT QLiteralBoolean : public QLiteralSpecification
     Q_DECLARE_PRIVATE(QLiteralBoolean)
 
 public:
-    explicit QLiteralBoolean(QObject *parent = 0);
+    Q_INVOKABLE explicit QLiteralBoolean(QObject *parent = 0);
     virtual ~QLiteralBoolean();
 
     // Attributes from QLiteralBoolean
-    bool value() const;
-    void setValue(bool value);
+    Q_INVOKABLE bool value() const;
+    Q_INVOKABLE void setValue(bool value);
 
     // Operations
-    bool booleanValue() const;
-    bool isComputable() const;
+    Q_INVOKABLE bool booleanValue() const;
+    Q_INVOKABLE bool isComputable() const;
 
 protected:
     explicit QLiteralBoolean(QLiteralBooleanPrivate &dd, QObject *parent = 0);

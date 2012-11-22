@@ -69,14 +69,14 @@ class Q_UML_EXPORT QDecisionNode : public QControlNode
     Q_DECLARE_PRIVATE(QDecisionNode)
 
 public:
-    explicit QDecisionNode(QObject *parent = 0);
+    Q_INVOKABLE explicit QDecisionNode(QObject *parent = 0);
     virtual ~QDecisionNode();
 
     // Association ends from QDecisionNode
-    QObjectFlow *decisionInputFlow() const;
-    void setDecisionInputFlow(QObjectFlow *decisionInputFlow);
-    QBehavior *decisionInput() const;
-    void setDecisionInput(QBehavior *decisionInput);
+    Q_INVOKABLE QObjectFlow *decisionInputFlow() const;
+    Q_INVOKABLE void setDecisionInputFlow(QObjectFlow *decisionInputFlow);
+    Q_INVOKABLE QBehavior *decisionInput() const;
+    Q_INVOKABLE void setDecisionInput(QBehavior *decisionInput);
 
 protected:
     explicit QDecisionNode(QDecisionNodePrivate &dd, QObject *parent = 0);

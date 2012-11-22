@@ -77,29 +77,29 @@ class Q_UML_EXPORT QPort : public QProperty
     Q_DECLARE_PRIVATE(QPort)
 
 public:
-    explicit QPort(QObject *parent = 0);
+    Q_INVOKABLE explicit QPort(QObject *parent = 0);
     virtual ~QPort();
 
     // Attributes from QPort
-    bool isConjugated() const;
-    void setConjugated(bool isConjugated);
-    bool isBehavior() const;
-    void setBehavior(bool isBehavior);
-    bool isService() const;
-    void setService(bool isService);
+    Q_INVOKABLE bool isConjugated() const;
+    Q_INVOKABLE void setConjugated(bool isConjugated);
+    Q_INVOKABLE bool isBehavior() const;
+    Q_INVOKABLE void setBehavior(bool isBehavior);
+    Q_INVOKABLE bool isService() const;
+    Q_INVOKABLE void setService(bool isService);
 
     // Association ends from QPort
-    QProtocolStateMachine *protocol() const;
-    void setProtocol(QProtocolStateMachine *protocol);
-    const QSet<QInterface *> *required() const;
-    const QSet<QInterface *> *provided() const;
-    const QSet<QPort *> *redefinedPorts() const;
-    void addRedefinedPort(QPort *redefinedPort);
-    void removeRedefinedPort(QPort *redefinedPort);
+    Q_INVOKABLE QProtocolStateMachine *protocol() const;
+    Q_INVOKABLE void setProtocol(QProtocolStateMachine *protocol);
+    Q_INVOKABLE const QSet<QInterface *> *required() const;
+    Q_INVOKABLE const QSet<QInterface *> *provided() const;
+    Q_INVOKABLE const QSet<QPort *> *redefinedPorts() const;
+    Q_INVOKABLE void addRedefinedPort(QPort *redefinedPort);
+    Q_INVOKABLE void removeRedefinedPort(QPort *redefinedPort);
 
     // Overriden methods for subsetted properties
-    void addRedefinedProperty(QUmlPointer<QPort> redefinedPort);
-    void removeRedefinedProperty(QUmlPointer<QPort> redefinedPort);
+    Q_INVOKABLE void addRedefinedProperty(QUmlPointer<QPort> redefinedPort);
+    Q_INVOKABLE void removeRedefinedProperty(QUmlPointer<QPort> redefinedPort);
 
 protected:
     explicit QPort(QPortPrivate &dd, QObject *parent = 0);

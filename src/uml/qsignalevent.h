@@ -67,12 +67,12 @@ class Q_UML_EXPORT QSignalEvent : public QMessageEvent
     Q_DECLARE_PRIVATE(QSignalEvent)
 
 public:
-    explicit QSignalEvent(QObject *parent = 0);
+    Q_INVOKABLE explicit QSignalEvent(QObject *parent = 0);
     virtual ~QSignalEvent();
 
     // Association ends from QSignalEvent
-    QSignal *signal() const;
-    void setSignal(QSignal *signal);
+    Q_INVOKABLE QSignal *signal() const;
+    Q_INVOKABLE void setSignal(QSignal *signal);
 
 protected:
     explicit QSignalEvent(QSignalEventPrivate &dd, QObject *parent = 0);

@@ -68,19 +68,19 @@ class Q_UML_EXPORT QExtensionEnd : public QProperty
     Q_DECLARE_PRIVATE(QExtensionEnd)
 
 public:
-    explicit QExtensionEnd(QObject *parent = 0);
+    Q_INVOKABLE explicit QExtensionEnd(QObject *parent = 0);
     virtual ~QExtensionEnd();
 
     // Attributes from QExtensionEnd
-    qint32 lower() const;
-    void setLower(qint32 lower);
+    Q_INVOKABLE qint32 lower() const;
+    Q_INVOKABLE void setLower(qint32 lower);
 
     // Association ends from QExtensionEnd
-    QStereotype *type() const;
-    void setType(QStereotype *type);
+    Q_INVOKABLE QStereotype *type() const;
+    Q_INVOKABLE void setType(QStereotype *type);
 
     // Operations
-    qint32 lowerBound() const;
+    Q_INVOKABLE qint32 lowerBound() const;
 
 protected:
     explicit QExtensionEnd(QExtensionEndPrivate &dd, QObject *parent = 0);

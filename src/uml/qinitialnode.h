@@ -62,7 +62,7 @@ class Q_UML_EXPORT QInitialNode : public QControlNode
     Q_DECLARE_PRIVATE(QInitialNode)
 
 public:
-    explicit QInitialNode(QObject *parent = 0);
+    Q_INVOKABLE explicit QInitialNode(QObject *parent = 0);
     virtual ~QInitialNode();
 
 protected:

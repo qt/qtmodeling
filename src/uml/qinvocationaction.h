@@ -72,15 +72,15 @@ class Q_UML_EXPORT QInvocationAction : public QAction
     Q_DECLARE_PRIVATE(QInvocationAction)
 
 public:
-    explicit QInvocationAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QInvocationAction(QObject *parent = 0);
     virtual ~QInvocationAction();
 
     // Association ends from QInvocationAction
-    const QList<QInputPin *> *arguments() const;
-    void addArgument(QInputPin *argument);
-    void removeArgument(QInputPin *argument);
-    QPort *onPort() const;
-    void setOnPort(QPort *onPort);
+    Q_INVOKABLE const QList<QInputPin *> *arguments() const;
+    Q_INVOKABLE void addArgument(QInputPin *argument);
+    Q_INVOKABLE void removeArgument(QInputPin *argument);
+    Q_INVOKABLE QPort *onPort() const;
+    Q_INVOKABLE void setOnPort(QPort *onPort);
 
 protected:
     explicit QInvocationAction(QInvocationActionPrivate &dd, QObject *parent = 0);

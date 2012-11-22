@@ -62,7 +62,7 @@ class Q_UML_EXPORT QControlFlow : public QActivityEdge
     Q_DECLARE_PRIVATE(QControlFlow)
 
 public:
-    explicit QControlFlow(QObject *parent = 0);
+    Q_INVOKABLE explicit QControlFlow(QObject *parent = 0);
     virtual ~QControlFlow();
 
 protected:

@@ -62,7 +62,7 @@ class Q_UML_EXPORT QWriteLinkAction : public QLinkAction
     Q_DECLARE_PRIVATE(QWriteLinkAction)
 
 public:
-    explicit QWriteLinkAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QWriteLinkAction(QObject *parent = 0);
     virtual ~QWriteLinkAction();
 
 protected:

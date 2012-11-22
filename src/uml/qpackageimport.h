@@ -73,18 +73,18 @@ class Q_UML_EXPORT QPackageImport : public QDirectedRelationship
     Q_DECLARE_PRIVATE(QPackageImport)
 
 public:
-    explicit QPackageImport(QObject *parent = 0);
+    Q_INVOKABLE explicit QPackageImport(QObject *parent = 0);
     virtual ~QPackageImport();
 
     // Attributes from QPackageImport
-    QtUml::VisibilityKind visibility() const;
-    void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
 
     // Association ends from QPackageImport
-    QNamespace *importingNamespace() const;
-    void setImportingNamespace(QNamespace *importingNamespace);
-    QPackage *importedPackage() const;
-    void setImportedPackage(QPackage *importedPackage);
+    Q_INVOKABLE QNamespace *importingNamespace() const;
+    Q_INVOKABLE void setImportingNamespace(QNamespace *importingNamespace);
+    Q_INVOKABLE QPackage *importedPackage() const;
+    Q_INVOKABLE void setImportedPackage(QPackage *importedPackage);
 
 protected:
     explicit QPackageImport(QPackageImportPrivate &dd, QObject *parent = 0);

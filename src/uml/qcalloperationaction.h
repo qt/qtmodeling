@@ -69,14 +69,14 @@ class Q_UML_EXPORT QCallOperationAction : public QCallAction
     Q_DECLARE_PRIVATE(QCallOperationAction)
 
 public:
-    explicit QCallOperationAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QCallOperationAction(QObject *parent = 0);
     virtual ~QCallOperationAction();
 
     // Association ends from QCallOperationAction
-    QOperation *operation() const;
-    void setOperation(QOperation *operation);
-    QInputPin *target() const;
-    void setTarget(QInputPin *target);
+    Q_INVOKABLE QOperation *operation() const;
+    Q_INVOKABLE void setOperation(QOperation *operation);
+    Q_INVOKABLE QInputPin *target() const;
+    Q_INVOKABLE void setTarget(QInputPin *target);
 
 protected:
     explicit QCallOperationAction(QCallOperationActionPrivate &dd, QObject *parent = 0);

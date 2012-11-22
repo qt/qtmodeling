@@ -6,13 +6,16 @@
 #include <QtUml/QEnumeration>
 #include <QtUml/QEnumerationLiteral>
 #include <QtUml/QClass>
+#include <QtUml/QComment>
 
 #include <QtCore/QDebug>
 #include <QtCore/QVariant>
 #include <QtCore/QRegularExpression>
 #include <QtCore/QMetaProperty>
+#include <QtCore/QTimer>
 
 #include <QtWidgets/QComboBox>
+#include <QContextMenuEvent>
 
 using namespace QtUml;
 
@@ -67,6 +70,42 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::contextMenuEvent(QContextMenuEvent *event)
+{
+    QMenu menu(this);
+    QObject *element = ui->modelExplorer->currentItem()->data(0, Qt::UserRole).value<QObject *>();
+    _visitedAddMethods.clear();
+    populateContextMenu(menu, element);
+    menu.exec(event->globalPos());
+}
+
+void MainWindow::populateContextMenu(QMenu &menu, QObject *element)
+{
+    foreach (QObject *child, element->children())
+        populateContextMenu(menu, child);
+
+    const QMetaObject *metaObject = element->metaObject();
+    int propertyCount = metaObject->propertyCount();
+    for (int i = 0; i < propertyCount; ++i) {
+        QString propertyName = metaObject->property(i).name();
+        QString propertyType = metaObject->property(i).typeName();
+        if (propertyType.contains("QList") || propertyType.contains("QSet")) {
+            QString modifiedPropertyName = QString(propertyName.left(1).toUpper()+propertyName.mid(1)).remove(QRegularExpression("s$")).replace(QRegularExpression("ie$"), "y").replace(QRegularExpression("se$"), "s").replace(QRegularExpression("ice$"), "ex").replace(QRegularExpression("ce$"), "x");
+            QString methodParameter = QString(metaObject->property(i).typeName()).remove("const QList<").remove("const QSet<").remove(">*");
+            QString methodSignature = QString("add%1(%2)").arg(modifiedPropertyName).arg(methodParameter);
+            int metaMethodIndex;
+            QString text = tr("Add %1").arg(modifiedPropertyName);
+            if ((metaMethodIndex = metaObject->indexOfMethod(methodSignature.toLatin1())) != -1 and !_visitedAddMethods.contains(text)) {
+                QAction *action = new QAction(text, this);
+                _visitedAddMethods[text] = QPair<QObject *, QMetaMethod>(element, metaObject->method(metaMethodIndex));
+                action->setData(methodParameter);
+                connect(action, SIGNAL(triggered()), this, SLOT(handleAddMethod()));
+                menu.addAction(action);
+            }
+        }
+    }
 }
 
 void MainWindow::handleMetaObjectProperties(QObject *element, const QMetaObject *metaObject, int level)
@@ -201,6 +240,9 @@ void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, Q
 {
     Q_UNUSED(previous)
 
+    if (!current)
+        return;
+
     ui->propertyEditor->blockSignals(true);
     QObject *element = current->data(0, Qt::UserRole).value<QObject *>();
     ui->propertyEditor->clear();
@@ -219,9 +261,10 @@ void MainWindow::on_propertyEditor_itemChanged(QTreeWidgetItem *item, int column
     if (column == 1) {
         QObject *element = ui->modelExplorer->currentItem()->data(0, Qt::UserRole).value<QObject *>();
         const QMetaObject *metaObject = element->metaObject();
-        if (metaObject->property(metaObject->indexOfProperty(item->text(0).toLatin1())).type() == QVariant::String)
+        if (metaObject->property(metaObject->indexOfProperty(item->text(0).toLatin1())).type() == QVariant::String) {
             element->setProperty(item->text(0).toLatin1(), item->text(1));
-        on_modelExplorer_currentItemChanged(ui->modelExplorer->currentItem(), 0);
+            QTimer::singleShot(0, this, SLOT(refreshModel()));
+        }
     }
 }
 
@@ -243,6 +286,7 @@ void MainWindow::populateModelExplorer(QObject *element, QTreeWidgetItem *parent
     if (!element)
         return;
 
+    ui->modelExplorer->blockSignals(true);
     QObject *parentObject = element;
     while (parentObject->parent())
         parentObject = parentObject->parent();
@@ -252,9 +296,11 @@ void MainWindow::populateModelExplorer(QObject *element, QTreeWidgetItem *parent
     if (!parent)
         ui->modelExplorer->addTopLevelItem(item);
 
-    if (QNamespace *namespace_ = qtuml_object_cast<QNamespace *>(element))
-        foreach (QNamedElement *childNamedElement, *namespace_->members())
-            populateModelExplorer(childNamedElement, item);
+    if (QElement *umlElement = qtuml_object_cast<QElement *>(element))
+        foreach (QElement *ownedElement, *umlElement->ownedElements())
+            populateModelExplorer(ownedElement, item);
+    ui->modelExplorer->blockSignals(false);
+    ui->modelExplorer->setCurrentItem(ui->modelExplorer->topLevelItem(0));
 }
 
 QTreeWidgetItem *MainWindow::parentItemForProperty(QString propertyGroup)
@@ -265,4 +311,33 @@ QTreeWidgetItem *MainWindow::parentItemForProperty(QString propertyGroup)
         if (ui->propertyEditor->topLevelItem(i)->text(0) == propertyGroup)
             parentItem = ui->propertyEditor->topLevelItem(i);
     return parentItem;
+}
+
+void MainWindow::handleAddMethod()
+{
+    QAction *action = qobject_cast<QAction *>(sender());
+    if (action) {
+        QObject *element = _visitedAddMethods[action->text()].first;
+        QMetaMethod metaMethod = _visitedAddMethods[action->text()].second;
+        QString elementType = action->data().toString();
+        int type;
+        qRegisterMetaType<QComment *>("QComment *");
+        if ((type = QMetaType::type(elementType.toLatin1())) != QMetaType::UnknownType) {
+            const QMetaObject *metaObject = QMetaType::metaObjectForType(type);
+            if (metaObject) {
+                QObject *addedElement = metaObject->newInstance();
+                addedElement->setObjectName(QString("Unamed %1").arg(elementType.remove("*")));
+                if (addedElement)
+                    metaMethod.invoke(element, Q_ARG(QObject *, addedElement));
+            }
+        }
+    }
+    QTimer::singleShot(0, this, SLOT(refreshModel()));
+}
+
+void MainWindow::refreshModel()
+{
+    QObject *rootElement = qtuml_object_cast<QObject *>(ui->modelExplorer->topLevelItem(0)->data(0, Qt::UserRole).value<QObject *>());
+    ui->modelExplorer->clear();
+    populateModelExplorer(rootElement);
 }

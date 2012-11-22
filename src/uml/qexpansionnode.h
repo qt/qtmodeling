@@ -68,14 +68,14 @@ class Q_UML_EXPORT QExpansionNode : public QObjectNode
     Q_DECLARE_PRIVATE(QExpansionNode)
 
 public:
-    explicit QExpansionNode(QObject *parent = 0);
+    Q_INVOKABLE explicit QExpansionNode(QObject *parent = 0);
     virtual ~QExpansionNode();
 
     // Association ends from QExpansionNode
-    QExpansionRegion *regionAsOutput() const;
-    void setRegionAsOutput(QExpansionRegion *regionAsOutput);
-    QExpansionRegion *regionAsInput() const;
-    void setRegionAsInput(QExpansionRegion *regionAsInput);
+    Q_INVOKABLE QExpansionRegion *regionAsOutput() const;
+    Q_INVOKABLE void setRegionAsOutput(QExpansionRegion *regionAsOutput);
+    Q_INVOKABLE QExpansionRegion *regionAsInput() const;
+    Q_INVOKABLE void setRegionAsInput(QExpansionRegion *regionAsInput);
 
 protected:
     explicit QExpansionNode(QExpansionNodePrivate &dd, QObject *parent = 0);

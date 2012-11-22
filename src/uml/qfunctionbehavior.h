@@ -62,7 +62,7 @@ class Q_UML_EXPORT QFunctionBehavior : public QOpaqueBehavior
     Q_DECLARE_PRIVATE(QFunctionBehavior)
 
 public:
-    explicit QFunctionBehavior(QObject *parent = 0);
+    Q_INVOKABLE explicit QFunctionBehavior(QObject *parent = 0);
     virtual ~QFunctionBehavior();
 
 protected:

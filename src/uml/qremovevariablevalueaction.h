@@ -68,16 +68,16 @@ class Q_UML_EXPORT QRemoveVariableValueAction : public QWriteVariableAction
     Q_DECLARE_PRIVATE(QRemoveVariableValueAction)
 
 public:
-    explicit QRemoveVariableValueAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QRemoveVariableValueAction(QObject *parent = 0);
     virtual ~QRemoveVariableValueAction();
 
     // Attributes from QRemoveVariableValueAction
-    bool isRemoveDuplicates() const;
-    void setRemoveDuplicates(bool isRemoveDuplicates);
+    Q_INVOKABLE bool isRemoveDuplicates() const;
+    Q_INVOKABLE void setRemoveDuplicates(bool isRemoveDuplicates);
 
     // Association ends from QRemoveVariableValueAction
-    QInputPin *removeAt() const;
-    void setRemoveAt(QInputPin *removeAt);
+    Q_INVOKABLE QInputPin *removeAt() const;
+    Q_INVOKABLE void setRemoveAt(QInputPin *removeAt);
 
 protected:
     explicit QRemoveVariableValueAction(QRemoveVariableValueActionPrivate &dd, QObject *parent = 0);

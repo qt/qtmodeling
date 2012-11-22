@@ -62,7 +62,7 @@ class Q_UML_EXPORT QPartDecomposition : public QInteractionUse
     Q_DECLARE_PRIVATE(QPartDecomposition)
 
 public:
-    explicit QPartDecomposition(QObject *parent = 0);
+    Q_INVOKABLE explicit QPartDecomposition(QObject *parent = 0);
     virtual ~QPartDecomposition();
 
 protected:

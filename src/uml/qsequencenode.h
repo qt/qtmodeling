@@ -70,13 +70,13 @@ class Q_UML_EXPORT QSequenceNode : public QStructuredActivityNode
     Q_DECLARE_PRIVATE(QSequenceNode)
 
 public:
-    explicit QSequenceNode(QObject *parent = 0);
+    Q_INVOKABLE explicit QSequenceNode(QObject *parent = 0);
     virtual ~QSequenceNode();
 
     // Association ends from QSequenceNode
-    const QList<QExecutableNode *> *executableNodes() const;
-    void addExecutableNode(QExecutableNode *executableNode);
-    void removeExecutableNode(QExecutableNode *executableNode);
+    Q_INVOKABLE const QList<QExecutableNode *> *executableNodes() const;
+    Q_INVOKABLE void addExecutableNode(QExecutableNode *executableNode);
+    Q_INVOKABLE void removeExecutableNode(QExecutableNode *executableNode);
 
 protected:
     explicit QSequenceNode(QSequenceNodePrivate &dd, QObject *parent = 0);

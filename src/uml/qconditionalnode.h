@@ -75,22 +75,22 @@ class Q_UML_EXPORT QConditionalNode : public QStructuredActivityNode
     Q_DECLARE_PRIVATE(QConditionalNode)
 
 public:
-    explicit QConditionalNode(QObject *parent = 0);
+    Q_INVOKABLE explicit QConditionalNode(QObject *parent = 0);
     virtual ~QConditionalNode();
 
     // Attributes from QConditionalNode
-    bool isAssured() const;
-    void setAssured(bool isAssured);
-    bool isDeterminate() const;
-    void setDeterminate(bool isDeterminate);
+    Q_INVOKABLE bool isAssured() const;
+    Q_INVOKABLE void setAssured(bool isAssured);
+    Q_INVOKABLE bool isDeterminate() const;
+    Q_INVOKABLE void setDeterminate(bool isDeterminate);
 
     // Association ends from QConditionalNode
-    const QSet<QClause *> *clauses() const;
-    void addClause(QClause *clause);
-    void removeClause(QClause *clause);
-    const QList<QOutputPin *> *results() const;
-    void addResult(QOutputPin *result);
-    void removeResult(QOutputPin *result);
+    Q_INVOKABLE const QSet<QClause *> *clauses() const;
+    Q_INVOKABLE void addClause(QClause *clause);
+    Q_INVOKABLE void removeClause(QClause *clause);
+    Q_INVOKABLE const QList<QOutputPin *> *results() const;
+    Q_INVOKABLE void addResult(QOutputPin *result);
+    Q_INVOKABLE void removeResult(QOutputPin *result);
 
 protected:
     explicit QConditionalNode(QConditionalNodePrivate &dd, QObject *parent = 0);

@@ -104,7 +104,7 @@
             [%- found = 'true' -%]
             [%- END -%]
             [%- FOREACH accessor IN attribute.accessor %]
-    ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
+    Q_INVOKABLE ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
             [%- LAST IF attribute.isReadOnly == 'true' -%]
             [%- END -%]
         [%- END -%]
@@ -118,7 +118,7 @@
             [%- found = 'true' -%]
             [%- END -%]
             [%- FOREACH accessor IN associationend.accessor %]
-    ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
+    Q_INVOKABLE ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
             [%- LAST IF associationend.isReadOnly == 'true' -%]
             [%- END -%]
         [%- END -%]
@@ -244,7 +244,7 @@ class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name} : [% I
     Q_DECLARE_PRIVATE(${class.name})
 
 public:
-    explicit ${class.name}(QObject *parent = 0);
+    Q_INVOKABLE explicit ${class.name}(QObject *parent = 0);
     virtual ~${class.name}();
 [%- IF class.superclass and class.superclass.size > 1 -%]
     [%- GENERATEFUNCTIONS(class, 'true') -%]
@@ -254,7 +254,7 @@ public:
 
     // Operations
     [%- FOREACH operation IN class.operation %]
-    ${operation.return}${operation.name}([%- FOREACH parameter IN operation.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${operation.constness};
+    Q_INVOKABLE ${operation.return}${operation.name}([%- FOREACH parameter IN operation.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${operation.constness};
     [%- END %]
     [%- END %]
     [%- found = 'false' -%]
@@ -275,7 +275,7 @@ public:
     [%- END -%]
     [%- FOREACH accessor IN property.accessor -%]
     [%- NEXT IF loop.first %]
-    ${accessor.return}${accessor.name}([%- FOREACH parameter IN attribute.accessor.1.parameter -%]QUmlPointer<${parameter.type.remove(' \*$')}> ${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
+    Q_INVOKABLE ${accessor.return}${accessor.name}([%- FOREACH parameter IN attribute.accessor.1.parameter -%]QUmlPointer<${parameter.type.remove(' \*$')}> ${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
     [%- END -%]
     [%- END -%]
     [%- END -%]
@@ -299,7 +299,7 @@ public:
     [%- END -%]
     [%- FOREACH accessor IN property.accessor -%]
     [%- NEXT IF loop.first %]
-    ${accessor.return}${accessor.name}([%- FOREACH parameter IN associationend.accessor.1.parameter -%]QUmlPointer<${parameter.type.remove(' \*$')}> ${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
+    Q_INVOKABLE ${accessor.return}${accessor.name}([%- FOREACH parameter IN associationend.accessor.1.parameter -%]QUmlPointer<${parameter.type.remove(' \*$')}> ${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
     [%- END -%]
     [%- END -%]
     [%- END -%]

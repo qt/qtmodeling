@@ -64,16 +64,16 @@ class Q_UML_EXPORT QLiteralUnlimitedNatural : public QLiteralSpecification
     Q_DECLARE_PRIVATE(QLiteralUnlimitedNatural)
 
 public:
-    explicit QLiteralUnlimitedNatural(QObject *parent = 0);
+    Q_INVOKABLE explicit QLiteralUnlimitedNatural(QObject *parent = 0);
     virtual ~QLiteralUnlimitedNatural();
 
     // Attributes from QLiteralUnlimitedNatural
-    qint32 value() const;
-    void setValue(qint32 value);
+    Q_INVOKABLE qint32 value() const;
+    Q_INVOKABLE void setValue(qint32 value);
 
     // Operations
-    bool isComputable() const;
-    qint32 unlimitedValue() const;
+    Q_INVOKABLE bool isComputable() const;
+    Q_INVOKABLE qint32 unlimitedValue() const;
 
 protected:
     explicit QLiteralUnlimitedNatural(QLiteralUnlimitedNaturalPrivate &dd, QObject *parent = 0);

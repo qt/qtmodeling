@@ -72,20 +72,20 @@ class Q_UML_EXPORT QTemplateParameter : public QElement
     Q_DECLARE_PRIVATE(QTemplateParameter)
 
 public:
-    explicit QTemplateParameter(QObject *parent = 0);
+    Q_INVOKABLE explicit QTemplateParameter(QObject *parent = 0);
     virtual ~QTemplateParameter();
 
     // Association ends from QTemplateParameter
-    QParameterableElement *default_() const;
-    void setDefault_(QParameterableElement *default_);
-    QParameterableElement *parameteredElement() const;
-    void setParameteredElement(QParameterableElement *parameteredElement);
-    QParameterableElement *ownedParameteredElement() const;
-    void setOwnedParameteredElement(QParameterableElement *ownedParameteredElement);
-    QParameterableElement *ownedDefault() const;
-    void setOwnedDefault(QParameterableElement *ownedDefault);
-    QTemplateSignature *signature() const;
-    void setSignature(QTemplateSignature *signature);
+    Q_INVOKABLE QParameterableElement *default_() const;
+    Q_INVOKABLE void setDefault_(QParameterableElement *default_);
+    Q_INVOKABLE QParameterableElement *parameteredElement() const;
+    Q_INVOKABLE void setParameteredElement(QParameterableElement *parameteredElement);
+    Q_INVOKABLE QParameterableElement *ownedParameteredElement() const;
+    Q_INVOKABLE void setOwnedParameteredElement(QParameterableElement *ownedParameteredElement);
+    Q_INVOKABLE QParameterableElement *ownedDefault() const;
+    Q_INVOKABLE void setOwnedDefault(QParameterableElement *ownedDefault);
+    Q_INVOKABLE QTemplateSignature *signature() const;
+    Q_INVOKABLE void setSignature(QTemplateSignature *signature);
 
 protected:
     explicit QTemplateParameter(QTemplateParameterPrivate &dd, QObject *parent = 0);

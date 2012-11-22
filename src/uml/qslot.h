@@ -74,17 +74,17 @@ class Q_UML_EXPORT QSlot : public QElement
     Q_DECLARE_PRIVATE(QSlot)
 
 public:
-    explicit QSlot(QObject *parent = 0);
+    Q_INVOKABLE explicit QSlot(QObject *parent = 0);
     virtual ~QSlot();
 
     // Association ends from QSlot
-    const QList<QValueSpecification *> *values() const;
-    void addValue(QValueSpecification *value);
-    void removeValue(QValueSpecification *value);
-    QStructuralFeature *definingFeature() const;
-    void setDefiningFeature(QStructuralFeature *definingFeature);
-    QInstanceSpecification *owningInstance() const;
-    void setOwningInstance(QInstanceSpecification *owningInstance);
+    Q_INVOKABLE const QList<QValueSpecification *> *values() const;
+    Q_INVOKABLE void addValue(QValueSpecification *value);
+    Q_INVOKABLE void removeValue(QValueSpecification *value);
+    Q_INVOKABLE QStructuralFeature *definingFeature() const;
+    Q_INVOKABLE void setDefiningFeature(QStructuralFeature *definingFeature);
+    Q_INVOKABLE QInstanceSpecification *owningInstance() const;
+    Q_INVOKABLE void setOwningInstance(QInstanceSpecification *owningInstance);
 
 protected:
     explicit QSlot(QSlotPrivate &dd, QObject *parent = 0);

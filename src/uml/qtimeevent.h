@@ -68,16 +68,16 @@ class Q_UML_EXPORT QTimeEvent : public QEvent
     Q_DECLARE_PRIVATE(QTimeEvent)
 
 public:
-    explicit QTimeEvent(QObject *parent = 0);
+    Q_INVOKABLE explicit QTimeEvent(QObject *parent = 0);
     virtual ~QTimeEvent();
 
     // Attributes from QTimeEvent
-    bool isRelative() const;
-    void setRelative(bool isRelative);
+    Q_INVOKABLE bool isRelative() const;
+    Q_INVOKABLE void setRelative(bool isRelative);
 
     // Association ends from QTimeEvent
-    QTimeExpression *when() const;
-    void setWhen(QTimeExpression *when);
+    Q_INVOKABLE QTimeExpression *when() const;
+    Q_INVOKABLE void setWhen(QTimeExpression *when);
 
 protected:
     explicit QTimeEvent(QTimeEventPrivate &dd, QObject *parent = 0);

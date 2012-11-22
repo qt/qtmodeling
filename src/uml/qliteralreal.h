@@ -64,16 +64,16 @@ class Q_UML_EXPORT QLiteralReal : public QLiteralSpecification
     Q_DECLARE_PRIVATE(QLiteralReal)
 
 public:
-    explicit QLiteralReal(QObject *parent = 0);
+    Q_INVOKABLE explicit QLiteralReal(QObject *parent = 0);
     virtual ~QLiteralReal();
 
     // Attributes from QLiteralReal
-    qreal value() const;
-    void setValue(qreal value);
+    Q_INVOKABLE qreal value() const;
+    Q_INVOKABLE void setValue(qreal value);
 
     // Operations
-    bool isComputable() const;
-    qreal realValue() const;
+    Q_INVOKABLE bool isComputable() const;
+    Q_INVOKABLE qreal realValue() const;
 
 protected:
     explicit QLiteralReal(QLiteralRealPrivate &dd, QObject *parent = 0);

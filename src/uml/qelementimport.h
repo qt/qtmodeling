@@ -77,23 +77,23 @@ class Q_UML_EXPORT QElementImport : public QDirectedRelationship
     Q_DECLARE_PRIVATE(QElementImport)
 
 public:
-    explicit QElementImport(QObject *parent = 0);
+    Q_INVOKABLE explicit QElementImport(QObject *parent = 0);
     virtual ~QElementImport();
 
     // Attributes from QElementImport
-    QString alias() const;
-    void setAlias(QString alias);
-    QtUml::VisibilityKind visibility() const;
-    void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QString alias() const;
+    Q_INVOKABLE void setAlias(QString alias);
+    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
 
     // Association ends from QElementImport
-    QPackageableElement *importedElement() const;
-    void setImportedElement(QPackageableElement *importedElement);
-    QNamespace *importingNamespace() const;
-    void setImportingNamespace(QNamespace *importingNamespace);
+    Q_INVOKABLE QPackageableElement *importedElement() const;
+    Q_INVOKABLE void setImportedElement(QPackageableElement *importedElement);
+    Q_INVOKABLE QNamespace *importingNamespace() const;
+    Q_INVOKABLE void setImportingNamespace(QNamespace *importingNamespace);
 
     // Operations
-    QString getName() const;
+    Q_INVOKABLE QString getName() const;
 
 protected:
     explicit QElementImport(QElementImportPrivate &dd, QObject *parent = 0);

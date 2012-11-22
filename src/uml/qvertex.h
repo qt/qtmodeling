@@ -74,17 +74,17 @@ class Q_UML_EXPORT QVertex : public QNamedElement
     Q_DECLARE_PRIVATE(QVertex)
 
 public:
-    explicit QVertex(QObject *parent = 0);
+    Q_INVOKABLE explicit QVertex(QObject *parent = 0);
     virtual ~QVertex();
 
     // Association ends from QVertex
-    const QSet<QTransition *> *incomings() const;
-    QRegion *container() const;
-    void setContainer(QRegion *container);
-    const QSet<QTransition *> *outgoings() const;
+    Q_INVOKABLE const QSet<QTransition *> *incomings() const;
+    Q_INVOKABLE QRegion *container() const;
+    Q_INVOKABLE void setContainer(QRegion *container);
+    Q_INVOKABLE const QSet<QTransition *> *outgoings() const;
 
     // Operations
-    QStateMachine *containingStateMachine() const;
+    Q_INVOKABLE QStateMachine *containingStateMachine() const;
 
     // Classes which access read-only opposite properties should be friend
     friend class QTransition;

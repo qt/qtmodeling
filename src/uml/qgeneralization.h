@@ -74,21 +74,21 @@ class Q_UML_EXPORT QGeneralization : public QDirectedRelationship
     Q_DECLARE_PRIVATE(QGeneralization)
 
 public:
-    explicit QGeneralization(QObject *parent = 0);
+    Q_INVOKABLE explicit QGeneralization(QObject *parent = 0);
     virtual ~QGeneralization();
 
     // Attributes from QGeneralization
-    bool isSubstitutable() const;
-    void setSubstitutable(bool isSubstitutable);
+    Q_INVOKABLE bool isSubstitutable() const;
+    Q_INVOKABLE void setSubstitutable(bool isSubstitutable);
 
     // Association ends from QGeneralization
-    QClassifier *specific() const;
-    void setSpecific(QClassifier *specific);
-    const QSet<QGeneralizationSet *> *generalizationSets() const;
-    void addGeneralizationSet(QGeneralizationSet *generalizationSet);
-    void removeGeneralizationSet(QGeneralizationSet *generalizationSet);
-    QClassifier *general() const;
-    void setGeneral(QClassifier *general);
+    Q_INVOKABLE QClassifier *specific() const;
+    Q_INVOKABLE void setSpecific(QClassifier *specific);
+    Q_INVOKABLE const QSet<QGeneralizationSet *> *generalizationSets() const;
+    Q_INVOKABLE void addGeneralizationSet(QGeneralizationSet *generalizationSet);
+    Q_INVOKABLE void removeGeneralizationSet(QGeneralizationSet *generalizationSet);
+    Q_INVOKABLE QClassifier *general() const;
+    Q_INVOKABLE void setGeneral(QClassifier *general);
 
 protected:
     explicit QGeneralization(QGeneralizationPrivate &dd, QObject *parent = 0);

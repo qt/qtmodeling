@@ -72,19 +72,19 @@ class Q_UML_EXPORT QClassifierTemplateParameter : public QTemplateParameter
     Q_DECLARE_PRIVATE(QClassifierTemplateParameter)
 
 public:
-    explicit QClassifierTemplateParameter(QObject *parent = 0);
+    Q_INVOKABLE explicit QClassifierTemplateParameter(QObject *parent = 0);
     virtual ~QClassifierTemplateParameter();
 
     // Attributes from QClassifierTemplateParameter
-    bool allowSubstitutable() const;
-    void setAllowSubstitutable(bool allowSubstitutable);
+    Q_INVOKABLE bool allowSubstitutable() const;
+    Q_INVOKABLE void setAllowSubstitutable(bool allowSubstitutable);
 
     // Association ends from QClassifierTemplateParameter
-    QClassifier *parameteredElement() const;
-    void setParameteredElement(QClassifier *parameteredElement);
-    const QSet<QClassifier *> *constrainingClassifiers() const;
-    void addConstrainingClassifier(QClassifier *constrainingClassifier);
-    void removeConstrainingClassifier(QClassifier *constrainingClassifier);
+    Q_INVOKABLE QClassifier *parameteredElement() const;
+    Q_INVOKABLE void setParameteredElement(QClassifier *parameteredElement);
+    Q_INVOKABLE const QSet<QClassifier *> *constrainingClassifiers() const;
+    Q_INVOKABLE void addConstrainingClassifier(QClassifier *constrainingClassifier);
+    Q_INVOKABLE void removeConstrainingClassifier(QClassifier *constrainingClassifier);
 
 protected:
     explicit QClassifierTemplateParameter(QClassifierTemplateParameterPrivate &dd, QObject *parent = 0);

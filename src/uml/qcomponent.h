@@ -77,26 +77,26 @@ class Q_UML_EXPORT QComponent : public QClass
     Q_DECLARE_PRIVATE(QComponent)
 
 public:
-    explicit QComponent(QObject *parent = 0);
+    Q_INVOKABLE explicit QComponent(QObject *parent = 0);
     virtual ~QComponent();
 
     // Attributes from QComponent
-    bool isIndirectlyInstantiated() const;
-    void setIndirectlyInstantiated(bool isIndirectlyInstantiated);
+    Q_INVOKABLE bool isIndirectlyInstantiated() const;
+    Q_INVOKABLE void setIndirectlyInstantiated(bool isIndirectlyInstantiated);
 
     // Association ends from QComponent
-    const QSet<QComponentRealization *> *realizations() const;
-    void addRealization(QComponentRealization *realization);
-    void removeRealization(QComponentRealization *realization);
-    const QSet<QInterface *> *required() const;
-    const QSet<QInterface *> *provided() const;
-    const QSet<QPackageableElement *> *packagedElements() const;
-    void addPackagedElement(QPackageableElement *packagedElement);
-    void removePackagedElement(QPackageableElement *packagedElement);
+    Q_INVOKABLE const QSet<QComponentRealization *> *realizations() const;
+    Q_INVOKABLE void addRealization(QComponentRealization *realization);
+    Q_INVOKABLE void removeRealization(QComponentRealization *realization);
+    Q_INVOKABLE const QSet<QInterface *> *required() const;
+    Q_INVOKABLE const QSet<QInterface *> *provided() const;
+    Q_INVOKABLE const QSet<QPackageableElement *> *packagedElements() const;
+    Q_INVOKABLE void addPackagedElement(QPackageableElement *packagedElement);
+    Q_INVOKABLE void removePackagedElement(QPackageableElement *packagedElement);
 
     // Operations
-    const QSet<QInterface *> *realizedInterfaces(const QClassifier *classifier) const;
-    const QSet<QInterface *> *usedInterfaces(const QClassifier *classifier) const;
+    Q_INVOKABLE const QSet<QInterface *> *realizedInterfaces(const QClassifier *classifier) const;
+    Q_INVOKABLE const QSet<QInterface *> *usedInterfaces(const QClassifier *classifier) const;
 
 protected:
     explicit QComponent(QComponentPrivate &dd, QObject *parent = 0);

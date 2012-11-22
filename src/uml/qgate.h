@@ -62,7 +62,7 @@ class Q_UML_EXPORT QGate : public QMessageEnd
     Q_DECLARE_PRIVATE(QGate)
 
 public:
-    explicit QGate(QObject *parent = 0);
+    Q_INVOKABLE explicit QGate(QObject *parent = 0);
     virtual ~QGate();
 
 protected:

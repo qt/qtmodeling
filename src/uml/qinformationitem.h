@@ -67,13 +67,13 @@ class Q_UML_EXPORT QInformationItem : public QClassifier
     Q_DECLARE_PRIVATE(QInformationItem)
 
 public:
-    explicit QInformationItem(QObject *parent = 0);
+    Q_INVOKABLE explicit QInformationItem(QObject *parent = 0);
     virtual ~QInformationItem();
 
     // Association ends from QInformationItem
-    const QSet<QClassifier *> *represented() const;
-    void addRepresented(QClassifier *represented);
-    void removeRepresented(QClassifier *represented);
+    Q_INVOKABLE const QSet<QClassifier *> *represented() const;
+    Q_INVOKABLE void addRepresented(QClassifier *represented);
+    Q_INVOKABLE void removeRepresented(QClassifier *represented);
 
 protected:
     explicit QInformationItem(QInformationItemPrivate &dd, QObject *parent = 0);

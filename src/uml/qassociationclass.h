@@ -64,7 +64,7 @@ class Q_UML_EXPORT QAssociationClass : public QObject
     Q_DECLARE_PRIVATE(QAssociationClass)
 
 public:
-    explicit QAssociationClass(QObject *parent = 0);
+    Q_INVOKABLE explicit QAssociationClass(QObject *parent = 0);
     virtual ~QAssociationClass();
 
 protected:

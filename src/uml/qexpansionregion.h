@@ -75,20 +75,20 @@ class Q_UML_EXPORT QExpansionRegion : public QStructuredActivityNode
     Q_DECLARE_PRIVATE(QExpansionRegion)
 
 public:
-    explicit QExpansionRegion(QObject *parent = 0);
+    Q_INVOKABLE explicit QExpansionRegion(QObject *parent = 0);
     virtual ~QExpansionRegion();
 
     // Attributes from QExpansionRegion
-    QtUml::ExpansionKind mode() const;
-    void setMode(QtUml::ExpansionKind mode);
+    Q_INVOKABLE QtUml::ExpansionKind mode() const;
+    Q_INVOKABLE void setMode(QtUml::ExpansionKind mode);
 
     // Association ends from QExpansionRegion
-    const QSet<QExpansionNode *> *inputElements() const;
-    void addInputElement(QExpansionNode *inputElement);
-    void removeInputElement(QExpansionNode *inputElement);
-    const QSet<QExpansionNode *> *outputElements() const;
-    void addOutputElement(QExpansionNode *outputElement);
-    void removeOutputElement(QExpansionNode *outputElement);
+    Q_INVOKABLE const QSet<QExpansionNode *> *inputElements() const;
+    Q_INVOKABLE void addInputElement(QExpansionNode *inputElement);
+    Q_INVOKABLE void removeInputElement(QExpansionNode *inputElement);
+    Q_INVOKABLE const QSet<QExpansionNode *> *outputElements() const;
+    Q_INVOKABLE void addOutputElement(QExpansionNode *outputElement);
+    Q_INVOKABLE void removeOutputElement(QExpansionNode *outputElement);
 
 protected:
     explicit QExpansionRegion(QExpansionRegionPrivate &dd, QObject *parent = 0);

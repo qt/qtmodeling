@@ -89,77 +89,77 @@ class Q_UML_EXPORT QTransition : public QObject
     Q_DECLARE_PRIVATE(QTransition)
 
 public:
-    explicit QTransition(QObject *parent = 0);
+    Q_INVOKABLE explicit QTransition(QObject *parent = 0);
     virtual ~QTransition();
 
     // Association ends from aggregated QElement
-    const QSet<QElement *> *ownedElements() const;
-    QElement *owner() const;
-    const QSet<QComment *> *ownedComments() const;
-    void addOwnedComment(QComment *ownedComment);
-    void removeOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE QElement *owner() const;
+    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
     // Attributes from aggregated QNamedElement
-    QString name() const;
-    void setName(QString name);
-    QtUml::VisibilityKind visibility() const;
-    void setVisibility(QtUml::VisibilityKind visibility);
-    QString qualifiedName() const;
+    Q_INVOKABLE QString name() const;
+    Q_INVOKABLE void setName(QString name);
+    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from aggregated QNamedElement
-    QStringExpression *nameExpression() const;
-    void setNameExpression(QStringExpression *nameExpression);
-    QNamespace *namespace_() const;
-    const QSet<QDependency *> *clientDependencies() const;
-    void addClientDependency(QDependency *clientDependency);
-    void removeClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE QStringExpression *nameExpression() const;
+    Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
+    Q_INVOKABLE QNamespace *namespace_() const;
+    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
     // Attributes from aggregated QRedefinableElement
-    bool isLeaf() const;
-    void setLeaf(bool isLeaf);
+    Q_INVOKABLE bool isLeaf() const;
+    Q_INVOKABLE void setLeaf(bool isLeaf);
 
     // Association ends from aggregated QRedefinableElement
-    const QSet<QRedefinableElement *> *redefinedElements() const;
+    Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
 
     // Association ends from aggregated QNamespace
-    const QSet<QPackageImport *> *packageImports() const;
-    void addPackageImport(QPackageImport *packageImport);
-    void removePackageImport(QPackageImport *packageImport);
-    const QSet<QNamedElement *> *members() const;
-    const QSet<QPackageableElement *> *importedMembers() const;
-    const QSet<QElementImport *> *elementImports() const;
-    void addElementImport(QElementImport *elementImport);
-    void removeElementImport(QElementImport *elementImport);
-    const QSet<QConstraint *> *ownedRules() const;
-    void addOwnedRule(QConstraint *ownedRule);
-    void removeOwnedRule(QConstraint *ownedRule);
-    const QSet<QNamedElement *> *ownedMembers() const;
+    Q_INVOKABLE const QSet<QPackageImport *> *packageImports() const;
+    Q_INVOKABLE void addPackageImport(QPackageImport *packageImport);
+    Q_INVOKABLE void removePackageImport(QPackageImport *packageImport);
+    Q_INVOKABLE const QSet<QNamedElement *> *members() const;
+    Q_INVOKABLE const QSet<QPackageableElement *> *importedMembers() const;
+    Q_INVOKABLE const QSet<QElementImport *> *elementImports() const;
+    Q_INVOKABLE void addElementImport(QElementImport *elementImport);
+    Q_INVOKABLE void removeElementImport(QElementImport *elementImport);
+    Q_INVOKABLE const QSet<QConstraint *> *ownedRules() const;
+    Q_INVOKABLE void addOwnedRule(QConstraint *ownedRule);
+    Q_INVOKABLE void removeOwnedRule(QConstraint *ownedRule);
+    Q_INVOKABLE const QSet<QNamedElement *> *ownedMembers() const;
 
     // Attributes from QTransition
-    QtUml::TransitionKind kind() const;
-    void setKind(QtUml::TransitionKind kind);
+    Q_INVOKABLE QtUml::TransitionKind kind() const;
+    Q_INVOKABLE void setKind(QtUml::TransitionKind kind);
 
     // Association ends from QTransition
-    QConstraint *guard() const;
-    void setGuard(QConstraint *guard);
-    QVertex *target() const;
-    void setTarget(QVertex *target);
-    QBehavior *effect() const;
-    void setEffect(QBehavior *effect);
-    QRegion *container() const;
-    void setContainer(QRegion *container);
-    QClassifier *redefinitionContext() const;
-    QTransition *redefinedTransition() const;
-    void setRedefinedTransition(QTransition *redefinedTransition);
-    QVertex *source() const;
-    void setSource(QVertex *source);
-    const QSet<QTrigger *> *triggers() const;
-    void addTrigger(QTrigger *trigger);
-    void removeTrigger(QTrigger *trigger);
+    Q_INVOKABLE QConstraint *guard() const;
+    Q_INVOKABLE void setGuard(QConstraint *guard);
+    Q_INVOKABLE QVertex *target() const;
+    Q_INVOKABLE void setTarget(QVertex *target);
+    Q_INVOKABLE QBehavior *effect() const;
+    Q_INVOKABLE void setEffect(QBehavior *effect);
+    Q_INVOKABLE QRegion *container() const;
+    Q_INVOKABLE void setContainer(QRegion *container);
+    Q_INVOKABLE QClassifier *redefinitionContext() const;
+    Q_INVOKABLE QTransition *redefinedTransition() const;
+    Q_INVOKABLE void setRedefinedTransition(QTransition *redefinedTransition);
+    Q_INVOKABLE QVertex *source() const;
+    Q_INVOKABLE void setSource(QVertex *source);
+    Q_INVOKABLE const QSet<QTrigger *> *triggers() const;
+    Q_INVOKABLE void addTrigger(QTrigger *trigger);
+    Q_INVOKABLE void removeTrigger(QTrigger *trigger);
 
     // Operations
-    QStateMachine *containingStateMachine() const;
-    bool isConsistentWith(const QRedefinableElement *redefinee) const;
+    Q_INVOKABLE QStateMachine *containingStateMachine() const;
+    Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
 
 protected:
     explicit QTransition(QTransitionPrivate &dd, QObject *parent = 0);

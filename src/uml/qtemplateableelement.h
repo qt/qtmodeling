@@ -73,19 +73,19 @@ class Q_UML_EXPORT QTemplateableElement : public QElement
     Q_DECLARE_PRIVATE(QTemplateableElement)
 
 public:
-    explicit QTemplateableElement(QObject *parent = 0);
+    Q_INVOKABLE explicit QTemplateableElement(QObject *parent = 0);
     virtual ~QTemplateableElement();
 
     // Association ends from QTemplateableElement
-    QTemplateSignature *ownedTemplateSignature() const;
-    void setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature);
-    const QSet<QTemplateBinding *> *templateBindings() const;
-    void addTemplateBinding(QTemplateBinding *templateBinding);
-    void removeTemplateBinding(QTemplateBinding *templateBinding);
+    Q_INVOKABLE QTemplateSignature *ownedTemplateSignature() const;
+    Q_INVOKABLE void setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature);
+    Q_INVOKABLE const QSet<QTemplateBinding *> *templateBindings() const;
+    Q_INVOKABLE void addTemplateBinding(QTemplateBinding *templateBinding);
+    Q_INVOKABLE void removeTemplateBinding(QTemplateBinding *templateBinding);
 
     // Operations
-    bool isTemplate() const;
-    const QSet<QParameterableElement *> *parameterableElements() const;
+    Q_INVOKABLE bool isTemplate() const;
+    Q_INVOKABLE const QSet<QParameterableElement *> *parameterableElements() const;
 
 protected:
     explicit QTemplateableElement(QTemplateableElementPrivate &dd, QObject *parent = 0);

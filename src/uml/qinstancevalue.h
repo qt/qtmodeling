@@ -67,12 +67,12 @@ class Q_UML_EXPORT QInstanceValue : public QValueSpecification
     Q_DECLARE_PRIVATE(QInstanceValue)
 
 public:
-    explicit QInstanceValue(QObject *parent = 0);
+    Q_INVOKABLE explicit QInstanceValue(QObject *parent = 0);
     virtual ~QInstanceValue();
 
     // Association ends from QInstanceValue
-    QInstanceSpecification *instance() const;
-    void setInstance(QInstanceSpecification *instance);
+    Q_INVOKABLE QInstanceSpecification *instance() const;
+    Q_INVOKABLE void setInstance(QInstanceSpecification *instance);
 
 protected:
     explicit QInstanceValue(QInstanceValuePrivate &dd, QObject *parent = 0);

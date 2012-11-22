@@ -80,83 +80,83 @@ class Q_UML_EXPORT QInteraction : public QObject
     Q_DECLARE_PRIVATE(QInteraction)
 
 public:
-    explicit QInteraction(QObject *parent = 0);
+    Q_INVOKABLE explicit QInteraction(QObject *parent = 0);
     virtual ~QInteraction();
 
     // Attributes from aggregated QBehavior
-    bool isReentrant() const;
-    void setReentrant(bool isReentrant);
+    Q_INVOKABLE bool isReentrant() const;
+    Q_INVOKABLE void setReentrant(bool isReentrant);
 
     // Association ends from aggregated QBehavior
-    QBehavioralFeature *specification() const;
-    void setSpecification(QBehavioralFeature *specification);
-    const QSet<QConstraint *> *postconditions() const;
-    void addPostcondition(QConstraint *postcondition);
-    void removePostcondition(QConstraint *postcondition);
-    const QSet<QConstraint *> *preconditions() const;
-    void addPrecondition(QConstraint *precondition);
-    void removePrecondition(QConstraint *precondition);
-    const QSet<QBehavior *> *redefinedBehaviors() const;
-    void addRedefinedBehavior(QBehavior *redefinedBehavior);
-    void removeRedefinedBehavior(QBehavior *redefinedBehavior);
-    const QList<QParameter *> *ownedParameters() const;
-    void addOwnedParameter(QParameter *ownedParameter);
-    void removeOwnedParameter(QParameter *ownedParameter);
-    const QSet<QParameterSet *> *ownedParameterSets() const;
-    void addOwnedParameterSet(QParameterSet *ownedParameterSet);
-    void removeOwnedParameterSet(QParameterSet *ownedParameterSet);
-    QBehavioredClassifier *context() const;
+    Q_INVOKABLE QBehavioralFeature *specification() const;
+    Q_INVOKABLE void setSpecification(QBehavioralFeature *specification);
+    Q_INVOKABLE const QSet<QConstraint *> *postconditions() const;
+    Q_INVOKABLE void addPostcondition(QConstraint *postcondition);
+    Q_INVOKABLE void removePostcondition(QConstraint *postcondition);
+    Q_INVOKABLE const QSet<QConstraint *> *preconditions() const;
+    Q_INVOKABLE void addPrecondition(QConstraint *precondition);
+    Q_INVOKABLE void removePrecondition(QConstraint *precondition);
+    Q_INVOKABLE const QSet<QBehavior *> *redefinedBehaviors() const;
+    Q_INVOKABLE void addRedefinedBehavior(QBehavior *redefinedBehavior);
+    Q_INVOKABLE void removeRedefinedBehavior(QBehavior *redefinedBehavior);
+    Q_INVOKABLE const QList<QParameter *> *ownedParameters() const;
+    Q_INVOKABLE void addOwnedParameter(QParameter *ownedParameter);
+    Q_INVOKABLE void removeOwnedParameter(QParameter *ownedParameter);
+    Q_INVOKABLE const QSet<QParameterSet *> *ownedParameterSets() const;
+    Q_INVOKABLE void addOwnedParameterSet(QParameterSet *ownedParameterSet);
+    Q_INVOKABLE void removeOwnedParameterSet(QParameterSet *ownedParameterSet);
+    Q_INVOKABLE QBehavioredClassifier *context() const;
 
     // Association ends from aggregated QElement
-    const QSet<QElement *> *ownedElements() const;
-    QElement *owner() const;
-    const QSet<QComment *> *ownedComments() const;
-    void addOwnedComment(QComment *ownedComment);
-    void removeOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE QElement *owner() const;
+    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
     // Attributes from aggregated QNamedElement
-    QString name() const;
-    void setName(QString name);
-    QtUml::VisibilityKind visibility() const;
-    void setVisibility(QtUml::VisibilityKind visibility);
-    QString qualifiedName() const;
+    Q_INVOKABLE QString name() const;
+    Q_INVOKABLE void setName(QString name);
+    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from aggregated QNamedElement
-    QStringExpression *nameExpression() const;
-    void setNameExpression(QStringExpression *nameExpression);
-    QNamespace *namespace_() const;
-    const QSet<QDependency *> *clientDependencies() const;
-    void addClientDependency(QDependency *clientDependency);
-    void removeClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE QStringExpression *nameExpression() const;
+    Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
+    Q_INVOKABLE QNamespace *namespace_() const;
+    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
     // Association ends from aggregated QInteractionFragment
-    const QSet<QGeneralOrdering *> *generalOrderings() const;
-    void addGeneralOrdering(QGeneralOrdering *generalOrdering);
-    void removeGeneralOrdering(QGeneralOrdering *generalOrdering);
-    QInteraction *enclosingInteraction() const;
-    void setEnclosingInteraction(QInteraction *enclosingInteraction);
-    const QSet<QLifeline *> *covered() const;
-    void addCovered(QLifeline *covered);
-    void removeCovered(QLifeline *covered);
-    QInteractionOperand *enclosingOperand() const;
-    void setEnclosingOperand(QInteractionOperand *enclosingOperand);
+    Q_INVOKABLE const QSet<QGeneralOrdering *> *generalOrderings() const;
+    Q_INVOKABLE void addGeneralOrdering(QGeneralOrdering *generalOrdering);
+    Q_INVOKABLE void removeGeneralOrdering(QGeneralOrdering *generalOrdering);
+    Q_INVOKABLE QInteraction *enclosingInteraction() const;
+    Q_INVOKABLE void setEnclosingInteraction(QInteraction *enclosingInteraction);
+    Q_INVOKABLE const QSet<QLifeline *> *covered() const;
+    Q_INVOKABLE void addCovered(QLifeline *covered);
+    Q_INVOKABLE void removeCovered(QLifeline *covered);
+    Q_INVOKABLE QInteractionOperand *enclosingOperand() const;
+    Q_INVOKABLE void setEnclosingOperand(QInteractionOperand *enclosingOperand);
 
     // Association ends from QInteraction
-    const QSet<QAction *> *actions() const;
-    void addAction(QAction *action);
-    void removeAction(QAction *action);
-    const QSet<QMessage *> *messages() const;
-    void addMessage(QMessage *message);
-    void removeMessage(QMessage *message);
-    const QSet<QGate *> *formalGates() const;
-    void addFormalGate(QGate *formalGate);
-    void removeFormalGate(QGate *formalGate);
-    const QList<QInteractionFragment *> *fragments() const;
-    void addFragment(QInteractionFragment *fragment);
-    void removeFragment(QInteractionFragment *fragment);
-    const QSet<QLifeline *> *lifelines() const;
-    void addLifeline(QLifeline *lifeline);
-    void removeLifeline(QLifeline *lifeline);
+    Q_INVOKABLE const QSet<QAction *> *actions() const;
+    Q_INVOKABLE void addAction(QAction *action);
+    Q_INVOKABLE void removeAction(QAction *action);
+    Q_INVOKABLE const QSet<QMessage *> *messages() const;
+    Q_INVOKABLE void addMessage(QMessage *message);
+    Q_INVOKABLE void removeMessage(QMessage *message);
+    Q_INVOKABLE const QSet<QGate *> *formalGates() const;
+    Q_INVOKABLE void addFormalGate(QGate *formalGate);
+    Q_INVOKABLE void removeFormalGate(QGate *formalGate);
+    Q_INVOKABLE const QList<QInteractionFragment *> *fragments() const;
+    Q_INVOKABLE void addFragment(QInteractionFragment *fragment);
+    Q_INVOKABLE void removeFragment(QInteractionFragment *fragment);
+    Q_INVOKABLE const QSet<QLifeline *> *lifelines() const;
+    Q_INVOKABLE void addLifeline(QLifeline *lifeline);
+    Q_INVOKABLE void removeLifeline(QLifeline *lifeline);
 
 protected:
     explicit QInteraction(QInteractionPrivate &dd, QObject *parent = 0);

@@ -70,13 +70,13 @@ class Q_UML_EXPORT QDestroyLinkAction : public QWriteLinkAction
     Q_DECLARE_PRIVATE(QDestroyLinkAction)
 
 public:
-    explicit QDestroyLinkAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QDestroyLinkAction(QObject *parent = 0);
     virtual ~QDestroyLinkAction();
 
     // Association ends from QDestroyLinkAction
-    const QSet<QLinkEndDestructionData *> *endData() const;
-    void addEndData(QLinkEndDestructionData *endData);
-    void removeEndData(QLinkEndDestructionData *endData);
+    Q_INVOKABLE const QSet<QLinkEndDestructionData *> *endData() const;
+    Q_INVOKABLE void addEndData(QLinkEndDestructionData *endData);
+    Q_INVOKABLE void removeEndData(QLinkEndDestructionData *endData);
 
 protected:
     explicit QDestroyLinkAction(QDestroyLinkActionPrivate &dd, QObject *parent = 0);

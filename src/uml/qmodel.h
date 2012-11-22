@@ -67,12 +67,12 @@ class Q_UML_EXPORT QModel : public QPackage
     Q_DECLARE_PRIVATE(QModel)
 
 public:
-    explicit QModel(QObject *parent = 0);
+    Q_INVOKABLE explicit QModel(QObject *parent = 0);
     virtual ~QModel();
 
     // Attributes from QModel
-    QString viewpoint() const;
-    void setViewpoint(QString viewpoint);
+    Q_INVOKABLE QString viewpoint() const;
+    Q_INVOKABLE void setViewpoint(QString viewpoint);
 
 protected:
     explicit QModel(QModelPrivate &dd, QObject *parent = 0);

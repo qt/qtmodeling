@@ -71,19 +71,19 @@ class Q_UML_EXPORT QExtension : public QAssociation
     Q_DECLARE_PRIVATE(QExtension)
 
 public:
-    explicit QExtension(QObject *parent = 0);
+    Q_INVOKABLE explicit QExtension(QObject *parent = 0);
     virtual ~QExtension();
 
     // Attributes from QExtension
-    bool isRequired() const;
+    Q_INVOKABLE bool isRequired() const;
 
     // Association ends from QExtension
-    QClass *metaclass() const;
-    QExtensionEnd *ownedEnd() const;
-    void setOwnedEnd(QExtensionEnd *ownedEnd);
+    Q_INVOKABLE QClass *metaclass() const;
+    Q_INVOKABLE QExtensionEnd *ownedEnd() const;
+    Q_INVOKABLE void setOwnedEnd(QExtensionEnd *ownedEnd);
 
     // Operations
-    QProperty *metaclassEnd() const;
+    Q_INVOKABLE QProperty *metaclassEnd() const;
 
     // Classes which access read-only opposite properties should be friend
     friend class QClassPrivate;

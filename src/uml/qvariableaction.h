@@ -67,12 +67,12 @@ class Q_UML_EXPORT QVariableAction : public QAction
     Q_DECLARE_PRIVATE(QVariableAction)
 
 public:
-    explicit QVariableAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QVariableAction(QObject *parent = 0);
     virtual ~QVariableAction();
 
     // Association ends from QVariableAction
-    QVariable *variable() const;
-    void setVariable(QVariable *variable);
+    Q_INVOKABLE QVariable *variable() const;
+    Q_INVOKABLE void setVariable(QVariable *variable);
 
 protected:
     explicit QVariableAction(QVariableActionPrivate &dd, QObject *parent = 0);

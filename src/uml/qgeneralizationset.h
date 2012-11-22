@@ -74,21 +74,21 @@ class Q_UML_EXPORT QGeneralizationSet : public QPackageableElement
     Q_DECLARE_PRIVATE(QGeneralizationSet)
 
 public:
-    explicit QGeneralizationSet(QObject *parent = 0);
+    Q_INVOKABLE explicit QGeneralizationSet(QObject *parent = 0);
     virtual ~QGeneralizationSet();
 
     // Attributes from QGeneralizationSet
-    bool isCovering() const;
-    void setCovering(bool isCovering);
-    bool isDisjoint() const;
-    void setDisjoint(bool isDisjoint);
+    Q_INVOKABLE bool isCovering() const;
+    Q_INVOKABLE void setCovering(bool isCovering);
+    Q_INVOKABLE bool isDisjoint() const;
+    Q_INVOKABLE void setDisjoint(bool isDisjoint);
 
     // Association ends from QGeneralizationSet
-    QClassifier *powertype() const;
-    void setPowertype(QClassifier *powertype);
-    const QSet<QGeneralization *> *generalizations() const;
-    void addGeneralization(QGeneralization *generalization);
-    void removeGeneralization(QGeneralization *generalization);
+    Q_INVOKABLE QClassifier *powertype() const;
+    Q_INVOKABLE void setPowertype(QClassifier *powertype);
+    Q_INVOKABLE const QSet<QGeneralization *> *generalizations() const;
+    Q_INVOKABLE void addGeneralization(QGeneralization *generalization);
+    Q_INVOKABLE void removeGeneralization(QGeneralization *generalization);
 
 protected:
     explicit QGeneralizationSet(QGeneralizationSetPrivate &dd, QObject *parent = 0);

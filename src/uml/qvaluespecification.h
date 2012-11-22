@@ -70,52 +70,52 @@ class Q_UML_EXPORT QValueSpecification : public QObject
     Q_DECLARE_PRIVATE(QValueSpecification)
 
 public:
-    explicit QValueSpecification(QObject *parent = 0);
+    Q_INVOKABLE explicit QValueSpecification(QObject *parent = 0);
     virtual ~QValueSpecification();
 
     // Association ends from aggregated QElement
-    const QSet<QElement *> *ownedElements() const;
-    QElement *owner() const;
-    const QSet<QComment *> *ownedComments() const;
-    void addOwnedComment(QComment *ownedComment);
-    void removeOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE QElement *owner() const;
+    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
     // Attributes from aggregated QNamedElement
-    QString name() const;
-    void setName(QString name);
-    QString qualifiedName() const;
+    Q_INVOKABLE QString name() const;
+    Q_INVOKABLE void setName(QString name);
+    Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from aggregated QNamedElement
-    QStringExpression *nameExpression() const;
-    void setNameExpression(QStringExpression *nameExpression);
-    QNamespace *namespace_() const;
-    const QSet<QDependency *> *clientDependencies() const;
-    void addClientDependency(QDependency *clientDependency);
-    void removeClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE QStringExpression *nameExpression() const;
+    Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
+    Q_INVOKABLE QNamespace *namespace_() const;
+    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
     // Association ends from aggregated QTypedElement
-    QType *type() const;
-    void setType(QType *type);
+    Q_INVOKABLE QType *type() const;
+    Q_INVOKABLE void setType(QType *type);
 
     // Association ends from aggregated QParameterableElement
-    QTemplateParameter *owningTemplateParameter() const;
-    void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
-    QTemplateParameter *templateParameter() const;
-    void setTemplateParameter(QTemplateParameter *templateParameter);
+    Q_INVOKABLE QTemplateParameter *owningTemplateParameter() const;
+    Q_INVOKABLE void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
+    Q_INVOKABLE QTemplateParameter *templateParameter() const;
+    Q_INVOKABLE void setTemplateParameter(QTemplateParameter *templateParameter);
 
     // Attributes from aggregated QPackageableElement
-    QtUml::VisibilityKind visibility() const;
-    void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
 
     // Operations
-    bool booleanValue() const;
-    qint32 integerValue() const;
-    bool isCompatibleWith(const QParameterableElement *p) const;
-    bool isComputable() const;
-    bool isNull() const;
-    qreal realValue() const;
-    QString stringValue() const;
-    qint32 unlimitedValue() const;
+    Q_INVOKABLE bool booleanValue() const;
+    Q_INVOKABLE qint32 integerValue() const;
+    Q_INVOKABLE bool isCompatibleWith(const QParameterableElement *p) const;
+    Q_INVOKABLE bool isComputable() const;
+    Q_INVOKABLE bool isNull() const;
+    Q_INVOKABLE qreal realValue() const;
+    Q_INVOKABLE QString stringValue() const;
+    Q_INVOKABLE qint32 unlimitedValue() const;
 
 protected:
     explicit QValueSpecification(QValueSpecificationPrivate &dd, QObject *parent = 0);

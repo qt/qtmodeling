@@ -71,32 +71,32 @@ class Q_UML_EXPORT QStringExpression : public QObject
     Q_DECLARE_PRIVATE(QStringExpression)
 
 public:
-    explicit QStringExpression(QObject *parent = 0);
+    Q_INVOKABLE explicit QStringExpression(QObject *parent = 0);
     virtual ~QStringExpression();
 
     // Association ends from aggregated QElement
-    const QSet<QElement *> *ownedElements() const;
-    QElement *owner() const;
-    const QSet<QComment *> *ownedComments() const;
-    void addOwnedComment(QComment *ownedComment);
-    void removeOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE QElement *owner() const;
+    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
     // Association ends from aggregated QTemplateableElement
-    QTemplateSignature *ownedTemplateSignature() const;
-    void setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature);
-    const QSet<QTemplateBinding *> *templateBindings() const;
-    void addTemplateBinding(QTemplateBinding *templateBinding);
-    void removeTemplateBinding(QTemplateBinding *templateBinding);
+    Q_INVOKABLE QTemplateSignature *ownedTemplateSignature() const;
+    Q_INVOKABLE void setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature);
+    Q_INVOKABLE const QSet<QTemplateBinding *> *templateBindings() const;
+    Q_INVOKABLE void addTemplateBinding(QTemplateBinding *templateBinding);
+    Q_INVOKABLE void removeTemplateBinding(QTemplateBinding *templateBinding);
 
     // Association ends from QStringExpression
-    QStringExpression *owningExpression() const;
-    void setOwningExpression(QStringExpression *owningExpression);
-    const QSet<QStringExpression *> *subExpressions() const;
-    void addSubExpression(QStringExpression *subExpression);
-    void removeSubExpression(QStringExpression *subExpression);
+    Q_INVOKABLE QStringExpression *owningExpression() const;
+    Q_INVOKABLE void setOwningExpression(QStringExpression *owningExpression);
+    Q_INVOKABLE const QSet<QStringExpression *> *subExpressions() const;
+    Q_INVOKABLE void addSubExpression(QStringExpression *subExpression);
+    Q_INVOKABLE void removeSubExpression(QStringExpression *subExpression);
 
     // Operations
-    QString stringValue() const;
+    Q_INVOKABLE QString stringValue() const;
 
 protected:
     explicit QStringExpression(QStringExpressionPrivate &dd, QObject *parent = 0);

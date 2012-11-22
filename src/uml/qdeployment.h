@@ -74,24 +74,24 @@ class Q_UML_EXPORT QDeployment : public QDependency
     Q_DECLARE_PRIVATE(QDeployment)
 
 public:
-    explicit QDeployment(QObject *parent = 0);
+    Q_INVOKABLE explicit QDeployment(QObject *parent = 0);
     virtual ~QDeployment();
 
     // Association ends from QDeployment
-    QDeploymentTarget *location() const;
-    void setLocation(QDeploymentTarget *location);
-    const QSet<QDeploymentSpecification *> *configurations() const;
-    void addConfiguration(QDeploymentSpecification *configuration);
-    void removeConfiguration(QDeploymentSpecification *configuration);
-    const QSet<QDeployedArtifact *> *deployedArtifacts() const;
-    void addDeployedArtifact(QDeployedArtifact *deployedArtifact);
-    void removeDeployedArtifact(QDeployedArtifact *deployedArtifact);
+    Q_INVOKABLE QDeploymentTarget *location() const;
+    Q_INVOKABLE void setLocation(QDeploymentTarget *location);
+    Q_INVOKABLE const QSet<QDeploymentSpecification *> *configurations() const;
+    Q_INVOKABLE void addConfiguration(QDeploymentSpecification *configuration);
+    Q_INVOKABLE void removeConfiguration(QDeploymentSpecification *configuration);
+    Q_INVOKABLE const QSet<QDeployedArtifact *> *deployedArtifacts() const;
+    Q_INVOKABLE void addDeployedArtifact(QDeployedArtifact *deployedArtifact);
+    Q_INVOKABLE void removeDeployedArtifact(QDeployedArtifact *deployedArtifact);
 
     // Overriden methods for subsetted properties
-    void addClient(QUmlPointer<QDeploymentTarget> location);
-    void removeClient(QUmlPointer<QDeploymentTarget> location);
-    void addSupplier(QUmlPointer<QDeployedArtifact> deployedArtifact);
-    void removeSupplier(QUmlPointer<QDeployedArtifact> deployedArtifact);
+    Q_INVOKABLE void addClient(QUmlPointer<QDeploymentTarget> location);
+    Q_INVOKABLE void removeClient(QUmlPointer<QDeploymentTarget> location);
+    Q_INVOKABLE void addSupplier(QUmlPointer<QDeployedArtifact> deployedArtifact);
+    Q_INVOKABLE void removeSupplier(QUmlPointer<QDeployedArtifact> deployedArtifact);
 
 protected:
     explicit QDeployment(QDeploymentPrivate &dd, QObject *parent = 0);

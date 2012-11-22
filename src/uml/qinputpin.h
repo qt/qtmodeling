@@ -62,7 +62,7 @@ class Q_UML_EXPORT QInputPin : public QPin
     Q_DECLARE_PRIVATE(QInputPin)
 
 public:
-    explicit QInputPin(QObject *parent = 0);
+    Q_INVOKABLE explicit QInputPin(QObject *parent = 0);
     virtual ~QInputPin();
 
 protected:

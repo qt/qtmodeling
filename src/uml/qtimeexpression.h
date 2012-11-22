@@ -71,15 +71,15 @@ class Q_UML_EXPORT QTimeExpression : public QValueSpecification
     Q_DECLARE_PRIVATE(QTimeExpression)
 
 public:
-    explicit QTimeExpression(QObject *parent = 0);
+    Q_INVOKABLE explicit QTimeExpression(QObject *parent = 0);
     virtual ~QTimeExpression();
 
     // Association ends from QTimeExpression
-    const QSet<QObservation *> *observations() const;
-    void addObservation(QObservation *observation);
-    void removeObservation(QObservation *observation);
-    QValueSpecification *expr() const;
-    void setExpr(QValueSpecification *expr);
+    Q_INVOKABLE const QSet<QObservation *> *observations() const;
+    Q_INVOKABLE void addObservation(QObservation *observation);
+    Q_INVOKABLE void removeObservation(QObservation *observation);
+    Q_INVOKABLE QValueSpecification *expr() const;
+    Q_INVOKABLE void setExpr(QValueSpecification *expr);
 
 protected:
     explicit QTimeExpression(QTimeExpressionPrivate &dd, QObject *parent = 0);

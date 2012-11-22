@@ -74,17 +74,17 @@ class Q_UML_EXPORT QConstraint : public QPackageableElement
     Q_DECLARE_PRIVATE(QConstraint)
 
 public:
-    explicit QConstraint(QObject *parent = 0);
+    Q_INVOKABLE explicit QConstraint(QObject *parent = 0);
     virtual ~QConstraint();
 
     // Association ends from QConstraint
-    QNamespace *context() const;
-    void setContext(QNamespace *context);
-    QValueSpecification *specification() const;
-    void setSpecification(QValueSpecification *specification);
-    const QList<QElement *> *constrainedElements() const;
-    void addConstrainedElement(QElement *constrainedElement);
-    void removeConstrainedElement(QElement *constrainedElement);
+    Q_INVOKABLE QNamespace *context() const;
+    Q_INVOKABLE void setContext(QNamespace *context);
+    Q_INVOKABLE QValueSpecification *specification() const;
+    Q_INVOKABLE void setSpecification(QValueSpecification *specification);
+    Q_INVOKABLE const QList<QElement *> *constrainedElements() const;
+    Q_INVOKABLE void addConstrainedElement(QElement *constrainedElement);
+    Q_INVOKABLE void removeConstrainedElement(QElement *constrainedElement);
 
 protected:
     explicit QConstraint(QConstraintPrivate &dd, QObject *parent = 0);

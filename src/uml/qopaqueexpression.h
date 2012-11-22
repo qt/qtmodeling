@@ -75,27 +75,27 @@ class Q_UML_EXPORT QOpaqueExpression : public QValueSpecification
     Q_DECLARE_PRIVATE(QOpaqueExpression)
 
 public:
-    explicit QOpaqueExpression(QObject *parent = 0);
+    Q_INVOKABLE explicit QOpaqueExpression(QObject *parent = 0);
     virtual ~QOpaqueExpression();
 
     // Attributes from QOpaqueExpression
-    const QList<QString> *bodies() const;
-    void addBody(QString body);
-    void removeBody(QString body);
-    const QList<QString> *languages() const;
-    void addLanguage(QString language);
-    void removeLanguage(QString language);
+    Q_INVOKABLE const QList<QString> *bodies() const;
+    Q_INVOKABLE void addBody(QString body);
+    Q_INVOKABLE void removeBody(QString body);
+    Q_INVOKABLE const QList<QString> *languages() const;
+    Q_INVOKABLE void addLanguage(QString language);
+    Q_INVOKABLE void removeLanguage(QString language);
 
     // Association ends from QOpaqueExpression
-    QBehavior *behavior() const;
-    void setBehavior(QBehavior *behavior);
-    QParameter *result() const;
+    Q_INVOKABLE QBehavior *behavior() const;
+    Q_INVOKABLE void setBehavior(QBehavior *behavior);
+    Q_INVOKABLE QParameter *result() const;
 
     // Operations
-    bool isIntegral() const;
-    bool isNonNegative() const;
-    bool isPositive() const;
-    qint32 value() const;
+    Q_INVOKABLE bool isIntegral() const;
+    Q_INVOKABLE bool isNonNegative() const;
+    Q_INVOKABLE bool isPositive() const;
+    Q_INVOKABLE qint32 value() const;
 
 protected:
     explicit QOpaqueExpression(QOpaqueExpressionPrivate &dd, QObject *parent = 0);

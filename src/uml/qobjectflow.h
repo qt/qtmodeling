@@ -70,20 +70,20 @@ class Q_UML_EXPORT QObjectFlow : public QActivityEdge
     Q_DECLARE_PRIVATE(QObjectFlow)
 
 public:
-    explicit QObjectFlow(QObject *parent = 0);
+    Q_INVOKABLE explicit QObjectFlow(QObject *parent = 0);
     virtual ~QObjectFlow();
 
     // Attributes from QObjectFlow
-    bool isMultireceive() const;
-    void setMultireceive(bool isMultireceive);
-    bool isMulticast() const;
-    void setMulticast(bool isMulticast);
+    Q_INVOKABLE bool isMultireceive() const;
+    Q_INVOKABLE void setMultireceive(bool isMultireceive);
+    Q_INVOKABLE bool isMulticast() const;
+    Q_INVOKABLE void setMulticast(bool isMulticast);
 
     // Association ends from QObjectFlow
-    QBehavior *selection() const;
-    void setSelection(QBehavior *selection);
-    QBehavior *transformation() const;
-    void setTransformation(QBehavior *transformation);
+    Q_INVOKABLE QBehavior *selection() const;
+    Q_INVOKABLE void setSelection(QBehavior *selection);
+    Q_INVOKABLE QBehavior *transformation() const;
+    Q_INVOKABLE void setTransformation(QBehavior *transformation);
 
 protected:
     explicit QObjectFlow(QObjectFlowPrivate &dd, QObject *parent = 0);

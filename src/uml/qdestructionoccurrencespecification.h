@@ -62,7 +62,7 @@ class Q_UML_EXPORT QDestructionOccurrenceSpecification : public QMessageOccurren
     Q_DECLARE_PRIVATE(QDestructionOccurrenceSpecification)
 
 public:
-    explicit QDestructionOccurrenceSpecification(QObject *parent = 0);
+    Q_INVOKABLE explicit QDestructionOccurrenceSpecification(QObject *parent = 0);
     virtual ~QDestructionOccurrenceSpecification();
 
 protected:

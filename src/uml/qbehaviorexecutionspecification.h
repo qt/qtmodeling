@@ -67,12 +67,12 @@ class Q_UML_EXPORT QBehaviorExecutionSpecification : public QExecutionSpecificat
     Q_DECLARE_PRIVATE(QBehaviorExecutionSpecification)
 
 public:
-    explicit QBehaviorExecutionSpecification(QObject *parent = 0);
+    Q_INVOKABLE explicit QBehaviorExecutionSpecification(QObject *parent = 0);
     virtual ~QBehaviorExecutionSpecification();
 
     // Association ends from QBehaviorExecutionSpecification
-    QBehavior *behavior() const;
-    void setBehavior(QBehavior *behavior);
+    Q_INVOKABLE QBehavior *behavior() const;
+    Q_INVOKABLE void setBehavior(QBehavior *behavior);
 
 protected:
     explicit QBehaviorExecutionSpecification(QBehaviorExecutionSpecificationPrivate &dd, QObject *parent = 0);

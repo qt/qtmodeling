@@ -62,7 +62,7 @@ class Q_UML_EXPORT QDevice : public QNode
     Q_DECLARE_PRIVATE(QDevice)
 
 public:
-    explicit QDevice(QObject *parent = 0);
+    Q_INVOKABLE explicit QDevice(QObject *parent = 0);
     virtual ~QDevice();
 
 protected:

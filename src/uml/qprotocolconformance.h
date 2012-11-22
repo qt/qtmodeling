@@ -68,14 +68,14 @@ class Q_UML_EXPORT QProtocolConformance : public QDirectedRelationship
     Q_DECLARE_PRIVATE(QProtocolConformance)
 
 public:
-    explicit QProtocolConformance(QObject *parent = 0);
+    Q_INVOKABLE explicit QProtocolConformance(QObject *parent = 0);
     virtual ~QProtocolConformance();
 
     // Association ends from QProtocolConformance
-    QProtocolStateMachine *specificMachine() const;
-    void setSpecificMachine(QProtocolStateMachine *specificMachine);
-    QProtocolStateMachine *generalMachine() const;
-    void setGeneralMachine(QProtocolStateMachine *generalMachine);
+    Q_INVOKABLE QProtocolStateMachine *specificMachine() const;
+    Q_INVOKABLE void setSpecificMachine(QProtocolStateMachine *specificMachine);
+    Q_INVOKABLE QProtocolStateMachine *generalMachine() const;
+    Q_INVOKABLE void setGeneralMachine(QProtocolStateMachine *generalMachine);
 
 protected:
     explicit QProtocolConformance(QProtocolConformancePrivate &dd, QObject *parent = 0);

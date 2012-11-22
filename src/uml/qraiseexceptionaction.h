@@ -67,12 +67,12 @@ class Q_UML_EXPORT QRaiseExceptionAction : public QAction
     Q_DECLARE_PRIVATE(QRaiseExceptionAction)
 
 public:
-    explicit QRaiseExceptionAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QRaiseExceptionAction(QObject *parent = 0);
     virtual ~QRaiseExceptionAction();
 
     // Association ends from QRaiseExceptionAction
-    QInputPin *exception() const;
-    void setException(QInputPin *exception);
+    Q_INVOKABLE QInputPin *exception() const;
+    Q_INVOKABLE void setException(QInputPin *exception);
 
 protected:
     explicit QRaiseExceptionAction(QRaiseExceptionActionPrivate &dd, QObject *parent = 0);

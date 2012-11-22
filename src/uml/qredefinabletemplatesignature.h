@@ -75,49 +75,49 @@ class Q_UML_EXPORT QRedefinableTemplateSignature : public QObject
     Q_DECLARE_PRIVATE(QRedefinableTemplateSignature)
 
 public:
-    explicit QRedefinableTemplateSignature(QObject *parent = 0);
+    Q_INVOKABLE explicit QRedefinableTemplateSignature(QObject *parent = 0);
     virtual ~QRedefinableTemplateSignature();
 
     // Association ends from aggregated QElement
-    const QSet<QElement *> *ownedElements() const;
-    QElement *owner() const;
-    const QSet<QComment *> *ownedComments() const;
-    void addOwnedComment(QComment *ownedComment);
-    void removeOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE QElement *owner() const;
+    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
     // Attributes from aggregated QNamedElement
-    QString name() const;
-    void setName(QString name);
-    QtUml::VisibilityKind visibility() const;
-    void setVisibility(QtUml::VisibilityKind visibility);
-    QString qualifiedName() const;
+    Q_INVOKABLE QString name() const;
+    Q_INVOKABLE void setName(QString name);
+    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from aggregated QNamedElement
-    QStringExpression *nameExpression() const;
-    void setNameExpression(QStringExpression *nameExpression);
-    QNamespace *namespace_() const;
-    const QSet<QDependency *> *clientDependencies() const;
-    void addClientDependency(QDependency *clientDependency);
-    void removeClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE QStringExpression *nameExpression() const;
+    Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
+    Q_INVOKABLE QNamespace *namespace_() const;
+    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
     // Attributes from aggregated QRedefinableElement
-    bool isLeaf() const;
-    void setLeaf(bool isLeaf);
+    Q_INVOKABLE bool isLeaf() const;
+    Q_INVOKABLE void setLeaf(bool isLeaf);
 
     // Association ends from aggregated QRedefinableElement
-    const QSet<QRedefinableElement *> *redefinedElements() const;
-    const QSet<QClassifier *> *redefinitionContexts() const;
+    Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
+    Q_INVOKABLE const QSet<QClassifier *> *redefinitionContexts() const;
 
     // Association ends from QRedefinableTemplateSignature
-    const QSet<QTemplateParameter *> *inheritedParameters() const;
-    QClassifier *classifier() const;
-    void setClassifier(QClassifier *classifier);
-    const QSet<QRedefinableTemplateSignature *> *extendedSignatures() const;
-    void addExtendedSignature(QRedefinableTemplateSignature *extendedSignature);
-    void removeExtendedSignature(QRedefinableTemplateSignature *extendedSignature);
+    Q_INVOKABLE const QSet<QTemplateParameter *> *inheritedParameters() const;
+    Q_INVOKABLE QClassifier *classifier() const;
+    Q_INVOKABLE void setClassifier(QClassifier *classifier);
+    Q_INVOKABLE const QSet<QRedefinableTemplateSignature *> *extendedSignatures() const;
+    Q_INVOKABLE void addExtendedSignature(QRedefinableTemplateSignature *extendedSignature);
+    Q_INVOKABLE void removeExtendedSignature(QRedefinableTemplateSignature *extendedSignature);
 
     // Operations
-    bool isConsistentWith(const QRedefinableElement *redefinee) const;
+    Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
 
 protected:
     explicit QRedefinableTemplateSignature(QRedefinableTemplateSignaturePrivate &dd, QObject *parent = 0);

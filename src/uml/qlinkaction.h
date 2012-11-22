@@ -73,19 +73,19 @@ class Q_UML_EXPORT QLinkAction : public QAction
     Q_DECLARE_PRIVATE(QLinkAction)
 
 public:
-    explicit QLinkAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QLinkAction(QObject *parent = 0);
     virtual ~QLinkAction();
 
     // Association ends from QLinkAction
-    const QSet<QInputPin *> *inputValues() const;
-    void addInputValue(QInputPin *inputValue);
-    void removeInputValue(QInputPin *inputValue);
-    const QSet<QLinkEndData *> *endData() const;
-    void addEndData(QLinkEndData *endData);
-    void removeEndData(QLinkEndData *endData);
+    Q_INVOKABLE const QSet<QInputPin *> *inputValues() const;
+    Q_INVOKABLE void addInputValue(QInputPin *inputValue);
+    Q_INVOKABLE void removeInputValue(QInputPin *inputValue);
+    Q_INVOKABLE const QSet<QLinkEndData *> *endData() const;
+    Q_INVOKABLE void addEndData(QLinkEndData *endData);
+    Q_INVOKABLE void removeEndData(QLinkEndData *endData);
 
     // Operations
-    QAssociation *association() const;
+    Q_INVOKABLE QAssociation *association() const;
 
 protected:
     explicit QLinkAction(QLinkActionPrivate &dd, QObject *parent = 0);

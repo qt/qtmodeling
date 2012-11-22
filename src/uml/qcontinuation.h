@@ -64,12 +64,12 @@ class Q_UML_EXPORT QContinuation : public QInteractionFragment
     Q_DECLARE_PRIVATE(QContinuation)
 
 public:
-    explicit QContinuation(QObject *parent = 0);
+    Q_INVOKABLE explicit QContinuation(QObject *parent = 0);
     virtual ~QContinuation();
 
     // Attributes from QContinuation
-    bool setting() const;
-    void setSetting(bool setting);
+    Q_INVOKABLE bool setting() const;
+    Q_INVOKABLE void setSetting(bool setting);
 
 protected:
     explicit QContinuation(QContinuationPrivate &dd, QObject *parent = 0);

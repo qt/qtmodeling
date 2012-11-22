@@ -69,14 +69,14 @@ class Q_UML_EXPORT QReadExtentAction : public QAction
     Q_DECLARE_PRIVATE(QReadExtentAction)
 
 public:
-    explicit QReadExtentAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QReadExtentAction(QObject *parent = 0);
     virtual ~QReadExtentAction();
 
     // Association ends from QReadExtentAction
-    QClassifier *classifier() const;
-    void setClassifier(QClassifier *classifier);
-    QOutputPin *result() const;
-    void setResult(QOutputPin *result);
+    Q_INVOKABLE QClassifier *classifier() const;
+    Q_INVOKABLE void setClassifier(QClassifier *classifier);
+    Q_INVOKABLE QOutputPin *result() const;
+    Q_INVOKABLE void setResult(QOutputPin *result);
 
 protected:
     explicit QReadExtentAction(QReadExtentActionPrivate &dd, QObject *parent = 0);

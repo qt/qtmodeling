@@ -67,12 +67,12 @@ class Q_UML_EXPORT QConnectableElementTemplateParameter : public QTemplateParame
     Q_DECLARE_PRIVATE(QConnectableElementTemplateParameter)
 
 public:
-    explicit QConnectableElementTemplateParameter(QObject *parent = 0);
+    Q_INVOKABLE explicit QConnectableElementTemplateParameter(QObject *parent = 0);
     virtual ~QConnectableElementTemplateParameter();
 
     // Association ends from QConnectableElementTemplateParameter
-    QConnectableElement *parameteredElement() const;
-    void setParameteredElement(QConnectableElement *parameteredElement);
+    Q_INVOKABLE QConnectableElement *parameteredElement() const;
+    Q_INVOKABLE void setParameteredElement(QConnectableElement *parameteredElement);
 
 protected:
     explicit QConnectableElementTemplateParameter(QConnectableElementTemplateParameterPrivate &dd, QObject *parent = 0);

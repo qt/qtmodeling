@@ -67,12 +67,12 @@ class Q_UML_EXPORT QStartClassifierBehaviorAction : public QAction
     Q_DECLARE_PRIVATE(QStartClassifierBehaviorAction)
 
 public:
-    explicit QStartClassifierBehaviorAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QStartClassifierBehaviorAction(QObject *parent = 0);
     virtual ~QStartClassifierBehaviorAction();
 
     // Association ends from QStartClassifierBehaviorAction
-    QInputPin *object() const;
-    void setObject(QInputPin *object);
+    Q_INVOKABLE QInputPin *object() const;
+    Q_INVOKABLE void setObject(QInputPin *object);
 
 protected:
     explicit QStartClassifierBehaviorAction(QStartClassifierBehaviorActionPrivate &dd, QObject *parent = 0);

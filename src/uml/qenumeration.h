@@ -70,13 +70,13 @@ class Q_UML_EXPORT QEnumeration : public QDataType
     Q_DECLARE_PRIVATE(QEnumeration)
 
 public:
-    explicit QEnumeration(QObject *parent = 0);
+    Q_INVOKABLE explicit QEnumeration(QObject *parent = 0);
     virtual ~QEnumeration();
 
     // Association ends from QEnumeration
-    const QList<QEnumerationLiteral *> *ownedLiterals() const;
-    void addOwnedLiteral(QEnumerationLiteral *ownedLiteral);
-    void removeOwnedLiteral(QEnumerationLiteral *ownedLiteral);
+    Q_INVOKABLE const QList<QEnumerationLiteral *> *ownedLiterals() const;
+    Q_INVOKABLE void addOwnedLiteral(QEnumerationLiteral *ownedLiteral);
+    Q_INVOKABLE void removeOwnedLiteral(QEnumerationLiteral *ownedLiteral);
 
 protected:
     explicit QEnumeration(QEnumerationPrivate &dd, QObject *parent = 0);

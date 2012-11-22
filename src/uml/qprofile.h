@@ -72,16 +72,16 @@ class Q_UML_EXPORT QProfile : public QPackage
     Q_DECLARE_PRIVATE(QProfile)
 
 public:
-    explicit QProfile(QObject *parent = 0);
+    Q_INVOKABLE explicit QProfile(QObject *parent = 0);
     virtual ~QProfile();
 
     // Association ends from QProfile
-    const QSet<QPackageImport *> *metamodelReferences() const;
-    void addMetamodelReference(QPackageImport *metamodelReference);
-    void removeMetamodelReference(QPackageImport *metamodelReference);
-    const QSet<QElementImport *> *metaclassReferences() const;
-    void addMetaclassReference(QElementImport *metaclassReference);
-    void removeMetaclassReference(QElementImport *metaclassReference);
+    Q_INVOKABLE const QSet<QPackageImport *> *metamodelReferences() const;
+    Q_INVOKABLE void addMetamodelReference(QPackageImport *metamodelReference);
+    Q_INVOKABLE void removeMetamodelReference(QPackageImport *metamodelReference);
+    Q_INVOKABLE const QSet<QElementImport *> *metaclassReferences() const;
+    Q_INVOKABLE void addMetaclassReference(QElementImport *metaclassReference);
+    Q_INVOKABLE void removeMetaclassReference(QElementImport *metaclassReference);
 
 protected:
     explicit QProfile(QProfilePrivate &dd, QObject *parent = 0);

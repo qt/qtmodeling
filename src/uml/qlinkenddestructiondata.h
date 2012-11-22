@@ -68,16 +68,16 @@ class Q_UML_EXPORT QLinkEndDestructionData : public QLinkEndData
     Q_DECLARE_PRIVATE(QLinkEndDestructionData)
 
 public:
-    explicit QLinkEndDestructionData(QObject *parent = 0);
+    Q_INVOKABLE explicit QLinkEndDestructionData(QObject *parent = 0);
     virtual ~QLinkEndDestructionData();
 
     // Attributes from QLinkEndDestructionData
-    bool isDestroyDuplicates() const;
-    void setDestroyDuplicates(bool isDestroyDuplicates);
+    Q_INVOKABLE bool isDestroyDuplicates() const;
+    Q_INVOKABLE void setDestroyDuplicates(bool isDestroyDuplicates);
 
     // Association ends from QLinkEndDestructionData
-    QInputPin *destroyAt() const;
-    void setDestroyAt(QInputPin *destroyAt);
+    Q_INVOKABLE QInputPin *destroyAt() const;
+    Q_INVOKABLE void setDestroyAt(QInputPin *destroyAt);
 
 protected:
     explicit QLinkEndDestructionData(QLinkEndDestructionDataPrivate &dd, QObject *parent = 0);

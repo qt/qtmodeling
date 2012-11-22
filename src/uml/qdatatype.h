@@ -74,19 +74,19 @@ class Q_UML_EXPORT QDataType : public QClassifier
     Q_DECLARE_PRIVATE(QDataType)
 
 public:
-    explicit QDataType(QObject *parent = 0);
+    Q_INVOKABLE explicit QDataType(QObject *parent = 0);
     virtual ~QDataType();
 
     // Association ends from QDataType
-    const QList<QOperation *> *ownedOperations() const;
-    void addOwnedOperation(QOperation *ownedOperation);
-    void removeOwnedOperation(QOperation *ownedOperation);
-    const QList<QProperty *> *ownedAttributes() const;
-    void addOwnedAttribute(QProperty *ownedAttribute);
-    void removeOwnedAttribute(QProperty *ownedAttribute);
+    Q_INVOKABLE const QList<QOperation *> *ownedOperations() const;
+    Q_INVOKABLE void addOwnedOperation(QOperation *ownedOperation);
+    Q_INVOKABLE void removeOwnedOperation(QOperation *ownedOperation);
+    Q_INVOKABLE const QList<QProperty *> *ownedAttributes() const;
+    Q_INVOKABLE void addOwnedAttribute(QProperty *ownedAttribute);
+    Q_INVOKABLE void removeOwnedAttribute(QProperty *ownedAttribute);
 
     // Operations
-    const QSet<QNamedElement *> *inherit(const QSet<QNamedElement *> *inhs) const;
+    Q_INVOKABLE const QSet<QNamedElement *> *inherit(const QSet<QNamedElement *> *inhs) const;
 
 protected:
     explicit QDataType(QDataTypePrivate &dd, QObject *parent = 0);

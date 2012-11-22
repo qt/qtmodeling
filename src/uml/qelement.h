@@ -72,19 +72,19 @@ class Q_UML_EXPORT QElement : public QObject
     Q_DECLARE_PRIVATE(QElement)
 
 public:
-    explicit QElement(QObject *parent = 0);
+    Q_INVOKABLE explicit QElement(QObject *parent = 0);
     virtual ~QElement();
 
     // Association ends from QElement
-    const QSet<QElement *> *ownedElements() const;
-    QElement *owner() const;
-    const QSet<QComment *> *ownedComments() const;
-    void addOwnedComment(QComment *ownedComment);
-    void removeOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE QElement *owner() const;
+    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
     // Operations
-    const QSet<QElement *> *allOwnedElements() const;
-    bool mustBeOwned() const;
+    Q_INVOKABLE const QSet<QElement *> *allOwnedElements() const;
+    Q_INVOKABLE bool mustBeOwned() const;
 
 protected:
     explicit QElement(QElementPrivate &dd, QObject *parent = 0);

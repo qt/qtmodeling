@@ -82,42 +82,42 @@ class Q_UML_EXPORT QActivity : public QBehavior
     Q_DECLARE_PRIVATE(QActivity)
 
 public:
-    explicit QActivity(QObject *parent = 0);
+    Q_INVOKABLE explicit QActivity(QObject *parent = 0);
     virtual ~QActivity();
 
     // Attributes from QActivity
-    bool isReadOnly() const;
-    void setReadOnly(bool isReadOnly);
-    bool isSingleExecution() const;
-    void setSingleExecution(bool isSingleExecution);
+    Q_INVOKABLE bool isReadOnly() const;
+    Q_INVOKABLE void setReadOnly(bool isReadOnly);
+    Q_INVOKABLE bool isSingleExecution() const;
+    Q_INVOKABLE void setSingleExecution(bool isSingleExecution);
 
     // Association ends from QActivity
-    const QSet<QActivityPartition *> *partitions() const;
-    void addPartition(QActivityPartition *partition);
-    void removePartition(QActivityPartition *partition);
-    const QSet<QActivityNode *> *nodes() const;
-    void addNode(QActivityNode *node);
-    void removeNode(QActivityNode *node);
-    const QSet<QVariable *> *variables() const;
-    void addVariable(QVariable *variable);
-    void removeVariable(QVariable *variable);
-    const QSet<QStructuredActivityNode *> *structuredNodes() const;
-    void addStructuredNode(QStructuredActivityNode *structuredNode);
-    void removeStructuredNode(QStructuredActivityNode *structuredNode);
-    const QSet<QActivityGroup *> *groups() const;
-    void addGroup(QActivityGroup *group);
-    void removeGroup(QActivityGroup *group);
-    const QSet<QActivityEdge *> *edges() const;
-    void addEdge(QActivityEdge *edge);
-    void removeEdge(QActivityEdge *edge);
+    Q_INVOKABLE const QSet<QActivityPartition *> *partitions() const;
+    Q_INVOKABLE void addPartition(QActivityPartition *partition);
+    Q_INVOKABLE void removePartition(QActivityPartition *partition);
+    Q_INVOKABLE const QSet<QActivityNode *> *nodes() const;
+    Q_INVOKABLE void addNode(QActivityNode *node);
+    Q_INVOKABLE void removeNode(QActivityNode *node);
+    Q_INVOKABLE const QSet<QVariable *> *variables() const;
+    Q_INVOKABLE void addVariable(QVariable *variable);
+    Q_INVOKABLE void removeVariable(QVariable *variable);
+    Q_INVOKABLE const QSet<QStructuredActivityNode *> *structuredNodes() const;
+    Q_INVOKABLE void addStructuredNode(QStructuredActivityNode *structuredNode);
+    Q_INVOKABLE void removeStructuredNode(QStructuredActivityNode *structuredNode);
+    Q_INVOKABLE const QSet<QActivityGroup *> *groups() const;
+    Q_INVOKABLE void addGroup(QActivityGroup *group);
+    Q_INVOKABLE void removeGroup(QActivityGroup *group);
+    Q_INVOKABLE const QSet<QActivityEdge *> *edges() const;
+    Q_INVOKABLE void addEdge(QActivityEdge *edge);
+    Q_INVOKABLE void removeEdge(QActivityEdge *edge);
 
     // Overriden methods for subsetted properties
-    void addGroup(QUmlPointer<QActivityPartition> partition);
-    void removeGroup(QUmlPointer<QActivityPartition> partition);
-    void addGroup(QUmlPointer<QStructuredActivityNode> structuredNode);
-    void removeGroup(QUmlPointer<QStructuredActivityNode> structuredNode);
-    void addNode(QUmlPointer<QStructuredActivityNode> structuredNode);
-    void removeNode(QUmlPointer<QStructuredActivityNode> structuredNode);
+    Q_INVOKABLE void addGroup(QUmlPointer<QActivityPartition> partition);
+    Q_INVOKABLE void removeGroup(QUmlPointer<QActivityPartition> partition);
+    Q_INVOKABLE void addGroup(QUmlPointer<QStructuredActivityNode> structuredNode);
+    Q_INVOKABLE void removeGroup(QUmlPointer<QStructuredActivityNode> structuredNode);
+    Q_INVOKABLE void addNode(QUmlPointer<QStructuredActivityNode> structuredNode);
+    Q_INVOKABLE void removeNode(QUmlPointer<QStructuredActivityNode> structuredNode);
 
 protected:
     explicit QActivity(QActivityPrivate &dd, QObject *parent = 0);

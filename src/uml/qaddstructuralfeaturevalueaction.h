@@ -68,16 +68,16 @@ class Q_UML_EXPORT QAddStructuralFeatureValueAction : public QWriteStructuralFea
     Q_DECLARE_PRIVATE(QAddStructuralFeatureValueAction)
 
 public:
-    explicit QAddStructuralFeatureValueAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QAddStructuralFeatureValueAction(QObject *parent = 0);
     virtual ~QAddStructuralFeatureValueAction();
 
     // Attributes from QAddStructuralFeatureValueAction
-    bool isReplaceAll() const;
-    void setReplaceAll(bool isReplaceAll);
+    Q_INVOKABLE bool isReplaceAll() const;
+    Q_INVOKABLE void setReplaceAll(bool isReplaceAll);
 
     // Association ends from QAddStructuralFeatureValueAction
-    QInputPin *insertAt() const;
-    void setInsertAt(QInputPin *insertAt);
+    Q_INVOKABLE QInputPin *insertAt() const;
+    Q_INVOKABLE void setInsertAt(QInputPin *insertAt);
 
 protected:
     explicit QAddStructuralFeatureValueAction(QAddStructuralFeatureValueActionPrivate &dd, QObject *parent = 0);

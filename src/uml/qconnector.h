@@ -80,24 +80,24 @@ class Q_UML_EXPORT QConnector : public QFeature
     Q_DECLARE_PRIVATE(QConnector)
 
 public:
-    explicit QConnector(QObject *parent = 0);
+    Q_INVOKABLE explicit QConnector(QObject *parent = 0);
     virtual ~QConnector();
 
     // Attributes from QConnector
-    QtUml::ConnectorKind kind() const;
+    Q_INVOKABLE QtUml::ConnectorKind kind() const;
 
     // Association ends from QConnector
-    const QSet<QConnector *> *redefinedConnectors() const;
-    void addRedefinedConnector(QConnector *redefinedConnector);
-    void removeRedefinedConnector(QConnector *redefinedConnector);
-    const QSet<QBehavior *> *contracts() const;
-    void addContract(QBehavior *contract);
-    void removeContract(QBehavior *contract);
-    QAssociation *type() const;
-    void setType(QAssociation *type);
-    const QList<QConnectorEnd *> *ends() const;
-    void addEnd(QConnectorEnd *end);
-    void removeEnd(QConnectorEnd *end);
+    Q_INVOKABLE const QSet<QConnector *> *redefinedConnectors() const;
+    Q_INVOKABLE void addRedefinedConnector(QConnector *redefinedConnector);
+    Q_INVOKABLE void removeRedefinedConnector(QConnector *redefinedConnector);
+    Q_INVOKABLE const QSet<QBehavior *> *contracts() const;
+    Q_INVOKABLE void addContract(QBehavior *contract);
+    Q_INVOKABLE void removeContract(QBehavior *contract);
+    Q_INVOKABLE QAssociation *type() const;
+    Q_INVOKABLE void setType(QAssociation *type);
+    Q_INVOKABLE const QList<QConnectorEnd *> *ends() const;
+    Q_INVOKABLE void addEnd(QConnectorEnd *end);
+    Q_INVOKABLE void removeEnd(QConnectorEnd *end);
 
 protected:
     explicit QConnector(QConnectorPrivate &dd, QObject *parent = 0);

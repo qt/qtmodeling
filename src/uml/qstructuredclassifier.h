@@ -76,18 +76,18 @@ class Q_UML_EXPORT QStructuredClassifier : public QClassifier
     Q_DECLARE_PRIVATE(QStructuredClassifier)
 
 public:
-    explicit QStructuredClassifier(QObject *parent = 0);
+    Q_INVOKABLE explicit QStructuredClassifier(QObject *parent = 0);
     virtual ~QStructuredClassifier();
 
     // Association ends from QStructuredClassifier
-    const QSet<QConnectableElement *> *roles() const;
-    const QList<QProperty *> *ownedAttributes() const;
-    void addOwnedAttribute(QProperty *ownedAttribute);
-    void removeOwnedAttribute(QProperty *ownedAttribute);
-    const QSet<QProperty *> *parts() const;
-    const QSet<QConnector *> *ownedConnectors() const;
-    void addOwnedConnector(QConnector *ownedConnector);
-    void removeOwnedConnector(QConnector *ownedConnector);
+    Q_INVOKABLE const QSet<QConnectableElement *> *roles() const;
+    Q_INVOKABLE const QList<QProperty *> *ownedAttributes() const;
+    Q_INVOKABLE void addOwnedAttribute(QProperty *ownedAttribute);
+    Q_INVOKABLE void removeOwnedAttribute(QProperty *ownedAttribute);
+    Q_INVOKABLE const QSet<QProperty *> *parts() const;
+    Q_INVOKABLE const QSet<QConnector *> *ownedConnectors() const;
+    Q_INVOKABLE void addOwnedConnector(QConnector *ownedConnector);
+    Q_INVOKABLE void removeOwnedConnector(QConnector *ownedConnector);
 
 protected:
     explicit QStructuredClassifier(QStructuredClassifierPrivate &dd, QObject *parent = 0);

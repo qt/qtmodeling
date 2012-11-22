@@ -67,15 +67,15 @@ class Q_UML_EXPORT QType : public QPackageableElement
     Q_DECLARE_PRIVATE(QType)
 
 public:
-    explicit QType(QObject *parent = 0);
+    Q_INVOKABLE explicit QType(QObject *parent = 0);
     virtual ~QType();
 
     // Association ends from QType
-    QPackage *package() const;
-    void setPackage(QPackage *package);
+    Q_INVOKABLE QPackage *package() const;
+    Q_INVOKABLE void setPackage(QPackage *package);
 
     // Operations
-    bool conformsTo(const QType *other) const;
+    Q_INVOKABLE bool conformsTo(const QType *other) const;
 
 protected:
     explicit QType(QTypePrivate &dd, QObject *parent = 0);

@@ -68,16 +68,16 @@ class Q_UML_EXPORT QRemoveStructuralFeatureValueAction : public QWriteStructural
     Q_DECLARE_PRIVATE(QRemoveStructuralFeatureValueAction)
 
 public:
-    explicit QRemoveStructuralFeatureValueAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QRemoveStructuralFeatureValueAction(QObject *parent = 0);
     virtual ~QRemoveStructuralFeatureValueAction();
 
     // Attributes from QRemoveStructuralFeatureValueAction
-    bool isRemoveDuplicates() const;
-    void setRemoveDuplicates(bool isRemoveDuplicates);
+    Q_INVOKABLE bool isRemoveDuplicates() const;
+    Q_INVOKABLE void setRemoveDuplicates(bool isRemoveDuplicates);
 
     // Association ends from QRemoveStructuralFeatureValueAction
-    QInputPin *removeAt() const;
-    void setRemoveAt(QInputPin *removeAt);
+    Q_INVOKABLE QInputPin *removeAt() const;
+    Q_INVOKABLE void setRemoveAt(QInputPin *removeAt);
 
 protected:
     explicit QRemoveStructuralFeatureValueAction(QRemoveStructuralFeatureValueActionPrivate &dd, QObject *parent = 0);

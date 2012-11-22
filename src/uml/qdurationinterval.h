@@ -68,14 +68,14 @@ class Q_UML_EXPORT QDurationInterval : public QInterval
     Q_DECLARE_PRIVATE(QDurationInterval)
 
 public:
-    explicit QDurationInterval(QObject *parent = 0);
+    Q_INVOKABLE explicit QDurationInterval(QObject *parent = 0);
     virtual ~QDurationInterval();
 
     // Association ends from QDurationInterval
-    QDuration *max() const;
-    void setMax(QDuration *max);
-    QDuration *min() const;
-    void setMin(QDuration *min);
+    Q_INVOKABLE QDuration *max() const;
+    Q_INVOKABLE void setMax(QDuration *max);
+    Q_INVOKABLE QDuration *min() const;
+    Q_INVOKABLE void setMin(QDuration *min);
 
 protected:
     explicit QDurationInterval(QDurationIntervalPrivate &dd, QObject *parent = 0);

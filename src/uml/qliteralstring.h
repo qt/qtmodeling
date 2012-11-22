@@ -67,16 +67,16 @@ class Q_UML_EXPORT QLiteralString : public QLiteralSpecification
     Q_DECLARE_PRIVATE(QLiteralString)
 
 public:
-    explicit QLiteralString(QObject *parent = 0);
+    Q_INVOKABLE explicit QLiteralString(QObject *parent = 0);
     virtual ~QLiteralString();
 
     // Attributes from QLiteralString
-    QString value() const;
-    void setValue(QString value);
+    Q_INVOKABLE QString value() const;
+    Q_INVOKABLE void setValue(QString value);
 
     // Operations
-    bool isComputable() const;
-    QString stringValue() const;
+    Q_INVOKABLE bool isComputable() const;
+    Q_INVOKABLE QString stringValue() const;
 
 protected:
     explicit QLiteralString(QLiteralStringPrivate &dd, QObject *parent = 0);

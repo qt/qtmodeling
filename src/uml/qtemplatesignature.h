@@ -73,18 +73,18 @@ class Q_UML_EXPORT QTemplateSignature : public QElement
     Q_DECLARE_PRIVATE(QTemplateSignature)
 
 public:
-    explicit QTemplateSignature(QObject *parent = 0);
+    Q_INVOKABLE explicit QTemplateSignature(QObject *parent = 0);
     virtual ~QTemplateSignature();
 
     // Association ends from QTemplateSignature
-    const QList<QTemplateParameter *> *parameters() const;
-    void addParameter(QTemplateParameter *parameter);
-    void removeParameter(QTemplateParameter *parameter);
-    QTemplateableElement *template_() const;
-    void setTemplate_(QTemplateableElement *template_);
-    const QList<QTemplateParameter *> *ownedParameters() const;
-    void addOwnedParameter(QTemplateParameter *ownedParameter);
-    void removeOwnedParameter(QTemplateParameter *ownedParameter);
+    Q_INVOKABLE const QList<QTemplateParameter *> *parameters() const;
+    Q_INVOKABLE void addParameter(QTemplateParameter *parameter);
+    Q_INVOKABLE void removeParameter(QTemplateParameter *parameter);
+    Q_INVOKABLE QTemplateableElement *template_() const;
+    Q_INVOKABLE void setTemplate_(QTemplateableElement *template_);
+    Q_INVOKABLE const QList<QTemplateParameter *> *ownedParameters() const;
+    Q_INVOKABLE void addOwnedParameter(QTemplateParameter *ownedParameter);
+    Q_INVOKABLE void removeOwnedParameter(QTemplateParameter *ownedParameter);
 
 protected:
     explicit QTemplateSignature(QTemplateSignaturePrivate &dd, QObject *parent = 0);

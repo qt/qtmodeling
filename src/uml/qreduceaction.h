@@ -72,20 +72,20 @@ class Q_UML_EXPORT QReduceAction : public QAction
     Q_DECLARE_PRIVATE(QReduceAction)
 
 public:
-    explicit QReduceAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QReduceAction(QObject *parent = 0);
     virtual ~QReduceAction();
 
     // Attributes from QReduceAction
-    bool isOrdered() const;
-    void setOrdered(bool isOrdered);
+    Q_INVOKABLE bool isOrdered() const;
+    Q_INVOKABLE void setOrdered(bool isOrdered);
 
     // Association ends from QReduceAction
-    QOutputPin *result() const;
-    void setResult(QOutputPin *result);
-    QInputPin *collection() const;
-    void setCollection(QInputPin *collection);
-    QBehavior *reducer() const;
-    void setReducer(QBehavior *reducer);
+    Q_INVOKABLE QOutputPin *result() const;
+    Q_INVOKABLE void setResult(QOutputPin *result);
+    Q_INVOKABLE QInputPin *collection() const;
+    Q_INVOKABLE void setCollection(QInputPin *collection);
+    Q_INVOKABLE QBehavior *reducer() const;
+    Q_INVOKABLE void setReducer(QBehavior *reducer);
 
 protected:
     explicit QReduceAction(QReduceActionPrivate &dd, QObject *parent = 0);

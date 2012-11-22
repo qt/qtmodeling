@@ -73,22 +73,22 @@ class Q_UML_EXPORT QBehavioredClassifier : public QClassifier
     Q_DECLARE_PRIVATE(QBehavioredClassifier)
 
 public:
-    explicit QBehavioredClassifier(QObject *parent = 0);
+    Q_INVOKABLE explicit QBehavioredClassifier(QObject *parent = 0);
     virtual ~QBehavioredClassifier();
 
     // Association ends from QBehavioredClassifier
-    const QSet<QBehavior *> *ownedBehaviors() const;
-    void addOwnedBehavior(QBehavior *ownedBehavior);
-    void removeOwnedBehavior(QBehavior *ownedBehavior);
-    const QSet<QInterfaceRealization *> *interfaceRealizations() const;
-    void addInterfaceRealization(QInterfaceRealization *interfaceRealization);
-    void removeInterfaceRealization(QInterfaceRealization *interfaceRealization);
-    QBehavior *classifierBehavior() const;
-    void setClassifierBehavior(QBehavior *classifierBehavior);
+    Q_INVOKABLE const QSet<QBehavior *> *ownedBehaviors() const;
+    Q_INVOKABLE void addOwnedBehavior(QBehavior *ownedBehavior);
+    Q_INVOKABLE void removeOwnedBehavior(QBehavior *ownedBehavior);
+    Q_INVOKABLE const QSet<QInterfaceRealization *> *interfaceRealizations() const;
+    Q_INVOKABLE void addInterfaceRealization(QInterfaceRealization *interfaceRealization);
+    Q_INVOKABLE void removeInterfaceRealization(QInterfaceRealization *interfaceRealization);
+    Q_INVOKABLE QBehavior *classifierBehavior() const;
+    Q_INVOKABLE void setClassifierBehavior(QBehavior *classifierBehavior);
 
     // Overriden methods for subsetted properties
-    void addClientDependency(QUmlPointer<QInterfaceRealization> interfaceRealization);
-    void removeClientDependency(QUmlPointer<QInterfaceRealization> interfaceRealization);
+    Q_INVOKABLE void addClientDependency(QUmlPointer<QInterfaceRealization> interfaceRealization);
+    Q_INVOKABLE void removeClientDependency(QUmlPointer<QInterfaceRealization> interfaceRealization);
 
 protected:
     explicit QBehavioredClassifier(QBehavioredClassifierPrivate &dd, QObject *parent = 0);

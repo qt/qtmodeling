@@ -69,14 +69,14 @@ class Q_UML_EXPORT QCreateObjectAction : public QAction
     Q_DECLARE_PRIVATE(QCreateObjectAction)
 
 public:
-    explicit QCreateObjectAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QCreateObjectAction(QObject *parent = 0);
     virtual ~QCreateObjectAction();
 
     // Association ends from QCreateObjectAction
-    QClassifier *classifier() const;
-    void setClassifier(QClassifier *classifier);
-    QOutputPin *result() const;
-    void setResult(QOutputPin *result);
+    Q_INVOKABLE QClassifier *classifier() const;
+    Q_INVOKABLE void setClassifier(QClassifier *classifier);
+    Q_INVOKABLE QOutputPin *result() const;
+    Q_INVOKABLE void setResult(QOutputPin *result);
 
 protected:
     explicit QCreateObjectAction(QCreateObjectActionPrivate &dd, QObject *parent = 0);

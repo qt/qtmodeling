@@ -69,17 +69,17 @@ class Q_UML_EXPORT QExpression : public QValueSpecification
     Q_DECLARE_PRIVATE(QExpression)
 
 public:
-    explicit QExpression(QObject *parent = 0);
+    Q_INVOKABLE explicit QExpression(QObject *parent = 0);
     virtual ~QExpression();
 
     // Attributes from QExpression
-    QString symbol() const;
-    void setSymbol(QString symbol);
+    Q_INVOKABLE QString symbol() const;
+    Q_INVOKABLE void setSymbol(QString symbol);
 
     // Association ends from QExpression
-    const QList<QValueSpecification *> *operands() const;
-    void addOperand(QValueSpecification *operand);
-    void removeOperand(QValueSpecification *operand);
+    Q_INVOKABLE const QList<QValueSpecification *> *operands() const;
+    Q_INVOKABLE void addOperand(QValueSpecification *operand);
+    Q_INVOKABLE void removeOperand(QValueSpecification *operand);
 
 protected:
     explicit QExpression(QExpressionPrivate &dd, QObject *parent = 0);

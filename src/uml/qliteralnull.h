@@ -62,12 +62,12 @@ class Q_UML_EXPORT QLiteralNull : public QLiteralSpecification
     Q_DECLARE_PRIVATE(QLiteralNull)
 
 public:
-    explicit QLiteralNull(QObject *parent = 0);
+    Q_INVOKABLE explicit QLiteralNull(QObject *parent = 0);
     virtual ~QLiteralNull();
 
     // Operations
-    bool isComputable() const;
-    bool isNull() const;
+    Q_INVOKABLE bool isComputable() const;
+    Q_INVOKABLE bool isNull() const;
 
 protected:
     explicit QLiteralNull(QLiteralNullPrivate &dd, QObject *parent = 0);

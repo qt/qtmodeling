@@ -67,12 +67,12 @@ class Q_UML_EXPORT QReadVariableAction : public QVariableAction
     Q_DECLARE_PRIVATE(QReadVariableAction)
 
 public:
-    explicit QReadVariableAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QReadVariableAction(QObject *parent = 0);
     virtual ~QReadVariableAction();
 
     // Association ends from QReadVariableAction
-    QOutputPin *result() const;
-    void setResult(QOutputPin *result);
+    Q_INVOKABLE QOutputPin *result() const;
+    Q_INVOKABLE void setResult(QOutputPin *result);
 
 protected:
     explicit QReadVariableAction(QReadVariableActionPrivate &dd, QObject *parent = 0);

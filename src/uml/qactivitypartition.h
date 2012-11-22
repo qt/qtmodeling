@@ -78,29 +78,29 @@ class Q_UML_EXPORT QActivityPartition : public QActivityGroup
     Q_DECLARE_PRIVATE(QActivityPartition)
 
 public:
-    explicit QActivityPartition(QObject *parent = 0);
+    Q_INVOKABLE explicit QActivityPartition(QObject *parent = 0);
     virtual ~QActivityPartition();
 
     // Attributes from QActivityPartition
-    bool isDimension() const;
-    void setDimension(bool isDimension);
-    bool isExternal() const;
-    void setExternal(bool isExternal);
+    Q_INVOKABLE bool isDimension() const;
+    Q_INVOKABLE void setDimension(bool isDimension);
+    Q_INVOKABLE bool isExternal() const;
+    Q_INVOKABLE void setExternal(bool isExternal);
 
     // Association ends from QActivityPartition
-    QElement *represents() const;
-    void setRepresents(QElement *represents);
-    const QSet<QActivityPartition *> *subpartitions() const;
-    void addSubpartition(QActivityPartition *subpartition);
-    void removeSubpartition(QActivityPartition *subpartition);
-    QActivityPartition *superPartition() const;
-    void setSuperPartition(QActivityPartition *superPartition);
-    const QSet<QActivityNode *> *nodes() const;
-    void addNode(QActivityNode *node);
-    void removeNode(QActivityNode *node);
-    const QSet<QActivityEdge *> *edges() const;
-    void addEdge(QActivityEdge *edge);
-    void removeEdge(QActivityEdge *edge);
+    Q_INVOKABLE QElement *represents() const;
+    Q_INVOKABLE void setRepresents(QElement *represents);
+    Q_INVOKABLE const QSet<QActivityPartition *> *subpartitions() const;
+    Q_INVOKABLE void addSubpartition(QActivityPartition *subpartition);
+    Q_INVOKABLE void removeSubpartition(QActivityPartition *subpartition);
+    Q_INVOKABLE QActivityPartition *superPartition() const;
+    Q_INVOKABLE void setSuperPartition(QActivityPartition *superPartition);
+    Q_INVOKABLE const QSet<QActivityNode *> *nodes() const;
+    Q_INVOKABLE void addNode(QActivityNode *node);
+    Q_INVOKABLE void removeNode(QActivityNode *node);
+    Q_INVOKABLE const QSet<QActivityEdge *> *edges() const;
+    Q_INVOKABLE void addEdge(QActivityEdge *edge);
+    Q_INVOKABLE void removeEdge(QActivityEdge *edge);
 
 protected:
     explicit QActivityPartition(QActivityPartitionPrivate &dd, QObject *parent = 0);

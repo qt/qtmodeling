@@ -67,12 +67,12 @@ class Q_UML_EXPORT QChangeEvent : public QEvent
     Q_DECLARE_PRIVATE(QChangeEvent)
 
 public:
-    explicit QChangeEvent(QObject *parent = 0);
+    Q_INVOKABLE explicit QChangeEvent(QObject *parent = 0);
     virtual ~QChangeEvent();
 
     // Association ends from QChangeEvent
-    QValueSpecification *changeExpression() const;
-    void setChangeExpression(QValueSpecification *changeExpression);
+    Q_INVOKABLE QValueSpecification *changeExpression() const;
+    Q_INVOKABLE void setChangeExpression(QValueSpecification *changeExpression);
 
 protected:
     explicit QChangeEvent(QChangeEventPrivate &dd, QObject *parent = 0);

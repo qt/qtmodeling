@@ -64,16 +64,16 @@ class Q_UML_EXPORT QLiteralInteger : public QLiteralSpecification
     Q_DECLARE_PRIVATE(QLiteralInteger)
 
 public:
-    explicit QLiteralInteger(QObject *parent = 0);
+    Q_INVOKABLE explicit QLiteralInteger(QObject *parent = 0);
     virtual ~QLiteralInteger();
 
     // Attributes from QLiteralInteger
-    qint32 value() const;
-    void setValue(qint32 value);
+    Q_INVOKABLE qint32 value() const;
+    Q_INVOKABLE void setValue(qint32 value);
 
     // Operations
-    qint32 integerValue() const;
-    bool isComputable() const;
+    Q_INVOKABLE qint32 integerValue() const;
+    Q_INVOKABLE bool isComputable() const;
 
 protected:
     explicit QLiteralInteger(QLiteralIntegerPrivate &dd, QObject *parent = 0);

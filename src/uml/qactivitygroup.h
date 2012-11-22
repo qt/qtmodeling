@@ -76,16 +76,16 @@ class Q_UML_EXPORT QActivityGroup : public QNamedElement
     Q_DECLARE_PRIVATE(QActivityGroup)
 
 public:
-    explicit QActivityGroup(QObject *parent = 0);
+    Q_INVOKABLE explicit QActivityGroup(QObject *parent = 0);
     virtual ~QActivityGroup();
 
     // Association ends from QActivityGroup
-    QActivity *inActivity() const;
-    void setInActivity(QActivity *inActivity);
-    const QSet<QActivityNode *> *containedNodes() const;
-    const QSet<QActivityGroup *> *subgroups() const;
-    const QSet<QActivityEdge *> *containedEdges() const;
-    QActivityGroup *superGroup() const;
+    Q_INVOKABLE QActivity *inActivity() const;
+    Q_INVOKABLE void setInActivity(QActivity *inActivity);
+    Q_INVOKABLE const QSet<QActivityNode *> *containedNodes() const;
+    Q_INVOKABLE const QSet<QActivityGroup *> *subgroups() const;
+    Q_INVOKABLE const QSet<QActivityEdge *> *containedEdges() const;
+    Q_INVOKABLE QActivityGroup *superGroup() const;
 
     // Classes which access read-only opposite properties should be friend
     friend class QActivityEdgePrivate;

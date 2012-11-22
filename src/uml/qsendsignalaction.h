@@ -69,14 +69,14 @@ class Q_UML_EXPORT QSendSignalAction : public QInvocationAction
     Q_DECLARE_PRIVATE(QSendSignalAction)
 
 public:
-    explicit QSendSignalAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QSendSignalAction(QObject *parent = 0);
     virtual ~QSendSignalAction();
 
     // Association ends from QSendSignalAction
-    QInputPin *target() const;
-    void setTarget(QInputPin *target);
-    QSignal *signal() const;
-    void setSignal(QSignal *signal);
+    Q_INVOKABLE QInputPin *target() const;
+    Q_INVOKABLE void setTarget(QInputPin *target);
+    Q_INVOKABLE QSignal *signal() const;
+    Q_INVOKABLE void setSignal(QSignal *signal);
 
 protected:
     explicit QSendSignalAction(QSendSignalActionPrivate &dd, QObject *parent = 0);

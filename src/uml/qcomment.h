@@ -69,17 +69,17 @@ class Q_UML_EXPORT QComment : public QElement
     Q_DECLARE_PRIVATE(QComment)
 
 public:
-    explicit QComment(QObject *parent = 0);
+    Q_INVOKABLE explicit QComment(QObject *parent = 0);
     virtual ~QComment();
 
     // Attributes from QComment
-    QString body() const;
-    void setBody(QString body);
+    Q_INVOKABLE QString body() const;
+    Q_INVOKABLE void setBody(QString body);
 
     // Association ends from QComment
-    const QSet<QElement *> *annotatedElements() const;
-    void addAnnotatedElement(QElement *annotatedElement);
-    void removeAnnotatedElement(QElement *annotatedElement);
+    Q_INVOKABLE const QSet<QElement *> *annotatedElements() const;
+    Q_INVOKABLE void addAnnotatedElement(QElement *annotatedElement);
+    Q_INVOKABLE void removeAnnotatedElement(QElement *annotatedElement);
 
 protected:
     explicit QComment(QCommentPrivate &dd, QObject *parent = 0);

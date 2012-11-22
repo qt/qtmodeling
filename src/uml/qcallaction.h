@@ -71,17 +71,17 @@ class Q_UML_EXPORT QCallAction : public QInvocationAction
     Q_DECLARE_PRIVATE(QCallAction)
 
 public:
-    explicit QCallAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QCallAction(QObject *parent = 0);
     virtual ~QCallAction();
 
     // Attributes from QCallAction
-    bool isSynchronous() const;
-    void setSynchronous(bool isSynchronous);
+    Q_INVOKABLE bool isSynchronous() const;
+    Q_INVOKABLE void setSynchronous(bool isSynchronous);
 
     // Association ends from QCallAction
-    const QList<QOutputPin *> *results() const;
-    void addResult(QOutputPin *result);
-    void removeResult(QOutputPin *result);
+    Q_INVOKABLE const QList<QOutputPin *> *results() const;
+    Q_INVOKABLE void addResult(QOutputPin *result);
+    Q_INVOKABLE void removeResult(QOutputPin *result);
 
 protected:
     explicit QCallAction(QCallActionPrivate &dd, QObject *parent = 0);

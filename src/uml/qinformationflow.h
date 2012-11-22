@@ -83,68 +83,68 @@ class Q_UML_EXPORT QInformationFlow : public QObject
     Q_DECLARE_PRIVATE(QInformationFlow)
 
 public:
-    explicit QInformationFlow(QObject *parent = 0);
+    Q_INVOKABLE explicit QInformationFlow(QObject *parent = 0);
     virtual ~QInformationFlow();
 
     // Association ends from aggregated QElement
-    const QSet<QElement *> *ownedElements() const;
-    QElement *owner() const;
-    const QSet<QComment *> *ownedComments() const;
-    void addOwnedComment(QComment *ownedComment);
-    void removeOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE QElement *owner() const;
+    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
+    Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
     // Association ends from aggregated QRelationship
-    const QSet<QElement *> *relatedElements() const;
+    Q_INVOKABLE const QSet<QElement *> *relatedElements() const;
 
     // Association ends from aggregated QDirectedRelationship
-    const QSet<QElement *> *sources() const;
-    const QSet<QElement *> *targets() const;
+    Q_INVOKABLE const QSet<QElement *> *sources() const;
+    Q_INVOKABLE const QSet<QElement *> *targets() const;
 
     // Association ends from aggregated QParameterableElement
-    QTemplateParameter *owningTemplateParameter() const;
-    void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
-    QTemplateParameter *templateParameter() const;
-    void setTemplateParameter(QTemplateParameter *templateParameter);
+    Q_INVOKABLE QTemplateParameter *owningTemplateParameter() const;
+    Q_INVOKABLE void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
+    Q_INVOKABLE QTemplateParameter *templateParameter() const;
+    Q_INVOKABLE void setTemplateParameter(QTemplateParameter *templateParameter);
 
     // Attributes from aggregated QNamedElement
-    QString name() const;
-    void setName(QString name);
-    QString qualifiedName() const;
+    Q_INVOKABLE QString name() const;
+    Q_INVOKABLE void setName(QString name);
+    Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from aggregated QNamedElement
-    QStringExpression *nameExpression() const;
-    void setNameExpression(QStringExpression *nameExpression);
-    QNamespace *namespace_() const;
-    const QSet<QDependency *> *clientDependencies() const;
-    void addClientDependency(QDependency *clientDependency);
-    void removeClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE QStringExpression *nameExpression() const;
+    Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
+    Q_INVOKABLE QNamespace *namespace_() const;
+    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
+    Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
     // Attributes from aggregated QPackageableElement
-    QtUml::VisibilityKind visibility() const;
-    void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
 
     // Association ends from QInformationFlow
-    const QSet<QNamedElement *> *informationTargets() const;
-    void addInformationTarget(QNamedElement *informationTarget);
-    void removeInformationTarget(QNamedElement *informationTarget);
-    const QSet<QConnector *> *realizingConnectors() const;
-    void addRealizingConnector(QConnector *realizingConnector);
-    void removeRealizingConnector(QConnector *realizingConnector);
-    const QSet<QClassifier *> *conveyed() const;
-    void addConveyed(QClassifier *conveyed);
-    void removeConveyed(QClassifier *conveyed);
-    const QSet<QNamedElement *> *informationSources() const;
-    void addInformationSource(QNamedElement *informationSource);
-    void removeInformationSource(QNamedElement *informationSource);
-    const QSet<QMessage *> *realizingMessages() const;
-    void addRealizingMessage(QMessage *realizingMessage);
-    void removeRealizingMessage(QMessage *realizingMessage);
-    const QSet<QActivityEdge *> *realizingActivityEdges() const;
-    void addRealizingActivityEdge(QActivityEdge *realizingActivityEdge);
-    void removeRealizingActivityEdge(QActivityEdge *realizingActivityEdge);
-    const QSet<QRelationship *> *realizations() const;
-    void addRealization(QRelationship *realization);
-    void removeRealization(QRelationship *realization);
+    Q_INVOKABLE const QSet<QNamedElement *> *informationTargets() const;
+    Q_INVOKABLE void addInformationTarget(QNamedElement *informationTarget);
+    Q_INVOKABLE void removeInformationTarget(QNamedElement *informationTarget);
+    Q_INVOKABLE const QSet<QConnector *> *realizingConnectors() const;
+    Q_INVOKABLE void addRealizingConnector(QConnector *realizingConnector);
+    Q_INVOKABLE void removeRealizingConnector(QConnector *realizingConnector);
+    Q_INVOKABLE const QSet<QClassifier *> *conveyed() const;
+    Q_INVOKABLE void addConveyed(QClassifier *conveyed);
+    Q_INVOKABLE void removeConveyed(QClassifier *conveyed);
+    Q_INVOKABLE const QSet<QNamedElement *> *informationSources() const;
+    Q_INVOKABLE void addInformationSource(QNamedElement *informationSource);
+    Q_INVOKABLE void removeInformationSource(QNamedElement *informationSource);
+    Q_INVOKABLE const QSet<QMessage *> *realizingMessages() const;
+    Q_INVOKABLE void addRealizingMessage(QMessage *realizingMessage);
+    Q_INVOKABLE void removeRealizingMessage(QMessage *realizingMessage);
+    Q_INVOKABLE const QSet<QActivityEdge *> *realizingActivityEdges() const;
+    Q_INVOKABLE void addRealizingActivityEdge(QActivityEdge *realizingActivityEdge);
+    Q_INVOKABLE void removeRealizingActivityEdge(QActivityEdge *realizingActivityEdge);
+    Q_INVOKABLE const QSet<QRelationship *> *realizations() const;
+    Q_INVOKABLE void addRealization(QRelationship *realization);
+    Q_INVOKABLE void removeRealization(QRelationship *realization);
 
 protected:
     explicit QInformationFlow(QInformationFlowPrivate &dd, QObject *parent = 0);

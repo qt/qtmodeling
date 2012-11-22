@@ -69,14 +69,14 @@ class Q_UML_EXPORT QValueSpecificationAction : public QAction
     Q_DECLARE_PRIVATE(QValueSpecificationAction)
 
 public:
-    explicit QValueSpecificationAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QValueSpecificationAction(QObject *parent = 0);
     virtual ~QValueSpecificationAction();
 
     // Association ends from QValueSpecificationAction
-    QValueSpecification *value() const;
-    void setValue(QValueSpecification *value);
-    QOutputPin *result() const;
-    void setResult(QOutputPin *result);
+    Q_INVOKABLE QValueSpecification *value() const;
+    Q_INVOKABLE void setValue(QValueSpecification *value);
+    Q_INVOKABLE QOutputPin *result() const;
+    Q_INVOKABLE void setResult(QOutputPin *result);
 
 protected:
     explicit QValueSpecificationAction(QValueSpecificationActionPrivate &dd, QObject *parent = 0);

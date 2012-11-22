@@ -78,22 +78,22 @@ class Q_UML_EXPORT QInteractionUse : public QInteractionFragment
     Q_DECLARE_PRIVATE(QInteractionUse)
 
 public:
-    explicit QInteractionUse(QObject *parent = 0);
+    Q_INVOKABLE explicit QInteractionUse(QObject *parent = 0);
     virtual ~QInteractionUse();
 
     // Association ends from QInteractionUse
-    const QSet<QGate *> *actualGates() const;
-    void addActualGate(QGate *actualGate);
-    void removeActualGate(QGate *actualGate);
-    QValueSpecification *returnValue() const;
-    void setReturnValue(QValueSpecification *returnValue);
-    QInteraction *refersTo() const;
-    void setRefersTo(QInteraction *refersTo);
-    const QList<QValueSpecification *> *arguments() const;
-    void addArgument(QValueSpecification *argument);
-    void removeArgument(QValueSpecification *argument);
-    QProperty *returnValueRecipient() const;
-    void setReturnValueRecipient(QProperty *returnValueRecipient);
+    Q_INVOKABLE const QSet<QGate *> *actualGates() const;
+    Q_INVOKABLE void addActualGate(QGate *actualGate);
+    Q_INVOKABLE void removeActualGate(QGate *actualGate);
+    Q_INVOKABLE QValueSpecification *returnValue() const;
+    Q_INVOKABLE void setReturnValue(QValueSpecification *returnValue);
+    Q_INVOKABLE QInteraction *refersTo() const;
+    Q_INVOKABLE void setRefersTo(QInteraction *refersTo);
+    Q_INVOKABLE const QList<QValueSpecification *> *arguments() const;
+    Q_INVOKABLE void addArgument(QValueSpecification *argument);
+    Q_INVOKABLE void removeArgument(QValueSpecification *argument);
+    Q_INVOKABLE QProperty *returnValueRecipient() const;
+    Q_INVOKABLE void setReturnValueRecipient(QProperty *returnValueRecipient);
 
 protected:
     explicit QInteractionUse(QInteractionUsePrivate &dd, QObject *parent = 0);

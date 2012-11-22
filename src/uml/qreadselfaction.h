@@ -67,12 +67,12 @@ class Q_UML_EXPORT QReadSelfAction : public QAction
     Q_DECLARE_PRIVATE(QReadSelfAction)
 
 public:
-    explicit QReadSelfAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QReadSelfAction(QObject *parent = 0);
     virtual ~QReadSelfAction();
 
     // Association ends from QReadSelfAction
-    QOutputPin *result() const;
-    void setResult(QOutputPin *result);
+    Q_INVOKABLE QOutputPin *result() const;
+    Q_INVOKABLE void setResult(QOutputPin *result);
 
 protected:
     explicit QReadSelfAction(QReadSelfActionPrivate &dd, QObject *parent = 0);

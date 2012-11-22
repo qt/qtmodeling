@@ -67,12 +67,12 @@ class Q_UML_EXPORT QActionInputPin : public QInputPin
     Q_DECLARE_PRIVATE(QActionInputPin)
 
 public:
-    explicit QActionInputPin(QObject *parent = 0);
+    Q_INVOKABLE explicit QActionInputPin(QObject *parent = 0);
     virtual ~QActionInputPin();
 
     // Association ends from QActionInputPin
-    QAction *fromAction() const;
-    void setFromAction(QAction *fromAction);
+    Q_INVOKABLE QAction *fromAction() const;
+    Q_INVOKABLE void setFromAction(QAction *fromAction);
 
 protected:
     explicit QActionInputPin(QActionInputPinPrivate &dd, QObject *parent = 0);

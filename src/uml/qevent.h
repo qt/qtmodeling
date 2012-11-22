@@ -62,7 +62,7 @@ class Q_UML_EXPORT QEvent : public QPackageableElement
     Q_DECLARE_PRIVATE(QEvent)
 
 public:
-    explicit QEvent(QObject *parent = 0);
+    Q_INVOKABLE explicit QEvent(QObject *parent = 0);
     virtual ~QEvent();
 
 protected:

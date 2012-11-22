@@ -67,12 +67,12 @@ class Q_UML_EXPORT QActivityParameterNode : public QObjectNode
     Q_DECLARE_PRIVATE(QActivityParameterNode)
 
 public:
-    explicit QActivityParameterNode(QObject *parent = 0);
+    Q_INVOKABLE explicit QActivityParameterNode(QObject *parent = 0);
     virtual ~QActivityParameterNode();
 
     // Association ends from QActivityParameterNode
-    QParameter *parameter() const;
-    void setParameter(QParameter *parameter);
+    Q_INVOKABLE QParameter *parameter() const;
+    Q_INVOKABLE void setParameter(QParameter *parameter);
 
 protected:
     explicit QActivityParameterNode(QActivityParameterNodePrivate &dd, QObject *parent = 0);
