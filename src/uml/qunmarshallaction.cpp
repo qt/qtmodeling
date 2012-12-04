@@ -146,7 +146,6 @@ void QUnmarshallAction::removeResult(QOutputPin *result)
     Q_D(QUnmarshallAction);
     if (d->results->contains(result)) {
         d->results->remove(result);
-        result->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(result));

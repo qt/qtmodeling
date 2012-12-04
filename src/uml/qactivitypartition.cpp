@@ -193,7 +193,6 @@ void QActivityPartition::removeSubpartition(QActivityPartition *subpartition)
     Q_D(QActivityPartition);
     if (d->subpartitions->contains(subpartition)) {
         d->subpartitions->remove(subpartition);
-        subpartition->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QActivityGroupPrivate *>(d))->removeSubgroup(qumlobject_cast<QActivityGroup *>(subpartition));

@@ -136,7 +136,6 @@ void QCollaborationUse::removeRoleBinding(QDependency *roleBinding)
     Q_D(QCollaborationUse);
     if (d->roleBindings->contains(roleBinding)) {
         d->roleBindings->remove(roleBinding);
-        roleBinding->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(roleBinding));

@@ -555,7 +555,6 @@ void QClassifier::removeOwnedUseCase(QUseCase *ownedUseCase)
     Q_D(QClassifier);
     if (d->ownedUseCases->contains(ownedUseCase)) {
         d->ownedUseCases->remove(ownedUseCase);
-        ownedUseCase->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedUseCase));
@@ -757,7 +756,6 @@ void QClassifier::removeCollaborationUse(QCollaborationUse *collaborationUse)
     Q_D(QClassifier);
     if (d->collaborationUses->contains(collaborationUse)) {
         d->collaborationUses->remove(collaborationUse);
-        collaborationUse->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(collaborationUse));
@@ -885,7 +883,6 @@ void QClassifier::removeGeneralization(QGeneralization *generalization)
     Q_D(QClassifier);
     if (d->generalizations->contains(generalization)) {
         d->generalizations->remove(generalization);
-        generalization->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(generalization));
@@ -942,7 +939,6 @@ void QClassifier::removeSubstitution(QSubstitution *substitution)
     Q_D(QClassifier);
     if (d->substitutions->contains(substitution)) {
         d->substitutions->remove(substitution);
-        substitution->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(substitution));

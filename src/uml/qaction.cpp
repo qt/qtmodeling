@@ -208,7 +208,6 @@ void QAction::removeLocalPostcondition(QConstraint *localPostcondition)
     Q_D(QAction);
     if (d->localPostconditions->contains(localPostcondition)) {
         d->localPostconditions->remove(localPostcondition);
-        localPostcondition->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(localPostcondition));
@@ -246,7 +245,6 @@ void QAction::removeLocalPrecondition(QConstraint *localPrecondition)
     Q_D(QAction);
     if (d->localPreconditions->contains(localPrecondition)) {
         d->localPreconditions->remove(localPrecondition);
-        localPrecondition->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(localPrecondition));

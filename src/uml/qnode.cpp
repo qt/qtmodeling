@@ -264,7 +264,6 @@ void QNode::removeNestedNode(QNode *nestedNode)
     Q_D(QNode);
     if (d->nestedNodes->contains(nestedNode)) {
         d->nestedNodes->remove(nestedNode);
-        nestedNode->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(nestedNode));

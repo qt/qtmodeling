@@ -181,7 +181,6 @@ void QBehavior::removePostcondition(QConstraint *postcondition)
     Q_D(QBehavior);
     if (d->postconditions->contains(postcondition)) {
         d->postconditions->remove(postcondition);
-        postcondition->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespace *>(this))->removeOwnedRule(qumlobject_cast<QConstraint *>(postcondition));
@@ -219,7 +218,6 @@ void QBehavior::removePrecondition(QConstraint *precondition)
     Q_D(QBehavior);
     if (d->preconditions->contains(precondition)) {
         d->preconditions->remove(precondition);
-        precondition->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespace *>(this))->removeOwnedRule(qumlobject_cast<QConstraint *>(precondition));
@@ -294,7 +292,6 @@ void QBehavior::removeOwnedParameter(QParameter *ownedParameter)
     Q_D(QBehavior);
     if (d->ownedParameters->contains(ownedParameter)) {
         d->ownedParameters->removeAll(ownedParameter);
-        ownedParameter->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedParameter));
@@ -332,7 +329,6 @@ void QBehavior::removeOwnedParameterSet(QParameterSet *ownedParameterSet)
     Q_D(QBehavior);
     if (d->ownedParameterSets->contains(ownedParameterSet)) {
         d->ownedParameterSets->remove(ownedParameterSet);
-        ownedParameterSet->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedParameterSet));

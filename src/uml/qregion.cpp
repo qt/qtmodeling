@@ -388,7 +388,6 @@ void QRegion::removeTransition(QTransition *transition)
     Q_D(QRegion);
     if (d->transitions->contains(transition)) {
         d->transitions->remove(transition);
-        transition->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(transition));
@@ -508,7 +507,6 @@ void QRegion::removeSubvertex(QVertex *subvertex)
     Q_D(QRegion);
     if (d->subvertices->contains(subvertex)) {
         d->subvertices->remove(subvertex);
-        subvertex->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(subvertex));

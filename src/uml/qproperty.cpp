@@ -736,7 +736,6 @@ void QProperty::removeQualifier(QProperty *qualifier)
     Q_D(QProperty);
     if (d->qualifiers->contains(qualifier)) {
         d->qualifiers->removeAll(qualifier);
-        qualifier->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(qualifier));

@@ -116,7 +116,6 @@ void QProfile::removeMetamodelReference(QPackageImport *metamodelReference)
     Q_D(QProfile);
     if (d->metamodelReferences->contains(metamodelReference)) {
         d->metamodelReferences->remove(metamodelReference);
-        metamodelReference->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespace *>(this))->removePackageImport(qumlobject_cast<QPackageImport *>(metamodelReference));
@@ -154,7 +153,6 @@ void QProfile::removeMetaclassReference(QElementImport *metaclassReference)
     Q_D(QProfile);
     if (d->metaclassReferences->contains(metaclassReference)) {
         d->metaclassReferences->remove(metaclassReference);
-        metaclassReference->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespace *>(this))->removeElementImport(qumlobject_cast<QElementImport *>(metaclassReference));

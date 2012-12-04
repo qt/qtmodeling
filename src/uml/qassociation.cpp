@@ -753,7 +753,6 @@ void QAssociation::removeOwnedEnd(QProperty *ownedEnd)
     Q_D(QAssociation);
     if (d->ownedEnds->contains(ownedEnd)) {
         d->ownedEnds->removeAll(ownedEnd);
-        ownedEnd->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QAssociation *>(this))->removeMemberEnd(qumlobject_cast<QProperty *>(ownedEnd));

@@ -589,7 +589,7 @@ void QOperation::addOwnedParameter(QParameter *ownedParameter)
     Q_D(QOperation);
     if (!d->ownedParameters->contains(ownedParameter)) {
         d->ownedParameters->append(ownedParameter);
-        ownedParameter->setParent(quml_topLevelWrapper(this));
+        quml_topLevelWrapper(ownedParameter)->setParent(quml_topLevelWrapper(this));
 
         // Adjust opposite property
         ownedParameter->setOperation(this);
@@ -603,7 +603,7 @@ void QOperation::removeOwnedParameter(QParameter *ownedParameter)
     Q_D(QOperation);
     if (d->ownedParameters->contains(ownedParameter)) {
         d->ownedParameters->removeAll(ownedParameter);
-        ownedParameter->setParent(0);
+        quml_topLevelWrapper(ownedParameter)->setParent(0);
 
         // Adjust opposite property
         ownedParameter->setOperation(0);
@@ -707,7 +707,6 @@ void QOperation::removePostcondition(QConstraint *postcondition)
     Q_D(QOperation);
     if (d->postconditions->contains(postcondition)) {
         d->postconditions->remove(postcondition);
-        postcondition->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespace *>(this))->removeOwnedRule(qumlobject_cast<QConstraint *>(postcondition));
@@ -867,7 +866,6 @@ void QOperation::removePrecondition(QConstraint *precondition)
     Q_D(QOperation);
     if (d->preconditions->contains(precondition)) {
         d->preconditions->remove(precondition);
-        precondition->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespace *>(this))->removeOwnedRule(qumlobject_cast<QConstraint *>(precondition));

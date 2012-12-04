@@ -224,7 +224,6 @@ void QStringExpression::removeSubExpression(QStringExpression *subExpression)
     Q_D(QStringExpression);
     if (d->subExpressions->contains(subExpression)) {
         d->subExpressions->remove(subExpression);
-        subExpression->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(subExpression));

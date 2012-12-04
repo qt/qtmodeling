@@ -468,7 +468,6 @@ void QPackage::removePackagedElement(QPackageableElement *packagedElement)
     Q_D(QPackage);
     if (d->packagedElements->contains(packagedElement)) {
         d->packagedElements->remove(packagedElement);
-        packagedElement->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(packagedElement));
@@ -541,7 +540,6 @@ void QPackage::removeProfileApplication(QProfileApplication *profileApplication)
     Q_D(QPackage);
     if (d->profileApplications->contains(profileApplication)) {
         d->profileApplications->remove(profileApplication);
-        profileApplication->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(profileApplication));
@@ -601,7 +599,6 @@ void QPackage::removePackageMerge(QPackageMerge *packageMerge)
     Q_D(QPackage);
     if (d->packageMerges->contains(packageMerge)) {
         d->packageMerges->remove(packageMerge);
-        packageMerge->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(packageMerge));

@@ -473,7 +473,6 @@ void QBehavioralFeature::removeOwnedParameter(QParameter *ownedParameter)
     Q_D(QBehavioralFeature);
     if (d->ownedParameters->contains(ownedParameter)) {
         d->ownedParameters->removeAll(ownedParameter);
-        ownedParameter->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedParameter));
@@ -511,7 +510,6 @@ void QBehavioralFeature::removeOwnedParameterSet(QParameterSet *ownedParameterSe
     Q_D(QBehavioralFeature);
     if (d->ownedParameterSets->contains(ownedParameterSet)) {
         d->ownedParameterSets->remove(ownedParameterSet);
-        ownedParameterSet->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedParameterSet));

@@ -576,7 +576,6 @@ void QTransition::removeTrigger(QTrigger *trigger)
     Q_D(QTransition);
     if (d->triggers->contains(trigger)) {
         d->triggers->remove(trigger);
-        trigger->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(trigger));

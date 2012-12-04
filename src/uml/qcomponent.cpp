@@ -147,7 +147,6 @@ void QComponent::removeRealization(QComponentRealization *realization)
     Q_D(QComponent);
     if (d->realizations->contains(realization)) {
         d->realizations->remove(realization);
-        realization->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(realization));
@@ -212,7 +211,6 @@ void QComponent::removePackagedElement(QPackageableElement *packagedElement)
     Q_D(QComponent);
     if (d->packagedElements->contains(packagedElement)) {
         d->packagedElements->remove(packagedElement);
-        packagedElement->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(packagedElement));

@@ -157,7 +157,6 @@ void QStateMachine::removeConnectionPoint(QPseudostate *connectionPoint)
     Q_D(QStateMachine);
     if (d->connectionPoints->contains(connectionPoint)) {
         d->connectionPoints->remove(connectionPoint);
-        connectionPoint->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(connectionPoint));
@@ -238,7 +237,6 @@ void QStateMachine::removeRegion(QRegion *region)
     Q_D(QStateMachine);
     if (d->regions->contains(region)) {
         d->regions->remove(region);
-        region->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(region));

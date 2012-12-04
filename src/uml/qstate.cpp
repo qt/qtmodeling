@@ -456,7 +456,6 @@ void QState::removeRegion(QRegion *region)
     Q_D(QState);
     if (d->regions->contains(region)) {
         d->regions->remove(region);
-        region->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(region));
@@ -529,7 +528,6 @@ void QState::removeConnection(QConnectionPointReference *connection)
     Q_D(QState);
     if (d->connections->contains(connection)) {
         d->connections->remove(connection);
-        connection->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(connection));
@@ -611,7 +609,6 @@ void QState::removeDeferrableTrigger(QTrigger *deferrableTrigger)
     Q_D(QState);
     if (d->deferrableTriggers->contains(deferrableTrigger)) {
         d->deferrableTriggers->remove(deferrableTrigger);
-        deferrableTrigger->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(deferrableTrigger));
@@ -652,7 +649,6 @@ void QState::removeConnectionPoint(QPseudostate *connectionPoint)
     Q_D(QState);
     if (d->connectionPoints->contains(connectionPoint)) {
         d->connectionPoints->remove(connectionPoint);
-        connectionPoint->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(connectionPoint));

@@ -115,7 +115,6 @@ void QInvocationAction::removeArgument(QInputPin *argument)
     Q_D(QInvocationAction);
     if (d->arguments->contains(argument)) {
         d->arguments->removeAll(argument);
-        argument->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(argument));

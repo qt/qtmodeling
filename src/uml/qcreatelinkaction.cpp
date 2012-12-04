@@ -100,7 +100,7 @@ void QCreateLinkAction::addEndData(QLinkEndCreationData *endData)
     Q_D(QCreateLinkAction);
     if (!d->endData->contains(endData)) {
         d->endData->insert(endData);
-        endData->setParent(quml_topLevelWrapper(this));
+        quml_topLevelWrapper(endData)->setParent(quml_topLevelWrapper(this));
     }
 }
 
@@ -111,7 +111,7 @@ void QCreateLinkAction::removeEndData(QLinkEndCreationData *endData)
     Q_D(QCreateLinkAction);
     if (d->endData->contains(endData)) {
         d->endData->remove(endData);
-        endData->setParent(0);
+        quml_topLevelWrapper(endData)->setParent(0);
     }
 }
 

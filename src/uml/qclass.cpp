@@ -820,7 +820,6 @@ void QClass::removeNestedClassifier(QClassifier *nestedClassifier)
     Q_D(QClass);
     if (d->nestedClassifiers->contains(nestedClassifier)) {
         d->nestedClassifiers->removeAll(nestedClassifier);
-        nestedClassifier->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(nestedClassifier));
@@ -859,7 +858,6 @@ void QClass::removeOwnedReception(QReception *ownedReception)
     Q_D(QClass);
     if (d->ownedReceptions->contains(ownedReception)) {
         d->ownedReceptions->remove(ownedReception);
-        ownedReception->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QClassifierPrivate *>(d))->removeFeature(qumlobject_cast<QFeature *>(ownedReception));
@@ -914,7 +912,6 @@ void QClass::removeOwnedOperation(QOperation *ownedOperation)
     Q_D(QClass);
     if (d->ownedOperations->contains(ownedOperation)) {
         d->ownedOperations->removeAll(ownedOperation);
-        ownedOperation->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QClassifierPrivate *>(d))->removeFeature(qumlobject_cast<QFeature *>(ownedOperation));
@@ -960,7 +957,6 @@ void QClass::removeOwnedAttribute(QProperty *ownedAttribute)
     Q_D(QClass);
     if (d->ownedAttributes->contains(ownedAttribute)) {
         d->ownedAttributes->removeAll(ownedAttribute);
-        ownedAttribute->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedAttribute));

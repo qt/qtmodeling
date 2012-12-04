@@ -164,7 +164,6 @@ void QConditionalNode::removeClause(QClause *clause)
     Q_D(QConditionalNode);
     if (d->clauses->contains(clause)) {
         d->clauses->remove(clause);
-        clause->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(clause));
@@ -189,7 +188,7 @@ void QConditionalNode::addResult(QOutputPin *result)
     Q_D(QConditionalNode);
     if (!d->results->contains(result)) {
         d->results->append(result);
-        result->setParent(quml_topLevelWrapper(this));
+        quml_topLevelWrapper(result)->setParent(quml_topLevelWrapper(this));
     }
 }
 
@@ -200,7 +199,7 @@ void QConditionalNode::removeResult(QOutputPin *result)
     Q_D(QConditionalNode);
     if (d->results->contains(result)) {
         d->results->removeAll(result);
-        result->setParent(0);
+        quml_topLevelWrapper(result)->setParent(0);
     }
 }
 

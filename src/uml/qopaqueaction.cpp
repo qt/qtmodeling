@@ -186,7 +186,6 @@ void QOpaqueAction::removeInputValue(QInputPin *inputValue)
     Q_D(QOpaqueAction);
     if (d->inputValues->contains(inputValue)) {
         d->inputValues->remove(inputValue);
-        inputValue->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(inputValue));
@@ -224,7 +223,6 @@ void QOpaqueAction::removeOutputValue(QOutputPin *outputValue)
     Q_D(QOpaqueAction);
     if (d->outputValues->contains(outputValue)) {
         d->outputValues->remove(outputValue);
-        outputValue->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(outputValue));

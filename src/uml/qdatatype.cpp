@@ -121,7 +121,6 @@ void QDataType::removeOwnedOperation(QOperation *ownedOperation)
     Q_D(QDataType);
     if (d->ownedOperations->contains(ownedOperation)) {
         d->ownedOperations->removeAll(ownedOperation);
-        ownedOperation->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QClassifierPrivate *>(d))->removeFeature(qumlobject_cast<QFeature *>(ownedOperation));
@@ -167,7 +166,6 @@ void QDataType::removeOwnedAttribute(QProperty *ownedAttribute)
     Q_D(QDataType);
     if (d->ownedAttributes->contains(ownedAttribute)) {
         d->ownedAttributes->removeAll(ownedAttribute);
-        ownedAttribute->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedAttribute));

@@ -136,7 +136,6 @@ void QExpression::removeOperand(QValueSpecification *operand)
     Q_D(QExpression);
     if (d->operands->contains(operand)) {
         d->operands->removeAll(operand);
-        operand->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(operand));

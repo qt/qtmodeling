@@ -154,7 +154,6 @@ void QParameterSet::removeCondition(QConstraint *condition)
     Q_D(QParameterSet);
     if (d->conditions->contains(condition)) {
         d->conditions->remove(condition);
-        condition->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(condition));

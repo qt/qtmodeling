@@ -117,7 +117,6 @@ void QSlot::removeValue(QValueSpecification *value)
     Q_D(QSlot);
     if (d->values->contains(value)) {
         d->values->removeAll(value);
-        value->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(value));

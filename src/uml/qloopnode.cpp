@@ -141,7 +141,7 @@ void QLoopNode::addLoopVariableInput(QInputPin *loopVariableInput)
     Q_D(QLoopNode);
     if (!d->loopVariableInputs->contains(loopVariableInput)) {
         d->loopVariableInputs->append(loopVariableInput);
-        loopVariableInput->setParent(quml_topLevelWrapper(this));
+        quml_topLevelWrapper(loopVariableInput)->setParent(quml_topLevelWrapper(this));
     }
 }
 
@@ -152,7 +152,7 @@ void QLoopNode::removeLoopVariableInput(QInputPin *loopVariableInput)
     Q_D(QLoopNode);
     if (d->loopVariableInputs->contains(loopVariableInput)) {
         d->loopVariableInputs->removeAll(loopVariableInput);
-        loopVariableInput->setParent(0);
+        quml_topLevelWrapper(loopVariableInput)->setParent(0);
     }
 }
 
@@ -257,7 +257,7 @@ void QLoopNode::addResult(QOutputPin *result)
     Q_D(QLoopNode);
     if (!d->results->contains(result)) {
         d->results->append(result);
-        result->setParent(quml_topLevelWrapper(this));
+        quml_topLevelWrapper(result)->setParent(quml_topLevelWrapper(this));
     }
 }
 
@@ -268,7 +268,7 @@ void QLoopNode::removeResult(QOutputPin *result)
     Q_D(QLoopNode);
     if (d->results->contains(result)) {
         d->results->removeAll(result);
-        result->setParent(0);
+        quml_topLevelWrapper(result)->setParent(0);
     }
 }
 

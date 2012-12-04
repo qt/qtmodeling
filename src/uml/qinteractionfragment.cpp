@@ -120,7 +120,6 @@ void QInteractionFragment::removeGeneralOrdering(QGeneralOrdering *generalOrderi
     Q_D(QInteractionFragment);
     if (d->generalOrderings->contains(generalOrdering)) {
         d->generalOrderings->remove(generalOrdering);
-        generalOrdering->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(generalOrdering));

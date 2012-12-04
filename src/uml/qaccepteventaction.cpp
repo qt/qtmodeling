@@ -142,7 +142,6 @@ void QAcceptEventAction::removeTrigger(QTrigger *trigger)
     Q_D(QAcceptEventAction);
     if (d->triggers->contains(trigger)) {
         d->triggers->remove(trigger);
-        trigger->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(trigger));
@@ -180,7 +179,6 @@ void QAcceptEventAction::removeResult(QOutputPin *result)
     Q_D(QAcceptEventAction);
     if (d->results->contains(result)) {
         d->results->remove(result);
-        result->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(result));

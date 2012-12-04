@@ -116,7 +116,6 @@ void QProtocolStateMachine::removeConformance(QProtocolConformance *conformance)
     Q_D(QProtocolStateMachine);
     if (d->conformance->contains(conformance)) {
         d->conformance->remove(conformance);
-        conformance->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(conformance));

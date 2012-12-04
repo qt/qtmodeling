@@ -225,7 +225,6 @@ void QConnector::removeEnd(QConnectorEnd *end)
     Q_D(QConnector);
     if (d->ends->contains(end)) {
         d->ends->removeAll(end);
-        end->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(end));

@@ -117,7 +117,6 @@ void QBehavioredClassifier::removeOwnedBehavior(QBehavior *ownedBehavior)
     Q_D(QBehavioredClassifier);
     if (d->ownedBehaviors->contains(ownedBehavior)) {
         d->ownedBehaviors->remove(ownedBehavior);
-        ownedBehavior->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedBehavior));
@@ -159,7 +158,6 @@ void QBehavioredClassifier::removeInterfaceRealization(QInterfaceRealization *in
     Q_D(QBehavioredClassifier);
     if (d->interfaceRealizations->contains(interfaceRealization)) {
         d->interfaceRealizations->remove(interfaceRealization);
-        interfaceRealization->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(interfaceRealization));

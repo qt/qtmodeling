@@ -216,7 +216,6 @@ void QActivity::removeNode(QActivityNode *node)
     Q_D(QActivity);
     if (d->nodes->contains(node)) {
         d->nodes->remove(node);
-        node->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(node));
@@ -260,7 +259,6 @@ void QActivity::removeVariable(QVariable *variable)
     Q_D(QActivity);
     if (d->variables->contains(variable)) {
         d->variables->remove(variable);
-        variable->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(variable));
@@ -305,7 +303,6 @@ void QActivity::removeStructuredNode(QStructuredActivityNode *structuredNode)
     Q_D(QActivity);
     if (d->structuredNodes->contains(structuredNode)) {
         d->structuredNodes->remove(structuredNode);
-        structuredNode->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QActivity *>(this))->removeGroup(qumlobject_cast<QActivityGroup *>(structuredNode));
@@ -350,7 +347,6 @@ void QActivity::removeGroup(QActivityGroup *group)
     Q_D(QActivity);
     if (d->groups->contains(group)) {
         d->groups->remove(group);
-        group->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(group));
@@ -394,7 +390,6 @@ void QActivity::removeEdge(QActivityEdge *edge)
     Q_D(QActivity);
     if (d->edges->contains(edge)) {
         d->edges->remove(edge);
-        edge->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(edge));

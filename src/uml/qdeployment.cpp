@@ -159,7 +159,6 @@ void QDeployment::removeConfiguration(QDeploymentSpecification *configuration)
     Q_D(QDeployment);
     if (d->configurations->contains(configuration)) {
         d->configurations->remove(configuration);
-        configuration->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(configuration));
