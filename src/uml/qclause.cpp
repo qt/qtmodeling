@@ -74,20 +74,14 @@ QClausePrivate::~QClausePrivate()
     \brief A clause is an element that represents a single branch of a conditional construct, including a test and a body section. The body section is executed only if (but not necessarily if) the test section evaluates true.
  */
 
-QClause::QClause(QObject *parent) :
-    QElement(*new QClausePrivate, parent)
+QClause::QClause(QUmlObject *parent, QUmlObject *wrapper) :
+    QElement(*new QClausePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QClause *>("QClause *");
-    qRegisterMetaType<const QSet<QClause *> *>("const QSet<QClause *> *");
-    qRegisterMetaType<const QList<QClause *> *>("const QList<QClause *> *");
 }
 
-QClause::QClause(QClausePrivate &dd, QObject *parent) :
-    QElement(dd, parent)
+QClause::QClause(QClausePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QClause *>("QClause *");
-    qRegisterMetaType<const QSet<QClause *> *>("const QSet<QClause *> *");
-    qRegisterMetaType<const QList<QClause *> *>("const QList<QClause *> *");
 }
 
 QClause::~QClause()

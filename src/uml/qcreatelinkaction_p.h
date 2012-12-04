@@ -41,8 +41,6 @@
 #ifndef QTUML_QCREATELINKACTION_P_H
 #define QTUML_QCREATELINKACTION_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qwritelinkaction_p.h"
 

@@ -65,20 +65,14 @@ QCallActionPrivate::~QCallActionPrivate()
     \brief CallAction is an abstract class for actions that invoke behavior and receive return values.
  */
 
-QCallAction::QCallAction(QObject *parent) :
-    QInvocationAction(*new QCallActionPrivate, parent)
+QCallAction::QCallAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QInvocationAction(*new QCallActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QCallAction *>("QCallAction *");
-    qRegisterMetaType<const QSet<QCallAction *> *>("const QSet<QCallAction *> *");
-    qRegisterMetaType<const QList<QCallAction *> *>("const QList<QCallAction *> *");
 }
 
-QCallAction::QCallAction(QCallActionPrivate &dd, QObject *parent) :
-    QInvocationAction(dd, parent)
+QCallAction::QCallAction(QCallActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QInvocationAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QCallAction *>("QCallAction *");
-    qRegisterMetaType<const QSet<QCallAction *> *>("const QSet<QCallAction *> *");
-    qRegisterMetaType<const QList<QCallAction *> *>("const QList<QCallAction *> *");
 }
 
 QCallAction::~QCallAction()
@@ -134,7 +128,7 @@ void QCallAction::addResult(QOutputPin *result)
         d->results->append(result);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(result));
+        (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(result));
     }
 }
 
@@ -145,9 +139,10 @@ void QCallAction::removeResult(QOutputPin *result)
     Q_D(QCallAction);
     if (d->results->contains(result)) {
         d->results->removeAll(result);
+        result->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(result));
+        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(result));
     }
 }
 

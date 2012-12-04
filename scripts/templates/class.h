@@ -173,7 +173,7 @@
 
 // Base class includes
 [%- IF !class.superclass || class.superclass.size > 1 %]
-#include <QtCore/QObject>
+#include <QtUml/QUmlObject>
 [%- END -%]
 [%- FOREACH superClass IN class.superclass %]
 #include <${superClass.include}>
@@ -193,6 +193,47 @@
 
 #include <${include}>
 [%- END -%]
+[%- END %]
+[%- found = 'false' -%]
+[%- IF class.item('attribute') %]
+[%- FOREACH attribute IN class.attribute.values -%]
+[%- IF attribute.isReadOnly == 'false' -%]
+[%- FOREACH subsettedProperty IN attribute.subsettedProperty.split(' ') %]
+[%- IF classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).attribute.item(subsettedProperty) -%]
+    [%- property = classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).attribute.item(subsettedProperty) -%]
+[%- ELSE -%]
+    [%- property = classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).associationend.item(subsettedProperty) -%]
+[%- END -%]
+[%- IF property.isReadOnly == 'false' && attribute.accessor.1.parameter.0.type != property.accessor.1.parameter.0.type -%]
+[%- IF found == 'false' -%]
+[%- found = 'true' %]
+[%- END -%]
+[%- END -%]
+[%- END -%]
+[%- END -%]
+[%- END -%]
+[%- END %]
+[%- IF found == 'false' and class.item('associationend') %]
+[%- FOREACH associationend IN class.associationend.values -%]
+[%- IF associationend.isReadOnly == 'false' -%]
+[%- FOREACH subsettedProperty IN associationend.subsettedProperty.split(' ') %]
+[%- IF classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).attribute.item(subsettedProperty) -%]
+    [%- property = classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).attribute.item(subsettedProperty) -%]
+[%- ELSE -%]
+    [%- property = classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).associationend.item(subsettedProperty) -%]
+[%- END -%]
+[%- IF property.isReadOnly == 'false' && associationend.accessor.1.parameter.0.type != property.accessor.1.parameter.0.type -%]
+[%- IF found == 'false' -%]
+[%- found = 'true' %]
+[%- END -%]
+[%- END -%]
+[%- END -%]
+[%- END -%]
+[%- END -%]
+[%- END %]
+[%- IF found == 'true' %]
+
+#include <QtUml/QUmlPointer>
 [%- END %]
 
 QT_BEGIN_HEADER
@@ -235,7 +276,7 @@ class ${forwarddecl.content};
 
 class ${class.name}Private;
 
-class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name} : [% IF class.superclass.size == 1 %]public ${class.superclass.0.name.split('/').last}[% ELSE %]public QObject[% END %]
+class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name} : [% IF class.superclass.size == 1 %]public ${class.superclass.0.name.split('/').last}[% ELSE %]public QUmlObject[% END %]
 {
     Q_OBJECT
     [%- GENERATEPROPERTIES(class, 'false') %]
@@ -244,7 +285,7 @@ class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name} : [% I
     Q_DECLARE_PRIVATE(${class.name})
 
 public:
-    Q_INVOKABLE explicit ${class.name}(QObject *parent = 0);
+    Q_INVOKABLE explicit ${class.name}(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~${class.name}();
 [%- IF class.superclass and class.superclass.size > 1 -%]
     [%- GENERATEFUNCTIONS(class, 'true') -%]
@@ -330,7 +371,7 @@ public:
 [%- END %]
 
 protected:
-    explicit ${class.name}(${class.name}Private &dd, QObject *parent = 0);
+    explicit ${class.name}(${class.name}Private &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 [%- IF class.superclass and class.superclass.size > 1 %]
 
 private:

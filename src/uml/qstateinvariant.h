@@ -69,7 +69,7 @@ class Q_UML_EXPORT QStateInvariant : public QInteractionFragment
     Q_DECLARE_PRIVATE(QStateInvariant)
 
 public:
-    Q_INVOKABLE explicit QStateInvariant(QObject *parent = 0);
+    Q_INVOKABLE explicit QStateInvariant(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QStateInvariant();
 
     // Association ends from QStateInvariant
@@ -79,7 +79,7 @@ public:
     Q_INVOKABLE void setCovered(QLifeline *covered);
 
 protected:
-    explicit QStateInvariant(QStateInvariantPrivate &dd, QObject *parent = 0);
+    explicit QStateInvariant(QStateInvariantPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

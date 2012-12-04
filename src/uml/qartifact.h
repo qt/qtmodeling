@@ -44,7 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
+#include <QtUml/QUmlObject>
 #include <QtUml/QDeployedArtifact>
 #include <QtUml/QClassifier>
 
@@ -52,6 +52,8 @@
 #include <QtCore/QString>
 #include <QtCore/QList>
 #include <QtCore/QSet>
+
+#include <QtUml/QUmlPointer>
 
 QT_BEGIN_HEADER
 
@@ -66,7 +68,7 @@ class QManifestation;
 
 class QArtifactPrivate;
 
-class Q_UML_EXPORT QArtifact : public QObject
+class Q_UML_EXPORT QArtifact : public QUmlObject
 {
     Q_OBJECT
 
@@ -80,7 +82,7 @@ class Q_UML_EXPORT QArtifact : public QObject
     Q_DECLARE_PRIVATE(QArtifact)
 
 public:
-    Q_INVOKABLE explicit QArtifact(QObject *parent = 0);
+    Q_INVOKABLE explicit QArtifact(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QArtifact();
 
     // Association ends from aggregated QElement
@@ -206,7 +208,7 @@ public:
     Q_INVOKABLE void removeClientDependency(QUmlPointer<QManifestation> manifestation);
 
 protected:
-    explicit QArtifact(QArtifactPrivate &dd, QObject *parent = 0);
+    explicit QArtifact(QArtifactPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 
 private:
     QDeployedArtifact *_wrappedDeployedArtifact;

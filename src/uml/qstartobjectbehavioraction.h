@@ -67,7 +67,7 @@ class Q_UML_EXPORT QStartObjectBehaviorAction : public QCallAction
     Q_DECLARE_PRIVATE(QStartObjectBehaviorAction)
 
 public:
-    Q_INVOKABLE explicit QStartObjectBehaviorAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QStartObjectBehaviorAction(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QStartObjectBehaviorAction();
 
     // Association ends from QStartObjectBehaviorAction
@@ -75,7 +75,7 @@ public:
     Q_INVOKABLE void setObject(QInputPin *object);
 
 protected:
-    explicit QStartObjectBehaviorAction(QStartObjectBehaviorActionPrivate &dd, QObject *parent = 0);
+    explicit QStartObjectBehaviorAction(QStartObjectBehaviorActionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -71,7 +71,7 @@ class Q_UML_EXPORT QDirectedRelationship : public QRelationship
     Q_DECLARE_PRIVATE(QDirectedRelationship)
 
 public:
-    Q_INVOKABLE explicit QDirectedRelationship(QObject *parent = 0);
+    Q_INVOKABLE explicit QDirectedRelationship(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QDirectedRelationship();
 
     // Association ends from QDirectedRelationship
@@ -79,7 +79,7 @@ public:
     Q_INVOKABLE const QSet<QElement *> *targets() const;
 
 protected:
-    explicit QDirectedRelationship(QDirectedRelationshipPrivate &dd, QObject *parent = 0);
+    explicit QDirectedRelationship(QDirectedRelationshipPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

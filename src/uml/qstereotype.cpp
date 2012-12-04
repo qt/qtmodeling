@@ -65,20 +65,14 @@ QStereotypePrivate::~QStereotypePrivate()
     \brief A stereotype defines how an existing metaclass may be extended, and enables the use of platform or domain specific terminology or notation in place of, or in addition to, the ones used for the extended metaclass.
  */
 
-QStereotype::QStereotype(QObject *parent) :
-    QClass(*new QStereotypePrivate, parent)
+QStereotype::QStereotype(QUmlObject *parent, QUmlObject *wrapper) :
+    QClass(*new QStereotypePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QStereotype *>("QStereotype *");
-    qRegisterMetaType<const QSet<QStereotype *> *>("const QSet<QStereotype *> *");
-    qRegisterMetaType<const QList<QStereotype *> *>("const QList<QStereotype *> *");
 }
 
-QStereotype::QStereotype(QStereotypePrivate &dd, QObject *parent) :
-    QClass(dd, parent)
+QStereotype::QStereotype(QStereotypePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QClass(dd, parent, wrapper)
 {
-    qRegisterMetaType<QStereotype *>("QStereotype *");
-    qRegisterMetaType<const QSet<QStereotype *> *>("const QSet<QStereotype *> *");
-    qRegisterMetaType<const QList<QStereotype *> *>("const QList<QStereotype *> *");
 }
 
 QStereotype::~QStereotype()
@@ -109,7 +103,7 @@ void QStereotype::addIcon(QImage *icon)
         d->icons->insert(icon);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(icon));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(icon));
     }
 }
 
@@ -120,9 +114,10 @@ void QStereotype::removeIcon(QImage *icon)
     Q_D(QStereotype);
     if (d->icons->contains(icon)) {
         d->icons->remove(icon);
+        icon->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(icon));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(icon));
     }
 }
 

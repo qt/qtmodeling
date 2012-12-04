@@ -60,20 +60,14 @@ QFunctionBehaviorPrivate::~QFunctionBehaviorPrivate()
     \brief A function behavior is an opaque behavior that does not access or modify any objects or other external data.
  */
 
-QFunctionBehavior::QFunctionBehavior(QObject *parent) :
-    QOpaqueBehavior(*new QFunctionBehaviorPrivate, parent)
+QFunctionBehavior::QFunctionBehavior(QUmlObject *parent, QUmlObject *wrapper) :
+    QOpaqueBehavior(*new QFunctionBehaviorPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QFunctionBehavior *>("QFunctionBehavior *");
-    qRegisterMetaType<const QSet<QFunctionBehavior *> *>("const QSet<QFunctionBehavior *> *");
-    qRegisterMetaType<const QList<QFunctionBehavior *> *>("const QList<QFunctionBehavior *> *");
 }
 
-QFunctionBehavior::QFunctionBehavior(QFunctionBehaviorPrivate &dd, QObject *parent) :
-    QOpaqueBehavior(dd, parent)
+QFunctionBehavior::QFunctionBehavior(QFunctionBehaviorPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QOpaqueBehavior(dd, parent, wrapper)
 {
-    qRegisterMetaType<QFunctionBehavior *>("QFunctionBehavior *");
-    qRegisterMetaType<const QSet<QFunctionBehavior *> *>("const QSet<QFunctionBehavior *> *");
-    qRegisterMetaType<const QList<QFunctionBehavior *> *>("const QList<QFunctionBehavior *> *");
 }
 
 QFunctionBehavior::~QFunctionBehavior()

@@ -69,20 +69,14 @@ QExceptionHandlerPrivate::~QExceptionHandlerPrivate()
     \brief An exception handler is an element that specifies a body to execute in case the specified exception occurs during the execution of the protected node.
  */
 
-QExceptionHandler::QExceptionHandler(QObject *parent) :
-    QElement(*new QExceptionHandlerPrivate, parent)
+QExceptionHandler::QExceptionHandler(QUmlObject *parent, QUmlObject *wrapper) :
+    QElement(*new QExceptionHandlerPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QExceptionHandler *>("QExceptionHandler *");
-    qRegisterMetaType<const QSet<QExceptionHandler *> *>("const QSet<QExceptionHandler *> *");
-    qRegisterMetaType<const QList<QExceptionHandler *> *>("const QList<QExceptionHandler *> *");
 }
 
-QExceptionHandler::QExceptionHandler(QExceptionHandlerPrivate &dd, QObject *parent) :
-    QElement(dd, parent)
+QExceptionHandler::QExceptionHandler(QExceptionHandlerPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QExceptionHandler *>("QExceptionHandler *");
-    qRegisterMetaType<const QSet<QExceptionHandler *> *>("const QSet<QExceptionHandler *> *");
-    qRegisterMetaType<const QList<QExceptionHandler *> *>("const QList<QExceptionHandler *> *");
 }
 
 QExceptionHandler::~QExceptionHandler()
@@ -169,7 +163,7 @@ void QExceptionHandler::setProtectedNode(QExecutableNode *protectedNode)
         d->protectedNode = protectedNode;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(protectedNode));
+        (qumlobject_cast<QElementPrivate *>(d))->setOwner(qumlobject_cast<QElement *>(protectedNode));
 
         // Adjust opposite property
         if (protectedNode)

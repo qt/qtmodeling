@@ -61,26 +61,20 @@ QStructuralFeaturePrivate::~QStructuralFeaturePrivate()
     \brief A structural feature is a typed feature of a classifier that specifies the structure of instances of the classifier.By specializing multiplicity element, it supports a multiplicity that specifies valid cardinalities for the collection of values associated with an instantiation of the structural feature.
  */
 
-QStructuralFeature::QStructuralFeature(QObject *parent) :
-    QObject(*new QStructuralFeaturePrivate, parent),
-    _wrappedTypedElement(new QTypedElement(this)),
-    _wrappedMultiplicityElement(new QMultiplicityElement(this)),
-    _wrappedFeature(new QFeature(this))
+QStructuralFeature::QStructuralFeature(QUmlObject *parent, QUmlObject *wrapper) :
+    QUmlObject(*new QStructuralFeaturePrivate, parent, wrapper),
+    _wrappedTypedElement(new QTypedElement(this, this)),
+    _wrappedMultiplicityElement(new QMultiplicityElement(this, this)),
+    _wrappedFeature(new QFeature(this, this))
 {
-    qRegisterMetaType<QStructuralFeature *>("QStructuralFeature *");
-    qRegisterMetaType<const QSet<QStructuralFeature *> *>("const QSet<QStructuralFeature *> *");
-    qRegisterMetaType<const QList<QStructuralFeature *> *>("const QList<QStructuralFeature *> *");
 }
 
-QStructuralFeature::QStructuralFeature(QStructuralFeaturePrivate &dd, QObject *parent) :
-    QObject(dd, parent),
-    _wrappedTypedElement(new QTypedElement(this)),
-    _wrappedMultiplicityElement(new QMultiplicityElement(this)),
-    _wrappedFeature(new QFeature(this))
+QStructuralFeature::QStructuralFeature(QStructuralFeaturePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QUmlObject(dd, parent, wrapper),
+    _wrappedTypedElement(new QTypedElement(this, this)),
+    _wrappedMultiplicityElement(new QMultiplicityElement(this, this)),
+    _wrappedFeature(new QFeature(this, this))
 {
-    qRegisterMetaType<QStructuralFeature *>("QStructuralFeature *");
-    qRegisterMetaType<const QSet<QStructuralFeature *> *>("const QSet<QStructuralFeature *> *");
-    qRegisterMetaType<const QList<QStructuralFeature *> *>("const QList<QStructuralFeature *> *");
 }
 
 QStructuralFeature::~QStructuralFeature()
@@ -96,7 +90,7 @@ QStructuralFeature::~QStructuralFeature()
  */
 const QSet<QElement *> *QStructuralFeature::ownedElements() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+    return (qumlobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -104,7 +98,7 @@ const QSet<QElement *> *QStructuralFeature::ownedElements() const
  */
 QElement *QStructuralFeature::owner() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->owner();
+    return (qumlobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -112,17 +106,17 @@ QElement *QStructuralFeature::owner() const
  */
 const QSet<QComment *> *QStructuralFeature::ownedComments() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+    return (qumlobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QStructuralFeature::addOwnedComment(QComment *ownedComment)
 {
-    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qumlobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QStructuralFeature::removeOwnedComment(QComment *ownedComment)
 {
-    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qumlobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -134,12 +128,12 @@ void QStructuralFeature::removeOwnedComment(QComment *ownedComment)
  */
 QString QStructuralFeature::name() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+    return (qumlobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QStructuralFeature::setName(QString name)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+    (qumlobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -147,12 +141,12 @@ void QStructuralFeature::setName(QString name)
  */
 QtUml::VisibilityKind QStructuralFeature::visibility() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->visibility();
+    return (qumlobject_cast<const QNamedElement *>(this))->visibility();
 }
 
 void QStructuralFeature::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setVisibility(visibility);
+    (qumlobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
 
 /*!
@@ -160,7 +154,7 @@ void QStructuralFeature::setVisibility(QtUml::VisibilityKind visibility)
  */
 QString QStructuralFeature::qualifiedName() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qumlobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -172,12 +166,12 @@ QString QStructuralFeature::qualifiedName() const
  */
 QStringExpression *QStructuralFeature::nameExpression() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+    return (qumlobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QStructuralFeature::setNameExpression(QStringExpression *nameExpression)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qumlobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -185,7 +179,7 @@ void QStructuralFeature::setNameExpression(QStringExpression *nameExpression)
  */
 QNamespace *QStructuralFeature::namespace_() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+    return (qumlobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -193,17 +187,17 @@ QNamespace *QStructuralFeature::namespace_() const
  */
 const QSet<QDependency *> *QStructuralFeature::clientDependencies() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qumlobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QStructuralFeature::addClientDependency(QDependency *clientDependency)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qumlobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QStructuralFeature::removeClientDependency(QDependency *clientDependency)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qumlobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -215,12 +209,12 @@ void QStructuralFeature::removeClientDependency(QDependency *clientDependency)
  */
 QType *QStructuralFeature::type() const
 {
-    return (qtuml_object_cast<const QTypedElement *>(this))->type();
+    return (qumlobject_cast<const QTypedElement *>(this))->type();
 }
 
 void QStructuralFeature::setType(QType *type)
 {
-    (qtuml_object_cast<QTypedElement *>(this))->setType(type);
+    (qumlobject_cast<QTypedElement *>(this))->setType(type);
 }
 
 // ---------------------------------------------------------------
@@ -232,12 +226,12 @@ void QStructuralFeature::setType(QType *type)
  */
 qint32 QStructuralFeature::upper() const
 {
-    return (qtuml_object_cast<const QMultiplicityElement *>(this))->upper();
+    return (qumlobject_cast<const QMultiplicityElement *>(this))->upper();
 }
 
 void QStructuralFeature::setUpper(qint32 upper)
 {
-    (qtuml_object_cast<QMultiplicityElement *>(this))->setUpper(upper);
+    (qumlobject_cast<QMultiplicityElement *>(this))->setUpper(upper);
 }
 
 /*!
@@ -245,12 +239,12 @@ void QStructuralFeature::setUpper(qint32 upper)
  */
 bool QStructuralFeature::isUnique() const
 {
-    return (qtuml_object_cast<const QMultiplicityElement *>(this))->isUnique();
+    return (qumlobject_cast<const QMultiplicityElement *>(this))->isUnique();
 }
 
 void QStructuralFeature::setUnique(bool isUnique)
 {
-    (qtuml_object_cast<QMultiplicityElement *>(this))->setUnique(isUnique);
+    (qumlobject_cast<QMultiplicityElement *>(this))->setUnique(isUnique);
 }
 
 /*!
@@ -258,12 +252,12 @@ void QStructuralFeature::setUnique(bool isUnique)
  */
 bool QStructuralFeature::isOrdered() const
 {
-    return (qtuml_object_cast<const QMultiplicityElement *>(this))->isOrdered();
+    return (qumlobject_cast<const QMultiplicityElement *>(this))->isOrdered();
 }
 
 void QStructuralFeature::setOrdered(bool isOrdered)
 {
-    (qtuml_object_cast<QMultiplicityElement *>(this))->setOrdered(isOrdered);
+    (qumlobject_cast<QMultiplicityElement *>(this))->setOrdered(isOrdered);
 }
 
 /*!
@@ -271,12 +265,12 @@ void QStructuralFeature::setOrdered(bool isOrdered)
  */
 qint32 QStructuralFeature::lower() const
 {
-    return (qtuml_object_cast<const QMultiplicityElement *>(this))->lower();
+    return (qumlobject_cast<const QMultiplicityElement *>(this))->lower();
 }
 
 void QStructuralFeature::setLower(qint32 lower)
 {
-    (qtuml_object_cast<QMultiplicityElement *>(this))->setLower(lower);
+    (qumlobject_cast<QMultiplicityElement *>(this))->setLower(lower);
 }
 
 // ---------------------------------------------------------------
@@ -288,12 +282,12 @@ void QStructuralFeature::setLower(qint32 lower)
  */
 QValueSpecification *QStructuralFeature::upperValue() const
 {
-    return (qtuml_object_cast<const QMultiplicityElement *>(this))->upperValue();
+    return (qumlobject_cast<const QMultiplicityElement *>(this))->upperValue();
 }
 
 void QStructuralFeature::setUpperValue(QValueSpecification *upperValue)
 {
-    (qtuml_object_cast<QMultiplicityElement *>(this))->setUpperValue(upperValue);
+    (qumlobject_cast<QMultiplicityElement *>(this))->setUpperValue(upperValue);
 }
 
 /*!
@@ -301,12 +295,12 @@ void QStructuralFeature::setUpperValue(QValueSpecification *upperValue)
  */
 QValueSpecification *QStructuralFeature::lowerValue() const
 {
-    return (qtuml_object_cast<const QMultiplicityElement *>(this))->lowerValue();
+    return (qumlobject_cast<const QMultiplicityElement *>(this))->lowerValue();
 }
 
 void QStructuralFeature::setLowerValue(QValueSpecification *lowerValue)
 {
-    (qtuml_object_cast<QMultiplicityElement *>(this))->setLowerValue(lowerValue);
+    (qumlobject_cast<QMultiplicityElement *>(this))->setLowerValue(lowerValue);
 }
 
 // ---------------------------------------------------------------
@@ -318,12 +312,12 @@ void QStructuralFeature::setLowerValue(QValueSpecification *lowerValue)
  */
 bool QStructuralFeature::isLeaf() const
 {
-    return (qtuml_object_cast<const QRedefinableElement *>(this))->isLeaf();
+    return (qumlobject_cast<const QRedefinableElement *>(this))->isLeaf();
 }
 
 void QStructuralFeature::setLeaf(bool isLeaf)
 {
-    (qtuml_object_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+    (qumlobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
 }
 
 // ---------------------------------------------------------------
@@ -335,7 +329,7 @@ void QStructuralFeature::setLeaf(bool isLeaf)
  */
 const QSet<QRedefinableElement *> *QStructuralFeature::redefinedElements() const
 {
-    return (qtuml_object_cast<const QRedefinableElement *>(this))->redefinedElements();
+    return (qumlobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
 
 /*!
@@ -343,7 +337,7 @@ const QSet<QRedefinableElement *> *QStructuralFeature::redefinedElements() const
  */
 const QSet<QClassifier *> *QStructuralFeature::redefinitionContexts() const
 {
-    return (qtuml_object_cast<const QRedefinableElement *>(this))->redefinitionContexts();
+    return (qumlobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
 }
 
 // ---------------------------------------------------------------
@@ -355,12 +349,12 @@ const QSet<QClassifier *> *QStructuralFeature::redefinitionContexts() const
  */
 bool QStructuralFeature::isStatic() const
 {
-    return (qtuml_object_cast<const QFeature *>(this))->isStatic();
+    return (qumlobject_cast<const QFeature *>(this))->isStatic();
 }
 
 void QStructuralFeature::setStatic(bool isStatic)
 {
-    (qtuml_object_cast<QFeature *>(this))->setStatic(isStatic);
+    (qumlobject_cast<QFeature *>(this))->setStatic(isStatic);
 }
 
 // ---------------------------------------------------------------
@@ -372,7 +366,7 @@ void QStructuralFeature::setStatic(bool isStatic)
  */
 const QSet<QClassifier *> *QStructuralFeature::featuringClassifiers() const
 {
-    return (qtuml_object_cast<const QFeature *>(this))->featuringClassifiers();
+    return (qumlobject_cast<const QFeature *>(this))->featuringClassifiers();
 }
 
 // ---------------------------------------------------------------

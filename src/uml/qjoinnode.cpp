@@ -64,20 +64,14 @@ QJoinNodePrivate::~QJoinNodePrivate()
     \brief A join node is a control node that synchronizes multiple flows.Join nodes have a Boolean value specification using the names of the incoming edges to specify the conditions under which the join will emit a token.
  */
 
-QJoinNode::QJoinNode(QObject *parent) :
-    QControlNode(*new QJoinNodePrivate, parent)
+QJoinNode::QJoinNode(QUmlObject *parent, QUmlObject *wrapper) :
+    QControlNode(*new QJoinNodePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QJoinNode *>("QJoinNode *");
-    qRegisterMetaType<const QSet<QJoinNode *> *>("const QSet<QJoinNode *> *");
-    qRegisterMetaType<const QList<QJoinNode *> *>("const QList<QJoinNode *> *");
 }
 
-QJoinNode::QJoinNode(QJoinNodePrivate &dd, QObject *parent) :
-    QControlNode(dd, parent)
+QJoinNode::QJoinNode(QJoinNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QControlNode(dd, parent, wrapper)
 {
-    qRegisterMetaType<QJoinNode *>("QJoinNode *");
-    qRegisterMetaType<const QSet<QJoinNode *> *>("const QSet<QJoinNode *> *");
-    qRegisterMetaType<const QList<QJoinNode *> *>("const QList<QJoinNode *> *");
 }
 
 QJoinNode::~QJoinNode()
@@ -131,13 +125,13 @@ void QJoinNode::setJoinSpec(QValueSpecification *joinSpec)
     Q_D(QJoinNode);
     if (d->joinSpec != joinSpec) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->joinSpec));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->joinSpec));
 
         d->joinSpec = joinSpec;
 
         // Adjust subsetted property(ies)
         if (joinSpec) {
-            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(joinSpec));
+            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(joinSpec));
         }
     }
 }

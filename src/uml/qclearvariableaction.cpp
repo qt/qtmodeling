@@ -60,20 +60,14 @@ QClearVariableActionPrivate::~QClearVariableActionPrivate()
     \brief A clear variable action is a variable action that removes all values of a variable.
  */
 
-QClearVariableAction::QClearVariableAction(QObject *parent) :
-    QVariableAction(*new QClearVariableActionPrivate, parent)
+QClearVariableAction::QClearVariableAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QVariableAction(*new QClearVariableActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QClearVariableAction *>("QClearVariableAction *");
-    qRegisterMetaType<const QSet<QClearVariableAction *> *>("const QSet<QClearVariableAction *> *");
-    qRegisterMetaType<const QList<QClearVariableAction *> *>("const QList<QClearVariableAction *> *");
 }
 
-QClearVariableAction::QClearVariableAction(QClearVariableActionPrivate &dd, QObject *parent) :
-    QVariableAction(dd, parent)
+QClearVariableAction::QClearVariableAction(QClearVariableActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QVariableAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QClearVariableAction *>("QClearVariableAction *");
-    qRegisterMetaType<const QSet<QClearVariableAction *> *>("const QSet<QClearVariableAction *> *");
-    qRegisterMetaType<const QList<QClearVariableAction *> *>("const QList<QClearVariableAction *> *");
 }
 
 QClearVariableAction::~QClearVariableAction()

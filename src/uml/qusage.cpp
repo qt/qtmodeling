@@ -60,20 +60,14 @@ QUsagePrivate::~QUsagePrivate()
     \brief A usage is a relationship in which one element requires another element (or set of elements) for its full implementation or operation. A usage is a dependency in which the client requires the presence of the supplier.
  */
 
-QUsage::QUsage(QObject *parent) :
-    QDependency(*new QUsagePrivate, parent)
+QUsage::QUsage(QUmlObject *parent, QUmlObject *wrapper) :
+    QDependency(*new QUsagePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QUsage *>("QUsage *");
-    qRegisterMetaType<const QSet<QUsage *> *>("const QSet<QUsage *> *");
-    qRegisterMetaType<const QList<QUsage *> *>("const QList<QUsage *> *");
 }
 
-QUsage::QUsage(QUsagePrivate &dd, QObject *parent) :
-    QDependency(dd, parent)
+QUsage::QUsage(QUsagePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QDependency(dd, parent, wrapper)
 {
-    qRegisterMetaType<QUsage *>("QUsage *");
-    qRegisterMetaType<const QSet<QUsage *> *>("const QSet<QUsage *> *");
-    qRegisterMetaType<const QList<QUsage *> *>("const QList<QUsage *> *");
 }
 
 QUsage::~QUsage()

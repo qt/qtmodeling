@@ -69,24 +69,18 @@ QExtendPrivate::~QExtendPrivate()
     \brief A relationship from an extending use case to an extended use case that specifies how and when the behavior defined in the extending use case can be inserted into the behavior defined in the extended use case.
  */
 
-QExtend::QExtend(QObject *parent) :
-    QObject(*new QExtendPrivate, parent),
-    _wrappedDirectedRelationship(new QDirectedRelationship(this)),
-    _wrappedNamedElement(new QNamedElement(this))
+QExtend::QExtend(QUmlObject *parent, QUmlObject *wrapper) :
+    QUmlObject(*new QExtendPrivate, parent, wrapper),
+    _wrappedDirectedRelationship(new QDirectedRelationship(this, this)),
+    _wrappedNamedElement(new QNamedElement(this, this))
 {
-    qRegisterMetaType<QExtend *>("QExtend *");
-    qRegisterMetaType<const QSet<QExtend *> *>("const QSet<QExtend *> *");
-    qRegisterMetaType<const QList<QExtend *> *>("const QList<QExtend *> *");
 }
 
-QExtend::QExtend(QExtendPrivate &dd, QObject *parent) :
-    QObject(dd, parent),
-    _wrappedDirectedRelationship(new QDirectedRelationship(this)),
-    _wrappedNamedElement(new QNamedElement(this))
+QExtend::QExtend(QExtendPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QUmlObject(dd, parent, wrapper),
+    _wrappedDirectedRelationship(new QDirectedRelationship(this, this)),
+    _wrappedNamedElement(new QNamedElement(this, this))
 {
-    qRegisterMetaType<QExtend *>("QExtend *");
-    qRegisterMetaType<const QSet<QExtend *> *>("const QSet<QExtend *> *");
-    qRegisterMetaType<const QList<QExtend *> *>("const QList<QExtend *> *");
 }
 
 QExtend::~QExtend()
@@ -102,7 +96,7 @@ QExtend::~QExtend()
  */
 const QSet<QElement *> *QExtend::ownedElements() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+    return (qumlobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -110,7 +104,7 @@ const QSet<QElement *> *QExtend::ownedElements() const
  */
 QElement *QExtend::owner() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->owner();
+    return (qumlobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -118,17 +112,17 @@ QElement *QExtend::owner() const
  */
 const QSet<QComment *> *QExtend::ownedComments() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+    return (qumlobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QExtend::addOwnedComment(QComment *ownedComment)
 {
-    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qumlobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QExtend::removeOwnedComment(QComment *ownedComment)
 {
-    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qumlobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -140,7 +134,7 @@ void QExtend::removeOwnedComment(QComment *ownedComment)
  */
 const QSet<QElement *> *QExtend::relatedElements() const
 {
-    return (qtuml_object_cast<const QRelationship *>(this))->relatedElements();
+    return (qumlobject_cast<const QRelationship *>(this))->relatedElements();
 }
 
 // ---------------------------------------------------------------
@@ -152,7 +146,7 @@ const QSet<QElement *> *QExtend::relatedElements() const
  */
 const QSet<QElement *> *QExtend::sources() const
 {
-    return (qtuml_object_cast<const QDirectedRelationship *>(this))->sources();
+    return (qumlobject_cast<const QDirectedRelationship *>(this))->sources();
 }
 
 /*!
@@ -160,7 +154,7 @@ const QSet<QElement *> *QExtend::sources() const
  */
 const QSet<QElement *> *QExtend::targets() const
 {
-    return (qtuml_object_cast<const QDirectedRelationship *>(this))->targets();
+    return (qumlobject_cast<const QDirectedRelationship *>(this))->targets();
 }
 
 // ---------------------------------------------------------------
@@ -172,12 +166,12 @@ const QSet<QElement *> *QExtend::targets() const
  */
 QString QExtend::name() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+    return (qumlobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QExtend::setName(QString name)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+    (qumlobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -185,12 +179,12 @@ void QExtend::setName(QString name)
  */
 QtUml::VisibilityKind QExtend::visibility() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->visibility();
+    return (qumlobject_cast<const QNamedElement *>(this))->visibility();
 }
 
 void QExtend::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setVisibility(visibility);
+    (qumlobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
 
 /*!
@@ -198,7 +192,7 @@ void QExtend::setVisibility(QtUml::VisibilityKind visibility)
  */
 QString QExtend::qualifiedName() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qumlobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -210,12 +204,12 @@ QString QExtend::qualifiedName() const
  */
 QStringExpression *QExtend::nameExpression() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+    return (qumlobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QExtend::setNameExpression(QStringExpression *nameExpression)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qumlobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -223,7 +217,7 @@ void QExtend::setNameExpression(QStringExpression *nameExpression)
  */
 QNamespace *QExtend::namespace_() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+    return (qumlobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -231,17 +225,17 @@ QNamespace *QExtend::namespace_() const
  */
 const QSet<QDependency *> *QExtend::clientDependencies() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qumlobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QExtend::addClientDependency(QDependency *clientDependency)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qumlobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QExtend::removeClientDependency(QDependency *clientDependency)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qumlobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -266,13 +260,13 @@ void QExtend::setExtendedCase(QUseCase *extendedCase)
     Q_D(QExtend);
     if (d->extendedCase != extendedCase) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qtuml_object_cast<QElement *>(d->extendedCase));
+        (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qumlobject_cast<QElement *>(d->extendedCase));
 
         d->extendedCase = extendedCase;
 
         // Adjust subsetted property(ies)
         if (extendedCase) {
-            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qtuml_object_cast<QElement *>(extendedCase));
+            (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qumlobject_cast<QElement *>(extendedCase));
         }
     }
 }
@@ -299,15 +293,15 @@ void QExtend::setExtension(QUseCase *extension)
             d->extension->removeExtend(this);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qtuml_object_cast<QElement *>(d->extension));
+        (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qumlobject_cast<QElement *>(d->extension));
 
         d->extension = extension;
 
         // Adjust subsetted property(ies)
         if (extension) {
-            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addSource(qtuml_object_cast<QElement *>(extension));
+            (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->addSource(qumlobject_cast<QElement *>(extension));
         }
-        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(extension));
+        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(extension));
 
         // Adjust opposite property
         if (extension)
@@ -364,13 +358,13 @@ void QExtend::setCondition(QConstraint *condition)
     Q_D(QExtend);
     if (d->condition != condition) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->condition));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->condition));
 
         d->condition = condition;
 
         // Adjust subsetted property(ies)
         if (condition) {
-            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(condition));
+            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(condition));
         }
     }
 }

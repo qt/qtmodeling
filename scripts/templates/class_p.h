@@ -41,12 +41,10 @@
 #ifndef ${namespace.replace('/', '_').upper}_${class.name.upper}_P_H
 #define ${namespace.replace('/', '_').upper}_${class.name.upper}_P_H
 
-#include "private/[% namespace.split('/').0.lower %]global_p.h"
-
 // Base class includes
 [%- IF !class.superclass || class.superclass.size > 1 -%]
 
-#include "private/qobject_p.h"
+#include "private/qumlobject_p.h"
 [%- END -%]
 [%- FOREACH superclass IN class.superclass -%]
 
@@ -116,7 +114,7 @@ class ${forwarddecl.content};
 class ${class.name};
 
 [%- END %]
-class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name}Private : [% IF class.superclass.size == 1 %]public ${class.superclass.0.name.split('/').last}Private[% ELSE %]public QObjectPrivate[% END %]
+class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name}Private : [% IF class.superclass.size == 1 %]public ${class.superclass.0.name.split('/').last}Private[% ELSE %]public QUmlObjectPrivate[% END %]
 {
     Q_DECLARE_PUBLIC(${class.name})
 

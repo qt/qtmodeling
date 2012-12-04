@@ -76,24 +76,18 @@ QBehavioralFeaturePrivate::~QBehavioralFeaturePrivate()
     \brief A behavioral feature is a feature of a classifier that specifies an aspect of the behavior of its instances.A behavioral feature is implemented (realized) by a behavior. A behavioral feature specifies that a classifier will respond to a designated request by invoking its implementing method.A behavioral feature owns zero or more parameter sets.
  */
 
-QBehavioralFeature::QBehavioralFeature(QObject *parent) :
-    QObject(*new QBehavioralFeaturePrivate, parent),
-    _wrappedNamespace(new QNamespace(this)),
-    _wrappedFeature(new QFeature(this))
+QBehavioralFeature::QBehavioralFeature(QUmlObject *parent, QUmlObject *wrapper) :
+    QUmlObject(*new QBehavioralFeaturePrivate, parent, wrapper),
+    _wrappedNamespace(new QNamespace(this, this)),
+    _wrappedFeature(new QFeature(this, this))
 {
-    qRegisterMetaType<QBehavioralFeature *>("QBehavioralFeature *");
-    qRegisterMetaType<const QSet<QBehavioralFeature *> *>("const QSet<QBehavioralFeature *> *");
-    qRegisterMetaType<const QList<QBehavioralFeature *> *>("const QList<QBehavioralFeature *> *");
 }
 
-QBehavioralFeature::QBehavioralFeature(QBehavioralFeaturePrivate &dd, QObject *parent) :
-    QObject(dd, parent),
-    _wrappedNamespace(new QNamespace(this)),
-    _wrappedFeature(new QFeature(this))
+QBehavioralFeature::QBehavioralFeature(QBehavioralFeaturePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QUmlObject(dd, parent, wrapper),
+    _wrappedNamespace(new QNamespace(this, this)),
+    _wrappedFeature(new QFeature(this, this))
 {
-    qRegisterMetaType<QBehavioralFeature *>("QBehavioralFeature *");
-    qRegisterMetaType<const QSet<QBehavioralFeature *> *>("const QSet<QBehavioralFeature *> *");
-    qRegisterMetaType<const QList<QBehavioralFeature *> *>("const QList<QBehavioralFeature *> *");
 }
 
 QBehavioralFeature::~QBehavioralFeature()
@@ -109,7 +103,7 @@ QBehavioralFeature::~QBehavioralFeature()
  */
 const QSet<QElement *> *QBehavioralFeature::ownedElements() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+    return (qumlobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -117,7 +111,7 @@ const QSet<QElement *> *QBehavioralFeature::ownedElements() const
  */
 QElement *QBehavioralFeature::owner() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->owner();
+    return (qumlobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -125,17 +119,17 @@ QElement *QBehavioralFeature::owner() const
  */
 const QSet<QComment *> *QBehavioralFeature::ownedComments() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+    return (qumlobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QBehavioralFeature::addOwnedComment(QComment *ownedComment)
 {
-    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qumlobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QBehavioralFeature::removeOwnedComment(QComment *ownedComment)
 {
-    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qumlobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -147,12 +141,12 @@ void QBehavioralFeature::removeOwnedComment(QComment *ownedComment)
  */
 QString QBehavioralFeature::name() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+    return (qumlobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QBehavioralFeature::setName(QString name)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+    (qumlobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -160,12 +154,12 @@ void QBehavioralFeature::setName(QString name)
  */
 QtUml::VisibilityKind QBehavioralFeature::visibility() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->visibility();
+    return (qumlobject_cast<const QNamedElement *>(this))->visibility();
 }
 
 void QBehavioralFeature::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setVisibility(visibility);
+    (qumlobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
 
 /*!
@@ -173,7 +167,7 @@ void QBehavioralFeature::setVisibility(QtUml::VisibilityKind visibility)
  */
 QString QBehavioralFeature::qualifiedName() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qumlobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -185,12 +179,12 @@ QString QBehavioralFeature::qualifiedName() const
  */
 QStringExpression *QBehavioralFeature::nameExpression() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+    return (qumlobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QBehavioralFeature::setNameExpression(QStringExpression *nameExpression)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qumlobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -198,7 +192,7 @@ void QBehavioralFeature::setNameExpression(QStringExpression *nameExpression)
  */
 QNamespace *QBehavioralFeature::namespace_() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+    return (qumlobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -206,17 +200,17 @@ QNamespace *QBehavioralFeature::namespace_() const
  */
 const QSet<QDependency *> *QBehavioralFeature::clientDependencies() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qumlobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QBehavioralFeature::addClientDependency(QDependency *clientDependency)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qumlobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QBehavioralFeature::removeClientDependency(QDependency *clientDependency)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qumlobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -228,17 +222,17 @@ void QBehavioralFeature::removeClientDependency(QDependency *clientDependency)
  */
 const QSet<QPackageImport *> *QBehavioralFeature::packageImports() const
 {
-    return (qtuml_object_cast<const QNamespace *>(this))->packageImports();
+    return (qumlobject_cast<const QNamespace *>(this))->packageImports();
 }
 
 void QBehavioralFeature::addPackageImport(QPackageImport *packageImport)
 {
-    (qtuml_object_cast<QNamespace *>(this))->addPackageImport(packageImport);
+    (qumlobject_cast<QNamespace *>(this))->addPackageImport(packageImport);
 }
 
 void QBehavioralFeature::removePackageImport(QPackageImport *packageImport)
 {
-    (qtuml_object_cast<QNamespace *>(this))->removePackageImport(packageImport);
+    (qumlobject_cast<QNamespace *>(this))->removePackageImport(packageImport);
 }
 
 /*!
@@ -246,7 +240,7 @@ void QBehavioralFeature::removePackageImport(QPackageImport *packageImport)
  */
 const QSet<QNamedElement *> *QBehavioralFeature::members() const
 {
-    return (qtuml_object_cast<const QNamespace *>(this))->members();
+    return (qumlobject_cast<const QNamespace *>(this))->members();
 }
 
 /*!
@@ -254,7 +248,7 @@ const QSet<QNamedElement *> *QBehavioralFeature::members() const
  */
 const QSet<QPackageableElement *> *QBehavioralFeature::importedMembers() const
 {
-    return (qtuml_object_cast<const QNamespace *>(this))->importedMembers();
+    return (qumlobject_cast<const QNamespace *>(this))->importedMembers();
 }
 
 /*!
@@ -262,17 +256,17 @@ const QSet<QPackageableElement *> *QBehavioralFeature::importedMembers() const
  */
 const QSet<QElementImport *> *QBehavioralFeature::elementImports() const
 {
-    return (qtuml_object_cast<const QNamespace *>(this))->elementImports();
+    return (qumlobject_cast<const QNamespace *>(this))->elementImports();
 }
 
 void QBehavioralFeature::addElementImport(QElementImport *elementImport)
 {
-    (qtuml_object_cast<QNamespace *>(this))->addElementImport(elementImport);
+    (qumlobject_cast<QNamespace *>(this))->addElementImport(elementImport);
 }
 
 void QBehavioralFeature::removeElementImport(QElementImport *elementImport)
 {
-    (qtuml_object_cast<QNamespace *>(this))->removeElementImport(elementImport);
+    (qumlobject_cast<QNamespace *>(this))->removeElementImport(elementImport);
 }
 
 /*!
@@ -280,17 +274,17 @@ void QBehavioralFeature::removeElementImport(QElementImport *elementImport)
  */
 const QSet<QConstraint *> *QBehavioralFeature::ownedRules() const
 {
-    return (qtuml_object_cast<const QNamespace *>(this))->ownedRules();
+    return (qumlobject_cast<const QNamespace *>(this))->ownedRules();
 }
 
 void QBehavioralFeature::addOwnedRule(QConstraint *ownedRule)
 {
-    (qtuml_object_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
+    (qumlobject_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
 }
 
 void QBehavioralFeature::removeOwnedRule(QConstraint *ownedRule)
 {
-    (qtuml_object_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
+    (qumlobject_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
 }
 
 /*!
@@ -298,7 +292,7 @@ void QBehavioralFeature::removeOwnedRule(QConstraint *ownedRule)
  */
 const QSet<QNamedElement *> *QBehavioralFeature::ownedMembers() const
 {
-    return (qtuml_object_cast<const QNamespace *>(this))->ownedMembers();
+    return (qumlobject_cast<const QNamespace *>(this))->ownedMembers();
 }
 
 // ---------------------------------------------------------------
@@ -310,12 +304,12 @@ const QSet<QNamedElement *> *QBehavioralFeature::ownedMembers() const
  */
 bool QBehavioralFeature::isLeaf() const
 {
-    return (qtuml_object_cast<const QRedefinableElement *>(this))->isLeaf();
+    return (qumlobject_cast<const QRedefinableElement *>(this))->isLeaf();
 }
 
 void QBehavioralFeature::setLeaf(bool isLeaf)
 {
-    (qtuml_object_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+    (qumlobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
 }
 
 // ---------------------------------------------------------------
@@ -327,7 +321,7 @@ void QBehavioralFeature::setLeaf(bool isLeaf)
  */
 const QSet<QRedefinableElement *> *QBehavioralFeature::redefinedElements() const
 {
-    return (qtuml_object_cast<const QRedefinableElement *>(this))->redefinedElements();
+    return (qumlobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
 
 /*!
@@ -335,7 +329,7 @@ const QSet<QRedefinableElement *> *QBehavioralFeature::redefinedElements() const
  */
 const QSet<QClassifier *> *QBehavioralFeature::redefinitionContexts() const
 {
-    return (qtuml_object_cast<const QRedefinableElement *>(this))->redefinitionContexts();
+    return (qumlobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
 }
 
 // ---------------------------------------------------------------
@@ -347,12 +341,12 @@ const QSet<QClassifier *> *QBehavioralFeature::redefinitionContexts() const
  */
 bool QBehavioralFeature::isStatic() const
 {
-    return (qtuml_object_cast<const QFeature *>(this))->isStatic();
+    return (qumlobject_cast<const QFeature *>(this))->isStatic();
 }
 
 void QBehavioralFeature::setStatic(bool isStatic)
 {
-    (qtuml_object_cast<QFeature *>(this))->setStatic(isStatic);
+    (qumlobject_cast<QFeature *>(this))->setStatic(isStatic);
 }
 
 // ---------------------------------------------------------------
@@ -364,7 +358,7 @@ void QBehavioralFeature::setStatic(bool isStatic)
  */
 const QSet<QClassifier *> *QBehavioralFeature::featuringClassifiers() const
 {
-    return (qtuml_object_cast<const QFeature *>(this))->featuringClassifiers();
+    return (qumlobject_cast<const QFeature *>(this))->featuringClassifiers();
 }
 
 // ---------------------------------------------------------------
@@ -468,7 +462,7 @@ void QBehavioralFeature::addOwnedParameter(QParameter *ownedParameter)
         d->ownedParameters->append(ownedParameter);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(ownedParameter));
+        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(ownedParameter));
     }
 }
 
@@ -479,9 +473,10 @@ void QBehavioralFeature::removeOwnedParameter(QParameter *ownedParameter)
     Q_D(QBehavioralFeature);
     if (d->ownedParameters->contains(ownedParameter)) {
         d->ownedParameters->removeAll(ownedParameter);
+        ownedParameter->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(ownedParameter));
+        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedParameter));
     }
 }
 
@@ -505,7 +500,7 @@ void QBehavioralFeature::addOwnedParameterSet(QParameterSet *ownedParameterSet)
         d->ownedParameterSets->insert(ownedParameterSet);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(ownedParameterSet));
+        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(ownedParameterSet));
     }
 }
 
@@ -516,9 +511,10 @@ void QBehavioralFeature::removeOwnedParameterSet(QParameterSet *ownedParameterSe
     Q_D(QBehavioralFeature);
     if (d->ownedParameterSets->contains(ownedParameterSet)) {
         d->ownedParameterSets->remove(ownedParameterSet);
+        ownedParameterSet->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(ownedParameterSet));
+        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedParameterSet));
     }
 }
 

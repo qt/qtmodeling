@@ -73,20 +73,14 @@ QMessagePrivate::~QMessagePrivate()
     \brief A message defines a particular communication between lifelines of an interaction.
  */
 
-QMessage::QMessage(QObject *parent) :
-    QNamedElement(*new QMessagePrivate, parent)
+QMessage::QMessage(QUmlObject *parent, QUmlObject *wrapper) :
+    QNamedElement(*new QMessagePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QMessage *>("QMessage *");
-    qRegisterMetaType<const QSet<QMessage *> *>("const QSet<QMessage *> *");
-    qRegisterMetaType<const QList<QMessage *> *>("const QList<QMessage *> *");
 }
 
-QMessage::QMessage(QMessagePrivate &dd, QObject *parent) :
-    QNamedElement(dd, parent)
+QMessage::QMessage(QMessagePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QNamedElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QMessage *>("QMessage *");
-    qRegisterMetaType<const QSet<QMessage *> *>("const QSet<QMessage *> *");
-    qRegisterMetaType<const QList<QMessage *> *>("const QList<QMessage *> *");
 }
 
 QMessage::~QMessage()
@@ -175,7 +169,7 @@ void QMessage::addArgument(QValueSpecification *argument)
         d->arguments->append(argument);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(argument));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(argument));
     }
 }
 
@@ -186,9 +180,10 @@ void QMessage::removeArgument(QValueSpecification *argument)
     Q_D(QMessage);
     if (d->arguments->contains(argument)) {
         d->arguments->removeAll(argument);
+        argument->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(argument));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(argument));
     }
 }
 
@@ -237,7 +232,7 @@ void QMessage::setInteraction(QInteraction *interaction)
         d->interaction = interaction;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(interaction));
+        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(interaction));
 
         // Adjust opposite property
         if (interaction)

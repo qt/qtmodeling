@@ -63,20 +63,14 @@ QExecutionOccurrenceSpecificationPrivate::~QExecutionOccurrenceSpecificationPriv
     \brief An execution occurrence specification represents moments in time at which actions or behaviors start or finish.
  */
 
-QExecutionOccurrenceSpecification::QExecutionOccurrenceSpecification(QObject *parent) :
-    QOccurrenceSpecification(*new QExecutionOccurrenceSpecificationPrivate, parent)
+QExecutionOccurrenceSpecification::QExecutionOccurrenceSpecification(QUmlObject *parent, QUmlObject *wrapper) :
+    QOccurrenceSpecification(*new QExecutionOccurrenceSpecificationPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QExecutionOccurrenceSpecification *>("QExecutionOccurrenceSpecification *");
-    qRegisterMetaType<const QSet<QExecutionOccurrenceSpecification *> *>("const QSet<QExecutionOccurrenceSpecification *> *");
-    qRegisterMetaType<const QList<QExecutionOccurrenceSpecification *> *>("const QList<QExecutionOccurrenceSpecification *> *");
 }
 
-QExecutionOccurrenceSpecification::QExecutionOccurrenceSpecification(QExecutionOccurrenceSpecificationPrivate &dd, QObject *parent) :
-    QOccurrenceSpecification(dd, parent)
+QExecutionOccurrenceSpecification::QExecutionOccurrenceSpecification(QExecutionOccurrenceSpecificationPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QOccurrenceSpecification(dd, parent, wrapper)
 {
-    qRegisterMetaType<QExecutionOccurrenceSpecification *>("QExecutionOccurrenceSpecification *");
-    qRegisterMetaType<const QSet<QExecutionOccurrenceSpecification *> *>("const QSet<QExecutionOccurrenceSpecification *> *");
-    qRegisterMetaType<const QList<QExecutionOccurrenceSpecification *> *>("const QList<QExecutionOccurrenceSpecification *> *");
 }
 
 QExecutionOccurrenceSpecification::~QExecutionOccurrenceSpecification()

@@ -65,20 +65,14 @@ QTimeExpressionPrivate::~QTimeExpressionPrivate()
     \brief A time expression defines a value specification that represents a time value.
  */
 
-QTimeExpression::QTimeExpression(QObject *parent) :
-    QValueSpecification(*new QTimeExpressionPrivate, parent)
+QTimeExpression::QTimeExpression(QUmlObject *parent, QUmlObject *wrapper) :
+    QValueSpecification(*new QTimeExpressionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QTimeExpression *>("QTimeExpression *");
-    qRegisterMetaType<const QSet<QTimeExpression *> *>("const QSet<QTimeExpression *> *");
-    qRegisterMetaType<const QList<QTimeExpression *> *>("const QList<QTimeExpression *> *");
 }
 
-QTimeExpression::QTimeExpression(QTimeExpressionPrivate &dd, QObject *parent) :
-    QValueSpecification(dd, parent)
+QTimeExpression::QTimeExpression(QTimeExpressionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QValueSpecification(dd, parent, wrapper)
 {
-    qRegisterMetaType<QTimeExpression *>("QTimeExpression *");
-    qRegisterMetaType<const QSet<QTimeExpression *> *>("const QSet<QTimeExpression *> *");
-    qRegisterMetaType<const QList<QTimeExpression *> *>("const QList<QTimeExpression *> *");
 }
 
 QTimeExpression::~QTimeExpression()
@@ -138,13 +132,13 @@ void QTimeExpression::setExpr(QValueSpecification *expr)
     Q_D(QTimeExpression);
     if (d->expr != expr) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->expr));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->expr));
 
         d->expr = expr;
 
         // Adjust subsetted property(ies)
         if (expr) {
-            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(expr));
+            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(expr));
         }
     }
 }

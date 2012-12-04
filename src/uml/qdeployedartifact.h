@@ -62,11 +62,11 @@ class Q_UML_EXPORT QDeployedArtifact : public QNamedElement
     Q_DECLARE_PRIVATE(QDeployedArtifact)
 
 public:
-    Q_INVOKABLE explicit QDeployedArtifact(QObject *parent = 0);
+    Q_INVOKABLE explicit QDeployedArtifact(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QDeployedArtifact();
 
 protected:
-    explicit QDeployedArtifact(QDeployedArtifactPrivate &dd, QObject *parent = 0);
+    explicit QDeployedArtifact(QDeployedArtifactPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

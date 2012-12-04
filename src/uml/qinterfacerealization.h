@@ -46,6 +46,8 @@
 // Base class includes
 #include <QtUml/QRealization>
 
+#include <QtUml/QUmlPointer>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -69,7 +71,7 @@ class Q_UML_EXPORT QInterfaceRealization : public QRealization
     Q_DECLARE_PRIVATE(QInterfaceRealization)
 
 public:
-    Q_INVOKABLE explicit QInterfaceRealization(QObject *parent = 0);
+    Q_INVOKABLE explicit QInterfaceRealization(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QInterfaceRealization();
 
     // Association ends from QInterfaceRealization
@@ -85,7 +87,7 @@ public:
     Q_INVOKABLE void removeSupplier(QUmlPointer<QInterface> contract);
 
 protected:
-    explicit QInterfaceRealization(QInterfaceRealizationPrivate &dd, QObject *parent = 0);
+    explicit QInterfaceRealization(QInterfaceRealizationPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -44,7 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
+#include <QtUml/QUmlObject>
 #include <QtUml/QClass>
 #include <QtUml/QAssociation>
 
@@ -56,7 +56,7 @@ QT_MODULE(QtUml)
 
 class QAssociationClassPrivate;
 
-class Q_UML_EXPORT QAssociationClass : public QObject
+class Q_UML_EXPORT QAssociationClass : public QUmlObject
 {
     Q_OBJECT
 
@@ -64,11 +64,11 @@ class Q_UML_EXPORT QAssociationClass : public QObject
     Q_DECLARE_PRIVATE(QAssociationClass)
 
 public:
-    Q_INVOKABLE explicit QAssociationClass(QObject *parent = 0);
+    Q_INVOKABLE explicit QAssociationClass(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QAssociationClass();
 
 protected:
-    explicit QAssociationClass(QAssociationClassPrivate &dd, QObject *parent = 0);
+    explicit QAssociationClass(QAssociationClassPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 
 private:
     QClass *_wrappedClass;

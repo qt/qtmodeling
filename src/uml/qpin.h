@@ -44,7 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
+#include <QtUml/QUmlObject>
 #include <QtUml/QMultiplicityElement>
 #include <QtUml/QObjectNode>
 
@@ -56,7 +56,7 @@ QT_MODULE(QtUml)
 
 class QPinPrivate;
 
-class Q_UML_EXPORT QPin : public QObject
+class Q_UML_EXPORT QPin : public QUmlObject
 {
     Q_OBJECT
 
@@ -66,7 +66,7 @@ class Q_UML_EXPORT QPin : public QObject
     Q_DECLARE_PRIVATE(QPin)
 
 public:
-    Q_INVOKABLE explicit QPin(QObject *parent = 0);
+    Q_INVOKABLE explicit QPin(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QPin();
 
     // Association ends from aggregated QElement
@@ -161,7 +161,7 @@ public:
     Q_INVOKABLE void setControl(bool isControl);
 
 protected:
-    explicit QPin(QPinPrivate &dd, QObject *parent = 0);
+    explicit QPin(QPinPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 
 private:
     QMultiplicityElement *_wrappedMultiplicityElement;

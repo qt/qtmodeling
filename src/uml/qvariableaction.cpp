@@ -63,20 +63,14 @@ QVariableActionPrivate::~QVariableActionPrivate()
     \brief VariableAction is an abstract class for actions that operate on a statically specified variable.
  */
 
-QVariableAction::QVariableAction(QObject *parent) :
-    QAction(*new QVariableActionPrivate, parent)
+QVariableAction::QVariableAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(*new QVariableActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QVariableAction *>("QVariableAction *");
-    qRegisterMetaType<const QSet<QVariableAction *> *>("const QSet<QVariableAction *> *");
-    qRegisterMetaType<const QList<QVariableAction *> *>("const QList<QVariableAction *> *");
 }
 
-QVariableAction::QVariableAction(QVariableActionPrivate &dd, QObject *parent) :
-    QAction(dd, parent)
+QVariableAction::QVariableAction(QVariableActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QVariableAction *>("QVariableAction *");
-    qRegisterMetaType<const QSet<QVariableAction *> *>("const QSet<QVariableAction *> *");
-    qRegisterMetaType<const QList<QVariableAction *> *>("const QList<QVariableAction *> *");
 }
 
 QVariableAction::~QVariableAction()

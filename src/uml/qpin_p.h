@@ -41,10 +41,8 @@
 #ifndef QTUML_QPIN_P_H
 #define QTUML_QPIN_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
-#include "private/qobject_p.h"
+#include "private/qumlobject_p.h"
 #include "private/qmultiplicityelement_p.h"
 #include "private/qobjectnode_p.h"
 
@@ -56,7 +54,7 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QPinPrivate : public QObjectPrivate
+class Q_UML_EXPORT QPinPrivate : public QUmlObjectPrivate
 {
     Q_DECLARE_PUBLIC(QPin)
 

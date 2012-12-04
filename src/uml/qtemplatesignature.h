@@ -73,7 +73,7 @@ class Q_UML_EXPORT QTemplateSignature : public QElement
     Q_DECLARE_PRIVATE(QTemplateSignature)
 
 public:
-    Q_INVOKABLE explicit QTemplateSignature(QObject *parent = 0);
+    Q_INVOKABLE explicit QTemplateSignature(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QTemplateSignature();
 
     // Association ends from QTemplateSignature
@@ -87,7 +87,7 @@ public:
     Q_INVOKABLE void removeOwnedParameter(QTemplateParameter *ownedParameter);
 
 protected:
-    explicit QTemplateSignature(QTemplateSignaturePrivate &dd, QObject *parent = 0);
+    explicit QTemplateSignature(QTemplateSignaturePrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

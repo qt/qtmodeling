@@ -63,20 +63,14 @@ QReadSelfActionPrivate::~QReadSelfActionPrivate()
     \brief A read self action is an action that retrieves the host object of an action.
  */
 
-QReadSelfAction::QReadSelfAction(QObject *parent) :
-    QAction(*new QReadSelfActionPrivate, parent)
+QReadSelfAction::QReadSelfAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(*new QReadSelfActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QReadSelfAction *>("QReadSelfAction *");
-    qRegisterMetaType<const QSet<QReadSelfAction *> *>("const QSet<QReadSelfAction *> *");
-    qRegisterMetaType<const QList<QReadSelfAction *> *>("const QList<QReadSelfAction *> *");
 }
 
-QReadSelfAction::QReadSelfAction(QReadSelfActionPrivate &dd, QObject *parent) :
-    QAction(dd, parent)
+QReadSelfAction::QReadSelfAction(QReadSelfActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QReadSelfAction *>("QReadSelfAction *");
-    qRegisterMetaType<const QSet<QReadSelfAction *> *>("const QSet<QReadSelfAction *> *");
-    qRegisterMetaType<const QList<QReadSelfAction *> *>("const QList<QReadSelfAction *> *");
 }
 
 QReadSelfAction::~QReadSelfAction()
@@ -105,13 +99,13 @@ void QReadSelfAction::setResult(QOutputPin *result)
     Q_D(QReadSelfAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(d->result));
+        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(result));
+            (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(result));
         }
     }
 }

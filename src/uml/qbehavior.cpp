@@ -78,20 +78,14 @@ QBehaviorPrivate::~QBehaviorPrivate()
     \brief Behavior is a specification of how its context classifier changes state over time. This specification may be either a definition of possible behavior execution or emergent behavior, or a selective illustration of an interesting subset of possible executions. The latter form is typically used for capturing examples, such as a trace of a particular execution.A behavior owns zero or more parameter sets.
  */
 
-QBehavior::QBehavior(QObject *parent) :
-    QClass(*new QBehaviorPrivate, parent)
+QBehavior::QBehavior(QUmlObject *parent, QUmlObject *wrapper) :
+    QClass(*new QBehaviorPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QBehavior *>("QBehavior *");
-    qRegisterMetaType<const QSet<QBehavior *> *>("const QSet<QBehavior *> *");
-    qRegisterMetaType<const QList<QBehavior *> *>("const QList<QBehavior *> *");
 }
 
-QBehavior::QBehavior(QBehaviorPrivate &dd, QObject *parent) :
-    QClass(dd, parent)
+QBehavior::QBehavior(QBehaviorPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QClass(dd, parent, wrapper)
 {
-    qRegisterMetaType<QBehavior *>("QBehavior *");
-    qRegisterMetaType<const QSet<QBehavior *> *>("const QSet<QBehavior *> *");
-    qRegisterMetaType<const QList<QBehavior *> *>("const QList<QBehavior *> *");
 }
 
 QBehavior::~QBehavior()
@@ -176,7 +170,7 @@ void QBehavior::addPostcondition(QConstraint *postcondition)
         d->postconditions->insert(postcondition);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespace *>(this))->addOwnedRule(qtuml_object_cast<QConstraint *>(postcondition));
+        (qumlobject_cast<QNamespace *>(this))->addOwnedRule(qumlobject_cast<QConstraint *>(postcondition));
     }
 }
 
@@ -187,9 +181,10 @@ void QBehavior::removePostcondition(QConstraint *postcondition)
     Q_D(QBehavior);
     if (d->postconditions->contains(postcondition)) {
         d->postconditions->remove(postcondition);
+        postcondition->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespace *>(this))->removeOwnedRule(qtuml_object_cast<QConstraint *>(postcondition));
+        (qumlobject_cast<QNamespace *>(this))->removeOwnedRule(qumlobject_cast<QConstraint *>(postcondition));
     }
 }
 
@@ -213,7 +208,7 @@ void QBehavior::addPrecondition(QConstraint *precondition)
         d->preconditions->insert(precondition);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespace *>(this))->addOwnedRule(qtuml_object_cast<QConstraint *>(precondition));
+        (qumlobject_cast<QNamespace *>(this))->addOwnedRule(qumlobject_cast<QConstraint *>(precondition));
     }
 }
 
@@ -224,9 +219,10 @@ void QBehavior::removePrecondition(QConstraint *precondition)
     Q_D(QBehavior);
     if (d->preconditions->contains(precondition)) {
         d->preconditions->remove(precondition);
+        precondition->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespace *>(this))->removeOwnedRule(qtuml_object_cast<QConstraint *>(precondition));
+        (qumlobject_cast<QNamespace *>(this))->removeOwnedRule(qumlobject_cast<QConstraint *>(precondition));
     }
 }
 
@@ -250,7 +246,7 @@ void QBehavior::addRedefinedBehavior(QBehavior *redefinedBehavior)
         d->redefinedBehaviors->insert(redefinedBehavior);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QClassifier *>(this))->addRedefinedClassifier(qtuml_object_cast<QClassifier *>(redefinedBehavior));
+        (qumlobject_cast<QClassifier *>(this))->addRedefinedClassifier(qumlobject_cast<QClassifier *>(redefinedBehavior));
     }
 }
 
@@ -263,7 +259,7 @@ void QBehavior::removeRedefinedBehavior(QBehavior *redefinedBehavior)
         d->redefinedBehaviors->remove(redefinedBehavior);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QClassifier *>(this))->removeRedefinedClassifier(qtuml_object_cast<QClassifier *>(redefinedBehavior));
+        (qumlobject_cast<QClassifier *>(this))->removeRedefinedClassifier(qumlobject_cast<QClassifier *>(redefinedBehavior));
     }
 }
 
@@ -287,7 +283,7 @@ void QBehavior::addOwnedParameter(QParameter *ownedParameter)
         d->ownedParameters->append(ownedParameter);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(ownedParameter));
+        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(ownedParameter));
     }
 }
 
@@ -298,9 +294,10 @@ void QBehavior::removeOwnedParameter(QParameter *ownedParameter)
     Q_D(QBehavior);
     if (d->ownedParameters->contains(ownedParameter)) {
         d->ownedParameters->removeAll(ownedParameter);
+        ownedParameter->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(ownedParameter));
+        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedParameter));
     }
 }
 
@@ -324,7 +321,7 @@ void QBehavior::addOwnedParameterSet(QParameterSet *ownedParameterSet)
         d->ownedParameterSets->insert(ownedParameterSet);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(ownedParameterSet));
+        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(ownedParameterSet));
     }
 }
 
@@ -335,9 +332,10 @@ void QBehavior::removeOwnedParameterSet(QParameterSet *ownedParameterSet)
     Q_D(QBehavior);
     if (d->ownedParameterSets->contains(ownedParameterSet)) {
         d->ownedParameterSets->remove(ownedParameterSet);
+        ownedParameterSet->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(ownedParameterSet));
+        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedParameterSet));
     }
 }
 

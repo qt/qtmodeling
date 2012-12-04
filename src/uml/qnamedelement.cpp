@@ -71,16 +71,16 @@ void QNamedElementPrivate::setNamespace_(QNamespace *namespace_)
         Q_Q(QNamedElement);
         // Adjust opposite property
         if (this->namespace_)
-            (qtuml_object_cast<QNamespacePrivate *>(this->namespace_->d_func()))->removeOwnedMember(q);
+            (qumlobject_cast<QNamespacePrivate *>(this->namespace_->d_func()))->removeOwnedMember(q);
 
         this->namespace_ = namespace_;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(this))->setOwner(qtuml_object_cast<QElement *>(namespace_));
+        (qumlobject_cast<QElementPrivate *>(this))->setOwner(qumlobject_cast<QElement *>(namespace_));
 
         // Adjust opposite property
         if (namespace_)
-            (qtuml_object_cast<QNamespacePrivate *>(namespace_->d_func()))->addOwnedMember(q);
+            (qumlobject_cast<QNamespacePrivate *>(namespace_->d_func()))->addOwnedMember(q);
     }
 }
 
@@ -92,20 +92,14 @@ void QNamedElementPrivate::setNamespace_(QNamespace *namespace_)
     \brief A named element supports using a string expression to specify its name. This allows names of model elements to involve template parameters. The actual name is evaluated from the string expression only when it is sensible to do so (e.g., when a template is bound).A named element is an element in a model that may have a name.
  */
 
-QNamedElement::QNamedElement(QObject *parent) :
-    QElement(*new QNamedElementPrivate, parent)
+QNamedElement::QNamedElement(QUmlObject *parent, QUmlObject *wrapper) :
+    QElement(*new QNamedElementPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QNamedElement *>("QNamedElement *");
-    qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
-    qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
 }
 
-QNamedElement::QNamedElement(QNamedElementPrivate &dd, QObject *parent) :
-    QElement(dd, parent)
+QNamedElement::QNamedElement(QNamedElementPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QNamedElement *>("QNamedElement *");
-    qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
-    qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
 }
 
 QNamedElement::~QNamedElement()
@@ -134,10 +128,10 @@ void QNamedElement::setName(QString name)
     Q_D(QNamedElement);
     if (d->name != name) {
         d->name = name;
-        QObject *object = this;
-        while (object->parent())
-            object = object->parent();
-        object->setObjectName(name);
+        QUmlObject *umlObject = this;
+        while (umlObject->wrapper())
+            umlObject = umlObject->wrapper();
+        umlObject->setObjectName(name);
     }
 }
 
@@ -204,13 +198,13 @@ void QNamedElement::setNameExpression(QStringExpression *nameExpression)
     Q_D(QNamedElement);
     if (d->nameExpression != nameExpression) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->nameExpression));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->nameExpression));
 
         d->nameExpression = nameExpression;
 
         // Adjust subsetted property(ies)
         if (nameExpression) {
-            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(nameExpression));
+            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(nameExpression));
         }
     }
 }

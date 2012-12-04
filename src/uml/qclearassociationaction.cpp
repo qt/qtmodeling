@@ -65,20 +65,14 @@ QClearAssociationActionPrivate::~QClearAssociationActionPrivate()
     \brief A clear association action is an action that destroys all links of an association in which a particular object participates.
  */
 
-QClearAssociationAction::QClearAssociationAction(QObject *parent) :
-    QAction(*new QClearAssociationActionPrivate, parent)
+QClearAssociationAction::QClearAssociationAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(*new QClearAssociationActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QClearAssociationAction *>("QClearAssociationAction *");
-    qRegisterMetaType<const QSet<QClearAssociationAction *> *>("const QSet<QClearAssociationAction *> *");
-    qRegisterMetaType<const QList<QClearAssociationAction *> *>("const QList<QClearAssociationAction *> *");
 }
 
-QClearAssociationAction::QClearAssociationAction(QClearAssociationActionPrivate &dd, QObject *parent) :
-    QAction(dd, parent)
+QClearAssociationAction::QClearAssociationAction(QClearAssociationActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QClearAssociationAction *>("QClearAssociationAction *");
-    qRegisterMetaType<const QSet<QClearAssociationAction *> *>("const QSet<QClearAssociationAction *> *");
-    qRegisterMetaType<const QList<QClearAssociationAction *> *>("const QList<QClearAssociationAction *> *");
 }
 
 QClearAssociationAction::~QClearAssociationAction()
@@ -107,13 +101,13 @@ void QClearAssociationAction::setObject(QInputPin *object)
     Q_D(QClearAssociationAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->object));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->object));
 
         d->object = object;
 
         // Adjust subsetted property(ies)
         if (object) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(object));
+            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(object));
         }
     }
 }

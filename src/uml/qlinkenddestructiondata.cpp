@@ -64,20 +64,14 @@ QLinkEndDestructionDataPrivate::~QLinkEndDestructionDataPrivate()
     \brief A link end destruction data is not an action. It is an element that identifies links. It identifies one end of a link to be destroyed by destroy link action.
  */
 
-QLinkEndDestructionData::QLinkEndDestructionData(QObject *parent) :
-    QLinkEndData(*new QLinkEndDestructionDataPrivate, parent)
+QLinkEndDestructionData::QLinkEndDestructionData(QUmlObject *parent, QUmlObject *wrapper) :
+    QLinkEndData(*new QLinkEndDestructionDataPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QLinkEndDestructionData *>("QLinkEndDestructionData *");
-    qRegisterMetaType<const QSet<QLinkEndDestructionData *> *>("const QSet<QLinkEndDestructionData *> *");
-    qRegisterMetaType<const QList<QLinkEndDestructionData *> *>("const QList<QLinkEndDestructionData *> *");
 }
 
-QLinkEndDestructionData::QLinkEndDestructionData(QLinkEndDestructionDataPrivate &dd, QObject *parent) :
-    QLinkEndData(dd, parent)
+QLinkEndDestructionData::QLinkEndDestructionData(QLinkEndDestructionDataPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QLinkEndData(dd, parent, wrapper)
 {
-    qRegisterMetaType<QLinkEndDestructionData *>("QLinkEndDestructionData *");
-    qRegisterMetaType<const QSet<QLinkEndDestructionData *> *>("const QSet<QLinkEndDestructionData *> *");
-    qRegisterMetaType<const QList<QLinkEndDestructionData *> *>("const QList<QLinkEndDestructionData *> *");
 }
 
 QLinkEndDestructionData::~QLinkEndDestructionData()

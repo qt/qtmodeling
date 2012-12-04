@@ -60,20 +60,14 @@ QImagePrivate::~QImagePrivate()
     \brief Physical definition of a graphical image.
  */
 
-QImage::QImage(QObject *parent) :
-    QElement(*new QImagePrivate, parent)
+QImage::QImage(QUmlObject *parent, QUmlObject *wrapper) :
+    QElement(*new QImagePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QImage *>("QImage *");
-    qRegisterMetaType<const QSet<QImage *> *>("const QSet<QImage *> *");
-    qRegisterMetaType<const QList<QImage *> *>("const QList<QImage *> *");
 }
 
-QImage::QImage(QImagePrivate &dd, QObject *parent) :
-    QElement(dd, parent)
+QImage::QImage(QImagePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QImage *>("QImage *");
-    qRegisterMetaType<const QSet<QImage *> *>("const QSet<QImage *> *");
-    qRegisterMetaType<const QList<QImage *> *>("const QList<QImage *> *");
 }
 
 QImage::~QImage()

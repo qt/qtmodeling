@@ -67,20 +67,14 @@ QParameterSetPrivate::~QParameterSetPrivate()
     \brief A parameter set is an element that provides alternative sets of inputs or outputs that a behavior may use.
  */
 
-QParameterSet::QParameterSet(QObject *parent) :
-    QNamedElement(*new QParameterSetPrivate, parent)
+QParameterSet::QParameterSet(QUmlObject *parent, QUmlObject *wrapper) :
+    QNamedElement(*new QParameterSetPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QParameterSet *>("QParameterSet *");
-    qRegisterMetaType<const QSet<QParameterSet *> *>("const QSet<QParameterSet *> *");
-    qRegisterMetaType<const QList<QParameterSet *> *>("const QList<QParameterSet *> *");
 }
 
-QParameterSet::QParameterSet(QParameterSetPrivate &dd, QObject *parent) :
-    QNamedElement(dd, parent)
+QParameterSet::QParameterSet(QParameterSetPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QNamedElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QParameterSet *>("QParameterSet *");
-    qRegisterMetaType<const QSet<QParameterSet *> *>("const QSet<QParameterSet *> *");
-    qRegisterMetaType<const QList<QParameterSet *> *>("const QList<QParameterSet *> *");
 }
 
 QParameterSet::~QParameterSet()
@@ -149,7 +143,7 @@ void QParameterSet::addCondition(QConstraint *condition)
         d->conditions->insert(condition);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(condition));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(condition));
     }
 }
 
@@ -160,9 +154,10 @@ void QParameterSet::removeCondition(QConstraint *condition)
     Q_D(QParameterSet);
     if (d->conditions->contains(condition)) {
         d->conditions->remove(condition);
+        condition->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(condition));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(condition));
     }
 }
 

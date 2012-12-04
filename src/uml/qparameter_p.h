@@ -41,10 +41,8 @@
 #ifndef QTUML_QPARAMETER_P_H
 #define QTUML_QPARAMETER_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
-#include "private/qobject_p.h"
+#include "private/qumlobject_p.h"
 #include "private/qmultiplicityelement_p.h"
 #include "private/qconnectableelement_p.h"
 
@@ -70,7 +68,7 @@ class QOperation;
 class QParameterSet;
 class QParameter;
 
-class Q_UML_EXPORT QParameterPrivate : public QObjectPrivate
+class Q_UML_EXPORT QParameterPrivate : public QUmlObjectPrivate
 {
     Q_DECLARE_PUBLIC(QParameter)
 

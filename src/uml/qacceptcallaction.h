@@ -67,7 +67,7 @@ class Q_UML_EXPORT QAcceptCallAction : public QAcceptEventAction
     Q_DECLARE_PRIVATE(QAcceptCallAction)
 
 public:
-    Q_INVOKABLE explicit QAcceptCallAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QAcceptCallAction(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QAcceptCallAction();
 
     // Association ends from QAcceptCallAction
@@ -75,7 +75,7 @@ public:
     Q_INVOKABLE void setReturnInformation(QOutputPin *returnInformation);
 
 protected:
-    explicit QAcceptCallAction(QAcceptCallActionPrivate &dd, QObject *parent = 0);
+    explicit QAcceptCallAction(QAcceptCallActionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -60,20 +60,14 @@ QDevicePrivate::~QDevicePrivate()
     \brief A device is a physical computational resource with processing capability upon which artifacts may be deployed for execution. Devices may be complex (i.e., they may consist of other devices).
  */
 
-QDevice::QDevice(QObject *parent) :
-    QNode(*new QDevicePrivate, parent)
+QDevice::QDevice(QUmlObject *parent, QUmlObject *wrapper) :
+    QNode(*new QDevicePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QDevice *>("QDevice *");
-    qRegisterMetaType<const QSet<QDevice *> *>("const QSet<QDevice *> *");
-    qRegisterMetaType<const QList<QDevice *> *>("const QList<QDevice *> *");
 }
 
-QDevice::QDevice(QDevicePrivate &dd, QObject *parent) :
-    QNode(dd, parent)
+QDevice::QDevice(QDevicePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QNode(dd, parent, wrapper)
 {
-    qRegisterMetaType<QDevice *>("QDevice *");
-    qRegisterMetaType<const QSet<QDevice *> *>("const QSet<QDevice *> *");
-    qRegisterMetaType<const QList<QDevice *> *>("const QList<QDevice *> *");
 }
 
 QDevice::~QDevice()

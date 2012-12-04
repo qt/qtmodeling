@@ -68,20 +68,14 @@ QCombinedFragmentPrivate::~QCombinedFragmentPrivate()
     \brief A combined fragment defines an expression of interaction fragments. A combined fragment is defined by an interaction operator and corresponding interaction operands. Through the use of combined fragments the user will be able to describe a number of traces in a compact and concise manner.
  */
 
-QCombinedFragment::QCombinedFragment(QObject *parent) :
-    QInteractionFragment(*new QCombinedFragmentPrivate, parent)
+QCombinedFragment::QCombinedFragment(QUmlObject *parent, QUmlObject *wrapper) :
+    QInteractionFragment(*new QCombinedFragmentPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QCombinedFragment *>("QCombinedFragment *");
-    qRegisterMetaType<const QSet<QCombinedFragment *> *>("const QSet<QCombinedFragment *> *");
-    qRegisterMetaType<const QList<QCombinedFragment *> *>("const QList<QCombinedFragment *> *");
 }
 
-QCombinedFragment::QCombinedFragment(QCombinedFragmentPrivate &dd, QObject *parent) :
-    QInteractionFragment(dd, parent)
+QCombinedFragment::QCombinedFragment(QCombinedFragmentPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QInteractionFragment(dd, parent, wrapper)
 {
-    qRegisterMetaType<QCombinedFragment *>("QCombinedFragment *");
-    qRegisterMetaType<const QSet<QCombinedFragment *> *>("const QSet<QCombinedFragment *> *");
-    qRegisterMetaType<const QList<QCombinedFragment *> *>("const QList<QCombinedFragment *> *");
 }
 
 QCombinedFragment::~QCombinedFragment()
@@ -137,7 +131,7 @@ void QCombinedFragment::addCfragmentGate(QGate *cfragmentGate)
         d->cfragmentGates->insert(cfragmentGate);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(cfragmentGate));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(cfragmentGate));
     }
 }
 
@@ -148,9 +142,10 @@ void QCombinedFragment::removeCfragmentGate(QGate *cfragmentGate)
     Q_D(QCombinedFragment);
     if (d->cfragmentGates->contains(cfragmentGate)) {
         d->cfragmentGates->remove(cfragmentGate);
+        cfragmentGate->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(cfragmentGate));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(cfragmentGate));
     }
 }
 
@@ -174,7 +169,7 @@ void QCombinedFragment::addOperand(QInteractionOperand *operand)
         d->operands->append(operand);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(operand));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(operand));
     }
 }
 
@@ -185,9 +180,10 @@ void QCombinedFragment::removeOperand(QInteractionOperand *operand)
     Q_D(QCombinedFragment);
     if (d->operands->contains(operand)) {
         d->operands->removeAll(operand);
+        operand->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(operand));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(operand));
     }
 }
 

@@ -15,7 +15,7 @@
 ** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
 **
 ** In addition, as a special exception, Nokia gives you certain additional
-** rights. These rights are described in the Nokia Qt LGPL Exception
+** rights. These rights are described in the Nokia  LGPL Exception
 ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
 **
 ** GNU General Public License Usage
@@ -38,23 +38,48 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QTUMLGLOBAL_P_H
-#define QTUMLGLOBAL_P_H
+#ifndef QTUML_QUMLOBJECT_P_H
+#define QTUML_QUMLOBJECT_P_H
 
-#include "QtUml/qtumlglobal.h"
+// Base class includes
 #include "private/qobject_p.h"
+
+#include "QtUml/QUmlObject"
 
 QT_BEGIN_HEADER
 
-template <class T>
-inline T qtuml_object_cast(QObjectPrivate *base, bool restoreToParent = true)
+QT_BEGIN_NAMESPACE_QTUML
+
+QT_MODULE(QtUml)
+
+class Q_UML_EXPORT QUmlObjectPrivate : public QObjectPrivate
 {
-    while (restoreToParent && base->parent)
-        base = base->get(base->parent);
+    Q_DECLARE_PUBLIC(QUmlObject)
+
+public:
+    explicit QUmlObjectPrivate(int version = QObjectPrivateVersion);
+    virtual ~QUmlObjectPrivate();
+
+    static QUmlObjectPrivate *get(QUmlObject *o)
+    {
+        return dynamic_cast<QUmlObjectPrivate *>(o->d_func());
+    }
+
+    QList<QUmlObject *> wrappedObjects;
+    QUmlObject *wrapper;
+};
+
+QT_END_NAMESPACE_QTUML
+
+template <class T>
+inline T qumlobject_cast(QT_PREPEND_NAMESPACE_QTUML(QUmlObjectPrivate) *base, bool restoreToWrapper = true)
+{
+    while (restoreToWrapper && base->wrapper)
+        base = base->get(base->wrapper);
     if (dynamic_cast<T>(base))
         return dynamic_cast<T>(base);
-    foreach (QObject *subObject, base->children) {
-        T returnValue = qtuml_object_cast<T>(base->get(subObject), false);
+    foreach (QT_PREPEND_NAMESPACE_QTUML(QUmlObject) *wrappedObject, base->wrappedObjects) {
+        T returnValue = qumlobject_cast<T>(base->get(wrappedObject), false);
         if (returnValue != T())
             return returnValue;
     }
@@ -63,5 +88,5 @@ inline T qtuml_object_cast(QObjectPrivate *base, bool restoreToParent = true)
 
 QT_END_HEADER
 
-#endif // QTUMLGLOBAL_P_H
+#endif // QTUML_QUMLOBJECT_P_H
 

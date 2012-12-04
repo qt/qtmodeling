@@ -77,7 +77,7 @@ class Q_UML_EXPORT QStateMachine : public QBehavior
     Q_DECLARE_PRIVATE(QStateMachine)
 
 public:
-    Q_INVOKABLE explicit QStateMachine(QObject *parent = 0);
+    Q_INVOKABLE explicit QStateMachine(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QStateMachine();
 
     // Association ends from QStateMachine
@@ -101,7 +101,7 @@ public:
     Q_INVOKABLE bool isRedefinitionContextValid(const QStateMachine *redefined) const;
 
 protected:
-    explicit QStateMachine(QStateMachinePrivate &dd, QObject *parent = 0);
+    explicit QStateMachine(QStateMachinePrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

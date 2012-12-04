@@ -68,20 +68,14 @@ QOpaqueExpressionPrivate::~QOpaqueExpressionPrivate()
     \brief An opaque expression is an uninterpreted textual statement that denotes a (possibly empty) set of values when evaluated in a context.Provides a mechanism for precisely defining the behavior of an opaque expression. An opaque expression is defined by a behavior restricted to return one result.
  */
 
-QOpaqueExpression::QOpaqueExpression(QObject *parent) :
-    QValueSpecification(*new QOpaqueExpressionPrivate, parent)
+QOpaqueExpression::QOpaqueExpression(QUmlObject *parent, QUmlObject *wrapper) :
+    QValueSpecification(*new QOpaqueExpressionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QOpaqueExpression *>("QOpaqueExpression *");
-    qRegisterMetaType<const QSet<QOpaqueExpression *> *>("const QSet<QOpaqueExpression *> *");
-    qRegisterMetaType<const QList<QOpaqueExpression *> *>("const QList<QOpaqueExpression *> *");
 }
 
-QOpaqueExpression::QOpaqueExpression(QOpaqueExpressionPrivate &dd, QObject *parent) :
-    QValueSpecification(dd, parent)
+QOpaqueExpression::QOpaqueExpression(QOpaqueExpressionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QValueSpecification(dd, parent, wrapper)
 {
-    qRegisterMetaType<QOpaqueExpression *>("QOpaqueExpression *");
-    qRegisterMetaType<const QSet<QOpaqueExpression *> *>("const QSet<QOpaqueExpression *> *");
-    qRegisterMetaType<const QList<QOpaqueExpression *> *>("const QList<QOpaqueExpression *> *");
 }
 
 QOpaqueExpression::~QOpaqueExpression()

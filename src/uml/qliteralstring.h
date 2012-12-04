@@ -67,7 +67,7 @@ class Q_UML_EXPORT QLiteralString : public QLiteralSpecification
     Q_DECLARE_PRIVATE(QLiteralString)
 
 public:
-    Q_INVOKABLE explicit QLiteralString(QObject *parent = 0);
+    Q_INVOKABLE explicit QLiteralString(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QLiteralString();
 
     // Attributes from QLiteralString
@@ -79,7 +79,7 @@ public:
     Q_INVOKABLE QString stringValue() const;
 
 protected:
-    explicit QLiteralString(QLiteralStringPrivate &dd, QObject *parent = 0);
+    explicit QLiteralString(QLiteralStringPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

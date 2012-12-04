@@ -46,12 +46,14 @@
 // Base class includes
 #include <QtCore/QPointer>
 
+#include <QtUml/QUmlObject>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
 
 template <class T>
-class Q_CORE_EXPORT QUmlPointer : public QPointer<T>
+class Q_UML_EXPORT QUmlPointer : public QPointer<T>
 {
 public:
     QUmlPointer(T *p = 0) : QPointer<T>(p) { }
@@ -59,7 +61,7 @@ public:
 
     template <class U> inline operator U *()
     {
-        return qtuml_object_cast<U *>(QPointer<T>::data());
+        return qumlobject_cast<U *>(QPointer<T>::data());
     }
 };
 

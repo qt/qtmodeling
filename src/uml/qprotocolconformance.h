@@ -68,7 +68,7 @@ class Q_UML_EXPORT QProtocolConformance : public QDirectedRelationship
     Q_DECLARE_PRIVATE(QProtocolConformance)
 
 public:
-    Q_INVOKABLE explicit QProtocolConformance(QObject *parent = 0);
+    Q_INVOKABLE explicit QProtocolConformance(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QProtocolConformance();
 
     // Association ends from QProtocolConformance
@@ -78,7 +78,7 @@ public:
     Q_INVOKABLE void setGeneralMachine(QProtocolStateMachine *generalMachine);
 
 protected:
-    explicit QProtocolConformance(QProtocolConformancePrivate &dd, QObject *parent = 0);
+    explicit QProtocolConformance(QProtocolConformancePrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

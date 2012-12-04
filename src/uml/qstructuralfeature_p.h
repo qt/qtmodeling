@@ -41,10 +41,8 @@
 #ifndef QTUML_QSTRUCTURALFEATURE_P_H
 #define QTUML_QSTRUCTURALFEATURE_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
-#include "private/qobject_p.h"
+#include "private/qumlobject_p.h"
 #include "private/qtypedelement_p.h"
 #include "private/qmultiplicityelement_p.h"
 #include "private/qfeature_p.h"
@@ -57,7 +55,7 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QStructuralFeaturePrivate : public QObjectPrivate
+class Q_UML_EXPORT QStructuralFeaturePrivate : public QUmlObjectPrivate
 {
     Q_DECLARE_PUBLIC(QStructuralFeature)
 

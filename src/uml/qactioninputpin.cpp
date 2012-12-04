@@ -63,20 +63,14 @@ QActionInputPinPrivate::~QActionInputPinPrivate()
     \brief An action input pin is a kind of pin that executes an action to determine the values to input to another.
  */
 
-QActionInputPin::QActionInputPin(QObject *parent) :
-    QInputPin(*new QActionInputPinPrivate, parent)
+QActionInputPin::QActionInputPin(QUmlObject *parent, QUmlObject *wrapper) :
+    QInputPin(*new QActionInputPinPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QActionInputPin *>("QActionInputPin *");
-    qRegisterMetaType<const QSet<QActionInputPin *> *>("const QSet<QActionInputPin *> *");
-    qRegisterMetaType<const QList<QActionInputPin *> *>("const QList<QActionInputPin *> *");
 }
 
-QActionInputPin::QActionInputPin(QActionInputPinPrivate &dd, QObject *parent) :
-    QInputPin(dd, parent)
+QActionInputPin::QActionInputPin(QActionInputPinPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QInputPin(dd, parent, wrapper)
 {
-    qRegisterMetaType<QActionInputPin *>("QActionInputPin *");
-    qRegisterMetaType<const QSet<QActionInputPin *> *>("const QSet<QActionInputPin *> *");
-    qRegisterMetaType<const QList<QActionInputPin *> *>("const QList<QActionInputPin *> *");
 }
 
 QActionInputPin::~QActionInputPin()
@@ -105,13 +99,13 @@ void QActionInputPin::setFromAction(QAction *fromAction)
     Q_D(QActionInputPin);
     if (d->fromAction != fromAction) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->fromAction));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->fromAction));
 
         d->fromAction = fromAction;
 
         // Adjust subsetted property(ies)
         if (fromAction) {
-            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(fromAction));
+            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(fromAction));
         }
     }
 }

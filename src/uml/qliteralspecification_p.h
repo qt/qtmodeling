@@ -41,8 +41,6 @@
 #ifndef QTUML_QLITERALSPECIFICATION_P_H
 #define QTUML_QLITERALSPECIFICATION_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qvaluespecification_p.h"
 

@@ -68,7 +68,7 @@ class Q_UML_EXPORT QTimeObservation : public QObservation
     Q_DECLARE_PRIVATE(QTimeObservation)
 
 public:
-    Q_INVOKABLE explicit QTimeObservation(QObject *parent = 0);
+    Q_INVOKABLE explicit QTimeObservation(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QTimeObservation();
 
     // Attributes from QTimeObservation
@@ -80,7 +80,7 @@ public:
     Q_INVOKABLE void setEvent(QNamedElement *event);
 
 protected:
-    explicit QTimeObservation(QTimeObservationPrivate &dd, QObject *parent = 0);
+    explicit QTimeObservation(QTimeObservationPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

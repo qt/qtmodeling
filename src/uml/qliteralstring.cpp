@@ -60,20 +60,14 @@ QLiteralStringPrivate::~QLiteralStringPrivate()
     \brief A literal string is a specification of a string value.
  */
 
-QLiteralString::QLiteralString(QObject *parent) :
-    QLiteralSpecification(*new QLiteralStringPrivate, parent)
+QLiteralString::QLiteralString(QUmlObject *parent, QUmlObject *wrapper) :
+    QLiteralSpecification(*new QLiteralStringPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QLiteralString *>("QLiteralString *");
-    qRegisterMetaType<const QSet<QLiteralString *> *>("const QSet<QLiteralString *> *");
-    qRegisterMetaType<const QList<QLiteralString *> *>("const QList<QLiteralString *> *");
 }
 
-QLiteralString::QLiteralString(QLiteralStringPrivate &dd, QObject *parent) :
-    QLiteralSpecification(dd, parent)
+QLiteralString::QLiteralString(QLiteralStringPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QLiteralSpecification(dd, parent, wrapper)
 {
-    qRegisterMetaType<QLiteralString *>("QLiteralString *");
-    qRegisterMetaType<const QSet<QLiteralString *> *>("const QSet<QLiteralString *> *");
-    qRegisterMetaType<const QList<QLiteralString *> *>("const QList<QLiteralString *> *");
 }
 
 QLiteralString::~QLiteralString()

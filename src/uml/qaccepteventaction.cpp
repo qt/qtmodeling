@@ -68,20 +68,14 @@ QAcceptEventActionPrivate::~QAcceptEventActionPrivate()
     \brief A accept event action is an action that waits for the occurrence of an event meeting specified conditions.
  */
 
-QAcceptEventAction::QAcceptEventAction(QObject *parent) :
-    QAction(*new QAcceptEventActionPrivate, parent)
+QAcceptEventAction::QAcceptEventAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(*new QAcceptEventActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QAcceptEventAction *>("QAcceptEventAction *");
-    qRegisterMetaType<const QSet<QAcceptEventAction *> *>("const QSet<QAcceptEventAction *> *");
-    qRegisterMetaType<const QList<QAcceptEventAction *> *>("const QList<QAcceptEventAction *> *");
 }
 
-QAcceptEventAction::QAcceptEventAction(QAcceptEventActionPrivate &dd, QObject *parent) :
-    QAction(dd, parent)
+QAcceptEventAction::QAcceptEventAction(QAcceptEventActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QAcceptEventAction *>("QAcceptEventAction *");
-    qRegisterMetaType<const QSet<QAcceptEventAction *> *>("const QSet<QAcceptEventAction *> *");
-    qRegisterMetaType<const QList<QAcceptEventAction *> *>("const QList<QAcceptEventAction *> *");
 }
 
 QAcceptEventAction::~QAcceptEventAction()
@@ -137,7 +131,7 @@ void QAcceptEventAction::addTrigger(QTrigger *trigger)
         d->triggers->insert(trigger);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(trigger));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(trigger));
     }
 }
 
@@ -148,9 +142,10 @@ void QAcceptEventAction::removeTrigger(QTrigger *trigger)
     Q_D(QAcceptEventAction);
     if (d->triggers->contains(trigger)) {
         d->triggers->remove(trigger);
+        trigger->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(trigger));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(trigger));
     }
 }
 
@@ -174,7 +169,7 @@ void QAcceptEventAction::addResult(QOutputPin *result)
         d->results->insert(result);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(result));
+        (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(result));
     }
 }
 
@@ -185,9 +180,10 @@ void QAcceptEventAction::removeResult(QOutputPin *result)
     Q_D(QAcceptEventAction);
     if (d->results->contains(result)) {
         d->results->remove(result);
+        result->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(result));
+        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(result));
     }
 }
 

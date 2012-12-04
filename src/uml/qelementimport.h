@@ -77,7 +77,7 @@ class Q_UML_EXPORT QElementImport : public QDirectedRelationship
     Q_DECLARE_PRIVATE(QElementImport)
 
 public:
-    Q_INVOKABLE explicit QElementImport(QObject *parent = 0);
+    Q_INVOKABLE explicit QElementImport(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QElementImport();
 
     // Attributes from QElementImport
@@ -96,7 +96,7 @@ public:
     Q_INVOKABLE QString getName() const;
 
 protected:
-    explicit QElementImport(QElementImportPrivate &dd, QObject *parent = 0);
+    explicit QElementImport(QElementImportPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

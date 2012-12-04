@@ -66,20 +66,14 @@ QInvocationActionPrivate::~QInvocationActionPrivate()
     \brief InvocationAction is an abstract class for the various actions that invoke behavior.In addition to targeting an object, invocation actions can also invoke behavioral features on ports from where the invocation requests are routed onwards on links deriving from attached connectors. Invocation actions may also be sent to a target via a given port, either on the sending object or on another object.
  */
 
-QInvocationAction::QInvocationAction(QObject *parent) :
-    QAction(*new QInvocationActionPrivate, parent)
+QInvocationAction::QInvocationAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(*new QInvocationActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QInvocationAction *>("QInvocationAction *");
-    qRegisterMetaType<const QSet<QInvocationAction *> *>("const QSet<QInvocationAction *> *");
-    qRegisterMetaType<const QList<QInvocationAction *> *>("const QList<QInvocationAction *> *");
 }
 
-QInvocationAction::QInvocationAction(QInvocationActionPrivate &dd, QObject *parent) :
-    QAction(dd, parent)
+QInvocationAction::QInvocationAction(QInvocationActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QInvocationAction *>("QInvocationAction *");
-    qRegisterMetaType<const QSet<QInvocationAction *> *>("const QSet<QInvocationAction *> *");
-    qRegisterMetaType<const QList<QInvocationAction *> *>("const QList<QInvocationAction *> *");
 }
 
 QInvocationAction::~QInvocationAction()
@@ -110,7 +104,7 @@ void QInvocationAction::addArgument(QInputPin *argument)
         d->arguments->append(argument);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(argument));
+        (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(argument));
     }
 }
 
@@ -121,9 +115,10 @@ void QInvocationAction::removeArgument(QInputPin *argument)
     Q_D(QInvocationAction);
     if (d->arguments->contains(argument)) {
         d->arguments->removeAll(argument);
+        argument->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(argument));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(argument));
     }
 }
 

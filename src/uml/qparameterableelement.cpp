@@ -64,20 +64,14 @@ QParameterableElementPrivate::~QParameterableElementPrivate()
     \brief A parameterable element is an element that can be exposed as a formal template parameter for a template, or specified as an actual parameter in a binding of a template.
  */
 
-QParameterableElement::QParameterableElement(QObject *parent) :
-    QElement(*new QParameterableElementPrivate, parent)
+QParameterableElement::QParameterableElement(QUmlObject *parent, QUmlObject *wrapper) :
+    QElement(*new QParameterableElementPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QParameterableElement *>("QParameterableElement *");
-    qRegisterMetaType<const QSet<QParameterableElement *> *>("const QSet<QParameterableElement *> *");
-    qRegisterMetaType<const QList<QParameterableElement *> *>("const QList<QParameterableElement *> *");
 }
 
-QParameterableElement::QParameterableElement(QParameterableElementPrivate &dd, QObject *parent) :
-    QElement(dd, parent)
+QParameterableElement::QParameterableElement(QParameterableElementPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QParameterableElement *>("QParameterableElement *");
-    qRegisterMetaType<const QSet<QParameterableElement *> *>("const QSet<QParameterableElement *> *");
-    qRegisterMetaType<const QList<QParameterableElement *> *>("const QList<QParameterableElement *> *");
 }
 
 QParameterableElement::~QParameterableElement()
@@ -110,8 +104,8 @@ void QParameterableElement::setOwningTemplateParameter(QTemplateParameter *ownin
         d->owningTemplateParameter = owningTemplateParameter;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QParameterableElement *>(this))->setTemplateParameter(qtuml_object_cast<QTemplateParameter *>(owningTemplateParameter));
-        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(owningTemplateParameter));
+        (qumlobject_cast<QParameterableElement *>(this))->setTemplateParameter(qumlobject_cast<QTemplateParameter *>(owningTemplateParameter));
+        (qumlobject_cast<QElementPrivate *>(d))->setOwner(qumlobject_cast<QElement *>(owningTemplateParameter));
 
         // Adjust opposite property
         owningTemplateParameter->setOwnedParameteredElement(this);

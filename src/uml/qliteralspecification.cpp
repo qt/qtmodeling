@@ -60,20 +60,14 @@ QLiteralSpecificationPrivate::~QLiteralSpecificationPrivate()
     \brief A literal specification identifies a literal constant being modeled.
  */
 
-QLiteralSpecification::QLiteralSpecification(QObject *parent) :
-    QValueSpecification(*new QLiteralSpecificationPrivate, parent)
+QLiteralSpecification::QLiteralSpecification(QUmlObject *parent, QUmlObject *wrapper) :
+    QValueSpecification(*new QLiteralSpecificationPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QLiteralSpecification *>("QLiteralSpecification *");
-    qRegisterMetaType<const QSet<QLiteralSpecification *> *>("const QSet<QLiteralSpecification *> *");
-    qRegisterMetaType<const QList<QLiteralSpecification *> *>("const QList<QLiteralSpecification *> *");
 }
 
-QLiteralSpecification::QLiteralSpecification(QLiteralSpecificationPrivate &dd, QObject *parent) :
-    QValueSpecification(dd, parent)
+QLiteralSpecification::QLiteralSpecification(QLiteralSpecificationPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QValueSpecification(dd, parent, wrapper)
 {
-    qRegisterMetaType<QLiteralSpecification *>("QLiteralSpecification *");
-    qRegisterMetaType<const QSet<QLiteralSpecification *> *>("const QSet<QLiteralSpecification *> *");
-    qRegisterMetaType<const QList<QLiteralSpecification *> *>("const QList<QLiteralSpecification *> *");
 }
 
 QLiteralSpecification::~QLiteralSpecification()

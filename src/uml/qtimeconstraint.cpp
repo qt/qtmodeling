@@ -65,20 +65,14 @@ QTimeConstraintPrivate::~QTimeConstraintPrivate()
     \brief A time constraint is a constraint that refers to a time interval.
  */
 
-QTimeConstraint::QTimeConstraint(QObject *parent) :
-    QIntervalConstraint(*new QTimeConstraintPrivate, parent)
+QTimeConstraint::QTimeConstraint(QUmlObject *parent, QUmlObject *wrapper) :
+    QIntervalConstraint(*new QTimeConstraintPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QTimeConstraint *>("QTimeConstraint *");
-    qRegisterMetaType<const QSet<QTimeConstraint *> *>("const QSet<QTimeConstraint *> *");
-    qRegisterMetaType<const QList<QTimeConstraint *> *>("const QList<QTimeConstraint *> *");
 }
 
-QTimeConstraint::QTimeConstraint(QTimeConstraintPrivate &dd, QObject *parent) :
-    QIntervalConstraint(dd, parent)
+QTimeConstraint::QTimeConstraint(QTimeConstraintPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QIntervalConstraint(dd, parent, wrapper)
 {
-    qRegisterMetaType<QTimeConstraint *>("QTimeConstraint *");
-    qRegisterMetaType<const QSet<QTimeConstraint *> *>("const QSet<QTimeConstraint *> *");
-    qRegisterMetaType<const QList<QTimeConstraint *> *>("const QList<QTimeConstraint *> *");
 }
 
 QTimeConstraint::~QTimeConstraint()

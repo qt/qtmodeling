@@ -44,7 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
+#include <QtUml/QUmlObject>
 #include <QtUml/QRedefinableElement>
 #include <QtUml/QNamespace>
 
@@ -66,7 +66,7 @@ class QState;
 
 class QRegionPrivate;
 
-class Q_UML_EXPORT QRegion : public QObject
+class Q_UML_EXPORT QRegion : public QUmlObject
 {
     Q_OBJECT
 
@@ -81,7 +81,7 @@ class Q_UML_EXPORT QRegion : public QObject
     Q_DECLARE_PRIVATE(QRegion)
 
 public:
-    Q_INVOKABLE explicit QRegion(QObject *parent = 0);
+    Q_INVOKABLE explicit QRegion(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QRegion();
 
     // Association ends from aggregated QElement
@@ -149,7 +149,7 @@ public:
     Q_INVOKABLE bool isRedefinitionContextValid(const QRegion *redefined) const;
 
 protected:
-    explicit QRegion(QRegionPrivate &dd, QObject *parent = 0);
+    explicit QRegion(QRegionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 
 private:
     QRedefinableElement *_wrappedRedefinableElement;

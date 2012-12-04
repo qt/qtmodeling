@@ -61,20 +61,14 @@ QContinuationPrivate::~QContinuationPrivate()
     \brief A continuation is a syntactic way to define continuations of different branches of an alternative combined fragment. Continuations is intuitively similar to labels representing intermediate points in a flow of control.
  */
 
-QContinuation::QContinuation(QObject *parent) :
-    QInteractionFragment(*new QContinuationPrivate, parent)
+QContinuation::QContinuation(QUmlObject *parent, QUmlObject *wrapper) :
+    QInteractionFragment(*new QContinuationPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QContinuation *>("QContinuation *");
-    qRegisterMetaType<const QSet<QContinuation *> *>("const QSet<QContinuation *> *");
-    qRegisterMetaType<const QList<QContinuation *> *>("const QList<QContinuation *> *");
 }
 
-QContinuation::QContinuation(QContinuationPrivate &dd, QObject *parent) :
-    QInteractionFragment(dd, parent)
+QContinuation::QContinuation(QContinuationPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QInteractionFragment(dd, parent, wrapper)
 {
-    qRegisterMetaType<QContinuation *>("QContinuation *");
-    qRegisterMetaType<const QSet<QContinuation *> *>("const QSet<QContinuation *> *");
-    qRegisterMetaType<const QList<QContinuation *> *>("const QList<QContinuation *> *");
 }
 
 QContinuation::~QContinuation()

@@ -68,20 +68,14 @@ QDataTypePrivate::~QDataTypePrivate()
     \brief A data type is a type whose instances are identified only by their value. A data type may contain attributes to support the modeling of structured data types.
  */
 
-QDataType::QDataType(QObject *parent) :
-    QClassifier(*new QDataTypePrivate, parent)
+QDataType::QDataType(QUmlObject *parent, QUmlObject *wrapper) :
+    QClassifier(*new QDataTypePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QDataType *>("QDataType *");
-    qRegisterMetaType<const QSet<QDataType *> *>("const QSet<QDataType *> *");
-    qRegisterMetaType<const QList<QDataType *> *>("const QList<QDataType *> *");
 }
 
-QDataType::QDataType(QDataTypePrivate &dd, QObject *parent) :
-    QClassifier(dd, parent)
+QDataType::QDataType(QDataTypePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QClassifier(dd, parent, wrapper)
 {
-    qRegisterMetaType<QDataType *>("QDataType *");
-    qRegisterMetaType<const QSet<QDataType *> *>("const QSet<QDataType *> *");
-    qRegisterMetaType<const QList<QDataType *> *>("const QList<QDataType *> *");
 }
 
 QDataType::~QDataType()
@@ -112,8 +106,8 @@ void QDataType::addOwnedOperation(QOperation *ownedOperation)
         d->ownedOperations->append(ownedOperation);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QClassifierPrivate *>(d))->addFeature(qtuml_object_cast<QFeature *>(ownedOperation));
-        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(ownedOperation));
+        (qumlobject_cast<QClassifierPrivate *>(d))->addFeature(qumlobject_cast<QFeature *>(ownedOperation));
+        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(ownedOperation));
 
         // Adjust opposite property
         ownedOperation->setDatatype(this);
@@ -127,10 +121,11 @@ void QDataType::removeOwnedOperation(QOperation *ownedOperation)
     Q_D(QDataType);
     if (d->ownedOperations->contains(ownedOperation)) {
         d->ownedOperations->removeAll(ownedOperation);
+        ownedOperation->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QClassifierPrivate *>(d))->removeFeature(qtuml_object_cast<QFeature *>(ownedOperation));
-        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(ownedOperation));
+        (qumlobject_cast<QClassifierPrivate *>(d))->removeFeature(qumlobject_cast<QFeature *>(ownedOperation));
+        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedOperation));
 
         // Adjust opposite property
         ownedOperation->setDatatype(0);
@@ -157,8 +152,8 @@ void QDataType::addOwnedAttribute(QProperty *ownedAttribute)
         d->ownedAttributes->append(ownedAttribute);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(ownedAttribute));
-        (qtuml_object_cast<QClassifierPrivate *>(d))->addAttribute(qtuml_object_cast<QProperty *>(ownedAttribute));
+        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(ownedAttribute));
+        (qumlobject_cast<QClassifierPrivate *>(d))->addAttribute(qumlobject_cast<QProperty *>(ownedAttribute));
 
         // Adjust opposite property
         ownedAttribute->setDatatype(this);
@@ -172,10 +167,11 @@ void QDataType::removeOwnedAttribute(QProperty *ownedAttribute)
     Q_D(QDataType);
     if (d->ownedAttributes->contains(ownedAttribute)) {
         d->ownedAttributes->removeAll(ownedAttribute);
+        ownedAttribute->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(ownedAttribute));
-        (qtuml_object_cast<QClassifierPrivate *>(d))->removeAttribute(qtuml_object_cast<QProperty *>(ownedAttribute));
+        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedAttribute));
+        (qumlobject_cast<QClassifierPrivate *>(d))->removeAttribute(qumlobject_cast<QProperty *>(ownedAttribute));
 
         // Adjust opposite property
         ownedAttribute->setDatatype(0);

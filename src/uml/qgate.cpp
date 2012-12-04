@@ -60,20 +60,14 @@ QGatePrivate::~QGatePrivate()
     \brief A gate is a connection point for relating a message outside an interaction fragment with a message inside the interaction fragment.
  */
 
-QGate::QGate(QObject *parent) :
-    QMessageEnd(*new QGatePrivate, parent)
+QGate::QGate(QUmlObject *parent, QUmlObject *wrapper) :
+    QMessageEnd(*new QGatePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QGate *>("QGate *");
-    qRegisterMetaType<const QSet<QGate *> *>("const QSet<QGate *> *");
-    qRegisterMetaType<const QList<QGate *> *>("const QList<QGate *> *");
 }
 
-QGate::QGate(QGatePrivate &dd, QObject *parent) :
-    QMessageEnd(dd, parent)
+QGate::QGate(QGatePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QMessageEnd(dd, parent, wrapper)
 {
-    qRegisterMetaType<QGate *>("QGate *");
-    qRegisterMetaType<const QSet<QGate *> *>("const QSet<QGate *> *");
-    qRegisterMetaType<const QList<QGate *> *>("const QList<QGate *> *");
 }
 
 QGate::~QGate()

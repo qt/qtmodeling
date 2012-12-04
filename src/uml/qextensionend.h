@@ -68,7 +68,7 @@ class Q_UML_EXPORT QExtensionEnd : public QProperty
     Q_DECLARE_PRIVATE(QExtensionEnd)
 
 public:
-    Q_INVOKABLE explicit QExtensionEnd(QObject *parent = 0);
+    Q_INVOKABLE explicit QExtensionEnd(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QExtensionEnd();
 
     // Attributes from QExtensionEnd
@@ -83,7 +83,7 @@ public:
     Q_INVOKABLE qint32 lowerBound() const;
 
 protected:
-    explicit QExtensionEnd(QExtensionEndPrivate &dd, QObject *parent = 0);
+    explicit QExtensionEnd(QExtensionEndPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

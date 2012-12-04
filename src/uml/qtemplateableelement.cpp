@@ -67,20 +67,14 @@ QTemplateableElementPrivate::~QTemplateableElementPrivate()
     \brief A templateable element is an element that can optionally be defined as a template and bound to other templates.
  */
 
-QTemplateableElement::QTemplateableElement(QObject *parent) :
-    QElement(*new QTemplateableElementPrivate, parent)
+QTemplateableElement::QTemplateableElement(QUmlObject *parent, QUmlObject *wrapper) :
+    QElement(*new QTemplateableElementPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QTemplateableElement *>("QTemplateableElement *");
-    qRegisterMetaType<const QSet<QTemplateableElement *> *>("const QSet<QTemplateableElement *> *");
-    qRegisterMetaType<const QList<QTemplateableElement *> *>("const QList<QTemplateableElement *> *");
 }
 
-QTemplateableElement::QTemplateableElement(QTemplateableElementPrivate &dd, QObject *parent) :
-    QElement(dd, parent)
+QTemplateableElement::QTemplateableElement(QTemplateableElementPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QTemplateableElement *>("QTemplateableElement *");
-    qRegisterMetaType<const QSet<QTemplateableElement *> *>("const QSet<QTemplateableElement *> *");
-    qRegisterMetaType<const QList<QTemplateableElement *> *>("const QList<QTemplateableElement *> *");
 }
 
 QTemplateableElement::~QTemplateableElement()
@@ -111,13 +105,13 @@ void QTemplateableElement::setOwnedTemplateSignature(QTemplateSignature *ownedTe
         // Adjust opposite property
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->ownedTemplateSignature));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->ownedTemplateSignature));
 
         d->ownedTemplateSignature = ownedTemplateSignature;
 
         // Adjust subsetted property(ies)
         if (ownedTemplateSignature) {
-            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(ownedTemplateSignature));
+            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(ownedTemplateSignature));
         }
 
         // Adjust opposite property
@@ -145,7 +139,7 @@ void QTemplateableElement::addTemplateBinding(QTemplateBinding *templateBinding)
         d->templateBindings->insert(templateBinding);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(templateBinding));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(templateBinding));
 
         // Adjust opposite property
         templateBinding->setBoundElement(this);
@@ -159,9 +153,10 @@ void QTemplateableElement::removeTemplateBinding(QTemplateBinding *templateBindi
     Q_D(QTemplateableElement);
     if (d->templateBindings->contains(templateBinding)) {
         d->templateBindings->remove(templateBinding);
+        templateBinding->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(templateBinding));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(templateBinding));
 
         // Adjust opposite property
         templateBinding->setBoundElement(0);

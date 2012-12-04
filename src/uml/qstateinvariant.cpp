@@ -65,20 +65,14 @@ QStateInvariantPrivate::~QStateInvariantPrivate()
     \brief A state invariant is a runtime constraint on the participants of the interaction. It may be used to specify a variety of different kinds of constraints, such as values of attributes or variables, internal or external states, and so on. A state invariant is an interaction fragment and it is placed on a lifeline.
  */
 
-QStateInvariant::QStateInvariant(QObject *parent) :
-    QInteractionFragment(*new QStateInvariantPrivate, parent)
+QStateInvariant::QStateInvariant(QUmlObject *parent, QUmlObject *wrapper) :
+    QInteractionFragment(*new QStateInvariantPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QStateInvariant *>("QStateInvariant *");
-    qRegisterMetaType<const QSet<QStateInvariant *> *>("const QSet<QStateInvariant *> *");
-    qRegisterMetaType<const QList<QStateInvariant *> *>("const QList<QStateInvariant *> *");
 }
 
-QStateInvariant::QStateInvariant(QStateInvariantPrivate &dd, QObject *parent) :
-    QInteractionFragment(dd, parent)
+QStateInvariant::QStateInvariant(QStateInvariantPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QInteractionFragment(dd, parent, wrapper)
 {
-    qRegisterMetaType<QStateInvariant *>("QStateInvariant *");
-    qRegisterMetaType<const QSet<QStateInvariant *> *>("const QSet<QStateInvariant *> *");
-    qRegisterMetaType<const QList<QStateInvariant *> *>("const QList<QStateInvariant *> *");
 }
 
 QStateInvariant::~QStateInvariant()
@@ -107,13 +101,13 @@ void QStateInvariant::setInvariant(QConstraint *invariant)
     Q_D(QStateInvariant);
     if (d->invariant != invariant) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->invariant));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->invariant));
 
         d->invariant = invariant;
 
         // Adjust subsetted property(ies)
         if (invariant) {
-            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(invariant));
+            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(invariant));
         }
     }
 }

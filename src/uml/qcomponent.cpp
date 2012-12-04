@@ -70,20 +70,14 @@ QComponentPrivate::~QComponentPrivate()
     \brief In the namespace of a component, all model elements that are involved in or related to its definition are either owned or imported explicitly. This may include, for example, use cases and dependencies (e.g. mappings), packages, components, and artifacts.A component represents a modular part of a system that encapsulates its contents and whose manifestation is replaceable within its environment.
  */
 
-QComponent::QComponent(QObject *parent) :
-    QClass(*new QComponentPrivate, parent)
+QComponent::QComponent(QUmlObject *parent, QUmlObject *wrapper) :
+    QClass(*new QComponentPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QComponent *>("QComponent *");
-    qRegisterMetaType<const QSet<QComponent *> *>("const QSet<QComponent *> *");
-    qRegisterMetaType<const QList<QComponent *> *>("const QList<QComponent *> *");
 }
 
-QComponent::QComponent(QComponentPrivate &dd, QObject *parent) :
-    QClass(dd, parent)
+QComponent::QComponent(QComponentPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QClass(dd, parent, wrapper)
 {
-    qRegisterMetaType<QComponent *>("QComponent *");
-    qRegisterMetaType<const QSet<QComponent *> *>("const QSet<QComponent *> *");
-    qRegisterMetaType<const QList<QComponent *> *>("const QList<QComponent *> *");
 }
 
 QComponent::~QComponent()
@@ -139,7 +133,7 @@ void QComponent::addRealization(QComponentRealization *realization)
         d->realizations->insert(realization);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(realization));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(realization));
 
         // Adjust opposite property
         realization->setAbstraction(this);
@@ -153,9 +147,10 @@ void QComponent::removeRealization(QComponentRealization *realization)
     Q_D(QComponent);
     if (d->realizations->contains(realization)) {
         d->realizations->remove(realization);
+        realization->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(realization));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(realization));
 
         // Adjust opposite property
         realization->setAbstraction(0);
@@ -206,7 +201,7 @@ void QComponent::addPackagedElement(QPackageableElement *packagedElement)
         d->packagedElements->insert(packagedElement);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(packagedElement));
+        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(packagedElement));
     }
 }
 
@@ -217,9 +212,10 @@ void QComponent::removePackagedElement(QPackageableElement *packagedElement)
     Q_D(QComponent);
     if (d->packagedElements->contains(packagedElement)) {
         d->packagedElements->remove(packagedElement);
+        packagedElement->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(packagedElement));
+        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(packagedElement));
     }
 }
 

@@ -65,20 +65,14 @@ QDurationPrivate::~QDurationPrivate()
     \brief Duration defines a value specification that specifies the temporal distance between two time instants.
  */
 
-QDuration::QDuration(QObject *parent) :
-    QValueSpecification(*new QDurationPrivate, parent)
+QDuration::QDuration(QUmlObject *parent, QUmlObject *wrapper) :
+    QValueSpecification(*new QDurationPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QDuration *>("QDuration *");
-    qRegisterMetaType<const QSet<QDuration *> *>("const QSet<QDuration *> *");
-    qRegisterMetaType<const QList<QDuration *> *>("const QList<QDuration *> *");
 }
 
-QDuration::QDuration(QDurationPrivate &dd, QObject *parent) :
-    QValueSpecification(dd, parent)
+QDuration::QDuration(QDurationPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QValueSpecification(dd, parent, wrapper)
 {
-    qRegisterMetaType<QDuration *>("QDuration *");
-    qRegisterMetaType<const QSet<QDuration *> *>("const QSet<QDuration *> *");
-    qRegisterMetaType<const QList<QDuration *> *>("const QList<QDuration *> *");
 }
 
 QDuration::~QDuration()
@@ -107,13 +101,13 @@ void QDuration::setExpr(QValueSpecification *expr)
     Q_D(QDuration);
     if (d->expr != expr) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->expr));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->expr));
 
         d->expr = expr;
 
         // Adjust subsetted property(ies)
         if (expr) {
-            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(expr));
+            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(expr));
         }
     }
 }

@@ -66,20 +66,14 @@ QComponentRealizationPrivate::~QComponentRealizationPrivate()
     \brief The realization concept is specialized to (optionally) define the classifiers that realize the contract offered by a component in terms of its provided and required interfaces. The component forms an abstraction from these various classifiers.
  */
 
-QComponentRealization::QComponentRealization(QObject *parent) :
-    QRealization(*new QComponentRealizationPrivate, parent)
+QComponentRealization::QComponentRealization(QUmlObject *parent, QUmlObject *wrapper) :
+    QRealization(*new QComponentRealizationPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QComponentRealization *>("QComponentRealization *");
-    qRegisterMetaType<const QSet<QComponentRealization *> *>("const QSet<QComponentRealization *> *");
-    qRegisterMetaType<const QList<QComponentRealization *> *>("const QList<QComponentRealization *> *");
 }
 
-QComponentRealization::QComponentRealization(QComponentRealizationPrivate &dd, QObject *parent) :
-    QRealization(dd, parent)
+QComponentRealization::QComponentRealization(QComponentRealizationPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QRealization(dd, parent, wrapper)
 {
-    qRegisterMetaType<QComponentRealization *>("QComponentRealization *");
-    qRegisterMetaType<const QSet<QComponentRealization *> *>("const QSet<QComponentRealization *> *");
-    qRegisterMetaType<const QList<QComponentRealization *> *>("const QList<QComponentRealization *> *");
 }
 
 QComponentRealization::~QComponentRealization()
@@ -112,15 +106,15 @@ void QComponentRealization::setAbstraction(QComponent *abstraction)
             d->abstraction->removeRealization(this);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QDependency *>(this))->removeSupplier(qtuml_object_cast<QNamedElement *>(d->abstraction));
+        (qumlobject_cast<QDependency *>(this))->removeSupplier(qumlobject_cast<QNamedElement *>(d->abstraction));
 
         d->abstraction = abstraction;
 
         // Adjust subsetted property(ies)
         if (abstraction) {
-            (qtuml_object_cast<QDependency *>(this))->addSupplier(qtuml_object_cast<QNamedElement *>(abstraction));
+            (qumlobject_cast<QDependency *>(this))->addSupplier(qumlobject_cast<QNamedElement *>(abstraction));
         }
-        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(abstraction));
+        (qumlobject_cast<QElementPrivate *>(d))->setOwner(qumlobject_cast<QElement *>(abstraction));
 
         // Adjust opposite property
         if (abstraction)
@@ -148,7 +142,7 @@ void QComponentRealization::addRealizingClassifier(QClassifier *realizingClassif
         d->realizingClassifiers->insert(realizingClassifier);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QDependency *>(this))->addClient(qtuml_object_cast<QNamedElement *>(realizingClassifier));
+        (qumlobject_cast<QDependency *>(this))->addClient(qumlobject_cast<QNamedElement *>(realizingClassifier));
     }
 }
 
@@ -161,7 +155,7 @@ void QComponentRealization::removeRealizingClassifier(QClassifier *realizingClas
         d->realizingClassifiers->remove(realizingClassifier);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QDependency *>(this))->removeClient(qtuml_object_cast<QNamedElement *>(realizingClassifier));
+        (qumlobject_cast<QDependency *>(this))->removeClient(qumlobject_cast<QNamedElement *>(realizingClassifier));
     }
 }
 

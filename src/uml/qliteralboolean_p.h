@@ -41,8 +41,6 @@
 #ifndef QTUML_QLITERALBOOLEAN_P_H
 #define QTUML_QLITERALBOOLEAN_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qliteralspecification_p.h"
 

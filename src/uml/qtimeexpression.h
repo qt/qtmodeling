@@ -71,7 +71,7 @@ class Q_UML_EXPORT QTimeExpression : public QValueSpecification
     Q_DECLARE_PRIVATE(QTimeExpression)
 
 public:
-    Q_INVOKABLE explicit QTimeExpression(QObject *parent = 0);
+    Q_INVOKABLE explicit QTimeExpression(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QTimeExpression();
 
     // Association ends from QTimeExpression
@@ -82,7 +82,7 @@ public:
     Q_INVOKABLE void setExpr(QValueSpecification *expr);
 
 protected:
-    explicit QTimeExpression(QTimeExpressionPrivate &dd, QObject *parent = 0);
+    explicit QTimeExpression(QTimeExpressionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -41,10 +41,8 @@
 #ifndef QTUML_QINSTANCESPECIFICATION_P_H
 #define QTUML_QINSTANCESPECIFICATION_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
-#include "private/qobject_p.h"
+#include "private/qumlobject_p.h"
 #include "private/qdeployedartifact_p.h"
 #include "private/qpackageableelement_p.h"
 #include "private/qdeploymenttarget_p.h"
@@ -66,7 +64,7 @@ class QSlot;
 class QValueSpecification;
 class QInstanceSpecification;
 
-class Q_UML_EXPORT QInstanceSpecificationPrivate : public QObjectPrivate
+class Q_UML_EXPORT QInstanceSpecificationPrivate : public QUmlObjectPrivate
 {
     Q_DECLARE_PUBLIC(QInstanceSpecification)
 

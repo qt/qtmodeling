@@ -63,20 +63,14 @@ QConnectableElementTemplateParameterPrivate::~QConnectableElementTemplateParamet
     \brief A connectable element template parameter exposes a connectable element as a formal parameter for a template.
  */
 
-QConnectableElementTemplateParameter::QConnectableElementTemplateParameter(QObject *parent) :
-    QTemplateParameter(*new QConnectableElementTemplateParameterPrivate, parent)
+QConnectableElementTemplateParameter::QConnectableElementTemplateParameter(QUmlObject *parent, QUmlObject *wrapper) :
+    QTemplateParameter(*new QConnectableElementTemplateParameterPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QConnectableElementTemplateParameter *>("QConnectableElementTemplateParameter *");
-    qRegisterMetaType<const QSet<QConnectableElementTemplateParameter *> *>("const QSet<QConnectableElementTemplateParameter *> *");
-    qRegisterMetaType<const QList<QConnectableElementTemplateParameter *> *>("const QList<QConnectableElementTemplateParameter *> *");
 }
 
-QConnectableElementTemplateParameter::QConnectableElementTemplateParameter(QConnectableElementTemplateParameterPrivate &dd, QObject *parent) :
-    QTemplateParameter(dd, parent)
+QConnectableElementTemplateParameter::QConnectableElementTemplateParameter(QConnectableElementTemplateParameterPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QTemplateParameter(dd, parent, wrapper)
 {
-    qRegisterMetaType<QConnectableElementTemplateParameter *>("QConnectableElementTemplateParameter *");
-    qRegisterMetaType<const QSet<QConnectableElementTemplateParameter *> *>("const QSet<QConnectableElementTemplateParameter *> *");
-    qRegisterMetaType<const QList<QConnectableElementTemplateParameter *> *>("const QList<QConnectableElementTemplateParameter *> *");
 }
 
 QConnectableElementTemplateParameter::~QConnectableElementTemplateParameter()

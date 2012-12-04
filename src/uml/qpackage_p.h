@@ -41,10 +41,8 @@
 #ifndef QTUML_QPACKAGE_P_H
 #define QTUML_QPACKAGE_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
-#include "private/qobject_p.h"
+#include "private/qumlobject_p.h"
 #include "private/qnamespace_p.h"
 #include "private/qpackageableelement_p.h"
 #include "private/qtemplateableelement_p.h"
@@ -70,7 +68,7 @@ class QStereotype;
 class QPackage;
 class QType;
 
-class Q_UML_EXPORT QPackagePrivate : public QObjectPrivate
+class Q_UML_EXPORT QPackagePrivate : public QUmlObjectPrivate
 {
     Q_DECLARE_PUBLIC(QPackage)
 

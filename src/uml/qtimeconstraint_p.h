@@ -41,8 +41,6 @@
 #ifndef QTUML_QTIMECONSTRAINT_P_H
 #define QTUML_QTIMECONSTRAINT_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qintervalconstraint_p.h"
 

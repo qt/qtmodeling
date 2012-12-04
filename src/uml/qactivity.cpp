@@ -81,20 +81,14 @@ QActivityPrivate::~QActivityPrivate()
     \brief An activity is the specification of parameterized behavior as the coordinated sequencing of subordinate units whose individual elements are actions.
  */
 
-QActivity::QActivity(QObject *parent) :
-    QBehavior(*new QActivityPrivate, parent)
+QActivity::QActivity(QUmlObject *parent, QUmlObject *wrapper) :
+    QBehavior(*new QActivityPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QActivity *>("QActivity *");
-    qRegisterMetaType<const QSet<QActivity *> *>("const QSet<QActivity *> *");
-    qRegisterMetaType<const QList<QActivity *> *>("const QList<QActivity *> *");
 }
 
-QActivity::QActivity(QActivityPrivate &dd, QObject *parent) :
-    QBehavior(dd, parent)
+QActivity::QActivity(QActivityPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QBehavior(dd, parent, wrapper)
 {
-    qRegisterMetaType<QActivity *>("QActivity *");
-    qRegisterMetaType<const QSet<QActivity *> *>("const QSet<QActivity *> *");
-    qRegisterMetaType<const QList<QActivity *> *>("const QList<QActivity *> *");
 }
 
 QActivity::~QActivity()
@@ -171,7 +165,7 @@ void QActivity::addPartition(QActivityPartition *partition)
         d->partitions->insert(partition);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActivity *>(this))->addGroup(qtuml_object_cast<QActivityGroup *>(partition));
+        (qumlobject_cast<QActivity *>(this))->addGroup(qumlobject_cast<QActivityGroup *>(partition));
     }
 }
 
@@ -184,7 +178,7 @@ void QActivity::removePartition(QActivityPartition *partition)
         d->partitions->remove(partition);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActivity *>(this))->removeGroup(qtuml_object_cast<QActivityGroup *>(partition));
+        (qumlobject_cast<QActivity *>(this))->removeGroup(qumlobject_cast<QActivityGroup *>(partition));
     }
 }
 
@@ -208,7 +202,7 @@ void QActivity::addNode(QActivityNode *node)
         d->nodes->insert(node);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(node));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(node));
 
         // Adjust opposite property
         node->setActivity(this);
@@ -222,9 +216,10 @@ void QActivity::removeNode(QActivityNode *node)
     Q_D(QActivity);
     if (d->nodes->contains(node)) {
         d->nodes->remove(node);
+        node->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(node));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(node));
 
         // Adjust opposite property
         node->setActivity(0);
@@ -251,7 +246,7 @@ void QActivity::addVariable(QVariable *variable)
         d->variables->insert(variable);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(variable));
+        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(variable));
 
         // Adjust opposite property
         variable->setActivityScope(this);
@@ -265,9 +260,10 @@ void QActivity::removeVariable(QVariable *variable)
     Q_D(QActivity);
     if (d->variables->contains(variable)) {
         d->variables->remove(variable);
+        variable->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(variable));
+        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(variable));
 
         // Adjust opposite property
         variable->setActivityScope(0);
@@ -294,8 +290,8 @@ void QActivity::addStructuredNode(QStructuredActivityNode *structuredNode)
         d->structuredNodes->insert(structuredNode);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActivity *>(this))->addGroup(qtuml_object_cast<QActivityGroup *>(structuredNode));
-        (qtuml_object_cast<QActivity *>(this))->addNode(qtuml_object_cast<QActivityNode *>(structuredNode));
+        (qumlobject_cast<QActivity *>(this))->addGroup(qumlobject_cast<QActivityGroup *>(structuredNode));
+        (qumlobject_cast<QActivity *>(this))->addNode(qumlobject_cast<QActivityNode *>(structuredNode));
 
         // Adjust opposite property
         structuredNode->setActivity(this);
@@ -309,10 +305,11 @@ void QActivity::removeStructuredNode(QStructuredActivityNode *structuredNode)
     Q_D(QActivity);
     if (d->structuredNodes->contains(structuredNode)) {
         d->structuredNodes->remove(structuredNode);
+        structuredNode->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActivity *>(this))->removeGroup(qtuml_object_cast<QActivityGroup *>(structuredNode));
-        (qtuml_object_cast<QActivity *>(this))->removeNode(qtuml_object_cast<QActivityNode *>(structuredNode));
+        (qumlobject_cast<QActivity *>(this))->removeGroup(qumlobject_cast<QActivityGroup *>(structuredNode));
+        (qumlobject_cast<QActivity *>(this))->removeNode(qumlobject_cast<QActivityNode *>(structuredNode));
 
         // Adjust opposite property
         structuredNode->setActivity(0);
@@ -339,7 +336,7 @@ void QActivity::addGroup(QActivityGroup *group)
         d->groups->insert(group);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(group));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(group));
 
         // Adjust opposite property
         group->setInActivity(this);
@@ -353,9 +350,10 @@ void QActivity::removeGroup(QActivityGroup *group)
     Q_D(QActivity);
     if (d->groups->contains(group)) {
         d->groups->remove(group);
+        group->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(group));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(group));
 
         // Adjust opposite property
         group->setInActivity(0);
@@ -382,7 +380,7 @@ void QActivity::addEdge(QActivityEdge *edge)
         d->edges->insert(edge);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(edge));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(edge));
 
         // Adjust opposite property
         edge->setActivity(this);
@@ -396,9 +394,10 @@ void QActivity::removeEdge(QActivityEdge *edge)
     Q_D(QActivity);
     if (d->edges->contains(edge)) {
         d->edges->remove(edge);
+        edge->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(edge));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(edge));
 
         // Adjust opposite property
         edge->setActivity(0);

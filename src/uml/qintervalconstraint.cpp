@@ -64,20 +64,14 @@ QIntervalConstraintPrivate::~QIntervalConstraintPrivate()
     \brief An interval constraint is a constraint that refers to an interval.
  */
 
-QIntervalConstraint::QIntervalConstraint(QObject *parent) :
-    QConstraint(*new QIntervalConstraintPrivate, parent)
+QIntervalConstraint::QIntervalConstraint(QUmlObject *parent, QUmlObject *wrapper) :
+    QConstraint(*new QIntervalConstraintPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QIntervalConstraint *>("QIntervalConstraint *");
-    qRegisterMetaType<const QSet<QIntervalConstraint *> *>("const QSet<QIntervalConstraint *> *");
-    qRegisterMetaType<const QList<QIntervalConstraint *> *>("const QList<QIntervalConstraint *> *");
 }
 
-QIntervalConstraint::QIntervalConstraint(QIntervalConstraintPrivate &dd, QObject *parent) :
-    QConstraint(dd, parent)
+QIntervalConstraint::QIntervalConstraint(QIntervalConstraintPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QConstraint(dd, parent, wrapper)
 {
-    qRegisterMetaType<QIntervalConstraint *>("QIntervalConstraint *");
-    qRegisterMetaType<const QSet<QIntervalConstraint *> *>("const QSet<QIntervalConstraint *> *");
-    qRegisterMetaType<const QList<QIntervalConstraint *> *>("const QList<QIntervalConstraint *> *");
 }
 
 QIntervalConstraint::~QIntervalConstraint()

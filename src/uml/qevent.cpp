@@ -60,20 +60,14 @@ QEventPrivate::~QEventPrivate()
     \brief An event is the specification of some occurrence that may potentially trigger effects by an object.
  */
 
-QEvent::QEvent(QObject *parent) :
-    QPackageableElement(*new QEventPrivate, parent)
+QEvent::QEvent(QUmlObject *parent, QUmlObject *wrapper) :
+    QPackageableElement(*new QEventPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QEvent *>("QEvent *");
-    qRegisterMetaType<const QSet<QEvent *> *>("const QSet<QEvent *> *");
-    qRegisterMetaType<const QList<QEvent *> *>("const QList<QEvent *> *");
 }
 
-QEvent::QEvent(QEventPrivate &dd, QObject *parent) :
-    QPackageableElement(dd, parent)
+QEvent::QEvent(QEventPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QPackageableElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QEvent *>("QEvent *");
-    qRegisterMetaType<const QSet<QEvent *> *>("const QSet<QEvent *> *");
-    qRegisterMetaType<const QList<QEvent *> *>("const QList<QEvent *> *");
 }
 
 QEvent::~QEvent()

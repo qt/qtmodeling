@@ -68,20 +68,14 @@ QOccurrenceSpecificationPrivate::~QOccurrenceSpecificationPrivate()
     \brief An occurrence specification is the basic semantic unit of interactions. The sequences of occurrences specified by them are the meanings of interactions.
  */
 
-QOccurrenceSpecification::QOccurrenceSpecification(QObject *parent) :
-    QInteractionFragment(*new QOccurrenceSpecificationPrivate, parent)
+QOccurrenceSpecification::QOccurrenceSpecification(QUmlObject *parent, QUmlObject *wrapper) :
+    QInteractionFragment(*new QOccurrenceSpecificationPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QOccurrenceSpecification *>("QOccurrenceSpecification *");
-    qRegisterMetaType<const QSet<QOccurrenceSpecification *> *>("const QSet<QOccurrenceSpecification *> *");
-    qRegisterMetaType<const QList<QOccurrenceSpecification *> *>("const QList<QOccurrenceSpecification *> *");
 }
 
-QOccurrenceSpecification::QOccurrenceSpecification(QOccurrenceSpecificationPrivate &dd, QObject *parent) :
-    QInteractionFragment(dd, parent)
+QOccurrenceSpecification::QOccurrenceSpecification(QOccurrenceSpecificationPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QInteractionFragment(dd, parent, wrapper)
 {
-    qRegisterMetaType<QOccurrenceSpecification *>("QOccurrenceSpecification *");
-    qRegisterMetaType<const QSet<QOccurrenceSpecification *> *>("const QSet<QOccurrenceSpecification *> *");
-    qRegisterMetaType<const QList<QOccurrenceSpecification *> *>("const QList<QOccurrenceSpecification *> *");
 }
 
 QOccurrenceSpecification::~QOccurrenceSpecification()

@@ -41,8 +41,6 @@
 #ifndef QTUML_QEXECUTIONOCCURRENCESPECIFICATION_P_H
 #define QTUML_QEXECUTIONOCCURRENCESPECIFICATION_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qoccurrencespecification_p.h"
 

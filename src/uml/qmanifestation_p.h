@@ -41,8 +41,6 @@
 #ifndef QTUML_QMANIFESTATION_P_H
 #define QTUML_QMANIFESTATION_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qabstraction_p.h"
 

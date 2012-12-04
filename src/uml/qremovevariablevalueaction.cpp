@@ -64,20 +64,14 @@ QRemoveVariableValueActionPrivate::~QRemoveVariableValueActionPrivate()
     \brief A remove variable value action is a write variable action that removes values from variables.
  */
 
-QRemoveVariableValueAction::QRemoveVariableValueAction(QObject *parent) :
-    QWriteVariableAction(*new QRemoveVariableValueActionPrivate, parent)
+QRemoveVariableValueAction::QRemoveVariableValueAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QWriteVariableAction(*new QRemoveVariableValueActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QRemoveVariableValueAction *>("QRemoveVariableValueAction *");
-    qRegisterMetaType<const QSet<QRemoveVariableValueAction *> *>("const QSet<QRemoveVariableValueAction *> *");
-    qRegisterMetaType<const QList<QRemoveVariableValueAction *> *>("const QList<QRemoveVariableValueAction *> *");
 }
 
-QRemoveVariableValueAction::QRemoveVariableValueAction(QRemoveVariableValueActionPrivate &dd, QObject *parent) :
-    QWriteVariableAction(dd, parent)
+QRemoveVariableValueAction::QRemoveVariableValueAction(QRemoveVariableValueActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QWriteVariableAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QRemoveVariableValueAction *>("QRemoveVariableValueAction *");
-    qRegisterMetaType<const QSet<QRemoveVariableValueAction *> *>("const QSet<QRemoveVariableValueAction *> *");
-    qRegisterMetaType<const QList<QRemoveVariableValueAction *> *>("const QList<QRemoveVariableValueAction *> *");
 }
 
 QRemoveVariableValueAction::~QRemoveVariableValueAction()
@@ -131,13 +125,13 @@ void QRemoveVariableValueAction::setRemoveAt(QInputPin *removeAt)
     Q_D(QRemoveVariableValueAction);
     if (d->removeAt != removeAt) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->removeAt));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->removeAt));
 
         d->removeAt = removeAt;
 
         // Adjust subsetted property(ies)
         if (removeAt) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(removeAt));
+            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(removeAt));
         }
     }
 }

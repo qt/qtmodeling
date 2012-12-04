@@ -68,7 +68,7 @@ void QFeaturePrivate::addFeaturingClassifier(QClassifier *featuringClassifier)
 
         // Adjust opposite property
         Q_Q(QFeature);
-        (qtuml_object_cast<QClassifierPrivate *>(featuringClassifier->d_func()))->addFeature(q);
+        (qumlobject_cast<QClassifierPrivate *>(featuringClassifier->d_func()))->addFeature(q);
     }
 }
 
@@ -82,7 +82,7 @@ void QFeaturePrivate::removeFeaturingClassifier(QClassifier *featuringClassifier
         // Adjust opposite property
         Q_Q(QFeature);
         if (featuringClassifier)
-            (qtuml_object_cast<QClassifierPrivate *>(featuringClassifier->d_func()))->removeFeature(q);
+            (qumlobject_cast<QClassifierPrivate *>(featuringClassifier->d_func()))->removeFeature(q);
     }
 }
 
@@ -94,20 +94,14 @@ void QFeaturePrivate::removeFeaturingClassifier(QClassifier *featuringClassifier
     \brief A feature declares a behavioral or structural characteristic of instances of classifiers.
  */
 
-QFeature::QFeature(QObject *parent) :
-    QRedefinableElement(*new QFeaturePrivate, parent)
+QFeature::QFeature(QUmlObject *parent, QUmlObject *wrapper) :
+    QRedefinableElement(*new QFeaturePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QFeature *>("QFeature *");
-    qRegisterMetaType<const QSet<QFeature *> *>("const QSet<QFeature *> *");
-    qRegisterMetaType<const QList<QFeature *> *>("const QList<QFeature *> *");
 }
 
-QFeature::QFeature(QFeaturePrivate &dd, QObject *parent) :
-    QRedefinableElement(dd, parent)
+QFeature::QFeature(QFeaturePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QRedefinableElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QFeature *>("QFeature *");
-    qRegisterMetaType<const QSet<QFeature *> *>("const QSet<QFeature *> *");
-    qRegisterMetaType<const QList<QFeature *> *>("const QList<QFeature *> *");
 }
 
 QFeature::~QFeature()

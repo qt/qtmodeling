@@ -64,20 +64,14 @@ QTimeObservationPrivate::~QTimeObservationPrivate()
     \brief A time observation is a reference to a time instant during an execution. It points out the element in the model to observe and whether the observation is when this model element is entered or when it is exited.
  */
 
-QTimeObservation::QTimeObservation(QObject *parent) :
-    QObservation(*new QTimeObservationPrivate, parent)
+QTimeObservation::QTimeObservation(QUmlObject *parent, QUmlObject *wrapper) :
+    QObservation(*new QTimeObservationPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QTimeObservation *>("QTimeObservation *");
-    qRegisterMetaType<const QSet<QTimeObservation *> *>("const QSet<QTimeObservation *> *");
-    qRegisterMetaType<const QList<QTimeObservation *> *>("const QList<QTimeObservation *> *");
 }
 
-QTimeObservation::QTimeObservation(QTimeObservationPrivate &dd, QObject *parent) :
-    QObservation(dd, parent)
+QTimeObservation::QTimeObservation(QTimeObservationPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QObservation(dd, parent, wrapper)
 {
-    qRegisterMetaType<QTimeObservation *>("QTimeObservation *");
-    qRegisterMetaType<const QSet<QTimeObservation *> *>("const QSet<QTimeObservation *> *");
-    qRegisterMetaType<const QList<QTimeObservation *> *>("const QList<QTimeObservation *> *");
 }
 
 QTimeObservation::~QTimeObservation()

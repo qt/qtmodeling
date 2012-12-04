@@ -60,20 +60,14 @@ QFlowFinalNodePrivate::~QFlowFinalNodePrivate()
     \brief A flow final node is a final node that terminates a flow.
  */
 
-QFlowFinalNode::QFlowFinalNode(QObject *parent) :
-    QFinalNode(*new QFlowFinalNodePrivate, parent)
+QFlowFinalNode::QFlowFinalNode(QUmlObject *parent, QUmlObject *wrapper) :
+    QFinalNode(*new QFlowFinalNodePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QFlowFinalNode *>("QFlowFinalNode *");
-    qRegisterMetaType<const QSet<QFlowFinalNode *> *>("const QSet<QFlowFinalNode *> *");
-    qRegisterMetaType<const QList<QFlowFinalNode *> *>("const QList<QFlowFinalNode *> *");
 }
 
-QFlowFinalNode::QFlowFinalNode(QFlowFinalNodePrivate &dd, QObject *parent) :
-    QFinalNode(dd, parent)
+QFlowFinalNode::QFlowFinalNode(QFlowFinalNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QFinalNode(dd, parent, wrapper)
 {
-    qRegisterMetaType<QFlowFinalNode *>("QFlowFinalNode *");
-    qRegisterMetaType<const QSet<QFlowFinalNode *> *>("const QSet<QFlowFinalNode *> *");
-    qRegisterMetaType<const QList<QFlowFinalNode *> *>("const QList<QFlowFinalNode *> *");
 }
 
 QFlowFinalNode::~QFlowFinalNode()

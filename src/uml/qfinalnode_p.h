@@ -41,8 +41,6 @@
 #ifndef QTUML_QFINALNODE_P_H
 #define QTUML_QFINALNODE_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qcontrolnode_p.h"
 

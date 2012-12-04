@@ -41,8 +41,6 @@
 #ifndef QTUML_QLITERALNULL_P_H
 #define QTUML_QLITERALNULL_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qliteralspecification_p.h"
 

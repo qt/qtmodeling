@@ -69,7 +69,7 @@ class Q_UML_EXPORT QDestroyObjectAction : public QAction
     Q_DECLARE_PRIVATE(QDestroyObjectAction)
 
 public:
-    Q_INVOKABLE explicit QDestroyObjectAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QDestroyObjectAction(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QDestroyObjectAction();
 
     // Attributes from QDestroyObjectAction
@@ -83,7 +83,7 @@ public:
     Q_INVOKABLE void setTarget(QInputPin *target);
 
 protected:
-    explicit QDestroyObjectAction(QDestroyObjectActionPrivate &dd, QObject *parent = 0);
+    explicit QDestroyObjectAction(QDestroyObjectActionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

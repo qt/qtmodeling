@@ -63,20 +63,14 @@ QAbstractionPrivate::~QAbstractionPrivate()
     \brief An abstraction is a relationship that relates two elements or sets of elements that represent the same concept at different levels of abstraction or from different viewpoints.
  */
 
-QAbstraction::QAbstraction(QObject *parent) :
-    QDependency(*new QAbstractionPrivate, parent)
+QAbstraction::QAbstraction(QUmlObject *parent, QUmlObject *wrapper) :
+    QDependency(*new QAbstractionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QAbstraction *>("QAbstraction *");
-    qRegisterMetaType<const QSet<QAbstraction *> *>("const QSet<QAbstraction *> *");
-    qRegisterMetaType<const QList<QAbstraction *> *>("const QList<QAbstraction *> *");
 }
 
-QAbstraction::QAbstraction(QAbstractionPrivate &dd, QObject *parent) :
-    QDependency(dd, parent)
+QAbstraction::QAbstraction(QAbstractionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QDependency(dd, parent, wrapper)
 {
-    qRegisterMetaType<QAbstraction *>("QAbstraction *");
-    qRegisterMetaType<const QSet<QAbstraction *> *>("const QSet<QAbstraction *> *");
-    qRegisterMetaType<const QList<QAbstraction *> *>("const QList<QAbstraction *> *");
 }
 
 QAbstraction::~QAbstraction()
@@ -105,13 +99,13 @@ void QAbstraction::setMapping(QOpaqueExpression *mapping)
     Q_D(QAbstraction);
     if (d->mapping != mapping) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->mapping));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->mapping));
 
         d->mapping = mapping;
 
         // Adjust subsetted property(ies)
         if (mapping) {
-            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(mapping));
+            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(mapping));
         }
     }
 }

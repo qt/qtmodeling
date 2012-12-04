@@ -60,20 +60,14 @@ QMergeNodePrivate::~QMergeNodePrivate()
     \brief A merge node is a control node that brings together multiple alternate flows. It is not used to synchronize concurrent flows but to accept one among several alternate flows.
  */
 
-QMergeNode::QMergeNode(QObject *parent) :
-    QControlNode(*new QMergeNodePrivate, parent)
+QMergeNode::QMergeNode(QUmlObject *parent, QUmlObject *wrapper) :
+    QControlNode(*new QMergeNodePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QMergeNode *>("QMergeNode *");
-    qRegisterMetaType<const QSet<QMergeNode *> *>("const QSet<QMergeNode *> *");
-    qRegisterMetaType<const QList<QMergeNode *> *>("const QList<QMergeNode *> *");
 }
 
-QMergeNode::QMergeNode(QMergeNodePrivate &dd, QObject *parent) :
-    QControlNode(dd, parent)
+QMergeNode::QMergeNode(QMergeNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QControlNode(dd, parent, wrapper)
 {
-    qRegisterMetaType<QMergeNode *>("QMergeNode *");
-    qRegisterMetaType<const QSet<QMergeNode *> *>("const QSet<QMergeNode *> *");
-    qRegisterMetaType<const QList<QMergeNode *> *>("const QList<QMergeNode *> *");
 }
 
 QMergeNode::~QMergeNode()

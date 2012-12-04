@@ -60,20 +60,14 @@ QRealizationPrivate::~QRealizationPrivate()
     \brief Realization is a specialized abstraction relationship between two sets of model elements, one representing a specification (the supplier) and the other represents an implementation of the latter (the client). Realization can be used to model stepwise refinement, optimizations, transformations, templates, model synthesis, framework composition, etc.
  */
 
-QRealization::QRealization(QObject *parent) :
-    QAbstraction(*new QRealizationPrivate, parent)
+QRealization::QRealization(QUmlObject *parent, QUmlObject *wrapper) :
+    QAbstraction(*new QRealizationPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QRealization *>("QRealization *");
-    qRegisterMetaType<const QSet<QRealization *> *>("const QSet<QRealization *> *");
-    qRegisterMetaType<const QList<QRealization *> *>("const QList<QRealization *> *");
 }
 
-QRealization::QRealization(QRealizationPrivate &dd, QObject *parent) :
-    QAbstraction(dd, parent)
+QRealization::QRealization(QRealizationPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QAbstraction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QRealization *>("QRealization *");
-    qRegisterMetaType<const QSet<QRealization *> *>("const QSet<QRealization *> *");
-    qRegisterMetaType<const QList<QRealization *> *>("const QList<QRealization *> *");
 }
 
 QRealization::~QRealization()

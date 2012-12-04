@@ -64,20 +64,14 @@ QTimeEventPrivate::~QTimeEventPrivate()
     \brief A time event can be defined relative to entering the current state of the executing state machine.A time event specifies a point in time. At the specified time, the event occurs.
  */
 
-QTimeEvent::QTimeEvent(QObject *parent) :
-    QEvent(*new QTimeEventPrivate, parent)
+QTimeEvent::QTimeEvent(QUmlObject *parent, QUmlObject *wrapper) :
+    QEvent(*new QTimeEventPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QTimeEvent *>("QTimeEvent *");
-    qRegisterMetaType<const QSet<QTimeEvent *> *>("const QSet<QTimeEvent *> *");
-    qRegisterMetaType<const QList<QTimeEvent *> *>("const QList<QTimeEvent *> *");
 }
 
-QTimeEvent::QTimeEvent(QTimeEventPrivate &dd, QObject *parent) :
-    QEvent(dd, parent)
+QTimeEvent::QTimeEvent(QTimeEventPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QEvent(dd, parent, wrapper)
 {
-    qRegisterMetaType<QTimeEvent *>("QTimeEvent *");
-    qRegisterMetaType<const QSet<QTimeEvent *> *>("const QSet<QTimeEvent *> *");
-    qRegisterMetaType<const QList<QTimeEvent *> *>("const QList<QTimeEvent *> *");
 }
 
 QTimeEvent::~QTimeEvent()
@@ -131,13 +125,13 @@ void QTimeEvent::setWhen(QTimeExpression *when)
     Q_D(QTimeEvent);
     if (d->when != when) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->when));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->when));
 
         d->when = when;
 
         // Adjust subsetted property(ies)
         if (when) {
-            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(when));
+            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(when));
         }
     }
 }

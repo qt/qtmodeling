@@ -62,20 +62,14 @@ QEncapsulatedClassifierPrivate::~QEncapsulatedClassifierPrivate()
     \brief A classifier has the ability to own ports as specific and type checked interaction points.
  */
 
-QEncapsulatedClassifier::QEncapsulatedClassifier(QObject *parent) :
-    QStructuredClassifier(*new QEncapsulatedClassifierPrivate, parent)
+QEncapsulatedClassifier::QEncapsulatedClassifier(QUmlObject *parent, QUmlObject *wrapper) :
+    QStructuredClassifier(*new QEncapsulatedClassifierPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QEncapsulatedClassifier *>("QEncapsulatedClassifier *");
-    qRegisterMetaType<const QSet<QEncapsulatedClassifier *> *>("const QSet<QEncapsulatedClassifier *> *");
-    qRegisterMetaType<const QList<QEncapsulatedClassifier *> *>("const QList<QEncapsulatedClassifier *> *");
 }
 
-QEncapsulatedClassifier::QEncapsulatedClassifier(QEncapsulatedClassifierPrivate &dd, QObject *parent) :
-    QStructuredClassifier(dd, parent)
+QEncapsulatedClassifier::QEncapsulatedClassifier(QEncapsulatedClassifierPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QStructuredClassifier(dd, parent, wrapper)
 {
-    qRegisterMetaType<QEncapsulatedClassifier *>("QEncapsulatedClassifier *");
-    qRegisterMetaType<const QSet<QEncapsulatedClassifier *> *>("const QSet<QEncapsulatedClassifier *> *");
-    qRegisterMetaType<const QList<QEncapsulatedClassifier *> *>("const QList<QEncapsulatedClassifier *> *");
 }
 
 QEncapsulatedClassifier::~QEncapsulatedClassifier()

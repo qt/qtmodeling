@@ -73,7 +73,7 @@ class Q_UML_EXPORT QOccurrenceSpecification : public QInteractionFragment
     Q_DECLARE_PRIVATE(QOccurrenceSpecification)
 
 public:
-    Q_INVOKABLE explicit QOccurrenceSpecification(QObject *parent = 0);
+    Q_INVOKABLE explicit QOccurrenceSpecification(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QOccurrenceSpecification();
 
     // Association ends from QOccurrenceSpecification
@@ -87,7 +87,7 @@ public:
     Q_INVOKABLE void removeToBefore(QGeneralOrdering *toBefore);
 
 protected:
-    explicit QOccurrenceSpecification(QOccurrenceSpecificationPrivate &dd, QObject *parent = 0);
+    explicit QOccurrenceSpecification(QOccurrenceSpecificationPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

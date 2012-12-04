@@ -64,24 +64,18 @@ QCollaborationPrivate::~QCollaborationPrivate()
     \brief A collaboration use represents the application of the pattern described by a collaboration to a specific situation involving specific classes or instances playing the roles of the collaboration.
  */
 
-QCollaboration::QCollaboration(QObject *parent) :
-    QObject(*new QCollaborationPrivate, parent),
-    _wrappedStructuredClassifier(new QStructuredClassifier(this)),
-    _wrappedBehavioredClassifier(new QBehavioredClassifier(this))
+QCollaboration::QCollaboration(QUmlObject *parent, QUmlObject *wrapper) :
+    QUmlObject(*new QCollaborationPrivate, parent, wrapper),
+    _wrappedStructuredClassifier(new QStructuredClassifier(this, this)),
+    _wrappedBehavioredClassifier(new QBehavioredClassifier(this, this))
 {
-    qRegisterMetaType<QCollaboration *>("QCollaboration *");
-    qRegisterMetaType<const QSet<QCollaboration *> *>("const QSet<QCollaboration *> *");
-    qRegisterMetaType<const QList<QCollaboration *> *>("const QList<QCollaboration *> *");
 }
 
-QCollaboration::QCollaboration(QCollaborationPrivate &dd, QObject *parent) :
-    QObject(dd, parent),
-    _wrappedStructuredClassifier(new QStructuredClassifier(this)),
-    _wrappedBehavioredClassifier(new QBehavioredClassifier(this))
+QCollaboration::QCollaboration(QCollaborationPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QUmlObject(dd, parent, wrapper),
+    _wrappedStructuredClassifier(new QStructuredClassifier(this, this)),
+    _wrappedBehavioredClassifier(new QBehavioredClassifier(this, this))
 {
-    qRegisterMetaType<QCollaboration *>("QCollaboration *");
-    qRegisterMetaType<const QSet<QCollaboration *> *>("const QSet<QCollaboration *> *");
-    qRegisterMetaType<const QList<QCollaboration *> *>("const QList<QCollaboration *> *");
 }
 
 QCollaboration::~QCollaboration()
@@ -97,7 +91,7 @@ QCollaboration::~QCollaboration()
  */
 const QSet<QElement *> *QCollaboration::ownedElements() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+    return (qumlobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -105,7 +99,7 @@ const QSet<QElement *> *QCollaboration::ownedElements() const
  */
 QElement *QCollaboration::owner() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->owner();
+    return (qumlobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -113,17 +107,17 @@ QElement *QCollaboration::owner() const
  */
 const QSet<QComment *> *QCollaboration::ownedComments() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+    return (qumlobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QCollaboration::addOwnedComment(QComment *ownedComment)
 {
-    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qumlobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QCollaboration::removeOwnedComment(QComment *ownedComment)
 {
-    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qumlobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -135,12 +129,12 @@ void QCollaboration::removeOwnedComment(QComment *ownedComment)
  */
 QString QCollaboration::name() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+    return (qumlobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QCollaboration::setName(QString name)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+    (qumlobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -148,7 +142,7 @@ void QCollaboration::setName(QString name)
  */
 QString QCollaboration::qualifiedName() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qumlobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -160,12 +154,12 @@ QString QCollaboration::qualifiedName() const
  */
 QStringExpression *QCollaboration::nameExpression() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+    return (qumlobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QCollaboration::setNameExpression(QStringExpression *nameExpression)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qumlobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -173,7 +167,7 @@ void QCollaboration::setNameExpression(QStringExpression *nameExpression)
  */
 QNamespace *QCollaboration::namespace_() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+    return (qumlobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -181,17 +175,17 @@ QNamespace *QCollaboration::namespace_() const
  */
 const QSet<QDependency *> *QCollaboration::clientDependencies() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qumlobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QCollaboration::addClientDependency(QDependency *clientDependency)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qumlobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QCollaboration::removeClientDependency(QDependency *clientDependency)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qumlobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -203,17 +197,17 @@ void QCollaboration::removeClientDependency(QDependency *clientDependency)
  */
 const QSet<QPackageImport *> *QCollaboration::packageImports() const
 {
-    return (qtuml_object_cast<const QNamespace *>(this))->packageImports();
+    return (qumlobject_cast<const QNamespace *>(this))->packageImports();
 }
 
 void QCollaboration::addPackageImport(QPackageImport *packageImport)
 {
-    (qtuml_object_cast<QNamespace *>(this))->addPackageImport(packageImport);
+    (qumlobject_cast<QNamespace *>(this))->addPackageImport(packageImport);
 }
 
 void QCollaboration::removePackageImport(QPackageImport *packageImport)
 {
-    (qtuml_object_cast<QNamespace *>(this))->removePackageImport(packageImport);
+    (qumlobject_cast<QNamespace *>(this))->removePackageImport(packageImport);
 }
 
 /*!
@@ -221,7 +215,7 @@ void QCollaboration::removePackageImport(QPackageImport *packageImport)
  */
 const QSet<QNamedElement *> *QCollaboration::members() const
 {
-    return (qtuml_object_cast<const QNamespace *>(this))->members();
+    return (qumlobject_cast<const QNamespace *>(this))->members();
 }
 
 /*!
@@ -229,7 +223,7 @@ const QSet<QNamedElement *> *QCollaboration::members() const
  */
 const QSet<QPackageableElement *> *QCollaboration::importedMembers() const
 {
-    return (qtuml_object_cast<const QNamespace *>(this))->importedMembers();
+    return (qumlobject_cast<const QNamespace *>(this))->importedMembers();
 }
 
 /*!
@@ -237,17 +231,17 @@ const QSet<QPackageableElement *> *QCollaboration::importedMembers() const
  */
 const QSet<QElementImport *> *QCollaboration::elementImports() const
 {
-    return (qtuml_object_cast<const QNamespace *>(this))->elementImports();
+    return (qumlobject_cast<const QNamespace *>(this))->elementImports();
 }
 
 void QCollaboration::addElementImport(QElementImport *elementImport)
 {
-    (qtuml_object_cast<QNamespace *>(this))->addElementImport(elementImport);
+    (qumlobject_cast<QNamespace *>(this))->addElementImport(elementImport);
 }
 
 void QCollaboration::removeElementImport(QElementImport *elementImport)
 {
-    (qtuml_object_cast<QNamespace *>(this))->removeElementImport(elementImport);
+    (qumlobject_cast<QNamespace *>(this))->removeElementImport(elementImport);
 }
 
 /*!
@@ -255,17 +249,17 @@ void QCollaboration::removeElementImport(QElementImport *elementImport)
  */
 const QSet<QConstraint *> *QCollaboration::ownedRules() const
 {
-    return (qtuml_object_cast<const QNamespace *>(this))->ownedRules();
+    return (qumlobject_cast<const QNamespace *>(this))->ownedRules();
 }
 
 void QCollaboration::addOwnedRule(QConstraint *ownedRule)
 {
-    (qtuml_object_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
+    (qumlobject_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
 }
 
 void QCollaboration::removeOwnedRule(QConstraint *ownedRule)
 {
-    (qtuml_object_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
+    (qumlobject_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
 }
 
 /*!
@@ -273,7 +267,7 @@ void QCollaboration::removeOwnedRule(QConstraint *ownedRule)
  */
 const QSet<QNamedElement *> *QCollaboration::ownedMembers() const
 {
-    return (qtuml_object_cast<const QNamespace *>(this))->ownedMembers();
+    return (qumlobject_cast<const QNamespace *>(this))->ownedMembers();
 }
 
 // ---------------------------------------------------------------
@@ -285,12 +279,12 @@ const QSet<QNamedElement *> *QCollaboration::ownedMembers() const
  */
 QTemplateParameter *QCollaboration::owningTemplateParameter() const
 {
-    return (qtuml_object_cast<const QParameterableElement *>(this))->owningTemplateParameter();
+    return (qumlobject_cast<const QParameterableElement *>(this))->owningTemplateParameter();
 }
 
 void QCollaboration::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
 {
-    (qtuml_object_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
+    (qumlobject_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
 }
 
 // ---------------------------------------------------------------
@@ -302,12 +296,12 @@ void QCollaboration::setOwningTemplateParameter(QTemplateParameter *owningTempla
  */
 QtUml::VisibilityKind QCollaboration::visibility() const
 {
-    return (qtuml_object_cast<const QPackageableElement *>(this))->visibility();
+    return (qumlobject_cast<const QPackageableElement *>(this))->visibility();
 }
 
 void QCollaboration::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qtuml_object_cast<QPackageableElement *>(this))->setVisibility(visibility);
+    (qumlobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
 }
 
 // ---------------------------------------------------------------
@@ -319,12 +313,12 @@ void QCollaboration::setVisibility(QtUml::VisibilityKind visibility)
  */
 QPackage *QCollaboration::package() const
 {
-    return (qtuml_object_cast<const QType *>(this))->package();
+    return (qumlobject_cast<const QType *>(this))->package();
 }
 
 void QCollaboration::setPackage(QPackage *package)
 {
-    (qtuml_object_cast<QType *>(this))->setPackage(package);
+    (qumlobject_cast<QType *>(this))->setPackage(package);
 }
 
 // ---------------------------------------------------------------
@@ -336,12 +330,12 @@ void QCollaboration::setPackage(QPackage *package)
  */
 bool QCollaboration::isLeaf() const
 {
-    return (qtuml_object_cast<const QRedefinableElement *>(this))->isLeaf();
+    return (qumlobject_cast<const QRedefinableElement *>(this))->isLeaf();
 }
 
 void QCollaboration::setLeaf(bool isLeaf)
 {
-    (qtuml_object_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+    (qumlobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
 }
 
 // ---------------------------------------------------------------
@@ -353,7 +347,7 @@ void QCollaboration::setLeaf(bool isLeaf)
  */
 const QSet<QRedefinableElement *> *QCollaboration::redefinedElements() const
 {
-    return (qtuml_object_cast<const QRedefinableElement *>(this))->redefinedElements();
+    return (qumlobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
 
 /*!
@@ -361,7 +355,7 @@ const QSet<QRedefinableElement *> *QCollaboration::redefinedElements() const
  */
 const QSet<QClassifier *> *QCollaboration::redefinitionContexts() const
 {
-    return (qtuml_object_cast<const QRedefinableElement *>(this))->redefinitionContexts();
+    return (qumlobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
 }
 
 // ---------------------------------------------------------------
@@ -373,17 +367,17 @@ const QSet<QClassifier *> *QCollaboration::redefinitionContexts() const
  */
 const QSet<QTemplateBinding *> *QCollaboration::templateBindings() const
 {
-    return (qtuml_object_cast<const QTemplateableElement *>(this))->templateBindings();
+    return (qumlobject_cast<const QTemplateableElement *>(this))->templateBindings();
 }
 
 void QCollaboration::addTemplateBinding(QTemplateBinding *templateBinding)
 {
-    (qtuml_object_cast<QTemplateableElement *>(this))->addTemplateBinding(templateBinding);
+    (qumlobject_cast<QTemplateableElement *>(this))->addTemplateBinding(templateBinding);
 }
 
 void QCollaboration::removeTemplateBinding(QTemplateBinding *templateBinding)
 {
-    (qtuml_object_cast<QTemplateableElement *>(this))->removeTemplateBinding(templateBinding);
+    (qumlobject_cast<QTemplateableElement *>(this))->removeTemplateBinding(templateBinding);
 }
 
 // ---------------------------------------------------------------
@@ -395,12 +389,12 @@ void QCollaboration::removeTemplateBinding(QTemplateBinding *templateBinding)
  */
 bool QCollaboration::isAbstract() const
 {
-    return (qtuml_object_cast<const QClassifier *>(this))->isAbstract();
+    return (qumlobject_cast<const QClassifier *>(this))->isAbstract();
 }
 
 void QCollaboration::setAbstract(bool isAbstract)
 {
-    (qtuml_object_cast<QClassifier *>(this))->setAbstract(isAbstract);
+    (qumlobject_cast<QClassifier *>(this))->setAbstract(isAbstract);
 }
 
 /*!
@@ -408,12 +402,12 @@ void QCollaboration::setAbstract(bool isAbstract)
  */
 bool QCollaboration::isFinalSpecialization() const
 {
-    return (qtuml_object_cast<const QClassifier *>(this))->isFinalSpecialization();
+    return (qumlobject_cast<const QClassifier *>(this))->isFinalSpecialization();
 }
 
 void QCollaboration::setFinalSpecialization(bool isFinalSpecialization)
 {
-    (qtuml_object_cast<QClassifier *>(this))->setFinalSpecialization(isFinalSpecialization);
+    (qumlobject_cast<QClassifier *>(this))->setFinalSpecialization(isFinalSpecialization);
 }
 
 // ---------------------------------------------------------------
@@ -425,17 +419,17 @@ void QCollaboration::setFinalSpecialization(bool isFinalSpecialization)
  */
 const QSet<QUseCase *> *QCollaboration::ownedUseCases() const
 {
-    return (qtuml_object_cast<const QClassifier *>(this))->ownedUseCases();
+    return (qumlobject_cast<const QClassifier *>(this))->ownedUseCases();
 }
 
 void QCollaboration::addOwnedUseCase(QUseCase *ownedUseCase)
 {
-    (qtuml_object_cast<QClassifier *>(this))->addOwnedUseCase(ownedUseCase);
+    (qumlobject_cast<QClassifier *>(this))->addOwnedUseCase(ownedUseCase);
 }
 
 void QCollaboration::removeOwnedUseCase(QUseCase *ownedUseCase)
 {
-    (qtuml_object_cast<QClassifier *>(this))->removeOwnedUseCase(ownedUseCase);
+    (qumlobject_cast<QClassifier *>(this))->removeOwnedUseCase(ownedUseCase);
 }
 
 /*!
@@ -443,17 +437,17 @@ void QCollaboration::removeOwnedUseCase(QUseCase *ownedUseCase)
  */
 const QSet<QGeneralizationSet *> *QCollaboration::powertypeExtents() const
 {
-    return (qtuml_object_cast<const QClassifier *>(this))->powertypeExtents();
+    return (qumlobject_cast<const QClassifier *>(this))->powertypeExtents();
 }
 
 void QCollaboration::addPowertypeExtent(QGeneralizationSet *powertypeExtent)
 {
-    (qtuml_object_cast<QClassifier *>(this))->addPowertypeExtent(powertypeExtent);
+    (qumlobject_cast<QClassifier *>(this))->addPowertypeExtent(powertypeExtent);
 }
 
 void QCollaboration::removePowertypeExtent(QGeneralizationSet *powertypeExtent)
 {
-    (qtuml_object_cast<QClassifier *>(this))->removePowertypeExtent(powertypeExtent);
+    (qumlobject_cast<QClassifier *>(this))->removePowertypeExtent(powertypeExtent);
 }
 
 /*!
@@ -461,17 +455,17 @@ void QCollaboration::removePowertypeExtent(QGeneralizationSet *powertypeExtent)
  */
 const QSet<QUseCase *> *QCollaboration::useCases() const
 {
-    return (qtuml_object_cast<const QClassifier *>(this))->useCases();
+    return (qumlobject_cast<const QClassifier *>(this))->useCases();
 }
 
 void QCollaboration::addUseCase(QUseCase *useCase)
 {
-    (qtuml_object_cast<QClassifier *>(this))->addUseCase(useCase);
+    (qumlobject_cast<QClassifier *>(this))->addUseCase(useCase);
 }
 
 void QCollaboration::removeUseCase(QUseCase *useCase)
 {
-    (qtuml_object_cast<QClassifier *>(this))->removeUseCase(useCase);
+    (qumlobject_cast<QClassifier *>(this))->removeUseCase(useCase);
 }
 
 /*!
@@ -479,12 +473,12 @@ void QCollaboration::removeUseCase(QUseCase *useCase)
  */
 QClassifierTemplateParameter *QCollaboration::templateParameter() const
 {
-    return (qtuml_object_cast<const QClassifier *>(this))->templateParameter();
+    return (qumlobject_cast<const QClassifier *>(this))->templateParameter();
 }
 
 void QCollaboration::setTemplateParameter(QClassifierTemplateParameter *templateParameter)
 {
-    (qtuml_object_cast<QClassifier *>(this))->setTemplateParameter(templateParameter);
+    (qumlobject_cast<QClassifier *>(this))->setTemplateParameter(templateParameter);
 }
 
 /*!
@@ -492,17 +486,17 @@ void QCollaboration::setTemplateParameter(QClassifierTemplateParameter *template
  */
 const QSet<QClassifier *> *QCollaboration::redefinedClassifiers() const
 {
-    return (qtuml_object_cast<const QClassifier *>(this))->redefinedClassifiers();
+    return (qumlobject_cast<const QClassifier *>(this))->redefinedClassifiers();
 }
 
 void QCollaboration::addRedefinedClassifier(QClassifier *redefinedClassifier)
 {
-    (qtuml_object_cast<QClassifier *>(this))->addRedefinedClassifier(redefinedClassifier);
+    (qumlobject_cast<QClassifier *>(this))->addRedefinedClassifier(redefinedClassifier);
 }
 
 void QCollaboration::removeRedefinedClassifier(QClassifier *redefinedClassifier)
 {
-    (qtuml_object_cast<QClassifier *>(this))->removeRedefinedClassifier(redefinedClassifier);
+    (qumlobject_cast<QClassifier *>(this))->removeRedefinedClassifier(redefinedClassifier);
 }
 
 /*!
@@ -510,12 +504,12 @@ void QCollaboration::removeRedefinedClassifier(QClassifier *redefinedClassifier)
  */
 QRedefinableTemplateSignature *QCollaboration::ownedTemplateSignature() const
 {
-    return (qtuml_object_cast<const QClassifier *>(this))->ownedTemplateSignature();
+    return (qumlobject_cast<const QClassifier *>(this))->ownedTemplateSignature();
 }
 
 void QCollaboration::setOwnedTemplateSignature(QRedefinableTemplateSignature *ownedTemplateSignature)
 {
-    (qtuml_object_cast<QClassifier *>(this))->setOwnedTemplateSignature(ownedTemplateSignature);
+    (qumlobject_cast<QClassifier *>(this))->setOwnedTemplateSignature(ownedTemplateSignature);
 }
 
 /*!
@@ -523,17 +517,17 @@ void QCollaboration::setOwnedTemplateSignature(QRedefinableTemplateSignature *ow
  */
 const QSet<QCollaborationUse *> *QCollaboration::collaborationUses() const
 {
-    return (qtuml_object_cast<const QClassifier *>(this))->collaborationUses();
+    return (qumlobject_cast<const QClassifier *>(this))->collaborationUses();
 }
 
 void QCollaboration::addCollaborationUse(QCollaborationUse *collaborationUse)
 {
-    (qtuml_object_cast<QClassifier *>(this))->addCollaborationUse(collaborationUse);
+    (qumlobject_cast<QClassifier *>(this))->addCollaborationUse(collaborationUse);
 }
 
 void QCollaboration::removeCollaborationUse(QCollaborationUse *collaborationUse)
 {
-    (qtuml_object_cast<QClassifier *>(this))->removeCollaborationUse(collaborationUse);
+    (qumlobject_cast<QClassifier *>(this))->removeCollaborationUse(collaborationUse);
 }
 
 /*!
@@ -541,7 +535,7 @@ void QCollaboration::removeCollaborationUse(QCollaborationUse *collaborationUse)
  */
 const QSet<QProperty *> *QCollaboration::attributes() const
 {
-    return (qtuml_object_cast<const QClassifier *>(this))->attributes();
+    return (qumlobject_cast<const QClassifier *>(this))->attributes();
 }
 
 /*!
@@ -549,7 +543,7 @@ const QSet<QProperty *> *QCollaboration::attributes() const
  */
 const QSet<QFeature *> *QCollaboration::features() const
 {
-    return (qtuml_object_cast<const QClassifier *>(this))->features();
+    return (qumlobject_cast<const QClassifier *>(this))->features();
 }
 
 /*!
@@ -557,17 +551,17 @@ const QSet<QFeature *> *QCollaboration::features() const
  */
 const QSet<QClassifier *> *QCollaboration::generals() const
 {
-    return (qtuml_object_cast<const QClassifier *>(this))->generals();
+    return (qumlobject_cast<const QClassifier *>(this))->generals();
 }
 
 void QCollaboration::addGeneral(QClassifier *general)
 {
-    (qtuml_object_cast<QClassifier *>(this))->addGeneral(general);
+    (qumlobject_cast<QClassifier *>(this))->addGeneral(general);
 }
 
 void QCollaboration::removeGeneral(QClassifier *general)
 {
-    (qtuml_object_cast<QClassifier *>(this))->removeGeneral(general);
+    (qumlobject_cast<QClassifier *>(this))->removeGeneral(general);
 }
 
 /*!
@@ -575,12 +569,12 @@ void QCollaboration::removeGeneral(QClassifier *general)
  */
 QCollaborationUse *QCollaboration::representation() const
 {
-    return (qtuml_object_cast<const QClassifier *>(this))->representation();
+    return (qumlobject_cast<const QClassifier *>(this))->representation();
 }
 
 void QCollaboration::setRepresentation(QCollaborationUse *representation)
 {
-    (qtuml_object_cast<QClassifier *>(this))->setRepresentation(representation);
+    (qumlobject_cast<QClassifier *>(this))->setRepresentation(representation);
 }
 
 /*!
@@ -588,17 +582,17 @@ void QCollaboration::setRepresentation(QCollaborationUse *representation)
  */
 const QSet<QGeneralization *> *QCollaboration::generalizations() const
 {
-    return (qtuml_object_cast<const QClassifier *>(this))->generalizations();
+    return (qumlobject_cast<const QClassifier *>(this))->generalizations();
 }
 
 void QCollaboration::addGeneralization(QGeneralization *generalization)
 {
-    (qtuml_object_cast<QClassifier *>(this))->addGeneralization(generalization);
+    (qumlobject_cast<QClassifier *>(this))->addGeneralization(generalization);
 }
 
 void QCollaboration::removeGeneralization(QGeneralization *generalization)
 {
-    (qtuml_object_cast<QClassifier *>(this))->removeGeneralization(generalization);
+    (qumlobject_cast<QClassifier *>(this))->removeGeneralization(generalization);
 }
 
 /*!
@@ -606,7 +600,7 @@ void QCollaboration::removeGeneralization(QGeneralization *generalization)
  */
 const QSet<QNamedElement *> *QCollaboration::inheritedMembers() const
 {
-    return (qtuml_object_cast<const QClassifier *>(this))->inheritedMembers();
+    return (qumlobject_cast<const QClassifier *>(this))->inheritedMembers();
 }
 
 /*!
@@ -614,17 +608,17 @@ const QSet<QNamedElement *> *QCollaboration::inheritedMembers() const
  */
 const QSet<QSubstitution *> *QCollaboration::substitutions() const
 {
-    return (qtuml_object_cast<const QClassifier *>(this))->substitutions();
+    return (qumlobject_cast<const QClassifier *>(this))->substitutions();
 }
 
 void QCollaboration::addSubstitution(QSubstitution *substitution)
 {
-    (qtuml_object_cast<QClassifier *>(this))->addSubstitution(substitution);
+    (qumlobject_cast<QClassifier *>(this))->addSubstitution(substitution);
 }
 
 void QCollaboration::removeSubstitution(QSubstitution *substitution)
 {
-    (qtuml_object_cast<QClassifier *>(this))->removeSubstitution(substitution);
+    (qumlobject_cast<QClassifier *>(this))->removeSubstitution(substitution);
 }
 
 // ---------------------------------------------------------------
@@ -636,7 +630,7 @@ void QCollaboration::removeSubstitution(QSubstitution *substitution)
  */
 const QSet<QConnectableElement *> *QCollaboration::roles() const
 {
-    return (qtuml_object_cast<const QStructuredClassifier *>(this))->roles();
+    return (qumlobject_cast<const QStructuredClassifier *>(this))->roles();
 }
 
 /*!
@@ -644,17 +638,17 @@ const QSet<QConnectableElement *> *QCollaboration::roles() const
  */
 const QList<QProperty *> *QCollaboration::ownedAttributes() const
 {
-    return (qtuml_object_cast<const QStructuredClassifier *>(this))->ownedAttributes();
+    return (qumlobject_cast<const QStructuredClassifier *>(this))->ownedAttributes();
 }
 
 void QCollaboration::addOwnedAttribute(QProperty *ownedAttribute)
 {
-    (qtuml_object_cast<QStructuredClassifier *>(this))->addOwnedAttribute(ownedAttribute);
+    (qumlobject_cast<QStructuredClassifier *>(this))->addOwnedAttribute(ownedAttribute);
 }
 
 void QCollaboration::removeOwnedAttribute(QProperty *ownedAttribute)
 {
-    (qtuml_object_cast<QStructuredClassifier *>(this))->removeOwnedAttribute(ownedAttribute);
+    (qumlobject_cast<QStructuredClassifier *>(this))->removeOwnedAttribute(ownedAttribute);
 }
 
 /*!
@@ -662,7 +656,7 @@ void QCollaboration::removeOwnedAttribute(QProperty *ownedAttribute)
  */
 const QSet<QProperty *> *QCollaboration::parts() const
 {
-    return (qtuml_object_cast<const QStructuredClassifier *>(this))->parts();
+    return (qumlobject_cast<const QStructuredClassifier *>(this))->parts();
 }
 
 /*!
@@ -670,17 +664,17 @@ const QSet<QProperty *> *QCollaboration::parts() const
  */
 const QSet<QConnector *> *QCollaboration::ownedConnectors() const
 {
-    return (qtuml_object_cast<const QStructuredClassifier *>(this))->ownedConnectors();
+    return (qumlobject_cast<const QStructuredClassifier *>(this))->ownedConnectors();
 }
 
 void QCollaboration::addOwnedConnector(QConnector *ownedConnector)
 {
-    (qtuml_object_cast<QStructuredClassifier *>(this))->addOwnedConnector(ownedConnector);
+    (qumlobject_cast<QStructuredClassifier *>(this))->addOwnedConnector(ownedConnector);
 }
 
 void QCollaboration::removeOwnedConnector(QConnector *ownedConnector)
 {
-    (qtuml_object_cast<QStructuredClassifier *>(this))->removeOwnedConnector(ownedConnector);
+    (qumlobject_cast<QStructuredClassifier *>(this))->removeOwnedConnector(ownedConnector);
 }
 
 // ---------------------------------------------------------------
@@ -692,17 +686,17 @@ void QCollaboration::removeOwnedConnector(QConnector *ownedConnector)
  */
 const QSet<QBehavior *> *QCollaboration::ownedBehaviors() const
 {
-    return (qtuml_object_cast<const QBehavioredClassifier *>(this))->ownedBehaviors();
+    return (qumlobject_cast<const QBehavioredClassifier *>(this))->ownedBehaviors();
 }
 
 void QCollaboration::addOwnedBehavior(QBehavior *ownedBehavior)
 {
-    (qtuml_object_cast<QBehavioredClassifier *>(this))->addOwnedBehavior(ownedBehavior);
+    (qumlobject_cast<QBehavioredClassifier *>(this))->addOwnedBehavior(ownedBehavior);
 }
 
 void QCollaboration::removeOwnedBehavior(QBehavior *ownedBehavior)
 {
-    (qtuml_object_cast<QBehavioredClassifier *>(this))->removeOwnedBehavior(ownedBehavior);
+    (qumlobject_cast<QBehavioredClassifier *>(this))->removeOwnedBehavior(ownedBehavior);
 }
 
 /*!
@@ -710,17 +704,17 @@ void QCollaboration::removeOwnedBehavior(QBehavior *ownedBehavior)
  */
 const QSet<QInterfaceRealization *> *QCollaboration::interfaceRealizations() const
 {
-    return (qtuml_object_cast<const QBehavioredClassifier *>(this))->interfaceRealizations();
+    return (qumlobject_cast<const QBehavioredClassifier *>(this))->interfaceRealizations();
 }
 
 void QCollaboration::addInterfaceRealization(QInterfaceRealization *interfaceRealization)
 {
-    (qtuml_object_cast<QBehavioredClassifier *>(this))->addInterfaceRealization(interfaceRealization);
+    (qumlobject_cast<QBehavioredClassifier *>(this))->addInterfaceRealization(interfaceRealization);
 }
 
 void QCollaboration::removeInterfaceRealization(QInterfaceRealization *interfaceRealization)
 {
-    (qtuml_object_cast<QBehavioredClassifier *>(this))->removeInterfaceRealization(interfaceRealization);
+    (qumlobject_cast<QBehavioredClassifier *>(this))->removeInterfaceRealization(interfaceRealization);
 }
 
 /*!
@@ -728,12 +722,12 @@ void QCollaboration::removeInterfaceRealization(QInterfaceRealization *interface
  */
 QBehavior *QCollaboration::classifierBehavior() const
 {
-    return (qtuml_object_cast<const QBehavioredClassifier *>(this))->classifierBehavior();
+    return (qumlobject_cast<const QBehavioredClassifier *>(this))->classifierBehavior();
 }
 
 void QCollaboration::setClassifierBehavior(QBehavior *classifierBehavior)
 {
-    (qtuml_object_cast<QBehavioredClassifier *>(this))->setClassifierBehavior(classifierBehavior);
+    (qumlobject_cast<QBehavioredClassifier *>(this))->setClassifierBehavior(classifierBehavior);
 }
 
 // ---------------------------------------------------------------
@@ -760,7 +754,7 @@ void QCollaboration::addCollaborationRole(QConnectableElement *collaborationRole
         d->collaborationRoles->insert(collaborationRole);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QStructuredClassifierPrivate *>(d))->addRole(qtuml_object_cast<QConnectableElement *>(collaborationRole));
+        (qumlobject_cast<QStructuredClassifierPrivate *>(d))->addRole(qumlobject_cast<QConnectableElement *>(collaborationRole));
     }
 }
 
@@ -773,7 +767,7 @@ void QCollaboration::removeCollaborationRole(QConnectableElement *collaborationR
         d->collaborationRoles->remove(collaborationRole);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QStructuredClassifierPrivate *>(d))->removeRole(qtuml_object_cast<QConnectableElement *>(collaborationRole));
+        (qumlobject_cast<QStructuredClassifierPrivate *>(d))->removeRole(qumlobject_cast<QConnectableElement *>(collaborationRole));
     }
 }
 

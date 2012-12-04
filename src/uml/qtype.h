@@ -67,7 +67,7 @@ class Q_UML_EXPORT QType : public QPackageableElement
     Q_DECLARE_PRIVATE(QType)
 
 public:
-    Q_INVOKABLE explicit QType(QObject *parent = 0);
+    Q_INVOKABLE explicit QType(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QType();
 
     // Association ends from QType
@@ -78,7 +78,7 @@ public:
     Q_INVOKABLE bool conformsTo(const QType *other) const;
 
 protected:
-    explicit QType(QTypePrivate &dd, QObject *parent = 0);
+    explicit QType(QTypePrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

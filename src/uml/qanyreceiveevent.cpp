@@ -60,20 +60,14 @@ QAnyReceiveEventPrivate::~QAnyReceiveEventPrivate()
     \brief A trigger for an AnyReceiveEvent is triggered by the receipt of any message that is not explicitly handled by any related trigger.
  */
 
-QAnyReceiveEvent::QAnyReceiveEvent(QObject *parent) :
-    QMessageEvent(*new QAnyReceiveEventPrivate, parent)
+QAnyReceiveEvent::QAnyReceiveEvent(QUmlObject *parent, QUmlObject *wrapper) :
+    QMessageEvent(*new QAnyReceiveEventPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QAnyReceiveEvent *>("QAnyReceiveEvent *");
-    qRegisterMetaType<const QSet<QAnyReceiveEvent *> *>("const QSet<QAnyReceiveEvent *> *");
-    qRegisterMetaType<const QList<QAnyReceiveEvent *> *>("const QList<QAnyReceiveEvent *> *");
 }
 
-QAnyReceiveEvent::QAnyReceiveEvent(QAnyReceiveEventPrivate &dd, QObject *parent) :
-    QMessageEvent(dd, parent)
+QAnyReceiveEvent::QAnyReceiveEvent(QAnyReceiveEventPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QMessageEvent(dd, parent, wrapper)
 {
-    qRegisterMetaType<QAnyReceiveEvent *>("QAnyReceiveEvent *");
-    qRegisterMetaType<const QSet<QAnyReceiveEvent *> *>("const QSet<QAnyReceiveEvent *> *");
-    qRegisterMetaType<const QList<QAnyReceiveEvent *> *>("const QList<QAnyReceiveEvent *> *");
 }
 
 QAnyReceiveEvent::~QAnyReceiveEvent()

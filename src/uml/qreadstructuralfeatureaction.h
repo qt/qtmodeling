@@ -67,7 +67,7 @@ class Q_UML_EXPORT QReadStructuralFeatureAction : public QStructuralFeatureActio
     Q_DECLARE_PRIVATE(QReadStructuralFeatureAction)
 
 public:
-    Q_INVOKABLE explicit QReadStructuralFeatureAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QReadStructuralFeatureAction(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QReadStructuralFeatureAction();
 
     // Association ends from QReadStructuralFeatureAction
@@ -75,7 +75,7 @@ public:
     Q_INVOKABLE void setResult(QOutputPin *result);
 
 protected:
-    explicit QReadStructuralFeatureAction(QReadStructuralFeatureActionPrivate &dd, QObject *parent = 0);
+    explicit QReadStructuralFeatureAction(QReadStructuralFeatureActionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

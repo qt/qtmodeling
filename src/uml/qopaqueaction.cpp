@@ -71,20 +71,14 @@ QOpaqueActionPrivate::~QOpaqueActionPrivate()
     \brief An action with implementation-specific semantics.
  */
 
-QOpaqueAction::QOpaqueAction(QObject *parent) :
-    QAction(*new QOpaqueActionPrivate, parent)
+QOpaqueAction::QOpaqueAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(*new QOpaqueActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QOpaqueAction *>("QOpaqueAction *");
-    qRegisterMetaType<const QSet<QOpaqueAction *> *>("const QSet<QOpaqueAction *> *");
-    qRegisterMetaType<const QList<QOpaqueAction *> *>("const QList<QOpaqueAction *> *");
 }
 
-QOpaqueAction::QOpaqueAction(QOpaqueActionPrivate &dd, QObject *parent) :
-    QAction(dd, parent)
+QOpaqueAction::QOpaqueAction(QOpaqueActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QOpaqueAction *>("QOpaqueAction *");
-    qRegisterMetaType<const QSet<QOpaqueAction *> *>("const QSet<QOpaqueAction *> *");
-    qRegisterMetaType<const QList<QOpaqueAction *> *>("const QList<QOpaqueAction *> *");
 }
 
 QOpaqueAction::~QOpaqueAction()
@@ -181,7 +175,7 @@ void QOpaqueAction::addInputValue(QInputPin *inputValue)
         d->inputValues->insert(inputValue);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(inputValue));
+        (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(inputValue));
     }
 }
 
@@ -192,9 +186,10 @@ void QOpaqueAction::removeInputValue(QInputPin *inputValue)
     Q_D(QOpaqueAction);
     if (d->inputValues->contains(inputValue)) {
         d->inputValues->remove(inputValue);
+        inputValue->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(inputValue));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(inputValue));
     }
 }
 
@@ -218,7 +213,7 @@ void QOpaqueAction::addOutputValue(QOutputPin *outputValue)
         d->outputValues->insert(outputValue);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(outputValue));
+        (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(outputValue));
     }
 }
 
@@ -229,9 +224,10 @@ void QOpaqueAction::removeOutputValue(QOutputPin *outputValue)
     Q_D(QOpaqueAction);
     if (d->outputValues->contains(outputValue)) {
         d->outputValues->remove(outputValue);
+        outputValue->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(outputValue));
+        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(outputValue));
     }
 }
 

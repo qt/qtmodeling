@@ -70,7 +70,7 @@ void QStructuredClassifierPrivate::addRole(QConnectableElement *role)
         this->roles->insert(role);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(this))->addMember(qtuml_object_cast<QNamedElement *>(role));
+        (qumlobject_cast<QNamespacePrivate *>(this))->addMember(qumlobject_cast<QNamedElement *>(role));
     }
 }
 
@@ -82,7 +82,7 @@ void QStructuredClassifierPrivate::removeRole(QConnectableElement *role)
         this->roles->remove(role);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(this))->removeMember(qtuml_object_cast<QNamedElement *>(role));
+        (qumlobject_cast<QNamespacePrivate *>(this))->removeMember(qumlobject_cast<QNamedElement *>(role));
     }
 }
 
@@ -94,20 +94,14 @@ void QStructuredClassifierPrivate::removeRole(QConnectableElement *role)
     \brief A structured classifier is an abstract metaclass that represents any classifier whose behavior can be fully or partly described by the collaboration of owned or referenced instances.
  */
 
-QStructuredClassifier::QStructuredClassifier(QObject *parent) :
-    QClassifier(*new QStructuredClassifierPrivate, parent)
+QStructuredClassifier::QStructuredClassifier(QUmlObject *parent, QUmlObject *wrapper) :
+    QClassifier(*new QStructuredClassifierPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QStructuredClassifier *>("QStructuredClassifier *");
-    qRegisterMetaType<const QSet<QStructuredClassifier *> *>("const QSet<QStructuredClassifier *> *");
-    qRegisterMetaType<const QList<QStructuredClassifier *> *>("const QList<QStructuredClassifier *> *");
 }
 
-QStructuredClassifier::QStructuredClassifier(QStructuredClassifierPrivate &dd, QObject *parent) :
-    QClassifier(dd, parent)
+QStructuredClassifier::QStructuredClassifier(QStructuredClassifierPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QClassifier(dd, parent, wrapper)
 {
-    qRegisterMetaType<QStructuredClassifier *>("QStructuredClassifier *");
-    qRegisterMetaType<const QSet<QStructuredClassifier *> *>("const QSet<QStructuredClassifier *> *");
-    qRegisterMetaType<const QList<QStructuredClassifier *> *>("const QList<QStructuredClassifier *> *");
 }
 
 QStructuredClassifier::~QStructuredClassifier()
@@ -149,9 +143,9 @@ void QStructuredClassifier::addOwnedAttribute(QProperty *ownedAttribute)
         d->ownedAttributes->append(ownedAttribute);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QClassifierPrivate *>(d))->addAttribute(qtuml_object_cast<QProperty *>(ownedAttribute));
-        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(ownedAttribute));
-        (qtuml_object_cast<QStructuredClassifierPrivate *>(d))->addRole(qtuml_object_cast<QConnectableElement *>(ownedAttribute));
+        (qumlobject_cast<QClassifierPrivate *>(d))->addAttribute(qumlobject_cast<QProperty *>(ownedAttribute));
+        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(ownedAttribute));
+        (qumlobject_cast<QStructuredClassifierPrivate *>(d))->addRole(qumlobject_cast<QConnectableElement *>(ownedAttribute));
     }
 }
 
@@ -162,11 +156,12 @@ void QStructuredClassifier::removeOwnedAttribute(QProperty *ownedAttribute)
     Q_D(QStructuredClassifier);
     if (d->ownedAttributes->contains(ownedAttribute)) {
         d->ownedAttributes->removeAll(ownedAttribute);
+        ownedAttribute->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QClassifierPrivate *>(d))->removeAttribute(qtuml_object_cast<QProperty *>(ownedAttribute));
-        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(ownedAttribute));
-        (qtuml_object_cast<QStructuredClassifierPrivate *>(d))->removeRole(qtuml_object_cast<QConnectableElement *>(ownedAttribute));
+        (qumlobject_cast<QClassifierPrivate *>(d))->removeAttribute(qumlobject_cast<QProperty *>(ownedAttribute));
+        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedAttribute));
+        (qumlobject_cast<QStructuredClassifierPrivate *>(d))->removeRole(qumlobject_cast<QConnectableElement *>(ownedAttribute));
     }
 }
 
@@ -202,8 +197,8 @@ void QStructuredClassifier::addOwnedConnector(QConnector *ownedConnector)
         d->ownedConnectors->insert(ownedConnector);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QClassifierPrivate *>(d))->addFeature(qtuml_object_cast<QFeature *>(ownedConnector));
-        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(ownedConnector));
+        (qumlobject_cast<QClassifierPrivate *>(d))->addFeature(qumlobject_cast<QFeature *>(ownedConnector));
+        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(ownedConnector));
     }
 }
 
@@ -214,10 +209,11 @@ void QStructuredClassifier::removeOwnedConnector(QConnector *ownedConnector)
     Q_D(QStructuredClassifier);
     if (d->ownedConnectors->contains(ownedConnector)) {
         d->ownedConnectors->remove(ownedConnector);
+        ownedConnector->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QClassifierPrivate *>(d))->removeFeature(qtuml_object_cast<QFeature *>(ownedConnector));
-        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(ownedConnector));
+        (qumlobject_cast<QClassifierPrivate *>(d))->removeFeature(qumlobject_cast<QFeature *>(ownedConnector));
+        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedConnector));
     }
 }
 

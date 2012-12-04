@@ -44,7 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
+#include <QtUml/QUmlObject>
 #include <QtUml/QTypedElement>
 #include <QtUml/QPackageableElement>
 
@@ -62,7 +62,7 @@ class QParameterableElement;
 
 class QValueSpecificationPrivate;
 
-class Q_UML_EXPORT QValueSpecification : public QObject
+class Q_UML_EXPORT QValueSpecification : public QUmlObject
 {
     Q_OBJECT
 
@@ -70,7 +70,7 @@ class Q_UML_EXPORT QValueSpecification : public QObject
     Q_DECLARE_PRIVATE(QValueSpecification)
 
 public:
-    Q_INVOKABLE explicit QValueSpecification(QObject *parent = 0);
+    Q_INVOKABLE explicit QValueSpecification(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QValueSpecification();
 
     // Association ends from aggregated QElement
@@ -118,7 +118,7 @@ public:
     Q_INVOKABLE qint32 unlimitedValue() const;
 
 protected:
-    explicit QValueSpecification(QValueSpecificationPrivate &dd, QObject *parent = 0);
+    explicit QValueSpecification(QValueSpecificationPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 
 private:
     QTypedElement *_wrappedTypedElement;

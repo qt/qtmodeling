@@ -73,20 +73,14 @@ QUseCasePrivate::~QUseCasePrivate()
     \brief A use case is the specification of a set of actions performed by a system, which yields an observable result that is, typically, of value for one or more actors or other stakeholders of the system.
  */
 
-QUseCase::QUseCase(QObject *parent) :
-    QBehavioredClassifier(*new QUseCasePrivate, parent)
+QUseCase::QUseCase(QUmlObject *parent, QUmlObject *wrapper) :
+    QBehavioredClassifier(*new QUseCasePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QUseCase *>("QUseCase *");
-    qRegisterMetaType<const QSet<QUseCase *> *>("const QSet<QUseCase *> *");
-    qRegisterMetaType<const QList<QUseCase *> *>("const QList<QUseCase *> *");
 }
 
-QUseCase::QUseCase(QUseCasePrivate &dd, QObject *parent) :
-    QBehavioredClassifier(dd, parent)
+QUseCase::QUseCase(QUseCasePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QBehavioredClassifier(dd, parent, wrapper)
 {
-    qRegisterMetaType<QUseCase *>("QUseCase *");
-    qRegisterMetaType<const QSet<QUseCase *> *>("const QSet<QUseCase *> *");
-    qRegisterMetaType<const QList<QUseCase *> *>("const QList<QUseCase *> *");
 }
 
 QUseCase::~QUseCase()
@@ -117,7 +111,7 @@ void QUseCase::addExtensionPoint(QExtensionPoint *extensionPoint)
         d->extensionPoints->insert(extensionPoint);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(extensionPoint));
+        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(extensionPoint));
 
         // Adjust opposite property
         extensionPoint->setUseCase(this);
@@ -131,9 +125,10 @@ void QUseCase::removeExtensionPoint(QExtensionPoint *extensionPoint)
     Q_D(QUseCase);
     if (d->extensionPoints->contains(extensionPoint)) {
         d->extensionPoints->remove(extensionPoint);
+        extensionPoint->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(extensionPoint));
+        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(extensionPoint));
 
         // Adjust opposite property
         extensionPoint->setUseCase(0);
@@ -160,7 +155,7 @@ void QUseCase::addInclude(QInclude *include)
         d->includes->insert(include);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(include));
+        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(include));
 
         // Adjust opposite property
         include->setIncludingCase(this);
@@ -174,9 +169,10 @@ void QUseCase::removeInclude(QInclude *include)
     Q_D(QUseCase);
     if (d->includes->contains(include)) {
         d->includes->remove(include);
+        include->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(include));
+        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(include));
 
         // Adjust opposite property
         include->setIncludingCase(0);
@@ -241,7 +237,7 @@ void QUseCase::addExtend(QExtend *extend)
         d->extends->insert(extend);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(extend));
+        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(extend));
 
         // Adjust opposite property
         extend->setExtension(this);
@@ -255,9 +251,10 @@ void QUseCase::removeExtend(QExtend *extend)
     Q_D(QUseCase);
     if (d->extends->contains(extend)) {
         d->extends->remove(extend);
+        extend->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(extend));
+        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(extend));
 
         // Adjust opposite property
         extend->setExtension(0);

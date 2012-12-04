@@ -60,20 +60,14 @@ QDataStoreNodePrivate::~QDataStoreNodePrivate()
     \brief A data store node is a central buffer node for non-transient information.
  */
 
-QDataStoreNode::QDataStoreNode(QObject *parent) :
-    QCentralBufferNode(*new QDataStoreNodePrivate, parent)
+QDataStoreNode::QDataStoreNode(QUmlObject *parent, QUmlObject *wrapper) :
+    QCentralBufferNode(*new QDataStoreNodePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QDataStoreNode *>("QDataStoreNode *");
-    qRegisterMetaType<const QSet<QDataStoreNode *> *>("const QSet<QDataStoreNode *> *");
-    qRegisterMetaType<const QList<QDataStoreNode *> *>("const QList<QDataStoreNode *> *");
 }
 
-QDataStoreNode::QDataStoreNode(QDataStoreNodePrivate &dd, QObject *parent) :
-    QCentralBufferNode(dd, parent)
+QDataStoreNode::QDataStoreNode(QDataStoreNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QCentralBufferNode(dd, parent, wrapper)
 {
-    qRegisterMetaType<QDataStoreNode *>("QDataStoreNode *");
-    qRegisterMetaType<const QSet<QDataStoreNode *> *>("const QSet<QDataStoreNode *> *");
-    qRegisterMetaType<const QList<QDataStoreNode *> *>("const QList<QDataStoreNode *> *");
 }
 
 QDataStoreNode::~QDataStoreNode()

@@ -44,7 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
+#include <QtUml/QUmlObject>
 #include <QtUml/QMultiplicityElement>
 #include <QtUml/QConnectableElement>
 
@@ -69,7 +69,7 @@ class QParameterSet;
 
 class QParameterPrivate;
 
-class Q_UML_EXPORT QParameter : public QObject
+class Q_UML_EXPORT QParameter : public QUmlObject
 {
     Q_OBJECT
 
@@ -86,7 +86,7 @@ class Q_UML_EXPORT QParameter : public QObject
     Q_DECLARE_PRIVATE(QParameter)
 
 public:
-    Q_INVOKABLE explicit QParameter(QObject *parent = 0);
+    Q_INVOKABLE explicit QParameter(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QParameter();
 
     // Association ends from aggregated QElement
@@ -162,7 +162,7 @@ public:
     Q_INVOKABLE void removeParameterSet(QParameterSet *parameterSet);
 
 protected:
-    explicit QParameter(QParameterPrivate &dd, QObject *parent = 0);
+    explicit QParameter(QParameterPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 
 private:
     QMultiplicityElement *_wrappedMultiplicityElement;

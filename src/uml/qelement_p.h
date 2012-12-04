@@ -41,10 +41,8 @@
 #ifndef QTUML_QELEMENT_P_H
 #define QTUML_QELEMENT_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
-#include "private/qobject_p.h"
+#include "private/qumlobject_p.h"
 
 #include "QtUml/QElement"
 
@@ -61,7 +59,7 @@ QT_MODULE(QtUml)
 class QComment;
 class QElement;
 
-class Q_UML_EXPORT QElementPrivate : public QObjectPrivate
+class Q_UML_EXPORT QElementPrivate : public QUmlObjectPrivate
 {
     Q_DECLARE_PUBLIC(QElement)
 

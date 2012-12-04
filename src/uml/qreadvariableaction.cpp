@@ -63,20 +63,14 @@ QReadVariableActionPrivate::~QReadVariableActionPrivate()
     \brief A read variable action is a variable action that retrieves the values of a variable.
  */
 
-QReadVariableAction::QReadVariableAction(QObject *parent) :
-    QVariableAction(*new QReadVariableActionPrivate, parent)
+QReadVariableAction::QReadVariableAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QVariableAction(*new QReadVariableActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QReadVariableAction *>("QReadVariableAction *");
-    qRegisterMetaType<const QSet<QReadVariableAction *> *>("const QSet<QReadVariableAction *> *");
-    qRegisterMetaType<const QList<QReadVariableAction *> *>("const QList<QReadVariableAction *> *");
 }
 
-QReadVariableAction::QReadVariableAction(QReadVariableActionPrivate &dd, QObject *parent) :
-    QVariableAction(dd, parent)
+QReadVariableAction::QReadVariableAction(QReadVariableActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QVariableAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QReadVariableAction *>("QReadVariableAction *");
-    qRegisterMetaType<const QSet<QReadVariableAction *> *>("const QSet<QReadVariableAction *> *");
-    qRegisterMetaType<const QList<QReadVariableAction *> *>("const QList<QReadVariableAction *> *");
 }
 
 QReadVariableAction::~QReadVariableAction()
@@ -105,13 +99,13 @@ void QReadVariableAction::setResult(QOutputPin *result)
     Q_D(QReadVariableAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(d->result));
+        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(result));
+            (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(result));
         }
     }
 }

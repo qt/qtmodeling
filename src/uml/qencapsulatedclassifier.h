@@ -70,14 +70,14 @@ class Q_UML_EXPORT QEncapsulatedClassifier : public QStructuredClassifier
     Q_DECLARE_PRIVATE(QEncapsulatedClassifier)
 
 public:
-    Q_INVOKABLE explicit QEncapsulatedClassifier(QObject *parent = 0);
+    Q_INVOKABLE explicit QEncapsulatedClassifier(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QEncapsulatedClassifier();
 
     // Association ends from QEncapsulatedClassifier
     Q_INVOKABLE const QSet<QPort *> *ownedPorts() const;
 
 protected:
-    explicit QEncapsulatedClassifier(QEncapsulatedClassifierPrivate &dd, QObject *parent = 0);
+    explicit QEncapsulatedClassifier(QEncapsulatedClassifierPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

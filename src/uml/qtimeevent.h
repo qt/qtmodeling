@@ -68,7 +68,7 @@ class Q_UML_EXPORT QTimeEvent : public QEvent
     Q_DECLARE_PRIVATE(QTimeEvent)
 
 public:
-    Q_INVOKABLE explicit QTimeEvent(QObject *parent = 0);
+    Q_INVOKABLE explicit QTimeEvent(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QTimeEvent();
 
     // Attributes from QTimeEvent
@@ -80,7 +80,7 @@ public:
     Q_INVOKABLE void setWhen(QTimeExpression *when);
 
 protected:
-    explicit QTimeEvent(QTimeEventPrivate &dd, QObject *parent = 0);
+    explicit QTimeEvent(QTimeEventPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

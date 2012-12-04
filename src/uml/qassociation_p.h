@@ -41,10 +41,8 @@
 #ifndef QTUML_QASSOCIATION_P_H
 #define QTUML_QASSOCIATION_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
-#include "private/qobject_p.h"
+#include "private/qumlobject_p.h"
 #include "private/qclassifier_p.h"
 #include "private/qrelationship_p.h"
 
@@ -65,7 +63,7 @@ class QType;
 class QProperty;
 class QAssociation;
 
-class Q_UML_EXPORT QAssociationPrivate : public QObjectPrivate
+class Q_UML_EXPORT QAssociationPrivate : public QUmlObjectPrivate
 {
     Q_DECLARE_PUBLIC(QAssociation)
 

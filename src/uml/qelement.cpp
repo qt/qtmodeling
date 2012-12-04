@@ -55,12 +55,6 @@ QElementPrivate::QElementPrivate() :
 
 QElementPrivate::~QElementPrivate()
 {
-    foreach (QElement *element, *ownedElements) {
-        QObject *object = element;
-        while (object->parent())
-            object = object->parent();
-        delete object;
-    }
     delete ownedElements;
     delete ownedComments;
 }
@@ -71,10 +65,11 @@ void QElementPrivate::addOwnedElement(QElement *ownedElement)
 
     if (!this->ownedElements->contains(ownedElement)) {
         this->ownedElements->insert(ownedElement);
+        Q_Q(QElement);
+        quml_topLevelWrapper(ownedElement)->setParent(quml_topLevelWrapper(q));
 
         // Adjust opposite property
-        Q_Q(QElement);
-        (qtuml_object_cast<QElementPrivate *>(ownedElement->d_func()))->setOwner(q);
+        (qumlobject_cast<QElementPrivate *>(ownedElement->d_func()))->setOwner(q);
     }
 }
 
@@ -84,9 +79,10 @@ void QElementPrivate::removeOwnedElement(QElement *ownedElement)
 
     if (this->ownedElements->contains(ownedElement)) {
         this->ownedElements->remove(ownedElement);
+        quml_topLevelWrapper(ownedElement)->setParent(0);
 
         // Adjust opposite property
-        (qtuml_object_cast<QElementPrivate *>(ownedElement->d_func()))->setOwner(0);
+        (qumlobject_cast<QElementPrivate *>(ownedElement->d_func()))->setOwner(0);
     }
 }
 
@@ -98,13 +94,13 @@ void QElementPrivate::setOwner(QElement *owner)
         Q_Q(QElement);
         // Adjust opposite property
         if (this->owner)
-            (qtuml_object_cast<QElementPrivate *>(this->owner->d_func()))->removeOwnedElement(q);
+            (qumlobject_cast<QElementPrivate *>(this->owner->d_func()))->removeOwnedElement(q);
 
         this->owner = owner;
 
         // Adjust opposite property
         if (owner)
-            (qtuml_object_cast<QElementPrivate *>(owner->d_func()))->addOwnedElement(q);
+            (qumlobject_cast<QElementPrivate *>(owner->d_func()))->addOwnedElement(q);
     }
 }
 
@@ -116,20 +112,14 @@ void QElementPrivate::setOwner(QElement *owner)
     \brief An element is a constituent of a model. As such, it has the capability of owning other elements.
  */
 
-QElement::QElement(QObject *parent) :
-    QObject(*new QElementPrivate, parent)
+QElement::QElement(QUmlObject *parent, QUmlObject *wrapper) :
+    QUmlObject(*new QElementPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QElement *>("QElement *");
-    qRegisterMetaType<const QSet<QElement *> *>("const QSet<QElement *> *");
-    qRegisterMetaType<const QList<QElement *> *>("const QList<QElement *> *");
 }
 
-QElement::QElement(QElementPrivate &dd, QObject *parent) :
-    QObject(dd, parent)
+QElement::QElement(QElementPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QUmlObject(dd, parent, wrapper)
 {
-    qRegisterMetaType<QElement *>("QElement *");
-    qRegisterMetaType<const QSet<QElement *> *>("const QSet<QElement *> *");
-    qRegisterMetaType<const QList<QElement *> *>("const QList<QElement *> *");
 }
 
 QElement::~QElement()
@@ -180,9 +170,10 @@ void QElement::addOwnedComment(QComment *ownedComment)
     Q_D(QElement);
     if (!d->ownedComments->contains(ownedComment)) {
         d->ownedComments->insert(ownedComment);
+        quml_topLevelWrapper(ownedComment)->setParent(quml_topLevelWrapper(this));
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(ownedComment));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(ownedComment));
     }
 }
 
@@ -193,9 +184,10 @@ void QElement::removeOwnedComment(QComment *ownedComment)
     Q_D(QElement);
     if (d->ownedComments->contains(ownedComment)) {
         d->ownedComments->remove(ownedComment);
+        quml_topLevelWrapper(ownedComment)->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(ownedComment));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(ownedComment));
     }
 }
 

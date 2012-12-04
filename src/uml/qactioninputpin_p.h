@@ -41,8 +41,6 @@
 #ifndef QTUML_QACTIONINPUTPIN_P_H
 #define QTUML_QACTIONINPUTPIN_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qinputpin_p.h"
 

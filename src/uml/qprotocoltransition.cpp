@@ -65,20 +65,14 @@ QProtocolTransitionPrivate::~QProtocolTransitionPrivate()
     \brief A protocol transition specifies a legal transition for an operation. Transitions of protocol state machines have the following information: a pre condition (guard), on trigger, and a post condition. Every protocol transition is associated to zero or one operation (referred BehavioralFeature) that belongs to the context classifier of the protocol state machine.
  */
 
-QProtocolTransition::QProtocolTransition(QObject *parent) :
-    QTransition(*new QProtocolTransitionPrivate, parent)
+QProtocolTransition::QProtocolTransition(QUmlObject *parent, QUmlObject *wrapper) :
+    QTransition(*new QProtocolTransitionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QProtocolTransition *>("QProtocolTransition *");
-    qRegisterMetaType<const QSet<QProtocolTransition *> *>("const QSet<QProtocolTransition *> *");
-    qRegisterMetaType<const QList<QProtocolTransition *> *>("const QList<QProtocolTransition *> *");
 }
 
-QProtocolTransition::QProtocolTransition(QProtocolTransitionPrivate &dd, QObject *parent) :
-    QTransition(dd, parent)
+QProtocolTransition::QProtocolTransition(QProtocolTransitionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QTransition(dd, parent, wrapper)
 {
-    qRegisterMetaType<QProtocolTransition *>("QProtocolTransition *");
-    qRegisterMetaType<const QSet<QProtocolTransition *> *>("const QSet<QProtocolTransition *> *");
-    qRegisterMetaType<const QList<QProtocolTransition *> *>("const QList<QProtocolTransition *> *");
 }
 
 QProtocolTransition::~QProtocolTransition()
@@ -107,13 +101,13 @@ void QProtocolTransition::setPostCondition(QConstraint *postCondition)
     Q_D(QProtocolTransition);
     if (d->postCondition != postCondition) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespace *>(this))->removeOwnedRule(qtuml_object_cast<QConstraint *>(d->postCondition));
+        (qumlobject_cast<QNamespace *>(this))->removeOwnedRule(qumlobject_cast<QConstraint *>(d->postCondition));
 
         d->postCondition = postCondition;
 
         // Adjust subsetted property(ies)
         if (postCondition) {
-            (qtuml_object_cast<QNamespace *>(this))->addOwnedRule(qtuml_object_cast<QConstraint *>(postCondition));
+            (qumlobject_cast<QNamespace *>(this))->addOwnedRule(qumlobject_cast<QConstraint *>(postCondition));
         }
     }
 }
@@ -150,7 +144,7 @@ void QProtocolTransition::setPreCondition(QConstraint *preCondition)
         d->preCondition = preCondition;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QTransition *>(this))->setGuard(qtuml_object_cast<QConstraint *>(preCondition));
+        (qumlobject_cast<QTransition *>(this))->setGuard(qumlobject_cast<QConstraint *>(preCondition));
     }
 }
 

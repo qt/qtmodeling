@@ -63,20 +63,14 @@ QManifestationPrivate::~QManifestationPrivate()
     \brief A manifestation is the concrete physical rendering of one or more model elements by an artifact.
  */
 
-QManifestation::QManifestation(QObject *parent) :
-    QAbstraction(*new QManifestationPrivate, parent)
+QManifestation::QManifestation(QUmlObject *parent, QUmlObject *wrapper) :
+    QAbstraction(*new QManifestationPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QManifestation *>("QManifestation *");
-    qRegisterMetaType<const QSet<QManifestation *> *>("const QSet<QManifestation *> *");
-    qRegisterMetaType<const QList<QManifestation *> *>("const QList<QManifestation *> *");
 }
 
-QManifestation::QManifestation(QManifestationPrivate &dd, QObject *parent) :
-    QAbstraction(dd, parent)
+QManifestation::QManifestation(QManifestationPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QAbstraction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QManifestation *>("QManifestation *");
-    qRegisterMetaType<const QSet<QManifestation *> *>("const QSet<QManifestation *> *");
-    qRegisterMetaType<const QList<QManifestation *> *>("const QList<QManifestation *> *");
 }
 
 QManifestation::~QManifestation()
@@ -105,13 +99,13 @@ void QManifestation::setUtilizedElement(QPackageableElement *utilizedElement)
     Q_D(QManifestation);
     if (d->utilizedElement != utilizedElement) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QDependency *>(this))->removeSupplier(qtuml_object_cast<QNamedElement *>(d->utilizedElement));
+        (qumlobject_cast<QDependency *>(this))->removeSupplier(qumlobject_cast<QNamedElement *>(d->utilizedElement));
 
         d->utilizedElement = utilizedElement;
 
         // Adjust subsetted property(ies)
         if (utilizedElement) {
-            (qtuml_object_cast<QDependency *>(this))->addSupplier(qtuml_object_cast<QNamedElement *>(utilizedElement));
+            (qumlobject_cast<QDependency *>(this))->addSupplier(qumlobject_cast<QNamedElement *>(utilizedElement));
         }
     }
 }

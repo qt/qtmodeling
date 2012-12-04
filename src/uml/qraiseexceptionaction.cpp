@@ -63,20 +63,14 @@ QRaiseExceptionActionPrivate::~QRaiseExceptionActionPrivate()
     \brief A raise exception action is an action that causes an exception to occur. The input value becomes the exception object.
  */
 
-QRaiseExceptionAction::QRaiseExceptionAction(QObject *parent) :
-    QAction(*new QRaiseExceptionActionPrivate, parent)
+QRaiseExceptionAction::QRaiseExceptionAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(*new QRaiseExceptionActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QRaiseExceptionAction *>("QRaiseExceptionAction *");
-    qRegisterMetaType<const QSet<QRaiseExceptionAction *> *>("const QSet<QRaiseExceptionAction *> *");
-    qRegisterMetaType<const QList<QRaiseExceptionAction *> *>("const QList<QRaiseExceptionAction *> *");
 }
 
-QRaiseExceptionAction::QRaiseExceptionAction(QRaiseExceptionActionPrivate &dd, QObject *parent) :
-    QAction(dd, parent)
+QRaiseExceptionAction::QRaiseExceptionAction(QRaiseExceptionActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QRaiseExceptionAction *>("QRaiseExceptionAction *");
-    qRegisterMetaType<const QSet<QRaiseExceptionAction *> *>("const QSet<QRaiseExceptionAction *> *");
-    qRegisterMetaType<const QList<QRaiseExceptionAction *> *>("const QList<QRaiseExceptionAction *> *");
 }
 
 QRaiseExceptionAction::~QRaiseExceptionAction()
@@ -105,13 +99,13 @@ void QRaiseExceptionAction::setException(QInputPin *exception)
     Q_D(QRaiseExceptionAction);
     if (d->exception != exception) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->exception));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->exception));
 
         d->exception = exception;
 
         // Adjust subsetted property(ies)
         if (exception) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(exception));
+            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(exception));
         }
     }
 }

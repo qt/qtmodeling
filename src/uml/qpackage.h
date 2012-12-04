@@ -44,7 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
+#include <QtUml/QUmlObject>
 #include <QtUml/QNamespace>
 #include <QtUml/QPackageableElement>
 #include <QtUml/QTemplateableElement>
@@ -52,6 +52,8 @@
 // Qt includes
 #include <QtCore/QString>
 #include <QtCore/QSet>
+
+#include <QtUml/QUmlPointer>
 
 QT_BEGIN_HEADER
 
@@ -69,7 +71,7 @@ class QType;
 
 class QPackagePrivate;
 
-class Q_UML_EXPORT QPackage : public QObject
+class Q_UML_EXPORT QPackage : public QUmlObject
 {
     Q_OBJECT
 
@@ -86,7 +88,7 @@ class Q_UML_EXPORT QPackage : public QObject
     Q_DECLARE_PRIVATE(QPackage)
 
 public:
-    Q_INVOKABLE explicit QPackage(QObject *parent = 0);
+    Q_INVOKABLE explicit QPackage(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QPackage();
 
     // Association ends from aggregated QElement
@@ -178,7 +180,7 @@ public:
     Q_INVOKABLE void removePackagedElement(QUmlPointer<QPackage> nestedPackage);
 
 protected:
-    explicit QPackage(QPackagePrivate &dd, QObject *parent = 0);
+    explicit QPackage(QPackagePrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 
 private:
     QNamespace *_wrappedNamespace;

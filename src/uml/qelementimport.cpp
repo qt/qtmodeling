@@ -66,20 +66,14 @@ QElementImportPrivate::~QElementImportPrivate()
     \brief An element import identifies an element in another package, and allows the element to be referenced using its name without a qualifier.
  */
 
-QElementImport::QElementImport(QObject *parent) :
-    QDirectedRelationship(*new QElementImportPrivate, parent)
+QElementImport::QElementImport(QUmlObject *parent, QUmlObject *wrapper) :
+    QDirectedRelationship(*new QElementImportPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QElementImport *>("QElementImport *");
-    qRegisterMetaType<const QSet<QElementImport *> *>("const QSet<QElementImport *> *");
-    qRegisterMetaType<const QList<QElementImport *> *>("const QList<QElementImport *> *");
 }
 
-QElementImport::QElementImport(QElementImportPrivate &dd, QObject *parent) :
-    QDirectedRelationship(dd, parent)
+QElementImport::QElementImport(QElementImportPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QDirectedRelationship(dd, parent, wrapper)
 {
-    qRegisterMetaType<QElementImport *>("QElementImport *");
-    qRegisterMetaType<const QSet<QElementImport *> *>("const QSet<QElementImport *> *");
-    qRegisterMetaType<const QList<QElementImport *> *>("const QList<QElementImport *> *");
 }
 
 QElementImport::~QElementImport()
@@ -154,13 +148,13 @@ void QElementImport::setImportedElement(QPackageableElement *importedElement)
     Q_D(QElementImport);
     if (d->importedElement != importedElement) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qtuml_object_cast<QElement *>(d->importedElement));
+        (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qumlobject_cast<QElement *>(d->importedElement));
 
         d->importedElement = importedElement;
 
         // Adjust subsetted property(ies)
         if (importedElement) {
-            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qtuml_object_cast<QElement *>(importedElement));
+            (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qumlobject_cast<QElement *>(importedElement));
         }
     }
 }
@@ -187,14 +181,14 @@ void QElementImport::setImportingNamespace(QNamespace *importingNamespace)
             d->importingNamespace->removeElementImport(this);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qtuml_object_cast<QElement *>(d->importingNamespace));
+        (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qumlobject_cast<QElement *>(d->importingNamespace));
 
         d->importingNamespace = importingNamespace;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(importingNamespace));
+        (qumlobject_cast<QElementPrivate *>(d))->setOwner(qumlobject_cast<QElement *>(importingNamespace));
         if (importingNamespace) {
-            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addSource(qtuml_object_cast<QElement *>(importingNamespace));
+            (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->addSource(qumlobject_cast<QElement *>(importingNamespace));
         }
 
         // Adjust opposite property

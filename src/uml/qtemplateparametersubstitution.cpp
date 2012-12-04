@@ -68,20 +68,14 @@ QTemplateParameterSubstitutionPrivate::~QTemplateParameterSubstitutionPrivate()
     \brief A template parameter substitution relates the actual parameter to a formal template parameter as part of a template binding.
  */
 
-QTemplateParameterSubstitution::QTemplateParameterSubstitution(QObject *parent) :
-    QElement(*new QTemplateParameterSubstitutionPrivate, parent)
+QTemplateParameterSubstitution::QTemplateParameterSubstitution(QUmlObject *parent, QUmlObject *wrapper) :
+    QElement(*new QTemplateParameterSubstitutionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QTemplateParameterSubstitution *>("QTemplateParameterSubstitution *");
-    qRegisterMetaType<const QSet<QTemplateParameterSubstitution *> *>("const QSet<QTemplateParameterSubstitution *> *");
-    qRegisterMetaType<const QList<QTemplateParameterSubstitution *> *>("const QList<QTemplateParameterSubstitution *> *");
 }
 
-QTemplateParameterSubstitution::QTemplateParameterSubstitution(QTemplateParameterSubstitutionPrivate &dd, QObject *parent) :
-    QElement(dd, parent)
+QTemplateParameterSubstitution::QTemplateParameterSubstitution(QTemplateParameterSubstitutionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QTemplateParameterSubstitution *>("QTemplateParameterSubstitution *");
-    qRegisterMetaType<const QSet<QTemplateParameterSubstitution *> *>("const QSet<QTemplateParameterSubstitution *> *");
-    qRegisterMetaType<const QList<QTemplateParameterSubstitution *> *>("const QList<QTemplateParameterSubstitution *> *");
 }
 
 QTemplateParameterSubstitution::~QTemplateParameterSubstitution()
@@ -110,15 +104,15 @@ void QTemplateParameterSubstitution::setOwnedActual(QParameterableElement *owned
     Q_D(QTemplateParameterSubstitution);
     if (d->ownedActual != ownedActual) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->ownedActual));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->ownedActual));
 
         d->ownedActual = ownedActual;
 
         // Adjust subsetted property(ies)
         if (ownedActual) {
-            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(ownedActual));
+            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(ownedActual));
         }
-        (qtuml_object_cast<QTemplateParameterSubstitution *>(this))->setActual(qtuml_object_cast<QParameterableElement *>(ownedActual));
+        (qumlobject_cast<QTemplateParameterSubstitution *>(this))->setActual(qumlobject_cast<QParameterableElement *>(ownedActual));
     }
 }
 
@@ -188,7 +182,7 @@ void QTemplateParameterSubstitution::setTemplateBinding(QTemplateBinding *templa
         d->templateBinding = templateBinding;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(templateBinding));
+        (qumlobject_cast<QElementPrivate *>(d))->setOwner(qumlobject_cast<QElement *>(templateBinding));
 
         // Adjust opposite property
         if (templateBinding)

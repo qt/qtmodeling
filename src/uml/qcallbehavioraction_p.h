@@ -41,8 +41,6 @@
 #ifndef QTUML_QCALLBEHAVIORACTION_P_H
 #define QTUML_QCALLBEHAVIORACTION_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qcallaction_p.h"
 

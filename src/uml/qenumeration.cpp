@@ -64,20 +64,14 @@ QEnumerationPrivate::~QEnumerationPrivate()
     \brief An enumeration is a data type whose values are enumerated in the model as enumeration literals.
  */
 
-QEnumeration::QEnumeration(QObject *parent) :
-    QDataType(*new QEnumerationPrivate, parent)
+QEnumeration::QEnumeration(QUmlObject *parent, QUmlObject *wrapper) :
+    QDataType(*new QEnumerationPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QEnumeration *>("QEnumeration *");
-    qRegisterMetaType<const QSet<QEnumeration *> *>("const QSet<QEnumeration *> *");
-    qRegisterMetaType<const QList<QEnumeration *> *>("const QList<QEnumeration *> *");
 }
 
-QEnumeration::QEnumeration(QEnumerationPrivate &dd, QObject *parent) :
-    QDataType(dd, parent)
+QEnumeration::QEnumeration(QEnumerationPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QDataType(dd, parent, wrapper)
 {
-    qRegisterMetaType<QEnumeration *>("QEnumeration *");
-    qRegisterMetaType<const QSet<QEnumeration *> *>("const QSet<QEnumeration *> *");
-    qRegisterMetaType<const QList<QEnumeration *> *>("const QList<QEnumeration *> *");
 }
 
 QEnumeration::~QEnumeration()
@@ -108,7 +102,7 @@ void QEnumeration::addOwnedLiteral(QEnumerationLiteral *ownedLiteral)
         d->ownedLiterals->append(ownedLiteral);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(ownedLiteral));
+        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(ownedLiteral));
 
         // Adjust opposite property
         ownedLiteral->setEnumeration(this);
@@ -122,9 +116,10 @@ void QEnumeration::removeOwnedLiteral(QEnumerationLiteral *ownedLiteral)
     Q_D(QEnumeration);
     if (d->ownedLiterals->contains(ownedLiteral)) {
         d->ownedLiterals->removeAll(ownedLiteral);
+        ownedLiteral->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(ownedLiteral));
+        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedLiteral));
 
         // Adjust opposite property
         ownedLiteral->setEnumeration(0);

@@ -41,10 +41,8 @@
 #ifndef QTUML_QSTATE_P_H
 #define QTUML_QSTATE_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
-#include "private/qobject_p.h"
+#include "private/qumlobject_p.h"
 #include "private/qnamespace_p.h"
 #include "private/qredefinableelement_p.h"
 #include "private/qvertex_p.h"
@@ -71,7 +69,7 @@ class QConnectionPointReference;
 class QTrigger;
 class QPseudostate;
 
-class Q_UML_EXPORT QStatePrivate : public QObjectPrivate
+class Q_UML_EXPORT QStatePrivate : public QUmlObjectPrivate
 {
     Q_DECLARE_PUBLIC(QState)
 

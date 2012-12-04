@@ -62,11 +62,11 @@ class Q_UML_EXPORT QDestructionOccurrenceSpecification : public QMessageOccurren
     Q_DECLARE_PRIVATE(QDestructionOccurrenceSpecification)
 
 public:
-    Q_INVOKABLE explicit QDestructionOccurrenceSpecification(QObject *parent = 0);
+    Q_INVOKABLE explicit QDestructionOccurrenceSpecification(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QDestructionOccurrenceSpecification();
 
 protected:
-    explicit QDestructionOccurrenceSpecification(QDestructionOccurrenceSpecificationPrivate &dd, QObject *parent = 0);
+    explicit QDestructionOccurrenceSpecification(QDestructionOccurrenceSpecificationPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

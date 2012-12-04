@@ -41,8 +41,6 @@
 #ifndef QTUML_QACCEPTCALLACTION_P_H
 #define QTUML_QACCEPTCALLACTION_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qaccepteventaction_p.h"
 

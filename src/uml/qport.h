@@ -49,6 +49,8 @@
 // Qt includes
 #include <QtCore/QSet>
 
+#include <QtUml/QUmlPointer>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -77,7 +79,7 @@ class Q_UML_EXPORT QPort : public QProperty
     Q_DECLARE_PRIVATE(QPort)
 
 public:
-    Q_INVOKABLE explicit QPort(QObject *parent = 0);
+    Q_INVOKABLE explicit QPort(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QPort();
 
     // Attributes from QPort
@@ -102,7 +104,7 @@ public:
     Q_INVOKABLE void removeRedefinedProperty(QUmlPointer<QPort> redefinedPort);
 
 protected:
-    explicit QPort(QPortPrivate &dd, QObject *parent = 0);
+    explicit QPort(QPortPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

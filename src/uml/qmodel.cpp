@@ -60,20 +60,14 @@ QModelPrivate::~QModelPrivate()
     \brief A model captures a view of a physical system. It is an abstraction of the physical system, with a certain purpose. This purpose determines what is to be included in the model and what is irrelevant. Thus the model completely describes those aspects of the physical system that are relevant to the purpose of the model, at the appropriate level of detail.
  */
 
-QModel::QModel(QObject *parent) :
-    QPackage(*new QModelPrivate, parent)
+QModel::QModel(QUmlObject *parent, QUmlObject *wrapper) :
+    QPackage(*new QModelPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QModel *>("QModel *");
-    qRegisterMetaType<const QSet<QModel *> *>("const QSet<QModel *> *");
-    qRegisterMetaType<const QList<QModel *> *>("const QList<QModel *> *");
 }
 
-QModel::QModel(QModelPrivate &dd, QObject *parent) :
-    QPackage(dd, parent)
+QModel::QModel(QModelPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QPackage(dd, parent, wrapper)
 {
-    qRegisterMetaType<QModel *>("QModel *");
-    qRegisterMetaType<const QSet<QModel *> *>("const QSet<QModel *> *");
-    qRegisterMetaType<const QList<QModel *> *>("const QList<QModel *> *");
 }
 
 QModel::~QModel()

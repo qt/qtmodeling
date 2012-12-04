@@ -60,20 +60,14 @@ QInitialNodePrivate::~QInitialNodePrivate()
     \brief An initial node is a control node at which flow starts when the activity is invoked.
  */
 
-QInitialNode::QInitialNode(QObject *parent) :
-    QControlNode(*new QInitialNodePrivate, parent)
+QInitialNode::QInitialNode(QUmlObject *parent, QUmlObject *wrapper) :
+    QControlNode(*new QInitialNodePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QInitialNode *>("QInitialNode *");
-    qRegisterMetaType<const QSet<QInitialNode *> *>("const QSet<QInitialNode *> *");
-    qRegisterMetaType<const QList<QInitialNode *> *>("const QList<QInitialNode *> *");
 }
 
-QInitialNode::QInitialNode(QInitialNodePrivate &dd, QObject *parent) :
-    QControlNode(dd, parent)
+QInitialNode::QInitialNode(QInitialNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QControlNode(dd, parent, wrapper)
 {
-    qRegisterMetaType<QInitialNode *>("QInitialNode *");
-    qRegisterMetaType<const QSet<QInitialNode *> *>("const QSet<QInitialNode *> *");
-    qRegisterMetaType<const QList<QInitialNode *> *>("const QList<QInitialNode *> *");
 }
 
 QInitialNode::~QInitialNode()

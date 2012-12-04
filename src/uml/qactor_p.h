@@ -41,8 +41,6 @@
 #ifndef QTUML_QACTOR_P_H
 #define QTUML_QACTOR_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qbehavioredclassifier_p.h"
 

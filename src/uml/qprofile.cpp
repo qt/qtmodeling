@@ -67,20 +67,14 @@ QProfilePrivate::~QProfilePrivate()
     \brief A profile defines limited extensions to a reference metamodel with the purpose of adapting the metamodel to a specific platform or domain.
  */
 
-QProfile::QProfile(QObject *parent) :
-    QPackage(*new QProfilePrivate, parent)
+QProfile::QProfile(QUmlObject *parent, QUmlObject *wrapper) :
+    QPackage(*new QProfilePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QProfile *>("QProfile *");
-    qRegisterMetaType<const QSet<QProfile *> *>("const QSet<QProfile *> *");
-    qRegisterMetaType<const QList<QProfile *> *>("const QList<QProfile *> *");
 }
 
-QProfile::QProfile(QProfilePrivate &dd, QObject *parent) :
-    QPackage(dd, parent)
+QProfile::QProfile(QProfilePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QPackage(dd, parent, wrapper)
 {
-    qRegisterMetaType<QProfile *>("QProfile *");
-    qRegisterMetaType<const QSet<QProfile *> *>("const QSet<QProfile *> *");
-    qRegisterMetaType<const QList<QProfile *> *>("const QList<QProfile *> *");
 }
 
 QProfile::~QProfile()
@@ -111,7 +105,7 @@ void QProfile::addMetamodelReference(QPackageImport *metamodelReference)
         d->metamodelReferences->insert(metamodelReference);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespace *>(this))->addPackageImport(qtuml_object_cast<QPackageImport *>(metamodelReference));
+        (qumlobject_cast<QNamespace *>(this))->addPackageImport(qumlobject_cast<QPackageImport *>(metamodelReference));
     }
 }
 
@@ -122,9 +116,10 @@ void QProfile::removeMetamodelReference(QPackageImport *metamodelReference)
     Q_D(QProfile);
     if (d->metamodelReferences->contains(metamodelReference)) {
         d->metamodelReferences->remove(metamodelReference);
+        metamodelReference->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespace *>(this))->removePackageImport(qtuml_object_cast<QPackageImport *>(metamodelReference));
+        (qumlobject_cast<QNamespace *>(this))->removePackageImport(qumlobject_cast<QPackageImport *>(metamodelReference));
     }
 }
 
@@ -148,7 +143,7 @@ void QProfile::addMetaclassReference(QElementImport *metaclassReference)
         d->metaclassReferences->insert(metaclassReference);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespace *>(this))->addElementImport(qtuml_object_cast<QElementImport *>(metaclassReference));
+        (qumlobject_cast<QNamespace *>(this))->addElementImport(qumlobject_cast<QElementImport *>(metaclassReference));
     }
 }
 
@@ -159,9 +154,10 @@ void QProfile::removeMetaclassReference(QElementImport *metaclassReference)
     Q_D(QProfile);
     if (d->metaclassReferences->contains(metaclassReference)) {
         d->metaclassReferences->remove(metaclassReference);
+        metaclassReference->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespace *>(this))->removeElementImport(qtuml_object_cast<QElementImport *>(metaclassReference));
+        (qumlobject_cast<QNamespace *>(this))->removeElementImport(qumlobject_cast<QElementImport *>(metaclassReference));
     }
 }
 

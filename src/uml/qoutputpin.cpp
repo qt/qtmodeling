@@ -60,20 +60,14 @@ QOutputPinPrivate::~QOutputPinPrivate()
     \brief An output pin is a pin that holds output values produced by an action.
  */
 
-QOutputPin::QOutputPin(QObject *parent) :
-    QPin(*new QOutputPinPrivate, parent)
+QOutputPin::QOutputPin(QUmlObject *parent, QUmlObject *wrapper) :
+    QPin(*new QOutputPinPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QOutputPin *>("QOutputPin *");
-    qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
-    qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
 }
 
-QOutputPin::QOutputPin(QOutputPinPrivate &dd, QObject *parent) :
-    QPin(dd, parent)
+QOutputPin::QOutputPin(QOutputPinPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QPin(dd, parent, wrapper)
 {
-    qRegisterMetaType<QOutputPin *>("QOutputPin *");
-    qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
-    qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
 }
 
 QOutputPin::~QOutputPin()

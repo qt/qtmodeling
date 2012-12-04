@@ -41,8 +41,6 @@
 #ifndef QTUML_QPROTOCOLTRANSITION_P_H
 #define QTUML_QPROTOCOLTRANSITION_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qtransition_p.h"
 

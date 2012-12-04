@@ -65,20 +65,14 @@ QInterfaceRealizationPrivate::~QInterfaceRealizationPrivate()
     \brief An interface realization is a specialized realization relationship between a classifier and an interface. This relationship signifies that the realizing classifier conforms to the contract specified by the interface.
  */
 
-QInterfaceRealization::QInterfaceRealization(QObject *parent) :
-    QRealization(*new QInterfaceRealizationPrivate, parent)
+QInterfaceRealization::QInterfaceRealization(QUmlObject *parent, QUmlObject *wrapper) :
+    QRealization(*new QInterfaceRealizationPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QInterfaceRealization *>("QInterfaceRealization *");
-    qRegisterMetaType<const QSet<QInterfaceRealization *> *>("const QSet<QInterfaceRealization *> *");
-    qRegisterMetaType<const QList<QInterfaceRealization *> *>("const QList<QInterfaceRealization *> *");
 }
 
-QInterfaceRealization::QInterfaceRealization(QInterfaceRealizationPrivate &dd, QObject *parent) :
-    QRealization(dd, parent)
+QInterfaceRealization::QInterfaceRealization(QInterfaceRealizationPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QRealization(dd, parent, wrapper)
 {
-    qRegisterMetaType<QInterfaceRealization *>("QInterfaceRealization *");
-    qRegisterMetaType<const QSet<QInterfaceRealization *> *>("const QSet<QInterfaceRealization *> *");
-    qRegisterMetaType<const QList<QInterfaceRealization *> *>("const QList<QInterfaceRealization *> *");
 }
 
 QInterfaceRealization::~QInterfaceRealization()
@@ -111,14 +105,14 @@ void QInterfaceRealization::setImplementingClassifier(QBehavioredClassifier *imp
             d->implementingClassifier->removeInterfaceRealization(this);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QDependency *>(this))->removeClient(qtuml_object_cast<QNamedElement *>(d->implementingClassifier));
+        (qumlobject_cast<QDependency *>(this))->removeClient(qumlobject_cast<QNamedElement *>(d->implementingClassifier));
 
         d->implementingClassifier = implementingClassifier;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(implementingClassifier));
+        (qumlobject_cast<QElementPrivate *>(d))->setOwner(qumlobject_cast<QElement *>(implementingClassifier));
         if (implementingClassifier) {
-            (qtuml_object_cast<QDependency *>(this))->addClient(qtuml_object_cast<QNamedElement *>(implementingClassifier));
+            (qumlobject_cast<QDependency *>(this))->addClient(qumlobject_cast<QNamedElement *>(implementingClassifier));
         }
 
         // Adjust opposite property
@@ -145,13 +139,13 @@ void QInterfaceRealization::setContract(QInterface *contract)
     Q_D(QInterfaceRealization);
     if (d->contract != contract) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QDependency *>(this))->removeSupplier(qtuml_object_cast<QNamedElement *>(d->contract));
+        (qumlobject_cast<QDependency *>(this))->removeSupplier(qumlobject_cast<QNamedElement *>(d->contract));
 
         d->contract = contract;
 
         // Adjust subsetted property(ies)
         if (contract) {
-            (qtuml_object_cast<QDependency *>(this))->addSupplier(qtuml_object_cast<QNamedElement *>(contract));
+            (qumlobject_cast<QDependency *>(this))->addSupplier(qumlobject_cast<QNamedElement *>(contract));
         }
     }
 }

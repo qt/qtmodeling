@@ -67,20 +67,14 @@ QReplyActionPrivate::~QReplyActionPrivate()
     \brief A reply action is an action that accepts a set of return values and a value containing return information produced by a previous accept call action. The reply action returns the values to the caller of the previous call, completing execution of the call.
  */
 
-QReplyAction::QReplyAction(QObject *parent) :
-    QAction(*new QReplyActionPrivate, parent)
+QReplyAction::QReplyAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(*new QReplyActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QReplyAction *>("QReplyAction *");
-    qRegisterMetaType<const QSet<QReplyAction *> *>("const QSet<QReplyAction *> *");
-    qRegisterMetaType<const QList<QReplyAction *> *>("const QList<QReplyAction *> *");
 }
 
-QReplyAction::QReplyAction(QReplyActionPrivate &dd, QObject *parent) :
-    QAction(dd, parent)
+QReplyAction::QReplyAction(QReplyActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QReplyAction *>("QReplyAction *");
-    qRegisterMetaType<const QSet<QReplyAction *> *>("const QSet<QReplyAction *> *");
-    qRegisterMetaType<const QList<QReplyAction *> *>("const QList<QReplyAction *> *");
 }
 
 QReplyAction::~QReplyAction()
@@ -130,13 +124,13 @@ void QReplyAction::setReturnInformation(QInputPin *returnInformation)
     Q_D(QReplyAction);
     if (d->returnInformation != returnInformation) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->returnInformation));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->returnInformation));
 
         d->returnInformation = returnInformation;
 
         // Adjust subsetted property(ies)
         if (returnInformation) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(returnInformation));
+            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(returnInformation));
         }
     }
 }
@@ -161,7 +155,7 @@ void QReplyAction::addReplyValue(QInputPin *replyValue)
         d->replyValues->insert(replyValue);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(replyValue));
+        (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(replyValue));
     }
 }
 
@@ -172,9 +166,10 @@ void QReplyAction::removeReplyValue(QInputPin *replyValue)
     Q_D(QReplyAction);
     if (d->replyValues->contains(replyValue)) {
         d->replyValues->remove(replyValue);
+        replyValue->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(replyValue));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(replyValue));
     }
 }
 

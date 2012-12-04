@@ -64,20 +64,14 @@ QProtocolConformancePrivate::~QProtocolConformancePrivate()
     \brief Protocol state machines can be redefined into more specific protocol state machines, or into behavioral state machines. Protocol conformance declares that the specific protocol state machine specifies a protocol that conforms to the general state machine one, or that the specific behavioral state machine abide by the protocol of the general protocol state machine.
  */
 
-QProtocolConformance::QProtocolConformance(QObject *parent) :
-    QDirectedRelationship(*new QProtocolConformancePrivate, parent)
+QProtocolConformance::QProtocolConformance(QUmlObject *parent, QUmlObject *wrapper) :
+    QDirectedRelationship(*new QProtocolConformancePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QProtocolConformance *>("QProtocolConformance *");
-    qRegisterMetaType<const QSet<QProtocolConformance *> *>("const QSet<QProtocolConformance *> *");
-    qRegisterMetaType<const QList<QProtocolConformance *> *>("const QList<QProtocolConformance *> *");
 }
 
-QProtocolConformance::QProtocolConformance(QProtocolConformancePrivate &dd, QObject *parent) :
-    QDirectedRelationship(dd, parent)
+QProtocolConformance::QProtocolConformance(QProtocolConformancePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QDirectedRelationship(dd, parent, wrapper)
 {
-    qRegisterMetaType<QProtocolConformance *>("QProtocolConformance *");
-    qRegisterMetaType<const QSet<QProtocolConformance *> *>("const QSet<QProtocolConformance *> *");
-    qRegisterMetaType<const QList<QProtocolConformance *> *>("const QList<QProtocolConformance *> *");
 }
 
 QProtocolConformance::~QProtocolConformance()
@@ -110,14 +104,14 @@ void QProtocolConformance::setSpecificMachine(QProtocolStateMachine *specificMac
             d->specificMachine->removeConformance(this);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qtuml_object_cast<QElement *>(d->specificMachine));
+        (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qumlobject_cast<QElement *>(d->specificMachine));
 
         d->specificMachine = specificMachine;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(specificMachine));
+        (qumlobject_cast<QElementPrivate *>(d))->setOwner(qumlobject_cast<QElement *>(specificMachine));
         if (specificMachine) {
-            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addSource(qtuml_object_cast<QElement *>(specificMachine));
+            (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->addSource(qumlobject_cast<QElement *>(specificMachine));
         }
 
         // Adjust opposite property
@@ -144,13 +138,13 @@ void QProtocolConformance::setGeneralMachine(QProtocolStateMachine *generalMachi
     Q_D(QProtocolConformance);
     if (d->generalMachine != generalMachine) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qtuml_object_cast<QElement *>(d->generalMachine));
+        (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qumlobject_cast<QElement *>(d->generalMachine));
 
         d->generalMachine = generalMachine;
 
         // Adjust subsetted property(ies)
         if (generalMachine) {
-            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qtuml_object_cast<QElement *>(generalMachine));
+            (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qumlobject_cast<QElement *>(generalMachine));
         }
     }
 }

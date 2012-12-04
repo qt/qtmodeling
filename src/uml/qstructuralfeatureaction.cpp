@@ -65,20 +65,14 @@ QStructuralFeatureActionPrivate::~QStructuralFeatureActionPrivate()
     \brief StructuralFeatureAction is an abstract class for all structural feature actions.
  */
 
-QStructuralFeatureAction::QStructuralFeatureAction(QObject *parent) :
-    QAction(*new QStructuralFeatureActionPrivate, parent)
+QStructuralFeatureAction::QStructuralFeatureAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(*new QStructuralFeatureActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QStructuralFeatureAction *>("QStructuralFeatureAction *");
-    qRegisterMetaType<const QSet<QStructuralFeatureAction *> *>("const QSet<QStructuralFeatureAction *> *");
-    qRegisterMetaType<const QList<QStructuralFeatureAction *> *>("const QList<QStructuralFeatureAction *> *");
 }
 
-QStructuralFeatureAction::QStructuralFeatureAction(QStructuralFeatureActionPrivate &dd, QObject *parent) :
-    QAction(dd, parent)
+QStructuralFeatureAction::QStructuralFeatureAction(QStructuralFeatureActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QStructuralFeatureAction *>("QStructuralFeatureAction *");
-    qRegisterMetaType<const QSet<QStructuralFeatureAction *> *>("const QSet<QStructuralFeatureAction *> *");
-    qRegisterMetaType<const QList<QStructuralFeatureAction *> *>("const QList<QStructuralFeatureAction *> *");
 }
 
 QStructuralFeatureAction::~QStructuralFeatureAction()
@@ -107,13 +101,13 @@ void QStructuralFeatureAction::setObject(QInputPin *object)
     Q_D(QStructuralFeatureAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->object));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->object));
 
         d->object = object;
 
         // Adjust subsetted property(ies)
         if (object) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(object));
+            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(object));
         }
     }
 }

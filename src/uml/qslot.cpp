@@ -68,20 +68,14 @@ QSlotPrivate::~QSlotPrivate()
     \brief A slot specifies that an entity modeled by an instance specification has a value or values for a specific structural feature.
  */
 
-QSlot::QSlot(QObject *parent) :
-    QElement(*new QSlotPrivate, parent)
+QSlot::QSlot(QUmlObject *parent, QUmlObject *wrapper) :
+    QElement(*new QSlotPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QSlot *>("QSlot *");
-    qRegisterMetaType<const QSet<QSlot *> *>("const QSet<QSlot *> *");
-    qRegisterMetaType<const QList<QSlot *> *>("const QList<QSlot *> *");
 }
 
-QSlot::QSlot(QSlotPrivate &dd, QObject *parent) :
-    QElement(dd, parent)
+QSlot::QSlot(QSlotPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QSlot *>("QSlot *");
-    qRegisterMetaType<const QSet<QSlot *> *>("const QSet<QSlot *> *");
-    qRegisterMetaType<const QList<QSlot *> *>("const QList<QSlot *> *");
 }
 
 QSlot::~QSlot()
@@ -112,7 +106,7 @@ void QSlot::addValue(QValueSpecification *value)
         d->values->append(value);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(value));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(value));
     }
 }
 
@@ -123,9 +117,10 @@ void QSlot::removeValue(QValueSpecification *value)
     Q_D(QSlot);
     if (d->values->contains(value)) {
         d->values->removeAll(value);
+        value->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(value));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(value));
     }
 }
 
@@ -174,7 +169,7 @@ void QSlot::setOwningInstance(QInstanceSpecification *owningInstance)
         d->owningInstance = owningInstance;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(owningInstance));
+        (qumlobject_cast<QElementPrivate *>(d))->setOwner(qumlobject_cast<QElement *>(owningInstance));
 
         // Adjust opposite property
         if (owningInstance)

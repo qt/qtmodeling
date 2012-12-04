@@ -41,8 +41,6 @@
 #ifndef QTUML_QINVOCATIONACTION_P_H
 #define QTUML_QINVOCATIONACTION_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qaction_p.h"
 

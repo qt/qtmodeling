@@ -63,20 +63,14 @@ QSignalEventPrivate::~QSignalEventPrivate()
     \brief A signal event represents the receipt of an asynchronous signal instance. A signal event may, for example, cause a state machine to trigger a transition.
  */
 
-QSignalEvent::QSignalEvent(QObject *parent) :
-    QMessageEvent(*new QSignalEventPrivate, parent)
+QSignalEvent::QSignalEvent(QUmlObject *parent, QUmlObject *wrapper) :
+    QMessageEvent(*new QSignalEventPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QSignalEvent *>("QSignalEvent *");
-    qRegisterMetaType<const QSet<QSignalEvent *> *>("const QSet<QSignalEvent *> *");
-    qRegisterMetaType<const QList<QSignalEvent *> *>("const QList<QSignalEvent *> *");
 }
 
-QSignalEvent::QSignalEvent(QSignalEventPrivate &dd, QObject *parent) :
-    QMessageEvent(dd, parent)
+QSignalEvent::QSignalEvent(QSignalEventPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QMessageEvent(dd, parent, wrapper)
 {
-    qRegisterMetaType<QSignalEvent *>("QSignalEvent *");
-    qRegisterMetaType<const QSet<QSignalEvent *> *>("const QSet<QSignalEvent *> *");
-    qRegisterMetaType<const QList<QSignalEvent *> *>("const QList<QSignalEvent *> *");
 }
 
 QSignalEvent::~QSignalEvent()

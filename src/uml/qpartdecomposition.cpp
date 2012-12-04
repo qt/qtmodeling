@@ -60,20 +60,14 @@ QPartDecompositionPrivate::~QPartDecompositionPrivate()
     \brief A part decomposition is a description of the internal interactions of one lifeline relative to an interaction.
  */
 
-QPartDecomposition::QPartDecomposition(QObject *parent) :
-    QInteractionUse(*new QPartDecompositionPrivate, parent)
+QPartDecomposition::QPartDecomposition(QUmlObject *parent, QUmlObject *wrapper) :
+    QInteractionUse(*new QPartDecompositionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QPartDecomposition *>("QPartDecomposition *");
-    qRegisterMetaType<const QSet<QPartDecomposition *> *>("const QSet<QPartDecomposition *> *");
-    qRegisterMetaType<const QList<QPartDecomposition *> *>("const QList<QPartDecomposition *> *");
 }
 
-QPartDecomposition::QPartDecomposition(QPartDecompositionPrivate &dd, QObject *parent) :
-    QInteractionUse(dd, parent)
+QPartDecomposition::QPartDecomposition(QPartDecompositionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QInteractionUse(dd, parent, wrapper)
 {
-    qRegisterMetaType<QPartDecomposition *>("QPartDecomposition *");
-    qRegisterMetaType<const QSet<QPartDecomposition *> *>("const QSet<QPartDecomposition *> *");
-    qRegisterMetaType<const QList<QPartDecomposition *> *>("const QList<QPartDecomposition *> *");
 }
 
 QPartDecomposition::~QPartDecomposition()

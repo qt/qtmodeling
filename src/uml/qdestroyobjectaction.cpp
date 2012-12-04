@@ -65,20 +65,14 @@ QDestroyObjectActionPrivate::~QDestroyObjectActionPrivate()
     \brief A destroy object action is an action that destroys objects.
  */
 
-QDestroyObjectAction::QDestroyObjectAction(QObject *parent) :
-    QAction(*new QDestroyObjectActionPrivate, parent)
+QDestroyObjectAction::QDestroyObjectAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(*new QDestroyObjectActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QDestroyObjectAction *>("QDestroyObjectAction *");
-    qRegisterMetaType<const QSet<QDestroyObjectAction *> *>("const QSet<QDestroyObjectAction *> *");
-    qRegisterMetaType<const QList<QDestroyObjectAction *> *>("const QList<QDestroyObjectAction *> *");
 }
 
-QDestroyObjectAction::QDestroyObjectAction(QDestroyObjectActionPrivate &dd, QObject *parent) :
-    QAction(dd, parent)
+QDestroyObjectAction::QDestroyObjectAction(QDestroyObjectActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QDestroyObjectAction *>("QDestroyObjectAction *");
-    qRegisterMetaType<const QSet<QDestroyObjectAction *> *>("const QSet<QDestroyObjectAction *> *");
-    qRegisterMetaType<const QList<QDestroyObjectAction *> *>("const QList<QDestroyObjectAction *> *");
 }
 
 QDestroyObjectAction::~QDestroyObjectAction()
@@ -153,13 +147,13 @@ void QDestroyObjectAction::setTarget(QInputPin *target)
     Q_D(QDestroyObjectAction);
     if (d->target != target) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->target));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->target));
 
         d->target = target;
 
         // Adjust subsetted property(ies)
         if (target) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(target));
+            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(target));
         }
     }
 }

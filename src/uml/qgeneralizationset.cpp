@@ -68,20 +68,14 @@ QGeneralizationSetPrivate::~QGeneralizationSetPrivate()
     \brief A generalization set is a packageable element whose instances define collections of subsets of generalization relationships.
  */
 
-QGeneralizationSet::QGeneralizationSet(QObject *parent) :
-    QPackageableElement(*new QGeneralizationSetPrivate, parent)
+QGeneralizationSet::QGeneralizationSet(QUmlObject *parent, QUmlObject *wrapper) :
+    QPackageableElement(*new QGeneralizationSetPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QGeneralizationSet *>("QGeneralizationSet *");
-    qRegisterMetaType<const QSet<QGeneralizationSet *> *>("const QSet<QGeneralizationSet *> *");
-    qRegisterMetaType<const QList<QGeneralizationSet *> *>("const QList<QGeneralizationSet *> *");
 }
 
-QGeneralizationSet::QGeneralizationSet(QGeneralizationSetPrivate &dd, QObject *parent) :
-    QPackageableElement(dd, parent)
+QGeneralizationSet::QGeneralizationSet(QGeneralizationSetPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QPackageableElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QGeneralizationSet *>("QGeneralizationSet *");
-    qRegisterMetaType<const QSet<QGeneralizationSet *> *>("const QSet<QGeneralizationSet *> *");
-    qRegisterMetaType<const QList<QGeneralizationSet *> *>("const QList<QGeneralizationSet *> *");
 }
 
 QGeneralizationSet::~QGeneralizationSet()

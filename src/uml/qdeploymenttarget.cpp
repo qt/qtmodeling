@@ -65,20 +65,14 @@ QDeploymentTargetPrivate::~QDeploymentTargetPrivate()
     \brief A deployment target is the location for a deployed artifact.
  */
 
-QDeploymentTarget::QDeploymentTarget(QObject *parent) :
-    QNamedElement(*new QDeploymentTargetPrivate, parent)
+QDeploymentTarget::QDeploymentTarget(QUmlObject *parent, QUmlObject *wrapper) :
+    QNamedElement(*new QDeploymentTargetPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QDeploymentTarget *>("QDeploymentTarget *");
-    qRegisterMetaType<const QSet<QDeploymentTarget *> *>("const QSet<QDeploymentTarget *> *");
-    qRegisterMetaType<const QList<QDeploymentTarget *> *>("const QList<QDeploymentTarget *> *");
 }
 
-QDeploymentTarget::QDeploymentTarget(QDeploymentTargetPrivate &dd, QObject *parent) :
-    QNamedElement(dd, parent)
+QDeploymentTarget::QDeploymentTarget(QDeploymentTargetPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QNamedElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QDeploymentTarget *>("QDeploymentTarget *");
-    qRegisterMetaType<const QSet<QDeploymentTarget *> *>("const QSet<QDeploymentTarget *> *");
-    qRegisterMetaType<const QList<QDeploymentTarget *> *>("const QList<QDeploymentTarget *> *");
 }
 
 QDeploymentTarget::~QDeploymentTarget()
@@ -121,8 +115,8 @@ void QDeploymentTarget::addDeployment(QDeployment *deployment)
         d->deployments->insert(deployment);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(deployment));
-        (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(qtuml_object_cast<QDependency *>(deployment));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(deployment));
+        (qumlobject_cast<QNamedElement *>(this))->addClientDependency(qumlobject_cast<QDependency *>(deployment));
 
         // Adjust opposite property
         deployment->setLocation(this);
@@ -136,10 +130,11 @@ void QDeploymentTarget::removeDeployment(QDeployment *deployment)
     Q_D(QDeploymentTarget);
     if (d->deployments->contains(deployment)) {
         d->deployments->remove(deployment);
+        deployment->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(deployment));
-        (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(qtuml_object_cast<QDependency *>(deployment));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(deployment));
+        (qumlobject_cast<QNamedElement *>(this))->removeClientDependency(qumlobject_cast<QDependency *>(deployment));
 
         // Adjust opposite property
         deployment->setLocation(0);

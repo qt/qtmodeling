@@ -41,8 +41,6 @@
 #ifndef QTUML_QCONSIDERIGNOREFRAGMENT_P_H
 #define QTUML_QCONSIDERIGNOREFRAGMENT_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qcombinedfragment_p.h"
 

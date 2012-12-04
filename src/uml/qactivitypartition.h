@@ -78,7 +78,7 @@ class Q_UML_EXPORT QActivityPartition : public QActivityGroup
     Q_DECLARE_PRIVATE(QActivityPartition)
 
 public:
-    Q_INVOKABLE explicit QActivityPartition(QObject *parent = 0);
+    Q_INVOKABLE explicit QActivityPartition(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QActivityPartition();
 
     // Attributes from QActivityPartition
@@ -103,7 +103,7 @@ public:
     Q_INVOKABLE void removeEdge(QActivityEdge *edge);
 
 protected:
-    explicit QActivityPartition(QActivityPartitionPrivate &dd, QObject *parent = 0);
+    explicit QActivityPartition(QActivityPartitionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

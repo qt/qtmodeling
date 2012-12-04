@@ -58,12 +58,6 @@ QConditionalNodePrivate::QConditionalNodePrivate() :
 QConditionalNodePrivate::~QConditionalNodePrivate()
 {
     delete clauses;
-    foreach (QOutputPin *outputpin, *results) {
-        QObject *object = outputpin;
-        while (object->parent())
-            object = object->parent();
-        delete object;
-    }
     delete results;
 }
 
@@ -75,20 +69,14 @@ QConditionalNodePrivate::~QConditionalNodePrivate()
     \brief A conditional node is a structured activity node that represents an exclusive choice among some number of alternatives.
  */
 
-QConditionalNode::QConditionalNode(QObject *parent) :
-    QStructuredActivityNode(*new QConditionalNodePrivate, parent)
+QConditionalNode::QConditionalNode(QUmlObject *parent, QUmlObject *wrapper) :
+    QStructuredActivityNode(*new QConditionalNodePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QConditionalNode *>("QConditionalNode *");
-    qRegisterMetaType<const QSet<QConditionalNode *> *>("const QSet<QConditionalNode *> *");
-    qRegisterMetaType<const QList<QConditionalNode *> *>("const QList<QConditionalNode *> *");
 }
 
-QConditionalNode::QConditionalNode(QConditionalNodePrivate &dd, QObject *parent) :
-    QStructuredActivityNode(dd, parent)
+QConditionalNode::QConditionalNode(QConditionalNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QStructuredActivityNode(dd, parent, wrapper)
 {
-    qRegisterMetaType<QConditionalNode *>("QConditionalNode *");
-    qRegisterMetaType<const QSet<QConditionalNode *> *>("const QSet<QConditionalNode *> *");
-    qRegisterMetaType<const QList<QConditionalNode *> *>("const QList<QConditionalNode *> *");
 }
 
 QConditionalNode::~QConditionalNode()
@@ -165,7 +153,7 @@ void QConditionalNode::addClause(QClause *clause)
         d->clauses->insert(clause);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(clause));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(clause));
     }
 }
 
@@ -176,9 +164,10 @@ void QConditionalNode::removeClause(QClause *clause)
     Q_D(QConditionalNode);
     if (d->clauses->contains(clause)) {
         d->clauses->remove(clause);
+        clause->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(clause));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(clause));
     }
 }
 
@@ -200,6 +189,7 @@ void QConditionalNode::addResult(QOutputPin *result)
     Q_D(QConditionalNode);
     if (!d->results->contains(result)) {
         d->results->append(result);
+        result->setParent(quml_topLevelWrapper(this));
     }
 }
 
@@ -210,6 +200,7 @@ void QConditionalNode::removeResult(QOutputPin *result)
     Q_D(QConditionalNode);
     if (d->results->contains(result)) {
         d->results->removeAll(result);
+        result->setParent(0);
     }
 }
 

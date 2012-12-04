@@ -62,11 +62,11 @@ class Q_UML_EXPORT QControlNode : public QActivityNode
     Q_DECLARE_PRIVATE(QControlNode)
 
 public:
-    Q_INVOKABLE explicit QControlNode(QObject *parent = 0);
+    Q_INVOKABLE explicit QControlNode(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QControlNode();
 
 protected:
-    explicit QControlNode(QControlNodePrivate &dd, QObject *parent = 0);
+    explicit QControlNode(QControlNodePrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -60,20 +60,14 @@ QLiteralRealPrivate::~QLiteralRealPrivate()
     \brief A literal real is a specification of a real value.
  */
 
-QLiteralReal::QLiteralReal(QObject *parent) :
-    QLiteralSpecification(*new QLiteralRealPrivate, parent)
+QLiteralReal::QLiteralReal(QUmlObject *parent, QUmlObject *wrapper) :
+    QLiteralSpecification(*new QLiteralRealPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QLiteralReal *>("QLiteralReal *");
-    qRegisterMetaType<const QSet<QLiteralReal *> *>("const QSet<QLiteralReal *> *");
-    qRegisterMetaType<const QList<QLiteralReal *> *>("const QList<QLiteralReal *> *");
 }
 
-QLiteralReal::QLiteralReal(QLiteralRealPrivate &dd, QObject *parent) :
-    QLiteralSpecification(dd, parent)
+QLiteralReal::QLiteralReal(QLiteralRealPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QLiteralSpecification(dd, parent, wrapper)
 {
-    qRegisterMetaType<QLiteralReal *>("QLiteralReal *");
-    qRegisterMetaType<const QSet<QLiteralReal *> *>("const QSet<QLiteralReal *> *");
-    qRegisterMetaType<const QList<QLiteralReal *> *>("const QList<QLiteralReal *> *");
 }
 
 QLiteralReal::~QLiteralReal()

@@ -65,20 +65,14 @@ QCreateObjectActionPrivate::~QCreateObjectActionPrivate()
     \brief A create object action is an action that creates an object that conforms to a statically specified classifier and puts it on an output pin at runtime.
  */
 
-QCreateObjectAction::QCreateObjectAction(QObject *parent) :
-    QAction(*new QCreateObjectActionPrivate, parent)
+QCreateObjectAction::QCreateObjectAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(*new QCreateObjectActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QCreateObjectAction *>("QCreateObjectAction *");
-    qRegisterMetaType<const QSet<QCreateObjectAction *> *>("const QSet<QCreateObjectAction *> *");
-    qRegisterMetaType<const QList<QCreateObjectAction *> *>("const QList<QCreateObjectAction *> *");
 }
 
-QCreateObjectAction::QCreateObjectAction(QCreateObjectActionPrivate &dd, QObject *parent) :
-    QAction(dd, parent)
+QCreateObjectAction::QCreateObjectAction(QCreateObjectActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QCreateObjectAction *>("QCreateObjectAction *");
-    qRegisterMetaType<const QSet<QCreateObjectAction *> *>("const QSet<QCreateObjectAction *> *");
-    qRegisterMetaType<const QList<QCreateObjectAction *> *>("const QList<QCreateObjectAction *> *");
 }
 
 QCreateObjectAction::~QCreateObjectAction()
@@ -128,13 +122,13 @@ void QCreateObjectAction::setResult(QOutputPin *result)
     Q_D(QCreateObjectAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(d->result));
+        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(result));
+            (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(result));
         }
     }
 }

@@ -60,20 +60,14 @@ QLiteralIntegerPrivate::~QLiteralIntegerPrivate()
     \brief A literal integer is a specification of an integer value.
  */
 
-QLiteralInteger::QLiteralInteger(QObject *parent) :
-    QLiteralSpecification(*new QLiteralIntegerPrivate, parent)
+QLiteralInteger::QLiteralInteger(QUmlObject *parent, QUmlObject *wrapper) :
+    QLiteralSpecification(*new QLiteralIntegerPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QLiteralInteger *>("QLiteralInteger *");
-    qRegisterMetaType<const QSet<QLiteralInteger *> *>("const QSet<QLiteralInteger *> *");
-    qRegisterMetaType<const QList<QLiteralInteger *> *>("const QList<QLiteralInteger *> *");
 }
 
-QLiteralInteger::QLiteralInteger(QLiteralIntegerPrivate &dd, QObject *parent) :
-    QLiteralSpecification(dd, parent)
+QLiteralInteger::QLiteralInteger(QLiteralIntegerPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QLiteralSpecification(dd, parent, wrapper)
 {
-    qRegisterMetaType<QLiteralInteger *>("QLiteralInteger *");
-    qRegisterMetaType<const QSet<QLiteralInteger *> *>("const QSet<QLiteralInteger *> *");
-    qRegisterMetaType<const QList<QLiteralInteger *> *>("const QList<QLiteralInteger *> *");
 }
 
 QLiteralInteger::~QLiteralInteger()

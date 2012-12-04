@@ -60,20 +60,14 @@ QCentralBufferNodePrivate::~QCentralBufferNodePrivate()
     \brief A central buffer node is an object node for managing flows from multiple sources and destinations.
  */
 
-QCentralBufferNode::QCentralBufferNode(QObject *parent) :
-    QObjectNode(*new QCentralBufferNodePrivate, parent)
+QCentralBufferNode::QCentralBufferNode(QUmlObject *parent, QUmlObject *wrapper) :
+    QObjectNode(*new QCentralBufferNodePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QCentralBufferNode *>("QCentralBufferNode *");
-    qRegisterMetaType<const QSet<QCentralBufferNode *> *>("const QSet<QCentralBufferNode *> *");
-    qRegisterMetaType<const QList<QCentralBufferNode *> *>("const QList<QCentralBufferNode *> *");
 }
 
-QCentralBufferNode::QCentralBufferNode(QCentralBufferNodePrivate &dd, QObject *parent) :
-    QObjectNode(dd, parent)
+QCentralBufferNode::QCentralBufferNode(QCentralBufferNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QObjectNode(dd, parent, wrapper)
 {
-    qRegisterMetaType<QCentralBufferNode *>("QCentralBufferNode *");
-    qRegisterMetaType<const QSet<QCentralBufferNode *> *>("const QSet<QCentralBufferNode *> *");
-    qRegisterMetaType<const QList<QCentralBufferNode *> *>("const QList<QCentralBufferNode *> *");
 }
 
 QCentralBufferNode::~QCentralBufferNode()

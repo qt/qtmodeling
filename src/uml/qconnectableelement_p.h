@@ -41,10 +41,8 @@
 #ifndef QTUML_QCONNECTABLEELEMENT_P_H
 #define QTUML_QCONNECTABLEELEMENT_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
-#include "private/qobject_p.h"
+#include "private/qumlobject_p.h"
 #include "private/qtypedelement_p.h"
 #include "private/qparameterableelement_p.h"
 
@@ -63,7 +61,7 @@ QT_MODULE(QtUml)
 class QConnectorEnd;
 class QConnectableElementTemplateParameter;
 
-class Q_UML_EXPORT QConnectableElementPrivate : public QObjectPrivate
+class Q_UML_EXPORT QConnectableElementPrivate : public QUmlObjectPrivate
 {
     Q_DECLARE_PUBLIC(QConnectableElement)
 

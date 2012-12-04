@@ -68,20 +68,14 @@ QTemplateBindingPrivate::~QTemplateBindingPrivate()
     \brief A template binding represents a relationship between a templateable element and a template. A template binding specifies the substitutions of actual parameters for the formal parameters of the template.
  */
 
-QTemplateBinding::QTemplateBinding(QObject *parent) :
-    QDirectedRelationship(*new QTemplateBindingPrivate, parent)
+QTemplateBinding::QTemplateBinding(QUmlObject *parent, QUmlObject *wrapper) :
+    QDirectedRelationship(*new QTemplateBindingPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QTemplateBinding *>("QTemplateBinding *");
-    qRegisterMetaType<const QSet<QTemplateBinding *> *>("const QSet<QTemplateBinding *> *");
-    qRegisterMetaType<const QList<QTemplateBinding *> *>("const QList<QTemplateBinding *> *");
 }
 
-QTemplateBinding::QTemplateBinding(QTemplateBindingPrivate &dd, QObject *parent) :
-    QDirectedRelationship(dd, parent)
+QTemplateBinding::QTemplateBinding(QTemplateBindingPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QDirectedRelationship(dd, parent, wrapper)
 {
-    qRegisterMetaType<QTemplateBinding *>("QTemplateBinding *");
-    qRegisterMetaType<const QSet<QTemplateBinding *> *>("const QSet<QTemplateBinding *> *");
-    qRegisterMetaType<const QList<QTemplateBinding *> *>("const QList<QTemplateBinding *> *");
 }
 
 QTemplateBinding::~QTemplateBinding()
@@ -110,13 +104,13 @@ void QTemplateBinding::setSignature(QTemplateSignature *signature)
     Q_D(QTemplateBinding);
     if (d->signature != signature) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qtuml_object_cast<QElement *>(d->signature));
+        (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qumlobject_cast<QElement *>(d->signature));
 
         d->signature = signature;
 
         // Adjust subsetted property(ies)
         if (signature) {
-            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qtuml_object_cast<QElement *>(signature));
+            (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qumlobject_cast<QElement *>(signature));
         }
     }
 }
@@ -143,14 +137,14 @@ void QTemplateBinding::setBoundElement(QTemplateableElement *boundElement)
             d->boundElement->removeTemplateBinding(this);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qtuml_object_cast<QElement *>(d->boundElement));
+        (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qumlobject_cast<QElement *>(d->boundElement));
 
         d->boundElement = boundElement;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(boundElement));
+        (qumlobject_cast<QElementPrivate *>(d))->setOwner(qumlobject_cast<QElement *>(boundElement));
         if (boundElement) {
-            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addSource(qtuml_object_cast<QElement *>(boundElement));
+            (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->addSource(qumlobject_cast<QElement *>(boundElement));
         }
 
         // Adjust opposite property
@@ -179,7 +173,7 @@ void QTemplateBinding::addParameterSubstitution(QTemplateParameterSubstitution *
         d->parameterSubstitutions->insert(parameterSubstitution);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(parameterSubstitution));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(parameterSubstitution));
 
         // Adjust opposite property
         parameterSubstitution->setTemplateBinding(this);
@@ -193,9 +187,10 @@ void QTemplateBinding::removeParameterSubstitution(QTemplateParameterSubstitutio
     Q_D(QTemplateBinding);
     if (d->parameterSubstitutions->contains(parameterSubstitution)) {
         d->parameterSubstitutions->remove(parameterSubstitution);
+        parameterSubstitution->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(parameterSubstitution));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(parameterSubstitution));
 
         // Adjust opposite property
         parameterSubstitution->setTemplateBinding(0);

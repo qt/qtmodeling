@@ -68,20 +68,14 @@ QUnmarshallActionPrivate::~QUnmarshallActionPrivate()
     \brief An unmarshall action is an action that breaks an object of a known type into outputs each of which is equal to a value from a structural feature of the object.
  */
 
-QUnmarshallAction::QUnmarshallAction(QObject *parent) :
-    QAction(*new QUnmarshallActionPrivate, parent)
+QUnmarshallAction::QUnmarshallAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(*new QUnmarshallActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QUnmarshallAction *>("QUnmarshallAction *");
-    qRegisterMetaType<const QSet<QUnmarshallAction *> *>("const QSet<QUnmarshallAction *> *");
-    qRegisterMetaType<const QList<QUnmarshallAction *> *>("const QList<QUnmarshallAction *> *");
 }
 
-QUnmarshallAction::QUnmarshallAction(QUnmarshallActionPrivate &dd, QObject *parent) :
-    QAction(dd, parent)
+QUnmarshallAction::QUnmarshallAction(QUnmarshallActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QUnmarshallAction *>("QUnmarshallAction *");
-    qRegisterMetaType<const QSet<QUnmarshallAction *> *>("const QSet<QUnmarshallAction *> *");
-    qRegisterMetaType<const QList<QUnmarshallAction *> *>("const QList<QUnmarshallAction *> *");
 }
 
 QUnmarshallAction::~QUnmarshallAction()
@@ -110,13 +104,13 @@ void QUnmarshallAction::setObject(QInputPin *object)
     Q_D(QUnmarshallAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->object));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->object));
 
         d->object = object;
 
         // Adjust subsetted property(ies)
         if (object) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(object));
+            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(object));
         }
     }
 }
@@ -141,7 +135,7 @@ void QUnmarshallAction::addResult(QOutputPin *result)
         d->results->insert(result);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(result));
+        (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(result));
     }
 }
 
@@ -152,9 +146,10 @@ void QUnmarshallAction::removeResult(QOutputPin *result)
     Q_D(QUnmarshallAction);
     if (d->results->contains(result)) {
         d->results->remove(result);
+        result->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(result));
+        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(result));
     }
 }
 

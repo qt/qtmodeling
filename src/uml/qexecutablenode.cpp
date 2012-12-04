@@ -64,20 +64,14 @@ QExecutableNodePrivate::~QExecutableNodePrivate()
     \brief An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.
  */
 
-QExecutableNode::QExecutableNode(QObject *parent) :
-    QActivityNode(*new QExecutableNodePrivate, parent)
+QExecutableNode::QExecutableNode(QUmlObject *parent, QUmlObject *wrapper) :
+    QActivityNode(*new QExecutableNodePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QExecutableNode *>("QExecutableNode *");
-    qRegisterMetaType<const QSet<QExecutableNode *> *>("const QSet<QExecutableNode *> *");
-    qRegisterMetaType<const QList<QExecutableNode *> *>("const QList<QExecutableNode *> *");
 }
 
-QExecutableNode::QExecutableNode(QExecutableNodePrivate &dd, QObject *parent) :
-    QActivityNode(dd, parent)
+QExecutableNode::QExecutableNode(QExecutableNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QActivityNode(dd, parent, wrapper)
 {
-    qRegisterMetaType<QExecutableNode *>("QExecutableNode *");
-    qRegisterMetaType<const QSet<QExecutableNode *> *>("const QSet<QExecutableNode *> *");
-    qRegisterMetaType<const QList<QExecutableNode *> *>("const QList<QExecutableNode *> *");
 }
 
 QExecutableNode::~QExecutableNode()
@@ -108,7 +102,7 @@ void QExecutableNode::addHandler(QExceptionHandler *handler)
         d->handlers->insert(handler);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(handler));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(handler));
 
         // Adjust opposite property
         handler->setProtectedNode(this);
@@ -122,9 +116,10 @@ void QExecutableNode::removeHandler(QExceptionHandler *handler)
     Q_D(QExecutableNode);
     if (d->handlers->contains(handler)) {
         d->handlers->remove(handler);
+        handler->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(handler));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(handler));
 
         // Adjust opposite property
         handler->setProtectedNode(0);

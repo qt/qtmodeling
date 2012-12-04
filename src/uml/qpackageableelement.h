@@ -44,7 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
+#include <QtUml/QUmlObject>
 #include <QtUml/QParameterableElement>
 #include <QtUml/QNamedElement>
 
@@ -59,7 +59,7 @@ QT_MODULE(QtUml)
 
 class QPackageableElementPrivate;
 
-class Q_UML_EXPORT QPackageableElement : public QObject
+class Q_UML_EXPORT QPackageableElement : public QUmlObject
 {
     Q_OBJECT
 
@@ -69,7 +69,7 @@ class Q_UML_EXPORT QPackageableElement : public QObject
     Q_DECLARE_PRIVATE(QPackageableElement)
 
 public:
-    Q_INVOKABLE explicit QPackageableElement(QObject *parent = 0);
+    Q_INVOKABLE explicit QPackageableElement(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QPackageableElement();
 
     // Association ends from aggregated QElement
@@ -103,7 +103,7 @@ public:
     Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
 
 protected:
-    explicit QPackageableElement(QPackageableElementPrivate &dd, QObject *parent = 0);
+    explicit QPackageableElement(QPackageableElementPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 
 private:
     QParameterableElement *_wrappedParameterableElement;

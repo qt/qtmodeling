@@ -69,20 +69,14 @@ QReclassifyObjectActionPrivate::~QReclassifyObjectActionPrivate()
     \brief A reclassify object action is an action that changes which classifiers classify an object.
  */
 
-QReclassifyObjectAction::QReclassifyObjectAction(QObject *parent) :
-    QAction(*new QReclassifyObjectActionPrivate, parent)
+QReclassifyObjectAction::QReclassifyObjectAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(*new QReclassifyObjectActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QReclassifyObjectAction *>("QReclassifyObjectAction *");
-    qRegisterMetaType<const QSet<QReclassifyObjectAction *> *>("const QSet<QReclassifyObjectAction *> *");
-    qRegisterMetaType<const QList<QReclassifyObjectAction *> *>("const QList<QReclassifyObjectAction *> *");
 }
 
-QReclassifyObjectAction::QReclassifyObjectAction(QReclassifyObjectActionPrivate &dd, QObject *parent) :
-    QAction(dd, parent)
+QReclassifyObjectAction::QReclassifyObjectAction(QReclassifyObjectActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QReclassifyObjectAction *>("QReclassifyObjectAction *");
-    qRegisterMetaType<const QSet<QReclassifyObjectAction *> *>("const QSet<QReclassifyObjectAction *> *");
-    qRegisterMetaType<const QList<QReclassifyObjectAction *> *>("const QList<QReclassifyObjectAction *> *");
 }
 
 QReclassifyObjectAction::~QReclassifyObjectAction()
@@ -167,13 +161,13 @@ void QReclassifyObjectAction::setObject(QInputPin *object)
     Q_D(QReclassifyObjectAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->object));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->object));
 
         d->object = object;
 
         // Adjust subsetted property(ies)
         if (object) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(object));
+            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(object));
         }
     }
 }

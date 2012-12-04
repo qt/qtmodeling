@@ -41,10 +41,8 @@
 #ifndef QTUML_QREGION_P_H
 #define QTUML_QREGION_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
-#include "private/qobject_p.h"
+#include "private/qumlobject_p.h"
 #include "private/qredefinableelement_p.h"
 #include "private/qnamespace_p.h"
 
@@ -67,7 +65,7 @@ class QClassifier;
 class QRegion;
 class QState;
 
-class Q_UML_EXPORT QRegionPrivate : public QObjectPrivate
+class Q_UML_EXPORT QRegionPrivate : public QUmlObjectPrivate
 {
     Q_DECLARE_PUBLIC(QRegion)
 

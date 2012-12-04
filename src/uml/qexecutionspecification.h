@@ -68,7 +68,7 @@ class Q_UML_EXPORT QExecutionSpecification : public QInteractionFragment
     Q_DECLARE_PRIVATE(QExecutionSpecification)
 
 public:
-    Q_INVOKABLE explicit QExecutionSpecification(QObject *parent = 0);
+    Q_INVOKABLE explicit QExecutionSpecification(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QExecutionSpecification();
 
     // Association ends from QExecutionSpecification
@@ -78,7 +78,7 @@ public:
     Q_INVOKABLE void setFinish(QOccurrenceSpecification *finish);
 
 protected:
-    explicit QExecutionSpecification(QExecutionSpecificationPrivate &dd, QObject *parent = 0);
+    explicit QExecutionSpecification(QExecutionSpecificationPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

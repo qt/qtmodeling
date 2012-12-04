@@ -67,7 +67,7 @@ class Q_UML_EXPORT QMessageEnd : public QNamedElement
     Q_DECLARE_PRIVATE(QMessageEnd)
 
 public:
-    Q_INVOKABLE explicit QMessageEnd(QObject *parent = 0);
+    Q_INVOKABLE explicit QMessageEnd(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QMessageEnd();
 
     // Association ends from QMessageEnd
@@ -75,7 +75,7 @@ public:
     Q_INVOKABLE void setMessage(QMessage *message);
 
 protected:
-    explicit QMessageEnd(QMessageEndPrivate &dd, QObject *parent = 0);
+    explicit QMessageEnd(QMessageEndPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

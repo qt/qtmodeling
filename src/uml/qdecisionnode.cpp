@@ -65,20 +65,14 @@ QDecisionNodePrivate::~QDecisionNodePrivate()
     \brief A decision node is a control node that chooses between outgoing flows.
  */
 
-QDecisionNode::QDecisionNode(QObject *parent) :
-    QControlNode(*new QDecisionNodePrivate, parent)
+QDecisionNode::QDecisionNode(QUmlObject *parent, QUmlObject *wrapper) :
+    QControlNode(*new QDecisionNodePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QDecisionNode *>("QDecisionNode *");
-    qRegisterMetaType<const QSet<QDecisionNode *> *>("const QSet<QDecisionNode *> *");
-    qRegisterMetaType<const QList<QDecisionNode *> *>("const QList<QDecisionNode *> *");
 }
 
-QDecisionNode::QDecisionNode(QDecisionNodePrivate &dd, QObject *parent) :
-    QControlNode(dd, parent)
+QDecisionNode::QDecisionNode(QDecisionNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QControlNode(dd, parent, wrapper)
 {
-    qRegisterMetaType<QDecisionNode *>("QDecisionNode *");
-    qRegisterMetaType<const QSet<QDecisionNode *> *>("const QSet<QDecisionNode *> *");
-    qRegisterMetaType<const QList<QDecisionNode *> *>("const QList<QDecisionNode *> *");
 }
 
 QDecisionNode::~QDecisionNode()

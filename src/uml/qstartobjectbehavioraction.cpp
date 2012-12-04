@@ -63,20 +63,14 @@ QStartObjectBehaviorActionPrivate::~QStartObjectBehaviorActionPrivate()
     \brief StartObjectBehaviorAction is an action that starts the execution either of a directly instantiated behavior or of the classifier behavior of an object. Argument values may be supplied for the input parameters of the behavior. If the behavior is invoked synchronously, then output values may be obtained for output parameters.
  */
 
-QStartObjectBehaviorAction::QStartObjectBehaviorAction(QObject *parent) :
-    QCallAction(*new QStartObjectBehaviorActionPrivate, parent)
+QStartObjectBehaviorAction::QStartObjectBehaviorAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QCallAction(*new QStartObjectBehaviorActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QStartObjectBehaviorAction *>("QStartObjectBehaviorAction *");
-    qRegisterMetaType<const QSet<QStartObjectBehaviorAction *> *>("const QSet<QStartObjectBehaviorAction *> *");
-    qRegisterMetaType<const QList<QStartObjectBehaviorAction *> *>("const QList<QStartObjectBehaviorAction *> *");
 }
 
-QStartObjectBehaviorAction::QStartObjectBehaviorAction(QStartObjectBehaviorActionPrivate &dd, QObject *parent) :
-    QCallAction(dd, parent)
+QStartObjectBehaviorAction::QStartObjectBehaviorAction(QStartObjectBehaviorActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QCallAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QStartObjectBehaviorAction *>("QStartObjectBehaviorAction *");
-    qRegisterMetaType<const QSet<QStartObjectBehaviorAction *> *>("const QSet<QStartObjectBehaviorAction *> *");
-    qRegisterMetaType<const QList<QStartObjectBehaviorAction *> *>("const QList<QStartObjectBehaviorAction *> *");
 }
 
 QStartObjectBehaviorAction::~QStartObjectBehaviorAction()
@@ -105,13 +99,13 @@ void QStartObjectBehaviorAction::setObject(QInputPin *object)
     Q_D(QStartObjectBehaviorAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->object));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->object));
 
         d->object = object;
 
         // Adjust subsetted property(ies)
         if (object) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(object));
+            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(object));
         }
     }
 }

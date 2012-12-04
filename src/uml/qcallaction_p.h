@@ -41,8 +41,6 @@
 #ifndef QTUML_QCALLACTION_P_H
 #define QTUML_QCALLACTION_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qinvocationaction_p.h"
 

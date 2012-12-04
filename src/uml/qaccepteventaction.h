@@ -73,7 +73,7 @@ class Q_UML_EXPORT QAcceptEventAction : public QAction
     Q_DECLARE_PRIVATE(QAcceptEventAction)
 
 public:
-    Q_INVOKABLE explicit QAcceptEventAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QAcceptEventAction(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QAcceptEventAction();
 
     // Attributes from QAcceptEventAction
@@ -89,7 +89,7 @@ public:
     Q_INVOKABLE void removeResult(QOutputPin *result);
 
 protected:
-    explicit QAcceptEventAction(QAcceptEventActionPrivate &dd, QObject *parent = 0);
+    explicit QAcceptEventAction(QAcceptEventActionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -65,20 +65,14 @@ QReadExtentActionPrivate::~QReadExtentActionPrivate()
     \brief A read extent action is an action that retrieves the current instances of a classifier.
  */
 
-QReadExtentAction::QReadExtentAction(QObject *parent) :
-    QAction(*new QReadExtentActionPrivate, parent)
+QReadExtentAction::QReadExtentAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(*new QReadExtentActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QReadExtentAction *>("QReadExtentAction *");
-    qRegisterMetaType<const QSet<QReadExtentAction *> *>("const QSet<QReadExtentAction *> *");
-    qRegisterMetaType<const QList<QReadExtentAction *> *>("const QList<QReadExtentAction *> *");
 }
 
-QReadExtentAction::QReadExtentAction(QReadExtentActionPrivate &dd, QObject *parent) :
-    QAction(dd, parent)
+QReadExtentAction::QReadExtentAction(QReadExtentActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QReadExtentAction *>("QReadExtentAction *");
-    qRegisterMetaType<const QSet<QReadExtentAction *> *>("const QSet<QReadExtentAction *> *");
-    qRegisterMetaType<const QList<QReadExtentAction *> *>("const QList<QReadExtentAction *> *");
 }
 
 QReadExtentAction::~QReadExtentAction()
@@ -128,13 +122,13 @@ void QReadExtentAction::setResult(QOutputPin *result)
     Q_D(QReadExtentAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(d->result));
+        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(result));
+            (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(result));
         }
     }
 }

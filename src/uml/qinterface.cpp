@@ -76,20 +76,14 @@ QInterfacePrivate::~QInterfacePrivate()
     \brief Since an interface specifies conformance characteristics, it does not own detailed behavior specifications. Instead, interfaces may own a protocol state machine that specifies event sequences and pre/post conditions for the operations and receptions described by the interface.Interfaces may include receptions (in addition to operations).An interface is a kind of classifier that represents a declaration of a set of coherent public features and obligations. An interface specifies a contract; any instance of a classifier that realizes the interface must fulfill that contract. The obligations that may be associated with an interface are in the form of various kinds of constraints (such as pre- and post-conditions) or protocol specifications, which may impose ordering restrictions on interactions through the interface.
  */
 
-QInterface::QInterface(QObject *parent) :
-    QClassifier(*new QInterfacePrivate, parent)
+QInterface::QInterface(QUmlObject *parent, QUmlObject *wrapper) :
+    QClassifier(*new QInterfacePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QInterface *>("QInterface *");
-    qRegisterMetaType<const QSet<QInterface *> *>("const QSet<QInterface *> *");
-    qRegisterMetaType<const QList<QInterface *> *>("const QList<QInterface *> *");
 }
 
-QInterface::QInterface(QInterfacePrivate &dd, QObject *parent) :
-    QClassifier(dd, parent)
+QInterface::QInterface(QInterfacePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QClassifier(dd, parent, wrapper)
 {
-    qRegisterMetaType<QInterface *>("QInterface *");
-    qRegisterMetaType<const QSet<QInterface *> *>("const QSet<QInterface *> *");
-    qRegisterMetaType<const QList<QInterface *> *>("const QList<QInterface *> *");
 }
 
 QInterface::~QInterface()
@@ -118,13 +112,13 @@ void QInterface::setProtocol(QProtocolStateMachine *protocol)
     Q_D(QInterface);
     if (d->protocol != protocol) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(d->protocol));
+        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(d->protocol));
 
         d->protocol = protocol;
 
         // Adjust subsetted property(ies)
         if (protocol) {
-            (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(protocol));
+            (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(protocol));
         }
     }
 }
@@ -149,7 +143,7 @@ void QInterface::addRedefinedInterface(QInterface *redefinedInterface)
         d->redefinedInterfaces->insert(redefinedInterface);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QClassifier *>(this))->addRedefinedClassifier(qtuml_object_cast<QClassifier *>(redefinedInterface));
+        (qumlobject_cast<QClassifier *>(this))->addRedefinedClassifier(qumlobject_cast<QClassifier *>(redefinedInterface));
     }
 }
 
@@ -162,7 +156,7 @@ void QInterface::removeRedefinedInterface(QInterface *redefinedInterface)
         d->redefinedInterfaces->remove(redefinedInterface);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QClassifier *>(this))->removeRedefinedClassifier(qtuml_object_cast<QClassifier *>(redefinedInterface));
+        (qumlobject_cast<QClassifier *>(this))->removeRedefinedClassifier(qumlobject_cast<QClassifier *>(redefinedInterface));
     }
 }
 
@@ -186,8 +180,8 @@ void QInterface::addOwnedReception(QReception *ownedReception)
         d->ownedReceptions->insert(ownedReception);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QClassifierPrivate *>(d))->addFeature(qtuml_object_cast<QFeature *>(ownedReception));
-        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(ownedReception));
+        (qumlobject_cast<QClassifierPrivate *>(d))->addFeature(qumlobject_cast<QFeature *>(ownedReception));
+        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(ownedReception));
     }
 }
 
@@ -198,10 +192,11 @@ void QInterface::removeOwnedReception(QReception *ownedReception)
     Q_D(QInterface);
     if (d->ownedReceptions->contains(ownedReception)) {
         d->ownedReceptions->remove(ownedReception);
+        ownedReception->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QClassifierPrivate *>(d))->removeFeature(qtuml_object_cast<QFeature *>(ownedReception));
-        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(ownedReception));
+        (qumlobject_cast<QClassifierPrivate *>(d))->removeFeature(qumlobject_cast<QFeature *>(ownedReception));
+        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedReception));
     }
 }
 
@@ -225,8 +220,8 @@ void QInterface::addOwnedOperation(QOperation *ownedOperation)
         d->ownedOperations->append(ownedOperation);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QClassifierPrivate *>(d))->addFeature(qtuml_object_cast<QFeature *>(ownedOperation));
-        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(ownedOperation));
+        (qumlobject_cast<QClassifierPrivate *>(d))->addFeature(qumlobject_cast<QFeature *>(ownedOperation));
+        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(ownedOperation));
 
         // Adjust opposite property
         ownedOperation->setInterface(this);
@@ -240,10 +235,11 @@ void QInterface::removeOwnedOperation(QOperation *ownedOperation)
     Q_D(QInterface);
     if (d->ownedOperations->contains(ownedOperation)) {
         d->ownedOperations->removeAll(ownedOperation);
+        ownedOperation->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QClassifierPrivate *>(d))->removeFeature(qtuml_object_cast<QFeature *>(ownedOperation));
-        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(ownedOperation));
+        (qumlobject_cast<QClassifierPrivate *>(d))->removeFeature(qumlobject_cast<QFeature *>(ownedOperation));
+        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedOperation));
 
         // Adjust opposite property
         ownedOperation->setInterface(0);
@@ -270,7 +266,7 @@ void QInterface::addNestedClassifier(QClassifier *nestedClassifier)
         d->nestedClassifiers->append(nestedClassifier);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(nestedClassifier));
+        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(nestedClassifier));
     }
 }
 
@@ -281,9 +277,10 @@ void QInterface::removeNestedClassifier(QClassifier *nestedClassifier)
     Q_D(QInterface);
     if (d->nestedClassifiers->contains(nestedClassifier)) {
         d->nestedClassifiers->removeAll(nestedClassifier);
+        nestedClassifier->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(nestedClassifier));
+        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(nestedClassifier));
     }
 }
 
@@ -307,8 +304,8 @@ void QInterface::addOwnedAttribute(QProperty *ownedAttribute)
         d->ownedAttributes->append(ownedAttribute);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(ownedAttribute));
-        (qtuml_object_cast<QClassifierPrivate *>(d))->addAttribute(qtuml_object_cast<QProperty *>(ownedAttribute));
+        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(ownedAttribute));
+        (qumlobject_cast<QClassifierPrivate *>(d))->addAttribute(qumlobject_cast<QProperty *>(ownedAttribute));
 
         // Adjust opposite property
         ownedAttribute->setInterface(this);
@@ -322,10 +319,11 @@ void QInterface::removeOwnedAttribute(QProperty *ownedAttribute)
     Q_D(QInterface);
     if (d->ownedAttributes->contains(ownedAttribute)) {
         d->ownedAttributes->removeAll(ownedAttribute);
+        ownedAttribute->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(ownedAttribute));
-        (qtuml_object_cast<QClassifierPrivate *>(d))->removeAttribute(qtuml_object_cast<QProperty *>(ownedAttribute));
+        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedAttribute));
+        (qumlobject_cast<QClassifierPrivate *>(d))->removeAttribute(qumlobject_cast<QProperty *>(ownedAttribute));
 
         // Adjust opposite property
         ownedAttribute->setInterface(0);

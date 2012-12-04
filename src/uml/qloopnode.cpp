@@ -63,21 +63,9 @@ QLoopNodePrivate::QLoopNodePrivate() :
 
 QLoopNodePrivate::~QLoopNodePrivate()
 {
-    foreach (QInputPin *inputpin, *loopVariableInputs) {
-        QObject *object = inputpin;
-        while (object->parent())
-            object = object->parent();
-        delete object;
-    }
     delete loopVariableInputs;
     delete bodyOutputs;
     delete loopVariables;
-    foreach (QOutputPin *outputpin, *results) {
-        QObject *object = outputpin;
-        while (object->parent())
-            object = object->parent();
-        delete object;
-    }
     delete results;
     delete setupParts;
     delete bodyParts;
@@ -92,20 +80,14 @@ QLoopNodePrivate::~QLoopNodePrivate()
     \brief A loop node is a structured activity node that represents a loop with setup, test, and body sections.
  */
 
-QLoopNode::QLoopNode(QObject *parent) :
-    QStructuredActivityNode(*new QLoopNodePrivate, parent)
+QLoopNode::QLoopNode(QUmlObject *parent, QUmlObject *wrapper) :
+    QStructuredActivityNode(*new QLoopNodePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QLoopNode *>("QLoopNode *");
-    qRegisterMetaType<const QSet<QLoopNode *> *>("const QSet<QLoopNode *> *");
-    qRegisterMetaType<const QList<QLoopNode *> *>("const QList<QLoopNode *> *");
 }
 
-QLoopNode::QLoopNode(QLoopNodePrivate &dd, QObject *parent) :
-    QStructuredActivityNode(dd, parent)
+QLoopNode::QLoopNode(QLoopNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QStructuredActivityNode(dd, parent, wrapper)
 {
-    qRegisterMetaType<QLoopNode *>("QLoopNode *");
-    qRegisterMetaType<const QSet<QLoopNode *> *>("const QSet<QLoopNode *> *");
-    qRegisterMetaType<const QList<QLoopNode *> *>("const QList<QLoopNode *> *");
 }
 
 QLoopNode::~QLoopNode()
@@ -159,6 +141,7 @@ void QLoopNode::addLoopVariableInput(QInputPin *loopVariableInput)
     Q_D(QLoopNode);
     if (!d->loopVariableInputs->contains(loopVariableInput)) {
         d->loopVariableInputs->append(loopVariableInput);
+        loopVariableInput->setParent(quml_topLevelWrapper(this));
     }
 }
 
@@ -169,6 +152,7 @@ void QLoopNode::removeLoopVariableInput(QInputPin *loopVariableInput)
     Q_D(QLoopNode);
     if (d->loopVariableInputs->contains(loopVariableInput)) {
         d->loopVariableInputs->removeAll(loopVariableInput);
+        loopVariableInput->setParent(0);
     }
 }
 
@@ -273,6 +257,7 @@ void QLoopNode::addResult(QOutputPin *result)
     Q_D(QLoopNode);
     if (!d->results->contains(result)) {
         d->results->append(result);
+        result->setParent(quml_topLevelWrapper(this));
     }
 }
 
@@ -283,6 +268,7 @@ void QLoopNode::removeResult(QOutputPin *result)
     Q_D(QLoopNode);
     if (d->results->contains(result)) {
         d->results->removeAll(result);
+        result->setParent(0);
     }
 }
 

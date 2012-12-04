@@ -44,7 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
+#include <QtUml/QUmlObject>
 #include <QtUml/QNamespace>
 #include <QtUml/QRedefinableElement>
 #include <QtUml/QVertex>
@@ -70,7 +70,7 @@ class QPseudostate;
 
 class QStatePrivate;
 
-class Q_UML_EXPORT QState : public QObject
+class Q_UML_EXPORT QState : public QUmlObject
 {
     Q_OBJECT
 
@@ -94,7 +94,7 @@ class Q_UML_EXPORT QState : public QObject
     Q_DECLARE_PRIVATE(QState)
 
 public:
-    Q_INVOKABLE explicit QState(QObject *parent = 0);
+    Q_INVOKABLE explicit QState(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QState();
 
     // Association ends from aggregated QElement
@@ -185,7 +185,7 @@ public:
     Q_INVOKABLE bool isRedefinitionContextValid(const QState *redefined) const;
 
 protected:
-    explicit QState(QStatePrivate &dd, QObject *parent = 0);
+    explicit QState(QStatePrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 
 private:
     QNamespace *_wrappedNamespace;

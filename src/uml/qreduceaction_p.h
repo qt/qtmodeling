@@ -41,8 +41,6 @@
 #ifndef QTUML_QREDUCEACTION_P_H
 #define QTUML_QREDUCEACTION_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qaction_p.h"
 

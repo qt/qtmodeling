@@ -63,20 +63,14 @@ QExtensionPointPrivate::~QExtensionPointPrivate()
     \brief An extension point identifies a point in the behavior of a use case where that behavior can be extended by the behavior of some other (extending) use case, as specified by an extend relationship.
  */
 
-QExtensionPoint::QExtensionPoint(QObject *parent) :
-    QRedefinableElement(*new QExtensionPointPrivate, parent)
+QExtensionPoint::QExtensionPoint(QUmlObject *parent, QUmlObject *wrapper) :
+    QRedefinableElement(*new QExtensionPointPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QExtensionPoint *>("QExtensionPoint *");
-    qRegisterMetaType<const QSet<QExtensionPoint *> *>("const QSet<QExtensionPoint *> *");
-    qRegisterMetaType<const QList<QExtensionPoint *> *>("const QList<QExtensionPoint *> *");
 }
 
-QExtensionPoint::QExtensionPoint(QExtensionPointPrivate &dd, QObject *parent) :
-    QRedefinableElement(dd, parent)
+QExtensionPoint::QExtensionPoint(QExtensionPointPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QRedefinableElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QExtensionPoint *>("QExtensionPoint *");
-    qRegisterMetaType<const QSet<QExtensionPoint *> *>("const QSet<QExtensionPoint *> *");
-    qRegisterMetaType<const QList<QExtensionPoint *> *>("const QList<QExtensionPoint *> *");
 }
 
 QExtensionPoint::~QExtensionPoint()
@@ -111,7 +105,7 @@ void QExtensionPoint::setUseCase(QUseCase *useCase)
         d->useCase = useCase;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(useCase));
+        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(useCase));
 
         // Adjust opposite property
         if (useCase)
