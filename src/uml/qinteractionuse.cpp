@@ -121,7 +121,6 @@ void QInteractionUse::removeActualGate(QGate *actualGate)
     Q_D(QInteractionUse);
     if (d->actualGates->contains(actualGate)) {
         d->actualGates->remove(actualGate);
-        actualGate->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(actualGate));
@@ -209,7 +208,6 @@ void QInteractionUse::removeArgument(QValueSpecification *argument)
     Q_D(QInteractionUse);
     if (d->arguments->contains(argument)) {
         d->arguments->removeAll(argument);
-        argument->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(argument));

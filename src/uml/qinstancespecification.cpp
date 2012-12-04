@@ -370,7 +370,6 @@ void QInstanceSpecification::removeSlot_(QSlot *slot_)
     Q_D(QInstanceSpecification);
     if (d->slots_->contains(slot_)) {
         d->slots_->remove(slot_);
-        slot_->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(slot_));

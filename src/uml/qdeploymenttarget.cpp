@@ -130,7 +130,6 @@ void QDeploymentTarget::removeDeployment(QDeployment *deployment)
     Q_D(QDeploymentTarget);
     if (d->deployments->contains(deployment)) {
         d->deployments->remove(deployment);
-        deployment->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(deployment));

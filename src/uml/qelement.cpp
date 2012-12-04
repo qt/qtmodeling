@@ -170,7 +170,6 @@ void QElement::addOwnedComment(QComment *ownedComment)
     Q_D(QElement);
     if (!d->ownedComments->contains(ownedComment)) {
         d->ownedComments->insert(ownedComment);
-        quml_topLevelWrapper(ownedComment)->setParent(quml_topLevelWrapper(this));
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(ownedComment));
@@ -184,7 +183,6 @@ void QElement::removeOwnedComment(QComment *ownedComment)
     Q_D(QElement);
     if (d->ownedComments->contains(ownedComment)) {
         d->ownedComments->remove(ownedComment);
-        quml_topLevelWrapper(ownedComment)->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(ownedComment));

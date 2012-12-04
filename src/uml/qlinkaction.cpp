@@ -117,7 +117,6 @@ void QLinkAction::removeInputValue(QInputPin *inputValue)
     Q_D(QLinkAction);
     if (d->inputValues->contains(inputValue)) {
         d->inputValues->remove(inputValue);
-        inputValue->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(inputValue));
@@ -155,7 +154,6 @@ void QLinkAction::removeEndData(QLinkEndData *endData)
     Q_D(QLinkAction);
     if (d->endData->contains(endData)) {
         d->endData->remove(endData);
-        endData->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(endData));

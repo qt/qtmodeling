@@ -159,7 +159,6 @@ void QLinkEndData::removeQualifier(QQualifierValue *qualifier)
     Q_D(QLinkEndData);
     if (d->qualifiers->contains(qualifier)) {
         d->qualifiers->remove(qualifier);
-        qualifier->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(qualifier));

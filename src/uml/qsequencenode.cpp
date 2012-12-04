@@ -100,7 +100,7 @@ void QSequenceNode::addExecutableNode(QExecutableNode *executableNode)
     Q_D(QSequenceNode);
     if (!d->executableNodes->contains(executableNode)) {
         d->executableNodes->append(executableNode);
-        executableNode->setParent(quml_topLevelWrapper(this));
+        quml_topLevelWrapper(executableNode)->setParent(quml_topLevelWrapper(this));
     }
 }
 
@@ -111,7 +111,7 @@ void QSequenceNode::removeExecutableNode(QExecutableNode *executableNode)
     Q_D(QSequenceNode);
     if (d->executableNodes->contains(executableNode)) {
         d->executableNodes->removeAll(executableNode);
-        executableNode->setParent(0);
+        quml_topLevelWrapper(executableNode)->setParent(0);
     }
 }
 

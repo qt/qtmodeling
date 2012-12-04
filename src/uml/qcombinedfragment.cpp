@@ -142,7 +142,6 @@ void QCombinedFragment::removeCfragmentGate(QGate *cfragmentGate)
     Q_D(QCombinedFragment);
     if (d->cfragmentGates->contains(cfragmentGate)) {
         d->cfragmentGates->remove(cfragmentGate);
-        cfragmentGate->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(cfragmentGate));
@@ -180,7 +179,6 @@ void QCombinedFragment::removeOperand(QInteractionOperand *operand)
     Q_D(QCombinedFragment);
     if (d->operands->contains(operand)) {
         d->operands->removeAll(operand);
-        operand->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(operand));

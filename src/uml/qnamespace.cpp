@@ -186,7 +186,6 @@ void QNamespace::removePackageImport(QPackageImport *packageImport)
     Q_D(QNamespace);
     if (d->packageImports->contains(packageImport)) {
         d->packageImports->remove(packageImport);
-        packageImport->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(packageImport));
@@ -268,7 +267,6 @@ void QNamespace::removeElementImport(QElementImport *elementImport)
     Q_D(QNamespace);
     if (d->elementImports->contains(elementImport)) {
         d->elementImports->remove(elementImport);
-        elementImport->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(elementImport));
@@ -316,7 +314,6 @@ void QNamespace::removeOwnedRule(QConstraint *ownedRule)
     Q_D(QNamespace);
     if (d->ownedRules->contains(ownedRule)) {
         d->ownedRules->remove(ownedRule);
-        ownedRule->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedRule));

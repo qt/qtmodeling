@@ -156,7 +156,6 @@ void QStructuredClassifier::removeOwnedAttribute(QProperty *ownedAttribute)
     Q_D(QStructuredClassifier);
     if (d->ownedAttributes->contains(ownedAttribute)) {
         d->ownedAttributes->removeAll(ownedAttribute);
-        ownedAttribute->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QClassifierPrivate *>(d))->removeAttribute(qumlobject_cast<QProperty *>(ownedAttribute));
@@ -209,7 +208,6 @@ void QStructuredClassifier::removeOwnedConnector(QConnector *ownedConnector)
     Q_D(QStructuredClassifier);
     if (d->ownedConnectors->contains(ownedConnector)) {
         d->ownedConnectors->remove(ownedConnector);
-        ownedConnector->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QClassifierPrivate *>(d))->removeFeature(qumlobject_cast<QFeature *>(ownedConnector));

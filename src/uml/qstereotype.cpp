@@ -114,7 +114,6 @@ void QStereotype::removeIcon(QImage *icon)
     Q_D(QStereotype);
     if (d->icons->contains(icon)) {
         d->icons->remove(icon);
-        icon->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(icon));

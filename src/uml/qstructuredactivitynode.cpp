@@ -648,7 +648,6 @@ void QStructuredActivityNode::removeStructuredNodeInput(QInputPin *structuredNod
     Q_D(QStructuredActivityNode);
     if (d->structuredNodeInputs->contains(structuredNodeInput)) {
         d->structuredNodeInputs->remove(structuredNodeInput);
-        structuredNodeInput->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(structuredNodeInput));
@@ -690,7 +689,6 @@ void QStructuredActivityNode::removeNode(QActivityNode *node)
     Q_D(QStructuredActivityNode);
     if (d->nodes->contains(node)) {
         d->nodes->remove(node);
-        node->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QActivityGroupPrivate *>(d))->removeContainedNode(qumlobject_cast<QActivityNode *>(node));
@@ -729,7 +727,6 @@ void QStructuredActivityNode::removeStructuredNodeOutput(QOutputPin *structuredN
     Q_D(QStructuredActivityNode);
     if (d->structuredNodeOutputs->contains(structuredNodeOutput)) {
         d->structuredNodeOutputs->remove(structuredNodeOutput);
-        structuredNodeOutput->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(structuredNodeOutput));
@@ -771,7 +768,6 @@ void QStructuredActivityNode::removeEdge(QActivityEdge *edge)
     Q_D(QStructuredActivityNode);
     if (d->edges->contains(edge)) {
         d->edges->remove(edge);
-        edge->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QActivityGroupPrivate *>(d))->removeContainedEdge(qumlobject_cast<QActivityEdge *>(edge));
@@ -816,7 +812,6 @@ void QStructuredActivityNode::removeVariable(QVariable *variable)
     Q_D(QStructuredActivityNode);
     if (d->variables->contains(variable)) {
         d->variables->remove(variable);
-        variable->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(variable));

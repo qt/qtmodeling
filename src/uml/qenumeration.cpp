@@ -116,7 +116,6 @@ void QEnumeration::removeOwnedLiteral(QEnumerationLiteral *ownedLiteral)
     Q_D(QEnumeration);
     if (d->ownedLiterals->contains(ownedLiteral)) {
         d->ownedLiterals->removeAll(ownedLiteral);
-        ownedLiteral->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedLiteral));

@@ -187,7 +187,6 @@ void QTemplateBinding::removeParameterSubstitution(QTemplateParameterSubstitutio
     Q_D(QTemplateBinding);
     if (d->parameterSubstitutions->contains(parameterSubstitution)) {
         d->parameterSubstitutions->remove(parameterSubstitution);
-        parameterSubstitution->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(parameterSubstitution));

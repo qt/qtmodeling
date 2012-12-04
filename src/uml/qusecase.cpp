@@ -125,7 +125,6 @@ void QUseCase::removeExtensionPoint(QExtensionPoint *extensionPoint)
     Q_D(QUseCase);
     if (d->extensionPoints->contains(extensionPoint)) {
         d->extensionPoints->remove(extensionPoint);
-        extensionPoint->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(extensionPoint));
@@ -169,7 +168,6 @@ void QUseCase::removeInclude(QInclude *include)
     Q_D(QUseCase);
     if (d->includes->contains(include)) {
         d->includes->remove(include);
-        include->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(include));
@@ -251,7 +249,6 @@ void QUseCase::removeExtend(QExtend *extend)
     Q_D(QUseCase);
     if (d->extends->contains(extend)) {
         d->extends->remove(extend);
-        extend->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(extend));

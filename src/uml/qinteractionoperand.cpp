@@ -388,7 +388,6 @@ void QInteractionOperand::removeFragment(QInteractionFragment *fragment)
     Q_D(QInteractionOperand);
     if (d->fragments->contains(fragment)) {
         d->fragments->removeAll(fragment);
-        fragment->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(fragment));

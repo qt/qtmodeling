@@ -181,7 +181,6 @@ void QTemplateSignature::removeOwnedParameter(QTemplateParameter *ownedParameter
     Q_D(QTemplateSignature);
     if (d->ownedParameters->contains(ownedParameter)) {
         d->ownedParameters->removeAll(ownedParameter);
-        ownedParameter->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QTemplateSignature *>(this))->removeParameter(qumlobject_cast<QTemplateParameter *>(ownedParameter));

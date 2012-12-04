@@ -166,7 +166,6 @@ void QReplyAction::removeReplyValue(QInputPin *replyValue)
     Q_D(QReplyAction);
     if (d->replyValues->contains(replyValue)) {
         d->replyValues->remove(replyValue);
-        replyValue->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(replyValue));

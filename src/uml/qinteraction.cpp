@@ -445,7 +445,6 @@ void QInteraction::removeAction(QAction *action)
     Q_D(QInteraction);
     if (d->actions->contains(action)) {
         d->actions->remove(action);
-        action->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(action));
@@ -486,7 +485,6 @@ void QInteraction::removeMessage(QMessage *message)
     Q_D(QInteraction);
     if (d->messages->contains(message)) {
         d->messages->remove(message);
-        message->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(message));
@@ -527,7 +525,6 @@ void QInteraction::removeFormalGate(QGate *formalGate)
     Q_D(QInteraction);
     if (d->formalGates->contains(formalGate)) {
         d->formalGates->remove(formalGate);
-        formalGate->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(formalGate));
@@ -568,7 +565,6 @@ void QInteraction::removeFragment(QInteractionFragment *fragment)
     Q_D(QInteraction);
     if (d->fragments->contains(fragment)) {
         d->fragments->removeAll(fragment);
-        fragment->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(fragment));
@@ -612,7 +608,6 @@ void QInteraction::removeLifeline(QLifeline *lifeline)
     Q_D(QInteraction);
     if (d->lifelines->contains(lifeline)) {
         d->lifelines->remove(lifeline);
-        lifeline->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(lifeline));

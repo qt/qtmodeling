@@ -153,7 +153,6 @@ void QTemplateableElement::removeTemplateBinding(QTemplateBinding *templateBindi
     Q_D(QTemplateableElement);
     if (d->templateBindings->contains(templateBinding)) {
         d->templateBindings->remove(templateBinding);
-        templateBinding->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(templateBinding));

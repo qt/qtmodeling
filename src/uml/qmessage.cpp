@@ -180,7 +180,6 @@ void QMessage::removeArgument(QValueSpecification *argument)
     Q_D(QMessage);
     if (d->arguments->contains(argument)) {
         d->arguments->removeAll(argument);
-        argument->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(argument));

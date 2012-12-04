@@ -690,7 +690,6 @@ void QArtifact::removeOwnedOperation(QOperation *ownedOperation)
     Q_D(QArtifact);
     if (d->ownedOperations->contains(ownedOperation)) {
         d->ownedOperations->removeAll(ownedOperation);
-        ownedOperation->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QClassifierPrivate *>(d))->removeFeature(qumlobject_cast<QFeature *>(ownedOperation));
@@ -730,7 +729,6 @@ void QArtifact::removeOwnedAttribute(QProperty *ownedAttribute)
     Q_D(QArtifact);
     if (d->ownedAttributes->contains(ownedAttribute)) {
         d->ownedAttributes->removeAll(ownedAttribute);
-        ownedAttribute->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedAttribute));
@@ -770,7 +768,6 @@ void QArtifact::removeManifestation(QManifestation *manifestation)
     Q_D(QArtifact);
     if (d->manifestations->contains(manifestation)) {
         d->manifestations->remove(manifestation);
-        manifestation->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(manifestation));
@@ -809,7 +806,6 @@ void QArtifact::removeNestedArtifact(QArtifact *nestedArtifact)
     Q_D(QArtifact);
     if (d->nestedArtifacts->contains(nestedArtifact)) {
         d->nestedArtifacts->remove(nestedArtifact);
-        nestedArtifact->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(nestedArtifact));

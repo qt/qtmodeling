@@ -116,7 +116,6 @@ void QExecutableNode::removeHandler(QExceptionHandler *handler)
     Q_D(QExecutableNode);
     if (d->handlers->contains(handler)) {
         d->handlers->remove(handler);
-        handler->setParent(0);
 
         // Adjust subsetted property(ies)
         (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(handler));
