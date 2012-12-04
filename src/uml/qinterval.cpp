@@ -62,20 +62,14 @@ QIntervalPrivate::~QIntervalPrivate()
     \brief An interval defines the range between two value specifications.
  */
 
-QInterval::QInterval(QObject *parent) :
-    QValueSpecification(*new QIntervalPrivate, parent)
+QInterval::QInterval(QUmlObject *parent, QUmlObject *wrapper) :
+    QValueSpecification(*new QIntervalPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QInterval *>("QInterval *");
-    qRegisterMetaType<const QSet<QInterval *> *>("const QSet<QInterval *> *");
-    qRegisterMetaType<const QList<QInterval *> *>("const QList<QInterval *> *");
 }
 
-QInterval::QInterval(QIntervalPrivate &dd, QObject *parent) :
-    QValueSpecification(dd, parent)
+QInterval::QInterval(QIntervalPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QValueSpecification(dd, parent, wrapper)
 {
-    qRegisterMetaType<QInterval *>("QInterval *");
-    qRegisterMetaType<const QSet<QInterval *> *>("const QSet<QInterval *> *");
-    qRegisterMetaType<const QList<QInterval *> *>("const QList<QInterval *> *");
 }
 
 QInterval::~QInterval()

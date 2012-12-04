@@ -63,20 +63,14 @@ QReadLinkActionPrivate::~QReadLinkActionPrivate()
     \brief A read link action is a link action that navigates across associations to retrieve objects on one end.
  */
 
-QReadLinkAction::QReadLinkAction(QObject *parent) :
-    QLinkAction(*new QReadLinkActionPrivate, parent)
+QReadLinkAction::QReadLinkAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QLinkAction(*new QReadLinkActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QReadLinkAction *>("QReadLinkAction *");
-    qRegisterMetaType<const QSet<QReadLinkAction *> *>("const QSet<QReadLinkAction *> *");
-    qRegisterMetaType<const QList<QReadLinkAction *> *>("const QList<QReadLinkAction *> *");
 }
 
-QReadLinkAction::QReadLinkAction(QReadLinkActionPrivate &dd, QObject *parent) :
-    QLinkAction(dd, parent)
+QReadLinkAction::QReadLinkAction(QReadLinkActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QLinkAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QReadLinkAction *>("QReadLinkAction *");
-    qRegisterMetaType<const QSet<QReadLinkAction *> *>("const QSet<QReadLinkAction *> *");
-    qRegisterMetaType<const QList<QReadLinkAction *> *>("const QList<QReadLinkAction *> *");
 }
 
 QReadLinkAction::~QReadLinkAction()
@@ -105,13 +99,13 @@ void QReadLinkAction::setResult(QOutputPin *result)
     Q_D(QReadLinkAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(d->result));
+        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(result));
+            (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(result));
         }
     }
 }

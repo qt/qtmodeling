@@ -70,7 +70,7 @@ class Q_UML_EXPORT QConsiderIgnoreFragment : public QCombinedFragment
     Q_DECLARE_PRIVATE(QConsiderIgnoreFragment)
 
 public:
-    Q_INVOKABLE explicit QConsiderIgnoreFragment(QObject *parent = 0);
+    Q_INVOKABLE explicit QConsiderIgnoreFragment(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QConsiderIgnoreFragment();
 
     // Association ends from QConsiderIgnoreFragment
@@ -79,7 +79,7 @@ public:
     Q_INVOKABLE void removeMessage(QNamedElement *message);
 
 protected:
-    explicit QConsiderIgnoreFragment(QConsiderIgnoreFragmentPrivate &dd, QObject *parent = 0);
+    explicit QConsiderIgnoreFragment(QConsiderIgnoreFragmentPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

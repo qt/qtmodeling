@@ -68,20 +68,14 @@ QLinkEndDataPrivate::~QLinkEndDataPrivate()
     \brief A link end data is not an action. It is an element that identifies links. It identifies one end of a link to be read or written by the children of a link action. A link cannot be passed as a runtime value to or from an action. Instead, a link is identified by its end objects and qualifier values, if any. This requires more than one piece of data, namely, the statically-specified end in the user model, the object on the end, and the qualifier values for that end, if any. These pieces are brought together around a link end data. Each association end is identified separately with an instance of the LinkEndData class.
  */
 
-QLinkEndData::QLinkEndData(QObject *parent) :
-    QElement(*new QLinkEndDataPrivate, parent)
+QLinkEndData::QLinkEndData(QUmlObject *parent, QUmlObject *wrapper) :
+    QElement(*new QLinkEndDataPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QLinkEndData *>("QLinkEndData *");
-    qRegisterMetaType<const QSet<QLinkEndData *> *>("const QSet<QLinkEndData *> *");
-    qRegisterMetaType<const QList<QLinkEndData *> *>("const QList<QLinkEndData *> *");
 }
 
-QLinkEndData::QLinkEndData(QLinkEndDataPrivate &dd, QObject *parent) :
-    QElement(dd, parent)
+QLinkEndData::QLinkEndData(QLinkEndDataPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QLinkEndData *>("QLinkEndData *");
-    qRegisterMetaType<const QSet<QLinkEndData *> *>("const QSet<QLinkEndData *> *");
-    qRegisterMetaType<const QList<QLinkEndData *> *>("const QList<QLinkEndData *> *");
 }
 
 QLinkEndData::~QLinkEndData()
@@ -154,7 +148,7 @@ void QLinkEndData::addQualifier(QQualifierValue *qualifier)
         d->qualifiers->insert(qualifier);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(qualifier));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(qualifier));
     }
 }
 
@@ -165,9 +159,10 @@ void QLinkEndData::removeQualifier(QQualifierValue *qualifier)
     Q_D(QLinkEndData);
     if (d->qualifiers->contains(qualifier)) {
         d->qualifiers->remove(qualifier);
+        qualifier->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(qualifier));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(qualifier));
     }
 }
 

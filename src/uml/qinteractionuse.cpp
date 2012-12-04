@@ -72,20 +72,14 @@ QInteractionUsePrivate::~QInteractionUsePrivate()
     \brief An interaction use refers to an interaction. The interaction use is a shorthand for copying the contents of the referenced interaction where the interaction use is. To be accurate the copying must take into account substituting parameters with arguments and connect the formal gates with the actual ones.
  */
 
-QInteractionUse::QInteractionUse(QObject *parent) :
-    QInteractionFragment(*new QInteractionUsePrivate, parent)
+QInteractionUse::QInteractionUse(QUmlObject *parent, QUmlObject *wrapper) :
+    QInteractionFragment(*new QInteractionUsePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QInteractionUse *>("QInteractionUse *");
-    qRegisterMetaType<const QSet<QInteractionUse *> *>("const QSet<QInteractionUse *> *");
-    qRegisterMetaType<const QList<QInteractionUse *> *>("const QList<QInteractionUse *> *");
 }
 
-QInteractionUse::QInteractionUse(QInteractionUsePrivate &dd, QObject *parent) :
-    QInteractionFragment(dd, parent)
+QInteractionUse::QInteractionUse(QInteractionUsePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QInteractionFragment(dd, parent, wrapper)
 {
-    qRegisterMetaType<QInteractionUse *>("QInteractionUse *");
-    qRegisterMetaType<const QSet<QInteractionUse *> *>("const QSet<QInteractionUse *> *");
-    qRegisterMetaType<const QList<QInteractionUse *> *>("const QList<QInteractionUse *> *");
 }
 
 QInteractionUse::~QInteractionUse()
@@ -116,7 +110,7 @@ void QInteractionUse::addActualGate(QGate *actualGate)
         d->actualGates->insert(actualGate);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(actualGate));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(actualGate));
     }
 }
 
@@ -127,9 +121,10 @@ void QInteractionUse::removeActualGate(QGate *actualGate)
     Q_D(QInteractionUse);
     if (d->actualGates->contains(actualGate)) {
         d->actualGates->remove(actualGate);
+        actualGate->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(actualGate));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(actualGate));
     }
 }
 
@@ -151,13 +146,13 @@ void QInteractionUse::setReturnValue(QValueSpecification *returnValue)
     Q_D(QInteractionUse);
     if (d->returnValue != returnValue) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->returnValue));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->returnValue));
 
         d->returnValue = returnValue;
 
         // Adjust subsetted property(ies)
         if (returnValue) {
-            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(returnValue));
+            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(returnValue));
         }
     }
 }
@@ -203,7 +198,7 @@ void QInteractionUse::addArgument(QValueSpecification *argument)
         d->arguments->append(argument);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(argument));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(argument));
     }
 }
 
@@ -214,9 +209,10 @@ void QInteractionUse::removeArgument(QValueSpecification *argument)
     Q_D(QInteractionUse);
     if (d->arguments->contains(argument)) {
         d->arguments->removeAll(argument);
+        argument->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(argument));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(argument));
     }
 }
 

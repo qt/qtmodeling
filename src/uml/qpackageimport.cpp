@@ -66,20 +66,14 @@ QPackageImportPrivate::~QPackageImportPrivate()
     \brief A package import is a relationship that allows the use of unqualified names to refer to package members from other namespaces.
  */
 
-QPackageImport::QPackageImport(QObject *parent) :
-    QDirectedRelationship(*new QPackageImportPrivate, parent)
+QPackageImport::QPackageImport(QUmlObject *parent, QUmlObject *wrapper) :
+    QDirectedRelationship(*new QPackageImportPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QPackageImport *>("QPackageImport *");
-    qRegisterMetaType<const QSet<QPackageImport *> *>("const QSet<QPackageImport *> *");
-    qRegisterMetaType<const QList<QPackageImport *> *>("const QList<QPackageImport *> *");
 }
 
-QPackageImport::QPackageImport(QPackageImportPrivate &dd, QObject *parent) :
-    QDirectedRelationship(dd, parent)
+QPackageImport::QPackageImport(QPackageImportPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QDirectedRelationship(dd, parent, wrapper)
 {
-    qRegisterMetaType<QPackageImport *>("QPackageImport *");
-    qRegisterMetaType<const QSet<QPackageImport *> *>("const QSet<QPackageImport *> *");
-    qRegisterMetaType<const QList<QPackageImport *> *>("const QList<QPackageImport *> *");
 }
 
 QPackageImport::~QPackageImport()
@@ -137,14 +131,14 @@ void QPackageImport::setImportingNamespace(QNamespace *importingNamespace)
             d->importingNamespace->removePackageImport(this);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qtuml_object_cast<QElement *>(d->importingNamespace));
+        (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qumlobject_cast<QElement *>(d->importingNamespace));
 
         d->importingNamespace = importingNamespace;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(importingNamespace));
+        (qumlobject_cast<QElementPrivate *>(d))->setOwner(qumlobject_cast<QElement *>(importingNamespace));
         if (importingNamespace) {
-            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addSource(qtuml_object_cast<QElement *>(importingNamespace));
+            (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->addSource(qumlobject_cast<QElement *>(importingNamespace));
         }
 
         // Adjust opposite property
@@ -171,13 +165,13 @@ void QPackageImport::setImportedPackage(QPackage *importedPackage)
     Q_D(QPackageImport);
     if (d->importedPackage != importedPackage) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qtuml_object_cast<QElement *>(d->importedPackage));
+        (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qumlobject_cast<QElement *>(d->importedPackage));
 
         d->importedPackage = importedPackage;
 
         // Adjust subsetted property(ies)
         if (importedPackage) {
-            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qtuml_object_cast<QElement *>(importedPackage));
+            (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qumlobject_cast<QElement *>(importedPackage));
         }
     }
 }

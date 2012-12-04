@@ -61,20 +61,14 @@ QLiteralBooleanPrivate::~QLiteralBooleanPrivate()
     \brief A literal Boolean is a specification of a Boolean value.
  */
 
-QLiteralBoolean::QLiteralBoolean(QObject *parent) :
-    QLiteralSpecification(*new QLiteralBooleanPrivate, parent)
+QLiteralBoolean::QLiteralBoolean(QUmlObject *parent, QUmlObject *wrapper) :
+    QLiteralSpecification(*new QLiteralBooleanPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QLiteralBoolean *>("QLiteralBoolean *");
-    qRegisterMetaType<const QSet<QLiteralBoolean *> *>("const QSet<QLiteralBoolean *> *");
-    qRegisterMetaType<const QList<QLiteralBoolean *> *>("const QList<QLiteralBoolean *> *");
 }
 
-QLiteralBoolean::QLiteralBoolean(QLiteralBooleanPrivate &dd, QObject *parent) :
-    QLiteralSpecification(dd, parent)
+QLiteralBoolean::QLiteralBoolean(QLiteralBooleanPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QLiteralSpecification(dd, parent, wrapper)
 {
-    qRegisterMetaType<QLiteralBoolean *>("QLiteralBoolean *");
-    qRegisterMetaType<const QSet<QLiteralBoolean *> *>("const QSet<QLiteralBoolean *> *");
-    qRegisterMetaType<const QList<QLiteralBoolean *> *>("const QList<QLiteralBoolean *> *");
 }
 
 QLiteralBoolean::~QLiteralBoolean()

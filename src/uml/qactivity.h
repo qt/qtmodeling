@@ -49,6 +49,8 @@
 // Qt includes
 #include <QtCore/QSet>
 
+#include <QtUml/QUmlPointer>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -82,7 +84,7 @@ class Q_UML_EXPORT QActivity : public QBehavior
     Q_DECLARE_PRIVATE(QActivity)
 
 public:
-    Q_INVOKABLE explicit QActivity(QObject *parent = 0);
+    Q_INVOKABLE explicit QActivity(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QActivity();
 
     // Attributes from QActivity
@@ -120,7 +122,7 @@ public:
     Q_INVOKABLE void removeNode(QUmlPointer<QStructuredActivityNode> structuredNode);
 
 protected:
-    explicit QActivity(QActivityPrivate &dd, QObject *parent = 0);
+    explicit QActivity(QActivityPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

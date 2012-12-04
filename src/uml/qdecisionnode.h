@@ -69,7 +69,7 @@ class Q_UML_EXPORT QDecisionNode : public QControlNode
     Q_DECLARE_PRIVATE(QDecisionNode)
 
 public:
-    Q_INVOKABLE explicit QDecisionNode(QObject *parent = 0);
+    Q_INVOKABLE explicit QDecisionNode(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QDecisionNode();
 
     // Association ends from QDecisionNode
@@ -79,7 +79,7 @@ public:
     Q_INVOKABLE void setDecisionInput(QBehavior *decisionInput);
 
 protected:
-    explicit QDecisionNode(QDecisionNodePrivate &dd, QObject *parent = 0);
+    explicit QDecisionNode(QDecisionNodePrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

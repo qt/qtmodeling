@@ -63,20 +63,14 @@ QBroadcastSignalActionPrivate::~QBroadcastSignalActionPrivate()
     \brief A broadcast signal action is an action that transmits a signal instance to all the potential target objects in the system, which may cause the firing of a state machine transitions or the execution of associated activities of a target object. The argument values are available to the execution of associated behaviors. The requestor continues execution immediately after the signals are sent out. It does not wait for receipt. Any reply messages are ignored and are not transmitted to the requestor.
  */
 
-QBroadcastSignalAction::QBroadcastSignalAction(QObject *parent) :
-    QInvocationAction(*new QBroadcastSignalActionPrivate, parent)
+QBroadcastSignalAction::QBroadcastSignalAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QInvocationAction(*new QBroadcastSignalActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QBroadcastSignalAction *>("QBroadcastSignalAction *");
-    qRegisterMetaType<const QSet<QBroadcastSignalAction *> *>("const QSet<QBroadcastSignalAction *> *");
-    qRegisterMetaType<const QList<QBroadcastSignalAction *> *>("const QList<QBroadcastSignalAction *> *");
 }
 
-QBroadcastSignalAction::QBroadcastSignalAction(QBroadcastSignalActionPrivate &dd, QObject *parent) :
-    QInvocationAction(dd, parent)
+QBroadcastSignalAction::QBroadcastSignalAction(QBroadcastSignalActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QInvocationAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QBroadcastSignalAction *>("QBroadcastSignalAction *");
-    qRegisterMetaType<const QSet<QBroadcastSignalAction *> *>("const QSet<QBroadcastSignalAction *> *");
-    qRegisterMetaType<const QList<QBroadcastSignalAction *> *>("const QList<QBroadcastSignalAction *> *");
 }
 
 QBroadcastSignalAction::~QBroadcastSignalAction()

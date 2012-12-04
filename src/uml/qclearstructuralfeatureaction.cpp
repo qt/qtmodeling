@@ -63,20 +63,14 @@ QClearStructuralFeatureActionPrivate::~QClearStructuralFeatureActionPrivate()
     \brief A clear structural feature action is a structural feature action that removes all values of a structural feature.
  */
 
-QClearStructuralFeatureAction::QClearStructuralFeatureAction(QObject *parent) :
-    QStructuralFeatureAction(*new QClearStructuralFeatureActionPrivate, parent)
+QClearStructuralFeatureAction::QClearStructuralFeatureAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QStructuralFeatureAction(*new QClearStructuralFeatureActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QClearStructuralFeatureAction *>("QClearStructuralFeatureAction *");
-    qRegisterMetaType<const QSet<QClearStructuralFeatureAction *> *>("const QSet<QClearStructuralFeatureAction *> *");
-    qRegisterMetaType<const QList<QClearStructuralFeatureAction *> *>("const QList<QClearStructuralFeatureAction *> *");
 }
 
-QClearStructuralFeatureAction::QClearStructuralFeatureAction(QClearStructuralFeatureActionPrivate &dd, QObject *parent) :
-    QStructuralFeatureAction(dd, parent)
+QClearStructuralFeatureAction::QClearStructuralFeatureAction(QClearStructuralFeatureActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QStructuralFeatureAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QClearStructuralFeatureAction *>("QClearStructuralFeatureAction *");
-    qRegisterMetaType<const QSet<QClearStructuralFeatureAction *> *>("const QSet<QClearStructuralFeatureAction *> *");
-    qRegisterMetaType<const QList<QClearStructuralFeatureAction *> *>("const QList<QClearStructuralFeatureAction *> *");
 }
 
 QClearStructuralFeatureAction::~QClearStructuralFeatureAction()
@@ -105,13 +99,13 @@ void QClearStructuralFeatureAction::setResult(QOutputPin *result)
     Q_D(QClearStructuralFeatureAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(d->result));
+        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(result));
+            (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(result));
         }
     }
 }

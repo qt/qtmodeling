@@ -69,7 +69,7 @@ class Q_UML_EXPORT QImage : public QElement
     Q_DECLARE_PRIVATE(QImage)
 
 public:
-    Q_INVOKABLE explicit QImage(QObject *parent = 0);
+    Q_INVOKABLE explicit QImage(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QImage();
 
     // Attributes from QImage
@@ -81,7 +81,7 @@ public:
     Q_INVOKABLE void setContent(QString content);
 
 protected:
-    explicit QImage(QImagePrivate &dd, QObject *parent = 0);
+    explicit QImage(QImagePrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

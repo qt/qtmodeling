@@ -80,7 +80,7 @@ class Q_UML_EXPORT QConnector : public QFeature
     Q_DECLARE_PRIVATE(QConnector)
 
 public:
-    Q_INVOKABLE explicit QConnector(QObject *parent = 0);
+    Q_INVOKABLE explicit QConnector(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QConnector();
 
     // Attributes from QConnector
@@ -100,7 +100,7 @@ public:
     Q_INVOKABLE void removeEnd(QConnectorEnd *end);
 
 protected:
-    explicit QConnector(QConnectorPrivate &dd, QObject *parent = 0);
+    explicit QConnector(QConnectorPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

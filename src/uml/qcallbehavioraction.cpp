@@ -63,20 +63,14 @@ QCallBehaviorActionPrivate::~QCallBehaviorActionPrivate()
     \brief A call behavior action is a call action that invokes a behavior directly rather than invoking a behavioral feature that, in turn, results in the invocation of that behavior. The argument values of the action are available to the execution of the invoked behavior. For synchronous calls the execution of the call behavior action waits until the execution of the invoked behavior completes and a result is returned on its output pin. The action completes immediately without a result, if the call is asynchronous. In particular, the invoked behavior may be an activity.
  */
 
-QCallBehaviorAction::QCallBehaviorAction(QObject *parent) :
-    QCallAction(*new QCallBehaviorActionPrivate, parent)
+QCallBehaviorAction::QCallBehaviorAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QCallAction(*new QCallBehaviorActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QCallBehaviorAction *>("QCallBehaviorAction *");
-    qRegisterMetaType<const QSet<QCallBehaviorAction *> *>("const QSet<QCallBehaviorAction *> *");
-    qRegisterMetaType<const QList<QCallBehaviorAction *> *>("const QList<QCallBehaviorAction *> *");
 }
 
-QCallBehaviorAction::QCallBehaviorAction(QCallBehaviorActionPrivate &dd, QObject *parent) :
-    QCallAction(dd, parent)
+QCallBehaviorAction::QCallBehaviorAction(QCallBehaviorActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QCallAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QCallBehaviorAction *>("QCallBehaviorAction *");
-    qRegisterMetaType<const QSet<QCallBehaviorAction *> *>("const QSet<QCallBehaviorAction *> *");
-    qRegisterMetaType<const QList<QCallBehaviorAction *> *>("const QList<QCallBehaviorAction *> *");
 }
 
 QCallBehaviorAction::~QCallBehaviorAction()

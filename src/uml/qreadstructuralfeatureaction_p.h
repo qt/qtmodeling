@@ -41,8 +41,6 @@
 #ifndef QTUML_QREADSTRUCTURALFEATUREACTION_P_H
 #define QTUML_QREADSTRUCTURALFEATUREACTION_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qstructuralfeatureaction_p.h"
 

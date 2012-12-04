@@ -63,20 +63,14 @@ QActionExecutionSpecificationPrivate::~QActionExecutionSpecificationPrivate()
     \brief An action execution specification is a kind of execution specification representing the execution of an action.
  */
 
-QActionExecutionSpecification::QActionExecutionSpecification(QObject *parent) :
-    QExecutionSpecification(*new QActionExecutionSpecificationPrivate, parent)
+QActionExecutionSpecification::QActionExecutionSpecification(QUmlObject *parent, QUmlObject *wrapper) :
+    QExecutionSpecification(*new QActionExecutionSpecificationPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QActionExecutionSpecification *>("QActionExecutionSpecification *");
-    qRegisterMetaType<const QSet<QActionExecutionSpecification *> *>("const QSet<QActionExecutionSpecification *> *");
-    qRegisterMetaType<const QList<QActionExecutionSpecification *> *>("const QList<QActionExecutionSpecification *> *");
 }
 
-QActionExecutionSpecification::QActionExecutionSpecification(QActionExecutionSpecificationPrivate &dd, QObject *parent) :
-    QExecutionSpecification(dd, parent)
+QActionExecutionSpecification::QActionExecutionSpecification(QActionExecutionSpecificationPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QExecutionSpecification(dd, parent, wrapper)
 {
-    qRegisterMetaType<QActionExecutionSpecification *>("QActionExecutionSpecification *");
-    qRegisterMetaType<const QSet<QActionExecutionSpecification *> *>("const QSet<QActionExecutionSpecification *> *");
-    qRegisterMetaType<const QList<QActionExecutionSpecification *> *>("const QList<QActionExecutionSpecification *> *");
 }
 
 QActionExecutionSpecification::~QActionExecutionSpecification()

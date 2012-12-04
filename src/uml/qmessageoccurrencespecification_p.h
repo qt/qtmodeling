@@ -41,10 +41,8 @@
 #ifndef QTUML_QMESSAGEOCCURRENCESPECIFICATION_P_H
 #define QTUML_QMESSAGEOCCURRENCESPECIFICATION_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
-#include "private/qobject_p.h"
+#include "private/qumlobject_p.h"
 #include "private/qoccurrencespecification_p.h"
 #include "private/qmessageend_p.h"
 
@@ -57,7 +55,7 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QMessageOccurrenceSpecification;
 
-class Q_UML_EXPORT QMessageOccurrenceSpecificationPrivate : public QObjectPrivate
+class Q_UML_EXPORT QMessageOccurrenceSpecificationPrivate : public QUmlObjectPrivate
 {
     Q_DECLARE_PUBLIC(QMessageOccurrenceSpecification)
 

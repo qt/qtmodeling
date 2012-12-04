@@ -63,20 +63,14 @@ QStartClassifierBehaviorActionPrivate::~QStartClassifierBehaviorActionPrivate()
     \brief A start classifier behavior action is an action that starts the classifier behavior of the input.
  */
 
-QStartClassifierBehaviorAction::QStartClassifierBehaviorAction(QObject *parent) :
-    QAction(*new QStartClassifierBehaviorActionPrivate, parent)
+QStartClassifierBehaviorAction::QStartClassifierBehaviorAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(*new QStartClassifierBehaviorActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QStartClassifierBehaviorAction *>("QStartClassifierBehaviorAction *");
-    qRegisterMetaType<const QSet<QStartClassifierBehaviorAction *> *>("const QSet<QStartClassifierBehaviorAction *> *");
-    qRegisterMetaType<const QList<QStartClassifierBehaviorAction *> *>("const QList<QStartClassifierBehaviorAction *> *");
 }
 
-QStartClassifierBehaviorAction::QStartClassifierBehaviorAction(QStartClassifierBehaviorActionPrivate &dd, QObject *parent) :
-    QAction(dd, parent)
+QStartClassifierBehaviorAction::QStartClassifierBehaviorAction(QStartClassifierBehaviorActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QStartClassifierBehaviorAction *>("QStartClassifierBehaviorAction *");
-    qRegisterMetaType<const QSet<QStartClassifierBehaviorAction *> *>("const QSet<QStartClassifierBehaviorAction *> *");
-    qRegisterMetaType<const QList<QStartClassifierBehaviorAction *> *>("const QList<QStartClassifierBehaviorAction *> *");
 }
 
 QStartClassifierBehaviorAction::~QStartClassifierBehaviorAction()
@@ -105,13 +99,13 @@ void QStartClassifierBehaviorAction::setObject(QInputPin *object)
     Q_D(QStartClassifierBehaviorAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->object));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->object));
 
         d->object = object;
 
         // Adjust subsetted property(ies)
         if (object) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(object));
+            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(object));
         }
     }
 }

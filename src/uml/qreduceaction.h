@@ -72,7 +72,7 @@ class Q_UML_EXPORT QReduceAction : public QAction
     Q_DECLARE_PRIVATE(QReduceAction)
 
 public:
-    Q_INVOKABLE explicit QReduceAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QReduceAction(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QReduceAction();
 
     // Attributes from QReduceAction
@@ -88,7 +88,7 @@ public:
     Q_INVOKABLE void setReducer(QBehavior *reducer);
 
 protected:
-    explicit QReduceAction(QReduceActionPrivate &dd, QObject *parent = 0);
+    explicit QReduceAction(QReduceActionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

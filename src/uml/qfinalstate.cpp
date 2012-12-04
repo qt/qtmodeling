@@ -60,20 +60,14 @@ QFinalStatePrivate::~QFinalStatePrivate()
     \brief A special kind of state signifying that the enclosing region is completed. If the enclosing region is directly contained in a state machine and all other regions in the state machine also are completed, then it means that the entire state machine is completed.
  */
 
-QFinalState::QFinalState(QObject *parent) :
-    QState(*new QFinalStatePrivate, parent)
+QFinalState::QFinalState(QUmlObject *parent, QUmlObject *wrapper) :
+    QState(*new QFinalStatePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QFinalState *>("QFinalState *");
-    qRegisterMetaType<const QSet<QFinalState *> *>("const QSet<QFinalState *> *");
-    qRegisterMetaType<const QList<QFinalState *> *>("const QList<QFinalState *> *");
 }
 
-QFinalState::QFinalState(QFinalStatePrivate &dd, QObject *parent) :
-    QState(dd, parent)
+QFinalState::QFinalState(QFinalStatePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QState(dd, parent, wrapper)
 {
-    qRegisterMetaType<QFinalState *>("QFinalState *");
-    qRegisterMetaType<const QSet<QFinalState *> *>("const QSet<QFinalState *> *");
-    qRegisterMetaType<const QList<QFinalState *> *>("const QList<QFinalState *> *");
 }
 
 QFinalState::~QFinalState()

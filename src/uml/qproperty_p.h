@@ -41,10 +41,8 @@
 #ifndef QTUML_QPROPERTY_P_H
 #define QTUML_QPROPERTY_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
-#include "private/qobject_p.h"
+#include "private/qumlobject_p.h"
 #include "private/qstructuralfeature_p.h"
 #include "private/qconnectableelement_p.h"
 #include "private/qdeploymenttarget_p.h"
@@ -76,7 +74,7 @@ class QAssociation;
 class QClass;
 class QProperty;
 
-class Q_UML_EXPORT QPropertyPrivate : public QObjectPrivate
+class Q_UML_EXPORT QPropertyPrivate : public QUmlObjectPrivate
 {
     Q_DECLARE_PUBLIC(QProperty)
 

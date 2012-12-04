@@ -76,7 +76,7 @@ class Q_UML_EXPORT QInteractionFragment : public QNamedElement
     Q_DECLARE_PRIVATE(QInteractionFragment)
 
 public:
-    Q_INVOKABLE explicit QInteractionFragment(QObject *parent = 0);
+    Q_INVOKABLE explicit QInteractionFragment(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QInteractionFragment();
 
     // Association ends from QInteractionFragment
@@ -92,7 +92,7 @@ public:
     Q_INVOKABLE void setEnclosingOperand(QInteractionOperand *enclosingOperand);
 
 protected:
-    explicit QInteractionFragment(QInteractionFragmentPrivate &dd, QObject *parent = 0);
+    explicit QInteractionFragment(QInteractionFragmentPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

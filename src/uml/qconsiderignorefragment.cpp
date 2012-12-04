@@ -64,20 +64,14 @@ QConsiderIgnoreFragmentPrivate::~QConsiderIgnoreFragmentPrivate()
     \brief A consider ignore fragment is a kind of combined fragment that is used for the consider and ignore cases, which require lists of pertinent messages to be specified.
  */
 
-QConsiderIgnoreFragment::QConsiderIgnoreFragment(QObject *parent) :
-    QCombinedFragment(*new QConsiderIgnoreFragmentPrivate, parent)
+QConsiderIgnoreFragment::QConsiderIgnoreFragment(QUmlObject *parent, QUmlObject *wrapper) :
+    QCombinedFragment(*new QConsiderIgnoreFragmentPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QConsiderIgnoreFragment *>("QConsiderIgnoreFragment *");
-    qRegisterMetaType<const QSet<QConsiderIgnoreFragment *> *>("const QSet<QConsiderIgnoreFragment *> *");
-    qRegisterMetaType<const QList<QConsiderIgnoreFragment *> *>("const QList<QConsiderIgnoreFragment *> *");
 }
 
-QConsiderIgnoreFragment::QConsiderIgnoreFragment(QConsiderIgnoreFragmentPrivate &dd, QObject *parent) :
-    QCombinedFragment(dd, parent)
+QConsiderIgnoreFragment::QConsiderIgnoreFragment(QConsiderIgnoreFragmentPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QCombinedFragment(dd, parent, wrapper)
 {
-    qRegisterMetaType<QConsiderIgnoreFragment *>("QConsiderIgnoreFragment *");
-    qRegisterMetaType<const QSet<QConsiderIgnoreFragment *> *>("const QSet<QConsiderIgnoreFragment *> *");
-    qRegisterMetaType<const QList<QConsiderIgnoreFragment *> *>("const QList<QConsiderIgnoreFragment *> *");
 }
 
 QConsiderIgnoreFragment::~QConsiderIgnoreFragment()

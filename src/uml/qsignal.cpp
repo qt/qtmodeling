@@ -64,20 +64,14 @@ QSignalPrivate::~QSignalPrivate()
     \brief A signal is a specification of send request instances communicated between objects. The receiving object handles the received request instances as specified by its receptions. The data carried by a send request (which was passed to it by the send invocation occurrence that caused that request) are represented as attributes of the signal. A signal is defined independently of the classifiers handling the signal occurrence.
  */
 
-QSignal::QSignal(QObject *parent) :
-    QClassifier(*new QSignalPrivate, parent)
+QSignal::QSignal(QUmlObject *parent, QUmlObject *wrapper) :
+    QClassifier(*new QSignalPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QSignal *>("QSignal *");
-    qRegisterMetaType<const QSet<QSignal *> *>("const QSet<QSignal *> *");
-    qRegisterMetaType<const QList<QSignal *> *>("const QList<QSignal *> *");
 }
 
-QSignal::QSignal(QSignalPrivate &dd, QObject *parent) :
-    QClassifier(dd, parent)
+QSignal::QSignal(QSignalPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QClassifier(dd, parent, wrapper)
 {
-    qRegisterMetaType<QSignal *>("QSignal *");
-    qRegisterMetaType<const QSet<QSignal *> *>("const QSet<QSignal *> *");
-    qRegisterMetaType<const QList<QSignal *> *>("const QList<QSignal *> *");
 }
 
 QSignal::~QSignal()
@@ -108,8 +102,8 @@ void QSignal::addOwnedAttribute(QProperty *ownedAttribute)
         d->ownedAttributes->append(ownedAttribute);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(ownedAttribute));
-        (qtuml_object_cast<QClassifierPrivate *>(d))->addAttribute(qtuml_object_cast<QProperty *>(ownedAttribute));
+        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(ownedAttribute));
+        (qumlobject_cast<QClassifierPrivate *>(d))->addAttribute(qumlobject_cast<QProperty *>(ownedAttribute));
     }
 }
 
@@ -120,10 +114,11 @@ void QSignal::removeOwnedAttribute(QProperty *ownedAttribute)
     Q_D(QSignal);
     if (d->ownedAttributes->contains(ownedAttribute)) {
         d->ownedAttributes->removeAll(ownedAttribute);
+        ownedAttribute->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(ownedAttribute));
-        (qtuml_object_cast<QClassifierPrivate *>(d))->removeAttribute(qtuml_object_cast<QProperty *>(ownedAttribute));
+        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedAttribute));
+        (qumlobject_cast<QClassifierPrivate *>(d))->removeAttribute(qumlobject_cast<QProperty *>(ownedAttribute));
     }
 }
 

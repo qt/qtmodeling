@@ -67,7 +67,7 @@ class Q_UML_EXPORT QIntervalConstraint : public QConstraint
     Q_DECLARE_PRIVATE(QIntervalConstraint)
 
 public:
-    Q_INVOKABLE explicit QIntervalConstraint(QObject *parent = 0);
+    Q_INVOKABLE explicit QIntervalConstraint(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QIntervalConstraint();
 
     // Association ends from QIntervalConstraint
@@ -75,7 +75,7 @@ public:
     Q_INVOKABLE void setSpecification(QInterval *specification);
 
 protected:
-    explicit QIntervalConstraint(QIntervalConstraintPrivate &dd, QObject *parent = 0);
+    explicit QIntervalConstraint(QIntervalConstraintPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

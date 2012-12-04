@@ -63,20 +63,14 @@ QValuePinPrivate::~QValuePinPrivate()
     \brief A value pin is an input pin that provides a value by evaluating a value specification.
  */
 
-QValuePin::QValuePin(QObject *parent) :
-    QInputPin(*new QValuePinPrivate, parent)
+QValuePin::QValuePin(QUmlObject *parent, QUmlObject *wrapper) :
+    QInputPin(*new QValuePinPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QValuePin *>("QValuePin *");
-    qRegisterMetaType<const QSet<QValuePin *> *>("const QSet<QValuePin *> *");
-    qRegisterMetaType<const QList<QValuePin *> *>("const QList<QValuePin *> *");
 }
 
-QValuePin::QValuePin(QValuePinPrivate &dd, QObject *parent) :
-    QInputPin(dd, parent)
+QValuePin::QValuePin(QValuePinPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QInputPin(dd, parent, wrapper)
 {
-    qRegisterMetaType<QValuePin *>("QValuePin *");
-    qRegisterMetaType<const QSet<QValuePin *> *>("const QSet<QValuePin *> *");
-    qRegisterMetaType<const QList<QValuePin *> *>("const QList<QValuePin *> *");
 }
 
 QValuePin::~QValuePin()
@@ -105,13 +99,13 @@ void QValuePin::setValue(QValueSpecification *value)
     Q_D(QValuePin);
     if (d->value != value) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->value));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->value));
 
         d->value = value;
 
         // Adjust subsetted property(ies)
         if (value) {
-            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(value));
+            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(value));
         }
     }
 }

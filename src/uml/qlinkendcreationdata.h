@@ -68,7 +68,7 @@ class Q_UML_EXPORT QLinkEndCreationData : public QLinkEndData
     Q_DECLARE_PRIVATE(QLinkEndCreationData)
 
 public:
-    Q_INVOKABLE explicit QLinkEndCreationData(QObject *parent = 0);
+    Q_INVOKABLE explicit QLinkEndCreationData(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QLinkEndCreationData();
 
     // Attributes from QLinkEndCreationData
@@ -80,7 +80,7 @@ public:
     Q_INVOKABLE void setInsertAt(QInputPin *insertAt);
 
 protected:
-    explicit QLinkEndCreationData(QLinkEndCreationDataPrivate &dd, QObject *parent = 0);
+    explicit QLinkEndCreationData(QLinkEndCreationDataPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

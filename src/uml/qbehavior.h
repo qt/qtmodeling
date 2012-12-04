@@ -50,6 +50,8 @@
 #include <QtCore/QList>
 #include <QtCore/QSet>
 
+#include <QtUml/QUmlPointer>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -82,7 +84,7 @@ class Q_UML_EXPORT QBehavior : public QClass
     Q_DECLARE_PRIVATE(QBehavior)
 
 public:
-    Q_INVOKABLE explicit QBehavior(QObject *parent = 0);
+    Q_INVOKABLE explicit QBehavior(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QBehavior();
 
     // Attributes from QBehavior
@@ -114,7 +116,7 @@ public:
     Q_INVOKABLE void removeRedefinedClassifier(QUmlPointer<QBehavior> redefinedBehavior);
 
 protected:
-    explicit QBehavior(QBehaviorPrivate &dd, QObject *parent = 0);
+    explicit QBehavior(QBehaviorPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

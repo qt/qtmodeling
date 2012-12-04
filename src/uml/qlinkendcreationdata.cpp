@@ -64,20 +64,14 @@ QLinkEndCreationDataPrivate::~QLinkEndCreationDataPrivate()
     \brief A link end creation data is not an action. It is an element that identifies links. It identifies one end of a link to be created by a create link action.
  */
 
-QLinkEndCreationData::QLinkEndCreationData(QObject *parent) :
-    QLinkEndData(*new QLinkEndCreationDataPrivate, parent)
+QLinkEndCreationData::QLinkEndCreationData(QUmlObject *parent, QUmlObject *wrapper) :
+    QLinkEndData(*new QLinkEndCreationDataPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QLinkEndCreationData *>("QLinkEndCreationData *");
-    qRegisterMetaType<const QSet<QLinkEndCreationData *> *>("const QSet<QLinkEndCreationData *> *");
-    qRegisterMetaType<const QList<QLinkEndCreationData *> *>("const QList<QLinkEndCreationData *> *");
 }
 
-QLinkEndCreationData::QLinkEndCreationData(QLinkEndCreationDataPrivate &dd, QObject *parent) :
-    QLinkEndData(dd, parent)
+QLinkEndCreationData::QLinkEndCreationData(QLinkEndCreationDataPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QLinkEndData(dd, parent, wrapper)
 {
-    qRegisterMetaType<QLinkEndCreationData *>("QLinkEndCreationData *");
-    qRegisterMetaType<const QSet<QLinkEndCreationData *> *>("const QSet<QLinkEndCreationData *> *");
-    qRegisterMetaType<const QList<QLinkEndCreationData *> *>("const QList<QLinkEndCreationData *> *");
 }
 
 QLinkEndCreationData::~QLinkEndCreationData()

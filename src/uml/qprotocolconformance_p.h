@@ -41,8 +41,6 @@
 #ifndef QTUML_QPROTOCOLCONFORMANCE_P_H
 #define QTUML_QPROTOCOLCONFORMANCE_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qdirectedrelationship_p.h"
 

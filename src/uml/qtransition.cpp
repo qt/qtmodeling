@@ -79,24 +79,18 @@ QTransitionPrivate::~QTransitionPrivate()
     \brief A transition is a directed relationship between a source vertex and a target vertex. It may be part of a compound transition, which takes the state machine from one state configuration to another, representing the complete response of the state machine to an occurrence of an event of a particular type.
  */
 
-QTransition::QTransition(QObject *parent) :
-    QObject(*new QTransitionPrivate, parent),
-    _wrappedRedefinableElement(new QRedefinableElement(this)),
-    _wrappedNamespace(new QNamespace(this))
+QTransition::QTransition(QUmlObject *parent, QUmlObject *wrapper) :
+    QUmlObject(*new QTransitionPrivate, parent, wrapper),
+    _wrappedRedefinableElement(new QRedefinableElement(this, this)),
+    _wrappedNamespace(new QNamespace(this, this))
 {
-    qRegisterMetaType<QTransition *>("QTransition *");
-    qRegisterMetaType<const QSet<QTransition *> *>("const QSet<QTransition *> *");
-    qRegisterMetaType<const QList<QTransition *> *>("const QList<QTransition *> *");
 }
 
-QTransition::QTransition(QTransitionPrivate &dd, QObject *parent) :
-    QObject(dd, parent),
-    _wrappedRedefinableElement(new QRedefinableElement(this)),
-    _wrappedNamespace(new QNamespace(this))
+QTransition::QTransition(QTransitionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QUmlObject(dd, parent, wrapper),
+    _wrappedRedefinableElement(new QRedefinableElement(this, this)),
+    _wrappedNamespace(new QNamespace(this, this))
 {
-    qRegisterMetaType<QTransition *>("QTransition *");
-    qRegisterMetaType<const QSet<QTransition *> *>("const QSet<QTransition *> *");
-    qRegisterMetaType<const QList<QTransition *> *>("const QList<QTransition *> *");
 }
 
 QTransition::~QTransition()
@@ -112,7 +106,7 @@ QTransition::~QTransition()
  */
 const QSet<QElement *> *QTransition::ownedElements() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+    return (qumlobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -120,7 +114,7 @@ const QSet<QElement *> *QTransition::ownedElements() const
  */
 QElement *QTransition::owner() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->owner();
+    return (qumlobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -128,17 +122,17 @@ QElement *QTransition::owner() const
  */
 const QSet<QComment *> *QTransition::ownedComments() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+    return (qumlobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QTransition::addOwnedComment(QComment *ownedComment)
 {
-    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qumlobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QTransition::removeOwnedComment(QComment *ownedComment)
 {
-    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qumlobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -150,12 +144,12 @@ void QTransition::removeOwnedComment(QComment *ownedComment)
  */
 QString QTransition::name() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+    return (qumlobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QTransition::setName(QString name)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+    (qumlobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -163,12 +157,12 @@ void QTransition::setName(QString name)
  */
 QtUml::VisibilityKind QTransition::visibility() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->visibility();
+    return (qumlobject_cast<const QNamedElement *>(this))->visibility();
 }
 
 void QTransition::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setVisibility(visibility);
+    (qumlobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
 
 /*!
@@ -176,7 +170,7 @@ void QTransition::setVisibility(QtUml::VisibilityKind visibility)
  */
 QString QTransition::qualifiedName() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qumlobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -188,12 +182,12 @@ QString QTransition::qualifiedName() const
  */
 QStringExpression *QTransition::nameExpression() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+    return (qumlobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QTransition::setNameExpression(QStringExpression *nameExpression)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qumlobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -201,7 +195,7 @@ void QTransition::setNameExpression(QStringExpression *nameExpression)
  */
 QNamespace *QTransition::namespace_() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+    return (qumlobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -209,17 +203,17 @@ QNamespace *QTransition::namespace_() const
  */
 const QSet<QDependency *> *QTransition::clientDependencies() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qumlobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QTransition::addClientDependency(QDependency *clientDependency)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qumlobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QTransition::removeClientDependency(QDependency *clientDependency)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qumlobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -231,12 +225,12 @@ void QTransition::removeClientDependency(QDependency *clientDependency)
  */
 bool QTransition::isLeaf() const
 {
-    return (qtuml_object_cast<const QRedefinableElement *>(this))->isLeaf();
+    return (qumlobject_cast<const QRedefinableElement *>(this))->isLeaf();
 }
 
 void QTransition::setLeaf(bool isLeaf)
 {
-    (qtuml_object_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+    (qumlobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
 }
 
 // ---------------------------------------------------------------
@@ -248,7 +242,7 @@ void QTransition::setLeaf(bool isLeaf)
  */
 const QSet<QRedefinableElement *> *QTransition::redefinedElements() const
 {
-    return (qtuml_object_cast<const QRedefinableElement *>(this))->redefinedElements();
+    return (qumlobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
 
 // ---------------------------------------------------------------
@@ -260,17 +254,17 @@ const QSet<QRedefinableElement *> *QTransition::redefinedElements() const
  */
 const QSet<QPackageImport *> *QTransition::packageImports() const
 {
-    return (qtuml_object_cast<const QNamespace *>(this))->packageImports();
+    return (qumlobject_cast<const QNamespace *>(this))->packageImports();
 }
 
 void QTransition::addPackageImport(QPackageImport *packageImport)
 {
-    (qtuml_object_cast<QNamespace *>(this))->addPackageImport(packageImport);
+    (qumlobject_cast<QNamespace *>(this))->addPackageImport(packageImport);
 }
 
 void QTransition::removePackageImport(QPackageImport *packageImport)
 {
-    (qtuml_object_cast<QNamespace *>(this))->removePackageImport(packageImport);
+    (qumlobject_cast<QNamespace *>(this))->removePackageImport(packageImport);
 }
 
 /*!
@@ -278,7 +272,7 @@ void QTransition::removePackageImport(QPackageImport *packageImport)
  */
 const QSet<QNamedElement *> *QTransition::members() const
 {
-    return (qtuml_object_cast<const QNamespace *>(this))->members();
+    return (qumlobject_cast<const QNamespace *>(this))->members();
 }
 
 /*!
@@ -286,7 +280,7 @@ const QSet<QNamedElement *> *QTransition::members() const
  */
 const QSet<QPackageableElement *> *QTransition::importedMembers() const
 {
-    return (qtuml_object_cast<const QNamespace *>(this))->importedMembers();
+    return (qumlobject_cast<const QNamespace *>(this))->importedMembers();
 }
 
 /*!
@@ -294,17 +288,17 @@ const QSet<QPackageableElement *> *QTransition::importedMembers() const
  */
 const QSet<QElementImport *> *QTransition::elementImports() const
 {
-    return (qtuml_object_cast<const QNamespace *>(this))->elementImports();
+    return (qumlobject_cast<const QNamespace *>(this))->elementImports();
 }
 
 void QTransition::addElementImport(QElementImport *elementImport)
 {
-    (qtuml_object_cast<QNamespace *>(this))->addElementImport(elementImport);
+    (qumlobject_cast<QNamespace *>(this))->addElementImport(elementImport);
 }
 
 void QTransition::removeElementImport(QElementImport *elementImport)
 {
-    (qtuml_object_cast<QNamespace *>(this))->removeElementImport(elementImport);
+    (qumlobject_cast<QNamespace *>(this))->removeElementImport(elementImport);
 }
 
 /*!
@@ -312,17 +306,17 @@ void QTransition::removeElementImport(QElementImport *elementImport)
  */
 const QSet<QConstraint *> *QTransition::ownedRules() const
 {
-    return (qtuml_object_cast<const QNamespace *>(this))->ownedRules();
+    return (qumlobject_cast<const QNamespace *>(this))->ownedRules();
 }
 
 void QTransition::addOwnedRule(QConstraint *ownedRule)
 {
-    (qtuml_object_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
+    (qumlobject_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
 }
 
 void QTransition::removeOwnedRule(QConstraint *ownedRule)
 {
-    (qtuml_object_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
+    (qumlobject_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
 }
 
 /*!
@@ -330,7 +324,7 @@ void QTransition::removeOwnedRule(QConstraint *ownedRule)
  */
 const QSet<QNamedElement *> *QTransition::ownedMembers() const
 {
-    return (qtuml_object_cast<const QNamespace *>(this))->ownedMembers();
+    return (qumlobject_cast<const QNamespace *>(this))->ownedMembers();
 }
 
 // ---------------------------------------------------------------
@@ -380,13 +374,13 @@ void QTransition::setGuard(QConstraint *guard)
     Q_D(QTransition);
     if (d->guard != guard) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespace *>(this))->removeOwnedRule(qtuml_object_cast<QConstraint *>(d->guard));
+        (qumlobject_cast<QNamespace *>(this))->removeOwnedRule(qumlobject_cast<QConstraint *>(d->guard));
 
         d->guard = guard;
 
         // Adjust subsetted property(ies)
         if (guard) {
-            (qtuml_object_cast<QNamespace *>(this))->addOwnedRule(qtuml_object_cast<QConstraint *>(guard));
+            (qumlobject_cast<QNamespace *>(this))->addOwnedRule(qumlobject_cast<QConstraint *>(guard));
         }
     }
 }
@@ -410,13 +404,13 @@ void QTransition::setTarget(QVertex *target)
     if (d->target != target) {
         // Adjust opposite property
         if (d->target)
-            (qtuml_object_cast<QVertexPrivate *>(d->target->d_func()))->removeIncoming(this);
+            (qumlobject_cast<QVertexPrivate *>(d->target->d_func()))->removeIncoming(this);
 
         d->target = target;
 
         // Adjust opposite property
         if (target)
-            (qtuml_object_cast<QVertexPrivate *>(target->d_func()))->addIncoming(this);
+            (qumlobject_cast<QVertexPrivate *>(target->d_func()))->addIncoming(this);
     }
 }
 
@@ -438,13 +432,13 @@ void QTransition::setEffect(QBehavior *effect)
     Q_D(QTransition);
     if (d->effect != effect) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->effect));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->effect));
 
         d->effect = effect;
 
         // Adjust subsetted property(ies)
         if (effect) {
-            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(effect));
+            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(effect));
         }
     }
 }
@@ -473,7 +467,7 @@ void QTransition::setContainer(QRegion *container)
         d->container = container;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(container));
+        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(container));
 
         // Adjust opposite property
         if (container)
@@ -511,13 +505,13 @@ void QTransition::setRedefinedTransition(QTransition *redefinedTransition)
     Q_D(QTransition);
     if (d->redefinedTransition != redefinedTransition) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qtuml_object_cast<QRedefinableElement *>(d->redefinedTransition));
+        (qumlobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qumlobject_cast<QRedefinableElement *>(d->redefinedTransition));
 
         d->redefinedTransition = redefinedTransition;
 
         // Adjust subsetted property(ies)
         if (redefinedTransition) {
-            (qtuml_object_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qtuml_object_cast<QRedefinableElement *>(redefinedTransition));
+            (qumlobject_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qumlobject_cast<QRedefinableElement *>(redefinedTransition));
         }
     }
 }
@@ -541,13 +535,13 @@ void QTransition::setSource(QVertex *source)
     if (d->source != source) {
         // Adjust opposite property
         if (d->source)
-            (qtuml_object_cast<QVertexPrivate *>(d->source->d_func()))->removeOutgoing(this);
+            (qumlobject_cast<QVertexPrivate *>(d->source->d_func()))->removeOutgoing(this);
 
         d->source = source;
 
         // Adjust opposite property
         if (source)
-            (qtuml_object_cast<QVertexPrivate *>(source->d_func()))->addOutgoing(this);
+            (qumlobject_cast<QVertexPrivate *>(source->d_func()))->addOutgoing(this);
     }
 }
 
@@ -571,7 +565,7 @@ void QTransition::addTrigger(QTrigger *trigger)
         d->triggers->insert(trigger);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(trigger));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(trigger));
     }
 }
 
@@ -582,9 +576,10 @@ void QTransition::removeTrigger(QTrigger *trigger)
     Q_D(QTransition);
     if (d->triggers->contains(trigger)) {
         d->triggers->remove(trigger);
+        trigger->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(trigger));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(trigger));
     }
 }
 

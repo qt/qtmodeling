@@ -64,20 +64,14 @@ QAddStructuralFeatureValueActionPrivate::~QAddStructuralFeatureValueActionPrivat
     \brief An add structural feature value action is a write structural feature action for adding values to a structural feature.
  */
 
-QAddStructuralFeatureValueAction::QAddStructuralFeatureValueAction(QObject *parent) :
-    QWriteStructuralFeatureAction(*new QAddStructuralFeatureValueActionPrivate, parent)
+QAddStructuralFeatureValueAction::QAddStructuralFeatureValueAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QWriteStructuralFeatureAction(*new QAddStructuralFeatureValueActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QAddStructuralFeatureValueAction *>("QAddStructuralFeatureValueAction *");
-    qRegisterMetaType<const QSet<QAddStructuralFeatureValueAction *> *>("const QSet<QAddStructuralFeatureValueAction *> *");
-    qRegisterMetaType<const QList<QAddStructuralFeatureValueAction *> *>("const QList<QAddStructuralFeatureValueAction *> *");
 }
 
-QAddStructuralFeatureValueAction::QAddStructuralFeatureValueAction(QAddStructuralFeatureValueActionPrivate &dd, QObject *parent) :
-    QWriteStructuralFeatureAction(dd, parent)
+QAddStructuralFeatureValueAction::QAddStructuralFeatureValueAction(QAddStructuralFeatureValueActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QWriteStructuralFeatureAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QAddStructuralFeatureValueAction *>("QAddStructuralFeatureValueAction *");
-    qRegisterMetaType<const QSet<QAddStructuralFeatureValueAction *> *>("const QSet<QAddStructuralFeatureValueAction *> *");
-    qRegisterMetaType<const QList<QAddStructuralFeatureValueAction *> *>("const QList<QAddStructuralFeatureValueAction *> *");
 }
 
 QAddStructuralFeatureValueAction::~QAddStructuralFeatureValueAction()
@@ -131,13 +125,13 @@ void QAddStructuralFeatureValueAction::setInsertAt(QInputPin *insertAt)
     Q_D(QAddStructuralFeatureValueAction);
     if (d->insertAt != insertAt) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->insertAt));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->insertAt));
 
         d->insertAt = insertAt;
 
         // Adjust subsetted property(ies)
         if (insertAt) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(insertAt));
+            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(insertAt));
         }
     }
 }

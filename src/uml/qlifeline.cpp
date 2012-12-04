@@ -72,20 +72,14 @@ QLifelinePrivate::~QLifelinePrivate()
     \brief A lifeline represents an individual participant in the interaction. While parts and structural features may have multiplicity greater than 1, lifelines represent only one interacting entity.
  */
 
-QLifeline::QLifeline(QObject *parent) :
-    QNamedElement(*new QLifelinePrivate, parent)
+QLifeline::QLifeline(QUmlObject *parent, QUmlObject *wrapper) :
+    QNamedElement(*new QLifelinePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QLifeline *>("QLifeline *");
-    qRegisterMetaType<const QSet<QLifeline *> *>("const QSet<QLifeline *> *");
-    qRegisterMetaType<const QList<QLifeline *> *>("const QList<QLifeline *> *");
 }
 
-QLifeline::QLifeline(QLifelinePrivate &dd, QObject *parent) :
-    QNamedElement(dd, parent)
+QLifeline::QLifeline(QLifelinePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QNamedElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QLifeline *>("QLifeline *");
-    qRegisterMetaType<const QSet<QLifeline *> *>("const QSet<QLifeline *> *");
-    qRegisterMetaType<const QList<QLifeline *> *>("const QList<QLifeline *> *");
 }
 
 QLifeline::~QLifeline()
@@ -200,7 +194,7 @@ void QLifeline::setInteraction(QInteraction *interaction)
         d->interaction = interaction;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(interaction));
+        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(interaction));
 
         // Adjust opposite property
         if (interaction)
@@ -226,13 +220,13 @@ void QLifeline::setSelector(QValueSpecification *selector)
     Q_D(QLifeline);
     if (d->selector != selector) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->selector));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->selector));
 
         d->selector = selector;
 
         // Adjust subsetted property(ies)
         if (selector) {
-            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(selector));
+            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(selector));
         }
     }
 }

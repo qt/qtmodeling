@@ -64,20 +64,14 @@ QInteractionConstraintPrivate::~QInteractionConstraintPrivate()
     \brief An interaction constraint is a Boolean expression that guards an operand in a combined fragment.
  */
 
-QInteractionConstraint::QInteractionConstraint(QObject *parent) :
-    QConstraint(*new QInteractionConstraintPrivate, parent)
+QInteractionConstraint::QInteractionConstraint(QUmlObject *parent, QUmlObject *wrapper) :
+    QConstraint(*new QInteractionConstraintPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QInteractionConstraint *>("QInteractionConstraint *");
-    qRegisterMetaType<const QSet<QInteractionConstraint *> *>("const QSet<QInteractionConstraint *> *");
-    qRegisterMetaType<const QList<QInteractionConstraint *> *>("const QList<QInteractionConstraint *> *");
 }
 
-QInteractionConstraint::QInteractionConstraint(QInteractionConstraintPrivate &dd, QObject *parent) :
-    QConstraint(dd, parent)
+QInteractionConstraint::QInteractionConstraint(QInteractionConstraintPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QConstraint(dd, parent, wrapper)
 {
-    qRegisterMetaType<QInteractionConstraint *>("QInteractionConstraint *");
-    qRegisterMetaType<const QSet<QInteractionConstraint *> *>("const QSet<QInteractionConstraint *> *");
-    qRegisterMetaType<const QList<QInteractionConstraint *> *>("const QList<QInteractionConstraint *> *");
 }
 
 QInteractionConstraint::~QInteractionConstraint()
@@ -106,13 +100,13 @@ void QInteractionConstraint::setMaxint(QValueSpecification *maxint)
     Q_D(QInteractionConstraint);
     if (d->maxint != maxint) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->maxint));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->maxint));
 
         d->maxint = maxint;
 
         // Adjust subsetted property(ies)
         if (maxint) {
-            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(maxint));
+            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(maxint));
         }
     }
 }
@@ -135,13 +129,13 @@ void QInteractionConstraint::setMinint(QValueSpecification *minint)
     Q_D(QInteractionConstraint);
     if (d->minint != minint) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->minint));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->minint));
 
         d->minint = minint;
 
         // Adjust subsetted property(ies)
         if (minint) {
-            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(minint));
+            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(minint));
         }
     }
 }

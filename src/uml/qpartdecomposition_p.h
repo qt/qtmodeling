@@ -41,8 +41,6 @@
 #ifndef QTUML_QPARTDECOMPOSITION_P_H
 #define QTUML_QPARTDECOMPOSITION_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qinteractionuse_p.h"
 

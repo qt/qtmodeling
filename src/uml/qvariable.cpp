@@ -66,24 +66,18 @@ QVariablePrivate::~QVariablePrivate()
     \brief A variable is considered a connectable element.Variables are elements for passing data between actions indirectly. A local variable stores values shared by the actions within a structured activity group but not accessible outside it. The output of an action may be written to a variable and read for the input to a subsequent action, which is effectively an indirect data flow path. Because there is no predefined relationship between actions that read and write variables, these actions must be sequenced by control flows to prevent race conditions that may occur between actions that read or write the same variable.
  */
 
-QVariable::QVariable(QObject *parent) :
-    QObject(*new QVariablePrivate, parent),
-    _wrappedMultiplicityElement(new QMultiplicityElement(this)),
-    _wrappedConnectableElement(new QConnectableElement(this))
+QVariable::QVariable(QUmlObject *parent, QUmlObject *wrapper) :
+    QUmlObject(*new QVariablePrivate, parent, wrapper),
+    _wrappedMultiplicityElement(new QMultiplicityElement(this, this)),
+    _wrappedConnectableElement(new QConnectableElement(this, this))
 {
-    qRegisterMetaType<QVariable *>("QVariable *");
-    qRegisterMetaType<const QSet<QVariable *> *>("const QSet<QVariable *> *");
-    qRegisterMetaType<const QList<QVariable *> *>("const QList<QVariable *> *");
 }
 
-QVariable::QVariable(QVariablePrivate &dd, QObject *parent) :
-    QObject(dd, parent),
-    _wrappedMultiplicityElement(new QMultiplicityElement(this)),
-    _wrappedConnectableElement(new QConnectableElement(this))
+QVariable::QVariable(QVariablePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QUmlObject(dd, parent, wrapper),
+    _wrappedMultiplicityElement(new QMultiplicityElement(this, this)),
+    _wrappedConnectableElement(new QConnectableElement(this, this))
 {
-    qRegisterMetaType<QVariable *>("QVariable *");
-    qRegisterMetaType<const QSet<QVariable *> *>("const QSet<QVariable *> *");
-    qRegisterMetaType<const QList<QVariable *> *>("const QList<QVariable *> *");
 }
 
 QVariable::~QVariable()
@@ -99,7 +93,7 @@ QVariable::~QVariable()
  */
 const QSet<QElement *> *QVariable::ownedElements() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+    return (qumlobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -107,7 +101,7 @@ const QSet<QElement *> *QVariable::ownedElements() const
  */
 QElement *QVariable::owner() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->owner();
+    return (qumlobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -115,17 +109,17 @@ QElement *QVariable::owner() const
  */
 const QSet<QComment *> *QVariable::ownedComments() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+    return (qumlobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QVariable::addOwnedComment(QComment *ownedComment)
 {
-    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qumlobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QVariable::removeOwnedComment(QComment *ownedComment)
 {
-    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qumlobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -137,12 +131,12 @@ void QVariable::removeOwnedComment(QComment *ownedComment)
  */
 qint32 QVariable::upper() const
 {
-    return (qtuml_object_cast<const QMultiplicityElement *>(this))->upper();
+    return (qumlobject_cast<const QMultiplicityElement *>(this))->upper();
 }
 
 void QVariable::setUpper(qint32 upper)
 {
-    (qtuml_object_cast<QMultiplicityElement *>(this))->setUpper(upper);
+    (qumlobject_cast<QMultiplicityElement *>(this))->setUpper(upper);
 }
 
 /*!
@@ -150,12 +144,12 @@ void QVariable::setUpper(qint32 upper)
  */
 bool QVariable::isUnique() const
 {
-    return (qtuml_object_cast<const QMultiplicityElement *>(this))->isUnique();
+    return (qumlobject_cast<const QMultiplicityElement *>(this))->isUnique();
 }
 
 void QVariable::setUnique(bool isUnique)
 {
-    (qtuml_object_cast<QMultiplicityElement *>(this))->setUnique(isUnique);
+    (qumlobject_cast<QMultiplicityElement *>(this))->setUnique(isUnique);
 }
 
 /*!
@@ -163,12 +157,12 @@ void QVariable::setUnique(bool isUnique)
  */
 bool QVariable::isOrdered() const
 {
-    return (qtuml_object_cast<const QMultiplicityElement *>(this))->isOrdered();
+    return (qumlobject_cast<const QMultiplicityElement *>(this))->isOrdered();
 }
 
 void QVariable::setOrdered(bool isOrdered)
 {
-    (qtuml_object_cast<QMultiplicityElement *>(this))->setOrdered(isOrdered);
+    (qumlobject_cast<QMultiplicityElement *>(this))->setOrdered(isOrdered);
 }
 
 /*!
@@ -176,12 +170,12 @@ void QVariable::setOrdered(bool isOrdered)
  */
 qint32 QVariable::lower() const
 {
-    return (qtuml_object_cast<const QMultiplicityElement *>(this))->lower();
+    return (qumlobject_cast<const QMultiplicityElement *>(this))->lower();
 }
 
 void QVariable::setLower(qint32 lower)
 {
-    (qtuml_object_cast<QMultiplicityElement *>(this))->setLower(lower);
+    (qumlobject_cast<QMultiplicityElement *>(this))->setLower(lower);
 }
 
 // ---------------------------------------------------------------
@@ -193,12 +187,12 @@ void QVariable::setLower(qint32 lower)
  */
 QValueSpecification *QVariable::upperValue() const
 {
-    return (qtuml_object_cast<const QMultiplicityElement *>(this))->upperValue();
+    return (qumlobject_cast<const QMultiplicityElement *>(this))->upperValue();
 }
 
 void QVariable::setUpperValue(QValueSpecification *upperValue)
 {
-    (qtuml_object_cast<QMultiplicityElement *>(this))->setUpperValue(upperValue);
+    (qumlobject_cast<QMultiplicityElement *>(this))->setUpperValue(upperValue);
 }
 
 /*!
@@ -206,12 +200,12 @@ void QVariable::setUpperValue(QValueSpecification *upperValue)
  */
 QValueSpecification *QVariable::lowerValue() const
 {
-    return (qtuml_object_cast<const QMultiplicityElement *>(this))->lowerValue();
+    return (qumlobject_cast<const QMultiplicityElement *>(this))->lowerValue();
 }
 
 void QVariable::setLowerValue(QValueSpecification *lowerValue)
 {
-    (qtuml_object_cast<QMultiplicityElement *>(this))->setLowerValue(lowerValue);
+    (qumlobject_cast<QMultiplicityElement *>(this))->setLowerValue(lowerValue);
 }
 
 // ---------------------------------------------------------------
@@ -223,12 +217,12 @@ void QVariable::setLowerValue(QValueSpecification *lowerValue)
  */
 QString QVariable::name() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+    return (qumlobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QVariable::setName(QString name)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+    (qumlobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -236,12 +230,12 @@ void QVariable::setName(QString name)
  */
 QtUml::VisibilityKind QVariable::visibility() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->visibility();
+    return (qumlobject_cast<const QNamedElement *>(this))->visibility();
 }
 
 void QVariable::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setVisibility(visibility);
+    (qumlobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
 
 /*!
@@ -249,7 +243,7 @@ void QVariable::setVisibility(QtUml::VisibilityKind visibility)
  */
 QString QVariable::qualifiedName() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qumlobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -261,12 +255,12 @@ QString QVariable::qualifiedName() const
  */
 QStringExpression *QVariable::nameExpression() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+    return (qumlobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QVariable::setNameExpression(QStringExpression *nameExpression)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qumlobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -274,7 +268,7 @@ void QVariable::setNameExpression(QStringExpression *nameExpression)
  */
 QNamespace *QVariable::namespace_() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+    return (qumlobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -282,17 +276,17 @@ QNamespace *QVariable::namespace_() const
  */
 const QSet<QDependency *> *QVariable::clientDependencies() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qumlobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QVariable::addClientDependency(QDependency *clientDependency)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qumlobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QVariable::removeClientDependency(QDependency *clientDependency)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qumlobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -304,12 +298,12 @@ void QVariable::removeClientDependency(QDependency *clientDependency)
  */
 QType *QVariable::type() const
 {
-    return (qtuml_object_cast<const QTypedElement *>(this))->type();
+    return (qumlobject_cast<const QTypedElement *>(this))->type();
 }
 
 void QVariable::setType(QType *type)
 {
-    (qtuml_object_cast<QTypedElement *>(this))->setType(type);
+    (qumlobject_cast<QTypedElement *>(this))->setType(type);
 }
 
 // ---------------------------------------------------------------
@@ -321,12 +315,12 @@ void QVariable::setType(QType *type)
  */
 QTemplateParameter *QVariable::owningTemplateParameter() const
 {
-    return (qtuml_object_cast<const QParameterableElement *>(this))->owningTemplateParameter();
+    return (qumlobject_cast<const QParameterableElement *>(this))->owningTemplateParameter();
 }
 
 void QVariable::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
 {
-    (qtuml_object_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
+    (qumlobject_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
 }
 
 // ---------------------------------------------------------------
@@ -338,7 +332,7 @@ void QVariable::setOwningTemplateParameter(QTemplateParameter *owningTemplatePar
  */
 const QList<QConnectorEnd *> *QVariable::ends() const
 {
-    return (qtuml_object_cast<const QConnectableElement *>(this))->ends();
+    return (qumlobject_cast<const QConnectableElement *>(this))->ends();
 }
 
 /*!
@@ -346,12 +340,12 @@ const QList<QConnectorEnd *> *QVariable::ends() const
  */
 QConnectableElementTemplateParameter *QVariable::templateParameter() const
 {
-    return (qtuml_object_cast<const QConnectableElement *>(this))->templateParameter();
+    return (qumlobject_cast<const QConnectableElement *>(this))->templateParameter();
 }
 
 void QVariable::setTemplateParameter(QConnectableElementTemplateParameter *templateParameter)
 {
-    (qtuml_object_cast<QConnectableElement *>(this))->setTemplateParameter(templateParameter);
+    (qumlobject_cast<QConnectableElement *>(this))->setTemplateParameter(templateParameter);
 }
 
 // ---------------------------------------------------------------
@@ -382,7 +376,7 @@ void QVariable::setScope(QStructuredActivityNode *scope)
         d->scope = scope;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(scope));
+        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(scope));
 
         // Adjust opposite property
         if (scope)
@@ -414,7 +408,7 @@ void QVariable::setActivityScope(QActivity *activityScope)
         d->activityScope = activityScope;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(activityScope));
+        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(activityScope));
 
         // Adjust opposite property
         if (activityScope)

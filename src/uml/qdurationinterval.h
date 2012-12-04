@@ -68,7 +68,7 @@ class Q_UML_EXPORT QDurationInterval : public QInterval
     Q_DECLARE_PRIVATE(QDurationInterval)
 
 public:
-    Q_INVOKABLE explicit QDurationInterval(QObject *parent = 0);
+    Q_INVOKABLE explicit QDurationInterval(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QDurationInterval();
 
     // Association ends from QDurationInterval
@@ -78,7 +78,7 @@ public:
     Q_INVOKABLE void setMin(QDuration *min);
 
 protected:
-    explicit QDurationInterval(QDurationIntervalPrivate &dd, QObject *parent = 0);
+    explicit QDurationInterval(QDurationIntervalPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

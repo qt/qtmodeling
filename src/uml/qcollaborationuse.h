@@ -72,7 +72,7 @@ class Q_UML_EXPORT QCollaborationUse : public QNamedElement
     Q_DECLARE_PRIVATE(QCollaborationUse)
 
 public:
-    Q_INVOKABLE explicit QCollaborationUse(QObject *parent = 0);
+    Q_INVOKABLE explicit QCollaborationUse(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QCollaborationUse();
 
     // Association ends from QCollaborationUse
@@ -83,7 +83,7 @@ public:
     Q_INVOKABLE void removeRoleBinding(QDependency *roleBinding);
 
 protected:
-    explicit QCollaborationUse(QCollaborationUsePrivate &dd, QObject *parent = 0);
+    explicit QCollaborationUse(QCollaborationUsePrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -41,10 +41,8 @@
 #ifndef QTUML_QASSOCIATIONCLASS_P_H
 #define QTUML_QASSOCIATIONCLASS_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
-#include "private/qobject_p.h"
+#include "private/qumlobject_p.h"
 #include "private/qclass_p.h"
 #include "private/qassociation_p.h"
 
@@ -57,7 +55,7 @@ QT_BEGIN_NAMESPACE_QTUML
 QT_MODULE(QtUml)
 class QAssociationClass;
 
-class Q_UML_EXPORT QAssociationClassPrivate : public QObjectPrivate
+class Q_UML_EXPORT QAssociationClassPrivate : public QUmlObjectPrivate
 {
     Q_DECLARE_PUBLIC(QAssociationClass)
 

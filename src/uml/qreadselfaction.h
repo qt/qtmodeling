@@ -67,7 +67,7 @@ class Q_UML_EXPORT QReadSelfAction : public QAction
     Q_DECLARE_PRIVATE(QReadSelfAction)
 
 public:
-    Q_INVOKABLE explicit QReadSelfAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QReadSelfAction(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QReadSelfAction();
 
     // Association ends from QReadSelfAction
@@ -75,7 +75,7 @@ public:
     Q_INVOKABLE void setResult(QOutputPin *result);
 
 protected:
-    explicit QReadSelfAction(QReadSelfActionPrivate &dd, QObject *parent = 0);
+    explicit QReadSelfAction(QReadSelfActionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

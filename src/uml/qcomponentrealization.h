@@ -49,6 +49,8 @@
 // Qt includes
 #include <QtCore/QSet>
 
+#include <QtUml/QUmlPointer>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -72,7 +74,7 @@ class Q_UML_EXPORT QComponentRealization : public QRealization
     Q_DECLARE_PRIVATE(QComponentRealization)
 
 public:
-    Q_INVOKABLE explicit QComponentRealization(QObject *parent = 0);
+    Q_INVOKABLE explicit QComponentRealization(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QComponentRealization();
 
     // Association ends from QComponentRealization
@@ -89,7 +91,7 @@ public:
     Q_INVOKABLE void removeClient(QUmlPointer<QClassifier> realizingClassifier);
 
 protected:
-    explicit QComponentRealization(QComponentRealizationPrivate &dd, QObject *parent = 0);
+    explicit QComponentRealization(QComponentRealizationPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

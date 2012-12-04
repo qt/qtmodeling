@@ -60,20 +60,14 @@ QActorPrivate::~QActorPrivate()
     \brief An actor specifies a role played by a user or any other system that interacts with the subject.
  */
 
-QActor::QActor(QObject *parent) :
-    QBehavioredClassifier(*new QActorPrivate, parent)
+QActor::QActor(QUmlObject *parent, QUmlObject *wrapper) :
+    QBehavioredClassifier(*new QActorPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QActor *>("QActor *");
-    qRegisterMetaType<const QSet<QActor *> *>("const QSet<QActor *> *");
-    qRegisterMetaType<const QList<QActor *> *>("const QList<QActor *> *");
 }
 
-QActor::QActor(QActorPrivate &dd, QObject *parent) :
-    QBehavioredClassifier(dd, parent)
+QActor::QActor(QActorPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QBehavioredClassifier(dd, parent, wrapper)
 {
-    qRegisterMetaType<QActor *>("QActor *");
-    qRegisterMetaType<const QSet<QActor *> *>("const QSet<QActor *> *");
-    qRegisterMetaType<const QList<QActor *> *>("const QList<QActor *> *");
 }
 
 QActor::~QActor()

@@ -44,7 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
+#include <QtUml/QUmlObject>
 #include <QtUml/QDirectedRelationship>
 #include <QtUml/QNamedElement>
 
@@ -64,7 +64,7 @@ class QExtensionPoint;
 
 class QExtendPrivate;
 
-class Q_UML_EXPORT QExtend : public QObject
+class Q_UML_EXPORT QExtend : public QUmlObject
 {
     Q_OBJECT
 
@@ -77,7 +77,7 @@ class Q_UML_EXPORT QExtend : public QObject
     Q_DECLARE_PRIVATE(QExtend)
 
 public:
-    Q_INVOKABLE explicit QExtend(QObject *parent = 0);
+    Q_INVOKABLE explicit QExtend(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QExtend();
 
     // Association ends from aggregated QElement
@@ -121,7 +121,7 @@ public:
     Q_INVOKABLE void setCondition(QConstraint *condition);
 
 protected:
-    explicit QExtend(QExtendPrivate &dd, QObject *parent = 0);
+    explicit QExtend(QExtendPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 
 private:
     QDirectedRelationship *_wrappedDirectedRelationship;

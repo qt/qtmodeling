@@ -60,20 +60,14 @@ QDeployedArtifactPrivate::~QDeployedArtifactPrivate()
     \brief A deployed artifact is an artifact or artifact instance that has been deployed to a deployment target.
  */
 
-QDeployedArtifact::QDeployedArtifact(QObject *parent) :
-    QNamedElement(*new QDeployedArtifactPrivate, parent)
+QDeployedArtifact::QDeployedArtifact(QUmlObject *parent, QUmlObject *wrapper) :
+    QNamedElement(*new QDeployedArtifactPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QDeployedArtifact *>("QDeployedArtifact *");
-    qRegisterMetaType<const QSet<QDeployedArtifact *> *>("const QSet<QDeployedArtifact *> *");
-    qRegisterMetaType<const QList<QDeployedArtifact *> *>("const QList<QDeployedArtifact *> *");
 }
 
-QDeployedArtifact::QDeployedArtifact(QDeployedArtifactPrivate &dd, QObject *parent) :
-    QNamedElement(dd, parent)
+QDeployedArtifact::QDeployedArtifact(QDeployedArtifactPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QNamedElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QDeployedArtifact *>("QDeployedArtifact *");
-    qRegisterMetaType<const QSet<QDeployedArtifact *> *>("const QSet<QDeployedArtifact *> *");
-    qRegisterMetaType<const QList<QDeployedArtifact *> *>("const QList<QDeployedArtifact *> *");
 }
 
 QDeployedArtifact::~QDeployedArtifact()

@@ -41,10 +41,8 @@
 #ifndef QTUML_QPACKAGEABLEELEMENT_P_H
 #define QTUML_QPACKAGEABLEELEMENT_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
-#include "private/qobject_p.h"
+#include "private/qumlobject_p.h"
 #include "private/qparameterableelement_p.h"
 #include "private/qnamedelement_p.h"
 
@@ -59,7 +57,7 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QPackageableElementPrivate : public QObjectPrivate
+class Q_UML_EXPORT QPackageableElementPrivate : public QUmlObjectPrivate
 {
     Q_DECLARE_PUBLIC(QPackageableElement)
 

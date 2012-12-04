@@ -63,20 +63,14 @@ QAcceptCallActionPrivate::~QAcceptCallActionPrivate()
     \brief An accept call action is an accept event action representing the receipt of a synchronous call request. In addition to the normal operation parameters, the action produces an output that is needed later to supply the information to the reply action necessary to return control to the caller. This action is for synchronous calls. If it is used to handle an asynchronous call, execution of the subsequent reply action will complete immediately with no effects.
  */
 
-QAcceptCallAction::QAcceptCallAction(QObject *parent) :
-    QAcceptEventAction(*new QAcceptCallActionPrivate, parent)
+QAcceptCallAction::QAcceptCallAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QAcceptEventAction(*new QAcceptCallActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QAcceptCallAction *>("QAcceptCallAction *");
-    qRegisterMetaType<const QSet<QAcceptCallAction *> *>("const QSet<QAcceptCallAction *> *");
-    qRegisterMetaType<const QList<QAcceptCallAction *> *>("const QList<QAcceptCallAction *> *");
 }
 
-QAcceptCallAction::QAcceptCallAction(QAcceptCallActionPrivate &dd, QObject *parent) :
-    QAcceptEventAction(dd, parent)
+QAcceptCallAction::QAcceptCallAction(QAcceptCallActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QAcceptEventAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QAcceptCallAction *>("QAcceptCallAction *");
-    qRegisterMetaType<const QSet<QAcceptCallAction *> *>("const QSet<QAcceptCallAction *> *");
-    qRegisterMetaType<const QList<QAcceptCallAction *> *>("const QList<QAcceptCallAction *> *");
 }
 
 QAcceptCallAction::~QAcceptCallAction()
@@ -105,13 +99,13 @@ void QAcceptCallAction::setReturnInformation(QOutputPin *returnInformation)
     Q_D(QAcceptCallAction);
     if (d->returnInformation != returnInformation) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(d->returnInformation));
+        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(d->returnInformation));
 
         d->returnInformation = returnInformation;
 
         // Adjust subsetted property(ies)
         if (returnInformation) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(returnInformation));
+            (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(returnInformation));
         }
     }
 }

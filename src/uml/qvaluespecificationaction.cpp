@@ -65,20 +65,14 @@ QValueSpecificationActionPrivate::~QValueSpecificationActionPrivate()
     \brief A value specification action is an action that evaluates a value specification.
  */
 
-QValueSpecificationAction::QValueSpecificationAction(QObject *parent) :
-    QAction(*new QValueSpecificationActionPrivate, parent)
+QValueSpecificationAction::QValueSpecificationAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(*new QValueSpecificationActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QValueSpecificationAction *>("QValueSpecificationAction *");
-    qRegisterMetaType<const QSet<QValueSpecificationAction *> *>("const QSet<QValueSpecificationAction *> *");
-    qRegisterMetaType<const QList<QValueSpecificationAction *> *>("const QList<QValueSpecificationAction *> *");
 }
 
-QValueSpecificationAction::QValueSpecificationAction(QValueSpecificationActionPrivate &dd, QObject *parent) :
-    QAction(dd, parent)
+QValueSpecificationAction::QValueSpecificationAction(QValueSpecificationActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QValueSpecificationAction *>("QValueSpecificationAction *");
-    qRegisterMetaType<const QSet<QValueSpecificationAction *> *>("const QSet<QValueSpecificationAction *> *");
-    qRegisterMetaType<const QList<QValueSpecificationAction *> *>("const QList<QValueSpecificationAction *> *");
 }
 
 QValueSpecificationAction::~QValueSpecificationAction()
@@ -107,13 +101,13 @@ void QValueSpecificationAction::setValue(QValueSpecification *value)
     Q_D(QValueSpecificationAction);
     if (d->value != value) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->value));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->value));
 
         d->value = value;
 
         // Adjust subsetted property(ies)
         if (value) {
-            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(value));
+            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(value));
         }
     }
 }
@@ -136,13 +130,13 @@ void QValueSpecificationAction::setResult(QOutputPin *result)
     Q_D(QValueSpecificationAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(d->result));
+        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(result));
+            (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(result));
         }
     }
 }

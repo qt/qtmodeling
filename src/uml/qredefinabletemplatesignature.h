@@ -44,7 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
+#include <QtUml/QUmlObject>
 #include <QtUml/QTemplateSignature>
 #include <QtUml/QRedefinableElement>
 
@@ -63,7 +63,7 @@ class QTemplateParameter;
 
 class QRedefinableTemplateSignaturePrivate;
 
-class Q_UML_EXPORT QRedefinableTemplateSignature : public QObject
+class Q_UML_EXPORT QRedefinableTemplateSignature : public QUmlObject
 {
     Q_OBJECT
 
@@ -75,7 +75,7 @@ class Q_UML_EXPORT QRedefinableTemplateSignature : public QObject
     Q_DECLARE_PRIVATE(QRedefinableTemplateSignature)
 
 public:
-    Q_INVOKABLE explicit QRedefinableTemplateSignature(QObject *parent = 0);
+    Q_INVOKABLE explicit QRedefinableTemplateSignature(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QRedefinableTemplateSignature();
 
     // Association ends from aggregated QElement
@@ -120,7 +120,7 @@ public:
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
 
 protected:
-    explicit QRedefinableTemplateSignature(QRedefinableTemplateSignaturePrivate &dd, QObject *parent = 0);
+    explicit QRedefinableTemplateSignature(QRedefinableTemplateSignaturePrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 
 private:
     QTemplateSignature *_wrappedTemplateSignature;

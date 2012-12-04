@@ -95,24 +95,18 @@ void QConnectableElementPrivate::removeEnd(QConnectorEnd *end)
     \brief ConnectableElement is an abstract metaclass representing a set of instances that play roles of a classifier. Connectable elements may be joined by attached connectors and specify configurations of linked instances to be created within an instance of the containing classifier.A connectable element may be exposed as a connectable element template parameter.
  */
 
-QConnectableElement::QConnectableElement(QObject *parent) :
-    QObject(*new QConnectableElementPrivate, parent),
-    _wrappedTypedElement(new QTypedElement(this)),
-    _wrappedParameterableElement(new QParameterableElement(this))
+QConnectableElement::QConnectableElement(QUmlObject *parent, QUmlObject *wrapper) :
+    QUmlObject(*new QConnectableElementPrivate, parent, wrapper),
+    _wrappedTypedElement(new QTypedElement(this, this)),
+    _wrappedParameterableElement(new QParameterableElement(this, this))
 {
-    qRegisterMetaType<QConnectableElement *>("QConnectableElement *");
-    qRegisterMetaType<const QSet<QConnectableElement *> *>("const QSet<QConnectableElement *> *");
-    qRegisterMetaType<const QList<QConnectableElement *> *>("const QList<QConnectableElement *> *");
 }
 
-QConnectableElement::QConnectableElement(QConnectableElementPrivate &dd, QObject *parent) :
-    QObject(dd, parent),
-    _wrappedTypedElement(new QTypedElement(this)),
-    _wrappedParameterableElement(new QParameterableElement(this))
+QConnectableElement::QConnectableElement(QConnectableElementPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QUmlObject(dd, parent, wrapper),
+    _wrappedTypedElement(new QTypedElement(this, this)),
+    _wrappedParameterableElement(new QParameterableElement(this, this))
 {
-    qRegisterMetaType<QConnectableElement *>("QConnectableElement *");
-    qRegisterMetaType<const QSet<QConnectableElement *> *>("const QSet<QConnectableElement *> *");
-    qRegisterMetaType<const QList<QConnectableElement *> *>("const QList<QConnectableElement *> *");
 }
 
 QConnectableElement::~QConnectableElement()
@@ -128,7 +122,7 @@ QConnectableElement::~QConnectableElement()
  */
 const QSet<QElement *> *QConnectableElement::ownedElements() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+    return (qumlobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -136,7 +130,7 @@ const QSet<QElement *> *QConnectableElement::ownedElements() const
  */
 QElement *QConnectableElement::owner() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->owner();
+    return (qumlobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -144,17 +138,17 @@ QElement *QConnectableElement::owner() const
  */
 const QSet<QComment *> *QConnectableElement::ownedComments() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+    return (qumlobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QConnectableElement::addOwnedComment(QComment *ownedComment)
 {
-    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qumlobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QConnectableElement::removeOwnedComment(QComment *ownedComment)
 {
-    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qumlobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -166,12 +160,12 @@ void QConnectableElement::removeOwnedComment(QComment *ownedComment)
  */
 QString QConnectableElement::name() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+    return (qumlobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QConnectableElement::setName(QString name)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+    (qumlobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -179,12 +173,12 @@ void QConnectableElement::setName(QString name)
  */
 QtUml::VisibilityKind QConnectableElement::visibility() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->visibility();
+    return (qumlobject_cast<const QNamedElement *>(this))->visibility();
 }
 
 void QConnectableElement::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setVisibility(visibility);
+    (qumlobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
 
 /*!
@@ -192,7 +186,7 @@ void QConnectableElement::setVisibility(QtUml::VisibilityKind visibility)
  */
 QString QConnectableElement::qualifiedName() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qumlobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -204,12 +198,12 @@ QString QConnectableElement::qualifiedName() const
  */
 QStringExpression *QConnectableElement::nameExpression() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+    return (qumlobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QConnectableElement::setNameExpression(QStringExpression *nameExpression)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qumlobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -217,7 +211,7 @@ void QConnectableElement::setNameExpression(QStringExpression *nameExpression)
  */
 QNamespace *QConnectableElement::namespace_() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+    return (qumlobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -225,17 +219,17 @@ QNamespace *QConnectableElement::namespace_() const
  */
 const QSet<QDependency *> *QConnectableElement::clientDependencies() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qumlobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QConnectableElement::addClientDependency(QDependency *clientDependency)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qumlobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QConnectableElement::removeClientDependency(QDependency *clientDependency)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qumlobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -247,12 +241,12 @@ void QConnectableElement::removeClientDependency(QDependency *clientDependency)
  */
 QType *QConnectableElement::type() const
 {
-    return (qtuml_object_cast<const QTypedElement *>(this))->type();
+    return (qumlobject_cast<const QTypedElement *>(this))->type();
 }
 
 void QConnectableElement::setType(QType *type)
 {
-    (qtuml_object_cast<QTypedElement *>(this))->setType(type);
+    (qumlobject_cast<QTypedElement *>(this))->setType(type);
 }
 
 // ---------------------------------------------------------------
@@ -264,12 +258,12 @@ void QConnectableElement::setType(QType *type)
  */
 QTemplateParameter *QConnectableElement::owningTemplateParameter() const
 {
-    return (qtuml_object_cast<const QParameterableElement *>(this))->owningTemplateParameter();
+    return (qumlobject_cast<const QParameterableElement *>(this))->owningTemplateParameter();
 }
 
 void QConnectableElement::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
 {
-    (qtuml_object_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
+    (qumlobject_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
 }
 
 // ---------------------------------------------------------------

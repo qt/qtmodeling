@@ -46,6 +46,8 @@
 // Base class includes
 #include <QtUml/QRealization>
 
+#include <QtUml/QUmlPointer>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -68,7 +70,7 @@ class Q_UML_EXPORT QSubstitution : public QRealization
     Q_DECLARE_PRIVATE(QSubstitution)
 
 public:
-    Q_INVOKABLE explicit QSubstitution(QObject *parent = 0);
+    Q_INVOKABLE explicit QSubstitution(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QSubstitution();
 
     // Association ends from QSubstitution
@@ -84,7 +86,7 @@ public:
     Q_INVOKABLE void removeClient(QUmlPointer<QClassifier> substitutingClassifier);
 
 protected:
-    explicit QSubstitution(QSubstitutionPrivate &dd, QObject *parent = 0);
+    explicit QSubstitution(QSubstitutionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

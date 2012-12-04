@@ -44,7 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
+#include <QtUml/QUmlObject>
 #include <QtUml/QStructuredClassifier>
 #include <QtUml/QBehavioredClassifier>
 
@@ -62,7 +62,7 @@ class QConnectableElement;
 
 class QCollaborationPrivate;
 
-class Q_UML_EXPORT QCollaboration : public QObject
+class Q_UML_EXPORT QCollaboration : public QUmlObject
 {
     Q_OBJECT
 
@@ -72,7 +72,7 @@ class Q_UML_EXPORT QCollaboration : public QObject
     Q_DECLARE_PRIVATE(QCollaboration)
 
 public:
-    Q_INVOKABLE explicit QCollaboration(QObject *parent = 0);
+    Q_INVOKABLE explicit QCollaboration(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QCollaboration();
 
     // Association ends from aggregated QElement
@@ -201,7 +201,7 @@ public:
     Q_INVOKABLE void removeCollaborationRole(QConnectableElement *collaborationRole);
 
 protected:
-    explicit QCollaboration(QCollaborationPrivate &dd, QObject *parent = 0);
+    explicit QCollaboration(QCollaborationPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 
 private:
     QStructuredClassifier *_wrappedStructuredClassifier;

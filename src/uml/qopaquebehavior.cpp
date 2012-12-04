@@ -64,20 +64,14 @@ QOpaqueBehaviorPrivate::~QOpaqueBehaviorPrivate()
     \brief An behavior with implementation-specific semantics.
  */
 
-QOpaqueBehavior::QOpaqueBehavior(QObject *parent) :
-    QBehavior(*new QOpaqueBehaviorPrivate, parent)
+QOpaqueBehavior::QOpaqueBehavior(QUmlObject *parent, QUmlObject *wrapper) :
+    QBehavior(*new QOpaqueBehaviorPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QOpaqueBehavior *>("QOpaqueBehavior *");
-    qRegisterMetaType<const QSet<QOpaqueBehavior *> *>("const QSet<QOpaqueBehavior *> *");
-    qRegisterMetaType<const QList<QOpaqueBehavior *> *>("const QList<QOpaqueBehavior *> *");
 }
 
-QOpaqueBehavior::QOpaqueBehavior(QOpaqueBehaviorPrivate &dd, QObject *parent) :
-    QBehavior(dd, parent)
+QOpaqueBehavior::QOpaqueBehavior(QOpaqueBehaviorPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QBehavior(dd, parent, wrapper)
 {
-    qRegisterMetaType<QOpaqueBehavior *>("QOpaqueBehavior *");
-    qRegisterMetaType<const QSet<QOpaqueBehavior *> *>("const QSet<QOpaqueBehavior *> *");
-    qRegisterMetaType<const QList<QOpaqueBehavior *> *>("const QList<QOpaqueBehavior *> *");
 }
 
 QOpaqueBehavior::~QOpaqueBehavior()

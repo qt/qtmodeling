@@ -61,24 +61,18 @@ QPinPrivate::~QPinPrivate()
     \brief A pin is a typed element and multiplicity element that provides values to actions and accept result values from them.A pin is an object node for inputs and outputs to actions.
  */
 
-QPin::QPin(QObject *parent) :
-    QObject(*new QPinPrivate, parent),
-    _wrappedMultiplicityElement(new QMultiplicityElement(this)),
-    _wrappedObjectNode(new QObjectNode(this))
+QPin::QPin(QUmlObject *parent, QUmlObject *wrapper) :
+    QUmlObject(*new QPinPrivate, parent, wrapper),
+    _wrappedMultiplicityElement(new QMultiplicityElement(this, this)),
+    _wrappedObjectNode(new QObjectNode(this, this))
 {
-    qRegisterMetaType<QPin *>("QPin *");
-    qRegisterMetaType<const QSet<QPin *> *>("const QSet<QPin *> *");
-    qRegisterMetaType<const QList<QPin *> *>("const QList<QPin *> *");
 }
 
-QPin::QPin(QPinPrivate &dd, QObject *parent) :
-    QObject(dd, parent),
-    _wrappedMultiplicityElement(new QMultiplicityElement(this)),
-    _wrappedObjectNode(new QObjectNode(this))
+QPin::QPin(QPinPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QUmlObject(dd, parent, wrapper),
+    _wrappedMultiplicityElement(new QMultiplicityElement(this, this)),
+    _wrappedObjectNode(new QObjectNode(this, this))
 {
-    qRegisterMetaType<QPin *>("QPin *");
-    qRegisterMetaType<const QSet<QPin *> *>("const QSet<QPin *> *");
-    qRegisterMetaType<const QList<QPin *> *>("const QList<QPin *> *");
 }
 
 QPin::~QPin()
@@ -94,7 +88,7 @@ QPin::~QPin()
  */
 const QSet<QElement *> *QPin::ownedElements() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+    return (qumlobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -102,7 +96,7 @@ const QSet<QElement *> *QPin::ownedElements() const
  */
 QElement *QPin::owner() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->owner();
+    return (qumlobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -110,17 +104,17 @@ QElement *QPin::owner() const
  */
 const QSet<QComment *> *QPin::ownedComments() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+    return (qumlobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QPin::addOwnedComment(QComment *ownedComment)
 {
-    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qumlobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QPin::removeOwnedComment(QComment *ownedComment)
 {
-    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qumlobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -132,12 +126,12 @@ void QPin::removeOwnedComment(QComment *ownedComment)
  */
 qint32 QPin::upper() const
 {
-    return (qtuml_object_cast<const QMultiplicityElement *>(this))->upper();
+    return (qumlobject_cast<const QMultiplicityElement *>(this))->upper();
 }
 
 void QPin::setUpper(qint32 upper)
 {
-    (qtuml_object_cast<QMultiplicityElement *>(this))->setUpper(upper);
+    (qumlobject_cast<QMultiplicityElement *>(this))->setUpper(upper);
 }
 
 /*!
@@ -145,12 +139,12 @@ void QPin::setUpper(qint32 upper)
  */
 bool QPin::isUnique() const
 {
-    return (qtuml_object_cast<const QMultiplicityElement *>(this))->isUnique();
+    return (qumlobject_cast<const QMultiplicityElement *>(this))->isUnique();
 }
 
 void QPin::setUnique(bool isUnique)
 {
-    (qtuml_object_cast<QMultiplicityElement *>(this))->setUnique(isUnique);
+    (qumlobject_cast<QMultiplicityElement *>(this))->setUnique(isUnique);
 }
 
 /*!
@@ -158,12 +152,12 @@ void QPin::setUnique(bool isUnique)
  */
 bool QPin::isOrdered() const
 {
-    return (qtuml_object_cast<const QMultiplicityElement *>(this))->isOrdered();
+    return (qumlobject_cast<const QMultiplicityElement *>(this))->isOrdered();
 }
 
 void QPin::setOrdered(bool isOrdered)
 {
-    (qtuml_object_cast<QMultiplicityElement *>(this))->setOrdered(isOrdered);
+    (qumlobject_cast<QMultiplicityElement *>(this))->setOrdered(isOrdered);
 }
 
 /*!
@@ -171,12 +165,12 @@ void QPin::setOrdered(bool isOrdered)
  */
 qint32 QPin::lower() const
 {
-    return (qtuml_object_cast<const QMultiplicityElement *>(this))->lower();
+    return (qumlobject_cast<const QMultiplicityElement *>(this))->lower();
 }
 
 void QPin::setLower(qint32 lower)
 {
-    (qtuml_object_cast<QMultiplicityElement *>(this))->setLower(lower);
+    (qumlobject_cast<QMultiplicityElement *>(this))->setLower(lower);
 }
 
 // ---------------------------------------------------------------
@@ -188,12 +182,12 @@ void QPin::setLower(qint32 lower)
  */
 QValueSpecification *QPin::upperValue() const
 {
-    return (qtuml_object_cast<const QMultiplicityElement *>(this))->upperValue();
+    return (qumlobject_cast<const QMultiplicityElement *>(this))->upperValue();
 }
 
 void QPin::setUpperValue(QValueSpecification *upperValue)
 {
-    (qtuml_object_cast<QMultiplicityElement *>(this))->setUpperValue(upperValue);
+    (qumlobject_cast<QMultiplicityElement *>(this))->setUpperValue(upperValue);
 }
 
 /*!
@@ -201,12 +195,12 @@ void QPin::setUpperValue(QValueSpecification *upperValue)
  */
 QValueSpecification *QPin::lowerValue() const
 {
-    return (qtuml_object_cast<const QMultiplicityElement *>(this))->lowerValue();
+    return (qumlobject_cast<const QMultiplicityElement *>(this))->lowerValue();
 }
 
 void QPin::setLowerValue(QValueSpecification *lowerValue)
 {
-    (qtuml_object_cast<QMultiplicityElement *>(this))->setLowerValue(lowerValue);
+    (qumlobject_cast<QMultiplicityElement *>(this))->setLowerValue(lowerValue);
 }
 
 // ---------------------------------------------------------------
@@ -218,12 +212,12 @@ void QPin::setLowerValue(QValueSpecification *lowerValue)
  */
 QString QPin::name() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+    return (qumlobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QPin::setName(QString name)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+    (qumlobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -231,12 +225,12 @@ void QPin::setName(QString name)
  */
 QtUml::VisibilityKind QPin::visibility() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->visibility();
+    return (qumlobject_cast<const QNamedElement *>(this))->visibility();
 }
 
 void QPin::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setVisibility(visibility);
+    (qumlobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
 
 /*!
@@ -244,7 +238,7 @@ void QPin::setVisibility(QtUml::VisibilityKind visibility)
  */
 QString QPin::qualifiedName() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qumlobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -256,12 +250,12 @@ QString QPin::qualifiedName() const
  */
 QStringExpression *QPin::nameExpression() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+    return (qumlobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QPin::setNameExpression(QStringExpression *nameExpression)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qumlobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -269,7 +263,7 @@ void QPin::setNameExpression(QStringExpression *nameExpression)
  */
 QNamespace *QPin::namespace_() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+    return (qumlobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -277,17 +271,17 @@ QNamespace *QPin::namespace_() const
  */
 const QSet<QDependency *> *QPin::clientDependencies() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qumlobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QPin::addClientDependency(QDependency *clientDependency)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qumlobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QPin::removeClientDependency(QDependency *clientDependency)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qumlobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -299,12 +293,12 @@ void QPin::removeClientDependency(QDependency *clientDependency)
  */
 bool QPin::isLeaf() const
 {
-    return (qtuml_object_cast<const QRedefinableElement *>(this))->isLeaf();
+    return (qumlobject_cast<const QRedefinableElement *>(this))->isLeaf();
 }
 
 void QPin::setLeaf(bool isLeaf)
 {
-    (qtuml_object_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+    (qumlobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
 }
 
 // ---------------------------------------------------------------
@@ -316,7 +310,7 @@ void QPin::setLeaf(bool isLeaf)
  */
 const QSet<QRedefinableElement *> *QPin::redefinedElements() const
 {
-    return (qtuml_object_cast<const QRedefinableElement *>(this))->redefinedElements();
+    return (qumlobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
 
 /*!
@@ -324,7 +318,7 @@ const QSet<QRedefinableElement *> *QPin::redefinedElements() const
  */
 const QSet<QClassifier *> *QPin::redefinitionContexts() const
 {
-    return (qtuml_object_cast<const QRedefinableElement *>(this))->redefinitionContexts();
+    return (qumlobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
 }
 
 // ---------------------------------------------------------------
@@ -336,17 +330,17 @@ const QSet<QClassifier *> *QPin::redefinitionContexts() const
  */
 const QSet<QActivityNode *> *QPin::redefinedNodes() const
 {
-    return (qtuml_object_cast<const QActivityNode *>(this))->redefinedNodes();
+    return (qumlobject_cast<const QActivityNode *>(this))->redefinedNodes();
 }
 
 void QPin::addRedefinedNode(QActivityNode *redefinedNode)
 {
-    (qtuml_object_cast<QActivityNode *>(this))->addRedefinedNode(redefinedNode);
+    (qumlobject_cast<QActivityNode *>(this))->addRedefinedNode(redefinedNode);
 }
 
 void QPin::removeRedefinedNode(QActivityNode *redefinedNode)
 {
-    (qtuml_object_cast<QActivityNode *>(this))->removeRedefinedNode(redefinedNode);
+    (qumlobject_cast<QActivityNode *>(this))->removeRedefinedNode(redefinedNode);
 }
 
 /*!
@@ -354,17 +348,17 @@ void QPin::removeRedefinedNode(QActivityNode *redefinedNode)
  */
 const QSet<QActivityEdge *> *QPin::incomings() const
 {
-    return (qtuml_object_cast<const QActivityNode *>(this))->incomings();
+    return (qumlobject_cast<const QActivityNode *>(this))->incomings();
 }
 
 void QPin::addIncoming(QActivityEdge *incoming)
 {
-    (qtuml_object_cast<QActivityNode *>(this))->addIncoming(incoming);
+    (qumlobject_cast<QActivityNode *>(this))->addIncoming(incoming);
 }
 
 void QPin::removeIncoming(QActivityEdge *incoming)
 {
-    (qtuml_object_cast<QActivityNode *>(this))->removeIncoming(incoming);
+    (qumlobject_cast<QActivityNode *>(this))->removeIncoming(incoming);
 }
 
 /*!
@@ -372,12 +366,12 @@ void QPin::removeIncoming(QActivityEdge *incoming)
  */
 QActivity *QPin::activity() const
 {
-    return (qtuml_object_cast<const QActivityNode *>(this))->activity();
+    return (qumlobject_cast<const QActivityNode *>(this))->activity();
 }
 
 void QPin::setActivity(QActivity *activity)
 {
-    (qtuml_object_cast<QActivityNode *>(this))->setActivity(activity);
+    (qumlobject_cast<QActivityNode *>(this))->setActivity(activity);
 }
 
 /*!
@@ -385,7 +379,7 @@ void QPin::setActivity(QActivity *activity)
  */
 const QSet<QActivityGroup *> *QPin::inGroup() const
 {
-    return (qtuml_object_cast<const QActivityNode *>(this))->inGroup();
+    return (qumlobject_cast<const QActivityNode *>(this))->inGroup();
 }
 
 /*!
@@ -393,12 +387,12 @@ const QSet<QActivityGroup *> *QPin::inGroup() const
  */
 QStructuredActivityNode *QPin::inStructuredNode() const
 {
-    return (qtuml_object_cast<const QActivityNode *>(this))->inStructuredNode();
+    return (qumlobject_cast<const QActivityNode *>(this))->inStructuredNode();
 }
 
 void QPin::setInStructuredNode(QStructuredActivityNode *inStructuredNode)
 {
-    (qtuml_object_cast<QActivityNode *>(this))->setInStructuredNode(inStructuredNode);
+    (qumlobject_cast<QActivityNode *>(this))->setInStructuredNode(inStructuredNode);
 }
 
 /*!
@@ -406,17 +400,17 @@ void QPin::setInStructuredNode(QStructuredActivityNode *inStructuredNode)
  */
 const QSet<QActivityPartition *> *QPin::inPartition() const
 {
-    return (qtuml_object_cast<const QActivityNode *>(this))->inPartition();
+    return (qumlobject_cast<const QActivityNode *>(this))->inPartition();
 }
 
 void QPin::addInPartition(QActivityPartition *inPartition)
 {
-    (qtuml_object_cast<QActivityNode *>(this))->addInPartition(inPartition);
+    (qumlobject_cast<QActivityNode *>(this))->addInPartition(inPartition);
 }
 
 void QPin::removeInPartition(QActivityPartition *inPartition)
 {
-    (qtuml_object_cast<QActivityNode *>(this))->removeInPartition(inPartition);
+    (qumlobject_cast<QActivityNode *>(this))->removeInPartition(inPartition);
 }
 
 /*!
@@ -424,17 +418,17 @@ void QPin::removeInPartition(QActivityPartition *inPartition)
  */
 const QSet<QInterruptibleActivityRegion *> *QPin::inInterruptibleRegion() const
 {
-    return (qtuml_object_cast<const QActivityNode *>(this))->inInterruptibleRegion();
+    return (qumlobject_cast<const QActivityNode *>(this))->inInterruptibleRegion();
 }
 
 void QPin::addInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion)
 {
-    (qtuml_object_cast<QActivityNode *>(this))->addInInterruptibleRegion(inInterruptibleRegion);
+    (qumlobject_cast<QActivityNode *>(this))->addInInterruptibleRegion(inInterruptibleRegion);
 }
 
 void QPin::removeInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion)
 {
-    (qtuml_object_cast<QActivityNode *>(this))->removeInInterruptibleRegion(inInterruptibleRegion);
+    (qumlobject_cast<QActivityNode *>(this))->removeInInterruptibleRegion(inInterruptibleRegion);
 }
 
 /*!
@@ -442,17 +436,17 @@ void QPin::removeInInterruptibleRegion(QInterruptibleActivityRegion *inInterrupt
  */
 const QSet<QActivityEdge *> *QPin::outgoings() const
 {
-    return (qtuml_object_cast<const QActivityNode *>(this))->outgoings();
+    return (qumlobject_cast<const QActivityNode *>(this))->outgoings();
 }
 
 void QPin::addOutgoing(QActivityEdge *outgoing)
 {
-    (qtuml_object_cast<QActivityNode *>(this))->addOutgoing(outgoing);
+    (qumlobject_cast<QActivityNode *>(this))->addOutgoing(outgoing);
 }
 
 void QPin::removeOutgoing(QActivityEdge *outgoing)
 {
-    (qtuml_object_cast<QActivityNode *>(this))->removeOutgoing(outgoing);
+    (qumlobject_cast<QActivityNode *>(this))->removeOutgoing(outgoing);
 }
 
 // ---------------------------------------------------------------
@@ -464,12 +458,12 @@ void QPin::removeOutgoing(QActivityEdge *outgoing)
  */
 QType *QPin::type() const
 {
-    return (qtuml_object_cast<const QTypedElement *>(this))->type();
+    return (qumlobject_cast<const QTypedElement *>(this))->type();
 }
 
 void QPin::setType(QType *type)
 {
-    (qtuml_object_cast<QTypedElement *>(this))->setType(type);
+    (qumlobject_cast<QTypedElement *>(this))->setType(type);
 }
 
 // ---------------------------------------------------------------
@@ -481,12 +475,12 @@ void QPin::setType(QType *type)
  */
 bool QPin::isControlType() const
 {
-    return (qtuml_object_cast<const QObjectNode *>(this))->isControlType();
+    return (qumlobject_cast<const QObjectNode *>(this))->isControlType();
 }
 
 void QPin::setControlType(bool isControlType)
 {
-    (qtuml_object_cast<QObjectNode *>(this))->setControlType(isControlType);
+    (qumlobject_cast<QObjectNode *>(this))->setControlType(isControlType);
 }
 
 /*!
@@ -494,12 +488,12 @@ void QPin::setControlType(bool isControlType)
  */
 QtUml::ObjectNodeOrderingKind QPin::ordering() const
 {
-    return (qtuml_object_cast<const QObjectNode *>(this))->ordering();
+    return (qumlobject_cast<const QObjectNode *>(this))->ordering();
 }
 
 void QPin::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
-    (qtuml_object_cast<QObjectNode *>(this))->setOrdering(ordering);
+    (qumlobject_cast<QObjectNode *>(this))->setOrdering(ordering);
 }
 
 // ---------------------------------------------------------------
@@ -511,12 +505,12 @@ void QPin::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
  */
 QValueSpecification *QPin::upperBound() const
 {
-    return (qtuml_object_cast<const QObjectNode *>(this))->upperBound();
+    return (qumlobject_cast<const QObjectNode *>(this))->upperBound();
 }
 
 void QPin::setUpperBound(QValueSpecification *upperBound)
 {
-    (qtuml_object_cast<QObjectNode *>(this))->setUpperBound(upperBound);
+    (qumlobject_cast<QObjectNode *>(this))->setUpperBound(upperBound);
 }
 
 /*!
@@ -524,12 +518,12 @@ void QPin::setUpperBound(QValueSpecification *upperBound)
  */
 QBehavior *QPin::selection() const
 {
-    return (qtuml_object_cast<const QObjectNode *>(this))->selection();
+    return (qumlobject_cast<const QObjectNode *>(this))->selection();
 }
 
 void QPin::setSelection(QBehavior *selection)
 {
-    (qtuml_object_cast<QObjectNode *>(this))->setSelection(selection);
+    (qumlobject_cast<QObjectNode *>(this))->setSelection(selection);
 }
 
 /*!
@@ -537,17 +531,17 @@ void QPin::setSelection(QBehavior *selection)
  */
 const QSet<QState *> *QPin::inState() const
 {
-    return (qtuml_object_cast<const QObjectNode *>(this))->inState();
+    return (qumlobject_cast<const QObjectNode *>(this))->inState();
 }
 
 void QPin::addInState(QState *inState)
 {
-    (qtuml_object_cast<QObjectNode *>(this))->addInState(inState);
+    (qumlobject_cast<QObjectNode *>(this))->addInState(inState);
 }
 
 void QPin::removeInState(QState *inState)
 {
-    (qtuml_object_cast<QObjectNode *>(this))->removeInState(inState);
+    (qumlobject_cast<QObjectNode *>(this))->removeInState(inState);
 }
 
 // ---------------------------------------------------------------

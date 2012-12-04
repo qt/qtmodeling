@@ -60,20 +60,14 @@ QDestructionOccurrenceSpecificationPrivate::~QDestructionOccurrenceSpecification
     \brief A destruction event models the destruction of an object.
  */
 
-QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(QObject *parent) :
-    QMessageOccurrenceSpecification(*new QDestructionOccurrenceSpecificationPrivate, parent)
+QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(QUmlObject *parent, QUmlObject *wrapper) :
+    QMessageOccurrenceSpecification(*new QDestructionOccurrenceSpecificationPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QDestructionOccurrenceSpecification *>("QDestructionOccurrenceSpecification *");
-    qRegisterMetaType<const QSet<QDestructionOccurrenceSpecification *> *>("const QSet<QDestructionOccurrenceSpecification *> *");
-    qRegisterMetaType<const QList<QDestructionOccurrenceSpecification *> *>("const QList<QDestructionOccurrenceSpecification *> *");
 }
 
-QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(QDestructionOccurrenceSpecificationPrivate &dd, QObject *parent) :
-    QMessageOccurrenceSpecification(dd, parent)
+QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(QDestructionOccurrenceSpecificationPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QMessageOccurrenceSpecification(dd, parent, wrapper)
 {
-    qRegisterMetaType<QDestructionOccurrenceSpecification *>("QDestructionOccurrenceSpecification *");
-    qRegisterMetaType<const QSet<QDestructionOccurrenceSpecification *> *>("const QSet<QDestructionOccurrenceSpecification *> *");
-    qRegisterMetaType<const QList<QDestructionOccurrenceSpecification *> *>("const QList<QDestructionOccurrenceSpecification *> *");
 }
 
 QDestructionOccurrenceSpecification::~QDestructionOccurrenceSpecification()

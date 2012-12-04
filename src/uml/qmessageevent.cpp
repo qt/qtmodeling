@@ -60,20 +60,14 @@ QMessageEventPrivate::~QMessageEventPrivate()
     \brief A message event specifies the receipt by an object of either a call or a signal.
  */
 
-QMessageEvent::QMessageEvent(QObject *parent) :
-    QEvent(*new QMessageEventPrivate, parent)
+QMessageEvent::QMessageEvent(QUmlObject *parent, QUmlObject *wrapper) :
+    QEvent(*new QMessageEventPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QMessageEvent *>("QMessageEvent *");
-    qRegisterMetaType<const QSet<QMessageEvent *> *>("const QSet<QMessageEvent *> *");
-    qRegisterMetaType<const QList<QMessageEvent *> *>("const QList<QMessageEvent *> *");
 }
 
-QMessageEvent::QMessageEvent(QMessageEventPrivate &dd, QObject *parent) :
-    QEvent(dd, parent)
+QMessageEvent::QMessageEvent(QMessageEventPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QEvent(dd, parent, wrapper)
 {
-    qRegisterMetaType<QMessageEvent *>("QMessageEvent *");
-    qRegisterMetaType<const QSet<QMessageEvent *> *>("const QSet<QMessageEvent *> *");
-    qRegisterMetaType<const QList<QMessageEvent *> *>("const QList<QMessageEvent *> *");
 }
 
 QMessageEvent::~QMessageEvent()

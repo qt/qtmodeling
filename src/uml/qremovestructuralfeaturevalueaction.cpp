@@ -64,20 +64,14 @@ QRemoveStructuralFeatureValueActionPrivate::~QRemoveStructuralFeatureValueAction
     \brief A remove structural feature value action is a write structural feature action that removes values from structural features.
  */
 
-QRemoveStructuralFeatureValueAction::QRemoveStructuralFeatureValueAction(QObject *parent) :
-    QWriteStructuralFeatureAction(*new QRemoveStructuralFeatureValueActionPrivate, parent)
+QRemoveStructuralFeatureValueAction::QRemoveStructuralFeatureValueAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QWriteStructuralFeatureAction(*new QRemoveStructuralFeatureValueActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QRemoveStructuralFeatureValueAction *>("QRemoveStructuralFeatureValueAction *");
-    qRegisterMetaType<const QSet<QRemoveStructuralFeatureValueAction *> *>("const QSet<QRemoveStructuralFeatureValueAction *> *");
-    qRegisterMetaType<const QList<QRemoveStructuralFeatureValueAction *> *>("const QList<QRemoveStructuralFeatureValueAction *> *");
 }
 
-QRemoveStructuralFeatureValueAction::QRemoveStructuralFeatureValueAction(QRemoveStructuralFeatureValueActionPrivate &dd, QObject *parent) :
-    QWriteStructuralFeatureAction(dd, parent)
+QRemoveStructuralFeatureValueAction::QRemoveStructuralFeatureValueAction(QRemoveStructuralFeatureValueActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QWriteStructuralFeatureAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QRemoveStructuralFeatureValueAction *>("QRemoveStructuralFeatureValueAction *");
-    qRegisterMetaType<const QSet<QRemoveStructuralFeatureValueAction *> *>("const QSet<QRemoveStructuralFeatureValueAction *> *");
-    qRegisterMetaType<const QList<QRemoveStructuralFeatureValueAction *> *>("const QList<QRemoveStructuralFeatureValueAction *> *");
 }
 
 QRemoveStructuralFeatureValueAction::~QRemoveStructuralFeatureValueAction()
@@ -131,13 +125,13 @@ void QRemoveStructuralFeatureValueAction::setRemoveAt(QInputPin *removeAt)
     Q_D(QRemoveStructuralFeatureValueAction);
     if (d->removeAt != removeAt) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->removeAt));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->removeAt));
 
         d->removeAt = removeAt;
 
         // Adjust subsetted property(ies)
         if (removeAt) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(removeAt));
+            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(removeAt));
         }
     }
 }

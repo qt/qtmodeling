@@ -66,7 +66,7 @@ void QDirectedRelationshipPrivate::addSource(QElement *source)
         this->sources->insert(source);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QRelationshipPrivate *>(this))->addRelatedElement(qtuml_object_cast<QElement *>(source));
+        (qumlobject_cast<QRelationshipPrivate *>(this))->addRelatedElement(qumlobject_cast<QElement *>(source));
     }
 }
 
@@ -78,7 +78,7 @@ void QDirectedRelationshipPrivate::removeSource(QElement *source)
         this->sources->remove(source);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QRelationshipPrivate *>(this))->removeRelatedElement(qtuml_object_cast<QElement *>(source));
+        (qumlobject_cast<QRelationshipPrivate *>(this))->removeRelatedElement(qumlobject_cast<QElement *>(source));
     }
 }
 
@@ -90,7 +90,7 @@ void QDirectedRelationshipPrivate::addTarget(QElement *target)
         this->targets->insert(target);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QRelationshipPrivate *>(this))->addRelatedElement(qtuml_object_cast<QElement *>(target));
+        (qumlobject_cast<QRelationshipPrivate *>(this))->addRelatedElement(qumlobject_cast<QElement *>(target));
     }
 }
 
@@ -102,7 +102,7 @@ void QDirectedRelationshipPrivate::removeTarget(QElement *target)
         this->targets->remove(target);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QRelationshipPrivate *>(this))->removeRelatedElement(qtuml_object_cast<QElement *>(target));
+        (qumlobject_cast<QRelationshipPrivate *>(this))->removeRelatedElement(qumlobject_cast<QElement *>(target));
     }
 }
 
@@ -114,20 +114,14 @@ void QDirectedRelationshipPrivate::removeTarget(QElement *target)
     \brief A directed relationship represents a relationship between a collection of source model elements and a collection of target model elements.
  */
 
-QDirectedRelationship::QDirectedRelationship(QObject *parent) :
-    QRelationship(*new QDirectedRelationshipPrivate, parent)
+QDirectedRelationship::QDirectedRelationship(QUmlObject *parent, QUmlObject *wrapper) :
+    QRelationship(*new QDirectedRelationshipPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QDirectedRelationship *>("QDirectedRelationship *");
-    qRegisterMetaType<const QSet<QDirectedRelationship *> *>("const QSet<QDirectedRelationship *> *");
-    qRegisterMetaType<const QList<QDirectedRelationship *> *>("const QList<QDirectedRelationship *> *");
 }
 
-QDirectedRelationship::QDirectedRelationship(QDirectedRelationshipPrivate &dd, QObject *parent) :
-    QRelationship(dd, parent)
+QDirectedRelationship::QDirectedRelationship(QDirectedRelationshipPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QRelationship(dd, parent, wrapper)
 {
-    qRegisterMetaType<QDirectedRelationship *>("QDirectedRelationship *");
-    qRegisterMetaType<const QSet<QDirectedRelationship *> *>("const QSet<QDirectedRelationship *> *");
-    qRegisterMetaType<const QList<QDirectedRelationship *> *>("const QList<QDirectedRelationship *> *");
 }
 
 QDirectedRelationship::~QDirectedRelationship()

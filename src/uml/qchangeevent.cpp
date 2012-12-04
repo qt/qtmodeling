@@ -63,20 +63,14 @@ QChangeEventPrivate::~QChangeEventPrivate()
     \brief A change event models a change in the system configuration that makes a condition true.
  */
 
-QChangeEvent::QChangeEvent(QObject *parent) :
-    QEvent(*new QChangeEventPrivate, parent)
+QChangeEvent::QChangeEvent(QUmlObject *parent, QUmlObject *wrapper) :
+    QEvent(*new QChangeEventPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QChangeEvent *>("QChangeEvent *");
-    qRegisterMetaType<const QSet<QChangeEvent *> *>("const QSet<QChangeEvent *> *");
-    qRegisterMetaType<const QList<QChangeEvent *> *>("const QList<QChangeEvent *> *");
 }
 
-QChangeEvent::QChangeEvent(QChangeEventPrivate &dd, QObject *parent) :
-    QEvent(dd, parent)
+QChangeEvent::QChangeEvent(QChangeEventPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QEvent(dd, parent, wrapper)
 {
-    qRegisterMetaType<QChangeEvent *>("QChangeEvent *");
-    qRegisterMetaType<const QSet<QChangeEvent *> *>("const QSet<QChangeEvent *> *");
-    qRegisterMetaType<const QList<QChangeEvent *> *>("const QList<QChangeEvent *> *");
 }
 
 QChangeEvent::~QChangeEvent()
@@ -105,13 +99,13 @@ void QChangeEvent::setChangeExpression(QValueSpecification *changeExpression)
     Q_D(QChangeEvent);
     if (d->changeExpression != changeExpression) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->changeExpression));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->changeExpression));
 
         d->changeExpression = changeExpression;
 
         // Adjust subsetted property(ies)
         if (changeExpression) {
-            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(changeExpression));
+            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(changeExpression));
         }
     }
 }

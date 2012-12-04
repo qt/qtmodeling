@@ -46,6 +46,8 @@
 // Base class includes
 #include <QtUml/QAbstraction>
 
+#include <QtUml/QUmlPointer>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -67,7 +69,7 @@ class Q_UML_EXPORT QManifestation : public QAbstraction
     Q_DECLARE_PRIVATE(QManifestation)
 
 public:
-    Q_INVOKABLE explicit QManifestation(QObject *parent = 0);
+    Q_INVOKABLE explicit QManifestation(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QManifestation();
 
     // Association ends from QManifestation
@@ -79,7 +81,7 @@ public:
     Q_INVOKABLE void removeSupplier(QUmlPointer<QPackageableElement> utilizedElement);
 
 protected:
-    explicit QManifestation(QManifestationPrivate &dd, QObject *parent = 0);
+    explicit QManifestation(QManifestationPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

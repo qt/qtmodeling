@@ -60,20 +60,14 @@ QControlNodePrivate::~QControlNodePrivate()
     \brief A control node is an abstract activity node that coordinates flows in an activity.
  */
 
-QControlNode::QControlNode(QObject *parent) :
-    QActivityNode(*new QControlNodePrivate, parent)
+QControlNode::QControlNode(QUmlObject *parent, QUmlObject *wrapper) :
+    QActivityNode(*new QControlNodePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QControlNode *>("QControlNode *");
-    qRegisterMetaType<const QSet<QControlNode *> *>("const QSet<QControlNode *> *");
-    qRegisterMetaType<const QList<QControlNode *> *>("const QList<QControlNode *> *");
 }
 
-QControlNode::QControlNode(QControlNodePrivate &dd, QObject *parent) :
-    QActivityNode(dd, parent)
+QControlNode::QControlNode(QControlNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QActivityNode(dd, parent, wrapper)
 {
-    qRegisterMetaType<QControlNode *>("QControlNode *");
-    qRegisterMetaType<const QSet<QControlNode *> *>("const QSet<QControlNode *> *");
-    qRegisterMetaType<const QList<QControlNode *> *>("const QList<QControlNode *> *");
 }
 
 QControlNode::~QControlNode()

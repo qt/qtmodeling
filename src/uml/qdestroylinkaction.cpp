@@ -53,12 +53,6 @@ QDestroyLinkActionPrivate::QDestroyLinkActionPrivate() :
 
 QDestroyLinkActionPrivate::~QDestroyLinkActionPrivate()
 {
-    foreach (QLinkEndDestructionData *linkenddestructiondata, *endData) {
-        QObject *object = linkenddestructiondata;
-        while (object->parent())
-            object = object->parent();
-        delete object;
-    }
     delete endData;
 }
 
@@ -70,20 +64,14 @@ QDestroyLinkActionPrivate::~QDestroyLinkActionPrivate()
     \brief A destroy link action is a write link action that destroys links and link objects.
  */
 
-QDestroyLinkAction::QDestroyLinkAction(QObject *parent) :
-    QWriteLinkAction(*new QDestroyLinkActionPrivate, parent)
+QDestroyLinkAction::QDestroyLinkAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QWriteLinkAction(*new QDestroyLinkActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QDestroyLinkAction *>("QDestroyLinkAction *");
-    qRegisterMetaType<const QSet<QDestroyLinkAction *> *>("const QSet<QDestroyLinkAction *> *");
-    qRegisterMetaType<const QList<QDestroyLinkAction *> *>("const QList<QDestroyLinkAction *> *");
 }
 
-QDestroyLinkAction::QDestroyLinkAction(QDestroyLinkActionPrivate &dd, QObject *parent) :
-    QWriteLinkAction(dd, parent)
+QDestroyLinkAction::QDestroyLinkAction(QDestroyLinkActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QWriteLinkAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QDestroyLinkAction *>("QDestroyLinkAction *");
-    qRegisterMetaType<const QSet<QDestroyLinkAction *> *>("const QSet<QDestroyLinkAction *> *");
-    qRegisterMetaType<const QList<QDestroyLinkAction *> *>("const QList<QDestroyLinkAction *> *");
 }
 
 QDestroyLinkAction::~QDestroyLinkAction()
@@ -112,6 +100,7 @@ void QDestroyLinkAction::addEndData(QLinkEndDestructionData *endData)
     Q_D(QDestroyLinkAction);
     if (!d->endData->contains(endData)) {
         d->endData->insert(endData);
+        endData->setParent(quml_topLevelWrapper(this));
     }
 }
 
@@ -122,6 +111,7 @@ void QDestroyLinkAction::removeEndData(QLinkEndDestructionData *endData)
     Q_D(QDestroyLinkAction);
     if (d->endData->contains(endData)) {
         d->endData->remove(endData);
+        endData->setParent(0);
     }
 }
 

@@ -64,20 +64,14 @@ QGeneralOrderingPrivate::~QGeneralOrderingPrivate()
     \brief A general ordering represents a binary relation between two occurrence specifications, to describe that one occurrence specification must occur before the other in a valid trace. This mechanism provides the ability to define partial orders of occurrence cpecifications that may otherwise not have a specified order.
  */
 
-QGeneralOrdering::QGeneralOrdering(QObject *parent) :
-    QNamedElement(*new QGeneralOrderingPrivate, parent)
+QGeneralOrdering::QGeneralOrdering(QUmlObject *parent, QUmlObject *wrapper) :
+    QNamedElement(*new QGeneralOrderingPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QGeneralOrdering *>("QGeneralOrdering *");
-    qRegisterMetaType<const QSet<QGeneralOrdering *> *>("const QSet<QGeneralOrdering *> *");
-    qRegisterMetaType<const QList<QGeneralOrdering *> *>("const QList<QGeneralOrdering *> *");
 }
 
-QGeneralOrdering::QGeneralOrdering(QGeneralOrderingPrivate &dd, QObject *parent) :
-    QNamedElement(dd, parent)
+QGeneralOrdering::QGeneralOrdering(QGeneralOrderingPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QNamedElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QGeneralOrdering *>("QGeneralOrdering *");
-    qRegisterMetaType<const QSet<QGeneralOrdering *> *>("const QSet<QGeneralOrdering *> *");
-    qRegisterMetaType<const QList<QGeneralOrdering *> *>("const QList<QGeneralOrdering *> *");
 }
 
 QGeneralOrdering::~QGeneralOrdering()

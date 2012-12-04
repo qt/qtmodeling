@@ -67,20 +67,14 @@ QReadLinkObjectEndActionPrivate::~QReadLinkObjectEndActionPrivate()
     \brief A read link object end action is an action that retrieves an end object from a link object.
  */
 
-QReadLinkObjectEndAction::QReadLinkObjectEndAction(QObject *parent) :
-    QAction(*new QReadLinkObjectEndActionPrivate, parent)
+QReadLinkObjectEndAction::QReadLinkObjectEndAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(*new QReadLinkObjectEndActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QReadLinkObjectEndAction *>("QReadLinkObjectEndAction *");
-    qRegisterMetaType<const QSet<QReadLinkObjectEndAction *> *>("const QSet<QReadLinkObjectEndAction *> *");
-    qRegisterMetaType<const QList<QReadLinkObjectEndAction *> *>("const QList<QReadLinkObjectEndAction *> *");
 }
 
-QReadLinkObjectEndAction::QReadLinkObjectEndAction(QReadLinkObjectEndActionPrivate &dd, QObject *parent) :
-    QAction(dd, parent)
+QReadLinkObjectEndAction::QReadLinkObjectEndAction(QReadLinkObjectEndActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QReadLinkObjectEndAction *>("QReadLinkObjectEndAction *");
-    qRegisterMetaType<const QSet<QReadLinkObjectEndAction *> *>("const QSet<QReadLinkObjectEndAction *> *");
-    qRegisterMetaType<const QList<QReadLinkObjectEndAction *> *>("const QList<QReadLinkObjectEndAction *> *");
 }
 
 QReadLinkObjectEndAction::~QReadLinkObjectEndAction()
@@ -130,13 +124,13 @@ void QReadLinkObjectEndAction::setObject(QInputPin *object)
     Q_D(QReadLinkObjectEndAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->object));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->object));
 
         d->object = object;
 
         // Adjust subsetted property(ies)
         if (object) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(object));
+            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(object));
         }
     }
 }
@@ -159,13 +153,13 @@ void QReadLinkObjectEndAction::setResult(QOutputPin *result)
     Q_D(QReadLinkObjectEndAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(d->result));
+        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(result));
+            (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(result));
         }
     }
 }

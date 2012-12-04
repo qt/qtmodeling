@@ -63,20 +63,14 @@ QMessageEndPrivate::~QMessageEndPrivate()
     \brief MessageEnd is an abstract specialization of NamedElement that represents what can occur at the end of a message.
  */
 
-QMessageEnd::QMessageEnd(QObject *parent) :
-    QNamedElement(*new QMessageEndPrivate, parent)
+QMessageEnd::QMessageEnd(QUmlObject *parent, QUmlObject *wrapper) :
+    QNamedElement(*new QMessageEndPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QMessageEnd *>("QMessageEnd *");
-    qRegisterMetaType<const QSet<QMessageEnd *> *>("const QSet<QMessageEnd *> *");
-    qRegisterMetaType<const QList<QMessageEnd *> *>("const QList<QMessageEnd *> *");
 }
 
-QMessageEnd::QMessageEnd(QMessageEndPrivate &dd, QObject *parent) :
-    QNamedElement(dd, parent)
+QMessageEnd::QMessageEnd(QMessageEndPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QNamedElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QMessageEnd *>("QMessageEnd *");
-    qRegisterMetaType<const QSet<QMessageEnd *> *>("const QSet<QMessageEnd *> *");
-    qRegisterMetaType<const QList<QMessageEnd *> *>("const QList<QMessageEnd *> *");
 }
 
 QMessageEnd::~QMessageEnd()

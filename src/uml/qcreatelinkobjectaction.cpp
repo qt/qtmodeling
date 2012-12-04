@@ -63,20 +63,14 @@ QCreateLinkObjectActionPrivate::~QCreateLinkObjectActionPrivate()
     \brief A create link object action creates a link object.
  */
 
-QCreateLinkObjectAction::QCreateLinkObjectAction(QObject *parent) :
-    QCreateLinkAction(*new QCreateLinkObjectActionPrivate, parent)
+QCreateLinkObjectAction::QCreateLinkObjectAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QCreateLinkAction(*new QCreateLinkObjectActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QCreateLinkObjectAction *>("QCreateLinkObjectAction *");
-    qRegisterMetaType<const QSet<QCreateLinkObjectAction *> *>("const QSet<QCreateLinkObjectAction *> *");
-    qRegisterMetaType<const QList<QCreateLinkObjectAction *> *>("const QList<QCreateLinkObjectAction *> *");
 }
 
-QCreateLinkObjectAction::QCreateLinkObjectAction(QCreateLinkObjectActionPrivate &dd, QObject *parent) :
-    QCreateLinkAction(dd, parent)
+QCreateLinkObjectAction::QCreateLinkObjectAction(QCreateLinkObjectActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QCreateLinkAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QCreateLinkObjectAction *>("QCreateLinkObjectAction *");
-    qRegisterMetaType<const QSet<QCreateLinkObjectAction *> *>("const QSet<QCreateLinkObjectAction *> *");
-    qRegisterMetaType<const QList<QCreateLinkObjectAction *> *>("const QList<QCreateLinkObjectAction *> *");
 }
 
 QCreateLinkObjectAction::~QCreateLinkObjectAction()
@@ -105,13 +99,13 @@ void QCreateLinkObjectAction::setResult(QOutputPin *result)
     Q_D(QCreateLinkObjectAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(d->result));
+        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(result));
+            (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(result));
         }
     }
 }

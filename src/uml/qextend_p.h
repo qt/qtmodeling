@@ -41,10 +41,8 @@
 #ifndef QTUML_QEXTEND_P_H
 #define QTUML_QEXTEND_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
-#include "private/qobject_p.h"
+#include "private/qumlobject_p.h"
 #include "private/qdirectedrelationship_p.h"
 #include "private/qnamedelement_p.h"
 
@@ -65,7 +63,7 @@ class QUseCase;
 class QExtensionPoint;
 class QExtend;
 
-class Q_UML_EXPORT QExtendPrivate : public QObjectPrivate
+class Q_UML_EXPORT QExtendPrivate : public QUmlObjectPrivate
 {
     Q_DECLARE_PUBLIC(QExtend)
 

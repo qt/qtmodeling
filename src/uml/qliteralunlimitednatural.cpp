@@ -61,20 +61,14 @@ QLiteralUnlimitedNaturalPrivate::~QLiteralUnlimitedNaturalPrivate()
     \brief A literal unlimited natural is a specification of an unlimited natural number.
  */
 
-QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QObject *parent) :
-    QLiteralSpecification(*new QLiteralUnlimitedNaturalPrivate, parent)
+QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QUmlObject *parent, QUmlObject *wrapper) :
+    QLiteralSpecification(*new QLiteralUnlimitedNaturalPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QLiteralUnlimitedNatural *>("QLiteralUnlimitedNatural *");
-    qRegisterMetaType<const QSet<QLiteralUnlimitedNatural *> *>("const QSet<QLiteralUnlimitedNatural *> *");
-    qRegisterMetaType<const QList<QLiteralUnlimitedNatural *> *>("const QList<QLiteralUnlimitedNatural *> *");
 }
 
-QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QLiteralUnlimitedNaturalPrivate &dd, QObject *parent) :
-    QLiteralSpecification(dd, parent)
+QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QLiteralUnlimitedNaturalPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QLiteralSpecification(dd, parent, wrapper)
 {
-    qRegisterMetaType<QLiteralUnlimitedNatural *>("QLiteralUnlimitedNatural *");
-    qRegisterMetaType<const QSet<QLiteralUnlimitedNatural *> *>("const QSet<QLiteralUnlimitedNatural *> *");
-    qRegisterMetaType<const QList<QLiteralUnlimitedNatural *> *>("const QList<QLiteralUnlimitedNatural *> *");
 }
 
 QLiteralUnlimitedNatural::~QLiteralUnlimitedNatural()

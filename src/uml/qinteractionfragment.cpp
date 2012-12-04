@@ -71,20 +71,14 @@ QInteractionFragmentPrivate::~QInteractionFragmentPrivate()
     \brief InteractionFragment is an abstract notion of the most general interaction unit. An interaction fragment is a piece of an interaction. Each interaction fragment is conceptually like an interaction by itself.
  */
 
-QInteractionFragment::QInteractionFragment(QObject *parent) :
-    QNamedElement(*new QInteractionFragmentPrivate, parent)
+QInteractionFragment::QInteractionFragment(QUmlObject *parent, QUmlObject *wrapper) :
+    QNamedElement(*new QInteractionFragmentPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QInteractionFragment *>("QInteractionFragment *");
-    qRegisterMetaType<const QSet<QInteractionFragment *> *>("const QSet<QInteractionFragment *> *");
-    qRegisterMetaType<const QList<QInteractionFragment *> *>("const QList<QInteractionFragment *> *");
 }
 
-QInteractionFragment::QInteractionFragment(QInteractionFragmentPrivate &dd, QObject *parent) :
-    QNamedElement(dd, parent)
+QInteractionFragment::QInteractionFragment(QInteractionFragmentPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QNamedElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QInteractionFragment *>("QInteractionFragment *");
-    qRegisterMetaType<const QSet<QInteractionFragment *> *>("const QSet<QInteractionFragment *> *");
-    qRegisterMetaType<const QList<QInteractionFragment *> *>("const QList<QInteractionFragment *> *");
 }
 
 QInteractionFragment::~QInteractionFragment()
@@ -115,7 +109,7 @@ void QInteractionFragment::addGeneralOrdering(QGeneralOrdering *generalOrdering)
         d->generalOrderings->insert(generalOrdering);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(generalOrdering));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(generalOrdering));
     }
 }
 
@@ -126,9 +120,10 @@ void QInteractionFragment::removeGeneralOrdering(QGeneralOrdering *generalOrderi
     Q_D(QInteractionFragment);
     if (d->generalOrderings->contains(generalOrdering)) {
         d->generalOrderings->remove(generalOrdering);
+        generalOrdering->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(generalOrdering));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(generalOrdering));
     }
 }
 
@@ -156,7 +151,7 @@ void QInteractionFragment::setEnclosingInteraction(QInteraction *enclosingIntera
         d->enclosingInteraction = enclosingInteraction;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(enclosingInteraction));
+        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(enclosingInteraction));
 
         // Adjust opposite property
         if (enclosingInteraction)
@@ -226,7 +221,7 @@ void QInteractionFragment::setEnclosingOperand(QInteractionOperand *enclosingOpe
         d->enclosingOperand = enclosingOperand;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(enclosingOperand));
+        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(enclosingOperand));
 
         // Adjust opposite property
         if (enclosingOperand)

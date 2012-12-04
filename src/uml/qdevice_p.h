@@ -41,8 +41,6 @@
 #ifndef QTUML_QDEVICE_P_H
 #define QTUML_QDEVICE_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qnode_p.h"
 

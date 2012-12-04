@@ -65,20 +65,14 @@ QSendObjectActionPrivate::~QSendObjectActionPrivate()
     \brief A send object action is an action that transmits an object to the target object, where it may invoke behavior such as the firing of state machine transitions or the execution of an activity. The value of the object is available to the execution of invoked behaviors. The requestor continues execution immediately. Any reply message is ignored and is not transmitted to the requestor.
  */
 
-QSendObjectAction::QSendObjectAction(QObject *parent) :
-    QInvocationAction(*new QSendObjectActionPrivate, parent)
+QSendObjectAction::QSendObjectAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QInvocationAction(*new QSendObjectActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QSendObjectAction *>("QSendObjectAction *");
-    qRegisterMetaType<const QSet<QSendObjectAction *> *>("const QSet<QSendObjectAction *> *");
-    qRegisterMetaType<const QList<QSendObjectAction *> *>("const QList<QSendObjectAction *> *");
 }
 
-QSendObjectAction::QSendObjectAction(QSendObjectActionPrivate &dd, QObject *parent) :
-    QInvocationAction(dd, parent)
+QSendObjectAction::QSendObjectAction(QSendObjectActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QInvocationAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QSendObjectAction *>("QSendObjectAction *");
-    qRegisterMetaType<const QSet<QSendObjectAction *> *>("const QSet<QSendObjectAction *> *");
-    qRegisterMetaType<const QList<QSendObjectAction *> *>("const QList<QSendObjectAction *> *");
 }
 
 QSendObjectAction::~QSendObjectAction()
@@ -128,13 +122,13 @@ void QSendObjectAction::setTarget(QInputPin *target)
     Q_D(QSendObjectAction);
     if (d->target != target) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->target));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->target));
 
         d->target = target;
 
         // Adjust subsetted property(ies)
         if (target) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(target));
+            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(target));
         }
     }
 }

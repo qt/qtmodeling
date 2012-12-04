@@ -44,7 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
+#include <QtUml/QUmlObject>
 #include <QtUml/QClass>
 #include <QtUml/QDeploymentTarget>
 
@@ -59,7 +59,7 @@ QT_MODULE(QtUml)
 
 class QNodePrivate;
 
-class Q_UML_EXPORT QNode : public QObject
+class Q_UML_EXPORT QNode : public QUmlObject
 {
     Q_OBJECT
 
@@ -69,7 +69,7 @@ class Q_UML_EXPORT QNode : public QObject
     Q_DECLARE_PRIVATE(QNode)
 
 public:
-    Q_INVOKABLE explicit QNode(QObject *parent = 0);
+    Q_INVOKABLE explicit QNode(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QNode();
 
     // Association ends from aggregated QElement
@@ -106,7 +106,7 @@ public:
     Q_INVOKABLE void removeNestedNode(QNode *nestedNode);
 
 protected:
-    explicit QNode(QNodePrivate &dd, QObject *parent = 0);
+    explicit QNode(QNodePrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 
 private:
     QClass *_wrappedClass;

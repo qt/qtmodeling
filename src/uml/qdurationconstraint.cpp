@@ -66,20 +66,14 @@ QDurationConstraintPrivate::~QDurationConstraintPrivate()
     \brief A duration constraint is a constraint that refers to a duration interval.
  */
 
-QDurationConstraint::QDurationConstraint(QObject *parent) :
-    QIntervalConstraint(*new QDurationConstraintPrivate, parent)
+QDurationConstraint::QDurationConstraint(QUmlObject *parent, QUmlObject *wrapper) :
+    QIntervalConstraint(*new QDurationConstraintPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QDurationConstraint *>("QDurationConstraint *");
-    qRegisterMetaType<const QSet<QDurationConstraint *> *>("const QSet<QDurationConstraint *> *");
-    qRegisterMetaType<const QList<QDurationConstraint *> *>("const QList<QDurationConstraint *> *");
 }
 
-QDurationConstraint::QDurationConstraint(QDurationConstraintPrivate &dd, QObject *parent) :
-    QIntervalConstraint(dd, parent)
+QDurationConstraint::QDurationConstraint(QDurationConstraintPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QIntervalConstraint(dd, parent, wrapper)
 {
-    qRegisterMetaType<QDurationConstraint *>("QDurationConstraint *");
-    qRegisterMetaType<const QSet<QDurationConstraint *> *>("const QSet<QDurationConstraint *> *");
-    qRegisterMetaType<const QList<QDurationConstraint *> *>("const QList<QDurationConstraint *> *");
 }
 
 QDurationConstraint::~QDurationConstraint()

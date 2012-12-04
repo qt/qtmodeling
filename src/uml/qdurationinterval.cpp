@@ -64,20 +64,14 @@ QDurationIntervalPrivate::~QDurationIntervalPrivate()
     \brief A duration interval defines the range between two durations.
  */
 
-QDurationInterval::QDurationInterval(QObject *parent) :
-    QInterval(*new QDurationIntervalPrivate, parent)
+QDurationInterval::QDurationInterval(QUmlObject *parent, QUmlObject *wrapper) :
+    QInterval(*new QDurationIntervalPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QDurationInterval *>("QDurationInterval *");
-    qRegisterMetaType<const QSet<QDurationInterval *> *>("const QSet<QDurationInterval *> *");
-    qRegisterMetaType<const QList<QDurationInterval *> *>("const QList<QDurationInterval *> *");
 }
 
-QDurationInterval::QDurationInterval(QDurationIntervalPrivate &dd, QObject *parent) :
-    QInterval(dd, parent)
+QDurationInterval::QDurationInterval(QDurationIntervalPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QInterval(dd, parent, wrapper)
 {
-    qRegisterMetaType<QDurationInterval *>("QDurationInterval *");
-    qRegisterMetaType<const QSet<QDurationInterval *> *>("const QSet<QDurationInterval *> *");
-    qRegisterMetaType<const QList<QDurationInterval *> *>("const QList<QDurationInterval *> *");
 }
 
 QDurationInterval::~QDurationInterval()

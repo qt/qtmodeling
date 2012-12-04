@@ -41,8 +41,6 @@
 #ifndef QTUML_QREADVARIABLEACTION_P_H
 #define QTUML_QREADVARIABLEACTION_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qvariableaction_p.h"
 

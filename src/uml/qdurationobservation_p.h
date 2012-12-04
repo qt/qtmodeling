@@ -41,8 +41,6 @@
 #ifndef QTUML_QDURATIONOBSERVATION_P_H
 #define QTUML_QDURATIONOBSERVATION_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qobservation_p.h"
 

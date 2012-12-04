@@ -60,20 +60,14 @@ QControlFlowPrivate::~QControlFlowPrivate()
     \brief A control flow is an edge that starts an activity node after the previous one is finished.
  */
 
-QControlFlow::QControlFlow(QObject *parent) :
-    QActivityEdge(*new QControlFlowPrivate, parent)
+QControlFlow::QControlFlow(QUmlObject *parent, QUmlObject *wrapper) :
+    QActivityEdge(*new QControlFlowPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QControlFlow *>("QControlFlow *");
-    qRegisterMetaType<const QSet<QControlFlow *> *>("const QSet<QControlFlow *> *");
-    qRegisterMetaType<const QList<QControlFlow *> *>("const QList<QControlFlow *> *");
 }
 
-QControlFlow::QControlFlow(QControlFlowPrivate &dd, QObject *parent) :
-    QActivityEdge(dd, parent)
+QControlFlow::QControlFlow(QControlFlowPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QActivityEdge(dd, parent, wrapper)
 {
-    qRegisterMetaType<QControlFlow *>("QControlFlow *");
-    qRegisterMetaType<const QSet<QControlFlow *> *>("const QSet<QControlFlow *> *");
-    qRegisterMetaType<const QList<QControlFlow *> *>("const QList<QControlFlow *> *");
 }
 
 QControlFlow::~QControlFlow()

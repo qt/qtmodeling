@@ -63,20 +63,14 @@ QReadStructuralFeatureActionPrivate::~QReadStructuralFeatureActionPrivate()
     \brief A read structural feature action is a structural feature action that retrieves the values of a structural feature.
  */
 
-QReadStructuralFeatureAction::QReadStructuralFeatureAction(QObject *parent) :
-    QStructuralFeatureAction(*new QReadStructuralFeatureActionPrivate, parent)
+QReadStructuralFeatureAction::QReadStructuralFeatureAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QStructuralFeatureAction(*new QReadStructuralFeatureActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QReadStructuralFeatureAction *>("QReadStructuralFeatureAction *");
-    qRegisterMetaType<const QSet<QReadStructuralFeatureAction *> *>("const QSet<QReadStructuralFeatureAction *> *");
-    qRegisterMetaType<const QList<QReadStructuralFeatureAction *> *>("const QList<QReadStructuralFeatureAction *> *");
 }
 
-QReadStructuralFeatureAction::QReadStructuralFeatureAction(QReadStructuralFeatureActionPrivate &dd, QObject *parent) :
-    QStructuralFeatureAction(dd, parent)
+QReadStructuralFeatureAction::QReadStructuralFeatureAction(QReadStructuralFeatureActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QStructuralFeatureAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QReadStructuralFeatureAction *>("QReadStructuralFeatureAction *");
-    qRegisterMetaType<const QSet<QReadStructuralFeatureAction *> *>("const QSet<QReadStructuralFeatureAction *> *");
-    qRegisterMetaType<const QList<QReadStructuralFeatureAction *> *>("const QList<QReadStructuralFeatureAction *> *");
 }
 
 QReadStructuralFeatureAction::~QReadStructuralFeatureAction()
@@ -105,13 +99,13 @@ void QReadStructuralFeatureAction::setResult(QOutputPin *result)
     Q_D(QReadStructuralFeatureAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(d->result));
+        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(result));
+            (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(result));
         }
     }
 }

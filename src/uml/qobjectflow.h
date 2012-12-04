@@ -70,7 +70,7 @@ class Q_UML_EXPORT QObjectFlow : public QActivityEdge
     Q_DECLARE_PRIVATE(QObjectFlow)
 
 public:
-    Q_INVOKABLE explicit QObjectFlow(QObject *parent = 0);
+    Q_INVOKABLE explicit QObjectFlow(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QObjectFlow();
 
     // Attributes from QObjectFlow
@@ -86,7 +86,7 @@ public:
     Q_INVOKABLE void setTransformation(QBehavior *transformation);
 
 protected:
-    explicit QObjectFlow(QObjectFlowPrivate &dd, QObject *parent = 0);
+    explicit QObjectFlow(QObjectFlowPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

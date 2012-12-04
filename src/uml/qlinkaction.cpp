@@ -68,20 +68,14 @@ QLinkActionPrivate::~QLinkActionPrivate()
     \brief LinkAction is an abstract class for all link actions that identify their links by the objects at the ends of the links and by the qualifiers at ends of the links.
  */
 
-QLinkAction::QLinkAction(QObject *parent) :
-    QAction(*new QLinkActionPrivate, parent)
+QLinkAction::QLinkAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(*new QLinkActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QLinkAction *>("QLinkAction *");
-    qRegisterMetaType<const QSet<QLinkAction *> *>("const QSet<QLinkAction *> *");
-    qRegisterMetaType<const QList<QLinkAction *> *>("const QList<QLinkAction *> *");
 }
 
-QLinkAction::QLinkAction(QLinkActionPrivate &dd, QObject *parent) :
-    QAction(dd, parent)
+QLinkAction::QLinkAction(QLinkActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QLinkAction *>("QLinkAction *");
-    qRegisterMetaType<const QSet<QLinkAction *> *>("const QSet<QLinkAction *> *");
-    qRegisterMetaType<const QList<QLinkAction *> *>("const QList<QLinkAction *> *");
 }
 
 QLinkAction::~QLinkAction()
@@ -112,7 +106,7 @@ void QLinkAction::addInputValue(QInputPin *inputValue)
         d->inputValues->insert(inputValue);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(inputValue));
+        (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(inputValue));
     }
 }
 
@@ -123,9 +117,10 @@ void QLinkAction::removeInputValue(QInputPin *inputValue)
     Q_D(QLinkAction);
     if (d->inputValues->contains(inputValue)) {
         d->inputValues->remove(inputValue);
+        inputValue->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(inputValue));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(inputValue));
     }
 }
 
@@ -149,7 +144,7 @@ void QLinkAction::addEndData(QLinkEndData *endData)
         d->endData->insert(endData);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(endData));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(endData));
     }
 }
 
@@ -160,9 +155,10 @@ void QLinkAction::removeEndData(QLinkEndData *endData)
     Q_D(QLinkAction);
     if (d->endData->contains(endData)) {
         d->endData->remove(endData);
+        endData->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(endData));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(endData));
     }
 }
 

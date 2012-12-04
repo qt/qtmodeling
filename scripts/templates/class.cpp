@@ -34,12 +34,12 @@
         if (${accessor.parameter.0.name}) {
         [%- END %]
             [%- IF property.isReadOnly == subsettedPropertyItem.isReadOnly %]
-        [% IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]    [% END %](qtuml_object_cast<${subsettedClass}[% IF subsettedPropertyItem.isReadOnly == 'true' %]Private[% END %] *>(this))->${subsettedPropertyItem.accessor.1.name}(qtuml_object_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>(${accessor.parameter.0.name}));
+        [% IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]    [% END %](qumlobject_cast<${subsettedClass}[% IF subsettedPropertyItem.isReadOnly == 'true' %]Private[% END %] *>(this))->${subsettedPropertyItem.accessor.1.name}(qumlobject_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>(${accessor.parameter.0.name}));
             [%- ELSIF property.isReadOnly == 'false' and subsettedPropertyItem.isReadOnly == 'true' %]
-        [% IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]    [% END %](qtuml_object_cast<${subsettedClass}Private *>(d))->${subsettedPropertyItem.accessor.1.name}(qtuml_object_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>(${accessor.parameter.0.name}));
+        [% IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]    [% END %](qumlobject_cast<${subsettedClass}Private *>(d))->${subsettedPropertyItem.accessor.1.name}(qumlobject_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>(${accessor.parameter.0.name}));
             [%- ELSE %]
         [% IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]    [% END %]Q_Q(${class.name});
-        [% IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]    [% END %]q->${subsettedClass}::${subsettedPropertyItem.accessor.1.name}(qtuml_object_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>(${accessor.parameter.0.name}));
+        [% IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]    [% END %]q->${subsettedClass}::${subsettedPropertyItem.accessor.1.name}(qumlobject_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>(${accessor.parameter.0.name}));
             [%- END %]
         [%- IF property.accessor.size == 2 and subsettedPropertyItem.accessor.size > 2 %]
         }
@@ -53,14 +53,14 @@
             [%- found = 'true' -%]
             [%- END %]
             [%- IF property.isReadOnly == 'true' and subsettedPropertyItem.isReadOnly == 'true' %]
-        (qtuml_object_cast<${subsettedClass}Private *>(this))->${subsettedPropertyItem.accessor.2.name}(qtuml_object_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>([% IF singlevalued == 'true' %]this->[% END %]${accessor.parameter.0.name}));
+        (qumlobject_cast<${subsettedClass}Private *>(this))->${subsettedPropertyItem.accessor.2.name}(qumlobject_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>([% IF singlevalued == 'true' %]this->[% END %]${accessor.parameter.0.name}));
             [%- ELSIF property.isReadOnly == 'false' and subsettedPropertyItem.isReadOnly == 'false' %]
-        (qtuml_object_cast<${subsettedClass} *>(this))->${subsettedPropertyItem.accessor.2.name}(qtuml_object_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>([% IF singlevalued == 'true' %]d->[% END %]${accessor.parameter.0.name}));
+        (qumlobject_cast<${subsettedClass} *>(this))->${subsettedPropertyItem.accessor.2.name}(qumlobject_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>([% IF singlevalued == 'true' %]d->[% END %]${accessor.parameter.0.name}));
             [%- ELSIF property.isReadOnly == 'false' and subsettedPropertyItem.isReadOnly == 'true' %]
-        (qtuml_object_cast<${subsettedClass}Private *>(d))->${subsettedPropertyItem.accessor.2.name}(qtuml_object_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>([% IF singlevalued == 'true' %]d->[% END %]${accessor.parameter.0.name}));
+        (qumlobject_cast<${subsettedClass}Private *>(d))->${subsettedPropertyItem.accessor.2.name}(qumlobject_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>([% IF singlevalued == 'true' %]d->[% END %]${accessor.parameter.0.name}));
             [%- ELSE %]
         Q_Q(${class.name});
-        q->${subsettedClass}::${subsettedPropertyItem.accessor.2.name}(qtuml_object_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>([% IF singlevalued == 'true' %]this->[% END %]${accessor.parameter.0.name}));
+        q->${subsettedClass}::${subsettedPropertyItem.accessor.2.name}(qumlobject_cast<${subsettedPropertyItem.accessor.1.parameter.0.type}>([% IF singlevalued == 'true' %]this->[% END %]${accessor.parameter.0.name}));
             [%- END %]
         [%- END -%]
         [%- END -%]
@@ -87,7 +87,7 @@
         [%- IF opposite.isReadOnly == 'false' %]
         [% IF property.accessor.size == 2 and opposite.accessor.size > 2 %]    [% END %]${accessor.parameter.0.name}->${opposite.accessor.1.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
         [%- ELSE %]
-        [% IF property.accessor.size == 2 and opposite.accessor.size > 2 %]    [% END %](qtuml_object_cast<${accessor.parameter.0.type.replace(' \*$', '').replace('$', 'Private *')}>(${accessor.parameter.0.name}->d_func()))->${opposite.accessor.1.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
+        [% IF property.accessor.size == 2 and opposite.accessor.size > 2 %]    [% END %](qumlobject_cast<${accessor.parameter.0.type.replace(' \*$', '').replace('$', 'Private *')}>(${accessor.parameter.0.name}->d_func()))->${opposite.accessor.1.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
         [%- END -%]
     [%- ELSE -%][%- IF operation == 2 and opposite.accessor.size > 2 %]
         [%- IF opposite.isReadOnly == 'false' %]
@@ -95,13 +95,13 @@
             [% IF singlevalued == 'true' %][% IF property.isReadOnly == 'true' %]this[% ELSE %]d[% END %]->[% END %]${accessor.parameter.0.name}->${opposite.accessor.2.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
         [%- ELSE %]
         if ([% IF singlevalued == 'true' %][% IF property.isReadOnly == 'true' %]this[% ELSE %]d[% END %]->[% END %]${accessor.parameter.0.name})
-            (qtuml_object_cast<${accessor.parameter.0.type.replace(' \*$', '').replace('$', 'Private *')}>([% IF singlevalued == 'true' %][% IF property.isReadOnly == 'true' %]this[% ELSE %]d[% END %]->[% END %]${accessor.parameter.0.name}->d_func()))->${opposite.accessor.2.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
+            (qumlobject_cast<${accessor.parameter.0.type.replace(' \*$', '').replace('$', 'Private *')}>([% IF singlevalued == 'true' %][% IF property.isReadOnly == 'true' %]this[% ELSE %]d[% END %]->[% END %]${accessor.parameter.0.name}->d_func()))->${opposite.accessor.2.name}([% IF property.isReadOnly == 'true' %]q[% ELSE %]this[% END %]);
         [%- END %]
     [%- ELSIF singlevalued == 'false' %]
         [%- IF opposite.isReadOnly == 'false' %]
         ${accessor.parameter.0.name}->${opposite.accessor.1.name}(0);
         [%- ELSE %]
-        (qtuml_object_cast<${accessor.parameter.0.type.replace(' \*$', '').replace('$', 'Private *')}>(${accessor.parameter.0.name}->d_func()))->${opposite.accessor.1.name}(0);
+        (qumlobject_cast<${accessor.parameter.0.type.replace(' \*$', '').replace('$', 'Private *')}>(${accessor.parameter.0.name}->d_func()))->${opposite.accessor.1.name}(0);
         [%- END %]
     [%- END -%][%- END -%]
     [%- IF operation == 2 and singlevalued == 'true' %]
@@ -181,10 +181,16 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
             [%- END -%]
             [%- IF accessor.name.search('^add') %]
         d->${attribute.accessor.0.name}->[% IF attribute.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %](${accessor.parameter.0.name});
+[%- IF attribute.aggregation == 'composite' and attribute.accessor.0.return.search('<') and attribute.subsettedProperty == '' %]
+        quml_topLevelWrapper(${accessor.parameter.0.name})->setParent(quml_topLevelWrapper(this));
+[%- END %]
             [%- HANDLESUBSETTEDPROPERTY(attribute, 1, 'false') -%]
     [%- END -%]
             [%- IF accessor.name.search('^remove') %]
         d->${attribute.accessor.0.name}->[% IF attribute.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %](${accessor.parameter.0.name});
+[%- IF attribute.aggregation == 'composite' and attribute.accessor.0.return.search('<') and attribute.subsettedProperty == '' %]
+        quml_topLevelWrapper(${accessor.parameter.0.name})->setParent(0);
+[%- END %]
             [%- HANDLESUBSETTEDPROPERTY(attribute, 2, 'false') -%]
             [%- END -%]
         [%- END %]
@@ -229,7 +235,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
     [%- END -%]
 [%- END %]
 [%- ELSE %]
-    [% IF accessor.return != 'void ' %]return [% END %](qtuml_object_cast<[% IF accessor.constness == ' const' %]const [% END %]${parent.name} *>(this))->${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.name}[% IF !loop.last %], [% END %][%- END -%]);
+    [% IF accessor.return != 'void ' %]return [% END %](qumlobject_cast<[% IF accessor.constness == ' const' %]const [% END %]${parent.name} *>(this))->${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.name}[% IF !loop.last %], [% END %][%- END -%]);
 [%- END %]
 }
 
@@ -280,11 +286,17 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
             [%- END -%]
             [%- IF accessor.name.search('^add') %]
         d->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %](${accessor.parameter.0.name});
+[%- IF associationend.aggregation == 'composite' and associationend.accessor.0.return.search('<') and associationend.subsettedProperty == '' %]
+        quml_topLevelWrapper(${accessor.parameter.0.name})->setParent(quml_topLevelWrapper(this));
+[%- END %]
             [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'false') -%]
             [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'false') -%]
             [%- END -%]
             [%- IF accessor.name.search('^remove') %]
         d->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %](${accessor.parameter.0.name});
+[%- IF associationend.aggregation == 'composite' and associationend.accessor.0.return.search('<') and associationend.subsettedProperty == '' %]
+        quml_topLevelWrapper(${accessor.parameter.0.name})->setParent(0);
+[%- END %]
             [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'false') -%]
             [%- HANDLEOPPOSITEEND(associationend, accessor, 2, 'false') -%]
             [%- END -%]
@@ -335,7 +347,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
     }
     [%- END %]
 [%- ELSE %]
-    [% IF accessor.return != 'void ' %]return [% END %](qtuml_object_cast<[% IF accessor.constness == ' const' %]const [% END %]${parent.name} *>(this))->${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.name}[% IF !loop.last %], [% END %][%- END -%]);
+    [% IF accessor.return != 'void ' %]return [% END %](qumlobject_cast<[% IF accessor.constness == ' const' %]const [% END %]${parent.name} *>(this))->${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.name}[% IF !loop.last %], [% END %][%- END -%]);
 [%- END %]
 }
 
@@ -488,30 +500,12 @@ ${class.name}Private::${class.name}Private()
 ${class.name}Private::~${class.name}Private()
 {
 [% FOREACH attribute IN class.attribute.values -%]
-[%- IF attribute.aggregation == 'composite' and attribute.accessor.0.return.search('<') and attribute.subsettedProperty == '' -%]
-    foreach (${attribute.accessor.1.parameter.0.type.remove('^const ')}${attribute.accessor.1.parameter.0.type.remove('^Q').remove('\*').trim.lower}, *${attribute.accessor.0.name}) {
-        QObject *object = ${attribute.accessor.1.parameter.0.type.remove('^Q').remove('\*').trim.lower};
-        while (object->parent())
-            object = object->parent();
-        delete object;
-    }
-
-[%- END -%]
 [%- IF ((attribute.isDerived == 'false' or attribute.isDerivedUnion == 'true') and attribute.accessor.0.return.search('<')) or (attribute.accessor.0.return.search('\*$') and attribute.aggregation == 'composite' and attribute.subsettedProperty == '') -%]
     delete ${attribute.accessor.0.name};
 
 [%- END -%]
 [%- END -%]
 [%- FOREACH associationend IN class.associationend.values -%]
-[%- IF associationend.aggregation == 'composite' and associationend.accessor.0.return.search('<') and associationend.subsettedProperty == '' -%]
-    foreach (${associationend.accessor.1.parameter.0.type.remove('^const ')}${associationend.accessor.1.parameter.0.type.remove('^Q').remove('\*').trim.lower}, *${associationend.accessor.0.name}) {
-        QObject *object = ${associationend.accessor.1.parameter.0.type.remove('^Q').remove('\*').trim.lower};
-        while (object->parent())
-            object = object->parent();
-        delete object;
-    }
-
-[%- END -%]
 [%- IF ((associationend.isDerived == 'false' or associationend.isDerivedUnion == 'true') and associationend.accessor.0.return.search('<')) or (associationend.accessor.0.return.search('\*$') and associationend.aggregation == 'composite' and associationend.subsettedProperty == '') -%]
     delete ${associationend.accessor.0.name};
 
@@ -540,10 +534,17 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
     [%- END -%]
     [%- IF accessor.name.search('^add') %]
         this->${attribute.accessor.0.name}->[% IF attribute.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %](${accessor.parameter.0.name});
+[%- IF attribute.aggregation == 'composite' and attribute.accessor.0.return.search('<') and attribute.subsettedProperty == '' %]
+        Q_Q(${class.name});
+        quml_topLevelWrapper(${accessor.parameter.0.name})->setParent(quml_topLevelWrapper(q));
+[%- END %]
     [%- HANDLESUBSETTEDPROPERTY(attribute, 1, 'false') -%]
     [%- END -%]
     [%- IF accessor.name.search('^remove') %]
         this->${attribute.accessor.0.name}->[% IF attribute.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %](${accessor.parameter.0.name});
+[%- IF attribute.aggregation == 'composite' and attribute.accessor.0.return.search('<') and attribute.subsettedProperty == '' %]
+        quml_topLevelWrapper(${accessor.parameter.0.name})->setParent(0);
+[%- END %]
     [%- HANDLESUBSETTEDPROPERTY(attribute, 2, 'false') -%]
     [%- END -%]
     }
@@ -604,11 +605,18 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
     [%- END -%]
     [%- IF accessor.name.search('^add') %]
         this->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %](${accessor.parameter.0.name});
+[%- IF associationend.aggregation == 'composite' and associationend.accessor.0.return.search('<') and associationend.subsettedProperty == '' %]
+        Q_Q(${class.name});
+        quml_topLevelWrapper(${accessor.parameter.0.name})->setParent(quml_topLevelWrapper(q));
+[%- END %]
     [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'false') -%]
     [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'false') -%]
     [%- END -%]
     [%- IF accessor.name.search('^remove') %]
         this->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %](${accessor.parameter.0.name});
+[%- IF associationend.aggregation == 'composite' and associationend.accessor.0.return.search('<') and associationend.subsettedProperty == '' %]
+        quml_topLevelWrapper(${accessor.parameter.0.name})->setParent(0);
+[%- END %]
     [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'false') -%]
     [%- HANDLEOPPOSITEEND(associationend, accessor, 2, 'false') -%]
     [%- END %]
@@ -661,32 +669,26 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
  */
 [%- END %]
 
-${class.name}::${class.name}(QObject *parent) :
-[% IF class.superclass.size == 1-%]    ${class.superclass.0.name}[%- ELSE -%]    QObject[% END %](*new ${class.name}Private, parent)
+${class.name}::${class.name}(QUmlObject *parent, QUmlObject *wrapper) :
+[% IF class.superclass.size == 1-%]    ${class.superclass.0.name}[%- ELSE -%]    QUmlObject[% END %](*new ${class.name}Private, parent, wrapper)
 [%- IF class.superclass and class.superclass.size > 1 -%]
 [%- FOREACH parentClass IN class.superclass -%]
 ,
-    _wrapped${parentClass.name.replace('^Q', '')}(new ${parentClass.name}(this))
+    _wrapped${parentClass.name.replace('^Q', '')}(new ${parentClass.name}(this, this))
 [%- END -%]
 [%- END %]
 {
-    qRegisterMetaType<${class.name} *>("${class.name} *");
-    qRegisterMetaType<const QSet<${class.name} *> *>("const QSet<${class.name} *> *");
-    qRegisterMetaType<const QList<${class.name} *> *>("const QList<${class.name} *> *");
 }
 
-${class.name}::${class.name}(${class.name}Private &dd, QObject *parent) :
-[% IF class.superclass.size == 1-%]    ${class.superclass.0.name}(dd, parent)[%- ELSE -%]    QObject(dd, parent)[%- END -%]
+${class.name}::${class.name}(${class.name}Private &dd, QUmlObject *parent, QUmlObject *wrapper) :
+[% IF class.superclass.size == 1-%]    ${class.superclass.0.name}(dd, parent, wrapper)[%- ELSE -%]    QUmlObject(dd, parent, wrapper)[%- END -%]
 [%- IF class.superclass and class.superclass.size > 1 -%]
 [%- FOREACH parentClass IN class.superclass -%]
 ,
-    _wrapped${parentClass.name.replace('^Q', '')}(new ${parentClass.name}(this))
+    _wrapped${parentClass.name.replace('^Q', '')}(new ${parentClass.name}(this, this))
 [%- END -%]
 [%- END %]
 {
-    qRegisterMetaType<${class.name} *>("${class.name} *");
-    qRegisterMetaType<const QSet<${class.name} *> *>("const QSet<${class.name} *> *");
-    qRegisterMetaType<const QList<${class.name} *> *>("const QList<${class.name} *> *");
 }
 
 ${class.name}::~${class.name}()

@@ -84,7 +84,7 @@ class Q_UML_EXPORT QMessage : public QNamedElement
     Q_DECLARE_PRIVATE(QMessage)
 
 public:
-    Q_INVOKABLE explicit QMessage(QObject *parent = 0);
+    Q_INVOKABLE explicit QMessage(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QMessage();
 
     // Attributes from QMessage
@@ -108,7 +108,7 @@ public:
     Q_INVOKABLE void setConnector(QConnector *connector);
 
 protected:
-    explicit QMessage(QMessagePrivate &dd, QObject *parent = 0);
+    explicit QMessage(QMessagePrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

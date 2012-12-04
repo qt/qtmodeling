@@ -60,20 +60,14 @@ QLiteralNullPrivate::~QLiteralNullPrivate()
     \brief A literal null specifies the lack of a value.
  */
 
-QLiteralNull::QLiteralNull(QObject *parent) :
-    QLiteralSpecification(*new QLiteralNullPrivate, parent)
+QLiteralNull::QLiteralNull(QUmlObject *parent, QUmlObject *wrapper) :
+    QLiteralSpecification(*new QLiteralNullPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QLiteralNull *>("QLiteralNull *");
-    qRegisterMetaType<const QSet<QLiteralNull *> *>("const QSet<QLiteralNull *> *");
-    qRegisterMetaType<const QList<QLiteralNull *> *>("const QList<QLiteralNull *> *");
 }
 
-QLiteralNull::QLiteralNull(QLiteralNullPrivate &dd, QObject *parent) :
-    QLiteralSpecification(dd, parent)
+QLiteralNull::QLiteralNull(QLiteralNullPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QLiteralSpecification(dd, parent, wrapper)
 {
-    qRegisterMetaType<QLiteralNull *>("QLiteralNull *");
-    qRegisterMetaType<const QSet<QLiteralNull *> *>("const QSet<QLiteralNull *> *");
-    qRegisterMetaType<const QList<QLiteralNull *> *>("const QList<QLiteralNull *> *");
 }
 
 QLiteralNull::~QLiteralNull()

@@ -60,20 +60,14 @@ QCommunicationPathPrivate::~QCommunicationPathPrivate()
     \brief A communication path is an association between two deployment targets, through which they are able to exchange signals and messages.
  */
 
-QCommunicationPath::QCommunicationPath(QObject *parent) :
-    QAssociation(*new QCommunicationPathPrivate, parent)
+QCommunicationPath::QCommunicationPath(QUmlObject *parent, QUmlObject *wrapper) :
+    QAssociation(*new QCommunicationPathPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QCommunicationPath *>("QCommunicationPath *");
-    qRegisterMetaType<const QSet<QCommunicationPath *> *>("const QSet<QCommunicationPath *> *");
-    qRegisterMetaType<const QList<QCommunicationPath *> *>("const QList<QCommunicationPath *> *");
 }
 
-QCommunicationPath::QCommunicationPath(QCommunicationPathPrivate &dd, QObject *parent) :
-    QAssociation(dd, parent)
+QCommunicationPath::QCommunicationPath(QCommunicationPathPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QAssociation(dd, parent, wrapper)
 {
-    qRegisterMetaType<QCommunicationPath *>("QCommunicationPath *");
-    qRegisterMetaType<const QSet<QCommunicationPath *> *>("const QSet<QCommunicationPath *> *");
-    qRegisterMetaType<const QList<QCommunicationPath *> *>("const QList<QCommunicationPath *> *");
 }
 
 QCommunicationPath::~QCommunicationPath()

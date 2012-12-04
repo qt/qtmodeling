@@ -53,12 +53,6 @@ QSequenceNodePrivate::QSequenceNodePrivate() :
 
 QSequenceNodePrivate::~QSequenceNodePrivate()
 {
-    foreach (QExecutableNode *executablenode, *executableNodes) {
-        QObject *object = executablenode;
-        while (object->parent())
-            object = object->parent();
-        delete object;
-    }
     delete executableNodes;
 }
 
@@ -70,20 +64,14 @@ QSequenceNodePrivate::~QSequenceNodePrivate()
     \brief A sequence node is a structured activity node that executes its actions in order.
  */
 
-QSequenceNode::QSequenceNode(QObject *parent) :
-    QStructuredActivityNode(*new QSequenceNodePrivate, parent)
+QSequenceNode::QSequenceNode(QUmlObject *parent, QUmlObject *wrapper) :
+    QStructuredActivityNode(*new QSequenceNodePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QSequenceNode *>("QSequenceNode *");
-    qRegisterMetaType<const QSet<QSequenceNode *> *>("const QSet<QSequenceNode *> *");
-    qRegisterMetaType<const QList<QSequenceNode *> *>("const QList<QSequenceNode *> *");
 }
 
-QSequenceNode::QSequenceNode(QSequenceNodePrivate &dd, QObject *parent) :
-    QStructuredActivityNode(dd, parent)
+QSequenceNode::QSequenceNode(QSequenceNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QStructuredActivityNode(dd, parent, wrapper)
 {
-    qRegisterMetaType<QSequenceNode *>("QSequenceNode *");
-    qRegisterMetaType<const QSet<QSequenceNode *> *>("const QSet<QSequenceNode *> *");
-    qRegisterMetaType<const QList<QSequenceNode *> *>("const QList<QSequenceNode *> *");
 }
 
 QSequenceNode::~QSequenceNode()
@@ -112,6 +100,7 @@ void QSequenceNode::addExecutableNode(QExecutableNode *executableNode)
     Q_D(QSequenceNode);
     if (!d->executableNodes->contains(executableNode)) {
         d->executableNodes->append(executableNode);
+        executableNode->setParent(quml_topLevelWrapper(this));
     }
 }
 
@@ -122,6 +111,7 @@ void QSequenceNode::removeExecutableNode(QExecutableNode *executableNode)
     Q_D(QSequenceNode);
     if (d->executableNodes->contains(executableNode)) {
         d->executableNodes->removeAll(executableNode);
+        executableNode->setParent(0);
     }
 }
 

@@ -63,20 +63,14 @@ QActivityParameterNodePrivate::~QActivityParameterNodePrivate()
     \brief An activity parameter node is an object node for inputs and outputs to activities.
  */
 
-QActivityParameterNode::QActivityParameterNode(QObject *parent) :
-    QObjectNode(*new QActivityParameterNodePrivate, parent)
+QActivityParameterNode::QActivityParameterNode(QUmlObject *parent, QUmlObject *wrapper) :
+    QObjectNode(*new QActivityParameterNodePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QActivityParameterNode *>("QActivityParameterNode *");
-    qRegisterMetaType<const QSet<QActivityParameterNode *> *>("const QSet<QActivityParameterNode *> *");
-    qRegisterMetaType<const QList<QActivityParameterNode *> *>("const QList<QActivityParameterNode *> *");
 }
 
-QActivityParameterNode::QActivityParameterNode(QActivityParameterNodePrivate &dd, QObject *parent) :
-    QObjectNode(dd, parent)
+QActivityParameterNode::QActivityParameterNode(QActivityParameterNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QObjectNode(dd, parent, wrapper)
 {
-    qRegisterMetaType<QActivityParameterNode *>("QActivityParameterNode *");
-    qRegisterMetaType<const QSet<QActivityParameterNode *> *>("const QSet<QActivityParameterNode *> *");
-    qRegisterMetaType<const QList<QActivityParameterNode *> *>("const QList<QActivityParameterNode *> *");
 }
 
 QActivityParameterNode::~QActivityParameterNode()

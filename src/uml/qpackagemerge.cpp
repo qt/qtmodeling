@@ -64,20 +64,14 @@ QPackageMergePrivate::~QPackageMergePrivate()
     \brief A package merge defines how the contents of one package are extended by the contents of another package.
  */
 
-QPackageMerge::QPackageMerge(QObject *parent) :
-    QDirectedRelationship(*new QPackageMergePrivate, parent)
+QPackageMerge::QPackageMerge(QUmlObject *parent, QUmlObject *wrapper) :
+    QDirectedRelationship(*new QPackageMergePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QPackageMerge *>("QPackageMerge *");
-    qRegisterMetaType<const QSet<QPackageMerge *> *>("const QSet<QPackageMerge *> *");
-    qRegisterMetaType<const QList<QPackageMerge *> *>("const QList<QPackageMerge *> *");
 }
 
-QPackageMerge::QPackageMerge(QPackageMergePrivate &dd, QObject *parent) :
-    QDirectedRelationship(dd, parent)
+QPackageMerge::QPackageMerge(QPackageMergePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QDirectedRelationship(dd, parent, wrapper)
 {
-    qRegisterMetaType<QPackageMerge *>("QPackageMerge *");
-    qRegisterMetaType<const QSet<QPackageMerge *> *>("const QSet<QPackageMerge *> *");
-    qRegisterMetaType<const QList<QPackageMerge *> *>("const QList<QPackageMerge *> *");
 }
 
 QPackageMerge::~QPackageMerge()
@@ -106,13 +100,13 @@ void QPackageMerge::setMergedPackage(QPackage *mergedPackage)
     Q_D(QPackageMerge);
     if (d->mergedPackage != mergedPackage) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qtuml_object_cast<QElement *>(d->mergedPackage));
+        (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qumlobject_cast<QElement *>(d->mergedPackage));
 
         d->mergedPackage = mergedPackage;
 
         // Adjust subsetted property(ies)
         if (mergedPackage) {
-            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qtuml_object_cast<QElement *>(mergedPackage));
+            (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qumlobject_cast<QElement *>(mergedPackage));
         }
     }
 }
@@ -139,14 +133,14 @@ void QPackageMerge::setReceivingPackage(QPackage *receivingPackage)
             d->receivingPackage->removePackageMerge(this);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qtuml_object_cast<QElement *>(d->receivingPackage));
+        (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qumlobject_cast<QElement *>(d->receivingPackage));
 
         d->receivingPackage = receivingPackage;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(receivingPackage));
+        (qumlobject_cast<QElementPrivate *>(d))->setOwner(qumlobject_cast<QElement *>(receivingPackage));
         if (receivingPackage) {
-            (qtuml_object_cast<QDirectedRelationshipPrivate *>(d))->addSource(qtuml_object_cast<QElement *>(receivingPackage));
+            (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->addSource(qumlobject_cast<QElement *>(receivingPackage));
         }
 
         // Adjust opposite property

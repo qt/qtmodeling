@@ -66,20 +66,14 @@ QPseudostatePrivate::~QPseudostatePrivate()
     \brief A pseudostate is an abstraction that encompasses different types of transient vertices in the state machine graph.
  */
 
-QPseudostate::QPseudostate(QObject *parent) :
-    QVertex(*new QPseudostatePrivate, parent)
+QPseudostate::QPseudostate(QUmlObject *parent, QUmlObject *wrapper) :
+    QVertex(*new QPseudostatePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QPseudostate *>("QPseudostate *");
-    qRegisterMetaType<const QSet<QPseudostate *> *>("const QSet<QPseudostate *> *");
-    qRegisterMetaType<const QList<QPseudostate *> *>("const QList<QPseudostate *> *");
 }
 
-QPseudostate::QPseudostate(QPseudostatePrivate &dd, QObject *parent) :
-    QVertex(dd, parent)
+QPseudostate::QPseudostate(QPseudostatePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QVertex(dd, parent, wrapper)
 {
-    qRegisterMetaType<QPseudostate *>("QPseudostate *");
-    qRegisterMetaType<const QSet<QPseudostate *> *>("const QSet<QPseudostate *> *");
-    qRegisterMetaType<const QList<QPseudostate *> *>("const QList<QPseudostate *> *");
 }
 
 QPseudostate::~QPseudostate()
@@ -139,7 +133,7 @@ void QPseudostate::setState(QState *state)
         d->state = state;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(state));
+        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(state));
 
         // Adjust opposite property
         if (state)
@@ -171,7 +165,7 @@ void QPseudostate::setStateMachine(QStateMachine *stateMachine)
         d->stateMachine = stateMachine;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(stateMachine));
+        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(stateMachine));
 
         // Adjust opposite property
         if (stateMachine)

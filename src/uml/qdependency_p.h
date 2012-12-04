@@ -41,10 +41,8 @@
 #ifndef QTUML_QDEPENDENCY_P_H
 #define QTUML_QDEPENDENCY_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
-#include "private/qobject_p.h"
+#include "private/qumlobject_p.h"
 #include "private/qpackageableelement_p.h"
 #include "private/qdirectedrelationship_p.h"
 
@@ -63,7 +61,7 @@ QT_MODULE(QtUml)
 class QNamedElement;
 class QDependency;
 
-class Q_UML_EXPORT QDependencyPrivate : public QObjectPrivate
+class Q_UML_EXPORT QDependencyPrivate : public QUmlObjectPrivate
 {
     Q_DECLARE_PUBLIC(QDependency)
 

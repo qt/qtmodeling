@@ -64,20 +64,14 @@ QExpansionNodePrivate::~QExpansionNodePrivate()
     \brief An expansion node is an object node used to indicate a flow across the boundary of an expansion region. A flow into a region contains a collection that is broken into its individual elements inside the region, which is executed once per element. A flow out of a region combines individual elements into a collection for use outside the region.
  */
 
-QExpansionNode::QExpansionNode(QObject *parent) :
-    QObjectNode(*new QExpansionNodePrivate, parent)
+QExpansionNode::QExpansionNode(QUmlObject *parent, QUmlObject *wrapper) :
+    QObjectNode(*new QExpansionNodePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QExpansionNode *>("QExpansionNode *");
-    qRegisterMetaType<const QSet<QExpansionNode *> *>("const QSet<QExpansionNode *> *");
-    qRegisterMetaType<const QList<QExpansionNode *> *>("const QList<QExpansionNode *> *");
 }
 
-QExpansionNode::QExpansionNode(QExpansionNodePrivate &dd, QObject *parent) :
-    QObjectNode(dd, parent)
+QExpansionNode::QExpansionNode(QExpansionNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QObjectNode(dd, parent, wrapper)
 {
-    qRegisterMetaType<QExpansionNode *>("QExpansionNode *");
-    qRegisterMetaType<const QSet<QExpansionNode *> *>("const QSet<QExpansionNode *> *");
-    qRegisterMetaType<const QList<QExpansionNode *> *>("const QList<QExpansionNode *> *");
 }
 
 QExpansionNode::~QExpansionNode()

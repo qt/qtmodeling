@@ -62,20 +62,14 @@ QExpressionPrivate::~QExpressionPrivate()
     \brief An expression is a structured tree of symbols that denotes a (possibly empty) set of values when evaluated in a context.An expression represents a node in an expression tree, which may be non-terminal or terminal. It defines a symbol, and has a possibly empty sequence of operands which are value specifications.
  */
 
-QExpression::QExpression(QObject *parent) :
-    QValueSpecification(*new QExpressionPrivate, parent)
+QExpression::QExpression(QUmlObject *parent, QUmlObject *wrapper) :
+    QValueSpecification(*new QExpressionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QExpression *>("QExpression *");
-    qRegisterMetaType<const QSet<QExpression *> *>("const QSet<QExpression *> *");
-    qRegisterMetaType<const QList<QExpression *> *>("const QList<QExpression *> *");
 }
 
-QExpression::QExpression(QExpressionPrivate &dd, QObject *parent) :
-    QValueSpecification(dd, parent)
+QExpression::QExpression(QExpressionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QValueSpecification(dd, parent, wrapper)
 {
-    qRegisterMetaType<QExpression *>("QExpression *");
-    qRegisterMetaType<const QSet<QExpression *> *>("const QSet<QExpression *> *");
-    qRegisterMetaType<const QList<QExpression *> *>("const QList<QExpression *> *");
 }
 
 QExpression::~QExpression()
@@ -131,7 +125,7 @@ void QExpression::addOperand(QValueSpecification *operand)
         d->operands->append(operand);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(operand));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(operand));
     }
 }
 
@@ -142,9 +136,10 @@ void QExpression::removeOperand(QValueSpecification *operand)
     Q_D(QExpression);
     if (d->operands->contains(operand)) {
         d->operands->removeAll(operand);
+        operand->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(operand));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(operand));
     }
 }
 

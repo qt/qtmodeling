@@ -67,20 +67,14 @@ QConnectorEndPrivate::~QConnectorEndPrivate()
     \brief A connector end is an endpoint of a connector, which attaches the connector to a connectable element. Each connector end is part of one connector.
  */
 
-QConnectorEnd::QConnectorEnd(QObject *parent) :
-    QMultiplicityElement(*new QConnectorEndPrivate, parent)
+QConnectorEnd::QConnectorEnd(QUmlObject *parent, QUmlObject *wrapper) :
+    QMultiplicityElement(*new QConnectorEndPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QConnectorEnd *>("QConnectorEnd *");
-    qRegisterMetaType<const QSet<QConnectorEnd *> *>("const QSet<QConnectorEnd *> *");
-    qRegisterMetaType<const QList<QConnectorEnd *> *>("const QList<QConnectorEnd *> *");
 }
 
-QConnectorEnd::QConnectorEnd(QConnectorEndPrivate &dd, QObject *parent) :
-    QMultiplicityElement(dd, parent)
+QConnectorEnd::QConnectorEnd(QConnectorEndPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QMultiplicityElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QConnectorEnd *>("QConnectorEnd *");
-    qRegisterMetaType<const QSet<QConnectorEnd *> *>("const QSet<QConnectorEnd *> *");
-    qRegisterMetaType<const QList<QConnectorEnd *> *>("const QList<QConnectorEnd *> *");
 }
 
 QConnectorEnd::~QConnectorEnd()
@@ -110,13 +104,13 @@ void QConnectorEnd::setRole(QConnectableElement *role)
     if (d->role != role) {
         // Adjust opposite property
         if (d->role)
-            (qtuml_object_cast<QConnectableElementPrivate *>(d->role->d_func()))->removeEnd(this);
+            (qumlobject_cast<QConnectableElementPrivate *>(d->role->d_func()))->removeEnd(this);
 
         d->role = role;
 
         // Adjust opposite property
         if (role)
-            (qtuml_object_cast<QConnectableElementPrivate *>(role->d_func()))->addEnd(this);
+            (qumlobject_cast<QConnectableElementPrivate *>(role->d_func()))->addEnd(this);
     }
 }
 

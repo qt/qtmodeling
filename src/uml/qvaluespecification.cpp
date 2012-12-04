@@ -62,24 +62,18 @@ QValueSpecificationPrivate::~QValueSpecificationPrivate()
     \brief ValueSpecification specializes ParameterableElement to specify that a value specification can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.A value specification is the specification of a (possibly empty) set of instances, including both objects and data values.
  */
 
-QValueSpecification::QValueSpecification(QObject *parent) :
-    QObject(*new QValueSpecificationPrivate, parent),
-    _wrappedTypedElement(new QTypedElement(this)),
-    _wrappedPackageableElement(new QPackageableElement(this))
+QValueSpecification::QValueSpecification(QUmlObject *parent, QUmlObject *wrapper) :
+    QUmlObject(*new QValueSpecificationPrivate, parent, wrapper),
+    _wrappedTypedElement(new QTypedElement(this, this)),
+    _wrappedPackageableElement(new QPackageableElement(this, this))
 {
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
-    qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
 }
 
-QValueSpecification::QValueSpecification(QValueSpecificationPrivate &dd, QObject *parent) :
-    QObject(dd, parent),
-    _wrappedTypedElement(new QTypedElement(this)),
-    _wrappedPackageableElement(new QPackageableElement(this))
+QValueSpecification::QValueSpecification(QValueSpecificationPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QUmlObject(dd, parent, wrapper),
+    _wrappedTypedElement(new QTypedElement(this, this)),
+    _wrappedPackageableElement(new QPackageableElement(this, this))
 {
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
-    qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
 }
 
 QValueSpecification::~QValueSpecification()
@@ -95,7 +89,7 @@ QValueSpecification::~QValueSpecification()
  */
 const QSet<QElement *> *QValueSpecification::ownedElements() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+    return (qumlobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -103,7 +97,7 @@ const QSet<QElement *> *QValueSpecification::ownedElements() const
  */
 QElement *QValueSpecification::owner() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->owner();
+    return (qumlobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -111,17 +105,17 @@ QElement *QValueSpecification::owner() const
  */
 const QSet<QComment *> *QValueSpecification::ownedComments() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+    return (qumlobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QValueSpecification::addOwnedComment(QComment *ownedComment)
 {
-    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qumlobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QValueSpecification::removeOwnedComment(QComment *ownedComment)
 {
-    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qumlobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -133,12 +127,12 @@ void QValueSpecification::removeOwnedComment(QComment *ownedComment)
  */
 QString QValueSpecification::name() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+    return (qumlobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QValueSpecification::setName(QString name)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+    (qumlobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -146,7 +140,7 @@ void QValueSpecification::setName(QString name)
  */
 QString QValueSpecification::qualifiedName() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qumlobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -158,12 +152,12 @@ QString QValueSpecification::qualifiedName() const
  */
 QStringExpression *QValueSpecification::nameExpression() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+    return (qumlobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QValueSpecification::setNameExpression(QStringExpression *nameExpression)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qumlobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -171,7 +165,7 @@ void QValueSpecification::setNameExpression(QStringExpression *nameExpression)
  */
 QNamespace *QValueSpecification::namespace_() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+    return (qumlobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -179,17 +173,17 @@ QNamespace *QValueSpecification::namespace_() const
  */
 const QSet<QDependency *> *QValueSpecification::clientDependencies() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qumlobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QValueSpecification::addClientDependency(QDependency *clientDependency)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qumlobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QValueSpecification::removeClientDependency(QDependency *clientDependency)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qumlobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -201,12 +195,12 @@ void QValueSpecification::removeClientDependency(QDependency *clientDependency)
  */
 QType *QValueSpecification::type() const
 {
-    return (qtuml_object_cast<const QTypedElement *>(this))->type();
+    return (qumlobject_cast<const QTypedElement *>(this))->type();
 }
 
 void QValueSpecification::setType(QType *type)
 {
-    (qtuml_object_cast<QTypedElement *>(this))->setType(type);
+    (qumlobject_cast<QTypedElement *>(this))->setType(type);
 }
 
 // ---------------------------------------------------------------
@@ -218,12 +212,12 @@ void QValueSpecification::setType(QType *type)
  */
 QTemplateParameter *QValueSpecification::owningTemplateParameter() const
 {
-    return (qtuml_object_cast<const QParameterableElement *>(this))->owningTemplateParameter();
+    return (qumlobject_cast<const QParameterableElement *>(this))->owningTemplateParameter();
 }
 
 void QValueSpecification::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
 {
-    (qtuml_object_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
+    (qumlobject_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
 }
 
 /*!
@@ -231,12 +225,12 @@ void QValueSpecification::setOwningTemplateParameter(QTemplateParameter *owningT
  */
 QTemplateParameter *QValueSpecification::templateParameter() const
 {
-    return (qtuml_object_cast<const QParameterableElement *>(this))->templateParameter();
+    return (qumlobject_cast<const QParameterableElement *>(this))->templateParameter();
 }
 
 void QValueSpecification::setTemplateParameter(QTemplateParameter *templateParameter)
 {
-    (qtuml_object_cast<QParameterableElement *>(this))->setTemplateParameter(templateParameter);
+    (qumlobject_cast<QParameterableElement *>(this))->setTemplateParameter(templateParameter);
 }
 
 // ---------------------------------------------------------------
@@ -248,12 +242,12 @@ void QValueSpecification::setTemplateParameter(QTemplateParameter *templateParam
  */
 QtUml::VisibilityKind QValueSpecification::visibility() const
 {
-    return (qtuml_object_cast<const QPackageableElement *>(this))->visibility();
+    return (qumlobject_cast<const QPackageableElement *>(this))->visibility();
 }
 
 void QValueSpecification::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qtuml_object_cast<QPackageableElement *>(this))->setVisibility(visibility);
+    (qumlobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
 }
 
 /*!

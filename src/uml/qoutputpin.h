@@ -62,11 +62,11 @@ class Q_UML_EXPORT QOutputPin : public QPin
     Q_DECLARE_PRIVATE(QOutputPin)
 
 public:
-    Q_INVOKABLE explicit QOutputPin(QObject *parent = 0);
+    Q_INVOKABLE explicit QOutputPin(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QOutputPin();
 
 protected:
-    explicit QOutputPin(QOutputPinPrivate &dd, QObject *parent = 0);
+    explicit QOutputPin(QOutputPinPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

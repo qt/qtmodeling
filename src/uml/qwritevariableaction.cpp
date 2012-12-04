@@ -63,20 +63,14 @@ QWriteVariableActionPrivate::~QWriteVariableActionPrivate()
     \brief WriteVariableAction is an abstract class for variable actions that change variable values.
  */
 
-QWriteVariableAction::QWriteVariableAction(QObject *parent) :
-    QVariableAction(*new QWriteVariableActionPrivate, parent)
+QWriteVariableAction::QWriteVariableAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QVariableAction(*new QWriteVariableActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QWriteVariableAction *>("QWriteVariableAction *");
-    qRegisterMetaType<const QSet<QWriteVariableAction *> *>("const QSet<QWriteVariableAction *> *");
-    qRegisterMetaType<const QList<QWriteVariableAction *> *>("const QList<QWriteVariableAction *> *");
 }
 
-QWriteVariableAction::QWriteVariableAction(QWriteVariableActionPrivate &dd, QObject *parent) :
-    QVariableAction(dd, parent)
+QWriteVariableAction::QWriteVariableAction(QWriteVariableActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QVariableAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QWriteVariableAction *>("QWriteVariableAction *");
-    qRegisterMetaType<const QSet<QWriteVariableAction *> *>("const QSet<QWriteVariableAction *> *");
-    qRegisterMetaType<const QList<QWriteVariableAction *> *>("const QList<QWriteVariableAction *> *");
 }
 
 QWriteVariableAction::~QWriteVariableAction()
@@ -105,13 +99,13 @@ void QWriteVariableAction::setValue(QInputPin *value)
     Q_D(QWriteVariableAction);
     if (d->value != value) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->value));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->value));
 
         d->value = value;
 
         // Adjust subsetted property(ies)
         if (value) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(value));
+            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(value));
         }
     }
 }

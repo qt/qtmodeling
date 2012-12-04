@@ -64,20 +64,14 @@ QAddVariableValueActionPrivate::~QAddVariableValueActionPrivate()
     \brief An add variable value action is a write variable action for adding values to a variable.
  */
 
-QAddVariableValueAction::QAddVariableValueAction(QObject *parent) :
-    QWriteVariableAction(*new QAddVariableValueActionPrivate, parent)
+QAddVariableValueAction::QAddVariableValueAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QWriteVariableAction(*new QAddVariableValueActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QAddVariableValueAction *>("QAddVariableValueAction *");
-    qRegisterMetaType<const QSet<QAddVariableValueAction *> *>("const QSet<QAddVariableValueAction *> *");
-    qRegisterMetaType<const QList<QAddVariableValueAction *> *>("const QList<QAddVariableValueAction *> *");
 }
 
-QAddVariableValueAction::QAddVariableValueAction(QAddVariableValueActionPrivate &dd, QObject *parent) :
-    QWriteVariableAction(dd, parent)
+QAddVariableValueAction::QAddVariableValueAction(QAddVariableValueActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QWriteVariableAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QAddVariableValueAction *>("QAddVariableValueAction *");
-    qRegisterMetaType<const QSet<QAddVariableValueAction *> *>("const QSet<QAddVariableValueAction *> *");
-    qRegisterMetaType<const QList<QAddVariableValueAction *> *>("const QList<QAddVariableValueAction *> *");
 }
 
 QAddVariableValueAction::~QAddVariableValueAction()
@@ -131,13 +125,13 @@ void QAddVariableValueAction::setInsertAt(QInputPin *insertAt)
     Q_D(QAddVariableValueAction);
     if (d->insertAt != insertAt) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->insertAt));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->insertAt));
 
         d->insertAt = insertAt;
 
         // Adjust subsetted property(ies)
         if (insertAt) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(insertAt));
+            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(insertAt));
         }
     }
 }

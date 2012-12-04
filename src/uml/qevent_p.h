@@ -41,8 +41,6 @@
 #ifndef QTUML_QEVENT_P_H
 #define QTUML_QEVENT_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qpackageableelement_p.h"
 

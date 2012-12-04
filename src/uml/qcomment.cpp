@@ -62,20 +62,14 @@ QCommentPrivate::~QCommentPrivate()
     \brief A comment is a textual annotation that can be attached to a set of elements.
  */
 
-QComment::QComment(QObject *parent) :
-    QElement(*new QCommentPrivate, parent)
+QComment::QComment(QUmlObject *parent, QUmlObject *wrapper) :
+    QElement(*new QCommentPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QComment *>("QComment *");
-    qRegisterMetaType<const QSet<QComment *> *>("const QSet<QComment *> *");
-    qRegisterMetaType<const QList<QComment *> *>("const QList<QComment *> *");
 }
 
-QComment::QComment(QCommentPrivate &dd, QObject *parent) :
-    QElement(dd, parent)
+QComment::QComment(QCommentPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QComment *>("QComment *");
-    qRegisterMetaType<const QSet<QComment *> *>("const QSet<QComment *> *");
-    qRegisterMetaType<const QList<QComment *> *>("const QList<QComment *> *");
 }
 
 QComment::~QComment()

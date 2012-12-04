@@ -63,20 +63,14 @@ QTypedElementPrivate::~QTypedElementPrivate()
     \brief A typed element is a kind of named element that represents an element with a type.A typed element has a type.
  */
 
-QTypedElement::QTypedElement(QObject *parent) :
-    QNamedElement(*new QTypedElementPrivate, parent)
+QTypedElement::QTypedElement(QUmlObject *parent, QUmlObject *wrapper) :
+    QNamedElement(*new QTypedElementPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QTypedElement *>("QTypedElement *");
-    qRegisterMetaType<const QSet<QTypedElement *> *>("const QSet<QTypedElement *> *");
-    qRegisterMetaType<const QList<QTypedElement *> *>("const QList<QTypedElement *> *");
 }
 
-QTypedElement::QTypedElement(QTypedElementPrivate &dd, QObject *parent) :
-    QNamedElement(dd, parent)
+QTypedElement::QTypedElement(QTypedElementPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QNamedElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QTypedElement *>("QTypedElement *");
-    qRegisterMetaType<const QSet<QTypedElement *> *>("const QSet<QTypedElement *> *");
-    qRegisterMetaType<const QList<QTypedElement *> *>("const QList<QTypedElement *> *");
 }
 
 QTypedElement::~QTypedElement()

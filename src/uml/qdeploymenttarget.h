@@ -49,6 +49,8 @@
 // Qt includes
 #include <QtCore/QSet>
 
+#include <QtUml/QUmlPointer>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -72,7 +74,7 @@ class Q_UML_EXPORT QDeploymentTarget : public QNamedElement
     Q_DECLARE_PRIVATE(QDeploymentTarget)
 
 public:
-    Q_INVOKABLE explicit QDeploymentTarget(QObject *parent = 0);
+    Q_INVOKABLE explicit QDeploymentTarget(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QDeploymentTarget();
 
     // Association ends from QDeploymentTarget
@@ -86,7 +88,7 @@ public:
     Q_INVOKABLE void removeClientDependency(QUmlPointer<QDeployment> deployment);
 
 protected:
-    explicit QDeploymentTarget(QDeploymentTargetPrivate &dd, QObject *parent = 0);
+    explicit QDeploymentTarget(QDeploymentTargetPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

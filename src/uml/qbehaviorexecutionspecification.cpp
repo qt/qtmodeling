@@ -63,20 +63,14 @@ QBehaviorExecutionSpecificationPrivate::~QBehaviorExecutionSpecificationPrivate(
     \brief A behavior execution specification is a kind of execution specification representing the execution of a behavior.
  */
 
-QBehaviorExecutionSpecification::QBehaviorExecutionSpecification(QObject *parent) :
-    QExecutionSpecification(*new QBehaviorExecutionSpecificationPrivate, parent)
+QBehaviorExecutionSpecification::QBehaviorExecutionSpecification(QUmlObject *parent, QUmlObject *wrapper) :
+    QExecutionSpecification(*new QBehaviorExecutionSpecificationPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QBehaviorExecutionSpecification *>("QBehaviorExecutionSpecification *");
-    qRegisterMetaType<const QSet<QBehaviorExecutionSpecification *> *>("const QSet<QBehaviorExecutionSpecification *> *");
-    qRegisterMetaType<const QList<QBehaviorExecutionSpecification *> *>("const QList<QBehaviorExecutionSpecification *> *");
 }
 
-QBehaviorExecutionSpecification::QBehaviorExecutionSpecification(QBehaviorExecutionSpecificationPrivate &dd, QObject *parent) :
-    QExecutionSpecification(dd, parent)
+QBehaviorExecutionSpecification::QBehaviorExecutionSpecification(QBehaviorExecutionSpecificationPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QExecutionSpecification(dd, parent, wrapper)
 {
-    qRegisterMetaType<QBehaviorExecutionSpecification *>("QBehaviorExecutionSpecification *");
-    qRegisterMetaType<const QSet<QBehaviorExecutionSpecification *> *>("const QSet<QBehaviorExecutionSpecification *> *");
-    qRegisterMetaType<const QList<QBehaviorExecutionSpecification *> *>("const QList<QBehaviorExecutionSpecification *> *");
 }
 
 QBehaviorExecutionSpecification::~QBehaviorExecutionSpecification()

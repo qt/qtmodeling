@@ -63,20 +63,14 @@ QTypePrivate::~QTypePrivate()
     \brief A type is a named element that is used as the type for a typed element. A type can be contained in a package.A type constrains the values represented by a typed element.
  */
 
-QType::QType(QObject *parent) :
-    QPackageableElement(*new QTypePrivate, parent)
+QType::QType(QUmlObject *parent, QUmlObject *wrapper) :
+    QPackageableElement(*new QTypePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QType *>("QType *");
-    qRegisterMetaType<const QSet<QType *> *>("const QSet<QType *> *");
-    qRegisterMetaType<const QList<QType *> *>("const QList<QType *> *");
 }
 
-QType::QType(QTypePrivate &dd, QObject *parent) :
-    QPackageableElement(dd, parent)
+QType::QType(QTypePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QPackageableElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QType *>("QType *");
-    qRegisterMetaType<const QSet<QType *> *>("const QSet<QType *> *");
-    qRegisterMetaType<const QList<QType *> *>("const QList<QType *> *");
 }
 
 QType::~QType()
@@ -111,7 +105,7 @@ void QType::setPackage(QPackage *package)
         d->package = package;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(package));
+        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(package));
 
         // Adjust opposite property
         if (package)

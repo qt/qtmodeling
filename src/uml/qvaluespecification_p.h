@@ -41,10 +41,8 @@
 #ifndef QTUML_QVALUESPECIFICATION_P_H
 #define QTUML_QVALUESPECIFICATION_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
-#include "private/qobject_p.h"
+#include "private/qumlobject_p.h"
 #include "private/qtypedelement_p.h"
 #include "private/qpackageableelement_p.h"
 
@@ -62,7 +60,7 @@ QT_MODULE(QtUml)
 // Forward decls for function parameters
 class QParameterableElement;
 
-class Q_UML_EXPORT QValueSpecificationPrivate : public QObjectPrivate
+class Q_UML_EXPORT QValueSpecificationPrivate : public QUmlObjectPrivate
 {
     Q_DECLARE_PUBLIC(QValueSpecification)
 

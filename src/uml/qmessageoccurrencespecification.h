@@ -44,7 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
+#include <QtUml/QUmlObject>
 #include <QtUml/QOccurrenceSpecification>
 #include <QtUml/QMessageEnd>
 
@@ -56,7 +56,7 @@ QT_MODULE(QtUml)
 
 class QMessageOccurrenceSpecificationPrivate;
 
-class Q_UML_EXPORT QMessageOccurrenceSpecification : public QObject
+class Q_UML_EXPORT QMessageOccurrenceSpecification : public QUmlObject
 {
     Q_OBJECT
 
@@ -64,7 +64,7 @@ class Q_UML_EXPORT QMessageOccurrenceSpecification : public QObject
     Q_DECLARE_PRIVATE(QMessageOccurrenceSpecification)
 
 public:
-    Q_INVOKABLE explicit QMessageOccurrenceSpecification(QObject *parent = 0);
+    Q_INVOKABLE explicit QMessageOccurrenceSpecification(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QMessageOccurrenceSpecification();
 
     // Association ends from aggregated QElement
@@ -94,7 +94,7 @@ public:
     Q_INVOKABLE void setMessage(QMessage *message);
 
 protected:
-    explicit QMessageOccurrenceSpecification(QMessageOccurrenceSpecificationPrivate &dd, QObject *parent = 0);
+    explicit QMessageOccurrenceSpecification(QMessageOccurrenceSpecificationPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 
 private:
     QOccurrenceSpecification *_wrappedOccurrenceSpecification;

@@ -68,20 +68,14 @@ QReduceActionPrivate::~QReduceActionPrivate()
     \brief A reduce action is an action that reduces a collection to a single value by combining the elements of the collection.
  */
 
-QReduceAction::QReduceAction(QObject *parent) :
-    QAction(*new QReduceActionPrivate, parent)
+QReduceAction::QReduceAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(*new QReduceActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QReduceAction *>("QReduceAction *");
-    qRegisterMetaType<const QSet<QReduceAction *> *>("const QSet<QReduceAction *> *");
-    qRegisterMetaType<const QList<QReduceAction *> *>("const QList<QReduceAction *> *");
 }
 
-QReduceAction::QReduceAction(QReduceActionPrivate &dd, QObject *parent) :
-    QAction(dd, parent)
+QReduceAction::QReduceAction(QReduceActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QReduceAction *>("QReduceAction *");
-    qRegisterMetaType<const QSet<QReduceAction *> *>("const QSet<QReduceAction *> *");
-    qRegisterMetaType<const QList<QReduceAction *> *>("const QList<QReduceAction *> *");
 }
 
 QReduceAction::~QReduceAction()
@@ -135,13 +129,13 @@ void QReduceAction::setResult(QOutputPin *result)
     Q_D(QReduceAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(d->result));
+        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(result));
+            (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(result));
         }
     }
 }
@@ -164,13 +158,13 @@ void QReduceAction::setCollection(QInputPin *collection)
     Q_D(QReduceAction);
     if (d->collection != collection) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->collection));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->collection));
 
         d->collection = collection;
 
         // Adjust subsetted property(ies)
         if (collection) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(collection));
+            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(collection));
         }
     }
 }

@@ -60,20 +60,14 @@ QWriteLinkActionPrivate::~QWriteLinkActionPrivate()
     \brief WriteLinkAction is an abstract class for link actions that create and destroy links.
  */
 
-QWriteLinkAction::QWriteLinkAction(QObject *parent) :
-    QLinkAction(*new QWriteLinkActionPrivate, parent)
+QWriteLinkAction::QWriteLinkAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QLinkAction(*new QWriteLinkActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QWriteLinkAction *>("QWriteLinkAction *");
-    qRegisterMetaType<const QSet<QWriteLinkAction *> *>("const QSet<QWriteLinkAction *> *");
-    qRegisterMetaType<const QList<QWriteLinkAction *> *>("const QList<QWriteLinkAction *> *");
 }
 
-QWriteLinkAction::QWriteLinkAction(QWriteLinkActionPrivate &dd, QObject *parent) :
-    QLinkAction(dd, parent)
+QWriteLinkAction::QWriteLinkAction(QWriteLinkActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QLinkAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QWriteLinkAction *>("QWriteLinkAction *");
-    qRegisterMetaType<const QSet<QWriteLinkAction *> *>("const QSet<QWriteLinkAction *> *");
-    qRegisterMetaType<const QList<QWriteLinkAction *> *>("const QList<QWriteLinkAction *> *");
 }
 
 QWriteLinkAction::~QWriteLinkAction()

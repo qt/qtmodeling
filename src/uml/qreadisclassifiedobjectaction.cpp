@@ -68,20 +68,14 @@ QReadIsClassifiedObjectActionPrivate::~QReadIsClassifiedObjectActionPrivate()
     \brief A read is classified object action is an action that determines whether a runtime object is classified by a given classifier.
  */
 
-QReadIsClassifiedObjectAction::QReadIsClassifiedObjectAction(QObject *parent) :
-    QAction(*new QReadIsClassifiedObjectActionPrivate, parent)
+QReadIsClassifiedObjectAction::QReadIsClassifiedObjectAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(*new QReadIsClassifiedObjectActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QReadIsClassifiedObjectAction *>("QReadIsClassifiedObjectAction *");
-    qRegisterMetaType<const QSet<QReadIsClassifiedObjectAction *> *>("const QSet<QReadIsClassifiedObjectAction *> *");
-    qRegisterMetaType<const QList<QReadIsClassifiedObjectAction *> *>("const QList<QReadIsClassifiedObjectAction *> *");
 }
 
-QReadIsClassifiedObjectAction::QReadIsClassifiedObjectAction(QReadIsClassifiedObjectActionPrivate &dd, QObject *parent) :
-    QAction(dd, parent)
+QReadIsClassifiedObjectAction::QReadIsClassifiedObjectAction(QReadIsClassifiedObjectActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QReadIsClassifiedObjectAction *>("QReadIsClassifiedObjectAction *");
-    qRegisterMetaType<const QSet<QReadIsClassifiedObjectAction *> *>("const QSet<QReadIsClassifiedObjectAction *> *");
-    qRegisterMetaType<const QList<QReadIsClassifiedObjectAction *> *>("const QList<QReadIsClassifiedObjectAction *> *");
 }
 
 QReadIsClassifiedObjectAction::~QReadIsClassifiedObjectAction()
@@ -135,13 +129,13 @@ void QReadIsClassifiedObjectAction::setResult(QOutputPin *result)
     Q_D(QReadIsClassifiedObjectAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(d->result));
+        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(result));
+            (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(result));
         }
     }
 }
@@ -164,13 +158,13 @@ void QReadIsClassifiedObjectAction::setObject(QInputPin *object)
     Q_D(QReadIsClassifiedObjectAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->object));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->object));
 
         d->object = object;
 
         // Adjust subsetted property(ies)
         if (object) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(object));
+            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(object));
         }
     }
 }

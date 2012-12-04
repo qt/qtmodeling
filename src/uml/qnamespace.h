@@ -79,7 +79,7 @@ class Q_UML_EXPORT QNamespace : public QNamedElement
     Q_DECLARE_PRIVATE(QNamespace)
 
 public:
-    Q_INVOKABLE explicit QNamespace(QObject *parent = 0);
+    Q_INVOKABLE explicit QNamespace(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QNamespace();
 
     // Association ends from QNamespace
@@ -106,7 +106,7 @@ public:
     friend class QNamedElementPrivate;
 
 protected:
-    explicit QNamespace(QNamespacePrivate &dd, QObject *parent = 0);
+    explicit QNamespace(QNamespacePrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

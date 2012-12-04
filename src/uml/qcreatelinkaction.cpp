@@ -53,12 +53,6 @@ QCreateLinkActionPrivate::QCreateLinkActionPrivate() :
 
 QCreateLinkActionPrivate::~QCreateLinkActionPrivate()
 {
-    foreach (QLinkEndCreationData *linkendcreationdata, *endData) {
-        QObject *object = linkendcreationdata;
-        while (object->parent())
-            object = object->parent();
-        delete object;
-    }
     delete endData;
 }
 
@@ -70,20 +64,14 @@ QCreateLinkActionPrivate::~QCreateLinkActionPrivate()
     \brief A create link action is a write link action for creating links.
  */
 
-QCreateLinkAction::QCreateLinkAction(QObject *parent) :
-    QWriteLinkAction(*new QCreateLinkActionPrivate, parent)
+QCreateLinkAction::QCreateLinkAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QWriteLinkAction(*new QCreateLinkActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QCreateLinkAction *>("QCreateLinkAction *");
-    qRegisterMetaType<const QSet<QCreateLinkAction *> *>("const QSet<QCreateLinkAction *> *");
-    qRegisterMetaType<const QList<QCreateLinkAction *> *>("const QList<QCreateLinkAction *> *");
 }
 
-QCreateLinkAction::QCreateLinkAction(QCreateLinkActionPrivate &dd, QObject *parent) :
-    QWriteLinkAction(dd, parent)
+QCreateLinkAction::QCreateLinkAction(QCreateLinkActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QWriteLinkAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QCreateLinkAction *>("QCreateLinkAction *");
-    qRegisterMetaType<const QSet<QCreateLinkAction *> *>("const QSet<QCreateLinkAction *> *");
-    qRegisterMetaType<const QList<QCreateLinkAction *> *>("const QList<QCreateLinkAction *> *");
 }
 
 QCreateLinkAction::~QCreateLinkAction()
@@ -112,6 +100,7 @@ void QCreateLinkAction::addEndData(QLinkEndCreationData *endData)
     Q_D(QCreateLinkAction);
     if (!d->endData->contains(endData)) {
         d->endData->insert(endData);
+        endData->setParent(quml_topLevelWrapper(this));
     }
 }
 
@@ -122,6 +111,7 @@ void QCreateLinkAction::removeEndData(QLinkEndCreationData *endData)
     Q_D(QCreateLinkAction);
     if (d->endData->contains(endData)) {
         d->endData->remove(endData);
+        endData->setParent(0);
     }
 }
 

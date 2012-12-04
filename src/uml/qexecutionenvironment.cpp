@@ -60,20 +60,14 @@ QExecutionEnvironmentPrivate::~QExecutionEnvironmentPrivate()
     \brief An execution environment is a node that offers an execution environment for specific types of components that are deployed on it in the form of executable artifacts.
  */
 
-QExecutionEnvironment::QExecutionEnvironment(QObject *parent) :
-    QNode(*new QExecutionEnvironmentPrivate, parent)
+QExecutionEnvironment::QExecutionEnvironment(QUmlObject *parent, QUmlObject *wrapper) :
+    QNode(*new QExecutionEnvironmentPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QExecutionEnvironment *>("QExecutionEnvironment *");
-    qRegisterMetaType<const QSet<QExecutionEnvironment *> *>("const QSet<QExecutionEnvironment *> *");
-    qRegisterMetaType<const QList<QExecutionEnvironment *> *>("const QList<QExecutionEnvironment *> *");
 }
 
-QExecutionEnvironment::QExecutionEnvironment(QExecutionEnvironmentPrivate &dd, QObject *parent) :
-    QNode(dd, parent)
+QExecutionEnvironment::QExecutionEnvironment(QExecutionEnvironmentPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QNode(dd, parent, wrapper)
 {
-    qRegisterMetaType<QExecutionEnvironment *>("QExecutionEnvironment *");
-    qRegisterMetaType<const QSet<QExecutionEnvironment *> *>("const QSet<QExecutionEnvironment *> *");
-    qRegisterMetaType<const QList<QExecutionEnvironment *> *>("const QList<QExecutionEnvironment *> *");
 }
 
 QExecutionEnvironment::~QExecutionEnvironment()

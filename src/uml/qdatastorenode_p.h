@@ -41,8 +41,6 @@
 #ifndef QTUML_QDATASTORENODE_P_H
 #define QTUML_QDATASTORENODE_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qcentralbuffernode_p.h"
 

@@ -75,7 +75,7 @@ class Q_UML_EXPORT QConditionalNode : public QStructuredActivityNode
     Q_DECLARE_PRIVATE(QConditionalNode)
 
 public:
-    Q_INVOKABLE explicit QConditionalNode(QObject *parent = 0);
+    Q_INVOKABLE explicit QConditionalNode(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QConditionalNode();
 
     // Attributes from QConditionalNode
@@ -93,7 +93,7 @@ public:
     Q_INVOKABLE void removeResult(QOutputPin *result);
 
 protected:
-    explicit QConditionalNode(QConditionalNodePrivate &dd, QObject *parent = 0);
+    explicit QConditionalNode(QConditionalNodePrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

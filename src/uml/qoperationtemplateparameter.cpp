@@ -63,20 +63,14 @@ QOperationTemplateParameterPrivate::~QOperationTemplateParameterPrivate()
     \brief An operation template parameter exposes an operation as a formal parameter for a template.
  */
 
-QOperationTemplateParameter::QOperationTemplateParameter(QObject *parent) :
-    QTemplateParameter(*new QOperationTemplateParameterPrivate, parent)
+QOperationTemplateParameter::QOperationTemplateParameter(QUmlObject *parent, QUmlObject *wrapper) :
+    QTemplateParameter(*new QOperationTemplateParameterPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QOperationTemplateParameter *>("QOperationTemplateParameter *");
-    qRegisterMetaType<const QSet<QOperationTemplateParameter *> *>("const QSet<QOperationTemplateParameter *> *");
-    qRegisterMetaType<const QList<QOperationTemplateParameter *> *>("const QList<QOperationTemplateParameter *> *");
 }
 
-QOperationTemplateParameter::QOperationTemplateParameter(QOperationTemplateParameterPrivate &dd, QObject *parent) :
-    QTemplateParameter(dd, parent)
+QOperationTemplateParameter::QOperationTemplateParameter(QOperationTemplateParameterPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QTemplateParameter(dd, parent, wrapper)
 {
-    qRegisterMetaType<QOperationTemplateParameter *>("QOperationTemplateParameter *");
-    qRegisterMetaType<const QSet<QOperationTemplateParameter *> *>("const QSet<QOperationTemplateParameter *> *");
-    qRegisterMetaType<const QList<QOperationTemplateParameter *> *>("const QList<QOperationTemplateParameter *> *");
 }
 
 QOperationTemplateParameter::~QOperationTemplateParameter()

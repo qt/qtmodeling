@@ -65,24 +65,18 @@ QInteractionOperandPrivate::~QInteractionOperandPrivate()
     \brief An interaction operand is contained in a combined fragment. An interaction operand represents one operand of the expression given by the enclosing combined fragment.
  */
 
-QInteractionOperand::QInteractionOperand(QObject *parent) :
-    QObject(*new QInteractionOperandPrivate, parent),
-    _wrappedInteractionFragment(new QInteractionFragment(this)),
-    _wrappedNamespace(new QNamespace(this))
+QInteractionOperand::QInteractionOperand(QUmlObject *parent, QUmlObject *wrapper) :
+    QUmlObject(*new QInteractionOperandPrivate, parent, wrapper),
+    _wrappedInteractionFragment(new QInteractionFragment(this, this)),
+    _wrappedNamespace(new QNamespace(this, this))
 {
-    qRegisterMetaType<QInteractionOperand *>("QInteractionOperand *");
-    qRegisterMetaType<const QSet<QInteractionOperand *> *>("const QSet<QInteractionOperand *> *");
-    qRegisterMetaType<const QList<QInteractionOperand *> *>("const QList<QInteractionOperand *> *");
 }
 
-QInteractionOperand::QInteractionOperand(QInteractionOperandPrivate &dd, QObject *parent) :
-    QObject(dd, parent),
-    _wrappedInteractionFragment(new QInteractionFragment(this)),
-    _wrappedNamespace(new QNamespace(this))
+QInteractionOperand::QInteractionOperand(QInteractionOperandPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QUmlObject(dd, parent, wrapper),
+    _wrappedInteractionFragment(new QInteractionFragment(this, this)),
+    _wrappedNamespace(new QNamespace(this, this))
 {
-    qRegisterMetaType<QInteractionOperand *>("QInteractionOperand *");
-    qRegisterMetaType<const QSet<QInteractionOperand *> *>("const QSet<QInteractionOperand *> *");
-    qRegisterMetaType<const QList<QInteractionOperand *> *>("const QList<QInteractionOperand *> *");
 }
 
 QInteractionOperand::~QInteractionOperand()
@@ -98,7 +92,7 @@ QInteractionOperand::~QInteractionOperand()
  */
 const QSet<QElement *> *QInteractionOperand::ownedElements() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+    return (qumlobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -106,7 +100,7 @@ const QSet<QElement *> *QInteractionOperand::ownedElements() const
  */
 QElement *QInteractionOperand::owner() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->owner();
+    return (qumlobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -114,17 +108,17 @@ QElement *QInteractionOperand::owner() const
  */
 const QSet<QComment *> *QInteractionOperand::ownedComments() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+    return (qumlobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QInteractionOperand::addOwnedComment(QComment *ownedComment)
 {
-    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qumlobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QInteractionOperand::removeOwnedComment(QComment *ownedComment)
 {
-    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qumlobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -136,12 +130,12 @@ void QInteractionOperand::removeOwnedComment(QComment *ownedComment)
  */
 QString QInteractionOperand::name() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+    return (qumlobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QInteractionOperand::setName(QString name)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+    (qumlobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -149,12 +143,12 @@ void QInteractionOperand::setName(QString name)
  */
 QtUml::VisibilityKind QInteractionOperand::visibility() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->visibility();
+    return (qumlobject_cast<const QNamedElement *>(this))->visibility();
 }
 
 void QInteractionOperand::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setVisibility(visibility);
+    (qumlobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
 
 /*!
@@ -162,7 +156,7 @@ void QInteractionOperand::setVisibility(QtUml::VisibilityKind visibility)
  */
 QString QInteractionOperand::qualifiedName() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qumlobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -174,12 +168,12 @@ QString QInteractionOperand::qualifiedName() const
  */
 QStringExpression *QInteractionOperand::nameExpression() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+    return (qumlobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QInteractionOperand::setNameExpression(QStringExpression *nameExpression)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qumlobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -187,7 +181,7 @@ void QInteractionOperand::setNameExpression(QStringExpression *nameExpression)
  */
 QNamespace *QInteractionOperand::namespace_() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+    return (qumlobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -195,17 +189,17 @@ QNamespace *QInteractionOperand::namespace_() const
  */
 const QSet<QDependency *> *QInteractionOperand::clientDependencies() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qumlobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QInteractionOperand::addClientDependency(QDependency *clientDependency)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qumlobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QInteractionOperand::removeClientDependency(QDependency *clientDependency)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qumlobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -217,17 +211,17 @@ void QInteractionOperand::removeClientDependency(QDependency *clientDependency)
  */
 const QSet<QGeneralOrdering *> *QInteractionOperand::generalOrderings() const
 {
-    return (qtuml_object_cast<const QInteractionFragment *>(this))->generalOrderings();
+    return (qumlobject_cast<const QInteractionFragment *>(this))->generalOrderings();
 }
 
 void QInteractionOperand::addGeneralOrdering(QGeneralOrdering *generalOrdering)
 {
-    (qtuml_object_cast<QInteractionFragment *>(this))->addGeneralOrdering(generalOrdering);
+    (qumlobject_cast<QInteractionFragment *>(this))->addGeneralOrdering(generalOrdering);
 }
 
 void QInteractionOperand::removeGeneralOrdering(QGeneralOrdering *generalOrdering)
 {
-    (qtuml_object_cast<QInteractionFragment *>(this))->removeGeneralOrdering(generalOrdering);
+    (qumlobject_cast<QInteractionFragment *>(this))->removeGeneralOrdering(generalOrdering);
 }
 
 /*!
@@ -235,12 +229,12 @@ void QInteractionOperand::removeGeneralOrdering(QGeneralOrdering *generalOrderin
  */
 QInteraction *QInteractionOperand::enclosingInteraction() const
 {
-    return (qtuml_object_cast<const QInteractionFragment *>(this))->enclosingInteraction();
+    return (qumlobject_cast<const QInteractionFragment *>(this))->enclosingInteraction();
 }
 
 void QInteractionOperand::setEnclosingInteraction(QInteraction *enclosingInteraction)
 {
-    (qtuml_object_cast<QInteractionFragment *>(this))->setEnclosingInteraction(enclosingInteraction);
+    (qumlobject_cast<QInteractionFragment *>(this))->setEnclosingInteraction(enclosingInteraction);
 }
 
 /*!
@@ -248,17 +242,17 @@ void QInteractionOperand::setEnclosingInteraction(QInteraction *enclosingInterac
  */
 const QSet<QLifeline *> *QInteractionOperand::covered() const
 {
-    return (qtuml_object_cast<const QInteractionFragment *>(this))->covered();
+    return (qumlobject_cast<const QInteractionFragment *>(this))->covered();
 }
 
 void QInteractionOperand::addCovered(QLifeline *covered)
 {
-    (qtuml_object_cast<QInteractionFragment *>(this))->addCovered(covered);
+    (qumlobject_cast<QInteractionFragment *>(this))->addCovered(covered);
 }
 
 void QInteractionOperand::removeCovered(QLifeline *covered)
 {
-    (qtuml_object_cast<QInteractionFragment *>(this))->removeCovered(covered);
+    (qumlobject_cast<QInteractionFragment *>(this))->removeCovered(covered);
 }
 
 /*!
@@ -266,12 +260,12 @@ void QInteractionOperand::removeCovered(QLifeline *covered)
  */
 QInteractionOperand *QInteractionOperand::enclosingOperand() const
 {
-    return (qtuml_object_cast<const QInteractionFragment *>(this))->enclosingOperand();
+    return (qumlobject_cast<const QInteractionFragment *>(this))->enclosingOperand();
 }
 
 void QInteractionOperand::setEnclosingOperand(QInteractionOperand *enclosingOperand)
 {
-    (qtuml_object_cast<QInteractionFragment *>(this))->setEnclosingOperand(enclosingOperand);
+    (qumlobject_cast<QInteractionFragment *>(this))->setEnclosingOperand(enclosingOperand);
 }
 
 // ---------------------------------------------------------------
@@ -283,17 +277,17 @@ void QInteractionOperand::setEnclosingOperand(QInteractionOperand *enclosingOper
  */
 const QSet<QPackageImport *> *QInteractionOperand::packageImports() const
 {
-    return (qtuml_object_cast<const QNamespace *>(this))->packageImports();
+    return (qumlobject_cast<const QNamespace *>(this))->packageImports();
 }
 
 void QInteractionOperand::addPackageImport(QPackageImport *packageImport)
 {
-    (qtuml_object_cast<QNamespace *>(this))->addPackageImport(packageImport);
+    (qumlobject_cast<QNamespace *>(this))->addPackageImport(packageImport);
 }
 
 void QInteractionOperand::removePackageImport(QPackageImport *packageImport)
 {
-    (qtuml_object_cast<QNamespace *>(this))->removePackageImport(packageImport);
+    (qumlobject_cast<QNamespace *>(this))->removePackageImport(packageImport);
 }
 
 /*!
@@ -301,7 +295,7 @@ void QInteractionOperand::removePackageImport(QPackageImport *packageImport)
  */
 const QSet<QNamedElement *> *QInteractionOperand::members() const
 {
-    return (qtuml_object_cast<const QNamespace *>(this))->members();
+    return (qumlobject_cast<const QNamespace *>(this))->members();
 }
 
 /*!
@@ -309,7 +303,7 @@ const QSet<QNamedElement *> *QInteractionOperand::members() const
  */
 const QSet<QPackageableElement *> *QInteractionOperand::importedMembers() const
 {
-    return (qtuml_object_cast<const QNamespace *>(this))->importedMembers();
+    return (qumlobject_cast<const QNamespace *>(this))->importedMembers();
 }
 
 /*!
@@ -317,17 +311,17 @@ const QSet<QPackageableElement *> *QInteractionOperand::importedMembers() const
  */
 const QSet<QElementImport *> *QInteractionOperand::elementImports() const
 {
-    return (qtuml_object_cast<const QNamespace *>(this))->elementImports();
+    return (qumlobject_cast<const QNamespace *>(this))->elementImports();
 }
 
 void QInteractionOperand::addElementImport(QElementImport *elementImport)
 {
-    (qtuml_object_cast<QNamespace *>(this))->addElementImport(elementImport);
+    (qumlobject_cast<QNamespace *>(this))->addElementImport(elementImport);
 }
 
 void QInteractionOperand::removeElementImport(QElementImport *elementImport)
 {
-    (qtuml_object_cast<QNamespace *>(this))->removeElementImport(elementImport);
+    (qumlobject_cast<QNamespace *>(this))->removeElementImport(elementImport);
 }
 
 /*!
@@ -335,17 +329,17 @@ void QInteractionOperand::removeElementImport(QElementImport *elementImport)
  */
 const QSet<QConstraint *> *QInteractionOperand::ownedRules() const
 {
-    return (qtuml_object_cast<const QNamespace *>(this))->ownedRules();
+    return (qumlobject_cast<const QNamespace *>(this))->ownedRules();
 }
 
 void QInteractionOperand::addOwnedRule(QConstraint *ownedRule)
 {
-    (qtuml_object_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
+    (qumlobject_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
 }
 
 void QInteractionOperand::removeOwnedRule(QConstraint *ownedRule)
 {
-    (qtuml_object_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
+    (qumlobject_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
 }
 
 /*!
@@ -353,7 +347,7 @@ void QInteractionOperand::removeOwnedRule(QConstraint *ownedRule)
  */
 const QSet<QNamedElement *> *QInteractionOperand::ownedMembers() const
 {
-    return (qtuml_object_cast<const QNamespace *>(this))->ownedMembers();
+    return (qumlobject_cast<const QNamespace *>(this))->ownedMembers();
 }
 
 // ---------------------------------------------------------------
@@ -380,7 +374,7 @@ void QInteractionOperand::addFragment(QInteractionFragment *fragment)
         d->fragments->append(fragment);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->addOwnedMember(qtuml_object_cast<QNamedElement *>(fragment));
+        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(fragment));
 
         // Adjust opposite property
         fragment->setEnclosingOperand(this);
@@ -394,9 +388,10 @@ void QInteractionOperand::removeFragment(QInteractionFragment *fragment)
     Q_D(QInteractionOperand);
     if (d->fragments->contains(fragment)) {
         d->fragments->removeAll(fragment);
+        fragment->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamespacePrivate *>(d))->removeOwnedMember(qtuml_object_cast<QNamedElement *>(fragment));
+        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(fragment));
 
         // Adjust opposite property
         fragment->setEnclosingOperand(0);
@@ -421,13 +416,13 @@ void QInteractionOperand::setGuard(QInteractionConstraint *guard)
     Q_D(QInteractionOperand);
     if (d->guard != guard) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->guard));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->guard));
 
         d->guard = guard;
 
         // Adjust subsetted property(ies)
         if (guard) {
-            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(guard));
+            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(guard));
         }
     }
 }

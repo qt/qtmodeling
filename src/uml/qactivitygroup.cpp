@@ -76,7 +76,7 @@ void QActivityGroupPrivate::addContainedNode(QActivityNode *containedNode)
 
         // Adjust opposite property
         Q_Q(QActivityGroup);
-        (qtuml_object_cast<QActivityNodePrivate *>(containedNode->d_func()))->addInGroup(q);
+        (qumlobject_cast<QActivityNodePrivate *>(containedNode->d_func()))->addInGroup(q);
     }
 }
 
@@ -90,7 +90,7 @@ void QActivityGroupPrivate::removeContainedNode(QActivityNode *containedNode)
         // Adjust opposite property
         Q_Q(QActivityGroup);
         if (containedNode)
-            (qtuml_object_cast<QActivityNodePrivate *>(containedNode->d_func()))->removeInGroup(q);
+            (qumlobject_cast<QActivityNodePrivate *>(containedNode->d_func()))->removeInGroup(q);
     }
 }
 
@@ -102,11 +102,11 @@ void QActivityGroupPrivate::addSubgroup(QActivityGroup *subgroup)
         this->subgroups->insert(subgroup);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(this))->addOwnedElement(qtuml_object_cast<QElement *>(subgroup));
+        (qumlobject_cast<QElementPrivate *>(this))->addOwnedElement(qumlobject_cast<QElement *>(subgroup));
 
         // Adjust opposite property
         Q_Q(QActivityGroup);
-        (qtuml_object_cast<QActivityGroupPrivate *>(subgroup->d_func()))->setSuperGroup(q);
+        (qumlobject_cast<QActivityGroupPrivate *>(subgroup->d_func()))->setSuperGroup(q);
     }
 }
 
@@ -118,10 +118,10 @@ void QActivityGroupPrivate::removeSubgroup(QActivityGroup *subgroup)
         this->subgroups->remove(subgroup);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(this))->removeOwnedElement(qtuml_object_cast<QElement *>(subgroup));
+        (qumlobject_cast<QElementPrivate *>(this))->removeOwnedElement(qumlobject_cast<QElement *>(subgroup));
 
         // Adjust opposite property
-        (qtuml_object_cast<QActivityGroupPrivate *>(subgroup->d_func()))->setSuperGroup(0);
+        (qumlobject_cast<QActivityGroupPrivate *>(subgroup->d_func()))->setSuperGroup(0);
     }
 }
 
@@ -134,7 +134,7 @@ void QActivityGroupPrivate::addContainedEdge(QActivityEdge *containedEdge)
 
         // Adjust opposite property
         Q_Q(QActivityGroup);
-        (qtuml_object_cast<QActivityEdgePrivate *>(containedEdge->d_func()))->addInGroup(q);
+        (qumlobject_cast<QActivityEdgePrivate *>(containedEdge->d_func()))->addInGroup(q);
     }
 }
 
@@ -148,7 +148,7 @@ void QActivityGroupPrivate::removeContainedEdge(QActivityEdge *containedEdge)
         // Adjust opposite property
         Q_Q(QActivityGroup);
         if (containedEdge)
-            (qtuml_object_cast<QActivityEdgePrivate *>(containedEdge->d_func()))->removeInGroup(q);
+            (qumlobject_cast<QActivityEdgePrivate *>(containedEdge->d_func()))->removeInGroup(q);
     }
 }
 
@@ -160,16 +160,16 @@ void QActivityGroupPrivate::setSuperGroup(QActivityGroup *superGroup)
         Q_Q(QActivityGroup);
         // Adjust opposite property
         if (this->superGroup)
-            (qtuml_object_cast<QActivityGroupPrivate *>(this->superGroup->d_func()))->removeSubgroup(q);
+            (qumlobject_cast<QActivityGroupPrivate *>(this->superGroup->d_func()))->removeSubgroup(q);
 
         this->superGroup = superGroup;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(this))->setOwner(qtuml_object_cast<QElement *>(superGroup));
+        (qumlobject_cast<QElementPrivate *>(this))->setOwner(qumlobject_cast<QElement *>(superGroup));
 
         // Adjust opposite property
         if (superGroup)
-            (qtuml_object_cast<QActivityGroupPrivate *>(superGroup->d_func()))->addSubgroup(q);
+            (qumlobject_cast<QActivityGroupPrivate *>(superGroup->d_func()))->addSubgroup(q);
     }
 }
 
@@ -181,20 +181,14 @@ void QActivityGroupPrivate::setSuperGroup(QActivityGroup *superGroup)
     \brief ActivityGroup is an abstract class for defining sets of nodes and edges in an activity.
  */
 
-QActivityGroup::QActivityGroup(QObject *parent) :
-    QNamedElement(*new QActivityGroupPrivate, parent)
+QActivityGroup::QActivityGroup(QUmlObject *parent, QUmlObject *wrapper) :
+    QNamedElement(*new QActivityGroupPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QActivityGroup *>("QActivityGroup *");
-    qRegisterMetaType<const QSet<QActivityGroup *> *>("const QSet<QActivityGroup *> *");
-    qRegisterMetaType<const QList<QActivityGroup *> *>("const QList<QActivityGroup *> *");
 }
 
-QActivityGroup::QActivityGroup(QActivityGroupPrivate &dd, QObject *parent) :
-    QNamedElement(dd, parent)
+QActivityGroup::QActivityGroup(QActivityGroupPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QNamedElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QActivityGroup *>("QActivityGroup *");
-    qRegisterMetaType<const QSet<QActivityGroup *> *>("const QSet<QActivityGroup *> *");
-    qRegisterMetaType<const QList<QActivityGroup *> *>("const QList<QActivityGroup *> *");
 }
 
 QActivityGroup::~QActivityGroup()
@@ -229,7 +223,7 @@ void QActivityGroup::setInActivity(QActivity *inActivity)
         d->inActivity = inActivity;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->setOwner(qtuml_object_cast<QElement *>(inActivity));
+        (qumlobject_cast<QElementPrivate *>(d))->setOwner(qumlobject_cast<QElement *>(inActivity));
 
         // Adjust opposite property
         if (inActivity)

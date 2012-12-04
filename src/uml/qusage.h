@@ -62,11 +62,11 @@ class Q_UML_EXPORT QUsage : public QDependency
     Q_DECLARE_PRIVATE(QUsage)
 
 public:
-    Q_INVOKABLE explicit QUsage(QObject *parent = 0);
+    Q_INVOKABLE explicit QUsage(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QUsage();
 
 protected:
-    explicit QUsage(QUsagePrivate &dd, QObject *parent = 0);
+    explicit QUsage(QUsagePrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

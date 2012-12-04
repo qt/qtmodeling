@@ -64,20 +64,14 @@ QTimeIntervalPrivate::~QTimeIntervalPrivate()
     \brief A time interval defines the range between two time expressions.
  */
 
-QTimeInterval::QTimeInterval(QObject *parent) :
-    QInterval(*new QTimeIntervalPrivate, parent)
+QTimeInterval::QTimeInterval(QUmlObject *parent, QUmlObject *wrapper) :
+    QInterval(*new QTimeIntervalPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QTimeInterval *>("QTimeInterval *");
-    qRegisterMetaType<const QSet<QTimeInterval *> *>("const QSet<QTimeInterval *> *");
-    qRegisterMetaType<const QList<QTimeInterval *> *>("const QList<QTimeInterval *> *");
 }
 
-QTimeInterval::QTimeInterval(QTimeIntervalPrivate &dd, QObject *parent) :
-    QInterval(dd, parent)
+QTimeInterval::QTimeInterval(QTimeIntervalPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QInterval(dd, parent, wrapper)
 {
-    qRegisterMetaType<QTimeInterval *>("QTimeInterval *");
-    qRegisterMetaType<const QSet<QTimeInterval *> *>("const QSet<QTimeInterval *> *");
-    qRegisterMetaType<const QList<QTimeInterval *> *>("const QList<QTimeInterval *> *");
 }
 
 QTimeInterval::~QTimeInterval()

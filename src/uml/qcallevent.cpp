@@ -63,20 +63,14 @@ QCallEventPrivate::~QCallEventPrivate()
     \brief A call event models the receipt by an object of a message invoking a call of an operation.
  */
 
-QCallEvent::QCallEvent(QObject *parent) :
-    QMessageEvent(*new QCallEventPrivate, parent)
+QCallEvent::QCallEvent(QUmlObject *parent, QUmlObject *wrapper) :
+    QMessageEvent(*new QCallEventPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QCallEvent *>("QCallEvent *");
-    qRegisterMetaType<const QSet<QCallEvent *> *>("const QSet<QCallEvent *> *");
-    qRegisterMetaType<const QList<QCallEvent *> *>("const QList<QCallEvent *> *");
 }
 
-QCallEvent::QCallEvent(QCallEventPrivate &dd, QObject *parent) :
-    QMessageEvent(dd, parent)
+QCallEvent::QCallEvent(QCallEventPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QMessageEvent(dd, parent, wrapper)
 {
-    qRegisterMetaType<QCallEvent *>("QCallEvent *");
-    qRegisterMetaType<const QSet<QCallEvent *> *>("const QSet<QCallEvent *> *");
-    qRegisterMetaType<const QList<QCallEvent *> *>("const QList<QCallEvent *> *");
 }
 
 QCallEvent::~QCallEvent()

@@ -69,7 +69,7 @@ class Q_UML_EXPORT QClearAssociationAction : public QAction
     Q_DECLARE_PRIVATE(QClearAssociationAction)
 
 public:
-    Q_INVOKABLE explicit QClearAssociationAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QClearAssociationAction(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QClearAssociationAction();
 
     // Association ends from QClearAssociationAction
@@ -79,7 +79,7 @@ public:
     Q_INVOKABLE void setAssociation(QAssociation *association);
 
 protected:
-    explicit QClearAssociationAction(QClearAssociationActionPrivate &dd, QObject *parent = 0);
+    explicit QClearAssociationAction(QClearAssociationActionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -41,10 +41,8 @@
 #ifndef QTUML_QOPERATION_P_H
 #define QTUML_QOPERATION_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
-#include "private/qobject_p.h"
+#include "private/qumlobject_p.h"
 #include "private/qtemplateableelement_p.h"
 #include "private/qbehavioralfeature_p.h"
 #include "private/qparameterableelement_p.h"
@@ -72,7 +70,7 @@ class QConstraint;
 class QDataType;
 class QClass;
 
-class Q_UML_EXPORT QOperationPrivate : public QObjectPrivate
+class Q_UML_EXPORT QOperationPrivate : public QUmlObjectPrivate
 {
     Q_DECLARE_PUBLIC(QOperation)
 

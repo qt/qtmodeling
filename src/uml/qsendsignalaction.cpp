@@ -65,20 +65,14 @@ QSendSignalActionPrivate::~QSendSignalActionPrivate()
     \brief A send signal action is an action that creates a signal instance from its inputs, and transmits it to the target object, where it may cause the firing of a state machine transition or the execution of an activity. The argument values are available to the execution of associated behaviors. The requestor continues execution immediately. Any reply message is ignored and is not transmitted to the requestor. If the input is already a signal instance, use a send object action.
  */
 
-QSendSignalAction::QSendSignalAction(QObject *parent) :
-    QInvocationAction(*new QSendSignalActionPrivate, parent)
+QSendSignalAction::QSendSignalAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QInvocationAction(*new QSendSignalActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QSendSignalAction *>("QSendSignalAction *");
-    qRegisterMetaType<const QSet<QSendSignalAction *> *>("const QSet<QSendSignalAction *> *");
-    qRegisterMetaType<const QList<QSendSignalAction *> *>("const QList<QSendSignalAction *> *");
 }
 
-QSendSignalAction::QSendSignalAction(QSendSignalActionPrivate &dd, QObject *parent) :
-    QInvocationAction(dd, parent)
+QSendSignalAction::QSendSignalAction(QSendSignalActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QInvocationAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QSendSignalAction *>("QSendSignalAction *");
-    qRegisterMetaType<const QSet<QSendSignalAction *> *>("const QSet<QSendSignalAction *> *");
-    qRegisterMetaType<const QList<QSendSignalAction *> *>("const QList<QSendSignalAction *> *");
 }
 
 QSendSignalAction::~QSendSignalAction()
@@ -107,13 +101,13 @@ void QSendSignalAction::setTarget(QInputPin *target)
     Q_D(QSendSignalAction);
     if (d->target != target) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->target));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->target));
 
         d->target = target;
 
         // Adjust subsetted property(ies)
         if (target) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(target));
+            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(target));
         }
     }
 }

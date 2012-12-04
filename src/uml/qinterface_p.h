@@ -41,8 +41,6 @@
 #ifndef QTUML_QINTERFACE_P_H
 #define QTUML_QINTERFACE_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qclassifier_p.h"
 

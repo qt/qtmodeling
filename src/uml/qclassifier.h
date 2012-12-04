@@ -44,7 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
+#include <QtUml/QUmlObject>
 #include <QtUml/QNamespace>
 #include <QtUml/QType>
 #include <QtUml/QRedefinableElement>
@@ -52,6 +52,8 @@
 
 // Qt includes
 #include <QtCore/QSet>
+
+#include <QtUml/QUmlPointer>
 
 QT_BEGIN_HEADER
 
@@ -73,7 +75,7 @@ class QFeature;
 
 class QClassifierPrivate;
 
-class Q_UML_EXPORT QClassifier : public QObject
+class Q_UML_EXPORT QClassifier : public QUmlObject
 {
     Q_OBJECT
 
@@ -98,7 +100,7 @@ class Q_UML_EXPORT QClassifier : public QObject
     Q_DECLARE_PRIVATE(QClassifier)
 
 public:
-    Q_INVOKABLE explicit QClassifier(QObject *parent = 0);
+    Q_INVOKABLE explicit QClassifier(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QClassifier();
 
     // Association ends from aggregated QElement
@@ -220,7 +222,7 @@ public:
     friend class QFeaturePrivate;
 
 protected:
-    explicit QClassifier(QClassifierPrivate &dd, QObject *parent = 0);
+    explicit QClassifier(QClassifierPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 
 private:
     QNamespace *_wrappedNamespace;

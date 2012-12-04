@@ -65,20 +65,14 @@ QWriteStructuralFeatureActionPrivate::~QWriteStructuralFeatureActionPrivate()
     \brief WriteStructuralFeatureAction is an abstract class for structural feature actions that change structural feature values.
  */
 
-QWriteStructuralFeatureAction::QWriteStructuralFeatureAction(QObject *parent) :
-    QStructuralFeatureAction(*new QWriteStructuralFeatureActionPrivate, parent)
+QWriteStructuralFeatureAction::QWriteStructuralFeatureAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QStructuralFeatureAction(*new QWriteStructuralFeatureActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QWriteStructuralFeatureAction *>("QWriteStructuralFeatureAction *");
-    qRegisterMetaType<const QSet<QWriteStructuralFeatureAction *> *>("const QSet<QWriteStructuralFeatureAction *> *");
-    qRegisterMetaType<const QList<QWriteStructuralFeatureAction *> *>("const QList<QWriteStructuralFeatureAction *> *");
 }
 
-QWriteStructuralFeatureAction::QWriteStructuralFeatureAction(QWriteStructuralFeatureActionPrivate &dd, QObject *parent) :
-    QStructuralFeatureAction(dd, parent)
+QWriteStructuralFeatureAction::QWriteStructuralFeatureAction(QWriteStructuralFeatureActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QStructuralFeatureAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QWriteStructuralFeatureAction *>("QWriteStructuralFeatureAction *");
-    qRegisterMetaType<const QSet<QWriteStructuralFeatureAction *> *>("const QSet<QWriteStructuralFeatureAction *> *");
-    qRegisterMetaType<const QList<QWriteStructuralFeatureAction *> *>("const QList<QWriteStructuralFeatureAction *> *");
 }
 
 QWriteStructuralFeatureAction::~QWriteStructuralFeatureAction()
@@ -107,13 +101,13 @@ void QWriteStructuralFeatureAction::setResult(QOutputPin *result)
     Q_D(QWriteStructuralFeatureAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeOutput(qtuml_object_cast<QOutputPin *>(d->result));
+        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addOutput(qtuml_object_cast<QOutputPin *>(result));
+            (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(result));
         }
     }
 }
@@ -136,13 +130,13 @@ void QWriteStructuralFeatureAction::setValue(QInputPin *value)
     Q_D(QWriteStructuralFeatureAction);
     if (d->value != value) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->value));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->value));
 
         d->value = value;
 
         // Adjust subsetted property(ies)
         if (value) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(value));
+            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(value));
         }
     }
 }

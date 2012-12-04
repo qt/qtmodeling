@@ -50,6 +50,8 @@
 #include <QtCore/QList>
 #include <QtCore/QSet>
 
+#include <QtUml/QUmlPointer>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -79,7 +81,7 @@ class Q_UML_EXPORT QInterface : public QClassifier
     Q_DECLARE_PRIVATE(QInterface)
 
 public:
-    Q_INVOKABLE explicit QInterface(QObject *parent = 0);
+    Q_INVOKABLE explicit QInterface(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QInterface();
 
     // Association ends from QInterface
@@ -106,7 +108,7 @@ public:
     Q_INVOKABLE void removeRedefinedClassifier(QUmlPointer<QInterface> redefinedInterface);
 
 protected:
-    explicit QInterface(QInterfacePrivate &dd, QObject *parent = 0);
+    explicit QInterface(QInterfacePrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

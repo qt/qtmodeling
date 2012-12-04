@@ -61,24 +61,18 @@ QPackageableElementPrivate::~QPackageableElementPrivate()
     \brief Packageable elements are able to serve as a template parameter.A packageable element indicates a named element that may be owned directly by a package.
  */
 
-QPackageableElement::QPackageableElement(QObject *parent) :
-    QObject(*new QPackageableElementPrivate, parent),
-    _wrappedParameterableElement(new QParameterableElement(this)),
-    _wrappedNamedElement(new QNamedElement(this))
+QPackageableElement::QPackageableElement(QUmlObject *parent, QUmlObject *wrapper) :
+    QUmlObject(*new QPackageableElementPrivate, parent, wrapper),
+    _wrappedParameterableElement(new QParameterableElement(this, this)),
+    _wrappedNamedElement(new QNamedElement(this, this))
 {
-    qRegisterMetaType<QPackageableElement *>("QPackageableElement *");
-    qRegisterMetaType<const QSet<QPackageableElement *> *>("const QSet<QPackageableElement *> *");
-    qRegisterMetaType<const QList<QPackageableElement *> *>("const QList<QPackageableElement *> *");
 }
 
-QPackageableElement::QPackageableElement(QPackageableElementPrivate &dd, QObject *parent) :
-    QObject(dd, parent),
-    _wrappedParameterableElement(new QParameterableElement(this)),
-    _wrappedNamedElement(new QNamedElement(this))
+QPackageableElement::QPackageableElement(QPackageableElementPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QUmlObject(dd, parent, wrapper),
+    _wrappedParameterableElement(new QParameterableElement(this, this)),
+    _wrappedNamedElement(new QNamedElement(this, this))
 {
-    qRegisterMetaType<QPackageableElement *>("QPackageableElement *");
-    qRegisterMetaType<const QSet<QPackageableElement *> *>("const QSet<QPackageableElement *> *");
-    qRegisterMetaType<const QList<QPackageableElement *> *>("const QList<QPackageableElement *> *");
 }
 
 QPackageableElement::~QPackageableElement()
@@ -94,7 +88,7 @@ QPackageableElement::~QPackageableElement()
  */
 const QSet<QElement *> *QPackageableElement::ownedElements() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->ownedElements();
+    return (qumlobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -102,7 +96,7 @@ const QSet<QElement *> *QPackageableElement::ownedElements() const
  */
 QElement *QPackageableElement::owner() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->owner();
+    return (qumlobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -110,17 +104,17 @@ QElement *QPackageableElement::owner() const
  */
 const QSet<QComment *> *QPackageableElement::ownedComments() const
 {
-    return (qtuml_object_cast<const QElement *>(this))->ownedComments();
+    return (qumlobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QPackageableElement::addOwnedComment(QComment *ownedComment)
 {
-    (qtuml_object_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qumlobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QPackageableElement::removeOwnedComment(QComment *ownedComment)
 {
-    (qtuml_object_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qumlobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -132,12 +126,12 @@ void QPackageableElement::removeOwnedComment(QComment *ownedComment)
  */
 QTemplateParameter *QPackageableElement::owningTemplateParameter() const
 {
-    return (qtuml_object_cast<const QParameterableElement *>(this))->owningTemplateParameter();
+    return (qumlobject_cast<const QParameterableElement *>(this))->owningTemplateParameter();
 }
 
 void QPackageableElement::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
 {
-    (qtuml_object_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
+    (qumlobject_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
 }
 
 /*!
@@ -145,12 +139,12 @@ void QPackageableElement::setOwningTemplateParameter(QTemplateParameter *owningT
  */
 QTemplateParameter *QPackageableElement::templateParameter() const
 {
-    return (qtuml_object_cast<const QParameterableElement *>(this))->templateParameter();
+    return (qumlobject_cast<const QParameterableElement *>(this))->templateParameter();
 }
 
 void QPackageableElement::setTemplateParameter(QTemplateParameter *templateParameter)
 {
-    (qtuml_object_cast<QParameterableElement *>(this))->setTemplateParameter(templateParameter);
+    (qumlobject_cast<QParameterableElement *>(this))->setTemplateParameter(templateParameter);
 }
 
 // ---------------------------------------------------------------
@@ -162,12 +156,12 @@ void QPackageableElement::setTemplateParameter(QTemplateParameter *templateParam
  */
 QString QPackageableElement::name() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->name();
+    return (qumlobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QPackageableElement::setName(QString name)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setName(name);
+    (qumlobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -175,7 +169,7 @@ void QPackageableElement::setName(QString name)
  */
 QString QPackageableElement::qualifiedName() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qumlobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -187,12 +181,12 @@ QString QPackageableElement::qualifiedName() const
  */
 QStringExpression *QPackageableElement::nameExpression() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->nameExpression();
+    return (qumlobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QPackageableElement::setNameExpression(QStringExpression *nameExpression)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qumlobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -200,7 +194,7 @@ void QPackageableElement::setNameExpression(QStringExpression *nameExpression)
  */
 QNamespace *QPackageableElement::namespace_() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->namespace_();
+    return (qumlobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -208,17 +202,17 @@ QNamespace *QPackageableElement::namespace_() const
  */
 const QSet<QDependency *> *QPackageableElement::clientDependencies() const
 {
-    return (qtuml_object_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qumlobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QPackageableElement::addClientDependency(QDependency *clientDependency)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qumlobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QPackageableElement::removeClientDependency(QDependency *clientDependency)
 {
-    (qtuml_object_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qumlobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------

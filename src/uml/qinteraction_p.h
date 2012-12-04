@@ -41,10 +41,8 @@
 #ifndef QTUML_QINTERACTION_P_H
 #define QTUML_QINTERACTION_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
-#include "private/qobject_p.h"
+#include "private/qumlobject_p.h"
 #include "private/qbehavior_p.h"
 #include "private/qinteractionfragment_p.h"
 
@@ -67,7 +65,7 @@ class QAction;
 class QGate;
 class QInteraction;
 
-class Q_UML_EXPORT QInteractionPrivate : public QObjectPrivate
+class Q_UML_EXPORT QInteractionPrivate : public QUmlObjectPrivate
 {
     Q_DECLARE_PUBLIC(QInteraction)
 

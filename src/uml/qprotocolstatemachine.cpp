@@ -64,20 +64,14 @@ QProtocolStateMachinePrivate::~QProtocolStateMachinePrivate()
     \brief A protocol state machine is always defined in the context of a classifier. It specifies which operations of the classifier can be called in which state and under which condition, thus specifying the allowed call sequences on the classifier's operations. A protocol state machine presents the possible and permitted transitions on the instances of its context classifier, together with the operations which carry the transitions. In this manner, an instance lifecycle can be created for a classifier, by specifying the order in which the operations can be activated and the states through which an instance progresses during its existence.
  */
 
-QProtocolStateMachine::QProtocolStateMachine(QObject *parent) :
-    QStateMachine(*new QProtocolStateMachinePrivate, parent)
+QProtocolStateMachine::QProtocolStateMachine(QUmlObject *parent, QUmlObject *wrapper) :
+    QStateMachine(*new QProtocolStateMachinePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QProtocolStateMachine *>("QProtocolStateMachine *");
-    qRegisterMetaType<const QSet<QProtocolStateMachine *> *>("const QSet<QProtocolStateMachine *> *");
-    qRegisterMetaType<const QList<QProtocolStateMachine *> *>("const QList<QProtocolStateMachine *> *");
 }
 
-QProtocolStateMachine::QProtocolStateMachine(QProtocolStateMachinePrivate &dd, QObject *parent) :
-    QStateMachine(dd, parent)
+QProtocolStateMachine::QProtocolStateMachine(QProtocolStateMachinePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QStateMachine(dd, parent, wrapper)
 {
-    qRegisterMetaType<QProtocolStateMachine *>("QProtocolStateMachine *");
-    qRegisterMetaType<const QSet<QProtocolStateMachine *> *>("const QSet<QProtocolStateMachine *> *");
-    qRegisterMetaType<const QList<QProtocolStateMachine *> *>("const QList<QProtocolStateMachine *> *");
 }
 
 QProtocolStateMachine::~QProtocolStateMachine()
@@ -108,7 +102,7 @@ void QProtocolStateMachine::addConformance(QProtocolConformance *conformance)
         d->conformance->insert(conformance);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(conformance));
+        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(conformance));
 
         // Adjust opposite property
         conformance->setSpecificMachine(this);
@@ -122,9 +116,10 @@ void QProtocolStateMachine::removeConformance(QProtocolConformance *conformance)
     Q_D(QProtocolStateMachine);
     if (d->conformance->contains(conformance)) {
         d->conformance->remove(conformance);
+        conformance->setParent(0);
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(conformance));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(conformance));
 
         // Adjust opposite property
         conformance->setSpecificMachine(0);

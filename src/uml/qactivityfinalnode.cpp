@@ -60,20 +60,14 @@ QActivityFinalNodePrivate::~QActivityFinalNodePrivate()
     \brief An activity final node is a final node that stops all flows in an activity.
  */
 
-QActivityFinalNode::QActivityFinalNode(QObject *parent) :
-    QFinalNode(*new QActivityFinalNodePrivate, parent)
+QActivityFinalNode::QActivityFinalNode(QUmlObject *parent, QUmlObject *wrapper) :
+    QFinalNode(*new QActivityFinalNodePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QActivityFinalNode *>("QActivityFinalNode *");
-    qRegisterMetaType<const QSet<QActivityFinalNode *> *>("const QSet<QActivityFinalNode *> *");
-    qRegisterMetaType<const QList<QActivityFinalNode *> *>("const QList<QActivityFinalNode *> *");
 }
 
-QActivityFinalNode::QActivityFinalNode(QActivityFinalNodePrivate &dd, QObject *parent) :
-    QFinalNode(dd, parent)
+QActivityFinalNode::QActivityFinalNode(QActivityFinalNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QFinalNode(dd, parent, wrapper)
 {
-    qRegisterMetaType<QActivityFinalNode *>("QActivityFinalNode *");
-    qRegisterMetaType<const QSet<QActivityFinalNode *> *>("const QSet<QActivityFinalNode *> *");
-    qRegisterMetaType<const QList<QActivityFinalNode *> *>("const QList<QActivityFinalNode *> *");
 }
 
 QActivityFinalNode::~QActivityFinalNode()

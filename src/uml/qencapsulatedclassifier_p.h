@@ -41,8 +41,6 @@
 #ifndef QTUML_QENCAPSULATEDCLASSIFIER_P_H
 #define QTUML_QENCAPSULATEDCLASSIFIER_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qstructuredclassifier_p.h"
 

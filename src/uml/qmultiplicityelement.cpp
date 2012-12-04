@@ -66,20 +66,14 @@ QMultiplicityElementPrivate::~QMultiplicityElementPrivate()
     \brief A multiplicity is a definition of an inclusive interval of non-negative integers beginning with a lower bound and ending with a (possibly infinite) upper bound. A multiplicity element embeds this information to specify the allowable cardinalities for an instantiation of this element.
  */
 
-QMultiplicityElement::QMultiplicityElement(QObject *parent) :
-    QElement(*new QMultiplicityElementPrivate, parent)
+QMultiplicityElement::QMultiplicityElement(QUmlObject *parent, QUmlObject *wrapper) :
+    QElement(*new QMultiplicityElementPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QMultiplicityElement *>("QMultiplicityElement *");
-    qRegisterMetaType<const QSet<QMultiplicityElement *> *>("const QSet<QMultiplicityElement *> *");
-    qRegisterMetaType<const QList<QMultiplicityElement *> *>("const QList<QMultiplicityElement *> *");
 }
 
-QMultiplicityElement::QMultiplicityElement(QMultiplicityElementPrivate &dd, QObject *parent) :
-    QElement(dd, parent)
+QMultiplicityElement::QMultiplicityElement(QMultiplicityElementPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QMultiplicityElement *>("QMultiplicityElement *");
-    qRegisterMetaType<const QSet<QMultiplicityElement *> *>("const QSet<QMultiplicityElement *> *");
-    qRegisterMetaType<const QList<QMultiplicityElement *> *>("const QList<QMultiplicityElement *> *");
 }
 
 QMultiplicityElement::~QMultiplicityElement()
@@ -202,13 +196,13 @@ void QMultiplicityElement::setUpperValue(QValueSpecification *upperValue)
     Q_D(QMultiplicityElement);
     if (d->upperValue != upperValue) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->upperValue));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->upperValue));
 
         d->upperValue = upperValue;
 
         // Adjust subsetted property(ies)
         if (upperValue) {
-            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(upperValue));
+            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(upperValue));
         }
     }
 }
@@ -231,13 +225,13 @@ void QMultiplicityElement::setLowerValue(QValueSpecification *lowerValue)
     Q_D(QMultiplicityElement);
     if (d->lowerValue != lowerValue) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QElementPrivate *>(d))->removeOwnedElement(qtuml_object_cast<QElement *>(d->lowerValue));
+        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->lowerValue));
 
         d->lowerValue = lowerValue;
 
         // Adjust subsetted property(ies)
         if (lowerValue) {
-            (qtuml_object_cast<QElementPrivate *>(d))->addOwnedElement(qtuml_object_cast<QElement *>(lowerValue));
+            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(lowerValue));
         }
     }
 }

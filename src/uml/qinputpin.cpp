@@ -60,20 +60,14 @@ QInputPinPrivate::~QInputPinPrivate()
     \brief An input pin is a pin that holds input values to be consumed by an action.
  */
 
-QInputPin::QInputPin(QObject *parent) :
-    QPin(*new QInputPinPrivate, parent)
+QInputPin::QInputPin(QUmlObject *parent, QUmlObject *wrapper) :
+    QPin(*new QInputPinPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
-    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
 }
 
-QInputPin::QInputPin(QInputPinPrivate &dd, QObject *parent) :
-    QPin(dd, parent)
+QInputPin::QInputPin(QInputPinPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QPin(dd, parent, wrapper)
 {
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
-    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
 }
 
 QInputPin::~QInputPin()

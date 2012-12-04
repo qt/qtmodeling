@@ -41,10 +41,8 @@
 #ifndef QTUML_QCOLLABORATION_P_H
 #define QTUML_QCOLLABORATION_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
-#include "private/qobject_p.h"
+#include "private/qumlobject_p.h"
 #include "private/qstructuredclassifier_p.h"
 #include "private/qbehavioredclassifier_p.h"
 
@@ -63,7 +61,7 @@ QT_MODULE(QtUml)
 class QConnectableElement;
 class QCollaboration;
 
-class Q_UML_EXPORT QCollaborationPrivate : public QObjectPrivate
+class Q_UML_EXPORT QCollaborationPrivate : public QUmlObjectPrivate
 {
     Q_DECLARE_PUBLIC(QCollaboration)
 

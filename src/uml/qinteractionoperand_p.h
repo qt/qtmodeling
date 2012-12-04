@@ -41,10 +41,8 @@
 #ifndef QTUML_QINTERACTIONOPERAND_P_H
 #define QTUML_QINTERACTIONOPERAND_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
-#include "private/qobject_p.h"
+#include "private/qumlobject_p.h"
 #include "private/qinteractionfragment_p.h"
 #include "private/qnamespace_p.h"
 
@@ -63,7 +61,7 @@ QT_MODULE(QtUml)
 class QInteractionConstraint;
 class QInteractionOperand;
 
-class Q_UML_EXPORT QInteractionOperandPrivate : public QObjectPrivate
+class Q_UML_EXPORT QInteractionOperandPrivate : public QUmlObjectPrivate
 {
     Q_DECLARE_PUBLIC(QInteractionOperand)
 

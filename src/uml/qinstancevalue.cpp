@@ -63,20 +63,14 @@ QInstanceValuePrivate::~QInstanceValuePrivate()
     \brief An instance value is a value specification that identifies an instance.
  */
 
-QInstanceValue::QInstanceValue(QObject *parent) :
-    QValueSpecification(*new QInstanceValuePrivate, parent)
+QInstanceValue::QInstanceValue(QUmlObject *parent, QUmlObject *wrapper) :
+    QValueSpecification(*new QInstanceValuePrivate, parent, wrapper)
 {
-    qRegisterMetaType<QInstanceValue *>("QInstanceValue *");
-    qRegisterMetaType<const QSet<QInstanceValue *> *>("const QSet<QInstanceValue *> *");
-    qRegisterMetaType<const QList<QInstanceValue *> *>("const QList<QInstanceValue *> *");
 }
 
-QInstanceValue::QInstanceValue(QInstanceValuePrivate &dd, QObject *parent) :
-    QValueSpecification(dd, parent)
+QInstanceValue::QInstanceValue(QInstanceValuePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QValueSpecification(dd, parent, wrapper)
 {
-    qRegisterMetaType<QInstanceValue *>("QInstanceValue *");
-    qRegisterMetaType<const QSet<QInstanceValue *> *>("const QSet<QInstanceValue *> *");
-    qRegisterMetaType<const QList<QInstanceValue *> *>("const QList<QInstanceValue *> *");
 }
 
 QInstanceValue::~QInstanceValue()

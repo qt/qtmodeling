@@ -67,20 +67,14 @@ QExpansionRegionPrivate::~QExpansionRegionPrivate()
     \brief An expansion region is a structured activity region that executes multiple times corresponding to elements of an input collection.
  */
 
-QExpansionRegion::QExpansionRegion(QObject *parent) :
-    QStructuredActivityNode(*new QExpansionRegionPrivate, parent)
+QExpansionRegion::QExpansionRegion(QUmlObject *parent, QUmlObject *wrapper) :
+    QStructuredActivityNode(*new QExpansionRegionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QExpansionRegion *>("QExpansionRegion *");
-    qRegisterMetaType<const QSet<QExpansionRegion *> *>("const QSet<QExpansionRegion *> *");
-    qRegisterMetaType<const QList<QExpansionRegion *> *>("const QList<QExpansionRegion *> *");
 }
 
-QExpansionRegion::QExpansionRegion(QExpansionRegionPrivate &dd, QObject *parent) :
-    QStructuredActivityNode(dd, parent)
+QExpansionRegion::QExpansionRegion(QExpansionRegionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QStructuredActivityNode(dd, parent, wrapper)
 {
-    qRegisterMetaType<QExpansionRegion *>("QExpansionRegion *");
-    qRegisterMetaType<const QSet<QExpansionRegion *> *>("const QSet<QExpansionRegion *> *");
-    qRegisterMetaType<const QList<QExpansionRegion *> *>("const QList<QExpansionRegion *> *");
 }
 
 QExpansionRegion::~QExpansionRegion()

@@ -67,14 +67,14 @@ class Q_UML_EXPORT QRelationship : public QElement
     Q_DECLARE_PRIVATE(QRelationship)
 
 public:
-    Q_INVOKABLE explicit QRelationship(QObject *parent = 0);
+    Q_INVOKABLE explicit QRelationship(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QRelationship();
 
     // Association ends from QRelationship
     Q_INVOKABLE const QSet<QElement *> *relatedElements() const;
 
 protected:
-    explicit QRelationship(QRelationshipPrivate &dd, QObject *parent = 0);
+    explicit QRelationship(QRelationshipPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -68,7 +68,7 @@ class Q_UML_EXPORT QRemoveStructuralFeatureValueAction : public QWriteStructural
     Q_DECLARE_PRIVATE(QRemoveStructuralFeatureValueAction)
 
 public:
-    Q_INVOKABLE explicit QRemoveStructuralFeatureValueAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QRemoveStructuralFeatureValueAction(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QRemoveStructuralFeatureValueAction();
 
     // Attributes from QRemoveStructuralFeatureValueAction
@@ -80,7 +80,7 @@ public:
     Q_INVOKABLE void setRemoveAt(QInputPin *removeAt);
 
 protected:
-    explicit QRemoveStructuralFeatureValueAction(QRemoveStructuralFeatureValueActionPrivate &dd, QObject *parent = 0);
+    explicit QRemoveStructuralFeatureValueAction(QRemoveStructuralFeatureValueActionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

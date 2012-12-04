@@ -44,7 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
+#include <QtUml/QUmlObject>
 #include <QtUml/QEncapsulatedClassifier>
 #include <QtUml/QBehavioredClassifier>
 
@@ -68,7 +68,7 @@ class QProperty;
 
 class QClassPrivate;
 
-class Q_UML_EXPORT QClass : public QObject
+class Q_UML_EXPORT QClass : public QUmlObject
 {
     Q_OBJECT
 
@@ -85,7 +85,7 @@ class Q_UML_EXPORT QClass : public QObject
     Q_DECLARE_PRIVATE(QClass)
 
 public:
-    Q_INVOKABLE explicit QClass(QObject *parent = 0);
+    Q_INVOKABLE explicit QClass(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QClass();
 
     // Association ends from aggregated QElement
@@ -234,7 +234,7 @@ public:
     friend class QExtensionPrivate;
 
 protected:
-    explicit QClass(QClassPrivate &dd, QObject *parent = 0);
+    explicit QClass(QClassPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 
 private:
     QEncapsulatedClassifier *_wrappedEncapsulatedClassifier;

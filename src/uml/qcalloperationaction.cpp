@@ -65,20 +65,14 @@ QCallOperationActionPrivate::~QCallOperationActionPrivate()
     \brief A call operation action is an action that transmits an operation call request to the target object, where it may cause the invocation of associated behavior. The argument values of the action are available to the execution of the invoked behavior. If the action is marked synchronous, the execution of the call operation action waits until the execution of the invoked behavior completes and a reply transmission is returned to the caller; otherwise execution of the action is complete when the invocation of the operation is established and the execution of the invoked operation proceeds concurrently with the execution of the calling behavior. Any values returned as part of the reply transmission are put on the result output pins of the call operation action. Upon receipt of the reply transmission, execution of the call operation action is complete.
  */
 
-QCallOperationAction::QCallOperationAction(QObject *parent) :
-    QCallAction(*new QCallOperationActionPrivate, parent)
+QCallOperationAction::QCallOperationAction(QUmlObject *parent, QUmlObject *wrapper) :
+    QCallAction(*new QCallOperationActionPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QCallOperationAction *>("QCallOperationAction *");
-    qRegisterMetaType<const QSet<QCallOperationAction *> *>("const QSet<QCallOperationAction *> *");
-    qRegisterMetaType<const QList<QCallOperationAction *> *>("const QList<QCallOperationAction *> *");
 }
 
-QCallOperationAction::QCallOperationAction(QCallOperationActionPrivate &dd, QObject *parent) :
-    QCallAction(dd, parent)
+QCallOperationAction::QCallOperationAction(QCallOperationActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QCallAction(dd, parent, wrapper)
 {
-    qRegisterMetaType<QCallOperationAction *>("QCallOperationAction *");
-    qRegisterMetaType<const QSet<QCallOperationAction *> *>("const QSet<QCallOperationAction *> *");
-    qRegisterMetaType<const QList<QCallOperationAction *> *>("const QList<QCallOperationAction *> *");
 }
 
 QCallOperationAction::~QCallOperationAction()
@@ -128,13 +122,13 @@ void QCallOperationAction::setTarget(QInputPin *target)
     Q_D(QCallOperationAction);
     if (d->target != target) {
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QActionPrivate *>(d))->removeInput(qtuml_object_cast<QInputPin *>(d->target));
+        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->target));
 
         d->target = target;
 
         // Adjust subsetted property(ies)
         if (target) {
-            (qtuml_object_cast<QActionPrivate *>(d))->addInput(qtuml_object_cast<QInputPin *>(target));
+            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(target));
         }
     }
 }

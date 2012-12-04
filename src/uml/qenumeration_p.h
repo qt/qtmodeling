@@ -41,8 +41,6 @@
 #ifndef QTUML_QENUMERATION_P_H
 #define QTUML_QENUMERATION_P_H
 
-#include "private/qtumlglobal_p.h"
-
 // Base class includes
 #include "private/qdatatype_p.h"
 

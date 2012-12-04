@@ -127,20 +127,14 @@ void QVertexPrivate::removeOutgoing(QTransition *outgoing)
     \brief A vertex is an abstraction of a node in a state machine graph. In general, it can be the source or destination of any number of transitions.
  */
 
-QVertex::QVertex(QObject *parent) :
-    QNamedElement(*new QVertexPrivate, parent)
+QVertex::QVertex(QUmlObject *parent, QUmlObject *wrapper) :
+    QNamedElement(*new QVertexPrivate, parent, wrapper)
 {
-    qRegisterMetaType<QVertex *>("QVertex *");
-    qRegisterMetaType<const QSet<QVertex *> *>("const QSet<QVertex *> *");
-    qRegisterMetaType<const QList<QVertex *> *>("const QList<QVertex *> *");
 }
 
-QVertex::QVertex(QVertexPrivate &dd, QObject *parent) :
-    QNamedElement(dd, parent)
+QVertex::QVertex(QVertexPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+    QNamedElement(dd, parent, wrapper)
 {
-    qRegisterMetaType<QVertex *>("QVertex *");
-    qRegisterMetaType<const QSet<QVertex *> *>("const QSet<QVertex *> *");
-    qRegisterMetaType<const QList<QVertex *> *>("const QList<QVertex *> *");
 }
 
 QVertex::~QVertex()
@@ -187,7 +181,7 @@ void QVertex::setContainer(QRegion *container)
         d->container = container;
 
         // Adjust subsetted property(ies)
-        (qtuml_object_cast<QNamedElementPrivate *>(d))->setNamespace_(qtuml_object_cast<QNamespace *>(container));
+        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(container));
 
         // Adjust opposite property
         if (container)

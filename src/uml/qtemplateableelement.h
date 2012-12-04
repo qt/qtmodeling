@@ -73,7 +73,7 @@ class Q_UML_EXPORT QTemplateableElement : public QElement
     Q_DECLARE_PRIVATE(QTemplateableElement)
 
 public:
-    Q_INVOKABLE explicit QTemplateableElement(QObject *parent = 0);
+    Q_INVOKABLE explicit QTemplateableElement(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QTemplateableElement();
 
     // Association ends from QTemplateableElement
@@ -88,7 +88,7 @@ public:
     Q_INVOKABLE const QSet<QParameterableElement *> *parameterableElements() const;
 
 protected:
-    explicit QTemplateableElement(QTemplateableElementPrivate &dd, QObject *parent = 0);
+    explicit QTemplateableElement(QTemplateableElementPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

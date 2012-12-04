@@ -49,6 +49,8 @@
 // Qt includes
 #include <QtCore/QSet>
 
+#include <QtUml/QUmlPointer>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTUML
@@ -73,7 +75,7 @@ class Q_UML_EXPORT QBehavioredClassifier : public QClassifier
     Q_DECLARE_PRIVATE(QBehavioredClassifier)
 
 public:
-    Q_INVOKABLE explicit QBehavioredClassifier(QObject *parent = 0);
+    Q_INVOKABLE explicit QBehavioredClassifier(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QBehavioredClassifier();
 
     // Association ends from QBehavioredClassifier
@@ -91,7 +93,7 @@ public:
     Q_INVOKABLE void removeClientDependency(QUmlPointer<QInterfaceRealization> interfaceRealization);
 
 protected:
-    explicit QBehavioredClassifier(QBehavioredClassifierPrivate &dd, QObject *parent = 0);
+    explicit QBehavioredClassifier(QBehavioredClassifierPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -74,7 +74,7 @@ class Q_UML_EXPORT QReclassifyObjectAction : public QAction
     Q_DECLARE_PRIVATE(QReclassifyObjectAction)
 
 public:
-    Q_INVOKABLE explicit QReclassifyObjectAction(QObject *parent = 0);
+    Q_INVOKABLE explicit QReclassifyObjectAction(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QReclassifyObjectAction();
 
     // Attributes from QReclassifyObjectAction
@@ -92,7 +92,7 @@ public:
     Q_INVOKABLE void removeNewClassifier(QClassifier *newClassifier);
 
 protected:
-    explicit QReclassifyObjectAction(QReclassifyObjectActionPrivate &dd, QObject *parent = 0);
+    explicit QReclassifyObjectAction(QReclassifyObjectActionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

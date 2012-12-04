@@ -70,7 +70,7 @@ class Q_UML_EXPORT QEnumeration : public QDataType
     Q_DECLARE_PRIVATE(QEnumeration)
 
 public:
-    Q_INVOKABLE explicit QEnumeration(QObject *parent = 0);
+    Q_INVOKABLE explicit QEnumeration(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
     virtual ~QEnumeration();
 
     // Association ends from QEnumeration
@@ -79,7 +79,7 @@ public:
     Q_INVOKABLE void removeOwnedLiteral(QEnumerationLiteral *ownedLiteral);
 
 protected:
-    explicit QEnumeration(QEnumerationPrivate &dd, QObject *parent = 0);
+    explicit QEnumeration(QEnumerationPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
