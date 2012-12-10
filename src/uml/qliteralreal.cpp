@@ -60,12 +60,12 @@ QLiteralRealPrivate::~QLiteralRealPrivate()
     \brief A literal real is a specification of a real value.
  */
 
-QLiteralReal::QLiteralReal(QUmlObject *parent, QUmlObject *wrapper) :
+QLiteralReal::QLiteralReal(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QLiteralSpecification(*new QLiteralRealPrivate, parent, wrapper)
 {
 }
 
-QLiteralReal::QLiteralReal(QLiteralRealPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QLiteralReal::QLiteralReal(QLiteralRealPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QLiteralSpecification(dd, parent, wrapper)
 {
 }

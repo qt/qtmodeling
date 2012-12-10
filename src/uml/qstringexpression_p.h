@@ -42,7 +42,7 @@
 #define QTUML_QSTRINGEXPRESSION_P_H
 
 // Base class includes
-#include "private/qumlobject_p.h"
+#include "private/qmofobject_p.h"
 #include "private/qexpression_p.h"
 #include "private/qtemplateableelement_p.h"
 
@@ -61,7 +61,7 @@ QT_MODULE(QtUml)
 // Forward decls for function parameters
 class QStringExpression;
 
-class Q_UML_EXPORT QStringExpressionPrivate : public QUmlObjectPrivate
+class Q_UML_EXPORT QStringExpressionPrivate : public QtMof::QMofObjectPrivate
 {
     Q_DECLARE_PUBLIC(QStringExpression)
 

@@ -76,7 +76,7 @@ class Q_UML_EXPORT QActivityGroup : public QNamedElement
     Q_DECLARE_PRIVATE(QActivityGroup)
 
 public:
-    Q_INVOKABLE explicit QActivityGroup(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QActivityGroup(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QActivityGroup();
 
     // Association ends from QActivityGroup
@@ -92,7 +92,7 @@ public:
     friend class QActivityNodePrivate;
 
 protected:
-    explicit QActivityGroup(QActivityGroupPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QActivityGroup(QActivityGroupPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

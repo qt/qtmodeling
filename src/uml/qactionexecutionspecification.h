@@ -67,7 +67,7 @@ class Q_UML_EXPORT QActionExecutionSpecification : public QExecutionSpecificatio
     Q_DECLARE_PRIVATE(QActionExecutionSpecification)
 
 public:
-    Q_INVOKABLE explicit QActionExecutionSpecification(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QActionExecutionSpecification(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QActionExecutionSpecification();
 
     // Association ends from QActionExecutionSpecification
@@ -75,7 +75,7 @@ public:
     Q_INVOKABLE void setAction(QAction *action);
 
 protected:
-    explicit QActionExecutionSpecification(QActionExecutionSpecificationPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QActionExecutionSpecification(QActionExecutionSpecificationPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

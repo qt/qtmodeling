@@ -65,12 +65,12 @@ QClearAssociationActionPrivate::~QClearAssociationActionPrivate()
     \brief A clear association action is an action that destroys all links of an association in which a particular object participates.
  */
 
-QClearAssociationAction::QClearAssociationAction(QUmlObject *parent, QUmlObject *wrapper) :
+QClearAssociationAction::QClearAssociationAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QAction(*new QClearAssociationActionPrivate, parent, wrapper)
 {
 }
 
-QClearAssociationAction::QClearAssociationAction(QClearAssociationActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QClearAssociationAction::QClearAssociationAction(QClearAssociationActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
 }
@@ -101,13 +101,13 @@ void QClearAssociationAction::setObject(QInputPin *object)
     Q_D(QClearAssociationAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->object));
+        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(d->object));
 
         d->object = object;
 
         // Adjust subsetted property(ies)
         if (object) {
-            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(object));
+            (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(object));
         }
     }
 }

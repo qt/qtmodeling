@@ -64,15 +64,15 @@ QIncludePrivate::~QIncludePrivate()
     \brief An include relationship defines that a use case contains the behavior defined in another use case.
  */
 
-QInclude::QInclude(QUmlObject *parent, QUmlObject *wrapper) :
-    QUmlObject(*new QIncludePrivate, parent, wrapper),
+QInclude::QInclude(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+    QtMof::QMofObject(*new QIncludePrivate, parent, wrapper),
     _wrappedDirectedRelationship(new QDirectedRelationship(this, this)),
     _wrappedNamedElement(new QNamedElement(this, this))
 {
 }
 
-QInclude::QInclude(QIncludePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
-    QUmlObject(dd, parent, wrapper),
+QInclude::QInclude(QIncludePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+    QtMof::QMofObject(dd, parent, wrapper),
     _wrappedDirectedRelationship(new QDirectedRelationship(this, this)),
     _wrappedNamedElement(new QNamedElement(this, this))
 {
@@ -91,7 +91,7 @@ QInclude::~QInclude()
  */
 const QSet<QElement *> *QInclude::ownedElements() const
 {
-    return (qumlobject_cast<const QElement *>(this))->ownedElements();
+    return (qmofobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -99,7 +99,7 @@ const QSet<QElement *> *QInclude::ownedElements() const
  */
 QElement *QInclude::owner() const
 {
-    return (qumlobject_cast<const QElement *>(this))->owner();
+    return (qmofobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -107,17 +107,17 @@ QElement *QInclude::owner() const
  */
 const QSet<QComment *> *QInclude::ownedComments() const
 {
-    return (qumlobject_cast<const QElement *>(this))->ownedComments();
+    return (qmofobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QInclude::addOwnedComment(QComment *ownedComment)
 {
-    (qumlobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qmofobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QInclude::removeOwnedComment(QComment *ownedComment)
 {
-    (qumlobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qmofobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -129,7 +129,7 @@ void QInclude::removeOwnedComment(QComment *ownedComment)
  */
 const QSet<QElement *> *QInclude::relatedElements() const
 {
-    return (qumlobject_cast<const QRelationship *>(this))->relatedElements();
+    return (qmofobject_cast<const QRelationship *>(this))->relatedElements();
 }
 
 // ---------------------------------------------------------------
@@ -141,7 +141,7 @@ const QSet<QElement *> *QInclude::relatedElements() const
  */
 const QSet<QElement *> *QInclude::sources() const
 {
-    return (qumlobject_cast<const QDirectedRelationship *>(this))->sources();
+    return (qmofobject_cast<const QDirectedRelationship *>(this))->sources();
 }
 
 /*!
@@ -149,7 +149,7 @@ const QSet<QElement *> *QInclude::sources() const
  */
 const QSet<QElement *> *QInclude::targets() const
 {
-    return (qumlobject_cast<const QDirectedRelationship *>(this))->targets();
+    return (qmofobject_cast<const QDirectedRelationship *>(this))->targets();
 }
 
 // ---------------------------------------------------------------
@@ -161,12 +161,12 @@ const QSet<QElement *> *QInclude::targets() const
  */
 QString QInclude::name() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->name();
+    return (qmofobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QInclude::setName(QString name)
 {
-    (qumlobject_cast<QNamedElement *>(this))->setName(name);
+    (qmofobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -174,12 +174,12 @@ void QInclude::setName(QString name)
  */
 QtUml::VisibilityKind QInclude::visibility() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->visibility();
+    return (qmofobject_cast<const QNamedElement *>(this))->visibility();
 }
 
 void QInclude::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qumlobject_cast<QNamedElement *>(this))->setVisibility(visibility);
+    (qmofobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
 
 /*!
@@ -187,7 +187,7 @@ void QInclude::setVisibility(QtUml::VisibilityKind visibility)
  */
 QString QInclude::qualifiedName() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qmofobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -199,12 +199,12 @@ QString QInclude::qualifiedName() const
  */
 QStringExpression *QInclude::nameExpression() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->nameExpression();
+    return (qmofobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QInclude::setNameExpression(QStringExpression *nameExpression)
 {
-    (qumlobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qmofobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -212,7 +212,7 @@ void QInclude::setNameExpression(QStringExpression *nameExpression)
  */
 QNamespace *QInclude::namespace_() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->namespace_();
+    return (qmofobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -220,17 +220,17 @@ QNamespace *QInclude::namespace_() const
  */
 const QSet<QDependency *> *QInclude::clientDependencies() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qmofobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QInclude::addClientDependency(QDependency *clientDependency)
 {
-    (qumlobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qmofobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QInclude::removeClientDependency(QDependency *clientDependency)
 {
-    (qumlobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qmofobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -259,15 +259,15 @@ void QInclude::setIncludingCase(QUseCase *includingCase)
             d->includingCase->removeInclude(this);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qumlobject_cast<QElement *>(d->includingCase));
+        (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qmofobject_cast<QElement *>(d->includingCase));
 
         d->includingCase = includingCase;
 
         // Adjust subsetted property(ies)
         if (includingCase) {
-            (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->addSource(qumlobject_cast<QElement *>(includingCase));
+            (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->addSource(qmofobject_cast<QElement *>(includingCase));
         }
-        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(includingCase));
+        (qmofobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qmofobject_cast<QNamespace *>(includingCase));
 
         // Adjust opposite property
         if (includingCase)
@@ -293,13 +293,13 @@ void QInclude::setAddition(QUseCase *addition)
     Q_D(QInclude);
     if (d->addition != addition) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qumlobject_cast<QElement *>(d->addition));
+        (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qmofobject_cast<QElement *>(d->addition));
 
         d->addition = addition;
 
         // Adjust subsetted property(ies)
         if (addition) {
-            (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qumlobject_cast<QElement *>(addition));
+            (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qmofobject_cast<QElement *>(addition));
         }
     }
 }

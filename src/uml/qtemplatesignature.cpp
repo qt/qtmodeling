@@ -68,12 +68,12 @@ QTemplateSignaturePrivate::~QTemplateSignaturePrivate()
     \brief A template signature bundles the set of formal template parameters for a templated element.
  */
 
-QTemplateSignature::QTemplateSignature(QUmlObject *parent, QUmlObject *wrapper) :
+QTemplateSignature::QTemplateSignature(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QElement(*new QTemplateSignaturePrivate, parent, wrapper)
 {
 }
 
-QTemplateSignature::QTemplateSignature(QTemplateSignaturePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QTemplateSignature::QTemplateSignature(QTemplateSignaturePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
 }
@@ -139,7 +139,7 @@ void QTemplateSignature::setTemplate_(QTemplateableElement *template_)
         d->template_ = template_;
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->setOwner(qumlobject_cast<QElement *>(template_));
+        (qmofobject_cast<QElementPrivate *>(d))->setOwner(qmofobject_cast<QElement *>(template_));
 
         // Adjust opposite property
         template_->setOwnedTemplateSignature(this);
@@ -166,8 +166,8 @@ void QTemplateSignature::addOwnedParameter(QTemplateParameter *ownedParameter)
         d->ownedParameters->append(ownedParameter);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QTemplateSignature *>(this))->addParameter(qumlobject_cast<QTemplateParameter *>(ownedParameter));
-        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(ownedParameter));
+        (qmofobject_cast<QTemplateSignature *>(this))->addParameter(qmofobject_cast<QTemplateParameter *>(ownedParameter));
+        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(ownedParameter));
 
         // Adjust opposite property
         ownedParameter->setSignature(this);
@@ -183,8 +183,8 @@ void QTemplateSignature::removeOwnedParameter(QTemplateParameter *ownedParameter
         d->ownedParameters->removeAll(ownedParameter);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QTemplateSignature *>(this))->removeParameter(qumlobject_cast<QTemplateParameter *>(ownedParameter));
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(ownedParameter));
+        (qmofobject_cast<QTemplateSignature *>(this))->removeParameter(qmofobject_cast<QTemplateParameter *>(ownedParameter));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(ownedParameter));
 
         // Adjust opposite property
         ownedParameter->setSignature(0);

@@ -69,7 +69,7 @@ class Q_UML_EXPORT QOpaqueBehavior : public QBehavior
     Q_DECLARE_PRIVATE(QOpaqueBehavior)
 
 public:
-    Q_INVOKABLE explicit QOpaqueBehavior(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QOpaqueBehavior(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QOpaqueBehavior();
 
     // Attributes from QOpaqueBehavior
@@ -81,7 +81,7 @@ public:
     Q_INVOKABLE void removeBody(QString body);
 
 protected:
-    explicit QOpaqueBehavior(QOpaqueBehaviorPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QOpaqueBehavior(QOpaqueBehaviorPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

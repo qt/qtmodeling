@@ -62,11 +62,11 @@ class Q_UML_EXPORT QAnyReceiveEvent : public QMessageEvent
     Q_DECLARE_PRIVATE(QAnyReceiveEvent)
 
 public:
-    Q_INVOKABLE explicit QAnyReceiveEvent(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QAnyReceiveEvent(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QAnyReceiveEvent();
 
 protected:
-    explicit QAnyReceiveEvent(QAnyReceiveEventPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QAnyReceiveEvent(QAnyReceiveEventPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

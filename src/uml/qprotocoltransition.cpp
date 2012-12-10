@@ -65,12 +65,12 @@ QProtocolTransitionPrivate::~QProtocolTransitionPrivate()
     \brief A protocol transition specifies a legal transition for an operation. Transitions of protocol state machines have the following information: a pre condition (guard), on trigger, and a post condition. Every protocol transition is associated to zero or one operation (referred BehavioralFeature) that belongs to the context classifier of the protocol state machine.
  */
 
-QProtocolTransition::QProtocolTransition(QUmlObject *parent, QUmlObject *wrapper) :
+QProtocolTransition::QProtocolTransition(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QTransition(*new QProtocolTransitionPrivate, parent, wrapper)
 {
 }
 
-QProtocolTransition::QProtocolTransition(QProtocolTransitionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QProtocolTransition::QProtocolTransition(QProtocolTransitionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QTransition(dd, parent, wrapper)
 {
 }
@@ -101,13 +101,13 @@ void QProtocolTransition::setPostCondition(QConstraint *postCondition)
     Q_D(QProtocolTransition);
     if (d->postCondition != postCondition) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespace *>(this))->removeOwnedRule(qumlobject_cast<QConstraint *>(d->postCondition));
+        (qmofobject_cast<QNamespace *>(this))->removeOwnedRule(qmofobject_cast<QConstraint *>(d->postCondition));
 
         d->postCondition = postCondition;
 
         // Adjust subsetted property(ies)
         if (postCondition) {
-            (qumlobject_cast<QNamespace *>(this))->addOwnedRule(qumlobject_cast<QConstraint *>(postCondition));
+            (qmofobject_cast<QNamespace *>(this))->addOwnedRule(qmofobject_cast<QConstraint *>(postCondition));
         }
     }
 }
@@ -144,7 +144,7 @@ void QProtocolTransition::setPreCondition(QConstraint *preCondition)
         d->preCondition = preCondition;
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QTransition *>(this))->setGuard(qumlobject_cast<QConstraint *>(preCondition));
+        (qmofobject_cast<QTransition *>(this))->setGuard(qmofobject_cast<QConstraint *>(preCondition));
     }
 }
 

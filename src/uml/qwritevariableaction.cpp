@@ -63,12 +63,12 @@ QWriteVariableActionPrivate::~QWriteVariableActionPrivate()
     \brief WriteVariableAction is an abstract class for variable actions that change variable values.
  */
 
-QWriteVariableAction::QWriteVariableAction(QUmlObject *parent, QUmlObject *wrapper) :
+QWriteVariableAction::QWriteVariableAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QVariableAction(*new QWriteVariableActionPrivate, parent, wrapper)
 {
 }
 
-QWriteVariableAction::QWriteVariableAction(QWriteVariableActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QWriteVariableAction::QWriteVariableAction(QWriteVariableActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QVariableAction(dd, parent, wrapper)
 {
 }
@@ -99,13 +99,13 @@ void QWriteVariableAction::setValue(QInputPin *value)
     Q_D(QWriteVariableAction);
     if (d->value != value) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->value));
+        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(d->value));
 
         d->value = value;
 
         // Adjust subsetted property(ies)
         if (value) {
-            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(value));
+            (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(value));
         }
     }
 }

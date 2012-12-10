@@ -71,16 +71,16 @@ void QNamedElementPrivate::setNamespace_(QNamespace *namespace_)
         Q_Q(QNamedElement);
         // Adjust opposite property
         if (this->namespace_)
-            (qumlobject_cast<QNamespacePrivate *>(this->namespace_->d_func()))->removeOwnedMember(q);
+            (qmofobject_cast<QNamespacePrivate *>(this->namespace_->d_func()))->removeOwnedMember(q);
 
         this->namespace_ = namespace_;
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(this))->setOwner(qumlobject_cast<QElement *>(namespace_));
+        (qmofobject_cast<QElementPrivate *>(this))->setOwner(qmofobject_cast<QElement *>(namespace_));
 
         // Adjust opposite property
         if (namespace_)
-            (qumlobject_cast<QNamespacePrivate *>(namespace_->d_func()))->addOwnedMember(q);
+            (qmofobject_cast<QNamespacePrivate *>(namespace_->d_func()))->addOwnedMember(q);
     }
 }
 
@@ -92,12 +92,12 @@ void QNamedElementPrivate::setNamespace_(QNamespace *namespace_)
     \brief A named element supports using a string expression to specify its name. This allows names of model elements to involve template parameters. The actual name is evaluated from the string expression only when it is sensible to do so (e.g., when a template is bound).A named element is an element in a model that may have a name.
  */
 
-QNamedElement::QNamedElement(QUmlObject *parent, QUmlObject *wrapper) :
+QNamedElement::QNamedElement(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QElement(*new QNamedElementPrivate, parent, wrapper)
 {
 }
 
-QNamedElement::QNamedElement(QNamedElementPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QNamedElement::QNamedElement(QNamedElementPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
 }
@@ -128,10 +128,10 @@ void QNamedElement::setName(QString name)
     Q_D(QNamedElement);
     if (d->name != name) {
         d->name = name;
-        QUmlObject *umlObject = this;
-        while (umlObject->wrapper())
-            umlObject = umlObject->wrapper();
-        umlObject->setObjectName(name);
+        QtMof::QMofObject *mofObject = this;
+        while (mofObject->wrapper())
+            mofObject = mofObject->wrapper();
+        mofObject->setObjectName(name);
     }
 }
 
@@ -198,13 +198,13 @@ void QNamedElement::setNameExpression(QStringExpression *nameExpression)
     Q_D(QNamedElement);
     if (d->nameExpression != nameExpression) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->nameExpression));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->nameExpression));
 
         d->nameExpression = nameExpression;
 
         // Adjust subsetted property(ies)
         if (nameExpression) {
-            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(nameExpression));
+            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(nameExpression));
         }
     }
 }

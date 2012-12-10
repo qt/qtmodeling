@@ -67,7 +67,7 @@ class Q_UML_EXPORT QOperationTemplateParameter : public QTemplateParameter
     Q_DECLARE_PRIVATE(QOperationTemplateParameter)
 
 public:
-    Q_INVOKABLE explicit QOperationTemplateParameter(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QOperationTemplateParameter(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QOperationTemplateParameter();
 
     // Association ends from QOperationTemplateParameter
@@ -75,7 +75,7 @@ public:
     Q_INVOKABLE void setParameteredElement(QOperation *parameteredElement);
 
 protected:
-    explicit QOperationTemplateParameter(QOperationTemplateParameterPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QOperationTemplateParameter(QOperationTemplateParameterPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

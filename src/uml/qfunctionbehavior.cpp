@@ -60,12 +60,12 @@ QFunctionBehaviorPrivate::~QFunctionBehaviorPrivate()
     \brief A function behavior is an opaque behavior that does not access or modify any objects or other external data.
  */
 
-QFunctionBehavior::QFunctionBehavior(QUmlObject *parent, QUmlObject *wrapper) :
+QFunctionBehavior::QFunctionBehavior(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QOpaqueBehavior(*new QFunctionBehaviorPrivate, parent, wrapper)
 {
 }
 
-QFunctionBehavior::QFunctionBehavior(QFunctionBehaviorPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QFunctionBehavior::QFunctionBehavior(QFunctionBehaviorPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QOpaqueBehavior(dd, parent, wrapper)
 {
 }

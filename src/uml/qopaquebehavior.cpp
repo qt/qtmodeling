@@ -64,12 +64,12 @@ QOpaqueBehaviorPrivate::~QOpaqueBehaviorPrivate()
     \brief An behavior with implementation-specific semantics.
  */
 
-QOpaqueBehavior::QOpaqueBehavior(QUmlObject *parent, QUmlObject *wrapper) :
+QOpaqueBehavior::QOpaqueBehavior(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QBehavior(*new QOpaqueBehaviorPrivate, parent, wrapper)
 {
 }
 
-QOpaqueBehavior::QOpaqueBehavior(QOpaqueBehaviorPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QOpaqueBehavior::QOpaqueBehavior(QOpaqueBehaviorPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QBehavior(dd, parent, wrapper)
 {
 }

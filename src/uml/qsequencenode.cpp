@@ -64,12 +64,12 @@ QSequenceNodePrivate::~QSequenceNodePrivate()
     \brief A sequence node is a structured activity node that executes its actions in order.
  */
 
-QSequenceNode::QSequenceNode(QUmlObject *parent, QUmlObject *wrapper) :
+QSequenceNode::QSequenceNode(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QStructuredActivityNode(*new QSequenceNodePrivate, parent, wrapper)
 {
 }
 
-QSequenceNode::QSequenceNode(QSequenceNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QSequenceNode::QSequenceNode(QSequenceNodePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QStructuredActivityNode(dd, parent, wrapper)
 {
 }
@@ -100,7 +100,7 @@ void QSequenceNode::addExecutableNode(QExecutableNode *executableNode)
     Q_D(QSequenceNode);
     if (!d->executableNodes->contains(executableNode)) {
         d->executableNodes->append(executableNode);
-        quml_topLevelWrapper(executableNode)->setParent(quml_topLevelWrapper(this));
+        qmof_topLevelWrapper(executableNode)->setParent(qmof_topLevelWrapper(this));
     }
 }
 
@@ -111,7 +111,7 @@ void QSequenceNode::removeExecutableNode(QExecutableNode *executableNode)
     Q_D(QSequenceNode);
     if (d->executableNodes->contains(executableNode)) {
         d->executableNodes->removeAll(executableNode);
-        quml_topLevelWrapper(executableNode)->setParent(0);
+        qmof_topLevelWrapper(executableNode)->setParent(0);
     }
 }
 

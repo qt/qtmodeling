@@ -67,12 +67,12 @@ QInterruptibleActivityRegionPrivate::~QInterruptibleActivityRegionPrivate()
     \brief An interruptible activity region is an activity group that supports termination of tokens flowing in the portions of an activity.
  */
 
-QInterruptibleActivityRegion::QInterruptibleActivityRegion(QUmlObject *parent, QUmlObject *wrapper) :
+QInterruptibleActivityRegion::QInterruptibleActivityRegion(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QActivityGroup(*new QInterruptibleActivityRegionPrivate, parent, wrapper)
 {
 }
 
-QInterruptibleActivityRegion::QInterruptibleActivityRegion(QInterruptibleActivityRegionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QInterruptibleActivityRegion::QInterruptibleActivityRegion(QInterruptibleActivityRegionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QActivityGroup(dd, parent, wrapper)
 {
 }
@@ -142,7 +142,7 @@ void QInterruptibleActivityRegion::addNode(QActivityNode *node)
         d->nodes->insert(node);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActivityGroupPrivate *>(d))->addContainedNode(qumlobject_cast<QActivityNode *>(node));
+        (qmofobject_cast<QActivityGroupPrivate *>(d))->addContainedNode(qmofobject_cast<QActivityNode *>(node));
 
         // Adjust opposite property
         node->addInInterruptibleRegion(this);
@@ -158,7 +158,7 @@ void QInterruptibleActivityRegion::removeNode(QActivityNode *node)
         d->nodes->remove(node);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActivityGroupPrivate *>(d))->removeContainedNode(qumlobject_cast<QActivityNode *>(node));
+        (qmofobject_cast<QActivityGroupPrivate *>(d))->removeContainedNode(qmofobject_cast<QActivityNode *>(node));
 
         // Adjust opposite property
         if (node)

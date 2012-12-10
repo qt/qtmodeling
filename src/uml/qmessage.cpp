@@ -73,12 +73,12 @@ QMessagePrivate::~QMessagePrivate()
     \brief A message defines a particular communication between lifelines of an interaction.
  */
 
-QMessage::QMessage(QUmlObject *parent, QUmlObject *wrapper) :
+QMessage::QMessage(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QNamedElement(*new QMessagePrivate, parent, wrapper)
 {
 }
 
-QMessage::QMessage(QMessagePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QMessage::QMessage(QMessagePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
 }
@@ -169,7 +169,7 @@ void QMessage::addArgument(QValueSpecification *argument)
         d->arguments->append(argument);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(argument));
+        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(argument));
     }
 }
 
@@ -182,7 +182,7 @@ void QMessage::removeArgument(QValueSpecification *argument)
         d->arguments->removeAll(argument);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(argument));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(argument));
     }
 }
 
@@ -231,7 +231,7 @@ void QMessage::setInteraction(QInteraction *interaction)
         d->interaction = interaction;
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(interaction));
+        (qmofobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qmofobject_cast<QNamespace *>(interaction));
 
         // Adjust opposite property
         if (interaction)

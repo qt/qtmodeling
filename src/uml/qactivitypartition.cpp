@@ -74,12 +74,12 @@ QActivityPartitionPrivate::~QActivityPartitionPrivate()
     \brief An activity partition is a kind of activity group for identifying actions that have some characteristic in common.
  */
 
-QActivityPartition::QActivityPartition(QUmlObject *parent, QUmlObject *wrapper) :
+QActivityPartition::QActivityPartition(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QActivityGroup(*new QActivityPartitionPrivate, parent, wrapper)
 {
 }
 
-QActivityPartition::QActivityPartition(QActivityPartitionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QActivityPartition::QActivityPartition(QActivityPartitionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QActivityGroup(dd, parent, wrapper)
 {
 }
@@ -179,7 +179,7 @@ void QActivityPartition::addSubpartition(QActivityPartition *subpartition)
         d->subpartitions->insert(subpartition);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActivityGroupPrivate *>(d))->addSubgroup(qumlobject_cast<QActivityGroup *>(subpartition));
+        (qmofobject_cast<QActivityGroupPrivate *>(d))->addSubgroup(qmofobject_cast<QActivityGroup *>(subpartition));
 
         // Adjust opposite property
         subpartition->setSuperPartition(this);
@@ -195,7 +195,7 @@ void QActivityPartition::removeSubpartition(QActivityPartition *subpartition)
         d->subpartitions->remove(subpartition);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActivityGroupPrivate *>(d))->removeSubgroup(qumlobject_cast<QActivityGroup *>(subpartition));
+        (qmofobject_cast<QActivityGroupPrivate *>(d))->removeSubgroup(qmofobject_cast<QActivityGroup *>(subpartition));
 
         // Adjust opposite property
         subpartition->setSuperPartition(0);
@@ -226,7 +226,7 @@ void QActivityPartition::setSuperPartition(QActivityPartition *superPartition)
         d->superPartition = superPartition;
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActivityGroupPrivate *>(d))->setSuperGroup(qumlobject_cast<QActivityGroup *>(superPartition));
+        (qmofobject_cast<QActivityGroupPrivate *>(d))->setSuperGroup(qmofobject_cast<QActivityGroup *>(superPartition));
 
         // Adjust opposite property
         if (superPartition)
@@ -254,7 +254,7 @@ void QActivityPartition::addNode(QActivityNode *node)
         d->nodes->insert(node);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActivityGroupPrivate *>(d))->addContainedNode(qumlobject_cast<QActivityNode *>(node));
+        (qmofobject_cast<QActivityGroupPrivate *>(d))->addContainedNode(qmofobject_cast<QActivityNode *>(node));
 
         // Adjust opposite property
         node->addInPartition(this);
@@ -270,7 +270,7 @@ void QActivityPartition::removeNode(QActivityNode *node)
         d->nodes->remove(node);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActivityGroupPrivate *>(d))->removeContainedNode(qumlobject_cast<QActivityNode *>(node));
+        (qmofobject_cast<QActivityGroupPrivate *>(d))->removeContainedNode(qmofobject_cast<QActivityNode *>(node));
 
         // Adjust opposite property
         if (node)
@@ -298,7 +298,7 @@ void QActivityPartition::addEdge(QActivityEdge *edge)
         d->edges->insert(edge);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActivityGroupPrivate *>(d))->addContainedEdge(qumlobject_cast<QActivityEdge *>(edge));
+        (qmofobject_cast<QActivityGroupPrivate *>(d))->addContainedEdge(qmofobject_cast<QActivityEdge *>(edge));
 
         // Adjust opposite property
         edge->addInPartition(this);
@@ -314,7 +314,7 @@ void QActivityPartition::removeEdge(QActivityEdge *edge)
         d->edges->remove(edge);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActivityGroupPrivate *>(d))->removeContainedEdge(qumlobject_cast<QActivityEdge *>(edge));
+        (qmofobject_cast<QActivityGroupPrivate *>(d))->removeContainedEdge(qmofobject_cast<QActivityEdge *>(edge));
 
         // Adjust opposite property
         if (edge)

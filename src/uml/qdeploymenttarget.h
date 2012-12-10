@@ -49,7 +49,7 @@
 // Qt includes
 #include <QtCore/QSet>
 
-#include <QtUml/QUmlPointer>
+#include <QtMof/QMofPointer>
 
 QT_BEGIN_HEADER
 
@@ -74,7 +74,7 @@ class Q_UML_EXPORT QDeploymentTarget : public QNamedElement
     Q_DECLARE_PRIVATE(QDeploymentTarget)
 
 public:
-    Q_INVOKABLE explicit QDeploymentTarget(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QDeploymentTarget(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QDeploymentTarget();
 
     // Association ends from QDeploymentTarget
@@ -84,11 +84,11 @@ public:
     Q_INVOKABLE void removeDeployment(QDeployment *deployment);
 
     // Overriden methods for subsetted properties
-    Q_INVOKABLE void addClientDependency(QUmlPointer<QDeployment> deployment);
-    Q_INVOKABLE void removeClientDependency(QUmlPointer<QDeployment> deployment);
+    Q_INVOKABLE void addClientDependency(QtMof::QMofPointer<QDeployment> deployment);
+    Q_INVOKABLE void removeClientDependency(QtMof::QMofPointer<QDeployment> deployment);
 
 protected:
-    explicit QDeploymentTarget(QDeploymentTargetPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QDeploymentTarget(QDeploymentTargetPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

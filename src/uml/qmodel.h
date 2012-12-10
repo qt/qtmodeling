@@ -67,7 +67,7 @@ class Q_UML_EXPORT QModel : public QPackage
     Q_DECLARE_PRIVATE(QModel)
 
 public:
-    Q_INVOKABLE explicit QModel(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QModel(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QModel();
 
     // Attributes from QModel
@@ -75,7 +75,7 @@ public:
     Q_INVOKABLE void setViewpoint(QString viewpoint);
 
 protected:
-    explicit QModel(QModelPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QModel(QModelPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

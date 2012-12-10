@@ -42,7 +42,7 @@
 #define QTUML_QBEHAVIORALFEATURE_P_H
 
 // Base class includes
-#include "private/qumlobject_p.h"
+#include "private/qmofobject_p.h"
 #include "private/qnamespace_p.h"
 #include "private/qfeature_p.h"
 
@@ -68,7 +68,7 @@ class QParameterSet;
 class QBehavior;
 class QParameter;
 
-class Q_UML_EXPORT QBehavioralFeaturePrivate : public QUmlObjectPrivate
+class Q_UML_EXPORT QBehavioralFeaturePrivate : public QtMof::QMofObjectPrivate
 {
     Q_DECLARE_PUBLIC(QBehavioralFeature)
 

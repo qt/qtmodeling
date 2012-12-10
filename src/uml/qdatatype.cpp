@@ -68,12 +68,12 @@ QDataTypePrivate::~QDataTypePrivate()
     \brief A data type is a type whose instances are identified only by their value. A data type may contain attributes to support the modeling of structured data types.
  */
 
-QDataType::QDataType(QUmlObject *parent, QUmlObject *wrapper) :
+QDataType::QDataType(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QClassifier(*new QDataTypePrivate, parent, wrapper)
 {
 }
 
-QDataType::QDataType(QDataTypePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QDataType::QDataType(QDataTypePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QClassifier(dd, parent, wrapper)
 {
 }
@@ -106,8 +106,8 @@ void QDataType::addOwnedOperation(QOperation *ownedOperation)
         d->ownedOperations->append(ownedOperation);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QClassifierPrivate *>(d))->addFeature(qumlobject_cast<QFeature *>(ownedOperation));
-        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(ownedOperation));
+        (qmofobject_cast<QClassifierPrivate *>(d))->addFeature(qmofobject_cast<QFeature *>(ownedOperation));
+        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(ownedOperation));
 
         // Adjust opposite property
         ownedOperation->setDatatype(this);
@@ -123,8 +123,8 @@ void QDataType::removeOwnedOperation(QOperation *ownedOperation)
         d->ownedOperations->removeAll(ownedOperation);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QClassifierPrivate *>(d))->removeFeature(qumlobject_cast<QFeature *>(ownedOperation));
-        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedOperation));
+        (qmofobject_cast<QClassifierPrivate *>(d))->removeFeature(qmofobject_cast<QFeature *>(ownedOperation));
+        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(ownedOperation));
 
         // Adjust opposite property
         ownedOperation->setDatatype(0);
@@ -151,8 +151,8 @@ void QDataType::addOwnedAttribute(QProperty *ownedAttribute)
         d->ownedAttributes->append(ownedAttribute);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(ownedAttribute));
-        (qumlobject_cast<QClassifierPrivate *>(d))->addAttribute(qumlobject_cast<QProperty *>(ownedAttribute));
+        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(ownedAttribute));
+        (qmofobject_cast<QClassifierPrivate *>(d))->addAttribute(qmofobject_cast<QProperty *>(ownedAttribute));
 
         // Adjust opposite property
         ownedAttribute->setDatatype(this);
@@ -168,8 +168,8 @@ void QDataType::removeOwnedAttribute(QProperty *ownedAttribute)
         d->ownedAttributes->removeAll(ownedAttribute);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedAttribute));
-        (qumlobject_cast<QClassifierPrivate *>(d))->removeAttribute(qumlobject_cast<QProperty *>(ownedAttribute));
+        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(ownedAttribute));
+        (qmofobject_cast<QClassifierPrivate *>(d))->removeAttribute(qmofobject_cast<QProperty *>(ownedAttribute));
 
         // Adjust opposite property
         ownedAttribute->setDatatype(0);

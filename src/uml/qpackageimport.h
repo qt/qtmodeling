@@ -73,7 +73,7 @@ class Q_UML_EXPORT QPackageImport : public QDirectedRelationship
     Q_DECLARE_PRIVATE(QPackageImport)
 
 public:
-    Q_INVOKABLE explicit QPackageImport(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QPackageImport(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QPackageImport();
 
     // Attributes from QPackageImport
@@ -87,7 +87,7 @@ public:
     Q_INVOKABLE void setImportedPackage(QPackage *importedPackage);
 
 protected:
-    explicit QPackageImport(QPackageImportPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QPackageImport(QPackageImportPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

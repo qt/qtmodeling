@@ -65,12 +65,12 @@ QQualifierValuePrivate::~QQualifierValuePrivate()
     \brief A qualifier value is not an action. It is an element that identifies links. It gives a single qualifier within a link end data specification.
  */
 
-QQualifierValue::QQualifierValue(QUmlObject *parent, QUmlObject *wrapper) :
+QQualifierValue::QQualifierValue(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QElement(*new QQualifierValuePrivate, parent, wrapper)
 {
 }
 
-QQualifierValue::QQualifierValue(QQualifierValuePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QQualifierValue::QQualifierValue(QQualifierValuePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
 }

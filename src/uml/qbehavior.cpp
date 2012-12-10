@@ -78,12 +78,12 @@ QBehaviorPrivate::~QBehaviorPrivate()
     \brief Behavior is a specification of how its context classifier changes state over time. This specification may be either a definition of possible behavior execution or emergent behavior, or a selective illustration of an interesting subset of possible executions. The latter form is typically used for capturing examples, such as a trace of a particular execution.A behavior owns zero or more parameter sets.
  */
 
-QBehavior::QBehavior(QUmlObject *parent, QUmlObject *wrapper) :
+QBehavior::QBehavior(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QClass(*new QBehaviorPrivate, parent, wrapper)
 {
 }
 
-QBehavior::QBehavior(QBehaviorPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QBehavior::QBehavior(QBehaviorPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QClass(dd, parent, wrapper)
 {
 }
@@ -170,7 +170,7 @@ void QBehavior::addPostcondition(QConstraint *postcondition)
         d->postconditions->insert(postcondition);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespace *>(this))->addOwnedRule(qumlobject_cast<QConstraint *>(postcondition));
+        (qmofobject_cast<QNamespace *>(this))->addOwnedRule(qmofobject_cast<QConstraint *>(postcondition));
     }
 }
 
@@ -183,7 +183,7 @@ void QBehavior::removePostcondition(QConstraint *postcondition)
         d->postconditions->remove(postcondition);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespace *>(this))->removeOwnedRule(qumlobject_cast<QConstraint *>(postcondition));
+        (qmofobject_cast<QNamespace *>(this))->removeOwnedRule(qmofobject_cast<QConstraint *>(postcondition));
     }
 }
 
@@ -207,7 +207,7 @@ void QBehavior::addPrecondition(QConstraint *precondition)
         d->preconditions->insert(precondition);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespace *>(this))->addOwnedRule(qumlobject_cast<QConstraint *>(precondition));
+        (qmofobject_cast<QNamespace *>(this))->addOwnedRule(qmofobject_cast<QConstraint *>(precondition));
     }
 }
 
@@ -220,7 +220,7 @@ void QBehavior::removePrecondition(QConstraint *precondition)
         d->preconditions->remove(precondition);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespace *>(this))->removeOwnedRule(qumlobject_cast<QConstraint *>(precondition));
+        (qmofobject_cast<QNamespace *>(this))->removeOwnedRule(qmofobject_cast<QConstraint *>(precondition));
     }
 }
 
@@ -244,7 +244,7 @@ void QBehavior::addRedefinedBehavior(QBehavior *redefinedBehavior)
         d->redefinedBehaviors->insert(redefinedBehavior);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QClassifier *>(this))->addRedefinedClassifier(qumlobject_cast<QClassifier *>(redefinedBehavior));
+        (qmofobject_cast<QClassifier *>(this))->addRedefinedClassifier(qmofobject_cast<QClassifier *>(redefinedBehavior));
     }
 }
 
@@ -257,7 +257,7 @@ void QBehavior::removeRedefinedBehavior(QBehavior *redefinedBehavior)
         d->redefinedBehaviors->remove(redefinedBehavior);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QClassifier *>(this))->removeRedefinedClassifier(qumlobject_cast<QClassifier *>(redefinedBehavior));
+        (qmofobject_cast<QClassifier *>(this))->removeRedefinedClassifier(qmofobject_cast<QClassifier *>(redefinedBehavior));
     }
 }
 
@@ -281,7 +281,7 @@ void QBehavior::addOwnedParameter(QParameter *ownedParameter)
         d->ownedParameters->append(ownedParameter);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(ownedParameter));
+        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(ownedParameter));
     }
 }
 
@@ -294,7 +294,7 @@ void QBehavior::removeOwnedParameter(QParameter *ownedParameter)
         d->ownedParameters->removeAll(ownedParameter);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedParameter));
+        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(ownedParameter));
     }
 }
 
@@ -318,7 +318,7 @@ void QBehavior::addOwnedParameterSet(QParameterSet *ownedParameterSet)
         d->ownedParameterSets->insert(ownedParameterSet);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(ownedParameterSet));
+        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(ownedParameterSet));
     }
 }
 
@@ -331,7 +331,7 @@ void QBehavior::removeOwnedParameterSet(QParameterSet *ownedParameterSet)
         d->ownedParameterSets->remove(ownedParameterSet);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedParameterSet));
+        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(ownedParameterSet));
     }
 }
 
@@ -349,12 +349,12 @@ QBehavioredClassifier *QBehavior::context() const
 
 // Overriden methods for subsetted properties
 
-void QBehavior::addRedefinedClassifier(QUmlPointer<QBehavior> redefinedBehavior)
+void QBehavior::addRedefinedClassifier(QtMof::QMofPointer<QBehavior> redefinedBehavior)
 {
     addRedefinedBehavior(redefinedBehavior);
 }
 
-void QBehavior::removeRedefinedClassifier(QUmlPointer<QBehavior> redefinedBehavior)
+void QBehavior::removeRedefinedClassifier(QtMof::QMofPointer<QBehavior> redefinedBehavior)
 {
     removeRedefinedBehavior(redefinedBehavior);
 }

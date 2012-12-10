@@ -69,7 +69,7 @@ class Q_UML_EXPORT QStructuralFeatureAction : public QAction
     Q_DECLARE_PRIVATE(QStructuralFeatureAction)
 
 public:
-    Q_INVOKABLE explicit QStructuralFeatureAction(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QStructuralFeatureAction(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QStructuralFeatureAction();
 
     // Association ends from QStructuralFeatureAction
@@ -79,7 +79,7 @@ public:
     Q_INVOKABLE void setStructuralFeature(QStructuralFeature *structuralFeature);
 
 protected:
-    explicit QStructuralFeatureAction(QStructuralFeatureActionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QStructuralFeatureAction(QStructuralFeatureActionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

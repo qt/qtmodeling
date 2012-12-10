@@ -64,12 +64,12 @@ QTimeEventPrivate::~QTimeEventPrivate()
     \brief A time event can be defined relative to entering the current state of the executing state machine.A time event specifies a point in time. At the specified time, the event occurs.
  */
 
-QTimeEvent::QTimeEvent(QUmlObject *parent, QUmlObject *wrapper) :
+QTimeEvent::QTimeEvent(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QEvent(*new QTimeEventPrivate, parent, wrapper)
 {
 }
 
-QTimeEvent::QTimeEvent(QTimeEventPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QTimeEvent::QTimeEvent(QTimeEventPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QEvent(dd, parent, wrapper)
 {
 }
@@ -125,13 +125,13 @@ void QTimeEvent::setWhen(QTimeExpression *when)
     Q_D(QTimeEvent);
     if (d->when != when) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->when));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->when));
 
         d->when = when;
 
         // Adjust subsetted property(ies)
         if (when) {
-            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(when));
+            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(when));
         }
     }
 }

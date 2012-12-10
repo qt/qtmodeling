@@ -49,7 +49,7 @@
 // Qt includes
 #include <QtCore/QSet>
 
-#include <QtUml/QUmlPointer>
+#include <QtMof/QMofPointer>
 
 QT_BEGIN_HEADER
 
@@ -84,7 +84,7 @@ class Q_UML_EXPORT QActivity : public QBehavior
     Q_DECLARE_PRIVATE(QActivity)
 
 public:
-    Q_INVOKABLE explicit QActivity(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QActivity(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QActivity();
 
     // Attributes from QActivity
@@ -114,15 +114,15 @@ public:
     Q_INVOKABLE void removeEdge(QActivityEdge *edge);
 
     // Overriden methods for subsetted properties
-    Q_INVOKABLE void addGroup(QUmlPointer<QActivityPartition> partition);
-    Q_INVOKABLE void removeGroup(QUmlPointer<QActivityPartition> partition);
-    Q_INVOKABLE void addGroup(QUmlPointer<QStructuredActivityNode> structuredNode);
-    Q_INVOKABLE void removeGroup(QUmlPointer<QStructuredActivityNode> structuredNode);
-    Q_INVOKABLE void addNode(QUmlPointer<QStructuredActivityNode> structuredNode);
-    Q_INVOKABLE void removeNode(QUmlPointer<QStructuredActivityNode> structuredNode);
+    Q_INVOKABLE void addGroup(QtMof::QMofPointer<QActivityPartition> partition);
+    Q_INVOKABLE void removeGroup(QtMof::QMofPointer<QActivityPartition> partition);
+    Q_INVOKABLE void addGroup(QtMof::QMofPointer<QStructuredActivityNode> structuredNode);
+    Q_INVOKABLE void removeGroup(QtMof::QMofPointer<QStructuredActivityNode> structuredNode);
+    Q_INVOKABLE void addNode(QtMof::QMofPointer<QStructuredActivityNode> structuredNode);
+    Q_INVOKABLE void removeNode(QtMof::QMofPointer<QStructuredActivityNode> structuredNode);
 
 protected:
-    explicit QActivity(QActivityPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QActivity(QActivityPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

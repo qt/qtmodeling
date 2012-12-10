@@ -44,7 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtUml/QUmlObject>
+#include <QtMof/QMofObject>
 #include <QtUml/QTypedElement>
 #include <QtUml/QMultiplicityElement>
 #include <QtUml/QFeature>
@@ -57,7 +57,7 @@ QT_MODULE(QtUml)
 
 class QStructuralFeaturePrivate;
 
-class Q_UML_EXPORT QStructuralFeature : public QUmlObject
+class Q_UML_EXPORT QStructuralFeature : public QtMof::QMofObject
 {
     Q_OBJECT
 
@@ -67,7 +67,7 @@ class Q_UML_EXPORT QStructuralFeature : public QUmlObject
     Q_DECLARE_PRIVATE(QStructuralFeature)
 
 public:
-    Q_INVOKABLE explicit QStructuralFeature(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QStructuralFeature(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QStructuralFeature();
 
     // Association ends from aggregated QElement
@@ -132,7 +132,7 @@ public:
     Q_INVOKABLE void setReadOnly(bool isReadOnly);
 
 protected:
-    explicit QStructuralFeature(QStructuralFeaturePrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QStructuralFeature(QStructuralFeaturePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 
 private:
     QTypedElement *_wrappedTypedElement;

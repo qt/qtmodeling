@@ -1,7 +1,7 @@
 load(qt_build_config)
 
 TARGET = QtUml
-QT = core-private
+QT = core-private mof-private
 
 load(qt_module)
 

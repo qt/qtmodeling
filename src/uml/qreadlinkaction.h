@@ -67,7 +67,7 @@ class Q_UML_EXPORT QReadLinkAction : public QLinkAction
     Q_DECLARE_PRIVATE(QReadLinkAction)
 
 public:
-    Q_INVOKABLE explicit QReadLinkAction(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QReadLinkAction(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QReadLinkAction();
 
     // Association ends from QReadLinkAction
@@ -75,7 +75,7 @@ public:
     Q_INVOKABLE void setResult(QOutputPin *result);
 
 protected:
-    explicit QReadLinkAction(QReadLinkActionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QReadLinkAction(QReadLinkActionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

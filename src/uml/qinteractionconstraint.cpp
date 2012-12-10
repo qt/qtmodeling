@@ -64,12 +64,12 @@ QInteractionConstraintPrivate::~QInteractionConstraintPrivate()
     \brief An interaction constraint is a Boolean expression that guards an operand in a combined fragment.
  */
 
-QInteractionConstraint::QInteractionConstraint(QUmlObject *parent, QUmlObject *wrapper) :
+QInteractionConstraint::QInteractionConstraint(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QConstraint(*new QInteractionConstraintPrivate, parent, wrapper)
 {
 }
 
-QInteractionConstraint::QInteractionConstraint(QInteractionConstraintPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QInteractionConstraint::QInteractionConstraint(QInteractionConstraintPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QConstraint(dd, parent, wrapper)
 {
 }
@@ -100,13 +100,13 @@ void QInteractionConstraint::setMaxint(QValueSpecification *maxint)
     Q_D(QInteractionConstraint);
     if (d->maxint != maxint) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->maxint));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->maxint));
 
         d->maxint = maxint;
 
         // Adjust subsetted property(ies)
         if (maxint) {
-            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(maxint));
+            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(maxint));
         }
     }
 }
@@ -129,13 +129,13 @@ void QInteractionConstraint::setMinint(QValueSpecification *minint)
     Q_D(QInteractionConstraint);
     if (d->minint != minint) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->minint));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->minint));
 
         d->minint = minint;
 
         // Adjust subsetted property(ies)
         if (minint) {
-            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(minint));
+            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(minint));
         }
     }
 }

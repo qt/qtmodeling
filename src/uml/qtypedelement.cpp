@@ -63,12 +63,12 @@ QTypedElementPrivate::~QTypedElementPrivate()
     \brief A typed element is a kind of named element that represents an element with a type.A typed element has a type.
  */
 
-QTypedElement::QTypedElement(QUmlObject *parent, QUmlObject *wrapper) :
+QTypedElement::QTypedElement(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QNamedElement(*new QTypedElementPrivate, parent, wrapper)
 {
 }
 
-QTypedElement::QTypedElement(QTypedElementPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QTypedElement::QTypedElement(QTypedElementPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
 }

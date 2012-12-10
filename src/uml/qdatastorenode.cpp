@@ -60,12 +60,12 @@ QDataStoreNodePrivate::~QDataStoreNodePrivate()
     \brief A data store node is a central buffer node for non-transient information.
  */
 
-QDataStoreNode::QDataStoreNode(QUmlObject *parent, QUmlObject *wrapper) :
+QDataStoreNode::QDataStoreNode(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QCentralBufferNode(*new QDataStoreNodePrivate, parent, wrapper)
 {
 }
 
-QDataStoreNode::QDataStoreNode(QDataStoreNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QDataStoreNode::QDataStoreNode(QDataStoreNodePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QCentralBufferNode(dd, parent, wrapper)
 {
 }

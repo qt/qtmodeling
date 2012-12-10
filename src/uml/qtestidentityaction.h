@@ -70,7 +70,7 @@ class Q_UML_EXPORT QTestIdentityAction : public QAction
     Q_DECLARE_PRIVATE(QTestIdentityAction)
 
 public:
-    Q_INVOKABLE explicit QTestIdentityAction(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QTestIdentityAction(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QTestIdentityAction();
 
     // Association ends from QTestIdentityAction
@@ -82,7 +82,7 @@ public:
     Q_INVOKABLE void setFirst(QInputPin *first);
 
 protected:
-    explicit QTestIdentityAction(QTestIdentityActionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QTestIdentityAction(QTestIdentityActionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

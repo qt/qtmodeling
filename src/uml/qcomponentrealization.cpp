@@ -66,12 +66,12 @@ QComponentRealizationPrivate::~QComponentRealizationPrivate()
     \brief The realization concept is specialized to (optionally) define the classifiers that realize the contract offered by a component in terms of its provided and required interfaces. The component forms an abstraction from these various classifiers.
  */
 
-QComponentRealization::QComponentRealization(QUmlObject *parent, QUmlObject *wrapper) :
+QComponentRealization::QComponentRealization(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QRealization(*new QComponentRealizationPrivate, parent, wrapper)
 {
 }
 
-QComponentRealization::QComponentRealization(QComponentRealizationPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QComponentRealization::QComponentRealization(QComponentRealizationPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QRealization(dd, parent, wrapper)
 {
 }
@@ -106,15 +106,15 @@ void QComponentRealization::setAbstraction(QComponent *abstraction)
             d->abstraction->removeRealization(this);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QDependency *>(this))->removeSupplier(qumlobject_cast<QNamedElement *>(d->abstraction));
+        (qmofobject_cast<QDependency *>(this))->removeSupplier(qmofobject_cast<QNamedElement *>(d->abstraction));
 
         d->abstraction = abstraction;
 
         // Adjust subsetted property(ies)
         if (abstraction) {
-            (qumlobject_cast<QDependency *>(this))->addSupplier(qumlobject_cast<QNamedElement *>(abstraction));
+            (qmofobject_cast<QDependency *>(this))->addSupplier(qmofobject_cast<QNamedElement *>(abstraction));
         }
-        (qumlobject_cast<QElementPrivate *>(d))->setOwner(qumlobject_cast<QElement *>(abstraction));
+        (qmofobject_cast<QElementPrivate *>(d))->setOwner(qmofobject_cast<QElement *>(abstraction));
 
         // Adjust opposite property
         if (abstraction)
@@ -142,7 +142,7 @@ void QComponentRealization::addRealizingClassifier(QClassifier *realizingClassif
         d->realizingClassifiers->insert(realizingClassifier);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QDependency *>(this))->addClient(qumlobject_cast<QNamedElement *>(realizingClassifier));
+        (qmofobject_cast<QDependency *>(this))->addClient(qmofobject_cast<QNamedElement *>(realizingClassifier));
     }
 }
 
@@ -155,29 +155,29 @@ void QComponentRealization::removeRealizingClassifier(QClassifier *realizingClas
         d->realizingClassifiers->remove(realizingClassifier);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QDependency *>(this))->removeClient(qumlobject_cast<QNamedElement *>(realizingClassifier));
+        (qmofobject_cast<QDependency *>(this))->removeClient(qmofobject_cast<QNamedElement *>(realizingClassifier));
     }
 }
 
 // Overriden methods for subsetted properties
 
-void QComponentRealization::addSupplier(QUmlPointer<QComponent> abstraction)
+void QComponentRealization::addSupplier(QtMof::QMofPointer<QComponent> abstraction)
 {
     setAbstraction(abstraction);
 }
 
-void QComponentRealization::removeSupplier(QUmlPointer<QComponent> abstraction)
+void QComponentRealization::removeSupplier(QtMof::QMofPointer<QComponent> abstraction)
 {
     Q_UNUSED(abstraction);
     setAbstraction(0);
 }
 
-void QComponentRealization::addClient(QUmlPointer<QClassifier> realizingClassifier)
+void QComponentRealization::addClient(QtMof::QMofPointer<QClassifier> realizingClassifier)
 {
     addRealizingClassifier(realizingClassifier);
 }
 
-void QComponentRealization::removeClient(QUmlPointer<QClassifier> realizingClassifier)
+void QComponentRealization::removeClient(QtMof::QMofPointer<QClassifier> realizingClassifier)
 {
     removeRealizingClassifier(realizingClassifier);
 }

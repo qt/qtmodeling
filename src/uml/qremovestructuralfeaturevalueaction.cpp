@@ -64,12 +64,12 @@ QRemoveStructuralFeatureValueActionPrivate::~QRemoveStructuralFeatureValueAction
     \brief A remove structural feature value action is a write structural feature action that removes values from structural features.
  */
 
-QRemoveStructuralFeatureValueAction::QRemoveStructuralFeatureValueAction(QUmlObject *parent, QUmlObject *wrapper) :
+QRemoveStructuralFeatureValueAction::QRemoveStructuralFeatureValueAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QWriteStructuralFeatureAction(*new QRemoveStructuralFeatureValueActionPrivate, parent, wrapper)
 {
 }
 
-QRemoveStructuralFeatureValueAction::QRemoveStructuralFeatureValueAction(QRemoveStructuralFeatureValueActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QRemoveStructuralFeatureValueAction::QRemoveStructuralFeatureValueAction(QRemoveStructuralFeatureValueActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QWriteStructuralFeatureAction(dd, parent, wrapper)
 {
 }
@@ -125,13 +125,13 @@ void QRemoveStructuralFeatureValueAction::setRemoveAt(QInputPin *removeAt)
     Q_D(QRemoveStructuralFeatureValueAction);
     if (d->removeAt != removeAt) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->removeAt));
+        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(d->removeAt));
 
         d->removeAt = removeAt;
 
         // Adjust subsetted property(ies)
         if (removeAt) {
-            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(removeAt));
+            (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(removeAt));
         }
     }
 }

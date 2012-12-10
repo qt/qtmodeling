@@ -62,11 +62,11 @@ class Q_UML_EXPORT QObservation : public QPackageableElement
     Q_DECLARE_PRIVATE(QObservation)
 
 public:
-    Q_INVOKABLE explicit QObservation(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QObservation(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QObservation();
 
 protected:
-    explicit QObservation(QObservationPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QObservation(QObservationPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

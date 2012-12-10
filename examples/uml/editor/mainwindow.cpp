@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QtMof/QMofPointer>
+
 #include <QtUml/QModel>
 #include <QtUml/QPrimitiveType>
 #include <QtUml/QEnumeration>
@@ -18,6 +20,7 @@
 #include <QContextMenuEvent>
 
 using namespace QtUml;
+using QtMof::QMofPointer;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -37,22 +40,22 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->propertyEditor->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->propertyEditor->setSelectionBehavior(QAbstractItemView::SelectRows);
 
-    QUmlPointer<QModel> model = new QModel;
+    QMofPointer<QModel> model = new QModel;
     model->setName("MyModel");
 
-    QUmlPointer<QPackage> package = new QPackage;
+    QMofPointer<QPackage> package = new QPackage;
     package->setName("Package1");
 
-    QUmlPointer<QPrimitiveType> primitiveType = new QPrimitiveType;
+    QMofPointer<QPrimitiveType> primitiveType = new QPrimitiveType;
     primitiveType->setName("String");
 
-    QUmlPointer<QEnumeration> enumeration = new QEnumeration;
+    QMofPointer<QEnumeration> enumeration = new QEnumeration;
     enumeration->setName("DirectionKind");
-    QUmlPointer<QEnumerationLiteral> directionIn = new QEnumerationLiteral;
+    QMofPointer<QEnumerationLiteral> directionIn = new QEnumerationLiteral;
     directionIn->setName("DirectionIn");
     enumeration->addOwnedLiteral(directionIn);
 
-    QUmlPointer<QClass> class_ = new QClass;
+    QMofPointer<QClass> class_ = new QClass;
     class_->setName("Student");
     class_->setAbstract(true);
     class_->setVisibility(QtUml::QtUml::VisibilityPackage);
@@ -108,7 +111,7 @@ void MainWindow::populateContextMenu(QMenu &menu, QObject *element)
     }
 }
 
-void MainWindow::handleMetaObjectProperties(QObject *element, const QMetaObject *metaObject, int level)
+void MainWindow::handleMetaObjectProperties(QtMof::QMofObject *element, const QMetaObject *metaObject, int level)
 {
     if (metaObject->superClass() && !_visitedParents.contains(metaObject->superClass()->className()))
         handleMetaObjectProperties(element, metaObject->superClass(), level+1);
@@ -181,7 +184,7 @@ void MainWindow::handleMetaObjectProperties(QObject *element, const QMetaObject 
         if (property.type() == QVariant::String) {
             QObject *rootElement = element;
             if (QString(property.name()) == "objectName")
-                rootElement = qtuml_object_cast<QObject *>(element);
+                rootElement = qmofobject_cast<QObject *>(element);
             item->setText(1, property.read(rootElement).toString());
         }
 
@@ -194,11 +197,11 @@ void MainWindow::handleMetaObjectProperties(QObject *element, const QMetaObject 
         }
 
         if (typeName.endsWith('*') && typeName.contains("QSet") && property.read(element).isValid()) {
-            if (QSet<QObject *> *elements = reinterpret_cast<QSet<QObject *> *>(*((QSet<QObject *> **) property.read(element).data()))) {
+            if (QSet<QtMof::QMofObject *> *elements = reinterpret_cast<QSet<QtMof::QMofObject *> *>(*((QSet<QObject *> **) property.read(element).data()))) {
                 if (elements->size() > 0) {
                     QString str = "[";
-                    foreach (QObject *object, *elements)
-                        str.append((qtuml_object_cast<QObject *>(object))->objectName().append(", "));
+                    foreach (QtMof::QMofObject *object, *elements)
+                        str.append((qmofobject_cast<QtMof::QMofObject *>(object))->objectName().append(", "));
                     str.chop(2);
                     str.append("]");
                     item->setText(1, str);
@@ -209,11 +212,11 @@ void MainWindow::handleMetaObjectProperties(QObject *element, const QMetaObject 
         }
 
         if (typeName.endsWith('*') && typeName.contains("QList") && property.read(element).isValid()) {
-            if (QList<QObject *> *elements = reinterpret_cast<QList<QObject *> *>(*((QList<QObject *> **) property.read(element).data()))) {
+            if (QList<QtMof::QMofObject *> *elements = reinterpret_cast<QList<QtMof::QMofObject *> *>(*((QList<QObject *> **) property.read(element).data()))) {
                 if (elements->size() > 0) {
                     QString str = "[";
-                    foreach (QObject *object, *elements)
-                        str.append((qtuml_object_cast<QObject *>(object))->objectName().append(", "));
+                    foreach (QtMof::QMofObject *object, *elements)
+                        str.append((qmofobject_cast<QtMof::QMofObject *>(object))->objectName().append(", "));
                     str.chop(2);
                     str.append("]");
                     item->setText(1, str);
@@ -228,10 +231,10 @@ void MainWindow::handleMetaObjectProperties(QObject *element, const QMetaObject 
     }
 }
 
-void MainWindow::handleObjectProperties(QObject *element, int level)
+void MainWindow::handleObjectProperties(QtMof::QMofObject *element, int level)
 {
     foreach (QObject *child, element->children())
-            handleObjectProperties(child, level+1);
+            handleObjectProperties(dynamic_cast<QtMof::QMofObject *>(child), level+1);
 
     handleMetaObjectProperties(element, element->metaObject(), level);
 }
@@ -244,7 +247,7 @@ void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, Q
         return;
 
     ui->propertyEditor->blockSignals(true);
-    QObject *element = current->data(0, Qt::UserRole).value<QObject *>();
+    QtMof::QMofObject *element = qmofobject_cast<QtMof::QMofObject *>(current->data(0, Qt::UserRole).value<QtMof::QMofObject *>());
     ui->propertyEditor->clear();
 
     _visitedParents.clear();
@@ -281,7 +284,7 @@ void MainWindow::currentIndexChanged(int index)
     }
 }
 
-void MainWindow::populateModelExplorer(QObject *element, QTreeWidgetItem *parent)
+void MainWindow::populateModelExplorer(QtMof::QMofObject *element, QTreeWidgetItem *parent)
 {
     if (!element)
         return;
@@ -296,7 +299,7 @@ void MainWindow::populateModelExplorer(QObject *element, QTreeWidgetItem *parent
     if (!parent)
         ui->modelExplorer->addTopLevelItem(item);
 
-    if (QElement *umlElement = qtuml_object_cast<QElement *>(element))
+    if (QElement *umlElement = qmofobject_cast<QElement *>(element))
         foreach (QElement *ownedElement, *umlElement->ownedElements())
             populateModelExplorer(ownedElement, item);
     ui->modelExplorer->blockSignals(false);
@@ -337,7 +340,7 @@ void MainWindow::handleAddMethod()
 
 void MainWindow::refreshModel()
 {
-    QObject *rootElement = qtuml_object_cast<QObject *>(ui->modelExplorer->topLevelItem(0)->data(0, Qt::UserRole).value<QObject *>());
+    QtMof::QMofObject *rootElement = qmofobject_cast<QtMof::QMofObject *>(ui->modelExplorer->topLevelItem(0)->data(0, Qt::UserRole).value<QtMof::QMofObject *>());
     ui->modelExplorer->clear();
     populateModelExplorer(rootElement);
 }

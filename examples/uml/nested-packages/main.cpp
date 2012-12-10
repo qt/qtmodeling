@@ -1,3 +1,5 @@
+#include <QtMof/QMofPointer>
+
 #include <QtUml/QModel>
 #include <QtUml/QPackage>
 #include <QtUml/QPrimitiveType>
@@ -12,6 +14,7 @@
 #include <QtCore/QMetaProperty>
 
 using namespace QtUml;
+using QtMof::QMofPointer;
 
 typedef const QSet<QPackage *> QPackageList;
 typedef const QSet<QStereotype *> QStereotypeList;
@@ -28,22 +31,22 @@ void checkProperties(QObject *object)
 
 int main ()
 {
-    QUmlPointer<QModel> model = new QModel;
+    QMofPointer<QModel> model = new QModel;
     model->setName("MyModel");
 
-    QUmlPointer<QPackage> package = new QPackage;
+    QMofPointer<QPackage> package = new QPackage;
     package->setName("Package1");
 
-    QUmlPointer<QPrimitiveType> primitiveType = new QPrimitiveType;
+    QMofPointer<QPrimitiveType> primitiveType = new QPrimitiveType;
     primitiveType->setName("String");
 
-    QUmlPointer<QEnumeration> enumeration = new QEnumeration;
+    QMofPointer<QEnumeration> enumeration = new QEnumeration;
     enumeration->setName("DirectionKind");
-    QUmlPointer<QEnumerationLiteral> directionIn = new QEnumerationLiteral;
+    QMofPointer<QEnumerationLiteral> directionIn = new QEnumerationLiteral;
     directionIn->setName("DirectionIn");
     enumeration->addOwnedLiteral(directionIn);
 
-    QUmlPointer<QClass> class_ = new QClass;
+    QMofPointer<QClass> class_ = new QClass;
     class_->setName("Student");
     class_->setAbstract(false);
 
@@ -97,9 +100,9 @@ int main ()
 
     checkProperties(model);
 
-    QUmlPointer<QComponent> c1 = new QComponent;
-    QUmlPointer<QComponent> c2 = new QComponent;
-    QUmlPointer<QComponentRealization> cr = new QComponentRealization;
+    QMofPointer<QComponent> c1 = new QComponent;
+    QMofPointer<QComponent> c2 = new QComponent;
+    QMofPointer<QComponentRealization> cr = new QComponentRealization;
     cr->setAbstraction(c1);
     qDebug();
     qDebug() << "cr->suppliers()->size():" << cr->suppliers()->size();

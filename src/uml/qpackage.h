@@ -44,7 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtUml/QUmlObject>
+#include <QtMof/QMofObject>
 #include <QtUml/QNamespace>
 #include <QtUml/QPackageableElement>
 #include <QtUml/QTemplateableElement>
@@ -53,7 +53,7 @@
 #include <QtCore/QString>
 #include <QtCore/QSet>
 
-#include <QtUml/QUmlPointer>
+#include <QtMof/QMofPointer>
 
 QT_BEGIN_HEADER
 
@@ -71,7 +71,7 @@ class QType;
 
 class QPackagePrivate;
 
-class Q_UML_EXPORT QPackage : public QUmlObject
+class Q_UML_EXPORT QPackage : public QtMof::QMofObject
 {
     Q_OBJECT
 
@@ -88,7 +88,7 @@ class Q_UML_EXPORT QPackage : public QUmlObject
     Q_DECLARE_PRIVATE(QPackage)
 
 public:
-    Q_INVOKABLE explicit QPackage(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QPackage(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QPackage();
 
     // Association ends from aggregated QElement
@@ -174,13 +174,13 @@ public:
     Q_INVOKABLE const QSet<QPackageableElement *> *visibleMembers() const;
 
     // Overriden methods for subsetted properties
-    Q_INVOKABLE void addPackagedElement(QUmlPointer<QType> ownedType);
-    Q_INVOKABLE void removePackagedElement(QUmlPointer<QType> ownedType);
-    Q_INVOKABLE void addPackagedElement(QUmlPointer<QPackage> nestedPackage);
-    Q_INVOKABLE void removePackagedElement(QUmlPointer<QPackage> nestedPackage);
+    Q_INVOKABLE void addPackagedElement(QtMof::QMofPointer<QType> ownedType);
+    Q_INVOKABLE void removePackagedElement(QtMof::QMofPointer<QType> ownedType);
+    Q_INVOKABLE void addPackagedElement(QtMof::QMofPointer<QPackage> nestedPackage);
+    Q_INVOKABLE void removePackagedElement(QtMof::QMofPointer<QPackage> nestedPackage);
 
 protected:
-    explicit QPackage(QPackagePrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QPackage(QPackagePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 
 private:
     QNamespace *_wrappedNamespace;

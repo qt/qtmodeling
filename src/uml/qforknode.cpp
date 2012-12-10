@@ -60,12 +60,12 @@ QForkNodePrivate::~QForkNodePrivate()
     \brief A fork node is a control node that splits a flow into multiple concurrent flows.
  */
 
-QForkNode::QForkNode(QUmlObject *parent, QUmlObject *wrapper) :
+QForkNode::QForkNode(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QControlNode(*new QForkNodePrivate, parent, wrapper)
 {
 }
 
-QForkNode::QForkNode(QForkNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QForkNode::QForkNode(QForkNodePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QControlNode(dd, parent, wrapper)
 {
 }

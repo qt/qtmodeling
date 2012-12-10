@@ -69,7 +69,7 @@ class Q_UML_EXPORT QValueSpecificationAction : public QAction
     Q_DECLARE_PRIVATE(QValueSpecificationAction)
 
 public:
-    Q_INVOKABLE explicit QValueSpecificationAction(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QValueSpecificationAction(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QValueSpecificationAction();
 
     // Association ends from QValueSpecificationAction
@@ -79,7 +79,7 @@ public:
     Q_INVOKABLE void setResult(QOutputPin *result);
 
 protected:
-    explicit QValueSpecificationAction(QValueSpecificationActionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QValueSpecificationAction(QValueSpecificationActionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

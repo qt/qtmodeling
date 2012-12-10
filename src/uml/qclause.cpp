@@ -74,12 +74,12 @@ QClausePrivate::~QClausePrivate()
     \brief A clause is an element that represents a single branch of a conditional construct, including a test and a body section. The body section is executed only if (but not necessarily if) the test section evaluates true.
  */
 
-QClause::QClause(QUmlObject *parent, QUmlObject *wrapper) :
+QClause::QClause(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QElement(*new QClausePrivate, parent, wrapper)
 {
 }
 
-QClause::QClause(QClausePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QClause::QClause(QClausePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
 }

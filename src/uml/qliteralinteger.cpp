@@ -60,12 +60,12 @@ QLiteralIntegerPrivate::~QLiteralIntegerPrivate()
     \brief A literal integer is a specification of an integer value.
  */
 
-QLiteralInteger::QLiteralInteger(QUmlObject *parent, QUmlObject *wrapper) :
+QLiteralInteger::QLiteralInteger(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QLiteralSpecification(*new QLiteralIntegerPrivate, parent, wrapper)
 {
 }
 
-QLiteralInteger::QLiteralInteger(QLiteralIntegerPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QLiteralInteger::QLiteralInteger(QLiteralIntegerPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QLiteralSpecification(dd, parent, wrapper)
 {
 }

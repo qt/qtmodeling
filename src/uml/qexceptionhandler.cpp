@@ -69,12 +69,12 @@ QExceptionHandlerPrivate::~QExceptionHandlerPrivate()
     \brief An exception handler is an element that specifies a body to execute in case the specified exception occurs during the execution of the protected node.
  */
 
-QExceptionHandler::QExceptionHandler(QUmlObject *parent, QUmlObject *wrapper) :
+QExceptionHandler::QExceptionHandler(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QElement(*new QExceptionHandlerPrivate, parent, wrapper)
 {
 }
 
-QExceptionHandler::QExceptionHandler(QExceptionHandlerPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QExceptionHandler::QExceptionHandler(QExceptionHandlerPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
 }
@@ -163,7 +163,7 @@ void QExceptionHandler::setProtectedNode(QExecutableNode *protectedNode)
         d->protectedNode = protectedNode;
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->setOwner(qumlobject_cast<QElement *>(protectedNode));
+        (qmofobject_cast<QElementPrivate *>(d))->setOwner(qmofobject_cast<QElement *>(protectedNode));
 
         // Adjust opposite property
         if (protectedNode)

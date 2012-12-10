@@ -50,7 +50,7 @@
 #include <QtCore/QList>
 #include <QtCore/QSet>
 
-#include <QtUml/QUmlPointer>
+#include <QtMof/QMofPointer>
 
 QT_BEGIN_HEADER
 
@@ -81,7 +81,7 @@ class Q_UML_EXPORT QInterface : public QClassifier
     Q_DECLARE_PRIVATE(QInterface)
 
 public:
-    Q_INVOKABLE explicit QInterface(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QInterface(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QInterface();
 
     // Association ends from QInterface
@@ -104,11 +104,11 @@ public:
     Q_INVOKABLE void removeOwnedAttribute(QProperty *ownedAttribute);
 
     // Overriden methods for subsetted properties
-    Q_INVOKABLE void addRedefinedClassifier(QUmlPointer<QInterface> redefinedInterface);
-    Q_INVOKABLE void removeRedefinedClassifier(QUmlPointer<QInterface> redefinedInterface);
+    Q_INVOKABLE void addRedefinedClassifier(QtMof::QMofPointer<QInterface> redefinedInterface);
+    Q_INVOKABLE void removeRedefinedClassifier(QtMof::QMofPointer<QInterface> redefinedInterface);
 
 protected:
-    explicit QInterface(QInterfacePrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QInterface(QInterfacePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

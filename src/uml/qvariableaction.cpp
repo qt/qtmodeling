@@ -63,12 +63,12 @@ QVariableActionPrivate::~QVariableActionPrivate()
     \brief VariableAction is an abstract class for actions that operate on a statically specified variable.
  */
 
-QVariableAction::QVariableAction(QUmlObject *parent, QUmlObject *wrapper) :
+QVariableAction::QVariableAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QAction(*new QVariableActionPrivate, parent, wrapper)
 {
 }
 
-QVariableAction::QVariableAction(QVariableActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QVariableAction::QVariableAction(QVariableActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
 }

@@ -73,15 +73,15 @@ QRegionPrivate::~QRegionPrivate()
     \brief A region is an orthogonal part of either a composite state or a state machine. It contains states and transitions.
  */
 
-QRegion::QRegion(QUmlObject *parent, QUmlObject *wrapper) :
-    QUmlObject(*new QRegionPrivate, parent, wrapper),
+QRegion::QRegion(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+    QtMof::QMofObject(*new QRegionPrivate, parent, wrapper),
     _wrappedRedefinableElement(new QRedefinableElement(this, this)),
     _wrappedNamespace(new QNamespace(this, this))
 {
 }
 
-QRegion::QRegion(QRegionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
-    QUmlObject(dd, parent, wrapper),
+QRegion::QRegion(QRegionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+    QtMof::QMofObject(dd, parent, wrapper),
     _wrappedRedefinableElement(new QRedefinableElement(this, this)),
     _wrappedNamespace(new QNamespace(this, this))
 {
@@ -100,7 +100,7 @@ QRegion::~QRegion()
  */
 const QSet<QElement *> *QRegion::ownedElements() const
 {
-    return (qumlobject_cast<const QElement *>(this))->ownedElements();
+    return (qmofobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -108,7 +108,7 @@ const QSet<QElement *> *QRegion::ownedElements() const
  */
 QElement *QRegion::owner() const
 {
-    return (qumlobject_cast<const QElement *>(this))->owner();
+    return (qmofobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -116,17 +116,17 @@ QElement *QRegion::owner() const
  */
 const QSet<QComment *> *QRegion::ownedComments() const
 {
-    return (qumlobject_cast<const QElement *>(this))->ownedComments();
+    return (qmofobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QRegion::addOwnedComment(QComment *ownedComment)
 {
-    (qumlobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qmofobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QRegion::removeOwnedComment(QComment *ownedComment)
 {
-    (qumlobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qmofobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -138,12 +138,12 @@ void QRegion::removeOwnedComment(QComment *ownedComment)
  */
 QString QRegion::name() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->name();
+    return (qmofobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QRegion::setName(QString name)
 {
-    (qumlobject_cast<QNamedElement *>(this))->setName(name);
+    (qmofobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -151,12 +151,12 @@ void QRegion::setName(QString name)
  */
 QtUml::VisibilityKind QRegion::visibility() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->visibility();
+    return (qmofobject_cast<const QNamedElement *>(this))->visibility();
 }
 
 void QRegion::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qumlobject_cast<QNamedElement *>(this))->setVisibility(visibility);
+    (qmofobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
 
 /*!
@@ -164,7 +164,7 @@ void QRegion::setVisibility(QtUml::VisibilityKind visibility)
  */
 QString QRegion::qualifiedName() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qmofobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -176,12 +176,12 @@ QString QRegion::qualifiedName() const
  */
 QStringExpression *QRegion::nameExpression() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->nameExpression();
+    return (qmofobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QRegion::setNameExpression(QStringExpression *nameExpression)
 {
-    (qumlobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qmofobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -189,7 +189,7 @@ void QRegion::setNameExpression(QStringExpression *nameExpression)
  */
 QNamespace *QRegion::namespace_() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->namespace_();
+    return (qmofobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -197,17 +197,17 @@ QNamespace *QRegion::namespace_() const
  */
 const QSet<QDependency *> *QRegion::clientDependencies() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qmofobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QRegion::addClientDependency(QDependency *clientDependency)
 {
-    (qumlobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qmofobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QRegion::removeClientDependency(QDependency *clientDependency)
 {
-    (qumlobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qmofobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -219,12 +219,12 @@ void QRegion::removeClientDependency(QDependency *clientDependency)
  */
 bool QRegion::isLeaf() const
 {
-    return (qumlobject_cast<const QRedefinableElement *>(this))->isLeaf();
+    return (qmofobject_cast<const QRedefinableElement *>(this))->isLeaf();
 }
 
 void QRegion::setLeaf(bool isLeaf)
 {
-    (qumlobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+    (qmofobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
 }
 
 // ---------------------------------------------------------------
@@ -236,7 +236,7 @@ void QRegion::setLeaf(bool isLeaf)
  */
 const QSet<QRedefinableElement *> *QRegion::redefinedElements() const
 {
-    return (qumlobject_cast<const QRedefinableElement *>(this))->redefinedElements();
+    return (qmofobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
 
 // ---------------------------------------------------------------
@@ -248,17 +248,17 @@ const QSet<QRedefinableElement *> *QRegion::redefinedElements() const
  */
 const QSet<QPackageImport *> *QRegion::packageImports() const
 {
-    return (qumlobject_cast<const QNamespace *>(this))->packageImports();
+    return (qmofobject_cast<const QNamespace *>(this))->packageImports();
 }
 
 void QRegion::addPackageImport(QPackageImport *packageImport)
 {
-    (qumlobject_cast<QNamespace *>(this))->addPackageImport(packageImport);
+    (qmofobject_cast<QNamespace *>(this))->addPackageImport(packageImport);
 }
 
 void QRegion::removePackageImport(QPackageImport *packageImport)
 {
-    (qumlobject_cast<QNamespace *>(this))->removePackageImport(packageImport);
+    (qmofobject_cast<QNamespace *>(this))->removePackageImport(packageImport);
 }
 
 /*!
@@ -266,7 +266,7 @@ void QRegion::removePackageImport(QPackageImport *packageImport)
  */
 const QSet<QNamedElement *> *QRegion::members() const
 {
-    return (qumlobject_cast<const QNamespace *>(this))->members();
+    return (qmofobject_cast<const QNamespace *>(this))->members();
 }
 
 /*!
@@ -274,7 +274,7 @@ const QSet<QNamedElement *> *QRegion::members() const
  */
 const QSet<QPackageableElement *> *QRegion::importedMembers() const
 {
-    return (qumlobject_cast<const QNamespace *>(this))->importedMembers();
+    return (qmofobject_cast<const QNamespace *>(this))->importedMembers();
 }
 
 /*!
@@ -282,17 +282,17 @@ const QSet<QPackageableElement *> *QRegion::importedMembers() const
  */
 const QSet<QElementImport *> *QRegion::elementImports() const
 {
-    return (qumlobject_cast<const QNamespace *>(this))->elementImports();
+    return (qmofobject_cast<const QNamespace *>(this))->elementImports();
 }
 
 void QRegion::addElementImport(QElementImport *elementImport)
 {
-    (qumlobject_cast<QNamespace *>(this))->addElementImport(elementImport);
+    (qmofobject_cast<QNamespace *>(this))->addElementImport(elementImport);
 }
 
 void QRegion::removeElementImport(QElementImport *elementImport)
 {
-    (qumlobject_cast<QNamespace *>(this))->removeElementImport(elementImport);
+    (qmofobject_cast<QNamespace *>(this))->removeElementImport(elementImport);
 }
 
 /*!
@@ -300,17 +300,17 @@ void QRegion::removeElementImport(QElementImport *elementImport)
  */
 const QSet<QConstraint *> *QRegion::ownedRules() const
 {
-    return (qumlobject_cast<const QNamespace *>(this))->ownedRules();
+    return (qmofobject_cast<const QNamespace *>(this))->ownedRules();
 }
 
 void QRegion::addOwnedRule(QConstraint *ownedRule)
 {
-    (qumlobject_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
+    (qmofobject_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
 }
 
 void QRegion::removeOwnedRule(QConstraint *ownedRule)
 {
-    (qumlobject_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
+    (qmofobject_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
 }
 
 /*!
@@ -318,7 +318,7 @@ void QRegion::removeOwnedRule(QConstraint *ownedRule)
  */
 const QSet<QNamedElement *> *QRegion::ownedMembers() const
 {
-    return (qumlobject_cast<const QNamespace *>(this))->ownedMembers();
+    return (qmofobject_cast<const QNamespace *>(this))->ownedMembers();
 }
 
 // ---------------------------------------------------------------
@@ -343,13 +343,13 @@ void QRegion::setExtendedRegion(QRegion *extendedRegion)
     Q_D(QRegion);
     if (d->extendedRegion != extendedRegion) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qumlobject_cast<QRedefinableElement *>(d->extendedRegion));
+        (qmofobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qmofobject_cast<QRedefinableElement *>(d->extendedRegion));
 
         d->extendedRegion = extendedRegion;
 
         // Adjust subsetted property(ies)
         if (extendedRegion) {
-            (qumlobject_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qumlobject_cast<QRedefinableElement *>(extendedRegion));
+            (qmofobject_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qmofobject_cast<QRedefinableElement *>(extendedRegion));
         }
     }
 }
@@ -374,7 +374,7 @@ void QRegion::addTransition(QTransition *transition)
         d->transitions->insert(transition);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(transition));
+        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(transition));
 
         // Adjust opposite property
         transition->setContainer(this);
@@ -390,7 +390,7 @@ void QRegion::removeTransition(QTransition *transition)
         d->transitions->remove(transition);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(transition));
+        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(transition));
 
         // Adjust opposite property
         transition->setContainer(0);
@@ -421,7 +421,7 @@ void QRegion::setStateMachine(QStateMachine *stateMachine)
         d->stateMachine = stateMachine;
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(stateMachine));
+        (qmofobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qmofobject_cast<QNamespace *>(stateMachine));
 
         // Adjust opposite property
         if (stateMachine)
@@ -453,7 +453,7 @@ void QRegion::setState(QState *state)
         d->state = state;
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(state));
+        (qmofobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qmofobject_cast<QNamespace *>(state));
 
         // Adjust opposite property
         if (state)
@@ -493,7 +493,7 @@ void QRegion::addSubvertex(QVertex *subvertex)
         d->subvertices->insert(subvertex);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(subvertex));
+        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(subvertex));
 
         // Adjust opposite property
         subvertex->setContainer(this);
@@ -509,7 +509,7 @@ void QRegion::removeSubvertex(QVertex *subvertex)
         d->subvertices->remove(subvertex);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(subvertex));
+        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(subvertex));
 
         // Adjust opposite property
         subvertex->setContainer(0);

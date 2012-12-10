@@ -76,15 +76,15 @@ QBehavioralFeaturePrivate::~QBehavioralFeaturePrivate()
     \brief A behavioral feature is a feature of a classifier that specifies an aspect of the behavior of its instances.A behavioral feature is implemented (realized) by a behavior. A behavioral feature specifies that a classifier will respond to a designated request by invoking its implementing method.A behavioral feature owns zero or more parameter sets.
  */
 
-QBehavioralFeature::QBehavioralFeature(QUmlObject *parent, QUmlObject *wrapper) :
-    QUmlObject(*new QBehavioralFeaturePrivate, parent, wrapper),
+QBehavioralFeature::QBehavioralFeature(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+    QtMof::QMofObject(*new QBehavioralFeaturePrivate, parent, wrapper),
     _wrappedNamespace(new QNamespace(this, this)),
     _wrappedFeature(new QFeature(this, this))
 {
 }
 
-QBehavioralFeature::QBehavioralFeature(QBehavioralFeaturePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
-    QUmlObject(dd, parent, wrapper),
+QBehavioralFeature::QBehavioralFeature(QBehavioralFeaturePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+    QtMof::QMofObject(dd, parent, wrapper),
     _wrappedNamespace(new QNamespace(this, this)),
     _wrappedFeature(new QFeature(this, this))
 {
@@ -103,7 +103,7 @@ QBehavioralFeature::~QBehavioralFeature()
  */
 const QSet<QElement *> *QBehavioralFeature::ownedElements() const
 {
-    return (qumlobject_cast<const QElement *>(this))->ownedElements();
+    return (qmofobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -111,7 +111,7 @@ const QSet<QElement *> *QBehavioralFeature::ownedElements() const
  */
 QElement *QBehavioralFeature::owner() const
 {
-    return (qumlobject_cast<const QElement *>(this))->owner();
+    return (qmofobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -119,17 +119,17 @@ QElement *QBehavioralFeature::owner() const
  */
 const QSet<QComment *> *QBehavioralFeature::ownedComments() const
 {
-    return (qumlobject_cast<const QElement *>(this))->ownedComments();
+    return (qmofobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QBehavioralFeature::addOwnedComment(QComment *ownedComment)
 {
-    (qumlobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qmofobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QBehavioralFeature::removeOwnedComment(QComment *ownedComment)
 {
-    (qumlobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qmofobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -141,12 +141,12 @@ void QBehavioralFeature::removeOwnedComment(QComment *ownedComment)
  */
 QString QBehavioralFeature::name() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->name();
+    return (qmofobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QBehavioralFeature::setName(QString name)
 {
-    (qumlobject_cast<QNamedElement *>(this))->setName(name);
+    (qmofobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -154,12 +154,12 @@ void QBehavioralFeature::setName(QString name)
  */
 QtUml::VisibilityKind QBehavioralFeature::visibility() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->visibility();
+    return (qmofobject_cast<const QNamedElement *>(this))->visibility();
 }
 
 void QBehavioralFeature::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qumlobject_cast<QNamedElement *>(this))->setVisibility(visibility);
+    (qmofobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
 
 /*!
@@ -167,7 +167,7 @@ void QBehavioralFeature::setVisibility(QtUml::VisibilityKind visibility)
  */
 QString QBehavioralFeature::qualifiedName() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qmofobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -179,12 +179,12 @@ QString QBehavioralFeature::qualifiedName() const
  */
 QStringExpression *QBehavioralFeature::nameExpression() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->nameExpression();
+    return (qmofobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QBehavioralFeature::setNameExpression(QStringExpression *nameExpression)
 {
-    (qumlobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qmofobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -192,7 +192,7 @@ void QBehavioralFeature::setNameExpression(QStringExpression *nameExpression)
  */
 QNamespace *QBehavioralFeature::namespace_() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->namespace_();
+    return (qmofobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -200,17 +200,17 @@ QNamespace *QBehavioralFeature::namespace_() const
  */
 const QSet<QDependency *> *QBehavioralFeature::clientDependencies() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qmofobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QBehavioralFeature::addClientDependency(QDependency *clientDependency)
 {
-    (qumlobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qmofobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QBehavioralFeature::removeClientDependency(QDependency *clientDependency)
 {
-    (qumlobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qmofobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -222,17 +222,17 @@ void QBehavioralFeature::removeClientDependency(QDependency *clientDependency)
  */
 const QSet<QPackageImport *> *QBehavioralFeature::packageImports() const
 {
-    return (qumlobject_cast<const QNamespace *>(this))->packageImports();
+    return (qmofobject_cast<const QNamespace *>(this))->packageImports();
 }
 
 void QBehavioralFeature::addPackageImport(QPackageImport *packageImport)
 {
-    (qumlobject_cast<QNamespace *>(this))->addPackageImport(packageImport);
+    (qmofobject_cast<QNamespace *>(this))->addPackageImport(packageImport);
 }
 
 void QBehavioralFeature::removePackageImport(QPackageImport *packageImport)
 {
-    (qumlobject_cast<QNamespace *>(this))->removePackageImport(packageImport);
+    (qmofobject_cast<QNamespace *>(this))->removePackageImport(packageImport);
 }
 
 /*!
@@ -240,7 +240,7 @@ void QBehavioralFeature::removePackageImport(QPackageImport *packageImport)
  */
 const QSet<QNamedElement *> *QBehavioralFeature::members() const
 {
-    return (qumlobject_cast<const QNamespace *>(this))->members();
+    return (qmofobject_cast<const QNamespace *>(this))->members();
 }
 
 /*!
@@ -248,7 +248,7 @@ const QSet<QNamedElement *> *QBehavioralFeature::members() const
  */
 const QSet<QPackageableElement *> *QBehavioralFeature::importedMembers() const
 {
-    return (qumlobject_cast<const QNamespace *>(this))->importedMembers();
+    return (qmofobject_cast<const QNamespace *>(this))->importedMembers();
 }
 
 /*!
@@ -256,17 +256,17 @@ const QSet<QPackageableElement *> *QBehavioralFeature::importedMembers() const
  */
 const QSet<QElementImport *> *QBehavioralFeature::elementImports() const
 {
-    return (qumlobject_cast<const QNamespace *>(this))->elementImports();
+    return (qmofobject_cast<const QNamespace *>(this))->elementImports();
 }
 
 void QBehavioralFeature::addElementImport(QElementImport *elementImport)
 {
-    (qumlobject_cast<QNamespace *>(this))->addElementImport(elementImport);
+    (qmofobject_cast<QNamespace *>(this))->addElementImport(elementImport);
 }
 
 void QBehavioralFeature::removeElementImport(QElementImport *elementImport)
 {
-    (qumlobject_cast<QNamespace *>(this))->removeElementImport(elementImport);
+    (qmofobject_cast<QNamespace *>(this))->removeElementImport(elementImport);
 }
 
 /*!
@@ -274,17 +274,17 @@ void QBehavioralFeature::removeElementImport(QElementImport *elementImport)
  */
 const QSet<QConstraint *> *QBehavioralFeature::ownedRules() const
 {
-    return (qumlobject_cast<const QNamespace *>(this))->ownedRules();
+    return (qmofobject_cast<const QNamespace *>(this))->ownedRules();
 }
 
 void QBehavioralFeature::addOwnedRule(QConstraint *ownedRule)
 {
-    (qumlobject_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
+    (qmofobject_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
 }
 
 void QBehavioralFeature::removeOwnedRule(QConstraint *ownedRule)
 {
-    (qumlobject_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
+    (qmofobject_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
 }
 
 /*!
@@ -292,7 +292,7 @@ void QBehavioralFeature::removeOwnedRule(QConstraint *ownedRule)
  */
 const QSet<QNamedElement *> *QBehavioralFeature::ownedMembers() const
 {
-    return (qumlobject_cast<const QNamespace *>(this))->ownedMembers();
+    return (qmofobject_cast<const QNamespace *>(this))->ownedMembers();
 }
 
 // ---------------------------------------------------------------
@@ -304,12 +304,12 @@ const QSet<QNamedElement *> *QBehavioralFeature::ownedMembers() const
  */
 bool QBehavioralFeature::isLeaf() const
 {
-    return (qumlobject_cast<const QRedefinableElement *>(this))->isLeaf();
+    return (qmofobject_cast<const QRedefinableElement *>(this))->isLeaf();
 }
 
 void QBehavioralFeature::setLeaf(bool isLeaf)
 {
-    (qumlobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+    (qmofobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
 }
 
 // ---------------------------------------------------------------
@@ -321,7 +321,7 @@ void QBehavioralFeature::setLeaf(bool isLeaf)
  */
 const QSet<QRedefinableElement *> *QBehavioralFeature::redefinedElements() const
 {
-    return (qumlobject_cast<const QRedefinableElement *>(this))->redefinedElements();
+    return (qmofobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
 
 /*!
@@ -329,7 +329,7 @@ const QSet<QRedefinableElement *> *QBehavioralFeature::redefinedElements() const
  */
 const QSet<QClassifier *> *QBehavioralFeature::redefinitionContexts() const
 {
-    return (qumlobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
+    return (qmofobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
 }
 
 // ---------------------------------------------------------------
@@ -341,12 +341,12 @@ const QSet<QClassifier *> *QBehavioralFeature::redefinitionContexts() const
  */
 bool QBehavioralFeature::isStatic() const
 {
-    return (qumlobject_cast<const QFeature *>(this))->isStatic();
+    return (qmofobject_cast<const QFeature *>(this))->isStatic();
 }
 
 void QBehavioralFeature::setStatic(bool isStatic)
 {
-    (qumlobject_cast<QFeature *>(this))->setStatic(isStatic);
+    (qmofobject_cast<QFeature *>(this))->setStatic(isStatic);
 }
 
 // ---------------------------------------------------------------
@@ -358,7 +358,7 @@ void QBehavioralFeature::setStatic(bool isStatic)
  */
 const QSet<QClassifier *> *QBehavioralFeature::featuringClassifiers() const
 {
-    return (qumlobject_cast<const QFeature *>(this))->featuringClassifiers();
+    return (qmofobject_cast<const QFeature *>(this))->featuringClassifiers();
 }
 
 // ---------------------------------------------------------------
@@ -462,7 +462,7 @@ void QBehavioralFeature::addOwnedParameter(QParameter *ownedParameter)
         d->ownedParameters->append(ownedParameter);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(ownedParameter));
+        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(ownedParameter));
     }
 }
 
@@ -475,7 +475,7 @@ void QBehavioralFeature::removeOwnedParameter(QParameter *ownedParameter)
         d->ownedParameters->removeAll(ownedParameter);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedParameter));
+        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(ownedParameter));
     }
 }
 
@@ -499,7 +499,7 @@ void QBehavioralFeature::addOwnedParameterSet(QParameterSet *ownedParameterSet)
         d->ownedParameterSets->insert(ownedParameterSet);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(ownedParameterSet));
+        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(ownedParameterSet));
     }
 }
 
@@ -512,7 +512,7 @@ void QBehavioralFeature::removeOwnedParameterSet(QParameterSet *ownedParameterSe
         d->ownedParameterSets->remove(ownedParameterSet);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedParameterSet));
+        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(ownedParameterSet));
     }
 }
 

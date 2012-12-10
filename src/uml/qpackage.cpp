@@ -74,16 +74,16 @@ QPackagePrivate::~QPackagePrivate()
     \brief A package can have one or more profile applications to indicate which profiles have been applied. Because a profile is a package, it is possible to apply a profile not only to packages, but also to profiles.Package specializes TemplateableElement and PackageableElement specializes ParameterableElement to specify that a package can be used as a template and a PackageableElement as a template parameter.A package is used to group elements, and provides a namespace for the grouped elements.
  */
 
-QPackage::QPackage(QUmlObject *parent, QUmlObject *wrapper) :
-    QUmlObject(*new QPackagePrivate, parent, wrapper),
+QPackage::QPackage(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+    QtMof::QMofObject(*new QPackagePrivate, parent, wrapper),
     _wrappedNamespace(new QNamespace(this, this)),
     _wrappedPackageableElement(new QPackageableElement(this, this)),
     _wrappedTemplateableElement(new QTemplateableElement(this, this))
 {
 }
 
-QPackage::QPackage(QPackagePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
-    QUmlObject(dd, parent, wrapper),
+QPackage::QPackage(QPackagePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+    QtMof::QMofObject(dd, parent, wrapper),
     _wrappedNamespace(new QNamespace(this, this)),
     _wrappedPackageableElement(new QPackageableElement(this, this)),
     _wrappedTemplateableElement(new QTemplateableElement(this, this))
@@ -103,7 +103,7 @@ QPackage::~QPackage()
  */
 const QSet<QElement *> *QPackage::ownedElements() const
 {
-    return (qumlobject_cast<const QElement *>(this))->ownedElements();
+    return (qmofobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -111,7 +111,7 @@ const QSet<QElement *> *QPackage::ownedElements() const
  */
 QElement *QPackage::owner() const
 {
-    return (qumlobject_cast<const QElement *>(this))->owner();
+    return (qmofobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -119,17 +119,17 @@ QElement *QPackage::owner() const
  */
 const QSet<QComment *> *QPackage::ownedComments() const
 {
-    return (qumlobject_cast<const QElement *>(this))->ownedComments();
+    return (qmofobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QPackage::addOwnedComment(QComment *ownedComment)
 {
-    (qumlobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qmofobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QPackage::removeOwnedComment(QComment *ownedComment)
 {
-    (qumlobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qmofobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -141,12 +141,12 @@ void QPackage::removeOwnedComment(QComment *ownedComment)
  */
 QString QPackage::name() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->name();
+    return (qmofobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QPackage::setName(QString name)
 {
-    (qumlobject_cast<QNamedElement *>(this))->setName(name);
+    (qmofobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -154,7 +154,7 @@ void QPackage::setName(QString name)
  */
 QString QPackage::qualifiedName() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qmofobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -166,12 +166,12 @@ QString QPackage::qualifiedName() const
  */
 QStringExpression *QPackage::nameExpression() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->nameExpression();
+    return (qmofobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QPackage::setNameExpression(QStringExpression *nameExpression)
 {
-    (qumlobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qmofobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -179,7 +179,7 @@ void QPackage::setNameExpression(QStringExpression *nameExpression)
  */
 QNamespace *QPackage::namespace_() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->namespace_();
+    return (qmofobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -187,17 +187,17 @@ QNamespace *QPackage::namespace_() const
  */
 const QSet<QDependency *> *QPackage::clientDependencies() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qmofobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QPackage::addClientDependency(QDependency *clientDependency)
 {
-    (qumlobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qmofobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QPackage::removeClientDependency(QDependency *clientDependency)
 {
-    (qumlobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qmofobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -209,17 +209,17 @@ void QPackage::removeClientDependency(QDependency *clientDependency)
  */
 const QSet<QPackageImport *> *QPackage::packageImports() const
 {
-    return (qumlobject_cast<const QNamespace *>(this))->packageImports();
+    return (qmofobject_cast<const QNamespace *>(this))->packageImports();
 }
 
 void QPackage::addPackageImport(QPackageImport *packageImport)
 {
-    (qumlobject_cast<QNamespace *>(this))->addPackageImport(packageImport);
+    (qmofobject_cast<QNamespace *>(this))->addPackageImport(packageImport);
 }
 
 void QPackage::removePackageImport(QPackageImport *packageImport)
 {
-    (qumlobject_cast<QNamespace *>(this))->removePackageImport(packageImport);
+    (qmofobject_cast<QNamespace *>(this))->removePackageImport(packageImport);
 }
 
 /*!
@@ -227,7 +227,7 @@ void QPackage::removePackageImport(QPackageImport *packageImport)
  */
 const QSet<QNamedElement *> *QPackage::members() const
 {
-    return (qumlobject_cast<const QNamespace *>(this))->members();
+    return (qmofobject_cast<const QNamespace *>(this))->members();
 }
 
 /*!
@@ -235,7 +235,7 @@ const QSet<QNamedElement *> *QPackage::members() const
  */
 const QSet<QPackageableElement *> *QPackage::importedMembers() const
 {
-    return (qumlobject_cast<const QNamespace *>(this))->importedMembers();
+    return (qmofobject_cast<const QNamespace *>(this))->importedMembers();
 }
 
 /*!
@@ -243,17 +243,17 @@ const QSet<QPackageableElement *> *QPackage::importedMembers() const
  */
 const QSet<QElementImport *> *QPackage::elementImports() const
 {
-    return (qumlobject_cast<const QNamespace *>(this))->elementImports();
+    return (qmofobject_cast<const QNamespace *>(this))->elementImports();
 }
 
 void QPackage::addElementImport(QElementImport *elementImport)
 {
-    (qumlobject_cast<QNamespace *>(this))->addElementImport(elementImport);
+    (qmofobject_cast<QNamespace *>(this))->addElementImport(elementImport);
 }
 
 void QPackage::removeElementImport(QElementImport *elementImport)
 {
-    (qumlobject_cast<QNamespace *>(this))->removeElementImport(elementImport);
+    (qmofobject_cast<QNamespace *>(this))->removeElementImport(elementImport);
 }
 
 /*!
@@ -261,17 +261,17 @@ void QPackage::removeElementImport(QElementImport *elementImport)
  */
 const QSet<QConstraint *> *QPackage::ownedRules() const
 {
-    return (qumlobject_cast<const QNamespace *>(this))->ownedRules();
+    return (qmofobject_cast<const QNamespace *>(this))->ownedRules();
 }
 
 void QPackage::addOwnedRule(QConstraint *ownedRule)
 {
-    (qumlobject_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
+    (qmofobject_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
 }
 
 void QPackage::removeOwnedRule(QConstraint *ownedRule)
 {
-    (qumlobject_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
+    (qmofobject_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
 }
 
 /*!
@@ -279,7 +279,7 @@ void QPackage::removeOwnedRule(QConstraint *ownedRule)
  */
 const QSet<QNamedElement *> *QPackage::ownedMembers() const
 {
-    return (qumlobject_cast<const QNamespace *>(this))->ownedMembers();
+    return (qmofobject_cast<const QNamespace *>(this))->ownedMembers();
 }
 
 // ---------------------------------------------------------------
@@ -291,12 +291,12 @@ const QSet<QNamedElement *> *QPackage::ownedMembers() const
  */
 QTemplateParameter *QPackage::owningTemplateParameter() const
 {
-    return (qumlobject_cast<const QParameterableElement *>(this))->owningTemplateParameter();
+    return (qmofobject_cast<const QParameterableElement *>(this))->owningTemplateParameter();
 }
 
 void QPackage::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
 {
-    (qumlobject_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
+    (qmofobject_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
 }
 
 /*!
@@ -304,12 +304,12 @@ void QPackage::setOwningTemplateParameter(QTemplateParameter *owningTemplatePara
  */
 QTemplateParameter *QPackage::templateParameter() const
 {
-    return (qumlobject_cast<const QParameterableElement *>(this))->templateParameter();
+    return (qmofobject_cast<const QParameterableElement *>(this))->templateParameter();
 }
 
 void QPackage::setTemplateParameter(QTemplateParameter *templateParameter)
 {
-    (qumlobject_cast<QParameterableElement *>(this))->setTemplateParameter(templateParameter);
+    (qmofobject_cast<QParameterableElement *>(this))->setTemplateParameter(templateParameter);
 }
 
 // ---------------------------------------------------------------
@@ -321,12 +321,12 @@ void QPackage::setTemplateParameter(QTemplateParameter *templateParameter)
  */
 QtUml::VisibilityKind QPackage::visibility() const
 {
-    return (qumlobject_cast<const QPackageableElement *>(this))->visibility();
+    return (qmofobject_cast<const QPackageableElement *>(this))->visibility();
 }
 
 void QPackage::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qumlobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
+    (qmofobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
 }
 
 // ---------------------------------------------------------------
@@ -338,12 +338,12 @@ void QPackage::setVisibility(QtUml::VisibilityKind visibility)
  */
 QTemplateSignature *QPackage::ownedTemplateSignature() const
 {
-    return (qumlobject_cast<const QTemplateableElement *>(this))->ownedTemplateSignature();
+    return (qmofobject_cast<const QTemplateableElement *>(this))->ownedTemplateSignature();
 }
 
 void QPackage::setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature)
 {
-    (qumlobject_cast<QTemplateableElement *>(this))->setOwnedTemplateSignature(ownedTemplateSignature);
+    (qmofobject_cast<QTemplateableElement *>(this))->setOwnedTemplateSignature(ownedTemplateSignature);
 }
 
 /*!
@@ -351,17 +351,17 @@ void QPackage::setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignat
  */
 const QSet<QTemplateBinding *> *QPackage::templateBindings() const
 {
-    return (qumlobject_cast<const QTemplateableElement *>(this))->templateBindings();
+    return (qmofobject_cast<const QTemplateableElement *>(this))->templateBindings();
 }
 
 void QPackage::addTemplateBinding(QTemplateBinding *templateBinding)
 {
-    (qumlobject_cast<QTemplateableElement *>(this))->addTemplateBinding(templateBinding);
+    (qmofobject_cast<QTemplateableElement *>(this))->addTemplateBinding(templateBinding);
 }
 
 void QPackage::removeTemplateBinding(QTemplateBinding *templateBinding)
 {
-    (qumlobject_cast<QTemplateableElement *>(this))->removeTemplateBinding(templateBinding);
+    (qmofobject_cast<QTemplateableElement *>(this))->removeTemplateBinding(templateBinding);
 }
 
 // ---------------------------------------------------------------
@@ -404,7 +404,7 @@ const QSet<QType *> *QPackage::ownedTypes() const
     Q_D(const QPackage);
     QSet<QType *> *ownedTypes_ = new QSet<QType *>;
     foreach (QPackageableElement *packageableElement, *d->packagedElements)
-        if (QType *type = qumlobject_cast<QType *>(packageableElement))
+        if (QType *type = qmofobject_cast<QType *>(packageableElement))
             ownedTypes_->insert(type);
     return ownedTypes_;
 }
@@ -416,7 +416,7 @@ void QPackage::addOwnedType(QType *ownedType)
     Q_D(QPackage);
     if (!d->packagedElements->contains(ownedType)) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QPackage *>(this))->addPackagedElement(qumlobject_cast<QPackageableElement *>(ownedType));
+        (qmofobject_cast<QPackage *>(this))->addPackagedElement(qmofobject_cast<QPackageableElement *>(ownedType));
 
         // Adjust opposite property
         ownedType->setPackage(this);
@@ -430,7 +430,7 @@ void QPackage::removeOwnedType(QType *ownedType)
     Q_D(QPackage);
     if (d->packagedElements->contains(ownedType)) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QPackage *>(this))->removePackagedElement(qumlobject_cast<QPackageableElement *>(ownedType));
+        (qmofobject_cast<QPackage *>(this))->removePackagedElement(qmofobject_cast<QPackageableElement *>(ownedType));
 
         // Adjust opposite property
         ownedType->setPackage(0);
@@ -457,7 +457,7 @@ void QPackage::addPackagedElement(QPackageableElement *packagedElement)
         d->packagedElements->insert(packagedElement);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(packagedElement));
+        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(packagedElement));
     }
 }
 
@@ -470,7 +470,7 @@ void QPackage::removePackagedElement(QPackageableElement *packagedElement)
         d->packagedElements->remove(packagedElement);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(packagedElement));
+        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(packagedElement));
     }
 }
 
@@ -498,7 +498,7 @@ void QPackage::setNestingPackage(QPackage *nestingPackage)
         d->nestingPackage = nestingPackage;
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(nestingPackage));
+        (qmofobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qmofobject_cast<QNamespace *>(nestingPackage));
 
         // Adjust opposite property
         if (nestingPackage)
@@ -526,7 +526,7 @@ void QPackage::addProfileApplication(QProfileApplication *profileApplication)
         d->profileApplications->insert(profileApplication);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(profileApplication));
+        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(profileApplication));
 
         // Adjust opposite property
         profileApplication->setApplyingPackage(this);
@@ -542,7 +542,7 @@ void QPackage::removeProfileApplication(QProfileApplication *profileApplication)
         d->profileApplications->remove(profileApplication);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(profileApplication));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(profileApplication));
 
         // Adjust opposite property
         profileApplication->setApplyingPackage(0);
@@ -560,7 +560,7 @@ const QSet<QStereotype *> *QPackage::ownedStereotypes() const
     Q_D(const QPackage);
     QSet<QStereotype *> *ownedStereotypes_ = new QSet<QStereotype *>;
     foreach (QPackageableElement *packageableElement, *d->packagedElements)
-        if (QStereotype *stereotype = qumlobject_cast<QStereotype *>(packageableElement))
+        if (QStereotype *stereotype = qmofobject_cast<QStereotype *>(packageableElement))
             ownedStereotypes_->insert(stereotype);
     return ownedStereotypes_;
 }
@@ -585,7 +585,7 @@ void QPackage::addPackageMerge(QPackageMerge *packageMerge)
         d->packageMerges->insert(packageMerge);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(packageMerge));
+        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(packageMerge));
 
         // Adjust opposite property
         packageMerge->setReceivingPackage(this);
@@ -601,7 +601,7 @@ void QPackage::removePackageMerge(QPackageMerge *packageMerge)
         d->packageMerges->remove(packageMerge);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(packageMerge));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(packageMerge));
 
         // Adjust opposite property
         packageMerge->setReceivingPackage(0);
@@ -619,7 +619,7 @@ const QSet<QPackage *> *QPackage::nestedPackages() const
     Q_D(const QPackage);
     QSet<QPackage *> *nestedPackages_ = new QSet<QPackage *>;
     foreach (QPackageableElement *packageableElement, *d->packagedElements)
-        if (QPackage *package = qumlobject_cast<QPackage *>(packageableElement))
+        if (QPackage *package = qmofobject_cast<QPackage *>(packageableElement))
             nestedPackages_->insert(package);
     return nestedPackages_;
 }
@@ -629,9 +629,9 @@ void QPackage::addNestedPackage(QPackage *nestedPackage)
     // This is a read-write derived association end
 
     Q_D(QPackage);
-    if (!d->packagedElements->contains(qumlobject_cast<QPackageableElement *>(nestedPackage))) {
+    if (!d->packagedElements->contains(qmofobject_cast<QPackageableElement *>(nestedPackage))) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QPackage *>(this))->addPackagedElement(qumlobject_cast<QPackageableElement *>(nestedPackage));
+        (qmofobject_cast<QPackage *>(this))->addPackagedElement(qmofobject_cast<QPackageableElement *>(nestedPackage));
 
         // Adjust opposite property
         nestedPackage->setNestingPackage(this);
@@ -643,9 +643,9 @@ void QPackage::removeNestedPackage(QPackage *nestedPackage)
     // This is a read-write derived association end
 
     Q_D(QPackage);
-    if (d->packagedElements->contains(qumlobject_cast<QPackageableElement *>(nestedPackage))) {
+    if (d->packagedElements->contains(qmofobject_cast<QPackageableElement *>(nestedPackage))) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QPackage *>(this))->removePackagedElement(qumlobject_cast<QPackageableElement *>(nestedPackage));
+        (qmofobject_cast<QPackage *>(this))->removePackagedElement(qmofobject_cast<QPackageableElement *>(nestedPackage));
 
         // Adjust opposite property
         nestedPackage->setNestingPackage(0);
@@ -705,22 +705,22 @@ const QSet<QPackageableElement *> *QPackage::visibleMembers() const
 
 // Overriden methods for subsetted properties
 
-void QPackage::addPackagedElement(QUmlPointer<QType> ownedType)
+void QPackage::addPackagedElement(QtMof::QMofPointer<QType> ownedType)
 {
     addOwnedType(ownedType);
 }
 
-void QPackage::removePackagedElement(QUmlPointer<QType> ownedType)
+void QPackage::removePackagedElement(QtMof::QMofPointer<QType> ownedType)
 {
     removeOwnedType(ownedType);
 }
 
-void QPackage::addPackagedElement(QUmlPointer<QPackage> nestedPackage)
+void QPackage::addPackagedElement(QtMof::QMofPointer<QPackage> nestedPackage)
 {
     addNestedPackage(nestedPackage);
 }
 
-void QPackage::removePackagedElement(QUmlPointer<QPackage> nestedPackage)
+void QPackage::removePackagedElement(QtMof::QMofPointer<QPackage> nestedPackage)
 {
     removeNestedPackage(nestedPackage);
 }

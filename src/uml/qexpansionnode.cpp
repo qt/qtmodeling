@@ -64,12 +64,12 @@ QExpansionNodePrivate::~QExpansionNodePrivate()
     \brief An expansion node is an object node used to indicate a flow across the boundary of an expansion region. A flow into a region contains a collection that is broken into its individual elements inside the region, which is executed once per element. A flow out of a region combines individual elements into a collection for use outside the region.
  */
 
-QExpansionNode::QExpansionNode(QUmlObject *parent, QUmlObject *wrapper) :
+QExpansionNode::QExpansionNode(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QObjectNode(*new QExpansionNodePrivate, parent, wrapper)
 {
 }
 
-QExpansionNode::QExpansionNode(QExpansionNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QExpansionNode::QExpansionNode(QExpansionNodePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QObjectNode(dd, parent, wrapper)
 {
 }

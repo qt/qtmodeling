@@ -44,7 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtUml/QUmlObject>
+#include <QtMof/QMofObject>
 #include <QtUml/QDeployedArtifact>
 #include <QtUml/QClassifier>
 
@@ -53,7 +53,7 @@
 #include <QtCore/QList>
 #include <QtCore/QSet>
 
-#include <QtUml/QUmlPointer>
+#include <QtMof/QMofPointer>
 
 QT_BEGIN_HEADER
 
@@ -68,7 +68,7 @@ class QManifestation;
 
 class QArtifactPrivate;
 
-class Q_UML_EXPORT QArtifact : public QUmlObject
+class Q_UML_EXPORT QArtifact : public QtMof::QMofObject
 {
     Q_OBJECT
 
@@ -82,7 +82,7 @@ class Q_UML_EXPORT QArtifact : public QUmlObject
     Q_DECLARE_PRIVATE(QArtifact)
 
 public:
-    Q_INVOKABLE explicit QArtifact(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QArtifact(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QArtifact();
 
     // Association ends from aggregated QElement
@@ -204,11 +204,11 @@ public:
     Q_INVOKABLE void removeNestedArtifact(QArtifact *nestedArtifact);
 
     // Overriden methods for subsetted properties
-    Q_INVOKABLE void addClientDependency(QUmlPointer<QManifestation> manifestation);
-    Q_INVOKABLE void removeClientDependency(QUmlPointer<QManifestation> manifestation);
+    Q_INVOKABLE void addClientDependency(QtMof::QMofPointer<QManifestation> manifestation);
+    Q_INVOKABLE void removeClientDependency(QtMof::QMofPointer<QManifestation> manifestation);
 
 protected:
-    explicit QArtifact(QArtifactPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QArtifact(QArtifactPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 
 private:
     QDeployedArtifact *_wrappedDeployedArtifact;

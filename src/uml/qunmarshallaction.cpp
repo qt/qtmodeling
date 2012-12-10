@@ -68,12 +68,12 @@ QUnmarshallActionPrivate::~QUnmarshallActionPrivate()
     \brief An unmarshall action is an action that breaks an object of a known type into outputs each of which is equal to a value from a structural feature of the object.
  */
 
-QUnmarshallAction::QUnmarshallAction(QUmlObject *parent, QUmlObject *wrapper) :
+QUnmarshallAction::QUnmarshallAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QAction(*new QUnmarshallActionPrivate, parent, wrapper)
 {
 }
 
-QUnmarshallAction::QUnmarshallAction(QUnmarshallActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QUnmarshallAction::QUnmarshallAction(QUnmarshallActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
 }
@@ -104,13 +104,13 @@ void QUnmarshallAction::setObject(QInputPin *object)
     Q_D(QUnmarshallAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->object));
+        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(d->object));
 
         d->object = object;
 
         // Adjust subsetted property(ies)
         if (object) {
-            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(object));
+            (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(object));
         }
     }
 }
@@ -135,7 +135,7 @@ void QUnmarshallAction::addResult(QOutputPin *result)
         d->results->insert(result);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(result));
+        (qmofobject_cast<QActionPrivate *>(d))->addOutput(qmofobject_cast<QOutputPin *>(result));
     }
 }
 
@@ -148,7 +148,7 @@ void QUnmarshallAction::removeResult(QOutputPin *result)
         d->results->remove(result);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(result));
+        (qmofobject_cast<QActionPrivate *>(d))->removeOutput(qmofobject_cast<QOutputPin *>(result));
     }
 }
 

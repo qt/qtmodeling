@@ -70,7 +70,7 @@ class Q_UML_EXPORT QConnectorEnd : public QMultiplicityElement
     Q_DECLARE_PRIVATE(QConnectorEnd)
 
 public:
-    Q_INVOKABLE explicit QConnectorEnd(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QConnectorEnd(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QConnectorEnd();
 
     // Association ends from QConnectorEnd
@@ -81,7 +81,7 @@ public:
     Q_INVOKABLE QProperty *definingEnd() const;
 
 protected:
-    explicit QConnectorEnd(QConnectorEndPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QConnectorEnd(QConnectorEndPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

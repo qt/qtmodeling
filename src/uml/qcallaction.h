@@ -71,7 +71,7 @@ class Q_UML_EXPORT QCallAction : public QInvocationAction
     Q_DECLARE_PRIVATE(QCallAction)
 
 public:
-    Q_INVOKABLE explicit QCallAction(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QCallAction(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QCallAction();
 
     // Attributes from QCallAction
@@ -84,7 +84,7 @@ public:
     Q_INVOKABLE void removeResult(QOutputPin *result);
 
 protected:
-    explicit QCallAction(QCallActionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QCallAction(QCallActionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

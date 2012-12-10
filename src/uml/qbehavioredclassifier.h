@@ -49,7 +49,7 @@
 // Qt includes
 #include <QtCore/QSet>
 
-#include <QtUml/QUmlPointer>
+#include <QtMof/QMofPointer>
 
 QT_BEGIN_HEADER
 
@@ -75,7 +75,7 @@ class Q_UML_EXPORT QBehavioredClassifier : public QClassifier
     Q_DECLARE_PRIVATE(QBehavioredClassifier)
 
 public:
-    Q_INVOKABLE explicit QBehavioredClassifier(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QBehavioredClassifier(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QBehavioredClassifier();
 
     // Association ends from QBehavioredClassifier
@@ -89,11 +89,11 @@ public:
     Q_INVOKABLE void setClassifierBehavior(QBehavior *classifierBehavior);
 
     // Overriden methods for subsetted properties
-    Q_INVOKABLE void addClientDependency(QUmlPointer<QInterfaceRealization> interfaceRealization);
-    Q_INVOKABLE void removeClientDependency(QUmlPointer<QInterfaceRealization> interfaceRealization);
+    Q_INVOKABLE void addClientDependency(QtMof::QMofPointer<QInterfaceRealization> interfaceRealization);
+    Q_INVOKABLE void removeClientDependency(QtMof::QMofPointer<QInterfaceRealization> interfaceRealization);
 
 protected:
-    explicit QBehavioredClassifier(QBehavioredClassifierPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QBehavioredClassifier(QBehavioredClassifierPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

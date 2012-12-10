@@ -65,12 +65,12 @@ QDeploymentTargetPrivate::~QDeploymentTargetPrivate()
     \brief A deployment target is the location for a deployed artifact.
  */
 
-QDeploymentTarget::QDeploymentTarget(QUmlObject *parent, QUmlObject *wrapper) :
+QDeploymentTarget::QDeploymentTarget(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QNamedElement(*new QDeploymentTargetPrivate, parent, wrapper)
 {
 }
 
-QDeploymentTarget::QDeploymentTarget(QDeploymentTargetPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QDeploymentTarget::QDeploymentTarget(QDeploymentTargetPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
 }
@@ -115,8 +115,8 @@ void QDeploymentTarget::addDeployment(QDeployment *deployment)
         d->deployments->insert(deployment);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(deployment));
-        (qumlobject_cast<QNamedElement *>(this))->addClientDependency(qumlobject_cast<QDependency *>(deployment));
+        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(deployment));
+        (qmofobject_cast<QNamedElement *>(this))->addClientDependency(qmofobject_cast<QDependency *>(deployment));
 
         // Adjust opposite property
         deployment->setLocation(this);
@@ -132,8 +132,8 @@ void QDeploymentTarget::removeDeployment(QDeployment *deployment)
         d->deployments->remove(deployment);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(deployment));
-        (qumlobject_cast<QNamedElement *>(this))->removeClientDependency(qumlobject_cast<QDependency *>(deployment));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(deployment));
+        (qmofobject_cast<QNamedElement *>(this))->removeClientDependency(qmofobject_cast<QDependency *>(deployment));
 
         // Adjust opposite property
         deployment->setLocation(0);
@@ -142,12 +142,12 @@ void QDeploymentTarget::removeDeployment(QDeployment *deployment)
 
 // Overriden methods for subsetted properties
 
-void QDeploymentTarget::addClientDependency(QUmlPointer<QDeployment> deployment)
+void QDeploymentTarget::addClientDependency(QtMof::QMofPointer<QDeployment> deployment)
 {
     addDeployment(deployment);
 }
 
-void QDeploymentTarget::removeClientDependency(QUmlPointer<QDeployment> deployment)
+void QDeploymentTarget::removeClientDependency(QtMof::QMofPointer<QDeployment> deployment)
 {
     removeDeployment(deployment);
 }

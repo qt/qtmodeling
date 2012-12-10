@@ -80,12 +80,12 @@ void QRelationshipPrivate::removeRelatedElement(QElement *relatedElement)
     \brief Relationship is an abstract concept that specifies some kind of relationship between elements.
  */
 
-QRelationship::QRelationship(QUmlObject *parent, QUmlObject *wrapper) :
+QRelationship::QRelationship(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QElement(*new QRelationshipPrivate, parent, wrapper)
 {
 }
 
-QRelationship::QRelationship(QRelationshipPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QRelationship::QRelationship(QRelationshipPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
 }

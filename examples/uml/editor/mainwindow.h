@@ -8,6 +8,10 @@ namespace Ui {
     class MainWindow;
 }
 
+namespace QtMof {
+    class QMofObject;
+}
+
 namespace QtUml {
     class QNamedElement;
 }
@@ -29,7 +33,7 @@ private Q_SLOTS:
     void on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
     void on_propertyEditor_itemChanged(QTreeWidgetItem *item, int column);
     void currentIndexChanged(int index);
-    void populateModelExplorer(QObject *element, QTreeWidgetItem *parent = 0);
+    void populateModelExplorer(QtMof::QMofObject *element, QTreeWidgetItem *parent = 0);
     QTreeWidgetItem *parentItemForProperty(QString propertyGroup);
     void handleAddMethod();
     void refreshModel();
@@ -40,8 +44,8 @@ private:
     QMap< QString, QPair<int, QTreeWidgetItem *> > _visitedProperties;
     QMap< QString, QPair<QObject *, QMetaMethod> > _visitedAddMethods;
 
-    void handleObjectProperties(QObject *element, int level = 0);
-    void handleMetaObjectProperties(QObject *element, const QMetaObject *metaObject, int level = 0);
+    void handleObjectProperties(QtMof::QMofObject *element, int level = 0);
+    void handleMetaObjectProperties(QtMof::QMofObject *element, const QMetaObject *metaObject, int level = 0);
     void populateContextMenu(QMenu &menu, QObject *element);
 };
 

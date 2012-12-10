@@ -69,12 +69,12 @@ QReclassifyObjectActionPrivate::~QReclassifyObjectActionPrivate()
     \brief A reclassify object action is an action that changes which classifiers classify an object.
  */
 
-QReclassifyObjectAction::QReclassifyObjectAction(QUmlObject *parent, QUmlObject *wrapper) :
+QReclassifyObjectAction::QReclassifyObjectAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QAction(*new QReclassifyObjectActionPrivate, parent, wrapper)
 {
 }
 
-QReclassifyObjectAction::QReclassifyObjectAction(QReclassifyObjectActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QReclassifyObjectAction::QReclassifyObjectAction(QReclassifyObjectActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
 }
@@ -161,13 +161,13 @@ void QReclassifyObjectAction::setObject(QInputPin *object)
     Q_D(QReclassifyObjectAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->object));
+        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(d->object));
 
         d->object = object;
 
         // Adjust subsetted property(ies)
         if (object) {
-            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(object));
+            (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(object));
         }
     }
 }

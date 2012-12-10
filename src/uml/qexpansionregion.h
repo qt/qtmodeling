@@ -75,7 +75,7 @@ class Q_UML_EXPORT QExpansionRegion : public QStructuredActivityNode
     Q_DECLARE_PRIVATE(QExpansionRegion)
 
 public:
-    Q_INVOKABLE explicit QExpansionRegion(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QExpansionRegion(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QExpansionRegion();
 
     // Attributes from QExpansionRegion
@@ -91,7 +91,7 @@ public:
     Q_INVOKABLE void removeOutputElement(QExpansionNode *outputElement);
 
 protected:
-    explicit QExpansionRegion(QExpansionRegionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QExpansionRegion(QExpansionRegionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -73,7 +73,7 @@ class Q_UML_EXPORT QReplyAction : public QAction
     Q_DECLARE_PRIVATE(QReplyAction)
 
 public:
-    Q_INVOKABLE explicit QReplyAction(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QReplyAction(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QReplyAction();
 
     // Association ends from QReplyAction
@@ -86,7 +86,7 @@ public:
     Q_INVOKABLE void removeReplyValue(QInputPin *replyValue);
 
 protected:
-    explicit QReplyAction(QReplyActionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QReplyAction(QReplyActionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

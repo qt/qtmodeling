@@ -65,12 +65,12 @@ QWriteStructuralFeatureActionPrivate::~QWriteStructuralFeatureActionPrivate()
     \brief WriteStructuralFeatureAction is an abstract class for structural feature actions that change structural feature values.
  */
 
-QWriteStructuralFeatureAction::QWriteStructuralFeatureAction(QUmlObject *parent, QUmlObject *wrapper) :
+QWriteStructuralFeatureAction::QWriteStructuralFeatureAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QStructuralFeatureAction(*new QWriteStructuralFeatureActionPrivate, parent, wrapper)
 {
 }
 
-QWriteStructuralFeatureAction::QWriteStructuralFeatureAction(QWriteStructuralFeatureActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QWriteStructuralFeatureAction::QWriteStructuralFeatureAction(QWriteStructuralFeatureActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QStructuralFeatureAction(dd, parent, wrapper)
 {
 }
@@ -101,13 +101,13 @@ void QWriteStructuralFeatureAction::setResult(QOutputPin *result)
     Q_D(QWriteStructuralFeatureAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(d->result));
+        (qmofobject_cast<QActionPrivate *>(d))->removeOutput(qmofobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(result));
+            (qmofobject_cast<QActionPrivate *>(d))->addOutput(qmofobject_cast<QOutputPin *>(result));
         }
     }
 }
@@ -130,13 +130,13 @@ void QWriteStructuralFeatureAction::setValue(QInputPin *value)
     Q_D(QWriteStructuralFeatureAction);
     if (d->value != value) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->value));
+        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(d->value));
 
         d->value = value;
 
         // Adjust subsetted property(ies)
         if (value) {
-            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(value));
+            (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(value));
         }
     }
 }

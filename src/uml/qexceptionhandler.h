@@ -75,7 +75,7 @@ class Q_UML_EXPORT QExceptionHandler : public QElement
     Q_DECLARE_PRIVATE(QExceptionHandler)
 
 public:
-    Q_INVOKABLE explicit QExceptionHandler(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QExceptionHandler(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QExceptionHandler();
 
     // Association ends from QExceptionHandler
@@ -90,7 +90,7 @@ public:
     Q_INVOKABLE void setExceptionInput(QObjectNode *exceptionInput);
 
 protected:
-    explicit QExceptionHandler(QExceptionHandlerPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QExceptionHandler(QExceptionHandlerPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

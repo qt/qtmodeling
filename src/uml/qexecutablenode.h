@@ -70,7 +70,7 @@ class Q_UML_EXPORT QExecutableNode : public QActivityNode
     Q_DECLARE_PRIVATE(QExecutableNode)
 
 public:
-    Q_INVOKABLE explicit QExecutableNode(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QExecutableNode(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QExecutableNode();
 
     // Association ends from QExecutableNode
@@ -79,7 +79,7 @@ public:
     Q_INVOKABLE void removeHandler(QExceptionHandler *handler);
 
 protected:
-    explicit QExecutableNode(QExecutableNodePrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QExecutableNode(QExecutableNodePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

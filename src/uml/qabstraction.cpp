@@ -63,12 +63,12 @@ QAbstractionPrivate::~QAbstractionPrivate()
     \brief An abstraction is a relationship that relates two elements or sets of elements that represent the same concept at different levels of abstraction or from different viewpoints.
  */
 
-QAbstraction::QAbstraction(QUmlObject *parent, QUmlObject *wrapper) :
+QAbstraction::QAbstraction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QDependency(*new QAbstractionPrivate, parent, wrapper)
 {
 }
 
-QAbstraction::QAbstraction(QAbstractionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QAbstraction::QAbstraction(QAbstractionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QDependency(dd, parent, wrapper)
 {
 }
@@ -99,13 +99,13 @@ void QAbstraction::setMapping(QOpaqueExpression *mapping)
     Q_D(QAbstraction);
     if (d->mapping != mapping) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->mapping));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->mapping));
 
         d->mapping = mapping;
 
         // Adjust subsetted property(ies)
         if (mapping) {
-            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(mapping));
+            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(mapping));
         }
     }
 }

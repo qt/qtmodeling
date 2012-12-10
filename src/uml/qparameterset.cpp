@@ -67,12 +67,12 @@ QParameterSetPrivate::~QParameterSetPrivate()
     \brief A parameter set is an element that provides alternative sets of inputs or outputs that a behavior may use.
  */
 
-QParameterSet::QParameterSet(QUmlObject *parent, QUmlObject *wrapper) :
+QParameterSet::QParameterSet(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QNamedElement(*new QParameterSetPrivate, parent, wrapper)
 {
 }
 
-QParameterSet::QParameterSet(QParameterSetPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QParameterSet::QParameterSet(QParameterSetPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
 }
@@ -143,7 +143,7 @@ void QParameterSet::addCondition(QConstraint *condition)
         d->conditions->insert(condition);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(condition));
+        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(condition));
     }
 }
 
@@ -156,7 +156,7 @@ void QParameterSet::removeCondition(QConstraint *condition)
         d->conditions->remove(condition);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(condition));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(condition));
     }
 }
 

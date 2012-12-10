@@ -68,12 +68,12 @@ QConnectionPointReferencePrivate::~QConnectionPointReferencePrivate()
     \brief A connection point reference represents a usage (as part of a submachine state) of an entry/exit point defined in the statemachine reference by the submachine state.
  */
 
-QConnectionPointReference::QConnectionPointReference(QUmlObject *parent, QUmlObject *wrapper) :
+QConnectionPointReference::QConnectionPointReference(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QVertex(*new QConnectionPointReferencePrivate, parent, wrapper)
 {
 }
 
-QConnectionPointReference::QConnectionPointReference(QConnectionPointReferencePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QConnectionPointReference::QConnectionPointReference(QConnectionPointReferencePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QVertex(dd, parent, wrapper)
 {
 }
@@ -141,7 +141,7 @@ void QConnectionPointReference::setState(QState *state)
         d->state = state;
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(state));
+        (qmofobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qmofobject_cast<QNamespace *>(state));
 
         // Adjust opposite property
         if (state)

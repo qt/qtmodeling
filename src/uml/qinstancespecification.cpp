@@ -69,16 +69,16 @@ QInstanceSpecificationPrivate::~QInstanceSpecificationPrivate()
     \brief An instance specification has the capability of being a deployment target in a deployment relationship, in the case that it is an instance of a node. It is also has the capability of being a deployed artifact, if it is an instance of an artifact.An instance specification is a model element that represents an instance in a modeled system.
  */
 
-QInstanceSpecification::QInstanceSpecification(QUmlObject *parent, QUmlObject *wrapper) :
-    QUmlObject(*new QInstanceSpecificationPrivate, parent, wrapper),
+QInstanceSpecification::QInstanceSpecification(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+    QtMof::QMofObject(*new QInstanceSpecificationPrivate, parent, wrapper),
     _wrappedDeployedArtifact(new QDeployedArtifact(this, this)),
     _wrappedPackageableElement(new QPackageableElement(this, this)),
     _wrappedDeploymentTarget(new QDeploymentTarget(this, this))
 {
 }
 
-QInstanceSpecification::QInstanceSpecification(QInstanceSpecificationPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
-    QUmlObject(dd, parent, wrapper),
+QInstanceSpecification::QInstanceSpecification(QInstanceSpecificationPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+    QtMof::QMofObject(dd, parent, wrapper),
     _wrappedDeployedArtifact(new QDeployedArtifact(this, this)),
     _wrappedPackageableElement(new QPackageableElement(this, this)),
     _wrappedDeploymentTarget(new QDeploymentTarget(this, this))
@@ -98,7 +98,7 @@ QInstanceSpecification::~QInstanceSpecification()
  */
 const QSet<QElement *> *QInstanceSpecification::ownedElements() const
 {
-    return (qumlobject_cast<const QElement *>(this))->ownedElements();
+    return (qmofobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -106,7 +106,7 @@ const QSet<QElement *> *QInstanceSpecification::ownedElements() const
  */
 QElement *QInstanceSpecification::owner() const
 {
-    return (qumlobject_cast<const QElement *>(this))->owner();
+    return (qmofobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -114,17 +114,17 @@ QElement *QInstanceSpecification::owner() const
  */
 const QSet<QComment *> *QInstanceSpecification::ownedComments() const
 {
-    return (qumlobject_cast<const QElement *>(this))->ownedComments();
+    return (qmofobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QInstanceSpecification::addOwnedComment(QComment *ownedComment)
 {
-    (qumlobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qmofobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QInstanceSpecification::removeOwnedComment(QComment *ownedComment)
 {
-    (qumlobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qmofobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -136,12 +136,12 @@ void QInstanceSpecification::removeOwnedComment(QComment *ownedComment)
  */
 QString QInstanceSpecification::name() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->name();
+    return (qmofobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QInstanceSpecification::setName(QString name)
 {
-    (qumlobject_cast<QNamedElement *>(this))->setName(name);
+    (qmofobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -149,7 +149,7 @@ void QInstanceSpecification::setName(QString name)
  */
 QString QInstanceSpecification::qualifiedName() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qmofobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -161,12 +161,12 @@ QString QInstanceSpecification::qualifiedName() const
  */
 QStringExpression *QInstanceSpecification::nameExpression() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->nameExpression();
+    return (qmofobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QInstanceSpecification::setNameExpression(QStringExpression *nameExpression)
 {
-    (qumlobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qmofobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -174,7 +174,7 @@ void QInstanceSpecification::setNameExpression(QStringExpression *nameExpression
  */
 QNamespace *QInstanceSpecification::namespace_() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->namespace_();
+    return (qmofobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -182,17 +182,17 @@ QNamespace *QInstanceSpecification::namespace_() const
  */
 const QSet<QDependency *> *QInstanceSpecification::clientDependencies() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qmofobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QInstanceSpecification::addClientDependency(QDependency *clientDependency)
 {
-    (qumlobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qmofobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QInstanceSpecification::removeClientDependency(QDependency *clientDependency)
 {
-    (qumlobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qmofobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -204,12 +204,12 @@ void QInstanceSpecification::removeClientDependency(QDependency *clientDependenc
  */
 QTemplateParameter *QInstanceSpecification::owningTemplateParameter() const
 {
-    return (qumlobject_cast<const QParameterableElement *>(this))->owningTemplateParameter();
+    return (qmofobject_cast<const QParameterableElement *>(this))->owningTemplateParameter();
 }
 
 void QInstanceSpecification::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
 {
-    (qumlobject_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
+    (qmofobject_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
 }
 
 /*!
@@ -217,12 +217,12 @@ void QInstanceSpecification::setOwningTemplateParameter(QTemplateParameter *owni
  */
 QTemplateParameter *QInstanceSpecification::templateParameter() const
 {
-    return (qumlobject_cast<const QParameterableElement *>(this))->templateParameter();
+    return (qmofobject_cast<const QParameterableElement *>(this))->templateParameter();
 }
 
 void QInstanceSpecification::setTemplateParameter(QTemplateParameter *templateParameter)
 {
-    (qumlobject_cast<QParameterableElement *>(this))->setTemplateParameter(templateParameter);
+    (qmofobject_cast<QParameterableElement *>(this))->setTemplateParameter(templateParameter);
 }
 
 // ---------------------------------------------------------------
@@ -234,12 +234,12 @@ void QInstanceSpecification::setTemplateParameter(QTemplateParameter *templatePa
  */
 QtUml::VisibilityKind QInstanceSpecification::visibility() const
 {
-    return (qumlobject_cast<const QPackageableElement *>(this))->visibility();
+    return (qmofobject_cast<const QPackageableElement *>(this))->visibility();
 }
 
 void QInstanceSpecification::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qumlobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
+    (qmofobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
 }
 
 // ---------------------------------------------------------------
@@ -251,7 +251,7 @@ void QInstanceSpecification::setVisibility(QtUml::VisibilityKind visibility)
  */
 const QSet<QPackageableElement *> *QInstanceSpecification::deployedElements() const
 {
-    return (qumlobject_cast<const QDeploymentTarget *>(this))->deployedElements();
+    return (qmofobject_cast<const QDeploymentTarget *>(this))->deployedElements();
 }
 
 /*!
@@ -259,17 +259,17 @@ const QSet<QPackageableElement *> *QInstanceSpecification::deployedElements() co
  */
 const QSet<QDeployment *> *QInstanceSpecification::deployments() const
 {
-    return (qumlobject_cast<const QDeploymentTarget *>(this))->deployments();
+    return (qmofobject_cast<const QDeploymentTarget *>(this))->deployments();
 }
 
 void QInstanceSpecification::addDeployment(QDeployment *deployment)
 {
-    (qumlobject_cast<QDeploymentTarget *>(this))->addDeployment(deployment);
+    (qmofobject_cast<QDeploymentTarget *>(this))->addDeployment(deployment);
 }
 
 void QInstanceSpecification::removeDeployment(QDeployment *deployment)
 {
-    (qumlobject_cast<QDeploymentTarget *>(this))->removeDeployment(deployment);
+    (qmofobject_cast<QDeploymentTarget *>(this))->removeDeployment(deployment);
 }
 
 // ---------------------------------------------------------------
@@ -325,13 +325,13 @@ void QInstanceSpecification::setSpecification(QValueSpecification *specification
     Q_D(QInstanceSpecification);
     if (d->specification != specification) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->specification));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->specification));
 
         d->specification = specification;
 
         // Adjust subsetted property(ies)
         if (specification) {
-            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(specification));
+            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(specification));
         }
     }
 }
@@ -356,7 +356,7 @@ void QInstanceSpecification::addSlot_(QSlot *slot_)
         d->slots_->insert(slot_);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(slot_));
+        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(slot_));
 
         // Adjust opposite property
         slot_->setOwningInstance(this);
@@ -372,7 +372,7 @@ void QInstanceSpecification::removeSlot_(QSlot *slot_)
         d->slots_->remove(slot_);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(slot_));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(slot_));
 
         // Adjust opposite property
         slot_->setOwningInstance(0);

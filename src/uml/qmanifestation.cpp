@@ -63,12 +63,12 @@ QManifestationPrivate::~QManifestationPrivate()
     \brief A manifestation is the concrete physical rendering of one or more model elements by an artifact.
  */
 
-QManifestation::QManifestation(QUmlObject *parent, QUmlObject *wrapper) :
+QManifestation::QManifestation(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QAbstraction(*new QManifestationPrivate, parent, wrapper)
 {
 }
 
-QManifestation::QManifestation(QManifestationPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QManifestation::QManifestation(QManifestationPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QAbstraction(dd, parent, wrapper)
 {
 }
@@ -99,25 +99,25 @@ void QManifestation::setUtilizedElement(QPackageableElement *utilizedElement)
     Q_D(QManifestation);
     if (d->utilizedElement != utilizedElement) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QDependency *>(this))->removeSupplier(qumlobject_cast<QNamedElement *>(d->utilizedElement));
+        (qmofobject_cast<QDependency *>(this))->removeSupplier(qmofobject_cast<QNamedElement *>(d->utilizedElement));
 
         d->utilizedElement = utilizedElement;
 
         // Adjust subsetted property(ies)
         if (utilizedElement) {
-            (qumlobject_cast<QDependency *>(this))->addSupplier(qumlobject_cast<QNamedElement *>(utilizedElement));
+            (qmofobject_cast<QDependency *>(this))->addSupplier(qmofobject_cast<QNamedElement *>(utilizedElement));
         }
     }
 }
 
 // Overriden methods for subsetted properties
 
-void QManifestation::addSupplier(QUmlPointer<QPackageableElement> utilizedElement)
+void QManifestation::addSupplier(QtMof::QMofPointer<QPackageableElement> utilizedElement)
 {
     setUtilizedElement(utilizedElement);
 }
 
-void QManifestation::removeSupplier(QUmlPointer<QPackageableElement> utilizedElement)
+void QManifestation::removeSupplier(QtMof::QMofPointer<QPackageableElement> utilizedElement)
 {
     Q_UNUSED(utilizedElement);
     setUtilizedElement(0);

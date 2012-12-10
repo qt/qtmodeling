@@ -72,12 +72,12 @@ QInteractionUsePrivate::~QInteractionUsePrivate()
     \brief An interaction use refers to an interaction. The interaction use is a shorthand for copying the contents of the referenced interaction where the interaction use is. To be accurate the copying must take into account substituting parameters with arguments and connect the formal gates with the actual ones.
  */
 
-QInteractionUse::QInteractionUse(QUmlObject *parent, QUmlObject *wrapper) :
+QInteractionUse::QInteractionUse(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QInteractionFragment(*new QInteractionUsePrivate, parent, wrapper)
 {
 }
 
-QInteractionUse::QInteractionUse(QInteractionUsePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QInteractionUse::QInteractionUse(QInteractionUsePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QInteractionFragment(dd, parent, wrapper)
 {
 }
@@ -110,7 +110,7 @@ void QInteractionUse::addActualGate(QGate *actualGate)
         d->actualGates->insert(actualGate);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(actualGate));
+        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(actualGate));
     }
 }
 
@@ -123,7 +123,7 @@ void QInteractionUse::removeActualGate(QGate *actualGate)
         d->actualGates->remove(actualGate);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(actualGate));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(actualGate));
     }
 }
 
@@ -145,13 +145,13 @@ void QInteractionUse::setReturnValue(QValueSpecification *returnValue)
     Q_D(QInteractionUse);
     if (d->returnValue != returnValue) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->returnValue));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->returnValue));
 
         d->returnValue = returnValue;
 
         // Adjust subsetted property(ies)
         if (returnValue) {
-            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(returnValue));
+            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(returnValue));
         }
     }
 }
@@ -197,7 +197,7 @@ void QInteractionUse::addArgument(QValueSpecification *argument)
         d->arguments->append(argument);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(argument));
+        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(argument));
     }
 }
 
@@ -210,7 +210,7 @@ void QInteractionUse::removeArgument(QValueSpecification *argument)
         d->arguments->removeAll(argument);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(argument));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(argument));
     }
 }
 

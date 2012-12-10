@@ -42,7 +42,7 @@
 #define QTUML_QNODE_P_H
 
 // Base class includes
-#include "private/qumlobject_p.h"
+#include "private/qmofobject_p.h"
 #include "private/qclass_p.h"
 #include "private/qdeploymenttarget_p.h"
 
@@ -60,7 +60,7 @@ QT_MODULE(QtUml)
 // Forward decls for function parameters
 class QNode;
 
-class Q_UML_EXPORT QNodePrivate : public QUmlObjectPrivate
+class Q_UML_EXPORT QNodePrivate : public QtMof::QMofObjectPrivate
 {
     Q_DECLARE_PUBLIC(QNode)
 

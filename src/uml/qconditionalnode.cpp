@@ -69,12 +69,12 @@ QConditionalNodePrivate::~QConditionalNodePrivate()
     \brief A conditional node is a structured activity node that represents an exclusive choice among some number of alternatives.
  */
 
-QConditionalNode::QConditionalNode(QUmlObject *parent, QUmlObject *wrapper) :
+QConditionalNode::QConditionalNode(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QStructuredActivityNode(*new QConditionalNodePrivate, parent, wrapper)
 {
 }
 
-QConditionalNode::QConditionalNode(QConditionalNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QConditionalNode::QConditionalNode(QConditionalNodePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QStructuredActivityNode(dd, parent, wrapper)
 {
 }
@@ -153,7 +153,7 @@ void QConditionalNode::addClause(QClause *clause)
         d->clauses->insert(clause);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(clause));
+        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(clause));
     }
 }
 
@@ -166,7 +166,7 @@ void QConditionalNode::removeClause(QClause *clause)
         d->clauses->remove(clause);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(clause));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(clause));
     }
 }
 
@@ -188,7 +188,7 @@ void QConditionalNode::addResult(QOutputPin *result)
     Q_D(QConditionalNode);
     if (!d->results->contains(result)) {
         d->results->append(result);
-        quml_topLevelWrapper(result)->setParent(quml_topLevelWrapper(this));
+        qmof_topLevelWrapper(result)->setParent(qmof_topLevelWrapper(this));
     }
 }
 
@@ -199,7 +199,7 @@ void QConditionalNode::removeResult(QOutputPin *result)
     Q_D(QConditionalNode);
     if (d->results->contains(result)) {
         d->results->removeAll(result);
-        quml_topLevelWrapper(result)->setParent(0);
+        qmof_topLevelWrapper(result)->setParent(0);
     }
 }
 

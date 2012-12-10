@@ -67,7 +67,7 @@ class Q_UML_EXPORT QInstanceValue : public QValueSpecification
     Q_DECLARE_PRIVATE(QInstanceValue)
 
 public:
-    Q_INVOKABLE explicit QInstanceValue(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QInstanceValue(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QInstanceValue();
 
     // Association ends from QInstanceValue
@@ -75,7 +75,7 @@ public:
     Q_INVOKABLE void setInstance(QInstanceSpecification *instance);
 
 protected:
-    explicit QInstanceValue(QInstanceValuePrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QInstanceValue(QInstanceValuePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
