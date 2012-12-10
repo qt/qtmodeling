@@ -13,10 +13,11 @@ declare function qtxmi:typeStringFromProperty ($properties as node()*) as xs:str
 
 declare function qtxmi:mappedBaseNamespace($xmiFile as xs:string*) as xs:string* {
          if ($xmiFile = "PrimitiveTypes.xmi") then ""
-    else if ($xmiFile = "Superstructure.xmi") then "QtUml::"
+    else if ($xmiFile = "Superstructure.xmi") then "QtUml"
     else if ($xmiFile = "UML.xmi") then "QtUml"
-    else if ($xmiFile = "MOF.xmi") then "QtMof::"
-    else "QtUnknown::"
+    else if ($xmiFile = "MOF.xmi") then "QtMof"
+    else if ($xmiFile = "MOF-merged.xmi") then "QtMof"
+    else "QtUnknown"
 };
 
 declare function qtxmi:namespaceFromTypeString ($types as xs:string*) as xs:string* {
@@ -39,9 +40,8 @@ declare function qtxmi:namespaceFromProperty ($properties as node()*) as xs:stri
 
 declare function qtxmi:unqualifiedTypeFromTypeString ($types as xs:string*) as xs:string* {
     for $type in $types
-    let $namespace := tokenize(tokenize(tokenize($type, "/")[last()], "#")[last()], "-")[1]
     let $unqualifiedType := tokenize(tokenize(tokenize($type, "/")[last()], "#")[last()], "-")[last()]
-    return if ($unqualifiedType != $namespace and $unqualifiedType = "Object") then
+    return if ($unqualifiedType = "Object") then
                "MofObject"
            else
                $unqualifiedType
