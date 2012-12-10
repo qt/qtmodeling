@@ -59,12 +59,12 @@ QLinkPrivate::~QLinkPrivate()
 }
 
 
-QLink::QLink(QMofObject *parent, QMofObject *wrapper) :
+QLink::QLink(QWrappedObject *parent, QWrappedObject *wrapper) :
     QMofObject(*new QLinkPrivate, parent, wrapper)
 {
 }
 
-QLink::QLink(QLinkPrivate &dd, QMofObject *parent, QMofObject *wrapper) :
+QLink::QLink(QLinkPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QMofObject(dd, parent, wrapper)
 {
 }

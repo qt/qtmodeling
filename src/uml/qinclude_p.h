@@ -42,7 +42,8 @@
 #define QTUML_QINCLUDE_P_H
 
 // Base class includes
-#include "private/qmofobject_p.h"
+#include "private/qwrappedobject_p.h"
+using QtWrappedObjects::QWrappedObjectPrivate;
 #include "private/qdirectedrelationship_p.h"
 #include "private/qnamedelement_p.h"
 
@@ -58,7 +59,7 @@ QT_MODULE(QtUml)
 class QUseCase;
 class QInclude;
 
-class Q_UML_EXPORT QIncludePrivate : public QtMof::QMofObjectPrivate
+class Q_UML_EXPORT QIncludePrivate : public QWrappedObjectPrivate
 {
     Q_DECLARE_PUBLIC(QInclude)
 

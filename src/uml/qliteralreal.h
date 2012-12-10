@@ -64,7 +64,7 @@ class Q_UML_EXPORT QLiteralReal : public QLiteralSpecification
     Q_DECLARE_PRIVATE(QLiteralReal)
 
 public:
-    Q_INVOKABLE explicit QLiteralReal(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QLiteralReal(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QLiteralReal();
 
     // Attributes from QLiteralReal
@@ -76,7 +76,7 @@ public:
     Q_INVOKABLE qreal realValue() const;
 
 protected:
-    explicit QLiteralReal(QLiteralRealPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QLiteralReal(QLiteralRealPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

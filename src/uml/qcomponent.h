@@ -77,7 +77,7 @@ class Q_UML_EXPORT QComponent : public QClass
     Q_DECLARE_PRIVATE(QComponent)
 
 public:
-    Q_INVOKABLE explicit QComponent(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QComponent(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QComponent();
 
     // Attributes from QComponent
@@ -99,7 +99,7 @@ public:
     Q_INVOKABLE const QSet<QInterface *> *usedInterfaces(const QClassifier *classifier) const;
 
 protected:
-    explicit QComponent(QComponentPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QComponent(QComponentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

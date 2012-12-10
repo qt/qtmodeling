@@ -62,11 +62,11 @@ class Q_UML_EXPORT QPrimitiveType : public QDataType
     Q_DECLARE_PRIVATE(QPrimitiveType)
 
 public:
-    Q_INVOKABLE explicit QPrimitiveType(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QPrimitiveType(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QPrimitiveType();
 
 protected:
-    explicit QPrimitiveType(QPrimitiveTypePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QPrimitiveType(QPrimitiveTypePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

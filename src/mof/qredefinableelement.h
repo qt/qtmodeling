@@ -72,7 +72,7 @@ class Q_MOF_EXPORT QRedefinableElement : public QNamedElement
     Q_DECLARE_PRIVATE(QRedefinableElement)
 
 public:
-    Q_INVOKABLE explicit QRedefinableElement(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QRedefinableElement(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QRedefinableElement();
 
     // Attributes from QRedefinableElement
@@ -88,7 +88,7 @@ public:
     Q_INVOKABLE bool isRedefinitionContextValid(const QRedefinableElement *redefined) const;
 
 protected:
-    explicit QRedefinableElement(QRedefinableElementPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QRedefinableElement(QRedefinableElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

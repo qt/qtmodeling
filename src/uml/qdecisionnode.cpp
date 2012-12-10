@@ -65,12 +65,12 @@ QDecisionNodePrivate::~QDecisionNodePrivate()
     \brief A decision node is a control node that chooses between outgoing flows.
  */
 
-QDecisionNode::QDecisionNode(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QDecisionNode::QDecisionNode(QWrappedObject *parent, QWrappedObject *wrapper) :
     QControlNode(*new QDecisionNodePrivate, parent, wrapper)
 {
 }
 
-QDecisionNode::QDecisionNode(QDecisionNodePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QDecisionNode::QDecisionNode(QDecisionNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QControlNode(dd, parent, wrapper)
 {
 }

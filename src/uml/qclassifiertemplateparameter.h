@@ -72,7 +72,7 @@ class Q_UML_EXPORT QClassifierTemplateParameter : public QTemplateParameter
     Q_DECLARE_PRIVATE(QClassifierTemplateParameter)
 
 public:
-    Q_INVOKABLE explicit QClassifierTemplateParameter(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QClassifierTemplateParameter(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QClassifierTemplateParameter();
 
     // Attributes from QClassifierTemplateParameter
@@ -87,7 +87,7 @@ public:
     Q_INVOKABLE void removeConstrainingClassifier(QClassifier *constrainingClassifier);
 
 protected:
-    explicit QClassifierTemplateParameter(QClassifierTemplateParameterPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QClassifierTemplateParameter(QClassifierTemplateParameterPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

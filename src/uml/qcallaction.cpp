@@ -65,12 +65,12 @@ QCallActionPrivate::~QCallActionPrivate()
     \brief CallAction is an abstract class for actions that invoke behavior and receive return values.
  */
 
-QCallAction::QCallAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QCallAction::QCallAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QInvocationAction(*new QCallActionPrivate, parent, wrapper)
 {
 }
 
-QCallAction::QCallAction(QCallActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QCallAction::QCallAction(QCallActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QInvocationAction(dd, parent, wrapper)
 {
 }
@@ -128,7 +128,7 @@ void QCallAction::addResult(QOutputPin *result)
         d->results->append(result);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->addOutput(qmofobject_cast<QOutputPin *>(result));
+        (qwrappedobject_cast<QActionPrivate *>(d))->addOutput(qwrappedobject_cast<QOutputPin *>(result));
     }
 }
 
@@ -141,7 +141,7 @@ void QCallAction::removeResult(QOutputPin *result)
         d->results->removeAll(result);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeOutput(qmofobject_cast<QOutputPin *>(result));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QOutputPin *>(result));
     }
 }
 

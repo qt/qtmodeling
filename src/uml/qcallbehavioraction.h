@@ -67,7 +67,7 @@ class Q_UML_EXPORT QCallBehaviorAction : public QCallAction
     Q_DECLARE_PRIVATE(QCallBehaviorAction)
 
 public:
-    Q_INVOKABLE explicit QCallBehaviorAction(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QCallBehaviorAction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QCallBehaviorAction();
 
     // Association ends from QCallBehaviorAction
@@ -75,7 +75,7 @@ public:
     Q_INVOKABLE void setBehavior(QBehavior *behavior);
 
 protected:
-    explicit QCallBehaviorAction(QCallBehaviorActionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QCallBehaviorAction(QCallBehaviorActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

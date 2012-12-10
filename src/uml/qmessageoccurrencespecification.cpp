@@ -60,15 +60,15 @@ QMessageOccurrenceSpecificationPrivate::~QMessageOccurrenceSpecificationPrivate(
     \brief A message occurrence specification pecifies the occurrence of message events, such as sending and receiving of signals or invoking or receiving of operation calls. A message occurrence specification is a kind of message end. Messages are generated either by synchronous operation calls or asynchronous signal sends. They are received by the execution of corresponding accept event actions.
  */
 
-QMessageOccurrenceSpecification::QMessageOccurrenceSpecification(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
-    QtMof::QMofObject(*new QMessageOccurrenceSpecificationPrivate, parent, wrapper),
+QMessageOccurrenceSpecification::QMessageOccurrenceSpecification(QWrappedObject *parent, QWrappedObject *wrapper) :
+    QWrappedObject(*new QMessageOccurrenceSpecificationPrivate, parent, wrapper),
     _wrappedOccurrenceSpecification(new QOccurrenceSpecification(this, this)),
     _wrappedMessageEnd(new QMessageEnd(this, this))
 {
 }
 
-QMessageOccurrenceSpecification::QMessageOccurrenceSpecification(QMessageOccurrenceSpecificationPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
-    QtMof::QMofObject(dd, parent, wrapper),
+QMessageOccurrenceSpecification::QMessageOccurrenceSpecification(QMessageOccurrenceSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
+    QWrappedObject(dd, parent, wrapper),
     _wrappedOccurrenceSpecification(new QOccurrenceSpecification(this, this)),
     _wrappedMessageEnd(new QMessageEnd(this, this))
 {
@@ -87,7 +87,7 @@ QMessageOccurrenceSpecification::~QMessageOccurrenceSpecification()
  */
 const QSet<QElement *> *QMessageOccurrenceSpecification::ownedElements() const
 {
-    return (qmofobject_cast<const QElement *>(this))->ownedElements();
+    return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -95,7 +95,7 @@ const QSet<QElement *> *QMessageOccurrenceSpecification::ownedElements() const
  */
 QElement *QMessageOccurrenceSpecification::owner() const
 {
-    return (qmofobject_cast<const QElement *>(this))->owner();
+    return (qwrappedobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -103,17 +103,17 @@ QElement *QMessageOccurrenceSpecification::owner() const
  */
 const QSet<QComment *> *QMessageOccurrenceSpecification::ownedComments() const
 {
-    return (qmofobject_cast<const QElement *>(this))->ownedComments();
+    return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QMessageOccurrenceSpecification::addOwnedComment(QComment *ownedComment)
 {
-    (qmofobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qwrappedobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QMessageOccurrenceSpecification::removeOwnedComment(QComment *ownedComment)
 {
-    (qmofobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qwrappedobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -125,12 +125,12 @@ void QMessageOccurrenceSpecification::removeOwnedComment(QComment *ownedComment)
  */
 QString QMessageOccurrenceSpecification::name() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->name();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QMessageOccurrenceSpecification::setName(QString name)
 {
-    (qmofobject_cast<QNamedElement *>(this))->setName(name);
+    (qwrappedobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -138,12 +138,12 @@ void QMessageOccurrenceSpecification::setName(QString name)
  */
 QtUml::VisibilityKind QMessageOccurrenceSpecification::visibility() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->visibility();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->visibility();
 }
 
 void QMessageOccurrenceSpecification::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qmofobject_cast<QNamedElement *>(this))->setVisibility(visibility);
+    (qwrappedobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
 
 /*!
@@ -151,7 +151,7 @@ void QMessageOccurrenceSpecification::setVisibility(QtUml::VisibilityKind visibi
  */
 QString QMessageOccurrenceSpecification::qualifiedName() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -163,12 +163,12 @@ QString QMessageOccurrenceSpecification::qualifiedName() const
  */
 QStringExpression *QMessageOccurrenceSpecification::nameExpression() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->nameExpression();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QMessageOccurrenceSpecification::setNameExpression(QStringExpression *nameExpression)
 {
-    (qmofobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qwrappedobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -176,7 +176,7 @@ void QMessageOccurrenceSpecification::setNameExpression(QStringExpression *nameE
  */
 QNamespace *QMessageOccurrenceSpecification::namespace_() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->namespace_();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -184,17 +184,17 @@ QNamespace *QMessageOccurrenceSpecification::namespace_() const
  */
 const QSet<QDependency *> *QMessageOccurrenceSpecification::clientDependencies() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QMessageOccurrenceSpecification::addClientDependency(QDependency *clientDependency)
 {
-    (qmofobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qwrappedobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QMessageOccurrenceSpecification::removeClientDependency(QDependency *clientDependency)
 {
-    (qmofobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qwrappedobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -206,12 +206,12 @@ void QMessageOccurrenceSpecification::removeClientDependency(QDependency *client
  */
 QMessage *QMessageOccurrenceSpecification::message() const
 {
-    return (qmofobject_cast<const QMessageEnd *>(this))->message();
+    return (qwrappedobject_cast<const QMessageEnd *>(this))->message();
 }
 
 void QMessageOccurrenceSpecification::setMessage(QMessage *message)
 {
-    (qmofobject_cast<QMessageEnd *>(this))->setMessage(message);
+    (qwrappedobject_cast<QMessageEnd *>(this))->setMessage(message);
 }
 
 #include "moc_qmessageoccurrencespecification.cpp"

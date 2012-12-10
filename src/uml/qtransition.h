@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtMof/QMofObject>
+#include <QtWrappedObjects/QWrappedObject>
+using QtWrappedObjects::QWrappedObject;
 #include <QtUml/QRedefinableElement>
 #include <QtUml/QNamespace>
 
@@ -71,7 +72,7 @@ class QBehavior;
 
 class QTransitionPrivate;
 
-class Q_UML_EXPORT QTransition : public QtMof::QMofObject
+class Q_UML_EXPORT QTransition : public QWrappedObject
 {
     Q_OBJECT
 
@@ -89,7 +90,7 @@ class Q_UML_EXPORT QTransition : public QtMof::QMofObject
     Q_DECLARE_PRIVATE(QTransition)
 
 public:
-    Q_INVOKABLE explicit QTransition(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QTransition(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QTransition();
 
     // Association ends from aggregated QElement
@@ -162,7 +163,7 @@ public:
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
 
 protected:
-    explicit QTransition(QTransitionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QTransition(QTransitionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 
 private:
     QRedefinableElement *_wrappedRedefinableElement;

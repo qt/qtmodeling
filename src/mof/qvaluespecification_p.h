@@ -42,7 +42,8 @@
 #define QTMOF_QVALUESPECIFICATION_P_H
 
 // Base class includes
-#include "private/qmofobject_p.h"
+#include "private/qwrappedobject_p.h"
+using QtWrappedObjects::QWrappedObjectPrivate;
 #include "private/qpackageableelement_p.h"
 #include "private/qtypedelement_p.h"
 
@@ -57,7 +58,7 @@ QT_BEGIN_NAMESPACE_QTMOF
 
 QT_MODULE(QtMof)
 
-class Q_MOF_EXPORT QValueSpecificationPrivate : public QMofObjectPrivate
+class Q_MOF_EXPORT QValueSpecificationPrivate : public QWrappedObjectPrivate
 {
     Q_DECLARE_PUBLIC(QValueSpecification)
 

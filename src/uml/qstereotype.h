@@ -72,7 +72,7 @@ class Q_UML_EXPORT QStereotype : public QClass
     Q_DECLARE_PRIVATE(QStereotype)
 
 public:
-    Q_INVOKABLE explicit QStereotype(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QStereotype(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QStereotype();
 
     // Association ends from QStereotype
@@ -85,7 +85,7 @@ public:
     Q_INVOKABLE QProfile *containingProfile() const;
 
 protected:
-    explicit QStereotype(QStereotypePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QStereotype(QStereotypePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -63,12 +63,12 @@ QTypePrivate::~QTypePrivate()
     \brief A type is a named element that is used as the type for a typed element. A type can be contained in a package.A type constrains the values represented by a typed element.
  */
 
-QType::QType(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QType::QType(QWrappedObject *parent, QWrappedObject *wrapper) :
     QPackageableElement(*new QTypePrivate, parent, wrapper)
 {
 }
 
-QType::QType(QTypePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QType::QType(QTypePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QPackageableElement(dd, parent, wrapper)
 {
 }
@@ -105,7 +105,7 @@ void QType::setPackage(QPackage *package)
         d->package = package;
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qmofobject_cast<QNamespace *>(package));
+        (qwrappedobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QNamespace *>(package));
 
         // Adjust opposite property
         if (package)

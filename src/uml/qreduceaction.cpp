@@ -68,12 +68,12 @@ QReduceActionPrivate::~QReduceActionPrivate()
     \brief A reduce action is an action that reduces a collection to a single value by combining the elements of the collection.
  */
 
-QReduceAction::QReduceAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QReduceAction::QReduceAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QReduceActionPrivate, parent, wrapper)
 {
 }
 
-QReduceAction::QReduceAction(QReduceActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QReduceAction::QReduceAction(QReduceActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
 }
@@ -129,13 +129,13 @@ void QReduceAction::setResult(QOutputPin *result)
     Q_D(QReduceAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeOutput(qmofobject_cast<QOutputPin *>(d->result));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qmofobject_cast<QActionPrivate *>(d))->addOutput(qmofobject_cast<QOutputPin *>(result));
+            (qwrappedobject_cast<QActionPrivate *>(d))->addOutput(qwrappedobject_cast<QOutputPin *>(result));
         }
     }
 }
@@ -158,13 +158,13 @@ void QReduceAction::setCollection(QInputPin *collection)
     Q_D(QReduceAction);
     if (d->collection != collection) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(d->collection));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeInput(qwrappedobject_cast<QInputPin *>(d->collection));
 
         d->collection = collection;
 
         // Adjust subsetted property(ies)
         if (collection) {
-            (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(collection));
+            (qwrappedobject_cast<QActionPrivate *>(d))->addInput(qwrappedobject_cast<QInputPin *>(collection));
         }
     }
 }

@@ -77,7 +77,7 @@ class Q_MOF_EXPORT QFactory : public QElement
     Q_DECLARE_PRIVATE(QFactory)
 
 public:
-    Q_INVOKABLE explicit QFactory(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QFactory(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QFactory();
 
     // Attributes from QFactory
@@ -92,7 +92,7 @@ public:
     Q_INVOKABLE QLink *createLink(const QAssociation *association, const QElement *firstElement, const QElement *secondElement);
 
 protected:
-    explicit QFactory(QFactoryPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QFactory(QFactoryPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

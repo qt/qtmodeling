@@ -64,7 +64,7 @@ class Q_UML_EXPORT QLiteralBoolean : public QLiteralSpecification
     Q_DECLARE_PRIVATE(QLiteralBoolean)
 
 public:
-    Q_INVOKABLE explicit QLiteralBoolean(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QLiteralBoolean(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QLiteralBoolean();
 
     // Attributes from QLiteralBoolean
@@ -76,7 +76,7 @@ public:
     Q_INVOKABLE bool isComputable() const;
 
 protected:
-    explicit QLiteralBoolean(QLiteralBooleanPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QLiteralBoolean(QLiteralBooleanPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

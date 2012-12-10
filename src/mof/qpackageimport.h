@@ -73,7 +73,7 @@ class Q_MOF_EXPORT QPackageImport : public QDirectedRelationship
     Q_DECLARE_PRIVATE(QPackageImport)
 
 public:
-    Q_INVOKABLE explicit QPackageImport(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QPackageImport(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QPackageImport();
 
     // Attributes from QPackageImport
@@ -87,7 +87,7 @@ public:
     Q_INVOKABLE void setImportedPackage(QPackage *importedPackage);
 
 protected:
-    explicit QPackageImport(QPackageImportPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QPackageImport(QPackageImportPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

@@ -67,12 +67,12 @@ QProfilePrivate::~QProfilePrivate()
     \brief A profile defines limited extensions to a reference metamodel with the purpose of adapting the metamodel to a specific platform or domain.
  */
 
-QProfile::QProfile(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QProfile::QProfile(QWrappedObject *parent, QWrappedObject *wrapper) :
     QPackage(*new QProfilePrivate, parent, wrapper)
 {
 }
 
-QProfile::QProfile(QProfilePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QProfile::QProfile(QProfilePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QPackage(dd, parent, wrapper)
 {
 }
@@ -105,7 +105,7 @@ void QProfile::addMetamodelReference(QPackageImport *metamodelReference)
         d->metamodelReferences->insert(metamodelReference);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespace *>(this))->addPackageImport(qmofobject_cast<QPackageImport *>(metamodelReference));
+        (qwrappedobject_cast<QNamespace *>(this))->addPackageImport(qwrappedobject_cast<QPackageImport *>(metamodelReference));
     }
 }
 
@@ -118,7 +118,7 @@ void QProfile::removeMetamodelReference(QPackageImport *metamodelReference)
         d->metamodelReferences->remove(metamodelReference);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespace *>(this))->removePackageImport(qmofobject_cast<QPackageImport *>(metamodelReference));
+        (qwrappedobject_cast<QNamespace *>(this))->removePackageImport(qwrappedobject_cast<QPackageImport *>(metamodelReference));
     }
 }
 
@@ -142,7 +142,7 @@ void QProfile::addMetaclassReference(QElementImport *metaclassReference)
         d->metaclassReferences->insert(metaclassReference);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespace *>(this))->addElementImport(qmofobject_cast<QElementImport *>(metaclassReference));
+        (qwrappedobject_cast<QNamespace *>(this))->addElementImport(qwrappedobject_cast<QElementImport *>(metaclassReference));
     }
 }
 
@@ -155,7 +155,7 @@ void QProfile::removeMetaclassReference(QElementImport *metaclassReference)
         d->metaclassReferences->remove(metaclassReference);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespace *>(this))->removeElementImport(qmofobject_cast<QElementImport *>(metaclassReference));
+        (qwrappedobject_cast<QNamespace *>(this))->removeElementImport(qwrappedobject_cast<QElementImport *>(metaclassReference));
     }
 }
 

@@ -68,7 +68,7 @@ class Q_UML_EXPORT QSendObjectAction : public QInvocationAction
     Q_DECLARE_PRIVATE(QSendObjectAction)
 
 public:
-    Q_INVOKABLE explicit QSendObjectAction(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QSendObjectAction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QSendObjectAction();
 
     // Association ends from QSendObjectAction
@@ -78,7 +78,7 @@ public:
     Q_INVOKABLE void setTarget(QInputPin *target);
 
 protected:
-    explicit QSendObjectAction(QSendObjectActionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QSendObjectAction(QSendObjectActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

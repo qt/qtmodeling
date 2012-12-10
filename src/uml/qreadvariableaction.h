@@ -67,7 +67,7 @@ class Q_UML_EXPORT QReadVariableAction : public QVariableAction
     Q_DECLARE_PRIVATE(QReadVariableAction)
 
 public:
-    Q_INVOKABLE explicit QReadVariableAction(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QReadVariableAction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QReadVariableAction();
 
     // Association ends from QReadVariableAction
@@ -75,7 +75,7 @@ public:
     Q_INVOKABLE void setResult(QOutputPin *result);
 
 protected:
-    explicit QReadVariableAction(QReadVariableActionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QReadVariableAction(QReadVariableActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

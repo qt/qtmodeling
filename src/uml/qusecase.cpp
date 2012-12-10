@@ -73,12 +73,12 @@ QUseCasePrivate::~QUseCasePrivate()
     \brief A use case is the specification of a set of actions performed by a system, which yields an observable result that is, typically, of value for one or more actors or other stakeholders of the system.
  */
 
-QUseCase::QUseCase(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QUseCase::QUseCase(QWrappedObject *parent, QWrappedObject *wrapper) :
     QBehavioredClassifier(*new QUseCasePrivate, parent, wrapper)
 {
 }
 
-QUseCase::QUseCase(QUseCasePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QUseCase::QUseCase(QUseCasePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QBehavioredClassifier(dd, parent, wrapper)
 {
 }
@@ -111,7 +111,7 @@ void QUseCase::addExtensionPoint(QExtensionPoint *extensionPoint)
         d->extensionPoints->insert(extensionPoint);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(extensionPoint));
+        (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(extensionPoint));
 
         // Adjust opposite property
         extensionPoint->setUseCase(this);
@@ -127,7 +127,7 @@ void QUseCase::removeExtensionPoint(QExtensionPoint *extensionPoint)
         d->extensionPoints->remove(extensionPoint);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(extensionPoint));
+        (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(extensionPoint));
 
         // Adjust opposite property
         extensionPoint->setUseCase(0);
@@ -154,7 +154,7 @@ void QUseCase::addInclude(QInclude *include)
         d->includes->insert(include);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(include));
+        (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(include));
 
         // Adjust opposite property
         include->setIncludingCase(this);
@@ -170,7 +170,7 @@ void QUseCase::removeInclude(QInclude *include)
         d->includes->remove(include);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(include));
+        (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(include));
 
         // Adjust opposite property
         include->setIncludingCase(0);
@@ -235,7 +235,7 @@ void QUseCase::addExtend(QExtend *extend)
         d->extends->insert(extend);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(extend));
+        (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(extend));
 
         // Adjust opposite property
         extend->setExtension(this);
@@ -251,7 +251,7 @@ void QUseCase::removeExtend(QExtend *extend)
         d->extends->remove(extend);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(extend));
+        (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(extend));
 
         // Adjust opposite property
         extend->setExtension(0);

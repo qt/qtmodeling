@@ -67,7 +67,7 @@ class Q_UML_EXPORT QAbstraction : public QDependency
     Q_DECLARE_PRIVATE(QAbstraction)
 
 public:
-    Q_INVOKABLE explicit QAbstraction(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QAbstraction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QAbstraction();
 
     // Association ends from QAbstraction
@@ -75,7 +75,7 @@ public:
     Q_INVOKABLE void setMapping(QOpaqueExpression *mapping);
 
 protected:
-    explicit QAbstraction(QAbstractionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QAbstraction(QAbstractionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

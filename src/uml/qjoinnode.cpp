@@ -64,12 +64,12 @@ QJoinNodePrivate::~QJoinNodePrivate()
     \brief A join node is a control node that synchronizes multiple flows.Join nodes have a Boolean value specification using the names of the incoming edges to specify the conditions under which the join will emit a token.
  */
 
-QJoinNode::QJoinNode(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QJoinNode::QJoinNode(QWrappedObject *parent, QWrappedObject *wrapper) :
     QControlNode(*new QJoinNodePrivate, parent, wrapper)
 {
 }
 
-QJoinNode::QJoinNode(QJoinNodePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QJoinNode::QJoinNode(QJoinNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QControlNode(dd, parent, wrapper)
 {
 }
@@ -125,13 +125,13 @@ void QJoinNode::setJoinSpec(QValueSpecification *joinSpec)
     Q_D(QJoinNode);
     if (d->joinSpec != joinSpec) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->joinSpec));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(d->joinSpec));
 
         d->joinSpec = joinSpec;
 
         // Adjust subsetted property(ies)
         if (joinSpec) {
-            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(joinSpec));
+            (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(joinSpec));
         }
     }
 }

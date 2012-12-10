@@ -60,12 +60,12 @@ QInitialNodePrivate::~QInitialNodePrivate()
     \brief An initial node is a control node at which flow starts when the activity is invoked.
  */
 
-QInitialNode::QInitialNode(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QInitialNode::QInitialNode(QWrappedObject *parent, QWrappedObject *wrapper) :
     QControlNode(*new QInitialNodePrivate, parent, wrapper)
 {
 }
 
-QInitialNode::QInitialNode(QInitialNodePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QInitialNode::QInitialNode(QInitialNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QControlNode(dd, parent, wrapper)
 {
 }

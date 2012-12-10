@@ -72,7 +72,7 @@ class Q_UML_EXPORT QParameterSet : public QNamedElement
     Q_DECLARE_PRIVATE(QParameterSet)
 
 public:
-    Q_INVOKABLE explicit QParameterSet(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QParameterSet(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QParameterSet();
 
     // Association ends from QParameterSet
@@ -84,7 +84,7 @@ public:
     Q_INVOKABLE void removeCondition(QConstraint *condition);
 
 protected:
-    explicit QParameterSet(QParameterSetPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QParameterSet(QParameterSetPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

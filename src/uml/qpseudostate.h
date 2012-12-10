@@ -73,7 +73,7 @@ class Q_UML_EXPORT QPseudostate : public QVertex
     Q_DECLARE_PRIVATE(QPseudostate)
 
 public:
-    Q_INVOKABLE explicit QPseudostate(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QPseudostate(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QPseudostate();
 
     // Attributes from QPseudostate
@@ -87,7 +87,7 @@ public:
     Q_INVOKABLE void setStateMachine(QStateMachine *stateMachine);
 
 protected:
-    explicit QPseudostate(QPseudostatePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QPseudostate(QPseudostatePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

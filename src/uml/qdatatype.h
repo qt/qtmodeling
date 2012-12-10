@@ -74,7 +74,7 @@ class Q_UML_EXPORT QDataType : public QClassifier
     Q_DECLARE_PRIVATE(QDataType)
 
 public:
-    Q_INVOKABLE explicit QDataType(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QDataType(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QDataType();
 
     // Association ends from QDataType
@@ -89,7 +89,7 @@ public:
     Q_INVOKABLE const QSet<QNamedElement *> *inherit(const QSet<QNamedElement *> *inhs) const;
 
 protected:
-    explicit QDataType(QDataTypePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QDataType(QDataTypePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

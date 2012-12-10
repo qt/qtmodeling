@@ -64,12 +64,12 @@ QEnumerationPrivate::~QEnumerationPrivate()
     \brief An enumeration is a data type whose values are enumerated in the model as enumeration literals.
  */
 
-QEnumeration::QEnumeration(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QEnumeration::QEnumeration(QWrappedObject *parent, QWrappedObject *wrapper) :
     QDataType(*new QEnumerationPrivate, parent, wrapper)
 {
 }
 
-QEnumeration::QEnumeration(QEnumerationPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QEnumeration::QEnumeration(QEnumerationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QDataType(dd, parent, wrapper)
 {
 }
@@ -102,7 +102,7 @@ void QEnumeration::addOwnedLiteral(QEnumerationLiteral *ownedLiteral)
         d->ownedLiterals->append(ownedLiteral);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(ownedLiteral));
+        (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedLiteral));
 
         // Adjust opposite property
         ownedLiteral->setEnumeration(this);
@@ -118,7 +118,7 @@ void QEnumeration::removeOwnedLiteral(QEnumerationLiteral *ownedLiteral)
         d->ownedLiterals->removeAll(ownedLiteral);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(ownedLiteral));
+        (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedLiteral));
 
         // Adjust opposite property
         ownedLiteral->setEnumeration(0);

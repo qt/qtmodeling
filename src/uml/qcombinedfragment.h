@@ -77,7 +77,7 @@ class Q_UML_EXPORT QCombinedFragment : public QInteractionFragment
     Q_DECLARE_PRIVATE(QCombinedFragment)
 
 public:
-    Q_INVOKABLE explicit QCombinedFragment(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QCombinedFragment(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QCombinedFragment();
 
     // Attributes from QCombinedFragment
@@ -93,7 +93,7 @@ public:
     Q_INVOKABLE void removeOperand(QInteractionOperand *operand);
 
 protected:
-    explicit QCombinedFragment(QCombinedFragmentPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QCombinedFragment(QCombinedFragmentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

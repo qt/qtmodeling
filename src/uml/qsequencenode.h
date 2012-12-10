@@ -70,7 +70,7 @@ class Q_UML_EXPORT QSequenceNode : public QStructuredActivityNode
     Q_DECLARE_PRIVATE(QSequenceNode)
 
 public:
-    Q_INVOKABLE explicit QSequenceNode(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QSequenceNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QSequenceNode();
 
     // Association ends from QSequenceNode
@@ -79,7 +79,7 @@ public:
     Q_INVOKABLE void removeExecutableNode(QExecutableNode *executableNode);
 
 protected:
-    explicit QSequenceNode(QSequenceNodePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QSequenceNode(QSequenceNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

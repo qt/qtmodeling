@@ -67,7 +67,7 @@ class Q_MOF_EXPORT QLiteralString : public QLiteralSpecification
     Q_DECLARE_PRIVATE(QLiteralString)
 
 public:
-    Q_INVOKABLE explicit QLiteralString(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QLiteralString(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QLiteralString();
 
     // Attributes from QLiteralString
@@ -79,7 +79,7 @@ public:
     Q_INVOKABLE QString stringValue() const;
 
 protected:
-    explicit QLiteralString(QLiteralStringPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QLiteralString(QLiteralStringPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

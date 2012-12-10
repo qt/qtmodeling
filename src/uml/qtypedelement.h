@@ -67,7 +67,7 @@ class Q_UML_EXPORT QTypedElement : public QNamedElement
     Q_DECLARE_PRIVATE(QTypedElement)
 
 public:
-    Q_INVOKABLE explicit QTypedElement(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QTypedElement(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QTypedElement();
 
     // Association ends from QTypedElement
@@ -75,7 +75,7 @@ public:
     Q_INVOKABLE void setType(QType *type);
 
 protected:
-    explicit QTypedElement(QTypedElementPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QTypedElement(QTypedElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

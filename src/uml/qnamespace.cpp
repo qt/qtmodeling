@@ -96,12 +96,12 @@ void QNamespacePrivate::addOwnedMember(QNamedElement *ownedMember)
         this->ownedMembers->insert(ownedMember);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespacePrivate *>(this))->addMember(qmofobject_cast<QNamedElement *>(ownedMember));
-        (qmofobject_cast<QElementPrivate *>(this))->addOwnedElement(qmofobject_cast<QElement *>(ownedMember));
+        (qwrappedobject_cast<QNamespacePrivate *>(this))->addMember(qwrappedobject_cast<QNamedElement *>(ownedMember));
+        (qwrappedobject_cast<QElementPrivate *>(this))->addOwnedElement(qwrappedobject_cast<QElement *>(ownedMember));
 
         // Adjust opposite property
         Q_Q(QNamespace);
-        (qmofobject_cast<QNamedElementPrivate *>(ownedMember->d_func()))->setNamespace_(q);
+        (qwrappedobject_cast<QNamedElementPrivate *>(ownedMember->d_func()))->setNamespace_(q);
     }
 }
 
@@ -113,11 +113,11 @@ void QNamespacePrivate::removeOwnedMember(QNamedElement *ownedMember)
         this->ownedMembers->remove(ownedMember);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespacePrivate *>(this))->removeMember(qmofobject_cast<QNamedElement *>(ownedMember));
-        (qmofobject_cast<QElementPrivate *>(this))->removeOwnedElement(qmofobject_cast<QElement *>(ownedMember));
+        (qwrappedobject_cast<QNamespacePrivate *>(this))->removeMember(qwrappedobject_cast<QNamedElement *>(ownedMember));
+        (qwrappedobject_cast<QElementPrivate *>(this))->removeOwnedElement(qwrappedobject_cast<QElement *>(ownedMember));
 
         // Adjust opposite property
-        (qmofobject_cast<QNamedElementPrivate *>(ownedMember->d_func()))->setNamespace_(0);
+        (qwrappedobject_cast<QNamedElementPrivate *>(ownedMember->d_func()))->setNamespace_(0);
     }
 }
 
@@ -129,12 +129,12 @@ void QNamespacePrivate::removeOwnedMember(QNamedElement *ownedMember)
     \brief A namespace is an element in a model that contains a set of named elements that can be identified by name.
  */
 
-QNamespace::QNamespace(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QNamespace::QNamespace(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(*new QNamespacePrivate, parent, wrapper)
 {
 }
 
-QNamespace::QNamespace(QNamespacePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QNamespace::QNamespace(QNamespacePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
 }
@@ -167,7 +167,7 @@ void QNamespace::addPackageImport(QPackageImport *packageImport)
         d->packageImports->insert(packageImport);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(packageImport));
+        (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(packageImport));
 
         // Adjust opposite property
         packageImport->setImportingNamespace(this);
@@ -175,7 +175,7 @@ void QNamespace::addPackageImport(QPackageImport *packageImport)
         // Adjust indirectly subsetted property(ies)
         // This is because importedMembers is derived (not derivedUnion) and subsets member
         foreach (QPackageableElement *packageableElement, *packageImport->importedPackage()->packagedElements())
-            d->addMember(qmofobject_cast<QNamedElement *>(packageableElement));
+            d->addMember(qwrappedobject_cast<QNamedElement *>(packageableElement));
     }
 }
 
@@ -188,7 +188,7 @@ void QNamespace::removePackageImport(QPackageImport *packageImport)
         d->packageImports->remove(packageImport);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(packageImport));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(packageImport));
 
         // Adjust opposite property
         packageImport->setImportingNamespace(0);
@@ -196,7 +196,7 @@ void QNamespace::removePackageImport(QPackageImport *packageImport)
         // Adjust indirectly subsetted property(ies)
         // This is because importedMembers is derived (not derivedUnion) and subsets member
         foreach (QPackageableElement *packageableElement, *packageImport->importedPackage()->packagedElements())
-            d->removeMember(qmofobject_cast<QNamedElement *>(packageableElement));
+            d->removeMember(qwrappedobject_cast<QNamedElement *>(packageableElement));
     }
 }
 
@@ -249,14 +249,14 @@ void QNamespace::addElementImport(QElementImport *elementImport)
         d->elementImports->insert(elementImport);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(elementImport));
+        (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(elementImport));
 
         // Adjust opposite property
         elementImport->setImportingNamespace(this);
 
         // Adjust indirectly subsetted property(ies)
         // This is because importedMembers is derived (not derivedUnion) and subsets member
-        d->addMember(qmofobject_cast<QNamedElement *>(elementImport->importedElement()));
+        d->addMember(qwrappedobject_cast<QNamedElement *>(elementImport->importedElement()));
     }
 }
 
@@ -269,14 +269,14 @@ void QNamespace::removeElementImport(QElementImport *elementImport)
         d->elementImports->remove(elementImport);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(elementImport));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(elementImport));
 
         // Adjust opposite property
         elementImport->setImportingNamespace(0);
 
         // Adjust indirectly subsetted property(ies)
         // This is because importedMembers is derived (not derivedUnion) and subsets member
-        d->removeMember(qmofobject_cast<QNamedElement *>(elementImport->importedElement()));
+        d->removeMember(qwrappedobject_cast<QNamedElement *>(elementImport->importedElement()));
     }
 }
 
@@ -300,7 +300,7 @@ void QNamespace::addOwnedRule(QConstraint *ownedRule)
         d->ownedRules->insert(ownedRule);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(ownedRule));
+        (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedRule));
 
         // Adjust opposite property
         ownedRule->setContext(this);
@@ -316,7 +316,7 @@ void QNamespace::removeOwnedRule(QConstraint *ownedRule)
         d->ownedRules->remove(ownedRule);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(ownedRule));
+        (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedRule));
 
         // Adjust opposite property
         ownedRule->setContext(0);

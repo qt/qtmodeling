@@ -62,11 +62,11 @@ class Q_UML_EXPORT QActor : public QBehavioredClassifier
     Q_DECLARE_PRIVATE(QActor)
 
 public:
-    Q_INVOKABLE explicit QActor(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QActor(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QActor();
 
 protected:
-    explicit QActor(QActorPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QActor(QActorPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

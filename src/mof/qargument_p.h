@@ -42,7 +42,8 @@
 #define QTMOF_QARGUMENT_P_H
 
 // Base class includes
-#include "private/qmofobject_p.h"
+#include "private/qwrappedobject_p.h"
+using QtWrappedObjects::QWrappedObjectPrivate;
 
 #include "QtMof/QArgument"
 
@@ -59,7 +60,7 @@ QT_MODULE(QtMof)
 class QMofObject;
 class QArgument;
 
-class Q_MOF_EXPORT QArgumentPrivate : public QMofObjectPrivate
+class Q_MOF_EXPORT QArgumentPrivate : public QWrappedObjectPrivate
 {
     Q_DECLARE_PUBLIC(QArgument)
 

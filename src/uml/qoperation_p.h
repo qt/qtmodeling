@@ -42,7 +42,8 @@
 #define QTUML_QOPERATION_P_H
 
 // Base class includes
-#include "private/qmofobject_p.h"
+#include "private/qwrappedobject_p.h"
+using QtWrappedObjects::QWrappedObjectPrivate;
 #include "private/qtemplateableelement_p.h"
 #include "private/qbehavioralfeature_p.h"
 #include "private/qparameterableelement_p.h"
@@ -70,7 +71,7 @@ class QConstraint;
 class QDataType;
 class QClass;
 
-class Q_UML_EXPORT QOperationPrivate : public QtMof::QMofObjectPrivate
+class Q_UML_EXPORT QOperationPrivate : public QWrappedObjectPrivate
 {
     Q_DECLARE_PUBLIC(QOperation)
 

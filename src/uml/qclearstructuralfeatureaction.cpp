@@ -63,12 +63,12 @@ QClearStructuralFeatureActionPrivate::~QClearStructuralFeatureActionPrivate()
     \brief A clear structural feature action is a structural feature action that removes all values of a structural feature.
  */
 
-QClearStructuralFeatureAction::QClearStructuralFeatureAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QClearStructuralFeatureAction::QClearStructuralFeatureAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QStructuralFeatureAction(*new QClearStructuralFeatureActionPrivate, parent, wrapper)
 {
 }
 
-QClearStructuralFeatureAction::QClearStructuralFeatureAction(QClearStructuralFeatureActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QClearStructuralFeatureAction::QClearStructuralFeatureAction(QClearStructuralFeatureActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QStructuralFeatureAction(dd, parent, wrapper)
 {
 }
@@ -99,13 +99,13 @@ void QClearStructuralFeatureAction::setResult(QOutputPin *result)
     Q_D(QClearStructuralFeatureAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeOutput(qmofobject_cast<QOutputPin *>(d->result));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qmofobject_cast<QActionPrivate *>(d))->addOutput(qmofobject_cast<QOutputPin *>(result));
+            (qwrappedobject_cast<QActionPrivate *>(d))->addOutput(qwrappedobject_cast<QOutputPin *>(result));
         }
     }
 }

@@ -68,7 +68,7 @@ class Q_UML_EXPORT QTimeInterval : public QInterval
     Q_DECLARE_PRIVATE(QTimeInterval)
 
 public:
-    Q_INVOKABLE explicit QTimeInterval(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QTimeInterval(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QTimeInterval();
 
     // Association ends from QTimeInterval
@@ -78,7 +78,7 @@ public:
     Q_INVOKABLE void setMin(QTimeExpression *min);
 
 protected:
-    explicit QTimeInterval(QTimeIntervalPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QTimeInterval(QTimeIntervalPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

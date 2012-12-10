@@ -61,12 +61,12 @@ QPackageableElementPrivate::~QPackageableElementPrivate()
     \brief A packageable element indicates a named element that may be owned directly by a package.
  */
 
-QPackageableElement::QPackageableElement(QMofObject *parent, QMofObject *wrapper) :
+QPackageableElement::QPackageableElement(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(*new QPackageableElementPrivate, parent, wrapper)
 {
 }
 
-QPackageableElement::QPackageableElement(QPackageableElementPrivate &dd, QMofObject *parent, QMofObject *wrapper) :
+QPackageableElement::QPackageableElement(QPackageableElementPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
 }

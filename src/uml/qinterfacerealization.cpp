@@ -65,12 +65,12 @@ QInterfaceRealizationPrivate::~QInterfaceRealizationPrivate()
     \brief An interface realization is a specialized realization relationship between a classifier and an interface. This relationship signifies that the realizing classifier conforms to the contract specified by the interface.
  */
 
-QInterfaceRealization::QInterfaceRealization(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QInterfaceRealization::QInterfaceRealization(QWrappedObject *parent, QWrappedObject *wrapper) :
     QRealization(*new QInterfaceRealizationPrivate, parent, wrapper)
 {
 }
 
-QInterfaceRealization::QInterfaceRealization(QInterfaceRealizationPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QInterfaceRealization::QInterfaceRealization(QInterfaceRealizationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QRealization(dd, parent, wrapper)
 {
 }
@@ -105,14 +105,14 @@ void QInterfaceRealization::setImplementingClassifier(QBehavioredClassifier *imp
             d->implementingClassifier->removeInterfaceRealization(this);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QDependency *>(this))->removeClient(qmofobject_cast<QNamedElement *>(d->implementingClassifier));
+        (qwrappedobject_cast<QDependency *>(this))->removeClient(qwrappedobject_cast<QNamedElement *>(d->implementingClassifier));
 
         d->implementingClassifier = implementingClassifier;
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->setOwner(qmofobject_cast<QElement *>(implementingClassifier));
+        (qwrappedobject_cast<QElementPrivate *>(d))->setOwner(qwrappedobject_cast<QElement *>(implementingClassifier));
         if (implementingClassifier) {
-            (qmofobject_cast<QDependency *>(this))->addClient(qmofobject_cast<QNamedElement *>(implementingClassifier));
+            (qwrappedobject_cast<QDependency *>(this))->addClient(qwrappedobject_cast<QNamedElement *>(implementingClassifier));
         }
 
         // Adjust opposite property
@@ -139,36 +139,36 @@ void QInterfaceRealization::setContract(QInterface *contract)
     Q_D(QInterfaceRealization);
     if (d->contract != contract) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QDependency *>(this))->removeSupplier(qmofobject_cast<QNamedElement *>(d->contract));
+        (qwrappedobject_cast<QDependency *>(this))->removeSupplier(qwrappedobject_cast<QNamedElement *>(d->contract));
 
         d->contract = contract;
 
         // Adjust subsetted property(ies)
         if (contract) {
-            (qmofobject_cast<QDependency *>(this))->addSupplier(qmofobject_cast<QNamedElement *>(contract));
+            (qwrappedobject_cast<QDependency *>(this))->addSupplier(qwrappedobject_cast<QNamedElement *>(contract));
         }
     }
 }
 
 // Overriden methods for subsetted properties
 
-void QInterfaceRealization::addClient(QtMof::QMofPointer<QBehavioredClassifier> implementingClassifier)
+void QInterfaceRealization::addClient(QWrappedObjectPointer<QBehavioredClassifier> implementingClassifier)
 {
     setImplementingClassifier(implementingClassifier);
 }
 
-void QInterfaceRealization::removeClient(QtMof::QMofPointer<QBehavioredClassifier> implementingClassifier)
+void QInterfaceRealization::removeClient(QWrappedObjectPointer<QBehavioredClassifier> implementingClassifier)
 {
     Q_UNUSED(implementingClassifier);
     setImplementingClassifier(0);
 }
 
-void QInterfaceRealization::addSupplier(QtMof::QMofPointer<QInterface> contract)
+void QInterfaceRealization::addSupplier(QWrappedObjectPointer<QInterface> contract)
 {
     setContract(contract);
 }
 
-void QInterfaceRealization::removeSupplier(QtMof::QMofPointer<QInterface> contract)
+void QInterfaceRealization::removeSupplier(QWrappedObjectPointer<QInterface> contract)
 {
     Q_UNUSED(contract);
     setContract(0);

@@ -60,12 +60,12 @@ QActorPrivate::~QActorPrivate()
     \brief An actor specifies a role played by a user or any other system that interacts with the subject.
  */
 
-QActor::QActor(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QActor::QActor(QWrappedObject *parent, QWrappedObject *wrapper) :
     QBehavioredClassifier(*new QActorPrivate, parent, wrapper)
 {
 }
 
-QActor::QActor(QActorPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QActor::QActor(QActorPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QBehavioredClassifier(dd, parent, wrapper)
 {
 }

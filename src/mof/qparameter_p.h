@@ -42,7 +42,8 @@
 #define QTMOF_QPARAMETER_P_H
 
 // Base class includes
-#include "private/qmofobject_p.h"
+#include "private/qwrappedobject_p.h"
+using QtWrappedObjects::QWrappedObjectPrivate;
 #include "private/qtypedelement_p.h"
 #include "private/qmultiplicityelement_p.h"
 
@@ -65,7 +66,7 @@ class QValueSpecification;
 class QOperation;
 class QParameter;
 
-class Q_MOF_EXPORT QParameterPrivate : public QMofObjectPrivate
+class Q_MOF_EXPORT QParameterPrivate : public QWrappedObjectPrivate
 {
     Q_DECLARE_PUBLIC(QParameter)
 

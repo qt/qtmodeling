@@ -64,12 +64,12 @@ QParameterableElementPrivate::~QParameterableElementPrivate()
     \brief A parameterable element is an element that can be exposed as a formal template parameter for a template, or specified as an actual parameter in a binding of a template.
  */
 
-QParameterableElement::QParameterableElement(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QParameterableElement::QParameterableElement(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QParameterableElementPrivate, parent, wrapper)
 {
 }
 
-QParameterableElement::QParameterableElement(QParameterableElementPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QParameterableElement::QParameterableElement(QParameterableElementPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
 }
@@ -104,8 +104,8 @@ void QParameterableElement::setOwningTemplateParameter(QTemplateParameter *ownin
         d->owningTemplateParameter = owningTemplateParameter;
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QParameterableElement *>(this))->setTemplateParameter(qmofobject_cast<QTemplateParameter *>(owningTemplateParameter));
-        (qmofobject_cast<QElementPrivate *>(d))->setOwner(qmofobject_cast<QElement *>(owningTemplateParameter));
+        (qwrappedobject_cast<QParameterableElement *>(this))->setTemplateParameter(qwrappedobject_cast<QTemplateParameter *>(owningTemplateParameter));
+        (qwrappedobject_cast<QElementPrivate *>(d))->setOwner(qwrappedobject_cast<QElement *>(owningTemplateParameter));
 
         // Adjust opposite property
         owningTemplateParameter->setOwnedParameteredElement(this);

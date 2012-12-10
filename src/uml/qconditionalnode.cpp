@@ -69,12 +69,12 @@ QConditionalNodePrivate::~QConditionalNodePrivate()
     \brief A conditional node is a structured activity node that represents an exclusive choice among some number of alternatives.
  */
 
-QConditionalNode::QConditionalNode(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QConditionalNode::QConditionalNode(QWrappedObject *parent, QWrappedObject *wrapper) :
     QStructuredActivityNode(*new QConditionalNodePrivate, parent, wrapper)
 {
 }
 
-QConditionalNode::QConditionalNode(QConditionalNodePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QConditionalNode::QConditionalNode(QConditionalNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QStructuredActivityNode(dd, parent, wrapper)
 {
 }
@@ -153,7 +153,7 @@ void QConditionalNode::addClause(QClause *clause)
         d->clauses->insert(clause);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(clause));
+        (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(clause));
     }
 }
 
@@ -166,7 +166,7 @@ void QConditionalNode::removeClause(QClause *clause)
         d->clauses->remove(clause);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(clause));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(clause));
     }
 }
 
@@ -188,7 +188,7 @@ void QConditionalNode::addResult(QOutputPin *result)
     Q_D(QConditionalNode);
     if (!d->results->contains(result)) {
         d->results->append(result);
-        qmof_topLevelWrapper(result)->setParent(qmof_topLevelWrapper(this));
+        qTopLevelWrapper(result)->setParent(qTopLevelWrapper(this));
     }
 }
 
@@ -199,7 +199,7 @@ void QConditionalNode::removeResult(QOutputPin *result)
     Q_D(QConditionalNode);
     if (d->results->contains(result)) {
         d->results->removeAll(result);
-        qmof_topLevelWrapper(result)->setParent(0);
+        qTopLevelWrapper(result)->setParent(0);
     }
 }
 

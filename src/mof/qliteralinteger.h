@@ -64,7 +64,7 @@ class Q_MOF_EXPORT QLiteralInteger : public QLiteralSpecification
     Q_DECLARE_PRIVATE(QLiteralInteger)
 
 public:
-    Q_INVOKABLE explicit QLiteralInteger(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QLiteralInteger(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QLiteralInteger();
 
     // Attributes from QLiteralInteger
@@ -76,7 +76,7 @@ public:
     Q_INVOKABLE bool isComputable() const;
 
 protected:
-    explicit QLiteralInteger(QLiteralIntegerPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QLiteralInteger(QLiteralIntegerPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

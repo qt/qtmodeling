@@ -63,12 +63,12 @@ QStartObjectBehaviorActionPrivate::~QStartObjectBehaviorActionPrivate()
     \brief StartObjectBehaviorAction is an action that starts the execution either of a directly instantiated behavior or of the classifier behavior of an object. Argument values may be supplied for the input parameters of the behavior. If the behavior is invoked synchronously, then output values may be obtained for output parameters.
  */
 
-QStartObjectBehaviorAction::QStartObjectBehaviorAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QStartObjectBehaviorAction::QStartObjectBehaviorAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QCallAction(*new QStartObjectBehaviorActionPrivate, parent, wrapper)
 {
 }
 
-QStartObjectBehaviorAction::QStartObjectBehaviorAction(QStartObjectBehaviorActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QStartObjectBehaviorAction::QStartObjectBehaviorAction(QStartObjectBehaviorActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QCallAction(dd, parent, wrapper)
 {
 }
@@ -99,13 +99,13 @@ void QStartObjectBehaviorAction::setObject(QInputPin *object)
     Q_D(QStartObjectBehaviorAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(d->object));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeInput(qwrappedobject_cast<QInputPin *>(d->object));
 
         d->object = object;
 
         // Adjust subsetted property(ies)
         if (object) {
-            (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(object));
+            (qwrappedobject_cast<QActionPrivate *>(d))->addInput(qwrappedobject_cast<QInputPin *>(object));
         }
     }
 }

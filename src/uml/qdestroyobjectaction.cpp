@@ -65,12 +65,12 @@ QDestroyObjectActionPrivate::~QDestroyObjectActionPrivate()
     \brief A destroy object action is an action that destroys objects.
  */
 
-QDestroyObjectAction::QDestroyObjectAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QDestroyObjectAction::QDestroyObjectAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QDestroyObjectActionPrivate, parent, wrapper)
 {
 }
 
-QDestroyObjectAction::QDestroyObjectAction(QDestroyObjectActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QDestroyObjectAction::QDestroyObjectAction(QDestroyObjectActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
 }
@@ -147,13 +147,13 @@ void QDestroyObjectAction::setTarget(QInputPin *target)
     Q_D(QDestroyObjectAction);
     if (d->target != target) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(d->target));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeInput(qwrappedobject_cast<QInputPin *>(d->target));
 
         d->target = target;
 
         // Adjust subsetted property(ies)
         if (target) {
-            (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(target));
+            (qwrappedobject_cast<QActionPrivate *>(d))->addInput(qwrappedobject_cast<QInputPin *>(target));
         }
     }
 }

@@ -89,7 +89,7 @@ class Q_MOF_EXPORT QOperation : public QBehavioralFeature
     Q_DECLARE_PRIVATE(QOperation)
 
 public:
-    Q_INVOKABLE explicit QOperation(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QOperation(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QOperation();
 
     // Attributes from QOperation
@@ -129,7 +129,7 @@ public:
     Q_INVOKABLE const QSet<QParameter *> *returnResult() const;
 
 protected:
-    explicit QOperation(QOperationPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QOperation(QOperationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

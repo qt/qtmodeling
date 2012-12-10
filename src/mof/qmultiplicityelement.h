@@ -72,7 +72,7 @@ class Q_MOF_EXPORT QMultiplicityElement : public QElement
     Q_DECLARE_PRIVATE(QMultiplicityElement)
 
 public:
-    Q_INVOKABLE explicit QMultiplicityElement(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QMultiplicityElement(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QMultiplicityElement();
 
     // Attributes from QMultiplicityElement
@@ -99,7 +99,7 @@ public:
     Q_INVOKABLE qint32 upperBound() const;
 
 protected:
-    explicit QMultiplicityElement(QMultiplicityElementPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QMultiplicityElement(QMultiplicityElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

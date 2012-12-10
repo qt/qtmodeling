@@ -63,12 +63,12 @@ QManifestationPrivate::~QManifestationPrivate()
     \brief A manifestation is the concrete physical rendering of one or more model elements by an artifact.
  */
 
-QManifestation::QManifestation(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QManifestation::QManifestation(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAbstraction(*new QManifestationPrivate, parent, wrapper)
 {
 }
 
-QManifestation::QManifestation(QManifestationPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QManifestation::QManifestation(QManifestationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAbstraction(dd, parent, wrapper)
 {
 }
@@ -99,25 +99,25 @@ void QManifestation::setUtilizedElement(QPackageableElement *utilizedElement)
     Q_D(QManifestation);
     if (d->utilizedElement != utilizedElement) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QDependency *>(this))->removeSupplier(qmofobject_cast<QNamedElement *>(d->utilizedElement));
+        (qwrappedobject_cast<QDependency *>(this))->removeSupplier(qwrappedobject_cast<QNamedElement *>(d->utilizedElement));
 
         d->utilizedElement = utilizedElement;
 
         // Adjust subsetted property(ies)
         if (utilizedElement) {
-            (qmofobject_cast<QDependency *>(this))->addSupplier(qmofobject_cast<QNamedElement *>(utilizedElement));
+            (qwrappedobject_cast<QDependency *>(this))->addSupplier(qwrappedobject_cast<QNamedElement *>(utilizedElement));
         }
     }
 }
 
 // Overriden methods for subsetted properties
 
-void QManifestation::addSupplier(QtMof::QMofPointer<QPackageableElement> utilizedElement)
+void QManifestation::addSupplier(QWrappedObjectPointer<QPackageableElement> utilizedElement)
 {
     setUtilizedElement(utilizedElement);
 }
 
-void QManifestation::removeSupplier(QtMof::QMofPointer<QPackageableElement> utilizedElement)
+void QManifestation::removeSupplier(QWrappedObjectPointer<QPackageableElement> utilizedElement)
 {
     Q_UNUSED(utilizedElement);
     setUtilizedElement(0);

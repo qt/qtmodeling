@@ -1,7 +1,5 @@
 PUBLIC_HEADERS += \
     qtmofglobal.h \
-    qmofobject.h \
-    qmofpointer.h \
     qtmofenumerations.h \
     qrelationship.h \
     qcomment.h \
@@ -31,6 +29,7 @@ PUBLIC_HEADERS += \
     qdatatype.h \
     qreflectivesequence.h \
     quriextent.h \
+    qmofobject.h \
     qprimitivetype.h \
     qextent.h \
     qpackagemerge.h \
@@ -57,7 +56,6 @@ PUBLIC_HEADERS += \
     qbehavioralfeature.h
 
 PRIVATE_HEADERS += \
-    qmofobject_p.h \
     qrelationship_p.h \
     qcomment_p.h \
     qtag_p.h \
@@ -86,6 +84,7 @@ PRIVATE_HEADERS += \
     qdatatype_p.h \
     qreflectivesequence_p.h \
     quriextent_p.h \
+    qmofobject_p.h \
     qprimitivetype_p.h \
     qextent_p.h \
     qpackagemerge_p.h \
@@ -112,7 +111,6 @@ PRIVATE_HEADERS += \
     qbehavioralfeature_p.h
 
 SOURCES += \
-    qmofobject.cpp \
     qtmofenumerations.cpp \
     qrelationship.cpp \
     qcomment.cpp \
@@ -142,6 +140,7 @@ SOURCES += \
     qdatatype.cpp \
     qreflectivesequence.cpp \
     quriextent.cpp \
+    qmofobject.cpp \
     qprimitivetype.cpp \
     qextent.cpp \
     qpackagemerge.cpp \

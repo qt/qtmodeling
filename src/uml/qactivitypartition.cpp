@@ -74,12 +74,12 @@ QActivityPartitionPrivate::~QActivityPartitionPrivate()
     \brief An activity partition is a kind of activity group for identifying actions that have some characteristic in common.
  */
 
-QActivityPartition::QActivityPartition(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QActivityPartition::QActivityPartition(QWrappedObject *parent, QWrappedObject *wrapper) :
     QActivityGroup(*new QActivityPartitionPrivate, parent, wrapper)
 {
 }
 
-QActivityPartition::QActivityPartition(QActivityPartitionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QActivityPartition::QActivityPartition(QActivityPartitionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QActivityGroup(dd, parent, wrapper)
 {
 }
@@ -179,7 +179,7 @@ void QActivityPartition::addSubpartition(QActivityPartition *subpartition)
         d->subpartitions->insert(subpartition);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActivityGroupPrivate *>(d))->addSubgroup(qmofobject_cast<QActivityGroup *>(subpartition));
+        (qwrappedobject_cast<QActivityGroupPrivate *>(d))->addSubgroup(qwrappedobject_cast<QActivityGroup *>(subpartition));
 
         // Adjust opposite property
         subpartition->setSuperPartition(this);
@@ -195,7 +195,7 @@ void QActivityPartition::removeSubpartition(QActivityPartition *subpartition)
         d->subpartitions->remove(subpartition);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActivityGroupPrivate *>(d))->removeSubgroup(qmofobject_cast<QActivityGroup *>(subpartition));
+        (qwrappedobject_cast<QActivityGroupPrivate *>(d))->removeSubgroup(qwrappedobject_cast<QActivityGroup *>(subpartition));
 
         // Adjust opposite property
         subpartition->setSuperPartition(0);
@@ -226,7 +226,7 @@ void QActivityPartition::setSuperPartition(QActivityPartition *superPartition)
         d->superPartition = superPartition;
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActivityGroupPrivate *>(d))->setSuperGroup(qmofobject_cast<QActivityGroup *>(superPartition));
+        (qwrappedobject_cast<QActivityGroupPrivate *>(d))->setSuperGroup(qwrappedobject_cast<QActivityGroup *>(superPartition));
 
         // Adjust opposite property
         if (superPartition)
@@ -254,7 +254,7 @@ void QActivityPartition::addNode(QActivityNode *node)
         d->nodes->insert(node);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActivityGroupPrivate *>(d))->addContainedNode(qmofobject_cast<QActivityNode *>(node));
+        (qwrappedobject_cast<QActivityGroupPrivate *>(d))->addContainedNode(qwrappedobject_cast<QActivityNode *>(node));
 
         // Adjust opposite property
         node->addInPartition(this);
@@ -270,7 +270,7 @@ void QActivityPartition::removeNode(QActivityNode *node)
         d->nodes->remove(node);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActivityGroupPrivate *>(d))->removeContainedNode(qmofobject_cast<QActivityNode *>(node));
+        (qwrappedobject_cast<QActivityGroupPrivate *>(d))->removeContainedNode(qwrappedobject_cast<QActivityNode *>(node));
 
         // Adjust opposite property
         if (node)
@@ -298,7 +298,7 @@ void QActivityPartition::addEdge(QActivityEdge *edge)
         d->edges->insert(edge);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActivityGroupPrivate *>(d))->addContainedEdge(qmofobject_cast<QActivityEdge *>(edge));
+        (qwrappedobject_cast<QActivityGroupPrivate *>(d))->addContainedEdge(qwrappedobject_cast<QActivityEdge *>(edge));
 
         // Adjust opposite property
         edge->addInPartition(this);
@@ -314,7 +314,7 @@ void QActivityPartition::removeEdge(QActivityEdge *edge)
         d->edges->remove(edge);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActivityGroupPrivate *>(d))->removeContainedEdge(qmofobject_cast<QActivityEdge *>(edge));
+        (qwrappedobject_cast<QActivityGroupPrivate *>(d))->removeContainedEdge(qwrappedobject_cast<QActivityEdge *>(edge));
 
         // Adjust opposite property
         if (edge)

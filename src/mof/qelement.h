@@ -73,7 +73,7 @@ class Q_MOF_EXPORT QElement : public QMofObject
     Q_DECLARE_PRIVATE(QElement)
 
 public:
-    Q_INVOKABLE explicit QElement(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QElement(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QElement();
 
     // Association ends from QElement
@@ -92,7 +92,7 @@ public:
     Q_INVOKABLE void delete_();
 
 protected:
-    explicit QElement(QElementPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QElement(QElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

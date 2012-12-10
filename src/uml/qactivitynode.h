@@ -82,7 +82,7 @@ class Q_UML_EXPORT QActivityNode : public QRedefinableElement
     Q_DECLARE_PRIVATE(QActivityNode)
 
 public:
-    Q_INVOKABLE explicit QActivityNode(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QActivityNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QActivityNode();
 
     // Association ends from QActivityNode
@@ -111,7 +111,7 @@ public:
     friend class QActivityGroupPrivate;
 
 protected:
-    explicit QActivityNode(QActivityNodePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QActivityNode(QActivityNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

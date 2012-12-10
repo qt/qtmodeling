@@ -73,7 +73,7 @@ class Q_UML_EXPORT QConnectionPointReference : public QVertex
     Q_DECLARE_PRIVATE(QConnectionPointReference)
 
 public:
-    Q_INVOKABLE explicit QConnectionPointReference(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QConnectionPointReference(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QConnectionPointReference();
 
     // Association ends from QConnectionPointReference
@@ -87,7 +87,7 @@ public:
     Q_INVOKABLE void removeEntry(QPseudostate *entry);
 
 protected:
-    explicit QConnectionPointReference(QConnectionPointReferencePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QConnectionPointReference(QConnectionPointReferencePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

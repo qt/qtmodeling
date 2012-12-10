@@ -66,7 +66,7 @@ void QDirectedRelationshipPrivate::addSource(QElement *source)
         this->sources->insert(source);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QRelationshipPrivate *>(this))->addRelatedElement(qmofobject_cast<QElement *>(source));
+        (qwrappedobject_cast<QRelationshipPrivate *>(this))->addRelatedElement(qwrappedobject_cast<QElement *>(source));
     }
 }
 
@@ -78,7 +78,7 @@ void QDirectedRelationshipPrivate::removeSource(QElement *source)
         this->sources->remove(source);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QRelationshipPrivate *>(this))->removeRelatedElement(qmofobject_cast<QElement *>(source));
+        (qwrappedobject_cast<QRelationshipPrivate *>(this))->removeRelatedElement(qwrappedobject_cast<QElement *>(source));
     }
 }
 
@@ -90,7 +90,7 @@ void QDirectedRelationshipPrivate::addTarget(QElement *target)
         this->targets->insert(target);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QRelationshipPrivate *>(this))->addRelatedElement(qmofobject_cast<QElement *>(target));
+        (qwrappedobject_cast<QRelationshipPrivate *>(this))->addRelatedElement(qwrappedobject_cast<QElement *>(target));
     }
 }
 
@@ -102,7 +102,7 @@ void QDirectedRelationshipPrivate::removeTarget(QElement *target)
         this->targets->remove(target);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QRelationshipPrivate *>(this))->removeRelatedElement(qmofobject_cast<QElement *>(target));
+        (qwrappedobject_cast<QRelationshipPrivate *>(this))->removeRelatedElement(qwrappedobject_cast<QElement *>(target));
     }
 }
 
@@ -114,12 +114,12 @@ void QDirectedRelationshipPrivate::removeTarget(QElement *target)
     \brief A directed relationship represents a relationship between a collection of source model elements and a collection of target model elements.
  */
 
-QDirectedRelationship::QDirectedRelationship(QMofObject *parent, QMofObject *wrapper) :
+QDirectedRelationship::QDirectedRelationship(QWrappedObject *parent, QWrappedObject *wrapper) :
     QRelationship(*new QDirectedRelationshipPrivate, parent, wrapper)
 {
 }
 
-QDirectedRelationship::QDirectedRelationship(QDirectedRelationshipPrivate &dd, QMofObject *parent, QMofObject *wrapper) :
+QDirectedRelationship::QDirectedRelationship(QDirectedRelationshipPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QRelationship(dd, parent, wrapper)
 {
 }

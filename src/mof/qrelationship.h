@@ -67,14 +67,14 @@ class Q_MOF_EXPORT QRelationship : public QElement
     Q_DECLARE_PRIVATE(QRelationship)
 
 public:
-    Q_INVOKABLE explicit QRelationship(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QRelationship(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QRelationship();
 
     // Association ends from QRelationship
     Q_INVOKABLE const QSet<QElement *> *relatedElements() const;
 
 protected:
-    explicit QRelationship(QRelationshipPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QRelationship(QRelationshipPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

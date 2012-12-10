@@ -8,8 +8,8 @@ namespace Ui {
     class MainWindow;
 }
 
-namespace QtMof {
-    class QMofObject;
+namespace QtWrappedObjects {
+    class QWrappedObject;
 }
 
 namespace QtUml {
@@ -33,7 +33,7 @@ private Q_SLOTS:
     void on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
     void on_propertyEditor_itemChanged(QTreeWidgetItem *item, int column);
     void currentIndexChanged(int index);
-    void populateModelExplorer(QtMof::QMofObject *element, QTreeWidgetItem *parent = 0);
+    void populateModelExplorer(QtWrappedObjects::QWrappedObject *element, QTreeWidgetItem *parent = 0);
     QTreeWidgetItem *parentItemForProperty(QString propertyGroup);
     void handleAddMethod();
     void refreshModel();
@@ -44,8 +44,8 @@ private:
     QMap< QString, QPair<int, QTreeWidgetItem *> > _visitedProperties;
     QMap< QString, QPair<QObject *, QMetaMethod> > _visitedAddMethods;
 
-    void handleObjectProperties(QtMof::QMofObject *element, int level = 0);
-    void handleMetaObjectProperties(QtMof::QMofObject *element, const QMetaObject *metaObject, int level = 0);
+    void handleObjectProperties(QtWrappedObjects::QWrappedObject *element, int level = 0);
+    void handleMetaObjectProperties(QtWrappedObjects::QWrappedObject *element, const QMetaObject *metaObject, int level = 0);
     void populateContextMenu(QMenu &menu, QObject *element);
 };
 

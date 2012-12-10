@@ -65,12 +65,12 @@ QStateInvariantPrivate::~QStateInvariantPrivate()
     \brief A state invariant is a runtime constraint on the participants of the interaction. It may be used to specify a variety of different kinds of constraints, such as values of attributes or variables, internal or external states, and so on. A state invariant is an interaction fragment and it is placed on a lifeline.
  */
 
-QStateInvariant::QStateInvariant(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QStateInvariant::QStateInvariant(QWrappedObject *parent, QWrappedObject *wrapper) :
     QInteractionFragment(*new QStateInvariantPrivate, parent, wrapper)
 {
 }
 
-QStateInvariant::QStateInvariant(QStateInvariantPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QStateInvariant::QStateInvariant(QStateInvariantPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QInteractionFragment(dd, parent, wrapper)
 {
 }
@@ -101,13 +101,13 @@ void QStateInvariant::setInvariant(QConstraint *invariant)
     Q_D(QStateInvariant);
     if (d->invariant != invariant) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->invariant));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(d->invariant));
 
         d->invariant = invariant;
 
         // Adjust subsetted property(ies)
         if (invariant) {
-            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(invariant));
+            (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(invariant));
         }
     }
 }

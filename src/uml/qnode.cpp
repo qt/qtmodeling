@@ -62,15 +62,15 @@ QNodePrivate::~QNodePrivate()
     \brief A node is computational resource upon which artifacts may be deployed for execution. Nodes can be interconnected through communication paths to define network structures.
  */
 
-QNode::QNode(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
-    QtMof::QMofObject(*new QNodePrivate, parent, wrapper),
+QNode::QNode(QWrappedObject *parent, QWrappedObject *wrapper) :
+    QWrappedObject(*new QNodePrivate, parent, wrapper),
     _wrappedClass(new QClass(this, this)),
     _wrappedDeploymentTarget(new QDeploymentTarget(this, this))
 {
 }
 
-QNode::QNode(QNodePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
-    QtMof::QMofObject(dd, parent, wrapper),
+QNode::QNode(QNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
+    QWrappedObject(dd, parent, wrapper),
     _wrappedClass(new QClass(this, this)),
     _wrappedDeploymentTarget(new QDeploymentTarget(this, this))
 {
@@ -89,7 +89,7 @@ QNode::~QNode()
  */
 const QSet<QElement *> *QNode::ownedElements() const
 {
-    return (qmofobject_cast<const QElement *>(this))->ownedElements();
+    return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -97,7 +97,7 @@ const QSet<QElement *> *QNode::ownedElements() const
  */
 QElement *QNode::owner() const
 {
-    return (qmofobject_cast<const QElement *>(this))->owner();
+    return (qwrappedobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -105,17 +105,17 @@ QElement *QNode::owner() const
  */
 const QSet<QComment *> *QNode::ownedComments() const
 {
-    return (qmofobject_cast<const QElement *>(this))->ownedComments();
+    return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QNode::addOwnedComment(QComment *ownedComment)
 {
-    (qmofobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qwrappedobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QNode::removeOwnedComment(QComment *ownedComment)
 {
-    (qmofobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qwrappedobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -127,12 +127,12 @@ void QNode::removeOwnedComment(QComment *ownedComment)
  */
 QString QNode::name() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->name();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QNode::setName(QString name)
 {
-    (qmofobject_cast<QNamedElement *>(this))->setName(name);
+    (qwrappedobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -140,12 +140,12 @@ void QNode::setName(QString name)
  */
 QtUml::VisibilityKind QNode::visibility() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->visibility();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->visibility();
 }
 
 void QNode::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qmofobject_cast<QNamedElement *>(this))->setVisibility(visibility);
+    (qwrappedobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
 
 /*!
@@ -153,7 +153,7 @@ void QNode::setVisibility(QtUml::VisibilityKind visibility)
  */
 QString QNode::qualifiedName() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -165,12 +165,12 @@ QString QNode::qualifiedName() const
  */
 QStringExpression *QNode::nameExpression() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->nameExpression();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QNode::setNameExpression(QStringExpression *nameExpression)
 {
-    (qmofobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qwrappedobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -178,7 +178,7 @@ void QNode::setNameExpression(QStringExpression *nameExpression)
  */
 QNamespace *QNode::namespace_() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->namespace_();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -186,17 +186,17 @@ QNamespace *QNode::namespace_() const
  */
 const QSet<QDependency *> *QNode::clientDependencies() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QNode::addClientDependency(QDependency *clientDependency)
 {
-    (qmofobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qwrappedobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QNode::removeClientDependency(QDependency *clientDependency)
 {
-    (qmofobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qwrappedobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -208,7 +208,7 @@ void QNode::removeClientDependency(QDependency *clientDependency)
  */
 const QSet<QPackageableElement *> *QNode::deployedElements() const
 {
-    return (qmofobject_cast<const QDeploymentTarget *>(this))->deployedElements();
+    return (qwrappedobject_cast<const QDeploymentTarget *>(this))->deployedElements();
 }
 
 /*!
@@ -216,17 +216,17 @@ const QSet<QPackageableElement *> *QNode::deployedElements() const
  */
 const QSet<QDeployment *> *QNode::deployments() const
 {
-    return (qmofobject_cast<const QDeploymentTarget *>(this))->deployments();
+    return (qwrappedobject_cast<const QDeploymentTarget *>(this))->deployments();
 }
 
 void QNode::addDeployment(QDeployment *deployment)
 {
-    (qmofobject_cast<QDeploymentTarget *>(this))->addDeployment(deployment);
+    (qwrappedobject_cast<QDeploymentTarget *>(this))->addDeployment(deployment);
 }
 
 void QNode::removeDeployment(QDeployment *deployment)
 {
-    (qmofobject_cast<QDeploymentTarget *>(this))->removeDeployment(deployment);
+    (qwrappedobject_cast<QDeploymentTarget *>(this))->removeDeployment(deployment);
 }
 
 // ---------------------------------------------------------------
@@ -253,7 +253,7 @@ void QNode::addNestedNode(QNode *nestedNode)
         d->nestedNodes->insert(nestedNode);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(nestedNode));
+        (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(nestedNode));
     }
 }
 
@@ -266,7 +266,7 @@ void QNode::removeNestedNode(QNode *nestedNode)
         d->nestedNodes->remove(nestedNode);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(nestedNode));
+        (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(nestedNode));
     }
 }
 

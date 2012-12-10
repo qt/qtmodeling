@@ -65,12 +65,12 @@ QSendSignalActionPrivate::~QSendSignalActionPrivate()
     \brief A send signal action is an action that creates a signal instance from its inputs, and transmits it to the target object, where it may cause the firing of a state machine transition or the execution of an activity. The argument values are available to the execution of associated behaviors. The requestor continues execution immediately. Any reply message is ignored and is not transmitted to the requestor. If the input is already a signal instance, use a send object action.
  */
 
-QSendSignalAction::QSendSignalAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QSendSignalAction::QSendSignalAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QInvocationAction(*new QSendSignalActionPrivate, parent, wrapper)
 {
 }
 
-QSendSignalAction::QSendSignalAction(QSendSignalActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QSendSignalAction::QSendSignalAction(QSendSignalActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QInvocationAction(dd, parent, wrapper)
 {
 }
@@ -101,13 +101,13 @@ void QSendSignalAction::setTarget(QInputPin *target)
     Q_D(QSendSignalAction);
     if (d->target != target) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(d->target));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeInput(qwrappedobject_cast<QInputPin *>(d->target));
 
         d->target = target;
 
         // Adjust subsetted property(ies)
         if (target) {
-            (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(target));
+            (qwrappedobject_cast<QActionPrivate *>(d))->addInput(qwrappedobject_cast<QInputPin *>(target));
         }
     }
 }

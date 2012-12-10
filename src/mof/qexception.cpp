@@ -57,13 +57,13 @@ QExceptionPrivate::~QExceptionPrivate()
 }
 
 
-QException::QException(QMofObject *parent, QMofObject *wrapper) :
-    QMofObject(*new QExceptionPrivate, parent, wrapper)
+QException::QException(QWrappedObject *parent, QWrappedObject *wrapper) :
+    QWrappedObject(*new QExceptionPrivate, parent, wrapper)
 {
 }
 
-QException::QException(QExceptionPrivate &dd, QMofObject *parent, QMofObject *wrapper) :
-    QMofObject(dd, parent, wrapper)
+QException::QException(QExceptionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
+    QWrappedObject(dd, parent, wrapper)
 {
 }
 

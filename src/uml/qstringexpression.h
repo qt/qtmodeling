@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtMof/QMofObject>
+#include <QtWrappedObjects/QWrappedObject>
+using QtWrappedObjects::QWrappedObject;
 #include <QtUml/QExpression>
 #include <QtUml/QTemplateableElement>
 
@@ -60,7 +61,7 @@ QT_MODULE(QtUml)
 
 class QStringExpressionPrivate;
 
-class Q_UML_EXPORT QStringExpression : public QtMof::QMofObject
+class Q_UML_EXPORT QStringExpression : public QWrappedObject
 {
     Q_OBJECT
 
@@ -71,7 +72,7 @@ class Q_UML_EXPORT QStringExpression : public QtMof::QMofObject
     Q_DECLARE_PRIVATE(QStringExpression)
 
 public:
-    Q_INVOKABLE explicit QStringExpression(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QStringExpression(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QStringExpression();
 
     // Association ends from aggregated QElement
@@ -99,7 +100,7 @@ public:
     Q_INVOKABLE QString stringValue() const;
 
 protected:
-    explicit QStringExpression(QStringExpressionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QStringExpression(QStringExpressionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 
 private:
     QExpression *_wrappedExpression;

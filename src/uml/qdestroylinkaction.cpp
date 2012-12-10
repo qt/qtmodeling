@@ -64,12 +64,12 @@ QDestroyLinkActionPrivate::~QDestroyLinkActionPrivate()
     \brief A destroy link action is a write link action that destroys links and link objects.
  */
 
-QDestroyLinkAction::QDestroyLinkAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QDestroyLinkAction::QDestroyLinkAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QWriteLinkAction(*new QDestroyLinkActionPrivate, parent, wrapper)
 {
 }
 
-QDestroyLinkAction::QDestroyLinkAction(QDestroyLinkActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QDestroyLinkAction::QDestroyLinkAction(QDestroyLinkActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QWriteLinkAction(dd, parent, wrapper)
 {
 }
@@ -100,7 +100,7 @@ void QDestroyLinkAction::addEndData(QLinkEndDestructionData *endData)
     Q_D(QDestroyLinkAction);
     if (!d->endData->contains(endData)) {
         d->endData->insert(endData);
-        qmof_topLevelWrapper(endData)->setParent(qmof_topLevelWrapper(this));
+        qTopLevelWrapper(endData)->setParent(qTopLevelWrapper(this));
     }
 }
 
@@ -111,7 +111,7 @@ void QDestroyLinkAction::removeEndData(QLinkEndDestructionData *endData)
     Q_D(QDestroyLinkAction);
     if (d->endData->contains(endData)) {
         d->endData->remove(endData);
-        qmof_topLevelWrapper(endData)->setParent(0);
+        qTopLevelWrapper(endData)->setParent(0);
     }
 }
 

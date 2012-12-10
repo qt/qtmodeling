@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtMof/QMofObject>
+#include <QtWrappedObjects/QWrappedObject>
+using QtWrappedObjects::QWrappedObject;
 #include <QtUml/QNamespace>
 #include <QtUml/QType>
 #include <QtUml/QRedefinableElement>
@@ -53,7 +54,8 @@
 // Qt includes
 #include <QtCore/QSet>
 
-#include <QtMof/QMofPointer>
+#include <QtWrappedObjects/QWrappedObjectPointer>
+using QtWrappedObjects::QWrappedObjectPointer;
 
 QT_BEGIN_HEADER
 
@@ -75,7 +77,7 @@ class QFeature;
 
 class QClassifierPrivate;
 
-class Q_UML_EXPORT QClassifier : public QtMof::QMofObject
+class Q_UML_EXPORT QClassifier : public QWrappedObject
 {
     Q_OBJECT
 
@@ -100,7 +102,7 @@ class Q_UML_EXPORT QClassifier : public QtMof::QMofObject
     Q_DECLARE_PRIVATE(QClassifier)
 
 public:
-    Q_INVOKABLE explicit QClassifier(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QClassifier(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QClassifier();
 
     // Association ends from aggregated QElement
@@ -215,14 +217,14 @@ public:
     Q_INVOKABLE const QSet<QClassifier *> *parents() const;
 
     // Overriden methods for subsetted properties
-    Q_INVOKABLE void addClientDependency(QtMof::QMofPointer<QSubstitution> substitution);
-    Q_INVOKABLE void removeClientDependency(QtMof::QMofPointer<QSubstitution> substitution);
+    Q_INVOKABLE void addClientDependency(QWrappedObjectPointer<QSubstitution> substitution);
+    Q_INVOKABLE void removeClientDependency(QWrappedObjectPointer<QSubstitution> substitution);
 
     // Classes which access read-only opposite properties should be friend
     friend class QFeaturePrivate;
 
 protected:
-    explicit QClassifier(QClassifierPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QClassifier(QClassifierPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 
 private:
     QNamespace *_wrappedNamespace;

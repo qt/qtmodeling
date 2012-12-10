@@ -77,7 +77,7 @@ class Q_UML_EXPORT QClause : public QElement
     Q_DECLARE_PRIVATE(QClause)
 
 public:
-    Q_INVOKABLE explicit QClause(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QClause(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QClause();
 
     // Association ends from QClause
@@ -100,7 +100,7 @@ public:
     Q_INVOKABLE void removeTest(QExecutableNode *test);
 
 protected:
-    explicit QClause(QClausePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QClause(QClausePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -63,12 +63,12 @@ QReadSelfActionPrivate::~QReadSelfActionPrivate()
     \brief A read self action is an action that retrieves the host object of an action.
  */
 
-QReadSelfAction::QReadSelfAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QReadSelfAction::QReadSelfAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QReadSelfActionPrivate, parent, wrapper)
 {
 }
 
-QReadSelfAction::QReadSelfAction(QReadSelfActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QReadSelfAction::QReadSelfAction(QReadSelfActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
 }
@@ -99,13 +99,13 @@ void QReadSelfAction::setResult(QOutputPin *result)
     Q_D(QReadSelfAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeOutput(qmofobject_cast<QOutputPin *>(d->result));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qmofobject_cast<QActionPrivate *>(d))->addOutput(qmofobject_cast<QOutputPin *>(result));
+            (qwrappedobject_cast<QActionPrivate *>(d))->addOutput(qwrappedobject_cast<QOutputPin *>(result));
         }
     }
 }

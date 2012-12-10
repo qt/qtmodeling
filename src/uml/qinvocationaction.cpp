@@ -66,12 +66,12 @@ QInvocationActionPrivate::~QInvocationActionPrivate()
     \brief InvocationAction is an abstract class for the various actions that invoke behavior.In addition to targeting an object, invocation actions can also invoke behavioral features on ports from where the invocation requests are routed onwards on links deriving from attached connectors. Invocation actions may also be sent to a target via a given port, either on the sending object or on another object.
  */
 
-QInvocationAction::QInvocationAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QInvocationAction::QInvocationAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QInvocationActionPrivate, parent, wrapper)
 {
 }
 
-QInvocationAction::QInvocationAction(QInvocationActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QInvocationAction::QInvocationAction(QInvocationActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
 }
@@ -104,7 +104,7 @@ void QInvocationAction::addArgument(QInputPin *argument)
         d->arguments->append(argument);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(argument));
+        (qwrappedobject_cast<QActionPrivate *>(d))->addInput(qwrappedobject_cast<QInputPin *>(argument));
     }
 }
 
@@ -117,7 +117,7 @@ void QInvocationAction::removeArgument(QInputPin *argument)
         d->arguments->removeAll(argument);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(argument));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeInput(qwrappedobject_cast<QInputPin *>(argument));
     }
 }
 

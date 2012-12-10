@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtMof/QMofObject>
+#include <QtWrappedObjects/QWrappedObject>
+using QtWrappedObjects::QWrappedObject;
 #include <QtUml/QClassifier>
 #include <QtUml/QRelationship>
 
@@ -64,7 +65,7 @@ class QProperty;
 
 class QAssociationPrivate;
 
-class Q_UML_EXPORT QAssociation : public QtMof::QMofObject
+class Q_UML_EXPORT QAssociation : public QWrappedObject
 {
     Q_OBJECT
 
@@ -78,7 +79,7 @@ class Q_UML_EXPORT QAssociation : public QtMof::QMofObject
     Q_DECLARE_PRIVATE(QAssociation)
 
 public:
-    Q_INVOKABLE explicit QAssociation(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QAssociation(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QAssociation();
 
     // Association ends from aggregated QElement
@@ -201,7 +202,7 @@ public:
     Q_INVOKABLE void removeMemberEnd(QProperty *memberEnd);
 
 protected:
-    explicit QAssociation(QAssociationPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QAssociation(QAssociationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 
 private:
     QClassifier *_wrappedClassifier;

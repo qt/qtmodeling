@@ -59,12 +59,12 @@ QExtentPrivate::~QExtentPrivate()
 }
 
 
-QExtent::QExtent(QMofObject *parent, QMofObject *wrapper) :
+QExtent::QExtent(QWrappedObject *parent, QWrappedObject *wrapper) :
     QMofObject(*new QExtentPrivate, parent, wrapper)
 {
 }
 
-QExtent::QExtent(QExtentPrivate &dd, QMofObject *parent, QMofObject *wrapper) :
+QExtent::QExtent(QExtentPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QMofObject(dd, parent, wrapper)
 {
 }

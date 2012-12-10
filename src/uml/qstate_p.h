@@ -42,7 +42,8 @@
 #define QTUML_QSTATE_P_H
 
 // Base class includes
-#include "private/qmofobject_p.h"
+#include "private/qwrappedobject_p.h"
+using QtWrappedObjects::QWrappedObjectPrivate;
 #include "private/qnamespace_p.h"
 #include "private/qredefinableelement_p.h"
 #include "private/qvertex_p.h"
@@ -69,7 +70,7 @@ class QConnectionPointReference;
 class QTrigger;
 class QPseudostate;
 
-class Q_UML_EXPORT QStatePrivate : public QtMof::QMofObjectPrivate
+class Q_UML_EXPORT QStatePrivate : public QWrappedObjectPrivate
 {
     Q_DECLARE_PUBLIC(QState)
 

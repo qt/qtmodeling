@@ -74,7 +74,7 @@ class Q_UML_EXPORT QGeneralizationSet : public QPackageableElement
     Q_DECLARE_PRIVATE(QGeneralizationSet)
 
 public:
-    Q_INVOKABLE explicit QGeneralizationSet(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QGeneralizationSet(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QGeneralizationSet();
 
     // Attributes from QGeneralizationSet
@@ -91,7 +91,7 @@ public:
     Q_INVOKABLE void removeGeneralization(QGeneralization *generalization);
 
 protected:
-    explicit QGeneralizationSet(QGeneralizationSetPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QGeneralizationSet(QGeneralizationSetPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

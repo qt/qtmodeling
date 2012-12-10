@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtMof/QMofObject>
+#include <QtWrappedObjects/QWrappedObject>
+using QtWrappedObjects::QWrappedObject;
 #include <QtUml/QBehavior>
 #include <QtUml/QInteractionFragment>
 
@@ -66,7 +67,7 @@ class QGate;
 
 class QInteractionPrivate;
 
-class Q_UML_EXPORT QInteraction : public QtMof::QMofObject
+class Q_UML_EXPORT QInteraction : public QWrappedObject
 {
     Q_OBJECT
 
@@ -80,7 +81,7 @@ class Q_UML_EXPORT QInteraction : public QtMof::QMofObject
     Q_DECLARE_PRIVATE(QInteraction)
 
 public:
-    Q_INVOKABLE explicit QInteraction(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QInteraction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QInteraction();
 
     // Attributes from aggregated QBehavior
@@ -159,7 +160,7 @@ public:
     Q_INVOKABLE void removeLifeline(QLifeline *lifeline);
 
 protected:
-    explicit QInteraction(QInteractionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QInteraction(QInteractionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 
 private:
     QBehavior *_wrappedBehavior;

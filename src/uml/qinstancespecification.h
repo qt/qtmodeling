@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtMof/QMofObject>
+#include <QtWrappedObjects/QWrappedObject>
+using QtWrappedObjects::QWrappedObject;
 #include <QtUml/QDeployedArtifact>
 #include <QtUml/QPackageableElement>
 #include <QtUml/QDeploymentTarget>
@@ -65,7 +66,7 @@ class QValueSpecification;
 
 class QInstanceSpecificationPrivate;
 
-class Q_UML_EXPORT QInstanceSpecification : public QtMof::QMofObject
+class Q_UML_EXPORT QInstanceSpecification : public QWrappedObject
 {
     Q_OBJECT
 
@@ -77,7 +78,7 @@ class Q_UML_EXPORT QInstanceSpecification : public QtMof::QMofObject
     Q_DECLARE_PRIVATE(QInstanceSpecification)
 
 public:
-    Q_INVOKABLE explicit QInstanceSpecification(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QInstanceSpecification(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QInstanceSpecification();
 
     // Association ends from aggregated QElement
@@ -127,7 +128,7 @@ public:
     Q_INVOKABLE void removeSlot_(QSlot *slot_);
 
 protected:
-    explicit QInstanceSpecification(QInstanceSpecificationPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QInstanceSpecification(QInstanceSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 
 private:
     QDeployedArtifact *_wrappedDeployedArtifact;

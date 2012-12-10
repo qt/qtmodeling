@@ -72,7 +72,7 @@ class Q_MOF_EXPORT QExtent : public QMofObject
     Q_DECLARE_PRIVATE(QExtent)
 
 public:
-    Q_INVOKABLE explicit QExtent(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QExtent(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QExtent();
 
     // Operations
@@ -84,7 +84,7 @@ public:
     Q_INVOKABLE bool linkExists(const QAssociation *association, const QElement *firstElement, const QElement *secondElement) const;
 
 protected:
-    explicit QExtent(QExtentPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QExtent(QExtentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

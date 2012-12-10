@@ -44,7 +44,8 @@
 #include <QtMof/QtMofGlobal>
 
 // Base class includes
-#include <QtMof/QMofObject>
+#include <QtWrappedObjects/QWrappedObject>
+using QtWrappedObjects::QWrappedObject;
 #include <QtMof/QTypedElement>
 #include <QtMof/QMultiplicityElement>
 
@@ -66,7 +67,7 @@ class QOperation;
 
 class QParameterPrivate;
 
-class Q_MOF_EXPORT QParameter : public QMofObject
+class Q_MOF_EXPORT QParameter : public QWrappedObject
 {
     Q_OBJECT
 
@@ -79,7 +80,7 @@ class Q_MOF_EXPORT QParameter : public QMofObject
     Q_DECLARE_PRIVATE(QParameter)
 
 public:
-    Q_INVOKABLE explicit QParameter(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QParameter(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QParameter();
 
     // Association ends from aggregated QElement
@@ -131,7 +132,7 @@ public:
     Q_INVOKABLE void setDefaultValue(QValueSpecification *defaultValue);
 
 protected:
-    explicit QParameter(QParameterPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QParameter(QParameterPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 
 private:
     QTypedElement *_wrappedTypedElement;

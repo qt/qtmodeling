@@ -53,12 +53,12 @@ QReflectiveCollectionPrivate::~QReflectiveCollectionPrivate()
 }
 
 
-QReflectiveCollection::QReflectiveCollection(QMofObject *parent, QMofObject *wrapper) :
+QReflectiveCollection::QReflectiveCollection(QWrappedObject *parent, QWrappedObject *wrapper) :
     QMofObject(*new QReflectiveCollectionPrivate, parent, wrapper)
 {
 }
 
-QReflectiveCollection::QReflectiveCollection(QReflectiveCollectionPrivate &dd, QMofObject *parent, QMofObject *wrapper) :
+QReflectiveCollection::QReflectiveCollection(QReflectiveCollectionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QMofObject(dd, parent, wrapper)
 {
 }

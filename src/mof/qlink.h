@@ -70,7 +70,7 @@ class Q_MOF_EXPORT QLink : public QMofObject
     Q_DECLARE_PRIVATE(QLink)
 
 public:
-    Q_INVOKABLE explicit QLink(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QLink(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QLink();
 
     // Attributes from QLink
@@ -86,7 +86,7 @@ public:
     Q_INVOKABLE void delete_();
 
 protected:
-    explicit QLink(QLinkPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QLink(QLinkPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

@@ -69,7 +69,7 @@ if ($tt->process('namespace.pri', {
 
 }
 
-open STDOUT, '>', $options{o}."/uml.pro";
+open STDOUT, '>', $options{o}."/project.pro";
 if ($tt->process('project.pro', {
     namespaces => $namespaces,
 }) ne 1) { print $tt->error(); }

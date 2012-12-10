@@ -63,12 +63,12 @@ QReadVariableActionPrivate::~QReadVariableActionPrivate()
     \brief A read variable action is a variable action that retrieves the values of a variable.
  */
 
-QReadVariableAction::QReadVariableAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QReadVariableAction::QReadVariableAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QVariableAction(*new QReadVariableActionPrivate, parent, wrapper)
 {
 }
 
-QReadVariableAction::QReadVariableAction(QReadVariableActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QReadVariableAction::QReadVariableAction(QReadVariableActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QVariableAction(dd, parent, wrapper)
 {
 }
@@ -99,13 +99,13 @@ void QReadVariableAction::setResult(QOutputPin *result)
     Q_D(QReadVariableAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeOutput(qmofobject_cast<QOutputPin *>(d->result));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qmofobject_cast<QActionPrivate *>(d))->addOutput(qmofobject_cast<QOutputPin *>(result));
+            (qwrappedobject_cast<QActionPrivate *>(d))->addOutput(qwrappedobject_cast<QOutputPin *>(result));
         }
     }
 }

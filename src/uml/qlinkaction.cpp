@@ -68,12 +68,12 @@ QLinkActionPrivate::~QLinkActionPrivate()
     \brief LinkAction is an abstract class for all link actions that identify their links by the objects at the ends of the links and by the qualifiers at ends of the links.
  */
 
-QLinkAction::QLinkAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QLinkAction::QLinkAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QLinkActionPrivate, parent, wrapper)
 {
 }
 
-QLinkAction::QLinkAction(QLinkActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QLinkAction::QLinkAction(QLinkActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
 }
@@ -106,7 +106,7 @@ void QLinkAction::addInputValue(QInputPin *inputValue)
         d->inputValues->insert(inputValue);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(inputValue));
+        (qwrappedobject_cast<QActionPrivate *>(d))->addInput(qwrappedobject_cast<QInputPin *>(inputValue));
     }
 }
 
@@ -119,7 +119,7 @@ void QLinkAction::removeInputValue(QInputPin *inputValue)
         d->inputValues->remove(inputValue);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(inputValue));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeInput(qwrappedobject_cast<QInputPin *>(inputValue));
     }
 }
 
@@ -143,7 +143,7 @@ void QLinkAction::addEndData(QLinkEndData *endData)
         d->endData->insert(endData);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(endData));
+        (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(endData));
     }
 }
 
@@ -156,7 +156,7 @@ void QLinkAction::removeEndData(QLinkEndData *endData)
         d->endData->remove(endData);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(endData));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(endData));
     }
 }
 

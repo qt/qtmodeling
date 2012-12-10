@@ -68,12 +68,12 @@ QLinkEndDataPrivate::~QLinkEndDataPrivate()
     \brief A link end data is not an action. It is an element that identifies links. It identifies one end of a link to be read or written by the children of a link action. A link cannot be passed as a runtime value to or from an action. Instead, a link is identified by its end objects and qualifier values, if any. This requires more than one piece of data, namely, the statically-specified end in the user model, the object on the end, and the qualifier values for that end, if any. These pieces are brought together around a link end data. Each association end is identified separately with an instance of the LinkEndData class.
  */
 
-QLinkEndData::QLinkEndData(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QLinkEndData::QLinkEndData(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QLinkEndDataPrivate, parent, wrapper)
 {
 }
 
-QLinkEndData::QLinkEndData(QLinkEndDataPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QLinkEndData::QLinkEndData(QLinkEndDataPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
 }
@@ -148,7 +148,7 @@ void QLinkEndData::addQualifier(QQualifierValue *qualifier)
         d->qualifiers->insert(qualifier);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(qualifier));
+        (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(qualifier));
     }
 }
 
@@ -161,7 +161,7 @@ void QLinkEndData::removeQualifier(QQualifierValue *qualifier)
         d->qualifiers->remove(qualifier);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(qualifier));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(qualifier));
     }
 }
 

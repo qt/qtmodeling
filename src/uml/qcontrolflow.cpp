@@ -60,12 +60,12 @@ QControlFlowPrivate::~QControlFlowPrivate()
     \brief A control flow is an edge that starts an activity node after the previous one is finished.
  */
 
-QControlFlow::QControlFlow(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QControlFlow::QControlFlow(QWrappedObject *parent, QWrappedObject *wrapper) :
     QActivityEdge(*new QControlFlowPrivate, parent, wrapper)
 {
 }
 
-QControlFlow::QControlFlow(QControlFlowPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QControlFlow::QControlFlow(QControlFlowPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QActivityEdge(dd, parent, wrapper)
 {
 }

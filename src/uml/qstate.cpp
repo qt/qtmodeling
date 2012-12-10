@@ -83,16 +83,16 @@ QStatePrivate::~QStatePrivate()
     \brief A state models a situation during which some (usually implicit) invariant condition holds.The states of protocol state machines are exposed to the users of their context classifiers. A protocol state represents an exposed stable situation of its context classifier: when an instance of the classifier is not processing any operation, users of this instance can always know its state configuration.
  */
 
-QState::QState(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
-    QtMof::QMofObject(*new QStatePrivate, parent, wrapper),
+QState::QState(QWrappedObject *parent, QWrappedObject *wrapper) :
+    QWrappedObject(*new QStatePrivate, parent, wrapper),
     _wrappedNamespace(new QNamespace(this, this)),
     _wrappedRedefinableElement(new QRedefinableElement(this, this)),
     _wrappedVertex(new QVertex(this, this))
 {
 }
 
-QState::QState(QStatePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
-    QtMof::QMofObject(dd, parent, wrapper),
+QState::QState(QStatePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
+    QWrappedObject(dd, parent, wrapper),
     _wrappedNamespace(new QNamespace(this, this)),
     _wrappedRedefinableElement(new QRedefinableElement(this, this)),
     _wrappedVertex(new QVertex(this, this))
@@ -112,7 +112,7 @@ QState::~QState()
  */
 const QSet<QElement *> *QState::ownedElements() const
 {
-    return (qmofobject_cast<const QElement *>(this))->ownedElements();
+    return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -120,7 +120,7 @@ const QSet<QElement *> *QState::ownedElements() const
  */
 QElement *QState::owner() const
 {
-    return (qmofobject_cast<const QElement *>(this))->owner();
+    return (qwrappedobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -128,17 +128,17 @@ QElement *QState::owner() const
  */
 const QSet<QComment *> *QState::ownedComments() const
 {
-    return (qmofobject_cast<const QElement *>(this))->ownedComments();
+    return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QState::addOwnedComment(QComment *ownedComment)
 {
-    (qmofobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qwrappedobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QState::removeOwnedComment(QComment *ownedComment)
 {
-    (qmofobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qwrappedobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -150,12 +150,12 @@ void QState::removeOwnedComment(QComment *ownedComment)
  */
 QString QState::name() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->name();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QState::setName(QString name)
 {
-    (qmofobject_cast<QNamedElement *>(this))->setName(name);
+    (qwrappedobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -163,12 +163,12 @@ void QState::setName(QString name)
  */
 QtUml::VisibilityKind QState::visibility() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->visibility();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->visibility();
 }
 
 void QState::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qmofobject_cast<QNamedElement *>(this))->setVisibility(visibility);
+    (qwrappedobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
 
 /*!
@@ -176,7 +176,7 @@ void QState::setVisibility(QtUml::VisibilityKind visibility)
  */
 QString QState::qualifiedName() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -188,12 +188,12 @@ QString QState::qualifiedName() const
  */
 QStringExpression *QState::nameExpression() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->nameExpression();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QState::setNameExpression(QStringExpression *nameExpression)
 {
-    (qmofobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qwrappedobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -201,7 +201,7 @@ void QState::setNameExpression(QStringExpression *nameExpression)
  */
 QNamespace *QState::namespace_() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->namespace_();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -209,17 +209,17 @@ QNamespace *QState::namespace_() const
  */
 const QSet<QDependency *> *QState::clientDependencies() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QState::addClientDependency(QDependency *clientDependency)
 {
-    (qmofobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qwrappedobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QState::removeClientDependency(QDependency *clientDependency)
 {
-    (qmofobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qwrappedobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -231,17 +231,17 @@ void QState::removeClientDependency(QDependency *clientDependency)
  */
 const QSet<QPackageImport *> *QState::packageImports() const
 {
-    return (qmofobject_cast<const QNamespace *>(this))->packageImports();
+    return (qwrappedobject_cast<const QNamespace *>(this))->packageImports();
 }
 
 void QState::addPackageImport(QPackageImport *packageImport)
 {
-    (qmofobject_cast<QNamespace *>(this))->addPackageImport(packageImport);
+    (qwrappedobject_cast<QNamespace *>(this))->addPackageImport(packageImport);
 }
 
 void QState::removePackageImport(QPackageImport *packageImport)
 {
-    (qmofobject_cast<QNamespace *>(this))->removePackageImport(packageImport);
+    (qwrappedobject_cast<QNamespace *>(this))->removePackageImport(packageImport);
 }
 
 /*!
@@ -249,7 +249,7 @@ void QState::removePackageImport(QPackageImport *packageImport)
  */
 const QSet<QNamedElement *> *QState::members() const
 {
-    return (qmofobject_cast<const QNamespace *>(this))->members();
+    return (qwrappedobject_cast<const QNamespace *>(this))->members();
 }
 
 /*!
@@ -257,7 +257,7 @@ const QSet<QNamedElement *> *QState::members() const
  */
 const QSet<QPackageableElement *> *QState::importedMembers() const
 {
-    return (qmofobject_cast<const QNamespace *>(this))->importedMembers();
+    return (qwrappedobject_cast<const QNamespace *>(this))->importedMembers();
 }
 
 /*!
@@ -265,17 +265,17 @@ const QSet<QPackageableElement *> *QState::importedMembers() const
  */
 const QSet<QElementImport *> *QState::elementImports() const
 {
-    return (qmofobject_cast<const QNamespace *>(this))->elementImports();
+    return (qwrappedobject_cast<const QNamespace *>(this))->elementImports();
 }
 
 void QState::addElementImport(QElementImport *elementImport)
 {
-    (qmofobject_cast<QNamespace *>(this))->addElementImport(elementImport);
+    (qwrappedobject_cast<QNamespace *>(this))->addElementImport(elementImport);
 }
 
 void QState::removeElementImport(QElementImport *elementImport)
 {
-    (qmofobject_cast<QNamespace *>(this))->removeElementImport(elementImport);
+    (qwrappedobject_cast<QNamespace *>(this))->removeElementImport(elementImport);
 }
 
 /*!
@@ -283,17 +283,17 @@ void QState::removeElementImport(QElementImport *elementImport)
  */
 const QSet<QConstraint *> *QState::ownedRules() const
 {
-    return (qmofobject_cast<const QNamespace *>(this))->ownedRules();
+    return (qwrappedobject_cast<const QNamespace *>(this))->ownedRules();
 }
 
 void QState::addOwnedRule(QConstraint *ownedRule)
 {
-    (qmofobject_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
+    (qwrappedobject_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
 }
 
 void QState::removeOwnedRule(QConstraint *ownedRule)
 {
-    (qmofobject_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
+    (qwrappedobject_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
 }
 
 /*!
@@ -301,7 +301,7 @@ void QState::removeOwnedRule(QConstraint *ownedRule)
  */
 const QSet<QNamedElement *> *QState::ownedMembers() const
 {
-    return (qmofobject_cast<const QNamespace *>(this))->ownedMembers();
+    return (qwrappedobject_cast<const QNamespace *>(this))->ownedMembers();
 }
 
 // ---------------------------------------------------------------
@@ -313,12 +313,12 @@ const QSet<QNamedElement *> *QState::ownedMembers() const
  */
 bool QState::isLeaf() const
 {
-    return (qmofobject_cast<const QRedefinableElement *>(this))->isLeaf();
+    return (qwrappedobject_cast<const QRedefinableElement *>(this))->isLeaf();
 }
 
 void QState::setLeaf(bool isLeaf)
 {
-    (qmofobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+    (qwrappedobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
 }
 
 // ---------------------------------------------------------------
@@ -330,7 +330,7 @@ void QState::setLeaf(bool isLeaf)
  */
 const QSet<QRedefinableElement *> *QState::redefinedElements() const
 {
-    return (qmofobject_cast<const QRedefinableElement *>(this))->redefinedElements();
+    return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
 
 // ---------------------------------------------------------------
@@ -342,7 +342,7 @@ const QSet<QRedefinableElement *> *QState::redefinedElements() const
  */
 const QSet<QTransition *> *QState::incomings() const
 {
-    return (qmofobject_cast<const QVertex *>(this))->incomings();
+    return (qwrappedobject_cast<const QVertex *>(this))->incomings();
 }
 
 /*!
@@ -350,12 +350,12 @@ const QSet<QTransition *> *QState::incomings() const
  */
 QRegion *QState::container() const
 {
-    return (qmofobject_cast<const QVertex *>(this))->container();
+    return (qwrappedobject_cast<const QVertex *>(this))->container();
 }
 
 void QState::setContainer(QRegion *container)
 {
-    (qmofobject_cast<QVertex *>(this))->setContainer(container);
+    (qwrappedobject_cast<QVertex *>(this))->setContainer(container);
 }
 
 /*!
@@ -363,7 +363,7 @@ void QState::setContainer(QRegion *container)
  */
 const QSet<QTransition *> *QState::outgoings() const
 {
-    return (qmofobject_cast<const QVertex *>(this))->outgoings();
+    return (qwrappedobject_cast<const QVertex *>(this))->outgoings();
 }
 
 // ---------------------------------------------------------------
@@ -442,7 +442,7 @@ void QState::addRegion(QRegion *region)
         d->regions->insert(region);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(region));
+        (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(region));
 
         // Adjust opposite property
         region->setState(this);
@@ -458,7 +458,7 @@ void QState::removeRegion(QRegion *region)
         d->regions->remove(region);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(region));
+        (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(region));
 
         // Adjust opposite property
         region->setState(0);
@@ -483,13 +483,13 @@ void QState::setExit(QBehavior *exit)
     Q_D(QState);
     if (d->exit != exit) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->exit));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(d->exit));
 
         d->exit = exit;
 
         // Adjust subsetted property(ies)
         if (exit) {
-            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(exit));
+            (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(exit));
         }
     }
 }
@@ -514,7 +514,7 @@ void QState::addConnection(QConnectionPointReference *connection)
         d->connections->insert(connection);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(connection));
+        (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(connection));
 
         // Adjust opposite property
         connection->setState(this);
@@ -530,7 +530,7 @@ void QState::removeConnection(QConnectionPointReference *connection)
         d->connections->remove(connection);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(connection));
+        (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(connection));
 
         // Adjust opposite property
         connection->setState(0);
@@ -567,13 +567,13 @@ void QState::setRedefinedState(QState *redefinedState)
     Q_D(QState);
     if (d->redefinedState != redefinedState) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qmofobject_cast<QRedefinableElement *>(d->redefinedState));
+        (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qwrappedobject_cast<QRedefinableElement *>(d->redefinedState));
 
         d->redefinedState = redefinedState;
 
         // Adjust subsetted property(ies)
         if (redefinedState) {
-            (qmofobject_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qmofobject_cast<QRedefinableElement *>(redefinedState));
+            (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qwrappedobject_cast<QRedefinableElement *>(redefinedState));
         }
     }
 }
@@ -598,7 +598,7 @@ void QState::addDeferrableTrigger(QTrigger *deferrableTrigger)
         d->deferrableTriggers->insert(deferrableTrigger);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(deferrableTrigger));
+        (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(deferrableTrigger));
     }
 }
 
@@ -611,7 +611,7 @@ void QState::removeDeferrableTrigger(QTrigger *deferrableTrigger)
         d->deferrableTriggers->remove(deferrableTrigger);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(deferrableTrigger));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(deferrableTrigger));
     }
 }
 
@@ -635,7 +635,7 @@ void QState::addConnectionPoint(QPseudostate *connectionPoint)
         d->connectionPoints->insert(connectionPoint);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(connectionPoint));
+        (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(connectionPoint));
 
         // Adjust opposite property
         connectionPoint->setState(this);
@@ -651,7 +651,7 @@ void QState::removeConnectionPoint(QPseudostate *connectionPoint)
         d->connectionPoints->remove(connectionPoint);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(connectionPoint));
+        (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(connectionPoint));
 
         // Adjust opposite property
         connectionPoint->setState(0);
@@ -676,13 +676,13 @@ void QState::setEntry(QBehavior *entry)
     Q_D(QState);
     if (d->entry != entry) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->entry));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(d->entry));
 
         d->entry = entry;
 
         // Adjust subsetted property(ies)
         if (entry) {
-            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(entry));
+            (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(entry));
         }
     }
 }
@@ -705,13 +705,13 @@ void QState::setDoActivity(QBehavior *doActivity)
     Q_D(QState);
     if (d->doActivity != doActivity) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->doActivity));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(d->doActivity));
 
         d->doActivity = doActivity;
 
         // Adjust subsetted property(ies)
         if (doActivity) {
-            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(doActivity));
+            (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(doActivity));
         }
     }
 }
@@ -763,13 +763,13 @@ void QState::setStateInvariant(QConstraint *stateInvariant)
     Q_D(QState);
     if (d->stateInvariant != stateInvariant) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespace *>(this))->removeOwnedRule(qmofobject_cast<QConstraint *>(d->stateInvariant));
+        (qwrappedobject_cast<QNamespace *>(this))->removeOwnedRule(qwrappedobject_cast<QConstraint *>(d->stateInvariant));
 
         d->stateInvariant = stateInvariant;
 
         // Adjust subsetted property(ies)
         if (stateInvariant) {
-            (qmofobject_cast<QNamespace *>(this))->addOwnedRule(qmofobject_cast<QConstraint *>(stateInvariant));
+            (qwrappedobject_cast<QNamespace *>(this))->addOwnedRule(qwrappedobject_cast<QConstraint *>(stateInvariant));
         }
     }
 }

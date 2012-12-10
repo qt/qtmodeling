@@ -65,12 +65,12 @@ QValueSpecificationActionPrivate::~QValueSpecificationActionPrivate()
     \brief A value specification action is an action that evaluates a value specification.
  */
 
-QValueSpecificationAction::QValueSpecificationAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QValueSpecificationAction::QValueSpecificationAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QValueSpecificationActionPrivate, parent, wrapper)
 {
 }
 
-QValueSpecificationAction::QValueSpecificationAction(QValueSpecificationActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QValueSpecificationAction::QValueSpecificationAction(QValueSpecificationActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
 }
@@ -101,13 +101,13 @@ void QValueSpecificationAction::setValue(QValueSpecification *value)
     Q_D(QValueSpecificationAction);
     if (d->value != value) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->value));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(d->value));
 
         d->value = value;
 
         // Adjust subsetted property(ies)
         if (value) {
-            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(value));
+            (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(value));
         }
     }
 }
@@ -130,13 +130,13 @@ void QValueSpecificationAction::setResult(QOutputPin *result)
     Q_D(QValueSpecificationAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeOutput(qmofobject_cast<QOutputPin *>(d->result));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qmofobject_cast<QActionPrivate *>(d))->addOutput(qmofobject_cast<QOutputPin *>(result));
+            (qwrappedobject_cast<QActionPrivate *>(d))->addOutput(qwrappedobject_cast<QOutputPin *>(result));
         }
     }
 }

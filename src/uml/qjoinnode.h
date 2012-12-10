@@ -68,7 +68,7 @@ class Q_UML_EXPORT QJoinNode : public QControlNode
     Q_DECLARE_PRIVATE(QJoinNode)
 
 public:
-    Q_INVOKABLE explicit QJoinNode(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QJoinNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QJoinNode();
 
     // Attributes from QJoinNode
@@ -80,7 +80,7 @@ public:
     Q_INVOKABLE void setJoinSpec(QValueSpecification *joinSpec);
 
 protected:
-    explicit QJoinNode(QJoinNodePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QJoinNode(QJoinNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

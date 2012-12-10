@@ -42,7 +42,8 @@
 #define QTMOF_QSTRUCTURALFEATURE_P_H
 
 // Base class includes
-#include "private/qmofobject_p.h"
+#include "private/qwrappedobject_p.h"
+using QtWrappedObjects::QWrappedObjectPrivate;
 #include "private/qfeature_p.h"
 #include "private/qtypedelement_p.h"
 #include "private/qmultiplicityelement_p.h"
@@ -55,7 +56,7 @@ QT_BEGIN_NAMESPACE_QTMOF
 
 QT_MODULE(QtMof)
 
-class Q_MOF_EXPORT QStructuralFeaturePrivate : public QMofObjectPrivate
+class Q_MOF_EXPORT QStructuralFeaturePrivate : public QWrappedObjectPrivate
 {
     Q_DECLARE_PUBLIC(QStructuralFeature)
 

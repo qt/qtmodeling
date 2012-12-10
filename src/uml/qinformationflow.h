@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtMof/QMofObject>
+#include <QtWrappedObjects/QWrappedObject>
+using QtWrappedObjects::QWrappedObject;
 #include <QtUml/QDirectedRelationship>
 #include <QtUml/QPackageableElement>
 
@@ -67,7 +68,7 @@ class QRelationship;
 
 class QInformationFlowPrivate;
 
-class Q_UML_EXPORT QInformationFlow : public QtMof::QMofObject
+class Q_UML_EXPORT QInformationFlow : public QWrappedObject
 {
     Q_OBJECT
 
@@ -83,7 +84,7 @@ class Q_UML_EXPORT QInformationFlow : public QtMof::QMofObject
     Q_DECLARE_PRIVATE(QInformationFlow)
 
 public:
-    Q_INVOKABLE explicit QInformationFlow(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QInformationFlow(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QInformationFlow();
 
     // Association ends from aggregated QElement
@@ -147,7 +148,7 @@ public:
     Q_INVOKABLE void removeRealization(QRelationship *realization);
 
 protected:
-    explicit QInformationFlow(QInformationFlowPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QInformationFlow(QInformationFlowPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 
 private:
     QDirectedRelationship *_wrappedDirectedRelationship;

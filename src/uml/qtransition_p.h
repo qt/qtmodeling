@@ -42,7 +42,8 @@
 #define QTUML_QTRANSITION_P_H
 
 // Base class includes
-#include "private/qmofobject_p.h"
+#include "private/qwrappedobject_p.h"
+using QtWrappedObjects::QWrappedObjectPrivate;
 #include "private/qredefinableelement_p.h"
 #include "private/qnamespace_p.h"
 
@@ -70,7 +71,7 @@ class QRegion;
 class QConstraint;
 class QBehavior;
 
-class Q_UML_EXPORT QTransitionPrivate : public QtMof::QMofObjectPrivate
+class Q_UML_EXPORT QTransitionPrivate : public QWrappedObjectPrivate
 {
     Q_DECLARE_PUBLIC(QTransition)
 

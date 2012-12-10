@@ -67,7 +67,7 @@ class Q_UML_EXPORT QBroadcastSignalAction : public QInvocationAction
     Q_DECLARE_PRIVATE(QBroadcastSignalAction)
 
 public:
-    Q_INVOKABLE explicit QBroadcastSignalAction(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QBroadcastSignalAction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QBroadcastSignalAction();
 
     // Association ends from QBroadcastSignalAction
@@ -75,7 +75,7 @@ public:
     Q_INVOKABLE void setSignal(QSignal *signal);
 
 protected:
-    explicit QBroadcastSignalAction(QBroadcastSignalActionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QBroadcastSignalAction(QBroadcastSignalActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

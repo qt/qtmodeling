@@ -67,7 +67,7 @@ class Q_UML_EXPORT QClearStructuralFeatureAction : public QStructuralFeatureActi
     Q_DECLARE_PRIVATE(QClearStructuralFeatureAction)
 
 public:
-    Q_INVOKABLE explicit QClearStructuralFeatureAction(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QClearStructuralFeatureAction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QClearStructuralFeatureAction();
 
     // Association ends from QClearStructuralFeatureAction
@@ -75,7 +75,7 @@ public:
     Q_INVOKABLE void setResult(QOutputPin *result);
 
 protected:
-    explicit QClearStructuralFeatureAction(QClearStructuralFeatureActionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QClearStructuralFeatureAction(QClearStructuralFeatureActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

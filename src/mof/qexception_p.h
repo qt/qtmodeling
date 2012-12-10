@@ -42,7 +42,8 @@
 #define QTMOF_QEXCEPTION_P_H
 
 // Base class includes
-#include "private/qmofobject_p.h"
+#include "private/qwrappedobject_p.h"
+using QtWrappedObjects::QWrappedObjectPrivate;
 
 #include "QtMof/QException"
 
@@ -59,7 +60,7 @@ QT_MODULE(QtMof)
 class QElement;
 class QException;
 
-class Q_MOF_EXPORT QExceptionPrivate : public QMofObjectPrivate
+class Q_MOF_EXPORT QExceptionPrivate : public QWrappedObjectPrivate
 {
     Q_DECLARE_PUBLIC(QException)
 

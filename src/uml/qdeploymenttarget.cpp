@@ -65,12 +65,12 @@ QDeploymentTargetPrivate::~QDeploymentTargetPrivate()
     \brief A deployment target is the location for a deployed artifact.
  */
 
-QDeploymentTarget::QDeploymentTarget(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QDeploymentTarget::QDeploymentTarget(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(*new QDeploymentTargetPrivate, parent, wrapper)
 {
 }
 
-QDeploymentTarget::QDeploymentTarget(QDeploymentTargetPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QDeploymentTarget::QDeploymentTarget(QDeploymentTargetPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
 }
@@ -115,8 +115,8 @@ void QDeploymentTarget::addDeployment(QDeployment *deployment)
         d->deployments->insert(deployment);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(deployment));
-        (qmofobject_cast<QNamedElement *>(this))->addClientDependency(qmofobject_cast<QDependency *>(deployment));
+        (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(deployment));
+        (qwrappedobject_cast<QNamedElement *>(this))->addClientDependency(qwrappedobject_cast<QDependency *>(deployment));
 
         // Adjust opposite property
         deployment->setLocation(this);
@@ -132,8 +132,8 @@ void QDeploymentTarget::removeDeployment(QDeployment *deployment)
         d->deployments->remove(deployment);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(deployment));
-        (qmofobject_cast<QNamedElement *>(this))->removeClientDependency(qmofobject_cast<QDependency *>(deployment));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(deployment));
+        (qwrappedobject_cast<QNamedElement *>(this))->removeClientDependency(qwrappedobject_cast<QDependency *>(deployment));
 
         // Adjust opposite property
         deployment->setLocation(0);
@@ -142,12 +142,12 @@ void QDeploymentTarget::removeDeployment(QDeployment *deployment)
 
 // Overriden methods for subsetted properties
 
-void QDeploymentTarget::addClientDependency(QtMof::QMofPointer<QDeployment> deployment)
+void QDeploymentTarget::addClientDependency(QWrappedObjectPointer<QDeployment> deployment)
 {
     addDeployment(deployment);
 }
 
-void QDeploymentTarget::removeClientDependency(QtMof::QMofPointer<QDeployment> deployment)
+void QDeploymentTarget::removeClientDependency(QWrappedObjectPointer<QDeployment> deployment)
 {
     removeDeployment(deployment);
 }

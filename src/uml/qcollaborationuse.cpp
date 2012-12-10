@@ -66,12 +66,12 @@ QCollaborationUsePrivate::~QCollaborationUsePrivate()
     \brief A collaboration use represents one particular use of a collaboration to explain the relationships between the properties of a classifier. A collaboration use shows how the pattern described by a collaboration is applied in a given context, by binding specific entities from that context to the roles of the collaboration. Depending on the context, these entities could be structural features of a classifier, instance specifications, or even roles in some containing collaboration. There may be multiple occurrences of a given collaboration within a classifier, each involving a different set of roles and connectors. A given role or connector may be involved in multiple occurrences of the same or different collaborations. Associated dependencies map features of the collaboration type to features in the classifier. These dependencies indicate which role in the classifier plays which role in the collaboration.
  */
 
-QCollaborationUse::QCollaborationUse(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QCollaborationUse::QCollaborationUse(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(*new QCollaborationUsePrivate, parent, wrapper)
 {
 }
 
-QCollaborationUse::QCollaborationUse(QCollaborationUsePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QCollaborationUse::QCollaborationUse(QCollaborationUsePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
 }
@@ -125,7 +125,7 @@ void QCollaborationUse::addRoleBinding(QDependency *roleBinding)
         d->roleBindings->insert(roleBinding);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(roleBinding));
+        (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(roleBinding));
     }
 }
 
@@ -138,7 +138,7 @@ void QCollaborationUse::removeRoleBinding(QDependency *roleBinding)
         d->roleBindings->remove(roleBinding);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(roleBinding));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(roleBinding));
     }
 }
 

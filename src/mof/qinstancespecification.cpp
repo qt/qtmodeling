@@ -69,12 +69,12 @@ QInstanceSpecificationPrivate::~QInstanceSpecificationPrivate()
     \brief An instance specification is a model element that represents an instance in a modeled system.
  */
 
-QInstanceSpecification::QInstanceSpecification(QMofObject *parent, QMofObject *wrapper) :
+QInstanceSpecification::QInstanceSpecification(QWrappedObject *parent, QWrappedObject *wrapper) :
     QPackageableElement(*new QInstanceSpecificationPrivate, parent, wrapper)
 {
 }
 
-QInstanceSpecification::QInstanceSpecification(QInstanceSpecificationPrivate &dd, QMofObject *parent, QMofObject *wrapper) :
+QInstanceSpecification::QInstanceSpecification(QInstanceSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QPackageableElement(dd, parent, wrapper)
 {
 }
@@ -136,13 +136,13 @@ void QInstanceSpecification::setSpecification(QValueSpecification *specification
     Q_D(QInstanceSpecification);
     if (d->specification != specification) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->specification));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(d->specification));
 
         d->specification = specification;
 
         // Adjust subsetted property(ies)
         if (specification) {
-            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(specification));
+            (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(specification));
         }
     }
 }
@@ -167,7 +167,7 @@ void QInstanceSpecification::addSlot_(QSlot *slot_)
         d->slots_->insert(slot_);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(slot_));
+        (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(slot_));
 
         // Adjust opposite property
         slot_->setOwningInstance(this);
@@ -183,7 +183,7 @@ void QInstanceSpecification::removeSlot_(QSlot *slot_)
         d->slots_->remove(slot_);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(slot_));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(slot_));
 
         // Adjust opposite property
         slot_->setOwningInstance(0);

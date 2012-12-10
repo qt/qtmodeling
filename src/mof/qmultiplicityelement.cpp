@@ -66,12 +66,12 @@ QMultiplicityElementPrivate::~QMultiplicityElementPrivate()
     \brief A multiplicity is a definition of an inclusive interval of non-negative integers beginning with a lower bound and ending with a (possibly infinite) upper bound. A multiplicity element embeds this information to specify the allowable cardinalities for an instantiation of this element.
  */
 
-QMultiplicityElement::QMultiplicityElement(QMofObject *parent, QMofObject *wrapper) :
+QMultiplicityElement::QMultiplicityElement(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QMultiplicityElementPrivate, parent, wrapper)
 {
 }
 
-QMultiplicityElement::QMultiplicityElement(QMultiplicityElementPrivate &dd, QMofObject *parent, QMofObject *wrapper) :
+QMultiplicityElement::QMultiplicityElement(QMultiplicityElementPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
 }
@@ -196,13 +196,13 @@ void QMultiplicityElement::setUpperValue(QValueSpecification *upperValue)
     Q_D(QMultiplicityElement);
     if (d->upperValue != upperValue) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->upperValue));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(d->upperValue));
 
         d->upperValue = upperValue;
 
         // Adjust subsetted property(ies)
         if (upperValue) {
-            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(upperValue));
+            (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(upperValue));
         }
     }
 }
@@ -225,13 +225,13 @@ void QMultiplicityElement::setLowerValue(QValueSpecification *lowerValue)
     Q_D(QMultiplicityElement);
     if (d->lowerValue != lowerValue) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->lowerValue));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(d->lowerValue));
 
         d->lowerValue = lowerValue;
 
         // Adjust subsetted property(ies)
         if (lowerValue) {
-            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(lowerValue));
+            (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(lowerValue));
         }
     }
 }

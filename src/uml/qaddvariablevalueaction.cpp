@@ -64,12 +64,12 @@ QAddVariableValueActionPrivate::~QAddVariableValueActionPrivate()
     \brief An add variable value action is a write variable action for adding values to a variable.
  */
 
-QAddVariableValueAction::QAddVariableValueAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QAddVariableValueAction::QAddVariableValueAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QWriteVariableAction(*new QAddVariableValueActionPrivate, parent, wrapper)
 {
 }
 
-QAddVariableValueAction::QAddVariableValueAction(QAddVariableValueActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QAddVariableValueAction::QAddVariableValueAction(QAddVariableValueActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QWriteVariableAction(dd, parent, wrapper)
 {
 }
@@ -125,13 +125,13 @@ void QAddVariableValueAction::setInsertAt(QInputPin *insertAt)
     Q_D(QAddVariableValueAction);
     if (d->insertAt != insertAt) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(d->insertAt));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeInput(qwrappedobject_cast<QInputPin *>(d->insertAt));
 
         d->insertAt = insertAt;
 
         // Adjust subsetted property(ies)
         if (insertAt) {
-            (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(insertAt));
+            (qwrappedobject_cast<QActionPrivate *>(d))->addInput(qwrappedobject_cast<QInputPin *>(insertAt));
         }
     }
 }

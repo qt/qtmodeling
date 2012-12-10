@@ -69,7 +69,7 @@ class Q_MOF_EXPORT QGeneralization : public QDirectedRelationship
     Q_DECLARE_PRIVATE(QGeneralization)
 
 public:
-    Q_INVOKABLE explicit QGeneralization(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QGeneralization(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QGeneralization();
 
     // Attributes from QGeneralization
@@ -83,7 +83,7 @@ public:
     Q_INVOKABLE void setGeneral(QClassifier *general);
 
 protected:
-    explicit QGeneralization(QGeneralizationPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QGeneralization(QGeneralizationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

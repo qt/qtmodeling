@@ -62,11 +62,11 @@ class Q_UML_EXPORT QGate : public QMessageEnd
     Q_DECLARE_PRIVATE(QGate)
 
 public:
-    Q_INVOKABLE explicit QGate(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QGate(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QGate();
 
 protected:
-    explicit QGate(QGatePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QGate(QGatePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

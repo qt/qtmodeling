@@ -62,12 +62,12 @@ QFactoryPrivate::~QFactoryPrivate()
 }
 
 
-QFactory::QFactory(QMofObject *parent, QMofObject *wrapper) :
+QFactory::QFactory(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QFactoryPrivate, parent, wrapper)
 {
 }
 
-QFactory::QFactory(QFactoryPrivate &dd, QMofObject *parent, QMofObject *wrapper) :
+QFactory::QFactory(QFactoryPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
 }

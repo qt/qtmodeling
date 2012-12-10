@@ -62,11 +62,11 @@ class Q_UML_EXPORT QFinalState : public QState
     Q_DECLARE_PRIVATE(QFinalState)
 
 public:
-    Q_INVOKABLE explicit QFinalState(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QFinalState(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QFinalState();
 
 protected:
-    explicit QFinalState(QFinalStatePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QFinalState(QFinalStatePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

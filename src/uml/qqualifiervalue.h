@@ -69,7 +69,7 @@ class Q_UML_EXPORT QQualifierValue : public QElement
     Q_DECLARE_PRIVATE(QQualifierValue)
 
 public:
-    Q_INVOKABLE explicit QQualifierValue(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QQualifierValue(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QQualifierValue();
 
     // Association ends from QQualifierValue
@@ -79,7 +79,7 @@ public:
     Q_INVOKABLE void setQualifier(QProperty *qualifier);
 
 protected:
-    explicit QQualifierValue(QQualifierValuePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QQualifierValue(QQualifierValuePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -63,12 +63,12 @@ QChangeEventPrivate::~QChangeEventPrivate()
     \brief A change event models a change in the system configuration that makes a condition true.
  */
 
-QChangeEvent::QChangeEvent(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QChangeEvent::QChangeEvent(QWrappedObject *parent, QWrappedObject *wrapper) :
     QEvent(*new QChangeEventPrivate, parent, wrapper)
 {
 }
 
-QChangeEvent::QChangeEvent(QChangeEventPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QChangeEvent::QChangeEvent(QChangeEventPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QEvent(dd, parent, wrapper)
 {
 }
@@ -99,13 +99,13 @@ void QChangeEvent::setChangeExpression(QValueSpecification *changeExpression)
     Q_D(QChangeEvent);
     if (d->changeExpression != changeExpression) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->changeExpression));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(d->changeExpression));
 
         d->changeExpression = changeExpression;
 
         // Adjust subsetted property(ies)
         if (changeExpression) {
-            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(changeExpression));
+            (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(changeExpression));
         }
     }
 }

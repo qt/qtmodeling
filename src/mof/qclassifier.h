@@ -44,7 +44,8 @@
 #include <QtMof/QtMofGlobal>
 
 // Base class includes
-#include <QtMof/QMofObject>
+#include <QtWrappedObjects/QWrappedObject>
+using QtWrappedObjects::QWrappedObject;
 #include <QtMof/QType>
 #include <QtMof/QRedefinableElement>
 #include <QtMof/QNamespace>
@@ -66,7 +67,7 @@ class QFeature;
 
 class QClassifierPrivate;
 
-class Q_MOF_EXPORT QClassifier : public QMofObject
+class Q_MOF_EXPORT QClassifier : public QWrappedObject
 {
     Q_OBJECT
 
@@ -83,7 +84,7 @@ class Q_MOF_EXPORT QClassifier : public QMofObject
     Q_DECLARE_PRIVATE(QClassifier)
 
 public:
-    Q_INVOKABLE explicit QClassifier(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QClassifier(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QClassifier();
 
     // Association ends from aggregated QElement
@@ -165,7 +166,7 @@ public:
     friend class QFeaturePrivate;
 
 protected:
-    explicit QClassifier(QClassifierPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QClassifier(QClassifierPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 
 private:
     QType *_wrappedType;

@@ -67,7 +67,7 @@ class Q_UML_EXPORT QActivityParameterNode : public QObjectNode
     Q_DECLARE_PRIVATE(QActivityParameterNode)
 
 public:
-    Q_INVOKABLE explicit QActivityParameterNode(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QActivityParameterNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QActivityParameterNode();
 
     // Association ends from QActivityParameterNode
@@ -75,7 +75,7 @@ public:
     Q_INVOKABLE void setParameter(QParameter *parameter);
 
 protected:
-    explicit QActivityParameterNode(QActivityParameterNodePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QActivityParameterNode(QActivityParameterNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

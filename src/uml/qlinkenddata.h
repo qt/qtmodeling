@@ -74,7 +74,7 @@ class Q_UML_EXPORT QLinkEndData : public QElement
     Q_DECLARE_PRIVATE(QLinkEndData)
 
 public:
-    Q_INVOKABLE explicit QLinkEndData(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QLinkEndData(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QLinkEndData();
 
     // Association ends from QLinkEndData
@@ -87,7 +87,7 @@ public:
     Q_INVOKABLE void removeQualifier(QQualifierValue *qualifier);
 
 protected:
-    explicit QLinkEndData(QLinkEndDataPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QLinkEndData(QLinkEndDataPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

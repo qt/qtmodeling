@@ -72,7 +72,7 @@ class Q_UML_EXPORT QTemplateParameterSubstitution : public QElement
     Q_DECLARE_PRIVATE(QTemplateParameterSubstitution)
 
 public:
-    Q_INVOKABLE explicit QTemplateParameterSubstitution(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QTemplateParameterSubstitution(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QTemplateParameterSubstitution();
 
     // Association ends from QTemplateParameterSubstitution
@@ -86,7 +86,7 @@ public:
     Q_INVOKABLE void setTemplateBinding(QTemplateBinding *templateBinding);
 
 protected:
-    explicit QTemplateParameterSubstitution(QTemplateParameterSubstitutionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QTemplateParameterSubstitution(QTemplateParameterSubstitutionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
